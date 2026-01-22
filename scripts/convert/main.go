@@ -244,6 +244,39 @@ func convertToMarkdown(jsonPath, outputDir string) error {
 		"Pearl of Great Price",
 	}
 
+	// Canonical book order within each volume
+	canonicalBookOrder := map[string][]string{
+		"Old Testament": {
+			"Genesis", "Exodus", "Leviticus", "Numbers", "Deuteronomy",
+			"Joshua", "Judges", "Ruth", "1 Samuel", "2 Samuel",
+			"1 Kings", "2 Kings", "1 Chronicles", "2 Chronicles",
+			"Ezra", "Nehemiah", "Esther", "Job", "Psalms",
+			"Proverbs", "Ecclesiastes", "Song of Solomon", "Isaiah", "Jeremiah",
+			"Lamentations", "Ezekiel", "Daniel", "Hosea", "Joel",
+			"Amos", "Obadiah", "Jonah", "Micah", "Nahum",
+			"Habakkuk", "Zephaniah", "Haggai", "Zechariah", "Malachi",
+		},
+		"New Testament": {
+			"Matthew", "Mark", "Luke", "John", "Acts",
+			"Romans", "1 Corinthians", "2 Corinthians", "Galatians", "Ephesians",
+			"Philippians", "Colossians", "1 Thessalonians", "2 Thessalonians",
+			"1 Timothy", "2 Timothy", "Titus", "Philemon", "Hebrews",
+			"James", "1 Peter", "2 Peter", "1 John", "2 John",
+			"3 John", "Jude", "Revelation",
+		},
+		"Book of Mormon": {
+			"1 Nephi", "2 Nephi", "Jacob", "Enos", "Jarom",
+			"Omni", "Words of Mormon", "Mosiah", "Alma", "Helaman",
+			"3 Nephi", "4 Nephi", "Mormon", "Ether", "Moroni",
+		},
+		"Doctrine and Covenants": {
+			"Doctrine and Covenants",
+		},
+		"Pearl of Great Price": {
+			"Moses", "Abraham", "Joseph Smith--Matthew", "Joseph Smith--History", "Articles of Faith",
+		},
+	}
+
 	// Write markdown files
 	totalFiles := 0
 	for _, volTitle := range volumeOrder {
@@ -260,8 +293,17 @@ func convertToMarkdown(jsonPath, outputDir string) error {
 		}
 
 		// Write each book as a markdown file
-		for _, bookTitle := range bookOrder[volTitle] {
-			book := vol.Books[bookTitle]
+		// Use canonical order if available, otherwise use order from data
+		booksToWrite := canonicalBookOrder[volTitle]
+		if len(booksToWrite) == 0 {
+			booksToWrite = bookOrder[volTitle]
+		}
+
+		for bookIndex, bookTitle := range booksToWrite {
+			book, exists := vol.Books[bookTitle]
+			if !exists {
+				continue
+			}
 
 			// Special handling for Doctrine and Covenants - split by section
 			if book.Title == "Doctrine and Covenants" {
@@ -288,7 +330,7 @@ func convertToMarkdown(jsonPath, outputDir string) error {
 					sb.WriteString("\n")
 
 					// Write section file
-					fileName := fmt.Sprintf("Section %d.md", ch.Number)
+					fileName := fmt.Sprintf("Section_%03d.md", ch.Number)
 					filePath := filepath.Join(volDir, fileName)
 					if err := os.WriteFile(filePath, []byte(sb.String()), 0644); err != nil {
 						return fmt.Errorf("writing %s: %w", filePath, err)
@@ -324,8 +366,11 @@ func convertToMarkdown(jsonPath, outputDir string) error {
 				sb.WriteString("\n")
 			}
 
-			// Write file
-			fileName := sanitizeFilename(book.Title) + ".md"
+			// Write file with numeric prefix
+			sanitizedName := sanitizeFilename(book.Title)
+			// Replace spaces with underscores for the filename
+			sanitizedName = strings.ReplaceAll(sanitizedName, " ", "_")
+			fileName := fmt.Sprintf("%02d_%s.md", bookIndex+1, sanitizedName)
 			filePath := filepath.Join(volDir, fileName)
 			if err := os.WriteFile(filePath, []byte(sb.String()), 0644); err != nil {
 				return fmt.Errorf("writing %s: %w", filePath, err)
@@ -341,6 +386,7 @@ func convertToMarkdown(jsonPath, outputDir string) error {
 func sanitizeFilename(name string) string {
 	// Replace problematic characters
 	replacer := strings.NewReplacer(
+		" ", "_",
 		":", "",
 		"/", "-",
 		"\\", "-",

@@ -67,15 +67,15 @@ When studying scriptures:
 
 When citing scriptures in study files, use markdown links to the source file with anchor to the chapter. This enables clicking directly to the scripture in preview mode.
 
-**Format:** `[Book Chapter:Verse](relative/path/to/book.md#chapter-N)`
+**Format:** `[Book Chapter:Verse](relative/path/to/##_Book_Name.md#chapter-N)`
 
 **Examples:**
-- `[Moses 3:5](../scriptures/Pearl%20of%20Great%20Price/Moses.md#chapter-3)`
-- `[Genesis 1:1](../scriptures/Old%20Testament/Genesis.md#chapter-1)`
-- `[D&C 93:36](../scriptures/Doctrine%20and%20Covenants/Section%2093.md)`
-- `[1 Nephi 3:7](../scriptures/Book%20of%20Mormon/1%20Nephi.md#chapter-3)`
+- `[Moses 3:5](../scriptures/Pearl_of_Great_Price/01_Moses.md#chapter-3)`
+- `[Genesis 1:1](../scriptures/Old_Testament/01_Genesis.md#chapter-1)`
+- `[D&C 93:36](../scriptures/Doctrine_and_Covenants/Section_093.md)`
+- `[1 Nephi 3:7](../scriptures/Book_of_Mormon/01_1_Nephi.md#chapter-3)`
 
-Note: Use `%20` for spaces in paths. D&C sections don't need chapter anchors since each section is its own file.
+Note: Underscores replace spaces in paths. Files are prefixed with numbers for canonical ordering (e.g., `01_Genesis.md`, `02_Exodus.md`). D&C sections use `Section_###.md` format (e.g., `Section_093.md`).
 
 ## Workflow
 
