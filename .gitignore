@@ -1,0 +1,17 @@
+# Gospel Library Downloads (copyrighted content - do not distribute)
+.cache/
+resources/gospel-library/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Go build artifacts
+scripts/gospel-library/gospel-library
+scripts/gospel-library/gospel-library.exe
