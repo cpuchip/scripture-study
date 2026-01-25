@@ -1,7 +1,8 @@
 # Gospel Library Downloader - Planning Document
 
-> **Status:** Planning  
+> **Status:** Active Development  
 > **Created:** 2026-01-23  
+> **Last Updated:** 2026-01-25  
 > **Goal:** Download General Conference talks and other resources from the Church of Jesus Christ of Latter-day Saints Gospel Library for local AI-assisted study.
 
 ## Overview
@@ -621,55 +622,139 @@ resources/gospel-library/
 
 ## 8. Implementation Phases
 
-### Phase 1: Research & Prototype ✅ (Mostly Done)
+### Phase 1: Research & Prototype ✅ COMPLETE
 - [x] Test API endpoints manually (curl/browser)
 - [x] Document actual API response structures
-- [ ] Verify rate limiting requirements (test with real downloads)
-- [ ] Create basic Go HTTP client
+- [x] Verify rate limiting requirements (test with real downloads)
+- [x] Create basic Go HTTP client
 
-### Phase 2: Core Infrastructure
-- [ ] Project scaffolding (`./scripts/gospel-library/`)
-- [ ] HTTP client with rate limiting
-- [ ] Caching layer (raw JSON storage)
-- [ ] Sync metadata tracking
-- [ ] Image downloader
+### Phase 2: Core Infrastructure ✅ COMPLETE
+- [x] Project scaffolding (`./scripts/gospel-library/`)
+- [x] HTTP client with rate limiting
+- [x] Caching layer (raw JSON storage)
+- [x] Sync metadata tracking
+- [ ] Image downloader (deferred - linking to CDN instead)
 
-### Phase 3: Catalog & Navigation
-- [ ] Parse collection/dynamic API responses
-- [ ] Build content tree structure
-- [ ] Identify all content types (talks, scriptures, manuals, etc.)
-- [ ] Selection state persistence
+### Phase 3: Catalog & Navigation ✅ COMPLETE
+- [x] Parse collection/dynamic API responses
+- [x] Build content tree structure
+- [x] Identify all content types (talks, scriptures, manuals, etc.)
+- [x] Selection state persistence
 
-### Phase 4: TUI Application
-- [ ] Basic bubbletea app structure
-- [ ] Main menu screen
-- [ ] Content browser with checkboxes
-- [ ] Progress/download screen
-- [ ] Settings screen
+### Phase 4: TUI Application ✅ COMPLETE (Basic)
+- [x] Basic bubbletea app structure
+- [x] Main menu screen
+- [x] Content browser with checkboxes
+- [x] Progress/download screen
+- [ ] Settings screen (deferred)
+- [ ] Show cached/downloaded status indicators in item list (TODO)
 
-### Phase 5: Content Download
-- [ ] Download selected content to cache
-- [ ] Download associated images
-- [ ] Skip already-cached content
-- [ ] Error handling & retry logic
+### Phase 5: Content Download ✅ COMPLETE
+- [x] Download selected content to cache
+- [x] Skip already-cached content
+- [x] Error handling & retry logic
+- [x] Recursive crawl for nested content
+- [x] `--standard` flag for quick download of standard works + latest conference
+- [x] `--cleanup` and `--reset` flags for cache/output management
 
-### Phase 6: Markdown Conversion
-- [ ] HTML to Markdown converter
-- [ ] YAML frontmatter generation
-- [ ] Footnote extraction & formatting
-- [ ] Scripture reference linking (to local files)
-- [ ] Image path rewriting
-- [ ] Media link generation (audio/video/PDF)
+### Phase 6: Markdown Conversion ✅ COMPLETE
+- [x] HTML to Markdown converter
+- [x] YAML frontmatter generation (title, audio link)
+- [x] Footnote extraction & formatting (HTML anchor approach)
+- [x] Scripture reference linking (relative paths to local files)
+- [x] Verse number formatting (`**1.**` bold with period)
+- [x] Media link generation (audio links)
+- [ ] Image path rewriting (deferred - using CDN links)
 
-### Phase 7: Polish & Documentation
-- [ ] CLI flags for automation
-- [ ] Configuration file support
+### Phase 7: Polish & Documentation 🔄 IN PROGRESS
+- [x] CLI flags for automation (`--standard`, `--cleanup`, `--reset`, `--test-*`)
+- [ ] Configuration file support (deferred)
 - [ ] README with usage instructions
-- [ ] Error messages and logging
+- [ ] Error messages and logging improvements
 
 ---
 
-## 9. Technical Considerations
+## 9. Current State (January 2026)
+
+### What's Working ✅
+
+1. **TUI Browser** - Navigate Gospel Library content hierarchy
+2. **Item Selection** - Space to toggle selection, visual checkmarks
+3. **Download** - Downloads selected items or recursive collections
+4. **Standard Works** - `--standard` flag downloads all scriptures + latest conference
+5. **Caching** - Raw API responses cached in `.gospel-cache/`
+6. **Markdown Output** - Clean markdown with:
+   - Verse numbers as `**1.**` format
+   - Footnotes with HTML anchors (`<a id="fn-1a"></a>`)
+   - Relative links between files (`../../ot/prov/22.md`)
+   - Audio links to CDN
+   - Proper footnote deduplication (no raw footnote lists)
+
+### Files Generated
+
+```
+gospel-library/eng/
+├── scriptures/
+│   ├── bofm/         # Book of Mormon (246 files)
+│   ├── dc-testament/ # D&C (142 files)
+│   ├── pgp/          # Pearl of Great Price (18 files)
+│   ├── ot/           # Old Testament (930 files)
+│   ├── nt/           # New Testament (261 files)
+│   └── tg/           # Topical Guide
+├── general-conference/
+│   └── 2025/10/      # October 2025 (35 files)
+```
+
+### Known Issues / TODO 🔧
+
+1. **TUI Navigation UX** - Clarify Enter vs Space behavior (see below)
+2. **Status Indicators** - Show cached/downloaded status in item list
+3. **Incremental Updates** - Detect when content has changed on server
+
+---
+
+## 10. TUI Navigation Redesign
+
+### Current Behavior (Confusing)
+- **Space** - Toggle selection
+- **Enter** - Navigate into item OR download (unclear)
+- **R** - Recursive download
+
+### Proposed Behavior (Clearer)
+- **Space** - Toggle selection for download
+- **Enter** - Navigate deeper into the item (expand/browse)
+- **D** - Download all selected items
+- **Remove R** - Recursive download happens automatically when you select a parent item
+
+### Item Status Indicators
+
+Show download status in the item list:
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│  Select Content                              [Space]=Select │
+├─────────────────────────────────────────────────────────────┤
+│  ▼ General Conference                                       │
+│    ▼ 2025                                                   │
+│      [x] ✓ October 2025 (35 talks)      [cached & converted]│
+│      [ ] ● April 2025 (34 talks)        [cached, not converted]│
+│    ▶ 2024                                                   │
+│  ▼ Scriptures                                               │
+│    [x] ✓ Book of Mormon                 [complete]          │
+│    [ ]   Doctrine and Covenants         [not downloaded]    │
+│                                                             │
+│  [Enter] Browse    [Space] Select    [D] Download Selected  │
+└─────────────────────────────────────────────────────────────┘
+```
+
+**Status Icons:**
+- ` ` (blank) - Not downloaded
+- `●` - Cached (raw JSON) but not converted
+- `✓` - Fully downloaded and converted to markdown
+
+---
+
+## 11. Technical Considerations
 
 ### Go Libraries to Use
 - `net/http` - HTTP client
@@ -695,7 +780,7 @@ resources/gospel-library/
 
 ---
 
-## 10. Ethical Considerations
+## 12. Ethical Considerations
 
 1. **Respect Terms of Service** - Use for personal study only
 2. **Rate Limiting** - Don't overwhelm servers
@@ -705,7 +790,7 @@ resources/gospel-library/
 
 ---
 
-## 11. Open Questions
+## 13. Open Questions
 
 - [x] ~~Does the API require authentication for any content?~~ **No, public content is accessible**
 - [x] ~~What is the actual catalog structure?~~ **Documented above - `collection.sections[].entries[]`**
@@ -719,12 +804,22 @@ resources/gospel-library/
 
 ---
 
-## 12. Next Steps
+## 14. Next Steps
 
-1. ~~**API Exploration** - Use browser dev tools or proxy to capture actual API calls from churchofjesuschrist.org/study~~ ✅ **DONE**
-2. **Create Prototype** - Simple Go script to download one talk
-3. **Document Findings** - Update this plan with actual API details
-4. **Build Incrementally** - Start with General Conference, expand later
+### Immediate (TUI Polish)
+1. **Clarify navigation** - Enter = browse deeper, Space = select, D = download
+2. **Add status indicators** - Show ` ` / `●` / `✓` for download status
+3. **Remove 'R' key** - Parent selection implies recursive download
+
+### Short Term
+4. **README** - Document usage and flags
+5. **Test other content** - Come Follow Me, manuals, etc.
+
+### Deferred
+- Settings screen in TUI
+- Configuration file support
+- Image downloading (currently using CDN links)
+- Incremental update detection
 
 ---
 
