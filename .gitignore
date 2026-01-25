@@ -1,5 +1,7 @@
 # Gospel Library Downloads (copyrighted content - do not distribute)
 .cache/
+.gospel-cache/
+gospel-library/
 resources/gospel-library/
 
 # OS files
