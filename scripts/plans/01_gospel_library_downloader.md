@@ -752,3 +752,53 @@ curl -s "https://www.churchofjesuschrist.org/study/api/v3/language-pages/type/co
 - [Church of Jesus Christ Study Website](https://www.churchofjesuschrist.org/study)
 - [Gospel Library App](https://www.churchofjesuschrist.org/pages/mobileapps/gospellibrary)
 - Community reverse engineering efforts (various GitHub projects)
+
+---
+
+## Appendix A: Existing Projects Research
+
+### No Suitable Go Libraries Exist
+
+Searched GitHub for existing Gospel Library download/sync tools. **No Go implementations found.**
+
+### Existing Projects (Other Languages)
+
+| Project | Language | Status | Approach |
+|---------|----------|--------|----------|
+| **[rfmarves/Obsidian_Gospel_Library](https://github.com/rfmarves/Obsidian_Gospel_Library)** | Python | 4 years old | Scrapes **rendered HTML** via Selenium headless browser + BeautifulSoup. Scriptures only (no General Conference). |
+| **[beandog/lds-scriptures](https://github.com/beandog/lds-scriptures)** | Static exports | 6 years old | Pre-exported scriptures in JSON/CSV/SQLite/HTML. No API client. No General Conference. No footnotes/cross-refs. |
+| **[beandog/api.nephi.org](https://github.com/beandog/api.nephi.org)** | PHP | Updated 2025 | Self-hosted API wrapper for beandog's scripture data |
+
+### Why We're Building Our Own
+
+1. **No existing Go library** — nothing to reuse
+2. **API vs HTML scraping** — The Python project scrapes rendered HTML pages with Selenium. We discovered the **clean JSON API** which is faster, more reliable, and includes structured footnote data.
+3. **General Conference support** — Existing projects focus on scriptures only
+4. **Footnote preservation** — Our API approach gives us the `footnotes` object with `context` field (annotated word), which HTML scraping would lose or require complex parsing to recover
+5. **TUI interface** — No existing tool has this; we want interactive selection
+
+### Data Format Clarification
+
+**Q: Is the data raw JSON/template or pre-rendered HTML?**
+
+**A: JSON with pre-rendered HTML embedded.**
+
+```json
+{
+  "meta": { "title": "...", "audio": [...] },
+  "content": {
+    "head": "<header>...</header>",
+    "body": "<p>Pre-rendered HTML content with <a href='#note1'>footnotes</a>...</p>",
+    "footnotes": {
+      "note1": { "id": "note1", "context": "word", "text": "<p>Reference...</p>" }
+    }
+  }
+}
+```
+
+The server pre-renders the HTML and embeds it in JSON. Our job:
+1. Fetch JSON from API
+2. Extract `content.body` (HTML string)
+3. Convert HTML → Markdown
+4. Process `content.footnotes` separately
+5. Merge footnotes into markdown output
