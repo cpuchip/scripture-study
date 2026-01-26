@@ -320,7 +320,7 @@ func (c *Converter) localizeLinks(markdown, sourceURI string) string {
 	// Pattern for markdown links: [text](url)
 	linkRe := regexp.MustCompile(`\[([^\]]+)\]\(([^)]+)\)`)
 
-	return linkRe.ReplaceAllStringFunc(markdown, func(match string) string {
+	markdown = linkRe.ReplaceAllStringFunc(markdown, func(match string) string {
 		parts := linkRe.FindStringSubmatch(match)
 		if len(parts) != 3 {
 			return match
@@ -335,6 +335,24 @@ func (c *Converter) localizeLinks(markdown, sourceURI string) string {
 		}
 		return match
 	})
+
+	// Handle complex/nested link text that the regex above can miss
+	// Example: [Title ![img](...)](/study/manual/slug/01?lang=eng)
+	urlRe := regexp.MustCompile(`\((https://www\.churchofjesuschrist\.org/study/[^)\s]+|/study/[^)\s]+)\)`)
+	markdown = urlRe.ReplaceAllStringFunc(markdown, func(match string) string {
+		parts := urlRe.FindStringSubmatch(match)
+		if len(parts) != 2 {
+			return match
+		}
+		url := parts[1]
+		localPath := c.convertToLocalPath(url, sourceURI)
+		if localPath != "" {
+			return fmt.Sprintf("(%s)", localPath)
+		}
+		return match
+	})
+
+	return markdown
 }
 
 // convertToLocalPath converts a Gospel Library URL or URI to a local relative path.
@@ -353,6 +371,9 @@ func (c *Converter) convertToLocalPath(url, sourceURI string) string {
 	if idx := strings.Index(url, "?"); idx != -1 {
 		url = url[:idx]
 	}
+
+	// Normalize known manual slugs
+	url = c.normalizeManualSlug(url)
 
 	// Remove leading slash
 	url = strings.TrimPrefix(url, "/")
@@ -379,6 +400,13 @@ func (c *Converter) convertToLocalPath(url, sourceURI string) string {
 	}
 
 	return localPath
+}
+
+func (c *Converter) normalizeManualSlug(url string) string {
+	if strings.HasPrefix(url, "/manual/teaching-in-the-saviors-way") {
+		return strings.Replace(url, "/manual/teaching-in-the-saviors-way", "/manual/teaching-in-the-saviors-way-2022", 1)
+	}
+	return url
 }
 
 // relativePath calculates a relative path from source directory to target file.

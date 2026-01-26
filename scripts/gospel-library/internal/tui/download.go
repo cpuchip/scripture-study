@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
+	"regexp"
 	"strings"
 
 	tea "github.com/charmbracelet/bubbletea"
@@ -92,6 +93,13 @@ func isContentURI(uri string) bool {
 
 	// Scripture book TOCs (like /scriptures/bofm/1-ne without chapter number)
 	if strings.HasPrefix(uri, "/scriptures/") {
+		// Topical Guide, Bible Dictionary, Guide to the Scriptures entries
+		if strings.HasPrefix(uri, "/scriptures/tg/") ||
+			strings.HasPrefix(uri, "/scriptures/bd/") ||
+			strings.HasPrefix(uri, "/scriptures/gs/") {
+			return true
+		}
+
 		// Count path depth - content has more segments
 		// /scriptures/bofm = TOC
 		// /scriptures/bofm/1-ne = TOC (book)
@@ -124,6 +132,14 @@ func isContentURI(uri string) bool {
 		return false
 	}
 
+	// Manual TOCs: /manual/{slug} are index pages; content is deeper
+	if strings.HasPrefix(uri, "/manual/") {
+		segments := strings.Split(strings.TrimPrefix(uri, "/"), "/")
+		// /manual/{slug} -> 2 segments (not content)
+		// /manual/{slug}/{lesson} -> content
+		return len(segments) >= 3
+	}
+
 	// Conference talks - check if last part is not just a year or month
 	if strings.HasPrefix(uri, "/general-conference/") {
 		// /general-conference/2025/10 = TOC
@@ -140,6 +156,48 @@ func isContentURI(uri string) bool {
 
 	// Default: if it looks like it has content identifiers, include it
 	return len(lastPart) > 0
+}
+
+// extractManualLinks pulls manual URIs from content HTML.
+func extractManualLinks(html string) []string {
+	if html == "" {
+		return nil
+	}
+
+	linkRe := regexp.MustCompile(`href="([^"]+)"`)
+	matches := linkRe.FindAllStringSubmatch(html, -1)
+	if len(matches) == 0 {
+		return nil
+	}
+
+	var links []string
+	for _, match := range matches {
+		if len(match) != 2 {
+			continue
+		}
+		href := match[1]
+		if strings.HasPrefix(href, "https://www.churchofjesuschrist.org/study/") {
+			href = strings.TrimPrefix(href, "https://www.churchofjesuschrist.org/study")
+		} else if strings.HasPrefix(href, "/study/") {
+			href = strings.TrimPrefix(href, "/study")
+		}
+
+		if idx := strings.Index(href, "?"); idx != -1 {
+			href = href[:idx]
+		}
+		if href == "" {
+			continue
+		}
+		if !strings.HasPrefix(href, "/") {
+			href = "/" + href
+		}
+
+		if strings.HasPrefix(href, "/manual/") {
+			links = append(links, href)
+		}
+	}
+
+	return links
 }
 
 // CrawlForContent recursively discovers all actual content URIs under a given URI.
@@ -160,9 +218,16 @@ func (d *Downloader) CrawlForContent(ctx context.Context, uri string) ([]string,
 		if err == nil && collection != nil && len(collection.Sections) > 0 {
 			for _, section := range collection.Sections {
 				for _, entry := range section.Entries {
-					if entry.Type == "item" && isContentURI(entry.URI) {
-						allURIs = append(allURIs, entry.URI)
-					} else if entry.Type != "item" {
+					if entry.Type == "item" {
+						if isContentURI(entry.URI) {
+							allURIs = append(allURIs, entry.URI)
+						} else {
+							// Treat non-content items as collections
+							if err := crawl(entry.URI); err != nil {
+								continue
+							}
+						}
+					} else {
 						// Recurse into sub-collections
 						if err := crawl(entry.URI); err != nil {
 							continue
@@ -177,6 +242,26 @@ func (d *Downloader) CrawlForContent(ctx context.Context, uri string) ([]string,
 		dynamic, _, err := d.client.GetDynamic(ctx, u)
 		if err != nil {
 			// Not a collection or dynamic page - might be content itself
+			content, _, cErr := d.client.GetContent(ctx, u)
+			if cErr == nil && content != nil {
+				if isContentURI(u) {
+					allURIs = append(allURIs, u)
+				}
+
+				// Some manuals are TOCs served as content HTML; follow their links
+				links := extractManualLinks(content.Content.Body)
+				for _, link := range links {
+					if isContentURI(link) {
+						allURIs = append(allURIs, link)
+					} else if !visited[link] {
+						if err := crawl(link); err != nil {
+							continue
+						}
+					}
+				}
+				return nil
+			}
+
 			if isContentURI(u) {
 				allURIs = append(allURIs, u)
 			}
@@ -186,8 +271,14 @@ func (d *Downloader) CrawlForContent(ctx context.Context, uri string) ([]string,
 		if dynamic.TOC != nil {
 			for _, entry := range dynamic.TOC.Entries {
 				// Direct content at this level
-				if entry.Content != nil && entry.Content.URI != "" && isContentURI(entry.Content.URI) {
-					allURIs = append(allURIs, entry.Content.URI)
+				if entry.Content != nil && entry.Content.URI != "" {
+					if isContentURI(entry.Content.URI) {
+						allURIs = append(allURIs, entry.Content.URI)
+					} else {
+						if err := crawl(entry.Content.URI); err != nil {
+							continue
+						}
+					}
 				}
 				// Check sections for sub-content (chapters within books)
 				if entry.Section != nil {
@@ -207,9 +298,15 @@ func (d *Downloader) CrawlForContent(ctx context.Context, uri string) ([]string,
 		} else if dynamic.Collection != nil && len(dynamic.Collection.Sections) > 0 {
 			for _, section := range dynamic.Collection.Sections {
 				for _, entry := range section.Entries {
-					if entry.Type == "item" && isContentURI(entry.URI) {
-						allURIs = append(allURIs, entry.URI)
-					} else if entry.Type != "item" {
+					if entry.Type == "item" {
+						if isContentURI(entry.URI) {
+							allURIs = append(allURIs, entry.URI)
+						} else {
+							if err := crawl(entry.URI); err != nil {
+								continue
+							}
+						}
+					} else {
 						if err := crawl(entry.URI); err != nil {
 							continue
 						}

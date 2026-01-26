@@ -17,7 +17,7 @@ const (
 	BaseURL = "https://www.churchofjesuschrist.org/study/api/v3/language-pages"
 
 	// DefaultRateLimit is the default requests per second.
-	DefaultRateLimit = 1.0
+	DefaultRateLimit = 20
 
 	// DefaultTimeout is the default HTTP timeout.
 	DefaultTimeout = 30 * time.Second
