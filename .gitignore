@@ -3,6 +3,7 @@
 .gospel-cache/
 /gospel-library/
 resources/gospel-library/
+/books/
 
 # OS files
 .DS_Store
