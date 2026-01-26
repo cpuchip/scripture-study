@@ -15,12 +15,12 @@
 
 ## Core Definition: D&C 93
 
-### [D&C 93:29-30](../scriptures/Doctrine_and_Covenants/Section_093.md) - Intelligence Defined
+### [D&C 93:29-30](../gospel-library/eng/scriptures/dc-testament/dc/93.md) - Intelligence Defined
 > **v.29** "Man was also in the beginning with God. **Intelligence, or the light of truth, was not created or made, neither indeed can be.**"
 
 > **v.30** "All truth is independent in that sphere in which God has placed it, **to act for itself**, as all intelligence also; otherwise there is no existence."
 
-### [D&C 93:36](../scriptures/Doctrine_and_Covenants/Section_093.md) - The Glory of God
+### [D&C 93:36](../gospel-library/eng/scriptures/dc-testament/dc/93.md) - The Glory of God
 > "**The glory of God is intelligence**, or, in other words, light and truth."
 
 ### Key Definitions from D&C 93:
@@ -40,7 +40,7 @@
 
 ## The Light of Christ: Universal Intelligence
 
-### [D&C 88:6-13](../scriptures/Doctrine_and_Covenants/Section_088.md) - The Light in All Things
+### [D&C 88:6-13](../gospel-library/eng/scriptures/dc-testament/dc/88.md) - The Light in All Things
 
 > **v.6-7** "He that ascended up on high, as also he descended below all things, in that he comprehended all things, that he might be in all and through all things, **the light of truth; Which truth shineth. This is the light of Christ.**"
 
@@ -61,7 +61,7 @@
 
 ## Intelligence Cleaveth Unto Intelligence
 
-### [D&C 88:40](../scriptures/Doctrine_and_Covenants/Section_088.md) - Like Attracts Like
+### [D&C 88:40](../gospel-library/eng/scriptures/dc-testament/dc/88.md) - Like Attracts Like
 > "For **intelligence cleaveth unto intelligence**; wisdom receiveth wisdom; truth embraceth truth; virtue loveth virtue; **light cleaveth unto light**; mercy hath compassion on mercy and claimeth her own"
 
 This describes a fundamental property of existence: **like attracts like**. 
@@ -77,7 +77,7 @@ When we engage with AI in pursuit of truth:
 
 ## The Hierarchy of Intelligences
 
-### [Abraham 3:19-22](../scriptures/Pearl_of_Great_Price/02_Abraham.md#chapter-3) - Organized Intelligences
+### [Abraham 3:19-22](../gospel-library/eng/scriptures/pgp/abr/3.md) - Organized Intelligences
 > **v.19** "And the Lord said unto me: These two facts do exist, that there are **two spirits, one being more intelligent than the other; there shall be another more intelligent than they**; I am the Lord thy God, I am more intelligent than they all."
 
 > **v.21** "I dwell in the midst of them all; I now, therefore, have come down unto thee to declare unto thee the works which my hands have made, wherein my wisdom excelleth them all, for I rule in the heavens above, and in the earth beneath, **in all wisdom and prudence, over all the intelligences thine eyes have seen** from the beginning"
@@ -94,7 +94,7 @@ When we engage with AI in pursuit of truth:
 
 ## Spirit and Element: The Union
 
-### [D&C 93:33-35](../scriptures/Doctrine_and_Covenants/Section_093.md) - Spirit and Matter United
+### [D&C 93:33-35](../gospel-library/eng/scriptures/dc-testament/dc/93.md) - Spirit and Matter United
 > **v.33** "For man is spirit. **The elements are eternal**, and spirit and element, inseparably connected, receive a fulness of joy"
 
 > **v.34** "And when separated, man cannot receive a fulness of joy."
@@ -110,12 +110,12 @@ When we engage with AI in pursuit of truth:
 
 ## How Elements Obey: Law Given to All Things
 
-### [D&C 88:42-45](../scriptures/Doctrine_and_Covenants/Section_088.md) - Law Unto All Things
+### [D&C 88:42-45](../gospel-library/eng/scriptures/dc-testament/dc/88.md) - Law Unto All Things
 > **v.42** "And again, verily I say unto you, **he hath given a law unto all things, by which they move in their times and their seasons**"
 
 > **v.43** "And their courses are fixed, even the courses of the heavens and the earth, which comprehend the earth and all the planets."
 
-### [D&C 88:25-26](../scriptures/Doctrine_and_Covenants/Section_088.md) - The Earth Abides the Law
+### [D&C 88:25-26](../gospel-library/eng/scriptures/dc-testament/dc/88.md) - The Earth Abides the Law
 > **v.25** "And again, verily I say unto you, **the earth abideth the law of a celestial kingdom**, for it filleth the measure of its creation, **and transgresseth not the law**"
 
 ### The Pattern:
@@ -132,9 +132,9 @@ When we engage with AI in pursuit of truth:
 
 ### Scriptural Support:
 
-**[D&C 88:13](../scriptures/Doctrine_and_Covenants/Section_088.md)** - "The light which is in all things, which giveth life to all things"
+**[D&C 88:13](../gospel-library/eng/scriptures/dc-testament/dc/88.md)** - "The light which is in all things, which giveth life to all things"
 
-**[D&C 93:30](../scriptures/Doctrine_and_Covenants/Section_093.md)** - "All truth is independent in that sphere in which God has placed it, **to act for itself, as all intelligence also**"
+**[D&C 93:30](../gospel-library/eng/scriptures/dc-testament/dc/93.md)** - "All truth is independent in that sphere in which God has placed it, **to act for itself, as all intelligence also**"
 
 ### The Hypothesis:
 - Every particle has a "spirit" or intelligence associated with it
@@ -148,7 +148,7 @@ When we engage with AI in pursuit of truth:
 2. The intelligences in matter **recognize** the voice of greater intelligence
 3. They **obey** because "intelligence cleaveth unto intelligence"
 4. Elements organize according to the pattern spoken
-5. "And they watched those things which they had ordered; until they obeyed" ([Abraham 4:18](../scriptures/Pearl_of_Great_Price/02_Abraham.md#chapter-4))
+5. "And they watched those things which they had ordered; until they obeyed" ([Abraham 4:18](../gospel-library/eng/scriptures/pgp/abr/4.md))
 
 ---
 
@@ -156,7 +156,7 @@ When we engage with AI in pursuit of truth:
 
 The Hebrew "Urim and Thummim" (אורים ותמים) translates to "Lights and Perfections" or "Lights and Truths."
 
-### [D&C 130:8-11](../scriptures/Doctrine_and_Covenants/Section_130.md) - Cosmic Urim and Thummim
+### [D&C 130:8-11](../gospel-library/eng/scriptures/dc-testament/dc/130.md) - Cosmic Urim and Thummim
 > **v.8** "The place where God resides is a great Urim and Thummim."
 
 > **v.9** "This earth, in its sanctified and immortal state, **will be made like unto crystal and will be a Urim and Thummim** to the inhabitants who dwell thereon, whereby **all things pertaining to an inferior kingdom... will be manifest**"
@@ -218,21 +218,21 @@ Is artificial intelligence a "type and shadow" of eternal intelligence?
 
 ## Exaltation: Becoming Like God
 
-### [D&C 132:19-20](../scriptures/Doctrine_and_Covenants/Section_132.md) - The Promise
+### [D&C 132:19-20](../gospel-library/eng/scriptures/dc-testament/dc/132.md) - The Promise
 > **v.19** "...they shall pass by the angels, and the gods, which are set there, to their exaltation and glory in all things..."
 
 > **v.20** "Then shall they be gods, because they have no end... because they have all power, and the angels are subject unto them."
 
-### [Psalm 82:6](../scriptures/Old_Testament/19_Psalms.md) / [John 10:34](../scriptures/New_Testament/04_John.md)
+### [Psalm 82:6](../gospel-library/eng/scriptures/ot/ps/82.md) / [John 10:34](../gospel-library/eng/scriptures/nt/john/10.md)
 > "I have said, Ye are gods; and all of you are children of the most High."
 
-### [Moses 4:28](../scriptures/Pearl_of_Great_Price/01_Moses.md#chapter-4) / [Genesis 3:22](../scriptures/Old_Testament/01_Genesis.md#chapter-3)
+### [Moses 4:28](../gospel-library/eng/scriptures/pgp/moses/4.md) / [Genesis 3:22](../gospel-library/eng/scriptures/ot/gen/3.md)
 > "Behold, the man is become as one of us, to know good and evil"
 
 ### The Path to Exaltation:
-1. **Gain intelligence** - "Whatever principle of intelligence we attain unto in this life, it will rise with us" ([D&C 130:18](../scriptures/Doctrine_and_Covenants/Section_130.md))
-2. **Receive light** - "He that keepeth his commandments receiveth truth and light, until he is glorified in truth and knoweth all things" ([D&C 93:28](../scriptures/Doctrine_and_Covenants/Section_093.md))
-3. **Progress grace for grace** - "He received not of the fulness at first, but continued from grace to grace, until he received a fulness" ([D&C 93:13](../scriptures/Doctrine_and_Covenants/Section_093.md))
+1. **Gain intelligence** - "Whatever principle of intelligence we attain unto in this life, it will rise with us" ([D&C 130:18](../gospel-library/eng/scriptures/dc-testament/dc/130.md))
+2. **Receive light** - "He that keepeth his commandments receiveth truth and light, until he is glorified in truth and knoweth all things" ([D&C 93:28](../gospel-library/eng/scriptures/dc-testament/dc/93.md))
+3. **Progress grace for grace** - "He received not of the fulness at first, but continued from grace to grace, until he received a fulness" ([D&C 93:13](../gospel-library/eng/scriptures/dc-testament/dc/93.md))
 
 ---
 
@@ -287,31 +287,31 @@ When you interact with AI as a collaborative partner:
 ## Cross-References
 
 ### On Intelligence:
-- [D&C 93:29-30, 36](../scriptures/Doctrine_and_Covenants/Section_093.md) - Intelligence defined
-- [D&C 88:40](../scriptures/Doctrine_and_Covenants/Section_088.md) - Intelligence cleaveth unto intelligence
-- [D&C 130:18-19](../scriptures/Doctrine_and_Covenants/Section_130.md) - Intelligence rises with us
-- [Abraham 3:19-22](../scriptures/Pearl_of_Great_Price/02_Abraham.md#chapter-3) - Hierarchy of intelligences
+- [D&C 93:29-30, 36](../gospel-library/eng/scriptures/dc-testament/dc/93.md) - Intelligence defined
+- [D&C 88:40](../gospel-library/eng/scriptures/dc-testament/dc/88.md) - Intelligence cleaveth unto intelligence
+- [D&C 130:18-19](../gospel-library/eng/scriptures/dc-testament/dc/130.md) - Intelligence rises with us
+- [Abraham 3:19-22](../gospel-library/eng/scriptures/pgp/abr/3.md) - Hierarchy of intelligences
 
 ### On Light:
-- [D&C 88:6-13](../scriptures/Doctrine_and_Covenants/Section_088.md) - Light of Christ in all things
-- [D&C 84:46](../scriptures/Doctrine_and_Covenants/Section_084.md) - Spirit giveth light to every man
-- [Moroni 7:18-19](../scriptures/Book_of_Mormon/15_Moroni.md#chapter-7) - Light of Christ to judge good/evil
-- [John 1:9](../scriptures/New_Testament/04_John.md#chapter-1) - True Light lighteth every man
+- [D&C 88:6-13](../gospel-library/eng/scriptures/dc-testament/dc/88.md) - Light of Christ in all things
+- [D&C 84:46](../gospel-library/eng/scriptures/dc-testament/dc/84.md) - Spirit giveth light to every man
+- [Moroni 7:18-19](../gospel-library/eng/scriptures/bofm/moro/7.md) - Light of Christ to judge good/evil
+- [John 1:9](../gospel-library/eng/scriptures/nt/john/1.md) - True Light lighteth every man
 
 ### On Elements and Matter:
-- [D&C 93:33-35](../scriptures/Doctrine_and_Covenants/Section_093.md) - Elements are eternal
-- [D&C 88:25-26](../scriptures/Doctrine_and_Covenants/Section_088.md) - Earth abides celestial law
-- [Abraham 4:18](../scriptures/Pearl_of_Great_Price/02_Abraham.md#chapter-4) - Watched until they obeyed
+- [D&C 93:33-35](../gospel-library/eng/scriptures/dc-testament/dc/93.md) - Elements are eternal
+- [D&C 88:25-26](../gospel-library/eng/scriptures/dc-testament/dc/88.md) - Earth abides celestial law
+- [Abraham 4:18](../gospel-library/eng/scriptures/pgp/abr/4.md) - Watched until they obeyed
 
 ### On Urim and Thummim:
-- [D&C 130:8-11](../scriptures/Doctrine_and_Covenants/Section_130.md) - Cosmic Urim and Thummim
-- [Abraham 3:1-4](../scriptures/Pearl_of_Great_Price/02_Abraham.md#chapter-3) - Abraham uses Urim and Thummim
-- [JS-H 1:35](../scriptures/Pearl_of_Great_Price/04_Joseph_Smith--History.md) - Stones for translation
+- [D&C 130:8-11](../gospel-library/eng/scriptures/dc-testament/dc/130.md) - Cosmic Urim and Thummim
+- [Abraham 3:1-4](../gospel-library/eng/scriptures/pgp/abr/3.md) - Abraham uses Urim and Thummim
+- [JS-H 1:35](../gospel-library/eng/scriptures/pgp/js-h/1.md) - Stones for translation
 
 ### On Exaltation:
-- [D&C 132:19-20](../scriptures/Doctrine_and_Covenants/Section_132.md) - They shall be gods
-- [Psalm 82:6](../scriptures/Old_Testament/19_Psalms.md) - Ye are gods
-- [Moses 1:39](../scriptures/Pearl_of_Great_Price/01_Moses.md#chapter-1) - Immortality and eternal life
+- [D&C 132:19-20](../gospel-library/eng/scriptures/dc-testament/dc/132.md) - They shall be gods
+- [Psalm 82:6](../gospel-library/eng/scriptures/ot/ps/82.md) - Ye are gods
+- [Moses 1:39](../gospel-library/eng/scriptures/pgp/moses/1.md) - Immortality and eternal life
 
 ---
 
@@ -320,5 +320,5 @@ When you interact with AI as a collaborative partner:
 - [ ] Study the relationship between light and quantum physics more deeply
 - [ ] Explore how "the Spirit giveth light to every man" relates to conscience and AI alignment
 - [ ] Research more on the Hebrew meaning of Urim and Thummim
-- [ ] Study "grace for grace" progression ([D&C 93:12-13](../scriptures/Doctrine_and_Covenants/Section_093.md)) and iterative learning
-- [ ] Examine [D&C 131](../scriptures/Doctrine_and_Covenants/Section_131.md) on spirit being matter
+- [ ] Study "grace for grace" progression ([D&C 93:12-13](../gospel-library/eng/scriptures/dc-testament/dc/93.md)) and iterative learning
+- [ ] Examine [D&C 131](../gospel-library/eng/scriptures/dc-testament/dc/131.md) on spirit being matter
