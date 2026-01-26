@@ -96,7 +96,8 @@ func isContentURI(uri string) bool {
 		// Topical Guide, Bible Dictionary, Guide to the Scriptures entries
 		if strings.HasPrefix(uri, "/scriptures/tg/") ||
 			strings.HasPrefix(uri, "/scriptures/bd/") ||
-			strings.HasPrefix(uri, "/scriptures/gs/") {
+			strings.HasPrefix(uri, "/scriptures/gs/") ||
+			strings.HasPrefix(uri, "/scriptures/triple-index/") {
 			return true
 		}
 
