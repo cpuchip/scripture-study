@@ -12,6 +12,7 @@ import (
 	"path/filepath"
 	"regexp"
 	"strings"
+	"time"
 
 	tea "github.com/charmbracelet/bubbletea"
 
@@ -181,11 +182,7 @@ func reconvertCache(lang, cacheDir, outputDir string) error {
 	contentExt := ".content.json"
 	linkRe := regexp.MustCompile(`\[[^\]]*\]\(([^)]+)\)`)
 
-	total := 0
-	success := 0
-	failed := 0
-	brokenLinks := make(map[string]int)
-
+	var contentPaths []string
 	err := filepath.Walk(langDir, func(path string, info os.FileInfo, err error) error {
 		if err != nil {
 			if os.IsNotExist(err) {
@@ -196,47 +193,72 @@ func reconvertCache(lang, cacheDir, outputDir string) error {
 		if info.IsDir() || !strings.HasSuffix(path, contentExt) {
 			return nil
 		}
+		contentPaths = append(contentPaths, path)
+		return nil
+	})
 
+	if err != nil {
+		return fmt.Errorf("reconvert cache: %w", err)
+	}
+
+	if len(contentPaths) == 0 {
+		fmt.Println("No cached content found. Download content first.")
+		return nil
+	}
+
+	total := len(contentPaths)
+	success := 0
+	failed := 0
+	brokenLinks := make(map[string]int)
+	start := time.Now()
+	lastLineLen := 0
+
+	for i, path := range contentPaths {
 		data, err := os.ReadFile(path)
 		if err != nil {
 			failed++
-			return nil
+			continue
 		}
 
 		var entry cache.CacheEntry
 		if err := json.Unmarshal(data, &entry); err != nil {
 			failed++
-			return nil
+			continue
 		}
 		if entry.EndPoint != "content" {
-			return nil
+			continue
 		}
 
-		total++
 		var content api.ContentResponse
 		if err := json.Unmarshal(entry.RawJSON, &content); err != nil {
 			failed++
-			return nil
+			continue
 		}
+
+		outputPath := buildOutputPath(outputDir, lang, content.URI)
 
 		converted, err := converter.ConvertContent(&content)
 		if err != nil {
 			failed++
-			return nil
+			fmt.Printf("\r%s\r\n", strings.Repeat(" ", lastLineLen))
+			fmt.Printf("%d/%d ✗ Convert failed: %s (%v)\n", i+1, total, content.URI, err)
+			continue
 		}
 
-		outputPath := buildOutputPath(outputDir, lang, content.URI)
 		if err := os.MkdirAll(filepath.Dir(outputPath), 0755); err != nil {
 			failed++
-			return nil
+			fmt.Printf("\r%s\r\n", strings.Repeat(" ", lastLineLen))
+			fmt.Printf("%d/%d ✗ mkdir failed: %s (%v)\n", i+1, total, outputPath, err)
+			continue
 		}
 		if err := os.WriteFile(outputPath, []byte(converted.Markdown), 0644); err != nil {
 			failed++
-			return nil
+			fmt.Printf("\r%s\r\n", strings.Repeat(" ", lastLineLen))
+			fmt.Printf("%d/%d ✗ write failed: %s (%v)\n", i+1, total, outputPath, err)
+			continue
 		}
 
 		success++
-
 		for _, link := range linkRe.FindAllStringSubmatch(converted.Markdown, -1) {
 			if len(link) != 2 {
 				continue
@@ -246,11 +268,24 @@ func reconvertCache(lang, cacheDir, outputDir string) error {
 			}
 		}
 
-		return nil
-	})
+		elapsed := time.Since(start)
+		rate := float64(i+1) / elapsed.Seconds()
+		remaining := float64(total - (i + 1))
+		eta := time.Duration(0)
+		if rate > 0 {
+			eta = time.Duration(remaining/rate) * time.Second
+		}
+		line := fmt.Sprintf("%d/%d Reconvert: %s | Elapsed: %s | ETA: %s", i+1, total, content.URI, elapsed.Truncate(time.Second), eta.Truncate(time.Second))
+		padding := ""
+		if lastLineLen > len(line) {
+			padding = strings.Repeat(" ", lastLineLen-len(line))
+		}
+		fmt.Printf("\r%s%s", line, padding)
+		lastLineLen = len(line)
+	}
 
-	if err != nil {
-		return fmt.Errorf("reconvert cache: %w", err)
+	if lastLineLen > 0 {
+		fmt.Print("\r" + strings.Repeat(" ", lastLineLen) + "\r")
 	}
 
 	fmt.Printf("\n✓ Reconverted %d items (%d failed)\n", success, failed)
@@ -266,10 +301,6 @@ func reconvertCache(lang, cacheDir, outputDir string) error {
 		}
 	} else {
 		fmt.Println("✓ No broken local links detected")
-	}
-
-	if total == 0 {
-		fmt.Println("No cached content found. Download content first.")
 	}
 
 	return nil
