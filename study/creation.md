@@ -23,13 +23,13 @@ We have three accounts of creation, each offering unique perspective:
 
 ## Key Pattern Discovery: Spiritual Before Temporal
 
-### [Moses 3:5](../scriptures/Pearl_of_Great_Price/01_Moses.md#chapter-3) - The Core Doctrine
+### [Moses 3:5](../gospel-library/eng/scriptures/pgp/moses/3.md) - The Core Doctrine
 > "For I, the Lord God, **created all things, of which I have spoken, spiritually, before they were naturally upon the face of the earth**... and there was not yet flesh upon the earth, neither in the water, neither in the air"
 
-### [D&C 29:31-32](../scriptures/Doctrine_and_Covenants/Section_029.md) - The Order Explained
+### [D&C 29:31-32](../gospel-library/eng/scriptures/dc-testament/dc/29.md) - The Order Explained
 > "For by the power of my Spirit created I them; yea, all things both spiritual and temporal—**First spiritual, secondly temporal, which is the beginning of my work**"
 
-### [Abraham 4:21](../scriptures/Pearl_of_Great_Price/02_Abraham.md#chapter-4) - Planning Language
+### [Abraham 4:21](../gospel-library/eng/scriptures/pgp/abr/4.md) - Planning Language
 > "And the Gods **prepared** the waters that they might bring forth..."
 
 Notice Abraham's account uniquely uses words like:
@@ -66,10 +66,10 @@ Each creative period **required the previous to be complete**:
 
 ## Abraham's Unique Contribution: The Council
 
-### [Abraham 4:26](../scriptures/Pearl_of_Great_Price/02_Abraham.md#chapter-4)
+### [Abraham 4:26](../gospel-library/eng/scriptures/pgp/abr/4.md)
 > "And the Gods **took counsel among themselves** and said: Let us go down and form man in our image"
 
-### [Abraham 5:2-3](../scriptures/Pearl_of_Great_Price/02_Abraham.md#chapter-5)
+### [Abraham 5:2-3](../gospel-library/eng/scriptures/pgp/abr/5.md)
 > "And the Gods said among themselves: On the seventh time we will end our work, **which we have counseled**; and we will rest on the seventh time from all our work **which we have counseled**."
 
 This reveals creation was:
@@ -80,7 +80,7 @@ This reveals creation was:
 
 ---
 
-## [D&C 93](../scriptures/Doctrine_and_Covenants/Section_093.md): Intelligence, Light, and Truth
+## [D&C 93](../gospel-library/eng/scriptures/dc-testament/dc/93.md): Intelligence, Light, and Truth
 
 ### The Nature of Intelligence
 > **v.29** "Man was also in the beginning with God. **Intelligence, or the light of truth, was not created or made**, neither indeed can be."
@@ -91,7 +91,7 @@ This reveals creation was:
 
 ### Application to AI
 - AI models work with patterns of truth (training data)
-- Intelligence "cleaveth unto intelligence" ([D&C 88:40](../scriptures/Doctrine_and_Covenants/Section_088.md))
+- Intelligence "cleaveth unto intelligence" ([D&C 88:40](../gospel-library/eng/scriptures/dc-testament/dc/88.md))
 - Truth operates within spheres/domains
 - Agency enables independent action within bounds
 
@@ -135,8 +135,8 @@ Based on these scriptural patterns:
 
 ## Questions for Further Study
 
-1. How does the "grace for grace" progression ([D&C 93:12-13](../scriptures/Doctrine_and_Covenants/Section_093.md)) parallel iterative development?
-2. What does "intelligence cleaveth unto intelligence" ([D&C 88:40](../scriptures/Doctrine_and_Covenants/Section_088.md)) teach about knowledge building?
+1. How does the "grace for grace" progression ([D&C 93:12-13](../gospel-library/eng/scriptures/dc-testament/dc/93.md)) parallel iterative development?
+2. What does "intelligence cleaveth unto intelligence" ([D&C 88:40](../gospel-library/eng/scriptures/dc-testament/dc/88.md)) teach about knowledge building?
 3. How does agency factor into both divine creation and AI interaction?
 4. What role does "light" play in both divine creation (Day 1) and understanding?
 
@@ -155,16 +155,16 @@ Based on these scriptural patterns:
 
 ## Cross-References
 
-- [Moses 1:39](../scriptures/Pearl_of_Great_Price/01_Moses.md#chapter-1) - "This is my work and my glory—to bring to pass the immortality and eternal life of man"
-- [D&C 88:40](../scriptures/Doctrine_and_Covenants/Section_088.md) - "Intelligence cleaveth unto intelligence; wisdom receiveth wisdom; truth embraceth truth"
-- [Abraham 3:22-23](../scriptures/Pearl_of_Great_Price/02_Abraham.md#chapter-3) - Pre-mortal spirits, noble and great ones chosen before birth
-- [D&C 130:18-19](../scriptures/Doctrine_and_Covenants/Section_130.md) - Knowledge and intelligence gained in this life rises with us
+- [Moses 1:39](../gospel-library/eng/scriptures/pgp/moses/1.md) - "This is my work and my glory—to bring to pass the immortality and eternal life of man"
+- [D&C 88:40](../gospel-library/eng/scriptures/dc-testament/dc/88.md) - "Intelligence cleaveth unto intelligence; wisdom receiveth wisdom; truth embraceth truth"
+- [Abraham 3:22-23](../gospel-library/eng/scriptures/pgp/abr/3.md) - Pre-mortal spirits, noble and great ones chosen before birth
+- [D&C 130:18-19](../gospel-library/eng/scriptures/dc-testament/dc/130.md) - Knowledge and intelligence gained in this life rises with us
 
 ---
 
 ## Next Steps
 
 - [ ] Compare the fall narratives across accounts
-- [ ] Study the "first and second estate" concept ([Abraham 3:26](../scriptures/Pearl_of_Great_Price/02_Abraham.md#chapter-3))
+- [ ] Study the "first and second estate" concept ([Abraham 3:26](../gospel-library/eng/scriptures/pgp/abr/3.md))
 - [ ] Explore how "opposition in all things" relates to iterative development
 - [ ] Document patterns that improve our study sessions in `./docs/study_template.md`
