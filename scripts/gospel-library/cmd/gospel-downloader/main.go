@@ -9,6 +9,9 @@ import (
 	"flag"
 	"fmt"
 	"os"
+	"path/filepath"
+	"regexp"
+	"strings"
 
 	tea "github.com/charmbracelet/bubbletea"
 
@@ -24,6 +27,7 @@ var (
 	outputFlag      = flag.String("output", "gospel-library", "Output directory for converted markdown")
 	syncFlag        = flag.Bool("sync", false, "Sync catalog only (non-interactive)")
 	convertFlag     = flag.Bool("convert", false, "Convert cached content to markdown")
+	reconvertFlag   = flag.Bool("reconvert", false, "Reconvert all cached content to markdown")
 	testFlag        = flag.Bool("test", false, "Test API with a sample request")
 	testCacheFlag   = flag.Bool("test-cache", false, "Test API with caching")
 	testConvertFlag = flag.Bool("test-convert", false, "Test HTML to Markdown conversion")
@@ -52,6 +56,8 @@ func main() {
 		err = testConvert(*langFlag, *cacheFlag)
 	case *testCrawlFlag:
 		err = testCrawl(*langFlag, *cacheFlag)
+	case *reconvertFlag:
+		err = reconvertCache(*langFlag, *cacheFlag, *outputFlag)
 	case *syncFlag:
 		// TODO: Implement sync
 		fmt.Println("Sync not yet implemented")
@@ -159,6 +165,149 @@ func runTUI(lang, cacheDir, outputDir string) error {
 
 	_, err := p.Run()
 	return err
+}
+
+func reconvertCache(lang, cacheDir, outputDir string) error {
+	fmt.Println("Re-converting cached content...")
+	fmt.Printf("Cache: %s (%s)\n", cacheDir, lang)
+	fmt.Printf("Output: %s\n\n", outputDir)
+
+	opts := convert.DefaultOptions()
+	opts.OutputDir = outputDir
+	opts.Lang = lang
+	converter := convert.New(opts)
+
+	langDir := filepath.Join(cacheDir, lang)
+	contentExt := ".content.json"
+	linkRe := regexp.MustCompile(`\[[^\]]*\]\(([^)]+)\)`)
+
+	total := 0
+	success := 0
+	failed := 0
+	brokenLinks := make(map[string]int)
+
+	err := filepath.Walk(langDir, func(path string, info os.FileInfo, err error) error {
+		if err != nil {
+			if os.IsNotExist(err) {
+				return nil
+			}
+			return err
+		}
+		if info.IsDir() || !strings.HasSuffix(path, contentExt) {
+			return nil
+		}
+
+		data, err := os.ReadFile(path)
+		if err != nil {
+			failed++
+			return nil
+		}
+
+		var entry cache.CacheEntry
+		if err := json.Unmarshal(data, &entry); err != nil {
+			failed++
+			return nil
+		}
+		if entry.EndPoint != "content" {
+			return nil
+		}
+
+		total++
+		var content api.ContentResponse
+		if err := json.Unmarshal(entry.RawJSON, &content); err != nil {
+			failed++
+			return nil
+		}
+
+		converted, err := converter.ConvertContent(&content)
+		if err != nil {
+			failed++
+			return nil
+		}
+
+		outputPath := buildOutputPath(outputDir, lang, content.URI)
+		if err := os.MkdirAll(filepath.Dir(outputPath), 0755); err != nil {
+			failed++
+			return nil
+		}
+		if err := os.WriteFile(outputPath, []byte(converted.Markdown), 0644); err != nil {
+			failed++
+			return nil
+		}
+
+		success++
+
+		for _, link := range linkRe.FindAllStringSubmatch(converted.Markdown, -1) {
+			if len(link) != 2 {
+				continue
+			}
+			for _, missing := range findMissingLinks(link[1], outputPath, outputDir, lang) {
+				brokenLinks[missing]++
+			}
+		}
+
+		return nil
+	})
+
+	if err != nil {
+		return fmt.Errorf("reconvert cache: %w", err)
+	}
+
+	fmt.Printf("\n✓ Reconverted %d items (%d failed)\n", success, failed)
+	if len(brokenLinks) > 0 {
+		fmt.Printf("⚠ Found %d broken link targets (showing up to 20)\n", len(brokenLinks))
+		shown := 0
+		for target, count := range brokenLinks {
+			fmt.Printf("  %s (%d)\n", target, count)
+			shown++
+			if shown >= 20 {
+				break
+			}
+		}
+	} else {
+		fmt.Println("✓ No broken local links detected")
+	}
+
+	if total == 0 {
+		fmt.Println("No cached content found. Download content first.")
+	}
+
+	return nil
+}
+
+func buildOutputPath(outputDir, lang, uri string) string {
+	cleanURI := strings.TrimPrefix(uri, "/")
+	filename := filepath.Base(cleanURI) + ".md"
+	dir := filepath.Dir(cleanURI)
+	return filepath.Join(outputDir, lang, dir, filename)
+}
+
+func findMissingLinks(link, outputPath, outputDir, lang string) []string {
+	if link == "" || strings.HasPrefix(link, "http") || strings.HasPrefix(link, "mailto:") || strings.HasPrefix(link, "#") {
+		return nil
+	}
+
+	link = strings.Split(link, "#")[0]
+	if link == "" {
+		return nil
+	}
+
+	if ext := filepath.Ext(link); ext != "" && ext != ".md" {
+		return nil
+	}
+
+	var target string
+	if strings.HasPrefix(link, "/") {
+		target = filepath.Join(outputDir, lang, filepath.FromSlash(strings.TrimPrefix(link, "/")))
+	} else {
+		target = filepath.Join(filepath.Dir(outputPath), filepath.FromSlash(link))
+	}
+
+	if _, err := os.Stat(target); err != nil {
+		return []string{filepath.Clean(target)}
+	}
+
+	return nil
 }
 
 func printUsage() {

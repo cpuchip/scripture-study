@@ -4,6 +4,7 @@ package tui
 import (
 	"context"
 	"fmt"
+	"path/filepath"
 	"strings"
 
 	"github.com/charmbracelet/bubbles/key"
@@ -67,8 +68,14 @@ type Model struct {
 	selected map[string]bool
 
 	// Download
-	downloader  *Downloader
-	downloading int // Number of items being downloaded
+	downloader          *Downloader
+	downloading         int // Total number of items to download
+	downloadingDone     int // Number of items completed
+	downloadQueue       []string
+	downloadResults     []DownloadResult
+	currentDownloadURI  string
+	currentDownloadPath string
+	lastDownloadStatus  string
 }
 
 // New creates a new TUI model.
@@ -194,7 +201,7 @@ func (m Model) loadRoot() tea.Cmd {
 			{title: "General Conference", desc: "Conference talks from prophets and apostles", uri: "/general-conference", itemType: "collection"},
 			{title: "Scriptures", desc: "Standard works of the Church", uri: "/scriptures", itemType: "collection"},
 			{title: "Come, Follow Me", desc: "Home-centered study curriculum", uri: "/come-follow-me", itemType: "collection"},
-			{title: "Manuals", desc: "Church manuals and study guides", uri: "/manual", itemType: "collection"},
+			{title: "Manuals", desc: "Handbooks and callings resources", uri: "/handbooks-and-callings", itemType: "collection"},
 			{title: "Magazines", desc: "Ensign, Liahona, and more", uri: "/magazines", itemType: "collection"},
 		}
 		return loadedMsg{items: items, title: "Gospel Library"}
@@ -214,7 +221,9 @@ func (m Model) loadCollection(uri string) tea.Cmd {
 				for _, entry := range section.Entries {
 					itemType := "collection"
 					if entry.Type == "item" {
-						itemType = "content"
+						if isContentURI(entry.URI) {
+							itemType = "content"
+						}
 					}
 					desc := entry.Category
 					if section.Title != "" && section.Title != collection.Title {
@@ -245,11 +254,15 @@ func (m Model) loadCollection(uri string) tea.Cmd {
 			title = dynamic.TOC.Title
 			for _, entry := range dynamic.TOC.Entries {
 				if entry.Content != nil {
+					itemType := "content"
+					if !isContentURI(entry.Content.URI) {
+						itemType = "collection"
+					}
 					items = append(items, NavItem{
 						title:    entry.Content.Title,
 						desc:     "Talk",
 						uri:      entry.Content.URI,
-						itemType: "content",
+						itemType: itemType,
 						cached:   m.fileCache.Has(entry.Content.URI, "content"),
 					})
 				}
@@ -269,7 +282,9 @@ func (m Model) loadCollection(uri string) tea.Cmd {
 				for _, entry := range section.Entries {
 					itemType := "collection"
 					if entry.Type == "item" {
-						itemType = "content"
+						if isContentURI(entry.URI) {
+							itemType = "content"
+						}
 					}
 					items = append(items, NavItem{
 						title:    entry.Title,
@@ -396,12 +411,9 @@ func (m Model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 				// Otherwise just download content items
 				if len(contentURIs) > 0 {
 					m.state = StateDownloading
-					m.downloading = len(contentURIs)
 					m.statusMsg = fmt.Sprintf("Downloading %d items...", len(contentURIs))
-					return m, tea.Batch(
-						m.spinner.Tick,
-						m.downloader.DownloadMultiple(context.Background(), contentURIs),
-					)
+					m, cmd := m.beginDownloadQueue(contentURIs)
+					return m, cmd
 				}
 			} else if m.state == StateBrowsing && len(m.selected) == 0 {
 				m.statusMsg = "No items selected. Use space to select items."
@@ -455,12 +467,9 @@ func (m Model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 				}
 				if len(uris) > 0 {
 					m.state = StateDownloading
-					m.downloading = len(uris)
 					m.statusMsg = fmt.Sprintf("Downloading all %d items...", len(uris))
-					return m, tea.Batch(
-						m.spinner.Tick,
-						m.downloader.DownloadMultiple(context.Background(), uris),
-					)
+					m, cmd := m.beginDownloadQueue(uris)
+					return m, cmd
 				} else {
 					m.statusMsg = "No content items to download. Navigate to a page with chapters/talks."
 				}
@@ -521,19 +530,33 @@ func (m Model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 			}
 		}
 		m.statusMsg = fmt.Sprintf("✓ Downloaded %d/%d items to %s/", successCount, len(msg.results), m.outputDir)
+		m.downloadQueue = nil
+		m.downloadResults = nil
+		m.downloading = 0
+		m.downloadingDone = 0
+		m.currentDownloadURI = ""
+		m.currentDownloadPath = ""
+		m.lastDownloadStatus = ""
 		// Clear selection
 		m.selected = make(map[string]bool)
 		return m, nil
 
 	case downloadResultMsg:
 		// Single download finished
-		m.state = StateBrowsing
+		m.downloadResults = append(m.downloadResults, msg.result)
+		m.downloadingDone++
 		if msg.result.Success {
-			m.statusMsg = fmt.Sprintf("✓ Downloaded: %s", msg.result.Title)
+			m.lastDownloadStatus = fmt.Sprintf("✓ %s", msg.result.Title)
 		} else {
-			m.statusMsg = fmt.Sprintf("✗ Failed: %v", msg.result.Error)
+			m.lastDownloadStatus = fmt.Sprintf("✗ %v", msg.result.Error)
 		}
-		return m, nil
+		if len(m.downloadQueue) > 0 {
+			m.state = StateDownloading
+			m, cmd := m.startNextDownload()
+			return m, cmd
+		}
+		// All downloads complete
+		return m, func() tea.Msg { return downloadCompleteMsg{results: m.downloadResults} }
 
 	case crawlCompleteMsg:
 		// Crawl finished, start downloads
@@ -542,9 +565,10 @@ func (m Model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 			m.statusMsg = fmt.Sprintf("No content found under %s", msg.title)
 			return m, nil
 		}
-		m.downloading = len(msg.uris)
+		m.state = StateDownloading
 		m.statusMsg = fmt.Sprintf("Downloading %d items from %s...", len(msg.uris), msg.title)
-		return m, m.downloader.DownloadMultiple(context.Background(), msg.uris)
+		m, cmd := m.beginDownloadQueue(msg.uris)
+		return m, cmd
 	}
 
 	// Update list
@@ -562,6 +586,45 @@ func (m Model) getOriginalURI(displayedURI string) string {
 	// The NavItem stores the original URI, but titles may have prefixes
 	// This function extracts the original URI from the item
 	return displayedURI
+}
+
+// buildOutputPath returns the target markdown path for a given URI.
+func (m Model) buildOutputPath(uri string) string {
+	cleanURI := strings.TrimPrefix(uri, "/")
+	filename := filepath.Base(cleanURI) + ".md"
+	dir := filepath.Dir(cleanURI)
+	return filepath.Join(m.outputDir, m.lang, dir, filename)
+}
+
+// beginDownloadQueue initializes the download queue and starts the first download.
+func (m Model) beginDownloadQueue(uris []string) (Model, tea.Cmd) {
+	m.downloadQueue = append([]string{}, uris...)
+	m.downloadResults = nil
+	m.downloading = len(uris)
+	m.downloadingDone = 0
+	m.currentDownloadURI = ""
+	m.currentDownloadPath = ""
+	m.lastDownloadStatus = ""
+	m, cmd := m.startNextDownload()
+	return m, cmd
+}
+
+// startNextDownload kicks off the next download in the queue.
+func (m Model) startNextDownload() (Model, tea.Cmd) {
+	if len(m.downloadQueue) == 0 {
+		return m, func() tea.Msg { return downloadCompleteMsg{results: m.downloadResults} }
+	}
+
+	uri := m.downloadQueue[0]
+	m.downloadQueue = m.downloadQueue[1:]
+	m.currentDownloadURI = uri
+	m.currentDownloadPath = m.buildOutputPath(uri)
+	m.statusMsg = fmt.Sprintf("Downloading %d/%d items...", m.downloadingDone+1, m.downloading)
+
+	return m, tea.Batch(
+		m.spinner.Tick,
+		m.downloader.DownloadSingle(context.Background(), uri),
+	)
 }
 
 // formatNavItem adds visual indicators to a NavItem for display.
@@ -606,7 +669,7 @@ func (m Model) refreshCurrentView() tea.Cmd {
 				{title: "General Conference", desc: "Conference talks from prophets and apostles", uri: "/general-conference", itemType: "collection"},
 				{title: "Scriptures", desc: "Standard works of the Church", uri: "/scriptures", itemType: "collection"},
 				{title: "Come, Follow Me", desc: "Home-centered study curriculum", uri: "/come-follow-me", itemType: "collection"},
-				{title: "Manuals", desc: "Church manuals and study guides", uri: "/manual", itemType: "collection"},
+				{title: "Manuals", desc: "Handbooks and callings resources", uri: "/handbooks-and-callings", itemType: "collection"},
 				{title: "Magazines", desc: "Ensign, Liahona, and more", uri: "/magazines", itemType: "collection"},
 			}
 			return loadedMsg{items: items, title: "Gospel Library"}
@@ -624,7 +687,9 @@ func (m Model) refreshCurrentView() tea.Cmd {
 				for _, entry := range section.Entries {
 					itemType := "collection"
 					if entry.Type == "item" {
-						itemType = "content"
+						if isContentURI(entry.URI) {
+							itemType = "content"
+						}
 					}
 					desc := entry.Category
 					if section.Title != "" && section.Title != collection.Title {
@@ -655,11 +720,15 @@ func (m Model) refreshCurrentView() tea.Cmd {
 			title = dynamic.TOC.Title
 			for _, entry := range dynamic.TOC.Entries {
 				if entry.Content != nil {
+					itemType := "content"
+					if !isContentURI(entry.Content.URI) {
+						itemType = "collection"
+					}
 					items = append(items, NavItem{
 						title:    entry.Content.Title,
 						desc:     "Talk",
 						uri:      entry.Content.URI,
-						itemType: "content",
+						itemType: itemType,
 						cached:   m.fileCache.Has(entry.Content.URI, "content"),
 					})
 				}
@@ -678,7 +747,9 @@ func (m Model) refreshCurrentView() tea.Cmd {
 				for _, entry := range section.Entries {
 					itemType := "collection"
 					if entry.Type == "item" {
-						itemType = "content"
+						if isContentURI(entry.URI) {
+							itemType = "content"
+						}
 					}
 					items = append(items, NavItem{
 						title:    entry.Title,
@@ -753,7 +824,22 @@ func (m Model) View() string {
 		return loadingStyle.Render(fmt.Sprintf("%s Loading...", m.spinner.View()))
 
 	case StateDownloading:
-		return loadingStyle.Render(fmt.Sprintf("%s %s", m.spinner.View(), m.statusMsg))
+		if m.currentDownloadURI == "" {
+			return loadingStyle.Render(fmt.Sprintf("%s %s", m.spinner.View(), m.statusMsg))
+		}
+		current := m.downloadingDone + 1
+		if m.downloadingDone >= m.downloading {
+			current = m.downloadingDone
+		}
+		lines := []string{
+			fmt.Sprintf("%s Downloading %d/%d", m.spinner.View(), current, m.downloading),
+			fmt.Sprintf("Current: %s", m.currentDownloadURI),
+			fmt.Sprintf("Output: %s", m.currentDownloadPath),
+		}
+		if m.lastDownloadStatus != "" {
+			lines = append(lines, fmt.Sprintf("Last: %s", m.lastDownloadStatus))
+		}
+		return loadingStyle.Render(strings.Join(lines, "\n"))
 
 	case StateError:
 		return errorStyle.Render(fmt.Sprintf("Error: %v\n\nPress 'q' to quit, backspace to go back", m.err))
