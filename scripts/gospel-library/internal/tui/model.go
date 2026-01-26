@@ -76,6 +76,13 @@ type Model struct {
 	currentDownloadURI  string
 	currentDownloadPath string
 	lastDownloadStatus  string
+
+	// Crawl progress
+	crawling     bool
+	crawlVisited int
+	crawlFound   int
+	crawlCurrent string
+	crawlMsgCh   chan tea.Msg
 }
 
 // New creates a new TUI model.
@@ -176,8 +183,9 @@ type loadedMsg struct {
 	title string
 }
 type crawlProgressMsg struct {
+	current    string
+	visited    int
 	discovered int
-	message    string
 }
 type crawlCompleteMsg struct {
 	uris  []string
@@ -402,6 +410,11 @@ func (m Model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 				if len(collectionItems) > 0 {
 					m.state = StateDownloading
 					m.statusMsg = fmt.Sprintf("Crawling %d collections...", len(collectionItems))
+					m.crawling = true
+					m.crawlVisited = 0
+					m.crawlFound = len(contentURIs)
+					m.crawlCurrent = ""
+					m.crawlMsgCh = make(chan tea.Msg)
 					return m, tea.Batch(
 						m.spinner.Tick,
 						m.crawlAndDownloadMultiple(collectionItems, contentURIs),
@@ -560,6 +573,9 @@ func (m Model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 
 	case crawlCompleteMsg:
 		// Crawl finished, start downloads
+		m.crawling = false
+		m.crawlMsgCh = nil
+		m.crawlCurrent = ""
 		if len(msg.uris) == 0 {
 			m.state = StateBrowsing
 			m.statusMsg = fmt.Sprintf("No content found under %s", msg.title)
@@ -569,6 +585,13 @@ func (m Model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 		m.statusMsg = fmt.Sprintf("Downloading %d items from %s...", len(msg.uris), msg.title)
 		m, cmd := m.beginDownloadQueue(msg.uris)
 		return m, cmd
+
+	case crawlProgressMsg:
+		m.crawlCurrent = msg.current
+		m.crawlVisited = msg.visited
+		m.crawlFound = msg.discovered
+		m.statusMsg = fmt.Sprintf("Crawling... %d discovered", msg.discovered)
+		return m, m.listenCrawl()
 	}
 
 	// Update list
@@ -586,6 +609,21 @@ func (m Model) getOriginalURI(displayedURI string) string {
 	// The NavItem stores the original URI, but titles may have prefixes
 	// This function extracts the original URI from the item
 	return displayedURI
+}
+
+// listenCrawl listens for the next crawl progress or completion message.
+func (m Model) listenCrawl() tea.Cmd {
+	ch := m.crawlMsgCh
+	return func() tea.Msg {
+		if ch == nil {
+			return nil
+		}
+		msg, ok := <-ch
+		if !ok {
+			return nil
+		}
+		return msg
+	}
 }
 
 // buildOutputPath returns the target markdown path for a given URI.
@@ -787,33 +825,54 @@ func (m Model) crawlAndDownload(uri, title string) tea.Cmd {
 func (m Model) crawlAndDownloadMultiple(collectionItems []struct{ uri, title string }, contentURIs []string) tea.Cmd {
 	return func() tea.Msg {
 		ctx := context.Background()
+		ch := m.crawlMsgCh
+		if ch == nil {
+			return errMsg{err: fmt.Errorf("crawl channel not initialized")}
+		}
 
 		// Start with direct content URIs
 		allURIs := make([]string, len(contentURIs))
 		copy(allURIs, contentURIs)
 
-		// Crawl each collection and gather content URIs
-		for _, item := range collectionItems {
-			uris, err := m.downloader.CrawlForContent(ctx, item.uri)
-			if err != nil {
-				// Log error but continue with other collections
-				continue
-			}
-			allURIs = append(allURIs, uris...)
-		}
+		go func() {
+			defer close(ch)
+			totalFound := len(contentURIs)
+			totalVisited := 0
 
-		// Remove duplicates
-		seen := make(map[string]bool)
-		uniqueURIs := make([]string, 0, len(allURIs))
-		for _, uri := range allURIs {
-			if !seen[uri] {
-				seen[uri] = true
-				uniqueURIs = append(uniqueURIs, uri)
-			}
-		}
+			for _, item := range collectionItems {
+				// Send a progress update for the new root
+				ch <- crawlProgressMsg{current: item.uri, visited: totalVisited, discovered: totalFound}
 
-		title := fmt.Sprintf("%d selected items", len(collectionItems)+len(contentURIs))
-		return crawlCompleteMsg{uris: uniqueURIs, title: title}
+				uris, visited, err := m.downloader.CrawlForContentWithProgress(ctx, item.uri, func(current string, visitedCount int, discoveredCount int) {
+					ch <- crawlProgressMsg{
+						current:    current,
+						visited:    totalVisited + visitedCount,
+						discovered: totalFound + discoveredCount,
+					}
+				})
+				if err != nil {
+					continue
+				}
+				allURIs = append(allURIs, uris...)
+				totalFound += len(uris)
+				totalVisited += visited
+			}
+
+			// Remove duplicates
+			seen := make(map[string]bool)
+			uniqueURIs := make([]string, 0, len(allURIs))
+			for _, uri := range allURIs {
+				if !seen[uri] {
+					seen[uri] = true
+					uniqueURIs = append(uniqueURIs, uri)
+				}
+			}
+
+			title := fmt.Sprintf("%d selected items", len(collectionItems)+len(contentURIs))
+			ch <- crawlCompleteMsg{uris: uniqueURIs, title: title}
+		}()
+
+		return <-ch
 	}
 }
 
@@ -824,6 +883,17 @@ func (m Model) View() string {
 		return loadingStyle.Render(fmt.Sprintf("%s Loading...", m.spinner.View()))
 
 	case StateDownloading:
+		if m.crawling {
+			lines := []string{
+				fmt.Sprintf("%s Crawling", m.spinner.View()),
+				fmt.Sprintf("Discovered: %d", m.crawlFound),
+				fmt.Sprintf("Visited: %d", m.crawlVisited),
+			}
+			if m.crawlCurrent != "" {
+				lines = append(lines, fmt.Sprintf("Current: %s", m.crawlCurrent))
+			}
+			return loadingStyle.Render(strings.Join(lines, "\n"))
+		}
 		if m.currentDownloadURI == "" {
 			return loadingStyle.Render(fmt.Sprintf("%s %s", m.spinner.View(), m.statusMsg))
 		}

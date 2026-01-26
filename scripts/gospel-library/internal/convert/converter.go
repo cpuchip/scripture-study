@@ -202,6 +202,9 @@ func (c *Converter) preprocessHTML(html string) string {
 	html = regexp.MustCompile(`<div[^>]*footnotes[^>]*>[\s\S]*?</div>`).ReplaceAllString(html, "")
 	html = regexp.MustCompile(`<ul[^>]*footnotes[^>]*>[\s\S]*?</ul>`).ReplaceAllString(html, "")
 
+	// Remove HTML comments (e.g., <!--THE END-->)
+	html = regexp.MustCompile(`<!--([\s\S]*?)-->`).ReplaceAllString(html, "")
+
 	return html
 }
 
@@ -214,6 +217,9 @@ func (c *Converter) postprocessMarkdown(markdown, sourceURI string) string {
 
 	// Normalize multiple newlines to at most two
 	markdown = regexp.MustCompile(`\n{3,}`).ReplaceAllString(markdown, "\n\n")
+
+	// Remove HTML comments that may survive conversion (e.g., <!--THE END-->)
+	markdown = regexp.MustCompile(`<!--([\s\S]*?)-->`).ReplaceAllString(markdown, "")
 
 	// Remove leading/trailing whitespace
 	markdown = strings.TrimSpace(markdown)

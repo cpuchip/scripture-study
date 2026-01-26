@@ -203,8 +203,17 @@ func extractManualLinks(html string) []string {
 // CrawlForContent recursively discovers all actual content URIs under a given URI.
 // It skips TOC/index pages and only returns URIs that point to actual content.
 func (d *Downloader) CrawlForContent(ctx context.Context, uri string) ([]string, error) {
+	uris, _, err := d.CrawlForContentWithProgress(ctx, uri, nil)
+	return uris, err
+}
+
+// CrawlForContentWithProgress crawls and reports progress via callback.
+// The callback receives (currentURI, visitedCount, discoveredCount).
+func (d *Downloader) CrawlForContentWithProgress(ctx context.Context, uri string, onProgress func(string, int, int)) ([]string, int, error) {
 	var allURIs []string
 	visited := make(map[string]bool)
+	visitedCount := 0
+	discoveredCount := 0
 
 	var crawl func(u string) error
 	crawl = func(u string) error {
@@ -212,6 +221,10 @@ func (d *Downloader) CrawlForContent(ctx context.Context, uri string) ([]string,
 			return nil
 		}
 		visited[u] = true
+		visitedCount++
+		if onProgress != nil {
+			onProgress(u, visitedCount, discoveredCount)
+		}
 
 		// Try collection endpoint first
 		collection, _, err := d.client.GetCollection(ctx, u)
@@ -221,6 +234,10 @@ func (d *Downloader) CrawlForContent(ctx context.Context, uri string) ([]string,
 					if entry.Type == "item" {
 						if isContentURI(entry.URI) {
 							allURIs = append(allURIs, entry.URI)
+							discoveredCount++
+							if onProgress != nil {
+								onProgress(entry.URI, visitedCount, discoveredCount)
+							}
 						} else {
 							// Treat non-content items as collections
 							if err := crawl(entry.URI); err != nil {
@@ -246,6 +263,10 @@ func (d *Downloader) CrawlForContent(ctx context.Context, uri string) ([]string,
 			if cErr == nil && content != nil {
 				if isContentURI(u) {
 					allURIs = append(allURIs, u)
+					discoveredCount++
+					if onProgress != nil {
+						onProgress(u, visitedCount, discoveredCount)
+					}
 				}
 
 				// Some manuals are TOCs served as content HTML; follow their links
@@ -253,6 +274,10 @@ func (d *Downloader) CrawlForContent(ctx context.Context, uri string) ([]string,
 				for _, link := range links {
 					if isContentURI(link) {
 						allURIs = append(allURIs, link)
+						discoveredCount++
+						if onProgress != nil {
+							onProgress(link, visitedCount, discoveredCount)
+						}
 					} else if !visited[link] {
 						if err := crawl(link); err != nil {
 							continue
@@ -264,6 +289,10 @@ func (d *Downloader) CrawlForContent(ctx context.Context, uri string) ([]string,
 
 			if isContentURI(u) {
 				allURIs = append(allURIs, u)
+				discoveredCount++
+				if onProgress != nil {
+					onProgress(u, visitedCount, discoveredCount)
+				}
 			}
 			return nil
 		}
@@ -274,6 +303,10 @@ func (d *Downloader) CrawlForContent(ctx context.Context, uri string) ([]string,
 				if entry.Content != nil && entry.Content.URI != "" {
 					if isContentURI(entry.Content.URI) {
 						allURIs = append(allURIs, entry.Content.URI)
+						discoveredCount++
+						if onProgress != nil {
+							onProgress(entry.Content.URI, visitedCount, discoveredCount)
+						}
 					} else {
 						if err := crawl(entry.Content.URI); err != nil {
 							continue
@@ -285,6 +318,10 @@ func (d *Downloader) CrawlForContent(ctx context.Context, uri string) ([]string,
 					for _, subEntry := range entry.Section.Entries {
 						if subEntry.Content != nil && subEntry.Content.URI != "" && isContentURI(subEntry.Content.URI) {
 							allURIs = append(allURIs, subEntry.Content.URI)
+							discoveredCount++
+							if onProgress != nil {
+								onProgress(subEntry.Content.URI, visitedCount, discoveredCount)
+							}
 						}
 						// Handle nested sections (if any)
 						if subEntry.Section != nil && subEntry.Section.URI != "" && !visited[subEntry.Section.URI] {
@@ -301,6 +338,10 @@ func (d *Downloader) CrawlForContent(ctx context.Context, uri string) ([]string,
 					if entry.Type == "item" {
 						if isContentURI(entry.URI) {
 							allURIs = append(allURIs, entry.URI)
+							discoveredCount++
+							if onProgress != nil {
+								onProgress(entry.URI, visitedCount, discoveredCount)
+							}
 						} else {
 							if err := crawl(entry.URI); err != nil {
 								continue
@@ -319,10 +360,10 @@ func (d *Downloader) CrawlForContent(ctx context.Context, uri string) ([]string,
 	}
 
 	if err := crawl(uri); err != nil {
-		return nil, err
+		return nil, visitedCount, err
 	}
 
-	return allURIs, nil
+	return allURIs, visitedCount, nil
 }
 
 // DownloadAll downloads multiple URIs synchronously and returns all results.
