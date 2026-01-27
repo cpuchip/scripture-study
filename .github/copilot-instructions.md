@@ -27,7 +27,9 @@ scripture-study/
 │       │   └── {study-aids}/    # TG, BD, JST, maps, etc.
 │       └── video/               # Video content
 ├── study/
-│   └── {topic}.md               # Topic-based study notes with scripture references
+│   ├── {topic}.md               # Topic-based study notes with scripture references
+│   └── talks/
+│       └── {YYYYMM}-{session}{speaker}.md  # Conference talk analysis notes
 ├── journal/
 │   └── {date}.md                # Personal findings, thoughts, and ideas
 └── scripts/                     # Utility scripts for downloading/processing
@@ -170,3 +172,22 @@ Preparing lessons for Sunday School, Relief Society, Elders Quorum, or other cla
 - Invite the Spirit through testimony and relevant scripture
 
 **Template:** Use [lesson_template.md](../docs/lesson_template.md) for structured lesson preparation.
+
+### Talk Review (Conference Talk Analysis)
+Analyzing a general conference talk to understand WHY it's effective as a teaching model.
+
+1. **Select**: Choose a conference talk from `/gospel-library/eng/general-conference/` that moved or inspired you
+2. **Read**: Read the talk carefully, noting what stood out emotionally and spiritually
+3. **Analyze**: Evaluate the talk against the Teaching in the Savior's Way framework:
+   - Focus on Jesus Christ (How does it point to the Savior?)
+   - Love Those You Teach (How does the speaker show vulnerability and create safety?)
+   - Teach by the Spirit (What invites the Spirit? Specificity, testimony, etc.)
+   - Teach the Doctrine (How are scriptures and prophets used?)
+   - Invite Diligent Learning (What invitations are given?)
+4. **Identify Techniques**: Note rhetorical patterns, story placement, scripture density
+5. **Personal Reflection**: Consider how to apply these techniques in your own teaching
+6. **Document**: Save analysis in `/study/talks/` with naming convention `{YYYYMM}-{session}{speaker}.md`
+
+**Example:** `202510-24brown.md` for Elder Brown's October 2025 talk
+
+**Cross-Reference:** See [Teaching in the Savior's Way](../gospel-library/eng/manual/teaching-in-the-saviors-way-2022/) for the framework, and [general-conference-examples.md](../docs/general-conference-examples.md) for talk pattern analysis.
