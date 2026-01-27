@@ -1,6 +1,6 @@
 # Talk Template
 
-A guide for preparing sacrament meeting talks
+A guide for preparing sacrament meeting talks, informed by patterns from [general conference talks](general-conference-examples.md).
 
 ---
 
@@ -21,6 +21,7 @@ A guide for preparing sacrament meeting talks
 - [ ] Fast for inspiration (if time permits)
 - [ ] Study scriptures and conference talks on the topic
 - [ ] Ponder how this topic has affected your life
+- [ ] Identify a personal story that illustrates the principle
 - [ ] Seek the Spirit's confirmation on your outline
 
 ### Research Sources
@@ -30,98 +31,175 @@ Search these resources for supporting content:
 - Topical Guide: `/gospel-library/eng/scriptures/tg/`
 - Bible Dictionary: `/gospel-library/eng/scriptures/bd/`
 
+**Scripture Goal:** Aim for 10-15 scripture references woven throughout your talk, not just as proof-texts.
+
 ---
 
 ## Talk Outline
 
-### Introduction (1-2 minutes)
+### Opening (1-2 minutes)
 
-**Opening:**
-<!-- How will you begin? Options:
-- Express gratitude for the opportunity to speak
-- Share a brief thought or question related to your topic
-- Start with a scripture or quote that sets the tone
-- Tell a brief story that introduces the topic
--->
+Choose ONE primary approach (apostles rarely combine multiple):
 
-**Topic Statement:**
-<!-- Clearly state what you will be speaking about -->
+**Option A: Engaging Story** ⭐ *Most common in conference talks*
+<!-- A brief personal experience or relatable story that introduces your theme naturally. The topic emerges from the story rather than being stated directly. -->
 
-**Preview:** (optional)
-<!-- Brief overview of main points you'll cover -->
+**Option B: Scripture Context**
+<!-- Set the scene for a scriptural account that will anchor your message. "In the ninth chapter of John, we read..." -->
+
+**Option C: Thought-Provoking Question**
+<!-- A question that invites reflection: "Have you ever wondered why...?" or "What would you do if...?" -->
+
+**Option D: Universal Experience**
+<!-- Connect to something everyone has experienced: "Gift giving is a social custom that spans all cultures..." -->
+
+**Opening Image/Theme:**
+<!-- What is the central image, metaphor, or theme you'll return to at the end? (Bookending) -->
+
+> **Note:** Avoid extended gratitude for the opportunity to speak—jump into engaging content. If you must acknowledge the assignment, keep it to one brief sentence.
 
 ---
 
 ### Main Body (7-10 minutes)
 
-#### Point 1:
-**Principle/Doctrine:**
-<!-- What truth are you teaching? -->
+Choose a structure that fits your message:
 
-**Scripture Reference:**
-<!-- Link to supporting scripture, e.g., [2 Nephi 31:20](../gospel-library/eng/scriptures/bofm/2-ne/31.md) -->
+#### Structure Option 1: Thematic Exploration ⭐ *Most flexible*
+Explore your theme from multiple angles without rigid points.
 
-**Supporting Evidence:**
-<!-- Conference talk, additional scriptures, or prophetic quote -->
+**Central Theme:**
+<!-- What is the one truth you want people to understand? -->
 
-**Personal Experience/Story:** (optional)
-<!-- How has this principle blessed your life or the life of someone you know? -->
+**Angle 1:**
+<!-- Scripture + insight -->
 
-**Application:**
-<!-- How can the congregation apply this principle? -->
+**Angle 2:**
+<!-- Different perspective or application -->
 
----
+**Angle 3:**
+<!-- How this applies to daily life -->
 
-#### Point 2:
-**Principle/Doctrine:**
-
-**Scripture Reference:**
-
-**Supporting Evidence:**
-
-**Personal Experience/Story:** (optional)
-
-**Application:**
+**Climactic Story:**
+<!-- Your most powerful illustration—place it HERE, near the end of the body, not at the beginning. Include sensory details, build tension, connect directly to your doctrine. -->
 
 ---
 
-#### Point 3: (if time permits)
-**Principle/Doctrine:**
+#### Structure Option 2: Metaphor/Framework Development
+Build your message around a central image (roots/branches, gift-giving, weapons, etc.)
 
-**Scripture Reference:**
+**Central Metaphor:**
+<!-- What image will carry your message? -->
 
-**Supporting Evidence:**
+**How the metaphor illuminates the doctrine:**
 
-**Personal Experience/Story:** (optional)
+**Scripture foundation:**
 
-**Application:**
+**Application of the metaphor:**
+
+**Climactic illustration:**
 
 ---
 
-### Conclusion (1-2 minutes)
+#### Structure Option 3: Traditional Points (2-3 points)
+If your topic naturally divides into distinct principles.
 
-**Summary:**
-<!-- Briefly restate the main points -->
+**Point 1:**
+- Principle:
+- Scripture:
+- Brief illustration:
 
-**Invitation:**
-<!-- What do you invite the congregation to do? -->
+**Point 2:**
+- Principle:
+- Scripture:
+- Brief illustration:
 
-**Testimony:**
-<!-- Bear testimony of Christ and/or the principles you've taught -->
+**Climactic Story** (after points, before conclusion):
 
-**Closing:**
-<!-- End in the name of Jesus Christ -->
+---
+
+#### Structure Option 4: Story Collection
+Multiple vignettes illustrating your theme (Elder Gong's approach).
+
+**Theme statement:**
+
+**Story 1:** <!-- Brief, illustrative -->
+
+**Story 2:** <!-- Different context, same principle -->
+
+**Story 3:** <!-- Building toward... -->
+
+**Climactic Story:** <!-- Most powerful, most detailed -->
+
+**Doctrinal synthesis:** <!-- What do all these stories teach us? -->
+
+---
+
+### Scripture Integration Guide
+
+Scriptures should be **woven throughout**, not clustered in one section:
+
+| Placement | Purpose | Example |
+|-----------|---------|---------|
+| Opening | Set context or introduce theme | Scripture story that frames your message |
+| Throughout body | Support each insight | "As Alma taught..." / "The Lord declared..." |
+| Climactic moment | Doctrinal anchor | Key verse that captures your main point |
+| Closing | Final witness | Scripture that reinforces your invitation |
+
+**Target: 10-15 scripture references** (conference talks average 16)
+
+---
+
+### Closing (1-2 minutes)
+
+#### Step 1: Bookend
+<!-- Return to your opening image, story, or theme. This creates satisfying closure. -->
+
+#### Step 2: Invitation (choose a format)
+
+**Prayer/Blessing Format** ⭐ *Most common among apostles*
+<!-- "May we..." or "It is my prayer that..." or "I pray that we will..." -->
+
+**Question Format**
+<!-- "Will you...?" invites personal commitment without commanding -->
+
+**Promise Format**
+<!-- "If you will [action], [blessing] will follow" -->
+
+#### Step 3: Testimony
+<!-- Weave testimony throughout your talk rather than saving it all for the end. A brief, sincere closing witness is sufficient: "I know..." or "I testify..." -->
+
+#### Step 4: Close
+<!-- "In the name of Jesus Christ, amen." -->
 
 ---
 
 ## Supporting Materials
 
-### Scriptures to Reference
-| Reference | Key Phrase | How I'll Use It |
-|-----------|-----------|-----------------|
+### Scripture Collection
+Gather scriptures as you study. Aim for 10-15 that you can weave throughout.
+
+| Reference | Key Phrase | Where I'll Use It |
+|-----------|-----------|-------------------|
+| | | Opening / Body / Climax / Close |
 | | | |
 | | | |
 | | | |
+| | | |
+
+### Stories & Illustrations
+
+**Opening Hook Story:**
+<!-- Brief, engaging, introduces theme -->
+
+**Climactic Story:**
+<!-- Your most powerful illustration. Include:
+- Sensory details (what did you see, hear, feel?)
+- Building tension or emotion
+- Clear connection to your doctrine
+- Place this near the END of your body, not the beginning -->
+
+**Supporting Examples:**
+<!-- Shorter illustrations for other points -->
 
 ### Conference Talks
 <!-- Links to talks that support your topic -->
@@ -132,12 +210,8 @@ Search these resources for supporting content:
 <!-- Powerful quotes to potentially include -->
 > 
 
-### Stories/Examples
-<!-- Personal experiences or stories from Church history, scriptures, etc. -->
-- 
-
 ### Hymns Related to Topic
-<!-- If you want to reference a hymn that supports your message -->
+<!-- Consider quoting hymn lyrics as Elder Holland did with "Amazing Grace" -->
 - 
 
 ---
@@ -187,14 +261,27 @@ Search these resources for supporting content:
 - Avoid controversial topics not assigned
 - Don't exceed your time limit
 
+### Patterns from the Apostles
+Based on [analysis of conference talks](general-conference-examples.md):
+
+| Pattern | Why It Works |
+|---------|--------------|
+| **Bookending** | Return to your opening image at the close—creates satisfying closure |
+| **Climactic story near end** | Doctrine + emotion = transformation |
+| **Prayer/blessing close** | "May we..." maintains humility while expressing hope |
+| **Questions** | Engage active thinking rather than passive listening |
+| **Scripture as structure** | Let a scripture story organize your message |
+
 ---
 
 ## Pre-Talk Checklist
 
 - [ ] Practiced the talk out loud
 - [ ] Timed the talk (fits within allotted time)
-- [ ] Scripture references marked in scriptures/notes
-- [ ] Confirmed with bishopric about logistics
+- [ ] Have 10+ scripture references woven throughout
+- [ ] Climactic story is placed near end of body
+- [ ] Opening and closing are connected (bookend)
+- [ ] Invitation uses prayer/blessing or question format
 - [ ] Prayed for the Spirit's guidance during delivery
 
 ---

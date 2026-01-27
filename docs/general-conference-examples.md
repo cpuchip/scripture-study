@@ -21,6 +21,34 @@ An examination of 10 general conference talks compared against our [talk_templat
 
 ---
 
+## Additional Moving & Inspiring Talks
+
+These talks share qualities that make them particularly moving: specific personal conversion/testimony stories, high scripture density, urgent invitations, and deep authenticity.
+
+| # | Talk | Speaker | Conference | Why It's Moving |
+|---|------|---------|------------|-----------------|
+| 11 | [The Eternal Gift of Testimony](../gospel-library/eng/general-conference/2025/10/24brown.md) | Elder Kevin G. Brown | October 2025 | Jamaica testimony story with extraordinary specificity ("Four Grove Road, Mandeville, Jamaica, in my bathroom, at 6:00 a.m. on a Wednesday"); 25+ scripture refs; urgent invitation |
+| 12 | [Simplicity in Christ](../gospel-library/eng/general-conference/2025/10/26cziesla.md) | Elder Michael Cziesla | October 2025 | Oma Cziesla's 25-year faithfulness story; songs of Zion as testimony carrier; multi-generational faith narrative |
+| 13 | [Focus on Jesus Christ and His Gospel](../gospel-library/eng/general-conference/2024/10/56egbo.md) | Elder I. Raymond Egbo | October 2024 | Nigerian football as parable; mother's recent passing woven with testimony; cultural specificity |
+| 14 | [Live Up to Your Privileges](../gospel-library/eng/general-conference/2024/10/13freeman.md) | President Emily Belle Freeman | October 2024 | Husband's cancer diagnosis; hospital sacrament experience; Emma Smith parallel |
+
+### Pattern: General Authority Seventy Conversion Stories
+
+Talks by newer General Authority Seventies often feature powerful **first-generation conversion narratives**:
+
+**Elder Brown (Jamaica):** Baptized as a youth, faced peer persecution, specific Sacred Grove moment  
+**Elder Cziesla (Germany):** Grandmother's 25-year isolated faithfulness, father's conversion through hymns  
+**Elder Egbo (Nigeria):** Cultural celebration imagery, mother's death integrated with testimony  
+
+These talks tend to have:
+- **Extraordinary specificity** (exact locations, dates, names)
+- **Cultural authenticity** that brings freshness
+- **High scripture density** (often 20+ references)
+- **Urgency** ("Get there! Seek it! It is urgent!")
+- **Numbered points** (more structured than apostle talks)
+
+---
+
 ## Structural Analysis
 
 ### Opening Patterns
