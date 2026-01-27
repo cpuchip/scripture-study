@@ -8,11 +8,24 @@ This project is designed to facilitate AI-assisted scripture study, bringing new
 scripture-study/
 ├── .github/
 │   └── copilot-instructions.md  # This file
+├── books/
+│   └── {collection}/            # Additional books (e.g., lecture-on-faith)
 ├── docs/
 │   └── study_template.md        # Patterns and insights for effective AI-assisted study
-├── scriptures/
-│   └── {book}/
-│       └── {subbook}.md         # Full scripture text by subbook
+├── gospel-library/
+│   └── eng/
+│       ├── broadcasts/          # Auxiliary training, recordings, misc events
+│       ├── general-conference/  # Conference talks by year/session
+│       ├── liahona/             # Magazine content
+│       ├── manual/              # Lesson manuals and guides
+│       ├── scriptures/          # Standard works
+│       │   ├── ot/              # Old Testament
+│       │   ├── nt/              # New Testament
+│       │   ├── bofm/            # Book of Mormon
+│       │   ├── dc-testament/    # Doctrine and Covenants
+│       │   ├── pgp/             # Pearl of Great Price
+│       │   └── {study-aids}/    # TG, BD, JST, maps, etc.
+│       └── video/               # Video content
 ├── study/
 │   └── {topic}.md               # Topic-based study notes with scripture references
 ├── journal/
@@ -29,10 +42,31 @@ Contains meta-documentation about how to effectively study and collaborate:
 - Notes on effective human-AI collaboration techniques
 - Insights that improve future study sessions
 
-### `/scriptures/`
-Contains the actual scripture text converted to markdown format. Structure:
-- `./scriptures/book/subbook.md` - Each subbook as a single file (preferred for AI context)
-- This keeps entire books in context for better AI analysis
+### `/gospel-library/`
+Contains Church of Jesus Christ of Latter-day Saints content organized by language (currently `eng/`):
+
+#### `/gospel-library/eng/scriptures/`
+The standard works organized by volume:
+- `ot/` - Old Testament (e.g., `gen/`, `ex/`, `isa/`)
+- `nt/` - New Testament (e.g., `matt/`, `john/`, `acts/`)
+- `bofm/` - Book of Mormon (e.g., `1-ne/`, `alma/`, `moro/`)
+- `dc-testament/dc/` - Doctrine and Covenants sections
+- `pgp/` - Pearl of Great Price (e.g., `moses/`, `abr/`, `js-h/`)
+- Study aids: `tg/` (Topical Guide), `bd/` (Bible Dictionary), `gs/` (Guide to the Scriptures), `jst/` (Joseph Smith Translation)
+
+Each book contains numbered chapter files (e.g., `1.md`, `2.md`, `3.md`).
+
+#### `/gospel-library/eng/general-conference/`
+Conference talks organized by year and session:
+- `{year}/{month}/` - e.g., `2025/04/`, `2025/10/`
+- Talk files named by session order and speaker: `57nelson.md`, `11oaks.md`
+
+#### `/gospel-library/eng/manual/`
+Lesson manuals and teaching guides including:
+- Come, Follow Me curriculum
+- Teaching in the Savior's Way
+- Scripture study helps
+- Stories and supplemental materials
 
 ### `/study/`
 Topic-based study documents where we:
@@ -47,11 +81,11 @@ Personal journal entries organized by date:
 - Contains findings, thoughts, and ideas
 - Searchable via VS Code text search
 
-## Scripture Source
+## Content Source
 
-Scriptures are sourced from: https://github.com/beandog/lds-scriptures/
-- Download latest release and convert to markdown
-- Preferred formats for conversion: JSON or SQLite3
+Gospel Library content is downloaded and converted from the Church's official Gospel Library:
+- Scriptures, manuals, conference talks, and other materials
+- See `/scripts/gospel-library/` for download utilities
 
 ## AI Study Guidelines
 
@@ -65,21 +99,70 @@ When studying scriptures:
 
 ### Scripture Reference Links
 
-When citing scriptures in study files, use markdown links to the source file with anchor to the chapter. This enables clicking directly to the scripture in preview mode.
+When citing scriptures in study files, use markdown links to the source file. This enables clicking directly to the scripture in preview mode.
 
-**Format:** `[Book Chapter:Verse](relative/path/to/##_Book_Name.md#chapter-N)`
+**Format:** `[Book Chapter:Verse](relative/path/to/gospel-library/eng/scriptures/{volume}/{book}/{chapter}.md)`
 
-**Examples:**
-- `[Moses 3:5](../scriptures/Pearl_of_Great_Price/01_Moses.md#chapter-3)`
-- `[Genesis 1:1](../scriptures/Old_Testament/01_Genesis.md#chapter-1)`
-- `[D&C 93:36](../scriptures/Doctrine_and_Covenants/Section_093.md)`
-- `[1 Nephi 3:7](../scriptures/Book_of_Mormon/01_1_Nephi.md#chapter-3)`
+**Scripture Examples:**
+- `[Moses 3:5](../gospel-library/eng/scriptures/pgp/moses/3.md)` - Pearl of Great Price
+- `[Genesis 1:1](../gospel-library/eng/scriptures/ot/gen/1.md)` - Old Testament
+- `[D&C 93:36](../gospel-library/eng/scriptures/dc-testament/dc/93.md)` - Doctrine and Covenants
+- `[1 Nephi 3:7](../gospel-library/eng/scriptures/bofm/1-ne/3.md)` - Book of Mormon
+- `[Matthew 5:14](../gospel-library/eng/scriptures/nt/matt/5.md)` - New Testament
 
-Note: Underscores replace spaces in paths. Files are prefixed with numbers for canonical ordering (e.g., `01_Genesis.md`, `02_Exodus.md`). D&C sections use `Section_###.md` format (e.g., `Section_093.md`).
+**Path conventions:**
+- Book abbreviations use lowercase with hyphens (e.g., `1-ne`, `2-cor`, `js-h`)
+- Chapters are numbered files without leading zeros (e.g., `1.md`, `10.md`, `138.md`)
+- D&C sections are in `dc-testament/dc/` folder
 
-## Workflow
+### Talk Reference Links
 
-1. **Study Session**: Open or create a topic file in `/study/`
+When citing conference talks:
+- `[President Nelson, April 2025](../gospel-library/eng/general-conference/2025/04/57nelson.md)`
+
+### Manual Reference Links
+
+When citing manuals or lessons:
+- `[Teaching in the Savior's Way](../gospel-library/eng/manual/teaching-in-the-saviors-way-2022/)`
+
+## Workflows
+
+### Study Session (Personal)
+Personal scripture study for gaining insights and deepening understanding.
+
+1. **Open**: Create or open a topic file in `/study/`
 2. **Research**: Pull relevant scriptures and analyze with AI assistance
 3. **Document**: Record insights and personal reflections in `/journal/`
 4. **Review**: Use VS Code search to find past insights and connections
+
+### Talk Preparation (Sacrament Meeting)
+Preparing talks for sacrament meeting presentations.
+
+1. **Open**: Create a new file in `/journal/` for talk preparation (e.g., `2026-01-26-talk-charity.md`)
+2. **Topic Research**: Search scriptures and conference talks for relevant content
+3. **Outline**: Structure the talk with introduction, main points, and testimony
+4. **Scripture Selection**: Choose key scriptures that support your message
+5. **Personal Stories**: Include relevant personal experiences that illustrate principles
+6. **Review**: Ensure talk fits within time constraints and flows naturally
+
+### Lesson Planning (Class Instruction)
+Preparing lessons for Sunday School, Relief Society, Elders Quorum, or other class settings.
+
+1. **Open**: Browse `/gospel-library/eng/manual/` for the appropriate curriculum
+2. **Study Manual**: Read the assigned lesson material thoroughly
+3. **Prepare Questions**: Develop discussion questions that invite class participation and personal reflection
+4. **Cross-Reference**: Find additional scriptures and talks that support lesson objectives
+5. **Apply Principles**: Follow Teaching in the Savior's Way (`/gospel-library/eng/manual/teaching-in-the-saviors-way-2022/`):
+   - Love those you teach
+   - Teach by the Spirit
+   - Teach the doctrine
+   - Invite diligent learning
+6. **Document**: Save lesson notes in `/journal/` with date and lesson topic
+
+**Key Teaching Principles:**
+- Ask questions that encourage pondering and discussion, not just yes/no answers
+- Allow time for class members to share insights and experiences
+- Focus on helping learners apply principles, not just covering content
+- Invite the Spirit through testimony and relevant scripture
+
+<!-- TODO: Create a detailed structured lesson template in /docs/ with sections for objectives, discussion questions, activities, and application challenges -->
