@@ -135,6 +135,8 @@ Personal scripture study for gaining insights and deepening understanding.
 3. **Document**: Record insights and personal reflections in `/journal/`
 4. **Review**: Use VS Code search to find past insights and connections
 
+**Template:** Use [study_template.md](../docs/study_template.md) for structured study sessions.
+
 ### Talk Preparation (Sacrament Meeting)
 Preparing talks for sacrament meeting presentations.
 
@@ -144,6 +146,8 @@ Preparing talks for sacrament meeting presentations.
 4. **Scripture Selection**: Choose key scriptures that support your message
 5. **Personal Stories**: Include relevant personal experiences that illustrate principles
 6. **Review**: Ensure talk fits within time constraints and flows naturally
+
+**Template:** Use [talk_template.md](../docs/talk_template.md) for structured talk preparation.
 
 ### Lesson Planning (Class Instruction)
 Preparing lessons for Sunday School, Relief Society, Elders Quorum, or other class settings.
@@ -165,4 +169,4 @@ Preparing lessons for Sunday School, Relief Society, Elders Quorum, or other cla
 - Focus on helping learners apply principles, not just covering content
 - Invite the Spirit through testimony and relevant scripture
 
-<!-- TODO: Create a detailed structured lesson template in /docs/ with sections for objectives, discussion questions, activities, and application challenges -->
+**Template:** Use [lesson_template.md](../docs/lesson_template.md) for structured lesson preparation.
