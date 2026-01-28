@@ -18,3 +18,5 @@ Thumbs.db
 # Go build artifacts
 scripts/gospel-library/gospel-library
 scripts/gospel-library/gospel-library.exe
+scripts/gospel-library/gospel-downloader.exe
+scripts/publish/publish.exe
