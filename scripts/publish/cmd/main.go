@@ -17,6 +17,24 @@ const (
 	churchBaseURL = "https://www.churchofjesuschrist.org/study"
 )
 
+// External URL mappings for books not in gospel-library
+var externalBookURLs = map[string]string{
+	"lecture-on-faith": "https://lecturesonfaith.com",
+}
+
+// Lecture on Faith URL path mappings
+var lecturePathMap = map[string]string{
+	"00_introduction": "",              // Homepage/introduction
+	"00_preface":      "/preface.html", // Preface
+	"01_lecture_1":    "/1",            // Lecture First
+	"02_lecture_2":    "/2",            // Lecture Second
+	"03_lecture_3":    "/3",            // Lecture Third
+	"04_lecture_4":    "/4",            // Lecture Fourth
+	"05_lecture_5":    "/5",            // Lecture Fifth
+	"06_lecture_6":    "/6",            // Lecture Sixth
+	"07_lecture_7":    "/7",            // Lecture Seventh
+}
+
 var (
 	inputDirs     = []string{"study", "lessons"}
 	outputDir     = flag.String("output", "public", "Output directory for published files")
@@ -217,6 +235,15 @@ func convertLink(match, sourceDir string) (string, bool) {
 		return match, false
 	}
 
+	// Check if this is a books/ link (e.g., lecture-on-faith)
+	if strings.Contains(linkPath, "books/") || strings.Contains(linkPath, "lecture-on-faith") {
+		externalURL := convertToExternalBookURL(linkPath, linkText, sourceDir)
+		if externalURL != "" {
+			return fmt.Sprintf("[%s](%s)", linkText, externalURL), true
+		}
+		return match, false
+	}
+
 	// Check if this is a gospel-library link
 	if !strings.Contains(linkPath, "gospel-library") {
 		return match, false
@@ -310,4 +337,69 @@ func extractVerseFragment(linkText, urlPath string) string {
 	}
 
 	return "p" + startVerse
+}
+
+// convertToExternalBookURL converts links to books/ directory to external URLs
+func convertToExternalBookURL(linkPath, linkText, sourceDir string) string {
+	// Resolve relative path to absolute
+	var absPath string
+	if filepath.IsAbs(linkPath) {
+		absPath = linkPath
+	} else {
+		absPath = filepath.Join(sourceDir, linkPath)
+	}
+
+	// Clean the path and normalize separators
+	absPath = filepath.Clean(absPath)
+	absPath = strings.ReplaceAll(absPath, "\\", "/")
+
+	// Check for lecture-on-faith
+	if strings.Contains(absPath, "lecture-on-faith") {
+		return convertLectureOnFaithURL(absPath, linkPath)
+	}
+
+	// Add more book handlers here as needed
+	return ""
+}
+
+// convertLectureOnFaithURL converts a lecture-on-faith link to lecturesonfaith.com URL
+func convertLectureOnFaithURL(absPath, originalPath string) string {
+	baseURL := externalBookURLs["lecture-on-faith"]
+	if baseURL == "" {
+		return ""
+	}
+
+	// Extract anchor if present (e.g., #1, #9, #q14)
+	anchor := ""
+	if idx := strings.Index(originalPath, "#"); idx != -1 {
+		anchor = originalPath[idx+1:] // Get everything after #
+	}
+
+	// Remove any anchor from the path before extracting filename
+	pathWithoutAnchor := absPath
+	if idx := strings.Index(absPath, "#"); idx != -1 {
+		pathWithoutAnchor = absPath[:idx]
+	}
+
+	// Extract the filename from the path
+	filename := filepath.Base(pathWithoutAnchor)
+	filename = strings.TrimSuffix(filename, ".md")
+
+	// Look up the URL path
+	urlPath, found := lecturePathMap[filename]
+	if !found {
+		// Default to homepage if not found
+		urlPath = ""
+	}
+
+	// Build URL: https://lecturesonfaith.com/1
+	url := baseURL + urlPath
+
+	// Add anchor for verse/question references
+	// lecturesonfaith.com uses #3 for verse 3, #q14 for question 14
+	if anchor != "" {
+		url += "/#" + anchor
+	}
+
+	return url
 }
