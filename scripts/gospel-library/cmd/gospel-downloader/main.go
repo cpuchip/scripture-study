@@ -37,6 +37,7 @@ var (
 	resetFlag       = flag.Bool("reset", false, "Clear both cache and output directories")
 	standardFlag    = flag.Bool("standard", false, "Download standard works and latest conference")
 	downloadFlag    = flag.String("download", "", "Download content from a specific URI path (e.g., /manual/general-handbook)")
+	magazinesFlag   = flag.Bool("magazines", false, "Download all Liahona and Ensign magazines (1971-present)")
 )
 
 func main() {
@@ -50,6 +51,8 @@ func main() {
 		err = doCleanup(*cacheFlag)
 	case *downloadFlag != "":
 		err = downloadSinglePath(*langFlag, *cacheFlag, *outputFlag, *downloadFlag)
+	case *magazinesFlag:
+		err = downloadMagazines(*langFlag, *cacheFlag, *outputFlag)
 	case *standardFlag:
 		err = downloadStandard(*langFlag, *cacheFlag, *outputFlag)
 	case *testFlag:
@@ -210,6 +213,102 @@ func downloadStandard(lang, cacheDir, outputDir string) error {
 	}
 
 	fmt.Println("✅ Standard download complete!")
+	fmt.Printf("   Output: %s/%s/\n", outputDir, lang)
+	return nil
+}
+
+func downloadMagazines(lang, cacheDir, outputDir string) error {
+	fmt.Println("Downloading Liahona and Ensign magazines...")
+	fmt.Println("Note: This will download ~56,000 articles. This may take several hours.")
+	fmt.Println("")
+
+	rawClient := api.NewClient(lang)
+	fileCache := cache.New(cacheDir, lang)
+	cachedClient := cache.NewCachedClient(rawClient, fileCache)
+
+	downloader := tui.NewDownloader(cachedClient, rawClient, lang, outputDir)
+	ctx := context.Background()
+
+	// Magazine definitions with their start years
+	// Ensign ran from 1971-2020, then merged into Liahona
+	// Liahona has been running since 1977
+	magazines := []struct {
+		name      string
+		startYear int
+		endYear   int
+	}{
+		{"ensign", 1971, 2020},
+		{"liahona", 1977, time.Now().Year() + 1}, // +1 because they publish ahead
+	}
+
+	months := []string{"01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"}
+
+	// First pass: discover all valid issues
+	fmt.Println("Phase 1: Discovering valid magazine issues...")
+	var validIssues []string
+	for _, mag := range magazines {
+		fmt.Printf("   Checking %s (%d-%d)...\n", mag.name, mag.startYear, mag.endYear)
+		for year := mag.startYear; year <= mag.endYear; year++ {
+			for _, m := range months {
+				uri := fmt.Sprintf("/%s/%d/%s", mag.name, year, m)
+				_, _, err := cachedClient.GetDynamic(ctx, uri)
+				if err == nil {
+					validIssues = append(validIssues, uri)
+				}
+			}
+		}
+	}
+	fmt.Printf("   Found %d valid issues\n\n", len(validIssues))
+
+	// Second pass: crawl each issue and download articles
+	fmt.Println("Phase 2: Downloading articles from each issue...")
+	totalArticles := 0
+	totalSuccess := 0
+	totalErrors := 0
+
+	for i, issueURI := range validIssues {
+		fmt.Printf("\n📰 [%d/%d] %s\n", i+1, len(validIssues), issueURI)
+
+		// Crawl issue for article URIs
+		uris, err := downloader.CrawlForContent(ctx, issueURI)
+		if err != nil {
+			fmt.Printf("   ⚠ Error crawling: %v\n", err)
+			continue
+		}
+
+		fmt.Printf("   Found %d articles, downloading...\n", len(uris))
+		totalArticles += len(uris)
+
+		// Download all articles in this issue
+		successCount := 0
+		errorCount := 0
+		for _, uri := range uris {
+			result := downloader.DownloadAndConvert(ctx, uri)
+			if result.Success {
+				successCount++
+			} else if result.Error != nil {
+				errorCount++
+			}
+			// Small delay to avoid rate limiting
+			time.Sleep(30 * time.Millisecond)
+		}
+
+		totalSuccess += successCount
+		totalErrors += errorCount
+		fmt.Printf("   ✓ Downloaded %d/%d (errors: %d)\n", successCount, len(uris), errorCount)
+
+		// Progress summary every 50 issues
+		if (i+1)%50 == 0 {
+			fmt.Printf("\n--- Progress: %d/%d issues, %d articles downloaded ---\n", i+1, len(validIssues), totalSuccess)
+		}
+	}
+
+	fmt.Println("")
+	fmt.Println("✅ Magazine download complete!")
+	fmt.Printf("   Issues processed: %d\n", len(validIssues))
+	fmt.Printf("   Total articles: %d\n", totalArticles)
+	fmt.Printf("   Successfully downloaded: %d\n", totalSuccess)
+	fmt.Printf("   Errors: %d\n", totalErrors)
 	fmt.Printf("   Output: %s/%s/\n", outputDir, lang)
 	return nil
 }
