@@ -208,13 +208,57 @@ func (d *Downloader) CrawlForContent(ctx context.Context, uri string) ([]string,
 	return uris, err
 }
 
+// stripFragment removes the fragment identifier (e.g., #title_number19) from a URI.
+// The API returns the same content regardless of fragment, so we deduplicate by base URI.
+func stripFragment(uri string) string {
+	if idx := strings.Index(uri, "#"); idx != -1 {
+		return uri[:idx]
+	}
+	return uri
+}
+
 // CrawlForContentWithProgress crawls and reports progress via callback.
 // The callback receives (currentURI, visitedCount, discoveredCount).
 func (d *Downloader) CrawlForContentWithProgress(ctx context.Context, uri string, onProgress func(string, int, int)) ([]string, int, error) {
-	var allURIs []string
+	// Use a map to deduplicate URIs (especially after stripping fragments)
+	uriSet := make(map[string]bool)
 	visited := make(map[string]bool)
 	visitedCount := 0
 	discoveredCount := 0
+
+	// addURI adds a URI to the set after stripping fragment identifiers.
+	// Returns true if this was a new URI.
+	addURI := func(rawURI string) bool {
+		cleanURI := stripFragment(rawURI)
+		if !isContentURI(cleanURI) {
+			return false
+		}
+		if uriSet[cleanURI] {
+			return false
+		}
+		uriSet[cleanURI] = true
+		discoveredCount++
+		if onProgress != nil {
+			onProgress(cleanURI, visitedCount, discoveredCount)
+		}
+		return true
+	}
+
+	// processTOCEntries recursively processes TOC entries at any depth.
+	// This handles deeply nested sections like the General Handbook has.
+	var processTOCEntries func(entries []api.TOCEntry)
+	processTOCEntries = func(entries []api.TOCEntry) {
+		for _, entry := range entries {
+			// Handle direct content references
+			if entry.Content != nil && entry.Content.URI != "" {
+				addURI(entry.Content.URI)
+			}
+			// Handle sections with nested entries (recursive)
+			if entry.Section != nil && len(entry.Section.Entries) > 0 {
+				processTOCEntries(entry.Section.Entries)
+			}
+		}
+	}
 
 	var crawl func(u string) error
 	crawl = func(u string) error {
@@ -233,14 +277,8 @@ func (d *Downloader) CrawlForContentWithProgress(ctx context.Context, uri string
 			for _, section := range collection.Sections {
 				for _, entry := range section.Entries {
 					if entry.Type == "item" {
-						if isContentURI(entry.URI) {
-							allURIs = append(allURIs, entry.URI)
-							discoveredCount++
-							if onProgress != nil {
-								onProgress(entry.URI, visitedCount, discoveredCount)
-							}
-						} else {
-							// Treat non-content items as collections
+						if !addURI(entry.URI) {
+							// Not content or already seen - maybe a sub-collection
 							if err := crawl(entry.URI); err != nil {
 								continue
 							}
@@ -262,24 +300,12 @@ func (d *Downloader) CrawlForContentWithProgress(ctx context.Context, uri string
 			// Not a collection or dynamic page - might be content itself
 			content, _, cErr := d.client.GetContent(ctx, u)
 			if cErr == nil && content != nil {
-				if isContentURI(u) {
-					allURIs = append(allURIs, u)
-					discoveredCount++
-					if onProgress != nil {
-						onProgress(u, visitedCount, discoveredCount)
-					}
-				}
+				addURI(u)
 
 				// Some manuals are TOCs served as content HTML; follow their links
 				links := extractManualLinks(content.Content.Body)
 				for _, link := range links {
-					if isContentURI(link) {
-						allURIs = append(allURIs, link)
-						discoveredCount++
-						if onProgress != nil {
-							onProgress(link, visitedCount, discoveredCount)
-						}
-					} else if !visited[link] {
+					if !addURI(link) && !visited[link] {
 						if err := crawl(link); err != nil {
 							continue
 						}
@@ -288,62 +314,19 @@ func (d *Downloader) CrawlForContentWithProgress(ctx context.Context, uri string
 				return nil
 			}
 
-			if isContentURI(u) {
-				allURIs = append(allURIs, u)
-				discoveredCount++
-				if onProgress != nil {
-					onProgress(u, visitedCount, discoveredCount)
-				}
-			}
+			addURI(u)
 			return nil
 		}
 
 		if dynamic.TOC != nil {
-			for _, entry := range dynamic.TOC.Entries {
-				// Direct content at this level
-				if entry.Content != nil && entry.Content.URI != "" {
-					if isContentURI(entry.Content.URI) {
-						allURIs = append(allURIs, entry.Content.URI)
-						discoveredCount++
-						if onProgress != nil {
-							onProgress(entry.Content.URI, visitedCount, discoveredCount)
-						}
-					} else {
-						if err := crawl(entry.Content.URI); err != nil {
-							continue
-						}
-					}
-				}
-				// Check sections for sub-content (chapters within books)
-				if entry.Section != nil {
-					for _, subEntry := range entry.Section.Entries {
-						if subEntry.Content != nil && subEntry.Content.URI != "" && isContentURI(subEntry.Content.URI) {
-							allURIs = append(allURIs, subEntry.Content.URI)
-							discoveredCount++
-							if onProgress != nil {
-								onProgress(subEntry.Content.URI, visitedCount, discoveredCount)
-							}
-						}
-						// Handle nested sections (if any)
-						if subEntry.Section != nil && subEntry.Section.URI != "" && !visited[subEntry.Section.URI] {
-							if err := crawl(subEntry.Section.URI); err != nil {
-								continue
-							}
-						}
-					}
-				}
-			}
+			// Use the recursive processor to handle arbitrarily nested TOC entries
+			// This properly handles deeply nested structures like the General Handbook
+			processTOCEntries(dynamic.TOC.Entries)
 		} else if dynamic.Collection != nil && len(dynamic.Collection.Sections) > 0 {
 			for _, section := range dynamic.Collection.Sections {
 				for _, entry := range section.Entries {
 					if entry.Type == "item" {
-						if isContentURI(entry.URI) {
-							allURIs = append(allURIs, entry.URI)
-							discoveredCount++
-							if onProgress != nil {
-								onProgress(entry.URI, visitedCount, discoveredCount)
-							}
-						} else {
+						if !addURI(entry.URI) {
 							if err := crawl(entry.URI); err != nil {
 								continue
 							}
@@ -362,6 +345,12 @@ func (d *Downloader) CrawlForContentWithProgress(ctx context.Context, uri string
 
 	if err := crawl(uri); err != nil {
 		return nil, visitedCount, err
+	}
+
+	// Convert set to slice
+	allURIs := make([]string, 0, len(uriSet))
+	for u := range uriSet {
+		allURIs = append(allURIs, u)
 	}
 
 	return allURIs, visitedCount, nil

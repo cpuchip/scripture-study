@@ -36,6 +36,7 @@ var (
 	cleanupFlag     = flag.Bool("cleanup", false, "Clear the cache directory")
 	resetFlag       = flag.Bool("reset", false, "Clear both cache and output directories")
 	standardFlag    = flag.Bool("standard", false, "Download standard works and latest conference")
+	downloadFlag    = flag.String("download", "", "Download content from a specific URI path (e.g., /manual/general-handbook)")
 )
 
 func main() {
@@ -47,6 +48,8 @@ func main() {
 		err = doReset(*cacheFlag, *outputFlag)
 	case *cleanupFlag:
 		err = doCleanup(*cacheFlag)
+	case *downloadFlag != "":
+		err = downloadSinglePath(*langFlag, *cacheFlag, *outputFlag, *downloadFlag)
 	case *standardFlag:
 		err = downloadStandard(*langFlag, *cacheFlag, *outputFlag)
 	case *testFlag:
@@ -99,6 +102,62 @@ func doReset(cacheDir, outputDir string) error {
 	return nil
 }
 
+func downloadSinglePath(lang, cacheDir, outputDir, uriPath string) error {
+	fmt.Printf("Downloading %s...\n", uriPath)
+	fmt.Println("")
+
+	rawClient := api.NewClient(lang)
+	fileCache := cache.New(cacheDir, lang)
+	cachedClient := cache.NewCachedClient(rawClient, fileCache)
+
+	downloader := tui.NewDownloader(cachedClient, rawClient, lang, outputDir)
+	ctx := context.Background()
+
+	fmt.Printf("   Crawling %s...\n", uriPath)
+
+	uris, err := downloader.CrawlForContent(ctx, uriPath)
+	if err != nil {
+		return fmt.Errorf("error crawling: %w", err)
+	}
+
+	fmt.Printf("   Found %d content items\n", len(uris))
+	fmt.Printf("   Downloading...\n")
+
+	// Download with progress output
+	successCount := 0
+	errorCount := 0
+	skippedCount := 0
+	for i, uri := range uris {
+		if i%50 == 0 {
+			fmt.Printf("   Progress: %d/%d (success: %d, errors: %d, skipped: %d)\n", i, len(uris), successCount, errorCount, skippedCount)
+		}
+		result := downloader.DownloadAndConvert(ctx, uri)
+		if result.Success {
+			successCount++
+		} else if result.Error != nil {
+			errorCount++
+			if errorCount <= 10 {
+				fmt.Printf("   ⚠ %s: %v\n", uri, result.Error)
+			}
+		} else {
+			skippedCount++
+		}
+		// Check context
+		if ctx.Err() != nil {
+			fmt.Printf("   Context cancelled at %d: %v\n", i, ctx.Err())
+			break
+		}
+		// Small delay to avoid rate limiting
+		time.Sleep(50 * time.Millisecond)
+	}
+	fmt.Printf("   ✓ Downloaded %d/%d items (errors: %d, skipped: %d)\n", successCount, len(uris), errorCount, skippedCount)
+	fmt.Println("")
+
+	fmt.Println("✅ Download complete!")
+	fmt.Printf("   Output: %s/%s/\n", outputDir, lang)
+	return nil
+}
+
 func downloadStandard(lang, cacheDir, outputDir string) error {
 	fmt.Println("Downloading Standard Works and Latest Conference...")
 	fmt.Println("")
@@ -121,6 +180,7 @@ func downloadStandard(lang, cacheDir, outputDir string) error {
 		{"Old Testament", "/scriptures/ot"},
 		{"New Testament", "/scriptures/nt"},
 		{"October 2025 General Conference", "/general-conference/2025/10"},
+		{"General Handbook", "/manual/general-handbook"},
 	}
 
 	for _, work := range standardWorks {
