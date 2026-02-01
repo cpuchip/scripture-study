@@ -20,7 +20,7 @@ Understanding this hierarchy helps us know what is unchanging vs. what can adapt
 ### Doctrine: Eternal Truth
 
 > "Doctrine is eternal truth—found in the scriptures and the words of latter-day prophets—that shows us the way to become like our Father in Heaven and return to Him."
-> — [Teaching in the Savior's Way](../gospel-library/eng/manual/teaching-in-the-saviors-way-2022/07-part-2/10-teach-the-doctrine.md)
+> — [Teaching in the Savior's Way](https://www.churchofjesuschrist.org/study/manual/teaching-in-the-saviors-way-2022/07-part-2/10-teach-the-doctrine?lang=eng)
 
 **Characteristics of Doctrine:**
 - Revealed by God through prophets
@@ -30,22 +30,22 @@ Understanding this hierarchy helps us know what is unchanging vs. what can adapt
 - Centers on Jesus Christ and the plan of salvation
 
 > "The fundamental principles of our religion are the testimony of the Apostles and Prophets, concerning Jesus Christ, that He died, was buried, and rose again the third day, and ascended into heaven; and all other things which pertain to our religion are only appendages to it."
-> — Joseph Smith, [*Teachings of Presidents of the Church: Joseph Smith*, Chapter 3: "Jesus Christ, the Divine Redeemer of the World"](../gospel-library/eng/manual/teachings-joseph-smith/chapter-3.md); also quoted in Elder D. Todd Christofferson, ["The Doctrine of Christ"](../gospel-library/eng/general-conference/2012/04/the-doctrine-of-christ.md) (April 2012)
+> — Joseph Smith, [*Teachings of Presidents of the Church: Joseph Smith*, Chapter 3: "Jesus Christ, the Divine Redeemer of the World"](https://www.churchofjesuschrist.org/study/manual/teachings-joseph-smith/chapter-3?lang=eng); also quoted in Elder D. Todd Christofferson, ["The Doctrine of Christ"](https://www.churchofjesuschrist.org/study/general-conference/2012/04/the-doctrine-of-christ?lang=eng) (April 2012)
 
 **Examples of Doctrine:**
-- God is our Heavenly Father ([Moses 1:4](../gospel-library/eng/scriptures/pgp/moses/1.md))
-- Jesus Christ is the Son of God and our Redeemer ([3 Nephi 11:10-11](../gospel-library/eng/scriptures/bofm/3-ne/11.md))
-- The Atonement of Jesus Christ makes repentance and resurrection possible ([Alma 34:8-9](../gospel-library/eng/scriptures/bofm/alma/34.md))
-- The family is ordained of God ([The Family: A Proclamation to the World](../gospel-library/eng/scriptures/the-family-a-proclamation-to-the-world/the-family-a-proclamation-to-the-world.md))
-- We are spirit children of Heavenly Parents ([Romans 8:16-17](../gospel-library/eng/scriptures/nt/rom/8.md))
-- Resurrection is universal ([1 Corinthians 15:22](../gospel-library/eng/scriptures/nt/1-cor/15.md))
+- God is our Heavenly Father ([Moses 1:4](https://www.churchofjesuschrist.org/study/scriptures/pgp/moses/1?lang=eng&id=p4#p4))
+- Jesus Christ is the Son of God and our Redeemer ([3 Nephi 11:10-11](https://www.churchofjesuschrist.org/study/scriptures/bofm/3-ne/11?lang=eng&id=p10-p11#p10))
+- The Atonement of Jesus Christ makes repentance and resurrection possible ([Alma 34:8-9](https://www.churchofjesuschrist.org/study/scriptures/bofm/alma/34?lang=eng&id=p8-p9#p8))
+- The family is ordained of God ([The Family: A Proclamation to the World](https://www.churchofjesuschrist.org/study/scriptures/the-family-a-proclamation-to-the-world/the-family-a-proclamation-to-the-world?lang=eng))
+- We are spirit children of Heavenly Parents ([Romans 8:16-17](https://www.churchofjesuschrist.org/study/scriptures/nt/rom/8?lang=eng&id=p16-p17#p16))
+- Resurrection is universal ([1 Corinthians 15:22](https://www.churchofjesuschrist.org/study/scriptures/nt/1-cor/15?lang=eng&id=p22#p22))
 
 ### Principle: Applied Truth
 
 Principles are applications of doctrine—guidelines that help us live doctrinal truths. They derive from doctrine and guide behavior but may have varying implementations.
 
 > "True doctrine, understood, changes attitudes and behavior. The study of the doctrines of the gospel will improve behavior quicker than a study of behavior will improve behavior."
-> — President Boyd K. Packer, ["Little Children"](../gospel-library/eng/general-conference/1986/10/little-children.md), October 1986 General Conference
+> — President Boyd K. Packer, ["Little Children"](https://www.churchofjesuschrist.org/study/general-conference/1986/10/little-children?lang=eng), October 1986 General Conference
 
 **Characteristics of Principles:**
 - Derived from doctrine
@@ -100,7 +100,7 @@ The clearest statement of pure doctrine comes from the Savior Himself:
 > And whoso believeth not in me, and is not baptized, shall be damned. ...
 >
 > And whoso shall declare more or less than this, and establish it for my doctrine, the same cometh of evil."
-> — [3 Nephi 11:32-35, 40](../gospel-library/eng/scriptures/bofm/3-ne/11.md)
+> — [3 Nephi 11:32-35, 40](https://www.churchofjesuschrist.org/study/scriptures/bofm/3-ne/11?lang=eng&id=p32-p35#p32)
 
 The doctrine of Christ is simple:
 1. **Faith** in Jesus Christ
@@ -120,7 +120,7 @@ The Jerusalem Council in Acts 15 shows how the early Church distinguished betwee
 **Council Decision:** No—salvation comes through grace, not the law of Moses. But they gave practical guidelines (avoid idolatry, fornication, blood) to help Gentile converts live in harmony with Jewish members.
 
 > "For it seemed good to the Holy Ghost, and to us, to lay upon you no greater burden than these necessary things."
-> — [Acts 15:28](../gospel-library/eng/scriptures/nt/acts/15.md)
+> — [Acts 15:28](https://www.churchofjesuschrist.org/study/scriptures/nt/acts/15?lang=eng&id=p28#p28)
 
 The doctrine (salvation through Christ) was affirmed. The policy (circumcision required) was changed.
 
@@ -128,11 +128,11 @@ The doctrine (salvation through Christ) was affirmed. The policy (circumcision r
 
 ## How Doctrine is Established
 
-From Elder Neil L. Andersen's ["Trial of Your Faith"](../gospel-library/eng/general-conference/2012/10/trial-of-your-faith.md) (October 2012):
+From Elder Neil L. Andersen's ["Trial of Your Faith"](https://www.churchofjesuschrist.org/study/general-conference/2012/10/trial-of-your-faith?lang=eng) (October 2012):
 
 > "A few question their faith when they find a statement made by a Church leader decades ago that seems incongruent with our doctrine. There is an important principle that governs the doctrine of the Church. The doctrine is taught by all 15 members of the First Presidency and Quorum of the Twelve. It is not hidden in an obscure paragraph of one talk. True principles are taught frequently and by many. Our doctrine is not difficult to find."
 
-From Elder D. Todd Christofferson's ["The Doctrine of Christ"](../gospel-library/eng/general-conference/2012/04/the-doctrine-of-christ.md) (April 2012):
+From Elder D. Todd Christofferson's ["The Doctrine of Christ"](https://www.churchofjesuschrist.org/study/general-conference/2012/04/the-doctrine-of-christ?lang=eng) (April 2012):
 
 > "At the same time it should be remembered that not every statement made by a Church leader, past or present, necessarily constitutes doctrine. It is commonly understood in the Church that a statement made by one leader on a single occasion often represents a personal, though well-considered, opinion, not meant to be official or binding for the whole Church."
 
@@ -150,7 +150,7 @@ From Elder D. Todd Christofferson's ["The Doctrine of Christ"](../gospel-library
 - Cultural traditions
 
 > "A prophet \[is\] a prophet only when he \[is\] acting as such."
-> — Joseph Smith, *History of the Church,* 5:265; quoted in Elder D. Todd Christofferson, ["The Doctrine of Christ"](../gospel-library/eng/general-conference/2012/04/the-doctrine-of-christ.md) (April 2012)
+> — Joseph Smith, *History of the Church,* 5:265; quoted in Elder D. Todd Christofferson, ["The Doctrine of Christ"](https://www.churchofjesuschrist.org/study/general-conference/2012/04/the-doctrine-of-christ?lang=eng) (April 2012)
 
 ---
 
@@ -195,29 +195,29 @@ The Church operates in 170+ countries. Policies must adapt to local laws, cultur
 ## Scripture References
 
 ### On Doctrine
-- [3 Nephi 11:31-40](../gospel-library/eng/scriptures/bofm/3-ne/11.md) — The doctrine of Christ defined
-- [2 Nephi 31:2, 21](../gospel-library/eng/scriptures/bofm/2-ne/31.md) — The doctrine of Christ
-- [D&C 10:62-63](../gospel-library/eng/scriptures/dc-testament/dc/10.md) — Build upon Christ's doctrine
-- [John 7:16-17](../gospel-library/eng/scriptures/nt/john/7.md) — Christ's doctrine is the Father's
+- [3 Nephi 11:31-40](https://www.churchofjesuschrist.org/study/scriptures/bofm/3-ne/11?lang=eng&id=p31-p40#p31) — The doctrine of Christ defined
+- [2 Nephi 31:2, 21](https://www.churchofjesuschrist.org/study/scriptures/bofm/2-ne/31?lang=eng&id=p2#p2) — The doctrine of Christ
+- [D&C 10:62-63](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/10?lang=eng&id=p62-p63#p62) — Build upon Christ's doctrine
+- [John 7:16-17](https://www.churchofjesuschrist.org/study/scriptures/nt/john/7?lang=eng&id=p16-p17#p16) — Christ's doctrine is the Father's
 
 ### On Unchanging Truth
-- [Mormon 9:9](../gospel-library/eng/scriptures/bofm/morm/9.md) — God is the same yesterday, today, forever
-- [Hebrews 13:8](../gospel-library/eng/scriptures/nt/heb/13.md) — Jesus Christ the same yesterday, today, forever
-- [D&C 1:38](../gospel-library/eng/scriptures/dc-testament/dc/1.md) — Lord's word shall all be fulfilled
+- [Mormon 9:9](https://www.churchofjesuschrist.org/study/scriptures/bofm/morm/9?lang=eng&id=p9#p9) — God is the same yesterday, today, forever
+- [Hebrews 13:8](https://www.churchofjesuschrist.org/study/scriptures/nt/heb/13?lang=eng&id=p8#p8) — Jesus Christ the same yesterday, today, forever
+- [D&C 1:38](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/1?lang=eng&id=p38#p38) — Lord's word shall all be fulfilled
 
 ### On Revelation and Adaptation
-- [D&C 28:2](../gospel-library/eng/scriptures/dc-testament/dc/28.md) — Revelation comes through proper channels
-- [Articles of Faith 1:9](../gospel-library/eng/scriptures/pgp/a-of-f/1.md) — We believe God will yet reveal many things
-- [Acts 15:1-29](../gospel-library/eng/scriptures/nt/acts/15.md) — Jerusalem Council pattern
+- [D&C 28:2](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/28?lang=eng&id=p2#p2) — Revelation comes through proper channels
+- [Articles of Faith 1:9](https://www.churchofjesuschrist.org/study/scriptures/pgp/a-of-f/1?lang=eng&id=p9#p9) — We believe God will yet reveal many things
+- [Acts 15:1-29](https://www.churchofjesuschrist.org/study/scriptures/nt/acts/15?lang=eng&id=p1-p29#p1) — Jerusalem Council pattern
 
 ---
 
 ## Conference Talk References
 
-- Elder D. Todd Christofferson, ["The Doctrine of Christ"](../gospel-library/eng/general-conference/2012/04/the-doctrine-of-christ.md) (April 2012) — How doctrine is established; source of Joseph Smith quotes
-- Elder Neil L. Andersen, ["Trial of Your Faith"](../gospel-library/eng/general-conference/2012/10/trial-of-your-faith.md) (October 2012) — "Doctrine is taught by all 15 members"
-- President Boyd K. Packer, ["Little Children"](../gospel-library/eng/general-conference/1986/10/little-children.md) (October 1986) — "True doctrine, understood, changes attitudes and behavior"
-- Elder Joseph B. Wirthlin, ["Deep Roots"](../gospel-library/eng/general-conference/1994/10/deep-roots.md) (October 1994) — "Simple, basic truths" as foundation
+- Elder D. Todd Christofferson, ["The Doctrine of Christ"](https://www.churchofjesuschrist.org/study/general-conference/2012/04/the-doctrine-of-christ?lang=eng) (April 2012) — How doctrine is established; source of Joseph Smith quotes
+- Elder Neil L. Andersen, ["Trial of Your Faith"](https://www.churchofjesuschrist.org/study/general-conference/2012/10/trial-of-your-faith?lang=eng) (October 2012) — "Doctrine is taught by all 15 members"
+- President Boyd K. Packer, ["Little Children"](https://www.churchofjesuschrist.org/study/general-conference/1986/10/little-children?lang=eng) (October 1986) — "True doctrine, understood, changes attitudes and behavior"
+- Elder Joseph B. Wirthlin, ["Deep Roots"](https://www.churchofjesuschrist.org/study/general-conference/1994/10/deep-roots?lang=eng) (October 1994) — "Simple, basic truths" as foundation
 
 ---
 
@@ -246,7 +246,7 @@ Understanding this framework helps me:
 - **Distinguish** between "the Lord said" (doctrine) and "the Church currently does" (policy)
 
 > "The simple, basic truths the Savior taught and exemplified have the greatest power to change our lives—truths about His Atonement, the plan of salvation, the commandments to love God and love our neighbor, and so on."
-> — ["Teach the Doctrine," Teaching in the Savior's Way](../gospel-library/eng/manual/teaching-in-the-saviors-way-2022/07-part-2/10-teach-the-doctrine.md)
+> — ["Teach the Doctrine," Teaching in the Savior's Way](https://www.churchofjesuschrist.org/study/manual/teaching-in-the-saviors-way-2022/07-part-2/10-teach-the-doctrine?lang=eng)
 
 ---
 
