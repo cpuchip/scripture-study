@@ -89,6 +89,37 @@ Gospel Library content is downloaded and converted from the Church's official Go
 - Scriptures, manuals, conference talks, and other materials
 - See `/scripts/gospel-library/` for download utilities
 
+### Prefer Local Copies
+
+**IMPORTANT:** When referencing Church content, prefer the locally cached copies in `/gospel-library/` over linking to the website. This enables:
+- Offline access and faster loading
+- Direct markdown links that work in VS Code preview
+- Consistent formatting across study materials
+- Full-text search within VS Code
+
+If content hasn't been downloaded yet, note it for future download. The download is ongoing—not all content is cached yet.
+
+### Resource Locations Quick Reference
+
+| Resource | Local Path | Notes |
+|----------|-----------|-------|
+| **Scriptures** | `/gospel-library/eng/scriptures/` | |
+| — Old Testament | `/gospel-library/eng/scriptures/ot/` | Books: `gen/`, `ex/`, `lev/`, `isa/`, etc. |
+| — New Testament | `/gospel-library/eng/scriptures/nt/` | Books: `matt/`, `mark/`, `john/`, `acts/`, `rom/`, etc. |
+| — Book of Mormon | `/gospel-library/eng/scriptures/bofm/` | Books: `1-ne/`, `2-ne/`, `alma/`, `3-ne/`, `moro/`, etc. |
+| — Doctrine & Covenants | `/gospel-library/eng/scriptures/dc-testament/dc/` | Sections: `1.md`, `2.md`, ... `138.md` |
+| — Pearl of Great Price | `/gospel-library/eng/scriptures/pgp/` | Books: `moses/`, `abr/`, `js-m/`, `js-h/`, `a-of-f/` |
+| — Topical Guide | `/gospel-library/eng/scriptures/tg/` | Topics A-Z |
+| — Bible Dictionary | `/gospel-library/eng/scriptures/bd/` | Entries A-Z |
+| **General Conference** | `/gospel-library/eng/general-conference/{year}/{month}/` | Years 1971-2025; months `04/` and `10/` |
+| **General Handbook** | `/gospel-library/eng/manual/general-handbook/` | Current handbook |
+| **Come, Follow Me** | `/gospel-library/eng/manual/come-follow-me-*` | Multiple manuals by year/audience |
+| — OT 2026 | `/gospel-library/eng/manual/come-follow-me-for-home-and-church-old-testament-2026/` | Current year |
+| **Teaching in the Savior's Way** | `/gospel-library/eng/manual/teaching-in-the-saviors-way-2022/` | Core teaching manual |
+| **Teachings of Presidents** | `/gospel-library/eng/manual/teachings-{president}/` | 17 presidents |
+| **Liahona Magazine** | `/gospel-library/eng/liahona/{year}/{month}/` | Current magazine |
+| **Ensign Magazine** | `/gospel-library/eng/ensign/{year}/{month}/` | Historical magazine (merged into Liahona) |
+
 ## AI Study Guidelines
 
 When studying scriptures:
@@ -158,6 +189,15 @@ When citing conference talks:
 
 When citing manuals or lessons:
 - `[Teaching in the Savior's Way](../gospel-library/eng/manual/teaching-in-the-saviors-way-2022/)`
+- `[General Handbook](../gospel-library/eng/manual/general-handbook/)`
+- `[Come, Follow Me - OT 2026](../gospel-library/eng/manual/come-follow-me-for-home-and-church-old-testament-2026/)`
+- `[Teachings: Joseph Smith](../gospel-library/eng/manual/teachings-joseph-smith/)`
+
+### Magazine Reference Links
+
+When citing magazine articles:
+- `[Liahona, January 2026](../gospel-library/eng/liahona/2026/01/)`
+- `[Ensign, October 2020](../gospel-library/eng/ensign/2020/10/)` (historical)
 
 ## Workflows
 
