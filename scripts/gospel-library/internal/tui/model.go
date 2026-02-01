@@ -41,6 +41,30 @@ func (i NavItem) Title() string       { return i.title }
 func (i NavItem) Description() string { return i.desc }
 func (i NavItem) FilterValue() string { return i.title }
 
+// getTeachingsOfPresidentsItems returns the hardcoded list of Teachings of Presidents books.
+// The URIs are inconsistent in the Church API - some use long form, some short form.
+func getTeachingsOfPresidentsItems() []NavItem {
+	return []NavItem{
+		{title: "Teachings: Russell M. Nelson", desc: "17th President of the Church", uri: "/manual/teachings-of-presidents-of-the-church-russell-m-nelson", itemType: "collection"},
+		{title: "Teachings: Thomas S. Monson", desc: "16th President of the Church", uri: "/manual/teachings-of-presidents-of-the-church-thomas-s-monson", itemType: "collection"},
+		{title: "Teachings: Gordon B. Hinckley", desc: "15th President of the Church", uri: "/manual/teachings-of-presidents-of-the-church-gordon-b-hinckley", itemType: "collection"},
+		{title: "Teachings: Howard W. Hunter", desc: "14th President of the Church", uri: "/manual/teachings-of-presidents-of-the-church-howard-w-hunter", itemType: "collection"},
+		{title: "Teachings: Ezra Taft Benson", desc: "13th President of the Church", uri: "/manual/teachings-of-presidents-of-the-church-ezra-taft-benson", itemType: "collection"},
+		{title: "Teachings: Spencer W. Kimball", desc: "12th President of the Church", uri: "/manual/teachings-spencer-w-kimball", itemType: "collection"},
+		{title: "Teachings: Harold B. Lee", desc: "11th President of the Church", uri: "/manual/teachings-harold-b-lee", itemType: "collection"},
+		{title: "Teachings: Joseph Fielding Smith", desc: "10th President of the Church", uri: "/manual/teachings-of-presidents-of-the-church-joseph-fielding-smith", itemType: "collection"},
+		{title: "Teachings: David O. McKay", desc: "9th President of the Church", uri: "/manual/teachings-david-o-mckay", itemType: "collection"},
+		{title: "Teachings: George Albert Smith", desc: "8th President of the Church", uri: "/manual/teachings-george-albert-smith", itemType: "collection"},
+		{title: "Teachings: Heber J. Grant", desc: "7th President of the Church", uri: "/manual/teachings-heber-j-grant", itemType: "collection"},
+		{title: "Teachings: Joseph F. Smith", desc: "6th President of the Church", uri: "/manual/teachings-joseph-f-smith", itemType: "collection"},
+		{title: "Teachings: Lorenzo Snow", desc: "5th President of the Church", uri: "/manual/teachings-of-presidents-of-the-church-lorenzo-snow", itemType: "collection"},
+		{title: "Teachings: Wilford Woodruff", desc: "4th President of the Church", uri: "/manual/teachings-wilford-woodruff", itemType: "collection"},
+		{title: "Teachings: John Taylor", desc: "3rd President of the Church", uri: "/manual/teachings-john-taylor", itemType: "collection"},
+		{title: "Teachings: Brigham Young", desc: "2nd President of the Church", uri: "/manual/teachings-brigham-young", itemType: "collection"},
+		{title: "Teachings: Joseph Smith", desc: "1st President of the Church", uri: "/manual/teachings-joseph-smith", itemType: "collection"},
+	}
+}
+
 // Model is the main TUI model.
 type Model struct {
 	// Core components
@@ -211,6 +235,7 @@ func (m Model) loadRoot() tea.Cmd {
 			{title: "Come, Follow Me", desc: "Home-centered study curriculum", uri: "/come-follow-me", itemType: "collection"},
 			{title: "Manuals", desc: "Handbooks and callings resources", uri: "/handbooks-and-callings", itemType: "collection"},
 			{title: "Magazines", desc: "Ensign, Liahona, and more", uri: "/magazines", itemType: "collection"},
+			{title: "Teachings of Presidents", desc: "Teachings from Church Presidents", uri: "/teachings-of-presidents", itemType: "collection"},
 		}
 		return loadedMsg{items: items, title: "Gospel Library"}
 	}
@@ -219,6 +244,14 @@ func (m Model) loadRoot() tea.Cmd {
 // loadCollection loads a collection from the API.
 func (m Model) loadCollection(uri string) tea.Cmd {
 	return func() tea.Msg {
+		// Handle custom "Teachings of Presidents" collection
+		if uri == "/teachings-of-presidents" {
+			return loadedMsg{
+				items: getTeachingsOfPresidentsItems(),
+				title: "Teachings of Presidents",
+			}
+		}
+
 		ctx := context.Background()
 
 		// Try to get as a collection first
@@ -709,6 +742,7 @@ func (m Model) refreshCurrentView() tea.Cmd {
 				{title: "Come, Follow Me", desc: "Home-centered study curriculum", uri: "/come-follow-me", itemType: "collection"},
 				{title: "Manuals", desc: "Handbooks and callings resources", uri: "/handbooks-and-callings", itemType: "collection"},
 				{title: "Magazines", desc: "Ensign, Liahona, and more", uri: "/magazines", itemType: "collection"},
+				{title: "Teachings of Presidents", desc: "Teachings from Church Presidents", uri: "/teachings-of-presidents", itemType: "collection"},
 			}
 			return loadedMsg{items: items, title: "Gospel Library"}
 		}
@@ -716,6 +750,14 @@ func (m Model) refreshCurrentView() tea.Cmd {
 		// Otherwise reload current location
 		ctx := context.Background()
 		uri := m.currentURI
+
+		// Handle custom "Teachings of Presidents" collection
+		if uri == "/teachings-of-presidents" {
+			return loadedMsg{
+				items: getTeachingsOfPresidentsItems(),
+				title: "Teachings of Presidents",
+			}
+		}
 
 		// Try collection first
 		collection, _, err := m.client.GetCollection(ctx, uri)
