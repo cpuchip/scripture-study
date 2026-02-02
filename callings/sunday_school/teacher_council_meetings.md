@@ -130,33 +130,49 @@ Invite participants to share:
 
 Teaching in the Savior's Way teaches **five core principles**:
 
-### Focus on Jesus Christ
-- Teach about Jesus Christ no matter what you are teaching
-- Help learners come unto Jesus Christ
+### 1. Focus on Jesus Christ
+This principle has two essential parts:
 
-### Love Those You Teach
+**Teach about Jesus Christ No Matter What You Are Teaching**
+- Emphasize the example of Jesus Christ
+- Teach about the titles, roles, and attributes of Jesus Christ
+- Look for symbols that testify of Jesus Christ
+
+**Help Learners Come unto Jesus Christ**
+- Help learners recognize the Lord's love, power, and mercy in their lives
+- Help learners strengthen their relationship with Heavenly Father and Jesus Christ
+- Help learners intentionally strive to be more like Jesus Christ
+
+> "Our ultimate goal in this life is to become more like our Heavenly Father and return to Him. The way we accomplish that goal is by coming unto Jesus Christ."
+> — [Teaching in the Savior's Way](../../gospel-library/eng/manual/teaching-in-the-saviors-way-2022/04-part-1/06-help-learners-come-unto-christ.md)
+
+### 2. Love Those You Teach
 - See learners the way God sees them
 - Seek to know them—understand their circumstances, needs, and strengths
 - Pray for them by name
-- Create a safe environment
+- Create a safe environment where all are respected and know their contributions are valued
 - Find appropriate ways to express your love
 
-### Teach by the Spirit
+### 3. Teach by the Spirit
 - Prepare yourself spiritually
-- Respond to spiritual promptings
-- Create opportunities for learners to be taught by the Holy Ghost
-- Bear testimony often
+- Always be ready to respond to spiritual promptings about the needs of learners
+- Create settings and opportunities for learners to be taught by the Holy Ghost
+- Help learners seek, recognize, and act on personal revelation
+- Bear testimony often, and invite learners to share their feelings, experiences, and testimonies
 
-### Teach the Doctrine
-- Learn the doctrine yourself
-- Teach from scriptures and latter-day prophets
-- Focus on truths that lead to conversion
-- Help learners find personal relevance
+### 4. Teach the Doctrine
+- Learn the doctrine of Jesus Christ for yourself
+- Teach from the scriptures and the words of latter-day prophets
+- Help learners seek, recognize, and understand truths in the scriptures
+- Focus on truths that lead to conversion and build faith in Jesus Christ
+- Help learners find personal relevance in the doctrine of Jesus Christ
 
-### Invite Diligent Learning
+### 5. Invite Diligent Learning
 - Help learners take responsibility for their learning
-- Encourage daily gospel study
-- Invite learners to prepare, share, and live what they're learning
+- Encourage learners to come to know the Savior by studying the gospel daily
+- Invite learners to prepare to learn
+- Encourage learners to share the truths they are learning
+- Invite learners to live what they are learning
 
 ---
 
