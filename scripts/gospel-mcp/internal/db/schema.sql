@@ -181,6 +181,46 @@ CREATE INDEX IF NOT EXISTS idx_cross_ref_source ON cross_references(source_volum
 CREATE INDEX IF NOT EXISTS idx_cross_ref_target ON cross_references(target_volume, target_book, target_chapter, target_verse);
 
 -- ============================================================================
+-- BOOKS (Additional study materials: Lectures on Faith, etc.)
+-- ============================================================================
+
+-- Books are additional study materials in the ./books directory
+CREATE TABLE IF NOT EXISTS books (
+    id INTEGER PRIMARY KEY,
+    collection TEXT NOT NULL,    -- 'lecture-on-faith', etc.
+    section TEXT NOT NULL,       -- '01_lecture_1', '02_lecture_2', etc.
+    title TEXT NOT NULL,
+    content TEXT NOT NULL,       -- Full section markdown
+    file_path TEXT NOT NULL,     -- Relative path: 'books/lecture-on-faith/01_lecture_1.md'
+    
+    UNIQUE(file_path)
+);
+
+CREATE INDEX IF NOT EXISTS idx_books_collection ON books(collection);
+
+-- Full-text search on books
+CREATE VIRTUAL TABLE IF NOT EXISTS books_fts USING fts5(
+    title,
+    content,
+    content='books',
+    content_rowid='id'
+);
+
+-- Triggers to keep FTS index in sync
+CREATE TRIGGER IF NOT EXISTS books_ai AFTER INSERT ON books BEGIN
+    INSERT INTO books_fts(rowid, title, content) VALUES (new.id, new.title, new.content);
+END;
+
+CREATE TRIGGER IF NOT EXISTS books_ad AFTER DELETE ON books BEGIN
+    INSERT INTO books_fts(books_fts, rowid, title, content) VALUES('delete', old.id, old.title, old.content);
+END;
+
+CREATE TRIGGER IF NOT EXISTS books_au AFTER UPDATE ON books BEGIN
+    INSERT INTO books_fts(books_fts, rowid, title, content) VALUES('delete', old.id, old.title, old.content);
+    INSERT INTO books_fts(rowid, title, content) VALUES (new.id, new.title, new.content);
+END;
+
+-- ============================================================================
 -- INDEX METADATA
 -- ============================================================================
 

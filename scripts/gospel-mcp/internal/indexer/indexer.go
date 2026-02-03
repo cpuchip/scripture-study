@@ -32,6 +32,7 @@ type Result struct {
 	ChaptersIndexed   int
 	TalksIndexed      int
 	ManualsIndexed    int
+	BooksIndexed      int
 	CrossRefsIndexed  int
 	Errors            []string
 }
@@ -49,7 +50,7 @@ func (idx *Indexer) Index(opts Options) (*Result, error) {
 	result := &Result{}
 
 	// Determine which sources to index
-	sources := []string{"scriptures", "conference", "manual", "magazine"}
+	sources := []string{"scriptures", "conference", "manual", "magazine", "books"}
 	if opts.Source != "" {
 		sources = []string{opts.Source}
 	}
@@ -80,6 +81,9 @@ func (idx *Indexer) indexSource(source string, opts Options, result *Result) err
 	case "magazine":
 		basePath = filepath.Join(idx.root, "gospel-library", "eng", "liahona")
 		handler = idx.indexMagazineFile
+	case "books":
+		basePath = filepath.Join(idx.root, "books")
+		handler = idx.indexBooksFile
 	default:
 		return fmt.Errorf("unknown source: %s", source)
 	}

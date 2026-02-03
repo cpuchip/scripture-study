@@ -3,6 +3,7 @@ package tools
 import (
 	"encoding/json"
 	"fmt"
+	"path/filepath"
 	"strings"
 	"time"
 )
@@ -70,6 +71,15 @@ func (t *Tools) Search(args json.RawMessage) (*SearchResponse, error) {
 		results = append(results, manualResults...)
 	}
 
+	// Search books
+	if params.Source == "all" || params.Source == "books" {
+		bookResults, err := t.searchBooks(params)
+		if err != nil {
+			return nil, fmt.Errorf("searching books: %w", err)
+		}
+		results = append(results, bookResults...)
+	}
+
 	// Limit results
 	if len(results) > params.Limit {
 		results = results[:params.Limit]
@@ -128,12 +138,13 @@ func (t *Tools) searchScriptures(params SearchParams) ([]SearchResult, error) {
 		ref := formatScriptureRef(volume, book, chapter, verse)
 
 		result := SearchResult{
-			Reference:  ref,
-			Title:      formatChapterTitle(volume, book, chapter),
-			Excerpt:    excerpt,
-			FilePath:   filePath,
-			SourceURL:  sourceURL,
-			SourceType: "scripture",
+			Reference:    ref,
+			Title:        formatChapterTitle(volume, book, chapter),
+			Excerpt:      excerpt,
+			FilePath:     filePath,
+			MarkdownLink: generateMarkdownLink(ref, filePath),
+			SourceURL:    sourceURL,
+			SourceType:   "scripture",
 		}
 
 		if params.IncludeContent {
@@ -192,13 +203,17 @@ func (t *Tools) searchTalks(params SearchParams) ([]SearchResult, error) {
 			continue
 		}
 
+		ref := fmt.Sprintf("%s, %s %d", speaker, monthName(month), year)
+		mdLink := generateTalkMarkdownLink(speaker, title, filePath)
+
 		result := SearchResult{
-			Reference:  fmt.Sprintf("%s, %s %d", speaker, monthName(month), year),
-			Title:      title,
-			Excerpt:    excerpt,
-			FilePath:   filePath,
-			SourceURL:  sourceURL,
-			SourceType: "conference",
+			Reference:    ref,
+			Title:        title,
+			Excerpt:      excerpt,
+			FilePath:     filePath,
+			MarkdownLink: mdLink,
+			SourceURL:    sourceURL,
+			SourceType:   "conference",
 		}
 
 		results = append(results, result)
@@ -252,12 +267,72 @@ func (t *Tools) searchManuals(params SearchParams) ([]SearchResult, error) {
 		}
 
 		result := SearchResult{
-			Reference:  title,
-			Title:      formatCollectionTitle(collectionID),
-			Excerpt:    excerpt,
-			FilePath:   filePath,
-			SourceURL:  sourceURL,
-			SourceType: contentType,
+			Reference:    title,
+			Title:        formatCollectionTitle(collectionID),
+			Excerpt:      excerpt,
+			FilePath:     filePath,
+			MarkdownLink: generateMarkdownLink(title, filePath),
+			SourceURL:    sourceURL,
+			SourceType:   contentType,
+		}
+
+		results = append(results, result)
+	}
+
+	return results, nil
+}
+
+func (t *Tools) searchBooks(params SearchParams) ([]SearchResult, error) {
+	ftsQuery := buildFTSQuery(params.Query)
+
+	query := `
+		SELECT b.id, b.collection, b.section, b.title, b.content, b.file_path,
+		       snippet(books_fts, 1, '**', '**', '...', 64) as excerpt
+		FROM books_fts
+		JOIN books b ON books_fts.rowid = b.id
+		WHERE books_fts MATCH ?
+	`
+
+	args := []interface{}{ftsQuery}
+
+	// Add path filter
+	if params.Path != "" {
+		query += " AND (b.file_path LIKE ? OR b.collection LIKE ?)"
+		args = append(args, "%"+params.Path+"%", "%"+params.Path+"%")
+	}
+
+	query += " ORDER BY rank LIMIT ?"
+	args = append(args, params.Limit)
+
+	rows, err := t.db.Query(query, args...)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+
+	var results []SearchResult
+	for rows.Next() {
+		var id int
+		var collection, section, title, content, filePath, excerpt string
+
+		if err := rows.Scan(&id, &collection, &section, &title, &content, &filePath, &excerpt); err != nil {
+			continue
+		}
+
+		// Format reference like "Lectures on Faith, Lecture 1"
+		ref := fmt.Sprintf("%s, %s", formatCollectionTitle(collection), title)
+
+		result := SearchResult{
+			Reference:    ref,
+			Title:        formatCollectionTitle(collection),
+			Excerpt:      excerpt,
+			FilePath:     filePath,
+			MarkdownLink: generateMarkdownLink(title, filePath),
+			SourceType:   "book",
+		}
+
+		if params.IncludeContent {
+			result.Content = content
 		}
 
 		results = append(results, result)
@@ -431,4 +506,33 @@ func derefInt(p *int) int {
 		return 0
 	}
 	return *p
+}
+
+// generateMarkdownLink creates a markdown link from reference text and file path.
+// It converts Windows paths to forward slashes and prepends ../ for relative paths.
+func generateMarkdownLink(displayText, filePath string) string {
+	// Convert Windows paths to forward slashes
+	linkPath := filepath.ToSlash(filePath)
+
+	// Prepend ../ to make it relative from study documents
+	if !strings.HasPrefix(linkPath, "../") && !strings.HasPrefix(linkPath, "/") {
+		linkPath = "../" + linkPath
+	}
+
+	return fmt.Sprintf("[%s](%s)", displayText, linkPath)
+}
+
+// generateTalkMarkdownLink creates a markdown link for conference talks.
+// Format: [Speaker, "Title"](path)
+func generateTalkMarkdownLink(speaker, title, filePath string) string {
+	// Convert Windows paths to forward slashes
+	linkPath := filepath.ToSlash(filePath)
+
+	// Prepend ../ to make it relative from study documents
+	if !strings.HasPrefix(linkPath, "../") && !strings.HasPrefix(linkPath, "/") {
+		linkPath = "../" + linkPath
+	}
+
+	displayText := fmt.Sprintf("%s, \"%s\"", speaker, title)
+	return fmt.Sprintf("[%s](%s)", displayText, linkPath)
 }
