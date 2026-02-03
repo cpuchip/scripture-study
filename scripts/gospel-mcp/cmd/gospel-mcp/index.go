@@ -94,6 +94,7 @@ func runIndex(args []string) error {
 	fmt.Printf("  Chapters indexed:   %d\n", result.ChaptersIndexed)
 	fmt.Printf("  Talks indexed:      %d\n", result.TalksIndexed)
 	fmt.Printf("  Manuals indexed:    %d\n", result.ManualsIndexed)
+	fmt.Printf("  Books indexed:      %d\n", result.BooksIndexed)
 	fmt.Printf("  Cross-refs found:   %d\n", result.CrossRefsIndexed)
 
 	if len(result.Errors) > 0 {
@@ -113,6 +114,7 @@ func runIndex(args []string) error {
 		fmt.Printf("  Chapters:   %d\n", stats.Chapters)
 		fmt.Printf("  Talks:      %d\n", stats.Talks)
 		fmt.Printf("  Manuals:    %d\n", stats.Manuals)
+		fmt.Printf("  Books:      %d\n", stats.Books)
 		fmt.Printf("  Cross-refs: %d\n", stats.CrossRefs)
 	}
 

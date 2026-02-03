@@ -31,6 +31,7 @@ type SearchResult struct {
 	ContextBefore     []string           `json:"context_before,omitempty"`
 	ContextAfter      []string           `json:"context_after,omitempty"`
 	FilePath          string             `json:"file_path"`
+	MarkdownLink      string             `json:"markdown_link"` // Pre-formatted markdown link for easy use in study documents
 	SourceURL         string             `json:"source_url"`
 	RelatedReferences []RelatedReference `json:"related_references,omitempty"`
 	SourceType        string             `json:"source_type"`

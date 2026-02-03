@@ -63,6 +63,8 @@ func (db *DB) Reset() error {
 	tables := []string{
 		"index_metadata",
 		"cross_references",
+		"books_fts",
+		"books",
 		"manuals_fts",
 		"manuals",
 		"talks_fts",
@@ -90,6 +92,7 @@ type Stats struct {
 	Chapters   int64
 	Talks      int64
 	Manuals    int64
+	Books      int64
 	CrossRefs  int64
 }
 
@@ -105,6 +108,7 @@ func (db *DB) GetStats() (*Stats, error) {
 		{"chapters", &stats.Chapters},
 		{"talks", &stats.Talks},
 		{"manuals", &stats.Manuals},
+		{"books", &stats.Books},
 		{"cross_references", &stats.CrossRefs},
 	}
 

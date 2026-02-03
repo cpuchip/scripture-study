@@ -96,8 +96,8 @@ func (s *Server) handleListTools(req *Request) {
 					},
 					"source": {
 						Type:        "string",
-						Description: "Filter by content type: scriptures, conference, manual, magazine, or all (default).",
-						Enum:        []string{"scriptures", "conference", "manual", "magazine", "all"},
+						Description: "Filter by content type: scriptures, conference, manual, magazine, books, or all (default).",
+						Enum:        []string{"scriptures", "conference", "manual", "magazine", "books", "all"},
 					},
 					"path": {
 						Type:        "string",
@@ -152,8 +152,8 @@ func (s *Server) handleListTools(req *Request) {
 				Properties: map[string]JSONSchemaProperty{
 					"source": {
 						Type:        "string",
-						Description: "Content type: scriptures, conference, manual, magazine, or all.",
-						Enum:        []string{"scriptures", "conference", "manual", "magazine", "all"},
+						Description: "Content type: scriptures, conference, manual, magazine, books, or all.",
+						Enum:        []string{"scriptures", "conference", "manual", "magazine", "books", "all"},
 					},
 					"path": {
 						Type:        "string",
