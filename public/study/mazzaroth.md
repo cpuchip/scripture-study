@@ -16,7 +16,7 @@
 
 ## The Mazzaroth in Scripture
 
-### Job 38:31-33 — The Only Mention of "Mazzaroth"
+### [Job 38:31-33](https://www.churchofjesuschrist.org/study/scriptures/ot/job/38?lang=eng&id=p31-p33#p31) — The Only Mention of "Mazzaroth"
 
 > "Canst thou bind the sweet influences of **Pleiades**, or loose the bands of **Orion**? Canst thou bring forth **Mazzaroth** in his season? or canst thou guide **Arcturus** with his sons? Knowest thou the **ordinances of heaven**? canst thou set the dominion thereof in the earth?"
 > — [Job 38:31-33](https://www.churchofjesuschrist.org/study/scriptures/ot/job/38?lang=eng&id=p31-p33#p31)
@@ -45,7 +45,7 @@ The implication: Only God governs the heavens. Their orderly motion testifies of
 
 ## Celestial Lights Created for Signs
 
-### Genesis 1:14 — The Purpose of Heavenly Lights
+### [Genesis 1:14](https://www.churchofjesuschrist.org/study/scriptures/ot/gen/1?lang=eng&id=p14#p14) — The Purpose of Heavenly Lights
 
 > "And God said, Let there be lights in the firmament of the heaven to divide the day from the night; and let them be for **signs**, and for **seasons**, and for days, and years"
 > — [Genesis 1:14](https://www.churchofjesuschrist.org/study/scriptures/ot/gen/1?lang=eng&id=p14#p14)
@@ -65,7 +65,7 @@ This is not astrology (forbidden in scripture) but rather recognizing God's test
 
 ## The Bridegroom Coming from His Chamber
 
-### Psalm 19:1-6 — The Heavens Declare God's Glory
+### [Psalm 19:1-6](https://www.churchofjesuschrist.org/study/scriptures/ot/ps/19?lang=eng&id=p1-p6#p1) — The Heavens Declare God's Glory
 
 > "**The heavens declare the glory of God**; and the firmament sheweth his handywork. Day unto day uttereth speech, and night unto night sheweth knowledge. There is no speech nor language, where their voice is not heard. Their line is gone out through all the earth, and their words to the end of the world. In them hath he set a **tabernacle for the sun**, Which is as a **bridegroom coming out of his chamber**, and rejoiceth as a strong man to run a race. His going forth is from the end of the heaven, and his **circuit** unto the ends of it: and there is nothing hid from the heat thereof."
 > — [Psalm 19:1-6](https://www.churchofjesuschrist.org/study/scriptures/ot/ps/19?lang=eng&id=p1-p6#p1)
@@ -85,14 +85,14 @@ If the Mazzaroth (zodiac constellations) represents the sun's yearly path, then 
 
 ## Celestial Witnesses of God's Power
 
-### D&C 88:42-47 — The Stars Roll in Their Glory
+### [D&C 88:42-47](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/88?lang=eng&id=p42-p47#p42) — The Stars Roll in Their Glory
 
 > "And again, verily I say unto you, he hath given a law unto all things, by which they move in their times and their seasons; And their courses are fixed, even the courses of the heavens and the earth, which comprehend the earth and all the planets. And they give light to each other in their times and in their seasons, in their minutes, in their hours, in their days, in their weeks, in their months, in their years—all these are one year with God, but not with man. The earth rolls upon her wings, and the sun giveth his light by day, and the moon giveth her light by night, and **the stars also give their light, as they roll upon their wings in their glory, in the midst of the power of God**. Unto what shall I liken these kingdoms, that ye may understand? Behold, all these are kingdoms, and **any man who hath seen any or the least of these hath seen God moving in his majesty and power**."
 > — [D&C 88:42-47](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/88?lang=eng&id=p42-p47#p42)
 
 **Key Doctrine**: To see the stars rolling in their courses is to see **God moving in His majesty and power**. The heavens are not random—they testify of divine order.
 
-### Abraham 3:1-4 — Kolob and the Governing Stars
+### [Abraham 3:1-4](https://www.churchofjesuschrist.org/study/scriptures/pgp/abr/3?lang=eng&id=p1-p4#p1) — Kolob and the Governing Stars
 
 > "And I, Abraham, had the Urim and Thummim... And I saw the stars, that they were very great, and that one of them was nearest unto the throne of God; and there were many great ones which were near unto it; And the Lord said unto me: These are the **governing ones**; and the name of the great one is **Kolob**, because it is near unto me, for I am the Lord thy God: I have set this one to **govern all those which belong to the same order** as that upon which thou standest."
 > — [Abraham 3:1-4](https://www.churchofjesuschrist.org/study/scriptures/pgp/abr/3?lang=eng&id=p1-p4#p1)
@@ -103,7 +103,7 @@ The stars have governing relationships—some are "governing ones" that set the 
 
 ## Signs of the Second Coming in the Heavens
 
-### D&C 45:39-42, 56 — Signs Shown Forth in the Heavens
+### [D&C 45:39-42, 56](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/45?lang=eng&id=p39-p42#p39) — Signs Shown Forth in the Heavens
 
 > "And it shall come to pass that he that feareth me shall be **looking forth for the great day of the Lord to come**, even for the **signs of the coming of the Son of Man**. And they shall see signs and wonders, for they shall be shown forth in the **heavens above**, and in the earth beneath... the sun shall be **darkened**, and the moon be turned into **blood**, and the **stars fall from heaven**... And at that day, when I shall come in my glory, shall the parable be fulfilled which I spake concerning the **ten virgins**."
 > — [D&C 45:39-42, 56](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/45?lang=eng&id=p39-p42#p39)
@@ -114,14 +114,14 @@ The stars have governing relationships—some are "governing ones" that set the 
 - Sun darkened, moon to blood, stars falling
 - The ten virgins parable is fulfilled at His coming
 
-### Matthew 24:29-30 — The Sign of the Son of Man
+### [Matthew 24:29-30](https://www.churchofjesuschrist.org/study/scriptures/nt/matt/24?lang=eng&id=p29-p30#p29) — The Sign of the Son of Man
 
 > "Immediately after the tribulation of those days shall the **sun be darkened**, and the **moon shall not give her light**, and the **stars shall fall from heaven**, and the powers of the heavens shall be shaken: And then shall appear the **sign of the Son of man in heaven**: and then shall all the tribes of the earth mourn, and they shall see the Son of man coming in the clouds of heaven with power and great glory."
 > — [Matthew 24:29-30](https://www.churchofjesuschrist.org/study/scriptures/nt/matt/24?lang=eng&id=p29-p30#p29)
 
 See also [JS-Matthew 1:33-36](https://www.churchofjesuschrist.org/study/scriptures/pgp/js-m/1?lang=eng&id=p33-p36#p33) for Joseph Smith's inspired expansion.
 
-### Joel 2:30-31 — Wonders in the Heavens
+### [Joel 2:30-31](https://www.churchofjesuschrist.org/study/scriptures/ot/joel/2?lang=eng&id=p30-p31#p30) — Wonders in the Heavens
 
 > "And I will shew **wonders in the heavens** and in the earth, blood, and fire, and pillars of smoke. The **sun shall be turned into darkness**, and the **moon into blood**, before the great and the terrible day of the Lord come."
 > — [Joel 2:30-31](https://www.churchofjesuschrist.org/study/scriptures/ot/joel/2?lang=eng&id=p30-p31#p30)
@@ -130,17 +130,17 @@ See also [JS-Matthew 1:33-36](https://www.churchofjesuschrist.org/study/scriptur
 
 ## Celestial Signs at Christ's First Coming
 
-### Helaman 14:3-6 — Samuel the Lamanite's Prophecy
+### [Helaman 14:3-6](https://www.churchofjesuschrist.org/study/scriptures/bofm/hel/14?lang=eng&id=p3-p6#p3) — Samuel the Lamanite's Prophecy
 
 > "And behold, this will I give unto you for a **sign** at the time of his coming; for behold, there shall be **great lights in heaven**, insomuch that in the night before he cometh there shall be no darkness, insomuch that it shall appear unto man as if it was day... And behold, there shall a **new star** arise, such an one as ye never have beheld; and this also shall be a sign unto you. And behold this is not all, there shall be **many signs and wonders in heaven**."
 > — [Helaman 14:3-6](https://www.churchofjesuschrist.org/study/scriptures/bofm/hel/14?lang=eng&id=p3-p6#p3)
 
-### 3 Nephi 1:19-21 — The Sign Fulfilled
+### [3 Nephi 1:19-21](https://www.churchofjesuschrist.org/study/scriptures/bofm/3-ne/1?lang=eng&id=p19-p21#p19) — The Sign Fulfilled
 
 > "And it came to pass that there was no darkness in all that night, but it was as light as though it was mid-day. And it came to pass that the sun did rise in the morning again, according to its proper order; and they knew that it was the day that the Lord should be born, because of the **sign which had been given**... And it came to pass also that a **new star did appear**, according to the word."
 > — [3 Nephi 1:19-21](https://www.churchofjesuschrist.org/study/scriptures/bofm/3-ne/1?lang=eng&id=p19-p21#p19)
 
-### Matthew 2:1-2 — The Wise Men Follow the Star
+### [Matthew 2:1-2](https://www.churchofjesuschrist.org/study/scriptures/nt/matt/2?lang=eng&id=p1-p2#p1) — The Wise Men Follow the Star
 
 > "Now when Jesus was born in Bethlehem of Judæa in the days of Herod the king, behold, there came wise men from the east to Jerusalem, Saying, Where is he that is born King of the Jews? for we have seen **his star** in the east, and are come to worship him."
 > — [Matthew 2:1-2](https://www.churchofjesuschrist.org/study/scriptures/nt/matt/2?lang=eng&id=p1-p2#p1)
@@ -151,7 +151,7 @@ See also [JS-Matthew 1:33-36](https://www.churchofjesuschrist.org/study/scriptur
 
 ## Revelation 12 — Celestial Imagery
 
-### Revelation 12:1-3 — The Woman Clothed with the Sun
+### [Revelation 12:1-3](https://www.churchofjesuschrist.org/study/scriptures/nt/rev/12?lang=eng&id=p1-p3#p1) — The Woman Clothed with the Sun
 
 > "And there appeared a great wonder in heaven; a **woman clothed with the sun**, and the **moon under her feet**, and upon her head a **crown of twelve stars**: And she being with child cried, travailing in birth, and pained to be delivered. And there appeared another wonder in heaven; and behold a great red dragon..."
 > — [Revelation 12:1-3](https://www.churchofjesuschrist.org/study/scriptures/nt/rev/12?lang=eng&id=p1-p3#p1)
