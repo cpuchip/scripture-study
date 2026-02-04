@@ -1,0 +1,16 @@
+# Build artifacts
+webster-mcp.exe
+webster-mcp.exe~
+webster-mcp
+*.exe
+
+# SQLite database and WAL files
+gospel.db
+gospel.db-shm
+gospel.db-wal
+*.db
+*.db-shm
+*.db-wal
+
+# Go build cache (if building locally)
+__debug_bin*

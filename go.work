@@ -6,4 +6,5 @@ use (
 	./scripts/lectures-on-faith
 	./scripts/publish
 	./scripts/search-mcp
+	./scripts/webster-mcp
 )
