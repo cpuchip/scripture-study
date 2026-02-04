@@ -217,9 +217,9 @@ Players send cat astronauts on a rocket mission. Each round, dice are rolled to 
 | **Push Your Luck** | Faith vs. Fear | Must commit to the journey despite uncertainty |
 | **Collective Decision** | Zion/Unity | Group success requires shared commitment |
 | **Trust the Pilot** | Following Prophets/Christ | Someone must lead; others must trust |
-| **Graduated Rewards** | Greater Commitment = Greater Blessing | Those who stay longer receive more |
+| **Graduated Rewards** | Greater Commitment = Greater Blessing | Those who stay longer receive more | - note the parable of the workers in the field contradicts this, so should think more about that one.
 | **Bailing Out Early** | Ye of Little Faith | Safety is guaranteed but limits rewards |
-| **Crash Risk** | Trials and Testing | Not every mission succeeds; faith is tested |
+| **Crash Risk** | Trials and Testing | Not every mission succeeds; faith is tested | - maybe repentance?
 
 #### Deep Dive: The Faith/Commitment Mechanic
 
@@ -253,9 +253,9 @@ But individual choice remains: you can always eject. This respects agency while 
 ### Verdict: Exceptional Gospel Mechanic Potential ★★★★★
 The push-your-luck-with-collective-commitment mechanic is perhaps the most directly applicable to teaching faith. Players **experience** the tension of trusting when outcomes are uncertain.
 
-### 🌟 Creative Direction: 2025 Youth Theme Connection
+### 🌟 Creative Direction: 2026 Youth Theme Connection
 
-The MLEM mechanic connects powerfully to the **2025 Youth Theme** from [Moses 6:34](../gospel-library/eng/scriptures/pgp/moses/6.md):
+The MLEM mechanic connects powerfully to the **2026 Youth Theme** from [Moses 6:34](../gospel-library/eng/scriptures/pgp/moses/6.md):
 
 > "Behold my Spirit is upon you, wherefore all thy words will I justify; and the mountains shall flee before you, and the rivers shall turn from their course; and thou shalt abide in me, and I in you; **therefore walk with me.**"
 
