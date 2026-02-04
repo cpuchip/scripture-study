@@ -1,0 +1,7 @@
+# Build artifacts
+search-mcp.exe
+search-mcp
+*.exe
+
+# Go build cache (if building locally)
+__debug_bin*
