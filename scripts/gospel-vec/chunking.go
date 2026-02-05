@@ -277,56 +277,271 @@ func GetVerseTexts(chapter *ParsedChapter) []string {
 	return texts
 }
 
-// formatBookName converts directory names to readable book names
-func formatBookName(dirName string) string {
-	// Handle Book of Mormon books
-	bookNames := map[string]string{
-		"1-ne":   "1 Nephi",
-		"2-ne":   "2 Nephi",
-		"jacob":  "Jacob",
-		"enos":   "Enos",
-		"jarom":  "Jarom",
-		"omni":   "Omni",
-		"w-of-m": "Words of Mormon",
-		"mosiah": "Mosiah",
-		"alma":   "Alma",
-		"hel":    "Helaman",
-		"3-ne":   "3 Nephi",
-		"4-ne":   "4 Nephi",
-		"morm":   "Mormon",
-		"ether":  "Ether",
-		"moro":   "Moroni",
-		// D&C
-		"dc": "D&C",
-		// Pearl of Great Price
-		"moses":  "Moses",
-		"abr":    "Abraham",
-		"js-m":   "Joseph Smith—Matthew",
-		"js-h":   "Joseph Smith—History",
-		"a-of-f": "Articles of Faith",
-		// Old Testament (common ones)
-		"gen":  "Genesis",
-		"ex":   "Exodus",
-		"lev":  "Leviticus",
-		"num":  "Numbers",
-		"deut": "Deuteronomy",
-		"isa":  "Isaiah",
-		"jer":  "Jeremiah",
-		"ps":   "Psalms",
-		"prov": "Proverbs",
-		// New Testament (common ones)
-		"matt":  "Matthew",
-		"mark":  "Mark",
-		"luke":  "Luke",
-		"john":  "John",
-		"acts":  "Acts",
-		"rom":   "Romans",
-		"1-cor": "1 Corinthians",
-		"2-cor": "2 Corinthians",
-		"rev":   "Revelation",
+// bookNameMap maps directory names to canonical display names
+var bookNameMap = map[string]string{
+	// Book of Mormon
+	"1-ne":   "1 Nephi",
+	"2-ne":   "2 Nephi",
+	"jacob":  "Jacob",
+	"enos":   "Enos",
+	"jarom":  "Jarom",
+	"omni":   "Omni",
+	"w-of-m": "Words of Mormon",
+	"mosiah": "Mosiah",
+	"alma":   "Alma",
+	"hel":    "Helaman",
+	"3-ne":   "3 Nephi",
+	"4-ne":   "4 Nephi",
+	"morm":   "Mormon",
+	"ether":  "Ether",
+	"moro":   "Moroni",
+	// D&C
+	"dc": "D&C",
+	// Pearl of Great Price
+	"moses":  "Moses",
+	"abr":    "Abraham",
+	"js-m":   "Joseph Smith—Matthew",
+	"js-h":   "Joseph Smith—History",
+	"a-of-f": "Articles of Faith",
+	// Old Testament
+	"gen":   "Genesis",
+	"ex":    "Exodus",
+	"lev":   "Leviticus",
+	"num":   "Numbers",
+	"deut":  "Deuteronomy",
+	"josh":  "Joshua",
+	"judg":  "Judges",
+	"ruth":  "Ruth",
+	"1-sam": "1 Samuel",
+	"2-sam": "2 Samuel",
+	"1-kgs": "1 Kings",
+	"2-kgs": "2 Kings",
+	"1-chr": "1 Chronicles",
+	"2-chr": "2 Chronicles",
+	"ezra":  "Ezra",
+	"neh":   "Nehemiah",
+	"esth":  "Esther",
+	"job":   "Job",
+	"ps":    "Psalms",
+	"prov":  "Proverbs",
+	"eccl":  "Ecclesiastes",
+	"song":  "Song of Solomon",
+	"isa":   "Isaiah",
+	"jer":   "Jeremiah",
+	"lam":   "Lamentations",
+	"ezek":  "Ezekiel",
+	"dan":   "Daniel",
+	"hosea": "Hosea",
+	"joel":  "Joel",
+	"amos":  "Amos",
+	"obad":  "Obadiah",
+	"jonah": "Jonah",
+	"micah": "Micah",
+	"nahum": "Nahum",
+	"hab":   "Habakkuk",
+	"zeph":  "Zephaniah",
+	"hag":   "Haggai",
+	"zech":  "Zechariah",
+	"mal":   "Malachi",
+	// New Testament
+	"matt":   "Matthew",
+	"mark":   "Mark",
+	"luke":   "Luke",
+	"john":   "John",
+	"acts":   "Acts",
+	"rom":    "Romans",
+	"1-cor":  "1 Corinthians",
+	"2-cor":  "2 Corinthians",
+	"gal":    "Galatians",
+	"eph":    "Ephesians",
+	"philip": "Philippians",
+	"col":    "Colossians",
+	"1-thes": "1 Thessalonians",
+	"2-thes": "2 Thessalonians",
+	"1-tim":  "1 Timothy",
+	"2-tim":  "2 Timothy",
+	"titus":  "Titus",
+	"philem": "Philemon",
+	"heb":    "Hebrews",
+	"james":  "James",
+	"1-pet":  "1 Peter",
+	"2-pet":  "2 Peter",
+	"1-jn":   "1 John",
+	"2-jn":   "2 John",
+	"3-jn":   "3 John",
+	"jude":   "Jude",
+	"rev":    "Revelation",
+}
+
+// bookAliasMap maps common aliases to canonical display names
+// This allows users to type "dc", "D&C", "d&c", "doctrine and covenants" etc.
+var bookAliasMap = map[string]string{
+	// D&C aliases
+	"dc":                      "D&C",
+	"d&c":                     "D&C",
+	"doctrine and covenants":  "D&C",
+	"doctrine & covenants":    "D&C",
+	"doctrinne and covenants": "D&C", // common typo
+	"dc-testament":            "D&C",
+	// Book of Mormon aliases
+	"1 nephi":         "1 Nephi",
+	"1nephi":          "1 Nephi",
+	"1ne":             "1 Nephi",
+	"1-ne":            "1 Nephi",
+	"i nephi":         "1 Nephi",
+	"2 nephi":         "2 Nephi",
+	"2nephi":          "2 Nephi",
+	"2ne":             "2 Nephi",
+	"2-ne":            "2 Nephi",
+	"ii nephi":        "2 Nephi",
+	"3 nephi":         "3 Nephi",
+	"3nephi":          "3 Nephi",
+	"3ne":             "3 Nephi",
+	"3-ne":            "3 Nephi",
+	"iii nephi":       "3 Nephi",
+	"4 nephi":         "4 Nephi",
+	"4nephi":          "4 Nephi",
+	"4ne":             "4 Nephi",
+	"4-ne":            "4 Nephi",
+	"iv nephi":        "4 Nephi",
+	"words of mormon": "Words of Mormon",
+	"w-of-m":          "Words of Mormon",
+	"wofm":            "Words of Mormon",
+	"helaman":         "Helaman",
+	"hel":             "Helaman",
+	"mormon":          "Mormon",
+	"morm":            "Mormon",
+	"moroni":          "Moroni",
+	"moro":            "Moroni",
+	// Pearl of Great Price aliases
+	"abraham":              "Abraham",
+	"abr":                  "Abraham",
+	"joseph smith—matthew": "Joseph Smith—Matthew",
+	"joseph smith-matthew": "Joseph Smith—Matthew",
+	"joseph smith matthew": "Joseph Smith—Matthew",
+	"js-m":                 "Joseph Smith—Matthew",
+	"jsm":                  "Joseph Smith—Matthew",
+	"js matthew":           "Joseph Smith—Matthew",
+	"joseph smith—history": "Joseph Smith—History",
+	"joseph smith-history": "Joseph Smith—History",
+	"joseph smith history": "Joseph Smith—History",
+	"js-h":                 "Joseph Smith—History",
+	"jsh":                  "Joseph Smith—History",
+	"js history":           "Joseph Smith—History",
+	"articles of faith":    "Articles of Faith",
+	"a-of-f":               "Articles of Faith",
+	"aoff":                 "Articles of Faith",
+	// Old Testament common aliases
+	"genesis":     "Genesis",
+	"gen":         "Genesis",
+	"exodus":      "Exodus",
+	"ex":          "Exodus",
+	"leviticus":   "Leviticus",
+	"lev":         "Leviticus",
+	"numbers":     "Numbers",
+	"num":         "Numbers",
+	"deuteronomy": "Deuteronomy",
+	"deut":        "Deuteronomy",
+	"psalms":      "Psalms",
+	"psalm":       "Psalms",
+	"ps":          "Psalms",
+	"proverbs":    "Proverbs",
+	"prov":        "Proverbs",
+	"isaiah":      "Isaiah",
+	"isa":         "Isaiah",
+	"jeremiah":    "Jeremiah",
+	"jer":         "Jeremiah",
+	// New Testament common aliases
+	"matthew":        "Matthew",
+	"matt":           "Matthew",
+	"mt":             "Matthew",
+	"romans":         "Romans",
+	"rom":            "Romans",
+	"1 corinthians":  "1 Corinthians",
+	"1 cor":          "1 Corinthians",
+	"1cor":           "1 Corinthians",
+	"1-cor":          "1 Corinthians",
+	"i corinthians":  "1 Corinthians",
+	"2 corinthians":  "2 Corinthians",
+	"2 cor":          "2 Corinthians",
+	"2cor":           "2 Corinthians",
+	"2-cor":          "2 Corinthians",
+	"ii corinthians": "2 Corinthians",
+	"revelation":     "Revelation",
+	"rev":            "Revelation",
+	"revelations":    "Revelation", // common mistake
+}
+
+// NormalizeBookName converts various user inputs to canonical book names
+// Accepts: "dc", "D&C", "d&c", "1 Nephi", "1-ne", "1nephi", etc.
+func NormalizeBookName(input string) string {
+	// Lowercase and trim for matching
+	normalized := strings.ToLower(strings.TrimSpace(input))
+
+	// Check alias map first (handles most variations)
+	if canonical, ok := bookAliasMap[normalized]; ok {
+		return canonical
 	}
 
-	if name, ok := bookNames[dirName]; ok {
+	// Check if already a canonical name (case-insensitive)
+	for _, canonical := range bookNameMap {
+		if strings.EqualFold(input, canonical) {
+			return canonical
+		}
+	}
+
+	// Check dirName map
+	if canonical, ok := bookNameMap[normalized]; ok {
+		return canonical
+	}
+
+	// Return original input (will fail match but provides context in error)
+	return input
+}
+
+// GetIndexedBooks returns a list of all canonical book names currently supported
+func GetIndexedBooks() []string {
+	// Return unique canonical names sorted by scripture order
+	seen := make(map[string]bool)
+	var books []string
+
+	// Add in rough scripture order
+	orderedBooks := []string{
+		// Book of Mormon
+		"1 Nephi", "2 Nephi", "Jacob", "Enos", "Jarom", "Omni", "Words of Mormon",
+		"Mosiah", "Alma", "Helaman", "3 Nephi", "4 Nephi", "Mormon", "Ether", "Moroni",
+		// Doctrine & Covenants
+		"D&C",
+		// Pearl of Great Price
+		"Moses", "Abraham", "Joseph Smith—Matthew", "Joseph Smith—History", "Articles of Faith",
+		// Old Testament (selection)
+		"Genesis", "Exodus", "Leviticus", "Numbers", "Deuteronomy",
+		"Joshua", "Judges", "Ruth", "1 Samuel", "2 Samuel", "1 Kings", "2 Kings",
+		"1 Chronicles", "2 Chronicles", "Ezra", "Nehemiah", "Esther", "Job",
+		"Psalms", "Proverbs", "Ecclesiastes", "Song of Solomon",
+		"Isaiah", "Jeremiah", "Lamentations", "Ezekiel", "Daniel",
+		"Hosea", "Joel", "Amos", "Obadiah", "Jonah", "Micah", "Nahum",
+		"Habakkuk", "Zephaniah", "Haggai", "Zechariah", "Malachi",
+		// New Testament
+		"Matthew", "Mark", "Luke", "John", "Acts",
+		"Romans", "1 Corinthians", "2 Corinthians", "Galatians", "Ephesians",
+		"Philippians", "Colossians", "1 Thessalonians", "2 Thessalonians",
+		"1 Timothy", "2 Timothy", "Titus", "Philemon", "Hebrews",
+		"James", "1 Peter", "2 Peter", "1 John", "2 John", "3 John", "Jude", "Revelation",
+	}
+
+	for _, book := range orderedBooks {
+		if !seen[book] {
+			seen[book] = true
+			books = append(books, book)
+		}
+	}
+	return books
+}
+
+// formatBookName converts directory names to readable book names
+func formatBookName(dirName string) string {
+	if name, ok := bookNameMap[dirName]; ok {
 		return name
 	}
 

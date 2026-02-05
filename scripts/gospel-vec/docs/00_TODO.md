@@ -11,6 +11,90 @@ Build a powerful, general-purpose semantic search tool that can:
 4. Cross-reference scriptures ↔ conference talks
 5. Visualize semantic relationships and clusters
 
+---
+
+## 🎯 Active TODO List
+
+### 🔧 Immediate Fixes (Before More Indexing)
+
+- [x] **Fix `get_chapter` book name matching** ✅ DONE
+  - Added `NormalizeBookName()` function maps inputs ("dc", "D&C", "1-ne", "1 Nephi") to canonical form
+  - Added `bookAliasMap` with 100+ aliases for various input styles
+  - Improved error message shows available books and suggestions
+  - See [chunking.go](../chunking.go) for implementation
+
+- [x] **Add `list_books` tool** ✅ DONE
+  - New MCP tool to discover what books are indexed
+  - Can filter by volume: `list_books(volume: "bofm")` 
+  - Groups books by volume (BoM, D&C, PGP, OT, NT)
+
+- [ ] **Add book name help documentation**
+  - Document all valid book identifiers in tool description
+  - Tool description now mentions: "Accepts various formats: '1 Nephi', '1-ne', '1nephi', 'D&C', 'dc', 'Alma', etc."
+
+- [ ] **Incremental indexing**
+  - Skip chapters already in database
+  - Would speed up adding new content types
+
+### 📚 Content Type Support (All of `/gospel-library/**`)
+
+Priority order based on study workflow value:
+
+| Priority | Content Type | Path | Status | Notes |
+|----------|-------------|------|--------|-------|
+| 1 | Standard Works (BoM, D&C, PGP) | `/scriptures/bofm/`, `/dc-testament/dc/`, `/pgp/` | ✅ Done | Working well |
+| 2 | **General Conference Talks** | `/general-conference/{year}/{month}/` | 🔜 Next | Need speaker metadata, new chunking |
+| 3 | **Come, Follow Me (2026)** | `/manual/come-follow-me-*` | 🔜 Soon | Supports weekly study |
+| 4 | **Teaching in the Savior's Way** | `/manual/teaching-in-the-saviors-way-2022/` | 🔜 Soon | Lesson prep |
+| 5 | Old Testament | `/scriptures/ot/` | Planned | Large (~39 books) |
+| 6 | New Testament | `/scriptures/nt/` | Planned | Medium (~27 books) |
+| 7 | Bible Dictionary | `/scriptures/bd/` | Planned | Short entries, dense cross-refs |
+| 8 | Topical Guide | `/scriptures/tg/` | Planned | Reference lists, may not embed well |
+| 9 | Teachings of Presidents | `/manual/teachings-*/` | Later | 17+ volumes |
+| 10 | Liahona Magazine | `/liahona/` | Later | Articles |
+| 11 | Videos/Broadcasts | `/video/`, `/broadcasts/` | Later | If transcripts available |
+
+See [03_content-indexing-guide.md](03_content-indexing-guide.md) for detailed structure analysis.
+
+### 🤖 Embedding Model Experimentation
+
+Currently using: **qwen3-vl-8b** (seemed good and recent)
+
+There are MANY models to choose from! Should experiment to find what works best for our use case.
+
+**Candidates to try:**
+- [ ] `text-embedding-nomic-embed-text-v1.5` - Popular, good quality
+- [ ] `text-embedding-mxbai-embed-large-v1` - Larger, potentially better matching
+- [ ] `text-embedding-bge-base-en-v1.5` - BGE family, good for retrieval
+- [ ] `text-embedding-gte-large` - GTE family, competitive with OpenAI
+- [ ] OpenAI's `text-embedding-3-small` or `text-embedding-3-large` (if using API)
+
+**What to evaluate:**
+- Match quality (does "charity" find Jacob 2:17 which talks about poor without using "charity"?)
+- Speed (embeddings per second)
+- Memory usage
+- Handling of scriptural language (archaic English, Restoration terminology)
+
+**Testing approach:**
+1. Create a test set of ~20 queries with expected results
+2. Run each model, score by recall@5 and recall@10
+3. Note which model handles conceptual matches best
+
+### 🛡️ Quality Guardrails
+
+**Repeating term issue:** AI summaries sometimes have duplicated keywords (e.g., "Jerusalem" repeated).
+
+- [x] **Post-process summaries** in code ✅ DONE
+  - Added `deduplicateKeywords()` function - case-insensitive dedup
+  - Applied automatically in `SummarizeChapter()`
+  - See [summary.go](../summary.go)
+
+- [ ] **Prompt tuning**
+  - Refine summary/theme prompts to reduce repetition
+  - Add "do not repeat keywords" instruction
+
+---
+
 ## Architecture
 
 ```
@@ -50,7 +134,7 @@ Build a powerful, general-purpose semantic search tool that can:
 │  ├─ Use case: Narrative search                                   │
 │  └─ Example: "Where does Nephi obtain the brass plates?"         │
 │                                                                  │
-│  LAYER 5: Cross-references                                       │
+│  LAYER 5: Cross-references (future)                              │
 │  ├─ Collection: "conference-talks"                               │
 │  ├─ Collection: "talk-citations"                                 │
 │  ├─ Granularity: Talk paragraphs + citation links                │
@@ -60,9 +144,11 @@ Build a powerful, general-purpose semantic search tool that can:
 └─────────────────────────────────────────────────────────────────┘
 ```
 
-## Phases
+---
 
-### Phase 1: Foundation ✅ (chromem-exp learnings)
+## Completed Phases
+
+### Phase 1: Foundation ✅
 - [x] chromem-go integration with LM Studio
 - [x] Basic chunking strategies tested
 - [x] Persistence patterns understood
@@ -77,7 +163,6 @@ Build a powerful, general-purpose semantic search tool that can:
 - [x] Unified indexing pipeline
 - [x] Layer metadata (source, range, type)
 - [x] Multi-layer search with limit handling
-- [ ] Incremental indexing (skip already-indexed)
 
 ### Phase 4: LLM Summaries ✅
 - [x] Chapter summary generation (ChapterSummary struct)
@@ -85,11 +170,6 @@ Build a powerful, general-purpose semantic search tool that can:
 - [x] Timing output for estimation
 - [x] Summary caching (JSON files with model + prompt version)
 - [x] Cache invalidation on model/prompt changes
-
-### Phase 5: Cross-References (future)
-- [ ] Conference talk indexing
-- [ ] Citation extraction (scripture refs in talks)
-- [ ] Bidirectional links
 
 ### Phase 6: Search Interface ✅
 - [x] Unified search across layers
@@ -99,22 +179,32 @@ Build a powerful, general-purpose semantic search tool that can:
 ### Phase 7: MCP Server ✅
 - [x] Expose search_scriptures as MCP tool
 - [x] get_chapter tool for full chapter text
-- [ ] Model load/unload via LM Studio API (future optimization)
 
-### Phase 8: Helper Programs (future)
+---
+
+## Future Phases
+
+### Phase 5: Cross-References
+- [ ] Conference talk indexing (new content type!)
+- [ ] Citation extraction (scripture refs in talks)
+- [ ] Bidirectional links
+
+### Phase 8: Helper Programs
 - [ ] Digest tool: Summarize any file (talk, lesson, etc.) using LLM
 - [ ] Cross-reference finder: Find scriptures related to a talk
 - [ ] Talk summary: Generate study notes for conference talks
-- [ ] Trend analyzer: Look for patterns across chapters (Book of Mormon arcs, PGP themes)
+- [ ] Trend analyzer: Look for patterns across chapters
 
-### Phase 9: Visualization (future)
+### Phase 9: Visualization
 - [ ] Embedding clusters
 - [ ] Relationship graphs
 - [ ] Interactive exploration
 
 ---
 
-## Performance Timing (qwen3-vl-8b on RTX 4090)
+## Reference
+
+### Performance Timing (qwen3-vl-8b on RTX 4090)
 
 Based on 3-chapter test run:
 - **Summary generation**: ~7s per chapter average
@@ -126,56 +216,21 @@ Based on 3-chapter test run:
 - Plus embedding time: ~2.5 min (239 × 650ms)
 - **Total estimate: ~47 minutes**
 
----
+### Key Design Decisions
 
-## LM Studio v1 API
-
-LM Studio 0.4.0+ offers model management endpoints:
-
-```
-POST /api/v1/models/load     - Load model with config
-POST /api/v1/models/unload   - Unload model from memory
-GET  /api/v1/models          - List loaded models
-```
-
-**Load example:**
-```json
-{
-  "model": "qwen/qwen3-vl-8b",
-  "context_length": 16384,
-  "flash_attention": true
-}
-```
-
-**Unload example:**
-```json
-{
-  "instance_id": "qwen/qwen3-vl-8b"
-}
-
----
-
-## Key Design Decisions
-
-### 1. Single Database File
+**1. Single Database File**
 chromem-go's `ExportToFile` with compression gives us:
 - One `.gob.gz` file instead of hundreds of `.gob` files
 - Easy to backup, version, share
 - In-memory operations (fast) with periodic saves
 
-### 2. Collection Naming Convention
+**2. Collection Naming Convention**
 ```
 {source}-{layer}
 ```
-Examples:
-- `scriptures-verse` - Book of Mormon, D&C, etc. at verse level
-- `scriptures-paragraph` - Contextual chunks
-- `scriptures-summary` - LLM-generated chapter summaries
-- `conference-paragraph` - Conference talks
-- `conference-citations` - Scripture references in talks
+Examples: `scriptures-verse`, `scriptures-summary`, `conference-paragraph`
 
-### 3. Document Metadata Schema
-Every document includes:
+**3. Document Metadata Schema**
 ```go
 type DocMetadata struct {
     Source     string   // "bofm", "dc", "conference", etc.
@@ -189,68 +244,26 @@ type DocMetadata struct {
 }
 ```
 
-### 4. Tool Design (MCP-ready)
-Keep tools general for future MCP server:
-```
-gospel_search(query, layers?, sources?, limit?)
-gospel_similar(reference, limit?)  # "verses like 1 Nephi 3:7"
-gospel_citations(reference)        # "talks citing 1 Nephi 3:7"
-gospel_index(source, layers?)      # Index content
-```
-
----
-
-## File Structure
+### File Structure
 
 ```
 scripts/gospel-vec/
-├── TODO.md              # This file
-├── go.mod
-├── go.sum
-├── .gitignore           # Ignore data/*.gob.gz
+├── docs/                # Documentation (you are here!)
+├── data/                # Generated data (gitignored)
+│   ├── gospel-vec.gob.gz
+│   └── summaries/
 ├── main.go              # CLI entry point
 ├── config.go            # Configuration
-├── storage.go           # DB management (load/save/export)
+├── storage.go           # DB management
 ├── embed.go             # Embedding functions
 ├── index.go             # Indexing pipeline
 ├── search.go            # Search functions
 ├── summary.go           # LLM summary generation
 ├── chunking.go          # Chunking strategies
-├── types.go             # Shared types
-└── data/                # Generated data (gitignored)
-    ├── gospel-vec.gob.gz    # Main database
-    └── summaries/           # Cached summaries (optional)
+├── mcp.go               # MCP server
+└── types.go             # Shared types
 ```
 
 ---
 
-## Configuration
-
-```go
-type Config struct {
-    // LM Studio
-    EmbeddingURL   string // "http://localhost:1234/v1"
-    EmbeddingModel string // "text-embedding-qwen3-embedding-4b"
-    ChatURL        string // "http://localhost:1234/v1"
-    ChatModel      string // "qwen3-vl-8b" (or similar)
-    
-    // Storage
-    DataDir        string // "./data"
-    DBFile         string // "gospel-vec.gob.gz"
-    
-    // Content paths
-    ScripturesPath string // "../../gospel-library/eng/scriptures"
-    ConferencePath string // "../../gospel-library/eng/general-conference"
-}
-```
-
----
-
-## Next Steps
-
-1. **Create project structure** - go.mod, directories, .gitignore
-2. **Implement storage layer** - Load/save/export with compression
-3. **Port chunking from chromem-exp** - Reuse working code
-4. **Build indexing pipeline** - Multi-layer with metadata
-5. **Add summary generation** - LM Studio chat integration
-6. **Create search interface** - Unified multi-layer search
+*This is a personal project for eternal benefit—no deadlines, just exploration and learning!*

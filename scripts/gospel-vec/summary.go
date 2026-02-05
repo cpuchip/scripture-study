@@ -82,7 +82,27 @@ Keep output under 200 words total. No other text.`
 		}
 	}
 
+	// Deduplicate keywords (case-insensitive)
+	summary.Keywords = deduplicateKeywords(summary.Keywords)
+
 	return summary, nil
+}
+
+// deduplicateKeywords removes duplicate keywords (case-insensitive)
+// Keeps the first occurrence's casing
+func deduplicateKeywords(keywords []string) []string {
+	seen := make(map[string]bool)
+	result := make([]string, 0, len(keywords))
+
+	for _, kw := range keywords {
+		lower := strings.ToLower(kw)
+		if !seen[lower] {
+			seen[lower] = true
+			result = append(result, kw)
+		}
+	}
+
+	return result
 }
 
 // ShortSummary generates a brief 50-75 word summary for paragraph-level indexing

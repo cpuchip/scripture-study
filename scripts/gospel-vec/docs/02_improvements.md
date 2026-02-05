@@ -34,12 +34,14 @@ Notes on improvements and issues observed during real-world usage of the gospel-
    - **Expected**: Full text of D&C 84
    - **Workaround**: Used `read_file` directly on the markdown file
    - **Probable Cause**: Book name format mismatch. The tool likely expects a different identifier for D&C.
+   - **Status**: ✅ FIXED - Added `NormalizeBookName()` that accepts many formats
 
 2. **Book Name Standardization**
    - What formats are supported? Need documentation:
      - `dc` vs `D&C` vs `dc-testament/dc`?
      - `1-ne` vs `1 Nephi` vs `1ne`?
    - Suggest: Add help text or error message showing valid book identifiers
+   - **Status**: ✅ FIXED - All formats now work, added `list_books` tool
 
 ---
 
@@ -100,6 +102,7 @@ The AI-generated summaries are generally high quality:
 Occasional issues:
 - Some summaries are very long (could be trimmed)
 - Keyword lists sometimes have duplicates (e.g., "Jerusalem" repeated in 1 Nephi 13 summary)
+  - **Status**: ✅ FIXED - Added `deduplicateKeywords()` post-processing
 
 ### Theme Layer Quality
 

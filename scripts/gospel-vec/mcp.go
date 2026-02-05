@@ -7,6 +7,8 @@ import (
 	"fmt"
 	"io"
 	"os"
+	"path/filepath"
+	"strings"
 )
 
 // MCP JSON-RPC types
@@ -139,7 +141,7 @@ func (s *MCPServer) handleToolsList(enc *json.Encoder, req *MCPRequest) {
 				"properties": map[string]any{
 					"book": map[string]any{
 						"type":        "string",
-						"description": "The book name (e.g., '1 Nephi', 'Mosiah', 'D&C')",
+						"description": "The book name. Accepts various formats: '1 Nephi', '1-ne', '1nephi', 'D&C', 'dc', 'Alma', etc.",
 					},
 					"chapter": map[string]any{
 						"type":        "integer",
@@ -147,6 +149,19 @@ func (s *MCPServer) handleToolsList(enc *json.Encoder, req *MCPRequest) {
 					},
 				},
 				"required": []string{"book", "chapter"},
+			},
+		},
+		{
+			"name":        "list_books",
+			"description": "List all books available in the scripture index. Use to discover what books can be searched or retrieved.",
+			"inputSchema": map[string]any{
+				"type": "object",
+				"properties": map[string]any{
+					"volume": map[string]any{
+						"type":        "string",
+						"description": "Optional: filter by volume ('bofm', 'dc', 'pgp', 'ot', 'nt'). If omitted, lists all indexed books.",
+					},
+				},
 			},
 		},
 	}
@@ -169,6 +184,8 @@ func (s *MCPServer) handleToolsCall(enc *json.Encoder, req *MCPRequest) {
 		s.toolSearchScriptures(enc, req.ID, params.Arguments)
 	case "get_chapter":
 		s.toolGetChapter(enc, req.ID, params.Arguments)
+	case "list_books":
+		s.toolListBooks(enc, req.ID, params.Arguments)
 	default:
 		s.sendError(enc, req.ID, -32602, "Unknown tool", params.Name)
 	}
@@ -252,6 +269,9 @@ func (s *MCPServer) toolGetChapter(enc *json.Encoder, id any, args json.RawMessa
 		return
 	}
 
+	// Normalize the book name to handle various input formats
+	normalizedBook := NormalizeBookName(params.Book)
+
 	// Find the chapter file
 	files, err := FindScriptureFiles(s.cfg.ScripturesPath, "bofm", "dc-testament/dc", "pgp", "nt", "ot")
 	if err != nil {
@@ -259,13 +279,19 @@ func (s *MCPServer) toolGetChapter(enc *json.Encoder, id any, args json.RawMessa
 		return
 	}
 
+	// Track which books we've seen for better error messages
+	var seenBooks = make(map[string]bool)
+
 	// Look for matching chapter
 	for _, f := range files {
 		chapter, err := ParseChapterFile(f)
 		if err != nil {
 			continue
 		}
-		if chapter.Book == params.Book && chapter.Chapter == params.Chapter {
+
+		seenBooks[chapter.Book] = true
+
+		if chapter.Book == normalizedBook && chapter.Chapter == params.Chapter {
 			// Format chapter content
 			var content string
 			for _, v := range chapter.Verses {
@@ -284,7 +310,121 @@ func (s *MCPServer) toolGetChapter(enc *json.Encoder, id any, args json.RawMessa
 		}
 	}
 
-	s.sendError(enc, id, -32000, "Chapter not found", fmt.Sprintf("%s %d", params.Book, params.Chapter))
+	// Build helpful error message with suggestions
+	var availableBooks []string
+	for book := range seenBooks {
+		availableBooks = append(availableBooks, book)
+	}
+
+	errMsg := fmt.Sprintf("Chapter not found: %s %d", params.Book, params.Chapter)
+	if normalizedBook != params.Book {
+		errMsg += fmt.Sprintf(" (interpreted as '%s')", normalizedBook)
+	}
+	errMsg += fmt.Sprintf("\n\nAvailable books in index: %s", strings.Join(availableBooks, ", "))
+	errMsg += "\n\nTip: Try using full book names like '1 Nephi', 'D&C', 'Alma' or abbreviations like '1-ne', 'dc', 'mosiah'"
+
+	s.sendError(enc, id, -32000, "Chapter not found", errMsg)
+}
+
+func (s *MCPServer) toolListBooks(enc *json.Encoder, id any, args json.RawMessage) {
+	var params struct {
+		Volume string `json:"volume"`
+	}
+	// Args can be empty/null for this tool
+	if args != nil && len(args) > 0 {
+		json.Unmarshal(args, &params)
+	}
+
+	// Find all indexed books by scanning the database
+	files, err := FindScriptureFiles(s.cfg.ScripturesPath, "bofm", "dc-testament/dc", "pgp", "nt", "ot")
+	if err != nil {
+		s.sendError(enc, id, -32000, "Failed to find scriptures", err.Error())
+		return
+	}
+
+	// Group books by volume
+	booksByVolume := make(map[string][]string)
+	seenBooks := make(map[string]map[string]bool)
+
+	for _, f := range files {
+		chapter, err := ParseChapterFile(f)
+		if err != nil {
+			continue
+		}
+
+		// Determine volume from path
+		volume := "unknown"
+		if strings.Contains(f, "bofm") {
+			volume = "bofm"
+		} else if strings.Contains(f, "dc-testament") {
+			volume = "dc"
+		} else if strings.Contains(f, "pgp") {
+			volume = "pgp"
+		} else if strings.Contains(f, filepath.Join("scriptures", "ot")) {
+			volume = "ot"
+		} else if strings.Contains(f, filepath.Join("scriptures", "nt")) {
+			volume = "nt"
+		}
+
+		if seenBooks[volume] == nil {
+			seenBooks[volume] = make(map[string]bool)
+		}
+
+		if !seenBooks[volume][chapter.Book] {
+			seenBooks[volume][chapter.Book] = true
+			booksByVolume[volume] = append(booksByVolume[volume], chapter.Book)
+		}
+	}
+
+	// Build output
+	var output strings.Builder
+
+	// Volume names
+	volumeNames := map[string]string{
+		"bofm": "Book of Mormon",
+		"dc":   "Doctrine & Covenants",
+		"pgp":  "Pearl of Great Price",
+		"ot":   "Old Testament",
+		"nt":   "New Testament",
+	}
+
+	volumeOrder := []string{"bofm", "dc", "pgp", "ot", "nt"}
+
+	// Filter by volume if specified
+	if params.Volume != "" {
+		normalizedVolume := strings.ToLower(params.Volume)
+		if books, ok := booksByVolume[normalizedVolume]; ok {
+			output.WriteString(fmt.Sprintf("# %s\n\n", volumeNames[normalizedVolume]))
+			for _, book := range books {
+				output.WriteString(fmt.Sprintf("- %s\n", book))
+			}
+		} else {
+			output.WriteString(fmt.Sprintf("Volume '%s' not found. Available: bofm, dc, pgp, ot, nt\n", params.Volume))
+		}
+	} else {
+		// List all volumes
+		output.WriteString("# Indexed Scripture Books\n\n")
+		for _, vol := range volumeOrder {
+			if books, ok := booksByVolume[vol]; ok && len(books) > 0 {
+				output.WriteString(fmt.Sprintf("## %s\n", volumeNames[vol]))
+				for _, book := range books {
+					output.WriteString(fmt.Sprintf("- %s\n", book))
+				}
+				output.WriteString("\n")
+			}
+		}
+		output.WriteString("---\n")
+		output.WriteString("Tip: Use any of these book names with get_chapter(book, chapter)\n")
+	}
+
+	s.sendResult(enc, id, map[string]any{
+		"content": []map[string]any{
+			{
+				"type": "text",
+				"text": output.String(),
+			},
+		},
+	})
 }
 
 func (s *MCPServer) sendResult(enc *json.Encoder, id any, result any) {
