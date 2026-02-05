@@ -21,6 +21,8 @@ func main() {
 		cmdIndex(os.Args[2:])
 	case "search":
 		cmdSearch(os.Args[2:])
+	case "mcp":
+		cmdMCP(os.Args[2:])
 	case "stats":
 		cmdStats()
 	case "config":
@@ -44,6 +46,7 @@ Commands:
   test     Test LM Studio connection (embeddings and chat)
   index    Index scripture content into the vector database
   search   Search the vector database
+  mcp      Start MCP server (for VS Code/Claude integration)
   stats    Show database statistics
   config   Show or initialize configuration
   help     Show this help message
@@ -52,6 +55,7 @@ Examples:
   gospel-vec test                    # Test LM Studio connection
   gospel-vec index -volumes bofm     # Index Book of Mormon
   gospel-vec search "faith"          # Search for faith
+  gospel-vec mcp -data ./data        # Start MCP server with data dir
   gospel-vec stats                   # Show database stats
 `)
 }
@@ -98,6 +102,7 @@ func cmdIndex(args []string) {
 	maxChapters := flags.Int("max", 0, "Max chapters to index (0 = all)")
 	withSummary := flags.Bool("summary", false, "Generate LLM summaries (slower)")
 	chatModel := flags.String("chat-model", "", "Chat model for summaries (e.g., qwen/qwen3-vl-8b)")
+	noCache := flags.Bool("no-cache", false, "Don't use summary cache (regenerate all)")
 	verbose := flags.Bool("v", true, "Verbose output")
 
 	if err := flags.Parse(args); err != nil {
@@ -134,6 +139,23 @@ func cmdIndex(args []string) {
 		layerList = append(layerList, LayerSummary)
 	}
 
+	// Auto-detect chat model if summary/theme layers requested but no model specified
+	needsChat := containsLayer(layerList, LayerSummary) || containsLayer(layerList, LayerTheme)
+	if needsChat && cfg.ChatModel == "" {
+		fmt.Println("🔍 No chat model specified, auto-detecting from LM Studio...")
+		models, err := GetAvailableModels(context.Background(), cfg.ChatURL)
+		if err != nil {
+			fmt.Printf("⚠️  Could not detect models: %v\n", err)
+			fmt.Println("   Summary/theme layers will use cache only (no generation)")
+		} else if len(models) > 0 {
+			cfg.ChatModel = models[0]
+			fmt.Printf("✅ Using chat model: %s\n", cfg.ChatModel)
+		} else {
+			fmt.Println("⚠️  No models available in LM Studio")
+			fmt.Println("   Summary/theme layers will use cache only (no generation)")
+		}
+	}
+
 	fmt.Printf("📚 Indexing volumes: %v\n", volumeList)
 	fmt.Printf("📊 Layers: %v\n", layerList)
 
@@ -163,6 +185,7 @@ func cmdIndex(args []string) {
 		Volumes:     volumeList,
 		MaxChapters: *maxChapters,
 		Verbose:     *verbose,
+		UseCache:    !*noCache,
 	}
 
 	start := time.Now()
@@ -301,6 +324,30 @@ func cmdConfig() {
 	fmt.Printf("   Embedding Model:   %s\n", cfg.EmbeddingModel)
 	fmt.Printf("   Chat URL:          %s\n", cfg.ChatURL)
 	fmt.Printf("   Chat Model:        %s\n", cfg.ChatModel)
+}
+
+func cmdMCP(args []string) {
+	flags := flag.NewFlagSet("mcp", flag.ExitOnError)
+	dataDir := flags.String("data", "", "Path to data directory (default: ./data)")
+	flags.Parse(args)
+
+	cfg := DefaultConfig()
+
+	// If data dir specified, update config
+	if *dataDir != "" {
+		cfg.DataDir = *dataDir
+	}
+
+	server, err := NewMCPServer(cfg)
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Failed to start MCP server: %v\n", err)
+		os.Exit(1)
+	}
+
+	if err := server.Run(); err != nil {
+		fmt.Fprintf(os.Stderr, "MCP server error: %v\n", err)
+		os.Exit(1)
+	}
 }
 
 // Helper functions
