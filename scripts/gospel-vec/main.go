@@ -59,11 +59,25 @@ Commands:
   talks        Parse and test conference talk indexing
   help         Show this help message
 
+Index-talks Options:
+  -years          Comma-separated years (empty = all 1971-2025)
+  -layers         Comma-separated layers: paragraph,summary
+  -max            Max talks to index (0 = all)
+  -summary        Generate LLM summaries (slower)
+  -chat-model     Chat model for summaries
+  -no-cache       Don't use summary cache (regenerate all)
+  -retries        Max retries on transient errors (default: 3)
+  -continue       Continue indexing after persistent errors (default: true)
+  -save-interval  Save database every N talks (default: 100, 0 = only at end)
+  -v              Verbose output (default: true)
+
 Examples:
   gospel-vec test                       # Test LM Studio connection
   gospel-vec index -volumes bofm        # Index Book of Mormon
   gospel-vec index-talks -years 2025    # Index 2025 conference talks
   gospel-vec index-talks -summary       # Index all talks with summaries
+  gospel-vec index-talks -retries 5     # More retries for unstable connections
+  gospel-vec index-talks -continue=false # Stop on first persistent error
   gospel-vec search "faith"             # Search for faith (scriptures + talks)
   gospel-vec mcp -data ./data           # Start MCP server with data dir
   gospel-vec stats                      # Show database stats
@@ -233,6 +247,9 @@ func cmdIndexTalks(args []string) {
 	chatModel := flags.String("chat-model", "", "Chat model for summaries (e.g., qwen/qwen3-vl-8b)")
 	noCache := flags.Bool("no-cache", false, "Don't use summary cache (regenerate all)")
 	verbose := flags.Bool("v", true, "Verbose output")
+	maxRetries := flags.Int("retries", 3, "Max retries on transient errors")
+	continueOnError := flags.Bool("continue", true, "Continue indexing after persistent errors")
+	saveInterval := flags.Int("save-interval", 100, "Save database every N talks (0 = only at end)")
 
 	if err := flags.Parse(args); err != nil {
 		os.Exit(1)
@@ -316,11 +333,14 @@ func cmdIndexTalks(args []string) {
 	// Index
 	ctx := context.Background()
 	opts := TalkIndexOptions{
-		Layers:   layerList,
-		Years:    yearList,
-		MaxTalks: *maxTalks,
-		Verbose:  *verbose,
-		UseCache: !*noCache,
+		Layers:          layerList,
+		Years:           yearList,
+		MaxTalks:        *maxTalks,
+		Verbose:         *verbose,
+		UseCache:        !*noCache,
+		MaxRetries:      *maxRetries,
+		ContinueOnError: *continueOnError,
+		SaveInterval:    *saveInterval,
 	}
 
 	start := time.Now()

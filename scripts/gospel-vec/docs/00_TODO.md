@@ -100,6 +100,34 @@ Priority order based on study workflow value:
 
 See [03_content-indexing-guide.md](03_content-indexing-guide.md) for detailed structure analysis.
 
+### 📊 Hierarchical Summarization (Enhancement)
+
+See [04_enhanced-conference-themes.md](04_enhanced-conference-themes.md) for full analysis.
+
+**Token Capacity Findings:**
+- Session: ~15-20K tokens → **fits 32K** ✅
+- Full conference: ~80-120K tokens → needs 100K context
+- Book of Mormon: ~484K tokens → needs hierarchical approach
+- Individual BoM books: 1.5K-144K tokens (varies widely)
+
+**Proposed New Layers:**
+- [ ] `session-summary` - Themes across a conference session (~5-8 talks)
+- [ ] `conference-summary` - Major themes for entire conference
+- [ ] `book-summary` - Summary of scripture book (e.g., "Alma", "Moses")
+- [ ] `volume-summary` - Overview of entire volume (BoM, D&C, etc.)
+
+**Proposed New Metadata Fields:**
+- [ ] `Principles` - Core gospel principles taught
+- [ ] `Doctrines` - Doctrines referenced (atonement, revelation, etc.)
+- [ ] `Programs` - Church programs/initiatives mentioned
+- [ ] `Invitations` - Calls to action for members
+
+**Use Cases:**
+- Track doctrinal emphasis trends across decades
+- Identify when new programs are introduced
+- Cross-reference conference themes with CFM curriculum
+- Speaker analysis: themes across an apostle's ministry
+
 ### 🤖 Embedding Model Experimentation
 
 Currently using: **qwen3-vl-8b** (seemed good and recent)
