@@ -26,7 +26,7 @@ This is the foundational passage on the oath and covenant:
 >
 > **41.** But whoso **breaketh this covenant** after he hath received it, and altogether turneth therefrom, shall **not have forgiveness** of sins in this world nor in the world to come.
 
-— [D&C 84:33-41](../gospel-library/eng/scriptures/dc-testament/dc/84.md)
+— [D&C 84:33-41](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/84?lang=eng&id=p33-p41#p33)
 
 ---
 
@@ -49,7 +49,7 @@ This is the foundational passage on the oath and covenant:
 - An **oath** is a unilateral promise, solemnly binding
 - God adds His **oath** to His covenant promises - meaning He *cannot* fail to keep His word
 
-> "Therefore, all those who receive the priesthood, receive this oath and covenant of my Father, **which he cannot break**, neither can it be moved." — [D&C 84:40](../gospel-library/eng/scriptures/dc-testament/dc/84.md)
+> "Therefore, all those who receive the priesthood, receive this oath and covenant of my Father, **which he cannot break**, neither can it be moved." — [D&C 84:40](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/84?lang=eng&id=p40#p40)
 
 This is extraordinary: God binds Himself by oath. If we keep our part, He is oath-bound to bless us with *everything* He has.
 
@@ -106,27 +106,27 @@ Is this fulfilled when a man is:
 3. **Obey** all the commandments
 4. **Live by every word** of God
 
-— [The Oath and Covenant of the Priesthood](../gospel-library/eng/general-conference/1985/10/the-oath-and-covenant-of-the-priesthood.md)
+— [The Oath and Covenant of the Priesthood](https://www.churchofjesuschrist.org/study/general-conference/1985/10/the-oath-and-covenant-of-the-priesthood?lang=eng)
 
 He noted: "The transcendent blessings of the priesthood **do not come by ordination alone**. We are instructed: 'Ordination to the priesthood is a **prerequisite** to receiving [blessings], but it does not **guarantee** them.'"
 
 **President Russell M. Nelson (2011)** taught that blessings "flow from this oath and covenant to **worthy men, women, and children** in all the world."
 
-— [Covenants](../gospel-library/eng/general-conference/2011/10/covenants.md)
+— [Covenants](https://www.churchofjesuschrist.org/study/general-conference/2011/10/covenants?lang=eng)
 
 This suggests the covenant's blessings extend beyond those ordained.
 
 **Elder Quentin L. Cook (2019)** stated directly:
 > "When a man and woman are sealed in the temple, they enter **the holy order of matrimony in the new and everlasting covenant, an order of the priesthood**. Together they **obtain and receive priesthood blessings and power** to direct the affairs of their family."
 
-— [Great Love for Our Father's Children](../gospel-library/eng/general-conference/2019/04/43cook.md)
+— [Great Love for Our Father's Children](https://www.churchofjesuschrist.org/study/general-conference/2019/04/43cook?lang=eng)
 
 **Sister Julie B. Beck (2006)** quoted President Ezra Taft Benson:
 > "When our children obey the Lord and go to the temple to receive their blessings and enter into the marriage covenant, they enter into **the same order of the priesthood** that God instituted in the very beginning with father Adam."
 
 She added: "We teach all young men and young women to prepare to go to the temple so they can **'receive the blessings of [the] fathers that [they] may be entitled to the highest blessings of the priesthood.'**"
 
-— [An Outpouring of Blessings](../gospel-library/eng/general-conference/2006/04/an-outpouring-of-blessings.md)
+— [An Outpouring of Blessings](https://www.churchofjesuschrist.org/study/general-conference/2006/04/an-outpouring-of-blessings?lang=eng)
 
 ### A Broader Understanding
 
@@ -157,13 +157,13 @@ From Webster's definition: obtaining requires **effort directed toward attainmen
 
 The word "magnify" appears throughout scripture in connection with priesthood service:
 
-> "For whoso is faithful unto the obtaining these two priesthoods of which I have spoken, and the **magnifying their calling**, are sanctified by the Spirit" — [D&C 84:33](../gospel-library/eng/scriptures/dc-testament/dc/84.md)
+> "For whoso is faithful unto the obtaining these two priesthoods of which I have spoken, and the **magnifying their calling**, are sanctified by the Spirit" — [D&C 84:33](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/84?lang=eng&id=p33#p33)
 
 ### Related Passages
 
-> "And again, verily I say unto you, the duty of a president over the office of a high priest is to preside over the whole church, and to be like unto Moses — Behold, here is wisdom; yea, to be a seer, a revelator, a translator, and a prophet, having all the gifts of God which he bestows upon the head of the church." — [D&C 107:91-92](../gospel-library/eng/scriptures/dc-testament/dc/107.md)
+> "And again, verily I say unto you, the duty of a president over the office of a high priest is to preside over the whole church, and to be like unto Moses — Behold, here is wisdom; yea, to be a seer, a revelator, a translator, and a prophet, having all the gifts of God which he bestows upon the head of the church." — [D&C 107:91-92](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/107?lang=eng&id=p91-p92#p91)
 
-> "**Magnify thine office**; and after thou hast sowed thy fields and secured them, go speedily unto the church which is in Colesville" — [D&C 24:9](../gospel-library/eng/scriptures/dc-testament/dc/24.md)
+> "**Magnify thine office**; and after thou hast sowed thy fields and secured them, go speedily unto the church which is in Colesville" — [D&C 24:9](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/24?lang=eng&id=p9#p9)
 
 To magnify means:
 - To make **larger** — expand the influence of your calling
@@ -185,13 +185,13 @@ To magnify means:
 >
 > **45-46.** The elder or priest functions in the **absence of high priests**...
 
-— [D&C 20:42-46](../gospel-library/eng/scriptures/dc-testament/dc/20.md)
+— [D&C 20:42-46](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/20?lang=eng&id=p42-p46#p42)
 
 ### The Elder's Place in the Priesthood
 
-> "The office of an **elder comes under the priesthood of Melchizedek**." — [D&C 107:7](../gospel-library/eng/scriptures/dc-testament/dc/107.md)
+> "The office of an **elder comes under the priesthood of Melchizedek**." — [D&C 107:7](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/107?lang=eng&id=p7#p7)
 
-> "The Melchizedek Priesthood holds the **right of presidency**, and has **power and authority over all the offices** in the church in all ages of the world, to administer in spiritual things." — [D&C 107:8](../gospel-library/eng/scriptures/dc-testament/dc/107.md)
+> "The Melchizedek Priesthood holds the **right of presidency**, and has **power and authority over all the offices** in the church in all ages of the world, to administer in spiritual things." — [D&C 107:8](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/107?lang=eng&id=p8#p8)
 
 ### Practical Duties
 
@@ -221,7 +221,7 @@ An Elder is authorized to:
 >
 > **22.** For **without this no man can see the face of God**, even the Father, and live.
 
-— [D&C 84:19-22](../gospel-library/eng/scriptures/dc-testament/dc/84.md)
+— [D&C 84:19-22](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/84?lang=eng&id=p19-p22#p19)
 
 ### Key Insight: Ordinances as Access Points
 
@@ -233,7 +233,7 @@ The priesthood doesn't just *authorize* ordinances—it makes the **power of god
 
 ### The Ultimate Promise: Exaltation
 
-> "And he that receiveth my Father receiveth my Father's kingdom; therefore **all that my Father hath shall be given unto him**." — [D&C 84:38](../gospel-library/eng/scriptures/dc-testament/dc/84.md)
+> "And he that receiveth my Father receiveth my Father's kingdom; therefore **all that my Father hath shall be given unto him**." — [D&C 84:38](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/84?lang=eng&id=p38#p38)
 
 This is not metaphor. "All that my Father hath" includes:
 - Eternal life
@@ -244,7 +244,7 @@ This is not metaphor. "All that my Father hath" includes:
 
 ### The Path to the Promise
 
-The receiving chain in [D&C 84:35-38](../gospel-library/eng/scriptures/dc-testament/dc/84.md):
+The receiving chain in [D&C 84:35-38](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/84?lang=eng&id=p35-p38#p35):
 
 1. Receive the **priesthood** → receive the Lord's servants
 2. Receive the **servants** → receive the Lord
@@ -253,11 +253,11 @@ The receiving chain in [D&C 84:35-38](../gospel-library/eng/scriptures/dc-testam
 
 ### Abraham's Covenant Connection
 
-> "They become the sons of Moses and of Aaron and **the seed of Abraham**" — [D&C 84:34](../gospel-library/eng/scriptures/dc-testament/dc/84.md)
+> "They become the sons of Moses and of Aaron and **the seed of Abraham**" — [D&C 84:34](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/84?lang=eng&id=p34#p34)
 
 This ties directly to God's covenant with Abraham:
 
-> "And I will bless them through thy name; for as many as receive this Gospel shall be called after thy name, and shall be accounted **thy seed**, and shall rise up and bless thee, as their father... **this right shall continue in thee, and in thy seed after thee**" — [Abraham 2:10-11](../gospel-library/eng/scriptures/pgp/abr/2.md)
+> "And I will bless them through thy name; for as many as receive this Gospel shall be called after thy name, and shall be accounted **thy seed**, and shall rise up and bless thee, as their father... **this right shall continue in thee, and in thy seed after thee**" — [Abraham 2:10-11](https://www.churchofjesuschrist.org/study/scriptures/pgp/abr/2?lang=eng&id=p10-p11#p10)
 
 ---
 
@@ -265,7 +265,7 @@ This ties directly to God's covenant with Abraham:
 
 The priesthood is named after Melchizedek because of his greatness:
 
-> "Why the first is called the Melchizedek Priesthood is because **Melchizedek was such a great high priest**. Before his day it was called *the Holy Priesthood, after the Order of the Son of God*. But out of respect or reverence to the name of the Supreme Being, to avoid the too frequent repetition of his name, they, the church, in ancient days, called that priesthood after Melchizedek" — [D&C 107:2-4](../gospel-library/eng/scriptures/dc-testament/dc/107.md)
+> "Why the first is called the Melchizedek Priesthood is because **Melchizedek was such a great high priest**. Before his day it was called *the Holy Priesthood, after the Order of the Son of God*. But out of respect or reverence to the name of the Supreme Being, to avoid the too frequent repetition of his name, they, the church, in ancient days, called that priesthood after Melchizedek" — [D&C 107:2-4](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/107?lang=eng&id=p2-p4#p2)
 
 ### What Made Melchizedek Great?
 
@@ -273,7 +273,7 @@ Alma provides the best portrait:
 
 > "Now this Melchizedek was **a king over the land of Salem**; and his people had waxed strong in **iniquity and abomination**; yea, they had all gone astray; they were full of all manner of wickedness;
 >
-> "But Melchizedek having exercised **mighty faith**, and received the office of the high priesthood according to the holy order of God, **did preach repentance unto his people**. And behold, **they did repent**; and Melchizedek **did establish peace** in the land in his days; therefore he was called **the prince of peace**, for he was the king of Salem" — [Alma 13:17-18](../gospel-library/eng/scriptures/bofm/alma/13.md)
+> "But Melchizedek having exercised **mighty faith**, and received the office of the high priesthood according to the holy order of God, **did preach repentance unto his people**. And behold, **they did repent**; and Melchizedek **did establish peace** in the land in his days; therefore he was called **the prince of peace**, for he was the king of Salem" — [Alma 13:17-18](https://www.churchofjesuschrist.org/study/scriptures/bofm/alma/13?lang=eng&id=p17-p18#p17)
 
 ### Lessons from Melchizedek:
 1. He started with a **wicked people** — the situation was bad
@@ -298,7 +298,7 @@ The priesthood comes through an unbroken chain:
 >
 > **17.** Which priesthood continueth in the church of God in all generations, and is **without beginning of days or end of years**.
 
-— [D&C 84:14-17](../gospel-library/eng/scriptures/dc-testament/dc/84.md)
+— [D&C 84:14-17](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/84?lang=eng&id=p14-p17#p14)
 
 ---
 
@@ -314,7 +314,7 @@ The priesthood comes through an unbroken chain:
 >
 > **37.** That they may be conferred upon us, it is true; but when we undertake to **cover our sins**, or to gratify our **pride**, our **vain ambition**, or to exercise **control or dominion or compulsion** upon the souls of the children of men, in any degree of unrighteousness, behold, the **heavens withdraw themselves**; the Spirit of the Lord is grieved; and when it is withdrawn, **Amen to the priesthood or the authority of that man**.
 
-— [D&C 121:34-37](../gospel-library/eng/scriptures/dc-testament/dc/121.md)
+— [D&C 121:34-37](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/121?lang=eng&id=p34-p37#p34)
 
 ### The Pattern: D&C 121:41-46
 
@@ -330,7 +330,7 @@ The priesthood comes through an unbroken chain:
 >
 > **46.** The **Holy Ghost shall be thy constant companion**, and thy scepter an unchanging scepter of righteousness and truth; and thy **dominion shall be an everlasting dominion**, and without compulsory means it shall flow unto thee **forever and ever**.
 
-— [D&C 121:41-46](../gospel-library/eng/scriptures/dc-testament/dc/121.md)
+— [D&C 121:41-46](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/121?lang=eng&id=p41-p46#p41)
 
 ### The Virtues of Righteous Priesthood Holders
 
@@ -352,7 +352,7 @@ The priesthood comes through an unbroken chain:
 
 This is a solemn warning:
 
-> "But whoso **breaketh this covenant** after he hath received it, and **altogether turneth therefrom**, shall **not have forgiveness** of sins in this world nor in the world to come." — [D&C 84:41](../gospel-library/eng/scriptures/dc-testament/dc/84.md)
+> "But whoso **breaketh this covenant** after he hath received it, and **altogether turneth therefrom**, shall **not have forgiveness** of sins in this world nor in the world to come." — [D&C 84:41](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/84?lang=eng&id=p41#p41)
 
 ### What Does "Altogether Turneth Therefrom" Mean?
 
@@ -364,7 +364,7 @@ This isn't about:
 This is about:
 - **Completely** rejecting the priesthood
 - **Knowingly** turning against God
-- Becoming a **son of perdition** (see [D&C 76:31-34](../gospel-library/eng/scriptures/dc-testament/dc/76.md))
+- Becoming a **son of perdition** (see [D&C 76:31-34](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/76?lang=eng&id=p31-p34#p31))
 
 The context suggests this applies to those who, having received the fullness of the priesthood and a testimony like unto the Apostles, then deny the Holy Ghost and shed innocent blood.
 
@@ -376,17 +376,17 @@ For the rest of us, the covenant includes constant **repentance** and renewal.
 
 ### Healing and Miracles
 
-> "And the elders of the church, two or more, shall be called, and shall pray for and lay their hands upon them in my name; and if they die they shall die unto me, and if they live they shall live unto me." — [D&C 42:44](../gospel-library/eng/scriptures/dc-testament/dc/42.md)
+> "And the elders of the church, two or more, shall be called, and shall pray for and lay their hands upon them in my name; and if they die they shall die unto me, and if they live they shall live unto me." — [D&C 42:44](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/42?lang=eng&id=p44#p44)
 
-> "And **whoso shall ask it in my name in faith, they shall cast out devils**; they shall **heal the sick**; they shall cause the **blind to receive their sight**, and the deaf to hear, and the dumb to speak, and the lame to walk." — [D&C 35:9](../gospel-library/eng/scriptures/dc-testament/dc/35.md)
+> "And **whoso shall ask it in my name in faith, they shall cast out devils**; they shall **heal the sick**; they shall cause the **blind to receive their sight**, and the deaf to hear, and the dumb to speak, and the lame to walk." — [D&C 35:9](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/35?lang=eng&id=p9#p9)
 
 ### Sealing Power
 
-> "And it shall come to pass, that **whatsoever ye shall seal on earth shall be sealed in heaven**; and whatsoever ye shall loose on earth shall be loosed in heaven" — [Helaman 10:7](../gospel-library/eng/scriptures/bofm/hel/10.md)
+> "And it shall come to pass, that **whatsoever ye shall seal on earth shall be sealed in heaven**; and whatsoever ye shall loose on earth shall be loosed in heaven" — [Helaman 10:7](https://www.churchofjesuschrist.org/study/scriptures/bofm/hel/10?lang=eng&id=p7#p7)
 
 ### The Signs That Follow Believers
 
-> "And these **signs shall follow them that believe**: In my name they shall do many wonderful works; In my name they shall cast out devils; In my name they shall **heal the sick**; In my name they shall **open the eyes of the blind**, and unstop the ears of the deaf" — [D&C 84:65-66](../gospel-library/eng/scriptures/dc-testament/dc/84.md)
+> "And these **signs shall follow them that believe**: In my name they shall do many wonderful works; In my name they shall cast out devils; In my name they shall **heal the sick**; In my name they shall **open the eyes of the blind**, and unstop the ears of the deaf" — [D&C 84:65-66](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/84?lang=eng&id=p65-p66#p65)
 
 ---
 
@@ -433,21 +433,21 @@ As an Elder in the Melchizedek Priesthood, you have entered into a sacred covena
 ## Cross-References for Further Study
 
 ### Scriptures
-- **[Alma 13](../gospel-library/eng/scriptures/bofm/alma/13.md)** — Melchizedek as model high priest
-- **[D&C 84](../gospel-library/eng/scriptures/dc-testament/dc/84.md)** — Full revelation on priesthood
-- **[D&C 107](../gospel-library/eng/scriptures/dc-testament/dc/107.md)** — Organization and duties of priesthood
-- **[D&C 121:34-46](../gospel-library/eng/scriptures/dc-testament/dc/121.md)** — Righteous exercise of priesthood
-- **[D&C 20:38-67](../gospel-library/eng/scriptures/dc-testament/dc/20.md)** — Duties of elders, priests, teachers, deacons
-- **[Abraham 2:6-11](../gospel-library/eng/scriptures/pgp/abr/2.md)** — Abrahamic covenant and priesthood
-- **[Hebrews 5-7](../gospel-library/eng/scriptures/nt/heb/5.md)** (not yet indexed) — New Testament on Melchizedek
+- **[Alma 13](https://www.churchofjesuschrist.org/study/scriptures/bofm/alma/13?lang=eng)** — Melchizedek as model high priest
+- **[D&C 84](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/84?lang=eng)** — Full revelation on priesthood
+- **[D&C 107](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/107?lang=eng)** — Organization and duties of priesthood
+- **[D&C 121:34-46](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/121?lang=eng&id=p34-p46#p34)** — Righteous exercise of priesthood
+- **[D&C 20:38-67](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/20?lang=eng&id=p38-p67#p38)** — Duties of elders, priests, teachers, deacons
+- **[Abraham 2:6-11](https://www.churchofjesuschrist.org/study/scriptures/pgp/abr/2?lang=eng&id=p6-p11#p6)** — Abrahamic covenant and priesthood
+- **[Hebrews 5-7](https://www.churchofjesuschrist.org/study/scriptures/nt/heb/5?lang=eng)** (not yet indexed) — New Testament on Melchizedek
 
 ### General Conference Talks
-- **[The Oath and Covenant of the Priesthood](../gospel-library/eng/general-conference/1985/10/the-oath-and-covenant-of-the-priesthood.md)** — Elder Carlos E. Asay, Oct 1985. Defines man's four-part covenant.
-- **[Faith and the Oath and Covenant of the Priesthood](../gospel-library/eng/general-conference/2008/04/faith-and-the-oath-and-covenant-of-the-priesthood.md)** — President Henry B. Eyring, Apr 2008. Faith strengthens us to keep the covenant.
-- **[Covenants](../gospel-library/eng/general-conference/2011/10/covenants.md)** — President Russell M. Nelson, Oct 2011. Abrahamic covenant and priesthood blessings flowing to all.
-- **[Beware Concerning Yourselves](../gospel-library/eng/general-conference/2012/10/beware-concerning-yourselves.md)** — Elder Anthony D. Perkins, Oct 2012. The "glorious journey" from receiving to magnifying.
-- **[An Outpouring of Blessings](../gospel-library/eng/general-conference/2006/04/an-outpouring-of-blessings.md)** — Sister Julie B. Beck, Apr 2006. Priesthood blessings equally available to men and women.
-- **[Great Love for Our Father's Children](../gospel-library/eng/general-conference/2019/04/43cook.md)** — Elder Quentin L. Cook, Apr 2019. Couples "obtain and receive priesthood blessings and power."
+- **[The Oath and Covenant of the Priesthood](https://www.churchofjesuschrist.org/study/general-conference/1985/10/the-oath-and-covenant-of-the-priesthood?lang=eng)** — Elder Carlos E. Asay, Oct 1985. Defines man's four-part covenant.
+- **[Faith and the Oath and Covenant of the Priesthood](https://www.churchofjesuschrist.org/study/general-conference/2008/04/faith-and-the-oath-and-covenant-of-the-priesthood?lang=eng)** — President Henry B. Eyring, Apr 2008. Faith strengthens us to keep the covenant.
+- **[Covenants](https://www.churchofjesuschrist.org/study/general-conference/2011/10/covenants?lang=eng)** — President Russell M. Nelson, Oct 2011. Abrahamic covenant and priesthood blessings flowing to all.
+- **[Beware Concerning Yourselves](https://www.churchofjesuschrist.org/study/general-conference/2012/10/beware-concerning-yourselves?lang=eng)** — Elder Anthony D. Perkins, Oct 2012. The "glorious journey" from receiving to magnifying.
+- **[An Outpouring of Blessings](https://www.churchofjesuschrist.org/study/general-conference/2006/04/an-outpouring-of-blessings?lang=eng)** — Sister Julie B. Beck, Apr 2006. Priesthood blessings equally available to men and women.
+- **[Great Love for Our Father's Children](https://www.churchofjesuschrist.org/study/general-conference/2019/04/43cook?lang=eng)** — Elder Quentin L. Cook, Apr 2019. Couples "obtain and receive priesthood blessings and power."
 
 ---
 
