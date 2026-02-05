@@ -1,0 +1,11 @@
+# Build artifacts
+chromem-exp.exe
+chromem-exp.exe~
+chromem-exp
+*.exe
+
+# chromem database files
+/data/*
+
+# Go build cache (if building locally)
+__debug_bin*
