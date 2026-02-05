@@ -1,8 +1,10 @@
 go 1.25.6
 
 use (
+	./scripts/chromem-exp
 	./scripts/gospel-library
 	./scripts/gospel-mcp
+	./scripts/gospel-vec
 	./scripts/lectures-on-faith
 	./scripts/publish
 	./scripts/search-mcp

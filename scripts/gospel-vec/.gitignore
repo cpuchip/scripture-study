@@ -1,0 +1,12 @@
+# Data files (large, generated)
+data/
+*.gob
+*.gob.gz
+*.gob.gz.enc
+
+# Cached summaries
+summaries/
+
+# Build artifacts
+gospel-vec
+gospel-vec.exe
