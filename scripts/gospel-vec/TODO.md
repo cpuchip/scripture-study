@@ -83,7 +83,8 @@ Build a powerful, general-purpose semantic search tool that can:
 - [x] Chapter summary generation (ChapterSummary struct)
 - [x] Theme/narrative detection (ThemeRange JSON)
 - [x] Timing output for estimation
-- [ ] Summary caching (don't regenerate)
+- [x] Summary caching (JSON files with model + prompt version)
+- [x] Cache invalidation on model/prompt changes
 
 ### Phase 5: Cross-References (future)
 - [ ] Conference talk indexing
@@ -95,12 +96,18 @@ Build a powerful, general-purpose semantic search tool that can:
 - [x] Result ranking/merging
 - [x] Filter by layer/source
 
-### Phase 7: MCP Server (next)
-- [ ] Expose search as MCP tool
-- [ ] Model load/unload via LM Studio API
-- [ ] Tool registration
+### Phase 7: MCP Server ✅
+- [x] Expose search_scriptures as MCP tool
+- [x] get_chapter tool for full chapter text
+- [ ] Model load/unload via LM Studio API (future optimization)
 
-### Phase 8: Visualization (future)
+### Phase 8: Helper Programs (future)
+- [ ] Digest tool: Summarize any file (talk, lesson, etc.) using LLM
+- [ ] Cross-reference finder: Find scriptures related to a talk
+- [ ] Talk summary: Generate study notes for conference talks
+- [ ] Trend analyzer: Look for patterns across chapters (Book of Mormon arcs, PGP themes)
+
+### Phase 9: Visualization (future)
 - [ ] Embedding clusters
 - [ ] Relationship graphs
 - [ ] Interactive exploration

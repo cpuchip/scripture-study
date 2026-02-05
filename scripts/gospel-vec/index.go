@@ -3,6 +3,7 @@ package main
 import (
 	"context"
 	"fmt"
+	"path/filepath"
 	"time"
 )
 
@@ -10,14 +11,18 @@ import (
 type Indexer struct {
 	store      *Store
 	summarizer *Summarizer
+	cache      *SummaryCache
 	config     *Config
 }
 
 // NewIndexer creates a new indexer
 func NewIndexer(store *Store, summarizer *Summarizer, cfg *Config) *Indexer {
+	// Create cache in data/summaries/
+	cacheDir := filepath.Join(cfg.DataDir, "summaries")
 	return &Indexer{
 		store:      store,
 		summarizer: summarizer,
+		cache:      NewSummaryCache(cacheDir),
 		config:     cfg,
 	}
 }
@@ -28,6 +33,7 @@ type IndexOptions struct {
 	Volumes     []string // Which scripture volumes (bofm, dc-testament/dc, etc.)
 	MaxChapters int      // Max chapters to index (0 = all)
 	Verbose     bool     // Print progress details
+	UseCache    bool     // Use cached summaries if available
 }
 
 // DefaultIndexOptions returns sensible defaults
@@ -37,6 +43,7 @@ func DefaultIndexOptions() IndexOptions {
 		Volumes:     []string{"bofm"},
 		MaxChapters: 0,
 		Verbose:     true,
+		UseCache:    true, // Use cache by default
 	}
 }
 
@@ -81,36 +88,79 @@ func (idx *Indexer) IndexScriptures(ctx context.Context, opts IndexOptions) erro
 			case LayerParagraph:
 				chunks = append(chunks, ChunkByParagraph(chapter, SourceScriptures)...)
 			case LayerSummary:
-				if idx.summarizer != nil && idx.config.ChatModel != "" {
+				if idx.config.ChatModel == "" && !opts.UseCache {
+					continue // No model and no cache
+				}
+
+				// Try cache first (validates model and prompt version)
+				var summary *ChapterSummary
+				if opts.UseCache {
+					summary = idx.cache.GetSummary(chapter.Book, chapter.Chapter, idx.config.ChatModel)
+					if summary != nil && opts.Verbose {
+						fmt.Printf(" [summary: cached]")
+					}
+				}
+
+				// Generate if not cached
+				if summary == nil && idx.summarizer != nil && idx.config.ChatModel != "" {
 					summaryStart := time.Now()
-					summary, err := idx.summarizer.SummarizeChapter(ctx, chapter.Book, chapter.Chapter, GetFullChapterContent(chapter))
+					var err error
+					summary, err = idx.summarizer.SummarizeChapter(ctx, chapter.Book, chapter.Chapter, GetFullChapterContent(chapter))
 					summaryDur := time.Since(summaryStart)
 					if err != nil {
 						fmt.Printf("⚠️  Error summarizing %s %d: %v\n", chapter.Book, chapter.Chapter, err)
 					} else {
-						chunk := ChunkAsChapterSummary(chapter, SourceScriptures, summary, idx.config.ChatModel)
-						chunks = append(chunks, chunk)
+						// Cache the result
+						if cacheErr := idx.cache.SaveSummary(chapter.Book, chapter.Chapter, idx.config.ChatModel, summary); cacheErr != nil {
+							fmt.Printf("⚠️  Cache save error: %v\n", cacheErr)
+						}
 						if opts.Verbose {
 							fmt.Printf(" [summary: %v]", summaryDur.Round(time.Millisecond))
 						}
 					}
 				}
+
+				if summary != nil {
+					chunk := ChunkAsChapterSummary(chapter, SourceScriptures, summary, idx.config.ChatModel)
+					chunks = append(chunks, chunk)
+				}
+
 			case LayerTheme:
-				if idx.summarizer != nil && idx.config.ChatModel != "" {
+				if idx.config.ChatModel == "" && !opts.UseCache {
+					continue // No model and no cache
+				}
+
+				// Try cache first (validates model and prompt version)
+				var themes []ThemeRange
+				if opts.UseCache {
+					themes = idx.cache.GetThemes(chapter.Book, chapter.Chapter, idx.config.ChatModel)
+					if len(themes) > 0 && opts.Verbose {
+						fmt.Printf(" [themes: %d cached]", len(themes))
+					}
+				}
+
+				// Generate if not cached
+				if len(themes) == 0 && idx.summarizer != nil && idx.config.ChatModel != "" {
 					themeStart := time.Now()
-					themes, err := idx.summarizer.DetectThemes(ctx, chapter.Book, chapter.Chapter, GetVerseTexts(chapter))
+					var err error
+					themes, err = idx.summarizer.DetectThemes(ctx, chapter.Book, chapter.Chapter, GetVerseTexts(chapter))
 					themeDur := time.Since(themeStart)
 					if err != nil {
 						fmt.Printf("⚠️  Error detecting themes in %s %d: %v\n", chapter.Book, chapter.Chapter, err)
 					} else {
-						for _, theme := range themes {
-							chunk := ChunkAsTheme(chapter, SourceScriptures, theme, idx.config.ChatModel)
-							chunks = append(chunks, chunk)
+						// Cache the result
+						if cacheErr := idx.cache.SaveThemes(chapter.Book, chapter.Chapter, idx.config.ChatModel, themes); cacheErr != nil {
+							fmt.Printf("⚠️  Cache save error: %v\n", cacheErr)
 						}
 						if opts.Verbose {
 							fmt.Printf(" [themes: %d in %v]", len(themes), themeDur.Round(time.Millisecond))
 						}
 					}
+				}
+
+				for _, theme := range themes {
+					chunk := ChunkAsTheme(chapter, SourceScriptures, theme, idx.config.ChatModel)
+					chunks = append(chunks, chunk)
 				}
 			}
 		}

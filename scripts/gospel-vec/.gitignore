@@ -1,5 +1,5 @@
 # Data files (large, generated)
-data/
+data/*
 *.gob
 *.gob.gz
 *.gob.gz.enc
@@ -10,3 +10,4 @@ summaries/
 # Build artifacts
 gospel-vec
 gospel-vec.exe
+*.exe~
