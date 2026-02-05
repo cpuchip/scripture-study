@@ -28,17 +28,29 @@ type Config struct {
 
 // DefaultConfig returns sensible defaults for local development
 func DefaultConfig() *Config {
+	// Detect if running from repo root or from scripts/gospel-vec/
+	scripturesPath := "../../gospel-library/eng/scriptures"
+	conferencePath := "../../gospel-library/eng/general-conference"
+	dataDir := "./data"
+
+	// Check if gospel-library exists in current directory (repo root)
+	if _, err := os.Stat("gospel-library"); err == nil {
+		scripturesPath = "gospel-library/eng/scriptures"
+		conferencePath = "gospel-library/eng/general-conference"
+		dataDir = "scripts/gospel-vec/data"
+	}
+
 	return &Config{
 		EmbeddingURL:   "http://localhost:1234/v1",
 		EmbeddingModel: "text-embedding-qwen3-embedding-4b",
 		ChatURL:        "http://localhost:1234/v1",
 		ChatModel:      "", // Will be auto-detected or set by user
 
-		DataDir: "./data",
+		DataDir: dataDir,
 		DBFile:  "gospel-vec.gob.gz",
 
-		ScripturesPath: "../../gospel-library/eng/scriptures",
-		ConferencePath: "../../gospel-library/eng/general-conference",
+		ScripturesPath: scripturesPath,
+		ConferencePath: conferencePath,
 	}
 }
 

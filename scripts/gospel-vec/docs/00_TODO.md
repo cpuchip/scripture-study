@@ -43,7 +43,7 @@ Priority order based on study workflow value:
 | Priority | Content Type | Path | Status | Notes |
 |----------|-------------|------|--------|-------|
 | 1 | Standard Works (BoM, D&C, PGP) | `/scriptures/bofm/`, `/dc-testament/dc/`, `/pgp/` | ✅ Done | Working well |
-| 2 | **General Conference Talks** | `/general-conference/{year}/{month}/` | 🔜 Next | Need speaker metadata, new chunking |
+| 2 | **General Conference Talks** | `/general-conference/{year}/{month}/` | ✅ Done | Parser + indexer complete |
 | 3 | **Come, Follow Me (2026)** | `/manual/come-follow-me-*` | 🔜 Soon | Supports weekly study |
 | 4 | **Teaching in the Savior's Way** | `/manual/teaching-in-the-saviors-way-2022/` | 🔜 Soon | Lesson prep |
 | 5 | Old Testament | `/scriptures/ot/` | Planned | Large (~39 books) |
@@ -53,6 +53,50 @@ Priority order based on study workflow value:
 | 9 | Teachings of Presidents | `/manual/teachings-*/` | Later | 17+ volumes |
 | 10 | Liahona Magazine | `/liahona/` | Later | Articles |
 | 11 | Videos/Broadcasts | `/video/`, `/broadcasts/` | Later | If transcripts available |
+
+### Conference Talk Indexing Progress ✨ DONE
+
+**Parser completed** (`talk_parser.go`):
+- [x] `ParseTalkFile()` - extracts metadata and content
+- [x] `TalkMetadata` struct with: Title, Speaker, Position, Year, Month, Session, AudioURL
+- [x] `FindTalkFiles()` - discovers talks by year
+- [x] `ExtractScriptureReferences()` - finds scripture cross-refs
+- [x] Session code parsing (e.g., `57nelson.md` → "Sunday Afternoon")
+- [x] `ChunkTalkByParagraph()` - creates paragraph chunks
+- [x] `ChunkTalkAsSummary()` - creates summary chunks
+- [x] `IsAdministrativeDocument()` - filters sustaining/audit docs
+
+**Test command** (`gospel-vec talks`):
+- [x] `-sample` - Parse sample talks from each decade (1971-2025)
+- [x] `-parse FILE` - Parse specific talk
+- [x] `-summarize YEAR` - Test summary generation
+- [x] `-list` - List available conference years
+- [x] Filters out administrative docs (sustaining, audit reports)
+
+**Index command** (`gospel-vec index-talks`):
+- [x] `-years 2025,2024` - Index specific years
+- [x] `-layers paragraph,summary` - Which layers to index
+- [x] `-max N` - Limit number of talks
+- [x] `-summary` - Generate AI summaries
+- [x] Auto-caches summaries for reuse
+
+**Extended types** (`types.go`):
+- [x] Added conference-specific metadata fields: Speaker, Position, Year, Month, Session, TalkTitle
+- [x] Updated ToMap/FromMap functions
+
+**Unified Search** ✅:
+- [x] Search now queries BOTH scriptures and conference talks by default
+- [x] Can filter by layer: `-layers summary` returns only summaries
+- [x] Results sorted by similarity score across all sources
+
+**Current stats (as of indexing):**
+- `conference-paragraph`: 215 documents (8 talks from 2025)
+- `conference-summary`: 8 documents
+
+**TODO for talk indexing:**
+- [ ] Index full decades (expensive but valuable)
+- [ ] Add MCP tools: `search_talks`, `get_talk`, `list_talks_by_speaker`
+- [ ] Consider "quote" layer for memorable passages
 
 See [03_content-indexing-guide.md](03_content-indexing-guide.md) for detailed structure analysis.
 
