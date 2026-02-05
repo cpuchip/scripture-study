@@ -8,6 +8,58 @@ import (
 	"time"
 )
 
+// retryWithBackoff retries an operation with exponential backoff
+func retryWithBackoff(ctx context.Context, maxRetries int, operation func() error) error {
+	var lastErr error
+	for attempt := 0; attempt <= maxRetries; attempt++ {
+		if attempt > 0 {
+			// Exponential backoff: 1s, 2s, 4s, 8s...
+			backoff := time.Duration(1<<uint(attempt-1)) * time.Second
+			if backoff > 30*time.Second {
+				backoff = 30 * time.Second
+			}
+			fmt.Printf("\n⏳ Retrying in %v (attempt %d/%d)...", backoff, attempt+1, maxRetries+1)
+			select {
+			case <-time.After(backoff):
+			case <-ctx.Done():
+				return ctx.Err()
+			}
+		}
+
+		lastErr = operation()
+		if lastErr == nil {
+			return nil
+		}
+
+		// Check if error is retryable (network errors typically are)
+		if !isRetryableError(lastErr) {
+			return lastErr
+		}
+	}
+	return fmt.Errorf("after %d retries: %w", maxRetries+1, lastErr)
+}
+
+// isRetryableError checks if an error is likely transient and worth retrying
+func isRetryableError(err error) bool {
+	errStr := err.Error()
+	retryablePatterns := []string{
+		"connection refused",
+		"connection reset",
+		"forcibly closed",
+		"timeout",
+		"temporary failure",
+		"wsarecv",
+		"EOF",
+		"broken pipe",
+	}
+	for _, pattern := range retryablePatterns {
+		if strings.Contains(strings.ToLower(errStr), strings.ToLower(pattern)) {
+			return true
+		}
+	}
+	return false
+}
+
 // Indexer handles indexing content into the store
 type Indexer struct {
 	store      *Store
@@ -220,21 +272,27 @@ func (idx *Indexer) IndexChapterWithSummary(ctx context.Context, filePath string
 
 // TalkIndexOptions controls conference talk indexing
 type TalkIndexOptions struct {
-	Layers   []Layer  // Which layers to index (paragraph, summary)
-	Years    []string // Which years to index (empty = all)
-	MaxTalks int      // Max talks to index (0 = all)
-	Verbose  bool     // Print progress details
-	UseCache bool     // Use cached summaries if available
+	Layers          []Layer  // Which layers to index (paragraph, summary)
+	Years           []string // Which years to index (empty = all)
+	MaxTalks        int      // Max talks to index (0 = all)
+	Verbose         bool     // Print progress details
+	UseCache        bool     // Use cached summaries if available
+	MaxRetries      int      // Max retries on transient errors (default 3)
+	ContinueOnError bool     // Continue indexing on persistent errors
+	SaveInterval    int      // Save database every N talks (0 = only at end)
 }
 
 // DefaultTalkIndexOptions returns sensible defaults
 func DefaultTalkIndexOptions() TalkIndexOptions {
 	return TalkIndexOptions{
-		Layers:   []Layer{LayerParagraph, LayerSummary},
-		Years:    nil, // All years
-		MaxTalks: 0,   // All talks
-		Verbose:  true,
-		UseCache: true,
+		Layers:          []Layer{LayerParagraph, LayerSummary},
+		Years:           nil, // All years
+		MaxTalks:        0,   // All talks
+		Verbose:         true,
+		UseCache:        true,
+		MaxRetries:      3,
+		ContinueOnError: true, // Don't stop on single file errors
+		SaveInterval:    100,  // Save every 100 talks
 	}
 }
 
@@ -344,10 +402,17 @@ func (idx *Indexer) IndexConferenceTalks(ctx context.Context, basePath string, o
 			}
 		}
 
-		// Add chunks to store
+		// Add chunks to store with retry logic
 		if len(chunks) > 0 {
 			embedStart := time.Now()
-			if err := idx.store.AddChunks(ctx, chunks); err != nil {
+			err := retryWithBackoff(ctx, opts.MaxRetries, func() error {
+				return idx.store.AddChunks(ctx, chunks)
+			})
+			if err != nil {
+				if opts.ContinueOnError {
+					fmt.Printf("\n❌ Failed to index %s after retries: %v (continuing...)", filepath.Base(filePath), err)
+					continue
+				}
 				return fmt.Errorf("adding chunks for %s: %w", filePath, err)
 			}
 			embedDur := time.Since(embedStart)
@@ -357,6 +422,16 @@ func (idx *Indexer) IndexConferenceTalks(ctx context.Context, basePath string, o
 			if opts.Verbose {
 				fmt.Printf("\n📖 Indexed %d/%d: %s (%d chunks) [embed: %v]",
 					i+1, len(allFiles), talk.Metadata.Title, len(chunks), embedDur.Round(time.Millisecond))
+			}
+
+			// Periodic save to protect progress
+			if opts.SaveInterval > 0 && indexedTalks%opts.SaveInterval == 0 {
+				if opts.Verbose {
+					fmt.Printf("\n💾 Checkpoint save at %d talks...", indexedTalks)
+				}
+				if err := idx.store.Save(); err != nil {
+					fmt.Printf("\n⚠️  Checkpoint save failed: %v", err)
+				}
 			}
 		}
 	}
