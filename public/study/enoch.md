@@ -66,7 +66,7 @@ Immediately after the "walk with me" invitation comes one of the most striking v
 
 The footnote to "clay" points to [John 9:6](https://www.churchofjesuschrist.org/study/scriptures/nt/john/9?lang=eng&id=p6#p6) — when Jesus put clay on the blind man's eyes and told him to wash. The parallel is intentional. Walking with God opens our eyes to see what is invisible to the natural eye. When we accept His invitation, our perception of reality shifts — we begin to see as He sees.
 
-President Eyring shared an experience of this very gift in his "Walk with Me" talk — when, as a bishop, the Lord showed him a wayward member as God saw him: *"I'm going to let you see him as I see him."* And Enoch was the first recorded seer in scripture.
+President Eyring shared an experience of this very gift in his "Walk with Me" talk — when, as a bishop, the Lord showed him a wayward member as God saw him: *"I'm going to let you see him as I see him."* And while Adam clearly had the gift of seership — he prophesied concerning all the families of the earth ([Moses 5:10](https://www.churchofjesuschrist.org/study/scriptures/pgp/moses/5?lang=eng&id=p10#p10)) and predicted whatsoever should befall his posterity unto the latest generation ([D&C 107:56](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/107?lang=eng&id=p56#p56)) — Enoch was the first to be *publicly recognized* as a seer. The text is precise: "from thenceforth came **the saying abroad in the land**: A seer hath the Lord raised up" ([Moses 6:36](https://www.churchofjesuschrist.org/study/scriptures/pgp/moses/6?lang=eng&id=p36#p36)). Adam had the gift; Enoch made it famous. (See [Faith, Hope, and Charity: The Architecture of Zion](enoch-charity.md) for a deeper exploration of seership.)
 
 ---
 
