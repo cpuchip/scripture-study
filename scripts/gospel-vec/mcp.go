@@ -112,7 +112,7 @@ func (s *MCPServer) handleToolsList(enc *json.Encoder, req *MCPRequest) {
 	tools := []map[string]any{
 		{
 			"name":        "search_scriptures",
-			"description": "Search the scriptures using semantic similarity. Finds verses, paragraphs, chapter summaries, and themes related to the query.",
+			"description": "Search the scriptures using semantic similarity. Finds verses, paragraphs, chapter summaries, and themes related to the query. Searches across scriptures, conference talks, manuals, and books.",
 			"inputSchema": map[string]any{
 				"type": "object",
 				"properties": map[string]any{

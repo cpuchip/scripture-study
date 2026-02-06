@@ -3,6 +3,7 @@ package main
 import (
 	"context"
 	"fmt"
+	"os"
 	"path/filepath"
 	"strings"
 	"time"
@@ -82,21 +83,27 @@ func NewIndexer(store *Store, summarizer *Summarizer, cfg *Config) *Indexer {
 
 // IndexOptions controls what gets indexed
 type IndexOptions struct {
-	Layers      []Layer  // Which layers to index
-	Volumes     []string // Which scripture volumes (bofm, dc-testament/dc, etc.)
-	MaxChapters int      // Max chapters to index (0 = all)
-	Verbose     bool     // Print progress details
-	UseCache    bool     // Use cached summaries if available
+	Layers          []Layer  // Which layers to index
+	Volumes         []string // Which scripture volumes (bofm, dc-testament/dc, etc.)
+	MaxChapters     int      // Max chapters to index (0 = all)
+	Verbose         bool     // Print progress details
+	UseCache        bool     // Use cached summaries if available
+	MaxRetries      int      // Max retries on transient errors (default 3)
+	ContinueOnError bool     // Continue indexing on persistent errors
+	SaveInterval    int      // Save database every N chapters (0 = only at end)
 }
 
 // DefaultIndexOptions returns sensible defaults
 func DefaultIndexOptions() IndexOptions {
 	return IndexOptions{
-		Layers:      []Layer{LayerVerse, LayerParagraph},
-		Volumes:     []string{"bofm"},
-		MaxChapters: 0,
-		Verbose:     true,
-		UseCache:    true, // Use cache by default
+		Layers:          []Layer{LayerVerse, LayerParagraph, LayerSummary, LayerTheme},
+		Volumes:         []string{"bofm"},
+		MaxChapters:     0,
+		Verbose:         true,
+		UseCache:        true, // Use cache by default
+		MaxRetries:      3,
+		ContinueOnError: true,
+		SaveInterval:    50, // Save every 50 chapters
 	}
 }
 
@@ -118,6 +125,7 @@ func (idx *Indexer) IndexScriptures(ctx context.Context, opts IndexOptions) erro
 
 	// Process each chapter
 	var totalChunks int
+	var chaptersIndexed int
 	start := time.Now()
 
 	for i, filePath := range files {
@@ -218,17 +226,35 @@ func (idx *Indexer) IndexScriptures(ctx context.Context, opts IndexOptions) erro
 			}
 		}
 
-		// Add chunks to store
+		// Add chunks to store with retry logic
 		if len(chunks) > 0 {
 			embedStart := time.Now()
-			if err := idx.store.AddChunks(ctx, chunks); err != nil {
+			err := retryWithBackoff(ctx, opts.MaxRetries, func() error {
+				return idx.store.AddChunks(ctx, chunks)
+			})
+			if err != nil {
+				if opts.ContinueOnError {
+					fmt.Printf("\n❌ Failed to index %s after retries: %v (continuing...)", filepath.Base(filePath), err)
+					continue
+				}
 				return fmt.Errorf("adding chunks for %s: %w", filePath, err)
 			}
 			embedDur := time.Since(embedStart)
 			totalChunks += len(chunks)
+			chaptersIndexed++
 
 			if opts.Verbose {
 				fmt.Printf(" [embed: %v]", embedDur.Round(time.Millisecond))
+			}
+
+			// Periodic save to protect progress
+			if opts.SaveInterval > 0 && chaptersIndexed%opts.SaveInterval == 0 {
+				if opts.Verbose {
+					fmt.Printf("\n💾 Checkpoint save at %d chapters...", chaptersIndexed)
+				}
+				if err := idx.store.Save(); err != nil {
+					fmt.Printf("\n⚠️  Checkpoint save failed: %v", err)
+				}
 			}
 		}
 
@@ -442,6 +468,232 @@ func (idx *Indexer) IndexConferenceTalks(ctx context.Context, basePath string, o
 	}
 
 	return nil
+}
+
+// ManualIndexOptions controls manual/book indexing
+type ManualIndexOptions struct {
+	Layers          []Layer            // Which layers to index (paragraph, summary)
+	Manuals         []ManualDefinition // Which manuals/books to index
+	Verbose         bool
+	UseCache        bool
+	MaxRetries      int
+	ContinueOnError bool
+	SaveInterval    int // Save every N files (0 = only at end)
+}
+
+// DefaultManualIndexOptions returns sensible defaults
+func DefaultManualIndexOptions() ManualIndexOptions {
+	return ManualIndexOptions{
+		Layers:          []Layer{LayerParagraph, LayerSummary},
+		Manuals:         nil, // Set by caller
+		Verbose:         true,
+		UseCache:        true,
+		MaxRetries:      3,
+		ContinueOnError: true,
+		SaveInterval:    50,
+	}
+}
+
+// IndexManuals indexes manual and book content
+func (idx *Indexer) IndexManuals(ctx context.Context, opts ManualIndexOptions) error {
+	if len(opts.Manuals) == 0 {
+		return fmt.Errorf("no manuals specified")
+	}
+
+	var totalChunks int
+	var totalFiles int
+	start := time.Now()
+
+	for _, manual := range opts.Manuals {
+		if opts.Verbose {
+			fmt.Printf("\n📖 Indexing manual: %s (%s)\n", manual.Name, manual.Path)
+		}
+
+		// Verify path exists
+		if _, err := os.Stat(manual.Path); os.IsNotExist(err) {
+			fmt.Printf("⚠️  Path not found: %s (skipping %s)\n", manual.Path, manual.Name)
+			continue
+		}
+
+		// Find all .md files
+		files, err := FindManualFiles(manual.Path)
+		if err != nil {
+			fmt.Printf("⚠️  Error finding files in %s: %v\n", manual.Path, err)
+			continue
+		}
+
+		if opts.Verbose {
+			fmt.Printf("   Found %d files\n", len(files))
+		}
+
+		var manualChunks int
+
+		for i, filePath := range files {
+			chapter, err := ParseManualFile(filePath, manual.Name)
+			if err != nil {
+				fmt.Printf("⚠️  Error parsing %s: %v\n", filePath, err)
+				continue
+			}
+
+			if len(chapter.Paragraphs) < 2 {
+				if opts.Verbose {
+					fmt.Printf("⏭️  Skipping %s (too short: %d paragraphs)\n", filepath.Base(filePath), len(chapter.Paragraphs))
+				}
+				continue
+			}
+
+			var chunks []Chunk
+
+			// Build chunks based on requested layers
+			for _, layer := range opts.Layers {
+				switch layer {
+				case LayerParagraph:
+					chunks = append(chunks, ChunkManualByParagraph(chapter)...)
+
+				case LayerSummary:
+					if idx.config.ChatModel == "" && !opts.UseCache {
+						continue
+					}
+
+					// Try cache first
+					var summary *ChapterSummary
+					cacheKey := fmt.Sprintf("manual-%s", sanitizeID(manual.Name))
+					if opts.UseCache {
+						summary = idx.cache.GetSummary(cacheKey, chapter.Chapter, idx.config.ChatModel)
+						if summary != nil && opts.Verbose {
+							fmt.Printf(" [summary: cached]")
+						}
+					}
+
+					// Generate if not cached
+					if summary == nil && idx.summarizer != nil && idx.config.ChatModel != "" {
+						summaryStart := time.Now()
+						summary, err = idx.generateManualSummary(ctx, chapter)
+						summaryDur := time.Since(summaryStart)
+						if err != nil {
+							fmt.Printf("⚠️  Error summarizing %s ch%d: %v\n", manual.Name, chapter.Chapter, err)
+						} else {
+							// Cache the result
+							if cacheErr := idx.cache.SaveSummary(cacheKey, chapter.Chapter, idx.config.ChatModel, summary); cacheErr != nil {
+								fmt.Printf("⚠️  Cache save error: %v\n", cacheErr)
+							}
+							if opts.Verbose {
+								fmt.Printf(" [summary: %v]", summaryDur.Round(time.Millisecond))
+							}
+						}
+					}
+
+					if summary != nil {
+						chunks = append(chunks, ChunkManualAsSummary(chapter, summary, idx.config.ChatModel))
+					}
+				}
+			}
+
+			// Add chunks to store with retry
+			if len(chunks) > 0 {
+				embedStart := time.Now()
+				err := retryWithBackoff(ctx, opts.MaxRetries, func() error {
+					return idx.store.AddChunks(ctx, chunks)
+				})
+				if err != nil {
+					if opts.ContinueOnError {
+						fmt.Printf("\n❌ Failed to index %s after retries: %v (continuing...)", filepath.Base(filePath), err)
+						continue
+					}
+					return fmt.Errorf("adding chunks for %s: %w", filePath, err)
+				}
+				embedDur := time.Since(embedStart)
+				manualChunks += len(chunks)
+				totalFiles++
+
+				if opts.Verbose {
+					title := chapter.Title
+					if len(title) > 50 {
+						title = title[:50] + "..."
+					}
+					fmt.Printf("\n   📖 %d/%d: %s (%d chunks) [embed: %v]",
+						i+1, len(files), title, len(chunks), embedDur.Round(time.Millisecond))
+				}
+
+				// Periodic save
+				if opts.SaveInterval > 0 && totalFiles%opts.SaveInterval == 0 {
+					if opts.Verbose {
+						fmt.Printf("\n   💾 Checkpoint save at %d files...", totalFiles)
+					}
+					if err := idx.store.Save(); err != nil {
+						fmt.Printf("\n   ⚠️  Checkpoint save failed: %v", err)
+					}
+				}
+			}
+		}
+
+		totalChunks += manualChunks
+		if opts.Verbose {
+			fmt.Printf("\n   ✅ %s: %d chunks from %d files\n", manual.Name, manualChunks, len(files))
+		}
+	}
+
+	if opts.Verbose {
+		fmt.Printf("\n✅ Indexed %d total chunks from %d files in %v\n",
+			totalChunks, totalFiles, time.Since(start).Round(time.Millisecond))
+	}
+
+	return nil
+}
+
+// generateManualSummary creates an AI summary of a manual chapter
+func (idx *Indexer) generateManualSummary(ctx context.Context, chapter *ParsedManualChapter) (*ChapterSummary, error) {
+	content := GetManualChapterContent(chapter)
+
+	// Truncate if too long
+	if len(content) > 6000 {
+		content = content[:6000] + "\n[Content truncated]"
+	}
+
+	systemPrompt := `Create a summary of this manual chapter optimized for semantic search indexing.
+
+Format your response EXACTLY like this:
+KEYWORDS: [10-15 comma-separated searchable terms including doctrines, principles, people, events, applications]
+SUMMARY: [50-75 word narrative covering main teachings and principles, present tense]
+KEY_QUOTE: [Most memorable or powerful quote from the chapter]
+
+Keep output under 200 words total. No other text.`
+
+	userPrompt := fmt.Sprintf(`Summarize this chapter from "%s" titled "%s":
+
+%s`, chapter.ManualName, chapter.Title, content)
+
+	response, err := idx.summarizer.chat(ctx, systemPrompt, userPrompt, 300)
+	if err != nil {
+		return nil, err
+	}
+
+	// Parse response (same format as chapter summaries)
+	summary := &ChapterSummary{Raw: response}
+
+	lines := strings.Split(response, "\n")
+	for _, line := range lines {
+		line = strings.TrimSpace(line)
+		if strings.HasPrefix(line, "KEYWORDS:") {
+			kwStr := strings.TrimPrefix(line, "KEYWORDS:")
+			kwStr = strings.TrimSpace(kwStr)
+			keywords := strings.Split(kwStr, ",")
+			for _, kw := range keywords {
+				kw = strings.TrimSpace(kw)
+				if kw != "" {
+					summary.Keywords = append(summary.Keywords, kw)
+				}
+			}
+		} else if strings.HasPrefix(line, "SUMMARY:") {
+			summary.Summary = strings.TrimSpace(strings.TrimPrefix(line, "SUMMARY:"))
+		} else if strings.HasPrefix(line, "KEY_QUOTE:") || strings.HasPrefix(line, "KEY_VERSE:") {
+			summary.KeyVerse = strings.TrimSpace(strings.TrimPrefix(strings.TrimPrefix(line, "KEY_QUOTE:"), "KEY_VERSE:"))
+		}
+	}
+
+	summary.Keywords = deduplicateKeywords(summary.Keywords)
+
+	return summary, nil
 }
 
 // generateTalkSummary creates an AI summary of a conference talk

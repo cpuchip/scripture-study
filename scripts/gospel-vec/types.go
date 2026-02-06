@@ -18,6 +18,7 @@ type Source string
 const (
 	SourceScriptures Source = "scriptures"
 	SourceConference Source = "conference"
+	SourceManual     Source = "manual"
 )
 
 // DocMetadata contains metadata for each indexed document
