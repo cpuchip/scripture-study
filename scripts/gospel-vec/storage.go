@@ -67,16 +67,23 @@ func (s *Store) Load() error {
 	return nil
 }
 
-// Save exports the database to the compressed file
+// Save exports the database to the compressed file using atomic write
 func (s *Store) Save() error {
 	s.mu.Lock()
 	defer s.mu.Unlock()
 
 	dbPath := s.config.DBPath()
+	tmpPath := dbPath + ".tmp"
 
-	// Export with compression
-	if err := s.db.ExportToFile(dbPath, true, ""); err != nil {
-		return fmt.Errorf("exporting to %s: %w", dbPath, err)
+	// Export to temp file first
+	if err := s.db.ExportToFile(tmpPath, true, ""); err != nil {
+		os.Remove(tmpPath) // Clean up partial temp file
+		return fmt.Errorf("exporting to %s: %w", tmpPath, err)
+	}
+
+	// Atomic rename (replace old file with new one)
+	if err := os.Rename(tmpPath, dbPath); err != nil {
+		return fmt.Errorf("renaming %s to %s: %w", tmpPath, dbPath, err)
 	}
 
 	fmt.Printf("💾 Saved database to %s\n", dbPath)
@@ -162,7 +169,7 @@ func (s *Store) Search(ctx context.Context, query string, opts SearchOptions) ([
 
 	sources := opts.Sources
 	if len(sources) == 0 {
-		sources = []Source{SourceScriptures, SourceConference}
+		sources = []Source{SourceScriptures, SourceConference, SourceManual}
 	}
 
 	// Search each collection
@@ -209,7 +216,7 @@ func (s *Store) Search(ctx context.Context, query string, opts SearchOptions) ([
 func (s *Store) Stats() map[string]int {
 	stats := make(map[string]int)
 
-	for _, source := range []Source{SourceScriptures, SourceConference} {
+	for _, source := range []Source{SourceScriptures, SourceConference, SourceManual} {
 		for _, layer := range []Layer{LayerVerse, LayerParagraph, LayerSummary, LayerTheme} {
 			col := s.GetCollection(source, layer)
 			if col != nil {
@@ -230,7 +237,7 @@ func collectionName(source Source, layer Layer) string {
 // parseCollectionName extracts source and layer from collection name
 func parseCollectionName(name string) (Source, Layer) {
 	// Simple split on "-"
-	for _, source := range []Source{SourceScriptures, SourceConference} {
+	for _, source := range []Source{SourceScriptures, SourceConference, SourceManual} {
 		for _, layer := range []Layer{LayerVerse, LayerParagraph, LayerSummary, LayerTheme} {
 			if collectionName(source, layer) == name {
 				return source, layer

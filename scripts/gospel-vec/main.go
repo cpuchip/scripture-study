@@ -23,6 +23,10 @@ func main() {
 		cmdIndex(os.Args[2:])
 	case "index-talks":
 		cmdIndexTalks(os.Args[2:])
+	case "index-manuals":
+		cmdIndexManuals(os.Args[2:])
+	case "index-all":
+		cmdIndexAll(os.Args[2:])
 	case "search":
 		cmdSearch(os.Args[2:])
 	case "mcp":
@@ -49,40 +53,61 @@ Usage:
   gospel-vec <command> [options]
 
 Commands:
-  test         Test LM Studio connection (embeddings and chat)
-  index        Index scripture content into the vector database
-  index-talks  Index conference talks into the vector database
-  search       Search the vector database (scriptures + talks)
-  mcp          Start MCP server (for VS Code/Claude integration)
-  stats        Show database statistics
-  config       Show or initialize configuration
-  talks        Parse and test conference talk indexing
-  help         Show this help message
+  test           Test LM Studio connection (embeddings and chat)
+  index          Index scripture content into the vector database
+  index-talks    Index conference talks into the vector database
+  index-manuals  Index manuals and books into the vector database
+  index-all      Index ALL content (scriptures + talks + manuals)
+  search         Search the vector database (scriptures + talks + manuals)
+  mcp            Start MCP server (for VS Code/Claude integration)
+  stats          Show database statistics
+  config         Show or initialize configuration
+  talks          Parse and test conference talk indexing
+  help           Show this help message
+
+Index Options (scriptures):
+  -volumes       Comma-separated volumes: bofm,dc-testament/dc,pgp,ot,nt (default: all)
+  -layers        Comma-separated layers (default: verse,paragraph,summary,theme)
+  -no-summary    Disable summary layer (skip LLM generation)
+  -no-theme      Disable theme layer (skip LLM generation)
+  -max           Max chapters to index (0 = all)
+  -retries       Max retries on transient errors (default: 3)
+  -continue      Continue indexing after persistent errors (default: true)
+  -save-interval Save database every N chapters (default: 50)
+  -v             Verbose output (default: true)
 
 Index-talks Options:
   -years          Comma-separated years (empty = all 1971-2025)
   -layers         Comma-separated layers: paragraph,summary
   -max            Max talks to index (0 = all)
-  -summary        Generate LLM summaries (slower)
-  -chat-model     Chat model for summaries
-  -no-cache       Don't use summary cache (regenerate all)
   -retries        Max retries on transient errors (default: 3)
   -continue       Continue indexing after persistent errors (default: true)
-  -save-interval  Save database every N talks (default: 100, 0 = only at end)
+  -save-interval  Save database every N talks (default: 100)
+  -v              Verbose output (default: true)
+
+Index-manuals Options:
+  -manuals        Comma-separated manual names (empty = all known manuals)
+  -teachings      Index all Teachings of Presidents manuals
+  -cfm            Index Come, Follow Me manuals
+  -books          Index additional books (Lectures on Faith)
+  -no-summary     Disable summary layer
+  -retries        Max retries on transient errors (default: 3)
+  -save-interval  Save database every N files (default: 50)
   -v              Verbose output (default: true)
 
 Examples:
   gospel-vec test                       # Test LM Studio connection
-  gospel-vec index -volumes bofm        # Index Book of Mormon
-  gospel-vec index-talks -years 2025    # Index 2025 conference talks
-  gospel-vec index-talks -summary       # Index all talks with summaries
-  gospel-vec index-talks -retries 5     # More retries for unstable connections
-  gospel-vec index-talks -continue=false # Stop on first persistent error
-  gospel-vec search "faith"             # Search for faith (scriptures + talks)
+  gospel-vec index                      # Index all scriptures (all layers)
+  gospel-vec index -volumes ot,nt       # Index OT+NT with summaries+themes
+  gospel-vec index -no-summary -no-theme # Just verse+paragraph (fast)
+  gospel-vec index-talks                # Index all conference talks
+  gospel-vec index-manuals              # Index all known manuals and books
+  gospel-vec index-manuals -teachings   # Index only Teachings of Presidents
+  gospel-vec index-manuals -books       # Index Lectures on Faith
+  gospel-vec index-all                  # Index EVERYTHING
+  gospel-vec search "faith"             # Search for faith (all sources)
   gospel-vec mcp -data ./data           # Start MCP server with data dir
   gospel-vec stats                      # Show database stats
-  gospel-vec talks -sample              # Parse sample talks from each decade
-  gospel-vec talks -summarize 2025      # Test summary generation for 2025 talks
 `)
 }
 
@@ -123,19 +148,36 @@ func cmdTest() {
 func cmdIndex(args []string) {
 	flags := flag.NewFlagSet("index", flag.ExitOnError)
 
-	volumes := flags.String("volumes", "bofm", "Comma-separated volumes to index (bofm, dc-testament/dc, pgp, ot, nt)")
-	layers := flags.String("layers", "verse,paragraph", "Comma-separated layers (verse, paragraph, summary, theme)")
+	allVolumes := "bofm,dc-testament/dc,pgp,ot,nt"
+	volumes := flags.String("volumes", allVolumes, "Comma-separated volumes to index (bofm, dc-testament/dc, pgp, ot, nt)")
+	layers := flags.String("layers", "verse,paragraph,summary,theme", "Comma-separated layers (verse, paragraph, summary, theme)")
 	maxChapters := flags.Int("max", 0, "Max chapters to index (0 = all)")
-	withSummary := flags.Bool("summary", false, "Generate LLM summaries (slower)")
+	noSummary := flags.Bool("no-summary", false, "Disable summary layer")
+	noTheme := flags.Bool("no-theme", false, "Disable theme layer")
 	chatModel := flags.String("chat-model", "", "Chat model for summaries (e.g., qwen/qwen3-vl-8b)")
 	noCache := flags.Bool("no-cache", false, "Don't use summary cache (regenerate all)")
 	verbose := flags.Bool("v", true, "Verbose output")
+	maxRetries := flags.Int("retries", 3, "Max retries on transient errors")
+	continueOnError := flags.Bool("continue", true, "Continue indexing after persistent errors")
+	saveInterval := flags.Int("save-interval", 50, "Save database every N chapters (0 = only at end)")
+	noLock := flags.Bool("no-lock", false, "Skip lock acquisition (used internally by index-all)")
 
 	if err := flags.Parse(args); err != nil {
 		os.Exit(1)
 	}
 
 	cfg := DefaultConfig()
+
+	// Acquire index lock unless called from index-all
+	if !*noLock {
+		lock := NewIndexLock(cfg.DataDir)
+		if err := lock.Acquire("index"); err != nil {
+			fmt.Printf("🔒 %v\n", err)
+			os.Exit(1)
+		}
+		defer lock.Release()
+		fmt.Println("🔒 Index lock acquired")
+	}
 
 	// Set chat model if provided
 	if *chatModel != "" {
@@ -154,15 +196,14 @@ func cmdIndex(args []string) {
 		case "paragraph":
 			layerList = append(layerList, LayerParagraph)
 		case "summary":
-			layerList = append(layerList, LayerSummary)
+			if !*noSummary {
+				layerList = append(layerList, LayerSummary)
+			}
 		case "theme":
-			layerList = append(layerList, LayerTheme)
+			if !*noTheme {
+				layerList = append(layerList, LayerTheme)
+			}
 		}
-	}
-
-	// Add summary layer if requested
-	if *withSummary && !containsLayer(layerList, LayerSummary) {
-		layerList = append(layerList, LayerSummary)
 	}
 
 	// Auto-detect chat model if summary/theme layers requested but no model specified
@@ -207,11 +248,14 @@ func cmdIndex(args []string) {
 	// Index
 	ctx := context.Background()
 	opts := IndexOptions{
-		Layers:      layerList,
-		Volumes:     volumeList,
-		MaxChapters: *maxChapters,
-		Verbose:     *verbose,
-		UseCache:    !*noCache,
+		Layers:          layerList,
+		Volumes:         volumeList,
+		MaxChapters:     *maxChapters,
+		Verbose:         *verbose,
+		UseCache:        !*noCache,
+		MaxRetries:      *maxRetries,
+		ContinueOnError: *continueOnError,
+		SaveInterval:    *saveInterval,
 	}
 
 	start := time.Now()
@@ -237,6 +281,277 @@ func cmdIndex(args []string) {
 	}
 }
 
+func cmdIndexAll(args []string) {
+	flags := flag.NewFlagSet("index-all", flag.ExitOnError)
+	retries := flags.Int("retries", 3, "Max retries on transient errors")
+	noCache := flags.Bool("no-cache", false, "Don't use summary cache")
+	verbose := flags.Bool("v", true, "Verbose output")
+	noSummary := flags.Bool("no-summary", false, "Disable summary layer")
+	noTheme := flags.Bool("no-theme", false, "Disable theme layer")
+
+	if err := flags.Parse(args); err != nil {
+		os.Exit(1)
+	}
+
+	// Acquire index lock for the entire run
+	cfg := DefaultConfig()
+	lock := NewIndexLock(cfg.DataDir)
+	if err := lock.Acquire("index-all"); err != nil {
+		fmt.Printf("🔒 %v\n", err)
+		os.Exit(1)
+	}
+	defer lock.Release()
+	fmt.Println("🔒 Index lock acquired")
+
+	// Build args for sub-commands (with -no-lock since we hold the lock)
+	scriptureArgs := []string{
+		"-volumes", "bofm,dc-testament/dc,pgp,ot,nt",
+		fmt.Sprintf("-retries=%d", *retries),
+		fmt.Sprintf("-v=%t", *verbose),
+		"-no-lock",
+	}
+	if *noCache {
+		scriptureArgs = append(scriptureArgs, "-no-cache")
+	}
+	if *noSummary {
+		scriptureArgs = append(scriptureArgs, "-no-summary")
+	}
+	if *noTheme {
+		scriptureArgs = append(scriptureArgs, "-no-theme")
+	}
+
+	talkArgs := []string{
+		fmt.Sprintf("-retries=%d", *retries),
+		fmt.Sprintf("-v=%t", *verbose),
+		"-no-lock",
+	}
+	if *noCache {
+		talkArgs = append(talkArgs, "-no-cache")
+	}
+
+	fmt.Println("📚 === INDEXING ALL CONTENT ===")
+	fmt.Println()
+	fmt.Println("📖 Phase 1: Scriptures (all volumes, all layers)")
+	fmt.Println("================================================")
+	cmdIndex(scriptureArgs)
+
+	fmt.Println()
+	fmt.Println("🎤 Phase 2: Conference Talks (all years)")
+	fmt.Println("================================================")
+	cmdIndexTalks(talkArgs)
+
+	fmt.Println()
+	fmt.Println("📘 Phase 3: Manuals and Books")
+	fmt.Println("================================================")
+	manualArgs := []string{
+		fmt.Sprintf("-retries=%d", *retries),
+		fmt.Sprintf("-v=%t", *verbose),
+		"-no-lock",
+	}
+	if *noSummary {
+		manualArgs = append(manualArgs, "-no-summary")
+	}
+	cmdIndexManuals(manualArgs)
+
+	fmt.Println()
+	fmt.Println("🎉 === ALL INDEXING COMPLETE ===")
+}
+
+func cmdIndexManuals(args []string) {
+	flags := flag.NewFlagSet("index-manuals", flag.ExitOnError)
+
+	teachings := flags.Bool("teachings", false, "Index all Teachings of Presidents manuals")
+	cfm := flags.Bool("cfm", false, "Index Come, Follow Me manuals")
+	books := flags.Bool("books", false, "Index additional books (Lectures on Faith)")
+	manualNames := flags.String("manuals", "", "Comma-separated manual names to index (empty with no flags = all)")
+	noSummary := flags.Bool("no-summary", false, "Disable summary layer")
+	chatModel := flags.String("chat-model", "", "Chat model for summaries")
+	noCache := flags.Bool("no-cache", false, "Don't use summary cache")
+	verbose := flags.Bool("v", true, "Verbose output")
+	maxRetries := flags.Int("retries", 3, "Max retries on transient errors")
+	continueOnError := flags.Bool("continue", true, "Continue indexing after persistent errors")
+	saveInterval := flags.Int("save-interval", 50, "Save database every N files")
+	noLock := flags.Bool("no-lock", false, "Skip lock acquisition (used internally by index-all)")
+
+	if err := flags.Parse(args); err != nil {
+		os.Exit(1)
+	}
+
+	cfg := DefaultConfig()
+
+	// Acquire index lock unless called from index-all
+	if !*noLock {
+		lock := NewIndexLock(cfg.DataDir)
+		if err := lock.Acquire("index-manuals"); err != nil {
+			fmt.Printf("🔒 %v\n", err)
+			os.Exit(1)
+		}
+		defer lock.Release()
+		fmt.Println("🔒 Index lock acquired")
+	}
+
+	if *chatModel != "" {
+		cfg.ChatModel = *chatModel
+	}
+
+	// Determine manual base path
+	manualBasePath := "../../gospel-library/eng/manual"
+	booksBasePath := "../../books"
+	if _, err := os.Stat("gospel-library"); err == nil {
+		manualBasePath = "gospel-library/eng/manual"
+		booksBasePath = "books"
+	}
+
+	// Build the list of manuals to index
+	var manuals []ManualDefinition
+
+	// If specific flags are set, use them
+	flagsSpecified := *teachings || *cfm || *books || *manualNames != ""
+
+	if *teachings || (!flagsSpecified) {
+		for _, m := range KnownManuals() {
+			if m.Type == "teachings" {
+				m.Path = filepath.Join(manualBasePath, m.Path)
+				manuals = append(manuals, m)
+			}
+		}
+	}
+
+	if *cfm || (!flagsSpecified) {
+		for _, m := range KnownManuals() {
+			if m.Type == "cfm" {
+				m.Path = filepath.Join(manualBasePath, m.Path)
+				manuals = append(manuals, m)
+			}
+		}
+	}
+
+	if !flagsSpecified {
+		// Also include "manual" type manuals (e.g., Teaching in the Savior's Way)
+		for _, m := range KnownManuals() {
+			if m.Type == "manual" {
+				m.Path = filepath.Join(manualBasePath, m.Path)
+				manuals = append(manuals, m)
+			}
+		}
+	}
+
+	if *books || (!flagsSpecified) {
+		for _, m := range KnownBooks() {
+			m.Path = filepath.Join(booksBasePath, m.Path)
+			manuals = append(manuals, m)
+		}
+	}
+
+	// If specific manual names are provided, filter
+	if *manualNames != "" {
+		nameList := parseCSV(*manualNames)
+		var filtered []ManualDefinition
+		allManuals := append(KnownManuals(), KnownBooks()...)
+		for _, name := range nameList {
+			name = strings.TrimSpace(name)
+			for _, m := range allManuals {
+				if strings.Contains(strings.ToLower(m.Name), strings.ToLower(name)) ||
+					strings.Contains(strings.ToLower(m.Path), strings.ToLower(name)) {
+					// Determine correct base path
+					if m.Type == "book" {
+						m.Path = filepath.Join(booksBasePath, m.Path)
+					} else {
+						m.Path = filepath.Join(manualBasePath, m.Path)
+					}
+					filtered = append(filtered, m)
+					break
+				}
+			}
+		}
+		manuals = filtered
+	}
+
+	if len(manuals) == 0 {
+		fmt.Println("❌ No manuals matched. Use -teachings, -cfm, -books, or -manuals to specify.")
+		os.Exit(1)
+	}
+
+	// Build layers
+	layerList := []Layer{LayerParagraph}
+	if !*noSummary {
+		layerList = append(layerList, LayerSummary)
+	}
+
+	// Auto-detect chat model if summary layer requested
+	needsChat := containsLayer(layerList, LayerSummary)
+	if needsChat && cfg.ChatModel == "" {
+		fmt.Println("🔍 No chat model specified, auto-detecting from LM Studio...")
+		models, err := GetAvailableModels(context.Background(), cfg.ChatURL)
+		if err != nil {
+			fmt.Printf("⚠️  Could not detect models: %v\n", err)
+			fmt.Println("   Summary layer will use cache only (no generation)")
+		} else if len(models) > 0 {
+			cfg.ChatModel = models[0]
+			fmt.Printf("✅ Using chat model: %s\n", cfg.ChatModel)
+		}
+	}
+
+	fmt.Printf("📘 Indexing %d manuals/books\n", len(manuals))
+	for _, m := range manuals {
+		fmt.Printf("   - %s\n", m.Name)
+	}
+	fmt.Printf("📊 Layers: %v\n", layerList)
+
+	// Create embedding function
+	embedFunc := NewLMStudioEmbedder(cfg.EmbeddingURL, cfg.EmbeddingModel)
+
+	// Create store
+	store, err := NewStore(cfg, embedFunc)
+	if err != nil {
+		fmt.Printf("❌ Failed to create store: %v\n", err)
+		os.Exit(1)
+	}
+
+	// Create summarizer (optional)
+	var summarizer *Summarizer
+	if containsLayer(layerList, LayerSummary) {
+		summarizer = NewSummarizer(cfg.ChatURL, cfg.ChatModel)
+	}
+
+	// Create indexer
+	indexer := NewIndexer(store, summarizer, cfg)
+
+	// Index
+	ctx := context.Background()
+	opts := ManualIndexOptions{
+		Layers:          layerList,
+		Manuals:         manuals,
+		Verbose:         *verbose,
+		UseCache:        !*noCache,
+		MaxRetries:      *maxRetries,
+		ContinueOnError: *continueOnError,
+		SaveInterval:    *saveInterval,
+	}
+
+	start := time.Now()
+	if err := indexer.IndexManuals(ctx, opts); err != nil {
+		fmt.Printf("❌ Indexing failed: %v\n", err)
+		os.Exit(1)
+	}
+
+	// Save database
+	fmt.Println("\n💾 Saving database...")
+	if err := store.Save(); err != nil {
+		fmt.Printf("❌ Failed to save: %v\n", err)
+		os.Exit(1)
+	}
+
+	fmt.Printf("✅ Manual indexing complete in %v\n", time.Since(start).Round(time.Second))
+
+	// Show stats
+	stats := store.Stats()
+	fmt.Println("\n📈 Collection stats:")
+	for name, count := range stats {
+		fmt.Printf("   %s: %d documents\n", name, count)
+	}
+}
+
 func cmdIndexTalks(args []string) {
 	flags := flag.NewFlagSet("index-talks", flag.ExitOnError)
 
@@ -250,12 +565,24 @@ func cmdIndexTalks(args []string) {
 	maxRetries := flags.Int("retries", 3, "Max retries on transient errors")
 	continueOnError := flags.Bool("continue", true, "Continue indexing after persistent errors")
 	saveInterval := flags.Int("save-interval", 100, "Save database every N talks (0 = only at end)")
+	noLock := flags.Bool("no-lock", false, "Skip lock acquisition (used internally by index-all)")
 
 	if err := flags.Parse(args); err != nil {
 		os.Exit(1)
 	}
 
 	cfg := DefaultConfig()
+
+	// Acquire index lock unless called from index-all
+	if !*noLock {
+		lock := NewIndexLock(cfg.DataDir)
+		if err := lock.Acquire("index-talks"); err != nil {
+			fmt.Printf("🔒 %v\n", err)
+			os.Exit(1)
+		}
+		defer lock.Release()
+		fmt.Println("🔒 Index lock acquired")
+	}
 
 	// Set chat model if provided
 	if *chatModel != "" {
