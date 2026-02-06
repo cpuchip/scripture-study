@@ -130,6 +130,50 @@ When studying scriptures:
 5. Connect to practical application
 6. Note any doctrinal significance
 
+### Two-Phase Study Workflow
+
+Search tools find things fast. But search results are **pointers, not sources.** The AI's greatest strength is deep reasoning over full source material — don't shortcut past it.
+
+**Phase 1 — Discovery** (use search tools freely):
+- `gospel_search` (gospel-mcp) for keyword/phrase search across scriptures, conference, manuals
+- `search_scriptures` (gospel-vec) for semantic/concept search
+- `define` / `webster_define` (webster-mcp) for historical word meanings
+- `web_search` (DuckDuckGo) for external context
+- Note file paths and references to explore further
+
+**Phase 2 — Deep Reading** (read actual sources):
+- For EVERY scripture you plan to quote, `read_file` the actual chapter markdown
+- For EVERY conference talk you plan to cite, `read_file` the actual talk file
+- Verify the file exists locally with `file_search` or `list_dir` before claiming it doesn't exist
+- Pull real quotes from the source file, not from search excerpts or vector summaries
+- **Follow the footnotes:** Scripture markdown files contain superscript footnote markers and cross-reference links placed there by the scriptural authors and editors. These are insights handed to us on a silver platter — read them, follow them, and use them to widen the study. A single footnote can open an entire new line of connected scripture.
+- Note cross-references and Topical Guide / Bible Dictionary links visible in the full markdown
+- Use the AI's full context window to reason about what the text actually says
+
+**Rules:**
+- Never use a search tool excerpt as a direct quote in a study document
+- Never link to a conference directory (`../general-conference/2001/10/`) — always link to the specific talk file
+- Never claim a file doesn't exist locally without checking the file system
+- Vector search summaries are NOT direct quotes — always verify against the source
+
+**The Pattern:** Use gospel-mcp/gospel-vec to find *what* to study. Use `read_file` to *actually study it*. Use webster-mcp to *understand the language*. Each tool has a role; none replaces the others.
+
+See [01_reflections.md](../docs/01_reflections.md) for the full analysis of how this workflow was developed.
+
+### Session Workflow Habits
+
+1. **Cite count rule:** For a study document with N conference talk citations, read at least N actual talk files. The ratio of `read_file` calls to search calls should increase as the document matures.
+
+2. **Quote verification pass:** Before finalizing any study doc, re-read each quoted passage in context. If a "quote" can't be found verbatim in the source file, it's not a quote — fix it or remove it.
+
+3. **Discovery → Reading → Writing rhythm:** Start broad (search), go deep (read full sources), then synthesize (write). Don't write from search results directly.
+
+4. **Tool complementarity:**
+   - gospel-mcp / gospel-vec → **find** what to study
+   - `read_file` → **study** the actual content
+   - webster-mcp → **understand** the historical language
+   - `file_search` / `list_dir` → **verify** files exist before linking
+
 ### Collaboration Principles
 
 This project exists to facilitate **deep, honest scripture study**. The user's purpose is sacred:
@@ -205,9 +249,11 @@ When citing magazine articles:
 Personal scripture study for gaining insights and deepening understanding.
 
 1. **Open**: Create or open a topic file in `/study/`
-2. **Research**: Pull relevant scriptures and analyze with AI assistance
-3. **Document**: Record insights and personal reflections in `/journal/`
-4. **Review**: Use VS Code search to find past insights and connections
+2. **Discover**: Use search tools (gospel-mcp, gospel-vec) to find relevant scriptures, talks, and manual content
+3. **Read**: Use `read_file` to study the actual source files — full chapters, full talks, with footnotes and cross-references
+4. **Write**: Synthesize insights with verified quotes and proper markdown links to source files
+5. **Document**: Record personal reflections in `/journal/`
+6. **Verify**: Run pre-publish checklist before finalizing (see [study_template.md](../docs/study_template.md))
 
 **Template:** Use [study_template.md](../docs/study_template.md) for structured study sessions.
 

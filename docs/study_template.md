@@ -50,4 +50,18 @@ Just as God created all things spiritually before physically, effective AI-assis
 
 ---
 
+## Pre-Publish Checklist
+
+Before finalizing any study document, verify:
+
+- [ ] Every quoted passage is verified against the actual source file (not search excerpts or vector summaries)
+- [ ] Every conference talk reference links to a **specific talk file**, not a conference directory
+- [ ] Every scripture reference links to the specific chapter file with correct path
+- [ ] Files claimed to be "not downloaded" are verified with `file_search` or `list_dir`
+- [ ] Webster 1828 definitions used where historical meaning differs from modern usage
+- [ ] All markdown links are relative and follow project conventions
+- [ ] The `read_file` tool was used at least once per cited source
+
+---
+
 *This is a living document. Update as new patterns emerge.*
