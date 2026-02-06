@@ -1,7 +1,9 @@
 # Build artifacts
+gospel-mcp.exe~
 gospel-mcp.exe
 gospel-mcp
 *.exe
+*.exe~
 
 # SQLite database and WAL files
 gospel.db

@@ -9,17 +9,17 @@ These are concrete code changes to gospel-vec and gospel-mcp that address the "f
 
 ## Overview of Changes
 
-| # | Improvement | Tool | Effort | Re-index? |
-|---|------------|------|--------|-----------|
-| 1 | Add `markdown_link` and `file_path` to search results | gospel-vec | Small | No |
-| 2 | Add `result_type` field (quote vs summary) | gospel-vec | Small | No |
-| 3 | Add `local_file_exists` field to search results | gospel-vec | Small | No |
-| 4 | Enrich conference talk metadata in results | gospel-vec | Small | No |
-| 5 | Add `get_talk` tool to gospel-vec | gospel-vec | Medium | No |
-| 6 | Add `search_talks` tool with speaker/year filters | gospel-vec | Medium | No |
-| 7 | Improve `search_scriptures` tool description | gospel-vec | Tiny | No |
-| 8 | Truncation warning in search results | gospel-vec | Tiny | No |
-| 9 | Align gospel-mcp `MarkdownLink` output to be prominent | gospel-mcp | Small | No |
+| # | Improvement | Tool | Effort | Re-index? | Status |
+|---|------------|------|--------|-----------|--------|
+| 1 | Add `markdown_link` and `file_path` to search results | gospel-vec | Small | No | ✅ Done |
+| 2 | Add `result_type` field (quote vs summary) | gospel-vec | Small | No | ✅ Done |
+| 3 | Add `local_file_exists` field to search results | gospel-vec | Small | No | ✅ Done |
+| 4 | Enrich conference talk metadata in results | gospel-vec | Small | No | ✅ Done |
+| 5 | Add `get_talk` tool to gospel-vec | gospel-vec | Medium | No | ✅ Done |
+| 6 | Add `search_talks` tool with speaker/year filters | gospel-vec | Medium | No | ✅ Done |
+| 7 | Improve `search_scriptures` tool description | gospel-vec | Tiny | No | ✅ Done |
+| 8 | Truncation warning in search results | gospel-vec | Tiny | No | ✅ Done |
+| 9 | Align gospel-mcp `MarkdownLink` output to be prominent | gospel-mcp | Small | No | ✅ Done |
 
 **Good news:** None of these require re-indexing. They're all output formatting and new tool additions that work with existing indexed data.
 
