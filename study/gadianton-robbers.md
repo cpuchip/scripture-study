@@ -215,33 +215,49 @@ Nephi's parallel vision names this clearly:
 
 President Benson repeatedly taught that the Book of Mormon's central warning about secret combinations was aimed directly at modern readers:
 
-> "The Book of Mormon is the keystone of our religion... It was **written for our day**." — President Ezra Taft Benson, [October 1986 General Conference](../gospel-library/eng/general-conference/1986/10/)
+> "The Book of Mormon is the keystone of our religion... It was **written for our day**." — President Ezra Taft Benson, ["The Book of Mormon—Keystone of Our Religion," October 1986](../gospel-library/eng/general-conference/1986/10/the-book-of-mormon-keystone-of-our-religion.md)
 
-In April 1972, Elder Benson delivered a powerful address urging "faithful Saints to uphold civic virtue by honoring the Constitution and divine principles," warning specifically "against secret conspiracies" and calling "for righteous resistance and watchfulness."
+In April 1972, Elder Benson gave a landmark address connecting the Book of Mormon's warnings about secret combinations directly to modern civic threats:
 
-In October 1979, President Benson warned that "America's freedom hinges on faithfulness to God and the Constitution," linking the nation's destiny to divine covenants and cautioning against ideologies that threatened "global domination and freedom."
+> "The downfall of two great American civilizations came as a result of **secret conspiracies** whose desire was to overthrow the freedom of the people. 'And they have caused the destruction of this people of whom I am now speaking,' says Moroni, 'and also the destruction of the people of Nephi.'" — Elder Ezra Taft Benson, ["Civic Standards for the Faithful Saints," April 1972](../gospel-library/eng/general-conference/1972/04/civic-standards-for-the-faithful-saints.md)
+
+> "Now undoubtedly Moroni could have pointed out many factors that led to the destruction of the people, but notice how he **singled out the secret combinations** ... There is no conspiracy theory in the Book of Mormon — **it is a conspiracy fact**." — [ibid.](../gospel-library/eng/general-conference/1972/04/civic-standards-for-the-faithful-saints.md)
+
+In October 1979, President Benson delivered "A Witness and a Warning," linking America's covenant destiny to prophetic warnings:
+
+> "This consecrated land has been placed under the everlasting decree of God. ... 'Whatsoever nation shall possess it shall be free from bondage, and from captivity, and from all other nations under heaven, **if they will but serve the God of the land, who is Jesus Christ**."' — President Ezra Taft Benson, ["A Witness and a Warning," October 1979](../gospel-library/eng/general-conference/1979/10/a-witness-and-a-warning.md)
+
+> "Whenever the God of heaven reveals His gospel to mankind, **Satan, the archenemy to Christ, introduces a counterfeit**. ... It is well to ask, what system established **secret works of darkness** to overthrow nations by violent revolution?" — [ibid.](../gospel-library/eng/general-conference/1979/10/a-witness-and-a-warning.md)
 
 ### President N. Eldon Tanner
 
-> "The reality of Satan and the power and influence he wields have been evident since that first temptation in the Garden of Eden. He influenced **Cain to slay his brother Abel**, which resulted in great suffering and sorrow. **The Book of Mormon is replete with examples** of the destruction of individuals..." — President N. Eldon Tanner, [April 1973 General Conference](../gospel-library/eng/general-conference/1973/04/)
+> "The reality of Satan and the power and influence he wields have been evident since that first temptation in the Garden of Eden. He influenced **Cain to slay his brother Abel**, which resulted in great suffering and sorrow. **The Book of Mormon is replete with examples** of the destruction of individuals and groups who refused to follow the teachings of the Lord and instead succumbed to the influence of Satan." — President N. Eldon Tanner, ["Thou Mayest Choose for Thyself," April 1973](../gospel-library/eng/general-conference/1973/04/thou-mayest-choose-for-thyself.md)
 
 ### Elder Dallin H. Oaks: Cain's Motive at the Headwaters of All Wickedness
 
-> "**Cain set the pattern of the world.** Cain coveted the flocks of his brother Abel, and Satan showed him how to obtain them... Satan taught Cain that a man could get worldly wealth by **committing some evil against its owner**..." — Elder Dallin H. Oaks, [October 1986 General Conference](../gospel-library/eng/general-conference/1986/10/)
+> "**Cain set the pattern of the world.** Cain coveted the flocks of his brother Abel, and Satan showed him how to obtain them. ... Satan taught Cain that a man could get worldly wealth by **committing some evil against its owner**." — Elder Dallin H. Oaks, ["Brother's Keeper," October 1986](../gospel-library/eng/general-conference/1986/10/brothers-keeper.md)
 
-> "The motive of Cain is **at the headwaters of wickedness**. Cain's sin was murder, but his motive was personal gain. That motive has produced all manner of wickedness, including murder, thievery, and fraud. That motive is also at work in the legal but immoral practices of those who **get gain by preying upon** others." — Elder Dallin H. Oaks, [October 1986 General Conference](../gospel-library/eng/general-conference/1986/10/)
+> "The motive of Cain is **at the headwaters of wickedness**. Cain's sin was murder, but his motive was personal gain. That motive has produced all manner of wickedness, including murder, thievery, and fraud. That motive is also at work in the legal but immoral practices of those who **get gain by preying on the weaknesses or ignorance of their neighbors**. Always such activities involve Cain's ancient rationalization: 'Am I my brother's keeper?'" — Elder Dallin H. Oaks, ["Brother's Keeper," October 1986](../gospel-library/eng/general-conference/1986/10/brothers-keeper.md)
 
 ### President Gordon B. Hinckley: After September 11, 2001
 
-In October 2001 General Conference — just weeks after the September 11 attacks — President Hinckley addressed the Church "amid global terrorism and war, urging members to remain faithful, peaceful, and self-reliant." He "acknowledg[ed] the threat to civilization and the Church's global mission," while calling for faith and trust in God's purposes.
+In October 2001 General Conference — just weeks after the September 11 attacks — President Hinckley opened with ["The Times in Which We Live"](../gospel-library/eng/general-conference/2001/10/the-times-in-which-we-live.md), directly connecting the terrorist attacks to the Book of Mormon's Gadianton pattern:
 
-He closed that same conference with "heartfelt reflection on unity, love, and faith amid global turmoil," urging "families to strengthen bonds, practice kindness, and prioritize prayer."
+> "We of this Church know something of such groups. **The Book of Mormon speaks of the Gadianton robbers**, a vicious, oath-bound, and secret organization bent on evil and destruction. In their day they did all in their power, by whatever means available, to bring down the Church, to woo the people with sophistry, and to take control of the society. **We see the same thing in the present situation**." — President Gordon B. Hinckley, ["The Times in Which We Live," October 2001](../gospel-library/eng/general-conference/2001/10/the-times-in-which-we-live.md)
 
-In April 2003, he reflected further "on war's cost and the gospel's call for peace," honoring fallen servicemen and acknowledging "war's historical and spiritual dimensions, citing scripture to show divine conflict."
+> "From the day of Cain to the present, **the adversary has been the great mastermind of the terrible conflicts** that have brought so much suffering. Treachery and terrorism began with him. And they will continue until the Son of God returns to rule and reign with peace and righteousness." — [ibid.](../gospel-library/eng/general-conference/2001/10/the-times-in-which-we-live.md)
 
-In April 2004, President Hinckley "reflect[ed] on the ongoing spiritual battle between good and evil since the war in heaven, urging members to remain faithful amid perilous times."
+> "Our safety lies in repentance. Our strength comes of obedience to the commandments of God. ... Are these perilous times? They are. But **there is no need to fear**. We can have peace in our hearts and peace in our homes." — [ibid.](../gospel-library/eng/general-conference/2001/10/the-times-in-which-we-live.md)
 
-*(Note: October 2001 conference talks are not yet downloaded to the local gospel-library. These summaries are from the vector database.)*
+He closed that same conference with ["Till We Meet Again"](../gospel-library/eng/general-conference/2001/10/till-we-meet-again.md), a prayer for the nation:
+
+> "Our safety lies in the virtue of our lives. Our strength lies in our righteousness. **God has made it clear that if we will not forsake Him, He will not forsake us**." — President Gordon B. Hinckley, ["Till We Meet Again," October 2001](../gospel-library/eng/general-conference/2001/10/till-we-meet-again.md)
+
+In April 2003, President Hinckley addressed the Iraq War in ["War and Peace"](../gospel-library/eng/general-conference/2003/04/war-and-peace.md), tracing the conflict back to its heavenly origin and quoting Revelation 12:7-9, while honoring a fallen returned missionary Marine.
+
+In April 2004, he reflected on the full sweep of the battle between good and evil in ["The Dawning of a Brighter Day"](../gospel-library/eng/general-conference/2004/04/the-dawning-of-a-brighter-day.md):
+
+> "**Evil was manifest early in this world when Cain slew Abel.** It increased until in the days of Noah, 'God saw that the wickedness of man was great in the earth.' ... But it is evident that **the contest between good and evil, which began with that war, has never ended**. It has gone on, and on, and on to the present." — President Gordon B. Hinckley, ["The Dawning of a Brighter Day," April 2004](../gospel-library/eng/general-conference/2004/04/the-dawning-of-a-brighter-day.md)
 
 ### Mormon's Prophecy to Our Day
 
