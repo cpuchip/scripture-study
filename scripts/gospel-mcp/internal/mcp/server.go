@@ -198,16 +198,76 @@ func (s *Server) handleCallTool(req *Request) {
 		return
 	}
 
-	// Format result as MCP content
-	content, _ := json.MarshalIndent(result, "", "  ")
+	// Format search results as readable text with prominent markdown links
+	var text string
+	if searchResp, ok := result.(*tools.SearchResponse); ok {
+		text = formatSearchResponse(searchResp)
+	} else {
+		content, _ := json.MarshalIndent(result, "", "  ")
+		text = string(content)
+	}
+
 	s.sendResult(req.ID, CallToolResult{
 		Content: []ContentItem{
 			{
 				Type: "text",
-				Text: string(content),
+				Text: text,
 			},
 		},
 	})
+}
+
+// formatSearchResponse produces a human-readable text output with prominent markdown links
+func formatSearchResponse(resp *tools.SearchResponse) string {
+	if resp.TotalMatches == 0 {
+		return fmt.Sprintf("No results found for: %s", resp.Query)
+	}
+
+	var sb fmt.Stringer = &searchFormatter{resp: resp}
+	return sb.String()
+}
+
+type searchFormatter struct {
+	resp *tools.SearchResponse
+}
+
+func (f *searchFormatter) String() string {
+	var out string
+	out += fmt.Sprintf("# Search: %s\n", f.resp.Query)
+	out += fmt.Sprintf("*%d results in %dms*\n\n", f.resp.TotalMatches, f.resp.QueryTimeMs)
+
+	for i, r := range f.resp.Results {
+		// Header with reference and source type
+		out += fmt.Sprintf("### %d. %s", i+1, r.Reference)
+		if r.Title != "" && r.Title != r.Reference {
+			out += fmt.Sprintf(" — %s", r.Title)
+		}
+		out += "\n"
+
+		// Prominent markdown link line
+		if r.MarkdownLink != "" {
+			out += fmt.Sprintf("📎 %s\n", r.MarkdownLink)
+		} else if r.FilePath != "" {
+			out += fmt.Sprintf("📎 `%s`\n", r.FilePath)
+		}
+
+		// Source type badge
+		if r.SourceType != "" {
+			out += fmt.Sprintf("*Source: %s*\n", r.SourceType)
+		}
+
+		// Excerpt
+		if r.Excerpt != "" {
+			out += fmt.Sprintf("> %s\n", r.Excerpt)
+		}
+
+		out += "\n"
+	}
+
+	out += "---\n"
+	out += "💡 **Reminder:** Always `read_file` the source before quoting. Search excerpts are pointers, not sources.\n"
+
+	return out
 }
 
 func (s *Server) sendResult(id interface{}, result interface{}) {
