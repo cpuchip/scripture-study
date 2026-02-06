@@ -11,12 +11,39 @@ import (
 	"github.com/philippgille/chromem-go"
 )
 
-// Store manages the vector database with single-file persistence
+// Store manages the vector database with per-source file persistence.
+// Each source (scriptures, conference, manual) is saved to its own .gob.gz file,
+// enabling incremental saves and parallel loading.
 type Store struct {
 	db     *chromem.DB
 	config *Config
 	embed  chromem.EmbeddingFunc
 	mu     sync.RWMutex
+}
+
+// sourceFile returns the per-source database filename (e.g., "scriptures.gob.gz")
+func sourceFile(source Source) string {
+	return string(source) + ".gob.gz"
+}
+
+// sourcePath returns the full path to a per-source database file
+func (s *Store) sourcePath(source Source) string {
+	return filepath.Join(s.config.DataDir, sourceFile(source))
+}
+
+// collectionsForSource returns all possible collection names for a given source
+func collectionsForSource(source Source) []string {
+	layers := []Layer{LayerVerse, LayerParagraph, LayerSummary, LayerTheme}
+	names := make([]string, 0, len(layers))
+	for _, layer := range layers {
+		names = append(names, collectionName(source, layer))
+	}
+	return names
+}
+
+// allSources returns all known sources
+func allSources() []Source {
+	return []Source{SourceScriptures, SourceConference, SourceManual}
 }
 
 // NewStore creates a new store with the given config
@@ -46,47 +73,168 @@ func NewStore(cfg *Config, embedFunc chromem.EmbeddingFunc) (*Store, error) {
 	return store, nil
 }
 
-// Load imports the database from the compressed file
+// Load imports the database from per-source files, falling back to legacy single file.
+// Per-source files are loaded sequentially from the data directory.
 func (s *Store) Load() error {
 	s.mu.Lock()
 	defer s.mu.Unlock()
 
-	dbPath := s.config.DBPath()
+	// Try per-source files first (new format)
+	loaded := 0
+	for _, source := range allSources() {
+		path := s.sourcePath(source)
+		if _, err := os.Stat(path); os.IsNotExist(err) {
+			continue
+		}
+		if err := s.db.ImportFromFile(path, ""); err != nil {
+			return fmt.Errorf("importing %s: %w", path, err)
+		}
+		fmt.Printf("📂 Loaded %s\n", path)
+		loaded++
+	}
 
-	// Check if file exists
-	if _, err := os.Stat(dbPath); os.IsNotExist(err) {
+	if loaded > 0 {
+		return nil
+	}
+
+	// Fallback: try legacy single file
+	legacyPath := s.config.DBPath()
+	if _, err := os.Stat(legacyPath); os.IsNotExist(err) {
 		return err // File doesn't exist, not an error for new stores
 	}
 
-	// Import from compressed file
-	if err := s.db.ImportFromFile(dbPath, ""); err != nil {
-		return fmt.Errorf("importing from %s: %w", dbPath, err)
+	if err := s.db.ImportFromFile(legacyPath, ""); err != nil {
+		return fmt.Errorf("importing legacy %s: %w", legacyPath, err)
 	}
 
-	fmt.Printf("📂 Loaded database from %s\n", dbPath)
+	fmt.Printf("📂 Loaded legacy database from %s\n", legacyPath)
+	fmt.Println("💡 Run 'gospel-vec migrate' to convert to per-source files for faster saves")
 	return nil
 }
 
-// Save exports the database to the compressed file using atomic write
+// saveSource is the internal unlocked implementation of SaveSource.
+func (s *Store) saveSource(source Source) error {
+	path := s.sourcePath(source)
+	tmpPath := path + ".tmp"
+
+	collNames := collectionsForSource(source)
+
+	// Export only this source's collections to temp file
+	if err := s.db.ExportToFile(tmpPath, true, "", collNames...); err != nil {
+		os.Remove(tmpPath)
+		return fmt.Errorf("exporting %s: %w", source, err)
+	}
+
+	// Atomic rename
+	if err := os.Rename(tmpPath, path); err != nil {
+		return fmt.Errorf("renaming %s to %s: %w", tmpPath, path, err)
+	}
+
+	fmt.Printf("💾 Saved %s\n", path)
+	return nil
+}
+
+// SaveSource exports only the collections for the given source to its own file.
+// This is much faster than saving the entire database.
+func (s *Store) SaveSource(source Source) error {
+	s.mu.Lock()
+	defer s.mu.Unlock()
+	return s.saveSource(source)
+}
+
+// Save exports all sources that have data, each to their own file.
 func (s *Store) Save() error {
 	s.mu.Lock()
 	defer s.mu.Unlock()
 
-	dbPath := s.config.DBPath()
-	tmpPath := dbPath + ".tmp"
+	for _, source := range allSources() {
+		// Check if source has any data
+		hasData := false
+		for _, layer := range []Layer{LayerVerse, LayerParagraph, LayerSummary, LayerTheme} {
+			name := collectionName(source, layer)
+			col := s.db.GetCollection(name, s.embed)
+			if col != nil && col.Count() > 0 {
+				hasData = true
+				break
+			}
+		}
+		if hasData {
+			if err := s.saveSource(source); err != nil {
+				return err
+			}
+		}
+	}
+	return nil
+}
 
-	// Export to temp file first
-	if err := s.db.ExportToFile(tmpPath, true, ""); err != nil {
-		os.Remove(tmpPath) // Clean up partial temp file
-		return fmt.Errorf("exporting to %s: %w", tmpPath, err)
+// Migrate converts a legacy single-file database to per-source files.
+func (s *Store) Migrate() error {
+	s.mu.Lock()
+	defer s.mu.Unlock()
+
+	legacyPath := s.config.DBPath()
+
+	// Check if legacy file exists
+	if _, err := os.Stat(legacyPath); os.IsNotExist(err) {
+		return fmt.Errorf("no legacy database found at %s", legacyPath)
 	}
 
-	// Atomic rename (replace old file with new one)
-	if err := os.Rename(tmpPath, dbPath); err != nil {
-		return fmt.Errorf("renaming %s to %s: %w", tmpPath, dbPath, err)
+	// Check if any per-source files already exist
+	for _, source := range allSources() {
+		path := s.sourcePath(source)
+		if _, err := os.Stat(path); err == nil {
+			return fmt.Errorf("per-source file already exists: %s (migration already done?)", path)
+		}
 	}
 
-	fmt.Printf("💾 Saved database to %s\n", dbPath)
+	// Load from legacy file
+	fmt.Printf("📂 Loading legacy database from %s...\n", legacyPath)
+	if err := s.db.ImportFromFile(legacyPath, ""); err != nil {
+		return fmt.Errorf("importing legacy: %w", err)
+	}
+
+	// Print stats
+	total := 0
+	for _, source := range allSources() {
+		for _, layer := range []Layer{LayerVerse, LayerParagraph, LayerSummary, LayerTheme} {
+			name := collectionName(source, layer)
+			col := s.db.GetCollection(name, s.embed)
+			if col != nil && col.Count() > 0 {
+				fmt.Printf("   %s: %d docs\n", name, col.Count())
+				total += col.Count()
+			}
+		}
+	}
+	fmt.Printf("   Total: %d docs\n\n", total)
+
+	// Save each source to its own file
+	saved := 0
+	for _, source := range allSources() {
+		hasData := false
+		for _, layer := range []Layer{LayerVerse, LayerParagraph, LayerSummary, LayerTheme} {
+			name := collectionName(source, layer)
+			col := s.db.GetCollection(name, s.embed)
+			if col != nil && col.Count() > 0 {
+				hasData = true
+				break
+			}
+		}
+		if hasData {
+			if err := s.saveSource(source); err != nil {
+				return err
+			}
+			saved++
+		}
+	}
+
+	// Back up legacy file
+	backupPath := legacyPath + ".migrated"
+	if err := os.Rename(legacyPath, backupPath); err != nil {
+		return fmt.Errorf("backing up legacy file: %w", err)
+	}
+	fmt.Printf("\n📦 Legacy file backed up to %s\n", backupPath)
+	fmt.Printf("✅ Migration complete: %d source files created\n", saved)
+
 	return nil
 }
 
@@ -247,14 +395,34 @@ func parseCollectionName(name string) (Source, Layer) {
 	return "", ""
 }
 
-// FileSize returns the size of the database file
+// FileSize returns the total size of all database files
 func (s *Store) FileSize() (int64, error) {
-	dbPath := s.config.DBPath()
-	info, err := os.Stat(dbPath)
-	if err != nil {
-		return 0, err
+	var total int64
+
+	// Sum per-source files
+	for _, source := range allSources() {
+		path := s.sourcePath(source)
+		info, err := os.Stat(path)
+		if err != nil {
+			if os.IsNotExist(err) {
+				continue
+			}
+			return 0, err
+		}
+		total += info.Size()
 	}
-	return info.Size(), nil
+
+	// Also check legacy file if no per-source files found
+	if total == 0 {
+		dbPath := s.config.DBPath()
+		info, err := os.Stat(dbPath)
+		if err != nil {
+			return 0, err
+		}
+		return info.Size(), nil
+	}
+
+	return total, nil
 }
 
 // DataDir returns the data directory path

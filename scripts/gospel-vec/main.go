@@ -8,6 +8,8 @@ import (
 	"path/filepath"
 	"strings"
 	"time"
+
+	"github.com/philippgille/chromem-go"
 )
 
 func main() {
@@ -33,6 +35,8 @@ func main() {
 		cmdMCP(os.Args[2:])
 	case "stats":
 		cmdStats()
+	case "migrate":
+		cmdMigrate()
 	case "config":
 		cmdConfig()
 	case "talks":
@@ -61,6 +65,7 @@ Commands:
   search         Search the vector database (scriptures + talks + manuals)
   mcp            Start MCP server (for VS Code/Claude integration)
   stats          Show database statistics
+  migrate        Convert legacy single-file DB to per-source files
   config         Show or initialize configuration
   talks          Parse and test conference talk indexing
   help           Show this help message
@@ -108,6 +113,7 @@ Examples:
   gospel-vec search "faith"             # Search for faith (all sources)
   gospel-vec mcp -data ./data           # Start MCP server with data dir
   gospel-vec stats                      # Show database stats
+  gospel-vec migrate                    # Convert to per-source files
 `)
 }
 
@@ -264,9 +270,9 @@ func cmdIndex(args []string) {
 		os.Exit(1)
 	}
 
-	// Save database
-	fmt.Println("\n💾 Saving database...")
-	if err := store.Save(); err != nil {
+	// Save only scriptures source
+	fmt.Println("\n💾 Saving scriptures...")
+	if err := store.SaveSource(SourceScriptures); err != nil {
 		fmt.Printf("❌ Failed to save: %v\n", err)
 		os.Exit(1)
 	}
@@ -535,9 +541,9 @@ func cmdIndexManuals(args []string) {
 		os.Exit(1)
 	}
 
-	// Save database
-	fmt.Println("\n💾 Saving database...")
-	if err := store.Save(); err != nil {
+	// Save only manual source
+	fmt.Println("\n💾 Saving manuals...")
+	if err := store.SaveSource(SourceManual); err != nil {
 		fmt.Printf("❌ Failed to save: %v\n", err)
 		os.Exit(1)
 	}
@@ -676,9 +682,9 @@ func cmdIndexTalks(args []string) {
 		os.Exit(1)
 	}
 
-	// Save database
-	fmt.Println("\n💾 Saving database...")
-	if err := store.Save(); err != nil {
+	// Save only conference source
+	fmt.Println("\n💾 Saving conference talks...")
+	if err := store.SaveSource(SourceConference); err != nil {
 		fmt.Printf("❌ Failed to save: %v\n", err)
 		os.Exit(1)
 	}
@@ -788,10 +794,52 @@ func cmdStats() {
 	fmt.Printf("\n   %-25s %d documents\n", "TOTAL", total)
 
 	// Show storage file info
+	for _, source := range allSources() {
+		path := store.sourcePath(source)
+		if info, err := os.Stat(path); err == nil {
+			fmt.Printf("   💾 %s (%.2f MB)\n", path, float64(info.Size())/1024/1024)
+		}
+	}
+	// Check for legacy file too
 	dbPath := cfg.DBPath()
 	if info, err := os.Stat(dbPath); err == nil {
-		fmt.Printf("\n💾 Storage: %s (%.2f MB)\n", dbPath, float64(info.Size())/1024/1024)
+		fmt.Printf("   📦 %s (%.2f MB) [legacy - run 'migrate' to convert]\n", dbPath, float64(info.Size())/1024/1024)
 	}
+
+	totalSize, err := store.FileSize()
+	if err == nil {
+		fmt.Printf("\n   Total storage: %.2f MB\n", float64(totalSize)/1024/1024)
+	}
+}
+
+func cmdMigrate() {
+	cfg := DefaultConfig()
+	embedFunc := NewLMStudioEmbedder(cfg.EmbeddingURL, cfg.EmbeddingModel)
+
+	fmt.Println("🔄 Migrating legacy database to per-source files...")
+	fmt.Println()
+
+	// Create in-memory DB (don't use NewStore which auto-loads)
+	db := chromem.NewDB()
+	store := &Store{
+		db:     db,
+		config: cfg,
+		embed:  embedFunc,
+	}
+
+	// Ensure data directory exists
+	if err := os.MkdirAll(cfg.DataDir, 0755); err != nil {
+		fmt.Printf("❌ Failed to create data dir: %v\n", err)
+		os.Exit(1)
+	}
+
+	start := time.Now()
+	if err := store.Migrate(); err != nil {
+		fmt.Printf("❌ Migration failed: %v\n", err)
+		os.Exit(1)
+	}
+
+	fmt.Printf("\n⏱️  Migration completed in %v\n", time.Since(start).Round(time.Millisecond))
 }
 
 func cmdConfig() {

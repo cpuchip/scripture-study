@@ -252,7 +252,7 @@ func (idx *Indexer) IndexScriptures(ctx context.Context, opts IndexOptions) erro
 				if opts.Verbose {
 					fmt.Printf("\n💾 Checkpoint save at %d chapters...", chaptersIndexed)
 				}
-				if err := idx.store.Save(); err != nil {
+				if err := idx.store.SaveSource(SourceScriptures); err != nil {
 					fmt.Printf("\n⚠️  Checkpoint save failed: %v", err)
 				}
 			}
@@ -455,7 +455,7 @@ func (idx *Indexer) IndexConferenceTalks(ctx context.Context, basePath string, o
 				if opts.Verbose {
 					fmt.Printf("\n💾 Checkpoint save at %d talks...", indexedTalks)
 				}
-				if err := idx.store.Save(); err != nil {
+				if err := idx.store.SaveSource(SourceConference); err != nil {
 					fmt.Printf("\n⚠️  Checkpoint save failed: %v", err)
 				}
 			}
@@ -620,7 +620,7 @@ func (idx *Indexer) IndexManuals(ctx context.Context, opts ManualIndexOptions) e
 					if opts.Verbose {
 						fmt.Printf("\n   💾 Checkpoint save at %d files...", totalFiles)
 					}
-					if err := idx.store.Save(); err != nil {
+					if err := idx.store.SaveSource(SourceManual); err != nil {
 						fmt.Printf("\n   ⚠️  Checkpoint save failed: %v", err)
 					}
 				}
