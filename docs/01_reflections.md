@@ -361,5 +361,191 @@ Intelligence requires more than finding — it requires understanding. The tools
 
 ---
 
+## Phase 6: Post-Reflection — The Improvements Working (February 6–ongoing)
+
+*Added: February 6, 2026, during the second 7th-day reflection*
+
+### What Changed
+
+All 9 improvements from [02_reflections-TODO.md](02_reflections-TODO.md) were implemented. The two-phase workflow was added to [copilot-instructions.md](../.github/copilot-instructions.md). The footnote guidance was added. Both gospel-vec and gospel-mcp were rebuilt.
+
+Then we tested them — hard — with the [Enoch / Walk with Me](../study/enoch.md) study and the [Faith, Hope, and Charity: The Architecture of Zion](../study/enoch-charity.md) study.
+
+### The Numbers Tell the Story
+
+| Metric | gadianton-robbers.md (Phase 5) | enoch.md (Phase 6) | enoch-charity.md (Phase 6) |
+|--------|-------------------------------|---------------------|---------------------------|
+| **Lines** | 30.7K chars | 372 lines | 414 lines |
+| **Source links** | Many broken | 91 (all valid) | 83 (all valid) |
+| **Talk links** | Directory links (broken) | 8 specific files | 5 specific files |
+| **Talks read in full** | 0 during creation | 6 | 2 |
+| **Scripture files read in full** | Some | 6 chapters | 10+ chapters |
+| **Fabricated quotes** | Multiple | 0 | 0 |
+| **False "not downloaded" claims** | Yes | 0 | 0 |
+| **Footnotes followed** | Rarely | Yes — led to discoveries | Yes — chain from Moroni 7→Ether 12→Moroni 10 |
+| **Webster 1828 used** | No | "walk" definition enriched study | Connected to Enoch narrative |
+| **Cross-study connections** | Standalone | Links to enoch-charity.md | Links to enoch.md and charity.md |
+
+### What's Working Now
+
+**1. The two-phase workflow is being followed.**
+In the Enoch session, the discovery phase used gospel-vec's `search_scriptures` and `search_talks` plus gospel-mcp's `gospel_search` to find relevant material. Then the deep reading phase read Moses 6–7 in full, Hebrews 11:5–6, 4 Nephi 1:1–33, D&C 97, 105, 107, 45, and six complete conference talks (Bednar 2023, Freeman 2023, Eyring 2017, Christofferson 2008, Stone 2006, Uchtdorf 2020). The ratio of `read_file` calls to search calls was approximately 3:1 — correct direction.
+
+**2. Footnote following produces real discoveries.**
+The copilot-instructions mandate to "follow the footnotes" proved its worth immediately:
+- Moses 6:31 footnotes → the Reluctant Prophets table (Moses, Jeremiah, Nephi, Moroni — a pattern across dispensations)
+- Moses 6:35 "clay" footnote → John 9:6 parallel (Jesus putting clay on blind man's eyes). This was the scriptural editors handing us a connection on a silver platter, and we caught it.
+- Moroni 7 internal cross-references → Ether 12 → Moroni 10, revealing the inseparable chain
+
+**3. Tool metadata improvements are guiding behavior.**
+The `[DIRECT QUOTE]` vs `[AI SUMMARY]` labels mean I know what I can use and what I need to verify. The ✅ file-availability indicators mean I never claim a file doesn't exist without checking. The truncation warnings `[TRUNCATED — use read_file for full text]` prompt me to go deeper.
+
+**4. Cross-study connections are emerging.**
+The user spotted that "bowels yearned" (Moses 7:41) in the Enoch study uses the same language as "bowels full of charity" (D&C 121:45) from the charity study. This led to an entirely new study (enoch-charity.md) that neither of us planned. The corpus of studies is starting to cross-pollinate — exactly as hoped.
+
+**5. The collaborative error correction dynamic works.**
+The user questioned the "first recorded seer" claim about Enoch. We researched it thoroughly: Moses 5:10, D&C 107:56, and Mosiah 8:16–17 all confirm Adam had the gift of seership. The resolution — "Adam had the gift; Enoch made it famous" (Moses 6:36: "from thenceforth came the saying abroad in the land") — enriched both studies. The user's discernment + AI's research capacity = better scholarship than either alone.
+
+**6. Webster 1828 remains the model tool.**
+The "walk" definition in the Enoch study added genuine depth: *"to live in obedience to his commands, and have communion with him."* Not just obedience — communion. This reframed the entire 2026 youth theme.
+
+### What Still Needs Work
+
+**1. The "Becoming" Gap (Critical)**
+
+This is the most important finding of this reflection. The user said it plainly:
+
+> "I am pulled into our studies and I want to just keep making connections and building our knowledge but I feel I need to work on putting things in practice, and work on becoming more Christlike."
+
+We are excellent at *finding* and *understanding*. We are now even excellent at *connecting*. But there is no mechanism to move from **knowing** to **doing** to **becoming**. Our studies produce insight after insight — but where do those insights go *into a life*?
+
+Consider the trajectory:
+- **Finding** → gospel-mcp, gospel-vec (solved)
+- **Understanding** → read_file, deep reading, Webster 1828 (solved)
+- **Connecting** → cross-study synthesis, footnote following (solved)
+- **Becoming** → ??? (unsolved)
+
+The scriptures themselves warn about this:
+
+> "Be ye **doers** of the word, and not hearers only, deceiving your own selves." — [James 1:22](../gospel-library/eng/scriptures/nt/james/1.md)
+
+> "And now, if ye believe all these things see that ye **do** them." — [Mosiah 4:10](../gospel-library/eng/scriptures/bofm/mosiah/4.md)
+
+This gap is not a tool problem — it's a workflow gap. We need a way to extract personal commitments from studies and track them over time.
+
+**2. Session Continuity Remains Fragile**
+
+The conversation-summary mechanism works but is limited by context window size. Personal insights from one session only persist if they were written into a study document. The user's experience of "praying to see others as Christ sees them" (from the charity study) informed the enoch-charity study — but only because it was in charity.md. Insights that surface in conversation but don't make it into a file are lost.
+
+**3. No Journal Directory Exists**
+
+The copilot-instructions describe `journal/` as a key part of the workflow for "personal findings, thoughts, and ideas." It was never created. This is symptomatic of the becoming gap — the infrastructure for personal reflection doesn't exist yet.
+
+**4. Study Index / Discoverability**
+
+We now have 30+ study documents. They reference each other (enoch-charity links to enoch and charity), but there's no index or map showing how they interconnect. As the corpus grows, finding what we've already studied becomes harder. A student might not know that the "bowels" connection exists unless they happen to read both documents.
+
+### Remaining Minor Issues
+
+- **Some conference talks are cited but not read in full.** In the Enoch study, McConkie "Come: Let Israel Build Zion" (1977) and Pearce "Keep Walking" (1997) were found via search and excerpted but not read completely. The cite-count rule should be more strictly enforced.
+- **Long document syndrome.** enoch.md at 372 lines and enoch-charity.md at 414 lines are getting unwieldy for quick reference. A shorter "key insights" or summary version would help for practical application.
+- **Publish is manual.** The `go run .\scripts\publish\cmd\main.go` command has to be run by hand. Not critical, but automating it (e.g., on git commit) would reduce friction.
+
+---
+
+## Proposed: The Becoming Layer
+
+### The Gap in Our Architecture
+
+We have tools for every phase of study except the most important one:
+
+| Phase | Tool | Status |
+|-------|------|--------|
+| **Find** | gospel-mcp (FTS), gospel-vec (semantic) | ✅ Working well |
+| **Understand** | read_file, get_chapter, get_talk | ✅ Working well |
+| **Define** | webster-mcp (1828 + modern) | ✅ Working well |
+| **Synthesize** | AI reasoning + study documents | ✅ Working well |
+| **Become** | ??? | ❌ Nothing |
+
+Enoch didn't just *study* walking with God. He *walked* for 365 years. The 4 Nephi people didn't *discuss* charity — they *had no poor among them*. Intelligence, as D&C 130 teaches, is something you *attain unto* through *diligence and obedience* — not just research.
+
+### Ideas Under Consideration
+
+**Option A: Becoming Journal (Simple / Low-Tech)**
+
+A `becoming/` directory with dated markdown files tracking:
+- Personal commitments extracted from each study
+- Weekly progress notes
+- Prayers and spiritual impressions
+- Specific "I will..." statements tied to scripture insights
+
+Format: `becoming/2026-02-06.md`
+
+Pros: Simple, uses existing tools, no code required.
+Cons: No cross-session memory. No tracking over time. No prompts.
+
+**Option B: Journal MCP Server (Medium Effort)**
+
+A Go MCP server (like gospel-vec/gospel-mcp) that:
+- Stores persistent notes in a local database
+- Has tools like `journal_write`, `journal_search`, `journal_today`
+- Surfaces relevant past entries when studying similar topics
+- Tracks commitments and their status over time
+- Persists across sessions regardless of context window
+
+Pros: True cross-session memory. Searchable history. Could surface "you committed to X last week — how's it going?" prompts.
+Cons: More code to build and maintain. Another MCP server to manage.
+
+**Option C: Enrich Existing Study Template (Smallest Change)**
+
+Add a "Personal Application" section to [study_template.md](study_template.md) with prompts:
+- "What did I learn that changes how I should live?"
+- "What specific action will I take this week?"
+- "What scripture do I want to memorize from this study?"
+- "Who can I share this insight with?"
+
+Pros: Zero code. Immediate. Built into existing workflow.
+Cons: No persistence. No tracking. Just another section that might get filled in or not.
+
+**Option D: Hybrid Approach (Recommended)**
+
+1. **Now:** Create `journal/` directory. Add "Becoming" section to study_template.md. Start capturing commitments in dated journal entries.
+2. **Soon:** Build a lightweight journal-mcp server that indexes journal entries and can surface them in context. When starting a new study, it could say: "Last week while studying charity, you committed to praying to see your family as Christ sees them. Have you been doing that?"
+3. **Eventually:** Add commitment tracking — open/completed/ongoing status, reminders, connections to source scriptures.
+
+This follows our own development pattern: spiritual creation first (define what we want), then physical creation (build it), then rest and reflect (iterate).
+
+### Why This Matters
+
+The whole point of this project, as stated in [copilot-instructions.md](../.github/copilot-instructions.md), is:
+
+> "Whatever principle of intelligence we attain unto in this life, it will rise with us in the resurrection." — D&C 130:18–19
+
+Intelligence isn't just knowledge. It's knowledge *applied through obedience*. Our tools help us gain knowledge. We need tools — or at least workflow — to help us apply it.
+
+The Lectures on Faith teach that *faith is a principle of action*. Our study system is strong on principle and needs to be stronger on action.
+
+---
+
+## Updated Summary
+
+| Aspect | Pre-Tool (Jan 21-26) | Mid-Tool (Feb 3-6) | Post-Reflection (Feb 6+) | Next Frontier |
+|--------|----------------------|---------------------|--------------------------|---------------|
+| **Discovery** | Slow | Fast (tools) | Fast (tools) | — |
+| **Source verification** | Always | Rarely | Always (workflow enforced) | — |
+| **Quote accuracy** | High | Low | High (verified) | — |
+| **Link accuracy** | High | Low | High (metadata) | — |
+| **Cross-source breadth** | Narrow | Wide | Wide | — |
+| **Depth of analysis** | Deep | Shallow | Deep (tools + reading) | — |
+| **Cross-study connection** | None | None | Emerging (user-spotted) | Auto-suggested |
+| **Footnote following** | Sometimes | Rarely | Consistently | — |
+| **Personal application** | — | — | Recognized as missing | Becoming layer |
+| **Session memory** | N/A | Lost | Partially captured in files | Journal MCP |
+
+**The bottom line, updated:** The tools are working. The two-phase workflow solved the finding-vs-reading problem. The footnote mandate produces discoveries. The collaborative dynamic is strong. Now the frontier is **becoming** — closing the gap between what we learn and how we live. As Enoch's people discovered, Zion is not a theory. It's a life.
+
+---
+
 *Document created: February 6, 2026*
-*Based on analysis of 30 study documents, 55 git commits, and direct comparison of pre-tool vs. tool-enhanced study quality*
+*Second reflection added: February 6, 2026*
+*Based on analysis of 30+ study documents, and direct assessment of post-improvement tool performance*
