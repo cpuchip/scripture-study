@@ -25,3 +25,5 @@ scripts/gospel-library/gospel-downloader.exe
 scripts/publish/publish.exe
 scripts/yt-mcp/yt-mcp
 scripts/yt-mcp/yt-mcp.exe
+
+.playwright-mcp/

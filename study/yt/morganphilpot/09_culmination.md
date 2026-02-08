@@ -341,3 +341,67 @@ Stand ye in holy places, and be not moved.
 ## Sources Verified: 20
 
 All scriptures, conference talks, and dictionary definitions cited in this evaluation were verified through direct `read_file` of the source markdown files. No search excerpt was used as a direct quote.
+
+---
+
+## Transcript Review Notes
+
+*Added 2025-07-26 — Pass 10 of the systematic transcript review*
+
+### Overall Assessment
+
+Phase 9 is the **second-best-captured phase** after Phase 4. The evaluation correctly sourced most Key Claims from transcript timestamps rather than slides, and the 2025–2033 timeline, harvest framework, New Jerusalem analysis, and Out of Line critiques all target verbal content the audience actually heard. The evaluation quality is high.
+
+However, the **"Two Great Lights" section that gives this phase its title is entirely slide-only.** The Kokaubeam / kōwḵāḇ word study (Key Claims 1–3) and the eclipse interpretation (Key Claim 5) — praised as "the best original research in any phase" — were never verbalized. Zero transcript hits for Kokaubeam, kōwḵāḇ, kokob, "great light," "two great," chiasmus, foreshadow, or eclipse across all three transcripts. Meanwhile, the verbally-delivered Zarahemla/Hemlah etymology (~57:54) — also a creative Hebrew word study linking to Salt Lake City's destruction — is NOT in the evaluation.
+
+### Verbal-vs-Slide Mapping
+
+| Key Claim | Verbal? | Slide? | Notes |
+|-----------|---------|--------|-------|
+| "Second Coming chiasmus foreshadowing" (Helaman 14) | ❌ | ✅ Slide 359 | Zero transcript hits for "chiasmus" or "foreshadow" |
+| Hebrew kōwḵāḇ / Kokaubeam word study | ❌ | ✅ Slides 365–368 | Zero hits across all 3 transcripts |
+| New star as "great light" (sun/moon category) | ❌ | ✅ Slides 364, 368 | Part of Kokaubeam complex; slide-only |
+| Isaiah 13 / 3 Nephi 8 parallel | ⚠️ Partial | ✅ Slides 360–363 | 3 Nephi 8 destruction extensively verbal (~33:00); "Isaiah 13" not named verbally |
+| 2017/2024 eclipses prophetically significant | ❌ | ✅ Slide 356 | Zero transcript hits |
+| Assassination 2029 | ✅ Heavy | ✅ | "In 2029 Laconius 2 wins the election and they murder him" (~16:00) |
+| Secession crisis 2030–2031 | ✅ Heavy | ✅ | "We have this massive secession crisis in 2030" (~25:19) |
+| Destruction = 2033 / 3 Nephi 8 | ✅ Heavy | ✅ | "The Lord is coming to Adam in 2033" (~28:00); storm/tempest ~33:00 |
+| Storm vs. tempest distinction | ✅ Heavy | ✅ | Extended Webster 1828 verbal analysis (~33:00) |
+| Rev 14 grape harvest | ✅ | ✅ | "Let's go back to Revelation 14... It is time to reap" (~38:19) |
+| Wedding at Cana | ✅ | ✅ | "This is the wedding at Canaa, the six barrels of wine" (~40:00) |
+| New Jerusalem / seed of Joseph Smith | ✅ Heavy | ✅ | Extensive Ether 13 reading (~49:06–52:00) |
+| Bednar alignment | ✅ | ✅ | "Did anybody listen to Elder Bednar's talk" (~20:00) |
+| Nelson urgency | ✅ | ✅ | "'The Lord is urging me to tell you to prepare'" (~22:00) |
+| God uses disruptive events / COVID | ⚠️ Brief | — | "What happened to people who fled to the temples...They were closed" (~58:55). Alma 32 pattern is evaluation construct |
+
+**Summary:** 10 of 15 Key Claims are verbal, 4 are entirely slide-only (all from the "Two Great Lights" section), 1 is partially verbal. The evaluation's title comes from material the audience never heard.
+
+### Verbal-Only Items Not in Evaluation
+
+1. **Zarahemla / Hemlah / Dead Sea etymology** (~57:54): "It's called the Salt Lake. It's never called the Dead Sea. In Hebrew, it is the sea of Heala... Zahhemlah. What does the Lord do to Zarahemla? Burns it. What's the modern Zarahemla?" Points to Salt Lake City as a type of Zarahemla. Creative Hebrew word study parallel to the slide-only Kokaubeam work.
+
+2. **Oaks' first talk analysis** (~22:00–24:00): No temples announced; doubled down on family proclamation ("old school Mormonism"); John Taylor polygamy letter released; William Clayton journals upcoming; D&C 132 children's Come Follow Me. Substantial discussion of the new prophet's direction and its implications for the timeline.
+
+3. **2500 at Bountiful = half of 5000 / half of 10 virgins** (~56:00–57:00): "Christ is with the 5,000... He is the temple. So if there's 2500 and Bountiful, there's half of the five parts that make it. Half the 10 virgins." Numerological connection between 3 Nephi 17 and the parable of the virgins.
+
+4. **Creation week / "first month, fourth day" = creation day 4** (~33:00): "Mormon is very precise about this date... The fourth day of the creation story is the day in which the sun is created... Christ has to die before the end of the fourth day because on the fifth day the beasts of the sea are created. The beast will rise out of the sea on the beginning of the fifth day." Links 3 Nephi 8:5 to creation week typology and Passover week.
+
+5. **Temple ceremony changes as prophetic signs** (~42:27): "The women go to the wedding they pull off their veil and they don't put it back on... you've switched the robes... the work has been hastened... the temple ceremony has been shortened and made so clear nobody can mistake it." Temple ordinance changes referenced as evidence of prophetic timeline acceleration.
+
+6. **Abinadi / ten commandments / public schools** (~46:00–49:00): Extensive cultural critique connecting Abinadi's confrontation in Mosiah with modern education: "We teach our children in our public schools to break all of the ten commandments." Argues public schooling trains children in covetousness and fidelity to Babylon.
+
+7. **"Third vs. totality" framework** (~53:00): "John the Revelator has two types. He's got the third and the total. So if you see anything in a third, it is not the totality. So John promises all of us that we will get the totality. Whereas the Nephites only got the third." Interpretive key for Revelation's proportional language.
+
+8. **Corporate church dissolution in millennium** (~55:11–57:00): "Do you really think they're going to reinitiate the corporation of the first presidency in the millennium?... So what has to happen to the corporation? It has to go away." Extended Q&A about corporate structures dissolving.
+
+9. **Bountiful as Passover/Sukkot gathering place** (~57:00): "I suspect they're going to Bountiful because that's the place that they go to for conference or their Passover feast or their soot [sukkot]."
+
+10. **"I invite all of you to be crazy with me"** (~44:00): Personal vulnerability and invitation. "I drank the Kool-Aid and jumped to the deep end... I invite all of you to be crazy with me."
+
+### Key Finding: Title/Content Irony
+
+The evaluation is titled "The Two Great Lights & Culmination" and praises the Kokaubeam word study as "the best original research in any phase." But the entire "Two Great Lights" section (slides 356–369) — the Kokaubeam/kōwḵāḇ connection, the chiasmus foreshadowing, the eclipses — is **entirely slide-only**. The audience never heard this argument. It exists only on the presenter's visual aids.
+
+Meanwhile, the verbal Hebrew word study the audience *did* hear — Zarahemla/Hemlah/Dead Sea etymology pointing to Salt Lake City's destruction — is not even mentioned in the evaluation. The Oaks analysis, creation-week/3 Nephi 8:5 connection, and temple ceremony changes as prophetic signs are all verbal-only content that goes unevaluated.
+
+The evaluation remains strong for what it covers — especially the 2025–2033 timeline critique, the harvest framework analysis, the Missed Opportunities section, and the "Stand ye in holy places" capstone. The verbal-vs-slide gap is narrower than Phases 2–3, 5, or 8, but the irony that the evaluation's *headline feature* was never spoken aloud is notable.

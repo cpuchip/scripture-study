@@ -77,6 +77,62 @@ The climactic move is a jubilee-cycle interpretation of "a time, and times, and 
 
 ---
 
+## Transcript Review Notes
+
+*Review date: 2026-02-09*
+
+**Phase 4 is the best-captured phase in the series.** Unlike Phases 2–3 (where core content is slide-only), Phase 4's verbal delivery in Part I (~28:30–42:00) closely mirrors the evaluation. All 10 Key Claims are verbally presented and already evaluated. The Karl Marx item (#2 Nuanced) is correctly labeled "(Transcript Only)."
+
+### Verbal-vs-Slide Mapping
+
+| Key Claim | On Slides? | Verbally Developed? | In Evaluation? |
+|-----------|:---:|:---:|:---:|
+| 1. JST Rev 12:7 woman = church | Yes | Yes (~29:00) | ✅ In Line #1 |
+| 2. Church organized 1830 | Yes | Yes (~29:30) | ✅ In Line #2 |
+| 3. Man child = Council of 50, March 11 1844 | Yes | Yes (~29:30, ~36:00) | ✅ Nuanced #1 |
+| 4. Twelve stars = twelve apostles | Yes | Yes (~30:00) | ✅ In Line #5 |
+| 5. Joseph martyred = "caught up to throne" | Yes | Yes (~33:00) | ✅ In Line #3 |
+| 6. Daniel 2:44 kingdom in days of these kings | Yes | Yes (~43:00) | ✅ In Line #6 |
+| 7. Woman flees = pioneer trek to Utah | Yes | Yes (~33:00, ~36:00) | ✅ In Line #4 |
+| 8. Jubilee cycle: 50+100+25 = 175 years | Yes | Yes (~37:00) | ✅ Out of Line #1 |
+| 9. 1847+175 = 2022 | Yes | Yes (~37:30) | ✅ Out of Line #2 |
+| 10. After 2022 dragon makes war with remnant | Yes | Yes (~38:00) | ✅ Out of Line #2 |
+| Karl Marx as counterfeit prophet | **No** | Yes (~31:00) | ✅ Nuanced #2 |
+| 4-of-12 apostle defection math | Both | Yes (~32:30) | ✅ In Line #7 |
+
+### Verbal-Only Items Not in Original Evaluation
+
+**1. Michael/Adam Premortal Distinction (~34:39)**
+
+Philpot makes a theological claim not on slides: "Michael is to our spirits what Adam is to our bodies. So when we go to the temple we think of ourselves as Adam. And I think in heaven we thought of ourselves as Michael." He uses this to distinguish the "heavenly pageant" (where Michael leads) from the "earthly pageant" (where Adam leads), grounding the JST's "sign in heaven, in the likeness of things on the earth" in a premortal–mortal anthropology.
+
+This is a creative but speculative extension. The scriptural basis is real — Michael and Adam are the same being ([D&C 27:11](../../gospel-library/eng/scriptures/dc-testament/dc/27.md), [D&C 107:54](../../gospel-library/eng/scriptures/dc-testament/dc/107.md), [Daniel 12:1](../../gospel-library/eng/scriptures/ot/dan/12.md)) — but the claim that we "thought of ourselves as Michael" in the premortal life is Philpot's inference, not doctrine.
+
+**2. Heavenly vs. Earthly Pageant Timeline (~34:39)**
+
+The evaluation captures the JST phrase "in the likeness of things on the earth" and its hermeneutic significance (In Line #7). But the transcript adds an explicit structural claim: "the heavenly pageant plays out over a 1,260 days. But the earthly pageant plays out, excuse me, over a different timeline." This is the interpretive move that allows Philpot to apply the Rev 12 imagery to Restoration-era events on a *different timescale* — the heavenly version runs 1,260 days (3.5 years) but the earthly version runs 175 years (jubilee math). The evaluation critiques the jubilee math itself (Out of Line #1) but doesn't explicitly note this "different timeline" framing that justifies it.
+
+**3. Joseph's Territorial Vision (~36:00)**
+
+Philpot describes Joseph's intended territory: "from Texas all the way up to Idaho, which became Arizona, Utah, and Idaho." He compares this to the ancient Israelites conquering only part of their promised land: "We got about halfway down and we're like, 'That's good enough, right?'" This adds color to the "place prepared" interpretation and the territorial scope of the Council of 50's ambitions. Minor detail, already implicit in the evaluation's discussion.
+
+### Timestamp Correction
+
+The review plan listed Phase 4 at ~42:00–1:00:00 (slides 121–148), but the evaluation's own Deep Reading Checklist correctly identified "28:00–40:00" as the primary transcript range. The actual verbal Phase 4 content runs **~28:30–42:00** in Part I. Content after ~42:00 (Daniel 2 ten-toes-to-presidents, Cain/government, Hamilton/banking, Civil War, Edmunds-Tucker) belongs to Phase 5, though the boundary is fluid in the verbal delivery.
+
+### Phase 4→5 Bleed Zone (~42:00–53:46)
+
+The following verbal content appears in the ~42:00–53:46 range and should be evaluated under Phase 5:
+- Daniel 2 ten toes mapped to specific presidents (Washington through March 11, 1844)
+- Cain killing with a stone = usurping governmental authority (apocryphal)
+- Alexander Hamilton, central banking, War of 1812, Andrew Jackson's graft
+- South + Mormons as commodity-based economies targeted by Northern finance
+- "Blood oath between the devil and the United States" based on murdering Joseph Smith
+- Seven heads = seven dispensational beast kingdoms
+- Beast = government, not devil (explicit verbal clarification at ~1:18:00)
+
+---
+
 ## Step 3: Evaluation
 
 ### In Line
