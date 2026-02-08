@@ -5,6 +5,9 @@
 resources/gospel-library/
 /books/
 
+# YouTube transcripts (copyrighted content - do not distribute)
+/yt/
+
 # OS files
 .DS_Store
 Thumbs.db
@@ -20,3 +23,5 @@ scripts/gospel-library/gospel-library
 scripts/gospel-library/gospel-library.exe
 scripts/gospel-library/gospel-downloader.exe
 scripts/publish/publish.exe
+scripts/yt-mcp/yt-mcp
+scripts/yt-mcp/yt-mcp.exe
