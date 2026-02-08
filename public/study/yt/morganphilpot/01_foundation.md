@@ -23,6 +23,10 @@ Morgan Philpot argues that the ancient Israelite agricultural cycle — specific
 > "The restoration of the gospel was of course about ordinances, but it's really about the second coming."
 > — [Morgan Philpot, ~20:00](https://www.youtube.com/watch?v=c98WG4NN48A&t=1200)
 
+Before presenting the harvest framework, Philpot opens with approximately 19 minutes of verbal-only argument (not on any slide) that sets his hermeneutical lens: *we miss the testimony of Christ in our own ordinances just as the ancient Jews did.* His primary example is the temple sealing ceremony — the bridegroom receiving his bride as a type of the Second Coming ([Matthew 25:1–13](https://www.churchofjesuschrist.org/study/scriptures/nt/matt/25?lang=eng&id=p1-p13#p1), [Revelation 19:7–9](https://www.churchofjesuschrist.org/study/scriptures/nt/rev/19?lang=eng&id=p7-p9#p7)) — arguing that Latter-day Saints culturally exalt marriage over the Savior's return in the same way ancient Jews failed to see their temple ceremony as a testimony of the coming Messiah. He ties this to [1 Nephi 1](https://www.churchofjesuschrist.org/study/scriptures/bofm/1-ne/1?lang=eng) — Lehi told the Jews their temple testified of Messiah and they wanted to kill him for it.
+
+Philpot's explicit disclaimer: *"Everything I do is not intended to convince you I'm right. I probably am. But it's intended to try to stimulate your mind to think about how to liken the scriptures to us in a very extreme way."* ([~14:30](https://www.youtube.com/watch?v=c98WG4NN48A&t=870))
+
 ### Key Claims
 
 1. **Dispensational parallel:** Moses' feasts and symbols → First Coming; Joseph's revelations and events → Second Coming (slides 2–3)
@@ -36,6 +40,10 @@ Morgan Philpot argues that the ancient Israelite agricultural cycle — specific
 5. **D&C 45 as a summer warning:** The fig-tree parable in [D&C 45:37–38](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/45?lang=eng&id=p37-p38#p37) — "summer is now nigh at hand" — signals that the grape/wrath harvest is approaching (slide 6)
 6. **Adam-ondi-Ahman as the olive harvest:** The gathering described in [D&C 116](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/116?lang=eng) and [Daniel 7:9–14](https://www.churchofjesuschrist.org/study/scriptures/ot/dan/7?lang=eng&id=p9-p14#p9) is the final "pressing" where the oil of all dispensations is gathered and consecrated upon Christ as King (slides 31–32)
 7. **Creation / Holy Week / 7000 Years / 7 Seals** all follow the same 7-phase divine pattern (slides 35–38, introduced but not developed in Phase 1)
+8. **Temple sealing as Second Coming type** (verbal only, ~1:59–8:24): The modern sealing testifies of the bridegroom receiving his bride ([Revelation 19:7–9](https://www.churchofjesuschrist.org/study/scriptures/nt/rev/19?lang=eng&id=p7-p9#p7)) just as the ancient Hebrew temple testified of the Messiah's first coming. We miss this the same way the Jews missed theirs.
+9. **3 Nephi 7→8 "four days" argument** (verbal only, ~11:26–13:00): Only four days separate the end of 3 Nephi 7 and the destruction of 3 Nephi 8:5. In those four days, the people argued about whether Christ was coming ([3 Nephi 8:4](https://www.churchofjesuschrist.org/study/scriptures/bofm/3-ne/8?lang=eng&id=p4#p4)). Philpot asks: "Which one are we?"
+10. **Nelson/Oaks Jewish calendar connections** (verbal only, ~15:00–16:00): Nelson sustained by solemn assembly on Passover weekend (March 31, 2018); Nelson died during the Days of Awe between Rosh Hashanah and Yom Kippur (September 27, 2025); Oaks sustained by the Twelve on Shemini Atzeret (October 14, 2025). All three dates verified.
+11. **D&C 13 / D&C 128:24** (verbal only, ~4:00–8:00): The sons of Levi must make an offering in righteousness. When has this been fulfilled? What does this have to do with the Aaronic Priesthood being "taken from the earth"?
 
 ### Scriptures Referenced by the Presenter
 
@@ -55,6 +63,12 @@ Morgan Philpot argues that the ancient Israelite agricultural cycle — specific
 | [D&C 116:1](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/116?lang=eng&id=p1#p1) | Adam-ondi-Ahman, Ancient of Days | 31 |
 | [Daniel 7:9–14](https://www.churchofjesuschrist.org/study/scriptures/ot/dan/7?lang=eng&id=p9-p14#p9) | Ancient of Days sits, Son of Man receives dominion | 31 |
 | [Zechariah 14:16–17](https://www.churchofjesuschrist.org/study/scriptures/ot/zech/14?lang=eng&id=p16-p17#p16) | Nations keep Feast of Tabernacles in millennium | 33 |
+| [D&C 13](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/13?lang=eng) | Priesthood of Aaron / sons of Levi | verbal |
+| [D&C 128:24](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/128?lang=eng&id=p24#p24) | Offering in righteousness, refiner's fire | verbal |
+| [1 Nephi 1:19–20](https://www.churchofjesuschrist.org/study/scriptures/bofm/1-ne/1?lang=eng&id=p19-p20#p19) | Lehi testifies to Jews about Messiah, they mock | verbal |
+| [3 Nephi 7:26](https://www.churchofjesuschrist.org/study/scriptures/bofm/3-ne/7?lang=eng&id=p26#p26) | Year ends — leads to 4-day gap before destruction | verbal |
+| [3 Nephi 8:4](https://www.churchofjesuschrist.org/study/scriptures/bofm/3-ne/8?lang=eng&id=p4#p4) | People dispute about the sign of Christ's coming | verbal |
+| [Revelation 19:7–9](https://www.churchofjesuschrist.org/study/scriptures/nt/rev/19?lang=eng&id=p7-p9#p7) | Marriage supper of the Lamb — bridegroom type | verbal |
 
 ---
 
@@ -113,7 +127,7 @@ Morgan Philpot argues that the ancient Israelite agricultural cycle — specific
 - [x] [Leviticus 23:15–17](https://www.churchofjesuschrist.org/study/scriptures/ot/lev/23?lang=eng&id=p15-p17#p15) — Pentecost wave loaves of wheat flour
 - [x] [Elder Howard W. Hunter, "His Final Hours," April 1974](https://www.churchofjesuschrist.org/study/general-conference/1974/04/his-final-hours?lang=eng) — Passover symbolism
 
-**Cite count:** 22 sources read via `read_file` for this evaluation.
+**Cite count:** 22 sources read via `read_file` for initial evaluation; transcript review added 7 additional verbal-only references.
 
 ---
 
@@ -173,6 +187,27 @@ Elder Neal A. Maxwell confirmed the prophetic expectation: "The valley of Adam-o
 **7. Feast of Tabernacles in the Millennium — Strong**
 
 [Zechariah 14:9, 16–17](https://www.churchofjesuschrist.org/study/scriptures/ot/zech/14?lang=eng&id=p9#p9): After the Lord's feet stand on the Mount of Olives (v. 4) and he becomes "king over all the earth" (v. 9), "every one that is left of all the nations which came against Jerusalem shall even go up from year to year to worship the King, the Lord of hosts, and to keep the feast of tabernacles" (v. 16). This is one of the most explicit post-Second-Coming prophecies in the Old Testament and directly supports Philpot's placement of Tabernacles as the final feast in the timeline.
+
+**8. Nelson/Oaks Jewish Calendar Connections — Strong (Verbal Only)**
+
+Philpot makes three specific calendar claims in response to an audience question about President Nelson's death — all verified:
+
+- **Nelson sustained Passover weekend 2018:** The solemn assembly was March 31, 2018. Passover began at sundown March 30, 2018. The sustaining fell on the first day of the Feast of Unleavened Bread — the very festival cycle that Philpot's harvest framework places as the foundation of the barley/firstfruits pattern.
+- **Nelson died during the Days of Awe:** September 27, 2025, falls between Rosh Hashanah (Sept 22–24) and Yom Kippur (Oct 1–2) — the "Ten Days of Repentance." Philpot calls this "the holiest week of the year... the time of repentance."
+- **Oaks sustained on Shemini Atzeret:** October 14, 2025. Shemini Atzeret is the "eighth day of assembly" following Sukkot (Feast of Tabernacles). Philpot notes this is "the day after all things are completed" — when "the people after that time dwell with the Lord on the eighth day."
+
+These are not interpretive claims; they are verifiable calendrical facts. The coincidences are striking and directly reinforce the Phase 1 thesis that God's appointed times (mō·w·'ă·ḏîm) remain operative even in the modern Church. Whether they are divine orchestration or coincidence is a matter of faith, but the data points are real.
+
+**9. Temple Sealing as Bridegroom Type — Sound but Undeveloped (Verbal Only)**
+
+Philpot's opening argument that the sealing ceremony testifies of the Second Coming (Christ as bridegroom receiving His bride) draws on solid scriptural ground:
+
+- [Matthew 25:1–13](https://www.churchofjesuschrist.org/study/scriptures/nt/matt/25?lang=eng&id=p1-p13#p1): Parable of the ten virgins waiting for the bridegroom
+- [Revelation 19:7–9](https://www.churchofjesuschrist.org/study/scriptures/nt/rev/19?lang=eng&id=p7-p9#p7): "The marriage of the Lamb is come, and his wife hath made herself ready"
+- [D&C 33:17](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/33?lang=eng&id=p17#p17): "Be ready at the coming of the Bridegroom"
+- [John 3:29](https://www.churchofjesuschrist.org/study/scriptures/nt/john/3?lang=eng&id=p29#p29): John the Baptist: "He that hath the bride is the bridegroom"
+
+The comparison to ancient Jews missing the messianic testimony of their temple while we miss the Second Coming testimony of ours is stirring and homiletically effective. However, Philpot doesn't develop this into a sustained argument — it serves as an opening provocation rather than a supported thesis. The claim that we "worship the marital ceremony over Christ" may overstate the case, but the underlying question is legitimate: do we let cultural celebration obscure covenantal meaning?
 
 ### Nuanced — Handle with Care
 
@@ -302,7 +337,22 @@ Phase 1 is the theological foundation for the entire 3-hour presentation, and it
 
 ## Timestamp References
 
-> "The restoration of the gospel was of course about ordinances, but it's really about the second coming... everything testifies he is coming... it gets very specific about when he's coming"
+> "I would propose that Mormons today, Latter-day Saints, worship the marital ceremony over Christ. Am I wrong?"
+> — [Morgan Philpot, ~1:59](https://www.youtube.com/watch?v=c98WG4NN48A&t=119)
+
+> "If somebody came along and said, 'Hey, your entire sealing, you exalted your spouse over the Savior'... You told that to a Jew, they'd be like, 'You're crazy. There's no Messiah coming.'"
+> — [Morgan Philpot, ~8:32](https://www.youtube.com/watch?v=c98WG4NN48A&t=512)
+
+> "How many days are we talking about? There's been four days... What's everybody arguing about in the four days before? Whether or not he's coming."
+> — [Morgan Philpot, ~11:51](https://www.youtube.com/watch?v=c98WG4NN48A&t=711)
+
+> "Everything I do is not intended to convince you I'm right. I probably am. But it's intended to try to stimulate your mind to think about how to liken the scriptures to us in a very extreme way."
+> — [Morgan Philpot, ~14:30](https://www.youtube.com/watch?v=c98WG4NN48A&t=870)
+
+> "President Nelson was sustained by the church in a solemn assembly on Passover weekend in 2018. He passed away in a week... between Rosh Hashanah and Yom Kippur known as the time of repentance. President Oaks was sustained by the 12 on Shemini Atzeret."
+> — [Morgan Philpot, ~15:00](https://www.youtube.com/watch?v=c98WG4NN48A&t=900)
+
+> "The restoration of the gospel was of course about ordinances, but it's really about the second coming."
 > — [Morgan Philpot, ~20:00](https://www.youtube.com/watch?v=c98WG4NN48A&t=1200)
 
 > "The field is white already to harvest... the Lord is telling Joseph this is the wheat harvest"
@@ -314,4 +364,5 @@ Phase 1 is the theological foundation for the entire 3-hour presentation, and it
 ---
 
 *Evaluated: 2025-07-01*
+*Transcript review: 2026-02-08*
 *Phase 1 of 9 — [Study Plan](study_plans.md)*

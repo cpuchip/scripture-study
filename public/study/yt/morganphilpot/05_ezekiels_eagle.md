@@ -79,6 +79,106 @@ The latter half of the phase addresses "the rebellious house" (v. 12). Philpot r
 
 ---
 
+## Transcript Review Notes
+
+*Review date: 2026-02-09*
+
+**Phase 5 has the LARGEST gap between slide content and verbal delivery in the entire series.**
+
+The Ezekiel 17 riddle — Hebrew word studies (*kə·nā·'an*, *rō·ḵə·lîm*), Commerce IL = "land of traffick," "divers colours" → Joseph's coat, Moses 6:17 Cainan chain, "rebellious house" framework, Alfred Cumming as "king of Babylon" — is **entirely slide-only**. Not one mention of Ezekiel, Commerce, traffick, highest branch, Cainan, rebellious house, or Cumming appears in any of the three transcripts.
+
+The verbal delivery from ~42:00 to 1:24:00 presents an entirely different argument: a comprehensive **Revelation 13 beast-kingdom identification of the United States**, running verse-by-verse through Rev 13:1–18 with specific historical mappings.
+
+### Verbal-vs-Slide Mapping
+
+| Key Claim (from evaluation) | On Slides? | Verbally Developed? | In Evaluation? |
+|-----------|:---:|:---:|:---:|
+| 1. "Divers colours" = Joseph (Ezek 17:3) | Yes | **No** | ✅ Nuanced #1 |
+| 2. "Highest branch" = Joseph Smith (2 Ne 3:5) | Yes | **No** | ✅ Nuanced #1 |
+| 3. "Land of traffick" = Commerce, IL (*kə·nā·'an*) | Yes | **No** | ✅ In Line #1 |
+| 4. "City of merchants" = Nauvoo (*rō·ḵə·lîm*) | Yes | **No** | ✅ In Line #2 |
+| 5. Moses 6:17 Cainan link | Yes | **No** | ✅ Nuanced #2 |
+| 6. Second eagle = US government (Ezek 17:7) | Yes | **No** | Not directly |
+| 7. East wind = judgment + Hinckley 2001 | Yes | **No** | ✅ In Line #6, Missed #2 |
+| 8. "Rebellious house" = US (Ezek 17:12) | Yes | **No** | ✅ Nuanced #3, Missed #3 |
+| 9. Alfred Cumming = "king of Babylon" | Yes | **No** | ✅ Out of Line #2 |
+| 10. "Kingdom might be base" = Edmunds-Tucker/OD1 | Yes | **Partial** (~58:00) | ✅ Out of Line #3 |
+| 11. Broken oaths = birthright lost | Yes | **Yes** (~1:02:00) | ✅ Out of Line #3 |
+| 12. Heber C. Kimball memorandum | Yes | **No** | Not evaluated |
+| 13. Senator Dubois quote | Yes | **No** | ✅ In Line #5 |
+
+### Verbal Content NOT in Evaluation (Revelation 13 Beast-Kingdom Argument)
+
+The following claims are **verbally developed extensively** (~42:00–1:24:00) but the evaluation does not address them because it focused on the Ezekiel 17 slide content:
+
+**1. US as the Beast of Revelation 13:1 (~42:00–43:00)**
+The beast "cannot be the United States" at April 6, 1830 because D&C 98/101 says the Lord raised up the founders. The eagle (pre-1830 US) and the beast from the sea are DIFFERENT entities. The beast emerges after the dragon (modern godless government) co-opts the US. "If you're the devil, what government do you want? [The one that] just made a satanic pact with you just like Cain did by murdering the modern Abel."
+
+**2. Seven Heads = Seven Dispensational Beasts (~1:04:00–1:05:00)**
+"Just like there are seven churches in the book of Revelation, one for each dispensation, there are seven beasts, one for each dispensation. The message is not that this beast has seven heads. It is that it is the same head that has always manifested itself." The seventh beast is "perfected" — no longer a small serpent but a dragon with armies, navies, false priests, gold and silver.
+
+**3. Beast Has All Powers of Previous Beasts (~1:05:00–1:06:00)**
+"It will have the power of the bear… the lion… the leopard. And implicit in this is the power of the eagle, which Daniel saw in Daniel 7." This last-days beast is "Babylon and the Medes and the Persians and the Greeks and the Romans all combined into one."
+
+**4. Civil War = Deadly Wound Healed (Rev 13:3) (~1:06:00)**
+"In the last days, the North will go to war with the South. And it will look like America is wounded to death. And the deadly wound will be healed at the end of that civil war after they murder Abraham Lincoln."
+
+**5. 42 Months from Emancipation Proclamation to Lee's Surrender (Rev 13:5) (~1:06:30)**
+"The civil war went on for 42 months. From the date of the emancipation proclamation to the surrender of Lee was 42 months. And it was on like Passover and Rashashana the dates." This is a specific, verifiable date claim that should be checked. (Emancipation Proclamation: Jan 1, 1863; Lee's surrender: April 9, 1865 = ~27 months, not 42. The claim appears incorrect unless a different start date is used.)
+
+**6. America Overcomes the Saints (Rev 13:7) (~1:07:00–1:09:00)**
+After proving loyalty to the devil through murdering Joseph, driving out saints, enslaving people, America "will make war with the saints in Utah and will overcome the saints in Utah after the Civil War ends."
+
+**7. 10 Horns = First 10 Post-Lincoln Presidents to Taft (~1:09:38)**
+Specific president-by-president mapping: Andrew Johnson (1) through William Howard Taft (10). Taft as first president to visit Utah, accepting the 1907 church declaration of submission.
+
+**8. 1907 Church Declaration (~1:10:00)**
+Full verbal reading of the declaration's conditional language: "This affirmation we make to you is predicated… upon the express understanding that politics in the states where our people reside shall be conducted as in other parts of the union." Philpot emphasizes: "the day comes that you don't do this anymore, know that we are loyal to God first."
+
+**9. Two-Horned Beast = Wilson/Harding = Republican/Democrat Control (Rev 13:11) (~1:12:41)**
+"The next two presidents will represent the two horns of a lamblike creature… that looks by all appearances to be Christian, but is in fact anything but. And its power will now not be exercised through people, but two horns will control all politics from this point on."
+
+**10. US Power = Nuclear Weapons / "Fire from Heaven" (Rev 13:13) (~1:15:00)**
+"Does the United States gain the power to make fire come down from heaven after 1909? Absolutely." "How did we win World War II? We killed a whole bunch of women and children in Hiroshima and Nagasaki with a bomb dropped from the sky."
+
+**11. Image of the Beast = Propaganda / Intelligence Community (Rev 13:14–15) (~1:19:00)**
+"The beast has the power to give life to his own image… That's propaganda. That's the intelligence community." Rise of CIA/intelligence post-WWI/WWII.
+
+**12. Mark of the Beast = Financial/Monetary System (Rev 13:16–17) (~1:20:27)**
+"It's the control of monetary policy." Nobody can buy or sell without participating in the beast's financial system. Connected to Hamilton/central banking history (~49:00) and Joseph Smith's independence mandate.
+
+**13. Daniel 2 Toes = Specific Presidents (~43:00–45:00)**
+Washington through 10th toe → March 11, 1844 (kingdom of God organized). Joseph Smith born at 3rd toe, First Vision at 4th, gold plates at 5th/6th, church at 7th, kingdom at 10th.
+
+**14. Cain/Abel Temple Symbolism = Government Authority (~45:00–46:00)**
+"Any government which sets itself up in opposition to the government of God is… the enemy of God. We learn this in the temple." Cain kills with a stone (apocryphal) = usurping governmental authority = execution by law. "The little serpent… what has the little snake become? A huge dragon in the last days."
+
+**15. Alexander Hamilton / Central Banking Narrative (~49:00–53:00)**
+First Bank → War of 1812 → Second Bank → Andrew Jackson's veto and graft → depression → South + Mormons as commodity-based economies → systemic targeting. "We took banking out of… United States Christian control and we dispersed it out to the states."
+
+**16. "Twin Relics of Barbarism" (~53:46)**
+The 1856 Republican Party platform phrase linking slavery and polygamy as "the two most evil" things to eliminate. Historically accurate attribution.
+
+**17. "Blood Oath Between the Devil and the United States" (~1:03:00)**
+"If I'm wrong, how am I wrong? We enslaved people and we murdered the modern Abel. So America murdered the modern Abel. And what happened to the people who murdered Joseph Smith? Nothing."
+
+**18. D&C 87 (~1:08:00)**
+"The Lord says he'll bring a full end of all nations." Already noted as a Missed Opportunity in Phase 4 evaluation — but Philpot does verbally reference it here.
+
+### Assessment of the Gap
+
+The evaluation's analysis of Ezekiel 17 remains valid as a critique of the SLIDE content — the eisegesis point, the Hebrew word study issues (*riqmah* vs. *ketonet passim*), and the OD1 mischaracterization are all correctly argued. But the audience in Chandler never heard the Ezekiel 17 argument verbally. What they heard was a comprehensive Revelation 13 reading that is theologically more ambitious and historically more detailed than the slide-based Ezekiel 17 material.
+
+The Revelation 13 argument deserves its own evaluation. Several claims are verifiable:
+- The 42-months calculation appears mathematically wrong (Jan 1863 to Apr 1865 ≈ 27 months)
+- The nuclear weapons / "fire from heaven" reading has been made by other commentators historically
+- The beast = government (not devil) distinction is an important hermeneutic clarification
+- The seven-heads = seven-dispensations reading is creative but novel
+
+The evaluation's overlap with verbal content is limited to: Edmunds-Tucker criminalizing brethren, Utah statehood equal-footing clause violation, birthright forfeiture (land, priesthood, religious freedom, posterity), and the overall assessment that the US persecuted the Saints. These are correctly captured.
+
+---
+
 ## Step 3: Evaluation
 
 ### In Line

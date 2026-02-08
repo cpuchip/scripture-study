@@ -17,6 +17,32 @@
 | Phase 2 Evaluation | [02_signs_and_warnings.md](02_signs_and_warnings.md) |
 | Study Plan | [study_plans.md](study_plans.md) |
 
+### Transcript Review Notes (2026-02-09)
+
+**Structural finding:** Phase 3 continues the pattern discovered in Phase 2 — it is **heavily slide-dependent**. None of the 10 Key Claims are verbally presented as a standalone Phase 3 discussion. But unlike Phase 2 (where core content was entirely absent from the transcripts), Phase 3's building blocks *are* referenced verbally — they're woven into the Revelation 12 / beast kingdoms narrative of Phases 4–5 rather than presented in the structured, sequential way the slides suggest.
+
+**Verbal vs. slide-only mapping:**
+
+| Content | Slides | Verbal? | Notes |
+|---------|--------|---------|-------|
+| "Grand Apocalyptic Vision" chain (Amos → Daniel → Revelation → Colossians) | 93–96 | ❌ | Slide-only |
+| Deuteronomy 29–30 covenant pattern | 97, 112–113 | ❌ | Slide-only. Only "Deuteronomy 13" (blasphemy) appears verbally, different context |
+| 1620 / Pilgrims / Columbus / 1 Nephi 13:12–16 | 98, 100–101 | ❌ | Slide-only |
+| Constitution as patriarchal instrument | 103–106 | ❌ | Slide-only. But Constitution IS discussed in Phases 4–5 context (D&C 98/101) |
+| Oaks priesthood-in-family quote | 104 | ❌ | Slide-only |
+| Deuteronomy 28:1 = 1 Nephi 13:30 parallel | 108–109 | ❌ | Slide-only |
+| "The Return" = the Restoration | 110–114 | ❌ | Slide-only as concept; Restoration IS discussed throughout |
+| 1823 = Feast of Tabernacles | 115 | ❌ | Slide-only. Jewish feasts listed verbally (Part I ~26:00) but without this specific connection |
+| 1827 = Rosh Hashanah / Feast of Trumpets | 117 | Partial | Gold plates delivery mentioned (Part I ~29:00) but Rosh Hashanah label not used |
+| Nephi hands off to John (1 Ne 14:25–27) | 120 | ❌ | Slide-only |
+
+**Verbal references woven into later phases:**
+- **Daniel 2 (10 toes = presidents)** — Part I ~34:39+, presented as part of the beast kingdoms narrative (Phase 5)
+- **D&C 98/101 (Constitution divinely established)** — Part I ~34:00+, used in the Revelation 12/13 beast kingdom argument (Phase 4)
+- **Founding fathers poisoned monarchy** — Part I ~32:00, in the Karl Marx counter-prophet context (Phase 4)
+
+**Implication:** Philpot does not present Phase 3 as a standalone verbal section. The audience receives these slides as visual architecture but hears the verbal argument jump from the harvest framework directly into Revelation 12. The structured theological scaffolding (Amos → Daniel → Revelation chain, Deuteronomy covenant pattern, patriarchal Constitution) exists only on slides.
+
 ---
 
 ## Step 1: Summary
@@ -365,16 +391,16 @@ Phase 3 is the *architectural* section of Philpot's presentation — where he bu
 
 ## Timestamp References
 
-> "God always reveals his secrets to his prophets... that's the grand apocalyptic vision"
-> — [Morgan Philpot, Part I](https://www.youtube.com/watch?v=c98WG4NN48A)
-
-> "Start with Moses... Deuteronomy 29 and 30"
-> — [Morgan Philpot, Part I](https://www.youtube.com/watch?v=c98WG4NN48A)
+> **Note:** Phase 3 is almost entirely slide-dependent. The quotes below paraphrase slide content; they are not verified verbal transcript quotes.
 
 > "It is wisdom in the Father that they should be established in this land and be set up as a free people"
 > — [3 Nephi 21:4](https://www.churchofjesuschrist.org/study/scriptures/bofm/3-ne/21?lang=eng&id=p4#p4), cited on slide 100
 
+> "The Lord says he raised up the founders of the United States for the purpose of establishing the Constitution according to just and holy principles... You should elect wise men because if you don't, anything more or less than what he established would come of evil."
+> — [Morgan Philpot, Part I ~34:00](https://www.youtube.com/watch?v=c98WG4NN48A&t=2040) (D&C 98/101 reference, presented in Phase 4-5 context, not standalone Phase 3)
+
 ---
 
 *Evaluated: 2026-02-08*
+*Transcript review: 2026-02-09*
 *Phase 3 of 9 — [Study Plan](study_plans.md)*
