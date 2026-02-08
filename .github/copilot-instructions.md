@@ -119,6 +119,8 @@ If content hasn't been downloaded yet, note it for future download. The download
 | **Teachings of Presidents** | `/gospel-library/eng/manual/teachings-{president}/` | 17 presidents |
 | **Liahona Magazine** | `/gospel-library/eng/liahona/{year}/{month}/` | Current magazine |
 | **Ensign Magazine** | `/gospel-library/eng/ensign/{year}/{month}/` | Historical magazine (merged into Liahona) |
+| **YouTube Transcripts** | `/yt/{channel-slug}/{video-id}/` | Downloaded via yt-mcp (.gitignored) |
+| **Video Evaluations** | `/study/yt/{video_id}-{slug}.md` | Published to public/study/yt/ |
 
 ## AI Study Guidelines
 
@@ -309,3 +311,33 @@ Analyzing a general conference talk to understand WHY it's effective as a teachi
 **Example:** `202510-24brown.md` for Elder Brown's October 2025 talk
 
 **Cross-Reference:** See [Teaching in the Savior's Way](../gospel-library/eng/manual/teaching-in-the-saviors-way-2022/) for the framework, and [general-conference-examples.md](../docs/general-conference-examples.md) for talk pattern analysis.
+
+### Video Evaluation (YouTube Content Analysis)
+Evaluating YouTube video content against the gospel standard — works for gospel-centered content (BYU devotionals, seminary, podcast interviews) *and* secular content (news, commentary, lectures).
+
+1. **Download**: Use `yt_download` to get the transcript from a YouTube URL
+2. **Read**: Read the full transcript via `yt_get` — note the speaker's main thesis, specific claims, and any scripture/conference references made
+3. **Cross-Reference**: Use gospel-mcp, gospel-vec, and webster-mcp to:
+   - Find supporting scriptures for each doctrine or principle claimed
+   - Check conference talks for prophetic statements on the same topics
+   - Look up historical word meanings if relevant
+4. **Evaluate**: Write an honest assessment:
+   - **In line:** Messages that align with scripture and prophetic teaching — cite the supporting references
+   - **Out of line:** Claims that contradict or distort scriptural truth — explain why with references
+   - **Missed the mark:** Messages that are partially true but miss key context — show what's missing
+   - **Missed opportunities:** Great points where a powerful scripture or talk would have strengthened the message
+   - **Overall assessment:** Is this content spiritually nourishing? Would you recommend it?
+5. **Become**: Extract personal application:
+   - What truth from this video can I apply in my life?
+   - What warning should I heed?
+   - Write specific "I will..." commitments with target dates
+   - Connect commitments to specific scriptures
+6. **Document**: Save evaluation to `/study/yt/{video_id}-{slug}.md`
+
+**Timestamp Linking:** When quoting a specific moment from the video, use the `?t=` timestamp link from the transcript:
+```markdown
+> "Quoted text from the video"
+> — [Speaker Name, 3:45](https://www.youtube.com/watch?v=VIDEO_ID&t=225)
+```
+
+**Template:** Use [yt_evaluation_template.md](../docs/yt_evaluation_template.md) for structured video evaluations.

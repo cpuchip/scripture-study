@@ -9,4 +9,5 @@ use (
 	./scripts/publish
 	./scripts/search-mcp
 	./scripts/webster-mcp
+	./scripts/yt-mcp
 )
