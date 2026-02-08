@@ -315,24 +315,44 @@ Analyzing a general conference talk to understand WHY it's effective as a teachi
 ### Video Evaluation (YouTube Content Analysis)
 Evaluating YouTube video content against the gospel standard — works for gospel-centered content (BYU devotionals, seminary, podcast interviews) *and* secular content (news, commentary, lectures).
 
+This workflow follows the same Discovery → Deep Reading → Writing rhythm as the study workflow. The transcript is raw material; search results are pointers. The evaluation must be written from verified sources.
+
 1. **Download**: Use `yt_download` to get the transcript from a YouTube URL
-2. **Read**: Read the full transcript via `yt_get` — note the speaker's main thesis, specific claims, and any scripture/conference references made
-3. **Cross-Reference**: Use gospel-mcp, gospel-vec, and webster-mcp to:
+2. **Read Transcript**: Read the full transcript via `yt_get` — note:
+   - The speaker's main thesis and specific claims
+   - Every scripture reference the speaker cites
+   - Every conference talk, manual, or other source the speaker references
+   - Timestamps for key moments worth quoting
+3. **Discovery**: Use search tools (gospel-mcp, gospel-vec, webster-mcp) to:
    - Find supporting scriptures for each doctrine or principle claimed
    - Check conference talks for prophetic statements on the same topics
    - Look up historical word meanings if relevant
-4. **Evaluate**: Write an honest assessment:
+   - Note file paths for everything found — these are pointers, not sources
+4. **Deep Reading**: Use `read_file` to study the actual source material:
+   - For EVERY scripture the video cites, `read_file` the actual chapter markdown
+   - For EVERY conference talk the video references, find and `read_file` the actual talk file
+   - For EVERY scripture or talk you found in Discovery, `read_file` it before quoting
+   - Follow footnotes and cross-references in the source files — they widen the study
+   - Verify the file exists locally with `file_search` or `list_dir` before claiming it doesn't exist
+5. **Evaluate**: Write an honest assessment from verified sources:
    - **In line:** Messages that align with scripture and prophetic teaching — cite the supporting references
    - **Out of line:** Claims that contradict or distort scriptural truth — explain why with references
    - **Missed the mark:** Messages that are partially true but miss key context — show what's missing
    - **Missed opportunities:** Great points where a powerful scripture or talk would have strengthened the message
    - **Overall assessment:** Is this content spiritually nourishing? Would you recommend it?
-5. **Become**: Extract personal application:
+6. **Become**: Extract personal application:
    - What truth from this video can I apply in my life?
    - What warning should I heed?
    - Write specific "I will..." commitments with target dates
    - Connect commitments to specific scriptures
-6. **Document**: Save evaluation to `/study/yt/{video_id}-{slug}.md`
+7. **Document**: Save evaluation to `/study/yt/{video_id}-{slug}.md`
+
+**Rules** (inherited from the study workflow):
+- Never use a search tool excerpt or transcript quote as a verified scripture quote — always `read_file` the source
+- The cite count rule applies: for N cited sources, perform at least N `read_file` calls
+- Every quoted passage must be verified against the actual source file before publishing
+- Link every scripture, talk, and manual reference — unlinked references are unverified references
+- If the video references a conference talk (e.g., "Bruce R. McConkie's final testimony"), find the actual file and read it — the video's paraphrase is not a source
 
 **Timestamp Linking:** When quoting a specific moment from the video, use the `?t=` timestamp link from the transcript:
 ```markdown

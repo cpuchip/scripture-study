@@ -2,6 +2,8 @@
 
 A framework for evaluating YouTube content against the gospel standard. Works for gospel-centered content (BYU devotionals, seminary, podcast interviews) *and* secular content (news, commentary, lectures).
 
+Follows the Discovery → Deep Reading → Writing rhythm. Search results are pointers, not sources.
+
 > *"Prove all things; hold fast that which is good."* — [1 Thessalonians 5:21](../gospel-library/eng/scriptures/nt/1-thes/5.md)
 
 ---
@@ -19,7 +21,7 @@ A framework for evaluating YouTube content against the gospel standard. Works fo
 
 ## Step 1: Summary
 
-<!-- After reading the full transcript, write a brief summary -->
+<!-- After reading the full transcript (yt_get), write a brief summary -->
 
 **Speaker's Main Thesis:**
 <!-- What is the central message or argument? -->
@@ -31,21 +33,22 @@ A framework for evaluating YouTube content against the gospel standard. Works fo
 3. 
 
 **Scripture/Conference References Made by Speaker:**
-<!-- Note any scriptures or prophetic quotes the speaker cites -->
+<!-- Note EVERY scripture, talk, or source the speaker cites — these must ALL be read in Step 3 -->
 - 
 
 ---
 
-## Step 2: Cross-Reference
+## Step 2: Discovery
 
-<!-- Use gospel-mcp, gospel-vec, and webster-mcp to find supporting or contradicting sources -->
+<!-- Use gospel-mcp, gospel-vec, and webster-mcp to find supporting or challenging sources -->
+<!-- Note file paths — these are POINTERS to read in Step 3, not sources to quote from -->
 
-### Supporting Scriptures
-<!-- Scriptures that support the speaker's claims -->
+### Supporting Scriptures Found
+<!-- Scriptures that support the speaker's claims — note file paths for deep reading -->
 - 
 
-### Related Conference Talks
-<!-- Prophetic teachings on the same topics -->
+### Related Conference Talks Found
+<!-- Prophetic teachings on the same topics — note file paths for deep reading -->
 - 
 
 ### Word Study (if applicable)
@@ -54,10 +57,27 @@ A framework for evaluating YouTube content against the gospel standard. Works fo
 
 ---
 
-## Step 3: Evaluation
+## Step 3: Deep Reading Checklist
+
+<!-- read_file EVERY source before writing the evaluation -->
+<!-- The cite count rule: for N sources cited in the evaluation, perform at least N read_file calls -->
+
+### Sources Referenced by the Video
+<!-- For each scripture/talk the speaker cited, read the actual source file -->
+- [ ] <!-- Scripture or talk: file path — verified? -->
+
+### Sources Found in Discovery
+<!-- For each scripture/talk found via search, read the actual source file -->
+- [ ] <!-- Scripture or talk: file path — verified? -->
+
+---
+
+## Step 4: Evaluation
+
+<!-- Write from verified sources only — every quote must come from a read_file, not a search excerpt -->
 
 ### In Line
-<!-- Messages that align with scripture and prophetic teaching — cite supporting references -->
+<!-- Messages that align with scripture and prophetic teaching — cite supporting references with links -->
 
 
 ### Out of Line
@@ -79,7 +99,7 @@ A framework for evaluating YouTube content against the gospel standard. Works fo
 
 ---
 
-## Step 4: Become
+## Step 5: Become
 
 > *"Whatever principle of intelligence we attain unto in this life, it will rise with us in the resurrection."* — [D&C 130:18](../gospel-library/eng/scriptures/dc-testament/dc/130.md)
 
