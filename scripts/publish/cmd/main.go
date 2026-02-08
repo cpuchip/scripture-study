@@ -36,7 +36,7 @@ var lecturePathMap = map[string]string{
 }
 
 var (
-	inputDirs     = []string{"study", "lessons", "callings"}
+	inputDirs     = []string{"study", "lessons", "callings", "journal"}
 	outputDir     = flag.String("output", "public", "Output directory for published files")
 	verbose       = flag.Bool("v", false, "Verbose output")
 	dryRun        = flag.Bool("dry-run", false, "Show what would be done without making changes")
