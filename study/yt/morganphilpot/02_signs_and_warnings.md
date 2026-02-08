@@ -13,8 +13,32 @@
 |--------|----------|
 | Slides 40–92 | [slides.md](../../../yt/morganphilpot/slides.md) lines 500–1300 |
 | Transcript Part I | [transcript.md](../../../yt/signs-of-the-times/c98WG4NN48A/transcript.md) |
+| Transcript Part III | [transcript.md](../../../yt/signs-of-the-times/GtQRKMJdYh4/transcript.md) |
 | Phase 1 Evaluation | [01_foundation.md](01_foundation.md) |
 | Study Plan | [study_plans.md](study_plans.md) |
+
+### Transcript Review Notes (2026-02-09)
+
+**Major structural finding:** Phase 2 is the **most slide-dependent phase** of the entire presentation. Of the 8 key claims on slides 40–92, only the "likening" hermeneutic and Nelson's warnings are verbally developed — and the Nelson content appears in **Part III**, not Part I. The remaining Phase 2 content (1 Nephi 14 two-churches, D&C 88 wrath sequence, JST Matthew 1, Woman at the Well, Walk to Emmaus, D&C 121:26–32) exists **only on slides** with no verbal elaboration in any of the three transcripts.
+
+**Verbal vs. slide-only mapping:**
+
+| Content | Slides | Verbal? | Where? |
+|---------|--------|---------|--------|
+| "Likening" hermeneutic (1 Ne 19:23) | 40 | ✅ | Part I ~1:59–14:30 (captured in Pass 1) |
+| Nelson's escalating warnings | 50–58 | ✅ | **Part III** ~12:00–13:00, ~38:19 — NOT Part I |
+| 1 Nephi 14 two-churches | 42–48 | ❌ | Slide-only |
+| D&C 88 wrath sequence | 67–68 | ❌ | Slide-only ("wrath" appears verbally only in harvest context) |
+| Gentile warnings (3 Ne 16/20/21) | 69–77 | ❌ | Slide-only |
+| JST Matthew 1 two-question structure | 63–65 | ❌ | Slide-only |
+| Woman at the Well (~2034) | 81–85 | ❌ | Slide-only |
+| Walk to Emmaus | 86–89 | ❌ | Slide-only |
+| D&C 121:26–32 revelation promise | 90–92 | ❌ | Slide-only |
+| **2033 from BoM 34th year** | — | ✅ | **Part III** ~16:00–26:00 (verbal-only, different derivation) |
+| **Preparation urgency / travel** | — | ✅ | **Part III** ~25:00–32:00 (verbal-only) |
+| **Corporate destruction argument** | — | ✅ | **Part III** ~0:05–12:00 (verbal-only) |
+
+**Implications:** The two items rated "Out of Line" (Woman at the Well typology and Walk to Emmaus typology) are **slide-only** — Philpot never verbally defends them. They exist as visual backdrop but receive no oral development. The date calculation also **shifts mechanics**: slides derive ~2034 from John 4:40 + 2 Peter 3:8; the verbal presentation derives **2033** from the Book of Mormon's 34th year chronology — a fundamentally different argument that doesn't require the "one day = 1,000 years" formula.
 
 ---
 
@@ -36,6 +60,9 @@ The hermeneutic engine for all of this is [1 Nephi 19:23](../../../gospel-librar
 6. **"34 AD + 2 days = ~2034 AD"** — The Woman at the Well (John 4:40, Jesus abode "two days" with the Samaritans), combined with 2 Peter 3:8 ("one day is with the Lord as a thousand years"), yields a typological timeline pointing to approximately 2034 AD (slides 81–85)
 7. **Walk to Emmaus encodes typological symbols** — Cleophas, the seven miles, the expounding of scriptures: all presented as prophetic types (slides 86–89)
 8. **D&C 121:26–32 promises unprecedented revelation** — "Nothing shall be withheld" in the dispensation of the fulness of times; Nelson claims "front-row seats" to these unfoldings (slides 90–92)
+9. **2033 from Book of Mormon 34th year** (verbal, Part III) — Philpot derives 2033 from the Book of Mormon chronology: "the 34th year, which is 2033" — where year 0 corresponds to the "sign of the coming of Christ" or "Palmyra sign in 2000." Different from the slide's ~2034 derivation via John 4:40 + 2 Peter 3:8.
+10. **Nelson's warnings with personal framing** (verbal, Part III) — Audience member quotes Nelson's last talk: "The Lord is urging me to tell you to prepare for the second coming." Philpot adds: "People like me hear that and I'm like, I got to build a bunker. I got to get off grid." More self-aware and conversational than the six-slide sequence.
+11. **Preparation urgency and secession crisis** (verbal, Part III) — Extended practical argument: if secession crisis in 2029–2030 closes borders and kills interstate commerce, "when should you be prepared?" Must be ready before 2028 election. Creates temporal urgency without explicit date-setting.
 
 ### Scriptures Referenced by the Presenter
 
@@ -60,6 +87,9 @@ The hermeneutic engine for all of this is [1 Nephi 19:23](../../../gospel-librar
 | [John 4:3–7, 21, 35, 39–43](../../../gospel-library/eng/scriptures/nt/john/4.md) | Woman at the Well: living water, four months then harvest, "he abode there two days" | 81–85 |
 | [Luke 24:13–35](../../../gospel-library/eng/scriptures/nt/luke/24.md) | Walk to Emmaus: Cleophas, expounding scriptures, hearts burning, known in breaking bread | 86–89 |
 | [D&C 121:26–32](../../../gospel-library/eng/scriptures/dc-testament/dc/121.md) | "Nothing shall be withheld"; all thrones and dominions revealed; dispensation of fulness | 90–92 |
+| [3 Nephi 8:5](../../../gospel-library/eng/scriptures/bofm/3-ne/8.md) | "First month, fourth day" — Mormon's precise date for destruction; connects to creation week | verbal, Part III |
+| [Ether 13:2–12](../../../gospel-library/eng/scriptures/bofm/ether/13.md) | New Jerusalem built upon this land by remnant of seed of Joseph; Jerusalem of old rebuilt | verbal, Part III |
+| [Revelation 14:14–19](../../../gospel-library/eng/scriptures/nt/rev/14.md) | Grape harvest: angels given permission to reap; harvest of wrath | verbal, Part III |
 
 ### Conference Talks Referenced
 
@@ -249,6 +279,8 @@ This two-question structure is textually clear and is an important contribution 
 
 ### Out of Line
 
+> **Note (Transcript Review):** Both items below are **slide-only content** — Philpot never verbally elaborates on the Woman at the Well typology or the Walk to Emmaus in any of the three transcripts. They appear on slides 81–89 but receive no oral defense. Additionally, the date calculation **shifts mechanics** in the verbal presentation: instead of the slide's ~2034 (John 4:40 + 2 Peter 3:8), Philpot verbally derives **2033** from the Book of Mormon's 34th year chronology — anchored to "the sign of the coming of Christ or the Palmyra sign in 2000." This is a fundamentally different argument (pattern-matching within Book of Mormon chronology) rather than a "one day = 1,000 years" calendar formula.
+
 **1. "34 AD + 2 Days = ~2034 AD" — Speculative Date-Setting**
 
 This is the most problematic claim in Phase 2. The argument (slides 81–85):
@@ -381,16 +413,26 @@ Phase 2 is the argumentative engine of Philpot's presentation — this is where 
 
 ## Timestamp References
 
-> "We are to liken the scriptures unto ourselves... for our profit and learning"
-> — [Morgan Philpot, ~5:00](https://www.youtube.com/watch?v=c98WG4NN48A&t=300)
+> "Everything I do is not intended to convince you I'm right. I probably am. But it's intended to try to stimulate your mind to think about how to liken the scriptures to us in a very extreme way."
+> — [Morgan Philpot, Part I ~14:30](https://www.youtube.com/watch?v=c98WG4NN48A&t=870)
 
-> "President Nelson said you have front-row seats to witness live what Nephi saw only in vision"
-> — [Morgan Philpot, ~6:00](https://www.youtube.com/watch?v=c98WG4NN48A&t=360)
+> "And then the prophet gets up and says, 'Hey, the second coming is near.' You're like, 'AH, WHAT SHOULD I DO?' And then remember President Nelson in October of 2020 where he's like to the women of the church prepare places of security both temporally and spiritually."
+> — [Morgan Philpot, Part III ~12:00](https://www.youtube.com/watch?v=GtQRKMJdYh4&t=720)
 
-> "There are save two churches only... the one is the church of the Lamb of God, and the other is the church of the devil"
-> — [Morgan Philpot, ~7:00](https://www.youtube.com/watch?v=c98WG4NN48A&t=420)
+> "The Lord is urging me to tell you to prepare for the second coming. That's that's crazy. That's kind of irresponsible cuz people like actually." [audience member quoting Nelson's last talk]
+> — [Audience + Philpot, Part III ~13:00](https://www.youtube.com/watch?v=GtQRKMJdYh4&t=780)
+
+> "People like me hear that and I'm like, I got to build a bunker. I got to get off grid. And then I come out and I meet people like you and I'm like, oh, there's other people like me."
+> — [Morgan Philpot, Part III ~13:15](https://www.youtube.com/watch?v=GtQRKMJdYh4&t=795)
+
+> "Let's say the Lord is coming to Adam in 2033 just like he came to the Nephites in Bountiful in the 34th year... So if if again theoretical exercise, I got to be in Missouri in 2033. When should I be prepared to go?"
+> — [Morgan Philpot, Part III ~26:00](https://www.youtube.com/watch?v=GtQRKMJdYh4&t=1560)
+
+> "Who warned of the darker signs of the times? President Nelson. And you'd see that it's time to be like the Nephites. Remember who you are. Remember where you're supposed to be. And get ready."
+> — [Morgan Philpot, Part III ~38:19](https://www.youtube.com/watch?v=GtQRKMJdYh4&t=2299)
 
 ---
 
 *Evaluated: 2026-02-08*
+*Transcript review: 2026-02-09*
 *Phase 2 of 9 — [Study Plan](study_plans.md)*
