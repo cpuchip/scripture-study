@@ -58,6 +58,26 @@ func ChannelSlug(channel string) string {
 	return s
 }
 
+// ── yt-dlp Cookie Support ────────────────────────────────────────────────────
+
+// cookieArgs returns the --cookies flag for yt-dlp if a cookie file is available.
+// The override parameter takes precedence over the config default.
+// If the resolved path doesn't point to an existing file, no args are returned.
+func cookieArgs(cfg *Config, override string) []string {
+	path := override
+	if path == "" {
+		path = cfg.CookieFile
+	}
+	if path == "" {
+		return nil
+	}
+	// Only use cookies if the file actually exists
+	if _, err := os.Stat(path); err != nil {
+		return nil
+	}
+	return []string{"--cookies", path}
+}
+
 // ── yt-dlp Wrapper ───────────────────────────────────────────────────────────
 
 // ytdlpMetadata is the subset of yt-dlp --dump-json output we care about.
@@ -73,8 +93,13 @@ type ytdlpMetadata struct {
 }
 
 // FetchMetadata runs yt-dlp --dump-json to get video metadata without downloading.
-func FetchMetadata(cfg *Config, videoURL string) (*VideoMetadata, error) {
-	cmd := exec.Command(cfg.YtDlpPath, "--dump-json", "--skip-download", videoURL)
+// cookieOverride optionally specifies a per-call cookie file path (empty = use config default).
+func FetchMetadata(cfg *Config, videoURL string, cookieOverride string) (*VideoMetadata, error) {
+	args := []string{"--dump-json", "--skip-download"}
+	args = append(args, cookieArgs(cfg, cookieOverride)...)
+	args = append(args, videoURL)
+
+	cmd := exec.Command(cfg.YtDlpPath, args...)
 	cmd.Stderr = os.Stderr
 
 	out, err := cmd.Output()
@@ -105,9 +130,10 @@ func FetchMetadata(cfg *Config, videoURL string) (*VideoMetadata, error) {
 	}, nil
 }
 
-// DownloadSubtitles runs yt-dlp to download TTML subtitles to a temp directory.
-// Returns the path to the downloaded TTML file.
-func DownloadSubtitles(cfg *Config, videoURL string, videoID string) (string, error) {
+// DownloadSubtitles runs yt-dlp to download subtitles to a temp directory.
+// Requests TTML with VTT fallback. Returns the path to the downloaded subtitle file.
+// cookieOverride optionally specifies a per-call cookie file path (empty = use config default).
+func DownloadSubtitles(cfg *Config, videoURL string, videoID string, cookieOverride string) (string, error) {
 	// Create a temp directory for the download
 	tmpDir, err := os.MkdirTemp("", "yt-mcp-*")
 	if err != nil {
@@ -116,36 +142,48 @@ func DownloadSubtitles(cfg *Config, videoURL string, videoID string) (string, er
 
 	outputTemplate := filepath.Join(tmpDir, "%(id)s.%(ext)s")
 
-	cmd := exec.Command(cfg.YtDlpPath,
+	args := []string{
 		"--write-subs",
 		"--write-auto-subs",
 		"--sub-langs", "en.*,en",
-		"--sub-format", "ttml",
+		"--sub-format", "ttml/vtt/best",
 		"--skip-download",
 		"-o", outputTemplate,
-		videoURL,
-	)
+	}
+	args = append(args, cookieArgs(cfg, cookieOverride)...)
+	args = append(args, videoURL)
+
+	cmd := exec.Command(cfg.YtDlpPath, args...)
 	cmd.Stderr = os.Stderr
 
 	// Run yt-dlp — it may exit non-zero even if some subs downloaded
 	// (e.g., 429 on one language variant while another succeeded)
 	cmd.Run()
 
-	// Check if any TTML file was actually created
+	// Check for subtitle files, preferring TTML over VTT
 	entries, err := os.ReadDir(tmpDir)
 	if err != nil {
 		os.RemoveAll(tmpDir)
 		return "", fmt.Errorf("reading temp dir: %w", err)
 	}
 
+	// Prefer TTML, fall back to VTT
+	var vttPath string
 	for _, e := range entries {
-		if strings.HasSuffix(e.Name(), ".ttml") {
-			return filepath.Join(tmpDir, e.Name()), nil
+		name := e.Name()
+		if strings.HasSuffix(name, ".ttml") {
+			return filepath.Join(tmpDir, name), nil
 		}
+		if strings.HasSuffix(name, ".vtt") && vttPath == "" {
+			vttPath = filepath.Join(tmpDir, name)
+		}
+	}
+	if vttPath != "" {
+		return vttPath, nil
 	}
 
 	os.RemoveAll(tmpDir)
-	return "", fmt.Errorf("no TTML subtitle file found — this video may not have English subtitles")
+	return "", fmt.Errorf("no subtitle file found (tried TTML and VTT) — this video may not have English subtitles, or YouTube may require authentication (try providing a cookies file)")
 }
 
 // ── Full Download Pipeline ───────────────────────────────────────────────────
@@ -158,7 +196,8 @@ type DownloadResult struct {
 }
 
 // DownloadVideo is the full pipeline: fetch metadata → download subs → parse → write files.
-func DownloadVideo(cfg *Config, rawURL string, force bool) (*DownloadResult, error) {
+// cookieOverride optionally specifies a per-call cookie file path (empty = use config default).
+func DownloadVideo(cfg *Config, rawURL string, force bool, cookieOverride string) (*DownloadResult, error) {
 	// 1. Extract video ID
 	videoID, err := ExtractVideoID(rawURL)
 	if err != nil {
@@ -168,7 +207,7 @@ func DownloadVideo(cfg *Config, rawURL string, force bool) (*DownloadResult, err
 	videoURL := CanonicalURL(videoID)
 
 	// 2. Fetch metadata
-	meta, err := FetchMetadata(cfg, videoURL)
+	meta, err := FetchMetadata(cfg, videoURL, cookieOverride)
 	if err != nil {
 		return nil, fmt.Errorf("fetching metadata: %w", err)
 	}
@@ -198,15 +237,15 @@ func DownloadVideo(cfg *Config, rawURL string, force bool) (*DownloadResult, err
 		return nil, fmt.Errorf("creating output dir: %w", err)
 	}
 
-	// 6. Download subtitles
-	ttmlPath, err := DownloadSubtitles(cfg, videoURL, videoID)
+	// 6. Download subtitles (TTML preferred, VTT fallback)
+	subPath, err := DownloadSubtitles(cfg, videoURL, videoID, cookieOverride)
 	if err != nil {
 		return nil, err
 	}
-	defer os.RemoveAll(filepath.Dir(ttmlPath)) // clean up temp dir
+	defer os.RemoveAll(filepath.Dir(subPath)) // clean up temp dir
 
-	// 7. Process TTML → markdown + cues.json
-	transcript, err := ProcessTTML(ttmlPath, meta, outputDir)
+	// 7. Process subtitles → markdown + cues.json
+	transcript, err := ProcessSubtitles(subPath, meta, outputDir)
 	if err != nil {
 		return nil, fmt.Errorf("processing transcript: %w", err)
 	}
