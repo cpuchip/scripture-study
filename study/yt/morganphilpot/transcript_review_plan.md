@@ -141,10 +141,15 @@ Part III covers the end of Phase 8 and all of Phase 9 in 1:00. The transcript is
 *To be populated during review passes.*
 
 ### Pass 1: Phase 1 — Foundation
-- **Status:** Not started
-- **Transcript lines read:** —
-- **New content found:** —
-- **Evaluation changes needed:** —
+- **Status:** Complete
+- **Transcript lines read:** 1–150 (Part I, ~0:00–28:30)
+- **New content found:**
+  1. **Temple sealing as Second Coming type** (~1:59–8:24): Philpot opens with ~19 minutes of verbal-only argument (no slides) comparing modern Saints missing the Second Coming testimony in the sealing to ancient Jews missing the messianic testimony of their temple. Bridegroom motif: [Matthew 25:1–13](../../../gospel-library/eng/scriptures/nt/matt/25.md), [Revelation 19:7–9](../../../gospel-library/eng/scriptures/nt/rev/19.md), [D&C 33:17](../../../gospel-library/eng/scriptures/dc-testament/dc/33.md). Connects to [1 Nephi 1:19–20](../../../gospel-library/eng/scriptures/bofm/1-ne/1.md) — Lehi told Jews their temple testified of Messiah and they wanted to kill him.
+  2. **D&C 13 / D&C 128:24** (~4:00–8:00): Sons of Levi offering in righteousness. When fulfilled? What happens to Aaronic Priesthood when it is?
+  3. **3 Nephi 7→8 “four days” argument** (~11:26–13:00): Only 4 days between end of 3 Nephi 7 and destruction of 3 Nephi 8:5. People were arguing about whether Christ was coming. “Which one are we?”
+  4. **Nelson/Oaks Jewish calendar connections** (~15:00–16:00): Three verified claims — Nelson sustained Passover weekend 2018 (March 31); Nelson died during Days of Awe (Sept 27, 2025); Oaks sustained on Shemini Atzeret (Oct 14, 2025).
+  5. **Philpot’s disclaimer** (~14:30): “Everything I do is not intended to convince you I’m right... it’s intended to try to stimulate your mind.”
+- **Evaluation changes made:** Added items 8–11 to Key Claims; added 7 verbal-only scripture references; added items 8–9 to In Line evaluation; updated cite count and datestamp.
 
 ### Pass 2: Phase 2 — Signs & Warnings
 - **Status:** Not started
