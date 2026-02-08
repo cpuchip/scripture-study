@@ -365,3 +365,83 @@ The prophets see the patterns and call for repentance. Philpot sees the patterns
 ---
 
 *Sources verified: 23 — 3 Nephi 1, 3 Nephi 2, 3 Nephi 3, 3 Nephi 4, 3 Nephi 6, 3 Nephi 7, Helaman 6, Revelation 18, Isaiah 8, Isaiah 9, D&C 88:86–95, D&C 89:1–4, D&C 49:7, timeline.md, Hinckley "The Times in Which We Live" (Oct 2001), Hunter "Exceeding Great and Precious Promises" (Oct 1994), Bednar "In the Space of Not Many Years" (Oct 2024), Nelson "What We Are Learning" (Apr 2021), Nelson "Confidence in the Presence of God" (Apr 2025), Monson "Principles and Promises" (Oct 2016), Webster 1828 "sorcery", mazzaroth studies (3 files), slides.md/transcript verification.*
+
+---
+
+## Transcript Review Notes
+
+*Added 2026-02-09 — Pass 7 of systematic transcript review*
+
+### Verbal-vs-Slide Mapping
+
+Phase 7 covers Part II ~30:00–55:00 and Part III ~0:00–25:00 (future projections). The evaluation organizes 18 Key Claims into three groups. Transcript review reveals the three groups have very different verbal coverage:
+
+| Key Claim | On Slides? | Verbally Developed? | Notes |
+|-----------|-----------|-------------------|-------|
+| **9/11 as Type of Revelation 18** | | | |
+| 1. "In one hour" = 102 min / WTC | ✓ | ✓ | "it happens in 1 hour" (~49:00) |
+| 2. Merchants weep = stock market | ✓ | ✓ | "biggest closure of the stock market since 1933" (~49:00) |
+| 3. Shipmasters watch smoke | ✓ | ✓ | "ships out in the sea who watched the smoke" (~49:00) |
+| 4. Greek diplōsate/dipla = two towers | ✓ | ⚠️ Concept only | Verbal: "Double, double it then" via Isaiah 9–10 and Tower of Babel analogy. Greek lexicography is slide-only. |
+| 5. Hinckley Gadianton comparison | ✓ | ✓✓ Strong | Extended verbal at ~52:00–54:11: quotes Hinckley, challenges audience "What did 9/11 have to do with taking down the church?" |
+| **Year-by-year Timeline** | | | |
+| 6. Year 92/2000 = Palmyra sign | ✓ | ✓✓ Strong | Extended verbal ~39:00–47:00 (Mazzaroth, planetary alignment, aurora borealis) |
+| 7. Year 93/2001 = 9/11 | ✓ | ✓ | "Second year… many murders committed by the Gadant robbers. That's when we get the 9/11 attacks" (~52:00) |
+| 8. Year 95/~2004 = forget signs | ✓ | ✓ | "within two years they're like, 'Ah, that wasn't it'" (~47:00) |
+| 9. Year 100/2009 = 100 years since Mosiah | ✓ | ✓ | Derived from 1909 = Year 1 framework, extensively verbal |
+| 10. Year 109/2017 = Trump/Lachoneus | ✓ | ✓✓ Strong | Extended verbal ~58:00–62:00: "Laconius is a nationalist isolationist Christian" |
+| 11. Year 112/2020 = COVID siege | ✓ | ✓✓ Strong | "There's a siege in the Book of Mormon. Third Nephi chapter 4… our 18th year based on the change of a reckoning of time" (~58:00) |
+| 12. Year 117/2025 = Trump 2nd term + Gidgiddoni | ✓ | ✓ | "Laconius with the help of a strategist named Gid Gadoni takes back power" (~61:00). Musk is NOT named in transcript — identification appears slide-only. |
+| 13. Year 121/2029 = assassination | ✓ | ✓✓ Strong | Extended verbal Part III ~0:00–23:00: builds full scenario of successor assassination, secession crisis, travel restrictions |
+| 14. Year 125/2033 = destruction | ✓ | ✓✓ Strong | "the Lord is coming to Adam in 2033 just like he came to the Nephites in Bountiful in the 34th year" (Part III ~25:19) |
+| **Pharmakeia Word Study** | | | |
+| 15. φαρμακεία Strong's 5331 | ✓ | ❌ None | Zero transcript hits for pharmak*, pharmaceutical, pharmacy |
+| 16. Webster 1828 sorcery | ✓ | ❌ None | "Sorcery" appears once in Part II — but as Babylonian Talmud accusation against Christ, not the Rev 18 word study |
+| 17. D&C 89:4 conspiring men | ✓ | ❌ None | Zero transcript hits for "conspiring" or "Word of Wisdom" in Phase 7 context |
+| 18. Isaiah 8:19 wizards peep & mutter | ✓ | ❌ None | Zero transcript hits for wizard, peep, mutter |
+
+### Key Findings
+
+**1. The pharmakeia word study (4 Key Claims) is ENTIRELY slide-only.**
+
+Grep search across all three transcripts confirms: zero mentions of φαρμακεία, pharmaceutical, pharmacy, "conspiring men" (D&C 89:4), "wizards that peep and mutter" (Isaiah 8:19), or the Strong's 5331 reference. The one "sorcery" hit is unrelated (Babylonian Talmud context). The evaluation's In Line #2 ("linguistically accurate") and #3 ("D&C 89:4 genuinely warns") are valid textual analysis — but the audience never heard this argument. The evaluation's Missed Opportunity #4 (Isaiah 8:20 "to the law and to the testimony" as self-contained test) remains excellent analysis but is critique of a SLIDE, not the verbal presentation.
+
+**2. The 9/11 = Revelation 18 argument IS heavily verbal — but the Greek "diplōsate" word study is slide-only.**
+
+The verbal argument follows a DIFFERENT path than the slide:
+- **Slides:** Greek diplōsate/dipla → "twofold" → "two towers" (etymological argument)
+- **Verbal:** Tower of Babel pride → Isaiah 9–10 northern kingdom tower → John "doubles" the pattern in Rev 18 → "doubling of the fall" = twin towers (narrative/typological argument through Isaiah)
+
+The verbal reasoning is historically richer — it connects Babel, the northern kingdom's pride, and Revelation 18 in a narrative chain. The evaluation critiques the Greek reading (Missed the Mark #4: "diplōsate overloads the Greek") which is valid for the SLIDE but irrelevant to what the audience heard.
+
+**3. The 3 Nephi 2:8 "reckoning change" = Y2K millennial shift is verbal but NOT in the evaluation.**
+
+At ~52:00 Part II: "They change the reckoning of their time. That's what we did in the year 2000. We declared the year 2000 to be the beginning of a new millennium when in fact it was the last year of the old millennium. President Hinckley made a point to call the year 2000 our great new millennial year." This is a specific, interesting textual parallel that the evaluation doesn't capture as a Key Claim.
+
+**4. Musk = Gidgiddoni identification is not explicit in transcript.**
+
+The evaluation's Key Claim 12 says "Musk as Gidgiddoni." Verbally, Philpot says "a strategist named Gid Gadoni" in reference to Trump's administration but does NOT name Musk. The identification appears to be from slides or audience inference. The evaluation's critique (Missed the Mark #3: "Gidgiddoni was a great prophet, not a tech entrepreneur") is still valid but should note the identification is implied, not stated.
+
+**5. Several verbal-only items in the Phase 7 transcript range not in evaluation:**
+
+a. **DHS/ICE "internal army" argument** (~1:02:37 Part II): "Where is Trump putting officers and lawyers like crazy in DHS?… What's Trump building in DHS? An internal army. And who's at the head of it?" — Specific claim about DHS as Lachoneus's military buildup, including employment page references.
+
+b. **McCarthy files unsealed** (~31:00 Part II): "They unsealed the McCarthy files in the Trump administration in 2020. And guess what the files said? McCarthy was right. There were communists in the State Department." — Used to validate the Gadianton = communist infiltration parallel.
+
+c. **Bolton/Comey indictments as prosecution ladder** (Part III ~9:00): "Comey got indicted by a grand jury. Bolton got indicted by a grand jury… If you're going after a terrorist cell, who do you prosecute first? The little guys." — 2025 current events mapped to Lachoneus prosecution of secret combinations.
+
+d. **Corporate fiction argument** (Part III ~0:05–12:00): Much broader than the SEC fine captured in Out of Line #4. Extended argument about corporate personhood as ontological fiction: "You've fragmented your brain to believe something that doesn't exist," government owns all corporate property via corporate charter, nationalization trivially easy once corporate fiction collapses.
+
+e. **Storm vs. tempest Webster 1828 distinction** (Part III ~33:00): "A storm can be a political incursion or a violent assault upon a fortified place. And a tempest can be also a violent assault or a big huge storm." Argues Mormon deliberately uses both words in 3 Nephi 8 to describe political AND natural destruction.
+
+f. **Polar shift / super volcano / nuclear war speculation** (Part III ~35:00): "I've been looking at polar shifts… Science says they exist. Last one was 700,000 years ago. Super volcanoes. We know there's one in Idaho. Nuclear war can cause this." — Speculative destruction mechanisms for 3 Nephi 8 fulfillment.
+
+g. **Preparation urgency with specific deadline** (Part III ~25:00–30:00): "When should I be prepared to go?… I got to be prepared by 2029." Extended argument that travel restrictions and secession in 2030 mean all preparation must be complete before the 2028 election.
+
+**6. The evaluation's quality is GOOD overall — gap is the pharmakeia slide-only discovery plus verbal-only items.**
+
+Unlike Phase 5 (where the entire verbal delivery was unevaluated), Phase 7's core arguments — the year-by-year timeline, the 9/11 parallels, the Lachoneus mapping — are all captured and well-evaluated. The "In Line" assessments hold up against verbal delivery. The "Out of Line" assessments (date-setting, unfalsifiable timeline, political commentary) are well-grounded. The "Missed Opportunities" section (especially Bednar's Oct 2024 talk and Isaiah 8:20's self-test) is the evaluation's strongest original analysis.
+
+**7. Significant overlap with Phase 6 review notes.**
+
+Items documented in the Phase 6 transcript review (hearts turned/temple shift ~54:11, BYU "temples of Baal" ~65:00, assassination prediction ~65:00, SEC fine/felony argument ~67:00) live in the Phase 6→7 bleed zone. The Part II transcript doesn't have clean boundaries between these phases — the year-by-year Book of Mormon mapping runs continuously from ~30:00 to the end of Part II (~1:11:00), spanning Phases 6, 7, and 8a.

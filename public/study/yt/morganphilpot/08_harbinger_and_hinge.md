@@ -391,3 +391,86 @@ The prophets teach through *patterns* (Hinckley: "We have found a new stride in 
 ---
 
 *Sources verified: 25 — Isaiah 9, Isaiah 10, Deuteronomy 34, Judges 1, 2 Kings 2, Luke 10, Matthew 21, John 12, Mark 10, Revelation 6, Revelation 7, Revelation 8, D&C 38, D&C 77, D&C 87, D&C 88, D&C 110, D&C 112, D&C 124, Jeremiah 4, Hinckley "A Time of New Beginnings" (Apr 2000), Hinckley "To All the World in Testimony" (Apr 2000), Hinckley "This Great Millennial Year" (Oct 2000), Monson "Dedication Day" (Oct 2000), Eyring "Prayers of Faith" (Apr 2020).*
+
+---
+
+## Transcript Review Notes
+
+*Added 2026-02-09 — Passes 8–9 of systematic transcript review*
+
+### Verbal-vs-Slide Mapping
+
+Phase 8 covers slides 269–355, Part II ~55:00–1:11:00, and Part III ~0:00–25:00. The evaluation identifies four major arguments. Transcript review reveals **the vast majority of Phase 8 is slide-only** — the most slide-dependent evaluation in the series, surpassing even Phases 2–3.
+
+| Evaluation Argument | On Slides? | Verbally Developed? | Notes |
+|---------------------|-----------|-------------------|-------|
+| **Isaiah 9–10 Harbinger Pattern** | | | |
+| Daschle quotes Isaiah 9:10 on Senate floor | ✓ | ✓ But at ~49:41 = Phase 7 range | Extended verbal at Part II ~49:41–52:00: "This is Tom Dashel, September 12th, 2001. He reads Isaiah 10." Includes sycamore tree / Washington oath / Obama "rebuild" / Trump "build back better." Verbal content is in Phase 7's timestamp range, not Phase 8's. |
+| 24-year Assyrian framework (744–721 BC) | ✓ | ❌ None | Zero transcript hits for "24 year," "Assyrian," "744," "721" |
+| **Palmyra/Jericho "City of Palm Trees"** | | | |
+| Palmyra = "city of palm trees" etymology | ✓ | ❌ None | Zero transcript hits for "Jericho," "palm tree," "city of palm." Palmyra appears verbally only in the astronomical alignment discussion (~41:00, Phase 6-7) and the year-2000 sign context (~52:00, Phase 7). The etymological Jericho chain is never spoken. |
+| **Seventh Seal Calculation & COVID Hinge** | | | |
+| "Half hour of silence" = 20.8 years | ✓ | ❌ None | Zero transcript hits for "silence," "half hour," "20.8," "seal" in Seventh Seal context |
+| D&C 77 seals-to-millennia framework | ✓ | ❌ None | Not discussed verbally in any transcript |
+| D&C 112:24–25 "upon my house" = COVID | ✓ | ❌ None | Zero transcript hits for "112" or "upon my house" |
+| D&C 110 / Revelation 6:14 scroll connection | ✓ | ❌ None | Not discussed verbally |
+| COVID temple closures as divine judgment | ✓ | ⚠️ Brief at Part III ~58:55 | Audience Q&A: "What happened to people who fled to the temples on March 26, 2020? They were closed." Brief aside (3 sentences), not the D&C 112 argument. This is also in Phase 9's range (~55:00+), not Phase 8's. |
+| "Hinge point" concept | ✓ | ⚠️ Brief at Part III ~12:00 | "A doctor ruling over the church during a pandemic at a hinge point" — used as a transitional label for wheat→grape harvest, not the detailed D&C 112/Seventh Seal calculation. |
+| **Judah Kings = Utah Governors** | | | |
+| 20 kings = 20 governors sequential mapping | ✓ | ❌ Mentioned in passing only | Part III ~12:00: "the southern kingdom of Judah, the northern kingdom of Israel, the judges that match, how the earthquake in Utah lines up" — listed as one of many things in his 369 slides he's NOT covering. Explicitly declined: "I'm not going to go through them all." |
+
+### Key Findings
+
+**1. Phase 8 is the MOST slide-dependent evaluation in the series.**
+
+Of the four major arguments in the evaluation, **none** are verbally developed as standalone Phase 8 presentations:
+
+- **Palmyra/Jericho etymology:** Zero transcript presence
+- **Half-hour-of-silence calculation:** Zero transcript presence
+- **D&C 112:24–25 COVID connection:** Zero transcript presence
+- **Judah kings = Utah governors:** Explicitly mentioned and skipped
+
+The only Phase 8 content that IS verbal — the Isaiah 9–10 / Daschle harbinger argument — appears at Part II ~49:41, which is in the Phase 7 timestamp range. The evaluation correctly identifies this as Phase 8 slide content (slides 269+), but the verbal delivery occurred earlier in the presentation flow.
+
+**2. The verbal content in Phase 8's assigned timestamp range is entirely Phase 6–7 year-by-year mapping continuation.**
+
+Part II ~55:00–1:11:00 contains:
+- Hinckley's Gadianton quote and discussion (documented in Phase 7 review)
+- Lachoneus/Trump extended parallel (documented in Phase 7 review)
+- DHS/ICE internal army (documented in Phase 7 review)
+- 2028 election / Lachoneus 2 assassination (documented in Phases 6–7 reviews)
+- BYU "temples of Baal" (documented in Phase 6 review)
+- SEC fine / corporate destruction / felony argument (documented in Phase 6 review)
+- Christ as felon in Babylonian Talmud (minor tangent at very end of Part II)
+
+Part III ~0:00–25:00 contains:
+- Corporate fiction as ontological problem (documented in Phase 7 review)
+- Bolton/Comey indictments as prosecution ladder (documented in Phase 7 review)
+- Lachoneus 2 full scenario (documented in Phase 7 review)
+- Storm vs. tempest Webster 1828 distinction (documented in Phase 7 review)
+- Preparation deadline urgency (documented in Phase 7 review)
+
+**All of this was ALREADY captured in prior passes** because the year-by-year Book of Mormon mapping runs continuously through Parts II and III without phase-aligned breaks.
+
+**3. The evaluation remains EXCELLENT as slide analysis.**
+
+The Phase 8 evaluation contains some of the strongest exegetical work in the entire series:
+- The Palmyra/Jericho typological analysis (In Line #1) is textually grounded and devotionally beautiful
+- The D&C 112:24–26 contextual analysis (Nuanced #3) correctly reads v. 26 as specifying hypocrites within the Church
+- The half-hour-of-silence critique (Nuanced #1) properly identifies the "about" qualifier and lack of prophetic precedent
+- The Judah/governors demolition (Out of Line #1) correctly identifies numerological pattern-matching vs. genuine typology
+- The Missed Opportunities section (#2: D&C 77 as the Lord's own Revelation commentary; #4: D&C 87:8 "stand in holy places") is prophetically grounded
+
+None of these assessments need revision — they are valid critiques of the SLIDE content. But the audience never heard these arguments, which means the evaluation is assessing a sub-presentation that was never verbally delivered in the recorded session.
+
+**4. The "hinge point" concept IS verbal but in a DIFFERENT context than the evaluation assumes.**
+
+At Part III ~12:00, Philpot says: "you've got a doctor ruling over the church during a pandemic at a hinge point. And I got to get back to the grape harvest. The hinge point is the change from the harvest of the wheat to the grape harvest."
+
+This is a harvest-transition metaphor — wheat → grape — not the detailed COVID/D&C 112/Seventh Seal argument on the slides. The evaluation analyzes the slide's D&C 112 argument; Philpot verbally uses "hinge point" as a brief agricultural/typological label and immediately moves to Revelation 14's harvest. This is actually a significant reframing: the verbal "hinge point" is about the TYPE OF HARVEST God is conducting, while the slide "hinge point" is about WHEN the Seventh Seal calculations culminate.
+
+**5. The COVID temple closure is verbal but in the Q&A at Part III ~58:55 — Phase 9 territory.**
+
+At Part III ~58:55, an audience member asks about temple work and Philpot responds: "What happened to people who fled to the temples on March 26, 2020? They were closed. We had a worldwide pandemic. So if you fled to the temple during the worldwide pandemic, you met closed doors and nobody was there."
+
+This is a brief, practical point (3 sentences) in the post-presentation Q&A, occurring at ~59 minutes into Part III — well into Phase 9's timestamp range. It does NOT invoke D&C 112, the half-hour-of-silence, or the "upon my house" framing. It's a pragmatic observation that temples close during crises, not the theological argument the evaluation analyzes.
