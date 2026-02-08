@@ -28,7 +28,8 @@ type VideoMetadata struct {
 
 // Config holds runtime configuration for the yt-mcp server.
 type Config struct {
-	YTDir     string // Base directory for downloads (default: "./yt")
-	YtDlpPath string // Path to yt-dlp executable (default: "yt-dlp")
-	StudyDir  string // Where evaluation docs go (default: "./study/yt")
+	YTDir      string // Base directory for downloads (default: "./yt")
+	YtDlpPath  string // Path to yt-dlp executable (default: "yt-dlp")
+	StudyDir   string // Where evaluation docs go (default: "./study/yt")
+	CookieFile string // Path to Netscape-format cookie file for yt-dlp auth (optional)
 }

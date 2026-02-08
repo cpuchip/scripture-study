@@ -113,6 +113,10 @@ func (s *MCPServer) handleToolsList(enc *json.Encoder, req *MCPRequest) {
 						"type":        "boolean",
 						"description": "Re-download even if transcript already exists locally. Default: false",
 					},
+					"cookies": map[string]any{
+						"type":        "string",
+						"description": "Path to a Netscape-format cookies.txt file for YouTube authentication. Use when YouTube requires sign-in (bot detection). Overrides the YT_COOKIE_FILE env var.",
+					},
 				},
 				"required": []string{"url"},
 			},
@@ -208,8 +212,9 @@ func (s *MCPServer) handleToolsCall(enc *json.Encoder, req *MCPRequest) {
 
 func (s *MCPServer) handleYtDownload(enc *json.Encoder, req *MCPRequest, args json.RawMessage) {
 	var input struct {
-		URL   string `json:"url"`
-		Force bool   `json:"force"`
+		URL     string `json:"url"`
+		Force   bool   `json:"force"`
+		Cookies string `json:"cookies"`
 	}
 	if err := json.Unmarshal(args, &input); err != nil {
 		s.sendError(enc, req.ID, -32602, "Invalid arguments", err.Error())
@@ -221,7 +226,7 @@ func (s *MCPServer) handleYtDownload(enc *json.Encoder, req *MCPRequest, args js
 		return
 	}
 
-	result, err := DownloadVideo(s.cfg, input.URL, input.Force)
+	result, err := DownloadVideo(s.cfg, input.URL, input.Force, input.Cookies)
 	if err != nil {
 		s.sendToolError(enc, req.ID, fmt.Sprintf("Download failed: %v", err))
 		return

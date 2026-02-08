@@ -5,9 +5,10 @@ import "os"
 // DefaultConfig returns a Config with sensible defaults.
 func DefaultConfig() *Config {
 	return &Config{
-		YTDir:     envOrDefault("YT_DIR", "./yt"),
-		YtDlpPath: envOrDefault("YT_DLP_PATH", "yt-dlp"),
-		StudyDir:  envOrDefault("YT_STUDY_DIR", "./study/yt"),
+		YTDir:      envOrDefault("YT_DIR", "./yt"),
+		YtDlpPath:  envOrDefault("YT_DLP_PATH", "yt-dlp"),
+		StudyDir:   envOrDefault("YT_STUDY_DIR", "./study/yt"),
+		CookieFile: os.Getenv("YT_COOKIE_FILE"),
 	}
 }
 

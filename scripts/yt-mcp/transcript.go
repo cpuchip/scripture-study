@@ -7,6 +7,8 @@ import (
 	"io"
 	"math"
 	"os"
+	"path/filepath"
+	"regexp"
 	"strconv"
 	"strings"
 )
@@ -117,6 +119,119 @@ func normalizeWS(s string) string {
 	return strings.Join(strings.Fields(s), " ")
 }
 
+// ── VTT Parsing ──────────────────────────────────────────────────────────────
+
+// vttTimestampRe matches WebVTT timestamp lines: "00:00:03.120 --> 00:00:05.670 align:start position:0%"
+var vttTimestampRe = regexp.MustCompile(`^(\d{2}:\d{2}:\d{2}\.\d{3})\s*-->\s*(\d{2}:\d{2}:\d{2}\.\d{3})`)
+
+// vttTagRe strips all VTT inline tags: <c>, </c>, <00:00:03.360>, etc.
+var vttTagRe = regexp.MustCompile(`<[^>]*>`)
+
+// ParseVTTFile parses a WebVTT subtitle file, extracting cues with begin/end/text.
+// Handles YouTube auto-generated VTT with word-level timing tags and rolling captions.
+func ParseVTTFile(path string) ([]Cue, error) {
+	data, err := os.ReadFile(path)
+	if err != nil {
+		return nil, err
+	}
+
+	content := string(data)
+	// Strip UTF-8 BOM if present
+	content = strings.TrimPrefix(content, "\xef\xbb\xbf")
+
+	lines := strings.Split(strings.ReplaceAll(content, "\r\n", "\n"), "\n")
+	var cues []Cue
+
+	i := 0
+	// Skip WEBVTT header block (everything up to first blank line)
+	for i < len(lines) {
+		if strings.TrimSpace(lines[i]) == "" {
+			i++
+			break
+		}
+		i++
+	}
+
+	// Parse cue blocks
+	for i < len(lines) {
+		line := strings.TrimSpace(lines[i])
+
+		// Skip blank lines and numeric cue identifiers
+		if line == "" {
+			i++
+			continue
+		}
+		if isNumericCueID(line) {
+			i++
+			continue
+		}
+
+		// Check for timestamp line
+		matches := vttTimestampRe.FindStringSubmatch(line)
+		if matches == nil {
+			i++
+			continue
+		}
+
+		begin := parseVTTTime(matches[1])
+		end := parseVTTTime(matches[2])
+		i++
+
+		// YouTube rolling captions: the first cue's "top line" may be blank
+		// (no previous text to display). Skip one leading blank line.
+		if i < len(lines) && strings.TrimSpace(lines[i]) == "" {
+			i++
+		}
+
+		// Collect text lines until blank line or next timestamp
+		var textParts []string
+		for i < len(lines) {
+			tl := strings.TrimSpace(lines[i])
+			if tl == "" {
+				break
+			}
+			if vttTimestampRe.MatchString(tl) {
+				break
+			}
+			if isNumericCueID(tl) {
+				break
+			}
+			// Strip all VTT tags and normalize
+			cleaned := vttTagRe.ReplaceAllString(tl, "")
+			cleaned = normalizeWS(cleaned)
+			if cleaned != "" {
+				textParts = append(textParts, cleaned)
+			}
+			i++
+		}
+
+		text := normalizeWS(strings.Join(textParts, " "))
+		if text != "" {
+			cues = append(cues, Cue{Begin: begin, End: end, Text: text})
+		}
+	}
+
+	return cues, nil
+}
+
+// parseVTTTime converts "HH:MM:SS.mmm" to seconds.
+func parseVTTTime(s string) float64 {
+	parts := strings.Split(s, ":")
+	if len(parts) != 3 {
+		return 0
+	}
+	h, _ := strconv.ParseFloat(parts[0], 64)
+	m, _ := strconv.ParseFloat(parts[1], 64)
+	sec, _ := strconv.ParseFloat(parts[2], 64)
+	return h*3600 + m*60 + sec
+}
+
+// isNumericCueID returns true if the line is just a number (VTT cue identifier).
+func isNumericCueID(s string) bool {
+	_, err := strconv.Atoi(strings.TrimSpace(s))
+	return err == nil
+}
+
 // ── Cue Deduplication ────────────────────────────────────────────────────────
 
 // DeduplicateCues removes duplicate and rolling-caption overlaps.
@@ -155,10 +270,16 @@ func DeduplicateCues(cues []Cue) []Cue {
 				// Current extends previous — trim the overlap and append new portion
 				newPart := strings.TrimSpace(text[len(prev):])
 				if newPart != "" {
-					c.Text = newPart
+					text = newPart
 				} else {
 					continue
 				}
+			}
+
+			// YouTube VTT freeze-frame: current text is the tail end of the previous cue
+			// (repeats the bottom line of a two-line rolling caption)
+			if strings.HasSuffix(prev, text) && text != prev {
+				continue
 			}
 		}
 
@@ -323,40 +444,58 @@ func ExportCuesJSON(path string, cues []Cue) error {
 
 // ── Full Pipeline ────────────────────────────────────────────────────────────
 
-// ProcessTTML runs the full pipeline: parse → dedup → merge → generate markdown + cues.json
-func ProcessTTML(ttmlPath string, meta *VideoMetadata, outputDir string) (string, error) {
-	// 1. Parse TTML
-	rawCues, err := ParseTTMLFile(ttmlPath)
-	if err != nil {
-		return "", fmt.Errorf("parsing TTML: %w", err)
-	}
-	if len(rawCues) == 0 {
-		return "", fmt.Errorf("no cues found in TTML file")
+// ProcessSubtitles runs the full pipeline for any supported subtitle format:
+// detect format → parse → dedup → merge → generate markdown + cues.json
+func ProcessSubtitles(subPath string, meta *VideoMetadata, outputDir string) (string, error) {
+	ext := strings.ToLower(filepath.Ext(subPath))
+
+	var rawCues []Cue
+	var err error
+
+	switch ext {
+	case ".ttml":
+		rawCues, err = ParseTTMLFile(subPath)
+	case ".vtt":
+		rawCues, err = ParseVTTFile(subPath)
+	default:
+		return "", fmt.Errorf("unsupported subtitle format: %s (expected .ttml or .vtt)", ext)
 	}
 
-	// 2. Deduplicate
+	if err != nil {
+		return "", fmt.Errorf("parsing subtitles (%s): %w", ext, err)
+	}
+	if len(rawCues) == 0 {
+		return "", fmt.Errorf("no cues found in subtitle file")
+	}
+
+	// Deduplicate
 	cues := DeduplicateCues(rawCues)
 	if len(cues) == 0 {
 		return "", fmt.Errorf("all cues were duplicates")
 	}
 
-	// 3. Export cues.json (raw deduped cues)
-	cuesPath := fmt.Sprintf("%s/cues.json", outputDir)
+	// Export cues.json (raw deduped cues)
+	cuesPath := filepath.Join(outputDir, "cues.json")
 	if err := ExportCuesJSON(cuesPath, cues); err != nil {
 		return "", fmt.Errorf("exporting cues.json: %w", err)
 	}
 
-	// 4. Merge into paragraphs
+	// Merge into paragraphs
 	paragraphs := MergeCuesIntoParagraphs(cues)
 
-	// 5. Generate markdown
+	// Generate markdown
 	md := GenerateTranscriptMarkdown(meta, paragraphs)
 
-	// 6. Write transcript.md
-	mdPath := fmt.Sprintf("%s/transcript.md", outputDir)
+	// Write transcript.md
+	mdPath := filepath.Join(outputDir, "transcript.md")
 	if err := os.WriteFile(mdPath, []byte(md), 0644); err != nil {
 		return "", fmt.Errorf("writing transcript.md: %w", err)
 	}
 
 	return md, nil
+}
+
+// ProcessTTML runs the full pipeline for TTML files (backward compatibility wrapper).
+func ProcessTTML(ttmlPath string, meta *VideoMetadata, outputDir string) (string, error) {
+	return ProcessSubtitles(ttmlPath, meta, outputDir)
 }
