@@ -172,9 +172,13 @@ See [01_reflections.md](../docs/01_reflections.md) for the full analysis of how 
 
 4. **Tool complementarity:**
    - gospel-mcp / gospel-vec → **find** what to study
-   - `read_file` → **study** the actual content
+   - `read_file` → **study** the actual content (WITH footnotes)
    - webster-mcp → **understand** the historical language
    - `file_search` / `list_dir` → **verify** files exist before linking
+
+5. **Pre-flight scripture verification:** Before writing any evaluation or study document, create a mental checklist of every scripture you plan to cite. For each one, confirm it was read via `read_file` from the actual `gospel-library/` markdown file (which includes footnotes and cross-references). MCP tools like `gospel_get` return clean text WITHOUT footnotes — this is useful for quick reference but insufficient for deep study. If any scripture was only read via an MCP tool, re-read it from source before writing. **The footnotes are not optional.**
+
+6. **Token budget planning:** For sessions expected to produce 5,000+ words of output, plan two phases: (a) research phase — gather all sources, `read_file` all scriptures, verify all quotes; (b) writing phase — synthesize from verified material. If the token budget will likely be exceeded, complete the research phase first and create a structured outline with file path references before any summarization occurs. This ensures the writing phase has anchored references even if earlier context is compressed.
 
 ### Collaboration Principles
 
