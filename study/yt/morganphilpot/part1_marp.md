@@ -538,6 +538,13 @@ Original slide 148
 *~42:00–1:24:00 — Almost entirely verbal-only*
 *Replaces the slide-based Ezekiel 17 material*
 
+<!--
+Evaluation: See 05a_revelation_13.md for full assessment of 18 key claims.
+Summary: 6 In Line, 3 Nuanced, 5 Out of Line, 3 Missed the Mark.
+Key finding: Beast ≠ devil distinction is textually sound, but 42-month math is wrong
+and Daniel 2 toes→presidents is eisegesis.
+-->
+
 ---
 
 ## The Beast Rises from the Sea

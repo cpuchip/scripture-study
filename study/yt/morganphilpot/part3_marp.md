@@ -59,6 +59,7 @@ The US government owns all corporate property by legal structure. Nationalizatio
 <!--
 Verbal-only — no original slide
 ~0:05–12:00
+Evaluation: See verbal_only_evaluation.md #12 (Corporate fiction — real legal history, overextended logic).
 -->
 
 ---
@@ -148,6 +149,7 @@ Verbal-only — no original slide
 <!--
 Verbal-only — no original slide
 ~25:00–30:00
+Evaluation: See verbal_only_evaluation.md #19-20 (Out of Line — contradicts D&C 49:7).
 -->
 
 ---
@@ -167,6 +169,7 @@ The destruction of 3 Nephi 8 includes both political AND natural components.
 <!--
 Verbal-only — no original slide
 ~33:00
+Evaluation: See verbal_only_evaluation.md #1 (In Line — Webster 1828 confirmed).
 -->
 
 ---
@@ -201,6 +204,7 @@ These are speculative possibilities — the text describes geographic upheaval, 
 <!--
 Verbal-only — no original slide
 ~35:00. Most speculative content in the entire presentation.
+Evaluation: See verbal_only_evaluation.md #21 (Out of Line — speculative extrapolation).
 -->
 
 ---
@@ -366,6 +370,7 @@ The Dead Sea is called the "Salt Sea." Zarahemla = "city of salt."
 <!--
 Verbal-only — no original slide (Q&A)
 ~57:54. Creative Hebrew word study — parallel to the slide-only Kokaubeam work, but this one is verbal.
+Evaluation: See verbal_only_evaluation.md #2 (Nuanced — compelling etymology, unverifiable application).
 -->
 
 ---
