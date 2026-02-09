@@ -46,11 +46,12 @@ A 9-phase AI-assisted evaluation of Morgan Philpot's 3-hour presentation "2025 C
 | 2 | [02_signs_and_warnings.md](02_signs_and_warnings.md) | Signs of the Times & Prophetic Warnings | **Slide-dependent** — Only "likening" method and Nelson leadership transition are verbal. 6 of 8 Key Claims (1 Nephi 14, D&C 88, JST Matthew, Woman at Well ~2034) exist only on slides |
 | 3 | [03_apocalyptic_vision.md](03_apocalyptic_vision.md) | Grand Apocalyptic Vision & the Return | **Slide-dependent** — None of the 10 Key Claims are verbally presented as standalone discussion. Building blocks (Daniel 2, D&C 98/101, founding fathers) appear woven into Phases 4–5 verbally |
 | 4 | [04_revelation_12.md](04_revelation_12.md) | Revelation 12 — Woman, Child & Dragon | **Best** — All 10 Key Claims verbally developed AND evaluated. JST Rev 12 as Restoration blueprint, Council of Fifty = man child, jubilee cycle 1847+175=2022. 3 minor verbal-only items |
-| 5 | [05_ezekiels_eagle.md](05_ezekiels_eagle.md) | Ezekiel's Eagle & the Rebellious House | **Worst divergence** — Slides cover Ezekiel 17 (Hebrew word studies, Commerce IL, rebellious house); verbal delivery covers Revelation 13 beast identification of the United States. 18 unevaluated verbal items |
-| 6 | [06_esdras_and_appointed_times.md](06_esdras_and_appointed_times.md) | Esdras, Daniel & Appointed Times | **Good** — Most claims verbal AND evaluated. 2 Esdras eagle = US politics, Hebrew mō·w·'ă·ḏîm, Palmyra Temple April 6 2000 astronomical claims, Howard W. Hunter = Samuel the Lamanite. 7 verbal-only items |
-| 7 | [07_type_and_sign.md](07_type_and_sign.md) | 9/11, Pharmakeia & Year-by-Year Parallels | **Good core** — Year-by-year BoM→modern timeline, 9/11 = Rev 18, Lachoneus/Trump all captured. Pharmakeia word study (4 claims) is entirely slide-only. 7 verbal-only items |
+| 5 | [05_ezekiels_eagle.md](05_ezekiels_eagle.md) | Ezekiel's Eagle & the Rebellious House | **Worst divergence** — Slides cover Ezekiel 17 (Hebrew word studies, Commerce IL, rebellious house); verbal delivery covers Revelation 13 beast identification of the United States. Verbal content now evaluated in 05a |
+| 5a | [05a_revelation_13.md](05a_revelation_13.md) | Revelation 13 — The Beast Kingdom | **Verbal-only evaluation** — Covers the 18 unevaluated items from Phase 5's verbal delivery: US as beast of Rev 13, seven heads = seven dispensations, Civil War = deadly wound, 42-months calculation, fire from heaven = nuclear weapons, mark = financial system. Deep-read enriched with footnote cross-references |
+| 6 | [06_esdras_and_appointed_times.md](06_esdras_and_appointed_times.md) | Esdras, Daniel & Appointed Times | **Good** — Most claims verbal AND evaluated. 2 Esdras eagle = US politics, Hebrew mō·w·'ă·ḏîm, Palmyra Temple April 6 2000 astronomical claims, Howard W. Hunter = Samuel the Lamanite. 7 verbal-only items → [cross-referenced](verbal_only_evaluation.md) |
+| 7 | [07_type_and_sign.md](07_type_and_sign.md) | 9/11, Pharmakeia & Year-by-Year Parallels | **Good core** — Year-by-year BoM→modern timeline, 9/11 = Rev 18, Lachoneus/Trump all captured. Pharmakeia word study (4 claims) is entirely slide-only. 7 verbal-only items → [cross-referenced](verbal_only_evaluation.md) |
 | 8 | [08_harbinger_and_hinge.md](08_harbinger_and_hinge.md) | Isaiah's Harbinger, Hinge Point & Types of Judah | **Most slide-dependent** — All 4 major arguments (Palmyra/Jericho etymology, half-hour-of-silence calculation, D&C 112/COVID, Judah/governors mapping) have zero verbal presence. Excellent as slide analysis |
-| 9 | [09_culmination.md](09_culmination.md) | Two Great Lights & Culmination | **Second-best** — 10/15 claims verbal AND evaluated. Speculative 2025–2033 timeline, three harvests, Wedding at Cana. Title section (Kokaubeam word study) is entirely slide-only; Zarahemla/Salt Lake etymology is verbal-only |
+| 9 | [09_culmination.md](09_culmination.md) | Two Great Lights & Culmination | **Second-best** — 10/15 claims verbal AND evaluated. Speculative 2025–2033 timeline, three harvests, Wedding at Cana. Title section (Kokaubeam word study) is entirely slide-only; Zarahemla/Salt Lake etymology is verbal-only. 10 verbal-only items → [cross-referenced](verbal_only_evaluation.md) |
 
 ---
 
@@ -77,7 +78,7 @@ The most significant finding of the transcript review: **Philpot's slides repres
 This creates three distinct presentational layers:
 1. **Slide-only** — shown but never spoken (Kokaubeam, Ezekiel 17, pharmakeia, Palmyra/Jericho, half-hour calculation, Judah/governors, and most of Phases 2–3)
 2. **Slide-and-verbal** — shown AND discussed (harvest framework, Revelation 12, 9/11, year-by-year timeline, 2025–2033 projections)
-3. **Verbal-only** — spoken but never on slides (~70 items across all phases, including some of his most compelling arguments: temple sealing typology, Zarahemla etymology, corporate fiction argument, Oaks' first talk analysis)
+3. **Verbal-only** — spoken but never on slides (~70 items across all phases, including some of his most compelling arguments: temple sealing typology, Zarahemla etymology, corporate fiction argument, Oaks' first talk analysis). **33 of these are now evaluated** in [verbal_only_evaluation.md](verbal_only_evaluation.md), with cross-references added to the phase evaluations where each item was first identified.
 
 ---
 
@@ -97,7 +98,7 @@ Each evaluation uses a 5-step framework:
 - **Step 4: Overall Assessment** — Synthesis with cautions and recommendations
 - **Step 5: Become** — Personal application: truths, warnings, commitments
 
-The transcript review (10 passes) then compared each evaluation against the actual verbal delivery, documenting slide-vs-verbal gaps and ~70 verbal-only items.
+The transcript review (10 passes) then compared each evaluation against the actual verbal delivery, documenting slide-vs-verbal gaps and ~70 verbal-only items. A subsequent [verbal-only evaluation](verbal_only_evaluation.md) assessed 33 of these items with deep-read scripture verification and footnote cross-references.
 
 ---
 
