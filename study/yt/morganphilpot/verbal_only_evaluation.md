@@ -70,6 +70,8 @@ These items demonstrate Philpot's genuine scriptural literacy, historical resear
 
 **Assessment: Nuanced.** 3 Nephi 8:5's precise dating is real and unusual — Mormon is very specific about "first month, fourth day." The creation week connection (day 4 = luminaries) is an interesting typological observation. The Revelation 13 beast = fifth-day sea creatures is creative but layered: it requires mapping three different texts (3 Nephi, Genesis, Revelation) through a typological grid that none of the texts explicitly establishes. Mormon may simply be giving a precise historical date. The observation deserves pondering but shouldn't be taught as exegesis.
 
+**Deep-reading note:** Genesis 1:14's footnote 14b links "signs" to [D&C 29:14](../../gospel-library/eng/scriptures/dc-testament/dc/29.md) ("the sun shall be darkened, and the moon shall be turned into blood") and TG Signs — the editors themselves connect the fourth-day luminaries to eschatological signs. This lends the typological observation some footnote support, though the millennium-mapping remains speculative.
+
 **Rating:** ⚡ Nuanced — interesting typology, triple-layered interpretation
 
 ---
@@ -89,6 +91,8 @@ These items demonstrate Philpot's genuine scriptural literacy, historical resear
 **Claim:** [D&C 13](../../gospel-library/eng/scriptures/dc-testament/dc/13.md) (Aaronic Priesthood) and [D&C 128:24](../../gospel-library/eng/scriptures/dc-testament/dc/128.md) (offering of the sons of Levi) relate to temple work for the dead. President Hinckley in 2001 indicated a milestone in this work was reached. Philpot asks: "Why were you doing temple work after 2001 if it's already done?"
 
 **Assessment: Nuanced.** D&C 13 and D&C 128 are correctly cited. Hinckley *did* make statements in the early 2000s about expanded temple work. However, Philpot's interpretation — that temple work was "done" by 2001 and everything after is about personal ordinances rather than vicarious work — contradicts the ongoing emphasis by every prophet since (including the recent massive temple-building program under President Nelson). The observation about the robe change and ceremony shortening is interesting but applies sacred temple content to a speculative framework in a way that risks treating the temple as a decode-key rather than a covenant-making space.
+
+**Deep-reading note:** The D&C 13 → D&C 128:24 connection is confirmed by the footnotes: D&C 13:1g cross-references D&C 84:31, 124:39, and 128:24 — the "sons of Levi" offering. However, D&C 128 is entirely about baptism for the dead and sealing ordinances. Verse 15 states: "their salvation is necessary and essential to our salvation... neither can we without our dead be made perfect." Temple work is inherently ongoing by its own logic. The claim that it was "done" by 2001 contradicts the section's plain meaning.
 
 **Rating:** ⚡ Nuanced — real scriptures, overreaching conclusion
 
@@ -114,6 +118,8 @@ These items contain genuine insights wrapped in speculative applications.
 
 **Assessment: Nuanced.** The Michael = Adam identification is canonical ([D&C 27:11](../../gospel-library/eng/scriptures/dc-testament/dc/27.md), [D&C 107:54](../../gospel-library/eng/scriptures/dc-testament/dc/107.md), [D&C 128:21](../../gospel-library/eng/scriptures/dc-testament/dc/128.md)). The idea that "Michael" is the premortal name and "Adam" is the mortal name has some theological basis. But the specific claim — "In heaven we thought of ourselves as Michael" — is speculative and not taught in any authoritative source. It's a creative extension of the Michael/Adam doctrine, not a departure from it.
 
+**Deep-reading note:** The canonical chain is extensively cross-referenced. [D&C 107:53–54](../../gospel-library/eng/scriptures/dc-testament/dc/107.md): Adam gathers his posterity to Adam-ondi-Ahman; "they rose up and blessed Adam, and called him Michael, the prince, the archangel." fn 53b→[Daniel 7:13–14](../../gospel-library/eng/scriptures/ot/dan/7.md) (Ancient of Days vision), [D&C 78:15–20](../../gospel-library/eng/scriptures/dc-testament/dc/78.md), [D&C 116](../../gospel-library/eng/scriptures/dc-testament/dc/116.md). fn 54a→[D&C 128:21](../../gospel-library/eng/scriptures/dc-testament/dc/128.md), TG Adam. [D&C 27:11](../../gospel-library/eng/scriptures/dc-testament/dc/27.md) fn 11b→[Daniel 7:22](../../gospel-library/eng/scriptures/ot/dan/7.md). The Michael = Adam = Ancient of Days identification is canonical bedrock. Philpot's "In heaven we thought of ourselves as Michael" extends beyond what these footnotes support.
+
 **Rating:** ⚡ Nuanced — canonical basis, speculative extension
 
 ---
@@ -123,6 +129,8 @@ These items contain genuine insights wrapped in speculative applications.
 **Claim:** "Time, times, and half a time" ([Revelation 12:14](../../gospel-library/eng/scriptures/nt/rev/12.md)) = 1 jubilee (50 years) + 2 jubilees (100 years) + half a jubilee (25 years) = 175 years. From 1847 (Saints enter Utah) + 175 = 2022 — "the protection should come off."
 
 **Assessment: Out of Line.** Already evaluated in Phase 4 as "the jubilee math." [Revelation 12:6](../../gospel-library/eng/scriptures/nt/rev/12.md) defines the period as "a thousand two hundred and threescore days," and [Revelation 12:14](../../gospel-library/eng/scriptures/nt/rev/12.md) equates "time, times, and half a time" to this same period. The text interprets itself: 1,260 days. Redefining "time" as "jubilee" (50 years) has no scriptural basis and contradicts John's own cross-reference within the same chapter. The math is internally consistent (50 + 100 + 25 = 175) but the premise — jubilee = time — is fabricated.
+
+**Deep-reading note:** The footnotes confirm the self-interpreting nature. Rev 12:6 fn 6a→[Amos 8:11](../../gospel-library/eng/scriptures/ot/amos/8.md) (famine of hearing the word), [D&C 33:5](../../gospel-library/eng/scriptures/dc-testament/dc/33.md), [D&C 86:3](../../gospel-library/eng/scriptures/dc-testament/dc/86.md) — the woman in the wilderness = apostasy. Rev 12:13 fn 13a→[Daniel 7:25](../../gospel-library/eng/scriptures/ot/dan/7.md), [Daniel 12:7](../../gospel-library/eng/scriptures/ot/dan/12.md) — Daniel uses the identical "time, times, and half a time" phrasing, universally read as 3.5 years (= 1,260 days). No footnote in Revelation 12 redefines "time" as "jubilee." The JST (fn 1a→JST Rev 12:1–17) rearranges the chapter's sequence but does not alter the time period. The editorial apparatus actively confirms the standard reading.
 
 **Rating:** ❌ Out of Line — self-interpreting text overridden
 
@@ -152,7 +160,15 @@ These items contain genuine insights wrapped in speculative applications.
 
 **Claim:** Lachoneus in [3 Nephi 3–4](../../gospel-library/eng/scriptures/bofm/3-ne/3.md) is a type of Trump: nationalist isolationist, gathers people to center of the land, defeats Gadianton siege after 5 years, builds highways, 4-year election cycles, DHS buildup = internal army.
 
-**Assessment: Mixed.** The Lachoneus narrative is real scripture — he *is* a nationalist leader who gathers the people, fortifies borders, and defeats an external threat through preparation and faith. The parallel to any strong-borders political leader is unavoidable. However: (a) the verse-by-verse mapping (highways = AI superhighway, siege = COVID, 5-year gap = 2020–2025) is the same unfalsifiable typology that characterizes the weaker parts of the presentation; (b) 3 Nephi 4:10 shows Lachoneus's people praying and repenting — the spiritual dimension is central to the narrative and mostly absent from the modern parallel; (c) the typology works because it's vague enough — any political leader who consolidates power could be "Lachoneus."
+**Assessment: Mixed.** The Lachoneus narrative is real scripture — he *is* a nationalist leader who gathers the people, fortifies borders, and defeats an external threat through preparation and faith. The parallel to any strong-borders political leader is unavoidable. However: (a) the verse-by-verse mapping (highways = AI superhighway, siege = COVID, 5-year gap = 2020–2025) is the same unfalsifiable typology that characterizes the weaker parts of the presentation; (b) the spiritual dimension is the *core* of the text and is mostly absent from the modern parallel; (c) the typology works because it's vague enough — any political leader who consolidates power could be "Lachoneus."
+
+**Deep-reading note:** The footnotes in [3 Nephi 3](../../gospel-library/eng/scriptures/bofm/3-ne/3.md) reveal how central the spiritual framework is to this narrative — elements Philpot's typology largely ignores:
+- **v.15:** "Except ye repent of all your iniquities, and cry unto the Lord, ye will in nowise be delivered" — fn 15a→[Alma 44:4](../../gospel-library/eng/scriptures/bofm/alma/44.md). Lachoneus prescribes *repentance*, not military strategy alone.
+- **v.19:** Chief captains were chosen as those who had "the spirit of revelation and also prophecy" — fn 19a→TG Revelation. The military leaders were *prophets*.
+- **v.21:** Gidgiddoni says "The Lord forbid" to a preemptive attack — fn 21a→[Alma 43:46](../../gospel-library/eng/scriptures/bofm/alma/43.md), fn 21b→[Alma 44:4](../../gospel-library/eng/scriptures/bofm/alma/44.md). Offensive warfare is *explicitly forbidden*.
+- **[3 Nephi 4:8–10](../../gospel-library/eng/scriptures/bofm/3-ne/4.md):** Before battle, the Nephite army "had all fallen to the earth, and did lift their cries to the Lord their God." The robbers thought they were cowering; instead "they did fear their God and did supplicate him for protection." Victory through prayer, not bravado.
+
+Any typology that strips out repentance, prophetic military leadership, defensive-only posture, and communal prayer has removed the narrative's load-bearing walls.
 
 **Rating:** ⚡ Nuanced — real scripture, forced mapping
 
@@ -162,7 +178,7 @@ These items contain genuine insights wrapped in speculative applications.
 
 **Claim:** President Oaks' first conference talk as president had two notable features: no temple announcements and a strong doubling-down on the Family Proclamation. The John Taylor letter on polygamy was released, William Clayton journals (with polygamy content) are upcoming, and D&C 132 appears in the children's Come Follow Me curriculum.
 
-**Assessment: Nuanced.** Oaks' October 2025 conference talk *can* be verified against local files. The observation about temple announcements (or their absence) is an empirical claim. The Family Proclamation emphasis is a matter of public record. The John Taylor/William Clayton document releases are verifiable events. Where Philpot overextends is in reading these as coordinated signals of an impending doctrinal shift rather than as administrative decisions with their own contexts. The observation is interesting; the prophetic-signal interpretation is speculative.
+**Assessment: Nuanced.** Oaks' October 2025 conference talk was not found in our local gospel-library files (October 2025 conference has not been downloaded). The observation about temple announcements (or their absence) is an empirical claim. The Family Proclamation emphasis is a matter of public record. The John Taylor/William Clayton document releases are verifiable events. Where Philpot overextends is in reading these as coordinated signals of an impending doctrinal shift rather than as administrative decisions with their own contexts. The observation is interesting; the prophetic-signal interpretation is speculative.
 
 **Rating:** ⚡ Nuanced — observable facts, speculative interpretation
 
@@ -172,7 +188,7 @@ These items contain genuine insights wrapped in speculative applications.
 
 **Claim:** Abinadi confronted King Noah's priests about violating the Ten Commandments ([Mosiah 12–13](../../gospel-library/eng/scriptures/bofm/mosiah/12.md)). Philpot applies this to modern public education: schools teach children to break commandments — coveting (career ambition), false gods (institutional loyalty), dishonoring parents (independence from family authority).
 
-**Assessment: Mixed.** The Abinadi reference is accurate — Mosiah 12–13 is precisely this confrontation. The Ten Commandments are real scripture. But the application is a stretch: public education teaching math, science, and reading is not equivalent to the priests of Noah teaching "the praises of men" ([Mosiah 11:6](../../gospel-library/eng/scriptures/bofm/mosiah/11.md)). Philpot selectively reads career preparation as "coveting" and educational independence as "dishonoring parents." These are legitimate cultural critiques, but framing them as ten-commandment violations through the Abinadi lens inflates cultural concerns into scriptural sins.
+**Assessment: Mixed.** The Abinadi reference is accurate — Mosiah 12–13 is precisely this confrontation. The Ten Commandments are real scripture. But the application is a category error: [Mosiah 11:5](../../gospel-library/eng/scriptures/bofm/mosiah/11.md) says Noah "put down all the priests that had been consecrated by his father, and consecrated new ones in their stead" (fn 5a→[Mosiah 12:25](../../gospel-library/eng/scriptures/bofm/mosiah/12.md)). Noah's priests were *illegitimate political appointees* who replaced consecrated priesthood holders. They were "supported in their laziness, and in their idolatry, and in their whoredoms, by the taxes" (v.6) and spoke "flattering words" (v.7). The problem Abinadi confronted was *religious hypocrisy by corrupt clergy*, not secular education. Comparing public school teachers to Noah's priests maps a religious-corruption narrative onto a secular-education institution — the categories don't align. Philpot selectively reads career preparation as "coveting" and educational independence as "dishonoring parents," inflating cultural critiques into Ten Commandment violations through a lens the text doesn't support.
 
 **Rating:** ⚡ Nuanced (Abinadi reference) / ❌ Out of Line (application)
 
@@ -195,6 +211,8 @@ These items contain genuine insights wrapped in speculative applications.
 **Claim:** LDS universities are "temples of Baal" where Saints "send their kids to pass through the fire" for economic gain, like ancient Israelites sacrificing to Baal.
 
 **Assessment: Out of Line.** BYU was founded by Brigham Young and is operated by the Church under its current prophet. Calling Church-owned institutions "temples of Baal" is not a critique of education philosophy — it's an accusation that the prophet is directing members toward idol worship. This contradicts [D&C 21:4–6](../../gospel-library/eng/scriptures/dc-testament/dc/21.md) (sustaining the prophet) and [D&C 1:38](../../gospel-library/eng/scriptures/dc-testament/dc/1.md) ("whether by mine own voice or by the voice of my servants, it is the same"). One can critique education culture without claiming the Lord's own Church runs temples to false gods.
+
+**Deep-reading note:** The footnotes on these verses are among the most heavily annotated in the D&C. D&C 21:5 — "his word ye shall receive, as if from mine own mouth" — fn 5a→[D&C 43:2–4](../../gospel-library/eng/scriptures/dc-testament/dc/43.md), which states the Lord will give commandments to the Church *only* through the appointed prophet. D&C 21:6 — fn 6a→TG Apostasy of Individuals — following the prophet protects against apostasy. D&C 1:38 carries *six* footnotes linking to TG Scriptures Value of, TG Prophets Mission of, TG Priesthood Authority, TG God Manifestations of, and TG God Will of. The editors flagged this verse as a doctrinal keystone. Calling what the prophet oversees "temples of Baal" directly contradicts these heavily cross-referenced foundations.
 
 **Rating:** ❌ Out of Line — undermines prophetic authority
 
@@ -224,7 +242,7 @@ These items contain genuine insights wrapped in speculative applications.
 
 **Claim:** "I got to be prepared by 2029." Travel restrictions and secession in 2030 mean preparation must be complete before 2028 election.
 
-**Assessment: Out of Line.** Same issue as #19. Setting preparedness *deadlines* based on a prophetic timeline converts "be ye also ready" ([Matthew 24:44](../../gospel-library/eng/scriptures/nt/matt/24.md)) into "be ready by this date." The Lord's counsel is always-readiness, not deadline-readiness. Additionally, predicting secession crises and interstate commerce collapse for specific years is speculation presented as near-certainty.
+**Assessment: Out of Line.** Same issue as #19. Setting preparedness *deadlines* based on a prophetic timeline converts "be ye also ready" ([Matthew 24:44](../../gospel-library/eng/scriptures/nt/matt/24.md)) into "be ready by this date." The Greek footnote on Matthew 24:44 reinforces the point: fn 44c notes "as ye think not" = Greek "when you do not expect Him" — Jesus comes precisely when human timeline calculations fail. The Lord's counsel is always-readiness, not deadline-readiness. Additionally, predicting secession crises and interstate commerce collapse for specific years is speculation presented as near-certainty.
 
 **Rating:** ❌ Out of Line — date-setting, speculative prediction
 
@@ -265,6 +283,8 @@ These items contain genuine insights wrapped in speculative applications.
 **Claim:** The corporate structure of the Church "has to go away" in the millennium. "Do you really think they're going to reinitiate the corporation of the first presidency in the millennium?" Cites [Revelation 21:22](../../gospel-library/eng/scriptures/nt/rev/21.md): "I saw no temple therein: for the Lord God Almighty and the Lamb are the temple of it."
 
 **Assessment: Nuanced.** Revelation 21:22 does say there will be no temple in the New Jerusalem because "the Lord God Almighty and the Lamb are the temple of it." That's canonized scripture. The question about corporate structures in the millennium is legitimate theology — nobody teaches that 501(c)(3) status is eternal. But the implication — that pointing out the Church's corporate form undermines its current authority — is the same spirit as the BYU/Baal critique: it treats institutional structure as evidence of spiritual compromise rather than as the administrative apparatus of a living church led by revelation.
+
+**Deep-reading note:** Revelation 21's chapter header reads: "The earth attains its celestial glory." fn 1c→TG Earth Destiny of; fn 1d→TG World End of. This is the *post*-millennial state — after the earth receives its celestial glory, after the final judgment. Philpot applies Rev 21:22 to the millennium itself, but the text describes something beyond even the millennium: the eternal state. Compressing the entire eschatological timeline to argue for near-term corporate dissolution reads an end-state reality as a present-tense critique.
 
 **Rating:** ⚡ Nuanced — legitimate end-state question, problematic present-tense implication
 
@@ -326,7 +346,7 @@ These items contain genuine insights wrapped in speculative applications.
 
 **Claim:** The people gathered at Bountiful ([3 Nephi 11:1](../../gospel-library/eng/scriptures/bofm/3-ne/11.md)) may have been there for "conference or their Passover feast or their Sukkot."
 
-**Assessment: Nuanced.** The Book of Mormon does reference feasts—Mosiah 2 describes a feast gathering at the temple. Ancient Israelite practice included mandatory pilgrimage feasts. The idea that the Bountiful gathering had a feast-day context is speculative but culturally plausible. It adds color without overriding the text.
+**Assessment: Nuanced.** The Book of Mormon does reference feasts — Mosiah 2 describes a feast gathering at the temple. Ancient Israelite practice included mandatory pilgrimage feasts. [3 Nephi 11:1](../../gospel-library/eng/scriptures/bofm/3-ne/11.md) describes the multitude "gathered together... round about the temple which was in the land Bountiful" — the temple-gathering pattern is consistent with feast practice. The idea that the Bountiful gathering had a feast-day context is speculative but culturally plausible. It adds color without overriding the text.
 
 **Rating:** ⚡ Nuanced — plausible speculation, low stakes
 
@@ -411,6 +431,37 @@ These items contain genuine insights wrapped in speculative applications.
 
 ---
 
+## Deep Reading Checklist
+
+Sources read from `gospel-library/` with footnotes during remediation pass:
+
+| Source | Items | Key Footnote Findings |
+|--------|-------|------------------------------------------------------|
+| [3 Nephi 2](../../gospel-library/eng/scriptures/bofm/3-ne/2.md) | #3 | fn 8a→3 Ne 5:7, 8:2 — standard cross-refs |
+| [3 Nephi 3](../../gospel-library/eng/scriptures/bofm/3-ne/3.md) | #13 | fn 15a→Alma 44:4 (repentance); fn 19a→TG Revelation (prophetic captains); fn 21a-b→Alma 43–44 (defensive only) |
+| [3 Nephi 4](../../gospel-library/eng/scriptures/bofm/3-ne/4.md) | #13 | v.8–10: prayer before battle, fear of God not enemy |
+| [3 Nephi 11](../../gospel-library/eng/scriptures/bofm/3-ne/11.md) | #30 | Temple gathering confirmed |
+| [Genesis 1](../../gospel-library/eng/scriptures/ot/gen/1.md) | #5 | fn 14b→D&C 29:14, TG Signs (luminaries = eschatological signs) |
+| [Revelation 12](../../gospel-library/eng/scriptures/nt/rev/12.md) | #10, #31 | fn 6a→Amos 8:11 (apostasy); fn 13a→Dan 7:25, 12:7 (identical time formula); fn 1a→JST Rev 12:1–17 |
+| [Revelation 21](../../gospel-library/eng/scriptures/nt/rev/21.md) | #24 | Chapter header: post-celestial glory; fn 1c→TG Earth Destiny of |
+| [D&C 1](../../gospel-library/eng/scriptures/dc-testament/dc/1.md) | #17 | v.38: six footnotes — TG Scriptures, Prophets, Priesthood Authority |
+| [D&C 13](../../gospel-library/eng/scriptures/dc-testament/dc/13.md) | #7 | fn 1g→D&C 84:31, 124:39, 128:24 (sons of Levi link confirmed) |
+| [D&C 21](../../gospel-library/eng/scriptures/dc-testament/dc/21.md) | #17 | fn 5a→D&C 43:2–4 (prophet only); fn 6a→TG Apostasy of Individuals |
+| [D&C 27](../../gospel-library/eng/scriptures/dc-testament/dc/27.md) | #9 | fn 11b→Dan 7:22 (Ancient of Days) |
+| [D&C 107](../../gospel-library/eng/scriptures/dc-testament/dc/107.md) | #9 | fn 53b→Dan 7:13–14, D&C 78:15–20, 116; fn 54a→D&C 128:21 |
+| [D&C 128](../../gospel-library/eng/scriptures/dc-testament/dc/128.md) | #7 | fn 24f→D&C 13:1, 84:31 (reciprocal link); v.15: "neither can we without our dead" |
+| [Matthew 24](../../gospel-library/eng/scriptures/nt/matt/24.md) | #20 | fn 44c: GR "when you do not expect Him" |
+| [Mosiah 11](../../gospel-library/eng/scriptures/bofm/mosiah/11.md) | #15 | fn 5a→Mosiah 12:25 (illegitimate priests replaced consecrated ones) |
+| [3 Nephi 8](../../gospel-library/eng/scriptures/bofm/3-ne/8.md) | #1, #5, #21 | Previously read in prior sessions |
+| [3 Nephi 9](../../gospel-library/eng/scriptures/bofm/3-ne/9.md) | #2 | Previously read in prior sessions |
+| [D&C 49](../../gospel-library/eng/scriptures/dc-testament/dc/49.md) | #19 | Previously read in prior sessions |
+| [D&C 87](../../gospel-library/eng/scriptures/dc-testament/dc/87.md) | #11 | Previously read in prior sessions |
+| [D&C 98](../../gospel-library/eng/scriptures/dc-testament/dc/98.md) | #11 | Previously read in prior sessions |
+
+**Not available locally:** Oaks' October 2025 conference talk (item #14) — October 2025 conference has not been downloaded to gospel-library.
+
+---
+
 ## Overall Assessment
 
 The verbal-only layer of Philpot's presentation is a *parallel presentation within the presentation* — audience-responsive, story-driven, and frequently more engaging than the slides. Its quality follows the same pattern identified across the entire series: **Philpot's textual observation is usually sound; his application consistently overreaches.**
@@ -424,4 +475,6 @@ The **persistent standard** remains: [D&C 49:7](../../gospel-library/eng/scriptu
 ---
 
 *Evaluation written: 2025-07-26*
+*Deep-reading remediation: 2025-07-27*
 *Based on: 3 transcripts, 10-pass review findings, Phase 1–9 evaluations*
+*Footnote sources: 20 chapters read from gospel-library with full footnote apparatus*
