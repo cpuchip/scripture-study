@@ -2,7 +2,7 @@
 
 A 9-phase AI-assisted evaluation of Morgan Philpot's 3-hour presentation "2025 Chandler Presentation," delivered on the [Signs of the Times](https://www.youtube.com/@signs-of-the-times) YouTube channel. Followed by a systematic 10-pass transcript review comparing slides against verbal delivery.
 
-> *"Prove all things; hold fast that which is good."* — [1 Thessalonians 5:21](../../../gospel-library/eng/scriptures/nt/1-thes/5.md)
+> *"Prove all things; hold fast that which is good."* — [1 Thessalonians 5:21](https://www.churchofjesuschrist.org/study/scriptures/nt/1-thes/5?lang=eng&id=p21#p21)
 
 ---
 
