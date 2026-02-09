@@ -15,20 +15,20 @@
 |--------|----------|
 | Slides 187–228 | [slides.md](../../../yt/morganphilpot/slides.md) lines 2306–2814 |
 | Transcript Part II | [transcript.md](../../../yt/signs-of-the-times/89oEfk37E30/transcript.md) ~0:00–49:00 |
-| D&C 91 | [D&C 91](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/91?lang=eng) |
-| BD Apocrypha | [BD Apocrypha](https://www.churchofjesuschrist.org/study/scriptures/bd/apocrypha?lang=eng) |
-| JSH 1:36–41 | [JSH 1](https://www.churchofjesuschrist.org/study/scriptures/pgp/js-h/1?lang=eng) |
-| Joel 2:28–32 | [Joel 2](https://www.churchofjesuschrist.org/study/scriptures/ot/joel/2?lang=eng) |
-| Hinckley, "Living in the Fulness of Times" (Oct 2001) | [living-in-the-fulness-of-times.md](https://www.churchofjesuschrist.org/study/general-conference/2001/10/living-in-the-fulness-of-times?lang=eng) |
-| Hinckley, "The Times in Which We Live" (Oct 2001) | [the-times-in-which-we-live.md](https://www.churchofjesuschrist.org/study/general-conference/2001/10/the-times-in-which-we-live?lang=eng) |
-| Genesis 1:14 | [Genesis 1](https://www.churchofjesuschrist.org/study/scriptures/ot/gen/1?lang=eng) |
-| Leviticus 23 | [Leviticus 23](https://www.churchofjesuschrist.org/study/scriptures/ot/lev/23?lang=eng) |
-| D&C 88:42–49, 87–95 | [D&C 88](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/88?lang=eng) |
-| Psalms 19 | [Psalms 19](https://www.churchofjesuschrist.org/study/scriptures/ot/ps/19?lang=eng) |
-| Ether 8:22–25 | [Ether 8](https://www.churchofjesuschrist.org/study/scriptures/bofm/ether/8?lang=eng) |
-| Helaman 14:1–7 | [Helaman 14](https://www.churchofjesuschrist.org/study/scriptures/bofm/hel/14?lang=eng) |
-| 3 Nephi 1 | [3 Nephi 1](https://www.churchofjesuschrist.org/study/scriptures/bofm/3-ne/1?lang=eng) |
-| 3 Nephi 2:1–8 | [3 Nephi 2](https://www.churchofjesuschrist.org/study/scriptures/bofm/3-ne/2?lang=eng) |
+| D&C 91 | [D&C 91](../../../gospel-library/eng/scriptures/dc-testament/dc/91.md) |
+| BD Apocrypha | [BD Apocrypha](../../../gospel-library/eng/scriptures/bd/apocrypha.md) |
+| JSH 1:36–41 | [JSH 1](../../../gospel-library/eng/scriptures/pgp/js-h/1.md) |
+| Joel 2:28–32 | [Joel 2](../../../gospel-library/eng/scriptures/ot/joel/2.md) |
+| Hinckley, "Living in the Fulness of Times" (Oct 2001) | [living-in-the-fulness-of-times.md](../../../gospel-library/eng/general-conference/2001/10/living-in-the-fulness-of-times.md) |
+| Hinckley, "The Times in Which We Live" (Oct 2001) | [the-times-in-which-we-live.md](../../../gospel-library/eng/general-conference/2001/10/the-times-in-which-we-live.md) |
+| Genesis 1:14 | [Genesis 1](../../../gospel-library/eng/scriptures/ot/gen/1.md) |
+| Leviticus 23 | [Leviticus 23](../../../gospel-library/eng/scriptures/ot/lev/23.md) |
+| D&C 88:42–49, 87–95 | [D&C 88](../../../gospel-library/eng/scriptures/dc-testament/dc/88.md) |
+| Psalms 19 | [Psalms 19](../../../gospel-library/eng/scriptures/ot/ps/19.md) |
+| Ether 8:22–25 | [Ether 8](../../../gospel-library/eng/scriptures/bofm/ether/8.md) |
+| Helaman 14:1–7 | [Helaman 14](../../../gospel-library/eng/scriptures/bofm/hel/14.md) |
+| 3 Nephi 1 | [3 Nephi 1](../../../gospel-library/eng/scriptures/bofm/3-ne/1.md) |
+| 3 Nephi 2:1–8 | [3 Nephi 2](../../../gospel-library/eng/scriptures/bofm/3-ne/2.md) |
 | Phase 5 Evaluation | [05_ezekiels_eagle.md](05_ezekiels_eagle.md) |
 | Study Plan | [study_plans.md](study_plans.md) |
 
@@ -38,9 +38,9 @@
 
 ### Main Thesis
 
-Phase 6 covers two interlocking themes. The first is Philpot's use of 2 Esdras 11 (Ezra's Eagle) as a prophetic text mapping to American politics, introduced through the D&C 91 framework for evaluating Apocryphal material. The second is a broader theological argument about "appointed times" — that the heavenly bodies were created to mark God's prophetic calendar ([Genesis 1:14](https://www.churchofjesuschrist.org/study/scriptures/ot/gen/1?lang=eng&id=p14#p14)), that the Hebrew feasts of [Leviticus 23](https://www.churchofjesuschrist.org/study/scriptures/ot/lev/23?lang=eng) are these appointed times, and that the April 6, 2000 dedication of the Palmyra Temple was accompanied by astronomical signs fulfilling this pattern — a "sign of the coming of the Son of Man" paralleling the Nephites' sign at Christ's birth ([3 Nephi 1:15–21](https://www.churchofjesuschrist.org/study/scriptures/bofm/3-ne/1?lang=eng&id=p15-p21#p15)).
+Phase 6 covers two interlocking themes. The first is Philpot's use of 2 Esdras 11 (Ezra's Eagle) as a prophetic text mapping to American politics, introduced through the D&C 91 framework for evaluating Apocryphal material. The second is a broader theological argument about "appointed times" — that the heavenly bodies were created to mark God's prophetic calendar ([Genesis 1:14](../../../gospel-library/eng/scriptures/ot/gen/1.md)), that the Hebrew feasts of [Leviticus 23](../../../gospel-library/eng/scriptures/ot/lev/23.md) are these appointed times, and that the April 6, 2000 dedication of the Palmyra Temple was accompanied by astronomical signs fulfilling this pattern — a "sign of the coming of the Son of Man" paralleling the Nephites' sign at Christ's birth ([3 Nephi 1:15–21](../../../gospel-library/eng/scriptures/bofm/3-ne/1.md)).
 
-The two themes connect through Moroni's scripture recitation to Joseph Smith ([JSH 1:36–41](https://www.churchofjesuschrist.org/study/scriptures/pgp/js-h/1?lang=eng&id=p36-p41#p36)), particularly Joel 2:28–32 — which Moroni said "was not yet fulfilled, but was soon to be" and which President Hinckley declared fulfilled in [October 2001](https://www.churchofjesuschrist.org/study/general-conference/2001/10/living-in-the-fulness-of-times?lang=eng): "The vision of Joel has been fulfilled."
+The two themes connect through Moroni's scripture recitation to Joseph Smith ([JSH 1:36–41](../../../gospel-library/eng/scriptures/pgp/js-h/1.md)), particularly Joel 2:28–32 — which Moroni said "was not yet fulfilled, but was soon to be" and which President Hinckley declared fulfilled in [October 2001](../../../gospel-library/eng/general-conference/2001/10/living-in-the-fulness-of-times.md): "The vision of Joel has been fulfilled."
 
 ### Key Claims
 
@@ -53,15 +53,15 @@ The two themes connect through Moroni's scripture recitation to Joseph Smith ([J
 6. **Center head "dies in its bed"** = the Biden administration — "the American government died under Joe Biden because Joe Biden clearly had dementia" (transcript ~14:00)
 
 **Moroni's Recitation & Joel:**
-7. **Moroni quoted Joel 2:28–32** to Joseph Smith, saying it "was not yet fulfilled, but was soon to be" ([JSH 1:41](https://www.churchofjesuschrist.org/study/scriptures/pgp/js-h/1?lang=eng&id=p41#p41)) (slides 189–193)
+7. **Moroni quoted Joel 2:28–32** to Joseph Smith, saying it "was not yet fulfilled, but was soon to be" ([JSH 1:41](../../../gospel-library/eng/scriptures/pgp/js-h/1.md)) (slides 189–193)
 8. **President Hinckley declared Joel's vision fulfilled** in October 2001 (slide 194)
 9. **Hinckley compared Gadianton robbers to modern terrorism** in the same conference — "We see the same thing in the present situation" (slide 195)
 
 **Appointed Times:**
-10. **Hebrew mō·w·'ă·ḏîm = "appointed times"** — the word translated "seasons" in [Genesis 1:14](https://www.churchofjesuschrist.org/study/scriptures/ot/gen/1?lang=eng&id=p14#p14) is the same root as "feasts" in [Leviticus 23:2, 4](https://www.churchofjesuschrist.org/study/scriptures/ot/lev/23?lang=eng&id=p2#p2) — the heavenly bodies mark God's prophetic calendar, not mere meteorological seasons (slides 202–206)
+10. **Hebrew mō·w·'ă·ḏîm = "appointed times"** — the word translated "seasons" in [Genesis 1:14](../../../gospel-library/eng/scriptures/ot/gen/1.md) is the same root as "feasts" in [Leviticus 23:2, 4](../../../gospel-library/eng/scriptures/ot/lev/23.md) — the heavenly bodies mark God's prophetic calendar, not mere meteorological seasons (slides 202–206)
 11. **D&C 88:42–49 confirms heavenly bodies move in "times and their seasons"** — they are kingdoms governed by law, and "he who came unto his own was not comprehended" (slides 207–209)
 12. **Howard W. Hunter = Samuel the Lamanite** — first "non-covenant-birth" prophet, served 9 months (1994), coined "the calamities foretold by the ancient prophets" which Hinckley placed in the Family Proclamation (transcript ~36:00)
-13. **Six years after Hunter (1994) → sign in 2000** — parallels Samuel's prophecy of a sign in five years ([Helaman 14:2](https://www.churchofjesuschrist.org/study/scriptures/bofm/hel/14?lang=eng&id=p2#p2)) (transcript ~38:00)
+13. **Six years after Hunter (1994) → sign in 2000** — parallels Samuel's prophecy of a sign in five years ([Helaman 14:2](../../../gospel-library/eng/scriptures/bofm/hel/14.md)) (transcript ~38:00)
 14. **Palmyra Temple dedicated April 6, 2000** — 170 years from Church organization, 180 years from First Vision, 1 Nisan 5760 in the Hebrew calendar (slides 215–217)
 15. **All-planet alignment at Palmyra on April 5, 2000** — Philpot claims all seven planetary bodies were visible in the sky at the Palmyra Temple the night before the dedication, with an aurora borealis and all 12 zodiac constellations visible (slides 218–227, transcript ~43:00)
 16. **Psalms 19:4–5** — "In them hath he set a tabernacle for the sun, Which is as a bridegroom coming out of his chamber" — the sign of the coming of the Son of Man (slide 228)
@@ -76,40 +76,40 @@ The two themes connect through Moroni's scripture recitation to Joseph Smith ([J
 
 | Scripture | Slide/Transcript | Context |
 |-----------|-----------------|---------|
-| [D&C 91:1–6](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/91?lang=eng&id=p1-p6#p1) | Slide 187 | Framework for Apocrypha |
-| [JSH 1:36–41](https://www.churchofjesuschrist.org/study/scriptures/pgp/js-h/1?lang=eng&id=p36-p41#p36) | Slides 189–192 | Moroni's recitation |
-| [Joel 2:28–32](https://www.churchofjesuschrist.org/study/scriptures/ot/joel/2?lang=eng&id=p28-p32#p28) | Slide 193 | Wonders in heavens, moon to blood |
-| [Ether 8:23–24](https://www.churchofjesuschrist.org/study/scriptures/bofm/ether/8?lang=eng&id=p23-p24#p23) | Slide 196 | Secret combinations warning |
-| [Helaman 13:1, 10](https://www.churchofjesuschrist.org/study/scriptures/bofm/hel/13?lang=eng&id=p1#p1) | Slides 197–199 | Sword of justice, 400 years |
-| [Ether 8:21](https://www.churchofjesuschrist.org/study/scriptures/bofm/ether/8?lang=eng&id=p21#p21) | Slide 199 | Caused destruction of this people |
-| [Genesis 1:14](https://www.churchofjesuschrist.org/study/scriptures/ot/gen/1?lang=eng&id=p14#p14) | Slides 202–203 | Signs and seasons (mō·w·'ă·ḏîm) |
-| [Leviticus 23:1–4](https://www.churchofjesuschrist.org/study/scriptures/ot/lev/23?lang=eng&id=p1-p4#p1) | Slides 204–206 | Feasts = appointed times |
-| [D&C 88:42–49](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/88?lang=eng&id=p42-p49#p42) | Slides 207–209 | Heavenly kingdoms, times and seasons |
-| [3 Nephi 1:4, 9, 15, 17, 21, 26](https://www.churchofjesuschrist.org/study/scriptures/bofm/3-ne/1?lang=eng&id=p4#p4) | Slides 211–214 | Sign of Christ's birth |
-| [3 Nephi 2:8](https://www.churchofjesuschrist.org/study/scriptures/bofm/3-ne/2?lang=eng&id=p8#p8) | Slide 213 | Nephites reckon from the sign |
-| [Moses 2:14](https://www.churchofjesuschrist.org/study/scriptures/pgp/moses/2?lang=eng&id=p14#p14) | Slide 212 | Lights for signs and seasons |
-| [Helaman 14:2–5](https://www.churchofjesuschrist.org/study/scriptures/bofm/hel/14?lang=eng&id=p2-p5#p2) | Transcript ~38:00 | Samuel's five-year sign |
-| [Psalms 19:1–6](https://www.churchofjesuschrist.org/study/scriptures/ot/ps/19?lang=eng&id=p1-p6#p1) | Slide 228 | Bridegroom from his chamber |
-| [D&C 88:87–95](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/88?lang=eng&id=p87-p95#p87) | Transcript ~45:00 | Signs preceding Second Coming |
+| [D&C 91:1–6](../../../gospel-library/eng/scriptures/dc-testament/dc/91.md) | Slide 187 | Framework for Apocrypha |
+| [JSH 1:36–41](../../../gospel-library/eng/scriptures/pgp/js-h/1.md) | Slides 189–192 | Moroni's recitation |
+| [Joel 2:28–32](../../../gospel-library/eng/scriptures/ot/joel/2.md) | Slide 193 | Wonders in heavens, moon to blood |
+| [Ether 8:23–24](../../../gospel-library/eng/scriptures/bofm/ether/8.md) | Slide 196 | Secret combinations warning |
+| [Helaman 13:1, 10](../../../gospel-library/eng/scriptures/bofm/hel/13.md) | Slides 197–199 | Sword of justice, 400 years |
+| [Ether 8:21](../../../gospel-library/eng/scriptures/bofm/ether/8.md) | Slide 199 | Caused destruction of this people |
+| [Genesis 1:14](../../../gospel-library/eng/scriptures/ot/gen/1.md) | Slides 202–203 | Signs and seasons (mō·w·'ă·ḏîm) |
+| [Leviticus 23:1–4](../../../gospel-library/eng/scriptures/ot/lev/23.md) | Slides 204–206 | Feasts = appointed times |
+| [D&C 88:42–49](../../../gospel-library/eng/scriptures/dc-testament/dc/88.md) | Slides 207–209 | Heavenly kingdoms, times and seasons |
+| [3 Nephi 1:4, 9, 15, 17, 21, 26](../../../gospel-library/eng/scriptures/bofm/3-ne/1.md) | Slides 211–214 | Sign of Christ's birth |
+| [3 Nephi 2:8](../../../gospel-library/eng/scriptures/bofm/3-ne/2.md) | Slide 213 | Nephites reckon from the sign |
+| [Moses 2:14](../../../gospel-library/eng/scriptures/pgp/moses/2.md) | Slide 212 | Lights for signs and seasons |
+| [Helaman 14:2–5](../../../gospel-library/eng/scriptures/bofm/hel/14.md) | Transcript ~38:00 | Samuel's five-year sign |
+| [Psalms 19:1–6](../../../gospel-library/eng/scriptures/ot/ps/19.md) | Slide 228 | Bridegroom from his chamber |
+| [D&C 88:87–95](../../../gospel-library/eng/scriptures/dc-testament/dc/88.md) | Transcript ~45:00 | Signs preceding Second Coming |
 
 ---
 
 ## Step 2: Deep Reading Checklist
 
-- [x] [D&C 91](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/91?lang=eng) — full 6 verses + footnotes read
-- [x] [BD Apocrypha](https://www.churchofjesuschrist.org/study/scriptures/bd/apocrypha?lang=eng) — full entry read (confirms 2 Esdras listed as "of special value"; Messianic references 7:28–29, 12:32, 13:32, 37, 52 "deserve special notice")
-- [x] [JSH 1:27–52](https://www.churchofjesuschrist.org/study/scriptures/pgp/js-h/1?lang=eng&id=p27-p52#p27) — Moroni's full visit, including vv. 36–41 recitation
-- [x] [Joel 2](https://www.churchofjesuschrist.org/study/scriptures/ot/joel/2?lang=eng) — full chapter (32 verses + footnotes)
-- [x] [Genesis 1:1–31](https://www.churchofjesuschrist.org/study/scriptures/ot/gen/1?lang=eng&id=p1-p31#p1) + footnotes — v. 14 "seasons" footnote links to TG Order, no Hebrew note
-- [x] [Leviticus 23](https://www.churchofjesuschrist.org/study/scriptures/ot/lev/23?lang=eng) — full chapter (44 verses), all seven feasts
-- [x] [D&C 88:36–105](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/88?lang=eng&id=p36-p105#p36) — kingdoms and laws (vv. 42–49), signs preceding Second Coming (vv. 87–95)
-- [x] [Psalms 19](https://www.churchofjesuschrist.org/study/scriptures/ot/ps/19?lang=eng) — full (14 verses + footnotes)
-- [x] [Ether 8](https://www.churchofjesuschrist.org/study/scriptures/bofm/ether/8?lang=eng) — full chapter (26 verses + footnotes), Moroni's warning to Gentiles
-- [x] [Helaman 14:1–26](https://www.churchofjesuschrist.org/study/scriptures/bofm/hel/14?lang=eng&id=p1-p26#p1) — Samuel's signs of Christ's birth and death
-- [x] [3 Nephi 1](https://www.churchofjesuschrist.org/study/scriptures/bofm/3-ne/1?lang=eng) — full chapter (30 verses), sign fulfilled
-- [x] [3 Nephi 2:1–11](https://www.churchofjesuschrist.org/study/scriptures/bofm/3-ne/2?lang=eng&id=p1-p11#p1) — reckoning of time, forgetting the sign
-- [x] [Hinckley, "Living in the Fulness of Times"](https://www.churchofjesuschrist.org/study/general-conference/2001/10/living-in-the-fulness-of-times?lang=eng) — full talk read
-- [x] [Hinckley, "The Times in Which We Live"](https://www.churchofjesuschrist.org/study/general-conference/2001/10/the-times-in-which-we-live?lang=eng) — read in Phase 5
+- [x] [D&C 91](../../../gospel-library/eng/scriptures/dc-testament/dc/91.md) — full 6 verses + footnotes read
+- [x] [BD Apocrypha](../../../gospel-library/eng/scriptures/bd/apocrypha.md) — full entry read (confirms 2 Esdras listed as "of special value"; Messianic references 7:28–29, 12:32, 13:32, 37, 52 "deserve special notice")
+- [x] [JSH 1:27–52](../../../gospel-library/eng/scriptures/pgp/js-h/1.md) — Moroni's full visit, including vv. 36–41 recitation
+- [x] [Joel 2](../../../gospel-library/eng/scriptures/ot/joel/2.md) — full chapter (32 verses + footnotes)
+- [x] [Genesis 1:1–31](../../../gospel-library/eng/scriptures/ot/gen/1.md) + footnotes — v. 14 "seasons" footnote links to TG Order, no Hebrew note
+- [x] [Leviticus 23](../../../gospel-library/eng/scriptures/ot/lev/23.md) — full chapter (44 verses), all seven feasts
+- [x] [D&C 88:36–105](../../../gospel-library/eng/scriptures/dc-testament/dc/88.md) — kingdoms and laws (vv. 42–49), signs preceding Second Coming (vv. 87–95)
+- [x] [Psalms 19](../../../gospel-library/eng/scriptures/ot/ps/19.md) — full (14 verses + footnotes)
+- [x] [Ether 8](../../../gospel-library/eng/scriptures/bofm/ether/8.md) — full chapter (26 verses + footnotes), Moroni's warning to Gentiles
+- [x] [Helaman 14:1–26](../../../gospel-library/eng/scriptures/bofm/hel/14.md) — Samuel's signs of Christ's birth and death
+- [x] [3 Nephi 1](../../../gospel-library/eng/scriptures/bofm/3-ne/1.md) — full chapter (30 verses), sign fulfilled
+- [x] [3 Nephi 2:1–11](../../../gospel-library/eng/scriptures/bofm/3-ne/2.md) — reckoning of time, forgetting the sign
+- [x] [Hinckley, "Living in the Fulness of Times"](../../../gospel-library/eng/general-conference/2001/10/living-in-the-fulness-of-times.md) — full talk read
+- [x] [Hinckley, "The Times in Which We Live"](../../../gospel-library/eng/general-conference/2001/10/the-times-in-which-we-live.md) — read in Phase 5
 - [x] NASA APOD April 6, 2000 — confirmed planetary grouping (Venus, Moon, neighbors)
 - [x] CNN April 4, 2000 — confirmed Mars, Jupiter, Saturn visible at sunset
 - [x] John Pratt (LDS astronomer) — confirmed April 5–6, 2000 planetary grouping
@@ -144,31 +144,33 @@ The two themes connect through Moroni's scripture recitation to Joseph Smith ([J
 
 ### Verbal-Only Items Not in Evaluation
 
-**1. Continuity of Government / Shadow Government (~14:00–16:00)**
+> **Cross-reference update (2026-02-11):** All 7 items below have been subsequently evaluated in **[verbal_only_evaluation.md](verbal_only_evaluation.md)** — see individual item numbers noted in parentheses.
+
+**1. Continuity of Government / Shadow Government (~14:00–16:00)** → [verbal_only #22](verbal_only_evaluation.md)
 
 After presenting the Biden/"center head dies in bed" claim, Philpot extends into an elaborate current-events argument: Dick Cheney openly establishing a "continuity of government program," the Secret Service director's hearing statement about "the continuity of government" (re: Trump assassination attempt), the helicopter/plane crash as a "continuity of government exercise" (per Pete Hegseth), and the Joint Chiefs letter on January 12, 2021. This is the most current-events-dependent section of the entire presentation — all 2024–2025 events not on original slides. The evaluation captures the Biden claim but not this extension.
 
-**2. Federal Reserve / Jekyll Island / 16th–17th Amendments (~2:59–5:00)**
+**2. Federal Reserve / Jekyll Island / 16th–17th Amendments (~2:59–5:00)** → [verbal_only #11](verbal_only_evaluation.md)
 
 Immediately after the Part I recap, Philpot argues that 1909–1913 brought systemic changes following the conquest of Utah: "A year after you conquer Utah, you can finally have the meeting to subjugate the entire United States to a central banking system." He lists: Federal Reserve (1910 Jekyll Island → 1913), 16th Amendment (income tax, "unconstitutional prior to 1913"), 17th Amendment (elimination of state legislature election of senators), Brownlow Commission (rise of executive power), direct primaries ("a socialist invention"). This financial/constitutional argument is NOT in the evaluation, which focuses on the 1909 = 91 BC parallel rather than the systemic changes that accompanied it.
 
-**3. Lachoneus = Trump Parallel, Detailed (~58:00–62:00)**
+**3. Lachoneus = Trump Parallel, Detailed (~58:00–62:00)** → [verbal_only #13](verbal_only_evaluation.md)
 
 The evaluation Key Claim 18 notes "Trump 2017 = Lachoneus" but doesn't capture the verbal detail: Trump as nationalist isolationist, COVID as the five-year siege, "gather together in the center of the land," highways = AI superhighway, DHS officer/lawyer hiring as internal army buildup, Pete Hegseth at the head of DHS. Philpot verbally maps 3 Nephi 3–4 verse-by-verse onto 2017–2025 events.
 
-**4. Lachoneus 2 = Assassination Prediction (~65:00)**
+**4. Lachoneus 2 = Assassination Prediction (~65:00)** → [verbal_only #16](verbal_only_evaluation.md)
 
 Philpot makes an explicit predictive claim based on rabbinic hermeneutic: "In the first year of Laconius 2's reign, they murder him. So what should you expect to see in the first year of the reign of Laconius 1? An attempted murder." He connects this to the Trump assassination attempt. Then: "In the first year of the reign of Laconius 2, they murder many people who testify boldly of Christ. So what should you see in the first year of Laconius 1? The murder of a guy who testifies boldly of Christ and he's murdered in Utah at a Mormon temple of Baal." This is NOT in the evaluation — it's a specific, testable prediction.
 
-**5. BYU / Universities as "Temples of Baal" (~65:00–66:00)**
+**5. BYU / Universities as "Temples of Baal" (~65:00–66:00)** → [verbal_only #17](verbal_only_evaluation.md)
 
 Provocative verbal-only claim: "The universities are temples of Baal. And this one is built by a bunch of Mormons who claim to love Jesus, but they build up these temples of Baal all over Utah... and they send their kids into the temples of Baal to pass through the fire... because at the temple of Baal you'll make more money." Not in evaluation.
 
-**6. Church SEC Fine / Corporate Destruction (~67:00–69:00)**
+**6. Church SEC Fine / Corporate Destruction (~67:00–69:00)** → [verbal_only #18](verbal_only_evaluation.md)
 
 Verbal-only argument about the Church's corporate vulnerability: 2022 SEC fine based on 1934 Securities Exchange Act, felony deferred by paying $5 million, Australia/Canada auditing Church finances, "broken" in Webster's 1828 = "bankrupt." Philpot argues the brethren paid "extortion money" to avoid felony prosecution. Connected to Phase 2's corporate destruction argument (Part III). Not in evaluation.
 
-**7. Hearts Turned / Temple Work Shift / Robe Change (~54:11)**
+**7. Hearts Turned / Temple Work Shift / Robe Change (~54:11)** → [verbal_only #7](verbal_only_evaluation.md)
 
 Verbal-only argument that Hinckley's 2001 declaration fulfills D&C 13/D&C 128 (sons of Levi, offering by the dead). Philpot argues: "Why were you doing temple work after 2001 if it's already done? ... What if it's the end of the wheat harvest? ... So you stop doing the priesthood of Aaron thing." He references changing the temple robe from left to right shoulder. Not in evaluation.
 
@@ -176,7 +178,7 @@ Verbal-only argument that Hinckley's 2001 declaration fulfills D&C 13/D&C 128 (s
 
 The Phase 6 evaluation is solid for its scope — the Esdras critique (Out of Line #1), the Biden claim (Out of Line #3), the unfalsifiable timeline argument (Out of Line #4), and the astronoical overstatement (Nuanced #4) all hold up against the verbal delivery. The evaluation's categorizations don't need changing.
 
-The gap is in SCOPE rather than ACCURACY. The verbal delivery includes 7 substantial arguments not addressed in the evaluation. The most significant are: (1) the Federal Reserve/constitutional amendment argument, which connects Phase 5's financial history to Phase 6's 1909 framework; (2) the Lachoneus-Trump verse-by-verse mapping, which is far more detailed than Key Claim 18 suggests; and (3) the assassination prediction from Lachoneus 2, which is a specific testable claim the evaluation should have captured.
+The gap is in SCOPE rather than ACCURACY. The verbal delivery includes 7 substantial arguments not addressed in the original evaluation, now cross-referenced to [verbal_only_evaluation.md](verbal_only_evaluation.md). The most significant are: (1) the Federal Reserve/constitutional amendment argument, which connects Phase 5's financial history to Phase 6's 1909 framework; (2) the Lachoneus-Trump verse-by-verse mapping, which is far more detailed than Key Claim 18 suggests; and (3) the assassination prediction from Lachoneus 2, which is a specific testable claim the evaluation should have captured.
 
 The Howard W. Hunter = Samuel the Lamanite parallel (Key Claim 12) is listed but never directly evaluated in Step 3. It's one of the more creative and emotionally resonant claims in the presentation and deserves assessment. The verbal delivery (~35:00–37:00) is compelling: "the first non-covenant birth prophet," nine months, "comes off the wall, never to be seen again," coined "the calamities foretold" — and Philpot demonstrates that Hinckley placed Hunter's exact quote into the Family Proclamation. Even if the typological mapping is speculative, the historical connection between Hunter's statement and the Proclamation is verifiable.
 
@@ -188,33 +190,33 @@ The Howard W. Hunter = Samuel the Lamanite parallel (Key Claim 12) is listed but
 
 **1. The Hebrew mō·w·'ă·ḏîm word study is linguistically sound.**
 
-This is the strongest element in Phase 6. The Hebrew word מועדים (*mô·w·'ă·ḏîm*) in [Genesis 1:14](https://www.churchofjesuschrist.org/study/scriptures/ot/gen/1?lang=eng&id=p14#p14) — translated "seasons" in the KJV — is the same root (יעד *yā·'aḏ*, to appoint) as the word translated "feasts" in [Leviticus 23:2, 4](https://www.churchofjesuschrist.org/study/scriptures/ot/lev/23?lang=eng&id=p2#p2). The word means "appointed times," not meteorological seasons. This is standard Hebrew scholarship, not controversial. The KJV's translation choice obscures a real linguistic connection that Philpot correctly identifies.
+This is the strongest element in Phase 6. The Hebrew word מועדים (*mô·w·'ă·ḏîm*) in [Genesis 1:14](../../../gospel-library/eng/scriptures/ot/gen/1.md) — translated "seasons" in the KJV — is the same root (יעד *yā·'aḏ*, to appoint) as the word translated "feasts" in [Leviticus 23:2, 4](../../../gospel-library/eng/scriptures/ot/lev/23.md). The word means "appointed times," not meteorological seasons. This is standard Hebrew scholarship, not controversial. The KJV's translation choice obscures a real linguistic connection that Philpot correctly identifies.
 
-[D&C 88:42](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/88?lang=eng&id=p42#p42) — "he hath given a law unto all things, by which they move in their *times* and their *seasons*" — aligns with this concept: the heavenly bodies operate on divinely appointed schedules.
+[D&C 88:42](../../../gospel-library/eng/scriptures/dc-testament/dc/88.md) — "he hath given a law unto all things, by which they move in their *times* and their *seasons*" — aligns with this concept: the heavenly bodies operate on divinely appointed schedules.
 
 **2. Moroni's scripture recitation is canonical and correctly cited.**
 
-[JSH 1:36–41](https://www.churchofjesuschrist.org/study/scriptures/pgp/js-h/1?lang=eng&id=p36-p41#p36) records Moroni quoting Malachi 3–4 (modified), Isaiah 11, Acts 3:22–23, and Joel 2:28–last. Moroni said Joel's vision "was not yet fulfilled, but was soon to be" (v. 41). This is foundational Restoration scripture.
+[JSH 1:36–41](../../../gospel-library/eng/scriptures/pgp/js-h/1.md) records Moroni quoting Malachi 3–4 (modified), Isaiah 11, Acts 3:22–23, and Joel 2:28–last. Moroni said Joel's vision "was not yet fulfilled, but was soon to be" (v. 41). This is foundational Restoration scripture.
 
 **3. President Hinckley's declaration that Joel's vision is fulfilled is verified.**
 
-In [October 2001](https://www.churchofjesuschrist.org/study/general-conference/2001/10/living-in-the-fulness-of-times?lang=eng), President Hinckley quoted Joel 2:28–32 in full and declared: "The vision of Joel has been fulfilled." He placed this in the context of the Restoration as "the fulness of times" — scientific discovery, priesthood restoration, and the cascade of enlightenment since the First Vision. Philpot's citation is accurate.
+In [October 2001](../../../gospel-library/eng/general-conference/2001/10/living-in-the-fulness-of-times.md), President Hinckley quoted Joel 2:28–32 in full and declared: "The vision of Joel has been fulfilled." He placed this in the context of the Restoration as "the fulness of times" — scientific discovery, priesthood restoration, and the cascade of enlightenment since the First Vision. Philpot's citation is accurate.
 
 **4. Hinckley's comparison of Gadianton robbers to modern terrorism is verified.**
 
-In ["The Times in Which We Live"](https://www.churchofjesuschrist.org/study/general-conference/2001/10/the-times-in-which-we-live?lang=eng), Hinckley said: "We of this Church know something of such groups. The Book of Mormon speaks of the Gadianton robbers... We see the same thing in the present situation." Philpot quotes this accurately.
+In ["The Times in Which We Live"](../../../gospel-library/eng/general-conference/2001/10/the-times-in-which-we-live.md), Hinckley said: "We of this Church know something of such groups. The Book of Mormon speaks of the Gadianton robbers... We see the same thing in the present situation." Philpot quotes this accurately.
 
 **5. D&C 91 cited correctly as framework.**
 
-Philpot cites [D&C 91](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/91?lang=eng) as the Latter-day Saint standard for approaching the Apocrypha. His summary — "there's some good things, there's some bad things, and use the spirit to figure it out" — paraphrases the section honestly.
+Philpot cites [D&C 91](../../../gospel-library/eng/scriptures/dc-testament/dc/91.md) as the Latter-day Saint standard for approaching the Apocrypha. His summary — "there's some good things, there's some bad things, and use the spirit to figure it out" — paraphrases the section honestly.
 
 **6. The Bible Dictionary lists 2 Esdras among books "of special value."**
 
-The [BD Apocrypha](https://www.churchofjesuschrist.org/study/scriptures/bd/apocrypha?lang=eng) entry says: "Among these books the following are of special value" and lists 2 Esdras, noting that "the references to the Messiah (7:28–29; 12:32; 13:32, 37, 52) deserve special notice." Philpot paraphrases this as "the brethren put in the Bible dictionary that second Esdris is of particular importance to us" — close but not exact. The BD says "of special value" and highlights the *Messianic* passages, not the eagle vision specifically.
+The [BD Apocrypha](../../../gospel-library/eng/scriptures/bd/apocrypha.md) entry says: "Among these books the following are of special value" and lists 2 Esdras, noting that "the references to the Messiah (7:28–29; 12:32; 13:32, 37, 52) deserve special notice." Philpot paraphrases this as "the brethren put in the Bible dictionary that second Esdris is of particular importance to us" — close but not exact. The BD says "of special value" and highlights the *Messianic* passages, not the eagle vision specifically.
 
 **7. Ether 8:22–25 and the secret combinations warning are canonical.**
 
-Moroni's warning to the Gentiles — "when ye shall see these things come among you that ye shall awake to a sense of your awful situation, because of this secret combination which shall be among you" ([Ether 8:24](https://www.churchofjesuschrist.org/study/scriptures/bofm/ether/8?lang=eng&id=p24#p24)) — is a direct prophetic warning about the reader's time. The application to modern institutions seeking "power and gain" (v. 23) is a traditional Latter-day Saint reading found in many conference talks.
+Moroni's warning to the Gentiles — "when ye shall see these things come among you that ye shall awake to a sense of your awful situation, because of this secret combination which shall be among you" ([Ether 8:24](../../../gospel-library/eng/scriptures/bofm/ether/8.md)) — is a direct prophetic warning about the reader's time. The application to modern institutions seeking "power and gain" (v. 23) is a traditional Latter-day Saint reading found in many conference talks.
 
 **8. April 6, 2000 = 1 Nisan 5760 — verified.**
 
@@ -242,7 +244,7 @@ Philpot treats D&C 91 as opening a door. It does — but the door opens onto a r
 
 The Hebrew connection between Genesis 1:14 and Leviticus 23 is real. But Philpot uses this to argue that specific astronomical events ARE the prophetic appointed times — that the planetary positions on April 5–6, 2000 constitute a "sign of the coming of the Son of Man." This is a large interpretive leap from a sound linguistic observation to an astronomical-prophetic claim.
 
-[D&C 88:42–49](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/88?lang=eng&id=p42-p49#p42) does teach that heavenly bodies move in "times and their seasons" and are "kingdoms" — but the passage's conclusion is about *comprehending God*, not about reading political prophecy in the stars: "the day shall come when you shall comprehend even God, being quickened in him and by him" (v. 49).
+[D&C 88:42–49](../../../gospel-library/eng/scriptures/dc-testament/dc/88.md) does teach that heavenly bodies move in "times and their seasons" and are "kingdoms" — but the passage's conclusion is about *comprehending God*, not about reading political prophecy in the stars: "the day shall come when you shall comprehend even God, being quickened in him and by him" (v. 49).
 
 **3. Hinckley's Gadianton comparison is broader than Philpot frames it.**
 
@@ -291,11 +293,11 @@ Additionally, the starting point (1909 = 91 BC) requires accepting multiple prio
 
 **1. The "sign of the coming of the Son of Man" deserves more canonical grounding.**
 
-Philpot argues that the April 5–6, 2000 astronomical configuration is the "sign of the coming of the Son of Man." But [D&C 88:92–93](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/88?lang=eng&id=p92-p93#p92) describes this sign as *immediately following* the angel's trumpet and the cry "Prepare ye, O inhabitants of the earth; for the judgment of our God is come. Behold, and lo, the Bridegroom cometh" — and says "all people shall see it together" (v. 93). The April 2000 event was not seen by "all people together," nor was it accompanied by angelic trumpets. The D&C's own description doesn't match the astronomical event Philpot identifies.
+Philpot argues that the April 5–6, 2000 astronomical configuration is the "sign of the coming of the Son of Man." But [D&C 88:92–93](../../../gospel-library/eng/scriptures/dc-testament/dc/88.md) describes this sign as *immediately following* the angel's trumpet and the cry "Prepare ye, O inhabitants of the earth; for the judgment of our God is come. Behold, and lo, the Bridegroom cometh" — and says "all people shall see it together" (v. 93). The April 2000 event was not seen by "all people together," nor was it accompanied by angelic trumpets. The D&C's own description doesn't match the astronomical event Philpot identifies.
 
 **2. Psalms 19 pivots — and the pivot matters.**
 
-Philpot uses [Psalms 19:1–6](https://www.churchofjesuschrist.org/study/scriptures/ot/ps/19?lang=eng&id=p1-p6#p1) for its astronomical imagery: "The heavens declare the glory of God" and "a bridegroom coming out of his chamber" (vv. 1, 5). But the psalm pivots at verse 7: "The law of the Lord is perfect, converting the soul." The *point* of Psalms 19 is that creation testifies of God (vv. 1–6), but *the law* is what actually transforms hearts (vv. 7–11). The heavens are the preamble; the law is the substance. Using only the astronomical half of this psalm inverts its message.
+Philpot uses [Psalms 19:1–6](../../../gospel-library/eng/scriptures/ot/ps/19.md) for its astronomical imagery: "The heavens declare the glory of God" and "a bridegroom coming out of his chamber" (vv. 1, 5). But the psalm pivots at verse 7: "The law of the Lord is perfect, converting the soul." The *point* of Psalms 19 is that creation testifies of God (vv. 1–6), but *the law* is what actually transforms hearts (vv. 7–11). The heavens are the preamble; the law is the substance. Using only the astronomical half of this psalm inverts its message.
 
 **3. D&C 91 is more cautionary than Philpot acknowledges.**
 
@@ -305,15 +307,15 @@ The revelation says "it is not needful that the Apocrypha should be translated" 
 
 **1. Abraham 3:1–4 — the Lord's own astronomy lesson.**
 
-Philpot discusses heavenly bodies as kingdoms governed by God's law ([D&C 88:42–49](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/88?lang=eng&id=p42-p49#p42)) but never cites [Abraham 3:1–4](https://www.churchofjesuschrist.org/study/scriptures/pgp/abr/3?lang=eng&id=p1-p4#p1), where the Lord shows Abraham the stars *through the Urim and Thummim* and reveals Kolob — "the great one" that "is nearest unto the throne of God" and whose reckoning of time defines celestial time. This is the Lord's own astronomical revelation to a prophet, and it would strengthen the "heavens as prophetic calendar" argument far more than Apocryphal texts.
+Philpot discusses heavenly bodies as kingdoms governed by God's law ([D&C 88:42–49](../../../gospel-library/eng/scriptures/dc-testament/dc/88.md)) but never cites [Abraham 3:1–4](../../../gospel-library/eng/scriptures/pgp/abr/3.md), where the Lord shows Abraham the stars *through the Urim and Thummim* and reveals Kolob — "the great one" that "is nearest unto the throne of God" and whose reckoning of time defines celestial time. This is the Lord's own astronomical revelation to a prophet, and it would strengthen the "heavens as prophetic calendar" argument far more than Apocryphal texts.
 
-**2. The full voice of [D&C 88:87–95](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/88?lang=eng&id=p87-p95#p87) actually describes the signs sequence.**
+**2. The full voice of [D&C 88:87–95](../../../gospel-library/eng/scriptures/dc-testament/dc/88.md) actually describes the signs sequence.**
 
 Philpot references the "sign of the coming of the Son of Man" but doesn't walk through D&C 88's detailed sequence: earthquakes (v. 89), thunderings and lightnings (v. 90), "all things shall be in commotion" (v. 91), angels sounding trumpets (v. 92), *then* "immediately there shall appear a great sign in heaven, and all people shall see it together" (v. 93). This canonical sequence is more authoritative than any Apocryphal interpretation and provides clear criteria for evaluating claims about the sign.
 
 **3. 3 Nephi 2:1–3 — the Nephites' own response to their sign.**
 
-Philpot draws the parallel between the Nephite sign and April 2000, but the text's own sequel is sobering: within a few years, the people "began to forget those signs and wonders which they had heard, and began to be less and less astonished" ([3 Nephi 2:1](https://www.churchofjesuschrist.org/study/scriptures/bofm/3-ne/2?lang=eng&id=p1#p1)). They began "imagining up some vain thing in their hearts, that it was wrought by men and by the power of the devil" (v. 2). If April 2000 *was* a sign, the Book of Mormon itself warns that the natural human response will be to explain it away — a warning that applies equally to those who deny signs *and* to those who manufacture them.
+Philpot draws the parallel between the Nephite sign and April 2000, but the text's own sequel is sobering: within a few years, the people "began to forget those signs and wonders which they had heard, and began to be less and less astonished" ([3 Nephi 2:1](../../../gospel-library/eng/scriptures/bofm/3-ne/2.md)). They began "imagining up some vain thing in their hearts, that it was wrought by men and by the power of the devil" (v. 2). If April 2000 *was* a sign, the Book of Mormon itself warns that the natural human response will be to explain it away — a warning that applies equally to those who deny signs *and* to those who manufacture them.
 
 ### Overall Assessment
 
@@ -335,11 +337,11 @@ Phase 6 contains Philpot's best linguistics and his most speculative politics, o
 
 ### Truths to Hold
 
-1. **The heavens really do declare the glory of God** — [Psalms 19:1](https://www.churchofjesuschrist.org/study/scriptures/ot/ps/19?lang=eng&id=p1#p1). The Hebrew word study is a gift. Learning that "seasons" in Genesis 1:14 means "appointed times" changes how I read the creation account. God built a prophetic calendar into the sky. What else does the Hebrew reveal that the KJV obscures?
+1. **The heavens really do declare the glory of God** — [Psalms 19:1](../../../gospel-library/eng/scriptures/ot/ps/19.md). The Hebrew word study is a gift. Learning that "seasons" in Genesis 1:14 means "appointed times" changes how I read the creation account. God built a prophetic calendar into the sky. What else does the Hebrew reveal that the KJV obscures?
 
-2. **Joel's vision is unfolding** — Moroni said Joel 2:28–32 "was not yet fulfilled, but was soon to be" ([JSH 1:41](https://www.churchofjesuschrist.org/study/scriptures/pgp/js-h/1?lang=eng&id=p41#p41)). President Hinckley declared it fulfilled in 2001. I live in the era both Moroni and Joel pointed to.
+2. **Joel's vision is unfolding** — Moroni said Joel 2:28–32 "was not yet fulfilled, but was soon to be" ([JSH 1:41](../../../gospel-library/eng/scriptures/pgp/js-h/1.md)). President Hinckley declared it fulfilled in 2001. I live in the era both Moroni and Joel pointed to.
 
-3. **The Apocrypha is permitted, not required** — [D&C 91](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/91?lang=eng) gives a framework: read with the Spirit, expect both truth and interpolation, and don't treat it as canonical. The Bible Dictionary's notice of 2 Esdras's Messianic references is worth following up — but following up means reading 2 Esdras myself with the Spirit, not adopting someone else's political mapping.
+3. **The Apocrypha is permitted, not required** — [D&C 91](../../../gospel-library/eng/scriptures/dc-testament/dc/91.md) gives a framework: read with the Spirit, expect both truth and interpolation, and don't treat it as canonical. The Bible Dictionary's notice of 2 Esdras's Messianic references is worth following up — but following up means reading 2 Esdras myself with the Spirit, not adopting someone else's political mapping.
 
 ### Warnings to Heed
 
@@ -351,9 +353,9 @@ Phase 6 contains Philpot's best linguistics and his most speculative politics, o
 
 ### Commitments
 
-- [ ] Study [2 Esdras 7:28–29; 12:32; 13:32, 37, 52](https://www.churchofjesuschrist.org/study/scriptures/bd/apocrypha?lang=eng&id=p28-p29#p28) — the Messianic passages the Bible Dictionary specifically highlights — and form my own impression through the Spirit, per D&C 91:5
-- [ ] Read [Abraham 3](https://www.churchofjesuschrist.org/study/scriptures/pgp/abr/3?lang=eng) — the Lord's astronomy lesson to Abraham through the Urim and Thummim — as context for the "heavens as prophetic calendar" theme
-- [ ] Study the seven feasts of [Leviticus 23](https://www.churchofjesuschrist.org/study/scriptures/ot/lev/23?lang=eng) and their fulfillment in Christ — the mō·w·'ă·ḏîm word study opens a whole vein of typological study (Passover → Crucifixion, Firstfruits → Resurrection, Pentecost → Spirit poured out, etc.)
+- [ ] Study [2 Esdras 7:28–29; 12:32; 13:32, 37, 52](../../../gospel-library/eng/scriptures/bd/apocrypha.md) — the Messianic passages the Bible Dictionary specifically highlights — and form my own impression through the Spirit, per D&C 91:5
+- [ ] Read [Abraham 3](../../../gospel-library/eng/scriptures/pgp/abr/3.md) — the Lord's astronomy lesson to Abraham through the Urim and Thummim — as context for the "heavens as prophetic calendar" theme
+- [ ] Study the seven feasts of [Leviticus 23](../../../gospel-library/eng/scriptures/ot/lev/23.md) and their fulfillment in Christ — the mō·w·'ă·ḏîm word study opens a whole vein of typological study (Passover → Crucifixion, Firstfruits → Resurrection, Pentecost → Spirit poured out, etc.)
 
 ---
 

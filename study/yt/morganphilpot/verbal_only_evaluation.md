@@ -178,9 +178,14 @@ Any typology that strips out repentance, prophetic military leadership, defensiv
 
 **Claim:** President Oaks' first conference talk as president had two notable features: no temple announcements and a strong doubling-down on the Family Proclamation. The John Taylor letter on polygamy was released, William Clayton journals (with polygamy content) are upcoming, and D&C 132 appears in the children's Come Follow Me curriculum.
 
-**Assessment: Nuanced.** Oaks' October 2025 conference talk was not found in our local gospel-library files (October 2025 conference has not been downloaded). The observation about temple announcements (or their absence) is an empirical claim. The Family Proclamation emphasis is a matter of public record. The John Taylor/William Clayton document releases are verifiable events. Where Philpot overextends is in reading these as coordinated signals of an impending doctrinal shift rather than as administrative decisions with their own contexts. The observation is interesting; the prophetic-signal interpretation is speculative.
+**Assessment: Nuanced.** The talk is now verified from source: [The Family-Centered Gospel of Jesus Christ](../../gospel-library/eng/general-conference/2025/10/58oaks.md). Philpot's two empirical claims are confirmed:
 
-**Rating:** ⚡ Nuanced — observable facts, speculative interpretation
+1. **No temple announcements** — Oaks explicitly says: "with the approval of the Quorum of the Twelve Apostles, we will not announce any new temples at this conference." The reason given is administrative: "with the large number of temples now in the very earliest phases of planning and construction, it is appropriate that we slow down."
+2. **Family Proclamation doubling-down** — The entire talk centers on the Proclamation's 30th anniversary. The word "family" appears dozens of times. Oaks quotes the Proclamation directly and calls the Church "a family-centered church."
+
+What Philpot misses: (a) the no-temple-announcements section was written *after* President Nelson's death and simply reflects the reality of a 200-temple backlog — an administrative pacing decision, not a prophetic signal; (b) Oaks explicitly says the rest was "written and approved weeks before" Nelson's death; (c) the talk's emphasis on family is entirely consistent with Oaks' decades-long focus on family law and the Proclamation — this is who he *is*, not a coded message. Where Philpot overextends is in reading administrative decisions as coordinated signals of an impending doctrinal shift.
+
+**Rating:** ⚡ Nuanced — observable facts confirmed, prophetic-signal interpretation remains speculative
 
 ---
 
@@ -452,13 +457,12 @@ Sources read from `gospel-library/` with footnotes during remediation pass:
 | [D&C 128](../../gospel-library/eng/scriptures/dc-testament/dc/128.md) | #7 | fn 24f→D&C 13:1, 84:31 (reciprocal link); v.15: "neither can we without our dead" |
 | [Matthew 24](../../gospel-library/eng/scriptures/nt/matt/24.md) | #20 | fn 44c: GR "when you do not expect Him" |
 | [Mosiah 11](../../gospel-library/eng/scriptures/bofm/mosiah/11.md) | #15 | fn 5a→Mosiah 12:25 (illegitimate priests replaced consecrated ones) |
+| [Oaks, Oct 2025](../../gospel-library/eng/general-conference/2025/10/58oaks.md) | #14 | No temple announcements confirmed; Family Proclamation central; admin pacing, not prophetic signal |
 | [3 Nephi 8](../../gospel-library/eng/scriptures/bofm/3-ne/8.md) | #1, #5, #21 | Previously read in prior sessions |
 | [3 Nephi 9](../../gospel-library/eng/scriptures/bofm/3-ne/9.md) | #2 | Previously read in prior sessions |
 | [D&C 49](../../gospel-library/eng/scriptures/dc-testament/dc/49.md) | #19 | Previously read in prior sessions |
 | [D&C 87](../../gospel-library/eng/scriptures/dc-testament/dc/87.md) | #11 | Previously read in prior sessions |
 | [D&C 98](../../gospel-library/eng/scriptures/dc-testament/dc/98.md) | #11 | Previously read in prior sessions |
-
-**Not available locally:** Oaks' October 2025 conference talk (item #14) — October 2025 conference has not been downloaded to gospel-library.
 
 ---
 

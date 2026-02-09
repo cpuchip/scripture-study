@@ -424,21 +424,23 @@ The evaluation's Key Claim 12 says "Musk as Gidgiddoni." Verbally, Philpot says 
 
 **5. Several verbal-only items in the Phase 7 transcript range not in evaluation:**
 
-a. **DHS/ICE "internal army" argument** (~1:02:37 Part II): "Where is Trump putting officers and lawyers like crazy in DHS?… What's Trump building in DHS? An internal army. And who's at the head of it?" — Specific claim about DHS as Lachoneus's military buildup, including employment page references.
+> **Cross-reference update (2026-02-11):** All 7 items below have been subsequently evaluated in **[verbal_only_evaluation.md](verbal_only_evaluation.md)** — see individual item numbers noted in parentheses.
 
-b. **McCarthy files unsealed** (~31:00 Part II): "They unsealed the McCarthy files in the Trump administration in 2020. And guess what the files said? McCarthy was right. There were communists in the State Department." — Used to validate the Gadianton = communist infiltration parallel.
+a. **DHS/ICE "internal army" argument** (~1:02:37 Part II) → [verbal_only #32](verbal_only_evaluation.md): "Where is Trump putting officers and lawyers like crazy in DHS?… What's Trump building in DHS? An internal army. And who's at the head of it?" — Specific claim about DHS as Lachoneus's military buildup, including employment page references.
 
-c. **Bolton/Comey indictments as prosecution ladder** (Part III ~9:00): "Comey got indicted by a grand jury. Bolton got indicted by a grand jury… If you're going after a terrorist cell, who do you prosecute first? The little guys." — 2025 current events mapped to Lachoneus prosecution of secret combinations.
+b. **McCarthy files unsealed** (~31:00 Part II) → [verbal_only #8](verbal_only_evaluation.md): "They unsealed the McCarthy files in the Trump administration in 2020. And guess what the files said? McCarthy was right. There were communists in the State Department." — Used to validate the Gadianton = communist infiltration parallel.
 
-d. **Corporate fiction argument** (Part III ~0:05–12:00): Much broader than the SEC fine captured in Out of Line #4. Extended argument about corporate personhood as ontological fiction: "You've fragmented your brain to believe something that doesn't exist," government owns all corporate property via corporate charter, nationalization trivially easy once corporate fiction collapses.
+c. **Bolton/Comey indictments as prosecution ladder** (Part III ~9:00) → [verbal_only #26](verbal_only_evaluation.md): "Comey got indicted by a grand jury. Bolton got indicted by a grand jury… If you're going after a terrorist cell, who do you prosecute first? The little guys." — 2025 current events mapped to Lachoneus prosecution of secret combinations.
 
-e. **Storm vs. tempest Webster 1828 distinction** (Part III ~33:00): "A storm can be a political incursion or a violent assault upon a fortified place. And a tempest can be also a violent assault or a big huge storm." Argues Mormon deliberately uses both words in 3 Nephi 8 to describe political AND natural destruction.
+d. **Corporate fiction argument** (Part III ~0:05–12:00) → [verbal_only #12](verbal_only_evaluation.md): Much broader than the SEC fine captured in Out of Line #4. Extended argument about corporate personhood as ontological fiction: "You've fragmented your brain to believe something that doesn't exist," government owns all corporate property via corporate charter, nationalization trivially easy once corporate fiction collapses.
 
-f. **Polar shift / super volcano / nuclear war speculation** (Part III ~35:00): "I've been looking at polar shifts… Science says they exist. Last one was 700,000 years ago. Super volcanoes. We know there's one in Idaho. Nuclear war can cause this." — Speculative destruction mechanisms for 3 Nephi 8 fulfillment.
+e. **Storm vs. tempest Webster 1828 distinction** (Part III ~33:00) → [verbal_only #1](verbal_only_evaluation.md): "A storm can be a political incursion or a violent assault upon a fortified place. And a tempest can be also a violent assault or a big huge storm." Argues Mormon deliberately uses both words in 3 Nephi 8 to describe political AND natural destruction.
 
-g. **Preparation urgency with specific deadline** (Part III ~25:00–30:00): "When should I be prepared to go?… I got to be prepared by 2029." Extended argument that travel restrictions and secession in 2030 mean all preparation must be complete before the 2028 election.
+f. **Polar shift / super volcano / nuclear war speculation** (Part III ~35:00) → [verbal_only #21](verbal_only_evaluation.md): "I've been looking at polar shifts… Science says they exist. Last one was 700,000 years ago. Super volcanoes. We know there's one in Idaho. Nuclear war can cause this." — Speculative destruction mechanisms for 3 Nephi 8 fulfillment.
 
-**6. The evaluation's quality is GOOD overall — gap is the pharmakeia slide-only discovery plus verbal-only items.**
+g. **Preparation urgency with specific deadline** (Part III ~25:00–30:00) → [verbal_only #20](verbal_only_evaluation.md): "When should I be prepared to go?… I got to be prepared by 2029." Extended argument that travel restrictions and secession in 2030 mean all preparation must be complete before the 2028 election.
+
+**6. The evaluation's quality is GOOD overall — gap is the pharmakeia slide-only discovery plus verbal-only items (now evaluated).**
 
 Unlike Phase 5 (where the entire verbal delivery was unevaluated), Phase 7's core arguments — the year-by-year timeline, the 9/11 parallels, the Lachoneus mapping — are all captured and well-evaluated. The "In Line" assessments hold up against verbal delivery. The "Out of Line" assessments (date-setting, unfalsifiable timeline, political commentary) are well-grounded. The "Missed Opportunities" section (especially Bednar's Oct 2024 talk and Isaiah 8:20's self-test) is the evaluation's strongest original analysis.
 

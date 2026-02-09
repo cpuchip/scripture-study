@@ -450,7 +450,7 @@ Part III ~0:00–25:00 contains:
 - Storm vs. tempest Webster 1828 distinction (documented in Phase 7 review)
 - Preparation deadline urgency (documented in Phase 7 review)
 
-**All of this was ALREADY captured in prior passes** because the year-by-year Book of Mormon mapping runs continuously through Parts II and III without phase-aligned breaks.
+**All of this was ALREADY captured in prior passes** because the year-by-year Book of Mormon mapping runs continuously through Parts II and III without phase-aligned breaks. These verbal-only items have been subsequently evaluated in **[verbal_only_evaluation.md](verbal_only_evaluation.md)** — see items #32 (DHS/ICE), #26 (Bolton/Comey), #12 (corporate fiction), #1 (storm vs. tempest), #20 (preparation urgency), #17 (BYU/Baal), #18 (SEC fine), and others.
 
 **3. The evaluation remains EXCELLENT as slide analysis.**
 

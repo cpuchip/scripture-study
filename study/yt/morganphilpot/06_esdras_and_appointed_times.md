@@ -144,31 +144,33 @@ The two themes connect through Moroni's scripture recitation to Joseph Smith ([J
 
 ### Verbal-Only Items Not in Evaluation
 
-**1. Continuity of Government / Shadow Government (~14:00–16:00)**
+> **Cross-reference update (2026-02-11):** All 7 items below have been subsequently evaluated in **[verbal_only_evaluation.md](verbal_only_evaluation.md)** — see individual item numbers noted in parentheses.
+
+**1. Continuity of Government / Shadow Government (~14:00–16:00)** → [verbal_only #22](verbal_only_evaluation.md)
 
 After presenting the Biden/"center head dies in bed" claim, Philpot extends into an elaborate current-events argument: Dick Cheney openly establishing a "continuity of government program," the Secret Service director's hearing statement about "the continuity of government" (re: Trump assassination attempt), the helicopter/plane crash as a "continuity of government exercise" (per Pete Hegseth), and the Joint Chiefs letter on January 12, 2021. This is the most current-events-dependent section of the entire presentation — all 2024–2025 events not on original slides. The evaluation captures the Biden claim but not this extension.
 
-**2. Federal Reserve / Jekyll Island / 16th–17th Amendments (~2:59–5:00)**
+**2. Federal Reserve / Jekyll Island / 16th–17th Amendments (~2:59–5:00)** → [verbal_only #11](verbal_only_evaluation.md)
 
 Immediately after the Part I recap, Philpot argues that 1909–1913 brought systemic changes following the conquest of Utah: "A year after you conquer Utah, you can finally have the meeting to subjugate the entire United States to a central banking system." He lists: Federal Reserve (1910 Jekyll Island → 1913), 16th Amendment (income tax, "unconstitutional prior to 1913"), 17th Amendment (elimination of state legislature election of senators), Brownlow Commission (rise of executive power), direct primaries ("a socialist invention"). This financial/constitutional argument is NOT in the evaluation, which focuses on the 1909 = 91 BC parallel rather than the systemic changes that accompanied it.
 
-**3. Lachoneus = Trump Parallel, Detailed (~58:00–62:00)**
+**3. Lachoneus = Trump Parallel, Detailed (~58:00–62:00)** → [verbal_only #13](verbal_only_evaluation.md)
 
 The evaluation Key Claim 18 notes "Trump 2017 = Lachoneus" but doesn't capture the verbal detail: Trump as nationalist isolationist, COVID as the five-year siege, "gather together in the center of the land," highways = AI superhighway, DHS officer/lawyer hiring as internal army buildup, Pete Hegseth at the head of DHS. Philpot verbally maps 3 Nephi 3–4 verse-by-verse onto 2017–2025 events.
 
-**4. Lachoneus 2 = Assassination Prediction (~65:00)**
+**4. Lachoneus 2 = Assassination Prediction (~65:00)** → [verbal_only #16](verbal_only_evaluation.md)
 
 Philpot makes an explicit predictive claim based on rabbinic hermeneutic: "In the first year of Laconius 2's reign, they murder him. So what should you expect to see in the first year of the reign of Laconius 1? An attempted murder." He connects this to the Trump assassination attempt. Then: "In the first year of the reign of Laconius 2, they murder many people who testify boldly of Christ. So what should you see in the first year of Laconius 1? The murder of a guy who testifies boldly of Christ and he's murdered in Utah at a Mormon temple of Baal." This is NOT in the evaluation — it's a specific, testable prediction.
 
-**5. BYU / Universities as "Temples of Baal" (~65:00–66:00)**
+**5. BYU / Universities as "Temples of Baal" (~65:00–66:00)** → [verbal_only #17](verbal_only_evaluation.md)
 
 Provocative verbal-only claim: "The universities are temples of Baal. And this one is built by a bunch of Mormons who claim to love Jesus, but they build up these temples of Baal all over Utah... and they send their kids into the temples of Baal to pass through the fire... because at the temple of Baal you'll make more money." Not in evaluation.
 
-**6. Church SEC Fine / Corporate Destruction (~67:00–69:00)**
+**6. Church SEC Fine / Corporate Destruction (~67:00–69:00)** → [verbal_only #18](verbal_only_evaluation.md)
 
 Verbal-only argument about the Church's corporate vulnerability: 2022 SEC fine based on 1934 Securities Exchange Act, felony deferred by paying $5 million, Australia/Canada auditing Church finances, "broken" in Webster's 1828 = "bankrupt." Philpot argues the brethren paid "extortion money" to avoid felony prosecution. Connected to Phase 2's corporate destruction argument (Part III). Not in evaluation.
 
-**7. Hearts Turned / Temple Work Shift / Robe Change (~54:11)**
+**7. Hearts Turned / Temple Work Shift / Robe Change (~54:11)** → [verbal_only #7](verbal_only_evaluation.md)
 
 Verbal-only argument that Hinckley's 2001 declaration fulfills D&C 13/D&C 128 (sons of Levi, offering by the dead). Philpot argues: "Why were you doing temple work after 2001 if it's already done? ... What if it's the end of the wheat harvest? ... So you stop doing the priesthood of Aaron thing." He references changing the temple robe from left to right shoulder. Not in evaluation.
 
@@ -176,7 +178,7 @@ Verbal-only argument that Hinckley's 2001 declaration fulfills D&C 13/D&C 128 (s
 
 The Phase 6 evaluation is solid for its scope — the Esdras critique (Out of Line #1), the Biden claim (Out of Line #3), the unfalsifiable timeline argument (Out of Line #4), and the astronoical overstatement (Nuanced #4) all hold up against the verbal delivery. The evaluation's categorizations don't need changing.
 
-The gap is in SCOPE rather than ACCURACY. The verbal delivery includes 7 substantial arguments not addressed in the evaluation. The most significant are: (1) the Federal Reserve/constitutional amendment argument, which connects Phase 5's financial history to Phase 6's 1909 framework; (2) the Lachoneus-Trump verse-by-verse mapping, which is far more detailed than Key Claim 18 suggests; and (3) the assassination prediction from Lachoneus 2, which is a specific testable claim the evaluation should have captured.
+The gap is in SCOPE rather than ACCURACY. The verbal delivery includes 7 substantial arguments not addressed in the original evaluation, now cross-referenced to [verbal_only_evaluation.md](verbal_only_evaluation.md). The most significant are: (1) the Federal Reserve/constitutional amendment argument, which connects Phase 5's financial history to Phase 6's 1909 framework; (2) the Lachoneus-Trump verse-by-verse mapping, which is far more detailed than Key Claim 18 suggests; and (3) the assassination prediction from Lachoneus 2, which is a specific testable claim the evaluation should have captured.
 
 The Howard W. Hunter = Samuel the Lamanite parallel (Key Claim 12) is listed but never directly evaluated in Step 3. It's one of the more creative and emotionally resonant claims in the presentation and deserves assessment. The verbal delivery (~35:00–37:00) is compelling: "the first non-covenant birth prophet," nine months, "comes off the wall, never to be seen again," coined "the calamities foretold" — and Philpot demonstrates that Hinckley placed Hunter's exact quote into the Family Proclamation. Even if the typological mapping is speculative, the historical connection between Hunter's statement and the Proclamation is verifiable.
 
