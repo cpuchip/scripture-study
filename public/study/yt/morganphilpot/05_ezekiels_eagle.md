@@ -24,22 +24,22 @@
 
 ### Main Thesis
 
-Phase 4 ended with the woman (Church) fleeing to the wilderness on "two wings of a great eagle" ([JST Rev 12:14](https://www.churchofjesuschrist.org/study/scriptures/jst/jst-rev/12?lang=eng&id=p14#p14)). Phase 5 asks: *Where is this eagle in the Old Testament?* Philpot's answer: [Ezekiel 17](https://www.churchofjesuschrist.org/study/scriptures/ot/ezek/17?lang=eng), a "riddle and parable" about a great eagle with "divers colours" that carries the "highest branch of the cedar" into "a land of traffick" and sets it in "a city of merchants."
+Phase 4 ended with the woman (Church) fleeing to the wilderness on "two wings of a great eagle" ([JST Rev 12:14](../../gospel-library/eng/scriptures/jst/jst-rev/12.md)). Phase 5 asks: *Where is this eagle in the Old Testament?* Philpot's answer: [Ezekiel 17](../../gospel-library/eng/scriptures/ot/ezek/17.md), a "riddle and parable" about a great eagle with "divers colours" that carries the "highest branch of the cedar" into "a land of traffick" and sets it in "a city of merchants."
 
-Philpot reads Ezekiel 17 as a Restoration prophecy: the eagle's "divers colours" invoke Joseph's "coat of many colours" ([Genesis 37:3](https://www.churchofjesuschrist.org/study/scriptures/ot/gen/37?lang=eng&id=p3#p3)), connecting the eagle to the Tribe of Joseph. The "highest branch" is Joseph Smith — the "righteous branch" raised up from Joseph's loins ([2 Nephi 3:5](https://www.churchofjesuschrist.org/study/scriptures/bofm/2-ne/3?lang=eng&id=p5#p5)). The "land of traffick" is Commerce, Illinois, because the Hebrew word *kə·nā·'an* means both "Canaan" and "land of trade/traffick." The "city of merchants" is Nauvoo (formerly Commerce), confirmed by [D&C 124](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/124?lang=eng) header: "the city of Nauvoo, occupying the site of the former village of Commerce, Illinois." The "second great eagle" (v. 7) is the US government. The "east wind" (v. 10) is judgment/famine, connecting to Pharaoh's dream ([Genesis 41:6, 23, 27](https://www.churchofjesuschrist.org/study/scriptures/ot/gen/41?lang=eng&id=p6#p6)) and President Hinckley's October 2001 warning.
+Philpot reads Ezekiel 17 as a Restoration prophecy: the eagle's "divers colours" invoke Joseph's "coat of many colours" ([Genesis 37:3](../../gospel-library/eng/scriptures/ot/gen/37.md)), connecting the eagle to the Tribe of Joseph. The "highest branch" is Joseph Smith — the "righteous branch" raised up from Joseph's loins ([2 Nephi 3:5](../../gospel-library/eng/scriptures/bofm/2-ne/3.md)). The "land of traffick" is Commerce, Illinois, because the Hebrew word *kə·nā·'an* means both "Canaan" and "land of trade/traffick." The "city of merchants" is Nauvoo (formerly Commerce), confirmed by [D&C 124](../../gospel-library/eng/scriptures/dc-testament/dc/124.md) header: "the city of Nauvoo, occupying the site of the former village of Commerce, Illinois." The "second great eagle" (v. 7) is the US government. The "east wind" (v. 10) is judgment/famine, connecting to Pharaoh's dream ([Genesis 41:6, 23, 27](../../gospel-library/eng/scriptures/ot/gen/41.md)) and President Hinckley's October 2001 warning.
 
-The latter half of the phase addresses "the rebellious house" (v. 12). Philpot reads this as the US government's persecution of the Saints: Alfred Cumming appointed territorial governor in 1858 ("the king of Babylon is come to Jerusalem"), the Edmunds-Tucker Act of 1887, [Official Declaration 1](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/od/1?lang=eng) (1890/1893), and Utah statehood in 1896 — all fulfilling the prophecy "that the kingdom might be base, that it might not lift itself up" (v. 14). The Utah Constitution's requirements (polygamy prohibited, public lands disclaimed, schools free from "sectarian control") represent the "broken oaths and covenants" (vv. 15–19) and the forfeiture of the Church's "birthright" — its political sovereignty and hereditary priesthood authority.
+The latter half of the phase addresses "the rebellious house" (v. 12). Philpot reads this as the US government's persecution of the Saints: Alfred Cumming appointed territorial governor in 1858 ("the king of Babylon is come to Jerusalem"), the Edmunds-Tucker Act of 1887, [Official Declaration 1](../../gospel-library/eng/scriptures/dc-testament/od/1.md) (1890/1893), and Utah statehood in 1896 — all fulfilling the prophecy "that the kingdom might be base, that it might not lift itself up" (v. 14). The Utah Constitution's requirements (polygamy prohibited, public lands disclaimed, schools free from "sectarian control") represent the "broken oaths and covenants" (vv. 15–19) and the forfeiture of the Church's "birthright" — its political sovereignty and hereditary priesthood authority.
 
 ### Key Claims
 
-1. **"Divers colours" = Joseph** — Eagle's feathers ([Ezek 17:3](https://www.churchofjesuschrist.org/study/scriptures/ot/ezek/17?lang=eng&id=p3#p3)) → Joseph's "coat of many colours" ([Gen 37:3](https://www.churchofjesuschrist.org/study/scriptures/ot/gen/37?lang=eng&id=p3#p3)) → Tribe of Joseph (slides 153–154)
-2. **"Highest branch" = Joseph Smith** — "A righteous branch unto the house of Israel" ([2 Ne 3:5](https://www.churchofjesuschrist.org/study/scriptures/bofm/2-ne/3?lang=eng&id=p5#p5)); "his name shall be called after me" ([2 Ne 3:15](https://www.churchofjesuschrist.org/study/scriptures/bofm/2-ne/3?lang=eng&id=p15#p15)) (slides 155–156)
+1. **"Divers colours" = Joseph** — Eagle's feathers ([Ezek 17:3](../../gospel-library/eng/scriptures/ot/ezek/17.md)) → Joseph's "coat of many colours" ([Gen 37:3](../../gospel-library/eng/scriptures/ot/gen/37.md)) → Tribe of Joseph (slides 153–154)
+2. **"Highest branch" = Joseph Smith** — "A righteous branch unto the house of Israel" ([2 Ne 3:5](../../gospel-library/eng/scriptures/bofm/2-ne/3.md)); "his name shall be called after me" ([2 Ne 3:15](../../gospel-library/eng/scriptures/bofm/2-ne/3.md)) (slides 155–156)
 3. **"Land of traffick" = Commerce, IL** — Hebrew *kə·nā·'an* = Canaan = "land of traffick" (slide 158)
 4. **"City of merchants" = Nauvoo** — Hebrew *rō·ḵə·lîm* = traders/merchants; D&C 124 header confirms Nauvoo = former Commerce (slides 160, 163)
 5. **Moses 6:17 Cainan link** — "Land of Cainan" / "land of promise, which he called after his own son, whom he had named Cainan" supports the Canaan/Commerce connection (slide 159)
-6. **Second eagle = US government** — [Ezek 17:7](https://www.churchofjesuschrist.org/study/scriptures/ot/ezek/17?lang=eng&id=p7#p7) (slide 166)
-7. **East wind = judgment/famine** — [Gen 41:6, 23, 27](https://www.churchofjesuschrist.org/study/scriptures/ot/gen/41?lang=eng&id=p6#p6); Hinckley, Oct 2001 (slides 167–170)
-8. **"Rebellious house" = United States** — [Ezek 17:12](https://www.churchofjesuschrist.org/study/scriptures/ot/ezek/17?lang=eng&id=p12#p12); Alfred Cumming 1858 = "king of Babylon" (slides 172–173)
+6. **Second eagle = US government** — [Ezek 17:7](../../gospel-library/eng/scriptures/ot/ezek/17.md) (slide 166)
+7. **East wind = judgment/famine** — [Gen 41:6, 23, 27](../../gospel-library/eng/scriptures/ot/gen/41.md); Hinckley, Oct 2001 (slides 167–170)
+8. **"Rebellious house" = United States** — [Ezek 17:12](../../gospel-library/eng/scriptures/ot/ezek/17.md); Alfred Cumming 1858 = "king of Babylon" (slides 172–173)
 9. **"Kingdom might be base"** — Edmunds-Tucker (1887), OD1 (1890), statehood (1896) (slides 174–183)
 10. **Broken oaths = lost birthright** — Utah Constitution Article III; Bible Dictionary "Birthright" (slides 183–185)
 11. **Heber C. Kimball memorandum (1862)** — "The Lord God told me Congress would reject the Saints" (slide 176)
@@ -48,14 +48,14 @@ The latter half of the phase addresses "the rebellious house" (v. 12). Philpot r
 
 ### Scriptures Cited
 
-- [Ezekiel 17:1–24](https://www.churchofjesuschrist.org/study/scriptures/ot/ezek/17?lang=eng&id=p1-p24#p1) (full chapter)
-- [Genesis 37:3](https://www.churchofjesuschrist.org/study/scriptures/ot/gen/37?lang=eng&id=p3#p3) (coat of many colours)
-- [2 Nephi 3:5, 15](https://www.churchofjesuschrist.org/study/scriptures/bofm/2-ne/3?lang=eng&id=p5#p5) (righteous branch, named after Joseph)
-- [D&C 124](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/124?lang=eng) (Nauvoo revelation)
-- [Moses 6:14–17](https://www.churchofjesuschrist.org/study/scriptures/pgp/moses/6?lang=eng&id=p14-p17#p14) (land of Cainan)
-- [Genesis 41:6, 22–27](https://www.churchofjesuschrist.org/study/scriptures/ot/gen/41?lang=eng&id=p6#p6) (east wind / Pharaoh's dream)
-- [Official Declaration 1](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/od/1?lang=eng) (Manifesto)
-- [Revelation 12:14](https://www.churchofjesuschrist.org/study/scriptures/nt/rev/12?lang=eng&id=p14#p14) (two wings of a great eagle)
+- [Ezekiel 17:1–24](../../gospel-library/eng/scriptures/ot/ezek/17.md) (full chapter)
+- [Genesis 37:3](../../gospel-library/eng/scriptures/ot/gen/37.md) (coat of many colours)
+- [2 Nephi 3:5, 15](../../gospel-library/eng/scriptures/bofm/2-ne/3.md) (righteous branch, named after Joseph)
+- [D&C 124](../../gospel-library/eng/scriptures/dc-testament/dc/124.md) (Nauvoo revelation)
+- [Moses 6:14–17](../../gospel-library/eng/scriptures/pgp/moses/6.md) (land of Cainan)
+- [Genesis 41:6, 22–27](../../gospel-library/eng/scriptures/ot/gen/41.md) (east wind / Pharaoh's dream)
+- [Official Declaration 1](../../gospel-library/eng/scriptures/dc-testament/od/1.md) (Manifesto)
+- [Revelation 12:14](../../gospel-library/eng/scriptures/nt/rev/12.md) (two wings of a great eagle)
 
 ---
 
@@ -65,7 +65,7 @@ The latter half of the phase addresses "the rebellious house" (v. 12). Philpot r
 |--------|-------|-------|
 | Ezekiel 17 (full chapter) | ✅ | vv. 1–10 = riddle/parable; vv. 12–21 = Ezekiel's own interpretation (Zedekiah/Babylon/Egypt); vv. 22–24 = Lord's last-days promise. Chapter header: "Yet the Lord will bring forth in the last days a goodly tree from the cedars of Lebanon." |
 | Ezekiel 17 footnotes | ✅ | **4b: "traffick — HEB trade or traders."** 12b: cross-refs 2 Kings 24:11 (Nebuchadnezzar). **22a: cross-refs Omni 1:15, Mosiah 25:2, Helaman 8:21** (Book of Mormon peoples). 22b: cross-refs Jacob 5:24 (olive tree allegory). 8a: cross-refs Jacob 5:25, 43. |
-| Bible Dictionary: Canaan | ✅ | **"As the Phoenicians were great traders, *Canaanite* came to denote merchant ([Isa. 23:8](https://www.churchofjesuschrist.org/study/scriptures/ot/isa/23?lang=eng); [Ezek. 17:4](https://www.churchofjesuschrist.org/study/scriptures/ot/ezek/17?lang=eng); [Hosea 12:7](https://www.churchofjesuschrist.org/study/scriptures/ot/hosea/12?lang=eng&id=p7#p7))."** — Church's own Bible Dictionary confirms the Hebrew connection AND cites Ezekiel 17:4. |
+| Bible Dictionary: Canaan | ✅ | **"As the Phoenicians were great traders, *Canaanite* came to denote merchant ([Isa. 23:8](../../gospel-library/eng/scriptures/ot/isa/23.md); [Ezek. 17:4](../../gospel-library/eng/scriptures/ot/ezek/17.md); [Hosea 12:7](../../gospel-library/eng/scriptures/ot/hosea/12.md))."** — Church's own Bible Dictionary confirms the Hebrew connection AND cites Ezekiel 17:4. |
 | Bible Dictionary: Birthright | ✅ | "Land inheritance as well as the authority to preside." Hereditary priesthood offices. Forfeited birthright examples: Esau, Reuben. |
 | Bible Dictionary: Commerce | ✅ | Discusses Israelite trade; Phoenician connections to Tyre and Sidon. No direct Canaan=Commerce (IL) link. |
 | 2 Nephi 3:1–25 | ✅ | Full text — "out of the fruit of his loins the Lord God would raise up a righteous branch unto the house of Israel" (v. 5). "His name shall be called after me; and it shall be after the name of his father" (v. 15). "A choice seer" (v. 7). |
@@ -169,11 +169,7 @@ The 1856 Republican Party platform phrase linking slavery and polygamy as "the t
 
 The evaluation's analysis of Ezekiel 17 remains valid as a critique of the SLIDE content — the eisegesis point, the Hebrew word study issues (*riqmah* vs. *ketonet passim*), and the OD1 mischaracterization are all correctly argued. But the audience in Chandler never heard the Ezekiel 17 argument verbally. What they heard was a comprehensive Revelation 13 reading that is theologically more ambitious and historically more detailed than the slide-based Ezekiel 17 material.
 
-The Revelation 13 argument deserves its own evaluation. Several claims are verifiable:
-- The 42-months calculation appears mathematically wrong (Jan 1863 to Apr 1865 ≈ 27 months)
-- The nuclear weapons / "fire from heaven" reading has been made by other commentators historically
-- The beast = government (not devil) distinction is an important hermeneutic clarification
-- The seven-heads = seven-dispensations reading is creative but novel
+The Revelation 13 argument has been given its own evaluation: **[05a_revelation_13.md](05a_revelation_13.md)**. That document evaluates the beast-kingdom identification, the Civil War / "deadly wound" reading, the 42-months calculation (which appears mathematically wrong: Jan 1863 to Apr 1865 ≈ 27 months), the nuclear weapons / "fire from heaven" reading, the beast = government hermeneutic, and the seven-dispensations framework. Several verbal-only items from this phase are also evaluated in **[verbal_only_evaluation.md](verbal_only_evaluation.md)** (items #4, #6, #9, #10, #31).
 
 The evaluation's overlap with verbal content is limited to: Edmunds-Tucker criminalizing brethren, Utah statehood equal-footing clause violation, birthright forfeiture (land, priesthood, religious freedom, posterity), and the overall assessment that the US persecuted the Saints. These are correctly captured.
 
@@ -187,7 +183,7 @@ The evaluation's overlap with verbal content is limited to: Edmunds-Tucker crimi
 
 Philpot's central linguistic claim — that Hebrew *kə·nā·'an* means both "Canaan" and "land of traffick/trade" — is not made up. The Church's own Bible Dictionary confirms it:
 
-> "As the Phoenicians were great traders, *Canaanite* came to denote merchant ([Isa. 23:8](https://www.churchofjesuschrist.org/study/scriptures/ot/isa/23?lang=eng); [Ezek. 17:4](https://www.churchofjesuschrist.org/study/scriptures/ot/ezek/17?lang=eng); [Hosea 12:7](https://www.churchofjesuschrist.org/study/scriptures/ot/hosea/12?lang=eng&id=p7#p7))." — [Bible Dictionary: Canaan](https://www.churchofjesuschrist.org/study/scriptures/bd/canaan?lang=eng)
+> "As the Phoenicians were great traders, *Canaanite* came to denote merchant ([Isa. 23:8](../../gospel-library/eng/scriptures/ot/isa/23.md); [Ezek. 17:4](../../gospel-library/eng/scriptures/ot/ezek/17.md); [Hosea 12:7](../../gospel-library/eng/scriptures/ot/hosea/12.md))." — [Bible Dictionary: Canaan](../../gospel-library/eng/scriptures/bd/canaan.md)
 
 Note that the Bible Dictionary *specifically cites Ezekiel 17:4* — the very verse Philpot builds on. Additionally, the Ezekiel 17:4 footnote in the LDS scriptures reads: "**traffick** — HEB trade or traders." The linguistic connection between "Canaan," "merchant," and "land of traffick" is genuine and acknowledged in LDS scholarship.
 
@@ -195,13 +191,13 @@ Note that the Bible Dictionary *specifically cites Ezekiel 17:4* — the very ve
 
 This is simple and factual:
 
-> "In 1841, when this revelation was given, the city of Nauvoo, **occupying the site of the former village of Commerce, Illinois**, had been built up by the Saints, and here the headquarters of the Church had been established." — [D&C 124 header](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/124?lang=eng)
+> "In 1841, when this revelation was given, the city of Nauvoo, **occupying the site of the former village of Commerce, Illinois**, had been built up by the Saints, and here the headquarters of the Church had been established." — [D&C 124 header](../../gospel-library/eng/scriptures/dc-testament/dc/124.md)
 
 The town was literally called "Commerce" when the Saints first arrived. Joseph Smith renamed it "Nauvoo." This is not interpretation — it's history. The connection "city of traffick → Commerce, IL" is a genuine English-Hebrew coincidence that any reader can verify.
 
 **3. Official Declaration 1 Quotes Are Accurate and Canonical**
 
-Philpot quotes Wilford Woodruff from the Salt Lake Temple dedication (April 1893), and these words appear verbatim in the canonized [Official Declaration 1](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/od/1?lang=eng):
+Philpot quotes Wilford Woodruff from the Salt Lake Temple dedication (April 1893), and these words appear verbatim in the canonized [Official Declaration 1](../../gospel-library/eng/scriptures/dc-testament/od/1.md):
 
 > "The Lord showed me by vision and revelation exactly what would take place if we did not stop this practice."
 
@@ -211,7 +207,7 @@ These are the words of a prophet describing a divine directive. They are part of
 
 **4. Ezekiel 17:22–24 IS About the Last Days**
 
-The LDS chapter header acknowledges this: "Yet the Lord will bring forth **in the last days** a goodly tree from the cedars of Lebanon." And the footnotes confirm it — [Ezekiel 17:22a](https://www.churchofjesuschrist.org/study/scriptures/ot/ezek/17?lang=eng&id=p22#p22) cross-references [Omni 1:15](https://www.churchofjesuschrist.org/study/scriptures/bofm/omni/1?lang=eng&id=p15#p15), [Mosiah 25:2](https://www.churchofjesuschrist.org/study/scriptures/bofm/mosiah/25?lang=eng&id=p2#p2), and [Helaman 8:21](https://www.churchofjesuschrist.org/study/scriptures/bofm/hel/8?lang=eng&id=p21#p21) — all Book of Mormon passages about peoples taken from Jerusalem and transplanted to the Americas. Footnote 22b connects to [Jacob 5:24](https://www.churchofjesuschrist.org/study/scriptures/bofm/jacob/5?lang=eng&id=p24#p24), the allegory of the olive tree.
+The LDS chapter header acknowledges this: "Yet the Lord will bring forth **in the last days** a goodly tree from the cedars of Lebanon." And the footnotes confirm it — [Ezekiel 17:22a](../../gospel-library/eng/scriptures/ot/ezek/17.md) cross-references [Omni 1:15](../../gospel-library/eng/scriptures/bofm/omni/1.md), [Mosiah 25:2](../../gospel-library/eng/scriptures/bofm/mosiah/25.md), and [Helaman 8:21](../../gospel-library/eng/scriptures/bofm/hel/8.md) — all Book of Mormon passages about peoples taken from Jerusalem and transplanted to the Americas. Footnote 22b connects to [Jacob 5:24](../../gospel-library/eng/scriptures/bofm/jacob/5.md), the allegory of the olive tree.
 
 The Lord's own coda to the riddle (vv. 22–24) is about replanting branches in a new land — and the LDS footnotes explicitly connect this to the Book of Mormon peoples. There IS a legitimate Restoration dimension to Ezekiel 17. The question is *how much* of the chapter it applies to.
 
@@ -223,7 +219,7 @@ The Edmunds-Tucker Act (1887), the Manifesto (1890), the Salt Lake Temple dedica
 
 President Hinckley did say:
 
-> "I cannot forget the great lesson of Pharaoh's dream of the fat and lean kine and of the full and withered stalks of corn. … Now, I do not wish to be an alarmist." — [The Times in Which We Live](https://www.churchofjesuschrist.org/study/general-conference/2001/10/the-times-in-which-we-live?lang=eng), October 2001
+> "I cannot forget the great lesson of Pharaoh's dream of the fat and lean kine and of the full and withered stalks of corn. … Now, I do not wish to be an alarmist." — [The Times in Which We Live](../../gospel-library/eng/general-conference/2001/10/the-times-in-which-we-live.md), October 2001
 
 The quote is real and correctly attributed. However, context matters — see "Missed the Mark" below.
 
@@ -233,7 +229,7 @@ The quote is real and correctly attributed. However, context matters — see "Mi
 
 **1. The "Highest Branch" = Joseph Smith (via 2 Nephi 3)**
 
-Philpot connects Ezekiel 17:3 ("took the highest branch of the cedar") to [2 Nephi 3:5](https://www.churchofjesuschrist.org/study/scriptures/bofm/2-ne/3?lang=eng&id=p5#p5): "Out of the fruit of his loins the Lord God would raise up a righteous *branch* unto the house of Israel." The word "branch" appears in both passages, and 2 Nephi 3:15 explicitly identifies this figure as "Joseph" — named after his father.
+Philpot connects Ezekiel 17:3 ("took the highest branch of the cedar") to [2 Nephi 3:5](../../gospel-library/eng/scriptures/bofm/2-ne/3.md): "Out of the fruit of his loins the Lord God would raise up a righteous *branch* unto the house of Israel." The word "branch" appears in both passages, and 2 Nephi 3:15 explicitly identifies this figure as "Joseph" — named after his father.
 
 **What supports this:** The typological resonance is real. 2 Nephi 3 is a prophecy about Joseph Smith ("a choice seer... out of the fruit of thy loins," v. 7). The "branch" language in both passages invites comparison. And Ezekiel 17:22 — where the Lord says "I will also take of the highest branch" — has LDS footnotes pointing to Book of Mormon passages about peoples transplanted to the Americas, establishing that the Church's own editors saw a New World dimension in the text.
 
@@ -245,7 +241,7 @@ Also, the Hebrew word for "divers colours" in Ezekiel 17:3 (רִקְמָה, *riq
 
 **2. Moses 6:17 — The Cainan/Canaan/Commerce Chain**
 
-[Moses 6:17](https://www.churchofjesuschrist.org/study/scriptures/pgp/moses/6?lang=eng&id=p17#p17): "Enos and the residue of the people of God came out from the land, which was called Shulon, and dwelt in a land of promise, which he called after his own son, whom he had named Cainan."
+[Moses 6:17](../../gospel-library/eng/scriptures/pgp/moses/6.md): "Enos and the residue of the people of God came out from the land, which was called Shulon, and dwelt in a land of promise, which he called after his own son, whom he had named Cainan."
 
 Philpot uses this to create a typological chain: Cainan → Canaan → land of promise → Commerce, Illinois. The phonetic similarity is provocative.
 
@@ -267,10 +263,10 @@ This ambiguity actually suggests something more interesting than what Philpot of
 
 This is the fundamental problem with Phase 5. Ezekiel 17 is a self-interpreting text — one of the rare cases where a prophet explains his own riddle in the same chapter:
 
-- **v. 3, first eagle:** "The king of Babylon is come to Jerusalem, and hath taken the king thereof" (v. 12) — Nebuchadnezzar took King Jehoiachin. The footnote at 12b cross-references [2 Kings 24:11](https://www.churchofjesuschrist.org/study/scriptures/ot/2-kgs/24?lang=eng&id=p11#p11).
+- **v. 3, first eagle:** "The king of Babylon is come to Jerusalem, and hath taken the king thereof" (v. 12) — Nebuchadnezzar took King Jehoiachin. The footnote at 12b cross-references [2 Kings 24:11](../../gospel-library/eng/scriptures/ot/2-kgs/24.md).
 - **v. 4, "highest branch":** The king carried to Babylon (Jehoiachin/Zedekiah). Footnote 4a: "TG Israel, Scattering of."
-- **v. 7, second eagle:** Pharaoh of Egypt, to whom Zedekiah appealed (v. 15). Footnote 17a: "[Jer. 44:30](https://www.churchofjesuschrist.org/study/scriptures/ot/jer/44?lang=eng)."
-- **v. 13, covenant and oath:** Nebuchadnezzar's vassal agreement with Zedekiah. Footnote 13b: "[2 Chr. 36:13](https://www.churchofjesuschrist.org/study/scriptures/ot/2-chr/36?lang=eng)."
+- **v. 7, second eagle:** Pharaoh of Egypt, to whom Zedekiah appealed (v. 15). Footnote 17a: "[Jer. 44:30](../../gospel-library/eng/scriptures/ot/jer/44.md)."
+- **v. 13, covenant and oath:** Nebuchadnezzar's vassal agreement with Zedekiah. Footnote 13b: "[2 Chr. 36:13](../../gospel-library/eng/scriptures/ot/2-chr/36.md)."
 - **v. 14, "kingdom might be base":** Nebuchadnezzar's intent that Judah remain subordinate and not revolt.
 - **vv. 15–19, broken covenant:** Zedekiah broke his oath of loyalty to Babylon by seeking Egyptian alliance. "Shall he break the covenant, and be delivered?" (v. 15). God himself adopts the broken oath as *his own*: "Mine oath that he hath despised, and my covenant that he hath broken" (v. 19).
 
@@ -282,13 +278,13 @@ Compare this with JST Revelation 12, where Philpot's Phase 4 reading was *suppor
 
 Philpot reads Ezekiel 17:12 — "the king of Babylon is come to Jerusalem" — as Alfred Cumming arriving in Utah in 1858 as a US-appointed territorial governor.
 
-This is typological assertion, not exegesis. The text identifies the king of Babylon as *Nebuchadnezzar*, who conquered Jerusalem in 597 BC. The footnote at 12b points to [2 Kings 24:11](https://www.churchofjesuschrist.org/study/scriptures/ot/2-kgs/24?lang=eng&id=p11#p11), which narrates the actual historical Babylonian siege. Cumming was a civilian governor who arrived during the Utah War — a military expedition that never resulted in battle. He governed a territory that remained part of the United States. This is not Babylon conquering Jerusalem; it is a federal government asserting authority over its own territory.
+This is typological assertion, not exegesis. The text identifies the king of Babylon as *Nebuchadnezzar*, who conquered Jerusalem in 597 BC. The footnote at 12b points to [2 Kings 24:11](../../gospel-library/eng/scriptures/ot/2-kgs/24.md), which narrates the actual historical Babylonian siege. Cumming was a civilian governor who arrived during the Utah War — a military expedition that never resulted in battle. He governed a territory that remained part of the United States. This is not Babylon conquering Jerusalem; it is a federal government asserting authority over its own territory.
 
 **3. The "Broken Oaths" Framework Mischaracterizes OD1**
 
 Philpot reads Ezekiel 17:15–19 ("Shall he break the covenant, and be delivered?... Mine oath that he hath despised") to frame the statehood concessions as broken covenants. Combined with the Bible Dictionary "Birthright" entry, this creates the impression that the Church forfeited a divine inheritance.
 
-But [Official Declaration 1](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/od/1?lang=eng) tells a different story. Woodruff did not describe his decision as breaking a covenant — he described it as *following revelation to preserve covenant functionality*:
+But [Official Declaration 1](../../gospel-library/eng/scriptures/dc-testament/od/1.md) tells a different story. Woodruff did not describe his decision as breaking a covenant — he described it as *following revelation to preserve covenant functionality*:
 
 > "I should have let all the temples go out of our hands; I should have gone to prison myself, and let every other man go there, **had not the God of heaven commanded me to do what I did do**; and when the hour came that I was commanded to do that, it was all clear to me. I went before the Lord, and I wrote what the Lord told me to write."
 
@@ -304,7 +300,7 @@ This is not the language of defeat, capitulation, or broken oaths. It is the lan
 
 **1. Ezekiel 17:22–24 Points to Scattered Israel and Mulek, Not Joseph Smith**
 
-The chapter header says the Lord will bring forth "in the last days a goodly tree from the cedars of Lebanon" — acknowledging a future fulfillment. But the LDS footnotes at v. 22a point to [Omni 1:15](https://www.churchofjesuschrist.org/study/scriptures/bofm/omni/1?lang=eng&id=p15#p15), [Mosiah 25:2](https://www.churchofjesuschrist.org/study/scriptures/bofm/mosiah/25?lang=eng&id=p2#p2), and [Helaman 8:21](https://www.churchofjesuschrist.org/study/scriptures/bofm/hel/8?lang=eng&id=p21#p21) — all references to the people of Mulek/Zarahemla who came from Jerusalem to the Americas. The Church's own editors connected the "highest branch" taken from the cedar and transplanted to the Book of Mormon, not to Joseph Smith.
+The chapter header says the Lord will bring forth "in the last days a goodly tree from the cedars of Lebanon" — acknowledging a future fulfillment. But the LDS footnotes at v. 22a point to [Omni 1:15](../../gospel-library/eng/scriptures/bofm/omni/1.md), [Mosiah 25:2](../../gospel-library/eng/scriptures/bofm/mosiah/25.md), and [Helaman 8:21](../../gospel-library/eng/scriptures/bofm/hel/8.md) — all references to the people of Mulek/Zarahemla who came from Jerusalem to the Americas. The Church's own editors connected the "highest branch" taken from the cedar and transplanted to the Book of Mormon, not to Joseph Smith.
 
 This is actually a stronger Restoration connection than what Philpot offers. The LDS footnote system *does* see Ezekiel 17:22 as pointing to the New World — but the connection is to the scattering and gathering of Israel (branches carried to distant lands), not to an individual prophet or the city of Commerce, Illinois. Philpot could have used the footnotes to support a more defensible argument.
 
@@ -312,7 +308,7 @@ This is actually a stronger Restoration connection than what Philpot offers. The
 
 Philpot cites President Hinckley's October 2001 reference to Pharaoh's dream (slide 170) immediately after discussing Ezekiel 17:10's "east wind" and Genesis 41's "seven ears blasted with the east wind." The juxtaposition implies Hinckley was validating the Ezekiel-Genesis-east-wind interpretive chain.
 
-Reading the [full talk](https://www.churchofjesuschrist.org/study/general-conference/2001/10/the-times-in-which-we-live?lang=eng) reveals a completely different context. Hinckley was speaking after the September 11 attacks about *economic preparedness and self-reliance*:
+Reading the [full talk](../../gospel-library/eng/general-conference/2001/10/the-times-in-which-we-live.md) reveals a completely different context. Hinckley was speaking after the September 11 attacks about *economic preparedness and self-reliance*:
 
 > "Occasions of this kind pull us up sharply to a realization that life is fragile, peace is fragile, civilization itself is fragile. The economy is particularly vulnerable. We have been counseled again and again concerning self-reliance, concerning debt, concerning thrift."
 
@@ -332,13 +328,13 @@ Philpot applies "rebellious house" to the US government. But if the typology hol
 
 **1. Jacob 5 — The Lord's Own "Branch" Allegory**
 
-Ezekiel 17's footnotes at v. 8a and v. 22b both cross-reference [Jacob 5](https://www.churchofjesuschrist.org/study/scriptures/bofm/jacob/5?lang=eng) — Zenos's allegory of the olive tree. This is the Book of Mormon's own extended metaphor about branches being taken from the mother tree and planted in distant corners of the vineyard. Jacob 5 deals with the same themes as Ezekiel 17 (scattering, branches, transplanting, the Lord of the vineyard tending his trees), but it does so within the Restoration canon and with far more detail. If Philpot wanted a "branch" framework for understanding how God transplants covenant peoples to new lands, Jacob 5 was right there — and the Ezekiel 17 footnotes point to it.
+Ezekiel 17's footnotes at v. 8a and v. 22b both cross-reference [Jacob 5](../../gospel-library/eng/scriptures/bofm/jacob/5.md) — Zenos's allegory of the olive tree. This is the Book of Mormon's own extended metaphor about branches being taken from the mother tree and planted in distant corners of the vineyard. Jacob 5 deals with the same themes as Ezekiel 17 (scattering, branches, transplanting, the Lord of the vineyard tending his trees), but it does so within the Restoration canon and with far more detail. If Philpot wanted a "branch" framework for understanding how God transplants covenant peoples to new lands, Jacob 5 was right there — and the Ezekiel 17 footnotes point to it.
 
 **2. D&C 101:80 — The Lord's Own View of the US Government**
 
-> "I established the Constitution of this land, by the hands of wise men whom I raised up unto this very purpose." — [D&C 101:80](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/101?lang=eng&id=p80#p80)
+> "I established the Constitution of this land, by the hands of wise men whom I raised up unto this very purpose." — [D&C 101:80](../../gospel-library/eng/scriptures/dc-testament/dc/101.md)
 
-Philpot's framework positions the US government as the "second great eagle" that oppresses and withers the vine. But the Lord himself describes raising up the Constitution through "wise men" for *his* purposes. The relationship between the Church and the US government is far more complex than oppressor/oppressed. [D&C 98:5–6](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/98?lang=eng&id=p5-p6#p5) adds: "That law of the land which is *constitutional*, supporting that principle of freedom in maintaining rights and privileges, belongs to all mankind, and is justifiable before me." A complete analysis would grapple with this tension rather than resolving it one-dimensionally.
+Philpot's framework positions the US government as the "second great eagle" that oppresses and withers the vine. But the Lord himself describes raising up the Constitution through "wise men" for *his* purposes. The relationship between the Church and the US government is far more complex than oppressor/oppressed. [D&C 98:5–6](../../gospel-library/eng/scriptures/dc-testament/dc/98.md) adds: "That law of the land which is *constitutional*, supporting that principle of freedom in maintaining rights and privileges, belongs to all mankind, and is justifiable before me." A complete analysis would grapple with this tension rather than resolving it one-dimensionally.
 
 **3. The Actual Theology of OD1 — Strategic Obedience, Not Defeat**
 
@@ -348,7 +344,7 @@ A richer reading would compare Woodruff's decision with other scriptural moments
 
 **4. D&C 98 and D&C 101 — The Lord's Instructions on Law**
 
-[D&C 98:4–6](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/98?lang=eng&id=p4-p6#p4) gives the Lord's own instructions on obeying constitutional law. [D&C 101:77–80](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/101?lang=eng&id=p77-p80#p77) explains that the Constitution was established for "the rights and protection of all flesh." These sections acknowledge that governments can be corrupt (D&C 98:10: "when the wicked rule the people mourn") while also affirming that constitutional government serves divine purposes. This nuance is entirely absent from Philpot's presentation, which treats the government as a purely adversarial force.
+[D&C 98:4–6](../../gospel-library/eng/scriptures/dc-testament/dc/98.md) gives the Lord's own instructions on obeying constitutional law. [D&C 101:77–80](../../gospel-library/eng/scriptures/dc-testament/dc/101.md) explains that the Constitution was established for "the rights and protection of all flesh." These sections acknowledge that governments can be corrupt (D&C 98:10: "when the wicked rule the people mourn") while also affirming that constitutional government serves divine purposes. This nuance is entirely absent from Philpot's presentation, which treats the government as a purely adversarial force.
 
 ---
 

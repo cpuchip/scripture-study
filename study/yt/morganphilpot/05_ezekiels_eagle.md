@@ -169,11 +169,7 @@ The 1856 Republican Party platform phrase linking slavery and polygamy as "the t
 
 The evaluation's analysis of Ezekiel 17 remains valid as a critique of the SLIDE content — the eisegesis point, the Hebrew word study issues (*riqmah* vs. *ketonet passim*), and the OD1 mischaracterization are all correctly argued. But the audience in Chandler never heard the Ezekiel 17 argument verbally. What they heard was a comprehensive Revelation 13 reading that is theologically more ambitious and historically more detailed than the slide-based Ezekiel 17 material.
 
-The Revelation 13 argument deserves its own evaluation. Several claims are verifiable:
-- The 42-months calculation appears mathematically wrong (Jan 1863 to Apr 1865 ≈ 27 months)
-- The nuclear weapons / "fire from heaven" reading has been made by other commentators historically
-- The beast = government (not devil) distinction is an important hermeneutic clarification
-- The seven-heads = seven-dispensations reading is creative but novel
+The Revelation 13 argument has been given its own evaluation: **[05a_revelation_13.md](05a_revelation_13.md)**. That document evaluates the beast-kingdom identification, the Civil War / "deadly wound" reading, the 42-months calculation (which appears mathematically wrong: Jan 1863 to Apr 1865 ≈ 27 months), the nuclear weapons / "fire from heaven" reading, the beast = government hermeneutic, and the seven-dispensations framework. Several verbal-only items from this phase are also evaluated in **[verbal_only_evaluation.md](verbal_only_evaluation.md)** (items #4, #6, #9, #10, #31).
 
 The evaluation's overlap with verbal content is limited to: Edmunds-Tucker criminalizing brethren, Utah statehood equal-footing clause violation, birthright forfeiture (land, priesthood, religious freedom, posterity), and the overall assessment that the US persecuted the Saints. These are correctly captured.
 

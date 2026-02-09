@@ -16,31 +16,31 @@
 | Slides 269–355 | [slides.md](../../../yt/morganphilpot/slides.md) lines 3533–4500 |
 | Transcript Part II | [transcript.md](../../../yt/signs-of-the-times/89oEfk37E30/transcript.md) ~55:00–1:11:00 |
 | Transcript Part III | [transcript.md](../../../yt/signs-of-the-times/GtQRKMJdYh4/transcript.md) ~0:00–25:00 |
-| Isaiah 9 | [Isaiah 9](https://www.churchofjesuschrist.org/study/scriptures/ot/isa/9?lang=eng) |
-| Isaiah 10 | [Isaiah 10](https://www.churchofjesuschrist.org/study/scriptures/ot/isa/10?lang=eng) |
-| Deuteronomy 34:3 | [Deuteronomy 34](https://www.churchofjesuschrist.org/study/scriptures/ot/deut/34?lang=eng) |
-| Judges 1:16 | [Judges 1](https://www.churchofjesuschrist.org/study/scriptures/ot/judg/1?lang=eng) |
-| 2 Kings 2:19–22 | [2 Kings 2](https://www.churchofjesuschrist.org/study/scriptures/ot/2-kgs/2?lang=eng) |
-| Luke 10:30 | [Luke 10](https://www.churchofjesuschrist.org/study/scriptures/nt/luke/10?lang=eng) |
-| Matthew 21:8–9 | [Matthew 21](https://www.churchofjesuschrist.org/study/scriptures/nt/matt/21?lang=eng) |
-| John 12:13 | [John 12](https://www.churchofjesuschrist.org/study/scriptures/nt/john/12?lang=eng) |
-| Mark 10:46 | [Mark 10](https://www.churchofjesuschrist.org/study/scriptures/nt/mark/10?lang=eng) |
-| Revelation 6:12–17 | [Revelation 6](https://www.churchofjesuschrist.org/study/scriptures/nt/rev/6?lang=eng) |
-| Revelation 7:9–10 | [Revelation 7](https://www.churchofjesuschrist.org/study/scriptures/nt/rev/7?lang=eng) |
-| Revelation 8:1 | [Revelation 8](https://www.churchofjesuschrist.org/study/scriptures/nt/rev/8?lang=eng) |
-| D&C 38:11–12 | [D&C 38](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/38?lang=eng) |
-| D&C 77:6–7, 12 | [D&C 77](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/77?lang=eng) |
-| D&C 87:6–8 | [D&C 87](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/87?lang=eng) |
-| D&C 88:95 | [D&C 88](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/88?lang=eng) |
-| D&C 110 | [D&C 110](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/110?lang=eng) |
-| D&C 112:24–26 | [D&C 112](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/112?lang=eng) |
-| D&C 124:45 | [D&C 124](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/124?lang=eng) |
-| Jeremiah 4:5–7 | [Jeremiah 4](https://www.churchofjesuschrist.org/study/scriptures/ot/jer/4?lang=eng) |
-| Hinckley, "A Time of New Beginnings" (Apr 2000) | [a-time-of-new-beginnings.md](https://www.churchofjesuschrist.org/study/general-conference/2000/04/a-time-of-new-beginnings?lang=eng) |
-| Hinckley, "To All the World in Testimony" (Apr 2000) | [to-all-the-world-in-testimony.md](https://www.churchofjesuschrist.org/study/general-conference/2000/04/to-all-the-world-in-testimony?lang=eng) |
-| Hinckley, "This Great Millennial Year" (Oct 2000) | [this-great-millennial-year.md](https://www.churchofjesuschrist.org/study/general-conference/2000/10/this-great-millennial-year?lang=eng) |
-| Monson, "Dedication Day" (Oct 2000) | [dedication-day.md](https://www.churchofjesuschrist.org/study/general-conference/2000/10/dedication-day?lang=eng) |
-| Eyring, "Prayers of Faith" (Apr 2020) | [17eyring.md](https://www.churchofjesuschrist.org/study/general-conference/2020/04/17eyring?lang=eng) |
+| Isaiah 9 | [Isaiah 9](../../../gospel-library/eng/scriptures/ot/isa/9.md) |
+| Isaiah 10 | [Isaiah 10](../../../gospel-library/eng/scriptures/ot/isa/10.md) |
+| Deuteronomy 34:3 | [Deuteronomy 34](../../../gospel-library/eng/scriptures/ot/deut/34.md) |
+| Judges 1:16 | [Judges 1](../../../gospel-library/eng/scriptures/ot/judg/1.md) |
+| 2 Kings 2:19–22 | [2 Kings 2](../../../gospel-library/eng/scriptures/ot/2-kgs/2.md) |
+| Luke 10:30 | [Luke 10](../../../gospel-library/eng/scriptures/nt/luke/10.md) |
+| Matthew 21:8–9 | [Matthew 21](../../../gospel-library/eng/scriptures/nt/matt/21.md) |
+| John 12:13 | [John 12](../../../gospel-library/eng/scriptures/nt/john/12.md) |
+| Mark 10:46 | [Mark 10](../../../gospel-library/eng/scriptures/nt/mark/10.md) |
+| Revelation 6:12–17 | [Revelation 6](../../../gospel-library/eng/scriptures/nt/rev/6.md) |
+| Revelation 7:9–10 | [Revelation 7](../../../gospel-library/eng/scriptures/nt/rev/7.md) |
+| Revelation 8:1 | [Revelation 8](../../../gospel-library/eng/scriptures/nt/rev/8.md) |
+| D&C 38:11–12 | [D&C 38](../../../gospel-library/eng/scriptures/dc-testament/dc/38.md) |
+| D&C 77:6–7, 12 | [D&C 77](../../../gospel-library/eng/scriptures/dc-testament/dc/77.md) |
+| D&C 87:6–8 | [D&C 87](../../../gospel-library/eng/scriptures/dc-testament/dc/87.md) |
+| D&C 88:95 | [D&C 88](../../../gospel-library/eng/scriptures/dc-testament/dc/88.md) |
+| D&C 110 | [D&C 110](../../../gospel-library/eng/scriptures/dc-testament/dc/110.md) |
+| D&C 112:24–26 | [D&C 112](../../../gospel-library/eng/scriptures/dc-testament/dc/112.md) |
+| D&C 124:45 | [D&C 124](../../../gospel-library/eng/scriptures/dc-testament/dc/124.md) |
+| Jeremiah 4:5–7 | [Jeremiah 4](../../../gospel-library/eng/scriptures/ot/jer/4.md) |
+| Hinckley, "A Time of New Beginnings" (Apr 2000) | [a-time-of-new-beginnings.md](../../../gospel-library/eng/general-conference/2000/04/a-time-of-new-beginnings.md) |
+| Hinckley, "To All the World in Testimony" (Apr 2000) | [to-all-the-world-in-testimony.md](../../../gospel-library/eng/general-conference/2000/04/to-all-the-world-in-testimony.md) |
+| Hinckley, "This Great Millennial Year" (Oct 2000) | [this-great-millennial-year.md](../../../gospel-library/eng/general-conference/2000/10/this-great-millennial-year.md) |
+| Monson, "Dedication Day" (Oct 2000) | [dedication-day.md](../../../gospel-library/eng/general-conference/2000/10/dedication-day.md) |
+| Eyring, "Prayers of Faith" (Apr 2020) | [17eyring.md](../../../gospel-library/eng/general-conference/2020/04/17eyring.md) |
 | Phase 7 Evaluation | [07_type_and_sign.md](07_type_and_sign.md) |
 | Study Plan | [study_plans.md](study_plans.md) |
 
@@ -76,26 +76,26 @@ A fourth, subsidiary claim maps the 20 kings of the Southern Kingdom of Judah to
 
 | Scripture | Verified | Notes |
 |-----------|----------|-------|
-| [Isaiah 9:10](https://www.churchofjesuschrist.org/study/scriptures/ot/isa/9?lang=eng&id=p10#p10) | ✅ | "The bricks are fallen down, but we will build with hewn stones" |
-| [Isaiah 10:5](https://www.churchofjesuschrist.org/study/scriptures/ot/isa/10?lang=eng&id=p5#p5) | ✅ | "O Assyrian, the rod of mine anger" |
-| [Deuteronomy 34:3](https://www.churchofjesuschrist.org/study/scriptures/ot/deut/34?lang=eng&id=p3#p3) | ✅ | "Jericho, the city of palm trees" |
-| [Judges 1:16](https://www.churchofjesuschrist.org/study/scriptures/ot/judg/1?lang=eng&id=p16#p16) | ✅ | "the city of palm trees with the children of Judah" |
-| [2 Kings 2:19–22](https://www.churchofjesuschrist.org/study/scriptures/ot/2-kgs/2?lang=eng&id=p19-p22#p19) | ✅ | Elisha heals Jericho's waters — "I have healed these waters" |
-| [Luke 10:30](https://www.churchofjesuschrist.org/study/scriptures/nt/luke/10?lang=eng&id=p30#p30) | ✅ | "A certain man went down from Jerusalem to Jericho" |
-| [Mark 10:46](https://www.churchofjesuschrist.org/study/scriptures/nt/mark/10?lang=eng&id=p46#p46) | ✅ | "they came to Jericho ... as he went out of Jericho" — day before Triumphal Entry |
-| [Matthew 21:8–9](https://www.churchofjesuschrist.org/study/scriptures/nt/matt/21?lang=eng&id=p8-p9#p8) | ✅ | "others cut down branches from the trees" — Hosanna, Son of David |
-| [John 12:13](https://www.churchofjesuschrist.org/study/scriptures/nt/john/12?lang=eng&id=p13#p13) | ✅ | "Took branches of palm trees" — explicitly palms |
-| [Revelation 6:12–14](https://www.churchofjesuschrist.org/study/scriptures/nt/rev/6?lang=eng&id=p12-p14#p12) | ✅ | Sixth seal: earthquake, sun black, "heaven departed as a scroll" |
-| [Revelation 7:9](https://www.churchofjesuschrist.org/study/scriptures/nt/rev/7?lang=eng&id=p9#p9) | ✅ | "palms in their hands" before the Lamb |
-| [Revelation 8:1](https://www.churchofjesuschrist.org/study/scriptures/nt/rev/8?lang=eng&id=p1#p1) | ✅ | "silence in heaven about the space of half an hour" |
-| [D&C 38:11–12](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/38?lang=eng&id=p11-p12#p11) | ✅ | "silence to reign, and all eternity is pained, and the angels are waiting" |
-| [D&C 77:6–7](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/77?lang=eng&id=p6-p7#p6) | ✅ | Seven seals = seven thousand years; "the first seal contains the things of the first thousand years" |
-| [D&C 88:95](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/88?lang=eng&id=p95#p95) | ✅ | "silence in heaven for the space of half an hour; and immediately after shall the curtain of heaven be unfolded, as a scroll" |
-| [D&C 110:1–3](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/110?lang=eng&id=p1-p3#p1) | ✅ | "The veil was taken from our minds ... we saw the Lord" |
-| [D&C 112:24–26](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/112?lang=eng&id=p24-p26#p24) | ✅ | "upon my house shall it begin, and from my house shall it go forth" |
-| [D&C 124:45](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/124?lang=eng&id=p45#p45) | ✅ | "they shall not be moved out of their place" |
-| [D&C 87:6](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/87?lang=eng&id=p6#p6) | ✅ | "with the sword and by bloodshed the inhabitants of the earth shall mourn" |
-| [Jeremiah 4:5–7](https://www.churchofjesuschrist.org/study/scriptures/ot/jer/4?lang=eng&id=p5-p7#p5) | ✅ | "Blow ye the trumpet in the land: cry, gather together, and say, Assemble yourselves" |
+| [Isaiah 9:10](../../../gospel-library/eng/scriptures/ot/isa/9.md) | ✅ | "The bricks are fallen down, but we will build with hewn stones" |
+| [Isaiah 10:5](../../../gospel-library/eng/scriptures/ot/isa/10.md) | ✅ | "O Assyrian, the rod of mine anger" |
+| [Deuteronomy 34:3](../../../gospel-library/eng/scriptures/ot/deut/34.md) | ✅ | "Jericho, the city of palm trees" |
+| [Judges 1:16](../../../gospel-library/eng/scriptures/ot/judg/1.md) | ✅ | "the city of palm trees with the children of Judah" |
+| [2 Kings 2:19–22](../../../gospel-library/eng/scriptures/ot/2-kgs/2.md) | ✅ | Elisha heals Jericho's waters — "I have healed these waters" |
+| [Luke 10:30](../../../gospel-library/eng/scriptures/nt/luke/10.md) | ✅ | "A certain man went down from Jerusalem to Jericho" |
+| [Mark 10:46](../../../gospel-library/eng/scriptures/nt/mark/10.md) | ✅ | "they came to Jericho ... as he went out of Jericho" — day before Triumphal Entry |
+| [Matthew 21:8–9](../../../gospel-library/eng/scriptures/nt/matt/21.md) | ✅ | "others cut down branches from the trees" — Hosanna, Son of David |
+| [John 12:13](../../../gospel-library/eng/scriptures/nt/john/12.md) | ✅ | "Took branches of palm trees" — explicitly palms |
+| [Revelation 6:12–14](../../../gospel-library/eng/scriptures/nt/rev/6.md) | ✅ | Sixth seal: earthquake, sun black, "heaven departed as a scroll" |
+| [Revelation 7:9](../../../gospel-library/eng/scriptures/nt/rev/7.md) | ✅ | "palms in their hands" before the Lamb |
+| [Revelation 8:1](../../../gospel-library/eng/scriptures/nt/rev/8.md) | ✅ | "silence in heaven about the space of half an hour" |
+| [D&C 38:11–12](../../../gospel-library/eng/scriptures/dc-testament/dc/38.md) | ✅ | "silence to reign, and all eternity is pained, and the angels are waiting" |
+| [D&C 77:6–7](../../../gospel-library/eng/scriptures/dc-testament/dc/77.md) | ✅ | Seven seals = seven thousand years; "the first seal contains the things of the first thousand years" |
+| [D&C 88:95](../../../gospel-library/eng/scriptures/dc-testament/dc/88.md) | ✅ | "silence in heaven for the space of half an hour; and immediately after shall the curtain of heaven be unfolded, as a scroll" |
+| [D&C 110:1–3](../../../gospel-library/eng/scriptures/dc-testament/dc/110.md) | ✅ | "The veil was taken from our minds ... we saw the Lord" |
+| [D&C 112:24–26](../../../gospel-library/eng/scriptures/dc-testament/dc/112.md) | ✅ | "upon my house shall it begin, and from my house shall it go forth" |
+| [D&C 124:45](../../../gospel-library/eng/scriptures/dc-testament/dc/124.md) | ✅ | "they shall not be moved out of their place" |
+| [D&C 87:6](../../../gospel-library/eng/scriptures/dc-testament/dc/87.md) | ✅ | "with the sword and by bloodshed the inhabitants of the earth shall mourn" |
+| [Jeremiah 4:5–7](../../../gospel-library/eng/scriptures/ot/jer/4.md) | ✅ | "Blow ye the trumpet in the land: cry, gather together, and say, Assemble yourselves" |
 
 ---
 
@@ -137,19 +137,19 @@ A fourth, subsidiary claim maps the 20 kings of the Southern Kingdom of Judah to
 
 "Palmyra" derives from Latin *palma* (palm tree), making it literally "city of palm trees." Scripture identifies Jericho by the same title in two separate passages:
 
-> "the plain of the valley of Jericho, the city of palm trees, unto Zoar" ([Deuteronomy 34:3](https://www.churchofjesuschrist.org/study/scriptures/ot/deut/34?lang=eng&id=p3#p3))
+> "the plain of the valley of Jericho, the city of palm trees, unto Zoar" ([Deuteronomy 34:3](../../../gospel-library/eng/scriptures/ot/deut/34.md))
 
-> "the children of the Kenite, Moses' father in law, went up out of the city of palm trees with the children of Judah" ([Judges 1:16](https://www.churchofjesuschrist.org/study/scriptures/ot/judg/1?lang=eng&id=p16#p16))
+> "the children of the Kenite, Moses' father in law, went up out of the city of palm trees with the children of Judah" ([Judges 1:16](../../../gospel-library/eng/scriptures/ot/judg/1.md))
 
 That Joseph Smith grew up in a place called "city of palm trees" — and that the Palmyra Temple was built there — is at minimum a striking providential coincidence. Philpot's further observation that Jericho sits at the crossroads of several key gospel narratives (Elisha's healing waters, the Good Samaritan's road, the day before Palm Sunday) transforms a mere name-coincidence into a web of interconnected scriptural imagery.
 
 John's Gospel is the only one that specifies the Triumphal Entry procession used **palm** branches:
 
-> "Took branches of palm trees, and went forth to meet him, and cried, Hosanna: Blessed is the King of Israel that cometh in the name of the Lord" ([John 12:13](https://www.churchofjesuschrist.org/study/scriptures/nt/john/12?lang=eng&id=p13#p13))
+> "Took branches of palm trees, and went forth to meet him, and cried, Hosanna: Blessed is the King of Israel that cometh in the name of the Lord" ([John 12:13](../../../gospel-library/eng/scriptures/nt/john/12.md))
 
 And Revelation's vision of the redeemed before the Lamb echoes this:
 
-> "a great multitude, which no man could number, of all nations, and kindreds, and people, and tongues, stood before the throne, and before the Lamb, clothed with white robes, and palms in their hands" ([Revelation 7:9](https://www.churchofjesuschrist.org/study/scriptures/nt/rev/7?lang=eng&id=p9#p9))
+> "a great multitude, which no man could number, of all nations, and kindreds, and people, and tongues, stood before the throne, and before the Lamb, clothed with white robes, and palms in their hands" ([Revelation 7:9](../../../gospel-library/eng/scriptures/nt/rev/7.md))
 
 This is a genuine scriptural thread: palms → recognition of the King → final triumph. That the Restoration's foundational geography bears this name is worth noticing. Whether it constitutes *typology* or *coincidence* remains a matter of faith interpretation, but the etymological facts are solid.
 
@@ -159,7 +159,7 @@ Tom Daschle, then Senate Majority Leader, quoted Isaiah 9:10 on September 12, 20
 
 What makes Isaiah 9:9–10 so striking is the *context*. In Isaiah, this is not a message of resilience — it is a declaration of *defiance against God's chastening*. The people of Ephraim and Samaria are saying, in effect: "You knocked our bricks down? We'll build with *better* materials." God's response through Isaiah is not admiration but intensification of judgment:
 
-> "Therefore the Lord shall set up the adversaries of Rezin against him, and join his enemies together" ([Isaiah 9:11](https://www.churchofjesuschrist.org/study/scriptures/ot/isa/9?lang=eng&id=p11#p11))
+> "Therefore the Lord shall set up the adversaries of Rezin against him, and join his enemies together" ([Isaiah 9:11](../../../gospel-library/eng/scriptures/ot/isa/9.md))
 
 Whether Daschle was unknowingly fulfilling prophetic pattern or simply using convenient oratory is a judgment call. But the textual irony — that a defiance statement from Isaiah was deployed as a defiance statement in 2001, in both cases after an enemy attack — is genuinely arresting.
 
@@ -167,9 +167,9 @@ Whether Daschle was unknowingly fulfilling prophetic pattern or simply using con
 
 Hinckley was not casually marking a calendar year. His statements carried the weight of prophetic consciousness:
 
-On the Palmyra Temple: "We will dedicate the Palmyra temple this coming Thursday. That will be a great occasion. The temple overlooks the Sacred Grove" ([A Time of New Beginnings, April 2000](https://www.churchofjesuschrist.org/study/general-conference/2000/04/a-time-of-new-beginnings?lang=eng)). He then noted plans to dedicate 36 temples in the year 2000 alone.
+On the Palmyra Temple: "We will dedicate the Palmyra temple this coming Thursday. That will be a great occasion. The temple overlooks the Sacred Grove" ([A Time of New Beginnings, April 2000](../../../gospel-library/eng/general-conference/2000/04/a-time-of-new-beginnings.md)). He then noted plans to dedicate 36 temples in the year 2000 alone.
 
-On the Conference Center dedication (October 2000): "We have found a new stride in this great millennial year" ([This Great Millennial Year, October 2000](https://www.churchofjesuschrist.org/study/general-conference/2000/10/this-great-millennial-year?lang=eng)). He explicitly quoted [Isaiah 2:2–3](https://www.churchofjesuschrist.org/study/scriptures/ot/isa/2?lang=eng&id=p2-p3#p2) about the mountain of the Lord's house in the last days, applying it to both the temple and the Conference Center: "I believe that prophecy applies to the historic and wonderful Salt Lake Temple. But I believe also that it is related to this magnificent hall."
+On the Conference Center dedication (October 2000): "We have found a new stride in this great millennial year" ([This Great Millennial Year, October 2000](../../../gospel-library/eng/general-conference/2000/10/this-great-millennial-year.md)). He explicitly quoted [Isaiah 2:2–3](../../../gospel-library/eng/scriptures/ot/isa/2.md) about the mountain of the Lord's house in the last days, applying it to both the temple and the Conference Center: "I believe that prophecy applies to the historic and wonderful Salt Lake Temple. But I believe also that it is related to this magnificent hall."
 
 The Hosanna Shout at the Conference Center dedication was described as appropriate for events of "historic importance." This was only the third time it had been given outside a temple dedication — after the Salt Lake Temple capstone and the centennial of the Church.
 
@@ -177,7 +177,7 @@ Philpot is right that the year 2000 was prophetically significant in Latter-day 
 
 **4. D&C 77 establishes the seals-to-millennia principle that undergirds the calculation.**
 
-The Lord's own interpretive key to Revelation is found in [D&C 77:6–7](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/77?lang=eng&id=p6-p7#p6):
+The Lord's own interpretive key to Revelation is found in [D&C 77:6–7](../../../gospel-library/eng/scriptures/dc-testament/dc/77.md):
 
 > "We are to understand that it contains the revealed will, mysteries, and the works of God; the hidden things of his economy concerning this earth during the seven thousand years of its continuance, or its temporal existence." (v. 6)
 
@@ -214,7 +214,7 @@ The arithmetic is correct. The problem is the *assumption* — that Revelation's
 
 **2. The Isaiah 9–10 "24-year framework" is historically approximate, not a scriptural structure.**
 
-The Assyrian threat to the Northern Kingdom spans roughly from Tiglath-pileser III's campaigns (ca. 745–740 BC, confirmed by the footnote on [Isaiah 9:1](https://www.churchofjesuschrist.org/study/scriptures/ot/isa/9?lang=eng&id=p1#p1) which references the attacks by "Tiglath-pileser and Sargon Ⅱ") to the fall of Samaria in 722/721 BC. That's roughly 20–25 years.
+The Assyrian threat to the Northern Kingdom spans roughly from Tiglath-pileser III's campaigns (ca. 745–740 BC, confirmed by the footnote on [Isaiah 9:1](../../../gospel-library/eng/scriptures/ot/isa/9.md) which references the attacks by "Tiglath-pileser and Sargon Ⅱ") to the fall of Samaria in 722/721 BC. That's roughly 20–25 years.
 
 Philpot frames this as a precise "24-year period" from 744 to 721 BC and maps it to 2001–2025. But:
 
@@ -229,13 +229,13 @@ The *observation* that a nation responded to an initial attack with defiance rat
 
 The connection Philpot draws is genuinely arresting:
 
-> "And upon my house shall it begin, and from my house shall it go forth, saith the Lord" ([D&C 112:25](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/112?lang=eng&id=p25#p25))
+> "And upon my house shall it begin, and from my house shall it go forth, saith the Lord" ([D&C 112:25](../../../gospel-library/eng/scriptures/dc-testament/dc/112.md))
 
 And indeed, the Church of Jesus Christ of Latter-day Saints was among the first major institutions to close its temples, suspend gatherings, and recall missionaries worldwide in March 2020 — before many governments mandated similar measures. The disruption literally began "upon my house."
 
 But verse 26 provides the **full context** that Philpot does not engage with:
 
-> "First among those among you, saith the Lord, who have **professed to know my name and have not known me**, and have **blasphemed against me in the midst of my house**, saith the Lord" ([D&C 112:26](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/112?lang=eng&id=p26#p26))
+> "First among those among you, saith the Lord, who have **professed to know my name and have not known me**, and have **blasphemed against me in the midst of my house**, saith the Lord" ([D&C 112:26](../../../gospel-library/eng/scriptures/dc-testament/dc/112.md))
 
 The original revelation was addressed to Thomas B. Marsh during the 1837 Kirtland apostasy. The "upon my house" judgment is specifically about *hypocrites within the Church* — those who "professed to know my name and have not known me." This is an internal purging of unfaithfulness, not an external pandemic disrupting operations.
 
@@ -246,11 +246,11 @@ Applying D&C 112:25 to COVID without engaging v. 26's context subtly reframes a 
 Philpot constructs a chain: Jericho → city of palm trees → Elisha heals the waters → Good Samaritan road → day before Palm Sunday → Triumphal Entry with palms → Palmyra → Sacred Grove → Restoration.
 
 Each individual link is textually real:
-- Jericho IS called "city of palm trees" ([Deuteronomy 34:3](https://www.churchofjesuschrist.org/study/scriptures/ot/deut/34?lang=eng&id=p3#p3))
-- Elisha DID heal Jericho's waters ([2 Kings 2:19–22](https://www.churchofjesuschrist.org/study/scriptures/ot/2-kgs/2?lang=eng&id=p19-p22#p19))
-- The Good Samaritan road IS "from Jerusalem to Jericho" ([Luke 10:30](https://www.churchofjesuschrist.org/study/scriptures/nt/luke/10?lang=eng&id=p30#p30))
-- Jesus DID pass through Jericho the day before His Triumphal Entry ([Mark 10:46](https://www.churchofjesuschrist.org/study/scriptures/nt/mark/10?lang=eng&id=p46#p46))
-- Palm branches WERE waved at the Triumphal Entry ([John 12:13](https://www.churchofjesuschrist.org/study/scriptures/nt/john/12?lang=eng&id=p13#p13))
+- Jericho IS called "city of palm trees" ([Deuteronomy 34:3](../../../gospel-library/eng/scriptures/ot/deut/34.md))
+- Elisha DID heal Jericho's waters ([2 Kings 2:19–22](../../../gospel-library/eng/scriptures/ot/2-kgs/2.md))
+- The Good Samaritan road IS "from Jerusalem to Jericho" ([Luke 10:30](../../../gospel-library/eng/scriptures/nt/luke/10.md))
+- Jesus DID pass through Jericho the day before His Triumphal Entry ([Mark 10:46](../../../gospel-library/eng/scriptures/nt/mark/10.md))
+- Palm branches WERE waved at the Triumphal Entry ([John 12:13](../../../gospel-library/eng/scriptures/nt/john/12.md))
 - Palmyra IS named for palm trees
 - The Sacred Grove IS near Palmyra
 
@@ -290,7 +290,7 @@ Mapping D&C 112:25 (a judgment on hypocrites within the Church) onto COVID closu
 
 **1. The D&C 110 / Revelation 6:14 "scroll" connection is visually clever but contextually backward.**
 
-Philpot connects [Revelation 6:14](https://www.churchofjesuschrist.org/study/scriptures/nt/rev/6?lang=eng&id=p14#p14) ("the heaven departed as a scroll when it is rolled together") to [D&C 110:1](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/110?lang=eng&id=p1#p1) ("the veil was taken from our minds, and the eyes of our understanding were opened"), suggesting both describe a "scroll" opening.
+Philpot connects [Revelation 6:14](../../../gospel-library/eng/scriptures/nt/rev/6.md) ("the heaven departed as a scroll when it is rolled together") to [D&C 110:1](../../../gospel-library/eng/scriptures/dc-testament/dc/110.md) ("the veil was taken from our minds, and the eyes of our understanding were opened"), suggesting both describe a "scroll" opening.
 
 The JST of Revelation 6:14 actually says: "the *heavens opened* as a scroll *is opened* when it is rolled together" — which reverses the image from a closing to an *opening*. And D&C 88:95's parallel says "the curtain of heaven be unfolded, as a scroll is unfolded after it is rolled up, and the face of the Lord shall be unveiled."
 
@@ -298,7 +298,7 @@ The scroll imagery is a theophany image — God revealing Himself. Philpot uses 
 
 **2. D&C 38:11–12's "silence" is descriptive, not chronological.**
 
-[D&C 38:12](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/38?lang=eng&id=p12#p12) says: "Which causeth silence to reign, and all eternity is pained, and the angels are waiting the great command to reap down the earth."
+[D&C 38:12](../../../gospel-library/eng/scriptures/dc-testament/dc/38.md) says: "Which causeth silence to reign, and all eternity is pained, and the angels are waiting the great command to reap down the earth."
 
 Philpot treats this as corroborating the "half hour of silence" timeline. But v. 11 gives the *cause*: "all flesh is corrupted before me; and the powers of darkness prevail upon the earth." The silence is heaven's *response to earth's corruption* — it is grief, not a scheduled intermission. The angels are waiting not because the clock hasn't run out, but because the command hasn't yet been given.
 
@@ -308,7 +308,7 @@ This is an important spiritual distinction. Heaven's silence is the patience of 
 
 **1. Hinckley's Conference Center Dedicatory Prayer is a prophetic document Philpot barely engages.**
 
-The [October 2000 dedicatory prayer](https://www.churchofjesuschrist.org/study/general-conference/2000/10/this-great-millennial-year?lang=eng) contains remarkably specific last-days language from a prophet speaking in his most authoritative capacity:
+The [October 2000 dedicatory prayer](../../../gospel-library/eng/general-conference/2000/10/this-great-millennial-year.md) contains remarkably specific last-days language from a prophet speaking in his most authoritative capacity:
 
 > "Though the earth tremble, may this magnificent edifice stand solid and safe under Thy watchful care."
 
@@ -318,23 +318,23 @@ Hinckley explicitly anticipated terrorism *and* earthquakes (the Salt Lake earth
 
 **2. D&C 77 is the Lord's own Revelation commentary — it should anchor the Seventh Seal discussion.**
 
-Rather than building an independent mathematical proof of "half an hour = 20.8 years," Philpot should lead with what the Lord Himself taught about Revelation through Joseph Smith. [D&C 77:12](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/77?lang=eng&id=p12#p12) says the trumpets of the seventh seal are "the preparing and finishing of his work, in the beginning of the seventh thousand years — the preparing of the way before the time of his coming."
+Rather than building an independent mathematical proof of "half an hour = 20.8 years," Philpot should lead with what the Lord Himself taught about Revelation through Joseph Smith. [D&C 77:12](../../../gospel-library/eng/scriptures/dc-testament/dc/77.md) says the trumpets of the seventh seal are "the preparing and finishing of his work, in the beginning of the seventh thousand years — the preparing of the way before the time of his coming."
 
 This tells us the Seventh Seal period is *preparatory*. Instead of calculating when the silence ends, the question D&C 77 raises is: **What does preparation look like?** Temples, gathering, proclamation, spiritual readiness — these are the prophetic markers of "the beginning of the seventh thousand years," and they are all observable in our day. The prophetic framework is right there in D&C 77; the math adds nothing that the text doesn't already say more clearly.
 
 **3. Revelation 7:9's palms could have completed the Palmyra thread beautifully.**
 
-Philpot builds the Palmyra/Jericho/palm connection through several scriptures but doesn't arrive at the most powerful endpoint: [Revelation 7:9](https://www.churchofjesuschrist.org/study/scriptures/nt/rev/7?lang=eng&id=p9#p9) — the redeemed multitude "of all nations, and kindreds, and people, and tongues" standing before the Lamb with "palms in their hands."
+Philpot builds the Palmyra/Jericho/palm connection through several scriptures but doesn't arrive at the most powerful endpoint: [Revelation 7:9](../../../gospel-library/eng/scriptures/nt/rev/7.md) — the redeemed multitude "of all nations, and kindreds, and people, and tongues" standing before the Lamb with "palms in their hands."
 
 If the Restoration began in the "city of palm trees" (Palmyra), and if the palm branches at the Triumphal Entry signified the recognition of the King, then Revelation 7:9's palms represent the *culmination* of that recognition — every nation acknowledging Christ. The Restoration that began in Palmyra *produces* the multitude that holds palms before the throne. This would have been a far more powerful theological connection than the historical calculation.
 
 **4. D&C 87:8 is the Lord's own instruction for responding to the signs — and Philpot skips it.**
 
-After the prophecy of war, famine, plague, and earthquake ([D&C 87:6](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/87?lang=eng&id=p6#p6)), the Lord gives His *application*:
+After the prophecy of war, famine, plague, and earthquake ([D&C 87:6](../../../gospel-library/eng/scriptures/dc-testament/dc/87.md)), the Lord gives His *application*:
 
-> "Wherefore, stand ye in holy places, and be not moved, until the day of the Lord come; for behold, it cometh quickly, saith the Lord" ([D&C 87:8](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/87?lang=eng&id=p8#p8))
+> "Wherefore, stand ye in holy places, and be not moved, until the day of the Lord come; for behold, it cometh quickly, saith the Lord" ([D&C 87:8](../../../gospel-library/eng/scriptures/dc-testament/dc/87.md))
 
-This echoes [D&C 124:45](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/124?lang=eng&id=p45#p45): "they shall not be moved out of their place." Both passages direct the Saints to *stand still in holiness*, not to calculate when the day arrives. Combined with the Hinckley COVID-era pattern of prophetic action without prediction, this is the Lord's own hermeneutic for responding to signs: prepare, stand, don't move. Philpot quotes D&C 124:45 but doesn't let v. 87:8's application shape the overall message.
+This echoes [D&C 124:45](../../../gospel-library/eng/scriptures/dc-testament/dc/124.md): "they shall not be moved out of their place." Both passages direct the Saints to *stand still in holiness*, not to calculate when the day arrives. Combined with the Hinckley COVID-era pattern of prophetic action without prediction, this is the Lord's own hermeneutic for responding to signs: prepare, stand, don't move. Philpot quotes D&C 124:45 but doesn't let v. 87:8's application shape the overall message.
 
 ### Overall Assessment
 
@@ -366,13 +366,13 @@ The prophets teach through *patterns* (Hinckley: "We have found a new stride in 
 
 ### Truths to Hold
 
-1. **The Restoration's geography is not accidental** — That Joseph Smith was raised in a place called "city of palm trees," that Jericho bore the same name and was the site where Elisha healed bitter waters ([2 Kings 2:19–22](https://www.churchofjesuschrist.org/study/scriptures/ot/2-kgs/2?lang=eng&id=p19-p22#p19)), that palm branches greeted the King at His Triumphal Entry, and that the redeemed hold palms before the throne ([Revelation 7:9](https://www.churchofjesuschrist.org/study/scriptures/nt/rev/7?lang=eng&id=p9#p9)) — these connections reward faith without requiring a prophetic calendar. God's hand is in the details of history even when we can't calculate His timeline.
+1. **The Restoration's geography is not accidental** — That Joseph Smith was raised in a place called "city of palm trees," that Jericho bore the same name and was the site where Elisha healed bitter waters ([2 Kings 2:19–22](../../../gospel-library/eng/scriptures/ot/2-kgs/2.md)), that palm branches greeted the King at His Triumphal Entry, and that the redeemed hold palms before the throne ([Revelation 7:9](../../../gospel-library/eng/scriptures/nt/rev/7.md)) — these connections reward faith without requiring a prophetic calendar. God's hand is in the details of history even when we can't calculate His timeline.
 
-2. **Isaiah 9–10 is a warning pattern, not just a parallel** — The people's defiance in [Isaiah 9:10](https://www.churchofjesuschrist.org/study/scriptures/ot/isa/9?lang=eng&id=p10#p10) — "we will build with hewn stones" — is the universal temptation after being chastened: respond with self-reliance rather than repentance. Whether Daschle's quotation was prophetic repetition or historical echo, the *pattern* applies to me. When things "fall down" in my life, do I respond with defiant self-strengthening or with humble return to God?
+2. **Isaiah 9–10 is a warning pattern, not just a parallel** — The people's defiance in [Isaiah 9:10](../../../gospel-library/eng/scriptures/ot/isa/9.md) — "we will build with hewn stones" — is the universal temptation after being chastened: respond with self-reliance rather than repentance. Whether Daschle's quotation was prophetic repetition or historical echo, the *pattern* applies to me. When things "fall down" in my life, do I respond with defiant self-strengthening or with humble return to God?
 
-3. **Stand in holy places — this is the application the Lord commands** — [D&C 87:8](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/87?lang=eng&id=p8#p8) and [D&C 124:45](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/124?lang=eng&id=p45#p45) both direct the same response to signs of the times: stand still, don't be moved, stay in holy places. The Lord's own hermeneutic for eschatological awareness is not "calculate when" but "be ready always." President Hinckley prayed for the Conference Center to stand even if the earth trembles. That's the model.
+3. **Stand in holy places — this is the application the Lord commands** — [D&C 87:8](../../../gospel-library/eng/scriptures/dc-testament/dc/87.md) and [D&C 124:45](../../../gospel-library/eng/scriptures/dc-testament/dc/124.md) both direct the same response to signs of the times: stand still, don't be moved, stay in holy places. The Lord's own hermeneutic for eschatological awareness is not "calculate when" but "be ready always." President Hinckley prayed for the Conference Center to stand even if the earth trembles. That's the model.
 
-4. **Silence has a cause, and it's grief, not scheduling** — [D&C 38:11–12](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/38?lang=eng&id=p11-p12#p11) teaches that heaven is silent because "all flesh is corrupted" and "the powers of darkness prevail." All eternity is *pained*. The silence isn't a countdown; it's a lament. Reading it as God waiting for his timer to expire misses the ache of the passage — and the urgency of the repentance it invites.
+4. **Silence has a cause, and it's grief, not scheduling** — [D&C 38:11–12](../../../gospel-library/eng/scriptures/dc-testament/dc/38.md) teaches that heaven is silent because "all flesh is corrupted" and "the powers of darkness prevail." All eternity is *pained*. The silence isn't a countdown; it's a lament. Reading it as God waiting for his timer to expire misses the ache of the passage — and the urgency of the repentance it invites.
 
 ### Warnings to Heed
 
@@ -384,9 +384,9 @@ The prophets teach through *patterns* (Hinckley: "We have found a new stride in 
 
 ### Commitments
 
-- [ ] Study [Revelation 7:9–17](https://www.churchofjesuschrist.org/study/scriptures/nt/rev/7?lang=eng&id=p9-p17#p9) in full — the passage about palms and the Lamb — as devotional reading about what the Restoration is building toward
-- [ ] Read [D&C 77](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/77?lang=eng) completely as the Lord's own guide to Revelation — let His interpretive keys shape my reading before I accept any external framework
-- [ ] Memorize [D&C 87:8](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/87?lang=eng&id=p8#p8): "Wherefore, stand ye in holy places, and be not moved, until the day of the Lord come" — as the Lord's own application of last-days awareness
+- [ ] Study [Revelation 7:9–17](../../../gospel-library/eng/scriptures/nt/rev/7.md) in full — the passage about palms and the Lamb — as devotional reading about what the Restoration is building toward
+- [ ] Read [D&C 77](../../../gospel-library/eng/scriptures/dc-testament/dc/77.md) completely as the Lord's own guide to Revelation — let His interpretive keys shape my reading before I accept any external framework
+- [ ] Memorize [D&C 87:8](../../../gospel-library/eng/scriptures/dc-testament/dc/87.md): "Wherefore, stand ye in holy places, and be not moved, until the day of the Lord come" — as the Lord's own application of last-days awareness
 
 ---
 
@@ -450,7 +450,7 @@ Part III ~0:00–25:00 contains:
 - Storm vs. tempest Webster 1828 distinction (documented in Phase 7 review)
 - Preparation deadline urgency (documented in Phase 7 review)
 
-**All of this was ALREADY captured in prior passes** because the year-by-year Book of Mormon mapping runs continuously through Parts II and III without phase-aligned breaks.
+**All of this was ALREADY captured in prior passes** because the year-by-year Book of Mormon mapping runs continuously through Parts II and III without phase-aligned breaks. These verbal-only items have been subsequently evaluated in **[verbal_only_evaluation.md](verbal_only_evaluation.md)** — see items #32 (DHS/ICE), #26 (Bolton/Comey), #12 (corporate fiction), #1 (storm vs. tempest), #20 (preparation urgency), #17 (BYU/Baal), #18 (SEC fine), and others.
 
 **3. The evaluation remains EXCELLENT as slide analysis.**
 
