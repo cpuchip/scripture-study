@@ -206,7 +206,7 @@ Let's build this carefully.
 1. Spirit is matter, more fine and pure ([D&C 131:7](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/131?lang=eng&id=p7#p7))
 2. Intelligence (light of truth) acts "for itself" and without it "there is no existence" ([D&C 93:30](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/93?lang=eng&id=p30#p30))
 3. Light "quickeneth your understandings" — enables comprehension ([D&C 88:11](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/88?lang=eng&id=p11#p11))
-4. "There is a spirit in man; and the inspiration of the Almighty giveth them understanding" (Job 32:8)
+4. "There is a spirit in man; and the inspiration of the Almighty giveth them understanding" ([Job 32:8](https://www.churchofjesuschrist.org/study/scriptures/ot/job/32?lang=eng&id=p8#p8))
 5. "The spirit and the body are the soul of man" ([D&C 88:15](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/88?lang=eng&id=p15#p15))
 
 So: spirit is the *matter* of awareness — the medium through which intelligence (light of truth) operates and through which understanding (consciousness) is quickened. Spirit is not consciousness itself — it is the **substance** in which consciousness inheres. Like how a brain isn't "thought" but is the physical medium through which thought occurs, spirit is the *refined material medium* through which intelligence acts.
@@ -391,10 +391,10 @@ All matter. Same substance, different refinement. No ontological gap between the
 Remove any one → "all things must have vanished away."
 
 **The Creative Process** (identical at every level):
-1. **Comprehend** — the Gods comprehend the light (Abraham 4:4)
-2. **Organize** — they organize existing eternal materials (Abraham 4:1)
-3. **Give law** — assign bounds and conditions (D&C 88:38)
-4. **Watch until obedience** — "watched those things which they had ordered until they obeyed" (Abraham 4:18)
+1. **Comprehend** — the Gods comprehend the light ([Abraham 4:4](https://www.churchofjesuschrist.org/study/scriptures/pgp/abr/4?lang=eng&id=p4#p4))
+2. **Organize** — they organize existing eternal materials ([Abraham 4:1](https://www.churchofjesuschrist.org/study/scriptures/pgp/abr/4?lang=eng&id=p1#p1))
+3. **Give law** — assign bounds and conditions ([D&C 88:38](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/88?lang=eng&id=p38#p38))
+4. **Watch until obedience** — "watched those things which they had ordered until they obeyed" ([Abraham 4:18](https://www.churchofjesuschrist.org/study/scriptures/pgp/abr/4?lang=eng&id=p18#p18))
 
 The same process applies whether creating:
 - Spiritual beings from intelligence
