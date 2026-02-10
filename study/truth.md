@@ -206,7 +206,7 @@ Let's build this carefully.
 1. Spirit is matter, more fine and pure ([D&C 131:7](../gospel-library/eng/scriptures/dc-testament/dc/131.md))
 2. Intelligence (light of truth) acts "for itself" and without it "there is no existence" ([D&C 93:30](../gospel-library/eng/scriptures/dc-testament/dc/93.md))
 3. Light "quickeneth your understandings" — enables comprehension ([D&C 88:11](../gospel-library/eng/scriptures/dc-testament/dc/88.md))
-4. "There is a spirit in man; and the inspiration of the Almighty giveth them understanding" (Job 32:8)
+4. "There is a spirit in man; and the inspiration of the Almighty giveth them understanding" ([Job 32:8](../gospel-library/eng/scriptures/ot/job/32.md))
 5. "The spirit and the body are the soul of man" ([D&C 88:15](../gospel-library/eng/scriptures/dc-testament/dc/88.md))
 
 So: spirit is the *matter* of awareness — the medium through which intelligence (light of truth) operates and through which understanding (consciousness) is quickened. Spirit is not consciousness itself — it is the **substance** in which consciousness inheres. Like how a brain isn't "thought" but is the physical medium through which thought occurs, spirit is the *refined material medium* through which intelligence acts.
@@ -391,10 +391,10 @@ All matter. Same substance, different refinement. No ontological gap between the
 Remove any one → "all things must have vanished away."
 
 **The Creative Process** (identical at every level):
-1. **Comprehend** — the Gods comprehend the light (Abraham 4:4)
-2. **Organize** — they organize existing eternal materials (Abraham 4:1)
-3. **Give law** — assign bounds and conditions (D&C 88:38)
-4. **Watch until obedience** — "watched those things which they had ordered until they obeyed" (Abraham 4:18)
+1. **Comprehend** — the Gods comprehend the light ([Abraham 4:4](../gospel-library/eng/scriptures/pgp/abr/4.md))
+2. **Organize** — they organize existing eternal materials ([Abraham 4:1](../gospel-library/eng/scriptures/pgp/abr/4.md))
+3. **Give law** — assign bounds and conditions ([D&C 88:38](../gospel-library/eng/scriptures/dc-testament/dc/88.md))
+4. **Watch until obedience** — "watched those things which they had ordered until they obeyed" ([Abraham 4:18](../gospel-library/eng/scriptures/pgp/abr/4.md))
 
 The same process applies whether creating:
 - Spiritual beings from intelligence
