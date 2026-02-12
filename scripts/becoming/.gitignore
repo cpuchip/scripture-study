@@ -5,6 +5,8 @@ server.exe
 server.exe~
 /server
 cmd/server/dist/
+cmd/mcp/becoming-mcp.exe
+becoming-mcp.log
 
 # Environment (secrets) — .env.example is checked in
 .env
