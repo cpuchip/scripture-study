@@ -26,10 +26,14 @@ func main() {
 	envload.Load(".env")
 
 	addr := flag.String("addr", envOrDefault("BECOMING_PORT", ":8080"), "listen address")
-	dbPath := flag.String("db", envOrDefault("BECOMING_DB", "becoming.db"), "SQLite database path")
+	dbPath := flag.String("db", envOrDefault("BECOMING_DB", "becoming.db"), "database path or PostgreSQL connection string")
 	scriptures := flag.String("scriptures", "../../gospel-library/eng/scriptures", "path to scriptures directory")
 	dev := flag.Bool("dev", false, "development mode (CORS allow-all, skip auth)")
+	tlsCert := flag.String("tls-cert", envOrDefault("TLS_CERT", ""), "TLS certificate file (enables HTTPS)")
+	tlsKey := flag.String("tls-key", envOrDefault("TLS_KEY", ""), "TLS private key file")
 	flag.Parse()
+
+	useTLS := *tlsCert != "" && *tlsKey != ""
 
 	// Normalize addr — if it's just a port number, add the colon
 	if len(*addr) > 0 && (*addr)[0] != ':' {
@@ -56,7 +60,7 @@ func main() {
 	authHandlers := &auth.Handlers{
 		DB:      database,
 		DevMode: *dev,
-		Secure:  !*dev, // Secure cookies only in production (HTTPS)
+		Secure:  !*dev || useTLS, // Secure cookies in production or with TLS
 		OAuth:   oauthConfig,
 	}
 	if oauthConfig != nil {
@@ -70,8 +74,12 @@ func main() {
 	r.Use(middleware.Compress(5))
 
 	if *dev {
+		origins := []string{"http://localhost:5173", "http://localhost:8080"}
+		if useTLS {
+			origins = append(origins, "https://localhost:5173", "https://localhost"+*addr)
+		}
 		r.Use(cors.Handler(cors.Options{
-			AllowedOrigins:   []string{"http://localhost:5173", "http://localhost:8080"},
+			AllowedOrigins:   origins,
 			AllowedMethods:   []string{"GET", "POST", "PUT", "DELETE", "OPTIONS"},
 			AllowedHeaders:   []string{"Content-Type", "Authorization"},
 			AllowCredentials: true,
@@ -95,6 +103,7 @@ func main() {
 		r.Put("/api/me", authHandlers.UpdateMe)
 		r.Put("/api/me/password", authHandlers.ChangePassword)
 		r.Delete("/api/me", authHandlers.DeleteAccount)
+		r.Delete("/api/me/google", authHandlers.UnlinkGoogle)
 
 		// Sessions
 		r.Get("/api/sessions", authHandlers.ListSessions)
@@ -138,10 +147,17 @@ func main() {
 	if *dev {
 		log.Printf("Dev mode: API only (auto-login as user 1), frontend at http://localhost:5173")
 	}
-	fmt.Printf("\n  → http://localhost%s\n\n", *addr)
 
-	if err := http.ListenAndServe(*addr, r); err != nil {
-		log.Fatalf("Server error: %v", err)
+	if useTLS {
+		fmt.Printf("\n  → https://localhost%s\n\n", *addr)
+		if err := http.ListenAndServeTLS(*addr, *tlsCert, *tlsKey, r); err != nil {
+			log.Fatalf("Server error: %v", err)
+		}
+	} else {
+		fmt.Printf("\n  → http://localhost%s\n\n", *addr)
+		if err := http.ListenAndServe(*addr, r); err != nil {
+			log.Fatalf("Server error: %v", err)
+		}
 	}
 }
 

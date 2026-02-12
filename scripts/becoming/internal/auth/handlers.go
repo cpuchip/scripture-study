@@ -218,10 +218,10 @@ func (h *Handlers) CreateToken(w http.ResponseWriter, r *http.Request) {
 
 	// Return the raw token ONCE — user must copy it now
 	writeJSON(w, http.StatusCreated, map[string]any{
-		"token":     rawToken,
-		"id":        token.ID,
-		"name":      token.Name,
-		"prefix":    token.Prefix,
+		"token":      rawToken,
+		"id":         token.ID,
+		"name":       token.Name,
+		"prefix":     token.Prefix,
 		"created_at": token.CreatedAt,
 	})
 }
@@ -260,6 +260,8 @@ type changePasswordRequest struct {
 }
 
 // ChangePassword handles PUT /api/me/password.
+// For users with a password: requires current_password to change.
+// For Google-only users: allows setting a password (no current_password required).
 func (h *Handlers) ChangePassword(w http.ResponseWriter, r *http.Request) {
 	userID := UserID(r)
 	var req changePasswordRequest
@@ -274,31 +276,40 @@ func (h *Handlers) ChangePassword(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	// OAuth-only users can't change password (they don't have one)
-	if user.PasswordHash == "" {
-		writeJSON(w, http.StatusBadRequest, map[string]string{"error": "password change not available for social login accounts"})
-		return
-	}
-
-	if !db.CheckPassword(user.PasswordHash, req.CurrentPassword) {
-		writeJSON(w, http.StatusUnauthorized, map[string]string{"error": "current password is incorrect"})
-		return
-	}
-
 	if len(req.NewPassword) < 8 {
 		writeJSON(w, http.StatusBadRequest, map[string]string{"error": "new password must be at least 8 characters"})
 		return
 	}
 
-	newHash, err := db.HashPassword(req.NewPassword)
-	if err != nil {
-		writeJSON(w, http.StatusInternalServerError, map[string]string{"error": "internal error"})
-		return
-	}
+	if user.HasPassword {
+		// Existing password — verify current password
+		if !db.CheckPassword(user.PasswordHash, req.CurrentPassword) {
+			writeJSON(w, http.StatusUnauthorized, map[string]string{"error": "current password is incorrect"})
+			return
+		}
 
-	if err := h.DB.UpdateUserPassword(userID, newHash); err != nil {
-		writeJSON(w, http.StatusInternalServerError, map[string]string{"error": "failed to update password"})
-		return
+		newHash, err := db.HashPassword(req.NewPassword)
+		if err != nil {
+			writeJSON(w, http.StatusInternalServerError, map[string]string{"error": "internal error"})
+			return
+		}
+
+		if err := h.DB.UpdateUserPassword(userID, newHash); err != nil {
+			writeJSON(w, http.StatusInternalServerError, map[string]string{"error": "failed to update password"})
+			return
+		}
+	} else {
+		// Google-only user setting a password for the first time
+		newHash, err := db.HashPassword(req.NewPassword)
+		if err != nil {
+			writeJSON(w, http.StatusInternalServerError, map[string]string{"error": "internal error"})
+			return
+		}
+
+		if err := h.DB.SetPassword(userID, newHash); err != nil {
+			writeJSON(w, http.StatusInternalServerError, map[string]string{"error": "failed to set password"})
+			return
+		}
 	}
 
 	// Invalidate all other sessions for security
@@ -331,8 +342,8 @@ func (h *Handlers) DeleteAccount(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	// For email users, verify password. For OAuth users, just the confirmation (password field can be empty).
-	if user.Provider == "email" && user.PasswordHash != "" {
+	// For users with a password, verify it before deletion.
+	if user.HasPassword {
 		if !db.CheckPassword(user.PasswordHash, req.Password) {
 			writeJSON(w, http.StatusUnauthorized, map[string]string{"error": "incorrect password"})
 			return
@@ -347,6 +358,32 @@ func (h *Handlers) DeleteAccount(w http.ResponseWriter, r *http.Request) {
 
 	h.clearSessionCookie(w)
 	writeJSON(w, http.StatusOK, map[string]string{"status": "account deleted"})
+}
+
+// UnlinkGoogle handles DELETE /api/me/google.
+func (h *Handlers) UnlinkGoogle(w http.ResponseWriter, r *http.Request) {
+	userID := UserID(r)
+	user, err := h.DB.GetUserByID(userID)
+	if err != nil || user == nil {
+		writeJSON(w, http.StatusNotFound, map[string]string{"error": "user not found"})
+		return
+	}
+
+	if !user.GoogleLinked {
+		writeJSON(w, http.StatusBadRequest, map[string]string{"error": "Google is not linked"})
+		return
+	}
+	if !user.HasPassword {
+		writeJSON(w, http.StatusBadRequest, map[string]string{"error": "set a password before unlinking Google (you need at least one login method)"})
+		return
+	}
+
+	if err := h.DB.UnlinkGoogle(userID); err != nil {
+		writeJSON(w, http.StatusInternalServerError, map[string]string{"error": "failed to unlink Google"})
+		return
+	}
+
+	writeJSON(w, http.StatusOK, map[string]string{"status": "Google account unlinked"})
 }
 
 // --- Session Management ---

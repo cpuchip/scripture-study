@@ -8,5 +8,8 @@ cmd/server/dist/
 cmd/mcp/becoming-mcp.exe
 becoming-mcp.log
 
+# TLS certificates (mkcert local dev)
+.certs/
+
 # Environment (secrets) — .env.example is checked in
 .env

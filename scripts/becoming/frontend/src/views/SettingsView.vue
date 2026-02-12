@@ -2,10 +2,35 @@
 import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { useAuth } from '../composables/useAuth'
-import { authApi, type APIToken, type SessionInfo } from '../api'
+import { authApi, type APIToken, type AuthProviders, type SessionInfo } from '../api'
 
 const router = useRouter()
 const { user, refresh, logout } = useAuth()
+
+// Auth providers (is Google available?)
+const providers = ref<AuthProviders | null>(null)
+
+async function loadProviders() {
+  try {
+    providers.value = await authApi.providers()
+  } catch { /* ignore */ }
+}
+
+// Google linking
+const unlinkingGoogle = ref(false)
+
+async function unlinkGoogle() {
+  if (!confirm('Unlink your Google account? You will only be able to log in with email/password.')) return
+  unlinkingGoogle.value = true
+  try {
+    await authApi.unlinkGoogle()
+    await refresh()
+  } catch (e: any) {
+    alert(e.message)
+  } finally {
+    unlinkingGoogle.value = false
+  }
+}
 
 // Profile editing
 const editingName = ref(false)
@@ -230,6 +255,7 @@ function formatDate(dateStr: string): string {
 }
 
 onMounted(() => {
+  loadProviders()
   loadTokens()
   loadSessions()
 })
@@ -297,19 +323,20 @@ onMounted(() => {
       </div>
     </section>
 
-    <!-- Change Password Section (email users only) -->
-    <section v-if="user?.provider === 'email'" class="bg-white rounded-lg border border-gray-200 p-6">
+    <!-- Password Section -->
+    <section class="bg-white rounded-lg border border-gray-200 p-6">
       <div class="flex items-center justify-between mb-4">
         <div>
           <h2 class="text-lg font-semibold">Password</h2>
-          <p class="text-sm text-gray-500 mt-1">Change your account password.</p>
+          <p v-if="user?.has_password" class="text-sm text-gray-500 mt-1">Change your account password.</p>
+          <p v-else class="text-sm text-gray-500 mt-1">Set a password so you can also log in with email.</p>
         </div>
         <button
           v-if="!showPasswordForm"
           @click="showPasswordForm = true"
           class="text-sm text-indigo-600 hover:text-indigo-800"
         >
-          Change Password
+          {{ user?.has_password ? 'Change Password' : 'Set Password' }}
         </button>
       </div>
 
@@ -320,7 +347,7 @@ onMounted(() => {
         <div v-if="passwordError" class="p-3 bg-red-50 border border-red-200 rounded text-sm text-red-800">
           {{ passwordError }}
         </div>
-        <div>
+        <div v-if="user?.has_password">
           <label class="block text-sm font-medium text-gray-700 mb-1">Current Password</label>
           <input
             v-model="currentPassword"
@@ -349,10 +376,10 @@ onMounted(() => {
         <div class="flex gap-2 pt-1">
           <button
             @click="changePassword"
-            :disabled="changingPassword || !currentPassword || !newPassword || !confirmPassword"
+            :disabled="changingPassword || (user?.has_password && !currentPassword) || !newPassword || !confirmPassword"
             class="bg-indigo-600 text-white text-sm px-4 py-2 rounded hover:bg-indigo-700 disabled:opacity-50"
           >
-            {{ changingPassword ? 'Changing...' : 'Change Password' }}
+            {{ changingPassword ? 'Saving...' : (user?.has_password ? 'Change Password' : 'Set Password') }}
           </button>
           <button
             @click="showPasswordForm = false; passwordError = ''; passwordMessage = ''"
@@ -360,6 +387,44 @@ onMounted(() => {
           >
             Cancel
           </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Connected Accounts Section -->
+    <section class="bg-white rounded-lg border border-gray-200 p-6">
+      <h2 class="text-lg font-semibold mb-4">Connected Accounts</h2>
+      <div class="space-y-3">
+        <!-- Google -->
+        <div class="flex items-center justify-between py-2">
+          <div class="flex items-center gap-3">
+            <svg class="w-5 h-5" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+            <div>
+              <p class="text-sm font-medium">Google</p>
+              <p v-if="user?.google_linked" class="text-xs text-green-600">Connected</p>
+              <p v-else class="text-xs text-gray-400">Not connected</p>
+            </div>
+          </div>
+          <div>
+            <button
+              v-if="user?.google_linked && user?.has_password"
+              @click="unlinkGoogle"
+              :disabled="unlinkingGoogle"
+              class="text-sm text-red-600 hover:text-red-800 disabled:opacity-50"
+            >
+              {{ unlinkingGoogle ? 'Unlinking...' : 'Unlink' }}
+            </button>
+            <a
+              v-else-if="!user?.google_linked && providers?.google"
+              :href="'/auth/google/login'"
+              class="text-sm text-indigo-600 hover:text-indigo-800"
+            >
+              Link Google Account
+            </a>
+            <span v-else-if="user?.google_linked && !user?.has_password" class="text-xs text-gray-400">
+              Set a password first to unlink
+            </span>
+          </div>
         </div>
       </div>
     </section>
@@ -554,7 +619,7 @@ onMounted(() => {
         <p class="text-sm text-red-800 font-medium">
           This will permanently delete your account, all practices, logs, tasks, notes, reflections, and pillars. This cannot be undone.
         </p>
-        <div v-if="user?.provider === 'email'">
+        <div v-if="user?.has_password">
           <label class="block text-sm font-medium text-gray-700 mb-1">Enter your password</label>
           <input
             v-model="deletePassword"
@@ -575,7 +640,7 @@ onMounted(() => {
         <div class="flex gap-2 pt-1">
           <button
             @click="deleteAccount"
-            :disabled="deleting || deleteConfirmText !== 'DELETE MY ACCOUNT' || (user?.provider === 'email' && !deletePassword)"
+            :disabled="deleting || deleteConfirmText !== 'DELETE MY ACCOUNT' || (user?.has_password && !deletePassword)"
             class="bg-red-600 text-white text-sm px-4 py-2 rounded hover:bg-red-700 disabled:opacity-50"
           >
             {{ deleting ? 'Deleting...' : 'Permanently Delete Account' }}

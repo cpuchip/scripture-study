@@ -433,6 +433,8 @@ export interface User {
   name: string
   avatar_url: string
   provider: string
+  has_password: boolean
+  google_linked: boolean
   created_at: string
   last_login: string
 }
@@ -517,6 +519,11 @@ export const authApi = {
       method: 'PUT',
       body: JSON.stringify({ current_password: currentPassword, new_password: newPassword }),
     })
+  },
+
+  // Google account linking
+  unlinkGoogle() {
+    return request<{ status: string }>('/me/google', { method: 'DELETE' })
   },
 
   // Sessions

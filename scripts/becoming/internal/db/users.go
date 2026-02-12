@@ -19,6 +19,16 @@ type User struct {
 	ProviderID   string `json:"-"`
 	CreatedAt    string `json:"created_at"`
 	LastLogin    string `json:"last_login"`
+
+	// Computed fields — tell the frontend what auth methods are available
+	HasPassword  bool `json:"has_password"`
+	GoogleLinked bool `json:"google_linked"`
+}
+
+// computeAuthFields sets has_password and google_linked from internal state.
+func (u *User) computeAuthFields() {
+	u.HasPassword = u.PasswordHash != ""
+	u.GoogleLinked = u.ProviderID != ""
 }
 
 const bcryptCost = 12
@@ -43,14 +53,13 @@ func (db *DB) CreateUser(email, password, name string) (*User, error) {
 	if err != nil {
 		return nil, err
 	}
-	res, err := db.Exec(
+	id, err := db.InsertReturningID(
 		`INSERT INTO users (email, password_hash, name, provider) VALUES (?, ?, ?, 'email')`,
 		email, hash, name,
 	)
 	if err != nil {
 		return nil, fmt.Errorf("creating user: %w", err)
 	}
-	id, _ := res.LastInsertId()
 	return db.GetUserByID(id)
 }
 
@@ -62,14 +71,15 @@ func (db *DB) CreateOAuthUser(email, name, avatarURL, provider, providerID strin
 		return nil, err
 	}
 	if existing != nil {
-		// Update provider info if they're linking a new provider
-		if existing.Provider != provider || existing.ProviderID != providerID {
+		// Link Google to existing account — preserve original provider and password_hash.
+		// Only update provider_id and avatar_url (don't overwrite provider).
+		if existing.ProviderID != providerID {
 			_, err = db.Exec(
-				`UPDATE users SET provider = ?, provider_id = ?, avatar_url = ?, last_login = CURRENT_TIMESTAMP WHERE id = ?`,
-				provider, providerID, avatarURL, existing.ID,
+				`UPDATE users SET provider_id = ?, avatar_url = ?, last_login = CURRENT_TIMESTAMP WHERE id = ?`,
+				providerID, avatarURL, existing.ID,
 			)
 			if err != nil {
-				return nil, fmt.Errorf("updating user provider: %w", err)
+				return nil, fmt.Errorf("linking google account: %w", err)
 			}
 		} else {
 			_, _ = db.Exec(`UPDATE users SET last_login = CURRENT_TIMESTAMP WHERE id = ?`, existing.ID)
@@ -78,14 +88,13 @@ func (db *DB) CreateOAuthUser(email, name, avatarURL, provider, providerID strin
 	}
 
 	// Create new user
-	res, err := db.Exec(
+	id, err := db.InsertReturningID(
 		`INSERT INTO users (email, name, avatar_url, provider, provider_id) VALUES (?, ?, ?, ?, ?)`,
 		email, name, avatarURL, provider, providerID,
 	)
 	if err != nil {
 		return nil, fmt.Errorf("creating oauth user: %w", err)
 	}
-	id, _ := res.LastInsertId()
 	return db.GetUserByID(id)
 }
 
@@ -102,6 +111,7 @@ func (db *DB) GetUserByID(id int64) (*User, error) {
 	if err != nil {
 		return nil, fmt.Errorf("getting user by id: %w", err)
 	}
+	u.computeAuthFields()
 	return u, nil
 }
 
@@ -118,6 +128,7 @@ func (db *DB) GetUserByEmail(email string) (*User, error) {
 	if err != nil {
 		return nil, fmt.Errorf("getting user by email: %w", err)
 	}
+	u.computeAuthFields()
 	return u, nil
 }
 
@@ -130,6 +141,25 @@ func (db *DB) UpdateUserName(userID int64, name string) error {
 // UpdateUserPassword updates a user's password hash.
 func (db *DB) UpdateUserPassword(userID int64, newHash string) error {
 	_, err := db.Exec(`UPDATE users SET password_hash = ? WHERE id = ?`, newHash, userID)
+	return err
+}
+
+// SetPassword sets a password for a user who doesn't have one (e.g., Google-only user).
+func (db *DB) SetPassword(userID int64, newHash string) error {
+	_, err := db.Exec(
+		`UPDATE users SET password_hash = ?, provider = 'email' WHERE id = ? AND password_hash = ''`,
+		newHash, userID,
+	)
+	return err
+}
+
+// UnlinkGoogle removes the Google provider link from a user account.
+// Only allowed if user has a password (so they can still log in).
+func (db *DB) UnlinkGoogle(userID int64) error {
+	_, err := db.Exec(
+		`UPDATE users SET provider_id = '', avatar_url = '' WHERE id = ? AND password_hash != ''`,
+		userID,
+	)
 	return err
 }
 
@@ -200,15 +230,15 @@ func (db *DB) EnsureDefaultUser() (*User, error) {
 
 // UserExport contains all user data for export.
 type UserExport struct {
-	ExportedAt string         `json:"exported_at"`
-	User       *UserProfile   `json:"user"`
-	Practices  []*Practice    `json:"practices"`
-	Logs       []*PracticeLog `json:"logs"`
-	Tasks      []*Task        `json:"tasks"`
-	Notes      []*Note        `json:"notes"`
-	Prompts    []*Prompt      `json:"prompts"`
-	Reflections []*Reflection `json:"reflections"`
-	Pillars    []*Pillar      `json:"pillars"`
+	ExportedAt  string         `json:"exported_at"`
+	User        *UserProfile   `json:"user"`
+	Practices   []*Practice    `json:"practices"`
+	Logs        []*PracticeLog `json:"logs"`
+	Tasks       []*Task        `json:"tasks"`
+	Notes       []*Note        `json:"notes"`
+	Prompts     []*Prompt      `json:"prompts"`
+	Reflections []*Reflection  `json:"reflections"`
+	Pillars     []*Pillar      `json:"pillars"`
 }
 
 // UserProfile is a safe-for-export user profile (no password hash).
