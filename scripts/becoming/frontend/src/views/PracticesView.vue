@@ -7,6 +7,7 @@ const router = useRouter()
 const practices = ref<Practice[]>([])
 const loading = ref(true)
 const showForm = ref(false)
+const editingId = ref<number | null>(null)
 
 // Form state
 const form = ref({
@@ -46,7 +47,20 @@ async function submit() {
     p.config = '{}'
   }
 
-  await api.createPractice(p)
+  if (editingId.value !== null) {
+    // Merge form changes onto the existing practice to preserve all fields (active, sort_order, etc.)
+    const existing = practices.value.find(pr => pr.id === editingId.value)
+    if (existing) {
+      const merged = { ...existing, ...p }
+      // For non-exercise types, preserve existing config (SM-2 state, etc.)
+      if (form.value.type !== 'exercise') {
+        merged.config = existing.config
+      }
+      await api.updatePractice(editingId.value, merged as Practice)
+    }
+  } else {
+    await api.createPractice(p)
+  }
   resetForm()
   await load()
 }
@@ -54,7 +68,35 @@ async function submit() {
 function resetForm() {
   form.value = { name: '', description: '', type: 'habit', category: '', config: '{}' }
   exerciseConfig.value = { target_sets: 2, target_reps: 15, unit: 'reps' }
+  editingId.value = null
   showForm.value = false
+}
+
+function editPractice(p: Practice) {
+  editingId.value = p.id
+  form.value.name = p.name
+  form.value.description = p.description
+  form.value.type = p.type
+  form.value.category = p.category
+  form.value.config = p.config
+
+  // Populate exercise config if editing an exercise
+  if (p.type === 'exercise' && p.config) {
+    try {
+      const cfg = JSON.parse(p.config)
+      exerciseConfig.value = {
+        target_sets: cfg.target_sets ?? 2,
+        target_reps: cfg.target_reps ?? 15,
+        unit: cfg.unit ?? 'reps',
+      }
+    } catch {
+      // keep defaults
+    }
+  }
+
+  showForm.value = true
+  // Scroll to form
+  window.scrollTo({ top: 0, behavior: 'smooth' })
 }
 
 async function toggleActive(p: Practice) {
@@ -107,15 +149,16 @@ onMounted(load)
     <div class="flex items-center justify-between mb-6">
       <h1 class="text-2xl font-bold">Practices</h1>
       <button
-        @click="showForm = !showForm"
+        @click="showForm ? resetForm() : (showForm = true)"
         class="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 text-sm"
       >
         {{ showForm ? 'Cancel' : '+ Add Practice' }}
       </button>
     </div>
 
-    <!-- Add form -->
+    <!-- Add/Edit form -->
     <div v-if="showForm" class="bg-white rounded-lg shadow p-4 mb-6">
+      <h2 class="text-lg font-semibold mb-3">{{ editingId ? 'Edit Practice' : 'New Practice' }}</h2>
       <form @submit.prevent="submit" class="space-y-4">
         <div class="grid grid-cols-2 gap-4">
           <div>
@@ -227,12 +270,22 @@ onMounted(load)
           </div>
         </div>
 
-        <button
-          type="submit"
-          class="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 text-sm"
-        >
-          Add Practice
-        </button>
+        <div class="flex gap-2">
+          <button
+            type="submit"
+            class="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 text-sm"
+          >
+            {{ editingId ? 'Save Changes' : 'Add Practice' }}
+          </button>
+          <button
+            v-if="editingId"
+            type="button"
+            @click="resetForm"
+            class="px-4 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 text-sm"
+          >
+            Cancel
+          </button>
+        </div>
       </form>
     </div>
 
@@ -266,6 +319,12 @@ onMounted(load)
           >
             history
           </router-link>
+          <button
+            @click.stop="editPractice(p)"
+            class="text-xs text-indigo-500 hover:text-indigo-700 px-2 py-1"
+          >
+            edit
+          </button>
           <button
             @click="toggleActive(p)"
             class="text-xs px-2 py-1 rounded"

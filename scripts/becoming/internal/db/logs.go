@@ -12,11 +12,11 @@ type PracticeLog struct {
 	LoggedAt   time.Time `json:"logged_at"`
 	Date       string    `json:"date"` // YYYY-MM-DD
 
-	Quality    *int    `json:"quality,omitempty"`     // SM-2 quality (0-5)
-	Value      string  `json:"value,omitempty"`       // freeform: "25 min", "3 miles"
-	Sets       *int    `json:"sets,omitempty"`        // number of sets
-	Reps       *int    `json:"reps,omitempty"`        // reps per set
-	DurationS  *int    `json:"duration_s,omitempty"`  // seconds
+	Quality    *int    `json:"quality,omitempty"`    // SM-2 quality (0-5)
+	Value      string  `json:"value,omitempty"`      // freeform: "25 min", "3 miles"
+	Sets       *int    `json:"sets,omitempty"`       // number of sets
+	Reps       *int    `json:"reps,omitempty"`       // reps per set
+	DurationS  *int    `json:"duration_s,omitempty"` // seconds
 	Notes      string  `json:"notes,omitempty"`
 	NextReview *string `json:"next_review,omitempty"` // date string
 }

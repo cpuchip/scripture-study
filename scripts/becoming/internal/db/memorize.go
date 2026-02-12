@@ -10,9 +10,9 @@ import (
 // SM2Config holds the spaced-repetition state stored in practice.config for memorize-type practices.
 type SM2Config struct {
 	EaseFactor  float64 `json:"ease_factor"`
-	Interval    int     `json:"interval"`     // days until next review
-	Repetitions int     `json:"repetitions"`  // consecutive correct reps
-	NextReview  string  `json:"next_review"`  // YYYY-MM-DD
+	Interval    int     `json:"interval"`    // days until next review
+	Repetitions int     `json:"repetitions"` // consecutive correct reps
+	NextReview  string  `json:"next_review"` // YYYY-MM-DD
 }
 
 // DefaultSM2Config returns initial SM-2 parameters for a new card.
@@ -29,12 +29,13 @@ func DefaultSM2Config() SM2Config {
 // Returns updated config with new interval, ease factor, repetitions, and next review date.
 //
 // SM-2 Algorithm (Piotr Wozniak, 1987):
-//   quality 0: complete blackout
-//   quality 1: incorrect, but remembered upon seeing answer
-//   quality 2: incorrect, but answer seemed easy to recall
-//   quality 3: correct with serious difficulty
-//   quality 4: correct after hesitation
-//   quality 5: perfect response
+//
+//	quality 0: complete blackout
+//	quality 1: incorrect, but remembered upon seeing answer
+//	quality 2: incorrect, but answer seemed easy to recall
+//	quality 3: correct with serious difficulty
+//	quality 4: correct after hesitation
+//	quality 5: perfect response
 //
 // If quality < 3: reset repetitions to 0, interval to 1
 // If quality >= 3: advance interval based on repetitions
