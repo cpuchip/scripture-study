@@ -50,7 +50,7 @@ const chartData = computed(() => {
       date: dateStr,
       label: d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' }),
       value: logsByDate[dateStr] || 0,
-      target: practice.value?.type === 'exercise' ? targetSets : 1,
+      target: practice.value?.type === 'tracker' ? targetSets : 1,
     })
     d.setDate(d.getDate() + 1)
   }

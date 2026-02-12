@@ -44,7 +44,15 @@ func Open(path string) (*DB, error) {
 }
 
 func (db *DB) initSchema() error {
-	_, err := db.Exec(schemaSQL)
+	if _, err := db.Exec(schemaSQL); err != nil {
+		return err
+	}
+	return db.runMigrations()
+}
+
+func (db *DB) runMigrations() error {
+	// Rename "exercise" type to "tracker"
+	_, err := db.Exec(`UPDATE practices SET type = 'tracker' WHERE type = 'exercise'`)
 	return err
 }
 

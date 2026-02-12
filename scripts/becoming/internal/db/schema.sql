@@ -2,7 +2,7 @@
 -- Generalized practice tracking: memorization, exercises, habits, tasks
 
 -- Practices: anything you do repeatedly and want to track
--- Types: memorize, exercise, habit, task
+-- Types: memorize, tracker, habit, task
 CREATE TABLE IF NOT EXISTS practices (
     id          INTEGER PRIMARY KEY,
     name        TEXT NOT NULL,           -- "D&C 93:29" or "Clamshell" or "Morning prayer"
@@ -13,8 +13,8 @@ CREATE TABLE IF NOT EXISTS practices (
     source_path TEXT,                    -- path to source file (scripture, talk, etc.)
 
     -- Type-specific config stored as JSON
-    -- memorize: {"ease_factor": 2.5, "interval": 1, "repetitions": 0}
-    -- exercise: {"target_sets": 2, "target_reps": 15, "unit": "reps"}
+    -- memorize: {"ease_factor": 2.5, "interval": 1, "repetitions": 0, "target_daily_reps": 1}
+    -- tracker:  {"target_sets": 2, "target_reps": 15, "unit": "reps"}
     -- habit:    {"frequency": "daily"}
     -- task:     {"due_date": "2026-03-01"}
     config      TEXT DEFAULT '{}',
@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS practice_logs (
 
     -- Flexible value fields — meaning depends on practice type
     -- memorize: quality=0-5 (SM-2), value=null, sets/reps=null
-    -- exercise: quality=null, value=null, sets=2, reps=15
+    -- tracker:  quality=null, value=null, sets=2, reps=15
     -- habit:    quality=null, value="25 min", sets/reps=null
     -- task:     quality=null, value="completed milestone X"
     quality     INTEGER,                 -- SM-2 quality rating (0-5)

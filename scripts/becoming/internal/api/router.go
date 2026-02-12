@@ -93,8 +93,26 @@ func createPractice(database *db.DB) http.HandlerFunc {
 				cfg := db.DefaultSM2Config()
 				cfgJSON, _ := json.Marshal(cfg)
 				p.Config = string(cfgJSON)
+			} else if p.Type == "tracker" {
+				p.Config = `{"target_sets":2,"target_reps":15,"unit":"reps"}`
 			} else {
 				p.Config = "{}"
+			}
+		} else if p.Type == "memorize" {
+			// Merge user-provided config (e.g., target_daily_reps) with SM-2 defaults
+			var userCfg map[string]any
+			if err := json.Unmarshal([]byte(p.Config), &userCfg); err == nil {
+				// Check if this has SM-2 state already
+				if _, ok := userCfg["ease_factor"]; !ok {
+					cfg := db.DefaultSM2Config()
+					if v, ok := userCfg["target_daily_reps"]; ok {
+						if n, ok := v.(float64); ok {
+							cfg.TargetDailyReps = int(n)
+						}
+					}
+					cfgJSON, _ := json.Marshal(cfg)
+					p.Config = string(cfgJSON)
+				}
 			}
 		}
 		p.Active = true

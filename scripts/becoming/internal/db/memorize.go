@@ -9,19 +9,21 @@ import (
 
 // SM2Config holds the spaced-repetition state stored in practice.config for memorize-type practices.
 type SM2Config struct {
-	EaseFactor  float64 `json:"ease_factor"`
-	Interval    int     `json:"interval"`    // days until next review
-	Repetitions int     `json:"repetitions"` // consecutive correct reps
-	NextReview  string  `json:"next_review"` // YYYY-MM-DD
+	EaseFactor      float64 `json:"ease_factor"`
+	Interval        int     `json:"interval"`          // days until next review
+	Repetitions     int     `json:"repetitions"`       // consecutive correct reps
+	NextReview      string  `json:"next_review"`       // YYYY-MM-DD
+	TargetDailyReps int     `json:"target_daily_reps"` // daily practice goal (0 = use SM-2 scheduling only)
 }
 
 // DefaultSM2Config returns initial SM-2 parameters for a new card.
 func DefaultSM2Config() SM2Config {
 	return SM2Config{
-		EaseFactor:  2.5,
-		Interval:    0,
-		Repetitions: 0,
-		NextReview:  time.Now().Format("2006-01-02"), // due immediately
+		EaseFactor:      2.5,
+		Interval:        0,
+		Repetitions:     0,
+		NextReview:      time.Now().Format("2006-01-02"), // due immediately
+		TargetDailyReps: 1,
 	}
 }
 
@@ -127,7 +129,8 @@ func (db *DB) ReviewCard(practiceID int64, quality int, date string) (*Practice,
 	return p, nil
 }
 
-// GetDueCards returns all memorize-type practices due for review on or before the given date.
+// GetDueCards returns all memorize-type practices due for review on or before the given date,
+// excluding cards that have already been reviewed today.
 func (db *DB) GetDueCards(date string) ([]*Practice, error) {
 	rows, err := db.Query(`
 		SELECT id, name, description, type, category, source_doc, source_path, config, sort_order, active, created_at, completed_at
@@ -138,8 +141,12 @@ func (db *DB) GetDueCards(date string) ([]*Practice, error) {
 		    OR json_extract(config, '$.next_review') IS NULL
 		    OR json_extract(config, '$.repetitions') = 0
 		  )
+		  AND id NOT IN (
+		    SELECT DISTINCT practice_id FROM practice_logs
+		    WHERE date = ? AND quality IS NOT NULL
+		  )
 		ORDER BY json_extract(config, '$.next_review'), name`,
-		date,
+		date, date,
 	)
 	if err != nil {
 		return nil, fmt.Errorf("getting due cards: %w", err)

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { api, type Practice } from '../api'
 
@@ -8,6 +8,10 @@ const practices = ref<Practice[]>([])
 const loading = ref(true)
 const showForm = ref(false)
 const editingId = ref<number | null>(null)
+
+// Filters
+const filterType = ref<string>('all')
+const filterCategory = ref<string>('all')
 
 // Form state
 const form = ref({
@@ -18,14 +22,37 @@ const form = ref({
   config: '{}',
 })
 
-// Config helpers for exercises
-const exerciseConfig = ref({
+// Config helpers for tracker (was exercise)
+const trackerConfig = ref({
   target_sets: 2,
   target_reps: 15,
   unit: 'reps',
 })
 
+// Config helpers for memorize daily reps
+const memorizeConfig = ref({
+  target_daily_reps: 1,
+})
+
 const presetCategories = ['spiritual', 'scripture', 'pt', 'fitness', 'study', 'health']
+
+// Derived filter values from data
+const availableTypes = computed(() => {
+  const types = new Set(practices.value.map(p => p.type))
+  return Array.from(types).sort()
+})
+const availableCategories = computed(() => {
+  const cats = new Set(practices.value.filter(p => p.category).map(p => p.category))
+  return Array.from(cats).sort()
+})
+
+const filteredPractices = computed(() => {
+  return practices.value.filter(p => {
+    if (filterType.value !== 'all' && p.type !== filterType.value) return false
+    if (filterCategory.value !== 'all' && p.category !== filterCategory.value) return false
+    return true
+  })
+})
 
 async function load() {
   loading.value = true
@@ -41,8 +68,27 @@ async function submit() {
     category: form.value.category,
   }
 
-  if (form.value.type === 'exercise') {
-    p.config = JSON.stringify(exerciseConfig.value)
+  if (form.value.type === 'tracker') {
+    p.config = JSON.stringify(trackerConfig.value)
+  } else if (form.value.type === 'memorize') {
+    // For new memorize cards, set target_daily_reps; for edits, merge into existing config
+    if (editingId.value !== null) {
+      const existing = practices.value.find(pr => pr.id === editingId.value)
+      if (existing) {
+        try {
+          const cfg = JSON.parse(existing.config)
+          cfg.target_daily_reps = memorizeConfig.value.target_daily_reps
+          p.config = JSON.stringify(cfg)
+        } catch {
+          p.config = existing.config
+        }
+      }
+    }
+    // For new cards, config will be set by backend with DefaultSM2Config
+    // but we pass target_daily_reps hint
+    if (!editingId.value) {
+      p.config = JSON.stringify({ target_daily_reps: memorizeConfig.value.target_daily_reps })
+    }
   } else {
     p.config = '{}'
   }
@@ -52,10 +98,7 @@ async function submit() {
     const existing = practices.value.find(pr => pr.id === editingId.value)
     if (existing) {
       const merged = { ...existing, ...p }
-      // For non-exercise types, preserve existing config (SM-2 state, etc.)
-      if (form.value.type !== 'exercise') {
-        merged.config = existing.config
-      }
+      // Config was already set correctly above for each type
       await api.updatePractice(editingId.value, merged as Practice)
     }
   } else {
@@ -67,7 +110,8 @@ async function submit() {
 
 function resetForm() {
   form.value = { name: '', description: '', type: 'habit', category: '', config: '{}' }
-  exerciseConfig.value = { target_sets: 2, target_reps: 15, unit: 'reps' }
+  trackerConfig.value = { target_sets: 2, target_reps: 15, unit: 'reps' }
+  memorizeConfig.value = { target_daily_reps: 1 }
   editingId.value = null
   showForm.value = false
 }
@@ -80,11 +124,11 @@ function editPractice(p: Practice) {
   form.value.category = p.category
   form.value.config = p.config
 
-  // Populate exercise config if editing an exercise
-  if (p.type === 'exercise' && p.config) {
+  // Populate tracker config if editing a tracker
+  if (p.type === 'tracker' && p.config) {
     try {
       const cfg = JSON.parse(p.config)
-      exerciseConfig.value = {
+      trackerConfig.value = {
         target_sets: cfg.target_sets ?? 2,
         target_reps: cfg.target_reps ?? 15,
         unit: cfg.unit ?? 'reps',
@@ -94,8 +138,19 @@ function editPractice(p: Practice) {
     }
   }
 
+  // Populate memorize daily reps if editing a memorize card
+  if (p.type === 'memorize' && p.config) {
+    try {
+      const cfg = JSON.parse(p.config)
+      memorizeConfig.value = {
+        target_daily_reps: cfg.target_daily_reps ?? 1,
+      }
+    } catch {
+      // keep defaults
+    }
+  }
+
   showForm.value = true
-  // Scroll to form
   window.scrollTo({ top: 0, behavior: 'smooth' })
 }
 
@@ -186,7 +241,7 @@ onMounted(load)
             <label class="block text-sm font-medium text-gray-700 mb-1">Type</label>
             <select v-model="form.type" class="w-full border rounded px-3 py-2 text-sm">
               <option value="habit">Habit (daily check)</option>
-              <option value="exercise">Exercise (sets/reps)</option>
+              <option value="tracker">Tracker (sets/reps)</option>
               <option value="memorize">Memorize (spaced repetition)</option>
               <option value="task">Task (one-time)</option>
             </select>
@@ -230,21 +285,35 @@ onMounted(load)
           ></textarea>
         </div>
 
-        <!-- Memorize hint -->
-        <div v-if="form.type === 'memorize'" class="bg-indigo-50 rounded p-3 text-sm text-indigo-700">
-          <strong>Tip:</strong> Put the scripture reference (e.g., "D&amp;C 93:29") as the Name — it becomes the flashcard front.
-          Put the full verse text in the Description — it becomes the flashcard back.
-          SM-2 scheduling will be set up automatically.
+        <!-- Memorize hint + daily reps -->
+        <div v-if="form.type === 'memorize'" class="bg-indigo-50 rounded p-3 space-y-3">
+          <p class="text-sm text-indigo-700">
+            <strong>Tip:</strong> Put the scripture reference as the Name (flashcard front).
+            Put the full verse text in the Description (flashcard back).
+          </p>
+          <div>
+            <label class="block text-xs text-indigo-600 mb-1">Daily practice goal</label>
+            <div class="flex items-center gap-2">
+              <input
+                v-model.number="memorizeConfig.target_daily_reps"
+                type="number"
+                min="1"
+                max="20"
+                class="w-20 border rounded px-2 py-1 text-sm"
+              />
+              <span class="text-sm text-indigo-600">reviews per day</span>
+            </div>
+          </div>
         </div>
 
-        <!-- Exercise config -->
-        <div v-if="form.type === 'exercise'" class="bg-gray-50 rounded p-3 space-y-3">
-          <h3 class="text-sm font-medium text-gray-700">Exercise Settings</h3>
+        <!-- Tracker config (was exercise) -->
+        <div v-if="form.type === 'tracker'" class="bg-gray-50 rounded p-3 space-y-3">
+          <h3 class="text-sm font-medium text-gray-700">Tracker Settings</h3>
           <div class="grid grid-cols-3 gap-3">
             <div>
               <label class="block text-xs text-gray-500">Target Sets</label>
               <input
-                v-model.number="exerciseConfig.target_sets"
+                v-model.number="trackerConfig.target_sets"
                 type="number"
                 min="1"
                 class="w-full border rounded px-2 py-1 text-sm"
@@ -253,7 +322,7 @@ onMounted(load)
             <div>
               <label class="block text-xs text-gray-500">Target Reps</label>
               <input
-                v-model.number="exerciseConfig.target_reps"
+                v-model.number="trackerConfig.target_reps"
                 type="number"
                 min="1"
                 class="w-full border rounded px-2 py-1 text-sm"
@@ -261,8 +330,10 @@ onMounted(load)
             </div>
             <div>
               <label class="block text-xs text-gray-500">Unit</label>
-              <select v-model="exerciseConfig.unit" class="w-full border rounded px-2 py-1 text-sm">
+              <select v-model="trackerConfig.unit" class="w-full border rounded px-2 py-1 text-sm">
                 <option value="reps">reps</option>
+                <option value="bottles">bottles</option>
+                <option value="glasses">glasses</option>
                 <option value="seconds">seconds</option>
                 <option value="minutes">minutes</option>
               </select>
@@ -292,14 +363,49 @@ onMounted(load)
     <!-- Practice list -->
     <div v-if="loading" class="text-center py-8 text-gray-400">Loading...</div>
 
-    <div v-else-if="practices.length === 0" class="text-center py-12 text-gray-500">
-      No practices yet. Add one above!
-    </div>
+    <template v-else-if="practices.length > 0">
+      <!-- Filters -->
+      <div class="mb-4 space-y-2">
+        <div class="flex gap-1.5 flex-wrap items-center">
+          <span class="text-xs text-gray-400 w-10">Type</span>
+          <button
+            @click="filterType = 'all'"
+            class="px-2.5 py-1 text-xs rounded-full border"
+            :class="filterType === 'all' ? 'bg-indigo-100 border-indigo-300 text-indigo-700' : 'bg-gray-50 border-gray-200 text-gray-500 hover:bg-gray-100'"
+          >all</button>
+          <button
+            v-for="t in availableTypes"
+            :key="t"
+            @click="filterType = t"
+            class="px-2.5 py-1 text-xs rounded-full border"
+            :class="filterType === t ? 'bg-indigo-100 border-indigo-300 text-indigo-700' : 'bg-gray-50 border-gray-200 text-gray-500 hover:bg-gray-100'"
+          >{{ t }}</button>
+        </div>
+        <div v-if="availableCategories.length > 1" class="flex gap-1.5 flex-wrap items-center">
+          <span class="text-xs text-gray-400 w-10">Cat</span>
+          <button
+            @click="filterCategory = 'all'"
+            class="px-2.5 py-1 text-xs rounded-full border"
+            :class="filterCategory === 'all' ? 'bg-indigo-100 border-indigo-300 text-indigo-700' : 'bg-gray-50 border-gray-200 text-gray-500 hover:bg-gray-100'"
+          >all</button>
+          <button
+            v-for="c in availableCategories"
+            :key="c"
+            @click="filterCategory = c"
+            class="px-2.5 py-1 text-xs rounded-full border"
+            :class="filterCategory === c ? 'bg-indigo-100 border-indigo-300 text-indigo-700' : 'bg-gray-50 border-gray-200 text-gray-500 hover:bg-gray-100'"
+          >{{ c }}</button>
+        </div>
+      </div>
 
-    <div v-else class="bg-white rounded-lg shadow divide-y divide-gray-100">
-      <div
-        v-for="p in practices"
-        :key="p.id"
+      <div v-if="filteredPractices.length === 0" class="text-center py-8 text-gray-400">
+        No practices match filters.
+      </div>
+
+      <div v-else class="bg-white rounded-lg shadow divide-y divide-gray-100">
+        <div
+          v-for="p in filteredPractices"
+          :key="p.id"
         class="flex items-center justify-between px-4 py-3"
         :class="{ 'opacity-50': !p.active }"
       >
@@ -340,6 +446,11 @@ onMounted(load)
           </button>
         </div>
       </div>
+    </div>
+    </template>
+
+    <div v-else class="text-center py-12 text-gray-500">
+      No practices yet. Add one above!
     </div>
   </div>
 </template>

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed, onMounted } from 'vue'
+import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { api, type DailySummary, type PracticeLog, type Practice } from '../api'
 
 function localDateStr(d: Date = new Date()): string {
@@ -50,7 +50,7 @@ async function quickLog(item: DailySummary) {
     date: today.value,
   }
 
-  if (item.practice_type === 'exercise') {
+  if (item.practice_type === 'tracker') {
     log.sets = 1
     log.reps = config.target_reps || undefined
   }
@@ -92,26 +92,39 @@ const completionStats = computed(() => {
 })
 
 // Display helpers
-function exerciseTargetSets(item: DailySummary): number {
+function trackerTargetSets(item: DailySummary): number {
   const config = parseConfig(item.config)
   return config.target_sets || 1
 }
 
-function exerciseCompletedSets(item: DailySummary): number {
+function trackerCompletedSets(item: DailySummary): number {
   return item.total_sets || item.log_count
 }
 
-function exerciseRepsLabel(item: DailySummary): string {
+function trackerRepsLabel(item: DailySummary): string {
   const config = parseConfig(item.config)
   return `${config.target_reps || '?'} ${config.unit || 'reps'}`
 }
 
+function memorizeTargetReps(item: DailySummary): number {
+  const config = parseConfig(item.config)
+  return config.target_daily_reps || 1
+}
+
+function memorizeCompletedReps(item: DailySummary): number {
+  return item.log_count
+}
+
 function isComplete(item: DailySummary): boolean {
-  if (item.practice_type === 'exercise') {
+  if (item.practice_type === 'tracker') {
     const config = parseConfig(item.config)
     const targetSets = config.target_sets || 1
     const done = item.total_sets || item.log_count
     return done >= targetSets
+  }
+  if (item.practice_type === 'memorize') {
+    const target = memorizeTargetReps(item)
+    return item.log_count >= target
   }
   return item.log_count > 0
 }
@@ -125,7 +138,19 @@ function formatDate(date: string): string {
   })
 }
 
-onMounted(load)
+// Refresh when returning to the page (e.g., after reviewing a card)
+function onVisibilityChange() {
+  if (!document.hidden) load()
+}
+
+onMounted(() => {
+  load()
+  document.addEventListener('visibilitychange', onVisibilityChange)
+})
+
+onUnmounted(() => {
+  document.removeEventListener('visibilitychange', onVisibilityChange)
+})
 </script>
 
 <template>
@@ -192,66 +217,98 @@ onMounted(load)
           <div
             v-for="item in items"
             :key="item.practice_id"
-            class="px-4 py-3"
+            class="px-4 py-2"
             :class="{ 'opacity-60': isComplete(item) }"
           >
-            <!-- Exercise: individual set checkboxes -->
-            <template v-if="item.practice_type === 'exercise'">
-              <div class="flex items-center justify-between mb-2">
-                <div class="flex items-center gap-2">
-                  <span class="font-medium">{{ item.practice_name }}</span>
-                  <span class="text-xs text-gray-400">{{ exerciseRepsLabel(item) }}</span>
+            <!-- Tracker: name + reps label + inline set buttons + history -->
+            <template v-if="item.practice_type === 'tracker'">
+              <div class="flex items-center justify-between gap-2">
+                <div class="flex items-center gap-2 min-w-0">
+                  <span class="font-medium truncate">{{ item.practice_name }}</span>
+                  <span class="text-xs text-gray-400 whitespace-nowrap">{{ trackerRepsLabel(item) }}</span>
                 </div>
-                <router-link
-                  :to="`/practices/${item.practice_id}/history`"
-                  class="text-xs text-gray-400 hover:text-indigo-500"
-                >
-                  history
-                </router-link>
-              </div>
-              <div class="flex items-center gap-2">
-                <button
-                  v-for="setNum in exerciseTargetSets(item)"
-                  :key="setNum"
-                  @click="setNum <= exerciseCompletedSets(item) ? undoLog(item) : quickLog(item)"
-                  class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border text-sm transition-colors"
-                  :class="setNum <= exerciseCompletedSets(item)
-                    ? 'bg-green-50 border-green-300 text-green-700'
-                    : 'bg-white border-gray-200 text-gray-500 hover:border-indigo-300 hover:bg-indigo-50'"
-                >
-                  <span
-                    class="w-4 h-4 rounded border flex items-center justify-center text-[10px]"
-                    :class="setNum <= exerciseCompletedSets(item)
-                      ? 'bg-green-500 border-green-500 text-white'
-                      : 'border-gray-300'"
+                <div class="flex items-center gap-1.5 flex-shrink-0">
+                  <button
+                    v-for="setNum in trackerTargetSets(item)"
+                    :key="setNum"
+                    @click="setNum <= trackerCompletedSets(item) ? undoLog(item) : quickLog(item)"
+                    class="flex items-center gap-1 px-2 py-1 rounded border text-xs transition-colors"
+                    :class="setNum <= trackerCompletedSets(item)
+                      ? 'bg-green-50 border-green-300 text-green-700'
+                      : 'bg-white border-gray-200 text-gray-500 hover:border-indigo-300 hover:bg-indigo-50'"
                   >
-                    <span v-if="setNum <= exerciseCompletedSets(item)">✓</span>
-                  </span>
-                  Set {{ setNum }}
-                </button>
+                    <span
+                      class="w-3.5 h-3.5 rounded border flex items-center justify-center text-[9px]"
+                      :class="setNum <= trackerCompletedSets(item)
+                        ? 'bg-green-500 border-green-500 text-white'
+                        : 'border-gray-300'"
+                    >
+                      <span v-if="setNum <= trackerCompletedSets(item)">✓</span>
+                    </span>
+                    {{ setNum }}
+                  </button>
+                  <router-link
+                    :to="`/practices/${item.practice_id}/history`"
+                    class="text-xs text-gray-400 hover:text-indigo-500 ml-1"
+                  >
+                    history
+                  </router-link>
+                </div>
               </div>
             </template>
 
-            <!-- Non-exercise: single completion circle -->
+            <!-- Memorize: name + reps progress + link -->
+            <template v-else-if="item.practice_type === 'memorize'">
+              <div class="flex items-center justify-between gap-2">
+                <div class="flex items-center gap-3 min-w-0">
+                  <button
+                    @click="isComplete(item) ? undoLog(item) : quickLog(item)"
+                    class="w-5 h-5 rounded-full border-2 flex items-center justify-center flex-shrink-0 transition-colors"
+                    :class="isComplete(item)
+                      ? 'bg-green-500 border-green-500 text-white'
+                      : 'border-gray-300 hover:border-indigo-400'"
+                  >
+                    <span v-if="isComplete(item)" class="text-[10px]">✓</span>
+                  </button>
+                  <router-link
+                    :to="`/memorize?id=${item.practice_id}`"
+                    class="font-medium truncate hover:text-indigo-600 transition-colors"
+                  >{{ item.practice_name }}</router-link>
+                </div>
+                <div class="flex items-center gap-2 flex-shrink-0">
+                  <span
+                    class="text-xs px-2 py-0.5 rounded-full"
+                    :class="memorizeCompletedReps(item) >= memorizeTargetReps(item)
+                      ? 'bg-green-100 text-green-700'
+                      : 'bg-gray-100 text-gray-500'"
+                  >
+                    {{ memorizeCompletedReps(item) }}/{{ memorizeTargetReps(item) }}
+                  </span>
+                  <router-link
+                    :to="`/practices/${item.practice_id}/history`"
+                    class="text-xs text-gray-400 hover:text-indigo-500"
+                  >
+                    history
+                  </router-link>
+                </div>
+              </div>
+            </template>
+
+            <!-- Habit/other: single completion circle -->
             <template v-else>
               <div class="flex items-center justify-between">
                 <div class="flex items-center gap-3 flex-1 min-w-0">
                   <button
                     @click="isComplete(item) ? undoLog(item) : quickLog(item)"
-                    class="w-6 h-6 rounded-full border-2 flex items-center justify-center flex-shrink-0 transition-colors"
+                    class="w-5 h-5 rounded-full border-2 flex items-center justify-center flex-shrink-0 transition-colors"
                     :class="isComplete(item)
                       ? 'bg-green-500 border-green-500 text-white'
                       : 'border-gray-300 hover:border-indigo-400'"
                   >
-                    <span v-if="isComplete(item)" class="text-xs">✓</span>
+                    <span v-if="isComplete(item)" class="text-[10px]">✓</span>
                   </button>
                   <div class="min-w-0">
-                    <router-link
-                      v-if="item.practice_type === 'memorize'"
-                      :to="`/memorize?id=${item.practice_id}`"
-                      class="font-medium truncate block hover:text-indigo-600 transition-colors"
-                    >{{ item.practice_name }}</router-link>
-                    <div v-else class="font-medium truncate">{{ item.practice_name }}</div>
+                    <div class="font-medium truncate">{{ item.practice_name }}</div>
                     <div v-if="item.last_value" class="text-xs text-gray-400">
                       {{ item.last_value }}
                     </div>

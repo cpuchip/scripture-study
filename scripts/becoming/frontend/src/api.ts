@@ -21,7 +21,7 @@ export interface Practice {
   id: number
   name: string
   description: string
-  type: 'memorize' | 'exercise' | 'habit' | 'task'
+  type: 'memorize' | 'tracker' | 'habit' | 'task'
   category: string
   source_doc: string
   source_path: string

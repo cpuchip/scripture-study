@@ -11,7 +11,7 @@ type Practice struct {
 	ID          int64      `json:"id"`
 	Name        string     `json:"name"`
 	Description string     `json:"description,omitempty"`
-	Type        string     `json:"type"`     // memorize | exercise | habit | task
+	Type        string     `json:"type"`     // memorize | tracker | habit | task
 	Category    string     `json:"category"` // scripture, pt, spiritual, fitness, etc.
 	SourceDoc   string     `json:"source_doc,omitempty"`
 	SourcePath  string     `json:"source_path,omitempty"`
