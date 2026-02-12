@@ -2,16 +2,40 @@
 
 const BASE = '/api'
 
+// Global 401 handler — set by the auth composable
+let onUnauthorized: (() => void) | null = null
+export function setUnauthorizedHandler(handler: () => void) {
+  onUnauthorized = handler
+}
+
 async function request<T>(path: string, options?: RequestInit): Promise<T> {
   const res = await fetch(`${BASE}${path}`, {
     headers: { 'Content-Type': 'application/json' },
+    credentials: 'same-origin',
+    ...options,
+  })
+  if (!res.ok) {
+    if (res.status === 401 && onUnauthorized) {
+      onUnauthorized()
+    }
+    const body = await res.json().catch(() => ({ error: res.statusText }))
+    throw new Error(body.error || res.statusText)
+  }
+  if (res.status === 204) return undefined as T
+  return res.json()
+}
+
+// Auth requests use a different base path (not under /api)
+async function authRequest<T>(path: string, options?: RequestInit): Promise<T> {
+  const res = await fetch(path, {
+    headers: { 'Content-Type': 'application/json' },
+    credentials: 'same-origin',
     ...options,
   })
   if (!res.ok) {
     const body = await res.json().catch(() => ({ error: res.statusText }))
     throw new Error(body.error || res.statusText)
   }
-  if (res.status === 204) return undefined as T
   return res.json()
 }
 
@@ -398,5 +422,83 @@ export const api = {
 
   getPracticePillars(practiceId: number) {
     return request<PillarLink[]>(`/practices/${practiceId}/pillars`)
+  },
+}
+
+// --- Auth Types ---
+
+export interface User {
+  id: number
+  email: string
+  name: string
+  avatar_url: string
+  provider: string
+  created_at: string
+  last_login: string
+}
+
+export interface AuthProviders {
+  email: boolean
+  google: boolean
+}
+
+export interface APIToken {
+  id: number
+  name: string
+  prefix: string
+  created_at: string
+  last_used?: string
+  expires_at?: string
+}
+
+// --- Auth API ---
+
+export const authApi = {
+  register(email: string, password: string, name?: string) {
+    return authRequest<{ user: User }>('/auth/register', {
+      method: 'POST',
+      body: JSON.stringify({ email, password, name }),
+    })
+  },
+
+  login(email: string, password: string) {
+    return authRequest<{ user: User }>('/auth/login', {
+      method: 'POST',
+      body: JSON.stringify({ email, password }),
+    })
+  },
+
+  logout() {
+    return authRequest<{ status: string }>('/auth/logout', { method: 'POST' })
+  },
+
+  providers() {
+    return request<AuthProviders>('/auth/providers')
+  },
+
+  me() {
+    return request<User>('/me')
+  },
+
+  updateMe(name: string) {
+    return request<User>('/me', {
+      method: 'PUT',
+      body: JSON.stringify({ name }),
+    })
+  },
+
+  listTokens() {
+    return request<APIToken[]>('/tokens')
+  },
+
+  createToken(name: string) {
+    return request<APIToken & { token: string }>('/tokens', {
+      method: 'POST',
+      body: JSON.stringify({ name }),
+    })
+  },
+
+  deleteToken(id: number) {
+    return request<{ status: string }>(`/tokens/${id}`, { method: 'DELETE' })
   },
 }
