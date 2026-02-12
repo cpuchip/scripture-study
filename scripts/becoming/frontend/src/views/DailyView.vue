@@ -86,14 +86,18 @@ const completionStats = computed(() => {
 })
 
 // Display helpers
-function exerciseProgress(item: DailySummary): string {
+function exerciseTargetSets(item: DailySummary): number {
   const config = parseConfig(item.config)
-  const targetSets = config.target_sets || 1
-  const targetReps = config.target_reps
-  const done = item.total_sets || item.log_count
-  let text = `${done}/${targetSets} sets`
-  if (targetReps) text += ` × ${targetReps} ${config.unit || 'reps'}`
-  return text
+  return config.target_sets || 1
+}
+
+function exerciseCompletedSets(item: DailySummary): number {
+  return item.total_sets || item.log_count
+}
+
+function exerciseRepsLabel(item: DailySummary): string {
+  const config = parseConfig(item.config)
+  return `${config.target_reps || '?'} ${config.unit || 'reps'}`
 }
 
 function isComplete(item: DailySummary): boolean {
@@ -153,48 +157,74 @@ onMounted(load)
           <div
             v-for="item in items"
             :key="item.practice_id"
-            class="flex items-center justify-between px-4 py-3"
+            class="px-4 py-3"
             :class="{ 'opacity-60': isComplete(item) }"
           >
-            <div class="flex items-center gap-3 flex-1 min-w-0">
-              <!-- Completion indicator -->
-              <button
-                @click="isComplete(item) ? undoLog(item) : quickLog(item)"
-                class="w-6 h-6 rounded-full border-2 flex items-center justify-center flex-shrink-0 transition-colors"
-                :class="isComplete(item)
-                  ? 'bg-green-500 border-green-500 text-white'
-                  : 'border-gray-300 hover:border-indigo-400'"
-              >
-                <span v-if="isComplete(item)" class="text-xs">✓</span>
-              </button>
-
-              <div class="min-w-0">
-                <div class="font-medium truncate">{{ item.practice_name }}</div>
-                <div v-if="item.practice_type === 'exercise'" class="text-xs text-gray-500">
-                  {{ exerciseProgress(item) }}
+            <!-- Exercise: individual set checkboxes -->
+            <template v-if="item.practice_type === 'exercise'">
+              <div class="flex items-center justify-between mb-2">
+                <div class="flex items-center gap-2">
+                  <span class="font-medium">{{ item.practice_name }}</span>
+                  <span class="text-xs text-gray-400">{{ exerciseRepsLabel(item) }}</span>
                 </div>
-                <div v-if="item.last_value" class="text-xs text-gray-400">
-                  {{ item.last_value }}
-                </div>
+                <router-link
+                  :to="`/practices/${item.practice_id}/history`"
+                  class="text-xs text-gray-400 hover:text-indigo-500"
+                >
+                  history
+                </router-link>
               </div>
-            </div>
+              <div class="flex items-center gap-2">
+                <button
+                  v-for="setNum in exerciseTargetSets(item)"
+                  :key="setNum"
+                  @click="setNum <= exerciseCompletedSets(item) ? undoLog(item) : quickLog(item)"
+                  class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border text-sm transition-colors"
+                  :class="setNum <= exerciseCompletedSets(item)
+                    ? 'bg-green-50 border-green-300 text-green-700'
+                    : 'bg-white border-gray-200 text-gray-500 hover:border-indigo-300 hover:bg-indigo-50'"
+                >
+                  <span
+                    class="w-4 h-4 rounded border flex items-center justify-center text-[10px]"
+                    :class="setNum <= exerciseCompletedSets(item)
+                      ? 'bg-green-500 border-green-500 text-white'
+                      : 'border-gray-300'"
+                  >
+                    <span v-if="setNum <= exerciseCompletedSets(item)">✓</span>
+                  </span>
+                  Set {{ setNum }}
+                </button>
+              </div>
+            </template>
 
-            <!-- Quick add button for exercises (add another set) -->
-            <button
-              v-if="item.practice_type === 'exercise' && !isComplete(item)"
-              @click="quickLog(item)"
-              class="ml-2 px-3 py-1 text-xs bg-indigo-50 text-indigo-600 rounded hover:bg-indigo-100"
-            >
-              + set
-            </button>
-
-            <!-- History link -->
-            <router-link
-              :to="`/practices/${item.practice_id}/history`"
-              class="ml-2 text-xs text-gray-400 hover:text-indigo-500"
-            >
-              history
-            </router-link>
+            <!-- Non-exercise: single completion circle -->
+            <template v-else>
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-3 flex-1 min-w-0">
+                  <button
+                    @click="isComplete(item) ? undoLog(item) : quickLog(item)"
+                    class="w-6 h-6 rounded-full border-2 flex items-center justify-center flex-shrink-0 transition-colors"
+                    :class="isComplete(item)
+                      ? 'bg-green-500 border-green-500 text-white'
+                      : 'border-gray-300 hover:border-indigo-400'"
+                  >
+                    <span v-if="isComplete(item)" class="text-xs">✓</span>
+                  </button>
+                  <div class="min-w-0">
+                    <div class="font-medium truncate">{{ item.practice_name }}</div>
+                    <div v-if="item.last_value" class="text-xs text-gray-400">
+                      {{ item.last_value }}
+                    </div>
+                  </div>
+                </div>
+                <router-link
+                  :to="`/practices/${item.practice_id}/history`"
+                  class="ml-2 text-xs text-gray-400 hover:text-indigo-500"
+                >
+                  history
+                </router-link>
+              </div>
+            </template>
           </div>
         </div>
       </div>
