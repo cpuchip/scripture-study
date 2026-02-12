@@ -138,4 +138,16 @@ export const api = {
   deleteTask(id: number) {
     return request<void>(`/tasks/${id}`, { method: 'DELETE' })
   },
+
+  // Memorize
+  getDueCards(date: string) {
+    return request<Practice[]>(`/memorize/due/${date}`)
+  },
+
+  reviewCard(practiceId: number, quality: number, date: string) {
+    return request<Practice>('/memorize/review', {
+      method: 'POST',
+      body: JSON.stringify({ practice_id: practiceId, quality, date }),
+    })
+  },
 }

@@ -9,6 +9,7 @@
         <router-link to="/" class="text-xl font-bold text-indigo-600">Become</router-link>
         <div class="flex gap-4 text-sm">
           <router-link to="/" class="hover:text-indigo-600" active-class="text-indigo-600 font-semibold">Today</router-link>
+          <router-link to="/memorize" class="hover:text-indigo-600" active-class="text-indigo-600 font-semibold">Memorize</router-link>
           <router-link to="/practices" class="hover:text-indigo-600" active-class="text-indigo-600 font-semibold">Practices</router-link>
           <router-link to="/tasks" class="hover:text-indigo-600" active-class="text-indigo-600 font-semibold">Tasks</router-link>
         </div>

@@ -129,13 +129,24 @@ onMounted(load)
         </div>
 
         <div>
-          <label class="block text-sm font-medium text-gray-700 mb-1">Description</label>
+          <label class="block text-sm font-medium text-gray-700 mb-1">
+            {{ form.type === 'memorize' ? 'Verse / Quote Text' : 'Description' }}
+          </label>
           <textarea
             v-model="form.description"
-            rows="2"
+            :rows="form.type === 'memorize' ? 4 : 2"
             class="w-full border rounded px-3 py-2 text-sm"
-            placeholder="Full verse text, exercise instructions, etc."
+            :placeholder="form.type === 'memorize'
+              ? 'Man was also in the beginning with God. Intelligence, or the light of truth, was not created or made, neither indeed can be.'
+              : 'Full verse text, exercise instructions, etc.'"
           ></textarea>
+        </div>
+
+        <!-- Memorize hint -->
+        <div v-if="form.type === 'memorize'" class="bg-indigo-50 rounded p-3 text-sm text-indigo-700">
+          <strong>Tip:</strong> Put the scripture reference (e.g., "D&amp;C 93:29") as the Name — it becomes the flashcard front.
+          Put the full verse text in the Description — it becomes the flashcard back.
+          SM-2 scheduling will be set up automatically.
         </div>
 
         <!-- Exercise config -->

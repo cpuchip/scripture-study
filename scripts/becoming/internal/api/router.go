@@ -41,6 +41,12 @@ func Router(database *db.DB) chi.Router {
 		r.Delete("/{id}", deleteTask(database))
 	})
 
+	// Memorization / spaced repetition
+	r.Route("/memorize", func(r chi.Router) {
+		r.Get("/due/{date}", getDueCards(database))
+		r.Post("/review", reviewCard(database))
+	})
+
 	return r
 }
 
@@ -74,8 +80,14 @@ func createPractice(database *db.DB) http.HandlerFunc {
 			writeError(w, http.StatusBadRequest, "name and type are required")
 			return
 		}
-		if p.Config == "" {
-			p.Config = "{}"
+		if p.Config == "" || p.Config == "{}" {
+			if p.Type == "memorize" {
+				cfg := db.DefaultSM2Config()
+				cfgJSON, _ := json.Marshal(cfg)
+				p.Config = string(cfgJSON)
+			} else {
+				p.Config = "{}"
+			}
 		}
 		p.Active = true
 
@@ -309,6 +321,59 @@ func deleteTask(database *db.DB) http.HandlerFunc {
 			return
 		}
 		w.WriteHeader(http.StatusNoContent)
+	}
+}
+
+// --- Memorize ---
+
+func getDueCards(database *db.DB) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		date := chi.URLParam(r, "date")
+		if date == "" {
+			writeError(w, http.StatusBadRequest, "date is required (YYYY-MM-DD)")
+			return
+		}
+		cards, err := database.GetDueCards(date)
+		if err != nil {
+			writeError(w, http.StatusInternalServerError, err.Error())
+			return
+		}
+		if cards == nil {
+			cards = []*db.Practice{}
+		}
+		writeJSON(w, http.StatusOK, cards)
+	}
+}
+
+func reviewCard(database *db.DB) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		var req struct {
+			PracticeID int64  `json:"practice_id"`
+			Quality    int    `json:"quality"`
+			Date       string `json:"date"`
+		}
+		if err := json.NewDecoder(r.Body).Decode(&req); err != nil {
+			writeError(w, http.StatusBadRequest, "invalid JSON: "+err.Error())
+			return
+		}
+		if req.PracticeID == 0 {
+			writeError(w, http.StatusBadRequest, "practice_id is required")
+			return
+		}
+		if req.Quality < 0 || req.Quality > 5 {
+			writeError(w, http.StatusBadRequest, "quality must be 0-5")
+			return
+		}
+		if req.Date == "" {
+			req.Date = r.URL.Query().Get("date")
+		}
+
+		p, err := database.ReviewCard(req.PracticeID, req.Quality, req.Date)
+		if err != nil {
+			writeError(w, http.StatusInternalServerError, err.Error())
+			return
+		}
+		writeJSON(w, http.StatusOK, p)
 	}
 }
 

@@ -399,14 +399,24 @@ go build -o server ./cmd/server/
 ./server -db becoming.db -dev  # dev mode (CORS for Vite)
 ```
 
-### Phase 2: Memorization
+### Phase 2: Memorization ✅ COMPLETE
 **Goal:** Spaced repetition system for scriptures.
 
-1. Memorize table + SM-2 algorithm implementation
-2. REST API: memorize CRUD, review endpoint, schedule calculation
-3. MemorizeView: flashcard UI with flip animation, quality rating
-4. MCP: `become_add_memorize`, `become_suggest_review`
-5. Seed initial cards from "Become" sections of existing studies
+**What was built:**
+1. ✅ SM-2 algorithm (Wozniak 1987) in `internal/db/memorize.go` — quality 0-5, ease factor, interval, repetitions
+2. ✅ REST API: `GET /memorize/due/{date}` (due cards), `POST /memorize/review` (review + auto-schedule)
+3. ✅ Auto-populate SM-2 defaults when creating memorize-type practices
+4. ✅ MemorizeView: tap-to-flip flashcard, 6-button quality rating (0=Blackout to 5=Easy), card stats
+5. ✅ DailyView integration: shows "N cards due — Review →" banner when cards are due
+6. ✅ "Memorize" nav link in App.vue
+7. ✅ PracticesView: memorize-specific form hints (reference as name, verse text as description)
+
+**SM-2 behavior:**
+- New card: due immediately (next_review = today, interval = 0)
+- Quality ≥ 3: advance (rep 1 → 1d, rep 2 → 6d, then interval × ease_factor)
+- Quality < 3: reset to rep 0, interval 1d
+- Ease factor adjusts each review (min 1.3)
+- Due query: `json_extract(config, '$.next_review') <= date OR repetitions = 0`
 
 ### Phase 3: Study Reader
 **Goal:** Side-by-side markdown reader with reference panel.

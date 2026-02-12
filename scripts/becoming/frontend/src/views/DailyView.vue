@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, computed, onMounted } from 'vue'
-import { api, type DailySummary, type PracticeLog } from '../api'
+import { api, type DailySummary, type PracticeLog, type Practice } from '../api'
 
 function localDateStr(d: Date = new Date()): string {
   return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`
@@ -8,6 +8,7 @@ function localDateStr(d: Date = new Date()): string {
 
 const today = ref(localDateStr())
 const summary = ref<DailySummary[]>([])
+const dueCards = ref<Practice[]>([])
 const loading = ref(true)
 
 // Parse exercise config
@@ -29,7 +30,12 @@ const grouped = computed(() => {
 async function load() {
   loading.value = true
   try {
-    summary.value = await api.getDailySummary(today.value)
+    const [s, d] = await Promise.all([
+      api.getDailySummary(today.value),
+      api.getDueCards(today.value),
+    ])
+    summary.value = s
+    dueCards.value = d
   } catch (e) {
     console.error('Failed to load daily summary:', e)
   }
@@ -134,6 +140,22 @@ onMounted(load)
         </p>
       </div>
       <button @click="nextDay" class="p-2 hover:bg-gray-200 rounded">→</button>
+    </div>
+
+    <!-- Memorize cards due -->
+    <div v-if="!loading && dueCards.length > 0" class="mb-6">
+      <router-link
+        to="/memorize"
+        class="block bg-indigo-50 border border-indigo-200 rounded-lg px-4 py-3 hover:bg-indigo-100 transition-colors"
+      >
+        <div class="flex items-center justify-between">
+          <div>
+            <span class="font-semibold text-indigo-700">{{ dueCards.length }} card{{ dueCards.length > 1 ? 's' : '' }} due</span>
+            <span class="text-sm text-indigo-500 ml-2">for review</span>
+          </div>
+          <span class="text-indigo-400">Review →</span>
+        </div>
+      </router-link>
     </div>
 
     <!-- Loading -->

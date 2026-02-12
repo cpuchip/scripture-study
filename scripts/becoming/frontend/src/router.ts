@@ -7,6 +7,7 @@ export const router = createRouter({
     { path: '/', name: 'daily', component: DailyView },
     { path: '/practices', name: 'practices', component: () => import('./views/PracticesView.vue') },
     { path: '/practices/:id/history', name: 'history', component: () => import('./views/HistoryView.vue') },
+    { path: '/memorize', name: 'memorize', component: () => import('./views/MemorizeView.vue') },
     { path: '/tasks', name: 'tasks', component: () => import('./views/TasksView.vue') },
   ],
 })
