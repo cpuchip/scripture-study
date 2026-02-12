@@ -144,18 +144,31 @@ onMounted(load)
 
     <!-- Memorize cards due -->
     <div v-if="!loading && dueCards.length > 0" class="mb-6">
-      <router-link
-        to="/memorize"
-        class="block bg-indigo-50 border border-indigo-200 rounded-lg px-4 py-3 hover:bg-indigo-100 transition-colors"
-      >
-        <div class="flex items-center justify-between">
-          <div>
-            <span class="font-semibold text-indigo-700">{{ dueCards.length }} card{{ dueCards.length > 1 ? 's' : '' }} due</span>
-            <span class="text-sm text-indigo-500 ml-2">for review</span>
+      <div class="bg-indigo-50 border border-indigo-200 rounded-lg overflow-hidden">
+        <router-link
+          to="/memorize"
+          class="block px-4 py-3 hover:bg-indigo-100 transition-colors border-b border-indigo-200"
+        >
+          <div class="flex items-center justify-between">
+            <div>
+              <span class="font-semibold text-indigo-700">{{ dueCards.length }} card{{ dueCards.length > 1 ? 's' : '' }} due</span>
+              <span class="text-sm text-indigo-500 ml-2">for review</span>
+            </div>
+            <span class="text-indigo-400">Review all →</span>
           </div>
-          <span class="text-indigo-400">Review →</span>
+        </router-link>
+        <div class="divide-y divide-indigo-100">
+          <router-link
+            v-for="card in dueCards"
+            :key="card.id"
+            :to="`/memorize?id=${card.id}`"
+            class="flex items-center justify-between px-4 py-2 hover:bg-indigo-100/50 transition-colors"
+          >
+            <span class="text-sm font-medium text-indigo-800">{{ card.name }}</span>
+            <span class="text-xs text-indigo-400">practice →</span>
+          </router-link>
         </div>
-      </router-link>
+      </div>
     </div>
 
     <!-- Loading -->
@@ -233,7 +246,12 @@ onMounted(load)
                     <span v-if="isComplete(item)" class="text-xs">✓</span>
                   </button>
                   <div class="min-w-0">
-                    <div class="font-medium truncate">{{ item.practice_name }}</div>
+                    <router-link
+                      v-if="item.practice_type === 'memorize'"
+                      :to="`/memorize?id=${item.practice_id}`"
+                      class="font-medium truncate block hover:text-indigo-600 transition-colors"
+                    >{{ item.practice_name }}</router-link>
+                    <div v-else class="font-medium truncate">{{ item.practice_name }}</div>
                     <div v-if="item.last_value" class="text-xs text-gray-400">
                       {{ item.last_value }}
                     </div>

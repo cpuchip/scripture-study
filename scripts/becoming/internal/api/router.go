@@ -7,11 +7,12 @@ import (
 	"strconv"
 
 	"github.com/cpuchip/scripture-study/scripts/becoming/internal/db"
+	"github.com/cpuchip/scripture-study/scripts/becoming/internal/scripture"
 	"github.com/go-chi/chi/v5"
 )
 
 // Router creates the API router with all routes.
-func Router(database *db.DB) chi.Router {
+func Router(database *db.DB, scripturesRoot string) chi.Router {
 	r := chi.NewRouter()
 
 	// Practices
@@ -45,6 +46,13 @@ func Router(database *db.DB) chi.Router {
 	r.Route("/memorize", func(r chi.Router) {
 		r.Get("/due/{date}", getDueCards(database))
 		r.Post("/review", reviewCard(database))
+	})
+
+	// Scripture lookup
+	r.Route("/scriptures", func(r chi.Router) {
+		r.Get("/lookup", lookupScripture(scripturesRoot))
+		r.Get("/books", listScriptureBooks())
+		r.Get("/search", searchScriptureBooks())
 	})
 
 	return r
@@ -391,4 +399,40 @@ func writeJSON(w http.ResponseWriter, status int, v any) {
 
 func writeError(w http.ResponseWriter, status int, msg string) {
 	writeJSON(w, status, map[string]string{"error": msg})
+}
+
+// --- Scriptures ---
+
+func lookupScripture(root string) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		ref := r.URL.Query().Get("ref")
+		if ref == "" {
+			writeError(w, http.StatusBadRequest, "ref query parameter is required (e.g., ?ref=D%26C+93:29)")
+			return
+		}
+
+		result, err := scripture.Lookup(root, ref)
+		if err != nil {
+			writeError(w, http.StatusNotFound, err.Error())
+			return
+		}
+		writeJSON(w, http.StatusOK, result)
+	}
+}
+
+func listScriptureBooks() http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		writeJSON(w, http.StatusOK, scripture.ListBooks())
+	}
+}
+
+func searchScriptureBooks() http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		q := r.URL.Query().Get("q")
+		if q == "" {
+			writeJSON(w, http.StatusOK, []any{})
+			return
+		}
+		writeJSON(w, http.StatusOK, scripture.SearchBooks(q))
+	}
 }

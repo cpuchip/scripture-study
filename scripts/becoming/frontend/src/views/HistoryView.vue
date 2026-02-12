@@ -86,6 +86,11 @@ function parseConfig(config: string) {
   try { return JSON.parse(config) } catch { return {} }
 }
 
+function formatLogDate(date: string): string {
+  const d = new Date(date + 'T12:00:00')
+  return d.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' })
+}
+
 async function load() {
   loading.value = true
   const range = getDateRange()
@@ -168,7 +173,7 @@ onMounted(load)
             :key="log.id"
             class="px-4 py-2 flex items-center justify-between text-sm"
           >
-            <span class="text-gray-600">{{ log.date }}</span>
+            <span class="text-gray-600">{{ formatLogDate(log.date) }}</span>
             <div class="flex items-center gap-3 text-gray-500 text-xs">
               <span v-if="log.sets">{{ log.sets }} sets</span>
               <span v-if="log.reps">{{ log.reps }} reps</span>

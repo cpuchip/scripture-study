@@ -72,6 +72,33 @@ export interface Task {
   completed_at: string
 }
 
+export interface ScriptureVerse {
+  number: number
+  text: string
+  reference: string
+}
+
+export interface ScriptureLookup {
+  reference: string
+  book: string
+  chapter: number
+  verses: ScriptureVerse[]
+  path: string
+}
+
+export interface ScriptureBook {
+  name: string
+  volume: string
+  slug: string
+  path: string
+}
+
+export interface ScriptureVolume {
+  name: string
+  slug: string
+  books: ScriptureBook[]
+}
+
 // --- Practices ---
 
 export const api = {
@@ -149,5 +176,18 @@ export const api = {
       method: 'POST',
       body: JSON.stringify({ practice_id: practiceId, quality, date }),
     })
+  },
+
+  // Scripture lookup
+  lookupScripture(ref: string) {
+    return request<ScriptureLookup>(`/scriptures/lookup?ref=${encodeURIComponent(ref)}`)
+  },
+
+  listScriptureBooks() {
+    return request<ScriptureVolume[]>('/scriptures/books')
+  },
+
+  searchScriptureBooks(query: string) {
+    return request<ScriptureBook[]>(`/scriptures/search?q=${encodeURIComponent(query)}`)
   },
 }

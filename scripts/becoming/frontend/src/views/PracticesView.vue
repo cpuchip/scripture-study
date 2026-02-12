@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
+import { useRouter } from 'vue-router'
 import { api, type Practice } from '../api'
 
+const router = useRouter()
 const practices = ref<Practice[]>([])
 const loading = ref(true)
 const showForm = ref(false)
@@ -66,6 +68,37 @@ async function deletePractice(p: Practice) {
   await load()
 }
 
+function goToPractice(p: Practice) {
+  if (p.type === 'memorize') {
+    router.push(`/memorize?id=${p.id}`)
+  } else {
+    router.push(`/practices/${p.id}/history`)
+  }
+}
+
+// Scripture lookup
+const lookingUp = ref(false)
+const lookupError = ref('')
+
+async function lookupScripture() {
+  if (!form.value.name.trim()) return
+  lookingUp.value = true
+  lookupError.value = ''
+  try {
+    const result = await api.lookupScripture(form.value.name.trim())
+    if (result.verses && result.verses.length > 0) {
+      form.value.description = result.verses.map(v => v.text).join(' ')
+      // Normalize the name to the canonical reference
+      if (result.verses.length === 1) {
+        form.value.name = result.verses[0]!.reference
+      }
+    }
+  } catch (e: any) {
+    lookupError.value = e.message || 'Not found'
+  }
+  lookingUp.value = false
+}
+
 onMounted(load)
 </script>
 
@@ -87,12 +120,24 @@ onMounted(load)
         <div class="grid grid-cols-2 gap-4">
           <div>
             <label class="block text-sm font-medium text-gray-700 mb-1">Name</label>
-            <input
-              v-model="form.name"
-              required
-              class="w-full border rounded px-3 py-2 text-sm"
-              placeholder="Clamshell, D&C 93:29, Morning prayer..."
-            />
+            <div class="flex gap-2">
+              <input
+                v-model="form.name"
+                required
+                class="flex-1 border rounded px-3 py-2 text-sm"
+                placeholder="Clamshell, D&C 93:29, Morning prayer..."
+              />
+              <button
+                v-if="form.type === 'memorize'"
+                type="button"
+                @click="lookupScripture"
+                :disabled="lookingUp || !form.name.trim()"
+                class="px-3 py-2 bg-indigo-100 text-indigo-700 rounded text-sm hover:bg-indigo-200 disabled:opacity-40 disabled:cursor-not-allowed whitespace-nowrap"
+              >
+                {{ lookingUp ? '...' : '📖 Lookup' }}
+              </button>
+            </div>
+            <p v-if="lookupError" class="text-xs text-red-500 mt-1">{{ lookupError }}</p>
           </div>
           <div>
             <label class="block text-sm font-medium text-gray-700 mb-1">Type</label>
@@ -205,9 +250,9 @@ onMounted(load)
         class="flex items-center justify-between px-4 py-3"
         :class="{ 'opacity-50': !p.active }"
       >
-        <div class="min-w-0 flex-1">
+        <div class="min-w-0 flex-1 cursor-pointer" @click="goToPractice(p)">
           <div class="flex items-center gap-2">
-            <span class="font-medium">{{ p.name }}</span>
+            <span class="font-medium hover:text-indigo-600 transition-colors">{{ p.name }}</span>
             <span class="text-xs px-2 py-0.5 rounded-full bg-gray-100 text-gray-600">{{ p.type }}</span>
             <span v-if="p.category" class="text-xs px-2 py-0.5 rounded-full bg-indigo-50 text-indigo-600">{{ p.category }}</span>
           </div>
