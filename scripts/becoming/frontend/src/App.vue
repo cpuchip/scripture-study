@@ -27,7 +27,7 @@ async function handleLogout() {
           <router-link to="/reflections" class="hover:text-indigo-600" active-class="text-indigo-600 font-semibold">Reflect</router-link>
           <router-link to="/tasks" class="hover:text-indigo-600" active-class="text-indigo-600 font-semibold">Tasks</router-link>
           <span class="border-l border-gray-300 pl-4 flex items-center gap-2">
-            <span class="text-gray-600">{{ user?.name }}</span>
+            <router-link to="/settings" class="text-gray-600 hover:text-indigo-600" title="Settings">{{ user?.name }}</router-link>
             <button
               @click="handleLogout"
               class="text-gray-400 hover:text-red-500 transition-colors"

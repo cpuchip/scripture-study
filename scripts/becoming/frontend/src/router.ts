@@ -19,6 +19,7 @@ export const router = createRouter({
     { path: '/reflections', name: 'reflections', component: () => import('./views/ReflectionsView.vue') },
     { path: '/pillars', name: 'pillars', component: () => import('./views/PillarsView.vue') },
     { path: '/reports', name: 'reports', component: () => import('./views/ReportsView.vue') },
+    { path: '/settings', name: 'settings', component: () => import('./views/SettingsView.vue') },
   ],
 })
 
