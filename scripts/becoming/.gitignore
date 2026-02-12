@@ -5,3 +5,6 @@ server.exe
 server.exe~
 server
 cmd/server/dist/
+
+# Environment (secrets) — .env.example is checked in
+.env
