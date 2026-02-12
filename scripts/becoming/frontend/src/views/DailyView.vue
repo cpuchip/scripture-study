@@ -43,7 +43,7 @@ async function load() {
 }
 
 // Quick log: just mark it done (habit) or log a set (exercise)
-async function quickLog(item: DailySummary) {
+async function quickLog(item: DailySummary, slotName?: string) {
   const config = parseConfig(item.config)
   const log: Partial<PracticeLog> = {
     practice_id: item.practice_id,
@@ -53,6 +53,11 @@ async function quickLog(item: DailySummary) {
   if (item.practice_type === 'tracker') {
     log.sets = 1
     log.reps = config.target_reps || undefined
+  }
+
+  // For daily_slots scheduled items, record which slot was completed.
+  if (slotName) {
+    log.value = slotName
   }
 
   await api.createLog(log)
@@ -86,8 +91,29 @@ function nextDay() {
 
 // Completion stats
 const completionStats = computed(() => {
-  const total = summary.value.length
-  const done = summary.value.filter(s => s.log_count > 0).length
+  // Exclude non-due scheduled items from the total.
+  const relevant = summary.value.filter(s =>
+    s.practice_type !== 'scheduled' || s.is_due === true || s.log_count > 0
+  )
+  const total = relevant.length
+  const done = relevant.filter(s => {
+    if (s.practice_type === 'tracker') {
+      const config = parseConfig(s.config)
+      return (s.total_sets || s.log_count) >= (config.target_sets || 1)
+    }
+    if (s.practice_type === 'memorize') {
+      const config = parseConfig(s.config)
+      return s.log_count >= (config.target_daily_reps || 1)
+    }
+    if (s.practice_type === 'scheduled') {
+      const config = parseConfig(s.config)
+      if (config.schedule?.type === 'daily_slots') {
+        return !s.slots_due || s.slots_due.length === 0
+      }
+      return s.log_count > 0
+    }
+    return s.log_count > 0
+  }).length
   return { done, total }
 })
 
@@ -126,7 +152,56 @@ function isComplete(item: DailySummary): boolean {
     const target = memorizeTargetReps(item)
     return item.log_count >= target
   }
+  if (item.practice_type === 'scheduled') {
+    const config = parseConfig(item.config)
+    const sched = config.schedule
+    if (sched?.type === 'daily_slots') {
+      // Complete when all slots are done (no remaining slots_due).
+      return !item.slots_due || item.slots_due.length === 0
+    }
+    // For other schedule types, one log = done.
+    return item.log_count > 0
+  }
   return item.log_count > 0
+}
+
+// Schedule display helpers.
+function scheduleIsDue(item: DailySummary): boolean {
+  return item.is_due === true
+}
+
+function scheduleLabel(item: DailySummary): string {
+  const config = parseConfig(item.config)
+  const sched = config.schedule
+  if (!sched) return ''
+  switch (sched.type) {
+    case 'interval': return `every ${sched.interval_days} days`
+    case 'daily_slots': return `${(sched.slots || []).length} slots/day`
+    case 'weekly': return (sched.days || []).join(', ')
+    case 'monthly': return `monthly (${sched.day_of_month}${ordSuffix(sched.day_of_month)})`
+    case 'once': return `due ${sched.due_date}`
+    default: return ''
+  }
+}
+
+function nextDueLabel(item: DailySummary): string {
+  if (!item.next_due) return ''
+  const d = new Date(item.next_due + 'T12:00:00')
+  const t = new Date(today.value + 'T12:00:00')
+  const diff = Math.round((d.getTime() - t.getTime()) / 86400000)
+  if (diff <= 0) return ''
+  if (diff === 1) return 'tomorrow'
+  return `in ${diff} days`
+}
+
+function ordSuffix(n: number): string {
+  if (n >= 11 && n <= 13) return 'th'
+  switch (n % 10) {
+    case 1: return 'st'
+    case 2: return 'nd'
+    case 3: return 'rd'
+    default: return 'th'
+  }
 }
 
 function formatDate(date: string): string {
@@ -218,7 +293,7 @@ onUnmounted(() => {
             v-for="item in items"
             :key="item.practice_id"
             class="px-4 py-2"
-            :class="{ 'opacity-60': isComplete(item) }"
+            :class="{ 'opacity-60': isComplete(item) && (item.practice_type !== 'scheduled' || scheduleIsDue(item)) }"
           >
             <!-- Tracker: name + reps label + inline set buttons + history -->
             <template v-if="item.practice_type === 'tracker'">
@@ -297,7 +372,7 @@ onUnmounted(() => {
             </template>
 
             <!-- Habit/other: single completion circle -->
-            <template v-else>
+            <template v-else-if="item.practice_type !== 'scheduled'">
               <div class="flex items-center justify-between">
                 <div class="flex items-center gap-3 flex-1 min-w-0">
                   <button
@@ -323,6 +398,80 @@ onUnmounted(() => {
                 >
                   history
                 </router-link>
+              </div>
+            </template>
+
+            <!-- Scheduled: due/not-due state, slot buttons, overdue badge -->
+            <template v-else>
+              <div
+                class="flex items-center justify-between gap-2"
+                :class="{ 'opacity-40': !scheduleIsDue(item) && !isComplete(item) }"
+              >
+                <div class="flex items-center gap-3 min-w-0 flex-1">
+                  <!-- Daily slots: row of pill buttons -->
+                  <template v-if="parseConfig(item.config).schedule?.type === 'daily_slots'">
+                    <div class="flex items-center gap-1.5 flex-wrap">
+                      <span class="font-medium truncate mr-1">{{ item.practice_name }}</span>
+                      <button
+                        v-for="slot in (parseConfig(item.config).schedule?.slots || [])"
+                        :key="slot"
+                        @click="
+                          item.slots_due && item.slots_due.includes(slot)
+                            ? quickLog(item, slot)
+                            : undoLog(item)
+                        "
+                        class="group px-2 py-0.5 rounded-full text-xs border transition-colors cursor-pointer"
+                        :class="
+                          item.slots_due && item.slots_due.includes(slot)
+                            ? 'bg-white border-gray-200 text-gray-600 hover:border-amber-400 hover:bg-amber-50'
+                            : 'bg-green-50 border-green-300 text-green-700 hover:bg-red-50 hover:border-red-300 hover:text-red-600'
+                        "
+                      >
+                        <span v-if="!(item.slots_due && item.slots_due.includes(slot))" class="group-hover:hidden">✓ </span>
+                        <span v-if="!(item.slots_due && item.slots_due.includes(slot))" class="hidden group-hover:inline">✕ </span>
+                        {{ slot }}
+                      </button>
+                    </div>
+                  </template>
+
+                  <!-- Other schedule types: single circle -->
+                  <template v-else>
+                    <button
+                      v-if="scheduleIsDue(item) || isComplete(item)"
+                      @click="isComplete(item) ? undoLog(item) : quickLog(item)"
+                      class="group w-5 h-5 rounded-full border-2 flex items-center justify-center flex-shrink-0 transition-colors cursor-pointer"
+                      :class="isComplete(item)
+                        ? 'bg-green-500 border-green-500 text-white hover:bg-red-400 hover:border-red-400'
+                        : 'border-amber-400 hover:border-amber-500'"
+                    >
+                      <span v-if="isComplete(item)" class="text-[10px] group-hover:hidden">✓</span>
+                      <span v-if="isComplete(item)" class="text-[10px] hidden group-hover:inline">✕</span>
+                    </button>
+                    <span v-else class="w-5 h-5 rounded-full border-2 border-gray-200 flex-shrink-0"></span>
+                    <div class="min-w-0">
+                      <div class="font-medium truncate">{{ item.practice_name }}</div>
+                      <div class="text-xs text-gray-400">
+                        {{ scheduleLabel(item) }}
+                        <span v-if="!scheduleIsDue(item) && nextDueLabel(item)" class="ml-1 text-gray-300">
+                          · {{ nextDueLabel(item) }}
+                        </span>
+                      </div>
+                    </div>
+                  </template>
+                </div>
+
+                <div class="flex items-center gap-2 flex-shrink-0">
+                  <span
+                    v-if="item.days_overdue && item.days_overdue > 0"
+                    class="text-xs px-2 py-0.5 rounded-full bg-red-100 text-red-600"
+                  >{{ item.days_overdue }}d overdue</span>
+                  <router-link
+                    :to="`/practices/${item.practice_id}/history`"
+                    class="text-xs text-gray-400 hover:text-indigo-500"
+                  >
+                    history
+                  </router-link>
+                </div>
               </div>
             </template>
           </div>

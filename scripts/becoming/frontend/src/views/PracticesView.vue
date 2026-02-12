@@ -34,6 +34,18 @@ const memorizeConfig = ref({
   target_daily_reps: 1,
 })
 
+// Config helpers for scheduled practices
+const scheduleConfig = ref({
+  type: 'interval' as 'interval' | 'daily_slots' | 'weekly' | 'monthly' | 'once',
+  interval_days: 2,
+  shift_on_early: true,
+  slots: ['morning', 'lunch', 'night'] as string[],
+  days: [] as string[],
+  day_of_month: 1,
+  due_date: '',
+  newSlot: '',
+})
+
 const presetCategories = ['spiritual', 'scripture', 'pt', 'fitness', 'study', 'health']
 
 // Derived filter values from data
@@ -70,8 +82,28 @@ async function submit() {
 
   if (form.value.type === 'tracker') {
     p.config = JSON.stringify(trackerConfig.value)
+  } else if (form.value.type === 'scheduled') {
+    const sc: any = { schedule: { type: scheduleConfig.value.type } }
+    const s = sc.schedule
+    if (scheduleConfig.value.type === 'interval') {
+      s.interval_days = scheduleConfig.value.interval_days
+      s.shift_on_early = scheduleConfig.value.shift_on_early
+      // Anchor to today for new practices
+      if (!editingId.value) {
+        const now = new Date()
+        s.anchor_date = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`
+      }
+    } else if (scheduleConfig.value.type === 'daily_slots') {
+      s.slots = scheduleConfig.value.slots.filter((sl: string) => sl.trim())
+    } else if (scheduleConfig.value.type === 'weekly') {
+      s.days = scheduleConfig.value.days
+    } else if (scheduleConfig.value.type === 'monthly') {
+      s.day_of_month = scheduleConfig.value.day_of_month
+    } else if (scheduleConfig.value.type === 'once') {
+      s.due_date = scheduleConfig.value.due_date
+    }
+    p.config = JSON.stringify(sc)
   } else if (form.value.type === 'memorize') {
-    // For new memorize cards, set target_daily_reps; for edits, merge into existing config
     if (editingId.value !== null) {
       const existing = practices.value.find(pr => pr.id === editingId.value)
       if (existing) {
@@ -112,6 +144,7 @@ function resetForm() {
   form.value = { name: '', description: '', type: 'habit', category: '', config: '{}' }
   trackerConfig.value = { target_sets: 2, target_reps: 15, unit: 'reps' }
   memorizeConfig.value = { target_daily_reps: 1 }
+  scheduleConfig.value = { type: 'interval', interval_days: 2, shift_on_early: true, slots: ['morning', 'lunch', 'night'], days: [], day_of_month: 1, due_date: '', newSlot: '' }
   editingId.value = null
   showForm.value = false
 }
@@ -144,6 +177,26 @@ function editPractice(p: Practice) {
       const cfg = JSON.parse(p.config)
       memorizeConfig.value = {
         target_daily_reps: cfg.target_daily_reps ?? 1,
+      }
+    } catch {
+      // keep defaults
+    }
+  }
+
+  // Populate schedule config if editing a scheduled practice
+  if (p.type === 'scheduled' && p.config) {
+    try {
+      const cfg = JSON.parse(p.config)
+      const s = cfg.schedule || {}
+      scheduleConfig.value = {
+        type: s.type || 'interval',
+        interval_days: s.interval_days ?? 2,
+        shift_on_early: s.shift_on_early ?? true,
+        slots: s.slots || ['morning', 'lunch', 'night'],
+        days: s.days || [],
+        day_of_month: s.day_of_month ?? 1,
+        due_date: s.due_date || '',
+        newSlot: '',
       }
     } catch {
       // keep defaults
@@ -243,6 +296,7 @@ onMounted(load)
               <option value="habit">Habit (daily check)</option>
               <option value="tracker">Tracker (sets/reps)</option>
               <option value="memorize">Memorize (spaced repetition)</option>
+              <option value="scheduled">Scheduled (recurring)</option>
               <option value="task">Task (one-time)</option>
             </select>
           </div>
@@ -338,6 +392,138 @@ onMounted(load)
                 <option value="minutes">minutes</option>
               </select>
             </div>
+          </div>
+        </div>
+
+        <!-- Schedule config -->
+        <div v-if="form.type === 'scheduled'" class="bg-amber-50 rounded p-3 space-y-3">
+          <h3 class="text-sm font-medium text-gray-700">Schedule</h3>
+
+          <!-- Schedule type radio -->
+          <div class="flex gap-2 flex-wrap">
+            <label
+              v-for="opt in [
+                { value: 'interval', label: 'Every N days' },
+                { value: 'daily_slots', label: 'Multiple/day' },
+                { value: 'weekly', label: 'Weekly' },
+                { value: 'monthly', label: 'Monthly' },
+                { value: 'once', label: 'One-time' },
+              ]"
+              :key="opt.value"
+              class="flex items-center gap-1 px-2.5 py-1 text-xs rounded-full border cursor-pointer"
+              :class="scheduleConfig.type === opt.value
+                ? 'bg-amber-200 border-amber-400 text-amber-800'
+                : 'bg-white border-gray-200 text-gray-600 hover:bg-gray-50'"
+            >
+              <input
+                type="radio"
+                v-model="scheduleConfig.type"
+                :value="opt.value"
+                class="sr-only"
+              />
+              {{ opt.label }}
+            </label>
+          </div>
+
+          <!-- Interval config -->
+          <div v-if="scheduleConfig.type === 'interval'" class="space-y-2">
+            <div class="flex items-center gap-2">
+              <label class="text-xs text-gray-600">Every</label>
+              <input
+                v-model.number="scheduleConfig.interval_days"
+                type="number"
+                min="1"
+                max="365"
+                class="w-16 border rounded px-2 py-1 text-sm"
+              />
+              <span class="text-xs text-gray-600">days</span>
+            </div>
+            <label class="flex items-center gap-2 text-xs text-gray-600 cursor-pointer">
+              <input
+                type="checkbox"
+                v-model="scheduleConfig.shift_on_early"
+                class="rounded border-gray-300"
+              />
+              Shift schedule if done early
+            </label>
+          </div>
+
+          <!-- Daily slots config -->
+          <div v-if="scheduleConfig.type === 'daily_slots'" class="space-y-2">
+            <label class="text-xs text-gray-600">Time slots</label>
+            <div class="flex gap-1.5 flex-wrap">
+              <span
+                v-for="(slot, idx) in scheduleConfig.slots"
+                :key="idx"
+                class="flex items-center gap-1 px-2 py-0.5 bg-amber-100 border border-amber-300 rounded-full text-xs text-amber-800"
+              >
+                {{ slot }}
+                <button
+                  type="button"
+                  @click="scheduleConfig.slots.splice(idx, 1)"
+                  class="text-amber-500 hover:text-red-500 ml-0.5"
+                >&times;</button>
+              </span>
+              <form
+                @submit.prevent="if (scheduleConfig.newSlot.trim()) { scheduleConfig.slots.push(scheduleConfig.newSlot.trim()); scheduleConfig.newSlot = '' }"
+                class="flex"
+              >
+                <input
+                  v-model="scheduleConfig.newSlot"
+                  class="w-24 border rounded-l px-2 py-0.5 text-xs"
+                  placeholder="add slot..."
+                />
+                <button
+                  type="submit"
+                  class="px-2 py-0.5 bg-amber-200 border border-l-0 border-amber-300 rounded-r text-xs text-amber-700 hover:bg-amber-300"
+                >+</button>
+              </form>
+            </div>
+          </div>
+
+          <!-- Weekly config -->
+          <div v-if="scheduleConfig.type === 'weekly'" class="space-y-2">
+            <label class="text-xs text-gray-600">Days of the week</label>
+            <div class="flex gap-1.5">
+              <label
+                v-for="day in ['sun','mon','tue','wed','thu','fri','sat']"
+                :key="day"
+                class="flex items-center justify-center w-10 h-8 text-xs rounded border cursor-pointer select-none"
+                :class="scheduleConfig.days.includes(day)
+                  ? 'bg-amber-200 border-amber-400 text-amber-800 font-medium'
+                  : 'bg-white border-gray-200 text-gray-500 hover:bg-gray-50'"
+              >
+                <input
+                  type="checkbox"
+                  :value="day"
+                  v-model="scheduleConfig.days"
+                  class="sr-only"
+                />
+                {{ day.charAt(0).toUpperCase() + day.slice(1) }}
+              </label>
+            </div>
+          </div>
+
+          <!-- Monthly config -->
+          <div v-if="scheduleConfig.type === 'monthly'" class="flex items-center gap-2">
+            <label class="text-xs text-gray-600">Day of month:</label>
+            <input
+              v-model.number="scheduleConfig.day_of_month"
+              type="number"
+              min="1"
+              max="31"
+              class="w-16 border rounded px-2 py-1 text-sm"
+            />
+          </div>
+
+          <!-- Once config -->
+          <div v-if="scheduleConfig.type === 'once'" class="flex items-center gap-2">
+            <label class="text-xs text-gray-600">Due date:</label>
+            <input
+              v-model="scheduleConfig.due_date"
+              type="date"
+              class="border rounded px-2 py-1 text-sm"
+            />
           </div>
         </div>
 

@@ -97,6 +97,9 @@ func createPractice(database *db.DB) http.HandlerFunc {
 				p.Config = string(cfgJSON)
 			} else if p.Type == "tracker" {
 				p.Config = `{"target_sets":2,"target_reps":15,"unit":"reps"}`
+			} else if p.Type == "scheduled" {
+				writeError(w, http.StatusBadRequest, "schedule config is required for scheduled type")
+				return
 			} else {
 				p.Config = "{}"
 			}
@@ -115,6 +118,12 @@ func createPractice(database *db.DB) http.HandlerFunc {
 					cfgJSON, _ := json.Marshal(cfg)
 					p.Config = string(cfgJSON)
 				}
+			}
+		} else if p.Type == "scheduled" {
+			// Validate that the config contains a valid schedule.
+			if _, err := db.ParseScheduleConfig(p.Config); err != nil {
+				writeError(w, http.StatusBadRequest, "invalid schedule config: "+err.Error())
+				return
 			}
 		}
 		p.Active = true

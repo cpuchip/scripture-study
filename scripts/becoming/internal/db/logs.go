@@ -121,6 +121,12 @@ type DailySummary struct {
 	TotalReps    *int   `json:"total_reps,omitempty"`
 	LastValue    string `json:"last_value,omitempty"`
 	LastNotes    string `json:"last_notes,omitempty"`
+
+	// Schedule-aware fields (populated for "scheduled" type only)
+	IsDue       *bool    `json:"is_due,omitempty"`
+	NextDue     string   `json:"next_due,omitempty"`
+	DaysOverdue int      `json:"days_overdue,omitempty"`
+	SlotsDue    []string `json:"slots_due,omitempty"`
 }
 
 // GetDailySummary returns all active practices with their log status for a date.
@@ -152,7 +158,40 @@ func (db *DB) GetDailySummary(date string) ([]*DailySummary, error) {
 		}
 		summaries = append(summaries, s)
 	}
-	return summaries, rows.Err()
+	if err := rows.Err(); err != nil {
+		return nil, err
+	}
+
+	// Compute schedule status for scheduled practices.
+	for _, s := range summaries {
+		if s.PracticeType != "scheduled" {
+			continue
+		}
+		sched, err := ParseScheduleConfig(s.Config)
+		if err != nil {
+			// Bad config — mark as not due.
+			f := false
+			s.IsDue = &f
+			continue
+		}
+
+		var lastLogDate string
+		var completedSlots []string
+
+		if sched.Type == "daily_slots" {
+			completedSlots, _ = db.GetTodaySlots(s.PracticeID, date)
+		} else {
+			lastLogDate, _ = db.GetLastLogDate(s.PracticeID)
+		}
+
+		status := IsScheduledDue(sched, date, lastLogDate, completedSlots)
+		s.IsDue = &status.IsDue
+		s.NextDue = status.NextDue
+		s.DaysOverdue = status.DaysOverdue
+		s.SlotsDue = status.SlotsDue
+	}
+
+	return summaries, nil
 }
 
 func scanLogs(rows interface {

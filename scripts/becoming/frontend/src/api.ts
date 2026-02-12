@@ -21,7 +21,7 @@ export interface Practice {
   id: number
   name: string
   description: string
-  type: 'memorize' | 'tracker' | 'habit' | 'task'
+  type: 'memorize' | 'tracker' | 'habit' | 'task' | 'scheduled'
   category: string
   source_doc: string
   source_path: string
@@ -57,6 +57,11 @@ export interface DailySummary {
   total_reps?: number
   last_value: string
   last_notes: string
+  // Schedule-aware fields (populated for "scheduled" type)
+  is_due?: boolean
+  next_due?: string
+  days_overdue?: number
+  slots_due?: string[]
 }
 
 export interface Task {

@@ -347,23 +347,31 @@ The `practice_logs` table already has:
 
 ## Open Questions
 
+> **All decisions recorded February 12, 2026.**
+
 1. **Should `scheduled` be a new type or extend `habit`?**
-   - New type: cleaner separation, existing habits unchanged
-   - Extend habit: fewer types, but existing habits would need migration
-   - **Recommendation**: New type. Keep `habit` as simple "did I do this today?" items.
+   - **Decision: New type `scheduled`.** Keep `habit` as simple "did I do this today?" items. No migration needed.
 
 2. **Overdue stacking?**
-   - If "water plants every 3 days" is overdue by 2 days, should it show as urgently due once, or as "2 missed + 1 due"?
-   - **Recommendation**: Show as "due (2 days overdue)" — one completion catches up.
+   - **Decision: Single due, with overdue badge.** Show as "due (2 days overdue)" — one completion catches up. No stacking.
 
-3. **Timezone handling?**
-   - Currently using `localDateStr()` on the frontend (browser local time)
-   - Schedule calculations should use the same local date
-   - **Recommendation**: Keep client-side date calculation. Server stores dates as plain strings.
+3. **Non-due items in daily view?**
+   - **Decision: Show grayed out.** Always visible but dimmed, with "tomorrow" / "in 2 days" label. No toggle needed.
 
-4. **Config versioning?**
-   - What if we change the schedule config format later?
-   - **Recommendation**: Include a `"version": 1` field in the config JSON. Migration logic can handle upgrades.
+4. **MVP scope — which schedule types?**
+   - **Decision: All five.** Interval, daily slots, weekly, monthly, one-time. Full coverage from the start.
+
+5. **Shift-on-early for intervals?**
+   - **Decision: Per-task toggle (`shift_on_early`).** Default true for new items, user can disable per task.
+
+6. **Daily slots UI?**
+   - **Decision: Inline slot buttons.** Row of pill-shaped buttons: `[✓ morning] [☐ lunch] [☐ night]`
+
+7. **Navigation / tab?**
+   - **Decision: No new tab.** Scheduled items live in the existing Today view, grouped by category like everything else.
+
+8. **Build order?**
+   - **Decision: Backend first.** Schedule engine → create practice validation → daily summary integration → then frontend forms → daily view.
 
 ---
 
