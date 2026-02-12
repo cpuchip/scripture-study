@@ -1,6 +1,7 @@
 # Becoming App — Architecture Plan
 
 *Created: February 11, 2026*
+*Updated: February 11, 2026 — confirmed SQLite, local-first, Copilot SDK roadmap*
 *Context: Tools to help apply the "Become" commitments from our truth studies*
 
 ---
@@ -443,6 +444,63 @@ AI: "Added. You have 4 cards due for review today — want to do those first?"
 4. MCP tools for reading log and progress queries
 5. Polish, mobile responsiveness, dark mode
 
+### Phase 5: In-App AI Assistant (GitHub Copilot SDK)
+**Goal:** Chat with AI directly inside the Study reader.
+
+The [GitHub Copilot SDK](https://github.com/github/copilot-sdk) (Go SDK: `go get github.com/github/copilot-sdk/go`) embeds Copilot's agentic runtime — the same engine behind Copilot CLI — into our Go backend. This gives us:
+
+- An **in-app chat panel** in the Study reader where you can ask questions while reading
+- The AI agent has access to all existing MCP servers (gospel-mcp, gospel-vec, webster-mcp) plus the Become MCP tools
+- Multi-turn conversations with planning, tool invocation, and streaming responses
+- Model selection (GPT-5, Claude, etc.) — same models available through Copilot
+
+**Implementation:**
+1. Add `github.com/github/copilot-sdk/go` to go.mod
+2. Create `/api/chat` endpoint that proxies to the Copilot SDK agent runtime
+3. Register existing MCP servers as tools the agent can invoke
+4. Build ChatPanel Vue component (collapsible side panel in Study reader)
+5. Stream agent responses to the frontend via SSE or WebSocket
+
+**Requirements:**
+- GitHub Copilot subscription (or BYOK with own API keys)
+- Copilot CLI installed on the host
+- Each prompt counts against premium request quota
+
+**Why wait until Phase 5:**
+- Currently in Technical Preview — API may change
+- Phases 1-4 don't need AI in the runtime (CRUD + spaced repetition + markdown rendering)
+- MCP server (Phase 4) already covers AI integration during VS Code study sessions
+- The Copilot SDK adds value specifically in the Study reader, where you're reading and want to *ask* about what you're reading
+
+**Example interaction:**
+```
+[Reading truth-atonement.md in the Study reader]
+[Chat panel open]
+
+You: "What does 'comprehended' mean in the 1828 dictionary? D&C 88:6 says He comprehended all things."
+AI: [calls webster_define("comprehend")] "In Webster 1828: 'To include; to contain...
+     also: to understand; to conceive.' So 'comprehended all things' carries both
+     meanings — He contained all things AND understood all things."
+
+You: "Add D&C 88:6 to my memorization deck."
+AI: [calls become_add_memorize] "Added. You have 6 cards due for review tomorrow."
+```
+
+### Phase 6: Deployment + Multi-User (Dokploy on VPS)
+**Goal:** Deploy to a VPS so others can benefit from the app.
+
+1. Dockerize the app (single container: Go binary + embedded Vue build + SQLite volume)
+2. Deploy via Dokploy on VPS with SSL and domain routing
+3. Add user authentication (JWT or session-based)
+4. Multi-tenant SQLite strategy:
+   - Option A: One SQLite file per user (simpler isolation, easy backup/restore per user)
+   - Option B: Single DB with user_id foreign keys (simpler queries, standard approach)
+   - Leaning: Option A for clean isolation — each user's data is one file
+5. User registration + onboarding flow
+6. Shared content (scriptures, talks) served from a common gospel-library mount
+7. Per-user study docs (or read-only shared + personal notes layer)
+8. For Copilot SDK: each user needs their own Copilot auth, or use BYOK with a shared API key and rate limiting
+
 ---
 
 ## Content Serving Strategy
@@ -463,23 +521,26 @@ Path resolution and security: the API validates that requested paths stay within
 
 ---
 
+## Decisions
+
+| # | Question | Decision | Rationale |
+|---|----------|----------|----------|
+| 1 | Database | **SQLite3** | Single user, single writer, already used by gospel-mcp. Zero ops. One file. |
+| 2 | Hosting | **Local first** (localhost:8080) | Build and use it before worrying about deployment. |
+| 3 | Deployment (later) | **Dokploy on VPS** (Phase 6) | Already familiar with Dokploy. Skip K8s — it solves problems we don't have. |
+| 4 | Multi-user (later) | **Phase 6** | Get the app working for one user first. Add auth + multi-tenant in deployment phase. |
+| 5 | AI integration | **MCP** (Phase 4) + **Copilot SDK** (Phase 5) | MCP for VS Code sessions. Copilot SDK for in-app AI chat in the Study reader. |
+| 6 | Scripture text in cards | **Snapshot at creation** | Store verse text in DB so cards work even if files move. Keep `source_path` for linking back. |
+| 7 | Mobile | **PWA** (Phase 4) | Vue 3 + Vite has good PWA support. Add after core features work. |
+| 8 | Notifications | **Later** | Start with web UI showing "X cards due today." Push notifications are a Phase 6 concern. |
+
 ## Open Questions
 
-1. **Hosting:** Run locally only? Or deploy somewhere for phone access?
-   - Leaning: Start local (localhost:8080), consider Tailscale or self-hosted later for phone access
-   - The SQLite DB makes deployment simple — it's one file
+1. **Copilot SDK pricing at scale:** If we go multi-user, each prompt counts against premium request quota. BYOK with a shared API key + rate limiting? Or require each user to have their own Copilot subscription?
 
-2. **Authentication:** Needed?
-   - Single-user for now. If deployed, add simple token-based auth later.
+2. **Shared vs. personal study docs in multi-user:** Read-only shared content (our published studies) + personal notes layer? Or full personal study doc editing?
 
-3. **Scripture text in memorize cards:** Pull fresh from gospel-library markdown on each review, or snapshot at creation time?
-   - Leaning: Snapshot at creation (store the text in the DB) so cards work even if files move. But keep `source_path` for linking back.
-
-4. **Mobile:** Progressive Web App (PWA) for phone use?
-   - Vue 3 + Vite has good PWA support. Add in Phase 4.
-
-5. **Notifications/Reminders:** Push notifications for daily reviews?
-   - Later. Start with the web UI showing "X cards due today."
+3. **Offline support:** SQLite + PWA could work offline. Worth investing in service worker + IndexedDB sync?
 
 ---
 
