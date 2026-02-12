@@ -3,7 +3,7 @@ becoming.db-shm
 becoming.db-wal
 server.exe
 server.exe~
-server
+/server
 cmd/server/dist/
 
 # Environment (secrets) — .env.example is checked in

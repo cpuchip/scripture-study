@@ -14,6 +14,9 @@ import (
 //go:embed schema.sql
 var schemaSQL string
 
+//go:embed auth_schema.sql
+var authSchemaSQL string
+
 // DB wraps the SQLite database connection.
 type DB struct {
 	*sql.DB
@@ -45,7 +48,10 @@ func Open(path string) (*DB, error) {
 
 func (db *DB) initSchema() error {
 	if _, err := db.Exec(schemaSQL); err != nil {
-		return err
+		return fmt.Errorf("main schema: %w", err)
+	}
+	if _, err := db.Exec(authSchemaSQL); err != nil {
+		return fmt.Errorf("auth schema: %w", err)
 	}
 	return db.runMigrations()
 }
