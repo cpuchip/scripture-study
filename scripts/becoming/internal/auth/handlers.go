@@ -2,10 +2,12 @@ package auth
 
 import (
 	"encoding/json"
+	"fmt"
 	"log"
 	"net/http"
 	"strconv"
 	"strings"
+	"time"
 
 	"github.com/cpuchip/scripture-study/scripts/becoming/internal/db"
 	"github.com/go-chi/chi/v5"
@@ -248,6 +250,225 @@ func (h *Handlers) Providers(w http.ResponseWriter, r *http.Request) {
 		"email":  true,
 		"google": h.OAuth != nil,
 	})
+}
+
+// --- Password Change ---
+
+type changePasswordRequest struct {
+	CurrentPassword string `json:"current_password"`
+	NewPassword     string `json:"new_password"`
+}
+
+// ChangePassword handles PUT /api/me/password.
+func (h *Handlers) ChangePassword(w http.ResponseWriter, r *http.Request) {
+	userID := UserID(r)
+	var req changePasswordRequest
+	if err := json.NewDecoder(r.Body).Decode(&req); err != nil {
+		writeJSON(w, http.StatusBadRequest, map[string]string{"error": "invalid JSON"})
+		return
+	}
+
+	user, err := h.DB.GetUserByID(userID)
+	if err != nil || user == nil {
+		writeJSON(w, http.StatusNotFound, map[string]string{"error": "user not found"})
+		return
+	}
+
+	// OAuth-only users can't change password (they don't have one)
+	if user.PasswordHash == "" {
+		writeJSON(w, http.StatusBadRequest, map[string]string{"error": "password change not available for social login accounts"})
+		return
+	}
+
+	if !db.CheckPassword(user.PasswordHash, req.CurrentPassword) {
+		writeJSON(w, http.StatusUnauthorized, map[string]string{"error": "current password is incorrect"})
+		return
+	}
+
+	if len(req.NewPassword) < 8 {
+		writeJSON(w, http.StatusBadRequest, map[string]string{"error": "new password must be at least 8 characters"})
+		return
+	}
+
+	newHash, err := db.HashPassword(req.NewPassword)
+	if err != nil {
+		writeJSON(w, http.StatusInternalServerError, map[string]string{"error": "internal error"})
+		return
+	}
+
+	if err := h.DB.UpdateUserPassword(userID, newHash); err != nil {
+		writeJSON(w, http.StatusInternalServerError, map[string]string{"error": "failed to update password"})
+		return
+	}
+
+	// Invalidate all other sessions for security
+	cookie, _ := r.Cookie("becoming_session")
+	if cookie != nil && cookie.Value != "" {
+		h.DB.DeleteUserSessionsExcept(userID, cookie.Value)
+	}
+
+	writeJSON(w, http.StatusOK, map[string]string{"status": "password changed"})
+}
+
+// --- Account Deletion ---
+
+type deleteAccountRequest struct {
+	Password string `json:"password"`
+}
+
+// DeleteAccount handles DELETE /api/me.
+func (h *Handlers) DeleteAccount(w http.ResponseWriter, r *http.Request) {
+	userID := UserID(r)
+	var req deleteAccountRequest
+	if err := json.NewDecoder(r.Body).Decode(&req); err != nil {
+		writeJSON(w, http.StatusBadRequest, map[string]string{"error": "invalid JSON"})
+		return
+	}
+
+	user, err := h.DB.GetUserByID(userID)
+	if err != nil || user == nil {
+		writeJSON(w, http.StatusNotFound, map[string]string{"error": "user not found"})
+		return
+	}
+
+	// For email users, verify password. For OAuth users, just the confirmation (password field can be empty).
+	if user.Provider == "email" && user.PasswordHash != "" {
+		if !db.CheckPassword(user.PasswordHash, req.Password) {
+			writeJSON(w, http.StatusUnauthorized, map[string]string{"error": "incorrect password"})
+			return
+		}
+	}
+
+	if err := h.DB.DeleteUserAndData(userID); err != nil {
+		log.Printf("delete account: %v", err)
+		writeJSON(w, http.StatusInternalServerError, map[string]string{"error": "failed to delete account"})
+		return
+	}
+
+	h.clearSessionCookie(w)
+	writeJSON(w, http.StatusOK, map[string]string{"status": "account deleted"})
+}
+
+// --- Session Management ---
+
+// SessionInfo is a safe-for-frontend representation of a session.
+type SessionInfo struct {
+	ID         string `json:"id"` // truncated for safety
+	UserAgent  string `json:"user_agent"`
+	IPAddress  string `json:"ip_address"`
+	CreatedAt  string `json:"created_at"`
+	LastActive string `json:"last_active"`
+	IsCurrent  bool   `json:"is_current"`
+	FullID     string `json:"-"` // never serialized, used internally
+}
+
+// ListSessions handles GET /api/sessions.
+func (h *Handlers) ListSessions(w http.ResponseWriter, r *http.Request) {
+	userID := UserID(r)
+
+	// Clean up expired sessions first
+	h.DB.CleanExpiredSessions()
+
+	sessions, err := h.DB.ListUserSessions(userID)
+	if err != nil {
+		writeJSON(w, http.StatusInternalServerError, map[string]string{"error": "failed to list sessions"})
+		return
+	}
+
+	// Get current session token from cookie
+	var currentToken string
+	if cookie, err := r.Cookie("becoming_session"); err == nil {
+		currentToken = cookie.Value
+	}
+
+	result := make([]SessionInfo, 0, len(sessions))
+	for _, s := range sessions {
+		info := SessionInfo{
+			ID:         s.ID[:8] + "...", // truncate token for display
+			UserAgent:  s.UserAgent,
+			IPAddress:  s.IPAddress,
+			CreatedAt:  s.CreatedAt,
+			LastActive: s.LastActive,
+			IsCurrent:  s.ID == currentToken,
+			FullID:     s.ID,
+		}
+		result = append(result, info)
+	}
+
+	writeJSON(w, http.StatusOK, result)
+}
+
+// RevokeSession handles DELETE /api/sessions/{id}.
+func (h *Handlers) RevokeSession(w http.ResponseWriter, r *http.Request) {
+	userID := UserID(r)
+	prefix := chi.URLParam(r, "id") // this is the truncated ID prefix
+
+	sessions, err := h.DB.ListUserSessions(userID)
+	if err != nil {
+		writeJSON(w, http.StatusInternalServerError, map[string]string{"error": "internal error"})
+		return
+	}
+
+	// Find session matching the prefix
+	var targetToken string
+	for _, s := range sessions {
+		if strings.HasPrefix(s.ID, prefix) {
+			targetToken = s.ID
+			break
+		}
+	}
+	if targetToken == "" {
+		writeJSON(w, http.StatusNotFound, map[string]string{"error": "session not found"})
+		return
+	}
+
+	if err := h.DB.DeleteSession(targetToken); err != nil {
+		writeJSON(w, http.StatusInternalServerError, map[string]string{"error": "failed to revoke session"})
+		return
+	}
+
+	// If they revoked their own session, clear cookie
+	if cookie, err := r.Cookie("becoming_session"); err == nil && cookie.Value == targetToken {
+		h.clearSessionCookie(w)
+	}
+
+	writeJSON(w, http.StatusOK, map[string]string{"status": "session revoked"})
+}
+
+// RevokeOtherSessions handles DELETE /api/sessions.
+func (h *Handlers) RevokeOtherSessions(w http.ResponseWriter, r *http.Request) {
+	userID := UserID(r)
+	var currentToken string
+	if cookie, err := r.Cookie("becoming_session"); err == nil {
+		currentToken = cookie.Value
+	}
+	if currentToken == "" {
+		writeJSON(w, http.StatusBadRequest, map[string]string{"error": "no active session"})
+		return
+	}
+
+	if err := h.DB.DeleteUserSessionsExcept(userID, currentToken); err != nil {
+		writeJSON(w, http.StatusInternalServerError, map[string]string{"error": "failed to revoke sessions"})
+		return
+	}
+	writeJSON(w, http.StatusOK, map[string]string{"status": "other sessions revoked"})
+}
+
+// --- Data Export ---
+
+// ExportData handles GET /api/export.
+func (h *Handlers) ExportData(w http.ResponseWriter, r *http.Request) {
+	userID := UserID(r)
+	data, err := h.DB.ExportUserData(userID)
+	if err != nil {
+		log.Printf("export: %v", err)
+		writeJSON(w, http.StatusInternalServerError, map[string]string{"error": "failed to export data"})
+		return
+	}
+
+	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Disposition", fmt.Sprintf(`attachment; filename="becoming-export-%s.json"`, time.Now().Format("2006-01-02")))
+	json.NewEncoder(w).Encode(data)
 }
 
 // --- Helpers ---

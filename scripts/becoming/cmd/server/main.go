@@ -93,11 +93,21 @@ func main() {
 		// User profile
 		r.Get("/api/me", authHandlers.Me)
 		r.Put("/api/me", authHandlers.UpdateMe)
+		r.Put("/api/me/password", authHandlers.ChangePassword)
+		r.Delete("/api/me", authHandlers.DeleteAccount)
+
+		// Sessions
+		r.Get("/api/sessions", authHandlers.ListSessions)
+		r.Delete("/api/sessions", authHandlers.RevokeOtherSessions)
+		r.Delete("/api/sessions/{id}", authHandlers.RevokeSession)
 
 		// API tokens
 		r.Get("/api/tokens", authHandlers.ListTokens)
 		r.Post("/api/tokens", authHandlers.CreateToken)
 		r.Delete("/api/tokens/{id}", authHandlers.DeleteToken)
+
+		// Data export
+		r.Get("/api/export", authHandlers.ExportData)
 
 		// All existing API routes
 		r.Mount("/api", api.Router(database, *scriptures))

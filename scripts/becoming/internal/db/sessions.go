@@ -109,6 +109,12 @@ func (db *DB) DeleteUserSessions(userID int64) error {
 	return err
 }
 
+// DeleteUserSessionsExcept removes all sessions for a user except the specified one.
+func (db *DB) DeleteUserSessionsExcept(userID int64, exceptToken string) error {
+	_, err := db.Exec(`DELETE FROM sessions WHERE user_id = ? AND id != ?`, userID, exceptToken)
+	return err
+}
+
 // ListUserSessions returns all active sessions for a user.
 func (db *DB) ListUserSessions(userID int64) ([]*Session, error) {
 	rows, err := db.Query(

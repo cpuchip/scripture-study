@@ -451,6 +451,15 @@ export interface APIToken {
   expires_at?: string
 }
 
+export interface SessionInfo {
+  id: string
+  user_agent: string
+  ip_address: string
+  created_at: string
+  last_active: string
+  is_current: boolean
+}
+
 // --- Auth API ---
 
 export const authApi = {
@@ -500,5 +509,47 @@ export const authApi = {
 
   deleteToken(id: number) {
     return request<{ status: string }>(`/tokens/${id}`, { method: 'DELETE' })
+  },
+
+  // Password
+  changePassword(currentPassword: string, newPassword: string) {
+    return request<{ status: string }>('/me/password', {
+      method: 'PUT',
+      body: JSON.stringify({ current_password: currentPassword, new_password: newPassword }),
+    })
+  },
+
+  // Sessions
+  listSessions() {
+    return request<SessionInfo[]>('/sessions')
+  },
+
+  revokeSession(id: string) {
+    return request<{ status: string }>(`/sessions/${id}`, { method: 'DELETE' })
+  },
+
+  revokeOtherSessions() {
+    return request<{ status: string }>('/sessions', { method: 'DELETE' })
+  },
+
+  // Account
+  deleteAccount(password: string) {
+    return request<{ status: string }>('/me', {
+      method: 'DELETE',
+      body: JSON.stringify({ password }),
+    })
+  },
+
+  // Export
+  async exportData() {
+    const res = await fetch(`${BASE}/export`, { credentials: 'same-origin' })
+    if (!res.ok) throw new Error('Export failed')
+    const blob = await res.blob()
+    const url = URL.createObjectURL(blob)
+    const a = document.createElement('a')
+    a.href = url
+    a.download = `becoming-export-${new Date().toISOString().slice(0, 10)}.json`
+    a.click()
+    URL.revokeObjectURL(url)
   },
 }
