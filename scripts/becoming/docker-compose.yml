@@ -1,0 +1,73 @@
+# Becoming App — Docker Compose for Dokploy
+# Deploy with PostgreSQL on a VPS
+#
+# Usage:
+#   docker compose up -d
+#
+# Dokploy:
+#   1. Create a new "Compose" project in Dokploy
+#   2. Paste this file or point to the repo
+#   3. Set environment variables in Dokploy UI
+#   4. Deploy
+
+services:
+  app:
+    build:
+      context: ../..
+      dockerfile: scripts/becoming/Dockerfile
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    environment:
+      # Database — point to the PostgreSQL service
+      BECOMING_DB: postgres://becoming:${POSTGRES_PASSWORD}@db:5432/becoming?sslmode=disable
+      BECOMING_PORT: ":8080"
+
+      # Google OAuth (optional)
+      GOOGLE_CLIENT_ID: ${GOOGLE_CLIENT_ID:-}
+      GOOGLE_CLIENT_SECRET: ${GOOGLE_CLIENT_SECRET:-}
+      GOOGLE_REDIRECT_URL: ${GOOGLE_REDIRECT_URL:-}
+
+      # TLS (optional — typically handled by Dokploy's Traefik/nginx reverse proxy)
+      # TLS_CERT: ""
+      # TLS_KEY: ""
+    depends_on:
+      db:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost:8080/api/auth/providers"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+
+  db:
+    image: postgres:17-alpine
+    restart: unless-stopped
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: becoming
+      POSTGRES_USER: becoming
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in environment}
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U becoming"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Optional: pgAdmin for database management
+  # Uncomment if you want a web UI for PostgreSQL
+  # pgadmin:
+  #   image: dpage/pgadmin4:latest
+  #   restart: unless-stopped
+  #   ports:
+  #     - "5050:80"
+  #   environment:
+  #     PGADMIN_DEFAULT_EMAIL: admin@becoming.local
+  #     PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_PASSWORD:-admin}
+  #   depends_on:
+  #     - db
+
+volumes:
+  pgdata:
+    driver: local
