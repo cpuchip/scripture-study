@@ -12,6 +12,9 @@
           <router-link to="/memorize" class="hover:text-indigo-600" active-class="text-indigo-600 font-semibold">Memorize</router-link>
           <router-link to="/practices" class="hover:text-indigo-600" active-class="text-indigo-600 font-semibold">Practices</router-link>
           <router-link to="/reports" class="hover:text-indigo-600" active-class="text-indigo-600 font-semibold">Reports</router-link>
+          <router-link to="/pillars" class="hover:text-indigo-600" active-class="text-indigo-600 font-semibold">Pillars</router-link>
+          <router-link to="/notes" class="hover:text-indigo-600" active-class="text-indigo-600 font-semibold">Notes</router-link>
+          <router-link to="/reflections" class="hover:text-indigo-600" active-class="text-indigo-600 font-semibold">Reflect</router-link>
           <router-link to="/tasks" class="hover:text-indigo-600" active-class="text-indigo-600 font-semibold">Tasks</router-link>
         </div>
       </div>

@@ -135,6 +135,56 @@ export interface ReportEntry {
   daily_data: DailyDataPoint[]
 }
 
+export interface Note {
+  id: number
+  content: string
+  practice_id?: number | null
+  task_id?: number | null
+  pillar_id?: number | null
+  pinned: boolean
+  created_at: string
+  updated_at: string
+  practice_name?: string
+  task_title?: string
+}
+
+export interface Prompt {
+  id: number
+  text: string
+  active: boolean
+  sort_order: number
+  created_at: string
+}
+
+export interface Reflection {
+  id: number
+  date: string
+  prompt_id?: number | null
+  prompt_text?: string
+  content: string
+  mood?: number | null
+  created_at: string
+  updated_at: string
+}
+
+export interface Pillar {
+  id: number
+  name: string
+  description: string
+  icon: string
+  parent_id?: number | null
+  children?: Pillar[]
+  practice_count?: number
+  task_count?: number
+  created_at: string
+}
+
+export interface PillarLink {
+  pillar_id: number
+  pillar_name: string
+  pillar_icon: string
+}
+
 // --- Practices ---
 
 export const api = {
@@ -238,5 +288,115 @@ export const api = {
   // Reports
   getReport(start: string, end: string) {
     return request<ReportEntry[]>(`/reports?start=${start}&end=${end}`)
+  },
+
+  // Notes
+  listNotes(filters?: { practice_id?: number; task_id?: number; pillar_id?: number; pinned?: boolean }) {
+    const params = new URLSearchParams()
+    if (filters?.practice_id) params.set('practice_id', String(filters.practice_id))
+    if (filters?.task_id) params.set('task_id', String(filters.task_id))
+    if (filters?.pillar_id) params.set('pillar_id', String(filters.pillar_id))
+    if (filters?.pinned) params.set('pinned', 'true')
+    const qs = params.toString()
+    return request<Note[]>(`/notes${qs ? '?' + qs : ''}`)
+  },
+
+  createNote(n: Partial<Note>) {
+    return request<Note>('/notes', { method: 'POST', body: JSON.stringify(n) })
+  },
+
+  updateNote(id: number, n: Partial<Note>) {
+    return request<Note>(`/notes/${id}`, { method: 'PUT', body: JSON.stringify(n) })
+  },
+
+  deleteNote(id: number) {
+    return request<void>(`/notes/${id}`, { method: 'DELETE' })
+  },
+
+  // Prompts
+  listPrompts(activeOnly = true) {
+    const params = activeOnly ? '' : '?active=false'
+    return request<Prompt[]>(`/prompts${params}`)
+  },
+
+  getTodayPrompt() {
+    return request<Prompt>('/prompts/today')
+  },
+
+  createPrompt(p: Partial<Prompt>) {
+    return request<Prompt>('/prompts', { method: 'POST', body: JSON.stringify(p) })
+  },
+
+  updatePrompt(id: number, p: Partial<Prompt>) {
+    return request<Prompt>(`/prompts/${id}`, { method: 'PUT', body: JSON.stringify(p) })
+  },
+
+  deletePrompt(id: number) {
+    return request<void>(`/prompts/${id}`, { method: 'DELETE' })
+  },
+
+  // Reflections
+  listReflections(from?: string, to?: string) {
+    const params = new URLSearchParams()
+    if (from) params.set('from', from)
+    if (to) params.set('to', to)
+    const qs = params.toString()
+    return request<Reflection[]>(`/reflections${qs ? '?' + qs : ''}`)
+  },
+
+  getReflection(date: string) {
+    return request<Reflection | null>(`/reflections/${date}`)
+  },
+
+  upsertReflection(r: Partial<Reflection>) {
+    return request<Reflection>('/reflections', { method: 'POST', body: JSON.stringify(r) })
+  },
+
+  deleteReflection(id: number) {
+    return request<void>(`/reflections/${id}`, { method: 'DELETE' })
+  },
+
+  // Pillars
+  listPillarsTree() {
+    return request<Pillar[]>('/pillars')
+  },
+
+  listPillarsFlat() {
+    return request<Pillar[]>('/pillars/flat')
+  },
+
+  getPillarSuggestions() {
+    return request<Pillar[]>('/pillars/suggestions')
+  },
+
+  hasPillars() {
+    return request<{ has_pillars: boolean }>('/pillars/has-pillars')
+  },
+
+  createPillar(p: Partial<Pillar>) {
+    return request<Pillar>('/pillars', { method: 'POST', body: JSON.stringify(p) })
+  },
+
+  getPillar(id: number) {
+    return request<Pillar>(`/pillars/${id}`)
+  },
+
+  updatePillar(id: number, p: Partial<Pillar>) {
+    return request<Pillar>(`/pillars/${id}`, { method: 'PUT', body: JSON.stringify(p) })
+  },
+
+  deletePillar(id: number) {
+    return request<void>(`/pillars/${id}`, { method: 'DELETE' })
+  },
+
+  setPracticePillars(practiceId: number, pillarIds: number[]) {
+    return request<void>(`/practices/${practiceId}/pillars`, {
+      method: 'PUT',
+      body: JSON.stringify({ pillar_ids: pillarIds }),
+    })
+  },
+
+  getPracticePillars(practiceId: number) {
+    return request<PillarLink[]>(`/practices/${practiceId}/pillars`)
   },
 }

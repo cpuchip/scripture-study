@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { ref, computed, onMounted } from 'vue'
 import { api, type ReportEntry } from '../api'
+import TrendLine from '../components/TrendLine.vue'
+import SparkLine from '../components/SparkLine.vue'
 
 function localDateStr(d: Date = new Date()): string {
   return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`
@@ -72,6 +74,82 @@ const summaryStats = computed(() => {
   const bestStreak = f.reduce((max, e) => Math.max(max, e.current_streak), 0)
   return { totalPractices, totalLogs, totalSets, totalReps, avgCompletion, bestStreak }
 })
+
+// --- Overall completion trend ---
+// For each date in the range, calculate (practices with activity / total practices)
+const overallTrendData = computed(() => {
+  const f = filtered.value
+  if (f.length === 0) return { dates: [] as string[], values: [] as number[] }
+
+  // Build date range
+  const dates: string[] = []
+  const d = new Date(startDate.value + 'T12:00:00')
+  const end = new Date(endDate.value + 'T12:00:00')
+  while (d <= end) {
+    dates.push(localDateStr(d))
+    d.setDate(d.getDate() + 1)
+  }
+
+  // For each practice, build a set of active dates
+  const practiceDateSets = f.map(entry => {
+    const s = new Set<string>()
+    for (const dp of entry.daily_data) {
+      if (dp.logs > 0 || dp.sets > 0) s.add(dp.date)
+    }
+    return s
+  })
+
+  const totalPractices = f.length
+  const values = dates.map(date => {
+    const active = practiceDateSets.filter(s => s.has(date)).length
+    return totalPractices > 0 ? (active / totalPractices) * 100 : 0
+  })
+
+  return { dates, values }
+})
+
+// Overall trend direction
+const overallTrendDirection = computed(() => {
+  const vals = overallTrendData.value.values
+  if (vals.length < 4) return { arrow: '→', color: 'text-gray-400', delta: 0 }
+  const mid = Math.floor(vals.length / 2)
+  const first = vals.slice(0, mid)
+  const second = vals.slice(mid)
+  const avg1 = first.reduce((s, v) => s + v, 0) / first.length
+  const avg2 = second.reduce((s, v) => s + v, 0) / second.length
+  const delta = Math.round(avg2 - avg1)
+  if (delta > 2) return { arrow: '↑', color: 'text-green-600', delta }
+  if (delta < -2) return { arrow: '↓', color: 'text-red-500', delta }
+  return { arrow: '→', color: 'text-gray-400', delta }
+})
+
+// Date labels for the trend chart x-axis
+const trendDateLabels = computed(() => {
+  const dates = overallTrendData.value.dates
+  if (dates.length === 0) return { start: '', mid: '', end: '' }
+  const fmt = (ds: string) => new Date(ds + 'T12:00:00').toLocaleDateString('en-US', { month: 'short', day: 'numeric' })
+  return {
+    start: fmt(dates[0]!),
+    mid: fmt(dates[Math.floor(dates.length / 2)]!),
+    end: fmt(dates[dates.length - 1]!),
+  }
+})
+
+// Per-practice sparkline data: daily activity values (filled for the full date range)
+function sparklineData(entry: ReportEntry): number[] {
+  const map: Record<string, number> = {}
+  for (const dp of entry.daily_data) {
+    map[dp.date] = entry.practice_type === 'tracker' ? dp.sets : dp.logs
+  }
+  const result: number[] = []
+  const d = new Date(startDate.value + 'T12:00:00')
+  const end = new Date(endDate.value + 'T12:00:00')
+  while (d <= end) {
+    result.push(map[localDateStr(d)] || 0)
+    d.setDate(d.getDate() + 1)
+  }
+  return result
+}
 
 // Chart helpers
 function maxDailyValue(entry: ReportEntry): number {
@@ -261,6 +339,35 @@ onMounted(load)
         </div>
       </div>
 
+      <!-- Overall Completion Trend -->
+      <div v-if="overallTrendData.values.length > 1" class="bg-white rounded-lg shadow p-4 mb-6">
+        <div class="flex items-center justify-between mb-2">
+          <h2 class="text-sm font-semibold text-gray-700">Completion Trend</h2>
+          <div class="flex items-center gap-2">
+            <span class="text-xs text-gray-400">7-day avg</span>
+            <span class="text-lg font-bold" :class="overallTrendDirection.color">
+              {{ overallTrendDirection.arrow }}
+              <span class="text-xs font-normal">{{ overallTrendDirection.delta > 0 ? '+' : '' }}{{ overallTrendDirection.delta }}%</span>
+            </span>
+          </div>
+        </div>
+        <TrendLine
+          :data="overallTrendData.values"
+          :width="800"
+          :height="100"
+          color="#6366f1"
+          :fill="true"
+          :rolling-avg="7"
+          :stroke-width="1.5"
+          class="w-full"
+        />
+        <div class="flex justify-between mt-1 text-[10px] text-gray-400">
+          <span>{{ trendDateLabels.start }}</span>
+          <span>{{ trendDateLabels.mid }}</span>
+          <span>{{ trendDateLabels.end }}</span>
+        </div>
+      </div>
+
       <!-- No data -->
       <div v-if="filtered.length === 0" class="text-center py-12 text-gray-400">
         No practices match filters.
@@ -290,7 +397,7 @@ onMounted(load)
           </div>
 
           <!-- Stats row -->
-          <div class="px-4 py-2 flex gap-6 text-xs border-b border-gray-50">
+          <div class="px-4 py-2 flex items-center gap-6 text-xs border-b border-gray-50">
             <div>
               <span class="font-semibold text-green-600">{{ Math.round(entry.completion_rate * 100) }}%</span>
               <span class="text-gray-400 ml-1">completion</span>
@@ -305,6 +412,14 @@ onMounted(load)
             </div>
             <div>
               <span class="text-gray-500">{{ volumeLabel(entry) }}</span>
+            </div>
+            <div class="ml-auto">
+              <SparkLine
+                :data="sparklineData(entry)"
+                :color="entry.completion_rate >= 0.8 ? '#22c55e' : entry.completion_rate >= 0.5 ? '#f59e0b' : '#ef4444'"
+                :width="100"
+                :height="20"
+              />
             </div>
           </div>
 

@@ -52,8 +52,16 @@ func (db *DB) initSchema() error {
 
 func (db *DB) runMigrations() error {
 	// Rename "exercise" type to "tracker"
-	_, err := db.Exec(`UPDATE practices SET type = 'tracker' WHERE type = 'exercise'`)
-	return err
+	if _, err := db.Exec(`UPDATE practices SET type = 'tracker' WHERE type = 'exercise'`); err != nil {
+		return err
+	}
+
+	// Seed default reflection prompts
+	if err := db.SeedPrompts(); err != nil {
+		return fmt.Errorf("seeding prompts: %w", err)
+	}
+
+	return nil
 }
 
 // Path returns the database file path.

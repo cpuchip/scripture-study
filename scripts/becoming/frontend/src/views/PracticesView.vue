@@ -1,13 +1,17 @@
 <script setup lang="ts">
 import { ref, computed, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
-import { api, type Practice } from '../api'
+import { api, type Practice, type PillarLink } from '../api'
 
 const router = useRouter()
 const practices = ref<Practice[]>([])
 const loading = ref(true)
 const showForm = ref(false)
 const editingId = ref<number | null>(null)
+
+// Pillars
+const allPillars = ref<{ id: number; name: string; icon: string }[]>([])
+const formPillarIds = ref<number[]>([])
 
 // Filters
 const filterType = ref<string>('all')
@@ -95,7 +99,12 @@ function toggleCategory(cat: string) {
 
 async function load() {
   loading.value = true
-  practices.value = await api.listPractices(undefined, false)
+  const [practicesData, pillarsData] = await Promise.all([
+    api.listPractices(undefined, false),
+    api.listPillarsFlat(),
+  ])
+  practices.value = practicesData
+  allPillars.value = pillarsData.map(p => ({ id: p.id, name: p.name, icon: p.icon || '' }))
   loading.value = false
 }
 
@@ -159,9 +168,15 @@ async function submit() {
       const merged = { ...existing, ...p }
       // Config was already set correctly above for each type
       await api.updatePractice(editingId.value, merged as Practice)
+      // Save pillar associations
+      await api.setPracticePillars(editingId.value, formPillarIds.value)
     }
   } else {
-    await api.createPractice(p)
+    const created = await api.createPractice(p)
+    // Save pillar associations for new practice
+    if (created && created.id && formPillarIds.value.length > 0) {
+      await api.setPracticePillars(created.id, formPillarIds.value)
+    }
   }
   resetForm()
   await load()
@@ -172,6 +187,7 @@ function resetForm() {
   trackerConfig.value = { target_sets: 2, target_reps: 15, unit: 'reps' }
   memorizeConfig.value = { target_daily_reps: 1 }
   scheduleConfig.value = { type: 'interval', interval_days: 2, shift_on_early: true, slots: ['morning', 'lunch', 'night'], days: [], day_of_month: 1, due_date: '', newSlot: '' }
+  formPillarIds.value = []
   editingId.value = null
   showForm.value = false
 }
@@ -183,6 +199,13 @@ function editPractice(p: Practice) {
   form.value.type = p.type
   form.value.category = p.category
   form.value.config = p.config
+
+  // Load pillar associations
+  api.getPracticePillars(p.id).then(links => {
+    formPillarIds.value = links.map((l: PillarLink) => l.pillar_id)
+  }).catch(() => {
+    formPillarIds.value = []
+  })
 
   // Populate tracker config if editing a tracker
   if (p.type === 'tracker' && p.config) {
@@ -351,6 +374,25 @@ onMounted(load)
             />
           </div>
           <p class="text-xs text-gray-400 mt-1">Comma-separated for multiple: pt,fitness</p>
+        </div>
+
+        <!-- Pillar selector -->
+        <div v-if="allPillars.length > 0">
+          <label class="block text-sm font-medium text-gray-700 mb-1">Pillars <span class="font-normal text-gray-400">(multi-select)</span></label>
+          <div class="flex gap-2 flex-wrap">
+            <button
+              v-for="pillar in allPillars"
+              :key="pillar.id"
+              type="button"
+              @click="formPillarIds.includes(pillar.id) ? formPillarIds = formPillarIds.filter(id => id !== pillar.id) : formPillarIds.push(pillar.id)"
+              class="px-3 py-1 text-xs rounded-full border"
+              :class="formPillarIds.includes(pillar.id)
+                ? 'bg-indigo-100 border-indigo-300 text-indigo-700'
+                : 'bg-gray-50 border-gray-200 text-gray-600 hover:bg-gray-100'"
+            >
+              {{ pillar.icon }} {{ pillar.name }}
+            </button>
+          </div>
         </div>
 
         <div>

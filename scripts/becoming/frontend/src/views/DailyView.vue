@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, computed, onMounted, onUnmounted } from 'vue'
-import { api, type DailySummary, type PracticeLog, type Practice } from '../api'
+import { api, type DailySummary, type PracticeLog, type Practice, type Reflection, type Prompt, type PillarLink } from '../api'
 
 function localDateStr(d: Date = new Date()): string {
   return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`
@@ -17,7 +17,14 @@ function parseConfig(config: string) {
 }
 
 // Group by category (uses first category if comma-separated)
+const groupMode = ref<'category' | 'pillar'>('category')
+const practicePillarMap = ref<Record<number, PillarLink[]>>({})
+const hasPillars = ref(false)
+
 const grouped = computed(() => {
+  if (groupMode.value === 'pillar' && hasPillars.value) {
+    return groupedByPillar.value
+  }
   const groups: Record<string, DailySummary[]> = {}
   for (const item of summary.value) {
     const raw = item.category || item.practice_type || 'other'
@@ -28,19 +35,99 @@ const grouped = computed(() => {
   return groups
 })
 
+const groupedByPillar = computed(() => {
+  const groups: Record<string, DailySummary[]> = {}
+  for (const item of summary.value) {
+    const links = practicePillarMap.value[item.practice_id]
+    if (links && links.length > 0) {
+      for (const link of links) {
+        const label = `${link.pillar_icon} ${link.pillar_name}`
+        if (!groups[label]) groups[label] = []
+        groups[label].push(item)
+      }
+    } else {
+      if (!groups['Uncategorized']) groups['Uncategorized'] = []
+      groups['Uncategorized'].push(item)
+    }
+  }
+  return groups
+})
+
+// Reflection state
+const reflection = ref<Reflection | null>(null)
+const todayPrompt = ref<Prompt | null>(null)
+const reflectionContent = ref('')
+const reflectionMood = ref<number | null>(null)
+const reflectionExpanded = ref(false)
+const reflectionSaving = ref(false)
+
+const moods = [
+  { value: 1, emoji: '😟', label: 'Struggling' },
+  { value: 2, emoji: '😐', label: 'Meh' },
+  { value: 3, emoji: '🙂', label: 'Okay' },
+  { value: 4, emoji: '😊', label: 'Good' },
+  { value: 5, emoji: '😄', label: 'Great' },
+]
+
 async function load() {
   loading.value = true
   try {
-    const [s, d] = await Promise.all([
+    const [s, d, ref_, prompt, pillarsCheck] = await Promise.all([
       api.getDailySummary(today.value),
       api.getDueCards(today.value),
+      api.getReflection(today.value),
+      api.getTodayPrompt(),
+      api.hasPillars(),
     ])
     summary.value = s
     dueCards.value = d
+    reflection.value = ref_
+    todayPrompt.value = prompt
+    hasPillars.value = pillarsCheck.has_pillars
+
+    // Load pillar mappings for all practices
+    if (hasPillars.value) {
+      const mapping: Record<number, PillarLink[]> = {}
+      await Promise.all(s.map(async (item) => {
+        try {
+          const links = await api.getPracticePillars(item.practice_id)
+          if (links.length > 0) mapping[item.practice_id] = links
+        } catch { /* noop */ }
+      }))
+      practicePillarMap.value = mapping
+    }
+
+    if (ref_) {
+      reflectionContent.value = ref_.content
+      reflectionMood.value = ref_.mood ?? null
+      reflectionExpanded.value = true
+    } else {
+      reflectionContent.value = ''
+      reflectionMood.value = null
+      reflectionExpanded.value = false
+    }
   } catch (e) {
     console.error('Failed to load daily summary:', e)
   }
   loading.value = false
+}
+
+async function saveReflection() {
+  if (!reflectionContent.value.trim()) return
+  reflectionSaving.value = true
+  try {
+    const r = await api.upsertReflection({
+      date: today.value,
+      prompt_id: todayPrompt.value?.id ?? undefined,
+      prompt_text: todayPrompt.value?.text ?? undefined,
+      content: reflectionContent.value,
+      mood: reflectionMood.value,
+    })
+    reflection.value = r
+  } catch (e) {
+    console.error('Failed to save reflection:', e)
+  }
+  reflectionSaving.value = false
 }
 
 // Quick log: just mark it done (habit) or log a set (exercise)
@@ -285,6 +372,21 @@ onUnmounted(() => {
 
     <!-- Practice groups -->
     <div v-else class="space-y-6">
+      <!-- Grouping toggle -->
+      <div v-if="hasPillars" class="flex items-center gap-2">
+        <span class="text-xs text-gray-400">Group by:</span>
+        <button
+          @click="groupMode = 'category'"
+          class="px-2.5 py-1 text-xs rounded-full border"
+          :class="groupMode === 'category' ? 'bg-indigo-100 border-indigo-300 text-indigo-700' : 'bg-gray-50 border-gray-200 text-gray-500 hover:bg-gray-100'"
+        >Category</button>
+        <button
+          @click="groupMode = 'pillar'"
+          class="px-2.5 py-1 text-xs rounded-full border"
+          :class="groupMode === 'pillar' ? 'bg-indigo-100 border-indigo-300 text-indigo-700' : 'bg-gray-50 border-gray-200 text-gray-500 hover:bg-gray-100'"
+        >Pillar</button>
+      </div>
+
       <div v-for="(items, category) in grouped" :key="category">
         <h2 class="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-2">
           {{ category }}
@@ -475,6 +577,61 @@ onUnmounted(() => {
                 </div>
               </div>
             </template>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Daily Reflection -->
+    <div v-if="!loading" class="mt-6">
+      <div class="bg-white rounded-lg shadow overflow-hidden">
+        <button
+          @click="reflectionExpanded = !reflectionExpanded"
+          class="w-full px-4 py-3 flex items-center justify-between text-left hover:bg-gray-50 transition-colors"
+        >
+          <div class="flex items-center gap-2">
+            <span class="text-sm font-semibold text-gray-700">Daily Reflection</span>
+            <span v-if="reflection" class="text-xs px-2 py-0.5 rounded-full bg-green-100 text-green-600">saved</span>
+            <span v-if="reflection?.mood" class="text-sm">{{ moods.find(m => m.value === reflection!.mood)?.emoji }}</span>
+          </div>
+          <span class="text-gray-400 text-xs">{{ reflectionExpanded ? '▲' : '▼' }}</span>
+        </button>
+
+        <div v-if="reflectionExpanded" class="px-4 pb-4 border-t border-gray-100 pt-3">
+          <!-- Prompt -->
+          <div v-if="todayPrompt?.text" class="text-sm text-indigo-600 font-medium mb-2 italic">
+            {{ todayPrompt.text }}
+          </div>
+
+          <!-- Content -->
+          <textarea
+            v-model="reflectionContent"
+            rows="3"
+            :placeholder="todayPrompt?.text || 'What\'s on your heart today?'"
+            class="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-300 resize-y mb-3"
+          ></textarea>
+
+          <!-- Mood -->
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-1">
+              <span class="text-xs text-gray-400 mr-2">Mood</span>
+              <button
+                v-for="m in moods"
+                :key="m.value"
+                @click="reflectionMood = reflectionMood === m.value ? null : m.value"
+                class="w-8 h-8 rounded-full flex items-center justify-center text-lg transition-all"
+                :class="reflectionMood === m.value
+                  ? 'bg-indigo-100 ring-2 ring-indigo-300 scale-110'
+                  : 'hover:bg-gray-100'"
+                :title="m.label"
+              >{{ m.emoji }}</button>
+            </div>
+
+            <button
+              @click="saveReflection"
+              :disabled="!reflectionContent.trim() || reflectionSaving"
+              class="px-4 py-1.5 bg-indigo-600 text-white rounded text-xs font-medium hover:bg-indigo-700 disabled:opacity-40 transition-colors"
+            >{{ reflectionSaving ? 'Saving...' : (reflection ? 'Update' : 'Save') }}</button>
           </div>
         </div>
       </div>

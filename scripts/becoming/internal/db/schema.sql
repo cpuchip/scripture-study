@@ -69,3 +69,74 @@ CREATE INDEX IF NOT EXISTS idx_practices_active ON practices(active);
 CREATE INDEX IF NOT EXISTS idx_practice_logs_practice ON practice_logs(practice_id);
 CREATE INDEX IF NOT EXISTS idx_practice_logs_date ON practice_logs(date);
 CREATE INDEX IF NOT EXISTS idx_tasks_status ON tasks(status);
+
+-- Notes: lightweight notes optionally linked to a practice, task, or pillar
+CREATE TABLE IF NOT EXISTS notes (
+    id          INTEGER PRIMARY KEY,
+    content     TEXT NOT NULL,
+    practice_id INTEGER REFERENCES practices(id) ON DELETE SET NULL,
+    task_id     INTEGER REFERENCES tasks(id) ON DELETE SET NULL,
+    pillar_id   INTEGER,  -- Will reference pillars table when created in Sprint 4
+    pinned      BOOLEAN DEFAULT 0,
+    created_at  DATETIME DEFAULT CURRENT_TIMESTAMP,
+    updated_at  DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE INDEX IF NOT EXISTS idx_notes_practice ON notes(practice_id);
+CREATE INDEX IF NOT EXISTS idx_notes_task ON notes(task_id);
+CREATE INDEX IF NOT EXISTS idx_notes_pinned ON notes(pinned);
+
+-- Prompts: reflection questions (DB-stored, user-editable)
+CREATE TABLE IF NOT EXISTS prompts (
+    id          INTEGER PRIMARY KEY,
+    text        TEXT NOT NULL,
+    active      BOOLEAN DEFAULT 1,
+    sort_order  INTEGER DEFAULT 0,
+    created_at  DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Reflections: one per day, inward-facing daily journal
+CREATE TABLE IF NOT EXISTS reflections (
+    id          INTEGER PRIMARY KEY,
+    date        DATE NOT NULL,
+    prompt_id   INTEGER REFERENCES prompts(id) ON DELETE SET NULL,
+    prompt_text TEXT,                    -- Snapshot of prompt at time of creation
+    content     TEXT NOT NULL,
+    mood        INTEGER,                 -- 1-5 optional mood rating
+    created_at  DATETIME DEFAULT CURRENT_TIMESTAMP,
+    updated_at  DATETIME DEFAULT CURRENT_TIMESTAMP,
+    UNIQUE(date)
+);
+
+CREATE INDEX IF NOT EXISTS idx_reflections_date ON reflections(date);
+
+-- Pillars: growth areas (vision layer)
+CREATE TABLE IF NOT EXISTS pillars (
+    id          INTEGER PRIMARY KEY,
+    name        TEXT NOT NULL,
+    description TEXT,
+    icon        TEXT,                    -- Emoji icon
+    parent_id   INTEGER REFERENCES pillars(id) ON DELETE CASCADE,
+    sort_order  INTEGER DEFAULT 0,
+    created_at  DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Junction: practices ↔ pillars (many-to-many)
+CREATE TABLE IF NOT EXISTS practice_pillars (
+    practice_id INTEGER NOT NULL REFERENCES practices(id) ON DELETE CASCADE,
+    pillar_id   INTEGER NOT NULL REFERENCES pillars(id) ON DELETE CASCADE,
+    PRIMARY KEY (practice_id, pillar_id)
+);
+
+-- Junction: tasks ↔ pillars (many-to-many)
+CREATE TABLE IF NOT EXISTS task_pillars (
+    task_id     INTEGER NOT NULL REFERENCES tasks(id) ON DELETE CASCADE,
+    pillar_id   INTEGER NOT NULL REFERENCES pillars(id) ON DELETE CASCADE,
+    PRIMARY KEY (task_id, pillar_id)
+);
+
+CREATE INDEX IF NOT EXISTS idx_pillars_parent ON pillars(parent_id);
+CREATE INDEX IF NOT EXISTS idx_practice_pillars_practice ON practice_pillars(practice_id);
+CREATE INDEX IF NOT EXISTS idx_practice_pillars_pillar ON practice_pillars(pillar_id);
+CREATE INDEX IF NOT EXISTS idx_task_pillars_task ON task_pillars(task_id);
+CREATE INDEX IF NOT EXISTS idx_task_pillars_pillar ON task_pillars(pillar_id);

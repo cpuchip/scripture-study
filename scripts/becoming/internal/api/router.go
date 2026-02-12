@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"net/http"
 	"strconv"
+	"time"
 
 	"github.com/cpuchip/scripture-study/scripts/becoming/internal/db"
 	"github.com/cpuchip/scripture-study/scripts/becoming/internal/scripture"
@@ -59,6 +60,49 @@ func Router(database *db.DB, scripturesRoot string) chi.Router {
 		r.Get("/books", listScriptureBooks())
 		r.Get("/search", searchScriptureBooks())
 	})
+
+	// Notes
+	r.Route("/notes", func(r chi.Router) {
+		r.Get("/", listNotes(database))
+		r.Post("/", createNote(database))
+		r.Put("/{id}", updateNote(database))
+		r.Delete("/{id}", deleteNote(database))
+	})
+
+	// Prompts
+	r.Route("/prompts", func(r chi.Router) {
+		r.Get("/", listPrompts(database))
+		r.Get("/today", getTodayPrompt(database))
+		r.Post("/", createPrompt(database))
+		r.Put("/{id}", updatePrompt(database))
+		r.Delete("/{id}", deletePrompt(database))
+	})
+
+	// Reflections
+	r.Route("/reflections", func(r chi.Router) {
+		r.Get("/", listReflections(database))
+		r.Get("/{date}", getReflection(database))
+		r.Post("/", upsertReflection(database))
+		r.Delete("/{id}", deleteReflection(database))
+	})
+
+	// Pillars
+	r.Route("/pillars", func(r chi.Router) {
+		r.Get("/", listPillarsTree(database))
+		r.Get("/flat", listPillarsFlat(database))
+		r.Get("/suggestions", getPillarSuggestions())
+		r.Get("/has-pillars", hasPillars(database))
+		r.Post("/", createPillar(database))
+		r.Get("/{id}", getPillar(database))
+		r.Put("/{id}", updatePillar(database))
+		r.Delete("/{id}", deletePillar(database))
+		r.Put("/{id}/practices", setPracticePillars(database))
+		r.Get("/{id}/practices", getPracticePillars(database))
+	})
+
+	// Practice ↔ Pillar links
+	r.Put("/practices/{id}/pillars", setPracticePillarsForPractice(database))
+	r.Get("/practices/{id}/pillars", getPracticePillarsForPractice(database))
 
 	return r
 }
@@ -488,6 +532,450 @@ func reviewCard(database *db.DB) http.HandlerFunc {
 
 func parseID(r *http.Request) (int64, error) {
 	return strconv.ParseInt(chi.URLParam(r, "id"), 10, 64)
+}
+
+// --- Notes ---
+
+func listNotes(database *db.DB) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		var practiceID, taskID, pillarID *int64
+		if v := r.URL.Query().Get("practice_id"); v != "" {
+			id, err := strconv.ParseInt(v, 10, 64)
+			if err == nil {
+				practiceID = &id
+			}
+		}
+		if v := r.URL.Query().Get("task_id"); v != "" {
+			id, err := strconv.ParseInt(v, 10, 64)
+			if err == nil {
+				taskID = &id
+			}
+		}
+		if v := r.URL.Query().Get("pillar_id"); v != "" {
+			id, err := strconv.ParseInt(v, 10, 64)
+			if err == nil {
+				pillarID = &id
+			}
+		}
+		pinnedOnly := r.URL.Query().Get("pinned") == "true"
+
+		notes, err := database.ListNotes(practiceID, taskID, pillarID, pinnedOnly)
+		if err != nil {
+			writeError(w, http.StatusInternalServerError, err.Error())
+			return
+		}
+		if notes == nil {
+			notes = []*db.Note{}
+		}
+		writeJSON(w, http.StatusOK, notes)
+	}
+}
+
+func createNote(database *db.DB) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		var n db.Note
+		if err := json.NewDecoder(r.Body).Decode(&n); err != nil {
+			writeError(w, http.StatusBadRequest, "invalid JSON: "+err.Error())
+			return
+		}
+		if n.Content == "" {
+			writeError(w, http.StatusBadRequest, "content is required")
+			return
+		}
+		if err := database.CreateNote(&n); err != nil {
+			writeError(w, http.StatusInternalServerError, err.Error())
+			return
+		}
+		writeJSON(w, http.StatusCreated, n)
+	}
+}
+
+func updateNote(database *db.DB) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		id, err := parseID(r)
+		if err != nil {
+			writeError(w, http.StatusBadRequest, "invalid id")
+			return
+		}
+		var n db.Note
+		if err := json.NewDecoder(r.Body).Decode(&n); err != nil {
+			writeError(w, http.StatusBadRequest, "invalid JSON: "+err.Error())
+			return
+		}
+		n.ID = id
+		if err := database.UpdateNote(&n); err != nil {
+			writeError(w, http.StatusInternalServerError, err.Error())
+			return
+		}
+		writeJSON(w, http.StatusOK, n)
+	}
+}
+
+func deleteNote(database *db.DB) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		id, err := parseID(r)
+		if err != nil {
+			writeError(w, http.StatusBadRequest, "invalid id")
+			return
+		}
+		if err := database.DeleteNote(id); err != nil {
+			writeError(w, http.StatusInternalServerError, err.Error())
+			return
+		}
+		w.WriteHeader(http.StatusNoContent)
+	}
+}
+
+// --- Prompts ---
+
+func listPrompts(database *db.DB) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		activeOnly := r.URL.Query().Get("active") != "false"
+		prompts, err := database.ListPrompts(activeOnly)
+		if err != nil {
+			writeError(w, http.StatusInternalServerError, err.Error())
+			return
+		}
+		if prompts == nil {
+			prompts = []*db.Prompt{}
+		}
+		writeJSON(w, http.StatusOK, prompts)
+	}
+}
+
+func getTodayPrompt(database *db.DB) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		dayOfYear := time.Now().YearDay()
+		prompt, err := database.GetTodayPrompt(dayOfYear)
+		if err != nil {
+			writeError(w, http.StatusInternalServerError, err.Error())
+			return
+		}
+		if prompt == nil {
+			writeJSON(w, http.StatusOK, map[string]any{"text": ""})
+			return
+		}
+		writeJSON(w, http.StatusOK, prompt)
+	}
+}
+
+func createPrompt(database *db.DB) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		var p db.Prompt
+		if err := json.NewDecoder(r.Body).Decode(&p); err != nil {
+			writeError(w, http.StatusBadRequest, "invalid JSON: "+err.Error())
+			return
+		}
+		if p.Text == "" {
+			writeError(w, http.StatusBadRequest, "text is required")
+			return
+		}
+		p.Active = true
+		if err := database.CreatePrompt(&p); err != nil {
+			writeError(w, http.StatusInternalServerError, err.Error())
+			return
+		}
+		writeJSON(w, http.StatusCreated, p)
+	}
+}
+
+func updatePrompt(database *db.DB) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		id, err := parseID(r)
+		if err != nil {
+			writeError(w, http.StatusBadRequest, "invalid id")
+			return
+		}
+		var p db.Prompt
+		if err := json.NewDecoder(r.Body).Decode(&p); err != nil {
+			writeError(w, http.StatusBadRequest, "invalid JSON: "+err.Error())
+			return
+		}
+		p.ID = id
+		if err := database.UpdatePrompt(&p); err != nil {
+			writeError(w, http.StatusInternalServerError, err.Error())
+			return
+		}
+		writeJSON(w, http.StatusOK, p)
+	}
+}
+
+func deletePrompt(database *db.DB) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		id, err := parseID(r)
+		if err != nil {
+			writeError(w, http.StatusBadRequest, "invalid id")
+			return
+		}
+		if err := database.DeletePrompt(id); err != nil {
+			writeError(w, http.StatusInternalServerError, err.Error())
+			return
+		}
+		w.WriteHeader(http.StatusNoContent)
+	}
+}
+
+// --- Reflections ---
+
+func listReflections(database *db.DB) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		from := r.URL.Query().Get("from")
+		to := r.URL.Query().Get("to")
+		reflections, err := database.ListReflections(from, to)
+		if err != nil {
+			writeError(w, http.StatusInternalServerError, err.Error())
+			return
+		}
+		if reflections == nil {
+			reflections = []*db.Reflection{}
+		}
+		writeJSON(w, http.StatusOK, reflections)
+	}
+}
+
+func getReflection(database *db.DB) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		date := chi.URLParam(r, "date")
+		ref, err := database.GetReflection(date)
+		if err != nil {
+			writeError(w, http.StatusInternalServerError, err.Error())
+			return
+		}
+		if ref == nil {
+			writeJSON(w, http.StatusOK, nil)
+			return
+		}
+		writeJSON(w, http.StatusOK, ref)
+	}
+}
+
+func upsertReflection(database *db.DB) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		var ref db.Reflection
+		if err := json.NewDecoder(r.Body).Decode(&ref); err != nil {
+			writeError(w, http.StatusBadRequest, "invalid JSON: "+err.Error())
+			return
+		}
+		if ref.Date == "" || ref.Content == "" {
+			writeError(w, http.StatusBadRequest, "date and content are required")
+			return
+		}
+		if ref.Mood != nil && (*ref.Mood < 1 || *ref.Mood > 5) {
+			writeError(w, http.StatusBadRequest, "mood must be 1-5")
+			return
+		}
+		if err := database.UpsertReflection(&ref); err != nil {
+			writeError(w, http.StatusInternalServerError, err.Error())
+			return
+		}
+		writeJSON(w, http.StatusCreated, ref)
+	}
+}
+
+func deleteReflection(database *db.DB) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		id, err := parseID(r)
+		if err != nil {
+			writeError(w, http.StatusBadRequest, "invalid id")
+			return
+		}
+		if err := database.DeleteReflection(id); err != nil {
+			writeError(w, http.StatusInternalServerError, err.Error())
+			return
+		}
+		w.WriteHeader(http.StatusNoContent)
+	}
+}
+
+// --- Pillars ---
+
+func listPillarsTree(database *db.DB) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		pillars, err := database.ListPillarsTree()
+		if err != nil {
+			writeError(w, http.StatusInternalServerError, err.Error())
+			return
+		}
+		if pillars == nil {
+			pillars = []*db.Pillar{}
+		}
+		writeJSON(w, http.StatusOK, pillars)
+	}
+}
+
+func listPillarsFlat(database *db.DB) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		pillars, err := database.ListPillars()
+		if err != nil {
+			writeError(w, http.StatusInternalServerError, err.Error())
+			return
+		}
+		if pillars == nil {
+			pillars = []*db.Pillar{}
+		}
+		writeJSON(w, http.StatusOK, pillars)
+	}
+}
+
+func getPillarSuggestions() http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		writeJSON(w, http.StatusOK, db.GetDefaultPillarSuggestions())
+	}
+}
+
+func hasPillars(database *db.DB) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		has, err := database.HasPillars()
+		if err != nil {
+			writeError(w, http.StatusInternalServerError, err.Error())
+			return
+		}
+		writeJSON(w, http.StatusOK, map[string]bool{"has_pillars": has})
+	}
+}
+
+func createPillar(database *db.DB) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		var p db.Pillar
+		if err := json.NewDecoder(r.Body).Decode(&p); err != nil {
+			writeError(w, http.StatusBadRequest, "invalid JSON: "+err.Error())
+			return
+		}
+		if p.Name == "" {
+			writeError(w, http.StatusBadRequest, "name is required")
+			return
+		}
+		if err := database.CreatePillar(&p); err != nil {
+			writeError(w, http.StatusInternalServerError, err.Error())
+			return
+		}
+		writeJSON(w, http.StatusCreated, p)
+	}
+}
+
+func getPillar(database *db.DB) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		id, err := parseID(r)
+		if err != nil {
+			writeError(w, http.StatusBadRequest, "invalid id")
+			return
+		}
+		p, err := database.GetPillar(id)
+		if err != nil {
+			writeError(w, http.StatusInternalServerError, err.Error())
+			return
+		}
+		writeJSON(w, http.StatusOK, p)
+	}
+}
+
+func updatePillar(database *db.DB) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		id, err := parseID(r)
+		if err != nil {
+			writeError(w, http.StatusBadRequest, "invalid id")
+			return
+		}
+		var p db.Pillar
+		if err := json.NewDecoder(r.Body).Decode(&p); err != nil {
+			writeError(w, http.StatusBadRequest, "invalid JSON: "+err.Error())
+			return
+		}
+		p.ID = id
+		if err := database.UpdatePillar(&p); err != nil {
+			writeError(w, http.StatusInternalServerError, err.Error())
+			return
+		}
+		writeJSON(w, http.StatusOK, p)
+	}
+}
+
+func deletePillar(database *db.DB) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		id, err := parseID(r)
+		if err != nil {
+			writeError(w, http.StatusBadRequest, "invalid id")
+			return
+		}
+		if err := database.DeletePillar(id); err != nil {
+			writeError(w, http.StatusInternalServerError, err.Error())
+			return
+		}
+		w.WriteHeader(http.StatusNoContent)
+	}
+}
+
+func setPracticePillars(database *db.DB) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		id, err := parseID(r)
+		if err != nil {
+			writeError(w, http.StatusBadRequest, "invalid id")
+			return
+		}
+		var body struct {
+			PracticeIDs []int64 `json:"practice_ids"`
+		}
+		if err := json.NewDecoder(r.Body).Decode(&body); err != nil {
+			writeError(w, http.StatusBadRequest, "invalid JSON")
+			return
+		}
+		// Set all given practice_ids to link to this pillar
+		for _, pid := range body.PracticeIDs {
+			if err := database.LinkPracticePillar(pid, id); err != nil {
+				writeError(w, http.StatusInternalServerError, err.Error())
+				return
+			}
+		}
+		w.WriteHeader(http.StatusNoContent)
+	}
+}
+
+func getPracticePillars(database *db.DB) http.HandlerFunc {
+	return func(w http.ResponseWriter, _ *http.Request) {
+		// This endpoint isn't very useful by itself, stub for future use
+		writeJSON(w, http.StatusOK, []any{})
+	}
+}
+
+func setPracticePillarsForPractice(database *db.DB) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		id, err := parseID(r)
+		if err != nil {
+			writeError(w, http.StatusBadRequest, "invalid id")
+			return
+		}
+		var body struct {
+			PillarIDs []int64 `json:"pillar_ids"`
+		}
+		if err := json.NewDecoder(r.Body).Decode(&body); err != nil {
+			writeError(w, http.StatusBadRequest, "invalid JSON")
+			return
+		}
+		if err := database.SetPracticePillars(id, body.PillarIDs); err != nil {
+			writeError(w, http.StatusInternalServerError, err.Error())
+			return
+		}
+		w.WriteHeader(http.StatusNoContent)
+	}
+}
+
+func getPracticePillarsForPractice(database *db.DB) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		id, err := parseID(r)
+		if err != nil {
+			writeError(w, http.StatusBadRequest, "invalid id")
+			return
+		}
+		links, err := database.GetPracticePillars(id)
+		if err != nil {
+			writeError(w, http.StatusInternalServerError, err.Error())
+			return
+		}
+		if links == nil {
+			links = []db.PillarLink{}
+		}
+		writeJSON(w, http.StatusOK, links)
+	}
 }
 
 func writeJSON(w http.ResponseWriter, status int, v any) {
