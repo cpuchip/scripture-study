@@ -232,18 +232,19 @@ onUnmounted(() => {
                     v-for="setNum in trackerTargetSets(item)"
                     :key="setNum"
                     @click="setNum <= trackerCompletedSets(item) ? undoLog(item) : quickLog(item)"
-                    class="flex items-center gap-1 px-2 py-1 rounded border text-xs transition-colors"
+                    class="group flex items-center gap-1 px-2 py-1 rounded border text-xs transition-colors cursor-pointer"
                     :class="setNum <= trackerCompletedSets(item)
-                      ? 'bg-green-50 border-green-300 text-green-700'
+                      ? 'bg-green-50 border-green-300 text-green-700 hover:bg-red-50 hover:border-red-300 hover:text-red-600'
                       : 'bg-white border-gray-200 text-gray-500 hover:border-indigo-300 hover:bg-indigo-50'"
                   >
                     <span
-                      class="w-3.5 h-3.5 rounded border flex items-center justify-center text-[9px]"
+                      class="w-3.5 h-3.5 rounded border flex items-center justify-center text-[9px] transition-colors"
                       :class="setNum <= trackerCompletedSets(item)
-                        ? 'bg-green-500 border-green-500 text-white'
+                        ? 'bg-green-500 border-green-500 text-white group-hover:bg-red-400 group-hover:border-red-400'
                         : 'border-gray-300'"
                     >
-                      <span v-if="setNum <= trackerCompletedSets(item)">✓</span>
+                      <span v-if="setNum <= trackerCompletedSets(item)" class="group-hover:hidden">✓</span>
+                      <span v-if="setNum <= trackerCompletedSets(item)" class="hidden group-hover:inline">✕</span>
                     </span>
                     {{ setNum }}
                   </button>
@@ -263,12 +264,13 @@ onUnmounted(() => {
                 <div class="flex items-center gap-3 min-w-0">
                   <button
                     @click="isComplete(item) ? undoLog(item) : quickLog(item)"
-                    class="w-5 h-5 rounded-full border-2 flex items-center justify-center flex-shrink-0 transition-colors"
+                    class="group w-5 h-5 rounded-full border-2 flex items-center justify-center flex-shrink-0 transition-colors cursor-pointer"
                     :class="isComplete(item)
-                      ? 'bg-green-500 border-green-500 text-white'
+                      ? 'bg-green-500 border-green-500 text-white hover:bg-red-400 hover:border-red-400'
                       : 'border-gray-300 hover:border-indigo-400'"
                   >
-                    <span v-if="isComplete(item)" class="text-[10px]">✓</span>
+                    <span v-if="isComplete(item)" class="text-[10px] group-hover:hidden">✓</span>
+                    <span v-if="isComplete(item)" class="text-[10px] hidden group-hover:inline">✕</span>
                   </button>
                   <router-link
                     :to="`/memorize?id=${item.practice_id}`"
@@ -300,12 +302,13 @@ onUnmounted(() => {
                 <div class="flex items-center gap-3 flex-1 min-w-0">
                   <button
                     @click="isComplete(item) ? undoLog(item) : quickLog(item)"
-                    class="w-5 h-5 rounded-full border-2 flex items-center justify-center flex-shrink-0 transition-colors"
+                    class="group w-5 h-5 rounded-full border-2 flex items-center justify-center flex-shrink-0 transition-colors cursor-pointer"
                     :class="isComplete(item)
-                      ? 'bg-green-500 border-green-500 text-white'
+                      ? 'bg-green-500 border-green-500 text-white hover:bg-red-400 hover:border-red-400'
                       : 'border-gray-300 hover:border-indigo-400'"
                   >
-                    <span v-if="isComplete(item)" class="text-[10px]">✓</span>
+                    <span v-if="isComplete(item)" class="text-[10px] group-hover:hidden">✓</span>
+                    <span v-if="isComplete(item)" class="text-[10px] hidden group-hover:inline">✕</span>
                   </button>
                   <div class="min-w-0">
                     <div class="font-medium truncate">{{ item.practice_name }}</div>

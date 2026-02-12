@@ -99,6 +99,14 @@ export interface ScriptureVolume {
   books: ScriptureBook[]
 }
 
+export interface MemorizeCardStatus {
+  practice: Practice
+  reviews_today: number
+  today_qualities: number[]
+  is_due: boolean
+  target_daily_reps: number
+}
+
 // --- Practices ---
 
 export const api = {
@@ -169,6 +177,10 @@ export const api = {
   // Memorize
   getDueCards(date: string) {
     return request<Practice[]>(`/memorize/due/${date}`)
+  },
+
+  getMemorizeCards(date: string) {
+    return request<MemorizeCardStatus[]>(`/memorize/cards/${date}`)
   },
 
   reviewCard(practiceId: number, quality: number, date: string) {

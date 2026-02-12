@@ -45,6 +45,7 @@ func Router(database *db.DB, scripturesRoot string) chi.Router {
 	// Memorization / spaced repetition
 	r.Route("/memorize", func(r chi.Router) {
 		r.Get("/due/{date}", getDueCards(database))
+		r.Get("/cards/{date}", getMemorizeCards(database))
 		r.Post("/review", reviewCard(database))
 	})
 
@@ -366,6 +367,25 @@ func getDueCards(database *db.DB) http.HandlerFunc {
 		}
 		if cards == nil {
 			cards = []*db.Practice{}
+		}
+		writeJSON(w, http.StatusOK, cards)
+	}
+}
+
+func getMemorizeCards(database *db.DB) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		date := chi.URLParam(r, "date")
+		if date == "" {
+			writeError(w, http.StatusBadRequest, "date is required (YYYY-MM-DD)")
+			return
+		}
+		cards, err := database.GetMemorizeCardStatuses(date)
+		if err != nil {
+			writeError(w, http.StatusInternalServerError, err.Error())
+			return
+		}
+		if cards == nil {
+			cards = []*db.MemorizeCardStatus{}
 		}
 		writeJSON(w, http.StatusOK, cards)
 	}

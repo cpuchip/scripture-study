@@ -168,3 +168,73 @@ func (db *DB) GetDueCards(date string) ([]*Practice, error) {
 func (db *DB) GetAllMemorizeCards() ([]*Practice, error) {
 	return db.ListPractices("memorize", true)
 }
+
+// MemorizeCardStatus represents a memorize card with today's review progress.
+type MemorizeCardStatus struct {
+	Practice       *Practice `json:"practice"`
+	ReviewsToday   int       `json:"reviews_today"`
+	TodayQualities []int     `json:"today_qualities"`
+	IsDue          bool      `json:"is_due"`
+	TargetReps     int       `json:"target_daily_reps"`
+}
+
+// GetMemorizeCardStatuses returns all active memorize cards with today's review status.
+func (db *DB) GetMemorizeCardStatuses(date string) ([]*MemorizeCardStatus, error) {
+	practices, err := db.ListPractices("memorize", true)
+	if err != nil {
+		return nil, fmt.Errorf("listing memorize practices: %w", err)
+	}
+
+	// Batch-fetch today's quality scores for all memorize practices
+	qualityMap := make(map[int64][]int)
+	rows, err := db.Query(`
+		SELECT practice_id, quality FROM practice_logs
+		WHERE date = ? AND quality IS NOT NULL
+		  AND practice_id IN (SELECT id FROM practices WHERE type = 'memorize' AND active = 1)
+		ORDER BY practice_id, logged_at`, date)
+	if err != nil {
+		return nil, fmt.Errorf("getting today's memorize qualities: %w", err)
+	}
+	defer rows.Close()
+
+	for rows.Next() {
+		var pid int64
+		var q int
+		if err := rows.Scan(&pid, &q); err != nil {
+			return nil, fmt.Errorf("scanning quality row: %w", err)
+		}
+		qualityMap[pid] = append(qualityMap[pid], q)
+	}
+	if err := rows.Err(); err != nil {
+		return nil, err
+	}
+
+	var statuses []*MemorizeCardStatus
+	for _, p := range practices {
+		var cfg SM2Config
+		if err := json.Unmarshal([]byte(p.Config), &cfg); err != nil {
+			cfg = DefaultSM2Config()
+		}
+
+		qualities := qualityMap[p.ID]
+		if qualities == nil {
+			qualities = []int{}
+		}
+
+		isDue := cfg.NextReview <= date || cfg.Repetitions == 0
+		targetReps := cfg.TargetDailyReps
+		if targetReps < 1 {
+			targetReps = 1
+		}
+
+		statuses = append(statuses, &MemorizeCardStatus{
+			Practice:       p,
+			ReviewsToday:   len(qualities),
+			TodayQualities: qualities,
+			IsDue:          isDue,
+			TargetReps:     targetReps,
+		})
+	}
+
+	return statuses, nil
+}
