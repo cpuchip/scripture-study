@@ -1,0 +1,6 @@
+becoming.db
+becoming.db-shm
+becoming.db-wal
+server.exe
+server
+cmd/server/dist/

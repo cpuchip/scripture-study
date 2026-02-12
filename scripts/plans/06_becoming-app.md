@@ -1,7 +1,7 @@
 # Becoming App — Architecture Plan
 
 *Created: February 11, 2026*
-*Updated: February 11, 2026 — confirmed SQLite, local-first, Copilot SDK roadmap*
+*Updated: February 11, 2026 — Phase 1 complete: Go+SQLite+Vue3+Tailwind, generalized practice model*
 *Context: Tools to help apply the "Become" commitments from our truth studies*
 
 ---
@@ -60,14 +60,14 @@ A single Go backend serving both apps, with an MCP server interface so the AI ca
 │                   │  Go Backend                       │
 │                   ▼                                   │
 │  ┌─────────────────────────────────────────────┐     │
-│  │              REST API (chi/echo)             │     │
+│  │              REST API (chi v5)               │     │
 │  │                                              │     │
-│  │  /api/tasks      — CRUD for become items     │     │
-│  │  /api/memorize   — spaced repetition queue   │     │
-│  │  /api/habits     — daily habit tracking      │     │
-│  │  /api/docs       — list/read study docs      │     │
-│  │  /api/content    — serve scripture/talk md    │     │
-│  │  /api/progress   — reading/study progress    │     │
+│  │  /api/practices — CRUD for trackable items   │     │
+│  │  /api/logs      — log practice completions   │     │
+│  │  /api/daily/:d  — daily summary view         │     │
+│  │  /api/tasks     — goals and commitments      │     │
+│  │  /api/docs      — list/read study docs (P3)  │     │
+│  │  /api/content   — serve scripture/talk (P3)  │     │
 │  └──────────────────┬──────────────────────────┘     │
 │                     │                                 │
 │  ┌──────────────────┼──────────────────────────┐     │
@@ -83,12 +83,10 @@ A single Go backend serving both apps, with an MCP server interface so the AI ca
 │  ┌──────────────────▼──────────────────────────┐     │
 │  │              SQLite Database                  │     │
 │  │                                              │     │
+│  │  practices     — generalized trackable items │     │
+│  │  practice_logs — per-practice daily logs     │     │
 │  │  tasks         — goals, todos, commitments   │     │
-│  │  habits        — daily recurring items       │     │
-│  │  habit_logs    — daily check-ins             │     │
-│  │  memorize      — scriptures to memorize      │     │
-│  │  memorize_reps — each review + quality        │     │
-│  │  reading_log   — what docs/chapters read     │     │
+│  │  reading_log   — what docs/chapters read (P3)│     │
 │  └──────────────────────────────────────────────┘     │
 │                                                       │
 └───────────────────────────────────────────────────────┘
@@ -251,133 +249,104 @@ From the reference panel, one-click to:
 | Markdown | markdown-it (JS) | Client-side rendering with plugin support |
 | MCP | stdio JSON-RPC | Same pattern as all existing MCP servers |
 
-### Project Structure
+### Project Structure (Actual — Phase 1)
 
 ```
 scripts/becoming/
 ├── cmd/
 │   ├── server/
-│   │   └── main.go           # HTTP server + static file serving
+│   │   ├── main.go           # HTTP server + embedded frontend (go:embed)
+│   │   └── dist/             # Built frontend (gitignored, copied from frontend/dist)
 │   └── mcp/
-│       └── main.go           # MCP server (stdio mode)
+│       └── main.go           # MCP server (Phase 4)
 ├── internal/
 │   ├── db/
-│   │   ├── sqlite.go         # DB init, migrations
-│   │   ├── tasks.go          # Task CRUD
-│   │   ├── habits.go         # Habit CRUD + logging
-│   │   ├── memorize.go       # Memorization cards + SM-2
-│   │   └── reading.go        # Reading progress
-│   ├── api/
-│   │   ├── router.go         # Route setup
-│   │   ├── tasks.go          # /api/tasks handlers
-│   │   ├── habits.go         # /api/habits handlers
-│   │   ├── memorize.go       # /api/memorize handlers
-│   │   ├── docs.go           # /api/docs handlers (file browser)
-│   │   └── content.go        # /api/content handlers (serve markdown)
-│   └── mcp/
-│       └── server.go         # MCP tool definitions
+│   │   ├── db.go             # DB init (Open, initSchema with embedded SQL)
+│   │   ├── schema.sql        # SQLite schema (embedded via go:embed)
+│   │   ├── practices.go      # Practice CRUD (Create, Get, List, Update, Delete)
+│   │   ├── logs.go           # PracticeLog CRUD + DailySummary join query
+│   │   └── tasks.go          # Task CRUD
+│   └── api/
+│       └── router.go         # All REST routes (chi router)
 ├── frontend/
 │   ├── src/
-│   │   ├── App.vue
-│   │   ├── router.ts         # Vue Router — /become and /study routes
-│   │   ├── views/
-│   │   │   ├── BecomeView.vue    # Daily tracker
-│   │   │   ├── StudyView.vue     # Document reader
-│   │   │   ├── MemorizeView.vue  # Flashcard review
-│   │   │   └── ProgressView.vue  # Stats/history
-│   │   ├── components/
-│   │   │   ├── HabitGrid.vue
-│   │   │   ├── TaskCard.vue
-│   │   │   ├── FlashCard.vue
-│   │   │   ├── DocBrowser.vue
-│   │   │   ├── MarkdownViewer.vue
-│   │   │   └── ReferencePanel.vue
-│   │   └── composables/
-│   │       ├── useApi.ts
-│   │       ├── useMemorize.ts
-│   │       └── useMarkdown.ts
+│   │   ├── App.vue           # Nav bar + router-view shell
+│   │   ├── router.ts         # Routes: /, /practices, /practices/:id/history, /tasks
+│   │   ├── api.ts            # Typed API client (all endpoints)
+│   │   └── views/
+│   │       ├── DailyView.vue      # Today screen: grouped practices, quick-log, date nav
+│   │       ├── PracticesView.vue  # Create/edit practices with type-specific config
+│   │       ├── HistoryView.vue    # 30-day bar chart, streak, stats, recent activity
+│   │       └── TasksView.vue      # Task CRUD with status toggle
 │   ├── index.html
-│   ├── vite.config.ts
-│   ├── tailwind.config.js
+│   ├── vite.config.ts        # Tailwind plugin + API proxy to localhost:8080
+│   ├── tsconfig.json
 │   └── package.json
-├── go.mod
+├── go.mod                    # chi v5.2.1, cors v1.2.1, go-sqlite3 v1.14.24
 ├── go.sum
-├── becoming.db               # SQLite database (gitignored)
-└── README.md
+├── .gitignore                # becoming.db, server.exe, cmd/server/dist/
+└── README.md                 # (Phase 1 — to be written)
 ```
 
-### Database Schema
+### Database Schema (Actual — Generalized Model)
+
+Instead of separate tables for habits, memorize, and exercises, we unified everything into a **generalized practice model**. Each practice has a `type` field and a JSON `config` blob for type-specific settings.
 
 ```sql
--- Goals and commitments extracted from study docs
-CREATE TABLE tasks (
-    id          INTEGER PRIMARY KEY,
-    title       TEXT NOT NULL,
-    description TEXT,
-    source_doc  TEXT,          -- e.g., "study/truth-atonement.md"
-    source_section TEXT,       -- e.g., "Become"
-    scripture   TEXT,          -- e.g., "D&C 93:29"
-    type        TEXT NOT NULL, -- once, daily, weekly, ongoing
-    status      TEXT NOT NULL DEFAULT 'active',
-    created_at  DATETIME DEFAULT CURRENT_TIMESTAMP,
+-- Practices: anything you do repeatedly and want to track
+-- Types: memorize, exercise, habit, task
+CREATE TABLE practices (
+    id           INTEGER PRIMARY KEY,
+    name         TEXT NOT NULL,           -- "D&C 93:29" or "Clamshell" or "Morning prayer"
+    description  TEXT,                    -- Full verse text, exercise instructions, etc.
+    type         TEXT NOT NULL,           -- memorize | exercise | habit | task
+    category     TEXT,                    -- "scripture", "pt", "spiritual", "fitness"
+    source_doc   TEXT,                    -- link to study doc that generated this
+    source_path  TEXT,                    -- path to source file (scripture, talk, etc.)
+    config       TEXT DEFAULT '{}',       -- JSON: type-specific settings (see below)
+    sort_order   INTEGER DEFAULT 0,
+    active       BOOLEAN DEFAULT 1,
+    created_at   DATETIME DEFAULT CURRENT_TIMESTAMP,
     completed_at DATETIME
 );
 
--- Daily recurring habits
-CREATE TABLE habits (
-    id          INTEGER PRIMARY KEY,
-    name        TEXT NOT NULL,
-    frequency   TEXT NOT NULL DEFAULT 'daily', -- daily, weekly
-    icon        TEXT,
-    sort_order  INTEGER DEFAULT 0,
-    active      BOOLEAN DEFAULT 1,
-    created_at  DATETIME DEFAULT CURRENT_TIMESTAMP
-);
+-- Config JSON by type:
+-- memorize: {"ease_factor": 2.5, "interval": 1, "repetitions": 0}
+-- exercise: {"target_sets": 2, "target_reps": 15, "unit": "reps"}
+-- habit:    {"frequency": "daily"}
+-- task:     {"due_date": "2026-03-01"}
 
--- Daily habit completion log
-CREATE TABLE habit_logs (
+-- Practice logs: each time you do a practice
+CREATE TABLE practice_logs (
     id          INTEGER PRIMARY KEY,
-    habit_id    INTEGER NOT NULL REFERENCES habits(id),
+    practice_id INTEGER NOT NULL REFERENCES practices(id) ON DELETE CASCADE,
+    logged_at   DATETIME DEFAULT CURRENT_TIMESTAMP,
     date        DATE NOT NULL,
-    completed   BOOLEAN NOT NULL DEFAULT 0,
-    value       TEXT,            -- optional: "25 min", "3x15 pushups"
+    quality     INTEGER,        -- SM-2 quality rating (0-5) for memorize
+    value       TEXT,           -- freeform: "25 min", "3 miles"
+    sets        INTEGER,        -- number of sets for exercise
+    reps        INTEGER,        -- reps per set
+    duration_s  INTEGER,        -- duration in seconds
     notes       TEXT,
-    UNIQUE(habit_id, date)
+    next_review DATE            -- spaced repetition: next review date
 );
 
--- Scriptures/quotes to memorize
-CREATE TABLE memorize (
-    id          INTEGER PRIMARY KEY,
-    reference   TEXT NOT NULL,   -- "D&C 93:29" or "Mosiah 3:19"
-    text        TEXT NOT NULL,   -- full verse/quote text
-    source_path TEXT,            -- path to source file
-    tags        TEXT,            -- comma-separated
-    -- SM-2 fields
-    ease_factor REAL DEFAULT 2.5,
-    interval    INTEGER DEFAULT 1,  -- days
-    repetitions INTEGER DEFAULT 0,
-    next_review DATE,
-    created_at  DATETIME DEFAULT CURRENT_TIMESTAMP
-);
-
--- Individual review attempts
-CREATE TABLE memorize_reps (
-    id          INTEGER PRIMARY KEY,
-    card_id     INTEGER NOT NULL REFERENCES memorize(id),
-    reviewed_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-    quality     INTEGER NOT NULL,  -- 0-5 (SM-2 scale)
-    time_ms     INTEGER            -- how long the review took
-);
-
--- Reading/study progress
-CREATE TABLE reading_log (
-    id          INTEGER PRIMARY KEY,
-    doc_path    TEXT NOT NULL,     -- relative path to document
-    doc_type    TEXT,              -- study, scripture, talk, manual
-    read_at     DATETIME DEFAULT CURRENT_TIMESTAMP,
-    notes       TEXT
+-- Tasks/commitments (separate from practices — one-time or ongoing goals)
+CREATE TABLE tasks (
+    id             INTEGER PRIMARY KEY,
+    title          TEXT NOT NULL,
+    description    TEXT,
+    source_doc     TEXT,
+    source_section TEXT,
+    scripture      TEXT,
+    type           TEXT NOT NULL DEFAULT 'ongoing',
+    status         TEXT NOT NULL DEFAULT 'active',
+    created_at     DATETIME DEFAULT CURRENT_TIMESTAMP,
+    completed_at   DATETIME
 );
 ```
+
+**Why this model?** PT exercises, scripture memorization, daily habits, and tracked tasks all share the same core pattern: something you do, tracked over time. The `type` + `config` approach means one set of API endpoints, one daily summary query, and one chart component handles all of them. No code duplication across habit/memorize/exercise modules.
 
 ### MCP Tools
 
@@ -406,15 +375,29 @@ AI: "Added. You have 4 cards due for review today — want to do those first?"
 
 ## Build Phases
 
-### Phase 1: Foundation (Backend + Become MVP)
-**Goal:** Daily habit tracking and task management working end-to-end.
+### Phase 1: Foundation (Backend + Become MVP) ✅ COMPLETE
+**Goal:** Generalized daily practice tracking and task management working end-to-end.
 
-1. Go project setup (`scripts/becoming/`, go.mod, go.work entry)
-2. SQLite database init + migrations
-3. REST API: tasks CRUD, habits CRUD, habit_logs
-4. Vue 3 + Vite + Tailwind scaffold
-5. BecomeView: habit grid, task list, daily view
-6. Basic MCP server with `become_add_task` and `become_list_tasks`
+**What was built:**
+1. ✅ Go project setup (`scripts/becoming/`, go.mod, go.work entry with 10 modules)
+2. ✅ SQLite database with embedded schema.sql (WAL mode, foreign keys)
+3. ✅ REST API (chi v5): practices CRUD, logs CRUD, daily summary, tasks CRUD
+4. ✅ Vue 3 + Vite + Tailwind scaffold with vue-router
+5. ✅ DailyView: grouped practices by category, quick-log, exercise set tracking, date navigation
+6. ✅ PracticesView: create/edit with type selector, category presets, exercise config (sets/reps/unit)
+7. ✅ HistoryView: 30-day bar chart, streak counter, completion stats, recent activity
+8. ✅ TasksView: task CRUD with status toggle, source doc/scripture fields
+9. ✅ Go server embeds Vue frontend (go:embed), single binary deployment
+10. ✅ Dev mode: `--dev` flag enables CORS for Vite dev server proxy
+
+**Build & run:**
+```bash
+cd scripts/becoming/frontend && npm run build
+cd .. && cp -r frontend/dist cmd/server/dist
+go build -o server ./cmd/server/
+./server -db becoming.db     # production (embedded frontend)
+./server -db becoming.db -dev  # dev mode (CORS for Vite)
+```
 
 ### Phase 2: Memorization
 **Goal:** Spaced repetition system for scriptures.
@@ -533,6 +516,9 @@ Path resolution and security: the API validates that requested paths stay within
 | 6 | Scripture text in cards | **Snapshot at creation** | Store verse text in DB so cards work even if files move. Keep `source_path` for linking back. |
 | 7 | Mobile | **PWA** (Phase 4) | Vue 3 + Vite has good PWA support. Add after core features work. |
 | 8 | Notifications | **Later** | Start with web UI showing "X cards due today." Push notifications are a Phase 6 concern. |
+| 9 | Data model | **Generalized practice model** | Single `practices` table with `type` + JSON `config` instead of separate habit/memorize/exercise tables. One API, one daily summary, one chart component. |
+| 10 | HTTP router | **chi v5** | Lightweight, idiomatic Go, popular, well-maintained. |
+| 11 | Frontend embed | **go:embed** | Single binary deployment. No separate file server needed. |
 
 ## Open Questions
 
