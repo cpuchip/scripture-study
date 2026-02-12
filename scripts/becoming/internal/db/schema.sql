@@ -5,6 +5,7 @@
 -- Types: memorize, tracker, habit, task
 CREATE TABLE IF NOT EXISTS practices (
     id          INTEGER PRIMARY KEY,
+    user_id     INTEGER NOT NULL DEFAULT 1 REFERENCES users(id),
     name        TEXT NOT NULL,           -- "D&C 93:29" or "Clamshell" or "Morning prayer"
     description TEXT,                    -- Full verse text, exercise instructions, etc.
     type        TEXT NOT NULL,           -- memorize | exercise | habit | task
@@ -13,10 +14,6 @@ CREATE TABLE IF NOT EXISTS practices (
     source_path TEXT,                    -- path to source file (scripture, talk, etc.)
 
     -- Type-specific config stored as JSON
-    -- memorize: {"ease_factor": 2.5, "interval": 1, "repetitions": 0, "target_daily_reps": 1}
-    -- tracker:  {"target_sets": 2, "target_reps": 15, "unit": "reps"}
-    -- habit:    {"frequency": "daily"}
-    -- task:     {"due_date": "2026-03-01"}
     config      TEXT DEFAULT '{}',
 
     sort_order  INTEGER DEFAULT 0,
@@ -32,11 +29,6 @@ CREATE TABLE IF NOT EXISTS practice_logs (
     logged_at   DATETIME DEFAULT CURRENT_TIMESTAMP,
     date        DATE NOT NULL,           -- the calendar date (for grouping)
 
-    -- Flexible value fields — meaning depends on practice type
-    -- memorize: quality=0-5 (SM-2), value=null, sets/reps=null
-    -- tracker:  quality=null, value=null, sets=2, reps=15
-    -- habit:    quality=null, value="25 min", sets/reps=null
-    -- task:     quality=null, value="completed milestone X"
     quality     INTEGER,                 -- SM-2 quality rating (0-5)
     value       TEXT,                    -- freeform value ("25 min", "3 miles")
     sets        INTEGER,                 -- number of sets completed
@@ -44,19 +36,18 @@ CREATE TABLE IF NOT EXISTS practice_logs (
     duration_s  INTEGER,                 -- duration in seconds
     notes       TEXT,
 
-    -- Spaced repetition: next review date (updated after each memorize log)
-    -- Stored here for historical tracking; current schedule lives on practice.config
     next_review DATE
 );
 
 -- Tasks/commitments from study documents (separate from practices for clarity)
 CREATE TABLE IF NOT EXISTS tasks (
     id          INTEGER PRIMARY KEY,
+    user_id     INTEGER NOT NULL DEFAULT 1 REFERENCES users(id),
     title       TEXT NOT NULL,
     description TEXT,
-    source_doc  TEXT,                    -- e.g., "study/truth-atonement.md"
-    source_section TEXT,                 -- e.g., "Become"
-    scripture   TEXT,                    -- e.g., "D&C 93:29"
+    source_doc  TEXT,
+    source_section TEXT,
+    scripture   TEXT,
     type        TEXT NOT NULL DEFAULT 'ongoing', -- once | daily | weekly | ongoing
     status      TEXT NOT NULL DEFAULT 'active',  -- active | completed | paused | archived
     created_at  DATETIME DEFAULT CURRENT_TIMESTAMP,
@@ -73,10 +64,11 @@ CREATE INDEX IF NOT EXISTS idx_tasks_status ON tasks(status);
 -- Notes: lightweight notes optionally linked to a practice, task, or pillar
 CREATE TABLE IF NOT EXISTS notes (
     id          INTEGER PRIMARY KEY,
+    user_id     INTEGER NOT NULL DEFAULT 1 REFERENCES users(id),
     content     TEXT NOT NULL,
     practice_id INTEGER REFERENCES practices(id) ON DELETE SET NULL,
     task_id     INTEGER REFERENCES tasks(id) ON DELETE SET NULL,
-    pillar_id   INTEGER,  -- Will reference pillars table when created in Sprint 4
+    pillar_id   INTEGER,
     pinned      BOOLEAN DEFAULT 0,
     created_at  DATETIME DEFAULT CURRENT_TIMESTAMP,
     updated_at  DATETIME DEFAULT CURRENT_TIMESTAMP
@@ -89,23 +81,25 @@ CREATE INDEX IF NOT EXISTS idx_notes_pinned ON notes(pinned);
 -- Prompts: reflection questions (DB-stored, user-editable)
 CREATE TABLE IF NOT EXISTS prompts (
     id          INTEGER PRIMARY KEY,
+    user_id     INTEGER NOT NULL DEFAULT 1 REFERENCES users(id),
     text        TEXT NOT NULL,
     active      BOOLEAN DEFAULT 1,
     sort_order  INTEGER DEFAULT 0,
     created_at  DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 
--- Reflections: one per day, inward-facing daily journal
+-- Reflections: one per user per day, inward-facing daily journal
 CREATE TABLE IF NOT EXISTS reflections (
     id          INTEGER PRIMARY KEY,
+    user_id     INTEGER NOT NULL DEFAULT 1 REFERENCES users(id),
     date        DATE NOT NULL,
     prompt_id   INTEGER REFERENCES prompts(id) ON DELETE SET NULL,
-    prompt_text TEXT,                    -- Snapshot of prompt at time of creation
+    prompt_text TEXT,
     content     TEXT NOT NULL,
-    mood        INTEGER,                 -- 1-5 optional mood rating
+    mood        INTEGER,
     created_at  DATETIME DEFAULT CURRENT_TIMESTAMP,
     updated_at  DATETIME DEFAULT CURRENT_TIMESTAMP,
-    UNIQUE(date)
+    UNIQUE(user_id, date)
 );
 
 CREATE INDEX IF NOT EXISTS idx_reflections_date ON reflections(date);
@@ -113,9 +107,10 @@ CREATE INDEX IF NOT EXISTS idx_reflections_date ON reflections(date);
 -- Pillars: growth areas (vision layer)
 CREATE TABLE IF NOT EXISTS pillars (
     id          INTEGER PRIMARY KEY,
+    user_id     INTEGER NOT NULL DEFAULT 1 REFERENCES users(id),
     name        TEXT NOT NULL,
     description TEXT,
-    icon        TEXT,                    -- Emoji icon
+    icon        TEXT,
     parent_id   INTEGER REFERENCES pillars(id) ON DELETE CASCADE,
     sort_order  INTEGER DEFAULT 0,
     created_at  DATETIME DEFAULT CURRENT_TIMESTAMP

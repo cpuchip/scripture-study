@@ -84,8 +84,8 @@ func SM2Review(cfg SM2Config, quality int) SM2Config {
 
 // ReviewCard processes a memorization review: updates SM-2 state on the practice,
 // logs the review, and returns the updated practice.
-func (db *DB) ReviewCard(practiceID int64, quality int, date string) (*Practice, error) {
-	p, err := db.GetPractice(practiceID)
+func (db *DB) ReviewCard(userID, practiceID int64, quality int, date string) (*Practice, error) {
+	p, err := db.GetPractice(userID, practiceID)
 	if err != nil {
 		return nil, fmt.Errorf("getting practice for review: %w", err)
 	}
@@ -111,7 +111,7 @@ func (db *DB) ReviewCard(practiceID int64, quality int, date string) (*Practice,
 		return nil, fmt.Errorf("marshaling SM-2 config: %w", err)
 	}
 	p.Config = string(cfgJSON)
-	if err := db.UpdatePractice(p); err != nil {
+	if err := db.UpdatePractice(userID, p); err != nil {
 		return nil, fmt.Errorf("updating practice SM-2 config: %w", err)
 	}
 
@@ -122,7 +122,7 @@ func (db *DB) ReviewCard(practiceID int64, quality int, date string) (*Practice,
 		Quality:    &quality,
 		NextReview: &cfg.NextReview,
 	}
-	if err := db.CreateLog(log); err != nil {
+	if err := db.CreateLog(userID, log); err != nil {
 		return nil, fmt.Errorf("logging review: %w", err)
 	}
 
@@ -130,12 +130,12 @@ func (db *DB) ReviewCard(practiceID int64, quality int, date string) (*Practice,
 }
 
 // GetDueCards returns all memorize-type practices due for review on or before the given date,
-// excluding cards that have already been reviewed today.
-func (db *DB) GetDueCards(date string) ([]*Practice, error) {
+// excluding cards that have already been reviewed today, scoped to user.
+func (db *DB) GetDueCards(userID int64, date string) ([]*Practice, error) {
 	rows, err := db.Query(`
 		SELECT id, name, description, type, category, source_doc, source_path, config, sort_order, active, created_at, completed_at
 		FROM practices
-		WHERE type = 'memorize' AND active = 1
+		WHERE type = 'memorize' AND active = 1 AND user_id = ?
 		  AND (
 		    json_extract(config, '$.next_review') <= ?
 		    OR json_extract(config, '$.next_review') IS NULL
@@ -146,7 +146,7 @@ func (db *DB) GetDueCards(date string) ([]*Practice, error) {
 		    WHERE date = ? AND quality IS NOT NULL
 		  )
 		ORDER BY json_extract(config, '$.next_review'), name`,
-		date, date,
+		userID, date, date,
 	)
 	if err != nil {
 		return nil, fmt.Errorf("getting due cards: %w", err)
@@ -165,8 +165,8 @@ func (db *DB) GetDueCards(date string) ([]*Practice, error) {
 }
 
 // GetAllMemorizeCards returns all memorize-type practices with their SM-2 state.
-func (db *DB) GetAllMemorizeCards() ([]*Practice, error) {
-	return db.ListPractices("memorize", true)
+func (db *DB) GetAllMemorizeCards(userID int64) ([]*Practice, error) {
+	return db.ListPractices(userID, "memorize", true)
 }
 
 // MemorizeCardStatus represents a memorize card with today's review progress.
@@ -178,9 +178,9 @@ type MemorizeCardStatus struct {
 	TargetReps     int       `json:"target_daily_reps"`
 }
 
-// GetMemorizeCardStatuses returns all active memorize cards with today's review status.
-func (db *DB) GetMemorizeCardStatuses(date string) ([]*MemorizeCardStatus, error) {
-	practices, err := db.ListPractices("memorize", true)
+// GetMemorizeCardStatuses returns all active memorize cards with today's review status, scoped to user.
+func (db *DB) GetMemorizeCardStatuses(userID int64, date string) ([]*MemorizeCardStatus, error) {
+	practices, err := db.ListPractices(userID, "memorize", true)
 	if err != nil {
 		return nil, fmt.Errorf("listing memorize practices: %w", err)
 	}
@@ -190,8 +190,8 @@ func (db *DB) GetMemorizeCardStatuses(date string) ([]*MemorizeCardStatus, error
 	rows, err := db.Query(`
 		SELECT practice_id, quality FROM practice_logs
 		WHERE date = ? AND quality IS NOT NULL
-		  AND practice_id IN (SELECT id FROM practices WHERE type = 'memorize' AND active = 1)
-		ORDER BY practice_id, logged_at`, date)
+		  AND practice_id IN (SELECT id FROM practices WHERE type = 'memorize' AND active = 1 AND user_id = ?)
+		ORDER BY practice_id, logged_at`, date, userID)
 	if err != nil {
 		return nil, fmt.Errorf("getting today's memorize qualities: %w", err)
 	}

@@ -19,11 +19,11 @@ type Task struct {
 }
 
 // CreateTask inserts a new task.
-func (db *DB) CreateTask(t *Task) error {
+func (db *DB) CreateTask(userID int64, t *Task) error {
 	result, err := db.Exec(`
-		INSERT INTO tasks (title, description, source_doc, source_section, scripture, type, status)
-		VALUES (?, ?, ?, ?, ?, ?, ?)`,
-		t.Title, t.Description, t.SourceDoc, t.SourceSection, t.Scripture, t.Type, t.Status,
+		INSERT INTO tasks (user_id, title, description, source_doc, source_section, scripture, type, status)
+		VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
+		userID, t.Title, t.Description, t.SourceDoc, t.SourceSection, t.Scripture, t.Type, t.Status,
 	)
 	if err != nil {
 		return fmt.Errorf("inserting task: %w", err)
@@ -32,10 +32,10 @@ func (db *DB) CreateTask(t *Task) error {
 	return nil
 }
 
-// ListTasks returns tasks, optionally filtered by status.
-func (db *DB) ListTasks(status string) ([]*Task, error) {
-	query := `SELECT id, title, description, source_doc, source_section, scripture, type, status, created_at, COALESCE(completed_at, '') FROM tasks WHERE 1=1`
-	args := []any{}
+// ListTasks returns tasks, optionally filtered by status, scoped to user.
+func (db *DB) ListTasks(userID int64, status string) ([]*Task, error) {
+	query := `SELECT id, title, description, source_doc, source_section, scripture, type, status, created_at, COALESCE(completed_at, '') FROM tasks WHERE user_id = ?`
+	args := []any{userID}
 	if status != "" {
 		query += ` AND status = ?`
 		args = append(args, status)
@@ -59,18 +59,18 @@ func (db *DB) ListTasks(status string) ([]*Task, error) {
 	return tasks, rows.Err()
 }
 
-// UpdateTask updates a task.
-func (db *DB) UpdateTask(t *Task) error {
+// UpdateTask updates a task, scoped to user.
+func (db *DB) UpdateTask(userID int64, t *Task) error {
 	_, err := db.Exec(`
 		UPDATE tasks SET title=?, description=?, source_doc=?, source_section=?, scripture=?, type=?, status=?, completed_at=?
-		WHERE id=?`,
-		t.Title, t.Description, t.SourceDoc, t.SourceSection, t.Scripture, t.Type, t.Status, t.CompletedAt, t.ID,
+		WHERE id=? AND user_id=?`,
+		t.Title, t.Description, t.SourceDoc, t.SourceSection, t.Scripture, t.Type, t.Status, t.CompletedAt, t.ID, userID,
 	)
 	return err
 }
 
-// DeleteTask removes a task.
-func (db *DB) DeleteTask(id int64) error {
-	_, err := db.Exec(`DELETE FROM tasks WHERE id = ?`, id)
+// DeleteTask removes a task, scoped to user.
+func (db *DB) DeleteTask(userID, id int64) error {
+	_, err := db.Exec(`DELETE FROM tasks WHERE id = ? AND user_id = ?`, id, userID)
 	return err
 }

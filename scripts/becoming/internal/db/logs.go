@@ -21,11 +21,21 @@ type PracticeLog struct {
 	NextReview *string `json:"next_review,omitempty"` // date string
 }
 
-// CreateLog inserts a new practice log entry.
-func (db *DB) CreateLog(l *PracticeLog) error {
+// CreateLog inserts a new practice log entry, verifying practice ownership.
+func (db *DB) CreateLog(userID int64, l *PracticeLog) error {
 	if l.Date == "" {
 		l.Date = time.Now().Format("2006-01-02")
 	}
+	// Verify practice belongs to user
+	var owner int64
+	err := db.QueryRow(`SELECT user_id FROM practices WHERE id = ?`, l.PracticeID).Scan(&owner)
+	if err != nil {
+		return fmt.Errorf("practice %d not found", l.PracticeID)
+	}
+	if owner != userID {
+		return fmt.Errorf("practice %d not found", l.PracticeID)
+	}
+
 	result, err := db.Exec(`
 		INSERT INTO practice_logs (practice_id, date, quality, value, sets, reps, duration_s, notes, next_review)
 		VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
@@ -39,12 +49,14 @@ func (db *DB) CreateLog(l *PracticeLog) error {
 	return nil
 }
 
-// ListLogsByDate returns all logs for a specific date.
-func (db *DB) ListLogsByDate(date string) ([]*PracticeLog, error) {
+// ListLogsByDate returns all logs for a specific date, scoped to the given user.
+func (db *DB) ListLogsByDate(userID int64, date string) ([]*PracticeLog, error) {
 	rows, err := db.Query(`
-		SELECT id, practice_id, logged_at, date, quality, value, sets, reps, duration_s, notes, next_review
-		FROM practice_logs WHERE date = ?
-		ORDER BY logged_at`, date,
+		SELECT l.id, l.practice_id, l.logged_at, l.date, l.quality, l.value, l.sets, l.reps, l.duration_s, l.notes, l.next_review
+		FROM practice_logs l
+		JOIN practices p ON p.id = l.practice_id
+		WHERE l.date = ? AND p.user_id = ?
+		ORDER BY l.logged_at`, date, userID,
 	)
 	if err != nil {
 		return nil, fmt.Errorf("listing logs by date: %w", err)
@@ -54,14 +66,16 @@ func (db *DB) ListLogsByDate(date string) ([]*PracticeLog, error) {
 }
 
 // ListLogsByPractice returns logs for a specific practice, ordered newest first.
-func (db *DB) ListLogsByPractice(practiceID int64, limit int) ([]*PracticeLog, error) {
+func (db *DB) ListLogsByPractice(userID, practiceID int64, limit int) ([]*PracticeLog, error) {
 	if limit <= 0 {
 		limit = 100
 	}
 	rows, err := db.Query(`
-		SELECT id, practice_id, logged_at, date, quality, value, sets, reps, duration_s, notes, next_review
-		FROM practice_logs WHERE practice_id = ?
-		ORDER BY logged_at DESC LIMIT ?`, practiceID, limit,
+		SELECT l.id, l.practice_id, l.logged_at, l.date, l.quality, l.value, l.sets, l.reps, l.duration_s, l.notes, l.next_review
+		FROM practice_logs l
+		JOIN practices p ON p.id = l.practice_id
+		WHERE l.practice_id = ? AND p.user_id = ?
+		ORDER BY l.logged_at DESC LIMIT ?`, practiceID, userID, limit,
 	)
 	if err != nil {
 		return nil, fmt.Errorf("listing logs by practice: %w", err)
@@ -71,11 +85,13 @@ func (db *DB) ListLogsByPractice(practiceID int64, limit int) ([]*PracticeLog, e
 }
 
 // ListLogsByPracticeRange returns logs for a practice between two dates (inclusive).
-func (db *DB) ListLogsByPracticeRange(practiceID int64, startDate, endDate string) ([]*PracticeLog, error) {
+func (db *DB) ListLogsByPracticeRange(userID, practiceID int64, startDate, endDate string) ([]*PracticeLog, error) {
 	rows, err := db.Query(`
-		SELECT id, practice_id, logged_at, date, quality, value, sets, reps, duration_s, notes, next_review
-		FROM practice_logs WHERE practice_id = ? AND date >= ? AND date <= ?
-		ORDER BY date`, practiceID, startDate, endDate,
+		SELECT l.id, l.practice_id, l.logged_at, l.date, l.quality, l.value, l.sets, l.reps, l.duration_s, l.notes, l.next_review
+		FROM practice_logs l
+		JOIN practices p ON p.id = l.practice_id
+		WHERE l.practice_id = ? AND p.user_id = ? AND l.date >= ? AND l.date <= ?
+		ORDER BY l.date`, practiceID, userID, startDate, endDate,
 	)
 	if err != nil {
 		return nil, fmt.Errorf("listing logs by range: %w", err)
@@ -84,9 +100,11 @@ func (db *DB) ListLogsByPracticeRange(practiceID int64, startDate, endDate strin
 	return scanLogs(rows)
 }
 
-// DeleteLog removes a log entry.
-func (db *DB) DeleteLog(id int64) error {
-	_, err := db.Exec(`DELETE FROM practice_logs WHERE id = ?`, id)
+// DeleteLog removes a log entry, verifying ownership through practice.
+func (db *DB) DeleteLog(userID, id int64) error {
+	_, err := db.Exec(`
+		DELETE FROM practice_logs WHERE id = ?
+		AND practice_id IN (SELECT id FROM practices WHERE user_id = ?)`, id, userID)
 	if err != nil {
 		return fmt.Errorf("deleting log: %w", err)
 	}
@@ -95,13 +113,14 @@ func (db *DB) DeleteLog(id int64) error {
 
 // DeleteLatestLog removes the most recent log for a practice on a given date.
 // Returns true if a log was deleted, false if no matching log was found.
-func (db *DB) DeleteLatestLog(practiceID int64, date string) (bool, error) {
+func (db *DB) DeleteLatestLog(userID, practiceID int64, date string) (bool, error) {
 	result, err := db.Exec(`
 		DELETE FROM practice_logs WHERE id = (
-			SELECT id FROM practice_logs
-			WHERE practice_id = ? AND date = ?
-			ORDER BY logged_at DESC LIMIT 1
-		)`, practiceID, date)
+			SELECT l.id FROM practice_logs l
+			JOIN practices p ON p.id = l.practice_id
+			WHERE l.practice_id = ? AND p.user_id = ? AND l.date = ?
+			ORDER BY l.logged_at DESC LIMIT 1
+		)`, practiceID, userID, date)
 	if err != nil {
 		return false, fmt.Errorf("deleting latest log: %w", err)
 	}
@@ -129,8 +148,8 @@ type DailySummary struct {
 	SlotsDue    []string `json:"slots_due,omitempty"`
 }
 
-// GetDailySummary returns all active practices with their log status for a date.
-func (db *DB) GetDailySummary(date string) ([]*DailySummary, error) {
+// GetDailySummary returns all active practices with their log status for a date, scoped to user.
+func (db *DB) GetDailySummary(userID int64, date string) ([]*DailySummary, error) {
 	rows, err := db.Query(`
 		SELECT
 			p.id, p.name, p.type, p.category, p.config,
@@ -141,9 +160,9 @@ func (db *DB) GetDailySummary(date string) ([]*DailySummary, error) {
 			COALESCE((SELECT notes FROM practice_logs WHERE practice_id = p.id AND date = ? ORDER BY logged_at DESC LIMIT 1), '') as last_notes
 		FROM practices p
 		LEFT JOIN practice_logs l ON l.practice_id = p.id AND l.date = ?
-		WHERE p.active = 1
+		WHERE p.active = 1 AND p.user_id = ?
 		GROUP BY p.id
-		ORDER BY p.sort_order, p.type, p.name`, date, date, date,
+		ORDER BY p.sort_order, p.type, p.name`, date, date, date, userID,
 	)
 	if err != nil {
 		return nil, fmt.Errorf("getting daily summary: %w", err)

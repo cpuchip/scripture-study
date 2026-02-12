@@ -21,11 +21,11 @@ type Note struct {
 }
 
 // CreateNote inserts a new note.
-func (db *DB) CreateNote(n *Note) error {
+func (db *DB) CreateNote(userID int64, n *Note) error {
 	result, err := db.Exec(`
-		INSERT INTO notes (content, practice_id, task_id, pillar_id, pinned)
-		VALUES (?, ?, ?, ?, ?)`,
-		n.Content, n.PracticeID, n.TaskID, n.PillarID, n.Pinned,
+		INSERT INTO notes (user_id, content, practice_id, task_id, pillar_id, pinned)
+		VALUES (?, ?, ?, ?, ?, ?)`,
+		userID, n.Content, n.PracticeID, n.TaskID, n.PillarID, n.Pinned,
 	)
 	if err != nil {
 		return fmt.Errorf("inserting note: %w", err)
@@ -37,8 +37,8 @@ func (db *DB) CreateNote(n *Note) error {
 	return nil
 }
 
-// ListNotes returns notes with optional filters.
-func (db *DB) ListNotes(practiceID, taskID, pillarID *int64, pinnedOnly bool) ([]*Note, error) {
+// ListNotes returns notes with optional filters, scoped to user.
+func (db *DB) ListNotes(userID int64, practiceID, taskID, pillarID *int64, pinnedOnly bool) ([]*Note, error) {
 	query := `
 		SELECT n.id, n.content, n.practice_id, n.task_id, n.pillar_id, n.pinned,
 		       n.created_at, n.updated_at,
@@ -46,8 +46,8 @@ func (db *DB) ListNotes(practiceID, taskID, pillarID *int64, pinnedOnly bool) ([
 		FROM notes n
 		LEFT JOIN practices p ON n.practice_id = p.id
 		LEFT JOIN tasks t ON n.task_id = t.id
-		WHERE 1=1`
-	args := []any{}
+		WHERE n.user_id = ?`
+	args := []any{userID}
 
 	if practiceID != nil {
 		query += ` AND n.practice_id = ?`
@@ -88,8 +88,8 @@ func (db *DB) ListNotes(practiceID, taskID, pillarID *int64, pinnedOnly bool) ([
 	return notes, rows.Err()
 }
 
-// GetNote returns a single note by ID.
-func (db *DB) GetNote(id int64) (*Note, error) {
+// GetNote returns a single note by ID, scoped to user.
+func (db *DB) GetNote(userID, id int64) (*Note, error) {
 	n := &Note{}
 	err := db.QueryRow(`
 		SELECT n.id, n.content, n.practice_id, n.task_id, n.pillar_id, n.pinned,
@@ -98,7 +98,7 @@ func (db *DB) GetNote(id int64) (*Note, error) {
 		FROM notes n
 		LEFT JOIN practices p ON n.practice_id = p.id
 		LEFT JOIN tasks t ON n.task_id = t.id
-		WHERE n.id = ?`, id,
+		WHERE n.id = ? AND n.user_id = ?`, id, userID,
 	).Scan(
 		&n.ID, &n.Content, &n.PracticeID, &n.TaskID, &n.PillarID,
 		&n.Pinned, &n.CreatedAt, &n.UpdatedAt,
@@ -110,12 +110,12 @@ func (db *DB) GetNote(id int64) (*Note, error) {
 	return n, nil
 }
 
-// UpdateNote updates an existing note.
-func (db *DB) UpdateNote(n *Note) error {
+// UpdateNote updates an existing note, scoped to user.
+func (db *DB) UpdateNote(userID int64, n *Note) error {
 	_, err := db.Exec(`
 		UPDATE notes SET content=?, practice_id=?, task_id=?, pillar_id=?, pinned=?, updated_at=CURRENT_TIMESTAMP
-		WHERE id=?`,
-		n.Content, n.PracticeID, n.TaskID, n.PillarID, n.Pinned, n.ID,
+		WHERE id=? AND user_id=?`,
+		n.Content, n.PracticeID, n.TaskID, n.PillarID, n.Pinned, n.ID, userID,
 	)
 	if err != nil {
 		return fmt.Errorf("updating note: %w", err)
@@ -126,8 +126,8 @@ func (db *DB) UpdateNote(n *Note) error {
 	return nil
 }
 
-// DeleteNote removes a note by ID.
-func (db *DB) DeleteNote(id int64) error {
-	_, err := db.Exec(`DELETE FROM notes WHERE id = ?`, id)
+// DeleteNote removes a note by ID, scoped to user.
+func (db *DB) DeleteNote(userID, id int64) error {
+	_, err := db.Exec(`DELETE FROM notes WHERE id = ? AND user_id = ?`, id, userID)
 	return err
 }

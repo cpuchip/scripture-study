@@ -43,9 +43,9 @@ var defaultPillars = []struct {
 
 // SeedPillars checks if the onboarding flag is set. Returns default pillar suggestions
 // without creating them — the frontend handles onboarding.
-func (db *DB) HasPillars() (bool, error) {
+func (db *DB) HasPillars(userID int64) (bool, error) {
 	var count int
-	if err := db.QueryRow(`SELECT COUNT(*) FROM pillars`).Scan(&count); err != nil {
+	if err := db.QueryRow(`SELECT COUNT(*) FROM pillars WHERE user_id = ?`, userID).Scan(&count); err != nil {
 		return false, err
 	}
 	return count > 0, nil
@@ -64,12 +64,12 @@ func GetDefaultPillarSuggestions() []map[string]string {
 	return result
 }
 
-// CreatePillar inserts a new pillar.
-func (db *DB) CreatePillar(p *Pillar) error {
+// CreatePillar inserts a new pillar, scoped to user.
+func (db *DB) CreatePillar(userID int64, p *Pillar) error {
 	result, err := db.Exec(`
-		INSERT INTO pillars (name, description, icon, parent_id, sort_order)
-		VALUES (?, ?, ?, ?, ?)`,
-		p.Name, p.Description, p.Icon, p.ParentID, p.SortOrder,
+		INSERT INTO pillars (user_id, name, description, icon, parent_id, sort_order)
+		VALUES (?, ?, ?, ?, ?, ?)`,
+		userID, p.Name, p.Description, p.Icon, p.ParentID, p.SortOrder,
 	)
 	if err != nil {
 		return fmt.Errorf("inserting pillar: %w", err)
@@ -80,14 +80,15 @@ func (db *DB) CreatePillar(p *Pillar) error {
 	return nil
 }
 
-// ListPillars returns all pillars as a flat list with practice/task counts.
-func (db *DB) ListPillars() ([]*Pillar, error) {
+// ListPillars returns all pillars as a flat list with practice/task counts, scoped to user.
+func (db *DB) ListPillars(userID int64) ([]*Pillar, error) {
 	rows, err := db.Query(`
 		SELECT p.id, p.name, COALESCE(p.description, ''), COALESCE(p.icon, ''), p.parent_id, p.sort_order, p.created_at,
 		       (SELECT COUNT(*) FROM practice_pillars pp WHERE pp.pillar_id = p.id) as practice_count,
 		       (SELECT COUNT(*) FROM task_pillars tp WHERE tp.pillar_id = p.id) as task_count
 		FROM pillars p
-		ORDER BY p.sort_order, p.id`)
+		WHERE p.user_id = ?
+		ORDER BY p.sort_order, p.id`, userID)
 	if err != nil {
 		return nil, fmt.Errorf("listing pillars: %w", err)
 	}
@@ -105,9 +106,9 @@ func (db *DB) ListPillars() ([]*Pillar, error) {
 	return pillars, rows.Err()
 }
 
-// ListPillarsTree returns pillars organized as a tree (parents with children).
-func (db *DB) ListPillarsTree() ([]*Pillar, error) {
-	all, err := db.ListPillars()
+// ListPillarsTree returns pillars organized as a tree (parents with children), scoped to user.
+func (db *DB) ListPillarsTree(userID int64) ([]*Pillar, error) {
+	all, err := db.ListPillars(userID)
 	if err != nil {
 		return nil, err
 	}
@@ -132,14 +133,14 @@ func (db *DB) ListPillarsTree() ([]*Pillar, error) {
 	return roots, nil
 }
 
-// GetPillar returns a single pillar by ID.
-func (db *DB) GetPillar(id int64) (*Pillar, error) {
+// GetPillar returns a single pillar by ID, scoped to user.
+func (db *DB) GetPillar(userID, id int64) (*Pillar, error) {
 	p := &Pillar{}
 	err := db.QueryRow(`
 		SELECT p.id, p.name, COALESCE(p.description, ''), COALESCE(p.icon, ''), p.parent_id, p.sort_order, p.created_at,
 		       (SELECT COUNT(*) FROM practice_pillars pp WHERE pp.pillar_id = p.id),
 		       (SELECT COUNT(*) FROM task_pillars tp WHERE tp.pillar_id = p.id)
-		FROM pillars p WHERE p.id = ?`, id,
+		FROM pillars p WHERE p.id = ? AND p.user_id = ?`, id, userID,
 	).Scan(&p.ID, &p.Name, &p.Description, &p.Icon, &p.ParentID,
 		&p.SortOrder, &p.CreatedAt, &p.PracticeCount, &p.TaskCount)
 	if err != nil {
@@ -148,45 +149,58 @@ func (db *DB) GetPillar(id int64) (*Pillar, error) {
 	return p, nil
 }
 
-// UpdatePillar updates an existing pillar.
-func (db *DB) UpdatePillar(p *Pillar) error {
+// UpdatePillar updates an existing pillar, scoped to user.
+func (db *DB) UpdatePillar(userID int64, p *Pillar) error {
 	_, err := db.Exec(`
 		UPDATE pillars SET name=?, description=?, icon=?, parent_id=?, sort_order=?
-		WHERE id=?`,
-		p.Name, p.Description, p.Icon, p.ParentID, p.SortOrder, p.ID,
+		WHERE id=? AND user_id=?`,
+		p.Name, p.Description, p.Icon, p.ParentID, p.SortOrder, p.ID, userID,
 	)
 	return err
 }
 
-// DeletePillar removes a pillar and its links (cascades to children via FK).
-func (db *DB) DeletePillar(id int64) error {
-	_, err := db.Exec(`DELETE FROM pillars WHERE id = ?`, id)
+// DeletePillar removes a pillar and its links (cascades to children via FK), scoped to user.
+func (db *DB) DeletePillar(userID, id int64) error {
+	_, err := db.Exec(`DELETE FROM pillars WHERE id = ? AND user_id = ?`, id, userID)
 	return err
 }
 
 // --- Practice ↔ Pillar linking ---
 
-// LinkPracticePillar adds a link between a practice and a pillar.
-func (db *DB) LinkPracticePillar(practiceID, pillarID int64) error {
-	_, err := db.Exec(`INSERT OR IGNORE INTO practice_pillars (practice_id, pillar_id) VALUES (?, ?)`,
-		practiceID, pillarID)
+// LinkPracticePillar adds a link between a practice and a pillar (both must belong to user).
+func (db *DB) LinkPracticePillar(userID, practiceID, pillarID int64) error {
+	_, err := db.Exec(`
+		INSERT OR IGNORE INTO practice_pillars (practice_id, pillar_id)
+		SELECT ?, ? WHERE
+			EXISTS (SELECT 1 FROM practices WHERE id = ? AND user_id = ?) AND
+			EXISTS (SELECT 1 FROM pillars WHERE id = ? AND user_id = ?)`,
+		practiceID, pillarID, practiceID, userID, pillarID, userID)
 	return err
 }
 
 // UnlinkPracticePillar removes a link between a practice and a pillar.
-func (db *DB) UnlinkPracticePillar(practiceID, pillarID int64) error {
-	_, err := db.Exec(`DELETE FROM practice_pillars WHERE practice_id = ? AND pillar_id = ?`,
-		practiceID, pillarID)
+func (db *DB) UnlinkPracticePillar(userID, practiceID, pillarID int64) error {
+	_, err := db.Exec(`
+		DELETE FROM practice_pillars WHERE practice_id = ? AND pillar_id = ?
+		AND practice_id IN (SELECT id FROM practices WHERE user_id = ?)`,
+		practiceID, pillarID, userID)
 	return err
 }
 
 // SetPracticePillars replaces all pillar links for a practice.
-func (db *DB) SetPracticePillars(practiceID int64, pillarIDs []int64) error {
+func (db *DB) SetPracticePillars(userID, practiceID int64, pillarIDs []int64) error {
+	// Verify practice belongs to user
+	var owner int64
+	err := db.QueryRow(`SELECT user_id FROM practices WHERE id = ?`, practiceID).Scan(&owner)
+	if err != nil || owner != userID {
+		return fmt.Errorf("practice %d not found", practiceID)
+	}
+
 	if _, err := db.Exec(`DELETE FROM practice_pillars WHERE practice_id = ?`, practiceID); err != nil {
 		return err
 	}
 	for _, pid := range pillarIDs {
-		if err := db.LinkPracticePillar(practiceID, pid); err != nil {
+		if err := db.LinkPracticePillar(userID, practiceID, pid); err != nil {
 			return err
 		}
 	}
@@ -194,13 +208,13 @@ func (db *DB) SetPracticePillars(practiceID int64, pillarIDs []int64) error {
 }
 
 // GetPracticePillars returns pillar links for a practice.
-func (db *DB) GetPracticePillars(practiceID int64) ([]PillarLink, error) {
+func (db *DB) GetPracticePillars(userID, practiceID int64) ([]PillarLink, error) {
 	rows, err := db.Query(`
 		SELECT p.id, p.name, COALESCE(p.icon, '')
 		FROM pillars p
 		JOIN practice_pillars pp ON pp.pillar_id = p.id
-		WHERE pp.practice_id = ?
-		ORDER BY p.sort_order`, practiceID)
+		WHERE pp.practice_id = ? AND p.user_id = ?
+		ORDER BY p.sort_order`, practiceID, userID)
 	if err != nil {
 		return nil, err
 	}
@@ -219,27 +233,40 @@ func (db *DB) GetPracticePillars(practiceID int64) ([]PillarLink, error) {
 
 // --- Task ↔ Pillar linking ---
 
-// LinkTaskPillar adds a link between a task and a pillar.
-func (db *DB) LinkTaskPillar(taskID, pillarID int64) error {
-	_, err := db.Exec(`INSERT OR IGNORE INTO task_pillars (task_id, pillar_id) VALUES (?, ?)`,
-		taskID, pillarID)
+// LinkTaskPillar adds a link between a task and a pillar (both must belong to user).
+func (db *DB) LinkTaskPillar(userID, taskID, pillarID int64) error {
+	_, err := db.Exec(`
+		INSERT OR IGNORE INTO task_pillars (task_id, pillar_id)
+		SELECT ?, ? WHERE
+			EXISTS (SELECT 1 FROM tasks WHERE id = ? AND user_id = ?) AND
+			EXISTS (SELECT 1 FROM pillars WHERE id = ? AND user_id = ?)`,
+		taskID, pillarID, taskID, userID, pillarID, userID)
 	return err
 }
 
 // UnlinkTaskPillar removes a link between a task and a pillar.
-func (db *DB) UnlinkTaskPillar(taskID, pillarID int64) error {
-	_, err := db.Exec(`DELETE FROM task_pillars WHERE task_id = ? AND pillar_id = ?`,
-		taskID, pillarID)
+func (db *DB) UnlinkTaskPillar(userID, taskID, pillarID int64) error {
+	_, err := db.Exec(`
+		DELETE FROM task_pillars WHERE task_id = ? AND pillar_id = ?
+		AND task_id IN (SELECT id FROM tasks WHERE user_id = ?)`,
+		taskID, pillarID, userID)
 	return err
 }
 
 // SetTaskPillars replaces all pillar links for a task.
-func (db *DB) SetTaskPillars(taskID int64, pillarIDs []int64) error {
+func (db *DB) SetTaskPillars(userID, taskID int64, pillarIDs []int64) error {
+	// Verify task belongs to user
+	var owner int64
+	err := db.QueryRow(`SELECT user_id FROM tasks WHERE id = ?`, taskID).Scan(&owner)
+	if err != nil || owner != userID {
+		return fmt.Errorf("task %d not found", taskID)
+	}
+
 	if _, err := db.Exec(`DELETE FROM task_pillars WHERE task_id = ?`, taskID); err != nil {
 		return err
 	}
 	for _, pid := range pillarIDs {
-		if err := db.LinkTaskPillar(taskID, pid); err != nil {
+		if err := db.LinkTaskPillar(userID, taskID, pid); err != nil {
 			return err
 		}
 	}

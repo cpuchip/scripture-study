@@ -30,8 +30,8 @@ type DailyDataPoint struct {
 	Reps int    `json:"reps"`
 }
 
-// GetReport returns aggregated stats per active practice for a date range.
-func (db *DB) GetReport(startDate, endDate string) ([]*ReportEntry, error) {
+// GetReport returns aggregated stats per active practice for a date range, scoped to user.
+func (db *DB) GetReport(userID int64, startDate, endDate string) ([]*ReportEntry, error) {
 	// Query: group logs by practice and date within the range.
 	rows, err := db.Query(`
 		SELECT
@@ -42,10 +42,10 @@ func (db *DB) GetReport(startDate, endDate string) ([]*ReportEntry, error) {
 			COALESCE(SUM(l.reps), 0) as reps
 		FROM practices p
 		LEFT JOIN practice_logs l ON l.practice_id = p.id AND l.date >= ? AND l.date <= ?
-		WHERE p.active = 1
+		WHERE p.active = 1 AND p.user_id = ?
 		GROUP BY p.id, l.date
 		ORDER BY p.sort_order, p.type, p.name, l.date`,
-		startDate, endDate,
+		startDate, endDate, userID,
 	)
 	if err != nil {
 		return nil, fmt.Errorf("getting report: %w", err)

@@ -7,6 +7,7 @@ import (
 	"strconv"
 	"time"
 
+	"github.com/cpuchip/scripture-study/scripts/becoming/internal/auth"
 	"github.com/cpuchip/scripture-study/scripts/becoming/internal/db"
 	"github.com/cpuchip/scripture-study/scripts/becoming/internal/scripture"
 	"github.com/go-chi/chi/v5"
@@ -111,10 +112,11 @@ func Router(database *db.DB, scripturesRoot string) chi.Router {
 
 func listPractices(database *db.DB) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
+		userID := auth.UserID(r)
 		pType := r.URL.Query().Get("type")
 		activeOnly := r.URL.Query().Get("active") != "false"
 
-		practices, err := database.ListPractices(pType, activeOnly)
+		practices, err := database.ListPractices(userID, pType, activeOnly)
 		if err != nil {
 			writeError(w, http.StatusInternalServerError, err.Error())
 			return
@@ -128,6 +130,7 @@ func listPractices(database *db.DB) http.HandlerFunc {
 
 func createPractice(database *db.DB) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
+		userID := auth.UserID(r)
 		var p db.Practice
 		if err := json.NewDecoder(r.Body).Decode(&p); err != nil {
 			writeError(w, http.StatusBadRequest, "invalid JSON: "+err.Error())
@@ -175,7 +178,7 @@ func createPractice(database *db.DB) http.HandlerFunc {
 		}
 		p.Active = true
 
-		if err := database.CreatePractice(&p); err != nil {
+		if err := database.CreatePractice(userID, &p); err != nil {
 			writeError(w, http.StatusInternalServerError, err.Error())
 			return
 		}
@@ -185,12 +188,13 @@ func createPractice(database *db.DB) http.HandlerFunc {
 
 func getPractice(database *db.DB) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
+		userID := auth.UserID(r)
 		id, err := parseID(r)
 		if err != nil {
 			writeError(w, http.StatusBadRequest, "invalid id")
 			return
 		}
-		p, err := database.GetPractice(id)
+		p, err := database.GetPractice(userID, id)
 		if err != nil {
 			writeError(w, http.StatusInternalServerError, err.Error())
 			return
@@ -205,6 +209,7 @@ func getPractice(database *db.DB) http.HandlerFunc {
 
 func updatePractice(database *db.DB) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
+		userID := auth.UserID(r)
 		id, err := parseID(r)
 		if err != nil {
 			writeError(w, http.StatusBadRequest, "invalid id")
@@ -216,7 +221,7 @@ func updatePractice(database *db.DB) http.HandlerFunc {
 			return
 		}
 		p.ID = id
-		if err := database.UpdatePractice(&p); err != nil {
+		if err := database.UpdatePractice(userID, &p); err != nil {
 			writeError(w, http.StatusInternalServerError, err.Error())
 			return
 		}
@@ -226,12 +231,13 @@ func updatePractice(database *db.DB) http.HandlerFunc {
 
 func deletePractice(database *db.DB) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
+		userID := auth.UserID(r)
 		id, err := parseID(r)
 		if err != nil {
 			writeError(w, http.StatusBadRequest, "invalid id")
 			return
 		}
-		if err := database.DeletePractice(id); err != nil {
+		if err := database.DeletePractice(userID, id); err != nil {
 			writeError(w, http.StatusInternalServerError, err.Error())
 			return
 		}
@@ -241,6 +247,7 @@ func deletePractice(database *db.DB) http.HandlerFunc {
 
 func listPracticeLogs(database *db.DB) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
+		userID := auth.UserID(r)
 		id, err := parseID(r)
 		if err != nil {
 			writeError(w, http.StatusBadRequest, "invalid id")
@@ -258,9 +265,9 @@ func listPracticeLogs(database *db.DB) http.HandlerFunc {
 		endDate := r.URL.Query().Get("end")
 		var logs []*db.PracticeLog
 		if startDate != "" && endDate != "" {
-			logs, err = database.ListLogsByPracticeRange(id, startDate, endDate)
+			logs, err = database.ListLogsByPracticeRange(userID, id, startDate, endDate)
 		} else {
-			logs, err = database.ListLogsByPractice(id, limit)
+			logs, err = database.ListLogsByPractice(userID, id, limit)
 		}
 		if err != nil {
 			writeError(w, http.StatusInternalServerError, err.Error())
@@ -277,6 +284,7 @@ func listPracticeLogs(database *db.DB) http.HandlerFunc {
 
 func createLog(database *db.DB) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
+		userID := auth.UserID(r)
 		var l db.PracticeLog
 		if err := json.NewDecoder(r.Body).Decode(&l); err != nil {
 			writeError(w, http.StatusBadRequest, "invalid JSON: "+err.Error())
@@ -286,7 +294,7 @@ func createLog(database *db.DB) http.HandlerFunc {
 			writeError(w, http.StatusBadRequest, "practice_id is required")
 			return
 		}
-		if err := database.CreateLog(&l); err != nil {
+		if err := database.CreateLog(userID, &l); err != nil {
 			writeError(w, http.StatusInternalServerError, err.Error())
 			return
 		}
@@ -296,12 +304,13 @@ func createLog(database *db.DB) http.HandlerFunc {
 
 func deleteLog(database *db.DB) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
+		userID := auth.UserID(r)
 		id, err := parseID(r)
 		if err != nil {
 			writeError(w, http.StatusBadRequest, "invalid id")
 			return
 		}
-		if err := database.DeleteLog(id); err != nil {
+		if err := database.DeleteLog(userID, id); err != nil {
 			writeError(w, http.StatusInternalServerError, err.Error())
 			return
 		}
@@ -311,6 +320,7 @@ func deleteLog(database *db.DB) http.HandlerFunc {
 
 func deleteLatestLog(database *db.DB) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
+		userID := auth.UserID(r)
 		practiceID := r.URL.Query().Get("practice_id")
 		date := r.URL.Query().Get("date")
 		if practiceID == "" || date == "" {
@@ -322,7 +332,7 @@ func deleteLatestLog(database *db.DB) http.HandlerFunc {
 			writeError(w, http.StatusBadRequest, "invalid practice_id")
 			return
 		}
-		ok, err := database.DeleteLatestLog(pid, date)
+		ok, err := database.DeleteLatestLog(userID, pid, date)
 		if err != nil {
 			writeError(w, http.StatusInternalServerError, err.Error())
 			return
@@ -339,12 +349,13 @@ func deleteLatestLog(database *db.DB) http.HandlerFunc {
 
 func getDailySummary(database *db.DB) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
+		userID := auth.UserID(r)
 		date := chi.URLParam(r, "date")
 		if date == "" {
 			writeError(w, http.StatusBadRequest, "date is required (YYYY-MM-DD)")
 			return
 		}
-		summaries, err := database.GetDailySummary(date)
+		summaries, err := database.GetDailySummary(userID, date)
 		if err != nil {
 			writeError(w, http.StatusInternalServerError, err.Error())
 			return
@@ -360,13 +371,14 @@ func getDailySummary(database *db.DB) http.HandlerFunc {
 
 func getReport(database *db.DB) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
+		userID := auth.UserID(r)
 		start := r.URL.Query().Get("start")
 		end := r.URL.Query().Get("end")
 		if start == "" || end == "" {
 			writeError(w, http.StatusBadRequest, "start and end query params are required (YYYY-MM-DD)")
 			return
 		}
-		entries, err := database.GetReport(start, end)
+		entries, err := database.GetReport(userID, start, end)
 		if err != nil {
 			writeError(w, http.StatusInternalServerError, err.Error())
 			return
@@ -382,8 +394,9 @@ func getReport(database *db.DB) http.HandlerFunc {
 
 func listTasks(database *db.DB) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
+		userID := auth.UserID(r)
 		status := r.URL.Query().Get("status")
-		tasks, err := database.ListTasks(status)
+		tasks, err := database.ListTasks(userID, status)
 		if err != nil {
 			writeError(w, http.StatusInternalServerError, err.Error())
 			return
@@ -397,6 +410,7 @@ func listTasks(database *db.DB) http.HandlerFunc {
 
 func createTask(database *db.DB) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
+		userID := auth.UserID(r)
 		var t db.Task
 		if err := json.NewDecoder(r.Body).Decode(&t); err != nil {
 			writeError(w, http.StatusBadRequest, "invalid JSON: "+err.Error())
@@ -412,7 +426,7 @@ func createTask(database *db.DB) http.HandlerFunc {
 		if t.Status == "" {
 			t.Status = "active"
 		}
-		if err := database.CreateTask(&t); err != nil {
+		if err := database.CreateTask(userID, &t); err != nil {
 			writeError(w, http.StatusInternalServerError, err.Error())
 			return
 		}
@@ -422,6 +436,7 @@ func createTask(database *db.DB) http.HandlerFunc {
 
 func updateTask(database *db.DB) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
+		userID := auth.UserID(r)
 		id, err := parseID(r)
 		if err != nil {
 			writeError(w, http.StatusBadRequest, "invalid id")
@@ -433,7 +448,7 @@ func updateTask(database *db.DB) http.HandlerFunc {
 			return
 		}
 		t.ID = id
-		if err := database.UpdateTask(&t); err != nil {
+		if err := database.UpdateTask(userID, &t); err != nil {
 			writeError(w, http.StatusInternalServerError, err.Error())
 			return
 		}
@@ -443,12 +458,13 @@ func updateTask(database *db.DB) http.HandlerFunc {
 
 func deleteTask(database *db.DB) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
+		userID := auth.UserID(r)
 		id, err := parseID(r)
 		if err != nil {
 			writeError(w, http.StatusBadRequest, "invalid id")
 			return
 		}
-		if err := database.DeleteTask(id); err != nil {
+		if err := database.DeleteTask(userID, id); err != nil {
 			writeError(w, http.StatusInternalServerError, err.Error())
 			return
 		}
@@ -460,12 +476,13 @@ func deleteTask(database *db.DB) http.HandlerFunc {
 
 func getDueCards(database *db.DB) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
+		userID := auth.UserID(r)
 		date := chi.URLParam(r, "date")
 		if date == "" {
 			writeError(w, http.StatusBadRequest, "date is required (YYYY-MM-DD)")
 			return
 		}
-		cards, err := database.GetDueCards(date)
+		cards, err := database.GetDueCards(userID, date)
 		if err != nil {
 			writeError(w, http.StatusInternalServerError, err.Error())
 			return
@@ -479,12 +496,13 @@ func getDueCards(database *db.DB) http.HandlerFunc {
 
 func getMemorizeCards(database *db.DB) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
+		userID := auth.UserID(r)
 		date := chi.URLParam(r, "date")
 		if date == "" {
 			writeError(w, http.StatusBadRequest, "date is required (YYYY-MM-DD)")
 			return
 		}
-		cards, err := database.GetMemorizeCardStatuses(date)
+		cards, err := database.GetMemorizeCardStatuses(userID, date)
 		if err != nil {
 			writeError(w, http.StatusInternalServerError, err.Error())
 			return
@@ -498,6 +516,7 @@ func getMemorizeCards(database *db.DB) http.HandlerFunc {
 
 func reviewCard(database *db.DB) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
+		userID := auth.UserID(r)
 		var req struct {
 			PracticeID int64  `json:"practice_id"`
 			Quality    int    `json:"quality"`
@@ -519,7 +538,7 @@ func reviewCard(database *db.DB) http.HandlerFunc {
 			req.Date = r.URL.Query().Get("date")
 		}
 
-		p, err := database.ReviewCard(req.PracticeID, req.Quality, req.Date)
+		p, err := database.ReviewCard(userID, req.PracticeID, req.Quality, req.Date)
 		if err != nil {
 			writeError(w, http.StatusInternalServerError, err.Error())
 			return
@@ -538,6 +557,7 @@ func parseID(r *http.Request) (int64, error) {
 
 func listNotes(database *db.DB) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
+		userID := auth.UserID(r)
 		var practiceID, taskID, pillarID *int64
 		if v := r.URL.Query().Get("practice_id"); v != "" {
 			id, err := strconv.ParseInt(v, 10, 64)
@@ -559,7 +579,7 @@ func listNotes(database *db.DB) http.HandlerFunc {
 		}
 		pinnedOnly := r.URL.Query().Get("pinned") == "true"
 
-		notes, err := database.ListNotes(practiceID, taskID, pillarID, pinnedOnly)
+		notes, err := database.ListNotes(userID, practiceID, taskID, pillarID, pinnedOnly)
 		if err != nil {
 			writeError(w, http.StatusInternalServerError, err.Error())
 			return
@@ -573,6 +593,7 @@ func listNotes(database *db.DB) http.HandlerFunc {
 
 func createNote(database *db.DB) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
+		userID := auth.UserID(r)
 		var n db.Note
 		if err := json.NewDecoder(r.Body).Decode(&n); err != nil {
 			writeError(w, http.StatusBadRequest, "invalid JSON: "+err.Error())
@@ -582,7 +603,7 @@ func createNote(database *db.DB) http.HandlerFunc {
 			writeError(w, http.StatusBadRequest, "content is required")
 			return
 		}
-		if err := database.CreateNote(&n); err != nil {
+		if err := database.CreateNote(userID, &n); err != nil {
 			writeError(w, http.StatusInternalServerError, err.Error())
 			return
 		}
@@ -592,6 +613,7 @@ func createNote(database *db.DB) http.HandlerFunc {
 
 func updateNote(database *db.DB) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
+		userID := auth.UserID(r)
 		id, err := parseID(r)
 		if err != nil {
 			writeError(w, http.StatusBadRequest, "invalid id")
@@ -603,7 +625,7 @@ func updateNote(database *db.DB) http.HandlerFunc {
 			return
 		}
 		n.ID = id
-		if err := database.UpdateNote(&n); err != nil {
+		if err := database.UpdateNote(userID, &n); err != nil {
 			writeError(w, http.StatusInternalServerError, err.Error())
 			return
 		}
@@ -613,12 +635,13 @@ func updateNote(database *db.DB) http.HandlerFunc {
 
 func deleteNote(database *db.DB) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
+		userID := auth.UserID(r)
 		id, err := parseID(r)
 		if err != nil {
 			writeError(w, http.StatusBadRequest, "invalid id")
 			return
 		}
-		if err := database.DeleteNote(id); err != nil {
+		if err := database.DeleteNote(userID, id); err != nil {
 			writeError(w, http.StatusInternalServerError, err.Error())
 			return
 		}
@@ -630,8 +653,9 @@ func deleteNote(database *db.DB) http.HandlerFunc {
 
 func listPrompts(database *db.DB) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
+		userID := auth.UserID(r)
 		activeOnly := r.URL.Query().Get("active") != "false"
-		prompts, err := database.ListPrompts(activeOnly)
+		prompts, err := database.ListPrompts(userID, activeOnly)
 		if err != nil {
 			writeError(w, http.StatusInternalServerError, err.Error())
 			return
@@ -645,8 +669,9 @@ func listPrompts(database *db.DB) http.HandlerFunc {
 
 func getTodayPrompt(database *db.DB) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
+		userID := auth.UserID(r)
 		dayOfYear := time.Now().YearDay()
-		prompt, err := database.GetTodayPrompt(dayOfYear)
+		prompt, err := database.GetTodayPrompt(userID, dayOfYear)
 		if err != nil {
 			writeError(w, http.StatusInternalServerError, err.Error())
 			return
@@ -661,6 +686,7 @@ func getTodayPrompt(database *db.DB) http.HandlerFunc {
 
 func createPrompt(database *db.DB) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
+		userID := auth.UserID(r)
 		var p db.Prompt
 		if err := json.NewDecoder(r.Body).Decode(&p); err != nil {
 			writeError(w, http.StatusBadRequest, "invalid JSON: "+err.Error())
@@ -671,7 +697,7 @@ func createPrompt(database *db.DB) http.HandlerFunc {
 			return
 		}
 		p.Active = true
-		if err := database.CreatePrompt(&p); err != nil {
+		if err := database.CreatePrompt(userID, &p); err != nil {
 			writeError(w, http.StatusInternalServerError, err.Error())
 			return
 		}
@@ -681,6 +707,7 @@ func createPrompt(database *db.DB) http.HandlerFunc {
 
 func updatePrompt(database *db.DB) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
+		userID := auth.UserID(r)
 		id, err := parseID(r)
 		if err != nil {
 			writeError(w, http.StatusBadRequest, "invalid id")
@@ -692,7 +719,7 @@ func updatePrompt(database *db.DB) http.HandlerFunc {
 			return
 		}
 		p.ID = id
-		if err := database.UpdatePrompt(&p); err != nil {
+		if err := database.UpdatePrompt(userID, &p); err != nil {
 			writeError(w, http.StatusInternalServerError, err.Error())
 			return
 		}
@@ -702,12 +729,13 @@ func updatePrompt(database *db.DB) http.HandlerFunc {
 
 func deletePrompt(database *db.DB) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
+		userID := auth.UserID(r)
 		id, err := parseID(r)
 		if err != nil {
 			writeError(w, http.StatusBadRequest, "invalid id")
 			return
 		}
-		if err := database.DeletePrompt(id); err != nil {
+		if err := database.DeletePrompt(userID, id); err != nil {
 			writeError(w, http.StatusInternalServerError, err.Error())
 			return
 		}
@@ -719,9 +747,10 @@ func deletePrompt(database *db.DB) http.HandlerFunc {
 
 func listReflections(database *db.DB) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
+		userID := auth.UserID(r)
 		from := r.URL.Query().Get("from")
 		to := r.URL.Query().Get("to")
-		reflections, err := database.ListReflections(from, to)
+		reflections, err := database.ListReflections(userID, from, to)
 		if err != nil {
 			writeError(w, http.StatusInternalServerError, err.Error())
 			return
@@ -735,8 +764,9 @@ func listReflections(database *db.DB) http.HandlerFunc {
 
 func getReflection(database *db.DB) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
+		userID := auth.UserID(r)
 		date := chi.URLParam(r, "date")
-		ref, err := database.GetReflection(date)
+		ref, err := database.GetReflection(userID, date)
 		if err != nil {
 			writeError(w, http.StatusInternalServerError, err.Error())
 			return
@@ -751,6 +781,7 @@ func getReflection(database *db.DB) http.HandlerFunc {
 
 func upsertReflection(database *db.DB) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
+		userID := auth.UserID(r)
 		var ref db.Reflection
 		if err := json.NewDecoder(r.Body).Decode(&ref); err != nil {
 			writeError(w, http.StatusBadRequest, "invalid JSON: "+err.Error())
@@ -764,7 +795,7 @@ func upsertReflection(database *db.DB) http.HandlerFunc {
 			writeError(w, http.StatusBadRequest, "mood must be 1-5")
 			return
 		}
-		if err := database.UpsertReflection(&ref); err != nil {
+		if err := database.UpsertReflection(userID, &ref); err != nil {
 			writeError(w, http.StatusInternalServerError, err.Error())
 			return
 		}
@@ -774,12 +805,13 @@ func upsertReflection(database *db.DB) http.HandlerFunc {
 
 func deleteReflection(database *db.DB) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
+		userID := auth.UserID(r)
 		id, err := parseID(r)
 		if err != nil {
 			writeError(w, http.StatusBadRequest, "invalid id")
 			return
 		}
-		if err := database.DeleteReflection(id); err != nil {
+		if err := database.DeleteReflection(userID, id); err != nil {
 			writeError(w, http.StatusInternalServerError, err.Error())
 			return
 		}
@@ -791,7 +823,8 @@ func deleteReflection(database *db.DB) http.HandlerFunc {
 
 func listPillarsTree(database *db.DB) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
-		pillars, err := database.ListPillarsTree()
+		userID := auth.UserID(r)
+		pillars, err := database.ListPillarsTree(userID)
 		if err != nil {
 			writeError(w, http.StatusInternalServerError, err.Error())
 			return
@@ -805,7 +838,8 @@ func listPillarsTree(database *db.DB) http.HandlerFunc {
 
 func listPillarsFlat(database *db.DB) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
-		pillars, err := database.ListPillars()
+		userID := auth.UserID(r)
+		pillars, err := database.ListPillars(userID)
 		if err != nil {
 			writeError(w, http.StatusInternalServerError, err.Error())
 			return
@@ -825,7 +859,8 @@ func getPillarSuggestions() http.HandlerFunc {
 
 func hasPillars(database *db.DB) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
-		has, err := database.HasPillars()
+		userID := auth.UserID(r)
+		has, err := database.HasPillars(userID)
 		if err != nil {
 			writeError(w, http.StatusInternalServerError, err.Error())
 			return
@@ -836,6 +871,7 @@ func hasPillars(database *db.DB) http.HandlerFunc {
 
 func createPillar(database *db.DB) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
+		userID := auth.UserID(r)
 		var p db.Pillar
 		if err := json.NewDecoder(r.Body).Decode(&p); err != nil {
 			writeError(w, http.StatusBadRequest, "invalid JSON: "+err.Error())
@@ -845,7 +881,7 @@ func createPillar(database *db.DB) http.HandlerFunc {
 			writeError(w, http.StatusBadRequest, "name is required")
 			return
 		}
-		if err := database.CreatePillar(&p); err != nil {
+		if err := database.CreatePillar(userID, &p); err != nil {
 			writeError(w, http.StatusInternalServerError, err.Error())
 			return
 		}
@@ -855,12 +891,13 @@ func createPillar(database *db.DB) http.HandlerFunc {
 
 func getPillar(database *db.DB) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
+		userID := auth.UserID(r)
 		id, err := parseID(r)
 		if err != nil {
 			writeError(w, http.StatusBadRequest, "invalid id")
 			return
 		}
-		p, err := database.GetPillar(id)
+		p, err := database.GetPillar(userID, id)
 		if err != nil {
 			writeError(w, http.StatusInternalServerError, err.Error())
 			return
@@ -871,6 +908,7 @@ func getPillar(database *db.DB) http.HandlerFunc {
 
 func updatePillar(database *db.DB) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
+		userID := auth.UserID(r)
 		id, err := parseID(r)
 		if err != nil {
 			writeError(w, http.StatusBadRequest, "invalid id")
@@ -882,7 +920,7 @@ func updatePillar(database *db.DB) http.HandlerFunc {
 			return
 		}
 		p.ID = id
-		if err := database.UpdatePillar(&p); err != nil {
+		if err := database.UpdatePillar(userID, &p); err != nil {
 			writeError(w, http.StatusInternalServerError, err.Error())
 			return
 		}
@@ -892,12 +930,13 @@ func updatePillar(database *db.DB) http.HandlerFunc {
 
 func deletePillar(database *db.DB) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
+		userID := auth.UserID(r)
 		id, err := parseID(r)
 		if err != nil {
 			writeError(w, http.StatusBadRequest, "invalid id")
 			return
 		}
-		if err := database.DeletePillar(id); err != nil {
+		if err := database.DeletePillar(userID, id); err != nil {
 			writeError(w, http.StatusInternalServerError, err.Error())
 			return
 		}
@@ -907,6 +946,7 @@ func deletePillar(database *db.DB) http.HandlerFunc {
 
 func setPracticePillars(database *db.DB) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
+		userID := auth.UserID(r)
 		id, err := parseID(r)
 		if err != nil {
 			writeError(w, http.StatusBadRequest, "invalid id")
@@ -921,7 +961,7 @@ func setPracticePillars(database *db.DB) http.HandlerFunc {
 		}
 		// Set all given practice_ids to link to this pillar
 		for _, pid := range body.PracticeIDs {
-			if err := database.LinkPracticePillar(pid, id); err != nil {
+			if err := database.LinkPracticePillar(userID, pid, id); err != nil {
 				writeError(w, http.StatusInternalServerError, err.Error())
 				return
 			}
@@ -939,6 +979,7 @@ func getPracticePillars(database *db.DB) http.HandlerFunc {
 
 func setPracticePillarsForPractice(database *db.DB) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
+		userID := auth.UserID(r)
 		id, err := parseID(r)
 		if err != nil {
 			writeError(w, http.StatusBadRequest, "invalid id")
@@ -951,7 +992,7 @@ func setPracticePillarsForPractice(database *db.DB) http.HandlerFunc {
 			writeError(w, http.StatusBadRequest, "invalid JSON")
 			return
 		}
-		if err := database.SetPracticePillars(id, body.PillarIDs); err != nil {
+		if err := database.SetPracticePillars(userID, id, body.PillarIDs); err != nil {
 			writeError(w, http.StatusInternalServerError, err.Error())
 			return
 		}
@@ -961,12 +1002,13 @@ func setPracticePillarsForPractice(database *db.DB) http.HandlerFunc {
 
 func getPracticePillarsForPractice(database *db.DB) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
+		userID := auth.UserID(r)
 		id, err := parseID(r)
 		if err != nil {
 			writeError(w, http.StatusBadRequest, "invalid id")
 			return
 		}
-		links, err := database.GetPracticePillars(id)
+		links, err := database.GetPracticePillars(userID, id)
 		if err != nil {
 			writeError(w, http.StatusInternalServerError, err.Error())
 			return

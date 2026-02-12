@@ -28,10 +28,10 @@ type Reflection struct {
 
 // --- Prompts ---
 
-// SeedPrompts inserts default prompts if none exist.
-func (db *DB) SeedPrompts() error {
+// SeedPrompts inserts default prompts for a user if they have none.
+func (db *DB) SeedPrompts(userID int64) error {
 	var count int
-	if err := db.QueryRow(`SELECT COUNT(*) FROM prompts`).Scan(&count); err != nil {
+	if err := db.QueryRow(`SELECT COUNT(*) FROM prompts WHERE user_id = ?`, userID).Scan(&count); err != nil {
 		return err
 	}
 	if count > 0 {
@@ -48,22 +48,23 @@ func (db *DB) SeedPrompts() error {
 		"How did I serve someone today?",
 	}
 	for i, text := range defaults {
-		if _, err := db.Exec(`INSERT INTO prompts (text, active, sort_order) VALUES (?, 1, ?)`, text, i); err != nil {
+		if _, err := db.Exec(`INSERT INTO prompts (user_id, text, active, sort_order) VALUES (?, ?, 1, ?)`, userID, text, i); err != nil {
 			return fmt.Errorf("seeding prompt %d: %w", i, err)
 		}
 	}
 	return nil
 }
 
-// ListPrompts returns all prompts ordered by sort_order.
-func (db *DB) ListPrompts(activeOnly bool) ([]*Prompt, error) {
-	query := `SELECT id, text, active, sort_order, created_at FROM prompts`
+// ListPrompts returns all prompts ordered by sort_order, scoped to user.
+func (db *DB) ListPrompts(userID int64, activeOnly bool) ([]*Prompt, error) {
+	query := `SELECT id, text, active, sort_order, created_at FROM prompts WHERE user_id = ?`
+	args := []any{userID}
 	if activeOnly {
-		query += ` WHERE active = 1`
+		query += ` AND active = 1`
 	}
 	query += ` ORDER BY sort_order, id`
 
-	rows, err := db.Query(query)
+	rows, err := db.Query(query, args...)
 	if err != nil {
 		return nil, fmt.Errorf("listing prompts: %w", err)
 	}
@@ -81,8 +82,8 @@ func (db *DB) ListPrompts(activeOnly bool) ([]*Prompt, error) {
 }
 
 // GetTodayPrompt returns the prompt for the given day based on day-of-year % active prompt count.
-func (db *DB) GetTodayPrompt(dayOfYear int) (*Prompt, error) {
-	prompts, err := db.ListPrompts(true)
+func (db *DB) GetTodayPrompt(userID int64, dayOfYear int) (*Prompt, error) {
+	prompts, err := db.ListPrompts(userID, true)
 	if err != nil {
 		return nil, err
 	}
@@ -92,17 +93,17 @@ func (db *DB) GetTodayPrompt(dayOfYear int) (*Prompt, error) {
 	return prompts[dayOfYear%len(prompts)], nil
 }
 
-// CreatePrompt inserts a new prompt.
-func (db *DB) CreatePrompt(p *Prompt) error {
+// CreatePrompt inserts a new prompt, scoped to user.
+func (db *DB) CreatePrompt(userID int64, p *Prompt) error {
 	// Default sort_order to max+1
 	var maxOrder int
-	_ = db.QueryRow(`SELECT COALESCE(MAX(sort_order), -1) FROM prompts`).Scan(&maxOrder)
+	_ = db.QueryRow(`SELECT COALESCE(MAX(sort_order), -1) FROM prompts WHERE user_id = ?`, userID).Scan(&maxOrder)
 	if p.SortOrder == 0 {
 		p.SortOrder = maxOrder + 1
 	}
 
-	result, err := db.Exec(`INSERT INTO prompts (text, active, sort_order) VALUES (?, ?, ?)`,
-		p.Text, p.Active, p.SortOrder)
+	result, err := db.Exec(`INSERT INTO prompts (user_id, text, active, sort_order) VALUES (?, ?, ?, ?)`,
+		userID, p.Text, p.Active, p.SortOrder)
 	if err != nil {
 		return fmt.Errorf("inserting prompt: %w", err)
 	}
@@ -112,25 +113,25 @@ func (db *DB) CreatePrompt(p *Prompt) error {
 	return nil
 }
 
-// UpdatePrompt updates an existing prompt.
-func (db *DB) UpdatePrompt(p *Prompt) error {
-	_, err := db.Exec(`UPDATE prompts SET text=?, active=?, sort_order=? WHERE id=?`,
-		p.Text, p.Active, p.SortOrder, p.ID)
+// UpdatePrompt updates an existing prompt, scoped to user.
+func (db *DB) UpdatePrompt(userID int64, p *Prompt) error {
+	_, err := db.Exec(`UPDATE prompts SET text=?, active=?, sort_order=? WHERE id=? AND user_id=?`,
+		p.Text, p.Active, p.SortOrder, p.ID, userID)
 	return err
 }
 
-// DeletePrompt removes a prompt by ID.
-func (db *DB) DeletePrompt(id int64) error {
-	_, err := db.Exec(`DELETE FROM prompts WHERE id = ?`, id)
+// DeletePrompt removes a prompt by ID, scoped to user.
+func (db *DB) DeletePrompt(userID, id int64) error {
+	_, err := db.Exec(`DELETE FROM prompts WHERE id = ? AND user_id = ?`, id, userID)
 	return err
 }
 
 // --- Reflections ---
 
-// ListReflections returns reflections ordered by date, optionally filtered by date range.
-func (db *DB) ListReflections(from, to string) ([]*Reflection, error) {
-	query := `SELECT id, date, prompt_id, COALESCE(prompt_text, ''), content, mood, created_at, updated_at FROM reflections WHERE 1=1`
-	args := []any{}
+// ListReflections returns reflections ordered by date, optionally filtered by date range, scoped to user.
+func (db *DB) ListReflections(userID int64, from, to string) ([]*Reflection, error) {
+	query := `SELECT id, date, prompt_id, COALESCE(prompt_text, ''), content, mood, created_at, updated_at FROM reflections WHERE user_id = ?`
+	args := []any{userID}
 	if from != "" {
 		query += ` AND date >= ?`
 		args = append(args, from)
@@ -158,12 +159,12 @@ func (db *DB) ListReflections(from, to string) ([]*Reflection, error) {
 	return reflections, rows.Err()
 }
 
-// GetReflection returns the reflection for a specific date.
-func (db *DB) GetReflection(date string) (*Reflection, error) {
+// GetReflection returns the reflection for a specific date, scoped to user.
+func (db *DB) GetReflection(userID int64, date string) (*Reflection, error) {
 	r := &Reflection{}
 	err := db.QueryRow(`
 		SELECT id, date, prompt_id, COALESCE(prompt_text, ''), content, mood, created_at, updated_at
-		FROM reflections WHERE date = ?`, date,
+		FROM reflections WHERE date = ? AND user_id = ?`, date, userID,
 	).Scan(&r.ID, &r.Date, &r.PromptID, &r.PromptText, &r.Content, &r.Mood, &r.CreatedAt, &r.UpdatedAt)
 	if err == sql.ErrNoRows {
 		return nil, nil
@@ -174,27 +175,27 @@ func (db *DB) GetReflection(date string) (*Reflection, error) {
 	return r, nil
 }
 
-// UpsertReflection creates or updates the reflection for a date.
-func (db *DB) UpsertReflection(r *Reflection) error {
+// UpsertReflection creates or updates the reflection for a user+date.
+func (db *DB) UpsertReflection(userID int64, r *Reflection) error {
 	// Snapshot prompt text if prompt_id is set
 	if r.PromptID != nil && r.PromptText == "" {
 		var text string
-		err := db.QueryRow(`SELECT text FROM prompts WHERE id = ?`, *r.PromptID).Scan(&text)
+		err := db.QueryRow(`SELECT text FROM prompts WHERE id = ? AND user_id = ?`, *r.PromptID, userID).Scan(&text)
 		if err == nil {
 			r.PromptText = text
 		}
 	}
 
 	result, err := db.Exec(`
-		INSERT INTO reflections (date, prompt_id, prompt_text, content, mood)
-		VALUES (?, ?, ?, ?, ?)
-		ON CONFLICT(date) DO UPDATE SET
+		INSERT INTO reflections (user_id, date, prompt_id, prompt_text, content, mood)
+		VALUES (?, ?, ?, ?, ?, ?)
+		ON CONFLICT(user_id, date) DO UPDATE SET
 			prompt_id = excluded.prompt_id,
 			prompt_text = excluded.prompt_text,
 			content = excluded.content,
 			mood = excluded.mood,
 			updated_at = CURRENT_TIMESTAMP`,
-		r.Date, r.PromptID, r.PromptText, r.Content, r.Mood,
+		userID, r.Date, r.PromptID, r.PromptText, r.Content, r.Mood,
 	)
 	if err != nil {
 		return fmt.Errorf("upserting reflection: %w", err)
@@ -203,13 +204,13 @@ func (db *DB) UpsertReflection(r *Reflection) error {
 		r.ID, _ = result.LastInsertId()
 	}
 	// Read back
-	row := db.QueryRow(`SELECT id, created_at, updated_at FROM reflections WHERE date = ?`, r.Date)
+	row := db.QueryRow(`SELECT id, created_at, updated_at FROM reflections WHERE date = ? AND user_id = ?`, r.Date, userID)
 	_ = row.Scan(&r.ID, &r.CreatedAt, &r.UpdatedAt)
 	return nil
 }
 
-// DeleteReflection removes a reflection by ID.
-func (db *DB) DeleteReflection(id int64) error {
-	_, err := db.Exec(`DELETE FROM reflections WHERE id = ?`, id)
+// DeleteReflection removes a reflection by ID, scoped to user.
+func (db *DB) DeleteReflection(userID, id int64) error {
+	_, err := db.Exec(`DELETE FROM reflections WHERE id = ? AND user_id = ?`, id, userID)
 	return err
 }

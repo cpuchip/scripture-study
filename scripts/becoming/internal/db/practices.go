@@ -23,11 +23,11 @@ type Practice struct {
 }
 
 // CreatePractice inserts a new practice.
-func (db *DB) CreatePractice(p *Practice) error {
+func (db *DB) CreatePractice(userID int64, p *Practice) error {
 	result, err := db.Exec(`
-		INSERT INTO practices (name, description, type, category, source_doc, source_path, config, sort_order, active)
-		VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
-		p.Name, p.Description, p.Type, p.Category, p.SourceDoc, p.SourcePath, p.Config, p.SortOrder, p.Active,
+		INSERT INTO practices (user_id, name, description, type, category, source_doc, source_path, config, sort_order, active)
+		VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+		userID, p.Name, p.Description, p.Type, p.Category, p.SourceDoc, p.SourcePath, p.Config, p.SortOrder, p.Active,
 	)
 	if err != nil {
 		return fmt.Errorf("inserting practice: %w", err)
@@ -37,12 +37,12 @@ func (db *DB) CreatePractice(p *Practice) error {
 	return nil
 }
 
-// GetPractice returns a single practice by ID.
-func (db *DB) GetPractice(id int64) (*Practice, error) {
+// GetPractice returns a single practice by ID, scoped to the given user.
+func (db *DB) GetPractice(userID, id int64) (*Practice, error) {
 	p := &Practice{}
 	err := db.QueryRow(`
 		SELECT id, name, description, type, category, source_doc, source_path, config, sort_order, active, created_at, completed_at
-		FROM practices WHERE id = ?`, id,
+		FROM practices WHERE id = ? AND user_id = ?`, id, userID,
 	).Scan(&p.ID, &p.Name, &p.Description, &p.Type, &p.Category, &p.SourceDoc, &p.SourcePath, &p.Config, &p.SortOrder, &p.Active, &p.CreatedAt, &p.CompletedAt)
 	if err == sql.ErrNoRows {
 		return nil, nil
@@ -54,9 +54,9 @@ func (db *DB) GetPractice(id int64) (*Practice, error) {
 }
 
 // ListPractices returns practices, optionally filtered by type and/or active status.
-func (db *DB) ListPractices(practiceType string, activeOnly bool) ([]*Practice, error) {
-	query := `SELECT id, name, description, type, category, source_doc, source_path, config, sort_order, active, created_at, completed_at FROM practices WHERE 1=1`
-	args := []any{}
+func (db *DB) ListPractices(userID int64, practiceType string, activeOnly bool) ([]*Practice, error) {
+	query := `SELECT id, name, description, type, category, source_doc, source_path, config, sort_order, active, created_at, completed_at FROM practices WHERE user_id = ?`
+	args := []any{userID}
 
 	if practiceType != "" {
 		query += ` AND type = ?`
@@ -84,12 +84,12 @@ func (db *DB) ListPractices(practiceType string, activeOnly bool) ([]*Practice, 
 	return practices, rows.Err()
 }
 
-// UpdatePractice updates an existing practice.
-func (db *DB) UpdatePractice(p *Practice) error {
+// UpdatePractice updates an existing practice, scoped to the given user.
+func (db *DB) UpdatePractice(userID int64, p *Practice) error {
 	_, err := db.Exec(`
 		UPDATE practices SET name=?, description=?, type=?, category=?, source_doc=?, source_path=?, config=?, sort_order=?, active=?, completed_at=?
-		WHERE id=?`,
-		p.Name, p.Description, p.Type, p.Category, p.SourceDoc, p.SourcePath, p.Config, p.SortOrder, p.Active, p.CompletedAt, p.ID,
+		WHERE id=? AND user_id=?`,
+		p.Name, p.Description, p.Type, p.Category, p.SourceDoc, p.SourcePath, p.Config, p.SortOrder, p.Active, p.CompletedAt, p.ID, userID,
 	)
 	if err != nil {
 		return fmt.Errorf("updating practice: %w", err)
@@ -97,9 +97,9 @@ func (db *DB) UpdatePractice(p *Practice) error {
 	return nil
 }
 
-// DeletePractice removes a practice and its logs (cascade).
-func (db *DB) DeletePractice(id int64) error {
-	_, err := db.Exec(`DELETE FROM practices WHERE id = ?`, id)
+// DeletePractice removes a practice and its logs (cascade), scoped to the given user.
+func (db *DB) DeletePractice(userID, id int64) error {
+	_, err := db.Exec(`DELETE FROM practices WHERE id = ? AND user_id = ?`, id, userID)
 	if err != nil {
 		return fmt.Errorf("deleting practice: %w", err)
 	}
