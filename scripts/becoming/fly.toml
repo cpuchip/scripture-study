@@ -1,0 +1,37 @@
+# Fly.io configuration for the Becoming app
+# See: https://fly.io/docs/reference/configuration/
+
+app = "becoming-app"
+primary_region = "slc"  # Salt Lake City — closest to user
+
+[build]
+  dockerfile = "Dockerfile"
+  # Build context needs to be the repo root so COPY paths work
+  # Deploy with: fly deploy --dockerfile scripts/becoming/Dockerfile
+
+[env]
+  BECOMING_PORT = "8080"
+  BECOMING_DB = "/data/becoming.db"
+
+[http_service]
+  internal_port = 8080
+  force_https = true
+  auto_stop_machines = "stop"
+  auto_start_machines = true
+  min_machines_running = 0
+
+  [http_service.concurrency]
+    type = "connections"
+    hard_limit = 250
+    soft_limit = 200
+
+[[vm]]
+  memory = "256mb"
+  cpu_kind = "shared"
+  cpus = 1
+
+# Persistent volume for SQLite database
+# Create with: fly volumes create becoming_data --region slc --size 1
+[mounts]
+  source = "becoming_data"
+  destination = "/data"
