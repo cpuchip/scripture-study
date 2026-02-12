@@ -42,7 +42,7 @@ func (db *DB) GetReport(userID int64, startDate, endDate string) ([]*ReportEntry
 			COALESCE(SUM(l.reps), 0) as reps
 		FROM practices p
 		LEFT JOIN practice_logs l ON l.practice_id = p.id AND l.date >= ? AND l.date <= ?
-		WHERE p.active = 1 AND p.user_id = ?
+		WHERE p.active = TRUE AND p.user_id = ?
 		GROUP BY p.id, l.date
 		ORDER BY p.sort_order, p.type, p.name, l.date`,
 		startDate, endDate, userID,

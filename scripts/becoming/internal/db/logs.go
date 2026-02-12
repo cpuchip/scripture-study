@@ -36,7 +36,7 @@ func (db *DB) CreateLog(userID int64, l *PracticeLog) error {
 		return fmt.Errorf("practice %d not found", l.PracticeID)
 	}
 
-	result, err := db.Exec(`
+	id, err := db.InsertReturningID(`
 		INSERT INTO practice_logs (practice_id, date, quality, value, sets, reps, duration_s, notes, next_review)
 		VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
 		l.PracticeID, l.Date, l.Quality, l.Value, l.Sets, l.Reps, l.DurationS, l.Notes, l.NextReview,
@@ -44,7 +44,7 @@ func (db *DB) CreateLog(userID int64, l *PracticeLog) error {
 	if err != nil {
 		return fmt.Errorf("inserting log: %w", err)
 	}
-	l.ID, _ = result.LastInsertId()
+	l.ID = id
 	l.LoggedAt = time.Now()
 	return nil
 }

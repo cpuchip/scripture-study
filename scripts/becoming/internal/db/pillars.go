@@ -66,7 +66,7 @@ func GetDefaultPillarSuggestions() []map[string]string {
 
 // CreatePillar inserts a new pillar, scoped to user.
 func (db *DB) CreatePillar(userID int64, p *Pillar) error {
-	result, err := db.Exec(`
+	id, err := db.InsertReturningID(`
 		INSERT INTO pillars (user_id, name, description, icon, parent_id, sort_order)
 		VALUES (?, ?, ?, ?, ?, ?)`,
 		userID, p.Name, p.Description, p.Icon, p.ParentID, p.SortOrder,
@@ -74,7 +74,7 @@ func (db *DB) CreatePillar(userID int64, p *Pillar) error {
 	if err != nil {
 		return fmt.Errorf("inserting pillar: %w", err)
 	}
-	p.ID, _ = result.LastInsertId()
+	p.ID = id
 	row := db.QueryRow(`SELECT created_at FROM pillars WHERE id = ?`, p.ID)
 	_ = row.Scan(&p.CreatedAt)
 	return nil

@@ -37,14 +37,13 @@ func (db *DB) CreateAPIToken(userID int64, name string) (*APIToken, string, erro
 	}
 
 	now := time.Now().UTC().Format(time.RFC3339)
-	res, err := db.Exec(
+	id, err := db.InsertReturningID(
 		`INSERT INTO api_tokens (user_id, name, token_hash, prefix, created_at) VALUES (?, ?, ?, ?, ?)`,
 		userID, name, string(hash), prefix, now,
 	)
 	if err != nil {
 		return nil, "", fmt.Errorf("creating api token: %w", err)
 	}
-	id, _ := res.LastInsertId()
 
 	return &APIToken{
 		ID:        id,

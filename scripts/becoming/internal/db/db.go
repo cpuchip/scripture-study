@@ -3,12 +3,17 @@ package db
 
 import (
 	"database/sql"
+	"embed"
 	_ "embed"
 	"fmt"
+	"log"
 	"os"
 	"path/filepath"
+	"strings"
 
-	_ "github.com/mattn/go-sqlite3"
+	_ "github.com/jackc/pgx/v5/stdlib" // register "pgx" driver
+	_ "github.com/mattn/go-sqlite3"    // register "sqlite3" driver
+	"github.com/pressly/goose/v3"
 )
 
 //go:embed schema.sql
@@ -17,46 +22,203 @@ var schemaSQL string
 //go:embed auth_schema.sql
 var authSchemaSQL string
 
-// DB wraps the SQLite database connection.
+// Driver identifies the database backend.
+const (
+	DriverSQLite   = "sqlite3"
+	DriverPostgres = "pgx"
+)
+
+// DB wraps the database connection with driver-aware helpers.
 type DB struct {
-	*sql.DB
-	path string
+	conn   *sql.DB
+	driver string
+	path   string
 }
 
-// Open opens or creates the database at the specified path.
-func Open(path string) (*DB, error) {
+// Driver returns the current database driver name.
+func (db *DB) Driver() string { return db.driver }
+
+// IsPostgres returns true if using PostgreSQL.
+func (db *DB) IsPostgres() bool { return db.driver == DriverPostgres }
+
+// Open opens the database. If dsn starts with "postgres://" or "postgresql://",
+// it uses PostgreSQL (pgx); otherwise, it treats the dsn as a SQLite file path.
+func Open(dsn string) (*DB, error) {
+	if strings.HasPrefix(dsn, "postgres://") || strings.HasPrefix(dsn, "postgresql://") {
+		return openPostgres(dsn)
+	}
+	return openSQLite(dsn)
+}
+
+func openSQLite(path string) (*DB, error) {
 	dir := filepath.Dir(path)
 	if err := os.MkdirAll(dir, 0755); err != nil {
 		return nil, fmt.Errorf("creating database directory: %w", err)
 	}
 
-	dsn := fmt.Sprintf("%s?_foreign_keys=on&_journal_mode=WAL", path)
-	sqlDB, err := sql.Open("sqlite3", dsn)
+	connStr := fmt.Sprintf("%s?_foreign_keys=on&_journal_mode=WAL", path)
+	sqlDB, err := sql.Open("sqlite3", connStr)
 	if err != nil {
 		return nil, fmt.Errorf("opening database: %w", err)
 	}
 
-	db := &DB{DB: sqlDB, path: path}
-
-	if err := db.initSchema(); err != nil {
+	db := &DB{conn: sqlDB, driver: DriverSQLite, path: path}
+	if err := db.initSQLiteSchema(); err != nil {
 		sqlDB.Close()
 		return nil, fmt.Errorf("initializing schema: %w", err)
 	}
-
 	return db, nil
 }
 
-func (db *DB) initSchema() error {
+func openPostgres(dsn string) (*DB, error) {
+	sqlDB, err := sql.Open("pgx", dsn)
+	if err != nil {
+		return nil, fmt.Errorf("opening postgres: %w", err)
+	}
+	if err := sqlDB.Ping(); err != nil {
+		sqlDB.Close()
+		return nil, fmt.Errorf("connecting to postgres: %w", err)
+	}
+
+	db := &DB{conn: sqlDB, driver: DriverPostgres, path: dsn}
+	if err := db.initPostgresSchema(); err != nil {
+		sqlDB.Close()
+		return nil, fmt.Errorf("initializing postgres schema: %w", err)
+	}
+	return db, nil
+}
+
+// --- Query helpers with automatic placeholder rebinding ---
+
+// rebind converts ? placeholders to $1, $2, ... for PostgreSQL.
+// For SQLite, it returns the query unchanged.
+func (db *DB) rebind(query string) string {
+	if db.driver == DriverSQLite {
+		return query
+	}
+	var b strings.Builder
+	n := 0
+	for i := 0; i < len(query); i++ {
+		if query[i] == '?' {
+			n++
+			fmt.Fprintf(&b, "$%d", n)
+		} else {
+			b.WriteByte(query[i])
+		}
+	}
+	return b.String()
+}
+
+// Exec executes a query with auto-rebinding.
+func (db *DB) Exec(query string, args ...any) (sql.Result, error) {
+	return db.conn.Exec(db.rebind(query), args...)
+}
+
+// Query runs a query with auto-rebinding.
+func (db *DB) Query(query string, args ...any) (*sql.Rows, error) {
+	return db.conn.Query(db.rebind(query), args...)
+}
+
+// QueryRow runs a single-row query with auto-rebinding.
+func (db *DB) QueryRow(query string, args ...any) *sql.Row {
+	return db.conn.QueryRow(db.rebind(query), args...)
+}
+
+// InsertReturningID executes an INSERT and returns the new row's id.
+// For SQLite: uses result.LastInsertId().
+// For PostgreSQL: appends RETURNING id and scans the result.
+func (db *DB) InsertReturningID(query string, args ...any) (int64, error) {
+	if db.driver == DriverPostgres {
+		query = db.rebind(query) + " RETURNING id"
+		var id int64
+		err := db.conn.QueryRow(query, args...).Scan(&id)
+		return id, err
+	}
+	res, err := db.conn.Exec(query, args...)
+	if err != nil {
+		return 0, err
+	}
+	return res.LastInsertId()
+}
+
+// Close closes the database connection.
+func (db *DB) Close() error {
+	return db.conn.Close()
+}
+
+// --- Transaction helpers ---
+
+// Tx wraps sql.Tx with driver-aware placeholder rebinding.
+type Tx struct {
+	tx     *sql.Tx
+	driver string
+}
+
+func (db *DB) Begin() (*Tx, error) {
+	tx, err := db.conn.Begin()
+	if err != nil {
+		return nil, err
+	}
+	return &Tx{tx: tx, driver: db.driver}, nil
+}
+
+func (t *Tx) rebind(query string) string {
+	if t.driver == DriverSQLite {
+		return query
+	}
+	var b strings.Builder
+	n := 0
+	for i := 0; i < len(query); i++ {
+		if query[i] == '?' {
+			n++
+			fmt.Fprintf(&b, "$%d", n)
+		} else {
+			b.WriteByte(query[i])
+		}
+	}
+	return b.String()
+}
+
+func (t *Tx) Exec(query string, args ...any) (sql.Result, error) {
+	return t.tx.Exec(t.rebind(query), args...)
+}
+
+func (t *Tx) Query(query string, args ...any) (*sql.Rows, error) {
+	return t.tx.Query(t.rebind(query), args...)
+}
+
+func (t *Tx) QueryRow(query string, args ...any) *sql.Row {
+	return t.tx.QueryRow(t.rebind(query), args...)
+}
+
+func (t *Tx) Commit() error   { return t.tx.Commit() }
+func (t *Tx) Rollback() error { return t.tx.Rollback() }
+
+// --- SQL dialect helpers ---
+
+// JSONExtract returns a SQL expression that extracts a text value from a JSON column.
+// For SQLite:    json_extract(column, '$.key')
+// For PostgreSQL: column::json->>'key'
+func (db *DB) JSONExtract(column, key string) string {
+	if db.driver == DriverPostgres {
+		return column + "::json->>'" + key + "'"
+	}
+	return "json_extract(" + column + ", '$." + key + "')"
+}
+
+// --- SQLite schema initialization (CREATE TABLE IF NOT EXISTS + ad-hoc migrations) ---
+
+func (db *DB) initSQLiteSchema() error {
 	if _, err := db.Exec(schemaSQL); err != nil {
 		return fmt.Errorf("main schema: %w", err)
 	}
 	if _, err := db.Exec(authSchemaSQL); err != nil {
 		return fmt.Errorf("auth schema: %w", err)
 	}
-	return db.runMigrations()
+	return db.runSQLiteMigrations()
 }
 
-func (db *DB) runMigrations() error {
+func (db *DB) runSQLiteMigrations() error {
 	// Rename "exercise" type to "tracker"
 	if _, err := db.Exec(`UPDATE practices SET type = 'tracker' WHERE type = 'exercise'`); err != nil {
 		return err
@@ -115,9 +277,9 @@ func (db *DB) migrateAddUserID() error {
 	return nil
 }
 
-// hasColumn checks if a table has a specific column.
+// hasColumn checks if a table has a specific column (SQLite only, uses PRAGMA).
 func (db *DB) hasColumn(table, column string) bool {
-	rows, err := db.Query(fmt.Sprintf("PRAGMA table_info(%s)", table))
+	rows, err := db.conn.Query(fmt.Sprintf("PRAGMA table_info(%s)", table))
 	if err != nil {
 		return false
 	}
@@ -176,7 +338,24 @@ func (db *DB) migrateReflectionsTable() error {
 	return tx.Commit()
 }
 
-// Path returns the database file path.
+// Path returns the database file path (or connection string for PostgreSQL).
 func (db *DB) Path() string {
 	return db.path
+}
+
+// --- PostgreSQL schema initialization via goose migrations ---
+
+//go:embed migrations/postgres/*.sql
+var postgresMigrations embed.FS
+
+func (db *DB) initPostgresSchema() error {
+	goose.SetBaseFS(postgresMigrations)
+	if err := goose.SetDialect("postgres"); err != nil {
+		return fmt.Errorf("setting goose dialect: %w", err)
+	}
+	if err := goose.Up(db.conn, "migrations/postgres"); err != nil {
+		return fmt.Errorf("running postgres migrations: %w", err)
+	}
+	log.Printf("PostgreSQL migrations applied successfully")
+	return nil
 }

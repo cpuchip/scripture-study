@@ -132,22 +132,27 @@ func (db *DB) ReviewCard(userID, practiceID int64, quality int, date string) (*P
 // GetDueCards returns all memorize-type practices due for review on or before the given date,
 // excluding cards that have already been reviewed today, scoped to user.
 func (db *DB) GetDueCards(userID int64, date string) ([]*Practice, error) {
-	rows, err := db.Query(`
+	nextReview := db.JSONExtract("config", "next_review")
+	repetitions := db.JSONExtract("config", "repetitions")
+
+	query := fmt.Sprintf(`
 		SELECT id, name, description, type, category, source_doc, source_path, config, sort_order, active, created_at, completed_at
 		FROM practices
-		WHERE type = 'memorize' AND active = 1 AND user_id = ?
+		WHERE type = 'memorize' AND active = TRUE AND user_id = ?
 		  AND (
-		    json_extract(config, '$.next_review') <= ?
-		    OR json_extract(config, '$.next_review') IS NULL
-		    OR json_extract(config, '$.repetitions') = 0
+		    %s <= ?
+		    OR %s IS NULL
+		    OR %s = '0'
 		  )
 		  AND id NOT IN (
 		    SELECT DISTINCT practice_id FROM practice_logs
 		    WHERE date = ? AND quality IS NOT NULL
 		  )
-		ORDER BY json_extract(config, '$.next_review'), name`,
-		userID, date, date,
+		ORDER BY %s, name`,
+		nextReview, nextReview, repetitions, nextReview,
 	)
+
+	rows, err := db.Query(query, userID, date, date)
 	if err != nil {
 		return nil, fmt.Errorf("getting due cards: %w", err)
 	}
@@ -190,7 +195,7 @@ func (db *DB) GetMemorizeCardStatuses(userID int64, date string) ([]*MemorizeCar
 	rows, err := db.Query(`
 		SELECT practice_id, quality FROM practice_logs
 		WHERE date = ? AND quality IS NOT NULL
-		  AND practice_id IN (SELECT id FROM practices WHERE type = 'memorize' AND active = 1 AND user_id = ?)
+		  AND practice_id IN (SELECT id FROM practices WHERE type = 'memorize' AND active = TRUE AND user_id = ?)
 		ORDER BY practice_id, logged_at`, date, userID)
 	if err != nil {
 		return nil, fmt.Errorf("getting today's memorize qualities: %w", err)

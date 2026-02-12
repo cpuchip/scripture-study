@@ -20,7 +20,7 @@ type Task struct {
 
 // CreateTask inserts a new task.
 func (db *DB) CreateTask(userID int64, t *Task) error {
-	result, err := db.Exec(`
+	id, err := db.InsertReturningID(`
 		INSERT INTO tasks (user_id, title, description, source_doc, source_section, scripture, type, status)
 		VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
 		userID, t.Title, t.Description, t.SourceDoc, t.SourceSection, t.Scripture, t.Type, t.Status,
@@ -28,7 +28,7 @@ func (db *DB) CreateTask(userID int64, t *Task) error {
 	if err != nil {
 		return fmt.Errorf("inserting task: %w", err)
 	}
-	t.ID, _ = result.LastInsertId()
+	t.ID = id
 	return nil
 }
 

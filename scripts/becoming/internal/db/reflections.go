@@ -60,7 +60,7 @@ func (db *DB) ListPrompts(userID int64, activeOnly bool) ([]*Prompt, error) {
 	query := `SELECT id, text, active, sort_order, created_at FROM prompts WHERE user_id = ?`
 	args := []any{userID}
 	if activeOnly {
-		query += ` AND active = 1`
+		query += ` AND active = TRUE`
 	}
 	query += ` ORDER BY sort_order, id`
 
@@ -102,12 +102,12 @@ func (db *DB) CreatePrompt(userID int64, p *Prompt) error {
 		p.SortOrder = maxOrder + 1
 	}
 
-	result, err := db.Exec(`INSERT INTO prompts (user_id, text, active, sort_order) VALUES (?, ?, ?, ?)`,
+	id, err := db.InsertReturningID(`INSERT INTO prompts (user_id, text, active, sort_order) VALUES (?, ?, ?, ?)`,
 		userID, p.Text, p.Active, p.SortOrder)
 	if err != nil {
 		return fmt.Errorf("inserting prompt: %w", err)
 	}
-	p.ID, _ = result.LastInsertId()
+	p.ID = id
 	row := db.QueryRow(`SELECT created_at FROM prompts WHERE id = ?`, p.ID)
 	_ = row.Scan(&p.CreatedAt)
 	return nil
@@ -186,7 +186,7 @@ func (db *DB) UpsertReflection(userID int64, r *Reflection) error {
 		}
 	}
 
-	result, err := db.Exec(`
+	_, err := db.Exec(`
 		INSERT INTO reflections (user_id, date, prompt_id, prompt_text, content, mood)
 		VALUES (?, ?, ?, ?, ?, ?)
 		ON CONFLICT(user_id, date) DO UPDATE SET
@@ -200,10 +200,7 @@ func (db *DB) UpsertReflection(userID int64, r *Reflection) error {
 	if err != nil {
 		return fmt.Errorf("upserting reflection: %w", err)
 	}
-	if r.ID == 0 {
-		r.ID, _ = result.LastInsertId()
-	}
-	// Read back
+	// Read back id and timestamps (works for both insert and update)
 	row := db.QueryRow(`SELECT id, created_at, updated_at FROM reflections WHERE date = ? AND user_id = ?`, r.Date, userID)
 	_ = row.Scan(&r.ID, &r.CreatedAt, &r.UpdatedAt)
 	return nil

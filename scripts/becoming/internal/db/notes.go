@@ -22,7 +22,7 @@ type Note struct {
 
 // CreateNote inserts a new note.
 func (db *DB) CreateNote(userID int64, n *Note) error {
-	result, err := db.Exec(`
+	id, err := db.InsertReturningID(`
 		INSERT INTO notes (user_id, content, practice_id, task_id, pillar_id, pinned)
 		VALUES (?, ?, ?, ?, ?, ?)`,
 		userID, n.Content, n.PracticeID, n.TaskID, n.PillarID, n.Pinned,
@@ -30,7 +30,7 @@ func (db *DB) CreateNote(userID int64, n *Note) error {
 	if err != nil {
 		return fmt.Errorf("inserting note: %w", err)
 	}
-	n.ID, _ = result.LastInsertId()
+	n.ID = id
 	// Read back timestamps
 	row := db.QueryRow(`SELECT created_at, updated_at FROM notes WHERE id = ?`, n.ID)
 	_ = row.Scan(&n.CreatedAt, &n.UpdatedAt)
@@ -62,7 +62,7 @@ func (db *DB) ListNotes(userID int64, practiceID, taskID, pillarID *int64, pinne
 		args = append(args, *pillarID)
 	}
 	if pinnedOnly {
-		query += ` AND n.pinned = 1`
+		query += ` AND n.pinned = TRUE`
 	}
 
 	query += ` ORDER BY n.pinned DESC, n.created_at DESC`

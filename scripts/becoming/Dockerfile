@@ -9,6 +9,7 @@ RUN npm run build
 
 # Stage 2: Build Go binary
 FROM golang:1.24-alpine AS backend
+# CGO needed for SQLite (mattn/go-sqlite3). For PostgreSQL-only deploy, set CGO_ENABLED=0.
 RUN apk add --no-cache gcc musl-dev
 WORKDIR /app
 COPY scripts/becoming/go.mod scripts/becoming/go.sum ./

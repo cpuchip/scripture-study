@@ -24,7 +24,7 @@ type Practice struct {
 
 // CreatePractice inserts a new practice.
 func (db *DB) CreatePractice(userID int64, p *Practice) error {
-	result, err := db.Exec(`
+	id, err := db.InsertReturningID(`
 		INSERT INTO practices (user_id, name, description, type, category, source_doc, source_path, config, sort_order, active)
 		VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
 		userID, p.Name, p.Description, p.Type, p.Category, p.SourceDoc, p.SourcePath, p.Config, p.SortOrder, p.Active,
@@ -32,7 +32,7 @@ func (db *DB) CreatePractice(userID int64, p *Practice) error {
 	if err != nil {
 		return fmt.Errorf("inserting practice: %w", err)
 	}
-	p.ID, _ = result.LastInsertId()
+	p.ID = id
 	p.CreatedAt = time.Now()
 	return nil
 }
@@ -63,7 +63,7 @@ func (db *DB) ListPractices(userID int64, practiceType string, activeOnly bool) 
 		args = append(args, practiceType)
 	}
 	if activeOnly {
-		query += ` AND active = 1`
+		query += ` AND active = TRUE`
 	}
 	query += ` ORDER BY sort_order, name`
 
