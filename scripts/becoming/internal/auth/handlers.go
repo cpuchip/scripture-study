@@ -15,7 +15,8 @@ import (
 type Handlers struct {
 	DB      *db.DB
 	DevMode bool
-	Secure  bool // true = set Secure flag on cookies (HTTPS)
+	Secure  bool         // true = set Secure flag on cookies (HTTPS)
+	OAuth   *OAuthConfig // nil = Google sign-in disabled
 }
 
 // --- Registration & Login ---
@@ -243,11 +244,9 @@ func (h *Handlers) DeleteToken(w http.ResponseWriter, r *http.Request) {
 
 // Providers handles GET /api/auth/providers — tells the frontend which sign-in methods are available.
 func (h *Handlers) Providers(w http.ResponseWriter, r *http.Request) {
-	// Google OAuth is available when env vars are set (checked at startup)
-	// For now, always report email as available
 	writeJSON(w, http.StatusOK, map[string]bool{
 		"email":  true,
-		"google": false, // Will be set from config when OAuth is implemented
+		"google": h.OAuth != nil,
 	})
 }
 

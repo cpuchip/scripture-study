@@ -52,10 +52,15 @@ func main() {
 	}
 
 	// Auth handlers
+	oauthConfig := auth.OAuthConfigFromEnv()
 	authHandlers := &auth.Handlers{
 		DB:      database,
 		DevMode: *dev,
 		Secure:  !*dev, // Secure cookies only in production (HTTPS)
+		OAuth:   oauthConfig,
+	}
+	if oauthConfig != nil {
+		log.Printf("Google OAuth enabled (redirect: %s)", oauthConfig.RedirectURL)
 	}
 
 	// Build router
@@ -77,6 +82,8 @@ func main() {
 	r.Post("/auth/register", authHandlers.Register)
 	r.Post("/auth/login", authHandlers.Login)
 	r.Post("/auth/logout", authHandlers.Logout)
+	r.Get("/auth/google/login", authHandlers.GoogleLogin)
+	r.Get("/auth/google/callback", authHandlers.GoogleCallback)
 	r.Get("/api/auth/providers", authHandlers.Providers)
 
 	// Protected API routes
