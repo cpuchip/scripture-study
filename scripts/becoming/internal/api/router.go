@@ -29,6 +29,7 @@ func Router(database *db.DB, scripturesRoot string) chi.Router {
 	r.Route("/logs", func(r chi.Router) {
 		r.Post("/", createLog(database))
 		r.Delete("/{id}", deleteLog(database))
+		r.Delete("/latest", deleteLatestLog(database))
 	})
 
 	// Daily summary
@@ -246,6 +247,32 @@ func deleteLog(database *db.DB) http.HandlerFunc {
 		}
 		if err := database.DeleteLog(id); err != nil {
 			writeError(w, http.StatusInternalServerError, err.Error())
+			return
+		}
+		w.WriteHeader(http.StatusNoContent)
+	}
+}
+
+func deleteLatestLog(database *db.DB) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		practiceID := r.URL.Query().Get("practice_id")
+		date := r.URL.Query().Get("date")
+		if practiceID == "" || date == "" {
+			writeError(w, http.StatusBadRequest, "practice_id and date are required")
+			return
+		}
+		pid, err := strconv.ParseInt(practiceID, 10, 64)
+		if err != nil {
+			writeError(w, http.StatusBadRequest, "invalid practice_id")
+			return
+		}
+		ok, err := database.DeleteLatestLog(pid, date)
+		if err != nil {
+			writeError(w, http.StatusInternalServerError, err.Error())
+			return
+		}
+		if !ok {
+			writeError(w, http.StatusNotFound, "no log found for that practice and date")
 			return
 		}
 		w.WriteHeader(http.StatusNoContent)

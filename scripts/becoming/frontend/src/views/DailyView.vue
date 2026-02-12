@@ -59,13 +59,13 @@ async function quickLog(item: DailySummary) {
   await load()
 }
 
-// Undo: remove last log for today
+// Undo: remove last log for today (server-side finds the most recent)
 async function undoLog(item: DailySummary) {
-  // Get logs for this practice today and delete the most recent
-  const logs = await api.listPracticeLogs(item.practice_id, 50)
-  const todayLog = logs.find(l => l.date === today.value)
-  if (todayLog) {
-    await api.deleteLog(todayLog.id)
+  try {
+    await api.deleteLatestLog(item.practice_id, today.value)
+    await load()
+  } catch {
+    // No log found to delete — just refresh
     await load()
   }
 }

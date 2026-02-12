@@ -93,6 +93,22 @@ func (db *DB) DeleteLog(id int64) error {
 	return nil
 }
 
+// DeleteLatestLog removes the most recent log for a practice on a given date.
+// Returns true if a log was deleted, false if no matching log was found.
+func (db *DB) DeleteLatestLog(practiceID int64, date string) (bool, error) {
+	result, err := db.Exec(`
+		DELETE FROM practice_logs WHERE id = (
+			SELECT id FROM practice_logs
+			WHERE practice_id = ? AND date = ?
+			ORDER BY logged_at DESC LIMIT 1
+		)`, practiceID, date)
+	if err != nil {
+		return false, fmt.Errorf("deleting latest log: %w", err)
+	}
+	n, _ := result.RowsAffected()
+	return n > 0, nil
+}
+
 // DailySummary represents practice completion status for a single date.
 type DailySummary struct {
 	PracticeID   int64  `json:"practice_id"`

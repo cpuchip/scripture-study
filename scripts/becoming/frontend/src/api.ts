@@ -143,6 +143,10 @@ export const api = {
     return request<void>(`/logs/${id}`, { method: 'DELETE' })
   },
 
+  deleteLatestLog(practiceId: number, date: string) {
+    return request<void>(`/logs/latest?practice_id=${practiceId}&date=${date}`, { method: 'DELETE' })
+  },
+
   listPracticeLogs(practiceId: number, limit = 100) {
     return request<PracticeLog[]>(`/practices/${practiceId}/logs?limit=${limit}`)
   },
