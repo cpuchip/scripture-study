@@ -33,11 +33,16 @@ const filtered = computed(() => {
   return result
 })
 
+// Extract YYYY-MM-DD from various date formats (handles both "2026-02-12" and "2026-02-12T00:00:00Z")
+function dateOnly(dateStr: string): string {
+  return dateStr.substring(0, 10)
+}
+
 // Group reflections by month
 const groupedByMonth = computed(() => {
   const groups: Record<string, Reflection[]> = {}
   for (const r of filtered.value) {
-    const d = new Date(r.date + 'T12:00:00')
+    const d = new Date(dateOnly(r.date) + 'T12:00:00')
     const key = d.toLocaleDateString('en-US', { year: 'numeric', month: 'long' })
     if (!groups[key]) groups[key] = []
     groups[key]!.push(r)
@@ -46,7 +51,7 @@ const groupedByMonth = computed(() => {
 })
 
 function formatDate(dateStr: string): string {
-  const d = new Date(dateStr + 'T12:00:00')
+  const d = new Date(dateOnly(dateStr) + 'T12:00:00')
   return d.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' })
 }
 
@@ -87,7 +92,15 @@ onMounted(load)
 
 <template>
   <div>
-    <h1 class="text-2xl font-bold mb-6">Reflections</h1>
+    <div class="flex items-center justify-between mb-6">
+      <h1 class="text-2xl font-bold">Reflections</h1>
+      <router-link
+        to="/"
+        class="px-4 py-2 bg-indigo-600 text-white rounded-lg text-sm hover:bg-indigo-700"
+      >
+        ✏️ Write Today's Reflection
+      </router-link>
+    </div>
 
     <!-- Search -->
     <div class="mb-4">
