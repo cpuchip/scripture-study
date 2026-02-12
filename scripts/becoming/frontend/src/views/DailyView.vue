@@ -16,11 +16,12 @@ function parseConfig(config: string) {
   try { return JSON.parse(config) } catch { return {} }
 }
 
-// Group by category
+// Group by category (uses first category if comma-separated)
 const grouped = computed(() => {
   const groups: Record<string, DailySummary[]> = {}
   for (const item of summary.value) {
-    const cat = item.category || item.practice_type || 'other'
+    const raw = item.category || item.practice_type || 'other'
+    const cat = raw.split(',')[0]?.trim() || raw
     if (!groups[cat]) groups[cat] = []
     groups[cat].push(item)
   }

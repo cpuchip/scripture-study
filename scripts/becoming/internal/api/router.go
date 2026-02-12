@@ -35,6 +35,9 @@ func Router(database *db.DB, scripturesRoot string) chi.Router {
 	// Daily summary
 	r.Get("/daily/{date}", getDailySummary(database))
 
+	// Reports
+	r.Get("/reports", getReport(database))
+
 	// Tasks
 	r.Route("/tasks", func(r chi.Router) {
 		r.Get("/", listTasks(database))
@@ -306,6 +309,28 @@ func getDailySummary(database *db.DB) http.HandlerFunc {
 			summaries = []*db.DailySummary{}
 		}
 		writeJSON(w, http.StatusOK, summaries)
+	}
+}
+
+// --- Reports ---
+
+func getReport(database *db.DB) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		start := r.URL.Query().Get("start")
+		end := r.URL.Query().Get("end")
+		if start == "" || end == "" {
+			writeError(w, http.StatusBadRequest, "start and end query params are required (YYYY-MM-DD)")
+			return
+		}
+		entries, err := database.GetReport(start, end)
+		if err != nil {
+			writeError(w, http.StatusInternalServerError, err.Error())
+			return
+		}
+		if entries == nil {
+			entries = []*db.ReportEntry{}
+		}
+		writeJSON(w, http.StatusOK, entries)
 	}
 }
 

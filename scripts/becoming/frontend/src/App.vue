@@ -11,6 +11,7 @@
           <router-link to="/" class="hover:text-indigo-600" active-class="text-indigo-600 font-semibold">Today</router-link>
           <router-link to="/memorize" class="hover:text-indigo-600" active-class="text-indigo-600 font-semibold">Memorize</router-link>
           <router-link to="/practices" class="hover:text-indigo-600" active-class="text-indigo-600 font-semibold">Practices</router-link>
+          <router-link to="/reports" class="hover:text-indigo-600" active-class="text-indigo-600 font-semibold">Reports</router-link>
           <router-link to="/tasks" class="hover:text-indigo-600" active-class="text-indigo-600 font-semibold">Tasks</router-link>
         </div>
       </div>

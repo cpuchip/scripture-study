@@ -112,6 +112,29 @@ export interface MemorizeCardStatus {
   target_daily_reps: number
 }
 
+export interface DailyDataPoint {
+  date: string
+  logs: number
+  sets: number
+  reps: number
+}
+
+export interface ReportEntry {
+  practice_id: number
+  practice_name: string
+  practice_type: string
+  category: string
+  config: string
+  total_logs: number
+  total_sets: number
+  total_reps: number
+  days_active: number
+  days_in_range: number
+  completion_rate: number
+  current_streak: number
+  daily_data: DailyDataPoint[]
+}
+
 // --- Practices ---
 
 export const api = {
@@ -210,5 +233,10 @@ export const api = {
 
   searchScriptureBooks(query: string) {
     return request<ScriptureBook[]>(`/scriptures/search?q=${encodeURIComponent(query)}`)
+  },
+
+  // Reports
+  getReport(start: string, end: string) {
+    return request<ReportEntry[]>(`/reports?start=${start}&end=${end}`)
   },
 }

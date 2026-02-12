@@ -54,17 +54,44 @@ const availableTypes = computed(() => {
   return Array.from(types).sort()
 })
 const availableCategories = computed(() => {
-  const cats = new Set(practices.value.filter(p => p.category).map(p => p.category))
+  const cats = new Set<string>()
+  for (const p of practices.value) {
+    if (p.category) {
+      for (const c of p.category.split(',')) {
+        const trimmed = c.trim()
+        if (trimmed) cats.add(trimmed)
+      }
+    }
+  }
   return Array.from(cats).sort()
 })
 
 const filteredPractices = computed(() => {
   return practices.value.filter(p => {
     if (filterType.value !== 'all' && p.type !== filterType.value) return false
-    if (filterCategory.value !== 'all' && p.category !== filterCategory.value) return false
+    if (filterCategory.value !== 'all') {
+      const cats = (p.category || '').split(',').map(c => c.trim())
+      if (!cats.includes(filterCategory.value)) return false
+    }
     return true
   })
 })
+
+// Multi-category helpers
+function categoryList(): string[] {
+  return form.value.category.split(',').map(c => c.trim()).filter(Boolean)
+}
+
+function toggleCategory(cat: string) {
+  const cats = categoryList()
+  const idx = cats.indexOf(cat)
+  if (idx >= 0) {
+    cats.splice(idx, 1)
+  } else {
+    cats.push(cat)
+  }
+  form.value.category = cats.join(',')
+}
 
 async function load() {
   loading.value = true
@@ -303,15 +330,15 @@ onMounted(load)
         </div>
 
         <div>
-          <label class="block text-sm font-medium text-gray-700 mb-1">Category</label>
+          <label class="block text-sm font-medium text-gray-700 mb-1">Categories <span class="font-normal text-gray-400">(multi-select)</span></label>
           <div class="flex gap-2 flex-wrap">
             <button
               v-for="cat in presetCategories"
               :key="cat"
               type="button"
-              @click="form.category = cat"
+              @click="toggleCategory(cat)"
               class="px-3 py-1 text-xs rounded-full border"
-              :class="form.category === cat
+              :class="categoryList().includes(cat)
                 ? 'bg-indigo-100 border-indigo-300 text-indigo-700'
                 : 'bg-gray-50 border-gray-200 text-gray-600 hover:bg-gray-100'"
             >
@@ -319,10 +346,11 @@ onMounted(load)
             </button>
             <input
               v-model="form.category"
-              class="px-3 py-1 text-xs border rounded-full w-28"
-              placeholder="custom..."
+              class="px-3 py-1 text-xs border rounded-full w-36"
+              placeholder="custom tags..."
             />
           </div>
+          <p class="text-xs text-gray-400 mt-1">Comma-separated for multiple: pt,fitness</p>
         </div>
 
         <div>
