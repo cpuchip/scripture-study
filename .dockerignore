@@ -12,7 +12,6 @@ lessons/
 yt/
 
 # Other scripts (not needed for Becoming build)
-scripts/gospel-library/
 scripts/gospel-mcp/
 scripts/gospel-vec/
 scripts/convert/
@@ -22,6 +21,7 @@ scripts/publish/
 scripts/search-mcp/
 scripts/webster-mcp/
 scripts/yt-mcp/
+scripts/chromem-exp/
 
 # Dev artifacts
 scripts/becoming/becoming.db*

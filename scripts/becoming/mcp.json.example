@@ -1,0 +1,25 @@
+{
+  // Copy this file to /.vscode/mcp.json (workspace root) and fill in your token.
+  // .vscode/ is gitignored — never commit real tokens.
+  //
+  // To get a token: Sign in → Settings → API Tokens → Create Token
+  //
+  // Configuration:
+  //   BECOMING_TOKEN  (required) — your bec_... API token
+  //   BECOMING_URL    (optional) — defaults to http://localhost:8080
+  //                                set to https://ibeco.me for production
+  "servers": {
+    "becoming": {
+      "type": "stdio",
+      "command": "go",
+      "args": [
+        "run",
+        "./scripts/becoming/cmd/mcp"
+      ],
+      "env": {
+        "BECOMING_TOKEN": "bec_YOUR_TOKEN_HERE",
+        "BECOMING_URL": "https://ibeco.me"
+      }
+    }
+  }
+}

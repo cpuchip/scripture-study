@@ -28,6 +28,9 @@ services:
       GOOGLE_CLIENT_SECRET: ${GOOGLE_CLIENT_SECRET:-}
       GOOGLE_REDIRECT_URL: ${GOOGLE_REDIRECT_URL:-}
 
+      # Scriptures for memorization lookup (baked into image at /scriptures)
+      BECOMING_SCRIPTURES: /scriptures
+
       # TLS (optional — typically handled by Dokploy's Traefik/nginx reverse proxy)
       # TLS_CERT: ""
       # TLS_KEY: ""

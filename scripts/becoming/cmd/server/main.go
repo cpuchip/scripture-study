@@ -27,7 +27,7 @@ func main() {
 
 	addr := flag.String("addr", envOrDefault("BECOMING_PORT", ":8080"), "listen address")
 	dbPath := flag.String("db", envOrDefault("BECOMING_DB", "becoming.db"), "database path or PostgreSQL connection string")
-	scriptures := flag.String("scriptures", "../../gospel-library/eng/scriptures", "path to scriptures directory")
+	scriptures := flag.String("scriptures", envOrDefault("BECOMING_SCRIPTURES", "../../gospel-library/eng/scriptures"), "path to scriptures directory")
 	dev := flag.Bool("dev", false, "development mode (CORS allow-all, skip auth)")
 	tlsCert := flag.String("tls-cert", envOrDefault("TLS_CERT", ""), "TLS certificate file (enables HTTPS)")
 	tlsKey := flag.String("tls-key", envOrDefault("TLS_KEY", ""), "TLS private key file")
