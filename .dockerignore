@@ -1,0 +1,50 @@
+# Only include what the Becoming app Dockerfile needs
+# (scripts/becoming/ directory). Exclude everything else.
+
+# Large content directories
+gospel-library/
+books/
+docs/
+study/
+journal/
+public/
+lessons/
+yt/
+
+# Other scripts (not needed for Becoming build)
+scripts/gospel-library/
+scripts/gospel-mcp/
+scripts/gospel-vec/
+scripts/convert/
+scripts/lectures-on-faith/
+scripts/plans/
+scripts/publish/
+scripts/search-mcp/
+scripts/webster-mcp/
+scripts/yt-mcp/
+
+# Dev artifacts
+scripts/becoming/becoming.db*
+scripts/becoming/server.exe*
+scripts/becoming/server
+scripts/becoming/.certs/
+scripts/becoming/.env
+scripts/becoming/cmd/server/dist/
+scripts/becoming/cmd/mcp/becoming-mcp.exe
+scripts/becoming/frontend/node_modules/
+scripts/becoming/frontend/dist/
+
+# Git & IDE
+.git/
+.vscode/
+.github/
+.gitignore
+.cache/
+.gospel-cache/
+.playwright-mcp/
+
+# Misc
+*.md
+LICENSE
+go.work
+go.work.sum
