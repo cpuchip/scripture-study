@@ -160,7 +160,7 @@ func (db *DB) GetDailySummary(userID int64, date string) ([]*DailySummary, error
 			COALESCE((SELECT notes FROM practice_logs WHERE practice_id = p.id AND date = ? ORDER BY logged_at DESC LIMIT 1), '') as last_notes
 		FROM practices p
 		LEFT JOIN practice_logs l ON l.practice_id = p.id AND l.date = ?
-		WHERE p.active = 1 AND p.user_id = ?
+		WHERE p.active = TRUE AND p.user_id = ?
 		GROUP BY p.id
 		ORDER BY p.sort_order, p.type, p.name`, date, date, date, userID,
 	)
