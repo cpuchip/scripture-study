@@ -1,15 +1,21 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#6366F1"/>
-      <stop offset="100%" stop-color="#4338CA"/>
+      <stop offset="0%" stop-color="#FB923C"/>
+      <stop offset="100%" stop-color="#EA580C"/>
     </linearGradient>
   </defs>
   <rect width="32" height="32" rx="6" fill="url(#bg)"/>
-  <!-- Stem -->
-  <path d="M16 25 C16 20, 16 17, 16 12" stroke="#22C55E" stroke-width="2" stroke-linecap="round" fill="none"/>
-  <!-- Left leaf -->
-  <path d="M16 17 C14 15, 11 13, 10 10 C12 11, 14.5 14, 16 17Z" fill="#86EFAC"/>
-  <!-- Right leaf -->
-  <path d="M16 13 C18 11, 20 9, 22 7 C21 9, 19 12, 16 13Z" fill="#22C55E"/>
+  <!-- Tomb arch -->
+  <path d="M11 25 L11 15 Q11 9 16 9 Q21 9 21 15 L21 25 Z" fill="#292524"/>
+  <!-- Inner glow -->
+  <ellipse cx="16" cy="16" rx="3" ry="5" fill="#FDE68A" opacity="0.3"/>
+  <!-- Light rays -->
+  <g stroke="#FEF3C7" stroke-width="1" stroke-linecap="round" opacity="0.6">
+    <line x1="16" y1="8" x2="16" y2="4"/>
+    <line x1="13" y1="9" x2="10" y2="5"/>
+    <line x1="19" y1="9" x2="22" y2="5"/>
+  </g>
+  <!-- Rolled stone -->
+  <ellipse cx="23" cy="22" rx="3.5" ry="4.5" fill="#78716C" transform="rotate(-10, 23, 22)"/>
 </svg>

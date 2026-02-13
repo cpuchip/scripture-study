@@ -79,7 +79,7 @@
       <section>
         <h2 class="text-xl font-semibold mb-2">Contact</h2>
         <p>
-          Questions about this policy? Reach out at <a href="mailto:privacy@ibeco.me" class="text-indigo-600 hover:underline">privacy@ibeco.me</a>.
+          Questions about this policy? Reach out at <a href="mailto:stuffleberryco+privacy@gmail.com" class="text-indigo-600 hover:underline">stuffleberryco+privacy@gmail.com</a>.
         </p>
       </section>
 

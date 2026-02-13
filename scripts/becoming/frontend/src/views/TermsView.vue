@@ -93,7 +93,7 @@
       <section>
         <h2 class="text-xl font-semibold mb-2">Contact</h2>
         <p>
-          Questions about these terms? Reach out at <a href="mailto:terms@ibeco.me" class="text-indigo-600 hover:underline">terms@ibeco.me</a>.
+          Questions about these terms? Reach out at <a href="mailto:stuffleberryco+terms@gmail.com" class="text-indigo-600 hover:underline">stuffleberryco+terms@gmail.com</a>.
         </p>
       </section>
 

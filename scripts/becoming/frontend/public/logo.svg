@@ -1,28 +1,61 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none">
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#6366F1"/>
-      <stop offset="100%" stop-color="#4338CA"/>
+      <stop offset="0%" stop-color="#FB923C"/>
+      <stop offset="100%" stop-color="#EA580C"/>
     </linearGradient>
-    <linearGradient id="leaf" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#86EFAC"/>
-      <stop offset="100%" stop-color="#22C55E"/>
+    <radialGradient id="glow" cx="0.5" cy="0.42" r="0.28">
+      <stop offset="0%" stop-color="#FEF3C7"/>
+      <stop offset="50%" stop-color="#FBBF24" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#EA580C" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="stone" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#78716C"/>
+      <stop offset="100%" stop-color="#57534E"/>
     </linearGradient>
-    <linearGradient id="stem" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#22C55E"/>
-      <stop offset="100%" stop-color="#16A34A"/>
+    <linearGradient id="tomb" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#44403C"/>
+      <stop offset="100%" stop-color="#292524"/>
     </linearGradient>
   </defs>
+
   <!-- Background circle -->
   <circle cx="256" cy="256" r="240" fill="url(#bg)"/>
-  <!-- Stem: gentle upward curve -->
-  <path d="M256 380 C256 320, 256 280, 256 200" stroke="url(#stem)" stroke-width="16" stroke-linecap="round" fill="none"/>
-  <!-- Left leaf -->
-  <path d="M256 260 C230 240, 190 220, 180 180 C200 190, 240 220, 256 260Z" fill="url(#leaf)" opacity="0.9"/>
-  <!-- Right leaf (larger, reaching upward) -->
-  <path d="M256 220 C280 190, 310 160, 330 130 C320 160, 290 200, 256 220Z" fill="url(#leaf)"/>
-  <!-- Small emerging leaf at top -->
-  <path d="M256 200 C248 180, 238 160, 228 145 C244 155, 252 175, 256 200Z" fill="#86EFAC" opacity="0.8"/>
-  <!-- Soil/ground arc -->
-  <path d="M200 385 Q228 370 256 372 Q284 370 312 385" stroke="#A78BFA" stroke-width="6" stroke-linecap="round" fill="none" opacity="0.5"/>
+
+  <!-- Radiant light from the open tomb -->
+  <circle cx="256" cy="225" r="130" fill="url(#glow)"/>
+
+  <!-- Light rays radiating outward -->
+  <g stroke="#FEF3C7" stroke-width="3.5" stroke-linecap="round" opacity="0.55">
+    <line x1="256" y1="175" x2="256" y2="100"/>
+    <line x1="215" y1="185" x2="178" y2="118"/>
+    <line x1="297" y1="185" x2="334" y2="118"/>
+    <line x1="185" y1="210" x2="130" y2="165"/>
+    <line x1="327" y1="210" x2="382" y2="165"/>
+    <line x1="168" y1="245" x2="110" y2="225"/>
+    <line x1="344" y1="245" x2="402" y2="225"/>
+  </g>
+
+  <!-- Rock face around tomb -->
+  <path d="M110 390 L155 335 L185 390" fill="#78716C" opacity="0.5"/>
+  <path d="M327 390 L355 350 L410 390" fill="#78716C" opacity="0.45"/>
+  <path d="M130 390 L148 365 L170 390" fill="#6B7280" opacity="0.3"/>
+
+  <!-- Tomb entrance: dark arch cut into rock -->
+  <path d="M185 390 L185 265 Q185 195 256 195 Q327 195 327 265 L327 390 Z" fill="url(#tomb)"/>
+
+  <!-- Inner golden glow inside tomb — He is risen -->
+  <path d="M198 390 L198 270 Q198 208 256 208 Q314 208 314 270 L314 390 Z" fill="#FDE68A" opacity="0.2"/>
+
+  <!-- Bright light at center of tomb opening -->
+  <ellipse cx="256" cy="260" rx="35" ry="50" fill="#FEF3C7" opacity="0.15"/>
+
+  <!-- Rolled-away stone to the right, tilted -->
+  <ellipse cx="360" cy="345" rx="52" ry="68" fill="url(#stone)" transform="rotate(-12, 360, 345)"/>
+  <path d="M333 325 Q350 318 375 330" stroke="#6B7280" stroke-width="2" fill="none" opacity="0.35"/>
+  <path d="M328 352 Q355 345 380 358" stroke="#6B7280" stroke-width="2" fill="none" opacity="0.25"/>
+  <path d="M338 370 Q358 365 375 375" stroke="#6B7280" stroke-width="1.5" fill="none" opacity="0.2"/>
+
+  <!-- Ground line -->
+  <path d="M90 390 L422 390" stroke="#92400E" stroke-width="4" stroke-linecap="round" opacity="0.35"/>
 </svg>
