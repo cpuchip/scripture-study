@@ -71,8 +71,10 @@ router.beforeEach(async (to) => {
 
   // Allow public routes
   if (to.meta.public) {
-    // If already authenticated, redirect away from login/register
-    if (isAuthenticated.value) return { path: '/' }
+    // If already authenticated, redirect away from login/register (but not privacy/terms)
+    if (isAuthenticated.value && (to.name === 'login' || to.name === 'register')) {
+      return { path: '/' }
+    }
     return
   }
 
