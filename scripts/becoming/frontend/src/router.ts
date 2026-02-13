@@ -26,6 +26,37 @@ export const router = createRouter({
   ],
 })
 
+// Dynamic page title based on hostname + route
+function getSitePrefix(): string {
+  const host = window.location.hostname
+  if (host.includes('webeco')) return 'We Become'
+  return 'I Become'
+}
+
+const routeTitles: Record<string, string> = {
+  daily: 'Today',
+  login: 'Login',
+  register: 'Register',
+  privacy: 'Privacy Policy',
+  terms: 'Terms of Service',
+  onboarding: 'Get Started',
+  practices: 'Practices',
+  history: 'History',
+  memorize: 'Memorize',
+  tasks: 'Tasks',
+  notes: 'Notes',
+  reflections: 'Reflect',
+  pillars: 'Pillars',
+  reports: 'Reports',
+  settings: 'Settings',
+}
+
+router.afterEach((to) => {
+  const prefix = getSitePrefix()
+  const page = routeTitles[to.name as string] || ''
+  document.title = page ? `${prefix} — ${page}` : prefix
+})
+
 // Auth guard — redirect to /login if not authenticated, /onboarding if new user
 let onboardingChecked = false
 
