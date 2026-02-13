@@ -2,6 +2,10 @@
 
 *"And this is life eternal, that they might know thee the only true God, and Jesus Christ, whom thou hast sent."* — [John 17:3](../gospel-library/eng/scriptures/nt/john/17.md)
 
+*"For behold, this is my work and my glory—to bring to pass the immortality and eternal life of man."* — [Moses 1:39](../gospel-library/eng/scriptures/pgp/moses/1.md)
+
+These two verses are a matched pair. Eternal life IS knowing God (John 17:3). And God's entire work and glory IS bringing us to that eternal life (Moses 1:39). Everything He does — creation, commandments, covenants, the Atonement — serves this single purpose: that we might *know* Him.
+
 ---
 
 ## Why This Matters
@@ -16,6 +20,13 @@ The Lectures on Faith teach that three things are necessary for any person to ex
 > — [Lecture Third, ¶5](../books/lecture-on-faith/03_lecture_3.md)
 
 Eternal life IS knowing God ([John 17:3](../gospel-library/eng/scriptures/nt/john/17.md)). Not knowing *about* Him. Knowing *Him*. His character, His heart, His attributes—these aren't academic topics. They are the foundation of faith itself.
+
+The Lord reaffirms this in the strongest terms:
+
+> "This is **eternal lives**—to know the only wise and true God, and Jesus Christ, whom he hath sent. I am he. Receive ye, therefore, my law."
+> — [D&C 132:24](../gospel-library/eng/scriptures/dc-testament/dc/132.md)
+
+Note the plural: *eternal lives*. Not just endless duration, but a quality of life — ongoing, generative, divine.
 
 ---
 
@@ -32,6 +43,15 @@ This is one of the most remarkable verses in all scripture. God names Himself. H
 - **Endless and Eternal** — these are His names, not just adjectives ([D&C 19:10-12](../gospel-library/eng/scriptures/dc-testament/dc/19.md))
 
 His Son is therefore "Son of Man" — meaning Son of Man of Holiness. It's a title of divine parentage, not merely mortal humanity.
+
+### His Work and His Glory
+
+Moses asks God *why* — why so many worlds, why so many creations? God answers with the simplest, most profound mission statement in scripture:
+
+> "For behold, this is my **work** and my **glory** — to bring to pass the **immortality** and **eternal life** of man."
+> — [Moses 1:39](../gospel-library/eng/scriptures/pgp/moses/1.md)
+
+Everything the Father does serves one purpose: our eternal life. His "work" is not administration. His "glory" is not self-aggrandizement. His work and glory are *us*.
 
 ### His Body
 
@@ -108,12 +128,34 @@ And Enoch, upon beholding this, catches the same spirit:
 > "Enoch knew, and looked upon their wickedness, and their misery, and wept and stretched forth his arms, and **his heart swelled wide as eternity**; and his bowels yearned; and all eternity shook."
 > — [Moses 7:41](../gospel-library/eng/scriptures/pgp/moses/7.md)
 
+### A Father Who Knows Our Frame
+
+David captured the Father's tenderness beautifully:
+
+> "The Lord is **merciful and gracious, slow to anger, and plenteous in mercy.**"
+> — [Psalm 103:8](../gospel-library/eng/scriptures/ot/ps/103.md)
+
+> "Like as a **father pitieth his children**, so the Lord pitieth them that fear him. For **he knoweth our frame; he remembereth that we are dust.**"
+> — [Psalm 103:13-14](../gospel-library/eng/scriptures/ot/ps/103.md)
+
+He knows what we're made of. He remembers we are dust. And He pities us — not with condescension, but with the tender compassion of a parent who knows exactly how fragile and how precious His child is.
+
 ### The Grand Council
 
 > "According to that which was ordained in the midst of the **Council of the Eternal God** of all other gods before this world was, that should be reserved unto the finishing and the end thereof, when every man shall enter into his eternal presence and into his immortal rest."
 > — [D&C 121:32](../gospel-library/eng/scriptures/dc-testament/dc/121.md)
 
 The Father presided. He organized. He ordained. The plan was His. The purpose was His — to bring His children home. Every element of the plan was designed by a Being whose character is merciful, gracious, slow to anger, abundant in goodness, unchanging, truthful, impartial, and love.
+
+### His Unchanging Promise
+
+> "From eternity to eternity he is **the same**, and his years never fail."
+> — [D&C 76:4](../gospel-library/eng/scriptures/dc-testament/dc/76.md)
+
+> "I, the Lord, am merciful and gracious unto those who fear me, and delight to honor those who serve me in righteousness and in truth unto the end. Great shall be their reward and eternal shall be their glory. And to them will I **reveal all mysteries**, yea, all the hidden mysteries of my kingdom from days of old."
+> — [D&C 76:5-7](../gospel-library/eng/scriptures/dc-testament/dc/76.md)
+
+To those who serve Him, He promises to reveal *everything*. No mystery withheld. The character described in Lecture Third — unchanging, truthful, no respecter of persons — is not just theology. It's a promise: what He offers to one, He offers to all. What He revealed to Joseph and Sidney, He will reveal to you.
 
 ---
 
@@ -195,10 +237,14 @@ The Holy Ghost is described as the shared *mind* of the Father and Son—the Spi
 ### What He Does
 
 1. **Testifies of truth** — "By the power of the Holy Ghost ye may know the truth of all things" ([Moroni 10:5](../gospel-library/eng/scriptures/bofm/moro/10.md))
-2. **Testifies of the Father and Son** — "The Holy Ghost... beareth record of the Father and the Son" ([Moses 7:11](../gospel-library/eng/scriptures/pgp/moses/7.md))
-3. **Brings all things to remembrance** — [John 14:26](../gospel-library/eng/scriptures/nt/john/14.md)
-4. **Constant companion** — "The Holy Ghost shall be thy constant companion" ([D&C 121:46](../gospel-library/eng/scriptures/dc-testament/dc/121.md))
-5. **Sanctifies** — "Sanctify them through thy truth: thy word is truth" ([John 17:17](../gospel-library/eng/scriptures/nt/john/17.md))
+2. **Testifies of the Father and Son** — "being filled with the Holy Ghost, which beareth record of the Father and the Son" ([Moses 1:24](../gospel-library/eng/scriptures/pgp/moses/1.md))
+3. **Guides into all truth** — "When he, the Spirit of truth, is come, he will guide you into all truth: for he shall not speak of himself; but whatsoever he shall hear, that shall he speak: and he will shew you things to come" ([John 16:13](../gospel-library/eng/scriptures/nt/john/16.md))
+4. **Shows us what the Father has** — "All things that the Father hath are mine: therefore said I, that he shall take of mine, and shall shew it unto you" ([John 16:15](../gospel-library/eng/scriptures/nt/john/16.md))
+5. **Brings all things to remembrance** — [John 14:26](../gospel-library/eng/scriptures/nt/john/14.md)
+6. **Constant companion** — "The Holy Ghost shall be thy constant companion" ([D&C 121:46](../gospel-library/eng/scriptures/dc-testament/dc/121.md))
+7. **Sanctifies** — "Sanctify them through thy truth: thy word is truth" ([John 17:17](../gospel-library/eng/scriptures/nt/john/17.md))
+
+John 16:13-15 is especially important. The Spirit doesn't speak of Himself — He speaks what He *hears* from the Father and Son. He takes what belongs to Christ and shows it to us. This is exactly what Lecture Fifth describes: the shared mind of Father and Son, poured out upon those who believe.
 
 ### Distinct from the Light of Christ
 
@@ -235,6 +281,23 @@ They are one—not in substance (as the creeds say) but in **mind, purpose, glor
 > — [Lecture Fifth, ¶3](../books/lecture-on-faith/05_lecture_5.md)
 
 This is the promise: through the Holy Ghost, we receive the same mind, the same glory, the same oneness that exists between Father and Son. We become "heirs of God and joint heirs with Jesus Christ" ([Romans 8:17](../gospel-library/eng/scriptures/nt/rom/8.md)).
+
+Peter confirms the same astonishing promise:
+
+> "Whereby are given unto us exceeding great and precious promises: that by these ye might be **partakers of the divine nature**, having escaped the corruption that is in the world through lust."
+> — [2 Peter 1:4](../gospel-library/eng/scriptures/nt/2-pet/1.md)
+
+**Partakers of the divine nature.** Not merely *saved* — transformed. Made participants in what God *is*. And Peter gives the roadmap: faith → virtue → knowledge → temperance → patience → godliness → brotherly kindness → charity ([2 Peter 1:5-7](../gospel-library/eng/scriptures/nt/2-pet/1.md)). Each step builds on the last. Each brings us closer to that divine nature.
+
+John adds the witness of three:
+
+> "For there are three that bear record in heaven, the Father, the Word, and the Holy Ghost: and **these three are one.**"
+> — [1 John 5:7](../gospel-library/eng/scriptures/nt/1-jn/5.md)
+
+> "And we know that the Son of God is come, and hath given us an understanding, that we may **know him that is true**, and we are in him that is true, even in his Son Jesus Christ. **This is the true God, and eternal life.**"
+> — [1 John 5:20](../gospel-library/eng/scriptures/nt/1-jn/5.md)
+
+John circles back to the same truth as John 17:3 and D&C 132:24 — knowing the true God IS eternal life. Not a prerequisite to it. Not a path toward it. It IS it.
 
 ---
 
@@ -297,4 +360,4 @@ And the promise for those who embody this character:
 ---
 
 *Study document created: February 13, 2026*
-*Key sources: Lectures on Faith (Third, Fourth, Fifth), Moses 7, D&C 93, D&C 121, D&C 130, John 17*
+*Key sources: Lectures on Faith (Third, Fourth, Fifth), Moses 1, Moses 7, D&C 76, D&C 93, D&C 121, D&C 130, D&C 132, John 16-17, 1 John 5, 2 Peter 1, Psalm 103*
