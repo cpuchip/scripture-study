@@ -176,6 +176,11 @@ function nextDay() {
   today.value = localDateStr(d)
   load()
 }
+function goToToday() {
+  today.value = localDateStr()
+  load()
+}
+const isToday = computed(() => today.value === localDateStr())
 
 // Completion stats
 const completionStats = computed(() => {
@@ -319,7 +324,7 @@ onUnmounted(() => {
 <template>
   <div>
     <!-- Date header -->
-    <div class="flex items-center justify-between mb-6">
+    <div class="flex items-center justify-between mb-2">
       <button @click="prevDay" class="p-2 hover:bg-gray-200 rounded">←</button>
       <div class="text-center">
         <h1 class="text-2xl font-bold">{{ formatDate(today) }}</h1>
@@ -329,6 +334,16 @@ onUnmounted(() => {
       </div>
       <button @click="nextDay" class="p-2 hover:bg-gray-200 rounded">→</button>
     </div>
+    <!-- Jump to today -->
+    <div v-if="!isToday" class="flex justify-center mb-6">
+      <button
+        @click="goToToday"
+        class="px-3 py-1 text-sm font-medium text-indigo-600 bg-indigo-50 hover:bg-indigo-100 rounded-full transition-colors"
+      >
+        ↩ Jump to Today
+      </button>
+    </div>
+    <div v-else class="mb-6"></div>
 
     <!-- Memorize cards due -->
     <div v-if="!loading && dueCards.length > 0" class="mb-6">
