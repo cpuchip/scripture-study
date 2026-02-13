@@ -172,7 +172,7 @@ func (h *Handlers) GoogleCallback(w http.ResponseWriter, r *http.Request) {
 	h.setSessionCookie(w, session.ID)
 
 	// Redirect to the app
-	http.Redirect(w, r, "/", http.StatusFound)
+	http.Redirect(w, r, "/today", http.StatusFound)
 }
 
 // --- Google API helpers ---

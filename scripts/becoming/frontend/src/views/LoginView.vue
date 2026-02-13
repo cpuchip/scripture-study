@@ -32,7 +32,7 @@ async function handleSubmit() {
   submitting.value = true
   try {
     await login(email.value, password.value)
-    const redirect = (route.query.redirect as string) || '/'
+    const redirect = (route.query.redirect as string) || '/today'
     router.replace(redirect)
   } catch (e: any) {
     error.value = e.message || 'Login failed'

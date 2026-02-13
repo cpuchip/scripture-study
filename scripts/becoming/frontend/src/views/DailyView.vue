@@ -381,7 +381,7 @@ onMounted(async () => {
   // Auto-expand reflection when arriving from Reflections page (?reflect=1)
   if (route.query.reflect === '1') {
     reflectionExpanded.value = true
-    router.replace({ path: '/' })
+    router.replace({ path: '/today' })
     await nextTick()
     reflectionTextarea.value?.scrollIntoView({ behavior: 'smooth', block: 'center' })
     reflectionTextarea.value?.focus()

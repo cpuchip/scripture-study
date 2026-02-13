@@ -108,7 +108,7 @@ onMounted(load)
 
 <template>
   <div>
-    <router-link to="/" class="text-sm text-gray-400 hover:text-indigo-500 mb-4 inline-block">
+    <router-link to="/today" class="text-sm text-gray-400 hover:text-indigo-500 mb-4 inline-block">
       ← Back to today
     </router-link>
 

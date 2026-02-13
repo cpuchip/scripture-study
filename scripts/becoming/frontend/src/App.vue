@@ -23,12 +23,12 @@ async function handleLogout() {
     <!-- Navigation (only when authenticated) -->
     <nav v-if="isAuthenticated" class="bg-white border-b border-gray-200 px-4 py-3">
       <div class="max-w-4xl mx-auto flex items-center justify-between">
-        <router-link to="/" class="text-xl font-bold text-orange-600 flex items-center gap-1.5">
+        <router-link to="/today" class="text-xl font-bold text-orange-600 flex items-center gap-1.5">
           <img src="/ibecome-icon.png" alt="" class="h-7 w-7" />
           {{ siteName }}
         </router-link>
         <div class="flex items-center gap-4 text-sm">
-          <router-link to="/" class="hover:text-orange-600" active-class="text-orange-600 font-semibold">Today</router-link>
+          <router-link to="/today" class="hover:text-orange-600" active-class="text-orange-600 font-semibold">Today</router-link>
           <router-link to="/memorize" class="hover:text-orange-600" active-class="text-orange-600 font-semibold">Memorize</router-link>
           <router-link to="/practices" class="hover:text-orange-600" active-class="text-orange-600 font-semibold">Practices</router-link>
           <router-link to="/reports" class="hover:text-orange-600" active-class="text-orange-600 font-semibold">Reports</router-link>

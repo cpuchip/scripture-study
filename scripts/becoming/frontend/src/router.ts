@@ -6,13 +6,14 @@ export const router = createRouter({
   history: createWebHistory(),
   routes: [
     // Public routes (no auth required)
+    { path: '/', name: 'landing', component: () => import('./views/LandingView.vue'), meta: { public: true } },
     { path: '/login', name: 'login', component: () => import('./views/LoginView.vue'), meta: { public: true } },
     { path: '/register', name: 'register', component: () => import('./views/RegisterView.vue'), meta: { public: true } },
     { path: '/privacy', name: 'privacy', component: () => import('./views/PrivacyView.vue'), meta: { public: true } },
     { path: '/terms', name: 'terms', component: () => import('./views/TermsView.vue'), meta: { public: true } },
 
     // Protected routes
-    { path: '/', name: 'daily', component: DailyView },
+    { path: '/today', name: 'daily', component: DailyView },
     { path: '/onboarding', name: 'onboarding', component: () => import('./views/OnboardingView.vue') },
     { path: '/practices', name: 'practices', component: () => import('./views/PracticesView.vue') },
     { path: '/practices/:id/history', name: 'history', component: () => import('./views/HistoryView.vue') },
@@ -34,6 +35,7 @@ function getSitePrefix(): string {
 }
 
 const routeTitles: Record<string, string> = {
+  landing: '',
   daily: 'Today',
   login: 'Login',
   register: 'Register',
@@ -71,16 +73,16 @@ router.beforeEach(async (to) => {
 
   // Allow public routes
   if (to.meta.public) {
-    // If already authenticated, redirect away from login/register (but not privacy/terms)
-    if (isAuthenticated.value && (to.name === 'login' || to.name === 'register')) {
-      return { path: '/' }
+    // If already authenticated, redirect away from login/register/landing
+    if (isAuthenticated.value && (to.name === 'login' || to.name === 'register' || to.name === 'landing')) {
+      return { path: '/today' }
     }
     return
   }
 
-  // Protected routes: redirect to login if not authenticated
+  // Protected routes: redirect to landing if not authenticated
   if (!isAuthenticated.value) {
-    return { path: '/login', query: { redirect: to.fullPath } }
+    return { path: '/', query: { redirect: to.fullPath } }
   }
 
   // Onboarding redirect: check once per session for new users

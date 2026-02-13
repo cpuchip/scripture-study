@@ -95,7 +95,7 @@ onMounted(load)
     <div class="flex items-center justify-between mb-6">
       <h1 class="text-2xl font-bold">Reflections</h1>
       <router-link
-        to="/?reflect=1"
+        to="/today?reflect=1"
         class="px-4 py-2 bg-indigo-600 text-white rounded-lg text-sm hover:bg-indigo-700"
       >
         ✏️ Write Today's Reflection
