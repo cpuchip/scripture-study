@@ -6,6 +6,7 @@ server.exe~
 /server
 cmd/server/dist/
 cmd/mcp/becoming-mcp.exe
+cmd/mcp/becoming-mcp.exe~
 becoming-mcp.log
 
 # TLS certificates (mkcert local dev)
