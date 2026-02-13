@@ -120,6 +120,12 @@ function googleSignIn() {
           Don't have an account?
           <router-link to="/register" class="text-indigo-600 hover:text-indigo-700 font-medium">Create one</router-link>
         </p>
+
+        <p class="mt-4 text-center text-xs text-gray-400">
+          <router-link to="/privacy" class="hover:text-gray-600">Privacy Policy</router-link>
+          <span class="mx-1">·</span>
+          <router-link to="/terms" class="hover:text-gray-600">Terms of Service</router-link>
+        </p>
       </div>
     </div>
   </div>

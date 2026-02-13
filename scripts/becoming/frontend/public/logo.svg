@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#6366F1"/>
+      <stop offset="100%" stop-color="#4338CA"/>
+    </linearGradient>
+    <linearGradient id="leaf" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#86EFAC"/>
+      <stop offset="100%" stop-color="#22C55E"/>
+    </linearGradient>
+    <linearGradient id="stem" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#22C55E"/>
+      <stop offset="100%" stop-color="#16A34A"/>
+    </linearGradient>
+  </defs>
+  <!-- Background circle -->
+  <circle cx="256" cy="256" r="240" fill="url(#bg)"/>
+  <!-- Stem: gentle upward curve -->
+  <path d="M256 380 C256 320, 256 280, 256 200" stroke="url(#stem)" stroke-width="16" stroke-linecap="round" fill="none"/>
+  <!-- Left leaf -->
+  <path d="M256 260 C230 240, 190 220, 180 180 C200 190, 240 220, 256 260Z" fill="url(#leaf)" opacity="0.9"/>
+  <!-- Right leaf (larger, reaching upward) -->
+  <path d="M256 220 C280 190, 310 160, 330 130 C320 160, 290 200, 256 220Z" fill="url(#leaf)"/>
+  <!-- Small emerging leaf at top -->
+  <path d="M256 200 C248 180, 238 160, 228 145 C244 155, 252 175, 256 200Z" fill="#86EFAC" opacity="0.8"/>
+  <!-- Soil/ground arc -->
+  <path d="M200 385 Q228 370 256 372 Q284 370 312 385" stroke="#A78BFA" stroke-width="6" stroke-linecap="round" fill="none" opacity="0.5"/>
+</svg>

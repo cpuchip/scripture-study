@@ -8,6 +8,8 @@ export const router = createRouter({
     // Public routes (no auth required)
     { path: '/login', name: 'login', component: () => import('./views/LoginView.vue'), meta: { public: true } },
     { path: '/register', name: 'register', component: () => import('./views/RegisterView.vue'), meta: { public: true } },
+    { path: '/privacy', name: 'privacy', component: () => import('./views/PrivacyView.vue'), meta: { public: true } },
+    { path: '/terms', name: 'terms', component: () => import('./views/TermsView.vue'), meta: { public: true } },
 
     // Protected routes
     { path: '/', name: 'daily', component: DailyView },

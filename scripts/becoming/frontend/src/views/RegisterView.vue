@@ -155,6 +155,13 @@ async function handleSubmit() {
           Already have an account?
           <router-link to="/login" class="text-indigo-600 hover:text-indigo-700 font-medium">Sign in</router-link>
         </p>
+
+        <p class="mt-2 text-center text-xs text-gray-400">
+          By creating an account, you agree to our
+          <router-link to="/terms" class="hover:text-gray-600 underline">Terms</router-link>
+          and
+          <router-link to="/privacy" class="hover:text-gray-600 underline">Privacy Policy</router-link>.
+        </p>
       </div>
     </div>
   </div>
