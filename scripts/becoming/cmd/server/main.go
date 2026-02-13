@@ -18,7 +18,7 @@ import (
 	"github.com/go-chi/cors"
 )
 
-//go:embed dist/*
+//go:embed all:dist
 var frontendFS embed.FS
 
 func main() {
