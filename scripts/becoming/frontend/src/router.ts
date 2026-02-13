@@ -11,6 +11,7 @@ export const router = createRouter({
 
     // Protected routes
     { path: '/', name: 'daily', component: DailyView },
+    { path: '/onboarding', name: 'onboarding', component: () => import('./views/OnboardingView.vue') },
     { path: '/practices', name: 'practices', component: () => import('./views/PracticesView.vue') },
     { path: '/practices/:id/history', name: 'history', component: () => import('./views/HistoryView.vue') },
     { path: '/memorize', name: 'memorize', component: () => import('./views/MemorizeView.vue') },
@@ -23,7 +24,9 @@ export const router = createRouter({
   ],
 })
 
-// Auth guard — redirect to /login if not authenticated
+// Auth guard — redirect to /login if not authenticated, /onboarding if new user
+let onboardingChecked = false
+
 router.beforeEach(async (to) => {
   const { isAuthenticated, loading, init } = useAuth()
 
@@ -43,5 +46,27 @@ router.beforeEach(async (to) => {
   // Protected routes: redirect to login if not authenticated
   if (!isAuthenticated.value) {
     return { path: '/login', query: { redirect: to.fullPath } }
+  }
+
+  // Onboarding redirect: check once per session for new users
+  if (!onboardingChecked && to.name !== 'onboarding') {
+    onboardingChecked = true
+
+    // Skip if already completed onboarding
+    if (localStorage.getItem('onboarding_complete') === 'true') return
+
+    try {
+      const has = await fetch('/api/pillars/has-pillars', { credentials: 'same-origin' })
+      if (has.ok) {
+        const data = await has.json()
+        if (!data.has_pillars) {
+          return { path: '/onboarding' }
+        }
+        // Has pillars — mark onboarding complete
+        localStorage.setItem('onboarding_complete', 'true')
+      }
+    } catch {
+      // If check fails, don't block navigation
+    }
   }
 })

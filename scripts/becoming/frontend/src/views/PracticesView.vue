@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import { ref, computed, onMounted } from 'vue'
-import { useRouter } from 'vue-router'
+import { useRouter, useRoute } from 'vue-router'
 import { api, type Practice, type PillarLink } from '../api'
 
 const router = useRouter()
+const route = useRoute()
 const practices = ref<Practice[]>([])
 const loading = ref(true)
 const showForm = ref(false)
@@ -299,7 +300,22 @@ async function lookupScripture() {
   lookingUp.value = false
 }
 
-onMounted(load)
+onMounted(async () => {
+  await load()
+  // Auto-open create form if redirected from Memorize tab (e.g., ?type=memorize&create=1)
+  if (route.query.create === '1') {
+    const qType = route.query.type as string
+    if (qType && ['memorize', 'habit', 'tracker', 'scheduled'].includes(qType)) {
+      form.value.type = qType as Practice['type']
+      if (qType === 'memorize' && route.query.reps) {
+        memorizeConfig.value.target_daily_reps = parseInt(route.query.reps as string) || 1
+      }
+    }
+    showForm.value = true
+    // Clean up query params without triggering navigation
+    router.replace({ path: '/practices' })
+  }
+})
 </script>
 
 <template>

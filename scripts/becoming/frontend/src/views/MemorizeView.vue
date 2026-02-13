@@ -265,11 +265,23 @@ function unplaceWord(placedIndex: number) {
   placedWords.value.splice(placedIndex, 1)
 }
 
+function getOriginalWords(): string[] {
+  if (!currentCard.value?.description) return []
+  return stripFootnotes(currentCard.value.description).split(/\s+/)
+}
+
+function isOrderCorrect(placedIndex: number): boolean {
+  const original = getOriginalWords()
+  return placedWords.value[placedIndex]?.word === original[placedIndex]
+}
+
 function checkOrder() {
+  const original = getOriginalWords()
   let correct = 0
   const total = placedWords.value.length
   placedWords.value.forEach((w, i) => {
-    if (w.originalIndex === i) correct++
+    // Compare word TEXT, not originalIndex — allows duplicate words to be swapped freely
+    if (w.word === original[i]) correct++
   })
   orderChecked.value = true
   orderScore.value = { correct, total }
@@ -384,8 +396,14 @@ onMounted(load)
     <!-- Header -->
     <div class="flex items-center justify-between mb-4">
       <h1 class="text-2xl font-bold">Memorize</h1>
-      <div v-if="!loading && allCards.length > 0" class="text-sm text-gray-500">
-        {{ allCards.filter(c => c.reviews_today >= c.target_daily_reps).length }}/{{ allCards.length }} cards done
+      <div v-if="!loading && allCards.length > 0" class="flex items-center gap-3">
+        <span class="text-sm text-gray-500">
+          {{ allCards.filter(c => c.reviews_today >= c.target_daily_reps).length }}/{{ allCards.length }} cards done
+        </span>
+        <router-link
+          to="/practices?type=memorize&create=1"
+          class="px-3 py-1.5 bg-indigo-600 text-white rounded-lg text-sm hover:bg-indigo-700"
+        >+ Add Card</router-link>
       </div>
     </div>
 
@@ -395,7 +413,7 @@ onMounted(load)
     <!-- No cards -->
     <div v-else-if="allCards.length === 0" class="text-center py-12">
       <p class="text-gray-500 mb-4">No memorize cards yet.</p>
-      <router-link to="/practices" class="text-indigo-600 hover:underline">Add your first card →</router-link>
+      <router-link to="/practices?type=memorize&create=1" class="text-indigo-600 hover:underline">Add your first card →</router-link>
     </div>
 
     <!-- Main content -->
@@ -630,7 +648,7 @@ onMounted(load)
                   @click="unplaceWord(i)"
                   class="px-2.5 py-1 rounded text-sm transition-colors"
                   :class="orderChecked
-                    ? w.originalIndex === i
+                    ? isOrderCorrect(i)
                       ? 'bg-green-100 text-green-700 border border-green-300'
                       : 'bg-red-100 text-red-700 border border-red-300'
                     : 'bg-indigo-100 text-indigo-700 border border-indigo-300 hover:bg-red-50 hover:text-red-600 hover:border-red-300 cursor-pointer'"
