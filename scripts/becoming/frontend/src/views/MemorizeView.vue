@@ -64,7 +64,7 @@ const orderScore = ref({ correct: 0, total: 0 })
 // --- Quiz mode state ---
 const quizInput = ref('')
 const quizChecked = ref(false)
-const quizDiff = ref<{ word: string; typed: string; match: boolean }[]>([])
+const quizDiff = ref<{ word: string; typed: string; kind: 'match' | 'wrong' | 'missing' | 'extra' }[]>([])
 const quizScore = ref({ correct: 0, total: 0 })
 
 // Suggested quality based on practice accuracy
@@ -291,21 +291,89 @@ function checkOrder() {
 const orderComplete = computed(() => wordBank.value.length > 0 && wordBank.value.every(w => w.placed))
 
 // --- Quiz mode ---
+
+// Clean a word for comparison: strip punctuation, lowercase
+function cleanWord(w: string): string {
+  return w.replace(/[.,;:!?'"()—\-–]/g, '').toLowerCase()
+}
+
+// Compute LCS (Longest Common Subsequence) table for word alignment
+function lcsTable(a: string[], b: string[]): number[][] {
+  const m = a.length, n = b.length
+  const dp: number[][] = Array.from({ length: m + 1 }, () => new Array<number>(n + 1).fill(0))
+  for (let i = 1; i <= m; i++) {
+    for (let j = 1; j <= n; j++) {
+      if (cleanWord(a[i - 1]!) === cleanWord(b[j - 1]!)) {
+        dp[i]![j] = dp[i - 1]![j - 1]! + 1
+      } else {
+        dp[i]![j] = Math.max(dp[i - 1]![j]!, dp[i]![j - 1]!)
+      }
+    }
+  }
+  return dp
+}
+
+// Backtrack LCS table to produce a word-level diff
+function wordDiff(origWords: string[], typedWords: string[]): { word: string; typed: string; kind: 'match' | 'wrong' | 'missing' | 'extra' }[] {
+  const dp = lcsTable(origWords, typedWords)
+  const result: { word: string; typed: string; kind: 'match' | 'wrong' | 'missing' | 'extra' }[] = []
+
+  let i = origWords.length, j = typedWords.length
+  const ops: { type: 'match' | 'delete' | 'insert'; origIdx: number; typedIdx: number }[] = []
+
+  while (i > 0 && j > 0) {
+    if (cleanWord(origWords[i - 1]!) === cleanWord(typedWords[j - 1]!)) {
+      ops.push({ type: 'match', origIdx: i - 1, typedIdx: j - 1 })
+      i--; j--
+    } else if (dp[i - 1]![j]! >= dp[i]![j - 1]!) {
+      ops.push({ type: 'delete', origIdx: i - 1, typedIdx: -1 })
+      i--
+    } else {
+      ops.push({ type: 'insert', origIdx: -1, typedIdx: j - 1 })
+      j--
+    }
+  }
+  while (i > 0) {
+    ops.push({ type: 'delete', origIdx: i - 1, typedIdx: -1 })
+    i--
+  }
+  while (j > 0) {
+    ops.push({ type: 'insert', origIdx: -1, typedIdx: j - 1 })
+    j--
+  }
+
+  ops.reverse()
+
+  // Merge consecutive delete+insert pairs into 'wrong' (substitution)
+  let k = 0
+  while (k < ops.length) {
+    const op = ops[k]!
+    if (op.type === 'match') {
+      result.push({ word: origWords[op.origIdx]!, typed: typedWords[op.typedIdx]!, kind: 'match' })
+    } else if (op.type === 'delete' && k + 1 < ops.length && ops[k + 1]!.type === 'insert') {
+      // Substitution: wrong word typed instead of the expected one
+      const next = ops[k + 1]!
+      result.push({ word: origWords[op.origIdx]!, typed: typedWords[next.typedIdx]!, kind: 'wrong' })
+      k++ // skip the insert
+    } else if (op.type === 'delete') {
+      result.push({ word: origWords[op.origIdx]!, typed: '', kind: 'missing' })
+    } else if (op.type === 'insert') {
+      result.push({ word: '', typed: typedWords[op.typedIdx]!, kind: 'extra' })
+    }
+    k++
+  }
+
+  return result
+}
+
 function checkQuiz() {
   if (!currentCard.value?.description) return
   const original = stripFootnotes(currentCard.value.description)
   const origWords = original.split(/\s+/).filter(Boolean)
   const typedWords = quizInput.value.split(/\s+/).filter(Boolean)
 
-  let correct = 0
-  const diff = origWords.map((w, i) => {
-    const cleanOrig = w.replace(/[.,;:!?'"()]/g, '').toLowerCase()
-    const typed = typedWords[i] || ''
-    const cleanTyped = typed.replace(/[.,;:!?'"()]/g, '').toLowerCase()
-    const match = cleanOrig === cleanTyped
-    if (match) correct++
-    return { word: w, typed: typed || '___', match }
-  })
+  const diff = wordDiff(origWords, typedWords)
+  const correct = diff.filter(d => d.kind === 'match').length
 
   quizDiff.value = diff
   quizScore.value = { correct, total: origWords.length }
@@ -741,8 +809,14 @@ onMounted(load)
                   v-for="(d, i) in quizDiff"
                   :key="i"
                   class="inline-block px-0.5 rounded"
-                  :class="d.match ? 'text-green-700' : 'text-red-600 bg-red-50 line-through'"
-                >{{ d.word }}</span>
+                  :class="{
+                    'text-green-700': d.kind === 'match',
+                    'text-red-600 bg-red-50': d.kind === 'wrong',
+                    'text-red-600 bg-red-50 border-b-2 border-dashed border-red-300': d.kind === 'missing',
+                    'text-orange-500 bg-orange-50 italic': d.kind === 'extra',
+                  }"
+                  :title="d.kind === 'wrong' ? `You typed: ${d.typed}` : d.kind === 'missing' ? 'Missing word' : d.kind === 'extra' ? `Extra word: ${d.typed}` : ''"
+                ><template v-if="d.kind === 'extra'">+{{ d.typed }}</template><template v-else>{{ d.word }}</template></span>
               </div>
               <div v-if="quizScore.correct < quizScore.total" class="mt-3 text-sm text-gray-500 border-t pt-3">
                 <strong>You typed:</strong>
