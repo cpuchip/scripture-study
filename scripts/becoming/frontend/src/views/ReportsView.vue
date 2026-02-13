@@ -93,7 +93,7 @@ const overallTrendData = computed(() => {
   // For each practice, build a set of active dates
   const practiceDateSets = f.map(entry => {
     const s = new Set<string>()
-    for (const dp of entry.daily_data) {
+    for (const dp of (entry.daily_data || [])) {
       if (dp.logs > 0 || dp.sets > 0) s.add(dp.date)
     }
     return s
@@ -138,7 +138,7 @@ const trendDateLabels = computed(() => {
 // Per-practice sparkline data: daily activity values (filled for the full date range)
 function sparklineData(entry: ReportEntry): number[] {
   const map: Record<string, number> = {}
-  for (const dp of entry.daily_data) {
+  for (const dp of (entry.daily_data || [])) {
     map[dp.date] = entry.practice_type === 'tracker' ? dp.sets : dp.logs
   }
   const result: number[] = []
@@ -154,9 +154,9 @@ function sparklineData(entry: ReportEntry): number[] {
 // Chart helpers
 function maxDailyValue(entry: ReportEntry): number {
   if (entry.practice_type === 'tracker') {
-    return Math.max(...entry.daily_data.map(d => d.sets), 1)
+    return Math.max(...(entry.daily_data || []).map(d => d.sets), 1)
   }
-  return Math.max(...entry.daily_data.map(d => d.logs), 1)
+  return Math.max(...(entry.daily_data || []).map(d => d.logs), 1)
 }
 
 function barValue(entry: ReportEntry, dp: { logs: number; sets: number; reps: number }): number {
@@ -202,7 +202,7 @@ function volumeLabel(entry: ReportEntry): string {
 // Fill daily data for all dates in range (so chart has no gaps)
 function filledDailyData(entry: ReportEntry): { date: string; logs: number; sets: number; reps: number; label: string }[] {
   const map: Record<string, { logs: number; sets: number; reps: number }> = {}
-  for (const dp of entry.daily_data) {
+  for (const dp of (entry.daily_data || [])) {
     map[dp.date] = dp
   }
 

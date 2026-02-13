@@ -80,6 +80,7 @@ func (db *DB) GetReport(userID int64, startDate, endDate string) ([]*ReportEntry
 				PracticeType: ptype,
 				Category:     category,
 				Config:       config,
+				DailyData:    []DailyDataPoint{},
 			}
 			entries[pid] = entry
 			order = append(order, pid)

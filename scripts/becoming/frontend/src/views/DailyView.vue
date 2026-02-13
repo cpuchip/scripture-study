@@ -22,37 +22,95 @@ function parseConfig(config: string) {
 
 // Group by category (uses first category if comma-separated)
 const groupMode = ref<'category' | 'pillar'>('category')
+const activeFilter = ref<string>('all')
 const practicePillarMap = ref<Record<number, PillarLink[]>>({})
 const hasPillars = ref(false)
 
-const grouped = computed(() => {
-  if (groupMode.value === 'pillar' && hasPillars.value) {
-    return groupedByPillar.value
-  }
-  const groups: Record<string, DailySummary[]> = {}
+// Available filter options based on group mode
+const availableCategories = computed(() => {
+  const cats = new Set<string>()
   for (const item of summary.value) {
     const raw = item.category || item.practice_type || 'other'
     const cat = raw.split(',')[0]?.trim() || raw
-    if (!groups[cat]) groups[cat] = []
-    groups[cat].push(item)
+    cats.add(cat)
   }
-  return groups
+  return Array.from(cats).sort()
 })
 
-const groupedByPillar = computed(() => {
-  const groups: Record<string, DailySummary[]> = {}
+const availablePillars = computed(() => {
+  const pillars = new Map<string, string>() // label → label (deduped)
   for (const item of summary.value) {
     const links = practicePillarMap.value[item.practice_id]
     if (links && links.length > 0) {
       for (const link of links) {
         const label = `${link.pillar_icon} ${link.pillar_name}`
-        if (!groups[label]) groups[label] = []
-        groups[label].push(item)
+        pillars.set(label, label)
       }
     } else {
-      if (!groups['Uncategorized']) groups['Uncategorized'] = []
-      groups['Uncategorized'].push(item)
+      pillars.set('Uncategorized', 'Uncategorized')
     }
+  }
+  return Array.from(pillars.keys()).sort()
+})
+
+const filterOptions = computed(() => {
+  return groupMode.value === 'pillar' && hasPillars.value
+    ? availablePillars.value
+    : availableCategories.value
+})
+
+// Reset filter when switching group mode
+function setGroupMode(mode: 'category' | 'pillar') {
+  groupMode.value = mode
+  activeFilter.value = 'all'
+}
+
+// Filtered summary based on active filter
+const filteredSummary = computed(() => {
+  if (activeFilter.value === 'all') return summary.value
+  if (groupMode.value === 'pillar' && hasPillars.value) {
+    return summary.value.filter(item => {
+      const links = practicePillarMap.value[item.practice_id]
+      if (activeFilter.value === 'Uncategorized') {
+        return !links || links.length === 0
+      }
+      return links?.some(l => `${l.pillar_icon} ${l.pillar_name}` === activeFilter.value)
+    })
+  }
+  // Category filter
+  return summary.value.filter(item => {
+    const raw = item.category || item.practice_type || 'other'
+    const cat = raw.split(',')[0]?.trim() || raw
+    return cat === activeFilter.value
+  })
+})
+
+const grouped = computed(() => {
+  const source = filteredSummary.value
+  if (groupMode.value === 'pillar' && hasPillars.value) {
+    const groups: Record<string, DailySummary[]> = {}
+    for (const item of source) {
+      const links = practicePillarMap.value[item.practice_id]
+      if (links && links.length > 0) {
+        for (const link of links) {
+          const label = `${link.pillar_icon} ${link.pillar_name}`
+          if (activeFilter.value !== 'all' && label !== activeFilter.value) continue
+          if (!groups[label]) groups[label] = []
+          groups[label].push(item)
+        }
+      } else {
+        if (!groups['Uncategorized']) groups['Uncategorized'] = []
+        groups['Uncategorized'].push(item)
+      }
+    }
+    return groups
+  }
+  const groups: Record<string, DailySummary[]> = {}
+  for (const item of source) {
+    const raw = item.category || item.practice_type || 'other'
+    const cat = raw.split(',')[0]?.trim() || raw
+    if (!groups[cat]) groups[cat] = []
+    groups[cat].push(item)
   }
   return groups
 })
@@ -187,10 +245,10 @@ function goToToday() {
 }
 const isToday = computed(() => today.value === localDateStr())
 
-// Completion stats
+// Completion stats (respects active filter)
 const completionStats = computed(() => {
   // Exclude non-due scheduled items from the total.
-  const relevant = summary.value.filter(s =>
+  const relevant = filteredSummary.value.filter(s =>
     s.practice_type !== 'scheduled' || s.is_due === true || s.log_count > 0
   )
   const total = relevant.length
@@ -399,21 +457,48 @@ onUnmounted(() => {
       </router-link>
     </div>
 
+    <!-- Filter empty state -->
+    <div v-else-if="filteredSummary.length === 0" class="text-center py-8">
+      <p class="text-gray-400 text-sm">No practices match this filter.</p>
+      <button @click="activeFilter = 'all'" class="mt-2 text-indigo-600 text-sm hover:underline">
+        Show all
+      </button>
+    </div>
+
     <!-- Practice groups -->
     <div v-else class="space-y-6">
-      <!-- Grouping toggle -->
-      <div v-if="hasPillars" class="flex items-center gap-2">
-        <span class="text-xs text-gray-400">Group by:</span>
-        <button
-          @click="groupMode = 'category'"
-          class="px-2.5 py-1 text-xs rounded-full border"
-          :class="groupMode === 'category' ? 'bg-indigo-100 border-indigo-300 text-indigo-700' : 'bg-gray-50 border-gray-200 text-gray-500 hover:bg-gray-100'"
-        >Category</button>
-        <button
-          @click="groupMode = 'pillar'"
-          class="px-2.5 py-1 text-xs rounded-full border"
-          :class="groupMode === 'pillar' ? 'bg-indigo-100 border-indigo-300 text-indigo-700' : 'bg-gray-50 border-gray-200 text-gray-500 hover:bg-gray-100'"
-        >Pillar</button>
+      <!-- Filter bar -->
+      <div class="space-y-2">
+        <!-- Group mode toggle -->
+        <div class="flex items-center gap-2">
+          <span class="text-xs text-gray-400">Group by:</span>
+          <button
+            @click="setGroupMode('category')"
+            class="px-2.5 py-1 text-xs rounded-full border transition-colors"
+            :class="groupMode === 'category' ? 'bg-indigo-100 border-indigo-300 text-indigo-700' : 'bg-gray-50 border-gray-200 text-gray-500 hover:bg-gray-100'"
+          >Category</button>
+          <button
+            v-if="hasPillars"
+            @click="setGroupMode('pillar')"
+            class="px-2.5 py-1 text-xs rounded-full border transition-colors"
+            :class="groupMode === 'pillar' ? 'bg-indigo-100 border-indigo-300 text-indigo-700' : 'bg-gray-50 border-gray-200 text-gray-500 hover:bg-gray-100'"
+          >Pillar</button>
+        </div>
+        <!-- Filter chips -->
+        <div v-if="filterOptions.length > 1" class="flex items-center gap-1.5 flex-wrap">
+          <button
+            @click="activeFilter = 'all'"
+            class="px-2.5 py-1 text-xs rounded-full border transition-colors"
+            :class="activeFilter === 'all' ? 'bg-gray-800 border-gray-800 text-white' : 'bg-white border-gray-200 text-gray-600 hover:bg-gray-50'"
+          >All</button>
+          <button
+            v-for="opt in filterOptions"
+            :key="opt"
+            @click="activeFilter = activeFilter === opt ? 'all' : opt"
+            class="px-2.5 py-1 text-xs rounded-full border transition-colors capitalize"
+            :class="activeFilter === opt ? 'bg-gray-800 border-gray-800 text-white' : 'bg-white border-gray-200 text-gray-600 hover:bg-gray-50'"
+          >{{ opt }}</button>
+        </div>
       </div>
 
       <div v-for="(items, category) in grouped" :key="category">
