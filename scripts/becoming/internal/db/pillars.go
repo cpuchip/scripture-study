@@ -169,11 +169,19 @@ func (db *DB) DeletePillar(userID, id int64) error {
 
 // LinkPracticePillar adds a link between a practice and a pillar (both must belong to user).
 func (db *DB) LinkPracticePillar(userID, practiceID, pillarID int64) error {
+	conflictClause := "OR IGNORE"
+	if db.IsPostgres() {
+		conflictClause = ""
+	}
+	suffix := ""
+	if db.IsPostgres() {
+		suffix = " ON CONFLICT (practice_id, pillar_id) DO NOTHING"
+	}
 	_, err := db.Exec(`
-		INSERT OR IGNORE INTO practice_pillars (practice_id, pillar_id)
+		INSERT `+conflictClause+` INTO practice_pillars (practice_id, pillar_id)
 		SELECT ?, ? WHERE
 			EXISTS (SELECT 1 FROM practices WHERE id = ? AND user_id = ?) AND
-			EXISTS (SELECT 1 FROM pillars WHERE id = ? AND user_id = ?)`,
+			EXISTS (SELECT 1 FROM pillars WHERE id = ? AND user_id = ?)`+suffix,
 		practiceID, pillarID, practiceID, userID, pillarID, userID)
 	return err
 }
@@ -235,11 +243,19 @@ func (db *DB) GetPracticePillars(userID, practiceID int64) ([]PillarLink, error)
 
 // LinkTaskPillar adds a link between a task and a pillar (both must belong to user).
 func (db *DB) LinkTaskPillar(userID, taskID, pillarID int64) error {
+	conflictClause := "OR IGNORE"
+	if db.IsPostgres() {
+		conflictClause = ""
+	}
+	suffix := ""
+	if db.IsPostgres() {
+		suffix = " ON CONFLICT (task_id, pillar_id) DO NOTHING"
+	}
 	_, err := db.Exec(`
-		INSERT OR IGNORE INTO task_pillars (task_id, pillar_id)
+		INSERT `+conflictClause+` INTO task_pillars (task_id, pillar_id)
 		SELECT ?, ? WHERE
 			EXISTS (SELECT 1 FROM tasks WHERE id = ? AND user_id = ?) AND
-			EXISTS (SELECT 1 FROM pillars WHERE id = ? AND user_id = ?)`,
+			EXISTS (SELECT 1 FROM pillars WHERE id = ? AND user_id = ?)`+suffix,
 		taskID, pillarID, taskID, userID, pillarID, userID)
 	return err
 }

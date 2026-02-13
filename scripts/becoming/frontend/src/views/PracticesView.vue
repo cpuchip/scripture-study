@@ -110,7 +110,8 @@ async function load() {
 }
 
 async function submit() {
-  const p: Partial<Practice> = {
+  try {
+    const p: Partial<Practice> = {
     name: form.value.name,
     description: form.value.description,
     type: form.value.type,
@@ -181,6 +182,10 @@ async function submit() {
   }
   resetForm()
   await load()
+  } catch (err) {
+    console.error('Failed to save practice:', err)
+    alert('Failed to save practice. Please try again.')
+  }
 }
 
 function resetForm() {

@@ -1,10 +1,14 @@
 <script setup lang="ts">
-import { ref, computed, onMounted, onUnmounted } from 'vue'
+import { ref, computed, onMounted, onUnmounted, nextTick } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
 import { api, type DailySummary, type PracticeLog, type Practice, type Reflection, type Prompt, type PillarLink } from '../api'
 
 function localDateStr(d: Date = new Date()): string {
   return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`
 }
+
+const route = useRoute()
+const router = useRouter()
 
 const today = ref(localDateStr())
 const summary = ref<DailySummary[]>([])
@@ -60,6 +64,7 @@ const reflectionContent = ref('')
 const reflectionMood = ref<number | null>(null)
 const reflectionExpanded = ref(false)
 const reflectionSaving = ref(false)
+const reflectionTextarea = ref<HTMLTextAreaElement | null>(null)
 
 const moods = [
   { value: 1, emoji: '😟', label: 'Struggling' },
@@ -311,9 +316,18 @@ function onVisibilityChange() {
   if (!document.hidden) load()
 }
 
-onMounted(() => {
-  load()
+onMounted(async () => {
+  await load()
   document.addEventListener('visibilitychange', onVisibilityChange)
+
+  // Auto-expand reflection when arriving from Reflections page (?reflect=1)
+  if (route.query.reflect === '1') {
+    reflectionExpanded.value = true
+    router.replace({ path: '/' })
+    await nextTick()
+    reflectionTextarea.value?.scrollIntoView({ behavior: 'smooth', block: 'center' })
+    reflectionTextarea.value?.focus()
+  }
 })
 
 onUnmounted(() => {
@@ -620,6 +634,7 @@ onUnmounted(() => {
 
           <!-- Content -->
           <textarea
+            ref="reflectionTextarea"
             v-model="reflectionContent"
             rows="3"
             :placeholder="todayPrompt?.text || 'What\'s on your heart today?'"
