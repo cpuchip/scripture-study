@@ -13,6 +13,13 @@ type Paragraph struct {
 	Text  string  // Merged, cleaned text
 }
 
+// Sentence represents a single sentence extracted from cues, with its own timestamp.
+type Sentence struct {
+	Begin float64 // Start time (seconds) of the cue where the sentence begins
+	End   float64 // End time (seconds) of the cue where the sentence ends
+	Text  string  // The sentence text
+}
+
 // VideoMetadata holds the structured metadata extracted from yt-dlp --dump-json.
 type VideoMetadata struct {
 	ID          string `json:"id"`

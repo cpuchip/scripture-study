@@ -374,11 +374,206 @@ func endsWithSentence(s string) bool {
 	return last == '.' || last == '?' || last == '!'
 }
 
+// ── Cue → Sentence Splitting ────────────────────────────────────────────────
+
+// timedWord associates a word with the timestamp of the cue it came from.
+type timedWord struct {
+	word  string
+	begin float64
+	end   float64
+}
+
+// commonAbbreviations is a set of words ending in '.' that aren't sentence endings.
+var commonAbbreviations = map[string]bool{
+	"mr.": true, "mrs.": true, "ms.": true, "dr.": true, "sr.": true, "jr.": true,
+	"vs.": true, "etc.": true, "e.g.": true, "i.e.": true, "st.": true, "inc.": true,
+	"ltd.": true, "gen.": true, "pres.": true, "gov.": true, "prof.": true, "no.": true,
+}
+
+// isSentenceEnding checks whether a word marks the end of a sentence.
+func isSentenceEnding(word string) bool {
+	// Strip trailing quotes/parens to find the final punctuation
+	stripped := strings.TrimRight(word, `"')]`)
+	if stripped == "" {
+		return false
+	}
+	last := stripped[len(stripped)-1]
+	if last != '.' && last != '?' && last != '!' {
+		return false
+	}
+	// Check common abbreviations
+	lower := strings.ToLower(stripped)
+	if commonAbbreviations[lower] {
+		return false
+	}
+	// Single letter + period (initials like "A." or "J.")
+	core := strings.TrimLeft(stripped, `"'([`)
+	if len(core) == 2 && core[1] == '.' {
+		return false
+	}
+	// Ellipsis "..." is a pause, not necessarily a sentence end, but treat it as one
+	return true
+}
+
+// MergeCuesIntoSentences splits deduplicated cues into sentence-level segments.
+//
+// Each sentence gets the timestamp of the cue where it begins. Sentences are
+// identified by terminal punctuation (. ? !). If a long run of text has no
+// punctuation (common with auto-captions), it falls back to splitting at
+// cue gaps > 1.5 seconds.
+func MergeCuesIntoSentences(cues []Cue) []Sentence {
+	if len(cues) == 0 {
+		return nil
+	}
+
+	// Step 1: Build a stream of timed words
+	var words []timedWord
+	for _, c := range cues {
+		ws := strings.Fields(c.Text)
+		// Distribute timing across words proportionally (approximation)
+		n := len(ws)
+		if n == 0 {
+			continue
+		}
+		dur := c.End - c.Begin
+		for j, w := range ws {
+			// Each word gets a fraction of the cue's time span
+			wordBegin := c.Begin + dur*float64(j)/float64(n)
+			wordEnd := c.Begin + dur*float64(j+1)/float64(n)
+			words = append(words, timedWord{word: w, begin: wordBegin, end: wordEnd})
+		}
+	}
+
+	if len(words) == 0 {
+		return nil
+	}
+
+	// Step 2: Walk words, split at sentence boundaries
+	var sentences []Sentence
+	var current []string
+	sentBegin := words[0].begin
+	sentEnd := words[0].end
+
+	for _, tw := range words {
+		current = append(current, tw.word)
+		sentEnd = tw.end
+
+		if isSentenceEnding(tw.word) {
+			sentences = append(sentences, Sentence{
+				Begin: sentBegin,
+				End:   sentEnd,
+				Text:  strings.Join(current, " "),
+			})
+			current = nil
+			// Next word will set sentBegin
+		}
+
+		// Update sentBegin for next sentence
+		if len(current) == 0 {
+			sentBegin = tw.end // will be overwritten by next word
+		}
+		if len(current) == 1 {
+			sentBegin = tw.begin
+		}
+	}
+
+	// Flush remaining words
+	if len(current) > 0 {
+		sentences = append(sentences, Sentence{
+			Begin: sentBegin,
+			End:   sentEnd,
+			Text:  strings.Join(current, " "),
+		})
+	}
+
+	// Step 3: For unpunctuated auto-captions, try splitting long sentences at gaps
+	// If we ended up with very few sentences relative to the number of cues,
+	// the captions probably lack punctuation — re-split using time gaps.
+	if len(sentences) <= len(cues)/10 && len(cues) > 10 {
+		return splitByTimeGaps(cues)
+	}
+
+	return sentences
+}
+
+// splitByTimeGaps is a fallback for unpunctuated auto-captions.
+// It merges cues but splits at gaps > 1.5s, producing short segments.
+func splitByTimeGaps(cues []Cue) []Sentence {
+	var sentences []Sentence
+	var current []string
+	sentBegin := cues[0].Begin
+	prevEnd := cues[0].End
+
+	for i, c := range cues {
+		if i > 0 {
+			gap := c.Begin - prevEnd
+			if gap > mergeGapThreshold && len(current) > 0 {
+				sentences = append(sentences, Sentence{
+					Begin: sentBegin,
+					End:   prevEnd,
+					Text:  strings.TrimSpace(strings.Join(current, " ")),
+				})
+				current = nil
+				sentBegin = c.Begin
+			}
+		}
+		current = append(current, c.Text)
+		prevEnd = c.End
+	}
+
+	if len(current) > 0 {
+		sentences = append(sentences, Sentence{
+			Begin: sentBegin,
+			End:   prevEnd,
+			Text:  strings.TrimSpace(strings.Join(current, " ")),
+		})
+	}
+
+	return sentences
+}
+
+// sentenceParagraphGap is the time gap (seconds) between sentences that triggers a visual paragraph break.
+const sentenceParagraphGap = 3.0
+
 // ── Markdown Generation ─────────────────────────────────────────────────────
 
 // GenerateTranscriptMarkdown creates the readable transcript.md content.
-// Each paragraph is preceded by a clickable [M:SS](url&t=N) timestamp link.
-func GenerateTranscriptMarkdown(meta *VideoMetadata, paragraphs []Paragraph) string {
+// Each sentence gets its own clickable [M:SS](url&t=N) timestamp link.
+// Sentences are grouped into visual paragraphs by time gaps.
+func GenerateTranscriptMarkdown(meta *VideoMetadata, sentences []Sentence) string {
+	var b strings.Builder
+
+	// Header
+	fmt.Fprintf(&b, "# %s\n\n", meta.Title)
+	fmt.Fprintf(&b, "**Channel:** %s\n", meta.Channel)
+	fmt.Fprintf(&b, "**Date:** %s\n", formatDate(meta.UploadDate))
+	fmt.Fprintf(&b, "**Duration:** %s\n", formatDuration(meta.Duration))
+	fmt.Fprintf(&b, "**URL:** %s\n", meta.URL)
+	b.WriteString("\n---\n\n")
+	b.WriteString("## Transcript\n\n")
+
+	// Sentences with timestamp links, grouped into visual paragraphs by time gaps
+	for i, s := range sentences {
+		secs := int(math.Floor(s.Begin))
+		ts := formatTimestamp(s.Begin)
+		fmt.Fprintf(&b, "[%s](%s&t=%d) %s\n", ts, meta.URL, secs, s.Text)
+
+		// Insert paragraph break if there's a big gap before the next sentence
+		if i+1 < len(sentences) {
+			gap := sentences[i+1].Begin - s.End
+			if gap > sentenceParagraphGap {
+				b.WriteString("\n")
+			}
+		}
+	}
+
+	b.WriteString("\n")
+	return b.String()
+}
+
+// GenerateTranscriptMarkdownLegacy creates transcript.md using paragraph-level timestamps.
+// Kept for reference; the main pipeline now uses sentence-level timestamps.
+func GenerateTranscriptMarkdownLegacy(meta *VideoMetadata, paragraphs []Paragraph) string {
 	var b strings.Builder
 
 	// Header
@@ -480,11 +675,11 @@ func ProcessSubtitles(subPath string, meta *VideoMetadata, outputDir string) (st
 		return "", fmt.Errorf("exporting cues.json: %w", err)
 	}
 
-	// Merge into paragraphs
-	paragraphs := MergeCuesIntoParagraphs(cues)
+	// Split into sentences (sentence-level timestamps)
+	sentences := MergeCuesIntoSentences(cues)
 
 	// Generate markdown
-	md := GenerateTranscriptMarkdown(meta, paragraphs)
+	md := GenerateTranscriptMarkdown(meta, sentences)
 
 	// Write transcript.md
 	mdPath := filepath.Join(outputDir, "transcript.md")
