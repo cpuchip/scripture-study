@@ -1,15 +1,6 @@
 ---
 description: 'Evaluate YouTube video content against the gospel standard'
-tools:
-  - search
-  - editFiles
-  - codebase
-  - fetch
-  - gospel-mcp/*
-  - gospel-vec/*
-  - webster-mcp/*
-  - yt-mcp/*
-  - search-mcp/*
+[vscode, execute, read, agent, 'becoming/*', 'gospel/*', 'gospel-vec/*', 'search/*', 'webster/*', 'yt/*', 'playwright/*', edit, search, web, todo]
 handoffs:
   - label: Study a Topic Deeper
     agent: study

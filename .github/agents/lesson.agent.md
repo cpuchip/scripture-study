@@ -1,14 +1,6 @@
 ---
 description: 'Lesson planning for Sunday School, EQ/RS, and other class settings'
-tools:
-  - search
-  - editFiles
-  - codebase
-  - fetch
-  - gospel-mcp/*
-  - gospel-vec/*
-  - webster-mcp/*
-  - search-mcp/*
+[vscode, execute, read, agent, 'becoming/*', 'gospel/*', 'gospel-vec/*', 'search/*', 'webster/*', edit, search, web, todo]
 handoffs:
   - label: Deepen a Topic
     agent: study

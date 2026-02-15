@@ -1,14 +1,6 @@
 ---
 description: 'Sacrament meeting talk preparation'
-tools:
-  - search
-  - editFiles
-  - codebase
-  - fetch
-  - gospel-mcp/*
-  - gospel-vec/*
-  - webster-mcp/*
-  - search-mcp/*
+[vscode, execute, read, agent, 'becoming/*', 'gospel/*', 'gospel-vec/*', 'search/*', 'webster/*', 'playwright/*', edit, search, web, todo]
 handoffs:
   - label: Deepen a Topic
     agent: study

@@ -1,13 +1,6 @@
 ---
 description: 'Personal reflection, journaling, and becoming — the most personal mode'
-tools:
-  - search
-  - editFiles
-  - codebase
-  - becoming-mcp/*
-  - gospel-mcp/*
-  - gospel-vec/*
-  - webster-mcp/*
+[vscode, execute, read, agent, 'becoming/*', 'gospel/*', 'gospel-vec/*', 'search/*', 'webster/*', edit, search, web, todo]
 handoffs:
   - label: Study a Topic
     agent: study

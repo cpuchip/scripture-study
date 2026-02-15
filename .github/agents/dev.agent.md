@@ -1,15 +1,6 @@
 ---
 description: 'Building and improving MCP servers, scripts, and tools'
-tools:
-  - search
-  - editFiles
-  - codebase
-  - terminalLastCommand
-  - runInTerminal
-  - fetch
-  - problems
-  - testFailure
-  - usages
+[vscode, execute, read, agent, 'becoming/*', 'search/*', 'yt/*', 'playwright/*', edit, search, web, todo]
 ---
 
 # Tool Development Agent

@@ -1,15 +1,6 @@
 ---
 description: 'Deep scripture study — cross-referencing, footnotes, and synthesis'
-tools:
-  - search
-  - editFiles
-  - codebase
-  - fetch
-  - gospel-mcp/*
-  - gospel-vec/*
-  - webster-mcp/*
-  - becoming-mcp/*
-  - search-mcp/*
+[vscode, execute, read, agent, 'becoming/*', 'gospel/*', 'gospel-vec/*', 'search/*', 'webster/*', 'playwright/*', edit, search, web, todo]
 handoffs:
   - label: Record What I Learned
     agent: journal
