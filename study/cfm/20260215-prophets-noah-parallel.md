@@ -34,6 +34,8 @@ As First Counselor and now President of the Church, President Oaks has consisten
 
 > "We who know God's plan and who have covenanted to participate have a clear responsibility to teach these truths and do all that we can to further them." — [The Great Plan, April 2020](../../gospel-library/eng/general-conference/2020/04/51oaks.md)
 
+In his [first major address as prophet](../talks/Coming-Closer-to-Jesus-Christ_transcript.md) (BYU Devotional, February 2026), President Oaks's first instinct was to *reaffirm* President Nelson's most urgent warning — just as Noah preached "the Gospel … even as it was given unto Enoch" ([Moses 8:19](../../gospel-library/eng/scriptures/pgp/moses/8.md)). The prophetic message doesn't change when the prophet does. It *continues*.
+
 ---
 
 ## II. The Warnings — Then and Now
@@ -49,6 +51,8 @@ As First Counselor and now President of the Church, President Oaks has consisten
 | "All flesh had corrupted its way upon the earth" ([Moses 8:29](../../gospel-library/eng/scriptures/pgp/moses/8.md)) | "We are surrounded by media influences and cultural deteriorations that will carry us downstream in our values **if we are not continually resisting.**" — Oaks, [Small and Simple Things, April 2018](../../gospel-library/eng/general-conference/2018/04/small-and-simple-things.md) |
 
 The parallels are striking. Noah faced a world where people had "corrupted its way." Our prophets face a world where truth itself is under assault, families are deteriorating, and the adversary isn't even bothering to hide anymore.
+
+And when the prophetic mantle passed, the *very first thing* President Oaks did was reaffirm the warning: "I feel to emphasize the warning President Russell M. Nelson issued us: that 'in coming days, it will not be possible to survive spiritually without the guiding, directing, comforting, and constant influence of the Holy Ghost.' … **The adversary has become so effective at disguising truth that if you don't have the Holy Ghost, you will be deceived.**" — [Coming Closer to Jesus Christ, Feb 2026](../talks/Coming-Closer-to-Jesus-Christ_transcript.md)
 
 ---
 
@@ -79,6 +83,19 @@ But our prophets have *extended* and *applied* these same principles with remark
 - **Ask "Where will this lead?"** — Oaks: "Begin with the end in mind. For us, the end is always on the covenant path through the temple to eternal life." — [Where Will This Lead?, Apr 2019](../../gospel-library/eng/general-conference/2019/04/35oaks.md)
 - **Strengthen families** — Oaks: "What those children really want for dinner is time with you." — [The Family-Centered Gospel, Oct 2025](../../gospel-library/eng/general-conference/2025/10/58oaks.md)
 - **Be a peacemaker** — Nelson: "Now is the time to bury your weapons of war." — [Peacemakers Needed, Apr 2023](../../gospel-library/eng/general-conference/2023/04/47nelson.md)
+- **Draw closer through humility** — Oaks: "Humility is teachableness. … We want to be among the five humble ones who were admitted to the presence of the Lord." — [Coming Closer to Jesus Christ, Feb 2026](../talks/Coming-Closer-to-Jesus-Christ_transcript.md)
+- **Associate with believers** — Oaks: "Seek friends and associates who are striving to follow the Lord — friends and associates with whom you can feel the Spirit." — [Coming Closer to Jesus Christ, Feb 2026](../talks/Coming-Closer-to-Jesus-Christ_transcript.md)
+
+### The *Teachings of Presidents* Manual — A Lifetime of the Same Invitations
+
+The *Come, Follow Me* manual specifically invites us to "review a chapter from *Teachings of Presidents of the Church*." What emerges from Nelson's [Teachings manual](../../gospel-library/eng/manual/teachings-of-presidents-of-the-church-russell-m-nelson/) is remarkable: the *same* invitations he gave as prophet were themes of his *entire* ministry. His urgency as prophet wasn't new — it was the crescendo of a lifetime.
+
+The manual's "Invitations and Promised Blessings" sections read like a prophetic distillation. A few examples that deepen the Noah parallel:
+
+- **"Time is running out."** (Ch. 5, 9) — echoing "My Spirit shall not always strive with man" ([Moses 8:17](../../gospel-library/eng/scriptures/pgp/moses/8.md))
+- **"Please do *not* stay off the covenant path one more minute."** (Ch. 9) — echoing "Believe and repent … and if ye do not this, the floods will come in upon you" ([Moses 8:24](../../gospel-library/eng/scriptures/pgp/moses/8.md))
+- **"Once we make a covenant with God, we leave neutral ground forever."** (Ch. 10) — echoing Noah's covenant with God, where boarding the ark *was* the covenant
+- **"I understand why God weeps. I also weep for such friends and relatives."** (Ch. 10) — echoing God's weeping over noise, violence, and rejection in Noah's generation
 
 ---
 
@@ -150,6 +167,14 @@ President Nelson has answered this question explicitly across his ministry. The 
 | **The Church itself** | "If we cease valuing our churches for any reason, we threaten our personal spiritual life." — Oaks, [Need for a Church, Oct 2021](../../gospel-library/eng/general-conference/2021/10/18oaks.md) |
 | **Family** | "Parents and grandparents must be the master teachers." — Oaks, [Family-Centered Gospel, Oct 2025](../../gospel-library/eng/general-conference/2025/10/58oaks.md) |
 | **The scriptures** | "The Book of Mormon *is* our *latter-day* survival guide." — Nelson, [Embrace the Future with Faith, Oct 2020](../../gospel-library/eng/general-conference/2020/10/37nelson.md) |
+| **Faithful association** | "Seek friends and associates who are striving to follow the Lord." — Oaks, [Coming Closer to Jesus Christ, Feb 2026](../talks/Coming-Closer-to-Jesus-Christ_transcript.md) |
+| **Humility and patience** | "We are all a work in progress. … Hold on to the first article of faith, even if something else is uncertain." — Oaks, [Coming Closer to Jesus Christ, Feb 2026](../talks/Coming-Closer-to-Jesus-Christ_transcript.md) |
+
+And from the *Teachings* manual, the ark's foundation described across a lifetime:
+- **Covenant love (*hesed*)** — "God will not abandon His relationship with those who have forged such a bond with Him." (Ch. 10)
+- **Heavenly power** — "The reward for keeping covenants with God is heavenly power — power that strengthens us to withstand our trials, temptations, and heartaches better." (Ch. 10)
+- **Freedom** — "As you keep God's commandments, you will become increasingly free." (Ch. 11)
+- **Every sincere seeker finds Him** — "Every sincere seeker of Jesus Christ will find Him in the temple." (Ch. 13)
 
 Noah's ark was a refuge from physical destruction. Our ark — built from covenants, temples, revelation, repentance, family, and faith — is a refuge from spiritual destruction. The flood this time is not water. It is deception, distraction, contention, and despair. And the invitation to board the ark is just as urgent.
 
@@ -169,6 +194,8 @@ The answer is: **In every way that matters.**
 - Noah's generation ran out of time. Ours will too.
 
 The question is not *whether* we believe there is a prophet. The question is whether we will be among those who *hearken* — or among those who say, "Behold, we are the sons of God; are we not eating and drinking and marrying and giving in marriage?" ([Moses 8:21](../../gospel-library/eng/scriptures/pgp/moses/8.md)).
+
+Notice something else: when the prophetic mantle passed from Nelson to Oaks, the *message didn't change*. President Oaks's first act was to reaffirm Nelson's most urgent warning and invite us to draw closer to Christ through faith, humility, faithful association, and patience. This is exactly the pattern of Noah, who preached "the Gospel … even as it was given unto Enoch" — the same gospel, from the same God, through a new prophet. The continuity *is* the testimony.
 
 ### Personal Application Questions
 

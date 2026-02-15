@@ -4,7 +4,7 @@
 
 > "How is our living prophet like Noah? … What is he warning us about? And what is he inviting us to do?" — *Come, Follow Me* Manual
 
-The following is drawn from **21 substantive general conference addresses** by President Oaks from April 2018 through October 2025 — first as First Counselor in the First Presidency, and from January 2025 as President of the Church. Every quote has been read from the source file.
+The following is drawn from **21 substantive general conference addresses** by President Oaks from April 2018 through October 2025 — first as First Counselor in the First Presidency, and from October 2025 as President of the Church — along with his first major address as prophet, ["Coming Closer to Jesus Christ" (BYU Devotional, February 10, 2026)](../talks/Coming-Closer-to-Jesus-Christ_transcript.md). Every quote has been read from the source file.
 
 ---
 
@@ -187,7 +187,61 @@ President Oaks repeatedly teaches that God's love is *so* vast that nearly all H
 
 ---
 
-## IV. The Arc of His Ministry
+## IV. "Coming Closer to Jesus Christ" — First Address as Prophet (February 2026)
+
+President Oaks's [BYU devotional on February 10, 2026](../talks/Coming-Closer-to-Jesus-Christ_transcript.md) is significant: his first major address as prophet outside of general conference. Speaking to BYU and "the larger audience we include with current technology," he addressed the very heart of what Noah faced — a people wrestling with doubt, distraction, and the temptation to drift.
+
+### The Mantle
+
+President Oaks described how the prophetic mantle transferred after President Nelson's death — echoing the pattern of Elijah and Elisha:
+
+> "Within a few minutes after learning of our president's death, I felt the heaviness of responsibility settle upon me, along with important impressions of what I was required to do now."
+
+### Reaffirmation of the Central Warning
+
+His first act as teacher was to *reaffirm* President Nelson's defining warning:
+
+> "I feel to emphasize the warning President Russell M. Nelson issued us: that '**in coming days, it will not be possible to survive spiritually without the guiding, directing, comforting, and constant influence of the Holy Ghost.**' One of the many reasons you will need the constant influence of the Holy Ghost is that you live in a season in which **the adversary has become so effective at disguising truth that if you don't have the Holy Ghost, you will be deceived.**"
+
+This is continuity of prophetic voice. The new prophet's first instinct was not to announce new initiatives, but to *double down* on his predecessor's most urgent message — exactly as Noah preached "the Gospel … even as it was given unto Enoch" ([Moses 8:19](../../gospel-library/eng/scriptures/pgp/moses/8.md)).
+
+### Four Ways to Draw Closer to Our Savior
+
+President Oaks then offered four ways to overcome doubt and draw closer to Christ:
+
+**1. Strengthen Faith** — "Strong faith requires more than strong desire. It means daily trying, one step at a time, with prayer and scripture study."
+
+**2. Increase Humility** — Drawing on President Kimball's definition: "Humility is teachableness — an ability to realize that all virtues and abilities are not concentrated in one's self. … Humility is never accusing nor contentious. … Humility is repentant and seeks not to justify its follies."
+
+**3. Seek Help from Others** — "**Seek friends and associates who are striving to follow the Lord** — friends and associates with whom you can feel the Spirit and with whom you can reinforce your faith." He told the story of a young man who said, "I have not heard anyone speak like that in months. I have been hanging out with friends who don't believe."
+
+**4. Be Patient** — "We are all a work in progress. … Hold on to the first article of faith, even if something else is uncertain. And while you wait, wait upon the Lord."
+
+### Specific Warnings
+
+President Oaks named the same populations he identified in his April 2025 conference address, reinforcing the ten virgins warning:
+
+- **Returned missionaries** who "have interrupted their spiritual growth with periods of inactivity"
+- **Youth** who "have jeopardized their spiritual growth by separating themselves from Church teachings — such as those who are expressing little desire to be married or to have children"
+- **Adults** "who do not seek to be a covenant-making people — such as men who do not prepare for ordination to the Melchizedek Priesthood"
+
+And he added new warnings about information sources:
+
+> "An abundance of speculation and false information in podcasts and on social media surrounds us. … **Don't be persuaded by false or inaccurate information.** Discuss your concerns with faithful, well-informed friends and always take those concerns to the Lord."
+
+> "**Never let your secular learning limit your horizons.**"
+
+### The Covenant Path as Protection
+
+His closing counsel was practical and unified:
+
+> "Protect yourself with the weekly renewing of your covenants by partaking of the sacrament and with consistent efforts to live according to those sacred covenants. Those who have been endowed should include regular attendance at the temple. In sum, **stay on the covenant path. These simple practices will protect and strengthen you.**"
+
+> "We want to be among the **five humble ones** who were admitted to the presence of the Lord." (referencing the ten virgins)
+
+---
+
+## V. The Arc of His Ministry
 
 | Year | Central Message |
 |------|----------------|
@@ -199,29 +253,32 @@ President Oaks repeatedly teaches that God's love is *so* vast that nearly all H
 | **2023** | Teachings of Jesus Christ; kingdoms of glory — *become*, don't just know |
 | **2024** | Covenants and responsibilities (garments); following Christ as peacemakers |
 | **2025** | Four divine helps for mortality; the family-centered gospel |
+| **2026** | Coming closer to Jesus Christ: faith, humility, association with believers, patience — reaffirms Nelson's Holy Ghost warning |
 
-President Oaks brings the voice of a legal mind and a doctrinal teacher. Where President Nelson speaks with prophetic urgency and apostolic blessing, President Oaks constructs the *framework* — the doctrinal architecture that explains *why* the invitations matter. His consistent message: understand the plan, choose the celestial, and let the Atonement do its work.
+President Oaks brings the voice of a legal mind and a doctrinal teacher. Where President Nelson speaks with prophetic urgency and apostolic blessing, President Oaks constructs the *framework* — the doctrinal architecture that explains *why* the invitations matter. His consistent message: understand the plan, choose the celestial, and let the Atonement do its work. His first devotional as prophet signals continuity — doubling down on Nelson's core warning about the Holy Ghost while adding his own emphasis on humility, faithful association, and patience.
 
 ---
 
-## V. Recurring Themes at a Glance
+## VI. Recurring Themes at a Glance
 
 | Theme | Conference Sessions Referenced |
 |-------|-------------------------------|
 | Plan of salvation / three kingdoms | Oct 2018, Apr 2020, Apr 2022, Oct 2023 |
-| Truth and how to find it | Oct 2018, Oct 2019 |
-| Covenant path | Oct 2018, Apr 2019, Apr 2024, Apr 2025 |
+| Truth and how to find it | Oct 2018, Oct 2019, Feb 2026 devotional |
+| Covenant path | Oct 2018, Apr 2019, Apr 2024, Apr 2025, Feb 2026 devotional |
 | Repentance as ongoing privilege | Apr 2019, Apr 2025 |
 | Love enemies / peacemaking | Oct 2020, Oct 2024 |
-| Family and marriage | Oct 2018, Apr 2022, Oct 2023, Oct 2025 |
-| Need for Church / gathering | Oct 2021 |
+| Family and marriage | Oct 2018, Apr 2022, Oct 2023, Oct 2025, Feb 2026 devotional |
+| Need for Church / gathering with believers | Oct 2021, Feb 2026 devotional |
 | Priesthood power and keys | Apr 2018, Apr 2020 |
-| Satan's specific strategies | Oct 2018, Apr 2020 |
+| Satan's specific strategies | Oct 2018, Apr 2020, Feb 2026 devotional |
 | Small and simple things | Apr 2018 |
 | "Where will this lead?" | Apr 2019 |
 | Constitution and religious freedom | Apr 2021, Oct 2022 |
 | Becoming vs. knowing | Oct 2023, Apr 2025 |
 | Divine helps for mortality | Apr 2025 |
+| Faith, humility, patience | Feb 2026 devotional |
+| Ten virgins / spiritual preparation | Apr 2025, Feb 2026 devotional |
 
 ---
 
