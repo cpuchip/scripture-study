@@ -1,10 +1,10 @@
-# President Dallin H. Oaks: Warnings, Invitations, and Promised Blessings (2018–2025)
+# President Dallin H. Oaks: Warnings, Invitations, and Promised Blessings (2018–2026)
 
 *Come Follow Me Supplement — Genesis 6–11; Moses 8 — "Noah Found Grace in the Eyes of the Lord"*
 
 > "How is our living prophet like Noah? … What is he warning us about? And what is he inviting us to do?" — *Come, Follow Me* Manual
 
-The following is drawn from **21 substantive general conference addresses** by President Oaks from April 2018 through October 2025 — first as First Counselor in the First Presidency, and from October 2025 as President of the Church — along with his first major address as prophet, ["Coming Closer to Jesus Christ" (BYU Devotional, February 10, 2026)](../talks/Coming-Closer-to-Jesus-Christ_transcript.md). Every quote has been read from the source file.
+The following is drawn from **21 substantive general conference addresses** by President Oaks from April 2018 through October 2025, along with his [first address as prophet — "Coming Closer to Jesus Christ" (BYU Devotional, February 10, 2026)](../talks/Coming-Closer-to-Jesus-Christ_transcript.md). During the conferences covered here, President Oaks served as First Counselor in the First Presidency (2018–April 2025), then as President of the Quorum of the Twelve Apostles presiding over the October 2025 conference following President Nelson's passing on September 27, 2025. He was ordained and set apart as President of the Church on October 14, 2025. Every quote has been read from the source file.
 
 ---
 
@@ -102,7 +102,7 @@ President Oaks's signature question — a filter for every decision:
 
 ### 6. Use the Four Divine Helps
 
-In his April 2025 address — his first as President of the Church — President Oaks laid out the four divine helps God has provided for mortality:
+In his April 2025 conference address — delivered while still serving as First Counselor (President Nelson was still living) — President Oaks laid out the four divine helps God has provided for mortality:
 
 1. **The Light of Christ** — given to every person born
 2. **The scriptures, commandments, ordinances, and covenants**
@@ -189,7 +189,7 @@ President Oaks repeatedly teaches that God's love is *so* vast that nearly all H
 
 ## IV. "Coming Closer to Jesus Christ" — First Address as Prophet (February 2026)
 
-President Oaks's [BYU devotional on February 10, 2026](../talks/Coming-Closer-to-Jesus-Christ_transcript.md) is significant: his first major address as prophet outside of general conference. Speaking to BYU and "the larger audience we include with current technology," he addressed the very heart of what Noah faced — a people wrestling with doubt, distraction, and the temptation to drift.
+President Oaks's [BYU devotional on February 10, 2026](../talks/Coming-Closer-to-Jesus-Christ_transcript.md) is significant: his first public address as President of the Church (he was ordained October 14, 2025, after the October general conference had already concluded). Speaking to BYU and "the larger audience we include with current technology," he addressed the very heart of what Noah faced — a people wrestling with doubt, distraction, and the temptation to drift.
 
 ### The Mantle
 
@@ -252,7 +252,8 @@ His closing counsel was practical and unified:
 | **2022** | Divine love in the Father's plan; help the poor |
 | **2023** | Teachings of Jesus Christ; kingdoms of glory — *become*, don't just know |
 | **2024** | Covenants and responsibilities (garments); following Christ as peacemakers |
-| **2025** | Four divine helps for mortality; the family-centered gospel |
+| **Apr 2025** | Four divine helps for mortality (as First Counselor — Nelson still living) |
+| **Oct 2025** | The family-centered gospel (presiding as President of the Twelve after Nelson's passing Sept 27; ordained prophet Oct 14) |
 | **2026** | Coming closer to Jesus Christ: faith, humility, association with believers, patience — reaffirms Nelson's Holy Ghost warning |
 
 President Oaks brings the voice of a legal mind and a doctrinal teacher. Where President Nelson speaks with prophetic urgency and apostolic blessing, President Oaks constructs the *framework* — the doctrinal architecture that explains *why* the invitations matter. His consistent message: understand the plan, choose the celestial, and let the Atonement do its work. His first devotional as prophet signals continuity — doubling down on Nelson's core warning about the Holy Ghost while adding his own emphasis on humility, faithful association, and patience.
