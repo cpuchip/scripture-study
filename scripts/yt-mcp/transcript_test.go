@@ -285,20 +285,28 @@ func TestGenerateTranscriptMarkdownSentences(t *testing.T) {
 
 	md := GenerateTranscriptMarkdown(meta, sentences)
 
-	// Should contain sentence-level timestamps
-	if !strings.Contains(md, "[0:03]") {
-		t.Error("expected [0:03] timestamp")
+	// Should contain reference-style timestamp links in body
+	if !strings.Contains(md, "[0:03][t3]") {
+		t.Error("expected [0:03][t3] reference link")
 	}
-	if !strings.Contains(md, "[0:05]") {
-		t.Error("expected [0:05] timestamp")
+	if !strings.Contains(md, "[0:05][t5]") {
+		t.Error("expected [0:05][t5] reference link")
 	}
-	if !strings.Contains(md, "[0:15]") {
-		t.Error("expected [0:15] timestamp")
+	if !strings.Contains(md, "[0:15][t15]") {
+		t.Error("expected [0:15][t15] reference link")
 	}
 
 	// Should have paragraph break between sentence 2 and 3 (gap > 3s)
-	if !strings.Contains(md, "Second sentence follows.\n\n[0:15]") {
+	if !strings.Contains(md, "Second sentence follows.\n\n[0:15][t15]") {
 		t.Error("expected paragraph break between sentences 2 and 3")
+	}
+
+	// Reference definitions should appear at the bottom
+	if !strings.Contains(md, "[t3]: https://www.youtube.com/watch?v=test123&t=3") {
+		t.Error("expected [t3] reference definition")
+	}
+	if !strings.Contains(md, "[t15]: https://www.youtube.com/watch?v=test123&t=15") {
+		t.Error("expected [t15] reference definition")
 	}
 
 	t.Logf("Generated markdown:\n%s", md)

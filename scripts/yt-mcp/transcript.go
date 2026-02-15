@@ -538,10 +538,15 @@ const sentenceParagraphGap = 3.0
 // ── Markdown Generation ─────────────────────────────────────────────────────
 
 // GenerateTranscriptMarkdown creates the readable transcript.md content.
-// Each sentence gets its own clickable [M:SS](url&t=N) timestamp link.
+// Uses reference-style links to keep the transcript body compact:
+//
+//	Body:   [M:SS][tN] sentence text
+//	Footer: [tN]: url&t=N
+//
 // Sentences are grouped into visual paragraphs by time gaps.
 func GenerateTranscriptMarkdown(meta *VideoMetadata, sentences []Sentence) string {
 	var b strings.Builder
+	var refs strings.Builder
 
 	// Header
 	fmt.Fprintf(&b, "# %s\n\n", meta.Title)
@@ -552,11 +557,13 @@ func GenerateTranscriptMarkdown(meta *VideoMetadata, sentences []Sentence) strin
 	b.WriteString("\n---\n\n")
 	b.WriteString("## Transcript\n\n")
 
-	// Sentences with timestamp links, grouped into visual paragraphs by time gaps
+	// Sentences with reference-style timestamp links, grouped into visual paragraphs
 	for i, s := range sentences {
 		secs := int(math.Floor(s.Begin))
 		ts := formatTimestamp(s.Begin)
-		fmt.Fprintf(&b, "[%s](%s&t=%d) %s\n", ts, meta.URL, secs, s.Text)
+		ref := fmt.Sprintf("t%d", secs)
+		fmt.Fprintf(&b, "[%s][%s] %s\n", ts, ref, s.Text)
+		fmt.Fprintf(&refs, "[%s]: %s&t=%d\n", ref, meta.URL, secs)
 
 		// Insert paragraph break if there's a big gap before the next sentence
 		if i+1 < len(sentences) {
@@ -567,7 +574,10 @@ func GenerateTranscriptMarkdown(meta *VideoMetadata, sentences []Sentence) strin
 		}
 	}
 
-	b.WriteString("\n")
+	// Append reference link definitions
+	b.WriteString("\n---\n\n")
+	b.WriteString(refs.String())
+
 	return b.String()
 }
 
