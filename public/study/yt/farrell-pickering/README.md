@@ -2,7 +2,7 @@
 
 A 5-phase AI-assisted evaluation of Farrell Pickering's 2-hour presentation "Temple Mount & Daniel's Numbers — Latter Day Prophecy: Where Are We?", delivered to the Sisters of Liberty group and published on the [Latter-Day Media - Come Follow Christ](https://www.youtube.com/@latter-day-media-come-follow-christ) YouTube channel.
 
-> *"Prove all things; hold fast that which is good."* — [1 Thessalonians 5:21](../../../gospel-library/eng/scriptures/nt/1-thes/5.md)
+> *"Prove all things; hold fast that which is good."* — [1 Thessalonians 5:21](https://www.churchofjesuschrist.org/study/scriptures/nt/1-thes/5?lang=eng&id=p21#p21)
 
 ---
 
