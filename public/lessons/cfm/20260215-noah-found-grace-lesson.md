@@ -95,7 +95,7 @@ Ask: *"Perfect here doesn't mean flawless — it means whole-hearted. His heart 
 
 **Teaching Approach:**
 
-Read the manual's quote: *"Elder Neal A. Maxwell explained that at the time of the Flood, 'corruption had reached an agency-destroying point that spirits could not, in justice, be sent here.'"*
+Read [the manual's](https://www.churchofjesuschrist.org/study/manual/come-follow-me-for-home-and-church-old-testament-2026/07?lang=eng) quote: *"Elder Neal A. Maxwell explained that at the time of the Flood, 'corruption had reached an agency-destroying point that spirits could not, in justice, be sent here.'"* (Neal A. Maxwell, *We Will Prove Them Herewith* [1982], 58; quoted in [Come, Follow Me](https://www.churchofjesuschrist.org/study/manual/come-follow-me-for-home-and-church-old-testament-2026/07?lang=eng))
 
 Pause. Let that land.
 
@@ -173,7 +173,7 @@ Then read this from 2 Nephi 31:20-21:
 1. *"Where do we see 'Babel thinking' in our world today — trying to reach heaven (or happiness, or security) on our own terms?"*
 2. *"Both Babel and Zion had unity and cooperation. What made the difference? What does that teach us about our wards, families, and communities?"*
 
-**Key Insight:** The manual connects Babel to last week's Enoch study. Enoch's people reached heaven through covenant — one heart, one mind, dwelling in righteousness. The people of Babel tried to reach heaven through ambition and pride. The gateway to heaven has always been and will always be Jesus Christ.
+**Key Insight:** [The manual](https://www.churchofjesuschrist.org/study/manual/come-follow-me-for-home-and-church-old-testament-2026/07?lang=eng) connects Babel to last week's Enoch study. Enoch's people reached heaven through covenant — one heart, one mind, dwelling in righteousness. The people of Babel tried to reach heaven through ambition and pride. The gateway to heaven has always been and will always be Jesus Christ.
 
 ---
 
@@ -189,7 +189,7 @@ Then read this from 2 Nephi 31:20-21:
 
 **Promised Blessings:**
 - The same grace Noah found is available to us: *"For if you keep my commandments you shall receive of his fulness, and be glorified in me as I am in the Father; therefore, I say unto you, you shall receive grace for grace."* — [D&C 93:20](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/93?lang=eng&id=p20#p20)
-- Safety through the prophet: *"There is spiritual safety in following the Lord's prophet."* — CFM Manual
+- Safety through the prophet: *"There is spiritual safety in following the Lord's prophet."* — [Come, Follow Me](https://www.churchofjesuschrist.org/study/manual/come-follow-me-for-home-and-church-old-testament-2026/07?lang=eng)
 - The promise of Zion: *"When thy posterity shall embrace the truth, and look upward, then shall Zion look downward, and all the heavens shall shake with gladness."* — [JST Genesis 9:22](https://www.churchofjesuschrist.org/study/scriptures/jst/jst-gen/9?lang=eng&id=p22#p22)
 
 ---
@@ -213,16 +213,16 @@ Then read this from 2 Nephi 31:20-21:
 - Hymn: "[Reverently and Meekly Now](https://www.churchofjesuschrist.org/media/music/songs/reverently-and-meekly-now)," no. 185 — sacrament as covenant reminder
 
 ### Backup Discussion Questions
-- *"Moses 8:24 shows Noah preaching faith, repentance, baptism, and the Holy Ghost — in the name of Jesus Christ. How does knowing the gospel has always been the same strengthen your testimony?"*
-- *"The brother of Jared at Babel cried to the Lord and was preserved from the confusion (Ether 1:33-43). When confusion surrounds you, what does 'crying to the Lord' look like in practice?"*
-- *"The people in Noah's day heard the prophet and said, 'We're fine — everything's normal' (Moses 8:21). How do we guard against that same complacency?"*
+- *"[Moses 8:24](https://www.churchofjesuschrist.org/study/scriptures/pgp/moses/8?lang=eng&id=p24#p24) shows Noah preaching faith, repentance, baptism, and the Holy Ghost — in the name of Jesus Christ. How does knowing the gospel has always been the same strengthen your testimony?"*
+- *"The brother of Jared at Babel cried to the Lord and was preserved from the confusion ([Ether 1:33-43](https://www.churchofjesuschrist.org/study/scriptures/bofm/ether/1?lang=eng&id=p33-p43#p33)). When confusion surrounds you, what does 'crying to the Lord' look like in practice?"*
+- *"The people in Noah's day heard the prophet and said, 'We're fine — everything's normal' ([Moses 8:21](https://www.churchofjesuschrist.org/study/scriptures/pgp/moses/8?lang=eng&id=p21#p21)). How do we guard against that same complacency?"*
 
 ### Quotes
 > "A perfect and loving Father in Heaven has chosen the pattern of revealing truth to His children through a prophet."
 > — Elder Allen D. Haynie, ["A Living Prophet for the Latter Days"](https://www.churchofjesuschrist.org/study/general-conference/2023/04/16haynie?lang=eng)
 
 > "Corruption had reached an agency-destroying point that spirits could not, in justice, be sent here."
-> — Elder Neal A. Maxwell, *We Will Prove Them Herewith* (1982)
+> — Elder Neal A. Maxwell, *We Will Prove Them Herewith* (1982), 58; quoted in [Come, Follow Me](https://www.churchofjesuschrist.org/study/manual/come-follow-me-for-home-and-church-old-testament-2026/07?lang=eng)
 
 > "By faith Noah, being warned of God of things not seen as yet, moved with fear, prepared an ark to the saving of his house."
 > — [Hebrews 11:7](https://www.churchofjesuschrist.org/study/scriptures/nt/heb/11?lang=eng&id=p7#p7)
@@ -280,4 +280,4 @@ Based on [Teaching in the Savior's Way](https://www.churchofjesuschrist.org/stud
 
 This gives the class a visual roadmap and helps them see how the principles connect.
 
-**If discussion runs deep on the Flood/mercy question (Principle 2):** That's okay — let it go. It's often the most faith-building conversation in this lesson. The manual specifically calls it out.
+**If discussion runs deep on the Flood/mercy question (Principle 2):** That's okay — let it go. It's often the most faith-building conversation in this lesson. [The manual](https://www.churchofjesuschrist.org/study/manual/come-follow-me-for-home-and-church-old-testament-2026/07?lang=eng) has an entire section titled "The Flood was an act of God's mercy" — it's meant to be explored.
