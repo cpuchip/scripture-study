@@ -4,7 +4,7 @@
 
 > "How is our living prophet like Noah? Of course, the Lord's prophet today isn't warning of a Flood or inviting us to help build an ark. But what is he warning us about? And what is he inviting us to do?" — *Come, Follow Me* Manual
 
-The following is drawn from **44 general conference addresses** by President Nelson from April 2018 (when he became President of the Church) through April 2025. Every quote has been read from the source file.
+The following is drawn from **44 general conference addresses** by President Nelson from April 2018 (when he became President of the Church) through April 2025, supplemented by the *[Teachings of Presidents of the Church: Russell M. Nelson](https://www.churchofjesuschrist.org/study/manual/teachings-of-presidents-of-the-church-russell-m-nelson?lang=eng)* manual — a curated collection spanning his entire ministry that the *Come, Follow Me* manual specifically invites us to review. Every quote has been read from the source file.
 
 ---
 
@@ -188,7 +188,46 @@ Noah promised that those who believed and repented would "receive the Holy Ghost
 
 ---
 
-## IV. The Arc of His Ministry
+## IV. From the *Teachings of Presidents of the Church* Manual
+
+The *Come, Follow Me* manual invites us to "review a chapter from *Teachings of Presidents of the Church* in Gospel Library, especially the 'Invitations and Promised Blessings' section." This manual draws from President Nelson's *entire ministry* — not just his conferences as President — and reveals that the same themes he emphasized as prophet were threads running through his teaching for decades. The manual's "Invitations and Promised Blessings" sections function like a distilled prophetic voice, showing what a lifetime of receiving revelation has taught one man about what God wants from His children.
+
+### The Lifetime Pattern
+
+The manual reveals that President Nelson didn't discover these themes when he became prophet — he *amplified* them. His conference urgency was the crescendo of a lifetime:
+
+| Manual Chapter | Core Invitation | Core Promise |
+|----------------|-----------------|--------------|
+| **Ch. 1: Plan of Happiness** | "Take the long view — an eternal view. Put Jesus Christ first." | "The very things that will make your *mortal* life the best it can be are exactly the *same* things that will make your life throughout all *eternity* the best it can be!" |
+| **Ch. 4: Faith** | "What would you do if you had *more* faith? Think about it. Write about it. Then *receive more* faith by doing something that *requires more* faith." | "Faith *always* increases our access to godly power. … In coming days, we will see the *greatest* manifestations of the Savior's power that the world has *ever* seen." |
+| **Ch. 5: Repentance** | "Do not fear or delay repenting. Please do it now. Time is running out." | "Nothing is more liberating, more ennobling, or more crucial to our individual progression than is a regular, daily focus on repentance." |
+| **Ch. 8: Abrahamic Covenant** | "You can lay claim to *all* the blessings of the Abrahamic covenant." | "Celestial marriage is the covenant of exaltation." |
+| **Ch. 9: Gathering of Israel** | "Disengage from a constant reliance on social media. … Read daily from the Book of Mormon." | "You and I are living to see, and will continue to see, Israel gathered with great power." |
+| **Ch. 10: Covenant Relationship** | "Keep on the covenant path. … Come back if you have stepped off." | "Once we make a covenant with God, we leave neutral ground forever. … He will never tire in His efforts to help us." (*Hesed* — חֶסֶד) |
+| **Ch. 11: Divine Law** | "Seek truth by learning the laws of God." | "As you keep God's commandments, you will become increasingly free." |
+| **Ch. 13: Holy Temple** | "Make an appointment regularly with the Lord — to be in His holy house." | "Nothing will help you *more* to hold fast to the iron rod. … Nothing will protect you *more*. … Nothing!" |
+| **Ch. 14: Revelation** | "Stretch beyond your current spiritual ability to receive personal revelation." | "If you will do the spiritual work, you will have *all* the direction you will ever need in your life." |
+| **Ch. 16: Spiritual Momentum** | "Take charge of your own testimony. Work for it. Nurture it. Feed it truth." | "I bless you in your quest to overcome this world. … Because Jesus Christ overcame this world, you can too." |
+| **Ch. 18: Joy and Hope** | "Look to the Lord, and He will fill your heart with hope." | "Joy comes from and because of Him. … For Latter-day Saints, Jesus Christ *is* joy!" |
+| **Ch. 21: Prophets** | "Heed the words of prophets. Ask for your own witness about what the prophet has proclaimed." | "I promise that you will be blessed with additional power to deal with temptation, struggles, and weakness." |
+
+### Key Manual Insights Not in Conference Talks
+
+Several teachings emerge more clearly in the manual's curated format:
+
+**God's *hesed* — covenant love** (Ch. 10): "Once we make a covenant with God, we leave neutral ground forever. God will not abandon His relationship with those who have forged such a bond with Him. … Because God has *hesed* for those who have covenanted with Him, He will love them. He will continue to work with them and offer them opportunities to change."
+
+**The five-step faith framework** (Ch. 4): Study → Choose to believe → Act in faith → Partake of sacred ordinances → Ask for help. "The Lord does not require *perfect* faith for us to have access to His *perfect* power."
+
+**Urgency woven throughout**: "Now is the time to prepare to meet God. Tomorrow may be too late." (Ch. 5) | "Time is running out." (Ch. 5, 9) | "Please do *not* stay off the covenant path one more minute." (Ch. 9)
+
+**The cost of ignoring the prophet** (Ch. 21): "Gratefully we thank God for a prophet to guide us in these latter days. But many turn a deaf ear. … They do so at great risk, for scriptures contain this warning: 'Every soul, which will not hear that prophet, shall be destroyed from among the people.'" (Acts 3:22–23)
+
+**God weeps for the disinterested** (Ch. 10): "The anguish of my heart is that many people whom I love, whom I admire, and whom I respect decline His invitation. … I understand why God weeps. I also weep for such friends and relatives."
+
+---
+
+## V. The Arc of His Ministry
 
 Looking across seven years and 44 talks, a clear trajectory emerges:
 
@@ -207,7 +246,7 @@ The urgency increases. The specificity sharpens. The promises deepen. The patter
 
 ---
 
-## V. Recurring Themes at a Glance
+## VI. Recurring Themes at a Glance
 
 | Theme | Conference Sessions Referenced |
 |-------|-------------------------------|
