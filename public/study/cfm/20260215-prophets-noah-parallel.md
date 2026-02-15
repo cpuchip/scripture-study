@@ -30,7 +30,7 @@ Over seven years and 44 conference addresses, his message was unwavering: this i
 
 ### President Oaks (2018–present)
 
-As First Counselor and now President of the Church, President Oaks has consistently built the *doctrinal framework* undergirding the prophetic warnings — the plan of salvation, the kingdoms of glory, the divine nature of family, the mechanisms of spiritual decline:
+As First Counselor in the First Presidency (2018–2025) and now President of the Church (ordained October 14, 2025, following President Nelson's passing on September 27), President Oaks has consistently built the *doctrinal framework* undergirding the prophetic warnings — the plan of salvation, the kingdoms of glory, the divine nature of family, the mechanisms of spiritual decline:
 
 > "We who know God's plan and who have covenanted to participate have a clear responsibility to teach these truths and do all that we can to further them." — [The Great Plan, April 2020](https://www.churchofjesuschrist.org/study/general-conference/2020/04/51oaks?lang=eng)
 
@@ -92,10 +92,10 @@ The *Come, Follow Me* manual specifically invites us to "review a chapter from *
 
 The manual's "Invitations and Promised Blessings" sections read like a prophetic distillation. A few examples that deepen the Noah parallel:
 
-- **"Time is running out."** (Ch. 5, 9) — echoing "My Spirit shall not always strive with man" ([Moses 8:17](https://www.churchofjesuschrist.org/study/scriptures/pgp/moses/8?lang=eng&id=p17#p17))
-- **"Please do *not* stay off the covenant path one more minute."** (Ch. 9) — echoing "Believe and repent … and if ye do not this, the floods will come in upon you" ([Moses 8:24](https://www.churchofjesuschrist.org/study/scriptures/pgp/moses/8?lang=eng&id=p24#p24))
-- **"Once we make a covenant with God, we leave neutral ground forever."** (Ch. 10) — echoing Noah's covenant with God, where boarding the ark *was* the covenant
-- **"I understand why God weeps. I also weep for such friends and relatives."** (Ch. 10) — echoing God's weeping over noise, violence, and rejection in Noah's generation
+- **"Time is running out."** ([Ch. 5](https://www.churchofjesuschrist.org/study/manual/teachings-of-presidents-of-the-church-russell-m-nelson/05-repentance?lang=eng), [9](https://www.churchofjesuschrist.org/study/manual/teachings-of-presidents-of-the-church-russell-m-nelson/09-the-gathering-of-israel?lang=eng)) — echoing "My Spirit shall not always strive with man" ([Moses 8:17](https://www.churchofjesuschrist.org/study/scriptures/pgp/moses/8?lang=eng&id=p17#p17))
+- **"Please do *not* stay off the covenant path one more minute."** ([Ch. 9](https://www.churchofjesuschrist.org/study/manual/teachings-of-presidents-of-the-church-russell-m-nelson/09-the-gathering-of-israel?lang=eng)) — echoing "Believe and repent … and if ye do not this, the floods will come in upon you" ([Moses 8:24](https://www.churchofjesuschrist.org/study/scriptures/pgp/moses/8?lang=eng&id=p24#p24))
+- **"Once we make a covenant with God, we leave neutral ground forever."** ([Ch. 10](https://www.churchofjesuschrist.org/study/manual/teachings-of-presidents-of-the-church-russell-m-nelson/10-a-covenant-relationship-with-god?lang=eng)) — echoing Noah's covenant with God, where boarding the ark *was* the covenant
+- **"I understand why God weeps. I also weep for such friends and relatives."** ([Ch. 10](https://www.churchofjesuschrist.org/study/manual/teachings-of-presidents-of-the-church-russell-m-nelson/10-a-covenant-relationship-with-god?lang=eng)) — echoing God's weeping over noise, violence, and rejection in Noah's generation
 
 ---
 
@@ -171,10 +171,10 @@ President Nelson has answered this question explicitly across his ministry. The 
 | **Humility and patience** | "We are all a work in progress. … Hold on to the first article of faith, even if something else is uncertain." — Oaks, [Coming Closer to Jesus Christ, Feb 2026](../talks/Coming-Closer-to-Jesus-Christ_transcript.md) |
 
 And from the *Teachings* manual, the ark's foundation described across a lifetime:
-- **Covenant love (*hesed*)** — "God will not abandon His relationship with those who have forged such a bond with Him." (Ch. 10)
-- **Heavenly power** — "The reward for keeping covenants with God is heavenly power — power that strengthens us to withstand our trials, temptations, and heartaches better." (Ch. 10)
-- **Freedom** — "As you keep God's commandments, you will become increasingly free." (Ch. 11)
-- **Every sincere seeker finds Him** — "Every sincere seeker of Jesus Christ will find Him in the temple." (Ch. 13)
+- **Covenant love (*hesed*)** — "God will not abandon His relationship with those who have forged such a bond with Him." ([Ch. 10](https://www.churchofjesuschrist.org/study/manual/teachings-of-presidents-of-the-church-russell-m-nelson/10-a-covenant-relationship-with-god?lang=eng))
+- **Heavenly power** — "The reward for keeping covenants with God is heavenly power — power that strengthens us to withstand our trials, temptations, and heartaches better." ([Ch. 10](https://www.churchofjesuschrist.org/study/manual/teachings-of-presidents-of-the-church-russell-m-nelson/10-a-covenant-relationship-with-god?lang=eng))
+- **Freedom** — "As you keep God's commandments, you will become increasingly free." ([Ch. 11](https://www.churchofjesuschrist.org/study/manual/teachings-of-presidents-of-the-church-russell-m-nelson/11-divine-law-and-absolute-truth?lang=eng))
+- **Every sincere seeker finds Him** — "Every sincere seeker of Jesus Christ will find Him in the temple." ([Ch. 13](https://www.churchofjesuschrist.org/study/manual/teachings-of-presidents-of-the-church-russell-m-nelson/13-the-holy-temple?lang=eng))
 
 Noah's ark was a refuge from physical destruction. Our ark — built from covenants, temples, revelation, repentance, family, and faith — is a refuge from spiritual destruction. The flood this time is not water. It is deception, distraction, contention, and despair. And the invitation to board the ark is just as urgent.
 
