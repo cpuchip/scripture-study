@@ -121,7 +121,23 @@ But not everyone's language was confounded.
 
 The Jaredites carried the pre-Babel language — presumably the language of Adam, or something descended from it — across the ocean to the Americas. Their record (the 24 gold plates found by the people of Limhi) contained "an account from that time even to the great tower, and whatsoever things transpired among the children of men until that time" ([Ether 1:3](../gospel-library/eng/scriptures/bofm/ether/1.md)). This was a record that reached all the way back to Adam and the Creation, written in an unconfounded language.
 
-The brother of Jared's experience on Mount Shelem is one of the most remarkable theophanies in scripture. Christ showed him His spirit body, told him "I am Jesus Christ" ([Ether 3:14](../gospel-library/eng/scriptures/bofm/ether/3.md)), and then commanded him to write what he had seen "in a language that they cannot be read" ([Ether 3:22](../gospel-library/eng/scriptures/bofm/ether/3.md)). There's something striking here: the Lord *confounded* the brother of Jared's written language for this specific record — the same Lord who had *preserved* his spoken language at Babel. The sealed portion was written in a language that had been deliberately re-confounded. It's as if the Lord was saying: *some truths require a specific language to be restored before they can be read.*
+The brother of Jared's experience on Mount Shelem is one of the most remarkable theophanies in scripture. Christ showed him His spirit body, told him "I am Jesus Christ" ([Ether 3:14](../gospel-library/eng/scriptures/bofm/ether/3.md)), and then commanded him to write what he had seen and seal it up:
+
+> "Ye shall write them in a language that they cannot be read."
+> — [Ether 3:22](../gospel-library/eng/scriptures/bofm/ether/3.md)
+
+At first glance this might seem like the Lord confounded the brother of Jared's writing. But look at verse 24 carefully:
+
+> "For behold, **the language which ye shall write I have confounded**; wherefore I will cause in my own due time that these stones shall magnify to the eyes of men these things which ye shall write."
+> — [Ether 3:24](../gospel-library/eng/scriptures/bofm/ether/3.md)
+
+"I **have** confounded" — past tense. The Lord isn't saying He's going to scramble the brother of Jared's writing. He's saying that the language in which the brother of Jared will write has *already been confounded* — for everyone else, at Babel. The brother of Jared still speaks and writes in the unconfounded tongue. But no one else on earth can read it anymore, because God broke every other people's connection to that language at the tower.
+
+This reading makes far more sense in context. Why would the Lord *preserve* the brother of Jared's language at Babel ([Ether 1:35](../gospel-library/eng/scriptures/bofm/ether/1.md)) only to re-confound it shortly after? He wouldn't. The brother of Jared wrote in his own tongue — the pre-Babel language, presumably the language of Adam or its direct descendant — and no one could read it because *they* had been confounded, not *it*.
+
+The Urim and Thummim, then, are not decoders of a scrambled text. They are a *bridge* — translating from the original, pure language into whatever tongue the reader understands. "These stones shall magnify to the eyes of men these things which ye shall write" ([Ether 3:24](../gospel-library/eng/scriptures/bofm/ether/3.md)). Not unscramble — *magnify*. The record was always coherent; it was the world that lost the ability to read it.
+
+This means **the sealed portion of the Book of Mormon may literally be written in the language of Adam** — sealed not by encryption but by Babel itself. And Zephaniah's promise that God will "turn to the people a pure language" ([Zephaniah 3:9](../gospel-library/eng/scriptures/ot/zeph/3.md)) may be directly connected to the day those sealed records are finally opened.
 
 And the word "Deseret" — honey bee — is a surviving artifact of that Jaredite tongue ([Ether 2:3](../gospel-library/eng/scriptures/bofm/ether/2.md)).
 
@@ -265,7 +281,7 @@ This may be what Enoch meant when he said:
 | **It carried divine names** | God's name *in this language* is "Man of Holiness"; Christ is "Son of Man" (Son Ahman) | [Moses 6:57](../gospel-library/eng/scriptures/pgp/moses/6.md); [D&C 78:20](../gospel-library/eng/scriptures/dc-testament/dc/78.md); [95:17](../gospel-library/eng/scriptures/dc-testament/dc/95.md) |
 | **It had power** | Enoch's language moved mountains and reversed rivers | [Moses 7:13](../gospel-library/eng/scriptures/pgp/moses/7.md) |
 | **It was confounded** | At Babel, God broke the unity of speech because it served rebellion | [Genesis 11:1–9](../gospel-library/eng/scriptures/ot/gen/11.md) |
-| **It was preserved** | The Jaredites' language was not confounded; fragments survive through revelation | [Ether 1:34–35](../gospel-library/eng/scriptures/bofm/ether/1.md); [Abraham 3:13](../gospel-library/eng/scriptures/pgp/abr/3.md) |
+| **It was preserved** | The Jaredites' language was not confounded; the sealed portion may be written in it; the Urim and Thummim bridge the gap | [Ether 1:34–35](../gospel-library/eng/scriptures/bofm/ether/1.md); [Ether 3:22–24](../gospel-library/eng/scriptures/bofm/ether/3.md); [Abraham 3:13](../gospel-library/eng/scriptures/pgp/abr/3.md) |
 | **It will be restored** | Zephaniah prophesied a "pure language" returned to enable unified worship | [Zephaniah 3:9](../gospel-library/eng/scriptures/ot/zeph/3.md) |
 | **The pattern survives** | Adam's teaching pattern — Fall, Atonement, baptism, Holy Ghost — repeats in every dispensation | [Moses 5:58–59](../gospel-library/eng/scriptures/pgp/moses/5.md); [Moses 6:48–68](../gospel-library/eng/scriptures/pgp/moses/6.md); [3 Nephi 11](../gospel-library/eng/scriptures/bofm/3-ne/11.md) |
 | **It is the love of Christ** | The deepest "pure language" transcends words — it is the pure love of Christ | [President Uchtdorf, April 2013](../gospel-library/eng/general-conference/2013/04/your-wonderful-journey-home.md) |
@@ -274,15 +290,17 @@ This may be what Enoch meant when he said:
 
 ## Open Questions
 
-1. **How much of the Abrahamic astronomical vocabulary (Shinehah, Kokob, Kolob, etc.) is Adamic vs. Egyptian vs. something else?** Abraham received these words by the Urim and Thummim ([Abraham 3:1, 4](../gospel-library/eng/scriptures/pgp/abr/3.md)) — were they translated into the language of Adam, or were they from another sacred register?
+1. **How much of the Abrahamic astronomical vocabulary (Shinehah, Kokob, Kolob, etc.) is Adamic vs. Egyptian vs. something else?** Abraham received these words by the Urim and Thummim ([Abraham 3:1, 4](../gospel-library/eng/scriptures/pgp/abr/3.md)) — were they translated into the language of Adam, or were they from another sacred register? The fact that the Urim and Thummim was the instrument suggests these terms may be the *output* of the same interpretive bridge used for the Jaredite records — and therefore may be Adamic.
 
-2. **What is the relationship between the sealed portion of the Book of Mormon and the language of Adam?** The brother of Jared was told to "write them in a language that they cannot be read" ([Ether 3:22](../gospel-library/eng/scriptures/bofm/ether/3.md)) — was this the pure Adamic language, sealed precisely because no one in Babel's aftermath could read it?
+2. **The sealed portion is likely written in the language of Adam.** The brother of Jared wrote in his preserved, unconfounded tongue ([Ether 3:22–24](../gospel-library/eng/scriptures/bofm/ether/3.md)). The Urim and Thummim were provided because the *readers'* languages had been confounded at Babel, not because the *writing* was scrambled. The sealed portion may literally be a record composed in the pure Adamic language — locked behind Babel, awaiting the restoration of the pure language (Zephaniah 3:9) to be fully opened.
 
-3. **Is "gnolaum" ([Abraham 3:18](../gospel-library/eng/scriptures/pgp/abr/3.md)) an Adamic word?** It means "eternal" and appears in the context of Abraham's astronomical vision. It doesn't match known Egyptian or Hebrew roots.
+3. **Do the Urim and Thummim operate *in* the language of Adam?** Abraham received Adamic vocabulary through them. The brother of Jared's record was paired with them. Joseph Smith used them to translate the Book of Mormon. If the interpreters function as a gateway between the pure language and mortal tongues, they are themselves Adamic instruments — tools forged in the original language to bridge every subsequent one.
 
-4. **Will the restoration of the "pure language" (Zephaniah 3:9) coincide with the opening of the sealed records?** If the sealed portion requires the pure language, and the pure language is restored in the Millennium, these events may be connected.
+4. **Is "gnolaum" ([Abraham 3:18](../gospel-library/eng/scriptures/pgp/abr/3.md)) an Adamic word?** It means "eternal" and appears in the context of Abraham's astronomical vision. It doesn't match known Egyptian or Hebrew roots.
 
-5. **What did Adam-ondi-Ahman sound like?** When Adam gathered his posterity in the valley of Adam-ondi-Ahman and "predicted whatsoever should befall his posterity unto the latest generation" ([D&C 107:56](../gospel-library/eng/scriptures/dc-testament/dc/107.md)), was he speaking in the pure language? And was it "written in the book of Enoch" ([D&C 107:57](../gospel-library/eng/scriptures/dc-testament/dc/107.md)) in that same tongue?
+5. **Will the restoration of the "pure language" (Zephaniah 3:9) coincide with the opening of the sealed records?** If the sealed portion is written in the Adamic tongue, and the pure language is restored in the Millennium, these events may be directly connected — the opening of the record and the restoration of the language happening together.
+
+6. **What did Adam-ondi-Ahman sound like?** When Adam gathered his posterity in the valley of Adam-ondi-Ahman and "predicted whatsoever should befall his posterity unto the latest generation" ([D&C 107:56](../gospel-library/eng/scriptures/dc-testament/dc/107.md)), was he speaking in the pure language? And was it "written in the book of Enoch" ([D&C 107:57](../gospel-library/eng/scriptures/dc-testament/dc/107.md)) in that same tongue?
 
 ---
 
