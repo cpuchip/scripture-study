@@ -39,6 +39,8 @@ func (t *Tools) List(args json.RawMessage) (*ListResponse, error) {
 			return t.listManualCollections("manual")
 		case "magazine":
 			return t.listManualCollections("magazine")
+		case "music":
+			return t.listManualCollections("music")
 		}
 	}
 
@@ -56,6 +58,8 @@ func (t *Tools) List(args json.RawMessage) (*ListResponse, error) {
 		return t.listManuals(parts[1:], "manual")
 	case "magazine", "magazines", "liahona", "ensign":
 		return t.listManuals(parts[1:], "magazine")
+	case "music":
+		return t.listManuals(parts[1:], "music")
 	default:
 		// Try to interpret as volume or collection
 		return t.tryListPath(parts)
@@ -68,6 +72,7 @@ func (t *Tools) listContentTypes() (*ListResponse, error) {
 		{Name: "General Conference", Path: "general-conference", Type: "category"},
 		{Name: "Manuals", Path: "manuals", Type: "category"},
 		{Name: "Magazines", Path: "magazines", Type: "category"},
+		{Name: "Music", Path: "music", Type: "category"},
 	}
 
 	return &ListResponse{

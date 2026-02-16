@@ -63,7 +63,7 @@ func (t *Tools) Search(args json.RawMessage) (*SearchResponse, error) {
 	}
 
 	// Search manuals
-	if params.Source == "all" || params.Source == "manual" || params.Source == "magazine" {
+	if params.Source == "all" || params.Source == "manual" || params.Source == "magazine" || params.Source == "music" {
 		manualResults, err := t.searchManuals(params)
 		if err != nil {
 			return nil, fmt.Errorf("searching manuals: %w", err)
@@ -240,6 +240,8 @@ func (t *Tools) searchManuals(params SearchParams) ([]SearchResult, error) {
 		query += " AND m.content_type = 'magazine'"
 	} else if params.Source == "manual" {
 		query += " AND m.content_type IN ('manual', 'handbook')"
+	} else if params.Source == "music" {
+		query += " AND m.content_type = 'music'"
 	}
 
 	// Add path filter

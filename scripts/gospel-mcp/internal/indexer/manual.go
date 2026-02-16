@@ -50,6 +50,8 @@ func (idx *Indexer) indexManualFile(path string, info os.FileInfo, opts Options,
 	contentType := "manual"
 	if strings.Contains(collectionID, "handbook") {
 		contentType = "handbook"
+	} else if collectionID == "hymns" || collectionID == "childrens-songbook" {
+		contentType = "music"
 	}
 
 	// Generate source URL
@@ -174,4 +176,49 @@ func parseInt(s string) (int, error) {
 		result = result*10 + int(c-'0')
 	}
 	return result, nil
+}
+
+func (idx *Indexer) indexMusicFile(path string, info os.FileInfo, opts Options, result *Result) error {
+	relPath, _ := filepath.Rel(idx.root, path)
+	parts := strings.Split(relPath, string(os.PathSeparator))
+
+	// Expecting: gospel-library/eng/music/{collection}/{song}.md
+	if len(parts) < 5 {
+		return nil
+	}
+
+	collectionID := parts[3] // e.g., "hymns-for-home-and-church"
+	filename := filepath.Base(path)
+	section := strings.TrimSuffix(filename, ".md")
+
+	// Read file content
+	content, err := os.ReadFile(path)
+	if err != nil {
+		return err
+	}
+
+	fullContent := string(content)
+
+	// Extract title
+	title := extractManualTitle(fullContent)
+	if title == "" {
+		title = formatManualTitle(filename)
+	}
+
+	// Generate source URL
+	sourceURL := urlgen.Music(collectionID, section)
+
+	// Insert as manual with music content type
+	_, err = idx.db.Exec(`
+		INSERT OR REPLACE INTO manuals (content_type, collection_id, section, title, content, file_path, source_url)
+		VALUES (?, ?, ?, ?, ?, ?, ?)
+	`, "music", collectionID, section, title, fullContent, relPath, sourceURL)
+	if err != nil {
+		return err
+	}
+
+	result.MusicIndexed++
+
+	// Record metadata
+	return idx.recordMetadata(path, info, "music", 1)
 }

@@ -87,6 +87,35 @@ func KnownBooks() []ManualDefinition {
 	}
 }
 
+// KnownMusic returns known music collection definitions
+// Paths are relative to the gospel-library/eng/music/ directory
+func KnownMusic() []ManualDefinition {
+	return []ManualDefinition{
+		{Name: "Hymns for Home and Church", Path: "hymns-for-home-and-church", Type: "music"},
+		{Name: "Come and Behold Him", Path: "come-and-behold-him", Type: "music"},
+		{Name: "Selections for Christmas", Path: "selections-for-christmas", Type: "music"},
+		{Name: "Songs of Devotion Vol. 2", Path: "songs-of-devotion-for-everyday-listening-vol2", Type: "music"},
+		{Name: "Conference Music April 2024", Path: "music-from-april-2024-general-conference", Type: "music"},
+		{Name: "Conference Music October 2024", Path: "music-from-october-2024-general-conference", Type: "music"},
+		{Name: "Conference Music April 2025", Path: "music-from-april-2025-general-conference", Type: "music"},
+		{Name: "Conference Music October 2025", Path: "music-from-october-2025-general-conference", Type: "music"},
+		{Name: "Youth Music Festival 2024", Path: "youth-music-festival-2024", Type: "music"},
+		{Name: "Look Unto Christ 2025 Youth Album", Path: "look-unto-christ-2025-youth-album", Type: "music"},
+		{Name: "Walk With Me 2026 Youth Album", Path: "walk-with-me-2026-youth-album", Type: "music"},
+		{Name: "Using Hymns for Home and Church", Path: "using-hymns-for-home-and-church", Type: "music"},
+		{Name: "Tabernacle Choir Christmas Music", Path: "tabernacle-choir-christmas-music", Type: "music"},
+	}
+}
+
+// KnownHymnals returns music collections under eng/manual/ (traditional hymnbook, children's songbook)
+// Paths are relative to the gospel-library/eng/manual/ directory
+func KnownHymnals() []ManualDefinition {
+	return []ManualDefinition{
+		{Name: "Hymns (Traditional)", Path: "hymns", Type: "music"},
+		{Name: "Children's Songbook", Path: "childrens-songbook", Type: "music"},
+	}
+}
+
 // ParseManualFile parses a manual/book markdown file
 func ParseManualFile(filePath string, manualName string) (*ParsedManualChapter, error) {
 	file, err := os.Open(filePath)

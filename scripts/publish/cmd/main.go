@@ -238,6 +238,16 @@ func convertLink(match, sourceDir string) (string, bool) {
 		return match, false
 	}
 
+	// Handle local media files (.pdf, .mp3) inside gospel-library
+	if isLocalMediaLink(linkPath, sourceDir) {
+		mediaURL := convertLocalMediaToChurchURL(linkPath, sourceDir)
+		if mediaURL != "" {
+			return fmt.Sprintf("[%s](%s)", linkText, mediaURL), true
+		}
+		// Can't convert — leave as-is
+		return match, false
+	}
+
 	// Check if this is a books/ link (e.g., lecture-on-faith)
 	if strings.Contains(linkPath, "books/") || strings.Contains(linkPath, "lecture-on-faith") {
 		externalURL := convertToExternalBookURL(linkPath, linkText, sourceDir)
@@ -414,4 +424,88 @@ func convertLectureOnFaithURL(absPath, originalPath string) string {
 	}
 
 	return url
+}
+
+// isLocalMediaLink checks if a link points to a local media file (.pdf, .mp3)
+// that lives inside the gospel-library directory
+func isLocalMediaLink(linkPath, sourceDir string) bool {
+	lowerPath := strings.ToLower(linkPath)
+	if !strings.HasSuffix(lowerPath, ".pdf") && !strings.HasSuffix(lowerPath, ".mp3") {
+		return false
+	}
+
+	// Resolve to absolute to check if it's under gospel-library
+	var absPath string
+	if filepath.IsAbs(linkPath) {
+		absPath = linkPath
+	} else {
+		absPath = filepath.Join(sourceDir, linkPath)
+	}
+	absPath = filepath.Clean(absPath)
+
+	return strings.Contains(absPath, "gospel-library")
+}
+
+// convertLocalMediaToChurchURL converts a local .pdf/.mp3 link to the
+// corresponding Church website music page URL.
+// For example, a link to "come-lord-jesus.pdf" from within
+// gospel-library/eng/music/hymns-for-home-and-church/
+// becomes https://www.churchofjesuschrist.org/study/music/hymns-for-home-and-church/come-lord-jesus?lang=eng
+func convertLocalMediaToChurchURL(linkPath, sourceDir string) string {
+	// Resolve the path
+	var absPath string
+	if filepath.IsAbs(linkPath) {
+		absPath = linkPath
+	} else {
+		absPath = filepath.Join(sourceDir, linkPath)
+	}
+	absPath = filepath.Clean(absPath)
+
+	// Find gospel-library portion
+	idx := strings.Index(absPath, "gospel-library")
+	if idx == -1 {
+		return ""
+	}
+
+	// Get path after gospel-library/eng/
+	pathAfterGL := absPath[idx:]
+	pathAfterGL = strings.TrimPrefix(pathAfterGL, "gospel-library")
+	pathAfterGL = strings.TrimPrefix(pathAfterGL, string(filepath.Separator))
+	pathAfterGL = strings.TrimPrefix(pathAfterGL, "eng")
+	pathAfterGL = strings.TrimPrefix(pathAfterGL, string(filepath.Separator))
+
+	// Convert to forward slashes
+	pathAfterGL = strings.ReplaceAll(pathAfterGL, "\\", "/")
+
+	// For media files, strip the filename and use the directory's song page
+	// e.g., music/hymns-for-home-and-church/come-lord-jesus.pdf
+	//   -> music/hymns-for-home-and-church/come-lord-jesus
+	// But the filename might be come-lord-jesus_accompaniment.mp3
+	// In that case, extract just the base song name from the directory
+	dir := filepath.Dir(pathAfterGL)
+	base := filepath.Base(pathAfterGL)
+
+	// Remove extension
+	base = strings.TrimSuffix(base, filepath.Ext(base))
+
+	// Remove mp3 variant suffixes (e.g., _accompaniment, _vocal_congregation)
+	variantSuffixes := []string{
+		"_accompaniment_guitar",
+		"_accompaniment",
+		"_vocal_congregation",
+		"_vocal",
+		"_instrumental",
+	}
+	for _, suffix := range variantSuffixes {
+		if strings.HasSuffix(base, suffix) {
+			base = strings.TrimSuffix(base, suffix)
+			break
+		}
+	}
+
+	// Build the Church URL pointing to the song page
+	songPath := dir + "/" + base
+	songPath = strings.ReplaceAll(songPath, "\\", "/")
+
+	return churchBaseURL + "/" + songPath + "?lang=eng"
 }

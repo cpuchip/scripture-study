@@ -59,6 +59,16 @@ func Magazine(magazineName string, year, month int, articleName string) string {
 		baseURL, magazineName, year, month)
 }
 
+// Music generates a URL for a music item.
+// Example: Music("hymns-for-home-and-church", "come-lord-jesus") -> "https://www.churchofjesuschrist.org/study/music/hymns-for-home-and-church/come-lord-jesus?lang=eng"
+func Music(collection, song string) string {
+	if song != "" {
+		return fmt.Sprintf("%s/music/%s/%s?lang=eng",
+			baseURL, collection, song)
+	}
+	return fmt.Sprintf("%s/music/%s?lang=eng", baseURL, collection)
+}
+
 // TopicalGuide generates a URL for a Topical Guide entry.
 func TopicalGuide(entry string) string {
 	return fmt.Sprintf("%s/scriptures/tg/%s?lang=eng", baseURL, entry)

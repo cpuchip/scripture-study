@@ -474,6 +474,7 @@ func (idx *Indexer) IndexConferenceTalks(ctx context.Context, basePath string, o
 type ManualIndexOptions struct {
 	Layers          []Layer            // Which layers to index (paragraph, summary)
 	Manuals         []ManualDefinition // Which manuals/books to index
+	SourceOverride  Source             // Override source for chunks (e.g., SourceMusic). Empty = SourceManual
 	Verbose         bool
 	UseCache        bool
 	MaxRetries      int
@@ -591,6 +592,13 @@ func (idx *Indexer) IndexManuals(ctx context.Context, opts ManualIndexOptions) e
 
 			// Add chunks to store with retry
 			if len(chunks) > 0 {
+				// Apply source override if specified (e.g., SourceMusic)
+				if opts.SourceOverride != "" {
+					for j := range chunks {
+						chunks[j].Metadata.Source = opts.SourceOverride
+					}
+				}
+
 				embedStart := time.Now()
 				err := retryWithBackoff(ctx, opts.MaxRetries, func() error {
 					return idx.store.AddChunks(ctx, chunks)

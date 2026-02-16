@@ -43,7 +43,7 @@ func collectionsForSource(source Source) []string {
 
 // allSources returns all known sources
 func allSources() []Source {
-	return []Source{SourceScriptures, SourceConference, SourceManual}
+	return []Source{SourceScriptures, SourceConference, SourceManual, SourceMusic}
 }
 
 // NewStore creates a new store with the given config
@@ -317,7 +317,7 @@ func (s *Store) Search(ctx context.Context, query string, opts SearchOptions) ([
 
 	sources := opts.Sources
 	if len(sources) == 0 {
-		sources = []Source{SourceScriptures, SourceConference, SourceManual}
+		sources = []Source{SourceScriptures, SourceConference, SourceManual, SourceMusic}
 	}
 
 	// Search each collection

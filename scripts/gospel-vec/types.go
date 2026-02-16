@@ -19,6 +19,7 @@ const (
 	SourceScriptures Source = "scriptures"
 	SourceConference Source = "conference"
 	SourceManual     Source = "manual"
+	SourceMusic      Source = "music"
 )
 
 // DocMetadata contains metadata for each indexed document

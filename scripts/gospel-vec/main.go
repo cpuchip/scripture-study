@@ -27,6 +27,8 @@ func main() {
 		cmdIndexTalks(os.Args[2:])
 	case "index-manuals":
 		cmdIndexManuals(os.Args[2:])
+	case "index-music":
+		cmdIndexMusic(os.Args[2:])
 	case "index-all":
 		cmdIndexAll(os.Args[2:])
 	case "search":
@@ -61,7 +63,8 @@ Commands:
   index          Index scripture content into the vector database
   index-talks    Index conference talks into the vector database
   index-manuals  Index manuals and books into the vector database
-  index-all      Index ALL content (scriptures + talks + manuals)
+  index-music    Index music collections into the vector database
+  index-all      Index ALL content (scriptures + talks + manuals + music)
   search         Search the vector database (scriptures + talks + manuals)
   mcp            Start MCP server (for VS Code/Claude integration)
   stats          Show database statistics
@@ -360,7 +363,20 @@ func cmdIndexAll(args []string) {
 	cmdIndexManuals(manualArgs)
 
 	fmt.Println()
-	fmt.Println("🎉 === ALL INDEXING COMPLETE ===")
+	fmt.Println("� Phase 4: Music Collections")
+	fmt.Println("================================================")
+	musicArgs := []string{
+		fmt.Sprintf("-retries=%d", *retries),
+		fmt.Sprintf("-v=%t", *verbose),
+		"-no-lock",
+	}
+	if *noSummary {
+		musicArgs = append(musicArgs, "-no-summary")
+	}
+	cmdIndexMusic(musicArgs)
+
+	fmt.Println()
+	fmt.Println("�🎉 === ALL INDEXING COMPLETE ===")
 }
 
 func cmdIndexManuals(args []string) {
@@ -549,6 +565,148 @@ func cmdIndexManuals(args []string) {
 	}
 
 	fmt.Printf("✅ Manual indexing complete in %v\n", time.Since(start).Round(time.Second))
+
+	// Show stats
+	stats := store.Stats()
+	fmt.Println("\n📈 Collection stats:")
+	for name, count := range stats {
+		fmt.Printf("   %s: %d documents\n", name, count)
+	}
+}
+
+func cmdIndexMusic(args []string) {
+	flags := flag.NewFlagSet("index-music", flag.ExitOnError)
+
+	noSummary := flags.Bool("no-summary", false, "Disable summary layer")
+	chatModel := flags.String("chat-model", "", "Chat model for summaries")
+	noCache := flags.Bool("no-cache", false, "Don't use summary cache")
+	verbose := flags.Bool("v", true, "Verbose output")
+	maxRetries := flags.Int("retries", 3, "Max retries on transient errors")
+	continueOnError := flags.Bool("continue", true, "Continue indexing after persistent errors")
+	saveInterval := flags.Int("save-interval", 50, "Save database every N files")
+	noLock := flags.Bool("no-lock", false, "Skip lock acquisition (used internally by index-all)")
+
+	if err := flags.Parse(args); err != nil {
+		os.Exit(1)
+	}
+
+	cfg := DefaultConfig()
+
+	// Acquire index lock unless called from index-all
+	if !*noLock {
+		lock := NewIndexLock(cfg.DataDir)
+		if err := lock.Acquire("index-music"); err != nil {
+			fmt.Printf("🔒 %v\n", err)
+			os.Exit(1)
+		}
+		defer lock.Release()
+		fmt.Println("🔒 Index lock acquired")
+	}
+
+	if *chatModel != "" {
+		cfg.ChatModel = *chatModel
+	}
+
+	// Determine base paths
+	musicBasePath := "../../gospel-library/eng/music"
+	manualBasePath := "../../gospel-library/eng/manual"
+	if _, err := os.Stat("gospel-library"); err == nil {
+		musicBasePath = "gospel-library/eng/music"
+		manualBasePath = "gospel-library/eng/manual"
+	}
+
+	// Build the list of music collections
+	var collections []ManualDefinition
+
+	// Music collections under eng/music/
+	for _, m := range KnownMusic() {
+		m.Path = filepath.Join(musicBasePath, m.Path)
+		collections = append(collections, m)
+	}
+
+	// Traditional hymnals under eng/manual/
+	for _, m := range KnownHymnals() {
+		m.Path = filepath.Join(manualBasePath, m.Path)
+		collections = append(collections, m)
+	}
+
+	if len(collections) == 0 {
+		fmt.Println("❌ No music collections found.")
+		os.Exit(1)
+	}
+
+	// Build layers
+	layerList := []Layer{LayerParagraph}
+	if !*noSummary {
+		layerList = append(layerList, LayerSummary)
+	}
+
+	// Auto-detect chat model if summary layer requested
+	needsChat := containsLayer(layerList, LayerSummary)
+	if needsChat && cfg.ChatModel == "" {
+		fmt.Println("🔍 No chat model specified, auto-detecting from LM Studio...")
+		models, err := GetAvailableModels(context.Background(), cfg.ChatURL)
+		if err != nil {
+			fmt.Printf("⚠️  Could not detect models: %v\n", err)
+			fmt.Println("   Summary layer will use cache only (no generation)")
+		} else if len(models) > 0 {
+			cfg.ChatModel = models[0]
+			fmt.Printf("✅ Using chat model: %s\n", cfg.ChatModel)
+		}
+	}
+
+	fmt.Printf("🎵 Indexing %d music collections\n", len(collections))
+	for _, m := range collections {
+		fmt.Printf("   - %s\n", m.Name)
+	}
+	fmt.Printf("📊 Layers: %v\n", layerList)
+
+	// Create embedding function
+	embedFunc := NewLMStudioEmbedder(cfg.EmbeddingURL, cfg.EmbeddingModel)
+
+	// Create store
+	store, err := NewStore(cfg, embedFunc)
+	if err != nil {
+		fmt.Printf("❌ Failed to create store: %v\n", err)
+		os.Exit(1)
+	}
+
+	// Create summarizer (optional)
+	var summarizer *Summarizer
+	if containsLayer(layerList, LayerSummary) {
+		summarizer = NewSummarizer(cfg.ChatURL, cfg.ChatModel)
+	}
+
+	// Create indexer
+	indexer := NewIndexer(store, summarizer, cfg)
+
+	// Index using the manual indexer — music markdown parses the same way
+	ctx := context.Background()
+	opts := ManualIndexOptions{
+		Layers:          layerList,
+		Manuals:         collections,
+		SourceOverride:  SourceMusic,
+		Verbose:         *verbose,
+		UseCache:        !*noCache,
+		MaxRetries:      *maxRetries,
+		ContinueOnError: *continueOnError,
+		SaveInterval:    *saveInterval,
+	}
+
+	start := time.Now()
+	if err := indexer.IndexManuals(ctx, opts); err != nil {
+		fmt.Printf("❌ Indexing failed: %v\n", err)
+		os.Exit(1)
+	}
+
+	// Save music source
+	fmt.Println("\n💾 Saving music...")
+	if err := store.SaveSource(SourceMusic); err != nil {
+		fmt.Printf("❌ Failed to save: %v\n", err)
+		os.Exit(1)
+	}
+
+	fmt.Printf("✅ Music indexing complete in %v\n", time.Since(start).Round(time.Second))
 
 	// Show stats
 	stats := store.Stats()
