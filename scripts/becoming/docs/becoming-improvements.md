@@ -262,6 +262,25 @@ ALTER TABLE practices ADD COLUMN memorize_level INTEGER DEFAULT 1;
 
 ---
 
+## Sprint 6: Start Date & Future Planning
+
+### Vision
+Change `created_at` to a separate `start_date` field that defaults to `created_at` but is editable. This lets users plan future practices — e.g., schedule Come Follow Me lessons for upcoming weeks, or set a memorization card to start when they'll need it.
+
+### Schema
+```sql
+ALTER TABLE practices ADD COLUMN start_date DATE;
+UPDATE practices SET start_date = date(created_at);
+```
+
+### Behavior
+- `start_date` replaces `created_at` in the temporal daily summary query
+- Practices with `start_date > today` don't show in daily view until that date
+- Editable in practice create/edit form (date picker, defaults to today)
+- DailyView shows "starts in X days" badge for future-scheduled practices on the Practices page
+
+---
+
 ## Decisions Log
 
 Answers to open questions, recorded for future reference:
@@ -281,11 +300,11 @@ Answers to open questions, recorded for future reference:
 
 1. **Sprint 1** — Practice Lifecycle schema/backend (unblocks everything else) ✅
 2. **Sprint 2** — Practice Lifecycle frontend (makes the app usable for non-memorize practices) ✅
-3. **Sprint 3** — Study Mode adaptive difficulty (the big UX win for memorization)
+3. **Sprint 3** — Study Mode adaptive difficulty (the big UX win for memorization) ✅
 4. **Sprint 4** — Memorize card lifecycle (completes the picture)
 5. **Sprint 5** — Activity Calendar Heatmap
 
-Sprints 1+2 are done. Sprint 3 is the meatiest — it needs schema, backend, algorithm, and significant frontend work.
+Sprints 1-3 are done. Sprint 4 is next — memorize card lifecycle (pause, complete, archive cards).
 
 ---
 

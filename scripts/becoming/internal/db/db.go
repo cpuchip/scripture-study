@@ -244,6 +244,11 @@ func (db *DB) runSQLiteMigrations() error {
 		return fmt.Errorf("practice lifecycle migration: %w", err)
 	}
 
+	// Migration: add study mode tables (memorize_scores, memorize_aptitude, memorize_level)
+	if err := db.migrateStudyMode(); err != nil {
+		return fmt.Errorf("study mode migration: %w", err)
+	}
+
 	// Seed default reflection prompts for user 1 (dev user)
 	if err := db.SeedPrompts(1); err != nil {
 		return fmt.Errorf("seeding prompts: %w", err)
@@ -282,6 +287,54 @@ func (db *DB) migratePracticeLifecycle() error {
 		return fmt.Errorf("creating status index: %w", err)
 	}
 
+	return nil
+}
+
+// migrateStudyMode adds memorize_scores, memorize_aptitude tables and memorize_level column.
+func (db *DB) migrateStudyMode() error {
+	if !db.hasColumn("practices", "memorize_level") {
+		if _, err := db.Exec(`ALTER TABLE practices ADD COLUMN memorize_level INTEGER DEFAULT 1`); err != nil {
+			return fmt.Errorf("adding memorize_level column: %w", err)
+		}
+		log.Println("Migration applied: practices.memorize_level column")
+	}
+
+	// Create memorize_scores table (idempotent)
+	if _, err := db.Exec(`CREATE TABLE IF NOT EXISTS memorize_scores (
+		id          INTEGER PRIMARY KEY,
+		practice_id INTEGER NOT NULL REFERENCES practices(id) ON DELETE CASCADE,
+		user_id     INTEGER NOT NULL REFERENCES users(id),
+		mode        TEXT NOT NULL,
+		score       REAL NOT NULL,
+		quality     INTEGER,
+		duration_s  INTEGER,
+		date        DATE NOT NULL,
+		created_at  DATETIME DEFAULT CURRENT_TIMESTAMP
+	)`); err != nil {
+		return fmt.Errorf("creating memorize_scores: %w", err)
+	}
+	if _, err := db.Exec(`CREATE INDEX IF NOT EXISTS idx_memorize_scores_practice ON memorize_scores(practice_id)`); err != nil {
+		return fmt.Errorf("creating memorize_scores practice index: %w", err)
+	}
+	if _, err := db.Exec(`CREATE INDEX IF NOT EXISTS idx_memorize_scores_user_date ON memorize_scores(user_id, date)`); err != nil {
+		return fmt.Errorf("creating memorize_scores user_date index: %w", err)
+	}
+
+	// Create memorize_aptitude table (idempotent)
+	if _, err := db.Exec(`CREATE TABLE IF NOT EXISTS memorize_aptitude (
+		id            INTEGER PRIMARY KEY,
+		practice_id   INTEGER NOT NULL REFERENCES practices(id) ON DELETE CASCADE,
+		user_id       INTEGER NOT NULL REFERENCES users(id),
+		mode          TEXT NOT NULL,
+		aptitude      REAL NOT NULL DEFAULT 0.0,
+		sample_count  INTEGER DEFAULT 0,
+		last_score_at DATETIME,
+		UNIQUE(practice_id, user_id, mode)
+	)`); err != nil {
+		return fmt.Errorf("creating memorize_aptitude: %w", err)
+	}
+
+	log.Println("Migration applied: study mode tables")
 	return nil
 }
 

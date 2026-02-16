@@ -16,30 +16,31 @@ const (
 
 // Practice represents a trackable item (memorization, exercise, habit, etc.)
 type Practice struct {
-	ID          int64      `json:"id"`
-	Name        string     `json:"name"`
-	Description string     `json:"description,omitempty"`
-	Type        string     `json:"type"`     // memorize | tracker | habit | task
-	Category    string     `json:"category"` // scripture, pt, spiritual, fitness, etc.
-	SourceDoc   string     `json:"source_doc,omitempty"`
-	SourcePath  string     `json:"source_path,omitempty"`
-	Config      string     `json:"config"`
-	SortOrder   int        `json:"sort_order"`
-	Active      bool       `json:"active"` // legacy — use Status instead
-	Status      string     `json:"status"` // active | paused | completed | archived
-	CreatedAt   time.Time  `json:"created_at"`
-	CompletedAt *time.Time `json:"completed_at,omitempty"`
-	ArchivedAt  *time.Time `json:"archived_at,omitempty"`
-	EndDate     *string    `json:"end_date,omitempty"` // target end date (YYYY-MM-DD)
+	ID            int64      `json:"id"`
+	Name          string     `json:"name"`
+	Description   string     `json:"description,omitempty"`
+	Type          string     `json:"type"`     // memorize | tracker | habit | task
+	Category      string     `json:"category"` // scripture, pt, spiritual, fitness, etc.
+	SourceDoc     string     `json:"source_doc,omitempty"`
+	SourcePath    string     `json:"source_path,omitempty"`
+	Config        string     `json:"config"`
+	SortOrder     int        `json:"sort_order"`
+	Active        bool       `json:"active"` // legacy — use Status instead
+	Status        string     `json:"status"` // active | paused | completed | archived
+	CreatedAt     time.Time  `json:"created_at"`
+	CompletedAt   *time.Time `json:"completed_at,omitempty"`
+	ArchivedAt    *time.Time `json:"archived_at,omitempty"`
+	EndDate       *string    `json:"end_date,omitempty"`       // target end date (YYYY-MM-DD)
+	MemorizeLevel int        `json:"memorize_level,omitempty"` // adaptive difficulty target level (1-4)
 }
 
 // practiceColumns is the standard SELECT column list for practices.
-const practiceColumns = `id, name, description, type, category, source_doc, source_path, config, sort_order, active, status, created_at, completed_at, archived_at, end_date`
+const practiceColumns = `id, name, description, type, category, source_doc, source_path, config, sort_order, active, status, created_at, completed_at, archived_at, end_date, memorize_level`
 
 // scanPractice scans a row into a Practice struct. Column order must match practiceColumns.
 func scanPractice(scanner interface{ Scan(...any) error }) (*Practice, error) {
 	p := &Practice{}
-	if err := scanner.Scan(&p.ID, &p.Name, &p.Description, &p.Type, &p.Category, &p.SourceDoc, &p.SourcePath, &p.Config, &p.SortOrder, &p.Active, &p.Status, &p.CreatedAt, &p.CompletedAt, &p.ArchivedAt, &p.EndDate); err != nil {
+	if err := scanner.Scan(&p.ID, &p.Name, &p.Description, &p.Type, &p.Category, &p.SourceDoc, &p.SourcePath, &p.Config, &p.SortOrder, &p.Active, &p.Status, &p.CreatedAt, &p.CompletedAt, &p.ArchivedAt, &p.EndDate, &p.MemorizeLevel); err != nil {
 		return nil, err
 	}
 	return p, nil
@@ -123,10 +124,10 @@ func (db *DB) ListPracticesByStatus(userID int64, practiceType, status string, a
 func (db *DB) UpdatePractice(userID int64, p *Practice) error {
 	_, err := db.Exec(`
 		UPDATE practices SET name=?, description=?, type=?, category=?, source_doc=?, source_path=?,
-			config=?, sort_order=?, active=?, status=?, completed_at=?, archived_at=?, end_date=?
+			config=?, sort_order=?, active=?, status=?, completed_at=?, archived_at=?, end_date=?, memorize_level=?
 		WHERE id=? AND user_id=?`,
 		p.Name, p.Description, p.Type, p.Category, p.SourceDoc, p.SourcePath,
-		p.Config, p.SortOrder, p.Active, p.Status, p.CompletedAt, p.ArchivedAt, p.EndDate,
+		p.Config, p.SortOrder, p.Active, p.Status, p.CompletedAt, p.ArchivedAt, p.EndDate, p.MemorizeLevel,
 		p.ID, userID,
 	)
 	if err != nil {

@@ -22,7 +22,8 @@ CREATE TABLE IF NOT EXISTS practices (
     created_at  DATETIME DEFAULT CURRENT_TIMESTAMP,
     completed_at DATETIME,              -- when practice was completed
     archived_at  DATETIME,              -- when practice was archived
-    end_date     DATE                   -- target end/completion date
+    end_date     DATE,                  -- target end/completion date
+    memorize_level INTEGER DEFAULT 1    -- adaptive difficulty target level
 );
 -- idx_practices_status created by migratePracticeLifecycle()
 
@@ -139,3 +140,31 @@ CREATE INDEX IF NOT EXISTS idx_practice_pillars_practice ON practice_pillars(pra
 CREATE INDEX IF NOT EXISTS idx_practice_pillars_pillar ON practice_pillars(pillar_id);
 CREATE INDEX IF NOT EXISTS idx_task_pillars_task ON task_pillars(task_id);
 CREATE INDEX IF NOT EXISTS idx_task_pillars_pillar ON task_pillars(pillar_id);
+
+-- Per-exercise score history for adaptive difficulty
+CREATE TABLE IF NOT EXISTS memorize_scores (
+    id          INTEGER PRIMARY KEY,
+    practice_id INTEGER NOT NULL REFERENCES practices(id) ON DELETE CASCADE,
+    user_id     INTEGER NOT NULL REFERENCES users(id),
+    mode        TEXT NOT NULL,
+    score       REAL NOT NULL,
+    quality     INTEGER,
+    duration_s  INTEGER,
+    date        DATE NOT NULL,
+    created_at  DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE INDEX IF NOT EXISTS idx_memorize_scores_practice ON memorize_scores(practice_id);
+CREATE INDEX IF NOT EXISTS idx_memorize_scores_user_date ON memorize_scores(user_id, date);
+
+-- Per-card per-mode aptitude cache
+CREATE TABLE IF NOT EXISTS memorize_aptitude (
+    id            INTEGER PRIMARY KEY,
+    practice_id   INTEGER NOT NULL REFERENCES practices(id) ON DELETE CASCADE,
+    user_id       INTEGER NOT NULL REFERENCES users(id),
+    mode          TEXT NOT NULL,
+    aptitude      REAL NOT NULL DEFAULT 0.0,
+    sample_count  INTEGER DEFAULT 0,
+    last_score_at DATETIME,
+    UNIQUE(practice_id, user_id, mode)
+);

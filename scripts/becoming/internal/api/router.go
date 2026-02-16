@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"net/http"
 	"strconv"
+	"strings"
 	"time"
 
 	"github.com/cpuchip/scripture-study/scripts/becoming/internal/auth"
@@ -57,6 +58,12 @@ func Router(database *db.DB, scripturesRoot string) chi.Router {
 		r.Get("/due/{date}", getDueCards(database))
 		r.Get("/cards/{date}", getMemorizeCards(database))
 		r.Post("/review", reviewCard(database))
+
+		// Study mode (adaptive difficulty)
+		r.Get("/study/next", studyNext(database))
+		r.Post("/study/score", studyScore(database))
+		r.Get("/study/aptitudes/{practiceId}", studyAptitudes(database))
+		r.Post("/study/seed", studySeed(database))
 	})
 
 	// Scripture lookup
@@ -622,6 +629,218 @@ func reviewCard(database *db.DB) http.HandlerFunc {
 		}
 		writeJSON(w, http.StatusOK, p)
 	}
+}
+
+// --- Study Mode (Adaptive Difficulty) ---
+
+func studyNext(database *db.DB) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		userID := auth.UserID(r)
+		date := r.URL.Query().Get("date")
+		if date == "" {
+			date = time.Now().Format("2006-01-02")
+		}
+		category := r.URL.Query().Get("category")
+		lastCardIDStr := r.URL.Query().Get("last_card_id")
+		var lastCardID int64
+		if lastCardIDStr != "" {
+			lastCardID, _ = strconv.ParseInt(lastCardIDStr, 10, 64)
+		}
+
+		// Parse session state from query params
+		momentumStr := r.URL.Query().Get("momentum")
+		recentScoresStr := r.URL.Query().Get("recent_scores")
+		session := db.NewStudySession()
+		if momentumStr != "" {
+			session.Momentum = db.SessionMomentum(momentumStr)
+		}
+		if recentScoresStr != "" {
+			for _, s := range splitComma(recentScoresStr) {
+				if v, err := strconv.ParseFloat(s, 64); err == nil {
+					session.RecentScores = append(session.RecentScores, v)
+				}
+			}
+		}
+
+		// Get due cards (or all active memorize cards for "keep studying")
+		mode := r.URL.Query().Get("mode") // "due" (default) or "all"
+		var cards []*db.Practice
+		var err error
+		if mode == "all" {
+			cards, err = database.GetAllMemorizeCards(userID)
+		} else {
+			cards, err = database.GetDueCards(userID, date)
+		}
+		if err != nil {
+			writeError(w, http.StatusInternalServerError, err.Error())
+			return
+		}
+
+		// Filter by category if specified
+		if category != "" {
+			var filtered []*db.Practice
+			for _, c := range cards {
+				if c.Category == category {
+					filtered = append(filtered, c)
+				}
+			}
+			cards = filtered
+		}
+
+		if len(cards) == 0 {
+			writeJSON(w, http.StatusOK, map[string]any{
+				"done":    true,
+				"message": "No cards available for study",
+			})
+			return
+		}
+
+		// Get aptitudes for all cards
+		aptitudeMap, err := database.GetAllUserAptitudes(userID)
+		if err != nil {
+			writeError(w, http.StatusInternalServerError, err.Error())
+			return
+		}
+
+		// Select next exercise
+		exercise := db.SelectNextExercise(cards, aptitudeMap, session, lastCardID)
+		if exercise == nil {
+			writeJSON(w, http.StatusOK, map[string]any{
+				"done":    true,
+				"message": "No exercise available",
+			})
+			return
+		}
+
+		writeJSON(w, http.StatusOK, exercise)
+	}
+}
+
+func studyScore(database *db.DB) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		userID := auth.UserID(r)
+		var req struct {
+			PracticeID int64   `json:"practice_id"`
+			Mode       string  `json:"mode"`
+			Score      float64 `json:"score"`
+			Quality    *int    `json:"quality"`
+			DurationS  *int    `json:"duration_s"`
+			Date       string  `json:"date"`
+		}
+		if err := json.NewDecoder(r.Body).Decode(&req); err != nil {
+			writeError(w, http.StatusBadRequest, "invalid JSON: "+err.Error())
+			return
+		}
+		if req.PracticeID == 0 {
+			writeError(w, http.StatusBadRequest, "practice_id is required")
+			return
+		}
+		if req.Mode == "" {
+			writeError(w, http.StatusBadRequest, "mode is required")
+			return
+		}
+		if req.Score < 0 || req.Score > 1 {
+			writeError(w, http.StatusBadRequest, "score must be 0.0-1.0")
+			return
+		}
+		if req.Date == "" {
+			req.Date = time.Now().Format("2006-01-02")
+		}
+
+		score := &db.MemorizeScore{
+			PracticeID: req.PracticeID,
+			UserID:     userID,
+			Mode:       req.Mode,
+			Score:      req.Score,
+			Quality:    req.Quality,
+			DurationS:  req.DurationS,
+			Date:       req.Date,
+		}
+
+		if err := database.RecordScore(userID, score); err != nil {
+			writeError(w, http.StatusInternalServerError, err.Error())
+			return
+		}
+
+		// Also update memorize_level based on new aptitude
+		if err := database.UpdateMemorizeLevel(userID, req.PracticeID); err != nil {
+			// Non-fatal — log but don't fail the request
+			writeError(w, http.StatusInternalServerError, err.Error())
+			return
+		}
+
+		// Also log a regular SM-2 review if quality was provided
+		if req.Quality != nil {
+			if _, err := database.ReviewCard(userID, req.PracticeID, *req.Quality, req.Date); err != nil {
+				// Non-fatal — the score was already recorded
+				// Log warning but return success
+			}
+		}
+
+		// Return updated aptitudes for this card
+		aptitudes, err := database.GetAptitudes(userID, req.PracticeID)
+		if err != nil {
+			writeError(w, http.StatusInternalServerError, err.Error())
+			return
+		}
+
+		writeJSON(w, http.StatusOK, map[string]any{
+			"score":     score,
+			"aptitudes": aptitudes,
+			"overall":   db.OverallAptitude(aptitudes),
+		})
+	}
+}
+
+func studyAptitudes(database *db.DB) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		userID := auth.UserID(r)
+		practiceID, err := strconv.ParseInt(chi.URLParam(r, "practiceId"), 10, 64)
+		if err != nil {
+			writeError(w, http.StatusBadRequest, "invalid practice ID")
+			return
+		}
+
+		aptitudes, err := database.GetAptitudes(userID, practiceID)
+		if err != nil {
+			writeError(w, http.StatusInternalServerError, err.Error())
+			return
+		}
+		if aptitudes == nil {
+			aptitudes = []*db.MemorizeAptitude{}
+		}
+
+		writeJSON(w, http.StatusOK, map[string]any{
+			"aptitudes": aptitudes,
+			"overall":   db.OverallAptitude(aptitudes),
+		})
+	}
+}
+
+func studySeed(database *db.DB) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		userID := auth.UserID(r)
+		if err := database.SeedAptitudesFromSM2(userID); err != nil {
+			writeError(w, http.StatusInternalServerError, err.Error())
+			return
+		}
+		writeJSON(w, http.StatusOK, map[string]string{"status": "ok"})
+	}
+}
+
+// splitComma splits a comma-separated string into parts.
+func splitComma(s string) []string {
+	if s == "" {
+		return nil
+	}
+	var parts []string
+	for _, p := range strings.Split(s, ",") {
+		p = strings.TrimSpace(p)
+		if p != "" {
+			parts = append(parts, p)
+		}
+	}
+	return parts
 }
 
 // --- Helpers ---

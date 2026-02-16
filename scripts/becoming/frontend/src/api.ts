@@ -57,6 +57,7 @@ export interface Practice {
   completed_at?: string
   archived_at?: string
   end_date?: string
+  memorize_level?: number
 }
 
 export interface PracticeLog {
@@ -140,6 +141,39 @@ export interface MemorizeCardStatus {
   today_qualities: number[]
   is_due: boolean
   target_daily_reps: number
+}
+
+// Study mode types
+export type StudyMode = 'reveal_whole' | 'reveal_words' | 'type_words' | 'arrange' | 'type_full'
+  | 'reverse_full' | 'reverse_partial' | 'reverse_fragment'
+
+export type SessionMomentum = 'struggling' | 'steady' | 'cruising'
+
+export interface StudyExercise {
+  practice: Practice
+  mode: StudyMode
+  is_reverse: boolean
+  level: number
+  momentum: SessionMomentum
+  card_type: 'goldilocks' | 'stretch' | 'confidence' | 'fresh'
+  done?: boolean
+  message?: string
+}
+
+export interface MemorizeAptitude {
+  id: number
+  practice_id: number
+  user_id: number
+  mode: string
+  aptitude: number
+  sample_count: number
+  last_score_at?: string
+}
+
+export interface StudyScoreResponse {
+  score: any
+  aptitudes: MemorizeAptitude[]
+  overall: number
 }
 
 export interface DailyDataPoint {
@@ -318,6 +352,48 @@ export const api = {
       method: 'POST',
       body: JSON.stringify({ practice_id: practiceId, quality, date }),
     })
+  },
+
+  // Study mode (adaptive difficulty)
+  studyNext(opts: {
+    date: string
+    category?: string
+    lastCardId?: number
+    momentum?: SessionMomentum
+    recentScores?: number[]
+    mode?: 'due' | 'all'
+  }) {
+    const params = new URLSearchParams({ date: opts.date })
+    if (opts.category) params.set('category', opts.category)
+    if (opts.lastCardId) params.set('last_card_id', String(opts.lastCardId))
+    if (opts.momentum) params.set('momentum', opts.momentum)
+    if (opts.recentScores?.length) params.set('recent_scores', opts.recentScores.join(','))
+    if (opts.mode) params.set('mode', opts.mode)
+    return request<StudyExercise>(`/memorize/study/next?${params}`)
+  },
+
+  studyScore(score: {
+    practice_id: number
+    mode: string
+    score: number
+    quality?: number
+    duration_s?: number
+    date: string
+  }) {
+    return request<StudyScoreResponse>('/memorize/study/score', {
+      method: 'POST',
+      body: JSON.stringify(score),
+    })
+  },
+
+  studyAptitudes(practiceId: number) {
+    return request<{ aptitudes: MemorizeAptitude[]; overall: number }>(
+      `/memorize/study/aptitudes/${practiceId}`
+    )
+  },
+
+  studySeed() {
+    return request<{ status: string }>('/memorize/study/seed', { method: 'POST' })
   },
 
   // Scripture lookup

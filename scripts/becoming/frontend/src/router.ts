@@ -18,6 +18,7 @@ export const router = createRouter({
     { path: '/practices', name: 'practices', component: () => import('./views/PracticesView.vue') },
     { path: '/practices/:id/history', name: 'history', component: () => import('./views/HistoryView.vue') },
     { path: '/memorize', name: 'memorize', component: () => import('./views/MemorizeView.vue') },
+    { path: '/study', name: 'study', component: () => import('./views/StudyView.vue') },
     { path: '/tasks', name: 'tasks', component: () => import('./views/TasksView.vue') },
     { path: '/notes', name: 'notes', component: () => import('./views/NotesView.vue') },
     { path: '/reflections', name: 'reflections', component: () => import('./views/ReflectionsView.vue') },

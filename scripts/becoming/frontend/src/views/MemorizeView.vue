@@ -469,6 +469,10 @@ onMounted(load)
           {{ allCards.filter(c => c.reviews_today >= c.target_daily_reps).length }}/{{ allCards.length }} cards done
         </span>
         <router-link
+          to="/study"
+          class="px-3 py-1.5 bg-emerald-600 text-white rounded-lg text-sm hover:bg-emerald-700"
+        >📚 Study</router-link>
+        <router-link
           to="/practices?type=memorize&create=1"
           class="px-3 py-1.5 bg-indigo-600 text-white rounded-lg text-sm hover:bg-indigo-700"
         >+ Add Card</router-link>
