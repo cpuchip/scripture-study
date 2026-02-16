@@ -47,7 +47,10 @@ var (
 var linkPattern = regexp.MustCompile(`\[([^\]]*)\]\(([^)]+)\)`)
 
 // versePattern extracts verse references from display text like "Moses 6:59-60" or "1 Nephi 3:7"
-var versePattern = regexp.MustCompile(`(?i)(\d+\s+)?([A-Za-z&\-]+)\s+(\d+):(\d+)(?:[–-](\d+))?`)
+var versePattern = regexp.MustCompile(`(?i)(\d+\s+)?([A-Za-z&\-]+)\s+(\d+):(\d+)(?:[–\-](\d+))?`)
+
+// verseAbbrPattern matches abbreviated verse references like "v. 44", "v. 50", "vv. 1-3", "verse 12"
+var verseAbbrPattern = regexp.MustCompile(`(?i)(?:vv?\.|verses?)\s*(\d+)(?:\s*[–\-]\s*(\d+))?`)
 
 func main() {
 	flag.Parse()
@@ -313,30 +316,39 @@ func extractVerseFragment(linkText, urlPath string) string {
 	//   "1 Nephi 3:7" -> "p7"
 	//   "D&C 93:36" -> "p36"
 	//   "John 19:34" -> "p34"
+	//   "v. 44" -> "p44"
+	//   "vv. 1-3" -> "p1-p3"
+	//   "verse 12" -> "p12"
 
+	// First try full reference pattern (e.g., "Moses 6:22-23")
 	matches := versePattern.FindStringSubmatch(linkText)
-	if len(matches) < 5 {
-		return ""
+	if len(matches) >= 5 && matches[4] != "" {
+		startVerse := matches[4]
+		endVerse := ""
+		if len(matches) > 5 {
+			endVerse = matches[5]
+		}
+		if endVerse != "" {
+			return fmt.Sprintf("p%s-p%s", startVerse, endVerse)
+		}
+		return "p" + startVerse
 	}
 
-	// matches[4] is the start verse
-	startVerse := matches[4]
-
-	// matches[5] is the end verse (if range)
-	endVerse := ""
-	if len(matches) > 5 {
-		endVerse = matches[5]
+	// Fall back to abbreviated verse pattern (e.g., "v. 44", "vv. 1-3", "verse 12")
+	abbrMatches := verseAbbrPattern.FindStringSubmatch(linkText)
+	if len(abbrMatches) >= 2 && abbrMatches[1] != "" {
+		startVerse := abbrMatches[1]
+		endVerse := ""
+		if len(abbrMatches) > 2 {
+			endVerse = abbrMatches[2]
+		}
+		if endVerse != "" {
+			return fmt.Sprintf("p%s-p%s", startVerse, endVerse)
+		}
+		return "p" + startVerse
 	}
 
-	if startVerse == "" {
-		return ""
-	}
-
-	if endVerse != "" && endVerse != "" {
-		return fmt.Sprintf("p%s-p%s", startVerse, endVerse)
-	}
-
-	return "p" + startVerse
+	return ""
 }
 
 // convertToExternalBookURL converts links to books/ directory to external URLs

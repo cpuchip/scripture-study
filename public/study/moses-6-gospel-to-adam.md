@@ -73,7 +73,7 @@ Then comes the youth theme for 2026:
 > "Anoint thine eyes with clay, and wash them, and thou shalt see."
 > — [Moses 6:35](https://www.churchofjesuschrist.org/study/scriptures/pgp/moses/6?lang=eng&id=p35#p35)
 
-After obeying this unusual command, Enoch "beheld the spirits that God had created; and he beheld also things which were not visible to the natural eye" ([v. 36](https://www.churchofjesuschrist.org/study/scriptures/pgp/moses/6?lang=eng)).
+After obeying this unusual command, Enoch "beheld the spirits that God had created; and he beheld also things which were not visible to the natural eye" ([v. 36](https://www.churchofjesuschrist.org/study/scriptures/pgp/moses/6?lang=eng&id=p36#p36)).
 
 **Connection to [intelligence-01.md](intelligence-01.md):** This is spiritual creation becoming visible—the pre-mortal realm of organized intelligences that D&C 93:29 describes. Enoch saw what we study theoretically.
 
@@ -81,7 +81,7 @@ After obeying this unusual command, Enoch "beheld the spirits that God had creat
 
 ## Part 3: The Fall and the Plan — God's Message to Adam
 
-Moses 6:48-68 contains the clearest pre-Christian statement of the plan of salvation in all scripture. It answers Adam's question: **"Why is it that men must repent and be baptized in water?"** ([v. 53](https://www.churchofjesuschrist.org/study/scriptures/pgp/moses/6?lang=eng))
+Moses 6:48-68 contains the clearest pre-Christian statement of the plan of salvation in all scripture. It answers Adam's question: **"Why is it that men must repent and be baptized in water?"** ([v. 53](https://www.churchofjesuschrist.org/study/scriptures/pgp/moses/6?lang=eng&id=p53#p53))
 
 ### The Problem: The Fall's Effects
 
@@ -94,7 +94,7 @@ Moses 6:48-68 contains the clearest pre-Christian statement of the plan of salva
 
 ### The Solution: The Gospel of Jesus Christ
 
-God teaches Adam the complete gospel in [verses 52-62](https://www.churchofjesuschrist.org/study/scriptures/pgp/moses/6?lang=eng):
+God teaches Adam the complete gospel in [verses 52-62](https://www.churchofjesuschrist.org/study/scriptures/pgp/moses/6?lang=eng&id=p52-p62#p52):
 
 | Principle | Verse | Key Phrase |
 |-----------|-------|------------|
@@ -254,7 +254,7 @@ This week, identify one thing the Lord has asked you to do that feels beyond you
 - Why is it significant that Adam received the exact same gospel we have today?
 - What does it mean that the priesthood existed "before the foundation of the world"?
 - How does knowing the gospel is eternal (not just 2,000 years old) change how you view your covenants?
-- Adam asked "Why must men repent and be baptized?" ([v. 53](https://www.churchofjesuschrist.org/study/scriptures/pgp/moses/6?lang=eng)). Have you ever wondered that? What answer do you find in verses 53-62?
+- Adam asked "Why must men repent and be baptized?" ([v. 53](https://www.churchofjesuschrist.org/study/scriptures/pgp/moses/6?lang=eng&id=p53#p53)). Have you ever wondered that? What answer do you find in verses 53-62?
 
 **Study Helps:**
 - [Lectures on Faith 1](https://lecturesonfaith.com/1) claims faith was "taught unto the children of men" from the beginning—Moses 6:23 confirms it
@@ -262,7 +262,7 @@ This week, identify one thing the Lord has asked you to do that feels beyond you
 - Genesis 5 gives ages; Moses 6 gives **doctrine**. Joseph Smith's translation reveals what was lost.
 
 **Invitation:**
-Read [Moses 6:51-62](https://www.churchofjesuschrist.org/study/scriptures/pgp/moses/6?lang=eng&id=p51-p62#p51) as if you were Adam hearing it for the first time. What stands out? Consider teaching one truth from this passage to someone in your family this week—freely, as the Lord commanded ([v. 58](https://www.churchofjesuschrist.org/study/scriptures/pgp/moses/6?lang=eng)).
+Read [Moses 6:51-62](https://www.churchofjesuschrist.org/study/scriptures/pgp/moses/6?lang=eng&id=p51-p62#p51) as if you were Adam hearing it for the first time. What stands out? Consider teaching one truth from this passage to someone in your family this week—freely, as the Lord commanded ([v. 58](https://www.churchofjesuschrist.org/study/scriptures/pgp/moses/6?lang=eng&id=p58#p58)).
 
 ---
 
