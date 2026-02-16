@@ -18,9 +18,13 @@ CREATE TABLE IF NOT EXISTS practices (
 
     sort_order  INTEGER DEFAULT 0,
     active      BOOLEAN DEFAULT 1,
+    status      TEXT NOT NULL DEFAULT 'active',  -- active | paused | completed | archived
     created_at  DATETIME DEFAULT CURRENT_TIMESTAMP,
-    completed_at DATETIME               -- for tasks that finish
+    completed_at DATETIME,              -- when practice was completed
+    archived_at  DATETIME,              -- when practice was archived
+    end_date     DATE                   -- target end/completion date
 );
+CREATE INDEX IF NOT EXISTS idx_practices_status ON practices(status);
 
 -- Practice logs: each time you do a practice
 CREATE TABLE IF NOT EXISTS practice_logs (

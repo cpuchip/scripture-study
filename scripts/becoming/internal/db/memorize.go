@@ -136,9 +136,9 @@ func (db *DB) GetDueCards(userID int64, date string) ([]*Practice, error) {
 	repetitions := db.JSONExtract("config", "repetitions")
 
 	query := fmt.Sprintf(`
-		SELECT id, name, description, type, category, source_doc, source_path, config, sort_order, active, created_at, completed_at
+		SELECT `+practiceColumns+`
 		FROM practices
-		WHERE type = 'memorize' AND active = TRUE AND user_id = ?
+		WHERE type = 'memorize' AND status = 'active' AND user_id = ?
 		  AND (
 		    %s <= ?
 		    OR %s IS NULL
@@ -160,8 +160,8 @@ func (db *DB) GetDueCards(userID int64, date string) ([]*Practice, error) {
 
 	var practices []*Practice
 	for rows.Next() {
-		p := &Practice{}
-		if err := rows.Scan(&p.ID, &p.Name, &p.Description, &p.Type, &p.Category, &p.SourceDoc, &p.SourcePath, &p.Config, &p.SortOrder, &p.Active, &p.CreatedAt, &p.CompletedAt); err != nil {
+		p, err := scanPractice(rows)
+		if err != nil {
 			return nil, fmt.Errorf("scanning due card: %w", err)
 		}
 		practices = append(practices, p)
@@ -195,7 +195,7 @@ func (db *DB) GetMemorizeCardStatuses(userID int64, date string) ([]*MemorizeCar
 	rows, err := db.Query(`
 		SELECT practice_id, quality FROM practice_logs
 		WHERE date = ? AND quality IS NOT NULL
-		  AND practice_id IN (SELECT id FROM practices WHERE type = 'memorize' AND active = TRUE AND user_id = ?)
+		  AND practice_id IN (SELECT id FROM practices WHERE type = 'memorize' AND status = 'active' AND user_id = ?)
 		ORDER BY practice_id, logged_at`, date, userID)
 	if err != nil {
 		return nil, fmt.Errorf("getting today's memorize qualities: %w", err)

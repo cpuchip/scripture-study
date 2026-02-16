@@ -25,6 +25,10 @@ func Router(database *db.DB, scripturesRoot string) chi.Router {
 		r.Put("/{id}", updatePractice(database))
 		r.Delete("/{id}", deletePractice(database))
 		r.Get("/{id}/logs", listPracticeLogs(database))
+		r.Post("/{id}/complete", completePractice(database))
+		r.Post("/{id}/archive", archivePractice(database))
+		r.Post("/{id}/pause", pausePractice(database))
+		r.Post("/{id}/restore", restorePractice(database))
 	})
 
 	// Practice logs
@@ -114,9 +118,12 @@ func listPractices(database *db.DB) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		userID := auth.UserID(r)
 		pType := r.URL.Query().Get("type")
+		status := r.URL.Query().Get("status")
+
+		// Legacy compat: ?active=false shows all; otherwise default to active only
 		activeOnly := r.URL.Query().Get("active") != "false"
 
-		practices, err := database.ListPractices(userID, pType, activeOnly)
+		practices, err := database.ListPracticesByStatus(userID, pType, status, activeOnly)
 		if err != nil {
 			writeError(w, http.StatusInternalServerError, err.Error())
 			return
@@ -242,6 +249,76 @@ func deletePractice(database *db.DB) http.HandlerFunc {
 			return
 		}
 		w.WriteHeader(http.StatusNoContent)
+	}
+}
+
+// --- Practice Lifecycle Actions ---
+
+func completePractice(database *db.DB) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		userID := auth.UserID(r)
+		id, err := parseID(r)
+		if err != nil {
+			writeError(w, http.StatusBadRequest, "invalid id")
+			return
+		}
+		if err := database.CompletePractice(userID, id); err != nil {
+			writeError(w, http.StatusInternalServerError, err.Error())
+			return
+		}
+		p, _ := database.GetPractice(userID, id)
+		writeJSON(w, http.StatusOK, p)
+	}
+}
+
+func archivePractice(database *db.DB) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		userID := auth.UserID(r)
+		id, err := parseID(r)
+		if err != nil {
+			writeError(w, http.StatusBadRequest, "invalid id")
+			return
+		}
+		if err := database.ArchivePractice(userID, id); err != nil {
+			writeError(w, http.StatusInternalServerError, err.Error())
+			return
+		}
+		p, _ := database.GetPractice(userID, id)
+		writeJSON(w, http.StatusOK, p)
+	}
+}
+
+func pausePractice(database *db.DB) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		userID := auth.UserID(r)
+		id, err := parseID(r)
+		if err != nil {
+			writeError(w, http.StatusBadRequest, "invalid id")
+			return
+		}
+		if err := database.PausePractice(userID, id); err != nil {
+			writeError(w, http.StatusInternalServerError, err.Error())
+			return
+		}
+		p, _ := database.GetPractice(userID, id)
+		writeJSON(w, http.StatusOK, p)
+	}
+}
+
+func restorePractice(database *db.DB) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		userID := auth.UserID(r)
+		id, err := parseID(r)
+		if err != nil {
+			writeError(w, http.StatusBadRequest, "invalid id")
+			return
+		}
+		if err := database.RestorePractice(userID, id); err != nil {
+			writeError(w, http.StatusInternalServerError, err.Error())
+			return
+		}
+		p, _ := database.GetPractice(userID, id)
+		writeJSON(w, http.StatusOK, p)
 	}
 }
 

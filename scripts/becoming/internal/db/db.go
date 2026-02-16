@@ -229,9 +229,46 @@ func (db *DB) runSQLiteMigrations() error {
 		return fmt.Errorf("adding user_id columns: %w", err)
 	}
 
+	// Migration: add practice lifecycle columns (status, archived_at, end_date)
+	if err := db.migratePracticeLifecycle(); err != nil {
+		return fmt.Errorf("practice lifecycle migration: %w", err)
+	}
+
 	// Seed default reflection prompts for user 1 (dev user)
 	if err := db.SeedPrompts(1); err != nil {
 		return fmt.Errorf("seeding prompts: %w", err)
+	}
+
+	return nil
+}
+
+// migratePracticeLifecycle adds status, archived_at, and end_date columns to practices.
+func (db *DB) migratePracticeLifecycle() error {
+	if db.hasColumn("practices", "status") {
+		return nil // already migrated
+	}
+
+	if _, err := db.Exec(`ALTER TABLE practices ADD COLUMN status TEXT NOT NULL DEFAULT 'active'`); err != nil {
+		return fmt.Errorf("adding status column: %w", err)
+	}
+	if _, err := db.Exec(`ALTER TABLE practices ADD COLUMN archived_at DATETIME`); err != nil {
+		return fmt.Errorf("adding archived_at column: %w", err)
+	}
+	if _, err := db.Exec(`ALTER TABLE practices ADD COLUMN end_date DATE`); err != nil {
+		return fmt.Errorf("adding end_date column: %w", err)
+	}
+
+	// Backfill status from existing active/completed_at columns
+	if _, err := db.Exec(`UPDATE practices SET status = CASE
+		WHEN completed_at IS NOT NULL THEN 'completed'
+		WHEN active = FALSE THEN 'paused'
+		ELSE 'active'
+	END`); err != nil {
+		return fmt.Errorf("backfilling status: %w", err)
+	}
+
+	if _, err := db.Exec(`CREATE INDEX IF NOT EXISTS idx_practices_status ON practices(status)`); err != nil {
+		return fmt.Errorf("creating status index: %w", err)
 	}
 
 	return nil
