@@ -88,9 +88,11 @@ A **Study Mode** that automatically selects memorization cards and adjusts diffi
 
 The existing single-card modes (**Review**, **Practice**, **Quiz**) remain for focused work on one card at a time. **Study Mode** is a new mode within the Memorize page that works across all cards (with optional pillar/category sub-filtering).
 
-### Difficulty Ladder
+### Difficulty Ladder — Forward & Reverse Tracks
 
-Six levels, each tracked independently per card per user:
+Each difficulty level has two directions: **forward** (recall the text) and **reverse** (identify the reference). The algorithm picks both level *and* direction for each exercise.
+
+**Forward track** (recall — "what does this scripture say?"):
 
 | Level | Mode | Description |
 |-------|------|-------------|
@@ -98,27 +100,44 @@ Six levels, each tracked independently per card per user:
 | 2 | **Reveal Words** | ~35% of words blanked, tap to reveal one at a time |
 | 3 | **Type Words / Arrange Words** | Randomly chosen. ~35% blanked + type, or all words shuffled + arrange. |
 | 4 | **Type Full Text** | Blank canvas, user types entire verse from memory |
-| 5 | **Reverse (Reference)** | Given the text, user must identify the scripture reference/title |
 
-Level 5 (Reverse) is its own rung — easier than remembering the full text, harder than just reading it. It tests a different axis: "I know where this comes from."
+**Reverse track** (recognition — "where is this from?"):
+
+| Level | Mode | Description |
+|-------|------|-------------|
+| R1 | **Full Text → Reference** | All text shown, user identifies the reference. Easy — it's just matching. |
+| R2 | **Partial Text → Reference** | Text with ~35% of words missing, user identifies the reference. |
+| R3 | **Fragment → Reference** | Only 3-5 key words shown, user identifies the reference. Hard — requires deep familiarity. |
+
+The reverse levels parallel the forward levels in difficulty:
+- **R1** pairs with **Level 1-2** (easy tier)
+- **R2** pairs with **Level 3** (medium tier)
+- **R3** pairs with **Level 4** (hard tier)
+
+This gives every exercise two dimensions: *how much help* (level) and *which direction* (forward vs. reverse). The algorithm treats forward and reverse aptitudes independently — a user might ace Type Full Text but struggle with Fragment → Reference, or vice versa.
 
 ### The Double-Spectrum Aptitude Model
 
 This is the core insight: there are **two spectrums** operating simultaneously.
 
-**Spectrum 1: Per-mode aptitude.** Each difficulty level has its own rolling aptitude score per card. A user might be great at Reveal Words but terrible at Type Full Text *for the same card*. These are independent skills.
+**Spectrum 1: Per-mode aptitude.** Each mode (forward *and* reverse) has its own rolling aptitude score per card. A user might be great at Reveal Words but terrible at Type Full Text, or nail Full Text → Reference but struggle with Fragment → Reference. These are all independent skills.
 
-**Spectrum 2: Overall card aptitude.** Across all modes, how well does the user know this card? This is the aggregate — a weighted combination of per-mode scores that represents total mastery.
+**Spectrum 2: Overall card aptitude.** Across all modes in both tracks, how well does the user know this card? This is the aggregate — a weighted combination of per-mode scores that represents total mastery.
 
 ```
 Per-mode aptitude  = rolling average of last 3-5 scores at that mode for that card
+                     (7 modes total: 4 forward + 3 reverse)
 Overall aptitude   = weighted average across all per-mode aptitudes
                      (higher-level modes weighted more heavily)
 ```
 
 ### Adaptive Algorithm — Goldilocks Selection
 
-When Study Mode needs to pick a difficulty level for a card:
+**The core goal is emotional, not statistical.** The user should feel challenged but capable — never frustrated, never bored. The algorithm manages *session momentum* to keep them in that zone. If they start missing, we don't double down on hard cards — we give them ones they know well so they feel "I've actually learned this." If they're cruising, we gradually push harder until they start missing, then ease back. The session should feel like it's *with* them, not *testing* them.
+
+#### Card + Level Selection
+
+When Study Mode needs to pick the next exercise:
 
 1. **Fresh card (little data):** Present all difficulty levels to gather data. Start with Level 1, but cycle through levels quickly to discover where the user actually is.
 
@@ -129,17 +148,33 @@ When Study Mode needs to pick a difficulty level for a card:
 
 3. **Level selection is probabilistic, not deterministic:**
    - The system *favors* the appropriate level but doesn't lock into it
-   - Even a struggling user occasionally gets an easy win (Level 1)
-   - Even a strong user occasionally gets challenged (Level 4-5)
    - This prevents staleness and provides ongoing calibration data
 
-4. **Session momentum:**
-   - Track running accuracy within a session
-   - If user is crushing it (3+ good scores in a row) → bump difficulty more aggressively
-   - If user is struggling (2+ poor scores in a row) → drop back immediately, don't let frustration build
-   - The session should *feel* like it's responding to them in real time
+4. **Level 3 randomization:** When the algorithm picks Level 3 forward, it randomly chooses between Type Words and Arrange Words. Both are tracked as the same aptitude level.
 
-5. **Level 3 randomization:** When the algorithm picks Level 3, it randomly chooses between Type Words and Arrange Words. Both are tracked as the same aptitude level.
+5. **Direction selection:** After picking a difficulty tier, the algorithm chooses forward or reverse:
+   - Both tracks have independent aptitudes, so the algorithm can favor whichever track needs more practice
+
+#### Session Momentum — The Feel
+
+The session-level algorithm sits *above* per-card aptitude. It watches the running trajectory and adjusts what gets served next:
+
+| Session state | What the user sees | Why |
+|---|---|---|
+| **Struggling** (2+ poor scores in a row) | Drop back immediately. Serve high-aptitude cards at easy levels — things they *know*. | Rebuild confidence. Remind them they've actually learned things. Prevent frustration spiral. |
+| **Steady** (mixed results) | Stay in the Goldilocks zone. Match cards to their current aptitude levels. | This is the target state. Challenged but comfortable. Learning happens here. |
+| **Cruising** (3+ good scores in a row) | Gradually push harder. Bump up one level, or serve a lower-aptitude card. | Keep engagement. Boredom is as dangerous as frustration. |
+
+**Intentional outliers** — even in steady state, the algorithm deliberately injects:
+- **Stretch cards** (~15% of exercises): A difficulty level above where aptitude suggests. This probes whether the user has grown beyond their current level. They might miss it — that's fine, it's data. The next card should be something comfortable.
+- **Confidence cards** (~15% of exercises): A high-aptitude card at an easy level. These are freebies. They exist purely so the user feels "I actually know this stuff." This is motivationally critical — especially after a stretch card or a miss.
+
+The remaining ~70% are **Goldilocks cards**: matched to where the user's aptitude actually sits.
+
+**Recovery pattern:** After a miss or a stretch card that went poorly, the *next* card should almost always be a confidence card. Never serve two hard misses in a row. The sequence should feel like: challenge → easy win → challenge → steady → steady → easy win → harder challenge. The user should always feel like the floor is close, even when the ceiling is being tested.
+   - Fresh cards get a mix of both directions early on to gather data
+   - Within a session, alternate between forward and reverse to keep variety high
+   - The reverse track's difficulty tier maps to the forward tier: easy (R1 ↔ L1-2), medium (R2 ↔ L3), hard (R3 ↔ L4)
 
 ### Seeding from Existing Data
 
@@ -178,7 +213,8 @@ CREATE TABLE memorize_scores (
     id          SERIAL PRIMARY KEY,
     practice_id INTEGER NOT NULL REFERENCES practices(id) ON DELETE CASCADE,
     user_id     INTEGER NOT NULL REFERENCES users(id),
-    mode        TEXT NOT NULL,       -- 'reveal_whole', 'reveal_words', 'type_words', 'arrange', 'type_full', 'reverse'
+    mode        TEXT NOT NULL,       -- Forward: 'reveal_whole', 'reveal_words', 'type_words', 'arrange', 'type_full'
+                                     -- Reverse: 'reverse_full', 'reverse_partial', 'reverse_fragment'
     score       REAL NOT NULL,       -- 0.0 to 1.0 (accuracy)
     quality     INTEGER,             -- SM-2 quality 0-5 (user's self-rating)
     duration_s  INTEGER,             -- how long the exercise took
@@ -232,7 +268,7 @@ Answers to open questions, recorded for future reference:
 
 | Question | Decision | Rationale |
 |----------|----------|-----------|
-| Reverse mode placement | Its own level (Level 5) on the ladder | Easier than full recall but tests a different skill (reference knowledge). Own rung keeps it clean. |
+| Reverse mode placement | Parallel track with 3 tiers (R1 full text, R2 partial, R3 fragment) running alongside forward levels | Tests a complementary skill (recognition vs. recall). Parallel tracks double exercise variety at every difficulty tier without adding algorithmic complexity. R1=easy, R2=medium, R3=hard mirrors the forward ladder. |
 | Study session length | Default: all due card reps. Then "Keep Studying" for open-ended. | Matches SM-2 contract (do your reps), but doesn't trap the user. Extra study is opt-in. |
 | Promotion/demotion thresholds | Rolling average of last 3-5 scores per mode per card | Develops into an aptitude score. Small window handles cold-start; grows more stable over time. |
 | Level 3 selection | System randomly picks between Type Words and Arrange Words | Same difficulty tier, variety keeps it fresh. Both map to same aptitude level. |
