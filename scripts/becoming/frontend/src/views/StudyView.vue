@@ -33,7 +33,7 @@ const lastScoreResponse = ref<StudyScoreResponse | null>(null)
 const revealed = ref(false)
 
 // Reveal Words state
-interface BlankWord { word: string; hidden: boolean; revealed: boolean }
+interface BlankWord { word: string; hidden: boolean; revealed: boolean; confidence?: 'knew' | 'didnt' }
 const blanks = ref<BlankWord[]>([])
 const allBlanksRevealed = ref(false)
 
@@ -45,8 +45,9 @@ const typeScore = ref({ correct: 0, total: 0 })
 
 // Arrange state
 interface OrderWord { word: string; originalIndex: number; placed: boolean }
+interface ArrangeSlot { anchor: boolean; word: OrderWord | null }
 const wordBank = ref<OrderWord[]>([])
-const placedWords = ref<OrderWord[]>([])
+const arrangeSlots = ref<ArrangeSlot[]>([])
 const orderChecked = ref(false)
 const orderScore = ref({ correct: 0, total: 0 })
 
@@ -171,7 +172,7 @@ function resetExerciseState() {
   typeChecked.value = false
   typeScore.value = { correct: 0, total: 0 }
   wordBank.value = []
-  placedWords.value = []
+  arrangeSlots.value = []
   orderChecked.value = false
   orderScore.value = { correct: 0, total: 0 }
   quizInput.value = ''
@@ -212,15 +213,31 @@ function initBlanks() {
   blanks.value = result
 }
 
-function revealWord(index: number) {
+function revealWordConfident(index: number) {
   blanks.value[index]!.revealed = true
+  blanks.value[index]!.confidence = 'knew'
+  checkAllBlanksRevealed()
+}
+
+function revealWordStruggled(index: number) {
+  blanks.value[index]!.revealed = true
+  blanks.value[index]!.confidence = 'didnt'
+  checkAllBlanksRevealed()
+}
+
+function checkAllBlanksRevealed() {
   if (blanks.value.every(b => !b.hidden || b.revealed)) {
     allBlanksRevealed.value = true
   }
 }
 
 function revealAllBlanks() {
-  blanks.value.forEach(b => { if (b.hidden) b.revealed = true })
+  blanks.value.forEach(b => {
+    if (b.hidden && !b.revealed) {
+      b.revealed = true
+      b.confidence = 'didnt' // bulk reveal = didn't know them
+    }
+  })
   allBlanksRevealed.value = true
 }
 
@@ -244,7 +261,7 @@ function checkTypeWords() {
   typeWords.value.forEach(tw => {
     if (!tw.hidden) return
     total++
-    const expected = tw.word.replace(/[.,;:!?'"()]/g, '').toLowerCase()
+    const expected = tw.word.toLowerCase()
     const actual = tw.userInput.trim().toLowerCase()
     tw.correct = actual === expected
     tw.checked = true
@@ -258,33 +275,64 @@ function initOrderWords() {
   const text = exerciseText.value
   if (!text) return
   const words = text.split(/\s+/)
-  const ordered: OrderWord[] = words.map((w, i) => ({ word: w, originalIndex: i, placed: false }))
-  const shuffled = [...ordered]
-  shuffle(shuffled)
-  shuffled.forEach(w => w.placed = false)
-  wordBank.value = shuffled
-  placedWords.value = []
+  const allWords: OrderWord[] = words.map((w, i) => ({ word: w, originalIndex: i, placed: false }))
+
+  // Pick ~33% of words as anchors (hints), evenly distributed
+  const anchorRatio = 0.33
+  const anchorCount = Math.max(0, Math.floor(words.length * anchorRatio))
+  const anchorIndices = new Set<number>()
+  if (anchorCount > 0) {
+    const step = Math.floor(words.length / (anchorCount + 1))
+    for (let k = 0; k < anchorCount; k++) {
+      const idx = step * (k + 1)
+      if (idx < words.length) anchorIndices.add(idx)
+    }
+  }
+
+  // Build slots: anchors are pre-filled, rest are empty
+  const slots: ArrangeSlot[] = allWords.map((w, i) => {
+    if (anchorIndices.has(i)) {
+      return { anchor: true, word: w }
+    }
+    return { anchor: false, word: null }
+  })
+
+  // Word bank contains only non-anchor words, shuffled
+  const bank = allWords.filter((_, i) => !anchorIndices.has(i))
+  shuffle(bank)
+  bank.forEach(w => w.placed = false)
+
+  arrangeSlots.value = slots
+  wordBank.value = bank
 }
 
-function placeWord(index: number) {
-  const word = wordBank.value[index]!
+function placeWord(bankIndex: number) {
+  const word = wordBank.value[bankIndex]!
+  // Find next empty (non-anchor) slot
+  const slotIdx = arrangeSlots.value.findIndex(s => !s.anchor && s.word === null)
+  if (slotIdx < 0) return
   word.placed = true
-  placedWords.value.push(word)
+  arrangeSlots.value[slotIdx]!.word = word
 }
 
-function unplaceWord(index: number) {
-  const word = placedWords.value.splice(index, 1)[0]!
-  const bankIdx = wordBank.value.findIndex(w => w === word)
+function unplaceWord(slotIndex: number) {
+  const slot = arrangeSlots.value[slotIndex]!
+  if (slot.anchor || !slot.word) return
+  const bankIdx = wordBank.value.findIndex(w => w === slot.word)
   if (bankIdx >= 0) wordBank.value[bankIdx]!.placed = false
+  slot.word = null
 }
 
 function checkOrder() {
   let correct = 0
-  placedWords.value.forEach((w, i) => {
-    if (w.originalIndex === i) correct++
+  let total = 0
+  arrangeSlots.value.forEach((slot, i) => {
+    if (slot.anchor) return // anchors don't count
+    total++
+    if (slot.word && slot.word.originalIndex === i) correct++
   })
   orderChecked.value = true
-  orderScore.value = { correct, total: placedWords.value.length }
+  orderScore.value = { correct, total }
 }
 
 // --- Quiz (Type Full) ---
@@ -338,21 +386,29 @@ function lcsTable(a: string[], b: string[]) {
 // --- Reverse mode ---
 function initReverseOptions() {
   if (!exercise.value) return
-  // We'll need more cards for options — for now use the exercise name + some fake options
-  // In a real implementation, we'd pass available card names from the backend
-  // For now: correct answer + 3 distractors
   const correct = exercise.value.practice.name
-  referenceOptions.value = [correct]
-  // TODO: get real distractors from other cards. For now, generate plausible fakes.
-  const fakes = generateDistractors(correct)
-  referenceOptions.value.push(...fakes)
+  const allNames = exercise.value.all_card_names ?? []
+
+  // Use real card names as distractors (excluding the correct answer)
+  const otherCards = allNames.filter(n => n !== correct)
+  shuffle(otherCards)
+
+  // Take up to 3 real distractors, fill remaining with generated fakes
+  const distractors: string[] = otherCards.slice(0, 3)
+  if (distractors.length < 3) {
+    const fakes = generateDistractors(correct)
+    for (const f of fakes) {
+      if (distractors.length >= 3) break
+      if (!distractors.includes(f) && f !== correct) distractors.push(f)
+    }
+  }
+
+  referenceOptions.value = [correct, ...distractors]
   shuffle(referenceOptions.value)
 }
 
 function generateDistractors(correct: string): string[] {
-  // Simple distractor generation — swap numbers, change book names
   const distractors: string[] = []
-  // If it looks like a scripture reference, generate variations
   const match = correct.match(/^(.+?)\s+(\d+):(\d+)/)
   if (match) {
     const [, book, chapter, verse] = match
@@ -412,10 +468,14 @@ function computeScore(): number {
 
   switch (mode) {
     case 'reveal_whole':
-      return revealed.value ? 1.0 : 0
-    case 'reveal_words':
-      if (blanks.value.length === 0) return 0
-      return allBlanksRevealed.value ? 0.85 : 0 // Reveal mode is low-effort, cap at 0.85
+      return revealed.value ? 1.0 : 0.5 // "I've read it" = 1.0, "Struggled" = 0.5
+    case 'reveal_words': {
+      // Score based on confidence: words marked "+" count, words marked "−" don't
+      const hiddenWords = blanks.value.filter(b => b.hidden)
+      if (hiddenWords.length === 0) return 0
+      const knew = hiddenWords.filter(b => b.confidence === 'knew').length
+      return knew / hiddenWords.length
+    }
     case 'type_words':
       return typeScore.value.total > 0 ? typeScore.value.correct / typeScore.value.total : 0
     case 'arrange':
@@ -441,7 +501,7 @@ function suggestQuality(accuracy: number): number {
 }
 
 // --- Submit score and advance ---
-async function submitScore() {
+async function submitScore(autoAdvance = false) {
   if (!exercise.value) return
   const score = computeScore()
   currentScore.value = score
@@ -475,7 +535,24 @@ async function submitScore() {
   // Update momentum
   updateMomentum(score)
 
-  showResult.value = true
+  // Auto-advance for low-interaction modes (Read & Absorb) — skip result screen
+  if (autoAdvance) {
+    await fetchNextExercise()
+    return
+  }
+
+  // All other modes also auto-advance now (no result screen)
+  await fetchNextExercise()
+}
+
+// Read & Absorb handlers — auto-advance (no result screen)
+async function readItConfident() {
+  revealed.value = true // score = 1.0
+  await submitScore(true)
+}
+async function readItStruggled() {
+  revealed.value = false // score = 0.5
+  await submitScore(true)
 }
 
 function updateMomentum(_score: number) {
@@ -492,11 +569,6 @@ function updateMomentum(_score: number) {
   }
 }
 
-async function nextExercise() {
-  showResult.value = false
-  await fetchNextExercise()
-}
-
 async function continueStudying() {
   keepStudying.value = true
   sessionDone.value = false
@@ -506,8 +578,6 @@ async function continueStudying() {
 function exitSession() {
   router.push('/memorize')
 }
-
-const scorePercent = computed(() => Math.round(currentScore.value * 100))
 
 const averageScore = computed(() => {
   if (exercisesDone.value === 0) return 0
@@ -528,6 +598,10 @@ onMounted(startSession)
       <div class="flex items-center gap-3 text-sm">
         <span class="text-gray-500">{{ momentumEmoji }} {{ exercisesDone }} done</span>
         <span v-if="exercisesDone > 0" class="text-gray-400">{{ averageScore }}% avg</span>
+        <button v-if="exercisesDone > 0 && !sessionDone" @click="exitSession"
+          class="px-3 py-1 text-xs bg-gray-100 text-gray-500 rounded-lg hover:bg-gray-200 hover:text-gray-700 transition-colors">
+          End Session
+        </button>
       </div>
     </div>
 
@@ -574,53 +648,42 @@ onMounted(startSession)
         <span v-else class="italic">Which scripture is this from?</span>
       </div>
 
-      <!-- Result overlay -->
-      <div v-if="showResult" class="bg-white rounded-2xl shadow-lg border border-gray-100 p-6 mb-6">
-        <div class="text-center">
-          <div class="text-4xl mb-2">{{ currentScore >= 0.8 ? '✅' : currentScore >= 0.5 ? '👍' : '🔄' }}</div>
-          <p class="text-2xl font-bold" :class="currentScore >= 0.8 ? 'text-green-600' : currentScore >= 0.5 ? 'text-yellow-600' : 'text-red-500'">
-            {{ scorePercent }}%
-          </p>
-          <p class="text-sm text-gray-500 mt-1">{{ exerciseName }}</p>
-          <div v-if="lastScoreResponse" class="mt-3 text-xs text-gray-400">
-            Overall aptitude: {{ Math.round(lastScoreResponse.overall * 100) }}%
-          </div>
-        </div>
-        <div class="flex justify-center gap-3 mt-4">
-          <button @click="nextExercise" class="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700">
-            Next →
-          </button>
-          <button @click="exitSession" class="px-4 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300">
-            End Session
-          </button>
-        </div>
-      </div>
+      <!-- Result overlay — removed, all exercises auto-advance -->
 
-      <!-- Exercise content (hidden when showing result) -->
-      <div v-else>
+      <!-- Exercise content -->
+      <div>
         <!-- FORWARD: reveal_whole (Level 1 — Read & Absorb) -->
         <div v-if="exercise.mode === 'reveal_whole'" class="bg-white rounded-2xl shadow-lg border border-gray-100 p-6">
           <div class="text-lg leading-relaxed text-gray-800 whitespace-pre-line">{{ exerciseText }}</div>
-          <div class="mt-4 text-center">
-            <button v-if="!revealed" @click="revealed = true" class="px-4 py-2 bg-indigo-100 text-indigo-700 rounded-lg hover:bg-indigo-200">
-              I've read it ✓
+          <div class="mt-4 flex justify-center gap-3">
+            <button @click="readItStruggled" class="px-4 py-2 bg-orange-100 text-orange-700 rounded-lg hover:bg-orange-200">
+              Struggled
             </button>
-            <button v-else @click="submitScore" class="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700">
-              Continue →
+            <button @click="readItConfident" class="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700">
+              Got it ✓
             </button>
           </div>
         </div>
 
-        <!-- FORWARD: reveal_words (Level 2 — Tap to Reveal) -->
+        <!-- FORWARD: reveal_words (Level 2 — Tap to Reveal with Confidence) -->
         <div v-else-if="exercise.mode === 'reveal_words'" class="bg-white rounded-2xl shadow-lg border border-gray-100 p-6">
-          <div class="text-lg leading-relaxed flex flex-wrap gap-1">
+          <div class="text-lg leading-relaxed flex flex-wrap gap-1 items-baseline">
             <span v-for="(b, i) in blanks" :key="i">
               <span v-if="!b.hidden" class="text-gray-800">{{ b.word }}</span>
-              <button v-else-if="!b.revealed" @click="revealWord(i)"
-                class="px-2 py-0.5 bg-indigo-100 text-indigo-400 rounded border border-indigo-200 hover:bg-indigo-200 min-w-[3em] text-center">
-                ···
-              </button>
-              <span v-else class="px-1 text-indigo-600 font-semibold bg-indigo-50 rounded">{{ b.word }}</span>
+              <span v-else-if="!b.revealed" class="inline-flex items-center gap-0.5">
+                <button @click="revealWordStruggled(i)"
+                  class="px-1.5 py-0.5 bg-orange-100 text-orange-500 rounded-l border border-orange-200 hover:bg-orange-200 text-xs font-bold"
+                  title="Don't know">−</button>
+                <button @click="revealWordConfident(i)"
+                  class="px-1.5 py-0.5 bg-green-100 text-green-600 rounded-r border border-green-200 hover:bg-green-200 text-xs font-bold"
+                  title="I know it">+</button>
+              </span>
+              <span v-else class="px-1 rounded font-semibold cursor-pointer select-none transition-colors"
+                :class="b.confidence === 'knew' ? 'text-green-700 bg-green-50 hover:bg-green-100' : 'text-orange-600 bg-orange-50 hover:bg-orange-100'"
+                @click="b.confidence = b.confidence === 'knew' ? 'didnt' : 'knew'"
+                :title="b.confidence === 'knew' ? 'Click to mark as struggled' : 'Click to mark as knew'">
+                {{ b.word }}
+              </span>
             </span>
           </div>
           <div class="mt-4 flex justify-between items-center">
@@ -630,7 +693,7 @@ onMounted(startSession)
             <span v-if="!allBlanksRevealed" class="text-xs text-gray-400">
               {{ blanks.filter(b => b.hidden && !b.revealed).length }} remaining
             </span>
-            <button v-if="allBlanksRevealed" @click="submitScore" class="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 ml-auto">
+            <button v-if="allBlanksRevealed" @click="submitScore()" class="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 ml-auto">
               Continue →
             </button>
           </div>
@@ -639,15 +702,15 @@ onMounted(startSession)
         <!-- FORWARD: type_words (Level 3 — Type Missing Words) -->
         <div v-else-if="exercise.mode === 'type_words'" class="bg-white rounded-2xl shadow-lg border border-gray-100 p-6">
           <div class="text-lg leading-relaxed flex flex-wrap gap-1 items-baseline">
-            <template v-for="(tw, i) in typeWords" :key="i">
-              <span v-if="!tw.hidden" class="text-gray-800">{{ tw.word }}</span>
-              <span v-else-if="!typeChecked">
+            <template v-for="(tw, i) in typeWords">
+              <span v-if="!tw.hidden" :key="'v'+i" class="text-gray-800">{{ tw.word }}</span>
+              <span v-else-if="!typeChecked" :key="'i'+i">
                 <input v-model="tw.userInput" type="text"
                   class="border-b-2 border-indigo-300 outline-none text-center bg-transparent w-20 text-indigo-700 font-medium"
                   :placeholder="'_'.repeat(Math.min(8, tw.word.length))"
                   @keyup.enter="checkTypeWords" />
               </span>
-              <span v-else
+              <span v-else :key="'c'+i"
                 class="px-1 rounded font-medium"
                 :class="tw.correct ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-600 line-through'">
                 {{ tw.correct ? tw.userInput : tw.word }}
@@ -661,25 +724,35 @@ onMounted(startSession)
             </button>
             <div v-else class="flex items-center gap-3">
               <span class="text-sm text-gray-500">{{ typeScore.correct }}/{{ typeScore.total }} correct</span>
-              <button @click="submitScore" class="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700">
+              <button @click="() => submitScore()" class="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700">
                 Continue →
               </button>
             </div>
           </div>
         </div>
 
-        <!-- FORWARD: arrange (Level 3 — Arrange Words) -->
+        <!-- FORWARD: arrange (Level 4 — Arrange Words) -->
         <div v-else-if="exercise.mode === 'arrange'" class="bg-white rounded-2xl shadow-lg border border-gray-100 p-6">
-          <!-- Placed words area -->
-          <div class="min-h-[60px] p-3 bg-gray-50 rounded-lg border-2 border-dashed border-gray-200 mb-4 flex flex-wrap gap-1.5">
-            <button v-for="(w, i) in placedWords" :key="'p'+i" @click="unplaceWord(i)"
-              class="px-2 py-1 rounded text-sm transition-colors"
-              :class="orderChecked
-                ? w.originalIndex === i ? 'bg-green-100 text-green-700 border border-green-300' : 'bg-red-100 text-red-600 border border-red-300'
-                : 'bg-indigo-100 text-indigo-700 border border-indigo-200 hover:bg-indigo-200'">
-              {{ w.word }}
-            </button>
-            <span v-if="placedWords.length === 0" class="text-gray-300 text-sm italic">Tap words below to build the verse...</span>
+          <!-- Slot-based verse layout -->
+          <div class="min-h-[60px] p-3 bg-gray-50 rounded-lg border-2 border-dashed border-gray-200 mb-4 flex flex-wrap gap-1.5 items-baseline">
+            <template v-for="(slot, i) in arrangeSlots">
+              <!-- Anchor word (given hint, locked) -->
+              <span v-if="slot.anchor && slot.word" :key="'a'+i"
+                class="px-2 py-1 rounded text-sm cursor-default"
+                :class="orderChecked ? 'bg-green-100 text-green-700 border border-green-300' : 'bg-gray-200 text-gray-500 border border-gray-300'">
+                {{ slot.word.word }}
+              </span>
+              <!-- User-placed word -->
+              <button v-else-if="slot.word" :key="'u'+i" @click="unplaceWord(i)"
+                class="px-2 py-1 rounded text-sm transition-colors"
+                :class="orderChecked
+                  ? slot.word.originalIndex === i ? 'bg-green-100 text-green-700 border border-green-300' : 'bg-red-100 text-red-600 border border-red-300'
+                  : 'bg-indigo-100 text-indigo-700 border border-indigo-200 hover:bg-indigo-200'">
+                {{ slot.word.word }}
+              </button>
+              <!-- Empty slot -->
+              <span v-else :key="'e'+i" class="w-8 h-6 border-b-2 border-gray-300 inline-block"></span>
+            </template>
           </div>
           <!-- Word bank -->
           <div class="flex flex-wrap gap-1.5 mb-4">
@@ -691,20 +764,20 @@ onMounted(startSession)
             </button>
           </div>
           <div class="flex justify-end">
-            <button v-if="!orderChecked && placedWords.length === wordBank.length" @click="checkOrder"
+            <button v-if="!orderChecked && arrangeSlots.some(s => !s.anchor && s.word !== null)" @click="checkOrder"
               class="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700">
               Check
             </button>
             <div v-if="orderChecked" class="flex items-center gap-3">
               <span class="text-sm text-gray-500">{{ orderScore.correct }}/{{ orderScore.total }} in order</span>
-              <button @click="submitScore" class="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700">
+              <button @click="() => submitScore()" class="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700">
                 Continue →
               </button>
             </div>
           </div>
         </div>
 
-        <!-- FORWARD: type_full (Level 4 — Type Entire Text) -->
+        <!-- FORWARD: type_full (Level 5 — Type Entire Text) -->
         <div v-else-if="exercise.mode === 'type_full'" class="bg-white rounded-2xl shadow-lg border border-gray-100 p-6">
           <div v-if="!quizChecked">
             <textarea v-model="quizInput" rows="6"
@@ -731,7 +804,7 @@ onMounted(startSession)
             </div>
             <div class="flex items-center justify-between">
               <span class="text-sm text-gray-500">{{ quizScore.correct }}/{{ quizScore.total }} words</span>
-              <button @click="submitScore" class="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700">
+              <button @click="() => submitScore()" class="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700">
                 Continue →
               </button>
             </div>
@@ -762,7 +835,7 @@ onMounted(startSession)
               class="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700">
               Check
             </button>
-            <button v-if="referenceChecked" @click="submitScore"
+            <button v-if="referenceChecked" @click="() => submitScore()"
               class="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700">
               Continue →
             </button>

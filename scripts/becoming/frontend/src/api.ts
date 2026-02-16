@@ -156,6 +156,7 @@ export interface StudyExercise {
   level: number
   momentum: SessionMomentum
   card_type: 'goldilocks' | 'stretch' | 'confidence' | 'fresh'
+  all_card_names?: string[]
   done?: boolean
   message?: string
 }

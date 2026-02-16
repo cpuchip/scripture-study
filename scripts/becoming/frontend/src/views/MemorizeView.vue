@@ -56,8 +56,9 @@ interface OrderWord {
   originalIndex: number
   placed: boolean
 }
+interface ArrangeSlot { anchor: boolean; word: OrderWord | null }
 const wordBank = ref<OrderWord[]>([])
-const placedWords = ref<OrderWord[]>([])
+const arrangeSlots = ref<ArrangeSlot[]>([])
 const orderChecked = ref(false)
 const orderScore = ref({ correct: 0, total: 0 })
 
@@ -135,7 +136,7 @@ function resetModeState() {
   typeWords.value = []
   typeChecked.value = false
   wordBank.value = []
-  placedWords.value = []
+  arrangeSlots.value = []
   orderChecked.value = false
   quizInput.value = ''
   quizChecked.value = false
@@ -241,54 +242,70 @@ function initOrderWords() {
   if (!currentCard.value?.description) return
   const text = stripFootnotes(currentCard.value.description)
   const words = text.split(/\s+/)
-  const bank: OrderWord[] = words.map((w, i) => ({ word: w, originalIndex: i, placed: false }))
-  const shuffled = [...bank]
-  shuffle(shuffled)
-  wordBank.value = shuffled
-  placedWords.value = []
+  const allWords: OrderWord[] = words.map((w, i) => ({ word: w, originalIndex: i, placed: false }))
+
+  // Pick ~33% of words as anchors (hints), evenly distributed
+  const anchorRatio = 0.33
+  const anchorCount = Math.max(0, Math.floor(words.length * anchorRatio))
+  const anchorIndices = new Set<number>()
+  if (anchorCount > 0) {
+    const step = Math.floor(words.length / (anchorCount + 1))
+    for (let k = 0; k < anchorCount; k++) {
+      const idx = step * (k + 1)
+      if (idx < words.length) anchorIndices.add(idx)
+    }
+  }
+
+  // Build slots: anchors are pre-filled, rest are empty
+  const slots: ArrangeSlot[] = allWords.map((w, i) => {
+    if (anchorIndices.has(i)) {
+      return { anchor: true, word: w }
+    }
+    return { anchor: false, word: null }
+  })
+
+  // Word bank contains only non-anchor words, shuffled
+  const bank = allWords.filter((_, i) => !anchorIndices.has(i))
+  shuffle(bank)
+  bank.forEach(w => w.placed = false)
+
+  arrangeSlots.value = slots
+  wordBank.value = bank
   orderChecked.value = false
 }
 
 function placeWord(bankIndex: number) {
   if (orderChecked.value) return
-  const w = wordBank.value[bankIndex]!
-  if (w.placed) return
-  w.placed = true
-  placedWords.value.push({ word: w.word, originalIndex: w.originalIndex, placed: true })
+  const word = wordBank.value[bankIndex]!
+  if (word.placed) return
+  // Find next empty (non-anchor) slot
+  const slotIdx = arrangeSlots.value.findIndex(s => !s.anchor && s.word === null)
+  if (slotIdx < 0) return
+  word.placed = true
+  arrangeSlots.value[slotIdx]!.word = word
 }
 
-function unplaceWord(placedIndex: number) {
+function unplaceWord(slotIndex: number) {
   if (orderChecked.value) return
-  const w = placedWords.value[placedIndex]!
-  const bankItem = wordBank.value.find(b => b.originalIndex === w.originalIndex && b.placed)
-  if (bankItem) bankItem.placed = false
-  placedWords.value.splice(placedIndex, 1)
-}
-
-function getOriginalWords(): string[] {
-  if (!currentCard.value?.description) return []
-  return stripFootnotes(currentCard.value.description).split(/\s+/)
-}
-
-function isOrderCorrect(placedIndex: number): boolean {
-  const original = getOriginalWords()
-  return placedWords.value[placedIndex]?.word === original[placedIndex]
+  const slot = arrangeSlots.value[slotIndex]!
+  if (slot.anchor || !slot.word) return
+  const bankIdx = wordBank.value.findIndex(w => w === slot.word)
+  if (bankIdx >= 0) wordBank.value[bankIdx]!.placed = false
+  slot.word = null
 }
 
 function checkOrder() {
-  const original = getOriginalWords()
   let correct = 0
-  const total = placedWords.value.length
-  placedWords.value.forEach((w, i) => {
-    // Compare word TEXT, not originalIndex — allows duplicate words to be swapped freely
-    if (w.word === original[i]) correct++
+  let total = 0
+  arrangeSlots.value.forEach((slot, i) => {
+    if (slot.anchor) return // anchors don't count
+    total++
+    if (slot.word && slot.word.originalIndex === i) correct++
   })
   orderChecked.value = true
   orderScore.value = { correct, total }
   suggestQuality(total > 0 ? correct / total : 0)
 }
-
-const orderComplete = computed(() => wordBank.value.length > 0 && wordBank.value.every(w => w.placed))
 
 // --- Quiz mode ---
 
@@ -712,22 +729,26 @@ onMounted(load)
             </div>
 
             <div class="bg-white rounded-2xl shadow-lg border border-gray-100 p-6">
-              <!-- Placed words (sentence being built) -->
-              <div class="min-h-[80px] border-2 border-dashed border-gray-200 rounded-lg p-3 mb-4 flex flex-wrap gap-1.5 items-start">
-                <button
-                  v-for="(w, i) in placedWords"
-                  :key="'placed-' + i"
-                  @click="unplaceWord(i)"
-                  class="px-2.5 py-1 rounded text-sm transition-colors"
-                  :class="orderChecked
-                    ? isOrderCorrect(i)
-                      ? 'bg-green-100 text-green-700 border border-green-300'
-                      : 'bg-red-100 text-red-700 border border-red-300'
-                    : 'bg-indigo-100 text-indigo-700 border border-indigo-300 hover:bg-red-50 hover:text-red-600 hover:border-red-300 cursor-pointer'"
-                >{{ w.word }}</button>
-                <span v-if="placedWords.length === 0" class="text-sm text-gray-400 py-1">
-                  Click words below to build the verse...
-                </span>
+              <!-- Slot-based verse layout -->
+              <div class="min-h-[60px] p-3 bg-gray-50 rounded-lg border-2 border-dashed border-gray-200 mb-4 flex flex-wrap gap-1.5 items-baseline">
+                <template v-for="(slot, i) in arrangeSlots">
+                  <!-- Anchor word (given hint, locked) -->
+                  <span v-if="slot.anchor && slot.word" :key="'a'+i"
+                    class="px-2 py-1 rounded text-sm cursor-default"
+                    :class="orderChecked ? 'bg-green-100 text-green-700 border border-green-300' : 'bg-gray-200 text-gray-500 border border-gray-300'">
+                    {{ slot.word.word }}
+                  </span>
+                  <!-- User-placed word -->
+                  <button v-else-if="slot.word" :key="'u'+i" @click="unplaceWord(i)"
+                    class="px-2 py-1 rounded text-sm transition-colors"
+                    :class="orderChecked
+                      ? slot.word.originalIndex === i ? 'bg-green-100 text-green-700 border border-green-300' : 'bg-red-100 text-red-600 border border-red-300'
+                      : 'bg-indigo-100 text-indigo-700 border border-indigo-200 hover:bg-red-50 hover:text-red-600 hover:border-red-300 cursor-pointer'">
+                    {{ slot.word.word }}
+                  </button>
+                  <!-- Empty slot -->
+                  <span v-else :key="'e'+i" class="w-8 h-6 border-b-2 border-gray-300 inline-block"></span>
+                </template>
               </div>
 
               <!-- Word bank -->
@@ -746,10 +767,10 @@ onMounted(load)
 
               <!-- Check button + score -->
               <div v-if="!orderChecked" class="mt-4 flex items-center justify-between text-sm">
-                <span class="text-gray-400">{{ placedWords.length }}/{{ wordBank.length }} words placed</span>
+                <span class="text-gray-400">{{ arrangeSlots.filter(s => !s.anchor && s.word !== null).length }}/{{ wordBank.length }} words placed</span>
                 <button
                   @click="checkOrder"
-                  :disabled="!orderComplete"
+                  :disabled="!arrangeSlots.some(s => !s.anchor && s.word !== null)"
                   class="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 text-sm disabled:opacity-40 disabled:cursor-not-allowed"
                 >Check</button>
               </div>

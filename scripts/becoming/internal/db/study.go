@@ -15,8 +15,8 @@ const (
 	ModeRevealWhole = "reveal_whole" // Level 1: show full text, user reads
 	ModeRevealWords = "reveal_words" // Level 2: ~35% blanked, tap to reveal
 	ModeTypeWords   = "type_words"   // Level 3: ~35% blanked, type missing
-	ModeArrange     = "arrange"      // Level 3: all words shuffled, rearrange
-	ModeTypeFull    = "type_full"    // Level 4: blank canvas, type entire text
+	ModeArrange     = "arrange"      // Level 4: all words shuffled, rearrange
+	ModeTypeFull    = "type_full"    // Level 5: blank canvas, type entire text
 
 	// Reverse track modes (recognition — "where is this from?")
 	ModeReverseFull     = "reverse_full"     // R1: full text shown → identify reference
@@ -24,13 +24,13 @@ const (
 	ModeReverseFragment = "reverse_fragment" // R3: 3-5 key words → identify reference
 )
 
-// ForwardLevel maps forward mode to difficulty level (1-4).
+// ForwardLevel maps forward mode to difficulty level (1-5).
 var ForwardLevel = map[string]int{
 	ModeRevealWhole: 1,
 	ModeRevealWords: 2,
 	ModeTypeWords:   3,
-	ModeArrange:     3,
-	ModeTypeFull:    4,
+	ModeArrange:     4,
+	ModeTypeFull:    5,
 }
 
 // ReverseLevel maps reverse mode to difficulty level (R1-R3, stored as 1-3).
@@ -84,12 +84,13 @@ type MemorizeAptitude struct {
 
 // StudyExercise represents the next exercise the algorithm has selected.
 type StudyExercise struct {
-	Practice  *Practice       `json:"practice"`
-	Mode      string          `json:"mode"`
-	IsReverse bool            `json:"is_reverse"`
-	Level     int             `json:"level"`
-	Momentum  SessionMomentum `json:"momentum"`
-	CardType  string          `json:"card_type"` // "goldilocks", "stretch", "confidence", "fresh"
+	Practice     *Practice       `json:"practice"`
+	Mode         string          `json:"mode"`
+	IsReverse    bool            `json:"is_reverse"`
+	Level        int             `json:"level"`
+	Momentum     SessionMomentum `json:"momentum"`
+	CardType     string          `json:"card_type"`      // "goldilocks", "stretch", "confidence", "fresh"
+	AllCardNames []string        `json:"all_card_names"` // all memorize card names (for reverse mode distractors)
 }
 
 // StudySessionState tracks the current study session's momentum.
@@ -274,7 +275,7 @@ func OverallAptitude(aptitudes []*MemorizeAptitude) float64 {
 		ModeRevealWhole:     1.0,
 		ModeRevealWords:     2.0,
 		ModeTypeWords:       3.0,
-		ModeArrange:         3.0,
+		ModeArrange:         4.0,
 		ModeTypeFull:        5.0,
 		ModeReverseFull:     1.0,
 		ModeReversePartial:  2.5,
@@ -454,14 +455,14 @@ func selectForwardMode(aptMap map[string]float64, cardType string, currentLevel 
 		}
 	case "stretch":
 		// Push up — go 1 level above current
-		targetLevel = min(4, currentLevel+1)
+		targetLevel = min(5, currentLevel+1)
 	default: // goldilocks
 		// Stay at current level, occasionally test adjacent
 		roll := rand.Float64()
 		if roll < 0.15 {
 			targetLevel = max(1, currentLevel-1) // occasionally easier
 		} else if roll < 0.30 {
-			targetLevel = min(4, currentLevel+1) // occasionally harder
+			targetLevel = min(5, currentLevel+1) // occasionally harder
 		} else {
 			targetLevel = currentLevel
 		}
@@ -474,13 +475,11 @@ func selectForwardMode(aptMap map[string]float64, cardType string, currentLevel 
 	case 2:
 		return ModeRevealWords, false, 2
 	case 3:
-		// Randomly choose between Type Words and Arrange
-		if rand.Float64() < 0.5 {
-			return ModeTypeWords, false, 3
-		}
-		return ModeArrange, false, 3
+		return ModeTypeWords, false, 3
 	case 4:
-		return ModeTypeFull, false, 4
+		return ModeArrange, false, 4
+	case 5:
+		return ModeTypeFull, false, 5
 	default:
 		return ModeRevealWhole, false, 1
 	}
@@ -628,21 +627,41 @@ func (db *DB) SeedAptitudesFromSM2(userID int64) error {
 }
 
 // UpdateMemorizeLevel updates the target difficulty level for a card based on aptitude.
+// When a level's aptitude is strong (≥ 0.7 with ≥ 2 samples), the card is promoted
+// to the next level — you don't need data at the higher level to be promoted.
 func (db *DB) UpdateMemorizeLevel(userID, practiceID int64) error {
 	apts, err := db.GetAptitudes(userID, practiceID)
 	if err != nil {
 		return err
 	}
 
-	// Find the highest level with aptitude >= 0.7
-	newLevel := 1
+	// Build aptitude map by mode
+	aptMap := make(map[string]*MemorizeAptitude)
 	for _, a := range apts {
-		level, isForward := ForwardLevel[a.Mode]
-		if !isForward {
-			continue
-		}
-		if a.Aptitude >= 0.7 && a.SampleCount >= 2 && level >= newLevel {
-			newLevel = level
+		aptMap[a.Mode] = a
+	}
+
+	// Walk up the forward ladder: if level N has strong aptitude, promote to N+1
+	newLevel := 1
+	forwardLadder := []struct {
+		mode  string
+		level int
+	}{
+		{ModeRevealWhole, 1},
+		{ModeRevealWords, 2},
+		{ModeTypeWords, 3},
+		{ModeArrange, 4},
+		{ModeTypeFull, 5},
+	}
+
+	for _, step := range forwardLadder {
+		a, has := aptMap[step.mode]
+		if has && a.Aptitude >= 0.7 && a.SampleCount >= 2 {
+			// This level is mastered — promote to next
+			newLevel = min(5, step.level+1)
+		} else {
+			// Stop climbing — this level isn't mastered yet
+			break
 		}
 	}
 

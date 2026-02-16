@@ -712,6 +712,13 @@ func studyNext(database *db.DB) http.HandlerFunc {
 			return
 		}
 
+		// Include all card names so reverse mode can use real references as distractors
+		allNames := make([]string, 0, len(cards))
+		for _, c := range cards {
+			allNames = append(allNames, c.Name)
+		}
+		exercise.AllCardNames = allNames
+
 		writeJSON(w, http.StatusOK, exercise)
 	}
 }
