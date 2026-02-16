@@ -1,6 +1,7 @@
 # Becoming App — Improvement Plans
 
 *Created: 2026-02-16*
+*Updated: 2026-02-16*
 *Status: Planning*
 
 ---
@@ -85,108 +86,158 @@ END;
 
 A **Study Mode** that automatically selects memorization cards and adjusts difficulty based on user performance. The goal is a Goldilocks experience — not so easy they're bored, not so hard they give up.
 
+The existing single-card modes (**Review**, **Practice**, **Quiz**) remain for focused work on one card at a time. **Study Mode** is a new mode within the Memorize page that works across all cards (with optional pillar/category sub-filtering).
+
 ### Difficulty Ladder
 
-Each memorization card has its own difficulty level per user, tracked independently:
+Six levels, each tracked independently per card per user:
 
 | Level | Mode | Description |
 |-------|------|-------------|
 | 1 | **Reveal Whole** | Show the full text, user reads it. Lowest barrier. |
 | 2 | **Reveal Words** | ~35% of words blanked, tap to reveal one at a time |
-| 3 | **Type Words** | ~35% of words blanked, user types them in |
-| 3 | **Arrange Words** | All words shuffled, user arranges in order (same difficulty as Type Words) |
+| 3 | **Type Words / Arrange Words** | Randomly chosen. ~35% blanked + type, or all words shuffled + arrange. |
 | 4 | **Type Full Text** | Blank canvas, user types entire verse from memory |
+| 5 | **Reverse (Reference)** | Given the text, user must identify the scripture reference/title |
 
-**Reverse mode** (at any level): Given the text, user must identify the reference/title. This tests a different axis — recognition vs. location knowledge.
+Level 5 (Reverse) is its own rung — easier than remembering the full text, harder than just reading it. It tests a different axis: "I know where this comes from."
 
-### Adaptive Algorithm
+### The Double-Spectrum Aptitude Model
 
-The system tracks **per-card, per-mode scores** over time to determine user skill level:
+This is the core insight: there are **two spectrums** operating simultaneously.
+
+**Spectrum 1: Per-mode aptitude.** Each difficulty level has its own rolling aptitude score per card. A user might be great at Reveal Words but terrible at Type Full Text *for the same card*. These are independent skills.
+
+**Spectrum 2: Overall card aptitude.** Across all modes, how well does the user know this card? This is the aggregate — a weighted combination of per-mode scores that represents total mastery.
 
 ```
-Card Skill = f(recent_scores, mode_history, trend)
+Per-mode aptitude  = rolling average of last 3-5 scores at that mode for that card
+Overall aptitude   = weighted average across all per-mode aptitudes
+                     (higher-level modes weighted more heavily)
 ```
 
-**Rules:**
-1. **New cards** start at Level 1 (Reveal Whole)
-2. **Promotion:** After N consecutive good scores (e.g., ≥80% accuracy, quality ≥ 4) at a level → promote to next level
-3. **Demotion:** After M poor scores (e.g., < 60% accuracy, quality ≤ 2) at a level → demote to previous level
-4. **Full text typing** (Level 4) is only unlocked for cards where the user consistently rates knowledge high (quality 4-5 for several reviews)
-5. **If they miss a lot, drop back to Reveal** — don't let frustration build
-6. **Mix it up:** Within a study session, vary the modes to keep engagement (don't do 10 Reveal Wholes in a row)
+### Adaptive Algorithm — Goldilocks Selection
+
+When Study Mode needs to pick a difficulty level for a card:
+
+1. **Fresh card (little data):** Present all difficulty levels to gather data. Start with Level 1, but cycle through levels quickly to discover where the user actually is.
+
+2. **Card with history:** Look at per-mode aptitudes:
+   - **High aptitude at current level** (rolling avg ≥ 80%) → favor harder levels
+   - **Low aptitude at current level** (rolling avg < 60%) → favor easier levels
+   - **Mid-range** → stay at current level, occasionally test adjacent levels
+
+3. **Level selection is probabilistic, not deterministic:**
+   - The system *favors* the appropriate level but doesn't lock into it
+   - Even a struggling user occasionally gets an easy win (Level 1)
+   - Even a strong user occasionally gets challenged (Level 4-5)
+   - This prevents staleness and provides ongoing calibration data
+
+4. **Session momentum:**
+   - Track running accuracy within a session
+   - If user is crushing it (3+ good scores in a row) → bump difficulty more aggressively
+   - If user is struggling (2+ poor scores in a row) → drop back immediately, don't let frustration build
+   - The session should *feel* like it's responding to them in real time
+
+5. **Level 3 randomization:** When the algorithm picks Level 3, it randomly chooses between Type Words and Arrange Words. Both are tracked as the same aptitude level.
+
+### Seeding from Existing Data
+
+Users who already have SM-2 review history shouldn't start at Level 1 for every card. On first Study Mode launch:
+
+- Cards with many quality 4-5 reviews → seed at Level 3-4
+- Cards with mixed reviews → seed at Level 2
+- New cards or cards with poor history → start at Level 1
+- Cards with high SM-2 intervals (> 30 days) → seed higher
+
+This is a one-time calculation per card. After that, the rolling aptitude takes over.
 
 ### Study Mode Session Flow
 
-1. User taps "Study" → enters Study Mode
-2. System selects a card based on:
-   - SM-2 due date (prioritize overdue cards)
-   - Card skill level (determines which mode to present)
-   - Variety (mix different cards and modes)
-3. User completes the exercise
-4. Score is recorded → skill level adjusts → SM-2 review logged
-5. Next card is selected, adjusting difficulty based on session performance
-6. **Session momentum:** If user is doing well mid-session, occasionally bump difficulty. If they're struggling, ease off.
+**Default mode: "Review Due Cards"**
+1. User taps "Study" on the Memorize page
+2. Optional: filter by pillar or category (e.g., "just scripture" or "just PT exercises")
+3. System loads all due cards (SM-2 `next_review <= today`)
+4. For each card, algorithm picks a difficulty level based on aptitude
+5. User completes the exercise → score recorded → aptitude updated → SM-2 review logged
+6. Next card selected, difficulty adjusted based on session momentum
+7. Session ends when all due card reps are completed
+8. Summary screen: cards reviewed, accuracy by level, aptitude changes
+
+**Extra mode: "Keep Studying"**
+- After all due reps are done, user can tap "Keep Studying" for open-ended practice
+- System picks cards that would benefit from extra review (weakest aptitudes, longest since last review)
+- No SM-2 impact (or reduced impact) — this is bonus practice, not scheduled review
+- User stops whenever they want
 
 ### Score Tracking Schema
 
-Need to track per-card, per-mode performance history for the adaptive algorithm:
-
 ```sql
--- New table or extend practice_logs
+-- Per-exercise score history (the raw data for aptitude calculation)
 CREATE TABLE memorize_scores (
     id          SERIAL PRIMARY KEY,
     practice_id INTEGER NOT NULL REFERENCES practices(id) ON DELETE CASCADE,
     user_id     INTEGER NOT NULL REFERENCES users(id),
-    mode        TEXT NOT NULL,     -- 'reveal_whole', 'reveal_words', 'type_words', 'arrange', 'type_full', 'reverse'
-    score       REAL NOT NULL,     -- 0.0 to 1.0
-    quality     INTEGER,           -- SM-2 quality 0-5
-    duration_s  INTEGER,           -- how long the exercise took
+    mode        TEXT NOT NULL,       -- 'reveal_whole', 'reveal_words', 'type_words', 'arrange', 'type_full', 'reverse'
+    score       REAL NOT NULL,       -- 0.0 to 1.0 (accuracy)
+    quality     INTEGER,             -- SM-2 quality 0-5 (user's self-rating)
+    duration_s  INTEGER,             -- how long the exercise took
     date        DATE NOT NULL,
     created_at  TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP
 );
 
--- Per-card skill level (denormalized for fast lookups)
+-- Per-card aptitude cache (denormalized for fast lookups, recalculated on each score)
+CREATE TABLE memorize_aptitude (
+    id            SERIAL PRIMARY KEY,
+    practice_id   INTEGER NOT NULL REFERENCES practices(id) ON DELETE CASCADE,
+    user_id       INTEGER NOT NULL REFERENCES users(id),
+    mode          TEXT NOT NULL,     -- same mode values as memorize_scores
+    aptitude      REAL NOT NULL,     -- rolling average, 0.0 to 1.0
+    sample_count  INTEGER DEFAULT 0, -- how many scores in the rolling window
+    last_score_at TIMESTAMPTZ,
+    UNIQUE(practice_id, user_id, mode)
+);
+
+-- Overall card difficulty level (what level the algorithm currently targets)
 ALTER TABLE practices ADD COLUMN memorize_level INTEGER DEFAULT 1;
 ```
 
 ### What Stays vs. What Changes
 
-The existing modes (**Review**, **Practice**, **Quiz**) remain as manual options — the user can always choose a specific mode. **Study Mode** is a new fourth option that handles selection automatically.
-
-The SM-2 scheduling system stays as-is — it determines *when* cards are due. The adaptive difficulty determines *how* the user practices them.
+| Feature | Status |
+|---------|--------|
+| **Review mode** (tap-to-flip flashcard) | Stays — for focused single-card review |
+| **Practice mode** (reveal/type/order) | Stays — for focused single-card practice |
+| **Quiz mode** (type full text) | Stays — for focused single-card testing |
+| **Study mode** (NEW) | Added — adaptive multi-card sessions |
+| **SM-2 scheduling** | Stays — determines *when* cards are due |
+| **Adaptive difficulty** | New — determines *how* cards are practiced in Study Mode |
 
 ---
 
 ## Sprint 4: Memorize Card Lifecycle
 
 - **Mastered state:** After N consecutive quality-5 reviews with interval > 30 days, auto-suggest "Mark as memorized"
-- **Complete a card:** One-tap to move to Completed, preserving all review history
+- **Complete a card:** One-tap to move to Completed, preserving all review history and aptitude data
 - **Archive a card:** Remove from rotation without deleting history
 - **End date / target:** "Memorize by [date]" with countdown on card
-- **Card progression indicator:** Visual progress (streak, current level, "Rep 3/5 today")
+- **Card progression indicator:** Visual progress (streak, current level, per-mode aptitudes, "Rep 3/5 today")
+- **Aptitude dashboard:** Per-card breakdown of mode aptitudes — user can see where they're strong/weak
 
 ---
 
-## Open Questions
+## Decisions Log
 
-1. **Reverse mode placement:** Given the text → guess the reference. Does this belong at every difficulty level as a toggle, or is it its own level in the ladder? (My instinct: it's orthogonal — can appear at any level as a bonus challenge.)
+Answers to open questions, recorded for future reference:
 
-2. **Study session length:** Should Study Mode have a target? Options:
-   - Time-based: "Study for 10 minutes"
-   - Card-based: "Do 10 cards"
-   - Open-ended: Keep going until the user stops
-   - SM-2 driven: "Review all due cards" (current behavior)
-
-3. **Promotion/demotion thresholds:** What feels right?
-   - Promote after 3 consecutive ≥80% scores at a level?
-   - Demote after 2 consecutive <60% scores?
-   - Or should it be a rolling average over the last N attempts?
-
-4. **Level 3 selection (Type Words vs. Arrange Words):** When the user is at Level 3, does the system randomly pick between Type Words and Arrange Words, or does the user choose?
-
-5. **Existing review data:** Users have SM-2 review history. Should we use that to seed initial difficulty levels? (e.g., cards with many quality-5 reviews start at a higher level)
-
-6. **Study mode entry point:** Separate nav item? Button on the Memorize page? Replace the current mode selector?
+| Question | Decision | Rationale |
+|----------|----------|-----------|
+| Reverse mode placement | Its own level (Level 5) on the ladder | Easier than full recall but tests a different skill (reference knowledge). Own rung keeps it clean. |
+| Study session length | Default: all due card reps. Then "Keep Studying" for open-ended. | Matches SM-2 contract (do your reps), but doesn't trap the user. Extra study is opt-in. |
+| Promotion/demotion thresholds | Rolling average of last 3-5 scores per mode per card | Develops into an aptitude score. Small window handles cold-start; grows more stable over time. |
+| Level 3 selection | System randomly picks between Type Words and Arrange Words | Same difficulty tier, variety keeps it fresh. Both map to same aptitude level. |
+| Seed from existing data | Yes — use SM-2 quality history and interval to set initial levels | Users with strong review history shouldn't be bored at Level 1. One-time seed, then rolling aptitude takes over. |
+| Study mode entry point | New mode within Memorize page, with pillar/category sub-filtering | Existing modes are for single-card focus. Study mode is for multi-card adaptive sessions. Sub-filtering lets users scope to "just scriptures" or a pillar. |
 
 ---
 
