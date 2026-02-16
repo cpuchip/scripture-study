@@ -1,0 +1,140 @@
+{
+  "description": "Benchmark queries for evaluating gospel-vec embedding + summary quality. Each query has expected relevant results that a good retrieval system should surface.",
+  "version": 1,
+  "queries": [
+    {
+      "id": "faith-definition",
+      "query": "What is faith? How is faith defined?",
+      "category": "doctrinal-concept",
+      "expected_relevant": [
+        "hebrews-11 (v1: faith is the substance of things hoped for)",
+        "alma-32 (v21: faith is not a perfect knowledge, experiment on the word)",
+        "ether-12 (v6: faith is things hoped for and not seen)"
+      ],
+      "notes": "Core doctrinal concept. Should return primary faith passages."
+    },
+    {
+      "id": "charity-pure-love",
+      "query": "charity is the pure love of Christ",
+      "category": "doctrinal-concept",
+      "expected_relevant": [
+        "moroni-7 (v47: charity is the pure love of Christ)",
+        "1-corinthians-13 (charity suffereth long)",
+        "moroni-7 (v45-48: charity attributes)"
+      ],
+      "notes": "Direct quote match. Should rank moroni-7 highest."
+    },
+    {
+      "id": "plan-of-salvation",
+      "query": "the plan of salvation and God's purpose for us",
+      "category": "doctrinal-concept",
+      "expected_relevant": [
+        "alma-42 (plan of mercy/justice)",
+        "moses-1 (v39: this is my work and my glory)",
+        "alma-12 (plan of redemption)",
+        "2-nephi-2 (opposition in all things, the fall)"
+      ],
+      "notes": "Broad topic. Good test of semantic understanding vs keyword."
+    },
+    {
+      "id": "atonement-gethsemane",
+      "query": "Jesus Christ's suffering in Gethsemane and the atonement",
+      "category": "narrative",
+      "expected_relevant": [
+        "mosiah-3 (v7: blood cometh from every pore)",
+        "dc-19 (v16-19: which suffering caused myself to tremble)",
+        "alma-7 (v11-13: he shall go forth suffering pains)",
+        "luke-22 (v44: sweat was as it were great drops of blood)"
+      ],
+      "notes": "Cross-standard-work retrieval test."
+    },
+    {
+      "id": "baptismal-covenant",
+      "query": "covenant of baptism, willing to bear one another's burdens",
+      "category": "doctrinal-concept",
+      "expected_relevant": [
+        "mosiah-18 (v8-10: waters of Mormon baptismal covenant)",
+        "dc-20 (v37: baptism qualifications)",
+        "2-nephi-31 (doctrine of Christ, gate of baptism)"
+      ],
+      "notes": "Should find Alma at waters of Mormon as primary."
+    },
+    {
+      "id": "light-of-christ",
+      "query": "the light of Christ given to every person to know good from evil",
+      "category": "doctrinal-concept",
+      "expected_relevant": [
+        "moroni-7 (v16: the Spirit of Christ is given to every man)",
+        "dc-88 (v7-13: the light of Christ proceedeth forth)",
+        "john-1 (v9: the true Light which lighteth every man)"
+      ],
+      "notes": "Tests whether system distinguishes Light of Christ from Holy Ghost."
+    },
+    {
+      "id": "second-coming-signs",
+      "query": "signs of the times before the second coming of Jesus Christ",
+      "category": "prophecy",
+      "expected_relevant": [
+        "js-m-1 (Joseph Smith—Matthew, signs of the times)",
+        "dc-45 (signs of the coming of the Son of Man)",
+        "matthew-24 (wars, rumors of wars)"
+      ],
+      "notes": "Eschatological query. Tests retrieval across multiple accounts."
+    },
+    {
+      "id": "priesthood-power",
+      "query": "the power and authority of the priesthood",
+      "category": "doctrinal-concept",
+      "expected_relevant": [
+        "dc-121 (v34-46: rights of the priesthood, no power or influence)",
+        "dc-84 (oath and covenant of the priesthood)",
+        "alma-13 (high priesthood, called and prepared)"
+      ],
+      "notes": "D&C 121 should be primary. Tests section-level retrieval."
+    },
+    {
+      "id": "tree-of-life-vision",
+      "query": "Lehi's vision of the tree of life and the iron rod",
+      "category": "narrative",
+      "expected_relevant": [
+        "1-nephi-8 (Lehi's dream)",
+        "1-nephi-11 (Nephi's vision, interpretation)",
+        "1-nephi-15 (interpretation: iron rod = word of God)"
+      ],
+      "notes": "Narrative retrieval. Three related chapters should cluster."
+    },
+    {
+      "id": "repentance-process",
+      "query": "the process of repentance and forsaking sin",
+      "category": "doctrinal-concept",
+      "expected_relevant": [
+        "dc-58 (v42-43: he who has repented is forgiven, confess and forsake)",
+        "mosiah-4 (v10-12: humble yourselves, call on the name of the Lord)",
+        "alma-36 (Alma's conversion, racked with torment, crying for mercy)"
+      ],
+      "notes": "Tests whether system finds doctrinal + narrative passages."
+    },
+    {
+      "id": "creation-account",
+      "query": "God created the heavens and the earth",
+      "category": "narrative",
+      "expected_relevant": [
+        "genesis-1 (creation account)",
+        "moses-2 (creation account, Pearl of Great Price)",
+        "abraham-4 (creation account, Gods organized)"
+      ],
+      "notes": "Three parallel creation accounts. Tests cross-reference awareness."
+    },
+    {
+      "id": "seek-learning",
+      "query": "seek learning even by study and also by faith",
+      "category": "doctrinal-concept",
+      "expected_relevant": [
+        "dc-88 (v118: seek learning by study and also by faith)",
+        "dc-109 (v7: seek learning out of the best books)",
+        "dc-130 (v18-19: whatever principle of intelligence)"
+      ],
+      "notes": "Direct quote match + thematically related D&C sections."
+    }
+  ]
+}

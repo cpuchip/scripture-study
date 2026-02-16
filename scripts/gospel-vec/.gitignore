@@ -7,6 +7,10 @@ data/*
 # Cached summaries
 summaries/
 
+# Experiment data and results (large, generated)
+experiments/data-*/
+experiments/results/
+
 # Build artifacts
 gospel-vec
 gospel-vec.exe

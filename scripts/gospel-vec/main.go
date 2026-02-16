@@ -1012,6 +1012,30 @@ func cmdConfig() {
 	fmt.Printf("   Embedding Model:   %s\n", cfg.EmbeddingModel)
 	fmt.Printf("   Chat URL:          %s\n", cfg.ChatURL)
 	fmt.Printf("   Chat Model:        %s\n", cfg.ChatModel)
+
+	// Show active env overrides
+	envOverrides := map[string]string{
+		"GOSPEL_VEC_DATA_DIR":        os.Getenv("GOSPEL_VEC_DATA_DIR"),
+		"GOSPEL_VEC_EMBEDDING_MODEL": os.Getenv("GOSPEL_VEC_EMBEDDING_MODEL"),
+		"GOSPEL_VEC_CHAT_MODEL":      os.Getenv("GOSPEL_VEC_CHAT_MODEL"),
+		"GOSPEL_VEC_EMBEDDING_URL":   os.Getenv("GOSPEL_VEC_EMBEDDING_URL"),
+		"GOSPEL_VEC_CHAT_URL":        os.Getenv("GOSPEL_VEC_CHAT_URL"),
+	}
+	hasOverrides := false
+	for _, v := range envOverrides {
+		if v != "" {
+			hasOverrides = true
+			break
+		}
+	}
+	if hasOverrides {
+		fmt.Println("\n   ⚡ Environment Overrides:")
+		for k, v := range envOverrides {
+			if v != "" {
+				fmt.Printf("      %s = %s\n", k, v)
+			}
+		}
+	}
 }
 
 func cmdMCP(args []string) {

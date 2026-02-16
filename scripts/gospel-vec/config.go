@@ -26,7 +26,13 @@ type Config struct {
 	ConferencePath string `json:"conference_path"`
 }
 
-// DefaultConfig returns sensible defaults for local development
+// DefaultConfig returns sensible defaults for local development.
+// Environment variables override defaults:
+//   - GOSPEL_VEC_DATA_DIR: override data directory
+//   - GOSPEL_VEC_EMBEDDING_MODEL: override embedding model name
+//   - GOSPEL_VEC_CHAT_MODEL: override chat model name
+//   - GOSPEL_VEC_EMBEDDING_URL: override embedding endpoint URL
+//   - GOSPEL_VEC_CHAT_URL: override chat endpoint URL
 func DefaultConfig() *Config {
 	// Detect if running from repo root or from scripts/gospel-vec/
 	scripturesPath := "../../gospel-library/eng/scriptures"
@@ -40,7 +46,7 @@ func DefaultConfig() *Config {
 		dataDir = "scripts/gospel-vec/data"
 	}
 
-	return &Config{
+	cfg := &Config{
 		EmbeddingURL:   "http://localhost:1234/v1",
 		EmbeddingModel: "text-embedding-qwen3-embedding-4b",
 		ChatURL:        "http://localhost:1234/v1",
@@ -52,6 +58,25 @@ func DefaultConfig() *Config {
 		ScripturesPath: scripturesPath,
 		ConferencePath: conferencePath,
 	}
+
+	// Apply environment variable overrides
+	if v := os.Getenv("GOSPEL_VEC_DATA_DIR"); v != "" {
+		cfg.DataDir = v
+	}
+	if v := os.Getenv("GOSPEL_VEC_EMBEDDING_MODEL"); v != "" {
+		cfg.EmbeddingModel = v
+	}
+	if v := os.Getenv("GOSPEL_VEC_CHAT_MODEL"); v != "" {
+		cfg.ChatModel = v
+	}
+	if v := os.Getenv("GOSPEL_VEC_EMBEDDING_URL"); v != "" {
+		cfg.EmbeddingURL = v
+	}
+	if v := os.Getenv("GOSPEL_VEC_CHAT_URL"); v != "" {
+		cfg.ChatURL = v
+	}
+
+	return cfg
 }
 
 // DBPath returns the full path to the database file
