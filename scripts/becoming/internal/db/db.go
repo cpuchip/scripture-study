@@ -206,6 +206,16 @@ func (db *DB) JSONExtract(column, key string) string {
 	return "json_extract(" + column + ", '$." + key + "')"
 }
 
+// DateCast returns a SQL expression that extracts the date part of a timestamp.
+// For SQLite:    date(expr)
+// For PostgreSQL: expr::date
+func (db *DB) DateCast(expr string) string {
+	if db.driver == DriverPostgres {
+		return expr + "::date"
+	}
+	return "date(" + expr + ")"
+}
+
 // --- SQLite schema initialization (CREATE TABLE IF NOT EXISTS + ad-hoc migrations) ---
 
 func (db *DB) initSQLiteSchema() error {

@@ -128,6 +128,11 @@ function endDateClass(endDate: string): string {
   return 'bg-green-50 text-green-700'
 }
 
+function endDateTooltip(endDate: string): string {
+  const d = parseEndDate(endDate)
+  return d.toLocaleDateString(undefined, { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })
+}
+
 async function load() {
   loading.value = true
   const [practicesData, pillarsData] = await Promise.all([
@@ -774,7 +779,7 @@ onMounted(async () => {
             <span class="font-medium hover:text-indigo-600 transition-colors">{{ p.name }}</span>
             <span class="text-xs px-2 py-0.5 rounded-full bg-gray-100 text-gray-600">{{ p.type }}</span>
             <span v-if="p.category" class="text-xs px-2 py-0.5 rounded-full bg-indigo-50 text-indigo-600">{{ p.category }}</span>
-            <span v-if="p.end_date" class="text-xs px-2 py-0.5 rounded-full" :class="endDateClass(p.end_date)">{{ endDateLabel(p.end_date) }}</span>
+            <span v-if="p.end_date" class="text-xs px-2 py-0.5 rounded-full cursor-default" :class="endDateClass(p.end_date)" :title="endDateTooltip(p.end_date)">{{ endDateLabel(p.end_date) }}</span>
           </div>
           <div v-if="p.description" class="text-xs text-gray-400 truncate mt-0.5">{{ p.description }}</div>
         </div>

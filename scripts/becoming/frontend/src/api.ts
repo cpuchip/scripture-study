@@ -79,7 +79,9 @@ export interface DailySummary {
   practice_type: string
   category: string
   config: string
+  status: string
   end_date?: string
+  created_at: string
   log_count: number
   total_sets?: number
   total_reps?: number

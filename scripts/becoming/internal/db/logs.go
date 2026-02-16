@@ -135,7 +135,9 @@ type DailySummary struct {
 	PracticeType string  `json:"practice_type"`
 	Category     string  `json:"category"`
 	Config       string  `json:"config"`
+	Status       string  `json:"status"`
 	EndDate      *string `json:"end_date,omitempty"`
+	CreatedAt    string  `json:"created_at"`
 	LogCount     int     `json:"log_count"`
 	TotalSets    *int    `json:"total_sets,omitempty"`
 	TotalReps    *int    `json:"total_reps,omitempty"`
@@ -149,11 +151,17 @@ type DailySummary struct {
 	SlotsDue    []string `json:"slots_due,omitempty"`
 }
 
-// GetDailySummary returns all active practices with their log status for a date, scoped to user.
+// GetDailySummary returns practices with their log status for a date, scoped to user.
+// Temporally aware: filters by created_at, end_date, completed_at, and archived_at
+// so the daily view is accurate when navigating forward/backward in time.
 func (db *DB) GetDailySummary(userID int64, date string) ([]*DailySummary, error) {
-	rows, err := db.Query(`
+	dateCast := db.DateCast("p.created_at")
+	completedCast := db.DateCast("p.completed_at")
+	archivedCast := db.DateCast("p.archived_at")
+
+	query := `
 		SELECT
-			p.id, p.name, p.type, p.category, p.config, p.end_date,
+			p.id, p.name, p.type, p.category, p.config, p.status, p.end_date, p.created_at,
 			COALESCE(COUNT(l.id), 0) as log_count,
 			SUM(l.sets) as total_sets,
 			SUM(l.reps) as total_reps,
@@ -161,10 +169,17 @@ func (db *DB) GetDailySummary(userID int64, date string) ([]*DailySummary, error
 			COALESCE((SELECT notes FROM practice_logs WHERE practice_id = p.id AND date = ? ORDER BY logged_at DESC LIMIT 1), '') as last_notes
 		FROM practices p
 		LEFT JOIN practice_logs l ON l.practice_id = p.id AND l.date = ?
-		WHERE p.active = TRUE AND p.status = 'active' AND p.user_id = ?
+		WHERE p.user_id = ?
+		  AND ` + dateCast + ` <= ?
+		  AND (
+		    (p.status = 'active' AND (p.end_date IS NULL OR p.end_date >= ?))
+		    OR (p.status = 'completed' AND p.completed_at IS NOT NULL AND ` + completedCast + ` >= ?)
+		    OR (p.status = 'archived' AND p.archived_at IS NOT NULL AND ` + archivedCast + ` >= ?)
+		  )
 		GROUP BY p.id
-		ORDER BY p.sort_order, p.type, p.name`, date, date, date, userID,
-	)
+		ORDER BY p.sort_order, p.type, p.name`
+
+	rows, err := db.Query(query, date, date, date, userID, date, date, date, date)
 	if err != nil {
 		return nil, fmt.Errorf("getting daily summary: %w", err)
 	}
@@ -173,7 +188,7 @@ func (db *DB) GetDailySummary(userID int64, date string) ([]*DailySummary, error
 	var summaries []*DailySummary
 	for rows.Next() {
 		s := &DailySummary{}
-		if err := rows.Scan(&s.PracticeID, &s.PracticeName, &s.PracticeType, &s.Category, &s.Config, &s.EndDate, &s.LogCount, &s.TotalSets, &s.TotalReps, &s.LastValue, &s.LastNotes); err != nil {
+		if err := rows.Scan(&s.PracticeID, &s.PracticeName, &s.PracticeType, &s.Category, &s.Config, &s.Status, &s.EndDate, &s.CreatedAt, &s.LogCount, &s.TotalSets, &s.TotalReps, &s.LastValue, &s.LastNotes); err != nil {
 			return nil, fmt.Errorf("scanning daily summary: %w", err)
 		}
 		summaries = append(summaries, s)

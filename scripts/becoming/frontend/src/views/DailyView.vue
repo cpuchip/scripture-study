@@ -245,11 +245,11 @@ function goToToday() {
 }
 const isToday = computed(() => today.value === localDateStr())
 
-// Completion stats (respects active filter)
+// Completion stats (respects active filter, excludes completed/archived practices)
 const completionStats = computed(() => {
-  // Exclude non-due scheduled items from the total.
+  // Only count active practices; exclude non-due scheduled items from the total.
   const relevant = filteredSummary.value.filter(s =>
-    s.practice_type !== 'scheduled' || s.is_due === true || s.log_count > 0
+    s.status === 'active' && (s.practice_type !== 'scheduled' || s.is_due === true || s.log_count > 0)
   )
   const total = relevant.length
   const done = relevant.filter(s => {
@@ -303,30 +303,44 @@ function parseEndDate(endDate: string): Date {
   return new Date(dateStr + 'T00:00:00')
 }
 
-function endDateLabel(endDate?: string): string {
+// viewDate is the date being viewed (today.value), used for accurate countdown when navigating
+function endDateLabel(endDate?: string, viewDate?: string): string {
   if (!endDate) return ''
   const end = parseEndDate(endDate)
-  const now = new Date()
-  now.setHours(0, 0, 0, 0)
-  const diff = Math.ceil((end.getTime() - now.getTime()) / (1000 * 60 * 60 * 24))
+  const ref = viewDate ? new Date(viewDate + 'T00:00:00') : new Date()
+  ref.setHours(0, 0, 0, 0)
+  const diff = Math.ceil((end.getTime() - ref.getTime()) / (1000 * 60 * 60 * 24))
   if (diff < 0) return `${Math.abs(diff)}d overdue`
   if (diff === 0) return 'due today'
   if (diff === 1) return '1 day left'
   return `${diff} days left`
 }
 
-function endDateClass(endDate?: string): string {
+function endDateClass(endDate?: string, viewDate?: string): string {
   if (!endDate) return ''
   const end = parseEndDate(endDate)
-  const now = new Date()
-  now.setHours(0, 0, 0, 0)
-  const diff = Math.ceil((end.getTime() - now.getTime()) / (1000 * 60 * 60 * 24))
+  const ref = viewDate ? new Date(viewDate + 'T00:00:00') : new Date()
+  ref.setHours(0, 0, 0, 0)
+  const diff = Math.ceil((end.getTime() - ref.getTime()) / (1000 * 60 * 60 * 24))
   if (diff < 0) return 'text-red-600 bg-red-50'
   if (diff <= 3) return 'text-amber-600 bg-amber-50'
   return 'text-gray-500 bg-gray-100'
 }
 
+function endDateTooltip(endDate: string): string {
+  const d = parseEndDate(endDate)
+  return d.toLocaleDateString(undefined, { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })
+}
+
+function statusBadge(item: DailySummary): string {
+  if (item.status === 'completed') return 'completed'
+  if (item.status === 'archived') return 'archived'
+  return ''
+}
+
 function isComplete(item: DailySummary): boolean {
+  // Completed/archived practices always show as "done"
+  if (item.status === 'completed' || item.status === 'archived') return true
   if (item.practice_type === 'tracker') {
     const config = parseConfig(item.config)
     const targetSets = config.target_sets || 1
@@ -539,15 +553,19 @@ onUnmounted(() => {
             v-for="item in items"
             :key="item.practice_id"
             class="px-4 py-2"
-            :class="{ 'opacity-60': isComplete(item) && (item.practice_type !== 'scheduled' || scheduleIsDue(item)) }"
+            :class="{
+              'opacity-60': item.status === 'active' && isComplete(item) && (item.practice_type !== 'scheduled' || scheduleIsDue(item)),
+              'opacity-40': item.status !== 'active',
+            }"
           >
             <!-- Tracker: name + reps label + inline set buttons + history -->
             <template v-if="item.practice_type === 'tracker'">
               <div class="flex items-center justify-between gap-2">
                 <div class="flex items-center gap-2 min-w-0">
                   <span class="font-medium truncate">{{ item.practice_name }}</span>
+                  <span v-if="statusBadge(item)" class="text-[10px] px-1.5 py-0.5 rounded-full bg-gray-100 text-gray-500 whitespace-nowrap">{{ statusBadge(item) }}</span>
                   <span class="text-xs text-gray-400 whitespace-nowrap">{{ trackerRepsLabel(item) }}</span>
-                  <span v-if="item.end_date" class="text-[10px] px-1.5 py-0.5 rounded-full whitespace-nowrap" :class="endDateClass(item.end_date)">{{ endDateLabel(item.end_date) }}</span>
+                  <span v-if="item.end_date" class="text-[10px] px-1.5 py-0.5 rounded-full whitespace-nowrap cursor-default" :class="endDateClass(item.end_date, today)" :title="endDateTooltip(item.end_date)">{{ endDateLabel(item.end_date, today) }}</span>
                 </div>
                 <div class="flex items-center gap-1.5 flex-shrink-0">
                   <button
@@ -598,7 +616,8 @@ onUnmounted(() => {
                     :to="`/memorize?id=${item.practice_id}`"
                     class="font-medium truncate hover:text-indigo-600 transition-colors"
                   >{{ item.practice_name }}</router-link>
-                  <span v-if="item.end_date" class="text-[10px] px-1.5 py-0.5 rounded-full whitespace-nowrap" :class="endDateClass(item.end_date)">{{ endDateLabel(item.end_date) }}</span>
+                  <span v-if="statusBadge(item)" class="text-[10px] px-1.5 py-0.5 rounded-full bg-gray-100 text-gray-500 whitespace-nowrap">{{ statusBadge(item) }}</span>
+                  <span v-if="item.end_date" class="text-[10px] px-1.5 py-0.5 rounded-full whitespace-nowrap cursor-default" :class="endDateClass(item.end_date, today)" :title="endDateTooltip(item.end_date)">{{ endDateLabel(item.end_date, today) }}</span>
                 </div>
                 <div class="flex items-center gap-2 flex-shrink-0">
                   <span
@@ -635,7 +654,8 @@ onUnmounted(() => {
                   </button>
                   <div class="min-w-0">
                     <div class="font-medium truncate">{{ item.practice_name }}
-                      <span v-if="item.end_date" class="text-[10px] px-1.5 py-0.5 rounded-full whitespace-nowrap ml-1" :class="endDateClass(item.end_date)">{{ endDateLabel(item.end_date) }}</span>
+                      <span v-if="statusBadge(item)" class="text-[10px] px-1.5 py-0.5 rounded-full bg-gray-100 text-gray-500 whitespace-nowrap ml-1">{{ statusBadge(item) }}</span>
+                      <span v-if="item.end_date" class="text-[10px] px-1.5 py-0.5 rounded-full whitespace-nowrap ml-1 cursor-default" :class="endDateClass(item.end_date, today)" :title="endDateTooltip(item.end_date)">{{ endDateLabel(item.end_date, today) }}</span>
                     </div>
                     <div v-if="item.last_value" class="text-xs text-gray-400">
                       {{ item.last_value }}
@@ -662,7 +682,8 @@ onUnmounted(() => {
                   <template v-if="parseConfig(item.config).schedule?.type === 'daily_slots'">
                     <div class="flex items-center gap-1.5 flex-wrap">
                       <span class="font-medium truncate mr-1">{{ item.practice_name }}</span>
-                      <span v-if="item.end_date" class="text-[10px] px-1.5 py-0.5 rounded-full whitespace-nowrap mr-1" :class="endDateClass(item.end_date)">{{ endDateLabel(item.end_date) }}</span>
+                      <span v-if="statusBadge(item)" class="text-[10px] px-1.5 py-0.5 rounded-full bg-gray-100 text-gray-500 whitespace-nowrap mr-1">{{ statusBadge(item) }}</span>
+                      <span v-if="item.end_date" class="text-[10px] px-1.5 py-0.5 rounded-full whitespace-nowrap mr-1 cursor-default" :class="endDateClass(item.end_date, today)" :title="endDateTooltip(item.end_date)">{{ endDateLabel(item.end_date, today) }}</span>
                       <button
                         v-for="slot in (parseConfig(item.config).schedule?.slots || [])"
                         :key="slot"
@@ -701,7 +722,8 @@ onUnmounted(() => {
                     <span v-else class="w-5 h-5 rounded-full border-2 border-gray-200 flex-shrink-0"></span>
                     <div class="min-w-0">
                       <div class="font-medium truncate">{{ item.practice_name }}
-                        <span v-if="item.end_date" class="text-[10px] px-1.5 py-0.5 rounded-full whitespace-nowrap ml-1" :class="endDateClass(item.end_date)">{{ endDateLabel(item.end_date) }}</span>
+                        <span v-if="statusBadge(item)" class="text-[10px] px-1.5 py-0.5 rounded-full bg-gray-100 text-gray-500 whitespace-nowrap ml-1">{{ statusBadge(item) }}</span>
+                        <span v-if="item.end_date" class="text-[10px] px-1.5 py-0.5 rounded-full whitespace-nowrap ml-1 cursor-default" :class="endDateClass(item.end_date, today)" :title="endDateTooltip(item.end_date)">{{ endDateLabel(item.end_date, today) }}</span>
                       </div>
                       <div class="text-xs text-gray-400">
                         {{ scheduleLabel(item) }}

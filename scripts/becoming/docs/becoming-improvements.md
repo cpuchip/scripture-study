@@ -279,9 +279,41 @@ Answers to open questions, recorded for future reference:
 
 ## Priority Order
 
-1. **Sprint 1** — Practice Lifecycle schema/backend (unblocks everything else)
-2. **Sprint 2** — Practice Lifecycle frontend (makes the app usable for non-memorize practices)
+1. **Sprint 1** — Practice Lifecycle schema/backend (unblocks everything else) ✅
+2. **Sprint 2** — Practice Lifecycle frontend (makes the app usable for non-memorize practices) ✅
 3. **Sprint 3** — Study Mode adaptive difficulty (the big UX win for memorization)
 4. **Sprint 4** — Memorize card lifecycle (completes the picture)
+5. **Sprint 5** — Activity Calendar Heatmap
 
-Sprints 1+2 can probably be done together. Sprint 3 is the meatiest — it needs schema, backend, algorithm, and significant frontend work.
+Sprints 1+2 are done. Sprint 3 is the meatiest — it needs schema, backend, algorithm, and significant frontend work.
+
+---
+
+## Sprint 5: Activity Calendar Heatmap
+
+### Vision
+
+A GitHub-style contribution heatmap on a Calendar view, giving a 30,000 ft view of how active you are at *becoming*. Each day is a small square whose color intensity reflects how much activity was logged that day.
+
+### Design
+
+- **Grid:** 7 rows (days of week) × ~13 columns (weeks), showing ~90 days by default (expandable to full year)
+- **Colors:** White box with black border = no activity; light orange → vibrant orange for increasing activity
+- **Activity metric:** Total practice logs for the day. Could also weight by practice type (e.g., memorize cards count more than a simple habit check)
+- **Interaction:**
+  - Hover: tooltip showing date + log count + top practices
+  - Click: navigates to that day's DailyView
+
+### Backend
+
+- New endpoint: `GET /api/reports/activity?start=YYYY-MM-DD&end=YYYY-MM-DD`
+- Returns: `[{ date: "2026-02-16", log_count: 5, practice_count: 3 }, ...]`
+- Query: `SELECT date, COUNT(*) as log_count, COUNT(DISTINCT practice_id) as practice_count FROM practice_logs WHERE practice_id IN (SELECT id FROM practices WHERE user_id = ?) AND date BETWEEN ? AND ? GROUP BY date`
+
+### Frontend
+
+- New `CalendarView.vue` (or section within ReportsView)
+- SVG or CSS Grid rendering of the heatmap
+- Color scale: 0 logs = `#ebedf0` (gray), 1-2 = `#ffedd5`, 3-5 = `#fdba74`, 6-9 = `#f97316`, 10+ = `#ea580c`
+- Month labels along top, day-of-week labels along left
+- Responsive: full grid on desktop, scrollable on mobile
