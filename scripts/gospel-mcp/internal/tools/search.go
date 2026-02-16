@@ -438,6 +438,11 @@ func buildFTSQuery(query string) string {
 
 func formatScriptureRef(volume, book string, chapter, verse int) string {
 	bookName := formatBookName(volume, book)
+	if chapter == 0 && verse == 0 {
+		// Study aid entry (TG, BD, GS) — format as topic name
+		topic := strings.ReplaceAll(book, "-", " ")
+		return strings.Title(topic)
+	}
 	if verse > 0 {
 		return fmt.Sprintf("%s %d:%d", bookName, chapter, verse)
 	}

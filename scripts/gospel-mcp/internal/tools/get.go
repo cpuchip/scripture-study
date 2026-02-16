@@ -21,10 +21,9 @@ func (t *Tools) Get(args json.RawMessage) (*GetResponse, error) {
 		return nil, fmt.Errorf("parsing params: %w", err)
 	}
 
-	// Set defaults
-	if params.Context <= 0 {
-		params.Context = 3
-	}
+	// Context defaults to 0 (no surrounding verses).
+	// Pass context=3 (or any positive int) when you want surrounding context.
+	// This keeps output lean for document building; use higher values for study.
 
 	// Determine what to fetch
 	if params.FilePath != "" {
@@ -119,6 +118,11 @@ func (t *Tools) getByReference(params GetParams) (*GetResponse, error) {
 }
 
 func (t *Tools) getScripture(ref parsedRef, params GetParams) (*GetResponse, error) {
+	if ref.Verse > 0 && ref.EndVerse > 0 {
+		// Get verse range
+		return t.getScriptureRange(ref, params)
+	}
+
 	if ref.Verse > 0 {
 		// Get specific verse
 		row := t.db.QueryRow(`
@@ -202,6 +206,66 @@ func (t *Tools) getScripture(ref parsedRef, params GetParams) (*GetResponse, err
 		SourceURL:  sourceURL,
 		SourceType: "scripture",
 	}, nil
+}
+
+func (t *Tools) getScriptureRange(ref parsedRef, params GetParams) (*GetResponse, error) {
+	rows, err := t.db.Query(`
+		SELECT id, volume, book, chapter, verse, text, file_path, source_url
+		FROM scriptures
+		WHERE book = ? AND chapter = ? AND verse >= ? AND verse <= ?
+		ORDER BY verse
+	`, ref.Book, ref.Chapter, ref.Verse, ref.EndVerse)
+	if err != nil {
+		return nil, fmt.Errorf("scripture range not found: %s", params.Reference)
+	}
+	defer rows.Close()
+
+	var verses []VerseContext
+	var volume, book, filePath, sourceURL string
+
+	for rows.Next() {
+		var id, chapter, verse int
+		var text string
+		if err := rows.Scan(&id, &volume, &book, &chapter, &verse, &text, &filePath, &sourceURL); err != nil {
+			continue
+		}
+		verses = append(verses, VerseContext{Verse: verse, Text: text})
+	}
+
+	if len(verses) == 0 {
+		return nil, fmt.Errorf("scripture range not found: %s", params.Reference)
+	}
+
+	// Build combined content
+	var lines []string
+	for _, v := range verses {
+		lines = append(lines, fmt.Sprintf("%d. %s", v.Verse, v.Text))
+	}
+
+	// Collect cross-references for all verses in the range
+	var allRefs []RelatedReference
+	for _, v := range verses {
+		refs := t.getCrossReferences(volume, book, ref.Chapter, v.Verse)
+		allRefs = append(allRefs, refs...)
+	}
+
+	response := &GetResponse{
+		Reference:         fmt.Sprintf("%s %d:%d-%d", formatBookName(volume, ref.Book), ref.Chapter, ref.Verse, ref.EndVerse),
+		Title:             formatChapterTitle(volume, ref.Book, ref.Chapter),
+		Content:           strings.Join(lines, "\n\n"),
+		FilePath:          filePath,
+		SourceURL:         sourceURL,
+		SourceType:        "scripture",
+		RelatedReferences: allRefs,
+	}
+
+	// Add context around the range
+	if params.Context > 0 {
+		response.ContextBefore = t.getVerseContextStructured(volume, book, ref.Chapter, ref.Verse, -params.Context)
+		response.ContextAfter = t.getVerseContextStructured(volume, book, ref.Chapter, ref.EndVerse, params.Context)
+	}
+
+	return response, nil
 }
 
 func (t *Tools) getTalk(ref parsedRef, params GetParams) (*GetResponse, error) {
@@ -325,12 +389,13 @@ func (t *Tools) getChapterContent(volume, book string, chapter int) string {
 
 // parsedRef represents a parsed scripture or talk reference.
 type parsedRef struct {
-	Type    string // "scripture" or "talk"
-	Volume  string
-	Book    string
-	Chapter int
-	Verse   int
-	Speaker string
+	Type     string // "scripture" or "talk"
+	Volume   string
+	Book     string
+	Chapter  int
+	Verse    int
+	EndVerse int // For ranges like 24-30; 0 means single verse
+	Speaker  string
 }
 
 func parseReference(ref string) parsedRef {
@@ -352,17 +417,31 @@ func parseReference(ref string) parsedRef {
 		bookParts := parts[:len(parts)-1]
 
 		if colonIdx := strings.Index(lastPart, ":"); colonIdx > 0 {
-			// Has verse
-			var chapter, verse int
-			fmt.Sscanf(lastPart, "%d:%d", &chapter, &verse)
+			// Has verse — parse chapter:verse or chapter:verse-endverse
+			chapterStr := lastPart[:colonIdx]
+			verseStr := lastPart[colonIdx+1:]
+
+			var chapter int
+			fmt.Sscanf(chapterStr, "%d", &chapter)
+
+			var verse, endVerse int
+			if dashIdx := strings.Index(verseStr, "-"); dashIdx > 0 {
+				// Range: "24-30"
+				fmt.Sscanf(verseStr[:dashIdx], "%d", &verse)
+				fmt.Sscanf(verseStr[dashIdx+1:], "%d", &endVerse)
+			} else {
+				// Single verse: "24"
+				fmt.Sscanf(verseStr, "%d", &verse)
+			}
 
 			book := normalizeBookName(strings.Join(bookParts, " "))
 			if book != "" {
 				return parsedRef{
-					Type:    "scripture",
-					Book:    book,
-					Chapter: chapter,
-					Verse:   verse,
+					Type:     "scripture",
+					Book:     book,
+					Chapter:  chapter,
+					Verse:    verse,
+					EndVerse: endVerse,
 				}
 			}
 		} else {

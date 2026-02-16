@@ -112,7 +112,7 @@ func (s *MCPServer) handleToolsList(enc *json.Encoder, req *MCPRequest) {
 	tools := []map[string]any{
 		{
 			"name":        "search_scriptures",
-			"description": "Search the scriptures using semantic similarity. Finds verses, paragraphs, chapter summaries, and themes related to the query. Searches across scriptures, conference talks, manuals, and books.\n\nIMPORTANT: Results labeled [AI SUMMARY] or [AI THEME] are NOT direct quotes — always verify against the source file before quoting. Results include file paths and markdown links for easy follow-up with read_file.\n\nTip: After finding relevant content, use get_chapter or get_talk to read the full source text.",
+			"description": "Search the scriptures using semantic similarity. Finds verses, paragraphs, chapter summaries, and themes related to the query. Searches across scriptures, conference talks, manuals, and books.\n\nIMPORTANT: Results labeled [AI SUMMARY] or [AI THEME] are NOT direct quotes — always verify against the source file before quoting. Results include file paths and markdown links for easy follow-up with read_file.\n\nTip: After finding relevant content, use gospel_get or get_talk to read the full source text.",
 			"inputSchema": map[string]any{
 				"type": "object",
 				"properties": map[string]any{
@@ -131,24 +131,6 @@ func (s *MCPServer) handleToolsList(enc *json.Encoder, req *MCPRequest) {
 					},
 				},
 				"required": []string{"query"},
-			},
-		},
-		{
-			"name":        "get_chapter",
-			"description": "Get the full text of a specific scripture chapter.",
-			"inputSchema": map[string]any{
-				"type": "object",
-				"properties": map[string]any{
-					"book": map[string]any{
-						"type":        "string",
-						"description": "The book name. Accepts various formats: '1 Nephi', '1-ne', '1nephi', 'D&C', 'dc', 'Alma', etc.",
-					},
-					"chapter": map[string]any{
-						"type":        "integer",
-						"description": "The chapter number",
-					},
-				},
-				"required": []string{"book", "chapter"},
 			},
 		},
 		{
@@ -237,8 +219,6 @@ func (s *MCPServer) handleToolsCall(enc *json.Encoder, req *MCPRequest) {
 	switch params.Name {
 	case "search_scriptures":
 		s.toolSearchScriptures(enc, req.ID, params.Arguments)
-	case "get_chapter":
-		s.toolGetChapter(enc, req.ID, params.Arguments)
 	case "list_books":
 		s.toolListBooks(enc, req.ID, params.Arguments)
 	case "get_talk":
@@ -316,73 +296,6 @@ func (s *MCPServer) toolSearchScriptures(enc *json.Encoder, id any, args json.Ra
 			},
 		},
 	})
-}
-
-func (s *MCPServer) toolGetChapter(enc *json.Encoder, id any, args json.RawMessage) {
-	var params struct {
-		Book    string `json:"book"`
-		Chapter int    `json:"chapter"`
-	}
-	if err := json.Unmarshal(args, &params); err != nil {
-		s.sendError(enc, id, -32602, "Invalid arguments", err.Error())
-		return
-	}
-
-	// Normalize the book name to handle various input formats
-	normalizedBook := NormalizeBookName(params.Book)
-
-	// Find the chapter file
-	files, err := FindScriptureFiles(s.cfg.ScripturesPath, "bofm", "dc-testament/dc", "pgp", "nt", "ot")
-	if err != nil {
-		s.sendError(enc, id, -32000, "Failed to find scriptures", err.Error())
-		return
-	}
-
-	// Track which books we've seen for better error messages
-	var seenBooks = make(map[string]bool)
-
-	// Look for matching chapter
-	for _, f := range files {
-		chapter, err := ParseChapterFile(f)
-		if err != nil {
-			continue
-		}
-
-		seenBooks[chapter.Book] = true
-
-		if chapter.Book == normalizedBook && chapter.Chapter == params.Chapter {
-			// Format chapter content
-			var content string
-			for _, v := range chapter.Verses {
-				content += fmt.Sprintf("%d. %s\n\n", v.Number, v.Text)
-			}
-
-			s.sendResult(enc, id, map[string]any{
-				"content": []map[string]any{
-					{
-						"type": "text",
-						"text": fmt.Sprintf("# %s %d\n\n%s", chapter.Book, chapter.Chapter, content),
-					},
-				},
-			})
-			return
-		}
-	}
-
-	// Build helpful error message with suggestions
-	var availableBooks []string
-	for book := range seenBooks {
-		availableBooks = append(availableBooks, book)
-	}
-
-	errMsg := fmt.Sprintf("Chapter not found: %s %d", params.Book, params.Chapter)
-	if normalizedBook != params.Book {
-		errMsg += fmt.Sprintf(" (interpreted as '%s')", normalizedBook)
-	}
-	errMsg += fmt.Sprintf("\n\nAvailable books in index: %s", strings.Join(availableBooks, ", "))
-	errMsg += "\n\nTip: Try using full book names like '1 Nephi', 'D&C', 'Alma' or abbreviations like '1-ne', 'dc', 'mosiah'"
-
-	s.sendError(enc, id, -32000, "Chapter not found", errMsg)
 }
 
 func (s *MCPServer) toolListBooks(enc *json.Encoder, id any, args json.RawMessage) {
@@ -473,7 +386,7 @@ func (s *MCPServer) toolListBooks(enc *json.Encoder, id any, args json.RawMessag
 			}
 		}
 		output.WriteString("---\n")
-		output.WriteString("Tip: Use any of these book names with get_chapter(book, chapter)\n")
+		output.WriteString("Tip: Use any of these book names with gospel_get(reference)\n")
 	}
 
 	s.sendResult(enc, id, map[string]any{
@@ -869,5 +782,5 @@ func truncate(s string, maxLen int) string {
 	if len(s) <= maxLen {
 		return s
 	}
-	return s[:maxLen-3] + "... [TRUNCATED — use read_file or get_chapter for full text]"
+	return s[:maxLen-3] + "... [TRUNCATED — use read_file or gospel_get for full text]"
 }

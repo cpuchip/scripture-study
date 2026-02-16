@@ -165,6 +165,9 @@ type crossRef struct {
 	Type          string
 }
 
+// Footnote anchor pattern: <a id="fn-9a"> — the number is the verse
+var footnoteAnchorPattern = regexp.MustCompile(`<a id="fn-(\d+)[a-z]+"?>`)
+
 func extractCrossReferences(content string, sourceVolume, sourceBook string, sourceChapter, sourceVerse int) []crossRef {
 	var refs []crossRef
 
@@ -178,18 +181,37 @@ func extractCrossReferences(content string, sourceVolume, sourceBook string, sou
 		return refs
 	}
 
-	// Look for cross-reference links
-	matches := crossRefPattern.FindAllStringSubmatch(footnoteSection, -1)
-	for _, match := range matches {
-		if len(match) < 3 {
+	// Process line-by-line, only extracting cross-refs from footnotes
+	// belonging to sourceVerse. Each footnote line has an anchor like
+	// <a id="fn-9a"> where 9 is the verse number.
+	scanner := bufio.NewScanner(strings.NewReader(footnoteSection))
+	for scanner.Scan() {
+		line := scanner.Text()
+
+		// Check if this line has a footnote anchor
+		anchorMatch := footnoteAnchorPattern.FindStringSubmatch(line)
+		if anchorMatch == nil {
 			continue
 		}
-		linkPath := match[2]
 
-		// Parse the link path to extract volume/book/chapter
-		ref := parseCrossRefLink(linkPath)
-		if ref != nil {
-			refs = append(refs, *ref)
+		// Parse the verse number from the anchor
+		fnVerse, err := strconv.Atoi(anchorMatch[1])
+		if err != nil || fnVerse != sourceVerse {
+			continue
+		}
+
+		// This footnote belongs to our verse — extract cross-reference links
+		matches := crossRefPattern.FindAllStringSubmatch(line, -1)
+		for _, match := range matches {
+			if len(match) < 3 {
+				continue
+			}
+			linkPath := match[2]
+
+			ref := parseCrossRefLink(linkPath)
+			if ref != nil {
+				refs = append(refs, *ref)
+			}
 		}
 	}
 
