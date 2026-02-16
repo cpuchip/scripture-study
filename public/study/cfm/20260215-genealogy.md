@@ -92,12 +92,12 @@ The footnote on [Genesis 5:1](https://www.churchofjesuschrist.org/study/scriptur
 This is confirmed by modern revelation. [D&C 107:40–57](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/107?lang=eng&id=p40-p57#p40) takes the same genealogical line — Adam, Seth, Enos, Cainan, Mahalaleel, Jared, Enoch, Methuselah, Lamech, Noah — and reveals what the Genesis genealogy *doesn't explicitly say*: each of these men was **ordained** to the priesthood, and the ordination ages are given:
 
 - Seth: ordained at 69 by Adam ([D&C 107:42](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/107?lang=eng&id=p42#p42))
-- Enos: ordained at 134 by Adam ([v. 44](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/107?lang=eng))
-- Cainan: ordained at 87 by Adam ([v. 45](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/107?lang=eng))
-- Enoch: ordained at 25 by Adam ([v. 48](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/107?lang=eng))
-- Methuselah: ordained at 100 by Adam ([v. 50](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/107?lang=eng))
-- Lamech: ordained at 32 by Seth ([v. 51](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/107?lang=eng))
-- Noah: ordained at 10 by Methuselah ([v. 52](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/107?lang=eng))
+- Enos: ordained at 134 by Adam ([v. 44](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/107?lang=eng&id=p44#p44))
+- Cainan: ordained at 87 by Adam ([v. 45](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/107?lang=eng&id=p45#p45))
+- Enoch: ordained at 25 by Adam ([v. 48](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/107?lang=eng&id=p48#p48))
+- Methuselah: ordained at 100 by Adam ([v. 50](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/107?lang=eng&id=p50#p50))
+- Lamech: ordained at 32 by Seth ([v. 51](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/107?lang=eng&id=p51#p51))
+- Noah: ordained at 10 by Methuselah ([v. 52](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/107?lang=eng&id=p52#p52))
 
 Adam personally ordained **six** of these men. He wasn't just the first father — he was the presiding high priest who conferred authority down through his lineage. The "begats" track this chain of authority.
 
@@ -202,8 +202,8 @@ When read with their meanings, the genealogies become narratives of prophecy and
 
 [Genesis 10](https://www.churchofjesuschrist.org/study/scriptures/ot/gen/10?lang=eng) — the "Table of Nations" — is a genealogy of a different kind. Rather than tracking a covenant line, it maps the **spread of all human civilization** from Noah's three sons: Shem, Ham, and Japheth.
 
-- **Japheth's** sons become the "isles of the Gentiles" ([v. 5](https://www.churchofjesuschrist.org/study/scriptures/ot/gen/10?lang=eng)) — Europe, Asia Minor, the Mediterranean
-- **Ham's** sons include Cush (Ethiopia), Mizraim (Egypt), and Canaan — and notably **Nimrod**, whose kingdom began with **Babel** ([v. 10](https://www.churchofjesuschrist.org/study/scriptures/ot/gen/10?lang=eng))
+- **Japheth's** sons become the "isles of the Gentiles" ([v. 5](https://www.churchofjesuschrist.org/study/scriptures/ot/gen/10?lang=eng&id=p5#p5)) — Europe, Asia Minor, the Mediterranean
+- **Ham's** sons include Cush (Ethiopia), Mizraim (Egypt), and Canaan — and notably **Nimrod**, whose kingdom began with **Babel** ([v. 10](https://www.churchofjesuschrist.org/study/scriptures/ot/gen/10?lang=eng&id=p10#p10))
 - **Shem's** line carries through Eber (from whom the name "Hebrew" may derive) to Abraham
 
 The theological point of Genesis 10 is that every nation on earth traces back to one family, and ultimately to one God. In an ancient world full of competing tribal deities, this is a radical claim: there is no nation that does not descend from Noah, and no people who fall outside the scope of God's covenant purposes.
@@ -221,7 +221,7 @@ D&C 107 doesn't just trace priesthood ordinations — it describes a **gathering
 
 Every name on the Genesis 5 genealogy (except Lamech and Noah, who weren't yet born) was present at this gathering. They were all alive at the same time, all high priests, and the Lord Himself appeared to them.
 
-Adam then "predicted whatsoever should befall his posterity unto the latest generation" ([v. 56](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/107?lang=eng)). And all of it "was written in the book of Enoch, and are to be testified of in due time" ([v. 57](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/107?lang=eng)).
+Adam then "predicted whatsoever should befall his posterity unto the latest generation" ([v. 56](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/107?lang=eng&id=p56#p56)). And all of it "was written in the book of Enoch, and are to be testified of in due time" ([v. 57](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/107?lang=eng&id=p57#p57)).
 
 The genealogy of Genesis 5 is, in effect, the **attendance roster** for Adam-ondi-Ahman.
 
