@@ -15,6 +15,7 @@ const allPillars = ref<{ id: number; name: string; icon: string }[]>([])
 const formPillarIds = ref<number[]>([])
 
 // Filters
+const filterStatus = ref<string>('active')
 const filterType = ref<string>('all')
 const filterCategory = ref<string>('all')
 
@@ -25,6 +26,7 @@ const form = ref({
   type: 'habit' as Practice['type'],
   category: '',
   config: '{}',
+  end_date: '' as string,
 })
 
 // Config helpers for tracker (was exercise)
@@ -98,10 +100,38 @@ function toggleCategory(cat: string) {
   form.value.category = cats.join(',')
 }
 
+// End date helpers
+function parseEndDate(endDate: string): Date {
+  // Backend may return "2026-02-20" or "2026-02-20T00:00:00Z"
+  const dateStr = endDate.slice(0, 10)
+  return new Date(dateStr + 'T00:00:00')
+}
+
+function endDateLabel(endDate: string): string {
+  const end = parseEndDate(endDate)
+  const now = new Date()
+  now.setHours(0, 0, 0, 0)
+  const diff = Math.ceil((end.getTime() - now.getTime()) / (1000 * 60 * 60 * 24))
+  if (diff < 0) return `${Math.abs(diff)}d overdue`
+  if (diff === 0) return 'due today'
+  if (diff === 1) return '1 day left'
+  return `${diff} days left`
+}
+
+function endDateClass(endDate: string): string {
+  const end = parseEndDate(endDate)
+  const now = new Date()
+  now.setHours(0, 0, 0, 0)
+  const diff = Math.ceil((end.getTime() - now.getTime()) / (1000 * 60 * 60 * 24))
+  if (diff < 0) return 'bg-red-100 text-red-700'
+  if (diff <= 3) return 'bg-amber-100 text-amber-700'
+  return 'bg-green-50 text-green-700'
+}
+
 async function load() {
   loading.value = true
   const [practicesData, pillarsData] = await Promise.all([
-    api.listPractices(undefined, false),
+    api.listPractices(undefined, true, filterStatus.value !== 'all' ? filterStatus.value : undefined),
     api.listPillarsFlat(),
   ])
   practices.value = practicesData
@@ -116,6 +146,7 @@ async function submit() {
     description: form.value.description,
     type: form.value.type,
     category: form.value.category,
+    end_date: form.value.end_date || undefined,
   }
 
   if (form.value.type === 'tracker') {
@@ -189,7 +220,7 @@ async function submit() {
 }
 
 function resetForm() {
-  form.value = { name: '', description: '', type: 'habit', category: '', config: '{}' }
+  form.value = { name: '', description: '', type: 'habit', category: '', config: '{}', end_date: '' }
   trackerConfig.value = { target_sets: 2, target_reps: 15, unit: 'reps' }
   memorizeConfig.value = { target_daily_reps: 1 }
   scheduleConfig.value = { type: 'interval', interval_days: 2, shift_on_early: true, slots: ['morning', 'lunch', 'night'], days: [], day_of_month: 1, due_date: '', newSlot: '' }
@@ -205,6 +236,7 @@ function editPractice(p: Practice) {
   form.value.type = p.type
   form.value.category = p.category
   form.value.config = p.config
+  form.value.end_date = p.end_date ? p.end_date.slice(0, 10) : ''
 
   // Load pillar associations
   api.getPracticePillars(p.id).then(links => {
@@ -264,7 +296,28 @@ function editPractice(p: Practice) {
 }
 
 async function toggleActive(p: Practice) {
-  await api.updatePractice(p.id, { ...p, active: !p.active })
+  if (p.status === 'active' || p.active) {
+    await api.pausePractice(p.id)
+  } else {
+    await api.restorePractice(p.id)
+  }
+  await load()
+}
+
+async function completePractice(p: Practice) {
+  if (!confirm(`Mark "${p.name}" as completed?`)) return
+  await api.completePractice(p.id)
+  await load()
+}
+
+async function archivePractice(p: Practice) {
+  if (!confirm(`Archive "${p.name}"?`)) return
+  await api.archivePractice(p.id)
+  await load()
+}
+
+async function restorePractice(p: Practice) {
+  await api.restorePractice(p.id)
   await load()
 }
 
@@ -332,6 +385,26 @@ onMounted(async () => {
         class="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 text-sm"
       >
         {{ showForm ? 'Cancel' : '+ Add Practice' }}
+      </button>
+    </div>
+
+    <!-- Status tabs -->
+    <div class="flex gap-1 mb-4 border-b border-gray-200">
+      <button
+        v-for="tab in [
+          { value: 'active', label: 'Active' },
+          { value: 'paused', label: 'Paused' },
+          { value: 'completed', label: 'Completed' },
+          { value: 'archived', label: 'Archived' },
+        ]"
+        :key="tab.value"
+        @click="filterStatus = tab.value; load()"
+        class="px-4 py-2 text-sm font-medium border-b-2 -mb-px transition-colors"
+        :class="filterStatus === tab.value
+          ? 'border-indigo-500 text-indigo-600'
+          : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'"
+      >
+        {{ tab.label }}
       </button>
     </div>
 
@@ -618,6 +691,16 @@ onMounted(async () => {
           </div>
         </div>
 
+        <!-- End date -->
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">Target End Date <span class="font-normal text-gray-400">(optional)</span></label>
+          <input
+            v-model="form.end_date"
+            type="date"
+            class="border rounded px-3 py-2 text-sm"
+          />
+        </div>
+
         <div class="flex gap-2">
           <button
             type="submit"
@@ -684,13 +767,14 @@ onMounted(async () => {
           v-for="p in filteredPractices"
           :key="p.id"
         class="flex items-center justify-between px-4 py-3"
-        :class="{ 'opacity-50': !p.active }"
+        :class="{ 'opacity-50': p.status !== 'active' }"
       >
         <div class="min-w-0 flex-1 cursor-pointer" @click="goToPractice(p)">
           <div class="flex items-center gap-2">
             <span class="font-medium hover:text-indigo-600 transition-colors">{{ p.name }}</span>
             <span class="text-xs px-2 py-0.5 rounded-full bg-gray-100 text-gray-600">{{ p.type }}</span>
             <span v-if="p.category" class="text-xs px-2 py-0.5 rounded-full bg-indigo-50 text-indigo-600">{{ p.category }}</span>
+            <span v-if="p.end_date" class="text-xs px-2 py-0.5 rounded-full" :class="endDateClass(p.end_date)">{{ endDateLabel(p.end_date) }}</span>
           </div>
           <div v-if="p.description" class="text-xs text-gray-400 truncate mt-0.5">{{ p.description }}</div>
         </div>
@@ -702,25 +786,50 @@ onMounted(async () => {
           >
             history
           </router-link>
-          <button
-            @click.stop="editPractice(p)"
-            class="text-xs text-indigo-500 hover:text-indigo-700 px-2 py-1"
-          >
-            edit
-          </button>
-          <button
-            @click="toggleActive(p)"
-            class="text-xs px-2 py-1 rounded"
-            :class="p.active ? 'text-yellow-600 hover:bg-yellow-50' : 'text-green-600 hover:bg-green-50'"
-          >
-            {{ p.active ? 'pause' : 'resume' }}
-          </button>
-          <button
-            @click="deletePractice(p)"
-            class="text-xs text-red-400 hover:text-red-600 px-2 py-1"
-          >
-            delete
-          </button>
+
+          <!-- Active state actions -->
+          <template v-if="p.status === 'active'">
+            <button
+              @click.stop="editPractice(p)"
+              class="text-xs text-indigo-500 hover:text-indigo-700 px-2 py-1"
+            >edit</button>
+            <button
+              @click.stop="toggleActive(p)"
+              class="text-xs text-yellow-600 hover:bg-yellow-50 px-2 py-1 rounded"
+            >pause</button>
+            <button
+              @click.stop="completePractice(p)"
+              class="text-xs text-green-600 hover:bg-green-50 px-2 py-1 rounded"
+            >✓ complete</button>
+            <button
+              @click.stop="archivePractice(p)"
+              class="text-xs text-gray-400 hover:text-gray-600 px-2 py-1 rounded"
+            >archive</button>
+          </template>
+
+          <!-- Paused state actions -->
+          <template v-else-if="p.status === 'paused'">
+            <button
+              @click.stop="restorePractice(p)"
+              class="text-xs text-green-600 hover:bg-green-50 px-2 py-1 rounded"
+            >resume</button>
+            <button
+              @click.stop="archivePractice(p)"
+              class="text-xs text-gray-400 hover:text-gray-600 px-2 py-1 rounded"
+            >archive</button>
+          </template>
+
+          <!-- Completed/Archived state actions -->
+          <template v-else>
+            <button
+              @click.stop="restorePractice(p)"
+              class="text-xs text-green-600 hover:bg-green-50 px-2 py-1 rounded"
+            >restore</button>
+            <button
+              @click.stop="deletePractice(p)"
+              class="text-xs text-red-400 hover:text-red-600 px-2 py-1"
+            >delete</button>
+          </template>
         </div>
       </div>
     </div>

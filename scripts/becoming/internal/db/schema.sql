@@ -24,7 +24,7 @@ CREATE TABLE IF NOT EXISTS practices (
     archived_at  DATETIME,              -- when practice was archived
     end_date     DATE                   -- target end/completion date
 );
-CREATE INDEX IF NOT EXISTS idx_practices_status ON practices(status);
+-- idx_practices_status created by migratePracticeLifecycle()
 
 -- Practice logs: each time you do a practice
 CREATE TABLE IF NOT EXISTS practice_logs (

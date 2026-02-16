@@ -130,16 +130,17 @@ func (db *DB) DeleteLatestLog(userID, practiceID int64, date string) (bool, erro
 
 // DailySummary represents practice completion status for a single date.
 type DailySummary struct {
-	PracticeID   int64  `json:"practice_id"`
-	PracticeName string `json:"practice_name"`
-	PracticeType string `json:"practice_type"`
-	Category     string `json:"category"`
-	Config       string `json:"config"`
-	LogCount     int    `json:"log_count"`
-	TotalSets    *int   `json:"total_sets,omitempty"`
-	TotalReps    *int   `json:"total_reps,omitempty"`
-	LastValue    string `json:"last_value,omitempty"`
-	LastNotes    string `json:"last_notes,omitempty"`
+	PracticeID   int64   `json:"practice_id"`
+	PracticeName string  `json:"practice_name"`
+	PracticeType string  `json:"practice_type"`
+	Category     string  `json:"category"`
+	Config       string  `json:"config"`
+	EndDate      *string `json:"end_date,omitempty"`
+	LogCount     int     `json:"log_count"`
+	TotalSets    *int    `json:"total_sets,omitempty"`
+	TotalReps    *int    `json:"total_reps,omitempty"`
+	LastValue    string  `json:"last_value,omitempty"`
+	LastNotes    string  `json:"last_notes,omitempty"`
 
 	// Schedule-aware fields (populated for "scheduled" type only)
 	IsDue       *bool    `json:"is_due,omitempty"`
@@ -152,7 +153,7 @@ type DailySummary struct {
 func (db *DB) GetDailySummary(userID int64, date string) ([]*DailySummary, error) {
 	rows, err := db.Query(`
 		SELECT
-			p.id, p.name, p.type, p.category, p.config,
+			p.id, p.name, p.type, p.category, p.config, p.end_date,
 			COALESCE(COUNT(l.id), 0) as log_count,
 			SUM(l.sets) as total_sets,
 			SUM(l.reps) as total_reps,
@@ -172,7 +173,7 @@ func (db *DB) GetDailySummary(userID int64, date string) ([]*DailySummary, error
 	var summaries []*DailySummary
 	for rows.Next() {
 		s := &DailySummary{}
-		if err := rows.Scan(&s.PracticeID, &s.PracticeName, &s.PracticeType, &s.Category, &s.Config, &s.LogCount, &s.TotalSets, &s.TotalReps, &s.LastValue, &s.LastNotes); err != nil {
+		if err := rows.Scan(&s.PracticeID, &s.PracticeName, &s.PracticeType, &s.Category, &s.Config, &s.EndDate, &s.LogCount, &s.TotalSets, &s.TotalReps, &s.LastValue, &s.LastNotes); err != nil {
 			return nil, fmt.Errorf("scanning daily summary: %w", err)
 		}
 		summaries = append(summaries, s)

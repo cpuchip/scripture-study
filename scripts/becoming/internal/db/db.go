@@ -244,29 +244,30 @@ func (db *DB) runSQLiteMigrations() error {
 
 // migratePracticeLifecycle adds status, archived_at, and end_date columns to practices.
 func (db *DB) migratePracticeLifecycle() error {
-	if db.hasColumn("practices", "status") {
-		return nil // already migrated
+	if !db.hasColumn("practices", "status") {
+		if _, err := db.Exec(`ALTER TABLE practices ADD COLUMN status TEXT NOT NULL DEFAULT 'active'`); err != nil {
+			return fmt.Errorf("adding status column: %w", err)
+		}
+		if _, err := db.Exec(`ALTER TABLE practices ADD COLUMN archived_at DATETIME`); err != nil {
+			return fmt.Errorf("adding archived_at column: %w", err)
+		}
+		if _, err := db.Exec(`ALTER TABLE practices ADD COLUMN end_date DATE`); err != nil {
+			return fmt.Errorf("adding end_date column: %w", err)
+		}
+
+		// Backfill status from existing active/completed_at columns
+		if _, err := db.Exec(`UPDATE practices SET status = CASE
+			WHEN completed_at IS NOT NULL THEN 'completed'
+			WHEN active = FALSE THEN 'paused'
+			ELSE 'active'
+		END`); err != nil {
+			return fmt.Errorf("backfilling status: %w", err)
+		}
+
+		log.Println("Migration applied: practice lifecycle (status, archived_at, end_date)")
 	}
 
-	if _, err := db.Exec(`ALTER TABLE practices ADD COLUMN status TEXT NOT NULL DEFAULT 'active'`); err != nil {
-		return fmt.Errorf("adding status column: %w", err)
-	}
-	if _, err := db.Exec(`ALTER TABLE practices ADD COLUMN archived_at DATETIME`); err != nil {
-		return fmt.Errorf("adding archived_at column: %w", err)
-	}
-	if _, err := db.Exec(`ALTER TABLE practices ADD COLUMN end_date DATE`); err != nil {
-		return fmt.Errorf("adding end_date column: %w", err)
-	}
-
-	// Backfill status from existing active/completed_at columns
-	if _, err := db.Exec(`UPDATE practices SET status = CASE
-		WHEN completed_at IS NOT NULL THEN 'completed'
-		WHEN active = FALSE THEN 'paused'
-		ELSE 'active'
-	END`); err != nil {
-		return fmt.Errorf("backfilling status: %w", err)
-	}
-
+	// Always ensure index exists (covers both fresh installs and migrations)
 	if _, err := db.Exec(`CREATE INDEX IF NOT EXISTS idx_practices_status ON practices(status)`); err != nil {
 		return fmt.Errorf("creating status index: %w", err)
 	}

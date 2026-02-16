@@ -52,8 +52,11 @@ export interface Practice {
   config: string
   sort_order: number
   active: boolean
+  status: 'active' | 'paused' | 'completed' | 'archived'
   created_at: string
   completed_at?: string
+  archived_at?: string
+  end_date?: string
 }
 
 export interface PracticeLog {
@@ -76,6 +79,7 @@ export interface DailySummary {
   practice_type: string
   category: string
   config: string
+  end_date?: string
   log_count: number
   total_sets?: number
   total_reps?: number
@@ -213,10 +217,11 @@ export interface PillarLink {
 
 export const api = {
   // Practices
-  listPractices(type?: string, active = true) {
+  listPractices(type?: string, active = true, status?: string) {
     const params = new URLSearchParams()
     if (type) params.set('type', type)
-    if (!active) params.set('active', 'false')
+    if (status) params.set('status', status)
+    else if (!active) params.set('active', 'false')
     return request<Practice[]>(`/practices?${params}`)
   },
 
@@ -234,6 +239,23 @@ export const api = {
 
   deletePractice(id: number) {
     return request<void>(`/practices/${id}`, { method: 'DELETE' })
+  },
+
+  // Practice lifecycle
+  completePractice(id: number) {
+    return request<Practice>(`/practices/${id}/complete`, { method: 'POST' })
+  },
+
+  archivePractice(id: number) {
+    return request<Practice>(`/practices/${id}/archive`, { method: 'POST' })
+  },
+
+  pausePractice(id: number) {
+    return request<Practice>(`/practices/${id}/pause`, { method: 'POST' })
+  },
+
+  restorePractice(id: number) {
+    return request<Practice>(`/practices/${id}/restore`, { method: 'POST' })
   },
 
   // Logs

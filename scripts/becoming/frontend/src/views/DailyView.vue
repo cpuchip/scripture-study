@@ -297,6 +297,35 @@ function memorizeCompletedReps(item: DailySummary): number {
   return item.log_count
 }
 
+function parseEndDate(endDate: string): Date {
+  // Backend may return "2026-02-20" or "2026-02-20T00:00:00Z"
+  const dateStr = endDate.slice(0, 10)
+  return new Date(dateStr + 'T00:00:00')
+}
+
+function endDateLabel(endDate?: string): string {
+  if (!endDate) return ''
+  const end = parseEndDate(endDate)
+  const now = new Date()
+  now.setHours(0, 0, 0, 0)
+  const diff = Math.ceil((end.getTime() - now.getTime()) / (1000 * 60 * 60 * 24))
+  if (diff < 0) return `${Math.abs(diff)}d overdue`
+  if (diff === 0) return 'due today'
+  if (diff === 1) return '1 day left'
+  return `${diff} days left`
+}
+
+function endDateClass(endDate?: string): string {
+  if (!endDate) return ''
+  const end = parseEndDate(endDate)
+  const now = new Date()
+  now.setHours(0, 0, 0, 0)
+  const diff = Math.ceil((end.getTime() - now.getTime()) / (1000 * 60 * 60 * 24))
+  if (diff < 0) return 'text-red-600 bg-red-50'
+  if (diff <= 3) return 'text-amber-600 bg-amber-50'
+  return 'text-gray-500 bg-gray-100'
+}
+
 function isComplete(item: DailySummary): boolean {
   if (item.practice_type === 'tracker') {
     const config = parseConfig(item.config)
@@ -518,6 +547,7 @@ onUnmounted(() => {
                 <div class="flex items-center gap-2 min-w-0">
                   <span class="font-medium truncate">{{ item.practice_name }}</span>
                   <span class="text-xs text-gray-400 whitespace-nowrap">{{ trackerRepsLabel(item) }}</span>
+                  <span v-if="item.end_date" class="text-[10px] px-1.5 py-0.5 rounded-full whitespace-nowrap" :class="endDateClass(item.end_date)">{{ endDateLabel(item.end_date) }}</span>
                 </div>
                 <div class="flex items-center gap-1.5 flex-shrink-0">
                   <button
@@ -568,6 +598,7 @@ onUnmounted(() => {
                     :to="`/memorize?id=${item.practice_id}`"
                     class="font-medium truncate hover:text-indigo-600 transition-colors"
                   >{{ item.practice_name }}</router-link>
+                  <span v-if="item.end_date" class="text-[10px] px-1.5 py-0.5 rounded-full whitespace-nowrap" :class="endDateClass(item.end_date)">{{ endDateLabel(item.end_date) }}</span>
                 </div>
                 <div class="flex items-center gap-2 flex-shrink-0">
                   <span
@@ -603,7 +634,9 @@ onUnmounted(() => {
                     <span v-if="isComplete(item)" class="text-[10px] hidden group-hover:inline">✕</span>
                   </button>
                   <div class="min-w-0">
-                    <div class="font-medium truncate">{{ item.practice_name }}</div>
+                    <div class="font-medium truncate">{{ item.practice_name }}
+                      <span v-if="item.end_date" class="text-[10px] px-1.5 py-0.5 rounded-full whitespace-nowrap ml-1" :class="endDateClass(item.end_date)">{{ endDateLabel(item.end_date) }}</span>
+                    </div>
                     <div v-if="item.last_value" class="text-xs text-gray-400">
                       {{ item.last_value }}
                     </div>
@@ -629,6 +662,7 @@ onUnmounted(() => {
                   <template v-if="parseConfig(item.config).schedule?.type === 'daily_slots'">
                     <div class="flex items-center gap-1.5 flex-wrap">
                       <span class="font-medium truncate mr-1">{{ item.practice_name }}</span>
+                      <span v-if="item.end_date" class="text-[10px] px-1.5 py-0.5 rounded-full whitespace-nowrap mr-1" :class="endDateClass(item.end_date)">{{ endDateLabel(item.end_date) }}</span>
                       <button
                         v-for="slot in (parseConfig(item.config).schedule?.slots || [])"
                         :key="slot"
@@ -666,7 +700,9 @@ onUnmounted(() => {
                     </button>
                     <span v-else class="w-5 h-5 rounded-full border-2 border-gray-200 flex-shrink-0"></span>
                     <div class="min-w-0">
-                      <div class="font-medium truncate">{{ item.practice_name }}</div>
+                      <div class="font-medium truncate">{{ item.practice_name }}
+                        <span v-if="item.end_date" class="text-[10px] px-1.5 py-0.5 rounded-full whitespace-nowrap ml-1" :class="endDateClass(item.end_date)">{{ endDateLabel(item.end_date) }}</span>
+                      </div>
                       <div class="text-xs text-gray-400">
                         {{ scheduleLabel(item) }}
                         <span v-if="!scheduleIsDue(item) && nextDueLabel(item)" class="ml-1 text-gray-300">
