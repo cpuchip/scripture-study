@@ -7,6 +7,8 @@ import (
 	"io"
 	"net/http"
 	"net/url"
+	"os"
+	"path/filepath"
 	"time"
 
 	"golang.org/x/time/rate"
@@ -168,4 +170,47 @@ func (c *Client) GetRawDynamic(ctx context.Context, uri string) ([]byte, error) 
 		BaseURL, c.lang, url.QueryEscape(uri))
 
 	return c.doRequest(ctx, endpoint)
+}
+
+// DownloadFile downloads a file from a URL and streams it to destPath.
+// Uses a longer timeout suitable for media files (MP3, PDF).
+func (c *Client) DownloadFile(ctx context.Context, fileURL, destPath string) error {
+	if err := c.limiter.Wait(ctx); err != nil {
+		return fmt.Errorf("rate limiter: %w", err)
+	}
+
+	req, err := http.NewRequestWithContext(ctx, http.MethodGet, fileURL, nil)
+	if err != nil {
+		return fmt.Errorf("create request: %w", err)
+	}
+	req.Header.Set("User-Agent", UserAgent)
+
+	// Use a client with longer timeout for file downloads
+	fileClient := &http.Client{Timeout: 5 * time.Minute}
+	resp, err := fileClient.Do(req)
+	if err != nil {
+		return fmt.Errorf("http request: %w", err)
+	}
+	defer resp.Body.Close()
+
+	if resp.StatusCode != http.StatusOK {
+		return fmt.Errorf("unexpected status %d for %s", resp.StatusCode, fileURL)
+	}
+
+	if err := os.MkdirAll(filepath.Dir(destPath), 0755); err != nil {
+		return fmt.Errorf("mkdir: %w", err)
+	}
+
+	f, err := os.Create(destPath)
+	if err != nil {
+		return fmt.Errorf("create file: %w", err)
+	}
+	defer f.Close()
+
+	if _, err := io.Copy(f, resp.Body); err != nil {
+		os.Remove(destPath) // Clean up partial file
+		return fmt.Errorf("write file: %w", err)
+	}
+
+	return nil
 }

@@ -141,6 +141,14 @@ func isContentURI(uri string) bool {
 		return len(segments) >= 3
 	}
 
+	// Music content pages
+	if strings.HasPrefix(uri, "/music/") {
+		segments := strings.Split(strings.TrimPrefix(uri, "/"), "/")
+		// /music/{collection} = TOC/collection (2 segments)
+		// /music/{collection}/{song} = Content (3+ segments)
+		return len(segments) >= 3
+	}
+
 	// Conference talks - check if last part is not just a year or month
 	if strings.HasPrefix(uri, "/general-conference/") {
 		// /general-conference/2025/10 = TOC
@@ -418,9 +426,147 @@ func (d *Downloader) DownloadMultiple(ctx context.Context, uris []string) tea.Cm
 }
 
 // DownloadSingle downloads a single URI.
+// For music URIs, automatically downloads media files (PDF, MP3) alongside lyrics.
 func (d *Downloader) DownloadSingle(ctx context.Context, uri string) tea.Cmd {
 	return func() tea.Msg {
+		if isMusicURI(uri) {
+			mResult := d.DownloadMusicContent(ctx, uri)
+			return downloadResultMsg{result: mResult.DownloadResult}
+		}
 		result := d.DownloadAndConvert(ctx, uri)
 		return downloadResultMsg{result: result}
 	}
+}
+
+// isMusicURI returns true if the URI is a music content page.
+func isMusicURI(uri string) bool {
+	return strings.HasPrefix(uri, "/music/") ||
+		strings.HasPrefix(uri, "/manual/hymns/") ||
+		strings.HasPrefix(uri, "/manual/childrens-songbook/")
+}
+
+// MusicDownloadResult extends DownloadResult with media file counts.
+type MusicDownloadResult struct {
+	DownloadResult
+	PDFDownloaded  bool
+	MP3sDownloaded int
+	MediaErrors    []string
+}
+
+// DownloadMusicContent downloads a music content page with its media files (PDF, MP3s).
+// It first downloads the lyrics markdown, then downloads any associated PDF and MP3 files.
+func (d *Downloader) DownloadMusicContent(ctx context.Context, uri string) MusicDownloadResult {
+	mResult := MusicDownloadResult{}
+
+	// First do the standard download (lyrics markdown)
+	result := d.DownloadAndConvert(ctx, uri)
+	mResult.DownloadResult = result
+	if !result.Success {
+		return mResult
+	}
+
+	// Fetch the content to get media URLs (may already be cached)
+	content, _, err := d.client.GetContent(ctx, uri)
+	if err != nil {
+		// Already have the markdown, media is bonus
+		return mResult
+	}
+
+	// Determine base path (same directory as the markdown, without .md extension)
+	basePath := strings.TrimSuffix(result.FilePath, ".md")
+
+	// Download PDF sheet music
+	pdfItems := content.Meta.GetPDFItems()
+	if len(pdfItems) > 0 && pdfItems[0].Source != "" && strings.HasPrefix(pdfItems[0].Source, "http") {
+		pdfPath := basePath + ".pdf"
+		if _, err := os.Stat(pdfPath); os.IsNotExist(err) {
+			if err := d.rawClient.DownloadFile(ctx, pdfItems[0].Source, pdfPath); err != nil {
+				mResult.MediaErrors = append(mResult.MediaErrors, fmt.Sprintf("PDF: %v", err))
+			} else {
+				mResult.PDFDownloaded = true
+			}
+		} else {
+			mResult.PDFDownloaded = true // Already exists
+		}
+	}
+
+	// Download MP3 audio files
+	audioItems := content.Meta.GetAudioItems()
+	for _, audio := range audioItems {
+		if audio.MediaURL == "" || !strings.HasPrefix(audio.MediaURL, "http") {
+			continue // Skip empty or non-URL entries (some are UUID hashes)
+		}
+		suffix := variantToSuffix(audio.Variant)
+		mp3Path := basePath + suffix + ".mp3"
+		if _, err := os.Stat(mp3Path); os.IsNotExist(err) {
+			if err := d.rawClient.DownloadFile(ctx, audio.MediaURL, mp3Path); err != nil {
+				mResult.MediaErrors = append(mResult.MediaErrors, fmt.Sprintf("MP3 %s: %v", audio.Variant, err))
+			} else {
+				mResult.MP3sDownloaded++
+			}
+		} else {
+			mResult.MP3sDownloaded++ // Already exists
+		}
+	}
+
+	// Prepend local media links to the markdown file
+	if mResult.PDFDownloaded || mResult.MP3sDownloaded > 0 {
+		d.prependMediaLinks(result.FilePath, basePath, pdfItems, audioItems)
+	}
+
+	return mResult
+}
+
+// variantToSuffix converts an audio variant string to a file suffix.
+func variantToSuffix(variant string) string {
+	variant = strings.ToLower(variant)
+	variant = strings.TrimPrefix(variant, "audio_")
+	if variant == "" {
+		return "_audio"
+	}
+	return "_" + variant
+}
+
+// prependMediaLinks adds a "Media Files" section to the top of a markdown file
+// with relative links to downloaded media.
+func (d *Downloader) prependMediaLinks(mdPath, basePath string, pdfItems []api.PDFItem, audioItems []api.MediaItem) {
+	existing, err := os.ReadFile(mdPath)
+	if err != nil {
+		return
+	}
+
+	base := filepath.Base(basePath)
+	var mediaSection strings.Builder
+	mediaSection.WriteString("\n## Media Files\n\n")
+
+	if len(pdfItems) > 0 && pdfItems[0].Source != "" && strings.HasPrefix(pdfItems[0].Source, "http") {
+		mediaSection.WriteString(fmt.Sprintf("- 📄 [Sheet Music (PDF)](%s.pdf)\n", base))
+	}
+	for _, audio := range audioItems {
+		if audio.MediaURL == "" || !strings.HasPrefix(audio.MediaURL, "http") {
+			continue
+		}
+		suffix := variantToSuffix(audio.Variant)
+		label := strings.ReplaceAll(strings.TrimPrefix(suffix, "_"), "_", " ")
+		// Simple title case: capitalize first letter of each word
+		words := strings.Fields(label)
+		for i, w := range words {
+			if len(w) > 0 {
+				words[i] = strings.ToUpper(w[:1]) + w[1:]
+			}
+		}
+		label = strings.Join(words, " ")
+		mediaSection.WriteString(fmt.Sprintf("- 🎵 [%s](%s%s.mp3)\n", label, base, suffix))
+	}
+	mediaSection.WriteString("\n")
+
+	// Insert after the title line (# Title\n\n)
+	content := string(existing)
+	if idx := strings.Index(content, "\n\n"); idx != -1 {
+		content = content[:idx+2] + mediaSection.String() + content[idx+2:]
+	} else {
+		content = content + "\n" + mediaSection.String()
+	}
+
+	os.WriteFile(mdPath, []byte(content), 0644)
 }

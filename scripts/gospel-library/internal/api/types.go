@@ -153,6 +153,23 @@ func (m *Meta) GetAudioItems() []MediaItem {
 	return items
 }
 
+// GetPDFItems parses the PDF field into PDFItems.
+func (m *Meta) GetPDFItems() []PDFItem {
+	if len(m.PDF) == 0 || string(m.PDF) == "null" || string(m.PDF) == "{}" {
+		return nil
+	}
+	var items []PDFItem
+	if err := json.Unmarshal(m.PDF, &items); err != nil {
+		// Try single item
+		var item PDFItem
+		if err := json.Unmarshal(m.PDF, &item); err == nil && item.Source != "" {
+			return []PDFItem{item}
+		}
+		return nil
+	}
+	return items
+}
+
 // PageAttributes contains data attributes for the page.
 type PageAttributes struct {
 	ContentType string `json:"data-content-type"`

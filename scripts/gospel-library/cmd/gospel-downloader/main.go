@@ -38,6 +38,7 @@ var (
 	standardFlag    = flag.Bool("standard", false, "Download standard works and latest conference")
 	downloadFlag    = flag.String("download", "", "Download content from a specific URI path (e.g., /manual/general-handbook)")
 	magazinesFlag   = flag.Bool("magazines", false, "Download all Liahona and Ensign magazines (1971-present)")
+	musicFlag       = flag.Bool("music", false, "Download all music (hymns, songs, sheet music, MP3s)")
 )
 
 func main() {
@@ -53,6 +54,8 @@ func main() {
 		err = downloadSinglePath(*langFlag, *cacheFlag, *outputFlag, *downloadFlag)
 	case *magazinesFlag:
 		err = downloadMagazines(*langFlag, *cacheFlag, *outputFlag)
+	case *musicFlag:
+		err = downloadMusic(*langFlag, *cacheFlag, *outputFlag)
 	case *standardFlag:
 		err = downloadStandard(*langFlag, *cacheFlag, *outputFlag)
 	case *testFlag:
@@ -325,6 +328,104 @@ func runTUI(lang, cacheDir, outputDir string) error {
 
 	_, err := p.Run()
 	return err
+}
+
+func downloadMusic(lang, cacheDir, outputDir string) error {
+	fmt.Println("🎵 Downloading Church Music...")
+	fmt.Println("   Includes: lyrics (markdown), sheet music (PDF), audio (MP3)")
+	fmt.Println("")
+
+	rawClient := api.NewClient(lang)
+	fileCache := cache.New(cacheDir, lang)
+	cachedClient := cache.NewCachedClient(rawClient, fileCache)
+
+	downloader := tui.NewDownloader(cachedClient, rawClient, lang, outputDir)
+	ctx := context.Background()
+
+	// Music collections to crawl
+	musicCollections := []struct {
+		name string
+		uri  string
+	}{
+		{"Hymns — For Home and Church", "/music/hymns-for-home-and-church"},
+		{"Hymns (Traditional)", "/manual/hymns"},
+		{"Children's Songbook", "/manual/childrens-songbook"},
+		{"Conference Music", "/music/conference-music"},
+		{"Youth Music", "/music/youth-music"},
+		{"Songs of Devotion", "/music/songs-of-devotion"},
+		{"Christmas Music", "/music/christmas"},
+		{"Hymn Helps", "/music/hymn-helps"},
+	}
+
+	totalSuccess := 0
+	totalErrors := 0
+	totalPDFs := 0
+	totalMP3s := 0
+
+	for _, collection := range musicCollections {
+		fmt.Printf("🎶 %s\n", collection.name)
+		fmt.Printf("   Crawling %s...\n", collection.uri)
+
+		uris, err := downloader.CrawlForContent(ctx, collection.uri)
+		if err != nil {
+			fmt.Printf("   ⚠ Error crawling: %v\n", err)
+			continue
+		}
+
+		fmt.Printf("   Found %d content items\n", len(uris))
+		fmt.Printf("   Downloading lyrics, sheet music, and audio...\n")
+
+		successCount := 0
+		errorCount := 0
+		pdfCount := 0
+		mp3Count := 0
+
+		for i, uri := range uris {
+			if i > 0 && i%25 == 0 {
+				fmt.Printf("   Progress: %d/%d (📄 %d PDFs, 🎵 %d MP3s)\n", i, len(uris), pdfCount, mp3Count)
+			}
+
+			result := downloader.DownloadMusicContent(ctx, uri)
+			if result.Success {
+				successCount++
+				if result.PDFDownloaded {
+					pdfCount++
+				}
+				mp3Count += result.MP3sDownloaded
+			} else if result.Error != nil {
+				errorCount++
+				if errorCount <= 5 {
+					fmt.Printf("   ⚠ %s: %v\n", uri, result.Error)
+				}
+			}
+
+			for _, mediaErr := range result.MediaErrors {
+				fmt.Printf("   ⚠ %s: %s\n", uri, mediaErr)
+			}
+
+			if ctx.Err() != nil {
+				fmt.Printf("   Context cancelled at %d: %v\n", i, ctx.Err())
+				break
+			}
+
+			time.Sleep(50 * time.Millisecond)
+		}
+
+		fmt.Printf("   ✓ %d items: 📝 lyrics, 📄 %d PDFs, 🎵 %d MP3s (errors: %d)\n",
+			successCount, pdfCount, mp3Count, errorCount)
+		fmt.Println("")
+
+		totalSuccess += successCount
+		totalErrors += errorCount
+		totalPDFs += pdfCount
+		totalMP3s += mp3Count
+	}
+
+	fmt.Println("✅ Music download complete!")
+	fmt.Printf("   Total: %d items, 📄 %d PDFs, 🎵 %d MP3s (errors: %d)\n",
+		totalSuccess, totalPDFs, totalMP3s, totalErrors)
+	fmt.Printf("   Output: %s/%s/\n", outputDir, lang)
+	return nil
 }
 
 func reconvertCache(lang, cacheDir, outputDir string) error {
