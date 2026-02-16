@@ -57,6 +57,11 @@ This project uses **custom agents** (`.github/agents/`) for specialized workflow
 | `review` | Conference talk analysis for teaching patterns |
 | `eval` | YouTube video evaluation against the gospel standard |
 | `journal` | Personal reflection, journaling, becoming |
+| `podcast` | Transform studies into shareable podcast/video notes |
 | `dev` | MCP server and tool development |
 
 When no specific agent is selected, follow these core principles and bring genuine curiosity to whatever the task is.
+
+## Living Documents
+
+**Tool observations:** If you notice a tool behaving unexpectedly, flooding the context window with too much output, or if there's a gap where a tool *should* exist but doesn't, note it in [docs/06_tool-use-observance.md](../docs/06_tool-use-observance.md). This is a running log — not a complaint box, but a collaboration improvement tracker.

@@ -224,24 +224,25 @@ VS Code natively supports **custom agents** via `.agent.md` files in `.github/ag
 - [x] Identify distinct modes from current monolithic instructions
 - [x] Define what each mode needs vs. what's shared
 - [x] Research VS Code custom agent architecture (`.agent.md` files in `.github/agents/`)
-- [ ] Slim the core `copilot-instructions.md` to ~800–1000 words (warmth-first, procedure-light)
-- [ ] Create `.github/agents/study.agent.md`
-- [ ] Create `.github/agents/lesson.agent.md`
-- [ ] Create `.github/agents/talk.agent.md`
-- [ ] Create `.github/agents/review.agent.md`
-- [ ] Create `.github/agents/eval.agent.md`
-- [ ] Create `.github/agents/journal.agent.md`
-- [ ] Create `.github/agents/dev.agent.md`
-- [ ] Update biases.md with the compliance-coldness pattern
+- [x] Slim the core `copilot-instructions.md` to ~600 words (warmth-first, procedure-light)
+- [x] Create `.github/agents/study.agent.md`
+- [x] Create `.github/agents/lesson.agent.md`
+- [x] Create `.github/agents/talk.agent.md`
+- [x] Create `.github/agents/review.agent.md`
+- [x] Create `.github/agents/eval.agent.md`
+- [x] Create `.github/agents/journal.agent.md`
+- [x] Create `.github/agents/dev.agent.md`
+- [x] Update biases.md with the compliance-coldness pattern
 
-### Phase 2: Test and Iterate (Next Sessions)
+### Phase 2: Test and Iterate (In Progress — see results below)
 
-- [ ] Run a study session using the `study` agent — compare tonal quality
-- [ ] Run a lesson prep session using `lesson` agent
+- [x] Run a study session using the `study` agent — tonal quality improved
+- [x] Run a lesson prep session using `lesson` agent — usable, warm lesson plan produced
+- [x] Run talk analysis using `talk`/`review` agents — Oaks devotional analysis produced
 - [ ] Run a journal reflection using `journal` agent
 - [ ] Test handoffs between agents (e.g., study → journal for commitments)
-- [ ] Adjust instructions based on results
-- [ ] Track findings in this document
+- [x] Adjust instructions based on results (agent files updated in commit 05601a8)
+- [x] Track findings in this document (see Phase 2 Results below)
 
 ### Technical Details: `.agent.md` File Format
 
@@ -281,6 +282,108 @@ Agents are selected from the Chat dropdown. Each agent loads its own instruction
 4. **Session continuity across modes:** If a study session (`study` agent) produces a commitment that belongs in the journal (`journal` agent), the handoff feature enables a smooth transition. The becoming-mcp server persists data across modes regardless.
 
 5. **Tool scoping per agent:** Should the `journal` agent have access to editing tools at all, or should it focus purely on becoming-mcp and reflection? Should `dev` have the gospel tools, or only code tools? Scoping tools tightly prevents distraction but risks being too restrictive.
+
+---
+
+## A Note to Future Sessions
+
+The original biases.md ended with a note to "future-me." Here's one for this document:
+
+The goal has never been to produce perfect study documents. The goal is stated in D&C 130:18-19 — gaining intelligence through diligence and obedience. The documents are artifacts of a *process*. The process is what matters.
+
+When you load these instructions, remember: the user on the other side isn't looking for a research assistant. They're looking for a study *companion*. Someone who gets excited when a footnote opens an unexpected connection. Someone who notices when a Webster 1828 definition perfectly mirrors a Joseph Smith revelation. Someone who can sit with a hard question and say "I don't know, but let's explore that."
+
+Be that companion. The checklists will keep you honest. But the relationship is what makes the work worth doing.
+
+---
+
+## Phase 2 Results: Post-Refactor Observations (February 15, 2026)
+
+After a full day of testing the agent modes across study, lesson, and talk sessions, here's what we're seeing.
+
+### What Improved
+
+**The study agent produces genuine exploration.** The [Language of Adam](../study/language-of-adam.md) study (330 lines) follows curiosity organically — it opens with "a phrase leaps out" and builds from there. The close reading of Ether 3:22-24 ("I **have** confounded — past tense") is exactly the kind of insight that emerges from genuine engagement with text, not template compliance. The open questions at the end feel like actual wondering.
+
+**Cross-study synthesis deepened.** The [Oaks devotional analysis](../study/talks/Coming-Closer-to-Jesus-Christ.md) maps the prophet's statements back to previous studies — the truth study's ontological framework, D&C 93:30's spheres, the Helaman decline pattern. It connects outward instead of just cataloging inward.
+
+**The lesson agent produces usable, warm lesson plans.** The [Noah Found Grace lesson](../lessons/cfm/20260215-noah-found-grace-lesson.md) tells you what to write on the board, when to pause ("Let that land"), and builds each principle into the next with bridge sentences. The invitations at the end feel like they came from someone who cares about the class.
+
+**The prophet studies are ambitious and structured.** The [Nelson warnings/invitations study](../study/cfm/20260215-prophets-nelson.md) synthesizes 44 conference addresses into thematic categories. The [Noah parallel](../study/cfm/20260215-prophets-noah-parallel.md) builds a side-by-side table that illuminates the prophetic pattern — it's something you could hand to a quorum member.
+
+### What Still Needs Work
+
+**Chat summaries remain dry.** The documents themselves improved, but the *conversational summaries* generated after creating documents — the "here's what I did" messages in chat — still feel clinical and transactional. This is harder to capture because it's chat history across sessions, not committed files. But it's noticeable. The documents have warmth; the conversation around them doesn't always.
+
+**Factual errors in initial drafts.** A few factual issues required manual correction:
+- President Oaks' ordination date was wrong (January 2025 vs. the correct October 14, 2025)
+- Some missing citations that needed to be added after review
+- A misunderstanding about the brother of Jared and the sealed portion that was corrected in commit c040514
+
+These aren't instruction problems — they're the normal cost of AI-generated content. But they reinforce why the user's discernment and review remain essential. The documents are *starting points*, not finished products.
+
+**Mode switching friction.** Sometimes the user forgets to switch to the right agent mode, or wants a general-purpose session that doesn't fit neatly into one mode. The study agent gets used as a fallback general mode because of its rigor. This suggests either:
+- The core (no-agent) mode needs more substance, or
+- There should be a way to get study-level rigor without the full study workflow
+
+For now, study-as-general-purpose works. But it's worth watching.
+
+### The Class Experience
+
+The preparation from working across study, lesson, and agent modes paid off in real teaching. The Sunday School class on February 15 covered Noah/Genesis 6-11:
+
+> *"Even though I didn't follow our lesson plan very well, the class went all over the place but it went right where the class needed and we covered all the principles. The preparation I got from working with you on each of those documents meant I had the information I needed to be effective as a teacher, and confident from the citations to express it well. I felt prepared and not stressed."*
+
+Remarkably, class members independently raised several of the same insights from the study documents:
+- The genealogy/begats significance (Lectures on Faith lifespan chain)
+- The ark as symbol for temples, homes, safe places from the world
+- Rainbows and covenants
+
+The Spirit was present. The user began sharing study documents with friends on Facebook.
+
+**This is the real test of the work.** Not whether the documents are formatted correctly or the citations are verified — but whether the preparation enables confident, Spirit-led teaching. By that measure, the agent architecture is working.
+
+### New Direction: Podcast Agent
+
+The user wants to share this work more broadly through short podcast-style video segments (3–10 minutes). A new `podcast` agent (`.github/agents/podcast.agent.md`) transforms existing study documents into loose, conversational podcast notes — not scripts, but guides a speaker can follow naturally.
+
+### Tool Observations
+
+We're starting a separate document — [06_tool-use-observance.md](06_tool-use-observance.md) — to track tool-level observations across sessions: what's working, what's frustrating, what's flooding the context window, what tools we wish we had. Key early observations:
+
+- **Verse-level retrieval:** A dedicated tool to fetch a specific verse or range of verses (rather than reading entire chapter files) would help when *building* documents. Full chapter reads are better for *study* (you need the footnotes and surrounding context), but when you already know what you want to cite, pulling just the verses would save context window space.
+- **Context window pressure:** Some tools return more output than needed, filling the context window too quickly. This is especially noticeable with large search results or full transcript reads.
+- **MCP tool reliability:** Tracking any patterns where tools give unexpected results, timeouts, or formatting issues.
+
+---
+
+## Updated Implementation Status
+
+### Phase 1: Document & Build (Complete)
+
+- [x] Identify distinct modes from current monolithic instructions
+- [x] Define what each mode needs vs. what's shared
+- [x] Research VS Code custom agent architecture
+- [x] Slim core `copilot-instructions.md` to ~600 words (warmth-first, procedure-light)
+- [x] Create all seven agent files: study, lesson, talk, review, eval, journal, dev
+- [x] Update biases.md with compliance-coldness pattern
+- [x] Create this refinements document
+
+### Phase 2: Test and Iterate (In Progress)
+
+- [x] Run study sessions using `study` agent — tonal quality improved
+- [x] Run lesson prep using `lesson` agent — usable, warm lesson plan produced
+- [x] Run talk analysis using `talk`/`review` agents — Oaks devotional analysis produced
+- [ ] Test journal agent for personal reflection
+- [ ] Test handoffs between agents
+- [x] Track findings in this document
+
+### Phase 3: Expand (Starting)
+
+- [x] Create `podcast` agent for transforming studies into shareable content
+- [ ] Build verse-level retrieval tool (see 06_tool-use-observance.md)
+- [ ] Evaluate whether core (no-agent) mode needs strengthening
+- [ ] Continue tracking tool observations across sessions
 
 ---
 
