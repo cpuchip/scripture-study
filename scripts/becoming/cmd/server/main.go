@@ -128,30 +128,28 @@ func main() {
 		r.Mount("/api", api.Router(database, *scriptures))
 	})
 
-	// Serve frontend (embedded in production, Vite dev server in dev)
-	if !*dev {
-		distFS, err := fs.Sub(frontendFS, "dist")
-		if err != nil {
-			log.Fatalf("Failed to get frontend FS: %v", err)
-		}
-		fileServer := http.FileServer(http.FS(distFS))
-		r.Get("/*", func(w http.ResponseWriter, r *http.Request) {
-			// Try to serve the file; if not found, serve index.html (SPA routing)
-			path := r.URL.Path
-			f, err := distFS.Open(path[1:]) // strip leading /
-			if err != nil {
-				// Serve index.html for SPA routes
-				r.URL.Path = "/"
-			} else {
-				f.Close()
-			}
-			fileServer.ServeHTTP(w, r)
-		})
+	// Serve embedded frontend (SPA routing: serve index.html for unknown paths)
+	distFS, err := fs.Sub(frontendFS, "dist")
+	if err != nil {
+		log.Fatalf("Failed to get frontend FS: %v", err)
 	}
+	fileServer := http.FileServer(http.FS(distFS))
+	r.Get("/*", func(w http.ResponseWriter, r *http.Request) {
+		// Try to serve the file; if not found, serve index.html (SPA routing)
+		path := r.URL.Path
+		f, err := distFS.Open(path[1:]) // strip leading /
+		if err != nil {
+			// Serve index.html for SPA routes
+			r.URL.Path = "/"
+		} else {
+			f.Close()
+		}
+		fileServer.ServeHTTP(w, r)
+	})
 
 	log.Printf("Becoming server listening on %s", *addr)
 	if *dev {
-		log.Printf("Dev mode: API only (auto-login as user 1), frontend at http://localhost:5173")
+		log.Printf("Dev mode: auto-login as user 1 (no auth required)")
 	}
 
 	if useTLS {

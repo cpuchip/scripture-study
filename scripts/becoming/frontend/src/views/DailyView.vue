@@ -747,17 +747,17 @@ onUnmounted(() => {
                   <!-- Other schedule types: single circle -->
                   <template v-else>
                     <button
-                      v-if="scheduleIsDue(item) || isComplete(item)"
                       @click="isComplete(item) ? undoLog(item) : quickLog(item)"
                       class="group w-5 h-5 rounded-full border-2 flex items-center justify-center flex-shrink-0 transition-colors cursor-pointer"
                       :class="isComplete(item)
                         ? 'bg-green-500 border-green-500 text-white hover:bg-red-400 hover:border-red-400'
-                        : 'border-amber-400 hover:border-amber-500'"
+                        : scheduleIsDue(item)
+                          ? 'border-amber-400 hover:border-amber-500'
+                          : 'border-gray-300 border-dashed hover:border-amber-400'"
                     >
                       <span v-if="isComplete(item)" class="text-[10px] group-hover:hidden">✓</span>
                       <span v-if="isComplete(item)" class="text-[10px] hidden group-hover:inline">✕</span>
                     </button>
-                    <span v-else class="w-5 h-5 rounded-full border-2 border-gray-200 flex-shrink-0"></span>
                     <div class="min-w-0">
                       <div class="font-medium truncate">{{ item.practice_name }}
                         <span v-if="statusBadge(item)" class="text-[10px] px-1.5 py-0.5 rounded-full bg-gray-100 text-gray-500 whitespace-nowrap ml-1">{{ statusBadge(item) }}</span>

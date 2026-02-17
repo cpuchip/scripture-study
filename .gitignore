@@ -31,3 +31,5 @@ scripts/yt-mcp/yt-mcp.exe~
 
 # Stray log files
 becoming-mcp.log
+becoming.db*
+scripts/becoming/becoming.exe

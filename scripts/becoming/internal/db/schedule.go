@@ -69,56 +69,66 @@ func intervalDue(sched *ScheduleConfig, date string, lastLogDate string) Schedul
 		interval = 1
 	}
 
-	// Determine the reference point.
-	var ref time.Time
-	if lastLogDate != "" && sched.ShiftOnEarly {
-		// Shift mode: next due is relative to last completion.
-		ref = mustParseDate(lastLogDate)
-	} else if lastLogDate != "" {
-		// Fixed mode: next due is relative to last completion (same logic, keeps it simple).
-		ref = mustParseDate(lastLogDate)
-	} else if sched.AnchorDate != "" {
-		ref = mustParseDate(sched.AnchorDate)
-		// If anchor is in the future, not yet due.
-		if ref.After(d) {
+	// ── Shift-on-early mode: next due is relative to last completion ──
+	if sched.ShiftOnEarly && lastLogDate != "" {
+		ref := mustParseDate(lastLogDate)
+		nextDue := ref.AddDate(0, 0, interval)
+		if d.Before(nextDue) {
+			return ScheduleStatus{IsDue: false, NextDue: nextDue.Format("2006-01-02")}
+		}
+		daysOverdue := 0
+		if d.After(nextDue) {
+			daysOverdue = int(d.Sub(nextDue).Hours() / 24)
+		}
+		return ScheduleStatus{IsDue: true, NextDue: nextDue.Format("2006-01-02"), DaysOverdue: daysOverdue}
+	}
+
+	// ── Fixed mode: schedule stays anchored, early completion doesn't shift ──
+	if sched.AnchorDate != "" {
+		anchor := mustParseDate(sched.AnchorDate)
+		if anchor.After(d) {
+			// Anchor in the future — not yet due.
 			return ScheduleStatus{IsDue: false, NextDue: sched.AnchorDate}
 		}
-		// Check if today is a valid interval day from anchor.
-		daysSince := int(d.Sub(ref).Hours() / 24)
+		daysSince := int(d.Sub(anchor).Hours() / 24)
+		periodIndex := daysSince / interval
+		currentDue := anchor.AddDate(0, 0, periodIndex*interval)
+		nextDue := anchor.AddDate(0, 0, (periodIndex+1)*interval)
+
+		// If the last log falls within the current period, it's already done.
+		if lastLogDate != "" {
+			lastLog := mustParseDate(lastLogDate)
+			if !lastLog.Before(currentDue) {
+				return ScheduleStatus{IsDue: false, NextDue: nextDue.Format("2006-01-02")}
+			}
+		}
+
 		isDue := daysSince%interval == 0
-		nextDue := ref.AddDate(0, 0, ((daysSince/interval)+1)*interval)
+		daysOverdue := 0
 		if isDue {
-			nextDue = ref.AddDate(0, 0, ((daysSince/interval)+1)*interval)
-		} else {
-			nextDue = ref.AddDate(0, 0, ((daysSince/interval)+1)*interval)
+			return ScheduleStatus{IsDue: true, NextDue: nextDue.Format("2006-01-02")}
 		}
-		return ScheduleStatus{
-			IsDue:   isDue,
-			NextDue: nextDue.Format("2006-01-02"),
+		// Between periods and not yet completed — overdue since currentDue.
+		daysOverdue = int(d.Sub(currentDue).Hours() / 24)
+		return ScheduleStatus{IsDue: true, NextDue: nextDue.Format("2006-01-02"), DaysOverdue: daysOverdue}
+	}
+
+	// ── No anchor: fall back to last log or treat as due today ──
+	if lastLogDate != "" {
+		ref := mustParseDate(lastLogDate)
+		nextDue := ref.AddDate(0, 0, interval)
+		if d.Before(nextDue) {
+			return ScheduleStatus{IsDue: false, NextDue: nextDue.Format("2006-01-02")}
 		}
-	} else {
-		// No anchor, no logs — due today.
-		return ScheduleStatus{IsDue: true, NextDue: d.AddDate(0, 0, interval).Format("2006-01-02")}
+		daysOverdue := 0
+		if d.After(nextDue) {
+			daysOverdue = int(d.Sub(nextDue).Hours() / 24)
+		}
+		return ScheduleStatus{IsDue: true, NextDue: nextDue.Format("2006-01-02"), DaysOverdue: daysOverdue}
 	}
 
-	// With a reference date (last log), compute next due.
-	nextDue := ref.AddDate(0, 0, interval)
-	daysOverdue := 0
-
-	if d.Before(nextDue) {
-		// Not yet due.
-		return ScheduleStatus{IsDue: false, NextDue: nextDue.Format("2006-01-02")}
-	}
-
-	// Due or overdue.
-	if d.After(nextDue) {
-		daysOverdue = int(d.Sub(nextDue).Hours() / 24)
-	}
-	return ScheduleStatus{
-		IsDue:       true,
-		NextDue:     nextDue.Format("2006-01-02"),
-		DaysOverdue: daysOverdue,
-	}
+	// No anchor, no logs — due today.
+	return ScheduleStatus{IsDue: true, NextDue: d.AddDate(0, 0, interval).Format("2006-01-02")}
 }
 
 // dailySlotsDue: multiple completions per day (morning/lunch/night).
