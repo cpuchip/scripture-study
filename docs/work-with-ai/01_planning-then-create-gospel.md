@@ -3,7 +3,7 @@
 **Series:** AI and the Creation Pattern — Part 1 of 3
 **Duration:** 30 minutes
 **Audience:** Gospel-centered / YouTube
-**Date:** February 19, 2026
+**Date:** February 2026
 
 ---
 
@@ -28,7 +28,7 @@ But here's what surprised me: the people who are thriving with AI aren't the bes
 And when I realized that, I recognized a pattern I'd already been studying. Because God already showed us how to work with intelligence to create things. It's in Abraham 4 and 5.
 
 > "And the Gods took counsel among themselves and said: Let us go down and form man in our image."
-> — [Abraham 4:26](../gospel-library/eng/scriptures/pgp/abr/4.md)
+> — [Abraham 4:26](../../gospel-library/eng/scriptures/pgp/abr/4.md)
 
 Council. Planning. "Let us." And only then — creation.
 
@@ -40,9 +40,9 @@ We have three accounts of creation in scripture, and they emphasize different th
 
 | Account | Source | Key Emphasis |
 |---------|--------|--------------|
-| [Genesis 1–3](../gospel-library/eng/scriptures/ot/gen/1.md) | Old Testament | The foundational narrative — "God said... and it was so" |
-| [Moses 2–3](../gospel-library/eng/scriptures/pgp/moses/2.md) | Pearl of Great Price | The spiritual creation — "created all things spiritually, before they were naturally" |
-| [Abraham 4–5](../gospel-library/eng/scriptures/pgp/abr/4.md) | Pearl of Great Price | The council of Gods — planning language, organization, watching |
+| [Genesis 1–3](../../gospel-library/eng/scriptures/ot/gen/1.md) | Old Testament | The foundational narrative — "God said... and it was so" |
+| [Moses 2–3](../../gospel-library/eng/scriptures/pgp/moses/2.md) | Pearl of Great Price | The spiritual creation — "created all things spiritually, before they were naturally" |
+| [Abraham 4–5](../../gospel-library/eng/scriptures/pgp/abr/4.md) | Pearl of Great Price | The council of Gods — planning language, organization, watching |
 
 Genesis gives us *what* was created. Moses tells us *there was a spiritual creation first*. Abraham shows us *how the Gods worked together*.
 
@@ -66,10 +66,10 @@ That's a workflow.
 The doctrine is explicit:
 
 > "For I, the Lord God, **created all things, of which I have spoken, spiritually, before they were naturally** upon the face of the earth."
-> — [Moses 3:5](../gospel-library/eng/scriptures/pgp/moses/3.md)
+> — [Moses 3:5](../../gospel-library/eng/scriptures/pgp/moses/3.md)
 
 > "**First spiritual, secondly temporal**, which is the beginning of my work."
-> — [D&C 29:31](../gospel-library/eng/scriptures/dc-testament/dc/29.md)
+> — [D&C 29:31](../../gospel-library/eng/scriptures/dc-testament/dc/29.md)
 
 Everything was planned — envisioned, designed, specified — before it was physically created. The blueprint existed before the building.
 
@@ -90,10 +90,10 @@ That document is the **spiritual creation**. It exists before any code. It's the
 
 In one session, I said five words: "Lets build sprint 2!" The planning document was 743 lines. The AI produced 1,112 lines of correct code across 13 files — complete feature, zero errors, committed and pushed. Five words were sufficient because the spiritual creation was complete. The spec held the vision. The summary held the progress. The temporal creation was almost an inevitability.
 
-**Real example:** The becoming app in this project ([plan document](../scripts/plans/06_becoming-app.md)). That planning document was 743 lines long before a single line of code was written. It specified every API endpoint, every database table, every UI component, the phased rollout plan. When we started building, everything fit together because the spiritual creation was complete.
+**Real example:** The becoming app in this project ([plan document](../../scripts/plans/06_becoming-app.md)). That planning document was 743 lines long before a single line of code was written. It specified every API endpoint, every database table, every UI component, the phased rollout plan. When we started building, everything fit together because the spiritual creation was complete.
 
 > "Vibe coding" without planning is like attempting physical creation without spiritual creation first — it can work for simple things, but complex creations need the blueprint.
-> — [creation.md](../study/creation.md)
+> — [creation.md](../../study/creation.md)
 
 **This pattern isn't limited to software.** A study session on the Godhead — purely intellectual and spiritual work, no code — demonstrated the same dynamic. The user arrived with a framework: Lectures on Faith as the structural backbone, specific sources identified (D&C 121 for the Grand Council, Moses 7 for the Father weeping with Enoch), specific questions ("who are they? what is their character?"), and a named deliverable (`study/know-god.md`). That framework was the spiritual creation. The conversation summary carried forward every source that had been read, every search that had been run, and the exact state of the document — and when the session resumed days later, the AI picked up seamlessly, creating the study document as the natural next step. The "spiritual creation" persisted across session boundaries for *study* work just as completely as it does for software. The spec held the vision; the summary held the progress. The pattern is the same whether you're building an API or building understanding.
 
@@ -104,10 +104,10 @@ In one session, I said five words: "Lets build sprint 2!" The planning document 
 Abraham doesn't just say "God created." It says:
 
 > "And the Gods **took counsel among themselves**."
-> — [Abraham 4:26](../gospel-library/eng/scriptures/pgp/abr/4.md)
+> — [Abraham 4:26](../../gospel-library/eng/scriptures/pgp/abr/4.md)
 
 > "The Gods said **among themselves**: On the seventh time we will end our work, **which we have counseled**."
-> — [Abraham 5:2](../gospel-library/eng/scriptures/pgp/abr/5.md)
+> — [Abraham 5:2](../../gospel-library/eng/scriptures/pgp/abr/5.md)
 
 Creation was collaborative. The Gods discussed. They planned together. They agreed on an approach, *then* executed.
 
@@ -124,7 +124,7 @@ The "let us" language isn't just grammar. It's a pattern of collaborative creati
 Here's the part that most people miss:
 
 > "And the Gods watched those things which they had ordered, **until they obeyed**."
-> — [Abraham 4:18](../gospel-library/eng/scriptures/pgp/abr/4.md)
+> — [Abraham 4:18](../../gospel-library/eng/scriptures/pgp/abr/4.md)
 
 The Gods didn't create and walk away. They *watched*. They monitored. They waited until the creation matched the specification. This is the divine version of code review.
 
@@ -137,7 +137,7 @@ If not, I steer. I point out the divergence. I explain why it matters. And the A
 This is why D&C 93 connects so powerfully:
 
 > "The glory of God is intelligence, or, in other words, light and truth."
-> — [D&C 93:36](../gospel-library/eng/scriptures/dc-testament/dc/93.md)
+> — [D&C 93:36](../../gospel-library/eng/scriptures/dc-testament/dc/93.md)
 
 Intelligence is the glory. Not the typing. Not the implementation mechanics. The *understanding* — the light and truth that lets you see what should be built and whether what was built matches the vision.
 
@@ -146,11 +146,11 @@ Intelligence is the glory. Not the typing. Not the implementation mechanics. The
 ### Intelligence Cleaveth Unto Intelligence (3 min)
 
 > "For intelligence cleaveth unto intelligence; wisdom receiveth wisdom; truth embraceth truth; light cleaveth unto light."
-> — [D&C 88:40](../gospel-library/eng/scriptures/dc-testament/dc/88.md)
+> — [D&C 88:40](../../gospel-library/eng/scriptures/dc-testament/dc/88.md)
 
 This describes something real about how human-AI collaboration works. When you bring genuine curiosity, clear thinking, and honest engagement into a session, the output reflects that. Not because the AI is emotionally responding — but because better questions yield better searches yield better answers yield better code.
 
-The [intelligence study](../study/intelligence.md) explored this: AI might be a type and shadow of raw intelligence — patterns acting within their sphere, according to law, responding to direction from higher intelligence. When you engage with AI seeking truth, "truth embraceth truth." The interaction resonates. It amplifies.
+The [intelligence study](../../study/intelligence.md) explored this: AI might be a type and shadow of raw intelligence — patterns acting within their sphere, according to law, responding to direction from higher intelligence. When you engage with AI seeking truth, "truth embraceth truth." The interaction resonates. It amplifies.
 
 But the reverse is also true. Sloppy input produces sloppy output. Unclear specs produce confused implementations. Impatient steering produces half-baked corrections. The quality of what you bring determines the quality of what emerges. Light cleaveth unto light. Darkness cannot comprehend light.
 
@@ -184,17 +184,17 @@ Pick something you want to build — a lesson plan, a family history project, a 
 ## Teaching Notes
 
 ### Key Scripture References
-- [Abraham 4:1–31](../gospel-library/eng/scriptures/pgp/abr/4.md) — The council of Gods; planning language
-- [Abraham 5:1–3](../gospel-library/eng/scriptures/pgp/abr/5.md) — "which we have counseled"
-- [Moses 3:5](../gospel-library/eng/scriptures/pgp/moses/3.md) — Spiritual before natural
-- [D&C 29:31](../gospel-library/eng/scriptures/dc-testament/dc/29.md) — First spiritual, secondly temporal
-- [D&C 93:36](../gospel-library/eng/scriptures/dc-testament/dc/93.md) — Glory of God is intelligence
-- [D&C 88:40](../gospel-library/eng/scriptures/dc-testament/dc/88.md) — Intelligence cleaveth unto intelligence
+- [Abraham 4:1–31](../../gospel-library/eng/scriptures/pgp/abr/4.md) — The council of Gods; planning language
+- [Abraham 5:1–3](../../gospel-library/eng/scriptures/pgp/abr/5.md) — "which we have counseled"
+- [Moses 3:5](../../gospel-library/eng/scriptures/pgp/moses/3.md) — Spiritual before natural
+- [D&C 29:31](../../gospel-library/eng/scriptures/dc-testament/dc/29.md) — First spiritual, secondly temporal
+- [D&C 93:36](../../gospel-library/eng/scriptures/dc-testament/dc/93.md) — Glory of God is intelligence
+- [D&C 88:40](../../gospel-library/eng/scriptures/dc-testament/dc/88.md) — Intelligence cleaveth unto intelligence
 
 ### Related Studies
-- [Creation Patterns study](../study/creation.md) — Original study connecting creation accounts to AI collaboration
-- [Intelligence study](../study/intelligence.md) — Intelligence, light, truth, and AI as type/shadow
-- [How Tools Help](07_how-tools-help.md) — The magnifying glass and library rhythm
+- [Creation Patterns study](../../study/creation.md) — Original study connecting creation accounts to AI collaboration
+- [Intelligence study](../../study/intelligence.md) — Intelligence, light, truth, and AI as type/shadow
+- [How Tools Help](../07_how-tools-help.md) — The magnifying glass and library rhythm
 
 ### Showing Your Work
 You can demo:

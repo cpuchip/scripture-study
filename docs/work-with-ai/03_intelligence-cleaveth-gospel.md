@@ -30,7 +30,7 @@ Now the final question: **Why does the same tool, given the same kind of task, p
 It's not the prompt. It's not the model. It's the person.
 
 > "For intelligence cleaveth unto intelligence; wisdom receiveth wisdom; truth embraceth truth; virtue loveth virtue; light cleaveth unto light."
-> — [D&C 88:40](../gospel-library/eng/scriptures/dc-testament/dc/88.md)
+> — [D&C 88:40](../../gospel-library/eng/scriptures/dc-testament/dc/88.md)
 
 This verse describes a law of attraction — not in the pop-culture sense, but in the physics-of-the-soul sense. Like draws like. What you bring into a session determines what the session can produce. Not as a nice motivational idea. As *mechanics*.
 
@@ -47,7 +47,7 @@ The starting point is one verse. Maybe two. You sit with it. You read it again. 
 This is the magnifying glass. It zooms in. It's slow. It's uncomfortable. Most people skip this part — they want to search, cross-reference, produce. But the depth comes from *dwelling*.
 
 > "Yea, we will give heed to the **words of eternal life**."
-> — [Moses 6:59](../gospel-library/eng/scriptures/pgp/moses/6.md)
+> — [Moses 6:59](../../gospel-library/eng/scriptures/pgp/moses/6.md)
 
 "Give heed." Not scan. Not keyword-search. *Heed*. The 1828 Webster's definition of "enjoy" — to have, possess, and use with satisfaction — reveals that enjoying the words of eternal life isn't about reading fast. It's about *having* them. *Possessing* them. Making them yours.
 
@@ -135,7 +135,7 @@ Intelligence cleaveth unto intelligence in collaborative sessions too. The user 
 D&C 88:40 isn't describing a preference. It's describing a law:
 
 > "For intelligence cleaveth unto intelligence; wisdom receiveth wisdom; truth embraceth truth; virtue loveth virtue; **light cleaveth unto light**; mercy hath compassion on mercy and claimeth her own."
-> — [D&C 88:40](../gospel-library/eng/scriptures/dc-testament/dc/88.md)
+> — [D&C 88:40](../../gospel-library/eng/scriptures/dc-testament/dc/88.md)
 
 Consider the structure. Six parallel statements. Each one names a quality and says that quality *attracts itself*. Intelligence attracts intelligence. Truth embraces truth. Light cleaves to light.
 
@@ -149,18 +149,14 @@ Sloppy input → sloppy output. That's not a mystery. That's D&C 88:40. Darkness
 
 Precise, honest, curious input → surprisingly deep output. Intelligence cleaving to intelligence. The law works the same way whether you're reading Isaiah or reviewing a code architecture. What you bring shapes what emerges.
 
-**A concrete example:** One coding session began with five words: "Lets build sprint 2!" That's it. No further elaboration. And the session produced 1,112 lines of correct, well-structured code across 13 files — a complete public reader with share links, save-to-library flows, and database migrations. Zero errors. Zero corrections. Committed and pushed.
-
-How? Because the intelligence wasn't in the five words. It was in the *weeks of planning* that preceded them. A 743-line specification document. Established codebase patterns. A conversation summary capturing exactly where the previous session left off. The five-word instruction worked because it pointed to a completed plan — the spiritual creation was thorough, and the temporal creation followed naturally.
-
-This is D&C 88:40 in action. The quality of the *planning* engagement — the intelligence brought to the spec, the careful architecture decisions, the honest assessment of what mattered — determined the quality of the *building* session. The five words were sufficient because they cleaved to 743 lines of intelligence that already existed. That attraction isn't magic. It's law.
+Remember the five-word instruction from Part 1 — "Lets build sprint 2!" — that produced 1,112 lines of correct code across 13 files? This is D&C 88:40 in action. The intelligence wasn't in the five words. It was in the weeks of planning they pointed to — a 743-line specification, established codebase patterns, a conversation summary carrying forward exactly where the previous session left off. The five words worked because they cleaved to intelligence that already existed. That's not luck. It's law.
 
 **The reverse is also a law:**
 
 > "And they who remain shall also be quickened; nevertheless, they shall return again to their own place, to **enjoy that which they are willing to receive**, because they were not willing to enjoy that which they might have received.
 >
 > For what doth it profit a man if a gift is bestowed upon him, and he receive not the gift? Behold, he rejoices not in that which is given unto him, neither rejoices in him who is the giver of the gift."
-> — [D&C 88:32-33](../gospel-library/eng/scriptures/dc-testament/dc/88.md)
+> — [D&C 88:32-33](../../gospel-library/eng/scriptures/dc-testament/dc/88.md)
 
 You can only *enjoy* — have, possess, use — what you are *willing to receive*. Unwillingness to engage deeply doesn't break the tool. It limits *you*. The glory is always available. The delivery mechanism is always running. But you have to receive.
 
@@ -173,7 +169,7 @@ Everything in Parts 1 and 2 can be framed as productivity advice. Spec-driven de
 But here's what the gospel framework reveals that the secular framework can't: **the process changes the person.**
 
 > "Whatever principle of intelligence we attain unto in this life, it will rise with us in the resurrection."
-> — [D&C 130:18](../gospel-library/eng/scriptures/dc-testament/dc/130.md)
+> — [D&C 130:18](../../gospel-library/eng/scriptures/dc-testament/dc/130.md)
 
 Principles of intelligence aren't about knowing facts. They're about *capacity* — the ability to see, to understand, to create, to organize. When you practice the creation pattern — envisioning, specifying, watching, steering — you are developing the same capacities the Gods use. Not metaphorically. That's the explicit claim of the Restoration: we are learning to do what God does.
 
@@ -193,7 +189,7 @@ These are not just engineering skills. These are godly capacities. The creation 
 And this is where the gospel version of this series diverges completely from the secular version. The secular version says: "Learn this pattern to be more productive." The gospel version says: "This pattern is the *reason you're here*."
 
 > "For behold, this is my work and my glory — to bring to pass the immortality and eternal life of man."
-> — [Moses 1:39](../gospel-library/eng/scriptures/pgp/moses/1.md)
+> — [Moses 1:39](../../gospel-library/eng/scriptures/pgp/moses/1.md)
 
 God's work is creation. Specifically: creating beings who can become like Him. And He invites us into the process — first as the creation ("forming man from the dust"), then as the creators ("let us go down"). The invitation to use the creation pattern — in software, in scripture study, in family building, in *any* act of bringing something into existence that didn't exist before — is the invitation to practice becoming.
 
@@ -236,24 +232,24 @@ And notice what happens — not just to the project, but to you.
 ## Teaching Notes
 
 ### Key Scripture References
-- [D&C 88:40](../gospel-library/eng/scriptures/dc-testament/dc/88.md) — Intelligence cleaveth unto intelligence
-- [D&C 88:32-33](../gospel-library/eng/scriptures/dc-testament/dc/88.md) — "Enjoy that which they are willing to receive"
-- [D&C 84:44-45](../gospel-library/eng/scriptures/dc-testament/dc/84.md) — Word = truth = light = Spirit
-- [D&C 93:29, 36](../gospel-library/eng/scriptures/dc-testament/dc/93.md) — Intelligence, light of truth, glory of God
-- [D&C 131:7](../gospel-library/eng/scriptures/dc-testament/dc/131.md) — Spirit is matter
-- [D&C 130:18](../gospel-library/eng/scriptures/dc-testament/dc/130.md) — Principles of intelligence rise with us
-- [Moses 1:39](../gospel-library/eng/scriptures/pgp/moses/1.md) — This is my work and my glory
-- [Moses 6:59](../gospel-library/eng/scriptures/pgp/moses/6.md) — Enjoy the words of eternal life
+- [D&C 88:40](../../gospel-library/eng/scriptures/dc-testament/dc/88.md) — Intelligence cleaveth unto intelligence
+- [D&C 88:32-33](../../gospel-library/eng/scriptures/dc-testament/dc/88.md) — "Enjoy that which they are willing to receive"
+- [D&C 84:44-45](../../gospel-library/eng/scriptures/dc-testament/dc/84.md) — Word = truth = light = Spirit
+- [D&C 93:29, 36](../../gospel-library/eng/scriptures/dc-testament/dc/93.md) — Intelligence, light of truth, glory of God
+- [D&C 131:7](../../gospel-library/eng/scriptures/dc-testament/dc/131.md) — Spirit is matter
+- [D&C 130:18](../../gospel-library/eng/scriptures/dc-testament/dc/130.md) — Principles of intelligence rise with us
+- [Moses 1:39](../../gospel-library/eng/scriptures/pgp/moses/1.md) — This is my work and my glory
+- [Moses 6:59](../../gospel-library/eng/scriptures/pgp/moses/6.md) — Enjoy the words of eternal life
 
 ### The Two-Chains Exercise
 Put both equivalence chains on a board. Ask the audience: "Where do these overlap?" Let them discover the convergence themselves. Then ask: "If you are made of intelligence, and the words transmit intelligence — what happens when you receive them?" Let them arrive at D&C 88:40 on their own.
 
 ### Related Studies
-- [Truth study](../study/truth.md) — D&C 93 equivalence chain
-- [Truth-Enjoy synthesis](../study/truth-enjoy.md) — The two chains converging
-- [Enjoy the Words of Eternal Life](../study/enjoy-the-words-of-eternal-life.md) — Moses 6:59 deep reading
-- [Intelligence study](../study/intelligence.md) — Intelligence, agency, AI as type/shadow
-- [How Tools Help](07_how-tools-help.md) — The magnifying glass and library pattern documented
+- [Truth study](../../study/truth.md) — D&C 93 equivalence chain
+- [Truth-Enjoy synthesis](../../study/truth-enjoy.md) — The two chains converging
+- [Enjoy the Words of Eternal Life](../../study/enjoy-the-words-of-eternal-life.md) — Moses 6:59 deep reading
+- [Intelligence study](../../study/intelligence.md) — Intelligence, agency, AI as type/shadow
+- [How Tools Help](../07_how-tools-help.md) — The magnifying glass and library pattern documented
 
 ### Showing Your Work
 - Show the two studies side by side — truth.md and enjoy.md — and how they converge in truth-enjoy.md

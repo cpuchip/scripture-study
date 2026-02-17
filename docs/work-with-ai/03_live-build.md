@@ -67,7 +67,7 @@ Open a new file: `docs/plan.md`. Ask the audience:
 - What's the data model? (if applicable)
 - What edge cases should we handle?
 
-Write their answers into the doc as you go. This demonstrates Phase 2 from Part 1 — the "spiritual creation."
+Write their answers into the doc as you go. This demonstrates Phase 2 from Part 1 — the blueprint.
 
 **Example spec (if using the CSV→JSON CLI):**
 
@@ -173,7 +173,7 @@ Pull the audience back from the code. Connect what they saw to the framework:
 | Part | Core Skill | Mantra |
 |------|-----------|--------|
 | 1. Plan | Thinking clearly | Spec before code |
-| 2. Review | Reading critically | Watch until it obeys (your spec) |
+| 2. Review | Reading critically | Verify against spec |
 | 3. Build | Applying both live | The pattern is the product |
 
 **What to do next:**

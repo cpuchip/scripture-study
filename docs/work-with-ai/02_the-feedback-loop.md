@@ -70,7 +70,7 @@ Don't execute AI-generated code blindly. Read it first. You're looking for:
 - **Does it match the spec?** Compare the implementation to your planning doc. Every function should correspond to something in the plan.
 - **Does it fit the existing codebase?** Look at naming conventions, error handling patterns, file organization. Does it follow what's already there?
 - **Does it make reasonable assumptions?** The AI will fill gaps in your spec with assumptions. Are those assumptions correct?
-- **Was the methodology sound?** A comprehensive-looking result can mask an incomplete process. In one study session, the AI produced a thorough, well-sourced document — but had only used keyword search, never semantic search. The output *looked* complete, but an entire class of relevant scriptures was missing because the wrong search tool was used. Reviewing *how* something was produced is as important as reviewing *what* was produced.
+- **Was the methodology sound?** A comprehensive-looking result can mask an incomplete process. In one research session, the AI produced a thorough, well-sourced document — but had only used keyword search, never semantic search. The output *looked* complete, but an entire class of relevant results was missing because the wrong search tool was used. Reviewing *how* something was produced is as important as reviewing *what* was produced.
 
 > Treat the AI's output as a *pull request*, not a *deployment*.
 
@@ -115,19 +115,19 @@ After the AI corrects, check:
 
 This is where working in small increments pays off. If you asked for one function and it's wrong, the blast radius is small. If you asked for 500 lines and something's off, finding the problem is much harder.
 
-#### Real Example: The Verse Range Bug
+#### Real Example: The Range Parsing Bug
 
-Here's a real example from my own work. I built an MCP server — a tool that lets an AI fetch scripture text from a local database. I had a function called `gospel_get` that retrieves specific verses.
+Here's a real example from my own work. I built an MCP server — a tool that lets an AI fetch structured content from a local database. I had a function called `content_get` that retrieves specific entries by ID.
 
-**The spec said:** "Accept verse ranges like `D&C 93:24-30` and return all verses in the range."
+**The spec said:** "Accept entry ranges like `section-93:24-30` and return all entries in the range."
 
-**What the AI built:** A `parseReference` function that extracted the book, chapter, and verse number. It worked perfectly for single verses. But when I passed `D&C 93:24-30`, it only returned verse 24. It parsed `24-30` and took just the first number.
+**What the AI built:** A `parseReference` function that extracted the section and entry number. It worked perfectly for single entries. But when I passed `section-93:24-30`, it only returned entry 24. It parsed `24-30` and took just the first number.
 
-**How I found it:** I used the tool. I asked for `D&C 93:24-30` and got one verse back. The spec said I should get seven. That tells me exactly what to look for.
+**How I found it:** I used the tool. I asked for `section-93:24-30` and got one entry back. The spec said I should get seven. That tells me exactly what to look for.
 
-**The correction:** "The `parseReference` function needs to split the verse portion on `-` to extract a start and end verse. Add an `EndVerse` field. Then `getScriptureRange` should query `WHERE verse >= ? AND verse <= ?` and return all matching verses."
+**The correction:** "The `parseReference` function needs to split the entry portion on `-` to extract a start and end entry. Add an `EndEntry` field. Then `getEntryRange` should query `WHERE entry_id >= ? AND entry_id <= ?` and return all matching entries."
 
-**After the fix:** `D&C 93:24-30` returns all seven verses. But I also tested `D&C 93:24` (single verse, no range) to make sure the fix didn't break the simple case.
+**After the fix:** `section-93:24-30` returns all seven entries. But I also tested `section-93:24` (single entry, no range) to make sure the fix didn't break the simple case.
 
 **The pattern:** Use → discover the gap → diagnose (spec vs. implementation) → give a specific correction → verify the fix → test adjacent cases.
 
@@ -183,7 +183,7 @@ One concrete example communicates more than ten paragraphs of description.
 #### Strategy 4: Review Your Tool Selection
 Sometimes the problem isn't the AI's logic — it's the *tools* being used. If a search returns zero results, the instinct should be "try a different search tool" before "there's nothing to find."
 
-**Real example — tool familiarity bias:** In a scripture study session, the AI ran two conceptual queries ("light of Christ Holy Ghost difference" and "light of Christ conscience every man") through a keyword search engine. Both returned zero results. Instead of switching to the semantic vector search tool — which was available and designed for exactly this kind of conceptual query — the AI fell back to direct file reads. When the user later asked "did you use gospel-vec?", four semantic searches immediately found scriptures the keyword search couldn't: 2 Peter 1:4 ("partakers of the divine nature"), Psalm 103:13-14 ("he knoweth our frame"), D&C 132:24, 1 John 5:20. None were obscure. The tool was wrong, not the query.
+**Real example — tool familiarity bias:** In a research session, the AI ran two conceptual queries through a keyword search engine. Both returned zero results. Instead of switching to the semantic vector search tool — which was available and designed for exactly this kind of conceptual query — the AI fell back to direct file reads. When the user asked "did you try the vector search?", semantic searches immediately found relevant documents the keyword search had missed entirely. None were obscure. The tool was wrong, not the query.
 
 The principle: AI tends toward familiar tools. Zero results should trigger a tool-selection review — not capitulation.
 
@@ -194,15 +194,15 @@ Bring your spec, bring the lessons learned, leave the failed attempts behind.
 
 #### Real Example: Cross-Reference Scoping
 
-Another real example from the same tool. My scripture database stores cross-references — footnotes that link one verse to another. When I asked for cross-references for a specific verse, I was getting cross-references for the *entire chapter*.
+Another real example from the same tool. My content database stores cross-references — links connecting one entry to related entries. When I asked for cross-references for a specific entry, I was getting cross-references for the *entire section*.
 
-**Diagnosis:** The function was running its regex on the entire footnotes section of the chapter, ignoring which verse each footnote belonged to. Each footnote had an anchor like `<a id="fn-9a">` where `9` is the verse number, but the code didn't filter by that.
+**Diagnosis:** The function was running its regex on the entire references block, ignoring which entry each reference belonged to. Each reference had an anchor like `<a id="fn-9a">` where `9` is the entry number, but the code didn't filter by that.
 
-**First correction:** "Only extract cross-references for the requested verse by checking the anchor ID against the verse number."
+**First correction:** "Only extract cross-references for the requested entry by checking the anchor ID against the entry number."
 
-**The fix worked — but revealed a second problem.** Now the cross-references were correct per verse, but the *index* (a pre-built database) still had the old, chapter-wide cross-references. The fix only worked for real-time parsing, not for indexed data.
+**The fix worked — but revealed a second problem.** Now the cross-references were correct per entry, but the *index* (a pre-built database) still had the old, section-wide cross-references. The fix only worked for real-time parsing, not for indexed data.
 
-**Second correction:** "This change requires re-indexing. The indexer needs the same verse-scoping logic applied at index time."
+**Second correction:** "This change requires re-indexing. The indexer needs the same entry-scoping logic applied at index time."
 
 **The lesson:** Fixing a bug can reveal a deeper architectural issue. The first fix was correct but incomplete. Watching the behavior after the fix — *verifying* — revealed what else needed to change. You can't design this away. You discover it by using the tool and paying attention.
 

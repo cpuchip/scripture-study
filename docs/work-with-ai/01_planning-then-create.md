@@ -3,7 +3,7 @@
 **Series:** Working with AI — Part 1 of 3
 **Duration:** 30 minutes
 **Audience:** Software engineers adopting AI-assisted development (VS Code + GitHub Copilot / Cursor)
-**Date:** February 19, 2026
+**Date:** February 2026
 
 ---
 
@@ -60,9 +60,9 @@ The pattern that works consistently — whether you're building a personal proje
 
 Write this down. Even 5 bullet points. The act of writing forces clarity.
 
-**This works beyond code.** In a scripture study session on the Godhead, the user's opening message functioned as the spec — not a formal doc, but a clearly communicated framework: Lectures on Faith as the structural backbone, specific sources already identified (D&C 121, Moses 7, John 17), specific questions ("who are they? what is their character?"), and a named output file (`study/know-god.md`). That framework gave the study architectural coherence from line one. Without it, the result would have been a loose collection of scriptures. With it, the Lectures on Faith's six character traits and six attributes provided an organizing skeleton that shaped every section. The "spiritual creation" doesn't have to be a formal document — a clearly communicated framework IS the spec.
+**This works beyond code.** In a research session, the opening message functioned as the spec — not a formal doc, but a clearly communicated framework: a feature comparison matrix as the structural backbone, specific data sources identified (three competitor products, internal product docs, recent customer feedback), specific questions ("where are we ahead? where are we behind? what should we prioritize?"), and a named output file (`reports/competitor-analysis.md`). That framework gave the analysis coherence from line one. Without it, the result would have been a loose collection of observations. With it, the feature matrix provided an organizing skeleton that shaped every section. The blueprint doesn't have to be a formal document — a clearly communicated framework IS the spec.
 
-#### Phase 2: Specify (The "Spiritual Creation")
+#### Phase 2: Specify (The Blueprint)
 *This is where the AI becomes incredibly powerful — as a planning partner.*
 
 Create a planning document. Not code. A *spec*. Use the AI to help you think through:
@@ -113,7 +113,7 @@ This document was 743 lines long before a single line of code was written. It sp
 
 **The result:** When we said "implement Phase 1," the AI had full context. It knew the data model, the tech stack, the API surface, and how the current phase fit into the larger plan. The code it produced was architecturally coherent from the start.
 
-**How far does this go?** In one session, the instruction was five words: "Lets build sprint 2!" That's it. The spec already existed. The AI produced 1,112 lines of correct code across 13 files — a complete public reader with short links, share modals, save-to-library flows, and database migrations. TypeScript type-checked clean. Go compiled clean. Zero errors. Zero corrections. Committed and pushed in a single session. That's the payoff of the spiritual creation. Five words worked because 743 lines of planning preceded them.
+**How far does this go?** In one session, the instruction was five words: "Lets build sprint 2!" That's it. The spec already existed. The AI produced 1,112 lines of correct code across 13 files — a complete public reader with short links, share modals, save-to-library flows, and database migrations. TypeScript type-checked clean. Go compiled clean. Zero errors. Zero corrections. Committed and pushed in a single session. That's the payoff of the blueprint. Five words worked because 743 lines of planning preceded them.
 
 #### Phase 3: Build (The "Physical Creation")
 *Now the AI writes code. But you already have the blueprint.*
@@ -180,10 +180,10 @@ The spec is a living document. When you make implementation decisions that chang
 **5. Conversation summaries are your persistence layer.**
 When a session ends mid-project, the conversation summary captures exactly where you are — which files exist, what's been modified, what remains. The next session picks up precisely where the last one left off. The spec says *what to build*. The summary says *where you are in building it*. Together, they make multi-session projects seamless. I've had sessions start with the AI's first action being the exact next item on the todo list — zero re-orientation, zero wasted effort — because the summary carried the full state forward.
 
-**5. Work in small, verifiable increments.**
+**6. Work in small, verifiable increments.**
 Don't ask for 500 lines at once. Ask for one function, verify it, then move to the next. The spec tells you the order.
 
-**6. Treat the AI's output as a draft, not a delivery.**
+**7. Treat the AI's output as a draft, not a delivery.**
 Review everything. The AI is a brilliant first-drafter. You are the editor. Your domain knowledge, your taste, your understanding of the user — these are what turn a draft into a product.
 
 ---
