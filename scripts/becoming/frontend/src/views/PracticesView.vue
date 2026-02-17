@@ -3,6 +3,10 @@ import { ref, computed, onMounted } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import { api, type Practice, type PillarLink } from '../api'
 
+function localDateStr(d: Date = new Date()): string {
+  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`
+}
+
 const router = useRouter()
 const route = useRoute()
 const practices = ref<Practice[]>([])
@@ -18,6 +22,8 @@ const formPillarIds = ref<number[]>([])
 const filterStatus = ref<string>('active')
 const filterType = ref<string>('all')
 const filterCategory = ref<string>('all')
+const filterTime = ref<'all' | 'current' | 'upcoming' | 'past'>('all')
+const timeFilterOptions = ['all', 'current', 'upcoming', 'past'] as const
 
 // Form state
 const form = ref({
@@ -75,11 +81,25 @@ const availableCategories = computed(() => {
 })
 
 const filteredPractices = computed(() => {
+  const todayStr = localDateStr()
   return practices.value.filter(p => {
     if (filterType.value !== 'all' && p.type !== filterType.value) return false
     if (filterCategory.value !== 'all') {
       const cats = (p.category || '').split(',').map(c => c.trim())
       if (!cats.includes(filterCategory.value)) return false
+    }
+    // Time filter
+    if (filterTime.value !== 'all') {
+      const startDate = p.start_date ? p.start_date.slice(0, 10) : p.created_at?.slice(0, 10) || ''
+      const endDate = p.end_date ? p.end_date.slice(0, 10) : ''
+      if (filterTime.value === 'upcoming') {
+        if (!startDate || startDate <= todayStr) return false
+      } else if (filterTime.value === 'current') {
+        if (startDate > todayStr) return false
+        if (endDate && endDate < todayStr) return false
+      } else if (filterTime.value === 'past') {
+        if (!endDate || endDate >= todayStr) return false
+      }
     }
     return true
   })
@@ -788,6 +808,16 @@ onMounted(async () => {
             class="px-2.5 py-1 text-xs rounded-full border"
             :class="filterCategory === c ? 'bg-indigo-100 border-indigo-300 text-indigo-700' : 'bg-gray-50 border-gray-200 text-gray-500 hover:bg-gray-100'"
           >{{ c }}</button>
+        </div>
+        <div class="flex gap-1.5 flex-wrap items-center">
+          <span class="text-xs text-gray-400 w-10">Time</span>
+          <button
+            v-for="tf in timeFilterOptions"
+            :key="tf"
+            @click="filterTime = tf"
+            class="px-2.5 py-1 text-xs rounded-full border"
+            :class="filterTime === tf ? 'bg-indigo-100 border-indigo-300 text-indigo-700' : 'bg-gray-50 border-gray-200 text-gray-500 hover:bg-gray-100'"
+          >{{ tf }}</button>
         </div>
       </div>
 

@@ -699,6 +699,26 @@ func studyNext(database *db.DB) http.HandlerFunc {
 			return
 		}
 
+		// Exclude cards that haven't started yet (start_date > today)
+		{
+			var started []*db.Practice
+			for _, c := range cards {
+				startDate := ""
+				if c.StartDate != nil && *c.StartDate != "" {
+					startDate = *c.StartDate
+					if len(startDate) > 10 {
+						startDate = startDate[:10]
+					}
+				} else {
+					startDate = c.CreatedAt.Format("2006-01-02")
+				}
+				if startDate <= date {
+					started = append(started, c)
+				}
+			}
+			cards = started
+		}
+
 		// Filter by category if specified (supports comma-separated)
 		if category != "" {
 			cats := splitComma(category)

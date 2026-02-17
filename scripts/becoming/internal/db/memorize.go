@@ -130,15 +130,18 @@ func (db *DB) ReviewCard(userID, practiceID int64, quality int, date string) (*P
 }
 
 // GetDueCards returns all memorize-type practices due for review on or before the given date,
-// excluding cards that have already been reviewed today, scoped to user.
+// excluding cards that have already been reviewed today and cards whose start_date is in the future,
+// scoped to user.
 func (db *DB) GetDueCards(userID int64, date string) ([]*Practice, error) {
 	nextReview := db.JSONExtract("config", "next_review")
 	repetitions := db.JSONExtract("config", "repetitions")
+	startDateExpr := fmt.Sprintf("COALESCE(start_date, %s)", db.DateCast("created_at"))
 
 	query := fmt.Sprintf(`
 		SELECT `+practiceColumns+`
 		FROM practices
 		WHERE type = 'memorize' AND status = 'active' AND user_id = ?
+		  AND %s <= ?
 		  AND (
 		    %s <= ?
 		    OR %s IS NULL
@@ -149,10 +152,10 @@ func (db *DB) GetDueCards(userID int64, date string) ([]*Practice, error) {
 		    WHERE date = ? AND quality IS NOT NULL
 		  )
 		ORDER BY %s, name`,
-		nextReview, nextReview, repetitions, nextReview,
+		startDateExpr, nextReview, nextReview, repetitions, nextReview,
 	)
 
-	rows, err := db.Query(query, userID, date, date)
+	rows, err := db.Query(query, userID, date, date, date)
 	if err != nil {
 		return nil, fmt.Errorf("getting due cards: %w", err)
 	}
@@ -187,11 +190,29 @@ type MemorizeCardStatus struct {
 	DaysUntilEnd    *int                `json:"days_until_end"`
 }
 
-// GetMemorizeCardStatuses returns all active memorize cards with today's review status, scoped to user.
+// GetMemorizeCardStatuses returns active memorize cards whose start_date <= date,
+// with today's review status, scoped to user.
 func (db *DB) GetMemorizeCardStatuses(userID int64, date string) ([]*MemorizeCardStatus, error) {
-	practices, err := db.ListPractices(userID, "memorize", true)
+	allPractices, err := db.ListPractices(userID, "memorize", true)
 	if err != nil {
 		return nil, fmt.Errorf("listing memorize practices: %w", err)
+	}
+
+	// Filter out future-start practices
+	var practices []*Practice
+	for _, p := range allPractices {
+		startDate := ""
+		if p.StartDate != nil && *p.StartDate != "" {
+			startDate = *p.StartDate
+			if len(startDate) > 10 {
+				startDate = startDate[:10]
+			}
+		} else {
+			startDate = p.CreatedAt.Format("2006-01-02")
+		}
+		if startDate <= date {
+			practices = append(practices, p)
+		}
 	}
 
 	// Batch-fetch today's quality scores for all memorize practices
