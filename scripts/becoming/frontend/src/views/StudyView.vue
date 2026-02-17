@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import { ref, computed, onMounted } from 'vue'
-import { useRouter } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import { api, type StudyExercise, type SessionMomentum, type StudyScoreResponse } from '../api'
 
+const route = useRoute()
 const router = useRouter()
 
 function localDateStr(d: Date = new Date()): string {
@@ -22,6 +23,8 @@ const exercisesDone = ref(0)
 const totalScore = ref(0)
 const lastCardId = ref(0)
 const keepStudying = ref(false)
+const categoryFilter = ref('')
+const pillarIdsFilter = ref<number[]>([])
 
 // Exercise UI state
 const exerciseStartTime = ref(0)
@@ -48,6 +51,7 @@ interface OrderWord { word: string; originalIndex: number; placed: boolean }
 interface ArrangeSlot { anchor: boolean; word: OrderWord | null }
 const wordBank = ref<OrderWord[]>([])
 const arrangeSlots = ref<ArrangeSlot[]>([])
+const correctWords = ref<string[]>([])
 const orderChecked = ref(false)
 const orderScore = ref({ correct: 0, total: 0 })
 
@@ -134,6 +138,9 @@ async function startSession() {
   lastCardId.value = 0
   sessionDone.value = false
   keepStudying.value = false
+  categoryFilter.value = (route.query.category as string) || ''
+  const pids = (route.query.pillar_ids as string) || ''
+  pillarIdsFilter.value = pids ? pids.split(',').map(Number).filter(n => !isNaN(n)) : []
 
   // Seed aptitudes from SM-2 history (idempotent)
   try { await api.studySeed() } catch { /* ok if fails */ }
@@ -145,6 +152,8 @@ async function startSession() {
 async function fetchNextExercise() {
   const result = await api.studyNext({
     date: today,
+    category: categoryFilter.value || undefined,
+    pillarIds: pillarIdsFilter.value.length ? pillarIdsFilter.value : undefined,
     lastCardId: lastCardId.value,
     momentum: momentum.value,
     recentScores: recentScores.value,
@@ -277,15 +286,16 @@ function initOrderWords() {
   const words = text.split(/\s+/)
   const allWords: OrderWord[] = words.map((w, i) => ({ word: w, originalIndex: i, placed: false }))
 
-  // Pick ~33% of words as anchors (hints), evenly distributed
+  // Pick ~33% of words as anchors (hints), evenly distributed across full text
   const anchorRatio = 0.33
   const anchorCount = Math.max(0, Math.floor(words.length * anchorRatio))
   const anchorIndices = new Set<number>()
-  if (anchorCount > 0) {
-    const step = Math.floor(words.length / (anchorCount + 1))
+  if (anchorCount > 0 && words.length > 0) {
+    // Use floating-point spacing to cover the full range [0, words.length-1]
+    const span = words.length - 1
     for (let k = 0; k < anchorCount; k++) {
-      const idx = step * (k + 1)
-      if (idx < words.length) anchorIndices.add(idx)
+      const idx = Math.round((k + 0.5) * span / anchorCount)
+      if (idx >= 0 && idx < words.length) anchorIndices.add(idx)
     }
   }
 
@@ -304,6 +314,7 @@ function initOrderWords() {
 
   arrangeSlots.value = slots
   wordBank.value = bank
+  correctWords.value = words
 }
 
 function placeWord(bankIndex: number) {
@@ -329,7 +340,7 @@ function checkOrder() {
   arrangeSlots.value.forEach((slot, i) => {
     if (slot.anchor) return // anchors don't count
     total++
-    if (slot.word && slot.word.originalIndex === i) correct++
+    if (slot.word && slot.word.word === correctWords.value[i]) correct++
   })
   orderChecked.value = true
   orderScore.value = { correct, total }
@@ -594,6 +605,8 @@ onMounted(startSession)
       <div class="flex items-center gap-2">
         <button @click="exitSession" class="text-gray-400 hover:text-gray-600 text-xl">←</button>
         <h1 class="text-2xl font-bold">Study Mode</h1>
+        <span v-if="categoryFilter" class="text-xs px-2 py-0.5 rounded-full bg-indigo-100 text-indigo-600 capitalize">{{ categoryFilter.split(',').join(', ') }}</span>
+        <span v-if="pillarIdsFilter.length" class="text-xs px-2 py-0.5 rounded-full bg-purple-100 text-purple-600">🏛 filtered</span>
       </div>
       <div class="flex items-center gap-3 text-sm">
         <span class="text-gray-500">{{ momentumEmoji }} {{ exercisesDone }} done</span>
@@ -746,7 +759,7 @@ onMounted(startSession)
               <button v-else-if="slot.word" :key="'u'+i" @click="unplaceWord(i)"
                 class="px-2 py-1 rounded text-sm transition-colors"
                 :class="orderChecked
-                  ? slot.word.originalIndex === i ? 'bg-green-100 text-green-700 border border-green-300' : 'bg-red-100 text-red-600 border border-red-300'
+                  ? slot.word.word === correctWords[i] ? 'bg-green-100 text-green-700 border border-green-300' : 'bg-red-100 text-red-600 border border-red-300'
                   : 'bg-indigo-100 text-indigo-700 border border-indigo-200 hover:bg-indigo-200'">
                 {{ slot.word.word }}
               </button>

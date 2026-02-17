@@ -141,6 +141,10 @@ export interface MemorizeCardStatus {
   today_qualities: number[]
   is_due: boolean
   target_daily_reps: number
+  aptitudes: MemorizeAptitude[]
+  overall_aptitude: number
+  is_mastered: boolean
+  days_until_end: number | null
 }
 
 // Study mode types
@@ -359,6 +363,7 @@ export const api = {
   studyNext(opts: {
     date: string
     category?: string
+    pillarIds?: number[]
     lastCardId?: number
     momentum?: SessionMomentum
     recentScores?: number[]
@@ -366,6 +371,7 @@ export const api = {
   }) {
     const params = new URLSearchParams({ date: opts.date })
     if (opts.category) params.set('category', opts.category)
+    if (opts.pillarIds?.length) params.set('pillar_ids', opts.pillarIds.join(','))
     if (opts.lastCardId) params.set('last_card_id', String(opts.lastCardId))
     if (opts.momentum) params.set('momentum', opts.momentum)
     if (opts.recentScores?.length) params.set('recent_scores', opts.recentScores.join(','))

@@ -641,6 +641,7 @@ func studyNext(database *db.DB) http.HandlerFunc {
 			date = time.Now().Format("2006-01-02")
 		}
 		category := r.URL.Query().Get("category")
+		pillarIDsStr := r.URL.Query().Get("pillar_ids")
 		lastCardIDStr := r.URL.Query().Get("last_card_id")
 		var lastCardID int64
 		if lastCardIDStr != "" {
@@ -676,15 +677,43 @@ func studyNext(database *db.DB) http.HandlerFunc {
 			return
 		}
 
-		// Filter by category if specified
+		// Filter by category if specified (supports comma-separated)
 		if category != "" {
+			cats := splitComma(category)
+			catSet := make(map[string]bool, len(cats))
+			for _, c := range cats {
+				catSet[c] = true
+			}
 			var filtered []*db.Practice
 			for _, c := range cards {
-				if c.Category == category {
+				if catSet[c.Category] {
 					filtered = append(filtered, c)
 				}
 			}
 			cards = filtered
+		}
+
+		// Filter by pillar IDs if specified (comma-separated)
+		if pillarIDsStr != "" {
+			pillarIDs := make(map[int64]bool)
+			for _, s := range splitComma(pillarIDsStr) {
+				if id, err := strconv.ParseInt(s, 10, 64); err == nil {
+					pillarIDs[id] = true
+				}
+			}
+			if len(pillarIDs) > 0 {
+				var filtered []*db.Practice
+				for _, c := range cards {
+					links, _ := database.GetPracticePillars(userID, c.ID)
+					for _, link := range links {
+						if pillarIDs[link.PillarID] {
+							filtered = append(filtered, c)
+							break
+						}
+					}
+				}
+				cards = filtered
+			}
 		}
 
 		if len(cards) == 0 {
@@ -776,11 +805,21 @@ func studyScore(database *db.DB) http.HandlerFunc {
 			return
 		}
 
-		// Also log a regular SM-2 review if quality was provided
+		// Always log a practice_log entry so this counts toward daily reps.
+		// If quality is provided (level 3+), use ReviewCard which also advances SM-2.
+		// If quality is nil (level 1-2 exposure), log a basic entry with a default quality
+		// so it counts as a rep but doesn't aggressively advance SM-2 scheduling.
 		if req.Quality != nil {
 			if _, err := database.ReviewCard(userID, req.PracticeID, *req.Quality, req.Date); err != nil {
 				// Non-fatal — the score was already recorded
 				// Log warning but return success
+			}
+		} else {
+			// Level 1-2 exposure: log with quality 3 ("correct with difficulty")
+			// to count as a daily rep without heavily advancing SM-2 interval
+			defaultQuality := 3
+			if _, err := database.ReviewCard(userID, req.PracticeID, defaultQuality, req.Date); err != nil {
+				// Non-fatal
 			}
 		}
 

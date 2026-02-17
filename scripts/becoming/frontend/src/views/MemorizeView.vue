@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, computed, onMounted, watch } from 'vue'
 import { useRoute } from 'vue-router'
-import { api, type Practice, type MemorizeCardStatus } from '../api'
+import { api, type Practice, type MemorizeCardStatus, type MemorizeAptitude, type PillarLink } from '../api'
 
 const route = useRoute()
 
@@ -13,6 +13,79 @@ const today = localDateStr()
 const allCards = ref<MemorizeCardStatus[]>([])
 const currentIndex = ref(0)
 const loading = ref(true)
+
+// Filter state — multi-select for both categories and pillars
+const activeCategories = ref<Set<string>>(new Set())
+const activePillarIds = ref<Set<number>>(new Set())
+const hasPillars = ref(false)
+const cardPillarMap = ref<Record<number, PillarLink[]>>({})
+
+function toggleCategory(cat: string) {
+  const s = new Set(activeCategories.value)
+  if (s.has(cat)) s.delete(cat); else s.add(cat)
+  activeCategories.value = s
+}
+function clearCategories() { activeCategories.value = new Set() }
+
+function togglePillar(id: number) {
+  const s = new Set(activePillarIds.value)
+  if (s.has(id)) s.delete(id); else s.add(id)
+  activePillarIds.value = s
+}
+function clearPillars() { activePillarIds.value = new Set() }
+function clearAllFilters() { clearCategories(); clearPillars() }
+
+const availableCategories = computed(() => {
+  const cats = new Set<string>()
+  for (const card of allCards.value) {
+    if (card.practice.category) cats.add(card.practice.category.split(',')[0]!.trim())
+  }
+  return Array.from(cats).sort()
+})
+
+const availablePillars = computed(() => {
+  const pillars = new Map<number, { id: number; name: string; icon: string }>()
+  for (const card of allCards.value) {
+    const links = cardPillarMap.value[card.practice.id]
+    if (links && links.length > 0) {
+      for (const link of links) {
+        pillars.set(link.pillar_id, { id: link.pillar_id, name: link.pillar_name, icon: link.pillar_icon })
+      }
+    }
+  }
+  return Array.from(pillars.values()).sort((a, b) => a.name.localeCompare(b.name))
+})
+
+const hasActiveFilters = computed(() => activeCategories.value.size > 0 || activePillarIds.value.size > 0)
+
+const filteredCards = computed(() => {
+  if (!hasActiveFilters.value) return allCards.value
+  return allCards.value.filter(card => {
+    // Category filter: if any categories selected, card must match one
+    if (activeCategories.value.size > 0) {
+      const cat = (card.practice.category || '').split(',')[0]?.trim() || ''
+      if (!activeCategories.value.has(cat)) return false
+    }
+    // Pillar filter: if any pillars selected, card must have at least one
+    if (activePillarIds.value.size > 0) {
+      const links = cardPillarMap.value[card.practice.id]
+      if (!links || !links.some(l => activePillarIds.value.has(l.pillar_id))) return false
+    }
+    return true
+  })
+})
+
+const studyLink = computed(() => {
+  const params = new URLSearchParams()
+  if (activeCategories.value.size > 0) {
+    params.set('category', Array.from(activeCategories.value).join(','))
+  }
+  if (activePillarIds.value.size > 0) {
+    params.set('pillar_ids', Array.from(activePillarIds.value).join(','))
+  }
+  const qs = params.toString()
+  return qs ? `/study?${qs}` : '/study'
+})
 
 // Mode: review (tap-to-flip), practice (fill blanks), quiz (type it out)
 type Mode = 'review' | 'practice' | 'quiz'
@@ -59,6 +132,7 @@ interface OrderWord {
 interface ArrangeSlot { anchor: boolean; word: OrderWord | null }
 const wordBank = ref<OrderWord[]>([])
 const arrangeSlots = ref<ArrangeSlot[]>([])
+const correctWords = ref<string[]>([])
 const orderChecked = ref(false)
 const orderScore = ref({ correct: 0, total: 0 })
 
@@ -80,17 +154,24 @@ const currentStatus = computed(() => allCards.value[currentIndex.value] || null)
 const currentCard = computed(() => currentStatus.value?.practice || null)
 
 // Completion helpers
-const allDone = computed(() => allCards.value.length > 0 && allCards.value.every(c => c.reviews_today >= c.target_daily_reps))
+const allDone = computed(() => filteredCards.value.length > 0 && filteredCards.value.every(c => c.reviews_today >= c.target_daily_reps))
 const currentCardDone = computed(() => {
   const s = currentStatus.value
   return s ? s.reviews_today >= s.target_daily_reps : false
 })
 const nextIncompleteIndex = computed(() => {
+  // Find next incomplete card in allCards (not filteredCards) since currentIndex indexes into allCards
   for (let i = 0; i < allCards.value.length; i++) {
     const idx = (currentIndex.value + 1 + i) % allCards.value.length
     if (idx === currentIndex.value) continue
     const c = allCards.value[idx]
-    if (c && c.reviews_today < c.target_daily_reps) return idx
+    if (c && c.reviews_today < c.target_daily_reps) {
+      // If filtering, only consider cards that pass the filter
+      if (hasActiveFilters.value) {
+        if (!filteredCards.value.includes(c)) continue
+      }
+      return idx
+    }
   }
   return -1
 })
@@ -108,6 +189,22 @@ async function load() {
   }
 
   allCards.value = await api.getMemorizeCards(today)
+
+  // Load pillar mappings
+  try {
+    const pillarsCheck = await api.hasPillars()
+    hasPillars.value = pillarsCheck.has_pillars
+    if (hasPillars.value) {
+      const mapping: Record<number, PillarLink[]> = {}
+      await Promise.all(allCards.value.map(async (card) => {
+        try {
+          const links = await api.getPracticePillars(card.practice.id)
+          if (links.length > 0) mapping[card.practice.id] = links
+        } catch { /* noop */ }
+      }))
+      cardPillarMap.value = mapping
+    }
+  } catch { /* pillars optional */ }
 
   const cardId = route.query.id ? Number(route.query.id) : null
   if (cardId) {
@@ -143,6 +240,9 @@ function resetModeState() {
   quizDiff.value = []
   suggestedQuality.value = null
   justRated.value = false
+  showCardDetail.value = false
+  showEndDatePicker.value = false
+  showActionsMenu.value = false
 
   if (currentCard.value && mode.value === 'practice') {
     if (practiceLevel.value === 'reveal') initBlanks()
@@ -244,15 +344,16 @@ function initOrderWords() {
   const words = text.split(/\s+/)
   const allWords: OrderWord[] = words.map((w, i) => ({ word: w, originalIndex: i, placed: false }))
 
-  // Pick ~33% of words as anchors (hints), evenly distributed
+  // Pick ~33% of words as anchors (hints), evenly distributed across full text
   const anchorRatio = 0.33
   const anchorCount = Math.max(0, Math.floor(words.length * anchorRatio))
   const anchorIndices = new Set<number>()
-  if (anchorCount > 0) {
-    const step = Math.floor(words.length / (anchorCount + 1))
+  if (anchorCount > 0 && words.length > 0) {
+    // Use floating-point spacing to cover the full range [0, words.length-1]
+    const span = words.length - 1
     for (let k = 0; k < anchorCount; k++) {
-      const idx = step * (k + 1)
-      if (idx < words.length) anchorIndices.add(idx)
+      const idx = Math.round((k + 0.5) * span / anchorCount)
+      if (idx >= 0 && idx < words.length) anchorIndices.add(idx)
     }
   }
 
@@ -271,6 +372,7 @@ function initOrderWords() {
 
   arrangeSlots.value = slots
   wordBank.value = bank
+  correctWords.value = words
   orderChecked.value = false
 }
 
@@ -300,7 +402,7 @@ function checkOrder() {
   arrangeSlots.value.forEach((slot, i) => {
     if (slot.anchor) return // anchors don't count
     total++
-    if (slot.word && slot.word.originalIndex === i) correct++
+    if (slot.word && slot.word.word === correctWords.value[i]) correct++
   })
   orderChecked.value = true
   orderScore.value = { correct, total }
@@ -473,6 +575,102 @@ function qualityColor(q: number): string {
   return 'bg-green-500'
 }
 
+// --- Card detail panel ---
+const showCardDetail = ref(false)
+const showEndDatePicker = ref(false)
+const endDateInput = ref('')
+const showActionsMenu = ref(false)
+
+// Level labels for display
+const levelLabels: Record<number, string> = {
+  1: 'Reveal Whole',
+  2: 'Reveal Words',
+  3: 'Type Words',
+  4: 'Arrange',
+  5: 'Type Full',
+}
+
+// Mode labels for aptitude display
+const modeLabels: Record<string, string> = {
+  reveal_whole: 'Reveal Whole',
+  reveal_words: 'Reveal Words',
+  type_words: 'Type Words',
+  arrange: 'Arrange',
+  type_full: 'Type Full',
+  reverse_full: 'Reverse Full',
+  reverse_partial: 'Reverse Partial',
+  reverse_fragment: 'Reverse Fragment',
+}
+
+// Ordered modes for aptitude bars
+const forwardModes = ['reveal_whole', 'reveal_words', 'type_words', 'arrange', 'type_full']
+const reverseModes = ['reverse_full', 'reverse_partial', 'reverse_fragment']
+
+function toggleCardDetail() {
+  showCardDetail.value = !showCardDetail.value
+  showActionsMenu.value = false
+}
+
+function getAptitudeForMode(aptitudes: MemorizeAptitude[], mode: string): MemorizeAptitude | undefined {
+  return aptitudes.find(a => a.mode === mode)
+}
+
+function aptitudeColor(value: number): string {
+  if (value >= 0.8) return 'bg-green-500'
+  if (value >= 0.6) return 'bg-yellow-400'
+  if (value >= 0.4) return 'bg-orange-400'
+  return 'bg-red-400'
+}
+
+function levelColor(level: number): string {
+  if (level >= 5) return 'bg-green-600'
+  if (level >= 4) return 'bg-green-500'
+  if (level >= 3) return 'bg-yellow-500'
+  if (level >= 2) return 'bg-orange-400'
+  return 'bg-gray-400'
+}
+
+// Lifecycle actions
+async function markMastered() {
+  if (!currentCard.value) return
+  if (!confirm(`Mark "${currentCard.value.name}" as memorized?`)) return
+  await api.completePractice(currentCard.value.id)
+  await load()
+}
+
+async function archiveCard() {
+  if (!currentCard.value) return
+  if (!confirm(`Archive "${currentCard.value.name}"? This removes it from rotation.`)) return
+  await api.archivePractice(currentCard.value.id)
+  await load()
+}
+
+async function pauseCard() {
+  if (!currentCard.value) return
+  await api.pausePractice(currentCard.value.id)
+  await load()
+}
+
+// End date
+async function setEndDate() {
+  if (!currentCard.value || !endDateInput.value) return
+  // Fetch full practice, update end_date, send back
+  const full = await api.getPractice(currentCard.value.id)
+  full.end_date = endDateInput.value
+  await api.updatePractice(currentCard.value.id, full)
+  showEndDatePicker.value = false
+  await load()
+}
+
+async function clearEndDate() {
+  if (!currentCard.value) return
+  const full = await api.getPractice(currentCard.value.id)
+  full.end_date = ''
+  await api.updatePractice(currentCard.value.id, full)
+  showEndDatePicker.value = false
+  await load()
+}
+
 onMounted(load)
 </script>
 
@@ -483,16 +681,48 @@ onMounted(load)
       <h1 class="text-2xl font-bold">Memorize</h1>
       <div v-if="!loading && allCards.length > 0" class="flex items-center gap-3">
         <span class="text-sm text-gray-500">
-          {{ allCards.filter(c => c.reviews_today >= c.target_daily_reps).length }}/{{ allCards.length }} cards done
+          {{ filteredCards.filter(c => c.reviews_today >= c.target_daily_reps).length }}/{{ filteredCards.length }} cards done
         </span>
         <router-link
-          to="/study"
+          :to="studyLink"
           class="px-3 py-1.5 bg-emerald-600 text-white rounded-lg text-sm hover:bg-emerald-700"
         >📚 Study</router-link>
         <router-link
           to="/practices?type=memorize&create=1"
           class="px-3 py-1.5 bg-indigo-600 text-white rounded-lg text-sm hover:bg-indigo-700"
         >+ Add Card</router-link>
+      </div>
+    </div>
+
+    <!-- Filter chips -->
+    <div v-if="!loading && allCards.length > 1 && (availableCategories.length > 1 || availablePillars.length > 0)" class="mb-4 space-y-2">
+      <!-- Category chips -->
+      <div v-if="availableCategories.length > 0" class="flex items-center gap-1.5 flex-wrap">
+        <span class="text-xs text-gray-400 mr-0.5">Category:</span>
+        <button
+          v-for="cat in availableCategories"
+          :key="cat"
+          @click="toggleCategory(cat)"
+          class="px-2.5 py-1 text-xs rounded-full border transition-colors capitalize"
+          :class="activeCategories.has(cat) ? 'bg-indigo-600 border-indigo-600 text-white' : 'bg-white border-gray-200 text-gray-600 hover:bg-gray-50'"
+        >{{ cat }}</button>
+      </div>
+      <!-- Pillar chips -->
+      <div v-if="hasPillars && availablePillars.length > 0" class="flex items-center gap-1.5 flex-wrap">
+        <span class="text-xs text-gray-400 mr-0.5">Pillar:</span>
+        <button
+          v-for="p in availablePillars"
+          :key="p.id"
+          @click="togglePillar(p.id)"
+          class="px-2.5 py-1 text-xs rounded-full border transition-colors"
+          :class="activePillarIds.has(p.id) ? 'bg-purple-600 border-purple-600 text-white' : 'bg-white border-gray-200 text-gray-600 hover:bg-gray-50'"
+        >{{ p.icon }} {{ p.name }}</button>
+      </div>
+      <!-- Clear all -->
+      <div v-if="hasActiveFilters" class="flex items-center">
+        <button @click="clearAllFilters" class="text-xs text-gray-400 hover:text-gray-600 underline">
+          Clear filters
+        </button>
       </div>
     </div>
 
@@ -510,25 +740,31 @@ onMounted(load)
       <!-- Card picker pills -->
       <div class="flex gap-2 mb-4 overflow-x-auto pb-1">
         <button
-          v-for="(card, i) in allCards"
+          v-for="card in filteredCards"
           :key="card.practice.id"
-          @click="selectCard(i)"
+          @click="selectCard(allCards.indexOf(card))"
           class="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm whitespace-nowrap transition-colors border"
-          :class="i === currentIndex
+          :class="allCards.indexOf(card) === currentIndex
             ? 'bg-indigo-600 text-white border-indigo-600'
             : card.reviews_today >= card.target_daily_reps
               ? 'bg-green-50 border-green-300 text-green-700 hover:bg-green-100'
               : 'bg-white border-gray-200 text-gray-600 hover:border-indigo-300'"
         >
+          <span v-if="card.is_mastered" class="text-[10px]">⭐</span>
           {{ card.practice.name }}
           <span
             class="text-[10px] px-1.5 py-0.5 rounded-full"
-            :class="i === currentIndex
+            :class="allCards.indexOf(card) === currentIndex
               ? 'bg-indigo-500 text-indigo-100'
               : card.reviews_today >= card.target_daily_reps
                 ? 'bg-green-200 text-green-800'
                 : 'bg-gray-100 text-gray-500'"
           >{{ card.reviews_today }}/{{ card.target_daily_reps }}</span>
+          <span v-if="card.days_until_end != null && card.days_until_end <= 7"
+            class="text-[10px] px-1 py-0.5 rounded-full"
+            :class="allCards.indexOf(card) === currentIndex ? 'bg-red-400 text-white' : 'bg-red-100 text-red-600'">
+            {{ card.days_until_end > 0 ? card.days_until_end + 'd' : '!' }}
+          </span>
         </button>
       </div>
 
@@ -742,7 +978,7 @@ onMounted(load)
                   <button v-else-if="slot.word" :key="'u'+i" @click="unplaceWord(i)"
                     class="px-2 py-1 rounded text-sm transition-colors"
                     :class="orderChecked
-                      ? slot.word.originalIndex === i ? 'bg-green-100 text-green-700 border border-green-300' : 'bg-red-100 text-red-600 border border-red-300'
+                      ? slot.word.word === correctWords[i] ? 'bg-green-100 text-green-700 border border-green-300' : 'bg-red-100 text-red-600 border border-red-300'
                       : 'bg-indigo-100 text-indigo-700 border border-indigo-200 hover:bg-red-50 hover:text-red-600 hover:border-red-300 cursor-pointer'">
                     {{ slot.word.word }}
                   </button>
@@ -876,13 +1112,189 @@ onMounted(load)
           </div>
         </div>
 
-        <!-- Card stats -->
-        <div class="mt-4 flex justify-center gap-6 text-xs text-gray-400">
-          <span>interval: {{ cardStats(currentCard).interval }}d</span>
-          <span>reps: {{ cardStats(currentCard).reps }}</span>
-          <span>ease: {{ cardStats(currentCard).ease }}</span>
+        <!-- Card stats / detail panel toggle -->
+        <div class="mt-4">
+          <!-- Compact stats bar (always visible) -->
+          <button @click="toggleCardDetail" class="w-full flex items-center justify-center gap-4 text-xs text-gray-400 hover:text-gray-600 transition-colors py-2">
+            <!-- Level badge -->
+            <span class="flex items-center gap-1">
+              <span class="w-5 h-5 rounded-full text-white font-bold text-[10px] flex items-center justify-center" :class="levelColor(currentCard.memorize_level || 1)">
+                L{{ currentCard.memorize_level || 1 }}
+              </span>
+              <span>{{ levelLabels[currentCard.memorize_level || 1] }}</span>
+            </span>
+            <!-- Overall aptitude -->
+            <span v-if="currentStatus">{{ Math.round(currentStatus.overall_aptitude * 100) }}% apt</span>
+            <!-- SM-2 interval -->
+            <span>{{ cardStats(currentCard).interval }}d interval</span>
+            <!-- End date countdown -->
+            <span v-if="currentStatus?.days_until_end != null"
+              :class="currentStatus.days_until_end <= 7 ? 'text-red-500 font-semibold' : currentStatus.days_until_end <= 14 ? 'text-orange-500' : ''">
+              {{ currentStatus.days_until_end > 0 ? currentStatus.days_until_end + 'd left' : currentStatus.days_until_end === 0 ? 'Due today!' : Math.abs(currentStatus.days_until_end) + 'd overdue' }}
+            </span>
+            <!-- Mastery badge -->
+            <span v-if="currentStatus?.is_mastered" class="text-green-600 font-semibold">⭐ Mastered</span>
+            <!-- Toggle arrow -->
+            <span class="transition-transform" :class="showCardDetail ? 'rotate-180' : ''">▾</span>
+          </button>
+
+          <!-- Expanded detail panel -->
+          <transition name="slide">
+            <div v-if="showCardDetail" class="bg-white rounded-xl border border-gray-200 p-4 mt-1 space-y-4">
+              <!-- Mastery suggestion banner -->
+              <div v-if="currentStatus?.is_mastered" class="bg-green-50 border border-green-200 rounded-lg p-3 flex items-center justify-between">
+                <div>
+                  <p class="text-green-800 font-semibold text-sm">⭐ This card meets mastery criteria</p>
+                  <p class="text-green-600 text-xs">High aptitude across multiple modes with strong SM-2 interval</p>
+                </div>
+                <button @click="markMastered" class="px-3 py-1.5 bg-green-600 text-white rounded-lg text-sm hover:bg-green-700 whitespace-nowrap">
+                  Mark Memorized ✓
+                </button>
+              </div>
+
+              <!-- SM-2 stats row -->
+              <div class="flex items-center justify-between text-sm">
+                <div class="flex gap-4 text-gray-500">
+                  <span>Interval: <strong class="text-gray-700">{{ cardStats(currentCard).interval }}d</strong></span>
+                  <span>Reps: <strong class="text-gray-700">{{ cardStats(currentCard).reps }}</strong></span>
+                  <span>Ease: <strong class="text-gray-700">{{ cardStats(currentCard).ease }}</strong></span>
+                  <span>Next: <strong class="text-gray-700">{{ cardStats(currentCard).nextReview }}</strong></span>
+                </div>
+              </div>
+
+              <!-- Forward mode aptitudes -->
+              <div>
+                <h4 class="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">Forward Modes</h4>
+                <div class="space-y-1.5">
+                  <div v-for="mode in forwardModes" :key="mode" class="flex items-center gap-2">
+                    <span class="text-xs text-gray-500 w-24 truncate">{{ modeLabels[mode] }}</span>
+                    <div class="flex-1 bg-gray-100 rounded-full h-3 relative overflow-hidden">
+                      <div
+                        v-if="currentStatus && getAptitudeForMode(currentStatus.aptitudes, mode)"
+                        class="h-full rounded-full transition-all"
+                        :class="aptitudeColor(getAptitudeForMode(currentStatus.aptitudes, mode)!.aptitude)"
+                        :style="{ width: Math.round(getAptitudeForMode(currentStatus.aptitudes, mode)!.aptitude * 100) + '%' }"
+                      ></div>
+                    </div>
+                    <span class="text-xs text-gray-500 w-10 text-right">
+                      {{ currentStatus && getAptitudeForMode(currentStatus.aptitudes, mode)
+                        ? Math.round(getAptitudeForMode(currentStatus.aptitudes, mode)!.aptitude * 100) + '%'
+                        : '—' }}
+                    </span>
+                    <!-- Current level indicator -->
+                    <span v-if="(currentCard.memorize_level || 1) === forwardModes.indexOf(mode) + 1"
+                      class="text-[10px] px-1.5 py-0.5 bg-indigo-100 text-indigo-600 rounded-full">current</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Reverse mode aptitudes -->
+              <div v-if="currentStatus && currentStatus.aptitudes.some(a => reverseModes.includes(a.mode))">
+                <h4 class="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">Reverse Modes</h4>
+                <div class="space-y-1.5">
+                  <div v-for="mode in reverseModes" :key="mode" class="flex items-center gap-2">
+                    <span class="text-xs text-gray-500 w-24 truncate">{{ modeLabels[mode] }}</span>
+                    <div class="flex-1 bg-gray-100 rounded-full h-3 relative overflow-hidden">
+                      <div
+                        v-if="currentStatus && getAptitudeForMode(currentStatus.aptitudes, mode)"
+                        class="h-full rounded-full transition-all"
+                        :class="aptitudeColor(getAptitudeForMode(currentStatus.aptitudes, mode)!.aptitude)"
+                        :style="{ width: Math.round(getAptitudeForMode(currentStatus.aptitudes, mode)!.aptitude * 100) + '%' }"
+                      ></div>
+                    </div>
+                    <span class="text-xs text-gray-500 w-10 text-right">
+                      {{ currentStatus && getAptitudeForMode(currentStatus.aptitudes, mode)
+                        ? Math.round(getAptitudeForMode(currentStatus.aptitudes, mode)!.aptitude * 100) + '%'
+                        : '—' }}
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Overall aptitude -->
+              <div class="flex items-center gap-3 pt-2 border-t border-gray-100">
+                <span class="text-sm font-semibold text-gray-700">Overall</span>
+                <div class="flex-1 bg-gray-100 rounded-full h-4 relative overflow-hidden">
+                  <div
+                    v-if="currentStatus"
+                    class="h-full rounded-full transition-all"
+                    :class="aptitudeColor(currentStatus.overall_aptitude)"
+                    :style="{ width: Math.round(currentStatus.overall_aptitude * 100) + '%' }"
+                  ></div>
+                </div>
+                <span class="text-sm font-bold text-gray-700 w-12 text-right">
+                  {{ currentStatus ? Math.round(currentStatus.overall_aptitude * 100) + '%' : '—' }}
+                </span>
+              </div>
+
+              <!-- End date -->
+              <div class="pt-2 border-t border-gray-100">
+                <div class="flex items-center justify-between">
+                  <span class="text-sm text-gray-600">
+                    <template v-if="currentCard.end_date">
+                      📅 Memorize by: <strong>{{ currentCard.end_date.substring(0, 10) }}</strong>
+                      <span v-if="currentStatus?.days_until_end != null" class="ml-1"
+                        :class="currentStatus.days_until_end <= 7 ? 'text-red-500' : currentStatus.days_until_end <= 14 ? 'text-orange-500' : 'text-gray-400'">
+                        ({{ currentStatus.days_until_end > 0 ? currentStatus.days_until_end + ' days left' : currentStatus.days_until_end === 0 ? 'today!' : Math.abs(currentStatus.days_until_end) + ' days overdue' }})
+                      </span>
+                    </template>
+                    <template v-else>
+                      📅 No target date set
+                    </template>
+                  </span>
+                  <button @click="showEndDatePicker = !showEndDatePicker; endDateInput = (currentCard.end_date || '').substring(0, 10)"
+                    class="text-xs text-indigo-500 hover:text-indigo-700">
+                    {{ currentCard.end_date ? 'Change' : 'Set date' }}
+                  </button>
+                </div>
+                <!-- End date picker -->
+                <div v-if="showEndDatePicker" class="mt-2 flex items-center gap-2">
+                  <input type="date" v-model="endDateInput"
+                    class="border border-gray-300 rounded px-2 py-1 text-sm focus:border-indigo-500 focus:ring-1 focus:ring-indigo-200 outline-none" />
+                  <button @click="setEndDate" :disabled="!endDateInput"
+                    class="px-3 py-1 bg-indigo-600 text-white rounded text-sm hover:bg-indigo-700 disabled:opacity-40">Save</button>
+                  <button v-if="currentCard.end_date" @click="clearEndDate"
+                    class="px-3 py-1 text-red-500 hover:text-red-700 text-sm">Clear</button>
+                  <button @click="showEndDatePicker = false"
+                    class="px-3 py-1 text-gray-400 hover:text-gray-600 text-sm">Cancel</button>
+                </div>
+              </div>
+
+              <!-- Actions -->
+              <div class="pt-2 border-t border-gray-100 flex items-center gap-2">
+                <button @click="markMastered"
+                  class="px-3 py-1.5 bg-green-50 text-green-700 border border-green-200 rounded-lg text-xs hover:bg-green-100">
+                  ✓ Mark Memorized
+                </button>
+                <button @click="pauseCard"
+                  class="px-3 py-1.5 bg-yellow-50 text-yellow-700 border border-yellow-200 rounded-lg text-xs hover:bg-yellow-100">
+                  ⏸ Pause
+                </button>
+                <button @click="archiveCard"
+                  class="px-3 py-1.5 bg-red-50 text-red-700 border border-red-200 rounded-lg text-xs hover:bg-red-100">
+                  🗃 Archive
+                </button>
+              </div>
+            </div>
+          </transition>
         </div>
       </div>
     </template>
   </div>
 </template>
+
+<style scoped>
+.slide-enter-active, .slide-leave-active {
+  transition: all 0.2s ease;
+  overflow: hidden;
+}
+.slide-enter-from, .slide-leave-to {
+  opacity: 0;
+  max-height: 0;
+  transform: translateY(-8px);
+}
+.slide-enter-to, .slide-leave-from {
+  opacity: 1;
+  max-height: 800px;
+}
+</style>

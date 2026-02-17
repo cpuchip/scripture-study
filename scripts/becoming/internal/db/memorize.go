@@ -176,11 +176,15 @@ func (db *DB) GetAllMemorizeCards(userID int64) ([]*Practice, error) {
 
 // MemorizeCardStatus represents a memorize card with today's review progress.
 type MemorizeCardStatus struct {
-	Practice       *Practice `json:"practice"`
-	ReviewsToday   int       `json:"reviews_today"`
-	TodayQualities []int     `json:"today_qualities"`
-	IsDue          bool      `json:"is_due"`
-	TargetReps     int       `json:"target_daily_reps"`
+	Practice        *Practice           `json:"practice"`
+	ReviewsToday    int                 `json:"reviews_today"`
+	TodayQualities  []int               `json:"today_qualities"`
+	IsDue           bool                `json:"is_due"`
+	TargetReps      int                 `json:"target_daily_reps"`
+	Aptitudes       []*MemorizeAptitude `json:"aptitudes"`
+	OverallAptitude float64             `json:"overall_aptitude"`
+	IsMastered      bool                `json:"is_mastered"`
+	DaysUntilEnd    *int                `json:"days_until_end"`
 }
 
 // GetMemorizeCardStatuses returns all active memorize cards with today's review status, scoped to user.
@@ -214,6 +218,18 @@ func (db *DB) GetMemorizeCardStatuses(userID int64, date string) ([]*MemorizeCar
 		return nil, err
 	}
 
+	// Batch-fetch aptitudes for all cards
+	aptitudeMap, err := db.GetAllUserAptitudes(userID)
+	if err != nil {
+		return nil, fmt.Errorf("getting aptitudes: %w", err)
+	}
+
+	// Parse today for days-until-end calculation
+	todayTime, _ := time.Parse("2006-01-02", date)
+	if todayTime.IsZero() {
+		todayTime = time.Now()
+	}
+
 	var statuses []*MemorizeCardStatus
 	for _, p := range practices {
 		var cfg SM2Config
@@ -232,12 +248,46 @@ func (db *DB) GetMemorizeCardStatuses(userID int64, date string) ([]*MemorizeCar
 			targetReps = 1
 		}
 
+		// Aptitude data
+		apts := aptitudeMap[p.ID]
+		if apts == nil {
+			apts = []*MemorizeAptitude{}
+		}
+		overall := OverallAptitude(apts)
+
+		// Mastery detection: interval >= 21d, overall aptitude >= 0.8, level >= 4, at least 3 modes sampled
+		sampledModes := 0
+		for _, a := range apts {
+			if a.SampleCount > 0 {
+				sampledModes++
+			}
+		}
+		isMastered := cfg.Interval >= 21 && overall >= 0.8 && p.MemorizeLevel >= 4 && sampledModes >= 3
+
+		// Days until end date
+		var daysUntilEnd *int
+		if p.EndDate != nil && *p.EndDate != "" {
+			endStr := *p.EndDate
+			// Handle both "2006-01-02" and "2006-01-02T15:04:05Z" formats
+			if len(endStr) > 10 {
+				endStr = endStr[:10]
+			}
+			if endTime, err := time.Parse("2006-01-02", endStr); err == nil {
+				days := int(endTime.Sub(todayTime).Hours() / 24)
+				daysUntilEnd = &days
+			}
+		}
+
 		statuses = append(statuses, &MemorizeCardStatus{
-			Practice:       p,
-			ReviewsToday:   len(qualities),
-			TodayQualities: qualities,
-			IsDue:          isDue,
-			TargetReps:     targetReps,
+			Practice:        p,
+			ReviewsToday:    len(qualities),
+			TodayQualities:  qualities,
+			IsDue:           isDue,
+			TargetReps:      targetReps,
+			Aptitudes:       apts,
+			OverallAptitude: overall,
+			IsMastered:      isMastered,
+			DaysUntilEnd:    daysUntilEnd,
 		})
 	}
 

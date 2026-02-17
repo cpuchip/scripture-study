@@ -245,6 +245,17 @@ function goToToday() {
 }
 const isToday = computed(() => today.value === localDateStr())
 
+// Memorize progress — across ALL memorize cards, ignoring active filter
+const memorizeProgress = computed(() => {
+  const memCards = summary.value.filter(s => s.practice_type === 'memorize' && s.status === 'active')
+  const total = memCards.length
+  const done = memCards.filter(s => {
+    const config = parseConfig(s.config)
+    return s.log_count >= (config.target_daily_reps || 1)
+  }).length
+  return { done, total, remaining: total - done }
+})
+
 // Completion stats (respects active filter, excludes completed/archived practices)
 const completionStats = computed(() => {
   // Only count active practices; exclude non-due scheduled items from the total.
@@ -459,6 +470,28 @@ onUnmounted(() => {
       </button>
     </div>
     <div v-else class="mb-6"></div>
+
+    <!-- Memorize progress banner -->
+    <div v-if="!loading && memorizeProgress.total > 0" class="mb-4">
+      <router-link
+        to="/memorize"
+        class="block px-4 py-2.5 rounded-lg transition-colors"
+        :class="memorizeProgress.remaining > 0
+          ? 'bg-amber-50 border border-amber-200 hover:bg-amber-100'
+          : 'bg-green-50 border border-green-200 hover:bg-green-100'"
+      >
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-2">
+            <span class="text-sm">📖</span>
+            <span class="text-sm font-medium" :class="memorizeProgress.remaining > 0 ? 'text-amber-700' : 'text-green-700'">
+              Memorize: {{ memorizeProgress.done }}/{{ memorizeProgress.total }} cards done
+            </span>
+          </div>
+          <span v-if="memorizeProgress.remaining > 0" class="text-xs text-amber-500">{{ memorizeProgress.remaining }} remaining →</span>
+          <span v-else class="text-xs text-green-500">All done! ✓</span>
+        </div>
+      </router-link>
+    </div>
 
     <!-- Memorize cards due -->
     <div v-if="!loading && dueCards.length > 0" class="mb-6">
