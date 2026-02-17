@@ -73,14 +73,14 @@ if (-not $VecOnly) {
     Push-Location $gospelMcpDir
     try {
         # Build
-        Write-Host "`n🔨 Building gospel-mcp..." -ForegroundColor Yellow
-        go build -o gospel-mcp.exe ./cmd/gospel-mcp/
+        Write-Host "`nBuilding gospel-mcp..." -ForegroundColor Yellow
+        go build -tags "fts5" -o gospel-mcp.exe ./cmd/gospel-mcp/
         if ($LASTEXITCODE -ne 0) { throw "gospel-mcp build failed" }
-        Write-Host "✅ Build successful" -ForegroundColor Green
+        Write-Host "Build successful" -ForegroundColor Green
 
         # Index
-        Write-Host "`n📚 Indexing gospel-mcp (full reindex)..." -ForegroundColor Yellow
-        $ftsArgs = @("index", "--force")
+        Write-Host "`nIndexing gospel-mcp (full reindex)..." -ForegroundColor Yellow
+        $ftsArgs = @("index", "--force", "--root", $scriptRoot)
         if ($Source) {
             $ftsArgs += @("--source", $Source)
             Write-Host "   Source filter: $Source" -ForegroundColor Cyan
@@ -91,7 +91,7 @@ if (-not $VecOnly) {
         if ($LASTEXITCODE -ne 0) { throw "gospel-mcp indexing failed" }
 
         $ftsElapsed = (Get-Date) - $ftsStart
-        Write-Host "`n✅ gospel-mcp indexing complete! ($($ftsElapsed.ToString('mm\:ss')))" -ForegroundColor Green
+        Write-Host "`ngospel-mcp indexing complete ($($ftsElapsed.ToString('mm\:ss')))" -ForegroundColor Green
     } finally {
         Pop-Location
     }
@@ -109,16 +109,16 @@ if (-not $FtsOnly) {
     Push-Location $gospelVecDir
     try {
         # Build
-        Write-Host "`n🔨 Building gospel-vec..." -ForegroundColor Yellow
+        Write-Host "`nBuilding gospel-vec..." -ForegroundColor Yellow
         go build -o gospel-vec.exe .
         if ($LASTEXITCODE -ne 0) { throw "gospel-vec build failed" }
-        Write-Host "✅ Build successful" -ForegroundColor Green
+        Write-Host "Build successful" -ForegroundColor Green
 
         # Test LM Studio connection
-        Write-Host "`n🔌 Testing LM Studio connection..." -ForegroundColor Yellow
+        Write-Host "`nTesting LM Studio connection..." -ForegroundColor Yellow
         .\gospel-vec.exe test
         if ($LASTEXITCODE -ne 0) {
-            Write-Host "⚠️  LM Studio connection test had issues, continuing anyway..." -ForegroundColor Yellow
+            Write-Host "LM Studio connection test had issues, continuing anyway..." -ForegroundColor Yellow
         }
 
         # Run index-all (scriptures + talks + manuals + music)
@@ -128,7 +128,7 @@ if (-not $FtsOnly) {
             $vecArgs += @("-no-summary", "-no-theme")
         }
 
-        Write-Host "`n📚 Starting full vector indexing (index-all)..." -ForegroundColor Yellow
+        Write-Host "`nStarting full vector indexing..." -ForegroundColor Yellow
         Write-Host "   This covers scriptures, talks, manuals, and music." -ForegroundColor Cyan
         if ($NoSummary) {
             Write-Host "   Summaries/themes: SKIPPED (cache-only)" -ForegroundColor Cyan
@@ -140,10 +140,10 @@ if (-not $FtsOnly) {
         if ($LASTEXITCODE -ne 0) { throw "gospel-vec indexing failed" }
 
         $vecElapsed = (Get-Date) - $vecStart
-        Write-Host "`n✅ gospel-vec indexing complete! ($($vecElapsed.ToString('hh\:mm\:ss')))" -ForegroundColor Green
+        Write-Host "`ngospel-vec indexing complete ($($vecElapsed.ToString('hh\:mm\:ss')))" -ForegroundColor Green
 
         # Show database stats
-        Write-Host "`n📊 Database statistics:" -ForegroundColor Yellow
+        Write-Host "`nDatabase statistics:" -ForegroundColor Yellow
         .\gospel-vec.exe stats
     } finally {
         Pop-Location
@@ -155,6 +155,6 @@ if (-not $FtsOnly) {
 # ─────────────────────────────────────────────
 $totalElapsed = (Get-Date) - $startTime
 Write-Host "`n══════════════════════════════════════════" -ForegroundColor Green
-Write-Host "  🎉 Reindex complete!" -ForegroundColor Green
+Write-Host "  Reindex complete!" -ForegroundColor Green
 Write-Host "  Total time: $($totalElapsed.ToString('hh\:mm\:ss'))" -ForegroundColor Green
 Write-Host "══════════════════════════════════════════" -ForegroundColor Green

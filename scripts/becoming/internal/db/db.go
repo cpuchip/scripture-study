@@ -266,6 +266,11 @@ func (db *DB) runSQLiteMigrations() error {
 		return fmt.Errorf("start date migration: %w", err)
 	}
 
+	// Migration: create document_sources and reading_progress tables
+	if err := db.migrateDocumentSources(); err != nil {
+		return fmt.Errorf("document sources migration: %w", err)
+	}
+
 	// Seed default reflection prompts for user 1 (dev user)
 	if err := db.SeedPrompts(1); err != nil {
 		return fmt.Errorf("seeding prompts: %w", err)
@@ -478,6 +483,41 @@ func (db *DB) migrateReflectionsTable() error {
 // Path returns the database file path (or connection string for PostgreSQL).
 func (db *DB) Path() string {
 	return db.path
+}
+
+// migrateDocumentSources creates document_sources and reading_progress tables.
+func (db *DB) migrateDocumentSources() error {
+	if _, err := db.Exec(`CREATE TABLE IF NOT EXISTS document_sources (
+		id              INTEGER PRIMARY KEY,
+		user_id         INTEGER NOT NULL REFERENCES users(id),
+		name            TEXT NOT NULL,
+		source_type     TEXT NOT NULL,
+		repo            TEXT NOT NULL,
+		branch          TEXT DEFAULT 'main',
+		include_paths   TEXT DEFAULT '[]',
+		exclude_paths   TEXT DEFAULT '[]',
+		tree_cache      TEXT,
+		tree_etag       TEXT,
+		tree_cached_at  DATETIME,
+		created_at      DATETIME DEFAULT CURRENT_TIMESTAMP
+	)`); err != nil {
+		return fmt.Errorf("creating document_sources: %w", err)
+	}
+
+	if _, err := db.Exec(`CREATE TABLE IF NOT EXISTS reading_progress (
+		id          INTEGER PRIMARY KEY,
+		user_id     INTEGER NOT NULL REFERENCES users(id),
+		source_id   INTEGER NOT NULL REFERENCES document_sources(id) ON DELETE CASCADE,
+		file_path   TEXT NOT NULL,
+		read_at     DATETIME DEFAULT CURRENT_TIMESTAMP,
+		scroll_pct  REAL DEFAULT 0,
+		UNIQUE(user_id, source_id, file_path)
+	)`); err != nil {
+		return fmt.Errorf("creating reading_progress: %w", err)
+	}
+
+	log.Println("Migration applied: document_sources + reading_progress tables")
+	return nil
 }
 
 // --- PostgreSQL schema initialization via goose migrations ---

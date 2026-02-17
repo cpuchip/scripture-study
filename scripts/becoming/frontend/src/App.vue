@@ -35,6 +35,7 @@ async function handleLogout() {
           <router-link to="/pillars" class="hover:text-orange-600" active-class="text-orange-600 font-semibold">Pillars</router-link>
           <router-link to="/notes" class="hover:text-orange-600" active-class="text-orange-600 font-semibold">Notes</router-link>
           <router-link to="/reflections" class="hover:text-orange-600" active-class="text-orange-600 font-semibold">Reflect</router-link>
+          <router-link to="/sources" class="hover:text-orange-600" active-class="text-orange-600 font-semibold">Library</router-link>
           <router-link to="/tasks" class="hover:text-orange-600" active-class="text-orange-600 font-semibold">Tasks</router-link>
           <span class="border-l border-gray-300 pl-4 flex items-center gap-2">
             <router-link to="/settings" class="text-gray-600 hover:text-orange-600" title="Settings">{{ user?.name }}</router-link>
@@ -54,7 +55,7 @@ async function handleLogout() {
     </nav>
 
     <!-- Content -->
-    <main :class="isAuthenticated ? 'max-w-4xl mx-auto px-4 py-6' : ''">
+    <main :class="isAuthenticated && $route.name !== 'reader' ? 'max-w-4xl mx-auto px-4 py-6' : ''">
       <router-view />
     </main>
   </div>

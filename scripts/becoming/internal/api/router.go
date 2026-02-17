@@ -117,6 +117,22 @@ func Router(database *db.DB, scripturesRoot string) chi.Router {
 	r.Put("/practices/{id}/pillars", setPracticePillarsForPractice(database))
 	r.Get("/practices/{id}/pillars", getPracticePillarsForPractice(database))
 
+	// Document sources (Study Reader)
+	r.Route("/sources", func(r chi.Router) {
+		r.Get("/", listSources(database))
+		r.Post("/", createSource(database))
+		r.Get("/{id}", getSource(database))
+		r.Put("/{id}", updateSource(database))
+		r.Delete("/{id}", deleteSource(database))
+		r.Put("/{id}/tree-cache", updateSourceTreeCache(database))
+	})
+
+	// Reading progress
+	r.Route("/reading-progress", func(r chi.Router) {
+		r.Get("/", listReadingProgress(database))
+		r.Post("/", upsertReadingProgress(database))
+	})
+
 	return r
 }
 
@@ -1447,5 +1463,179 @@ func searchScriptureBooks() http.HandlerFunc {
 			return
 		}
 		writeJSON(w, http.StatusOK, scripture.SearchBooks(q))
+	}
+}
+
+// --- Document Sources ---
+
+func listSources(database *db.DB) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		userID := auth.UserID(r)
+		sources, err := database.ListSources(userID)
+		if err != nil {
+			writeError(w, http.StatusInternalServerError, err.Error())
+			return
+		}
+		if sources == nil {
+			sources = []*db.DocumentSource{}
+		}
+		writeJSON(w, http.StatusOK, sources)
+	}
+}
+
+func createSource(database *db.DB) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		userID := auth.UserID(r)
+		var s db.DocumentSource
+		if err := json.NewDecoder(r.Body).Decode(&s); err != nil {
+			writeError(w, http.StatusBadRequest, "invalid JSON: "+err.Error())
+			return
+		}
+		if s.Name == "" || s.Repo == "" {
+			writeError(w, http.StatusBadRequest, "name and repo are required")
+			return
+		}
+		if s.SourceType == "" {
+			s.SourceType = "github_public"
+		}
+		if err := database.CreateSource(userID, &s); err != nil {
+			writeError(w, http.StatusInternalServerError, err.Error())
+			return
+		}
+		writeJSON(w, http.StatusCreated, s)
+	}
+}
+
+func getSource(database *db.DB) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		userID := auth.UserID(r)
+		id, err := strconv.ParseInt(chi.URLParam(r, "id"), 10, 64)
+		if err != nil {
+			writeError(w, http.StatusBadRequest, "invalid id")
+			return
+		}
+		s, err := database.GetSource(userID, id)
+		if err != nil {
+			writeError(w, http.StatusInternalServerError, err.Error())
+			return
+		}
+		if s == nil {
+			writeError(w, http.StatusNotFound, "source not found")
+			return
+		}
+		writeJSON(w, http.StatusOK, s)
+	}
+}
+
+func updateSource(database *db.DB) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		userID := auth.UserID(r)
+		id, err := strconv.ParseInt(chi.URLParam(r, "id"), 10, 64)
+		if err != nil {
+			writeError(w, http.StatusBadRequest, "invalid id")
+			return
+		}
+		var s db.DocumentSource
+		if err := json.NewDecoder(r.Body).Decode(&s); err != nil {
+			writeError(w, http.StatusBadRequest, "invalid JSON: "+err.Error())
+			return
+		}
+		s.ID = id
+		if err := database.UpdateSource(userID, &s); err != nil {
+			writeError(w, http.StatusInternalServerError, err.Error())
+			return
+		}
+		writeJSON(w, http.StatusOK, s)
+	}
+}
+
+func deleteSource(database *db.DB) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		userID := auth.UserID(r)
+		id, err := strconv.ParseInt(chi.URLParam(r, "id"), 10, 64)
+		if err != nil {
+			writeError(w, http.StatusBadRequest, "invalid id")
+			return
+		}
+		if err := database.DeleteSource(userID, id); err != nil {
+			writeError(w, http.StatusInternalServerError, err.Error())
+			return
+		}
+		w.WriteHeader(http.StatusNoContent)
+	}
+}
+
+func updateSourceTreeCache(database *db.DB) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		userID := auth.UserID(r)
+		id, err := strconv.ParseInt(chi.URLParam(r, "id"), 10, 64)
+		if err != nil {
+			writeError(w, http.StatusBadRequest, "invalid id")
+			return
+		}
+		var body struct {
+			TreeJSON string `json:"tree_json"`
+			Etag     string `json:"etag"`
+		}
+		if err := json.NewDecoder(r.Body).Decode(&body); err != nil {
+			writeError(w, http.StatusBadRequest, "invalid JSON: "+err.Error())
+			return
+		}
+		if err := database.UpdateSourceTreeCache(userID, id, body.TreeJSON, body.Etag); err != nil {
+			writeError(w, http.StatusInternalServerError, err.Error())
+			return
+		}
+		w.WriteHeader(http.StatusNoContent)
+	}
+}
+
+// --- Reading Progress ---
+
+func listReadingProgress(database *db.DB) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		userID := auth.UserID(r)
+		sourceIDStr := r.URL.Query().Get("source_id")
+		if sourceIDStr == "" {
+			writeError(w, http.StatusBadRequest, "source_id is required")
+			return
+		}
+		sourceID, err := strconv.ParseInt(sourceIDStr, 10, 64)
+		if err != nil {
+			writeError(w, http.StatusBadRequest, "invalid source_id")
+			return
+		}
+		progress, err := database.ListReadingProgress(userID, sourceID)
+		if err != nil {
+			writeError(w, http.StatusInternalServerError, err.Error())
+			return
+		}
+		if progress == nil {
+			progress = []*db.ReadingProgress{}
+		}
+		writeJSON(w, http.StatusOK, progress)
+	}
+}
+
+func upsertReadingProgress(database *db.DB) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		userID := auth.UserID(r)
+		var body struct {
+			SourceID  int64   `json:"source_id"`
+			FilePath  string  `json:"file_path"`
+			ScrollPct float64 `json:"scroll_pct"`
+		}
+		if err := json.NewDecoder(r.Body).Decode(&body); err != nil {
+			writeError(w, http.StatusBadRequest, "invalid JSON: "+err.Error())
+			return
+		}
+		if body.SourceID == 0 || body.FilePath == "" {
+			writeError(w, http.StatusBadRequest, "source_id and file_path are required")
+			return
+		}
+		if err := database.UpsertReadingProgress(userID, body.SourceID, body.FilePath, body.ScrollPct); err != nil {
+			writeError(w, http.StatusInternalServerError, err.Error())
+			return
+		}
+		w.WriteHeader(http.StatusNoContent)
 	}
 }

@@ -24,6 +24,8 @@ export const router = createRouter({
     { path: '/reflections', name: 'reflections', component: () => import('./views/ReflectionsView.vue') },
     { path: '/pillars', name: 'pillars', component: () => import('./views/PillarsView.vue') },
     { path: '/reports', name: 'reports', component: () => import('./views/ReportsView.vue') },
+    { path: '/sources', name: 'sources', component: () => import('./views/SourcesView.vue') },
+    { path: '/read/:id', name: 'reader', component: () => import('./views/ReaderView.vue') },
     { path: '/settings', name: 'settings', component: () => import('./views/SettingsView.vue') },
   ],
 })
@@ -51,6 +53,8 @@ const routeTitles: Record<string, string> = {
   reflections: 'Reflect',
   pillars: 'Pillars',
   reports: 'Reports',
+  sources: 'Library',
+  reader: 'Reading',
   settings: 'Settings',
 }
 

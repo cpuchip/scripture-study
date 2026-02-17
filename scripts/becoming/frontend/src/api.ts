@@ -542,6 +542,72 @@ export const api = {
   getPracticePillars(practiceId: number) {
     return request<PillarLink[]>(`/practices/${practiceId}/pillars`)
   },
+
+  // --- Document Sources ---
+  listSources() {
+    return request<DocumentSource[]>('/sources')
+  },
+  createSource(source: Partial<DocumentSource>) {
+    return request<DocumentSource>('/sources', {
+      method: 'POST',
+      body: JSON.stringify(source),
+    })
+  },
+  getSource(id: number) {
+    return request<DocumentSource>(`/sources/${id}`)
+  },
+  updateSource(id: number, source: Partial<DocumentSource>) {
+    return request<DocumentSource>(`/sources/${id}`, {
+      method: 'PUT',
+      body: JSON.stringify(source),
+    })
+  },
+  deleteSource(id: number) {
+    return request<void>(`/sources/${id}`, { method: 'DELETE' })
+  },
+  updateSourceTreeCache(id: number, treeJSON: string, etag: string) {
+    return request<void>(`/sources/${id}/tree-cache`, {
+      method: 'PUT',
+      body: JSON.stringify({ tree_json: treeJSON, etag }),
+    })
+  },
+
+  // --- Reading Progress ---
+  listReadingProgress(sourceId: number) {
+    return request<ReadingProgress[]>(`/reading-progress?source_id=${sourceId}`)
+  },
+  upsertReadingProgress(sourceId: number, filePath: string, scrollPct: number) {
+    return request<void>('/reading-progress', {
+      method: 'POST',
+      body: JSON.stringify({ source_id: sourceId, file_path: filePath, scroll_pct: scrollPct }),
+    })
+  },
+}
+
+// --- Document Source Types ---
+
+export interface DocumentSource {
+  id: number
+  user_id: number
+  name: string
+  source_type: 'github_public' | 'github_private'
+  repo: string
+  branch: string
+  include_paths: string  // JSON array
+  exclude_paths: string  // JSON array
+  tree_cache?: string
+  tree_etag?: string
+  tree_cached_at?: string
+  created_at: string
+}
+
+export interface ReadingProgress {
+  id: number
+  user_id: number
+  source_id: number
+  file_path: string
+  read_at: string
+  scroll_pct: number
 }
 
 // --- Auth Types ---
