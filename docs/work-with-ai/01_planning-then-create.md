@@ -11,9 +11,18 @@
 
 | Part | Title | Focus |
 |------|-------|-------|
-| **1** | **Planning Then Creating** | Why specification-driven development matters more than ever with AI |
-| 2 | The Feedback Loop | How to review, steer, and iterate — you as the architect, AI as the builder |
-| 3 | Live Build | Build something real together, start to finish, applying the patterns |
+| **1** | **[Planning Then Creating](01_planning-then-create.md)** | **Why specification-driven development matters more than ever with AI** |
+| 2 | [The Feedback Loop](02_the-feedback-loop.md) | How to review, steer, and iterate — you as the architect, AI as the builder |
+| 3 | [Live Build](03_live-build.md) | Build something real together, start to finish, applying the patterns |
+
+### Glossary
+
+| Term | Definition |
+|------|------------|
+| **Session** | One prompt-and-response cycle. You say something, the AI processes and responds with text, tool calls, file edits, etc. |
+| **Chat session** | The full conversation containing multiple sessions. Your ongoing back-and-forth in one chat window. |
+| **Spec / Blueprint** | The planning document created collaboratively before implementation begins. |
+| **Feedback loop** | Review → diagnose → correct → verify → repeat. |
 
 ---
 
@@ -65,7 +74,11 @@ Write this down. Even 5 bullet points. The act of writing forces clarity.
 #### Phase 2: Specify (The Blueprint)
 *This is where the AI becomes incredibly powerful — as a planning partner.*
 
-Create a planning document. Not code. A *spec*. Use the AI to help you think through:
+You don't open a blank file and start typing a spec. You *describe your vision in the chat* — what you're trying to build, your rough ideas, the direction you want to take it — and then ask the AI to create a `docs/plan.md` file from that vision. The AI drafts the spec, then asks you clarifying questions. You go back and forth a few times — refining the architecture, catching gaps, adding constraints. You're leveraging the AI's speed to get the ideas out of your head and into a structured document.
+
+Once the spec looks right to both of you, you review it one more time, and then you say "go."
+
+The spec should cover:
 
 - **Architecture:** What are the components? How do they connect?
 - **Data model:** What entities exist? What are the relationships?
@@ -165,8 +178,8 @@ This isn't about being replaced. It's about *leverage*. A single engineer with A
 
 ### Practical Tips (5 min)
 
-**1. Start every project with a doc, not a file.**
-Create `docs/plan.md` before `src/main.go`. Describe the system in plain language. Let the AI help you refine it.
+**1. Start every project with a conversation, not a file.**
+Describe your vision in the chat. Ask the AI to create `docs/plan.md`. Refine it together through a few rounds of questions and answers. The AI types faster than you — use that.
 
 **2. Give the AI your codebase context.**
 In VS Code with Copilot, the AI can see your workspace. Use `@workspace` to reference existing code. The more context it has, the better its output matches your architecture.
@@ -178,7 +191,9 @@ Before implementing a feature, ask the AI to read the relevant existing code and
 The spec is a living document. When you make implementation decisions that change the plan, update the plan. Future sessions (yours and the AI's) will benefit from accurate documentation.
 
 **5. Conversation summaries are your persistence layer.**
-When a session ends mid-project, the conversation summary captures exactly where you are — which files exist, what's been modified, what remains. The next session picks up precisely where the last one left off. The spec says *what to build*. The summary says *where you are in building it*. Together, they make multi-session projects seamless. I've had sessions start with the AI's first action being the exact next item on the todo list — zero re-orientation, zero wasted effort — because the summary carried the full state forward.
+When a chat session ends mid-project, the conversation summary captures exactly where you are — which files exist, what's been modified, what remains. The next chat session picks up precisely where the last one left off. The spec says *what to build*. The summary says *where you are in building it*. Together, they make multi-session projects seamless. I've had chat sessions start with the AI's first action being the exact next item on the todo list — zero re-orientation, zero wasted effort — because the summary carried the full state forward.
+
+**Pro tip:** Save key summaries and decisions to markdown files in your `docs/` folder. Conversation summaries are great, but a well-maintained doc outlining project state, completed phases, and open questions keeps context alive across *any* chat session — even ones that start with no prior summary. It's your project's memory, independent of any single conversation.
 
 **6. Work in small, verifiable increments.**
 Don't ask for 500 lines at once. Ask for one function, verify it, then move to the next. The spec tells you the order.

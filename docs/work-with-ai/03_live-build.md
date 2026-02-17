@@ -11,9 +11,18 @@
 
 | Part | Title | Focus |
 |------|-------|-------|
-| 1 | Planning Then Creating | Why specification-driven development matters more than ever with AI |
-| 2 | The Feedback Loop | How to review, steer, and iterate — you as the architect, AI as the builder |
-| **3** | **Live Build** | **Build something real together, start to finish, applying the patterns** |
+| 1 | [Planning Then Creating](01_planning-then-create.md) | Why specification-driven development matters more than ever with AI |
+| 2 | [The Feedback Loop](02_the-feedback-loop.md) | How to review, steer, and iterate — you as the architect, AI as the builder |
+| **3** | **[Live Build](03_live-build.md)** | **Build something real together, start to finish, applying the patterns** |
+
+### Glossary
+
+| Term | Definition |
+|------|------------|
+| **Session** | One prompt-and-response cycle. You say something, the AI processes and responds with text, tool calls, file edits, etc. |
+| **Chat session** | The full conversation containing multiple sessions. Your ongoing back-and-forth in one chat window. |
+| **Spec / Blueprint** | The planning document created collaboratively before implementation begins. |
+| **Feedback loop** | Review → diagnose → correct → verify → repeat. |
 
 ---
 
@@ -59,7 +68,7 @@ The sweet spot is something with 3-5 components that can be specced in 5 minutes
 
 **Do this live, with the audience watching.**
 
-Open a new file: `docs/plan.md`. Ask the audience:
+Describe the project to the AI in the chat — what it does, what you're thinking for structure. Then ask the AI to create `docs/plan.md`. Ask the audience to contribute:
 
 - What does this thing do? (1-2 sentences)
 - What are the inputs and outputs?
@@ -67,7 +76,7 @@ Open a new file: `docs/plan.md`. Ask the audience:
 - What's the data model? (if applicable)
 - What edge cases should we handle?
 
-Write their answers into the doc as you go. This demonstrates Phase 2 from Part 1 — the blueprint.
+Feed their answers into the conversation. Let the AI update the spec. Go back and forth once or twice — the audience sees the collaborative refinement in real time. This demonstrates Phase 2 from Part 1 — the blueprint.
 
 **Example spec (if using the CSV→JSON CLI):**
 

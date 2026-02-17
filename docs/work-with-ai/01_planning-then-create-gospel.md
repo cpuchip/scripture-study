@@ -11,9 +11,18 @@
 
 | Part | Title | Focus |
 |------|-------|-------|
-| **1** | **The Creation Pattern** | Abraham 4–5 as the blueprint for human-AI collaboration |
-| 2 | Watching Until They Obey | The feedback loop — reviewing, steering, and the role of agency |
-| 3 | Intelligence Cleaveth Unto Intelligence | How the quality of your engagement shapes the quality of the output |
+| **1** | **[The Creation Pattern](01_planning-then-create-gospel.md)** | **Abraham 4–5 as the blueprint for human-AI collaboration** |
+| 2 | [Watching Until They Obey](02_watching-until-they-obey-gospel.md) | The feedback loop — reviewing, steering, and the role of agency |
+| 3 | [Intelligence Cleaveth Unto Intelligence](03_intelligence-cleaveth-gospel.md) | How the quality of your engagement shapes the quality of the output |
+
+### Glossary
+
+| Term | Definition |
+|------|------------|
+| **Session** | One prompt-and-response cycle. You say something, the AI processes and responds with text, tool calls, file edits, etc. |
+| **Chat session** | The full conversation containing multiple sessions. Your ongoing back-and-forth in one chat window. |
+| **Spec / Blueprint / Spiritual creation** | The planning document created collaboratively before implementation begins (Moses 3:5). |
+| **Feedback loop** | Review → diagnose → correct → verify → repeat. The "watching until they obey" pattern. |
 
 ---
 
@@ -77,7 +86,7 @@ Everything was planned — envisioned, designed, specified — before it was phy
 
 When I try to build something complex by just typing instructions into an AI chat — no plan, no specification, just vibes — it works for simple things. But anything complex falls apart. The AI doesn't know my constraints, my architecture, my intent. It guesses. And small guesses compound into structural problems.
 
-But when I start with a planning document — a *specification* — everything changes. I describe:
+But when I start with a planning document — a *specification* — everything changes. I describe my vision in the chat — what we're building, the direction I want to take it, my rough ideas — and then ask the AI to create a planning document. The AI drafts the spec, asks clarifying questions, and we go back and forth refining it:
 - What are we building?
 - What are the components?
 - How do they connect?
@@ -86,7 +95,7 @@ But when I start with a planning document — a *specification* — everything c
 
 That document is the **spiritual creation**. It exists before any code. It's the blueprint. And when I hand that blueprint to the AI and say "build Phase 1," the AI has full context. It produces code that's architecturally coherent from line one.
 
-**And here's the part that surprised me:** the spiritual creation persists across sessions. When I run out of time mid-project, the conversation summary captures exactly where I am — which files exist, what's been modified, what remains. The next session picks up precisely where the last one left off. The spec says *what to build*. The summary says *where I am in building it*. Together, they function like a temporal bookmark in the spiritual creation — the blueprint stays intact, and I can return to it days later without losing anything.
+**And here's the part that surprised me:** the spiritual creation persists across chat sessions. When I run out of time mid-project, the conversation summary captures exactly where I am — which files exist, what's been modified, what remains. The next chat session picks up precisely where the last one left off. The spec says *what to build*. The summary says *where I am in building it*. Together, they function like a temporal bookmark in the spiritual creation — the blueprint stays intact, and I can return to it days later without losing anything. Saving key summaries and decisions to markdown files in my `docs/` folder makes this even more robust — any new chat session can pick up the full project state, even without a prior conversation summary.
 
 In one session, I said five words: "Lets build sprint 2!" The planning document was 743 lines. The AI produced 1,112 lines of correct code across 13 files — complete feature, zero errors, committed and pushed. Five words were sufficient because the spiritual creation was complete. The spec held the vision. The summary held the progress. The temporal creation was almost an inevitability.
 
