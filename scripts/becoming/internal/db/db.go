@@ -209,9 +209,21 @@ func (db *DB) JSONExtract(column, key string) string {
 // DateCast returns a SQL expression that extracts the date part of a timestamp.
 // For SQLite:    date(expr)
 // For PostgreSQL: expr::date
+// Use DateCast in WHERE clauses for date comparisons.
 func (db *DB) DateCast(expr string) string {
 	if db.driver == DriverPostgres {
 		return expr + "::date"
+	}
+	return "date(" + expr + ")"
+}
+
+// DateText returns a SQL expression that produces a text string in 'YYYY-MM-DD' format.
+// Use DateText in SELECT when you need the result scanned into a Go string.
+// For SQLite:    date(expr)           — returns TEXT 'YYYY-MM-DD'
+// For PostgreSQL: TO_CHAR(expr::date, 'YYYY-MM-DD') — returns TEXT 'YYYY-MM-DD'
+func (db *DB) DateText(expr string) string {
+	if db.driver == DriverPostgres {
+		return "TO_CHAR(" + expr + "::date, 'YYYY-MM-DD')"
 	}
 	return "date(" + expr + ")"
 }
@@ -247,6 +259,11 @@ func (db *DB) runSQLiteMigrations() error {
 	// Migration: add study mode tables (memorize_scores, memorize_aptitude, memorize_level)
 	if err := db.migrateStudyMode(); err != nil {
 		return fmt.Errorf("study mode migration: %w", err)
+	}
+
+	// Migration: add start_date column to practices
+	if err := db.migrateStartDate(); err != nil {
+		return fmt.Errorf("start date migration: %w", err)
 	}
 
 	// Seed default reflection prompts for user 1 (dev user)
@@ -335,6 +352,25 @@ func (db *DB) migrateStudyMode() error {
 	}
 
 	log.Println("Migration applied: study mode tables")
+	return nil
+}
+
+// migrateStartDate adds start_date column to practices and backfills from created_at.
+func (db *DB) migrateStartDate() error {
+	if db.hasColumn("practices", "start_date") {
+		return nil
+	}
+
+	if _, err := db.Exec(`ALTER TABLE practices ADD COLUMN start_date DATE`); err != nil {
+		return fmt.Errorf("adding start_date column: %w", err)
+	}
+
+	// Backfill: set start_date to the date portion of created_at
+	if _, err := db.Exec(`UPDATE practices SET start_date = date(created_at)`); err != nil {
+		return fmt.Errorf("backfilling start_date: %w", err)
+	}
+
+	log.Println("Migration applied: practices.start_date column")
 	return nil
 }
 

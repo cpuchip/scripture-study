@@ -137,6 +137,7 @@ type DailySummary struct {
 	Config       string  `json:"config"`
 	Status       string  `json:"status"`
 	EndDate      *string `json:"end_date,omitempty"`
+	StartDate    *string `json:"start_date,omitempty"`
 	CreatedAt    string  `json:"created_at"`
 	LogCount     int     `json:"log_count"`
 	TotalSets    *int    `json:"total_sets,omitempty"`
@@ -155,13 +156,13 @@ type DailySummary struct {
 // Temporally aware: filters by created_at, end_date, completed_at, and archived_at
 // so the daily view is accurate when navigating forward/backward in time.
 func (db *DB) GetDailySummary(userID int64, date string) ([]*DailySummary, error) {
-	dateCast := db.DateCast("p.created_at")
+	startDateExpr := "COALESCE(p.start_date, " + db.DateCast("p.created_at") + ")"
 	completedCast := db.DateCast("p.completed_at")
 	archivedCast := db.DateCast("p.archived_at")
 
 	query := `
 		SELECT
-			p.id, p.name, p.type, p.category, p.config, p.status, p.end_date, p.created_at,
+			p.id, p.name, p.type, p.category, p.config, p.status, p.end_date, p.start_date, p.created_at,
 			COALESCE(COUNT(l.id), 0) as log_count,
 			SUM(l.sets) as total_sets,
 			SUM(l.reps) as total_reps,
@@ -170,7 +171,7 @@ func (db *DB) GetDailySummary(userID int64, date string) ([]*DailySummary, error
 		FROM practices p
 		LEFT JOIN practice_logs l ON l.practice_id = p.id AND l.date = ?
 		WHERE p.user_id = ?
-		  AND ` + dateCast + ` <= ?
+		  AND ` + startDateExpr + ` <= ?
 		  AND (
 		    (p.status = 'active' AND (p.end_date IS NULL OR p.end_date >= ?))
 		    OR (p.status = 'completed' AND p.completed_at IS NOT NULL AND ` + completedCast + ` >= ?)
@@ -188,7 +189,7 @@ func (db *DB) GetDailySummary(userID int64, date string) ([]*DailySummary, error
 	var summaries []*DailySummary
 	for rows.Next() {
 		s := &DailySummary{}
-		if err := rows.Scan(&s.PracticeID, &s.PracticeName, &s.PracticeType, &s.Category, &s.Config, &s.Status, &s.EndDate, &s.CreatedAt, &s.LogCount, &s.TotalSets, &s.TotalReps, &s.LastValue, &s.LastNotes); err != nil {
+		if err := rows.Scan(&s.PracticeID, &s.PracticeName, &s.PracticeType, &s.Category, &s.Config, &s.Status, &s.EndDate, &s.StartDate, &s.CreatedAt, &s.LogCount, &s.TotalSets, &s.TotalReps, &s.LastValue, &s.LastNotes); err != nil {
 			return nil, fmt.Errorf("scanning daily summary: %w", err)
 		}
 		summaries = append(summaries, s)

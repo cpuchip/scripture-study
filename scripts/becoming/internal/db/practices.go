@@ -31,16 +31,17 @@ type Practice struct {
 	CompletedAt   *time.Time `json:"completed_at,omitempty"`
 	ArchivedAt    *time.Time `json:"archived_at,omitempty"`
 	EndDate       *string    `json:"end_date,omitempty"`       // target end date (YYYY-MM-DD)
+	StartDate     *string    `json:"start_date,omitempty"`     // effective start date (YYYY-MM-DD), defaults to created_at
 	MemorizeLevel int        `json:"memorize_level,omitempty"` // adaptive difficulty target level (1-4)
 }
 
 // practiceColumns is the standard SELECT column list for practices.
-const practiceColumns = `id, name, description, type, category, source_doc, source_path, config, sort_order, active, status, created_at, completed_at, archived_at, end_date, memorize_level`
+const practiceColumns = `id, name, description, type, category, source_doc, source_path, config, sort_order, active, status, created_at, completed_at, archived_at, end_date, start_date, memorize_level`
 
 // scanPractice scans a row into a Practice struct. Column order must match practiceColumns.
 func scanPractice(scanner interface{ Scan(...any) error }) (*Practice, error) {
 	p := &Practice{}
-	if err := scanner.Scan(&p.ID, &p.Name, &p.Description, &p.Type, &p.Category, &p.SourceDoc, &p.SourcePath, &p.Config, &p.SortOrder, &p.Active, &p.Status, &p.CreatedAt, &p.CompletedAt, &p.ArchivedAt, &p.EndDate, &p.MemorizeLevel); err != nil {
+	if err := scanner.Scan(&p.ID, &p.Name, &p.Description, &p.Type, &p.Category, &p.SourceDoc, &p.SourcePath, &p.Config, &p.SortOrder, &p.Active, &p.Status, &p.CreatedAt, &p.CompletedAt, &p.ArchivedAt, &p.EndDate, &p.StartDate, &p.MemorizeLevel); err != nil {
 		return nil, err
 	}
 	return p, nil
@@ -52,9 +53,9 @@ func (db *DB) CreatePractice(userID int64, p *Practice) error {
 		p.Status = StatusActive
 	}
 	id, err := db.InsertReturningID(`
-		INSERT INTO practices (user_id, name, description, type, category, source_doc, source_path, config, sort_order, active, status, end_date)
-		VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
-		userID, p.Name, p.Description, p.Type, p.Category, p.SourceDoc, p.SourcePath, p.Config, p.SortOrder, p.Active, p.Status, p.EndDate,
+		INSERT INTO practices (user_id, name, description, type, category, source_doc, source_path, config, sort_order, active, status, end_date, start_date)
+		VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+		userID, p.Name, p.Description, p.Type, p.Category, p.SourceDoc, p.SourcePath, p.Config, p.SortOrder, p.Active, p.Status, p.EndDate, p.StartDate,
 	)
 	if err != nil {
 		return fmt.Errorf("inserting practice: %w", err)
@@ -124,10 +125,10 @@ func (db *DB) ListPracticesByStatus(userID int64, practiceType, status string, a
 func (db *DB) UpdatePractice(userID int64, p *Practice) error {
 	_, err := db.Exec(`
 		UPDATE practices SET name=?, description=?, type=?, category=?, source_doc=?, source_path=?,
-			config=?, sort_order=?, active=?, status=?, completed_at=?, archived_at=?, end_date=?, memorize_level=?
+			config=?, sort_order=?, active=?, status=?, completed_at=?, archived_at=?, end_date=?, start_date=?, memorize_level=?
 		WHERE id=? AND user_id=?`,
 		p.Name, p.Description, p.Type, p.Category, p.SourceDoc, p.SourcePath,
-		p.Config, p.SortOrder, p.Active, p.Status, p.CompletedAt, p.ArchivedAt, p.EndDate, p.MemorizeLevel,
+		p.Config, p.SortOrder, p.Active, p.Status, p.CompletedAt, p.ArchivedAt, p.EndDate, p.StartDate, p.MemorizeLevel,
 		p.ID, userID,
 	)
 	if err != nil {

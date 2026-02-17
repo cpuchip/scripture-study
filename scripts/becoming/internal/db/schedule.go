@@ -224,18 +224,32 @@ func onceDue(sched *ScheduleConfig, date string, lastLogDate string) ScheduleSta
 }
 
 func mustParseDate(s string) time.Time {
+	// Try YYYY-MM-DD first (most common)
 	t, err := time.Parse("2006-01-02", s)
-	if err != nil {
-		return time.Now().UTC().Truncate(24 * time.Hour)
+	if err == nil {
+		return t
 	}
-	return t
+	// Try RFC3339 (Postgres scanning DATE into string gives this)
+	t, err = time.Parse(time.RFC3339, s)
+	if err == nil {
+		return t
+	}
+	// Try date prefix (e.g. "2026-02-16T00:00:00Z" variants)
+	if len(s) >= 10 {
+		t, err = time.Parse("2006-01-02", s[:10])
+		if err == nil {
+			return t
+		}
+	}
+	return time.Now().UTC().Truncate(24 * time.Hour)
 }
 
 // GetLastLogDate returns the most recent log date for a practice, or empty string if none.
 func (db *DB) GetLastLogDate(practiceID int64) (string, error) {
+	dateText := db.DateText("MAX(date)")
 	var date *string
-	err := db.QueryRow(`
-		SELECT MAX(date) FROM practice_logs WHERE practice_id = ?`,
+	err := db.QueryRow(fmt.Sprintf(
+		`SELECT %s FROM practice_logs WHERE practice_id = ?`, dateText),
 		practiceID,
 	).Scan(&date)
 	if err != nil || date == nil {

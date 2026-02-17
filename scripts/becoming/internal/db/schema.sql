@@ -23,6 +23,7 @@ CREATE TABLE IF NOT EXISTS practices (
     completed_at DATETIME,              -- when practice was completed
     archived_at  DATETIME,              -- when practice was archived
     end_date     DATE,                  -- target end/completion date
+    start_date   DATE,                  -- effective start date (defaults to created_at)
     memorize_level INTEGER DEFAULT 1    -- adaptive difficulty target level
 );
 -- idx_practices_status created by migratePracticeLifecycle()

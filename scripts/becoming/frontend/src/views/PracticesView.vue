@@ -27,6 +27,7 @@ const form = ref({
   category: '',
   config: '{}',
   end_date: '' as string,
+  start_date: '' as string,
 })
 
 // Config helpers for tracker (was exercise)
@@ -133,6 +134,21 @@ function endDateTooltip(endDate: string): string {
   return d.toLocaleDateString(undefined, { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })
 }
 
+// Start date helpers
+function startDateLabel(startDate: string): string {
+  const start = parseEndDate(startDate) // reuse date parser
+  const now = new Date()
+  now.setHours(0, 0, 0, 0)
+  const diff = Math.ceil((start.getTime() - now.getTime()) / (1000 * 60 * 60 * 24))
+  if (diff <= 0) return '' // already started
+  if (diff === 1) return 'starts tomorrow'
+  return `starts in ${diff}d`
+}
+
+function startDateClass(): string {
+  return 'bg-blue-50 text-blue-600'
+}
+
 async function load() {
   loading.value = true
   const [practicesData, pillarsData] = await Promise.all([
@@ -152,6 +168,7 @@ async function submit() {
     type: form.value.type,
     category: form.value.category,
     end_date: form.value.end_date || undefined,
+    start_date: form.value.start_date || undefined,
   }
 
   if (form.value.type === 'tracker') {
@@ -225,7 +242,7 @@ async function submit() {
 }
 
 function resetForm() {
-  form.value = { name: '', description: '', type: 'habit', category: '', config: '{}', end_date: '' }
+  form.value = { name: '', description: '', type: 'habit', category: '', config: '{}', end_date: '', start_date: '' }
   trackerConfig.value = { target_sets: 2, target_reps: 15, unit: 'reps' }
   memorizeConfig.value = { target_daily_reps: 1 }
   scheduleConfig.value = { type: 'interval', interval_days: 2, shift_on_early: true, slots: ['morning', 'lunch', 'night'], days: [], day_of_month: 1, due_date: '', newSlot: '' }
@@ -242,6 +259,7 @@ function editPractice(p: Practice) {
   form.value.category = p.category
   form.value.config = p.config
   form.value.end_date = p.end_date ? p.end_date.slice(0, 10) : ''
+  form.value.start_date = p.start_date ? p.start_date.slice(0, 10) : ''
 
   // Load pillar associations
   api.getPracticePillars(p.id).then(links => {
@@ -696,14 +714,24 @@ onMounted(async () => {
           </div>
         </div>
 
-        <!-- End date -->
-        <div>
-          <label class="block text-sm font-medium text-gray-700 mb-1">Target End Date <span class="font-normal text-gray-400">(optional)</span></label>
-          <input
-            v-model="form.end_date"
-            type="date"
-            class="border rounded px-3 py-2 text-sm"
-          />
+        <!-- Start / End dates -->
+        <div class="flex gap-4">
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">Start Date <span class="font-normal text-gray-400">(defaults to today)</span></label>
+            <input
+              v-model="form.start_date"
+              type="date"
+              class="border rounded px-3 py-2 text-sm"
+            />
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">Target End Date <span class="font-normal text-gray-400">(optional)</span></label>
+            <input
+              v-model="form.end_date"
+              type="date"
+              class="border rounded px-3 py-2 text-sm"
+            />
+          </div>
         </div>
 
         <div class="flex gap-2">
@@ -779,6 +807,7 @@ onMounted(async () => {
             <span class="font-medium hover:text-indigo-600 transition-colors">{{ p.name }}</span>
             <span class="text-xs px-2 py-0.5 rounded-full bg-gray-100 text-gray-600">{{ p.type }}</span>
             <span v-if="p.category" class="text-xs px-2 py-0.5 rounded-full bg-indigo-50 text-indigo-600">{{ p.category }}</span>
+            <span v-if="p.start_date && startDateLabel(p.start_date)" class="text-xs px-2 py-0.5 rounded-full cursor-default" :class="startDateClass()" :title="endDateTooltip(p.start_date)">{{ startDateLabel(p.start_date) }}</span>
             <span v-if="p.end_date" class="text-xs px-2 py-0.5 rounded-full cursor-default" :class="endDateClass(p.end_date)" :title="endDateTooltip(p.end_date)">{{ endDateLabel(p.end_date) }}</span>
           </div>
           <div v-if="p.description" class="text-xs text-gray-400 truncate mt-0.5">{{ p.description }}</div>

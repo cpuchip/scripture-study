@@ -57,6 +57,7 @@ export interface Practice {
   completed_at?: string
   archived_at?: string
   end_date?: string
+  start_date?: string
   memorize_level?: number
 }
 
@@ -82,6 +83,7 @@ export interface DailySummary {
   config: string
   status: string
   end_date?: string
+  start_date?: string
   created_at: string
   log_count: number
   total_sets?: number
