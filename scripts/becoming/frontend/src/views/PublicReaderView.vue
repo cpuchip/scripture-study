@@ -156,18 +156,13 @@ function isScriptureUrl(url: string): boolean {
   return /churchofjesuschrist\.org\/study\/(scriptures|general-conference)/i.test(url)
 }
 
-function churchUrlToPath(url: string): string | null {
-  try {
-    const u = new URL(url)
-    const match = u.pathname.match(/\/study\/(scriptures\/.+|general-conference\/.+)/)
-    if (!match) return null
-    let path = match[1]!
-    path = path.replace(/\?.*$/, '')
-    if (!path.endsWith('.md')) path += '.md'
-    return `gospel-library/eng/${path}`
-  } catch {
-    return null
-  }
+// Convert a relative gospel-library path to a church website URL
+function pathToChurchUrl(path: string): string | null {
+  const match = path.match(/gospel-library\/eng\/(scriptures\/.+|general-conference\/.+)/)
+  if (!match) return null
+  let segment = match[1]!
+  segment = segment.replace(/\.md$/, '')
+  return `https://www.churchofjesuschrist.org/study/${segment}?lang=eng`
 }
 
 function titleFromLink(linkEl: HTMLElement, href: string): string {
@@ -278,13 +273,11 @@ function handleContentClick(event: MouseEvent) {
   const href = link.getAttribute('href')
   if (!href) return
 
-  // Check for scripture/reference links → open in reference panel
+  // Check for scripture/reference links → open in reference panel as iframe
   if (link.hasAttribute('data-scripture-link')) {
     event.preventDefault()
-    const path = churchUrlToPath(href)
-    if (path) {
-      openInReferencePanel(path, titleFromLink(link, href))
-    }
+    // Open the church website directly in an iframe
+    openIframeReference(href, titleFromLink(link, href))
     return
   }
 
@@ -292,7 +285,12 @@ function handleContentClick(event: MouseEvent) {
     event.preventDefault()
     const mdPath = href.split('#')[0] ?? href
     const resolvedPath = resolvePath(currentPath.value, mdPath)
-    openInReferencePanel(resolvedPath, titleFromLink(link, href))
+    const churchUrl = pathToChurchUrl(resolvedPath)
+    if (churchUrl) {
+      openIframeReference(churchUrl, titleFromLink(link, href))
+    } else {
+      openInReferencePanel(resolvedPath, titleFromLink(link, href))
+    }
     return
   }
 
@@ -304,7 +302,12 @@ function handleContentClick(event: MouseEvent) {
     const resolvedPath = resolvePath(currentPath.value, mdPath)
 
     if (resolvedPath.includes('gospel-library') || resolvedPath.includes('general-conference')) {
-      openInReferencePanel(resolvedPath, titleFromLink(link, href))
+      const churchUrl = pathToChurchUrl(resolvedPath)
+      if (churchUrl) {
+        openIframeReference(churchUrl, titleFromLink(link, href))
+      } else {
+        openInReferencePanel(resolvedPath, titleFromLink(link, href))
+      }
     } else {
       openFile(resolvedPath)
     }
@@ -324,6 +327,31 @@ function resolvePath(currentFile: string, relativePath: string): string {
 
 // --- Reference Panel operations ---
 
+// Open an external URL (e.g. church website) in an iframe tab
+function openIframeReference(url: string, title: string) {
+  const existing = refTabs.value.find(t => t.url === url)
+  if (existing) {
+    refActiveTabId.value = existing.id
+    refPanelOpen.value = true
+    return
+  }
+
+  const id = `ref-${Date.now()}-${Math.random().toString(36).substr(2, 5)}`
+  const newTab: ReferenceTab = {
+    id,
+    title,
+    path: url,
+    url,
+    content: '',
+    loading: false,
+    error: '',
+  }
+  refTabs.value.push(newTab)
+  refActiveTabId.value = id
+  refPanelOpen.value = true
+}
+
+// Open a repo file (markdown) in a content tab
 async function openInReferencePanel(path: string, title: string) {
   const existing = refTabs.value.find(t => t.path === path)
   if (existing) {
@@ -333,7 +361,7 @@ async function openInReferencePanel(path: string, title: string) {
   }
 
   const id = `ref-${Date.now()}-${Math.random().toString(36).substr(2, 5)}`
-  const newTab: ReferenceTab = { id, title, path, content: '', loading: true, error: '' }
+  const newTab: ReferenceTab = { id, title, path, url: '', content: '', loading: true, error: '' }
   refTabs.value.push(newTab)
   refActiveTabId.value = id
   refPanelOpen.value = true
@@ -374,12 +402,20 @@ function closeAllRefTabs() {
 }
 
 function handleRefLinkClick(href: string, _event: MouseEvent) {
+  if (isScriptureUrl(href)) {
+    openIframeReference(href, titleFromPath(href))
+    return
+  }
   const mdPath = href.split('#')[0] ?? href
   const activeTab = refTabs.value.find(t => t.id === refActiveTabId.value)
   const basePath = activeTab?.path || currentPath.value
   const resolvedPath = resolvePath(basePath, mdPath)
-  const title = titleFromPath(resolvedPath)
-  openInReferencePanel(resolvedPath, title)
+  const churchUrl = pathToChurchUrl(resolvedPath)
+  if (churchUrl) {
+    openIframeReference(churchUrl, titleFromPath(resolvedPath))
+  } else {
+    openInReferencePanel(resolvedPath, titleFromPath(resolvedPath))
+  }
 }
 
 // --- Save to Library ---

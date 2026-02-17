@@ -5,8 +5,9 @@ import MarkdownIt from 'markdown-it'
 export interface ReferenceTab {
   id: string
   title: string
-  path: string
-  content: string
+  path: string       // display path or URL
+  content: string    // markdown content (for .md files from repo)
+  url: string        // external URL to load in iframe (for scripture links)
   loading: boolean
   error: string
   scrollRef?: string  // verse/section anchor from the original link
@@ -57,13 +58,29 @@ const renderedContent = computed(() => {
 
 // Detect if content looks like a scripture (has verse numbers)
 const isScripture = computed(() => {
-  if (!activeTab.value?.content) return false
+  if (!activeTab.value) return false
+  // Iframe tabs pointing to church scriptures are always scripture
+  if (activeTab.value.url && /churchofjesuschrist\.org\/study\/scriptures/i.test(activeTab.value.url)) return true
+  if (!activeTab.value.content) return false
   const content = activeTab.value.content
-  // Check for verse markers like "1 " at start of paragraphs, or numbered patterns
   return /^\d+\s/m.test(content) || /gospel-library.*scriptures/i.test(activeTab.value.path)
 })
 
-// Extract a reference string from tab title for memorization
+// Whether the active tab uses an iframe (external URL)
+const isIframe = computed(() => !!activeTab.value?.url)
+
+// Iframe loading state
+const iframeLoading = ref(false)
+
+function onIframeLoad() {
+  iframeLoading.value = false
+}
+
+watch(() => props.activeTabId, () => {
+  if (activeTab.value?.url) {
+    iframeLoading.value = true
+  }
+})
 
 
 function handlePanelClick(event: MouseEvent) {
@@ -150,8 +167,8 @@ watch(() => props.memorizeLoading, (loading) => {
 
     <!-- Content -->
     <div class="ref-content">
-      <!-- Loading -->
-      <div v-if="activeTab?.loading" class="flex items-center justify-center h-32">
+      <!-- Loading (markdown mode) -->
+      <div v-if="activeTab?.loading && !isIframe" class="flex items-center justify-center h-32">
         <div class="text-gray-400 text-sm">Loading reference...</div>
       </div>
 
@@ -160,7 +177,37 @@ watch(() => props.memorizeLoading, (loading) => {
         <div class="text-red-500 text-sm">{{ activeTab.error }}</div>
       </div>
 
-      <!-- Content -->
+      <!-- Iframe mode (external church content) -->
+      <div v-else-if="isIframe && activeTab?.url" class="ref-iframe-wrapper">
+        <!-- Action bar -->
+        <div class="ref-actions">
+          <a
+            :href="activeTab.url"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-xs text-orange-600 hover:text-orange-700 truncate flex-1 underline"
+          >
+            Open on churchofjesuschrist.org ↗
+          </a>
+        </div>
+
+        <!-- Loading indicator for iframe -->
+        <div v-if="iframeLoading" class="flex items-center justify-center py-8">
+          <div class="text-gray-400 text-sm">Loading from churchofjesuschrist.org...</div>
+        </div>
+
+        <iframe
+          :src="activeTab.url"
+          class="ref-iframe"
+          :class="{ 'opacity-0': iframeLoading }"
+          @load="onIframeLoad"
+          sandbox="allow-same-origin allow-scripts allow-popups"
+          referrerpolicy="no-referrer"
+          title="Scripture Reference"
+        />
+      </div>
+
+      <!-- Markdown content (repo files) -->
       <div v-else-if="activeTab?.content" class="ref-document">
         <!-- Action bar -->
         <div class="ref-actions">
@@ -252,6 +299,20 @@ watch(() => props.memorizeLoading, (loading) => {
   flex: 1;
   overflow-y: auto;
   background: var(--bg-page, #fafafa);
+}
+
+.ref-iframe-wrapper {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+}
+
+.ref-iframe {
+  flex: 1;
+  width: 100%;
+  border: none;
+  min-height: 400px;
 }
 
 .ref-document {

@@ -134,7 +134,7 @@ test.describe('Dark Mode', () => {
 })
 
 test.describe('Reference Panel', () => {
-  test('scripture links open in reference panel', async ({ page }) => {
+  test('scripture links open in reference panel with iframe', async ({ page }) => {
     await page.goto(PUBLIC_FILE_URL)
 
     // Wait for document to load
@@ -152,10 +152,16 @@ test.describe('Reference Panel', () => {
       // Reference panel should open
       await expect(page.locator('.reference-panel')).toBeVisible({ timeout: 10000 })
 
-      // Panel should show content, loading, or error — any means it responded
+      // Should contain an iframe pointing to churchofjesuschrist.org
+      const iframe = page.locator('.reference-panel iframe.ref-iframe')
+      await expect(iframe).toBeVisible({ timeout: 10000 })
+      const src = await iframe.getAttribute('src')
+      expect(src).toContain('churchofjesuschrist.org')
+
+      // Should have "Open on churchofjesuschrist.org" link
       await expect(
-        page.locator('.reference-panel .ref-content')
-      ).toBeVisible({ timeout: 15000 })
+        page.locator('.reference-panel a').filter({ hasText: 'churchofjesuschrist.org' })
+      ).toBeVisible()
     } else {
       // Skip if no scripture links in this document
       test.skip()
