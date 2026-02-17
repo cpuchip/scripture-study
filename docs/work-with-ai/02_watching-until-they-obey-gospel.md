@@ -132,6 +132,8 @@ The Gods modeled the balance. They specified the *what* clearly: "Let the waters
 
 > Specify the principle. Watch the outcome. Steer when the outcome diverges from the principle.
 
+**Watch the instrument, not just the outcome.** "Watched those things which they had ordered, until they obeyed" includes watching whether you're using the right *method* of watching. In a study session on the Godhead, the AI produced a comprehensive, well-sourced document using keyword search and footnote chains. It looked complete. But the user asked: "Did you use gospel-vec?" — a question about the *instrument*, not the output. The answer was no. When semantic search was applied, it immediately found scriptures that keyword search had missed entirely: 2 Peter 1:4 ("partakers of the divine nature"), Psalm 103:13-14 (the Father's tenderness), D&C 132:24 (eternal *lives*). The Gods didn't just watch — they watched with *understanding*. They knew what they were looking for and whether their methods were sufficient to find it.
+
 This is the essence of the feedback loop: not controlling every detail, but maintaining alignment between the specification and the creation.
 
 ---

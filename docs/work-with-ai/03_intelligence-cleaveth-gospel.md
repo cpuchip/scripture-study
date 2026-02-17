@@ -124,6 +124,10 @@ No single tool could produce it. No single act of reasoning could produce it. Th
 
 **And notice:** this discovery happened because someone brought *genuine seeking* into the session. Not "summarize D&C 93 for me." Not "find me a quote about truth." But "What is truth? What did Joseph Smith see? How does it work?" That's the intelligence that cleaves.
 
+**And it works in both directions.** In a study on the Godhead, the AI had built a comprehensive document — Lectures on Faith framework, Moses 7, D&C 93, John 17, the whole structure. Then the user contributed something the AI's systematic approach had missed: "I think it pairs well with Moses 1:39 I think? about how it's God's work and glory to bring to pass the exaltation and eternal life of man." The "I think" was honest hedging — recalling from memory, not certain of the reference. But the connection was exactly right. Moses 1:39 ("This is my work and my glory — to bring to pass the immortality and eternal life of man") paired with John 17:3 ("This is life eternal, that they might know thee") became the twin epigraph framing the entire study. The AI verified the reference and built the synthesis — but the *connection* came from a human who was genuinely thinking alongside the tool, not just reviewing its output.
+
+Intelligence cleaveth unto intelligence in collaborative sessions too. The user brought a thought. The AI brought verification and integration. Neither alone would have produced that opening. This is the "council" pattern from Part 1 — "the Gods took counsel among themselves" — showing up in the magnifying-glass-and-library rhythm. Sometimes the best thing the library can do is confirm what a genuine seeker already sensed.
+
 ---
 
 ### The Law (5 min)
