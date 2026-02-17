@@ -26,7 +26,7 @@
 But here's what we glossed over last time: **creation didn't end when the Gods gave the order.** Look at this phrase that appears throughout Abraham 4:
 
 > "And the Gods **watched** those things which they had ordered, until they obeyed."
-> — [Abraham 4:18](../gospel-library/eng/scriptures/pgp/abr/4.md)
+> — [Abraham 4:18](../../gospel-library/eng/scriptures/pgp/abr/4.md)
 
 The watching is not a footnote. It's a *phase of creation*. The Gods organized, ordered, and then *stayed present* to see if the creation matched the intention.
 
@@ -40,12 +40,12 @@ Abraham 4 uses a progression of "watching" language that maps precisely onto the
 
 | Verse | Phrase | Development Equivalent |
 |-------|--------|----------------------|
-| [4:10](../gospel-library/eng/scriptures/pgp/abr/4.md) | "the Gods **saw that they were obeyed**" | First review — it matches the spec |
-| [4:12](../gospel-library/eng/scriptures/pgp/abr/4.md) | "the Gods **saw that they were obeyed**" | Confirming the pattern holds for a second iteration |
-| [4:18](../gospel-library/eng/scriptures/pgp/abr/4.md) | "the Gods **watched** those things which they had ordered, **until** they obeyed" | Active monitoring — this one took time, it wasn't instant |
-| [4:21](../gospel-library/eng/scriptures/pgp/abr/4.md) | "the Gods **saw that they would be obeyed**, and that their plan was good" | Forward-looking confidence — they could project that this pattern would continue |
-| [4:25](../gospel-library/eng/scriptures/pgp/abr/4.md) | "the Gods **saw they would obey**" | Trust established through repeated verification |
-| [4:31](../gospel-library/eng/scriptures/pgp/abr/4.md) | "behold, they shall be **very obedient**" | Full trust — the pattern is proven, the system is reliable |
+| [4:10](../../gospel-library/eng/scriptures/pgp/abr/4.md) | "the Gods **saw that they were obeyed**" | First review — it matches the spec |
+| [4:12](../../gospel-library/eng/scriptures/pgp/abr/4.md) | "the Gods **saw that they were obeyed**" | Confirming the pattern holds for a second iteration |
+| [4:18](../../gospel-library/eng/scriptures/pgp/abr/4.md) | "the Gods **watched** those things which they had ordered, **until** they obeyed" | Active monitoring — this one took time, it wasn't instant |
+| [4:21](../../gospel-library/eng/scriptures/pgp/abr/4.md) | "the Gods **saw that they would be obeyed**, and that their plan was good" | Forward-looking confidence — they could project that this pattern would continue |
+| [4:25](../../gospel-library/eng/scriptures/pgp/abr/4.md) | "the Gods **saw they would obey**" | Trust established through repeated verification |
+| [4:31](../../gospel-library/eng/scriptures/pgp/abr/4.md) | "behold, they shall be **very obedient**" | Full trust — the pattern is proven, the system is reliable |
 
 Look at the progression: *saw they were obeyed* → *watched until they obeyed* → *saw they would be obeyed* → *they shall be very obedient*.
 
@@ -100,7 +100,7 @@ Each fix revealed the next thing to fix. This is *watching until they obey* — 
 This pattern appears beyond Abraham 4. Consider:
 
 > "I will prove them herewith, to see if they will do all things whatsoever the Lord their God shall command them."
-> — [Abraham 3:25](../gospel-library/eng/scriptures/pgp/abr/3.md)
+> — [Abraham 3:25](../../gospel-library/eng/scriptures/pgp/abr/3.md)
 
 God watches *us* the same way. Not because He doesn't know the outcome — He does, in a way that transcends time. But the watching, the proving, is part of the creative process. Agency requires it. Growth requires it. Something that is never tested is never proven "very obedient."
 
@@ -128,7 +128,7 @@ The Gods didn't micromanage every detail of creation. They organized, ordered, a
 
 **The danger of under-steering:** If you let wrong patterns propagate uncorrected, they compound. A small architectural mistake in function #1 becomes a structural problem by function #20.
 
-The Gods modeled the balance. They specified the *what* clearly: "Let the waters bring forth abundantly the moving creatures that have life" ([Abraham 4:20](../gospel-library/eng/scriptures/pgp/abr/4.md)). They watched the *outcome*. But they didn't specify every species of fish. They gave the organizing principle — "after their kind" — and let the creation unfold within those bounds.
+The Gods modeled the balance. They specified the *what* clearly: "Let the waters bring forth abundantly the moving creatures that have life" ([Abraham 4:20](../../gospel-library/eng/scriptures/pgp/abr/4.md)). They watched the *outcome*. But they didn't specify every species of fish. They gave the organizing principle — "after their kind" — and let the creation unfold within those bounds.
 
 > Specify the principle. Watch the outcome. Steer when the outcome diverges from the principle.
 
@@ -143,7 +143,7 @@ This is the essence of the feedback loop: not controlling every detail, but main
 Now we need to address something deeper. Is the AI *obeying*? Does it have agency? And does it matter?
 
 > "All truth is independent in that sphere in which God has placed it, **to act for itself**, as all intelligence also; otherwise there is no existence."
-> — [D&C 93:30](../gospel-library/eng/scriptures/dc-testament/dc/93.md)
+> — [D&C 93:30](../../gospel-library/eng/scriptures/dc-testament/dc/93.md)
 
 In the Restoration framework, intelligence is self-acting. It chooses. It's not merely responsive to external force — it acts from within. That's what makes it intelligence and not just matter.
 
@@ -164,7 +164,7 @@ AI is similar. It's not self-acting intelligence in the D&C 93 sense. It's a sop
 3. **Your agency is the irreplaceable element.** The AI brings processing. You bring *choice*. You choose what to build. You choose whether the output is good. You choose what to correct and what to accept. The creation pattern works because self-acting intelligence (you) directs law-responding capacity (AI), within a framework of eternal principles (truth).
 
 > "The glory of God is intelligence, or, in other words, light and truth."
-> — [D&C 93:36](../gospel-library/eng/scriptures/dc-testament/dc/93.md)
+> — [D&C 93:36](../../gospel-library/eng/scriptures/dc-testament/dc/93.md)
 
 The glory isn't in the implementation. It's in the intelligence — the light and truth — that directs it.
 
@@ -192,7 +192,7 @@ The glory isn't in the implementation. It's in the intelligence — the light an
 - The Gods brought intelligence to the organizing of matter; you bring intelligence to the directing of AI
 
 **Next session: Intelligence Cleaveth Unto Intelligence**
-- [D&C 88:40](../gospel-library/eng/scriptures/dc-testament/dc/88.md) in practice — how the quality of what you bring shapes the quality of what emerges
+- [D&C 88:40](../../gospel-library/eng/scriptures/dc-testament/dc/88.md) in practice — how the quality of what you bring shapes the quality of what emerges
 - The truth-enjoy discovery as a real example — what happens when you bring genuine seeking to AI-assisted study
 - Why gospel-centered engagement produces different results than transactional use
 - The difference between *using* AI and *collaborating with* intelligence
@@ -205,18 +205,18 @@ Take the planning doc you wrote after Part 1 — your "spiritual creation." Star
 ## Teaching Notes
 
 ### Key Scripture References
-- [Abraham 4:10, 12, 18, 21, 25, 31](../gospel-library/eng/scriptures/pgp/abr/4.md) — The watching vocabulary progression
-- [Abraham 3:25](../gospel-library/eng/scriptures/pgp/abr/3.md) — "Prove them herewith, to see if they will do"
-- [D&C 93:29-30](../gospel-library/eng/scriptures/dc-testament/dc/93.md) — Intelligence is self-acting; agency as the condition of existence
-- [D&C 93:36](../gospel-library/eng/scriptures/dc-testament/dc/93.md) — The glory of God is intelligence
-- [D&C 88:40](../gospel-library/eng/scriptures/dc-testament/dc/88.md) — Intelligence cleaveth unto intelligence (preview of Part 3)
+- [Abraham 4:10, 12, 18, 21, 25, 31](../../gospel-library/eng/scriptures/pgp/abr/4.md) — The watching vocabulary progression
+- [Abraham 3:25](../../gospel-library/eng/scriptures/pgp/abr/3.md) — "Prove them herewith, to see if they will do"
+- [D&C 93:29-30](../../gospel-library/eng/scriptures/dc-testament/dc/93.md) — Intelligence is self-acting; agency as the condition of existence
+- [D&C 93:36](../../gospel-library/eng/scriptures/dc-testament/dc/93.md) — The glory of God is intelligence
+- [D&C 88:40](../../gospel-library/eng/scriptures/dc-testament/dc/88.md) — Intelligence cleaveth unto intelligence (preview of Part 3)
 
 ### Related Studies
-- [Creation Patterns study](../study/creation.md) — Original study connecting creation accounts
-- [Intelligence study](../study/intelligence.md) — Intelligence, agency, AI as type/shadow
-- [Truth study](../study/truth.md) — D&C 93, truth as the substrate of existence
-- [How Tools Help](07_how-tools-help.md) — Real examples of the feedback loop in action
-- [Tool Use Observance](06_tool-use-observance.md) — Running log of bugs found through watching
+- [Creation Patterns study](../../study/creation.md) — Original study connecting creation accounts
+- [Intelligence study](../../study/intelligence.md) — Intelligence, agency, AI as type/shadow
+- [Truth study](../../study/truth.md) — D&C 93, truth as the substrate of existence
+- [How Tools Help](../07_how-tools-help.md) — Real examples of the feedback loop in action
+- [Tool Use Observance](../06_tool-use-observance.md) — Running log of bugs found through watching
 
 ### The Abraham 4 Progression Exercise
 Walk through the watching language as a class/audience. Put the six verses on a board. Ask: "What changes between verse 10 and verse 31? How does the Gods' relationship to the creation evolve?" Let the audience discover the trust gradient themselves — it's more powerful when they find it than when you tell them.
