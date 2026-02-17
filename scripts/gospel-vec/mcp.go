@@ -748,29 +748,37 @@ func buildMarkdownLink(meta *DocMetadata) string {
 }
 
 // checkFileExists checks if a file exists on disk
-// It tries the path as-is and also relative to common base directories
+// It tries the path as-is and also relative to common base directories.
+// Handles CWD being either the repo root or scripts/gospel-vec/ since
+// stored paths may use ../../ (relative to scripts/gospel-vec/) while
+// the MCP server runs from the workspace root.
 func checkFileExists(filePath string) bool {
 	// Normalize path
 	normalized := strings.ReplaceAll(filePath, "/", string(filepath.Separator))
 
-	// Try as-is
+	// Try as-is (works when CWD matches the indexing CWD)
 	if _, err := os.Stat(normalized); err == nil {
 		return true
 	}
 
-	// Try relative from current working directory
-	if _, err := os.Stat(filepath.Join(".", normalized)); err == nil {
-		return true
+	// Strip ALL leading ../ segments to get the bare relative path
+	// e.g., "../../gospel-library/eng/..." -> "gospel-library/eng/..."
+	stripped := normalized
+	sep := string(filepath.Separator)
+	for strings.HasPrefix(stripped, ".."+sep) {
+		stripped = stripped[3:] // len(".."+sep) == 3
+	}
+	stripped = strings.TrimPrefix(stripped, "..")
+	stripped = strings.TrimPrefix(stripped, sep)
+
+	// Try stripped path from CWD (works when CWD is the repo root)
+	if stripped != normalized {
+		if _, err := os.Stat(stripped); err == nil {
+			return true
+		}
 	}
 
-	// Try stripping leading ../ and checking from cwd
-	stripped := strings.TrimPrefix(normalized, "..")
-	stripped = strings.TrimPrefix(stripped, string(filepath.Separator))
-	if _, err := os.Stat(stripped); err == nil {
-		return true
-	}
-
-	// Try from two directories up (scripts/gospel-vec -> repo root)
+	// Try from two directories up (works when CWD is scripts/gospel-vec/)
 	if _, err := os.Stat(filepath.Join("..", "..", stripped)); err == nil {
 		return true
 	}

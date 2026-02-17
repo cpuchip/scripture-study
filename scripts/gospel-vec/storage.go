@@ -385,7 +385,7 @@ func collectionName(source Source, layer Layer) string {
 // parseCollectionName extracts source and layer from collection name
 func parseCollectionName(name string) (Source, Layer) {
 	// Simple split on "-"
-	for _, source := range []Source{SourceScriptures, SourceConference, SourceManual} {
+	for _, source := range allSources() {
 		for _, layer := range []Layer{LayerVerse, LayerParagraph, LayerSummary, LayerTheme} {
 			if collectionName(source, layer) == name {
 				return source, layer

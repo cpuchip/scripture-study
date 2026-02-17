@@ -625,10 +625,14 @@ func (idx *Indexer) IndexManuals(ctx context.Context, opts ManualIndexOptions) e
 
 				// Periodic save
 				if opts.SaveInterval > 0 && totalFiles%opts.SaveInterval == 0 {
+					saveSource := SourceManual
+					if opts.SourceOverride != "" {
+						saveSource = opts.SourceOverride
+					}
 					if opts.Verbose {
 						fmt.Printf("\n   💾 Checkpoint save at %d files...", totalFiles)
 					}
-					if err := idx.store.SaveSource(SourceManual); err != nil {
+					if err := idx.store.SaveSource(saveSource); err != nil {
 						fmt.Printf("\n   ⚠️  Checkpoint save failed: %v", err)
 					}
 				}
