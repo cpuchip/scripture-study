@@ -1,7 +1,7 @@
 # Becoming App — Architecture Plan
 
 *Created: February 11, 2026*
-*Updated: February 16, 2026 — Phases 1, 2, 6 complete. Enhancement Sprints 1-6 complete. Phase 3 replanned with git integration.*
+*Updated: February 16, 2026 — Phases 1, 2, 6 complete. Enhancement Sprints 1-6 complete. Phase 3 replanned: GitHub-first with client-side fetch, include/exclude filters, no copyrighted content.*
 *Context: Tools to help apply the "Become" commitments from our truth studies*
 
 ---
@@ -418,101 +418,177 @@ go build -o server ./cmd/server/
 - Ease factor adjusts each review (min 1.3)
 - Due query: `json_extract(config, '$.next_review') <= date OR repetitions = 0`
 
-### Phase 3: Study Reader (with Git-Based Document Sources)
-**Goal:** Side-by-side markdown reader with reference panel, powered by git repos as document sources.
+### Phase 3: Study Reader (GitHub-First Document Sources)
+**Goal:** Side-by-side markdown reader with reference panel, powered by GitHub repos as document sources — zero content storage on the server.
 
 **The problem with local-only documents:** The current scripture-study repo bundles study documents alongside the Become app, MCP servers, gospel-library content, and tooling. This couples personal study content to infrastructure. For multi-user, each person needs their own study documents — but the app shouldn't care *where* they live.
 
-**The insight:** Git repos are the natural unit for study collections. They version, collaborate, sync, and organize markdown documents — exactly what we already do. Instead of hardcoding paths, the Study reader treats git repos as pluggable document libraries.
+**The insight:** Git repos are the natural unit for study collections. They version, collaborate, sync, and organize markdown documents — exactly what we already do. Instead of cloning repos or storing files, the Study reader fetches content directly from GitHub — the **frontend** talks to GitHub, the **server** stays thin.
 
-#### Architecture: Document Sources
+**Why not serve gospel-library content?** The `gospel-library/` folder contains copyrighted material from The Church of Jesus Christ of Latter-day Saints, cached locally for personal CLI/editor study tools. Serving it through a web app crosses a line. Instead, published study docs in `public/` already link to the Church's website for scripture references — the reader doesn't need to serve Church content.
 
-Each user configures one or more **document sources** — git repos that contain study materials:
+#### Architecture: Client-Side GitHub Fetch
+
+The key design decision: **public repo content flows directly from GitHub to the browser**. The server never touches markdown files for public repos. This means zero content bandwidth on the NAS — the server only handles config CRUD and progress tracking.
 
 ```
-┌─────────────────────────────────────────────────────────────┐
-│                     Study Reader                             │
-│                                                              │
-│  ┌──────────────┐  ┌─────────────────────────────────────┐  │
-│  │ Source Panel  │  │ Document Viewer                     │  │
-│  │              │  │                                     │  │
-│  │ 📚 My Studies │  │  [Main Panel]    [Reference Panel]  │  │
-│  │  ├─ creation │  │                                     │  │
-│  │  ├─ truth    │  │  study doc ←→ scripture side panel  │  │
-│  │  └─ cfm/     │  │                                     │  │
-│  │              │  │                                     │  │
-│  │ 📖 Gospel Lib │  │                                     │  │
-│  │  ├─ bofm/    │  │                                     │  │
-│  │  ├─ dc/      │  │                                     │  │
-│  │  └─ nt/      │  │                                     │  │
-│  │              │  │                                     │  │
-│  │ 📝 Shared Repo│  │                                     │  │
-│  │  └─ lessons/ │  │                                     │  │
-│  └──────────────┘  └─────────────────────────────────────┘  │
-└─────────────────────────────────────────────────────────────┘
+┌──────────────────────────────────────────────────────────────┐
+│                        Browser (Vue 3)                        │
+│                                                               │
+│  ┌───────────┐  ┌──────────────┐  ┌────────────────────────┐ │
+│  │ Source     │  │ Main Panel   │  │ Reference Panel (tabs) │ │
+│  │ Browser   │  │              │  │                        │ │
+│  │           │  │ Markdown     │  │ Related doc or         │ │
+│  │ 📚 Studies │  │ Viewer       │  │ external link content  │ │
+│  │  ├─ word  │  │              │  │                        │ │
+│  │  ├─ truth │  │              │  │                        │ │
+│  │  └─ cfm/  │  │              │  │                        │ │
+│  │           │  │              │  │                        │ │
+│  │ 📝 Lessons │  │              │  │                        │ │
+│  │  └─ tsw/  │  │              │  │                        │ │
+│  └─────┬─────┘  └──────┬───────┘  └────────────┬───────────┘ │
+│        │               │                        │             │
+│        │  ┌─────────────────────────────────┐   │             │
+│        └──┤  GitHub Content Service (TS)    ├───┘             │
+│           │                                 │                 │
+│           │  Trees API → file tree listing  │                 │
+│           │  raw.githubusercontent.com →    │                 │
+│           │    markdown content (no rate    │                 │
+│           │    limit for public repos!)     │                 │
+│           │  Include/exclude glob filters  │                 │
+│           └───────────────┬─────────────────┘                 │
+│                           │                                   │
+└───────────────────────────┼───────────────────────────────────┘
+                            │ CORS ✓ (public repos)
+                            ▼
+                    ┌───────────────┐
+                    │    GitHub     │
+                    │  (free tier)  │
+                    └───────────────┘
+
+Server only handles:
+  POST /api/sources     → save source config (repo, filters)
+  GET  /api/sources     → list user's configured sources
+  PUT  /api/sources/:id → update config / filters
+  DEL  /api/sources/:id → remove source
+  POST /api/reading-progress → track what's been read
+  GET  /api/reading-progress → reading history
 ```
 
 #### Document Source Types
 
-| Source Type | Description | Multi-user? |
+| Source Type | Description | Server Cost |
 |-------------|-------------|-------------|
-| **Local filesystem** | Direct path to a folder of markdown files (e.g., `../../study/`). Works for single-user/dev. | No — server-only |
-| **Git repo (clone)** | Shallow clone a GitHub/GitLab repo into user's content directory. Periodic pull to sync. | Yes — each user links their own repos |
-| **Git repo (API)** | Browse via GitHub API without cloning. Read markdown on-demand from raw content URLs. | Yes — minimal storage |
-| **Gospel Library (built-in)** | The shared `gospel-library/` content — scriptures, talks, manuals. Read-only, available to all users. | Yes — common mount |
+| **`github_public`** | Public GitHub repo. Frontend fetches trees + content directly via `raw.githubusercontent.com`. No auth, no rate limit on raw content. | **Zero** — config only |
+| **`github_private`** | Private GitHub repo. Server proxies requests with user's PAT. Optional DB cache for trees/content. | **Minimal** — proxy + cache |
 
-#### Git Integration Design
+Future source types (not Sprint 1): `gitlab_public`, `gitea`, `bitbucket` — same pattern, different API base URLs.
 
-**Per-user repo configuration:**
+#### Include/Exclude Filters
+
+Each source has glob-pattern filters that control which files appear in the reader. This is critical because repos contain more than just readable documents.
+
+**Example:** Point at `cpuchip/scripture-study` but only show published study content:
+```
+Source: cpuchip/scripture-study
+Include: ["public/study/**/*.md", "public/lessons/**/*.md"]
+Exclude: ["**/README.md", "**/_*"]
+```
+
+Filter evaluation:
+1. Fetch recursive tree from GitHub Trees API (one request, cached)
+2. Filter to `.md` files only
+3. Apply include patterns (if any — empty = include all `.md`)
+4. Remove matches against exclude patterns
+5. Build file tree for the sidebar
+
+Filters use **glob syntax** (same as `.gitignore`): `*` matches within a directory, `**` matches across directories, `!` negates. Evaluated client-side against the tree response.
+
+#### Schema
+
 ```sql
 CREATE TABLE document_sources (
+    id              SERIAL PRIMARY KEY,
+    user_id         INTEGER NOT NULL REFERENCES users(id),
+    name            TEXT NOT NULL,               -- "My Studies", "Ward Lessons"
+    source_type     TEXT NOT NULL,               -- 'github_public' | 'github_private'
+    repo            TEXT NOT NULL,               -- 'cpuchip/scripture-study' (owner/repo)
+    branch          TEXT DEFAULT 'main',
+    include_paths   TEXT DEFAULT '[]',           -- JSON array of glob patterns
+    exclude_paths   TEXT DEFAULT '[]',           -- JSON array of glob patterns
+    auth_token      TEXT,                        -- encrypted PAT (private repos only)
+    tree_cache      TEXT,                        -- cached tree JSON (optional)
+    tree_etag       TEXT,                        -- GitHub ETag for conditional requests
+    tree_cached_at  TIMESTAMPTZ,
+    created_at      TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Track what the user has read
+CREATE TABLE reading_progress (
     id          SERIAL PRIMARY KEY,
     user_id     INTEGER NOT NULL REFERENCES users(id),
-    name        TEXT NOT NULL,           -- "My Studies", "Ward Lessons"
-    source_type TEXT NOT NULL,           -- 'local' | 'git_clone' | 'git_api' | 'gospel_library'
-    url         TEXT,                    -- git URL or local path
-    branch      TEXT DEFAULT 'main',
-    sub_path    TEXT DEFAULT '',         -- subfolder within repo (e.g., 'study/')
-    auth_token  TEXT,                    -- encrypted GitHub PAT for private repos
-    last_synced TIMESTAMPTZ,
-    created_at  TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP
+    source_id   INTEGER NOT NULL REFERENCES document_sources(id) ON DELETE CASCADE,
+    file_path   TEXT NOT NULL,                   -- path within repo
+    read_at     TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP,
+    scroll_pct  REAL DEFAULT 0,                  -- how far they scrolled (resume reading)
+    UNIQUE(user_id, source_id, file_path)
 );
 ```
 
-**Sync strategy for `git_clone` sources:**
-- On first add: `git clone --depth 1 --filter=blob:none` (minimal footprint)
-- On app load or manual refresh: `git pull --ff-only`
-- Storage: `data/repos/{user_id}/{source_id}/` on server
-- Only `.md` files are indexed/served — ignore everything else
+#### GitHub Content Service (Frontend)
 
-**GitHub API approach (`git_api` sources):**
-- Use GitHub Contents API to list directories and read files on-demand
-- Cache responses with ETags for efficient re-fetching
-- No storage needed, but slower for browsing deep trees
-- Rate limit: 5,000 req/hour authenticated, 60/hour unauthenticated
+A TypeScript service that handles all GitHub communication:
 
-#### Step 7: Repository Separation
+```typescript
+class GitHubContentService {
+  // Fetch recursive tree, apply include/exclude filters, return file list
+  async getTree(repo: string, branch: string, include: string[], exclude: string[]): Promise<TreeEntry[]>
 
-The current `scripture-study` repo should be split:
-- **`scripture-study`** — The app: Become backend, frontend, MCP servers, gospel-library content
+  // Fetch raw markdown content (raw.githubusercontent.com — no rate limit)
+  async getContent(repo: string, branch: string, path: string): Promise<string>
+
+  // Cache tree in memory (or localStorage) to avoid re-fetching on every nav
+  private treeCache: Map<string, { entries: TreeEntry[], fetchedAt: number }>
+}
+```
+
+For **public repos**, both calls go directly to GitHub from the browser:
+- Tree: `GET https://api.github.com/repos/{owner}/{repo}/git/trees/{branch}?recursive=1`
+- Content: `GET https://raw.githubusercontent.com/{owner}/{repo}/{branch}/{path}`
+
+For **private repos**, calls proxy through the server:
+- Tree: `GET /api/sources/{id}/tree` (server adds auth header, caches in DB)
+- Content: `GET /api/sources/{id}/content?path={path}` (server fetches and relays)
+
+#### Sprint Plan
+
+**Sprint 1: Read-only viewer with public GitHub repos**
+1. `document_sources` + `reading_progress` tables (migration)
+2. Source CRUD API (`/api/sources`)
+3. `GitHubContentService` TypeScript class
+4. `SourcesView.vue` — manage repos, set include/exclude filters
+5. `ReaderView.vue` — sidebar file tree + markdown viewer
+6. Wire up first source: `cpuchip/scripture-study` with `include: ["public/**/*.md"]`
+
+**Sprint 2: Side panel + reading progress**
+1. `ReferencePanel` component — tabbed side panel for related docs
+2. Link interception — clicks on internal links open in side panel (not navigate away)
+3. Reading progress tracking — mark docs read, resume scroll position
+4. "Add to memorize" button (one-click from reader to memorization deck)
+
+**Sprint 3: Private repos + repo separation**
+1. Private repo proxy endpoints (server adds auth, caches trees)
+2. PAT management in source settings (encrypted storage)
+3. Split study content into its own repo (`studies`) — first private source
+4. Source refresh / cache invalidation UI
+
+#### Repository Separation (Sprint 3)
+
+The current `scripture-study` repo mixes app infrastructure with personal study content. The split:
+- **`scripture-study`** — The app: Become backend, frontend, MCP servers, publish tooling
 - **`studies`** (new repo) — Personal study documents, lessons, journal entries, CFM notes
 
-The `studies` repo becomes the first git document source for the Study reader. This cleanly separates infrastructure from content, and lets other users create their own study repos that plug into the same app.
-
-#### Core Study Reader Features
-
-1. **REST API:**
-   - `GET /api/sources` — list user's document sources
-   - `POST /api/sources` — add a new source (git URL, local path, etc.)
-   - `POST /api/sources/{id}/sync` — trigger git pull
-   - `GET /api/docs?source={id}` — list documents in a source
-   - `GET /api/content?source={id}&path={path}` — serve markdown file content
-2. **DocBrowser component** — sidebar file tree, grouped by source
-3. **MarkdownViewer component** — main panel, markdown-it rendering with proper blockquote styling
-4. **ReferencePanel component** — side panel with tabs, opens scripture/talk links without navigating away
-5. **Link interception** — internal `gospel-library/` links open in reference panel
-6. **Reading progress tracking** — which docs/chapters have been read
-7. **"Add to memorize" button** — one-click from reference panel to memorization deck
+`studies` becomes the first pluggable source in the reader. Other users can create their own study repos and plug them in the same way.
 
 ### Phase 4: Integration & Polish
 **Goal:** Connect all the pieces, polish the experience.
@@ -526,11 +602,10 @@ The `studies` repo becomes the first git document source for the Study reader. T
 6. ✅ MCP tools (becoming-mcp server with practice tracking, journal, memorization)
 
 **Remaining:**
-1. Study reader ↔ Become integration ("Add to memorize" from reader)
-2. Study reader surfaces "Become" sections with task-creation buttons
-3. Mobile responsiveness & UX polish (see below)
-4. Dark mode
-5. PWA support (service worker, installable)
+1. Study reader integration — "Add to memorize" and "Become" section task-creation (depends on Phase 3)
+2. Mobile responsiveness & UX polish (see below)
+3. Dark mode
+4. PWA support (service worker, installable)
 
 #### Mobile & UX Polish
 
