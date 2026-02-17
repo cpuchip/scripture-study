@@ -12,7 +12,7 @@ import (
 type SharedLink struct {
 	ID        int64     `json:"id"`
 	Code      string    `json:"code"`
-	UserID    *int64    `json:"user_id,omitempty"`  // nullable — anonymous shares allowed
+	UserID    *int64    `json:"user_id,omitempty"`   // nullable — anonymous shares allowed
 	SourceID  *int64    `json:"source_id,omitempty"` // optional link to user's source
 	Provider  string    `json:"provider"`            // "gh" for GitHub
 	Repo      string    `json:"repo"`
