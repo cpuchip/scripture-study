@@ -1,7 +1,7 @@
 # Becoming App — Architecture Plan
 
 *Created: February 11, 2026*
-*Updated: February 11, 2026 — Phase 1 complete: Go+SQLite+Vue3+Tailwind, generalized practice model*
+*Updated: February 16, 2026 — Phases 1, 2, 6 complete. Enhancement Sprints 1-6 complete. Phase 3 replanned with git integration.*
 *Context: Tools to help apply the "Become" commitments from our truth studies*
 
 ---
@@ -418,24 +418,130 @@ go build -o server ./cmd/server/
 - Ease factor adjusts each review (min 1.3)
 - Due query: `json_extract(config, '$.next_review') <= date OR repetitions = 0`
 
-### Phase 3: Study Reader
-**Goal:** Side-by-side markdown reader with reference panel.
+### Phase 3: Study Reader (with Git-Based Document Sources)
+**Goal:** Side-by-side markdown reader with reference panel, powered by git repos as document sources.
 
-1. REST API: `/api/docs` (list study files), `/api/content` (serve markdown by path)
-2. DocBrowser component (sidebar file tree)
-3. MarkdownViewer component (main panel, markdown-it rendering)
-4. ReferencePanel component (side panel, tabbed, opens on link click)
-5. Link interception: internal scripture/talk links open in side panel instead of navigating
-6. Reading progress tracking
+**The problem with local-only documents:** The current scripture-study repo bundles study documents alongside the Become app, MCP servers, gospel-library content, and tooling. This couples personal study content to infrastructure. For multi-user, each person needs their own study documents — but the app shouldn't care *where* they live.
 
-### Phase 4: Integration
-**Goal:** Both apps talk to each other and the AI.
+**The insight:** Git repos are the natural unit for study collections. They version, collaborate, sync, and organize markdown documents — exactly what we already do. Instead of hardcoding paths, the Study reader treats git repos as pluggable document libraries.
 
-1. Study reader "Add to memorize" button in reference panel
+#### Architecture: Document Sources
+
+Each user configures one or more **document sources** — git repos that contain study materials:
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│                     Study Reader                             │
+│                                                              │
+│  ┌──────────────┐  ┌─────────────────────────────────────┐  │
+│  │ Source Panel  │  │ Document Viewer                     │  │
+│  │              │  │                                     │  │
+│  │ 📚 My Studies │  │  [Main Panel]    [Reference Panel]  │  │
+│  │  ├─ creation │  │                                     │  │
+│  │  ├─ truth    │  │  study doc ←→ scripture side panel  │  │
+│  │  └─ cfm/     │  │                                     │  │
+│  │              │  │                                     │  │
+│  │ 📖 Gospel Lib │  │                                     │  │
+│  │  ├─ bofm/    │  │                                     │  │
+│  │  ├─ dc/      │  │                                     │  │
+│  │  └─ nt/      │  │                                     │  │
+│  │              │  │                                     │  │
+│  │ 📝 Shared Repo│  │                                     │  │
+│  │  └─ lessons/ │  │                                     │  │
+│  └──────────────┘  └─────────────────────────────────────┘  │
+└─────────────────────────────────────────────────────────────┘
+```
+
+#### Document Source Types
+
+| Source Type | Description | Multi-user? |
+|-------------|-------------|-------------|
+| **Local filesystem** | Direct path to a folder of markdown files (e.g., `../../study/`). Works for single-user/dev. | No — server-only |
+| **Git repo (clone)** | Shallow clone a GitHub/GitLab repo into user's content directory. Periodic pull to sync. | Yes — each user links their own repos |
+| **Git repo (API)** | Browse via GitHub API without cloning. Read markdown on-demand from raw content URLs. | Yes — minimal storage |
+| **Gospel Library (built-in)** | The shared `gospel-library/` content — scriptures, talks, manuals. Read-only, available to all users. | Yes — common mount |
+
+#### Git Integration Design
+
+**Per-user repo configuration:**
+```sql
+CREATE TABLE document_sources (
+    id          SERIAL PRIMARY KEY,
+    user_id     INTEGER NOT NULL REFERENCES users(id),
+    name        TEXT NOT NULL,           -- "My Studies", "Ward Lessons"
+    source_type TEXT NOT NULL,           -- 'local' | 'git_clone' | 'git_api' | 'gospel_library'
+    url         TEXT,                    -- git URL or local path
+    branch      TEXT DEFAULT 'main',
+    sub_path    TEXT DEFAULT '',         -- subfolder within repo (e.g., 'study/')
+    auth_token  TEXT,                    -- encrypted GitHub PAT for private repos
+    last_synced TIMESTAMPTZ,
+    created_at  TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP
+);
+```
+
+**Sync strategy for `git_clone` sources:**
+- On first add: `git clone --depth 1 --filter=blob:none` (minimal footprint)
+- On app load or manual refresh: `git pull --ff-only`
+- Storage: `data/repos/{user_id}/{source_id}/` on server
+- Only `.md` files are indexed/served — ignore everything else
+
+**GitHub API approach (`git_api` sources):**
+- Use GitHub Contents API to list directories and read files on-demand
+- Cache responses with ETags for efficient re-fetching
+- No storage needed, but slower for browsing deep trees
+- Rate limit: 5,000 req/hour authenticated, 60/hour unauthenticated
+
+#### Step 7: Repository Separation
+
+The current `scripture-study` repo should be split:
+- **`scripture-study`** — The app: Become backend, frontend, MCP servers, gospel-library content
+- **`studies`** (new repo) — Personal study documents, lessons, journal entries, CFM notes
+
+The `studies` repo becomes the first git document source for the Study reader. This cleanly separates infrastructure from content, and lets other users create their own study repos that plug into the same app.
+
+#### Core Study Reader Features
+
+1. **REST API:**
+   - `GET /api/sources` — list user's document sources
+   - `POST /api/sources` — add a new source (git URL, local path, etc.)
+   - `POST /api/sources/{id}/sync` — trigger git pull
+   - `GET /api/docs?source={id}` — list documents in a source
+   - `GET /api/content?source={id}&path={path}` — serve markdown file content
+2. **DocBrowser component** — sidebar file tree, grouped by source
+3. **MarkdownViewer component** — main panel, markdown-it rendering with proper blockquote styling
+4. **ReferencePanel component** — side panel with tabs, opens scripture/talk links without navigating away
+5. **Link interception** — internal `gospel-library/` links open in reference panel
+6. **Reading progress tracking** — which docs/chapters have been read
+7. **"Add to memorize" button** — one-click from reference panel to memorization deck
+
+### Phase 4: Integration & Polish
+**Goal:** Connect all the pieces, polish the experience.
+
+**Already done (via Enhancement Sprints 1-6):**
+1. ✅ Practice lifecycle (pause, complete, archive, restore)
+2. ✅ Adaptive study mode with 8 exercise types and SM-2 quality gating
+3. ✅ Memorize card lifecycle (mastery detection, end dates, aptitude dashboard)
+4. ✅ Activity calendar heatmap on Reports page
+5. ✅ Start date & future planning with filtering
+6. ✅ MCP tools (becoming-mcp server with practice tracking, journal, memorization)
+
+**Remaining:**
+1. Study reader ↔ Become integration ("Add to memorize" from reader)
 2. Study reader surfaces "Become" sections with task-creation buttons
-3. Progress dashboard showing study patterns, memorization streaks, habit consistency
-4. MCP tools for reading log and progress queries
-5. Polish, mobile responsiveness, dark mode
+3. Mobile responsiveness & UX polish (see below)
+4. Dark mode
+5. PWA support (service worker, installable)
+
+#### Mobile & UX Polish
+
+The app works but wasn't designed mobile-first. Key improvements needed:
+
+- **Responsive nav:** Hamburger menu / slide-out drawer on small screens (top bar currently overflows)
+- **Collapsible filters:** Filter icon (funnel) that expands filter rows on Practices page — the 3 filter rows (Type, Cat, Time) are unwieldy on mobile
+- **Touch-friendly targets:** Larger tap areas on card pills, buttons, and practice rows
+- **Study mode on narrow screens:** Exercise layouts (especially Arrange Words) need mobile-optimized rendering
+- **Heatmap responsiveness:** Scrollable or condensed heatmap on Reports page for small screens
+- **Bottom nav option:** Consider bottom tab bar on mobile instead of top nav
 
 ### Phase 5: In-App AI Assistant (GitHub Copilot SDK)
 **Goal:** Chat with AI directly inside the Study reader.
@@ -479,20 +585,37 @@ You: "Add D&C 88:6 to my memorization deck."
 AI: [calls become_add_memorize] "Added. You have 6 cards due for review tomorrow."
 ```
 
-### Phase 6: Deployment + Multi-User (Dokploy on VPS)
+### Phase 6: Deployment + Multi-User (Dokploy on VPS) ✅ COMPLETE
 **Goal:** Deploy to a VPS so others can benefit from the app.
 
-1. Dockerize the app (single container: Go binary + embedded Vue build + SQLite volume)
-2. Deploy via Dokploy on VPS with SSL and domain routing
-3. Add user authentication (JWT or session-based)
-4. Multi-tenant SQLite strategy:
-   - Option A: One SQLite file per user (simpler isolation, easy backup/restore per user)
-   - Option B: Single DB with user_id foreign keys (simpler queries, standard approach)
-   - Leaning: Option A for clean isolation — each user's data is one file
-5. User registration + onboarding flow
-6. Shared content (scriptures, talks) served from a common gospel-library mount
-7. Per-user study docs (or read-only shared + personal notes layer)
-8. For Copilot SDK: each user needs their own Copilot auth, or use BYOK with a shared API key and rate limiting
+**What was built:**
+1. ✅ Dockerized app deployed via Dokploy on VPS at ibeco.me
+2. ✅ SSL and domain routing configured
+3. ✅ JWT-based authentication with login/register/logout
+4. ✅ PostgreSQL for production (not SQLite — chose Option B: single DB with `user_id` foreign keys)
+5. ✅ SQLite retained for local dev with automatic schema migration compatibility
+6. ✅ DB portability layer: `DateCast()`, `DateText()`, `rebind()`, `InsertReturningID()`, `JSONExtract()`
+7. ✅ Goose migrations for PostgreSQL (`internal/db/migrations/postgres/001-004`)
+8. ✅ User registration with privacy/terms pages, public landing page
+9. ✅ Dynamic branding and logo
+10. ✅ Gospel library content served from common mount
+
+**Decision change:** Went with Option B (single PostgreSQL DB with `user_id` FK) instead of Option A (per-user SQLite). Standard approach, simpler queries, better for hosted deployment. SQLite kept for local dev.
+
+---
+
+## Completed Enhancement Sprints
+
+These sprints enhanced Phases 1-2 after deployment. Full specs in [becoming-improvements.md](becoming-improvements.md).
+
+| Sprint | What | Status |
+|--------|------|--------|
+| 1 | Practice Lifecycle — Schema & Backend (status, archived_at, end_date, migrations) | ✅ |
+| 2 | Practice Lifecycle — Frontend (tabs, action icons, end date badges) | ✅ |
+| 3 | Memorization Study Mode — Adaptive Difficulty (8 exercise modes, aptitude model, SM-2 quality gating, session momentum) | ✅ |
+| 4 | Memorize Card Lifecycle (mastery detection, complete/archive cards, aptitude dashboard, level progression) | ✅ |
+| 5 | Activity Calendar Heatmap (GitHub-style heatmap on Reports page) | ✅ |
+| 6 | Start Date & Future Planning (start_date column, future card filtering, time-based practice filters) | ✅ |
 
 ---
 

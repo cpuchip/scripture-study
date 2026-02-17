@@ -2,7 +2,7 @@
 
 *Created: 2026-02-16*
 *Updated: 2026-02-16*
-*Status: Planning*
+*Status: Complete*
 
 ---
 
@@ -301,10 +301,11 @@ Answers to open questions, recorded for future reference:
 1. **Sprint 1** — Practice Lifecycle schema/backend (unblocks everything else) ✅
 2. **Sprint 2** — Practice Lifecycle frontend (makes the app usable for non-memorize practices) ✅
 3. **Sprint 3** — Study Mode adaptive difficulty (the big UX win for memorization) ✅
-4. **Sprint 4** — Memorize card lifecycle (completes the picture)
-5. **Sprint 5** — Activity Calendar Heatmap
+4. **Sprint 4** — Memorize card lifecycle (completes the picture) ✅
+5. **Sprint 5** — Activity Calendar Heatmap ✅
+6. **Sprint 6** — Start Date & Future Planning ✅
 
-Sprints 1-3 are done. Sprint 4 is next — memorize card lifecycle (pause, complete, archive cards).
+All enhancement sprints complete as of February 16, 2026. Further improvements tracked in [06_becoming-app.md](06_becoming-app.md).
 
 ---
 
