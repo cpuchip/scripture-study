@@ -95,6 +95,8 @@ In one session, I said five words: "Lets build sprint 2!" The planning document 
 > "Vibe coding" without planning is like attempting physical creation without spiritual creation first — it can work for simple things, but complex creations need the blueprint.
 > — [creation.md](../study/creation.md)
 
+**This pattern isn't limited to software.** A study session on the Godhead — purely intellectual and spiritual work, no code — demonstrated the same dynamic. The user arrived with a framework: Lectures on Faith as the structural backbone, specific sources identified (D&C 121 for the Grand Council, Moses 7 for the Father weeping with Enoch), specific questions ("who are they? what is their character?"), and a named deliverable (`study/know-god.md`). That framework was the spiritual creation. The conversation summary carried forward every source that had been read, every search that had been run, and the exact state of the document — and when the session resumed days later, the AI picked up seamlessly, creating the study document as the natural next step. The "spiritual creation" persisted across session boundaries for *study* work just as completely as it does for software. The spec held the vision; the summary held the progress. The pattern is the same whether you're building an API or building understanding.
+
 ---
 
 ### The Council Pattern (5 min)

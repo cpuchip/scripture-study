@@ -70,6 +70,7 @@ Don't execute AI-generated code blindly. Read it first. You're looking for:
 - **Does it match the spec?** Compare the implementation to your planning doc. Every function should correspond to something in the plan.
 - **Does it fit the existing codebase?** Look at naming conventions, error handling patterns, file organization. Does it follow what's already there?
 - **Does it make reasonable assumptions?** The AI will fill gaps in your spec with assumptions. Are those assumptions correct?
+- **Was the methodology sound?** A comprehensive-looking result can mask an incomplete process. In one study session, the AI produced a thorough, well-sourced document — but had only used keyword search, never semantic search. The output *looked* complete, but an entire class of relevant scriptures was missing because the wrong search tool was used. Reviewing *how* something was produced is as important as reviewing *what* was produced.
 
 > Treat the AI's output as a *pull request*, not a *deployment*.
 
@@ -83,6 +84,7 @@ When something is wrong, figure out *what kind* of wrong it is before correcting
 | **AI missed context** | Point it to the relevant existing code or document. "Look at how we handle this in `auth.go` and follow the same pattern." |
 | **Wrong approach entirely** | Start that section fresh. Don't try to patch a fundamentally wrong architecture — describe what you actually want. |
 | **Small inaccuracy** | Targeted correction. "Change the error handling in `parseConfig` to return the error instead of logging and continuing." |
+| **Missing capability** | You have a tool or approach you didn't use. Zero-result searches should prompt a tool review, not a retreat to fallbacks. "Try semantic search instead of keyword search for conceptual queries." |
 
 **The most common mistake:** Trying to fix a wrong-approach problem with targeted corrections. If the AI built a REST API and you wanted GraphQL, don't try to tweak the REST code into GraphQL. Describe what you want and let it rebuild.
 
@@ -178,7 +180,14 @@ func getUser(id string) (*User, error) {
 
 One concrete example communicates more than ten paragraphs of description.
 
-#### Strategy 4: Clear the context
+#### Strategy 4: Review Your Tool Selection
+Sometimes the problem isn't the AI's logic — it's the *tools* being used. If a search returns zero results, the instinct should be "try a different search tool" before "there's nothing to find."
+
+**Real example — tool familiarity bias:** In a scripture study session, the AI ran two conceptual queries ("light of Christ Holy Ghost difference" and "light of Christ conscience every man") through a keyword search engine. Both returned zero results. Instead of switching to the semantic vector search tool — which was available and designed for exactly this kind of conceptual query — the AI fell back to direct file reads. When the user later asked "did you use gospel-vec?", four semantic searches immediately found scriptures the keyword search couldn't: 2 Peter 1:4 ("partakers of the divine nature"), Psalm 103:13-14 ("he knoweth our frame"), D&C 132:24, 1 John 5:20. None were obscure. The tool was wrong, not the query.
+
+The principle: AI tends toward familiar tools. Zero results should trigger a tool-selection review — not capitulation.
+
+#### Strategy 5: Clear the context
 In long sessions, the AI's context window fills up with earlier conversation — including the wrong code and the corrections. All that noise can actively confuse it. Starting a new chat with a clean, refined prompt sometimes works better than continuing to correct.
 
 Bring your spec, bring the lessons learned, leave the failed attempts behind.

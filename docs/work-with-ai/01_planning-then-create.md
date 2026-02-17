@@ -60,6 +60,8 @@ The pattern that works consistently — whether you're building a personal proje
 
 Write this down. Even 5 bullet points. The act of writing forces clarity.
 
+**This works beyond code.** In a scripture study session on the Godhead, the user's opening message functioned as the spec — not a formal doc, but a clearly communicated framework: Lectures on Faith as the structural backbone, specific sources already identified (D&C 121, Moses 7, John 17), specific questions ("who are they? what is their character?"), and a named output file (`study/know-god.md`). That framework gave the study architectural coherence from line one. Without it, the result would have been a loose collection of scriptures. With it, the Lectures on Faith's six character traits and six attributes provided an organizing skeleton that shaped every section. The "spiritual creation" doesn't have to be a formal document — a clearly communicated framework IS the spec.
+
 #### Phase 2: Specify (The "Spiritual Creation")
 *This is where the AI becomes incredibly powerful — as a planning partner.*
 
