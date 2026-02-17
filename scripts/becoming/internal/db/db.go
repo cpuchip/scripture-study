@@ -271,6 +271,11 @@ func (db *DB) runSQLiteMigrations() error {
 		return fmt.Errorf("document sources migration: %w", err)
 	}
 
+	// Migration: create shared_links table
+	if err := db.migrateSharedLinks(); err != nil {
+		return fmt.Errorf("shared links migration: %w", err)
+	}
+
 	// Seed default reflection prompts for user 1 (dev user)
 	if err := db.SeedPrompts(1); err != nil {
 		return fmt.Errorf("seeding prompts: %w", err)
@@ -517,6 +522,32 @@ func (db *DB) migrateDocumentSources() error {
 	}
 
 	log.Println("Migration applied: document_sources + reading_progress tables")
+	return nil
+}
+
+// migrateSharedLinks creates the shared_links table for public reader short URLs.
+func (db *DB) migrateSharedLinks() error {
+	if _, err := db.Exec(`CREATE TABLE IF NOT EXISTS shared_links (
+		id          INTEGER PRIMARY KEY,
+		code        TEXT NOT NULL UNIQUE,
+		user_id     INTEGER REFERENCES users(id),
+		source_id   INTEGER REFERENCES document_sources(id) ON DELETE SET NULL,
+		provider    TEXT NOT NULL DEFAULT 'gh',
+		repo        TEXT NOT NULL,
+		branch      TEXT NOT NULL DEFAULT 'main',
+		doc_filter  TEXT NOT NULL DEFAULT '**/*.md',
+		file_path   TEXT,
+		hits        INTEGER NOT NULL DEFAULT 0,
+		created_at  DATETIME DEFAULT CURRENT_TIMESTAMP
+	)`); err != nil {
+		return fmt.Errorf("creating shared_links: %w", err)
+	}
+
+	if _, err := db.Exec(`CREATE INDEX IF NOT EXISTS idx_shared_links_code ON shared_links(code)`); err != nil {
+		return fmt.Errorf("creating shared_links code index: %w", err)
+	}
+
+	log.Println("Migration applied: shared_links table")
 	return nil
 }
 

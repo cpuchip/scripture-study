@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, computed, onMounted, nextTick } from 'vue'
 import { useRoute } from 'vue-router'
-import { api, type DocumentSource } from '../api'
+import { api, publicApi, type DocumentSource } from '../api'
 import { github, type FileTreeNode } from '../services/github'
 import TreeNode from '../components/TreeNode.vue'
 import MarkdownIt from 'markdown-it'
@@ -14,6 +14,16 @@ const fileTree = ref<FileTreeNode[]>([])
 const loading = ref(true)
 const loadingContent = ref(false)
 const error = ref('')
+
+// Share modal state
+const showShareModal = ref(false)
+const shareMode = ref<'library' | 'document'>('library')
+const shareUrl = ref('')
+const shareShortUrl = ref('')
+const shareCopied = ref(false)
+const shareLoading = ref(false)
+
+const isShareable = computed(() => source.value?.source_type === 'github_public')
 
 // Current document state
 const currentPath = ref('')
@@ -211,6 +221,56 @@ function resolvePath(currentFile: string, relativePath: string): string {
   return parts.join('/')
 }
 
+// --- Share ---
+
+async function openShareModal(mode: 'library' | 'document') {
+  if (!source.value) return
+  shareMode.value = mode
+  shareCopied.value = false
+  shareLoading.value = true
+  showShareModal.value = true
+
+  const s = source.value
+  const includes = JSON.parse(s.include_paths || '[]') as string[]
+  const docFilter = includes[0] || '**/*.md'
+
+  // Build full URL
+  const base = window.location.origin
+  const params = new URLSearchParams()
+  params.set('p', 'gh')
+  params.set('r', s.repo)
+  if (s.branch !== 'main') params.set('b', s.branch)
+  if (docFilter !== '**/*.md') params.set('d', docFilter)
+  if (mode === 'document' && currentPath.value) params.set('f', currentPath.value)
+  shareUrl.value = `${base}/share?${params.toString()}`
+
+  // Create short link
+  try {
+    const link = await publicApi.createShareLink({
+      repo: s.repo,
+      branch: s.branch,
+      doc_filter: docFilter,
+      file_path: mode === 'document' ? currentPath.value : undefined,
+      source_id: s.id,
+    })
+    shareShortUrl.value = `${base}/s/${link.code}`
+  } catch {
+    shareShortUrl.value = ''
+  } finally {
+    shareLoading.value = false
+  }
+}
+
+async function copyShareUrl(url: string) {
+  try {
+    await navigator.clipboard.writeText(url)
+    shareCopied.value = true
+    setTimeout(() => { shareCopied.value = false }, 2000)
+  } catch {
+    // fallback
+  }
+}
+
 onMounted(loadSource)
 </script>
 
@@ -234,11 +294,23 @@ onMounted(loadSource)
         <h2 class="text-sm font-semibold text-gray-700 truncate" :title="source?.name">
           {{ source?.name || 'Loading...' }}
         </h2>
-        <button @click="toggleSidebar" class="text-gray-400 hover:text-gray-600 p-1" title="Hide sidebar">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-            <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" />
-          </svg>
-        </button>
+        <div class="flex items-center gap-1">
+          <button
+            v-if="isShareable"
+            @click="openShareModal('library')"
+            class="text-gray-400 hover:text-orange-600 p-1"
+            title="Share"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+              <path d="M15 8a3 3 0 10-2.977-2.63l-4.94 2.47a3 3 0 100 4.319l4.94 2.47a3 3 0 10.895-1.789l-4.94-2.47a3.027 3.027 0 000-.74l4.94-2.47C13.456 7.68 14.19 8 15 8z" />
+            </svg>
+          </button>
+          <button @click="toggleSidebar" class="text-gray-400 hover:text-gray-600 p-1" title="Hide sidebar">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" />
+            </svg>
+          </button>
+        </div>
       </div>
 
       <!-- Search -->
@@ -308,14 +380,91 @@ onMounted(loadSource)
       <!-- Document -->
       <div v-else-if="currentContent" class="reader-document">
         <!-- Breadcrumb -->
-        <div class="text-xs text-gray-400 mb-4 font-mono">
-          {{ currentPath }}
+        <div class="flex items-center justify-between text-xs text-gray-400 mb-4">
+          <span class="font-mono">{{ currentPath }}</span>
+          <button
+            v-if="isShareable"
+            @click="openShareModal('document')"
+            class="flex items-center gap-1 hover:text-orange-600"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" viewBox="0 0 20 20" fill="currentColor">
+              <path d="M15 8a3 3 0 10-2.977-2.63l-4.94 2.47a3 3 0 100 4.319l4.94 2.47a3 3 0 10.895-1.789l-4.94-2.47a3.027 3.027 0 000-.74l4.94-2.47C13.456 7.68 14.19 8 15 8z" />
+            </svg>
+            Share
+          </button>
         </div>
 
         <!-- Rendered markdown -->
         <article class="prose prose-gray max-w-none" v-html="renderedContent" />
       </div>
     </main>
+
+    <!-- Share Modal -->
+    <div v-if="showShareModal" class="fixed inset-0 bg-black/40 flex items-center justify-center z-50" @click.self="showShareModal = false">
+      <div class="bg-white rounded-lg p-6 w-[440px] shadow-xl">
+        <h3 class="text-lg font-semibold mb-1">Share {{ shareMode === 'document' ? 'Document' : 'Library' }}</h3>
+        <p class="text-sm text-gray-500 mb-4">
+          {{ shareMode === 'document' ? 'Share a link to this specific document.' : 'Share a link to this entire study library.' }}
+        </p>
+
+        <div v-if="shareLoading" class="py-6 text-center text-gray-400">Generating link...</div>
+        <div v-else class="space-y-3">
+          <!-- Short URL -->
+          <div v-if="shareShortUrl">
+            <label class="block text-xs font-medium text-gray-600 mb-1">Short Link</label>
+            <div class="flex gap-2">
+              <input
+                :value="shareShortUrl"
+                readonly
+                class="flex-1 border border-gray-200 rounded px-3 py-2 text-sm font-mono bg-gray-50"
+                @click="($event.target as HTMLInputElement).select()"
+              />
+              <button
+                @click="copyShareUrl(shareShortUrl)"
+                class="px-3 py-2 text-sm bg-orange-600 text-white rounded hover:bg-orange-700"
+              >
+                {{ shareCopied ? 'Copied!' : 'Copy' }}
+              </button>
+            </div>
+          </div>
+
+          <!-- Full URL (always visible) -->
+          <div>
+            <label class="block text-xs font-medium text-gray-600 mb-1">{{ shareShortUrl ? 'Full Link' : 'Share Link' }}</label>
+            <div class="flex gap-2">
+              <input
+                :value="shareUrl"
+                readonly
+                class="flex-1 border border-gray-200 rounded px-3 py-2 text-sm font-mono bg-gray-50 text-xs"
+                @click="($event.target as HTMLInputElement).select()"
+              />
+              <button
+                @click="copyShareUrl(shareUrl)"
+                class="px-3 py-2 text-sm text-orange-600 border border-orange-200 rounded hover:bg-orange-50"
+              >
+                Copy
+              </button>
+            </div>
+          </div>
+
+          <!-- Switch between library and document share -->
+          <div v-if="currentPath && shareMode === 'document'" class="pt-2 border-t border-gray-100">
+            <button @click="openShareModal('library')" class="text-xs text-gray-500 hover:text-orange-600">
+              Or share the entire library instead
+            </button>
+          </div>
+          <div v-else-if="currentPath && shareMode === 'library'" class="pt-2 border-t border-gray-100">
+            <button @click="openShareModal('document')" class="text-xs text-gray-500 hover:text-orange-600">
+              Or share just this document instead
+            </button>
+          </div>
+        </div>
+
+        <div class="flex justify-end mt-4">
+          <button @click="showShareModal = false" class="px-4 py-2 text-sm text-gray-600 hover:text-gray-900">Close</button>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 

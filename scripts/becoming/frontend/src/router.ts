@@ -11,6 +11,8 @@ export const router = createRouter({
     { path: '/register', name: 'register', component: () => import('./views/RegisterView.vue'), meta: { public: true } },
     { path: '/privacy', name: 'privacy', component: () => import('./views/PrivacyView.vue'), meta: { public: true } },
     { path: '/terms', name: 'terms', component: () => import('./views/TermsView.vue'), meta: { public: true } },
+    { path: '/share', name: 'public-reader', component: () => import('./views/PublicReaderView.vue'), meta: { public: true } },
+    { path: '/s/:code', name: 'short-link', component: () => import('./views/PublicReaderView.vue'), meta: { public: true } },
 
     // Protected routes
     { path: '/today', name: 'daily', component: DailyView },
@@ -55,6 +57,8 @@ const routeTitles: Record<string, string> = {
   reports: 'Reports',
   sources: 'Library',
   reader: 'Reading',
+  'public-reader': 'Shared Study',
+  'short-link': 'Shared Study',
   settings: 'Settings',
 }
 

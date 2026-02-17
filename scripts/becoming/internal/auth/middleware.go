@@ -75,3 +75,44 @@ func extractBearerToken(r *http.Request) string {
 	}
 	return strings.TrimSpace(auth[len(prefix):])
 }
+
+// Optional returns middleware that sets user context if authenticated,
+// but allows unauthenticated requests to proceed (userID = 0).
+func Optional(database *db.DB, devMode bool) func(http.Handler) http.Handler {
+	return func(next http.Handler) http.Handler {
+		return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+			var userID int64
+
+			// 1. Session cookie (browser)
+			if cookie, err := r.Cookie("becoming_session"); err == nil && cookie.Value != "" {
+				if session, err := database.GetSession(cookie.Value); err == nil && session != nil && !session.IsExpired() {
+					database.TouchSession(session.ID)
+					userID = session.UserID
+				}
+			}
+
+			// 2. Bearer token (API / MCP)
+			if userID == 0 {
+				if token := extractBearerToken(r); token != "" {
+					if apiToken, err := database.ValidateAPIToken(token); err == nil && apiToken != nil {
+						database.TouchAPIToken(apiToken.ID)
+						userID = apiToken.UserID
+					}
+				}
+			}
+
+			// 3. Dev mode fallback
+			if userID == 0 && devMode {
+				userID = 1
+			}
+
+			// Set context even if userID is 0 (anonymous)
+			if userID > 0 {
+				ctx := context.WithValue(r.Context(), userIDKey, userID)
+				next.ServeHTTP(w, r.WithContext(ctx))
+			} else {
+				next.ServeHTTP(w, r)
+			}
+		})
+	}
+}

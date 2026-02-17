@@ -48,7 +48,9 @@ async function handleSubmit() {
   submitting.value = true
   try {
     await register(email.value, password.value, name.value || undefined)
-    router.replace('/')
+    // Redirect to the page they came from (e.g. shared study link) or home
+    const redirect = (route.query.redirect as string) || '/'
+    router.replace(redirect)
   } catch (e: any) {
     error.value = e.message || 'Registration failed'
   } finally {

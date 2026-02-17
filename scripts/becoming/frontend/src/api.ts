@@ -610,6 +610,48 @@ export interface ReadingProgress {
   scroll_pct: number
 }
 
+export interface SharedLink {
+  id: number
+  code: string
+  user_id?: number
+  source_id?: number
+  provider: string
+  repo: string
+  branch: string
+  doc_filter: string
+  file_path?: string
+  hits: number
+  created_at: string
+}
+
+// --- Public API (no auth required) ---
+
+async function publicRequest<T>(path: string, options?: RequestInit): Promise<T> {
+  const res = await fetch(`${BASE}/public${path}`, {
+    headers: { 'Content-Type': 'application/json' },
+    credentials: 'same-origin',
+    ...options,
+  })
+  if (!res.ok) {
+    const body = await res.json().catch(() => ({ error: res.statusText }))
+    throw new Error(body.error || res.statusText)
+  }
+  if (res.status === 204) return undefined as T
+  return res.json()
+}
+
+export const publicApi = {
+  resolveShareLink(code: string) {
+    return publicRequest<SharedLink>(`/share/${code}`)
+  },
+  createShareLink(params: { repo: string; branch?: string; doc_filter?: string; file_path?: string; source_id?: number }) {
+    return publicRequest<SharedLink>('/share', {
+      method: 'POST',
+      body: JSON.stringify(params),
+    })
+  },
+}
+
 // --- Auth Types ---
 
 export interface User {

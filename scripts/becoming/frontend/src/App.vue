@@ -55,7 +55,7 @@ async function handleLogout() {
     </nav>
 
     <!-- Content -->
-    <main :class="isAuthenticated && $route.name !== 'reader' ? 'max-w-4xl mx-auto px-4 py-6' : ''">
+    <main :class="isAuthenticated && !['reader', 'public-reader', 'short-link'].includes($route.name as string) ? 'max-w-4xl mx-auto px-4 py-6' : ''">
       <router-view />
     </main>
   </div>

@@ -94,6 +94,12 @@ func main() {
 	r.Get("/auth/google/callback", authHandlers.GoogleCallback)
 	r.Get("/api/auth/providers", authHandlers.Providers)
 
+	// Public API routes (no auth required, but optional auth for user_id tracking)
+	r.Group(func(r chi.Router) {
+		r.Use(auth.Optional(database, *dev))
+		r.Mount("/api/public", api.PublicRouter(database))
+	})
+
 	// Protected API routes
 	r.Group(func(r chi.Router) {
 		r.Use(auth.Required(database, *dev))

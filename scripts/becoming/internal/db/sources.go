@@ -12,7 +12,7 @@ type DocumentSource struct {
 	UserID       int64      `json:"user_id"`
 	Name         string     `json:"name"`
 	SourceType   string     `json:"source_type"` // github_public | github_private
-	Repo         string     `json:"repo"`         // "owner/repo"
+	Repo         string     `json:"repo"`        // "owner/repo"
 	Branch       string     `json:"branch"`
 	IncludePaths string     `json:"include_paths"` // JSON array of glob patterns
 	ExcludePaths string     `json:"exclude_paths"` // JSON array of glob patterns
