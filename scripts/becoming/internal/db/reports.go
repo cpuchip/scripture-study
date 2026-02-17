@@ -137,6 +137,59 @@ func (db *DB) GetReport(userID int64, startDate, endDate string) ([]*ReportEntry
 	return result, nil
 }
 
+// ActivityDay holds per-day aggregate activity counts for the heatmap.
+type ActivityDay struct {
+	Date          string `json:"date"`
+	LogCount      int    `json:"log_count"`
+	PracticeCount int    `json:"practice_count"`
+}
+
+// GetActivityHeatmap returns per-day activity counts for a date range.
+func (db *DB) GetActivityHeatmap(userID int64, startDate, endDate string) ([]ActivityDay, error) {
+	dateCast := db.DateCast("l.date")
+	rows, err := db.Query(fmt.Sprintf(`
+		SELECT %s,
+		       COUNT(l.id) as log_count,
+		       COUNT(DISTINCT l.practice_id) as practice_count
+		FROM practice_logs l
+		JOIN practices p ON p.id = l.practice_id
+		WHERE p.user_id = ? AND l.date >= ? AND l.date <= ?
+		GROUP BY %s
+		ORDER BY %s`, dateCast, dateCast, dateCast),
+		userID, startDate, endDate,
+	)
+	if err != nil {
+		return nil, fmt.Errorf("getting activity heatmap: %w", err)
+	}
+	defer rows.Close()
+
+	lookup := make(map[string]ActivityDay)
+	for rows.Next() {
+		var d ActivityDay
+		if err := rows.Scan(&d.Date, &d.LogCount, &d.PracticeCount); err != nil {
+			return nil, fmt.Errorf("scanning activity row: %w", err)
+		}
+		lookup[d.Date] = d
+	}
+	if err := rows.Err(); err != nil {
+		return nil, err
+	}
+
+	// Fill every date in range so the frontend doesn't have to.
+	start := mustParseDate(startDate)
+	end := mustParseDate(endDate)
+	var result []ActivityDay
+	for d := start; !d.After(end); d = d.AddDate(0, 0, 1) {
+		ds := d.Format("2006-01-02")
+		if ad, ok := lookup[ds]; ok {
+			result = append(result, ad)
+		} else {
+			result = append(result, ActivityDay{Date: ds})
+		}
+	}
+	return result, nil
+}
+
 // calcStreak counts consecutive days with activity ending at or before refDate.
 func calcStreak(activeDates map[string]bool, refDate string) int {
 	d := mustParseDate(refDate)

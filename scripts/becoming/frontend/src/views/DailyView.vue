@@ -429,6 +429,11 @@ function onVisibilityChange() {
 }
 
 onMounted(async () => {
+  // Handle ?date= query param from heatmap clicks
+  if (route.query.date && typeof route.query.date === 'string') {
+    today.value = route.query.date
+    router.replace({ path: '/today' })
+  }
   await load()
   document.addEventListener('visibilitychange', onVisibilityChange)
 

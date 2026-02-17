@@ -44,6 +44,7 @@ func Router(database *db.DB, scripturesRoot string) chi.Router {
 
 	// Reports
 	r.Get("/reports", getReport(database))
+	r.Get("/reports/activity", getActivityHeatmap(database))
 
 	// Tasks
 	r.Route("/tasks", func(r chi.Router) {
@@ -471,6 +472,27 @@ func getReport(database *db.DB) http.HandlerFunc {
 			entries = []*db.ReportEntry{}
 		}
 		writeJSON(w, http.StatusOK, entries)
+	}
+}
+
+func getActivityHeatmap(database *db.DB) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		userID := auth.UserID(r)
+		start := r.URL.Query().Get("start")
+		end := r.URL.Query().Get("end")
+		if start == "" || end == "" {
+			writeError(w, http.StatusBadRequest, "start and end query params are required (YYYY-MM-DD)")
+			return
+		}
+		days, err := database.GetActivityHeatmap(userID, start, end)
+		if err != nil {
+			writeError(w, http.StatusInternalServerError, err.Error())
+			return
+		}
+		if days == nil {
+			days = []db.ActivityDay{}
+		}
+		writeJSON(w, http.StatusOK, days)
 	}
 }
 

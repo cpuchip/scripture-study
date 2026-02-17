@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import { ref, computed, onMounted } from 'vue'
-import { api, type ReportEntry } from '../api'
+import { useRouter } from 'vue-router'
+import { api, type ReportEntry, type ActivityDay } from '../api'
 import TrendLine from '../components/TrendLine.vue'
 import SparkLine from '../components/SparkLine.vue'
+import ActivityHeatmap from '../components/ActivityHeatmap.vue'
 
 function localDateStr(d: Date = new Date()): string {
   return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`
@@ -10,7 +12,9 @@ function localDateStr(d: Date = new Date()): string {
 
 const loading = ref(true)
 const entries = ref<ReportEntry[]>([])
+const activityDays = ref<ActivityDay[]>([])
 
+const router = useRouter()
 // Date range
 const rangePreset = ref<'7' | '30' | '90' | 'custom'>('30')
 const customStart = ref('')
@@ -225,11 +229,20 @@ function filledDailyData(entry: ReportEntry): { date: string; logs: number; sets
 async function load() {
   loading.value = true
   try {
-    entries.value = await api.getReport(startDate.value, endDate.value)
+    const [reportData, activityData] = await Promise.all([
+      api.getReport(startDate.value, endDate.value),
+      api.getActivityHeatmap(startDate.value, endDate.value),
+    ])
+    entries.value = reportData
+    activityDays.value = activityData
   } catch (e) {
     console.error('Failed to load report:', e)
   }
   loading.value = false
+}
+
+function navigateToDate(date: string) {
+  router.push({ path: '/today', query: { date } })
 }
 
 function changePreset(p: '7' | '30' | '90' | 'custom') {
@@ -306,6 +319,11 @@ onMounted(load)
           :class="filterCategory === c ? 'bg-indigo-100 border-indigo-300 text-indigo-700' : 'bg-gray-50 border-gray-200 text-gray-500 hover:bg-gray-100'"
         >{{ c }}</button>
       </div>
+    </div>
+
+    <!-- Activity Heatmap -->
+    <div v-if="!loading && activityDays.length > 0" class="mb-6">
+      <ActivityHeatmap :days="activityDays" :navigate-to-date="navigateToDate" />
     </div>
 
     <div v-if="loading" class="text-center py-8 text-gray-400">Loading...</div>

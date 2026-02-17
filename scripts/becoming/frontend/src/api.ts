@@ -188,6 +188,12 @@ export interface DailyDataPoint {
   reps: number
 }
 
+export interface ActivityDay {
+  date: string
+  log_count: number
+  practice_count: number
+}
+
 export interface ReportEntry {
   practice_id: number
   practice_name: string
@@ -419,6 +425,10 @@ export const api = {
   // Reports
   getReport(start: string, end: string) {
     return request<ReportEntry[]>(`/reports?start=${start}&end=${end}`)
+  },
+
+  getActivityHeatmap(start: string, end: string) {
+    return request<ActivityDay[]>(`/reports/activity?start=${start}&end=${end}`)
   },
 
   // Notes
