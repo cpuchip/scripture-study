@@ -11,9 +11,18 @@
 
 | Part | Title | Focus |
 |------|-------|-------|
-| 1 | The Creation Pattern | Abraham 4–5 as the blueprint for human-AI collaboration |
-| 2 | Watching Until They Obey | The feedback loop — reviewing, steering, and the role of agency |
-| **3** | **Intelligence Cleaveth Unto Intelligence** | **How the quality of your engagement shapes the quality of the output** |
+| 1 | [The Creation Pattern](01_planning-then-create-gospel.md) | Abraham 4–5 as the blueprint for human-AI collaboration |
+| 2 | [Watching Until They Obey](02_watching-until-they-obey-gospel.md) | The feedback loop — reviewing, steering, and the role of agency |
+| **3** | **[Intelligence Cleaveth Unto Intelligence](03_intelligence-cleaveth-gospel.md)** | **How the quality of your engagement shapes the quality of the output** |
+
+### Glossary
+
+| Term | Definition |
+|------|------------|
+| **Session** | One prompt-and-response cycle. You say something, the AI processes and responds with text, tool calls, file edits, etc. |
+| **Chat session** | The full conversation containing multiple sessions. Your ongoing back-and-forth in one chat window. |
+| **Spec / Blueprint / Spiritual creation** | The planning document created collaboratively before implementation begins (Moses 3:5). |
+| **Feedback loop** | Review → diagnose → correct → verify → repeat. The "watching until they obey" pattern. |
 
 ---
 
