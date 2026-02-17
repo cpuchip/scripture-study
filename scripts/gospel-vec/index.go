@@ -103,7 +103,7 @@ func DefaultIndexOptions() IndexOptions {
 		UseCache:        true, // Use cache by default
 		MaxRetries:      3,
 		ContinueOnError: true,
-		SaveInterval:    50, // Save every 50 chapters
+		SaveInterval:    500, // Save every 500 chapters
 	}
 }
 
@@ -491,7 +491,7 @@ func DefaultManualIndexOptions() ManualIndexOptions {
 		UseCache:        true,
 		MaxRetries:      3,
 		ContinueOnError: true,
-		SaveInterval:    50,
+		SaveInterval:    500,
 	}
 }
 

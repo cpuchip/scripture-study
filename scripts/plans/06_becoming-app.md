@@ -1,7 +1,7 @@
 # Becoming App — Architecture Plan
 
 *Created: February 11, 2026*
-*Updated: February 16, 2026 — Phases 1, 2, 6 complete. Enhancement Sprints 1-6 complete. Phase 3 replanned with git integration.*
+*Updated: February 16, 2026 — Phases 1, 2, 6 complete. Enhancement Sprints 1-6 complete. Phase 3 Sprint 1 complete (Study Reader with GitHub sources).*
 *Context: Tools to help apply the "Become" commitments from our truth studies*
 
 ---
@@ -501,18 +501,83 @@ The `studies` repo becomes the first git document source for the Study reader. T
 
 #### Core Study Reader Features
 
-1. **REST API:**
-   - `GET /api/sources` — list user's document sources
-   - `POST /api/sources` — add a new source (git URL, local path, etc.)
-   - `POST /api/sources/{id}/sync` — trigger git pull
-   - `GET /api/docs?source={id}` — list documents in a source
-   - `GET /api/content?source={id}&path={path}` — serve markdown file content
-2. **DocBrowser component** — sidebar file tree, grouped by source
-3. **MarkdownViewer component** — main panel, markdown-it rendering with proper blockquote styling
-4. **ReferencePanel component** — side panel with tabs, opens scripture/talk links without navigating away
-5. **Link interception** — internal `gospel-library/` links open in reference panel
-6. **Reading progress tracking** — which docs/chapters have been read
-7. **"Add to memorize" button** — one-click from reference panel to memorization deck
+**Sprint 1: Foundation** ✅ *(complete — commit 6f55c05)*
+1. ✅ `document_sources` + `reading_progress` tables (SQLite + Postgres)
+2. ✅ Source CRUD API: 8 endpoints for sources and reading progress
+3. ✅ GitHubContentService: client-side GitHub Trees API + raw content fetch
+4. ✅ SourcesView.vue: source management with test connection
+5. ✅ ReaderView.vue: sidebar file tree, markdown-it renderer, progress tracking
+6. ✅ Include/exclude glob filtering for document repos
+
+**Sprint 2: Public Reader & Share Links**
+
+The Study reader is beautiful — but it's gated behind auth. Study documents on *public* GitHub repos should be shareable with anyone, no login required.
+
+**Concept: Two ways to open the public reader**
+
+1. **Full URL** — all parameters inline (no DB, no shortener needed):
+   ```
+   https://ibeco.me/share?p=gh&r=cpuchip/scripture-study&b=main&d=public/**/*.md&f=public/study/truth.md
+   ```
+   Parameters: `p`=provider (gh), `r`=repo, `b`=branch, `d`=document filter (glob), `f`=file to open
+
+2. **Short link** — server resolves a code to the full parameters:
+   ```
+   https://ibeco.me/s/x72adf
+   ```
+   The code maps to a `shared_links` row with all the parameters baked in.
+
+**Architecture:**
+
+```sql
+CREATE TABLE shared_links (
+    id         SERIAL PRIMARY KEY,
+    code       TEXT NOT NULL UNIQUE,       -- short code (6-8 chars, base62)
+    user_id    INTEGER REFERENCES users(id), -- who created it (nullable for anonymous)
+    source_id  INTEGER REFERENCES document_sources(id), -- optional link to user's source
+    provider   TEXT NOT NULL DEFAULT 'gh',  -- 'gh' for now
+    repo       TEXT NOT NULL,
+    branch     TEXT NOT NULL DEFAULT 'main',
+    doc_filter TEXT NOT NULL DEFAULT '**/*.md', -- include glob
+    file_path  TEXT,                        -- specific file to open (optional)
+    hits       INTEGER NOT NULL DEFAULT 0,  -- view count
+    created_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP
+);
+CREATE INDEX idx_shared_links_code ON shared_links(code);
+```
+
+**Public API routes** (outside auth middleware):
+- `GET /api/public/share/{code}` — resolve short code → full parameters + increment hits
+- `POST /api/public/share` — create a new short link (auth optional, rate-limited)
+
+**Frontend:**
+- `PublicReaderView.vue` — same reader UI but no auth, no reading progress, no nav bar
+  - Route: `/share` (with query params) and `/s/:code` (short link)
+  - Fetches tree + content directly from GitHub (client-side, same as authenticated reader)
+  - Minimal header: document title + "Powered by I Become" link
+  - "Open in I Become" button for logged-in users (imports as a source)
+- **Share button** on `ReaderView.vue` — only for `github_public` sources
+  - Creates a short link via `POST /api/public/share`
+  - Shows copyable URL + QR code (optional)
+  - Can share entire source or specific file
+
+**Implementation steps:**
+1. DB: `shared_links` table + migration
+2. Backend: short code generation (crypto/rand base62), public resolve endpoint, create endpoint
+3. Frontend: `PublicReaderView.vue` (fork of ReaderView, stripped to essentials)
+4. Frontend: Share button + modal on authenticated ReaderView
+5. Routes: `/share` and `/s/:code` as public routes (both frontend + backend)
+6. Server: public route group outside auth middleware for `/api/public/*` and `/s/*`
+
+**Sprint 3: Reader Enhancements**
+
+Future reader improvements to plan for:
+1. **ReferencePanel** — side panel with tabs, opens scripture/talk links without navigating away
+2. **Link interception** — internal `gospel-library/` links open in reference panel
+3. **"Add to memorize" button** — one-click from reference panel to memorization deck
+4. Study reader ↔ Become integration ("Become" sections surface task-creation buttons)
+5. Dark mode for reader
+6. Mobile responsive reader (collapsible sidebar)
 
 ### Phase 4: Integration & Polish
 **Goal:** Connect all the pieces, polish the experience.

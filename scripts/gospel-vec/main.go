@@ -81,7 +81,7 @@ Index Options (scriptures):
   -max           Max chapters to index (0 = all)
   -retries       Max retries on transient errors (default: 3)
   -continue      Continue indexing after persistent errors (default: true)
-  -save-interval Save database every N chapters (default: 50)
+  -save-interval Save database every N chapters (default: 500)
   -v             Verbose output (default: true)
 
 Index-talks Options:
@@ -90,7 +90,7 @@ Index-talks Options:
   -max            Max talks to index (0 = all)
   -retries        Max retries on transient errors (default: 3)
   -continue       Continue indexing after persistent errors (default: true)
-  -save-interval  Save database every N talks (default: 100)
+  -save-interval  Save database every N talks (default: 500)
   -v              Verbose output (default: true)
 
 Index-manuals Options:
@@ -100,7 +100,7 @@ Index-manuals Options:
   -books          Index additional books (Lectures on Faith)
   -no-summary     Disable summary layer
   -retries        Max retries on transient errors (default: 3)
-  -save-interval  Save database every N files (default: 50)
+  -save-interval  Save database every N files (default: 500)
   -v              Verbose output (default: true)
 
 Examples:
@@ -168,7 +168,7 @@ func cmdIndex(args []string) {
 	verbose := flags.Bool("v", true, "Verbose output")
 	maxRetries := flags.Int("retries", 3, "Max retries on transient errors")
 	continueOnError := flags.Bool("continue", true, "Continue indexing after persistent errors")
-	saveInterval := flags.Int("save-interval", 50, "Save database every N chapters (0 = only at end)")
+	saveInterval := flags.Int("save-interval", 500, "Save database every N chapters (0 = only at end)")
 	noLock := flags.Bool("no-lock", false, "Skip lock acquisition (used internally by index-all)")
 
 	if err := flags.Parse(args); err != nil {
@@ -392,7 +392,7 @@ func cmdIndexManuals(args []string) {
 	verbose := flags.Bool("v", true, "Verbose output")
 	maxRetries := flags.Int("retries", 3, "Max retries on transient errors")
 	continueOnError := flags.Bool("continue", true, "Continue indexing after persistent errors")
-	saveInterval := flags.Int("save-interval", 50, "Save database every N files")
+	saveInterval := flags.Int("save-interval", 500, "Save database every N files")
 	noLock := flags.Bool("no-lock", false, "Skip lock acquisition (used internally by index-all)")
 
 	if err := flags.Parse(args); err != nil {
@@ -583,7 +583,7 @@ func cmdIndexMusic(args []string) {
 	verbose := flags.Bool("v", true, "Verbose output")
 	maxRetries := flags.Int("retries", 3, "Max retries on transient errors")
 	continueOnError := flags.Bool("continue", true, "Continue indexing after persistent errors")
-	saveInterval := flags.Int("save-interval", 50, "Save database every N files")
+	saveInterval := flags.Int("save-interval", 500, "Save database every N files")
 	noLock := flags.Bool("no-lock", false, "Skip lock acquisition (used internally by index-all)")
 
 	if err := flags.Parse(args); err != nil {
@@ -728,7 +728,7 @@ func cmdIndexTalks(args []string) {
 	verbose := flags.Bool("v", true, "Verbose output")
 	maxRetries := flags.Int("retries", 3, "Max retries on transient errors")
 	continueOnError := flags.Bool("continue", true, "Continue indexing after persistent errors")
-	saveInterval := flags.Int("save-interval", 100, "Save database every N talks (0 = only at end)")
+	saveInterval := flags.Int("save-interval", 500, "Save database every N talks (0 = only at end)")
 	noLock := flags.Bool("no-lock", false, "Skip lock acquisition (used internally by index-all)")
 
 	if err := flags.Parse(args); err != nil {
