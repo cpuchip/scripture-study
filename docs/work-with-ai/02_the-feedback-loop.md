@@ -29,6 +29,8 @@ But the spec doesn't guarantee a perfect first draft. The AI will misunderstand.
 
 The answer is a feedback loop: **review → diagnose → correct → verify → repeat**. This is the core skill of AI-assisted development. Anyone can prompt. The engineers who produce great work are the ones who *review and steer*.
 
+**An important caveat before we start:** The *goal* of the feedback loop is to make itself unnecessary. As your specs improve, as your patterns stabilize, as the AI's track record earns trust — you iterate less and less. I've had sessions where 1,112 lines across 13 files compiled and type-checked on the first try. Zero corrections needed. That wasn't luck — it was the payoff of a thorough planning document (Part 1) and a codebase with established patterns the AI could follow. Part 2 isn't about creating work. It's about developing the capacity to notice when something *isn't* right, so that when everything *is* right, you can move with confidence.
+
 ---
 
 ### Why AI Output Needs Review (5 min)
@@ -209,6 +211,8 @@ Not all AI output deserves the same level of scrutiny. Over time, you develop a 
 | **Infrastructure / deployment** | Low | Verify against your actual environment. AI doesn't know your infra. |
 | **New pattern / unfamiliar territory** | Low | Read, research, verify. The AI may be confidently wrong. |
 | **Pattern it's done correctly 5 times already** | High | Spot check, move on |
+
+**Real example — preemptive pattern following:** In one session, I needed a new middleware called `auth.Optional` — same as the existing `auth.Required` but allowing unauthenticated requests through. Rather than designing it from scratch, the AI read the existing `auth.Required` code and produced `auth.Optional` by following the same structure while removing the 401 rejection. Same variable names, same session lookup, same dev-mode handling. A reviewer would think the same person wrote both. No correction needed. That's what happens when the AI has good context: it follows existing patterns preemptively, and the review step becomes "saw it was correct, moved on."
 
 **The principle:** Trust is earned through verification, not assumed. As you verify more output in a session, you calibrate. You learn where this particular AI, in this particular codebase, gets things right and where it struggles.
 

@@ -145,6 +145,12 @@ Sloppy input → sloppy output. That's not a mystery. That's D&C 88:40. Darkness
 
 Precise, honest, curious input → surprisingly deep output. Intelligence cleaving to intelligence. The law works the same way whether you're reading Isaiah or reviewing a code architecture. What you bring shapes what emerges.
 
+**A concrete example:** One coding session began with five words: "Lets build sprint 2!" That's it. No further elaboration. And the session produced 1,112 lines of correct, well-structured code across 13 files — a complete public reader with share links, save-to-library flows, and database migrations. Zero errors. Zero corrections. Committed and pushed.
+
+How? Because the intelligence wasn't in the five words. It was in the *weeks of planning* that preceded them. A 743-line specification document. Established codebase patterns. A conversation summary capturing exactly where the previous session left off. The five-word instruction worked because it pointed to a completed plan — the spiritual creation was thorough, and the temporal creation followed naturally.
+
+This is D&C 88:40 in action. The quality of the *planning* engagement — the intelligence brought to the spec, the careful architecture decisions, the honest assessment of what mattered — determined the quality of the *building* session. The five words were sufficient because they cleaved to 743 lines of intelligence that already existed. That attraction isn't magic. It's law.
+
 **The reverse is also a law:**
 
 > "And they who remain shall also be quickened; nevertheless, they shall return again to their own place, to **enjoy that which they are willing to receive**, because they were not willing to enjoy that which they might have received.

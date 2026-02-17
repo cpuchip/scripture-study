@@ -111,6 +111,8 @@ This document was 743 lines long before a single line of code was written. It sp
 
 **The result:** When we said "implement Phase 1," the AI had full context. It knew the data model, the tech stack, the API surface, and how the current phase fit into the larger plan. The code it produced was architecturally coherent from the start.
 
+**How far does this go?** In one session, the instruction was five words: "Lets build sprint 2!" That's it. The spec already existed. The AI produced 1,112 lines of correct code across 13 files — a complete public reader with short links, share modals, save-to-library flows, and database migrations. TypeScript type-checked clean. Go compiled clean. Zero errors. Zero corrections. Committed and pushed in a single session. That's the payoff of the spiritual creation. Five words worked because 743 lines of planning preceded them.
+
 #### Phase 3: Build (The "Physical Creation")
 *Now the AI writes code. But you already have the blueprint.*
 
@@ -118,6 +120,7 @@ This document was 743 lines long before a single line of code was written. It sp
 - Each phase should be independently testable.
 - Point the AI at the spec: "Implement the REST API from the plan document."
 - The spec acts as a contract — you can verify the output against it.
+- **Structure sessions like sprints.** Create a todo list at the start of each session — the deliverables, in order. Mark items in-progress before starting, completed when done. This prevents the most common failure mode of complex AI sessions: losing track of where you are. The todo list is a miniature spec for the session itself.
 
 #### Phase 4: Watch and Steer
 *The most important phase. This is your job now.*
@@ -171,6 +174,9 @@ Before implementing a feature, ask the AI to read the relevant existing code and
 
 **4. Keep planning docs updated.**
 The spec is a living document. When you make implementation decisions that change the plan, update the plan. Future sessions (yours and the AI's) will benefit from accurate documentation.
+
+**5. Conversation summaries are your persistence layer.**
+When a session ends mid-project, the conversation summary captures exactly where you are — which files exist, what's been modified, what remains. The next session picks up precisely where the last one left off. The spec says *what to build*. The summary says *where you are in building it*. Together, they make multi-session projects seamless. I've had sessions start with the AI's first action being the exact next item on the todo list — zero re-orientation, zero wasted effort — because the summary carried the full state forward.
 
 **5. Work in small, verifiable increments.**
 Don't ask for 500 lines at once. Ask for one function, verify it, then move to the next. The spec tells you the order.
