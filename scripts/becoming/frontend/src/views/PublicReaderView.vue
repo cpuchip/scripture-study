@@ -56,6 +56,7 @@ const darkMode = ref(localStorage.getItem('reader-dark-mode') === 'true')
 function toggleDarkMode() {
   darkMode.value = !darkMode.value
   localStorage.setItem('reader-dark-mode', String(darkMode.value))
+  document.documentElement.classList.toggle('dark-mode', darkMode.value)
 }
 
 // Markdown renderer
@@ -83,6 +84,30 @@ md.renderer.rules.link_open = function(tokens: any, idx: any, options: any, env:
     tokens[idx].attrSet('data-ref-link', 'true')
   }
   return defaultRender(tokens, idx, options, env, self)
+}
+
+// Heading anchor links (GitHub-style)
+function slugify(text: string): string {
+  return text.toLowerCase().replace(/<[^>]+>/g, '').replace(/[^\w\s-]/g, '').replace(/\s+/g, '-').replace(/-+/g, '-').trim()
+}
+md.renderer.rules.heading_open = function(tokens: any, idx: any, options: any, _env: any, self: any) {
+  const token = tokens[idx]
+  const inline = tokens[idx + 1]
+  let text = ''
+  if (inline && inline.children) {
+    text = inline.children.filter((t: any) => t.type === 'text' || t.type === 'code_inline').map((t: any) => t.content).join('')
+  }
+  const slug = slugify(text)
+  token.attrSet('id', slug)
+  token.attrSet('class', 'heading-anchor-target')
+  return self.renderToken(tokens, idx, options)
+}
+md.renderer.rules.heading_close = function(tokens: any, idx: any, options: any, _env: any, self: any) {
+  let openIdx = idx - 1
+  while (openIdx >= 0 && tokens[openIdx].type !== 'heading_open') openIdx--
+  const slug = openIdx >= 0 ? (tokens[openIdx].attrGet('id') || '') : ''
+  const anchor = slug ? ` <a class="heading-anchor-link" href="#${slug}" aria-label="Link to this heading"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-.8 9.45a.75.75 0 01-1.06-1.06l-1.25 1.25a2 2 0 11-2.83-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25z"/></svg></a>` : ''
+  return anchor + self.renderToken(tokens, idx, options)
 }
 
 const renderedContent = computed(() => {
@@ -221,7 +246,15 @@ async function loadTree() {
     }
 
     if (initialFile.value) {
+      expandToPath(initialFile.value)
       await loadFile(initialFile.value)
+      await nextTick()
+      scrollSidebarToActive()
+      // If URL has a hash, scroll to that heading
+      if (window.location.hash) {
+        const el = document.getElementById(window.location.hash.slice(1))
+        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      }
     }
   } catch (e: any) {
     error.value = e.message
@@ -276,6 +309,23 @@ function toggleDir(path: string) {
   }
 }
 
+function expandToPath(filePath: string) {
+  const segments = filePath.split('/')
+  for (let i = 1; i < segments.length; i++) {
+    const dirPath = segments.slice(0, i).join('/')
+    expandedDirs.value.add(dirPath)
+  }
+}
+
+function scrollSidebarToActive() {
+  const sidebar = document.querySelector('[data-sidebar]')
+  if (!sidebar) return
+  const activeEl = sidebar.querySelector('.bg-orange-50')
+  if (activeEl) {
+    activeEl.scrollIntoView({ block: 'center', behavior: 'smooth' })
+  }
+}
+
 function toggleSidebar() {
   sidebarOpen.value = !sidebarOpen.value
 }
@@ -289,6 +339,18 @@ function handleContentClick(event: MouseEvent) {
 
   const href = link.getAttribute('href')
   if (!href) return
+
+  // Heading anchor links: scroll to hash and update URL
+  if (link.classList.contains('heading-anchor-link') && href.startsWith('#')) {
+    event.preventDefault()
+    const hash = href.slice(1)
+    const el = document.getElementById(hash)
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    const url = new URL(window.location.href)
+    url.hash = hash
+    window.history.replaceState(null, '', url.toString())
+    return
+  }
 
   // Check for scripture/reference links → open in reference panel as iframe
   if (link.hasAttribute('data-scripture-link')) {
@@ -504,10 +566,13 @@ onMounted(() => {
   resolveParams()
   window.addEventListener('resize', handleResize)
   handleResize()
+  // Apply dark mode to document root for whole-page styling
+  document.documentElement.classList.toggle('dark-mode', darkMode.value)
 })
 
 onUnmounted(() => {
   window.removeEventListener('resize', handleResize)
+  document.documentElement.classList.remove('dark-mode')
 })
 
 watch(currentTitle, (title) => {
@@ -616,7 +681,7 @@ watch(currentTitle, (title) => {
       </button>
 
       <!-- Sidebar -->
-      <aside v-if="sidebarOpen" class="reader-sidebar" :class="{ 'mobile-sidebar': isMobile }">
+      <aside v-if="sidebarOpen" class="reader-sidebar" :class="{ 'mobile-sidebar': isMobile }" data-sidebar>
         <div class="flex items-center justify-between px-3 py-2" style="border-bottom: 1px solid var(--border-color, #e5e7eb)">
           <h2 class="text-sm font-semibold truncate" style="color: var(--text-secondary, #374151)">{{ sourceName }}</h2>
           <button @click="toggleSidebar" class="p-1" style="color: var(--text-muted, #9ca3af)" title="Hide sidebar">
@@ -870,6 +935,29 @@ watch(currentTitle, (title) => {
 .reader-document :deep(th) { background: var(--bg-muted); font-weight: 600; }
 .reader-document :deep(hr) { border: none; border-top: 1px solid var(--border-color); margin: 2rem 0; }
 .reader-document :deep(img) { max-width: 100%; border-radius: 6px; }
+
+/* Heading anchor links */
+.reader-document :deep(.heading-anchor-target) {
+  position: relative;
+  scroll-margin-top: 1rem;
+}
+.reader-document :deep(.heading-anchor-link) {
+  display: inline-flex;
+  align-items: center;
+  margin-left: 0.35rem;
+  color: var(--text-muted, #9ca3af);
+  text-decoration: none;
+  opacity: 0;
+  transition: opacity 0.15s;
+  vertical-align: middle;
+}
+.reader-document :deep(.heading-anchor-target:hover .heading-anchor-link),
+.reader-document :deep(.heading-anchor-link:focus) {
+  opacity: 1;
+}
+.reader-document :deep(.heading-anchor-link:hover) {
+  color: #ea580c;
+}
 
 /* Mobile responsive */
 @media (max-width: 768px) {

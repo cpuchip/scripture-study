@@ -60,3 +60,40 @@ async function handleLogout() {
     </main>
   </div>
 </template>
+
+<style>
+/* Dark mode — applied when reader toggles .dark-mode on <html> */
+html.dark-mode {
+  background-color: #1a1a2e;
+  color-scheme: dark;
+}
+html.dark-mode .bg-gray-50 {
+  background-color: #1a1a2e !important;
+}
+html.dark-mode .text-gray-900 {
+  color: #e0e0e0 !important;
+}
+html.dark-mode nav.bg-white {
+  background-color: #16213e !important;
+  border-color: #334155 !important;
+}
+html.dark-mode nav .text-xl {
+  color: #f59e0b !important;
+}
+html.dark-mode nav a {
+  color: #cbd5e1;
+}
+html.dark-mode nav a:hover,
+html.dark-mode nav a.text-orange-600 {
+  color: #f59e0b !important;
+}
+html.dark-mode nav .text-gray-600 {
+  color: #94a3b8 !important;
+}
+html.dark-mode nav .text-gray-400 {
+  color: #64748b !important;
+}
+html.dark-mode nav .border-gray-300 {
+  border-color: #475569 !important;
+}
+</style>
