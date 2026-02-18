@@ -20,14 +20,65 @@ const formPillarIds = ref<number[]>([])
 
 // Filters
 const filterStatus = ref<string>('active')
-const filterType = ref<string>('all')
-const filterCategory = ref<string>('all')
-const filterPillar = ref<string>('all')
 const filterTime = ref<'all' | 'current' | 'upcoming' | 'past'>('all')
 const timeFilterOptions = ['all', 'current', 'upcoming', 'past'] as const
 
-// Practice → pillar mappings (key: practice_id, value: pillar_ids)
-const practicePillarMap = ref<Map<number, number[]>>(new Map())
+// Tri-state filter maps: value → 'positive' | 'negative' | null
+// positive = include only matching, negative = exclude matching
+type TriState = 'positive' | 'negative' | null
+const filterTypeState = ref<Map<string, TriState>>(new Map())
+const filterCatState = ref<Map<string, TriState>>(new Map())
+const filterPillarState = ref<Map<string, TriState>>(new Map())
+
+const filterRefs = {
+  type: filterTypeState,
+  cat: filterCatState,
+  pillar: filterPillarState,
+} as const
+
+function cycleFilter(which: 'type' | 'cat' | 'pillar', key: string, isAll = false) {
+  const stateMap = filterRefs[which]
+  const current = stateMap.value.get(key) || null
+  const next: TriState = current === null ? 'positive' : current === 'positive' ? 'negative' : null
+
+  if (isAll) {
+    if (next === 'positive') {
+      stateMap.value = new Map()
+    } else {
+      stateMap.value = new Map([['all', next]])
+    }
+  } else {
+    if (stateMap.value.get('all') === 'negative' && next === 'positive') {
+      stateMap.value.delete('all')
+    }
+    if (next === null) {
+      stateMap.value.delete(key)
+    } else {
+      stateMap.value.set(key, next)
+    }
+  }
+  stateMap.value = new Map(stateMap.value)
+}
+
+function filterState(stateMap: Map<string, TriState>, key: string): TriState {
+  return stateMap.get(key) || null
+}
+
+function filterChipClass(state: TriState): string {
+  if (state === 'positive') return 'bg-indigo-100 border-indigo-300 text-indigo-700'
+  if (state === 'negative') return 'bg-red-50 border-red-300 text-red-400 line-through'
+  return 'bg-gray-50 border-gray-200 text-gray-500 hover:bg-gray-100'
+}
+
+function allChipClass(stateMap: Map<string, TriState>): string {
+  const allState = stateMap.get('all') || null
+  if (allState === 'negative') return 'bg-red-50 border-red-300 text-red-400 line-through'
+  if (stateMap.size === 0) return 'bg-indigo-100 border-indigo-300 text-indigo-700'
+  return 'bg-gray-50 border-gray-200 text-gray-500 hover:bg-gray-100'
+}
+
+// Practice → pillar mappings (key: practice_id, value: { id, icon }[])
+const practicePillarMap = ref<Map<number, { id: number; icon: string; name: string }[]>>(new Map())
 
 // Form state
 const form = ref({
@@ -86,18 +137,77 @@ const availableCategories = computed(() => {
 
 const filteredPractices = computed(() => {
   const todayStr = localDateStr()
+
+  // Collect positive and negative sets for each filter dimension
+  const typePos = new Set<string>()
+  const typeNeg = new Set<string>()
+  const catPos = new Set<string>()
+  const catNeg = new Set<string>()
+  const pillarPos = new Set<number>()
+  const pillarNeg = new Set<number>()
+  const allTypeNeg = filterTypeState.value.get('all') === 'negative'
+  const allCatNeg = filterCatState.value.get('all') === 'negative'
+  const allPillarNeg = filterPillarState.value.get('all') === 'negative'
+
+  for (const [k, v] of filterTypeState.value) {
+    if (k === 'all') continue
+    if (v === 'positive') typePos.add(k)
+    if (v === 'negative') typeNeg.add(k)
+  }
+  for (const [k, v] of filterCatState.value) {
+    if (k === 'all') continue
+    if (v === 'positive') catPos.add(k)
+    if (v === 'negative') catNeg.add(k)
+  }
+  for (const [k, v] of filterPillarState.value) {
+    if (k === 'all') continue
+    if (v === 'positive') pillarPos.add(Number(k))
+    if (v === 'negative') pillarNeg.add(Number(k))
+  }
+
   return practices.value.filter(p => {
-    if (filterType.value !== 'all' && p.type !== filterType.value) return false
-    if (filterCategory.value !== 'all') {
-      const cats = (p.category || '').split(',').map(c => c.trim())
-      if (!cats.includes(filterCategory.value)) return false
+    // Type filter
+    if (allTypeNeg) {
+      // "all" negative on type: show only practices whose type is NOT in the known types
+      // (this would show none since every practice has a type — effectively just excludes everything unless a positive overrides)
+      if (typePos.size > 0) {
+        if (!typePos.has(p.type)) return false
+      } else {
+        return false // "all" negative with no positives = show nothing
+      }
+    } else {
+      if (typePos.size > 0 && !typePos.has(p.type)) return false
+      if (typeNeg.has(p.type)) return false
     }
+
+    // Category filter
+    const cats = (p.category || '').split(',').map(c => c.trim()).filter(Boolean)
+    if (allCatNeg) {
+      // "all" negative on category: show only practices with NO category
+      if (catPos.size > 0) {
+        if (!cats.some(c => catPos.has(c))) return false
+      } else {
+        if (cats.length > 0) return false
+      }
+    } else {
+      if (catPos.size > 0 && !cats.some(c => catPos.has(c))) return false
+      if (cats.some(c => catNeg.has(c))) return false
+    }
+
     // Pillar filter
-    if (filterPillar.value !== 'all') {
-      const pillarId = Number(filterPillar.value)
-      const pids = practicePillarMap.value.get(p.id) || []
-      if (!pids.includes(pillarId)) return false
+    const pids = (practicePillarMap.value.get(p.id) || []).map(x => x.id)
+    if (allPillarNeg) {
+      // "all" negative on pillar: show only practices with NO pillar
+      if (pillarPos.size > 0) {
+        if (!pids.some(id => pillarPos.has(id))) return false
+      } else {
+        if (pids.length > 0) return false
+      }
+    } else {
+      if (pillarPos.size > 0 && !pids.some(id => pillarPos.has(id))) return false
+      if (pids.some(id => pillarNeg.has(id))) return false
     }
+
     // Time filter
     if (filterTime.value !== 'all') {
       const startDate = p.start_date ? p.start_date.slice(0, 10) : p.created_at?.slice(0, 10) || ''
@@ -189,11 +299,11 @@ async function load() {
   practices.value = practicesData
   allPillars.value = pillarsData.map(p => ({ id: p.id, name: p.name, icon: p.icon || '' }))
 
-  // Build practice → pillar ID map
-  const map = new Map<number, number[]>()
+  // Build practice → pillar info map (includes id, icon, name)
+  const map = new Map<number, { id: number; icon: string; name: string }[]>()
   for (const link of pillarLinks) {
     const list = map.get(link.practice_id) || []
-    list.push(link.pillar_id)
+    list.push({ id: link.pillar_id, icon: link.pillar_icon || '', name: link.pillar_name || '' })
     map.set(link.practice_id, list)
   }
   practicePillarMap.value = map
@@ -803,46 +913,46 @@ onMounted(async () => {
         <div class="flex gap-1.5 flex-wrap items-center">
           <span class="text-xs text-gray-400 w-10">Type</span>
           <button
-            @click="filterType = 'all'"
-            class="px-2.5 py-1 text-xs rounded-full border"
-            :class="filterType === 'all' ? 'bg-indigo-100 border-indigo-300 text-indigo-700' : 'bg-gray-50 border-gray-200 text-gray-500 hover:bg-gray-100'"
+            @click="cycleFilter('type', 'all', true)"
+            class="px-2.5 py-1 text-xs rounded-full border transition-colors"
+            :class="allChipClass(filterTypeState)"
           >all</button>
           <button
             v-for="t in availableTypes"
             :key="t"
-            @click="filterType = t"
-            class="px-2.5 py-1 text-xs rounded-full border"
-            :class="filterType === t ? 'bg-indigo-100 border-indigo-300 text-indigo-700' : 'bg-gray-50 border-gray-200 text-gray-500 hover:bg-gray-100'"
+            @click="cycleFilter('type', t)"
+            class="px-2.5 py-1 text-xs rounded-full border transition-colors"
+            :class="filterChipClass(filterState(filterTypeState, t))"
           >{{ t }}</button>
         </div>
         <div v-if="availableCategories.length > 1" class="flex gap-1.5 flex-wrap items-center">
           <span class="text-xs text-gray-400 w-10">Cat</span>
           <button
-            @click="filterCategory = 'all'"
-            class="px-2.5 py-1 text-xs rounded-full border"
-            :class="filterCategory === 'all' ? 'bg-indigo-100 border-indigo-300 text-indigo-700' : 'bg-gray-50 border-gray-200 text-gray-500 hover:bg-gray-100'"
+            @click="cycleFilter('cat', 'all', true)"
+            class="px-2.5 py-1 text-xs rounded-full border transition-colors"
+            :class="allChipClass(filterCatState)"
           >all</button>
           <button
             v-for="c in availableCategories"
             :key="c"
-            @click="filterCategory = c"
-            class="px-2.5 py-1 text-xs rounded-full border"
-            :class="filterCategory === c ? 'bg-indigo-100 border-indigo-300 text-indigo-700' : 'bg-gray-50 border-gray-200 text-gray-500 hover:bg-gray-100'"
+            @click="cycleFilter('cat', c)"
+            class="px-2.5 py-1 text-xs rounded-full border transition-colors"
+            :class="filterChipClass(filterState(filterCatState, c))"
           >{{ c }}</button>
         </div>
         <div v-if="allPillars.length > 0" class="flex gap-1.5 flex-wrap items-center">
           <span class="text-xs text-gray-400 w-10">Pillar</span>
           <button
-            @click="filterPillar = 'all'"
-            class="px-2.5 py-1 text-xs rounded-full border"
-            :class="filterPillar === 'all' ? 'bg-indigo-100 border-indigo-300 text-indigo-700' : 'bg-gray-50 border-gray-200 text-gray-500 hover:bg-gray-100'"
+            @click="cycleFilter('pillar', 'all', true)"
+            class="px-2.5 py-1 text-xs rounded-full border transition-colors"
+            :class="allChipClass(filterPillarState)"
           >all</button>
           <button
             v-for="pl in allPillars"
             :key="pl.id"
-            @click="filterPillar = String(pl.id)"
-            class="px-2.5 py-1 text-xs rounded-full border"
-            :class="filterPillar === String(pl.id) ? 'bg-indigo-100 border-indigo-300 text-indigo-700' : 'bg-gray-50 border-gray-200 text-gray-500 hover:bg-gray-100'"
+            @click="cycleFilter('pillar', String(pl.id))"
+            class="px-2.5 py-1 text-xs rounded-full border transition-colors"
+            :class="filterChipClass(filterState(filterPillarState, String(pl.id)))"
           >{{ pl.icon }} {{ pl.name }}</button>
         </div>
         <div class="flex gap-1.5 flex-wrap items-center">
@@ -873,6 +983,12 @@ onMounted(async () => {
             <span class="font-medium hover:text-indigo-600 transition-colors">{{ p.name }}</span>
             <span class="text-xs px-2 py-0.5 rounded-full bg-gray-100 text-gray-600">{{ p.type }}</span>
             <span v-if="p.category" class="text-xs px-2 py-0.5 rounded-full bg-indigo-50 text-indigo-600">{{ p.category }}</span>
+            <span
+              v-for="pl in (practicePillarMap.get(p.id) || [])"
+              :key="pl.id"
+              class="text-xs px-1.5 py-0.5 rounded-full bg-purple-50 text-purple-600"
+              :title="pl.name"
+            >{{ pl.icon || '◆' }}</span>
             <span v-if="p.start_date && startDateLabel(p.start_date)" class="text-xs px-2 py-0.5 rounded-full cursor-default" :class="startDateClass()" :title="endDateTooltip(p.start_date)">{{ startDateLabel(p.start_date) }}</span>
             <span v-if="p.end_date" class="text-xs px-2 py-0.5 rounded-full cursor-default" :class="endDateClass(p.end_date)" :title="endDateTooltip(p.end_date)">{{ endDateLabel(p.end_date) }}</span>
           </div>

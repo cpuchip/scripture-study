@@ -14,6 +14,17 @@ const formName = ref('')
 const formDescription = ref('')
 const formIcon = ref('')
 const formParentId = ref<number | null>(null)
+const showEmojiPicker = ref(false)
+
+// Common emoji grouped by category for pillar icon selection
+const emojiOptions: { label: string; emojis: string[] }[] = [
+  { label: 'Spiritual', emojis: ['🙏', '⛪', '✝️', '🕊️', '📖', '🕯️', '🔔', '💒', '✨', '🌟', '👼', '🛐', '📿', '🫶', '❤️‍🔥'] },
+  { label: 'Intellectual', emojis: ['📚', '🧠', '📝', '💡', '🎓', '🔬', '📐', '🖊️', '📓', '💻', '🧩', '🔭', '📰', '🗂️', '✏️'] },
+  { label: 'Social', emojis: ['🤝', '💛', '👨‍👩‍👧‍👦', '🫂', '💬', '🎉', '🏠', '👥', '🌍', '🤗', '💌', '☎️', '🎁', '🫱🏼‍🫲🏽', '❤️'] },
+  { label: 'Physical', emojis: ['💪', '🏃', '🧘', '🥗', '😴', '🏋️', '🚶', '🏊', '🚴', '⚡', '🍎', '💧', '🫁', '🧬', '❤️‍🩹'] },
+  { label: 'Creative', emojis: ['🎨', '🎵', '🎭', '📸', '🖌️', '🎸', '🎬', '✂️', '🧶', '🎹', '🪡', '🖼️', '📐', '🎻', '🪈'] },
+  { label: 'Symbols', emojis: ['⭐', '🔥', '🌱', '🌊', '🏔️', '☀️', '🌈', '🎯', '🛡️', '⚓', '🗝️', '💎', '🪨', '🌿', '🦅'] },
+]
 
 // Link practice state
 const linkingPillarId = ref<number | null>(null)
@@ -439,8 +450,42 @@ onMounted(load)
         <div class="space-y-3">
           <div>
             <label class="text-sm font-medium text-gray-700">Icon (emoji)</label>
-            <input v-model="formIcon" placeholder="🕊️"
-                   class="w-full border rounded-lg px-3 py-2 text-2xl text-center" />
+            <div class="relative">
+              <button
+                type="button"
+                @click="showEmojiPicker = !showEmojiPicker"
+                class="w-full border rounded-lg px-3 py-2 text-2xl text-center hover:bg-gray-50 focus:ring-2 focus:ring-indigo-300 focus:outline-none min-h-[48px]"
+              >
+                {{ formIcon || '🔍 Pick an icon…' }}
+              </button>
+              <div
+                v-if="showEmojiPicker"
+                class="absolute z-10 top-full left-0 right-0 mt-1 bg-white border border-gray-200 rounded-lg shadow-lg p-3 max-h-64 overflow-y-auto"
+              >
+                <div v-for="group in emojiOptions" :key="group.label" class="mb-2">
+                  <div class="text-xs text-gray-400 font-medium mb-1">{{ group.label }}</div>
+                  <div class="flex flex-wrap gap-1">
+                    <button
+                      v-for="emoji in group.emojis"
+                      :key="emoji"
+                      type="button"
+                      @click="formIcon = emoji; showEmojiPicker = false"
+                      class="w-9 h-9 flex items-center justify-center rounded hover:bg-indigo-50 text-xl transition-colors"
+                      :class="formIcon === emoji ? 'bg-indigo-100 ring-2 ring-indigo-400' : ''"
+                    >{{ emoji }}</button>
+                  </div>
+                </div>
+                <div class="border-t pt-2 mt-2">
+                  <label class="text-xs text-gray-400">Or type custom:</label>
+                  <input
+                    v-model="formIcon"
+                    placeholder="🕊️"
+                    class="w-full border rounded px-2 py-1 text-lg text-center mt-1"
+                    @keydown.enter.prevent="showEmojiPicker = false"
+                  />
+                </div>
+              </div>
+            </div>
           </div>
           <div>
             <label class="text-sm font-medium text-gray-700">Name</label>
