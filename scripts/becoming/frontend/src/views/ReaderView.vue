@@ -298,6 +298,26 @@ function toggleDir(path: string) {
   }
 }
 
+// Expand all ancestor directories for a given file path so it's visible in the tree.
+function expandToPath(filePath: string) {
+  const segments = filePath.split('/')
+  // Build cumulative directory paths: "public", "public/study", etc.
+  for (let i = 1; i < segments.length; i++) {
+    const dirPath = segments.slice(0, i).join('/')
+    expandedDirs.value.add(dirPath)
+  }
+}
+
+// Scroll the sidebar so the currently highlighted (active) file is visible.
+function scrollSidebarToActive() {
+  const sidebar = document.querySelector('[data-sidebar]')
+  if (!sidebar) return
+  const activeEl = sidebar.querySelector('.bg-orange-50')
+  if (activeEl) {
+    activeEl.scrollIntoView({ block: 'center', behavior: 'smooth' })
+  }
+}
+
 function toggleSidebar() {
   sidebarOpen.value = !sidebarOpen.value
 }
@@ -689,12 +709,112 @@ function detectScriptureRef(text: string): string | null {
   return null
 }
 
+// Look at the DOM context around the current selection for scripture references.
+// Checks: parent blockquote/paragraph text, nearby sibling elements, link text.
+function detectRefFromSelectionContext(): string | null {
+  const sel = window.getSelection()
+  if (!sel || sel.rangeCount === 0) return null
+
+  const range = sel.getRangeAt(0)
+  let container: Node | null = range.commonAncestorContainer
+
+  // Walk up to find the nearest block-level element (blockquote, p, li, div)
+  const blockTags = new Set(['BLOCKQUOTE', 'P', 'LI', 'DIV', 'ARTICLE', 'SECTION'])
+  let blockEl: HTMLElement | null = null
+  let node: Node | null = container
+  while (node && node !== document.body) {
+    if (node.nodeType === Node.ELEMENT_NODE && blockTags.has((node as HTMLElement).tagName)) {
+      blockEl = node as HTMLElement
+      break
+    }
+    node = node.parentNode
+  }
+
+  if (blockEl) {
+    // Check the full text content of the containing block
+    const blockText = blockEl.textContent || ''
+    const ref = detectScriptureRef(blockText)
+    if (ref) return ref
+
+    // Check link text within the block (e.g. <a>D&C 93:24</a>)
+    const links = blockEl.querySelectorAll('a')
+    for (const link of links) {
+      const linkText = link.textContent || ''
+      const linkRef = detectScriptureRef(linkText)
+      if (linkRef) return linkRef
+      // Also check href for scripture paths (e.g. /scriptures/dc-testament/dc/93)
+      const href = link.getAttribute('href') || ''
+      const pathRef = detectRefFromPath(href)
+      if (pathRef) return pathRef
+    }
+
+    // Check the next sibling block (citation often follows the quote)
+    let nextSibling = blockEl.nextElementSibling
+    for (let i = 0; i < 2 && nextSibling; i++) {
+      const sibText = nextSibling.textContent || ''
+      const sibRef = detectScriptureRef(sibText)
+      if (sibRef) return sibRef
+      nextSibling = nextSibling.nextElementSibling
+    }
+  }
+
+  return null
+}
+
+// Extract a scripture reference from a URL path (e.g. /scriptures/dc-testament/dc/93 → D&C 93)
+function detectRefFromPath(href: string): string | null {
+  // D&C
+  const dcMatch = href.match(/dc-testament\/dc\/(\d+)/)
+  if (dcMatch) return `D&C ${dcMatch[1]}`
+  // Book of Mormon
+  const bofmMatch = href.match(/bofm\/([\w-]+)\/(\d+)/)
+  if (bofmMatch) {
+    const bookMap: Record<string, string> = {
+      '1-ne': '1 Nephi', '2-ne': '2 Nephi', '3-ne': '3 Nephi', '4-ne': '4 Nephi',
+      'jacob': 'Jacob', 'enos': 'Enos', 'jarom': 'Jarom', 'omni': 'Omni',
+      'mosiah': 'Mosiah', 'alma': 'Alma', 'hel': 'Helaman',
+      'morm': 'Mormon', 'ether': 'Ether', 'moro': 'Moroni',
+    }
+    const name = bookMap[bofmMatch[1]!] || bofmMatch[1]
+    return `${name} ${bofmMatch[2]}`
+  }
+  // OT/NT
+  const otntMatch = href.match(/scriptures\/(?:ot|nt)\/([\w-]+)\/(\d+)/)
+  if (otntMatch) {
+    const bookMap: Record<string, string> = {
+      'gen': 'Genesis', 'ex': 'Exodus', 'lev': 'Leviticus', 'deut': 'Deuteronomy',
+      'isa': 'Isaiah', 'jer': 'Jeremiah', 'ps': 'Psalms', 'prov': 'Proverbs',
+      'matt': 'Matthew', 'mark': 'Mark', 'luke': 'Luke', 'john': 'John',
+      'acts': 'Acts', 'rom': 'Romans', 'heb': 'Hebrews', 'james': 'James',
+      'rev': 'Revelation', '1-cor': '1 Corinthians', '2-cor': '2 Corinthians',
+      '1-tim': '1 Timothy', '2-tim': '2 Timothy', '1-pet': '1 Peter', '2-pet': '2 Peter',
+    }
+    const name = bookMap[otntMatch[1]!] || otntMatch[1]
+    return `${name} ${otntMatch[2]}`
+  }
+  // PGP
+  const pgpMatch = href.match(/pgp\/(moses|abr|js-h|a-of-f)\/(\d+)/)
+  if (pgpMatch) {
+    const bookMap: Record<string, string> = {
+      'moses': 'Moses', 'abr': 'Abraham', 'js-h': 'JS—H', 'a-of-f': 'Articles of Faith',
+    }
+    return `${bookMap[pgpMatch[1]!] || pgpMatch[1]} ${pgpMatch[2]}`
+  }
+  return null
+}
+
 function openPracticeForm() {
   const text = selectionTrigger.value.text
   if (!text) return
 
-  // Try to detect a scripture reference in the selected text
-  const ref = detectScriptureRef(text)
+  // Try to detect a scripture reference:
+  // 1. First check the selected text itself
+  let ref = detectScriptureRef(text)
+
+  // 2. If not found, look at surrounding DOM context (nearby links, parent elements)
+  if (!ref) {
+    ref = detectRefFromSelectionContext()
+  }
 
   // Build a sensible default name
   let name: string
@@ -810,7 +930,11 @@ onMounted(async () => {
   await loadSource()
   const initialFile = route.query.f as string | undefined
   if (initialFile) {
+    expandToPath(initialFile)
     await loadFile(initialFile)
+    // Scroll the sidebar to the active file after Vue renders
+    await nextTick()
+    scrollSidebarToActive()
   }
 })
 
@@ -842,7 +966,7 @@ onUnmounted(() => {
     </button>
 
     <!-- Sidebar -->
-    <aside v-if="sidebarOpen" class="reader-sidebar" :class="{ 'mobile-sidebar': isMobile }">
+    <aside v-if="sidebarOpen" class="reader-sidebar" :class="{ 'mobile-sidebar': isMobile }" data-sidebar>
       <div class="flex items-center justify-between px-3 py-2 border-b" style="border-color: var(--border-color, #e5e7eb)">
         <h2 class="text-sm font-semibold truncate" style="color: var(--text-secondary, #374151)" :title="source?.name">
           {{ source?.name || 'Loading...' }}
