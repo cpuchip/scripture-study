@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, computed, onMounted, onUnmounted, nextTick, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-import { api, publicApi, type DocumentSource } from '../api'
+import { api, publicApi, type DocumentSource, type Pillar } from '../api'
 import { github, type FileTreeNode } from '../services/github'
 import TreeNode from '../components/TreeNode.vue'
 import ReferencePanel, { type ReferenceTab } from '../components/ReferencePanel.vue'
@@ -49,10 +49,25 @@ const refMemorizeLoading = ref(false)
 // --- Dark Mode ---
 const darkMode = ref(localStorage.getItem('reader-dark-mode') === 'true')
 
-// --- Text Selection Popup ---
-const selectionPopup = ref<{ show: boolean; x: number; y: number; text: string }>({ show: false, x: 0, y: 0, text: '' })
-const selectionMemorizeLoading = ref(false)
-const selectionMemorizeSuccess = ref(false)
+// --- Text Selection Trigger ---
+const selectionTrigger = ref<{ show: boolean; x: number; y: number; text: string }>({ show: false, x: 0, y: 0, text: '' })
+
+// --- Practice Creation Form ---
+const presetCategories = ['spiritual', 'scripture', 'pt', 'fitness', 'study', 'health']
+const showPracticeForm = ref(false)
+const practiceForm = ref({
+  name: '',
+  description: '',
+  category: '',
+  pillarIds: [] as number[],
+  reps: 1,
+  startDate: '',
+  endDate: '',
+})
+const allPillars = ref<Pillar[]>([])
+const practiceFormSaving = ref(false)
+const practiceFormError = ref('')
+const practiceFormSuccess = ref(false)
 
 function toggleDarkMode() {
   darkMode.value = !darkMode.value
@@ -573,14 +588,17 @@ async function copyShareUrl(url: string) {
 // --- Text Selection handlers ---
 
 function handleSelectionChange() {
+  // Don't interfere while the practice form is open
+  if (showPracticeForm.value) return
+
   const sel = window.getSelection()
   if (!sel || sel.isCollapsed || !sel.toString().trim()) {
-    // Delay hiding so the popup button can be clicked
+    // Delay hiding so the trigger button can be clicked
     setTimeout(() => {
+      if (showPracticeForm.value) return
       const sel2 = window.getSelection()
       if (!sel2 || sel2.isCollapsed || !sel2.toString().trim()) {
-        selectionPopup.value.show = false
-        selectionMemorizeSuccess.value = false
+        selectionTrigger.value.show = false
       }
     }, 200)
     return
@@ -589,56 +607,106 @@ function handleSelectionChange() {
   const text = sel.toString().trim()
   if (text.length < 5) return // Too short to be meaningful
 
-  // Only show popup if selection is within the reader content area
+  // Only show trigger if selection is within the reader content area
   const contentEl = document.getElementById('reader-content')
   const anchorNode = sel.anchorNode
   if (!contentEl || !anchorNode || !contentEl.contains(anchorNode)) return
 
   const range = sel.getRangeAt(0)
   const rect = range.getBoundingClientRect()
-  const contentRect = contentEl.getBoundingClientRect()
 
-  selectionPopup.value = {
+  // Use fixed viewport coordinates — no scroll offset math needed
+  selectionTrigger.value = {
     show: true,
-    // Position relative to the reader-content scroll container
-    x: rect.left + rect.width / 2 - contentRect.left + contentEl.scrollLeft,
-    y: rect.top - contentRect.top + contentEl.scrollTop - 8,
+    x: rect.left + rect.width / 2,
+    y: rect.top - 8,
     text,
   }
-  selectionMemorizeSuccess.value = false
 }
 
-async function memorizeSelection() {
-  const text = selectionPopup.value.text
-  if (!text || selectionMemorizeLoading.value) return
+function openPracticeForm() {
+  const text = selectionTrigger.value.text
+  if (!text) return
 
-  selectionMemorizeLoading.value = true
+  // Build a sensible default name: doc title + first few words
+  const preview = text.substring(0, 40).replace(/\n/g, ' ')
+  const name = currentTitle.value
+    ? `${currentTitle.value} — "${preview}${text.length > 40 ? '…' : ''}"`
+    : `"${preview}${text.length > 40 ? '…' : ''}"`
+
+  practiceForm.value = {
+    name: name.substring(0, 120),
+    description: text.substring(0, 2000),
+    category: 'scripture',
+    pillarIds: [],
+    reps: 1,
+    startDate: '',
+    endDate: '',
+  }
+  practiceFormError.value = ''
+  practiceFormSuccess.value = false
+  showPracticeForm.value = true
+  selectionTrigger.value.show = false
+}
+
+function closePracticeForm() {
+  showPracticeForm.value = false
+  practiceFormSuccess.value = false
+  practiceFormError.value = ''
+  window.getSelection()?.removeAllRanges()
+}
+
+function toggleFormCategory(cat: string) {
+  if (practiceForm.value.category === cat) {
+    practiceForm.value.category = ''
+  } else {
+    practiceForm.value.category = cat
+  }
+}
+
+function toggleFormPillar(id: number) {
+  const idx = practiceForm.value.pillarIds.indexOf(id)
+  if (idx >= 0) {
+    practiceForm.value.pillarIds.splice(idx, 1)
+  } else {
+    practiceForm.value.pillarIds.push(id)
+  }
+}
+
+async function submitPracticeForm() {
+  const f = practiceForm.value
+  if (!f.name.trim()) {
+    practiceFormError.value = 'Title is required'
+    return
+  }
+
+  practiceFormSaving.value = true
+  practiceFormError.value = ''
   try {
-    // Build a sensible name: doc title + first few words
-    const preview = text.substring(0, 40).replace(/\n/g, ' ')
-    const name = currentTitle.value
-      ? `${currentTitle.value} — "${preview}${text.length > 40 ? '…' : ''}"`
-      : `"${preview}${text.length > 40 ? '…' : ''}"`
-
-    await api.createPractice({
-      name: name.substring(0, 120),
+    const practice = await api.createPractice({
+      name: f.name.trim(),
       type: 'memorize',
-      description: text.substring(0, 2000),
+      description: f.description,
       source_doc: currentPath.value,
       source_path: currentPath.value,
-      category: 'scripture',
+      category: f.category || 'scripture',
+      config: JSON.stringify({ target_daily_reps: f.reps || 1 }),
+      start_date: f.startDate || undefined,
+      end_date: f.endDate || undefined,
     })
-    selectionMemorizeSuccess.value = true
-    // Auto-hide after success
+
+    if (f.pillarIds.length > 0 && practice?.id) {
+      await api.setPracticePillars(practice.id, f.pillarIds)
+    }
+
+    practiceFormSuccess.value = true
     setTimeout(() => {
-      selectionPopup.value.show = false
-      selectionMemorizeSuccess.value = false
-      window.getSelection()?.removeAllRanges()
-    }, 1500)
+      closePracticeForm()
+    }, 1200)
   } catch (e: any) {
-    error.value = `Failed to create memorize practice: ${e.message}`
+    practiceFormError.value = e.message || 'Failed to create practice'
   } finally {
-    selectionMemorizeLoading.value = false
+    practiceFormSaving.value = false
   }
 }
 
@@ -657,6 +725,9 @@ onMounted(() => {
   window.addEventListener('resize', handleResize)
   document.addEventListener('selectionchange', handleSelectionChange)
   handleResize()
+
+  // Load pillars for the practice creation form
+  api.listPillarsFlat().then(p => { allPillars.value = p }).catch(() => {})
 
   // If URL already has a file query param (e.g. from shared link), open it
   const initialFile = route.query.f as string | undefined
@@ -817,35 +888,168 @@ onUnmounted(() => {
         <article class="prose prose-gray max-w-none" v-html="renderedContent" />
       </div>
 
-      <!-- Text Selection Memorize Popup -->
+      <!-- Text Selection Trigger Button (fixed to viewport) -->
       <Transition name="popup-fade">
         <div
-          v-if="selectionPopup.show"
-          class="selection-popup"
-          :style="{ left: selectionPopup.x + 'px', top: selectionPopup.y + 'px' }"
+          v-if="selectionTrigger.show"
+          class="selection-trigger"
+          :style="{ left: selectionTrigger.x + 'px', top: selectionTrigger.y + 'px' }"
         >
-          <button
-            v-if="!selectionMemorizeSuccess"
-            @click.stop="memorizeSelection"
-            :disabled="selectionMemorizeLoading"
-            class="selection-popup-btn"
-          >
+          <button @click.stop="openPracticeForm" class="selection-trigger-btn">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" viewBox="0 0 20 20" fill="currentColor">
               <path d="M5 4a2 2 0 012-2h6a2 2 0 012 2v14l-5-2.5L5 18V4z" />
             </svg>
-            {{ selectionMemorizeLoading ? 'Saving...' : 'Memorize' }}
+            Memorize
           </button>
-          <span v-else class="selection-popup-success">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" viewBox="0 0 20 20" fill="currentColor">
-              <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-            </svg>
-            Added!
-          </span>
-          <!-- Arrow pointing down -->
-          <div class="selection-popup-arrow"></div>
+          <div class="selection-trigger-arrow"></div>
         </div>
       </Transition>
     </main>
+
+    <!-- Practice Creation Modal -->
+    <Teleport to="body">
+      <Transition name="modal-fade">
+        <div v-if="showPracticeForm" class="practice-modal-overlay" @click.self="closePracticeForm">
+          <div class="practice-modal" :class="{ dark: darkMode }">
+            <!-- Success state -->
+            <div v-if="practiceFormSuccess" class="practice-modal-success">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-emerald-500" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+              </svg>
+              <p class="text-sm font-semibold mt-2" style="color: var(--text-primary, #111827)">Practice created!</p>
+            </div>
+
+            <!-- Form -->
+            <template v-else>
+              <div class="flex items-center justify-between mb-4">
+                <h3 class="text-base font-semibold" style="color: var(--text-primary, #111827)">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 inline-block mr-1 -mt-0.5 text-amber-500" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M5 4a2 2 0 012-2h6a2 2 0 012 2v14l-5-2.5L5 18V4z" />
+                  </svg>
+                  New Memorize Practice
+                </h3>
+                <button @click="closePracticeForm" class="p-1 rounded hover:bg-gray-200 dark:hover:bg-gray-700" style="color: var(--text-muted, #9ca3af)">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+                  </svg>
+                </button>
+              </div>
+
+              <!-- Error -->
+              <div v-if="practiceFormError" class="text-xs text-red-600 bg-red-50 dark:bg-red-900/20 px-3 py-2 rounded mb-3">
+                {{ practiceFormError }}
+              </div>
+
+              <div class="space-y-3">
+                <!-- Title -->
+                <div>
+                  <label class="practice-form-label">Title</label>
+                  <input
+                    v-model="practiceForm.name"
+                    type="text"
+                    class="practice-form-input"
+                    placeholder="Practice name"
+                    maxlength="120"
+                  />
+                </div>
+
+                <!-- Text / Description -->
+                <div>
+                  <label class="practice-form-label">Text</label>
+                  <textarea
+                    v-model="practiceForm.description"
+                    class="practice-form-input practice-form-textarea"
+                    rows="4"
+                    maxlength="2000"
+                    placeholder="Selected text"
+                  />
+                </div>
+
+                <!-- Category -->
+                <div>
+                  <label class="practice-form-label">Category</label>
+                  <div class="flex flex-wrap gap-1.5">
+                    <button
+                      v-for="cat in presetCategories"
+                      :key="cat"
+                      @click="toggleFormCategory(cat)"
+                      class="practice-form-chip"
+                      :class="{ active: practiceForm.category === cat }"
+                    >
+                      {{ cat }}
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Pillars -->
+                <div v-if="allPillars.length > 0">
+                  <label class="practice-form-label">Pillars</label>
+                  <div class="flex flex-wrap gap-1.5">
+                    <button
+                      v-for="p in allPillars"
+                      :key="p.id"
+                      @click="toggleFormPillar(p.id)"
+                      class="practice-form-chip"
+                      :class="{ active: practiceForm.pillarIds.includes(p.id) }"
+                    >
+                      {{ p.icon }} {{ p.name }}
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Reps + Dates row -->
+                <div class="grid grid-cols-3 gap-2">
+                  <div>
+                    <label class="practice-form-label">Daily Reps</label>
+                    <input
+                      v-model.number="practiceForm.reps"
+                      type="number"
+                      min="1"
+                      max="20"
+                      class="practice-form-input text-center"
+                    />
+                  </div>
+                  <div>
+                    <label class="practice-form-label">Start</label>
+                    <input
+                      v-model="practiceForm.startDate"
+                      type="date"
+                      class="practice-form-input"
+                    />
+                  </div>
+                  <div>
+                    <label class="practice-form-label">End</label>
+                    <input
+                      v-model="practiceForm.endDate"
+                      type="date"
+                      class="practice-form-input"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <!-- Actions -->
+              <div class="flex justify-end gap-2 mt-4 pt-3" style="border-top: 1px solid var(--border-color, #e5e7eb)">
+                <button
+                  @click="closePracticeForm"
+                  class="px-3 py-1.5 text-xs font-medium rounded-md hover:bg-gray-100 dark:hover:bg-gray-700"
+                  style="color: var(--text-secondary, #6b7280)"
+                >
+                  Cancel
+                </button>
+                <button
+                  @click="submitPracticeForm"
+                  :disabled="practiceFormSaving"
+                  class="px-4 py-1.5 text-xs font-semibold rounded-md text-white bg-amber-600 hover:bg-amber-700 disabled:opacity-50 disabled:cursor-wait"
+                >
+                  {{ practiceFormSaving ? 'Creating...' : 'Create Practice' }}
+                </button>
+              </div>
+            </template>
+          </div>
+        </div>
+      </Transition>
+    </Teleport>
 
     <!-- Reference Panel -->
     <ReferencePanel
@@ -1225,20 +1429,21 @@ onUnmounted(() => {
   }
 }
 
-/* --- Text Selection Popup --- */
+/* --- Text Selection Trigger --- */
 
-.selection-popup {
-  position: absolute;
+.selection-trigger {
+  position: fixed;
   transform: translateX(-50%) translateY(-100%);
-  z-index: 30;
+  z-index: 40;
   background: #1f2937;
   border-radius: 6px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   padding: 2px;
   white-space: nowrap;
+  pointer-events: auto;
 }
 
-.selection-popup-btn {
+.selection-trigger-btn {
   display: flex;
   align-items: center;
   gap: 5px;
@@ -1253,26 +1458,11 @@ onUnmounted(() => {
   transition: background 0.15s;
 }
 
-.selection-popup-btn:hover {
+.selection-trigger-btn:hover {
   background: rgba(251, 191, 36, 0.15);
 }
 
-.selection-popup-btn:disabled {
-  opacity: 0.6;
-  cursor: wait;
-}
-
-.selection-popup-success {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  padding: 5px 10px;
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: #34d399;
-}
-
-.selection-popup-arrow {
+.selection-trigger-arrow {
   position: absolute;
   bottom: -5px;
   left: 50%;
@@ -1284,7 +1474,102 @@ onUnmounted(() => {
   border-top: 6px solid #1f2937;
 }
 
-/* Popup transition */
+/* --- Practice Creation Modal --- */
+
+.practice-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 10vh;
+  z-index: 50;
+}
+
+.practice-modal {
+  width: 420px;
+  max-width: 95vw;
+  max-height: 80vh;
+  overflow-y: auto;
+  background: var(--bg-surface, white);
+  border: 1px solid var(--border-color, #e5e7eb);
+  border-radius: 12px;
+  padding: 20px 24px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+}
+
+.practice-modal-success {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 24px 0;
+}
+
+.practice-form-label {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  margin-bottom: 4px;
+  color: var(--text-muted, #9ca3af);
+}
+
+.practice-form-input {
+  width: 100%;
+  padding: 6px 10px;
+  font-size: 0.8rem;
+  border: 1px solid var(--border-color, #d1d5db);
+  border-radius: 6px;
+  background: var(--bg-page, #f9fafb);
+  color: var(--text-primary, #111827);
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+.practice-form-input:focus {
+  border-color: #f59e0b;
+  box-shadow: 0 0 0 2px rgba(245, 158, 11, 0.15);
+}
+
+.practice-form-textarea {
+  resize: vertical;
+  min-height: 60px;
+  line-height: 1.5;
+}
+
+.practice-form-chip {
+  padding: 3px 10px;
+  font-size: 0.7rem;
+  font-weight: 500;
+  border: 1px solid var(--border-color, #d1d5db);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--text-secondary, #6b7280);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.practice-form-chip:hover {
+  border-color: #f59e0b;
+  color: #d97706;
+}
+
+.practice-form-chip.active {
+  background: #fffbeb;
+  border-color: #f59e0b;
+  color: #b45309;
+  font-weight: 600;
+}
+
+/* Dark mode overrides for the modal */
+.practice-modal.dark .practice-form-chip.active {
+  background: rgba(245, 158, 11, 0.15);
+  color: #fbbf24;
+}
+
+/* Popup trigger transition */
 .popup-fade-enter-active,
 .popup-fade-leave-active {
   transition: opacity 0.15s, transform 0.15s;
@@ -1293,5 +1578,24 @@ onUnmounted(() => {
 .popup-fade-leave-to {
   opacity: 0;
   transform: translateX(-50%) translateY(-100%) scale(0.9);
+}
+
+/* Modal transition */
+.modal-fade-enter-active,
+.modal-fade-leave-active {
+  transition: opacity 0.2s ease;
+}
+.modal-fade-enter-active .practice-modal,
+.modal-fade-leave-active .practice-modal {
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+.modal-fade-enter-from,
+.modal-fade-leave-to {
+  opacity: 0;
+}
+.modal-fade-enter-from .practice-modal,
+.modal-fade-leave-to .practice-modal {
+  transform: translateY(-10px) scale(0.98);
+  opacity: 0;
 }
 </style>
