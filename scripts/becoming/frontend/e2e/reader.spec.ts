@@ -340,3 +340,70 @@ test.describe('Landing Page', () => {
     await expect(page).toHaveTitle(/Become/i)
   })
 })
+
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// Reader Navigation History — back button works between documents
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+test.describe('Reader Navigation History', () => {
+  // Helper: open a file via sidebar filter
+  async function openFileViaFilter(page: Page, searchText: string) {
+    const filterInput = page.locator('.reader-sidebar input[placeholder="Filter files..."]')
+    await filterInput.fill(searchText)
+    // Wait for the filtered entry to appear, then click it
+    const entry = page.locator('.reader-sidebar .overflow-y-auto [class*="cursor-pointer"]').filter({ hasText: new RegExp(searchText, 'i') }).first()
+    await entry.waitFor({ timeout: 10000 })
+    await entry.click()
+    // Wait for document to load
+    await expect(page.locator('.reader-document')).toBeVisible({ timeout: 10000 })
+    // Clear filter for next use
+    await filterInput.fill('')
+  }
+
+  test('navigating between documents updates the URL query param', async ({ page }) => {
+    await page.goto(PUBLIC_READER_URL)
+    await waitForFileTree(page)
+
+    await openFileViaFilter(page, 'word')
+
+    // URL should now have ?f= param with word in it
+    expect(page.url()).toContain('f=')
+    expect(page.url()).toContain('word')
+  })
+
+  test('browser back button returns to previous document', async ({ page }) => {
+    await page.goto(PUBLIC_READER_URL)
+    await waitForFileTree(page)
+
+    // Open first document
+    await openFileViaFilter(page, 'word')
+    expect(page.url()).toContain('word')
+
+    // Open second document
+    await openFileViaFilter(page, 'creation')
+    expect(page.url()).toContain('creation')
+    await expect(page.locator('.reader-document .font-mono')).toContainText('creation', { timeout: 10000 })
+
+    // Press browser back button
+    await page.goBack()
+
+    // Should return to first document
+    await expect(page.locator('.reader-document .font-mono')).toContainText('word', { timeout: 10000 })
+    expect(page.url()).toContain('word')
+  })
+
+  test('back button returns to empty state when navigating past first document', async ({ page }) => {
+    await page.goto(PUBLIC_READER_URL)
+    await waitForFileTree(page)
+
+    // Open a document
+    await openFileViaFilter(page, 'word')
+    await expect(page.locator('.reader-document')).toBeVisible({ timeout: 10000 })
+
+    // Press back — should return to the reader without any document
+    await page.goBack()
+
+    // Should show the empty state (no document rendered)
+    await expect(page.locator('.reader-document')).not.toBeVisible({ timeout: 5000 })
+  })
+})

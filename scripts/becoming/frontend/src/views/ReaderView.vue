@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { ref, computed, onMounted, onUnmounted, nextTick } from 'vue'
-import { useRoute } from 'vue-router'
+import { ref, computed, onMounted, onUnmounted, nextTick, watch } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
 import { api, publicApi, type DocumentSource } from '../api'
 import { github, type FileTreeNode } from '../services/github'
 import TreeNode from '../components/TreeNode.vue'
@@ -8,6 +8,7 @@ import ReferencePanel, { type ReferenceTab } from '../components/ReferencePanel.
 import MarkdownIt from 'markdown-it'
 
 const route = useRoute()
+const router = useRouter()
 const sourceId = computed(() => Number(route.params.id))
 
 const source = ref<DocumentSource | null>(null)
@@ -47,6 +48,11 @@ const refMemorizeLoading = ref(false)
 
 // --- Dark Mode ---
 const darkMode = ref(localStorage.getItem('reader-dark-mode') === 'true')
+
+// --- Text Selection Popup ---
+const selectionPopup = ref<{ show: boolean; x: number; y: number; text: string }>({ show: false, x: 0, y: 0, text: '' })
+const selectionMemorizeLoading = ref(false)
+const selectionMemorizeSuccess = ref(false)
 
 function toggleDarkMode() {
   darkMode.value = !darkMode.value
@@ -221,7 +227,8 @@ async function loadSource() {
   }
 }
 
-async function openFile(path: string) {
+// Internal file loader — updates state without touching the URL
+async function loadFile(path: string) {
   if (!source.value) return
   loadingContent.value = true
   try {
@@ -246,6 +253,27 @@ async function openFile(path: string) {
     loadingContent.value = false
   }
 }
+
+// Navigate to a file — pushes a history entry so back button works
+async function openFile(path: string) {
+  // Push the file path into the URL query so the browser tracks it
+  router.push({ params: route.params, query: { ...route.query, f: path } })
+}
+
+// Watch for route query changes (back/forward button)
+watch(
+  () => route.query.f as string | undefined,
+  async (newPath) => {
+    if (newPath && newPath !== currentPath.value) {
+      await loadFile(newPath)
+    } else if (!newPath && currentPath.value) {
+      // Navigated back to before any file was opened
+      currentPath.value = ''
+      currentContent.value = ''
+      currentTitle.value = ''
+    }
+  },
+)
 
 function toggleDir(path: string) {
   if (expandedDirs.value.has(path)) {
@@ -542,6 +570,78 @@ async function copyShareUrl(url: string) {
   }
 }
 
+// --- Text Selection handlers ---
+
+function handleSelectionChange() {
+  const sel = window.getSelection()
+  if (!sel || sel.isCollapsed || !sel.toString().trim()) {
+    // Delay hiding so the popup button can be clicked
+    setTimeout(() => {
+      const sel2 = window.getSelection()
+      if (!sel2 || sel2.isCollapsed || !sel2.toString().trim()) {
+        selectionPopup.value.show = false
+        selectionMemorizeSuccess.value = false
+      }
+    }, 200)
+    return
+  }
+
+  const text = sel.toString().trim()
+  if (text.length < 5) return // Too short to be meaningful
+
+  // Only show popup if selection is within the reader content area
+  const contentEl = document.getElementById('reader-content')
+  const anchorNode = sel.anchorNode
+  if (!contentEl || !anchorNode || !contentEl.contains(anchorNode)) return
+
+  const range = sel.getRangeAt(0)
+  const rect = range.getBoundingClientRect()
+  const contentRect = contentEl.getBoundingClientRect()
+
+  selectionPopup.value = {
+    show: true,
+    // Position relative to the reader-content scroll container
+    x: rect.left + rect.width / 2 - contentRect.left + contentEl.scrollLeft,
+    y: rect.top - contentRect.top + contentEl.scrollTop - 8,
+    text,
+  }
+  selectionMemorizeSuccess.value = false
+}
+
+async function memorizeSelection() {
+  const text = selectionPopup.value.text
+  if (!text || selectionMemorizeLoading.value) return
+
+  selectionMemorizeLoading.value = true
+  try {
+    // Build a sensible name: doc title + first few words
+    const preview = text.substring(0, 40).replace(/\n/g, ' ')
+    const name = currentTitle.value
+      ? `${currentTitle.value} — "${preview}${text.length > 40 ? '…' : ''}"`
+      : `"${preview}${text.length > 40 ? '…' : ''}"`
+
+    await api.createPractice({
+      name: name.substring(0, 120),
+      type: 'memorize',
+      description: text.substring(0, 2000),
+      source_doc: currentPath.value,
+      source_path: currentPath.value,
+      category: 'scripture',
+    })
+    selectionMemorizeSuccess.value = true
+    // Auto-hide after success
+    setTimeout(() => {
+      selectionPopup.value.show = false
+      selectionMemorizeSuccess.value = false
+      window.getSelection()?.removeAllRanges()
+    }, 1500)
+  } catch (e: any) {
+    error.value = `Failed to create memorize practice: ${e.message}`
+  } finally {
+    selectionMemorizeLoading.value = false
+  }
+}
+
 // --- Mobile sidebar ---
 const isMobile = ref(window.innerWidth < 768)
 
@@ -555,11 +655,19 @@ function handleResize() {
 onMounted(() => {
   loadSource()
   window.addEventListener('resize', handleResize)
+  document.addEventListener('selectionchange', handleSelectionChange)
   handleResize()
+
+  // If URL already has a file query param (e.g. from shared link), open it
+  const initialFile = route.query.f as string | undefined
+  if (initialFile) {
+    loadFile(initialFile)
+  }
 })
 
 onUnmounted(() => {
   window.removeEventListener('resize', handleResize)
+  document.removeEventListener('selectionchange', handleSelectionChange)
 })
 </script>
 
@@ -708,6 +816,35 @@ onUnmounted(() => {
         <!-- Rendered markdown -->
         <article class="prose prose-gray max-w-none" v-html="renderedContent" />
       </div>
+
+      <!-- Text Selection Memorize Popup -->
+      <Transition name="popup-fade">
+        <div
+          v-if="selectionPopup.show"
+          class="selection-popup"
+          :style="{ left: selectionPopup.x + 'px', top: selectionPopup.y + 'px' }"
+        >
+          <button
+            v-if="!selectionMemorizeSuccess"
+            @click.stop="memorizeSelection"
+            :disabled="selectionMemorizeLoading"
+            class="selection-popup-btn"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" viewBox="0 0 20 20" fill="currentColor">
+              <path d="M5 4a2 2 0 012-2h6a2 2 0 012 2v14l-5-2.5L5 18V4z" />
+            </svg>
+            {{ selectionMemorizeLoading ? 'Saving...' : 'Memorize' }}
+          </button>
+          <span v-else class="selection-popup-success">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+            </svg>
+            Added!
+          </span>
+          <!-- Arrow pointing down -->
+          <div class="selection-popup-arrow"></div>
+        </div>
+      </Transition>
     </main>
 
     <!-- Reference Panel -->
@@ -1086,5 +1223,75 @@ onUnmounted(() => {
     display: block;
     overflow-x: auto;
   }
+}
+
+/* --- Text Selection Popup --- */
+
+.selection-popup {
+  position: absolute;
+  transform: translateX(-50%) translateY(-100%);
+  z-index: 30;
+  background: #1f2937;
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  padding: 2px;
+  white-space: nowrap;
+}
+
+.selection-popup-btn {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 10px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #fbbf24;
+  background: none;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.selection-popup-btn:hover {
+  background: rgba(251, 191, 36, 0.15);
+}
+
+.selection-popup-btn:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+.selection-popup-success {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 10px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #34d399;
+}
+
+.selection-popup-arrow {
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 6px solid #1f2937;
+}
+
+/* Popup transition */
+.popup-fade-enter-active,
+.popup-fade-leave-active {
+  transition: opacity 0.15s, transform 0.15s;
+}
+.popup-fade-enter-from,
+.popup-fade-leave-to {
+  opacity: 0;
+  transform: translateX(-50%) translateY(-100%) scale(0.9);
 }
 </style>

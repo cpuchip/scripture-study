@@ -48,3 +48,47 @@ From [01_reflections.md](docs/01_reflections.md) and [02_reflections-TODO.md](do
 - Check `docs/mcp-improvements.md` for tool-specific enhancement plans
 - Test changes against real study workflows, not just unit tests
 - Update tool descriptions when behavior changes — the description shapes how the AI uses the tool
+
+## Running the Becoming App Locally
+
+**Location:** `scripts/becoming/`
+
+**Quick start (production build with TLS):**
+```powershell
+cd scripts/becoming
+powershell -ExecutionPolicy Bypass -File start-ssl.ps1
+```
+
+**Dev mode (auto-login as user 1, no OAuth required):**
+```powershell
+cd scripts/becoming
+powershell -ExecutionPolicy Bypass -File start-ssl.ps1 -Dev
+```
+
+**Skip rebuild (reuse existing binary + frontend):**
+```powershell
+powershell -ExecutionPolicy Bypass -File start-ssl.ps1 -Dev -SkipBuild
+```
+
+**What the script does:**
+1. Creates TLS certs via `mkcert` (first run only — install: `winget install FiloSottile.mkcert && mkcert -install`)
+2. Runs `npm install` + `npm run build` in `frontend/`, copies `dist/` to `cmd/server/dist/`
+3. Runs `go build -o becoming.exe ./cmd/server/`
+4. Starts the server on `https://localhost:8443`
+
+**Flags:**
+- `-Dev` — Skips OAuth, auto-login as user 1 (database user must exist). The embedded frontend is always served, so both API and UI work.
+- `-SkipBuild` — Reuse the existing `becoming.exe` + frontend dist. Useful when only changing DB/config.
+- `-Port 8443` — Change the listening port.
+
+**Running Playwright tests:**
+```powershell
+cd scripts/becoming/frontend
+npx playwright test --reporter=list
+```
+Tests run against `https://localhost:8443` — server must be running with `-Dev` flag. Tests set `localStorage.setItem('onboarding_complete', 'true')` to bypass the onboarding guard.
+
+**Common gotchas:**
+- The server embeds `cmd/server/dist/` at compile time. If you change frontend code, you must rebuild (don't use `-SkipBuild`).
+- `-Dev` mode serves both the API (no auth) and the embedded frontend. No separate Vite dev server needed for testing.
+- Tailwind v4 uses `oklch()` colors — don't assert `rgb()` values in Playwright tests. Check CSS classes instead.

@@ -1,8 +1,8 @@
 import { test, expect, type APIRequestContext } from '@playwright/test'
 
-// Helper: format a date as YYYY-MM-DD
+// Helper: format a date as YYYY-MM-DD (local time, matching the app's localDateStr)
 function formatDate(d: Date): string {
-  return d.toISOString().slice(0, 10)
+  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`
 }
 
 // Helper: add days to a date
@@ -15,7 +15,7 @@ function addDays(d: Date, n: number): Date {
 // Helper: create a practice via API
 async function createPractice(
   request: APIRequestContext,
-  practice: { name: string; type: string; category: string; config: string },
+  practice: { name: string; type: string; category: string; config: string; start_date?: string },
 ) {
   const res = await request.post('/api/practices', { data: practice })
   expect(res.ok(), `createPractice failed: ${res.status()}`).toBeTruthy()
@@ -220,6 +220,7 @@ test.describe('Off-day checkbox UI', () => {
       type: 'scheduled',
       category: 'test',
       config,
+      start_date: anchorStr,
     })
     practiceId = practice.id
 
@@ -267,6 +268,7 @@ test.describe('Off-day checkbox UI', () => {
       type: 'scheduled',
       category: 'test',
       config,
+      start_date: anchorStr,
     })
     practiceId = practice.id
 

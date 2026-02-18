@@ -221,7 +221,7 @@ async function loadTree() {
     }
 
     if (initialFile.value) {
-      await openFile(initialFile.value)
+      await loadFile(initialFile.value)
     }
   } catch (e: any) {
     error.value = e.message
@@ -230,16 +230,14 @@ async function loadTree() {
   }
 }
 
-async function openFile(path: string) {
+// Internal file loader — updates state without touching the URL
+async function loadFile(path: string) {
   loadingContent.value = true
   try {
     const content = await github.getContent(repo.value, branch.value, path)
     currentPath.value = path
     currentContent.value = content
     currentTitle.value = extractTitle(content) || titleFromPath(path)
-
-    const query = { ...route.query, f: path }
-    router.replace({ query })
 
     await nextTick()
     const contentEl = document.getElementById('public-reader-content')
@@ -250,6 +248,25 @@ async function openFile(path: string) {
     loadingContent.value = false
   }
 }
+
+// Navigate to a file — pushes a history entry so back button works
+async function openFile(path: string) {
+  router.push({ query: { ...route.query, f: path } })
+}
+
+// Watch for route query changes (back/forward button)
+watch(
+  () => route.query.f as string | undefined,
+  async (newPath) => {
+    if (newPath && newPath !== currentPath.value) {
+      await loadFile(newPath)
+    } else if (!newPath && currentPath.value) {
+      currentPath.value = ''
+      currentContent.value = ''
+      currentTitle.value = ''
+    }
+  },
+)
 
 function toggleDir(path: string) {
   if (expandedDirs.value.has(path)) {
