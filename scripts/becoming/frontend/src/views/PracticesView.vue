@@ -22,8 +22,12 @@ const formPillarIds = ref<number[]>([])
 const filterStatus = ref<string>('active')
 const filterType = ref<string>('all')
 const filterCategory = ref<string>('all')
+const filterPillar = ref<string>('all')
 const filterTime = ref<'all' | 'current' | 'upcoming' | 'past'>('all')
 const timeFilterOptions = ['all', 'current', 'upcoming', 'past'] as const
+
+// Practice → pillar mappings (key: practice_id, value: pillar_ids)
+const practicePillarMap = ref<Map<number, number[]>>(new Map())
 
 // Form state
 const form = ref({
@@ -87,6 +91,12 @@ const filteredPractices = computed(() => {
     if (filterCategory.value !== 'all') {
       const cats = (p.category || '').split(',').map(c => c.trim())
       if (!cats.includes(filterCategory.value)) return false
+    }
+    // Pillar filter
+    if (filterPillar.value !== 'all') {
+      const pillarId = Number(filterPillar.value)
+      const pids = practicePillarMap.value.get(p.id) || []
+      if (!pids.includes(pillarId)) return false
     }
     // Time filter
     if (filterTime.value !== 'all') {
@@ -171,12 +181,23 @@ function startDateClass(): string {
 
 async function load() {
   loading.value = true
-  const [practicesData, pillarsData] = await Promise.all([
+  const [practicesData, pillarsData, pillarLinks] = await Promise.all([
     api.listPractices(undefined, true, filterStatus.value !== 'all' ? filterStatus.value : undefined),
     api.listPillarsFlat(),
+    api.getAllPracticePillarLinks(),
   ])
   practices.value = practicesData
   allPillars.value = pillarsData.map(p => ({ id: p.id, name: p.name, icon: p.icon || '' }))
+
+  // Build practice → pillar ID map
+  const map = new Map<number, number[]>()
+  for (const link of pillarLinks) {
+    const list = map.get(link.practice_id) || []
+    list.push(link.pillar_id)
+    map.set(link.practice_id, list)
+  }
+  practicePillarMap.value = map
+
   loading.value = false
 }
 
@@ -808,6 +829,21 @@ onMounted(async () => {
             class="px-2.5 py-1 text-xs rounded-full border"
             :class="filterCategory === c ? 'bg-indigo-100 border-indigo-300 text-indigo-700' : 'bg-gray-50 border-gray-200 text-gray-500 hover:bg-gray-100'"
           >{{ c }}</button>
+        </div>
+        <div v-if="allPillars.length > 0" class="flex gap-1.5 flex-wrap items-center">
+          <span class="text-xs text-gray-400 w-10">Pillar</span>
+          <button
+            @click="filterPillar = 'all'"
+            class="px-2.5 py-1 text-xs rounded-full border"
+            :class="filterPillar === 'all' ? 'bg-indigo-100 border-indigo-300 text-indigo-700' : 'bg-gray-50 border-gray-200 text-gray-500 hover:bg-gray-100'"
+          >all</button>
+          <button
+            v-for="pl in allPillars"
+            :key="pl.id"
+            @click="filterPillar = String(pl.id)"
+            class="px-2.5 py-1 text-xs rounded-full border"
+            :class="filterPillar === String(pl.id) ? 'bg-indigo-100 border-indigo-300 text-indigo-700' : 'bg-gray-50 border-gray-200 text-gray-500 hover:bg-gray-100'"
+          >{{ pl.icon }} {{ pl.name }}</button>
         </div>
         <div class="flex gap-1.5 flex-wrap items-center">
           <span class="text-xs text-gray-400 w-10">Time</span>

@@ -262,6 +262,13 @@ export interface PillarLink {
   pillar_icon: string
 }
 
+export interface PracticePillarMapping {
+  practice_id: number
+  pillar_id: number
+  pillar_name: string
+  pillar_icon: string
+}
+
 // --- Practices ---
 
 export const api = {
@@ -541,6 +548,10 @@ export const api = {
 
   getPracticePillars(practiceId: number) {
     return request<PillarLink[]>(`/practices/${practiceId}/pillars`)
+  },
+
+  getAllPracticePillarLinks() {
+    return request<PracticePillarMapping[]>('/practice-pillar-links')
   },
 
   // --- Document Sources ---

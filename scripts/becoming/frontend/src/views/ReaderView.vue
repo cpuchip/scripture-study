@@ -624,24 +624,102 @@ function handleSelectionChange() {
   }
 }
 
+function localDateStr(d: Date = new Date()): string {
+  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`
+}
+
+// Detect scripture references in text (e.g. "D&C 93:36", "1 Nephi 3:7", "Alma 32:21", "Moses 1:39")
+function detectScriptureRef(text: string): string | null {
+  const patterns = [
+    // D&C / DC / Doctrine and Covenants
+    /D&C\s+(\d+:\d+(?:[–-]\d+)?)/i,
+    /DC\s+(\d+:\d+(?:[–-]\d+)?)/i,
+    /Doctrine\s+and\s+Covenants\s+(\d+:\d+(?:[–-]\d+)?)/i,
+    // Book of Mormon books
+    /(\d\s+Nephi\s+\d+:\d+(?:[–-]\d+)?)/i,
+    /(Nephi\s+\d+:\d+(?:[–-]\d+)?)/i,
+    /(Alma\s+\d+:\d+(?:[–-]\d+)?)/i,
+    /(Helaman\s+\d+:\d+(?:[–-]\d+)?)/i,
+    /(Mosiah\s+\d+:\d+(?:[–-]\d+)?)/i,
+    /(Ether\s+\d+:\d+(?:[–-]\d+)?)/i,
+    /(Moroni\s+\d+:\d+(?:[–-]\d+)?)/i,
+    /(Mormon\s+\d+:\d+(?:[–-]\d+)?)/i,
+    /(Jacob\s+\d+:\d+(?:[–-]\d+)?)/i,
+    /(Enos\s+\d+:\d+(?:[–-]\d+)?)/i,
+    /(Omni\s+\d+:\d+(?:[–-]\d+)?)/i,
+    /(Jarom\s+\d+:\d+(?:[–-]\d+)?)/i,
+    /(3\s+Nephi\s+\d+:\d+(?:[–-]\d+)?)/i,
+    /(4\s+Nephi\s+\d+:\d+(?:[–-]\d+)?)/i,
+    // Pearl of Great Price
+    /(Moses\s+\d+:\d+(?:[–-]\d+)?)/i,
+    /(Abraham\s+\d+:\d+(?:[–-]\d+)?)/i,
+    /(JS[–-]H\s+\d+:\d+(?:[–-]\d+)?)/i,
+    /(Articles\s+of\s+Faith\s+\d+:\d+(?:[–-]\d+)?)/i,
+    // Old and New Testament
+    /(Genesis\s+\d+:\d+(?:[–-]\d+)?)/i,
+    /(Exodus\s+\d+:\d+(?:[–-]\d+)?)/i,
+    /(Isaiah\s+\d+:\d+(?:[–-]\d+)?)/i,
+    /(Psalms?\s+\d+:\d+(?:[–-]\d+)?)/i,
+    /(Proverbs\s+\d+:\d+(?:[–-]\d+)?)/i,
+    /(Matthew\s+\d+:\d+(?:[–-]\d+)?)/i,
+    /(Mark\s+\d+:\d+(?:[–-]\d+)?)/i,
+    /(Luke\s+\d+:\d+(?:[–-]\d+)?)/i,
+    /(John\s+\d+:\d+(?:[–-]\d+)?)/i,
+    /(Romans\s+\d+:\d+(?:[–-]\d+)?)/i,
+    /(Hebrews\s+\d+:\d+(?:[–-]\d+)?)/i,
+    /(James\s+\d+:\d+(?:[–-]\d+)?)/i,
+    /(Revelation\s+\d+:\d+(?:[–-]\d+)?)/i,
+    /(\d\s+Corinthians\s+\d+:\d+(?:[–-]\d+)?)/i,
+    /(\d\s+Timothy\s+\d+:\d+(?:[–-]\d+)?)/i,
+    /(\d\s+Peter\s+\d+:\d+(?:[–-]\d+)?)/i,
+    // Catch-all: "Book Chapter:Verse" pattern
+    /—\s*([A-Z]\w+(?:\s+\d+)?\s+\d+:\d+(?:[–-]\d+)?)/,
+  ]
+
+  for (const pattern of patterns) {
+    const match = text.match(pattern)
+    if (match) {
+      // For D&C patterns, normalize the prefix
+      if (/^D&C|^DC|^Doctrine/i.test(pattern.source)) {
+        return `D&C ${match[1]}`
+      }
+      return match[1] || match[0]
+    }
+  }
+  return null
+}
+
 function openPracticeForm() {
   const text = selectionTrigger.value.text
   if (!text) return
 
-  // Build a sensible default name: doc title + first few words
-  const preview = text.substring(0, 40).replace(/\n/g, ' ')
-  const name = currentTitle.value
-    ? `${currentTitle.value} — "${preview}${text.length > 40 ? '…' : ''}"`
-    : `"${preview}${text.length > 40 ? '…' : ''}"`
+  // Try to detect a scripture reference in the selected text
+  const ref = detectScriptureRef(text)
+
+  // Build a sensible default name
+  let name: string
+  if (ref) {
+    name = ref
+  } else {
+    const preview = text.substring(0, 40).replace(/\n/g, ' ')
+    name = currentTitle.value
+      ? `${currentTitle.value} — "${preview}${text.length > 40 ? '…' : ''}"`
+      : `"${preview}${text.length > 40 ? '…' : ''}"`
+  }
+
+  // Default dates: start today, end in 1 week
+  const today = new Date()
+  const nextWeek = new Date(today)
+  nextWeek.setDate(nextWeek.getDate() + 7)
 
   practiceForm.value = {
     name: name.substring(0, 120),
     description: text.substring(0, 2000),
     category: 'scripture',
     pillarIds: [],
-    reps: 1,
-    startDate: '',
-    endDate: '',
+    reps: 3,
+    startDate: localDateStr(today),
+    endDate: localDateStr(nextWeek),
   }
   practiceFormError.value = ''
   practiceFormSuccess.value = false
@@ -720,19 +798,19 @@ function handleResize() {
   }
 }
 
-onMounted(() => {
-  loadSource()
+onMounted(async () => {
   window.addEventListener('resize', handleResize)
   document.addEventListener('selectionchange', handleSelectionChange)
   handleResize()
 
-  // Load pillars for the practice creation form
+  // Load pillars for the practice creation form (non-blocking)
   api.listPillarsFlat().then(p => { allPillars.value = p }).catch(() => {})
 
-  // If URL already has a file query param (e.g. from shared link), open it
+  // Load the source first, then check for deep-link file param
+  await loadSource()
   const initialFile = route.query.f as string | undefined
   if (initialFile) {
-    loadFile(initialFile)
+    await loadFile(initialFile)
   }
 })
 

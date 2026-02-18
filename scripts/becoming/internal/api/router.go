@@ -116,6 +116,7 @@ func Router(database *db.DB, scripturesRoot string) chi.Router {
 	// Practice ↔ Pillar links
 	r.Put("/practices/{id}/pillars", setPracticePillarsForPractice(database))
 	r.Get("/practices/{id}/pillars", getPracticePillarsForPractice(database))
+	r.Get("/practice-pillar-links", getAllPracticePillarLinks(database))
 
 	// Document sources (Study Reader)
 	r.Route("/sources", func(r chi.Router) {
@@ -1415,6 +1416,21 @@ func getPracticePillarsForPractice(database *db.DB) http.HandlerFunc {
 		}
 		if links == nil {
 			links = []db.PillarLink{}
+		}
+		writeJSON(w, http.StatusOK, links)
+	}
+}
+
+func getAllPracticePillarLinks(database *db.DB) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		userID := auth.UserID(r)
+		links, err := database.GetAllPracticePillarLinks(userID)
+		if err != nil {
+			writeError(w, http.StatusInternalServerError, err.Error())
+			return
+		}
+		if links == nil {
+			links = []db.PracticePillarMapping{}
 		}
 		writeJSON(w, http.StatusOK, links)
 	}

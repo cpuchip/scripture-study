@@ -239,6 +239,39 @@ func (db *DB) GetPracticePillars(userID, practiceID int64) ([]PillarLink, error)
 	return links, rows.Err()
 }
 
+// PracticePillarMapping represents a practice→pillar association with pillar metadata.
+type PracticePillarMapping struct {
+	PracticeID int64  `json:"practice_id"`
+	PillarID   int64  `json:"pillar_id"`
+	PillarName string `json:"pillar_name"`
+	PillarIcon string `json:"pillar_icon"`
+}
+
+// GetAllPracticePillarLinks returns all practice→pillar mappings for a user.
+func (db *DB) GetAllPracticePillarLinks(userID int64) ([]PracticePillarMapping, error) {
+	rows, err := db.Query(`
+		SELECT pp.practice_id, p.id, p.name, COALESCE(p.icon, '')
+		FROM pillars p
+		JOIN practice_pillars pp ON pp.pillar_id = p.id
+		JOIN practices pr ON pr.id = pp.practice_id
+		WHERE p.user_id = ? AND pr.user_id = ?
+		ORDER BY pp.practice_id, p.sort_order`, userID, userID)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+
+	var links []PracticePillarMapping
+	for rows.Next() {
+		var m PracticePillarMapping
+		if err := rows.Scan(&m.PracticeID, &m.PillarID, &m.PillarName, &m.PillarIcon); err != nil {
+			return nil, err
+		}
+		links = append(links, m)
+	}
+	return links, rows.Err()
+}
+
 // --- Task ↔ Pillar linking ---
 
 // LinkTaskPillar adds a link between a task and a pillar (both must belong to user).
