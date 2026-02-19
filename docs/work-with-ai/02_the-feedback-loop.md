@@ -23,6 +23,7 @@
 | **Chat session** | The full conversation containing multiple sessions. Your ongoing back-and-forth in one chat window. |
 | **Spec / Blueprint** | The planning document created collaboratively before implementation begins. |
 | **Feedback loop** | Review → diagnose → correct → verify → repeat. |
+| **Periodic review** | Stepping back from individual outputs to assess the overall process — tools, habits, patterns, quality trends. The feedback loop applied to the feedback loop. |
 
 ---
 
@@ -217,7 +218,7 @@ Another real example from the same tool. My content database stores cross-refere
 
 ---
 
-### The Trust Gradient (3 min)
+### The Trust Gradient (2 min)
 
 Not all AI output deserves the same level of scrutiny. Over time, you develop a feel for when to read every line and when to scan-and-move.
 
@@ -238,6 +239,53 @@ This is the same process you use with a new team member. At first, you review ev
 
 ---
 
+### The Periodic Review (5 min)
+
+Everything we've covered so far — review, diagnose, correct, verify — applies to *individual outputs*. But there's a higher-level feedback loop that's just as important: periodically stepping back to review the *process itself*.
+
+**The practice:** Every few sessions — roughly weekly, not on a strict schedule — pause the work and ask:
+
+- "How do you think our interactions are going?"
+- "What tools are working well? What tools aren't?"
+- "What tools do you *wish* you had that you don't?"
+- "Am I giving you the right kind of context, or are you working around gaps?"
+
+Then **write down the answers.** Not polished docs — working notes. Dated, specific, honest. Store them somewhere consistent (I use a `docs/` folder with files like `reflections.md`, `tool-use-observance.md`, `observations.md`).
+
+**Why this matters:**
+
+Individual session reviews catch *acute* problems — this function is wrong, this pattern doesn't match. Periodic reviews catch *chronic* problems — the kind that creep in gradually and compound silently.
+
+**Real example — the finding-vs-reading degradation:** Over a three-week period, I built custom search tools for my project. Each tool made *finding* content faster. But I didn't notice until a periodic review that the AI had started treating search results as final answers instead of pointers to source material. Study documents were getting broader but shallower — more references, fewer verified quotes, more paraphrases passed off as direct citations.
+
+No single session review would have caught this. The output in any given session looked fine. The *trend across sessions* was the problem. And I only saw the trend because I periodically asked "how are we doing?" and compared the honest answer to previous honest answers.
+
+**What the review produced:**
+1. A **two-phase workflow rule** — search first (discovery), then read the actual sources (deep engagement)
+2. A **cite-count rule** — for N citations, perform at least N full source reads
+3. **9 tool improvements** — search results now label quotes vs. summaries, include clickable links, and show whether source files exist locally
+4. A **pre-publish checklist** — every quote verified against its source before delivery
+
+The project before those changes and the project after barely resemble each other. Same tools. Same person. Same AI. Completely different quality — because someone kept stopping to ask the meta-question and kept writing down what they found.
+
+**The periodic review loop:**
+
+```
+1. NOTICE — Quality shifting, tools underperforming, patterns repeating
+2. STOP — Pause production, ask "how are we doing?"
+3. DOCUMENT — Honest notes, dated, specific, with examples
+4. ACT — Process rules, tool fixes, workflow changes
+5. VERIFY — Next session: did the change actually help?
+```
+
+This is the same review → diagnose → correct → verify loop from earlier — applied to the relationship with the tool, not just the output. It runs weekly instead of per-session. And the compound effect is enormous.
+
+**Tip:** Keep a running "tool observations" log. When something about a tool stands out — good or bad — note it in a few sentences. Over time, patterns emerge from the notes that you'd never see in the moment. Bugs you worked around three times become improvement tickets. Features that consistently save time become documented patterns you can share with your team.
+
+> See [reflections-and-tool-updates.md](examples/reflections-and-tool-updates.md) for extended examples of this practice in action.
+
+---
+
 ### Wrap-Up and Preview (2 min)
 
 **The feedback loop:**
@@ -247,10 +295,16 @@ This is the same process you use with a new team member. At first, you review ev
 4. **Verify** — Check the fix. Check that nothing else broke. Test adjacent cases.
 5. **Repeat** — Until the output matches the spec.
 
+**The periodic review:**
+- Step back regularly. Ask how the *process* is going, not just the output.
+- Document what you find. Honest notes compound into real improvement.
+- Tools, habits, and behavioral patterns all respond to the feedback loop.
+
 **When you're stuck:**
 - Start fresh on that section (carry lessons forward as specs)
 - Break it smaller (one function at a time)
 - Show, don't tell (write one example, let the AI follow it)
+- Review your tool selection (zero results should trigger a tool change, not surrender)
 - Clear the context (new chat with clean prompt)
 
 **Next session: Live Build**
@@ -266,6 +320,8 @@ Take the planning doc you wrote after Part 1. Start building it with AI. When th
 3. Verify the fix
 4. Note what worked and what didn't
 
+**Bonus:** After a few sessions, try the periodic review. Ask the AI: "How do you think our interactions are going? What's working well, and what could be better?" Write down the answer. You might be surprised.
+
 Bring your notes to the next session.
 
 ---
@@ -277,6 +333,7 @@ Bring your notes to the next session.
 - **Corrections are specifications.** Every correction you give adds to the session's working context. Good corrections compound into better output throughout the session.
 - **The feedback loop is not a failure.** Needing to correct the AI isn't a sign that AI tools are broken. It's the normal workflow. The question is whether you steer efficiently or waste time fighting the tool.
 - **The spiral is the enemy.** Learn to recognize when you're going in circles and switch strategies before wasting 30 minutes on a doomed approach.
+- **The periodic review is the multiplier.** Session-level feedback fixes individual problems. Process-level feedback prevents entire categories of problems. The engineers who improve fastest are the ones who regularly step back and ask "how is this going?"
 
 ### Common Objections
 
@@ -292,6 +349,7 @@ Bring your notes to the next session.
 - **Spiral demo:** Show a real example of going in circles, then demonstrate the "start fresh with lessons learned" strategy
 - **Trust gradient exercise:** Show three different pieces of AI output (boilerplate, business logic, auth) and have the audience discuss what level of review each needs
 - **Before/after corrections:** Show a vague correction ("fix the error handling") vs. a specific one, and compare the AI's responses
+- **Periodic review demo:** Show a real `docs/tool-use-observance.md` or `docs/reflections.md` file. Walk through the dated entries. Ask: "How would you have caught this problem without stopping to reflect?" Show the before/after of a tool improvement that came from the log.
 
 ### Series Roadmap
 - **Part 1: Planning Then Creating** — The spec-driven pattern. Done.
