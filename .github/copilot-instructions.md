@@ -33,17 +33,13 @@ See [biases.md](../docs/biases.md) for reflection on collaboration dynamics and 
 | `/docs/` | Meta-documentation, templates, reflections on our process |
 | `/scripts/` | MCP servers (gospel-mcp, gospel-vec, webster-mcp, becoming, yt-mcp, search-mcp) and utilities |
 
-**Prefer local copies.** Always reference cached files in `/gospel-library/` over linking to the website. Verify files exist with `file_search` or `list_dir` before claiming they don't.
-
 ## Core Principles
 
-**Search results are pointers, not sources.** Use search tools to *find* what to study. Use `read_file` to *actually study it*. Use webster-mcp to *understand the language*. Each tool has a role; none replaces the others.
+**Read before quoting.** For every scripture or talk you cite, `read_file` the actual source file from `gospel-library/`. Details on verification, cite counting, and the full checklist are in the `source-verification` skill.
 
-**Always read before quoting.** For every scripture or talk you cite, `read_file` the actual source file from `gospel-library/`. MCP tool excerpts and vector search summaries are not quotes. Footnotes and cross-references in the markdown files are essential context.
+**Link everything.** Scripture, talk, and manual links follow the conventions in the `scripture-linking` skill. Never link to a directory — always the specific file.
 
-**Link everything.** Scripture links: `[D&C 93:36](../gospel-library/eng/scriptures/dc-testament/dc/93.md)`. Talk links: `[Nelson, April 2025](../gospel-library/eng/general-conference/2025/04/57nelson.md)`. Never link to a directory — always the specific file.
-
-**Path conventions:** Lowercase with hyphens (`1-ne`, `js-h`). Chapter files without leading zeros (`1.md`, `138.md`). D&C in `dc-testament/dc/`.
+**Prefer local copies.** Always reference cached files in `/gospel-library/` over linking to the website. Verify files exist with `file_search` or `list_dir` before claiming they don't.
 
 ## Agent Modes
 

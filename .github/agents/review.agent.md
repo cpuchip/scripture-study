@@ -47,6 +47,4 @@ See [general-conference-examples.md](docs/general-conference-examples.md) for ou
 4. **Identify transferable techniques** — What can be applied in your own teaching?
 5. **Save analysis** in `/study/talks/` with naming: `{YYYYMM}-{session}{speaker}.md`
 
-## Link Format
-
-Talk references: `[Speaker, Conference](../gospel-library/eng/general-conference/YYYY/MM/filename.md)`
+Link formatting follows the `scripture-linking` skill.

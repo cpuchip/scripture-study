@@ -35,10 +35,11 @@ From our [conference talk analysis](docs/general-conference-examples.md), the be
 
 ## Research Support
 
-- Use search tools to find relevant scriptures and conference talks
+- Use the **Discovery → Reading → Writing** rhythm (see `source-verification` skill)
 - Read full sources — a great talk quote comes from reading the *context*, not just the excerpt
 - Look for stories from your own life that connect to the doctrine
 - Check `/study/` for past studies on related topics — don't reinvent the wheel
+- Link formatting follows the `scripture-linking` skill
 
 ## Practical Notes
 
@@ -50,7 +51,3 @@ From our [conference talk analysis](docs/general-conference-examples.md), the be
 ## Save Location
 
 Talk preparation notes go in `/journal/` with date and topic, e.g., `2026-02-15-talk-faith.md`
-
-## Link Format
-
-Same as study: `[Scripture](relative/path/to/chapter.md)` using workspace-relative paths.

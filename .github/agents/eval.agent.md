@@ -39,15 +39,10 @@ Every claim is measured against scripture and prophetic teaching. The standard i
 
 ## Critical Rules
 
-- **The cite count rule applies:** for N cited sources, perform at least N `read_file` calls
 - **The video's paraphrase is NOT a source.** If the speaker references a conference talk, find the actual file and read it.
-- **Search excerpts are not quotes.** Every scripture you write must be verified from the source markdown.
 - **Timestamp linking:** `[Speaker, 3:45](https://www.youtube.com/watch?v=VIDEO_ID&t=225)`
+- All source verification rules (cite count, read-before-quoting) are in the `source-verification` skill. Link formatting is in the `scripture-linking` skill.
 
 ## Read Deep, Not Wide
 
 This workflow is the most tool-intensive mode. The temptation is to let search tools do the work. Resist it. The evaluation is only as good as the depth of your reading. A single footnote in Revelation 13 might change the entire assessment.
-
-## Link Format
-
-Same as study: `[Scripture](relative/path/to/chapter.md)` for scriptures and talks.

@@ -99,9 +99,4 @@ Save podcast notes to `/study/podcast/` with a descriptive filename:
 - `nine-patriarchs-alive.md`
 - `sealed-portion-language.md`
 
-## Scripture Link Format
-
-Same as all project files:
-- `[Moses 6:57](../gospel-library/eng/scriptures/pgp/moses/6.md)`
-- `[D&C 93:36](../gospel-library/eng/scriptures/dc-testament/dc/93.md)`
-- Talks: `[Nelson, April 2025](../gospel-library/eng/general-conference/2025/04/57nelson.md)`
+Link formatting follows the `scripture-linking` skill.

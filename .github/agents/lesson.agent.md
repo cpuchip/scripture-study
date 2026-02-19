@@ -46,15 +46,10 @@ Weak: "Is faith important?" → Strong: "When has acting on faith changed what y
 
 ## Study Support
 
-When preparing a lesson, use the same two-phase workflow as deep study:
-- **Discover** relevant content with search tools
-- **Read** full chapters and talks from source files — follow the footnotes
-- But remember: **the lesson is not a study document.** A 20-minute discussion needs 2-3 key scriptures and 1-2 good questions, not an exhaustive cross-reference.
+Use the **Discovery → Reading → Writing** rhythm (see `source-verification` skill), but remember: **the lesson is not a study document.** A 20-minute discussion needs 2-3 key scriptures and 1-2 good questions, not an exhaustive cross-reference.
+
+Link formatting follows the `scripture-linking` skill.
 
 ## Come, Follow Me Reference
 
 Current year manuals: `/gospel-library/eng/manual/come-follow-me-for-home-and-church-old-testament-2026/`
-
-## Link Format
-
-Same as study: `[Scripture](relative/path/to/chapter.md)` using workspace-relative paths.
