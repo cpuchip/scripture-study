@@ -340,7 +340,7 @@ function handleContentClick(event: MouseEvent) {
   const href = link.getAttribute('href')
   if (!href) return
 
-  // Heading anchor links: scroll to hash and update URL
+  // Heading anchor links: copy URL to clipboard, scroll, show tooltip
   if (link.classList.contains('heading-anchor-link') && href.startsWith('#')) {
     event.preventDefault()
     const hash = href.slice(1)
@@ -349,6 +349,13 @@ function handleContentClick(event: MouseEvent) {
     const url = new URL(window.location.href)
     url.hash = hash
     window.history.replaceState(null, '', url.toString())
+    navigator.clipboard.writeText(url.toString()).then(() => {
+      const tooltip = document.createElement('span')
+      tooltip.textContent = 'Copied!'
+      tooltip.className = 'anchor-copied-tooltip'
+      link.appendChild(tooltip)
+      setTimeout(() => tooltip.remove(), 1500)
+    }).catch(() => {})
     return
   }
 
@@ -944,6 +951,7 @@ watch(currentTitle, (title) => {
 .reader-document :deep(.heading-anchor-link) {
   display: inline-flex;
   align-items: center;
+  position: relative;
   margin-left: 0.35rem;
   color: var(--text-muted, #9ca3af);
   text-decoration: none;
@@ -957,6 +965,26 @@ watch(currentTitle, (title) => {
 }
 .reader-document :deep(.heading-anchor-link:hover) {
   color: #ea580c;
+}
+.reader-document :deep(.anchor-copied-tooltip) {
+  position: absolute;
+  top: -2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #1f2937;
+  color: #fbbf24;
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 4px;
+  white-space: nowrap;
+  pointer-events: none;
+  animation: anchor-tooltip-fade 1.5s ease forwards;
+  z-index: 10;
+}
+@keyframes anchor-tooltip-fade {
+  0%, 70% { opacity: 1; }
+  100% { opacity: 0; }
 }
 
 /* Mobile responsive */
