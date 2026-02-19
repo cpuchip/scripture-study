@@ -2,7 +2,7 @@
 
 *Study started: February 10, 2026*
 *Prerequisite: [The Mechanics of Existence: Truth, Light, Spirit, Matter, and Law](./truth.md)*
-*Related: [Intelligence Study](./intelligence.md) | [Creation Study](./creation.md) | [Helaman-Ten Virgins](./helaman-ten-virgins.md)*
+*Related: [Intelligence Study](./intelligence.md) | [Creation Study](./creation.md) | [Helaman-Ten Virgins](./helaman-ten-virgins.md) | [The Holy Order of God](./order-of-god.md)*
 
 > "For the natural man is an enemy to God, and has been from the fall of Adam, and will be, forever and ever, unless he yields to the enticings of the Holy Spirit, and putteth off the natural man and becometh a saint through the atonement of Christ the Lord"
 > — [Mosiah 3:19](https://www.churchofjesuschrist.org/study/scriptures/bofm/mosiah/3?lang=eng&id=p19#p19)
@@ -565,3 +565,5 @@ The mechanics describe the universe. Christ makes it possible for us to live in 
 - [The Mechanics of Existence: Truth, Light, Spirit, Matter, and Law](./truth.md) — The framework this study completes
 - [Intelligence Study](./intelligence.md) — Deep dive on intelligence, hierarchy, light
 - [Helaman-Ten Virgins](./helaman-ten-virgins.md) — Light withdrawing; oil as conversion
+- [The Holy Order of God](./order-of-god.md) — The covenant structure that makes truth operational
+- [The Holy Order: Modern Prophetic Perspectives](./order-of-god-modern-lens.md) — Conference talks on the order and covenant path

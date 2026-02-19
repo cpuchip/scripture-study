@@ -1,7 +1,7 @@
 # The Mechanics of Existence: Truth, Light, Spirit, Matter, and Law
 
 *Study started: February 9, 2026*
-*Related: [Intelligence Study](./intelligence.md) | [Creation Study](./creation.md)*
+*Related: [Intelligence Study](./intelligence.md) | [Creation Study](./creation.md) | [The Holy Order of God](./order-of-god.md)*
 
 ## Study Questions
 
@@ -531,3 +531,5 @@ Truth, intelligence, agency, law, and being are not separate things. They are di
 - [Intelligence Study](./intelligence.md) — Deeper dive on intelligence, hierarchy, Skousen's theory
 - [Creation Study](./creation.md) — The three creation accounts and planning patterns
 - [Helaman-Ten Virgins](./helaman-ten-virgins.md) — Light withdrawing as oil running out
+- [The Holy Order of God](./order-of-god.md) — The eternal pattern by which intelligence progresses toward fulness
+- [The Holy Order: Modern Prophetic Perspectives](./order-of-god-modern-lens.md) — Conference talks on the order, priesthood power, and covenant
