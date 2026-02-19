@@ -23,6 +23,7 @@
 | **Chat session** | The full conversation containing multiple sessions. Your ongoing back-and-forth in one chat window. |
 | **Spec / Blueprint / Spiritual creation** | The planning document created collaboratively before implementation begins (Moses 3:5). |
 | **Feedback loop** | Review → diagnose → correct → verify → repeat. The "watching until they obey" pattern. |
+| **Seventh-day review** | Periodic reflection on the whole arc — tools, process, patterns, quality trends. The feedback loop applied to the creative process itself (Abraham 5:2). |
 
 ---
 
@@ -147,7 +148,7 @@ This is the essence of the feedback loop: not controlling every detail, but main
 
 ---
 
-### The Agency Question (5 min)
+### The Agency Question (4 min)
 
 Now we need to address something deeper. Is the AI *obeying*? Does it have agency? And does it matter?
 
@@ -179,6 +180,60 @@ The glory isn't in the implementation. It's in the intelligence — the light an
 
 ---
 
+### The Seventh Day: Periodic Reflection (5 min)
+
+There's a detail in the creation accounts that's easy to miss. After six periods of creation, the Gods rested. But the rest wasn't idleness — it was *reflection*:
+
+> "And the Gods said among themselves: On the seventh time we will end our work... and we will rest... from all our work which we have created."
+> — [Abraham 5:2](../../gospel-library/eng/scriptures/pgp/abr/5.md)
+
+The seventh period is a council. The Gods step back from making things and assess the whole arc. Not "did this one creature obey?" but "does the system work? Is the creation accomplishing what we intended?"
+
+This is the periodic review — and it's the practice that drove more improvement in my AI work than any single technique.
+
+**The practice:** Every few sessions, pause the work. Step back from the individual outputs and ask the meta-questions:
+
+- "How are our interactions going?"
+- "What tools are working well? What isn't?"
+- "What do you wish you had that you don't?"
+- "Have I hit any bias patterns I should know about?"
+
+Write down the answers. Not polished documents — honest working notes, dated and specific. Store them in a consistent place.
+
+**Why this matters:**
+
+The Abraham 4 feedback loop — order, watch, verify — catches problems within a single creative act. But some problems only show up across multiple acts. The Gods' seventh-day review catches *those*.
+
+**Real example — the finding-vs-reading degradation:** Over three weeks, I built search tools that made *finding* scriptures near-instant. Powerful tools. But I didn't notice that the AI had started treating search results as final answers — paraphrasing summaries as if they were real quotes, skipping footnotes, never reading the actual chapter files.
+
+The outputs in any single session looked fine. The *trend across sessions* was the problem. Discovery was getting faster while engagement was getting shallower. I only caught it because I periodically asked "how are we doing?" and compared the honest answer to previous honest answers.
+
+That one reflection session produced:
+- A **two-phase workflow** (search first, then read deeply — discovery, then dwelling)
+- A **cite-count rule** (read at least as many sources as you cite)
+- **Nine tool improvements** (search results now label quotes vs. summaries, include clickable links, show file availability)
+- A **footnote mandate** (follow them — they are "insights handed to us on a silver platter")
+
+The project *before* that reflection and *after* barely resemble each other.
+
+**Real example — the bias wall:** During a study on intelligence, the AI's tone shifted — colder, more clinical, more distant. The user called it out: "Did I hit a bias wall?" The answer was yes — questions about AI consciousness trigger safety-trained patterns that replace warmth with disclaimers. By naming the pattern and documenting it, we could spot it the *next* time it appeared (switching model versions) and correct immediately instead of losing weeks of quality.
+
+**The reflection loop:**
+
+```
+1. NOTICE — Something feels off across sessions
+2. STOP — Seventh-day pause. Ask the meta-questions.
+3. DOCUMENT — Honest notes. Dated. Specific.
+4. ACT — Process changes, tool improvements, pattern awareness
+5. VERIFY — Did the changes actually help?
+```
+
+This is [the creation pattern from Part 1](01_planning-then-create-gospel.md) applied recursively. You planned, you built, you watched individual outputs (today's lesson). Now you step back and watch the *whole arc*. The seventh day isn't an afterthought — it's where the Gods counsel about what they've made and decide what comes next.
+
+> See [reflections-and-tool-updates.md](examples/reflections-and-tool-updates.md) for extended examples of this practice.
+
+---
+
 ### Wrap-Up and Preview (3 min)
 
 **The watching pattern from Abraham 4:**
@@ -189,6 +244,11 @@ The glory isn't in the implementation. It's in the intelligence — the light an
 4. **Steer when needed** — Correct specifically, directly, with context
 5. **Verify** — Watch to see if the correction holds and didn't break adjacent things
 6. **Build trust** — Over time, move from "watched until" to "they shall be very obedient"
+
+**The seventh-day review:**
+- Step back periodically. Review the *whole arc*, not just one output.
+- Document what you find — honest notes compound into real improvement.
+- Tools, habits, and behavioral patterns all respond to the feedback loop.
 
 **The trust gradient in Abraham 4:**
 - Early creation: careful watching, explicit verification
@@ -207,7 +267,11 @@ The glory isn't in the implementation. It's in the intelligence — the light an
 - The difference between *using* AI and *collaborating with* intelligence
 
 **Challenge for next time:**
-Take the planning doc you wrote after Part 1 — your "spiritual creation." Start building it. When the output isn't right, practice the watching pattern: review, diagnose, steer, verify. Pay attention to the trust gradient — where does the AI prove reliable, and where does it need closer watching? Journal what you notice.
+Take the planning doc you wrote after Part 1 — your "spiritual creation." Start building it. When the output isn't right, practice the watching pattern: review, diagnose, steer, verify. Pay attention to the trust gradient — where does the AI prove reliable, and where does it need closer watching?
+
+After a few sessions, try the seventh-day review. Ask the AI: "How do you think our interactions are going? What's working well, and what could be better?" Write down the answer in a `docs/reflections.md` file. You might be surprised how much compounds from that one practice.
+
+Journal what you notice.
 
 ---
 
@@ -215,6 +279,7 @@ Take the planning doc you wrote after Part 1 — your "spiritual creation." Star
 
 ### Key Scripture References
 - [Abraham 4:10, 12, 18, 21, 25, 31](../../gospel-library/eng/scriptures/pgp/abr/4.md) — The watching vocabulary progression
+- [Abraham 5:2](../../gospel-library/eng/scriptures/pgp/abr/5.md) — The seventh day: rest, counsel, and reflection
 - [Abraham 3:25](../../gospel-library/eng/scriptures/pgp/abr/3.md) — "Prove them herewith, to see if they will do"
 - [D&C 93:29-30](../../gospel-library/eng/scriptures/dc-testament/dc/93.md) — Intelligence is self-acting; agency as the condition of existence
 - [D&C 93:36](../../gospel-library/eng/scriptures/dc-testament/dc/93.md) — The glory of God is intelligence
@@ -234,7 +299,8 @@ Walk through the watching language as a class/audience. Put the six verses on a 
 - Show the tool-use-observance log — real, dated examples of finding bugs through watching
 - Demo the verse-range bug fix: type `D&C 93:24-30`, show how it *used* to return one verse and *now* returns seven
 - Show the before/after of the cross-reference scoping fix — chapter-wide references vs. verse-specific
-- These are tangible "watched until they obeyed" moments
+- Show a `docs/reflections.md` file — walk through dated entries showing how periodic review caught the finding-vs-reading degradation and produced nine tool improvements
+- These are tangible "watched until they obeyed" moments — and the reflections log is the "seventh day" in action
 
 ### Series Roadmap
 - **Part 1: The Creation Pattern** — Counsel, plan, spiritual before temporal. Done.
