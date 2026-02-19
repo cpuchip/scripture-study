@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import type { ActivityDay } from '../api'
+import { useTheme } from '../composables/useTheme'
+
+const { darkMode } = useTheme()
 
 const props = withDefaults(defineProps<{
   days: ActivityDay[]
@@ -10,20 +13,26 @@ const props = withDefaults(defineProps<{
   compact: false,
 })
 
-// --- Color scale ---
-const colorScale = [
+// --- Color scale (dark-mode aware) ---
+const colorScale = computed(() => darkMode.value ? [
+  { min: 0, max: 0, bg: 'bg-gray-100', hex: '#374151' },
+  { min: 1, max: 2, bg: 'bg-orange-100', hex: '#7c2d12' },
+  { min: 3, max: 5, bg: 'bg-orange-300', hex: '#c2410c' },
+  { min: 6, max: 9, bg: 'bg-orange-400', hex: '#ea580c' },
+  { min: 10, max: Infinity, bg: 'bg-orange-600', hex: '#f97316' },
+] : [
   { min: 0, max: 0, bg: 'bg-gray-100', hex: '#f3f4f6' },
   { min: 1, max: 2, bg: 'bg-orange-100', hex: '#ffedd5' },
   { min: 3, max: 5, bg: 'bg-orange-300', hex: '#fdba74' },
   { min: 6, max: 9, bg: 'bg-orange-400', hex: '#fb923c' },
   { min: 10, max: Infinity, bg: 'bg-orange-600', hex: '#ea580c' },
-]
+])
 
 function colorFor(count: number): string {
-  for (const c of colorScale) {
+  for (const c of colorScale.value) {
     if (count >= c.min && count <= c.max) return c.hex
   }
-  return colorScale[0]!.hex
+  return colorScale.value[0]!.hex
 }
 
 // --- Grid layout ---

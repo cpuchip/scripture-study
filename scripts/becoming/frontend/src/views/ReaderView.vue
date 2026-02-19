@@ -4,6 +4,7 @@ import { useRoute, useRouter } from 'vue-router'
 import { api, publicApi, type DocumentSource, type Pillar } from '../api'
 import { github, type FileTreeNode } from '../services/github'
 import TreeNode from '../components/TreeNode.vue'
+import { useTheme } from '../composables/useTheme'
 import ReferencePanel, { type ReferenceTab } from '../components/ReferencePanel.vue'
 import MarkdownIt from 'markdown-it'
 
@@ -47,7 +48,7 @@ const refActiveTabId = ref('')
 const refMemorizeLoading = ref(false)
 
 // --- Dark Mode ---
-const darkMode = ref(localStorage.getItem('reader-dark-mode') === 'true')
+const { darkMode, toggleDarkMode } = useTheme()
 
 // --- Text Selection Trigger ---
 const selectionTrigger = ref<{ show: boolean; x: number; y: number; text: string }>({ show: false, x: 0, y: 0, text: '' })
@@ -68,12 +69,6 @@ const allPillars = ref<Pillar[]>([])
 const practiceFormSaving = ref(false)
 const practiceFormError = ref('')
 const practiceFormSuccess = ref(false)
-
-function toggleDarkMode() {
-  darkMode.value = !darkMode.value
-  localStorage.setItem('reader-dark-mode', String(darkMode.value))
-  document.documentElement.classList.toggle('dark-mode', darkMode.value)
-}
 
 // --- Task Creation ---
 const taskCreating = ref(false)
@@ -969,7 +964,6 @@ onMounted(async () => {
   window.addEventListener('resize', handleResize)
   document.addEventListener('selectionchange', handleSelectionChange)
   handleResize()
-  document.documentElement.classList.toggle('dark-mode', darkMode.value)
 
   // Load pillars for the practice creation form (non-blocking)
   api.listPillarsFlat().then(p => { allPillars.value = p }).catch(() => {})
@@ -994,7 +988,6 @@ onMounted(async () => {
 onUnmounted(() => {
   window.removeEventListener('resize', handleResize)
   document.removeEventListener('selectionchange', handleSelectionChange)
-  document.documentElement.classList.remove('dark-mode')
 })
 </script>
 

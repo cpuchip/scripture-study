@@ -4,6 +4,7 @@ import { useRoute, useRouter } from 'vue-router'
 import { publicApi, api, type SharedLink } from '../api'
 import { github, type FileTreeNode } from '../services/github'
 import { useAuth } from '../composables/useAuth'
+import { useTheme } from '../composables/useTheme'
 import TreeNode from '../components/TreeNode.vue'
 import ReferencePanel, { type ReferenceTab } from '../components/ReferencePanel.vue'
 import MarkdownIt from 'markdown-it'
@@ -51,13 +52,7 @@ const refTabs = ref<ReferenceTab[]>([])
 const refActiveTabId = ref('')
 
 // --- Dark Mode ---
-const darkMode = ref(localStorage.getItem('reader-dark-mode') === 'true')
-
-function toggleDarkMode() {
-  darkMode.value = !darkMode.value
-  localStorage.setItem('reader-dark-mode', String(darkMode.value))
-  document.documentElement.classList.toggle('dark-mode', darkMode.value)
-}
+const { darkMode, toggleDarkMode } = useTheme()
 
 // Markdown renderer
 const md = new MarkdownIt({
@@ -573,13 +568,10 @@ onMounted(() => {
   resolveParams()
   window.addEventListener('resize', handleResize)
   handleResize()
-  // Apply dark mode to document root for whole-page styling
-  document.documentElement.classList.toggle('dark-mode', darkMode.value)
 })
 
 onUnmounted(() => {
   window.removeEventListener('resize', handleResize)
-  document.documentElement.classList.remove('dark-mode')
 })
 
 watch(currentTitle, (title) => {
