@@ -29,9 +29,15 @@ And McConkie's nuance: "The laborer is worthy of his hire." CES teachers are pai
 
 ---
 
-## What I'm Actually Doing
+## My North Star
 
-*(Fill in as this develops)*
+I seek to always point to the Savior who made all things, and all things testify of Him. Every tool, every study, every video, every lesson — the point is never the method or the person. The point is Christ.
+
+If what I'm building makes people think "I need *this tool* to study" rather than "I need *the scriptures* and the Spirit," I've missed the mark. The AI companionship, the study process, the becoming framework — these are all fingers pointing at the sun. If people stare at the finger, I've failed.
+
+---
+
+## What I'm Actually Doing
 
 ### The Becoming Website
 - What it costs:
