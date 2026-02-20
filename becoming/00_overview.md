@@ -50,6 +50,7 @@ Each document in this folder focuses on **practical application**:
 ## Documents
 
 - [Charity](charity.md) — Seeing others as Christ sees them
+- [Plan of Salvation](plan-of-salvation.md) — Living inside the plan: reframing difficulty, words for friends, the daily restoration check
 
 ---
 

@@ -445,6 +445,49 @@ This is the Plan of Salvation. God's own work and glory — the immortality and 
 
 ---
 
+## Becoming
+
+Six phases. Hundreds of scriptures. Dozens of definitions. But the plan of salvation isn't a research paper — it's a *life*. And the question now is the one Alma asked: "Have ye experienced this mighty change in your hearts?" ([Alma 5:14](../../gospel-library/eng/scriptures/bofm/alma/5.md)). Not "do you understand the plan?" but "is the plan changing you?"
+
+### Questions to Sit With
+
+**If mortality is a school, what am I currently learning?**
+Not in the abstract — right now, today. What is the lesson that keeps showing up? What opposition am I facing that might be the gravity my muscles need? President Oaks said opposition is the *mechanism* of growth. What is the specific opposition in my life that's building something I can't yet see?
+
+**Am I treating this life as a probation or a preparation?**
+Webster 1828 says probation includes "becoming qualified for a happier state." Am I just trying to pass — checking boxes, avoiding the worst sins, hoping to squeak by? Or am I actually preparing — leaning into the curriculum, asking what God is trying to teach me through the hard things?
+
+**What do I actually say to my friends who are sick?**
+The comfort section has the doctrine. But doctrine doesn't comfort people — *people* comfort people. The Spirit carries truth into hearts, but it uses human voices to do it. When I sit with someone who is scared, do I reach for theology or for presence? The Savior wept at the tomb of Lazarus even though He knew He was about to raise him ([John 11:35](../../gospel-library/eng/scriptures/nt/john/11.md)). Weeping *with* someone may be the most Christlike thing I can do before I ever open my mouth.
+
+**How does knowing the architecture change how I pray?**
+If I really believe I'm a son of God — not metaphorically, but literally, a spirit child who shouted for joy and chose this — does that change how I talk to Him? If I believe Christ stands at the gate personally, employing no servant, does that change my relationship with Him? If I believe "whatever principle of intelligence we attain unto in this life, it will rise with us" — does that change what I spend my time learning?
+
+**Where am I in the restoration principle?**
+Alma 41:13 — "merciful for that which is merciful; just for that which is just." What am I cultivating? What would be restored to me *today* if the restoration happened this afternoon? Not what I know — what I *am*. Elder Oaks said it: "The Final Judgment is not just an evaluation of what we have *done*. It is an acknowledgment of what we have *become*."
+
+### This Week
+
+- **Pray differently.** Each morning, acknowledge that mortality is a school — not in those words, but in that posture. "What are you teaching me today?" instead of "Help me get through today."
+
+- **Write down what you'd say.** Pick one friend who is sick or hurting. Before you see them or call them, write down — on paper — what you would actually say if they asked, "What happens when I die?" Not a doctrinal essay. Three or four sentences. The Spirit will refine the words. But start with something real.
+
+- **Practice the restoration principle on yourself.** At the end of each day, ask: "What was restored to me today? What did I send out — patience or irritation, curiosity or indifference, love or distraction — and what came back?" This is Alma's cosmic echo in miniature: "intelligence cleaveth unto intelligence; mercy hath compassion on mercy and claimeth her own" ([D&C 88:40](../../gospel-library/eng/scriptures/dc-testament/dc/88.md)).
+
+- **Do one temple session this month with the plan in mind.** Walk through the endowment and consciously notice the architecture: fallen state → covenants → veil → celestial room. You've traced this journey across six phases of study. Now *walk* it. Let the symbols land differently.
+
+### The North Star
+
+This entire study keeps circling back to one Person. Christ at the council. Christ in the creation. Christ in the garden teaching Adam. Christ on the cross promising paradise to the thief. Christ in the spirit world declaring liberty. Christ as the resurrection itself. Christ at the gate, employing no servant.
+
+The plan of salvation is not a system. It is a *relationship* with the Person who designed it, enacted it, suffered for it, and stands at every transition point within it. "I am the way, the truth, and the life: no man cometh unto the Father, but by me" ([John 14:6](../../gospel-library/eng/scriptures/nt/john/14.md)).
+
+Every study I do, every lesson I prepare, every word of comfort I offer — does it point to Him? The user's north star: *"I seek to always point to the Savior who made all things, and all things testify of Him."* This study testifies of Him. May my life do the same.
+
+**Connected to:** [becoming/charity.md](../../becoming/charity.md) — Charity is "the pure love of Christ." The comfort thread across all six phases is an exercise in charity: learning to see sick and grieving friends as Christ sees them — not as problems to solve but as souls on a journey He designed, consecrated, and walks with them through. The practice of praying to "see others as Christ sees them" is the becoming companion to everything in the comfort section.
+
+---
+
 ## Phase Notes
 
 This synthesis document draws from six phases of deep study:
