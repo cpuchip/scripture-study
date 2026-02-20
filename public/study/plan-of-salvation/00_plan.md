@@ -145,7 +145,7 @@ We have a *remarkable* foundation. These existing studies aren't just background
 | Phase | Status | Date | Notes |
 |-------|--------|------|-------|
 | Phase 1 — Pre-mortal & Council | ✅ Complete | 2026-02-19 | [notes-01-premortal.md](notes-01-premortal.md) |
-| Phase 2 — Fall & Mortality | ❌ Not started | | 2 Nephi 2, Alma 12/34/42, Moses 5-6 |
+| Phase 2 — Fall & Mortality | ✅ Complete | 2026-02-19 | [notes-02-mortality.md](notes-02-mortality.md) — probation = preparation, Fall as doorway not disaster |
 | Phase 3 — Spirit World | ❌ Not started | | D&C 138, Alma 40, 1 Peter 3-4 |
 | Phase 4 — Vicarious Work | ❌ Not started | | D&C 127-128, 137, 1 Cor 15:29 |
 | Phase 5 — Resurrection & Judgment | ❌ Not started | | Alma 40-41, 1 Cor 15, D&C 76/88 |
