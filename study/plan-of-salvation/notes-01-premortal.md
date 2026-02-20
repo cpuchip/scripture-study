@@ -80,9 +80,9 @@ Several things stand out:
 
 **Webster 1828 — "estate"**: *"Settled condition or form of existence; state; condition or circumstances of life."* The "first estate" and "second estate" aren't places — they're *conditions of existence*. Keeping the first estate means being faithful in the premortal condition; keeping the second means being faithful in the mortal condition.
 
-### The Two Proposals
+### "Whom Shall I Send?"
 
-Moses 4 provides the detail Abraham summarizes:
+The plan was the Father's. Abraham 3:27 records His question: "Whom shall I send?" He wasn't soliciting competing plans — He was calling for a volunteer to carry out *His* plan as Savior. Two responded. Moses 4 provides the detail:
 
 > "Behold, here am I, send me, I will be thy son, and I will redeem all mankind, that one soul shall not be lost, and surely I will do it; wherefore give me thine honor."
 > — [Moses 4:1](../../gospel-library/eng/scriptures/pgp/moses/4.md)
@@ -99,7 +99,7 @@ And the core issue wasn't ambition alone:
 > "Wherefore, because that Satan rebelled against me, and sought to destroy the agency of man, which I, the Lord God, had given him..."
 > — [Moses 4:3](../../gospel-library/eng/scriptures/pgp/moses/4.md)
 
-The plan required agency. Satan's proposal to "redeem all mankind, that one soul shall not be lost" sounds compassionate on the surface — but the mechanism was the destruction of agency. And as D&C 93:30 already established, without agency "there is no existence." Satan's plan wasn't salvation — it was annihilation dressed as rescue.
+The plan required agency. Satan's proposal to "redeem all mankind, that one soul shall not be lost" sounds compassionate on the surface — but the mechanism was the destruction of agency. And as D&C 93:30 already established, without agency "there is no existence." Satan's proposal wasn't salvation — it was annihilation dressed as rescue.
 
 ### The War and the Casualties
 
@@ -211,7 +211,7 @@ Every testimony is remembering.
 1. **Intelligence exists eternally** — uncreated, self-acting, co-eternal with God ([D&C 93:29-30](../../gospel-library/eng/scriptures/dc-testament/dc/93.md); [Abraham 3:18](../../gospel-library/eng/scriptures/pgp/abr/3.md))
 2. **God organizes intelligences into spirits** — "the intelligences that were organized before the world was" ([Abraham 3:22](../../gospel-library/eng/scriptures/pgp/abr/3.md)); He is "the Father of spirits" ([Hebrews 12:9](../../gospel-library/eng/scriptures/nt/heb/12.md))
 3. **Spirits receive first lessons** — learning, growing, choosing, developing faith and character ([D&C 138:56](../../gospel-library/eng/scriptures/dc-testament/dc/138.md); [Alma 13:3-5](../../gospel-library/eng/scriptures/bofm/alma/13.md))
-4. **A council is held** — the plan presented, two proposals offered ([Abraham 3:24-28](../../gospel-library/eng/scriptures/pgp/abr/3.md); [Moses 4:1-4](../../gospel-library/eng/scriptures/pgp/moses/4.md))
+4. **A council is held** — the Father presents His plan and calls for a Savior; two volunteer ([Abraham 3:24-28](../../gospel-library/eng/scriptures/pgp/abr/3.md); [Moses 4:1-4](../../gospel-library/eng/scriptures/pgp/moses/4.md))
 5. **War in heaven** — fought with testimony and the blood of the Lamb ([Revelation 12:7-11](../../gospel-library/eng/scriptures/nt/rev/12.md)); a third part cast out by their own agency ([D&C 29:36](../../gospel-library/eng/scriptures/dc-testament/dc/29.md))
 6. **Those who kept their first estate are "added upon"** — they receive bodies and enter mortality ([Abraham 3:26](../../gospel-library/eng/scriptures/pgp/abr/3.md))
 
@@ -219,10 +219,10 @@ Every testimony is remembering.
 
 The real conflict in heaven wasn't just about who gets credit. It was about the nature of salvation itself:
 
-- **Christ's plan**: Agency preserved. Risk of failure. Growth through experience. Glory to the Father.
-- **Satan's plan**: Agency destroyed. No failure possible. No growth possible either. Glory to self.
+- **Christ's response**: Accept the Father's plan as given. Agency preserved. Risk of failure. Growth through experience. All glory returned to the Father.
+- **Satan's counter-proposal**: Amend the Father's plan. Destroy agency. Guarantee no failure — but no growth either. All glory claimed for self.
 
-If D&C 93:30 is right that without agency "there is no existence," then Satan's plan wasn't just bad strategy — it was ontological destruction. You can't save beings by removing the thing that makes them beings.
+If D&C 93:30 is right that without agency "there is no existence," then Satan's counter-proposal wasn't just bad strategy — it was ontological destruction. You can't save beings by removing the thing that makes them beings.
 
 ### The Prove/School/Test Question
 
