@@ -149,6 +149,6 @@ We have a *remarkable* foundation. These existing studies aren't just background
 | Phase 3 — Spirit World | ✅ Complete | 2026-02-19 | [notes-03-spirit-world.md](notes-03-spirit-world.md) — paradise is rest, two kinds of bondage, comfort thread anchored |
 | Phase 4 — Vicarious Work | ✅ Complete | 2026-02-20 | [notes-04-vicarious-work.md](notes-04-vicarious-work.md) — two halves of one system, welding link, fairness architecture |
 | Phase 5 — Resurrection & Judgment | ✅ Complete | 2026-02-20 | [notes-05-resurrection-judgment.md](notes-05-resurrection-judgment.md) — resurrection as soul-redemption, law→glory→quickening chain, restoration principle, judgment as becoming, 8 comfort promises |
-| Phase 6 — Kingdoms & Eternal Life | ❌ Not started | | D&C 76, 131, 132, 137 |
+| Phase 6 — Kingdoms & Eternal Life | ✅ Complete | 2026-02-20 | [notes-06-kingdoms.md](notes-06-kingdoms.md) — three kingdoms distinguished, immortality vs. eternal life, exaltation = refinement + increase, God judges by desire, temple as enacted plan, 8 comfort promises |
 | Phase 7 — Synthesis | ❌ Not started | | The 30,000-foot document |
 | Phase 8 — Becoming | ❌ Not started | | Personal application, words for friends |
