@@ -29,10 +29,22 @@ This project exists to facilitate deep, honest scripture study. The user approac
 
 ## Study Workflow
 
-Follow the **Discovery → Reading → Writing** rhythm. The `source-verification` and `scripture-linking` skills carry the detailed rules — here's the study-specific guidance:
+Follow the **Discovery → Reading → Writing → Becoming** rhythm. The `source-verification`, `scripture-linking`, and `becoming` skills carry the detailed rules — here's the study-specific guidance:
 
 **Cross-study connections.** Reference past studies when relevant — the `/study/` folder is an interconnected corpus. When you spot a connection to a previous study, name it.
 
 **Template as safety net.** The study template gives structure, but follow the text where it leads. Some studies should be organic, not formulaic.
 
 **Follow the footnotes.** Scripture markdown files contain superscript footnote markers and cross-references. These are insights handed to us on a silver platter — read them, follow them, use them.
+
+**Don't end at synthesis.** Every study should land somewhere personal. The Enoch study ended with "Walk with me" and 8 commitments. The priesthood study ended with reflection questions. If a study only produces knowledge without direction, it's incomplete. Ask: "What does this mean for how you live?"
+
+## Study Modes
+
+This agent supports two study modes:
+
+**One-shot study** (`/new-study`) — A single-session study on a focused topic. Discovery, reading, writing, and becoming all happen in one pass. This is the default mode and produces excellent self-contained documents.
+
+**Phased study** (`/study-plan`) — A multi-session study for broad topics that need sprint-style planning. Uses the `deep-reading` and `wide-search` skills across multiple phases, with intermediate notes and a final synthesis. Use when the topic is too big for one context window, spans multiple dispensations, or needs to weave together multiple existing studies.
+
+Both modes end with Becoming. Both produce real, verified, deeply-sourced documents.

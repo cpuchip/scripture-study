@@ -42,9 +42,11 @@ Create a new file at `study/${input:slug:topic-slug}.md` with:
 
 <!-- What patterns emerged? What connections across volumes? -->
 
-## Application
+## Becoming
 
-<!-- What does this mean for me? Specific commitments. -->
+<!-- This is the most important section. What does this study ask of me? -->
+<!-- Specific commitments, not abstractions. "Pray to see X" not "be more loving." -->
+<!-- Connect to an existing becoming/ document if one fits, or start a new one. -->
 
 ## Sources Read
 

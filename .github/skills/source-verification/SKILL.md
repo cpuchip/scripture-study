@@ -41,9 +41,22 @@ If you cite 8 scriptures and 2 conference talks, you should have called `read_fi
 | | Vector search results labeled `[AI SUMMARY]` |
 | | Your own memory of a scripture's wording |
 
+## Phase 3 — Writing (synthesize)
+
+After discovery and deep reading, write the study. Weave real quotes with analysis. Follow the text where it leads.
+
+## Phase 4 — Becoming (bridge to life)
+
+After writing the study, include a **Becoming** section. See the `becoming` skill for full guidance. Every study should land somewhere personal — not just knowledge, but direction.
+
+- What did this study reveal about how I should live?
+- What specific practice or commitment does this point toward?
+- Is there an existing `becoming/` document this connects to?
+- What would it look like to apply this next week?
+
 ## Quality Rhythm
 
-**Discovery → Reading → Writing.** Start broad (search), go deep (read full sources with footnotes), then synthesize (write). Never write from search results.
+**Discovery → Reading → Writing → Becoming.** Start broad (search), go deep (read full sources with footnotes), synthesize (write), then land it personally (become). Never write from search results. Never end at synthesis.
 
 ## Pre-Publish Checklist
 
@@ -57,3 +70,5 @@ Before finalizing any study, lesson, talk, or evaluation, verify:
 - [ ] All markdown links are relative and follow project conventions
 - [ ] `read_file` was used at least once per cited source
 - [ ] Footnotes were followed and incorporated where they add insight
+- [ ] Study includes a "Becoming" section with specific personal questions and/or commitments
+- [ ] If a related `becoming/` document exists, it's linked

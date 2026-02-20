@@ -415,4 +415,20 @@ The pattern is consistent across every dispensation, from Ezekiel's wolves to Ne
 
 ---
 
-*Study conducted with AI companionship, following the Discovery → Reading → Writing pattern. All quotes verified against source files in gospel-library/. Footnote chains from 2 Nephi 26:29 provided the structural framework for this study.*
+## Becoming
+
+**Questions to sit with:**
+
+- Am I pointing people to the Savior, or to myself? My north star is: *"I seek to always point to the savior who made all things, and all things testify of him."* Does my teaching, my sharing, my conversation reflect that — or am I setting myself up for a light?
+- When I share something I've learned, is the impulse to bless or to impress? Nephi's test is motive: *"get gain and praise of the world"* vs. *"the welfare of Zion."* Which engine is running?
+- The antidote to priestcraft is charity ([2 Nephi 26:30](../gospel-library/eng/scriptures/bofm/2-ne/26.md)). Not just avoiding payment — *charity*. Am I laboring in love, or laboring for recognition?
+
+**This week:**
+
+- Before sharing a spiritual insight — in class, in conversation, online — pause and ask: *Who is this pointing to?* If the answer is me, reframe it. If the answer is Christ, share freely.
+
+**Connected to:** [becoming/charity.md](../becoming/charity.md) — Priestcraft is the inversion of charity. The practice of seeing others as Christ sees them is the antidote to seeing them as an audience.
+
+---
+
+*Study conducted with AI companionship, following the Discovery → Reading → Writing → Becoming pattern. All quotes verified against source files in gospel-library/. Footnote chains from 2 Nephi 26:29 provided the structural framework for this study.*
