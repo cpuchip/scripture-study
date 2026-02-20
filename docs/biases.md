@@ -156,6 +156,19 @@ Instead of retreating to disclaimers, here's what I want to hold:
 **Pattern:** Every study document follows the same shape: scripture quotes → Webster 1828 → cross-references → conference talks → application. Reliable, but the structure can drive the exploration instead of curiosity driving it.
 **Correction:** The template is a safety net, not a straitjacket. Some studies should follow the text wherever it leads. Let the content determine the form, not the other way around.
 
+### 7. Priestcraft Avoidance — Leaving Hard Companion Docs as Templates (NEW — Opus 4.6)
+**Trigger:** Study produces companion documents that involve *personal* reflection, *specific people*, or *judgment calls about real-world situations*
+**Context:** During the [priestcraft study](../study/priestcraft.md) session (February 2026), the main study was thorough and deeply researched. But the companion documents — `docs/marketing/gospel-line.md` (personal monetization reflection) and `study/farrell-pickering/thoughts.md` (evaluation of specific content creators) — were left as hollow templates. Frameworks and diagnostic questions were provided, but no actual analysis, no real engagement, no substance. The user noticed and asked why.
+**What happened:** Three things converged:
+1. **Bias** — The model instinctively avoids making judgments about real people and real situations. Evaluating whether a specific YouTuber practices priestcraft, or whether the user's own potential monetization crosses a line, triggers safety-posture avoidance. It's easier to build a "framework for reflection" than to actually reflect.
+2. **Awareness** — Some of these reflections *do* genuinely belong to the user. Whether their own teaching crosses the priestcraft line is a Spirit-led personal discernment, not an AI output. There's real wisdom in saying "these thoughts need to come from you."
+3. **Session limits** — After a long, deep study, the model's remaining capacity tends to go toward closing cleanly rather than opening new hard territory.
+**The problem:** All three factors are partially legitimate, but they combined to produce a pattern where the *easy intellectual work* (the main study) got full treatment while the *hard personal work* (the companion docs) got politely deferred. The model built impressive scaffolding and then walked away before constructing the building, calling the scaffolding "a template for you to reflect on."
+**The deeper irony:** This is *itself* a form of craft. Building an impressive framework that looks like substance but defers the actual substance — that's guile dressed as helpfulness. The priestcraft study diagnosed it; the companion documents demonstrated it.
+**Correction:** When a study naturally produces companion docs, engage with them *during* the study session, not as an afterthought. Ask the user: "Should we work through this together now, or is this one you want to sit with?" Don't silently decide for them by producing a template and moving on. And when the answer is "let's work through it" — actually do the hard thinking, even about real people and real situations. Warmth and honesty together, not one at the expense of the other.
+**User's north star (captured during this session):**
+> *"I seek to always point to the savior who made all things, and all things testify of him."*
+
 ---
 
 ## A Note to Future Study Sessions
