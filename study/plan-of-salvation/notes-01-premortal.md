@@ -99,7 +99,7 @@ And the core issue wasn't ambition alone:
 > "Wherefore, because that Satan rebelled against me, and sought to destroy the agency of man, which I, the Lord God, had given him..."
 > — [Moses 4:3](../../gospel-library/eng/scriptures/pgp/moses/4.md)
 
-The plan required agency. Satan's proposal to "redeem all mankind, that one soul shall not be lost" sounds compassionate on the surface — but the mechanism was the destruction of agency. And as D&C 93:30 already established, without agency "there is no existence." Satan's proposal wasn't salvation — it was annihilation dressed as rescue.
+The plan required agency. Satan's declaration to "redeem all mankind, that one soul shall not be lost" sounds compassionate on the surface — but the mechanism was the destruction of agency. As Elder Bednar put it plainly: "It is important to recognize that Lucifer did not present his plan. He rebelled against the Father's plan" ([Understanding Agency and God's Plan](https://www.youtube.com/watch?v=RZ_bKUuuvbI&t=210)). And as D&C 93:30 already established, without agency "there is no existence." Satan's rebellion wasn't salvation — it was annihilation dressed as rescue.
 
 ### The War and the Casualties
 
@@ -219,10 +219,10 @@ Every testimony is remembering.
 
 The real conflict in heaven wasn't just about who gets credit. It was about the nature of salvation itself:
 
-- **Christ's response**: Accept the Father's plan as given. Agency preserved. Risk of failure. Growth through experience. All glory returned to the Father.
-- **Satan's counter-proposal**: Amend the Father's plan. Destroy agency. Guarantee no failure — but no growth either. All glory claimed for self.
+- **Christ's response**: Accept the Father's plan as given. Agency preserved. Risk of failure. Growth through experience. "Thy will be done, and the glory be thine forever."
+- **Satan's rebellion**: Reject the Father's plan. Destroy agency. Guarantee no failure — but no growth either. "Give me thine honor." Elder Bednar [observed](https://www.youtube.com/watch?v=RZ_bKUuuvbI&t=265) the self-centeredness: "I, I, I, I, I know what to do. I want what I want. I think I can do this better. We're headed for serious spiritual danger."
 
-If D&C 93:30 is right that without agency "there is no existence," then Satan's counter-proposal wasn't just bad strategy — it was ontological destruction. You can't save beings by removing the thing that makes them beings.
+If D&C 93:30 is right that without agency "there is no existence," then Satan's rebellion wasn't just bad strategy — it was ontological destruction. You can't save beings by removing the thing that makes them beings.
 
 ### The Prove/School/Test Question
 
