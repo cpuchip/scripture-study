@@ -341,6 +341,22 @@ The whole story is the contest between the two serpents. And the story ends with
 
 ---
 
+## Becoming
+
+**Questions to sit with:**
+
+- What am I looking at? The brazen serpent healed everyone who *looked*. The tragedy was those who "would not look" — not because it was hard, but because they didn't believe it could be that simple ([Alma 33:20](https://www.churchofjesuschrist.org/study/scriptures/bofm/alma/33?lang=eng&id=p20#p20)). What is Christ asking me to simply look at that I'm overcomplicating or ignoring?
+- The type became an idol ([2 Kings 18:4](https://www.churchofjesuschrist.org/study/scriptures/ot/2-kgs/18?lang=eng&id=p4#p4)). Israel worshipped the brazen serpent instead of looking *through* it to God. Am I worshipping any symbol, program, tradition, or practice instead of what it points to? Symbols serve; they don't save.
+- The beast had "horns like a lamb" but "spake as a dragon" ([Revelation 13:11](https://www.churchofjesuschrist.org/study/scriptures/nt/rev/13?lang=eng&id=p11#p11)). What in my life *looks* gentle and Christ-like but *speaks* with the dragon's values — pride, consumption, control?
+
+**This week:**
+
+- Practice the "look and live" principle literally: each morning, look to Christ first. Before the phone, before the news, before the noise — look up. Alma's question is for me: "if ye could be healed by merely casting about your eyes... would ye not behold quickly?" ([Alma 33:21](https://www.churchofjesuschrist.org/study/scriptures/bofm/alma/33?lang=eng&id=p21#p21))
+
+**Connected to:** [becoming/charity.md](../becoming/charity.md) — Looking to Christ is how we learn to see others as He sees them. The serpent on the pole teaches us where to fix our gaze.
+
+---
+
 ## Sources Read
 
 - [Genesis 3](https://www.churchofjesuschrist.org/study/scriptures/ot/gen/3?lang=eng) — The subtle serpent, the fall, the promise

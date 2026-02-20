@@ -318,3 +318,21 @@ And the antidote is not counter-craft or cleverness. It's what Peter, quoting Is
 Lay it aside. Put on the armor. Become guileless. Point to the Savior.
 
 > *"Behold an Israelite indeed, in whom is no guile!"* — The Lord
+
+---
+
+## Becoming
+
+The diagnostic above asks the questions. Here's where they land:
+
+**Questions to sit with:**
+
+- The guile spectrum runs from subtle to beguile. Where do I live on it? Not in big dramatic deceptions — in the small ones. The email I wordsmith to get a particular reaction. The story I tell with just enough spin. The omission that serves my interests.
+- Nathanael's highest commendation was guilelessness. If Jesus summarized me in one sentence, would "without guile" be in it?
+- Nephi's three modes — rage, lull, flatter ([2 Nephi 28:20–22](https://www.churchofjesuschrist.org/study/scriptures/bofm/2-ne/28?lang=eng&id=p20-p22#p20)) — which one am I most susceptible to? Not which one I *use*, but which one *works on me*?
+
+**This week:**
+
+- Notice one moment each day where I'm tempted toward craft — strategic framing, beautifying for effect, positioning myself. When I catch it, choose directness instead. Not bluntness — Ammon-style wisdom paired with harmlessness.
+
+**Connected to:** [becoming/charity.md](../becoming/charity.md) — Guilelessness and charity are companions. You can't see others as Christ sees them while running calculations about how they see you.
