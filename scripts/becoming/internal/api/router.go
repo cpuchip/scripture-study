@@ -134,6 +134,14 @@ func Router(database *db.DB, scripturesRoot string) chi.Router {
 		r.Post("/", upsertReadingProgress(database))
 	})
 
+	// Bookmarks
+	r.Route("/bookmarks", func(r chi.Router) {
+		r.Get("/", listBookmarks(database))
+		r.Post("/", createBookmark(database))
+		r.Patch("/{id}", updateBookmarkNote(database))
+		r.Delete("/{id}", deleteBookmark(database))
+	})
+
 	return r
 }
 
@@ -1649,6 +1657,114 @@ func upsertReadingProgress(database *db.DB) http.HandlerFunc {
 			return
 		}
 		if err := database.UpsertReadingProgress(userID, body.SourceID, body.FilePath, body.ScrollPct); err != nil {
+			writeError(w, http.StatusInternalServerError, err.Error())
+			return
+		}
+		w.WriteHeader(http.StatusNoContent)
+	}
+}
+
+// --- Bookmarks ---
+
+func listBookmarks(database *db.DB) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		userID := auth.UserID(r)
+		var sourceID *int64
+		if s := r.URL.Query().Get("source_id"); s != "" {
+			id, err := strconv.ParseInt(s, 10, 64)
+			if err != nil {
+				writeError(w, http.StatusBadRequest, "invalid source_id")
+				return
+			}
+			sourceID = &id
+		}
+
+		filePath := r.URL.Query().Get("file_path")
+		if sourceID != nil && filePath != "" {
+			bookmarks, err := database.ListBookmarksForFile(userID, *sourceID, filePath)
+			if err != nil {
+				writeError(w, http.StatusInternalServerError, err.Error())
+				return
+			}
+			writeJSON(w, http.StatusOK, bookmarks)
+			return
+		}
+
+		bookmarks, err := database.ListBookmarks(userID, sourceID)
+		if err != nil {
+			writeError(w, http.StatusInternalServerError, err.Error())
+			return
+		}
+		writeJSON(w, http.StatusOK, bookmarks)
+	}
+}
+
+func createBookmark(database *db.DB) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		userID := auth.UserID(r)
+		var body struct {
+			SourceID int64  `json:"source_id"`
+			FilePath string `json:"file_path"`
+			Anchor   string `json:"anchor"`
+			Excerpt  string `json:"excerpt"`
+			Note     string `json:"note"`
+		}
+		if err := json.NewDecoder(r.Body).Decode(&body); err != nil {
+			writeError(w, http.StatusBadRequest, "invalid JSON: "+err.Error())
+			return
+		}
+		if body.SourceID == 0 || body.FilePath == "" {
+			writeError(w, http.StatusBadRequest, "source_id and file_path required")
+			return
+		}
+
+		b := &db.Bookmark{
+			SourceID: body.SourceID,
+			FilePath: body.FilePath,
+			Anchor:   body.Anchor,
+			Excerpt:  body.Excerpt,
+			Note:     body.Note,
+		}
+		if err := database.CreateBookmark(userID, b); err != nil {
+			writeError(w, http.StatusInternalServerError, err.Error())
+			return
+		}
+		writeJSON(w, http.StatusCreated, b)
+	}
+}
+
+func updateBookmarkNote(database *db.DB) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		userID := auth.UserID(r)
+		id, err := parseID(r)
+		if err != nil {
+			writeError(w, http.StatusBadRequest, "invalid id")
+			return
+		}
+		var body struct {
+			Note string `json:"note"`
+		}
+		if err := json.NewDecoder(r.Body).Decode(&body); err != nil {
+			writeError(w, http.StatusBadRequest, "invalid JSON: "+err.Error())
+			return
+		}
+		if err := database.UpdateBookmarkNote(userID, id, body.Note); err != nil {
+			writeError(w, http.StatusInternalServerError, err.Error())
+			return
+		}
+		w.WriteHeader(http.StatusNoContent)
+	}
+}
+
+func deleteBookmark(database *db.DB) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		userID := auth.UserID(r)
+		id, err := parseID(r)
+		if err != nil {
+			writeError(w, http.StatusBadRequest, "invalid id")
+			return
+		}
+		if err := database.DeleteBookmark(userID, id); err != nil {
 			writeError(w, http.StatusInternalServerError, err.Error())
 			return
 		}

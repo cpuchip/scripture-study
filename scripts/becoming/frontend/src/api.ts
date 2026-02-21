@@ -593,6 +593,32 @@ export const api = {
       body: JSON.stringify({ source_id: sourceId, file_path: filePath, scroll_pct: scrollPct }),
     })
   },
+
+  // --- Bookmarks ---
+  listBookmarks(sourceId?: number, filePath?: string) {
+    const params = new URLSearchParams()
+    if (sourceId) params.set('source_id', String(sourceId))
+    if (filePath) params.set('file_path', filePath)
+    const qs = params.toString()
+    return request<Bookmark[]>(`/bookmarks${qs ? '?' + qs : ''}`)
+  },
+  createBookmark(b: { source_id: number; file_path: string; anchor?: string; excerpt?: string; note?: string }) {
+    return request<Bookmark>('/bookmarks', {
+      method: 'POST',
+      body: JSON.stringify(b),
+    })
+  },
+  updateBookmarkNote(id: number, note: string) {
+    return request<void>(`/bookmarks/${id}`, {
+      method: 'PATCH',
+      body: JSON.stringify({ note }),
+    })
+  },
+  deleteBookmark(id: number) {
+    return request<void>(`/bookmarks/${id}`, {
+      method: 'DELETE',
+    })
+  },
 }
 
 // --- Document Source Types ---
@@ -633,6 +659,17 @@ export interface SharedLink {
   file_path?: string
   hits: number
   created_at: string
+}
+
+export interface Bookmark {
+  id: number
+  source_id: number
+  file_path: string
+  anchor: string
+  excerpt: string
+  note: string
+  created_at: string
+  source_name?: string
 }
 
 // --- Public API (no auth required) ---

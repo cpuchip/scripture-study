@@ -276,6 +276,11 @@ func (db *DB) runSQLiteMigrations() error {
 		return fmt.Errorf("shared links migration: %w", err)
 	}
 
+	// Migration: create bookmarks table
+	if err := db.migrateBookmarks(); err != nil {
+		return fmt.Errorf("bookmarks migration: %w", err)
+	}
+
 	// Seed default reflection prompts for user 1 (dev user)
 	if err := db.SeedPrompts(1); err != nil {
 		return fmt.Errorf("seeding prompts: %w", err)
@@ -548,6 +553,32 @@ func (db *DB) migrateSharedLinks() error {
 	}
 
 	log.Println("Migration applied: shared_links table")
+	return nil
+}
+
+func (db *DB) migrateBookmarks() error {
+	if _, err := db.Exec(`CREATE TABLE IF NOT EXISTS bookmarks (
+		id          INTEGER PRIMARY KEY,
+		user_id     INTEGER REFERENCES users(id),
+		source_id   INTEGER REFERENCES document_sources(id),
+		file_path   TEXT NOT NULL,
+		anchor      TEXT NOT NULL DEFAULT '',
+		excerpt     TEXT NOT NULL DEFAULT '',
+		note        TEXT NOT NULL DEFAULT '',
+		created_at  DATETIME DEFAULT CURRENT_TIMESTAMP
+	)`); err != nil {
+		return fmt.Errorf("creating bookmarks: %w", err)
+	}
+
+	if _, err := db.Exec(`CREATE INDEX IF NOT EXISTS idx_bookmarks_user_id ON bookmarks(user_id)`); err != nil {
+		return fmt.Errorf("creating bookmarks user_id index: %w", err)
+	}
+
+	if _, err := db.Exec(`CREATE INDEX IF NOT EXISTS idx_bookmarks_user_source ON bookmarks(user_id, source_id)`); err != nil {
+		return fmt.Errorf("creating bookmarks user_source index: %w", err)
+	}
+
+	log.Println("Migration applied: bookmarks table")
 	return nil
 }
 

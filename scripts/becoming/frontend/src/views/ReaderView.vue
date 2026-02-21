@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, computed, onMounted, onUnmounted, nextTick, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-import { api, publicApi, type DocumentSource, type Pillar } from '../api'
+import { api, publicApi, type DocumentSource, type Pillar, type Bookmark } from '../api'
 import { github, type FileTreeNode } from '../services/github'
 import TreeNode from '../components/TreeNode.vue'
 import { useTheme } from '../composables/useTheme'
@@ -40,6 +40,10 @@ const searchQuery = ref('')
 
 // Reading progress
 const readPaths = ref<Set<string>>(new Set())
+
+// --- Bookmarks ---
+const fileBookmarks = ref<Bookmark[]>([])
+const bookmarkedAnchors = computed(() => new Set(fileBookmarks.value.map(b => b.anchor)))
 
 // --- Reference Panel ---
 const refPanelOpen = ref(false)
@@ -124,7 +128,7 @@ md.renderer.rules.heading_close = function(tokens: any, idx: any, options: any, 
   let openIdx = idx - 1
   while (openIdx >= 0 && tokens[openIdx].type !== 'heading_open') openIdx--
   const slug = openIdx >= 0 ? (tokens[openIdx].attrGet('id') || '') : ''
-  const anchor = slug ? ` <a class="heading-anchor-link" href="#${slug}" aria-label="Link to this heading"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-.8 9.45a.75.75 0 01-1.06-1.06l-1.25 1.25a2 2 0 11-2.83-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25z"/></svg></a>` : ''
+  const anchor = slug ? ` <a class="heading-anchor-link" href="#${slug}" aria-label="Link to this heading"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-.8 9.45a.75.75 0 01-1.06-1.06l-1.25 1.25a2 2 0 11-2.83-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25z"/></svg></a> <button class="heading-bookmark-btn" data-bookmark-anchor="${slug}" aria-label="Bookmark this section" title="Bookmark"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></button>` : ''
   return anchor + self.renderToken(tokens, idx, options)
 }
 
@@ -281,7 +285,15 @@ async function loadFile(path: string) {
       // Non-critical
     }
 
+    // Load bookmarks for this file
+    try {
+      fileBookmarks.value = await api.listBookmarks(sourceId.value, path)
+    } catch {
+      fileBookmarks.value = []
+    }
+
     await nextTick()
+    updateBookmarkStyles()
     const contentEl = document.getElementById('reader-content')
     if (contentEl) contentEl.scrollTop = 0
   } catch (e: any) {
@@ -355,6 +367,15 @@ function handleContentClick(event: MouseEvent) {
     event.preventDefault()
     const text = taskBtn.getAttribute('data-task-text') || ''
     createTaskFromBecome(text)
+    return
+  }
+
+  // Handle bookmark buttons on headings
+  const bookmarkBtn = target.closest('.heading-bookmark-btn') as HTMLElement
+  if (bookmarkBtn) {
+    event.preventDefault()
+    const anchor = bookmarkBtn.getAttribute('data-bookmark-anchor') || ''
+    toggleBookmark(anchor, bookmarkBtn)
     return
   }
 
@@ -597,6 +618,59 @@ async function createTaskFromBecome(text: string) {
   } finally {
     taskCreating.value = false
   }
+}
+
+// --- Bookmarks ---
+
+async function toggleBookmark(anchor: string, _btn: HTMLElement) {
+  const existing = fileBookmarks.value.find(b => b.anchor === anchor)
+  if (existing) {
+    // Remove bookmark
+    try {
+      await api.deleteBookmark(existing.id)
+      fileBookmarks.value = fileBookmarks.value.filter(b => b.id !== existing.id)
+      updateBookmarkStyles()
+    } catch (e: any) {
+      console.error('Failed to remove bookmark:', e)
+    }
+  } else {
+    // Create bookmark — grab excerpt from the heading's next sibling paragraph
+    let excerpt = ''
+    const headingEl = document.getElementById(anchor)
+    if (headingEl) {
+      const nextP = headingEl.nextElementSibling
+      if (nextP && nextP.tagName === 'P') {
+        excerpt = (nextP.textContent || '').slice(0, 200)
+      }
+    }
+    try {
+      const b = await api.createBookmark({
+        source_id: sourceId.value,
+        file_path: currentPath.value,
+        anchor,
+        excerpt,
+      })
+      fileBookmarks.value.push(b)
+      updateBookmarkStyles()
+    } catch (e: any) {
+      console.error('Failed to create bookmark:', e)
+    }
+  }
+}
+
+function updateBookmarkStyles() {
+  // Update all bookmark buttons to reflect current state
+  const contentEl = document.getElementById('reader-content')
+  if (!contentEl) return
+  const btns = contentEl.querySelectorAll('.heading-bookmark-btn')
+  btns.forEach(btn => {
+    const anchor = btn.getAttribute('data-bookmark-anchor') || ''
+    if (bookmarkedAnchors.value.has(anchor)) {
+      btn.classList.add('bookmarked')
+    } else {
+      btn.classList.remove('bookmarked')
+    }
+  })
 }
 
 // --- Share ---
@@ -1671,6 +1745,38 @@ onUnmounted(() => {
 @keyframes anchor-tooltip-fade {
   0%, 70% { opacity: 1; }
   100% { opacity: 0; }
+}
+
+/* Bookmark button on headings */
+.reader-document :deep(.heading-bookmark-btn) {
+  display: inline-flex;
+  align-items: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-left: 0.25rem;
+  color: var(--text-muted, #9ca3af);
+  opacity: 0;
+  transition: opacity 0.15s, color 0.15s;
+  vertical-align: middle;
+  padding: 0;
+}
+
+.reader-document :deep(.heading-anchor-target:hover .heading-bookmark-btn) {
+  opacity: 1;
+}
+
+.reader-document :deep(.heading-bookmark-btn:hover) {
+  color: #ea580c;
+}
+
+.reader-document :deep(.heading-bookmark-btn.bookmarked) {
+  opacity: 1;
+  color: #ea580c;
+}
+
+.reader-document :deep(.heading-bookmark-btn.bookmarked svg) {
+  fill: #ea580c;
 }
 
 /* Become section styling */
