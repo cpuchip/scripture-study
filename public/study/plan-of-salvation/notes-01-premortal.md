@@ -250,7 +250,7 @@ The answer to the driving question isn't "school vs. test." It's that *the test 
 - **Phase 2**: What does "keeping the second estate" look like in practice? Is mortality a continuation of pre-mortal learning, or a qualitatively different kind of experience? What does the veil change about the nature of agency?
 - **Phase 3**: If spirits "received their first lessons in the world of spirits," what is the spirit world like after death? Does learning continue? (D&C 138 covers both pre-mortal and post-mortal spirit world.)
 - **Phase 5**: Abraham 3:26 promises those who keep their second estate will have "glory added upon their heads for ever and ever." What does that glory look like? How does resurrection relate to the proving?
-- **The Comfort Thread**: If we shouted for joy at the plan — including its difficulties — what does that mean for friends who are suffering now? Not "you signed up for this" (that's glib), but rather: the Person who proposed this plan *volunteered His own life* as the cost. He understood suffering before we did. He didn't stand apart from it.
+- **The Comfort Thread**: If we shouted for joy at the plan — including its difficulties — what does that mean for friends who are suffering now? Not "you signed up for this" (that's glib), but rather: the Father proposed this plan, and the Son *volunteered His own life* as the cost. Christ understood suffering before we did. He didn't stand apart from it.
 
 ---
 

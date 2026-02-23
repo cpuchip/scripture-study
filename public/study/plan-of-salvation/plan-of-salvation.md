@@ -303,7 +303,7 @@ This section gathers every comfort promise we found across six phases of study. 
 
 **The Judge knows your pain from the inside.** He "descended below them all" ([D&C 122:8](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/122?lang=eng&id=p8#p8)). The one who judges you is the one who carried your suffering. He cannot be deceived ([2 Nephi 9:41](https://www.churchofjesuschrist.org/study/scriptures/bofm/2-ne/9?lang=eng&id=p41#p41)) — but He also cannot be callous.
 
-**The Person who proposed this plan volunteered His own life as the cost.** He understood suffering before we did. He didn't stand apart from it.
+**The Father proposed this plan, and the Son volunteered His own life as the cost.** Christ understood suffering before we did. He didn't stand apart from it.
 
 ### The Overwhelming Generosity of the System
 
@@ -480,11 +480,11 @@ Alma 41:13 — "merciful for that which is merciful; just for that which is just
 
 This entire study keeps circling back to one Person. Christ at the council. Christ in the creation. Christ in the garden teaching Adam. Christ on the cross promising paradise to the thief. Christ in the spirit world declaring liberty. Christ as the resurrection itself. Christ at the gate, employing no servant.
 
-The plan of salvation is not a system. It is a *relationship* with the Person who designed it, enacted it, suffered for it, and stands at every transition point within it. "I am the way, the truth, and the life: no man cometh unto the Father, but by me" ([John 14:6](https://www.churchofjesuschrist.org/study/scriptures/nt/john/14?lang=eng&id=p6#p6)).
+The plan of salvation is not a system. It is a *relationship* — with the Father who designed it, and with the Son who enacted it, suffered for it, and stands at every transition point within it. "I am the way, the truth, and the life: no man cometh unto the Father, but by me" ([John 14:6](https://www.churchofjesuschrist.org/study/scriptures/nt/john/14?lang=eng&id=p6#p6)).
 
 Every study I do, every lesson I prepare, every word of comfort I offer — does it point to Him? The user's north star: *"I seek to always point to the Savior who made all things, and all things testify of Him."* This study testifies of Him. May my life do the same.
 
-**Connected to:** [becoming/charity.md](../../becoming/charity.md) — Charity is "the pure love of Christ." The comfort thread across all six phases is an exercise in charity: learning to see sick and grieving friends as Christ sees them — not as problems to solve but as souls on a journey He designed, consecrated, and walks with them through. The practice of praying to "see others as Christ sees them" is the becoming companion to everything in the comfort section.
+**Connected to:** [becoming/charity.md](../../becoming/charity.md) — Charity is "the pure love of Christ." The comfort thread across all six phases is an exercise in charity: learning to see sick and grieving friends as Christ sees them — not as problems to solve but as souls on a journey the Father designed, the Son consecrated with His own blood, and walks with them through. The practice of praying to "see others as Christ sees them" is the becoming companion to everything in the comfort section.
 
 ---
 
