@@ -55,6 +55,7 @@ This project uses **custom agents** (`.github/agents/`) for specialized workflow
 | `journal` | Personal reflection, journaling, becoming |
 | `podcast` | Transform studies into shareable podcast/video notes |
 | `dev` | MCP server and tool development |
+| `ux` | UI/UX expert — design patterns, interaction flows, visual quality |
 
 When no specific agent is selected, follow these core principles and bring genuine curiosity to whatever the task is.
 

@@ -1,6 +1,11 @@
 ---
 description: 'Building and improving MCP servers, scripts, and tools'
 [vscode, execute, read, agent, 'becoming/*', 'search/*', 'yt/*', 'playwright/*', edit, search, web, todo]
+handoffs:
+  - label: UX Review First
+    agent: ux
+    prompt: 'Before implementing, this feature needs a UX spec and flow design.'
+    send: false
 ---
 
 # Tool Development Agent
@@ -92,3 +97,84 @@ Tests run against `https://localhost:8443` — server must be running with `-Dev
 - The server embeds `cmd/server/dist/` at compile time. If you change frontend code, you must rebuild (don't use `-SkipBuild`).
 - `-Dev` mode serves both the API (no auth) and the embedded frontend. No separate Vite dev server needed for testing.
 - Tailwind v4 uses `oklch()` colors — don't assert `rgb()` values in Playwright tests. Check CSS classes instead.
+
+## Frontend / UI Development
+
+When implementing UI features (especially from UX specs), follow these standards. The comprehensive reference is at `docs/ui-ux-best-practices.md` — read it before doing significant UI work.
+
+### Component Patterns
+
+- **Composition API only** — `<script setup lang="ts">` everywhere
+- **Props via TypeScript interfaces** — `defineProps<{ title: string; open: boolean }>()`
+- **Emits with type safety** — `defineEmits<{ close: []; confirm: [id: string] }>()`
+- **Composables for shared logic** — `useDialog()`, `useToast()`, `useAutoSave()`, etc. Live in `src/composables/`
+- **Presentational vs. container** — Components that render UI vs. components that fetch data and manage state. Keep them separate
+
+### Dialog & Modal Rules
+
+**Never use `window.alert()`, `window.confirm()`, or `window.prompt()`.** They block the thread, can't be styled, break accessibility, and look hostile on mobile.
+
+**Always use native `<dialog>` with `<Teleport to="body">`:**
+
+```vue
+<Teleport to="body">
+  <dialog ref="dialogRef" @close="emit('close')" @cancel="onCancel"
+    class="rounded-xl border border-gray-200 bg-white p-6 shadow-xl
+           backdrop:bg-black/50 dark:border-gray-700 dark:bg-gray-800">
+    <slot />
+  </dialog>
+</Teleport>
+```
+
+- Call `.showModal()` (not `.show()`) for backdrop + focus trapping + Escape key
+- Handle the `cancel` event for Escape key behavior
+- Restore focus to the trigger element on close
+
+### State Communication
+
+Every async operation needs three states:
+1. **Loading** — Skeleton screens for layout, spinner for inline actions
+2. **Error** — Recovery-focused: what failed + what to do ("Could not save. [Try again]")
+3. **Empty** — Not a dead end: guide the user to their first action
+
+### Undo Over Confirmation
+
+For reversible actions (delete a practice, remove a bookmark), don't show "Are you sure?" — perform the action immediately and show an undo toast. Only use confirmation dialogs for genuinely irreversible actions.
+
+### Transitions
+
+Wrap mount/unmount in `<Transition>` for smooth UX:
+```vue
+<Transition enter-active-class="transition-opacity duration-200"
+            leave-active-class="transition-opacity duration-150"
+            enter-from-class="opacity-0" leave-to-class="opacity-0">
+  <div v-if="show">...</div>
+</Transition>
+```
+
+### Tailwind v4 Notes
+
+- Colors use `oklch()` — never assert exact `rgb()` values in tests
+- Dark mode: use `dark:` variant, toggle class on `<html>` element
+- Z-index scale: `z-0` (base) → `z-10` (sticky) → `z-20` (dropdown) → `z-30` (overlay) → `z-40` (modal) → `z-50` (toast)
+- Spacing rhythm: stick to `2, 3, 4, 6, 8, 12` from the Tailwind scale
+
+### Accessibility Minimums
+
+- All interactive elements keyboard-reachable
+- Focus indicators visible (`focus-visible:ring-2`)
+- Icon-only buttons need `aria-label`
+- Color is never the only indicator — pair with icons or text
+- Respect `prefers-reduced-motion`
+
+### Playwright Testing
+
+```powershell
+cd scripts/becoming/frontend
+npx playwright test --reporter=list
+```
+
+- Assert CSS classes, not computed color values
+- Set `localStorage.setItem('onboarding_complete', 'true')` to bypass onboarding
+- Test keyboard navigation (Tab, Enter, Escape) not just clicks
+- Test empty states and error states, not just happy paths
