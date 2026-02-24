@@ -60,6 +60,7 @@ Full-text search works well for exact phrases. Semantic search via gospel-vec co
 | ~~Remove `get_chapter` from gospel-vec~~ | ~~Medium~~ | **Done** | Redundant with `gospel_get` + `read_file`. `search_scriptures` description updated to point to `gospel_get` |
 | ~~Default context=0 in `gospel_get`~~ | ~~Medium~~ | **Done** | Lean by default for document building. Pass `context=N` when you want surrounding verses |
 | Study document index | Low | Open | Search across `/study/` files by topic, date, or connected scriptures |
+| BYU Speeches downloader / MCP tool | Medium | Open | BYU devotionals (speeches.byu.edu) are not in gospel-library but are frequently cited primary sources. Maxwell's "Meekly Drenched in Destiny" was a gap during the [Mormon YouTube evaluation](../study/yt/UjzeDUBMaUA-problem-with-mormon-youtube.md). A `byu-speeches/` directory + download tool (similar to yt-mcp) would cover Holland, Eyring, Maxwell devotionals, etc. Site has clean HTML with full text, audio, and video. |
 
 ---
 
