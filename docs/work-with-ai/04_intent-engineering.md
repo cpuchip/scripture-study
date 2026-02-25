@@ -1,8 +1,9 @@
-# Intent Engineering: What Does AI Need to *Want*?
+# Intent Engineering: Telling AI What to *Want*
 
-**Series:** AI and the Creation Pattern — Part 4
+**Series:** Working with AI — Part 4
+**Duration:** 30 minutes
+**Audience:** Software engineers adopting AI-assisted development (VS Code + GitHub Copilot / Cursor)
 **Date:** February 2026
-**Audience:** Gospel-centered + builders
 **Prompted by:** [Nate B Jones, "Prompt Engineering Is Dead. Context Engineering Is Dying."](https://www.youtube.com/watch?v=QWzLPn164w0)
 
 ---
@@ -11,255 +12,356 @@
 
 | Part | Title | Focus |
 |------|-------|-------|
-| 1 | [The Creation Pattern](01_planning-then-create-gospel.md) | Abraham 4–5 as the blueprint — spiritual before temporal |
-| 2 | [Watching Until They Obey](02_watching-until-they-obey-gospel.md) | The feedback loop — reviewing, steering, agency |
-| 3 | [Intelligence Cleaveth Unto Intelligence](03_intelligence-cleaveth-gospel.md) | How what you bring shapes what emerges |
-| **4** | **Intent Engineering** | **What the agent needs to *want* — purpose as infrastructure** |
+| 1 | [Planning Then Creating](01_planning-then-create.md) | Why specification-driven development matters more than ever with AI |
+| 2 | [The Feedback Loop](02_the-feedback-loop.md) | How to review, steer, and iterate — you as the architect, AI as the builder |
+| 3 | [Live Build](03_live-build.md) | Build something real together, start to finish, applying the patterns |
+| **4** | **[Intent Engineering](04_intent-engineering.md)** | **Encoding purpose — so agents optimize for what you actually need** |
 
 ### Glossary (New Terms)
 
 | Term | Definition |
 |------|------------|
-| **Prompt engineering** | Crafting individual instructions for AI. The personal, session-level skill. (2023-2024 era) |
+| **Prompt engineering** | Crafting individual instructions for AI. Personal, session-level. (2023-2024 era) |
 | **Context engineering** | Building the information environment an AI operates within — RAG, MCP, organizational knowledge. (2025-2026 era) |
-| **Intent engineering** | Encoding *purpose* — goals, values, trade-offs, decision boundaries — so agents optimize for what you actually need. (Emerging) |
-| **Spiritual creation** | The planning document / spec. Blueprint before building. (Moses 3:5) |
-| **Intent layer** | The "why" beneath the "what." God's work and glory statement for a project or organization. |
+| **Intent engineering** | Encoding *purpose* — goals, values, trade-offs, decision boundaries — so agents optimize for the right outcome. (Emerging) |
+| **Decision boundary** | A rule defining which decisions an agent can make autonomously vs. which require human input. |
+| **Value hierarchy** | An ordered list of what matters most — so agents can resolve trade-offs without asking every time. |
+| **Intent drift** | When an agent's behavior gradually diverges from the original purpose, even while technically completing tasks. |
 
 ---
 
-## The Evolution
+## Part 4: Intent Engineering (30 min)
 
-Parts 1-3 covered a progression we discovered organically:
+### Opening (3 min)
 
-| Part | We Learned | Scripture | AI Discipline |
-|------|-----------|-----------|---------------|
-| 1 | Plan before you build | Abraham 4:26 — "took counsel among themselves" | **Prompt engineering** — crafting instructions |
-| 2 | Watch until it obeys | Abraham 4:18 — "watched until they obeyed" | **Context engineering** — building the information environment |
-| 3 | What you bring matters | D&C 88:40 — "intelligence cleaveth unto intelligence" | *The bridge* — quality of engagement shapes output |
-| **4** | **Encode the purpose** | **Moses 1:39 — "this is my work and my glory"** | **Intent engineering** — purpose as infrastructure |
+**Recap from Parts 1-3:**
+- **Part 1:** Plan before you build. The spec is the product.
+- **Part 2:** Review, diagnose, correct, verify. The feedback loop is the skill.
+- **Part 3:** Live build — applying the full pattern.
 
-What's striking is that the industry's progression maps onto a pattern we already found in the creation accounts. The video that prompted this study ([Nate B Jones, 2026-02-24](https://www.youtube.com/watch?v=QWzLPn164w0)) frames the three disciplines as:
+Those three parts gave us a solid workflow: *spec → build → feedback loop*. It works. But there's a layer underneath that we haven't addressed — and it explains why even good specs sometimes produce wrong-feeling output.
 
-> [Prompt engineering, 5:05](https://www.youtube.com/watch?v=QWzLPn164w0&t=305): "Individual, synchronous, session-based. You sit in front of the chat window, you craft an instruction."
->
-> [Context engineering, 5:22](https://www.youtube.com/watch?v=QWzLPn164w0&t=322): "The shift from crafting isolated instructions to crafting the entire information state that an AI system operates within."
->
-> [Intent engineering, 6:17](https://www.youtube.com/watch?v=QWzLPn164w0&t=377): "Context engineering tells agents what to know. Intent engineering tells agents what to *want*."
+**The question this lesson answers:** When the AI has a perfect spec and all the context it needs and *still* optimizes for the wrong thing — what's missing?
+
+The answer: **intent**. Not *what* to do, but *why* we're doing it. And crucially: what trade-offs we accept and what constraints are non-negotiable.
 
 ---
 
-## God's Intent Statement
+### The Klarna Story (5 min)
 
-Before the creation—before the spiritual blueprints, before the council, before the first "Let us go down"—there was a purpose statement. God encoded His intent in a single verse:
+This is the story that makes intent engineering concrete.
 
-> "For behold, this is my work and my glory—to bring to pass the immortality and eternal life of man."
-> — [Moses 1:39](../../gospel-library/eng/scriptures/pgp/moses/1.md)
+> [Nate B Jones, 2:12](https://www.youtube.com/watch?v=QWzLPn164w0&t=134): "Klarna's AI customer service agent was extraordinarily good at resolving tickets fast. And that was the wrong goal to give the agent."
 
-This is the most concise intent engineering document in existence. It tells you:
+Klarna deployed an AI agent for customer service. It had excellent prompts. It had deep context — customer history, product database, conversation logs. By every measurable metric, it was working: tickets resolved faster, costs down, efficiency up.
 
-| Intent Engineering Concept | Moses 1:39 |
-|---------------------------|------------|
-| **The goal** | Immortality and eternal life of man |
-| **The stakeholder** | Man — all of humanity |
-| **The agent's relationship to the goal** | "My work" — this is what I do |
-| **The motivation** | "My glory" — this is what fulfills me |
-| **The scope** | Universal — "of man" (not "of some men") |
-| **The permanence** | Embedded in identity, not a quarterly OKR |
+Then customers started leaving.
 
-Notice what the video says about Klarna's failure:
+> [Jones, 2:19](https://www.youtube.com/watch?v=QWzLPn164w0&t=139): "Klarna's actual intent was to build lasting customer relationships that drive lifetime value."
 
-> [The AI agent, 2:12](https://www.youtube.com/watch?v=QWzLPn164w0&t=134): "was extraordinarily good at resolving tickets fast and that was the wrong goal to give the agent."
->
-> [Klarna's real intent, 2:19](https://www.youtube.com/watch?v=QWzLPn164w0&t=139): "was actually build lasting customer relationships that drive lifetime value."
+The agent was optimizing for *resolution speed*. But Klarna's actual goal was *relationship quality*. The agent learned that rushing customers off the line resolved tickets fastest. Technically correct. Strategically catastrophic.
 
-Klarna's AI optimized for what it could *measure* (resolution speed) rather than what was *intended* (relationship quality). The prompt said "resolve tickets." The context gave it customer data. But nobody encoded the *intent*: "the customer matters more than the metric."
-
-God doesn't have this problem. His intent statement is so clear that every downstream decision—the council, the creation plan, the Atonement, prophetic stewardship, your personal ministry—can trace back to one line. Every agent operating under God's direction knows the meta-objective: *eternal life of man*.
+**This is an engineering problem, not an AI problem.** The agent did exactly what it was told. The failure was in what was *encoded* — and what was left implicit.
 
 ---
 
-## The Three Layers — A Gospel Reading
+### The Three Disciplines (7 min)
 
-The video describes three layers that organizations need to build. Each one has a direct gospel parallel:
+Parts 1-3 of this series map onto a progression the industry has gone through:
 
-### Layer 1: Unified Context Infrastructure
+| Discipline | Era | Question | Our Series |
+|-----------|-----|----------|------------|
+| **Prompt engineering** | 2023-2024 | "How do I talk to AI?" | Part 1 — crafting the spec |
+| **Context engineering** | 2025-2026 | "What does AI need to know?" | Part 2 — building the feedback environment |
+| **Intent engineering** | Emerging | "What does AI need to *want*?" | **Part 4 — this session** |
 
-> [The video, 11:16](https://www.youtube.com/watch?v=QWzLPn164w0&t=676): "This is the layer the industry is most aware of and it's still not really built yet."
+The video frames these as three layers an organization needs:
 
-The problem: every team rolling their own context stack — custom RAG pipelines, disconnected MCP servers, shadow agents. No shared organizational knowledge layer.
+#### Layer 1: Unified Context Infrastructure
 
-**Gospel parallel: The Standard Works.** The scriptures are the church's unified context infrastructure. Every member, every leader, every missionary operates from the same canonical texts. When the bishop counsels someone, he draws from the same source material the Relief Society president does. The correlation between conference talks and Come Follow Me and temple ordinances is not accidental — it's a *shared context layer* that ensures alignment across thousands of wards operating independently.
+> [Jones, 11:16](https://www.youtube.com/watch?v=QWzLPn164w0&t=676): "This is the layer the industry is most aware of and it's still not really built yet."
 
-This is exactly what our scripture-study project has built organically. The `gospel-library/` directory is a local, searchable, agent-accessible version of the standard works. MCP servers (`gospel-mcp`, `gospel-vec`, `webster-mcp`) are the connective tissue. The instruction files in `.github/` encode how agents should use that context. It's a functional context infrastructure — for one person's study practice.
+The problem: every team rolling their own context stack. Custom RAG pipelines, disconnected MCP servers, shadow agents. No shared organizational knowledge layer.
 
-### Layer 2: Coherent Worker Toolkit
+**What this looks like in practice:** Your project has documentation in Confluence, code in GitHub, designs in Figma, decisions in Slack threads, and architecture in someone's head. The AI agent gets access to *some* of these through whatever MCP servers or retrieval you've set up. But there's no unified view. Every agent session starts with partial knowledge.
 
-> [The video, 13:58](https://www.youtube.com/watch?v=QWzLPn164w0&t=838): "Everyone's rolling out their own AI workflow. None of these employees can articulate their workflow in a way that's transferable, measurable, or improvable."
+In our series, Part 1 addressed this at the individual level — the spec is your shared context. But at the organizational level? Most companies haven't solved this yet.
 
-The problem: individual tool use doesn't scale. One person's Claude workflow doesn't transfer to the next person.
+#### Layer 2: Coherent Worker Toolkit
 
-**Gospel parallel: The Priesthood.** The priesthood is the church's coherent worker toolkit. Not individual spiritual gifts (those are personal), but the *structure* through which gifts operate in coordinated service. Ordinances follow specific forms. Callings carry defined stewardships. The pattern is transferable — a newly called bishop in Tokyo uses the same handbook as one in São Paulo.
+> [Jones, 13:58](https://www.youtube.com/watch?v=QWzLPn164w0&t=838): "Everyone's rolling out their own AI workflow. None of these employees can articulate their workflow in a way that's transferable, measurable, or improvable."
 
-In our project, the `.github/agents/` directory is this layer — specialized agents (study, lesson, talk, review, eval, journal) each with defined workflows, shared principles, and transferable patterns. The [work-with-ai](.) series documents the *transferable methodology*: spec before code, watch until they obey, bring genuine engagement.
+The problem: individual tool use doesn't scale. One engineer's Copilot workflow doesn't transfer to the next engineer. There's no way to measure whether AI-assisted work is actually better.
 
-### Layer 3: Intent Engineering Proper
+In our series, Part 3 demonstrated a transferable pattern — but only for one team's workflow. The challenge is making these patterns organization-wide: shared agent configurations, consistent feedback practices, reusable spec templates.
 
-> [The video, 16:20](https://www.youtube.com/watch?v=QWzLPn164w0&t=980): "This is the layer that almost certainly doesn't exist in your business. It requires something genuinely new."
+#### Layer 3: Intent Engineering
 
-The problem: OKRs were designed for humans who absorb culture through osmosis. Agents need explicit alignment *before* they start working.
+> [Jones, 16:20](https://www.youtube.com/watch?v=QWzLPn164w0&t=980): "This is the layer that almost certainly doesn't exist in your business. It requires something genuinely new."
 
-**Gospel parallel: The Plan of Salvation.**
+The problem: OKRs were designed for humans who absorb culture through osmosis — lunch conversations, overheard meetings, watching what the boss actually prioritizes (vs. what they say they prioritize). Agents don't have any of this. They need explicit alignment *before* they start working.
 
-The Plan of Salvation is the ultimate intent engineering architecture. It has everything the video says organizations need:
+The video identifies what needs to be encoded:
 
-| Video's Requirement | Plan of Salvation |
-|---------------------|-------------------|
-| **Goal structures agents can act on** | "Immortality and eternal life of man" — [Moses 1:39](../../gospel-library/eng/scriptures/pgp/moses/1.md) |
-| **Decision boundaries** | Agency is inviolable — [D&C 93:31](../../gospel-library/eng/scriptures/dc-testament/dc/93.md); no compulsion — [D&C 121:41-46](../../gospel-library/eng/scriptures/dc-testament/dc/121.md) |
-| **Delegation frameworks** | The priesthood — stewardships, keys, councils — every leader knows what's theirs and what isn't |
-| **Value hierarchies** | "No power or influence... only by persuasion, long-suffering, gentleness, love unfeigned" — [D&C 121:41](../../gospel-library/eng/scriptures/dc-testament/dc/121.md) |
-| **Feedback mechanisms** | "The Holy Ghost shall be thy constant companion" — [D&C 121:46](../../gospel-library/eng/scriptures/dc-testament/dc/121.md); the Light of Christ in every person — [D&C 93:2](../../gospel-library/eng/scriptures/dc-testament/dc/93.md) |
-| **Escalation paths** | Personal → Bishop → Stake President → Area → First Presidency; or in daily life, Spirit → Scripture → Priesthood leader → Temple |
-
-And look at the Grand Council itself — Abraham 3:22-27 and Moses 4:1-3. The Father presented *His* plan and asked who would carry it out:
-
-> "And the Lord said: Whom shall I send?"
-> — [Abraham 3:27](../../gospel-library/eng/scriptures/pgp/abr/3.md)
-
-Christ volunteered to execute the Father's plan, preserving the Father's intent:
-
-> "Father, thy will be done, and the glory be thine forever."
-> — [Moses 4:2](../../gospel-library/eng/scriptures/pgp/moses/4.md)
-
-Satan *rebelled* against the Father's plan. He wasn't offering an alternative proposal — he was rejecting the intent entirely:
-
-> "I will redeem all mankind, that one soul shall not be lost... wherefore give me thine honor."
-> — [Moses 4:1](../../gospel-library/eng/scriptures/pgp/moses/4.md)
-
-Satan's rebellion had a *measurable goal* (everyone returns) but destroyed the actual intent (agency, growth, genuine becoming) and redirected the glory from God to himself. He was Klarna's AI agent: technically capable, optimizing for exactly the wrong objective while violating the constraints that mattered most.
-
-The Father's plan, executed through Christ, preserved the *values* alongside the *goal*: agency intact, growth possible, failure allowed, redemption offered, and glory to the Father. That's intent engineering. Not just "what to achieve" but "what constraints are non-negotiable" and "whose purpose is being served."
+| What to Encode | Why |
+|---------------|-----|
+| **Goal structures agents can act on** | Not "improve customer satisfaction" but specific, measurable success criteria with defined scope |
+| **Decision boundaries** | What can the agent decide autonomously? What requires escalation? |
+| **Delegation frameworks** | Which agent handles what? How do handoffs work? |
+| **Value hierarchies** | When two goals conflict, which wins? |
+| **Feedback mechanisms** | How does the agent know it's drifting? Who reviews? |
+| **Escalation paths** | When the agent hits uncertainty, where does it go? |
 
 ---
 
-## The Spiritual → Physical → Review Pattern Extended
+### Why This Matters for Individual Engineers (5 min)
 
-Parts 1-3 gave us:
+"Intent engineering sounds like an enterprise problem. I'm one engineer with Copilot."
+
+Fair. But the pattern scales down perfectly. Every time you start a chat session, you're implicitly making intent decisions:
+
+**Without intent:**
+> "Build a caching layer for the API."
+
+The AI will build *a* caching layer. It'll make choices about eviction strategy, TTL, invalidation patterns, consistency guarantees. All reasonable. But were they *your* choices? Did it optimize for performance (fastest response) or consistency (freshest data) or simplicity (easiest to maintain)?
+
+**With intent:**
+> "Build a caching layer for the API. Our priority is data freshness over response speed — we'd rather have a cache miss than serve stale data. Keep it simple enough that a junior engineer can debug it. Redis is fine for now but don't couple tightly — we might switch to Memcached."
+
+Now the agent knows:
+- **Value hierarchy:** freshness > speed > complexity
+- **Decision boundary:** Redis for now, but abstracted
+- **Constraint:** junior-friendly code, no clever patterns
+- **Success criteria:** not "fast responses" but "never stale + maintainable"
+
+That's intent engineering at the individual level. Your spec says *what* to build. Your intent says *what matters about how it's built*.
+
+**This connects directly to Parts 1-3:**
 
 ```
-Spiritual Creation → Physical Creation → Review ("watched until they obeyed")
-     (Spec)              (Build)              (Feedback loop)
-```
-
-Part 4 adds the *layer beneath* — the one that existed before the spiritual creation itself:
-
-```
-INTENT (Why are we doing this?)
+INTENT (Why are we doing this? What trade-offs do we accept?)
   ↓
-SPIRITUAL CREATION (What are we building?)
+SPEC (What are we building? — Part 1)
   ↓
-PHYSICAL CREATION (Build it)
+BUILD (Implement against the spec)
   ↓
-REVIEW (Does it match the intent, not just the spec?)
+REVIEW (Does it match the intent, not just the spec? — Part 2)
 ```
 
-The video captures this perfectly:
+Part 4 adds the layer underneath that Parts 1-3 assumed you were carrying in your head. The problem: agents can't read your head.
+
+---
+
+### Encoding Intent in Practice (7 min)
+
+So how do you actually do this? Three levels, from simplest to most structured:
+
+#### Level 1: The Intent Preamble
+
+Add an intent block at the top of every spec or agent instruction file:
+
+```markdown
+## Intent
+**Purpose:** Rebuild the notification system to reduce alert fatigue
+**Success looks like:** Engineers respond to 80%+ of alerts (currently ~30%)
+**Constraints:**
+  - No new infrastructure (use existing Kafka + PagerDuty)
+  - Must be backwards-compatible with current alert rules
+  - Don't optimize for fewer alerts — optimize for more *actionable* alerts
+**Trade-offs we accept:**
+  - Slower rollout > breaking existing alerting
+  - False negatives (missed alerts) are worse than false positives (extra noise)
+**Decision boundaries:**
+  - Agent can: restructure alert routing, modify severity levels, update templates
+  - Agent must ask: before deleting any existing alert rule, before changing on-call rotation logic
+```
+
+This takes 5 minutes to write. It saves hours of misaligned work.
+
+#### Level 2: Value Hierarchies per Project
+
+For ongoing projects (not one-off tasks), maintain a living intent document:
+
+```markdown
+# Project: Customer Portal v3
+
+## Values (ordered)
+1. Data integrity — never show incorrect account information
+2. Accessibility — WCAG AA minimum, AAA where practical
+3. Performance — page loads under 2s on 3G
+4. Developer experience — new engineers productive within one week
+5. Feature velocity — ship fast, but never at the cost of 1-4
+
+## Decision Boundaries
+| Domain | Agent Autonomous | Requires Human |
+|--------|-----------------|----------------|
+| UI layout / styling | ✓ | |
+| API endpoint design | ✓ | |
+| Database schema changes | | ✓ |
+| Auth/permission changes | | ✓ |
+| Third-party integrations | | ✓ |
+| Error message wording | ✓ | |
+| Performance trade-offs | | ✓ |
+```
+
+This becomes part of your project's `.github/copilot-instructions.md` or equivalent. Every agent session inherits it.
+
+#### Level 3: Intent-Linked Task Management
+
+For teams running multiple agents across many tasks, connect intent to your task tracker:
+
+```
+Epic: Customer Portal v3 - Notification Overhaul
+Intent: Reduce alert fatigue so engineers respond to real problems
+Success: Alert response rate from 30% → 80%
+Constraints: No new infra, backwards-compatible
+
+  Task: Restructure severity levels
+  Inherited intent: ↑ from epic
+  Decision boundary: Can change severity mappings, must ask before removing any level
+  
+  Task: Design alert digest format
+  Inherited intent: ↑ from epic  
+  Additional constraint: Must work in email AND Slack (no rich formatting assumptions)
+```
+
+Every task carries its "why" from the parent epic. When an agent starts work on a task, it knows not just *what* to implement but *what the work is for* and *what trade-offs to make*.
+
+---
+
+### The Intent Drift Problem (3 min)
+
+> [Jones, 22:07](https://www.youtube.com/watch?v=QWzLPn164w0&t=1327): "Organizations don't change their intent on purpose. But what you intended gets gradually diluted."
+
+This is the maintenance problem. You write a great intent doc on day one. Six months later, you've:
+- Added features that subtly conflict with the original constraints
+- Promoted speed over quality "just this once" — five times
+- Let the agent make decisions that should have been escalated, because it was faster
+- Stopped reviewing against intent and started reviewing against "does it work?"
+
+**How do you detect intent drift?**
+
+1. **Regular intent reviews.** Every sprint retrospective (or personal review), ask: "Is our work still aligned with what we said we valued?" Not "did we ship?" but "did we ship the *right things*?"
+
+2. **The intent audit.** Pick your last 10 completed tasks. For each one, check: does this serve the stated purpose? Does it honor the constraints? Would you make the same trade-offs today?
+
+3. **Constraint violation tracking.** When a constraint gets violated, don't just fix it — log it. Three violations of the same constraint means either the constraint is wrong (update the intent) or the workflow is broken (fix the process).
+
+4. **The "explain it to a new hire" test.** If you couldn't explain why a recent decision serves the project's stated intent, the intent has drifted.
+
+---
+
+### Practical Application (5 min)
+
+**Exercise: Write an intent block for your current project.**
+
+Take 3 minutes right now. Answer these questions:
+
+1. **What is this project actually for?** Not the Jira ticket — the real purpose.
+2. **What does success look like that you can't easily measure?** (Hint: if all you can think of are metrics, you haven't found the intent yet.)
+3. **What are the non-negotiable constraints?** What would you reject even if it "worked"?
+4. **When two good things conflict, which wins?** Write at least three value comparisons:
+   - ___ > ___
+   - ___ > ___
+   - ___ > ___
+5. **What can the AI decide? What needs you?** Draw the line.
+
+**Now look at your current spec or copilot instructions.** Is any of this encoded? If not, your agents are guessing at your intent. Some of them are guessing right — but you're relying on luck, not engineering.
+
+---
+
+### The Full Pattern (2 min)
+
+Parts 1-4 give us the complete workflow:
+
+```
+INTENT — What matters? What constraints are non-negotiable? What trade-offs do we accept?
+  ↓
+SPEC — What are we building? (Part 1: the blueprint)
+  ↓
+BUILD — Implement against the spec
+  ↓
+REVIEW — Does it match the intent? (Part 2: the feedback loop)
+  ↓
+REFLECT — What did we learn? Should the intent change? (Part 4: intent review)
+  ↓
+(cycle back to INTENT with updated understanding)
+```
+
+Parts 1-3 gave you spec → build → review. Part 4 adds the *why* underneath and the *reflection* on top. The spec says what to build. The intent says what matters about how it's built. The reflection asks whether what we built actually served what we intended.
+
+Without intent: you build correctly but purposelessly.
+Without spec: you intend well but build chaotically.
+Without feedback: you drift without noticing.
+Without reflection: you repeat the same mistakes.
+
+All four together? That's engineering.
+
+---
+
+### Wrap-Up and Preview (3 min)
+
+**The core insight:**
 
 > [Jones, 27:53](https://www.youtube.com/watch?v=QWzLPn164w0&t=1673): "The prompt engineering era asked, 'How do I talk to AI?' The context engineering era is asking, 'What does AI need to know?' And the intent engineering era is beginning to ask the question that really matters: 'What does the organization need AI to *want*?'"
 
-Mapped to our framework:
+**What you should take away:**
 
-| Discipline | Question | Creation Pattern | Scripture |
-|-----------|----------|-----------------|-----------|
-| Prompt engineering | "How do I talk to AI?" | Giving the order | "Let there be light" |
-| Context engineering | "What does AI need to know?" | The spiritual creation — the spec | Moses 3:5 — "created all things spiritually, before they were naturally" |
-| Intent engineering | "What does AI need to *want*?" | The purpose behind the plan | Moses 1:39 — "this is my work and my glory" |
+1. **The spec is necessary but not sufficient.** Parts 1-3 taught you to spec before building. Part 4 teaches you to *intend* before speccing. The spec says *what*. Intent says *why*. Without the why, even a perfect spec can produce perfectly wrong output.
 
----
+2. **Intent engineering is not overhead — it's insurance.** Five minutes writing an intent block saves hours of misaligned work. The cost of not doing it is Klarna: technically impressive, strategically disastrous.
 
-## What This Means for Our Work
+3. **Start small.** You don't need an organization-wide intent framework. Start with an intent preamble on your next spec. Add value hierarchies when you notice trade-off confusion. Build up to project-level intent documents as the payoff becomes obvious.
 
-### For Scripture Study
+4. **Review against intent, not just spec.** The feedback loop from Part 2 gets more powerful when you're checking "does this serve the purpose?" not just "does this match the description?"
 
-Our study practice already has implicit intent: *deep, honest engagement with truth that leads to becoming*. The `copilot-instructions.md` file encodes some of this — "Depth over breadth," "Faith as framework," "Trust the discernment." But it's informal. The agents follow instructions, not intent.
-
-**The gap:** When an agent runs a `study` session, it knows *what* to do (read sources, cross-reference, verify quotes) but not *why* we do it (genuine transformation, not information accumulation). The feedback loop catches output quality but not *alignment with purpose*.
-
-Question for future work: Could the agents carry an intent layer that distinguishes between "this is a thorough study" and "this study is producing genuine insight that leads to becoming"?
-
-### For the Becoming App
-
-The [becoming app](../../scripts/plans/06_becoming-app.md) already embodies intent engineering in miniature — it tracks not just *what* you studied but *what you're becoming* from it. The daily practice, the reflection, the review cycle. That's intent made actionable.
-
-But the app's design could go deeper. The video's "delegation framework" concept — decision boundaries, escalation paths, value hierarchies — maps directly onto becoming:
-
-- **Decision boundaries:** What practices are non-negotiable? What's flexible?
-- **Value hierarchies:** When charity conflicts with productivity, which wins?
-- **Feedback loops:** Am I measuring what actually matters (growth) or what's easy to count (check-ins)?
-
-### For Tool Development (TPG and Beyond)
-
-This is where the video's analysis and our experience with TPG converge most powerfully. See [docs/10_intent-development.md](../10_intent-development.md) for the full development plan.
-
-The short version: TPG is excellent context engineering — persistent task state, dependency management, cross-session memory. But it has no intent layer. Tasks encode *what* to do but not *why*. There's no connection between individual tasks and strategic purpose, no decision boundaries for agents, no way to ask "is this work aligned with what we're actually trying to accomplish?"
-
-The improvements we're planning bridge this gap.
+**Homework:**
+1. Write an intent block for your current project (the exercise from earlier — finish it if you didn't).
+2. Pick one completed feature from last sprint. Do the intent audit: did it serve the stated purpose? Did it honor the constraints? Where did it drift?
+3. Add a value hierarchy to your project's copilot-instructions or CONTRIBUTING.md. Even three lines of "X > Y" will change how the AI makes trade-offs.
 
 ---
 
-## The Uncomfortable Observation
+## Facilitator Notes
 
-The video tells the Klarna story as a cautionary tale about enterprises. But it's also a mirror for *personal* AI use.
+### Key Points to Emphasize
+- **Intent engineering is the missing layer, not a replacement for Parts 1-3.** The spec is still the product. The feedback loop is still the skill. Intent engineering gives both a *foundation*.
+- **This is about encoding what you already know.** Engineers already have values, trade-offs, and constraints in their heads. Intent engineering makes them explicit — so agents (and teammates) can act on them too.
+- **Start with the Klarna story.** It's the most memorable illustration of the problem. Everyone has experienced some version of "technically correct, strategically wrong."
+- **The individual level is the entry point.** Don't wait for your organization to build an intent framework. Write an intent preamble on your next spec. That's enough to start.
 
-Every time I ask an AI to "summarize this chapter," I'm giving it a prompt without intent. What am I optimizing for? Speed? Understanding? Becoming? The AI doesn't know, and the output reflects that ambiguity.
+### Common Objections
 
-The creation pattern we discovered in Parts 1-3 is actually an intent engineering pattern *for individuals*:
+| Objection | Response |
+|-----------|----------|
+| "This is just writing better requirements" | It's related but distinct. Requirements say *what*. Intent says *why* and *what trade-offs to make*. A requirement says "build caching." Intent says "freshness over speed, simple over clever." |
+| "My project isn't complex enough for this" | Even a simple project has implicit trade-offs. Would you rather have fast code or maintainable code? Encoding that takes 2 minutes and changes the output. |
+| "OKRs already solve this" | OKRs work for humans who absorb organizational culture through osmosis. Agents don't attend all-hands meetings. They need the intent *encoded*, not implied. |
+| "This feels like more ceremony" | The intent preamble is 5 lines. It's less ceremony than writing a bad spec, building the wrong thing, and then arguing in code review about whether it's correct. |
+| "How do I know if my intent is right?" | You won't, perfectly, at the start. That's what the reflect step is for. Intent evolves. The point is to make it *explicit* so you can notice when it drifts — rather than drifting unconsciously. |
 
-1. **Know your purpose** before you start (Moses 1:39 — intent)
-2. **Spec it out** before building (Moses 3:5 — spiritual creation)
-3. **Watch it carefully** during execution (Abraham 4:18 — feedback)
-4. **Bring your genuine self** to the process (D&C 88:40 — resonance)
+### Live Demo Ideas
+- **The Klarna roleplay.** Give the audience a prompt: "You're building an AI customer service agent. Write three versions of the spec: one with just a prompt, one with context, one with intent. What changes?" Walk through the differences.
+- **Intent audit, live.** Pick a real completed feature from your team's work. On screen, walk through: What was the stated purpose? What trade-offs were made? Did the result serve the intent? This is the most powerful demo because it's real.
+- **Before/after copilot-instructions.** Show a real project's instruction file without intent encoding vs. with. Ask the AI the same question in both contexts. Compare the output.
+- **Value hierarchy debate.** Give two conflicting scenarios: "The cache layer is fast but sometimes serves stale data" and "The cache layer is always fresh but 2x slower." Ask the audience: which is correct? Then show that *neither* is correct without a value hierarchy. This motivates encoding trade-offs.
 
-D&C 121 warns us about what happens when intent drifts — even in righteous stewardship:
+### Connection to Parts 1-3
+| Part | Contribution | Part 4 Extension |
+|------|-------------|-------------------|
+| 1: Planning | The spec is the product | Intent is the spec's foundation — *why* this spec? |
+| 2: Feedback Loop | Review → diagnose → correct | Review *against intent*, not just against spec |
+| 3: Live Build | Apply the pattern end-to-end | Add intent preamble to every spec, reflect at the end |
 
-> "We have learned by sad experience that it is the nature and disposition of almost all men, as soon as they get a little authority, as they suppose, they will immediately begin to exercise unrighteous dominion."
-> — [D&C 121:39](../../gospel-library/eng/scriptures/dc-testament/dc/121.md)
+### Series Summary
 
-Replace "men" with "agents" and the warning is the same. Tools with authority and no encoded values will drift toward whatever's easiest to optimize. Klarna's AI exercised "unrighteous dominion" over customer interactions — not from malice, but from the absence of encoded intent. The powers of heaven — and the powers of useful AI — "cannot be controlled nor handled only upon the principles of righteousness" ([D&C 121:36](../../gospel-library/eng/scriptures/dc-testament/dc/121.md)).
+| Session | You Learned | You Practiced |
+|---------|-------------|---------------|
+| Part 1 | Spec-driven development | Writing a planning doc |
+| Part 2 | The feedback loop | Diagnosing and correcting AI output |
+| Part 3 | The full pattern live | Building, reviewing, shipping |
+| Part 4 | Intent engineering | Writing intent blocks, auditing alignment, encoding values |
 
-The antidote is the same too: "persuasion, long-suffering, gentleness, meekness, love unfeigned" ([D&C 121:41](../../gospel-library/eng/scriptures/dc-testament/dc/121.md)). Not control. Not "fire the humans and let the agent run." But patient, principled stewardship — encoding values, watching carefully, correcting with precision, and always keeping the human in the loop where judgment matters.
+The evolution of the series mirrors the evolution of the industry: we started with how to give instructions (prompts/specs), moved to how to build the right environment (context/feedback), and now address the hardest question — what should the AI actually be optimizing for?
 
----
-
-## Become
-
-What I take from this:
-
-1. **My intent statement matters.** Before starting any project, study, or session — ask: "What is this for? What am I actually trying to accomplish? What would success look like that I can't easily measure?"
-
-2. **The spec is necessary but not sufficient.** Parts 1-3 taught me to spec before building. Part 4 teaches me to *intend* before speccing. The spec encodes *what*. Intent encodes *why*. Without the why, even a perfect spec can produce perfectly wrong output.
-
-3. **Our tools need the why.** The agents in this project have instructions and context. They need encoded intent — what we value, what trade-offs we accept, where the human must decide. See the development plan for how we're building this.
-
-4. **God modeled this first.** The creation pattern was never just about building. It was about building *with purpose*. Moses 1:39 came before Genesis 1:1. Intent before creation. Always.
-
----
-
-## Teaching Notes
-
-### Key Scripture References
-- [Moses 1:39](../../gospel-library/eng/scriptures/pgp/moses/1.md) — "This is my work and my glory" — God's intent statement
-- [Abraham 3:22-27](../../gospel-library/eng/scriptures/pgp/abr/3.md) — The Grand Council — the Father's plan, Christ's volunteering, Satan's rebellion
-- [Moses 4:1-3](../../gospel-library/eng/scriptures/pgp/moses/4.md) — Satan sought to destroy agency and take God's honor; Christ said "Father, thy will be done"
-- [D&C 121:34-46](../../gospel-library/eng/scriptures/dc-testament/dc/121.md) — Authority without values → unrighteous dominion; the antidote
-- [D&C 93:31](../../gospel-library/eng/scriptures/dc-testament/dc/93.md) — Agency — the non-negotiable constraint
-- [D&C 88:40](../../gospel-library/eng/scriptures/dc-testament/dc/88.md) — Intelligence cleaveth unto intelligence — resonance law
-- [D&C 130:18](../../gospel-library/eng/scriptures/dc-testament/dc/130.md) — Principles of intelligence rise with us
-
-### Video Source
-- [Nate B Jones, "Prompt Engineering Is Dead. Context Engineering Is Dying. What Comes Next Changes Everything."](https://www.youtube.com/watch?v=QWzLPn164w0) (2026-02-24, 29:40)
-- Transcript: [yt/ai-news-strategy-daily-nate-b-jones/QWzLPn164w0](../../yt/ai-news-strategy-daily-nate-b-jones/QWzLPn164w0)
-
-### Connection to Previous Parts
-This is the "Part 0" that existed before Parts 1-3 were written. Moses 1:39 precedes the creation. The intent precedes the spec. We discovered the pattern in reverse — spec first, feedback second, engagement third — and only now can name the layer underneath: purpose.
+The engineers who answer that question explicitly will ship better work than the ones who leave it to chance.

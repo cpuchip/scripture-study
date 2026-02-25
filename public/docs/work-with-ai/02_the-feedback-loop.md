@@ -1,6 +1,6 @@
 # The Feedback Loop: Reviewing, Steering, and Iterating with AI
 
-**Series:** Working with AI — Part 2 of 3
+**Series:** Working with AI — Part 2 of 4
 **Duration:** 30 minutes
 **Audience:** Software engineers adopting AI-assisted development (VS Code + GitHub Copilot / Cursor)
 **Date:** February 2026
@@ -14,6 +14,7 @@
 | 1 | [Planning Then Creating](01_planning-then-create.md) | Why specification-driven development matters more than ever with AI |
 | **2** | **[The Feedback Loop](02_the-feedback-loop.md)** | **How to review, steer, and iterate — you as the architect, AI as the builder** |
 | 3 | [Live Build](03_live-build.md) | Build something real together, start to finish, applying the patterns |
+| 4 | [Intent Engineering](04_intent-engineering.md) | Encoding purpose — so agents optimize for what you actually need |
 
 ### Glossary
 
@@ -355,3 +356,4 @@ Bring your notes to the next session.
 - **Part 1: Planning Then Creating** — The spec-driven pattern. Done.
 - **Part 2: The Feedback Loop** — Today. Reviewing, diagnosing, correcting, verifying.
 - **Part 3: Live Build** — Apply the full pattern to a real project, live. The audience sees envision → specify → build → review → steer in action.
+- **Part 4: Intent Engineering** — Encoding purpose, values, and trade-offs so agents optimize for what you actually need.

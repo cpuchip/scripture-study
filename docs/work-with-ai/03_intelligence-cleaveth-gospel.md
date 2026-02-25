@@ -1,6 +1,6 @@
 # Intelligence Cleaveth Unto Intelligence: How What You Bring Shapes What Emerges
 
-**Series:** AI and the Creation Pattern — Part 3 of 3
+**Series:** AI and the Creation Pattern — Part 3 of 4
 **Duration:** 30 minutes
 **Audience:** Gospel-centered / YouTube
 **Date:** February 2026
@@ -14,6 +14,7 @@
 | 1 | [The Creation Pattern](01_planning-then-create-gospel.md) | Abraham 4–5 as the blueprint for human-AI collaboration |
 | 2 | [Watching Until They Obey](02_watching-until-they-obey-gospel.md) | The feedback loop — reviewing, steering, and the role of agency |
 | **3** | **[Intelligence Cleaveth Unto Intelligence](03_intelligence-cleaveth-gospel.md)** | **How the quality of your engagement shapes the quality of the output** |
+| 4 | [Intent Engineering](04_intent-engineering-gospel.md) | What the agent needs to *want* — purpose as infrastructure |
 
 ### Glossary
 
@@ -206,13 +207,14 @@ God's work is creation. Specifically: creating beings who can become like Him. A
 
 ### Wrap-Up (3 min)
 
-**The three-part framework, complete:**
+**The four-part framework, complete:**
 
 | Part | Pattern | Scripture | Core Insight |
 |------|---------|-----------|-------------|
 | 1 | Plan before you build | Abraham 4:26 — "took counsel among themselves" | Spiritual creation before temporal |
 | 2 | Watch until it obeys | Abraham 4:18 — "watched until they obeyed" | The feedback loop is where creation actually happens |
 | 3 | Bring your best self | D&C 88:40 — "intelligence cleaveth unto intelligence" | What you bring shapes what emerges |
+| 4 | Engineer the intent | Moses 1:39 — "this is my work and my glory" | Purpose is the infrastructure of creation |
 
 **The real takeaway:**
 
@@ -273,5 +275,6 @@ Put both equivalence chains on a board. Ask the audience: "Where do these overla
 | Part 1 | The creation pattern — spiritual before temporal | Writing a planning doc / spiritual creation |
 | Part 2 | Watching until they obey — the feedback loop | Reviewing, diagnosing, steering |
 | Part 3 | Intelligence cleaveth unto intelligence — what you bring matters | Bringing genuine engagement to the process |
+| Part 4 | Intent Engineering — what the agent needs to *want* | Encoding purpose, values, and trade-offs |
 
 The pattern is simple. The skill is in the *spirit* you bring to it. And that's the one thing no tool can provide.

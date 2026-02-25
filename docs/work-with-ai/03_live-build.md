@@ -1,6 +1,6 @@
 # Live Build: Applying the Full Pattern
 
-**Series:** Working with AI — Part 3 of 3
+**Series:** Working with AI — Part 3 of 4
 **Duration:** 30 minutes
 **Audience:** Software engineers adopting AI-assisted development (VS Code + GitHub Copilot / Cursor)
 **Date:** February 2026
@@ -14,6 +14,7 @@
 | 1 | [Planning Then Creating](01_planning-then-create.md) | Why specification-driven development matters more than ever with AI |
 | 2 | [The Feedback Loop](02_the-feedback-loop.md) | How to review, steer, and iterate — you as the architect, AI as the builder |
 | **3** | **[Live Build](03_live-build.md)** | **Build something real together, start to finish, applying the patterns** |
+| 4 | [Intent Engineering](04_intent-engineering.md) | Encoding purpose — so agents optimize for what you actually need |
 
 ### Glossary
 
@@ -235,5 +236,6 @@ This isn't a fad. It's a fundamental shift in how software gets built. And now y
 | Part 1 | Spec-driven development | Writing a planning doc |
 | Part 2 | The feedback loop | Diagnosing and correcting AI output |
 | Part 3 | The full pattern live | Building, reviewing, shipping |
+| Part 4 | Intent engineering | Writing intent blocks, auditing alignment, encoding values |
 
 The pattern is simple. The skill is in the execution. And the execution gets better every time you do it.
