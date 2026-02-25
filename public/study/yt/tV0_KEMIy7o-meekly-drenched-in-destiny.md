@@ -12,7 +12,7 @@
 **Duration:** ~34 minutes
 **YouTube:** https://www.youtube.com/watch?v=tV0_KEMIy7o (BYU Speeches channel posting)
 **BYU Speeches:** https://speeches.byu.edu/talks/neal-a-maxwell/meekly-drenched-destiny/
-**Transcript:** [yt/byu-speeches/tV0_KEMIy7o](../../yt/byu-speeches/tV0_KEMIy7o)
+**Transcript:** [yt/byu-speeches/tV0_KEMIy7o](https://www.youtube.com/watch?v=tV0_KEMIy7o)
 
 ---
 

@@ -8,8 +8,8 @@ Part of the [Morgan Philpot Study Plan](study_plans.md) — evaluating the 2025 
 
 ## Source Material
 
-**Slides:** 2–38 of [slides.md](../../../yt/morganphilpot/slides.md)
-**Transcript:** Part I ~0:00–28:00 of [transcript.md](../../../yt/signs-of-the-times/c98WG4NN48A/transcript.md)
+**Slides:** 2–38 of slides.md
+**Transcript:** Part I ~0:00–28:00 of [transcript.md](https://www.youtube.com/watch?v=c98WG4NN48A)
 **Video:** [Part I – YouTube](https://www.youtube.com/watch?v=c98WG4NN48A) (1:23:52 total; Phase 1 covers approximately the first third)
 
 ---

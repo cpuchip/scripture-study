@@ -22,24 +22,24 @@ Morgan Philpot's "Signs of the Times" presentations contain genuinely excellent 
 
 | Source | What We're Keeping | Original Evaluation |
 |--------|-------------------|-------------------|
-| Harvest framework | Leviticus 23 → agricultural seasons → dispensational phases | [01_foundation.md](../yt/morganphilpot/01_foundation.md) |
-| mō·w·'ă·ḏîm word study | Genesis 1:14 "seasons" = "appointed times" (same root as Lev 23 feasts) | [06_esdras.md](../yt/morganphilpot/06_esdras_and_appointed_times.md) |
-| JST Revelation 12 | Woman = Church; "in the likeness of things on the earth" = heavenly/earthly pattern | [04_revelation_12.md](../yt/morganphilpot/04_revelation_12.md) |
-| Storm vs. tempest | Webster 1828 distinction: political upheaval AND natural destruction in 3 Nephi 8 | [verbal_only #1](../yt/morganphilpot/verbal_only_evaluation.md) |
-| Zarahemla / hemlah / salt | Hebrew etymology connecting Zarahemla to Dead Sea / Salt Lake | [verbal_only #2](../yt/morganphilpot/verbal_only_evaluation.md) |
-| Ezekiel 17 Hebrew | kə·nā·'an = Canaan = "land of traffick" — Bible Dictionary confirms at Ezek 17:4 | [05_ezekiels_eagle.md](../yt/morganphilpot/05_ezekiels_eagle.md) |
-| 3 Nephi 8:5 creation week | "first month, fourth day" → day 4 of creation = sun created → Christ as light | [verbal_only #5](../yt/morganphilpot/verbal_only_evaluation.md) |
+| Harvest framework | Leviticus 23 → agricultural seasons → dispensational phases | 01_foundation.md |
+| mō·w·'ă·ḏîm word study | Genesis 1:14 "seasons" = "appointed times" (same root as Lev 23 feasts) | 06_esdras.md |
+| JST Revelation 12 | Woman = Church; "in the likeness of things on the earth" = heavenly/earthly pattern | 04_revelation_12.md |
+| Storm vs. tempest | Webster 1828 distinction: political upheaval AND natural destruction in 3 Nephi 8 | verbal_only #1 |
+| Zarahemla / hemlah / salt | Hebrew etymology connecting Zarahemla to Dead Sea / Salt Lake | verbal_only #2 |
+| Ezekiel 17 Hebrew | kə·nā·'an = Canaan = "land of traffick" — Bible Dictionary confirms at Ezek 17:4 | 05_ezekiels_eagle.md |
+| 3 Nephi 8:5 creation week | "first month, fourth day" → day 4 of creation = sun created → Christ as light | verbal_only #5 |
 | Come Follow Me election cycle | BoM studied every 4 years alongside US election seasons — by design? | Philpot + Bednar observation |
-| Hinckley's Joel 2 declaration | Oct 2001: "The vision of Joel has been fulfilled" | [06_esdras.md](../yt/morganphilpot/06_esdras_and_appointed_times.md) |
-| Temple sealing as Second Coming type | The sealing ordinance as a microcosm of the Lord's return | [01_foundation.md](../yt/morganphilpot/01_foundation.md) |
+| Hinckley's Joel 2 declaration | Oct 2001: "The vision of Joel has been fulfilled" | 06_esdras.md |
+| Temple sealing as Second Coming type | The sealing ordinance as a microcosm of the Lord's return | 01_foundation.md |
 
 ### Our Own Research to Integrate
 
 | Source | Topic | Where We Developed It |
 |--------|-------|----------------------|
-| D&C 107:53-57 footnotes | Adam-ondi-Ahman gathering — footnote chain reveals connections | [verbal_only deep-read](../yt/morganphilpot/verbal_only_evaluation.md) |
-| 3 Nephi 11:1-17 footnotes | Bountiful gathering pattern — every footnote followed | [verbal_only deep-read](../yt/morganphilpot/verbal_only_evaluation.md) |
-| Genesis 1:14-23 footnotes | Creation days with full footnote apparatus | [verbal_only deep-read](../yt/morganphilpot/verbal_only_evaluation.md) |
+| D&C 107:53-57 footnotes | Adam-ondi-Ahman gathering — footnote chain reveals connections | verbal_only deep-read |
+| 3 Nephi 11:1-17 footnotes | Bountiful gathering pattern — every footnote followed | verbal_only deep-read |
+| Genesis 1:14-23 footnotes | Creation days with full footnote apparatus | verbal_only deep-read |
 | Intelligence study | "Intelligence" in D&C 93, Abraham 3, and the nature of light/truth | [intelligence.md](../intelligence.md) |
 | Creation study | Spiritual vs. physical creation, Moses 3:5 pattern | [creation.md](../creation.md) |
 | "Receive" word study | What it means to "receive" Christ — Webster 1828 + scriptural usage | [receive.md](../receive.md) |
@@ -193,4 +193,4 @@ Morgan Philpot's "Signs of the Times" presentations contain genuinely excellent 
 ---
 
 *Plan created: 2026-02-08*
-*Source evaluations: [Morgan Philpot evaluation project](../yt/morganphilpot/README.md)*
+*Source evaluations: Morgan Philpot evaluation project*

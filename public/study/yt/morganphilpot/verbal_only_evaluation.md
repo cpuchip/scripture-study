@@ -13,9 +13,9 @@
 
 | Source | Location |
 |--------|----------|
-| Transcript Part I | [transcript.md](../../../yt/signs-of-the-times/c98WG4NN48A/transcript.md) |
-| Transcript Part II | [transcript.md](../../../yt/signs-of-the-times/89oEfk37E30/transcript.md) |
-| Transcript Part III | [transcript.md](../../../yt/signs-of-the-times/GtQRKMJdYh4/transcript.md) |
+| Transcript Part I | [transcript.md](https://www.youtube.com/watch?v=c98WG4NN48A) |
+| Transcript Part II | [transcript.md](https://www.youtube.com/watch?v=89oEfk37E30) |
+| Transcript Part III | [transcript.md](https://www.youtube.com/watch?v=GtQRKMJdYh4) |
 | Transcript Review Plan | [transcript_review_plan.md](transcript_review_plan.md) |
 
 ---

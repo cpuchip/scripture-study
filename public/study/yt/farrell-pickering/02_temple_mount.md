@@ -1,6 +1,6 @@
 # Phase 2: Temple Mount — Location, Archaeology & the Holy of Holies
 
-**Transcript:** [22:27–48:12](../../../yt/latter-day-media-come-follow-christ/iOrbeCzwR2g/transcript.md)
+**Transcript:** [22:27–48:12](https://www.youtube.com/watch?v=iOrbeCzwR2g)
 **Video:** [Farrell Pickering, 22:27–48:12](https://www.youtube.com/watch?v=iOrbeCzwR2g&t=1347)
 
 ---

@@ -11,7 +11,7 @@ A 5-phase AI-assisted evaluation of Farrell Pickering's 2-hour presentation "Tem
 | Source | Duration/Size |
 |--------|--------------|
 | [Full Video](https://www.youtube.com/watch?v=iOrbeCzwR2g) | 2:08:18 |
-| [Transcript](../../../yt/latter-day-media-come-follow-christ/iOrbeCzwR2g/transcript.md) | ~232 KB |
+| [Transcript](https://www.youtube.com/watch?v=iOrbeCzwR2g) | ~232 KB |
 
 ---
 

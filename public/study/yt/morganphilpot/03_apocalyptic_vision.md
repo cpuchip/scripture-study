@@ -11,8 +11,8 @@
 
 | Source | Location |
 |--------|----------|
-| Slides 93–120 | [slides.md](../../../yt/morganphilpot/slides.md) lines 1212–1560 |
-| Transcript Part I | [transcript.md](../../../yt/signs-of-the-times/c98WG4NN48A/transcript.md) |
+| Slides 93–120 | slides.md lines 1212–1560 |
+| Transcript Part I | [transcript.md](https://www.youtube.com/watch?v=c98WG4NN48A) |
 | Phase 1 Evaluation | [01_foundation.md](01_foundation.md) |
 | Phase 2 Evaluation | [02_signs_and_warnings.md](02_signs_and_warnings.md) |
 | Study Plan | [study_plans.md](study_plans.md) |

@@ -13,10 +13,10 @@
 
 | Source | Location |
 |--------|----------|
-| Slides 229–278 | [slides.md](../../../yt/morganphilpot/slides.md) lines 2814–3540 |
-| Timeline spreadsheet | [timeline.md](../../../yt/morganphilpot/timeline.md) |
-| Transcript Part II | [transcript.md](../../../yt/signs-of-the-times/89oEfk37E30/transcript.md) ~30:00–55:00 |
-| Transcript Part III | [transcript.md](../../../yt/signs-of-the-times/GtQRKMJdYh4/transcript.md) ~0:00–25:00 |
+| Slides 229–278 | slides.md lines 2814–3540 |
+| Timeline spreadsheet | timeline.md |
+| Transcript Part II | [transcript.md](https://www.youtube.com/watch?v=89oEfk37E30) ~30:00–55:00 |
+| Transcript Part III | [transcript.md](https://www.youtube.com/watch?v=GtQRKMJdYh4) ~0:00–25:00 |
 | D&C 88:87–95 | [D&C 88](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/88?lang=eng) |
 | D&C 89:1–4 | [D&C 89](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/89?lang=eng) |
 | Revelation 18 | [Revelation 18](https://www.churchofjesuschrist.org/study/scriptures/nt/rev/18?lang=eng) |
@@ -53,7 +53,7 @@ This phase weaves together three threads:
 
 1. **9/11 as type of Revelation 18** — The September 11 attacks as a prophetic "type and sign" fulfilling the Babylon-destruction imagery of [Revelation 18](https://www.churchofjesuschrist.org/study/scriptures/nt/rev/18?lang=eng): "in one hour" (v. 10, 17, 19), merchants weeping (v. 11), ships watching from afar (v. 17–18), the "twofold" judgment (v. 6, Greek *diplōsate*/*dipla* → two towers).
 
-2. **The year-by-year timeline** — A 130-row spreadsheet ([timeline.md](../../../yt/morganphilpot/timeline.md)) mapping every year from the Reign of Judges (91 BC / 1909) through the new reckoning from Christ's sign (1 AD / 2000) to the great destruction (34 AD / 2033). Key anchor points: Gadianton robbers on mountains ([3 Nephi 1:27](https://www.churchofjesuschrist.org/study/scriptures/bofm/3-ne/1?lang=eng&id=p27#p27) / 2001), people forget signs ([3 Nephi 2:1](https://www.churchofjesuschrist.org/study/scriptures/bofm/3-ne/2?lang=eng&id=p1#p1) / ~2004), Giddianhi's epistle ([3 Nephi 3:1](https://www.churchofjesuschrist.org/study/scriptures/bofm/3-ne/3?lang=eng&id=p1#p1) / ~2016–17), siege ([3 Nephi 4](https://www.churchofjesuschrist.org/study/scriptures/bofm/3-ne/4?lang=eng) / COVID 2020), Lachoneus era ([3 Nephi 6](https://www.churchofjesuschrist.org/study/scriptures/bofm/3-ne/6?lang=eng) / 2025), and Christ's destruction/appearance (3 Nephi 8–11 / 2033).
+2. **The year-by-year timeline** — A 130-row spreadsheet (timeline.md) mapping every year from the Reign of Judges (91 BC / 1909) through the new reckoning from Christ's sign (1 AD / 2000) to the great destruction (34 AD / 2033). Key anchor points: Gadianton robbers on mountains ([3 Nephi 1:27](https://www.churchofjesuschrist.org/study/scriptures/bofm/3-ne/1?lang=eng&id=p27#p27) / 2001), people forget signs ([3 Nephi 2:1](https://www.churchofjesuschrist.org/study/scriptures/bofm/3-ne/2?lang=eng&id=p1#p1) / ~2004), Giddianhi's epistle ([3 Nephi 3:1](https://www.churchofjesuschrist.org/study/scriptures/bofm/3-ne/3?lang=eng&id=p1#p1) / ~2016–17), siege ([3 Nephi 4](https://www.churchofjesuschrist.org/study/scriptures/bofm/3-ne/4?lang=eng) / COVID 2020), Lachoneus era ([3 Nephi 6](https://www.churchofjesuschrist.org/study/scriptures/bofm/3-ne/6?lang=eng) / 2025), and Christ's destruction/appearance (3 Nephi 8–11 / 2033).
 
 3. **Pharmakeia and sorcery** — [Revelation 18:23](https://www.churchofjesuschrist.org/study/scriptures/nt/rev/18?lang=eng&id=p23#p23): "by thy *sorceries* were all nations deceived." The Greek word is φαρμακεία (*pharmakeia*, Strong's 5331), the root of "pharmacy/pharmaceutical." Philpot connects this to [D&C 89:4](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/89?lang=eng&id=p4#p4) — "evils and designs which do and will exist in the hearts of conspiring men in the last days" — and to [Isaiah 8:19](https://www.churchofjesuschrist.org/study/scriptures/ot/isa/8?lang=eng&id=p19#p19) — "wizards that peep, and that mutter" — arguing that the modern pharmaceutical industry is the literal fulfillment of Babylon's "sorceries." The Webster 1828 definition of "sorcery" bridges the historical-linguistic gap: "Divination by the assistance, or supposed assistance, of evil spirits."
 
@@ -127,7 +127,7 @@ This phase weaves together three threads:
 - [x] [Nelson, "Confidence in the Presence of God" (Apr 2025)](https://www.churchofjesuschrist.org/study/general-conference/2025/04/57nelson?lang=eng) — "the Lord is prompting me to urge us to get ready for that 'great and dreadful day'"
 - [x] [Monson, "Principles and Promises" (Oct 2016)](https://www.churchofjesuschrist.org/study/general-conference/2016/10/principles-and-promises?lang=eng) — Word of Wisdom physical blessings (D&C 89:18–21), does NOT quote D&C 89:4
 - [x] Webster 1828 "sorcery" — "Divination by the assistance, or supposed assistance, of evil spirits"
-- [x] Timeline spreadsheet ([timeline.md](../../../yt/morganphilpot/timeline.md)) — full 130-row mapping
+- [x] Timeline spreadsheet (timeline.md) — full 130-row mapping
 - [x] [Mazzaroth studies](../../mazzaroth.md) — independent verification of mōʿăḏîm word study and April/May 2000 alignment (confirmed peak was May 5, not April 6)
 
 ---

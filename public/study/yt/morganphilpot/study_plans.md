@@ -10,18 +10,18 @@ A 9-phase study of Morgan Philpot's 3-hour presentation "2025 Chandler Presentat
 
 | Source | Size | Local Path |
 |--------|------|------------|
-| Slides (369 total) | 130 KB | [slides.md](../../../yt/morganphilpot/slides.md) |
-| BoM-Modern Timeline | 13 KB | [timeline.md](../../../yt/morganphilpot/timeline.md) |
-| Part I transcript (1:24) | 68 KB | [transcript.md](../../../yt/signs-of-the-times/c98WG4NN48A/transcript.md) |
-| Part II transcript (1:11) | 54 KB | [transcript.md](../../../yt/signs-of-the-times/89oEfk37E30/transcript.md) |
-| Part III transcript (1:00) | 46 KB | [transcript.md](../../../yt/signs-of-the-times/GtQRKMJdYh4/transcript.md) |
+| Slides (369 total) | 130 KB | slides.md |
+| BoM-Modern Timeline | 13 KB | timeline.md |
+| Part I transcript (1:24) | 68 KB | [transcript.md](https://www.youtube.com/watch?v=c98WG4NN48A) |
+| Part II transcript (1:11) | 54 KB | [transcript.md](https://www.youtube.com/watch?v=89oEfk37E30) |
+| Part III transcript (1:00) | 46 KB | [transcript.md](https://www.youtube.com/watch?v=GtQRKMJdYh4) |
 | **Total** | **~311 KB** | |
 
 **Videos:**
 - Part I: [YouTube](https://www.youtube.com/watch?v=c98WG4NN48A) — 1:23:52
 - Part II: [YouTube](https://www.youtube.com/watch?v=89oEfk37E30) — 1:11:06
 - Part III: [YouTube](https://www.youtube.com/watch?v=GtQRKMJdYh4) — 1:00:02
-- [Links & Resources](../../../yt/morganphilpot/links.md)
+- Links & Resources
 
 ---
 
@@ -264,7 +264,7 @@ The user wisely flagged that this presentation will brush against AI training bi
 - 3 Nephi 23:1-3 (Christ commands to search Isaiah)
 
 **Key Timeline References:**
-- [timeline.md](../../../yt/morganphilpot/timeline.md) years 92–118
+- timeline.md years 92–118
 
 **Evaluation Focus:** This is the core interpretive claim — that the Book of Mormon's Nephite timeline from the sign of Christ's birth maps year-by-year to events starting in 2000. Is the pattern genuine or cherry-picked? Do the 3 Nephi descriptions genuinely match modern events, or is this confirmation bias? The pharmakeia word study is straightforward Greek — verify the Strong's number and usage.
 

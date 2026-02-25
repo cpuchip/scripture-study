@@ -13,8 +13,8 @@
 
 | Source | Location |
 |--------|----------|
-| Slides 356–369 | [slides.md](../../../yt/morganphilpot/slides.md) lines 4547–4757 |
-| Transcript Part III | [transcript.md](../../../yt/signs-of-the-times/GtQRKMJdYh4/transcript.md) |
+| Slides 356–369 | slides.md lines 4547–4757 |
+| Transcript Part III | [transcript.md](https://www.youtube.com/watch?v=GtQRKMJdYh4) |
 | Genesis 1:14–16 | [Genesis 1](https://www.churchofjesuschrist.org/study/scriptures/ot/gen/1?lang=eng) |
 | Numbers 24:17 | [Numbers 24](https://www.churchofjesuschrist.org/study/scriptures/ot/num/24?lang=eng) |
 | Isaiah 13:6–13 | [Isaiah 13](https://www.churchofjesuschrist.org/study/scriptures/ot/isa/13?lang=eng) |

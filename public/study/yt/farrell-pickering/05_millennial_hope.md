@@ -1,6 +1,6 @@
 # Phase 5: The Millennial Hope & Closing
 
-**Transcript:** [1:51:00–2:08:18](../../../yt/latter-day-media-come-follow-christ/iOrbeCzwR2g/transcript.md)
+**Transcript:** [1:51:00–2:08:18](https://www.youtube.com/watch?v=iOrbeCzwR2g)
 **Video:** [Farrell Pickering, 1:51:00–2:08:18](https://www.youtube.com/watch?v=iOrbeCzwR2g&t=6660)
 
 ---

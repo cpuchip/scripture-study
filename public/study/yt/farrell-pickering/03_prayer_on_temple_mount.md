@@ -1,6 +1,6 @@
 # Phase 3: Ben Gvir, Jewish Prayer & the 2,300-Day Start
 
-**Transcript:** [48:12–1:24:00](../../../yt/latter-day-media-come-follow-christ/iOrbeCzwR2g/transcript.md)
+**Transcript:** [48:12–1:24:00](https://www.youtube.com/watch?v=iOrbeCzwR2g)
 **Video:** [Farrell Pickering, 48:12–1:24:00](https://www.youtube.com/watch?v=iOrbeCzwR2g&t=2892)
 
 ---
