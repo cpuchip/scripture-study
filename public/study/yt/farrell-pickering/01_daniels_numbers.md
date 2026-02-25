@@ -1,6 +1,6 @@
 # Phase 1: Daniel's Numbers & the 2,300-Day Framework
 
-**Transcript:** [0:00–22:27](../../../yt/latter-day-media-come-follow-christ/iOrbeCzwR2g/transcript.md)
+**Transcript:** [0:00–22:27](https://www.youtube.com/watch?v=iOrbeCzwR2g)
 **Video:** [Farrell Pickering, 0:00–22:27](https://www.youtube.com/watch?v=iOrbeCzwR2g&t=0)
 
 ---

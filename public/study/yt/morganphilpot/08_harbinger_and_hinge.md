@@ -13,9 +13,9 @@
 
 | Source | Location |
 |--------|----------|
-| Slides 269–355 | [slides.md](../../../yt/morganphilpot/slides.md) lines 3533–4500 |
-| Transcript Part II | [transcript.md](../../../yt/signs-of-the-times/89oEfk37E30/transcript.md) ~55:00–1:11:00 |
-| Transcript Part III | [transcript.md](../../../yt/signs-of-the-times/GtQRKMJdYh4/transcript.md) ~0:00–25:00 |
+| Slides 269–355 | slides.md lines 3533–4500 |
+| Transcript Part II | [transcript.md](https://www.youtube.com/watch?v=89oEfk37E30) ~55:00–1:11:00 |
+| Transcript Part III | [transcript.md](https://www.youtube.com/watch?v=GtQRKMJdYh4) ~0:00–25:00 |
 | Isaiah 9 | [Isaiah 9](https://www.churchofjesuschrist.org/study/scriptures/ot/isa/9?lang=eng) |
 | Isaiah 10 | [Isaiah 10](https://www.churchofjesuschrist.org/study/scriptures/ot/isa/10?lang=eng) |
 | Deuteronomy 34:3 | [Deuteronomy 34](https://www.churchofjesuschrist.org/study/scriptures/ot/deut/34?lang=eng) |

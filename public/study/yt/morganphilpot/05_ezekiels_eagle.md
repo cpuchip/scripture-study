@@ -13,8 +13,8 @@
 
 | Source | Location |
 |--------|----------|
-| Slides 149–186 | [slides.md](../../../yt/morganphilpot/slides.md) lines 1870–2305 |
-| Transcript Part I | [transcript.md](../../../yt/signs-of-the-times/c98WG4NN48A/transcript.md) lines 38–46 |
+| Slides 149–186 | slides.md lines 1870–2305 |
+| Transcript Part I | [transcript.md](https://www.youtube.com/watch?v=c98WG4NN48A) lines 38–46 |
 | Phase 4 Evaluation | [04_revelation_12.md](04_revelation_12.md) |
 | Study Plan | [study_plans.md](study_plans.md) |
 

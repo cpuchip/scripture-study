@@ -33,3 +33,6 @@ scripts/yt-mcp/yt-mcp.exe~
 becoming-mcp.log
 becoming.db*
 scripts/becoming/becoming.exe
+
+# External things like github repos to ignore
+external_context/

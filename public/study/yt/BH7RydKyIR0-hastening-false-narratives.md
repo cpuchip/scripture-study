@@ -11,7 +11,7 @@
 **Date:** January 29, 2026
 **Duration:** 20:08
 **URL:** [https://www.youtube.com/watch?v=BH7RydKyIR0](https://www.youtube.com/watch?v=BH7RydKyIR0)
-**Transcript:** [yt/anticipating-christs-return/BH7RydKyIR0/transcript.txt](../../yt/anticipating-christs-return/BH7RydKyIR0/transcript.txt)
+**Transcript:** [yt/anticipating-christs-return/BH7RydKyIR0/transcript.txt](https://www.youtube.com/watch?v=BH7RydKyIR0)
 **Primary Source:** [Church News article — Elder Rasband MTC Devotional, January 2026](https://www.thechurchnews.com/leaders/2026/1/28/elder-rasband-mtc-devotional-hastening-work-false-narratives/index.html)
 
 ---

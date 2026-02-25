@@ -13,8 +13,8 @@
 
 | Source | Location |
 |--------|----------|
-| Slides 187–228 | [slides.md](../../../yt/morganphilpot/slides.md) lines 2306–2814 |
-| Transcript Part II | [transcript.md](../../../yt/signs-of-the-times/89oEfk37E30/transcript.md) ~0:00–49:00 |
+| Slides 187–228 | slides.md lines 2306–2814 |
+| Transcript Part II | [transcript.md](https://www.youtube.com/watch?v=89oEfk37E30) ~0:00–49:00 |
 | D&C 91 | [D&C 91](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/91?lang=eng) |
 | BD Apocrypha | [BD Apocrypha](https://www.churchofjesuschrist.org/study/scriptures/bd/apocrypha?lang=eng) |
 | JSH 1:36–41 | [JSH 1](https://www.churchofjesuschrist.org/study/scriptures/pgp/js-h/1?lang=eng) |

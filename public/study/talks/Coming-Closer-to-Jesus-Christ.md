@@ -1,7 +1,7 @@
 # Study: Coming Closer to Jesus Christ — President Dallin H. Oaks
 
 *Study started: February 15, 2026*
-*Transcript: [BYU Speeches](Coming-Closer-to-Jesus-Christ_transcript.md) | [YouTube](../../yt/the-church-of-jesus-christ-of-latter-day-saints/bn_PsLrWyxM/transcript.md)*
+*Transcript: [BYU Speeches](Coming-Closer-to-Jesus-Christ_transcript.md) | [YouTube](https://www.youtube.com/watch?v=bn_PsLrWyxM)*
 *Related: [Truth, Light, Spirit, Matter, and Law](../truth.md) | [The Atonement and the Mechanics of Existence](../truth-atonement.md) | [Modern Prophets on Truth](../truth-modern-prophets.md) | [Faith (Part 1)](../faith-01.md) | [Ten Virgins Parable](../ten-virgins-parable.md)*
 
 > "Whatever those doubts, the way to overcome them is to get closer to our Savior Jesus Christ. Again and again, He has taught us that He is the way."

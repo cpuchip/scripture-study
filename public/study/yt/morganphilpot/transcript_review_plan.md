@@ -8,7 +8,7 @@ A systematic re-review of all three video transcripts against the nine completed
 
 ## Why This Review
 
-The nine phase evaluations were written primarily from the **slides** ([slides.md](../../../yt/morganphilpot/slides.md)) with supporting transcript reads. But slides are scaffolding — the real argument lives in what Philpot *says*. A presenter of his caliber will:
+The nine phase evaluations were written primarily from the **slides** (slides.md) with supporting transcript reads. But slides are scaffolding — the real argument lives in what Philpot *says*. A presenter of his caliber will:
 
 - Explain nuances that aren't on the slide
 - Tell stories and anecdotes that illustrate his points
@@ -24,10 +24,10 @@ This review ensures we didn't miss anything that changes an evaluation — "In L
 
 | Source | Local Path | Size |
 |--------|-----------|------|
-| Part I transcript (1:24) | [transcript.md](../../../yt/signs-of-the-times/c98WG4NN48A/transcript.md) | 68 KB |
-| Part II transcript (1:11) | [transcript.md](../../../yt/signs-of-the-times/89oEfk37E30/transcript.md) | 54 KB |
-| Part III transcript (1:00) | [transcript.md](../../../yt/signs-of-the-times/GtQRKMJdYh4/transcript.md) | 46 KB |
-| Slides | [slides.md](../../../yt/morganphilpot/slides.md) | 130 KB |
+| Part I transcript (1:24) | [transcript.md](https://www.youtube.com/watch?v=c98WG4NN48A) | 68 KB |
+| Part II transcript (1:11) | [transcript.md](https://www.youtube.com/watch?v=89oEfk37E30) | 54 KB |
+| Part III transcript (1:00) | [transcript.md](https://www.youtube.com/watch?v=GtQRKMJdYh4) | 46 KB |
+| Slides | slides.md | 130 KB |
 | **Total transcript** | | **~168 KB** |
 
 **Videos:**

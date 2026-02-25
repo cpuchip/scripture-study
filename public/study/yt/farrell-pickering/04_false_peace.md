@@ -1,6 +1,6 @@
 # Phase 4: Daniel 9:27, Trump as Cyrus & False Peace
 
-**Transcript:** [1:24:00–1:51:00](../../../yt/latter-day-media-come-follow-christ/iOrbeCzwR2g/transcript.md)
+**Transcript:** [1:24:00–1:51:00](https://www.youtube.com/watch?v=iOrbeCzwR2g)
 **Video:** [Farrell Pickering, 1:24:00–1:51:00](https://www.youtube.com/watch?v=iOrbeCzwR2g&t=5040)
 
 ---

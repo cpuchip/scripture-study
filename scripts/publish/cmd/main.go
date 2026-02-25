@@ -52,6 +52,9 @@ var versePattern = regexp.MustCompile(`(?i)(\d+\s+)?([A-Za-z&\-]+)\s+(\d+):(\d+)
 // verseAbbrPattern matches abbreviated verse references like "v. 44", "v. 50", "vv. 1-3", "verse 12"
 var verseAbbrPattern = regexp.MustCompile(`(?i)(?:vv?\.|verses?)\s*(\d+)(?:\s*[–\-]\s*(\d+))?`)
 
+// ytVideoIDPattern matches an 11-character YouTube video ID directory segment
+var ytVideoIDPattern = regexp.MustCompile(`(?:^|[\\/])([A-Za-z0-9_-]{11})(?:[\\/]|$)`)
+
 func main() {
 	flag.Parse()
 
@@ -257,6 +260,15 @@ func convertLink(match, sourceDir string) (string, bool) {
 		return match, false
 	}
 
+	// Check if this is a yt/ link (YouTube transcripts — not checked into git)
+	if strings.Contains(linkPath, "/yt/") || strings.Contains(linkPath, "\\yt\\") || strings.HasPrefix(linkPath, "yt/") {
+		ytURL := convertYTLink(linkPath, linkText, sourceDir)
+		if ytURL != "" {
+			return ytURL, true
+		}
+		return match, false
+	}
+
 	// Check if this is a gospel-library link
 	if !strings.Contains(linkPath, "gospel-library") {
 		return match, false
@@ -424,6 +436,34 @@ func convertLectureOnFaithURL(absPath, originalPath string) string {
 	}
 
 	return url
+}
+
+// convertYTLink handles links to the yt/ directory (YouTube transcripts).
+// If a YouTube video ID can be extracted from the path, rewrites to a YouTube URL.
+// Otherwise strips the link to plain text (auxiliary files like slides.md).
+func convertYTLink(linkPath, linkText, sourceDir string) string {
+	// Resolve to absolute so regex can work on a clean path
+	var absPath string
+	if filepath.IsAbs(linkPath) {
+		absPath = linkPath
+	} else {
+		absPath = filepath.Join(sourceDir, linkPath)
+	}
+	absPath = filepath.Clean(absPath)
+
+	// Normalize separators for consistent matching
+	normalized := strings.ReplaceAll(absPath, "\\", "/")
+
+	// Try to extract a YouTube video ID from the path
+	matches := ytVideoIDPattern.FindStringSubmatch(normalized)
+	if len(matches) >= 2 {
+		videoID := matches[1]
+		return fmt.Sprintf("[%s](https://www.youtube.com/watch?v=%s)", linkText, videoID)
+	}
+
+	// No video ID found — auxiliary file (e.g., morganphilpot/slides.md).
+	// Strip to plain text since the file won't exist publicly.
+	return linkText
 }
 
 // isLocalMediaLink checks if a link points to a local media file (.pdf, .mp3)

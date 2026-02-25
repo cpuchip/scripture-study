@@ -13,7 +13,7 @@
 
 | Source | Location |
 |--------|----------|
-| Transcript Part I | [transcript.md](../../../yt/signs-of-the-times/c98WG4NN48A/transcript.md) |
+| Transcript Part I | [transcript.md](https://www.youtube.com/watch?v=c98WG4NN48A) |
 | Phase 5 (Slides) | [05_ezekiels_eagle.md](05_ezekiels_eagle.md) |
 | Phase 4 Evaluation | [04_revelation_12.md](04_revelation_12.md) |
 
