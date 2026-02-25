@@ -2,7 +2,7 @@
 
 **Date:** 2026-02-24
 **Status:** Active
-**Related:** [docs/work-with-ai/04_intent-engineering.md](work-with-ai/04_intent-engineering.md)
+**Related:** [docs/work-with-ai/04_intent-engineering-gospel.md](work-with-ai/04_intent-engineering-gospel.md)
 **Video:** [Nate B Jones — "Prompt Engineering Is Dead. Context Engineering Is Dying."](https://www.youtube.com/watch?v=QWzLPn164w0)
 **Tool Under Evaluation:** [TPG](../external_context/tpg/README.md) — issue tracker for AI agents
 
@@ -457,7 +457,8 @@ This is exactly intent → spec → build → review → become. Alma 32 is an i
 ## Implementation Priorities
 
 ### Now (This Week)
-1. ✅ Create [docs/work-with-ai/04_intent-engineering.md](work-with-ai/04_intent-engineering.md) — the discovery document
+1. ✅ Create [docs/work-with-ai/04_intent-engineering-gospel.md](work-with-ai/04_intent-engineering-gospel.md) — the gospel discovery document
+   ✅ Create [docs/work-with-ai/04_intent-engineering.md](work-with-ai/04_intent-engineering.md) — the secular version
 2. ✅ Create this development plan
 3. Create `docs/INDEX.md` — initial document registry
 4. Add frontmatter to key active documents (5-10 most referenced)
@@ -524,7 +525,8 @@ This is exactly intent → spec → build → review → become. Alma 32 is an i
 - [Alma 32:27-43](../gospel-library/eng/scriptures/bofm/alma/32.md) — Experiment upon the word — scenario building
 
 ### Internal Documents
-- [docs/work-with-ai/04_intent-engineering.md](work-with-ai/04_intent-engineering.md) — The discovery document
+- [docs/work-with-ai/04_intent-engineering-gospel.md](work-with-ai/04_intent-engineering-gospel.md) — The gospel discovery document
+- [docs/work-with-ai/04_intent-engineering.md](work-with-ai/04_intent-engineering.md) — The secular version
 - [docs/work-with-ai/01_planning-then-create-gospel.md](work-with-ai/01_planning-then-create-gospel.md) — Part 1: The Creation Pattern
 - [docs/work-with-ai/02_watching-until-they-obey-gospel.md](work-with-ai/02_watching-until-they-obey-gospel.md) — Part 2: The Feedback Loop
 - [docs/work-with-ai/03_intelligence-cleaveth-gospel.md](work-with-ai/03_intelligence-cleaveth-gospel.md) — Part 3: Intelligence Cleaveth

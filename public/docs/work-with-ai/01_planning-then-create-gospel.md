@@ -1,6 +1,6 @@
 # The Creation Pattern: Working with AI as God Works with Intelligence
 
-**Series:** AI and the Creation Pattern — Part 1 of 3
+**Series:** AI and the Creation Pattern — Part 1 of 4
 **Duration:** 30 minutes
 **Audience:** Gospel-centered / YouTube
 **Date:** February 2026
@@ -14,6 +14,7 @@
 | **1** | **[The Creation Pattern](01_planning-then-create-gospel.md)** | **Abraham 4–5 as the blueprint for human-AI collaboration** |
 | 2 | [Watching Until They Obey](02_watching-until-they-obey-gospel.md) | The feedback loop — reviewing, steering, and the role of agency |
 | 3 | [Intelligence Cleaveth Unto Intelligence](03_intelligence-cleaveth-gospel.md) | How the quality of your engagement shapes the quality of the output |
+| 4 | [Intent Engineering](04_intent-engineering-gospel.md) | What the agent needs to *want* — purpose as infrastructure |
 
 ### Glossary
 

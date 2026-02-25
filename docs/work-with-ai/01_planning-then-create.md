@@ -1,6 +1,6 @@
 # Planning Then Creating: How to Work with AI Effectively
 
-**Series:** Working with AI — Part 1 of 3
+**Series:** Working with AI — Part 1 of 4
 **Duration:** 30 minutes
 **Audience:** Software engineers adopting AI-assisted development (VS Code + GitHub Copilot / Cursor)
 **Date:** February 2026
@@ -14,6 +14,7 @@
 | **1** | **[Planning Then Creating](01_planning-then-create.md)** | **Why specification-driven development matters more than ever with AI** |
 | 2 | [The Feedback Loop](02_the-feedback-loop.md) | How to review, steer, and iterate — you as the architect, AI as the builder |
 | 3 | [Live Build](03_live-build.md) | Build something real together, start to finish, applying the patterns |
+| 4 | [Intent Engineering](04_intent-engineering.md) | Encoding purpose — so agents optimize for what you actually need |
 
 ### Glossary
 
@@ -252,3 +253,4 @@ Don't write any code. Bring the doc to the next session.
 ### Series Roadmap
 - **Part 2: The Feedback Loop** — reviewing, steering, iterating. How to handle drift, hallucinations, and getting stuck.
 - **Part 3: Live Build** — pick a project from someone's homework, build it together live using the full pattern.
+- **Part 4: Intent Engineering** — encoding purpose, values, and trade-offs so agents optimize for what you actually need.
