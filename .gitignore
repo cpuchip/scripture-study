@@ -26,6 +26,7 @@ scripts/publish/publish.exe
 scripts/yt-mcp/yt-mcp
 scripts/yt-mcp/yt-mcp.exe
 scripts/yt-mcp/yt-mcp.exe~
+tpg.exe
 
 .playwright-mcp/
 
