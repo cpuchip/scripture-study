@@ -23,6 +23,7 @@ This directory is a structured exploration of how the software industry is conve
 | [03_beyond-intent.md](03_beyond-intent.md) | Gospel patterns beyond intent engineering — what nobody else is thinking about |
 | [04_synthesis.md](04_synthesis.md) | Synthesis: what to build, what exists, what's missing, where to go |
 | [05_scope-assessment.md](05_scope-assessment.md) | How big is this? Mapping the movement from niche to mainstream — and where our contribution sits |
+| [covenant.md](covenant.md) | Deep scripture study on the covenant *mechanism* — cutting, binding, tokens, progressive trust — and how to form a covenant with an AI agent |
 
 ---
 
