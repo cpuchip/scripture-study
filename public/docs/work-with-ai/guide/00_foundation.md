@@ -124,12 +124,12 @@ Our challenge:
 
 The industry is rediscovering principles God established long ago:
 
-- **Specification-driven development** ([Abraham 4–5](../../../gospel-library/eng/scriptures/pgp/abr/4.md)) — spiritual creation before temporal, blueprint before building
-- **Context engineering** ([Isaiah 28:10](../../../gospel-library/eng/scriptures/ot/isa/28.md)) — "line upon line, precept upon precept" — progressive context disclosure
-- **Intent engineering** ([Moses 1:39](../../../gospel-library/eng/scriptures/pgp/moses/1.md)) — "This is my work and my glory" — purpose encoded at the top of everything
-- **Agent governance** ([D&C 121:41–42](../../../gospel-library/eng/scriptures/dc-testament/dc/121.md)) — "by persuasion, by long-suffering, by gentleness and meekness, and by love unfeigned" — not by compulsion
-- **Progressive trust** ([Matthew 25:21](../../../gospel-library/eng/scriptures/nt/matt/25.md)) — "thou hast been faithful over a few things, I will make thee ruler over many things" — stewardship earned through demonstrated reliability
-- **Error recovery** ([D&C 82:7](../../../gospel-library/eng/scriptures/dc-testament/dc/82.md)) — not mechanical retry, but redemptive recovery that captures learning
+- **Specification-driven development** ([Abraham 4–5](https://www.churchofjesuschrist.org/study/scriptures/pgp/abr/4?lang=eng)) — spiritual creation before temporal, blueprint before building
+- **Context engineering** ([Isaiah 28:10](https://www.churchofjesuschrist.org/study/scriptures/ot/isa/28?lang=eng&id=p10#p10)) — "line upon line, precept upon precept" — progressive context disclosure
+- **Intent engineering** ([Moses 1:39](https://www.churchofjesuschrist.org/study/scriptures/pgp/moses/1?lang=eng&id=p39#p39)) — "This is my work and my glory" — purpose encoded at the top of everything
+- **Agent governance** ([D&C 121:41–42](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/121?lang=eng&id=p41-p42#p41)) — "by persuasion, by long-suffering, by gentleness and meekness, and by love unfeigned" — not by compulsion
+- **Progressive trust** ([Matthew 25:21](https://www.churchofjesuschrist.org/study/scriptures/nt/matt/25?lang=eng&id=p21#p21)) — "thou hast been faithful over a few things, I will make thee ruler over many things" — stewardship earned through demonstrated reliability
+- **Error recovery** ([D&C 82:7](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/82?lang=eng&id=p7#p7)) — not mechanical retry, but redemptive recovery that captures learning
 
 These aren't forced analogies. These are patterns from a Being who has operated an infinitely complex multi-agent system — the Plan of Salvation — for longer than we can comprehend. And He's handed us the documentation.
 

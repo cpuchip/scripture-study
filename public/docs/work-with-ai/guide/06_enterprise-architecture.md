@@ -26,7 +26,7 @@ The Church already solved this.
 
 ## The Fractal Hierarchy
 
-From the [General Handbook, Chapter 5](../../../gospel-library/eng/manual/general-handbook/5-general-and-area-leadership.md):
+From the [General Handbook, Chapter 5](https://www.churchofjesuschrist.org/study/manual/general-handbook/5-general-and-area-leadership?lang=eng):
 
 > "Jesus Christ leads His Church through revelation to the President of the Church, who is the prophet, seer, and revelator... Under the direction of the First Presidency, the Quorum of the Twelve Apostles deliberates on and oversees matters of the Church worldwide."
 
@@ -72,7 +72,7 @@ Intent flows *down.* Accountability flows *up.* Decisions happen *locally.* Each
 
 ## The Ward Model in Detail
 
-From the [General Handbook, Chapter 29](../../../gospel-library/eng/manual/general-handbook/29-meetings-in-the-church.md):
+From the [General Handbook, Chapter 29](https://www.churchofjesuschrist.org/study/manual/general-handbook/29-meetings-in-the-church?lang=eng):
 
 Ward Council participants:
 - Bishop (presides)
@@ -201,7 +201,7 @@ Engineering Director (Stake President)
 
 **Church parallel:** A stake. Multiple wards, each autonomous, all sharing the same stake president's direction. Stake conferences align everyone. The high council provides cross-ward perspective. Each ward retains its own character while inheriting stake-level intent.
 
-From the [General Handbook, Chapter 6](../../../gospel-library/eng/manual/general-handbook/6-stake-leadership.md):
+From the [General Handbook, Chapter 6](https://www.churchofjesuschrist.org/study/manual/general-handbook/6-stake-leadership?lang=eng):
 
 > "The stake president has four main responsibilities: He is the presiding high priest in the stake. He leads the work of salvation and exaltation... He leads the stake council... He coordinates the work across organizations and wards."
 
@@ -224,7 +224,7 @@ CTO / VP Engineering (Area Presidency)
 **Church parallel:** Area or general leadership. The coordinating council:
 
 > "Stake and mission presidents who are members of the [coordinating] council seek counsel from the Area Seventy about matters that cannot be resolved in stake or mission councils."
-> — [General Handbook 29.4](../../../gospel-library/eng/manual/general-handbook/29-meetings-in-the-church.md)
+> — [General Handbook 29.4](https://www.churchofjesuschrist.org/study/manual/general-handbook/29-meetings-in-the-church?lang=eng)
 
 This is the escalation architecture. Problems that can't be resolved at the team level go to the department. Department-level issues go to the VP. The escalation path is clear, the authority at each level is defined, and most decisions happen *locally* without ever reaching the top.
 
@@ -304,7 +304,7 @@ If a feature-level decision conflicts with company values (a dark pattern that r
 
 ## The Coordinating Council Pattern
 
-From [General Handbook 29.4](../../../gospel-library/eng/manual/general-handbook/29-meetings-in-the-church.md):
+From [General Handbook 29.4](https://www.churchofjesuschrist.org/study/manual/general-handbook/29-meetings-in-the-church?lang=eng):
 
 > "All who attend counsel together as equal participants."
 
@@ -511,7 +511,7 @@ Now we can answer it:
 11. **Align toward unity** — one heart, one mind (Zion)
 
 > "Whatever principle of intelligence we attain unto in this life, it will rise with us in the resurrection."
-> — [D&C 130:18](../../../gospel-library/eng/scriptures/dc-testament/dc/130.md)
+> — [D&C 130:18](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/130?lang=eng&id=p18#p18)
 
 The principles are eternal. The tools are temporal. Learn the principles. Apply them to whatever tools are at hand — whether that's a typewriter, a computer, or a fleet of autonomous AI agents.
 

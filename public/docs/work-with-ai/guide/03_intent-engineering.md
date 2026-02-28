@@ -93,7 +93,7 @@ Without a values hierarchy, the agent makes arbitrary trade-off decisions — or
 This is D&C 121 governance in practice:
 
 > "No power or influence can or ought to be maintained by virtue of the priesthood, only by persuasion, by long-suffering, by gentleness and meekness, and by love unfeigned."
-> — [D&C 121:41](../../../gospel-library/eng/scriptures/dc-testament/dc/121.md)
+> — [D&C 121:41](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/121?lang=eng&id=p41#p41)
 
 The Lord doesn't just say "be good." He provides a *hierarchy* of how to exercise authority — persuasion first, then long-suffering, then gentleness. It's ordered. When you can't do all of them simultaneously, the earlier ones take priority.
 
@@ -130,7 +130,7 @@ Decision boundaries transform an unmanageable "check everything" workflow into a
 This maps to the Church's structure of priesthood keys — defined jurisdiction with clear escalation:
 
 > "Priesthood keys are the authority to direct the use of the priesthood on behalf of God's children. The use of all priesthood authority in the Church is directed by those who hold priesthood keys."
-> — [General Handbook 3.4.1](../../../gospel-library/eng/manual/general-handbook/3-priesthood-principles.md)
+> — [General Handbook 3.4.1](https://www.churchofjesuschrist.org/study/manual/general-handbook/3-priesthood-principles?lang=eng)
 
 A bishop has keys for his ward. The stake president has keys for the stake. When an issue exceeds a bishop's jurisdiction, it escalates to the stake president. When it exceeds the stake president's jurisdiction, it escalates to the Area Presidency. Clear boundaries, clear escalation, nobody overstepping their domain.
 
@@ -185,7 +185,7 @@ The industry frames intent as one-directional. The human encodes intent; the age
 The gospel introduces a different model: **covenant.**
 
 > "I, the Lord, am bound when ye do what I say; but when ye do not what I say, ye have no promise."
-> — [D&C 82:10](../../../gospel-library/eng/scriptures/dc-testament/dc/82.md)
+> — [D&C 82:10](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/82?lang=eng&id=p10#p10)
 
 A covenant isn't a command. It's a *mutual binding agreement where both parties have obligations.* God commits: "I am bound when ye do what I say." The human commits: "We will walk in all the ordinances."
 
@@ -313,7 +313,7 @@ AI doesn't accept "it depends." It needs a hierarchy. It needs boundaries. It ne
 The discipline of encoding intent for an AI system is really the discipline of *examining your own intent.* And that's a deeply personal practice:
 
 > "Wherefore, now let every man learn his duty, and to act in the office in which he is appointed, in all diligence."
-> — [D&C 107:99](../../../gospel-library/eng/scriptures/dc-testament/dc/107.md)
+> — [D&C 107:99](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/107?lang=eng&id=p99#p99)
 
 What is your duty? What matters most? Where are your boundaries?
 
