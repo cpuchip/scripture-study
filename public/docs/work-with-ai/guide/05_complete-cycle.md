@@ -55,7 +55,7 @@ Let's walk through each one.
 ## Step 1: Intent — "This Is My Work and My Glory"
 
 > "For behold, this is my work and my glory—to bring to pass the immortality and eternal life of man."
-> — [Moses 1:39](../../../gospel-library/eng/scriptures/pgp/moses/1.md)
+> — [Moses 1:39](https://www.churchofjesuschrist.org/study/scriptures/pgp/moses/1?lang=eng&id=p39#p39)
 
 The starting point. Before any creation, before any delegation, before any tool is picked up — *why are we doing this?*
 
@@ -68,7 +68,7 @@ In the cycle: Intent is the project's Moses 1:39. One sentence that every subseq
 ## Step 2: Covenant — Mutual Binding
 
 > "I, the Lord, am bound when ye do what I say; but when ye do not what I say, ye have no promise."
-> — [D&C 82:10](../../../gospel-library/eng/scriptures/dc-testament/dc/82.md)
+> — [D&C 82:10](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/82?lang=eng&id=p10#p10)
 
 The industry gives commands. The gospel establishes covenants.
 
@@ -105,11 +105,11 @@ Google DeepMind's February 2026 paper on "Intelligent Delegation" converges here
 ## Step 3: Stewardship — Entrusted Delegation with Accountability
 
 > "That every man may give an account unto me of the stewardship which is appointed unto him."
-> — [D&C 104:12](../../../gospel-library/eng/scriptures/dc-testament/dc/104.md)
+> — [D&C 104:12](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/104?lang=eng&id=p12#p12)
 
 Stewardship is delegation with *trust and accountability.* Not "do this task" but "this domain is yours — grow it, guard it, account for it."
 
-### The Parable of the Talents ([Matthew 25:14-30](../../../gospel-library/eng/scriptures/nt/matt/25.md))
+### The Parable of the Talents ([Matthew 25:14-30](https://www.churchofjesuschrist.org/study/scriptures/nt/matt/25?lang=eng&id=p14-p30#p14))
 
 The clearest model for agent stewardship in all of scripture:
 
@@ -139,7 +139,7 @@ The industry has "agent autonomy levels" (Dan Shapiro's Level 0-5) but treats th
 ## Step 4: Spiritual Creation — The Blueprint
 
 > "For I, the Lord God, created all things, of which I have spoken, spiritually, before they were naturally upon the face of the earth."
-> — [Moses 3:5](../../../gospel-library/eng/scriptures/pgp/moses/3.md)
+> — [Moses 3:5](https://www.churchofjesuschrist.org/study/scriptures/pgp/moses/3?lang=eng&id=p5#p5)
 
 The specification. Covered in depth in [Part 4](04_spec-engineering.md). Blueprint before building. The five primitives. The `.spec/` directory.
 
@@ -150,7 +150,7 @@ In the cycle: Spiritual creation is writing the spec — the complete, precise d
 ## Step 5: Line Upon Line — Progressive Context Revelation
 
 > "For he will give unto the faithful line upon line, precept upon precept; and I will try you and prove you herewith."
-> — [D&C 98:12](../../../gospel-library/eng/scriptures/dc-testament/dc/98.md)
+> — [D&C 98:12](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/98?lang=eng&id=p12#p12)
 
 Covered as a context engineering pattern in [Part 2](02_context-engineering.md), but here it takes on a deeper dimension.
 
@@ -170,7 +170,7 @@ This connects directly to Stewardship (Step 3). Context expands with trust. An a
 ## Step 6: Physical Creation — Execution
 
 > "So the Gods went down to organize man in their own image, in the image of the Gods to form they him, male and female to form they them."
-> — [Abraham 4:27](../../../gospel-library/eng/scriptures/pgp/abr/4.md)
+> — [Abraham 4:27](https://www.churchofjesuschrist.org/study/scriptures/pgp/abr/4?lang=eng&id=p27#p27)
 
 With intent established, covenant agreed, stewardship assigned, specification written, and context provided — now we build.
 
@@ -181,7 +181,7 @@ In practice: the agent executes against the spec. It writes code, generates cont
 ## Step 7: Review — "Watched Until They Obeyed"
 
 > "And the Gods watched those things which they had ordered until they obeyed."
-> — [Abraham 4:18](../../../gospel-library/eng/scriptures/pgp/abr/4.md)
+> — [Abraham 4:18](https://www.churchofjesuschrist.org/study/scriptures/pgp/abr/4?lang=eng&id=p18#p18)
 
 Review in the creation account is active, not passive. The Gods didn't create and walk away. They *watched* — continuously observed — until the creation matched the specification.
 
@@ -208,10 +208,10 @@ Most review stops at correctness. Specification review catches drift between pla
 ## Step 8: Atonement — Redemptive Error Recovery
 
 > "I, the Lord, will not lay any sin to your charge; go your ways and sin no more; but unto that soul who sinneth shall the former sins return, saith the Lord your God."
-> — [D&C 82:7](../../../gospel-library/eng/scriptures/dc-testament/dc/82.md)
+> — [D&C 82:7](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/82?lang=eng&id=p7#p7)
 
 > "All things wherewith you have been afflicted shall work together for your good, and to my name's glory, saith the Lord."
-> — [D&C 98:3](../../../gospel-library/eng/scriptures/dc-testament/dc/98.md)
+> — [D&C 98:3](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/98?lang=eng&id=p3#p3)
 
 This is the most provocative pattern — and potentially the most valuable.
 
@@ -256,7 +256,7 @@ D&C 82:7 starts from *grace*: "I will not lay any sin to your charge." The Lord'
 ## Step 9: Sabbath — Intentional Rest and Reflection
 
 > "And on the seventh day I, God, ended my work, and all things which I had made; and I rested on the seventh day from all my work, and all things which I had made were finished, and I, God, saw that they were good."
-> — [Moses 3:2](../../../gospel-library/eng/scriptures/pgp/moses/3.md)
+> — [Moses 3:2](https://www.churchofjesuschrist.org/study/scriptures/pgp/moses/3?lang=eng&id=p2#p2)
 
 ### What the industry has
 Sprint retrospectives. Post-mortems. "Continuous improvement."
@@ -302,10 +302,10 @@ This cannot be optional. If the Creator of the universe builds rest into the cre
 ## Step 10: Consecration — Resources Serve Purpose
 
 > "And it is my purpose to provide for my saints, for all things are mine. But it must needs be done in mine own way."
-> — [D&C 104:15-16](../../../gospel-library/eng/scriptures/dc-testament/dc/104.md)
+> — [D&C 104:15-16](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/104?lang=eng&id=p15-p16#p15)
 
 > "I prepared all things, and have given unto the children of men to be agents unto themselves."
-> — [D&C 104:17](../../../gospel-library/eng/scriptures/dc-testament/dc/104.md)
+> — [D&C 104:17](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/104?lang=eng&id=p17#p17)
 
 ### What the industry has
 Token budgets. Resource allocation. Cost optimization. ROI analysis.
@@ -341,7 +341,7 @@ The [$1,000/day video](https://www.youtube.com/watch?v=-bQcWs1Z9a0) identifies t
 ## Step 11: Zion — Unified Purpose Across Agents
 
 > "And the Lord called his people Zion, because they were of one heart and one mind, and dwelt in righteousness; and there was no poor among them."
-> — [Moses 7:18](../../../gospel-library/eng/scriptures/pgp/moses/7.md)
+> — [Moses 7:18](https://www.churchofjesuschrist.org/study/scriptures/pgp/moses/7?lang=eng&id=p18#p18)
 
 The ultimate destination.
 
@@ -386,7 +386,7 @@ The Church's organizational hierarchy is a different model entirely — a **bish
 - Hierarchical scaling (ward → stake → area → region → seventy → twelve → prophet)
 - Each level has its own keys, its own scope, its own autonomy
 
-From the [General Handbook, Chapter 4](../../../gospel-library/eng/manual/general-handbook/4-leadership-in-the-church-of-jesus-christ.md):
+From the [General Handbook, Chapter 4](https://www.churchofjesuschrist.org/study/manual/general-handbook/4-leadership-in-the-church-of-jesus-christ?lang=eng):
 
 > "Councils provide opportunities for council members to receive revelation as they seek to understand the needs of God's children and plan how to help meet them."
 > — General Handbook 4.3
@@ -395,9 +395,9 @@ The ward council model:
 - **Diverse perspectives** — "Women and men often have different perspectives that provide needed balance" (4.4.3)
 - **The leader listens more than talks** — "When a council leader shares his or her perspective too early, it can inhibit the contributions of others" (4.4.3)
 - **Decisions informed by discussion, confirmed by Spirit** — "The decision should be informed by the discussion and confirmed by the Spirit" (4.4.3)
-- **Participants equal in contribution, not in authority** — "Let one speak at a time and let all listen unto his sayings, that... every man may have an equal privilege" ([D&C 88:122](../../../gospel-library/eng/scriptures/dc-testament/dc/88.md))
+- **Participants equal in contribution, not in authority** — "Let one speak at a time and let all listen unto his sayings, that... every man may have an equal privilege" ([D&C 88:122](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/88?lang=eng&id=p122#p122))
 
-From the [coordinating council](../../../gospel-library/eng/manual/general-handbook/29-meetings-in-the-church.md):
+From the [coordinating council](https://www.churchofjesuschrist.org/study/manual/general-handbook/29-meetings-in-the-church?lang=eng):
 
 > "All who attend counsel together as equal participants."
 > — General Handbook 29.4
@@ -436,7 +436,7 @@ Our challenge:
 The patterns aren't metaphors. They're **prior art.** God solved the multi-agent alignment problem before we had agents. He solved the progressive trust problem before we had autonomy levels. He solved the resource allocation problem before we had token budgets.
 
 > "Whatever principle of intelligence we attain unto in this life, it will rise with us in the resurrection."
-> — [D&C 130:18](../../../gospel-library/eng/scriptures/dc-testament/dc/130.md)
+> — [D&C 130:18](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/130?lang=eng&id=p18#p18)
 
 ---
 

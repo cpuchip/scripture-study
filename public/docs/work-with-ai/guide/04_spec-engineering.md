@@ -12,7 +12,7 @@
 The book of Abraham describes a creation pattern that most readers skim past:
 
 > "And the Gods said: Let us prepare the earth to bring forth grass... And the Gods organized the earth to bring forth grass from its own seed... And the Gods saw that they were obeyed."
-> — [Abraham 4:11–12, 18](../../../gospel-library/eng/scriptures/pgp/abr/4.md)
+> — [Abraham 4:11–12, 18](https://www.churchofjesuschrist.org/study/scriptures/pgp/abr/4?lang=eng&id=p11-p12#p11)
 
 Two things stand out:
 
@@ -21,7 +21,7 @@ Two things stand out:
 2. **"They were obeyed."** The specification was so precise that the elements "obeyed" — they produced exactly what was designed. This isn't vague intention. It's precision engineering.
 
 > "For I, the Lord God, created all things, of which I have spoken, spiritually, before they were naturally upon the face of the earth."
-> — [Moses 3:5](../../../gospel-library/eng/scriptures/pgp/moses/3.md)
+> — [Moses 3:5](https://www.churchofjesuschrist.org/study/scriptures/pgp/moses/3?lang=eng&id=p5#p5)
 
 The blueprint came first. Every plant, every animal, every system was spiritually (conceptually, precisely) created before it was physically manifest. This is specification engineering — and it's the pattern the industry is rediscovering as the critical skill for autonomous AI.
 
@@ -116,7 +116,7 @@ This is the most underused primitive. Most specs give requirements (musts) and a
 The handbook's structure of priesthood keys is functionally a constraint architecture:
 
 > "Priesthood keys ensure that God's work of salvation and exaltation is accomplished in an orderly manner. Those who hold priesthood keys direct the Lord's work within their areas of responsibility. This presiding authority is valid only for the specific responsibilities of the leader's calling."
-> — [General Handbook 3.4.1.2](../../../gospel-library/eng/manual/general-handbook/3-priesthood-principles.md)
+> — [General Handbook 3.4.1.2](https://www.churchofjesuschrist.org/study/manual/general-handbook/3-priesthood-principles?lang=eng)
 
 Valid only for the specific responsibilities. Clear scope. Clear boundaries. Clear escalation when something exceeds jurisdiction.
 
@@ -233,7 +233,7 @@ This means specification engineering isn't just a developer skill. It's a **comm
 The General Handbook of The Church of Jesus Christ of Latter-day Saints is, in this light, a remarkable example of specification engineering at organizational scale. Consider how it defines the ward council:
 
 > "The ward council seeks to help all ward members build spiritual strength, receive saving ordinances, keep covenants, and become consecrated followers of Jesus Christ. During ward council meetings, council members plan and coordinate this work."
-> — [General Handbook 29.2.5](../../../gospel-library/eng/manual/general-handbook/29-meetings-in-the-church.md)
+> — [General Handbook 29.2.5](https://www.churchofjesuschrist.org/study/manual/general-handbook/29-meetings-in-the-church?lang=eng)
 
 That's a purpose statement for a recurring process. The handbook then specifies participants, frequency, agenda structure, decision-making authority, and escalation paths. It's a specification that tens of thousands of bishops worldwide execute against, with local adaptation, producing consistent outcomes across wildly different contexts.
 

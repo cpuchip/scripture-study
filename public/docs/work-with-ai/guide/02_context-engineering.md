@@ -174,14 +174,14 @@ Organizations drown their employees in irrelevant context (status meetings, CC-a
 Here's where the gospel pattern becomes practical engineering.
 
 > "For precept must be upon precept, precept upon precept; line upon line, line upon line; here a little, and there a little."
-> — [Isaiah 28:10](../../../gospel-library/eng/scriptures/ot/isa/28.md)
+> — [Isaiah 28:10](https://www.churchofjesuschrist.org/study/scriptures/ot/isa/28?lang=eng&id=p10#p10)
 
 > "For he will give unto the faithful line upon line, precept upon precept; and I will try you and prove you herewith."
-> — [D&C 98:12](../../../gospel-library/eng/scriptures/dc-testament/dc/98.md)
+> — [D&C 98:12](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/98?lang=eng&id=p12#p12)
 
 The Lord doesn't dump all context at once. He gives "line upon line" — and critically, He *proves* the receiver between revelations. Context is earned, not just provided.
 
-Look at [Moses 1](../../../gospel-library/eng/scriptures/pgp/moses/1.md). God gives Moses an experience (v. 1-8). Then *withdraws His presence* (v. 9) to see what Moses does with what he received. Moses is tested by Satan (v. 12-22). Only after Moses proves faithful does God return with *more* revelation (v. 24-42). Progressive disclosure, gated by demonstrated readiness.
+Look at [Moses 1](https://www.churchofjesuschrist.org/study/scriptures/pgp/moses/1?lang=eng). God gives Moses an experience (v. 1-8). Then *withdraws His presence* (v. 9) to see what Moses does with what he received. Moses is tested by Satan (v. 12-22). Only after Moses proves faithful does God return with *more* revelation (v. 24-42). Progressive disclosure, gated by demonstrated readiness.
 
 Applied to AI context architecture:
 
@@ -290,7 +290,7 @@ System prompt establishes deep-study methodology. Agent definition activates the
 
 Same user prompt: "Explain the parable of the talents."
 
-Model response: Reads [Matthew 25:14-30](../../../gospel-library/eng/scriptures/nt/matt/25.md) from the actual file. Looks up "talent" in Webster 1828 (a weight and denomination of money among the Greeks). Cross-references with [D&C 82:3](../../../gospel-library/eng/scriptures/dc-testament/dc/82.md) ("unto whom much is given much is required") and connects to the stewardship pattern. Notes that the Greek *talanton* carried a specific monetary weight that maps to the concept of entrusted responsibility. Links to the study on priesthood stewardship from a previous document.
+Model response: Reads [Matthew 25:14-30](https://www.churchofjesuschrist.org/study/scriptures/nt/matt/25?lang=eng&id=p14-p30#p14) from the actual file. Looks up "talent" in Webster 1828 (a weight and denomination of money among the Greeks). Cross-references with [D&C 82:3](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/82?lang=eng&id=p3#p3) ("unto whom much is given much is required") and connects to the stewardship pattern. Notes that the Greek *talanton* carried a specific monetary weight that maps to the concept of entrusted responsibility. Links to the study on priesthood stewardship from a previous document.
 
 Same prompt. Entirely different output. The difference is context.
 

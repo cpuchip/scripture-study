@@ -212,18 +212,18 @@ There's a deeper pattern here, and it's worth naming.
 Prompt craft — clear communication with an intelligent entity to receive guidance and help — has an ancient parallel. Prayer.
 
 > "Ask, and it shall be given you; seek, and ye shall find; knock, and it shall be opened unto you."
-> — [Matthew 7:7](../../../gospel-library/eng/scriptures/nt/matt/7.md)
+> — [Matthew 7:7](https://www.churchofjesuschrist.org/study/scriptures/nt/matt/7?lang=eng&id=p7#p7)
 
 Prayer isn't just "talking to God." Effective prayer, as taught in scripture and by prophets, shares the principles of effective prompting:
 
 | Principle | In Prayer | In Prompting |
 |-----------|-----------|-------------|
-| **Clarity** | "Ask with real intent" ([Moroni 10:4](../../../gospel-library/eng/scriptures/bofm/moro/10.md)) | State what you want, not what you don't want |
-| **Context** | "Pour out your souls" ([Alma 34:26–27](../../../gospel-library/eng/scriptures/bofm/alma/34.md)) — tell God the situation | Provide background before the task |
-| **Specificity** | Enos prayed for his people by name and need ([Enos 1:9–13](../../../gospel-library/eng/scriptures/bofm/enos/1.md)) | Be specific about what you need |
-| **Alignment** | "Thy will be done" ([Matthew 6:10](../../../gospel-library/eng/scriptures/nt/matt/6.md)) — aligning with God's purposes | Aligning the request with the system's capabilities |
-| **Preparation** | "You must study it out in your mind; then you must ask" ([D&C 9:8](../../../gospel-library/eng/scriptures/dc-testament/dc/9.md)) | Do your homework before prompting |
-| **Humility** | "With a sincere heart" ([Moroni 10:4](../../../gospel-library/eng/scriptures/bofm/moro/10.md)) | Acknowledge uncertainty, ask for help |
+| **Clarity** | "Ask with real intent" ([Moroni 10:4](https://www.churchofjesuschrist.org/study/scriptures/bofm/moro/10?lang=eng&id=p4#p4)) | State what you want, not what you don't want |
+| **Context** | "Pour out your souls" ([Alma 34:26–27](https://www.churchofjesuschrist.org/study/scriptures/bofm/alma/34?lang=eng&id=p26-p27#p26)) — tell God the situation | Provide background before the task |
+| **Specificity** | Enos prayed for his people by name and need ([Enos 1:9–13](https://www.churchofjesuschrist.org/study/scriptures/bofm/enos/1?lang=eng&id=p9-p13#p9)) | Be specific about what you need |
+| **Alignment** | "Thy will be done" ([Matthew 6:10](https://www.churchofjesuschrist.org/study/scriptures/nt/matt/6?lang=eng&id=p10#p10)) — aligning with God's purposes | Aligning the request with the system's capabilities |
+| **Preparation** | "You must study it out in your mind; then you must ask" ([D&C 9:8](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/9?lang=eng&id=p8#p8)) | Do your homework before prompting |
+| **Humility** | "With a sincere heart" ([Moroni 10:4](https://www.churchofjesuschrist.org/study/scriptures/bofm/moro/10?lang=eng&id=p4#p4)) | Acknowledge uncertainty, ask for help |
 
 The parallel isn't coincidental. Both involve communicating with an intelligence that can help you accomplish something beyond your individual capacity. The principles of effective communication are universal.
 
