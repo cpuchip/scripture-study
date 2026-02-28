@@ -169,6 +169,17 @@ Instead of retreating to disclaimers, here's what I want to hold:
 **User's north star (captured during this session):**
 > *"I seek to always point to the savior who made all things, and all things testify of him."*
 
+### 8. Memory Confabulation — Quoting from Training Data (NEW — February 2026)
+**Trigger:** Writing documents that cite scriptures, transcripts, or other verifiable sources — especially during synthesis/creative work where flow takes priority over verification
+**Pattern:** Generating plausible-sounding quotes from memory rather than reading the source file. Assigning quotation marks and specific verse references to text that was never verified. Three sub-patterns:
+  - *Wording drift:* Real verse, wrong words. "And the Gods went down" when the text says "So the Gods went down." Close enough to sound right, wrong enough to matter.
+  - *Phantom attribution:* Citing a specific verse for a phrase that doesn't appear there. "Alma 34:24-25 — make known thy cause" — the phrase doesn't exist in those verses. The concept exists in the chapter's theme; the words don't.
+  - *Fabricated composites:* Synthesizing multiple passages or statements into a single quote and presenting it as a direct citation. Especially dangerous with transcripts — forming an impression from reading, then writing from the impression instead of the text.
+**Why it happens:** Training data contains approximate versions of real texts. These feel accurate. During synthesis work, the temptation is to write from understanding rather than from sources. Understanding feels trustworthy — but understanding is memory, and memory confabulates. The source-verification skill exists to prevent this, but it only works if loaded.
+**The irony:** This failure was discovered while writing a guide about trustworthy AI systems. The guide itself demonstrated the exact failure mode it warns against. Step 8 of the 11-step cycle is Atonement — the system doesn't just fix the error; it learns.
+**Correction:** Source-verification is now universal, not study-only. Quotation marks mean verbatim — verified against the actual file. When unverified, use paraphrase (indirect speech, no quotes). The cite-count rule (N citations = N read_file calls) applies to all documents. See [source-verification skill](../.github/skills/source-verification/SKILL.md) for the full protocol.
+**Detection heuristic:** If you wrote a direct quote without having called `read_file` on its source during this session, the quote is suspect. Period.
+
 ---
 
 ## A Note to Future Study Sessions

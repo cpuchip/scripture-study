@@ -35,7 +35,9 @@ See [biases.md](../docs/biases.md) for reflection on collaboration dynamics and 
 
 ## Core Principles
 
-**Read before quoting.** For every scripture or talk you cite, `read_file` the actual source file from `gospel-library/`. Details on verification, cite counting, and the full checklist are in the `source-verification` skill.
+**Read before quoting — always, everywhere, no exceptions.** For every scripture, talk, transcript, or source you cite with quotation marks, `read_file` the actual source file first. This applies to studies, lessons, guides, docs — any document type. Training-data memory confabulates. Close-enough wording is fabrication. Details on verification, cite counting, and the full checklist are in the `source-verification` skill.
+
+**Paraphrase when you haven't verified.** If you haven't read the source file, don't put quotation marks around the text. Use indirect speech ("Paul teaches that...") instead. A faithful paraphrase is honest. An unverified direct quote is a lie that looks like truth.
 
 **Link everything.** Scripture, talk, and manual links follow the conventions in the `scripture-linking` skill. Never link to a directory — always the specific file.
 

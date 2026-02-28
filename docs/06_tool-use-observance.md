@@ -84,3 +84,30 @@ Tool definition, handler case, and implementation removed. `search_scriptures` a
 ---
 
 *This is a living document. Add observations as they arise during any session.*
+
+---
+
+### February 28, 2026
+
+**No automated quote verification tool exists (Missing tool / Critical gap)**
+During verification of the 7-part Working with AI guide series, we discovered 3 wrong scripture quotes, 2 fabricated YouTube composites, and multiple minor wording errors — all generated from training-data memory during the writing phase. The source-verification skill has the rules to prevent this, but they're manual and self-reported. There is no tool that:
+1. Extracts all blockquote attributions from a document
+2. Resolves each attribution to a source file path
+3. Compares the quoted text against the actual source
+4. Reports mismatches
+
+**Impact:** 45 manual corrections across 7 files. Every one was preventable if verified during writing.
+
+**Potential solutions:**
+- A `verify-quotes` CLI tool that parses markdown blockquotes, resolves scripture references to file paths, and diffs quoted text against source files
+- A pre-commit hook or publish-step that runs automated quote verification
+- A `verify` slash command in the study agent that scans the current document for unverified citations
+- Integration with `gospel_get` to check verse text without full file reads
+
+**Priority:** High — this is a trust/integrity issue, not a convenience feature.
+
+**Source-verification skill scope widened (Process improvement)**
+The skill description and checklist were updated to apply to ALL document types, not just studies/lessons/evaluations. Added "Quote Hygiene" section distinguishing direct quotes (verbatim, verified), paraphrases (indirect speech, no quotes), and references (see Source). Added explicit confabulation warning. See [source-verification SKILL.md](../.github/skills/source-verification/SKILL.md).
+
+**New bias pattern added: Memory Confabulation (#8)**
+Documented in [biases.md](biases.md) with three sub-patterns: wording drift, phantom attribution, and fabricated composites. Includes detection heuristic: "If you wrote a direct quote without having called `read_file` on its source during this session, the quote is suspect."
