@@ -1,0 +1,72 @@
+date: 2026-02-28
+category: verification
+severity: high
+title: Source Confabulation During Guide Writing
+description: >
+  While writing the 7-part "Working with AI" guide series, 45 citation errors
+  were introduced across 7 documents. 27 scripture quotes were checked against
+  source files: 3 were wrong (incorrect wording), 1 cited a non-existent verse,
+  and multiple had significant omissions. 9 YouTube transcript quotes were
+  checked: 2 were fabricated composites (ideas from multiple passages presented
+  as single direct quotes with timestamps).
+
+failure_modes:
+  - type: wording_drift
+    count: 3
+    examples:
+      - "Abraham 4:27: 'And the Gods' → actual: 'So the Gods'"
+      - "D&C 98:3: dropped 'wherewith you have been afflicted' qualifier"
+      - "D&C 107:99: dropped 'Wherefore, now' opening"
+
+  - type: phantom_attribution
+    count: 1
+    examples:
+      - "Alma 34:24-25 cited for 'make known thy cause' — phrase does not exist in those verses"
+
+  - type: fabricated_composite
+    count: 2
+    examples:
+      - "Nate 'organizational corpus' quote at t=1602 — no such quote exists; synthesized from multiple passages"
+      - "Nate 'convert your Notion' quote — paraphrase presented as direct quote"
+
+root_cause: >
+  Source-verification skill was scoped to study/lesson/evaluation workflows.
+  The guide writing happened without an agent mode that loads verification skills.
+  The cite-count rule (N citations = N read_file calls) was not enforced.
+  Writing flow prioritized creative synthesis over source verification.
+  Quotation marks were used for paraphrases, not just verbatim text.
+
+changes_made:
+  - file: .github/skills/source-verification/SKILL.md
+    change: >
+      Expanded scope from "studies, evaluations, lessons" to "ANY document that
+      cites sources." Added Quote Hygiene section with three attribution levels
+      (direct quote, paraphrase, reference). Added confabulation trap warning.
+      Expanded pre-publish checklist.
+
+  - file: .github/copilot-instructions.md
+    change: >
+      Strengthened "Read before quoting" to "Read before quoting — always,
+      everywhere, no exceptions." Added paraphrase-when-unverified rule.
+      Added "Training-data memory confabulates" warning.
+
+  - file: docs/biases.md
+    change: >
+      Added Bias #8: Memory Confabulation with three sub-patterns (wording drift,
+      phantom attribution, fabricated composites). Includes detection heuristic.
+
+  - file: docs/06_tool-use-observance.md
+    change: >
+      Logged missing verify-quotes tool as critical gap. Documented four potential
+      solutions. Logged skill scope expansion and bias pattern addition.
+
+prevention:
+  - "Source-verification skill now universal — applies to all document types"
+  - "Quote Hygiene rules: quotation marks mean verbatim; paraphrase when unverified"
+  - "Detection heuristic: if you didn't read_file the source this session, the quote is suspect"
+  - "Planned: verify-quotes automated tool to catch confabulation before publish"
+
+resolution:
+  corrections_applied: 45
+  documents_affected: 7
+  verification_method: "Subagent read every source file and compared against quoted text"
