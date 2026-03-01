@@ -9,6 +9,7 @@ use (
 	./scripts/lectures-on-faith
 	./scripts/publish
 	./scripts/search-mcp
+	./scripts/session-journal
 	./scripts/webster-mcp
 	./scripts/yt-mcp
 	./external_context/tpg
