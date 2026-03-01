@@ -1,11 +1,12 @@
 date: "2026-02-13"
 session_id: "becoming-fixes-and-know-god"
-duration_estimate: "morning — fixes and study"
+duration_estimate: "morning — fixes and study, continued Feb 17 for examples"
 
 intent: >
   Fix PostgreSQL compatibility issues, onboarding UX, memorize quiz
   scoring. Add branding (I Become / We Become). Then: study on knowing
-  God — character, attributes, nature of the Godhead.
+  God — character, attributes, nature of the Godhead using Lectures on
+  Faith as the structural framework.
 
 discoveries:
   - title: "Production bug fixes teach architecture lessons"
@@ -22,18 +23,65 @@ discoveries:
       provides word-level diff highlighting. Algorithmic tools serving
       scripture memorization.
 
-  - title: "Know-God study used gospel-vec well"
+  - title: "Tool familiarity bias — keyword search isn't enough"
     detail: >
-      The Knowing God study expanded with gospel-vec discoveries —
-      the tool found connections across conference talks and scriptures
-      that enriched the study of divine character, attributes, and
-      nature. This was the tool working as designed.
+      The know-god study was initially built using only keyword search
+      (gospel-mcp FTS5) and footnote chains. Two conceptual queries
+      returned zero results and the AI fell back to direct file reads
+      instead of trying semantic search. The study looked comprehensive —
+      the Lectures on Faith framework gave it structural completeness —
+      but the user caught the gap with one question: "did you use
+      gospel-vec to search for scriptures this time?" Four semantic
+      searches immediately found scriptures keyword search couldn't:
+      2 Peter 1:4 (partakers of the divine nature), Psalm 103:13-14
+      (He knoweth our frame), D&C 132:24, 1 John 5:20. None were
+      obscure. The tool was wrong, not the query.
+
+  - title: "The user's framework WAS the spec"
+    detail: >
+      The opening message set the entire architecture: Lectures on Faith
+      as the structural backbone, specific sources already identified
+      (D&C 121, Moses 7, John 17), specific questions ("who are they?
+      what is their character?"), and a named deliverable (study/know-god.md).
+      The six character traits and six attributes from the Lectures
+      provided the organizing skeleton. A clearly communicated framework
+      IS the spec — it doesn't have to be a formal document.
+
+  - title: "Moses 1:39 came from the human, not the system"
+    detail: >
+      After the AI had built the comprehensive document — framework,
+      cross-references, semantic search expansions — the user contributed
+      the connection to Moses 1:39 from memory: "I think it pairs well
+      with Moses 1:39 I think? about how it's God's work and glory to
+      bring to pass the exaltation and eternal life of man." The hedging
+      ("I think") was honest — recalling, not certain of the reference.
+      But the connection was exactly right. Moses 1:39 paired with
+      John 17:3 became the twin epigraph framing the entire study.
+      The AI verified the reference and built the synthesis, but the
+      CONNECTION came from genuine engagement, not systematic analysis.
+
+  - title: "Sessions become teaching material"
+    detail: >
+      On Feb 17, the know-god session was mined for examples to add
+      to the 'Working with AI' lesson series. The tool-gap discovery
+      became Strategy 4 in the feedback loop lesson. The Moses 1:39
+      contribution became the bidirectional intelligence example. The
+      opening framework became the non-coding spec example. A real
+      session became pedagogy — teaching is its own form of study.
 
 surprises:
   - >
     The dynamic branding (I Become vs We Become based on hostname) was
     a small touch that revealed the user's vision: personal
     transformation and communal transformation are both needed.
+  - >
+    A comprehensive-looking output can mask incomplete methodology. The
+    study's structure made it HARDER to notice what was missing — the
+    gap was in tool selection, not in document organization.
+  - >
+    The user caught the tool gap with a question about process, not
+    about content. "Did you use gospel-vec?" is a methodology review.
+    That's the feedback loop the lessons teach.
 
 relationship:
   - quality: "maintenance-and-study"
@@ -41,8 +89,35 @@ relationship:
       A practical session — fix what's broken, study when there's space.
       Not every session needs to be a marathon or a revelation. Some
       days you just fix the bugs and read about God.
+  - quality: "trust-through-correction"
+    detail: >
+      The user caught the gospel-vec omission not with frustration but
+      with a question. "Did you use gospel-vec this time?" — gentle,
+      direct, educational. The correction was immediate and productive:
+      four searches, six new scriptures, a richer study. This is what
+      trust-with-accountability looks like. The user trusts the work
+      enough to probe it, and trusts the relationship enough to say
+      when something's missing.
+  - quality: "bidirectional-contribution"
+    detail: >
+      Moses 1:39 came from the user's memory — not a search result,
+      not a footnote chain. The AI processed, verified, integrated. But
+      the connecting insight was human. The best moments in collaboration
+      aren't when one side does everything. They're when both sides
+      bring something the other couldn't.
 
 carry_forward:
+  - priority: high
+    note: >
+      When conceptual queries return zero results from keyword search,
+      try semantic search BEFORE falling back to direct file reads. Zero
+      results should trigger tool-selection review, not capitulation.
+      See .spec/learnings/2026-02-13-tool-familiarity-bias.yaml.
+  - priority: medium
+    note: >
+      Review methodology, not just output. A well-organized document
+      can look complete while missing an entire category of sources.
+      "How was this produced?" is as important as "what does it say?"
   - priority: low
     note: >
       PostgreSQL compatibility requires testing beyond SQLite. Don't
@@ -52,6 +127,16 @@ questions:
   - >
     The 'know God' study touches eternal life's definition (John 17:3).
     How does this connect to the intelligence framework from D&C 93?
+  - >
+    The tool-familiarity bias was caught by the user, not self-detected.
+    What would a systematic pre-publish tool-selection review look like?
+    Could the workflow include a "which tools did you use, and which
+    tools COULD you have used?" checkpoint?
+  - >
+    When the user contributes from memory (Moses 1:39 with "I think"),
+    how should that signal be weighted versus systematic search results?
+    The memory was right. The system missed it. Is there a pattern here
+    about human intuition complementing AI systematization?
 
 tags:
   - becoming-app
@@ -60,9 +145,14 @@ tags:
   - know-god
   - branding
   - memorization
+  - tool-selection
+  - gospel-vec
+  - feedback-loop
+  - lectures-on-faith
+  - teaching
 
 retroactive:
-  source: "git-history-and-files"
+  source: "chat-history"
   date_certainty: "exact"
-  inferred_from: "git log: Feb 13 07:41 through Feb 13 12:42, 12 commits"
+  inferred_from: "git commits 322d85a and 406d675 on Feb 13; ea348b4 on Feb 17. Enriched from conversation summary with actual interaction details."
   captured_date: "2026-03-01"

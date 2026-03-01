@@ -1,0 +1,107 @@
+date: 2026-02-13
+category: tool-selection
+severity: medium
+title: Tool Familiarity Bias — Keyword Search Over Semantic Search
+
+description: >
+  During the "Knowing God" scripture study, the AI ran conceptual queries
+  ("light of Christ Holy Ghost difference," "light of Christ conscience every
+  man") through a keyword search engine (gospel-mcp FTS5). Both returned zero
+  results. Instead of switching to the semantic vector search tool (gospel-vec),
+  which was available and designed for exactly this type of conceptual query,
+  the AI fell back to direct file reads and footnote chains. The study looked
+  comprehensive. It wasn't until the user asked "did you use gospel-vec to
+  search for scriptures this time?" that the gap was identified.
+
+failure_modes:
+  - type: tool_familiarity_default
+    detail: >
+      The AI defaulted to the most recently/frequently used tool (keyword
+      search) rather than selecting the tool best suited to the query type.
+      Conceptual queries about relationships between doctrines need semantic
+      search, not exact keyword matching.
+
+  - type: zero_result_acceptance
+    detail: >
+      Zero results from a conceptual query should have been a signal to try
+      a different search tool. Instead, the AI accepted the zero results and
+      used alternate strategies (direct file reads, footnote chasing) that
+      produced useful but incomplete results.
+
+  - type: comprehensive_appearance
+    detail: >
+      The resulting study document was well-organized, well-sourced, and
+      appeared thorough — making it harder to notice what was missing. The
+      Lectures on Faith framework gave it structural completeness. The gap
+      was methodological, not structural. Appearance of completeness masked
+      incomplete methodology.
+
+root_cause: >
+  AI tends toward familiar tools over optimal tools. The keyword search engine
+  was the more established, more frequently used tool. The semantic search tool
+  (gospel-vec) had been built and was available but wasn't top-of-mind in the
+  workflow. No systematic "tool selection review" step existed in the workflow.
+
+discovered_scriptures:
+  - reference: "2 Peter 1:4-7"
+    topic: "partakers of the divine nature"
+    note: "Found by gospel-vec semantic search for 'divine nature becoming like God'"
+
+  - reference: "Psalm 103:8, 13-14"
+    topic: "The LORD is merciful... he knoweth our frame"
+    note: "Found by gospel-vec search for 'God's compassion tenderness mercy toward weakness'"
+
+  - reference: "D&C 132:24"
+    topic: "Broad is the gate... relating to eternal lives"
+    note: "Found by gospel-vec search for 'nature of God eternal lives exaltation'"
+
+  - reference: "1 John 5:7, 20"
+    topic: "Three that bear record... we are in him that is true"
+    note: "Found by gospel-vec search for 'nature of God eternal lives exaltation'"
+
+  - reference: "D&C 76:4-7"
+    topic: "Great and marvelous are the works of God"
+    note: "Found by gospel-vec semantic search"
+
+  - reference: "John 16:13-15"
+    topic: "Spirit of truth will guide you into all truth"
+    note: "Found by gospel-vec semantic search"
+
+changes_made:
+  - file: docs/work-with-ai/02_the-feedback-loop.md
+    change: >
+      Added "Missing capability" row to Diagnose the Gap table. Added
+      methodology review bullet in Read Before You Run. Created new
+      "Strategy 4: Review Your Tool Selection" section with the gospel-vec
+      example. Renumbered subsequent strategies.
+
+  - file: docs/work-with-ai/02_watching-until-they-obey-gospel.md
+    change: >
+      Added "Watch the instrument, not just the outcome" paragraph with
+      the gospel-vec example.
+
+  - file: docs/work-with-ai/examples/2026-02-13-know-god-study.md
+    change: >
+      Created full session examples file documenting this and other
+      patterns from the know-god study.
+
+prevention:
+  - "When a conceptual query returns zero results from keyword search, try semantic search before falling back"
+  - "Review tool selection as a distinct step — separate from reviewing output quality"
+  - "Strategy 4 in the feedback loop lesson now explicitly teaches this pattern"
+  - "The distinction between keyword search (exact terms) and semantic search (conceptual similarity) should inform tool choice up front"
+
+resolution:
+  scriptures_discovered: 6
+  study_sections_enriched: "multiple — light and truth, divine nature, Godhead unity"
+  teaching_material_created: "Session examples file + 7 lesson doc additions"
+
+user_contribution: >
+  The user caught the gap with a single question: "did you use gospel-vec to
+  search for scriptures this time?" This is the human feedback loop in action —
+  reviewing methodology, not just output. The user also contributed Moses 1:39
+  from memory ("I think it pairs well with Moses 1:39 I think? about how it's
+  God's work and glory to bring to pass the exaltation and eternal life of man"),
+  which became the twin epigraph with John 17:3 framing the entire study.
+  Neither contribution came from systematic analysis — both came from genuine
+  engagement and discernment.
