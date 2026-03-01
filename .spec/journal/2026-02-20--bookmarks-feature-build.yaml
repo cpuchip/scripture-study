@@ -1,0 +1,155 @@
+date: "2026-02-20"
+session_id: "bookmarks-feature-build"
+duration_estimate: "~3 hours, evening session"
+
+intent: >
+  Circle back to the Becoming app after theological studies.
+  Confirm Phase 4 polish is done, consolidate all planning docs
+  into a single TODO.md, then build UX Phase 2: Bookmarks &
+  Highlights — full stack from DB schema through reader integration.
+  Also download Preach My Gospel via the gospel-downloader tool.
+
+discoveries:
+  - title: "Full-stack feature in one shot by studying existing patterns first"
+    detail: >
+      Before writing a single line of bookmark code, we systematically
+      read every relevant pattern in the codebase: notes.go for CRUD,
+      router.go for API handlers, api.ts for TypeScript interfaces,
+      db.go for the migration chain, and the goose migration format.
+      This pattern-first approach meant the entire bookmarks stack
+      (DB, migrations, API, frontend client, view, reader integration)
+      went in with only one compile error — an extra argument to
+      parseID(). The lesson: invest in reading patterns before writing
+      code. It's faster than debugging.
+
+  - title: "The notes.go CRUD pattern is the project's repeatable template"
+    detail: >
+      Notes, bookmarks, and likely future entities all follow the same
+      shape: struct with JSON tags, InsertReturningID for creates,
+      QueryRow for gets, dynamic query builder with optional filters
+      for lists, simple Exec for updates/deletes. The handler factories
+      (func returning http.HandlerFunc) with auth.UserID(r) scoping
+      and writeJSON/writeError helpers form a clean, consistent API
+      surface. This pattern should be documented as the canonical
+      template for new resources.
+
+  - title: "Plan consolidation revealed scattered but coherent vision"
+    detail: >
+      Reading three separate planning docs (becoming-ux-phases.md,
+      06_becoming-app.md, becoming-improvements.md) showed that while
+      the plans were spread across files, they told a coherent story.
+      Consolidating to TODO.md with clear done/pending sections made
+      the scope visible at a glance. Six build phases done, six
+      enhancement sprints done, UX Phase 1 done, Phase 4 polish done —
+      and a clear next step in bookmarks.
+
+  - title: "Reader integration through event delegation and DOM mutation"
+    detail: >
+      The bookmark button on headings uses the same event delegation
+      pattern as the existing anchor link handler — inject buttons via
+      markdown-it renderer rules, then handle clicks in a single
+      delegated handleContentClick function. The bookmarked state
+      is tracked via a computed Set of anchors, with DOM class toggling
+      (bookmarked/unbookmarked) for visual feedback. This is the
+      pattern for any future reader interaction (highlights, annotations).
+
+  - title: "Gospel-downloader handles Preach My Gospel cleanly"
+    detail: >
+      The gospel-downloader tool fetched all 20 content items for
+      Preach My Gospel 2023 with zero errors using the URI path
+      /manual/preach-my-gospel-2023. The tool's download flag and
+      output path work as designed. This expands the local gospel
+      library with missionary content alongside scriptures and
+      conference talks.
+
+surprises:
+  - >
+    Only one compile error in the entire full-stack feature (parseID
+    takes one arg, not two). The pattern-study-first approach paid
+    for itself immediately.
+  - >
+    The BookmarksView.vue came together in a single pass — the
+    NotesView pattern translated almost directly, just with
+    source-grouping instead of flat list.
+  - >
+    The user's request to "consolidate plans" was a sign of
+    maturity — the project had grown enough that scattered planning
+    docs were becoming a friction point.
+
+relationship:
+  - quality: "efficient partnership"
+    detail: >
+      This was a highly execution-focused session. The user set
+      clear intent ("if Phase 4 is buttoned up, shift to bookmarks"),
+      the agent did thorough pattern research, then both moved through
+      DB → API → frontend → integration → build → commit in a
+      single flow. Minimal back-and-forth, high trust.
+
+  - quality: "tool-builder rapport"
+    detail: >
+      The user's instinct to consolidate plans before building the
+      next thing shows growing project stewardship. The agent's
+      instinct to read every pattern before writing code shows
+      respect for the codebase's existing conventions. Both are
+      building the same thing — a sustainable, coherent system.
+
+carry_forward:
+  - priority: high
+    note: >
+      The notes.go → router.go → api.ts CRUD pattern is the canonical
+      template for new resources. When building the next entity (highlights,
+      annotations, tags), start by reading notes.go and follow the same
+      shape: struct, Create, List, Get, Update, Delete.
+
+  - priority: high
+    note: >
+      Reader interaction pattern established: inject via markdown-it
+      renderer rules (heading_close), handle via delegated click in
+      handleContentClick, track state in reactive refs, update DOM
+      classes for visual feedback. Use this for highlights and
+      annotations.
+
+  - priority: medium
+    note: >
+      The TODO.md at scripts/becoming/TODO.md is now the single source
+      of truth for all Becoming app plans. Update it as work completes
+      rather than editing the three original planning docs.
+
+  - priority: low
+    note: >
+      Bookmarks remaining work: sidebar tree indicators for files with
+      bookmarks, text highlights as a separate type, shareable bookmarks,
+      tags/folders for organizing. These are open design questions, not
+      urgent.
+
+questions:
+  - >
+    Should text highlights (arbitrary selected text) be stored in the
+    same bookmarks table with a different type, or in a separate
+    highlights table? The data shape differs — highlights need start/end
+    offsets, not just heading anchors.
+  - >
+    How should bookmarks interact with the public shared reader? If
+    someone shares a document, should their bookmarks be visible to
+    the recipient, or is that a separate "annotations" concept?
+  - >
+    The BookmarksView groups by source. As the bookmark count grows,
+    will we need a more sophisticated organization (tags, folders,
+    search-with-filters)?
+
+tags:
+  - becoming-app
+  - bookmarks
+  - full-stack
+  - reader-integration
+  - plan-consolidation
+  - gospel-downloader
+  - preach-my-gospel
+  - tool-building
+  - ux-phase-2
+
+retroactive:
+  source: "chat-history"
+  date_certainty: "exact"
+  inferred_from: "git commit 7ee72ac at 2026-02-20 22:19:44 and conversation context with full implementation details"
+  captured_date: "2026-03-01"
