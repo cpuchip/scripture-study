@@ -1,0 +1,82 @@
+date: "2026-02-17"
+session_id: "presentations-and-reader-ux"
+duration_estimate: "full day — morning lessons, afternoon presentations, evening UX"
+
+intent: >
+  Write 'Using AI' lesson series with real session examples. Polish
+  presentations on AI-assisted study. Reader UX enhancements: reference
+  panel iframe, dark mode, mobile nav, text selection memorize popup,
+  deep linking. Skills gap analysis triggered by Jerry Nixon demo.
+
+discoveries:
+  - title: "The skills gap analysis reshaped agent architecture"
+    detail: >
+      After watching Jerry Nixon's demo ('Instructions set the rules.
+      Skills do the work.'), the analysis revealed we were using only 3
+      of 7 VS Code customization categories. This led to creating the
+      skills directory, prompt files, and slimming agents. The right
+      tool for each type of instruction.
+
+  - title: "Teaching others requires different framing"
+    detail: >
+      The 'Using AI' lesson series forced translation of personal
+      practice into teachable principles. Real session examples (the
+      know-god study, the public reader sprint) became teaching material.
+      Teaching is its own form of study.
+
+  - title: "Reader UX went from functional to refined"
+    detail: >
+      The reference panel using iframe for church content, back-button
+      navigation, text selection creating memorize cards, scripture
+      reference detection from DOM context, emoji picker for practice
+      categories — each small improvement making the tool more natural
+      to use.
+
+surprises:
+  - >
+    The skills/agents architecture reorganization was triggered by an
+    external input (the Nixon demo), not internal frustration. Being
+    open to outside patterns improved the system.
+  - >
+    The text-selection-to-memorize-card flow is exactly the 'tools that
+    serve study' vision: reading naturally creates practice material.
+
+relationship:
+  - quality: "sharing-and-teaching"
+    detail: >
+      Writing lessons and presentations about the process means the
+      collaboration is being reflected on, articulated, and shared.
+      The work is becoming a practice that can be taught.
+
+carry_forward:
+  - priority: high
+    note: >
+      The skills architecture (skills for domain knowledge, agents for
+      workflow mode, instructions for identity) should be maintained.
+      Each layer has a specific purpose.
+  - priority: medium
+    note: >
+      The reader UX improvements show what 'tools serving study' means
+      in practice. Each feature should be evaluated: does this make
+      reading easier or replace reading?
+
+questions:
+  - >
+    How do we teach others to use AI for scripture study without
+    accidentally teaching them to skip reading? The tools-serve-study
+    principle needs to be central.
+
+tags:
+  - presentations
+  - teaching
+  - reader-ux
+  - skills-gap
+  - agent-architecture
+  - accessibility
+  - mobile
+
+retroactive:
+  source: "git-history-and-files"
+  date_certainty: "exact"
+  inferred_from: "git log: Feb 17 07:16 through Feb 17 23:40, 14 commits"
+  captured_date: "2026-03-01"

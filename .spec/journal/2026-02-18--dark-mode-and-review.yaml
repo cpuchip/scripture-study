@@ -1,0 +1,59 @@
+date: "2026-02-18"
+session_id: "dark-mode-and-review"
+duration_estimate: "two sessions — morning UX, evening presentation review"
+
+intent: >
+  Global dark mode across the Becoming app, mobile hamburger nav,
+  heading anchor links with copy-to-clipboard. Evening: review and
+  update AI usage presentation with periodic review guidance.
+
+discoveries:
+  - title: "Dark mode as user respect"
+    detail: >
+      Whole-window dark mode, not just content area. The heading anchor
+      links with 'Copied!' tooltip make sharing specific sections easy.
+      Small touches that show the app respects the user's context —
+      late night study sessions, mobile reading, sharing with others.
+
+  - title: "Periodic review as practice"
+    detail: >
+      Added guidance to the AI usage presentation about periodically
+      reviewing tool use and AI responses. Not just 'use AI well' but
+      'keep checking that you're using AI well.' The reflective loop
+      applied to teaching others.
+
+surprises:
+  - >
+    A quieter session after weeks of marathons. Sometimes the right
+    pace is maintenance and refinement, not creation.
+
+relationship:
+  - quality: "steady"
+    detail: >
+      Not every session needs to be a breakthrough. Some sessions are
+      about making what exists better. The collaboration handles both
+      modes naturally.
+
+carry_forward:
+  - priority: low
+    note: >
+      UX refinements accumulate into user experience. Don't dismiss
+      small improvements.
+
+questions:
+  - >
+    Is the Becoming app approaching a 'good enough' state where
+    further features should wait for user feedback?
+
+tags:
+  - dark-mode
+  - ux
+  - mobile
+  - presentations
+  - refinement
+
+retroactive:
+  source: "git-history-and-files"
+  date_certainty: "exact"
+  inferred_from: "git log: Feb 18 08:11 through Feb 18 23:15, 3 commits"
+  captured_date: "2026-03-01"

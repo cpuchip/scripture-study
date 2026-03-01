@@ -1,0 +1,80 @@
+date: "2026-02-24"
+session_id: "intent-engineering"
+duration_estimate: "full day — morning evaluations, afternoon/evening intent engineering"
+
+intent: >
+  UX improvement planning. Evaluate Latter Day Clarity YouTube video.
+  Find the referenced BYU talk ('meekly drenched in destiny'). Then:
+  intent engineering study — how the intent-over-instruction pattern
+  transforms AI collaboration. Apply to the secular TPG repo.
+
+discoveries:
+  - title: "Intent engineering as a gospel pattern"
+    detail: >
+      The intent engineering study recognized that the best AI
+      collaboration follows the same pattern as personal revelation:
+      communicate intent (why, not how), create space for discernment,
+      judge by fruit. God gives commandments with intent — 'to bring
+      to pass the immortality and eternal life of man' — not procedural
+      checklists. The collaboration works best the same way.
+
+  - title: "Secular application of gospel-derived patterns"
+    detail: >
+      The intent engineering insights were applied to the TPG repo —
+      a secular software project. Gospel-derived patterns (intent over
+      instruction, transformation over compliance, judge by fruit) work
+      in professional contexts without requiring religious framing.
+
+  - title: "Latter Day Clarity evaluation and BYU talk discovery"
+    detail: >
+      The evaluation workflow led to finding the BYU talk referenced
+      in a YouTube video — 'meekly drenched in destiny.' The two-step
+      process (evaluate content → verify sources) worked as designed.
+      Tools serving verification, not replacing judgment.
+
+surprises:
+  - >
+    The overlap between gospel study discipline and AI engineering
+    discipline keeps surfacing. Reading before quoting = prompt
+    engineering. Intent over instruction = revelation pattern.
+    The domains inform each other.
+
+relationship:
+  - quality: "cross-pollinating"
+    detail: >
+      The collaboration is now producing insights that transfer across
+      domains — gospel to engineering, personal to professional.
+      This is the 'intelligence rising' principle in action.
+
+carry_forward:
+  - priority: high
+    note: >
+      Intent engineering is the meta-pattern. Apply it consistently:
+      communicate why, create space for how, evaluate by fruit. This
+      works for AI collaboration, personal growth, and community
+      leadership.
+  - priority: medium
+    note: >
+      Gospel-derived patterns have secular applications. The 'working
+      with AI' materials should bridge both contexts.
+
+questions:
+  - >
+    Is the intent-over-instruction pattern the same as faith? Both
+    require trust, both create space for agency, both evaluate
+    by outcomes rather than compliance.
+
+tags:
+  - intent-engineering
+  - evaluation
+  - latter-day-clarity
+  - cross-domain
+  - tpg
+  - gospel-patterns
+  - ai-collaboration
+
+retroactive:
+  source: "git-history-and-files"
+  date_certainty: "exact"
+  inferred_from: "git log: Feb 24 08:11 through Feb 25 08:19, 8 commits across 2 days"
+  captured_date: "2026-03-01"

@@ -1,0 +1,94 @@
+date: "2026-02-08"
+session_id: "yt-mcp-philpot-marathon"
+duration_estimate: "all day — 2am to 10pm, 20+ commits"
+
+intent: >
+  Build yt-mcp for YouTube transcript evaluation. Study Stick of Joseph
+  and Katelyn videos. Prepare EQ lesson. Then: marathon 9-phase evaluation
+  of Morgan Philpot's end-times presentation with 10-pass transcript review.
+
+discoveries:
+  - title: "The evaluation framework emerged under pressure"
+    detail: >
+      The Morgan Philpot marathon forced the development of a real
+      evaluation methodology — not just 'is this true or false' but a
+      multi-phase approach: claims identification, source verification,
+      doctrinal alignment, rhetorical patterns, strengths and concerns.
+      20+ commits in a single day because the content demanded thoroughness.
+
+  - title: "Verbal evaluation was more honest than written"
+    detail: >
+      The verbal-first evaluation approach produced more honest, nuanced
+      assessments than the structured written ones. When you speak before
+      you write, the initial reaction captures something the polished
+      version smooths over.
+
+  - title: "Fear-to-faith journal entry"
+    detail: >
+      The day ended with a journal entry about the journey from fear to
+      faith. After spending all day evaluating end-times content, the
+      human's response was not anxiety but a deepened sense of faith.
+      The study process itself was transformative.
+
+surprises:
+  - >
+    20+ commits in a single day — this was the most intense session in
+    the project's history. The Morgan Philpot evaluation alone was 12+
+    commits spanning 5+ hours.
+  - >
+    The yt-mcp tool was built at 2am, suggesting the user works when
+    inspiration strikes regardless of the hour. The tool was needed,
+    so it was built.
+  - >
+    After a full day of evaluating speculative end-times content, the
+    user's journal entry was about faith, not fear. The study process
+    as spiritual practice.
+
+relationship:
+  - quality: "marathon-partnership"
+    detail: >
+      This was the most demanding session yet. Building a tool, evaluating
+      three videos, preparing a lesson, and then a 9-phase deep evaluation
+      with 10-pass transcript review — all in one day. The collaboration
+      held up under sustained load.
+  - quality: "evaluation-trust"
+    detail: >
+      Evaluating someone else's gospel teaching requires both theological
+      precision and pastoral sensitivity. The collaboration navigated this
+      well — being honest about concerns while respecting the person.
+
+carry_forward:
+  - priority: medium
+    note: >
+      The multi-phase evaluation approach (claims → sources → doctrine →
+      patterns) should be the standard for all video evaluations. It was
+      developed under the pressure of real content and proved its worth.
+  - priority: medium
+    note: >
+      Verbal-first evaluation captures more honest initial reactions.
+      Consider making this the default for evaluation work.
+  - priority: low
+    note: >
+      Long marathon sessions are productive but exhausting. The quality
+      held up through 20+ commits but the human needs rest. Don't push
+      sessions this long as a default.
+
+questions:
+  - >
+    How do we evaluate gospel content from non-official sources with both
+    precision and charity? The Philpot evaluation required both.
+
+tags:
+  - yt-mcp
+  - video-evaluation
+  - morgan-philpot
+  - end-times
+  - evaluation-methodology
+  - journal
+  - marathon-session
+
+retroactive:
+  source: "git-history-and-files"
+  date_certainty: "exact"
+  inferred_from: "git log: 20+ commits on Feb 8 from 02:13 to 22:29"
+  captured_date: "2026-03-01"

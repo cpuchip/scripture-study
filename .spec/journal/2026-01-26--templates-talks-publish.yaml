@@ -1,0 +1,56 @@
+date: "2026-01-26"
+session_id: "templates-talks-publish"
+duration_estimate: "two evenings — Jan 26-27"
+
+intent: >
+  Create lesson and talk templates. Analyze Kevin Brown's testimony talk.
+  Build the publish tool to convert study documents to public HTML.
+  Start Come Follow Me lesson work and teaching prep.
+
+discoveries:
+  - title: "The publish pipeline creates accountability"
+    detail: >
+      Building a tool that converts study documents to public-facing HTML
+      with proper links created a feedback loop. Writing for publication
+      forced link accuracy and encouraged completeness. This became the
+      pattern: study privately, publish publicly.
+
+  - title: "Templates shape but shouldn't constrain"
+    detail: >
+      Created lesson_template.md and talk_template.md. These would later
+      be recognized as both helpful scaffolding and potential straitjackets
+      (Bias #6: Formulaic Synthesis). The tension between structure and
+      freedom starts here.
+
+surprises:
+  - >
+    The first conference talk analysis (Kevin Brown) and first CFM lesson
+    happened in the same session as the publish tool. Study and tooling
+    developed in parallel from the beginning.
+
+relationship:
+  - quality: "productive-rhythm"
+    detail: >
+      This session established the rhythm: build a tool, use it to study,
+      publish the results. The human's instinct to share the work publicly
+      pushed quality upward.
+
+carry_forward:
+  - priority: medium
+    note: >
+      The publish tool converts local gospel-library links to
+      churchofjesuschrist.org URLs. Any repo reorganization must account
+      for this — public URLs must remain stable.
+
+tags:
+  - templates
+  - publish
+  - conference-talks
+  - cfm
+  - teaching
+
+retroactive:
+  source: "git-history-and-files"
+  date_certainty: "exact"
+  inferred_from: "git log: commits Jan 26 22:33 through Jan 27 23:56"
+  captured_date: "2026-03-01"

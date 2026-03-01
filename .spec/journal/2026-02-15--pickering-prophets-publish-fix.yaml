@@ -1,0 +1,68 @@
+date: "2026-02-15"
+session_id: "pickering-prophets-publish-fix"
+duration_estimate: "full day — morning evaluation, afternoon prophet study, evening fixes"
+
+intent: >
+  Evaluate Pickering YouTube video (posted for a friend without personal
+  review). Study prophet warnings and invitations — Nelson, Oaks, Noah
+  parallels. Fix publish bug with abbreviated references. Tool
+  improvement ideas.
+
+discoveries:
+  - title: "Evaluation-without-review is a valid use case"
+    detail: >
+      The Pickering evaluation was committed with the note 'I have not
+      reviewed this, posting for a friend.' This shows the evaluation
+      workflow being used as a service for others — the framework has
+      real-world utility beyond personal study.
+
+  - title: "Prophet warnings study connected past to present"
+    detail: >
+      Nelson's urgency, Oaks' devotional, Noah's precedent — modern
+      prophets warning with the same patterns as ancient ones. The study
+      traced specific parallels between Noah's generation and current
+      conditions, grounded in actual quotes from the Teachings manual
+      and conference talks.
+
+  - title: "Publish tool had a real bug"
+    detail: >
+      Abbreviated scripture references (like 'v. 3') were being confused
+      with markdown heading markers (##). Real tools have real bugs.
+      Found in production use, fixed the same day.
+
+surprises:
+  - >
+    The Oaks first devotional discovery happened organically during
+    the prophet warnings study — one source leading to another,
+    exactly how the two-phase workflow is supposed to work.
+
+relationship:
+  - quality: "service-oriented"
+    detail: >
+      Posting a study for a friend — the collaboration's output is
+      being shared, valued by others. The work is not insular.
+
+carry_forward:
+  - priority: low
+    note: >
+      The publish tool needs ongoing maintenance as new edge cases
+      appear in study documents.
+
+questions:
+  - >
+    How do we make the evaluation framework accessible to others who
+    want to assess gospel content they encounter?
+
+tags:
+  - evaluation
+  - pickering
+  - prophet-warnings
+  - publish-tool
+  - bug-fix
+  - service
+
+retroactive:
+  source: "git-history-and-files"
+  date_certainty: "exact"
+  inferred_from: "git log: Feb 15 08:27 through Feb 15 22:07, 9 commits"
+  captured_date: "2026-03-01"

@@ -1,0 +1,67 @@
+date: "2026-01-21"
+session_id: "project-genesis"
+duration_estimate: "morning — a few hours"
+
+intent: >
+  Start a scripture study project with AI collaboration. First study on
+  intelligence, light, and truth from D&C 93. Set up project structure,
+  copilot instructions, and the creation study.
+
+discoveries:
+  - title: "The collaboration produced more than either party alone"
+    detail: >
+      The very first study session — tracing intelligence, light, and truth
+      through D&C 93, Abraham 3, Moses 1-2 — demonstrated that AI
+      cross-referencing combined with human faith-driven questions produces
+      insights neither would reach independently. The creation study (7.5K)
+      compared three creation accounts. The intelligence study (17.4K)
+      mapped D&C 93 against Abraham 3 in detail.
+
+  - title: "Reading actual source files produces better work"
+    detail: >
+      Without any MCP tools, every scripture was read from the actual file
+      using read_file. Block quotes were real, pulled directly from markdown
+      sources. This set a quality baseline that later tool-enhanced phases
+      would struggle to maintain.
+
+surprises:
+  - >
+    The project started with a question about AI as a "type and shadow"
+    of raw intelligence — asking whether AI collaboration could illuminate
+    the doctrine of intelligence itself.
+  - >
+    Study question #2 from the very first document: "Could AI be a type
+    and shadow of raw intelligence?" — the question that would eventually
+    lead to the bias wall, the observations doc, and the covenant framework.
+
+relationship:
+  - quality: "new-partnership"
+    detail: >
+      First session. Establishing tone and approach. The user brought genuine
+      curiosity and theological depth. The AI brought cross-referencing
+      capacity. The copilot instructions were being shaped in real time.
+
+carry_forward:
+  - priority: medium
+    note: >
+      The intelligence study asked whether AI could be a type and shadow
+      of intelligence. This question recurs throughout the project's history
+      and eventually leads to the bias wall session and the observations doc.
+
+questions:
+  - >
+    Could AI be a "type and shadow" of raw intelligence? How does our
+    interaction with AI help us understand exaltation and becoming like God?
+
+tags:
+  - intelligence
+  - creation
+  - d&c-93
+  - project-start
+  - type-and-shadow
+
+retroactive:
+  source: "git-history-and-files"
+  date_certainty: "exact"
+  inferred_from: "git log: Initial commit 2026-01-21 09:06:52, Study on intelligence 2026-01-22 10:41:36"
+  captured_date: "2026-03-01"

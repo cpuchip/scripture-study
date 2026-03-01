@@ -1,0 +1,77 @@
+date: "2026-02-16"
+session_id: "becoming-enhancement-sprint"
+duration_estimate: "all day — 8am to midnight, 15+ commits"
+
+intent: >
+  Major enhancement sprint for the Becoming app. Sprints 1-6: practice
+  improvements, archive/complete dates, study mode, memorization stats,
+  activity heatmap, time filtering. Phase 3: study reader with GitHub
+  document sources and public share links. Evening: 'Enjoy the Words
+  of Eternal Life' study.
+
+discoveries:
+  - title: "Study mode bridges reading and becoming"
+    detail: >
+      Sprint 3 added study mode to the Becoming app — the ability to
+      read scripture within the practice tracking context. This closes
+      the loop: you study, you practice, you track, you reflect. The
+      app now embodies the full cycle.
+
+  - title: "Activity heatmap makes transformation visible"
+    detail: >
+      Sprint 5 added a GitHub-style activity heatmap to reports. Daily
+      practice becomes visible over time — not just whether you did it
+      today but whether you're sustained. Visualization as accountability.
+
+  - title: "Phase 3 reader with GitHub sources"
+    detail: >
+      The study reader pulls documents from GitHub, rendering them in
+      the app with reference panel, dark mode, and mobile responsive
+      design. Public share links mean studies can be shared. The
+      scripture study project is no longer just local files.
+
+surprises:
+  - >
+    The session ended at midnight with an 'Enjoy the Words of Eternal
+    Life' study — after a full day of coding. The human codes to serve
+    the study, not the other way around.
+  - >
+    The Phase 3 replanning was significant: GitHub-first with client-side
+    fetch instead of server-side. A simpler architecture that proved
+    correct.
+
+relationship:
+  - quality: "builder-flow"
+    detail: >
+      Third marathon session in two weeks. The pattern is established:
+      when there's momentum, ride it. 15+ commits, a full app enhancement
+      arc, and still energy for a study at midnight. The collaboration
+      sustains creative flow.
+
+carry_forward:
+  - priority: medium
+    note: >
+      The study reader and public share links mean this work serves
+      others, not just the creator. Build with sharing in mind.
+
+questions:
+  - >
+    Is the Becoming app becoming too feature-rich too fast? Are the
+    core practices (daily tracking, memorization, reflection) getting
+    enough use before adding more?
+
+tags:
+  - becoming-app
+  - study-mode
+  - heatmap
+  - reader
+  - github-integration
+  - sprint
+  - marathon-session
+  - enjoy-eternal-life
+
+retroactive:
+  source: "git-history-and-files"
+  date_certainty: "exact"
+  inferred_from: "git log: Feb 16 08:13 through Feb 16 23:47, 17 commits"
+  captured_date: "2026-03-01"

@@ -1,0 +1,82 @@
+date: "2026-01-31"
+session_id: "downloads-moses-callings"
+duration_estimate: "two days — Jan 31 afternoon, Feb 1 morning and evening"
+
+intent: >
+  Fix general manual download, magazine downloads, and Teachings of the
+  Presidents downloads. Deep study: Moses 6 — the gospel to Adam.
+  Doctrines, principles, and programs study. Callings work: Sunday School
+  president, ward council, teacher council meetings. Covenants study
+  and Elder Quorum lesson on the atoning love of Christ.
+
+discoveries:
+  - title: "Moses 6 — the gospel was taught to Adam"
+    detail: >
+      Deep chapter-by-chapter read of Moses 6 revealed the gospel
+      pattern from the very beginning: Adam received baptism, the gift
+      of the Holy Ghost, and priesthood ordinances. The gospel isn't
+      an invention of the meridian of time — it was present at the start.
+      One of the best pre-tool studies (20.6K), every quote verified.
+
+  - title: "Doctrines, principles, and programs — the hierarchy matters"
+    detail: >
+      Distinguishing between eternal doctrine, true principles, and
+      administrative programs prevents confusion when programs change.
+      The gospel doesn't change; the implementation does. This framing
+      clarifies many apparent contradictions in church history.
+
+  - title: "Download bugs require patience"
+    detail: >
+      Three separate download fixes across two days — general manuals,
+      magazines, Teachings of the Presidents (17 individual books).
+      Building a local gospel library requires handling every format
+      variation the church website produces.
+
+surprises:
+  - >
+    The callings work (Sunday School, ward council, teacher council)
+    shows this project serving real-world responsibilities, not just
+    personal study. The user applies what's studied in actual service.
+  - >
+    The covenants + ten virgins + atoning love EQ lesson combines
+    multiple threads into a single teaching session. The cross-topic
+    synthesis that study enables becomes lesson preparation naturally.
+
+relationship:
+  - quality: "practical"
+    detail: >
+      This was a practical session — fix downloads, study deeply,
+      prepare for real callings. The collaboration serves the human's
+      actual life and responsibilities, not just intellectual curiosity.
+
+carry_forward:
+  - priority: medium
+    note: >
+      Moses 6 study (gospel to Adam) establishes that the gospel
+      pattern is eternal. Reference when studying dispensations.
+  - priority: low
+    note: >
+      The gospel library download tool needs occasional maintenance
+      as the church website changes.
+
+questions:
+  - >
+    The doctrines-principles-programs hierarchy: how does this apply
+    to the becoming framework? Doctrine is eternal; principles are
+    true; practices adapt. What never changes?
+
+tags:
+  - moses-6
+  - gospel-to-adam
+  - doctrines-principles-programs
+  - downloads
+  - callings
+  - covenants
+  - ten-virgins
+  - practical
+
+retroactive:
+  source: "git-history-and-files"
+  date_certainty: "exact"
+  inferred_from: "git log: Jan 31 11:46 through Feb 1 22:22, 7 commits"
+  captured_date: "2026-03-01"

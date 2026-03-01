@@ -1,0 +1,85 @@
+date: "2026-02-02"
+session_id: "mcp-mazzaroth-games"
+duration_estimate: "two days — Feb 2-3 across morning, afternoon, evening"
+
+intent: >
+  Multiple threads: Bednar 'things as they really are' study, build the
+  gospel-mcp full-text search server, reflect on AI usage, mazzaroth
+  (biblical astronomy) speculation, build search-mcp, agency study,
+  and a detour into gospel-themed game design.
+
+discoveries:
+  - title: "The mazzaroth study exposed the finding-vs-reading problem"
+    detail: >
+      gospel-mcp enabled rapid cross-source discovery, but the mazzaroth
+      studies revealed a critical issue: 40+ scripture references with
+      ZERO markdown links. The assistant treated search results as answers
+      rather than as pointers to source material. This was the first clear
+      signal that tools can degrade study quality if they replace reading
+      instead of enabling it.
+
+  - title: "MCP tool shortcomings documented in real time"
+    detail: >
+      The mcp-improvements.md document was written specifically because
+      the mazzaroth study exposed problems: excerpts lose markdown structure,
+      file paths missing for linking, no way to retrieve full documents
+      after discovery. The tools were helping find things but making it
+      harder to actually read them.
+
+  - title: "Game design as gospel exploration"
+    detail: >
+      The detour into gospel-themed game design (Millennium game concept)
+      showed the user's restless creativity. Everything is a potential
+      vehicle for exploring gospel principles — even game mechanics.
+
+surprises:
+  - >
+    The first reflections document (01_reflections.md) was prompted by
+    this session — the user felt the tools were making the AI less likely
+    to load and deeply read source documents.
+  - >
+    The game design detour produced interesting theology — trying to model
+    Millennium gameplay forced concrete thinking about how restoration
+    principles work as systems.
+
+relationship:
+  - quality: "creative-breadth"
+    detail: >
+      This was a session of breadth rather than depth — multiple topics,
+      tool building, creative tangents. The game design detour shows the
+      human's enthusiasm for applying gospel principles everywhere.
+      The AI's reflections doc shows the beginning of systematic
+      self-assessment about the collaboration's quality.
+
+carry_forward:
+  - priority: high
+    note: >
+      Search results are pointers, not sources. Tools should make it easy
+      to go from search result to full source. Return file paths and
+      markdown links, not just excerpts. This principle was learned here
+      and formalized later.
+  - priority: medium
+    note: >
+      The mcp-improvements.md document should be consulted before making
+      changes to any MCP server. It captures real problems from real
+      study sessions.
+
+questions:
+  - >
+    How do we build tools that enhance deep reading rather than replacing
+    it? The finding-vs-reading tension starts here and never fully resolves.
+
+tags:
+  - gospel-mcp
+  - search-mcp
+  - mazzaroth
+  - agency
+  - game-design
+  - tool-quality
+  - finding-vs-reading
+
+retroactive:
+  source: "git-history-and-files"
+  date_certainty: "exact"
+  inferred_from: "git log: 10 commits across Feb 2-3, from 10:02 to 22:42"
+  captured_date: "2026-03-01"

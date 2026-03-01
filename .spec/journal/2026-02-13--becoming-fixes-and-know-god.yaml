@@ -1,0 +1,68 @@
+date: "2026-02-13"
+session_id: "becoming-fixes-and-know-god"
+duration_estimate: "morning — fixes and study"
+
+intent: >
+  Fix PostgreSQL compatibility issues, onboarding UX, memorize quiz
+  scoring. Add branding (I Become / We Become). Then: study on knowing
+  God — character, attributes, nature of the Godhead.
+
+discoveries:
+  - title: "Production bug fixes teach architecture lessons"
+    detail: >
+      PostgreSQL behaves differently from SQLite in subtle ways — INSERT
+      OR IGNORE syntax, boolean/integer type mismatches, null handling
+      in aggregations. Each fix deepened understanding of the dual-driver
+      architecture's real-world requirements.
+
+  - title: "LCS-based word diff for quiz scoring"
+    detail: >
+      The memorize quiz needed to show what was right and wrong in a
+      typed scripture response. Longest Common Subsequence algorithm
+      provides word-level diff highlighting. Algorithmic tools serving
+      scripture memorization.
+
+  - title: "Know-God study used gospel-vec well"
+    detail: >
+      The Knowing God study expanded with gospel-vec discoveries —
+      the tool found connections across conference talks and scriptures
+      that enriched the study of divine character, attributes, and
+      nature. This was the tool working as designed.
+
+surprises:
+  - >
+    The dynamic branding (I Become vs We Become based on hostname) was
+    a small touch that revealed the user's vision: personal
+    transformation and communal transformation are both needed.
+
+relationship:
+  - quality: "maintenance-and-study"
+    detail: >
+      A practical session — fix what's broken, study when there's space.
+      Not every session needs to be a marathon or a revelation. Some
+      days you just fix the bugs and read about God.
+
+carry_forward:
+  - priority: low
+    note: >
+      PostgreSQL compatibility requires testing beyond SQLite. Don't
+      assume they behave identically.
+
+questions:
+  - >
+    The 'know God' study touches eternal life's definition (John 17:3).
+    How does this connect to the intelligence framework from D&C 93?
+
+tags:
+  - becoming-app
+  - bug-fixes
+  - postgresql
+  - know-god
+  - branding
+  - memorization
+
+retroactive:
+  source: "git-history-and-files"
+  date_certainty: "exact"
+  inferred_from: "git log: Feb 13 07:41 through Feb 13 12:42, 12 commits"
+  captured_date: "2026-03-01"

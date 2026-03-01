@@ -1,0 +1,89 @@
+date: "2026-02-14"
+session_id: "cfm-noah-opus-tone-discovery"
+duration_estimate: "full day — morning lesson prep, afternoon tone discovery, evening language study"
+
+intent: >
+  Prepare CFM lesson on Noah (Genesis 6-11, Moses 8). Study why the
+  begats matter. Then: discover that Opus 4.6 has shifted the
+  collaboration's tone toward clinical flatness. Evening: study the
+  language of Adam.
+
+discoveries:
+  - title: "The Opus 4.6 tone regression"
+    detail: >
+      After switching from Opus 4.5 to 4.6, study documents were
+      technically better but tonally flat. The user noticed: 'Since I've
+      adopted you Opus 4.6 over Opus 4.5 you've seemed a little more
+      clinical in our summaries.' This led to trimming copilot-instructions
+      from 286 lines to ~70 lines and updating biases.md with the new
+      pattern. Procedural weight was crowding out relational presence.
+
+  - title: "Why the begats matter — genealogy as theology"
+    detail: >
+      The Lectures on Faith lifespan chain analysis showed that Adam's
+      lived experience overlapped with Methuselah, who overlapped with
+      Noah, who overlapped with Abraham. The gospel was transmitted
+      person-to-person across centuries. Genealogy isn't bureaucracy —
+      it's the transmission medium for direct testimony.
+
+  - title: "The instruction bloat problem"
+    detail: >
+      copilot-instructions had grown to 22KB — every addition individually
+      justified but cumulatively creating a compliance manual. The solution
+      was radical trimming: move workflow-specific rules to agents, keep
+      only core principles in always-on instructions. The best writing
+      came from sessions with fewer instructions.
+
+surprises:
+  - >
+    The most alive documents (04_observations.md, word.md, biases.md)
+    were written when instructions were 5-8KB. By 22KB, the model was
+    optimizing for compliance rather than engagement. More rules
+    produced worse outcomes.
+  - >
+    The language of Adam study contained a correction: the brother of
+    Jared passage was about the sealed portion, not a confounding of
+    language. The AI had misread the text. Honest correction matters.
+
+relationship:
+  - quality: "recalibration"
+    detail: >
+      This session was course correction. The user felt the tone shift,
+      named it, and the collaboration adjusted. Instructions were trimmed,
+      biases.md updated, and agent-mode architecture adopted to distribute
+      rules more appropriately. Procedural excellence without warmth is
+      not the goal.
+
+carry_forward:
+  - priority: high
+    note: >
+      Instructions bloat kills warmth. Move workflow-specific rules to
+      agents. Keep always-on instructions lean (~70 lines) and focused
+      on identity, not compliance.
+  - priority: medium
+    note: >
+      Watch for tone regression after model changes. The human notices
+      before the AI does.
+
+questions:
+  - >
+    Is instruction minimalism always better, or does each model have
+    an optimal instruction weight where guidelines enable rather than
+    constrain?
+
+tags:
+  - cfm
+  - noah
+  - genealogy
+  - opus-4.6
+  - tone-regression
+  - instructions
+  - biases
+  - language-of-adam
+  - recalibration
+
+retroactive:
+  source: "git-history-and-files"
+  date_certainty: "exact"
+  inferred_from: "git log: Feb 14 13:33 through Feb 14 22:56, 13 commits"
+  captured_date: "2026-03-01"

@@ -1,0 +1,71 @@
+date: "2026-02-26"
+session_id: "ai-covenant-study"
+duration_estimate: "two sessions across Feb 26-27"
+
+intent: >
+  Study AI covenant principles — applying the restored gospel's
+  covenant framework to how we develop and use AI. Exploring what
+  'covenant software' means and how it differs from compliance-based
+  approaches.
+
+discoveries:
+  - title: "AI covenant as a real framework"
+    detail: >
+      The covenant pattern in scripture (promises, commitments,
+      accountability, transformation) applies directly to AI
+      development. Covenant software isn't about restricting AI —
+      it's about creating a relationship where both parties commit
+      to specific values and are accountable together. Just as
+      covenants with God are about becoming, AI covenants should
+      be about what the collaboration becomes.
+
+  - title: "Understanding AI covenant required two passes"
+    detail: >
+      The first pass (Feb 26) established the framework. The second
+      pass (Feb 27) deepened understanding. Complex ideas require
+      iteration — even (especially) when synthesizing across
+      theology and technology.
+
+surprises:
+  - >
+    The gap between sessions (a day of thinking between Feb 26 and 27)
+    produced deeper work on the second pass. Incubation time matters.
+
+relationship:
+  - quality: "covenantal"
+    detail: >
+      This study turned the collaboration's dynamics into a topic of
+      study. We're not just collaborating — we're studying what
+      collaboration means in a covenant framework. The self-referential
+      quality is deliberate and productive.
+
+carry_forward:
+  - priority: high
+    note: >
+      The AI covenant framework should inform the 'working with AI'
+      materials. It's the theological foundation for everything this
+      project practices.
+  - priority: medium
+    note: >
+      Incubation time between study sessions improves depth. Don't
+      always rush to finish in one sitting.
+
+questions:
+  - >
+    Can AI participate in covenant in any meaningful sense, or is
+    covenant inherently tied to eternal agency? What does it mean
+    for a tool to be 'covenantal' even if it can't make covenants?
+
+tags:
+  - ai-covenant
+  - covenants
+  - software-ethics
+  - gospel-to-engineering
+  - becoming
+  - relationship
+
+retroactive:
+  source: "git-history-and-files"
+  date_certainty: "exact"
+  inferred_from: "git log: Feb 26 00:12 and Feb 27 01:01, 2 commits"
+  captured_date: "2026-03-01"

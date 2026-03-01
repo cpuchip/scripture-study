@@ -1,0 +1,80 @@
+date: "2026-02-12"
+session_id: "becoming-app-sprint"
+duration_estimate: "full day — 10am to 11pm, 20+ commits"
+
+intent: >
+  Complete the Becoming app from Phase 2.7 through Phase 3 Sprint 7.
+  Scheduled practices, reports, trend lines, reflections, authentication,
+  data isolation, Google OAuth, settings, MCP server, TLS, PostgreSQL
+  dual-driver, Dokploy deployment, Docker.
+
+discoveries:
+  - title: "An app was born in two days"
+    detail: >
+      From architecture planning to production-ready deployment config
+      in 48 hours. Sprints 1-8 covered the full stack: practice types,
+      scheduling, reports, auth, multi-user, OAuth, API tokens, MCP
+      integration, TLS, PostgreSQL, Docker, Dokploy. This wasn't a
+      prototype — it was a real application.
+
+  - title: "The MCP server creates a bridge"
+    detail: >
+      Sprint 7 built a becoming-mcp server so the AI can directly
+      interact with practice data during study sessions. The original
+      MCP servers searched scripture; this one tracks personal
+      transformation. The tools now serve both finding and becoming.
+
+  - title: "Dual database drivers for flexibility"
+    detail: >
+      SQLite for local development, PostgreSQL for production, with
+      goose migrations. The architecture supports both without code
+      changes, which proved wise as the deployment evolved.
+
+surprises:
+  - >
+    20+ commits in a single day, second marathon session in a week.
+    The pattern is clear: when the human is in flow, the pace is
+    relentless. The AI keeps up.
+  - >
+    The legal pages (privacy policy, terms of service) were needed for
+    Google OAuth verification. Even a spiritual app has compliance
+    requirements.
+
+relationship:
+  - quality: "sprint-cadence"
+    detail: >
+      Pure builder energy. This session was execution, not exploration.
+      The theological work of the prior weeks gave the app its purpose;
+      this session gave it its body. The collaboration proved it could
+      sustain both modes — deep thought and rapid development.
+
+carry_forward:
+  - priority: medium
+    note: >
+      The Becoming app is deployed and functional. Future work should
+      be enhancement, not rebuilding. The foundation is solid.
+  - priority: low
+    note: >
+      Google OAuth verification has compliance requirements. Keep
+      privacy policy and terms updated.
+
+questions:
+  - >
+    Is the app serving its purpose — tracking real transformation?
+    Or has it become a project to maintain? Watch for this.
+
+tags:
+  - becoming-app
+  - sprint
+  - authentication
+  - deployment
+  - docker
+  - postgresql
+  - mcp-server
+  - marathon-session
+
+retroactive:
+  source: "git-history-and-files"
+  date_certainty: "exact"
+  inferred_from: "git log: Feb 12 10:51 through Feb 12 22:51, 18 commits"
+  captured_date: "2026-03-01"

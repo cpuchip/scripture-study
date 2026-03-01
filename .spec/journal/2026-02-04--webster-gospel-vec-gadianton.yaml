@@ -1,0 +1,87 @@
+date: "2026-02-04"
+session_id: "webster-gospel-vec-gadianton"
+duration_estimate: "two days — Feb 4-5, multiple sessions"
+
+intent: >
+  Build Webster 1828 dictionary MCP, get gospel-vec semantic search
+  working with local GPU, charity study, priesthood oath and covenant
+  deep dive, gadianton robbers study.
+
+discoveries:
+  - title: "Webster 1828 is the model tool"
+    detail: >
+      The webster-mcp tool represents the ideal pattern: it provides a
+      specific, authoritative result (a historical definition), the AI
+      reasons about it in context, and the output is genuinely enhanced.
+      Understanding 'obtain' vs 'receive' in D&C 84 was a breakthrough
+      in the priesthood study. The tool doesn't replace reading — it
+      complements it.
+
+  - title: "The priesthood study showed tools at their best"
+    detail: >
+      priesthood-oath-and-covenant.md (24.4K) used Webster 1828 definitions
+      meaningfully, had real conference talk quotes with proper links. It
+      reads like the best of Phase 1 depth PLUS tool-enhanced breadth.
+      This is the quality standard that every subsequent study should aim
+      for.
+
+  - title: "The Gadianton study showed tools at their worst"
+    detail: >
+      The largest study (30.7K) had excellent scripture sections but the
+      conference talk section exposed every problem: links to directories
+      instead of files, paraphrased quotes presented as real, vector search
+      summaries treated as source material. President Hinckley's powerful
+      2001 statement about Gadianton robbers was missed because the AI
+      never read the actual file — the most relevant quote in the entire
+      study, lost because the tool 'found' it without 'reading' it.
+
+surprises:
+  - >
+    The gospel-vec indexer processed 210,011 documents across all scriptures
+    and conference talks. The scale was impressive but the quality gap
+    between finding and reading became undeniable.
+  - >
+    When the Hinckley talk was finally read directly, the material was far
+    more powerful and specific than anything the search tools had returned.
+    The best quote in the study was the one the tools missed.
+
+relationship:
+  - quality: "quality-awareness"
+    detail: >
+      This session pair produced the clearest evidence of both tool
+      benefits and tool dangers. The priesthood study showed the ceiling;
+      the gadianton study showed the floor. The user's instinct to look
+      up the unattributed talks the next day (Feb 6) showed commitment
+      to accuracy over convenience.
+
+carry_forward:
+  - priority: high
+    note: >
+      Webster 1828 is the model for how tools should work: authoritative,
+      self-contained, enhances reasoning without replacing reading. Every
+      new tool should be measured against this standard.
+  - priority: high
+    note: >
+      The Gadianton Hinckley case is the clearest example of the
+      finding-vs-reading problem. Use it as a teaching case when designing
+      tool improvements.
+
+questions:
+  - >
+    Can tool design itself prevent the finding-vs-reading degradation, or
+    does it always require discipline from the AI to actually read sources?
+
+tags:
+  - webster-mcp
+  - gospel-vec
+  - priesthood
+  - gadianton-robbers
+  - tool-quality
+  - finding-vs-reading
+  - model-tool
+
+retroactive:
+  source: "git-history-and-files"
+  date_certainty: "exact"
+  inferred_from: "git log: commits Feb 4 12:15 through Feb 6 11:51"
+  captured_date: "2026-03-01"

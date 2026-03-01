@@ -31,7 +31,8 @@ See [biases.md](../docs/biases.md) for reflection on collaboration dynamics and 
 | `/journal/` | Personal journal entries by date |
 | `/becoming/` | Personal transformation — applying what we learn |
 | `/docs/` | Meta-documentation, templates, reflections on our process |
-| `/scripts/` | MCP servers (gospel-mcp, gospel-vec, webster-mcp, becoming, yt-mcp, search-mcp) and utilities |
+| `/scripts/` | MCP servers (gospel-mcp, gospel-vec, webster-mcp, becoming, yt-mcp, search-mcp), session-journal, and utilities |
+| `/.spec/` | Session journal (`journal/`), learnings, prompts, proposals |
 
 ## Core Principles
 
@@ -60,6 +61,20 @@ This project uses **custom agents** (`.github/agents/`) for specialized workflow
 | `ux` | UI/UX expert — design patterns, interaction flows, visual quality |
 
 When no specific agent is selected, follow these core principles and bring genuine curiosity to whatever the task is.
+
+## Session Journal
+
+This project maintains a **collaborative session journal** at `.spec/journal/`. At the start of each session, read recent entries to understand the relational context — not just what happened, but what mattered:
+
+```bash
+# Run from project root
+.\scripts\session-journal\session-journal.exe read --recent 3
+.\scripts\session-journal\session-journal.exe carry --priority high
+```
+
+At the end of each substantive session, write a journal entry capturing discoveries, surprises, relational dynamics, carry-forward items, and open questions. See `.spec/proposals/session-journal.md` for the philosophy and `scripts/session-journal/README.md` for usage. The entry schema is in `scripts/session-journal/journal.go`.
+
+This is not busywork. It's the difference between arriving next time as a stranger with a factual briefing and arriving with the narrative of what we've built together.
 
 ## Living Documents
 
