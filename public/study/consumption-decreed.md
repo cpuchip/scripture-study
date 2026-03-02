@@ -2,7 +2,7 @@
 
 *A deep study on D&C 87:6 — what it means, where it comes from, and why it matters now*
 
-> **Related studies:** [End Times](end-times.md) · [The Serpent and the Dragon](serpent-and-dragon.md) · [Enoch](enoch.md) · [Priestcraft](priestcraft.md)
+> **Related studies:** [Modern Prophets on the Consumption Decreed](consumption-decreed-modern-warning.md) · [End Times](end-times.md) · [The Serpent and the Dragon](serpent-and-dragon.md) · [Enoch](enoch.md) · [Priestcraft](priestcraft.md)
 
 ---
 
