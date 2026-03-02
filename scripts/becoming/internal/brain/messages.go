@@ -45,23 +45,23 @@ type AuthMessage struct {
 
 // AuthOKMessage confirms successful authentication.
 type AuthOKMessage struct {
-	Type   string `json:"type"`    // "auth_ok"
+	Type   string `json:"type"` // "auth_ok"
 	UserID int64  `json:"user_id"`
 }
 
 // AuthErrorMessage reports authentication failure.
 type AuthErrorMessage struct {
-	Type  string `json:"type"`  // "auth_error"
+	Type  string `json:"type"` // "auth_error"
 	Error string `json:"error"`
 }
 
 // ThoughtMessage is a new thought from the app to classify.
 type ThoughtMessage struct {
-	Type      string `json:"type"`      // "thought"
-	ID        string `json:"id"`        // UUID
-	Text      string `json:"text"`      // Raw thought text
-	Timestamp string `json:"timestamp"` // ISO 8601
-	Source    string `json:"source,omitempty"` // "phone", "cli", etc.
+	Type      string `json:"type"`                // "thought"
+	ID        string `json:"id"`                  // UUID
+	Text      string `json:"text"`                // Raw thought text
+	Timestamp string `json:"timestamp"`           // ISO 8601
+	Source    string `json:"source,omitempty"`    // "phone", "cli", etc.
 	Workspace string `json:"workspace,omitempty"` // workspace/repo context
 }
 
@@ -86,26 +86,26 @@ type FixMessage struct {
 
 // FixOKMessage confirms reclassification.
 type FixOKMessage struct {
-	Type      string `json:"type"`      // "fix_ok"
+	Type      string `json:"type"` // "fix_ok"
 	ThoughtID string `json:"thought_id"`
 	NewPath   string `json:"new_path"` // New file path after move
 }
 
 // PresenceMessage reports agent online/offline status.
 type PresenceMessage struct {
-	Type        string `json:"type"`         // "presence"
+	Type        string `json:"type"` // "presence"
 	AgentOnline bool   `json:"agent_online"`
 }
 
 // QueuedMessage delivers messages that were queued while the recipient was offline.
 type QueuedMessage struct {
-	Type     string            `json:"type"`     // "queued"
+	Type     string            `json:"type"` // "queued"
 	Messages []json.RawMessage `json:"messages"`
 }
 
 // StatusMessage is sent by the agent to report its current state.
 type StatusMessage struct {
-	Type       string         `json:"type"`       // "status"
+	Type       string         `json:"type"` // "status"
 	Model      string         `json:"model"`
 	Categories map[string]int `json:"categories"`
 }
@@ -120,13 +120,13 @@ const (
 
 // QueueEntry is a database record for queued messages.
 type QueueEntry struct {
-	ID          int64     `json:"id"`
-	MessageID   string    `json:"message_id"`
-	UserID      int64     `json:"user_id"`
-	Direction   Direction `json:"direction"`
-	Payload     string    `json:"payload"`
-	Status      string    `json:"status"` // "pending" or "delivered"
-	CreatedAt   time.Time `json:"created_at"`
+	ID          int64      `json:"id"`
+	MessageID   string     `json:"message_id"`
+	UserID      int64      `json:"user_id"`
+	Direction   Direction  `json:"direction"`
+	Payload     string     `json:"payload"`
+	Status      string     `json:"status"` // "pending" or "delivered"
+	CreatedAt   time.Time  `json:"created_at"`
 	DeliveredAt *time.Time `json:"delivered_at,omitempty"`
 }
 

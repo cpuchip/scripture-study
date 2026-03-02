@@ -495,8 +495,8 @@ func (h *Hub) HandleStatus(w http.ResponseWriter, r *http.Request) {
 
 	w.Header().Set("Content-Type", "application/json")
 	json.NewEncoder(w).Encode(map[string]any{
-		"agent_online":    h.IsAgentOnline(userID),
+		"agent_online":     h.IsAgentOnline(userID),
 		"pending_to_agent": toAgent,
-		"pending_to_app":  toApp,
+		"pending_to_app":   toApp,
 	})
 }
