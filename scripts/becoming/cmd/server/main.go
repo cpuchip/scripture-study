@@ -11,6 +11,7 @@ import (
 
 	"github.com/cpuchip/scripture-study/scripts/becoming/internal/api"
 	"github.com/cpuchip/scripture-study/scripts/becoming/internal/auth"
+	"github.com/cpuchip/scripture-study/scripts/becoming/internal/brain"
 	"github.com/cpuchip/scripture-study/scripts/becoming/internal/db"
 	"github.com/cpuchip/scripture-study/scripts/becoming/internal/envload"
 	"github.com/go-chi/chi/v5"
@@ -100,6 +101,10 @@ func main() {
 		r.Mount("/api/public", api.PublicRouter(database))
 	})
 
+	// Brain relay WebSocket (auth via token in first message, not middleware)
+	brainHub := brain.NewHub(database)
+	r.Get("/ws/brain", brainHub.HandleWebSocket)
+
 	// Protected API routes
 	r.Group(func(r chi.Router) {
 		r.Use(auth.Required(database, *dev))
@@ -123,6 +128,10 @@ func main() {
 
 		// Data export
 		r.Get("/api/export", authHandlers.ExportData)
+
+		// Brain relay REST endpoints
+		r.Get("/api/brain/history", brainHub.HandleHistory)
+		r.Get("/api/brain/status", brainHub.HandleStatus)
 
 		// All existing API routes
 		r.Mount("/api", api.Router(database, *scriptures))

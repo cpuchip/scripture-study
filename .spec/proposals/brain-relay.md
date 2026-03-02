@@ -445,8 +445,96 @@ This doesn't change Phases A-D. Build the relay first, make it work, then add MC
 
 ---
 
+## Implementation Progress
+
+| Phase | Status | Notes |
+|-------|--------|-------|
+| **A — ibeco.me relay hub** | ✅ Done | `internal/brain/` package (hub.go, messages.go, queue.go). WebSocket at `/ws/brain`, REST at `/api/brain/status` and `/api/brain/history`. All routes wired in main.go. Compiles + vet clean. |
+| **B — brain.exe relay client** | ✅ Done | `internal/relay/client.go`. Config vars: `RELAY_URL`, `RELAY_TOKEN`, `RELAY_ENABLED`, `DISCORD_ENABLED`. Auto-reconnect with exponential backoff. main.go supports relay + Discord as parallel transports. Compiles + vet clean. |
+| **C — Dart mobile app** | Not started | `cpuchip/brain-app` repo cloned to `scripts/brain-app/`. |
+| **D — Integration test** | ✅ Verified | Local test: app→hub→agent→classify→result→app. All 6 steps pass. Presence notification works both directions. Queue table created automatically. |
+| **E — MCP server + CLI** | Not started | See expanded plan below. |
+
+---
+
+## Expanded Roadmap (New Features — March 2 Update)
+
+Based on Michael's feedback, the brain is growing beyond a simple capture-classify tool. Here's the expanded vision:
+
+### Embeddings Strategy
+
+**No external API needed.** Claude Pro ($20/mo) is web UI only — no embeddings API. Instead:
+- **chromem-go** (already used by gospel-vec) provides local sentence-transformer embeddings — free, fast, zero external dependency
+- Brain.exe generates embeddings on every capture alongside classification
+- Stored in a local `brain.db` SQLite file with vector columns (same pattern as gospel-vec)
+- Enables semantic search: "What did I capture about covenants?" without exact keyword matches
+
+### Phase E — MCP Server + CLI (Both needed)
+
+Michael can't use local MCP servers at work. Two access patterns:
+
+**MCP Server (home/personal workspaces):**
+- Brain.exe exposes `stdio` MCP server alongside relay client
+- Add to any workspace's MCP config
+- Tools: `brain_search`, `brain_recent`, `brain_capture`, `brain_stats`
+
+**CLI Tool (work + anywhere):**
+- `brain capture "thought text"` — sends through relay
+- `brain search "query"` — semantic search against embeddings
+- `brain recent` — last N classified entries
+- `brain status` — agent online, queue counts, model info
+- `brain fix <id> <category>` — reclassify
+- Works anywhere Go runs. Talks to ibeco.me REST API (no WebSocket needed for CLI).
+- **Copilot Chat Skill** — a `@brain` participant that wraps the CLI, so brain is accessible from any VS Code Chat panel even without MCP
+
+### Phase F — Brain App Enhanced (Flutter)
+
+**Home Screen Widgets:**
+- **Quick Capture (2×3 or 1×3):** Text field + send button, like Microsoft TODO widget. Tap → type → capture → done. No app launch needed.
+- **Brain Digest (2×3):** Shows last 3-5 captured thoughts with categories and confidence. Tap to expand.
+- **Action Items (1×3):** Shows pending actions/todos extracted from recent thoughts.
+- Uses Android `home_widget` Flutter package + iOS WidgetKit via `home_widget`
+
+**Push Notifications:**
+- Brain.exe → ibeco.me relay → FCM/APNs → phone notification
+- Types: result ready (for queued thoughts), daily digest, action reminders, brain alerts
+- Notification channels: urgent (alerts), normal (results), low (digests)
+
+**Voice I/O (Phase C includes this):**
+- `speech_to_text` for capture — hold mic button, speak, release to send
+- `flutter_tts` for playback — brain reads results aloud while driving
+
+### Phase G — Periodic Wake-Up + Intelligence
+
+The brain doesn't just wait for input — it proactively works:
+
+**Scheduled Tasks:**
+- **Morning digest:** Summarize yesterday's captures, surface pending actions
+- **Weekly review:** Cluster by topic, find patterns, detect stale/unresolved items
+- **News monitoring:** Watch configured sources (YouTube channels, RSS, etc.)
+- **Auto-evaluate:** When Nate B Jones (or other configured creators) posts a video, download transcript, evaluate relevance, generate digest
+- **Action follow-up:** "You captured 'Call dentist Monday' 3 days ago — did you do it?"
+
+**Implementation:**
+- Brain.exe runs a scheduler (cron-style) alongside the relay client
+- Uses existing Copilot SDK for analysis
+- Results pushed via relay → notifications on phone
+- Config in `.brain/config.yaml`: which sources to watch, digest times, alert thresholds
+
+### Phase H — Memory Hub (Cross-Platform)
+
+Every entry tagged with:
+- `workspace`: which repo/project context
+- `source`: phone, cli, vscode, discord
+- `session_id`: link to working session
+- `embedding`: vector for semantic search
+
+Any workspace can query the brain: "What decisions were made about the becoming app last week?" — works from VS Code Chat, CLI, or MCP.
+
+---
+
 ## Review Checkpoint
 
-Before implementation: Michael reviews this spec, confirms architecture. Questions are answered. Ready to go.
+Phases A, B, D complete and verified. Ready to deploy ibeco.me changes and start Phase C (Dart app) or Phase E (CLI + embeddings).
 
 *"Created all things spiritually, before they were naturally upon the face of the earth."* — [Moses 3:5](gospel-library/eng/scriptures/pgp/moses/3.md)
