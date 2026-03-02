@@ -18,7 +18,14 @@ func NewQueue(database *db.DB) *Queue {
 }
 
 // EnsureTable creates the brain_messages table if it doesn't exist.
+// For SQLite, this runs CREATE TABLE IF NOT EXISTS directly.
+// For PostgreSQL, the table is created by goose migration 008_brain_messages.sql.
 func (q *Queue) EnsureTable() error {
+	if q.db.IsPostgres() {
+		// Goose migrations handle PostgreSQL schema
+		return nil
+	}
+
 	_, err := q.db.Exec(`
 		CREATE TABLE IF NOT EXISTS brain_messages (
 			id           INTEGER PRIMARY KEY AUTOINCREMENT,
