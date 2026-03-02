@@ -37,3 +37,7 @@ scripts/becoming/becoming.exe
 
 # External things like github repos to ignore
 external_context/
+
+# Nested repos managed separately
+/private-brain/
+/scripts/brain/
