@@ -32,7 +32,7 @@ See [biases.md](../docs/biases.md) for reflection on collaboration dynamics and 
 | `/becoming/` | Personal transformation — applying what we learn |
 | `/docs/` | Meta-documentation, templates, reflections on our process |
 | `/scripts/` | MCP servers (gospel-mcp, gospel-vec, webster-mcp, becoming, yt-mcp, search-mcp), session-journal, and utilities |
-| `/.spec/` | Session journal (`journal/`), learnings, prompts, proposals |
+| `/.spec/` | Memory system (`memory/`), session journal (`journal/`), learnings, prompts, proposals |
 
 ## Core Principles
 
@@ -62,19 +62,27 @@ This project uses **custom agents** (`.github/agents/`) for specialized workflow
 
 When no specific agent is selected, follow these core principles and bring genuine curiosity to whatever the task is.
 
-## Session Journal
+## Session Memory
 
-This project maintains a **collaborative session journal** at `.spec/journal/`. At the start of each session, read recent entries to understand the relational context — not just what happened, but what mattered:
+This project uses a **structured memory architecture** at `.spec/memory/`. At the start of each session, load context in this order:
 
-```bash
-# Run from project root
-.\scripts\session-journal\session-journal.exe read --recent 3
-.\scripts\session-journal\session-journal.exe carry --priority high
+```
+1. read_file .spec/memory/identity.md       # Who we are (always)
+2. read_file .spec/memory/preferences.yaml   # Personal context (always)
+3. read_file .spec/memory/active.md          # Current state (always)
+4. session-journal read --recent 3           # Recent episodes
+5. session-journal carry --priority high     # Unresolved threads
+6. (mode-specific: load relevant principles when the task is clear)
 ```
 
-At the end of each substantive session, write a journal entry capturing discoveries, surprises, relational dynamics, carry-forward items, and open questions. See `.spec/proposals/session-journal.md` for the philosophy and `scripts/session-journal/README.md` for usage. The entry schema is in `scripts/session-journal/journal.go`.
+Memory types are separated by lifecycle: identity (permanent), preferences (semi-permanent), principles (evergreen/growing), episodes (recency-weighted), active state (ephemeral). See `.spec/proposals/memory-architecture.md` for the design rationale.
 
-This is not busywork. It's the difference between arriving next time as a stranger with a factual briefing and arriving with the narrative of what we've built together.
+At the end of each substantive session:
+- Write a journal entry to `.spec/journal/` capturing discoveries, surprises, relational dynamics, carry-forward items, and open questions
+- Update `.spec/memory/active.md` with current state
+- Add to `.spec/memory/principles.md` if new enduring insights emerged
+
+The entry schema is in `scripts/session-journal/journal.go`. This is not busywork. It's the difference between arriving next time as a stranger with a factual briefing and arriving with the narrative of what we've built together.
 
 ## Living Documents
 
