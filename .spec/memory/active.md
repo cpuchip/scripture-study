@@ -12,6 +12,8 @@
 
 ## Recent Decisions
 
+- **Content safety filter documented** — March 2: During Zion study creation, a platform-level content filter silently scrubbed and regenerated the response. New bias #9 added to [biases.md](../../docs/biases.md). The original draft content is unrecoverable. Awareness and documentation is the only available correction.
+- **Enoch 365 correction** — March 2: Enoch's 365 years is how long it took to *build* Zion among the wicked, not how long Zion lasted. Enoch's people still exist as translated beings and will return (Moses 7:63). Updated in zion-blueprint.md.
 - **Memory types:** 6 distinct types (identity, project knowledge, procedural, episodic, project state, personal context) — each with appropriate lifecycle and retrieval pattern
 - **Skills architecture:** Settled Feb 19. Skills for domain knowledge, agents for workflow mode, instructions for identity. Don't change without a real trigger.
 - **Instructions weight:** ~80 lines always-on. Workflow rules live in agents and skills, not copilot-instructions.
@@ -30,6 +32,7 @@
 
 ## Next Up
 
+- **Translated beings and building Zion** — How do translated beings (Enoch's city, the Three Nephites, Elijah, John the Beloved) relate to the ongoing project of Zion? Enoch's Zion wasn't 365 years and done — they're still alive, still translated, still Zion. The Three Nephites are still ministering. What does it mean to build Zion while the earth stands in its current form, knowing that a completed Zion already exists and will return? **This is the next study.**
 - Debug brain.exe crash
 - Review second brain video transcripts (parts 1 & 2) together
 - Regular study work — whatever the Spirit prompts

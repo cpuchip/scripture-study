@@ -12,7 +12,7 @@ The [consumption decreed](consumption-decreed.md) study revealed that nations de
 
 Zion is the opposite force. If consumption is a civilization eating itself, Zion is a civilization *feeding* itself — feeding each other, spiritually and temporally, until there is nothing left to lack.
 
-But Zion is not a theory. It has actually been built — *twice.* Once by Enoch over 365 years, and once by the Nephites after Jesus' visit, lasting over 200 years. Both followed the same pattern. Both produced the same result. And both eventually fell to the same disease.
+But Zion is not a theory. It has actually been built — *twice.* Once by Enoch over 365 years of gathering the righteous among the wicked, and once by the Nephites after Jesus' visit, lasting over 200 years. Enoch's Zion didn't end — it was taken up into heaven, and those people still live as translated beings, awaiting the day they return to meet the New Jerusalem ([Moses 7:62–63](../gospel-library/eng/scriptures/pgp/moses/7.md)). The Nephite Zion, by contrast, eventually fell to the same disease it was built to cure.
 
 The question that matters: **What did they actually do?** And what can *we* do, today and every day, to build Zion where we stand?
 
@@ -176,7 +176,7 @@ This is the spirit that built Zion. Not a program. Not an economic policy. **A P
 
 ---
 
-## III. Enoch's 365 Years: Is It a Metaphor?
+## III. Enoch's 365 Years: Building Zion Among the Wicked
 
 > "And all the days of Zion, in the days of Enoch, were three hundred and sixty-five years." — [Moses 7:68](../gospel-library/eng/scriptures/pgp/moses/7.md)
 
@@ -184,7 +184,13 @@ This is the spirit that built Zion. Not a program. Not an economic policy. **A P
 
 You asked whether 365 years is a metaphor for living each 365 days with the Lord. I think the answer is *yes — and more than a metaphor.*
 
-365 is literal. It took that long. Enoch started as a hated, slow-of-speech young man standing on the hills, and it took 365 years of daily walking with God before his entire city was taken up.
+But first, the critical distinction: **365 years is how long it took to *build* Zion, not how long Zion lasted.** Enoch's people didn't vanish after 365 years — they were taken up *because* they had, through 365 years of daily walking with God, become ready. And they still exist. They are translated beings — still living, still Zion, just not here on this earth in its current form. Like the Three Nephites who "desired that ye might bring the souls of men unto me, while the world shall stand" ([3 Nephi 28:9](../gospel-library/eng/scriptures/bofm/3-ne/28.md)), Enoch's people endure. And they will return:
+
+> "And the Lord said unto Enoch: Then shalt thou and all thy city meet them there, and we will receive them into our bosom, and they shall see us; and we will fall upon their necks, and they shall fall upon our necks, and we will kiss each other." — [Moses 7:63](../gospel-library/eng/scriptures/pgp/moses/7.md)
+
+Enoch's Zion is not a past tense success story. It is a *still-living reality* — a city of translated beings waiting to reunite with the New Jerusalem that the Saints of the last days will build. The question is not "what happened to Enoch's Zion?" but "are we building the city that will be worthy to receive them?"
+
+Now, to the 365 number itself. It is literal — it took 365 years of daily walking with God among a wicked people to gather enough righteous, to transform enough hearts, to build a city pure enough to be received into heaven. Enoch started as a hated, slow-of-speech young man standing on the hills, and it took all those years of persistent faithfulness.
 
 But 365 is also a number that echoes the cycle of a year. There are 365 days in a year. Each year is a complete cycle — a full revolution around the sun. And each of those years, for 365 of them, Enoch and his people *walked with God*. The phrase from [D&C 107:49](../gospel-library/eng/scriptures/dc-testament/dc/107.md) says it simply: "He walked with God three hundred and sixty-five years."
 
@@ -253,11 +259,11 @@ As Jesus Himself had said, with sorrow: "It sorroweth me because of the fourth g
 | | **Enoch's Zion** | **Nephite Zion** |
 |---|---|---|
 | **Foundation** | God's direct call and covenant ([Moses 6:32–34](../gospel-library/eng/scriptures/pgp/moses/6.md)) | Jesus' personal visit and teaching ([3 Nephi 11–28](../gospel-library/eng/scriptures/bofm/3-ne/11.md)) |
-| **Duration** | 365 years ([Moses 7:68](../gospel-library/eng/scriptures/pgp/moses/7.md)) | ~200 years ([4 Nephi 1:22](../gospel-library/eng/scriptures/bofm/4-ne/1.md)) |
+| **Duration** | 365 years to build ([Moses 7:68](../gospel-library/eng/scriptures/pgp/moses/7.md)) — then taken up, still living | ~200 years ([4 Nephi 1:22](../gospel-library/eng/scriptures/bofm/4-ne/1.md)) — then fell |
 | **Defining feature** | "One heart and one mind" ([Moses 7:18](../gospel-library/eng/scriptures/pgp/moses/7.md)) | "Love of God dwelling in their hearts" ([4 Nephi 1:15](../gospel-library/eng/scriptures/bofm/4-ne/1.md)) |
 | **Economic practice** | "No poor among them" ([Moses 7:18](../gospel-library/eng/scriptures/pgp/moses/7.md)) | "All things common" ([4 Nephi 1:3](../gospel-library/eng/scriptures/bofm/4-ne/1.md)) |
 | **Identity** | "The Lord called his people Zion" ([Moses 7:18](../gospel-library/eng/scriptures/pgp/moses/7.md)) | "No manner of -ites ... in one" ([4 Nephi 1:17](../gospel-library/eng/scriptures/bofm/4-ne/1.md)) |
-| **End** | Taken up to God ([Moses 7:69](../gospel-library/eng/scriptures/pgp/moses/7.md)) | Fell to pride and consumption ([4 Nephi 1:24–46](../gospel-library/eng/scriptures/bofm/4-ne/1.md)) |
+| **End** | Received into heaven — still living as translated beings, will return ([Moses 7:63, 69](../gospel-library/eng/scriptures/pgp/moses/7.md)) | Fell to pride and consumption ([4 Nephi 1:24–46](../gospel-library/eng/scriptures/bofm/4-ne/1.md)) |
 | **Key figure** | Enoch — who wept with God ([Moses 7:41](../gospel-library/eng/scriptures/pgp/moses/7.md)) | Jesus — who wept over children ([3 Nephi 17:21–22](../gospel-library/eng/scriptures/bofm/3-ne/17.md)) |
 
 The common thread: **both Zions were built by someone who wept.** Enoch's heart "swelled wide as eternity" as he entered God's grief. Jesus' "bowels were filled with compassion" as He looked at His people. Zion is not built by efficiency or organization. It is built by people whose hearts break open wide enough to hold each other.
