@@ -1,226 +1,260 @@
 # Scripture Study
 
-AI-assisted scripture study for members of The Church of Jesus Christ of Latter-day Saints. This project combines local copies of gospel content with AI tools to enable deep, cross-referenced scripture study.
+AI-assisted scripture study for members of The Church of Jesus Christ of Latter-day Saints. A suite of Go-based tools and AI agent instructions that enable deep, cross-referenced study of the standard works, General Conference talks, manuals, and more — powered by MCP servers and an AI agent of your choice.
 
-## 🎯 Purpose
-
-This project facilitates:
-- **Deep scripture study** with AI assistance for cross-referencing and context
-- **Talk and lesson preparation** with templates and patterns from General Conference
-- **Personal scripture journaling** with searchable, linked notes
-- **Topic-based study** pulling together scriptures, conference talks, and manuals
-
-## ⚠️ Important: Gospel Content Not Included
-
-**This repository does not contain Church content.** The `gospel-library/` folder is in `.gitignore`.
-
-Instead, this repo provides **tools to download your own copy** of Church materials from the official Gospel Library API. This approach:
-- Respects intellectual property by not redistributing Church content
-- Ensures you have the latest versions
-- Gives you control over what content you download
-- Works with the same public API the Church's own apps use
-
-## 🚀 Quick Start
+## Quick Start
 
 ### Prerequisites
 
-- **VS Code** with GitHub Copilot (Pro+ recommended for Claude access)
-- **Go 1.21+** for running the download/indexing tools
-- **Claude Opus 4.5** or better for AI-assisted study (via GitHub Copilot)
+| Requirement | Why |
+|---|---|
+| **Go 1.21+** (with CGO support) | Build all tools. Windows: install [mingw-w64](https://www.mingw-w64.org/) for the C compiler needed by gospel-mcp's SQLite/FTS5. |
+| **An AI coding agent** | GitHub Copilot (VS Code), Cursor, Claude Code, OpenCode, Windsurf, etc. |
+| **LM Studio _or_ an OpenAI-compatible embeddings API** | Required for gospel-vec (semantic search). Default: `http://localhost:1234/v1` with `text-embedding-qwen3-embedding-4b`. |
 
-### Step 1: Download Gospel Content
+> **Model recommendation:** We use **GitHub Copilot with Claude Opus 4.6** for study sessions. Any capable model will work, but Opus-class models handle the cross-referencing depth and source-verification discipline best.
 
-All commands run from the repository root (uses `go.work` for module resolution):
+### Step 1 — Download Gospel Content
 
-```bash
-# To run the downloader
+**This repository does not contain Church content.** The `gospel-library/` folder is in `.gitignore`. The downloader fetches content from the Church's public Gospel Library API (the same API the official apps use).
+
+```powershell
+# Interactive TUI — select what to download
 go run .\scripts\gospel-library\cmd\gospel-downloader
 
-# Download standard works + latest conference
+# Or grab standard works + latest conference in one shot
 go run .\scripts\gospel-library\cmd\gospel-downloader --standard
-
-# Or use the interactive TUI to select specific content
-go run .\scripts\gospel-library\cmd\gospel-downloader
 ```
 
-See [scripts/gospel-library/README.md](scripts/gospel-library/README.md) for full documentation.
+See [scripts/gospel-library/README.md](scripts/gospel-library/README.md) for details.
 
-### Step 2: Set Up the MCP Server (Optional but Recommended)
+### Step 2 — Build & Index the MCP Servers
 
-The Gospel MCP server enables AI assistants to search and retrieve scripture content directly.
+Build each server from its directory, then index your downloaded content:
 
-**Note:** The MCP server must be built and run from its own directory:
-
-```bash
+```powershell
+# gospel-mcp — full-text search (SQLite FTS5)
 cd scripts/gospel-mcp
-
-# Build with FTS5 full-text search support
 go build -tags "fts5" -o gospel-mcp.exe ./cmd/gospel-mcp
-
-# Index your downloaded content (--root points to repo root)
 ./gospel-mcp.exe index --root ../../
-
-# Return to repo root
 cd ../..
+
+# gospel-vec — semantic/vector search (requires embeddings endpoint running)
+cd scripts/gospel-vec
+go build -o gospel-vec.exe .
+./gospel-vec.exe index
+cd ../..
+
+# webster-mcp — Webster 1828 + modern dictionary
+cd scripts/webster-mcp
+go build -o webster-mcp.exe ./cmd/...
+cd ../..
+
+# yt-mcp — YouTube transcript download & processing
+cd scripts/yt-mcp
+go build -o yt-mcp.exe .
+cd ../..
+
+# search-mcp — web search
+cd scripts/search-mcp
+go build -o search-mcp.exe .
+cd ../..
+
+# becoming — personal transformation tracking
+cd scripts/becoming/cmd/mcp
+go build -o becoming-mcp.exe .
+cd ../../../..
 ```
 
-Add to your VS Code `settings.json`:
-```json
+### Step 3 — Configure MCP Servers
+
+Create `.vscode/mcp.json` (already in `.gitignore`) pointing to your built executables. Example:
+
+```jsonc
 {
-  "mcp": {
-    "servers": {
-      "gospel": {
-        "command": "/path/to/gospel-mcp.exe",
-        "args": ["serve", "--db", "/path/to/gospel.db"]
-      }
+  "servers": {
+    "gospel": {
+      "command": "<repo>/scripts/gospel-mcp/gospel-mcp.exe",
+      "args": ["serve", "--db", "<repo>/scripts/gospel-mcp/gospel.db"],
+      "type": "stdio"
+    },
+    "gospel-vec": {
+      "command": "<repo>/scripts/gospel-vec/gospel-vec.exe",
+      "args": ["mcp", "-data", "<repo>/scripts/gospel-vec/data"],
+      "type": "stdio"
+    },
+    "webster": {
+      "command": "<repo>/scripts/webster-mcp/webster-mcp.exe",
+      "args": ["-dict", "<repo>/scripts/webster-mcp/data/webster1828.json.gz"],
+      "type": "stdio"
+    },
+    "yt": {
+      "command": "<repo>/scripts/yt-mcp/yt-mcp.exe",
+      "args": ["serve"],
+      "env": {
+        "YT_DIR": "<repo>/yt",
+        "YT_STUDY_DIR": "<repo>/study/yt",
+        "YT_COOKIE_FILE": "<repo>/yt/cookies.txt"
+      },
+      "type": "stdio"
+    },
+    "search": {
+      "command": "<repo>/scripts/search-mcp/search-mcp.exe",
+      "type": "stdio"
+    },
+    "becoming": {
+      "command": "<repo>/scripts/becoming/cmd/mcp/becoming-mcp.exe",
+      "env": { "BECOMING_URL": "https://your-instance", "BECOMING_TOKEN": "your-token" },
+      "type": "stdio"
     }
   }
 }
 ```
 
-See [scripts/gospel-mcp/README.md](scripts/gospel-mcp/README.md) for full documentation.
+Replace `<repo>` with your absolute path. Non-VS Code agents: translate to your tool's MCP config format.
 
-### Step 3: Start Studying
+### Step 4 — Start Studying
 
-Open the workspace in VS Code with GitHub Copilot enabled. The `.github/copilot-instructions.md` file automatically configures Claude with context about the project structure and study patterns.
+Open the workspace in your AI agent. The `.github/copilot-instructions.md` file (and the agents/skills below) automatically provide context about the project structure, study patterns, and source-verification discipline.
 
-## 📁 Project Structure
+## MCP Servers
+
+| Server | Tech | Purpose | MCP Tools |
+|---|---|---|---|
+| **gospel-mcp** | Go + SQLite/FTS5 | Full-text search over all gospel library content | `gospel_search`, `gospel_get`, `gospel_list` |
+| **gospel-vec** | Go + embeddings | Semantic/vector search over scriptures & talks | `search_scriptures`, `search_talks`, `list_books`, `get_talk` |
+| **webster-mcp** | Go | Webster 1828 dictionary + Free Dictionary (modern) | `webster_define`, `modern_define`, `webster_search` |
+| **yt-mcp** | Go | YouTube transcript download & processing | `yt_download`, `yt_get`, `yt_search`, `yt_list` |
+| **search-mcp** | Go | Web search | `web_search` |
+| **becoming** | Go | Personal transformation tracking (habit/practice logging) | `create_task`, `log_practice`, `get_today`, etc. |
+| **session-journal** | Go (CLI) | Session journaling — captures discoveries, carry-forward items | CLI: `read`, `carry`, `write` |
+
+### gospel-vec Environment Variables
+
+gospel-vec defaults to LM Studio at `localhost:1234`. Override with:
+
+| Variable | Default | Description |
+|---|---|---|
+| `GOSPEL_VEC_EMBEDDING_URL` | `http://localhost:1234/v1` | Embeddings API endpoint |
+| `GOSPEL_VEC_EMBEDDING_MODEL` | `text-embedding-qwen3-embedding-4b` | Embedding model name |
+| `GOSPEL_VEC_CHAT_URL` | `http://localhost:1234/v1` | Chat endpoint (for summaries) |
+| `GOSPEL_VEC_CHAT_MODEL` | _(auto-detected)_ | Chat model name |
+| `GOSPEL_VEC_DATA_DIR` | `./data` | Storage directory |
+
+Works with any OpenAI-compatible embeddings API (LM Studio, Ollama, OpenAI, etc.).
+
+## AI Agent Instructions
+
+This project ships with a complete **GitHub Copilot agent framework** under `.github/`:
+
+```
+.github/
+├── copilot-instructions.md   # Core principles, project structure, session memory
+├── agents/                    # 9 specialized agents
+│   ├── study.agent.md         # Deep scripture study
+│   ├── lesson.agent.md        # Sunday School / EQ / RS lesson prep
+│   ├── talk.agent.md          # Sacrament meeting talk preparation
+│   ├── review.agent.md        # Conference talk analysis
+│   ├── eval.agent.md          # YouTube video evaluation
+│   ├── journal.agent.md       # Personal reflection & journaling
+│   ├── podcast.agent.md       # Transform studies into podcast notes
+│   ├── dev.agent.md           # MCP server & tool development
+│   └── ux.agent.md            # UI/UX design patterns
+├── prompts/                   # 5 reusable prompts
+│   ├── new-study.prompt.md
+│   ├── new-lesson.prompt.md
+│   ├── new-eval.prompt.md
+│   ├── expound.prompt.md
+│   └── study-plan.prompt.md
+└── skills/                    # 8 domain skills
+    ├── source-verification/   # Read-before-quoting, cite count rule
+    ├── scripture-linking/     # Link format conventions
+    ├── webster-analysis/      # Webster 1828 word study
+    ├── deep-reading/          # Deep reading methodology
+    ├── wide-search/           # Broad discovery patterns
+    ├── publish-and-commit/    # Study → public HTML pipeline
+    ├── becoming/              # Personal transformation
+    └── playwright-cli/        # Browser automation
+```
+
+### Using a Different AI Agent
+
+The `.github/` instructions are written for **GitHub Copilot in VS Code**. If you use a different tool:
+
+- **Claude Code / Cursor / Windsurf** — Translate the `.github/copilot-instructions.md` into your tool's system prompt or project instructions format. Agent files (`.agent.md`) and skills will need to be adapted to your framework's conventions.
+- **OpenCode / other CLI agents** — Extract the core principles and MCP tool descriptions into whatever config your agent reads.
+- **Key things to preserve:** source-verification discipline (read before quoting), scripture linking conventions, the session memory architecture at `.spec/memory/`.
+
+## Project Structure
 
 ```
 scripture-study/
-├── docs/                    # Templates and study patterns
-│   ├── study_template.md    # Personal scripture study sessions
-│   ├── talk_template.md     # Sacrament meeting talk preparation
-│   ├── lesson_template.md   # Sunday School/RS/EQ lesson prep
-│   └── general-conference-examples.md  # Analysis of apostle talk patterns
+├── .github/                     # AI agent instructions, agents, skills, prompts
+├── .spec/                       # Memory system, session journal, proposals
+│   ├── memory/                  # identity.md, preferences.yaml, active.md, principles.md
+│   └── journal/                 # Session journal entries
 │
-├── study/                   # Personal study notes (private working copies)
-│   ├── {topic}.md           # Topic-based studies
-│   ├── talks/               # Conference talk analysis
-│   └── cfm/                 # Come Follow Me notes
-│
-├── public/                  # Published versions for external linking
-│   ├── study/               # Polished study documents
-│   ├── lessons/             # Shareable lesson materials
-│   └── callings/            # Calling-specific resources
-│
-├── callings/                # Calling-specific work
-│   ├── sunday_school/       # Sunday School President materials
-│   └── ward_council/        # Ward council resources
-│
-├── lessons/                 # Lesson preparation materials
-│
-├── books/                   # Additional study materials
-│   └── lecture-on-faith/    # Lectures on Faith (public domain)
-│
-├── gospel-library/          # Downloaded Church content (NOT in git)
+├── gospel-library/              # Downloaded Church content (NOT in git)
 │   └── eng/
-│       ├── scriptures/      # Standard works
-│       ├── general-conference/  # Conference talks by year
-│       ├── manual/          # Manuals and curriculum
-│       └── liahona/         # Magazine content
+│       ├── scriptures/          # Standard works (ot, nt, bofm, dc-testament, pgp)
+│       ├── general-conference/  # Conference talks 1971–present
+│       ├── manual/              # Come Follow Me, handbooks, etc.
+│       └── liahona/             # Magazine content
 │
-├── scripts/                 # Tools
-│   ├── gospel-library/      # Content downloader (TUI)
-│   ├── gospel-mcp/          # MCP server for AI search
-│   └── publish/             # Script to sync study/ → public/
+├── study/                       # Study notes and analysis
+│   ├── {topic}.md               # Topic-based studies
+│   ├── talks/                   # Conference talk analysis
+│   └── yt/                      # YouTube video evaluations
+├── lessons/                     # Lesson preparation
+├── callings/                    # Calling-specific work
+├── journal/                     # Personal journal entries
+├── becoming/                    # Personal transformation notes
+├── books/                       # Additional texts (Lectures on Faith, etc.)
 │
-└── .github/
-    └── copilot-instructions.md  # AI context and collaboration guidelines
+├── public/                      # Published HTML for sharing
+├── docs/                        # Templates, reflections, meta-docs
+│
+├── scripts/                     # All Go tools
+│   ├── gospel-library/          # Content downloader (TUI)
+│   ├── gospel-mcp/              # Full-text search MCP server
+│   ├── gospel-vec/              # Semantic search MCP server
+│   ├── webster-mcp/             # Webster 1828 dictionary MCP server
+│   ├── yt-mcp/                  # YouTube transcript MCP server
+│   ├── search-mcp/              # Web search MCP server
+│   ├── becoming/                # Personal transformation MCP server
+│   ├── session-journal/         # Session journaling CLI
+│   ├── publish/                 # Study → public/ HTML converter
+│   ├── convert/                 # Conversion utilities
+│   └── gospel-library/          # Gospel Library downloader
+│
+├── go.work                      # Go workspace (all modules)
+└── README.md
 ```
 
-## 📝 Templates
+## Templates
 
-### Study Template (`docs/study_template.md`)
-For personal scripture study sessions. Includes:
-- Spiritual/physical creation pattern for study planning
-- Scripture gathering and cross-referencing
-- Personal application and journaling
+| Template | File | Purpose |
+|---|---|---|
+| Study | `docs/study_template.md` | Personal scripture study sessions — spiritual/physical creation pattern |
+| Talk | `docs/talk_template.md` | Sacrament meeting talks — based on analysis of 10+ conference talk patterns |
+| Lesson | `docs/lesson_template.md` | Sunday School / RS / EQ — Teaching in the Savior's Way framework |
+| Evaluation | `docs/yt_evaluation_template.md` | YouTube video evaluation against the gospel standard |
 
-### Talk Template (`docs/talk_template.md`)
-For sacrament meeting talk preparation. Based on analysis of 10+ General Conference talks:
-- Opening patterns (story vs. scripture context)
-- Structure options (thematic, metaphor, points)
-- Climactic story placement
-- Prayer/blessing closing format
+## Publishing
 
-### Lesson Template (`docs/lesson_template.md`)
-For class instruction based on Teaching in the Savior's Way:
-- Spiritual preparation checklist
-- Discussion question development
-- Invitation to act patterns
+The `public/` directory holds published versions of study documents for external sharing:
 
-## 🤖 Using with GitHub Copilot
-
-This project is designed for use with GitHub Copilot Pro+ and Claude Opus 4.5 (or better).
-
-### How It Works
-
-1. **Copilot Instructions**: The `.github/copilot-instructions.md` file provides Claude with:
-   - Project structure and file locations
-   - Scripture reference link formats
-   - Study collaboration principles
-   - Resource location quick reference
-
-2. **MCP Server** (optional): Enables Claude to directly search and retrieve scripture content using:
-   - `gospel_search` - Full-text search across all content
-   - `gospel_get` - Retrieve specific verses by reference
-   - `gospel_list` - Browse available content
-
-3. **Local Content**: Downloaded markdown files can be read directly by Claude for context
-
-### Example Prompts
-
-```
-"Let's study Moses 3:5 and its teaching about spiritual creation"
-
-"Help me prepare a talk on covenants using the talk template"
-
-"Search for conference talks about the ten virgins parable"
-
-"Cross-reference D&C 93:36 with other scriptures about intelligence"
+```powershell
+go run .\scripts\publish\cmd\main.go
 ```
 
-## 🔗 Public Folder
+Converts working markdown from `study/`, `lessons/`, etc. into polished HTML in `public/`.
 
-The `public/` directory contains published versions of study documents suitable for external sharing:
-- Polished, reviewed content
-- Stable links for sharing
-- Synchronized from working directories via `scripts/publish/`
-- go run .\scripts\publish\cmd\main.go
+## Copyright
 
-## 📖 Content Sources
+**Gospel Library content** is © The Church of Jesus Christ of Latter-day Saints. This repository does **not** include or redistribute Church content — it provides tools to download from the Church's public API for personal study.
 
-| Source | Location | Description |
-|--------|----------|-------------|
-| Standard Works | `gospel-library/eng/scriptures/` | All scripture volumes |
-| General Conference | `gospel-library/eng/general-conference/` | 1971–present |
-| Manuals | `gospel-library/eng/manual/` | Come Follow Me, handbooks, etc. |
-| Magazines | `gospel-library/eng/liahona/` | Current magazine content |
-| Lectures on Faith | `books/lecture-on-faith/` | Historical study materials |
-
-## ⚖️ Copyright Notice
-
-**Gospel Library content** is © The Church of Jesus Christ of Latter-day Saints. This repository:
-- Does **not** include or redistribute Church content
-- Provides tools to download content from the Church's public API
-- Enables the same access the official Gospel Library apps provide
-- Stores downloaded content locally for personal study as organized markdownfiles with footnotes and references links
-
-**Original content** in this repository (templates, study notes, scripts) is released under the MIT License.
-
-## 🤝 Contributing
-
-This is a personal study project, but the tools and templates may be useful to others. Feel free to:
-- Fork and adapt for your own study
-- Submit issues for tool improvements
-- Share your own template variations
-
-## 📚 Related Resources
-
-- [Gospel Library](https://www.churchofjesuschrist.org/study) - Official Church study app
-- [Come, Follow Me](https://www.churchofjesuschrist.org/study/come-follow-me) - Weekly curriculum
-- [General Conference](https://www.churchofjesuschrist.org/study/general-conference) - Conference talks
+**Original content** (templates, study notes, scripts) is released under the MIT License.
 
 ---
 
