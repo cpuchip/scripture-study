@@ -14,7 +14,7 @@
 ### Why
 
 Discord requires: a server, an invite, a bot token, privileged intents, and Discord installed everywhere. It's a public platform bolted into a private workflow. The becoming app (ibeco.me) is already:
-- Deployed on Fly.io (SLC region, always on)
+- Deployed on Dokploy (SLC region, auto-deploy on main push)
 - Authenticated (bearer tokens, Google OAuth, session cookies)
 - On Michael's phone (via PWA or installable as an app)
 - A Go backend Michael knows intimately
@@ -41,7 +41,7 @@ Discord requires: a server, an invite, a bot token, privileged intents, and Disc
 
 ### Constraints
 
-- **No new infrastructure.** Use ibeco.me (Fly.io) — don't add a VPS, don't add a database, don't add Redis.
+- **No new infrastructure.** Use ibeco.me (Dokploy) — don't add a VPS, don't add a database, don't add Redis.
 - **Same SQLite.** Becoming already uses SQLite. The message queue lives in that same DB.
 - **Bearer token auth only.** The brain connects with the same `BECOMING_TOKEN` mechanism the MCP uses. No new auth systems.
 - **Go + Dart only.** No TypeScript/Node in the pipeline.
@@ -282,7 +282,7 @@ if cfg.DiscordEnabled && cfg.DiscordToken != "" {
 | A4 | Create `internal/brain/hub.go` — WebSocket hub + routing | Integration test with two WS clients |
 | A5 | Register `/ws/brain` route in `cmd/server/main.go` | `wscat` can connect + auth |
 | A6 | Add `/api/brain/history` and `/api/brain/status` REST endpoints | curl returns data |
-| A7 | Deploy to Fly.io | `wss://ibeco.me/ws/brain` accepts connections |
+| A7 | Deploy via Dokploy | `wss://ibeco.me/ws/brain` accepts connections |
 
 ### Phase B — brain.exe relay transport (~30 min)
 
@@ -327,7 +327,7 @@ if cfg.DiscordEnabled && cfg.DiscordToken != "" {
 | **Token exposure in mobile app** | Stored in platform secure storage (SharedPreferences on Android, Keychain on iOS). Not logged. |
 | **Brain.exe as attack surface** | Never listens on a port. Outbound WebSocket only. No code execution from messages — just text classification. |
 | **ibeco.me relay as open pipe** | Auth required on WebSocket connect. Only validated tokens accepted. Rate limiting on message frequency. |
-| **Man-in-the-middle** | WSS (TLS) enforced by Fly.io. Certificate pinning optional in Dart app. |
+| **Man-in-the-middle** | WSS (TLS) enforced by Dokploy/Traefik. Certificate pinning optional in Dart app. |
 | **Future public Discord bot** | Completely isolated context. Separate config. No access to private-brain repo. Free/local models only. No git write. Explicit scope boundary. |
 
 ---
@@ -418,7 +418,7 @@ Nate evolves his second brain concept from Part 1/2 into what he calls **"Open B
 | **No spiritual integration** — general productivity only | Our classifier has a `study` category; system connects to gospel library |
 | **No self-improvement** — static architecture | Our Phase 4 (future) has the agent proposing improvements to itself |
 | **No relay for agents** — brain is the MCP server, period | Our relay makes ibeco.me the hub — brain connects outbound, never exposed |
-| **Supabase dependency** — "no SaaS" but uses Supabase | Our system is truly self-owned: SQLite + Fly.io + git |
+| **Supabase dependency** — "no SaaS" but uses Supabase | Our system is truly self-owned: SQLite/PostgreSQL + Dokploy + git |
 
 ### What We Should Adopt from This Video
 
@@ -450,10 +450,11 @@ This doesn't change Phases A-D. Build the relay first, make it work, then add MC
 | Phase | Status | Notes |
 |-------|--------|-------|
 | **A — ibeco.me relay hub** | ✅ Done | `internal/brain/` package (hub.go, messages.go, queue.go). WebSocket at `/ws/brain`, REST at `/api/brain/status` and `/api/brain/history`. All routes wired in main.go. Compiles + vet clean. |
-| **B — brain.exe relay client** | ✅ Done | `internal/relay/client.go`. Config vars: `RELAY_URL`, `RELAY_TOKEN`, `RELAY_ENABLED`, `DISCORD_ENABLED`. Auto-reconnect with exponential backoff. main.go supports relay + Discord as parallel transports. Compiles + vet clean. |
+| **B — brain.exe relay client** | ✅ Done | `internal/relay/client.go`. Config now reads `IBECOME_TOKEN`/`IBECOME_URL` (with `RELAY_*` fallback). Auto-converts HTTP→WSS URLs. Auto-reconnect with exponential backoff. main.go supports relay + Discord as parallel transports. Compiles + vet clean. |
 | **C — Dart mobile app** | Not started | `cpuchip/brain-app` repo cloned to `scripts/brain-app/`. |
 | **D — Integration test** | ✅ Verified | Local test: app→hub→agent→classify→result→app. All 6 steps pass. Presence notification works both directions. Queue table created automatically. |
-| **E — MCP server + CLI** | Not started | See expanded plan below. |
+| **D.5 — Production test** | ✅ Verified | CLI→ibeco.me (production): auth works, status/history REST endpoints work, thought capture queues correctly when agent offline, timeout handling clean. Fixed PostgreSQL migration (008_brain_messages.sql) — EnsureTable DDL was SQLite-specific. |
+| **E — CLI tool** | ✅ Done | `cmd/brain-cli/main.go`. Subcommands: `capture`, `status`, `recent`, `fix` (shortcuts: c/s/r/f). Bare text auto-captured. WS for capture/fix, REST for status/history. Proper timeout handling. |
 
 ---
 
@@ -535,6 +536,8 @@ Any workspace can query the brain: "What decisions were made about the becoming 
 
 ## Review Checkpoint
 
-Phases A, B, D complete and verified. Ready to deploy ibeco.me changes and start Phase C (Dart app) or Phase E (CLI + embeddings).
+Phases A, B, D, D.5 (production), E complete and verified. Production ibeco.me is live with brain relay. CLI tested end-to-end through production.
+
+**Next steps:** Start brain.exe agent locally to process queued thoughts, then Phase C (Dart app) or Phase E.5 (MCP server + embeddings).
 
 *"Created all things spiritually, before they were naturally upon the face of the earth."* — [Moses 3:5](gospel-library/eng/scriptures/pgp/moses/3.md)
