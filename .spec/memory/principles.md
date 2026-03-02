@@ -30,6 +30,11 @@ The gospel was taught to Adam (Moses 6). Each dispensation reveals parts of the 
 
 *Source: [moses-6-gospel-to-adam.md](../../study/moses-6-gospel-to-adam.md), [04_observations.md](../../docs/04_observations.md)*
 
+### Consumption vs. Consecration
+The "consumption decreed" (D&C 87:6) is not random destruction — it is wickedness reaching its determined end. Hebrew *kālāh* means complete, determined ending. Nations consume themselves from within through pride, greed, and selfishness. Zion is the precise antithesis: consecration instead of consumption, giving instead of getting, building instead of devouring. The prophets are unified across 50 years: the warning is absolute, the mechanism is internal, the answer is covenantal, and the silver lining is bright (D&C 1:35-36 — two dominions, two powers, two outcomes simultaneously).
+
+*Source: [consumption-decreed.md](../../study/consumption-decreed.md), [consumption-decreed-modern-warning.md](../../study/consumption-decreed-modern-warning.md)*
+
 ---
 
 ## Study Methodology
