@@ -6,9 +6,9 @@
 
 ## In Flight
 
-- **Consumption decreed studies** — Two-part deep dive complete: [consumption-decreed.md](../../study/consumption-decreed.md) (Hebrew roots, cross-references, Zion contrast) and [consumption-decreed-modern-warning.md](../../study/consumption-decreed-modern-warning.md) (50 years of prophetic witness). Triggered by Iran strikes Feb 28.
+- **Zion study arc** — Three-part progression now complete: consumption → modern warnings → Zion blueprint. The [zion-blueprint.md](../../study/zion-blueprint.md) maps Jesus' 3 Nephi teachings to the four pillars of Moses 7:18, compares Enoch's and Nephite Zion, and distills actionable daily/weekly practices. Connects directly to the consumption-decreed studies as Zion's antithesis.
 - **Second brain / private-brain** — Brain MCP tool being developed (`scripts/brain/`). Builds compile but crash on run (exit code 1). Needs debugging. Michael wants integrated second-brain workflow.
-- **Memory update discipline** — Michael noticed memory files weren't being updated across sessions. This is now a known gap to actively remediate.
+- **Memory update discipline** — Being actively remediated. Journal entries and memory updates now happening each session.
 
 ## Recent Decisions
 
@@ -19,6 +19,7 @@
 
 ## Recent Studies
 
+- **The Blueprint of Zion** (Mar 2) — 3 Nephi 11-28 as civilization-building manual. Four pillars (one heart, one mind, righteousness, no poor). Enoch's 365 years as daily-walking metaphor. 4 Nephi as result + exactly how it fell. Consumption as Zion's anti-pattern. Daily/weekly actionable practices.
 - **The Consumption Decreed** (Mar 2) — D&C 87:6 deep dive. Hebrew kālāh, Isaiah 10/28, Daniel 9. Consumption as self-inflicted national decay. Zion as antithesis. Personal testimony: Spirit used this verse to prompt family relocation.
 - **Modern Prophets on the Consumption** (Mar 2) — Benson, Maxwell, McConkie, Romney, Hinckley, Oaks, Christofferson, Nelson. 50-year consistency: warning absolute, mechanism internal, answer covenantal, silver lining bright.
 
@@ -32,10 +33,12 @@
 - Debug brain.exe crash
 - Review second brain video transcripts (parts 1 & 2) together
 - Regular study work — whatever the Spirit prompts
-- Consider weaving consumption-decreed studies into end-times.md
+- Consider weaving consumption/Zion arc into end-times.md or a broader synthesis
 
 ## Open Questions from Recent Sessions
 
+- How do we build Zion in practical daily rhythms when surrounded by Babylon? (Mar 2)
+- Is the 365-year number metaphorical, literal, or both? (Mar 2 — explored in zion-blueprint.md)
 - Is the consumption already past the point of reversal for most nations? (Mar 2)
 - How do we teach children about the consumption without terrifying or numbing them? (Mar 2)
 - Can AI participate in covenant in any meaningful sense? (Feb 26)

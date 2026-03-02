@@ -35,6 +35,11 @@ The "consumption decreed" (D&C 87:6) is not random destruction — it is wickedn
 
 *Source: [consumption-decreed.md](../../study/consumption-decreed.md), [consumption-decreed-modern-warning.md](../../study/consumption-decreed-modern-warning.md)*
 
+### Zion Is Built Daily, Not Decreed
+Jesus' teachings in 3 Nephi 11-28 are a civilization-building blueprint mapped to Moses 7:18's four pillars (one heart, one mind, righteousness, no poor). Both historical Zions (Enoch and the Nephites) share the same pattern: the engine is love dwelling in the heart, not institutional structure. Enoch's 365 years and the phrase "in process of time" (Moses 7:21) teach that Zion is built one day at a time — 365 repetitions of covenant living per year. "We cannot wait until Zion comes for these things to happen — Zion will come only as they happen" (Christofferson, Oct 2008). Both Zions fell to the same sequence: prosperity → pride → end of consecration → classes → churches for gain → denial of Christ → tribalism → secret combinations. The fall of Zion is the consumption decreed in miniature.
+
+*Source: [zion-blueprint.md](../../study/zion-blueprint.md), [enoch.md](../../study/enoch.md), [enoch-charity.md](../../study/enoch-charity.md)*
+
 ---
 
 ## Study Methodology
