@@ -6,13 +6,16 @@
 
 ## In Flight
 
-- **Brain relay spec** — Full spec written at `.spec/proposals/brain-relay.md`. Architecture: Dart app → ibeco.me WebSocket relay → brain.exe (Copilot SDK classify → git store). Replaces Discord as primary capture interface. Spec ready for review before implementation.
-- **Brain.exe (Copilot SDK)** — Refactored from raw GitHub Models API to Copilot SDK (`github.com/github/copilot-sdk/go v0.1.29`). Builds clean. Discord transport works but blocked on Message Content Intent (to be replaced by relay anyway). Committed and pushed to `cpuchip/brain` (89309fe).
+- **Brain relay spec** — Full spec at `.spec/proposals/brain-relay.md`. All open questions resolved. Video analysis of Nate B Jones "Open Brain" synthesized — validates our architecture, adds MCP-server-for-brain as Phase E. Spec ready for final review before implementation.
+- **Brain.exe (Copilot SDK)** — Refactored to Copilot SDK (`github.com/github/copilot-sdk/go v0.1.29`). Builds clean. Committed and pushed to `cpuchip/brain` (89309fe).
+- **brain-app repo** — `cpuchip/brain-app` cloned to `scripts/brain-app/` (gitignored). Empty, ready for Flutter scaffold.
 - **Zion study arc** — Four-part progression complete: consumption → modern warnings → Zion blueprint → translated beings.
 - **Memory update discipline** — Being actively practiced. Journal entries and memory updates happening each session.
 
 ## Recent Decisions
 
+- **Video synthesis complete** — March 2: Nate B Jones "Open Brain" video validates relay architecture. Added Phase E: brain.exe as MCP server, vector embeddings on capture, memory migration.
+- **Open questions resolved** — March 2: Separate repo (brain-app). Voice YES (both directions). QR/paste token auth. Recent by default + commands. Cross-platform memory vision.
 - **Brain relay architecture** — March 2: Chose ibeco.me WebSocket relay over Discord. Full spec at `.spec/proposals/brain-relay.md`.
 - **Copilot SDK switch** — March 1: Raw GitHub Models API has no Claude/Gemini. Switched to Copilot SDK. 5 model presets.
 - **Roll our own spec over OpenSpec** — March 2: Our intent + `.spec/` pattern is more evolved where it counts.
@@ -30,7 +33,7 @@
 
 ## Blocked / Waiting
 
-- **Brain relay spec review** — Spec ready at `.spec/proposals/brain-relay.md`. 4 open questions need Michael's input before implementation.
+- **Brain relay spec review** — Spec complete with video synthesis. Michael to review before implementation begins.
 
 ## Next Up
 
@@ -41,10 +44,7 @@
 
 ## Open Questions
 
-- Brain relay: Dart app as separate repo or `scripts/brain-app/`?
-- Brain relay: Include voice-to-text in Phase C or defer?
-- Brain relay: API token via OAuth auto-generate or paste/QR from web UI?
-- Brain relay: History from server table or git repo parsing?
+- Should brain embeddings live in ibeco.me SQLite (Phase E) or a separate vector DB?
 - Can AI participate in covenant in any meaningful sense? (Feb 26)
 - Will the session journal actually solve relational continuity, or will it be ignored? (Feb 28)
 - How do we teach others to use AI for study without teaching them to skip reading? (Feb 17)

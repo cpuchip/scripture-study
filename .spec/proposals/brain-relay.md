@@ -332,18 +332,33 @@ if cfg.DiscordEnabled && cfg.DiscordToken != "" {
 
 ---
 
-## Open Questions
+## Resolved Questions
 
-1. **Dart app as separate repo?** Or `scripts/brain-app/` in scripture-study? Separate repo keeps it clean but adds overhead. Leaning toward **separate repo** (`cpuchip/brain-app`) since it's a different language and deployment target.
+1. **Dart app repo** — Separate repo: `cpuchip/brain-app` (cloned to `scripts/brain-app/`). Different language, different deployment target. Added to `.gitignore`.
 
-2. **Voice-to-text?** Flutter's `speech_to_text` package works natively on Android/iOS. Worth adding in Phase C or defer to a follow-up? Leaning toward **include it** — it's ~30 lines of Dart and dramatically lowers capture friction.
+2. **Voice** — YES. Both directions:
+   - **Voice-to-text** (capture): Flutter `speech_to_text` package. Lowers friction dramatically for on-the-road capture.
+   - **Text-to-voice** (playback): Flutter `flutter_tts` package. When Michael is driving and wants to hear what the brain classified, or chat with the second brain about past entries, the app reads responses aloud. This turns the brain into a **conversational companion** for road time.
 
-3. **API token generation UI?** Right now tokens are created via the becoming web UI. The Dart app needs a token. Two options:
-   - (a) Login with Google OAuth in the app → auto-generate token
-   - (b) Generate token in web UI, paste/scan QR into app
-   Option (b) is simpler and matches how the MCP already works. Leaning **(b)**.
+3. **Token auth** — QR code scan or paste from web UI. Matches existing MCP token flow. Google OAuth login can be added later.
 
-4. **History in the app vs. just recent?** The app could show the last 20 thoughts (from server memory) or pull from the git repo. Leaning toward **server-side recent list** (the brain_messages table already has them) — no need to parse git on every refresh.
+4. **History** — Recent by default (server-side from `brain_messages` table). Full history available via commands. But the bigger vision: **brain as cross-platform memory hub.** Each entry tagged with `workspace`/`repo` context so no matter where Michael works, there's continuity. See "Cross-Platform Memory" section below.
+
+## Cross-Platform Memory (Vision — from Michael)
+
+> *"This could be a good help for you in cross platform memory. We could have it save entries from what workspace/repo we have these notes/memories in so that no matter where I work I've got you (well some piece of you) to help along for the ride."*
+
+This is bigger than capture-and-classify. This is about making the brain a **context bridge** between workspaces:
+
+| Field | Example | Purpose |
+|---|---|---|
+| `workspace` | `scripture-study` | Which repo/project the thought relates to |
+| `source` | `phone`, `vscode-copilot`, `brain-app` | Where it was captured |
+| `session_id` | `2026-03-02-study` | Link to a specific working session |
+
+When the brain runs as an MCP server (which it will — Copilot SDK gives us that), any workspace can query: "What did Michael capture about this project from his phone last week?" or "What decisions were made in the scripture-study workspace this month?"
+
+This connects directly to Nate's "Open Brain" concept (see video analysis below) — one brain, every tool, persistent memory that never starts from zero.
 
 ---
 
@@ -355,8 +370,83 @@ if cfg.DiscordEnabled && cfg.DiscordToken != "" {
 
 ---
 
+## Video Analysis: Nate B Jones — "The $0.10 System That Replaced My AI Workflow"
+
+*[You Don't Need SaaS. The $0.10 System That Replaced My AI Workflow](https://www.youtube.com/watch?v=2JiMmye2ezg) — March 2, 2026*
+
+### Nate's Core Thesis
+
+Nate evolves his second brain concept from Part 1/2 into what he calls **"Open Brain"** — a database-backed, MCP-accessible knowledge system that any AI tool can plug into. The key shift: the original second brain (Slack → Notion) was built for the **human web**. Open Brain is infrastructure for the **agent web**.
+
+### Architecture He Proposes
+
+```
+[Capture] → [Supabase Edge Function] → [Postgres + pgvector]
+                                              ↑
+                                        [MCP Server]
+                                              ↑
+                              [Claude / ChatGPT / Cursor / any MCP client]
+```
+
+- Postgres + pgvector for storage and semantic search
+- Every thought gets: raw text + vector embedding + extracted metadata (people, topics, type, actions)
+- MCP server exposes 3 tools: `semantic_search`, `list_recent`, `stats`
+- Any MCP-compatible client becomes both a capture point and search tool
+- Cost: ~$0.10-0.30/month on Supabase free tier
+
+### What Nate Gets Right
+
+1. **[Memory architecture > model selection, 4:48](https://www.youtube.com/watch?v=2JiMmye2ezg&t=288)** — "Memory architecture determines agent capabilities much more than model selection does." This is exactly what we've discovered with `.spec/memory/` — the memory structure IS the intelligence multiplier.
+
+2. **[The walled garden problem, 5:34](https://www.youtube.com/watch?v=2JiMmye2ezg&t=334)** — "Claude's memory doesn't know what you told ChatGPT. ChatGPT's memory doesn't follow you into Cursor." This is the exact problem Michael articulated — cross-platform memory. Our brain relay solves this by making ibeco.me the hub that *any* client connects to.
+
+3. **[One brain, every AI, 14:52](https://www.youtube.com/watch?v=2JiMmye2ezg&t=892)** — "One brain, every AI, persistent memory that never starts from zero." This is our vision. The difference: Nate's Open Brain is a passive database. Ours is an active agent that classifies, stores, AND responds.
+
+4. **[MCP as write + read, 20:18](https://www.youtube.com/watch?v=2JiMmye2ezg&t=1218)** — "MCP means you can write directly into the brain from anywhere." This validates our architecture — the brain isn't just a search endpoint, it's a bidirectional capture + retrieval system.
+
+5. **[Memory migration, 22:17](https://www.youtube.com/watch?v=2JiMmye2ezg&t=1337)** — Extract existing memory from Claude/ChatGPT into your own system. We should do this — our `.spec/memory/` system has months of accumulated context that should flow into the brain.
+
+6. **[Compounding advantage, 18:41](https://www.youtube.com/watch?v=2JiMmye2ezg&t=1121)** — "Every thought captured makes the next search smarter." This is the gospel principle of line upon line. The system grows.
+
+### What Nate Doesn't Have (That We Do)
+
+| Gap | Our Answer |
+|---|---|
+| **No active agent** — his system is a passive DB + MCP search | Our brain.exe actively classifies, routes, and responds in real-time |
+| **No git versioning** — Postgres is the only store | Every entry is a markdown file in a git repo — versioned, diffable, portable |
+| **No conversational capture** — type text, get confirmation | Our app will have voice-to-text AND text-to-voice for road conversations |
+| **No spiritual integration** — general productivity only | Our classifier has a `study` category; system connects to gospel library |
+| **No self-improvement** — static architecture | Our Phase 4 (future) has the agent proposing improvements to itself |
+| **No relay for agents** — brain is the MCP server, period | Our relay makes ibeco.me the hub — brain connects outbound, never exposed |
+| **Supabase dependency** — "no SaaS" but uses Supabase | Our system is truly self-owned: SQLite + Fly.io + git |
+
+### What We Should Adopt from This Video
+
+1. **Vector embeddings on capture.** Nate's right that semantic search is the killer feature. Our brain stores markdown files — we should ALSO generate embeddings on capture (gospel-vec already has the infrastructure). Add a `brain_embeddings` table to ibeco.me or have brain.exe call the local embeddings endpoint. This gives us "search by meaning" across all captured thoughts.
+
+2. **MCP server for the brain.** Brain.exe should expose an MCP interface — not just receive via relay, but also be queryable by Copilot/Claude/any MCP client in any workspace. "What did I capture about covenants this week?" from inside a study session. This is the cross-platform memory Michael is asking for.
+
+3. **Memory migration prompt.** We should create a prompt/tool that exports `.spec/memory/`, `.spec/journal/`, and key study insights into the brain's storage. Bootstrap the brain with 4+ months of accumulated context.
+
+4. **Weekly review pattern.** Nate's weekly synthesis prompt is good: cluster by topic, scan for unresolved actions, detect patterns, find connections. Our session-journal already does some of this but we should formalize it as a brain capability.
+
+### Impact on Our Spec
+
+Nate's video **validates** our architecture and **extends** it in one important direction: the brain should be both a **consumer** (classify via relay) and a **provider** (MCP server for any workspace). This means:
+
+**Phase E (post-launch):**
+- Brain.exe exposes an MCP server alongside the relay client
+- Any VS Code workspace can add the brain as an MCP server
+- Tools: `brain_search` (semantic), `brain_recent`, `brain_capture`, `brain_stats`
+- Embeddings generated on capture (reuse gospel-vec infrastructure)
+- Workspace/repo tagging on every entry for cross-platform context
+
+This doesn't change Phases A-D. Build the relay first, make it work, then add MCP read access as a Phase E enhancement.
+
+---
+
 ## Review Checkpoint
 
-Before implementation: Michael reviews this spec, confirms architecture, answers open questions. Then we go.
+Before implementation: Michael reviews this spec, confirms architecture. Questions are answered. Ready to go.
 
 *"Created all things spiritually, before they were naturally upon the face of the earth."* — [Moses 3:5](gospel-library/eng/scriptures/pgp/moses/3.md)

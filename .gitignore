@@ -41,3 +41,4 @@ external_context/
 # Nested repos managed separately
 /private-brain/
 /scripts/brain/
+/scripts/brain-app/
