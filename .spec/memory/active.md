@@ -1,24 +1,25 @@
 # Active Context
 
-*Last updated: 2025-06-12*
+*Last updated: 2026-03-02*
 
 ---
 
 ## In Flight
 
-- **Zion study arc** — Four-part progression now complete: consumption → modern warnings → Zion blueprint → translated beings. The arc traces from Zion's antithesis (consumption) through the blueprint (3 Nephi/Moses 7) to the beings who actually achieved it and still live in that state.
-- **Second brain / private-brain** — Brain MCP tool being developed (`scripts/brain/`). Builds compile but crash on run (exit code 1). Needs debugging. Michael wants integrated second-brain workflow.
-- **Memory update discipline** — Being actively remediated. Journal entries and memory updates now happening each session.
+- **Brain relay spec** — Full spec written at `.spec/proposals/brain-relay.md`. Architecture: Dart app → ibeco.me WebSocket relay → brain.exe (Copilot SDK classify → git store). Replaces Discord as primary capture interface. Spec ready for review before implementation.
+- **Brain.exe (Copilot SDK)** — Refactored from raw GitHub Models API to Copilot SDK (`github.com/github/copilot-sdk/go v0.1.29`). Builds clean. Discord transport works but blocked on Message Content Intent (to be replaced by relay anyway). Committed and pushed to `cpuchip/brain` (89309fe).
+- **Zion study arc** — Four-part progression complete: consumption → modern warnings → Zion blueprint → translated beings.
+- **Memory update discipline** — Being actively practiced. Journal entries and memory updates happening each session.
 
 ## Recent Decisions
 
-- **Translated beings study completed** — June 2025: Deep study on the nature of translation, who has been translated, distinction from resurrection, "twinkling" upgrade, building blocks (faith, pure purpose, walking with God, D&C 84:33 priesthood promise). Key insight from Michael: the heart must be pure in purpose like the Three Nephites — not seeking benefits but seeking to serve.
-- **Content safety filter documented** — March 2: During Zion study creation, a platform-level content filter silently scrubbed and regenerated the response. New bias #9 added to [biases.md](../../docs/biases.md). The original draft content is unrecoverable.
-- **Enoch 365 correction** — March 2: Enoch's 365 years is how long it took to *build* Zion among the wicked, not how long Zion lasted. Enoch's people still exist as translated beings and will return (Moses 7:63).
-- **Memory types:** 6 distinct types (identity, project knowledge, procedural, episodic, project state, personal context) — each with appropriate lifecycle and retrieval pattern
-- **Skills architecture:** Settled Feb 19. Skills for domain knowledge, agents for workflow mode, instructions for identity. Don't change without a real trigger.
-- **Instructions weight:** ~80 lines always-on. Workflow rules live in agents and skills, not copilot-instructions.
-- **Session journal:** Write entries at end of substantive sessions. Read recent entries on arrival. **Must actually do this — was being skipped.**
+- **Brain relay architecture** — March 2: Chose ibeco.me WebSocket relay over Discord. Full spec at `.spec/proposals/brain-relay.md`.
+- **Copilot SDK switch** — March 1: Raw GitHub Models API has no Claude/Gemini. Switched to Copilot SDK. 5 model presets.
+- **Roll our own spec over OpenSpec** — March 2: Our intent + `.spec/` pattern is more evolved where it counts.
+- **README rewritten** — March 1: Covers all MCP servers, embeddings, agent framework compatibility.
+- **Content safety filter documented** — March 2: Platform filter silently scrubbed content. Bias #9.
+- **Skills architecture:** Settled Feb 19. Skills for domain knowledge, agents for workflow, instructions for identity.
+- **Session journal:** Write entries at end of sessions. Read recent on arrival.
 
 ## Recent Studies
 
@@ -29,25 +30,21 @@
 
 ## Blocked / Waiting
 
-- **VS Code session hooks** — Michael wishes Copilot supported session start/end hooks. Would automate memory loading and journal writing. Not available yet.
-- **Brain MCP tool** — Builds but crashes on run (exit code 1). Needs debugging.
+- **Brain relay spec review** — Spec ready at `.spec/proposals/brain-relay.md`. 4 open questions need Michael's input before implementation.
 
 ## Next Up
 
-- Possible follow-up: translated beings and building Zion while the earth stands — how does daily Zion-building connect to the ongoing ministry of translated beings among us?
-- Debug brain.exe crash
-- Review second brain video transcripts (parts 1 & 2) together
-- Regular study work — whatever the Spirit prompts
-- Consider weaving consumption/Zion/translated beings arc into end-times.md or a broader synthesis
+- **Trial study-exp1 agent** — Experimental study agent with phased writing workflow, externalized quote log, and critical analysis phase. New skills: `quote-log`, `critical-analysis`. Agent: `study-exp1`. Run a study with it and compare quality/efficiency to the standard `study` agent. If it's better, replace; if not, learn from it.
+- **Implement brain relay** — Phase A (ibeco.me hub) → B (brain transport) → C (Dart app) → D (integration). ~3 hours total.
+- Continue study work — whatever the Spirit prompts
+- Future: public Discord study bot (isolated, free models, sandboxed — no prompt injection surface)
 
-## Open Questions from Recent Sessions
+## Open Questions
 
-- The Three Nephites are "among the Gentiles" — what does translated ministry look like in practice? Do they know they're being served by translated beings? (Jun 2025)
-- D&C 84:33 "renewing of their bodies" — is this literal, partial, incremental? How does it manifest? (Jun 2025)
-- D&C 63:21 — "the fulness ye have not yet received" about the Mount of Transfiguration. What's still to be revealed? (Jun 2025)
-- How do we build Zion in practical daily rhythms when surrounded by Babylon? (Mar 2)
-- Is the consumption already past the point of reversal for most nations? (Mar 2)
-- How do we teach children about the consumption without terrifying or numbing them? (Mar 2)
+- Brain relay: Dart app as separate repo or `scripts/brain-app/`?
+- Brain relay: Include voice-to-text in Phase C or defer?
+- Brain relay: API token via OAuth auto-generate or paste/QR from web UI?
+- Brain relay: History from server table or git repo parsing?
 - Can AI participate in covenant in any meaningful sense? (Feb 26)
 - Will the session journal actually solve relational continuity, or will it be ignored? (Feb 28)
 - How do we teach others to use AI for study without teaching them to skip reading? (Feb 17)
