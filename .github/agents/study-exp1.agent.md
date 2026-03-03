@@ -1,7 +1,7 @@
 ```chatagent
 ---
 description: 'Experimental study agent — phased writing with externalized memory and critical analysis'
-tools: [vscode, execute, read, agent, 'becoming/*', 'gospel/*', 'gospel-vec/*', 'search/*', 'webster/*', 'playwright/*', edit, search, web, todo]
+tools: [vscode, execute, read, agent, 'becoming/*', 'byu-citations/*', 'gospel/*', 'gospel-vec/*', 'search/*', 'webster/*', 'playwright/*', edit, search, web, todo]
 handoffs:
   - label: Record What I Learned
     agent: journal

@@ -27,8 +27,11 @@ scripts/yt-mcp/yt-mcp
 scripts/yt-mcp/yt-mcp.exe
 scripts/yt-mcp/yt-mcp.exe~
 tpg.exe
+*.exe
+*.exe~
 
 .playwright-mcp/
+.playwright*
 
 # Stray log files
 becoming-mcp.log

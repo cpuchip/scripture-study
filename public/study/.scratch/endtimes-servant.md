@@ -20,7 +20,7 @@
 
 ## Verified Quotes
 
-### gospel-library/eng/scriptures/dc-testament/dc/113.md — D&C 113 (FULL SECTION)
+### [D&C 113](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/113?lang=eng) — D&C 113 (FULL SECTION)
 **Joseph Smith answering questions about Isaiah 11, March 1838**
 
 > "Who is the Stem of Jesse spoken of in the 1st, 2d, 3d, 4th, and 5th verses of the 11th chapter of Isaiah? Verily thus saith the Lord: It is Christ." (vv. 1-2)
@@ -44,7 +44,7 @@ Also D&C 113:7-10: Zion putting on "her strength" = putting on "the authority of
 
 ---
 
-### gospel-library/eng/scriptures/ot/isa/42.md — Isaiah 42 (FULL CHAPTER)
+### [Isaiah 42](https://www.churchofjesuschrist.org/study/scriptures/ot/isa/42?lang=eng) — Isaiah 42 (FULL CHAPTER)
 **Chapter heading: "Isaiah speaks about the Messiah"**
 
 > "Behold my servant, whom I uphold; mine elect, in whom my soul delighteth; I have put my spirit upon him: he shall bring forth judgment to the Gentiles." (v. 1)
@@ -68,7 +68,7 @@ This dual-servant pattern in Isaiah is significant. The same chapter uses "serva
 
 ---
 
-### gospel-library/eng/scriptures/ot/isa/11.md — Isaiah 11 (FULL CHAPTER)
+### [Isaiah 11](https://www.churchofjesuschrist.org/study/scriptures/ot/isa/11?lang=eng) — Isaiah 11 (FULL CHAPTER)
 **Chapter heading: "The stem of Jesse (Christ) will judge in righteousness — The Lord will raise an ensign and gather Israel"**
 
 > "And there shall come forth a rod out of the stem of Jesse, and a Branch shall grow out of his roots" (v. 1)
@@ -95,7 +95,7 @@ The chapter heading only says "stem of Jesse (Christ)" — doesn't identify the 
 
 ---
 
-### gospel-library/eng/scriptures/ot/isa/49.md — Isaiah 49 (FULL CHAPTER)
+### [Isaiah 49](https://www.churchofjesuschrist.org/study/scriptures/ot/isa/49?lang=eng) — Isaiah 49 (FULL CHAPTER)
 **Chapter heading: "The Messiah will be a light to the Gentiles and will free the prisoners — Israel will be gathered with power in the last days"**
 
 > "Listen, O isles, unto me; and hearken, ye people, from far; The Lord hath called me from the womb; from the bowels of my mother hath he made mention of my name." (v. 1)
@@ -126,7 +126,7 @@ Compare 1 Nephi 21 — Nephi's quotation of this chapter. The chapter heading fo
 
 ---
 
-### gospel-library/eng/scriptures/bofm/mosiah/15.md — Mosiah 15 (FULL CHAPTER)
+### [Mosiah 15](https://www.churchofjesuschrist.org/study/scriptures/bofm/mosiah/15?lang=eng) — Mosiah 15 (FULL CHAPTER)
 **Abinadi's interpretation of the Isaiah servant — About 148 B.C.**
 
 Abinadi quotes and interprets Isaiah 53 (which he quoted in Mosiah 14 = Isaiah 53 verbatim):
@@ -159,7 +159,7 @@ This supports the emerging pattern: Isaiah's servant language applies to MULTIPL
 
 ---
 
-### gospel-library/eng/scriptures/ot/isa/52.md — Isaiah 52:13-15 (servant passage) + context
+### [Isaiah 52](https://www.churchofjesuschrist.org/study/scriptures/ot/isa/52?lang=eng) — Isaiah 52:13-15 (servant passage) + context
 **Chapter heading: "In the last days, Zion will return, and Israel will be redeemed — The Messiah will deal prudently and be exalted."**
 
 > "Behold, my servant shall deal prudently, he shall be exalted and extolled, and be very high." (v. 13)
@@ -178,7 +178,7 @@ Then vv. 13-15 pivot to "my servant" — the fourth servant song begins here and
 
 ---
 
-### gospel-library/eng/scriptures/ot/isa/53.md — Isaiah 53 (FULL CHAPTER)
+### [Isaiah 53](https://www.churchofjesuschrist.org/study/scriptures/ot/isa/53?lang=eng) — Isaiah 53 (FULL CHAPTER)
 **Chapter heading: "Isaiah speaks about the Messiah — His humiliation and sufferings are described — He makes His soul an offering for sin"**
 
 > "He is despised and rejected of men; a man of sorrows, and acquainted with grief" (v.3)
@@ -205,7 +205,7 @@ The "righteous servant" of v. 11 — footnote links to TG Servant. "Justify many
 
 ---
 
-### gospel-library/eng/scriptures/bofm/3-ne/20.md — 3 Nephi 20 (key sections)
+### [3 Nephi 20](https://www.churchofjesuschrist.org/study/scriptures/bofm/3-ne/20?lang=eng) — 3 Nephi 20 (key sections)
 **Jesus quoting Isaiah 52 directly to the Nephites, A.D. 34**
 
 vv. 10-13: Jesus connects Isaiah to covenant fulfillment and gathering of Israel.
@@ -225,7 +225,7 @@ Then vv. 43-45 — Jesus quotes Isaiah 52:13-15, the servant passage:
 
 ---
 
-### gospel-library/eng/scriptures/bofm/3-ne/21.md — 3 Nephi 21 (FULL CHAPTER)
+### [3 Nephi 21](https://www.churchofjesuschrist.org/study/scriptures/bofm/3-ne/21?lang=eng) — 3 Nephi 21 (FULL CHAPTER)
 **Jesus continues: the sign of the gathering + "my servant"**
 
 > "And verily I say unto you, I give unto you a sign, that ye may know the time when these things shall be about to take place—that I shall gather in, from their long dispersion, my people, O house of Israel, and shall establish again among them my Zion" (v. 1)
@@ -306,14 +306,14 @@ Modern sense: "The primary source; origin." In botanical terms, the root support
 ## Conference Talks
 
 ### Elder Mark E. Petersen — "It Was a Miracle!" (October 1977)
-Read full talk at gospel-library/eng/general-conference/1977/10/it-was-a-miracle.md
+Read full talk at [It Was a Miracle (October 1977)](https://www.churchofjesuschrist.org/study/general-conference/1977/10/it-was-a-miracle?lang=eng)
 
 Petersen connects Isaiah's prophecies (specifically Isaiah 29, the "marvelous work and a wonder" chapter) to Joseph Smith: "The work of Joseph Smith was foretold by the prophet Isaiah, who spoke of his humble beginning and his lack of early education. Isaiah actually called him an unlearned man." He presents Joseph as the fulfillment of Isaiah 29's prophecy about the Book of Mormon.
 
 **Note:** This addresses Isaiah 29, not the servant songs directly. But it shows mainstream apostolic teaching connecting Isaiah's prophesied figures to Joseph Smith.
 
 ### President Gordon B. Hinckley — "An Ensign to the Nations" (October 1989)
-Read full talk at gospel-library/eng/general-conference/1989/10/an-ensign-to-the-nations-an-ensign-to-the-world.md
+Read full talk at [An Ensign to the Nations an Ensign to the World (October 1989)](https://www.churchofjesuschrist.org/study/general-conference/1989/10/an-ensign-to-the-nations-an-ensign-to-the-world?lang=eng)
 
 **This is the closest any modern prophet comes to engaging D&C 113 in General Conference.**
 
@@ -324,7 +324,7 @@ Key reading: Hinckley applies the "root of Jesse" passage COLLECTIVELY — not t
 **Connects to:** Outline §II (D&C 113 rod/root), §VII (modern prophets), D&C 86 collective reading.
 
 ### Elder Craig C. Christensen — "A Choice Seer Will I Raise Up" (October 2016)
-Read full talk at gospel-library/eng/general-conference/2016/10/a-choice-seer-will-i-raise-up.md
+Read full talk at [A Choice Seer Will I Raise Up (October 2016)](https://www.churchofjesuschrist.org/study/general-conference/2016/10/a-choice-seer-will-i-raise-up?lang=eng)
 
 Full treatment of 2 Nephi 3 choice seer prophecy → Joseph Smith. Quotes 2 Ne 3:6-15 extensively. "This chapter contains an ancient prophecy about a 'choice seer' whom the Lord would raise up in the latter days—a seer named Joseph, named after his father." Says "Perhaps the most stunning passage in the Book of Mormon to young Joseph may have been the third chapter of 2 Nephi."
 
@@ -333,7 +333,7 @@ Full treatment of 2 Nephi 3 choice seer prophecy → Joseph Smith. Quotes 2 Ne 3
 **Connects to:** Outline §V (2 Nephi 3), §VII (modern treatment).
 
 ### Elder Neal A. Maxwell — "My Servant Joseph" (April 1992)
-Read full talk at gospel-library/eng/general-conference/1992/04/my-servant-joseph.md
+Read full talk at [My Servant Joseph (April 1992)](https://www.churchofjesuschrist.org/study/general-conference/1992/04/my-servant-joseph?lang=eng)
 
 Title references D&C 5:7 — the Lord "repeatedly and affectionately called 'my servant Joseph.'" Comprehensive treatment of Joseph Smith's character, courage, foreordination, prophetic gifts, suffering, and consecration.
 
@@ -342,7 +342,7 @@ Title references D&C 5:7 — the Lord "repeatedly and affectionately called 'my 
 **Connects to:** Outline §V, §VII. Validates that "my servant" language is applied to Joseph, but in a devotional rather than exegetical frame.
 
 ### Elder Rex C. Reeve — "Joseph Smith, the Chosen Instrument" (October 1985)
-Read full talk at gospel-library/eng/general-conference/1985/10/joseph-smith-the-chosen-instrument.md
+Read full talk at [Joseph Smith the Chosen Instrument (October 1985)](https://www.churchofjesuschrist.org/study/general-conference/1985/10/joseph-smith-the-chosen-instrument?lang=eng)
 
 Standard apostolic testimony of Joseph Smith's foreordination via 2 Ne 3:6, 14-15. "Joseph Smith was the chosen instrument." Affirms Joseph as the choice seer prophesied by Joseph of Egypt.
 
@@ -363,7 +363,7 @@ Nelson quotes D&C 86:11 in at least two conference talks — applying it to cove
 **Connects to:** D&C 86, collective servant lineage.
 
 ### Elder Kelly R. Johnson — "The Stem of Jesse" reference (October 2025)
-Read full talk at gospel-library/eng/general-conference/2025/10/32johnson.md
+Read full talk at [Johnson (October 2025)](https://www.churchofjesuschrist.org/study/general-conference/2025/10/32johnson?lang=eng)
 
 Uses "stem of Jesse" as a METAPHOR for connection to Christ (cherry tree analogy). States "Stem of Jesse is a metaphor for the Messiah, Jesus Christ, who was prophesied to come from the lineage of Jesse, the father of King David." References Isaiah 11:1 and D&C 113 in footnote.
 
@@ -391,7 +391,7 @@ Similarly, no conference talk was found that directly engages with D&C 85:7's pr
 
 ---
 
-### gospel-library/eng/scriptures/bofm/2-ne/3.md — 2 Nephi 3 (FULL CHAPTER)
+### [2 Nephi 3](https://www.churchofjesuschrist.org/study/scriptures/bofm/2-ne/3?lang=eng) — 2 Nephi 3 (FULL CHAPTER)
 **Chapter heading: "Joseph in Egypt saw the Nephites in vision — He prophesied of Joseph Smith, the latter-day seer"**
 
 > "Wherefore, Joseph truly saw our day. And he obtained a promise of the Lord, that out of the fruit of his loins the Lord God would raise up a righteous branch unto the house of Israel; not the Messiah, but a branch which was to be broken off" (v. 5)
@@ -436,7 +436,7 @@ v. 24 introduces "one mighty among them" — is this the SAME as the choice seer
 
 ---
 
-### gospel-library/eng/scriptures/ot/ezek/34.md — Ezekiel 34 (FULL CHAPTER)
+### [Ezekiel 34](https://www.churchofjesuschrist.org/study/scriptures/ot/ezek/34?lang=eng) — Ezekiel 34 (FULL CHAPTER)
 **Chapter heading: "The Lord reproves those shepherds who do not feed the flock — In the last days, the Lord will gather the lost sheep of Israel — The Messiah will be their Shepherd"**
 
 vv. 1-10: God rebukes the false shepherds of Israel — they feed themselves, not the flock.
@@ -464,7 +464,7 @@ The footnotes cross-reference Jer. 23:5 and 30:9 — creating a cluster of "Davi
 
 ---
 
-### gospel-library/eng/scriptures/ot/ezek/37.md — Ezekiel 37 (FULL CHAPTER)
+### [Ezekiel 37](https://www.churchofjesuschrist.org/study/scriptures/ot/ezek/37?lang=eng) — Ezekiel 37 (FULL CHAPTER)
 **Chapter heading: "David (the Messiah) will reign over them — They will receive the everlasting gospel covenant"**
 
 vv. 1-14: Valley of dry bones — resurrection of Israel.
@@ -490,7 +490,7 @@ BUT: if "David" simply = Christ, why not just say Christ? The use of "David" as 
 
 ---
 
-### gospel-library/eng/scriptures/ot/jer/23.md — Jeremiah 23:1-8 (key section)
+### [Jeremiah 23](https://www.churchofjesuschrist.org/study/scriptures/ot/jer/23?lang=eng) — Jeremiah 23:1-8 (key section)
 **Chapter heading: "The Branch, who is the King (the Messiah), will reign in righteousness"**
 
 > "Behold, the days come, saith the Lord, that I will raise unto David a righteous Branch, and a King shall reign and prosper, and shall execute judgment and justice in the earth." (v. 5)
@@ -509,7 +509,7 @@ vv. 7-8: Gathering out of the north country — eschatological context.
 
 ---
 
-### gospel-library/eng/scriptures/ot/jer/30.md — Jeremiah 30:9 (key verse)
+### [Jeremiah 30](https://www.churchofjesuschrist.org/study/scriptures/ot/jer/30?lang=eng) — Jeremiah 30:9 (key verse)
 **Chapter heading: "In the last days, Judah and Israel will be gathered — David, their king (the Messiah), will reign over them."**
 
 > "But they shall serve the Lord their God, and David their king, whom I will raise up unto them." (v. 9)
@@ -526,7 +526,7 @@ v. 24: "in the latter days ye shall consider it" — explicitly eschatological.
 
 ---
 
-### gospel-library/eng/scriptures/dc-testament/dc/85.md — D&C 85 (FULL SECTION)
+### [D&C 85](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/85?lang=eng) — D&C 85 (FULL SECTION)
 **November 27, 1832 — Letter from Joseph Smith to W. W. Phelps about consecration in Zion**
 
 > "And it shall come to pass that I, the Lord God, will send one mighty and strong, holding the scepter of power in his hand, clothed with light for a covering, whose mouth shall utter words, eternal words; while his bowels shall be a fountain of truth, to set in order the house of God, and to arrange by lot the inheritances of the saints" (v. 7)
@@ -545,7 +545,7 @@ The First Presidency has officially addressed this passage — need to find that
 
 ---
 
-### gospel-library/eng/scriptures/dc-testament/dc/103.md — D&C 103:15-21
+### [D&C 103](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/103?lang=eng) — D&C 103:15-21
 **February 24, 1834 — Redemption of Zion by power (Zion's Camp)**
 
 > "Behold, I say unto you, the redemption of Zion must needs come by power" (v. 15)
@@ -565,7 +565,7 @@ This is the MOST EXPLICIT identification in all of scripture: Joseph Smith IS th
 
 ---
 
-### gospel-library/eng/scriptures/dc-testament/dc/86.md — D&C 86 (FULL SECTION)
+### [D&C 86](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/86?lang=eng) — D&C 86 (FULL SECTION)
 **December 6, 1832 — Parable of wheat and tares, priesthood lineage**
 
 vv. 1-7: Wheat and tares interpretation — apostasy, then last-days Restoration.
