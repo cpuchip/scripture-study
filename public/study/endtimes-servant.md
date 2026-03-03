@@ -238,11 +238,35 @@ This is **Isaiah 49:6's servant language** — "a light unto the Gentiles" — a
 
 This matters enormously for the "endtimes servant" question. It means the servant isn't necessarily ONE person to be identified. It may be a **role** that Christ initiates, specific servants carry at critical moments (Joseph Smith at the Restoration), and the broader priesthood lineage extends into the gathering. The question "who is the endtimes servant?" may be the wrong question. The better question might be: "what is the servant role, and who carries it?"
 
-### Modern Prophets — What They Haven't Said
+### Modern Prophets — What They've Said (And What They Haven't)
 
-It's worth noting what I *didn't* find. A search of General Conference talks didn't turn up any apostolic address directly treating the "endtimes servant" as a unified concept. Elder Mark E. Petersen in 1977 connected [Isaiah 29](https://www.churchofjesuschrist.org/study/scriptures/ot/isa/29?lang=eng) to Joseph Smith (the "unlearned man" and the marvelous work), but he was addressing Isaiah 29, not the servant songs. No talk found directly discusses the root of Jesse, the rod of D&C 113, or a future Davidic servant figure.
+After an extensive search of General Conference (14+ queries across varied angles), a pattern emerged: modern prophets and apostles engage these scriptures **one at a time, devotionally** — but never as a unified "endtimes servant" concept.
 
-This silence may be significant. The prophets and apostles haven't promoted a comprehensive "endtimes servant" theology. They haven't identified the rod or root of Jesse by name beyond what D&C 113 says. They haven't endorsed the idea of a future Davidic king separate from Christ. The absence of authoritative teaching on this topic means **most specific claims you'll hear are interpretive, not doctrinal.**
+**What they HAVE said:**
+
+- **President Hinckley** (October 1989, "An Ensign to the Nations") directly quoted [D&C 113:6](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/113?lang=eng&id=p6#p6) — "the priesthood...carries with it 'the keys of the kingdom, for an ensign, and for the gathering' of the people of the Lord in the last days." He applied the Root of Jesse passage **collectively** to the Church's priesthood work. This is the closest any modern prophet comes to engaging D&C 113 in the conference pulpit.
+
+- **Elder Craig C. Christensen** (October 2016, "A Choice Seer Will I Raise Up") gave a full treatment of [2 Nephi 3](https://www.churchofjesuschrist.org/study/scriptures/bofm/2-ne/3?lang=eng) — Joseph Smith as the choice seer. He called it "perhaps the most stunning passage in the Book of Mormon to young Joseph." Devotional frame, closed prophecy — Joseph is the fulfillment. No connection drawn to the rod, root, or Davidic servant.
+
+- **Elder Neal A. Maxwell** (April 1992, "My Servant Joseph") explored the Lord's personal affection for Joseph ([D&C 5:7](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/5?lang=eng&id=p7#p7) — "my servant Joseph"). Beautiful treatment of Joseph's character and foreordination. But it's about Joseph AS a servant, not about "the servant" as a prophetic concept. Maxwell didn't engage with Isaiah's servant songs or D&C 113's rod/root.
+
+- **Elder Theodore M. Burton** (October 1972) applied [D&C 86:11](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/86?lang=eng&id=p11#p11) directly to individual Church members doing genealogy and temple work — "a light unto the Gentiles, and through this priesthood, a savior unto my people Israel." **Elder Russell M. Nelson** quoted the same verse in at least two talks (2008, 1995), applying it to covenant-keeping priesthood holders. Both read the servant role as **collective and present-tense**.
+
+- **Elder Mark E. Petersen** (October 1977) connected [Isaiah 29](https://www.churchofjesuschrist.org/study/scriptures/ot/isa/29?lang=eng) to Joseph Smith — the "unlearned man" and the marvelous work. But he was addressing Isaiah 29, not the servant songs.
+
+**What they HAVEN'T said:**
+
+- **No General Conference talk found** directly treats [3 Nephi 21:10-11](https://www.churchofjesuschrist.org/study/scriptures/bofm/3-ne/21?lang=eng&id=p10-p11#p10) — Jesus' own words about "that servant of mine whom I shall send" who will be "marred" but healed. This is arguably the most striking silence. The Savior personally prophesies about a future servant. The footnotes link to Joseph Smith. And the conference pulpit is quiet.
+
+- **No talk found** discusses the Rod or Root of Jesse identity beyond what [D&C 113](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/113?lang=eng) already says. No one has offered a name or expanded on these figures.
+
+- **No talk found** treats Isaiah's servant songs ([Isaiah 42](https://www.churchofjesuschrist.org/study/scriptures/ot/isa/42?lang=eng), [49](https://www.churchofjesuschrist.org/study/scriptures/ot/isa/49?lang=eng), [52-53](https://www.churchofjesuschrist.org/study/scriptures/ot/isa/52?lang=eng)) as a connected eschatological theme with latter-day application beyond Christ's atonement.
+
+- **No talk found** discusses a future Davidic servant figure from [Ezekiel 34](https://www.churchofjesuschrist.org/study/scriptures/ot/ezek/34?lang=eng)/[37](https://www.churchofjesuschrist.org/study/scriptures/ot/ezek/37?lang=eng) as distinct from Christ himself.
+
+- **No talk found** directly engages [D&C 85:7](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/85?lang=eng&id=p7#p7)'s "one mighty and strong" in its prophetic dimension.
+
+This pattern tells us something important. The prophets haven't promoted a comprehensive "endtimes servant" theology. They apply these passages **piecemeal**: choice seer = Joseph Smith (closed), priesthood lineage = us (present), ensign = the Church (institutional). The absence of authoritative teaching on a **unified** servant concept means most specific claims beyond these readings are interpretive, not doctrinal — and the prophets appear to be deliberately leaving the open questions open.
 
 ---
 
