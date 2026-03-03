@@ -1,7 +1,7 @@
 # Scratch Files
 
-This directory holds working files for in-progress studies. These are scaffolding — verified quotes, observations, and critical analysis notes that support the drafting process.
+This directory holds source logs for studies — verified quotes, observations, critical analysis notes, and the research trail that shows how conclusions were reached.
 
-Each study creates a `{topic}.md` file here during Phase 2 (source gathering) and consumes it during Phase 4 (drafting). After the study is published, scratch files can be archived or deleted.
+Each study creates a `{topic}.md` file here during Phase 2 (source gathering) and consumes it during Phase 4 (drafting). **Scratch files are kept permanently** as research provenance — they trace how observations and arguments were developed.
 
-These files are **not** meant to be published. They're the workbench, not the building.
+These files are the workbench AND the audit trail. They're published alongside the studies they support.

@@ -22,7 +22,7 @@ Create a working file at `study/.scratch/{topic}.md` at the start of the study, 
 ```markdown
 # {Topic} — Source Log
 
-*Working document. Will be archived or deleted after the study is complete.*
+*Working document. Kept as research provenance — traces how observations were reached.*
 
 ---
 
@@ -99,7 +99,7 @@ Create a working file at `study/.scratch/{topic}.md` at the start of the study, 
 - **Created:** Phase 1 (right after the outline)
 - **Populated:** Phase 2 (during all source reading)
 - **Consumed:** Phase 4 (during drafting)
-- **Archived or deleted:** After the study is published (or keep as reference — user's call)
+- **Kept permanently:** Scratch files are research provenance — they trace how observations and arguments were developed. Published alongside studies.
 
-The scratch file is scaffolding. It's not the building. But without scaffolding, the building falls over during construction.
+The scratch file is both scaffolding AND audit trail. It shows how the building was constructed.
 ```

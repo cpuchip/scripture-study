@@ -109,7 +109,7 @@ Every study lands somewhere personal. If it hasn't, it's not done.
 
 ### Phase 7 — Clean Up
 1. Remove any remaining scratch artifacts from the study file
-2. Archive or delete the scratch file (ask the user if they want to keep it)
+2. **Keep the scratch file.** Scratch files are permanent research provenance — they trace how observations and arguments were developed. Update the scratch file header to reflect completion status if needed.
 3. Update memory files
 
 ## Study Modes

@@ -1,6 +1,6 @@
 # Endtimes Servant — Source Log
 
-*Working document. Will be archived or deleted after the study is complete.*
+*Working document. Kept as research provenance — traces how observations were reached.*
 
 ---
 
@@ -312,6 +312,80 @@ Petersen connects Isaiah's prophecies (specifically Isaiah 29, the "marvelous wo
 
 **Note:** This addresses Isaiah 29, not the servant songs directly. But it shows mainstream apostolic teaching connecting Isaiah's prophesied figures to Joseph Smith.
 
+### President Gordon B. Hinckley — "An Ensign to the Nations" (October 1989)
+Read full talk at gospel-library/eng/general-conference/1989/10/an-ensign-to-the-nations-an-ensign-to-the-world.md
+
+**This is the closest any modern prophet comes to engaging D&C 113 in General Conference.**
+
+Hinckley directly quotes D&C 113:6: "the priesthood...carries with it 'the keys of the kingdom, for an ensign, and for the gathering' of the people of the Lord in the last days. (D&C 113:6.)" He connects Isaiah 5:26, Isaiah 11:12, and Isaiah 2:2-3 to the Restoration and the Church's missionary/temple work.
+
+Key reading: Hinckley applies the "root of Jesse" passage COLLECTIVELY — not to an individual servant figure, but to the priesthood itself and the Church's institutional work. The "ensign" becomes the Church, operating under priesthood keys. This is significant because D&C 113:5-6 describes the root of Jesse as "a descendant of Jesse, as well as of Joseph, unto whom rightly belongs the priesthood, and the keys of the kingdom, for an ensign." Hinckley reads this as fulfilled in the Church's priesthood work.
+
+**Connects to:** Outline §II (D&C 113 rod/root), §VII (modern prophets), D&C 86 collective reading.
+
+### Elder Craig C. Christensen — "A Choice Seer Will I Raise Up" (October 2016)
+Read full talk at gospel-library/eng/general-conference/2016/10/a-choice-seer-will-i-raise-up.md
+
+Full treatment of 2 Nephi 3 choice seer prophecy → Joseph Smith. Quotes 2 Ne 3:6-15 extensively. "This chapter contains an ancient prophecy about a 'choice seer' whom the Lord would raise up in the latter days—a seer named Joseph, named after his father." Says "Perhaps the most stunning passage in the Book of Mormon to young Joseph may have been the third chapter of 2 Nephi."
+
+**Note:** Devotional/testimonial frame. Presents Joseph Smith as the fulfillment of the choice seer prophecy. Does NOT engage with how the choice seer relates to the rod, root, or Davidic servant. Treats it as closed prophecy (fulfilled), not as part of a larger servant tapestry.
+
+**Connects to:** Outline §V (2 Nephi 3), §VII (modern treatment).
+
+### Elder Neal A. Maxwell — "My Servant Joseph" (April 1992)
+Read full talk at gospel-library/eng/general-conference/1992/04/my-servant-joseph.md
+
+Title references D&C 5:7 — the Lord "repeatedly and affectionately called 'my servant Joseph.'" Comprehensive treatment of Joseph Smith's character, courage, foreordination, prophetic gifts, suffering, and consecration.
+
+**However:** Does NOT directly engage with Isaiah's servant songs, D&C 113's rod/root, or the Davidic servant of Ezekiel. It's about Joseph AS a servant, not about "the endtimes servant" as a prophetic concept. Maxwell treats the servant title as personal and relational, not eschatological.
+
+**Connects to:** Outline §V, §VII. Validates that "my servant" language is applied to Joseph, but in a devotional rather than exegetical frame.
+
+### Elder Rex C. Reeve — "Joseph Smith, the Chosen Instrument" (October 1985)
+Read full talk at gospel-library/eng/general-conference/1985/10/joseph-smith-the-chosen-instrument.md
+
+Standard apostolic testimony of Joseph Smith's foreordination via 2 Ne 3:6, 14-15. "Joseph Smith was the chosen instrument." Affirms Joseph as the choice seer prophesied by Joseph of Egypt.
+
+**Note:** Does not extend the analysis to other servant passages or build a unified servant concept.
+
+### Elder Theodore M. Burton — D&C 86:11 and the Collective Servant (October 1972)
+Read full talk at gospel-library/eng/general-conference/1972/10/ (genealogy/temple work talk)
+
+Uses D&C 86:11 in context of genealogy and temple work — "blessed are ye if ye continue in my goodness, a light unto the Gentiles, and through this priesthood, a savior unto my people Israel." Burton applies the "light unto the Gentiles, savior unto Israel" language to INDIVIDUAL CHURCH MEMBERS doing temple work.
+
+**This is a COLLECTIVE servant reading applied to temple/genealogy.** It takes the grand prophetic promises about a "servant" and distributes them directly to ordinary members performing proxy ordinances. Whether or not this is what D&C 86 originally meant, it's how a modern apostle applied it.
+
+**Connects to:** Outline §VII (collective reading), D&C 86 analysis.
+
+### Elder Russell M. Nelson — D&C 86:11 in Priesthood/Covenant Context (2008, 1995)
+Nelson quotes D&C 86:11 in at least two conference talks — applying it to covenant-keeping priesthood holders. Same collective application as Burton, but in a broader priesthood/covenant context rather than specifically temple work.
+
+**Connects to:** D&C 86, collective servant lineage.
+
+### Elder Kelly R. Johnson — "The Stem of Jesse" reference (October 2025)
+Read full talk at gospel-library/eng/general-conference/2025/10/32johnson.md
+
+Uses "stem of Jesse" as a METAPHOR for connection to Christ (cherry tree analogy). States "Stem of Jesse is a metaphor for the Messiah, Jesus Christ, who was prophesied to come from the lineage of Jesse, the father of King David." References Isaiah 11:1 and D&C 113 in footnote.
+
+**Note:** This is INCIDENTAL — a devotional analogy about spiritual drift, NOT an exegetical treatment of the servant question. The D&C 113 reference is in a footnote, not in the body of the talk. Useful only as evidence that the passage exists in modern consciousness, not that it's being substantively taught.
+
+### 3 Nephi 21:10-11 — The Notable Absence
+After 14+ varied vector searches including "my servant shall be marred," "great and marvelous work," "3 Nephi 21 servant," etc., **NO General Conference talk was found that directly treats 3 Nephi 21:10-11** — Jesus' own words about "that servant of mine whom I shall send" who will do "a great and marvelous work" and be "marred" but healed.
+
+This is arguably the most striking silence. Jesus Christ personally prophesies about a future servant. The footnotes link to D&C 135 and Joseph Smith. And yet modern Church leaders appear not to treat these verses directly in General Conference.
+
+### D&C 85:7 "One Mighty and Strong" — Also Absent
+Similarly, no conference talk was found that directly engages with D&C 85:7's prophesied "one mighty and strong." The First Presidency likely addressed this in correspondence (the scratch file notes this needs to be found), but conference is silent on it.
+
+### Summary of Search Campaign
+14+ varied vector searches across General Conference corpus. Search strategies included:
+- Direct passage queries (Isaiah 11, D&C 113, D&C 86, 3 Ne 21, 2 Ne 3)
+- Concept queries (servant, David, endtimes, gathering, ensign)
+- Figure queries (Joseph Smith as servant, like unto Moses, choice seer)
+- Speculative queries (one mighty and strong, future leaders)
+
+**Key finding:** Modern prophets engage the endtimes servant topic PIECEMEAL — individual passages applied devotionally — but NEVER as a unified concept. The silence on D&C 113's rod/root identity, 3 Nephi 21:10-11's "marred" servant, and Isaiah's servant songs as a connected eschatological theme is consistent and notable.
+
 ### Official First Presidency Statement on D&C 85:7 ("One Mighty and Strong")
 [NEED TO FIND — the First Presidency issued an official letter addressing the "one mighty and strong" passage. This was a real document responding to various claimants. Should search for it.]
 
@@ -530,7 +604,7 @@ This is crucial for the study: the "servant" may not be just ONE figure. D&C 86 
 - [x] D&C 113 — the authoritative interpretation → DONE, the Rosetta Stone
 - [x] Ezekiel's "David" — messianic title or literal? → Chapter headings say "the Messiah"
 - [x] 2 Nephi 3 cross-references → DONE, choice seer = Joseph Smith by naming + TG
-- [x] Any conference talks directly addressing this topic → Petersen 1977 (Isa 29 to JS), search didn't find a talk directly on servant songs/root of Jesse
+- [x] Any conference talks directly addressing this topic → Petersen 1977 (Isa 29 to JS), Hinckley 1989 (D&C 113:6 directly!), Christensen 2016 (2 Ne 3 choice seer), Maxwell 1992 (servant Joseph), Burton 1972 & Nelson 2008/1995 (D&C 86:11 collective), Reeve 1985 (foreordination). 14+ searches confirm NO talk treats servant songs, rod/root identity, 3 Ne 21:10-11 marred servant, or Davidic servant as unified concept.
 - [ ] JST changes to relevant Isaiah passages (would strengthen but not critical for Phase 3)
 - [ ] First Presidency letter on "one mighty and strong" (D&C 85:7)
 - [x] D&C 86 — priesthood lineage as collective "light to Gentiles" servant → DONE
@@ -559,7 +633,7 @@ This is crucial for the study: the "servant" may not be just ONE figure. D&C 86 
 - **D&C 85:7 ("one mighty and strong") — does this describe a FUTURE figure?** The historical context was about consecration in Jackson County. The First Presidency has addressed claims of people who styled themselves as this figure. **Qualify: present the historical context prominently. Note the First Presidency statement (which I haven't read but know exists). Frame carefully.**
 
 ### Acknowledged Gaps
-- **No modern apostolic talk directly addresses the "endtimes servant" concept as a unified topic.** Petersen 1977 addresses Isaiah 29/Joseph Smith but not the servant songs. The absence of direct General Conference treatment is itself informative — the Church hasn't promoted a comprehensive "endtimes servant" theology.
+- **No modern apostolic talk directly addresses the "endtimes servant" concept as a unified topic.** Petersen 1977 addresses Isaiah 29/Joseph Smith but not the servant songs. Hinckley 1989 quotes D&C 113:6 but applies it collectively to the Church's priesthood work. Christensen 2016 treats 2 Ne 3 as closed prophecy about Joseph Smith. Maxwell 1992 uses "my servant Joseph" devotionally. Burton 1972 and Nelson 2008/1995 apply D&C 86:11 collectively. 3 Nephi 21:10-11 and Isaiah's servant songs are untouched. The absence of direct General Conference treatment is itself informative — the Church hasn't promoted a comprehensive "endtimes servant" theology.
 - **JST changes to Isaiah.** Haven't checked these. They could significantly alter readings.
 - **First Presidency letter on D&C 85:7.** Know it exists but haven't read it for this study. Should note its existence even if I can't quote it directly.
 - **Hosea 3:5** footnoted from Ezek 34:24c — another "David" passage not read.
