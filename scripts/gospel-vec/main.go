@@ -4,6 +4,7 @@ import (
 	"context"
 	"flag"
 	"fmt"
+	"log"
 	"os"
 	"path/filepath"
 	"strings"
@@ -1048,6 +1049,13 @@ func cmdMCP(args []string) {
 	// If data dir specified, update config
 	if *dataDir != "" {
 		cfg.DataDir = *dataDir
+	}
+
+	// Auto-start LM Studio and load embedding model
+	ctx := context.Background()
+	if err := EnsureLMStudio(ctx, cfg.EmbeddingURL, cfg.EmbeddingModel); err != nil {
+		log.Printf("warning: LM Studio auto-start failed: %v", err)
+		log.Printf("Embedding search may fail — start LM Studio manually")
 	}
 
 	server, err := NewMCPServer(cfg)
