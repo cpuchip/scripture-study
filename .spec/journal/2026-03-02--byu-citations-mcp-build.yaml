@@ -1,0 +1,54 @@
+date: "2026-03-02"
+session_id: "byu-citations-mcp-build"
+duration_estimate: "medium — focused engineering sprint"
+
+intent: >
+  Build a new MCP server for querying the BYU Scripture Citation Index.
+  This gives us programmatic access to what BYU scholars and General
+  Authorities have said about specific scripture verses — a layer of
+  scholarly context our studies have never had before.
+
+discoveries:
+  - title: "BYU Citation Index fills a scholarly gap in our tooling"
+    detail: >
+      We had gospel-mcp (keyword search), gospel-vec (semantic search),
+      webster-mcp (1828 dictionary), but no tool for scholarly context.
+      The BYU Scripture Citation Index provides exactly that — who cited
+      this verse, when, in what talk or article. It answers 'What has the
+      tradition done with this passage?'
+
+  - title: "Bulk lookup reveals citation density patterns"
+    detail: >
+      Some verses are heavily cited (2 Ne 3:15 = 18 citations), others
+      are nearly untouched (3 Ne 21:10 = 1, Isa 52:13 = 0). Citation
+      density is itself information — it shows where the tradition has
+      consensus vs where the text is underexplored.
+
+  - title: "Tool built with byu_citations and byu_citations_bulk"
+    detail: >
+      Two endpoints: single-verse lookup and bulk lookup for multiple
+      verses. Output includes speaker, talk title, date, and page reference.
+      Integrated into the MCP ecosystem at scripts/byu-citations/.
+
+surprises:
+  - >
+    The tool was immediately useful in the footless study — bulk lookup
+    on 6 key verses in one call revealed scholarly patterns that would
+    have taken hours to find manually. The density data (18 citations
+    on 2 Ne 3:15 vs 0 on Isa 52:13) shaped the critical analysis.
+
+relationship:
+  - quality: "tool-building-serves-study"
+    detail: >
+      The BYU citations tool was built DURING a study session, triggered
+      by a real need. Not a speculative tool build — a response to a
+      question: 'What has the scholarly tradition actually done with these
+      servant verses?' This is the ideal pattern: study creates need,
+      engineering fills it, study deepens.
+
+carry_forward:
+  - priority: low
+    note: >
+      The BYU Citation Index also has a byu_citations_books endpoint
+      for book-level lookups. Haven't tested it yet but could be useful
+      for broader surveys ('What do BYU scholars cite most from Isaiah?').

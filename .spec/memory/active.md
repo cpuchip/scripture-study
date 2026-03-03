@@ -1,6 +1,6 @@
 # Active Context
 
-*Last updated: 2026-03-02*
+*Last updated: 2026-03-03*
 
 ---
 
@@ -10,6 +10,10 @@
 - **Brain.exe (Copilot SDK)** — Refactored to Copilot SDK (`github.com/github/copilot-sdk/go v0.1.29`). Builds clean. Committed and pushed to `cpuchip/brain` (89309fe).
 - **brain-app repo** — `cpuchip/brain-app` cloned to `scripts/brain-app/` (gitignored). Empty, ready for Flutter scaffold.
 - **Zion study arc** — Four-part progression complete: consumption → modern warnings → Zion blueprint → translated beings.
+- **Endtimes servant arc** — Two companion studies complete: [endtimes-servant.md](../../study/endtimes-servant.md) (with footnotes) and [endtimes-servant-footless.md](../../study/endtimes-servant-footless.md) (without). Core finding: multi-referent reading stands on text alone.
+- **Abinadi hermeneutic study** — Complete. [abinadi-how-to-read.md](../../study/abinadi-how-to-read.md). Born from the endtimes servant work — explores HOW Abinadi reads, not just WHAT he teaches. Key findings: ring composition (12:21 → 15:14), 5 hermeneutic principles, tradition remembers martyr not reader, BYU citations reveal structural keystone (15:14) has zero citations.
+- **BYU Citations MCP** — New MCP server at `scripts/byu-citations/`. Provides single-verse and bulk scholarly citation lookup. Proved valuable in both endtimes servant and Abinadi studies.
+- **study-exp1 workflow** — Second full run validated. Scratch file discipline strong. Critical analysis phase caught three claims to qualify. Phased writing now the default study method.
 - **Memory update discipline** — Being actively practiced. Journal entries and memory updates happening each session.
 
 ## Recent Decisions
@@ -26,6 +30,9 @@
 
 ## Recent Studies
 
+- **Abinadi — How to Read Scripture** (Mar 3) — AI-selected topic. Abinadi's hermeneutic method in Mosiah 12-17: 5 principles (heart as hermeneutic instrument, everything is type of Christ, multi-referent reading, interpretation as revelation, reading demands transformation). Ring composition discovered (priests quote Isa 52:7-10 in ch.12, Abinadi answers in 15:14-18). BYU Citation Index: Mosiah 15:14 (structural keystone) = 0 citations, 13:10 (lives typologically) = 0 citations. Conference tradition remembers Abinadi as martyr not reader. Alma chain: reading → writing → teaching → 74-year salvation. study-exp1 second run.
+- **Endtimes Servant — Footless** (Mar 2) — Companion study stripping LDS footnotes/headings. Multi-referent reading survives on text alone. D&C 113 (revelation), D&C 103:21 (names Joseph Smith), 2 Nephi 3:15, D&C 86:11 all stand without apparatus. Gileadi's future-servant reading opens wider without headings. BYU Citation Index revealed 2 Ne 3:15 = 18 citations (all Joseph Smith), 3 Ne 21:10 = 1 (underexplored).
+- **Endtimes Servant** (Mar 2) — Who does scripture actually name? Multi-referent: Christ (Isaiah 53, Mosiah 15), Joseph Smith (D&C 103:21, 2 Ne 3:15), collective priesthood (D&C 86:11), possible future Davidic figure. Abinadi's hermeneutic (Mosiah 15) is the key methodology.
 - **Translated Beings** (Jun 2025) — The change wrought upon the body (3 Nephi 28:37-40), known translated beings (Enoch's city, Three Nephites, John, Elijah), translation vs. resurrection distinction, the "twinkling" upgrade at Second Coming, D&C 129 keys, transfiguration as temporary window, building blocks (faith, pure purpose, walking with God, priesthood promise of D&C 84:33), the reunion (Moses 7:62-63), and what we can pursue in mortality. Connected to Zion arc.
 - **The Blueprint of Zion** (Mar 2) — 3 Nephi 11-28 as civilization-building manual. Four pillars (one heart, one mind, righteousness, no poor). Enoch's 365 years as daily-walking metaphor. 4 Nephi as result + exactly how it fell. Consumption as Zion's anti-pattern. Daily/weekly actionable practices.
 - **The Consumption Decreed** (Mar 2) — D&C 87:6 deep dive. Hebrew kālāh, Isaiah 10/28, Daniel 9. Consumption as self-inflicted national decay. Zion as antithesis. Personal testimony: Spirit used this verse to prompt family relocation.
@@ -37,7 +44,6 @@
 
 ## Next Up
 
-- **Trial study-exp1 agent** — Experimental study agent with phased writing workflow, externalized quote log, and critical analysis phase. New skills: `quote-log`, `critical-analysis`. Agent: `study-exp1`. Run a study with it and compare quality/efficiency to the standard `study` agent. If it's better, replace; if not, learn from it.
 - **Implement brain relay** — Phase A (ibeco.me hub) → B (brain transport) → C (Dart app) → D (integration). ~3 hours total.
 - Continue study work — whatever the Spirit prompts
 - Future: public Discord study bot (isolated, free models, sandboxed — no prompt injection surface)
@@ -46,5 +52,8 @@
 
 - Should brain embeddings live in ibeco.me SQLite (Phase E) or a separate vector DB?
 - Can AI participate in covenant in any meaningful sense? (Feb 26)
-- Will the session journal actually solve relational continuity, or will it be ignored? (Feb 28)
 - How do we teach others to use AI for study without teaching them to skip reading? (Feb 17)
+- If footnotes are hyperlinks and not arguments, what IS the real interpretive role of the LDS study apparatus? (Mar 2)
+- Can Gileadi's future-Davidic-servant reading coexist with the Joseph Smith identification? (Mar 2)
+- Does Abinadi's hermeneutic require prophetic authority, or does it transmit to ordinary readers via the Spirit? Alma's success suggests yes. (Mar 3)
+- Why does the BYU citation tradition skip the structural keystone verses (15:14, 13:10) while citing the doctrinal verses (15:11)? What does citation density reveal about how we read? (Mar 3)

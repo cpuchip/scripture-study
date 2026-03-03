@@ -101,6 +101,7 @@ After making changes to instructions, tools, or architecture — let them prove 
 | Conceptual/thematic search | gospel-vec (semantic) | Similarity across concepts |
 | Historical word meaning | webster-mcp | Authoritative 1828 definitions |
 | Conference talk discovery | gospel-vec `search_talks` | Semantic across 54 years |
+| Scholarly citation context | byu-citations (single/bulk) | Who cited this verse, when, in what |
 | Verify a source | `read_file` | Nothing substitutes for reading |
 | YouTube transcript | yt-mcp `yt_download` | Download and save to yt/ |
 | Dictionary (modern) | webster-mcp `modern_define` | Current usage comparison |
@@ -111,3 +112,22 @@ After making changes to instructions, tools, or architecture — let them prove 
 - **Search result as direct quote** → always read the actual file
 - **Directory link instead of file link** → verify the specific file path exists
 - **"File not downloaded" without checking** → use `file_search` or `list_dir` to verify
+
+---
+
+## Hermeneutical Principles
+
+### Multi-Referent Reading Is the Text's Own Method
+Isaiah uses "my servant" for at least three distinct referents within a single chapter (Isa 42:1 = ideal/Christ, 42:19 = blind Israel). The multi-referent reading isn't imposed by footnotes or doctrinal assumptions — it is demanded by the text. Abinadi's reading of Isaiah 53 in Mosiah 15 is the canonical demonstration: Christ is both Father and Son, and his "seed" are those who follow the prophets. The same passage applies simultaneously to multiple fulfillments across time.
+
+*Source: [endtimes-servant-footless.md](../../study/endtimes-servant-footless.md), [endtimes-servant.md](../../study/endtimes-servant.md)*
+
+### Footnotes Are Hyperlinks, Not Arguments
+The LDS study apparatus (footnotes, headings, TG) added in 1979 functions as navigational convenience, not load-bearing theological argument. The core doctrinal readings they point to (Christ as Isaiah 53 servant, Joseph Smith as choice seer, collective priesthood as light to Gentiles) all stand on textual evidence from revelatory documents (D&C 113, D&C 103, 2 Ne 3, Mosiah 15) — the footnotes merely speed up the connections. Removing them slows discovery but doesn't change conclusions. However, removing headings *does* open interpretive space — Gileadi's future-servant reading is more plausible without headings foreclosing ambiguity.
+
+*Source: [endtimes-servant-footless.md](../../study/endtimes-servant-footless.md)*
+
+### Citation Density Reveals Tradition's Focus
+BYU Scripture Citation Index density maps where the tradition has consensus vs. silence. High-citation verses (2 Ne 3:15 = 18 citations, all Joseph Smith) represent settled ground. Low-citation pivotal verses (3 Ne 21:10 = 1 citation) represent underexplored territory worth attention. Zero-citation verses (Isa 52:13) suggest scholarly avoidance or assumption of obviousness.
+
+*Source: endtimes servant study, byu-citations MCP*
