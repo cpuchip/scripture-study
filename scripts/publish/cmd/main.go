@@ -46,6 +46,11 @@ var (
 // linkPattern matches markdown links: [text](path)
 var linkPattern = regexp.MustCompile(`\[([^\]]*)\]\(([^)]+)\)`)
 
+// bareLinkPattern matches bare gospel-library paths NOT already inside markdown link syntax.
+// It captures the full path like "gospel-library/eng/scriptures/ot/isa/42.md"
+// and avoids matching paths already inside parentheses of markdown links.
+var bareLinkPattern = regexp.MustCompile(`(?:^|[^(])(?P<path>gospel-library/eng/[a-zA-Z0-9/_\-]+\.md)`)
+
 // versePattern extracts verse references from display text like "Moses 6:59-60" or "1 Nephi 3:7"
 var versePattern = regexp.MustCompile(`(?i)(\d+\s+)?([A-Za-z&\-]+)\s+(\d+):(\d+)(?:[–\-](\d+))?`)
 
@@ -194,7 +199,7 @@ func processFile(inputPath, outputPath, sourceDir string) (int, error) {
 	// Calculate the directory of the source file for resolving relative paths
 	sourceFileDir := filepath.Dir(inputPath)
 
-	// Convert links
+	// Convert markdown links [text](path)
 	converted := 0
 	newContent := linkPattern.ReplaceAllStringFunc(string(content), func(match string) string {
 		result, wasConverted := convertLink(match, sourceFileDir)
@@ -203,6 +208,10 @@ func processFile(inputPath, outputPath, sourceDir string) (int, error) {
 		}
 		return result
 	})
+
+	// Convert bare gospel-library paths (not already inside markdown links)
+	// e.g., "gospel-library/eng/scriptures/ot/isa/42.md" becomes a clickable Church URL
+	newContent = convertBareGospelLinks(newContent, sourceFileDir, &converted)
 
 	if *dryRun {
 		return converted, nil
@@ -324,6 +333,303 @@ func convertToChurchURL(linkPath, linkText, sourceDir string) string {
 	}
 
 	return baseURL
+}
+
+// convertBareGospelLinks finds bare gospel-library/eng/... paths in text that
+// are NOT already inside markdown link syntax and converts them to Church URLs.
+// This handles scratch-file patterns like:
+//
+//	### gospel-library/eng/scriptures/ot/isa/42.md — Isaiah 42
+//	Read full talk at gospel-library/eng/general-conference/1977/10/it-was-a-miracle.md
+func convertBareGospelLinks(content, sourceDir string, converted *int) string {
+	// Process line by line to handle the different patterns correctly
+	lines := strings.Split(content, "\n")
+	for i, line := range lines {
+		// Skip lines that already have markdown links containing gospel-library
+		// (these were already converted in the first pass)
+		if linkPattern.MatchString(line) && strings.Contains(line, "churchofjesuschrist.org") {
+			continue
+		}
+
+		// Find all bare gospel-library paths in this line
+		matches := bareLinkPattern.FindAllStringSubmatchIndex(line, -1)
+		if len(matches) == 0 {
+			continue
+		}
+
+		// Process matches in reverse order so indices stay valid
+		for j := len(matches) - 1; j >= 0; j-- {
+			m := matches[j]
+			// The named group "path" is group 1
+			pathStart := m[2]
+			pathEnd := m[3]
+			barePath := line[pathStart:pathEnd]
+
+			// Check this path isn't already inside a markdown link's parentheses
+			// Look backwards from pathStart for an unmatched (
+			if isInsideMarkdownLink(line, pathStart) {
+				continue
+			}
+
+			// Convert the bare path to a Church URL
+			churchURL := convertBarePathToChurchURL(barePath)
+			if churchURL == "" {
+				continue
+			}
+
+			// Build a readable display name from the path
+			displayName := buildDisplayName(barePath)
+
+			// Replace the bare path with a markdown link
+			replacement := fmt.Sprintf("[%s](%s)", displayName, churchURL)
+			line = line[:pathStart] + replacement + line[pathEnd:]
+			*converted++
+		}
+		lines[i] = line
+	}
+	return strings.Join(lines, "\n")
+}
+
+// isInsideMarkdownLink checks if a position in a line is inside the (url) part of a markdown link
+func isInsideMarkdownLink(line string, pos int) bool {
+	// Look for ]( before pos and ) after the path
+	before := line[:pos]
+	lastOpen := strings.LastIndex(before, "](")
+	if lastOpen == -1 {
+		return false
+	}
+	// Check there's no ) between ]( and our position
+	between := line[lastOpen+2 : pos]
+	return !strings.Contains(between, ")")
+}
+
+// convertBarePathToChurchURL converts a bare gospel-library path to a Church website URL
+func convertBarePathToChurchURL(barePath string) string {
+	// Normalize separators
+	barePath = strings.ReplaceAll(barePath, "\\", "/")
+
+	// Extract the path after gospel-library/eng/
+	idx := strings.Index(barePath, "gospel-library/eng/")
+	if idx == -1 {
+		return ""
+	}
+	pathAfterGL := barePath[idx+len("gospel-library/eng/"):]
+
+	// Remove .md extension
+	pathAfterGL = strings.TrimSuffix(pathAfterGL, ".md")
+
+	if pathAfterGL == "" {
+		return ""
+	}
+
+	return churchBaseURL + "/" + pathAfterGL + "?lang=eng"
+}
+
+// buildDisplayName creates a readable display name from a gospel-library path
+func buildDisplayName(barePath string) string {
+	// Normalize
+	barePath = strings.ReplaceAll(barePath, "\\", "/")
+
+	// For scriptures, build a nice name like "D&C 113" or "Isaiah 42"
+	if strings.Contains(barePath, "/scriptures/") {
+		return buildScriptureDisplayName(barePath)
+	}
+
+	// For conference talks, use the slug as a title
+	if strings.Contains(barePath, "/general-conference/") {
+		return buildConferenceTalkDisplayName(barePath)
+	}
+
+	// Fallback: use the filename without extension
+	base := filepath.Base(barePath)
+	return strings.TrimSuffix(base, ".md")
+}
+
+// buildScriptureDisplayName creates names like "D&C 113", "Isaiah 42", "3 Nephi 21"
+func buildScriptureDisplayName(path string) string {
+	// Map of directory names to display names
+	bookNames := map[string]string{
+		"dc":     "D&C",
+		"isa":    "Isaiah",
+		"gen":    "Genesis",
+		"ex":     "Exodus",
+		"lev":    "Leviticus",
+		"num":    "Numbers",
+		"deut":   "Deuteronomy",
+		"josh":   "Joshua",
+		"judg":   "Judges",
+		"ruth":   "Ruth",
+		"sam":    "Samuel",
+		"kgs":    "Kings",
+		"chr":    "Chronicles",
+		"ezra":   "Ezra",
+		"neh":    "Nehemiah",
+		"esth":   "Esther",
+		"job":    "Job",
+		"ps":     "Psalms",
+		"prov":   "Proverbs",
+		"eccl":   "Ecclesiastes",
+		"song":   "Song of Solomon",
+		"jer":    "Jeremiah",
+		"lam":    "Lamentations",
+		"ezek":   "Ezekiel",
+		"dan":    "Daniel",
+		"hosea":  "Hosea",
+		"joel":   "Joel",
+		"amos":   "Amos",
+		"obad":   "Obadiah",
+		"jonah":  "Jonah",
+		"micah":  "Micah",
+		"nahum":  "Nahum",
+		"hab":    "Habakkuk",
+		"zeph":   "Zephaniah",
+		"hag":    "Haggai",
+		"zech":   "Zechariah",
+		"mal":    "Malachi",
+		"matt":   "Matthew",
+		"mark":   "Mark",
+		"luke":   "Luke",
+		"john":   "John",
+		"acts":   "Acts",
+		"rom":    "Romans",
+		"cor":    "Corinthians",
+		"gal":    "Galatians",
+		"eph":    "Ephesians",
+		"philip": "Philippians",
+		"col":    "Colossians",
+		"thes":   "Thessalonians",
+		"tim":    "Timothy",
+		"titus":  "Titus",
+		"philem": "Philemon",
+		"heb":    "Hebrews",
+		"james":  "James",
+		"peter":  "Peter",
+		"jude":   "Jude",
+		"rev":    "Revelation",
+		"ne":     "Nephi",
+		"jacob":  "Jacob",
+		"enos":   "Enos",
+		"jarom":  "Jarom",
+		"omni":   "Omni",
+		"words":  "Words of Mormon",
+		"mosiah": "Mosiah",
+		"alma":   "Alma",
+		"hel":    "Helaman",
+		"morm":   "Mormon",
+		"ether":  "Ether",
+		"moro":   "Moroni",
+		"moses":  "Moses",
+		"abr":    "Abraham",
+		"js-h":   "JS—History",
+		"js-m":   "JS—Matthew",
+		"a-of-f": "Articles of Faith",
+	}
+
+	path = strings.ReplaceAll(path, "\\", "/")
+	parts := strings.Split(path, "/")
+
+	// Find the chapter file and its parent directory
+	if len(parts) < 2 {
+		return filepath.Base(path)
+	}
+
+	filename := strings.TrimSuffix(parts[len(parts)-1], ".md")
+	bookDir := parts[len(parts)-2]
+
+	// Handle numbered books like "1-ne", "2-ne", "3-ne", "1-sam", "2-kgs"
+	prefix := ""
+	lookupDir := bookDir
+	if len(bookDir) > 2 && bookDir[1] == '-' && bookDir[0] >= '1' && bookDir[0] <= '4' {
+		prefix = string(bookDir[0]) + " "
+		lookupDir = bookDir[2:]
+	}
+
+	displayBook := bookDir
+	if name, ok := bookNames[lookupDir]; ok {
+		displayBook = prefix + name
+	} else if name, ok := bookNames[bookDir]; ok {
+		displayBook = name
+	}
+
+	// Handle study aids (tg, bd, gs, jst) — use filename as title
+	if bookDir == "tg" || bookDir == "bd" || bookDir == "gs" || bookDir == "jst" {
+		title := strings.ReplaceAll(filename, "-", " ")
+		title = strings.Title(title) //nolint:staticcheck
+		switch bookDir {
+		case "tg":
+			return "TG " + title
+		case "bd":
+			return "BD " + title
+		case "gs":
+			return "GS " + title
+		case "jst":
+			return "JST " + title
+		}
+	}
+
+	// If the filename is numeric, it's a chapter number
+	if _, err := fmt.Sscanf(filename, "%d", new(int)); err == nil {
+		return fmt.Sprintf("%s %s", displayBook, filename)
+	}
+
+	return fmt.Sprintf("%s %s", displayBook, filename)
+}
+
+// buildConferenceTalkDisplayName creates names from conference talk paths
+func buildConferenceTalkDisplayName(path string) string {
+	path = strings.ReplaceAll(path, "\\", "/")
+
+	// Extract the slug: last part of path without .md
+	base := filepath.Base(path)
+	slug := strings.TrimSuffix(base, ".md")
+
+	// Convert slug to title: "it-was-a-miracle" -> "It Was a Miracle"
+	words := strings.Split(slug, "-")
+
+	// Remove leading numeric prefix if present (e.g., "41rasband" -> "rasband")
+	if len(words) > 0 {
+		first := words[0]
+		for i, c := range first {
+			if c < '0' || c > '9' {
+				words[0] = first[i:]
+				break
+			}
+		}
+	}
+
+	for i, w := range words {
+		if i == 0 || !isSmallWord(w) {
+			words[i] = strings.Title(w) //nolint:staticcheck
+		}
+	}
+	title := strings.Join(words, " ")
+
+	// Extract year/month for context
+	// Path looks like: .../general-conference/1977/10/slug.md
+	parts := strings.Split(path, "/")
+	for i, p := range parts {
+		if p == "general-conference" && i+2 < len(parts) {
+			year := parts[i+1]
+			month := parts[i+2]
+			season := "April"
+			if month == "10" {
+				season = "October"
+			}
+			return fmt.Sprintf("%s (%s %s)", title, season, year)
+		}
+	}
+
+	return title
+}
+
+// isSmallWord returns true for words that shouldn't be capitalized in titles
+func isSmallWord(w string) bool {
+	small := map[string]bool{
+		"a": true, "an": true, "the": true, "and": true, "but": true,
+		"or": true, "for": true, "nor": true, "in": true, "on": true,
+		"at": true, "to": true, "of": true, "by": true, "with": true,
+	}
+	return small[strings.ToLower(w)]
 }
 
 func extractVerseFragment(linkText, urlPath string) string {
