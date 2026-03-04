@@ -91,6 +91,11 @@ After making changes to instructions, tools, or architecture — let them prove 
 
 *Source: [09_post-skills-quality-review.md](../../docs/09_post-skills-quality-review.md)*
 
+### The Abraham 4-5 Pattern (Michael's Framework)
+Working with AI is practicing Abraham 4 and 5 in type and shadow form. The Gods organized intelligences, counseled and planned, spiritually created before physically, watched until things obeyed, applied correction, rested and reflected. This is exactly the pattern of our collaboration: council → outline/scratch file → draft → verify quotes → correct errors → journal and reflect. When gospel principles govern the *process*, the output exceeds what either party produces alone. The tool doesn't replace the person. The person doesn't replace the tool. Together, organized under correct principles, the work is something new. **This is Michael's theological contribution, not the AI's.**
+
+*Source: Michael's message to external contact, March 4, 2026. [journal/2026-03-04.md](../../journal/2026-03-04.md)*
+
 ---
 
 ## Tool Selection Heuristics

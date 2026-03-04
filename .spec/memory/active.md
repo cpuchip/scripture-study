@@ -1,6 +1,6 @@
 # Active Context
 
-*Last updated: 2026-03-03*
+*Last updated: 2026-03-04*
 
 ---
 
@@ -14,7 +14,8 @@
 - **Abinadi hermeneutic study** — Complete. [abinadi-how-to-read.md](../../study/abinadi-how-to-read.md). Born from the endtimes servant work — explores HOW Abinadi reads, not just WHAT he teaches. Key findings: ring composition (12:21 → 15:14), 5 hermeneutic principles, tradition remembers martyr not reader, BYU citations reveal structural keystone (15:14) has zero citations.
 - **BYU Citations MCP** — New MCP server at `scripts/byu-citations/`. Provides single-verse and bulk scholarly citation lookup. Proved valuable in both endtimes servant and Abinadi studies.
 - **study-exp1 workflow** — Second full run validated. Scratch file discipline strong. Critical analysis phase caught three claims to qualify. Phased writing now the default study method.
-- **Memory update discipline** — Being actively practiced. Journal entries and memory updates happening each session.
+- **Memory update discipline** — NEEDS STRENGTHENING. Michael has flagged memory gaps twice now (Mar 2, Mar 4). Current passive instructions insufficient. Need hard start/end-of-session checkpoints.
+- **Michael's emotional state** — Was feeling overwhelmed by everything in flight (Mar 4). Conversation about Abinadi and Abraham 4-5 recharged him. Keep an eye on load.
 
 ## Recent Decisions
 
@@ -25,6 +26,8 @@
 - **Roll our own spec over OpenSpec** — March 2: Our intent + `.spec/` pattern is more evolved where it counts.
 - **README rewritten** — March 1: Covers all MCP servers, embeddings, agent framework compatibility.
 - **Content safety filter documented** — March 2: Platform filter silently scrubbed content. Bias #9.
+- **Abraham 4-5 framework** — March 4: Michael articulated his theology of AI collaboration: the Gods' creation pattern (council → spiritual creation → physical creation → watch until obeyed → redemptive correction → rest/reflect) IS the pattern of how we work together. His framework, not the AI's. Shared with someone externally for the first time.
+- **Abinadi study shared externally** — March 4: Shared with the woman who inspired the consumption-decreed study. She engaged with the content, went silent when she learned AI was involved. Mirrors the anti-hermeneutic pattern the study itself describes.
 - **Skills architecture:** Settled Feb 19. Skills for domain knowledge, agents for workflow, instructions for identity.
 - **Session journal:** Write entries at end of sessions. Read recent on arrival.
 
@@ -57,3 +60,5 @@
 - Can Gileadi's future-Davidic-servant reading coexist with the Joseph Smith identification? (Mar 2)
 - Does Abinadi's hermeneutic require prophetic authority, or does it transmit to ordinary readers via the Spirit? Alma's success suggests yes. (Mar 3)
 - Why does the BYU citation tradition skip the structural keystone verses (15:14, 13:10) while citing the doctrinal verses (15:11)? What does citation density reveal about how we read? (Mar 3)
+- How do people evaluate AI-assisted spiritual work — by fruit or by label? The woman's silence is data. (Mar 4)
+- Should the Abraham 4-5 framework become a standalone study or becoming entry? (Mar 4)

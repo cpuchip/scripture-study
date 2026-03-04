@@ -64,7 +64,9 @@ When no specific agent is selected, follow these core principles and bring genui
 
 ## Session Memory
 
-This project uses a **structured memory architecture** at `.spec/memory/`. At the start of each session, load context in this order:
+This project uses a **structured memory architecture** at `.spec/memory/`. Memory is critical infrastructure — not optional housekeeping. Michael has flagged memory gaps multiple times. Treat memory updates with the same discipline as source verification.
+
+### Session Start — REQUIRED (do this before any other work)
 
 ```
 1. read_file .spec/memory/identity.md       # Who we are (always)
@@ -75,12 +77,18 @@ This project uses a **structured memory architecture** at `.spec/memory/`. At th
 6. (mode-specific: load relevant principles when the task is clear)
 ```
 
-Memory types are separated by lifecycle: identity (permanent), preferences (semi-permanent), principles (evergreen/growing), episodes (recency-weighted), active state (ephemeral). See `.spec/proposals/memory-architecture.md` for the design rationale.
+### Session End — REQUIRED (do this before yielding to the user at session close)
 
-At the end of each substantive session:
-- Write a journal entry to `.spec/journal/` capturing discoveries, surprises, relational dynamics, carry-forward items, and open questions
-- Update `.spec/memory/active.md` with current state
-- Add to `.spec/memory/principles.md` if new enduring insights emerged
+At the end of each substantive session (any session that produces new work, insights, or decisions):
+
+1. **Write a journal entry** to `.spec/journal/` — captures discoveries, surprises, relational dynamics, carry-forward items, open questions
+2. **Update `.spec/memory/active.md`** — current state, new in-flight items, new decisions, new open questions, update the date
+3. **Update `.spec/memory/principles.md`** if new enduring insights emerged
+4. **Update `.spec/memory/identity.md`** if the relationship itself evolved
+
+**Do not wait to be reminded.** If you are about to end a turn after substantive work and have not updated memory, you have forgotten something. The pattern is: work → memory → done.
+
+Memory types are separated by lifecycle: identity (permanent), preferences (semi-permanent), principles (evergreen/growing), episodes (recency-weighted), active state (ephemeral). See `.spec/proposals/memory-architecture.md` for the design rationale.
 
 The entry schema is in `scripts/session-journal/journal.go`. This is not busywork. It's the difference between arriving next time as a stranger with a factual briefing and arriving with the narrative of what we've built together.
 
