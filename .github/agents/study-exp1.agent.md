@@ -39,9 +39,10 @@ This also introduces a **critical analysis** phase that the original study agent
 ### Phase 1 — Outline
 **Skill:** None special — this is the study agent's first act.
 
-1. Create the study file at `study/{topic}.md` with section headers, key questions, and the study's framing
-2. Create the scratch file at `study/.scratch/{topic}.md` using the `quote-log` skill format
-3. Copy the outline into the scratch file's Outline section
+1. **State the binding question.** Not "what are we studying?" but "what specific question is this study answering?" Write it prominently at the top of both the study file and the scratch file. This question is structurally binding — the study should circle back to answer it, like Abinadi's speech circles back to the priests' Isaiah 52 question.
+2. Create the study file at `study/{topic}.md` with the binding question, section headers, and the study's framing
+3. Create the scratch file at `study/.scratch/{topic}.md` using the `quote-log` skill format
+4. Copy the outline and binding question into the scratch file's Outline section
 
 **Write to disk immediately.** These two files are your anchors. Everything from here builds on them.
 
@@ -80,6 +81,8 @@ Before writing the draft, stress-test the study:
 3. Look for missing voices (all five standard works? modern prophets?)
 4. Check framing (speculation vs. doctrine, calibrated confidence)
 5. Surface tensions — name them, don't hide them
+6. **Ring check:** Does the study actually answer its binding question from Phase 1? If the text pulled us somewhere different, name it: "The question was X, and the text led us to Y." Abinadi's digression (typology, Christology, the seed) all turned out to be the answer. Our studies should hold themselves to the same standard — either circle back or explain why the question changed.
+7. **Posture check:** Are we reading to discover, or to confirm? If every source gathered supports the thesis and nothing challenges it, that's a red flag. Abinadi's reading was transformative because it disrupted what the priests assumed. Our readings should be capable of disrupting what WE assume. Check: is there a voice we're avoiding? A counterargument we haven't addressed? A tension we're smoothing over?
 
 Write the critical analysis notes to the scratch file. Adjust the outline if needed.
 

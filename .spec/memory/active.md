@@ -13,7 +13,7 @@
 - **Endtimes servant arc** — Two companion studies complete: [endtimes-servant.md](../../study/endtimes-servant.md) (with footnotes) and [endtimes-servant-footless.md](../../study/endtimes-servant-footless.md) (without). Core finding: multi-referent reading stands on text alone.
 - **Abinadi hermeneutic study** — Complete. [abinadi-how-to-read.md](../../study/abinadi-how-to-read.md). Born from the endtimes servant work — explores HOW Abinadi reads, not just WHAT he teaches. Key findings: ring composition (12:21 → 15:14), 5 hermeneutic principles, tradition remembers martyr not reader, BYU citations reveal structural keystone (15:14) has zero citations.
 - **BYU Citations MCP** — New MCP server at `scripts/byu-citations/`. Provides single-verse and bulk scholarly citation lookup. Proved valuable in both endtimes servant and Abinadi studies.
-- **study-exp1 workflow** — Second full run validated. Scratch file discipline strong. Critical analysis phase caught three claims to qualify. Phased writing now the default study method.
+- **study-exp1 workflow** — Second full run validated. Now refined with two Abinadi-inspired additions: (1) **binding question** in Phase 1 — the study's opening question is structurally binding, must be answered or explicitly redirected; (2) **ring check + posture check** in Phase 3a — does the study answer its question? Are we reading to discover or to confirm? Phased writing now the default study method.
 - **Memory update discipline** — NEEDS STRENGTHENING. Michael has flagged memory gaps twice now (Mar 2, Mar 4). Current passive instructions insufficient. Need hard start/end-of-session checkpoints.
 - **Michael's emotional state** — Was feeling overwhelmed by everything in flight (Mar 4). Conversation about Abinadi and Abraham 4-5 recharged him. Keep an eye on load.
 
@@ -26,6 +26,7 @@
 - **Roll our own spec over OpenSpec** — March 2: Our intent + `.spec/` pattern is more evolved where it counts.
 - **README rewritten** — March 1: Covers all MCP servers, embeddings, agent framework compatibility.
 - **Content safety filter documented** — March 2: Platform filter silently scrubbed content. Bias #9.
+- **study-exp1 refined** — March 4: Added binding question (Phase 1) and ring check + posture check (Phase 3a) inspired by Abinadi study findings. Not a structural change — sharpens existing phases. Git makes rollback easy.
 - **Abraham 4-5 framework** — March 4: Michael articulated his theology of AI collaboration: the Gods' creation pattern (council → spiritual creation → physical creation → watch until obeyed → redemptive correction → rest/reflect) IS the pattern of how we work together. His framework, not the AI's. Shared with someone externally for the first time.
 - **Abinadi study shared externally** — March 4: Shared with the woman who inspired the consumption-decreed study. She engaged with the content, went silent when she learned AI was involved. Mirrors the anti-hermeneutic pattern the study itself describes.
 - **Skills architecture:** Settled Feb 19. Skills for domain knowledge, agents for workflow, instructions for identity.

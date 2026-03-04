@@ -67,6 +67,11 @@ Scriptural footnotes are insights handed to us on a silver platter. Moses 6:35 f
 
 *Source: [01_reflections.md](../../docs/01_reflections.md) Phase 6*
 
+### Binding Questions and Ring Checks
+A study should state its question explicitly at the start and circle back to answer it at the end — or name why the question changed. Inspired by Abinadi's ring composition: the priests ask about Isaiah 52:7-10 in Mosiah 12, and his entire four-chapter speech is the answer, returning to that exact passage in Mosiah 15:14-18. The **ring check** (does the study answer its question?) and **posture check** (are we reading to discover or to confirm?) are structural and dispositional safeguards built into Phase 3a of study-exp1.
+
+*Source: [abinadi-how-to-read.md](../../study/abinadi-how-to-read.md), March 4 refinement*
+
 ---
 
 ## Collaboration Principles
