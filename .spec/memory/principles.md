@@ -35,6 +35,11 @@ The "consumption decreed" (D&C 87:6) is not random destruction — it is wickedn
 
 *Source: [consumption-decreed.md](../../study/consumption-decreed.md), [consumption-decreed-modern-warning.md](../../study/consumption-decreed-modern-warning.md)*
 
+### Love vs. Blessings — The Distinction That Resolves the Conditional Love Question
+God's love and God's blessings are not the same thing. God's love is dispositional — His nature ("God is love," 1 John 4:8). It doesn't stop. He weeps over the wicked (Moses 7:28-37), watches the road while the prodigal is still far off (Luke 15:20), and nothing in all creation can separate us from it (Romans 8:38-39). God's blessings are conditional — they flow from obedience to the laws upon which they're predicated (D&C 130:21). Nelson's "Divine Love" (2003) is right about blessings but conflates what his own text distinguishes: he says love is "infinite and universal" and God "loves both saints and sinners," then frames the article as if love itself is conditional. The better question isn't "is God's love conditional?" but "what is conditional?" Answer: access, blessings, experienced intimacy. Not the love itself. Webster 1828 illuminates: "love" is dispositional attachment; "esteem" is valuation (universal per 1 Ne 17:35); "favor" is directional active support (conditional per 1 Ne 17:35b). The condition for receiving is not earning but *turning* — "when he came to himself" (Luke 15:17).
+
+*Source: [divine-love.md](../../study/divine-love.md)*
+
 ### Zion Is Built Daily, Not Decreed
 Jesus' teachings in 3 Nephi 11-28 are a civilization-building blueprint mapped to Moses 7:18's four pillars (one heart, one mind, righteousness, no poor). Both historical Zions (Enoch and the Nephites) share the same pattern: the engine is love dwelling in the heart, not institutional structure. Enoch's 365 years and the phrase "in process of time" (Moses 7:21) teach that Zion is built one day at a time — 365 repetitions of covenant living per year. "We cannot wait until Zion comes for these things to happen — Zion will come only as they happen" (Christofferson, Oct 2008). Both Zions fell to the same sequence: prosperity → pride → end of consecration → classes → churches for gain → denial of Christ → tribalism → secret combinations. The fall of Zion is the consumption decreed in miniature.
 
