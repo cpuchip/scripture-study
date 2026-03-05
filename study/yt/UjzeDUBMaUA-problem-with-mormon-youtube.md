@@ -108,7 +108,7 @@ Nothing in this video contradicts scriptural teaching. The speaker does not say 
 
 **The 1 Peter 3:15 translation:** The speaker quotes "gentleness and respect," which is the NIV rendering. The KJV — the version used by the Church — says "meekness and fear." This is a minor point, but the KJV word *fear* adds an important dimension: reverence, godly awe. We don't just answer gently because it's nicer. We answer with *fear of God* — the awareness that we are stewards of sacred truth and will give account for how we handled it. The NIV softens this.
 
-**Attribution of Maxwell:** The speaker says "1982, Maxwell" and later "that apostle in 1982." Maxwell was not called to the Quorum of the Twelve until 1981, and, importantly, the "Meekly Drenched in Destiny" address was a BYU fireside, not a general conference talk. This is minor but worth noting — the quotes are real (all verified against [the source transcript](tV0_KEMIy7o-meekly-drenched-in-destiny.md)); the framing as "an apostle in general conference" is slightly imprecise. Maxwell gave this as a BYU devotional address, September 5, 1982.
+**Attribution of Maxwell:** The speaker says "1982, Maxwell" and later "that apostle in 1982." Maxwell was indeed an apostle at the time — he was called to the Quorum of the Twelve in July 1981. However, the "Meekly Drenched in Destiny" address was a BYU devotional, not a general conference talk. This is minor but worth noting — the quotes are real (all verified against [the source transcript](tV0_KEMIy7o-meekly-drenched-in-destiny.md)); the framing as "an apostle in general conference" is slightly imprecise. Maxwell gave this as a BYU devotional address, September 5, 1982.
 
 ### Missed Opportunities
 

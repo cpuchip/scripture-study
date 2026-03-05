@@ -193,9 +193,9 @@ And Jesus, among the Nephites, holds both postures at once — compassion for th
 
 ---
 
-## Moroni's Final Word: Charity Never Faileth
+## Mormon's Final Word: Charity Never Faileth
 
-Mormon, near the end of all things, gives us the definition:
+Mormon, near the end of all things, gives us the definition — preserved by his son Moroni, who introduces the sermon: "And now I, Moroni, write a few of the words of my father Mormon" ([Moroni 7:1](https://www.churchofjesuschrist.org/study/scriptures/bofm/moro/7?lang=eng&id=p1#p1)). Then Mormon speaks directly:
 
 > "Charity is the pure love of Christ, and it endureth forever; and whoso is found possessed of it at the last day, it shall be well with him." — [Moroni 7:47](https://www.churchofjesuschrist.org/study/scriptures/bofm/moro/7?lang=eng&id=p47#p47)
 
@@ -203,7 +203,7 @@ If charity is the pure love of Christ, and charity "never faileth" ([Moroni 7:46
 
 That's not conditional language. That's permanence language. If the pure love of Christ endureth forever, it doesn't have an off switch.
 
-The condition in Moroni's framing is about *us* receiving it:
+The condition in Mormon's framing is about *us* receiving it:
 
 > "Pray unto the Father with all the energy of heart, that ye may be filled with this love, which he hath bestowed upon all who are true followers of his Son, Jesus Christ." — [Moroni 7:48](https://www.churchofjesuschrist.org/study/scriptures/bofm/moro/7?lang=eng&id=p48#p48)
 
