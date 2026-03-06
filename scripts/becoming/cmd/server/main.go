@@ -2,6 +2,7 @@ package main
 
 import (
 	"embed"
+	"encoding/json"
 	"flag"
 	"fmt"
 	"io/fs"
@@ -17,6 +18,13 @@ import (
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/chi/v5/middleware"
 	"github.com/go-chi/cors"
+)
+
+// Build-time version info, set via -ldflags.
+var (
+	Version      = "dev"
+	CommitHash   = "unknown"
+	ReleaseNotes = ""
 )
 
 //go:embed all:dist
@@ -95,6 +103,16 @@ func main() {
 	r.Get("/auth/google/callback", authHandlers.GoogleCallback)
 	r.Get("/api/auth/providers", authHandlers.Providers)
 
+	// Version endpoint (public, no auth)
+	r.Get("/version", func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Content-Type", "application/json")
+		json.NewEncoder(w).Encode(map[string]string{
+			"version":       Version,
+			"commit":        CommitHash,
+			"release_notes": ReleaseNotes,
+		})
+	})
+
 	// Public API routes (no auth required, but optional auth for user_id tracking)
 	r.Group(func(r chi.Router) {
 		r.Use(auth.Optional(database, *dev))
@@ -134,7 +152,7 @@ func main() {
 		r.Get("/api/brain/status", brainHub.HandleStatus)
 
 		// All existing API routes
-		r.Mount("/api", api.Router(database, *scriptures))
+		r.Mount("/api", api.Router(database, *scriptures, brainHub))
 	})
 
 	// Serve embedded frontend (SPA routing: serve index.html for unknown paths)

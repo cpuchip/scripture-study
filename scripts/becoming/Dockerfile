@@ -28,7 +28,12 @@ RUN go mod download
 COPY scripts/becoming/ ./
 # Copy frontend dist into embed location
 COPY --from=frontend /app/frontend/dist ./cmd/server/dist/
-RUN CGO_ENABLED=1 GOOS=linux go build -ldflags="-s -w" -o /server ./cmd/server/
+ARG VERSION=dev
+ARG COMMIT_HASH=unknown
+ARG RELEASE_NOTES=""
+RUN CGO_ENABLED=1 GOOS=linux go build \
+    -ldflags="-s -w -X main.Version=${VERSION} -X main.CommitHash=${COMMIT_HASH} -X 'main.ReleaseNotes=${RELEASE_NOTES}'" \
+    -o /server ./cmd/server/
 
 # Stage 4: Minimal runtime
 FROM alpine:3.21

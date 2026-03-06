@@ -56,6 +56,7 @@ CREATE TABLE IF NOT EXISTS tasks (
     scripture   TEXT,
     type        TEXT NOT NULL DEFAULT 'ongoing', -- once | daily | weekly | ongoing
     status      TEXT NOT NULL DEFAULT 'active',  -- active | completed | paused | archived
+    brain_entry_id TEXT,                              -- UUID of corresponding brain entry
     created_at  DATETIME DEFAULT CURRENT_TIMESTAMP,
     completed_at DATETIME
 );

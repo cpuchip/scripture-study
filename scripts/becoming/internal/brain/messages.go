@@ -11,18 +11,19 @@ import (
 
 // Message types for the WebSocket protocol.
 const (
-	TypeAuth      = "auth"
-	TypeAuthOK    = "auth_ok"
-	TypeAuthError = "auth_error"
-	TypeThought   = "thought"
-	TypeResult    = "result"
-	TypeFix       = "fix"
-	TypeFixOK     = "fix_ok"
-	TypePresence  = "presence"
-	TypeQueued    = "queued"
-	TypeStatus    = "status"
-	TypePing      = "ping"
-	TypePong      = "pong"
+	TypeAuth        = "auth"
+	TypeAuthOK      = "auth_ok"
+	TypeAuthError   = "auth_error"
+	TypeThought     = "thought"
+	TypeResult      = "result"
+	TypeFix         = "fix"
+	TypeFixOK       = "fix_ok"
+	TypePresence    = "presence"
+	TypeQueued      = "queued"
+	TypeStatus      = "status"
+	TypePing        = "ping"
+	TypePong        = "pong"
+	TypeTaskUpdated = "task_updated"
 )
 
 // Client roles.
@@ -108,6 +109,16 @@ type StatusMessage struct {
 	Type       string         `json:"type"` // "status"
 	Model      string         `json:"model"`
 	Categories map[string]int `json:"categories"`
+}
+
+// TaskUpdatedMessage notifies the agent that a task's status changed.
+// Sent server→agent when a task with a brain_entry_id is updated via the REST API.
+type TaskUpdatedMessage struct {
+	Type         string `json:"type"`           // "task_updated"
+	TaskID       int64  `json:"task_id"`        // ibecome task ID
+	BrainEntryID string `json:"brain_entry_id"` // brain entry UUID
+	Status       string `json:"status"`         // new ibecome status
+	Title        string `json:"title"`          // current title
 }
 
 // Direction indicates which way a queued message should be routed.

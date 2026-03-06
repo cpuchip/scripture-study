@@ -452,6 +452,13 @@ func (h *Hub) IsAgentOnline(userID int64) bool {
 	return ok
 }
 
+// NotifyAgent sends a message to a user's agent via the relay.
+// If the agent is offline, the message is queued for delivery on reconnect.
+// messageID is used for queue deduplication.
+func (h *Hub) NotifyAgent(userID int64, messageID string, data []byte) {
+	h.routeToAgent(userID, messageID, data)
+}
+
 // HandleHistory returns recent brain messages as JSON.
 func (h *Hub) HandleHistory(w http.ResponseWriter, r *http.Request) {
 	userID := auth.UserID(r)

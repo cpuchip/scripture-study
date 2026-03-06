@@ -3,6 +3,7 @@ package api
 
 import (
 	"encoding/json"
+	"fmt"
 	"net/http"
 	"strconv"
 	"strings"
@@ -14,9 +15,22 @@ import (
 	"github.com/go-chi/chi/v5"
 )
 
+// TaskNotifier sends task status changes to the brain agent via the relay.
+// Implemented by brain.Hub; nil means no notification.
+type TaskNotifier interface {
+	NotifyAgent(userID int64, messageID string, data []byte)
+}
+
 // Router creates the API router with all routes.
-func Router(database *db.DB, scripturesRoot string) chi.Router {
+// taskNotifier is optional — if non-nil, task status changes will be
+// relayed to the brain agent.
+func Router(database *db.DB, scripturesRoot string, taskNotifier ...TaskNotifier) chi.Router {
 	r := chi.NewRouter()
+
+	var notifier TaskNotifier
+	if len(taskNotifier) > 0 {
+		notifier = taskNotifier[0]
+	}
 
 	// Practices
 	r.Route("/practices", func(r chi.Router) {
@@ -50,7 +64,7 @@ func Router(database *db.DB, scripturesRoot string) chi.Router {
 	r.Route("/tasks", func(r chi.Router) {
 		r.Get("/", listTasks(database))
 		r.Post("/", createTask(database))
-		r.Put("/{id}", updateTask(database))
+		r.Put("/{id}", updateTask(database, notifier))
 		r.Delete("/{id}", deleteTask(database))
 	})
 
@@ -565,7 +579,7 @@ func createTask(database *db.DB) http.HandlerFunc {
 	}
 }
 
-func updateTask(database *db.DB) http.HandlerFunc {
+func updateTask(database *db.DB, notifier TaskNotifier) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		userID := auth.UserID(r)
 		id, err := parseID(r)
@@ -573,6 +587,14 @@ func updateTask(database *db.DB) http.HandlerFunc {
 			writeError(w, http.StatusBadRequest, "invalid id")
 			return
 		}
+
+		// Fetch old task to detect status changes
+		old, err := database.GetTask(userID, id)
+		if err != nil {
+			writeError(w, http.StatusNotFound, "task not found")
+			return
+		}
+
 		var t db.Task
 		if err := json.NewDecoder(r.Body).Decode(&t); err != nil {
 			writeError(w, http.StatusBadRequest, "invalid JSON: "+err.Error())
@@ -583,6 +605,20 @@ func updateTask(database *db.DB) http.HandlerFunc {
 			writeError(w, http.StatusInternalServerError, err.Error())
 			return
 		}
+
+		// Notify brain agent if status changed and task is linked to a brain entry
+		if notifier != nil && old.BrainEntryID != "" && old.Status != t.Status {
+			msg, _ := json.Marshal(map[string]any{
+				"type":           "task_updated",
+				"task_id":        t.ID,
+				"brain_entry_id": old.BrainEntryID,
+				"status":         t.Status,
+				"title":          t.Title,
+			})
+			msgID := fmt.Sprintf("task_updated_%d_%d", t.ID, time.Now().UnixMilli())
+			notifier.NotifyAgent(userID, msgID, msg)
+		}
+
 		writeJSON(w, http.StatusOK, t)
 	}
 }

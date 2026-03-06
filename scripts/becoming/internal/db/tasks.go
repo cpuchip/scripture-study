@@ -14,6 +14,7 @@ type Task struct {
 	Scripture     string `json:"scripture,omitempty"`
 	Type          string `json:"type"`   // once | daily | weekly | ongoing
 	Status        string `json:"status"` // active | completed | paused | archived
+	BrainEntryID  string `json:"brain_entry_id,omitempty"`
 	CreatedAt     string `json:"created_at"`
 	CompletedAt   string `json:"completed_at,omitempty"`
 }
@@ -21,9 +22,9 @@ type Task struct {
 // CreateTask inserts a new task.
 func (db *DB) CreateTask(userID int64, t *Task) error {
 	id, err := db.InsertReturningID(`
-		INSERT INTO tasks (user_id, title, description, source_doc, source_section, scripture, type, status)
-		VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
-		userID, t.Title, t.Description, t.SourceDoc, t.SourceSection, t.Scripture, t.Type, t.Status,
+		INSERT INTO tasks (user_id, title, description, source_doc, source_section, scripture, type, status, brain_entry_id)
+		VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+		userID, t.Title, t.Description, t.SourceDoc, t.SourceSection, t.Scripture, t.Type, t.Status, t.BrainEntryID,
 	)
 	if err != nil {
 		return fmt.Errorf("inserting task: %w", err)
@@ -39,7 +40,7 @@ func (db *DB) ListTasks(userID int64, status string) ([]*Task, error) {
 	if db.IsPostgres() {
 		completedExpr = "COALESCE(completed_at::text, '')"
 	}
-	query := `SELECT id, title, description, source_doc, source_section, scripture, type, status, created_at, ` + completedExpr + ` FROM tasks WHERE user_id = ?`
+	query := `SELECT id, title, description, source_doc, source_section, scripture, type, status, COALESCE(brain_entry_id, ''), created_at, ` + completedExpr + ` FROM tasks WHERE user_id = ?`
 	args := []any{userID}
 	if status != "" {
 		query += ` AND status = ?`
@@ -56,7 +57,7 @@ func (db *DB) ListTasks(userID int64, status string) ([]*Task, error) {
 	var tasks []*Task
 	for rows.Next() {
 		t := &Task{}
-		if err := rows.Scan(&t.ID, &t.Title, &t.Description, &t.SourceDoc, &t.SourceSection, &t.Scripture, &t.Type, &t.Status, &t.CreatedAt, &t.CompletedAt); err != nil {
+		if err := rows.Scan(&t.ID, &t.Title, &t.Description, &t.SourceDoc, &t.SourceSection, &t.Scripture, &t.Type, &t.Status, &t.BrainEntryID, &t.CreatedAt, &t.CompletedAt); err != nil {
 			return nil, fmt.Errorf("scanning task: %w", err)
 		}
 		tasks = append(tasks, t)
@@ -67,11 +68,23 @@ func (db *DB) ListTasks(userID int64, status string) ([]*Task, error) {
 // UpdateTask updates a task, scoped to user.
 func (db *DB) UpdateTask(userID int64, t *Task) error {
 	_, err := db.Exec(`
-		UPDATE tasks SET title=?, description=?, source_doc=?, source_section=?, scripture=?, type=?, status=?, completed_at=?
+		UPDATE tasks SET title=?, description=?, source_doc=?, source_section=?, scripture=?, type=?, status=?, completed_at=?, brain_entry_id=?
 		WHERE id=? AND user_id=?`,
-		t.Title, t.Description, t.SourceDoc, t.SourceSection, t.Scripture, t.Type, t.Status, t.CompletedAt, t.ID, userID,
+		t.Title, t.Description, t.SourceDoc, t.SourceSection, t.Scripture, t.Type, t.Status, t.CompletedAt, t.BrainEntryID, t.ID, userID,
 	)
 	return err
+}
+
+// GetTask returns a single task by ID, scoped to user.
+func (db *DB) GetTask(userID, id int64) (*Task, error) {
+	t := &Task{}
+	err := db.QueryRow(`SELECT id, title, description, source_doc, source_section, scripture, type, status, COALESCE(brain_entry_id, ''), created_at, COALESCE(completed_at, '')
+		FROM tasks WHERE id = ? AND user_id = ?`, id, userID).
+		Scan(&t.ID, &t.Title, &t.Description, &t.SourceDoc, &t.SourceSection, &t.Scripture, &t.Type, &t.Status, &t.BrainEntryID, &t.CreatedAt, &t.CompletedAt)
+	if err != nil {
+		return nil, fmt.Errorf("getting task: %w", err)
+	}
+	return t, nil
 }
 
 // DeleteTask removes a task, scoped to user.

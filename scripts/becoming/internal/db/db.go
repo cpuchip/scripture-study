@@ -281,11 +281,28 @@ func (db *DB) runSQLiteMigrations() error {
 		return fmt.Errorf("bookmarks migration: %w", err)
 	}
 
+	// Migration: add brain_entry_id to tasks
+	if err := db.migrateBrainEntryID(); err != nil {
+		return fmt.Errorf("brain_entry_id migration: %w", err)
+	}
+
 	// Seed default reflection prompts for user 1 (dev user)
 	if err := db.SeedPrompts(1); err != nil {
 		return fmt.Errorf("seeding prompts: %w", err)
 	}
 
+	return nil
+}
+
+// migrateBrainEntryID adds brain_entry_id column to tasks table.
+func (db *DB) migrateBrainEntryID() error {
+	if db.hasColumn("tasks", "brain_entry_id") {
+		return nil
+	}
+	if _, err := db.Exec(`ALTER TABLE tasks ADD COLUMN brain_entry_id TEXT`); err != nil {
+		return fmt.Errorf("adding brain_entry_id column: %w", err)
+	}
+	log.Println("Migration applied: tasks.brain_entry_id column")
 	return nil
 }
 
