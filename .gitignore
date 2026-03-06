@@ -45,3 +45,6 @@ external_context/
 /private-brain/
 /scripts/brain/
 /scripts/brain-app/
+
+# ignore env
+.env
