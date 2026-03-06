@@ -35,7 +35,8 @@ scripts/becoming/frontend/node_modules/
 scripts/becoming/frontend/dist/
 
 # Git & IDE
-.git/
+# NOTE: .git/ is NOT ignored — the gitinfo build stage extracts commit hash from it.
+# It only enters the gitinfo stage and never reaches the final runtime image.
 .vscode/
 .github/
 .gitignore
