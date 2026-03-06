@@ -11,20 +11,21 @@ Self-hosted Dokploy instance at `https://dokploy.hmslogs.com`. Our own API calls
 
 ## Configuration
 
-Credentials live in `.env` at the workspace root (gitignored):
-```
-DOKPLOY_API_KEY=<token>
-DOKPLOY_URL=https://dokploy.hmslogs.com
-```
+The API key is stored as a **Windows user environment variable**: `DOKPLOY_API_KEY`.
 
-Read the `.env` file to get the key before making any API calls.
+The Dokploy panel URL is `https://dokploy.hmslogs.com`.
 
 ## Authentication
 
-All API calls use the `x-api-key` header:
+Load the key from the Windows user environment, then use the `x-api-key` header:
+```powershell
+# Load from Windows user env (survives terminal restarts)
+$env:DOKPLOY_API_KEY = [System.Environment]::GetEnvironmentVariable("DOKPLOY_API_KEY", "User")
+# Make API calls
+curl -sk -H "x-api-key: $env:DOKPLOY_API_KEY" "https://dokploy.hmslogs.com/api/<endpoint>"
 ```
-curl -sk -H "x-api-key: $KEY" "$DOKPLOY_URL/api/<endpoint>"
-```
+
+If `$env:DOKPLOY_API_KEY` is already set in the current session, skip the registry read.
 
 ## Known Application IDs
 
@@ -100,6 +101,6 @@ Same as deploy but rebuilds without pulling new code.
 ## Security Notes
 
 - **Never display raw `project.all` output** — it contains database passwords, OAuth secrets, and session keys for ALL projects.
-- **Always read `.env` fresh** — never hardcode the API key.
+- **Load key from Windows env** — `[System.Environment]::GetEnvironmentVariable("DOKPLOY_API_KEY", "User")`. Never hardcode it.
 - **Ask before deploying** — `application.deploy` and `application.redeploy` are destructive operations.
 - The API key has full admin access. Treat it like a root password.
