@@ -142,6 +142,7 @@ func main() {
 		// API tokens
 		r.Get("/api/tokens", authHandlers.ListTokens)
 		r.Post("/api/tokens", authHandlers.CreateToken)
+		r.Patch("/api/tokens/{id}", authHandlers.UpdateToken)
 		r.Delete("/api/tokens/{id}", authHandlers.DeleteToken)
 
 		// Data export

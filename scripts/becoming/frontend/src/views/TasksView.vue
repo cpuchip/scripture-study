@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
 import { api, type Task } from '../api'
+import { useAuth } from '../composables/useAuth'
 
+const { user } = useAuth()
 const tasks = ref<Task[]>([])
 const loading = ref(true)
 const showForm = ref(false)
@@ -122,7 +124,10 @@ onMounted(load)
             <span v-if="task.status === 'completed'" class="text-xs">✓</span>
           </button>
           <div class="min-w-0">
-            <div class="font-medium">{{ task.title }}</div>
+            <div class="font-medium">
+              {{ task.title }}
+              <span v-if="user?.brain_enabled && task.brain_entry_id" class="text-xs ml-1" title="Linked to brain entry">🧠</span>
+            </div>
             <div class="text-xs text-gray-400 flex gap-2">
               <span v-if="task.scripture">📖 {{ task.scripture }}</span>
               <span v-if="task.source_doc">from {{ task.source_doc }}</span>

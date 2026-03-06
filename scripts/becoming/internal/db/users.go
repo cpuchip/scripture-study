@@ -23,6 +23,7 @@ type User struct {
 	// Computed fields — tell the frontend what auth methods are available
 	HasPassword  bool `json:"has_password"`
 	GoogleLinked bool `json:"google_linked"`
+	BrainEnabled bool `json:"brain_enabled"`
 }
 
 // computeAuthFields sets has_password and google_linked from internal state.
@@ -112,6 +113,7 @@ func (db *DB) GetUserByID(id int64) (*User, error) {
 		return nil, fmt.Errorf("getting user by id: %w", err)
 	}
 	u.computeAuthFields()
+	u.BrainEnabled = db.hasBrainToken(u.ID)
 	return u, nil
 }
 
@@ -129,6 +131,7 @@ func (db *DB) GetUserByEmail(email string) (*User, error) {
 		return nil, fmt.Errorf("getting user by email: %w", err)
 	}
 	u.computeAuthFields()
+	u.BrainEnabled = db.hasBrainToken(u.ID)
 	return u, nil
 }
 

@@ -152,6 +152,15 @@ async function revokeToken(id: number, name: string) {
   }
 }
 
+async function toggleBrainEnabled(token: APIToken) {
+  try {
+    await authApi.updateToken(token.id, { brain_enabled: !token.brain_enabled })
+    token.brain_enabled = !token.brain_enabled
+  } catch (e: any) {
+    alert(e.message)
+  }
+}
+
 // Sessions
 const sessions = ref<SessionInfo[]>([])
 const loadingSessions = ref(true)
@@ -513,7 +522,7 @@ onMounted(() => {
           :key="token.id"
           class="flex items-center justify-between py-3"
         >
-          <div>
+          <div class="flex-1 min-w-0">
             <p class="font-medium text-sm">{{ token.name }}</p>
             <p class="text-xs text-gray-500">
               <code class="bg-gray-100 px-1.5 py-0.5 rounded">{{ token.prefix }}...</code>
@@ -523,12 +532,23 @@ onMounted(() => {
               </template>
             </p>
           </div>
-          <button
-            @click="revokeToken(token.id, token.name)"
-            class="text-sm text-red-500 hover:text-red-700"
-          >
-            Revoke
-          </button>
+          <div class="flex items-center gap-3 shrink-0">
+            <label class="flex items-center gap-1.5 cursor-pointer" :title="token.brain_enabled ? 'Brain integration enabled' : 'Enable brain integration'">
+              <input
+                type="checkbox"
+                :checked="token.brain_enabled"
+                @change="toggleBrainEnabled(token)"
+                class="rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+              />
+              <span class="text-xs text-gray-500">🧠</span>
+            </label>
+            <button
+              @click="revokeToken(token.id, token.name)"
+              class="text-sm text-red-500 hover:text-red-700"
+            >
+              Revoke
+            </button>
+          </div>
         </div>
       </div>
     </section>

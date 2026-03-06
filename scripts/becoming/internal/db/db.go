@@ -286,6 +286,11 @@ func (db *DB) runSQLiteMigrations() error {
 		return fmt.Errorf("brain_entry_id migration: %w", err)
 	}
 
+	// Migration: add brain_enabled to api_tokens
+	if err := db.migrateBrainEnabledToken(); err != nil {
+		return fmt.Errorf("brain_enabled_token migration: %w", err)
+	}
+
 	// Seed default reflection prompts for user 1 (dev user)
 	if err := db.SeedPrompts(1); err != nil {
 		return fmt.Errorf("seeding prompts: %w", err)
@@ -303,6 +308,18 @@ func (db *DB) migrateBrainEntryID() error {
 		return fmt.Errorf("adding brain_entry_id column: %w", err)
 	}
 	log.Println("Migration applied: tasks.brain_entry_id column")
+	return nil
+}
+
+// migrateBrainEnabledToken adds brain_enabled column to api_tokens table.
+func (db *DB) migrateBrainEnabledToken() error {
+	if db.hasColumn("api_tokens", "brain_enabled") {
+		return nil
+	}
+	if _, err := db.Exec(`ALTER TABLE api_tokens ADD COLUMN brain_enabled INTEGER NOT NULL DEFAULT 0`); err != nil {
+		return fmt.Errorf("adding brain_enabled column: %w", err)
+	}
+	log.Println("Migration applied: api_tokens.brain_enabled column")
 	return nil
 }
 

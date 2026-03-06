@@ -106,6 +106,7 @@ export interface Task {
   scripture: string
   type: string
   status: string
+  brain_entry_id?: string
   created_at: string
   completed_at: string
 }
@@ -710,6 +711,7 @@ export interface User {
   provider: string
   has_password: boolean
   google_linked: boolean
+  brain_enabled: boolean
   created_at: string
   last_login: string
 }
@@ -726,6 +728,7 @@ export interface APIToken {
   created_at: string
   last_used?: string
   expires_at?: string
+  brain_enabled: boolean
 }
 
 export interface SessionInfo {
@@ -786,6 +789,13 @@ export const authApi = {
 
   deleteToken(id: number) {
     return request<{ status: string }>(`/tokens/${id}`, { method: 'DELETE' })
+  },
+
+  updateToken(id: number, updates: { brain_enabled?: boolean }) {
+    return request<{ status: string }>(`/tokens/${id}`, {
+      method: 'PATCH',
+      body: JSON.stringify(updates),
+    })
   },
 
   // Password

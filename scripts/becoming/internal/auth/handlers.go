@@ -242,6 +242,31 @@ func (h *Handlers) DeleteToken(w http.ResponseWriter, r *http.Request) {
 	writeJSON(w, http.StatusOK, map[string]string{"status": "revoked"})
 }
 
+// UpdateToken handles PATCH /api/tokens/{id}.
+func (h *Handlers) UpdateToken(w http.ResponseWriter, r *http.Request) {
+	userID := UserID(r)
+	idStr := chi.URLParam(r, "id")
+	tokenID, err := strconv.ParseInt(idStr, 10, 64)
+	if err != nil {
+		writeJSON(w, http.StatusBadRequest, map[string]string{"error": "invalid token id"})
+		return
+	}
+	var req struct {
+		BrainEnabled *bool `json:"brain_enabled"`
+	}
+	if err := json.NewDecoder(r.Body).Decode(&req); err != nil {
+		writeJSON(w, http.StatusBadRequest, map[string]string{"error": "invalid JSON"})
+		return
+	}
+	if req.BrainEnabled != nil {
+		if err := h.DB.UpdateTokenBrainEnabled(userID, tokenID, *req.BrainEnabled); err != nil {
+			writeJSON(w, http.StatusNotFound, map[string]string{"error": "token not found"})
+			return
+		}
+	}
+	writeJSON(w, http.StatusOK, map[string]string{"status": "updated"})
+}
+
 // --- Providers ---
 
 // Providers handles GET /api/auth/providers — tells the frontend which sign-in methods are available.
