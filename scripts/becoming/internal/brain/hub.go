@@ -492,10 +492,10 @@ func (h *Hub) HandleHistory(w http.ResponseWriter, r *http.Request) {
 	results := make(map[string]resultInfo)
 	for _, e := range entries {
 		var envelope struct {
-			Type      string  `json:"type"`
-			ThoughtID string  `json:"thought_id"`
-			Category  string  `json:"category"`
-			Title     string  `json:"title"`
+			Type       string  `json:"type"`
+			ThoughtID  string  `json:"thought_id"`
+			Category   string  `json:"category"`
+			Title      string  `json:"title"`
 			Confidence float64 `json:"confidence"`
 		}
 		if err := json.Unmarshal([]byte(e.Payload), &envelope); err != nil {
