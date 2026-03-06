@@ -18,7 +18,15 @@ COPY scripts/gospel-library/ ./
 RUN CGO_ENABLED=0 go build -o /downloader ./cmd/gospel-downloader/
 RUN /downloader -standard -output /gospel-library
 
-# Stage 3: Build Go binary
+# Stage 3: Extract git metadata from build context
+FROM alpine:3.21 AS gitinfo
+RUN apk add --no-cache git
+WORKDIR /repo
+COPY .git .git
+RUN git rev-parse --short HEAD > /commit_hash && \
+    git log -1 --format=%s > /commit_msg
+
+# Stage 4: Build Go binary
 FROM golang:1.25-alpine AS backend
 # CGO needed for SQLite (mattn/go-sqlite3). For PostgreSQL-only deploy, set CGO_ENABLED=0.
 RUN apk add --no-cache gcc musl-dev
@@ -28,14 +36,18 @@ RUN go mod download
 COPY scripts/becoming/ ./
 # Copy frontend dist into embed location
 COPY --from=frontend /app/frontend/dist ./cmd/server/dist/
+# Git metadata from build context (auto-detected, no build args needed)
+COPY --from=gitinfo /commit_hash /commit_msg /tmp/
 ARG VERSION=dev
-ARG COMMIT_HASH=unknown
 ARG RELEASE_NOTES=""
-RUN CGO_ENABLED=1 GOOS=linux go build \
-    -ldflags="-s -w -X main.Version=${VERSION} -X main.CommitHash=${COMMIT_HASH} -X 'main.ReleaseNotes=${RELEASE_NOTES}'" \
+RUN COMMIT=$(cat /tmp/commit_hash) && \
+    MSG=$(cat /tmp/commit_msg) && \
+    NOTES="${RELEASE_NOTES:-$MSG}" && \
+    CGO_ENABLED=1 GOOS=linux go build \
+    -ldflags="-s -w -X main.Version=${VERSION} -X main.CommitHash=${COMMIT} -X 'main.ReleaseNotes=${NOTES}'" \
     -o /server ./cmd/server/
 
-# Stage 4: Minimal runtime
+# Stage 5: Minimal runtime
 FROM alpine:3.21
 RUN apk add --no-cache ca-certificates
 COPY --from=backend /server /server
