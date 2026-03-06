@@ -460,6 +460,8 @@ func (h *Hub) NotifyAgent(userID int64, messageID string, data []byte) {
 }
 
 // HandleHistory returns recent brain messages as JSON.
+// Unpacks payloads into the format the Flutter brain-app expects:
+// {"messages": [{"id": "...", "text": "...", "category": "...", "title": "...", "confidence": 0.9, "created_at": "...", "processed": true}]}
 func (h *Hub) HandleHistory(w http.ResponseWriter, r *http.Request) {
 	userID := auth.UserID(r)
 	if userID == 0 {
@@ -481,8 +483,77 @@ func (h *Hub) HandleHistory(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	// Build a map of thought_id → result so we can merge them
+	type resultInfo struct {
+		Category   string  `json:"category"`
+		Title      string  `json:"title"`
+		Confidence float64 `json:"confidence"`
+	}
+	results := make(map[string]resultInfo)
+	for _, e := range entries {
+		var envelope struct {
+			Type      string  `json:"type"`
+			ThoughtID string  `json:"thought_id"`
+			Category  string  `json:"category"`
+			Title     string  `json:"title"`
+			Confidence float64 `json:"confidence"`
+		}
+		if err := json.Unmarshal([]byte(e.Payload), &envelope); err != nil {
+			continue
+		}
+		if envelope.Type == "result" && envelope.ThoughtID != "" {
+			results[envelope.ThoughtID] = resultInfo{
+				Category:   envelope.Category,
+				Title:      envelope.Title,
+				Confidence: envelope.Confidence,
+			}
+		}
+	}
+
+	// Build output: one entry per thought message
+	type historyMsg struct {
+		ID         string  `json:"id"`
+		Text       string  `json:"text"`
+		Category   string  `json:"category"`
+		Title      string  `json:"title"`
+		Confidence float64 `json:"confidence"`
+		CreatedAt  string  `json:"created_at"`
+		Processed  bool    `json:"processed"`
+	}
+	var messages []historyMsg
+	for _, e := range entries {
+		var envelope struct {
+			Type string `json:"type"`
+			ID   string `json:"id"`
+			Text string `json:"text"`
+		}
+		if err := json.Unmarshal([]byte(e.Payload), &envelope); err != nil {
+			continue
+		}
+		if envelope.Type != "thought" {
+			continue
+		}
+		msg := historyMsg{
+			ID:        envelope.ID,
+			Text:      envelope.Text,
+			CreatedAt: e.CreatedAt.Format("2006-01-02T15:04:05Z"),
+		}
+		if ri, ok := results[envelope.ID]; ok {
+			msg.Category = ri.Category
+			msg.Title = ri.Title
+			msg.Confidence = ri.Confidence
+			msg.Processed = true
+		}
+		messages = append(messages, msg)
+	}
+	if messages == nil {
+		messages = []historyMsg{}
+	}
+
 	w.Header().Set("Content-Type", "application/json")
-	json.NewEncoder(w).Encode(entries)
+	json.NewEncoder(w).Encode(map[string]any{
+		"messages": messages,
+	})
 }
 
 // HandleStatus returns brain relay status (agent online, queue counts).
