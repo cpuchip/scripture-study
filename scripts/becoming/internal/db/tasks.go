@@ -34,7 +34,12 @@ func (db *DB) CreateTask(userID int64, t *Task) error {
 
 // ListTasks returns tasks, optionally filtered by status, scoped to user.
 func (db *DB) ListTasks(userID int64, status string) ([]*Task, error) {
-	query := `SELECT id, title, description, source_doc, source_section, scripture, type, status, created_at, COALESCE(completed_at, '') FROM tasks WHERE user_id = ?`
+	// Postgres needs a cast to coalesce TIMESTAMPTZ with text; SQLite is fine without.
+	completedExpr := "COALESCE(completed_at, '')"
+	if db.IsPostgres() {
+		completedExpr = "COALESCE(completed_at::text, '')"
+	}
+	query := `SELECT id, title, description, source_doc, source_section, scripture, type, status, created_at, ` + completedExpr + ` FROM tasks WHERE user_id = ?`
 	args := []any{userID}
 	if status != "" {
 		query += ` AND status = ?`
