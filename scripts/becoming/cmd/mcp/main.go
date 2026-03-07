@@ -659,8 +659,8 @@ func handleBrainSearch(_ context.Context, req mcp.CallToolRequest) (*mcp.CallToo
 
 	for _, raw := range resp.Entries {
 		var entry struct {
-			Title string `json:"title"`
-			Body  string `json:"body"`
+			Title string   `json:"title"`
+			Body  string   `json:"body"`
 			Tags  []string `json:"tags"`
 		}
 		if err := json.Unmarshal(raw, &entry); err != nil {
