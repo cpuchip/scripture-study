@@ -48,6 +48,9 @@ func NewHub(database *db.DB) *Hub {
 	if err := q.EnsureTable(); err != nil {
 		log.Printf("[brain] warning: could not ensure brain_messages table: %v", err)
 	}
+	if err := database.EnsureBrainEntriesTable(); err != nil {
+		log.Printf("[brain] warning: could not ensure brain_entries table: %v", err)
+	}
 
 	return &Hub{
 		db:     database,
@@ -309,6 +312,13 @@ func (h *Hub) routeMessage(sender *conn, msgType string, data []byte) {
 			return
 		}
 		h.sendToApp(sender.userID, data)
+
+	case TypeEntriesSync:
+		// Agent -> server: store all entries in brain_entries table
+		if sender.role != RoleAgent {
+			return
+		}
+		go h.handleEntriesSync(sender.userID, data)
 
 	case TypePing:
 		// Respond with pong
@@ -577,4 +587,153 @@ func (h *Hub) HandleStatus(w http.ResponseWriter, r *http.Request) {
 		"pending_to_agent": toAgent,
 		"pending_to_app":   toApp,
 	})
+}
+
+// handleEntriesSync processes an entries_sync message from the agent,
+// storing all brain entries in the database for web UI access.
+func (h *Hub) handleEntriesSync(userID int64, data []byte) {
+	var msg EntriesSyncMessage
+	if err := json.Unmarshal(data, &msg); err != nil {
+		log.Printf("[brain] invalid entries_sync: %v", err)
+		return
+	}
+
+	entries := make([]*db.BrainEntry, len(msg.Entries))
+	for i, e := range msg.Entries {
+		entries[i] = &db.BrainEntry{
+			ID:         e.ID,
+			Title:      e.Title,
+			Category:   e.Category,
+			Body:       e.Body,
+			Status:     e.Status,
+			ActionDone: e.ActionDone,
+			DueDate:    e.DueDate,
+			NextAction: e.NextAction,
+			Tags:       e.Tags,
+			Source:     e.Source,
+			CreatedAt:  e.CreatedAt,
+			UpdatedAt:  e.UpdatedAt,
+		}
+	}
+
+	if err := h.db.BulkUpsertBrainEntries(userID, entries); err != nil {
+		log.Printf("[brain] entries_sync error (user %d): %v", userID, err)
+		return
+	}
+
+	log.Printf("[brain] synced %d entries from agent (user %d)", len(entries), userID)
+}
+
+// HandleBrainEntries returns cached brain entries as JSON.
+func (h *Hub) HandleBrainEntries(w http.ResponseWriter, r *http.Request) {
+	userID := auth.UserID(r)
+	if userID == 0 {
+		http.Error(w, "unauthorized", http.StatusUnauthorized)
+		return
+	}
+
+	category := r.URL.Query().Get("category")
+	entries, err := h.db.ListBrainEntries(userID, category)
+	if err != nil {
+		log.Printf("[brain] brain entries error: %v", err)
+		http.Error(w, "internal error", http.StatusInternalServerError)
+		return
+	}
+	if entries == nil {
+		entries = []*db.BrainEntry{}
+	}
+
+	w.Header().Set("Content-Type", "application/json")
+	json.NewEncoder(w).Encode(map[string]any{
+		"entries":      entries,
+		"agent_online": h.IsAgentOnline(userID),
+	})
+}
+
+// HandleBrainEntryUpdate proxies an entry update through the relay to the agent.
+func (h *Hub) HandleBrainEntryUpdate(w http.ResponseWriter, r *http.Request) {
+	userID := auth.UserID(r)
+	if userID == 0 {
+		http.Error(w, "unauthorized", http.StatusUnauthorized)
+		return
+	}
+
+	entryID := r.URL.Query().Get("id")
+	if entryID == "" {
+		http.Error(w, "missing entry id", http.StatusBadRequest)
+		return
+	}
+
+	var updates map[string]any
+	if err := json.NewDecoder(r.Body).Decode(&updates); err != nil {
+		http.Error(w, "invalid JSON", http.StatusBadRequest)
+		return
+	}
+
+	// Update local cache immediately for responsiveness
+	entry, err := h.db.GetBrainEntry(userID, entryID)
+	if err != nil {
+		http.Error(w, "entry not found", http.StatusNotFound)
+		return
+	}
+
+	if v, ok := updates["title"].(string); ok {
+		entry.Title = v
+	}
+	if v, ok := updates["status"].(string); ok {
+		entry.Status = v
+	}
+	if v, ok := updates["action_done"].(bool); ok {
+		entry.ActionDone = v
+	}
+	if v, ok := updates["due_date"].(string); ok {
+		entry.DueDate = v
+	}
+	if v, ok := updates["category"].(string); ok {
+		entry.Category = v
+	}
+	if v, ok := updates["body"].(string); ok {
+		entry.Body = v
+	}
+
+	if err := h.db.UpsertBrainEntry(userID, entry); err != nil {
+		log.Printf("[brain] cache update error: %v", err)
+	}
+
+	// Send update to agent via relay
+	msg, _ := json.Marshal(EntryUpdateMessage{
+		Type:    TypeEntryUpdate,
+		EntryID: entryID,
+		Updates: updates,
+	})
+	msgID := "entry_update_" + entryID + "_" + time.Now().Format("150405")
+	h.routeToAgent(userID, msgID, msg)
+
+	w.Header().Set("Content-Type", "application/json")
+	json.NewEncoder(w).Encode(entry)
+}
+
+// HandleBrainEntryDelete proxies an entry deletion through the relay to the agent.
+func (h *Hub) HandleBrainEntryDelete(w http.ResponseWriter, r *http.Request) {
+	userID := auth.UserID(r)
+	if userID == 0 {
+		http.Error(w, "unauthorized", http.StatusUnauthorized)
+		return
+	}
+
+	entryID := r.URL.Query().Get("id")
+	if entryID == "" {
+		http.Error(w, "missing entry id", http.StatusBadRequest)
+		return
+	}
+
+	// Send delete to agent via relay
+	msg, _ := json.Marshal(EntryDeleteMessage{
+		Type:    TypeEntryDelete,
+		EntryID: entryID,
+	})
+	msgID := "entry_delete_" + entryID + "_" + time.Now().Format("150405")
+	h.routeToAgent(userID, msgID, msg)
+
+	w.WriteHeader(http.StatusNoContent)
 }

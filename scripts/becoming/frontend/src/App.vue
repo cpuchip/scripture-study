@@ -45,7 +45,7 @@ router.afterEach(() => { mobileMenuOpen.value = false })
           <router-link to="/reflections" class="hover:text-orange-600" active-class="text-orange-600 font-semibold">Reflect</router-link>
           <router-link to="/sources" class="hover:text-orange-600" active-class="text-orange-600 font-semibold">Library</router-link>
           <router-link to="/bookmarks" class="hover:text-orange-600" active-class="text-orange-600 font-semibold">Bookmarks</router-link>
-          <router-link to="/tasks" class="hover:text-orange-600" active-class="text-orange-600 font-semibold">Tasks</router-link>
+          <router-link to="/tasks" class="hover:text-orange-600" active-class="text-orange-600 font-semibold">{{ user?.brain_enabled ? '🧠 Brain' : 'Tasks' }}</router-link>
           <span class="border-l border-gray-300 pl-4 flex items-center gap-2">
             <button
               @click="toggleDarkMode"
@@ -110,7 +110,7 @@ router.afterEach(() => { mobileMenuOpen.value = false })
         <router-link to="/reflections" class="block px-2 py-2 rounded text-sm hover:bg-gray-100" active-class="text-orange-600 font-semibold bg-orange-50">Reflect</router-link>
         <router-link to="/sources" class="block px-2 py-2 rounded text-sm hover:bg-gray-100" active-class="text-orange-600 font-semibold bg-orange-50">Library</router-link>
         <router-link to="/bookmarks" class="block px-2 py-2 rounded text-sm hover:bg-gray-100" active-class="text-orange-600 font-semibold bg-orange-50">Bookmarks</router-link>
-        <router-link to="/tasks" class="block px-2 py-2 rounded text-sm hover:bg-gray-100" active-class="text-orange-600 font-semibold bg-orange-50">Tasks</router-link>
+        <router-link to="/tasks" class="block px-2 py-2 rounded text-sm hover:bg-gray-100" active-class="text-orange-600 font-semibold bg-orange-50">{{ user?.brain_enabled ? '🧠 Brain' : 'Tasks' }}</router-link>
         <div class="flex items-center justify-between pt-2 mt-2 border-t border-gray-200 px-2">
           <router-link to="/settings" class="text-sm text-gray-600 hover:text-orange-600">{{ user?.name }}</router-link>
           <button @click="handleLogout" class="text-sm text-gray-400 hover:text-red-500" title="Sign out">Sign out</button>

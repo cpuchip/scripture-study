@@ -151,6 +151,9 @@ func main() {
 		// Brain relay REST endpoints
 		r.Get("/api/brain/history", brainHub.HandleHistory)
 		r.Get("/api/brain/status", brainHub.HandleStatus)
+		r.Get("/api/brain/entries", brainHub.HandleBrainEntries)
+		r.Put("/api/brain/entries", brainHub.HandleBrainEntryUpdate)
+		r.Delete("/api/brain/entries", brainHub.HandleBrainEntryDelete)
 
 		// All existing API routes
 		r.Mount("/api", api.Router(database, *scriptures, brainHub))

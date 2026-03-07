@@ -111,6 +111,27 @@ export interface Task {
   completed_at: string
 }
 
+export interface BrainEntry {
+  id: string
+  title: string
+  category: string
+  body: string
+  status: string
+  action_done: boolean
+  due_date: string
+  next_action: string
+  tags: string[]
+  source: string
+  created_at: string
+  updated_at: string
+  synced_at: string
+}
+
+export interface BrainEntriesResponse {
+  entries: BrainEntry[]
+  agent_online: boolean
+}
+
 export interface ScriptureVerse {
   number: number
   text: string
@@ -357,6 +378,27 @@ export const api = {
 
   deleteTask(id: number) {
     return request<void>(`/tasks/${id}`, { method: 'DELETE' })
+  },
+
+  // Brain entries (cached from brain.exe via relay)
+  listBrainEntries(category?: string) {
+    const params = category ? `?category=${category}` : ''
+    return request<BrainEntriesResponse>(`/brain/entries${params}`)
+  },
+
+  updateBrainEntry(id: string, updates: Record<string, unknown>) {
+    return request<BrainEntry>(`/brain/entries?id=${encodeURIComponent(id)}`, {
+      method: 'PUT',
+      body: JSON.stringify(updates),
+    })
+  },
+
+  deleteBrainEntry(id: string) {
+    return request<void>(`/brain/entries?id=${encodeURIComponent(id)}`, { method: 'DELETE' })
+  },
+
+  getBrainStatus() {
+    return request<{ agent_online: boolean; pending_to_agent: number; pending_to_app: number }>('/brain/status')
   },
 
   // Memorize

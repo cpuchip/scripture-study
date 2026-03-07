@@ -24,6 +24,9 @@ const (
 	TypePing        = "ping"
 	TypePong        = "pong"
 	TypeTaskUpdated = "task_updated"
+	TypeEntriesSync = "entries_sync"
+	TypeEntryUpdate = "entry_update"
+	TypeEntryDelete = "entry_delete"
 )
 
 // Client roles.
@@ -119,6 +122,43 @@ type TaskUpdatedMessage struct {
 	BrainEntryID string `json:"brain_entry_id"` // brain entry UUID
 	Status       string `json:"status"`         // new ibecome status
 	Title        string `json:"title"`          // current title
+}
+
+// EntriesSyncMessage is sent by the agent with all brain entries.
+// The hub stores them in the brain_entries table for web UI access.
+type EntriesSyncMessage struct {
+	Type    string           `json:"type"` // "entries_sync"
+	Entries []SyncEntryPayload `json:"entries"`
+}
+
+// SyncEntryPayload is a single brain entry in the sync payload.
+type SyncEntryPayload struct {
+	ID         string   `json:"id"`
+	Title      string   `json:"title"`
+	Category   string   `json:"category"`
+	Body       string   `json:"body"`
+	Status     string   `json:"status,omitempty"`
+	ActionDone bool     `json:"action_done,omitempty"`
+	DueDate    string   `json:"due_date,omitempty"`
+	NextAction string   `json:"next_action,omitempty"`
+	Tags       []string `json:"tags,omitempty"`
+	Source     string   `json:"source,omitempty"`
+	CreatedAt  string   `json:"created_at"`
+	UpdatedAt  string   `json:"updated_at"`
+}
+
+// EntryUpdateMessage requests the agent update a brain entry.
+// Sent ibeco.me→agent via relay when a user edits an entry in the web UI.
+type EntryUpdateMessage struct {
+	Type    string            `json:"type"` // "entry_update"
+	EntryID string            `json:"entry_id"`
+	Updates map[string]any    `json:"updates"`
+}
+
+// EntryDeleteMessage requests the agent delete a brain entry.
+type EntryDeleteMessage struct {
+	Type    string `json:"type"` // "entry_delete"
+	EntryID string `json:"entry_id"`
 }
 
 // Direction indicates which way a queued message should be routed.
