@@ -2,6 +2,9 @@
 import { ref, computed, onMounted, nextTick } from 'vue'
 import { api, type Task, type BrainEntry } from '../api'
 import { useAuth } from '../composables/useAuth'
+import MarkdownIt from 'markdown-it'
+
+const md = new MarkdownIt({ html: false, linkify: true, breaks: true })
 
 const { user } = useAuth()
 const tasks = ref<Task[]>([])
@@ -35,6 +38,7 @@ const brainForm = ref({
 // Edit dialog
 const editEntry = ref<BrainEntry | null>(null)
 const editDialogRef = ref<HTMLDialogElement | null>(null)
+const editPreviewBody = ref(false)
 const editForm = ref({
   title: '',
   category: '',
@@ -171,6 +175,7 @@ async function toggleBrainDone(entry: BrainEntry) {
 
 function openEditDialog(entry: BrainEntry) {
   editEntry.value = entry
+  editPreviewBody.value = false
   editForm.value = {
     title: entry.title,
     category: entry.category,
@@ -263,8 +268,17 @@ onMounted(load)
             </div>
           </div>
           <div>
-            <label class="block text-sm font-medium text-gray-700 mb-1">Body</label>
-            <textarea v-model="editForm.body" rows="4" class="w-full border rounded px-3 py-2 text-sm"></textarea>
+            <div class="flex items-center justify-between mb-1">
+              <label class="text-sm font-medium text-gray-700">Body</label>
+              <div class="flex rounded-md border border-gray-300 text-xs overflow-hidden">
+                <button type="button" @click="editPreviewBody = false"
+                  class="px-2 py-1 transition-colors" :class="!editPreviewBody ? 'bg-indigo-600 text-white' : 'text-gray-500 hover:bg-gray-100'">Edit</button>
+                <button type="button" @click="editPreviewBody = true"
+                  class="px-2 py-1 transition-colors" :class="editPreviewBody ? 'bg-indigo-600 text-white' : 'text-gray-500 hover:bg-gray-100'">Preview</button>
+              </div>
+            </div>
+            <textarea v-if="!editPreviewBody" v-model="editForm.body" rows="4" class="w-full border rounded px-3 py-2 text-sm"></textarea>
+            <div v-else class="w-full border rounded px-3 py-2 text-sm min-h-[6rem] prose prose-sm max-w-none" v-html="md.render(editForm.body || '')"></div>
           </div>
           <div class="grid grid-cols-2 gap-3">
             <div>
