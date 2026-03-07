@@ -11,22 +11,22 @@ import (
 
 // Message types for the WebSocket protocol.
 const (
-	TypeAuth         = "auth"
-	TypeAuthOK       = "auth_ok"
-	TypeAuthError    = "auth_error"
-	TypeThought      = "thought"
-	TypeResult       = "result"
-	TypeFix          = "fix"
-	TypeFixOK        = "fix_ok"
-	TypePresence     = "presence"
-	TypeQueued       = "queued"
-	TypeStatus       = "status"
-	TypePing         = "ping"
-	TypePong         = "pong"
-	TypeTaskUpdated  = "task_updated"
-	TypeEntriesSync  = "entries_sync"
-	TypeEntryCreate  = "entry_create"
-	TypeEntryCreated = "entry_created"
+	TypeAuth          = "auth"
+	TypeAuthOK        = "auth_ok"
+	TypeAuthError     = "auth_error"
+	TypeThought       = "thought"
+	TypeResult        = "result"
+	TypeFix           = "fix"
+	TypeFixOK         = "fix_ok"
+	TypePresence      = "presence"
+	TypeQueued        = "queued"
+	TypeStatus        = "status"
+	TypePing          = "ping"
+	TypePong          = "pong"
+	TypeTaskUpdated   = "task_updated"
+	TypeEntriesSync   = "entries_sync"
+	TypeEntryCreate   = "entry_create"
+	TypeEntryCreated  = "entry_created"
 	TypeEntryUpdate   = "entry_update"
 	TypeEntryUpdated  = "entry_updated"
 	TypeEntryDelete   = "entry_delete"
@@ -175,7 +175,7 @@ type EntryCreateMessage struct {
 
 // EntryClassifyMessage requests the agent run AI classification on an existing entry.
 type EntryClassifyMessage struct {
-	Type    string `json:"type"`     // "entry_classify"
+	Type    string `json:"type"` // "entry_classify"
 	EntryID string `json:"entry_id"`
 }
 
