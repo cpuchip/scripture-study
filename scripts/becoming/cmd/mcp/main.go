@@ -119,6 +119,18 @@ func registerTools(s *server.MCPServer) {
 	s.AddTool(toolUpdateTask(), handleUpdateTask)
 	s.AddTool(toolCreateNote(), handleCreateNote)
 	s.AddTool(toolUpsertReflection(), handleUpsertReflection)
+
+	// Brain tools — read
+	s.AddTool(toolBrainSearch(), handleBrainSearch)
+	s.AddTool(toolBrainRecent(), handleBrainRecent)
+	s.AddTool(toolBrainGet(), handleBrainGet)
+	s.AddTool(toolBrainStats(), handleBrainStats)
+	s.AddTool(toolBrainTags(), handleBrainTags)
+
+	// Brain tools — write
+	s.AddTool(toolBrainCreate(), handleBrainCreate)
+	s.AddTool(toolBrainUpdate(), handleBrainUpdate)
+	s.AddTool(toolBrainDelete(), handleBrainDelete)
 }
 
 // --- Tool Definitions ---
@@ -529,4 +541,353 @@ func envOrDefault(key, def string) string {
 		return v
 	}
 	return def
+}
+
+// --- Brain Tool Definitions ---
+
+func toolBrainSearch() mcp.Tool {
+	return mcp.NewTool("brain_search",
+		mcp.WithDescription("Search brain entries by text. Returns matching entries from the synced brain cache. Use to find entries by keyword, topic, or content."),
+		mcp.WithString("query", mcp.Required(), mcp.Description("Search text to match against entry titles and bodies")),
+		mcp.WithString("category", mcp.Description("Filter by category: inbox, actions, projects, ideas, people, study, journal")),
+		mcp.WithNumber("limit", mcp.Description("Max results to return (default: 20)")),
+		mcp.WithReadOnlyHintAnnotation(true),
+	)
+}
+
+func toolBrainRecent() mcp.Tool {
+	return mcp.NewTool("brain_recent",
+		mcp.WithDescription("Get recent brain entries, newest first. Optionally filter by category."),
+		mcp.WithString("category", mcp.Description("Filter by category: inbox, actions, projects, ideas, people, study, journal")),
+		mcp.WithNumber("limit", mcp.Description("Max entries to return (default: 20)")),
+		mcp.WithReadOnlyHintAnnotation(true),
+	)
+}
+
+func toolBrainGet() mcp.Tool {
+	return mcp.NewTool("brain_get",
+		mcp.WithDescription("Get a single brain entry by ID. Returns all fields including body, tags, status, due date, and next action."),
+		mcp.WithString("id", mcp.Required(), mcp.Description("Entry UUID")),
+		mcp.WithReadOnlyHintAnnotation(true),
+	)
+}
+
+func toolBrainStats() mcp.Tool {
+	return mcp.NewTool("brain_stats",
+		mcp.WithDescription("Get brain relay status — whether the agent is online, and message queue depths."),
+		mcp.WithReadOnlyHintAnnotation(true),
+	)
+}
+
+func toolBrainTags() mcp.Tool {
+	return mcp.NewTool("brain_tags",
+		mcp.WithDescription("List all tags used across brain entries with usage counts."),
+		mcp.WithReadOnlyHintAnnotation(true),
+	)
+}
+
+func toolBrainCreate() mcp.Tool {
+	return mcp.NewTool("brain_create",
+		mcp.WithDescription("Create a new brain entry. The entry is saved to the relay cache and forwarded to brain.exe for classification when the agent is online."),
+		mcp.WithString("title", mcp.Required(), mcp.Description("Entry title")),
+		mcp.WithString("body", mcp.Description("Entry body (supports markdown)")),
+		mcp.WithString("category", mcp.Description("Category: inbox, actions, projects, ideas, people, study, journal (default: inbox)")),
+		mcp.WithString("status", mcp.Description("Status: active, done, waiting, blocked, someday")),
+		mcp.WithString("due_date", mcp.Description("Due date in YYYY-MM-DD format")),
+		mcp.WithString("next_action", mcp.Description("Next action text")),
+		mcp.WithString("tags", mcp.Description("Comma-separated tags")),
+	)
+}
+
+func toolBrainUpdate() mcp.Tool {
+	return mcp.NewTool("brain_update",
+		mcp.WithDescription("Update an existing brain entry. Only provided fields are changed. The update is saved locally and forwarded to brain.exe."),
+		mcp.WithString("id", mcp.Required(), mcp.Description("Entry UUID to update")),
+		mcp.WithString("title", mcp.Description("New title")),
+		mcp.WithString("body", mcp.Description("New body")),
+		mcp.WithString("category", mcp.Description("New category")),
+		mcp.WithString("status", mcp.Description("New status")),
+		mcp.WithBoolean("action_done", mcp.Description("Mark as done (true) or not done (false)")),
+		mcp.WithString("due_date", mcp.Description("New due date (YYYY-MM-DD)")),
+		mcp.WithString("tags", mcp.Description("Comma-separated tags (replaces existing)")),
+	)
+}
+
+func toolBrainDelete() mcp.Tool {
+	return mcp.NewTool("brain_delete",
+		mcp.WithDescription("Delete a brain entry by ID. Removes from relay cache and forwards delete to brain.exe."),
+		mcp.WithString("id", mcp.Required(), mcp.Description("Entry UUID to delete")),
+	)
+}
+
+// --- Brain Tool Handlers ---
+
+func handleBrainSearch(_ context.Context, req mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	query := req.GetString("query", "")
+	if query == "" {
+		return mcp.NewToolResultError("query is required"), nil
+	}
+
+	// Fetch all entries (with optional category filter) and search client-side.
+	// TODO: Add server-side search endpoint to ibeco.me for better performance.
+	params := url.Values{}
+	if cat := req.GetString("category", ""); cat != "" {
+		params.Set("category", cat)
+	}
+	path := "/brain/entries"
+	if len(params) > 0 {
+		path += "?" + params.Encode()
+	}
+
+	data, err := apiRequest("GET", path, nil)
+	if err != nil {
+		return mcp.NewToolResultError(err.Error()), nil
+	}
+
+	// Parse entries and filter by query
+	var resp struct {
+		Entries     []json.RawMessage `json:"entries"`
+		AgentOnline bool              `json:"agent_online"`
+	}
+	if err := json.Unmarshal(data, &resp); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("parsing response: %v", err)), nil
+	}
+
+	limit := int(req.GetFloat("limit", 20))
+	queryLower := strings.ToLower(query)
+	var matches []json.RawMessage
+
+	for _, raw := range resp.Entries {
+		var entry struct {
+			Title string `json:"title"`
+			Body  string `json:"body"`
+			Tags  []string `json:"tags"`
+		}
+		if err := json.Unmarshal(raw, &entry); err != nil {
+			continue
+		}
+		if strings.Contains(strings.ToLower(entry.Title), queryLower) ||
+			strings.Contains(strings.ToLower(entry.Body), queryLower) ||
+			tagsContain(entry.Tags, queryLower) {
+			matches = append(matches, raw)
+			if len(matches) >= limit {
+				break
+			}
+		}
+	}
+
+	result := map[string]any{
+		"entries":      matches,
+		"total":        len(matches),
+		"agent_online": resp.AgentOnline,
+		"search_type":  "text",
+	}
+	out, _ := json.Marshal(result)
+	return mcp.NewToolResultText(string(out)), nil
+}
+
+func tagsContain(tags []string, query string) bool {
+	for _, t := range tags {
+		if strings.Contains(strings.ToLower(t), query) {
+			return true
+		}
+	}
+	return false
+}
+
+func handleBrainRecent(_ context.Context, req mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	params := url.Values{}
+	if cat := req.GetString("category", ""); cat != "" {
+		params.Set("category", cat)
+	}
+	path := "/brain/entries"
+	if len(params) > 0 {
+		path += "?" + params.Encode()
+	}
+
+	data, err := apiRequest("GET", path, nil)
+	if err != nil {
+		return mcp.NewToolResultError(err.Error()), nil
+	}
+
+	// Trim to limit
+	limit := int(req.GetFloat("limit", 20))
+	var resp struct {
+		Entries     []json.RawMessage `json:"entries"`
+		AgentOnline bool              `json:"agent_online"`
+	}
+	if err := json.Unmarshal(data, &resp); err != nil {
+		return mcp.NewToolResultText(string(data)), nil
+	}
+	if len(resp.Entries) > limit {
+		resp.Entries = resp.Entries[:limit]
+	}
+	out, _ := json.Marshal(resp)
+	return mcp.NewToolResultText(string(out)), nil
+}
+
+func handleBrainGet(_ context.Context, req mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	id := req.GetString("id", "")
+	if id == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
+
+	// Fetch all entries and find the one with matching ID
+	data, err := apiRequest("GET", "/brain/entries", nil)
+	if err != nil {
+		return mcp.NewToolResultError(err.Error()), nil
+	}
+
+	var resp struct {
+		Entries []json.RawMessage `json:"entries"`
+	}
+	if err := json.Unmarshal(data, &resp); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("parsing response: %v", err)), nil
+	}
+
+	for _, raw := range resp.Entries {
+		var entry struct {
+			ID string `json:"id"`
+		}
+		if err := json.Unmarshal(raw, &entry); err != nil {
+			continue
+		}
+		if entry.ID == id {
+			return mcp.NewToolResultText(string(raw)), nil
+		}
+	}
+
+	return mcp.NewToolResultError(fmt.Sprintf("entry %s not found", id)), nil
+}
+
+func handleBrainStats(_ context.Context, _ mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	data, err := apiRequest("GET", "/brain/status", nil)
+	if err != nil {
+		return mcp.NewToolResultError(err.Error()), nil
+	}
+	return mcp.NewToolResultText(string(data)), nil
+}
+
+func handleBrainTags(_ context.Context, _ mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	data, err := apiRequest("GET", "/brain/entries", nil)
+	if err != nil {
+		return mcp.NewToolResultError(err.Error()), nil
+	}
+
+	var resp struct {
+		Entries []struct {
+			Tags []string `json:"tags"`
+		} `json:"entries"`
+	}
+	if err := json.Unmarshal(data, &resp); err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("parsing response: %v", err)), nil
+	}
+
+	counts := map[string]int{}
+	for _, e := range resp.Entries {
+		for _, t := range e.Tags {
+			if t != "" {
+				counts[t]++
+			}
+		}
+	}
+
+	out, _ := json.Marshal(counts)
+	return mcp.NewToolResultText(string(out)), nil
+}
+
+func handleBrainCreate(_ context.Context, req mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	body := map[string]any{
+		"title": req.GetString("title", ""),
+	}
+	if v := req.GetString("body", ""); v != "" {
+		body["body"] = v
+	}
+	if v := req.GetString("category", ""); v != "" {
+		body["category"] = v
+	}
+	if v := req.GetString("status", ""); v != "" {
+		body["status"] = v
+	}
+	if v := req.GetString("due_date", ""); v != "" {
+		body["due_date"] = v
+	}
+	if v := req.GetString("next_action", ""); v != "" {
+		body["next_action"] = v
+	}
+	if v := req.GetString("tags", ""); v != "" {
+		tags := strings.Split(v, ",")
+		for i := range tags {
+			tags[i] = strings.TrimSpace(tags[i])
+		}
+		body["tags"] = tags
+	}
+
+	data, err := apiRequest("POST", "/brain/entries", body)
+	if err != nil {
+		return mcp.NewToolResultError(err.Error()), nil
+	}
+	return mcp.NewToolResultText(string(data)), nil
+}
+
+func handleBrainUpdate(_ context.Context, req mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	id := req.GetString("id", "")
+	if id == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
+
+	body := map[string]any{}
+	if v := req.GetString("title", ""); v != "" {
+		body["title"] = v
+	}
+	if v := req.GetString("body", ""); v != "" {
+		body["body"] = v
+	}
+	if v := req.GetString("category", ""); v != "" {
+		body["category"] = v
+	}
+	if v := req.GetString("status", ""); v != "" {
+		body["status"] = v
+	}
+	if v := req.GetString("due_date", ""); v != "" {
+		body["due_date"] = v
+	}
+	if v := req.GetString("tags", ""); v != "" {
+		tags := strings.Split(v, ",")
+		for i := range tags {
+			tags[i] = strings.TrimSpace(tags[i])
+		}
+		body["tags"] = tags
+	}
+	// action_done is a bool — check if it was explicitly set
+	if argsMap, ok := req.Params.Arguments.(map[string]any); ok {
+		if done, ok := argsMap["action_done"]; ok {
+			if b, ok := done.(bool); ok {
+				body["action_done"] = b
+			}
+		}
+	}
+
+	if len(body) == 0 {
+		return mcp.NewToolResultError("no fields to update"), nil
+	}
+
+	data, err := apiRequest("PUT", "/brain/entries?id="+url.QueryEscape(id), body)
+	if err != nil {
+		return mcp.NewToolResultError(err.Error()), nil
+	}
+	return mcp.NewToolResultText(string(data)), nil
+}
+
+func handleBrainDelete(_ context.Context, req mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	id := req.GetString("id", "")
+	if id == "" {
+		return mcp.NewToolResultError("id is required"), nil
+	}
+
+	data, err := apiRequest("DELETE", "/brain/entries?id="+url.QueryEscape(id), nil)
+	if err != nil {
+		return mcp.NewToolResultError(err.Error()), nil
+	}
+	return mcp.NewToolResultText(string(data)), nil
 }
