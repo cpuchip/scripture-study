@@ -155,7 +155,7 @@ func (db *DB) UpdateTokenBrainEnabled(userID, tokenID int64, enabled bool) error
 func (db *DB) hasBrainToken(userID int64) bool {
 	var count int
 	err := db.QueryRow(
-		`SELECT COUNT(*) FROM api_tokens WHERE user_id = ? AND brain_enabled = 1`, userID,
+		`SELECT COUNT(*) FROM api_tokens WHERE user_id = ? AND brain_enabled = ?`, userID, true,
 	).Scan(&count)
 	return err == nil && count > 0
 }

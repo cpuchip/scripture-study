@@ -156,6 +156,7 @@ async function toggleBrainEnabled(token: APIToken) {
   try {
     await authApi.updateToken(token.id, { brain_enabled: !token.brain_enabled })
     token.brain_enabled = !token.brain_enabled
+    await refresh()
   } catch (e: any) {
     alert(e.message)
   }
