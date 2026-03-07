@@ -11,19 +11,19 @@ import (
 
 // Message types for the WebSocket protocol.
 const (
-	TypeAuth        = "auth"
-	TypeAuthOK      = "auth_ok"
-	TypeAuthError   = "auth_error"
-	TypeThought     = "thought"
-	TypeResult      = "result"
-	TypeFix         = "fix"
-	TypeFixOK       = "fix_ok"
-	TypePresence    = "presence"
-	TypeQueued      = "queued"
-	TypeStatus      = "status"
-	TypePing        = "ping"
-	TypePong        = "pong"
-	TypeTaskUpdated = "task_updated"
+	TypeAuth         = "auth"
+	TypeAuthOK       = "auth_ok"
+	TypeAuthError    = "auth_error"
+	TypeThought      = "thought"
+	TypeResult       = "result"
+	TypeFix          = "fix"
+	TypeFixOK        = "fix_ok"
+	TypePresence     = "presence"
+	TypeQueued       = "queued"
+	TypeStatus       = "status"
+	TypePing         = "ping"
+	TypePong         = "pong"
+	TypeTaskUpdated  = "task_updated"
 	TypeEntriesSync  = "entries_sync"
 	TypeEntryCreate  = "entry_create"
 	TypeEntryCreated = "entry_created"
@@ -130,7 +130,7 @@ type TaskUpdatedMessage struct {
 // EntriesSyncMessage is sent by the agent with all brain entries.
 // The hub stores them in the brain_entries table for web UI access.
 type EntriesSyncMessage struct {
-	Type    string           `json:"type"` // "entries_sync"
+	Type    string             `json:"type"` // "entries_sync"
 	Entries []SyncEntryPayload `json:"entries"`
 }
 
@@ -153,9 +153,9 @@ type SyncEntryPayload struct {
 // EntryUpdateMessage requests the agent update a brain entry.
 // Sent ibeco.me→agent via relay when a user edits an entry in the web UI.
 type EntryUpdateMessage struct {
-	Type    string            `json:"type"` // "entry_update"
-	EntryID string            `json:"entry_id"`
-	Updates map[string]any    `json:"updates"`
+	Type    string         `json:"type"` // "entry_update"
+	EntryID string         `json:"entry_id"`
+	Updates map[string]any `json:"updates"`
 }
 
 // EntryDeleteMessage requests the agent delete a brain entry.
@@ -167,9 +167,9 @@ type EntryDeleteMessage struct {
 // EntryCreateMessage requests the agent create a new brain entry.
 // The hub generates the UUID; the agent stores it with that ID.
 type EntryCreateMessage struct {
-	Type     string         `json:"type"` // "entry_create"
-	EntryID  string         `json:"entry_id"`
-	Fields   map[string]any `json:"fields"`
+	Type    string         `json:"type"` // "entry_create"
+	EntryID string         `json:"entry_id"`
+	Fields  map[string]any `json:"fields"`
 }
 
 // EntryCreatedMessage is sent by the agent after creating a new entry.

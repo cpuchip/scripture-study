@@ -55,8 +55,7 @@ const brainCategories = computed(() => {
   const groups: Record<string, BrainEntry[]> = {}
   for (const e of brainEntries.value) {
     if (brainFilter.value && e.category !== brainFilter.value) continue
-    if (!groups[e.category]) groups[e.category] = []
-    groups[e.category].push(e)
+    ;(groups[e.category] ??= []).push(e)
   }
   const order = ['actions', 'projects', 'ideas', 'people', 'study', 'journal', 'inbox']
   const sorted: [string, BrainEntry[]][] = []
@@ -64,7 +63,7 @@ const brainCategories = computed(() => {
     if (groups[cat]) sorted.push([cat, groups[cat]])
   }
   for (const cat of Object.keys(groups)) {
-    if (!order.includes(cat)) sorted.push([cat, groups[cat]])
+    if (!order.includes(cat)) sorted.push([cat, groups[cat]!])
   }
   return sorted
 })
