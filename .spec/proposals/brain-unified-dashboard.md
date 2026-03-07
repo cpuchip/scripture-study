@@ -1,7 +1,10 @@
 # Brain Unified Dashboard
 
-**Status:** In Progress (Phase 1)
+**Status:** In Progress (Phase 4 next)
 **Created:** 2026-03-06
+**Phase 1:** ✅ Committed `dbd1a86` (brain)
+**Phase 2:** ✅ Committed `c6b21ce` (brain) + `b677f35` (brain-app)
+**Phase 3:** ✅ Committed `8ed08a8` (brain) + `5b0d911` (scripture-study)
 **Problem:** Three surfaces (brain-app, brain web UI, ibeco.me tasks) show different data with different capabilities. No single place to manage all your thoughts.
 
 ## Problem Analysis
