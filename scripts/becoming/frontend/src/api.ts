@@ -386,6 +386,13 @@ export const api = {
     return request<BrainEntriesResponse>(`/brain/entries${params}`)
   },
 
+  createBrainEntry(fields: Record<string, unknown>) {
+    return request<BrainEntry>('/brain/entries', {
+      method: 'POST',
+      body: JSON.stringify(fields),
+    })
+  },
+
   updateBrainEntry(id: string, updates: Record<string, unknown>) {
     return request<BrainEntry>(`/brain/entries?id=${encodeURIComponent(id)}`, {
       method: 'PUT',

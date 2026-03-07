@@ -2,6 +2,7 @@ package brain
 
 import (
 	"encoding/json"
+	"fmt"
 	"log"
 	"net/http"
 	"strconv"
@@ -319,6 +320,20 @@ func (h *Hub) routeMessage(sender *conn, msgType string, data []byte) {
 			return
 		}
 		go h.handleEntriesSync(sender.userID, data)
+
+	case TypeEntryCreated:
+		// Agent -> server: a new entry was created (real-time push)
+		if sender.role != RoleAgent {
+			return
+		}
+		go h.handleEntryCreated(sender.userID, data)
+
+	case TypeEntryUpdated:
+		// Agent -> server: an entry was updated (real-time push)
+		if sender.role != RoleAgent {
+			return
+		}
+		go h.handleEntryUpdated(sender.userID, data)
 
 	case TypePing:
 		// Respond with pong
@@ -713,7 +728,8 @@ func (h *Hub) HandleBrainEntryUpdate(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(entry)
 }
 
-// HandleBrainEntryDelete proxies an entry deletion through the relay to the agent.
+// HandleBrainEntryDelete proxies an entry deletion through the relay to the agent
+// and removes it from the local cache.
 func (h *Hub) HandleBrainEntryDelete(w http.ResponseWriter, r *http.Request) {
 	userID := auth.UserID(r)
 	if userID == 0 {
@@ -727,6 +743,11 @@ func (h *Hub) HandleBrainEntryDelete(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	// Remove from local cache immediately
+	if err := h.db.DeleteBrainEntry(userID, entryID); err != nil {
+		log.Printf("[brain] cache delete error: %v", err)
+	}
+
 	// Send delete to agent via relay
 	msg, _ := json.Marshal(EntryDeleteMessage{
 		Type:    TypeEntryDelete,
@@ -736,4 +757,151 @@ func (h *Hub) HandleBrainEntryDelete(w http.ResponseWriter, r *http.Request) {
 	h.routeToAgent(userID, msgID, msg)
 
 	w.WriteHeader(http.StatusNoContent)
+}
+
+// HandleBrainEntryCreate creates a new brain entry optimistically in the cache
+// and sends an entry_create message to the agent via relay.
+func (h *Hub) HandleBrainEntryCreate(w http.ResponseWriter, r *http.Request) {
+	userID := auth.UserID(r)
+	if userID == 0 {
+		http.Error(w, "unauthorized", http.StatusUnauthorized)
+		return
+	}
+
+	var fields map[string]any
+	if err := json.NewDecoder(r.Body).Decode(&fields); err != nil {
+		http.Error(w, "invalid JSON", http.StatusBadRequest)
+		return
+	}
+
+	title, _ := fields["title"].(string)
+	if title == "" {
+		http.Error(w, "title is required", http.StatusBadRequest)
+		return
+	}
+
+	// Generate entry ID server-side
+	entryID := fmt.Sprintf("%d-%d", time.Now().UnixNano(), userID)
+	// Use proper UUID if available via the agent; this is a temporary ID
+	// that will be confirmed by entry_created from the agent
+	now := time.Now().UTC().Format(time.RFC3339)
+
+	entry := &db.BrainEntry{
+		ID:        entryID,
+		Title:     title,
+		CreatedAt: now,
+		UpdatedAt: now,
+	}
+	if v, ok := fields["category"].(string); ok && v != "" {
+		entry.Category = v
+	} else {
+		entry.Category = "inbox"
+	}
+	if v, ok := fields["body"].(string); ok {
+		entry.Body = v
+	}
+	if v, ok := fields["status"].(string); ok {
+		entry.Status = v
+	}
+	if v, ok := fields["due_date"].(string); ok {
+		entry.DueDate = v
+	}
+	if v, ok := fields["next_action"].(string); ok {
+		entry.NextAction = v
+	}
+	if v, ok := fields["source"].(string); ok {
+		entry.Source = v
+	} else {
+		entry.Source = "web"
+	}
+	if tags, ok := fields["tags"].([]any); ok {
+		for _, t := range tags {
+			if s, ok := t.(string); ok {
+				entry.Tags = append(entry.Tags, s)
+			}
+		}
+	}
+
+	// Store optimistically in cache
+	if err := h.db.UpsertBrainEntry(userID, entry); err != nil {
+		log.Printf("[brain] cache create error: %v", err)
+		http.Error(w, "internal error", http.StatusInternalServerError)
+		return
+	}
+
+	// Send create to agent via relay
+	msg, _ := json.Marshal(EntryCreateMessage{
+		Type:    TypeEntryCreate,
+		EntryID: entryID,
+		Fields:  fields,
+	})
+	msgID := "entry_create_" + entryID
+	h.routeToAgent(userID, msgID, msg)
+
+	w.Header().Set("Content-Type", "application/json")
+	json.NewEncoder(w).Encode(entry)
+}
+
+// handleEntryCreated processes an entry_created message from the agent,
+// storing the new entry in the brain_entries cache.
+func (h *Hub) handleEntryCreated(userID int64, data []byte) {
+	var msg EntryCreatedMessage
+	if err := json.Unmarshal(data, &msg); err != nil {
+		log.Printf("[brain] invalid entry_created: %v", err)
+		return
+	}
+
+	entry := &db.BrainEntry{
+		ID:         msg.Entry.ID,
+		Title:      msg.Entry.Title,
+		Category:   msg.Entry.Category,
+		Body:       msg.Entry.Body,
+		Status:     msg.Entry.Status,
+		ActionDone: msg.Entry.ActionDone,
+		DueDate:    msg.Entry.DueDate,
+		NextAction: msg.Entry.NextAction,
+		Tags:       msg.Entry.Tags,
+		Source:     msg.Entry.Source,
+		CreatedAt:  msg.Entry.CreatedAt,
+		UpdatedAt:  msg.Entry.UpdatedAt,
+	}
+
+	if err := h.db.UpsertBrainEntry(userID, entry); err != nil {
+		log.Printf("[brain] entry_created cache error (user %d): %v", userID, err)
+		return
+	}
+
+	log.Printf("[brain] cached new entry %s from agent (user %d)", entry.ID, userID)
+}
+
+// handleEntryUpdated processes an entry_updated message from the agent,
+// updating the entry in the brain_entries cache.
+func (h *Hub) handleEntryUpdated(userID int64, data []byte) {
+	var msg EntryUpdatedMessage
+	if err := json.Unmarshal(data, &msg); err != nil {
+		log.Printf("[brain] invalid entry_updated: %v", err)
+		return
+	}
+
+	entry := &db.BrainEntry{
+		ID:         msg.Entry.ID,
+		Title:      msg.Entry.Title,
+		Category:   msg.Entry.Category,
+		Body:       msg.Entry.Body,
+		Status:     msg.Entry.Status,
+		ActionDone: msg.Entry.ActionDone,
+		DueDate:    msg.Entry.DueDate,
+		NextAction: msg.Entry.NextAction,
+		Tags:       msg.Entry.Tags,
+		Source:     msg.Entry.Source,
+		CreatedAt:  msg.Entry.CreatedAt,
+		UpdatedAt:  msg.Entry.UpdatedAt,
+	}
+
+	if err := h.db.UpsertBrainEntry(userID, entry); err != nil {
+		log.Printf("[brain] entry_updated cache error (user %d): %v", userID, err)
+		return
+	}
+
+	log.Printf("[brain] updated cached entry %s from agent (user %d)", entry.ID, userID)
 }

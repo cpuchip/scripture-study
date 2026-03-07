@@ -65,6 +65,8 @@ func (db *DB) UpsertBrainEntry(userID int64, e *BrainEntry) error {
 
 // BulkUpsertBrainEntries upserts many entries in a single transaction and
 // removes entries that are no longer present in the sync payload.
+// Conflict-aware: only overwrites cached entries when the incoming data
+// is at least as recent (by updated_at) to avoid clobbering web edits.
 func (db *DB) BulkUpsertBrainEntries(userID int64, entries []*BrainEntry) error {
 	tx, err := db.Begin()
 	if err != nil {
@@ -96,15 +98,30 @@ func (db *DB) BulkUpsertBrainEntries(userID int64, entries []*BrainEntry) error 
 					tags = EXCLUDED.tags,
 					source = EXCLUDED.source,
 					updated_at = EXCLUDED.updated_at,
-					synced_at = EXCLUDED.synced_at`,
+					synced_at = EXCLUDED.synced_at
+				WHERE EXCLUDED.updated_at >= brain_entries.updated_at`,
 				e.ID, userID, e.Title, e.Category, e.Body, e.Status, e.ActionDone,
 				e.DueDate, e.NextAction, string(tagsJSON), e.Source,
 				e.CreatedAt, e.UpdatedAt, now,
 			)
 		} else {
+			// SQLite: check timestamp before replacing
 			_, err = tx.Exec(`
-				INSERT OR REPLACE INTO brain_entries (id, user_id, title, category, body, status, action_done, due_date, next_action, tags, source, created_at, updated_at, synced_at)
-				VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+				INSERT INTO brain_entries (id, user_id, title, category, body, status, action_done, due_date, next_action, tags, source, created_at, updated_at, synced_at)
+				VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+				ON CONFLICT (id, user_id) DO UPDATE SET
+					title = excluded.title,
+					category = excluded.category,
+					body = excluded.body,
+					status = excluded.status,
+					action_done = excluded.action_done,
+					due_date = excluded.due_date,
+					next_action = excluded.next_action,
+					tags = excluded.tags,
+					source = excluded.source,
+					updated_at = excluded.updated_at,
+					synced_at = excluded.synced_at
+				WHERE excluded.updated_at >= brain_entries.updated_at`,
 				e.ID, userID, e.Title, e.Category, e.Body, e.Status, e.ActionDone,
 				e.DueDate, e.NextAction, string(tagsJSON), e.Source,
 				e.CreatedAt, e.UpdatedAt, now,
@@ -231,5 +248,11 @@ func (db *DB) EnsureBrainEntriesTable() error {
 	}
 
 	_, err = db.Exec(`CREATE INDEX IF NOT EXISTS idx_brain_entries_category ON brain_entries(user_id, category)`)
+	return err
+}
+
+// DeleteBrainEntry removes a cached brain entry.
+func (db *DB) DeleteBrainEntry(userID int64, entryID string) error {
+	_, err := db.Exec(`DELETE FROM brain_entries WHERE id = ? AND user_id = ?`, entryID, userID)
 	return err
 }

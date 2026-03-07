@@ -24,9 +24,12 @@ const (
 	TypePing        = "ping"
 	TypePong        = "pong"
 	TypeTaskUpdated = "task_updated"
-	TypeEntriesSync = "entries_sync"
-	TypeEntryUpdate = "entry_update"
-	TypeEntryDelete = "entry_delete"
+	TypeEntriesSync  = "entries_sync"
+	TypeEntryCreate  = "entry_create"
+	TypeEntryCreated = "entry_created"
+	TypeEntryUpdate  = "entry_update"
+	TypeEntryUpdated = "entry_updated"
+	TypeEntryDelete  = "entry_delete"
 )
 
 // Client roles.
@@ -159,6 +162,28 @@ type EntryUpdateMessage struct {
 type EntryDeleteMessage struct {
 	Type    string `json:"type"` // "entry_delete"
 	EntryID string `json:"entry_id"`
+}
+
+// EntryCreateMessage requests the agent create a new brain entry.
+// The hub generates the UUID; the agent stores it with that ID.
+type EntryCreateMessage struct {
+	Type     string         `json:"type"` // "entry_create"
+	EntryID  string         `json:"entry_id"`
+	Fields   map[string]any `json:"fields"`
+}
+
+// EntryCreatedMessage is sent by the agent after creating a new entry.
+// The hub stores it in the brain_entries cache.
+type EntryCreatedMessage struct {
+	Type  string           `json:"type"` // "entry_created"
+	Entry SyncEntryPayload `json:"entry"`
+}
+
+// EntryUpdatedMessage is sent by the agent after processing an update.
+// The hub stores the updated entry in the brain_entries cache.
+type EntryUpdatedMessage struct {
+	Type  string           `json:"type"` // "entry_updated"
+	Entry SyncEntryPayload `json:"entry"`
 }
 
 // Direction indicates which way a queued message should be routed.
