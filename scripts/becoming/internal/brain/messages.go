@@ -27,9 +27,10 @@ const (
 	TypeEntriesSync  = "entries_sync"
 	TypeEntryCreate  = "entry_create"
 	TypeEntryCreated = "entry_created"
-	TypeEntryUpdate  = "entry_update"
-	TypeEntryUpdated = "entry_updated"
-	TypeEntryDelete  = "entry_delete"
+	TypeEntryUpdate   = "entry_update"
+	TypeEntryUpdated  = "entry_updated"
+	TypeEntryDelete   = "entry_delete"
+	TypeEntryClassify = "entry_classify"
 )
 
 // Client roles.
@@ -170,6 +171,12 @@ type EntryCreateMessage struct {
 	Type    string         `json:"type"` // "entry_create"
 	EntryID string         `json:"entry_id"`
 	Fields  map[string]any `json:"fields"`
+}
+
+// EntryClassifyMessage requests the agent run AI classification on an existing entry.
+type EntryClassifyMessage struct {
+	Type    string `json:"type"`     // "entry_classify"
+	EntryID string `json:"entry_id"`
 }
 
 // EntryCreatedMessage is sent by the agent after creating a new entry.

@@ -759,6 +759,35 @@ func (h *Hub) HandleBrainEntryDelete(w http.ResponseWriter, r *http.Request) {
 	w.WriteHeader(http.StatusNoContent)
 }
 
+// HandleBrainEntryClassify asks the agent to run AI classification on an existing entry.
+// The agent will classify and send back an entry_updated message.
+func (h *Hub) HandleBrainEntryClassify(w http.ResponseWriter, r *http.Request) {
+	userID := auth.UserID(r)
+	if userID == 0 {
+		http.Error(w, "unauthorized", http.StatusUnauthorized)
+		return
+	}
+
+	entryID := r.URL.Query().Get("id")
+	if entryID == "" {
+		http.Error(w, "missing id parameter", http.StatusBadRequest)
+		return
+	}
+
+	msg, _ := json.Marshal(EntryClassifyMessage{
+		Type:    TypeEntryClassify,
+		EntryID: entryID,
+	})
+	msgID := "entry_classify_" + entryID
+	h.routeToAgent(userID, msgID, msg)
+
+	w.Header().Set("Content-Type", "application/json")
+	json.NewEncoder(w).Encode(map[string]string{
+		"status":   "queued",
+		"entry_id": entryID,
+	})
+}
+
 // HandleBrainEntryCreate creates a new brain entry optimistically in the cache
 // and sends an entry_create message to the agent via relay.
 func (h *Hub) HandleBrainEntryCreate(w http.ResponseWriter, r *http.Request) {
