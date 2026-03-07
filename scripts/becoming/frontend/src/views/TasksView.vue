@@ -243,42 +243,42 @@ onMounted(load)
     <!-- Edit dialog -->
     <Teleport to="body">
       <dialog ref="editDialogRef" @close="editEntry = null" @cancel.prevent="closeEditDialog"
-        class="rounded-xl border border-gray-200 bg-white p-6 shadow-xl backdrop:bg-black/50 dark:border-gray-700 dark:bg-gray-800 w-full max-w-lg">
+        class="rounded-xl border border-gray-200 bg-white p-6 shadow-xl backdrop:bg-black/50 w-full max-w-lg">
         <form @submit.prevent="saveEdit" class="space-y-4">
           <h2 class="text-lg font-semibold">Edit Entry</h2>
           <div>
-            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Title</label>
-            <input v-model="editForm.title" required class="w-full border rounded px-3 py-2 text-sm dark:bg-gray-700 dark:border-gray-600" />
+            <label class="block text-sm font-medium text-gray-700 mb-1">Title</label>
+            <input v-model="editForm.title" required class="w-full border rounded px-3 py-2 text-sm" />
           </div>
           <div class="grid grid-cols-2 gap-3">
             <div>
-              <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Category</label>
-              <select v-model="editForm.category" class="w-full border rounded px-3 py-2 text-sm dark:bg-gray-700 dark:border-gray-600">
+              <label class="block text-sm font-medium text-gray-700 mb-1">Category</label>
+              <select v-model="editForm.category" class="w-full border rounded px-3 py-2 text-sm">
                 <option v-for="cat in allCategories" :key="cat" :value="cat">{{ cat }}</option>
               </select>
             </div>
             <div>
-              <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Status</label>
-              <input v-model="editForm.status" class="w-full border rounded px-3 py-2 text-sm dark:bg-gray-700 dark:border-gray-600" placeholder="active, done, waiting..." />
+              <label class="block text-sm font-medium text-gray-700 mb-1">Status</label>
+              <input v-model="editForm.status" class="w-full border rounded px-3 py-2 text-sm" placeholder="active, done, waiting..." />
             </div>
           </div>
           <div>
-            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Body</label>
-            <textarea v-model="editForm.body" rows="4" class="w-full border rounded px-3 py-2 text-sm dark:bg-gray-700 dark:border-gray-600"></textarea>
+            <label class="block text-sm font-medium text-gray-700 mb-1">Body</label>
+            <textarea v-model="editForm.body" rows="4" class="w-full border rounded px-3 py-2 text-sm"></textarea>
           </div>
           <div class="grid grid-cols-2 gap-3">
             <div>
-              <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Due Date</label>
-              <input v-model="editForm.due_date" type="date" class="w-full border rounded px-3 py-2 text-sm dark:bg-gray-700 dark:border-gray-600" />
+              <label class="block text-sm font-medium text-gray-700 mb-1">Due Date</label>
+              <input v-model="editForm.due_date" type="date" class="w-full border rounded px-3 py-2 text-sm" />
             </div>
             <div>
-              <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Next Action</label>
-              <input v-model="editForm.next_action" class="w-full border rounded px-3 py-2 text-sm dark:bg-gray-700 dark:border-gray-600" />
+              <label class="block text-sm font-medium text-gray-700 mb-1">Next Action</label>
+              <input v-model="editForm.next_action" class="w-full border rounded px-3 py-2 text-sm" />
             </div>
           </div>
           <div>
-            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Tags (comma-separated)</label>
-            <input v-model="editForm.tags" class="w-full border rounded px-3 py-2 text-sm dark:bg-gray-700 dark:border-gray-600" placeholder="tag1, tag2" />
+            <label class="block text-sm font-medium text-gray-700 mb-1">Tags (comma-separated)</label>
+            <input v-model="editForm.tags" class="w-full border rounded px-3 py-2 text-sm" placeholder="tag1, tag2" />
           </div>
           <div class="flex justify-end gap-2 pt-2">
             <button type="button" @click="closeEditDialog" class="px-4 py-2 text-sm text-gray-600 hover:text-gray-800">Cancel</button>
@@ -291,9 +291,9 @@ onMounted(load)
     <!-- Delete confirm dialog -->
     <Teleport to="body">
       <dialog ref="deleteDialogRef" @close="deleteTarget = null" @cancel.prevent="closeDeleteDialog"
-        class="rounded-xl border border-gray-200 bg-white p-6 shadow-xl backdrop:bg-black/50 dark:border-gray-700 dark:bg-gray-800 w-full max-w-sm">
+        class="rounded-xl border border-gray-200 bg-white p-6 shadow-xl backdrop:bg-black/50 w-full max-w-sm">
         <h2 class="text-lg font-semibold mb-2">Delete Entry</h2>
-        <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">
+        <p class="text-sm text-gray-600 mb-4">
           Delete "<span class="font-medium">{{ deleteTarget?.title }}</span>"? This will remove it from both the cache and brain.exe.
         </p>
         <div class="flex justify-end gap-2">
@@ -349,31 +349,31 @@ onMounted(load)
     <!-- Brain create form -->
     <Transition enter-active-class="transition-all duration-200" leave-active-class="transition-all duration-150"
       enter-from-class="opacity-0 -translate-y-2" leave-to-class="opacity-0 -translate-y-2">
-      <div v-if="showBrainForm" class="bg-white dark:bg-gray-800 rounded-lg shadow p-4 mb-6">
+      <div v-if="showBrainForm" class="bg-white rounded-lg shadow p-4 mb-6">
         <form @submit.prevent="submitBrainEntry" class="space-y-3">
           <div>
-            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Title</label>
-            <input v-model="brainForm.title" required class="w-full border rounded px-3 py-2 text-sm dark:bg-gray-700 dark:border-gray-600" placeholder="What's on your mind?" />
+            <label class="block text-sm font-medium text-gray-700 mb-1">Title</label>
+            <input v-model="brainForm.title" required class="w-full border rounded px-3 py-2 text-sm" placeholder="What's on your mind?" />
           </div>
           <div class="grid grid-cols-2 gap-3">
             <div>
-              <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Category</label>
-              <select v-model="brainForm.category" class="w-full border rounded px-3 py-2 text-sm dark:bg-gray-700 dark:border-gray-600">
+              <label class="block text-sm font-medium text-gray-700 mb-1">Category</label>
+              <select v-model="brainForm.category" class="w-full border rounded px-3 py-2 text-sm">
                 <option v-for="cat in allCategories" :key="cat" :value="cat">{{ cat }}</option>
               </select>
             </div>
             <div>
-              <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Due Date</label>
-              <input v-model="brainForm.due_date" type="date" class="w-full border rounded px-3 py-2 text-sm dark:bg-gray-700 dark:border-gray-600" />
+              <label class="block text-sm font-medium text-gray-700 mb-1">Due Date</label>
+              <input v-model="brainForm.due_date" type="date" class="w-full border rounded px-3 py-2 text-sm" />
             </div>
           </div>
           <div>
-            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Body</label>
-            <textarea v-model="brainForm.body" rows="2" class="w-full border rounded px-3 py-2 text-sm dark:bg-gray-700 dark:border-gray-600" placeholder="Details, notes, context..."></textarea>
+            <label class="block text-sm font-medium text-gray-700 mb-1">Body</label>
+            <textarea v-model="brainForm.body" rows="2" class="w-full border rounded px-3 py-2 text-sm" placeholder="Details, notes, context..."></textarea>
           </div>
           <div>
-            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Tags (comma-separated)</label>
-            <input v-model="brainForm.tags" class="w-full border rounded px-3 py-2 text-sm dark:bg-gray-700 dark:border-gray-600" placeholder="tag1, tag2" />
+            <label class="block text-sm font-medium text-gray-700 mb-1">Tags (comma-separated)</label>
+            <input v-model="brainForm.tags" class="w-full border rounded px-3 py-2 text-sm" placeholder="tag1, tag2" />
           </div>
           <button type="submit" class="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 text-sm">
             Create Entry
@@ -385,28 +385,28 @@ onMounted(load)
     <!-- Task form -->
     <Transition enter-active-class="transition-all duration-200" leave-active-class="transition-all duration-150"
       enter-from-class="opacity-0 -translate-y-2" leave-to-class="opacity-0 -translate-y-2">
-      <div v-if="showTaskForm && (!hasBrain || activeTab === 'tasks')" class="bg-white dark:bg-gray-800 rounded-lg shadow p-4 mb-6">
+      <div v-if="showTaskForm && (!hasBrain || activeTab === 'tasks')" class="bg-white rounded-lg shadow p-4 mb-6">
         <form @submit.prevent="submitTask" class="space-y-3">
           <div>
-            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Title</label>
-            <input v-model="taskForm.title" required class="w-full border rounded px-3 py-2 text-sm dark:bg-gray-700 dark:border-gray-600" placeholder="Partake of sacrament with broken heart" />
+            <label class="block text-sm font-medium text-gray-700 mb-1">Title</label>
+            <input v-model="taskForm.title" required class="w-full border rounded px-3 py-2 text-sm" placeholder="Partake of sacrament with broken heart" />
           </div>
           <div>
-            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Description</label>
-            <textarea v-model="taskForm.description" rows="2" class="w-full border rounded px-3 py-2 text-sm dark:bg-gray-700 dark:border-gray-600"></textarea>
+            <label class="block text-sm font-medium text-gray-700 mb-1">Description</label>
+            <textarea v-model="taskForm.description" rows="2" class="w-full border rounded px-3 py-2 text-sm"></textarea>
           </div>
           <div class="grid grid-cols-3 gap-3">
             <div>
-              <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Source Doc</label>
-              <input v-model="taskForm.source_doc" class="w-full border rounded px-3 py-2 text-sm dark:bg-gray-700 dark:border-gray-600" placeholder="study/truth.md" />
+              <label class="block text-sm font-medium text-gray-700 mb-1">Source Doc</label>
+              <input v-model="taskForm.source_doc" class="w-full border rounded px-3 py-2 text-sm" placeholder="study/truth.md" />
             </div>
             <div>
-              <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Scripture</label>
-              <input v-model="taskForm.scripture" class="w-full border rounded px-3 py-2 text-sm dark:bg-gray-700 dark:border-gray-600" placeholder="D&C 93:29" />
+              <label class="block text-sm font-medium text-gray-700 mb-1">Scripture</label>
+              <input v-model="taskForm.scripture" class="w-full border rounded px-3 py-2 text-sm" placeholder="D&C 93:29" />
             </div>
             <div>
-              <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Type</label>
-              <select v-model="taskForm.type" class="w-full border rounded px-3 py-2 text-sm dark:bg-gray-700 dark:border-gray-600">
+              <label class="block text-sm font-medium text-gray-700 mb-1">Type</label>
+              <select v-model="taskForm.type" class="w-full border rounded px-3 py-2 text-sm">
                 <option value="once">Once</option>
                 <option value="daily">Daily</option>
                 <option value="weekly">Weekly</option>
@@ -466,7 +466,7 @@ onMounted(load)
             {{ cat }}
             <span class="text-gray-300 font-normal">({{ entries.length }})</span>
           </h2>
-          <div class="bg-white dark:bg-gray-800 rounded-lg shadow divide-y divide-gray-100 dark:divide-gray-700">
+          <div class="bg-white rounded-lg shadow divide-y divide-gray-100">
             <div
               v-for="entry in entries"
               :key="entry.id"
@@ -526,7 +526,7 @@ onMounted(load)
         No tasks yet.
       </div>
 
-      <div v-else class="bg-white dark:bg-gray-800 rounded-lg shadow divide-y divide-gray-100 dark:divide-gray-700">
+      <div v-else class="bg-white rounded-lg shadow divide-y divide-gray-100">
         <div
           v-for="task in tasks"
           :key="task.id"
