@@ -3,7 +3,7 @@
 *Created: July 2025*
 *Updated: March 2026 — Rewritten after researching the actual Copilot SDK*
 *Updated: March 7, 2026 — Added Docker isolation, security hardening, phone-friendly study format*
-*Status: Draft*
+*Status: Draft — **Deprioritized** (March 2026). Exciting but depends on near/mid-term work stabilizing first. Tackle after brain-app polish, Today Screen, and proactive surfacing are shipped.*
 *Depends on: Copilot CLI, Docker, GitHub Copilot subscription or BYOK*
 
 ---

@@ -1,7 +1,7 @@
 # Brain — Rich Text / Markdown Body
 
 *Created: July 2025*
-*Status: Draft*
+*Status: **Done** (March 2026 — Edit/Preview toggle shipped in brain-app)*
 *Depends on: nothing (body is already a text field)*
 
 ---

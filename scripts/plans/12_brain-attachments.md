@@ -1,7 +1,7 @@
 # Brain — Attachments (Photos, Voice Memos, Files)
 
 *Created: July 2025*
-*Status: Draft*
+*Status: Draft — **Pushed to far-term** (March 2026). Requires S3/storage infrastructure decision. Focus is on brain-app polish, Today Screen, and proactive surfacing first.*
 *Depends on: nothing (standalone data model extension)*
 
 ---
