@@ -335,6 +335,13 @@ func (h *Hub) routeMessage(sender *conn, msgType string, data []byte) {
 		}
 		go h.handleEntryUpdated(sender.userID, data)
 
+	case TypeEntriesRequest:
+		// App requests cached entries on connect
+		if sender.role != RoleApp {
+			return
+		}
+		go h.handleEntriesRequest(sender)
+
 	case TypePing:
 		// Respond with pong
 		pong, _ := json.Marshal(Envelope{Type: TypePong})
@@ -643,6 +650,32 @@ func (h *Hub) handleEntriesSync(userID int64, data []byte) {
 	}
 
 	log.Printf("[brain] synced %d entries from agent (user %d)", len(entries), userID)
+}
+
+// handleEntriesRequest processes an entries_request message from the app,
+// returning cached brain entries over the WebSocket.
+func (h *Hub) handleEntriesRequest(sender *conn) {
+	entries, err := h.db.ListBrainEntries(sender.userID, "")
+	if err != nil {
+		log.Printf("[brain] entries_request error (user %d): %v", sender.userID, err)
+		return
+	}
+
+	resp, err := json.Marshal(map[string]any{
+		"type":    TypeEntriesResponse,
+		"entries": entries,
+	})
+	if err != nil {
+		log.Printf("[brain] entries_response marshal error: %v", err)
+		return
+	}
+
+	select {
+	case sender.send <- resp:
+		log.Printf("[brain] sent %d cached entries to app (user %d)", len(entries), sender.userID)
+	default:
+		log.Printf("[brain] app send buffer full, dropping entries_response (user %d)", sender.userID)
+	}
 }
 
 // HandleBrainEntries returns cached brain entries as JSON.
