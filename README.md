@@ -129,6 +129,39 @@ Open the workspace in your AI agent. The `.github/copilot-instructions.md` file 
 | **becoming** | Go | Personal transformation tracking (habit/practice logging) | `create_task`, `log_practice`, `get_today`, etc. |
 | **session-journal** | Go (CLI) | Session journaling — captures discoveries, carry-forward items | CLI: `read`, `carry`, `write` |
 
+### Brain / Becoming Ecosystem
+
+In addition to the study MCP servers, this workspace contains a **personal second brain** system spanning three codebases:
+
+| Component | Location | Tech | Git Repo |
+|-----------|----------|------|----------|
+| **brain.exe** | `scripts/brain/` | Go + SQLite + chromem-go + embedded Vue 3 SPA | Separate repo (`.git` inside `scripts/brain/`) |
+| **brain-app** | `scripts/brain-app/` | Flutter 3.38+ (Android, Windows; iOS/Mac planned) | Separate repo (`.git` inside `scripts/brain-app/`) |
+| **ibeco.me** | `scripts/becoming/` | Go + PostgreSQL/SQLite + Vue 3 + Tailwind | Part of this repo |
+
+**How they connect:**
+- **brain.exe** is the local brain — captures thoughts via Discord DM, web UI, or the relay. Classifies them with AI (LM Studio or Copilot SDK) and stores in SQLite with semantic vector search.
+- **ibeco.me** is the cloud hub (deployed via Dokploy at [ibeco.me](https://ibeco.me)). Connects to brain.exe via WebSocket relay, provides a web UI, and adds practices/journaling/becoming features.
+- **brain-app** is the Flutter mobile/desktop app. Connects to either brain.exe directly or through the ibeco.me relay.
+- **private-brain** is the user's actual brain data (SQLite DB + vector store). Not tracked in this repo. brain.exe auto-discovers it from several paths (see [brain README](scripts/brain/README.md)).
+
+To work on the brain ecosystem, clone the sub-repos:
+
+```powershell
+# brain.exe — already has its own .git inside scripts/brain/
+cd scripts/brain
+git remote -v   # verify remote
+
+# brain-app — already has its own .git inside scripts/brain-app/
+cd scripts/brain-app
+git remote -v   # verify remote
+```
+
+See each component's README for setup details:
+- [scripts/brain/README.md](scripts/brain/README.md) — brain.exe setup, AI models, API reference
+- [scripts/brain-app/README.md](scripts/brain-app/README.md) — Flutter app setup
+- [scripts/becoming/Dockerfile](scripts/becoming/Dockerfile) — ibeco.me Dockerfile for Dokploy
+
 ### gospel-vec Environment Variables
 
 gospel-vec defaults to LM Studio at `localhost:1234`. Override with:
@@ -221,7 +254,9 @@ scripture-study/
 │   ├── webster-mcp/             # Webster 1828 dictionary MCP server
 │   ├── yt-mcp/                  # YouTube transcript MCP server
 │   ├── search-mcp/              # Web search MCP server
-│   ├── becoming/                # Personal transformation MCP server
+│   ├── becoming/                # ibeco.me — cloud hub + becoming app (Go + Vue 3)
+│   ├── brain/                   # brain.exe — local second brain (separate git repo)
+│   ├── brain-app/               # Flutter mobile/desktop app (separate git repo)
 │   ├── session-journal/         # Session journaling CLI
 │   ├── publish/                 # Study → public/ HTML converter
 │   ├── convert/                 # Conversion utilities

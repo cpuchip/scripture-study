@@ -76,7 +76,7 @@ Cookies don't work for scripts, AI assistants, or MCP servers — they need a to
 - Revocable from the profile page
 - Trackable (`last_used` timestamp)
 
-This is exactly what GitHub Personal Access Tokens, Fly.io API tokens, and similar systems do.
+This is exactly what GitHub Personal Access Tokens, DigitalOcean API tokens, and similar systems do.
 
 #### The middleware handles both:
 
@@ -162,20 +162,19 @@ The login page checks `GET /api/auth/providers` to know which buttons to show. I
 
 | # | Option | Cost | Fit |
 |---|--------|------|-----|
-| 1 | **Fly.io** | Free tier: 3 shared VMs, 1GB persistent volume | **Best fit** — single Go binary deploys trivially. SQLite works with persistent volumes. Free HTTPS. Custom domains supported. |
+| 1 | **Dokploy (VPS)** | Self-hosted on VPS via Docker Compose + PostgreSQL | **Chosen** — auto-deploys on push to `main` via GitHub app. Custom domains, TLS via Traefik. |
 | 2 | Railway | $5/mo hobby | Good, but costs from day one. |
 | 3 | DigitalOcean droplet | $6/mo | Full control but more ops work. |
 | 4 | Cloudflare Workers + D1 | Free tier generous | Interesting but requires refactoring to Workers runtime (no Go). |
 | 5 | Self-hosted (home server) | $0 | Good for development, bad for reliability/HTTPS. |
 | 6 | Vercel/Netlify (static) + separate API | Varies | Over-complicates the architecture. Our SPA is embedded in the Go binary. |
 
-**Recommendation: Fly.io**
-- Go binary deploys as a Docker container or direct binary
-- Persistent volume for SQLite (`becoming.db` on `/data/`)
-- Free HTTPS with custom domains (ibeco.me, webeco.me)
-- Free tier covers early usage
-- Easy `fly deploy` from CI/CD
-- Scales to multiple regions if needed later
+**Chosen: Dokploy on VPS**
+- Docker Compose with Go binary + PostgreSQL
+- Auto-deploys on push to `main` (Dokploy GitHub app watches the repo)
+- TLS via Traefik reverse proxy
+- Custom domains (ibeco.me)
+- Full control, no vendor lock-in
 
 ### Decision 5: Domain Strategy
 
@@ -678,15 +677,14 @@ BECOMING_GOOGLE_CLIENT_SECRET=
 
 **Estimated: 2-3 hours**
 
-### Sprint 6: Deployment (Fly.io)
+### Sprint 6: Deployment (Dokploy)
 **Scope:**
-- Dockerfile for the Go binary
-- `fly.toml` configuration
-- Persistent volume for SQLite
-- Custom domain setup (ibeco.me, webeco.me)
-- HTTPS via Fly.io managed certificates
-- Environment variable configuration (secrets)
-- DNS setup for both domains
+- Dockerfile + docker-compose.yml for Go binary + PostgreSQL
+- Dokploy GitHub app for auto-deploy on push to `main`
+- Custom domain setup (ibeco.me)
+- TLS via Traefik reverse proxy
+- Environment variable configuration in Dokploy UI
+- DNS setup
 - Smoke test: register, login, create practice on ibeco.me
 
 **Estimated: 2-3 hours**
@@ -727,8 +725,8 @@ BECOMING_GOOGLE_CLIENT_SECRET=
 | Brute force | Rate limiting on `/auth/login` (e.g., 5 attempts per minute per IP). |
 | OAuth state replay | Single-use state tokens with 5-minute expiry. |
 | Data leakage | Every query scoped by user_id. API tokens scoped to their owner. |
-| SQLite concurrency | WAL mode (already enabled). Fly.io single instance for now. |
-| Backups | Fly.io volume snapshots + periodic `sqlite3 .backup` to object storage. |
+| DB concurrency | PostgreSQL in production. SQLite for local dev (WAL mode). |
+| Backups | PostgreSQL volume on VPS + periodic `pg_dump` to object storage. |
 
 ---
 
@@ -743,14 +741,11 @@ BECOMING_GOOGLE_CLIENT_SECRET=
 
 ### From SQLite to Postgres (future, if needed)
 
-If Becoming outgrows SQLite (concurrent writes from many users on a single Fly.io instance):
-1. Switch to Fly.io Postgres (managed)
-2. Migrate schema 1:1 (SQLite → Postgres is straightforward)
-3. Add connection pooling
-4. Enable Row-Level Security for defense-in-depth
-5. Scale horizontally (multiple app instances OK with Postgres)
-
-This is a Phase 5+ concern. SQLite on Fly.io handles hundreds of concurrent users in WAL mode with a single writer. We'll know when we outgrow it.
+Production already runs PostgreSQL via Dokploy (Docker Compose). If scaling is needed:
+1. Add connection pooling (pgbouncer)
+2. Enable Row-Level Security for defense-in-depth
+3. Scale horizontally (multiple app instances OK with Postgres)
+4. Consider managed PostgreSQL if VPS ops becomes a burden
 
 ---
 
@@ -786,7 +781,7 @@ Browser ──► Go Binary ──► SQLite (one user)
 After Phase 3:
 ```
                                           ┌──► SQLite (multi-user)
-Browser ──► Fly.io ──► Go Binary ──────────┤
+Browser ──► Dokploy ──► Go Binary ──────────┤
    │            │           │              └── go:embed (SPA)
    │        HTTPS/TLS      │
    │            │           ▲

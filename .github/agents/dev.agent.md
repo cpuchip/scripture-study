@@ -30,6 +30,48 @@ Additional scripts:
 - `scripts/convert/` — Various conversion utilities
 - `scripts/gospel-library/` — Gospel Library content download
 
+## Brain / Becoming Ecosystem
+
+The "brain" is a personal second brain spanning **three codebases** in this workspace:
+
+| Codebase | Location | Tech | Purpose |
+|----------|----------|------|---------|
+| **brain.exe** | `scripts/brain/` | Go + SQLite + chromem-go + embedded Vue 3 | Local brain — capture, classify, store, vector search. Has its own `.git` repo. |
+| **brain-app** | `scripts/brain-app/` | Flutter 3.38+ | Cross-platform mobile/desktop app (Android, Windows; iOS/Mac planned). Has its own `.git` repo. |
+| **ibeco.me** | `scripts/becoming/` | Go + PostgreSQL/SQLite + Vue 3 + Tailwind | Cloud hub — relay between brain↔app, web UI, practices, journaling. Deployed via Dokploy (auto-deploys on push to `main`). Part of the scripture-study git repo. |
+
+**Relay architecture:** ibeco.me ↔ brain.exe communicate via WebSocket. Message types include entry CRUD, classify, entries_sync, subtask CRUD. ibeco.me caches brain entries in its own DB for offline web access.
+
+**private-brain:** User's actual brain data — SQLite DB + vector store + optional markdown archive. Lives at `private-brain/` (relative to brain.exe) or `~/.brain-data/`. Not tracked in git (or in a separate private repo). brain.exe auto-discovers it from several paths (see `internal/config/config.go`).
+
+### Multi-Codebase Development Rules
+
+When a feature touches the brain ecosystem, changes often span all three codebases. Key patterns:
+
+1. **ibeco.me DB changes require BOTH SQLite AND PostgreSQL migrations.** SQLite migrations are in Go code (`EnsureBrainEntriesTable` / `runSQLiteMigrations` in `internal/db/`). PostgreSQL uses goose migrations at `internal/db/migrations/postgres/*.sql`. **Forgetting the goose migration breaks production** (PostgreSQL won't have the new column and every query fails with 500s).
+
+2. **Relay message types must match on both sides.** When adding a new message type, update:
+   - brain.exe: `internal/relay/client.go` (send/receive)
+   - ibeco.me: `internal/brain/messages.go` (types + structs), `internal/brain/hub.go` (routing + handlers)
+
+3. **API endpoints mirror across brain.exe and ibeco.me.** brain.exe has the authoritative data. ibeco.me proxies via relay for the web UI. Add routes in both: brain.exe (`internal/web/server.go`) and ibeco.me (`cmd/server/main.go` + `internal/brain/hub.go` handlers).
+
+4. **brain-app talks to either brain.exe directly or ibeco.me relay.** Test both paths when changing API contracts.
+
+5. **Build verification across all three:**
+   ```powershell
+   # brain.exe
+   cd scripts/brain && go vet ./...
+   # ibeco.me backend
+   cd scripts/becoming && go vet ./internal/...
+   # ibeco.me frontend
+   cd scripts/becoming/frontend && npx vue-tsc --noEmit
+   # brain-app
+   cd scripts/brain-app && dart analyze
+   ```
+
+6. **Commit order matters.** ibeco.me is part of scripture-study repo. brain.exe and brain-app are separate git repos in `scripts/brain/` and `scripts/brain-app/`. Commit each repo independently.
+
 ## Go Conventions
 
 - The workspace uses `go.work` for multi-module management

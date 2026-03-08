@@ -70,7 +70,7 @@ Before designing anything, let's inventory what's already built:
 | MCP servers (gospel-vec, gospel-mcp, webster-mcp, yt-mcp, becoming, search-mcp) | Running Go services with tool interfaces | Compute layer |
 | Gospel library (markdown) | Full standard works, conference talks, manuals | Knowledge base |
 | VS Code + Copilot | Current interface for study sessions | Interface |
-| ibeco.me (becoming app) | Go backend + Dart frontend, deployed on Fly.io | Existing infrastructure |
+| ibeco.me (becoming app) | Go backend + Vue frontend, deployed via Dokploy | Existing infrastructure |
 | Agent/skill architecture | `.github/agents/`, `.github/skills/` | Principles-based guidance |
 | Study files, evaluations, lessons | Markdown in git | Accumulated knowledge |
 

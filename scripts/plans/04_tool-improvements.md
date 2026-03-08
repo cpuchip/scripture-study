@@ -306,7 +306,7 @@ func main() {
 
 **Option B: sqlite-vec (CGO Required)**
 - **URL:** https://github.com/asg017/sqlite-vec
-- **Stars:** 6.8k | **Sponsors:** Mozilla Builders, Fly.io, Turso
+- **Stars:** 6.8k | **Sponsors:** Mozilla Builders, Turso
 - **Go Bindings:** `go get -u github.com/asg017/sqlite-vec-go-bindings/cgo`
 
 **Pros:**
