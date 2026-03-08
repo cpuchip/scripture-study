@@ -941,6 +941,9 @@ func (h *Hub) handleEntryUpdated(userID int64, data []byte) {
 	}
 
 	log.Printf("[brain] updated cached entry %s from agent (user %d)", entry.ID, userID)
+
+	// Forward to connected app so it can refresh in real-time.
+	h.routeToApp(userID, entry.ID, data)
 }
 
 // syncSubTasksToDB converts SyncSubTask slice to db.BrainSubTask slice.
