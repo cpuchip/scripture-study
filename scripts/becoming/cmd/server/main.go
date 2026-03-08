@@ -156,6 +156,9 @@ func main() {
 		r.Put("/api/brain/entries", brainHub.HandleBrainEntryUpdate)
 		r.Delete("/api/brain/entries", brainHub.HandleBrainEntryDelete)
 		r.Post("/api/brain/entries/classify", brainHub.HandleBrainEntryClassify)
+		r.Post("/api/brain/subtasks", brainHub.HandleBrainSubTaskCreate)
+		r.Put("/api/brain/subtasks", brainHub.HandleBrainSubTaskUpdate)
+		r.Delete("/api/brain/subtasks", brainHub.HandleBrainSubTaskDelete)
 
 		// All existing API routes
 		r.Mount("/api", api.Router(database, *scriptures, brainHub))

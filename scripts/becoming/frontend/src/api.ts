@@ -121,10 +121,19 @@ export interface BrainEntry {
   due_date: string
   next_action: string
   tags: string[]
+  subtasks?: BrainSubTask[]
   source: string
   created_at: string
   updated_at: string
   synced_at: string
+}
+
+export interface BrainSubTask {
+  id: string
+  entry_id: string
+  text: string
+  done: boolean
+  sort_order: number
 }
 
 export interface BrainEntriesResponse {
@@ -402,6 +411,32 @@ export const api = {
 
   deleteBrainEntry(id: string) {
     return request<void>(`/brain/entries?id=${encodeURIComponent(id)}`, { method: 'DELETE' })
+  },
+
+  classifyBrainEntry(id: string) {
+    return request<{ status: string; entry_id: string }>(`/brain/entries/classify?id=${encodeURIComponent(id)}`, {
+      method: 'POST',
+    })
+  },
+
+  createBrainSubTask(entryId: string, text: string) {
+    return request<{ status: string }>('/brain/subtasks', {
+      method: 'POST',
+      body: JSON.stringify({ entry_id: entryId, text }),
+    })
+  },
+
+  updateBrainSubTask(subtaskId: string, entryId: string, updates: { text?: string; done?: boolean }) {
+    return request<{ status: string }>('/brain/subtasks', {
+      method: 'PUT',
+      body: JSON.stringify({ subtask_id: subtaskId, entry_id: entryId, ...updates }),
+    })
+  },
+
+  deleteBrainSubTask(subtaskId: string, entryId: string) {
+    return request<void>(`/brain/subtasks?subtask_id=${encodeURIComponent(subtaskId)}&entry_id=${encodeURIComponent(entryId)}`, {
+      method: 'DELETE',
+    })
   },
 
   getBrainStatus() {

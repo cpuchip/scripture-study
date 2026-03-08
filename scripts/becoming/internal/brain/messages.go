@@ -31,6 +31,9 @@ const (
 	TypeEntryUpdated  = "entry_updated"
 	TypeEntryDelete   = "entry_delete"
 	TypeEntryClassify = "entry_classify"
+	TypeSubTaskCreate = "subtask_create"
+	TypeSubTaskUpdate = "subtask_update"
+	TypeSubTaskDelete = "subtask_delete"
 )
 
 // Client roles.
@@ -135,20 +138,30 @@ type EntriesSyncMessage struct {
 	Entries []SyncEntryPayload `json:"entries"`
 }
 
+// SyncSubTask is a subtask in the sync payload.
+type SyncSubTask struct {
+	ID        string `json:"id"`
+	EntryID   string `json:"entry_id"`
+	Text      string `json:"text"`
+	Done      bool   `json:"done"`
+	SortOrder int    `json:"sort_order"`
+}
+
 // SyncEntryPayload is a single brain entry in the sync payload.
 type SyncEntryPayload struct {
-	ID         string   `json:"id"`
-	Title      string   `json:"title"`
-	Category   string   `json:"category"`
-	Body       string   `json:"body"`
-	Status     string   `json:"status,omitempty"`
-	ActionDone bool     `json:"action_done,omitempty"`
-	DueDate    string   `json:"due_date,omitempty"`
-	NextAction string   `json:"next_action,omitempty"`
-	Tags       []string `json:"tags,omitempty"`
-	Source     string   `json:"source,omitempty"`
-	CreatedAt  string   `json:"created_at"`
-	UpdatedAt  string   `json:"updated_at"`
+	ID         string        `json:"id"`
+	Title      string        `json:"title"`
+	Category   string        `json:"category"`
+	Body       string        `json:"body"`
+	Status     string        `json:"status,omitempty"`
+	ActionDone bool          `json:"action_done,omitempty"`
+	DueDate    string        `json:"due_date,omitempty"`
+	NextAction string        `json:"next_action,omitempty"`
+	Tags       []string      `json:"tags,omitempty"`
+	SubTasks   []SyncSubTask `json:"subtasks,omitempty"`
+	Source     string        `json:"source,omitempty"`
+	CreatedAt  string        `json:"created_at"`
+	UpdatedAt  string        `json:"updated_at"`
 }
 
 // EntryUpdateMessage requests the agent update a brain entry.
@@ -191,6 +204,29 @@ type EntryCreatedMessage struct {
 type EntryUpdatedMessage struct {
 	Type  string           `json:"type"` // "entry_updated"
 	Entry SyncEntryPayload `json:"entry"`
+}
+
+// SubTaskCreateMessage requests the agent create a subtask on an entry.
+type SubTaskCreateMessage struct {
+	Type    string `json:"type"` // "subtask_create"
+	EntryID string `json:"entry_id"`
+	Text    string `json:"text"`
+}
+
+// SubTaskUpdateMessage requests the agent update a subtask.
+type SubTaskUpdateMessage struct {
+	Type      string `json:"type"` // "subtask_update"
+	SubTaskID string `json:"subtask_id"`
+	EntryID   string `json:"entry_id"`
+	Text      string `json:"text,omitempty"`
+	Done      *bool  `json:"done,omitempty"`
+}
+
+// SubTaskDeleteMessage requests the agent delete a subtask.
+type SubTaskDeleteMessage struct {
+	Type      string `json:"type"` // "subtask_delete"
+	SubTaskID string `json:"subtask_id"`
+	EntryID   string `json:"entry_id"`
 }
 
 // Direction indicates which way a queued message should be routed.

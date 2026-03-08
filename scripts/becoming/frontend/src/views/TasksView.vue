@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { ref, computed, onMounted, nextTick } from 'vue'
-import { api, type Task, type BrainEntry } from '../api'
+import { ref, computed, onMounted, onUnmounted, nextTick } from 'vue'
+import { api, type Task, type BrainEntry, type BrainSubTask } from '../api'
 import { useAuth } from '../composables/useAuth'
 import MarkdownIt from 'markdown-it'
 
@@ -232,7 +232,98 @@ async function executeDelete() {
   await load()
 }
 
-onMounted(load)
+// Classify
+const classifying = ref(false)
+async function classifyEntry() {
+  if (!editEntry.value || classifying.value) return
+  classifying.value = true
+  try {
+    await api.classifyBrainEntry(editEntry.value.id)
+    showToast('Classification queued')
+    // Poll briefly for the update
+    setTimeout(() => load(), 3000)
+  } catch {
+    showToast('Classification failed')
+  } finally {
+    classifying.value = false
+  }
+}
+
+// Sub-tasks
+const showSubTasks = ref(false)
+const newSubTaskText = ref('')
+
+async function addSubTask() {
+  const text = newSubTaskText.value.trim()
+  if (!text || !editEntry.value) return
+  try {
+    await api.createBrainSubTask(editEntry.value.id, text)
+    newSubTaskText.value = ''
+    showToast('Sub-task added')
+    // Optimistic: add locally while relay processes
+    if (!editEntry.value.subtasks) editEntry.value.subtasks = []
+    editEntry.value.subtasks.push({ id: 'pending-' + Date.now(), entry_id: editEntry.value.id, text, done: false, sort_order: editEntry.value.subtasks.length })
+    // Refresh after relay round-trip
+    setTimeout(() => load(), 2000)
+  } catch {
+    showToast('Failed to add sub-task')
+  }
+}
+
+async function toggleSubTask(st: BrainSubTask) {
+  if (!editEntry.value) return
+  const newDone = !st.done
+  st.done = newDone // optimistic
+  try {
+    await api.updateBrainSubTask(st.id, editEntry.value.id, { done: newDone })
+  } catch {
+    st.done = !newDone // revert
+    showToast('Failed to update sub-task')
+  }
+}
+
+async function deleteSubTask(st: BrainSubTask) {
+  if (!editEntry.value) return
+  const idx = editEntry.value.subtasks?.indexOf(st) ?? -1
+  if (idx >= 0) editEntry.value.subtasks!.splice(idx, 1) // optimistic
+  try {
+    await api.deleteBrainSubTask(st.id, editEntry.value.id)
+    showToast('Sub-task deleted')
+    setTimeout(() => load(), 2000)
+  } catch {
+    // revert
+    if (idx >= 0 && editEntry.value.subtasks) editEntry.value.subtasks.splice(idx, 0, st)
+    showToast('Failed to delete sub-task')
+  }
+}
+
+// Polling for live updates
+let pollTimer: ReturnType<typeof setInterval> | null = null
+
+function startPolling() {
+  if (pollTimer) return
+  pollTimer = setInterval(async () => {
+    if (!hasBrain.value || activeTab.value !== 'brain') return
+    try {
+      const r = await api.listBrainEntries()
+      brainEntries.value = r.entries
+      agentOnline.value = r.agent_online
+    } catch { /* silent */ }
+  }, 15000)
+}
+
+function stopPolling() {
+  if (pollTimer) {
+    clearInterval(pollTimer)
+    pollTimer = null
+  }
+}
+
+onMounted(() => {
+  load()
+  startPolling()
+})
+onUnmounted(stopPolling)
 </script>
 
 <template>
@@ -248,7 +339,9 @@ onMounted(load)
     <!-- Edit dialog -->
     <Teleport to="body">
       <dialog ref="editDialogRef" @close="editEntry = null" @cancel.prevent="closeEditDialog"
-        class="rounded-xl border border-gray-200 bg-white p-6 shadow-xl backdrop:bg-black/50 w-full max-w-lg">
+        class="rounded-xl border border-gray-200 bg-white p-6 shadow-xl backdrop:bg-black/50 w-full max-w-lg mx-auto"
+        style="margin: auto;"
+      >
         <form @submit.prevent="saveEdit" class="space-y-4">
           <h2 class="text-lg font-semibold">Edit Entry</h2>
           <div>
@@ -280,6 +373,31 @@ onMounted(load)
             <textarea v-if="!editPreviewBody" v-model="editForm.body" rows="4" class="w-full border rounded px-3 py-2 text-sm"></textarea>
             <div v-else class="w-full border rounded px-3 py-2 text-sm min-h-[6rem] prose prose-sm max-w-none" v-html="md.render(editForm.body || '')"></div>
           </div>
+          <!-- Sub-tasks -->
+          <div>
+            <button type="button" @click="showSubTasks = !showSubTasks" class="flex items-center gap-1 text-sm font-medium text-gray-700 mb-1">
+              <span class="text-xs transition-transform" :class="showSubTasks ? 'rotate-90' : ''">▶</span>
+              Sub-tasks
+              <span v-if="editEntry?.subtasks?.length" class="text-gray-400">({{ editEntry.subtasks.filter(s => s.done).length }}/{{ editEntry.subtasks.length }})</span>
+              <span v-else class="text-gray-400">(0)</span>
+            </button>
+            <div v-if="showSubTasks" class="border rounded px-3 py-2 space-y-1">
+              <div v-for="st in (editEntry?.subtasks || [])" :key="st.id" class="flex items-center gap-2 text-sm group">
+                <button type="button" @click="toggleSubTask(st)"
+                  class="w-4 h-4 rounded border flex items-center justify-center flex-shrink-0 cursor-pointer"
+                  :class="st.done ? 'bg-green-500 border-green-500 text-white' : 'border-gray-300 hover:border-green-400'">
+                  <span v-if="st.done" class="text-[10px]">✓</span>
+                </button>
+                <span class="flex-1" :class="{ 'line-through text-gray-400': st.done }">{{ st.text }}</span>
+                <button type="button" @click="deleteSubTask(st)" class="text-red-400 hover:text-red-600 opacity-0 group-hover:opacity-100 transition-opacity text-xs" aria-label="Delete sub-task">✕</button>
+              </div>
+              <div class="flex items-center gap-2 text-sm mt-1">
+                <span class="w-4 h-4 flex-shrink-0"></span>
+                <input v-model="newSubTaskText" @keydown.enter.prevent="addSubTask" type="text" placeholder="Add item..." class="flex-1 border-0 border-b border-gray-200 focus:border-indigo-400 focus:ring-0 px-0 py-0.5 text-sm" />
+                <button type="button" @click="addSubTask" :disabled="!newSubTaskText.trim()" class="text-indigo-500 hover:text-indigo-700 disabled:text-gray-300 text-xs font-medium">+</button>
+              </div>
+            </div>
+          </div>
           <div class="grid grid-cols-2 gap-3">
             <div>
               <label class="block text-sm font-medium text-gray-700 mb-1">Due Date</label>
@@ -294,9 +412,17 @@ onMounted(load)
             <label class="block text-sm font-medium text-gray-700 mb-1">Tags (comma-separated)</label>
             <input v-model="editForm.tags" class="w-full border rounded px-3 py-2 text-sm" placeholder="tag1, tag2" />
           </div>
-          <div class="flex justify-end gap-2 pt-2">
-            <button type="button" @click="closeEditDialog" class="px-4 py-2 text-sm text-gray-600 hover:text-gray-800">Cancel</button>
-            <button type="submit" class="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 text-sm">Save</button>
+          <div class="flex justify-between gap-2 pt-2">
+            <button type="button" @click="classifyEntry" :disabled="classifying"
+              class="px-4 py-2 text-sm rounded-lg transition-colors"
+              :class="classifying ? 'bg-violet-200 text-violet-400' : 'bg-violet-100 text-violet-700 hover:bg-violet-200'"
+            >
+              {{ classifying ? 'Classifying...' : '✦ Classify' }}
+            </button>
+            <div class="flex gap-2">
+              <button type="button" @click="closeEditDialog" class="px-4 py-2 text-sm text-gray-600 hover:text-gray-800">Cancel</button>
+              <button type="submit" class="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 text-sm">Save</button>
+            </div>
           </div>
         </form>
       </dialog>
@@ -305,7 +431,9 @@ onMounted(load)
     <!-- Delete confirm dialog -->
     <Teleport to="body">
       <dialog ref="deleteDialogRef" @close="deleteTarget = null" @cancel.prevent="closeDeleteDialog"
-        class="rounded-xl border border-gray-200 bg-white p-6 shadow-xl backdrop:bg-black/50 w-full max-w-sm">
+        class="rounded-xl border border-gray-200 bg-white p-6 shadow-xl backdrop:bg-black/50 w-full max-w-sm mx-auto"
+        style="margin: auto;"
+      >
         <h2 class="text-lg font-semibold mb-2">Delete Entry</h2>
         <p class="text-sm text-gray-600 mb-4">
           Delete "<span class="font-medium">{{ deleteTarget?.title }}</span>"? This will remove it from both the cache and brain.exe.
@@ -516,6 +644,7 @@ onMounted(load)
                     <span v-if="entry.status && entry.status !== 'done'" class="text-gray-500">{{ entry.status }}</span>
                     <span v-if="entry.due_date">📅 {{ entry.due_date }}</span>
                     <span v-if="entry.next_action" class="text-blue-500">→ {{ entry.next_action }}</span>
+                    <span v-if="entry.subtasks?.length" class="text-gray-500">☑ {{ entry.subtasks.filter(s => s.done).length }}/{{ entry.subtasks.length }}</span>
                     <span v-if="entry.tags?.length" class="text-gray-300">{{ entry.tags.join(', ') }}</span>
                   </div>
                 </div>

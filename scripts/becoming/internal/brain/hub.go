@@ -340,6 +340,11 @@ func (h *Hub) routeMessage(sender *conn, msgType string, data []byte) {
 		pong, _ := json.Marshal(Envelope{Type: TypePong})
 		sender.send <- pong
 
+	case TypeSubTaskCreate, TypeSubTaskUpdate, TypeSubTaskDelete:
+		// These are relayed from the REST handlers, not from WS clients.
+		// If an agent sends entry_updated after processing, it goes through TypeEntryUpdated.
+		log.Printf("[brain] unexpected subtask message on WS: %s", msgType)
+
 	default:
 		log.Printf("[brain] unknown message type: %s", msgType)
 	}
@@ -625,6 +630,7 @@ func (h *Hub) handleEntriesSync(userID int64, data []byte) {
 			DueDate:    e.DueDate,
 			NextAction: e.NextAction,
 			Tags:       e.Tags,
+			SubTasks:   syncSubTasksToDB(e.SubTasks),
 			Source:     e.Source,
 			CreatedAt:  e.CreatedAt,
 			UpdatedAt:  e.UpdatedAt,
@@ -890,6 +896,7 @@ func (h *Hub) handleEntryCreated(userID int64, data []byte) {
 		DueDate:    msg.Entry.DueDate,
 		NextAction: msg.Entry.NextAction,
 		Tags:       msg.Entry.Tags,
+		SubTasks:   syncSubTasksToDB(msg.Entry.SubTasks),
 		Source:     msg.Entry.Source,
 		CreatedAt:  msg.Entry.CreatedAt,
 		UpdatedAt:  msg.Entry.UpdatedAt,
@@ -922,6 +929,7 @@ func (h *Hub) handleEntryUpdated(userID int64, data []byte) {
 		DueDate:    msg.Entry.DueDate,
 		NextAction: msg.Entry.NextAction,
 		Tags:       msg.Entry.Tags,
+		SubTasks:   syncSubTasksToDB(msg.Entry.SubTasks),
 		Source:     msg.Entry.Source,
 		CreatedAt:  msg.Entry.CreatedAt,
 		UpdatedAt:  msg.Entry.UpdatedAt,
@@ -933,4 +941,108 @@ func (h *Hub) handleEntryUpdated(userID int64, data []byte) {
 	}
 
 	log.Printf("[brain] updated cached entry %s from agent (user %d)", entry.ID, userID)
+}
+
+// syncSubTasksToDB converts SyncSubTask slice to db.BrainSubTask slice.
+func syncSubTasksToDB(sts []SyncSubTask) []db.BrainSubTask {
+	if len(sts) == 0 {
+		return nil
+	}
+	out := make([]db.BrainSubTask, len(sts))
+	for i, st := range sts {
+		out[i] = db.BrainSubTask{
+			ID:        st.ID,
+			EntryID:   st.EntryID,
+			Text:      st.Text,
+			Done:      st.Done,
+			SortOrder: st.SortOrder,
+		}
+	}
+	return out
+}
+
+// HandleBrainSubTaskCreate proxies a subtask creation through the relay to the agent.
+func (h *Hub) HandleBrainSubTaskCreate(w http.ResponseWriter, r *http.Request) {
+	userID := auth.UserID(r)
+	if userID == 0 {
+		http.Error(w, "unauthorized", http.StatusUnauthorized)
+		return
+	}
+
+	var req struct {
+		EntryID string `json:"entry_id"`
+		Text    string `json:"text"`
+	}
+	if err := json.NewDecoder(r.Body).Decode(&req); err != nil {
+		http.Error(w, "invalid JSON", http.StatusBadRequest)
+		return
+	}
+	if req.EntryID == "" || req.Text == "" {
+		http.Error(w, "entry_id and text are required", http.StatusBadRequest)
+		return
+	}
+
+	msg, _ := json.Marshal(SubTaskCreateMessage{
+		Type:    TypeSubTaskCreate,
+		EntryID: req.EntryID,
+		Text:    req.Text,
+	})
+	msgID := fmt.Sprintf("subtask_create_%s_%s", req.EntryID, time.Now().Format("150405"))
+	h.routeToAgent(userID, msgID, msg)
+
+	w.Header().Set("Content-Type", "application/json")
+	json.NewEncoder(w).Encode(map[string]string{"status": "queued"})
+}
+
+// HandleBrainSubTaskUpdate proxies a subtask update through the relay to the agent.
+func (h *Hub) HandleBrainSubTaskUpdate(w http.ResponseWriter, r *http.Request) {
+	userID := auth.UserID(r)
+	if userID == 0 {
+		http.Error(w, "unauthorized", http.StatusUnauthorized)
+		return
+	}
+
+	var req SubTaskUpdateMessage
+	if err := json.NewDecoder(r.Body).Decode(&req); err != nil {
+		http.Error(w, "invalid JSON", http.StatusBadRequest)
+		return
+	}
+	if req.SubTaskID == "" || req.EntryID == "" {
+		http.Error(w, "subtask_id and entry_id are required", http.StatusBadRequest)
+		return
+	}
+
+	req.Type = TypeSubTaskUpdate
+	msg, _ := json.Marshal(req)
+	msgID := fmt.Sprintf("subtask_update_%s_%s", req.SubTaskID, time.Now().Format("150405"))
+	h.routeToAgent(userID, msgID, msg)
+
+	w.Header().Set("Content-Type", "application/json")
+	json.NewEncoder(w).Encode(map[string]string{"status": "queued"})
+}
+
+// HandleBrainSubTaskDelete proxies a subtask deletion through the relay to the agent.
+func (h *Hub) HandleBrainSubTaskDelete(w http.ResponseWriter, r *http.Request) {
+	userID := auth.UserID(r)
+	if userID == 0 {
+		http.Error(w, "unauthorized", http.StatusUnauthorized)
+		return
+	}
+
+	subtaskID := r.URL.Query().Get("subtask_id")
+	entryID := r.URL.Query().Get("entry_id")
+	if subtaskID == "" || entryID == "" {
+		http.Error(w, "subtask_id and entry_id are required", http.StatusBadRequest)
+		return
+	}
+
+	msg, _ := json.Marshal(SubTaskDeleteMessage{
+		Type:      TypeSubTaskDelete,
+		SubTaskID: subtaskID,
+		EntryID:   entryID,
+	})
+	msgID := fmt.Sprintf("subtask_delete_%s_%s", subtaskID, time.Now().Format("150405"))
+	h.routeToAgent(userID, msgID, msg)
+
+	w.WriteHeader(http.StatusNoContent)
 }

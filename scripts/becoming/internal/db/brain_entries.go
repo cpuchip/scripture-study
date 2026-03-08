@@ -9,30 +9,41 @@ import (
 // BrainEntry is a cached copy of a brain.exe entry, stored on ibeco.me
 // so the web UI can display all brain data even when the agent is offline.
 type BrainEntry struct {
-	ID         string   `json:"id"`
-	Title      string   `json:"title"`
-	Category   string   `json:"category"`
-	Body       string   `json:"body"`
-	Status     string   `json:"status,omitempty"`
-	ActionDone bool     `json:"action_done,omitempty"`
-	DueDate    string   `json:"due_date,omitempty"`
-	NextAction string   `json:"next_action,omitempty"`
-	Tags       []string `json:"tags,omitempty"`
-	Source     string   `json:"source,omitempty"`
-	CreatedAt  string   `json:"created_at"`
-	UpdatedAt  string   `json:"updated_at"`
-	SyncedAt   string   `json:"synced_at"`
+	ID         string         `json:"id"`
+	Title      string         `json:"title"`
+	Category   string         `json:"category"`
+	Body       string         `json:"body"`
+	Status     string         `json:"status,omitempty"`
+	ActionDone bool           `json:"action_done,omitempty"`
+	DueDate    string         `json:"due_date,omitempty"`
+	NextAction string         `json:"next_action,omitempty"`
+	Tags       []string       `json:"tags,omitempty"`
+	SubTasks   []BrainSubTask `json:"subtasks,omitempty"`
+	Source     string         `json:"source,omitempty"`
+	CreatedAt  string         `json:"created_at"`
+	UpdatedAt  string         `json:"updated_at"`
+	SyncedAt   string         `json:"synced_at"`
+}
+
+// BrainSubTask is a cached subtask from brain.exe.
+type BrainSubTask struct {
+	ID        string `json:"id"`
+	EntryID   string `json:"entry_id"`
+	Text      string `json:"text"`
+	Done      bool   `json:"done"`
+	SortOrder int    `json:"sort_order"`
 }
 
 // UpsertBrainEntry inserts or updates a cached brain entry.
 func (db *DB) UpsertBrainEntry(userID int64, e *BrainEntry) error {
 	now := time.Now().UTC().Format(time.RFC3339)
 	tagsJSON, _ := json.Marshal(e.Tags)
+	subtasksJSON, _ := json.Marshal(e.SubTasks)
 
 	if db.IsPostgres() {
 		_, err := db.Exec(`
-			INSERT INTO brain_entries (id, user_id, title, category, body, status, action_done, due_date, next_action, tags, source, created_at, updated_at, synced_at)
-			VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+			INSERT INTO brain_entries (id, user_id, title, category, body, status, action_done, due_date, next_action, tags, subtasks, source, created_at, updated_at, synced_at)
+			VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
 			ON CONFLICT (id, user_id) DO UPDATE SET
 				title = EXCLUDED.title,
 				category = EXCLUDED.category,
@@ -42,11 +53,12 @@ func (db *DB) UpsertBrainEntry(userID int64, e *BrainEntry) error {
 				due_date = EXCLUDED.due_date,
 				next_action = EXCLUDED.next_action,
 				tags = EXCLUDED.tags,
+				subtasks = EXCLUDED.subtasks,
 				source = EXCLUDED.source,
 				updated_at = EXCLUDED.updated_at,
 				synced_at = EXCLUDED.synced_at`,
 			e.ID, userID, e.Title, e.Category, e.Body, e.Status, e.ActionDone,
-			e.DueDate, e.NextAction, string(tagsJSON), e.Source,
+			e.DueDate, e.NextAction, string(tagsJSON), string(subtasksJSON), e.Source,
 			e.CreatedAt, e.UpdatedAt, now,
 		)
 		return err
@@ -54,10 +66,10 @@ func (db *DB) UpsertBrainEntry(userID int64, e *BrainEntry) error {
 
 	// SQLite: INSERT OR REPLACE
 	_, err := db.Exec(`
-		INSERT OR REPLACE INTO brain_entries (id, user_id, title, category, body, status, action_done, due_date, next_action, tags, source, created_at, updated_at, synced_at)
-		VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+		INSERT OR REPLACE INTO brain_entries (id, user_id, title, category, body, status, action_done, due_date, next_action, tags, subtasks, source, created_at, updated_at, synced_at)
+		VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
 		e.ID, userID, e.Title, e.Category, e.Body, e.Status, e.ActionDone,
-		e.DueDate, e.NextAction, string(tagsJSON), e.Source,
+		e.DueDate, e.NextAction, string(tagsJSON), string(subtasksJSON), e.Source,
 		e.CreatedAt, e.UpdatedAt, now,
 	)
 	return err
@@ -82,11 +94,12 @@ func (db *DB) BulkUpsertBrainEntries(userID int64, entries []*BrainEntry) error 
 	for _, e := range entries {
 		receivedIDs[e.ID] = true
 		tagsJSON, _ := json.Marshal(e.Tags)
+		subtasksJSON, _ := json.Marshal(e.SubTasks)
 
 		if db.IsPostgres() {
 			_, err = tx.Exec(`
-				INSERT INTO brain_entries (id, user_id, title, category, body, status, action_done, due_date, next_action, tags, source, created_at, updated_at, synced_at)
-				VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+				INSERT INTO brain_entries (id, user_id, title, category, body, status, action_done, due_date, next_action, tags, subtasks, source, created_at, updated_at, synced_at)
+				VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
 				ON CONFLICT (id, user_id) DO UPDATE SET
 					title = EXCLUDED.title,
 					category = EXCLUDED.category,
@@ -96,19 +109,20 @@ func (db *DB) BulkUpsertBrainEntries(userID int64, entries []*BrainEntry) error 
 					due_date = EXCLUDED.due_date,
 					next_action = EXCLUDED.next_action,
 					tags = EXCLUDED.tags,
+					subtasks = EXCLUDED.subtasks,
 					source = EXCLUDED.source,
 					updated_at = EXCLUDED.updated_at,
 					synced_at = EXCLUDED.synced_at
 				WHERE EXCLUDED.updated_at >= brain_entries.updated_at`,
 				e.ID, userID, e.Title, e.Category, e.Body, e.Status, e.ActionDone,
-				e.DueDate, e.NextAction, string(tagsJSON), e.Source,
+				e.DueDate, e.NextAction, string(tagsJSON), string(subtasksJSON), e.Source,
 				e.CreatedAt, e.UpdatedAt, now,
 			)
 		} else {
 			// SQLite: check timestamp before replacing
 			_, err = tx.Exec(`
-				INSERT INTO brain_entries (id, user_id, title, category, body, status, action_done, due_date, next_action, tags, source, created_at, updated_at, synced_at)
-				VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+				INSERT INTO brain_entries (id, user_id, title, category, body, status, action_done, due_date, next_action, tags, subtasks, source, created_at, updated_at, synced_at)
+				VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
 				ON CONFLICT (id, user_id) DO UPDATE SET
 					title = excluded.title,
 					category = excluded.category,
@@ -118,12 +132,13 @@ func (db *DB) BulkUpsertBrainEntries(userID int64, entries []*BrainEntry) error 
 					due_date = excluded.due_date,
 					next_action = excluded.next_action,
 					tags = excluded.tags,
+					subtasks = excluded.subtasks,
 					source = excluded.source,
 					updated_at = excluded.updated_at,
 					synced_at = excluded.synced_at
 				WHERE excluded.updated_at >= brain_entries.updated_at`,
 				e.ID, userID, e.Title, e.Category, e.Body, e.Status, e.ActionDone,
-				e.DueDate, e.NextAction, string(tagsJSON), e.Source,
+				e.DueDate, e.NextAction, string(tagsJSON), string(subtasksJSON), e.Source,
 				e.CreatedAt, e.UpdatedAt, now,
 			)
 		}
@@ -165,7 +180,7 @@ func (db *DB) BulkUpsertBrainEntries(userID int64, entries []*BrainEntry) error 
 
 // ListBrainEntries returns all cached brain entries for a user, newest first.
 func (db *DB) ListBrainEntries(userID int64, category string) ([]*BrainEntry, error) {
-	query := `SELECT id, title, category, body, status, action_done, due_date, next_action, tags, source, created_at, updated_at, synced_at
+	query := `SELECT id, title, category, body, status, action_done, due_date, next_action, tags, subtasks, source, created_at, updated_at, synced_at
 		FROM brain_entries WHERE user_id = ?`
 	args := []any{userID}
 	if category != "" {
@@ -183,13 +198,16 @@ func (db *DB) ListBrainEntries(userID int64, category string) ([]*BrainEntry, er
 	var entries []*BrainEntry
 	for rows.Next() {
 		e := &BrainEntry{}
-		var tagsJSON string
+		var tagsJSON, subtasksJSON string
 		if err := rows.Scan(&e.ID, &e.Title, &e.Category, &e.Body, &e.Status, &e.ActionDone,
-			&e.DueDate, &e.NextAction, &tagsJSON, &e.Source, &e.CreatedAt, &e.UpdatedAt, &e.SyncedAt); err != nil {
+			&e.DueDate, &e.NextAction, &tagsJSON, &subtasksJSON, &e.Source, &e.CreatedAt, &e.UpdatedAt, &e.SyncedAt); err != nil {
 			return nil, fmt.Errorf("scanning brain entry: %w", err)
 		}
 		if tagsJSON != "" && tagsJSON != "null" {
 			json.Unmarshal([]byte(tagsJSON), &e.Tags)
+		}
+		if subtasksJSON != "" && subtasksJSON != "null" {
+			json.Unmarshal([]byte(subtasksJSON), &e.SubTasks)
 		}
 		entries = append(entries, e)
 	}
@@ -199,17 +217,20 @@ func (db *DB) ListBrainEntries(userID int64, category string) ([]*BrainEntry, er
 // GetBrainEntry returns a single cached brain entry.
 func (db *DB) GetBrainEntry(userID int64, entryID string) (*BrainEntry, error) {
 	e := &BrainEntry{}
-	var tagsJSON string
+	var tagsJSON, subtasksJSON string
 	err := db.QueryRow(`
-		SELECT id, title, category, body, status, action_done, due_date, next_action, tags, source, created_at, updated_at, synced_at
+		SELECT id, title, category, body, status, action_done, due_date, next_action, tags, subtasks, source, created_at, updated_at, synced_at
 		FROM brain_entries WHERE id = ? AND user_id = ?`, entryID, userID).
 		Scan(&e.ID, &e.Title, &e.Category, &e.Body, &e.Status, &e.ActionDone,
-			&e.DueDate, &e.NextAction, &tagsJSON, &e.Source, &e.CreatedAt, &e.UpdatedAt, &e.SyncedAt)
+			&e.DueDate, &e.NextAction, &tagsJSON, &subtasksJSON, &e.Source, &e.CreatedAt, &e.UpdatedAt, &e.SyncedAt)
 	if err != nil {
 		return nil, fmt.Errorf("getting brain entry: %w", err)
 	}
 	if tagsJSON != "" && tagsJSON != "null" {
 		json.Unmarshal([]byte(tagsJSON), &e.Tags)
+	}
+	if subtasksJSON != "" && subtasksJSON != "null" {
+		json.Unmarshal([]byte(subtasksJSON), &e.SubTasks)
 	}
 	return e, nil
 }
@@ -231,6 +252,7 @@ func (db *DB) EnsureBrainEntriesTable() error {
 			due_date    TEXT NOT NULL DEFAULT '',
 			next_action TEXT NOT NULL DEFAULT '',
 			tags        TEXT NOT NULL DEFAULT '[]',
+			subtasks    TEXT NOT NULL DEFAULT '[]',
 			source      TEXT NOT NULL DEFAULT '',
 			created_at  DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
 			updated_at  DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -241,6 +263,9 @@ func (db *DB) EnsureBrainEntriesTable() error {
 	if err != nil {
 		return fmt.Errorf("creating brain_entries table: %w", err)
 	}
+
+	// Migration: add subtasks column if table already exists without it
+	db.Exec(`ALTER TABLE brain_entries ADD COLUMN subtasks TEXT NOT NULL DEFAULT '[]'`)
 
 	_, err = db.Exec(`CREATE INDEX IF NOT EXISTS idx_brain_entries_user ON brain_entries(user_id)`)
 	if err != nil {
