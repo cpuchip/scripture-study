@@ -1012,8 +1012,22 @@ func (h *Hub) HandleBrainSubTaskUpdate(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	req.Type = TypeSubTaskUpdate
-	msg, _ := json.Marshal(req)
+	// Build the message in the format brain.exe expects:
+	// {"type":"subtask_update", "entry_id":"...", "subtask_id":"...", "updates":{...}}
+	updates := map[string]any{}
+	if req.Done != nil {
+		updates["done"] = *req.Done
+	}
+	if req.Text != "" {
+		updates["text"] = req.Text
+	}
+	agentMsg := map[string]any{
+		"type":       TypeSubTaskUpdate,
+		"entry_id":   req.EntryID,
+		"subtask_id": req.SubTaskID,
+		"updates":    updates,
+	}
+	msg, _ := json.Marshal(agentMsg)
 	msgID := fmt.Sprintf("subtask_update_%s_%s", req.SubTaskID, time.Now().Format("150405"))
 	h.routeToAgent(userID, msgID, msg)
 
