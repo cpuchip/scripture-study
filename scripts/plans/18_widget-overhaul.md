@@ -1,9 +1,10 @@
-# Plan 18: Widget Overhaul
+# Plan 18: Widget Overhaul (absorbs Plan 16 Phase 4)
 
 *Created: March 8, 2026*
 *Priority: Near-term*
+*Absorbs: Plan 16 Phase 4 (Widget/Android) — the original 3-liner is now this full plan*
 *Depends on: Plan 16 (Today Screen — Phases 1-3 done), practice log API (just fixed)*
-*Connects to: Plan 16 Phase 4, Plan 17 (Proactive Surfacing)*
+*Connects to: Plan 17 (Proactive Surfacing)*
 
 ---
 

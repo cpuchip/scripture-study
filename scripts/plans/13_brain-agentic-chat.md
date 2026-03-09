@@ -728,3 +728,55 @@ This might be simpler for auth and avoids putting the CLI inside the container. 
 - **LM Studio fallback:** When the machine is running but internet is down (no Copilot access), should we fall back to LM Studio inside the container with BYOK? This would require mounting LM Studio's API access. Defer for now — clean error is fine.
 - **Cost monitoring:** Need a way to track premium request usage from the phone. Display in settings: "X copilot requests today / this month."
 - **dokploy network isolation:** Separate concern from this feature. But worth noting: a VLAN between proxmox and your workstation would limit blast radius of a VPS compromise. Brain.exe connections to ibeco.me are outbound-only (WebSocket initiated by brain.exe), which helps.
+
+---
+
+## Coder Evaluation (March 8, 2026)
+
+Evaluated [github.com/coder/coder](https://github.com/coder/coder) as a potential replacement for our custom Docker isolation layer.
+
+### What Coder Is
+
+A self-hosted **cloud development environment platform**. Teams define workspaces in Terraform, Coder provisions them (Docker containers, K8s pods, cloud VMs), runs an agent inside each one, and connects developers via Wireguard tunnels. It's enterprise infrastructure for at-scale dev environments.
+
+### What Overlaps with Plan 13
+
+| Feature | Coder | Our Plan 13 |
+|---------|-------|-------------|
+| Docker container isolation | Yes (Terraform-provisioned) | Yes (docker-compose, bind mounts) |
+| Agent process inside container | Yes (Coder agent: SSH, file transfer, port forwarding, process monitoring) | Yes (copilot-agent: Copilot SDK + MCP servers) |
+| MCP integration | Yes (Coder Tasks + AI Bridge) | Yes (gospel-vec, webster-mcp, etc.) |
+| Workspace lifecycle (start/stop/delete) | Yes (full state machine, auto-shutdown) | Minimal (keep-alive, restart on failure) |
+| AI agent execution | Yes (Claude Code, Aider, Goose via Coder Tasks) | Yes (Copilot SDK with custom tools) |
+
+### What Coder Adds That We Don't Need
+
+- **PostgreSQL requirement** — Coder needs a full Postgres instance for state. We'd go from "brain.exe is a single binary" to needing a database server for the isolation layer.
+- **External provisioner daemon** — Terraform-based provisioning is a heavyweight dependency for "start one Docker container."
+- **Wireguard tunnels** — Secure networking for multi-user, multi-region access. We're on localhost.
+- **Team/RBAC/quota management** — Enterprise features for organizations. We're one person.
+- **IDE integration** (SSH, VS Code Remote) — Designed for developers working *inside* the workspace. Our agent works autonomously; the user interacts via phone.
+- **Template system** — Powerful but complex. We need one container config, not a Terraform template ecosystem.
+- **AI Bridge** (enterprise) — Centralized AI gateway with audit trails and token spend monitoring. Interesting but behind a paywall and overkill for single-user.
+
+### What Coder Does Well That's Interesting
+
+- **Coder Tasks** — dedicated UI for running autonomous coding agents (Claude Code, Aider) with MCP status reporting. This is the closest overlap: running an AI agent in an isolated workspace and reporting progress back. But it's designed for coding tasks, not scripture study.
+- **Agent architecture** — their workspace agent is mature: SSH, file transfer, reconnecting PTY, process monitoring, health reporting. If we ever wanted a richer agent runtime (e.g., live terminal output streamed to phone), Coder's agent code is a reference implementation.
+- **Security model** — external provisioners, scoped keys, network isolation, read-only filesystems. Good patterns to borrow even if we don't use Coder itself.
+
+### Verdict: Overkill, but a Good Reference
+
+**Don't adopt Coder.** The complexity-to-value ratio is wrong for our use case:
+
+- We need: "run Copilot SDK + MCP servers in a locked-down Docker container, accessible only from brain.exe on localhost."
+- Coder provides: "provision multi-cloud dev environments for teams with Terraform, Wireguard, PostgreSQL, and RBAC."
+- The overhead (PostgreSQL, provisioner daemon, Wireguard, Terraform) exceeds the value for a single-user, single-container scenario on a Windows workstation.
+
+**What to borrow from Coder:**
+- Their Docker template security patterns (read-only root, `no-new-privileges`, `cap_drop: ALL`, memory/CPU limits) — we already have these in our docker-compose.yml above
+- Coder Tasks' MCP reporting model — when our agent completes a study session, it could report status via MCP to brain.exe (like Coder Tasks report to coderd)
+- Their agent reconnection logic — if we ever need the copilot-agent to survive container restarts gracefully
+- The `AI Bridge` concept — if we eventually want centralized API key management and audit logging for LLM calls, this is a clean pattern (but build our own lightweight version, not adopt Coder's enterprise feature)
+
+**Bottom line:** Keep our custom Docker isolation. It's simpler, fits the single-user model, and we control the entire stack. Coder is a good project to study but the wrong tool for this job.

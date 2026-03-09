@@ -136,11 +136,9 @@ Practices and memorize cards are fetched on tab focus. If offline:
 2. Show in "Brain Actions" section
 3. Tap navigates to existing EditEntryScreen
 
-### Phase 4: Widget (Android)
+### Phase 4: Widget (Android) → **Moved to Plan 18**
 
-1. Surface top 3 due items in existing Android widget
-2. Mix practices + memorize + brain actions by priority
-3. Tap widget item → deep-link to Today tab
+*Widget work was expanded into a full plan: [Plan 18: Widget Overhaul](18_widget-overhaul.md). Covers checkbox fix, new practices widget (2x2/4x2 with category filter), new memorize widget (2x2 flip-through), and background refresh.*
 
 ---
 
