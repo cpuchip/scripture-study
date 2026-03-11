@@ -81,7 +81,7 @@ Research conducted March 11, 2026 via Exa Search.
 - **License:** Apache 2.0
 - **Hardware:**
   - 0.6B: 4-6 GB VRAM
-  - 1.7B: 6-8 GB VRAM (RTX 3080+ recommended, 3090 ideal)
+  - 1.7B: 6-8 GB VRAM (RTX 3080+ recommended, 4090 ideal)
 - **Storage:** 2.52 GB (0.6B) / 4.54 GB (1.7B)
 - **Latency:** 97ms first-audio (streaming mode)
 - **Languages:** 10 languages, 9 dialects, 49 timbres
@@ -90,7 +90,7 @@ Research conducted March 11, 2026 via Exa Search.
 - **Training data:** 5M+ hours
 - **Install:** `pip install qwen-tts`
 - **Streaming:** Dual-track streaming architecture
-- **Verdict:** **Best quality, but needs GPU.** The gold standard for self-hosted TTS. Not viable on a CPU-only VPS. Runs great on Michael's RTX 3090 locally.
+- **Verdict:** **Best quality, but needs GPU.** The gold standard for self-hosted TTS. Not viable on a CPU-only VPS. Runs great on Michael's RTX 4090 locally via Docker.
 
 ### Summary Matrix
 
@@ -122,11 +122,11 @@ The brain-app already uses Flutter's `speech_to_text` (device-native). For highe
 
 ## Deployment Architecture
 
-### Scenario 1: Local (Michael's PC — RTX 3090)
+### Scenario 1: Local (Michael's PC — RTX 4090)
 
 ```
 ┌─────────────────────────────────────────┐
-│  Michael's PC (RTX 3090, 24GB VRAM)     │
+│  Michael's PC (RTX 4090, 24GB VRAM)     │
 │                                         │
 │  ┌─────────────┐  ┌──────────────────┐  │
 │  │ Qwen3-TTS   │  │ whisper.cpp      │  │
@@ -147,7 +147,7 @@ The brain-app already uses Flutter's `speech_to_text` (device-native). For highe
 - **Quality:** Best possible (Qwen3-TTS 1.7B)
 - **Latency:** Sub-100ms to first audio
 - **No size limits:** Can process entire study documents
-- **Hardware:** Already have it — RTX 3090 has 24GB VRAM
+- **Hardware:** Already have it — RTX 4090 has 24GB VRAM
 - **Use case:** Pre-generate audio files for studies, real-time read-aloud at desk
 
 ### Scenario 2: ibeco.me (Dokploy VPS — CPU Only)
@@ -264,7 +264,7 @@ Currently, studies are published via `scripts/publish/`. Add:
 
 | Resource | Qwen3-TTS 1.7B Needs | Michael's PC | Status |
 |----------|----------------------|-------------|--------|
-| GPU VRAM | 6-8 GB | RTX 3090 (24GB) | Plenty |
+| GPU VRAM | 6-8 GB | RTX 4090 (24GB) | Plenty |
 | RAM | 8+ GB | Plenty | Fine |
 | Disk | ~5 GB | Plenty | Fine |
 | CUDA | 12.1+ | Likely yes | Verify |
