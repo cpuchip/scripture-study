@@ -1,6 +1,6 @@
 # Active Context
 
-*Last updated: 2026-03-12 (brain-app dev session — machine migration handoff)*
+*Last updated: 2026-03-12 (How Is It Done Part 2 study session — pre-migration)*
 
 ---
 
@@ -47,9 +47,9 @@ The brain ecosystem has been the primary development focus for the past week. Th
 ### chip-voice — `scripts/chip-voice/` (separate git repo)
 **Status:** Phase 1 (real content generation) working. Qwen3-TTS 1.7B (GPU) and Kokoro (CPU) engines. `gen_audio.py` converts markdown → audio. Dockerized. See `/memories/repo/chip-voice-preferences.md` for voice settings.
 
-### Study Work — Active Sprint (March 11, 2026)
+### Study Work — Active Sprint (March 11-12, 2026)
 
-**Four studies completed in one session (Mar 11):**
+**Five studies completed in two sessions (Mar 11-12):**
 
 1. **Atonement: "How Is It Done?"** — `study/atonement/how-is-it-done.md` (committed c65e287)
    - Anchored in Enos 1:7: "How is it done?"
@@ -77,6 +77,17 @@ The brain ecosystem has been the primary development focus for the past week. Th
    - Pipeline vision: capture → proposal → execute → verify → ship (maps to the 11-step creation cycle)
    - 6 concrete next steps, starting with "get brain.exe on a server"
    - Emotional arc: overwhelm → naming it → calming it ("not faster than he has strength," Mosiah 4:27)
+
+5. **Atonement: "How Is It Done? Part 2 — The Prophetic Witness"** — `study/atonement/how-is-it-done-prophets.md` (committed 8482f75)
+   - Companion to Part 1 — shifts from scripture to prophetic/apostolic witness
+   - **Binding question:** "What do modern prophets and apostles see in the mechanics of the Atonement that scripture alone doesn't show us?"
+   - 13 voices across 30 years (1981-2015): Talmage (via Haight), Maxwell (5 talks spanning career), McConkie, R.D. Hales, Haight, Holland (2 talks), Scott, Bateman, Oaks
+   - **Key discovery:** The Talmage → Maxwell → Holland theological lineage — not three independent voices but a multi-generational tradition
+   - **Maxwell as pioneer:** BYU citation data (58 citations of D&C 88:6) confirmed Maxwell introduced the Comprehension Principle to modern discourse
+   - **Epistemic boundary:** Maxwell: "there are no instructive, relevant revelations" about the Father's experience at the cross — the entire prophetic tradition on the Father's anguish is Spirit-guided inference, not doctrinal definition
+   - **Four tensions named:** apparent vs. actual withdrawal, what was withdrawn, forsaken vs. not alone, Mosiah 15:5 absence
+   - 6 prophetic additions identified (the Father's withdrawal, comprehension principle, Father's anguish, pastoral bridge, Christ's agency in the withdrawal, the withdrawal as love not abandonment)
+   - Full study-exp1 workflow: scratch file at `study/.scratch/how-is-it-done-prophets.md`
 
 **Previous studies through Mar 4** documented in principles.md and journal entries. Divine love, Abinadi hermeneutic, endtimes servant arc, Zion arc — all complete.
 

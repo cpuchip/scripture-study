@@ -20,6 +20,16 @@ Not just legal transaction — a physics of transformation. Christ descended bel
 
 *Source: [truth-atonement.md](../../study/truth-atonement.md)*
 
+### Prophetic Theologizing Has a Lineage
+Modern apostolic teaching on the Atonement's mechanics isn't independent — it's a tradition. Talmage (1915) introduced the Father's anguish and the withdrawal. Maxwell (1981-2003) built systematic architecture around the Comprehension Principle via D&C 88:6 (confirmed by BYU citation data — 58 citations). Holland (2009) synthesized everything into "None Were with Him." Oaks (2015) explicitly credited Maxwell. Tracing lineages reveals how doctrine develops through Spirit-guided exploration across generations, not sudden revelation. The apostles were building on each other consciously.
+
+*Source: [how-is-it-done-prophets.md](../../study/atonement/how-is-it-done-prophets.md)*
+
+### Epistemic Humility as Theological Strength
+Maxwell: "There are no instructive, relevant revelations" about what the Father experienced at the cross. The entire prophetic tradition on the Father's anguish is Spirit-guided inference, not doctrinal definition — and they know it. This humility is the tradition's greatest strength. When exploring at the edge of what can be known, naming the boundary is more honest and more powerful than pretending it isn't there. This applies to our studies too: calibrated confidence (this is doctrine vs. this is inference vs. this is speculation) makes arguments stronger, not weaker.
+
+*Source: [how-is-it-done-prophets.md](../../study/atonement/how-is-it-done-prophets.md)*
+
 ### Becoming Is the Point
 Everything in the gospel — Fall, law, opposition, ordinances, covenants, degrees of glory — is oriented toward transformation. Not knowledge for its own sake. Not obedience for its own sake. Becoming like God, full of light, comprehending all things.
 

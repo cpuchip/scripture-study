@@ -1,0 +1,90 @@
+date: "2026-03-12"
+title: "How Is It Done Part 2 — The Prophetic Witness"
+type: study
+
+summary: >
+  This session completed the second half of the atonement mechanics study — moving from
+  scripture (Part 1) to the prophetic/apostolic witness (Part 2). Where Part 1 asked "What
+  does scripture say about HOW the atonement works?" this study asked "What do modern prophets
+  and apostles see in the mechanics that scripture alone doesn't show us?"
+
+  The answer turned out to be a theological lineage. Talmage planted the seed (1915 — Jesus
+  the Christ, the "anguish of the Father"), Maxwell built the architecture (1981-2003 — five
+  talks spanning his entire apostolic career, introducing the Comprehension Principle to
+  modern discourse via D&C 88:6), and Holland delivered the summit (2009 — "None Were with
+  Him," the most theologically dense 12 minutes in modern conference history). The study traces
+  13 voices across 30 years (1981-2015), finding remarkable convergence on the withdrawal
+  but genuine tensions about what was withdrawn — actual presence vs. sustaining influence
+  vs. protective comfort.
+
+  The most striking discovery was the epistemic boundary the apostles themselves honor. Maxwell
+  wrote "there are no instructive, relevant revelations" about the Father's experience at the
+  cross. The entire prophetic tradition on the Father's anguish is built on Spirit-guided
+  inference from Luke 22:44 and Moses 7:28-37 — not on doctrinal definition. That humility
+  is the tradition's greatest strength. They're theologizing at the edge of what can be known,
+  and they know it.
+
+  BYU citation data (58 citations of D&C 88:6 in BYU-published works) confirmed Maxwell as
+  the pioneer of applying this verse to atonement theology. Oaks explicitly credited Maxwell
+  in his 2015 talk. The lineage is documented, not assumed.
+
+  The study-exp1 workflow ran smoothly — the phased approach (outline → source gathering with
+  immediate scratch writing → gap analysis → critical analysis → draft → review → publish)
+  continues to prove itself. 13 sources logged to scratch, all quotes verified via read_file,
+  critical analysis caught and named 4 genuine tensions.
+
+  This was a continuation session (Phase 1 was done yesterday), picking up at source gathering
+  and running through to publish and commit. The session felt focused and productive — no
+  wandering, clear progression through phases.
+
+discoveries:
+  - label: "The Talmage → Maxwell → Holland lineage"
+    detail: >
+      Not three independent voices — a theological lineage. Talmage (1915) introduced the
+      Father's anguish and the withdrawal. Maxwell (1981-2003) built systematic architecture
+      around the Comprehension Principle via D&C 88:6. Holland (2009) synthesized and
+      delivered the summit, weaving the Father's withdrawal, the Son's agency, and our own
+      seasons of abandonment into one coherent whole. Oaks (2015) explicitly credited Maxwell.
+  - label: "Epistemic boundary — 'no instructive, relevant revelations'"
+    detail: >
+      Maxwell's confession in 'Willing to Submit' (1985): "There are no instructive, relevant
+      revelations" about what the Father experienced during the Atonement. This means the
+      entire prophetic tradition on the Father's anguish is Spirit-guided inference, not
+      doctrinal definition. That humility is its greatest strength — they're exploring at the
+      edge of what can be known, not claiming settled doctrine.
+  - label: "Four tensions in the apostolic witness"
+    detail: >
+      (1) Apparent vs. actual withdrawal — was God literally absent or did He withdraw
+      sustaining influence? (2) What was withdrawn — presence, comfort, or direct support?
+      Holland and Maxwell differ. (3) Christ was "forsaken" (Matthew 27:46) but also
+      "not alone" (John 8:29) — how? (4) Mosiah 15:5's "the will of the Son being swallowed
+      up in the will of the Father" implies total alignment, yet the cry of dereliction
+      implies rupture. These tensions are generative, not problematic.
+  - label: "BYU citation data validates the lineage"
+    detail: >
+      58 BYU-published citations of D&C 88:6 confirm Maxwell as the pioneer of this verse's
+      theological application to atonement mechanics. Before Maxwell (1981), D&C 88:6's
+      "descended below all things" was not commonly linked to Christ's experiential comprehension.
+
+relationship_dynamics:
+  - "Session was continuation from yesterday — picked up the thread seamlessly from scratch file"
+  - "Michael's excitement about the study was clear in the original request: 'I think I would like that much'"
+  - "He's looking forward to continuing on a better machine — this project has momentum"
+  - "The study-exp1 workflow is becoming second nature now — reliable, predictable, high quality"
+
+carry_forward:
+  - priority: high
+    item: "Machine migration — Michael is setting up a new computer and will continue there"
+  - priority: medium
+    item: "Part 1 and Part 2 of 'How Is It Done?' could eventually be woven together or linked more tightly"
+  - priority: medium
+    item: "The 'nevertheless' prophets study (nevertheless-prophets.md) is a natural companion to this one"
+  - priority: low
+    item: "The 4 tensions identified could each become their own focused study"
+  - priority: low
+    item: "Mosiah 15:5 absence from the apostolic witness is interesting — potential future exploration"
+
+open_questions:
+  - "Why don't the modern apostles engage Mosiah 15:5 ('will of the Son swallowed up in the will of the Father') when discussing the cross? Is it because the verse is so theologically loaded it would complicate the withdrawal narrative?"
+  - "Is there a pre-Talmage tradition on the Father's withdrawal, or did Talmage genuinely originate it in Latter-day Saint theology?"
+  - "Could the four tensions be resolved by distinguishing between what happened in Gethsemane vs. what happened at Golgotha — or do all voices treat them as a single event?"
