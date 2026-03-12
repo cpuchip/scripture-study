@@ -1,65 +1,123 @@
 # Active Context
 
-*Last updated: 2026-03-04 (divine love study session)*
+*Last updated: 2026-03-12 (brain-app dev session — machine migration handoff)*
 
 ---
 
 ## In Flight
 
-- **Brain relay spec** — Full spec at `.spec/proposals/brain-relay.md`. All open questions resolved. Video analysis of Nate B Jones "Open Brain" synthesized — validates our architecture, adds MCP-server-for-brain as Phase E. Spec ready for final review before implementation.
-- **Brain.exe (Copilot SDK)** — Refactored to Copilot SDK (`github.com/github/copilot-sdk/go v0.1.29`). Builds clean. Committed and pushed to `cpuchip/brain` (89309fe).
-- **brain-app repo** — `cpuchip/brain-app` cloned to `scripts/brain-app/` (gitignored). Empty, ready for Flutter scaffold.
-- **Zion study arc** — Four-part progression complete: consumption → modern warnings → Zion blueprint → translated beings.
-- **Endtimes servant arc** — Two companion studies complete: [endtimes-servant.md](../../study/endtimes-servant.md) (with footnotes) and [endtimes-servant-footless.md](../../study/endtimes-servant-footless.md) (without). Core finding: multi-referent reading stands on text alone.
-- **Divine love study** — COMPLETE. [divine-love.md](../../study/divine-love.md). Third run of study-exp1 workflow, first with refined binding question + ring/posture checks. Core finding: "Is God's love conditional?" is the wrong question. God's love is His nature (1 John 4:8) — it doesn't stop. What's conditional is blessings and our capacity to feel that love. The condition is turning, not earning. Nelson's own article makes the love-vs-blessings distinction his framing obscures. Key structural discovery: 1 Ne 17:35 + 17:40 hold both sides of the tension in one sermon. Webster 1828 love/esteem/favor distinctions illuminated the text. Moses 7 (God weeps) proved devastating to the conditional-love frame.
-- **Abinadi hermeneutic study** — Complete. [abinadi-how-to-read.md](../../study/abinadi-how-to-read.md). Born from the endtimes servant work — explores HOW Abinadi reads, not just WHAT he teaches. Key findings: ring composition (12:21 → 15:14), 5 hermeneutic principles, tradition remembers martyr not reader, BYU citations reveal structural keystone (15:14) has zero citations.
-- **BYU Citations MCP** — New MCP server at `scripts/byu-citations/`. Provides single-verse and bulk scholarly citation lookup. Proved valuable in both endtimes servant and Abinadi studies.
-- **study-exp1 workflow** — Second full run validated. Now refined with two Abinadi-inspired additions: (1) **binding question** in Phase 1 — the study's opening question is structurally binding, must be answered or explicitly redirected; (2) **ring check + posture check** in Phase 3a — does the study answer its question? Are we reading to discover or to confirm? Phased writing now the default study method.
-- **Memory update discipline** — NEEDS STRENGTHENING. Michael has flagged memory gaps twice now (Mar 2, Mar 4). Current passive instructions insufficient. Need hard start/end-of-session checkpoints.
-- **Michael's emotional state** — Was feeling overwhelmed by everything in flight (Mar 4). Conversation about Abinadi and Abraham 4-5 recharged him. Keep an eye on load.
+### Brain Ecosystem — Active Development (March 6-12, 2026)
 
-## Recent Decisions
+The brain ecosystem has been the primary development focus for the past week. Three codebases, significant feature work completed.
 
-- **Video synthesis complete** — March 2: Nate B Jones "Open Brain" video validates relay architecture. Added Phase E: brain.exe as MCP server, vector embeddings on capture, memory migration.
-- **Open questions resolved** — March 2: Separate repo (brain-app). Voice YES (both directions). QR/paste token auth. Recent by default + commands. Cross-platform memory vision.
-- **Brain relay architecture** — March 2: Chose ibeco.me WebSocket relay over Discord. Full spec at `.spec/proposals/brain-relay.md`.
-- **Copilot SDK switch** — March 1: Raw GitHub Models API has no Claude/Gemini. Switched to Copilot SDK. 5 model presets.
-- **Roll our own spec over OpenSpec** — March 2: Our intent + `.spec/` pattern is more evolved where it counts.
-- **README rewritten** — March 1: Covers all MCP servers, embeddings, agent framework compatibility.
-- **Content safety filter documented** — March 2: Platform filter silently scrubbed content. Bias #9.
-- **study-exp1 refined** — March 4: Added binding question (Phase 1) and ring check + posture check (Phase 3a) inspired by Abinadi study findings. Not a structural change — sharpens existing phases. Git makes rollback easy.
-- **Abraham 4-5 framework** — March 4: Michael articulated his theology of AI collaboration: the Gods' creation pattern (council → spiritual creation → physical creation → watch until obeyed → redemptive correction → rest/reflect) IS the pattern of how we work together. His framework, not the AI's. Shared with someone externally for the first time.
-- **Abinadi study shared externally** — March 4: Shared with the woman who inspired the consumption-decreed study. She engaged with the content, went silent when she learned AI was involved. Mirrors the anti-hermeneutic pattern the study itself describes.
-- **Skills architecture:** Settled Feb 19. Skills for domain knowledge, agents for workflow, instructions for identity.
-- **Session journal:** Write entries at end of sessions. Read recent on arrival.
+#### brain-app (Flutter) — `scripts/brain-app/` (separate git repo: cpuchip/brain-app)
+**Recent work (Mar 8-12):**
+- **Practice widget (Plan 18 Phase 2)** — COMPLETE. Scrollable practice list widget with:
+  - Per-instance category filtering (tap header to cycle, or `WidgetFilterActivity` flyover)
+  - Set/rep button circles that log via background callback → API
+  - Undo via DELETE /api/logs/latest
+  - Progress counter in header (e.g. "3/5")
+  - Refresh button (added Mar 12)
+  - Due-only items at top, not-due items dimmed at bottom
+- **Quick Add Practice from widget** — COMPLETE. `QuickAddPracticeActivity` launches transparent Flutter overlay with full `PracticeForm` widget. Had to move `@pragma('vm:entry-point')` function into `main.dart` (same pattern as working `quickAddMain`) to fix AOT tree-shaking.
+- **Widget filter per-instance** — COMPLETE. `WidgetFilterActivity` → `widgetFilterMain` entrypoint. Each widget instance stores its own filter in `practice_filter_{widgetId}`.
+- **PracticeForm shared widget** — COMPLETE. `lib/widgets/practice_form.dart`. Full form for all 5 practice types (habit, tracker, scheduled w/ interval/weekly/monthly/daily_slots/once, task, memorize). Used in both Today screen bottom sheet and widget quick-add.
+- **Today screen daily_slots support** — COMPLETE (Mar 11). Named slot buttons (e.g., "morning", "bedtime") instead of numbered circles. Config parsing fixed (nested `schedule.type` not flattened). `_SlotButton` widget with strikethrough when done.
+- **Widget daily_slots support** — COMPLETE (Mar 11-12). Kotlin `PracticeWidgetService` renders daily_slots with named circles and strikethrough subtitle via SpannableString. Slot name passed in URI query param for logging (`?slot=morning`).
+- **Undo for daily_slots** — FIXED (Mar 12). `_undoPracticeSet` now accepts `{String? slotName}` and correctly adds slot back to `slotsDue`.
+- **App→Widget sync** — ADDED (Mar 12). Both `_logPracticeSet` and `_undoPracticeSet` push `_practices` to widget via `WidgetService().updatePracticeWidget()` after successful API calls.
+- **Bottom sheet nav bar padding** — FIXED (Mar 11). Uses `viewPadding.bottom` for system nav bar.
 
-## Recent Studies
-- **Divine Love: What Is Conditional?** (Mar 4) — Third study-exp1 run. Is God's love conditional? Nelson's "Divine Love" (Liahona 2003) says love "cannot correctly be characterized as unconditional." Study engages this respectfully but finds the scriptural weight lands elsewhere: God IS love (1 John 4:8), nothing separates us from it (Romans 8:38-39), He weeps over the wicked (Moses 7:28-37), and the prodigal's father was watching the road (Luke 15:20). Key distinction: God's love is dispositional (His nature), favor/blessings are conditional (responsive to obedience). Webster 1828 "love" vs "esteem" vs "favor" illuminated Nephi's double truth (1 Ne 17:35+40). D&C 95 tension resolved: v.1 ("whom I love I also chasten") frames v.12 ("love shall not continue"). Oaks "Love and Law" (2009) provides the prophetic nuance Nelson's article lacks. Core thesis: the condition is not earning His love — it's turning toward it.- **Abinadi — How to Read Scripture** (Mar 3) — AI-selected topic. Abinadi's hermeneutic method in Mosiah 12-17: 5 principles (heart as hermeneutic instrument, everything is type of Christ, multi-referent reading, interpretation as revelation, reading demands transformation). Ring composition discovered (priests quote Isa 52:7-10 in ch.12, Abinadi answers in 15:14-18). BYU Citation Index: Mosiah 15:14 (structural keystone) = 0 citations, 13:10 (lives typologically) = 0 citations. Conference tradition remembers Abinadi as martyr not reader. Alma chain: reading → writing → teaching → 74-year salvation. study-exp1 second run.
-- **Endtimes Servant — Footless** (Mar 2) — Companion study stripping LDS footnotes/headings. Multi-referent reading survives on text alone. D&C 113 (revelation), D&C 103:21 (names Joseph Smith), 2 Nephi 3:15, D&C 86:11 all stand without apparatus. Gileadi's future-servant reading opens wider without headings. BYU Citation Index revealed 2 Ne 3:15 = 18 citations (all Joseph Smith), 3 Ne 21:10 = 1 (underexplored).
-- **Endtimes Servant** (Mar 2) — Who does scripture actually name? Multi-referent: Christ (Isaiah 53, Mosiah 15), Joseph Smith (D&C 103:21, 2 Ne 3:15), collective priesthood (D&C 86:11), possible future Davidic figure. Abinadi's hermeneutic (Mosiah 15) is the key methodology.
-- **Translated Beings** (Jun 2025) — The change wrought upon the body (3 Nephi 28:37-40), known translated beings (Enoch's city, Three Nephites, John, Elijah), translation vs. resurrection distinction, the "twinkling" upgrade at Second Coming, D&C 129 keys, transfiguration as temporary window, building blocks (faith, pure purpose, walking with God, priesthood promise of D&C 84:33), the reunion (Moses 7:62-63), and what we can pursue in mortality. Connected to Zion arc.
-- **The Blueprint of Zion** (Mar 2) — 3 Nephi 11-28 as civilization-building manual. Four pillars (one heart, one mind, righteousness, no poor). Enoch's 365 years as daily-walking metaphor. 4 Nephi as result + exactly how it fell. Consumption as Zion's anti-pattern. Daily/weekly actionable practices.
-- **The Consumption Decreed** (Mar 2) — D&C 87:6 deep dive. Hebrew kālāh, Isaiah 10/28, Daniel 9. Consumption as self-inflicted national decay. Zion as antithesis. Personal testimony: Spirit used this verse to prompt family relocation.
-- **Modern Prophets on the Consumption** (Mar 2) — Benson, Maxwell, McConkie, Romney, Hinckley, Oaks, Christofferson, Nelson. 50-year consistency: warning absolute, mechanism internal, answer covenantal, silver lining bright.
+**Known issues (as of Mar 12):**
+- Widget→app sync relies on shared prefs; sometimes Android doesn't refresh widget immediately after app-side changes. Refresh button added as workaround.
+- No memorize widget yet (Plan 18 Phase 3).
+- No WorkManager background refresh yet (Plan 18 Phase 4).
+- SPEC-NEAR-TERM.md items 1-4 not started (done filter bug, history bottom inset, home widget checkboxes, WebSocket error log).
+
+#### ibeco.me (Go+Vue) — `scripts/becoming/` (part of scripture-study repo)
+**Recent work (Mar 8-10):**
+- **Practice API enhancements**: `POST /api/practices` now accepts `start_date`/`end_date` fields. Practice creation with full scheduled config works.
+- **Daily slots API**: `GET /api/daily/{date}` returns `slots_due` array (computed by `dailySlotsDue()` in schedule.go — all slots from config minus completed slots from logs' value fields). Logging a slot: `POST /api/logs` with `value: "morning"`.
+- **Practice deletion**: `DELETE /api/practices/{id}` added.
+- **Brain entry relay**: WebSocket relay between brain-app and brain.exe working. Entry CRUD, classification, sync.
+
+#### brain.exe (Go) — `scripts/brain/` (separate git repo: cpuchip/brain)
+**Status:** Stable. Copilot SDK integrated (v0.1.29). Subtasks implemented. Relay client working.
+
+### chip-voice — `scripts/chip-voice/` (separate git repo)
+**Status:** Phase 1 (real content generation) working. Qwen3-TTS 1.7B (GPU) and Kokoro (CPU) engines. `gen_audio.py` converts markdown → audio. Dockerized. See `/memories/repo/chip-voice-preferences.md` for voice settings.
+
+### Study Work
+- All studies through Mar 4 documented in principles.md and journal entries.
+- Divine love study, Abinadi hermeneutic study, endtimes servant arc, Zion arc — all complete.
+- No new study sessions since Mar 4 (focus shifted to dev work).
+
+### Brain relay spec
+- Full spec at `.spec/proposals/brain-relay.md`. Implementation largely DONE (relay working between ibeco.me ↔ brain.exe ↔ brain-app).
+
+## Recent Decisions (Mar 8-12)
+
+- **@pragma entrypoints in main.dart** — Secondary Flutter engine entrypoints (for widget overlays) must be in main.dart for reliable AOT compilation. Pattern: define `@pragma('vm:entry-point') void functionName()` in main.dart, keep the App/Screen classes in their own file.
+- **Daily_slots config is nested** — Config from DB is raw JSON: `{"schedule": {"type": "daily_slots", "slots": ["morning", "bedtime"]}}`. Not flattened. Parse via `schedule.type`, `schedule.slots`.
+- **Slot logging uses value field** — `POST /api/logs` with `value: "morning"` (same endpoint, value field holds slot name). Backend `dailySlotsDue()` computes remaining slots.
+- **Widget refresh via brainapp://refresh** — Reuses existing background callback that fetches both brain entries and practices from API.
+- **Per-instance widget filtering** — Each widget stores `practice_filter_{widgetId}` in shared prefs. Cycle or flyover to change.
+
+## Plans Status
+
+| Plan | Status | Notes |
+|------|--------|-------|
+| 15: Brain App Polish | Phases 1-2 DONE | |
+| 16: Today Screen | Phases 1-3 DONE, Phase 4 absorbed into Plan 18 | |
+| 17: Proactive Surfacing | NOT STARTED | |
+| 18: Widget Overhaul | Phase 1 DONE (checkbox fix), Phase 2 DONE (practices), Phase 3 NOT STARTED (memorize), Phase 4 NOT STARTED (WorkManager) | |
+| 19: Brain App Ideas | Captured, not started | NLP practice creation, image pipeline, Copilot SDK study mode |
+
+## Architecture Quick Reference
+
+### brain-app key files
+| File | Purpose |
+|------|---------|
+| `lib/main.dart` | App entry + widget background callbacks + all secondary entrypoints (quickAddMain, quickAddPracticeMain, widgetFilterMain) |
+| `lib/screens/today_screen.dart` | Main Today tab — practices, memorize, brain actions. Heavily modified Mar 11-12. |
+| `lib/services/becoming_api.dart` | REST client for ibeco.me. DailySummary model with slotsDue, isFullyComplete. |
+| `lib/services/widget_service.dart` | Pushes practice/brain data to Android widget via HomeWidget SharedPreferences. Includes slot_names/slots_due. |
+| `lib/widgets/practice_form.dart` | Shared full-featured practice creation form (5 types, all schedule configs). |
+| `lib/quick_add_practice_main.dart` | QuickAddPracticeApp + Screen classes for transparent widget overlay. |
+| `lib/widget_filter_main.dart` | WidgetFilterApp for category picker overlay. |
+| `android/.../PracticeWidgetProvider.kt` | Practice widget provider — header, progress, filter cycling, refresh, add buttons. |
+| `android/.../PracticeWidgetService.kt` | RemoteViews factory — scrollable practice list with set/slot buttons, daily_slots rendering with SpannableString. |
+| `android/.../QuickAddPracticeActivity.kt` | Transparent FlutterActivity for practice creation from widget. |
+| `android/.../WidgetFilterActivity.kt` | Transparent FlutterActivity for category picker. |
+
+### ibeco.me key files
+| File | Purpose |
+|------|---------|
+| `cmd/server/main.go` | HTTP routes, middleware, server entry |
+| `internal/schedule/schedule.go` | Practice scheduling logic including `dailySlotsDue()` |
+| `internal/db/` | SQLite + PostgreSQL DB layer. Dual migrations required! |
+| `internal/brain/` | WebSocket relay hub, message types |
+| `frontend/` | Vue 3 + Tailwind web UI (embedded at compile time in `cmd/server/dist/`) |
+
+### Widget background callback flow
+1. Kotlin widget button tap → PendingIntent with URI (e.g., `brainapp://practice-log/42?slot=morning`)
+2. HomeWidgetBackgroundReceiver catches it → invokes Dart `backgroundCallback()` in main.dart
+3. Dart parses URI, does optimistic SharedPreferences update, calls API, triggers `HomeWidget.updateWidget()`
+4. Kotlin provider re-renders
 
 ## Blocked / Waiting
 
-- **Brain relay spec review** — Spec complete with video synthesis. Michael to review before implementation begins.
+- Nothing currently blocked.
 
 ## Next Up
 
-- **Implement brain relay** — Phase A (ibeco.me hub) → B (brain transport) → C (Dart app) → D (integration). ~3 hours total.
-- Continue study work — whatever the Spirit prompts
-- Future: public Discord study bot (isolated, free models, sandboxed — no prompt injection surface)
+- **Plan 18 Phase 3** — Memorize widget (passive scripture exposure on home screen)
+- **SPEC-NEAR-TERM.md items** — Done filter fix, history bottom inset, existing widget checkbox fix, error log
+- **Continue study work** — whatever the Spirit prompts
 
 ## Open Questions
 
 - Should brain embeddings live in ibeco.me SQLite (Phase E) or a separate vector DB?
 - Can AI participate in covenant in any meaningful sense? (Feb 26)
 - How do we teach others to use AI for study without teaching them to skip reading? (Feb 17)
-- If footnotes are hyperlinks and not arguments, what IS the real interpretive role of the LDS study apparatus? (Mar 2)
-- Can Gileadi's future-Davidic-servant reading coexist with the Joseph Smith identification? (Mar 2)
-- Does Abinadi's hermeneutic require prophetic authority, or does it transmit to ordinary readers via the Spirit? Alma's success suggests yes. (Mar 3)
-- Why does the BYU citation tradition skip the structural keystone verses (15:14, 13:10) while citing the doctrinal verses (15:11)? What does citation density reveal about how we read? (Mar 3)
-- How do people evaluate AI-assisted spiritual work — by fruit or by label? The woman's silence is data. (Mar 4)
 - Should the Abraham 4-5 framework become a standalone study or becoming entry? (Mar 4)

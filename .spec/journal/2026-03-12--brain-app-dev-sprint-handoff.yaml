@@ -1,0 +1,82 @@
+date: "2026-03-12"
+title: "Brain-app dev sprint — daily_slots, widget sync, machine migration handoff"
+type: dev
+
+summary: >
+  Intensive 5-day dev sprint (Mar 8-12) focused on the brain-app practice widget and
+  daily_slots support. Started with Plan 18 Phase 2 (practice widget) completion, then
+  burned through 6 bug fixes across two sub-sessions, added a widget refresh button,
+  and ended with handoff documentation for a machine migration.
+  
+  The daily_slots feature was the most intricate work: a practice type with named time
+  slots (morning, bedtime, etc.) requiring coordinated changes across Flutter UI, Kotlin
+  widget rendering, Go backend scheduling logic, and the widget background callback system.
+  config parsing was tricky — the schedule config from the DB is nested JSON
+  (schedule.type, schedule.slots) not flattened, which caused multiple parsing bugs.
+  
+  The widget quick-add practice flow required discovering that Flutter AOT compilation
+  tree-shakes @pragma entrypoints in separate files. Moving them to main.dart was the fix.
+  This is now an established pattern: all secondary Flutter engine entrypoints live in
+  main.dart, with their App/Screen classes in separate files.
+  
+  Session ended with machine migration — writing comprehensive handoff docs so a new
+  AI session on the new computer can continue seamlessly. active.md was fully rewritten
+  with current state. This journal entry captures the sprint narrative.
+
+discoveries:
+  - label: "Flutter AOT tree-shakes @pragma entrypoints in non-main files"
+    detail: >
+      Secondary Flutter engine entrypoints (for widget overlay activities like
+      QuickAddPracticeActivity) must have their @pragma('vm:entry-point') function
+      defined in lib/main.dart. When placed in separate files (e.g.,
+      quick_add_practice_main.dart), the AOT compiler may tree-shake them, causing
+      the overlay to silently fail (blank screen, then close). The App/Screen widget
+      classes can remain in their own file — only the entrypoint function needs to be
+      in main.dart.
+  - label: "Daily_slots nested config pattern"
+    detail: >
+      Practice schedule config from the DB is raw JSON:
+      {"schedule": {"type": "daily_slots", "slots": ["morning", "bedtime"]}}.
+      NOT flattened. Every parser (Dart model, widget service, Kotlin service, today
+      screen) must use nested access: config['schedule']['type'], not config['type'].
+      This bit us at least 3 times during the sprint.
+  - label: "Widget background callback URI pattern for parameterized actions"
+    detail: >
+      Kotlin widgets pass action parameters via URI query strings:
+      brainapp://practice-log/42?slot=morning. Dart backgroundCallback() in main.dart
+      parses uri.queryParameters['slot']. This keeps the background handler generic
+      while supporting action-specific data.
+  - label: "Optimistic SharedPreferences + API call + widget update triple pattern"
+    detail: >
+      Widget interactions follow: (1) optimistic SharedPreferences update (so widget
+      re-renders immediately), (2) API call, (3) HomeWidget.updateWidget() to trigger
+      Kotlin provider refresh. If API fails, the next full refresh corrects state.
+      Same pattern for both widget-side and app-side changes.
+  - label: "Undo callbacks need full parameter parity with log callbacks"
+    detail: >
+      When adding a parameter to a log action (like slotName for daily_slots), the
+      undo action MUST get the same parameter. We had ValueChanged<DailySummary> for
+      undo but void Function(DailySummary, {String? slotName}) for log — the undo
+      couldn't restore slot state without the slot name.
+
+relationship_dynamics:
+  - "Michael brought 4 specific bugs in one message with precise descriptions — efficient triage, no ambiguity"
+  - "Two follow-up bugs reported after deployment testing — thorough QA on his part"
+  - "Machine migration handoff shows trust in the memory system we've built together"
+  - "The ask to 'record anything you feel is needed' is delegation, not micromanagement — he trusts the AI's judgment on what matters"
+
+carry_forward:
+  - priority: high
+    item: "Plan 18 Phase 3 (memorize widget) is next — passive scripture exposure on home screen"
+  - priority: medium
+    item: "SPEC-NEAR-TERM.md has 4 items: done filter bug, history bottom inset, widget checkboxes, WebSocket error log"
+  - priority: medium
+    item: "Plan 19 has captured ideas: NLP practice creation, image pipeline, Copilot SDK study mode"
+  - priority: low
+    item: "chip-voice Phase 1 working but not integrated into any workflow yet"
+
+open_questions:
+  - "Should widget WorkManager background refresh (Plan 18 Phase 4) come before or after the memorize widget (Phase 3)?"
+  - "Is the triple-pattern (optimistic prefs + API + widget update) reliable enough, or do we need a proper sync queue?"
+
+tags: [dev, brain-app, flutter, widget, daily-slots, practice, kotlin, handoff, migration]
