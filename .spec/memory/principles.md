@@ -146,3 +146,17 @@ The LDS study apparatus (footnotes, headings, TG) added in 1979 functions as nav
 BYU Scripture Citation Index density maps where the tradition has consensus vs. silence. High-citation verses (2 Ne 3:15 = 18 citations, all Joseph Smith) represent settled ground. Low-citation pivotal verses (3 Ne 21:10 = 1 citation) represent underexplored territory worth attention. Zero-citation verses (Isa 52:13) suggest scholarly avoidance or assumption of obviousness.
 
 *Source: endtimes servant study, byu-citations MCP*
+### The Comprehension Principle
+"How is it done?" (Enos 1:7) — Christ's atonement works through *comprehension*, not mere substitution. He descended below all things to *comprehend* all things (D&C 88:6). Alma 7:11-12 names all five categories (pains, afflictions, temptations, sicknesses, death) so "his bowels may be filled with mercy, according to the flesh, that he may know according to the flesh how to succor his people." The mechanism is experiential knowledge → infinite empathy → specific succor. This subsumes penal substitution (which is real but partial) into the fuller matter-spectrum framework.
+
+*Source: [how-is-it-done.md](../../study/atonement/how-is-it-done.md)*
+
+### "Nevertheless" — The Word at Every Hinge
+"Nevertheless" (NEVER + THE + LESS = "the preceding condition subtracts nothing") appears at the turning point between ruin and rescue throughout scripture. Three voices: Christ's ("not my will, but thine"), God's toward us ("they did not hearken… nevertheless I will not forget them"), ours toward God ("notwithstanding my weakness… nevertheless I know in whom I have trusted"). The **double nevertheless**: Christ's in Gethsemane *enables* ours in extremity. His willingness to say the word first is what gives us permission to say it at all.
+
+*Source: [nevertheless.md](../../study/atonement/nevertheless.md)*
+
+### Value Moved from Execution to Judgment
+The AI shift didn't replace engineers — it replaced execution as the bottleneck. What's scarce now: knowing what to build, architectural decisions that survive contact with reality, verifying AI output against production constraints, orchestrating human + AI teams. "The skill isn't prompting. It's owning correctness" (Jovanović). This maps to gospel framework: the intelligence (judgment, discernment, design instinct) is what rises with us (D&C 130:18). AI has no resurrection. The question isn't "am I still relevant?" — it's "am I using what I've been given?" (Parable of Talents).
+
+*Source: [relavent.md](../../study/ai/relavent.md), [fatigue.md](../../study/ai/fatigue.md)*

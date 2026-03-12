@@ -47,10 +47,38 @@ The brain ecosystem has been the primary development focus for the past week. Th
 ### chip-voice — `scripts/chip-voice/` (separate git repo)
 **Status:** Phase 1 (real content generation) working. Qwen3-TTS 1.7B (GPU) and Kokoro (CPU) engines. `gen_audio.py` converts markdown → audio. Dockerized. See `/memories/repo/chip-voice-preferences.md` for voice settings.
 
-### Study Work
-- All studies through Mar 4 documented in principles.md and journal entries.
-- Divine love study, Abinadi hermeneutic study, endtimes servant arc, Zion arc — all complete.
-- No new study sessions since Mar 4 (focus shifted to dev work).
+### Study Work — Active Sprint (March 11, 2026)
+
+**Four studies completed in one session (Mar 11):**
+
+1. **Atonement: "How Is It Done?"** — `study/atonement/how-is-it-done.md` (committed c65e287)
+   - Anchored in Enos 1:7: "How is it done?"
+   - 17 scripture chapters across all 5 standard works + Holland "None Were with Him" + 4 Webster 1828 definitions
+   - Key insights: **Comprehension Principle** (Christ descended below all to comprehend all — D&C 88:6, Alma 7:11-12), **"Nevertheless" Pattern** (the word appears at every hinge between ruin and rescue), **perfection as location** not performance (Moroni 10:32 — "come unto Christ" is the verb)
+   - study-exp1 workflow fully validated — scratch file at `study/.scratch/how-is-it-done.md`
+
+2. **Nevertheless word study** — `study/atonement/nevertheless.md` (committed c1dd281)
+   - Sparked by the pattern discovered in study #1
+   - Three voices: Christ's (D&C 19:19, Luke 22:42, Alma 7:13), God's toward us (Psalm 89, 106, Ezekiel 20, D&C 24/75/98), ours toward God (2 Ne 4:17-19, Psalm 73, Alma 5:7, Heb 12:11)
+   - Etymology: NEVER+THE+LESS = "the preceding condition subtracts nothing." The word itself IS the doctrine.
+   - **Double nevertheless** pattern discovered: Christ's in Gethsemane ("nevertheless not my will") enables ours ("nevertheless I know in whom I have trusted")
+   - 19 verified source passages
+
+3. **Staying Relevant** — `study/ai/relavent.md` (committed a97a6fb)
+   - Michael's personal reflection on 18 years engineering, feeling insignificant with AI
+   - 8 external sources via Exa search (Trejo, Turkovic, EclipseSource, Thompson, Matsuoka, Katsmith, Jovanović, ZenVanRiel)
+   - Key finding: bottleneck shifted execution → judgment. "The skill isn't prompting. It's owning correctness."
+   - Gospel lens: D&C 130:18 (intelligence rises), D&C 58:27 (agency), Parable of Talents (use what you're given)
+   - This was deeply personal — Michael named feeling insignificant and worked through it
+
+4. **Multi-Agent Ideas** — `study/ai/multi-agent-ideas.md` (committed ef87901)
+   - Ideas doc (not formal spec) capturing the next phase: multi-agent orchestration, dark factory pattern, Copilot SDK
+   - Key insight: "What's missing isn't components — it's the wiring." brain.exe + MCP servers + VS Code agents + work-with-ai guide + Copilot SDK (Go!) = the pieces exist
+   - Pipeline vision: capture → proposal → execute → verify → ship (maps to the 11-step creation cycle)
+   - 6 concrete next steps, starting with "get brain.exe on a server"
+   - Emotional arc: overwhelm → naming it → calming it ("not faster than he has strength," Mosiah 4:27)
+
+**Previous studies through Mar 4** documented in principles.md and journal entries. Divine love, Abinadi hermeneutic, endtimes servant arc, Zion arc — all complete.
 
 ### Brain relay spec
 - Full spec at `.spec/proposals/brain-relay.md`. Implementation largely DONE (relay working between ibeco.me ↔ brain.exe ↔ brain-app).
