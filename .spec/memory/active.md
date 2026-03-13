@@ -1,6 +1,27 @@
 # Active Context
 
-*Last updated: 2026-03-12 (How Is It Done Part 2 study session — pre-migration)*
+*Last updated: 2026-03-12 (Project Overview planning session)*
+
+---
+
+## Project Overview — Unified Workstream Plan
+
+**Status:** Draft proposal complete, awaiting Michael's judgment on 10 questions.
+
+### Documents Created
+- **Scratch/inventory:** `.spec/scratch/overview/main.md` — Full inventory of 19 plans, 9 proposals, 5 doc-level roadmaps with status, dependencies, clash analysis, Copilot SDK research
+- **Formal proposal:** `.spec/proposals/overview/main.md` — 3 workstreams (Agentic Foundation, Brain Consolidation, Becoming + Study Quality), creation cycle review, execution plan
+- **Guidance questions:** `.spec/proposals/overview/guidance.md` — 10 questions needing Michael's judgment (architectural: Garvis merge, Copilot SDK status, auth scope; sequencing: parallel lanes, study vs. infra priority; technical: storage, server deploy; archival candidates)
+
+### Key Findings
+- **28+ active items** reduced to **3 workstreams with ~12 sequenced tasks** plus deferred/archived items
+- **Garvis and brain.exe** appear to be the same project described twice — recommend merge
+- **Copilot SDK** claimed in active.md but not found in brain's go.mod — needs clarification
+- **MCP improvements** (7 items from Feb 3) are high-leverage, low-effort, overlooked
+- **Recommended first action:** Copilot SDK proof-of-concept in Go + Plan 15 brain quick wins
+
+### Agent File Updated
+- `.github/agents/plan-exp1.agent.md` — Updated scratch directory convention from `.spec/proposals/.scratch/` to `.spec/scratch/` with overview working directory noted
 
 ---
 

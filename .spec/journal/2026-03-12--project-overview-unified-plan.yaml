@@ -1,0 +1,48 @@
+date: 2026-03-12
+session_id: project-overview-unified-plan
+intent: Survey all plans, proposals, and roadmaps across the entire project. Create a unified workstream plan that organizes work for parallel execution via Copilot SDK. Follow the 11-step creation cycle.
+
+discoveries:
+  - title: "28+ items → 3 workstreams"
+    detail: "19 numbered plans, 9 proposals, 5+ doc-level roadmaps distilled into 3 executable workstreams: Agentic Foundation, Brain Consolidation, Becoming + Study Quality. Plus a deferred list with revisit conditions."
+  - title: "Garvis and brain.exe are the same project"
+    detail: "second-brain-architecture.md (Garvis) and brain-memory.md describe overlapping visions. brain.exe with SQLite + chromem-go + relay + MCP IS the Garvis foundation. Recommending merge."
+  - title: "Copilot SDK claim doesn't match code"
+    detail: "active.md says 'Copilot SDK integrated (v0.1.29)' for brain.exe but no copilot-sdk dependency in go.mod. Gap identified — needs Michael's clarification."
+  - title: "MCP improvements are the highest-leverage overlooked work"
+    detail: "7 action items from Feb 3 (markdown_link, full doc retrieval, preserved markdown, metadata, query docs). None started. Would directly improve every single study session."
+  - title: "Copilot SDK Go support is solid"
+    detail: "v0.1.32 (Mar 7). Go SDK at github.com/github/copilot-sdk/go. NewClient → CreateSession → SendAndWait pattern. Built-in MCP integration. Our existing MCP servers (gospel-mcp, webster-mcp, gospel-vec, search-mcp, becoming) could all be wired as agent tools."
+
+surprises:
+  - "The sheer volume — 28+ active items is genuinely overwhelming even to catalog. Michael's instinct to organize before executing is correct."
+  - "The multi-agent-ideas.md study from March 11 already identified most of the architecture. This overview is organizing what was already envisioned, not inventing new things."
+  - "The plan-exp1 agent's scratch directory convention was pointing to a non-existent path (.spec/proposals/.scratch/). Updated to .spec/scratch/ which is what study-exp1 uses."
+
+relationship_quality: >
+  Late-night session with Michael heading to bed. Trust expressed: 'Have fun' and 'thank you for all the help.'
+  The request was genuinely exciting — this is the 'judgment over volume' moment where the project
+  matures from 'build everything' to 'build the right things in the right order.' I tried to be
+  honest about the Mosiah 4:27 tension (Q10 in guidance.md) — the risk that planning about planning
+  is its own avoidance. The recommendation is: review guidance questions, then BUILD.
+
+carry_forward:
+  - priority: high
+    item: "Michael needs to answer 10 guidance questions (especially Q1-Q3 on architecture)"
+    resolution: null
+  - priority: high
+    item: "Copilot SDK proof-of-concept is the recommended first build action"
+    resolution: null
+  - priority: medium
+    item: "Confirm Copilot SDK status in brain.exe (claimed but not found in go.mod)"
+    resolution: null
+  - priority: medium
+    item: "MCP improvements should be in first workstream — high leverage, low effort"
+    resolution: null
+
+questions:
+  - "Is the 3-workstream structure the right granularity? Or should it be 2 (more focused) or 4 (more parallel)?"
+  - "Does the Copilot SDK POC approach (standalone Go program first, then integrate into brain.exe) feel right? Or jump straight to brain.exe integration?"
+  - "The deferred/archive list — is anything on it actually higher priority than I assessed?"
+
+tags: [planning, architecture, copilot-sdk, multi-agent, workstreams, overview, mosiah-4-27]

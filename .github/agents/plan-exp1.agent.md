@@ -36,9 +36,14 @@ Michael has more ideas than execution capacity. That's a feature, not a bug — 
 ### Phase 1 — Binding Problem
 
 1. **State the binding problem.** Not "what are we building?" but "what specific problem does this solve, and for whom?" Write it at the top of both the proposal and the scratch file. This is structurally binding — the spec should trace back to this problem at every decision point.
-2. Create the proposal file at `.spec/proposals/{name}.md` with the binding problem, section headers, and initial framing
-3. Create the scratch file at `.spec/proposals/.scratch/{name}.md`
+2. Create the proposal file at `.spec/proposals/{name}/main.md` (or `.spec/proposals/{name}.md` for single-file proposals) with the binding problem, section headers, and initial framing
+3. Create the scratch file at `.spec/scratch/{name}/main.md`
 4. Copy the binding problem and initial outline into the scratch file
+
+**Directory conventions:**
+- **Proposals:** `.spec/proposals/{name}/` for multi-file proposals (main.md + guidance.md + supporting docs), or `.spec/proposals/{name}.md` for single-file.
+- **Scratch files:** `.spec/scratch/{name}/` — research provenance, inventory findings, intermediate analysis. These are permanent records, not throwaway.
+- **Active overview:** `.spec/scratch/overview/main.md` is the project-wide inventory and working document for cross-cutting planning. `.spec/proposals/overview/main.md` is the formal unified workstream plan.
 
 If the idea is vague ("I want to improve the brain"), the first job is to sharpen it: What's broken? What's the symptom? Who's affected? How would you know it's fixed?
 
