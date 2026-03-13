@@ -168,10 +168,10 @@ EDUCATION / META
 **Clash:** Are we building *one* brain (brain.exe evolving into Garvis) or *two* systems (brain.exe local + Garvis server)?
 **Recommendation:** Merge. brain.exe IS Garvis Phase 1. The SQLite + chromem-go + relay + MCP server work IS the foundation. Don't create a new repo — evolve the existing one.
 
-### 2. Copilot SDK Status — Claimed vs. Actual
-**Problem:** active.md states "Copilot SDK integrated (v0.1.29)" for brain.exe, but `go.mod` has no copilot-sdk dependency.
-**Impact:** If Copilot SDK isn't actually integrated, Plan 13 (Agentic Chat) and multi-agent orchestration have a dependency gap.
-**Action needed:** Clarify — was this explored and reverted? Or aspirational?
+### 2. Copilot SDK Status — CONFIRMED WORKING
+**Correction (git audit):** Copilot SDK IS in brain.exe's `go.mod` at v0.1.29. It's an alternative AI backend (`"copilot"` vs `"lmstudio"`) configured via `cfg.AIBackend`. The initial build used Copilot SDK exclusively (commit `89309fe`), then LM Studio was added as an alternative (`6759347`). Both backends exist and work.
+**Impact:** This is good news — Copilot SDK proof-of-concept is ALREADY DONE in brain.exe. Multi-agent orchestration can build on this existing integration rather than starting from scratch.
+**Revised action:** The Workstream 1 POC effort is smaller than estimated. We can skip the standalone POC and build directly on brain.exe's existing `internal/ai/client.go`.
 
 ### 3. Plan 13 (Agentic Chat) vs. Multi-Agent Ideas — Scope Confusion
 **Problem:** Plan 13 is narrow (Docker-isolated Copilot SDK for phone study). Multi-agent-ideas.md envisions a full pipeline (capture → proposal → execute → verify → ship).
@@ -320,4 +320,53 @@ See `.spec/proposals/overview/guidance.md` for the full list of questions needin
 
 ---
 
-*Next: Write the formal proposal at `.spec/proposals/overview/main.md` and the guidance questions.*
+## IX. Git Audit Findings (2026-03-12)
+
+Cross-referenced all plans against actual git history and code state.
+
+### Corrections to Inventory
+
+1. **Copilot SDK is WORKING in brain.exe** — `go.mod` has `github.com/github/copilot-sdk/go v0.1.29`. It's an alternative AI backend alongside LM Studio. Guidance Q2 is resolved: not aspirational, it's shipped code.
+
+2. **brain.exe architecture is larger than inventoried** — 10 internal packages (`ai`, `classifier`, `config`, `discord`, `ibecome`, `lmstudio`, `mcp`, `relay`, `store`, `web`) + 5 cmd binaries (`brain`, `brain-cli`, `brain-mcp`, `bench`, `eval`). The `bench` and `eval` tools for model testing are noteworthy — they're infrastructure for the model experiments workstream.
+
+3. **brain-app ROADMAP.md is stale** — Lists rich text and sub-tasks as "Medium Term" unchecked, but both are DONE (Plans 10-11, committed). The ROADMAP needs updating or archiving.
+
+4. **brain-app SPEC-NEAR-TERM.md v2** has items NOT in any plan:
+   - Done filter bug (shows all done items incorrectly)
+   - History screen bottom inset bleeding behind nav bar
+   - Home screen widget redesign (Microsoft To Do-inspired with starred field, checkboxes, mic recording)
+   - Widget mic recording overlay
+   These should be incorporated into Workstream 2 or deferred explicitly.
+
+5. **becoming-mcp has 22 tools** — 8 read becoming tools, 6 write becoming tools, 5 read brain tools, 3 write brain tools. Brain tools already consolidated from standalone brain-mcp into becoming-mcp. This is more mature than the inventory suggested.
+
+6. **byu-citations MCP server** — Built March 2 (commit `870702c`), not in any plan. A standalone tool for BYU scripture citation index queries. Should be added to the tool inventory.
+
+7. **chip-voice has 6 internal proposals** in `.spec/proposals/`:
+   - 1080ti-testing.md
+   - batch-generation.md
+   - dual-mode-engine.md
+   - mp3-output.md
+   - multi-voice.md
+   - phase0-results.md
+   These are separate from the main scripture-study proposals and need to be acknowledged.
+
+8. **private-brain repo** — Scaffolding only (2 commits). This is the Garvis-era structure (YAML categories, config, guardrails, principles). Confirms the Garvis → brain.exe merge recommendation — private-brain is dead code.
+
+9. **brain-app ROADMAP.md Far Term** — Contains Play Store / public release / BYOK / standalone mode vision not captured anywhere else. This is a significant scope expansion if pursued.
+
+10. **chromem-exp directory** — Experimental chunking code for vector embeddings. Related to gospel-vec model experiments.
+
+### Missing from Any Plan
+| Item | Source | Action |
+|------|--------|--------|
+| byu-citations MCP | git commit `870702c` | Add to tool inventory |
+| SPEC-NEAR-TERM v2 items | brain-app/SPEC-NEAR-TERM.md | Triage into Workstream 2 or defer |
+| brain-app Far Term vision | brain-app/ROADMAP.md | Acknowledge as long-term aspiration, don't plan yet |
+| chip-voice 6 proposals | chip-voice/.spec/proposals/ | Keep in chip-voice scope, add to deferred list |
+| brain bench/eval tools | brain/cmd/bench, brain/cmd/eval | Note as existing infrastructure |
+
+---
+
+*Proposal at `.spec/proposals/overview/main.md`. Guidance questions at `.spec/proposals/overview/guidance.md`.*

@@ -52,19 +52,21 @@ The daily experience is: start a session → remember there are 5 things to do �
 
 **Why first:** Michael is one person. Right now, every line of code flows through his hands. Even if agents handle only 30% of routine execution, that frees capacity for the judgment work (spec review, architectural decisions, study) that only Michael can do.
 
-#### Phase 1: Copilot SDK Proof-of-Concept (1 session)
+#### Phase 1: Copilot SDK + MCP Integration (1 session)
+
+**Note (git audit):** Copilot SDK is ALREADY integrated in brain.exe at v0.1.29. The `internal/ai/client.go` wraps the SDK as a configurable backend (`"copilot"` vs `"lmstudio"`). We're not starting from zero — we're extending what exists.
 
 | Item | Detail |
 |------|--------|
-| **Task** | Create a standalone Go program that uses Copilot SDK to answer a scripture question |
-| **Tools available** | gospel-mcp (via MCP integration) |
+| **Task** | Extend brain.exe's existing Copilot SDK integration to connect gospel-mcp as an MCP tool |
+| **Starting point** | `internal/ai/client.go` already has `copilot.NewClient()` → session management |
+| **Add** | MCP tool registration so the agent can call gospel-mcp tools (gospel_search, etc.) |
 | **Input** | "What does D&C 93:36 teach about intelligence?" |
 | **Expected output** | Agent uses gospel_search, retrieves verse, provides contextual answer |
 | **Verify** | Agent correctly cites the verse text. No confabulation. |
-| **Location** | `scripts/copilot-poc/main.go` |
 
 **Constraints:**
-- Must use `github.com/github/copilot-sdk/go`
+- Build on existing `internal/ai/` package, not a separate binary
 - Must connect to gospel-mcp as an MCP tool
 - Must run locally (no server deployment yet)
 - Must stream output (not just batch response)
@@ -128,7 +130,23 @@ The daily experience is: start a session → remember there are 5 things to do �
 
 ---
 
-## 4. Deferred / Archived Work
+## 4. Git Audit Corrections (2026-03-12)
+
+Cross-referenced all plans against actual git history and code. Key corrections:
+
+1. **Copilot SDK IS in brain.exe** — v0.1.29 in `go.mod`, dual backend system. Phase 1 of Workstream 1 is smaller than estimated.
+2. **brain.exe has 10 internal packages + 5 cmd binaries** — includes `bench` and `eval` tools (model testing infrastructure) not in any plan.
+3. **brain-app ROADMAP.md is stale** — rich text and sub-tasks shown as unchecked but are done (Plans 10-11). Far-term section (Play Store, BYOK, standalone) exists but isn't plans.
+4. **SPEC-NEAR-TERM.md v2** has 4 items not in plans: done filter bug, history bottom inset, home screen widget redesign, widget mic recording.
+5. **becoming-mcp has 22 tools** — brain tools already consolidated in. More mature than inventoried.
+6. **byu-citations MCP** built (commit `870702c`, Mar 2) — not in any plan. Add to tool inventory.
+7. **chip-voice has 6 internal proposals** — separate scope, acknowledged in deferred list.
+8. **private-brain repo** — 2 commits, scaffolding only. Confirms Garvis → brain.exe merge recommendation.
+9. **Uncaptured scripts:** chromem-exp (chunking experiments), convert (slides converter), lectures-on-faith (downloader) — utility scripts, no plans needed.
+
+---
+
+## 5. Deferred / Archived Work
 
 | Item | Decision | Revisit When |
 |------|----------|--------------|
@@ -144,12 +162,16 @@ The daily experience is: start a session → remember there are 5 things to do �
 | Proposal: yt-emotion-analysis | **Archive** | When yt-mcp gets more regular use |
 | Widget Phases 3-4 | **Defer** | After agentic foundation and brain consolidation |
 | Becoming UX Phase 2 (Bookmarks) | **Defer** | After Phase 1 features (scheduled tasks, pillars) ship |
+| chip-voice 6 proposals | **Keep in scope** | Managed within chip-voice's own `.spec/proposals/` |
+| byu-citations MCP | **Built, no plan needed** | Already working. Add to tool inventory. |
+| brain-app SPEC-NEAR-TERM v2 | **Triage** | 4 items should be incorporated into WS2 Phase 1 or explicitly deferred |
+| brain-app Far Term (Play Store, BYOK) | **Park** | Long-term aspiration, not actionable yet |
 
 **Result:** 28+ active items → 3 workstreams with ~12 sequenced tasks. The rest is parked with clear revisit conditions.
 
 ---
 
-## 5. Execution Plan
+## 6. Execution Plan
 
 ### Week 1: Foundation Sprint
 
@@ -173,7 +195,7 @@ Agents handle more of the routine execution. Michael focuses on spec review, arc
 
 ---
 
-## 6. Creation Cycle Review
+## 7. Creation Cycle Review
 
 | Step | This Proposal |
 |------|---------------|
@@ -191,9 +213,9 @@ Agents handle more of the routine execution. Michael focuses on spec review, arc
 
 ---
 
-## 7. Recommendation
+## 8. Recommendation
 
-**Build.** Start with Workstream 1 Phase 1 (Copilot SDK POC) tomorrow. It's the smallest first step that proves the biggest thesis: agents can execute against specs using the tools we've already built.
+**Build.** Start with Workstream 1 Phase 1 (extend brain.exe's existing Copilot SDK integration with MCP tools). It's the smallest first step that proves the biggest thesis: agents can execute against specs using the tools we've already built. And we're not starting from scratch — the SDK is already wired up.
 
 In parallel, Plan 15 (brain quick wins) is ready to code and delivers immediate daily-use improvements.
 

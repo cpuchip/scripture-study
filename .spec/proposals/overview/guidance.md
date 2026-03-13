@@ -18,11 +18,11 @@ The scratch file [recommends merging them](../../scratch/overview/main.md): **br
 
 ---
 
-### Q2: Copilot SDK — Is it actually integrated in brain.exe?
+### Q2: Copilot SDK — Which backend is active? *(Partially resolved)*
 
-[active.md](../../memory/active.md) says "Copilot SDK integrated (v0.1.29)" for brain.exe, but I found no `copilot-sdk` dependency in brain's `go.mod`. Was this explored and reverted? Aspirational? Or in a branch?
+**Git audit confirmed:** Copilot SDK IS in brain.exe's `go.mod` at v0.1.29. It's implemented as a dual-backend system — `cfg.AIBackend` selects between `"copilot"` (GitHub Copilot SDK) and `"lmstudio"` (local inference). Both work. The integration lives in `internal/ai/client.go`.
 
-This matters because multi-agent orchestration depends on it. If it's not actually there, we need to account for the integration work.
+**Remaining question:** Which backend are you actually using day-to-day? If LM Studio has fully replaced Copilot SDK in practice, we should understand why (latency? cost? offline preference?) before building multi-agent orchestration on top of the SDK. If both are in active use, that's a strength — local for speed, cloud for capability.
 
 ---
 

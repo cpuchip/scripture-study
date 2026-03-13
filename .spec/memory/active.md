@@ -1,27 +1,31 @@
 # Active Context
 
-*Last updated: 2026-03-12 (Project Overview planning session)*
+*Last updated: 2026-03-12 (Git audit pass completed)*
 
 ---
 
 ## Project Overview — Unified Workstream Plan
 
-**Status:** Draft proposal complete, awaiting Michael's judgment on 10 questions.
+**Status:** Draft proposal complete + git audit corrections applied. Awaiting Michael's judgment on 10 questions (Q2 partially resolved).
 
-### Documents Created
-- **Scratch/inventory:** `.spec/scratch/overview/main.md` — Full inventory of 19 plans, 9 proposals, 5 doc-level roadmaps with status, dependencies, clash analysis, Copilot SDK research
-- **Formal proposal:** `.spec/proposals/overview/main.md` — 3 workstreams (Agentic Foundation, Brain Consolidation, Becoming + Study Quality), creation cycle review, execution plan
-- **Guidance questions:** `.spec/proposals/overview/guidance.md` — 10 questions needing Michael's judgment (architectural: Garvis merge, Copilot SDK status, auth scope; sequencing: parallel lanes, study vs. infra priority; technical: storage, server deploy; archival candidates)
+### Documents Created/Updated
+- **Scratch/inventory:** `.spec/scratch/overview/main.md` — Full inventory of 19 plans, 9 proposals, 5 doc-level roadmaps with status, dependencies, clash analysis, Copilot SDK research, **+ Section IX: Git Audit Findings**
+- **Formal proposal:** `.spec/proposals/overview/main.md` — 3 workstreams, creation cycle review, execution plan, **+ Section 4: Git Audit Corrections, updated WS1 Phase 1 to build on existing SDK integration**
+- **Guidance questions:** `.spec/proposals/overview/guidance.md` — 10 questions, **Q2 updated (Copilot SDK IS integrated, question now is which backend is preferred)**
 
-### Key Findings
+### Key Findings (Original + Git Audit)
 - **28+ active items** reduced to **3 workstreams with ~12 sequenced tasks** plus deferred/archived items
 - **Garvis and brain.exe** appear to be the same project described twice — recommend merge
-- **Copilot SDK** claimed in active.md but not found in brain's go.mod — needs clarification
+- **Copilot SDK IS in brain.exe** at v0.1.29 — dual backend (copilot + lmstudio), working code
+- **brain.exe** has 10 internal packages + 5 cmd binaries (more than inventoried)
+- **becoming-mcp has 22 tools** — brain tools already consolidated in
+- **byu-citations MCP** built but not in any plan
+- **chip-voice has 6 internal proposals** in its own `.spec/proposals/`
+- **brain-app ROADMAP.md is stale** — rich text/sub-tasks shown unchecked but are done
+- **SPEC-NEAR-TERM.md v2** has 4 items not in plans
+- **private-brain repo** is dormant (2 commits, scaffolding only)
 - **MCP improvements** (7 items from Feb 3) are high-leverage, low-effort, overlooked
-- **Recommended first action:** Copilot SDK proof-of-concept in Go + Plan 15 brain quick wins
-
-### Agent File Updated
-- `.github/agents/plan-exp1.agent.md` — Updated scratch directory convention from `.spec/proposals/.scratch/` to `.spec/scratch/` with overview working directory noted
+- **Recommended first action:** Extend brain.exe's existing Copilot SDK + gospel-mcp integration + Plan 15 brain quick wins
 
 ---
 
