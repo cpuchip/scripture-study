@@ -35,7 +35,7 @@ The daily experience is: start a session → remember there are 5 things to do �
 
 | Asset | Location | Status |
 |-------|----------|--------|
-| Q1 Roadmap | [scripts/plans/14_roadmap-2026-q1.md](../../../scripts/plans/14_roadmap-2026-q1.md) | Partial — focused on brain-app only |
+| Q1 Roadmap | [scripts/plans/archive/14_roadmap-2026-q1.md](../../../scripts/plans/archive/14_roadmap-2026-q1.md) | Archived — superseded by this document |
 | Multi-agent ideas | [study/ai/multi-agent-ideas.md](../../../study/ai/multi-agent-ideas.md) | Vision doc, not spec |
 | 11-step creation cycle | [docs/work-with-ai/guide/05_complete-cycle.md](../../../docs/work-with-ai/guide/05_complete-cycle.md) | Framework — our foundation |
 | Spec engineering guide | [docs/work-with-ai/guide/04_spec-engineering.md](../../../docs/work-with-ai/guide/04_spec-engineering.md) | 5 primitives — our spec language |
@@ -148,24 +148,24 @@ Cross-referenced all plans against actual git history and code. Key corrections:
 
 ## 5. Deferred / Archived Work
 
-| Item | Decision | Revisit When |
-|------|----------|--------------|
-| Plan 01: TUI for downloader | **Archive** | If someone other than Michael needs to download content |
-| Plan 04: Tool Improvements doc | **Archive** | Superseded by Plan 05 |
-| Plan 09: Auth & Multi-user | **Defer** | After deciding if the app is personal or shared (guidance.md Q3) |
-| Plan 12: Attachments | **Defer** | After S3 decision and brain core stability |
-| Plan 13: Agentic Chat | **Subsume** | Into Workstream 1 as a later phase |
-| Plan 14: Q1 Roadmap | **Supersede** | By this document |
-| Plan 19: Ideas backlog | **Keep** | As-is. It's a backlog, not a plan. |
-| Proposal: Garvis | **Merge** | Into brain.exe evolution (guidance.md Q1) |
-| Proposal: tts-stt-reader | **Defer** | After chip-voice batch/multi-voice ships |
-| Proposal: yt-emotion-analysis | **Archive** | When yt-mcp gets more regular use |
-| Widget Phases 3-4 | **Defer** | After agentic foundation and brain consolidation |
-| Becoming UX Phase 2 (Bookmarks) | **Defer** | After Phase 1 features (scheduled tasks, pillars) ship |
+| Item | Decision | Location |
+|------|----------|----------|
+| Plan 01: TUI for downloader | **Archived** | `scripts/plans/archive/` |
+| Plan 04: Tool Improvements doc | **Archived** | `scripts/plans/archive/` |
+| Plan 14: Q1 Roadmap | **Archived** | `scripts/plans/archive/` (superseded by this document) |
+| Proposal: yt-emotion-analysis | **Archived** | `.spec/proposals/archive/` |
+| Plan 09: Auth & Multi-user | **Deferred** | `scripts/plans/deferred/` — revisit after deciding personal vs. shared (guidance.md Q3) |
+| Plan 12: Attachments | **Deferred** | `scripts/plans/deferred/` — revisit after S3 decision and brain core stability |
+| Plan 13: Agentic Chat | **Deferred** | `scripts/plans/deferred/` — subsumed into Workstream 1 |
+| Proposal: Garvis | **Deferred** | `.spec/proposals/deferred/` — pending merge into brain.exe (guidance.md Q1) |
+| Proposal: tts-stt-reader | **Deferred** | `.spec/proposals/deferred/` — revisit after chip-voice batch/multi-voice ships |
+| Plan 19: Ideas backlog | **Keep** | `scripts/plans/` — it's a backlog, not a plan |
+| Widget Phases 3-4 | **Deferred** | *(no standalone file — noted in Plan 18)* |
+| Becoming UX Phase 2 (Bookmarks) | **Deferred** | *(no standalone file — noted in docs/becoming-ux-phases.md)* |
 | chip-voice 6 proposals | **Keep in scope** | Managed within chip-voice's own `.spec/proposals/` |
 | byu-citations MCP | **Built, no plan needed** | Already working. Add to tool inventory. |
 | brain-app SPEC-NEAR-TERM v2 | **Triage** | 4 items should be incorporated into WS2 Phase 1 or explicitly deferred |
-| brain-app Far Term (Play Store, BYOK) | **Park** | Long-term aspiration, not actionable yet |
+| brain-app Far Term (Play Store, BYOK) | **Parked** | Long-term aspiration, not actionable yet |
 
 **Result:** 28+ active items → 3 workstreams with ~12 sequenced tasks. The rest is parked with clear revisit conditions.
 

@@ -1,6 +1,6 @@
 # Tool Improvement TODOs
 
-Actionable tasks extracted from [04_tool-improvements.md](04_tool-improvements.md).
+Actionable tasks extracted from [04_tool-improvements.md](archive/04_tool-improvements.md).
 
 *Created: February 3, 2026*
 

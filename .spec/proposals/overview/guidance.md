@@ -9,7 +9,7 @@
 ### Q1: Is brain.exe the same thing as Garvis?
 
 Two proposals describe overlapping visions:
-- [second-brain-architecture.md](../../proposals/second-brain-architecture.md) — "Garvis" as a new Go binary, new repo (`cpuchip/garvis-memory`), YAML+Git storage
+- [second-brain-architecture.md](../../proposals/deferred/second-brain-architecture.md) — "Garvis" as a new Go binary, new repo (`cpuchip/garvis-memory`), YAML+Git storage *(deferred)*
 - [brain-memory.md](../../proposals/brain-memory.md) — brain.exe evolving to SQLite + chromem-go
 
 The scratch file [recommends merging them](../../scratch/overview/main.md): **brain.exe IS Garvis Phase 1.** Same binary, evolved. No new repo. SQLite + chromem-go + relay + MCP work IS the foundation for the always-on second brain.
@@ -28,7 +28,7 @@ The scratch file [recommends merging them](../../scratch/overview/main.md): **br
 
 ### Q3: Is Becoming intended to be multi-user?
 
-[Plan 09 (Auth)](../../../scripts/plans/09_becoming-auth.md) designs full SaaS auth (email/password, Google OAuth, user_id on every table, PostgreSQL). But is that the actual goal? If the app is primarily for you, auth is unnecessary complexity. If it's for others too, it changes the priority of everything.
+[Plan 09 (Auth)](../../../scripts/plans/deferred/09_becoming-auth.md) designs full SaaS auth (email/password, Google OAuth, user_id on every table, PostgreSQL). But is that the actual goal? If the app is primarily for you, auth is unnecessary complexity. If it's for others too, it changes the priority of everything.
 
 **Your call:**
 - **Personal tool** → Skip auth. Keep SQLite. Simplify.
