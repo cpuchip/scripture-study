@@ -167,7 +167,27 @@ Cross-referenced all plans against actual git history and code. Key corrections:
 | brain-app SPEC-NEAR-TERM v2 | **Triage** | 4 items should be incorporated into WS2 Phase 1 or explicitly deferred |
 | brain-app Far Term (Play Store, BYOK) | **Parked** | Long-term aspiration, not actionable yet |
 
-**Result:** 28+ active items → 3 workstreams with ~12 sequenced tasks. The rest is parked with clear revisit conditions.
+| Title of Liberty (Boot Camp) | **New — Active** | `study/yt/title-of-liberty/` — Family discipleship program. Cross-cuts Becoming app (WS3) |
+
+**Result:** 28+ active items → 3 workstreams with ~12 sequenced tasks + 1 new cross-cutting project. The rest is parked with clear revisit conditions.
+
+---
+
+## 5b. New Project: Title of Liberty
+
+**Added:** 2026-03-14
+**Location:** [study/yt/title-of-liberty/](../../../study/yt/title-of-liberty/README.md)
+
+A multi-year family discipleship program grounded in the Book of Mormon. 5 ranks, 4 degrees per rank, 59 merit badges (7 required + 26 elective + 26 honors). Modeled after BSA rank progression with Book of Mormon character development.
+
+**Cross-cuts:** Workstream 3 (Becoming App). The program integrates with ibeco.me for personal tracking (practices, memorization, badges) and webeco.me for the family/community layer (troops, leader dashboard, program templates). Auth (Plan 09, currently deferred) becomes relevant if this moves to multi-family.
+
+**Priority decision needed:** Is this Workstream 3 Phase 5 (after Pillars/Notes/Reflections), or does it become its own workstream? The badge/rank tracking features (integration.md Priorities 4-6) are medium-effort and build on existing patterns. The community layer (Priorities 7-9) requires multi-user infrastructure.
+
+**Recommended sequencing:**
+1. Configure pillars + daily practices + scripture cards (Priority 1-3) — **now, no code needed**
+2. Badge + rank tracking features — **after WS3 Phase 1 (Scheduled Tasks)**
+3. Community layer — **after Auth decision (guidance.md Q3)**
 
 ---
 
