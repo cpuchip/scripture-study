@@ -8,7 +8,7 @@
 
 A family training program grounded in the Book of Mormon — not a curriculum to *study about* the scriptures, but a course to **become** the kind of people the scriptures describe. Challenges, quests, ranks, and goals that build the character profile of Helaman's stripling warriors and Captain Moroni's people.
 
-**For:** The Pucheta family — 5 kids (ages 4–15), led by Dad (tribe of Ephraim, builder of Zion-building tools).
+**For:** The cpuchip family — 5 kids (ages 4–15), led by Dad (tribe of Ephraim, builder of Zion-building tools).
 
 **Inspired by:** The "For Our Day" model — reading the Book of Mormon as a preparation manual for our time. Sparked by the [Send Me / Hannah Stoddard conversation](https://www.youtube.com/watch?v=pZljklzcdEI) on the prophetic destiny of the elders of Israel.
 
