@@ -245,6 +245,9 @@ That's the standard. That's what we're building toward.
 | [merit-badges.md](merit-badges.md) | Full badge catalog (required + elective) |
 | [evaluation.md](evaluation.md) | Evaluation of the inspiring video |
 | [integration.md](integration.md) | Becoming app integration spec |
+| [guidance.md](guidance.md) | Open questions — includes critical concerns from family conversation |
+| [motivation-systems.md](motivation-systems.md) | Research on intrinsic vs. extrinsic motivation (SDT, overjustification, Charlotte Mason, BSA, gamification) |
+| [scratch-pad.md](scratch-pad.md) | Working notes, raw thinking, 30,000ft redesign ideas |
 
 ---
 
