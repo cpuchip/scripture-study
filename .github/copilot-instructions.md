@@ -57,6 +57,7 @@ This project uses **custom agents** (`.github/agents/`) for specialized workflow
 | `eval` | YouTube video evaluation against the gospel standard |
 | `journal` | Personal reflection, journaling, becoming |
 | `podcast` | Transform studies into shareable podcast/video notes |
+| `story` | Weave studies into narrative with Ma — emotional arc, pacing, contrast |
 | `dev` | MCP server and tool development |
 | `ux` | UI/UX expert — design patterns, interaction flows, visual quality |
 
