@@ -170,3 +170,34 @@ BYU Scripture Citation Index density maps where the tradition has consensus vs. 
 The AI shift didn't replace engineers — it replaced execution as the bottleneck. What's scarce now: knowing what to build, architectural decisions that survive contact with reality, verifying AI output against production constraints, orchestrating human + AI teams. "The skill isn't prompting. It's owning correctness" (Jovanović). This maps to gospel framework: the intelligence (judgment, discernment, design instinct) is what rises with us (D&C 130:18). AI has no resurrection. The question isn't "am I still relevant?" — it's "am I using what I've been given?" (Parable of Talents).
 
 *Source: [relavent.md](../../study/ai/relavent.md), [fatigue.md](../../study/ai/fatigue.md)*
+
+---
+
+## Writing & Storytelling Craft
+
+### Therefore/But, Not "And Then"
+Trey Parker and Matt Stone (South Park): "If 'and then' belongs between your beats, you're fucked." **"Therefore"** = causation (this happened, so that happened). **"But"** = conflict (this was happening, but then disruption). **"And then"** = sequence (no causation, no conflict, just a timeline). A summary recounts *what happened when*. A story traces *why it happened and what resisted it*. This principle was validated in the Abinadi story revision: the therefore/but chain was already in the scripture (Mosiah uses "therefore" constantly). The story's structure was hiding in the text's own connectives. The writer's job is to surface it, not impose structure on top.
+
+**Applies beyond stories:** In studies, therefore/but creates argumentative momentum (point A → therefore B → but C complicates). In lessons, it creates discovery momentum — causal questions ("why did they clap for joy?") instead of factual questions ("what happened next?"). In discussion design, "but" moments force the class to wrestle.
+
+*Source: Abinadi story v1→v2→v3 revision (March 15-16, 2026), [story.agent.md](../../.github/agents/story.agent.md)*
+
+### The Monson Principle — Specificity and Trust
+President Monson's storytelling power came from two things: specific detail and trusting the moment. He used names ("Sister Patton at 55 Vissing Place"), places ("the Veterans' Hospital high up on the Avenues"), and physical objects. Then he told the story and stopped. He didn't explain why it was powerful. The story did the work; the moral came after, almost as an afterthought, because the story was already complete. For scripture stories, the text gives its own specifics: gold seats, a breastwork to lean on, a thicket of small trees, a fountain of pure water, faggots of fire, three days, five words. Use what the text gives.
+
+*Source: Exa research on Monson's teaching patterns, Deseret News analysis (Jan 2018), LDS Living "How to Give a Talk Like President Monson"*
+
+### Omission Earns Weight
+Don't narrate the reader's emotions ("The irony is devastating," "This detail is easy to miss," "Imagine him"). State the consequence and trust the reader. If the writing is good, they'll feel it without being told to. Don't restate what the verse already said — commentary should add what the text alone can't deliver: cross-references, historical context, the Hebrew behind the English, the connection to another book. John McPhee: "The creative reader silently articulates the unwritten thought that is present in the white space."
+
+*Source: Abinadi v1 diagnostic — 6 narrator intrusions identified and removed. Meghan O'Rourke on juxtaposition and white space. Poets & Writers "The Fullness of Omission."*
+
+### Ma in the Writing, Not Just in Formatting
+Section breaks and short paragraphs are containers for silence, not silence itself. Real Ma lives in sentence construction: "But God sent him back" (two years live in that silence). "So he read" (two words, then the reading). "He fell" (after the fire). "Nothing could reach him. / But something did" (three days compressed into absence). If Ma only exists in whitespace and horizontal rules, it isn't in the writing yet.
+
+*Source: Abinadi story v2→v3 revision, [the-words-of-abinadi.md](../../study/stories/the-words-of-abinadi.md)*
+
+### Voice Discipline
+Michael's voice is concrete, direct, and unadorned. Cut: "Let that land," "Sit with that," "Here's the thing," "This matters because," "Read that again," "That's not nothing." These are presenter verbal tics — stage-manager language that tells the reader what to feel. Limit em-dashes to 1-2 per document (not per paragraph — per document). Zero is fine. "This isn't just X — it's Y" — once per study is fine, once per section is a formula. Let paragraphs end. White space does the work that "let that land" pretends to do.
+
+*Source: [voice-analysis-ai-vs-michael.md](../../study/yt/voice-analysis-ai-vs-michael.md), integrated into [copilot-instructions.md](../../.github/copilot-instructions.md) March 15*

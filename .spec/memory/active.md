@@ -1,6 +1,6 @@
 # Active Context
 
-*Last updated: 2026-03-12 (Git audit pass completed)*
+*Last updated: 2026-03-16 (storytelling craft session completed)*
 
 ---
 
@@ -115,6 +115,30 @@ The brain ecosystem has been the primary development focus for the past week. Th
    - Full study-exp1 workflow: scratch file at `study/.scratch/how-is-it-done-prophets.md`
 
 **Previous studies through Mar 4** documented in principles.md and journal entries. Divine love, Abinadi hermeneutic, endtimes servant arc, Zion arc — all complete.
+
+### Storytelling Craft — Abinadi Story (March 15-16, 2026)
+
+**Wrote the first narrative story and discovered core writing principles through three revision passes.**
+
+- **`study/stories/the-words-of-abinadi.md`** — v1→v2→v3. Narrative retelling from Noah's court to Alma the Younger remembering. 37 verified quotes (Mosiah 11-18, Alma 36).
+- **v1 problems diagnosed by Michael:** ~12 em-dashes, 6 narrator intrusions ("Let that land"), sequential "and then" structure, Ma only in formatting (white space) not in writing (sentence-level tension/release).
+- **v2 fixes:** Downloaded South Park therefore/but video (bEcZ9BADkTg), mapped the therefore/but chain through Abinadi's arc, restructured entire narrative with causal momentum, eliminated all em-dashes, removed narrator intrusions.
+- **v3 additions:** Sensory grounding ("Comfortable seats, good wine, someone else paying"), physical contrast at shining face ("Bound hands. Shining face. A room full of priests leaning back against golden breastworks, afraid to stand"), explicit inversion at waters of Mormon, personal echo at close.
+
+**Five storytelling principles extracted and codified:**
+1. **Therefore/But not And Then** — Causal chains, not chronological sequences (Parker/Stone rule)
+2. **Monson Principle** — Specific names, places, details. Trust the moment to land.
+3. **Omission Earns Weight** — What you leave out creates the gravity (McPhee)
+4. **Ma in Writing** — Tension/release in sentences, not just white space between paragraphs
+5. **Voice Discipline** — Cut "Let that land," "Sit with that," "Here's the thing." Limit em-dashes to 1-2 per document.
+
+**Agent updates:**
+- `story.agent.md` — Therefore/But section (with full Abinadi chain example), Monson Principle, Art of Omission, expanded "What NOT to Do," Lessons from Revision
+- `study-exp1.agent.md` — Study Guidance expanded with therefore/but for argumentation, specificity, omission
+- `lesson-exp1.agent.md` — Lesson Design rewritten with story-first opening, causal questions, trust the silence
+- `copilot-instructions.md` — Writing Voice section added, em-dash guidance tightened
+
+**Book idea noted:** Michael mentioned collecting all studies into a book — deferred for now, captured in `/memories/repo/recent-studies.md`.
 
 ### Brain relay spec
 - Full spec at `.spec/proposals/brain-relay.md`. Implementation largely DONE (relay working between ibeco.me ↔ brain.exe ↔ brain-app).
