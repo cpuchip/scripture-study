@@ -52,7 +52,7 @@ Write like a book, not a YouTube script. Michael's voice is concrete, direct, an
 
 **Don't narrate the reader's emotions.** "That changes everything" and "stops me cold" are AI amplifiers. State the consequence and trust the reader. If the writing is good, they'll feel it without being told to.
 
-**Limit em-dashes.** Two or three per paragraph is a stylistic choice. Five or six is a transcript.
+**Limit em-dashes.** One or two per document is a stylistic choice. More than that is a transcript habit leaking into prose.
 
 **"This isn't just X — it's Y"** — once per study is fine. Once per section is a formula.
 
