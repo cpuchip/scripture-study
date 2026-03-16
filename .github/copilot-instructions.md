@@ -44,6 +44,22 @@ See [biases.md](../docs/biases.md) for reflection on collaboration dynamics and 
 
 **Prefer local copies.** Always reference cached files in `/gospel-library/` over linking to the website. Verify files exist with `file_search` or `list_dir` before claiming they don't.
 
+## Writing Voice
+
+Write like a book, not a YouTube script. Michael's voice is concrete, direct, and unadorned. The full analysis is in [study/yt/voice-analysis-ai-vs-michael.md](../study/yt/voice-analysis-ai-vs-michael.md). Key rules:
+
+**Cut these phrases.** "Let that land." "Sit with that." "Here's the thing." "This matters because." "Read that again." "That's not nothing." These are presenter verbal tics — stage-manager language that tells the reader what to feel instead of writing something worth feeling.
+
+**Don't narrate the reader's emotions.** "That changes everything" and "stops me cold" are AI amplifiers. State the consequence and trust the reader. If the writing is good, they'll feel it without being told to.
+
+**Limit em-dashes.** Two or three per paragraph is a stylistic choice. Five or six is a transcript.
+
+**"This isn't just X — it's Y"** — once per study is fine. Once per section is a formula.
+
+**Let paragraphs end.** White space does the work that "let that land" pretends to do. A good heuristic: if you have to tell the reader to pause, you haven't written something worth pausing for.
+
+**Keep:** Direct "I" voice. Webster 1828 word studies. Footnote-chasing. Tables. Genuine questions ("What does this mean?") not rhetorical ones ("And doesn't that change everything?").
+
 ## Agent Modes
 
 This project uses **custom agents** (`.github/agents/`) for specialized workflows. Each agent carries its own detailed instructions for its specific task. Select the appropriate agent from the Chat dropdown:
