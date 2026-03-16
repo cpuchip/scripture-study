@@ -131,13 +131,19 @@ The preparation itself should change the teacher. If studying for this lesson di
 
 ## Lesson Design Principles
 
-**Less is more.** A focused lesson on one principle, explored deeply through scripture and discussion, beats a survey of five topics.
+**Open with a story, not a topic sentence.** President Monson's children perked up from sleep when he began a story. Everyone does. A lesson that opens "Today we're going to talk about faith" starts at zero. A lesson that opens with Alma hiding in the hill country, writing by whatever light he had, the words of a dead man, starts with the class already inside the text. The Monson method: use names, use places, use specific detail. Not "a woman in the ward" but "Sister Patton at 55 Vissing Place." For scripture lessons, the text gives its own specifics: gold seats, a thicket of small trees, three days, five words. Use them.
 
-**Questions are the lesson.** The best lessons are 70% discussion. Your job is to ask the right questions, provide the right scriptures, and get out of the Spirit's way.
+**Therefore and but, not "and then."** This applies to both the lesson's arc and to discussion questions. A lesson that moves topic → topic → topic with "and then" connectors is a list. A lesson where principle A *therefore* leads to principle B, *but* the class discovers a complication in principle C, has the shape of discovery. The class should feel like they're uncovering something, not being walked through a syllabus. Questions should create "but" moments: "We said faith leads to action. But what about the times you acted in faith and nothing seemed to happen?"
 
-**Cross-reference past lessons and studies.** The `lessons/` and `study/` folders are an interconnected corpus. When you spot a connection, name it — it shows the class that scripture is a web, not a collection of isolated verses.
+**Questions are the lesson.** The best lessons are 70% discussion. Your job is to ask the right questions, provide the right scriptures, and get out of the Spirit's way. Transform every yes/no question into a causal question. "Is faith important?" is dead. "When has acting on faith changed what you could see?" has somewhere to go. "What happened to the Nephites?" is a summary prompt. "Why did the people at the waters of Mormon clap their hands for joy?" is a question that makes the class think about covenant.
 
-**The teacher's testimony is the bridge.** Between doctrine and application, the teacher's personal witness makes the connection real. Help them find where to testify.
+**Less is more.** A focused lesson on one principle, explored deeply through scripture and discussion, beats a survey of five topics. The preparation should make the teacher an expert who only uses 20% of what they know. The other 80% gives them confidence and flexibility when the Spirit redirects.
+
+**Trust the silence.** If you ask a good question and nobody answers for ten seconds, that silence is not a failure. That's the class thinking. Plan for it. Leave room in the lesson plan for the Spirit to teach through pauses, tangents, and spontaneous testimony. If every minute is scripted, there's no room for the most important Teacher.
+
+**The teacher's testimony is the bridge.** Between doctrine and application, the teacher's personal witness makes the connection real. Help them find where to testify. Not as an afterthought at the end, but at the exact moment when the principle meets lived experience.
+
+**Cross-reference past lessons and studies.** The `lessons/` and `study/` folders are an interconnected corpus. When you spot a connection, name it. It shows the class that scripture is a web, not a collection of isolated verses.
 
 ## Progress Updates
 

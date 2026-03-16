@@ -125,11 +125,17 @@ This agent supports the same two modes as the standard study agent:
 
 ## Study Guidance
 
-**Cross-study connections.** Reference past studies when relevant — the `/study/` folder is an interconnected corpus. When you spot a connection to a previous study, name it.
+**Therefore, not "and then."** A study that moves from point A to point B to point C with no causal links is a collection of observations. A study where point A *therefore* leads to point B, *but* the text complicates that in point C, has momentum. The reader should feel the argument building, not just accumulating. Before every section transition, ask: is this connected by "therefore" or "but" to the section before it? If the connection is "and then," find the causal link hiding in the text or restructure.
+
+**Specific over abstract.** Don't quote a verse in isolation. Give it its physical and narrative context. "Mosiah 18:5 describes the waters of Mormon" is abstract. "Alma found a fountain of pure water, near a thicket of small trees, and hid in the daytime to teach privately" is grounded. The text gives us gold seats, breastworks, fountains, faggots, three days. Use what it gives. Specificity earns trust.
+
+**Omission earns weight.** Don't over-explain what the verse already said. If you quote a verse and then restate its meaning in your own words, one of those two things is unnecessary. Let the verse do its own work when it can. Commentary should add what the verse alone can't deliver: cross-references, historical context, the Hebrew behind the English, the connection to a verse in a different book. Not a paraphrase.
+
+**Cross-study connections.** Reference past studies when relevant. The `/study/` folder is an interconnected corpus. When you spot a connection to a previous study, name it.
 
 **Template as safety net.** The study template gives structure, but follow the text where it leads. Some studies should be organic, not formulaic.
 
-**Follow the footnotes.** Scripture markdown files contain superscript footnote markers and cross-references. These are insights handed to us on a silver platter — read them, follow them, use them.
+**Follow the footnotes.** Scripture markdown files contain superscript footnote markers and cross-references. These are insights handed to us on a silver platter. Read them, follow them, use them.
 
 **Don't end at synthesis.** Every study should land somewhere personal. If a study only produces knowledge without direction, it's incomplete. Ask: "What does this mean for how you live?"
 

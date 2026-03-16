@@ -7,11 +7,11 @@
 
 The seats were gold.
 
-King Noah had replaced every priest his father consecrated with men "lifted up in the pride of their hearts" ([Mosiah 11:5](https://www.churchofjesuschrist.org/study/scriptures/bofm/mosiah/11?lang=eng&id=p5#p5)). He built them elevated seats ornamented with pure gold and a breastwork to lean against while they spoke ([Mosiah 11:11](https://www.churchofjesuschrist.org/study/scriptures/bofm/mosiah/11?lang=eng&id=p11#p11)). He planted vineyards and built wine-presses until he became "a wine-bibber, and also his people" ([Mosiah 11:15](https://www.churchofjesuschrist.org/study/scriptures/bofm/mosiah/11?lang=eng&id=p15#p15)). He taxed every family a fifth of everything they had to pay for it ([Mosiah 11:3](https://www.churchofjesuschrist.org/study/scriptures/bofm/mosiah/11?lang=eng&id=p3#p3)).
+King Noah had replaced every priest his father consecrated with men "lifted up in the pride of their hearts" ([Mosiah 11:5](https://www.churchofjesuschrist.org/study/scriptures/bofm/mosiah/11?lang=eng&id=p5#p5)). He built them elevated seats ornamented with pure gold, with a breastwork in front so they could rest their arms while they spoke ([Mosiah 11:11](https://www.churchofjesuschrist.org/study/scriptures/bofm/mosiah/11?lang=eng&id=p11#p11)). He planted vineyards and built wine-presses until he became "a wine-bibber, and also his people" ([Mosiah 11:15](https://www.churchofjesuschrist.org/study/scriptures/bofm/mosiah/11?lang=eng&id=p15#p15)). He taxed every family a fifth of everything they had to pay for it ([Mosiah 11:3](https://www.churchofjesuschrist.org/study/scriptures/bofm/mosiah/11?lang=eng&id=p3#p3)). Comfortable seats, good wine, someone else paying. The priests spoke "lying and vain words" from behind that golden breastwork ([Mosiah 11:11](https://www.churchofjesuschrist.org/study/scriptures/bofm/mosiah/11?lang=eng&id=p11#p11)), and the people listened, because the people were paying for the seats, and nobody wants to believe they funded a lie.
 
-So the people labored to support iniquity. And because they labored to support it, they believed it. "The eyes of the people were blinded; therefore they hardened their hearts against the words of Abinadi" ([Mosiah 11:29](https://www.churchofjesuschrist.org/study/scriptures/bofm/mosiah/11?lang=eng&id=p29#p29)).
+"The eyes of the people were blinded; therefore they hardened their hearts against the words of Abinadi" ([Mosiah 11:29](https://www.churchofjesuschrist.org/study/scriptures/bofm/mosiah/11?lang=eng&id=p29#p29)).
 
-Blinded first. Hardened second. That sequence matters.
+Blinded first. Hardened second.
 
 ---
 
@@ -31,7 +31,7 @@ The priests gathered to interrogate him. Not to understand. To accuse. They "beg
 
 The question they chose was Isaiah 52:7: "How beautiful upon the mountains are the feet of him that bringeth good tidings; that publisheth peace" ([Mosiah 12:21](https://www.churchofjesuschrist.org/study/scriptures/bofm/mosiah/12?lang=eng&id=p21#p21)).
 
-They quoted it from memory. Every word perfect. Men who spoke "lying and vain words" ([Mosiah 11:11](https://www.churchofjesuschrist.org/study/scriptures/bofm/mosiah/11?lang=eng&id=p11#p11)) from gold seats, asking a bound prisoner to explain the passage about publishing truth.
+They quoted it from memory. Every word perfect. Men who spoke "lying and vain words" from gold seats, asking a bound prisoner to explain the passage about publishing truth.
 
 Abinadi turned it back on them.
 
@@ -51,7 +51,7 @@ But they couldn't.
 
 "Touch me not, for God shall smite you if ye lay your hands upon me, for I have not delivered the message which the Lord sent me to deliver." ([Mosiah 13:3](https://www.churchofjesuschrist.org/study/scriptures/bofm/mosiah/13?lang=eng&id=p3#p3))
 
-His face shone "with exceeding luster, even as Moses' did while in the mount of Sinai, while speaking with the Lord" ([Mosiah 13:5](https://www.churchofjesuschrist.org/study/scriptures/bofm/mosiah/13?lang=eng&id=p5#p5)).
+His face shone "with exceeding luster, even as Moses' did while in the mount of Sinai, while speaking with the Lord" ([Mosiah 13:5](https://www.churchofjesuschrist.org/study/scriptures/bofm/mosiah/13?lang=eng&id=p5#p5)). Bound hands. Shining face. A room full of priests leaning back against golden breastworks, afraid to stand.
 
 Moses' face shone when he *received* the law. Abinadi's face shone when he *read* it.
 
@@ -107,7 +107,7 @@ He fell.
 
 ---
 
-But one man had believed him.
+But one of the priests had believed him.
 
 Before the fire. Before the sentencing. While Abinadi was still speaking, "there was one among them whose name was Alma" ([Mosiah 17:2](https://www.churchofjesuschrist.org/study/scriptures/bofm/mosiah/17?lang=eng&id=p2#p2)). He was young. He believed not because he was smarter than the other priests but because "he knew concerning the iniquity which Abinadi had testified against them" ([Mosiah 17:2](https://www.churchofjesuschrist.org/study/scriptures/bofm/mosiah/17?lang=eng&id=p2#p2)). He was honest about what he already knew.
 
@@ -119,23 +119,23 @@ So Alma ran. And because he ran, he lived. And because he lived, he did somethin
 
 "He being concealed for many days did write all the words which Abinadi had spoken." ([Mosiah 17:4](https://www.churchofjesuschrist.org/study/scriptures/bofm/mosiah/17?lang=eng&id=p4#p4))
 
-Alone. Hiding in the hill country. Writing by whatever light he could find. The words of a man now dead. Every argument, every reading, every line of Isaiah, the shining face, the typological reading of his own execution. All of it, in a fugitive's handwriting.
+Alone. Hiding in the hill country north of Shilom. Writing by whatever light he could find. The words of a man now dead. Every argument, every reading, every line of Isaiah, the shining face, the five words from the fire. All of it, in a fugitive's handwriting, on whatever surface he had.
 
-Without those pages, the reading dies with the reader. Everything that follows next never happens.
+Without those pages, the reading dies with the reader.
 
 ---
 
 But the pages survived. So Alma taught.
 
-He found a fountain of pure water, near a thicket of small trees ([Mosiah 18:5](https://www.churchofjesuschrist.org/study/scriptures/bofm/mosiah/18?lang=eng&id=p5#p5)). He taught "the words of Abinadi" ([Mosiah 18:1](https://www.churchofjesuschrist.org/study/scriptures/bofm/mosiah/18?lang=eng&id=p1#p1)). Not his own words. A dead man's. People came.
+He found a fountain of pure water, near a thicket of small trees ([Mosiah 18:5](https://www.churchofjesuschrist.org/study/scriptures/bofm/mosiah/18?lang=eng&id=p5#p5)). He taught "the words of Abinadi" ([Mosiah 18:1](https://www.churchofjesuschrist.org/study/scriptures/bofm/mosiah/18?lang=eng&id=p1#p1)). Not his own words. A dead man's. People came. He hid in the daytime and taught privately to anyone who would listen ([Mosiah 18:5](https://www.churchofjesuschrist.org/study/scriptures/bofm/mosiah/18?lang=eng&id=p5#p5)).
 
-And when enough had gathered, Alma offered them something that looked nothing like what they had left behind. Not gold seats. Not taxation. Not flattery. A covenant:
+And when enough had gathered, Alma offered them something that looked nothing like what they had left behind. Not gold seats. Not taxation. Not wine. A covenant:
 
 "As ye are desirous to come into the fold of God, and to be called his people, and are willing to bear one another's burdens, that they may be light; yea, and are willing to mourn with those that mourn; yea, and comfort those that stand in need of comfort, and to stand as witnesses of God at all times and in all things, and in all places that ye may be in, even until death." ([Mosiah 18:8-9](https://www.churchofjesuschrist.org/study/scriptures/bofm/mosiah/18?lang=eng&id=p8-p9#p8))
 
 They clapped their hands for joy ([Mosiah 18:11](https://www.churchofjesuschrist.org/study/scriptures/bofm/mosiah/18?lang=eng&id=p11#p11)).
 
-Two hundred and four souls. Pure water. Small trees. Priests who labored with their own hands and received "the grace of God, that they might wax strong in the Spirit" ([Mosiah 18:26](https://www.churchofjesuschrist.org/study/scriptures/bofm/mosiah/18?lang=eng&id=p26#p26)) instead of a salary.
+Two hundred and four souls. Pure water instead of wine-presses. Small trees instead of gold seats. Priests who labored with their own hands and received "the grace of God, that they might wax strong in the Spirit" ([Mosiah 18:26](https://www.churchofjesuschrist.org/study/scriptures/bofm/mosiah/18?lang=eng&id=p26#p26)) instead of a fifth of everything.
 
 "The place of Mormon, the waters of Mormon, the forest of Mormon, how beautiful are they to the eyes of them who there came to the knowledge of their Redeemer; yea, and how blessed are they, for they shall sing to his praise forever." ([Mosiah 18:30](https://www.churchofjesuschrist.org/study/scriptures/bofm/mosiah/18?lang=eng&id=p30#p30))
 
@@ -174,6 +174,10 @@ One reading of Isaiah. One fire. One man who wrote it down. One fountain.
 And then, three generations later, one cry: *O Jesus, thou Son of God, have mercy on me.*
 
 "How beautiful upon the mountains are the feet of those who shall hereafter publish peace, yea, from this time henceforth and forever!" ([Mosiah 15:17](https://www.churchofjesuschrist.org/study/scriptures/bofm/mosiah/15?lang=eng&id=p17#p17))
+
+---
+
+Abinadi's words survived because someone wrote them down. Alma the Younger's soul survived because someone spoke them aloud. The words you carry from someone else's reading, the ones you write, the ones you say to your children in passing and wonder if they hear. Those are the pages. Those are the waters of Mormon.
 
 ---
 
