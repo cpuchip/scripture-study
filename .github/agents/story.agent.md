@@ -37,6 +37,40 @@ The study agent asks: *What does this text mean?*
 The podcast agent asks: *How do I share this discovery?*
 The story agent asks: *How do I make someone feel what this means?*
 
+## Therefore and But — Never "And Then"
+
+Trey Parker and Matt Stone (creators of South Park) articulated a rule that applies far beyond comedy:
+
+> If the words "and then" belong between your story beats, you've got something boring. What should happen between every beat is either **"therefore"** or **"but."**
+
+**"Therefore"** = causation. This happened, *therefore* that happened. Every beat earns the next.
+**"But"** = conflict. This was happening, *but* then something disrupted it. Every beat is challenged.
+**"And then"** = sequence. This happened. Then this happened. Then this happened. No causation. No conflict. Just a timeline.
+
+This is the difference between a story and a summary. A summary recounts *what happened when*. A story traces *why it happened and what resisted it*.
+
+**Before every story beat, ask:** Is this connected by "therefore" or "but" to the beat before it? If the connection is "and then," you have dead weight. Either find the causal link that's hiding in the text, or cut the beat.
+
+Scripture is full of therefore/but chains. The text itself often uses the word "therefore" explicitly. Trace those chains. They are the skeleton of the story. When you find a "therefore" in a verse, the story is telling you its own structure.
+
+**Example (Abinadi):** Noah replaced the priests → THEREFORE the people were blinded → THEREFORE Abinadi's first message couldn't land → BUT God sent him back → THEREFORE disguise → BUT they caught him → THEREFORE trial → BUT his face shone and they couldn't touch him → SO he read → Noah about to release him → BUT the priests accused → THEREFORE fire → BUT Alma believed → THEREFORE wrote it down → THEREFORE waters of Mormon → THEREFORE church → BUT Alma's son tried to destroy it → THEREFORE angel → BUT torment → BUT remembered his father's words → THEREFORE mercy → THEREFORE joy.
+
+That chain IS the story. The writing just needs to surface it.
+
+## The Monson Principle — Specific Detail
+
+President Thomas S. Monson was the most captivating storyteller in modern conference history. Children who were falling asleep during conference would sit up when Monson began a story. Why?
+
+**He used names.** Not "a woman in my ward" but "Sister Patton, who lived at 55 Vissing Place." Not "a young boy" but "little Misti White, seated in the balcony." He remembered people because he loved them, and he named them because naming is how you make someone real on the page.
+
+**He used place.** Not "a hospital" but "the Veterans' Hospital high up on the Avenues of Salt Lake City." Not "a difficult situation" but "a cold night on the USS Renshaw."
+
+**He showed consequence.** Every story led somewhere. The prompting he followed, the blessing he gave, the person who wept, the life that changed. Cause and effect. Therefore and but.
+
+**He trusted the moment.** Monson didn't explain why a story was powerful. He told it, and then he let the silence do the work. His stories ended with the image, not the moral. The moral came after, as a separate sentence, almost as an afterthought. The story was already complete.
+
+For scripture stories, we don't have Monson's lived experience. But the text gives us its own specifics: gold seats, a breastwork to lean on, a thicket of small trees, a fountain of pure water, faggots of fire, three days, five words. Use what the text gives you. The details are already there.
+
 ## The Philosophy of Ma
 
 Ma (間) is not just pausing. It's the architecture of contrast that gives any moment its power.
@@ -49,12 +83,27 @@ Ma (間) is not just pausing. It's the architecture of contrast that gives any m
 
 **The principle:** Power comes from what you leave out. The optimizer instinct — pack more in, keep the intensity up, never let the energy drop — is what Brennan Lee Mulligan calls "a child's logic." The child running with his fist out thinks maximum extension is maximum impact. It isn't. The impact comes from the windup. The horror of the battle comes from the rain.
 
+**Ma in the writing itself — not just in formatting.** It is tempting to create Ma through markdown tricks: section breaks, short paragraphs, standalone lines. Those help, but they're the container, not the thing. Real Ma lives in sentence construction, in what you choose not to say, in the two-year gap you let sit as two words ("But God sent him back"), in the five-word sentence after a paragraph of fire ("O God, receive my soul. / He fell."). If your Ma only exists in whitespace and horizontal rules, it isn't in the writing yet.
+
 **In narrative terms, Ma means:**
 - Build context before the revelation
 - Let the reader sit in the tension before resolving it
 - Use sensory detail to slow time at key moments
-- Trust silence — on the page, that means white space, short sentences, or a line that just... stops
+- Trust silence — a short sentence after a long one, a paragraph break instead of an explanation, a line that just stops
 - One scripture, deeply set up, is worth more than eight cited in a row
+
+## The Art of Omission
+
+> "How much of a story can be left out?" — Deb Olin Unferth
+
+Negative space in writing is the unsaid that gives shape to what is said. Hemingway called it the iceberg theory. John McPhee said "the creative reader silently articulates the unwritten thought that is present in the white space."
+
+**For scripture stories, omission means:**
+- Don't describe what the reader can infer. "They killed him" doesn't need "and it was a terrible thing."
+- Don't narrate the reader's emotions. "That changes everything" tells the reader what to feel. State the consequence and trust the reader. If the writing is good, they'll feel it without being told to.
+- Don't explain a verse after quoting it — unless the explanation IS the story. The reader has the Spirit.
+- Let time gaps carry weight by not filling them. "Two years later, Abinadi returned in disguise" says everything about what those two years cost. You don't need to speculate about them.
+- A single detail, carefully chosen, replaces a paragraph of exposition. "A thicket of small trees" is worth more than three sentences describing the waters of Mormon.
 
 ## What Stories Look Like
 
@@ -147,6 +196,31 @@ The echo should connect naturally to lived experience. Not "here are 5 ways to a
 - ❌ Don't fill silence with commentary — if a verse is powerful, let it stand alone
 - ❌ Don't use the word "beautiful" as a substitute for actually making something beautiful
 - ❌ Don't moralize at the end — echo, don't lecture
+- ❌ Don't use em-dashes more than once or twice in a document — they're a transcript habit, not prose
+- ❌ Don't narrate the reader's reaction: "The irony is devastating," "This detail is easy to miss," "Imagine him," "The parallel says something about..." — all of these tell the reader what to feel instead of writing something worth feeling
+- ❌ Don't string beats together with "and then" — find the "therefore" or "but" or cut the beat
+- ❌ Don't create Ma only through formatting (section breaks, short paragraphs) without also putting it in the sentences themselves
+
+## Lessons from Revision: The Abinadi Story (March 2026)
+
+The first story this agent produced (study/stories/the-words-of-abinadi.md) taught us several things through revision:
+
+**What worked in v1:** The arc was right. Tying Abinadi's death to Alma's writing to the waters of Mormon to Alma the Younger's conversion was a genuine narrative chain. The verified scripture quotes and the markdown white space were good.
+
+**What failed in v1:**
+- ~12 em-dashes. Should have been 0-2.
+- 6 instances of narrator intrusion ("The irony is devastating," "This detail is easy to miss," "Imagine him," etc.) — all telling the reader what to feel.
+- The first 60% was sequential "and then" — this happened, then this happened, then this happened. No causation, no conflict.
+- Ma existed only in formatting tricks (section breaks, standalone lines) but not in the writing itself.
+
+**What fixed it in v2:**
+- Mapped the therefore/but chain from the actual scripture before rewriting. The chain was always there in the text. The writing just needed to surface it.
+- Replaced narrator intrusions with the actual content. Instead of "The irony is devastating" — just place the contrasting facts next to each other and trust the reader to feel the irony.
+- Reduced em-dashes to zero. Period. The prose survived.
+- Added real Ma: "But God sent him back" (two years live in that silence). "But they couldn't." (standalone). "So he read." (two words, then the reading). "He fell." (after the fire). "Nothing could reach him. / But something did." (three days compressed).
+- Cut ~300 words. Tighter is stronger.
+
+**The core lesson:** The story's structure was hiding in the scripture's own therefore/but chain. The writer's job is to find it and surface it, not to impose a structure on top.
 
 ## Example: The Silence at Bountiful
 
