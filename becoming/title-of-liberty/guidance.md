@@ -99,7 +99,7 @@ Michael's wife didn't get excited about the system. She's already managing homes
 
 **Answer:** Don't know yet. This will take many iterations. But the direction is clear: move toward lightweight, move toward what the research says. This is the hardest question and we should expect to circle back to it repeatedly.
 
-**Status:** Active — direction set, specifics need many iterations
+**Status:** Addressed in v2 — daily rhythm is ~15 min structured; no badge tracking, no challenge nights, no advancement ceremonies. System replaces curriculum weight rather than stacking on top.
 
 ---
 
@@ -113,7 +113,7 @@ The Church's Children & Youth program is intentionally open-ended to allow kids 
 
 **Answer:** Most of it should be open-ended. Users pick their own path and options to fit their needs and desires. Whether ranks/badges even make sense is still an open question worth noodling on.
 
-**Status:** Active — leaning strongly toward open-ended; badge/rank system is under reconsideration
+**Status:** Addressed in v2 — 5 daily habits provide structure; quests are fully self-directed; milestones are recognized by the family, not earned through prescribed requirements. Badge/rank system replaced.
 
 ---
 
@@ -127,7 +127,7 @@ The badge/rank/ceremony system is fundamentally extrinsic motivation (visible re
 
 **Answer:** Maybe a choose-your-own-adventure model — let kids pick their learning and goals and support them in that. Not sure that's the right answer, but it's the direction. The gospel answer is clear: [D&C 58:26–29](../../gospel-library/eng/scriptures/dc-testament/dc/58.md) says agents acting of their own free will, not compelled in all things. See [motivation-systems.md](motivation-systems.md).
 
-**Status:** Active — research done, gospel framework clear, design still forming
+**Status:** Addressed in v2 — recognition replaces reward; habits replace badges; quests are self-directed; milestones are observed not earned. Research and gospel framework fully integrated into design principles.
 
 ---
 
@@ -139,7 +139,7 @@ This entire concept is 3 days old. It emerged from a YouTube video evaluation an
 
 **Answer:** Noodle on this for a few weeks. Continue pushing the theory along until we're happy with it, then implement. No rush to pilot — get the thinking right first.
 
-**Status:** Active — theory-refining phase, not implementation phase
+**Status:** Active — v2 design written; next step is to live it (parents first). No rush to pilot with kids.
 
 ---
 
@@ -153,7 +153,7 @@ This entire concept is 3 days old. It emerged from a YouTube video evaluation an
 | Q4 | Pillar naming | **Answered** | Parallel — same pillars, Book of Mormon framing. |
 | Q5 | Auth priority | **Answered** | Google auth may already exist; verify. |
 | Q6 | Physical tokens | **Answered** | Digital now; commission physical later via Fiverr. |
-| Q7 | System weight | **Active** | Direction set toward lightweight; many iterations needed. |
-| Q8 | Structured vs. open | **Active** | Leaning open-ended; badge/rank system under reconsideration. |
-| Q9 | External vs. internal motivation | **Active** | Choose-your-own-adventure direction; research in motivation-systems.md. |
-| Q10 | Three days old — MVP? | **Active** | Theory-refining phase; no rush to pilot. |
+| Q7 | System weight | **Addressed** | v2 is lightweight: 15-min daily rhythm, no badge/rank administration. |
+| Q8 | Structured vs. open | **Addressed** | v2: 5 habits = structure; quests + milestones = open-ended. |
+| Q9 | External vs. internal motivation | **Addressed** | v2: recognition not reward; habits not badges; choice is the fuel. |
+| Q10 | Three days old — MVP? | **Active** | v2 design written; next step is parents living it first. |
