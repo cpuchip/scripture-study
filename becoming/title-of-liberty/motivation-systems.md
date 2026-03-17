@@ -14,7 +14,7 @@ That landed. And it's worth taking seriously, because the gospel itself has some
 
 ## The Gospel Standard: D&C 58:26–29
 
-> "For behold, it is not meet that I should command in all things; for he that is compelled in all things, the same is a slothful and not a wise servant; wherefore he receiveth no reward. Verily I say, men should be anxiously engaged in a good cause, and do many things of their own free will, and bring to pass much righteousness; For the power is in them, wherein they are agents unto themselves. And inasmuch as men do good they shall in nowise lose their reward. But he that doeth not anything until he is commanded, and receiveth a commandment with doubtful heart, and keepeth it with slothfulness, the same is damned." — [D&C 58:26–29](../../../gospel-library/eng/scriptures/dc-testament/dc/58.md)
+> "For behold, it is not meet that I should command in all things; for he that is compelled in all things, the same is a slothful and not a wise servant; wherefore he receiveth no reward. Verily I say, men should be anxiously engaged in a good cause, and do many things of their own free will, and bring to pass much righteousness; For the power is in them, wherein they are agents unto themselves. And inasmuch as men do good they shall in nowise lose their reward. But he that doeth not anything until he is commanded, and receiveth a commandment with doubtful heart, and keepeth it with slothfulness, the same is damned." — [D&C 58:26–29](../../gospel-library/eng/scriptures/dc-testament/dc/58.md)
 
 This is the Lord's own framework on motivation:
 
@@ -25,17 +25,17 @@ This is the Lord's own framework on motivation:
 
 Moroni adds another layer:
 
-> "For behold, God hath said a man being evil cannot do that which is good; for if he offereth a gift, or prayeth unto God, except he shall do it with real intent it profiteth him nothing." — [Moroni 7:6](../../../gospel-library/eng/scriptures/bofm/moro/7.md)
+> "For behold, God hath said a man being evil cannot do that which is good; for if he offereth a gift, or prayeth unto God, except he shall do it with real intent it profiteth him nothing." — [Moroni 7:6](../../gospel-library/eng/scriptures/bofm/moro/7.md)
 
 And:
 
-> "If a man being evil giveth a gift, he doeth it grudgingly; wherefore it is counted unto him the same as if he had retained the gift; wherefore he is counted evil before God." — [Moroni 7:8](../../../gospel-library/eng/scriptures/bofm/moro/7.md)
+> "If a man being evil giveth a gift, he doeth it grudgingly; wherefore it is counted unto him the same as if he had retained the gift; wherefore he is counted evil before God." — [Moroni 7:8](../../gospel-library/eng/scriptures/bofm/moro/7.md)
 
 **The intent matters more than the action.** A child who does 10 service hours to earn a badge is not the same as a child who serves because they've become a person of service. If our system produces the first kind — who serve grudgingly, to meet a requirement — we've built a machine that produces Moroni 7:8 people.
 
 And Lehi's foundational teaching on agency:
 
-> "And because that they are redeemed from the fall they have become free forever, knowing good from evil; to act for themselves and not to be acted upon." — [2 Nephi 2:26](../../../gospel-library/eng/scriptures/bofm/2-ne/2.md)
+> "And because that they are redeemed from the fall they have become free forever, knowing good from evil; to act for themselves and not to be acted upon." — [2 Nephi 2:26](../../gospel-library/eng/scriptures/bofm/2-ne/2.md)
 
 **To act for themselves.** Not to be acted upon by a badge system.
 
@@ -299,7 +299,7 @@ Both concerns point to the same redesign principle: **the system needs to suppor
 
 ### The Gospel Test
 
-Any system we build should produce people who match [D&C 58:27](../../../gospel-library/eng/scriptures/dc-testament/dc/58.md):
+Any system we build should produce people who match [D&C 58:27](../../gospel-library/eng/scriptures/dc-testament/dc/58.md):
 
 > "Anxiously engaged in a good cause, and do many things of their own free will, and bring to pass much righteousness"
 

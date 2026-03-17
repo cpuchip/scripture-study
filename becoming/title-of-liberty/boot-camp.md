@@ -1,6 +1,6 @@
 # Title of Liberty: A Book of Mormon Boot Camp for Families
 
-> "We are a remnant of the seed of Jacob; yea, we are a remnant of the seed of Joseph" — [Alma 46:23](../../../gospel-library/eng/scriptures/bofm/alma/46.md)
+> "We are a remnant of the seed of Jacob; yea, we are a remnant of the seed of Joseph" — [Alma 46:23](../../gospel-library/eng/scriptures/bofm/alma/46.md)
 
 ---
 
@@ -13,7 +13,7 @@ A family training program grounded in the Book of Mormon — not a curriculum to
 **Inspired by:** The "For Our Day" model — reading the Book of Mormon as a preparation manual for our time. Sparked by the [Send Me / Hannah Stoddard conversation](https://www.youtube.com/watch?v=pZljklzcdEI) on the prophetic destiny of the elders of Israel.
 
 **The Core Principle:**
-> "They had been taught by their mothers, that if they did not doubt, God would deliver them." — [Alma 56:47](../../../gospel-library/eng/scriptures/bofm/alma/56.md)
+> "They had been taught by their mothers, that if they did not doubt, God would deliver them." — [Alma 56:47](../../gospel-library/eng/scriptures/bofm/alma/56.md)
 
 Faith is transmitted through parents who actually believe it. This boot camp is how we live it so our children catch it.
 
@@ -24,22 +24,22 @@ Faith is transmitted through parents who actually believe it. This boot camp is 
 These map to the Becoming app pillars and ground every rank, quest, and challenge. They emerge directly from scripture:
 
 ### 1. ⚔️ **Faith & Covenant** (Spiritual)
-> "They were men of truth and soberness, for they had been taught to keep the commandments of God and to walk uprightly before him." — [Alma 53:21](../../../gospel-library/eng/scriptures/bofm/alma/53.md)
+> "They were men of truth and soberness, for they had been taught to keep the commandments of God and to walk uprightly before him." — [Alma 53:21](../../gospel-library/eng/scriptures/bofm/alma/53.md)
 
 **What it looks like:** Prayer, scripture study, ordinances, hearing the Lord's voice, keeping promises, personal revelation.
 
 ### 2. 🛡️ **Liberty & Service** (Social / Community)
-> "In memory of our God, our religion, and freedom, and our peace, our wives, and our children" — [Alma 46:12](../../../gospel-library/eng/scriptures/bofm/alma/46.md)
+> "In memory of our God, our religion, and freedom, and our peace, our wives, and our children" — [Alma 46:12](../../gospel-library/eng/scriptures/bofm/alma/46.md)
 
 **What it looks like:** Serving others, defending what's right, building community, learning to lead, standing up for the vulnerable, preparing temporally.
 
 ### 3. 🏗️ **Knowledge & Skill** (Intellectual / Creative)
-> "Finding there was greater happiness and peace and rest for me, I sought for the blessings of the fathers, and the right whereunto I should be ordained to administer the same; ... desiring also to be one who possessed great knowledge" — [Abraham 1:2](../../../gospel-library/eng/scriptures/pgp/abr/1.md)
+> "Finding there was greater happiness and peace and rest for me, I sought for the blessings of the fathers, and the right whereunto I should be ordained to administer the same; ... desiring also to be one who possessed great knowledge" — [Abraham 1:2](../../gospel-library/eng/scriptures/pgp/abr/1.md)
 
 **What it looks like:** Learning real skills (building, growing, creating, coding, music), studying the scriptures deeply, understanding history, gaining wisdom through practice.
 
 ### 4. 💪 **Strength & Discipline** (Physical)
-> "They were exceedingly valiant for courage, and also for strength and activity" — [Alma 53:20](../../../gospel-library/eng/scriptures/bofm/alma/53.md)
+> "They were exceedingly valiant for courage, and also for strength and activity" — [Alma 53:20](../../gospel-library/eng/scriptures/bofm/alma/53.md)
 
 **What it looks like:** Physical fitness, hard work, endurance, healthy habits, self-discipline, going to bed and getting up on time, doing hard things without complaint.
 
@@ -71,7 +71,7 @@ Each rank is named for a figure or group from the Book of Mormon who embodies th
 
 **Requirements:**
 - [ ] Read (or listen to) 1 Nephi 1–22 (full book)
-- [ ] Memorize [1 Nephi 3:7](../../../gospel-library/eng/scriptures/bofm/1-ne/3.md)
+- [ ] Memorize [1 Nephi 3:7](../../gospel-library/eng/scriptures/bofm/1-ne/3.md)
 - [ ] Complete a hard physical challenge (age-appropriate: hiking, running, pull-ups)
 - [ ] Do something the Lord asked that didn't make sense at first — journal about it
 - [ ] Serve someone outside the family without being asked
@@ -86,7 +86,7 @@ Each rank is named for a figure or group from the Book of Mormon who embodies th
 
 **Requirements:**
 - [ ] Read Alma 53, 56–58 (the stripling warrior chapters)
-- [ ] Memorize [Alma 53:20–21](../../../gospel-library/eng/scriptures/bofm/alma/53.md)
+- [ ] Memorize [Alma 53:20–21](../../gospel-library/eng/scriptures/bofm/alma/53.md)
 - [ ] Complete a 30-day challenge in one pillar (e.g., daily scripture study, daily exercise, daily service, daily skill practice)
 - [ ] Demonstrate trustworthiness: complete 3 assignments/tasks without reminders
 - [ ] Physical test: run/walk distance goal, strength goal (age-scaled)
@@ -102,7 +102,7 @@ Each rank is named for a figure or group from the Book of Mormon who embodies th
 
 **Requirements:**
 - [ ] Read Alma 43–62 (the war chapters — yes, all of them)
-- [ ] Read [Alma 48:11–17](../../../gospel-library/eng/scriptures/bofm/alma/48.md) and write a personal response: "What kind of person do I want to be?"
+- [ ] Read [Alma 48:11–17](../../gospel-library/eng/scriptures/bofm/alma/48.md) and write a personal response: "What kind of person do I want to be?"
 - [ ] Lead a family activity from planning to execution
 - [ ] Complete a 60-day sustained practice (any pillar)
 - [ ] Build or create something meaningful (project, craft, code, garden)
@@ -231,7 +231,7 @@ And the Ephraim thread from your patriarchal blessing: "Ephraim has a mission to
 
 This boot camp is gathering. Your family is building the character to carry the covenant forward.
 
-> "Whatever principle of intelligence we attain unto in this life, it will rise with us in the resurrection." — [D&C 130:18](../../../gospel-library/eng/scriptures/dc-testament/dc/130.md)
+> "Whatever principle of intelligence we attain unto in this life, it will rise with us in the resurrection." — [D&C 130:18](../../gospel-library/eng/scriptures/dc-testament/dc/130.md)
 
 ---
 

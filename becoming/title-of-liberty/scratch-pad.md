@@ -4,6 +4,34 @@
 
 ---
 
+## March 17, 2026 — Answers & Direction Shift
+
+### All 10 Questions Answered
+
+Michael answered all guidance questions. The meta-insight: **Q1-Q6 were designed for a system that may not exist anymore.** Q1 (late starters) dissolves entirely when there's no prescribed sequence to be "late" to. Q4 (pillar naming) becomes trivial when pillars are a reflective lens, not an achievement taxonomy.
+
+The answers that matter most:
+- **A2:** Whole family participates. Parents MODEL it, not just manage it. (Charlotte Mason: atmosphere IS 1/3 of education.)
+- **A8:** Mostly open-ended. Users pick path and options. Badges/ranks are under reconsideration.
+- **A9:** Choose-your-own-adventure. Let them pick their learning and goals.
+- **A10:** Noodle for a few weeks. Theory-refining phase, not implementation.
+
+### The Emerging Shape
+
+What we're converging on is NOT a BSA clone. It's something closer to:
+
+**A family rhythm + open-ended growth quests + Book of Mormon as living text + tech that tracks without burdening**
+
+The key tension remaining: how do you give kids total freedom in choosing their growth while still anchoring everything in the Book of Mormon? The Book of Mormon IS the non-negotiable. But within that anchoring, the child chooses HOW they engage.
+
+Possible answer: the Book of Mormon reading schedule is the ONE structured element. Everything else — the quests, the habits, the skills, the service — grows from what you're reading. "We just read about Nephi building the ship. What's something you want to build?" That's a quest that's self-directed but Book-of-Mormon-rooted.
+
+### Project Moved
+
+Moved from `study/yt/title-of-liberty/` to `becoming/title-of-liberty/`. Left a redirect README in the old location with the evaluation and transcripts. Fixed all relative gospel-library links.
+
+---
+
 ## March 15, 2026 — After Family Conversation
 
 ### The Reality Check

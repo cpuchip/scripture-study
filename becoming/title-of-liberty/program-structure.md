@@ -37,7 +37,7 @@ Character demonstration is not a checklist. It's a judgment call made by the fam
 ## Rank 1: Apprentice of Lehi 🌱
 
 **Theme:** Willingness to begin  
-**Scripture:** "I will go and do the things which the Lord hath commanded" — [1 Nephi 3:7](../../../gospel-library/eng/scriptures/bofm/1-ne/3.md)  
+**Scripture:** "I will go and do the things which the Lord hath commanded" — [1 Nephi 3:7](../../gospel-library/eng/scriptures/bofm/1-ne/3.md)  
 **Character trait:** Willingness. Lehi left everything because the Lord told him to. He didn't have a plan. He had a promise.  
 **Book of Mormon reading:** 1 Nephi 1–7
 
@@ -59,7 +59,7 @@ Character demonstration is not a checklist. It's a judgment call made by the fam
 ## Rank 2: Scout of Nephi 🏹
 
 **Theme:** Doing hard things  
-**Scripture:** "I will go and do the things which the Lord hath commanded, for I know that the Lord giveth no commandments unto the children of men, save he shall prepare a way for them that they may accomplish the thing which he commandeth them." — [1 Nephi 3:7](../../../gospel-library/eng/scriptures/bofm/1-ne/3.md)  
+**Scripture:** "I will go and do the things which the Lord hath commanded, for I know that the Lord giveth no commandments unto the children of men, save he shall prepare a way for them that they may accomplish the thing which he commandeth them." — [1 Nephi 3:7](../../gospel-library/eng/scriptures/bofm/1-ne/3.md)  
 **Character trait:** Obedience before understanding. Nephi acted when it didn't make sense. He went back for the plates. He built a ship.  
 **Book of Mormon reading:** 1 Nephi 1–22
 
@@ -83,7 +83,7 @@ Character demonstration is not a checklist. It's a judgment call made by the fam
 ## Rank 3: Warrior of Helaman ⚔️
 
 **Theme:** Trustworthy in all things  
-**Scripture:** "They were men who were true at all times in whatsoever thing they were entrusted. Yea, they were men of truth and soberness, for they had been taught to keep the commandments of God and to walk uprightly before him." — [Alma 53:20–21](../../../gospel-library/eng/scriptures/bofm/alma/53.md)  
+**Scripture:** "They were men who were true at all times in whatsoever thing they were entrusted. Yea, they were men of truth and soberness, for they had been taught to keep the commandments of God and to walk uprightly before him." — [Alma 53:20–21](../../gospel-library/eng/scriptures/bofm/alma/53.md)  
 **Character trait:** Reliability. The stripling warriors' defining trait wasn't strength — it was that they could be trusted.  
 **Book of Mormon reading:** Alma 53, 56–58. Plus Mosiah 18 (covenant of Alma at Waters of Mormon).
 
@@ -109,7 +109,7 @@ Character demonstration is not a checklist. It's a judgment call made by the fam
 ## Rank 4: Captain of Moroni 🗡️
 
 **Theme:** Defending and leading  
-**Scripture:** "Moroni was a strong and a mighty man; he was a man of a perfect understanding; yea, a man that did not delight in bloodshed; a man whose soul did joy in the liberty and the freedom of his country, and his brethren from bondage and slavery." — [Alma 48:11](../../../gospel-library/eng/scriptures/bofm/alma/48.md)  
+**Scripture:** "Moroni was a strong and a mighty man; he was a man of a perfect understanding; yea, a man that did not delight in bloodshed; a man whose soul did joy in the liberty and the freedom of his country, and his brethren from bondage and slavery." — [Alma 48:11](../../gospel-library/eng/scriptures/bofm/alma/48.md)  
 **Character trait:** Prepared leadership. Moroni led because he had to, not because he wanted power. He fortified before the battle came. He delighted in doing good.  
 **Book of Mormon reading:** Alma 43–62 (the war chapters).
 
@@ -136,7 +136,7 @@ Character demonstration is not a checklist. It's a judgment call made by the fam
 ## Rank 5: Builder of Zion 👑
 
 **Theme:** The full measure — building something that blesses others  
-**Scripture:** "Finding there was greater happiness and peace and rest for me, I sought for the blessings of the fathers, and the right whereunto I should be ordained to administer the same" — [Abraham 1:2](../../../gospel-library/eng/scriptures/pgp/abr/1.md)  
+**Scripture:** "Finding there was greater happiness and peace and rest for me, I sought for the blessings of the fathers, and the right whereunto I should be ordained to administer the same" — [Abraham 1:2](../../gospel-library/eng/scriptures/pgp/abr/1.md)  
 **Character trait:** The Josephite birthright. Receive blessings, then build a place where others can receive them too. Not just personal righteousness — but community-building righteousness.  
 **Book of Mormon reading:** The entire Book of Mormon, cover to cover.
 
