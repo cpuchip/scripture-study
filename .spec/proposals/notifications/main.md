@@ -40,9 +40,28 @@ Web Push API makes this possible without a native app install. A service worker 
 ```
 
 **Dependencies:**
-- Go: `github.com/SherClockHolmes/webpush-go` — handles VAPID signing + payload encryption
+- Go: `github.com/SherClockHolmes/webpush-go` v1.4.0 — handles VAPID signing + payload encryption (see Library Assessment below)
 - Frontend: Notification API + Push API (built into browsers, no npm package needed)
 - One-time: Generate VAPID key pair (stored in server config/env)
+
+### Library Assessment: webpush-go
+
+| Criterion | Status |
+|-----------|--------|
+| Stars / Contributors | 415 stars, 82 forks, 20 contributors |
+| Latest release | v1.4.0 (Jan 2, 2025) |
+| Last push | Feb 2, 2026 |
+| License | MIT |
+| Dependencies | `golang-jwt/jwt/v5`, `golang.org/x/crypto` — both Go ecosystem staples |
+| Security advisories | None published |
+| Go Report Card | Clean |
+| Known issues | Example repo has a minor build issue with JWT v5 generics — the library itself works fine |
+
+**Alternatives considered:**
+- `gootsolution/pushbell` — 2 stars, 1 contributor, uses fasthttp (extra dependency). Not mature enough.
+- Roll our own — Web Push encryption (ECDH + HKDF + AES-GCM) is fiddly. Not worth reimplementing.
+
+**Verdict:** webpush-go is the standard Go library for this. Well-maintained, minimal dependencies, no security issues. Safe to use.
 
 ---
 
@@ -50,7 +69,43 @@ Web Push API makes this possible without a native app install. A service worker 
 
 ### Phase 1: Foundation — Global Notifications (1 session)
 
-**Delivers:** "Enable notifications" toggle in settings → browser notifications for all due practices at their scheduled time.
+**Delivers:** "Enable notifications" toggle in settings → browser notifications for due practices.
+
+#### Configuration Model (Three-Tier)
+
+Notifications use a layered opt-in design: global toggle → default-for-new-practices flag → per-practice override.
+
+```
+┌─────────────────────────────────────────────────────────┐
+│ Settings (user_settings)                                │
+│                                                         │
+│  notifications_enabled: false  ← global kill switch     │
+│  notify_practices_by_default: false  ← new practices    │
+│  quiet_hours: { start: "22:00", end: "07:00" }          │
+│  max_per_hour: 5                                        │
+│  default_timing: ["at_time"]                             │
+└─────────────────────────────────────────────────────────┘
+         │
+         ▼  (only shown if notifications_enabled = true)
+┌─────────────────────────────────────────────────────────┐
+│ Per-Practice (notification_config in practice JSON)     │
+│                                                         │
+│  notify: false          ← disabled by default           │
+│  timing: ["at_time"]    ← inherits from default_timing  │
+└─────────────────────────────────────────────────────────┘
+```
+
+**Behavior rules:**
+
+1. `notifications_enabled = false` → nothing happens. No push, no UI for per-practice config.
+2. `notifications_enabled = true` → settings shows per-practice notification options.
+3. `notify_practices_by_default = false` (default) → new practices created with `notify: false`. User enables per-practice manually.
+4. `notify_practices_by_default = true` → new practices created with `notify: true`.
+5. **Retroactive toggle:** When `notify_practices_by_default` is flipped from false → true, all existing practices that have a due date/schedule AND `notify` is still `false` get updated to `notify: true`. A toast confirms: "Enabled notifications for N practices with schedules." This respects Michael's instinct — if you're turning on default notifications, you probably want them for what's already there too. Only applies to practices that are schedulable (have a schedule config or due date). Non-scheduled practices (pure trackers with no time component) are left alone.
+6. Flipping `notify_practices_by_default` from true → false does NOT retroactively disable. That would be destructive — the user may have intentionally enabled specific ones.
+7. Per-practice `notify: true` with no `timing` array → inherits `default_timing` from user settings.
+
+**Phase 1 ships only the global toggle and at_time notifications.** Per-practice config UI is Phase 2, but the data model supports it from day one so we don't need a migration later.
 
 **Backend:**
 
@@ -103,16 +158,27 @@ func (s *Scheduler) tick(now time.Time) {
 
 ### Phase 2: Per-Practice Configuration (1 session)
 
-**Delivers:** Each practice can have its own notification settings: timing, enable/disable.
+**Delivers:** Each practice can have its own notification settings: timing, enable/disable. This is the UI that Phase 1's data model already supports.
+
+**Frontend:**
+
+| Component | Detail |
+|-----------|--------|
+| Per-practice toggle | In PracticesView or practice detail: notification bell icon. Only visible when `notifications_enabled = true` in settings. |
+| Timing picker | Per-practice: which timing(s) to use. Falls back to `default_timing` if not set. |
+| `notify_practices_by_default` toggle | In SettingsView under notifications. When toggled on, retroactively enables for all scheduled practices (with confirmation toast). |
+| Quiet hours config | In SettingsView: start/end time pickers |
+| "Test notification" button | In SettingsView: sends a test push immediately |
 
 **Backend:**
 
 | Component | Detail |
 |-----------|--------|
-| `user_settings` JSON column on `users` | Or separate `user_settings` table. Stores global notification prefs. |
-| `notification_config` JSON on practices | Per-practice: `{ "enabled": true, "timing": ["10_min_before", "at_time"] }` |
-| Quiet hours | Global setting: `{ "quiet_start": "22:00", "quiet_end": "07:00" }` |
-| Max per hour | Global rate limit (default: 5) |
+| `PUT /api/settings` | Update user notification preferences (global settings) |
+| `PUT /api/practices/{id}` | Already exists — extend config JSON to include `notify` and `timing` |
+| `POST /api/push/test` | Send a test notification to the user's subscriptions |
+| Retroactive update | When `notify_practices_by_default` goes false→true: `UPDATE practices SET config = jsonb_set(config, '{notify}', 'true') WHERE user_id = ? AND type = 'scheduled' AND (config->>'notify' IS NULL OR config->>'notify' = 'false')` (PostgreSQL) or equivalent for SQLite |
+| Quiet hours enforcement | Scheduler checks user's quiet hours before sending |
 
 **Timing options:**
 | Value | Description |
@@ -124,12 +190,9 @@ func (s *Scheduler) tick(now time.Time) {
 | `1_day_before` | Day before (for weekly/monthly) |
 | `custom_N` | N minutes before (user-specified) |
 
-**Frontend:**
-- Per-practice notification settings (icon/toggle per practice in PracticesView or a dedicated notification settings panel)
-- Quiet hours config in SettingsView
-- "Test notification" button
-
 **Verify:**
+- Per-practice bell icon only visible when global notifications are enabled
+- Toggle `notify_practices_by_default` on → toast shows N practices updated
 - Set a practice to notify "10 min before" → notification arrives 10 min early
 - Set quiet hours → no notifications during that window
 - Disable notifications for one practice → no notification for it, others still fire

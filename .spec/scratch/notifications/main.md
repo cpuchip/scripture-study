@@ -47,7 +47,23 @@
 6. **Service worker receives** — `push` event fires, calls `self.registration.showNotification()`
 7. **User clicks notification** — `notificationclick` event fires, can open/focus the app
 
-**Go library:** `github.com/SherClockHolmes/webpush-go` — battle-tested, sends Web Push messages. Handles VAPID signing and payload encryption.
+**Go library:** `github.com/SherClockHolmes/webpush-go` v1.4.0 — the standard Go Web Push library.
+
+**Library assessment (Exa search, 2026-03-17):**
+- 415 stars, 82 forks, 20 contributors, MIT license
+- Latest release: v1.4.0 (Jan 2, 2025). Last push: Feb 2, 2026. Actively maintained.
+- Dependencies: `golang-jwt/jwt/v5` + `golang.org/x/crypto` — both well-maintained Go ecosystem staples
+- No published security advisories
+- Minor issue: example repo has a build issue with JWT v5 generics syntax (#72), but the library itself compiles and works fine. PR #84 addresses it.
+- Go Report Card: Clean
+
+**Alternatives evaluated:**
+- `gootsolution/pushbell` — 2 stars, 1 contributor, uses fasthttp (adds an extra dependency). Too immature.
+- `crow-misia/go-push-receiver` — This is for *receiving* FCM push, not sending. Wrong direction.
+- Roll your own — Web Push encryption involves ECDH key agreement, HKDF key derivation, AES-128-GCM encryption, and VAPID JWT signing. Not worth reimplementing.
+- `draphy/pushforge` — TypeScript/Node.js only. Not applicable for Go backend.
+
+**Verdict:** webpush-go is the right choice. It's the only serious Go implementation, well-maintained, minimal attack surface.
 
 **No external service required.** No Firebase, no OneSignal, no Pusher. Just your Go backend + the browser's built-in push service.
 
@@ -64,22 +80,35 @@
 
 > "a full configuration from just the time of, to 10 minutes before, to 1 day before to repeated notifications, we shouldn't spam the user, but give them broad configuration capabilities"
 
-This maps to:
+This maps to a three-tier opt-in model:
 
+**Tier 1 — Global settings (`user_settings` table or JSON column):**
 ```json
 {
-  "notifications_enabled": true,
+  "notifications_enabled": false,
+  "notify_practices_by_default": false,
   "default_timing": ["at_time"],
-  "practices": {
-    "42": {
-      "enabled": true,
-      "timing": ["1_day_before", "10_min_before", "at_time"],
-      "quiet_hours": { "start": "22:00", "end": "07:00" }
-    }
-  },
   "quiet_hours": { "start": "22:00", "end": "07:00" },
-  "max_per_hour": 3
+  "max_per_hour": 5
 }
+```
+
+**Tier 2 — Per-practice config (in practice JSON config field):**
+```json
+{
+  "notify": false,
+  "timing": ["10_min_before", "at_time"]
+}
+```
+
+**Behavior rules:**
+1. `notifications_enabled = false` → no push sent, no per-practice UI shown
+2. `notifications_enabled = true` → per-practice notification bell icons appear
+3. Individual practices default to `notify: false` — user enables manually
+4. `notify_practices_by_default = true` → NEW practices get `notify: true`
+5. **Retroactive:** Flipping `notify_practices_by_default` false→true also enables notifications for all EXISTING practices that have schedules/due dates. Only scheduled practices — pure trackers with no time component are skipped.
+6. Flipping true→false is NOT retroactive (would be destructive)
+7. Per-practice `timing` is optional — inherits `default_timing` from user settings if empty
 ```
 
 Timing options:
