@@ -1,0 +1,218 @@
+# Desktop Notifications for ibeco.me
+
+**Binding problem:** ibeco.me can't reach users unless they open it. Practices go untracked because the app relies on the user remembering to visit. Desktop notifications provide the "gentle tap on the shoulder" — reminding users when practices are due without requiring the site to be open.
+
+**Created:** 2026-03-17
+**Research:** [.spec/scratch/notifications/main.md](../../scratch/notifications/main.md)
+
+---
+
+## 1. Problem Statement
+
+The scheduling engine in ibeco.me already knows exactly when practices are due — interval, daily_slots, weekly, monthly, one-time. But that knowledge is trapped inside the server. The user has to open the website to discover what's due. For a practice-tracking app, that's backwards — the app should come to the user.
+
+Web Push API makes this possible without a native app install. A service worker registered in the browser can receive push messages and show desktop notifications even when ibeco.me is completely closed.
+
+### Success Criteria
+
+1. User enables notifications in settings → browser permission prompt → subscription stored
+2. When a practice becomes due, a desktop notification appears (Windows/Mac/Linux)
+3. Clicking the notification opens ibeco.me to the relevant view
+4. User can configure timing per practice (at time, 10 min before, 1 day before, etc.)
+5. Quiet hours prevent notifications during sleep
+6. Multiple simultaneous due practices collapse into a single summary notification
+7. Works in Chrome, Edge, Firefox on all desktop OSes. Safari macOS 13+ as bonus.
+
+---
+
+## 2. Technical Approach
+
+### How Web Push Works (No External Services Required)
+
+```
+┌─────────────┐     ┌──────────────────┐     ┌─────────────────┐
+│  ibeco.me   │────▶│  Browser Push     │────▶│  Service Worker │
+│  Go backend │     │  Service (Google/ │     │  (in browser)   │
+│             │     │  Mozilla/Apple)   │     │                 │
+└─────────────┘     └──────────────────┘     └─────────────────┘
+   HTTP POST           Routes message          Shows notification
+   (encrypted)         to right browser          even if tab closed
+```
+
+**Dependencies:**
+- Go: `github.com/SherClockHolmes/webpush-go` — handles VAPID signing + payload encryption
+- Frontend: Notification API + Push API (built into browsers, no npm package needed)
+- One-time: Generate VAPID key pair (stored in server config/env)
+
+---
+
+## 3. Phased Delivery
+
+### Phase 1: Foundation — Global Notifications (1 session)
+
+**Delivers:** "Enable notifications" toggle in settings → browser notifications for all due practices at their scheduled time.
+
+**Backend:**
+
+| Component | Detail |
+|-----------|--------|
+| VAPID key pair | Generate once, store in env (`VAPID_PUBLIC_KEY`, `VAPID_PRIVATE_KEY`, `VAPID_CONTACT`) |
+| `push_subscriptions` table | `id`, `user_id`, `endpoint`, `keys_p256dh`, `keys_auth`, `user_agent`, `created_at` |
+| `POST /api/push/subscribe` | Store push subscription (receives JSON from frontend Push API) |
+| `DELETE /api/push/unsubscribe` | Remove subscription by endpoint |
+| `GET /api/push/vapid-key` | Return the public VAPID key (frontend needs it to subscribe) |
+| Notification scheduler | Goroutine in `main.go`: tick every minute, check for newly-due practices, send push to subscribed users |
+| `notification_log` table | `id`, `user_id`, `practice_id`, `sent_at`, `timing_type` — prevents duplicate sends |
+
+**Frontend:**
+
+| Component | Detail |
+|-----------|--------|
+| `public/sw.js` | Service worker: handles `push` event → `showNotification()`, `notificationclick` → `clients.openWindow('/today')` |
+| `public/manifest.json` | PWA manifest (required for service worker + makes app installable as bonus) |
+| Register SW in `main.ts` | `navigator.serviceWorker.register('/sw.js')` |
+| Settings toggle | "Enable Notifications" button in SettingsView → `Notification.requestPermission()` → `pushManager.subscribe()` → POST to `/api/push/subscribe` |
+
+**Scheduler logic (pseudo-code):**
+```go
+func (s *Scheduler) tick(now time.Time) {
+    users := s.db.UsersWithPushSubscriptions()
+    for _, user := range users {
+        due := s.db.DuePracticesForUser(user.ID, now)
+        alreadySent := s.db.NotificationsSentToday(user.ID)
+        unsent := filterAlreadySent(due, alreadySent)
+        if len(unsent) == 0 { continue }
+
+        // Collapse: group into one notification if multiple
+        payload := buildPayload(unsent)
+        for _, sub := range s.db.PushSubscriptions(user.ID) {
+            webpush.Send(sub, payload, s.vapidKeys)
+        }
+        s.db.LogNotifications(user.ID, unsent)
+    }
+}
+```
+
+**Verify:**
+- Enable notifications on one browser → see a test notification
+- Create a practice due "now" → notification appears within 1 minute
+- Close the tab → notification still appears
+- Click notification → ibeco.me opens to /today
+
+---
+
+### Phase 2: Per-Practice Configuration (1 session)
+
+**Delivers:** Each practice can have its own notification settings: timing, enable/disable.
+
+**Backend:**
+
+| Component | Detail |
+|-----------|--------|
+| `user_settings` JSON column on `users` | Or separate `user_settings` table. Stores global notification prefs. |
+| `notification_config` JSON on practices | Per-practice: `{ "enabled": true, "timing": ["10_min_before", "at_time"] }` |
+| Quiet hours | Global setting: `{ "quiet_start": "22:00", "quiet_end": "07:00" }` |
+| Max per hour | Global rate limit (default: 5) |
+
+**Timing options:**
+| Value | Description |
+|-------|-------------|
+| `at_time` | When the practice is due (default) |
+| `10_min_before` | 10 minutes before |
+| `30_min_before` | 30 minutes before |
+| `1_hour_before` | 1 hour before |
+| `1_day_before` | Day before (for weekly/monthly) |
+| `custom_N` | N minutes before (user-specified) |
+
+**Frontend:**
+- Per-practice notification settings (icon/toggle per practice in PracticesView or a dedicated notification settings panel)
+- Quiet hours config in SettingsView
+- "Test notification" button
+
+**Verify:**
+- Set a practice to notify "10 min before" → notification arrives 10 min early
+- Set quiet hours → no notifications during that window
+- Disable notifications for one practice → no notification for it, others still fire
+
+---
+
+### Phase 3: Rich Notifications + Actions (1 session)
+
+**Delivers:** Notifications with action buttons. Snooze. Mark-as-done from the notification itself.
+
+| Feature | Detail |
+|---------|--------|
+| Action buttons | "Done" and "Snooze 15m" on each notification |
+| "Done" action | Service worker POSTs to `/api/practices/{id}/complete` |
+| "Snooze" action | Reschedules notification for 15 minutes later |
+| Rich payload | Practice name, category emoji, streak info |
+| Collapse tag | Same practice = replaces existing notification (no pile-up) |
+
+**Verify:**
+- Click "Done" on notification → practice logged without opening the app
+- Click "Snooze" → notification reappears in 15 min
+
+---
+
+### Phase 4: Brain-App Integration (separate, deferred)
+
+**Delivers:** Same notifications on Android via brain-app.
+
+**Approach:** Local notifications scheduled on-device during daily sync. The app already fetches daily data — extend to schedule `flutter_local_notifications` alarms for each due practice.
+
+**Why deferred:** Web push covers desktop (the request). Brain-app is a separate codebase and the Flutter notification plugin setup is its own task.
+
+---
+
+## 4. Constraints
+
+- **No Firebase / external push services** — use Web Push protocol directly. Go backend sends to browser push endpoints.
+- **No polling from frontend** — the service worker receives push messages passively
+- **VAPID keys stored in env** — never in code or git
+- **Subscriptions are per-browser, not per-user** — a user on 2 browsers gets 2 subscriptions. Handle gracefully.
+- **Subscription cleanup** — browser push services return 410 Gone when a subscription expires. The backend must delete stale subscriptions on 410.
+- **HTTPS required** — service workers only work over HTTPS. ibeco.me already uses HTTPS via Dokploy.
+
+---
+
+## 5. Costs & Risks
+
+| Cost | Detail |
+|------|--------|
+| **Complexity** | Service worker lifecycle (install, activate, update) has edge cases. Version management matters. |
+| **Browser variance** | Safari's Web Push has quirks (needs PWA manifest, no action buttons in older versions) |
+| **Subscription churn** | Browsers revoke subscriptions periodically. Need retry + cleanup logic. |
+| **Notification fatigue** | Risk of becoming annoying. Mitigated by quiet hours, rate limits, collapse. |
+| **Scheduler overhead** | Goroutine ticking every minute. For 1-2 users this is trivial. At scale, needs optimization. |
+
+| Risk | Mitigation |
+|------|------------|
+| User denies permission | Graceful degradation. Clear messaging about what notifications do. |
+| Push service outage | Notifications are best-effort. Not critical path. |
+| Stale subscriptions pile up | 410 cleanup on every failed send |
+
+---
+
+## 6. Creation Cycle Review
+
+| Step | This Feature |
+|------|-------------|
+| **Intent** | The app should serve the user, not the other way around. Reach out when it's time. |
+| **Covenant** | Notifications respect the user's attention — quiet hours, rate limits, easy disable. |
+| **Stewardship** | ibeco.me backend owns scheduling. Browser owns delivery. User owns permission. |
+| **Spiritual Creation** | This spec. The scheduling engine already knows what's due — this is the delivery layer. |
+| **Line Upon Line** | Phase 1: global toggle. Phase 2: per-practice config. Phase 3: actions. Phase 4: mobile. |
+| **Physical Creation** | dev agent builds backend + service worker. |
+| **Review** | Each phase has verify criteria. Test across Chrome + Firefox + Edge minimum. |
+| **Atonement** | If notifications annoy: lower defaults, add "gentle" mode (1 summary/day). |
+| **Sabbath** | Quiet hours are literally a sabbath for notifications. |
+| **Consecration** | Your daughter uses this too. It's not just Michael's tool. |
+| **Zion** | A practice tool that gently reminds instead of demanding — that's the right relationship between tool and person. |
+
+---
+
+## 7. Recommendation
+
+**Build.** Phase 1 is achievable in one session and delivers the core ask: desktop notifications when practices are due. The scheduling engine already exists — this is the delivery pipe.
+
+Start with Phase 1. If your daughter enables notifications on her browser and starts getting gentle reminders when her practices are due, the feature has proven itself. Per-practice config (Phase 2) follows naturally once the infrastructure is in place.
