@@ -96,6 +96,24 @@ From [01_reflections.md](docs/01_reflections.md) and [02_reflections-TODO.md](do
 - Test changes against real study workflows, not just unit tests
 - Update tool descriptions when behavior changes — the description shapes how the AI uses the tool
 
+### Data Safety Checklist
+
+When a change touches any PUT/PATCH handler, UPDATE/DELETE query, or database migration, work through this checklist **before writing code**:
+
+1. **Partial update safe?** Does the handler use read-modify-write (fetch existing → overlay sent fields → save)? A blind `UPDATE ... SET col1=?, col2=?, ...` from decoded request body will zero-value any field the client didn't send. See `updatePractice` in `internal/api/router.go` for the correct pattern using `json.RawMessage` field detection.
+
+2. **DB constraints enforced?** Are critical columns protected by NOT NULL and CHECK constraints? If adding a new column that has a finite set of valid values, add a CHECK constraint in the migration.
+
+3. **Migration added?** Does the change require a schema change? If yes, add a goose migration in `internal/db/migrations/postgres/`. Every column, constraint, index, and trigger lives in goose migrations — there is no separate SQLite path.
+
+4. **Test coverage?** Is there a Go test that sends a partial update (missing fields) and verifies the existing values are preserved? If not, write one.
+
+5. **Frontend sends full object?** If the frontend calls PUT on a resource, does it send the complete current state, not just the changed field? Check the API call payload.
+
+6. **Destructive operation review?** DELETE endpoints, status changes, archive operations — verify the operation is reversible or has confirmation UI.
+
+> **Origin:** On March 18, 2026, a single bell icon toggle corrupted a practice record because the frontend sent a partial PUT, the backend did a blind full-column UPDATE, and nothing in the database prevented empty values. This checklist exists to prevent that class of bug.
+
 ## Running the Becoming App Locally
 
 **Location:** `scripts/becoming/`
