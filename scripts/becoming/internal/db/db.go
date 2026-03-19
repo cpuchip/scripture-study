@@ -296,6 +296,11 @@ func (db *DB) runSQLiteMigrations() error {
 		return fmt.Errorf("push notifications migration: %w", err)
 	}
 
+	// Migration: add Phase 2 notification columns
+	if err := db.migrateNotificationsPhase2(); err != nil {
+		return fmt.Errorf("notifications phase 2 migration: %w", err)
+	}
+
 	// Ensure default user exists before seeding (prompts table has FK to users)
 	if _, err := db.EnsureDefaultUser(); err != nil {
 		return fmt.Errorf("ensuring default user: %w", err)
@@ -344,6 +349,26 @@ func (db *DB) migratePushNotifications() error {
 		return fmt.Errorf("creating user_settings: %w", err)
 	}
 
+	return nil
+}
+
+// migrateNotificationsPhase2 adds per-practice notification columns to user_settings.
+func (db *DB) migrateNotificationsPhase2() error {
+	if db.hasColumn("user_settings", "notify_practices_by_default") {
+		return nil
+	}
+	cols := []struct{ name, def string }{
+		{"notify_practices_by_default", "INTEGER NOT NULL DEFAULT 0"},
+		{"quiet_hours_start", "TEXT"},
+		{"quiet_hours_end", "TEXT"},
+		{"default_timing", "TEXT NOT NULL DEFAULT 'at_time'"},
+	}
+	for _, c := range cols {
+		if _, err := db.Exec(fmt.Sprintf(`ALTER TABLE user_settings ADD COLUMN %s %s`, c.name, c.def)); err != nil {
+			return fmt.Errorf("adding %s column: %w", c.name, err)
+		}
+	}
+	log.Println("Migration applied: user_settings Phase 2 notification columns")
 	return nil
 }
 

@@ -3,12 +3,27 @@ import { request } from '../api'
 
 export type NotificationPermission = 'default' | 'granted' | 'denied'
 
+export interface NotificationSettings {
+  notifications_enabled: boolean
+  notify_practices_by_default: boolean
+  quiet_hours_start: string | null
+  quiet_hours_end: string | null
+  default_timing: string
+}
+
 const permission = ref<NotificationPermission>(
   typeof Notification !== 'undefined' ? Notification.permission : 'default',
 )
 const subscribed = ref(false)
 const loading = ref(false)
 const supported = ref('serviceWorker' in navigator && 'PushManager' in window)
+const settings = ref<NotificationSettings>({
+  notifications_enabled: false,
+  notify_practices_by_default: false,
+  quiet_hours_start: null,
+  quiet_hours_end: null,
+  default_timing: 'at_time',
+})
 
 export function useNotifications() {
   async function getVAPIDKey(): Promise<string | null> {
@@ -123,15 +138,51 @@ export function useNotifications() {
     }
   }
 
+  async function loadSettings(): Promise<void> {
+    try {
+      const data = await request<NotificationSettings>('/push/settings')
+      settings.value = data
+    } catch {
+      // keep defaults
+    }
+  }
+
+  async function saveSettings(updates: Partial<NotificationSettings>): Promise<boolean> {
+    const merged = { ...settings.value, ...updates }
+    try {
+      const data = await request<NotificationSettings>('/push/settings', {
+        method: 'PUT',
+        body: JSON.stringify(merged),
+      })
+      settings.value = data
+      return true
+    } catch {
+      return false
+    }
+  }
+
+  async function enableAllPractices(): Promise<number> {
+    try {
+      const data = await request<{ updated: number }>('/push/enable-all', { method: 'POST' })
+      return data.updated
+    } catch {
+      return 0
+    }
+  }
+
   return {
     permission,
     subscribed,
     loading,
     supported,
+    settings,
     subscribe,
     unsubscribe,
     checkSubscription,
     sendTest,
+    loadSettings,
+    saveSettings,
+    enableAllPractices,
   }
 }
 

@@ -2,6 +2,9 @@
 import { ref, computed, onMounted } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import { api, type Practice, type PillarLink } from '../api'
+import { useNotifications } from '../composables/useNotifications'
+
+const { subscribed: notifSubscribed } = useNotifications()
 
 function localDateStr(d: Date = new Date()): string {
   return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`
@@ -509,6 +512,26 @@ function goToPractice(p: Practice) {
   }
 }
 
+function practiceNotify(p: Practice): boolean {
+  if (!p.config) return false
+  try {
+    const cfg = JSON.parse(p.config)
+    return !!cfg.notify
+  } catch {
+    return false
+  }
+}
+
+async function togglePracticeNotify(p: Practice) {
+  const current = practiceNotify(p)
+  let cfg: Record<string, any> = {}
+  try { cfg = JSON.parse(p.config || '{}') } catch { /* use empty */ }
+  cfg.notify = !current
+  const newConfig = JSON.stringify(cfg)
+  await api.updatePractice(p.id, { config: newConfig } as Partial<Practice>)
+  p.config = newConfig
+}
+
 // Scripture lookup
 const lookingUp = ref(false)
 const lookupError = ref('')
@@ -996,6 +1019,23 @@ onMounted(async () => {
         </div>
 
         <div class="flex items-center gap-2 ml-4">
+          <!-- Per-practice notification toggle (scheduled practices only) -->
+          <button
+            v-if="notifSubscribed && p.type === 'scheduled' && p.status === 'active'"
+            @click.stop="togglePracticeNotify(p)"
+            class="text-xs px-1 py-1 rounded"
+            :class="practiceNotify(p) ? 'text-indigo-500 hover:text-indigo-700' : 'text-gray-300 hover:text-gray-500'"
+            :aria-label="practiceNotify(p) ? 'Disable notifications for ' + p.name : 'Enable notifications for ' + p.name"
+            :title="practiceNotify(p) ? 'Notifications on' : 'Notifications off'"
+          >
+            <svg v-if="practiceNotify(p)" xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+              <path d="M10 2a6 6 0 00-6 6v3.586l-.707.707A1 1 0 004 14h12a1 1 0 00.707-1.707L16 11.586V8a6 6 0 00-6-6zM10 18a3 3 0 01-3-3h6a3 3 0 01-3 3z" />
+            </svg>
+            <svg v-else xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M3.707 2.293a1 1 0 00-1.414 1.414l14 14a1 1 0 001.414-1.414l-1.473-1.473A1 1 0 0016.5 14h-13a1 1 0 01-.5-1.866V8a6 6 0 014.27-5.748A2 2 0 018 2.5V2a2 2 0 014 0v.5a2 2 0 01.73.252L3.707 2.293zM10 18a3 3 0 01-3-3h6a3 3 0 01-3 3z" clip-rule="evenodd" />
+            </svg>
+          </button>
+
           <router-link
             :to="`/practices/${p.id}/history`"
             class="text-xs text-gray-400 hover:text-indigo-500"

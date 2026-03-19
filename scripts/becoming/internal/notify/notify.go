@@ -84,6 +84,16 @@ func (s *Scheduler) tick() {
 			continue
 		}
 
+		// Check quiet hours
+		settings, err := s.db.GetUserSettings(userID)
+		if err != nil {
+			log.Printf("notification: error getting settings for user %d: %v", userID, err)
+			continue
+		}
+		if inQuietHours(now, settings.QuietHoursStart, settings.QuietHoursEnd) {
+			continue
+		}
+
 		due, err := s.db.DuePracticesForNotification(userID, date)
 		if err != nil {
 			log.Printf("notification: error getting due practices for user %d: %v", userID, err)
@@ -242,4 +252,37 @@ func buildPayload(practices []*db.DailySummary) []byte {
 // VAPIDPublicKey returns the public VAPID key (needed by frontend).
 func (s *Scheduler) VAPIDPublicKey() string {
 	return s.vapidPublicKey
+}
+
+// inQuietHours checks if the current time falls within the user's quiet hours.
+// Handles overnight ranges (e.g. 22:00 to 07:00).
+func inQuietHours(now time.Time, start, end *string) bool {
+	if start == nil || end == nil || *start == "" || *end == "" {
+		return false
+	}
+	nowMinutes := now.Hour()*60 + now.Minute()
+	startMinutes := parseHHMM(*start)
+	endMinutes := parseHHMM(*end)
+	if startMinutes < 0 || endMinutes < 0 {
+		return false
+	}
+
+	if startMinutes <= endMinutes {
+		// Same-day range (e.g. 09:00 to 17:00)
+		return nowMinutes >= startMinutes && nowMinutes < endMinutes
+	}
+	// Overnight range (e.g. 22:00 to 07:00)
+	return nowMinutes >= startMinutes || nowMinutes < endMinutes
+}
+
+func parseHHMM(s string) int {
+	if len(s) != 5 || s[2] != ':' {
+		return -1
+	}
+	h := int(s[0]-'0')*10 + int(s[1]-'0')
+	m := int(s[3]-'0')*10 + int(s[4]-'0')
+	if h < 0 || h > 23 || m < 0 || m > 59 {
+		return -1
+	}
+	return h*60 + m
 }

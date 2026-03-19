@@ -19,6 +19,7 @@ func Router(database *db.DB, scheduler *Scheduler) chi.Router {
 	r.Post("/test", handleTest(scheduler))
 	r.Get("/settings", handleGetSettings(database))
 	r.Put("/settings", handleUpdateSettings(database))
+	r.Post("/enable-all", handleEnableAll(database))
 
 	return r
 }
@@ -133,21 +134,38 @@ func handleUpdateSettings(database *db.DB) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		userID := auth.UserID(r)
 
-		var req struct {
-			NotificationsEnabled bool `json:"notifications_enabled"`
-		}
+		var req db.UserSettings
 		if err := json.NewDecoder(r.Body).Decode(&req); err != nil {
 			writeError(w, http.StatusBadRequest, "invalid JSON")
 			return
 		}
+		if req.DefaultTiming == "" {
+			req.DefaultTiming = "at_time"
+		}
 
-		if err := database.SetUserNotificationsEnabled(userID, req.NotificationsEnabled); err != nil {
+		if err := database.SaveUserSettings(userID, &req); err != nil {
 			writeError(w, http.StatusInternalServerError, "failed to update settings")
 			return
 		}
 
 		w.Header().Set("Content-Type", "application/json")
-		json.NewEncoder(w).Encode(map[string]bool{"notifications_enabled": req.NotificationsEnabled})
+		json.NewEncoder(w).Encode(req)
+	}
+}
+
+// handleEnableAll retroactively sets notify:true on all scheduled practices for the user.
+func handleEnableAll(database *db.DB) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		userID := auth.UserID(r)
+
+		count, err := database.EnableNotifyForScheduledPractices(userID)
+		if err != nil {
+			writeError(w, http.StatusInternalServerError, "failed to enable notifications")
+			return
+		}
+
+		w.Header().Set("Content-Type", "application/json")
+		json.NewEncoder(w).Encode(map[string]int64{"updated": count})
 	}
 }
 

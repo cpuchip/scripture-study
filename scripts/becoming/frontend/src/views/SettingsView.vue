@@ -7,18 +7,36 @@ import { authApi, type APIToken, type AuthProviders, type SessionInfo } from '..
 
 const router = useRouter()
 const { user, refresh, logout } = useAuth()
-const { permission, subscribed, loading: notifLoading, supported: notifSupported, subscribe, unsubscribe, checkSubscription, sendTest } = useNotifications()
+const { permission, subscribed, loading: notifLoading, supported: notifSupported, settings: notifSettings, subscribe, unsubscribe, checkSubscription, sendTest, loadSettings, saveSettings, enableAllPractices } = useNotifications()
 
 // Notification handling
 const testSending = ref(false)
+const savingSettings = ref(false)
 
 async function toggleNotifications() {
   if (subscribed.value) {
     await unsubscribe()
   } else {
-    await subscribe()
+    const ok = await subscribe()
+    if (ok) await loadSettings()
   }
 }
+
+async function updateNotifSetting(updates: Record<string, any>) {
+  savingSettings.value = true
+  await saveSettings(updates)
+  savingSettings.value = false
+}
+
+async function handleEnableAll() {
+  const count = await enableAllPractices()
+  if (count > 0) {
+    enableAllMessage.value = `Enabled notifications for ${count} practice${count > 1 ? 's' : ''}.`
+    setTimeout(() => (enableAllMessage.value = ''), 3000)
+  }
+}
+
+const enableAllMessage = ref('')
 
 async function sendTestNotification() {
   testSending.value = true
@@ -288,6 +306,7 @@ onMounted(() => {
   loadTokens()
   loadSessions()
   checkSubscription()
+  loadSettings()
 })
 </script>
 
@@ -413,6 +432,100 @@ onMounted(() => {
             {{ testSending ? 'Sending...' : 'Send test notification' }}
           </button>
         </div>
+
+        <!-- Extended settings (only when subscribed) -->
+        <template v-if="subscribed">
+          <div class="border-t border-gray-100 pt-4 space-y-4">
+            <!-- Notify new practices by default -->
+            <div class="flex items-center justify-between">
+              <div>
+                <p class="text-sm font-medium">Notify for new practices by default</p>
+                <p class="text-xs text-gray-500">New scheduled practices will have notifications turned on automatically.</p>
+              </div>
+              <button
+                @click="updateNotifSetting({ notify_practices_by_default: !notifSettings.notify_practices_by_default })"
+                :disabled="savingSettings"
+                :class="[
+                  'relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500',
+                  notifSettings.notify_practices_by_default ? 'bg-indigo-600' : 'bg-gray-200',
+                  savingSettings ? 'opacity-50 cursor-not-allowed' : ''
+                ]"
+                role="switch"
+                :aria-checked="notifSettings.notify_practices_by_default"
+                aria-label="Notify for new practices by default"
+              >
+                <span
+                  :class="[
+                    'pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out',
+                    notifSettings.notify_practices_by_default ? 'translate-x-5' : 'translate-x-0'
+                  ]"
+                />
+              </button>
+            </div>
+
+            <!-- Enable all existing practices -->
+            <div>
+              <button
+                @click="handleEnableAll"
+                class="text-sm text-indigo-600 hover:text-indigo-800"
+              >
+                Enable notifications for all scheduled practices
+              </button>
+              <Transition enter-active-class="transition-opacity duration-200" leave-active-class="transition-opacity duration-150" enter-from-class="opacity-0" leave-to-class="opacity-0">
+                <p v-if="enableAllMessage" class="text-xs text-green-600 mt-1">{{ enableAllMessage }}</p>
+              </Transition>
+            </div>
+
+            <!-- Quiet hours -->
+            <div>
+              <p class="text-sm font-medium mb-2">Quiet hours</p>
+              <p class="text-xs text-gray-500 mb-2">No notifications will be sent during this window.</p>
+              <div class="flex items-center gap-2">
+                <input
+                  type="time"
+                  :value="notifSettings.quiet_hours_start || ''"
+                  @change="updateNotifSetting({ quiet_hours_start: ($event.target as HTMLInputElement).value || null })"
+                  class="border border-gray-300 rounded px-2 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                  aria-label="Quiet hours start"
+                />
+                <span class="text-sm text-gray-500">to</span>
+                <input
+                  type="time"
+                  :value="notifSettings.quiet_hours_end || ''"
+                  @change="updateNotifSetting({ quiet_hours_end: ($event.target as HTMLInputElement).value || null })"
+                  class="border border-gray-300 rounded px-2 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                  aria-label="Quiet hours end"
+                />
+                <button
+                  v-if="notifSettings.quiet_hours_start || notifSettings.quiet_hours_end"
+                  @click="updateNotifSetting({ quiet_hours_start: null, quiet_hours_end: null })"
+                  class="text-xs text-gray-400 hover:text-gray-600"
+                  aria-label="Clear quiet hours"
+                >
+                  Clear
+                </button>
+              </div>
+            </div>
+
+            <!-- Default timing -->
+            <div>
+              <p class="text-sm font-medium mb-2">Default reminder timing</p>
+              <p class="text-xs text-gray-500 mb-2">When to send the notification relative to the scheduled time.</p>
+              <select
+                :value="notifSettings.default_timing"
+                @change="updateNotifSetting({ default_timing: ($event.target as HTMLSelectElement).value })"
+                class="border border-gray-300 rounded px-2 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                aria-label="Default reminder timing"
+              >
+                <option value="at_time">At the scheduled time</option>
+                <option value="10_min_before">10 minutes before</option>
+                <option value="30_min_before">30 minutes before</option>
+                <option value="1_hour_before">1 hour before</option>
+                <option value="1_day_before">1 day before</option>
+              </select>
+            </div>
+          </div>
+        </template>
       </div>
     </section>
 

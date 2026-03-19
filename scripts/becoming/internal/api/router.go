@@ -232,6 +232,12 @@ func createPractice(database *db.DB) http.HandlerFunc {
 		}
 		p.Active = true
 
+		// Set per-practice notify flag based on user's default setting
+		settings, _ := database.GetUserSettings(userID)
+		if settings != nil && settings.NotificationsEnabled && settings.NotifyByDefault {
+			p.Config = injectNotifyFlag(p.Config, true)
+		}
+
 		if err := database.CreatePractice(userID, &p); err != nil {
 			writeError(w, http.StatusInternalServerError, err.Error())
 			return
@@ -996,6 +1002,19 @@ func splitComma(s string) []string {
 
 func parseID(r *http.Request) (int64, error) {
 	return strconv.ParseInt(chi.URLParam(r, "id"), 10, 64)
+}
+
+func injectNotifyFlag(configJSON string, notify bool) string {
+	var m map[string]any
+	if err := json.Unmarshal([]byte(configJSON), &m); err != nil {
+		return configJSON
+	}
+	m["notify"] = notify
+	out, err := json.Marshal(m)
+	if err != nil {
+		return configJSON
+	}
+	return string(out)
 }
 
 // --- Notes ---

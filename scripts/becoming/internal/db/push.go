@@ -1,6 +1,7 @@
 package db
 
 import (
+	"encoding/json"
 	"fmt"
 	"time"
 )
@@ -130,7 +131,8 @@ func (db *DB) NotificationsSentToday(userID int64, date string) (map[int64]bool,
 }
 
 // DuePracticesForNotification returns active scheduled practices that are due for a user on a given date.
-// It reuses the same scheduling logic as the daily summary.
+// It reuses the same scheduling logic as the daily summary, then filters to practices
+// with the per-practice notify flag enabled in their config JSON.
 func (db *DB) DuePracticesForNotification(userID int64, date string) ([]*DailySummary, error) {
 	summaries, err := db.GetDailySummary(userID, date)
 	if err != nil {
@@ -139,12 +141,34 @@ func (db *DB) DuePracticesForNotification(userID int64, date string) ([]*DailySu
 
 	var due []*DailySummary
 	for _, s := range summaries {
-		// Only include scheduled practices that are actually due
+		// Only include scheduled practices that are actually due and not yet logged
 		if s.IsDue != nil && *s.IsDue && s.LogCount == 0 {
+			// Check per-practice notify flag in config JSON
+			if !practiceNotifyEnabled(s.Config) {
+				continue
+			}
 			due = append(due, s)
 		}
 	}
 	return due, nil
+}
+
+// practiceNotifyEnabled checks the "notify" field in a practice's config JSON.
+// Returns false if the field is missing or explicitly false.
+func practiceNotifyEnabled(configJSON string) bool {
+	if configJSON == "" || configJSON == "{}" {
+		return false
+	}
+	var cfg map[string]any
+	if err := json.Unmarshal([]byte(configJSON), &cfg); err != nil {
+		return false
+	}
+	notify, ok := cfg["notify"]
+	if !ok {
+		return false
+	}
+	b, ok := notify.(bool)
+	return ok && b
 }
 
 // GetUserNotificationsEnabled checks if a user has notifications enabled.
@@ -179,18 +203,54 @@ func (db *DB) SetUserNotificationsEnabled(userID int64, enabled bool) error {
 
 // GetUserSettings returns notification settings for a user.
 type UserSettings struct {
-	NotificationsEnabled bool `json:"notifications_enabled"`
+	NotificationsEnabled    bool    `json:"notifications_enabled"`
+	NotifyByDefault         bool    `json:"notify_practices_by_default"`
+	QuietHoursStart         *string `json:"quiet_hours_start"`
+	QuietHoursEnd           *string `json:"quiet_hours_end"`
+	DefaultTiming           string  `json:"default_timing"`
 }
 
 func (db *DB) GetUserSettings(userID int64) (*UserSettings, error) {
-	s := &UserSettings{}
+	s := &UserSettings{DefaultTiming: "at_time"}
 	err := db.QueryRow(`
-		SELECT notifications_enabled FROM user_settings WHERE user_id = ?`, userID).Scan(&s.NotificationsEnabled)
+		SELECT notifications_enabled, notify_practices_by_default, quiet_hours_start, quiet_hours_end, default_timing
+		FROM user_settings WHERE user_id = ?`, userID).Scan(
+		&s.NotificationsEnabled, &s.NotifyByDefault, &s.QuietHoursStart, &s.QuietHoursEnd, &s.DefaultTiming)
 	if err != nil {
 		// No settings row yet — return defaults
-		return &UserSettings{NotificationsEnabled: false}, nil
+		return &UserSettings{DefaultTiming: "at_time"}, nil
 	}
 	return s, nil
+}
+
+// SaveUserSettings upserts all notification settings for a user.
+func (db *DB) SaveUserSettings(userID int64, s *UserSettings) error {
+	if db.IsPostgres() {
+		_, err := db.Exec(`
+			INSERT INTO user_settings (user_id, notifications_enabled, notify_practices_by_default, quiet_hours_start, quiet_hours_end, default_timing)
+			VALUES (?, ?, ?, ?, ?, ?)
+			ON CONFLICT (user_id) DO UPDATE SET
+				notifications_enabled = ?,
+				notify_practices_by_default = ?,
+				quiet_hours_start = ?,
+				quiet_hours_end = ?,
+				default_timing = ?`,
+			userID, s.NotificationsEnabled, s.NotifyByDefault, s.QuietHoursStart, s.QuietHoursEnd, s.DefaultTiming,
+			s.NotificationsEnabled, s.NotifyByDefault, s.QuietHoursStart, s.QuietHoursEnd, s.DefaultTiming)
+		return err
+	}
+	_, err := db.Exec(`
+		INSERT INTO user_settings (user_id, notifications_enabled, notify_practices_by_default, quiet_hours_start, quiet_hours_end, default_timing)
+		VALUES (?, ?, ?, ?, ?, ?)
+		ON CONFLICT(user_id) DO UPDATE SET
+			notifications_enabled = ?,
+			notify_practices_by_default = ?,
+			quiet_hours_start = ?,
+			quiet_hours_end = ?,
+			default_timing = ?`,
+		userID, s.NotificationsEnabled, s.NotifyByDefault, s.QuietHoursStart, s.QuietHoursEnd, s.DefaultTiming,
+		s.NotificationsEnabled, s.NotifyByDefault, s.QuietHoursStart, s.QuietHoursEnd, s.DefaultTiming)
+	return err
 }
 
 // CleanupOldNotificationLogs removes notification logs older than 7 days.
@@ -198,4 +258,32 @@ func (db *DB) CleanupOldNotificationLogs() error {
 	cutoff := time.Now().AddDate(0, 0, -7).Format("2006-01-02")
 	_, err := db.Exec(`DELETE FROM notification_log WHERE date < ?`, cutoff)
 	return err
+}
+
+// EnableNotifyForScheduledPractices sets notify:true in config JSON for all of a user's
+// scheduled practices that don't already have it. Returns the count of updated practices.
+func (db *DB) EnableNotifyForScheduledPractices(userID int64) (int64, error) {
+	if db.IsPostgres() {
+		res, err := db.Exec(`
+			UPDATE practices
+			SET config = jsonb_set(COALESCE(config::jsonb, '{}'), '{notify}', 'true')
+			WHERE user_id = ? AND type = 'scheduled' AND status = 'active'
+			  AND (config::jsonb->>'notify' IS NULL OR config::jsonb->>'notify' = 'false')`,
+			userID)
+		if err != nil {
+			return 0, err
+		}
+		return res.RowsAffected()
+	}
+	// SQLite: use json_set
+	res, err := db.Exec(`
+		UPDATE practices
+		SET config = json_set(COALESCE(config, '{}'), '$.notify', json('true'))
+		WHERE user_id = ? AND type = 'scheduled' AND status = 'active'
+		  AND (json_extract(config, '$.notify') IS NULL OR json_extract(config, '$.notify') = 0)`,
+		userID)
+	if err != nil {
+		return 0, err
+	}
+	return res.RowsAffected()
 }
