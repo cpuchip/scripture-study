@@ -3,7 +3,41 @@
 **Binding problem:** ibeco.me can't reach users unless they open it. Practices go untracked because the app relies on the user remembering to visit. Desktop notifications provide the "gentle tap on the shoulder" — reminding users when practices are due without requiring the site to be open.
 
 **Created:** 2026-03-17
+**Updated:** 2026-03-18
 **Research:** [.spec/scratch/notifications/main.md](../../scratch/notifications/main.md)
+
+---
+
+## Phase 1 Status: SHIPPED (March 17-18, 2026)
+
+What Phase 1 delivered:
+
+| Component | Status |
+|-----------|--------|
+| Global `notifications_enabled` toggle in Settings | Done |
+| `push_subscriptions` table (SQLite + PostgreSQL) | Done |
+| `notification_log` table (dedup, 7-day cleanup) | Done |
+| `user_settings` table (`notifications_enabled` only) | Done |
+| Service worker (`sw.js`) + PWA manifest | Done |
+| VAPID key generation + env var loading | Done |
+| Scheduler goroutine (1-min tick, due practice check) | Done |
+| Test notification button in Settings | Done |
+| 410 Gone subscription cleanup | Done |
+| Notification collapsing (multiple due → one notification) | Done |
+| Subscribe/unsubscribe endpoints | Done |
+| FK bug fix: `EnsureDefaultUser()` before `SeedPrompts()` | Done |
+
+What Phase 1 did NOT build (deferred to Phase 2):
+
+| Component | Notes |
+|-----------|-------|
+| `notify_practices_by_default` setting | Spec called for it in Phase 1 data model, not built |
+| `quiet_hours` / `max_per_hour` | Spec listed in Phase 1 config model, not built |
+| `default_timing` setting | Not built |
+| Per-practice `notify` field in config JSON | Not built |
+| Per-practice notification UI | Phase 2 scope |
+
+**Current behavior:** When a user enables notifications, ALL due practices trigger notifications. There's no way to control which practices send notifications or when. This is the right MVP — notifications work — but Phase 2 needs to add the controls.
 
 ---
 
@@ -67,9 +101,11 @@ Web Push API makes this possible without a native app install. A service worker 
 
 ## 3. Phased Delivery
 
-### Phase 1: Foundation — Global Notifications (1 session)
+### Phase 1: Foundation — Global Notifications (SHIPPED)
 
-**Delivers:** "Enable notifications" toggle in settings → browser notifications for due practices.
+See "Phase 1 Status" section above for what was delivered.
+
+**Original spec included a three-tier configuration model.** Phase 1 only implemented the global toggle. The full config model is documented below for reference — Phase 2 builds on it.
 
 #### Configuration Model (Three-Tier)
 
@@ -81,9 +117,9 @@ Notifications use a layered opt-in design: global toggle → default-for-new-pra
 │                                                         │
 │  notifications_enabled: false  ← global kill switch     │
 │  notify_practices_by_default: false  ← new practices    │
-│  quiet_hours: { start: "22:00", end: "07:00" }          │
-│  max_per_hour: 5                                        │
-│  default_timing: ["at_time"]                             │
+│  quiet_hours_start: "22:00"                              │
+│  quiet_hours_end: "07:00"                                │
+│  default_timing: "at_time"                               │
 └─────────────────────────────────────────────────────────┘
          │
          ▼  (only shown if notifications_enabled = true)
@@ -91,7 +127,7 @@ Notifications use a layered opt-in design: global toggle → default-for-new-pra
 │ Per-Practice (notification_config in practice JSON)     │
 │                                                         │
 │  notify: false          ← disabled by default           │
-│  timing: ["at_time"]    ← inherits from default_timing  │
+│  timing: "at_time"      ← inherits from default_timing  │
 └─────────────────────────────────────────────────────────┘
 ```
 
@@ -105,82 +141,88 @@ Notifications use a layered opt-in design: global toggle → default-for-new-pra
 6. Flipping `notify_practices_by_default` from true → false does NOT retroactively disable. That would be destructive — the user may have intentionally enabled specific ones.
 7. Per-practice `notify: true` with no `timing` array → inherits `default_timing` from user settings.
 
-**Phase 1 ships only the global toggle and at_time notifications.** Per-practice config UI is Phase 2, but the data model supports it from day one so we don't need a migration later.
+**Phase 1 shipped only the global toggle and at_time notifications.** The data model additions listed above (per-practice fields, quiet hours, etc.) are built in Phase 2.
 
-**Backend:**
+**Phase 1 Implementation Details (reference):**
 
-| Component | Detail |
-|-----------|--------|
-| VAPID key pair | Generate once, store in env (`VAPID_PUBLIC_KEY`, `VAPID_PRIVATE_KEY`, `VAPID_CONTACT`) |
-| `push_subscriptions` table | `id`, `user_id`, `endpoint`, `keys_p256dh`, `keys_auth`, `user_agent`, `created_at` |
-| `POST /api/push/subscribe` | Store push subscription (receives JSON from frontend Push API) |
-| `DELETE /api/push/unsubscribe` | Remove subscription by endpoint |
-| `GET /api/push/vapid-key` | Return the public VAPID key (frontend needs it to subscribe) |
-| Notification scheduler | Goroutine in `main.go`: tick every minute, check for newly-due practices, send push to subscribed users |
-| `notification_log` table | `id`, `user_id`, `practice_id`, `sent_at`, `timing_type` — prevents duplicate sends |
+Backend: VAPID keys in env vars. `push_subscriptions` table (id, user_id, endpoint, keys_p256dh, keys_auth, user_agent, created_at). Endpoints: `POST /api/push/subscribe`, `DELETE /api/push/unsubscribe`, `GET /api/push/vapid-key`, `POST /api/push/test`, `GET /api/push/settings`, `PUT /api/push/settings`. Scheduler goroutine ticks every minute, checks due practices via `DuePracticesForNotification()`, collapses multiple into summary, sends via `webpush.SendNotification()`, cleans up 410s. `notification_log` prevents duplicate sends.
 
-**Frontend:**
-
-| Component | Detail |
-|-----------|--------|
-| `public/sw.js` | Service worker: handles `push` event → `showNotification()`, `notificationclick` → `clients.openWindow('/today')` |
-| `public/manifest.json` | PWA manifest (required for service worker + makes app installable as bonus) |
-| Register SW in `main.ts` | `navigator.serviceWorker.register('/sw.js')` |
-| Settings toggle | "Enable Notifications" button in SettingsView → `Notification.requestPermission()` → `pushManager.subscribe()` → POST to `/api/push/subscribe` |
-
-**Scheduler logic (pseudo-code):**
-```go
-func (s *Scheduler) tick(now time.Time) {
-    users := s.db.UsersWithPushSubscriptions()
-    for _, user := range users {
-        due := s.db.DuePracticesForUser(user.ID, now)
-        alreadySent := s.db.NotificationsSentToday(user.ID)
-        unsent := filterAlreadySent(due, alreadySent)
-        if len(unsent) == 0 { continue }
-
-        // Collapse: group into one notification if multiple
-        payload := buildPayload(unsent)
-        for _, sub := range s.db.PushSubscriptions(user.ID) {
-            webpush.Send(sub, payload, s.vapidKeys)
-        }
-        s.db.LogNotifications(user.ID, unsent)
-    }
-}
-```
-
-**Verify:**
-- Enable notifications on one browser → see a test notification
-- Create a practice due "now" → notification appears within 1 minute
-- Close the tab → notification still appears
-- Click notification → ibeco.me opens to /today
+Frontend: `public/sw.js` handles push + click events. `public/manifest.json` for PWA. SW registered in `main.ts`. Settings toggle uses `useNotifications()` composable for subscribe/unsubscribe lifecycle.
 
 ---
 
 ### Phase 2: Per-Practice Configuration (1 session)
 
-**Delivers:** Each practice can have its own notification settings: timing, enable/disable. This is the UI that Phase 1's data model already supports.
+**Delivers:** Users can control WHICH practices send notifications and WHEN. Also adds quiet hours to prevent 3am reminders.
 
-**Frontend:**
+**Current state (Phase 1):** All due practices notify. No per-practice control. No quiet hours. `user_settings` table only has `notifications_enabled`. Practice config JSON has no notification fields.
+
+#### 2a. Data Model Changes
+
+Phase 1 deferred these schema additions. Phase 2 must add them.
+
+**user_settings table — new columns:**
+
+| Column | Type | Default | Purpose |
+|--------|------|---------|---------|
+| `notify_practices_by_default` | boolean | false | New practices auto-get `notify: true` |
+| `quiet_hours_start` | text (HH:MM) | NULL | No notifications after this time |
+| `quiet_hours_end` | text (HH:MM) | NULL | No notifications before this time |
+| `default_timing` | text | "at_time" | Default timing for new practice notifications |
+
+Requires both SQLite migration (in `runSQLiteMigrations()`) and PostgreSQL goose migration.
+
+**Practice config JSON — new fields:**
+
+```json
+{
+  "notify": false,
+  "timing": "at_time"
+}
+```
+
+Added to the practice's existing config JSON blob. No new table needed. `notify` defaults to `false` (or `true` if `notify_practices_by_default` is on when created). `timing` inherits from `default_timing` if not set.
+
+#### 2b. Backend Changes
 
 | Component | Detail |
 |-----------|--------|
-| Per-practice toggle | In PracticesView or practice detail: notification bell icon. Only visible when `notifications_enabled = true` in settings. |
-| Timing picker | Per-practice: which timing(s) to use. Falls back to `default_timing` if not set. |
-| `notify_practices_by_default` toggle | In SettingsView under notifications. When toggled on, retroactively enables for all scheduled practices (with confirmation toast). |
-| Quiet hours config | In SettingsView: start/end time pickers |
-| "Test notification" button | In SettingsView: sends a test push immediately |
+| `GET/PUT /api/push/settings` | Extend to include all new user_settings fields |
+| `UserSettings` struct in `push.go` | Add `NotifyByDefault`, `QuietHoursStart`, `QuietHoursEnd`, `DefaultTiming` |
+| `GetUserSettings` / `SetUserSettings` | Read/write all columns |
+| Practice CRUD | When creating a practice, set `notify` based on `notify_practices_by_default`. No change to update — practice config JSON already round-trips. |
+| Retroactive toggle | When `notify_practices_by_default` goes false→true: update all existing practices that have a schedule AND `notify` is still `false` to `notify: true`. Return count of updated practices. |
+| `DuePracticesForNotification` | Filter on per-practice `notify` field — only send for practices where `notify: true` |
+| Quiet hours enforcement | Scheduler checks user's `quiet_hours_start`/`quiet_hours_end` before sending. If current time is within quiet hours, skip entirely. |
 
-**Backend:**
+**Retroactive toggle SQL (PostgreSQL):**
+```sql
+UPDATE practices 
+SET config = jsonb_set(COALESCE(config, '{}'), '{notify}', 'true')
+WHERE user_id = $1 
+  AND schedule IS NOT NULL
+  AND (config->>'notify' IS NULL OR config->>'notify' = 'false')
+```
+
+SQLite equivalent uses `json_set()`.
+
+**Behavior rules (unchanged from original spec):**
+1. `notify_practices_by_default` false→true: retroactively enables for scheduled practices. Toast: "Enabled notifications for N practices."
+2. `notify_practices_by_default` true→false: does NOT retroactively disable. User may have intentionally enabled specific ones.
+3. Per-practice `notify: true` with no `timing`: inherits `default_timing` from user settings.
+
+#### 2c. Frontend Changes
 
 | Component | Detail |
 |-----------|--------|
-| `PUT /api/settings` | Update user notification preferences (global settings) |
-| `PUT /api/practices/{id}` | Already exists — extend config JSON to include `notify` and `timing` |
-| `POST /api/push/test` | Send a test notification to the user's subscriptions |
-| Retroactive update | When `notify_practices_by_default` goes false→true: `UPDATE practices SET config = jsonb_set(config, '{notify}', 'true') WHERE user_id = ? AND type = 'scheduled' AND (config->>'notify' IS NULL OR config->>'notify' = 'false')` (PostgreSQL) or equivalent for SQLite |
-| Quiet hours enforcement | Scheduler checks user's quiet hours before sending |
+| Per-practice bell icon | In practice list/detail: toggles `notify` in practice config JSON. Only visible when `notifications_enabled = true`. |
+| `notify_practices_by_default` toggle | In SettingsView under notifications section. When toggled on, calls API which returns count → toast shows result. |
+| Quiet hours config | In SettingsView: start/end time pickers (HH:MM select or input). |
+| Default timing picker | In SettingsView: dropdown for the default timing option. |
+| Per-practice timing | Optional override on practice detail: timing dropdown. Only shown if per-practice `notify` is true. |
 
-**Timing options:**
+#### 2d. Timing Options
+
 | Value | Description |
 |-------|-------------|
 | `at_time` | When the practice is due (default) |
@@ -188,14 +230,17 @@ func (s *Scheduler) tick(now time.Time) {
 | `30_min_before` | 30 minutes before |
 | `1_hour_before` | 1 hour before |
 | `1_day_before` | Day before (for weekly/monthly) |
-| `custom_N` | N minutes before (user-specified) |
 
-**Verify:**
+Note: Dropped `custom_N` from original spec. Premature. Can add later if needed.
+
+#### 2e. Verify
+
 - Per-practice bell icon only visible when global notifications are enabled
 - Toggle `notify_practices_by_default` on → toast shows N practices updated
-- Set a practice to notify "10 min before" → notification arrives 10 min early
-- Set quiet hours → no notifications during that window
+- Create a new practice while default is on → it has `notify: true`
 - Disable notifications for one practice → no notification for it, others still fire
+- Set quiet hours → no notifications during that window
+- Set a practice to notify "10 min before" → notification arrives 10 min early
 
 ---
 
