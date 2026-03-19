@@ -12,6 +12,7 @@ CREATE TABLE audit_log (
 CREATE INDEX idx_audit_log_table_row ON audit_log(table_name, row_id);
 CREATE INDEX idx_audit_log_changed_at ON audit_log(changed_at);
 
+-- +goose StatementBegin
 -- Audit function: captures OLD row as JSON before UPDATE/DELETE
 CREATE OR REPLACE FUNCTION audit_trigger_func() RETURNS TRIGGER AS $$
 BEGIN
@@ -26,6 +27,7 @@ BEGIN
     RETURN COALESCE(NEW, OLD);
 END;
 $$ LANGUAGE plpgsql;
+-- +goose StatementEnd
 
 -- Attach to practices and tasks tables
 CREATE TRIGGER practices_audit
