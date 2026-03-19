@@ -191,3 +191,31 @@ Michael has a lot in flight (see `.spec/memory/active.md` — overview proposal,
 This is born from Phase 8 (Atonement — recovery from failure) cycling back to Phase 4 (Spiritual Creation — the spec) before going to Phase 6 (Physical Creation — building it). That's the right order. We learned from the failure, now we're designing the prevention before rushing to code.
 
 ### Recommendation: PROCEED — phased delivery, Phase 1 is tiny and high-value
+
+---
+
+### 7. Phase 6 Research: SQLite Removal Scope
+
+**Blast radius (from Explore subagent audit):**
+- ~600 lines across ~18 files, mostly deletion
+- 29+ `if db.IsPostgres()` conditionals across 7 files in `internal/db/`
+- 3 embedded schema files (`schema.sql`, `auth_schema.sql`, plus embed directives)
+- ~250 lines of `runSQLiteMigrations()` + 11 ad-hoc `migrate*()` functions
+- 1 CGO dependency (`mattn/go-sqlite3`) requiring gcc in Dockerfile
+- 2 startup scripts hardcoded to `becoming.db`
+
+**Already in place for PostgreSQL:**
+- `docker-compose.yml` already has PostgreSQL 17 Alpine service
+- All 14 goose migrations already exist
+- PostgreSQL driver already imported (pgx via goose)
+- Production already runs PostgreSQL exclusively
+
+**Key simplifications after removal:**
+- `Open()` → always `openPostgres()`, no auto-detection
+- No `rebind()` needed (always `$1, $2, ...`)
+- No `InsertReturningID()` dual path (always `RETURNING id`)
+- JSON ops always use `::jsonb` / `jsonb_set()` — no SQLite json_extract/json_set
+- `CGO_ENABLED=0` → smaller, faster Docker builds, no C compiler needed
+- `DB.driver` field can be removed entirely
+
+**Risk assessment:** Low. Most changes are deletions. The Go compiler catches any missed SQLite references at build time. The existing PostgreSQL code paths are already tested in production.
