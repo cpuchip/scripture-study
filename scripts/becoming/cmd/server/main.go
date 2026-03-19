@@ -36,7 +36,7 @@ func main() {
 	envload.Load(".env")
 
 	addr := flag.String("addr", envOrDefault("BECOMING_PORT", ":8080"), "listen address")
-	dbPath := flag.String("db", envOrDefault("BECOMING_DB", "becoming.db"), "database path or PostgreSQL connection string")
+	dbPath := flag.String("db", envOrDefault("BECOMING_DB", ""), "PostgreSQL connection string (postgres://...)")
 	scriptures := flag.String("scriptures", envOrDefault("BECOMING_SCRIPTURES", "../../gospel-library/eng/scriptures"), "path to scriptures directory")
 	dev := flag.Bool("dev", false, "development mode (CORS allow-all, skip auth)")
 	tlsCert := flag.String("tls-cert", envOrDefault("TLS_CERT", ""), "TLS certificate file (enables HTTPS)")

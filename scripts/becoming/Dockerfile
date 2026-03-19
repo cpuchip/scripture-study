@@ -28,8 +28,6 @@ RUN git rev-parse --short HEAD > /commit_hash && \
 
 # Stage 4: Build Go binary
 FROM golang:1.25-alpine AS backend
-# CGO needed for SQLite (mattn/go-sqlite3). For PostgreSQL-only deploy, set CGO_ENABLED=0.
-RUN apk add --no-cache gcc musl-dev
 WORKDIR /app
 COPY scripts/becoming/go.mod scripts/becoming/go.sum ./
 RUN go mod download
@@ -43,7 +41,7 @@ ARG RELEASE_NOTES=""
 RUN COMMIT=$(cat /tmp/commit_hash) && \
     MSG=$(cat /tmp/commit_msg) && \
     NOTES="${RELEASE_NOTES:-$MSG}" && \
-    CGO_ENABLED=1 GOOS=linux go build \
+    CGO_ENABLED=0 GOOS=linux go build \
     -ldflags="-s -w -X main.Version=${VERSION} -X main.CommitHash=${COMMIT} -X 'main.ReleaseNotes=${NOTES}'" \
     -o /server ./cmd/server/
 

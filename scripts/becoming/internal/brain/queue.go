@@ -7,7 +7,7 @@ import (
 	"github.com/cpuchip/scripture-study/scripts/becoming/internal/db"
 )
 
-// Queue manages the persistent message queue in SQLite.
+// Queue manages the persistent message queue.
 type Queue struct {
 	db *db.DB
 }
@@ -17,40 +17,8 @@ func NewQueue(database *db.DB) *Queue {
 	return &Queue{db: database}
 }
 
-// EnsureTable creates the brain_messages table if it doesn't exist.
-// For SQLite, this runs CREATE TABLE IF NOT EXISTS directly.
-// For PostgreSQL, the table is created by goose migration 008_brain_messages.sql.
+// EnsureTable is a no-op — goose migrations handle the schema.
 func (q *Queue) EnsureTable() error {
-	if q.db.IsPostgres() {
-		// Goose migrations handle PostgreSQL schema
-		return nil
-	}
-
-	_, err := q.db.Exec(`
-		CREATE TABLE IF NOT EXISTS brain_messages (
-			id           INTEGER PRIMARY KEY AUTOINCREMENT,
-			message_id   TEXT NOT NULL UNIQUE,
-			user_id      INTEGER NOT NULL,
-			direction    TEXT NOT NULL,
-			payload      TEXT NOT NULL,
-			status       TEXT NOT NULL DEFAULT 'pending',
-			created_at   DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-			delivered_at DATETIME,
-			FOREIGN KEY (user_id) REFERENCES users(id)
-		)
-	`)
-	if err != nil {
-		return fmt.Errorf("creating brain_messages table: %w", err)
-	}
-
-	_, err = q.db.Exec(`
-		CREATE INDEX IF NOT EXISTS idx_brain_messages_pending
-		ON brain_messages(user_id, status, direction)
-	`)
-	if err != nil {
-		return fmt.Errorf("creating brain_messages index: %w", err)
-	}
-
 	return nil
 }
 

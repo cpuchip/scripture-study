@@ -148,21 +148,11 @@ func (db *DB) DeleteSource(userID, id int64) error {
 
 // UpsertReadingProgress records or updates reading progress for a file.
 func (db *DB) UpsertReadingProgress(userID, sourceID int64, filePath string, scrollPct float64) error {
-	if db.driver == "postgres" {
-		_, err := db.Exec(`
-			INSERT INTO reading_progress (user_id, source_id, file_path, scroll_pct, read_at)
-			VALUES (?, ?, ?, ?, CURRENT_TIMESTAMP)
-			ON CONFLICT (user_id, source_id, file_path)
-			DO UPDATE SET scroll_pct = EXCLUDED.scroll_pct, read_at = CURRENT_TIMESTAMP`,
-			userID, sourceID, filePath, scrollPct)
-		return err
-	}
-	// SQLite
 	_, err := db.Exec(`
 		INSERT INTO reading_progress (user_id, source_id, file_path, scroll_pct, read_at)
 		VALUES (?, ?, ?, ?, CURRENT_TIMESTAMP)
 		ON CONFLICT (user_id, source_id, file_path)
-		DO UPDATE SET scroll_pct = excluded.scroll_pct, read_at = CURRENT_TIMESTAMP`,
+		DO UPDATE SET scroll_pct = EXCLUDED.scroll_pct, read_at = CURRENT_TIMESTAMP`,
 		userID, sourceID, filePath, scrollPct)
 	return err
 }

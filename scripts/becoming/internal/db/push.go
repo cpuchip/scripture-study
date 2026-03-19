@@ -29,21 +29,10 @@ type NotificationLog struct {
 // SavePushSubscription stores a push subscription for a user.
 // If the endpoint already exists for this user, it updates the keys.
 func (db *DB) SavePushSubscription(userID int64, endpoint, keyP256DH, keyAuth, userAgent string) error {
-	// Upsert: if endpoint exists for this user, update keys
-	if db.IsPostgres() {
-		_, err := db.Exec(`
-			INSERT INTO push_subscriptions (user_id, endpoint, keys_p256dh, keys_auth, user_agent)
-			VALUES (?, ?, ?, ?, ?)
-			ON CONFLICT (user_id, endpoint) DO UPDATE SET keys_p256dh = ?, keys_auth = ?, user_agent = ?`,
-			userID, endpoint, keyP256DH, keyAuth, userAgent,
-			keyP256DH, keyAuth, userAgent)
-		return err
-	}
-	// SQLite: INSERT OR REPLACE
 	_, err := db.Exec(`
 		INSERT INTO push_subscriptions (user_id, endpoint, keys_p256dh, keys_auth, user_agent)
 		VALUES (?, ?, ?, ?, ?)
-		ON CONFLICT(user_id, endpoint) DO UPDATE SET keys_p256dh = ?, keys_auth = ?, user_agent = ?`,
+		ON CONFLICT (user_id, endpoint) DO UPDATE SET keys_p256dh = ?, keys_auth = ?, user_agent = ?`,
 		userID, endpoint, keyP256DH, keyAuth, userAgent,
 		keyP256DH, keyAuth, userAgent)
 	return err
@@ -185,18 +174,10 @@ func (db *DB) GetUserNotificationsEnabled(userID int64) bool {
 
 // SetUserNotificationsEnabled sets the notifications_enabled flag for a user.
 func (db *DB) SetUserNotificationsEnabled(userID int64, enabled bool) error {
-	if db.IsPostgres() {
-		_, err := db.Exec(`
-			INSERT INTO user_settings (user_id, notifications_enabled)
-			VALUES (?, ?)
-			ON CONFLICT (user_id) DO UPDATE SET notifications_enabled = ?`,
-			userID, enabled, enabled)
-		return err
-	}
 	_, err := db.Exec(`
 		INSERT INTO user_settings (user_id, notifications_enabled)
 		VALUES (?, ?)
-		ON CONFLICT(user_id) DO UPDATE SET notifications_enabled = ?`,
+		ON CONFLICT (user_id) DO UPDATE SET notifications_enabled = ?`,
 		userID, enabled, enabled)
 	return err
 }
@@ -225,24 +206,10 @@ func (db *DB) GetUserSettings(userID int64) (*UserSettings, error) {
 
 // SaveUserSettings upserts all notification settings for a user.
 func (db *DB) SaveUserSettings(userID int64, s *UserSettings) error {
-	if db.IsPostgres() {
-		_, err := db.Exec(`
-			INSERT INTO user_settings (user_id, notifications_enabled, notify_practices_by_default, quiet_hours_start, quiet_hours_end, default_timing)
-			VALUES (?, ?, ?, ?, ?, ?)
-			ON CONFLICT (user_id) DO UPDATE SET
-				notifications_enabled = ?,
-				notify_practices_by_default = ?,
-				quiet_hours_start = ?,
-				quiet_hours_end = ?,
-				default_timing = ?`,
-			userID, s.NotificationsEnabled, s.NotifyByDefault, s.QuietHoursStart, s.QuietHoursEnd, s.DefaultTiming,
-			s.NotificationsEnabled, s.NotifyByDefault, s.QuietHoursStart, s.QuietHoursEnd, s.DefaultTiming)
-		return err
-	}
 	_, err := db.Exec(`
 		INSERT INTO user_settings (user_id, notifications_enabled, notify_practices_by_default, quiet_hours_start, quiet_hours_end, default_timing)
 		VALUES (?, ?, ?, ?, ?, ?)
-		ON CONFLICT(user_id) DO UPDATE SET
+		ON CONFLICT (user_id) DO UPDATE SET
 			notifications_enabled = ?,
 			notify_practices_by_default = ?,
 			quiet_hours_start = ?,
@@ -263,24 +230,11 @@ func (db *DB) CleanupOldNotificationLogs() error {
 // EnableNotifyForScheduledPractices sets notify:true in config JSON for all of a user's
 // scheduled practices that don't already have it. Returns the count of updated practices.
 func (db *DB) EnableNotifyForScheduledPractices(userID int64) (int64, error) {
-	if db.IsPostgres() {
-		res, err := db.Exec(`
-			UPDATE practices
-			SET config = jsonb_set(COALESCE(config::jsonb, '{}'), '{notify}', 'true')
-			WHERE user_id = ? AND type = 'scheduled' AND status = 'active'
-			  AND (config::jsonb->>'notify' IS NULL OR config::jsonb->>'notify' = 'false')`,
-			userID)
-		if err != nil {
-			return 0, err
-		}
-		return res.RowsAffected()
-	}
-	// SQLite: use json_set
 	res, err := db.Exec(`
 		UPDATE practices
-		SET config = json_set(COALESCE(config, '{}'), '$.notify', json('true'))
+		SET config = jsonb_set(COALESCE(config::jsonb, '{}'), '{notify}', 'true')
 		WHERE user_id = ? AND type = 'scheduled' AND status = 'active'
-		  AND (json_extract(config, '$.notify') IS NULL OR json_extract(config, '$.notify') = 0)`,
+		  AND (config::jsonb->>'notify' IS NULL OR config::jsonb->>'notify' = 'false')`,
 		userID)
 	if err != nil {
 		return 0, err

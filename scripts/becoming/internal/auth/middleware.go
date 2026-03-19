@@ -24,6 +24,11 @@ func UserID(r *http.Request) int64 {
 	return 0
 }
 
+// WithUserID returns a context with the given user ID set. For testing.
+func WithUserID(ctx context.Context, userID int64) context.Context {
+	return context.WithValue(ctx, userIDKey, userID)
+}
+
 // Required returns middleware that enforces authentication.
 // It checks (in order): session cookie, Bearer token, dev mode fallback.
 func Required(database *db.DB, devMode bool) func(http.Handler) http.Handler {

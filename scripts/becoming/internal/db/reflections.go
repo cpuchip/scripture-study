@@ -120,6 +120,17 @@ func (db *DB) UpdatePrompt(userID int64, p *Prompt) error {
 	return err
 }
 
+// GetPrompt fetches a single prompt by ID, scoped to user.
+func (db *DB) GetPrompt(userID, id int64) (*Prompt, error) {
+	p := &Prompt{}
+	err := db.QueryRow(`SELECT id, text, active, sort_order, created_at FROM prompts WHERE id = ? AND user_id = ?`,
+		id, userID).Scan(&p.ID, &p.Text, &p.Active, &p.SortOrder, &p.CreatedAt)
+	if err != nil {
+		return nil, fmt.Errorf("getting prompt: %w", err)
+	}
+	return p, nil
+}
+
 // DeletePrompt removes a prompt by ID, scoped to user.
 func (db *DB) DeletePrompt(userID, id int64) error {
 	_, err := db.Exec(`DELETE FROM prompts WHERE id = ? AND user_id = ?`, id, userID)

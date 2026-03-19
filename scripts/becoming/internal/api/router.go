@@ -162,6 +162,7 @@ func Router(database *db.DB, scripturesRoot string, taskNotifier ...TaskNotifier
 		r.Use(auth.AdminRequired(database))
 		r.Get("/corrupted-practices", listCorruptedPractices(database))
 		r.Post("/recover-practice/{id}", recoverPractice(database))
+		r.Get("/audit-log", listAuditLog(database))
 	})
 
 	return r
@@ -665,38 +666,78 @@ func updateTask(database *db.DB, notifier TaskNotifier) http.HandlerFunc {
 			return
 		}
 
-		// Fetch old task to detect status changes
-		old, err := database.GetTask(userID, id)
+		bodyBytes, err := io.ReadAll(r.Body)
+		if err != nil {
+			writeError(w, http.StatusBadRequest, "failed to read body")
+			return
+		}
+
+		var fields map[string]json.RawMessage
+		if err := json.Unmarshal(bodyBytes, &fields); err != nil {
+			writeError(w, http.StatusBadRequest, "invalid JSON: "+err.Error())
+			return
+		}
+
+		existing, err := database.GetTask(userID, id)
 		if err != nil {
 			writeError(w, http.StatusNotFound, "task not found")
 			return
 		}
+		oldStatus := existing.Status
 
-		var t db.Task
-		if err := json.NewDecoder(r.Body).Decode(&t); err != nil {
+		var req db.Task
+		if err := json.Unmarshal(bodyBytes, &req); err != nil {
 			writeError(w, http.StatusBadRequest, "invalid JSON: "+err.Error())
 			return
 		}
-		t.ID = id
-		if err := database.UpdateTask(userID, &t); err != nil {
+
+		if _, ok := fields["title"]; ok {
+			existing.Title = req.Title
+		}
+		if _, ok := fields["description"]; ok {
+			existing.Description = req.Description
+		}
+		if _, ok := fields["source_doc"]; ok {
+			existing.SourceDoc = req.SourceDoc
+		}
+		if _, ok := fields["source_section"]; ok {
+			existing.SourceSection = req.SourceSection
+		}
+		if _, ok := fields["scripture"]; ok {
+			existing.Scripture = req.Scripture
+		}
+		if _, ok := fields["type"]; ok {
+			existing.Type = req.Type
+		}
+		if _, ok := fields["status"]; ok {
+			existing.Status = req.Status
+		}
+		if _, ok := fields["brain_entry_id"]; ok {
+			existing.BrainEntryID = req.BrainEntryID
+		}
+		if _, ok := fields["completed_at"]; ok {
+			existing.CompletedAt = req.CompletedAt
+		}
+
+		if err := database.UpdateTask(userID, existing); err != nil {
 			writeError(w, http.StatusInternalServerError, err.Error())
 			return
 		}
 
 		// Notify brain agent if status changed and task is linked to a brain entry
-		if notifier != nil && old.BrainEntryID != "" && old.Status != t.Status {
+		if notifier != nil && existing.BrainEntryID != "" && oldStatus != existing.Status {
 			msg, _ := json.Marshal(map[string]any{
 				"type":           "task_updated",
-				"task_id":        t.ID,
-				"brain_entry_id": old.BrainEntryID,
-				"status":         t.Status,
-				"title":          t.Title,
+				"task_id":        existing.ID,
+				"brain_entry_id": existing.BrainEntryID,
+				"status":         existing.Status,
+				"title":          existing.Title,
 			})
-			msgID := fmt.Sprintf("task_updated_%d_%d", t.ID, time.Now().UnixMilli())
+			msgID := fmt.Sprintf("task_updated_%d_%d", existing.ID, time.Now().UnixMilli())
 			notifier.NotifyAgent(userID, msgID, msg)
 		}
 
-		writeJSON(w, http.StatusOK, t)
+		writeJSON(w, http.StatusOK, existing)
 	}
 }
 
@@ -1154,17 +1195,52 @@ func updateNote(database *db.DB) http.HandlerFunc {
 			writeError(w, http.StatusBadRequest, "invalid id")
 			return
 		}
-		var n db.Note
-		if err := json.NewDecoder(r.Body).Decode(&n); err != nil {
+
+		bodyBytes, err := io.ReadAll(r.Body)
+		if err != nil {
+			writeError(w, http.StatusBadRequest, "failed to read body")
+			return
+		}
+
+		var fields map[string]json.RawMessage
+		if err := json.Unmarshal(bodyBytes, &fields); err != nil {
 			writeError(w, http.StatusBadRequest, "invalid JSON: "+err.Error())
 			return
 		}
-		n.ID = id
-		if err := database.UpdateNote(userID, &n); err != nil {
+
+		existing, err := database.GetNote(userID, id)
+		if err != nil {
+			writeError(w, http.StatusNotFound, "note not found")
+			return
+		}
+
+		var req db.Note
+		if err := json.Unmarshal(bodyBytes, &req); err != nil {
+			writeError(w, http.StatusBadRequest, "invalid JSON: "+err.Error())
+			return
+		}
+
+		if _, ok := fields["content"]; ok {
+			existing.Content = req.Content
+		}
+		if _, ok := fields["practice_id"]; ok {
+			existing.PracticeID = req.PracticeID
+		}
+		if _, ok := fields["task_id"]; ok {
+			existing.TaskID = req.TaskID
+		}
+		if _, ok := fields["pillar_id"]; ok {
+			existing.PillarID = req.PillarID
+		}
+		if _, ok := fields["pinned"]; ok {
+			existing.Pinned = req.Pinned
+		}
+
+		if err := database.UpdateNote(userID, existing); err != nil {
 			writeError(w, http.StatusInternalServerError, err.Error())
 			return
 		}
-		writeJSON(w, http.StatusOK, n)
+		writeJSON(w, http.StatusOK, existing)
 	}
 }
 
@@ -1248,17 +1324,46 @@ func updatePrompt(database *db.DB) http.HandlerFunc {
 			writeError(w, http.StatusBadRequest, "invalid id")
 			return
 		}
-		var p db.Prompt
-		if err := json.NewDecoder(r.Body).Decode(&p); err != nil {
+
+		bodyBytes, err := io.ReadAll(r.Body)
+		if err != nil {
+			writeError(w, http.StatusBadRequest, "failed to read body")
+			return
+		}
+
+		var fields map[string]json.RawMessage
+		if err := json.Unmarshal(bodyBytes, &fields); err != nil {
 			writeError(w, http.StatusBadRequest, "invalid JSON: "+err.Error())
 			return
 		}
-		p.ID = id
-		if err := database.UpdatePrompt(userID, &p); err != nil {
+
+		existing, err := database.GetPrompt(userID, id)
+		if err != nil {
+			writeError(w, http.StatusNotFound, "prompt not found")
+			return
+		}
+
+		var req db.Prompt
+		if err := json.Unmarshal(bodyBytes, &req); err != nil {
+			writeError(w, http.StatusBadRequest, "invalid JSON: "+err.Error())
+			return
+		}
+
+		if _, ok := fields["text"]; ok {
+			existing.Text = req.Text
+		}
+		if _, ok := fields["active"]; ok {
+			existing.Active = req.Active
+		}
+		if _, ok := fields["sort_order"]; ok {
+			existing.SortOrder = req.SortOrder
+		}
+
+		if err := database.UpdatePrompt(userID, existing); err != nil {
 			writeError(w, http.StatusInternalServerError, err.Error())
 			return
 		}
-		writeJSON(w, http.StatusOK, p)
+		writeJSON(w, http.StatusOK, existing)
 	}
 }
 
@@ -1449,17 +1554,52 @@ func updatePillar(database *db.DB) http.HandlerFunc {
 			writeError(w, http.StatusBadRequest, "invalid id")
 			return
 		}
-		var p db.Pillar
-		if err := json.NewDecoder(r.Body).Decode(&p); err != nil {
+
+		bodyBytes, err := io.ReadAll(r.Body)
+		if err != nil {
+			writeError(w, http.StatusBadRequest, "failed to read body")
+			return
+		}
+
+		var fields map[string]json.RawMessage
+		if err := json.Unmarshal(bodyBytes, &fields); err != nil {
 			writeError(w, http.StatusBadRequest, "invalid JSON: "+err.Error())
 			return
 		}
-		p.ID = id
-		if err := database.UpdatePillar(userID, &p); err != nil {
+
+		existing, err := database.GetPillar(userID, id)
+		if err != nil {
+			writeError(w, http.StatusNotFound, "pillar not found")
+			return
+		}
+
+		var req db.Pillar
+		if err := json.Unmarshal(bodyBytes, &req); err != nil {
+			writeError(w, http.StatusBadRequest, "invalid JSON: "+err.Error())
+			return
+		}
+
+		if _, ok := fields["name"]; ok {
+			existing.Name = req.Name
+		}
+		if _, ok := fields["description"]; ok {
+			existing.Description = req.Description
+		}
+		if _, ok := fields["icon"]; ok {
+			existing.Icon = req.Icon
+		}
+		if _, ok := fields["parent_id"]; ok {
+			existing.ParentID = req.ParentID
+		}
+		if _, ok := fields["sort_order"]; ok {
+			existing.SortOrder = req.SortOrder
+		}
+
+		if err := database.UpdatePillar(userID, existing); err != nil {
 			writeError(w, http.StatusInternalServerError, err.Error())
 			return
 		}
-		writeJSON(w, http.StatusOK, p)
+		writeJSON(w, http.StatusOK, existing)
 	}
 }
 
@@ -1622,6 +1762,21 @@ func recoverPractice(database *db.DB) http.HandlerFunc {
 	}
 }
 
+func listAuditLog(database *db.DB) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		tableName := r.URL.Query().Get("table")
+		rowID, _ := strconv.ParseInt(r.URL.Query().Get("row_id"), 10, 64)
+		limit, _ := strconv.Atoi(r.URL.Query().Get("limit"))
+
+		entries, err := database.ListAuditLog(tableName, rowID, limit)
+		if err != nil {
+			writeError(w, http.StatusInternalServerError, err.Error())
+			return
+		}
+		writeJSON(w, http.StatusOK, entries)
+	}
+}
+
 func writeJSON(w http.ResponseWriter, status int, v any) {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(status)
@@ -1737,17 +1892,55 @@ func updateSource(database *db.DB) http.HandlerFunc {
 			writeError(w, http.StatusBadRequest, "invalid id")
 			return
 		}
-		var s db.DocumentSource
-		if err := json.NewDecoder(r.Body).Decode(&s); err != nil {
+
+		bodyBytes, err := io.ReadAll(r.Body)
+		if err != nil {
+			writeError(w, http.StatusBadRequest, "failed to read body")
+			return
+		}
+
+		var fields map[string]json.RawMessage
+		if err := json.Unmarshal(bodyBytes, &fields); err != nil {
 			writeError(w, http.StatusBadRequest, "invalid JSON: "+err.Error())
 			return
 		}
-		s.ID = id
-		if err := database.UpdateSource(userID, &s); err != nil {
+
+		existing, err := database.GetSource(userID, id)
+		if err != nil {
+			writeError(w, http.StatusNotFound, "source not found")
+			return
+		}
+
+		var req db.DocumentSource
+		if err := json.Unmarshal(bodyBytes, &req); err != nil {
+			writeError(w, http.StatusBadRequest, "invalid JSON: "+err.Error())
+			return
+		}
+
+		if _, ok := fields["name"]; ok {
+			existing.Name = req.Name
+		}
+		if _, ok := fields["source_type"]; ok {
+			existing.SourceType = req.SourceType
+		}
+		if _, ok := fields["repo"]; ok {
+			existing.Repo = req.Repo
+		}
+		if _, ok := fields["branch"]; ok {
+			existing.Branch = req.Branch
+		}
+		if _, ok := fields["include_paths"]; ok {
+			existing.IncludePaths = req.IncludePaths
+		}
+		if _, ok := fields["exclude_paths"]; ok {
+			existing.ExcludePaths = req.ExcludePaths
+		}
+
+		if err := database.UpdateSource(userID, existing); err != nil {
 			writeError(w, http.StatusInternalServerError, err.Error())
 			return
 		}
-		writeJSON(w, http.StatusOK, s)
+		writeJSON(w, http.StatusOK, existing)
 	}
 }
 

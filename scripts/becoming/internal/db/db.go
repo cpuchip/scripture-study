@@ -4,73 +4,26 @@ package db
 import (
 	"database/sql"
 	"embed"
-	_ "embed"
 	"fmt"
 	"log"
-	"os"
-	"path/filepath"
 	"strings"
 
 	_ "github.com/jackc/pgx/v5/stdlib" // register "pgx" driver
-	_ "github.com/mattn/go-sqlite3"    // register "sqlite3" driver
 	"github.com/pressly/goose/v3"
 )
 
-//go:embed schema.sql
-var schemaSQL string
-
-//go:embed auth_schema.sql
-var authSchemaSQL string
-
-// Driver identifies the database backend.
-const (
-	DriverSQLite   = "sqlite3"
-	DriverPostgres = "pgx"
-)
-
-// DB wraps the database connection with driver-aware helpers.
+// DB wraps the database connection.
 type DB struct {
-	conn   *sql.DB
-	driver string
-	path   string
+	conn *sql.DB
+	path string
 }
 
-// Driver returns the current database driver name.
-func (db *DB) Driver() string { return db.driver }
-
-// IsPostgres returns true if using PostgreSQL.
-func (db *DB) IsPostgres() bool { return db.driver == DriverPostgres }
-
-// Open opens the database. If dsn starts with "postgres://" or "postgresql://",
-// it uses PostgreSQL (pgx); otherwise, it treats the dsn as a SQLite file path.
+// Open opens a PostgreSQL database connection.
 func Open(dsn string) (*DB, error) {
-	if strings.HasPrefix(dsn, "postgres://") || strings.HasPrefix(dsn, "postgresql://") {
-		return openPostgres(dsn)
-	}
-	return openSQLite(dsn)
-}
-
-func openSQLite(path string) (*DB, error) {
-	dir := filepath.Dir(path)
-	if err := os.MkdirAll(dir, 0755); err != nil {
-		return nil, fmt.Errorf("creating database directory: %w", err)
+	if !strings.HasPrefix(dsn, "postgres://") && !strings.HasPrefix(dsn, "postgresql://") {
+		return nil, fmt.Errorf("invalid database URL: must start with postgres:// or postgresql://")
 	}
 
-	connStr := fmt.Sprintf("%s?_foreign_keys=on&_journal_mode=WAL", path)
-	sqlDB, err := sql.Open("sqlite3", connStr)
-	if err != nil {
-		return nil, fmt.Errorf("opening database: %w", err)
-	}
-
-	db := &DB{conn: sqlDB, driver: DriverSQLite, path: path}
-	if err := db.initSQLiteSchema(); err != nil {
-		sqlDB.Close()
-		return nil, fmt.Errorf("initializing schema: %w", err)
-	}
-	return db, nil
-}
-
-func openPostgres(dsn string) (*DB, error) {
 	sqlDB, err := sql.Open("pgx", dsn)
 	if err != nil {
 		return nil, fmt.Errorf("opening postgres: %w", err)
@@ -80,10 +33,10 @@ func openPostgres(dsn string) (*DB, error) {
 		return nil, fmt.Errorf("connecting to postgres: %w", err)
 	}
 
-	db := &DB{conn: sqlDB, driver: DriverPostgres, path: dsn}
-	if err := db.initPostgresSchema(); err != nil {
+	db := &DB{conn: sqlDB, path: dsn}
+	if err := db.runMigrations(); err != nil {
 		sqlDB.Close()
-		return nil, fmt.Errorf("initializing postgres schema: %w", err)
+		return nil, fmt.Errorf("running migrations: %w", err)
 	}
 	return db, nil
 }
@@ -91,11 +44,7 @@ func openPostgres(dsn string) (*DB, error) {
 // --- Query helpers with automatic placeholder rebinding ---
 
 // rebind converts ? placeholders to $1, $2, ... for PostgreSQL.
-// For SQLite, it returns the query unchanged.
-func (db *DB) rebind(query string) string {
-	if db.driver == DriverSQLite {
-		return query
-	}
+func rebind(query string) string {
 	var b strings.Builder
 	n := 0
 	for i := 0; i < len(query); i++ {
@@ -111,34 +60,25 @@ func (db *DB) rebind(query string) string {
 
 // Exec executes a query with auto-rebinding.
 func (db *DB) Exec(query string, args ...any) (sql.Result, error) {
-	return db.conn.Exec(db.rebind(query), args...)
+	return db.conn.Exec(rebind(query), args...)
 }
 
 // Query runs a query with auto-rebinding.
 func (db *DB) Query(query string, args ...any) (*sql.Rows, error) {
-	return db.conn.Query(db.rebind(query), args...)
+	return db.conn.Query(rebind(query), args...)
 }
 
 // QueryRow runs a single-row query with auto-rebinding.
 func (db *DB) QueryRow(query string, args ...any) *sql.Row {
-	return db.conn.QueryRow(db.rebind(query), args...)
+	return db.conn.QueryRow(rebind(query), args...)
 }
 
 // InsertReturningID executes an INSERT and returns the new row's id.
-// For SQLite: uses result.LastInsertId().
-// For PostgreSQL: appends RETURNING id and scans the result.
 func (db *DB) InsertReturningID(query string, args ...any) (int64, error) {
-	if db.driver == DriverPostgres {
-		query = db.rebind(query) + " RETURNING id"
-		var id int64
-		err := db.conn.QueryRow(query, args...).Scan(&id)
-		return id, err
-	}
-	res, err := db.conn.Exec(query, args...)
-	if err != nil {
-		return 0, err
-	}
-	return res.LastInsertId()
+	query = rebind(query) + " RETURNING id"
+	var id int64
+	err := db.conn.QueryRow(query, args...).Scan(&id)
+	return id, err
 }
 
 // Close closes the database connection.
@@ -146,12 +86,16 @@ func (db *DB) Close() error {
 	return db.conn.Close()
 }
 
+// Path returns the database connection string.
+func (db *DB) Path() string {
+	return db.path
+}
+
 // --- Transaction helpers ---
 
-// Tx wraps sql.Tx with driver-aware placeholder rebinding.
+// Tx wraps sql.Tx with placeholder rebinding.
 type Tx struct {
-	tx     *sql.Tx
-	driver string
+	tx *sql.Tx
 }
 
 func (db *DB) Begin() (*Tx, error) {
@@ -159,534 +103,39 @@ func (db *DB) Begin() (*Tx, error) {
 	if err != nil {
 		return nil, err
 	}
-	return &Tx{tx: tx, driver: db.driver}, nil
-}
-
-func (t *Tx) rebind(query string) string {
-	if t.driver == DriverSQLite {
-		return query
-	}
-	var b strings.Builder
-	n := 0
-	for i := 0; i < len(query); i++ {
-		if query[i] == '?' {
-			n++
-			fmt.Fprintf(&b, "$%d", n)
-		} else {
-			b.WriteByte(query[i])
-		}
-	}
-	return b.String()
+	return &Tx{tx: tx}, nil
 }
 
 func (t *Tx) Exec(query string, args ...any) (sql.Result, error) {
-	return t.tx.Exec(t.rebind(query), args...)
+	return t.tx.Exec(rebind(query), args...)
 }
 
 func (t *Tx) Query(query string, args ...any) (*sql.Rows, error) {
-	return t.tx.Query(t.rebind(query), args...)
+	return t.tx.Query(rebind(query), args...)
 }
 
 func (t *Tx) QueryRow(query string, args ...any) *sql.Row {
-	return t.tx.QueryRow(t.rebind(query), args...)
+	return t.tx.QueryRow(rebind(query), args...)
 }
 
 func (t *Tx) Commit() error   { return t.tx.Commit() }
 func (t *Tx) Rollback() error { return t.tx.Rollback() }
 
-// --- SQL dialect helpers ---
+// --- SQL helpers ---
 
 // JSONExtract returns a SQL expression that extracts a text value from a JSON column.
-// For SQLite:    json_extract(column, '$.key')
-// For PostgreSQL: column::json->>'key'
 func (db *DB) JSONExtract(column, key string) string {
-	if db.driver == DriverPostgres {
-		return column + "::json->>'" + key + "'"
-	}
-	return "json_extract(" + column + ", '$." + key + "')"
+	return column + "::json->>'" + key + "'"
 }
 
 // DateCast returns a SQL expression that extracts the date part of a timestamp.
-// For SQLite:    date(expr)
-// For PostgreSQL: expr::date
-// Use DateCast in WHERE clauses for date comparisons.
 func (db *DB) DateCast(expr string) string {
-	if db.driver == DriverPostgres {
-		return expr + "::date"
-	}
-	return "date(" + expr + ")"
+	return expr + "::date"
 }
 
 // DateText returns a SQL expression that produces a text string in 'YYYY-MM-DD' format.
-// Use DateText in SELECT when you need the result scanned into a Go string.
-// For SQLite:    date(expr)           — returns TEXT 'YYYY-MM-DD'
-// For PostgreSQL: TO_CHAR(expr::date, 'YYYY-MM-DD') — returns TEXT 'YYYY-MM-DD'
 func (db *DB) DateText(expr string) string {
-	if db.driver == DriverPostgres {
-		return "TO_CHAR(" + expr + "::date, 'YYYY-MM-DD')"
-	}
-	return "date(" + expr + ")"
-}
-
-// --- SQLite schema initialization (CREATE TABLE IF NOT EXISTS + ad-hoc migrations) ---
-
-func (db *DB) initSQLiteSchema() error {
-	if _, err := db.Exec(schemaSQL); err != nil {
-		return fmt.Errorf("main schema: %w", err)
-	}
-	if _, err := db.Exec(authSchemaSQL); err != nil {
-		return fmt.Errorf("auth schema: %w", err)
-	}
-	return db.runSQLiteMigrations()
-}
-
-func (db *DB) runSQLiteMigrations() error {
-	// Rename "exercise" type to "tracker"
-	if _, err := db.Exec(`UPDATE practices SET type = 'tracker' WHERE type = 'exercise'`); err != nil {
-		return err
-	}
-
-	// Migration: add user_id columns for multi-user support
-	if err := db.migrateAddUserID(); err != nil {
-		return fmt.Errorf("adding user_id columns: %w", err)
-	}
-
-	// Migration: add practice lifecycle columns (status, archived_at, end_date)
-	if err := db.migratePracticeLifecycle(); err != nil {
-		return fmt.Errorf("practice lifecycle migration: %w", err)
-	}
-
-	// Migration: add study mode tables (memorize_scores, memorize_aptitude, memorize_level)
-	if err := db.migrateStudyMode(); err != nil {
-		return fmt.Errorf("study mode migration: %w", err)
-	}
-
-	// Migration: add start_date column to practices
-	if err := db.migrateStartDate(); err != nil {
-		return fmt.Errorf("start date migration: %w", err)
-	}
-
-	// Migration: create document_sources and reading_progress tables
-	if err := db.migrateDocumentSources(); err != nil {
-		return fmt.Errorf("document sources migration: %w", err)
-	}
-
-	// Migration: create shared_links table
-	if err := db.migrateSharedLinks(); err != nil {
-		return fmt.Errorf("shared links migration: %w", err)
-	}
-
-	// Migration: create bookmarks table
-	if err := db.migrateBookmarks(); err != nil {
-		return fmt.Errorf("bookmarks migration: %w", err)
-	}
-
-	// Migration: add brain_entry_id to tasks
-	if err := db.migrateBrainEntryID(); err != nil {
-		return fmt.Errorf("brain_entry_id migration: %w", err)
-	}
-
-	// Migration: add brain_enabled to api_tokens
-	if err := db.migrateBrainEnabledToken(); err != nil {
-		return fmt.Errorf("brain_enabled_token migration: %w", err)
-	}
-
-	// Migration: create push notification tables
-	if err := db.migratePushNotifications(); err != nil {
-		return fmt.Errorf("push notifications migration: %w", err)
-	}
-
-	// Migration: add Phase 2 notification columns
-	if err := db.migrateNotificationsPhase2(); err != nil {
-		return fmt.Errorf("notifications phase 2 migration: %w", err)
-	}
-
-	// Ensure default user exists before seeding (prompts table has FK to users)
-	if _, err := db.EnsureDefaultUser(); err != nil {
-		return fmt.Errorf("ensuring default user: %w", err)
-	}
-
-	// Seed default reflection prompts for user 1 (dev user)
-	if err := db.SeedPrompts(1); err != nil {
-		return fmt.Errorf("seeding prompts: %w", err)
-	}
-
-	return nil
-}
-
-// migratePushNotifications creates tables for Web Push notifications.
-func (db *DB) migratePushNotifications() error {
-	if _, err := db.Exec(`CREATE TABLE IF NOT EXISTS push_subscriptions (
-		id          INTEGER PRIMARY KEY,
-		user_id     INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
-		endpoint    TEXT NOT NULL,
-		keys_p256dh TEXT NOT NULL,
-		keys_auth   TEXT NOT NULL,
-		user_agent  TEXT,
-		created_at  DATETIME DEFAULT CURRENT_TIMESTAMP,
-		UNIQUE(user_id, endpoint)
-	)`); err != nil {
-		return fmt.Errorf("creating push_subscriptions: %w", err)
-	}
-
-	if _, err := db.Exec(`CREATE TABLE IF NOT EXISTS notification_log (
-		id          INTEGER PRIMARY KEY,
-		user_id     INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
-		practice_id INTEGER NOT NULL REFERENCES practices(id) ON DELETE CASCADE,
-		date        DATE NOT NULL,
-		sent_at     DATETIME DEFAULT CURRENT_TIMESTAMP
-	)`); err != nil {
-		return fmt.Errorf("creating notification_log: %w", err)
-	}
-	if _, err := db.Exec(`CREATE INDEX IF NOT EXISTS idx_notification_log_user_date ON notification_log(user_id, date)`); err != nil {
-		return fmt.Errorf("creating notification_log index: %w", err)
-	}
-
-	if _, err := db.Exec(`CREATE TABLE IF NOT EXISTS user_settings (
-		user_id                INTEGER PRIMARY KEY REFERENCES users(id) ON DELETE CASCADE,
-		notifications_enabled  INTEGER NOT NULL DEFAULT 0
-	)`); err != nil {
-		return fmt.Errorf("creating user_settings: %w", err)
-	}
-
-	return nil
-}
-
-// migrateNotificationsPhase2 adds per-practice notification columns to user_settings.
-func (db *DB) migrateNotificationsPhase2() error {
-	if db.hasColumn("user_settings", "notify_practices_by_default") {
-		return nil
-	}
-	cols := []struct{ name, def string }{
-		{"notify_practices_by_default", "INTEGER NOT NULL DEFAULT 0"},
-		{"quiet_hours_start", "TEXT"},
-		{"quiet_hours_end", "TEXT"},
-		{"default_timing", "TEXT NOT NULL DEFAULT 'at_time'"},
-	}
-	for _, c := range cols {
-		if _, err := db.Exec(fmt.Sprintf(`ALTER TABLE user_settings ADD COLUMN %s %s`, c.name, c.def)); err != nil {
-			return fmt.Errorf("adding %s column: %w", c.name, err)
-		}
-	}
-	log.Println("Migration applied: user_settings Phase 2 notification columns")
-	return nil
-}
-
-// migrateBrainEntryID adds brain_entry_id column to tasks table.
-func (db *DB) migrateBrainEntryID() error {
-	if db.hasColumn("tasks", "brain_entry_id") {
-		return nil
-	}
-	if _, err := db.Exec(`ALTER TABLE tasks ADD COLUMN brain_entry_id TEXT`); err != nil {
-		return fmt.Errorf("adding brain_entry_id column: %w", err)
-	}
-	log.Println("Migration applied: tasks.brain_entry_id column")
-	return nil
-}
-
-// migrateBrainEnabledToken adds brain_enabled column to api_tokens table.
-func (db *DB) migrateBrainEnabledToken() error {
-	if db.hasColumn("api_tokens", "brain_enabled") {
-		return nil
-	}
-	if _, err := db.Exec(`ALTER TABLE api_tokens ADD COLUMN brain_enabled INTEGER NOT NULL DEFAULT 0`); err != nil {
-		return fmt.Errorf("adding brain_enabled column: %w", err)
-	}
-	log.Println("Migration applied: api_tokens.brain_enabled column")
-	return nil
-}
-
-// migratePracticeLifecycle adds status, archived_at, and end_date columns to practices.
-func (db *DB) migratePracticeLifecycle() error {
-	if !db.hasColumn("practices", "status") {
-		if _, err := db.Exec(`ALTER TABLE practices ADD COLUMN status TEXT NOT NULL DEFAULT 'active'`); err != nil {
-			return fmt.Errorf("adding status column: %w", err)
-		}
-		if _, err := db.Exec(`ALTER TABLE practices ADD COLUMN archived_at DATETIME`); err != nil {
-			return fmt.Errorf("adding archived_at column: %w", err)
-		}
-		if _, err := db.Exec(`ALTER TABLE practices ADD COLUMN end_date DATE`); err != nil {
-			return fmt.Errorf("adding end_date column: %w", err)
-		}
-
-		// Backfill status from existing active/completed_at columns
-		if _, err := db.Exec(`UPDATE practices SET status = CASE
-			WHEN completed_at IS NOT NULL THEN 'completed'
-			WHEN active = FALSE THEN 'paused'
-			ELSE 'active'
-		END`); err != nil {
-			return fmt.Errorf("backfilling status: %w", err)
-		}
-
-		log.Println("Migration applied: practice lifecycle (status, archived_at, end_date)")
-	}
-
-	// Always ensure index exists (covers both fresh installs and migrations)
-	if _, err := db.Exec(`CREATE INDEX IF NOT EXISTS idx_practices_status ON practices(status)`); err != nil {
-		return fmt.Errorf("creating status index: %w", err)
-	}
-
-	return nil
-}
-
-// migrateStudyMode adds memorize_scores, memorize_aptitude tables and memorize_level column.
-func (db *DB) migrateStudyMode() error {
-	if !db.hasColumn("practices", "memorize_level") {
-		if _, err := db.Exec(`ALTER TABLE practices ADD COLUMN memorize_level INTEGER DEFAULT 1`); err != nil {
-			return fmt.Errorf("adding memorize_level column: %w", err)
-		}
-		log.Println("Migration applied: practices.memorize_level column")
-	}
-
-	// Create memorize_scores table (idempotent)
-	if _, err := db.Exec(`CREATE TABLE IF NOT EXISTS memorize_scores (
-		id          INTEGER PRIMARY KEY,
-		practice_id INTEGER NOT NULL REFERENCES practices(id) ON DELETE CASCADE,
-		user_id     INTEGER NOT NULL REFERENCES users(id),
-		mode        TEXT NOT NULL,
-		score       REAL NOT NULL,
-		quality     INTEGER,
-		duration_s  INTEGER,
-		date        DATE NOT NULL,
-		created_at  DATETIME DEFAULT CURRENT_TIMESTAMP
-	)`); err != nil {
-		return fmt.Errorf("creating memorize_scores: %w", err)
-	}
-	if _, err := db.Exec(`CREATE INDEX IF NOT EXISTS idx_memorize_scores_practice ON memorize_scores(practice_id)`); err != nil {
-		return fmt.Errorf("creating memorize_scores practice index: %w", err)
-	}
-	if _, err := db.Exec(`CREATE INDEX IF NOT EXISTS idx_memorize_scores_user_date ON memorize_scores(user_id, date)`); err != nil {
-		return fmt.Errorf("creating memorize_scores user_date index: %w", err)
-	}
-
-	// Create memorize_aptitude table (idempotent)
-	if _, err := db.Exec(`CREATE TABLE IF NOT EXISTS memorize_aptitude (
-		id            INTEGER PRIMARY KEY,
-		practice_id   INTEGER NOT NULL REFERENCES practices(id) ON DELETE CASCADE,
-		user_id       INTEGER NOT NULL REFERENCES users(id),
-		mode          TEXT NOT NULL,
-		aptitude      REAL NOT NULL DEFAULT 0.0,
-		sample_count  INTEGER DEFAULT 0,
-		last_score_at DATETIME,
-		UNIQUE(practice_id, user_id, mode)
-	)`); err != nil {
-		return fmt.Errorf("creating memorize_aptitude: %w", err)
-	}
-
-	log.Println("Migration applied: study mode tables")
-	return nil
-}
-
-// migrateStartDate adds start_date column to practices and backfills from created_at.
-func (db *DB) migrateStartDate() error {
-	if db.hasColumn("practices", "start_date") {
-		return nil
-	}
-
-	if _, err := db.Exec(`ALTER TABLE practices ADD COLUMN start_date DATE`); err != nil {
-		return fmt.Errorf("adding start_date column: %w", err)
-	}
-
-	// Backfill: set start_date to the date portion of created_at
-	if _, err := db.Exec(`UPDATE practices SET start_date = date(created_at)`); err != nil {
-		return fmt.Errorf("backfilling start_date: %w", err)
-	}
-
-	log.Println("Migration applied: practices.start_date column")
-	return nil
-}
-
-// migrateAddUserID adds user_id columns to tables that don't have them yet.
-func (db *DB) migrateAddUserID() error {
-	tables := []string{"practices", "tasks", "notes", "prompts", "pillars"}
-	for _, table := range tables {
-		if !db.hasColumn(table, "user_id") {
-			// SQLite doesn't allow REFERENCES with non-NULL default in ALTER TABLE.
-			// Foreign key is defined in schema.sql for new databases; migration just adds the column.
-			_, err := db.Exec(fmt.Sprintf(
-				`ALTER TABLE %s ADD COLUMN user_id INTEGER NOT NULL DEFAULT 1`, table))
-			if err != nil {
-				return fmt.Errorf("adding user_id to %s: %w", table, err)
-			}
-		}
-	}
-
-	// Reflections needs special handling: UNIQUE(date) → UNIQUE(user_id, date)
-	if !db.hasColumn("reflections", "user_id") {
-		if err := db.migrateReflectionsTable(); err != nil {
-			return fmt.Errorf("migrating reflections: %w", err)
-		}
-	}
-
-	// Create user_id indexes (idempotent — runs after columns exist)
-	indexes := []string{
-		`CREATE INDEX IF NOT EXISTS idx_practices_user ON practices(user_id)`,
-		`CREATE INDEX IF NOT EXISTS idx_tasks_user ON tasks(user_id)`,
-		`CREATE INDEX IF NOT EXISTS idx_notes_user ON notes(user_id)`,
-		`CREATE INDEX IF NOT EXISTS idx_prompts_user ON prompts(user_id)`,
-		`CREATE INDEX IF NOT EXISTS idx_reflections_user ON reflections(user_id)`,
-		`CREATE INDEX IF NOT EXISTS idx_pillars_user ON pillars(user_id)`,
-	}
-	for _, idx := range indexes {
-		if _, err := db.Exec(idx); err != nil {
-			return fmt.Errorf("creating index: %w", err)
-		}
-	}
-
-	return nil
-}
-
-// hasColumn checks if a table has a specific column (SQLite only, uses PRAGMA).
-func (db *DB) hasColumn(table, column string) bool {
-	rows, err := db.conn.Query(fmt.Sprintf("PRAGMA table_info(%s)", table))
-	if err != nil {
-		return false
-	}
-	defer rows.Close()
-	for rows.Next() {
-		var cid int
-		var name, ctype string
-		var notnull int
-		var dflt *string
-		var pk int
-		if err := rows.Scan(&cid, &name, &ctype, &notnull, &dflt, &pk); err != nil {
-			return false
-		}
-		if name == column {
-			return true
-		}
-	}
-	return false
-}
-
-// migrateReflectionsTable recreates the reflections table with user_id and UNIQUE(user_id, date).
-func (db *DB) migrateReflectionsTable() error {
-	tx, err := db.Begin()
-	if err != nil {
-		return err
-	}
-	defer tx.Rollback()
-
-	stmts := []string{
-		`CREATE TABLE reflections_new (
-			id          INTEGER PRIMARY KEY,
-			user_id     INTEGER NOT NULL DEFAULT 1 REFERENCES users(id),
-			date        DATE NOT NULL,
-			prompt_id   INTEGER REFERENCES prompts(id) ON DELETE SET NULL,
-			prompt_text TEXT,
-			content     TEXT NOT NULL,
-			mood        INTEGER,
-			created_at  DATETIME DEFAULT CURRENT_TIMESTAMP,
-			updated_at  DATETIME DEFAULT CURRENT_TIMESTAMP,
-			UNIQUE(user_id, date)
-		)`,
-		`INSERT INTO reflections_new (id, user_id, date, prompt_id, prompt_text, content, mood, created_at, updated_at)
-		 SELECT id, 1, date, prompt_id, prompt_text, content, mood, created_at, updated_at FROM reflections`,
-		`DROP TABLE reflections`,
-		`ALTER TABLE reflections_new RENAME TO reflections`,
-		`CREATE INDEX IF NOT EXISTS idx_reflections_date ON reflections(date)`,
-		`CREATE INDEX IF NOT EXISTS idx_reflections_user ON reflections(user_id)`,
-	}
-
-	for _, stmt := range stmts {
-		if _, err := tx.Exec(stmt); err != nil {
-			return fmt.Errorf("migrating reflections: %w", err)
-		}
-	}
-
-	return tx.Commit()
-}
-
-// Path returns the database file path (or connection string for PostgreSQL).
-func (db *DB) Path() string {
-	return db.path
-}
-
-// migrateDocumentSources creates document_sources and reading_progress tables.
-func (db *DB) migrateDocumentSources() error {
-	if _, err := db.Exec(`CREATE TABLE IF NOT EXISTS document_sources (
-		id              INTEGER PRIMARY KEY,
-		user_id         INTEGER NOT NULL REFERENCES users(id),
-		name            TEXT NOT NULL,
-		source_type     TEXT NOT NULL,
-		repo            TEXT NOT NULL,
-		branch          TEXT DEFAULT 'main',
-		include_paths   TEXT DEFAULT '[]',
-		exclude_paths   TEXT DEFAULT '[]',
-		tree_cache      TEXT,
-		tree_etag       TEXT,
-		tree_cached_at  DATETIME,
-		created_at      DATETIME DEFAULT CURRENT_TIMESTAMP
-	)`); err != nil {
-		return fmt.Errorf("creating document_sources: %w", err)
-	}
-
-	if _, err := db.Exec(`CREATE TABLE IF NOT EXISTS reading_progress (
-		id          INTEGER PRIMARY KEY,
-		user_id     INTEGER NOT NULL REFERENCES users(id),
-		source_id   INTEGER NOT NULL REFERENCES document_sources(id) ON DELETE CASCADE,
-		file_path   TEXT NOT NULL,
-		read_at     DATETIME DEFAULT CURRENT_TIMESTAMP,
-		scroll_pct  REAL DEFAULT 0,
-		UNIQUE(user_id, source_id, file_path)
-	)`); err != nil {
-		return fmt.Errorf("creating reading_progress: %w", err)
-	}
-
-	log.Println("Migration applied: document_sources + reading_progress tables")
-	return nil
-}
-
-// migrateSharedLinks creates the shared_links table for public reader short URLs.
-func (db *DB) migrateSharedLinks() error {
-	if _, err := db.Exec(`CREATE TABLE IF NOT EXISTS shared_links (
-		id          INTEGER PRIMARY KEY,
-		code        TEXT NOT NULL UNIQUE,
-		user_id     INTEGER REFERENCES users(id),
-		source_id   INTEGER REFERENCES document_sources(id) ON DELETE SET NULL,
-		provider    TEXT NOT NULL DEFAULT 'gh',
-		repo        TEXT NOT NULL,
-		branch      TEXT NOT NULL DEFAULT 'main',
-		doc_filter  TEXT NOT NULL DEFAULT '**/*.md',
-		file_path   TEXT,
-		hits        INTEGER NOT NULL DEFAULT 0,
-		created_at  DATETIME DEFAULT CURRENT_TIMESTAMP
-	)`); err != nil {
-		return fmt.Errorf("creating shared_links: %w", err)
-	}
-
-	if _, err := db.Exec(`CREATE INDEX IF NOT EXISTS idx_shared_links_code ON shared_links(code)`); err != nil {
-		return fmt.Errorf("creating shared_links code index: %w", err)
-	}
-
-	log.Println("Migration applied: shared_links table")
-	return nil
-}
-
-func (db *DB) migrateBookmarks() error {
-	if _, err := db.Exec(`CREATE TABLE IF NOT EXISTS bookmarks (
-		id          INTEGER PRIMARY KEY,
-		user_id     INTEGER REFERENCES users(id),
-		source_id   INTEGER REFERENCES document_sources(id),
-		file_path   TEXT NOT NULL,
-		anchor      TEXT NOT NULL DEFAULT '',
-		excerpt     TEXT NOT NULL DEFAULT '',
-		note        TEXT NOT NULL DEFAULT '',
-		created_at  DATETIME DEFAULT CURRENT_TIMESTAMP
-	)`); err != nil {
-		return fmt.Errorf("creating bookmarks: %w", err)
-	}
-
-	if _, err := db.Exec(`CREATE INDEX IF NOT EXISTS idx_bookmarks_user_id ON bookmarks(user_id)`); err != nil {
-		return fmt.Errorf("creating bookmarks user_id index: %w", err)
-	}
-
-	if _, err := db.Exec(`CREATE INDEX IF NOT EXISTS idx_bookmarks_user_source ON bookmarks(user_id, source_id)`); err != nil {
-		return fmt.Errorf("creating bookmarks user_source index: %w", err)
-	}
-
-	log.Println("Migration applied: bookmarks table")
-	return nil
+	return "TO_CHAR(" + expr + "::date, 'YYYY-MM-DD')"
 }
 
 // --- PostgreSQL schema initialization via goose migrations ---
@@ -694,7 +143,7 @@ func (db *DB) migrateBookmarks() error {
 //go:embed migrations/postgres/*.sql
 var postgresMigrations embed.FS
 
-func (db *DB) initPostgresSchema() error {
+func (db *DB) runMigrations() error {
 	goose.SetBaseFS(postgresMigrations)
 	if err := goose.SetDialect("postgres"); err != nil {
 		return fmt.Errorf("setting goose dialect: %w", err)
