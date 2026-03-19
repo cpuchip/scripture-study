@@ -1,6 +1,6 @@
 # Active Context
 
-*Last updated: 2026-03-16 (storytelling craft session completed)*
+*Last updated: 2026-03-18 (Web Push notifications — Phase 1 complete)*
 
 ---
 
@@ -160,6 +160,7 @@ The brain ecosystem has been the primary development focus for the past week. Th
 | 17: Proactive Surfacing | NOT STARTED | |
 | 18: Widget Overhaul | Phase 1 DONE (checkbox fix), Phase 2 DONE (practices), Phase 3 NOT STARTED (memorize), Phase 4 NOT STARTED (WorkManager) | |
 | 19: Brain App Ideas | Captured, not started | NLP practice creation, image pipeline, Copilot SDK study mode |
+| Notifications | Phase 1 DONE | Phases 2-4 remaining (per-practice config, rich actions, analytics) |
 
 ## Architecture Quick Reference
 
@@ -184,8 +185,12 @@ The brain ecosystem has been the primary development focus for the past week. Th
 | `cmd/server/main.go` | HTTP routes, middleware, server entry |
 | `internal/schedule/schedule.go` | Practice scheduling logic including `dailySlotsDue()` |
 | `internal/db/` | SQLite + PostgreSQL DB layer. Dual migrations required! |
+| `internal/db/push.go` | Push subscriptions, notification logs, user settings DB layer |
+| `internal/notify/` | Web Push scheduler + HTTP handlers |
 | `internal/brain/` | WebSocket relay hub, message types |
 | `frontend/` | Vue 3 + Tailwind web UI (embedded at compile time in `cmd/server/dist/`) |
+| `frontend/public/sw.js` | Service worker for push notifications |
+| `frontend/src/composables/useNotifications.ts` | Push subscription lifecycle composable |
 
 ### Widget background callback flow
 1. Kotlin widget button tap → PendingIntent with URI (e.g., `brainapp://practice-log/42?slot=morning`)
@@ -196,6 +201,36 @@ The brain ecosystem has been the primary development focus for the past week. Th
 ## Blocked / Waiting
 
 - Nothing currently blocked.
+
+## Recent Milestone: Web Push Notifications (March 17-18, 2026)
+
+**Phase 1 COMPLETE — verified working with test notification on desktop (Edge).**
+
+Personal motivation: Michael's daughter keeps forgetting to do things. Built notifications so she can set reminders for herself via ibeco.me.
+
+### What was built:
+- **Backend:** `internal/notify/` package — scheduler (1-minute tick), webpush-go v1.4.0 sender, 410 Gone cleanup, test endpoint
+- **Backend:** `internal/db/push.go` — push_subscriptions, notification_log, user_settings tables (SQLite + PostgreSQL migrations)
+- **Backend:** `internal/notify/handlers.go` — Chi router: GET /vapid-key, POST /subscribe, DELETE /unsubscribe, POST /test, GET/PUT /settings
+- **Frontend:** `public/sw.js` (service worker), `public/manifest.json` (PWA manifest)
+- **Frontend:** `src/composables/useNotifications.ts` — subscribe/unsubscribe/test/check lifecycle
+- **Frontend:** Settings page toggle with iOS-style switch, permission-denied warning, test button
+- **Wiring:** main.go reads VAPID keys from env vars, conditionally starts scheduler + mounts routes
+- **Fix:** Pre-existing FK bug — `SeedPrompts(1)` ran before user 1 existed in fresh DBs. Now calls `EnsureDefaultUser()` first.
+- **Infra:** Installed WinLibs GCC via winget for CGO (go-sqlite3 requires it), VAPID keys generated and stored in `.env`
+
+### Production deployment:
+Add to Dokploy env vars:
+```
+VAPID_PUBLIC_KEY=<key-goes-here>
+VAPID_PRIVATE_KEY=<key-goes-here>
+VAPID_CONTACT=mailto:email@example.com
+```
+
+### Remaining phases (from `.spec/proposals/notifications/main.md`):
+- Phase 2: Per-practice notification config (time-of-day, snooze)
+- Phase 3: Rich notification actions (mark done from notification)
+- Phase 4: Notification history + analytics
 
 ## Next Up
 
