@@ -102,17 +102,19 @@ When a change touches any PUT/PATCH handler, UPDATE/DELETE query, or database mi
 
 1. **Partial update safe?** Does the handler use read-modify-write (fetch existing → overlay sent fields → save)? A blind `UPDATE ... SET col1=?, col2=?, ...` from decoded request body will zero-value any field the client didn't send. See `updatePractice` in `internal/api/router.go` for the correct pattern using `json.RawMessage` field detection.
 
-2. **DB constraints enforced?** Are critical columns protected by NOT NULL and CHECK constraints? If adding a new column that has a finite set of valid values, add a CHECK constraint in the migration.
+2. **DB constraints enforced?** Are critical columns protected by NOT NULL and CHECK constraints? If adding a new column that has a finite set of valid values, add a CHECK constraint in the migration. **CHECK constraint values must be read from existing code** (frontend types, MCP enums, or `SELECT DISTINCT` against real data) — never written from memory. Cite the source in a SQL comment.
 
-3. **Migration added?** Does the change require a schema change? If yes, add a goose migration in `internal/db/migrations/postgres/`. Every column, constraint, index, and trigger lives in goose migrations — there is no separate SQLite path.
+3. **Migration added?** Does the change require a schema change? If yes, add a goose migration in `internal/db/migrations/postgres/`. Every column, constraint, index, and trigger lives in goose migrations — there is no separate SQLite path. **Any PL/pgSQL function, procedure, or DO block must be wrapped in `-- +goose StatementBegin` / `-- +goose StatementEnd`** (goose splits on semicolons by default, which breaks `$$`-delimited function bodies).
 
-4. **Test coverage?** Is there a Go test that sends a partial update (missing fields) and verifies the existing values are preserved? If not, write one.
+4. **Migration tested?** Run `goose up` against a local PostgreSQL with representative data before pushing. CHECK constraints are especially dangerous — they assert against every existing row and will crash the server on startup if any row violates them.
 
-5. **Frontend sends full object?** If the frontend calls PUT on a resource, does it send the complete current state, not just the changed field? Check the API call payload.
+5. **Test coverage?** Is there a Go test that sends a partial update (missing fields) and verifies the existing values are preserved? If not, write one.
 
-6. **Destructive operation review?** DELETE endpoints, status changes, archive operations — verify the operation is reversible or has confirmation UI.
+6. **Frontend sends full object?** If the frontend calls PUT on a resource, does it send the complete current state, not just the changed field? Check the API call payload.
 
-> **Origin:** On March 18, 2026, a single bell icon toggle corrupted a practice record because the frontend sent a partial PUT, the backend did a blind full-column UPDATE, and nothing in the database prevented empty values. This checklist exists to prevent that class of bug.
+7. **Destructive operation review?** DELETE endpoints, status changes, archive operations — verify the operation is reversible or has confirmation UI.
+
+> **Origin:** On March 18, 2026, a single bell icon toggle corrupted a practice record because the frontend sent a partial PUT, the backend did a blind full-column UPDATE, and nothing in the database prevented empty values. On March 19, a CHECK constraint migration used wrong enum values (from memory instead of code), and a PL/pgSQL trigger function was missing goose `StatementBegin/End`, causing two consecutive production crash-loops. This checklist exists to prevent those classes of bugs.
 
 ## Running the Becoming App Locally
 
