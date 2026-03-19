@@ -139,7 +139,39 @@ Notifications use a layered opt-in design: global toggle → default-for-new-pra
 4. `notify_practices_by_default = true` → new practices created with `notify: true`.
 5. **Retroactive toggle:** When `notify_practices_by_default` is flipped from false → true, all existing practices that have a due date/schedule AND `notify` is still `false` get updated to `notify: true`. A toast confirms: "Enabled notifications for N practices with schedules." This respects Michael's instinct — if you're turning on default notifications, you probably want them for what's already there too. Only applies to practices that are schedulable (have a schedule config or due date). Non-scheduled practices (pure trackers with no time component) are left alone.
 6. Flipping `notify_practices_by_default` from true → false does NOT retroactively disable. That would be destructive — the user may have intentionally enabled specific ones.
-7. Per-practice `notify: true` with no `timing` array → inherits `default_timing` from user settings.
+7. Per-practice `notify: true` with no `timing` → inherits `default_timing` from user settings.
+
+#### Scenario Walkthrough
+
+**Scenario A: Notifications ON, Default OFF** (`notifications_enabled: true`, `notify_practices_by_default: false`)
+
+The user wants control. No practice notifies unless they explicitly enable it.
+
+1. User turns on notifications in Settings → browser asks permission → subscribed
+2. No notifications fire yet — no practices have `notify: true`
+3. User goes to their practices, sees bell icons next to each one (all off)
+4. User taps the bell on "Scripture Reading" and "Exercise" → those two practices now send notifications when due
+5. User creates a new practice "Journaling" → it starts with `notify: false` (user must tap the bell if they want it)
+6. Only "Scripture Reading" and "Exercise" trigger notifications. Everything else is silent.
+
+This is the non-spammy path. User dials in exactly what they want.
+
+**Scenario B: Notifications ON, Default ON** (`notifications_enabled: true`, `notify_practices_by_default: true`)
+
+The user wants everything to notify unless they opt out.
+
+1. User turns on notifications, then flips `notify_practices_by_default` to ON
+2. Retroactive update runs: all existing scheduled practices get `notify: true`. Toast: "Enabled notifications for 8 practices."
+3. Every due practice fires a notification
+4. User creates a new practice "Meal Prep" → it starts with `notify: true` automatically
+5. If a practice is noisy, user taps the bell to turn it OFF for that one practice
+6. Later, if user flips default back to OFF → existing practices keep their current setting (no retroactive disable). Only new practices start with `notify: false`.
+
+This is the "notify me for everything" path. Maximum coverage, opt-out individual ones.
+
+#### Phase 2 Migration
+
+Simple: all existing practices get `notify: false` (the column default). No retroactive enabling. Only one user had notifications enabled during Phase 1's brief window. After Phase 2 deploys, the user enables notifications on the specific practices they care about via the bell icons.
 
 **Phase 1 shipped only the global toggle and at_time notifications.** The data model additions listed above (per-practice fields, quiet hours, etc.) are built in Phase 2.
 
@@ -182,6 +214,8 @@ Requires both SQLite migration (in `runSQLiteMigrations()`) and PostgreSQL goose
 ```
 
 Added to the practice's existing config JSON blob. No new table needed. `notify` defaults to `false` (or `true` if `notify_practices_by_default` is on when created). `timing` inherits from `default_timing` if not set.
+
+**Phase 2 migration:** All existing practices default to `notify: false`. User enables the ones they care about via bell icons. No retroactive migration needed.
 
 #### 2b. Backend Changes
 
