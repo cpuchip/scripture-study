@@ -1,6 +1,24 @@
 # Active Context
 
-*Last updated: 2026-03-18 (Web Push notifications — Phase 1 complete)*
+*Last updated: 2026-03-18 (Notifications Phase 2 — data loss incident fixed)*
+
+---
+
+## CRITICAL: First Data Loss Incident (March 18, 2026)
+
+**What happened:** togglePracticeNotify sent partial PUT `{ config: "..." }` → backend overwrote ALL columns with zero values → practice corrupted (name="", type="", status="", active=false). Michael's "pants" practice disappeared from all views.
+
+**Root causes fixed:**
+1. Frontend: togglePracticeNotify now sends full practice object
+2. Backend: updatePractice now uses read-modify-write with field detection (json.RawMessage map)
+3. MCP: list_practices active_only=false now correctly sends ?active=false
+
+**Recovery tools added:**
+- `GET /api/admin/corrupted-practices` — finds practices with empty name/type/status
+- `POST /api/admin/recover-practice/:id` — restores core fields
+- `list_corrupted_practices` MCP tool
+
+**Still needed:** Deploy the fix and recover the corrupted practice from PostgreSQL.
 
 ---
 

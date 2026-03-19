@@ -528,8 +528,9 @@ async function togglePracticeNotify(p: Practice) {
   try { cfg = JSON.parse(p.config || '{}') } catch { /* use empty */ }
   cfg.notify = !current
   const newConfig = JSON.stringify(cfg)
-  await api.updatePractice(p.id, { config: newConfig } as Partial<Practice>)
-  p.config = newConfig
+  // Send the FULL practice with updated config — partial updates corrupt data
+  const updated = await api.updatePractice(p.id, { ...p, config: newConfig })
+  Object.assign(p, updated)
 }
 
 // Scripture lookup

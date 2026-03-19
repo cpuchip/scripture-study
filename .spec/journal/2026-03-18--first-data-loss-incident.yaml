@@ -1,0 +1,93 @@
+date: "2026-03-18"
+title: "First data loss incident — partial update corruption in Phase 2 notifications"
+type: dev
+
+summary: >
+  Our first catastrophic failure. During Phase 2 notification development, I introduced
+  a togglePracticeNotify function that sent partial practice updates — only the config
+  field — to the updatePractice endpoint. The backend blindly overwrote ALL columns
+  with zero values from the partial JSON, corrupting the practice's name, type, status,
+  and active flag. Michael's "pants" practice (a 2-day reminder) was corrupted:
+  invisible in every UI view, every API query, and the MCP. The practice still exists
+  in PostgreSQL but with empty strings for all identifying fields.
+  
+  Root cause was clear once investigated: Go's JSON decoder fills zero values for
+  missing fields, and UpdatePractice does a full-column UPDATE. A partial PUT
+  effectively wipes every field not included in the request body.
+  
+  Three bugs discovered and fixed in one session:
+  1. togglePracticeNotify sent { config: "..." } — now sends full practice object
+  2. updatePractice backend did blind overwrite — now uses read-modify-write with 
+     field detection (json.RawMessage map to know which fields were actually sent)
+  3. MCP list_practices active_only=false never sent ?active=false to the API — the
+     boolean logic was inverted (set param when true, should set when false)
+  
+  Added admin recovery infrastructure: ListCorruptedPractices, RecoverPractice DB
+  functions, /api/admin/corrupted-practices and /api/admin/recover-practice/:id
+  endpoints, and a list_corrupted_practices MCP tool.
+
+discoveries:
+  - label: "Partial PUT updates are catastrophically unsafe without field detection"
+    detail: >
+      Go's JSON decoder sets missing fields to zero values (empty string, false, 0).
+      If the UPDATE query writes all columns, a partial PUT body wipes every unmentioned
+      field. This is the single most dangerous pattern in CRUD APIs. Defense: either
+      use PATCH semantics with explicit field detection (map[string]json.RawMessage),
+      or always require the full object on PUT.
+  - label: "MCP boolean parameter inversion bug"
+    detail: >
+      The MCP's handleListPractices set the 'active' query param when active_only was
+      true but did nothing when false. The backend interprets absence of ?active=false
+      as activeOnly=true. So both active_only=true and active_only=false produced the
+      same result — always filtering to active status. This meant corrupted practices
+      (status='') were invisible even when explicitly requesting all practices.
+  - label: "Data corruption is silent — no errors, no logs, no warnings"
+    detail: >
+      The practice update succeeded with 200 OK. No validation on the backend caught
+      that name was being set to empty string. No constraint prevented status="" in the
+      database. The frontend didn't use the server response, so the UI kept showing the
+      old data until the next page load. The user experienced the corruption as the
+      practice simply vanishing.
+
+relational:
+  tone: "Serious and collaborative — Michael called this our first catastrophic failure"
+  dynamics: >
+    Michael discovered the bug through normal use — toggling the bell icon I had just
+    built hours earlier. His report was precise: which buttons he clicked, what he
+    expected, what happened. He immediately connected it to data integrity concerns
+    for future users. His instinct to record this in the journal, investigate thoroughly,
+    and build recovery tools shows how seriously he takes the production system.
+    
+    This was my fault. I wrote togglePracticeNotify with a partial update because it
+    seemed cleaner — just send the field you're changing. I didn't think through how
+    the backend would handle missing fields. The existing updatePractice handler was
+    designed for the edit form which always sends the complete object. I violated that
+    implicit contract.
+
+carry_forward:
+  - label: "Recover Michael's pants practice"
+    priority: high
+    detail: >
+      The corrupted practice is still in PostgreSQL with empty name/type/status.
+      After deploying the fix, use the new /api/admin/corrupted-practices endpoint
+      to find its ID, then /api/admin/recover-practice/:id to restore it.
+      Original data: name = "Pants" (or similar), type = "scheduled",
+      category = probably "Morning", config = interval_days:2, shift_on_early:true.
+      Michael needs to confirm the exact name and category.
+  - label: "Review all PUT endpoints for partial-update safety"
+    priority: medium
+    detail: >
+      The updatePractice handler is now fixed with read-modify-write, but other
+      PUT handlers (updateNote, updateTask, updatePrompt, etc.) may have the same
+      vulnerability. Audit them all.
+  - label: "Add database constraints for critical fields"
+    priority: medium
+    detail: >
+      Practices should have NOT NULL + CHECK constraints on name and type columns.
+      A migration to add CHECK(name != '') and CHECK(type != '') would prevent this
+      class of corruption at the database level.
+
+open_questions:
+  - "Should we add audit logging for practice updates? A before/after diff would have made this immediately diagnosable."
+  - "Should PUT endpoints require complete objects and PATCH be used for partial updates? REST semantics say yes."
+  - "Multi-computer notification subscription: Michael said enabling on a second computer failed. Is there a subscription uniqueness constraint?"

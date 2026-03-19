@@ -3,7 +3,9 @@ package auth
 
 import (
 	"context"
+	"log"
 	"net/http"
+	"os"
 	"strings"
 
 	"github.com/cpuchip/scripture-study/scripts/becoming/internal/db"
@@ -113,6 +115,47 @@ func Optional(database *db.DB, devMode bool) func(http.Handler) http.Handler {
 			} else {
 				next.ServeHTTP(w, r)
 			}
+		})
+	}
+}
+
+// AdminRequired returns middleware that restricts access to admin users.
+// Admin emails are read from the ADMIN_EMAILS environment variable
+// (comma-separated, case-insensitive).
+// Must be used after Required — assumes userID is already in context.
+func AdminRequired(database *db.DB) func(http.Handler) http.Handler {
+	raw := os.Getenv("ADMIN_EMAILS")
+	allowed := make(map[string]bool)
+	for _, email := range strings.Split(raw, ",") {
+		email = strings.TrimSpace(strings.ToLower(email))
+		if email != "" {
+			allowed[email] = true
+		}
+	}
+	if len(allowed) == 0 {
+		log.Println("Warning: ADMIN_EMAILS not set — admin endpoints will reject all requests")
+	}
+
+	return func(next http.Handler) http.Handler {
+		return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+			userID := UserID(r)
+			if userID == 0 {
+				http.Error(w, `{"error":"unauthorized"}`, http.StatusUnauthorized)
+				return
+			}
+
+			user, err := database.GetUserByID(userID)
+			if err != nil || user == nil {
+				http.Error(w, `{"error":"unauthorized"}`, http.StatusUnauthorized)
+				return
+			}
+
+			if !allowed[strings.ToLower(user.Email)] {
+				http.Error(w, `{"error":"forbidden"}`, http.StatusForbidden)
+				return
+			}
+
+			next.ServeHTTP(w, r)
 		})
 	}
 }

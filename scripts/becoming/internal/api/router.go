@@ -4,6 +4,7 @@ package api
 import (
 	"encoding/json"
 	"fmt"
+	"io"
 	"net/http"
 	"strconv"
 	"strings"
@@ -156,6 +157,13 @@ func Router(database *db.DB, scripturesRoot string, taskNotifier ...TaskNotifier
 		r.Delete("/{id}", deleteBookmark(database))
 	})
 
+	// Admin: data recovery (restricted to ADMIN_EMAILS)
+	r.Route("/admin", func(r chi.Router) {
+		r.Use(auth.AdminRequired(database))
+		r.Get("/corrupted-practices", listCorruptedPractices(database))
+		r.Post("/recover-practice/{id}", recoverPractice(database))
+	})
+
 	return r
 }
 
@@ -275,17 +283,80 @@ func updatePractice(database *db.DB) http.HandlerFunc {
 			writeError(w, http.StatusBadRequest, "invalid id")
 			return
 		}
-		var p db.Practice
-		if err := json.NewDecoder(r.Body).Decode(&p); err != nil {
+
+		// Read body into bytes so we can decode twice:
+		// once as map (to know which fields were sent) and once as struct.
+		bodyBytes, err := io.ReadAll(r.Body)
+		if err != nil {
+			writeError(w, http.StatusBadRequest, "failed to read body")
+			return
+		}
+
+		var fields map[string]json.RawMessage
+		if err := json.Unmarshal(bodyBytes, &fields); err != nil {
 			writeError(w, http.StatusBadRequest, "invalid JSON: "+err.Error())
 			return
 		}
-		p.ID = id
-		if err := database.UpdatePractice(userID, &p); err != nil {
+
+		// Fetch existing practice to use as base
+		existing, err := database.GetPractice(userID, id)
+		if err != nil {
+			writeError(w, http.StatusNotFound, "practice not found")
+			return
+		}
+
+		// Overlay only the fields that were actually sent in the request
+		var req db.Practice
+		if err := json.Unmarshal(bodyBytes, &req); err != nil {
+			writeError(w, http.StatusBadRequest, "invalid JSON: "+err.Error())
+			return
+		}
+
+		if _, ok := fields["name"]; ok {
+			existing.Name = req.Name
+		}
+		if _, ok := fields["description"]; ok {
+			existing.Description = req.Description
+		}
+		if _, ok := fields["type"]; ok {
+			existing.Type = req.Type
+		}
+		if _, ok := fields["category"]; ok {
+			existing.Category = req.Category
+		}
+		if _, ok := fields["source_doc"]; ok {
+			existing.SourceDoc = req.SourceDoc
+		}
+		if _, ok := fields["source_path"]; ok {
+			existing.SourcePath = req.SourcePath
+		}
+		if _, ok := fields["config"]; ok {
+			existing.Config = req.Config
+		}
+		if _, ok := fields["sort_order"]; ok {
+			existing.SortOrder = req.SortOrder
+		}
+		if _, ok := fields["active"]; ok {
+			existing.Active = req.Active
+		}
+		if _, ok := fields["status"]; ok {
+			existing.Status = req.Status
+		}
+		if _, ok := fields["end_date"]; ok {
+			existing.EndDate = req.EndDate
+		}
+		if _, ok := fields["start_date"]; ok {
+			existing.StartDate = req.StartDate
+		}
+		if _, ok := fields["memorize_level"]; ok {
+			existing.MemorizeLevel = req.MemorizeLevel
+		}
+
+		if err := database.UpdatePractice(userID, existing); err != nil {
 			writeError(w, http.StatusInternalServerError, err.Error())
 			return
 		}
-		writeJSON(w, http.StatusOK, p)
+		writeJSON(w, http.StatusOK, existing)
 	}
 }
 
@@ -1496,6 +1567,58 @@ func getAllPracticePillarLinks(database *db.DB) http.HandlerFunc {
 			links = []db.PracticePillarMapping{}
 		}
 		writeJSON(w, http.StatusOK, links)
+	}
+}
+
+// --- Admin: Data Recovery ---
+
+func listCorruptedPractices(database *db.DB) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		userID := auth.UserID(r)
+		practices, err := database.ListCorruptedPractices(userID)
+		if err != nil {
+			writeError(w, http.StatusInternalServerError, err.Error())
+			return
+		}
+		if practices == nil {
+			practices = []*db.Practice{}
+		}
+		writeJSON(w, http.StatusOK, practices)
+	}
+}
+
+func recoverPractice(database *db.DB) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		userID := auth.UserID(r)
+		id, err := parseID(r)
+		if err != nil {
+			writeError(w, http.StatusBadRequest, "invalid id")
+			return
+		}
+		var req struct {
+			Name     string `json:"name"`
+			Type     string `json:"type"`
+			Category string `json:"category"`
+			Config   string `json:"config"`
+			Status   string `json:"status"`
+		}
+		if err := json.NewDecoder(r.Body).Decode(&req); err != nil {
+			writeError(w, http.StatusBadRequest, "invalid JSON")
+			return
+		}
+		if req.Name == "" || req.Type == "" {
+			writeError(w, http.StatusBadRequest, "name and type are required")
+			return
+		}
+		if req.Status == "" {
+			req.Status = "active"
+		}
+		if err := database.RecoverPractice(userID, id, req.Name, req.Type, req.Category, req.Config, req.Status); err != nil {
+			writeError(w, http.StatusInternalServerError, err.Error())
+			return
+		}
+		p, _ := database.GetPractice(userID, id)
+		writeJSON(w, http.StatusOK, p)
 	}
 }
 

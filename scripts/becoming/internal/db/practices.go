@@ -85,6 +85,31 @@ func (db *DB) ListPractices(userID int64, practiceType string, activeOnly bool) 
 	return db.ListPracticesByStatus(userID, practiceType, "", activeOnly)
 }
 
+// ListCorruptedPractices returns practices with empty name or empty status (data corruption).
+func (db *DB) ListCorruptedPractices(userID int64) ([]*Practice, error) {
+	rows, err := db.Query(`SELECT `+practiceColumns+` FROM practices WHERE user_id = ? AND (name = '' OR status = '' OR type = '')`, userID)
+	if err != nil {
+		return nil, fmt.Errorf("listing corrupted practices: %w", err)
+	}
+	defer rows.Close()
+	var practices []*Practice
+	for rows.Next() {
+		p, err := scanPractice(rows)
+		if err != nil {
+			return nil, fmt.Errorf("scanning corrupted practice: %w", err)
+		}
+		practices = append(practices, p)
+	}
+	return practices, rows.Err()
+}
+
+// RecoverPractice restores a corrupted practice's core fields.
+func (db *DB) RecoverPractice(userID, id int64, name, pType, category, config, status string) error {
+	_, err := db.Exec(`UPDATE practices SET name=?, type=?, category=?, config=?, status=?, active=TRUE WHERE id=? AND user_id=?`,
+		name, pType, category, config, status, id, userID)
+	return err
+}
+
 // ListPracticesByStatus returns practices filtered by type and/or explicit status.
 // If status is non-empty, it takes precedence over activeOnly. If status is empty,
 // activeOnly=true filters to status='active' (legacy behavior).

@@ -110,6 +110,7 @@ func registerTools(s *server.MCPServer) {
 	s.AddTool(toolGetReport(), handleGetReport)
 	s.AddTool(toolGetReflection(), handleGetReflection)
 	s.AddTool(toolGetTodayPrompt(), handleGetTodayPrompt)
+	s.AddTool(toolListCorruptedPractices(), handleListCorruptedPractices)
 
 	// Write tools
 	s.AddTool(toolLogPractice(), handleLogPractice)
@@ -148,6 +149,13 @@ func toolListPractices() mcp.Tool {
 		mcp.WithDescription("List all practices with their type, category, and active status."),
 		mcp.WithString("type", mcp.Description("Filter by type: memorize, tracker, habit, scheduled")),
 		mcp.WithBoolean("active_only", mcp.Description("Only return active practices (default: true)")),
+		mcp.WithReadOnlyHintAnnotation(true),
+	)
+}
+
+func toolListCorruptedPractices() mcp.Tool {
+	return mcp.NewTool("list_corrupted_practices",
+		mcp.WithDescription("List practices with corrupted data (empty name, type, or status). Use for data recovery diagnostics."),
 		mcp.WithReadOnlyHintAnnotation(true),
 	)
 }
@@ -299,14 +307,22 @@ func handleListPractices(_ context.Context, req mcp.CallToolRequest) (*mcp.CallT
 	if t := req.GetString("type", ""); t != "" {
 		params.Set("type", t)
 	}
-	if req.GetBool("active_only", true) {
-		params.Set("active", "true")
+	if !req.GetBool("active_only", true) {
+		params.Set("active", "false")
 	}
 	path := "/practices"
 	if len(params) > 0 {
 		path += "?" + params.Encode()
 	}
 	data, err := apiRequest("GET", path, nil)
+	if err != nil {
+		return mcp.NewToolResultError(err.Error()), nil
+	}
+	return mcp.NewToolResultText(string(data)), nil
+}
+
+func handleListCorruptedPractices(_ context.Context, _ mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	data, err := apiRequest("GET", "/admin/corrupted-practices", nil)
 	if err != nil {
 		return mcp.NewToolResultError(err.Error()), nil
 	}
