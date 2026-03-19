@@ -67,6 +67,22 @@
 
 **No external service required.** No Firebase, no OneSignal, no Pusher. Just your Go backend + the browser's built-in push service.
 
+### Gorush Evaluation (2026-03-17)
+
+Michael asked about running [Gorush](https://github.com/appleboy/gorush) as a Dokploy sidecar.
+
+**What Gorush is:** A push notification micro server (8,700 stars, 882 forks, 60 contributors, MIT, v1.21.0 released Mar 8, 2026). Actively maintained by appleboy. Supports APNS (iOS), FCM/GCM (Android), and Huawei push.
+
+**What Gorush is NOT:** A Web Push server. It does not support the Web Push protocol (RFC 8030), VAPID (RFC 8292), or browser push subscriptions. Its topics are literally "android, apns, gcm, ios, ios-notification."
+
+**Why it doesn't fit:** Desktop notifications require Web Push — the protocol where the server encrypts a payload and POSTs to the browser vendor's push service (Google FCM endpoint for Chrome, Mozilla Autopush for Firefox, WNS for Edge). Gorush speaks a different protocol entirely (direct APNS/FCM device token push for native mobile apps).
+
+**When Gorush would matter:** If brain-app (Flutter/Android) needs server-triggered push via FCM. But that's Phase 4, and even then a direct FCM HTTP v1 API call from the Go backend would suffice for 1-2 users. A separate notification server is designed for high-throughput mobile push at scale — not this use case.
+
+**Also found:** `mpizenberg/go-notify-server` (Mar 2026, 0 stars, 1 contributor, LLM-generated) — a minimal self-hosted Web Push server. Its README confirms the architectural insight: "The 'application server' role in Web Push is intentionally thin and application-specific — the ecosystem provides libraries for the hard cryptographic parts (webpush-go), not turnkey servers."
+
+**Decision:** Stay with webpush-go embedded in ibeco.me. No sidecar needed.
+
 ### Browser Support
 
 | Browser | Desktop | Mobile | Notes |

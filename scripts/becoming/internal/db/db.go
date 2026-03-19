@@ -291,9 +291,57 @@ func (db *DB) runSQLiteMigrations() error {
 		return fmt.Errorf("brain_enabled_token migration: %w", err)
 	}
 
+	// Migration: create push notification tables
+	if err := db.migratePushNotifications(); err != nil {
+		return fmt.Errorf("push notifications migration: %w", err)
+	}
+
+	// Ensure default user exists before seeding (prompts table has FK to users)
+	if _, err := db.EnsureDefaultUser(); err != nil {
+		return fmt.Errorf("ensuring default user: %w", err)
+	}
+
 	// Seed default reflection prompts for user 1 (dev user)
 	if err := db.SeedPrompts(1); err != nil {
 		return fmt.Errorf("seeding prompts: %w", err)
+	}
+
+	return nil
+}
+
+// migratePushNotifications creates tables for Web Push notifications.
+func (db *DB) migratePushNotifications() error {
+	if _, err := db.Exec(`CREATE TABLE IF NOT EXISTS push_subscriptions (
+		id          INTEGER PRIMARY KEY,
+		user_id     INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+		endpoint    TEXT NOT NULL,
+		keys_p256dh TEXT NOT NULL,
+		keys_auth   TEXT NOT NULL,
+		user_agent  TEXT,
+		created_at  DATETIME DEFAULT CURRENT_TIMESTAMP,
+		UNIQUE(user_id, endpoint)
+	)`); err != nil {
+		return fmt.Errorf("creating push_subscriptions: %w", err)
+	}
+
+	if _, err := db.Exec(`CREATE TABLE IF NOT EXISTS notification_log (
+		id          INTEGER PRIMARY KEY,
+		user_id     INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+		practice_id INTEGER NOT NULL REFERENCES practices(id) ON DELETE CASCADE,
+		date        DATE NOT NULL,
+		sent_at     DATETIME DEFAULT CURRENT_TIMESTAMP
+	)`); err != nil {
+		return fmt.Errorf("creating notification_log: %w", err)
+	}
+	if _, err := db.Exec(`CREATE INDEX IF NOT EXISTS idx_notification_log_user_date ON notification_log(user_id, date)`); err != nil {
+		return fmt.Errorf("creating notification_log index: %w", err)
+	}
+
+	if _, err := db.Exec(`CREATE TABLE IF NOT EXISTS user_settings (
+		user_id                INTEGER PRIMARY KEY REFERENCES users(id) ON DELETE CASCADE,
+		notifications_enabled  INTEGER NOT NULL DEFAULT 0
+	)`); err != nil {
+		return fmt.Errorf("creating user_settings: %w", err)
 	}
 
 	return nil

@@ -15,6 +15,7 @@ import (
 	"github.com/cpuchip/scripture-study/scripts/becoming/internal/brain"
 	"github.com/cpuchip/scripture-study/scripts/becoming/internal/db"
 	"github.com/cpuchip/scripture-study/scripts/becoming/internal/envload"
+	"github.com/cpuchip/scripture-study/scripts/becoming/internal/notify"
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/chi/v5/middleware"
 	"github.com/go-chi/cors"
@@ -123,6 +124,23 @@ func main() {
 	brainHub := brain.NewHub(database)
 	r.Get("/ws/brain", brainHub.HandleWebSocket)
 
+	// Notification scheduler (only start if VAPID keys are configured)
+	vapidPublic := os.Getenv("VAPID_PUBLIC_KEY")
+	vapidPrivate := os.Getenv("VAPID_PRIVATE_KEY")
+	vapidContact := os.Getenv("VAPID_CONTACT")
+	var notifScheduler *notify.Scheduler
+	if vapidPublic != "" && vapidPrivate != "" {
+		if vapidContact == "" {
+			vapidContact = "mailto:admin@ibeco.me"
+		}
+		notifScheduler = notify.NewScheduler(database, vapidPublic, vapidPrivate, vapidContact)
+		notifScheduler.Start()
+		defer notifScheduler.Stop()
+		log.Println("Web Push notifications enabled")
+	} else {
+		log.Println("Web Push notifications disabled (set VAPID_PUBLIC_KEY, VAPID_PRIVATE_KEY to enable)")
+	}
+
 	// Protected API routes
 	r.Group(func(r chi.Router) {
 		r.Use(auth.Required(database, *dev))
@@ -159,6 +177,11 @@ func main() {
 		r.Post("/api/brain/subtasks", brainHub.HandleBrainSubTaskCreate)
 		r.Put("/api/brain/subtasks", brainHub.HandleBrainSubTaskUpdate)
 		r.Delete("/api/brain/subtasks", brainHub.HandleBrainSubTaskDelete)
+
+		// Push notification endpoints
+		if notifScheduler != nil {
+			r.Mount("/api/push", notify.Router(database, notifScheduler))
+		}
 
 		// All existing API routes
 		r.Mount("/api", api.Router(database, *scriptures, brainHub))

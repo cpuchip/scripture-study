@@ -2,10 +2,29 @@
 import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { useAuth } from '../composables/useAuth'
+import { useNotifications } from '../composables/useNotifications'
 import { authApi, type APIToken, type AuthProviders, type SessionInfo } from '../api'
 
 const router = useRouter()
 const { user, refresh, logout } = useAuth()
+const { permission, subscribed, loading: notifLoading, supported: notifSupported, subscribe, unsubscribe, checkSubscription, sendTest } = useNotifications()
+
+// Notification handling
+const testSending = ref(false)
+
+async function toggleNotifications() {
+  if (subscribed.value) {
+    await unsubscribe()
+  } else {
+    await subscribe()
+  }
+}
+
+async function sendTestNotification() {
+  testSending.value = true
+  await sendTest()
+  testSending.value = false
+}
 
 // Auth providers (is Google available?)
 const providers = ref<AuthProviders | null>(null)
@@ -268,6 +287,7 @@ onMounted(() => {
   loadProviders()
   loadTokens()
   loadSessions()
+  checkSubscription()
 })
 </script>
 
@@ -329,6 +349,69 @@ onMounted(() => {
         <div>
           <span class="text-sm text-gray-500">Member since</span>
           <p class="font-medium">{{ user ? formatDate(user.created_at) : '' }}</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Password Section -->
+    <section class="bg-white rounded-lg border border-gray-200 p-6">
+      <div class="flex items-center justify-between mb-4">
+        <div>
+          <h2 class="text-lg font-semibold">Notifications</h2>
+          <p class="text-sm text-gray-500 mt-1">
+            Get notified when practices are due, even when the tab is closed.
+          </p>
+        </div>
+      </div>
+
+      <div v-if="!notifSupported" class="text-sm text-gray-500">
+        Push notifications are not supported in this browser.
+      </div>
+
+      <div v-else class="space-y-4">
+        <!-- Permission denied warning -->
+        <div v-if="permission === 'denied'" class="p-3 bg-amber-50 border border-amber-200 rounded text-sm text-amber-800">
+          Notifications are blocked by your browser. To enable them, click the lock icon in your address bar and allow notifications for this site.
+        </div>
+
+        <!-- Toggle -->
+        <div class="flex items-center justify-between">
+          <div>
+            <p class="text-sm font-medium">{{ subscribed ? 'Notifications enabled' : 'Enable notifications' }}</p>
+            <p class="text-xs text-gray-500">
+              {{ subscribed ? 'You\'ll receive a notification when practices are due.' : 'Your browser will ask for permission.' }}
+            </p>
+          </div>
+          <button
+            @click="toggleNotifications"
+            :disabled="notifLoading || permission === 'denied'"
+            :class="[
+              'relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500',
+              subscribed ? 'bg-indigo-600' : 'bg-gray-200',
+              (notifLoading || permission === 'denied') ? 'opacity-50 cursor-not-allowed' : ''
+            ]"
+            role="switch"
+            :aria-checked="subscribed"
+            :aria-label="subscribed ? 'Disable notifications' : 'Enable notifications'"
+          >
+            <span
+              :class="[
+                'pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out',
+                subscribed ? 'translate-x-5' : 'translate-x-0'
+              ]"
+            />
+          </button>
+        </div>
+
+        <!-- Test notification button (only when subscribed) -->
+        <div v-if="subscribed" class="pt-2">
+          <button
+            @click="sendTestNotification"
+            :disabled="testSending"
+            class="text-sm text-indigo-600 hover:text-indigo-800 disabled:opacity-50"
+          >
+            {{ testSending ? 'Sending...' : 'Send test notification' }}
+          </button>
         </div>
       </div>
     </section>
