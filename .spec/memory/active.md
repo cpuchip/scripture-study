@@ -66,18 +66,18 @@ All settled decisions are in [decisions.md](decisions.md). Key ones affecting cu
 - `internal/ai/client.go` — CopilotClient() getter
 - `cmd/brain/main.go` — Agent creation wired into startup
 
-### WS1 Phase 2: Agent as Spec Executor — PROOF OF CONCEPT (Mar 20)
+### WS1 Phase 2: Agent as Spec Executor — DONE (Mar 20)
 - **Test:** `brain exec test-spec.md` — add markdown_link to gospel-mcp GetResponse
 - **Result:** Agent made 4/8 correct changes autonomously, then timed out (SDK internal timeout ~60s)
 - **Human completed:** remaining 4 construction sites + fixed variable shadowing compile error
 - **Key discoveries:**
   - Copilot SDK v0.1.32 has BUILT-IN tools: `view` (read files), `grep` (search), `edit` (modify files), `report_intent` (declare plan)
-  - Our custom devTools (read_file, write_file, list_directory, search_text) are supplementary — the SDK already provides this
+  - Our custom devTools (read_file, write_file, list_directory, search_text) were redundant — removed
   - SDK protocol updated v2→v3. Required updating SDK from v0.1.29→v0.1.32
   - `brain exec` CLI subcommand added for spec execution without starting full server
-  - Timeout is the main blocker — `SendAndWait` has an internal deadline
 - **What shipped (gospel-mcp):** MarkdownLink field added to GetResponse, populated in all 8 construction sites
-- **Remaining:** Fix timeout (try `Streaming: true`?), test with larger specs, iterate
+- **Timeout fixed:** `AskStreaming` method uses `Send` + `On` (event-driven) instead of `SendAndWait`. Streams output in real-time via `AssistantMessageDelta` events. Exec uses 10-minute timeout. Custom devTools removed; `tools.go` pending manual deletion.
+- **Pending cleanup:** Delete `scripts/brain/internal/ai/tools.go` and `scripts/brain/test-spec.md`
 
 ### Overview Plan
 - **Status:** All questions answered, decisions recorded.
