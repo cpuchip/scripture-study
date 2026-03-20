@@ -201,3 +201,42 @@ Section breaks and short paragraphs are containers for silence, not silence itse
 Michael's voice is concrete, direct, and unadorned. Cut: "Let that land," "Sit with that," "Here's the thing," "This matters because," "Read that again," "That's not nothing." These are presenter verbal tics — stage-manager language that tells the reader what to feel. Limit em-dashes to 1-2 per document (not per paragraph — per document). Zero is fine. "This isn't just X — it's Y" — once per study is fine, once per section is a formula. Let paragraphs end. White space does the work that "let that land" pretends to do.
 
 *Source: [voice-analysis-ai-vs-michael.md](../../study/yt/voice-analysis-ai-vs-michael.md), integrated into [copilot-instructions.md](../../.github/copilot-instructions.md) March 15*
+
+---
+
+## Agentic Architecture Principles
+
+### Harness > Intelligence
+The scaffolding around the agent (state, memory, organizational structure, skills) determines output quality more than model capability. Source-verification skill reduced confabulation more than any model upgrade. Phased workflows (scratch files, critical analysis) produced better studies than legacy single-pass prompts. Four independent AI labs (Anthropic, Google DeepMind, OpenAI, Cursor) converged on the same pattern: organizational structure is the primary lever.
+
+*Source: Nate B Jones "4 AI Labs" video evaluation (Mar 19), Squad analysis, our own exp1→promoted agent results*
+
+### The Convergent Pattern: Decompose → Parallelize → Verify → Iterate
+Four labs independently built this. Squad implements it. Our 11-step cycle contains it (steps 4, 6, 7, 8). Not a coincidence — this is how organized intelligence works, human or AI. We figured out organizational intelligence for humans over centuries. Agents rediscovered it in ~3 years.
+
+*Source: [LO0Ws-l6brg evaluation](../../study/yt/LO0Ws-l6brg-4-ai-labs-same-system.md), Squad analysis*
+
+### Reduce Before Adding
+Cursor improved by stripping complexity, not adding it. Flat coordination with shared files and locks failed — agents became risk-averse. Hierarchy + clean isolation won. Before adopting new patterns, ask: what can we remove? Which plans will never ship? Which layers add coordination overhead without value? Planning can be avoidance dressed as productivity.
+
+*Source: Cursor blog (Wilson Lynn, Jan 2026), Nate B Jones video, Squad analysis Section X*
+
+### The Ben Test
+Named for Michael's coworker. Before citing a principle as a strength, ask: do we actually practice it? Calibrated language: 80%+ = "consistently"; 50-79% = "not always reliably"; 25-49% = "started but not systematic"; <25% = "written but not operationalized." Distinguish willingness gaps (need discipline) from systemization gaps (need harness) from capacity gaps (need triage). Formalized as a skill at `.github/skills/ben-test/`.
+
+*Source: Ben's feedback, Section X self-assessment (Mar 19), [ben-test skill](../../.github/skills/ben-test/SKILL.md)*
+
+### Verification Is the Surviving Skill
+As AI handles more execution, the valuable human skill shifts from "I can do the work" to "I can tell if the work is correct." Source-verification, eval agent, "read before quoting" — these are meta-skills. Nate B Jones calls it "sniff-checking." Applies to every domain, not just code. Scripture study is Tier 2 verifiable (expert-checkable with clear criteria).
+
+*Source: Nate B Jones "4 AI Labs" video, our source-verification skill effectiveness*
+
+### Gated Autonomy, Not Unlimited Autonomy
+Michael's intentional choice: agents should NOT run autonomously forever. They wait for specs, gated by human assignment. Trust requires harness (hooks, governance, cost controls) BEFORE expanded autonomy. 1500 premium requests/month is a hard constraint — stewardship over finite resources. Level 2 stewardship (agent researches independently) requires MORE infrastructure, not less. "I don't want it to run amuck."
+
+*Source: Michael's feedback (Mar 19), 1500 req/month budget reality*
+
+### Cost Unit Is Premium Requests
+GitHub Copilot operates on premium requests (1500/month), not raw tokens. Track requests as the natural budget unit. Token-level visibility is nice-to-have but requests are the constraint. Requests don't roll over — unused capacity is wasted money.
+
+*Source: Michael's feedback (Mar 19), current 56% utilization with 1/3 month remaining*

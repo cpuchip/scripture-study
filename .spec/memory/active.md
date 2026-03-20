@@ -1,6 +1,6 @@
 # Active Context
 
-*Last updated: 2026-03-19 (YouTube review gate complete — Nate B Jones video evaluated)*
+*Last updated: 2026-03-19 (Michael's corrections applied, Ben Test skill created, principles updated)*
 
 ---
 
@@ -20,6 +20,10 @@ Squad repo deeply investigated and compared to our 11-step creation cycle. Propo
 - **Storage:** Brain=local filesystem. ibeco.me=S3 on NOCIX server.
 - **brain.exe deployment:** Local → docker → NOCIX server.
 - **NOCIX server pending.** Dedione refunded. 3TB, unmetered 1Gbps.
+- **Cost unit is premium requests** (1500/month). Currently 56% utilization with 1/3 month remaining — best month yet.
+- **Gated autonomy, not unlimited.** Agents wait for specs, human assigns work. Level 2 autonomy requires more harness first.
+- **Ben Test canonized** as a skill at `.github/skills/ben-test/SKILL.md`. Practice self-assessment before claiming strengths.
+- **No more research gates** before Phase 0. Build.
 
 ### Data Safety (shipped Mar 19)
 - Phase 1: Dev agent checklist ✅

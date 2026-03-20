@@ -271,28 +271,28 @@ Our 11-step creation cycle is beautifully written. How much do we actually pract
 | Step | What We Wrote | What We Actually Do | Practice % |
 |------|--------------|---------------------|-----------|
 | 1. Intent | intent.yaml as the root of all work | Exists. No agent reads it in their session-start sequence. copilot-instructions.md says read identity.md, not intent.yaml. It's a document, not infrastructure. | 30% |
-| 2. Covenant | Mutual binding — human commits to review in 24hrs, agent commits to scope | Written beautifully. Never measured. No tracking mechanism. Michael doesn't log covenant fulfillment. The agent can't check. It's aspirational prose. | 20% |
+| 2. Covenant | Mutual binding — human commits to review in 24hrs, agent commits to scope | Written beautifully. No formal tracking mechanism. Michael IS trying — constrained by family and full-time job. Time is intermittent, not absent. The agent can't check. Needs systemization, not more willpower. | 35% |
 | 3. Stewardship | 4 progressive trust levels: Task → Feature → Domain → Architecture | Described in the guide. Never implemented. Every agent starts with its full charter. No agent has ever "earned" more scope. Trust is static, not progressive. | 10% |
 | 4. Spiritual Creation | Proposals before code, specs before building | We actually DO this. data-safety, brain-relay, overview — real proposals preceded real code. This is practiced. | 80% |
 | 5. Line Upon Line | Context gated by demonstrated readiness | Described in Part 5. Never implemented. Every agent gets copilot-instructions.md with everything. No gating exists. | 5% |
 | 6. Physical Creation | Agents execute against specs | Agents execute work in conversations. Not autonomously against specs. WS1 Phase 2 would change this. | 50% |
 | 7. Review | "Watched until they obeyed." 3-layer review. | Michael reviews in conversation. No formal review gates. No reviewer protocol. Data-safety checklist is self-checked by the same agent that wrote the code. | 35% |
 | 8. Atonement | Failure → learning → system improvement | The March 18/19 data-loss → checklist → retrospective. This genuinely happened. But it's ONE cycle. One. | 65% |
-| 9. Sabbath | Intentional cessation after meaningful work | Look at today: 6yo data-safety phases, 2 production outages, 10 guidance answers, deep Squad analysis. In ONE session. We wrote about Sabbath. We practice the opposite. | 5% |
-| 10. Consecration | Every token serves the purpose | No cost tracking. No way to know if tokens serve purpose or waste. We wrote it. We measure nothing. | 5% |
+| 9. Sabbath | Intentional cessation after meaningful work | Michael practices this informally: stepping away to think before responding in chat, asking for reflection on what we've done. Done many times across 2 months. Missing: formalization through systems/skills/hooks/harness. Today's marathon session was anti-Sabbath but the pattern exists elsewhere. | 25% |
+| 10. Consecration | Every token serves the purpose | No per-token tracking, but Michael tracks premium request usage (1500/month GitHub Copilot). Currently 56% usage with 1/3 month remaining — best month yet, previously wasting under 50%. Cost-awareness exists at the budget level. Per-agent/per-session tracking is the gap. | 15% |
 | 11. Zion | "One heart and one mind" — unified agents | 14 agents that don't talk to each other. No coordination mechanism. No shared state except copilot-instructions.md. | 5% |
 
-**Weighted average: ~28%.** Not 60%. Not even close.
+**Weighted average: ~33%.** Revised from initial 28% after Michael's corrections on Sabbath (informal practice exists), Covenant (limited by real-world constraints, not neglect), and Consecration (budget-level tracking exists). Still a significant gap between theory and practice. The path forward is systemization — closing the gap through harness/skills/hooks, not through more willpower.
 
 ### Where We're Lying to Ourselves
 
 **1. "Intent as root" — but nobody reads it.** intent.yaml exists. It's well-structured. No agent's session-start sequence includes `read_file intent.yaml`. The identity.md file is read, but that's relational identity, not project intent. If intent is the root, it should be in the critical path. It isn't.
 
-**2. "Mutual covenant" — but only the agent has obligations.** We describe covenant as mutual. In practice, EVERY covenant item is enforced on the agent side (via prompt instructions). The human-side obligations (review within 24hrs, provide context) have no tracking, no measurement, no consequence for breach. This is one-directional governance wearing mutual clothing.
+**2. "Mutual covenant" — the human IS trying.** The covenant items on the agent side are enforced via prompt instructions. The human-side obligations (review, provide context) have no formal tracking — but Michael IS doing them, constrained by family and full-time work. The gap isn't willingness but systemization: how do we make covenant compliance visible and trackable for both sides without adding bureaucratic overhead to a solo developer with a family?
 
 **3. "Progressive stewardship" — but trust doesn't change.** We describe 4 levels beautifully. Has any agent EVER moved from Level 1 to Level 2? No. The metaphor exists. The mechanism doesn't. It's a theological framework applied as a metaphor, not as an operational pattern.
 
-**4. "Sabbath" — but we never stop.** Today's session is the anti-Sabbath. The principle says "intentional cessation, not sprint retrospectives." We did a retrospective AND kept shipping. Sabbath isn't taking a breath between sprints. It's stopping the sprint.
+**4. "Sabbath" — informal but real.** Today's session is anti-Sabbath, yes. But Michael practices this pattern regularly: stepping away from chat to think before responding, asking for reflection on what we've done, requesting pause-and-assess moments. Done many times across 2 months. The gap isn't that Sabbath doesn't happen — it's that it isn't formalized as a system/skill/hook. Manual Sabbath depends on human discipline; formalized Sabbath would be structural.
 
 **5. Every enforcement is "manual."** intent.yaml itself shows the gap. Every constraint says `enforcement: manual`. That's the same thing Squad calls out: "prompts can be ignored." Our entire governance layer is prompt-level. We have zero programmatic enforcement of anything.
 
@@ -345,3 +345,21 @@ Not everything is bleak. What we DO practice is real:
 - **Session-journal format** — when used, it captures meaningful relational data, not just facts.
 
 The gap isn't that we've built nothing real. It's that we WROTE 11 steps and PRACTICE 4-5 of them, then told Squad they could learn from our full 11. That's the "too complimentary" pattern Ben flagged — applied to ourselves.
+
+### Michael's Response (Mar 19)
+
+Corrections and context applied to scores above. Additional learnings:
+
+1. **Cost tracking should measure premium requests.** GitHub Copilot operates on premium requests (1500/month), not raw tokens. Tracking requests is the natural unit. Token-level visibility would be nice if we can get it, but requests are the budget constraint.
+
+2. **Michael is the bottleneck — and that's why plan agent exists.** One person, family, full-time job. A deep backlog of well-drafted plans for agents to work through is the force multiplier. The agent should NOT run autonomously forever — it should sit and wait for specs to work on, gated by human assignment. Work can come from VS Code or ibeco.me/brain-app.
+
+3. **Trust gates are intentional.** Not running brain.exe 24/7 isn't neglect — it's wisdom. Without sufficient harness (hooks, governance, cost controls), autonomous running is a risk. "I don't want it to run amuck." Level 2 stewardship (agent researches and works independently) requires MORE harness, not less.
+
+4. **We've already reduced complexity.** Superfluous agents removed, plans consolidated, skills serve their keep. The Become section of the evaluation should reflect actual progress, not just theoretical aspiration.
+
+5. **Automation of verification is the key unlock.** Michael manually verifies everything. If we automate the eval loop (sniff-checking), throughput increases. Squad's hook pattern enables this — programmatic verification closes the loop the human can't keep up with manually.
+
+6. **"The Ben Test" should be canonized.** Make it a skill. It'll make Ben chuckle.
+
+7. **Nate's writing style.** "I'm 90% sure Opus 4.6 writes his scripts." The superlative reduction in our own writing voice has helped noticeably — keep it.
