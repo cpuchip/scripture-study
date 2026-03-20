@@ -16,6 +16,12 @@ Moses 6:57 gives the key from the language of Adam:
 
 The Father's name in that language: Man of Holiness. His Son's name: Son of Man — the Son of the Holy Man. This is not metaphor. It is a declaration of literal parentage. The titles are genitive — they identify whose son he is.
 
+Moses 6:59 gives Adam the plan of salvation in full, and the title is the hinge of the whole thing:
+
+> "That by reason of transgression cometh the fall, which fall bringeth death, and inasmuch as ye were born into the world by water, and blood, and the spirit, which I have made, and so became of dust a living soul, even so ye must be born again into the kingdom of heaven, of water, and of the Spirit, and be cleansed by blood, even the blood of mine Only Begotten; that ye might be sanctified from all sin, and enjoy the words of eternal life in this world, and eternal life in the world to come, even immortal glory" — [Moses 6:59](../gospel-library/eng/scriptures/pgp/moses/6.md)
+
+The structure of redemption is built on the uniqueness of his parentage. Born of water, blood, and spirit in the natural birth; reborn of water and Spirit in baptism; cleansed by the blood of the Only Begotten in the Atonement. God told this to Adam at the very beginning, using the same title that would appear four thousand years later in John 3:16.
+
 When Gabriel spoke to Mary, he did not soften it:
 
 > "The Holy Ghost shall come upon thee, and the power of the Highest shall overshadow thee: therefore also that holy thing which shall be born of thee shall be called the Son of God." — [Luke 1:35](../gospel-library/eng/scriptures/nt/luke/1.md)
@@ -98,7 +104,27 @@ Jacob 4:5 says Abraham offering Isaac was "a similitude of God and his Only Bego
 
 ---
 
-## 4. D&C 93: Firstborn and Church of the Firstborn
+## 4. Mosiah 15: How Christ Is Both Father and Son
+
+Abinadi, speaking to the priests of King Noah, presses into the paradox directly. How can the same being be both God and the Son of God? His answer is precise:
+
+> "And because he dwelleth in flesh he shall be called the Son of God, and having subjected the flesh to the will of the Father, being the Father and the Son— The Father, because he was conceived by the power of God; and the Son, because of the flesh; thus becoming the Father and Son— And they are one God, yea, the very Eternal Father of heaven and of earth." — [Mosiah 15:2–4](../gospel-library/eng/scriptures/bofm/mosiah/15.md)
+
+The logic is clean: the *divine* parentage is what makes him the Father's direct representative — the one who carries the Father's nature and fullness. The *mortal* parentage — "because of the flesh" — is what makes him capable of dying. These are not competing claims but complementary ones. Both are true simultaneously because both refer to different aspects of the same dual nature.
+
+Abinadi then traces the whole arc of the Atonement through this duality:
+
+> "Yea, even so he shall be led, crucified, and slain, the flesh becoming subject even unto death, the will of the Son being swallowed up in the will of the Father." — [Mosiah 15:7](../gospel-library/eng/scriptures/bofm/mosiah/15.md)
+
+The will of the Son being swallowed up in the will of the Father — this is the Gethsemane prayer from the inside. The two natures, the two wills, are never at war; the Son's will, perfect as it is, submits entirely to the Father's. This is what the dual sonship makes possible: the Son who is mortal enough to suffer death, divine enough to defeat it, and obedient enough to choose both.
+
+The footnote on verse 3 points to D&C 93:4 — Christ's own declaration of the same duality from the other direction: "The Father because he gave me of his fulness, and the Son because I was in the world and made flesh my tabernacle." The language maps exactly. Both passages explain the dual title by the same criterion: divine origin accounts for the Father title; the flesh accounts for the Son title.
+
+Abinadi also presses on the genealogy question: "And now I say unto you, who shall declare his generation?" ([Mosiah 15:10](../gospel-library/eng/scriptures/bofm/mosiah/15.md)), citing Isaiah 53:8. No human category of lineage can contain him. His generation is unique because he has an eternal Father and a mortal mother. The question isn't rhetorical despair — it is an observation that Christ's sonship exceeds all normal accounting.
+
+---
+
+## 5. D&C 93: Firstborn and Church of the Firstborn
 
 D&C 93 reorganizes everything around a concept: Christ went from grace to grace until he received a fulness ([D&C 93:12–13](../gospel-library/eng/scriptures/dc-testament/dc/93.md)), and we can do the same. The Lord prefaces this with his own identity statement:
 
@@ -116,9 +142,11 @@ D&C 76 describes what membership in that church looks like:
 
 All priesthood traces back to the order of the Only Begotten. The path from our current state to exaltation is the path Christ blazed — and it is the order that bears his name as "the Only Begotten Son."
 
+D&C 76:24 extends this to its full cosmic dimension: "That by him, and through him, and of him, the worlds are and were created, and the inhabitants thereof are begotten sons and daughters unto God." Not just the inhabitants of this earth — the inhabitants of all worlds, created by the Only Begotten. The "only" in Only Begotten doesn't mean he is the only child God has. It means he is the only one begotten of God in the flesh. The rest — on every world — are begotten spiritually.
+
 ---
 
-## 5. Romans 8: Joint-Heirs with Christ
+## 6. Romans 8: Joint-Heirs with Christ
 
 This is where all the threads converge. Paul in Romans 8 lays out the logic of the relationship between our spiritual sonship and our potential inheritance:
 
@@ -136,7 +164,7 @@ Paul frames the same idea in verse 29: God "did predestinate" us "to be conforme
 
 ---
 
-## 6. John 3:16 and the Weight of the Gift
+## 7. John 3:16 and the Weight of the Gift
 
 The most recognizable verse in scripture still carries more weight than familiarity suggests:
 
