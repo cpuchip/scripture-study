@@ -1,0 +1,70 @@
+date: "2026-03-20"
+title: "WS1 Phase 2 — Agent executes a spec and makes correct changes"
+type: dev
+
+summary: >
+  The agent-as-spec-executor proof of concept works. We built `brain exec`, pointed it
+  at a real spec (add markdown_link to gospel-mcp's GetResponse), and watched the Copilot
+  SDK agent autonomously explore the codebase and make correct, idiomatic changes. It
+  completed 4 of 8 construction sites before timing out. The changes were PR-quality —
+  it found and used existing helper functions, matched the patterns from SearchResult,
+  and chose correct display text per source type (scripture ref for scriptures,
+  "Speaker, Title" for talks).
+
+  The biggest discovery wasn't what we built — it was what the SDK already has. The
+  Copilot SDK provides built-in filesystem tools (view, grep, edit, report_intent).
+  Our custom devTools (read_file, write_file, list_directory, search_text) went
+  completely unused. The agent preferred the SDK's tools because they're richer —
+  `view` shows line numbers, `edit` is more precise than whole-file writes.
+
+  The timeout is the main remaining issue. SendAndWait has an internal ~60-second
+  deadline that can't be overridden via the Go API. SessionConfig has a `Streaming`
+  option and `InfiniteSessions` config that may help — investigation needed.
+
+discoveries:
+  - >
+    Copilot SDK v0.1.32 has built-in IDE tools: view (read with line numbers), grep
+    (search), edit (precise file edits), report_intent (declare plan). These are not
+    documented prominently but appear automatically in agent sessions.
+  - >
+    The agent's edit quality was surprisingly good. It identified the correct struct,
+    found the right helper functions (generateMarkdownLink, generateTalkMarkdownLink),
+    and used them with appropriate arguments for each source type.
+  - >
+    SDK protocol bumped from v2 to v3 between v0.1.29 and v0.1.32. This broke
+    compatibility with Copilot CLI 1.0.9 until we upgraded.
+
+carry_forward:
+  - priority: high
+    item: >
+      Fix the SendAndWait timeout (~60s). Try enabling `Streaming: true` in
+      SessionConfig, or investigate `InfiniteSessions`. Without this fix, the agent
+      can only handle small specs.
+  - priority: medium
+    item: >
+      Evaluate whether to remove custom devTools entirely. The SDK built-in tools are
+      superior. Keeping dead code adds confusion.
+  - priority: low
+    item: >
+      Clean up test-spec.md from scripts/brain/
+
+technical_notes:
+  - >
+    `brain exec <spec-file>` or `brain exec --prompt "..."` — creates a minimal
+    Copilot SDK session, loads MCP servers, sends the spec as a user message, prints
+    the response. Lives in cmd/brain/main.go runExec().
+  - >
+    AllowedRoots added to AgentConfig — configures path sandboxing for custom
+    filesystem tools. Computed from BrainCodeDir + workspace root (detected via
+    go.work presence).
+  - >
+    gospel-mcp GetResponse now has MarkdownLink field populated in all 8 construction
+    sites. This is a real shipped improvement alongside the Phase 2 test.
+
+open_questions:
+  - >
+    Is the 60-second timeout in SendAndWait hardcoded in the SDK, or is it controlled
+    by the Copilot CLI server? If the latter, there might be a CLI flag to extend it.
+  - >
+    Should `brain exec` use streaming mode by default? Streaming would give real-time
+    output and potentially avoid the timeout entirely.

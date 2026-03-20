@@ -49,11 +49,13 @@ func (t *Tools) getByFilePath(params GetParams) (*GetResponse, error) {
 	var chapter, verse int
 
 	if err := row.Scan(&id, &volume, &book, &chapter, &verse, &text, &filePath, &sourceURL); err == nil {
+		ref := formatScriptureRef(volume, book, chapter, verse)
 		return &GetResponse{
-			Reference:         formatScriptureRef(volume, book, chapter, verse),
+			Reference:         ref,
 			Title:             formatChapterTitle(volume, book, chapter),
 			Content:           text,
 			FilePath:          filePath,
+			MarkdownLink:      generateMarkdownLink(ref, filePath),
 			SourceURL:         sourceURL,
 			SourceType:        "scripture",
 			RelatedReferences: t.getCrossReferences(volume, book, chapter, verse),
@@ -71,12 +73,13 @@ func (t *Tools) getByFilePath(params GetParams) (*GetResponse, error) {
 
 	if err := row.Scan(&id, &year, &month, &speaker, &title, &content, &filePath, &sourceURL); err == nil {
 		return &GetResponse{
-			Reference:  fmt.Sprintf("%s, %s %d", speaker, monthName(month), year),
-			Title:      title,
-			Content:    content,
-			FilePath:   filePath,
-			SourceURL:  sourceURL,
-			SourceType: "conference",
+			Reference:    fmt.Sprintf("%s, %s %d", speaker, monthName(month), year),
+			Title:        title,
+			Content:      content,
+			FilePath:     filePath,
+			MarkdownLink: generateTalkMarkdownLink(speaker, title, filePath),
+			SourceURL:    sourceURL,
+			SourceType:   "conference",
 		}, nil
 	}
 
@@ -90,12 +93,13 @@ func (t *Tools) getByFilePath(params GetParams) (*GetResponse, error) {
 
 	if err := row.Scan(&id, &contentType, &title, &content, &filePath, &sourceURL); err == nil {
 		return &GetResponse{
-			Reference:  title,
-			Title:      title,
-			Content:    content,
-			FilePath:   filePath,
-			SourceURL:  sourceURL,
-			SourceType: contentType,
+			Reference:    title,
+			Title:        title,
+			Content:      content,
+			FilePath:     filePath,
+			MarkdownLink: generateMarkdownLink(title, filePath),
+			SourceURL:    sourceURL,
+			SourceType:   contentType,
 		}, nil
 	}
 
@@ -145,6 +149,7 @@ func (t *Tools) getScripture(ref parsedRef, params GetParams) (*GetResponse, err
 			Title:             formatChapterTitle(volume, book, chapter),
 			Content:           text,
 			FilePath:          filePath,
+			MarkdownLink:      generateMarkdownLink(formatScriptureRef(volume, book, chapter, verse), filePath),
 			SourceURL:         sourceURL,
 			SourceType:        "scripture",
 			RelatedReferences: t.getCrossReferences(volume, book, chapter, verse),
@@ -198,13 +203,15 @@ func (t *Tools) getScripture(ref parsedRef, params GetParams) (*GetResponse, err
 	`, ref.Book, ref.Chapter)
 	row.Scan(&volume, &filePath, &sourceURL)
 
+	chapterTitle := formatChapterTitle(volume, ref.Book, ref.Chapter)
 	return &GetResponse{
-		Reference:  formatChapterTitle(volume, ref.Book, ref.Chapter),
-		Title:      formatChapterTitle(volume, ref.Book, ref.Chapter),
-		Content:    strings.Join(lines, "\n\n"),
-		FilePath:   filePath,
-		SourceURL:  sourceURL,
-		SourceType: "scripture",
+		Reference:    chapterTitle,
+		Title:        chapterTitle,
+		Content:      strings.Join(lines, "\n\n"),
+		FilePath:     filePath,
+		MarkdownLink: generateMarkdownLink(chapterTitle, filePath),
+		SourceURL:    sourceURL,
+		SourceType:   "scripture",
 	}, nil
 }
 
@@ -249,11 +256,13 @@ func (t *Tools) getScriptureRange(ref parsedRef, params GetParams) (*GetResponse
 		allRefs = append(allRefs, refs...)
 	}
 
+	rangeRef := fmt.Sprintf("%s %d:%d-%d", formatBookName(volume, ref.Book), ref.Chapter, ref.Verse, ref.EndVerse)
 	response := &GetResponse{
-		Reference:         fmt.Sprintf("%s %d:%d-%d", formatBookName(volume, ref.Book), ref.Chapter, ref.Verse, ref.EndVerse),
+		Reference:         rangeRef,
 		Title:             formatChapterTitle(volume, ref.Book, ref.Chapter),
 		Content:           strings.Join(lines, "\n\n"),
 		FilePath:          filePath,
+		MarkdownLink:      generateMarkdownLink(rangeRef, filePath),
 		SourceURL:         sourceURL,
 		SourceType:        "scripture",
 		RelatedReferences: allRefs,
@@ -283,12 +292,13 @@ func (t *Tools) getTalk(ref parsedRef, params GetParams) (*GetResponse, error) {
 	}
 
 	return &GetResponse{
-		Reference:  fmt.Sprintf("%s, %s %d", speaker, monthName(month), year),
-		Title:      title,
-		Content:    content,
-		FilePath:   filePath,
-		SourceURL:  sourceURL,
-		SourceType: "conference",
+		Reference:    fmt.Sprintf("%s, %s %d", speaker, monthName(month), year),
+		Title:        title,
+		Content:      content,
+		FilePath:     filePath,
+		MarkdownLink: generateTalkMarkdownLink(speaker, title, filePath),
+		SourceURL:    sourceURL,
+		SourceType:   "conference",
 	}, nil
 }
 
@@ -316,6 +326,7 @@ func (t *Tools) searchForReference(params GetParams) (*GetResponse, error) {
 		Title:             r.Title,
 		Content:           r.Content,
 		FilePath:          r.FilePath,
+		MarkdownLink:      r.MarkdownLink,
 		SourceURL:         r.SourceURL,
 		SourceType:        r.SourceType,
 		RelatedReferences: r.RelatedReferences,

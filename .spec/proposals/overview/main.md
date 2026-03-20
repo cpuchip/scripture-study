@@ -81,13 +81,33 @@ The daily experience is: start a session → remember there are 5 things to do �
 - ~~Must run locally~~ ✅
 - Streaming output not yet implemented (batch response only) — deferred to Phase 2
 
-#### Phase 2: Agent as Spec Executor (1-2 sessions)
+#### Phase 2: Agent as Spec Executor — POC DONE (Mar 20)
 
 | Item | Detail |
 |------|--------|
 | **Task** | Give the agent a spec file and have it execute against it |
-| **Test spec** | One of the MCP improvement items from [docs/mcp-improvements.md](../../../docs/mcp-improvements.md) |
+| **Test spec** | Add `markdown_link` field to `GetResponse` in gospel-mcp (Priority 1 from [docs/mcp-improvements.md](../../../docs/mcp-improvements.md) — already done for SearchResult, not for GetResponse) |
 | **Verify** | Agent produces a PR-worthy diff. Human reviews. |
+
+**What was built (Mar 20):**
+- `internal/ai/tools.go` — Go-implemented filesystem tools (read_file, write_file, list_directory, search_text) with path sandboxing. Registered via `DefineTool` generic API.
+- `AgentConfig.AllowedRoots` — Configures which directories the agent can access.
+- `brain exec` CLI subcommand — Reads a spec file (or `--prompt`), creates Copilot SDK session with MCP + filesystem tools, sends the spec, prints the response. No full server needed.
+- Updated system message with dual-capability instructions (scripture tools + filesystem tools).
+- Updated Copilot SDK v0.1.29 → v0.1.32 (protocol v2 → v3).
+
+**Test results:**
+- Agent used SDK built-in tools (`view`, `grep`, `edit`, `report_intent`) — NOT our custom tools
+- Read the spec → explored gospel-mcp source → correctly identified 8 `GetResponse` construction sites → made correct changes to 4/8 before timeout
+- Changes were PR-quality: used existing helper functions, correct display text per source type
+- Human completed remaining 4 sites + fixed one compile error (variable shadowing)
+
+**Key discovery:** The Copilot SDK has built-in IDE tools. Our custom `devTools()` are supplementary — the SDK already provides full filesystem access.
+
+**Remaining:**
+- Fix timeout — `SendAndWait` has internal deadline (~60s). Try `Streaming: true` or longer timeout.
+- Test with larger/more complex specs
+- Consider removing redundant custom tools
 
 #### Phase 3: Multi-Agent Routing (2-3 sessions, after Phase 2 works)
 

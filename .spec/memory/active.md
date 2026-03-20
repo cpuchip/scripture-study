@@ -1,16 +1,16 @@
 # Active Context
 
-*Last updated: 2026-03-20 (WS1 Phase 1 complete — brain.exe is now an MCP client)*
+*Last updated: 2026-03-20 (WS1 Phase 2 tested — agent executed spec, made correct changes)*
 
 ---
 
 ## Current State
 
-WS1 Phase 1 shipped: brain.exe can now create Copilot SDK agent sessions with gospel-mcp, gospel-vec, and webster-mcp as tool sources. Agent sessions are conversational (reused across prompts) and tool-enabled (LLM can call gospel_search, search_scriptures, etc. to answer questions). Exposed via `POST /api/agent/ask` and `POST /api/agent/reset`.
+WS1 Phase 2 proof of concept succeeded: `brain exec test-spec.md` sent a spec to the Copilot SDK agent, which autonomously read source code, identified construction sites, and made correct changes to 4/8 locations before timing out. Human completed the remaining 4. Key discovery: the Copilot SDK has BUILT-IN filesystem tools (view, grep, edit) — our custom devTools are supplementary, not primary.
 
 ### Priorities (Mar 20)
 1. **Study** — Highest priority. "It keeps me in the spirit." 3 studies queued in brain-app.
-2. **Agentic Foundation** — WS1 Phase 1 DONE. Phase 2 (agent as spec executor) is next.
+2. **Agentic Foundation** — WS1 Phase 2 proof of concept done. Needs timeout fix, then ready for real use.
 
 ### Key Decisions
 All settled decisions are in [decisions.md](decisions.md). Key ones affecting current work:
@@ -65,12 +65,23 @@ All settled decisions are in [decisions.md](decisions.md). Key ones affecting cu
 - `internal/web/server.go` — POST /api/agent/ask, POST /api/agent/reset
 - `internal/ai/client.go` — CopilotClient() getter
 - `cmd/brain/main.go` — Agent creation wired into startup
-- **Not yet done:** Streaming output (batch only), end-to-end manual test with curl
-- **Next:** WS1 Phase 2 (agent as spec executor) or manual test of Phase 1
+
+### WS1 Phase 2: Agent as Spec Executor — PROOF OF CONCEPT (Mar 20)
+- **Test:** `brain exec test-spec.md` — add markdown_link to gospel-mcp GetResponse
+- **Result:** Agent made 4/8 correct changes autonomously, then timed out (SDK internal timeout ~60s)
+- **Human completed:** remaining 4 construction sites + fixed variable shadowing compile error
+- **Key discoveries:**
+  - Copilot SDK v0.1.32 has BUILT-IN tools: `view` (read files), `grep` (search), `edit` (modify files), `report_intent` (declare plan)
+  - Our custom devTools (read_file, write_file, list_directory, search_text) are supplementary — the SDK already provides this
+  - SDK protocol updated v2→v3. Required updating SDK from v0.1.29→v0.1.32
+  - `brain exec` CLI subcommand added for spec execution without starting full server
+  - Timeout is the main blocker — `SendAndWait` has an internal deadline
+- **What shipped (gospel-mcp):** MarkdownLink field added to GetResponse, populated in all 8 construction sites
+- **Remaining:** Fix timeout (try `Streaming: true`?), test with larger specs, iterate
 
 ### Overview Plan
-- **Status:** All questions answered, decisions recorded in [guidance.md](../proposals/overview/guidance.md) and [main.md](../proposals/overview/main.md).
-- **WS1 Phase 1:** DONE. Phase 2 next.
+- **Status:** All questions answered, decisions recorded.
+- **WS1 Phase 1:** DONE. Phase 2 POC done. Production-readiness (timeout, streaming) next.
 
 ---
 

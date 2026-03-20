@@ -55,6 +55,7 @@ type GetResponse struct {
 	ContextAfter      []VerseContext     `json:"context_after,omitempty"`
 	ChapterContent    string             `json:"chapter_content,omitempty"`
 	FilePath          string             `json:"file_path"`
+	MarkdownLink      string             `json:"markdown_link"`
 	SourceURL         string             `json:"source_url"`
 	RelatedReferences []RelatedReference `json:"related_references,omitempty"`
 	SourceType        string             `json:"source_type"`
