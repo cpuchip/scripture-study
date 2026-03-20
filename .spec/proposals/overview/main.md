@@ -4,7 +4,8 @@
 
 **Created:** 2026-03-12
 **Research:** [.spec/scratch/overview/main.md](../../scratch/overview/main.md)
-**Open questions:** [guidance.md](guidance.md)
+**Guidance questions:** [guidance.md](guidance.md) — ALL ANSWERED (Mar 19)
+**Status:** Decisions recorded. Ready to execute.
 
 ---
 
@@ -50,7 +51,9 @@ The daily experience is: start a session → remember there are 5 things to do �
 
 **Intent:** Enable agents to execute work autonomously. This is the multiplier that makes everything else faster.
 
-**Why first:** Michael is one person. Right now, every line of code flows through his hands. Even if agents handle only 30% of routine execution, that frees capacity for the judgment work (spec review, architectural decisions, study) that only Michael can do.
+**Decision (Mar 19):** Option C confirmed — front-load agentic infrastructure, then fan out. Progressive trust model: start supervised, expand as confidence grows. VS Code hooks (v1.111) for chaining specs with limited premium requests is the near-term execution model.
+
+**AI Backend Strategy (Mar 19):** Dual-backend, role-separated. LM Studio (qwen3.5-9b on fermion/lepton's 4090s) for classification — trusted, tested, free. Copilot SDK (Opus 4.6 or Sonnet 4.6) for agent abilities — spec execution, reasoning, complex tasks.
 
 #### Phase 1: Copilot SDK + MCP Integration (1 session)
 
@@ -91,6 +94,10 @@ The daily experience is: start a session → remember there are 5 things to do �
 
 **Intent:** Make the brain ecosystem reliable and integrated before building on top of it.
 
+**Decision (Mar 19 — Q1):** Garvis IS brain.exe. Merged conceptually. "Garvis" name retired. brain.exe is the second brain, evolved with SQLite + chromem-go + relay + MCP. No new repo.
+
+**Deployment (Mar 19 — Q8):** Local first → dockerize → deploy to NOCIX server alongside ibeco.me. Sequential, not rushed.
+
 #### Phase 1: Quick Wins (1 session)
 - [Plan 15](../../../scripts/plans/15_brain-app-polish.md): Entry sync on launch, relay error recovery, classify flow polish, delete with undo
 - These are 4 small fixes that improve daily experience immediately
@@ -103,13 +110,22 @@ The daily experience is: start a session → remember there are 5 things to do �
 - [Plan 17](../../../scripts/plans/17_brain-proactive-surfacing.md) features 1-3: Due actions, stale people, stalled subtasks
 - This is what makes brain *useful* beyond storage — it's the "why brain exists" feature
 
-#### Phase 4: Proposal Merge (judgment call, see [guidance.md Q1](guidance.md))
-- Merge Garvis proposal into brain.exe evolution
-- brain.exe → server deployment (when ready)
+#### Phase 4: Server Deployment (after local proving)
+- ~~Merge Garvis proposal into brain.exe evolution~~ DONE (decision: they're the same thing)
+- Dockerize brain.exe
+- Deploy to NOCIX server alongside ibeco.me
 
 ### Workstream 3: Becoming App + Study Quality
 
 **Intent:** Improve the tools that serve the core mission (scripture study + personal becoming).
+
+**Decision (Mar 19 — Q5):** Study is the HIGHEST priority — "it keeps me in the spirit." Agentic and study are the two priorities, running in parallel. Infrastructure serves study, not the other way around.
+
+**Multi-user (Mar 19 — Q3):** ibeco.me IS multi-user. Google OAuth + email/password auth ALREADY DEPLOYED. Plan 09 is stale — auth is further along than it describes. webeco.me planned for families/groups.
+
+**Widget (Mar 19 — Q6):** Plan 18 stays in main roadmap. Phases 3-4 paused (not deferred) until agent work is rolling.
+
+**Storage (Mar 19 — Q7):** Brain uses local filesystem. ibeco.me uses S3 on the NOCIX server (3TB, unmetered 1Gbps).
 
 #### Phase 1: Scheduled Tasks (1-2 sessions)
 - [Plan 07](../../../scripts/plans/07_scheduled-tasks.md): Already fully designed. Extends practices to interval, weekly, daily_slots, monthly, one-time.
@@ -154,13 +170,13 @@ Cross-referenced all plans against actual git history and code. Key corrections:
 | Plan 04: Tool Improvements doc | **Archived** | `scripts/plans/archive/` |
 | Plan 14: Q1 Roadmap | **Archived** | `scripts/plans/archive/` (superseded by this document) |
 | Proposal: yt-emotion-analysis | **Archived** | `.spec/proposals/archive/` |
-| Plan 09: Auth & Multi-user | **Deferred** | `scripts/plans/deferred/` — revisit after deciding personal vs. shared (guidance.md Q3) |
-| Plan 12: Attachments | **Deferred** | `scripts/plans/deferred/` — revisit after S3 decision and brain core stability |
+| Plan 09: Auth & Multi-user | **Update needed** | `scripts/plans/deferred/` — Auth is ALREADY DEPLOYED (Google OAuth + email/password). Plan is stale. Needs rewrite to reflect reality and remaining gaps (password recovery, email service). |
+| Plan 12: Attachments | **Deferred** | `scripts/plans/deferred/` — Storage decided: brain=local, ibeco.me=S3 on NOCIX. Unblocked when ready. |
 | Plan 13: Agentic Chat | **Deferred** | `scripts/plans/deferred/` — subsumed into Workstream 1 |
-| Proposal: Garvis | **Deferred** | `.spec/proposals/deferred/` — pending merge into brain.exe (guidance.md Q1) |
+| Proposal: Garvis | **Merged** | `.spec/proposals/deferred/` — Garvis IS brain.exe. Name retired. Decision made Mar 19. |
 | Proposal: tts-stt-reader | **Deferred** | `.spec/proposals/deferred/` — revisit after chip-voice batch/multi-voice ships |
 | Plan 19: Ideas backlog | **Keep** | `scripts/plans/` — it's a backlog, not a plan |
-| Widget Phases 3-4 | **Deferred** | *(no standalone file — noted in Plan 18)* |
+| Widget Phases 3-4 | **Paused** | *(noted in Plan 18)* — Keep in roadmap, revisit after agent work is rolling |
 | Becoming UX Phase 2 (Bookmarks) | **Deferred** | *(no standalone file — noted in docs/becoming-ux-phases.md)* |
 | chip-voice 6 proposals | **Keep in scope** | Managed within chip-voice's own `.spec/proposals/` |
 | byu-citations MCP | **Built, no plan needed** | Already working. Add to tool inventory. |
@@ -235,11 +251,20 @@ Agents handle more of the routine execution. Michael focuses on spec review, arc
 
 ## 8. Recommendation
 
-**Build.** Start with Workstream 1 Phase 1 (extend brain.exe's existing Copilot SDK integration with MCP tools). It's the smallest first step that proves the biggest thesis: agents can execute against specs using the tools we've already built. And we're not starting from scratch — the SDK is already wired up.
+**Build.** All guidance questions answered (Mar 19). Key decisions locked:
 
-In parallel, Plan 15 (brain quick wins) is ready to code and delivers immediate daily-use improvements.
+1. **Garvis = brain.exe.** Name retired. No new repo.
+2. **Dual AI backend:** LM Studio for classification, Copilot SDK for agents.
+3. **ibeco.me is multi-user.** Auth already deployed. Plan 09 needs rewrite.
+4. **Option C confirmed.** Front-load agentic, fan out. Progressive trust.
+5. **Study is highest priority.** Agentic and study run in parallel.
+6. **Widget paused, not deferred.** Plan 18 stays in roadmap.
+7. **Storage resolved.** Brain=local, ibeco.me=S3 on NOCIX.
+8. **brain.exe deployment:** local → docker → NOCIX server.
+9. **TUI and yt-emotion archived.** Already done.
+10. **"Time to go down and build."**
 
-After answering the [guidance questions](guidance.md), the plan refines further — but it's clear enough to start now.
+Start with Workstream 1 Phase 1 (Copilot SDK + MCP integration) and study.
 
 ---
 

@@ -1,6 +1,7 @@
 # Guidance — Questions Needing Michael's Judgment
 
-*Created 2026-03-12 by plan-exp1. Review in the morning.*
+*Created 2026-03-12 by plan-exp1.*
+*Answered 2026-03-19 by Michael. All 10 resolved.*
 
 ---
 
@@ -16,6 +17,8 @@ The scratch file [recommends merging them](../../scratch/overview/main.md): **br
 
 **Your call:** Merge or keep separate? If merge, do we retire the "Garvis" name and just call it brain.exe?
 
+**Answer (Mar 19):** YES — merge. Same idea in Michael's head already. Keep "brain" as the name (copyright-safe). Retire "Garvis" name entirely. brain.exe IS the second brain. The deferred Garvis proposal should be marked as merged into brain.exe evolution.
+
 ---
 
 ### Q2: Copilot SDK — Which backend is active? *(Partially resolved)*
@@ -23,6 +26,8 @@ The scratch file [recommends merging them](../../scratch/overview/main.md): **br
 **Git audit confirmed:** Copilot SDK IS in brain.exe's `go.mod` at v0.1.29. It's implemented as a dual-backend system — `cfg.AIBackend` selects between `"copilot"` (GitHub Copilot SDK) and `"lmstudio"` (local inference). Both work. The integration lives in `internal/ai/client.go`.
 
 **Remaining question:** Which backend are you actually using day-to-day? If LM Studio has fully replaced Copilot SDK in practice, we should understand why (latency? cost? offline preference?) before building multi-agent orchestration on top of the SDK. If both are in active use, that's a strength — local for speed, cloud for capability.
+
+**Answer (Mar 19):** BOTH, with role separation. LM Studio (qwen3.5-9b on fermion's 4090) handles classification — trusted, tested, free/hardware, no API costs. Copilot SDK (Opus 4.6 or Sonnet 4.6) handles agent abilities — spec execution, reasoning, complex tasks. Progressive stewardship model: LM Studio is trusted for classification work; Copilot SDK for agent-level work. "Lepton" is a second machine with another 4090, available for inference load.
 
 ---
 
@@ -34,6 +39,8 @@ The scratch file [recommends merging them](../../scratch/overview/main.md): **br
 - **Personal tool** → Skip auth. Keep SQLite. Simplify.
 - **Shareable tool** → Auth stays on the roadmap but can remain deferred.
 - **SaaS product** → Auth moves UP in priority (before adding features that assume single-user).
+
+**Answer (Mar 19):** Multi-user — designed for Michael but general enough for his kids, and eventually families/groups via webeco.me. Google OAuth + email/password auth are ALREADY IMPLEMENTED AND DEPLOYED (not just planned). No password recovery yet (no email service). Plan 09 is stale vs actual code — auth is further along than it describes. brain.exe and brain-app are single-user with token auth. Side quest idea: a small classifier service on fermion/lepton machines so others can classify without needing a full brain install.
 
 ---
 
@@ -49,6 +56,8 @@ The proposal identifies 5 potential workstreams. The 11-step cycle and Mosiah 4:
 
 Option C is the proposal's recommendation. But you know your schedule better than I do.
 
+**Answer (Mar 19):** Option C — front-load agentic, then fan out. Interested in VS Code hooks (v1.111) for chaining fully-developed specs with the ~5 premium request budget. Still cautious about unsupervised agent work: "Scared of letting you go without direct oversight." Progressive trust model applies here too.
+
 ---
 
 ### Q5: What's the actual priority — tool infrastructure or study content?
@@ -59,6 +68,8 @@ The MCP improvements (7 items) and gospel-vec experiments would directly improve
 
 **Your call:** Should "Study & Content Quality" (Workstream 4) be higher priority than it currently is? Or is the infrastructure investment the right call for now?
 
+**Answer (Mar 19):** Study IS the highest priority — "it keeps me in the spirit." Has 3 studies queued in brain-app right now. Infrastructure matters too (server, data protection). Michael's wife loved the "serving the study means actually *doing* study" line. "Fully agentic and study are my two priorities." New NOCIX server pending (Dedione refunded). Both priorities run in parallel — study isn't deferred FOR infrastructure; they feed each other.
+
 ---
 
 ### Q6: Widget overhaul — keep pushing or pause?
@@ -66,6 +77,8 @@ The MCP improvements (7 items) and gospel-vec experiments would directly improve
 Plan 18 has Phase 2 done (practice widget). Phases 3-4 (memorize widget, background refresh) remain. These are useful but incremental. The active.md lists several SPEC-NEAR-TERM.md items not started.
 
 **Your call:** Continue widget work, or redirect that energy to agentic foundation?
+
+**Answer (Mar 19):** Keep Plan 18 in the main roadmap — pause but DO NOT defer. Wait until agent stuff is working, then revisit. Widget Phases 3-4 are valuable but not urgent right now.
 
 ---
 
@@ -79,6 +92,8 @@ Plan 12 (attachments) is blocked on S3 vs. local storage. This doesn't need to b
 - **S3-compatible (Backblaze B2, Cloudflare R2):** Scalable. Accessible from server and phone. Costs pennies.
 - **Defer:** Don't decide now. Attachments aren't on the critical path.
 
+**Answer (Mar 19):** Brain stores locally — data directory alongside SQLite and vector DB. ibeco.me storage goes to S3, self-hosted on the new NOCIX server (3TB, unmetered 1Gbps). This resolves the storage question for both systems.
+
 ---
 
 ### Q8: Deploy brain.exe to server — when?
@@ -86,6 +101,8 @@ Plan 12 (attachments) is blocked on S3 vs. local storage. This doesn't need to b
 Multi-agent-ideas.md identifies "Get brain.exe on a server" as step 1 of 6. Garvis Phase 1 is blocked on this. ibeco.me already runs on Dokploy.
 
 **Your call:** Is server deployment for brain.exe a near-term priority? Or does it wait until the agentic foundation is proven locally first?
+
+**Answer (Mar 19):** Local first. Then dockerize. Then deploy to the same server as ibeco.me once proven locally. Sequential, not rushed. The new NOCIX server will host both ibeco.me and brain.exe once ready.
 
 ---
 
@@ -102,6 +119,8 @@ These aren't urgent decisions, but naming them might help clear the cognitive lo
 | Plan 14: Q1 Roadmap | It's Q1 2026. This document is being superseded by this overview. |
 | Proposal: yt-emotion-analysis | Cool idea, but not on any critical path. Archive and revisit when yt-mcp gets more use. |
 
+**Answer (Mar 19):** Drop TUI (Plan 01) — already archived, confirmed. Archive yt-emotion-analysis — confirmed. The API/CLI pipeline works better for downloading than a TUI would. Plan 04 and Plan 14 already archived per the original proposal.
+
 ---
 
 ## Priority 5 — Emotional / Relational
@@ -111,6 +130,8 @@ These aren't urgent decisions, but naming them might help clear the cognitive lo
 I want to name this honestly: you asked for an overview and I've produced another large planning artifact. The risk is that planning about planning is its own form of avoidance. The 11-step cycle says "organize, prepare, establish" — but it also says "let us go down." At some point, the right action is to stop mapping and start building.
 
 My recommendation: review this in the morning, make the judgment calls above, and then we start **building** in the next session. The overview exists so we don't lose context. It shouldn't become its own project.
+
+**Answer (Mar 19):** "Time to go down and build." The overview was valuable — gave focus and surfaced the right questions. Record these answers, update plans, and start building. The overview should not become its own project.
 
 ---
 

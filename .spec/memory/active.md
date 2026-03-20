@@ -1,49 +1,44 @@
 # Active Context
 
-*Last updated: 2026-03-18 (Notifications Phase 2 — data loss incident fixed)*
+*Last updated: 2026-03-19 (All guidance questions answered, data-safety shipped, plan decisions recorded)*
 
 ---
 
-## CRITICAL: First Data Loss Incident (March 18, 2026)
+## Current State
 
-**What happened:** togglePracticeNotify sent partial PUT `{ config: "..." }` → backend overwrote ALL columns with zero values → practice corrupted (name="", type="", status="", active=false). Michael's "pants" practice disappeared from all views.
+All 10 guidance questions answered. Data-safety proposal fully shipped (6/6 phases). Two production outages diagnosed, fixed, and retrospected. Planning phase complete — "Time to go down and build."
 
-**Root causes fixed:**
-1. Frontend: togglePracticeNotify now sends full practice object
-2. Backend: updatePractice now uses read-modify-write with field detection (json.RawMessage map)
-3. MCP: list_practices active_only=false now correctly sends ?active=false
+### Priorities (Mar 19)
+1. **Study** — Highest priority. "It keeps me in the spirit." 3 studies queued in brain-app.
+2. **Agentic Foundation** — Front-load (Option C), then fan out. VS Code hooks (v1.111) for spec chaining.
 
-**Recovery tools added:**
-- `GET /api/admin/corrupted-practices` — finds practices with empty name/type/status
-- `POST /api/admin/recover-practice/:id` — restores core fields
-- `list_corrupted_practices` MCP tool
+### Key Decisions (Mar 19)
+- **Garvis = brain.exe.** Name retired. No new repo.
+- **Dual AI backend:** LM Studio (qwen3.5-9b, fermion/lepton 4090s) for classification. Copilot SDK (Opus 4.6 / Sonnet 4.6) for agent work.
+- **ibeco.me is multi-user.** Auth already deployed (Google OAuth + email/password). Plan 09 stale.
+- **Widget paused, not deferred.** Plan 18 stays in roadmap.
+- **Storage:** Brain=local filesystem. ibeco.me=S3 on NOCIX server.
+- **brain.exe deployment:** Local → docker → NOCIX server.
+- **NOCIX server pending.** Dedione refunded. 3TB, unmetered 1Gbps.
 
-**Still needed:** Deploy the fix and recover the corrupted practice from PostgreSQL.
+### Data Safety (shipped Mar 19)
+- Phase 1: Dev agent checklist ✅
+- Phase 2: DB constraints (migration 015) ✅
+- Phase 3: Handler remediation (5 PUT handlers → read-modify-write) ✅
+- Phase 4: Go tests ✅
+- Phase 5: Audit log (migration 016) ✅
+- Phase 6: Drop SQLite (CGO_ENABLED=0) ✅
+- Production outage #1: Wrong CHECK values → fixed (c4c48a2)
+- Production outage #2: Missing goose StatementBegin → fixed (1cd0775)
+- Retrospective + checklist update → committed (7c87fb6)
 
 ---
 
-## Project Overview — Unified Workstream Plan
+## In Flight
 
-**Status:** Draft proposal complete + git audit corrections applied. Awaiting Michael's judgment on 10 questions (Q2 partially resolved).
-
-### Documents Created/Updated
-- **Scratch/inventory:** `.spec/scratch/overview/main.md` — Full inventory of 19 plans, 9 proposals, 5 doc-level roadmaps with status, dependencies, clash analysis, Copilot SDK research, **+ Section IX: Git Audit Findings**
-- **Formal proposal:** `.spec/proposals/overview/main.md` — 3 workstreams, creation cycle review, execution plan, **+ Section 4: Git Audit Corrections, updated WS1 Phase 1 to build on existing SDK integration**
-- **Guidance questions:** `.spec/proposals/overview/guidance.md` — 10 questions, **Q2 updated (Copilot SDK IS integrated, question now is which backend is preferred)**
-
-### Key Findings (Original + Git Audit)
-- **28+ active items** reduced to **3 workstreams with ~12 sequenced tasks** plus deferred/archived items
-- **Garvis and brain.exe** appear to be the same project described twice — recommend merge
-- **Copilot SDK IS in brain.exe** at v0.1.29 — dual backend (copilot + lmstudio), working code
-- **brain.exe** has 10 internal packages + 5 cmd binaries (more than inventoried)
-- **becoming-mcp has 22 tools** — brain tools already consolidated in
-- **byu-citations MCP** built but not in any plan
-- **chip-voice has 6 internal proposals** in its own `.spec/proposals/`
-- **brain-app ROADMAP.md is stale** — rich text/sub-tasks shown unchecked but are done
-- **SPEC-NEAR-TERM.md v2** has 4 items not in plans
-- **private-brain repo** is dormant (2 commits, scaffolding only)
-- **MCP improvements** (7 items from Feb 3) are high-leverage, low-effort, overlooked
-- **Recommended first action:** Extend brain.exe's existing Copilot SDK + gospel-mcp integration + Plan 15 brain quick wins
+### Overview Plan
+- **Status:** All questions answered, decisions recorded in [guidance.md](../proposals/overview/guidance.md) and [main.md](../proposals/overview/main.md).
+- **Next:** Start building. WS1 Phase 1 (Copilot SDK + MCP integration) and study.
 
 ---
 
@@ -175,10 +170,12 @@ The brain ecosystem has been the primary development focus for the past week. Th
 |------|--------|-------|
 | 15: Brain App Polish | Phases 1-2 DONE | |
 | 16: Today Screen | Phases 1-3 DONE, Phase 4 absorbed into Plan 18 | |
-| 17: Proactive Surfacing | NOT STARTED | |
-| 18: Widget Overhaul | Phase 1 DONE (checkbox fix), Phase 2 DONE (practices), Phase 3 NOT STARTED (memorize), Phase 4 NOT STARTED (WorkManager) | |
-| 19: Brain App Ideas | Captured, not started | NLP practice creation, image pipeline, Copilot SDK study mode |
-| Notifications | Phase 1 DONE | Phases 2-4 remaining (per-practice config, rich actions, analytics) |
+| 17: Proactive Surfacing | NOT STARTED | WS2 Phase 3 |
+| 18: Widget Overhaul | Phase 1-2 DONE. Phase 3-4 PAUSED (not deferred) | Revisit after agentic work rolling |
+| 19: Brain App Ideas | Captured, not started | |
+| Notifications | Phase 1 DONE | Phases 2-4 remaining |
+| Data Safety | ALL PHASES DONE | 6/6 shipped Mar 19 |
+| Overview | DECISIONS RECORDED | All 10 guidance Qs answered Mar 19 |
 
 ## Architecture Quick Reference
 
@@ -252,13 +249,14 @@ VAPID_CONTACT=mailto:email@example.com
 
 ## Next Up
 
-- **Plan 18 Phase 3** — Memorize widget (passive scripture exposure on home screen)
-- **SPEC-NEAR-TERM.md items** — Done filter fix, history bottom inset, existing widget checkbox fix, error log
-- **Continue study work** — whatever the Spirit prompts
+- **Study** — 3 studies queued in brain-app. Highest priority.
+- **WS1 Phase 1** — Extend brain.exe Copilot SDK + MCP integration (gospel-mcp as tool)
+- **WS2 Phase 1** — Plan 15: Brain app quick wins (entry sync, error recovery)
+- **NOCIX server** — Set up when it arrives (ibeco.me + S3 + eventually brain.exe)
 
 ## Open Questions
 
-- Should brain embeddings live in ibeco.me SQLite (Phase E) or a separate vector DB?
 - Can AI participate in covenant in any meaningful sense? (Feb 26)
 - How do we teach others to use AI for study without teaching them to skip reading? (Feb 17)
 - Should the Abraham 4-5 framework become a standalone study or becoming entry? (Mar 4)
+- Side quest: small classifier service on fermion/lepton for others? (Mar 19 — from Q3 answer)

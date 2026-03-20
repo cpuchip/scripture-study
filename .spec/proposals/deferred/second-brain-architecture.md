@@ -3,6 +3,8 @@
 *March 1, 2026*
 *Triggered by: Nate B Jones videos + Michael's vision for a self-improving study companion*
 
+**Status: MERGED INTO brain.exe (Mar 19, 2026).** Michael confirmed: Garvis IS brain.exe. Same vision, same binary. "Garvis" name retired for copyright safety. brain.exe evolves with SQLite + chromem-go + relay + MCP + Copilot SDK. No new repo. See [overview decisions](../overview/guidance.md#q1-is-brainexe-the-same-thing-as-garvis).
+
 ---
 
 ## Video Analysis

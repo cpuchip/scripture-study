@@ -1,5 +1,17 @@
 # Phase 3: Authentication, API Tokens & Multi-User
 
+> **NOTE (Mar 19, 2026):** This plan is STALE. Most of the auth work described below has ALREADY BEEN IMPLEMENTED AND DEPLOYED:
+> - Google OAuth: ✅ Working (`internal/auth/oauth.go`)
+> - Email/password: ✅ Working (`internal/auth/handlers.go`, bcrypt cost=12)
+> - Sessions + cookies: ✅ Working
+> - API tokens: ✅ Working
+> - user_id on ALL tables: ✅ Done (18+ tables with FK constraints)
+> - PostgreSQL migration: ✅ Done (SQLite fully removed Mar 19)
+> - Multi-user data isolation: ✅ Working
+>
+> **Remaining gaps:** Password recovery (no email service), email verification.
+> This plan needs a rewrite to reflect reality and focus on the remaining gaps.
+
 ## Goal
 
 Transform Becoming from a single-user local app into a multi-user hosted application with:
