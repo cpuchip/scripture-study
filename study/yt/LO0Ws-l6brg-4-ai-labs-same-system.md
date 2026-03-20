@@ -181,15 +181,19 @@ This video was watched as a gate before building more infrastructure. What did i
 
 **The harness IS the project.** Stop thinking of agent instructions, skills, and memory architecture as overhead or documentation. They are the primary lever for quality output. Every improvement to the harness (like the exp1 → phased workflow promotion) matters more than waiting for the next model release.
 
-**Reduce before adding.** Cursor improved by stripping complexity. Before adopting all 6 Squad items, honestly assess: what can we remove? Which of our 19 plans will never ship? Which of our 14 agents could be consolidated? The Phase 0 recommendation from the Ben Test (practice what we already wrote) is exactly right.
+**Reduce before adding — and we've already started.** Cursor improved by stripping complexity. We've already consolidated agents, removed superfluous ones, and trimmed plans. The skills all serve their keep. Continue this discipline: before adding a new layer, ask what can be removed or simplified.
 
 **Verification is our craft.** Source-verification, eval agent, "read before quoting" — these are the meta-skills that survive. Double down on them. They ARE the sniff-check for our domain.
+
+**Gated autonomy is wisdom, not timidity.** Not running brain.exe 24/7 isn't neglect. With 1500 premium requests/month and no hooks/governance in place, gating work through human assignment is responsible stewardship. Level 2 autonomy earns its way through more harness, not less caution.
 
 ### Warnings to Heed
 
 **Don't let strategy videos delay building.** There's a pattern of consuming content about how to work instead of doing the work. This video is the SECOND research gate (after Squad). No more gates. Build.
 
 **"Smooth" doesn't mean "easy."** Even if the frontier is smooth, implementation is hard. Cursor ran for 4 days on one math problem. Squad took significant engineering effort. The pattern is clear. The execution is still labor.
+
+**Nate's script probably came from Opus 4.6.** The superlative-heavy, "guys"-laden presentation style reads like AI-generated scripts. Our own voice discipline work (reducing superlatives, cutting presenter tics) has noticeably improved our writing. Keep that discipline.
 
 ### Commitments
 
