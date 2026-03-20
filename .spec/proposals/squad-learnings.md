@@ -29,24 +29,11 @@ Our 11-step cycle provides the WHY. Squad provides the HOW for steps 3-7.
 
 ## 2. What We're Adopting
 
-### A1. Decisions File (Adopt immediately)
+### A1. Decisions File ~~(Adopt immediately)~~ ✅ DONE (Mar 19)
 
 **Source:** Squad's `decisions.md` + `decisions/inbox/` pattern.
 
-**Action:** Create `.spec/memory/decisions.md` as a canonical, structured decisions log. All agents read this as session context. Format:
-
-```markdown
-## Decision: {Title}
-- **Date:** YYYY-MM-DD
-- **Decided by:** {who}
-- **Decision:** {what}
-- **Rationale:** {why}
-- **Supersedes:** {previous decision, if any}
-```
-
-**Why now:** Decisions currently scatter across active.md, guidance.md, agent conversations. When agents can't find prior decisions, they re-ask or assume. This is a 15-minute task that improves every future session.
-
-**Migration:** Extract key decisions from active.md into decisions.md. active.md keeps only *current state* (what's in flight, what's blocked). decisions.md keeps *settled questions* (what we decided and why).
+**Completed:** `.spec/memory/decisions.md` created with 15 structured decisions extracted from active.md and guidance.md. Added to session-start sequence (step 4). intent.yaml added as step 1. active.md trimmed to reference decisions.md instead of duplicating.
 
 ### A2. Agent Routing Table (Adopt when building WS1 Phase 3)
 

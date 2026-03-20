@@ -87,12 +87,14 @@ This project uses a **structured memory architecture** at `.spec/memory/`. Memor
 ### Session Start — REQUIRED (do this before any other work)
 
 ```
-1. read_file .spec/memory/identity.md       # Who we are (always)
-2. read_file .spec/memory/preferences.yaml   # Personal context (always)
-3. read_file .spec/memory/active.md          # Current state (always)
-4. session-journal read --recent 3           # Recent episodes
-5. session-journal carry --priority high     # Unresolved threads
-6. (mode-specific: load relevant principles when the task is clear)
+1. read_file intent.yaml                     # Root values — why we're here (always)
+2. read_file .spec/memory/identity.md        # Who we are (always)
+3. read_file .spec/memory/preferences.yaml   # Personal context (always)
+4. read_file .spec/memory/decisions.md        # Settled questions — what we decided (always)
+5. read_file .spec/memory/active.md           # Current state — what's in flight (always)
+6. session-journal read --recent 3            # Recent episodes
+7. session-journal carry --priority high      # Unresolved threads
+8. (mode-specific: load relevant principles when the task is clear)
 ```
 
 ### Session End — REQUIRED (do this before yielding to the user at session close)

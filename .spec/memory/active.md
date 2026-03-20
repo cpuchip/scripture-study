@@ -1,29 +1,21 @@
 # Active Context
 
-*Last updated: 2026-03-19 (Michael's corrections applied, Ben Test skill created, principles updated)*
+*Last updated: 2026-03-19 (Phase 0 executed — decisions.md created, session-start updated)*
 
 ---
 
 ## Current State
 
-Squad repo deeply investigated and compared to our 11-step creation cycle. Proposal written at `.spec/proposals/squad-learnings.md` with 6 concrete adoption items. Research at `.spec/scratch/squad-analysis/main.md`. Key finding: Squad validates our direction — they're strong on steps 3-7 (stewardship through review), we're strong on steps 1-2 and 8-11 (intent, covenant, redemptive patterns). The combination fills gaps in both.
+Phase 0 of Squad adoption complete: decisions.md created, intent.yaml + decisions.md added to session-start sequence. All settled decisions now live in `.spec/memory/decisions.md` — this file tracks only current state.
 
 ### Priorities (Mar 19)
 1. **Study** — Highest priority. "It keeps me in the spirit." 3 studies queued in brain-app.
 2. **Agentic Foundation** — Front-load (Option C), then fan out. WS1 Phase 3 spec expanded with Squad learnings (routing table, hook governance, reviewer lockout, cost tracking).
 
-### Key Decisions (Mar 19)
-- **Garvis = brain.exe.** Name retired. No new repo.
-- **Dual AI backend:** LM Studio (qwen3.5-9b, fermion/lepton 4090s) for classification. Copilot SDK (Opus 4.6 / Sonnet 4.6) for agent work.
-- **ibeco.me is multi-user.** Auth already deployed (Google OAuth + email/password). Plan 09 stale.
-- **Widget paused, not deferred.** Plan 18 stays in roadmap.
-- **Storage:** Brain=local filesystem. ibeco.me=S3 on NOCIX server.
-- **brain.exe deployment:** Local → docker → NOCIX server.
+### Key Decisions
+All settled decisions are in [decisions.md](decisions.md). Key ones affecting current work:
 - **NOCIX server pending.** Dedione refunded. 3TB, unmetered 1Gbps.
-- **Cost unit is premium requests** (1500/month). Currently 56% utilization with 1/3 month remaining — best month yet.
-- **Gated autonomy, not unlimited.** Agents wait for specs, human assigns work. Level 2 autonomy requires more harness first.
-- **Ben Test canonized** as a skill at `.github/skills/ben-test/SKILL.md`. Practice self-assessment before claiming strengths.
-- **No more research gates** before Phase 0. Build.
+- **Cost:** 56% of 1500 premium requests used with 1/3 month remaining.
 
 ### Data Safety (shipped Mar 19)
 - Phase 1: Dev agent checklist ✅
@@ -47,9 +39,9 @@ Squad repo deeply investigated and compared to our 11-step creation cycle. Propo
 - Proposal: [.spec/proposals/squad-learnings.md](../proposals/squad-learnings.md)
 - Research: [.spec/scratch/squad-analysis/main.md](../scratch/squad-analysis/main.md)
 - **6 adoption items identified** (resequenced with Phase 0: practice what we preach):
-  - Phase 0: Add intent.yaml to session-start, create decisions.md, practice Sabbath
-  - A1: Decisions file (do now)
-  - A2: Agent routing table (WS1 Phase 3)
+  - Phase 0: ~~Add intent.yaml to session-start, create decisions.md,~~ practice Sabbath ✅ (decisions.md + session-start done Mar 19)
+  - A1: ~~Decisions file~~ ✅ (`.spec/memory/decisions.md` created Mar 19)
+  - A2: Agent routing table (WS1 Phase 3) — NEXT
   - A3: Hook-based governance (WS1 Phase 3)
   - A4: Reviewer lockout with model escalation — bump model tier before swapping agent (WS1 Phase 3)
   - A5: Response tier / model selection (WS1 Phase 2)
