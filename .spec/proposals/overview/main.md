@@ -55,7 +55,7 @@ The daily experience is: start a session → remember there are 5 things to do �
 
 **AI Backend Strategy (Mar 19):** Dual-backend, role-separated. LM Studio (qwen3.5-9b on fermion/lepton's 4090s) for classification — trusted, tested, free. Copilot SDK (Opus 4.6 or Sonnet 4.6) for agent abilities — spec execution, reasoning, complex tasks.
 
-#### Phase 1: Copilot SDK + MCP Integration (1 session)
+#### Phase 1: Copilot SDK + MCP Integration — DONE (Mar 20)
 
 **Note (git audit):** Copilot SDK is ALREADY integrated in brain.exe at v0.1.29. The `internal/ai/client.go` wraps the SDK as a configurable backend (`"copilot"` vs `"lmstudio"`). We're not starting from zero — we're extending what exists.
 
@@ -68,11 +68,18 @@ The daily experience is: start a session → remember there are 5 things to do �
 | **Expected output** | Agent uses gospel_search, retrieves verse, provides contextual answer |
 | **Verify** | Agent correctly cites the verse text. No confabulation. |
 
-**Constraints:**
-- Build on existing `internal/ai/` package, not a separate binary
-- Must connect to gospel-mcp as an MCP tool
-- Must run locally (no server deployment yet)
-- Must stream output (not just batch response)
+**What was built (Mar 20):**
+- `internal/ai/agent.go` — `Agent` struct with `Ask`/`Reset`/`createSession`. Lazy session creation, conversational reuse, error-triggered session reset. MCP servers registered as stdio tools in Copilot SDK `SessionConfig`.
+- `internal/config/config.go` — `MCPServerDef` type, `AgentModel`/`MCPServers` fields, auto-discovery of gospel-mcp/gospel-vec/webster-mcp binaries from sibling directories.
+- `internal/web/server.go` — `POST /api/agent/ask` and `POST /api/agent/reset` endpoints. Nil-agent guard (503 when copilot backend not active).
+- `internal/ai/client.go` — `CopilotClient()` getter to expose raw SDK client for agent sessions.
+- `cmd/brain/main.go` — Agent creation wired: converts config MCPServerDefs → ai.MCPDefs, creates Agent when copilot backend + MCP servers both available.
+
+**Remaining from original constraints:**
+- ~~Build on existing `internal/ai/` package~~ ✅
+- ~~Must connect to gospel-mcp as an MCP tool~~ ✅ (gospel-mcp, gospel-vec, webster-mcp all auto-discovered)
+- ~~Must run locally~~ ✅
+- Streaming output not yet implemented (batch response only) — deferred to Phase 2
 
 #### Phase 2: Agent as Spec Executor (1-2 sessions)
 

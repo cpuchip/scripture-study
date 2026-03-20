@@ -1,16 +1,16 @@
 # Active Context
 
-*Last updated: 2026-03-19 (Phase 0 executed — decisions.md created, session-start updated)*
+*Last updated: 2026-03-20 (WS1 Phase 1 complete — brain.exe is now an MCP client)*
 
 ---
 
 ## Current State
 
-Phase 0 of Squad adoption complete: decisions.md created, intent.yaml + decisions.md added to session-start sequence. All settled decisions now live in `.spec/memory/decisions.md` — this file tracks only current state.
+WS1 Phase 1 shipped: brain.exe can now create Copilot SDK agent sessions with gospel-mcp, gospel-vec, and webster-mcp as tool sources. Agent sessions are conversational (reused across prompts) and tool-enabled (LLM can call gospel_search, search_scriptures, etc. to answer questions). Exposed via `POST /api/agent/ask` and `POST /api/agent/reset`.
 
-### Priorities (Mar 19)
+### Priorities (Mar 20)
 1. **Study** — Highest priority. "It keeps me in the spirit." 3 studies queued in brain-app.
-2. **Agentic Foundation** — Front-load (Option C), then fan out. WS1 Phase 3 spec expanded with Squad learnings (routing table, hook governance, reviewer lockout, cost tracking).
+2. **Agentic Foundation** — WS1 Phase 1 DONE. Phase 2 (agent as spec executor) is next.
 
 ### Key Decisions
 All settled decisions are in [decisions.md](decisions.md). Key ones affecting current work:
@@ -59,9 +59,18 @@ All settled decisions are in [decisions.md](decisions.md). Key ones affecting cu
 - copilot-instructions.md agent table updated
 - All handoff references updated to point to promoted names
 
+### WS1 Phase 1: Copilot SDK + MCP Integration — DONE (Mar 20)
+- `internal/ai/agent.go` — Agent struct with Ask/Reset/createSession, MCP server registration
+- `internal/config/config.go` — MCPServerDef, AgentModel, auto-discovery of sibling MCP servers
+- `internal/web/server.go` — POST /api/agent/ask, POST /api/agent/reset
+- `internal/ai/client.go` — CopilotClient() getter
+- `cmd/brain/main.go` — Agent creation wired into startup
+- **Not yet done:** Streaming output (batch only), end-to-end manual test with curl
+- **Next:** WS1 Phase 2 (agent as spec executor) or manual test of Phase 1
+
 ### Overview Plan
 - **Status:** All questions answered, decisions recorded in [guidance.md](../proposals/overview/guidance.md) and [main.md](../proposals/overview/main.md).
-- **Next:** Start building. WS1 Phase 1 (Copilot SDK + MCP integration) and study.
+- **WS1 Phase 1:** DONE. Phase 2 next.
 
 ---
 
