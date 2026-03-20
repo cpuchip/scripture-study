@@ -1,16 +1,16 @@
 # Active Context
 
-*Last updated: 2026-03-19 (All guidance questions answered, data-safety shipped, plan decisions recorded)*
+*Last updated: 2026-03-19 (Squad analysis complete, adoption plan written)*
 
 ---
 
 ## Current State
 
-All 10 guidance questions answered. Data-safety proposal fully shipped (6/6 phases). Two production outages diagnosed, fixed, and retrospected. Planning phase complete — "Time to go down and build."
+Squad repo deeply investigated and compared to our 11-step creation cycle. Proposal written at `.spec/proposals/squad-learnings.md` with 6 concrete adoption items. Research at `.spec/scratch/squad-analysis/main.md`. Key finding: Squad validates our direction — they're strong on steps 3-7 (stewardship through review), we're strong on steps 1-2 and 8-11 (intent, covenant, redemptive patterns). The combination fills gaps in both.
 
 ### Priorities (Mar 19)
 1. **Study** — Highest priority. "It keeps me in the spirit." 3 studies queued in brain-app.
-2. **Agentic Foundation** — Front-load (Option C), then fan out. VS Code hooks (v1.111) for spec chaining.
+2. **Agentic Foundation** — Front-load (Option C), then fan out. WS1 Phase 3 spec expanded with Squad learnings (routing table, hook governance, reviewer lockout, cost tracking).
 
 ### Key Decisions (Mar 19)
 - **Garvis = brain.exe.** Name retired. No new repo.
@@ -35,6 +35,20 @@ All 10 guidance questions answered. Data-safety proposal fully shipped (6/6 phas
 ---
 
 ## In Flight
+
+### Squad Analysis (COMPLETE — Mar 19)
+- Deep investigation of [bradygaster/squad](https://github.com/bradygaster/squad) multi-agent runtime
+- Compared to our 11-step creation cycle and WS1 plans
+- Proposal: [.spec/proposals/squad-learnings.md](../proposals/squad-learnings.md)
+- Research: [.spec/scratch/squad-analysis/main.md](../scratch/squad-analysis/main.md)
+- **6 adoption items identified:**
+  - A1: Decisions file (do now — `.spec/memory/decisions.md`)
+  - A2: Agent routing table (WS1 Phase 3)
+  - A3: Hook-based governance (WS1 Phase 3)
+  - A4: Reviewer lockout (WS1 Phase 3)
+  - A5: Response tier / model selection (WS1 Phase 2)
+  - A6: Cost tracking (WS1 Phase 2)
+- **Decision needed:** Michael to approve adoption plan
 
 ### Overview Plan
 - **Status:** All questions answered, decisions recorded in [guidance.md](../proposals/overview/guidance.md) and [main.md](../proposals/overview/main.md).
