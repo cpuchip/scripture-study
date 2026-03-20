@@ -4,7 +4,7 @@ description: 'Weave scripture studies into narrative with deliberate pacing and 
 tools: [vscode, execute, read, agent, 'becoming/*', 'gospel/*', 'gospel-vec/*', 'search/*', 'webster/*', 'playwright/*', edit, search, web, todo]
 handoffs:
   - label: Deepen the Source Material
-    agent: study-exp1
+    agent: study
     prompt: 'I need deeper research on a topic before I can tell this story well.'
     send: false
   - label: Record Reflections

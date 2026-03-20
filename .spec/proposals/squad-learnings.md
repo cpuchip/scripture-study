@@ -91,17 +91,19 @@ Governance policies (implemented as hooks, not prompts):
 
 **Key Squad insight:** "Prompts can be ignored. Hooks are code."
 
-### A4. Reviewer Lockout (Adopt in WS1 Phase 3)
+### A4. Reviewer Lockout with Model Escalation (Adopt in WS1 Phase 3)
 
 **Source:** Squad's `reviewer-protocol` skill — rejected author locked out, different agent must revise.
 
+**Refinement (Michael, Mar 19):** Instead of just routing to a different agent, escalate the model tier. If haiku produced rejected work → retry with sonnet. If sonnet → try opus. If opus → try gpt-5.4 (noting that GPT models feel different for study work — better suited to dev/infra tasks). If all tiers exhausted → escalate to human.
+
 **Action:** When brain.exe routes work that gets rejected at review:
-1. The original agent is locked out of the revision
-2. A different agent (same domain or secondary from routing table) handles the fix
-3. If no alternate exists → escalate to human
+1. **First:** Bump to the next model tier for the same agent
+2. **If still rejected:** Route to a different agent (same domain or secondary from routing table)
+3. **If no alternate exists or all fail:** Escalate to human
 4. Scope is per-artifact (rejecting one file doesn't lock out the whole agent)
 
-**Why:** Prevents defensive loops. The fresh perspective often finds what the original missed.
+This combines Squad's lockout principle with a cost-efficient escalation: try the cheaper fix (better model) before the expensive fix (different agent re-reading all context).
 
 ### A5. Response Tier / Model Selection (Adopt in WS1 Phase 2-3)
 
@@ -218,10 +220,27 @@ Create `.spec/memory/decisions.md` now. Start the habit before the infrastructur
 
 ## 7. Recommendation
 
-**Proceed.** The Squad investigation validates our direction and fills concrete gaps:
+**Proceed — but practice before building.**
 
-1. **Now:** Create decisions.md (A1). 15 minutes. Immediate value.
-2. **WS1 Phase 2:** Add response tiers (A5) and cost tracking (A6). Small additions to existing plan.
-3. **WS1 Phase 3:** Expand spec with routing table (A2), hook governance (A3), reviewer lockout (A4). This is the big change — Phase 3 is no longer "route to agent" but "orchestrate agents with governance."
+The critical self-assessment (see scratch file Section X) found we practice ~28% of our own 11-step cycle. Before adopting 6 new patterns from Squad, we should operationalize what we already wrote.
 
-The combination of Squad's implementation patterns (steps 3-7) with our creation cycle's wisdom patterns (steps 1-2, 8-11) produces something neither has alone: **orchestration with purpose**.
+### Phase 0: Practice What We Preach (Before any new code)
+
+1. **Add intent.yaml to session-start sequence** in copilot-instructions.md — 5-minute edit
+2. **Create decisions.md** (A1) — 15 minutes, immediate value
+3. **Practice Sabbath** — after this session, stop. Let the work breathe.
+4. **Promote exp1 agents** — they've proven themselves, make them the standard
+
+### Phase 1: WS1 Phase 2 additions (When building)
+- Response tiers (A5)
+- Cost tracking (A6)
+
+### Phase 2: WS1 Phase 3 expansion (After Phase 1 proves out)
+- Routing table (A2)
+- Hook governance (A3)
+- Model-escalation lockout (A4)
+
+### YouTube Review Gate
+Michael has two YouTube videos covering similar ideas to Squad but without implementation. Review those BEFORE starting Phase 2. The videos may change the approach.
+
+The combination of Squad's implementation patterns (steps 3-7) with our creation cycle's wisdom patterns (steps 1-2, 8-11) produces something neither has alone — **but only if we actually practice the wisdom patterns, not just describe them.**

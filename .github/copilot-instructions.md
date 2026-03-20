@@ -66,12 +66,13 @@ This project uses **custom agents** (`.github/agents/`) for specialized workflow
 
 | Agent | Purpose |
 |-------|---------|
-| `study` | Deep scripture study — cross-referencing, footnotes, synthesis |
-| `lesson` | Sunday School / EQ / RS lesson planning |
+| `study` | Deep scripture study — phased writing with externalized memory and critical analysis |
+| `lesson` | Lesson planning — phased preparation with scratch files and pedagogy framework |
 | `talk` | Sacrament meeting talk preparation |
 | `review` | Conference talk analysis for teaching patterns |
-| `eval` | YouTube video evaluation against the gospel standard |
+| `eval` | YouTube video evaluation — phased evaluation with charitable critical analysis |
 | `journal` | Personal reflection, journaling, becoming |
+| `plan` | Planning — from idea to spec with critical analysis and creation cycle review |
 | `podcast` | Transform studies into shareable podcast/video notes |
 | `story` | Weave studies into narrative with Ma — emotional arc, pacing, contrast |
 | `dev` | MCP server and tool development |

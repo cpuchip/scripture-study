@@ -39,16 +39,29 @@ Squad repo deeply investigated and compared to our 11-step creation cycle. Propo
 ### Squad Analysis (COMPLETE — Mar 19)
 - Deep investigation of [bradygaster/squad](https://github.com/bradygaster/squad) multi-agent runtime
 - Compared to our 11-step creation cycle and WS1 plans
+- **Critical self-assessment added:** We practice ~28% of our own 11-step cycle. Theory/practice gap flagged.
 - Proposal: [.spec/proposals/squad-learnings.md](../proposals/squad-learnings.md)
 - Research: [.spec/scratch/squad-analysis/main.md](../scratch/squad-analysis/main.md)
-- **6 adoption items identified:**
-  - A1: Decisions file (do now — `.spec/memory/decisions.md`)
+- **6 adoption items identified** (resequenced with Phase 0: practice what we preach):
+  - Phase 0: Add intent.yaml to session-start, create decisions.md, practice Sabbath
+  - A1: Decisions file (do now)
   - A2: Agent routing table (WS1 Phase 3)
   - A3: Hook-based governance (WS1 Phase 3)
-  - A4: Reviewer lockout (WS1 Phase 3)
+  - A4: Reviewer lockout with model escalation — bump model tier before swapping agent (WS1 Phase 3)
   - A5: Response tier / model selection (WS1 Phase 2)
   - A6: Cost tracking (WS1 Phase 2)
-- **Decision needed:** Michael to approve adoption plan
+- **YouTubes pending:** Two videos covering similar ideas to Squad — review before implementing Phase 2+
+- **Decision:** Approved by Michael (Mar 19). Proceed with Phase 0 first.
+
+### Agent Promotions (COMPLETE — Mar 19)
+- `study-exp1` → promoted to `study` (phased writing, scratch files, critical analysis)
+- `lesson-exp1` → promoted to `lesson` (phased prep, pedagogy framework)
+- `yt-exp1` → promoted to `eval` (phased evaluation, charitable analysis)
+- `plan-exp1` → new `plan` agent (creation cycle review)
+- Old versions backed up as `.bak` files
+- exp1 files remain as historical originals
+- copilot-instructions.md agent table updated
+- All handoff references updated to point to promoted names
 
 ### Overview Plan
 - **Status:** All questions answered, decisions recorded in [guidance.md](../proposals/overview/guidance.md) and [main.md](../proposals/overview/main.md).
