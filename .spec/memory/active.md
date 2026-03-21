@@ -1,6 +1,6 @@
 # Active Context
 
-*Last updated: 2026-03-21 (Phase 3b built) | WS1 Phase 3b: Governance Hooks + Token Budgets — SHIPPED*
+*Last updated: 2026-03-21 (classifier hotfix) | WS1 Phase 3b: Governance Hooks + Token Budgets — SHIPPED*
 
 ---
 
@@ -11,6 +11,15 @@
 - `internal/ai/agent.go` — Added `SkillDirectories`, `InfiniteSessions` to `AgentConfig`
 - `internal/config/config.go` — MCP auto-discovery expanded 3→7 servers
 - `cmd/brain/main.go` — `--agent` flag, `buildSystemMessage()`, workspace loading
+
+**Classifier hotfix (Mar 21):** Qwen 3.5 9B was returning empty classification responses during relay auto-classify.
+- `internal/classifier/profiles.go` — set `StructuredOutput` to `false` for `qwen/qwen3.5-9b`
+- `internal/classifier/classifier.go` — fixed schema strict flag type (`"strict": true` boolean)
+- Validation:
+  - `go test ./internal/classifier/...` ✅
+  - `go build ./...` ✅
+  - `go run ./cmd/eval --models qwen/qwen3.5-9b --focus sub_items --timeout 2m` → 10/10 ✅
+  - `go run ./cmd/eval --models qwen/qwen3.5-9b --focus category --timeout 2m` → 7/8 (no empty-response failures)
 
 **Validation test:** `brain exec --agent study` produced `study/only-begotten.md` (v2). Compared to the generic-prompt v1:
 - **v1:** 103 lines, 3696 words, no scratch file, no phased workflow, no Webster, no skills

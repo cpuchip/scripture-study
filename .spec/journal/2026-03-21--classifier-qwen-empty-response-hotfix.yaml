@@ -1,0 +1,55 @@
+date: "2026-03-21"
+title: "Classifier hotfix — Qwen empty responses resolved"
+type: dev
+
+summary: >
+  The classifier was failing in production logs with repeated "empty response from
+  LM Studio" for `qwen/qwen3.5-9b`. We traced this to profile configuration:
+  the model was set to structured output (JSON schema grammar sampling) while
+  also running as a thinking model. We disabled structured output for this
+  profile and corrected a schema strict-flag type bug (`"strict": true` boolean).
+
+  Build/tests are clean, and evaluator runs now return valid outputs instead of
+  the prior empty-response failure loop.
+
+discoveries:
+  - >
+    For this LM Studio + Qwen 3.5 setup, forcing `response_format` structured
+    JSON is unstable for classification; plain JSON mode is more reliable.
+  - >
+    `ClassificationSchema` had `"strict": "true"` (string). It should be a
+    boolean. This was corrected for standards compliance.
+  - >
+    Relay smoke test in this environment was blocked by token auth failure,
+    so classifier behavior was verified through direct evaluator runs.
+
+carry_forward:
+  - priority: medium
+    item: >
+      Re-test relay auto-classification with a valid ibeco token to confirm
+      end-to-end queue drain behavior in live startup logs.
+  - priority: low
+    item: >
+      Consider model-specific guardrails documenting which profiles are safe for
+      structured output in LM Studio.
+
+technical_notes:
+  - >
+    Updated `scripts/brain/internal/classifier/profiles.go`:
+    `qwen/qwen3.5-9b.StructuredOutput` true → false.
+  - >
+    Updated `scripts/brain/internal/classifier/classifier.go`:
+    `ClassificationSchema().json_schema.strict` string → boolean.
+  - >
+    Validation:
+    `go test ./internal/classifier/...` passed,
+    `go build ./...` passed,
+    `go run ./cmd/eval --models qwen/qwen3.5-9b --focus sub_items --timeout 2m`
+    scored 10/10,
+    `--focus category` scored 7/8 without empty-response errors.
+
+open_questions:
+  - >
+    Should we encode an explicit model capability flag (e.g.,
+    `SupportsStructuredOutput`) separate from profile intent to prevent
+    accidental re-enable on known-problematic model/runtime pairs?
