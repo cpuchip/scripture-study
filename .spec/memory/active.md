@@ -1,6 +1,6 @@
 # Active Context
 
-*Last updated: 2026-03-21 (Phase 3a built) | WS1 Phase 3a: Agent Pool + Routing Table — SHIPPED*
+*Last updated: 2026-03-21 (Phase 3b built) | WS1 Phase 3b: Governance Hooks + Token Budgets — SHIPPED*
 
 ---
 
@@ -109,7 +109,29 @@ All settled decisions are in [decisions.md](decisions.md). Key ones affecting cu
 - **Modified: `internal/store/store.go`** — 3 delegation methods for routing.
 - **Modified: `cmd/brain/main.go`** — Single `agent` replaced by `pool *ai.AgentPool`. Local `buildSystemMessage()` removed (now exported from pool.go).
 - **Modified: `internal/web/server.go`** — Server uses `pool + wc`. New endpoints: `GET /api/agent/sessions`, `POST /api/agent/route` (background routing), `GET /api/agent/routable` (entries eligible for routing). `handleAgentAsk` accepts `agent` field for named agent sessions.
-- **Next:** Phase 3b (governance hooks) or Phase 3c (auto-routing). But study is higher priority.
+- **Next:** Phase 3c (auto-routing + review queue) after validating 3b behavior in real study/dev sessions.
+
+### WS1 Phase 3b: Governance Hooks + Token Budgets — SHIPPED (Mar 21)
+- **New: `internal/ai/governance.go`** — centralized governance policy for pre-tool checks:
+  - Write-path scoping by agent (`study`, `journal`, `plan`, `dev`, etc.)
+  - Destructive operation blocking (reset/force/delete/drop patterns)
+  - Hook decision responses via `PreToolUseHookOutput`
+- **Modified: `internal/ai/agent.go`**:
+  - `OnPreToolUse` wired to governance policy
+  - `OnPostToolUse` now emits structured audit logs (`agent`, `tool`, `args`, `timestamp`)
+  - `session.usage_info` + `assistant.usage` token tracking implemented
+  - Per-session usage counters: input/output/total tokens, tool calls, warning, hard-cap flags
+  - Budget enforcement: warning threshold log + hard-cap stop for new/running work
+- **Modified: `internal/ai/pool.go`** — new `SessionSummary` and `SessionSummaries()` exposing per-agent usage snapshots
+- **Modified: `internal/web/server.go`** — `GET /api/agent/sessions` now returns:
+  - `sessions` (existing behavior)
+  - `details` (per-session usage)
+  - `budgets` (`warning`, `hard_cap`)
+- **Modified: `internal/config/config.go`** — added configurable env-driven budgets:
+  - `AGENT_TOKEN_WARNING` (default 50000)
+  - `AGENT_TOKEN_HARD_CAP` (default 80000)
+  - validation for non-negative and warning<=hard cap
+- **Modified: `cmd/brain/main.go`** — budget values passed into both pooled daemon sessions and `brain exec` sessions.
 
 ### WS1 Phase 3: Multi-Agent Routing — PROPOSAL APPROVED (Mar 21)
 - Proposal: [.spec/proposals/brain-multi-agent/main.md](../proposals/brain-multi-agent/main.md)

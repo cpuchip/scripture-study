@@ -1,0 +1,60 @@
+date: "2026-03-21"
+title: "WS1 Phase 3b — Governance hooks and token budgets shipped"
+type: dev
+
+summary: >
+  Phase 3b is now implemented on top of the shipped 3a routing/pool foundation.
+  The core shift is from unrestricted agent execution to governed execution with
+  explicit guardrails. We added pre-tool checks for path scoping and destructive
+  command blocking, post-tool audit logging, and session-level token accounting
+  with warning/hard-cap enforcement.
+
+  The `/api/agent/sessions` endpoint now surfaces both session names and usage
+  details, along with configured budget thresholds. This gives visibility for
+  dashboard and operational monitoring while preserving existing 3a behavior.
+
+discoveries:
+  - >
+    Copilot SDK exposes token usage via `session.usage_info` and `assistant.usage`
+    events. Tracking both gives robust accounting during mixed response flows.
+  - >
+    Governance can stay non-interactive (`PermissionHandler.ApproveAll`) while
+    still enforcing policy through `OnPreToolUse` allow/deny decisions.
+  - >
+    Routing/status and governance concerns remain cleanly separable: Phase 3a can
+    continue serving suggest-mode workflows while Phase 3b constrains what agents
+    can do when routed.
+
+carry_forward:
+  - priority: high
+    item: >
+      Build Phase 3c review workflow and auto-routing controls, but keep default
+      mode suggest until study-session quality + token spend is validated.
+  - priority: medium
+    item: >
+      Validate governance path allowlists against real agent behavior to reduce
+      false denies (especially for `dev` and scratch/proposal writing flows).
+  - priority: medium
+    item: >
+      Add persistence/reporting layer for audit events (currently log-based only).
+
+technical_notes:
+  - >
+    New file: `scripts/brain/internal/ai/governance.go` with policy checks for
+    write tools and destructive command patterns.
+  - >
+    `Agent` now tracks `SessionUsage` counters and exposes `Usage()` snapshots;
+    pool aggregates these with `SessionSummaries()`.
+  - >
+    New config envs: `AGENT_TOKEN_WARNING` (default 50000),
+    `AGENT_TOKEN_HARD_CAP` (default 80000).
+  - >
+    `/api/agent/sessions` response now includes `details` and `budgets` fields.
+
+open_questions:
+  - >
+    Should path-scope defaults move fully into config (YAML/env) per deployment,
+    or remain code defaults with optional overrides?
+  - >
+    For hard-cap behavior, do we want immediate mid-turn cancellation only, or
+    also per-request estimated-cost gating before send?
