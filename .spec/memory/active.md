@@ -1,6 +1,6 @@
 # Active Context
 
-*Last updated: 2026-03-21 (workspace-aware sessions implemented + tested) | Study: Only Begotten v2 completed via brain exec*
+*Last updated: 2026-03-21 (Phase 3 proposal written) | WS1 Phase 3: multi-agent routing proposal ready for review*
 
 ---
 
@@ -97,7 +97,21 @@ All settled decisions are in [decisions.md](decisions.md). Key ones affecting cu
 
 ### Overview Plan
 - **Status:** All questions answered, decisions recorded.
-- **WS1 Phase 1:** DONE. Phase 2 POC done. Phase 2.5 workspace-aware done. Phase 3 (multi-agent routing) next.
+- **WS1 Phase 1:** DONE. Phase 2 POC done. Phase 2.5 workspace-aware done. Phase 3 proposal written — awaiting review.
+
+### WS1 Phase 3: Multi-Agent Routing — PROPOSAL READY (Mar 21)
+- Proposal: [.spec/proposals/brain-multi-agent/main.md](../proposals/brain-multi-agent/main.md)
+- Research: [.spec/scratch/brain-multi-agent/main.md](../scratch/brain-multi-agent/main.md)
+- **Three sub-phases proposed:**
+  - **3a:** Agent pool + routing table — `map[string]*Agent` with lazy creation, category→agent mapping, "suggest" mode (human approves routing)
+  - **3b:** Governance hooks — `OnPreToolUse` for file-write scoping + destructive op blocking, token budgets, audit logging
+  - **3c:** Auto-routing + review queue — entries route automatically, human reviews output
+- **Key decisions:**
+  - Default routing mode is "suggest" not "auto" — respects gated autonomy decision
+  - Pool with lazy instantiation (not single agent or subprocess)
+  - Only study→study and journal→journal map cleanly; ideas→plan is plausible; others→none initially
+  - Token budget concern: 56% premium requests used, governance needed before wide-open routing
+- **Recommendation:** Build Phase 3a first (1 session). Defer 3b/3c until routing feels right in practice.
 
 ---
 
