@@ -1,21 +1,25 @@
 # Active Context
 
-*Last updated: 2026-03-20 (workspace-aware agent proposal written)*
+*Last updated: 2026-03-21 (workspace-aware sessions implemented + tested) | Study: Only Begotten v2 completed via brain exec*
 
 ---
 
 ## Current State
 
-WS1 Phase 2 done. Workspace-aware agent sessions proposal written at [.spec/proposals/brain-workspace-aware/main.md](../proposals/brain-workspace-aware/main.md). This bridges Phase 2 → Phase 3 by loading `.github/` agents, skills, and instructions into Copilot SDK sessions. ~150 lines of Go. Ready to build.
+**WS1 Phase 2.5: Workspace-Aware Sessions — SHIPPED (Mar 21).** All code changes implemented and tested:
+- `internal/config/workspace.go` (NEW) — Parses `.github/copilot-instructions.md`, agents, skills
+- `internal/ai/agent.go` — Added `SkillDirectories`, `InfiniteSessions` to `AgentConfig`
+- `internal/config/config.go` — MCP auto-discovery expanded 3→7 servers
+- `cmd/brain/main.go` — `--agent` flag, `buildSystemMessage()`, workspace loading
 
-Key discoveries from this session:
-- The Go SDK has `CustomAgents`, `SkillDirectories`, `InfiniteSessions` fields — all unused by brain.exe
-- Squad embeds everything in SystemMessage rather than using SDK fields — valid alternative, our fallback
-- The two goals (remote workspace access + autonomous agents like Squad) are compatible — same infrastructure, different activation levels
+**Validation test:** `brain exec --agent study` produced `study/only-begotten.md` (v2). Compared to the generic-prompt v1:
+- **v1:** 103 lines, 3696 words, no scratch file, no phased workflow, no Webster, no skills
+- **v2:** 169 lines, 4710 words, scratch file created, all 7 study phases followed, Webster 1828 used, skills loaded on-demand, context compaction worked
+- All 5 SDK features confirmed working: SkillDirectories, InfiniteSessions, base instructions, 7 MCP servers, study agent prompt
 
-### Priorities (Mar 20)
-1. **Study** — Highest priority. "It keeps me in the spirit." 3 studies queued in brain-app.
-2. **Agentic Foundation** — Workspace-aware sessions next (proposal ready). Then WS1 Phase 3 (multi-agent routing).
+### Priorities (Mar 21)
+1. **Study** — Highest priority. "It keeps me in the spirit." Studies queued in brain-app.
+2. **Agentic Foundation** — WS1 Phase 3 next (multi-agent routing).
 
 ### Key Decisions
 All settled decisions are in [decisions.md](decisions.md). Key ones affecting current work:
@@ -84,9 +88,16 @@ All settled decisions are in [decisions.md](decisions.md). Key ones affecting cu
 - **Timeout fixed:** `AskStreaming` method uses `Send` + `On` (event-driven) instead of `SendAndWait`. Streams output in real-time via `AssistantMessageDelta` events. Exec uses 10-minute timeout. Custom devTools removed; `tools.go` pending manual deletion.
 - **Pending cleanup:** Delete `scripts/brain/internal/ai/tools.go` and `scripts/brain/test-spec.md`
 
+### WS1 Phase 2.5: Workspace-Aware Sessions — DONE (Mar 21)
+- `internal/config/workspace.go` — `LoadWorkspace()` parses copilot-instructions.md + agents + skills
+- `internal/ai/agent.go` — SkillDirectories + InfiniteSessions support
+- `internal/config/config.go` — 7 MCP servers auto-discovered (was 3)
+- `cmd/brain/main.go` — `--agent` flag, `buildSystemMessage()`, 30min timeout
+- **Validated:** study agent produced full phased study with scratch files, Webster, skills, compaction
+
 ### Overview Plan
 - **Status:** All questions answered, decisions recorded.
-- **WS1 Phase 1:** DONE. Phase 2 POC done. Production-readiness (timeout, streaming) next.
+- **WS1 Phase 1:** DONE. Phase 2 POC done. Phase 2.5 workspace-aware done. Phase 3 (multi-agent routing) next.
 
 ---
 

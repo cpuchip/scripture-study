@@ -1,0 +1,124 @@
+date: "2026-03-20"
+title: "The Only Begotten of the Father — Complete Study"
+type: study
+
+summary: >
+  A full phased study on "The Only Begotten of the Father" across all five standard works,
+  using the scratch-file workflow to survive context compaction across what became a
+  multi-checkpoint session. The study was initiated in a prior session (Phase 1 outline,
+  early Phase 2 source gathering) and completed here through Phases 2-7.
+
+  The binding question: How does "the Only Begotten of the Father" distinguish Christ from
+  all other children of God — and what does that distinction reveal about the nature and
+  cost of the Atonement?
+
+  The answer that emerged: The distinction is categorical (not just quantitative), encoded
+  in Christ's own vocabulary ("my Father" vs. "your Father," never "our Father"). It carries
+  three layers — origin (in the bosom of the Father from the beginning), creative authority
+  (worlds without number created through him), and dual nature (Mary contributes mortality,
+  the Father contributes divine life, making the Atonement physically possible). The cost
+  of the Atonement is measured by what was given: not a subordinate or an instrument but
+  the one in the bosom — the irreplaceable. The purpose: that through the Only Begotten,
+  others may be "begotten sons and daughters unto God" (D&C 76:24).
+
+  The Restoration adds a dimension absent from the New Testament alone: D&C 93:12-14
+  reveals Christ "received not of the fulness at the first, but received grace for grace."
+  The title "Only Begotten" preceded the fullness — meaning his sonship is not a static
+  achievement but a trajectory walked. Every member of the Church who is "begotten through
+  him" walks the same path.
+
+  20+ sources read and logged to scratch file. All five standard works represented. Webster
+  1828 definitions for ONLY, BEGET, SIMILITUDE, and CONDESCENSION illuminated key passages.
+  Critical analysis phase confirmed the binding question is answered and identified two
+  minor framings to handle carefully (Moses 5:9 Holy Ghost first-person speech; D&C 93
+  trajectory must not diminish the security of Christ's sonship).
+
+  Study file: `study/only-begotten.md`
+  Scratch file: `study/.scratch/only-begotten.md`
+
+discoveries:
+  - label: "Moses 1 is the density center — 8 occurrences, Satan's counterfeit, and the name as authority"
+    detail: >
+      Moses 1 uses the title "Only Begotten" eight times. The chapter's structure is a
+      confrontation between two identities: God tells Moses he is "in the similitude of
+      mine Only Begotten," then Satan appears and claims the title for himself ("I am the
+      Only Begotten, worship me," v.19). Moses holds his ground by holding his identity.
+      When he commands Satan to leave, he does it "In the name of the Only Begotten" (v.21).
+      The title is both an identity marker and a source of authority — recognizing the real
+      thing is what makes the false claim ineffective.
+  - label: "Moses 6:57 — Son of Man means Son of Holiness in the language of Adam"
+    detail: >
+      In the primordial language, God is called "Man of Holiness" and the Son is called
+      "the Son of Man, even Jesus Christ." The title "Son of Man" — which we normally read
+      as pointing to Christ's humanity — in Moses 6 encodes his divine parentage. He is
+      the Son of Holiness, not merely the son of mortals. Both readings coexist; Moses 6
+      adds the older, deeper layer.
+  - label: "D&C 93: the title precedes the fullness — trajectory, not static status"
+    detail: >
+      D&C 93:12-14 says Christ "received not of the fulness at the first, but received
+      grace for grace...until he received a fulness. And thus he was called the Son of God,
+      because he received not of the fulness at the first." The title was his while he was
+      on the journey. This is the Restoration's unique contribution to Christology —
+      the Only Begotten is the pattern and the path for the whole Church. "All those who
+      are begotten through me are partakers of the glory of the same" (v.22).
+  - label: "D&C 76:23-24 bridges creation and adoption with the same word 'begotten'"
+    detail: >
+      V.23: the voice declares he is the Only Begotten. V.24: through him the worlds are
+      created, and the inhabitants are "begotten sons and daughters unto God." The same
+      root word appears in both verses. The Only Begotten creates worlds; through him, the
+      world's inhabitants are adopted into God's family. The Father has one natural Son;
+      through that Son he gains an innumerable family.
+  - label: "Nephi's equation: tree of life = love of God = the Only Begotten given"
+    detail: >
+      In 1 Nephi 11, the angel asks "Knowest thou the condescension of God?" and shows
+      Nephi the virgin and child. Then asks what the tree of life means. Nephi answers:
+      "the love of God." The angel doesn't explain the connection — Nephi just sees it.
+      The condescension (Webster 1828: voluntary descent from one's rank) IS the love.
+      The giving of the Only Begotten IS the tree of life.
+  - label: "Genesis 22 footnotes make the typology explicit — the cross-references precede the commentary"
+    detail: >
+      The LDS footnotes on Genesis 22 cross-reference "only" (v.2) to John 3:16 and
+      Jacob 4:5. The footnote on Isaac carrying the wood (v.6) cross-references John 19:17
+      (Christ carrying the cross). The footnote on "God will provide himself a lamb" (v.8)
+      cross-references Isaiah 53:7, John 8:56, D&C 76:85. The typology is embedded in
+      the scripture apparatus itself — not a later interpretive layer but part of the
+      canonical text as LDS Saints receive it.
+
+relationship_dynamics:
+  - "This was a resumption session — the context summary captured Phase 2 work from a prior
+    session, and we picked up at Webster 1828 definitions, read remaining sources (Hebrews 1,
+    11, Genesis 22, Alma 7), then moved through gap analysis and critical analysis to the
+    full draft. The scratch file pattern worked exactly as designed for cross-session continuity."
+  - "Michael asked for this study as a straightforward request: study the phrase across the
+    standard works. The binding question that emerged (distinction → cost of Atonement) gave
+    it theological spine beyond a simple concordance survey."
+
+carry_forward:
+  - priority: high
+    item: "This study is a natural predecessor to a study on adoption and becoming sons and
+      daughters of God — the D&C 76:24 thread ('begotten sons and daughters') deserves its
+      own treatment."
+  - priority: medium
+    item: "The Moses 5:9 phenomenon — Holy Ghost speaking in first person as the Only Begotten
+      — is unusual enough to deserve its own note or study. What does it mean that the Holy
+      Ghost witnesses by becoming, momentarily, the voice of the Son?"
+  - priority: medium
+    item: "The 'bosom of the Father' image (John 1:18, D&C 76:13, 25) — covenant intimacy
+      language — would reward a focused word study against ancient Near Eastern covenant
+      traditions."
+  - priority: low
+    item: "A companion study on 'Firstborn' (prototokos) across the standard works would
+      complete the set: Only Begotten deals with unique sonship, Firstborn deals with
+      priority and inheritance."
+
+open_questions:
+  - "Why does Moses 5:9 have the Holy Ghost speak in the first person as the Only Begotten?
+    Is this a typological/pedagogical speech act, or does it reveal something about the
+    relationship between the Holy Ghost and the Son that the rest of scripture doesn't
+    articulate?"
+  - "D&C 93 says Christ 'received not of the fulness at the first.' What was the nature
+    of that growth? Was it experiential (learning through suffering, as Heb 5:8 says)?
+    Developmental (acquiring capacities)? Or something more mysterious about the relationship
+    between the divine will and the divine fullness?"
+  - "The BD note says Jesus never says 'our Father' in a common address with disciples.
+    Is this consistent throughout the JST? Does the JST ever change any instance of this?"
