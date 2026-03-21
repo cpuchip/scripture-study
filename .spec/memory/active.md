@@ -1,6 +1,6 @@
 # Active Context
 
-*Last updated: 2026-03-21 (Phase 3 proposal written) | WS1 Phase 3: multi-agent routing proposal ready for review*
+*Last updated: 2026-03-21 (Phase 3a built) | WS1 Phase 3a: Agent Pool + Routing Table — SHIPPED*
 
 ---
 
@@ -99,7 +99,19 @@ All settled decisions are in [decisions.md](decisions.md). Key ones affecting cu
 - **Status:** All questions answered, decisions recorded.
 - **WS1 Phase 1:** DONE. Phase 2 POC done. Phase 2.5 workspace-aware done. Phase 3 proposal written — awaiting review.
 
-### WS1 Phase 3: Multi-Agent Routing — PROPOSAL READY (Mar 21)
+### WS1 Phase 3a: Agent Pool + Routing Table — SHIPPED (Mar 21)
+- **8 files changed** (3 new, 5 modified). All tests pass.
+- **New: `internal/ai/pool.go`** — `AgentPool` with `map[string]*Agent`, `sync.RWMutex`, lazy creation via `GetOrCreate(agentName, wc)`. Exported `BuildSystemMessage()` (extracted from main.go).
+- **New: `internal/ai/router.go`** — `RouteMode` (none/suggest/auto), `DefaultRoutes` map (study→study, journal→journal, ideas→plan; projects/actions/people→none), `LookupRoute()`, `RenderPrompt()` with Go templates.
+- **New: `internal/ai/pool_test.go`** — 6 tests covering routing lookup, prompt rendering, and system message building.
+- **Modified: `internal/store/types.go`** — 4 new Entry fields: `AgentRoute`, `RouteStatus`, `AgentOutput`, `TokensUsed`.
+- **Modified: `internal/store/db.go`** — Idempotent migration adding 4 columns. New methods: `SetAgentRoute()`, `UpdateRouteStatus()`, `SetAgentOutput()`. Updated `GetEntry()` and `ListCategory()` queries.
+- **Modified: `internal/store/store.go`** — 3 delegation methods for routing.
+- **Modified: `cmd/brain/main.go`** — Single `agent` replaced by `pool *ai.AgentPool`. Local `buildSystemMessage()` removed (now exported from pool.go).
+- **Modified: `internal/web/server.go`** — Server uses `pool + wc`. New endpoints: `GET /api/agent/sessions`, `POST /api/agent/route` (background routing), `GET /api/agent/routable` (entries eligible for routing). `handleAgentAsk` accepts `agent` field for named agent sessions.
+- **Next:** Phase 3b (governance hooks) or Phase 3c (auto-routing). But study is higher priority.
+
+### WS1 Phase 3: Multi-Agent Routing — PROPOSAL APPROVED (Mar 21)
 - Proposal: [.spec/proposals/brain-multi-agent/main.md](../proposals/brain-multi-agent/main.md)
 - Research: [.spec/scratch/brain-multi-agent/main.md](../scratch/brain-multi-agent/main.md)
 - **Three sub-phases proposed:**
