@@ -1,16 +1,21 @@
 # Active Context
 
-*Last updated: 2026-03-20 (WS1 Phase 2 tested — agent executed spec, made correct changes)*
+*Last updated: 2026-03-20 (workspace-aware agent proposal written)*
 
 ---
 
 ## Current State
 
-WS1 Phase 2 proof of concept succeeded: `brain exec test-spec.md` sent a spec to the Copilot SDK agent, which autonomously read source code, identified construction sites, and made correct changes to 4/8 locations before timing out. Human completed the remaining 4. Key discovery: the Copilot SDK has BUILT-IN filesystem tools (view, grep, edit) — our custom devTools are supplementary, not primary.
+WS1 Phase 2 done. Workspace-aware agent sessions proposal written at [.spec/proposals/brain-workspace-aware/main.md](../proposals/brain-workspace-aware/main.md). This bridges Phase 2 → Phase 3 by loading `.github/` agents, skills, and instructions into Copilot SDK sessions. ~150 lines of Go. Ready to build.
+
+Key discoveries from this session:
+- The Go SDK has `CustomAgents`, `SkillDirectories`, `InfiniteSessions` fields — all unused by brain.exe
+- Squad embeds everything in SystemMessage rather than using SDK fields — valid alternative, our fallback
+- The two goals (remote workspace access + autonomous agents like Squad) are compatible — same infrastructure, different activation levels
 
 ### Priorities (Mar 20)
 1. **Study** — Highest priority. "It keeps me in the spirit." 3 studies queued in brain-app.
-2. **Agentic Foundation** — WS1 Phase 2 proof of concept done. Needs timeout fix, then ready for real use.
+2. **Agentic Foundation** — Workspace-aware sessions next (proposal ready). Then WS1 Phase 3 (multi-agent routing).
 
 ### Key Decisions
 All settled decisions are in [decisions.md](decisions.md). Key ones affecting current work:
