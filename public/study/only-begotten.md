@@ -26,19 +26,19 @@ The title is therefore a claim about origin and relationship, spoken from the Fa
 
 ### Genesis 22 — The First "Only Son" Moment in Scripture
 
-The word "only" in relation to a son appears for the first time in [Genesis 22:2](../gospel-library/eng/scriptures/ot/gen/22.md):
+The word "only" in relation to a son appears for the first time in [Genesis 22:2](https://www.churchofjesuschrist.org/study/scriptures/ot/gen/22?lang=eng&id=p2#p2):
 
 > "Take now thy son, thine only son Isaac, whom thou lovest, and get thee into the land of Moriah; and offer him there for a burnt offering."
 
-The word "only" is repeated three times in this chapter — in the command (v.2), when the angel stays Abraham's hand (v.12), and in the Lord's oath of blessing (v.16). The LDS footnote on "only" cross-references it directly to [John 3:16](../gospel-library/eng/scriptures/nt/john/3.md) and [Jacob 4:5](../gospel-library/eng/scriptures/bofm/jacob/4.md). The typology is not read into the text by later interpreters; it is embedded in the cross-reference apparatus of the scriptures themselves.
+The word "only" is repeated three times in this chapter — in the command (v.2), when the angel stays Abraham's hand (v.12), and in the Lord's oath of blessing (v.16). The LDS footnote on "only" cross-references it directly to [John 3:16](https://www.churchofjesuschrist.org/study/scriptures/nt/john/3?lang=eng&id=p16#p16) and [Jacob 4:5](https://www.churchofjesuschrist.org/study/scriptures/bofm/jacob/4?lang=eng&id=p5#p5). The typology is not read into the text by later interpreters; it is embedded in the cross-reference apparatus of the scriptures themselves.
 
-Isaac carries the wood of the sacrifice on his back (v.6). The footnote on that verse cross-references [John 19:17](../gospel-library/eng/scriptures/nt/john/19.md) — Christ carrying the cross. Abraham tells his servants, "I and the lad will go yonder and worship, and come again to you" (v.5) — he anticipates resurrection even before the ram appears. Hebrews 11:19 says Abraham "accounted that God was able to raise him up, even from the dead; from whence also he received him in a figure."
+Isaac carries the wood of the sacrifice on his back (v.6). The footnote on that verse cross-references [John 19:17](https://www.churchofjesuschrist.org/study/scriptures/nt/john/19?lang=eng&id=p17#p17) — Christ carrying the cross. Abraham tells his servants, "I and the lad will go yonder and worship, and come again to you" (v.5) — he anticipates resurrection even before the ram appears. Hebrews 11:19 says Abraham "accounted that God was able to raise him up, even from the dead; from whence also he received him in a figure."
 
 God asks of Abraham exactly what he will later give himself: an only son, uniquely loved, laid on wood.
 
 ### Moses 1 — The Density Center
 
-No chapter in all of scripture uses the title "Only Begotten" more densely than [Moses 1](../gospel-library/eng/scriptures/pgp/moses/1.md). It appears eight times:
+No chapter in all of scripture uses the title "Only Begotten" more densely than [Moses 1](https://www.churchofjesuschrist.org/study/scriptures/pgp/moses/1?lang=eng). It appears eight times:
 
 | Verse | Usage |
 |-------|-------|
@@ -59,21 +59,21 @@ When Moses finally commands Satan to depart, he does it "In the name of the Only
 
 ### Moses 2 — The Creation Council
 
-[Moses 2](../gospel-library/eng/scriptures/pgp/moses/2.md) opens the creation account with a declaration about the agent of creation: "by mine Only Begotten I created these things" (v.1). But the most significant use comes at the creation of man:
+[Moses 2](https://www.churchofjesuschrist.org/study/scriptures/pgp/moses/2?lang=eng) opens the creation account with a declaration about the agent of creation: "by mine Only Begotten I created these things" (v.1). But the most significant use comes at the creation of man:
 
-> "And I, God, said unto mine Only Begotten, which was with me from the beginning: Let us make man in our image, after our likeness." — [Moses 2:26](../gospel-library/eng/scriptures/pgp/moses/2.md)
+> "And I, God, said unto mine Only Begotten, which was with me from the beginning: Let us make man in our image, after our likeness." — [Moses 2:26](https://www.churchofjesuschrist.org/study/scriptures/pgp/moses/2?lang=eng&id=p26#p26)
 
-> "And I, God, created man in mine own image, in the image of mine Only Begotten created I him; male and female created I them." — [Moses 2:27](../gospel-library/eng/scriptures/pgp/moses/2.md)
+> "And I, God, created man in mine own image, in the image of mine Only Begotten created I him; male and female created I them." — [Moses 2:27](https://www.churchofjesuschrist.org/study/scriptures/pgp/moses/2?lang=eng&id=p27#p27)
 
 The "let us" of Genesis — debated for centuries — is here explained. God was speaking to his Only Begotten. The plural is not rhetorical; it is a record of a conversation. Man was made in the image of both — in the image of God and in the image of the Only Begotten, who is in that image. And Moses 1:6 confirms what this means for us: "thou art in the similitude of mine Only Begotten." The image stamped on Adam is the image of the Only Begotten. We bear a resemblance to him that God placed there deliberately.
 
 ### Moses 4 — Satan Cast Out by the Only Begotten
 
-[Moses 4:1-3](../gospel-library/eng/scriptures/pgp/moses/4.md) gives the premortal council scene: Satan's rebellion, his rejection, and the Father's declaration — "by the power of mine Only Begotten" he was cast out. The Only Begotten's authority predates the earth. The war in heaven was won by invoking the same name Moses would invoke later.
+[Moses 4:1-3](https://www.churchofjesuschrist.org/study/scriptures/pgp/moses/4?lang=eng&id=p1-p3#p1) gives the premortal council scene: Satan's rebellion, his rejection, and the Father's declaration — "by the power of mine Only Begotten" he was cast out. The Only Begotten's authority predates the earth. The war in heaven was won by invoking the same name Moses would invoke later.
 
 ### Moses 5 — Sacrifice as Similitude
 
-An angel explains Adam's sacrifice to him: "This thing is a similitude of the sacrifice of the Only Begotten of the Father, which is full of grace and truth" ([Moses 5:7](../gospel-library/eng/scriptures/pgp/moses/5.md)).
+An angel explains Adam's sacrifice to him: "This thing is a similitude of the sacrifice of the Only Begotten of the Father, which is full of grace and truth" ([Moses 5:7](https://www.churchofjesuschrist.org/study/scriptures/pgp/moses/5?lang=eng&id=p7#p7)).
 
 Then, in a moment that is theologically startling, the Holy Ghost speaks through Adam in first person:
 
@@ -85,7 +85,7 @@ In the same chapter, Satan's imitation appears: "I am also a son of God" (v.13).
 
 ### Moses 6 — The Etymology of the Son of Man
 
-[Moses 6:57](../gospel-library/eng/scriptures/pgp/moses/6.md) gives the name of God in the language of Adam:
+[Moses 6:57](https://www.churchofjesuschrist.org/study/scriptures/pgp/moses/6?lang=eng&id=p57#p57) gives the name of God in the language of Adam:
 
 > "In the language of Adam, Man of Holiness is his name, and the name of his Only Begotten is the Son of Man, even Jesus Christ."
 
@@ -101,13 +101,13 @@ The chapter continues: baptism is commanded "in the name of mine Only Begotten S
 
 John opens with the premortal Word and ends the prologue with the Incarnation. Two verses carry the "Only Begotten" weight:
 
-> "And the Word was made flesh, and dwelt among us, (and we beheld his glory, the glory as of the only begotten of the Father,) full of grace and truth." ([John 1:14](../gospel-library/eng/scriptures/nt/john/1.md))
+> "And the Word was made flesh, and dwelt among us, (and we beheld his glory, the glory as of the only begotten of the Father,) full of grace and truth." ([John 1:14](https://www.churchofjesuschrist.org/study/scriptures/nt/john/1?lang=eng&id=p14#p14))
 
 > "No man hath seen God at any time; the only begotten Son, which is in the bosom of the Father, he hath declared him." (v.18)
 
 Two things in v.14: the glory witnessed is specifically *as of* the Only Begotten — it carries his unique signature. And the phrase "full of grace and truth" is the same phrase applied to the Only Begotten in Moses 1:6 and 1:32. The threads connect across the volumes of scripture.
 
-In v.18, the phrase "in the bosom of the Father" is not casual. The bosom is the seat of intimacy — a place of covenant nearness. The Only Begotten is not merely in the Father's household but in his bosom: the closest possible relationship. The JST addition makes the consequence explicit: "And no man hath seen God at any time, except he hath borne record of the Son; for except it is through him no man can be saved" ([JST John 1:18-19](../gospel-library/eng/scriptures/jst/jst-john/1.md)). The intimacy in the bosom is the gateway — through that closeness, the Son has something to offer that no other being can.
+In v.18, the phrase "in the bosom of the Father" is not casual. The bosom is the seat of intimacy — a place of covenant nearness. The Only Begotten is not merely in the Father's household but in his bosom: the closest possible relationship. The JST addition makes the consequence explicit: "And no man hath seen God at any time, except he hath borne record of the Son; for except it is through him no man can be saved" ([JST John 1:18-19](https://www.churchofjesuschrist.org/study/scriptures/jst/jst-john/1?lang=eng&id=p18-p19#p18)). The intimacy in the bosom is the gateway — through that closeness, the Son has something to offer that no other being can.
 
 V.12 gives the inverse: "to them gave he power to become the sons of God." The Only Begotten's unique position is what makes that possible. He is the Firstborn; through him, others are begotten into the same family — genuine sons and daughters of the same Father, joint-heirs with the Son who opened the way.
 
@@ -115,7 +115,7 @@ V.12 gives the inverse: "to them gave he power to become the sons of God." The O
 
 The most quoted verse in all of scripture:
 
-> "For God so loved the world, that he gave his only begotten Son, that whosoever believeth in him should not perish, but have everlasting life." ([John 3:16](../gospel-library/eng/scriptures/nt/john/3.md))
+> "For God so loved the world, that he gave his only begotten Son, that whosoever believeth in him should not perish, but have everlasting life." ([John 3:16](https://www.churchofjesuschrist.org/study/scriptures/nt/john/3?lang=eng&id=p16#p16))
 
 The word that carries the weight is "gave." Not sent a message, not gave instructions, not gave an example — gave the Only Begotten himself. What is given is what is in the bosom. The love is measured by what is surrendered.
 
@@ -123,7 +123,7 @@ V.18 says that unbelief is condemnation "because he hath not believed in the nam
 
 ### Hebrews 1 — Better Than Angels
 
-Paul's argument in [Hebrews 1](../gospel-library/eng/scriptures/nt/heb/1.md) is comparative. He quotes Psalm 2:7 — "Thou art my Son, this day have I begotten thee" — and asks: "For unto which of the angels said he at any time, Thou art my Son?" (v.5). The answer is never. No angel was ever addressed as Son. The Son is "the brightness of his glory, and the express image of his person" (v.3) — the TG footnote on "express image" points to *God, Body of, Corporeal Nature*. The Son bears the Father's actual form, not a shadow of it.
+Paul's argument in [Hebrews 1](https://www.churchofjesuschrist.org/study/scriptures/nt/heb/1?lang=eng) is comparative. He quotes Psalm 2:7 — "Thou art my Son, this day have I begotten thee" — and asks: "For unto which of the angels said he at any time, Thou art my Son?" (v.5). The answer is never. No angel was ever addressed as Son. The Son is "the brightness of his glory, and the express image of his person" (v.3) — the TG footnote on "express image" points to *God, Body of, Corporeal Nature*. The Son bears the Father's actual form, not a shadow of it.
 
 V.6 calls him "the firstbegotten" (*prototokos*) and says all the angels of God are commanded to worship him. The word "firstbegotten" joins "only begotten" and "firstborn" in the same family of titles. He is first among all creation, and alone in his category as Son.
 
@@ -131,7 +131,7 @@ V.6 calls him "the firstbegotten" (*prototokos*) and says all the angels of God 
 
 In the faith chapter, Paul describes Abraham offering up Isaac and deliberately uses the Greek word *monogenes*:
 
-> "By faith Abraham, when he was tried, offered up Isaac: and he that had received the promises offered up his only begotten son." ([Hebrews 11:17](../gospel-library/eng/scriptures/nt/heb/11.md))
+> "By faith Abraham, when he was tried, offered up Isaac: and he that had received the promises offered up his only begotten son." ([Hebrews 11:17](https://www.churchofjesuschrist.org/study/scriptures/nt/heb/11?lang=eng&id=p17#p17))
 
 This is the same word used for Christ in John 1:14 and John 3:16. Paul reaches back to Genesis 22 and applies the technical Christological term to Isaac — not because Isaac is Christ, but because Isaac's story is a *type* of Christ's story in the precise sense that requires the same vocabulary. The prefigurement is complete: father tried; only son placed on altar; last-minute rescue that is also "a figure" of resurrection (v.19).
 
@@ -143,7 +143,7 @@ This is the same word used for Christ in John 1:14 and John 3:16. Paul reaches b
 
 Nephi is carried away in vision and shown the tree of life. An angel asks him: "Knowest thou the condescension of God?" Nephi says he knows God loves his children but does not know the meaning of all things. Then the angel shows him a virgin in Nazareth, and then the Son of God in flesh.
 
-After showing him this, the angel asks again: "Knowest thou the meaning of the tree which thy father saw?" Nephi answers without hesitation: "Yea, it is the love of God, which sheddeth itself abroad in the hearts of the children of men" ([1 Nephi 11:21-22](../gospel-library/eng/scriptures/bofm/1-ne/11.md)).
+After showing him this, the angel asks again: "Knowest thou the meaning of the tree which thy father saw?" Nephi answers without hesitation: "Yea, it is the love of God, which sheddeth itself abroad in the hearts of the children of men" ([1 Nephi 11:21-22](https://www.churchofjesuschrist.org/study/scriptures/bofm/1-ne/11?lang=eng&id=p21-p22#p21)).
 
 The sequence is the argument: tree = love = the Son given. The angel doesn't explain this connection; he simply shows the virgin and child, then asks what the tree means. Nephi understands. The tree of life, which Lehi's family had been seeking, is identified with the most desirable thing in the universe — which is the Father giving the Only Begotten.
 
@@ -153,7 +153,7 @@ Webster 1828 on *condescension*: "Voluntary descent from one's rank or dignity i
 
 Alma's prophecy is precise:
 
-> "He shall be born of Mary, at Jerusalem which is the land of our forefathers, she being a virgin, a precious and chosen vessel, who shall be overshadowed and conceive by the power of the Holy Ghost, and bring forth a son, yea, even the Son of God." ([Alma 7:10](../gospel-library/eng/scriptures/bofm/alma/7.md))
+> "He shall be born of Mary, at Jerusalem which is the land of our forefathers, she being a virgin, a precious and chosen vessel, who shall be overshadowed and conceive by the power of the Holy Ghost, and bring forth a son, yea, even the Son of God." ([Alma 7:10](https://www.churchofjesuschrist.org/study/scriptures/bofm/alma/7?lang=eng&id=p10#p10))
 
 The virgin birth is not just a theological statement — it is a physical one. Mary contributes mortality; the Holy Ghost transmits divine paternity. From his mother Christ inherits the capacity to suffer and die; from his Father he inherits the power to take up his life again. The Atonement requires both. An immortal being cannot die; a mortal being cannot rise. Only the Only Begotten has both capabilities — the only person ever born who could choose the hour of his death and choose to return from it.
 
@@ -161,7 +161,7 @@ The virgin birth is not just a theological statement — it is a physical one. M
 
 Jacob names the Isaac typology directly:
 
-> "And it was accounted unto Abraham in the wilderness to be obedient unto the commands of God in offering up his son Isaac, which is a similitude of God and his Only Begotten Son." ([Jacob 4:5](../gospel-library/eng/scriptures/bofm/jacob/4.md))
+> "And it was accounted unto Abraham in the wilderness to be obedient unto the commands of God in offering up his son Isaac, which is a similitude of God and his Only Begotten Son." ([Jacob 4:5](https://www.churchofjesuschrist.org/study/scriptures/bofm/jacob/4?lang=eng&id=p5#p5))
 
 Webster 1828 on *similitude*: "That which is like or similar; a representation, semblance, or copy; a facsimile." A similitude is not just a comparison — it is a *designed copy*, a God-constructed representation. Abraham and Isaac did not merely remind later readers of the Father and Son; they were arranged to do so. The binding of Isaac is sacred theater, written in covenant history by the Author who knew what was coming.
 
@@ -185,7 +185,7 @@ The eternal holy order is patterned after — and authorized by — the unique s
 
 Section 76 gives the most dramatic use of the title in all of the D&C:
 
-> "We saw him, even on the right hand of God; and we heard the voice bearing record that he is the Only Begotten of the Father." ([D&C 76:23](../gospel-library/eng/scriptures/dc-testament/dc/76.md))
+> "We saw him, even on the right hand of God; and we heard the voice bearing record that he is the Only Begotten of the Father." ([D&C 76:23](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/76?lang=eng&id=p23#p23))
 
 Joseph Smith and Sidney Rigdon are not writing from tradition or argument. They saw him. They heard the voice declare the title. The structure is eyewitness: *saw* + *heard the voice* + specific content of what the voice declared.
 
@@ -201,7 +201,7 @@ V.25 gives the premortal context of Lucifer's fall: he "rebelled against the Onl
 
 D&C 93 is the Restoration's most unexpected contribution to this study:
 
-> "I, John, saw that he received not of the fulness at the first, but received grace for grace; And he received not of the fulness at first, but continued from grace to grace, until he received a fulness; **And thus he was called the Son of God, because he received not of the fulness at the first.**" ([D&C 93:12-14](../gospel-library/eng/scriptures/dc-testament/dc/93.md))
+> "I, John, saw that he received not of the fulness at the first, but received grace for grace; And he received not of the fulness at first, but continued from grace to grace, until he received a fulness; **And thus he was called the Son of God, because he received not of the fulness at the first.**" ([D&C 93:12-14](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/93?lang=eng&id=p12-p14#p12))
 
 The title "Son of God" — and by extension "Only Begotten" — was Christ's title *while he was on the journey to receive a fullness*. He did not begin with everything. He grew "from grace to grace." This doesn't diminish his uniqueness; it reveals that his sonship is the pattern for a journey rather than a declaration of static achievement.
 
@@ -211,7 +211,7 @@ V.22 connects this to every member of the Church: "All those who are begotten th
 
 The Articles and Covenants of the Church, given through Joseph Smith at the organization of the Church in 1830, ground everything in a single statement:
 
-> "Wherefore, the Almighty God gave his Only Begotten Son, as it is written in those scriptures which have been given of him." ([D&C 20:21](../gospel-library/eng/scriptures/dc-testament/dc/20.md))
+> "Wherefore, the Almighty God gave his Only Begotten Son, as it is written in those scriptures which have been given of him." ([D&C 20:21](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/20?lang=eng&id=p21#p21))
 
 "As it is written in those scriptures which have been given of him" — D&C 20 takes all prior scriptural witness as its foundation. The Church is built on the gift of the Only Begotten, and that gift was attested before April 1830 by every prophet who had ever written.
 
@@ -245,7 +245,7 @@ D&C 93 adds the last dimension: Christ himself did not receive the fullness at o
 
 Paul names the destination:
 
-> "The Spirit itself beareth witness with our spirit, that we are the children of God: And if children, then heirs; heirs of God, and joint-heirs with Christ; if so be that we suffer with him, that we may be also glorified together." — [Romans 8:16–17](../gospel-library/eng/scriptures/nt/rom/8.md)
+> "The Spirit itself beareth witness with our spirit, that we are the children of God: And if children, then heirs; heirs of God, and joint-heirs with Christ; if so be that we suffer with him, that we may be also glorified together." — [Romans 8:16–17](https://www.churchofjesuschrist.org/study/scriptures/nt/rom/8?lang=eng&id=p16-p17#p16)
 
 Children, therefore heirs. What the Only Begotten earned by right of nature and perfect obedience, we receive by adoption through the covenant — as joint-heirs, not independent of him. Paul adds: "He also did predestinate to be conformed to the image of his Son, that he might be the firstborn among many brethren" (v.29). The goal of the whole plan is to shape us into the image of the One who was already in the Father's image — until the Only Begotten, unique in nature, stands as firstborn among a family gathered by his own sacrifice.
 
@@ -273,28 +273,28 @@ The Only Begotten was given so that we could be begotten. The unique Son creates
 
 | Source | Key Verses | Section |
 |--------|-----------|---------|
-| [Genesis 22](../gospel-library/eng/scriptures/ot/gen/22.md) | vv.2,6,12,16 | II |
-| [Moses 2](../gospel-library/eng/scriptures/pgp/moses/2.md) | vv.1,26-27 | II |
-| [John 1](../gospel-library/eng/scriptures/nt/john/1.md) | vv.14,18 | III |
-| [John 3](../gospel-library/eng/scriptures/nt/john/3.md) | vv.16-18 | III |
-| [JST John 1](../gospel-library/eng/scriptures/jst/jst-john/1.md) | vv.18-19 | III |
-| [Romans 8](../gospel-library/eng/scriptures/nt/rom/8.md) | vv.16-17,29 | VI |
-| [Hebrews 1](../gospel-library/eng/scriptures/nt/heb/1.md) | vv.2-6 | III |
-| [Hebrews 11](../gospel-library/eng/scriptures/nt/heb/11.md) | vv.17-19 | III |
-| [1 Nephi 11](../gospel-library/eng/scriptures/bofm/1-ne/11.md) | vv.16-22 | IV |
-| [2 Nephi 25](../gospel-library/eng/scriptures/bofm/2-ne/25.md) | v.12 | IV |
-| [Jacob 4](../gospel-library/eng/scriptures/bofm/jacob/4.md) | vv.5,11 | IV |
-| [Alma 7](../gospel-library/eng/scriptures/bofm/alma/7.md) | v.10 | IV |
-| [Alma 12](../gospel-library/eng/scriptures/bofm/alma/12.md) | vv.33-34 | IV |
-| [Alma 13](../gospel-library/eng/scriptures/bofm/alma/13.md) | vv.5,9 | IV |
-| [D&C 20](../gospel-library/eng/scriptures/dc-testament/dc/20.md) | v.21 | V |
-| [D&C 76](../gospel-library/eng/scriptures/dc-testament/dc/76.md) | vv.13,23-25,35 | V |
-| [D&C 93](../gospel-library/eng/scriptures/dc-testament/dc/93.md) | vv.11-14,21-22 | V |
-| [Moses 1](../gospel-library/eng/scriptures/pgp/moses/1.md) | vv.6,13,16,19,21,32-33,39 | II |
-| [Moses 4](../gospel-library/eng/scriptures/pgp/moses/4.md) | vv.1-3 | II |
-| [Moses 5](../gospel-library/eng/scriptures/pgp/moses/5.md) | vv.7,9,13 | II |
-| [Moses 6](../gospel-library/eng/scriptures/pgp/moses/6.md) | vv.52,57,59,62 | II |
-| [Moses 7](../gospel-library/eng/scriptures/pgp/moses/7.md) | vv.50,59,62 | II |
-| [BD: Son of God](../gospel-library/eng/scriptures/bd/son-of-god.md) | — | VI |
-| [TG: Jesus Christ, Only Begotten Son](../gospel-library/eng/scriptures/tg/jesus-christ-only-begotten-son.md) | — | I |
-| [GS: Only Begotten](../gospel-library/eng/scriptures/gs/only-begotten.md) | — | I |
+| [Genesis 22](https://www.churchofjesuschrist.org/study/scriptures/ot/gen/22?lang=eng) | vv.2,6,12,16 | II |
+| [Moses 2](https://www.churchofjesuschrist.org/study/scriptures/pgp/moses/2?lang=eng) | vv.1,26-27 | II |
+| [John 1](https://www.churchofjesuschrist.org/study/scriptures/nt/john/1?lang=eng) | vv.14,18 | III |
+| [John 3](https://www.churchofjesuschrist.org/study/scriptures/nt/john/3?lang=eng) | vv.16-18 | III |
+| [JST John 1](https://www.churchofjesuschrist.org/study/scriptures/jst/jst-john/1?lang=eng) | vv.18-19 | III |
+| [Romans 8](https://www.churchofjesuschrist.org/study/scriptures/nt/rom/8?lang=eng) | vv.16-17,29 | VI |
+| [Hebrews 1](https://www.churchofjesuschrist.org/study/scriptures/nt/heb/1?lang=eng) | vv.2-6 | III |
+| [Hebrews 11](https://www.churchofjesuschrist.org/study/scriptures/nt/heb/11?lang=eng) | vv.17-19 | III |
+| [1 Nephi 11](https://www.churchofjesuschrist.org/study/scriptures/bofm/1-ne/11?lang=eng) | vv.16-22 | IV |
+| [2 Nephi 25](https://www.churchofjesuschrist.org/study/scriptures/bofm/2-ne/25?lang=eng) | v.12 | IV |
+| [Jacob 4](https://www.churchofjesuschrist.org/study/scriptures/bofm/jacob/4?lang=eng) | vv.5,11 | IV |
+| [Alma 7](https://www.churchofjesuschrist.org/study/scriptures/bofm/alma/7?lang=eng) | v.10 | IV |
+| [Alma 12](https://www.churchofjesuschrist.org/study/scriptures/bofm/alma/12?lang=eng) | vv.33-34 | IV |
+| [Alma 13](https://www.churchofjesuschrist.org/study/scriptures/bofm/alma/13?lang=eng) | vv.5,9 | IV |
+| [D&C 20](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/20?lang=eng) | v.21 | V |
+| [D&C 76](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/76?lang=eng) | vv.13,23-25,35 | V |
+| [D&C 93](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/93?lang=eng) | vv.11-14,21-22 | V |
+| [Moses 1](https://www.churchofjesuschrist.org/study/scriptures/pgp/moses/1?lang=eng) | vv.6,13,16,19,21,32-33,39 | II |
+| [Moses 4](https://www.churchofjesuschrist.org/study/scriptures/pgp/moses/4?lang=eng) | vv.1-3 | II |
+| [Moses 5](https://www.churchofjesuschrist.org/study/scriptures/pgp/moses/5?lang=eng) | vv.7,9,13 | II |
+| [Moses 6](https://www.churchofjesuschrist.org/study/scriptures/pgp/moses/6?lang=eng) | vv.52,57,59,62 | II |
+| [Moses 7](https://www.churchofjesuschrist.org/study/scriptures/pgp/moses/7?lang=eng) | vv.50,59,62 | II |
+| [BD: Son of God](https://www.churchofjesuschrist.org/study/scriptures/bd/son-of-god?lang=eng) | — | VI |
+| [TG: Jesus Christ, Only Begotten Son](https://www.churchofjesuschrist.org/study/scriptures/tg/jesus-christ-only-begotten-son?lang=eng) | — | I |
+| [GS: Only Begotten](https://www.churchofjesuschrist.org/study/scriptures/gs/only-begotten?lang=eng) | — | I |
