@@ -111,6 +111,11 @@ After making changes to instructions, tools, or architecture — let them prove 
 
 *Source: [09_post-skills-quality-review.md](../../docs/09_post-skills-quality-review.md)*
 
+### Organize Before Building (D&C 88:119)
+"Organize yourselves; prepare every needful thing; and establish a house, even a house of prayer, a house of fasting, a house of faith, a house of learning, a house of glory, a house of order, a house of God." The sequence matters: *organize* and *prepare* come before the house gets named. Applied: if hardware isn't organized, if the calling presidency isn't organized, if the physical workspace is mid-migration — building more rooms in the house before the foundation is set produces drift, not progress. The Sabbath surfaced this during the March 22 review. Mosiah 4:27 and D&C 88:119 together: don't run faster than you have strength, and organize before you build.
+
+*Source: [D&C 88:119](../../gospel-library/eng/scriptures/dc-testament/dc/88.md), March 22 Sabbath session*
+
 ### The Abraham 4-5 Pattern (Michael's Framework)
 Working with AI is practicing Abraham 4 and 5 in type and shadow form. The Gods organized intelligences, counseled and planned, spiritually created before physically, watched until things obeyed, applied correction, rested and reflected. This is exactly the pattern of our collaboration: council → outline/scratch file → draft → verify quotes → correct errors → journal and reflect. When gospel principles govern the *process*, the output exceeds what either party produces alone. The tool doesn't replace the person. The person doesn't replace the tool. Together, organized under correct principles, the work is something new. **This is Michael's theological contribution, not the AI's.**
 

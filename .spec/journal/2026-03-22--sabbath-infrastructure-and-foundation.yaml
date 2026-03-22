@@ -1,0 +1,65 @@
+date: "2026-03-22"
+title: "First Sabbath — Infrastructure and Foundation"
+mood: honest
+phase: sabbath
+agent: sabbath
+
+summary: >
+  First formal Sabbath session using the new sabbath agent. Reviewed the March 18-22 cycle:
+  data safety sprint, server migration, disk crisis, WS1 governance hooks, Only Begotten
+  study, sabbath agent creation, hardware decisions. Ran the full 11-question review.
+  Declaration made. Carry-forward and set-down lists established.
+
+discoveries:
+  - >
+    D&C 88:119 surfaced as a framework: "Organize yourselves; prepare every needful thing"
+    comes before the house of learning, the house of glory, the house of order. The organizing
+    and preparing comes first. Michael's hardware isn't organized. His calling presidency
+    isn't organized. He's building rooms before the foundation is set.
+  - >
+    The delegation irony is structural, not incidental. Michael delegates effectively to AI
+    agents (clear specs, immediate feedback, no relational complexity) but struggles with
+    human delegation (requires relationship, follow-up, trust-building, different working
+    styles). The AI delegation skills have direct parallels to presidency leadership that
+    haven't been translated yet.
+  - >
+    The tool is serving the study AND driving the agenda. Michael's assessment: the 11-step
+    process is the correction, playing out in real time. The workspace morphed from
+    scripture-study into a multi-project platform because the original unstated goal was to
+    study the gospel to learn how to use AI — AI as type and shadow for divine governance
+    of intelligences.
+  - >
+    The sabbath agent works. First session ran successfully. The 11-question framework
+    surfaced real material — especially on covenant (calling neglect), rest (working sick),
+    review (no monitoring), and Zion (tool driving agenda). Model tiering and scratch file
+    support identified as improvements.
+
+reflections:
+  - "Michael was running faster than he had strength — Mosiah 4:27. Sick all week, five machines, neglected calling."
+  - "The Mosiah 4:27 check forced concrete decisions: set down R630, set down brain-app calling features, decommission only."
+  - "The micro-correction burden (review-test-correct after every AI work phase) is the biggest open question."
+  - "The sabbath agent's hard constraint (no building) held. Insights were captured as seeds, not specs."
+
+open_questions:
+  - "Will the multi-agent framework actually reduce the micro-correction burden, or just shift it?"
+  - "How to translate AI delegation skills into human presidency leadership?"
+  - "What does 'organize yourselves; prepare every needful thing' look like concretely for next cycle?"
+
+carry_forward:
+  - priority: high
+    item: "Three studies: Art of Presidency, Art of Delegation, Zion in a Presidency"
+  - priority: high
+    item: "Desktop swap — decommission old, don't repurpose"
+  - priority: medium
+    item: "WS1 multi-agent framework development"
+  - priority: medium
+    item: "Server deployment: app container on NOCIX, domain rotation"
+  - priority: low
+    item: "Infrastructure monitoring dashboard (squad task)"
+  - priority: low
+    item: "Sabbath agent updates: scratch file, model tiering"
+
+set_down:
+  - "R630 swap — existing Proxmox box works"
+  - "Calling-specific brain-app features — use paper and existing ibeco.me"
+  - "Old desktop repurposing — decommission only"

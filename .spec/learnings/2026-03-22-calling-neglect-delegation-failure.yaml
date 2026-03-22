@@ -1,0 +1,49 @@
+date: 2026-03-22
+category: covenant
+severity: high
+title: Calling Neglect — Delegation to Humans vs. AI
+
+description: >
+  During the March 18-22 cycle, Michael's Sunday School president calling
+  suffered significant neglect. A bishopric assignment to counsel with
+  councilors went unfulfilled. This was reported at ward conference. The
+  irony is sharp: Michael delegates effectively to AI agents (building
+  multi-agent frameworks, governance hooks, agent specs) but struggles to
+  delegate to and work with human councilors in his presidency.
+
+failure_modes:
+  - type: priority_displacement
+    detail: >
+      Technical work (server migration, agent development, study) consumed
+      the week's available time and attention. The calling — a covenant
+      stewardship — was crowded out by urgent-but-not-sacred tasks.
+  - type: delegation_asymmetry
+    detail: >
+      Comfortable delegating to AI (clear specs, immediate feedback, no
+      relational complexity). Uncomfortable or unpracticed at delegating
+      to humans (requires relationship, follow-up, trust-building, patience
+      with different working styles).
+  - type: overcommitment
+    detail: >
+      Mosiah 4:27 — running faster than strength. Sick with a head cold
+      and dizziness all week, still pushing through technical work instead
+      of resting and attending to the calling.
+
+root_cause: >
+  No framework or habit for presidency work. The technical stack has agents,
+  specs, governance hooks, and review cycles. The calling has none of that
+  structure. The skills that make Michael effective with AI tools have not
+  been translated into the human-leadership domain.
+
+learning: >
+  The delegation skills being built for AI agents have direct parallels to
+  presidency leadership. Studies needed: "The Art of Presidency," "The Art
+  of Delegation," "Zion in a Presidency." Also explore whether the
+  brain/ibeco.me/brain-app stack can provide frameworks to support calling
+  work — task tracking, follow-up reminders, accountability structures
+  for human stewardships, not just digital ones.
+
+applied:
+  - "Failure named at ward conference — accountability already happened"
+  - "Seed captured: three studies on presidency and delegation"
+  - "Seed captured: explore brain-app features for calling support"

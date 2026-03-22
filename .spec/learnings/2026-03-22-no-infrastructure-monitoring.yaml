@@ -1,0 +1,47 @@
+date: 2026-03-22
+category: infrastructure
+severity: high
+title: No Monitoring on Production Infrastructure
+
+description: >
+  The old server (172.17.100.31) root partition filled to 100% (31GB) with no
+  alerts or monitoring in place. PostgreSQL refused all connections because it
+  couldn't write init files. The failure was discovered only when brain.exe relay
+  started returning "auth failed: token validation failed." Docker images, build
+  caches, and logs accumulated with no pruning. This is the same class of
+  monitoring that Michael runs at work but failed to carry forward to personal
+  infrastructure.
+
+failure_modes:
+  - type: no_alerting
+    detail: >
+      No disk space, memory, or service health alerts configured on any
+      personal server. Five machines (old Proxmox/NAS, NOCIX server, old
+      desktop, new desktop, R630) with zero automated health reporting.
+  - type: no_pruning
+    detail: >
+      Docker images, build caches, and logs accumulated unchecked. A single
+      docker system prune freed 11GB (100% to 62%). No cron or scheduled
+      cleanup existed.
+  - type: reactive_discovery
+    detail: >
+      Disk full was discovered only by cascading service failure, not by
+      proactive monitoring. The crisis could have been much worse.
+
+root_cause: >
+  Personal infrastructure was treated as "small enough to watch manually."
+  Professional monitoring practices were not carried forward to personal
+  systems. No dashboard, no health checks, no alerting pipeline exists
+  across any of the five machines.
+
+learning: >
+  Personal infrastructure needs the same monitoring discipline as work
+  infrastructure. Plan: build a unified dashboard that all machines report
+  into — CPU, RAM, disk/SSD utilization, service health. Include automated
+  pruning for Docker caches/images and proactive disk space reporting.
+  Consider this as an early task for the multi-agent squad workflow.
+
+applied:
+  - "Manual docker system prune freed 11GB on old server"
+  - "Seed captured: infrastructure monitoring dashboard as squad task"
+  - "Server migration to NOCIX (460GB + 2.7TB) reduces immediate disk pressure"

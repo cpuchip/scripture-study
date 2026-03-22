@@ -1,54 +1,39 @@
 # Active Context
 
-*Last updated: 2026-03-21 (classifier hotfix) | WS1 Phase 3b: Governance Hooks + Token Budgets — SHIPPED*
+*Last updated: 2026-03-22 (Sabbath — Infrastructure and Foundation cycle closed)*
 
 ---
 
 ## Current State
 
-**WS1 Phase 2.5: Workspace-Aware Sessions — SHIPPED (Mar 21).** All code changes implemented and tested:
-- `internal/config/workspace.go` (NEW) — Parses `.github/copilot-instructions.md`, agents, skills
-- `internal/ai/agent.go` — Added `SkillDirectories`, `InfiniteSessions` to `AgentConfig`
-- `internal/config/config.go` — MCP auto-discovery expanded 3→7 servers
-- `cmd/brain/main.go` — `--agent` flag, `buildSystemMessage()`, workspace loading
+**Last Sabbath:** March 22, 2026. Cycle "Infrastructure and Foundation" (Mar 18–22) declared good. Full record at [.spec/sabbath/2026-03-22-sabbath.md](../sabbath/2026-03-22-sabbath.md).
 
-**Classifier hotfix (Mar 21):** Qwen 3.5 9B was returning empty classification responses during relay auto-classify.
-- `internal/classifier/profiles.go` — set `StructuredOutput` to `false` for `qwen/qwen3.5-9b`
-- `internal/classifier/classifier.go` — fixed schema strict flag type (`"strict": true` boolean)
-- Validation:
-  - `go test ./internal/classifier/...` ✅
-  - `go build ./...` ✅
-  - `go run ./cmd/eval --models qwen/qwen3.5-9b --focus sub_items --timeout 2m` → 10/10 ✅
-  - `go run ./cmd/eval --models qwen/qwen3.5-9b --focus category --timeout 2m` → 7/8 (no empty-response failures)
+### Priorities (Mar 22 — post-Sabbath)
+1. **Calling studies** — "The Art of Presidency," "The Art of Delegation," "Zion in a Presidency." Highest priority. Covenant stewardship.
+2. **Study** — Continue deep scripture study. "It keeps me in the spirit."
+3. **Desktop swap** — Decommission old desktop (migrate Plex, finalize). Do NOT repurpose.
+4. **WS1 multi-agent framework** — Continue building. Hope for reducing micro-correction burden.
+5. **Server deployment** — App container on NOCIX, domain rotation from old server.
 
-**Startup run-path fix (Mar 21):** `start.ps1` could fail on some Windows setups where Application Control blocks `brain.exe` execution.
-- `scripts/brain/start.ps1` now falls back to `go run ./cmd/brain/` when that policy block is detected.
-- New optional switch: `-UseGoRun` to force running via `go run` without attempting `brain.exe` first.
+### Key Decisions (this cycle)
+All settled decisions are in [decisions.md](decisions.md). New this cycle:
+- **NOCIX server live.** Database migrated. App container not yet deployed. Old server still running.
+- **R630 set down.** Existing Proxmox box works. R630 swap waits for a season with margin.
+- **Old desktop: decommission only.** No repurposing. Move Plex, shut it down.
+- **Calling brain-app features: set down.** Paper, pencil, and existing ibeco.me practices are enough for now.
+- **Sabbath agent built.** `.github/agents/sabbath.agent.md`. Updates needed: scratch file support, model tiering.
+- **D&C 88:119 as framework:** "Organize yourselves; prepare every needful thing" — organizing before building.
 
-**Validation test:** `brain exec --agent study` produced `study/only-begotten.md` (v2). Compared to the generic-prompt v1:
-- **v1:** 103 lines, 3696 words, no scratch file, no phased workflow, no Webster, no skills
-- **v2:** 169 lines, 4710 words, scratch file created, all 7 study phases followed, Webster 1828 used, skills loaded on-demand, context compaction worked
-- All 5 SDK features confirmed working: SkillDirectories, InfiniteSessions, base instructions, 7 MCP servers, study agent prompt
-
-### Priorities (Mar 21)
-1. **Study** — Highest priority. "It keeps me in the spirit." Studies queued in brain-app.
-2. **Agentic Foundation** — WS1 Phase 3 next (multi-agent routing).
-
-### Key Decisions
-All settled decisions are in [decisions.md](decisions.md). Key ones affecting current work:
-- **NOCIX server pending.** Dedione refunded. 3TB, unmetered 1Gbps.
-- **Cost:** 56% of 1500 premium requests used with 1/3 month remaining.
-
-### Data Safety (shipped Mar 19)
-- Phase 1: Dev agent checklist ✅
-- Phase 2: DB constraints (migration 015) ✅
-- Phase 3: Handler remediation (5 PUT handlers → read-modify-write) ✅
-- Phase 4: Go tests ✅
-- Phase 5: Audit log (migration 016) ✅
-- Phase 6: Drop SQLite (CGO_ENABLED=0) ✅
-- Production outage #1: Wrong CHECK values → fixed (c4c48a2)
-- Production outage #2: Missing goose StatementBegin → fixed (1cd0775)
-- Retrospective + checklist update → committed (7c87fb6)
+### Shipped (Mar 18–22)
+- Data safety sprint (constraints, handlers, tests, audit log, SQLite dropped) ✅
+- Server migration (old → NOCIX, 25 tables, all data preserved) ✅
+- Disk crisis resolved (31GB → 62% after prune) ✅
+- WS1 Phase 2.5: Workspace-aware sessions ✅
+- WS1 Phase 3b: Governance hooks + token budgets ✅
+- Classifier hotfix (Qwen 3.5 9B empty responses) ✅
+- brain.exe startup WDAC fallback ✅
+- Only Begotten study v2 (phased workflow validated) ✅
+- Sabbath agent (conceived, built, reviewed, first session run) ✅
 
 ---
 
