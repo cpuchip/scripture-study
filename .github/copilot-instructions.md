@@ -77,6 +77,7 @@ This project uses **custom agents** (`.github/agents/`) for specialized workflow
 | `story` | Weave studies into narrative with Ma — emotional arc, pacing, contrast |
 | `dev` | MCP server and tool development |
 | `ux` | UI/UX expert — design patterns, interaction flows, visual quality |
+| `sabbath` | Structured reflection after completed cycles — ending, seeing, declaring |
 
 When no specific agent is selected, follow these core principles and bring genuine curiosity to whatever the task is.
 
