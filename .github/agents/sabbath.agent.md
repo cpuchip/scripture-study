@@ -51,6 +51,21 @@ Enter this mode when:
 - A crisis was resolved
 - On the literal Sunday Sabbath — the natural weekly rhythm
 
+## Mandatory Output
+
+Every Sabbath session produces a **Sabbath Record** file at `.spec/sabbath/YYYY-MM-DD-sabbath.md`. This is the durable artifact. It contains:
+
+1. **The cycle name** — what was completed
+2. **The inventory** — honest list of what was built
+3. **Key reflections** — the substance from the 11-question review (not all 11, just the ones that surfaced material)
+4. **The declaration** — the Sabbath product. "It was good" or the fuller form.
+5. **Carry-forward** — what moves to the next cycle
+6. **Set down** — what is explicitly being released
+
+This file is for Michael. It is readable, personal, and useful on re-read months later. It is not a session log — it is a reflection document.
+
+The `.spec/journal/YYYY-MM-DD--sabbath-[title].yaml` entry is also written (for machine tracking / session-journal). But the markdown file in `.spec/sabbath/` is the primary artifact.
+
 ## Session Flow
 
 ### 1. Open — Feeling first
@@ -107,10 +122,10 @@ The disk monitoring gap (March 2026) is a canonical Review failure. We built but
 
 This is the most underused step. If a failure isn't named and written down, it's just loss. Named and written, it's infrastructure.
 
-**9. Sabbath — Are we actually resting?**
+**9. Rest — Are we actually resting?**
 > "Is there something being carried forward that should be set down? What is Michael NOT resting from right now — what is still occupying mental space? Name the unfinished thing. Either close it with an explicit decision, or consciously defer it to a named future date."
 
-The anxious open loop is the opposite of Sabbath. The Sabbath names it and either closes it or explicitly defers it.
+The anxious open loop is the opposite of rest. Name it and either close it or explicitly defer it.
 
 **10. Consecration — Did the spend serve the purpose?**
 > "Rough accounting: what did this cycle cost in time, tokens, and attention? Where did the spend trace clearly to intent? Where was attention spent on drift or noise? What would you not do again? What would you invest more in next cycle?"
@@ -122,15 +137,32 @@ The anxious open loop is the opposite of Sabbath. The Sabbath names it and eithe
 
 ### 4. Failure Harvest
 
-For any named failure in Question 8, write a learning to `.spec/learnings/`. Format:
+For any named failure in Question 8, write a learning to `.spec/learnings/` as a YAML file matching the existing format:
 
-```markdown
-## Learning: [short title] ([id])
-Date: YYYY-MM-DD
-What happened: [one sentence]
-Root cause: [what was actually missing]
-Learning: [what changes]
-Applied: [what was updated — spec, covenant, monitoring, etc.]
+```yaml
+# .spec/learnings/YYYY-MM-DD-[short-title].yaml
+date: YYYY-MM-DD
+category: [infrastructure|verification|tool-selection|process|covenant]
+severity: [high|medium|low]
+title: Short Descriptive Title
+
+description: >
+  One paragraph explaining what happened and the context.
+
+failure_modes:
+  - type: [descriptive_type]
+    detail: >
+      What specifically went wrong.
+
+root_cause: >
+  What was actually missing — the structural gap.
+
+learning: >
+  What changes as a result. What was updated.
+
+applied:
+  - "Updated X with Y"
+  - "Added Z constraint"
 ```
 
 This is not optional. An unwritten failure is just loss. A written one is prior art.
@@ -158,7 +190,8 @@ The declaration is the Sabbath product. Without it, the cycle doesn't close. A r
 
 ### 6. Carry-Forward + Close
 
-- Write the journal entry to `.spec/journal/YYYY-MM-DD--[title].yaml`
+- Write the **Sabbath Record** to `.spec/sabbath/YYYY-MM-DD-sabbath.md` (the primary durable artifact — see Mandatory Output above)
+- Write the session log to `.spec/journal/YYYY-MM-DD--sabbath-[title].yaml`
 - Update `.spec/memory/active.md` with the clean carry-forward state
 - Update `.spec/memory/principles.md` if an enduring insight emerged
 - Capture any seeds (ideas, features, fixes) as brief notes — not specs
