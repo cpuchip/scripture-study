@@ -21,6 +21,10 @@
   - `go run ./cmd/eval --models qwen/qwen3.5-9b --focus sub_items --timeout 2m` → 10/10 ✅
   - `go run ./cmd/eval --models qwen/qwen3.5-9b --focus category --timeout 2m` → 7/8 (no empty-response failures)
 
+**Startup run-path fix (Mar 21):** `start.ps1` could fail on some Windows setups where Application Control blocks `brain.exe` execution.
+- `scripts/brain/start.ps1` now falls back to `go run ./cmd/brain/` when that policy block is detected.
+- New optional switch: `-UseGoRun` to force running via `go run` without attempting `brain.exe` first.
+
 **Validation test:** `brain exec --agent study` produced `study/only-begotten.md` (v2). Compared to the generic-prompt v1:
 - **v1:** 103 lines, 3696 words, no scratch file, no phased workflow, no Webster, no skills
 - **v2:** 169 lines, 4710 words, scratch file created, all 7 study phases followed, Webster 1828 used, skills loaded on-demand, context compaction worked

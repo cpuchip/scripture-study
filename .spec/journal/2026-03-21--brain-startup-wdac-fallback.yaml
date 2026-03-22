@@ -1,0 +1,41 @@
+date: "2026-03-21"
+title: "Brain startup script fallback for Windows Application Control"
+type: dev
+
+summary: >
+  Diagnosed startup failure from user logs as a runtime execution policy block,
+  not a build failure. `start.ps1` built frontend/server successfully, then failed
+  at launching `brain.exe` due to Windows Application Control.
+
+  Added a resilient fallback in `scripts/brain/start.ps1`: if `brain.exe` launch
+  is blocked by policy, the script now automatically runs `go run ./cmd/brain/`.
+  Also added `-UseGoRun` switch to force that path.
+
+discoveries:
+  - >
+    The environment can run `go run ./cmd/brain` successfully even when direct
+    execution of workspace-built `brain.exe` is blocked.
+  - >
+    The issue is execution policy (WDAC/AppLocker style), not compile/build.
+
+carry_forward:
+  - priority: medium
+    item: >
+      If desired, add a startup note in README about `-UseGoRun` for managed
+      Windows devices.
+
+technical_notes:
+  - >
+    Updated `scripts/brain/start.ps1`:
+    - new param `-UseGoRun`
+    - try/catch around executable launch
+    - policy-block detection by error message
+    - automatic fallback to `go run ./cmd/brain/`
+  - >
+    Validation run: `start.ps1 -SkipBuild` reached normal server startup logs
+    (Brain starting / Web UI / relay connect) in this environment.
+
+open_questions:
+  - >
+    Should fallback also trigger for broader `ResourceUnavailable` cases,
+    or remain explicitly scoped to Application Control messaging only?
