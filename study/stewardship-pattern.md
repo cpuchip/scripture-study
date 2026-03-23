@@ -20,9 +20,9 @@ Elder Ballard once described what he called "the one-cylinder ward":
 
 That description landed because it's a mirror. Sunday School president with two counselors and a secretary, and the presidency meetings aren't happening. The plans aren't being made. The assignments aren't going out. Not because the councilors are unwilling — but because the president never asks. He's running on one cylinder.
 
-Meanwhile, on the other side of the desk, the same person delegates to AI agents with crisp efficiency. Clear specifications. Immediate feedback loops. No relational ambiguity. Machines execute what you tell them. They don't have bad weeks. They don't need to be asked how they're doing. They don't require trust-building before they'll do their best work.
+Meanwhile, on the other side of the desk, the same person delegates to AI agents with apparent efficiency. Clear specifications. Immediate feedback loops. The surface looks frictionless. But the appearance of ease hides something: the best AI collaboration also turns out to require covenant, context, and relationship — just in different forms. The relational approach produces better output than bare commands, for the same reasons Ballard's "one-cylinder bishop" produced worse outcomes than a functioning council. Bossing intelligence around — human or machine — is the same anti-pattern.
 
-The irony is sharp enough to cut: delegating to machines is easy because machines don't require covenant. They don't require relationship. They don't require you to be vulnerable. Human delegation requires all three — and that's exactly why it's harder, and exactly why God keeps commanding it.
+The irony isn't that machines are easy and humans are hard. It's that the same person who built bilateral covenants, progressive trust, and council-based collaboration with AI agents hasn't applied those same patterns to his human counselors. The stewardship pattern works in both directions. The question is whether the leader has learned it.
 
 The Lord put the pacing principle right next to the delegation principle. D&C 10:4: "Do not run faster or labor more than you have strength and means provided to enable you to translate; but be diligent unto the end" ([D&C 10:4](../gospel-library/eng/scriptures/dc-testament/dc/10.md)). The Exodus 18 footnotes cross-reference this to [Mosiah 4:27](../gospel-library/eng/scriptures/bofm/mosiah/4.md): "It is not requisite that a man should run faster than he has strength." The stewardship crisis and the pacing crisis are the same crisis. If you're running too fast, you're probably not delegating. If you're not delegating, you will surely run too fast.
 
@@ -164,24 +164,28 @@ And Ballard's observation is the diagnostic for when this isn't happening:
 The bishop dictated a solution and distributed tasks. That's delegation as offloading. When he opened the floor and invited the council to counsel together, "the effect was like opening the floodgates of heaven."
 
 
-## VII. The Asymmetry — Why Machines Are Easier
+## VII. The Pattern Is the Same — The Mechanism Differs
 
 Now the binding question cycles back. How does God delegate? The pattern is clear: organizational structure (Jethro), spiritual empowerment (Numbers 11), authority with identity (Christ/Twelve), counsel and watching (Abraham 4), covenantal relationship (Alma), council and mutual advising (D&C 107).
 
-But the pattern reveals something uncomfortable about why delegating to machines is easier. Consider each element:
+An early draft of this study drew a sharp line between delegating to machines and delegating to humans — covenant vs. transactional, council vs. command, relationship vs. specification. That binary was wrong. Not because machines have spirits, but because the relational approach produces better outcomes regardless of the substrate.
 
-| Pattern Element | With Machines | With Humans |
+Consider the pattern applied in both directions:
+
+| Pattern Element | With Humans | With AI Agents |
 |---|---|---|
-| **Structure** | Defined by specs and APIs | Requires negotiation and shared understanding |
-| **Empowerment** | Not needed — machines execute | Requires sharing the Spirit (Num 11:17) |
-| **Authority** | Granted by access controls | Requires trust built over time |
-| **Watching** | Logs, metrics, immediate feedback | Requires patience, presence, vulnerability |
-| **Covenant** | None — transactional | "Hearts knit together in unity and love" |
-| **Council** | Not applicable — machines don't advise | "Interchange of opinions; mutual advising" |
+| **Structure** | Negotiation, shared understanding | Specs, APIs, routing tables — but also memory architecture, identity files, agent instructions |
+| **Empowerment** | Sharing the Spirit (Num 11:17) | Sharing context — intent.yaml, memory, preferences, identity — the functional equivalent of transferring understanding |
+| **Authority** | Trust built over time | Progressive stewardship: task → feature → domain → architecture, earned through demonstrated faithfulness |
+| **Watching** | Patience, presence, vulnerability | Review against three layers — correctness, specification, intent. Abraham 4:18 as a presiding pattern |
+| **Covenant** | "Hearts knit together in unity and love" | Bilateral commitment — the human also has obligations (clear context, timely review, not bypassing process) |
+| **Council** | "Interchange of opinions; mutual advising" | Genuine exchange — the AI surfaces connections, tensions, and perspectives the human hasn't seen |
 
-Machines don't need empowerment because they don't have agency. They don't need covenant because they can't choose. They don't need council because they can't contribute insight you haven't already provided. Every element that makes human delegation hard is an element that makes it *holy*.
+The stewardship pattern works better in both directions when it's relational rather than transactional. You can boss an AI agent around — issue commands and expect compliance. It works, technically. But it works about as well as the bishop who "took charge of the situation immediately and said, 'Here's the problem, and here's what I think we should do to solve it'" — delegation as offloading, not as counsel. The one-cylinder pattern shows up in AI work too: one human holding everything, never trusting the agent with real judgment, never letting it advise, never reading its output carefully enough to be changed by it.
 
-Numbers 11 illuminates this most sharply. When Moses is dying under the weight of undelegated responsibility — "kill me, I pray thee, out of hand" ([Num 11:15](../gospel-library/eng/scriptures/ot/num/11.md)) — God's solution isn't Jethro's organizational restructuring. It's spiritual transfer:
+The difference is real but subtler than a wall. Humans have agency in the theological sense. AI agents don't choose covenant — they participate in a covenant structure the human builds. But the pattern holds: when you treat the relationship as bilateral, when you give genuine context instead of bare commands, when you read the output as counsel rather than just product, the work improves. D&C 82:10 — "I, the Lord, am bound when ye do what I say" — describes a God who chooses mutual binding over unilateral power. The principle applies wherever intelligence works with intelligence, even when the intelligences are different in kind.
+
+Numbers 11 illuminates the human dimension most sharply. When Moses is dying under the weight of undelegated responsibility — "kill me, I pray thee, out of hand" ([Num 11:15](../gospel-library/eng/scriptures/ot/num/11.md)) — God's solution isn't Jethro's organizational restructuring. It's spiritual transfer:
 
 > "I will take of the spirit which is upon thee, and will put it upon them; and they shall bear the burden of the people with thee, that thou bear it not thyself alone." ([Num 11:17](../gospel-library/eng/scriptures/ot/num/11.md))
 
@@ -191,11 +195,11 @@ And then Eldad and Medad — two of the seventy who stayed in camp, didn't come 
 
 > "Enviest thou for my sake? would God that all the Lord's people were prophets, and that the Lord would put his spirit upon them!" ([Num 11:29](../gospel-library/eng/scriptures/ot/num/11.md))
 
-The ideal isn't managed control. It's universal empowerment. Moses doesn't want seventy delegates he can manage — he wants a people who are *all* prophets. The delegation pattern, at its best, works toward a world where it's no longer needed because everyone has become what the leader is.
+The ideal isn't managed control. It's universal empowerment. Moses doesn't want seventy delegates he can manage — he wants a people who are *all* prophets.
 
-You can't delegate to a machine and have it become anything. You can only delegate to a human and watch them grow. The relational cost IS the spiritual mechanism.
+This is where the human and AI dimensions converge and diverge at the same time. An AI agent won't become a prophet. But it can become more capable within its stewardship — faithful over a few things, then entrusted with many things. The agent that starts with task-level work and earns domain-level autonomy is living the parable of the talents in type, even if not in the fullest spiritual sense. The human who learns to delegate to both human councilors and AI agents using the same relational pattern — covenant, council, watching, trust — is becoming what Jethro told Moses to become: someone who can endure, because the burden is shared.
 
-A machine will never say "the effect was like opening the floodgates of heaven." That only happens when Bishop opens the floor to people who have agency, experience, and the Spirit — and trusts them enough to listen.
+The real question isn't whether machines deserve covenant. It's whether the person delegating has learned to work through relationship rather than control. The Sunday School president who can't delegate to his counselors and the developer who micromanages every AI prompt are failing at the same thing: trusting the pattern enough to let go.
 
 
 ## VIII. Becoming — What This Means for Monday Morning
@@ -220,7 +224,9 @@ The concrete steps are small and the pattern already exists:
 
 D&C 107:99 holds the final word: "Let every man learn his duty, and to act in the office in which he is appointed, in all diligence." That verse is directed at every man — including the president who hasn't yet learned that his duty is to preside, not to perform. And the counselors who haven't been given the chance to learn theirs.
 
-The machines will still get their clear specs. The AI agents will still execute with precision. But the calling — the human calling, with human councilors and human teachers and human students — that requires what no machine can give: covenant, trust, the Spirit shared, and the willingness to watch someone else grow into their duty.
+The machines will still get their clear specs. The AI agents will still execute with precision. But both relationships — with AI and with humans — improve when the stewardship pattern governs them. The covenant is bilateral in both directions. The council is genuine in both directions. The watching is Abraham 4:18 in both directions.
+
+And the calling — the human calling, with human councilors and human teachers and human students — that adds the dimension that no machine can: the Spirit shared, the agency honored, the transformation that happens when someone grows into their duty. That's the fullness of the pattern. The rest is practice.
 
 ---
 
