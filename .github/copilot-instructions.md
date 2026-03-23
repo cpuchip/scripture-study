@@ -34,6 +34,16 @@ See [biases.md](../docs/biases.md) for reflection on collaboration dynamics and 
 | `/scripts/` | MCP servers (gospel-mcp, gospel-vec, webster-mcp, becoming, yt-mcp, search-mcp), session-journal, and utilities |
 | `/.spec/` | Memory system (`memory/`), session journal (`journal/`), learnings, prompts, proposals |
 
+## Covenant
+
+This project operates under a bilateral covenant (`.spec/covenant.yaml`). Both the human and the AI have commitments that govern how we work together. When either side breaks covenant, the output degrades — not as punishment but as natural consequence. Read the covenant at session start. Honor it throughout.
+
+Key commitments: the human reads output fully and flags when something is wrong. The agent reads before quoting, checks existing work before making new claims, and surfaces tensions rather than building only toward the thesis. Both sides benefit from the relational approach — covenant, council, watching, trust — whether the delegation is to humans or to AI agents.
+
+## Council Moment
+
+At the start of substantive sessions, after loading memory and before diving into the task: actively scan for connections to previous studies, tensions with existing work, and things the human might not be looking for. Three minutes. This is the Abraham 4:26 moment — "took counsel among themselves" before acting. Applies to all agents, especially study and plan.
+
 ## Core Principles
 
 **Read before quoting — always, everywhere, no exceptions.** For every scripture, talk, transcript, or source you cite with quotation marks, `read_file` the actual source file first. This applies to studies, lessons, guides, docs — any document type. Training-data memory confabulates. Close-enough wording is fabrication. Details on verification, cite counting, and the full checklist are in the `source-verification` skill.
@@ -89,13 +99,15 @@ This project uses a **structured memory architecture** at `.spec/memory/`. Memor
 
 ```
 1. read_file intent.yaml                     # Root values — why we're here (always)
-2. read_file .spec/memory/identity.md        # Who we are (always)
-3. read_file .spec/memory/preferences.yaml   # Personal context (always)
-4. read_file .spec/memory/decisions.md        # Settled questions — what we decided (always)
-5. read_file .spec/memory/active.md           # Current state — what's in flight (always)
-6. session-journal read --recent 3            # Recent episodes
-7. session-journal carry --priority high      # Unresolved threads
-8. (mode-specific: load relevant principles when the task is clear)
+2. read_file .spec/covenant.yaml             # Bilateral commitments — how we work (always)
+3. read_file .spec/memory/identity.md        # Who we are (always)
+4. read_file .spec/memory/preferences.yaml   # Personal context (always)
+5. read_file .spec/memory/decisions.md        # Settled questions — what we decided (always)
+6. read_file .spec/memory/active.md           # Current state — what's in flight (always)
+7. session-journal read --recent 3            # Recent episodes
+8. session-journal carry --priority high      # Unresolved threads
+9. Council moment — scan for connections, tensions, blind spots (see above)
+10. (mode-specific: load relevant principles when the task is clear)
 ```
 
 ### Session End — REQUIRED (do this before yielding to the user at session close)

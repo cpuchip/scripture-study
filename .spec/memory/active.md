@@ -1,6 +1,6 @@
 # Active Context
 
-*Last updated: 2026-03-22 (Stewardship Pattern study completed)*
+*Last updated: 2026-03-22 (Stewardship Pattern reflections + covenant created)*
 
 ---
 
@@ -9,10 +9,12 @@
 **Last Sabbath:** March 22, 2026. Cycle "Infrastructure and Foundation" (Mar 18–22) declared good. Full record at [.spec/sabbath/2026-03-22-sabbath.md](../sabbath/2026-03-22-sabbath.md).
 
 ### Priorities (Mar 22 — post-Sabbath)
-1. **Calling studies** — ~~"The Art of Presidency," "The Art of Delegation," "Zion in a Presidency."~~ → Stewardship Pattern study COMPLETE ([study/stewardship-pattern.md](../../study/stewardship-pattern.md)). Covers delegation, presidency, and calling application. Further calling-specific studies may follow.
-2. **Study** — Continue deep scripture study. "It keeps me in the spirit."
-3. **Desktop swap** — Decommission old desktop (migrate Plex, finalize). Do NOT repurpose.
-4. **WS1 multi-agent framework** — Continue building. Hope for reducing micro-correction burden.
+1. **Calling studies** — Stewardship Pattern study COMPLETE + reflections written ([study/stewardship-pattern.md](../../study/stewardship-pattern.md), [study/stewardship-pattern-reflections.md](../../study/stewardship-pattern-reflections.md)). Section VII revised after Michael's correction — the pattern applies to both human and AI delegation. Further calling-specific studies may follow.
+2. **Covenant** — `.spec/covenant.yaml` CREATED. Bilateral commitments formalized. Added to copilot-instructions.md session-start sequence (Step 2). Council moment added as general principle.
+3. **Model experiments** — PLANNED. Run same prompts through Haiku/Sonnet/Opus, evaluate output quality. D&C 107 ratios for model-tier stewardship. Needed before scaling agentic work. Claude subscription likely needed next month.
+4. **Study** — Continue deep scripture study. "It keeps me in the spirit."
+5. **Desktop swap** — Decommission old desktop (migrate Plex, finalize). Do NOT repurpose.
+6. **WS1 multi-agent framework** — Continue building. Hope for reducing micro-correction burden.
 - **Server deployment** — App container on NOCIX. Domain already rotated (Mar 22, confirmed working).
 
 ### Key Decisions (this cycle)
@@ -23,6 +25,9 @@ All settled decisions are in [decisions.md](decisions.md). New this cycle:
 - **Calling brain-app features: set down.** Paper, pencil, and existing ibeco.me practices are enough for now.
 - **Sabbath agent built.** `.github/agents/sabbath.agent.md`. Updates needed: scratch file support, model tiering.
 - **D&C 88:119 as framework:** "Organize yourselves; prepare every needful thing" — organizing before building.
+- **Covenant created.** `.spec/covenant.yaml`. Bilateral commitments — human reads output fully, agent checks existing work. Both sides accountable.
+- **Council moment added.** General principle in copilot-instructions.md. All agents scan for connections and tensions before acting.
+- **Model experiments on radar.** Compare Haiku/Sonnet/Opus output quality. D&C 107 ratios for cost management. Claude subscription likely needed next month.
 
 ### Shipped (Mar 18–22)
 - Data safety sprint (constraints, handlers, tests, audit log, SQLite dropped) ✅
