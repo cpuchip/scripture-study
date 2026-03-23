@@ -55,61 +55,20 @@ The daily experience is: start a session → remember there are 5 things to do �
 
 **AI Backend Strategy (Mar 19):** Dual-backend, role-separated. LM Studio (qwen3.5-9b on fermion/lepton's 4090s) for classification — trusted, tested, free. Copilot SDK (Opus 4.6 or Sonnet 4.6) for agent abilities — spec execution, reasoning, complex tasks.
 
-#### Phase 1: Copilot SDK + MCP Integration — DONE (Mar 20)
+#### Phases 1–3b: SHIPPED (Mar 20–21)
 
-**Note (git audit):** Copilot SDK is ALREADY integrated in brain.exe at v0.1.29. The `internal/ai/client.go` wraps the SDK as a configurable backend (`"copilot"` vs `"lmstudio"`). We're not starting from zero — we're extending what exists.
+All foundational agentic infrastructure built and validated:
+- **Phase 1:** Copilot SDK + MCP integration (gospel-mcp, gospel-vec, webster-mcp)
+- **Phase 2:** Agent as spec executor (`brain exec` CLI, SDK built-in tools, v0.1.32)
+- **Phase 2.5:** Workspace-aware sessions (copilot-instructions parsing, skill directories, 7 MCP servers)
+- **Phase 3a:** Agent pool + routing table (lazy creation, default routes, suggest mode)
+- **Phase 3b:** Governance hooks + token budgets (write-path scoping, audit logging, configurable caps)
 
-| Item | Detail |
-|------|--------|
-| **Task** | Extend brain.exe's existing Copilot SDK integration to connect gospel-mcp as an MCP tool |
-| **Starting point** | `internal/ai/client.go` already has `copilot.NewClient()` → session management |
-| **Add** | MCP tool registration so the agent can call gospel-mcp tools (gospel_search, etc.) |
-| **Input** | "What does D&C 93:36 teach about intelligence?" |
-| **Expected output** | Agent uses gospel_search, retrieves verse, provides contextual answer |
-| **Verify** | Agent correctly cites the verse text. No confabulation. |
+Full implementation detail archived in [.spec/memory/archive/active-2026-03-22.md](../../memory/archive/active-2026-03-22.md).
 
-**What was built (Mar 20):**
-- `internal/ai/agent.go` — `Agent` struct with `Ask`/`Reset`/`createSession`. Lazy session creation, conversational reuse, error-triggered session reset. MCP servers registered as stdio tools in Copilot SDK `SessionConfig`.
-- `internal/config/config.go` — `MCPServerDef` type, `AgentModel`/`MCPServers` fields, auto-discovery of gospel-mcp/gospel-vec/webster-mcp binaries from sibling directories.
-- `internal/web/server.go` — `POST /api/agent/ask` and `POST /api/agent/reset` endpoints. Nil-agent guard (503 when copilot backend not active).
-- `internal/ai/client.go` — `CopilotClient()` getter to expose raw SDK client for agent sessions.
-- `cmd/brain/main.go` — Agent creation wired: converts config MCPServerDefs → ai.MCPDefs, creates Agent when copilot backend + MCP servers both available.
+**Pending cleanup:** Delete `scripts/brain/internal/ai/tools.go` and `scripts/brain/test-spec.md`.
 
-**Remaining from original constraints:**
-- ~~Build on existing `internal/ai/` package~~ ✅
-- ~~Must connect to gospel-mcp as an MCP tool~~ ✅ (gospel-mcp, gospel-vec, webster-mcp all auto-discovered)
-- ~~Must run locally~~ ✅
-- Streaming output not yet implemented (batch response only) — deferred to Phase 2
-
-#### Phase 2: Agent as Spec Executor — POC DONE (Mar 20)
-
-| Item | Detail |
-|------|--------|
-| **Task** | Give the agent a spec file and have it execute against it |
-| **Test spec** | Add `markdown_link` field to `GetResponse` in gospel-mcp (Priority 1 from [docs/mcp-improvements.md](../../../docs/mcp-improvements.md) — already done for SearchResult, not for GetResponse) |
-| **Verify** | Agent produces a PR-worthy diff. Human reviews. |
-
-**What was built (Mar 20):**
-- `internal/ai/tools.go` — Go-implemented filesystem tools (read_file, write_file, list_directory, search_text) with path sandboxing. Registered via `DefineTool` generic API.
-- `AgentConfig.AllowedRoots` — Configures which directories the agent can access.
-- `brain exec` CLI subcommand — Reads a spec file (or `--prompt`), creates Copilot SDK session with MCP + filesystem tools, sends the spec, prints the response. No full server needed.
-- Updated system message with dual-capability instructions (scripture tools + filesystem tools).
-- Updated Copilot SDK v0.1.29 → v0.1.32 (protocol v2 → v3).
-
-**Test results:**
-- Agent used SDK built-in tools (`view`, `grep`, `edit`, `report_intent`) — NOT our custom tools
-- Read the spec → explored gospel-mcp source → correctly identified 8 `GetResponse` construction sites → made correct changes to 4/8 before timeout
-- Changes were PR-quality: used existing helper functions, correct display text per source type
-- Human completed remaining 4 sites + fixed one compile error (variable shadowing)
-
-**Key discovery:** The Copilot SDK has built-in IDE tools. Our custom `devTools()` are supplementary — the SDK already provides full filesystem access.
-
-**Remaining:**
-- Fix timeout — `SendAndWait` has internal deadline (~60s). Try `Streaming: true` or longer timeout.
-- Test with larger/more complex specs
-- Consider removing redundant custom tools
-
-#### Phase 3: Multi-Agent Routing (2-3 sessions, after Phase 2 works)
+#### Phase 3c: Auto-Routing + Review Queue — NEXT
 
 | Item | Detail |
 |------|--------|
@@ -170,6 +129,35 @@ The daily experience is: start a session → remember there are 5 things to do �
 #### Phase 4: Pillars/Notes/Reflections (2-3 sessions)
 - [Plan 08](../../../scripts/plans/08_becoming-next.md): Add the meaning layer to the becoming app
 - Depends on scheduled tasks being done first
+
+---
+
+---
+
+## 3b. Research & Planning Workstreams (Added Mar 22)
+
+*"The beginnings of organizing our work into human and agent roles." — Michael*
+
+### Workstream R: Research
+
+**Intent:** Track research tasks — work that expands understanding before building. Human-led with agent support.
+
+| Item | Status | Notes |
+|------|--------|-------|
+| Model capability experiments | PLANNED | Haiku/Sonnet/Opus comparison, D&C 107 ratios for model-tier stewardship. Need baseline before scaling agentic work. |
+| Debugging book digestion | PLANNED | Agans' "Debugging: The 9 Indispensable Rules." PDF at `books/debugging/`. Agentic digestion — build agent or ideals. Moroni's test connection (ask if things are NOT true). dwheeler.com review as supplementary. |
+| Voice analysis follow-up | OPEN | `study/yt/voice-analysis-ai-vs-michael.md` patterns. |
+
+### Workstream P: Planning & Proposals
+
+**Intent:** Track planning work — specs, proposals, architectural decisions. Agent-drafted, human-decided.
+
+| Item | Status | Notes |
+|------|--------|-------|
+| Progressive trust tracking | PLANNED | Define how models earn wider autonomy. From stewardship reflections. |
+| Claude subscription evaluation | RADAR | Cost analysis for pay-per-token vs included credits. |
+| Stewardship → 11-step integration | PLANNED | Apply stewardship pattern to multi-agent work. |
+| Overview/active.md sync | ONGOING | Keep documents aligned. Archive mechanism created Mar 22. |
 
 ---
 
@@ -234,27 +222,16 @@ A multi-year family discipleship program grounded in the Book of Mormon. 5 ranks
 
 ---
 
-## 6. Execution Plan
+## 6. Current Focus (updated Mar 22)
 
-### Week 1: Foundation Sprint
+**WS1:** Phase 3c (auto-routing + review queue) is next. Phases 1–3b shipped.
+**WS2:** Phase 1 (quick wins) when there's bandwidth. Not blocked.
+**WS3:** Phase 1 (scheduled tasks) when there's bandwidth. Not blocked.
+**WS-R:** Model experiments are the next research priority. Debugging book when PDF is available.
+**WS-P:** Progressive trust tracking spec after model experiments produce data.
+**Study:** Always. "It keeps me in the spirit."
 
-| Day | Workstream 1 (Agentic) | Workstream 2 (Brain) | Workstream 3 (Becoming) |
-|-----|------------------------|---------------------|------------------------|
-| 1 | Copilot SDK POC setup | Plan 15: Quick wins | — |
-| 2 | Copilot SDK + gospel-mcp | — | Plan 07: Scheduled tasks (backend) |
-| 3 | — | Bidirectional sync | Plan 07: Scheduled tasks (frontend) |
-
-### Week 2: Expansion
-
-| Day | Workstream 1 | Workstream 2 | Workstream 3 |
-|-----|-------------|-------------|-------------|
-| 4 | Agent as spec executor | Proactive surfacing | MCP improvements P1-P3 |
-| 5 | Test: agent executes MCP improvement | — | gospel-vec experiments |
-| 6 | — | Garvis merge / server decision | Plan 08 start |
-
-### Week 3+: Sustained
-
-Agents handle more of the routine execution. Michael focuses on spec review, architectural decisions, and study. Workstreams continue but at sustainable pace.
+*The Week 1-3 sprint plan from the original proposal is superseded. Work proceeds by priority and available energy, not by rigid schedule.*
 
 ---
 
