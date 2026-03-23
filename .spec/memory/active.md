@@ -1,6 +1,6 @@
 # Active Context
 
-*Last updated: 2026-03-22 (Sabbath — Infrastructure and Foundation cycle closed)*
+*Last updated: 2026-03-22 (Stewardship Pattern study completed)*
 
 ---
 
@@ -9,11 +9,11 @@
 **Last Sabbath:** March 22, 2026. Cycle "Infrastructure and Foundation" (Mar 18–22) declared good. Full record at [.spec/sabbath/2026-03-22-sabbath.md](../sabbath/2026-03-22-sabbath.md).
 
 ### Priorities (Mar 22 — post-Sabbath)
-1. **Calling studies** — "The Art of Presidency," "The Art of Delegation," "Zion in a Presidency." Highest priority. Covenant stewardship.
+1. **Calling studies** — ~~"The Art of Presidency," "The Art of Delegation," "Zion in a Presidency."~~ → Stewardship Pattern study COMPLETE ([study/stewardship-pattern.md](../../study/stewardship-pattern.md)). Covers delegation, presidency, and calling application. Further calling-specific studies may follow.
 2. **Study** — Continue deep scripture study. "It keeps me in the spirit."
 3. **Desktop swap** — Decommission old desktop (migrate Plex, finalize). Do NOT repurpose.
 4. **WS1 multi-agent framework** — Continue building. Hope for reducing micro-correction burden.
-5. **Server deployment** — App container on NOCIX, domain rotation from old server.
+- **Server deployment** — App container on NOCIX. Domain already rotated (Mar 22, confirmed working).
 
 ### Key Decisions (this cycle)
 All settled decisions are in [decisions.md](decisions.md). New this cycle:
