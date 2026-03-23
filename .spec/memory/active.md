@@ -12,7 +12,7 @@
 ### Priorities
 1. **Study** — Deep scripture study. "It keeps me in the spirit." Stewardship Pattern study COMPLETE + reflections written. Further calling-specific studies may follow.
 2. **Model experiments** — Run same prompts through Haiku/Sonnet/Opus, evaluate quality. D&C 107 ratios for model-tier stewardship. Claude subscription likely needed next month.
-3. **Debugging book** — Digest Agans' "Debugging: The 9 Indispensable Rules" agentically. PDF at `books/debugging/`. Connected to Moroni's test (ask if things are NOT true). See WS-R.
+3. **Debugging book** — DONE. Agans' "Debugging: The 9 Indispensable Rules" extracted to `books/debugging/9-indispensable-rules/` (17 chapter markdown files). Debug agent created at `.github/agents/debug.agent.md`. Connections mapped: Moroni 10:4 inverse hypothesis = falsification, scientific method = the 9 rules, Abraham 4:18 = Rule 9 (verify the fix), council moment = Rule 8 (get a fresh view). Analysis at `.spec/scratch/debugging-agent/main.md`. 2006 expanded edition (192pp, ISBN 9780814474570) available used ~$19 on AbeBooks.
 4. **WS1 multi-agent framework** — Continue building. Next: Phase 3c (auto-routing + review queue).
 5. **Desktop swap** — Decommission old desktop (migrate Plex, finalize). Do NOT repurpose.
 6. **Server deployment** — App container on NOCIX. Domain rotated (Mar 22, confirmed working).
