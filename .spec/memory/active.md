@@ -41,6 +41,7 @@ All settled decisions are in [decisions.md](decisions.md). New this cycle:
 - Stewardship Pattern study + reflections ✅
 - Covenant + council moment ✅
 - Teaching agent + Section 7 covenant + teaching .spec scaffold ✅
+- README cleanup: root README rewritten (companion repos, updated agents/skills counts), teaching README with workspace instructions, 7 new sub-project READMEs (gospel-vec, yt-mcp, becoming, convert, lectures-on-faith, .spec, docs), teaching intent.yaml moved to repo root ✅
 
 *Full detail for all completed items: [archive/active-2026-03-22.md](archive/active-2026-03-22.md)*
 
