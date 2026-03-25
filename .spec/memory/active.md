@@ -1,6 +1,6 @@
 # Active Context
 
-*Last updated: 2026-03-24*
+*Last updated: 2026-03-26*
 *Archive: [archive/active-2026-03-22.md](archive/active-2026-03-22.md) — detailed records through Mar 22*
 
 ---
@@ -67,7 +67,7 @@ All settled decisions are in [decisions.md](decisions.md). New this cycle:
 - Details: [study/stewardship-pattern-reflections.md](../../study/stewardship-pattern-reflections.md)
 
 ### Pending Cleanup
-- Delete `scripts/brain/internal/ai/tools.go` and `scripts/brain/test-spec.md`
+- ~~Delete `scripts/brain/internal/ai/tools.go` and `scripts/brain/test-spec.md`~~ DONE — already deleted
 
 ---
 
@@ -75,7 +75,7 @@ All settled decisions are in [decisions.md](decisions.md). New this cycle:
 
 | Plan | Status | Notes |
 |------|--------|-------|
-| 15: Brain App Polish | Phases 1-2 DONE | |
+| 15: Brain App Polish | ALL DONE | Gaps 1-4 shipped + offline cache layer added |
 | 16: Today Screen | Phases 1-3 DONE | Phase 4 absorbed into Plan 18 |
 | 17: Proactive Surfacing | NOT STARTED | WS2 Phase 3 |
 | 18: Widget Overhaul | Phase 1-2 DONE | Phase 3-4 PAUSED |

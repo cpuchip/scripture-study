@@ -3,6 +3,7 @@
 *Created: March 8, 2026*
 *Priority: Near-term (next 1-2 sessions)*
 *Depends on: auto-refresh (entry_updated) already shipped*
+*Status: **DONE** — All 4 gaps shipped. Offline caching layer added March 2026.*
 
 ---
 
