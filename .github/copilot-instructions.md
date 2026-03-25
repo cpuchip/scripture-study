@@ -88,6 +88,7 @@ This project uses **custom agents** (`.github/agents/`) for specialized workflow
 | `dev` | MCP server and tool development |
 | `ux` | UI/UX expert — design patterns, interaction flows, visual quality |
 | `sabbath` | Structured reflection after completed cycles — ending, seeing, declaring |
+| `teaching` | Teaching preparation — from study to shareable content with honesty guardrails and the Ben Test |
 | `debug` | Systematic debugging — Agans' 9 rules applied to code, tools, and intellectual problems |
 
 When no specific agent is selected, follow these core principles and bring genuine curiosity to whatever the task is.

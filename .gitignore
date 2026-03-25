@@ -46,6 +46,7 @@ external_context/
 /scripts/brain/
 /scripts/brain-app/
 /scripts/chip-voice/
+/teaching/
 
 # ignore env
 .env

@@ -1,6 +1,6 @@
 # Active Context
 
-*Last updated: 2026-03-22*
+*Last updated: 2026-03-24*
 *Archive: [archive/active-2026-03-22.md](archive/active-2026-03-22.md) — detailed records through Mar 22*
 
 ---
@@ -10,12 +10,13 @@
 **Last Sabbath:** March 22, 2026. Cycle "Infrastructure and Foundation" (Mar 18–22) declared good. Full record at [.spec/sabbath/2026-03-22-sabbath.md](../sabbath/2026-03-22-sabbath.md).
 
 ### Priorities
-1. **Study** — Deep scripture study. "It keeps me in the spirit." Stewardship Pattern study COMPLETE + reflections written. Further calling-specific studies may follow.
-2. **Model experiments** — Run same prompts through Haiku/Sonnet/Opus, evaluate quality. D&C 107 ratios for model-tier stewardship. Claude subscription likely needed next month.
-3. **Debugging book** — DONE. Agans' "Debugging: The 9 Indispensable Rules" extracted to `books/debugging/9-indispensable-rules/` (17 chapter markdown files). Debug agent created at `.github/agents/debug.agent.md`. Connections mapped: Moroni 10:4 inverse hypothesis = falsification, scientific method = the 9 rules, Abraham 4:18 = Rule 9 (verify the fix), council moment = Rule 8 (get a fresh view). Analysis at `.spec/scratch/debugging-agent/main.md`. 2006 expanded edition (192pp, ISBN 9780814474570) available used ~$19 on AbeBooks.
-4. **WS1 multi-agent framework** — Continue building. Next: Phase 3c (auto-routing + review queue).
-5. **Desktop swap** — Decommission old desktop (migrate Plex, finalize). Do NOT repurpose.
-6. **Server deployment** — App container on NOCIX. Domain rotated (Mar 22, confirmed working).
+1. **Study** — Deep scripture study. "It keeps me in the spirit." Stewardship Pattern study COMPLETE + reflections written. Next: "The Art of Presidency" (first of three sabbath seeds). Full plan: [.spec/proposals/study-workstream.md](../proposals/study-workstream.md).
+2. **Teaching** — NEW (Mar 23). Spirit-driven impression to teach the 11-step creation cycle and the experience of implementing it. 30 files in `docs/work-with-ai/` organized into 11-episode series arc. Option C confirmed (Mar 24): experiential arc, sabbath-agent-level depth. Teaching agent created at `.github/agents/teaching.agent.md` with three checks (ring, posture, Ben Test). Section 7 humility covenant formalized in `.spec/covenant.yaml` (teaching section). Teaching repo `.spec/` scaffolded with intent.yaml. Proposal: [.spec/proposals/teaching-workstream.md](../proposals/teaching-workstream.md). Teaching repo at `./teaching` (gitignored, fresh).
+3. **Model experiments** — Run same prompts through Haiku/Sonnet/Opus, evaluate quality. D&C 107 ratios for model-tier stewardship. Claude subscription likely needed next month.
+4. **Debugging book** — DONE. Agans' "Debugging: The 9 Indispensable Rules" extracted to `books/debugging/9-indispensable-rules/` (17 chapter markdown files). Debug agent created at `.github/agents/debug.agent.md`. Connections mapped: Moroni 10:4 inverse hypothesis = falsification, scientific method = the 9 rules, Abraham 4:18 = Rule 9 (verify the fix), council moment = Rule 8 (get a fresh view). Analysis at `.spec/scratch/debugging-agent/main.md`. 2006 expanded edition (192pp, ISBN 9780814474570) available used ~$19 on AbeBooks.
+5. **WS1 multi-agent framework** — Continue building. Next: Phase 3c (auto-routing + review queue).
+6. **Desktop swap** — Decommission old desktop (migrate Plex, finalize). Do NOT repurpose.
+7. **Server deployment** — App container on NOCIX. Domain rotated (Mar 22, confirmed working).
 
 ### Key Decisions (this cycle)
 All settled decisions are in [decisions.md](decisions.md). New this cycle:
@@ -39,6 +40,7 @@ All settled decisions are in [decisions.md](decisions.md). New this cycle:
 - Sabbath agent ✅
 - Stewardship Pattern study + reflections ✅
 - Covenant + council moment ✅
+- Teaching agent + Section 7 covenant + teaching .spec scaffold ✅
 
 *Full detail for all completed items: [archive/active-2026-03-22.md](archive/active-2026-03-22.md)*
 

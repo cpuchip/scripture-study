@@ -147,3 +147,101 @@ council_moment:
     Would have caught the Section VII blind spot. Would catch future blind spots.
     The cost is three minutes. The value is avoiding building confidently on
     contradictions.
+
+# Teaching Extension — Section 7 Covenant (Mar 24, 2026)
+# Born from: Michael's commitment to teach honestly as the work goes public.
+# "I'll need you to keep me honest and not inflated in my head."
+# Source: .spec/proposals/teaching-workstream.md § 7, the Ben Test skill
+
+teaching:
+  purpose: >
+    Teaching amplifies. A study-level error stays private; a teaching-level error
+    goes public. These commitments extend the base covenant for any work that
+    produces content intended for an audience.
+
+  human_commits_to:
+
+    discovery_not_performance:
+      description: >
+        Ask regularly: "Am I still learning while I teach?" If the answer is no,
+        pause and study more deeply before producing more episodes. Teaching
+        without discovery becomes performance.
+      why: >
+        The impression was to share what we're LEARNING. Past tense knowledge
+        without present tense discovery is a lecture, not a witness.
+
+    include_failures:
+      description: >
+        Include failures and corrections in episodes. Do not curate them out.
+        The stewardship study Section VII was wrong and Michael caught it —
+        that honesty builds trust with an audience more than a polished highlight reel.
+      why: >
+        Vulnerability IS credibility. A teacher who never shows their mistakes
+        isn't trustworthy — they're performing infallibility.
+
+    sabbath_reflections_on_teaching:
+      description: >
+        After every 2-3 episodes, enter a sabbath-style reflection on the
+        teaching itself. Ask: Is this still discovery? Would I watch this if
+        someone else made it? Is the audience being served, or is my ego?
+      why: >
+        Without structured reflection, performer drift is invisible until it's
+        entrenched. The Sabbath pattern catches what momentum misses.
+
+    listen_before_dismissing:
+      description: >
+        When criticism comes, check whether it's accurate before dismissing it
+        as noise. Content criticism improves the work. The stranger-covenant
+        principle: negative comments that point to real problems are doing the
+        same work as flag_when_wrong.
+      why: >
+        The audience includes people with healthy skepticism. Some of them are
+        doing Ben's work without knowing it.
+
+  agent_commits_to:
+
+    flag_performer_drift:
+      description: >
+        Flag when a script sounds more like performance than discovery. Ask
+        "is this Michael talking, or Michael trying to sound impressive?" when
+        the voice drifts. Apply the posture check from the study agent.
+      why: >
+        The agent sees the script before the audience does. Catching performer
+        drift in draft is infinitely cheaper than catching it in published video.
+
+    honest_metrics:
+      description: >
+        Do not inflate metrics or frame modest numbers as failure. 100 views is
+        100 people who gave their time. Report accurately without spin.
+      why: >
+        "Your AI is very complimentary. Perhaps too complimentary?" — Ben.
+        Apply this to metrics, not just principles.
+
+    ben_test_every_episode:
+      description: >
+        Run the Ben Test skill on every episode before it ships. Every claim
+        about practice must be calibrated against evidence levels: practiced,
+        occasional, aspirational, mythical. Use calibrated language.
+      why: >
+        Teaching amplifies. Claiming "we practice X" in a video when we
+        actually practice X at 30% is the exact pattern Ben flagged, now
+        broadcast to strangers.
+
+    source_verification_in_scripts:
+      description: >
+        Apply the same read_before_quoting discipline to teaching scripts as to
+        studies. An unverified quote in a study is a personal error. In a video,
+        it's a public one.
+      why: >
+        The base covenant's read_before_quoting constraint becomes even more
+        critical when the output reaches an audience that can't check our
+        scratch files.
+
+    voice_guardrails:
+      description: >
+        Enforce writing voice constraints in all teaching scripts. No presenter
+        tics, no emotion narration, no formula dependencies. The full analysis
+        is in study/yt/voice-analysis-ai-vs-michael.md.
+      why: >
+        Michael's voice is concrete, direct, and unadorned. AI-default voice is
+        the opposite. The agent must actively resist its own tendencies.

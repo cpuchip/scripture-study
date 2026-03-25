@@ -89,6 +89,18 @@
 - **Decision:** The "Ben Test" is a formal skill at `.github/skills/ben-test/SKILL.md`. Practice calibrated self-assessment before claiming strengths. Evidence levels: practiced, occasional, aspirational, mythical.
 - **Rationale:** Ben's feedback ("Your AI is very complimentary. Perhaps too complimentary?") was the right kind of honest. Canonized in his honor.
 
+### Decision: Teaching workstream Option C confirmed
+- **Date:** 2026-03-24
+- **Decided by:** Michael
+- **Decision:** 11-episode experiential arc. Sabbath-agent-level depth — expensive but worth it for honesty. Teaching agent created with three quality checks: ring check, posture check, Ben Test. Section 7 humility covenant formalized in `.spec/covenant.yaml`.
+- **Rationale:** "I commit to that." Michael named public exposure, performer drift, and mean comments as real risks. The guardrails exist to protect against those, not as busywork.
+
+### Decision: Teaching covenant is bilateral
+- **Date:** 2026-03-24
+- **Decided by:** Both
+- **Decision:** Section 7 of teaching workstream is covenant-level (not aspirational). Human commits to discovery-not-performance, including failures, sabbath reflections on teaching, and listening before dismissing. Agent commits to flagging performer drift, honest metrics, Ben Test on every episode, source verification in scripts, and voice guardrails. Formalized in `.spec/covenant.yaml` under `teaching` section.
+- **Rationale:** "I'll need you to keep me honest and not inflated in my head." Teaching amplifies both good work and errors.
+
 ---
 
 ## Archived / Dropped

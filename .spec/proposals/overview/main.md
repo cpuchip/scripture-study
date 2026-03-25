@@ -145,7 +145,7 @@ Full implementation detail archived in [.spec/memory/archive/active-2026-03-22.m
 | Item | Status | Notes |
 |------|--------|-------|
 | Model capability experiments | PLANNED | Haiku/Sonnet/Opus comparison, D&C 107 ratios for model-tier stewardship. Need baseline before scaling agentic work. |
-| Debugging book digestion | PLANNED | Agans' "Debugging: The 9 Indispensable Rules." PDF at `books/debugging/`. Agentic digestion — build agent or ideals. Moroni's test connection (ask if things are NOT true). dwheeler.com review as supplementary. |
+| Debugging book digestion | DONE | Agans' 9 Rules extracted (17 chapter markdown files). Debug agent created. Connections mapped. |
 | Voice analysis follow-up | OPEN | `study/yt/voice-analysis-ai-vs-michael.md` patterns. |
 
 ### Workstream P: Planning & Proposals
@@ -158,6 +158,46 @@ Full implementation detail archived in [.spec/memory/archive/active-2026-03-22.m
 | Claude subscription evaluation | RADAR | Cost analysis for pay-per-token vs included credits. |
 | Stewardship → 11-step integration | PLANNED | Apply stewardship pattern to multi-agent work. |
 | Overview/active.md sync | ONGOING | Keep documents aligned. Archive mechanism created Mar 22. |
+
+### Workstream T: Teaching (Added Mar 23)
+
+**Intent:** Organize the 30-file `docs/work-with-ai/` corpus and lived experience into a teaching series (YouTube videos + interactive web presentations). Spirit-driven impression to share what we're learning.
+
+**Proposal:** [.spec/proposals/teaching-workstream.md](../teaching-workstream.md)
+**Scratch:** [.spec/scratch/teaching-workstream/main.md](../../scratch/teaching-workstream/main.md)
+**Repo:** `./teaching` (gitignored from scripture-study, `git@github.com:cpuchip/teaching.git`)
+
+| Phase | Scope | Status |
+|-------|-------|--------|
+| Phase 1: Content Architecture | Episode outlines, content mapping, tech stack, one full script | NOT STARTED |
+| Phase 2: First Episode Production | Script, presentation, recording | WAITING (after Phase 1) |
+| Phase 3: Series Production | Remaining episodes at sustainable pace | WAITING |
+| Phase 4: Community & Sharing | YouTube, website, companion materials | FUTURE |
+
+**Series arc (11 episodes):** Value Shift → Four Disciplines → Spiritual Before Temporal → Watched Until They Obeyed → Intelligence Cleaveth → Seven Unmapped Steps → Covenant → Delegation as Stewardship → When Things Go Wrong → Sabbath of Creation → Consecration to Zion
+
+### Workstream S: Study (Added Mar 23)
+
+**Intent:** Sequence the next studies by priority, connection, and spiritual readiness. Study is the highest priority — "it keeps me in the spirit."
+
+**Proposal:** [.spec/proposals/study-workstream.md](../study-workstream.md)
+**Scratch:** [.spec/scratch/study-workstream/main.md](../../scratch/study-workstream/main.md)
+
+**Presidency Cluster** (three studies in sequence, born from March 22 sabbath seeds):
+
+| Study | Binding Question | Status |
+|-------|-----------------|--------|
+| The Art of Presidency | What does it mean to preside, and what distinguishes a functioning presidency from a one-cylinder operation? | NOT STARTED — next study |
+| The Art of Delegation | How do you delegate to humans the way you've learned to delegate to AI? | WAITING (after Presidency) |
+| Zion in a Presidency | What does "one heart and one mind" look like in the smallest organizational unit? | WAITING (after Delegation) |
+
+**Study Queue** (after presidency cluster):
+
+| Study | Note |
+|-------|------|
+| Abraham 4-5 Standalone | Michael's theological contribution — currently scattered, needs consolidation |
+| D&C 107 Ratios | Proportional authority and trust tiers — scriptural depth needed |
+| AI and Covenant | Can AI participate in covenant? Open question (Feb 26) |
 
 ---
 
