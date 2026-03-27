@@ -1,6 +1,6 @@
 # Active Context
 
-*Last updated: 2026-03-26*
+*Last updated: 2026-03-27*
 *Archive: [archive/active-2026-03-22.md](archive/active-2026-03-22.md) — detailed records through Mar 22*
 
 ---
@@ -10,7 +10,7 @@
 **Last Sabbath:** March 22, 2026. Cycle "Infrastructure and Foundation" (Mar 18–22) declared good. Full record at [.spec/sabbath/2026-03-22-sabbath.md](../sabbath/2026-03-22-sabbath.md).
 
 ### Priorities
-1. **Study** — Deep scripture study. "It keeps me in the spirit." Stewardship Pattern study COMPLETE + reflections written. Next: "The Art of Presidency" (first of three sabbath seeds). Full plan: [.spec/proposals/study-workstream.md](../proposals/study-workstream.md).
+1. **Study** — Deep scripture study. "It keeps me in the spirit." Stewardship Pattern study COMPLETE + reflections written. **Art of Presidency study COMPLETE** — first of three sabbath seeds. Full plan: [.spec/proposals/study-workstream.md](../proposals/study-workstream.md). Next studies in workstream: "The Weight of Watching" (Abraham 4 deep dive) and "Commission and Council" (Matt 28 / 3 Ne 11-28 / appointment chain).
 2. **Teaching** — NEW (Mar 23). Spirit-driven impression to teach the 11-step creation cycle and the experience of implementing it. 30 files in `docs/work-with-ai/` organized into 11-episode series arc. Option C confirmed (Mar 24): experiential arc, sabbath-agent-level depth. Teaching agent created at `.github/agents/teaching.agent.md` with three checks (ring, posture, Ben Test). Section 7 humility covenant formalized in `.spec/covenant.yaml` (teaching section). Teaching repo `.spec/` scaffolded with intent.yaml. Proposal: [.spec/proposals/teaching-workstream.md](../proposals/teaching-workstream.md). Teaching repo at `./teaching` (gitignored, fresh).
 3. **Model experiments** — Run same prompts through Haiku/Sonnet/Opus, evaluate quality. D&C 107 ratios for model-tier stewardship. Claude subscription likely needed next month.
 4. **Debugging book** — DONE. Agans' "Debugging: The 9 Indispensable Rules" extracted to `books/debugging/9-indispensable-rules/` (17 chapter markdown files). Debug agent created at `.github/agents/debug.agent.md`. Connections mapped: Moroni 10:4 inverse hypothesis = falsification, scientific method = the 9 rules, Abraham 4:18 = Rule 9 (verify the fix), council moment = Rule 8 (get a fresh view). Analysis at `.spec/scratch/debugging-agent/main.md`. 2006 expanded edition (192pp, ISBN 9780814474570) available used ~$19 on AbeBooks.
