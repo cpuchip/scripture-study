@@ -39,6 +39,7 @@ var (
 	downloadFlag    = flag.String("download", "", "Download content from a specific URI path (e.g., /manual/general-handbook)")
 	magazinesFlag   = flag.Bool("magazines", false, "Download all Liahona and Ensign magazines (1971-present)")
 	musicFlag       = flag.Bool("music", false, "Download all music (hymns, songs, sheet music, MP3s)")
+	broadcastsFlag  = flag.Bool("broadcasts", false, "Download all broadcasts and devotionals")
 )
 
 func main() {
@@ -54,6 +55,8 @@ func main() {
 		err = downloadSinglePath(*langFlag, *cacheFlag, *outputFlag, *downloadFlag)
 	case *magazinesFlag:
 		err = downloadMagazines(*langFlag, *cacheFlag, *outputFlag)
+	case *broadcastsFlag:
+		err = downloadBroadcasts(*langFlag, *cacheFlag, *outputFlag)
 	case *musicFlag:
 		err = downloadMusic(*langFlag, *cacheFlag, *outputFlag)
 	case *standardFlag:
@@ -185,7 +188,7 @@ func downloadStandard(lang, cacheDir, outputDir string) error {
 		{"Pearl of Great Price", "/scriptures/pgp"},
 		{"Old Testament", "/scriptures/ot"},
 		{"New Testament", "/scriptures/nt"},
-		{"October 2025 General Conference", "/general-conference/2025/10"},
+		{"April 2026 General Conference", "/general-conference/2026/04"},
 		{"General Handbook", "/manual/general-handbook"},
 	}
 
@@ -310,6 +313,103 @@ func downloadMagazines(lang, cacheDir, outputDir string) error {
 	fmt.Println("✅ Magazine download complete!")
 	fmt.Printf("   Issues processed: %d\n", len(validIssues))
 	fmt.Printf("   Total articles: %d\n", totalArticles)
+	fmt.Printf("   Successfully downloaded: %d\n", totalSuccess)
+	fmt.Printf("   Errors: %d\n", totalErrors)
+	fmt.Printf("   Output: %s/%s/\n", outputDir, lang)
+	return nil
+}
+
+func downloadBroadcasts(lang, cacheDir, outputDir string) error {
+	fmt.Println("📡 Downloading Broadcasts and Devotionals...")
+	fmt.Println("")
+
+	rawClient := api.NewClient(lang)
+	fileCache := cache.New(cacheDir, lang)
+	cachedClient := cache.NewCachedClient(rawClient, fileCache)
+
+	downloader := tui.NewDownloader(cachedClient, rawClient, lang, outputDir)
+	ctx := context.Background()
+
+	// First, discover all broadcast sub-collections from the navigation page
+	fmt.Println("Phase 1: Discovering broadcast collections...")
+	navURI := "/videos-and-images/broadcasts-and-devotionals"
+	navResp, _, err := cachedClient.GetDynamic(ctx, navURI)
+	if err != nil {
+		return fmt.Errorf("fetch broadcast navigation: %w", err)
+	}
+
+	// Collect all sub-collection URIs to crawl
+	var collectionURIs []struct {
+		name string
+		uri  string
+	}
+
+	if navResp.Collection != nil {
+		for _, section := range navResp.Collection.Sections {
+			for _, entry := range section.Entries {
+				if entry.Type == "collection" {
+					collectionURIs = append(collectionURIs, struct {
+						name string
+						uri  string
+					}{entry.Title, entry.URI})
+				} else if entry.Type == "item" {
+					// Items at the top level point to broadcast content directly
+					collectionURIs = append(collectionURIs, struct {
+						name string
+						uri  string
+					}{entry.Title, entry.URI})
+				}
+			}
+		}
+	}
+
+	fmt.Printf("   Found %d broadcast collections\n\n", len(collectionURIs))
+
+	// Phase 2: Crawl each collection and download content
+	fmt.Println("Phase 2: Downloading broadcast content...")
+	totalSuccess := 0
+	totalErrors := 0
+
+	for _, col := range collectionURIs {
+		fmt.Printf("📡 %s\n", col.name)
+		fmt.Printf("   Crawling %s...\n", col.uri)
+
+		uris, err := downloader.CrawlForContent(ctx, col.uri)
+		if err != nil {
+			fmt.Printf("   ⚠ Error crawling: %v\n", err)
+			continue
+		}
+
+		fmt.Printf("   Found %d content items\n", len(uris))
+		if len(uris) == 0 {
+			fmt.Println("   (no downloadable text content)")
+			fmt.Println("")
+			continue
+		}
+		fmt.Printf("   Downloading...\n")
+
+		successCount := 0
+		errorCount := 0
+		for _, uri := range uris {
+			result := downloader.DownloadAndConvert(ctx, uri)
+			if result.Success {
+				successCount++
+			} else if result.Error != nil {
+				errorCount++
+				if errorCount <= 3 {
+					fmt.Printf("   ⚠ %s: %v\n", uri, result.Error)
+				}
+			}
+			time.Sleep(50 * time.Millisecond)
+		}
+
+		totalSuccess += successCount
+		totalErrors += errorCount
+		fmt.Printf("   ✓ Downloaded %d/%d items (errors: %d)\n", successCount, len(uris), errorCount)
+		fmt.Println("")
+	}
+
+	fmt.Println("✅ Broadcast download complete!")
 	fmt.Printf("   Successfully downloaded: %d\n", totalSuccess)
 	fmt.Printf("   Errors: %d\n", totalErrors)
 	fmt.Printf("   Output: %s/%s/\n", outputDir, lang)

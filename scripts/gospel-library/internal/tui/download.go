@@ -163,6 +163,32 @@ func isContentURI(uri string) bool {
 		return false
 	}
 
+	// Broadcast content: /broadcasts/{type}/{year}/{month}/{talk-id} = content
+	// /broadcasts/{type} = TOC, /broadcasts/{type}/{year}/{month} = TOC
+	if strings.HasPrefix(uri, "/broadcasts/") {
+		segments := strings.Split(strings.TrimPrefix(uri, "/"), "/")
+		// broadcasts/{type}/{year}/{month}/{talk} = 5 segments = content
+		// broadcasts/{type}/{year}/{month} = 4 segments = TOC (issue page)
+		return len(segments) >= 5
+	}
+
+	// Videos-and-images navigation paths are always collections, never content
+	if strings.HasPrefix(uri, "/videos-and-images/") {
+		return false
+	}
+
+	// Magazine content: /liahona/{year}/{month}/{article} or /ensign/{year}/{month}/{article}
+	// Also: /friend/{year}/{month}/{article}, /for-the-strength-of-youth/{year}/{month}/{article}
+	magazinePrefixes := []string{"/liahona/", "/ensign/", "/friend/", "/ftsoy/", "/for-the-strength-of-youth/", "/ya-weekly/", "/new-era/"}
+	for _, prefix := range magazinePrefixes {
+		if strings.HasPrefix(uri, prefix) {
+			segments := strings.Split(strings.TrimPrefix(uri, "/"), "/")
+			// {magazine}/{year}/{month}/{article} = 4 segments = content
+			// {magazine}/{year}/{month} = 3 segments = TOC (issue)
+			return len(segments) >= 4
+		}
+	}
+
 	// Default: if it looks like it has content identifiers, include it
 	return len(lastPart) > 0
 }

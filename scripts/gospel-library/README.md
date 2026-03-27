@@ -28,6 +28,9 @@ go build -o gospel-downloader.exe ./cmd/gospel-downloader
 
 # Or run directly
 go run ./cmd/gospel-downloader
+
+# Get latest conference April 2026 (when it's released) My directly to output directory
+go run ./cmd/gospel-downloader --download=/general-conference/2026/04 --output=../../gospel-library
 ```
 
 ## Usage
