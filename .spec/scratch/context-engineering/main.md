@@ -149,7 +149,80 @@ Per talk: ~15,000 tokens in + 4,096 tokens out ≈ ~19,000 tokens
 Total: ~105M tokens input (shared context) + ~22M tokens output
 This is dominated by the repeating context (~8,000 tokens × 5,500 = ~44M tokens just for framework+vocab).
 
-**Optimization:** If using a system prompt cache (LM Studio may support this), the framework+vocab only needs to be processed once per session, not per request. Check KV cache behavior.
+**Optimization:** System prompt prefix caching eliminates ~44M tokens of redundant prefill. See research below.
+
+---
+
+## API Caching Research (Mar 28, 2026)
+
+*Sources: LM Studio docs (REST API v1, stateful chats, load model, parallel requests, OpenAI-compat), llama.cpp discussions #8860 and #13606, llama.cpp PR #16391, KV-cache-aware prompt engineering benchmarks.*
+
+### The Mechanism: llama.cpp KV Cache Prefix Reuse
+
+LM Studio uses llama.cpp as its backend. llama.cpp's server has built-in **prompt prefix caching** at the slot level:
+
+1. When `"cache_prompt": true` is included in the request body, the server stores the KV cache for the prompt in the assigned slot.
+2. On the next request to the same slot, llama.cpp compares the new prompt's token sequence against the cached sequence.
+3. **Any matching prefix is skipped entirely** — the KV values are already computed and stored. Only the new/different tokens require prefill computation.
+4. This works at the token level. If the first 8,000 tokens are identical, those 8,000 tokens have zero prefill cost on subsequent requests.
+
+Confirmed by ggerganov (llama.cpp maintainer, Aug 2024): *"make sure to use set `cache_prompt = true` in the requests to enable this feature."*
+
+### Practical Impact for Our Batch
+
+- System prompt (context.md + titsw-framework.md + gospel-vocab.md) = ~8,000 tokens, **identical across all 5,500 requests**
+- Request 1: full prefill of ~15,000 tokens (system + prompt + content)
+- Requests 2–5,500: only ~7,000-15,000 NEW tokens need prefill (prompt template + talk content). The ~8,000 system tokens are cached.
+- **Savings: ~44M tokens of prefill computation eliminated from batch**
+- At nemotron's prefill speed: eliminates ~2-4 seconds per request of redundant computation
+
+### Three Approaches (simplest → most complex)
+
+**Option 1: `cache_prompt: true` on OpenAI-compat endpoint (RECOMMENDED)**
+- Works with our existing harness (`/v1/chat/completions`)
+- Just add `"cache_prompt": true` to the request body
+- llama.cpp automatically assigns slots by prefix similarity (`-sps 0.5` is the default — a slot is reused if 50%+ of the prompt prefix matches)
+- With a single slot and sequential batch processing, every request after the first reuses the system prefix cache
+- Zero code changes beyond adding one JSON field
+
+**Option 2: LM Studio v1 Stateful Chats**
+- `/api/v1/chat` with `previous_response_id` continues a conversation without resending history
+- Designed for multi-turn conversation, not batch-of-independent-evaluations
+- Could "prime" the system context once and branch from it, but awkward for our use case
+- Would require rewriting the harness to use the v1 API
+
+**Option 3: Explicit slot management**
+- Use `id_slot` parameter to pin requests to specific slots
+- Use `--slot-save-path` + `/slots/{id}?action=save` and `?action=restore` to persist KV cache to disk
+- Survives server restarts
+- Maximum control but requires client-side slot state management
+- Useful if we add parallel processing later (different slots for different prompt types)
+
+### Design Constraints Created by Caching
+
+**The system prompt must be byte-identical across all requests.** Any character change breaks the entire prefix cache. This means:
+- `context.md + titsw-framework.md + gospel-vocab.md` must be concatenated in the same order every time
+- No per-request customization in the system message
+- All variable content (references, talk text) goes in the user message
+- JSON serialization of any structured data in the system prompt must use deterministic key ordering
+
+**This validates the layered architecture:** Layers 1-3 (stable, in system message, cached once) → Layer 4 + content (variable, in user message, processed each time).
+
+### Parallel Batch Optimization (future)
+
+LM Studio supports `Max Concurrent Predictions` via continuous batching. For parallel batch processing:
+- Load nemotron with `-np 2` or higher (2+ parallel slots)
+- Each slot maintains its own KV cache
+- Pin the "talk evaluation" prompt to slot 0 and (if we add scripture evaluation later) pin that to slot 1
+- Both slots cache their respective system prefixes independently
+- From the tutorial: *"Use cases: Applications with long, repeated system prompts. Batch processing with similar prompt templates."*
+
+### Source Links
+- llama.cpp discussion #8860: "Does the KV cache persist across multiple requests sharing a prefix?" — ggerganov confirms `cache_prompt: true`
+- llama.cpp discussion #13606: "Tutorial: KV cache reuse with llama-server" — full walkthrough with slot persistence
+- llama.cpp PR #16391: "server: host-memory prompt caching" — merged, extends cache to host memory
+- Ankit Sinha benchmark: stable prefixes → 65% median TTFT improvement, 85% cache hit rate, 71% cost reduction
+- Sankalp blog: deep technical walkthrough of paged attention and automatic prefix caching
 
 ---
 

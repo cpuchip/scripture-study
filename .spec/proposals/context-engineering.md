@@ -168,10 +168,59 @@ Build a script that:
 4. Outputs enriched content file
 
 ### Phase 6: Batch Pipeline (future)
-Apply to all 5,500 conference talks. Considerations:
-- KV cache behavior for shared system context (does LM Studio cache across requests?)
-- Different context levels for talks (lighter) vs scriptures (heavier)
-- Result storage and comparison with current gospel-mcp scores
+Apply to all 5,500 conference talks with KV cache optimization (see below).
+
+---
+
+## Batch Optimization: KV Cache Prefix Reuse
+
+*Research completed Mar 28, 2026. Full provenance in [scratch file](../scratch/context-engineering/main.md).*
+
+llama.cpp (LM Studio's backend) has built-in **prompt prefix caching**. When `"cache_prompt": true` is included in the request body, the server stores the KV cache for the prompt in the assigned slot. On subsequent requests to the same slot, **any matching token prefix is skipped entirely** — zero recomputation.
+
+**Impact for batch:** The system prompt (~8,000 tokens of context.md + titsw-framework.md + gospel-vocab.md) is identical across all 5,500 talk evaluations. With `cache_prompt: true`:
+- Request 1: full prefill (~15,000 tokens)
+- Requests 2–5,500: only ~7,000-15,000 NEW tokens need prefill. The 8,000 system tokens are cached.
+- **~44M tokens of redundant prefill eliminated from the batch**
+- Estimated savings: ~2-4 seconds per request
+
+**Implementation:** Add `"cache_prompt": true` to the existing OpenAI-compat request body in `run-test.ps1`. No API migration needed. llama.cpp auto-assigns slots by prefix similarity (default `-sps 0.5`).
+
+**Design constraint:** The system prompt must be **byte-identical** across all requests. Any character change breaks the prefix cache. This validates the layered architecture: stable system layers 1-3 (cached once) → variable user message layer 4 (processed each time).
+
+**Future parallel option:** Load nemotron with `-np 2+` for multiple concurrent slots. Each slot caches its own prefix independently. Pin talk evaluations to slot 0, scripture evaluations (heavier context) to slot 1.
+
+---
+
+## Two Streams: Study + Dev
+
+This work splits into two independent streams that can execute in parallel:
+
+### Study Stream (deep reading, curation)
+**Where:** This session, study agent
+**What:** Curate the context documents through deep reading of scripture sources and manual chapters.
+
+| Deliverable | Description | Dependencies |
+|-------------|-------------|---------------|
+| `gospel-vocab.md` | 8 theological patterns with key verses, ~3,500 tokens | Read ~12 scripture sources, verify all quotes |
+| `titsw-framework.md` | TITSW principles defined with score anchors, ~2,500 tokens | Read 6 manual chapters + overview study |
+
+Both documents are hand-crafted from deep reading. Every quoted verse must be read from `gospel-library/` before inclusion. Source-verification skill applies.
+
+### Dev Stream (harness, prompt, pipeline)
+**Where:** Parallel VS Code session, dev agent
+**What:** Update the harness and prompt to use the context package.
+
+See [dev handoff spec](.spec/proposals/context-engineering-dev.md) for the self-contained spec.
+
+| Deliverable | Description | Dependencies |
+|-------------|-------------|---------------|
+| `run-test.ps1` update | `-Context` parameter, loads additional files into system message | None — can scaffold with placeholder context files |
+| `cache_prompt: true` | Add to request body for KV cache prefix reuse | None |
+| `titsw-v3.md` prompt | 0-9 scale, reference-aware, new JSON schema | Prompt structure is independent of context content |
+| Validation runs | Test Alma 32, Kearon, Brown against ground truth | Requires study stream context files |
+
+**Sequencing:** Dev can start immediately on harness changes and prompt design. Validation runs happen after study stream delivers the context files.
 
 ---
 
@@ -179,10 +228,11 @@ Apply to all 5,500 conference talks. Considerations:
 
 | Cost | Impact | Mitigation |
 |------|--------|------------|
-| Token usage per request: ~6,000 → ~15,000 | Prefill time increases ~2-5s | Well within 131k; nemotron prefill is fast |
+| Token usage per request: ~6,000 → ~15,000 | First request adds ~2-5s prefill | KV cache prefix reuse eliminates this for requests 2+ |
 | Two curated documents to maintain | Maintenance burden if manual changes | Manual updates rarely; documents are synthesis, not copies |
 | Risk of context-induced inflation | Model sees "Christ is everywhere" and over-scores | Anti-inflation rubric language; ground truth comparison |
 | Phase 1 requires deep reading/verification | Agent time for source verification | This is the right kind of work — quality context is the product |
+| Byte-identical system prompt constraint | Any system prompt change invalidates KV cache | System prompt files are stable by design; changes are intentional |
 
 ---
 
@@ -210,4 +260,8 @@ Apply to all 5,500 conference talks. Considerations:
 
 **Phase 1 first deliverable:** Start with `gospel-vocab.md` (the harder, more valuable piece). It requires reading and synthesizing from ~12 scripture sources. The TITSW framework is a faster synthesis from existing overview study + manual chapters.
 
-**Executing agent:** The study agent should curate the context documents (it's deep reading + synthesis). The dev agent should update the harness. The plan agent (current) hands off here.
+**Executing agents:** Two parallel streams:
+- **Study agent** (this session): Curate gospel-vocab.md and titsw-framework.md through deep reading
+- **Dev agent** (parallel session): Update harness, write TITSW v3 prompt, add `cache_prompt: true`, run validation
+
+Dev handoff spec: [.spec/proposals/context-engineering-dev.md](context-engineering-dev.md)
