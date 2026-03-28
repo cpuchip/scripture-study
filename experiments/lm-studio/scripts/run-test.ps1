@@ -49,6 +49,7 @@ param(
     [int]$MaxTokens = 4096,
     [double]$Temperature = 0.7,
     [string]$Tag = "",
+    [string]$Context = "",
     [switch]$NoSave,
     [switch]$NoThink,
     [string]$BaseURL = "http://localhost:1234/v1"
@@ -83,6 +84,20 @@ if (-not (Test-Path $contentFile)) {
 # --- Load files ---
 
 $systemMessage = Get-Content $contextFile -Raw -Encoding UTF8
+
+if ($Context) {
+    $contextDir = Join-Path $scriptDir $Context
+    if (-not (Test-Path $contextDir)) {
+        Write-Error "Context directory not found: $contextDir"
+        return
+    }
+    $contextFiles = Get-ChildItem $contextDir -Filter "*.md" | Sort-Object Name
+    foreach ($cf in $contextFiles) {
+        $systemMessage += "`n`n" + (Get-Content $cf.FullName -Raw -Encoding UTF8)
+    }
+    Write-Host "Context: $($contextFiles.Count) files from $Context" -ForegroundColor Cyan
+}
+
 $promptTemplate = Get-Content $promptFile -Raw -Encoding UTF8
 $contentText = Get-Content $contentFile -Raw -Encoding UTF8
 
@@ -132,6 +147,7 @@ if ($Model) {
 Write-Host "Model: $modelId" -ForegroundColor Cyan
 Write-Host "Prompt: $Prompt" -ForegroundColor Cyan
 Write-Host "Content: $Content ($($contentText.Length) chars)" -ForegroundColor Cyan
+if ($Context) { Write-Host "Context: $Context" -ForegroundColor Cyan }
 
 # --- Build request ---
 
@@ -145,6 +161,7 @@ $requestBody = @{
     temperature = $Temperature
     stream = $true
     stream_options = @{ include_usage = $true }
+    cache_prompt = $true
 } | ConvertTo-Json -Depth 10
 
 # --- Send streaming request and time it ---

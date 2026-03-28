@@ -45,6 +45,7 @@ param(
     [string]$Tag = "pass1",
     [int]$MaxTokens = 2048,
     [double]$Temperature = 0.7,
+    [string]$Context = "",
     [switch]$NoThink,
     [string]$BaseURL = "http://localhost:1234/v1"
 )
@@ -83,6 +84,7 @@ Write-Host "=== Suite: $Model ===" -ForegroundColor Magenta
 Write-Host "Prompts:  $($promptList -join ', ')" -ForegroundColor Cyan
 Write-Host "Content:  $($contentList -join ', ')" -ForegroundColor Cyan
 Write-Host "Tag:      $Tag" -ForegroundColor Cyan
+if ($Context) { Write-Host "Context:  $Context" -ForegroundColor Cyan }
 Write-Host "Tests:    $totalTests" -ForegroundColor Cyan
 Write-Host ""
 
@@ -107,6 +109,7 @@ foreach ($prompt in $promptList) {
                 BaseURL = $BaseURL
             }
             if ($NoThink) { $testArgs['NoThink'] = $true }
+            if ($Context) { $testArgs['Context'] = $Context }
             & (Join-Path $scriptDir "run-test.ps1") @testArgs
         } catch {
             Write-Warning "FAILED: $prompt × $content — $_"
