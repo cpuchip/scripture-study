@@ -1,0 +1,65 @@
+date: "2026-03-28"
+title: "Pass 1 Complete — All 5 Models Run Through Full Suite"
+mood: productive
+phase: execute
+agent: dev
+
+summary: >
+  Ran all 5 candidate models (nemotron-3-nano, qwen3.5-35b, lfm2-24b, glm-4.7-flash,
+  devstral-small-2) through the full 12-test suite (6 prompts × 2 content files). Every
+  model produced usable output. Two significant discoveries during execution: (1) default
+  4096 context is too small for our content — Alma 32 tokenizes to ~7k, requiring 32k
+  minimum. (2) Qwen3.5 and GLM-4.7 have thinking modes that consume all output tokens
+  on invisible <think> blocks, producing empty visible responses. Both fixed (context
+  via -c 32768, thinking via -NoThink flag added to harness). 84 result JSON files
+  produced. Full cross-model comparison written to scratch file with performance tables,
+  TITSW score analysis, and pass 2 recommendations. Nemotron emerges as the speed×quality
+  sweet spot for batch processing.
+
+discoveries:
+  - >
+    Thinking mode is a silent killer for automation. Qwen3.5-35b and GLM-4.7-flash both
+    allocate output tokens to invisible <think> blocks when thinking mode is active.
+    The API reports tokens_out=2048 but visible response is empty. Only discovered by
+    checking response length vs token count. Fix: prepend /no_think to user message.
+    Any batch pipeline using these models MUST account for this.
+  - >
+    Max_tokens ceiling masks real model behavior. Nemotron hit the 2048 ceiling on 8/12
+    tests, meaning we don't know how long its full responses would be. The TITSW JSON
+    was literally truncated mid-sentence. Pass 2 must level the playing field at 4096.
+  - >
+    TITSW scoring reveals model discernment. Alma 32 (scripture about faith) is not
+    explicitly about Christ — nemotron correctly scored teach_about_christ=1, qwen/glm
+    gave 2, but lfm2/devstral gave 3 (overscoring). GLM was most broadly nuanced with
+    4 non-3 scores across both tests. This differentiation matters for conference reindex
+    where we need accurate dimensional scoring.
+  - >
+    Speed tiers are stark. Nemotron at 85 tok/s is 2.4x faster than devstral at 36 tok/s.
+    For processing 5,500 conference talks, that's the difference between hours and days.
+
+reflections:
+  - >
+    The harness proved its worth. Six prompts × two content files × five models = 60
+    comparable data points (plus fail/retry variants). Without the structured harness and
+    results.tsv logging, this would have been impressionistic. The autoresearch pattern
+    (structured log, iterate, measure) is the right frame.
+  - >
+    Nemotron's spirit=3 on Kearon is interesting. Every other model gave 2. Is that a
+    real insight or a lack of discernment? The talk IS spiritually inviting but leans
+    rhetorical more than testimony-bearing. Four models agreeing on 2 is probably right.
+    But it's a judgment call, not a factual error — which means the scoring is working
+    in a genuinely useful range.
+
+carry_forward:
+  - "Pass 2: re-run nemotron and lfm2 at 4096 max_tokens for fair comparison"
+  - "Pass 2: prompt tuning — can we make devstral more discerning on TITSW?"
+  - "Pass 2: design the actual conference reindex prompt and test on 3-5 diverse talks"
+  - "Pass 2: temperature experiment — 0.3 for structured JSON vs 0.7 for prose"
+  - "Nemotron appears to be the front-runner for batch processing — speed + quality + 1M context + no thinking trap"
+  - "GLM is the quality runner-up but 1.7x slower and needs -NoThink management"
+
+open_questions:
+  - "Does raising nemotron's max_tokens meaningfully improve output quality, or does it just pad?"
+  - "Can prompt tuning close the TITSW quality gap between nemotron and GLM?"
+  - "Is the conference reindex prompt fundamentally different from the experiment prompts?"
+  - "Should we run a larger-scale test (10-20 talks) before committing to a model?"

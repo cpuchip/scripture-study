@@ -50,6 +50,7 @@ param(
     [double]$Temperature = 0.7,
     [string]$Tag = "",
     [switch]$NoSave,
+    [switch]$NoThink,
     [string]$BaseURL = "http://localhost:1234/v1"
 )
 
@@ -87,6 +88,12 @@ $contentText = Get-Content $contentFile -Raw -Encoding UTF8
 
 # Build user message: prompt template with content inserted
 $userMessage = $promptTemplate -replace '\{\{CONTENT\}\}', $contentText
+
+# For thinking models (e.g., Qwen3.5), prepend /no_think to prevent
+# the model from spending all tokens on internal reasoning
+if ($NoThink) {
+    $userMessage = "/no_think`n$userMessage"
+}
 
 # --- Detect model from LM Studio ---
 

@@ -45,6 +45,7 @@ param(
     [string]$Tag = "pass1",
     [int]$MaxTokens = 2048,
     [double]$Temperature = 0.7,
+    [switch]$NoThink,
     [string]$BaseURL = "http://localhost:1234/v1"
 )
 
@@ -96,14 +97,17 @@ foreach ($prompt in $promptList) {
         Write-Host "[$current/$totalTests] $prompt × $content" -ForegroundColor Yellow
 
         try {
-            & (Join-Path $scriptDir "run-test.ps1") `
-                -Prompt $prompt `
-                -Content $content `
-                -Model $Model `
-                -MaxTokens $MaxTokens `
-                -Temperature $Temperature `
-                -Tag $Tag `
-                -BaseURL $BaseURL
+            $testArgs = @{
+                Prompt = $prompt
+                Content = $content
+                Model = $Model
+                MaxTokens = $MaxTokens
+                Temperature = $Temperature
+                Tag = $Tag
+                BaseURL = $BaseURL
+            }
+            if ($NoThink) { $testArgs['NoThink'] = $true }
+            & (Join-Path $scriptDir "run-test.ps1") @testArgs
         } catch {
             Write-Warning "FAILED: $prompt × $content — $_"
             $failed++

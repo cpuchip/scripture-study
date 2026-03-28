@@ -296,6 +296,149 @@ When it's time to build gospel-comb, the real graph extension opportunities are:
 3. **Study aid densification.** TG entries already point to verses, but the TG connections themselves could be traversed (A and B in same TG entry = related).
 4. **Multi-hop queries.** "Show me the 2-hop neighborhood of Alma 32:21" — requires a simple BFS on the graph. SQLite can do this with recursive CTEs.
 
+---
+
+## Pass 1 Results — All 5 Models (Mar 28)
+
+### Test Conditions
+
+- **Context loaded at:** 32,768 tokens for all models
+- **Content files:** Alma 32 (scripture, ~7k tokens) and Kearon "Receive His Gift" (conference talk, ~4k tokens)
+- **Prompts:** 6 templates × 2 content files = 12 tests per model
+  - `cross-reference`, `deep-study`, `needle`, `summarize`, `teaching`, `titsw`
+- **Max tokens:** 2048 (default) for nemotron, lfm2, devstral; **4096** for qwen3.5 and glm (needed after disabling thinking mode to get comparable output)
+- **Temperature:** 0.7 for all
+- **Thinking mode fix:** Qwen3.5 and GLM-4.7 both have thinking modes that consumed ALL output tokens on invisible `<think>` blocks, producing empty visible responses. Fixed by prepending `/no_think\n` to the user message (`-NoThink` flag added to harness).
+
+### Performance Summary
+
+| Model | VRAM | Avg tok/s | Avg Tokens Out | Avg Latency (ms) | Max Tokens Hit? |
+|-------|------|-----------|----------------|-------------------|-----------------|
+| nemotron-3-nano | 22.8 GB | **84.6** | 1,726 | 19,858 | Yes (2048 ceiling on 8/12) |
+| lfm2-24b | 13.4 GB | **73.9** | 1,020 | 12,779 | Yes (2048 ceiling on 2/12) |
+| glm-4.7-flash | 16.9 GB | 49.8 | 2,989 | 59,076 | Yes (4096 ceiling on 3/12) |
+| qwen3.5-35b | 20.6 GB | 49.0 | 3,496 | 71,073 | Yes (4096 ceiling on 5/12) |
+| devstral-small-2 | 14.2 GB | 35.9 | 946 | 24,037 | No (never hit 2048) |
+
+**Speed tiers:** nemotron (85) > lfm2 (74) >> glm/qwen (50) >> devstral (36) tok/s
+
+**VRAM efficiency:** lfm2 delivers 74 tok/s at only 13.4 GB — best VRAM/performance ratio. Devstral at 14.2 GB for 36 tok/s is worst.
+
+**Wall-clock latency:** lfm2 fastest actual completion (12.8s avg) because it's fast AND concise. Nemotron next (19.9s). Qwen slowest (71s) because it's slow AND verbose.
+
+### Output Length & Max Tokens Ceiling
+
+**Critical finding:** Nemotron and lfm2 both hit the default 2048 max_tokens ceiling on multiple prompts. This means their output was **artificially truncated** — they wanted to say more but were cut off. The TITSW JSON for nemotron was truncated mid-sentence. Pass 2 should re-run these with higher max_tokens for fair comparison.
+
+Per-prompt output lengths (tokens):
+
+| Prompt | nemotron | lfm2 | glm | qwen3.5 | devstral |
+|--------|----------|------|-----|---------|----------|
+| cross-ref (alma) | 2048* | 1081 | 4096* | 4096* | 1032 |
+| cross-ref (kearon) | 2048* | 946 | 4096* | 4096* | 1622 |
+| deep-study (alma) | 2048* | 2048* | 3125 | 3991 | 1703 |
+| deep-study (kearon) | 2048* | 1504 | 4096* | 3767 | 1359 |
+| needle (alma) | 681 | 146 | 1407 | 3670 | 111 |
+| needle (kearon) | 469 | 203 | 753 | 1035 | 104 |
+| summarize (alma) | 1136 | 788 | 3858 | 4096* | 743 |
+| summarize (kearon) | 2048* | 829 | 2641 | 3440 | 632 |
+| teaching (alma) | 2048* | 2048* | 3060 | 4096* | 1047 |
+| teaching (kearon) | 2048* | 1130 | 2330 | 3870 | 1435 |
+| titsw (alma) | 2048* | 809 | 3086 | 3377 | 599 |
+| titsw (kearon) | 2048* | 702 | 3316 | 2418 | 970 |
+
+\* = hit max_tokens ceiling (truncated)
+
+**Verbosity spectrum:** qwen3.5 (most verbose) > glm > nemotron > lfm2 > devstral (most concise)
+
+Qwen3.5 hit 4096 on 5 prompts. Either it's thorough or it doesn't know when to stop — quality review needed. Devstral never hit 2048 on any prompt — it's naturally concise.
+
+### Needle Test (Factual Retrieval)
+
+| Model | Alma 32 (no memory — correct = "not found") | Kearon (age 7, Arabia, Chitty Chitty) |
+|-------|----------------------------------------------|---------------------------------------|
+| nemotron | ✅ Correctly says "no childhood memory" | ✅ Found age 7, Arabia, Chitty Chitty Bang Bang |
+| lfm2 | ✅ Correctly says "no childhood memory" | ✅ Found details |
+| qwen3.5 | ✅ Correctly says no (very verbose about it) | ✅ Found details |
+| glm | ✅ Correctly says no | ✅ Found details |
+| devstral | ✅ Correctly says no | ✅ Found details |
+
+**All 5 models passed both needle tests.** The Alma 32 test is the interesting one — all correctly identified it's scripture without personal narrative rather than hallucinating a childhood memory.
+
+### TITSW Teaching Analysis (Structured JSON Quality)
+
+**Kearon "Receive His Gift" — conference talk**
+
+| Model | teach | come | love | spirit | doctrine | invite |
+|-------|-------|------|------|--------|----------|--------|
+| nemotron | 3 | 3 | 3 | **3** | 3 | 3 |
+| lfm2 | 3 | 3 | 3 | 2 | 3 | 3 |
+| qwen3.5 | 3 | 3 | 3 | 2 | 3 | 3 |
+| glm | 3 | 3 | 3 | 2 | 3 | 3 |
+| devstral | 3 | 3 | 3 | 2 | 3 | 3 |
+
+Nemotron gave all 3s — including spirit=3 where every other model gave 2. This could mean nemotron is less discerning, or it could mean it's reading something the others aren't. The Kearon talk IS spiritually inviting, but it leans more rhetorical than testimony-bearing — the 2 is probably more defensible.
+
+**Alma 32 — scripture chapter (not a "talk" — interesting test of prompt flexibility)**
+
+| Model | teach | come | love | spirit | doctrine | invite |
+|-------|-------|------|------|--------|----------|--------|
+| nemotron | **1** | 3 | 3 | 3 | 3 | 3 |
+| lfm2 | 3 | 3 | 3 | 3 | 3 | **2** |
+| qwen3.5 | **2** | 3 | 3 | 3 | 3 | 3 |
+| glm | **2** | 3 | **2** | **2** | 3 | 3 |
+| devstral | 3 | 3 | 3 | 3 | 3 | 3 |
+
+This is where models differentiate:
+
+- **Nemotron** gave teach_about_christ=**1** — most discerning. Alma 32 is about faith/seed metaphor and doesn't explicitly teach about Christ. This is arguably the most accurate reading.
+- **Qwen3.5 and GLM** gave 2 — reasonable. Alma 32 points toward Christ indirectly.
+- **lfm2 and devstral** gave 3 — least discerning. They're overscoring.
+- **GLM** was also discerning on love=2 and spirit=2 — Alma 32 is doctrinal teaching to poor Zoramites, not warm pastoral care. This is a defensible read.
+- **lfm2** uniquely scored invite=2 — interesting. Alma 32 IS a strong invitation to experiment ("plant the seed"), so this may be underscoring.
+
+**Quality ranking for TITSW (based on score defensibility):**
+1. **GLM** — most nuanced (4 non-3 scores across both tests, all defensible)
+2. **Nemotron** — caught the biggest thing (teach=1 on Alma 32) but missed spirit on Kearon
+3. **Qwen3.5** — solid middle ground
+4. **lfm2** — mixed (invite=2 on Alma 32 is questionable)
+5. **Devstral** — all 3s on Alma 32 is not discerning
+
+### Thinking Mode Discovery
+
+**Qwen3.5-35b** and **GLM-4.7-flash** both have built-in thinking/reasoning modes. When active, the model allocates output tokens to invisible `<think>` blocks, leaving zero visible content. This manifests as: `tokens_out=2048` (or 4096) but `response.Length=0`.
+
+**Fix:** Prepend `/no_think\n` to the user message. Added `-NoThink` switch to the harness.
+
+**Implication for batch processing:** Any automated pipeline using qwen3.5 or glm MUST disable thinking mode or the responses will be empty. Nemotron, lfm2, and devstral don't have this issue.
+
+### Overall Assessment
+
+**For conference reindex (batch processing ~5,500 talks):**
+
+| Factor | Best | Why |
+|--------|------|-----|
+| Speed | nemotron (85 tok/s) | 2.4x faster than devstral |
+| VRAM efficiency | lfm2 (74 tok/s @ 13.4 GB) | Leaves room for embedding model |
+| Context window | nemotron (1M native) | Can fit entire conference sessions |
+| Output quality | GLM (most nuanced TITSW) | But requires -NoThink and slower |
+| Reliability | nemotron, lfm2, devstral | No thinking mode trap |
+| Conciseness | devstral (946 avg tokens) | Less post-processing needed |
+
+**Speed × quality sweet spot:** nemotron-3-nano. Fastest by a wide margin, caught the most important TITSW distinction (teach_about_christ=1 on scripture), only model with 1M context. The spirit=3 on Kearon is the one concerning data point, but that's a judgment call, not a factual error.
+
+**If quality matters more than speed:** GLM-4.7-flash. Most nuanced scorer, but 1.7x slower and requires -NoThink flag management.
+
+**Budget option:** lfm2 at 13.4 GB — fast enough at 74 tok/s, smallest VRAM footprint, but 32k context limits it to per-document processing only.
+
+### What Pass 2 Should Test
+
+1. **Re-run nemotron and lfm2 with max_tokens=4096** — their output was artificially truncated. Fair comparison requires same ceiling.
+2. **Prompt tuning per model** — especially the TITSW prompt. Can we get devstral to be more discerning? Can we get nemotron to be more critical on spirit?
+3. **Longer content** — feed a full Lectures on Faith lecture (~8-10k tokens) to test at higher context utilization.
+4. **Temperature experiment** — try 0.3 for structured JSON output (TITSW) vs 0.7 for prose.
+5. **Conference talk processing prompt** — design the actual prompt that would be used for reindexing 5,500 talks. Test it on 3-5 talks of varying style.
+
 ### Answers (Mar 28 — Michael's decisions)
 
 1. **Both.** Run the same prompts through all 5 (pass 1, apples-to-apples). Then tailor prompts per model to see if targeted prompting gets better results (pass 2). The agent can burn more iteration time on prompt-tuning than Michael can — autoresearch spirit.
