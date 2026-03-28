@@ -197,6 +197,105 @@ Going from 4B to 8B embedding model:
 4. How do we handle the LM Studio limitation of one embedding model OR multiple LLMs at a time?
 5. Should we build a simple harness script to automate prompt → model → score?
 
+---
+
+## Session 3 Triage — Idea Cascade (Mar 28)
+
+Michael sent a burst of connected ideas pivoting from "which model" toward "what should the model produce." Here's the triage.
+
+### Idea 1: LM Studio doesn't have filesystem access — feed content through API
+
+**Verdict: Already handled.** The harness (`run-test.ps1`) reads content files locally and sends them to LM Studio's `/v1/chat/completions` endpoint. No change needed. Michael was clarifying scope, not requesting a change.
+
+### Idea 2: LM Studio as mini-Copilot with MCP servers
+
+**Verdict: Defer.** Interesting vision (LM Studio + function calling + gospel-mcp tools), but entirely separate from model selection. If a model proves it can do structured extraction well, this becomes a natural next step. Not now.
+
+### Idea 3: Graph edges in SQLite (inspired by work's go.mod graph for 560 repos)
+
+**Verdict: Already exists.** Gospel-mcp already has a `cross_references` table:
+
+```sql
+CREATE TABLE IF NOT EXISTS cross_references (
+    source_volume, source_book, source_chapter, source_verse,
+    target_volume, target_book, target_chapter, target_verse,
+    reference_type  -- 'footnote', 'tg', 'bd', 'jst'
+);
+```
+
+Indexed on both source and target. Populated by `extractCrossReferences()` in [scripture.go](../../scripts/gospel-mcp/internal/indexer/scripture.go) which parses footnote anchors (`<a id="fn-9a">`) and cross-reference links. Per-verse scoping was fixed Feb 15 (see [tool-use-observance.md](../../docs/06_tool-use-observance.md)).
+
+**What it DOES have:**
+- Footnote → scripture edges (all 5 standard works)
+- TG, BD, GS edges (study aid references)
+- Bidirectional indexes (can query "what points TO this verse" via idx_cross_ref_target)
+- Already returned with every `gospel_get` and `gospel_search` result
+
+**What it DOESN'T have:**
+- Multi-hop traversal ("show me everything 2 hops from Alma 32:21")
+- Conference talk → scripture edges (when Holland quotes Alma 7:12, that edge isn't stored)
+- LLM-inferred thematic edges (implicit connections, not explicit footnotes)
+- Study document → scripture edges
+- Graph visualization
+
+### Idea 4: Parse footnotes to build scripture relationship graph
+
+**Verdict: Already done.** This IS Idea 3. The footnote parser exists. The graph exists. The question is what ELSE to add to the graph — and that's where LLM inference comes in (talk → scripture edges, thematic edges).
+
+### Idea 5: "Gospel-comb" — unified vec + SQLite tool
+
+**Verdict: Defer. Good idea, wrong time.**
+
+Current architecture:
+- **Gospel-mcp:** SQLite + FTS5 (keyword search, cross-references, structured data)
+- **Gospel-vec:** chromem-go only (vector search, .gob.gz files, no SQLite)
+
+Gospel-comb would combine: FTS5 (keyword) + vectors (semantic) + graph (cross-refs) in one queryable system. Three implementation options:
+- A: Add SQLite to gospel-vec
+- B: Add vectors to gospel-mcp
+- C: New tool wrapping both
+
+**Why defer:** Blocks on model selection. LLM-generated edges (talk→scripture, thematic connections) depend on which model produces them. Conference reindex is the forcing function and it hasn't happened yet. Also: 7 priorities already in active.md. Adding a new tool proposal makes 8.
+
+**Revisit when:** Model experiments produce a clear winner AND conference reindex succeeds.
+
+### Idea 6: Index with Teaching in the Savior's Way principles as dimensions
+
+**Verdict: Add as prompt. Actionable NOW.**
+
+The 4 TITSW principles map to analyzable dimensions:
+1. **Love Those You Teach** — empathy, seeing divine potential, safety
+2. **Teach by the Spirit** — spiritual preparation, responsiveness, testimony
+3. **Teach the Doctrine** — scriptural depth, doctrinal clarity, personal relevance
+4. **Invite Diligent Learning** — agency, participation, application
+
+This is a prompt template question, not an architecture question. Add `prompts/titsw.md` to the harness as a 6th prompt that asks the model to analyze a talk/passage along these dimensions and return structured JSON with scores/tags. This directly tests whether models can produce structured teaching analysis — useful signal for model selection AND for eventual indexing.
+
+Michael's overview study at [study/teaching-in-the-saviors-way/00_overview.md](../../study/teaching-in-the-saviors-way/00_overview.md) has the full breakdown.
+
+### Triage Summary
+
+| Idea | Verdict | Action |
+|------|---------|--------|
+| API-only scope | ✅ Already handled | None |
+| LM Studio + MCP | ⏸️ Defer | Revisit after model selection |
+| SQLite graph edges | ✅ Already exists | None — cross_references table |
+| Parse footnotes | ✅ Already done | None — extractCrossReferences() |
+| Gospel-comb unified search | ⏸️ Defer | Good idea, blocks on model selection |
+| TITSW indexing dimensions | 🔨 Add prompt | Create prompts/titsw.md |
+
+### Mosiah 4:27 Check
+
+Michael has 7 priorities in active.md. The model experiments are #3. The harness is built. The next step is still: **load nemotron in LM Studio and run the suite.** These ideas are valuable future direction but none of them change what needs to happen next. The one actionable item (TITSW prompt) can be built in 5 minutes and doesn't change scope — it adds signal to the existing experiment.
+
+### What the Graph IS Missing (Future Reference)
+
+When it's time to build gospel-comb, the real graph extension opportunities are:
+1. **Talk → scripture edges.** LLM reads each conference talk, extracts scripture references → stores as edges. This is the conference reindex output.
+2. **Thematic edges.** LLM identifies that Moses 6:63 and Alma 30:44 both teach "all things testify of Christ" → stores as thematic connection.
+3. **Study aid densification.** TG entries already point to verses, but the TG connections themselves could be traversed (A and B in same TG entry = related).
+4. **Multi-hop queries.** "Show me the 2-hop neighborhood of Alma 32:21" — requires a simple BFS on the graph. SQLite can do this with recursive CTEs.
+
 ### Answers (Mar 28 — Michael's decisions)
 
 1. **Both.** Run the same prompts through all 5 (pass 1, apples-to-apples). Then tailor prompts per model to see if targeted prompting gets better results (pass 2). The agent can burn more iteration time on prompt-tuning than Michael can — autoresearch spirit.
