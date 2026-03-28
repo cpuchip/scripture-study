@@ -141,37 +141,63 @@ Review all results. Decide:
 
 - **LM Studio only** — not Ollama, not cloud APIs. This is local inference testing.
 - **Dual 4090s** — all models must fit in 48GB VRAM (quantized OK)
-- **One model at a time** — LM Studio loads one LLM or one embedding model at a time on the local server
+- **One inference model + one embedding model at a time** — LM Studio can run both concurrently, but at max context lengths we should limit to this. No multi-LLM concurrent.
 - **GGUF format** — all models must be available as GGUF for LM Studio
-- **Existing benchmark framework** — use gospel-vec experiment infrastructure where possible
+- **Existing benchmark framework** — use gospel-vec experiment infrastructure where possible (Phase 4)
 - **Results go to `experiments/lm-studio/`** — not mixed with cloud model experiments
 
 ---
 
 ## Approach
 
-### Harness Script
+### Test Harness — BUILT
 
-Build a lightweight test harness (PowerShell or Go) that:
-1. Loads a prompt template
-2. Sends it to `http://localhost:1234/v1/chat/completions` with configurable model
-3. Records: response text, tok/s (from API response headers), latency, token counts
-4. Saves results as JSON + human-readable markdown
+The harness lives at `experiments/lm-studio/scripts/`. Inspired by [autoresearch](https://github.com/karpathy/autoresearch) — same loop: run a test, record results, compare, iterate.
 
-This is simple enough to be Phase 0 (build the tool) or can be manual for Phase 1.
+**Architecture:**
+```
+scripts/
+  run-test.ps1     — Single test: prompt + content → model → recorded response
+  run-suite.ps1    — Full suite: all prompts × selected model → results.tsv
+  context.md       — System context (covenant + intent extract) sent to every model
+  prompts/         — Test prompt templates ({{CONTENT}} placeholder)
+  content/         — Test content (talks, scripture chapters)
+  results/         — Raw JSON responses
+  results.tsv      — Master results log (tab-separated)
+```
+
+**System context:** Every test includes `context.md` as the system message. This is an extract of the covenant and intent — the same framing our agents get. We're testing whether models can work *within our framework*, not just generate generic text.
+
+**Two-pass pattern:**
+- **Pass 1 — Standard prompt:** Same prompt to every model. Apples-to-apples.
+- **Pass 2 — Tailored prompt:** After seeing how each model responds, tailor prompts to each model's strengths. The agent can iterate prompts far longer than Michael can — this is the autoresearch spirit applied to prompt optimization.
 
 ### Prompt Templates
 
-Store standard prompts in `experiments/lm-studio/prompts/`:
-- `summarize.md` — summarization prompt
-- `cross-reference.md` — scripture cross-reference discovery
-- `teaching.md` — teaching pattern extraction
-- `needle.md` — long-context faithfulness test
-- `rag-reader.md` — RAG pipeline reader prompt
+Stored in `experiments/lm-studio/scripts/prompts/`:
+- `summarize.md` — summarization (thesis, scriptures, doctrinal points, teaching pattern)
+- `cross-reference.md` — explicit citations, implicit allusions, unexpected connections
+- `teaching.md` — rhetorical analysis for Sunday School prep
+- `deep-study.md` — personal scripture study (key words, doctrine, becoming)
+- `needle.md` — long-context faithfulness (specific detail retrieval)
+
+### Test Content
+
+Stored in `experiments/lm-studio/scripts/content/`:
+- `kearon-receive-his-gift.md` — Elder Kearon, April 2025 (~13K chars, good teaching talk)
+- `alma-32.md` — Alma 32, faith chapter (~10K chars, doctrinal content)
 
 ### Scoring
 
 Human scoring (Michael) for quality metrics. Automated scoring for speed/fit. This is deliberate — we're testing whether the model output is *useful for scripture study*, not whether it passes a benchmark.
+
+### Results Log
+
+`results.tsv` (autoresearch-inspired structured logging):
+```
+timestamp  model  prompt  content  tag  tokens_in  tokens_out  tok_per_sec  latency_ms  score  notes
+```
+Score (0-5) and notes filled in by Michael after reviewing raw responses in `results/`.
 
 ---
 
@@ -179,8 +205,19 @@ Human scoring (Michael) for quality metrics. Automated scoring for speed/fit. Th
 
 - Not a general LLM benchmark (we have enough of those)
 - Not a cloud vs local comparison (that's the experiments/claude/ etc. folders)
-- Not an embedding-only experiment (that's Phase 4, but the primary focus is inference models)
 - Not building a permanent evaluation framework (a test harness yes, a product no)
+
+---
+
+## Embedding Experiments — Separate Track
+
+**Decision (Mar 28):** Embedding experiments (Phase 4) are split out from inference model testing. The inference model decision blocks conference reindex; the embedding upgrade can follow independently.
+
+**Current leaning:** Adopt Qwen3-Embedding-8B-GGUF. It's the formally supported Qwen model (not a community fork like the VL variant). Stick with 4B or 8B — the VL model is user-supported and may not persist.
+
+**Key question:** Is there a retrieval quality difference between 4B and 8B for our content? Both support instruct-aware mode and MRL (custom dimensions). The 4B supports dimensions 32-2560; the 8B supports 32-4096. Both support custom task instructions with 1-5% improvement.
+
+**When:** After inference model selection. Use existing gospel-vec experiment framework (`scripts/gospel-vec/experiments/`).
 
 ---
 
@@ -216,8 +253,10 @@ Human scoring (Michael) for quality metrics. Automated scoring for speed/fit. Th
 
 ## Recommendation
 
-**Build.** This is directly on the critical path — conference reindex needs a model decision, and we finally have the hardware to test properly. The phased structure means any single session produces value. Phase 1 alone (speed + basic quality) would be sufficient to make a reindex decision if time is tight.
+**Build.** Harness is built, prompts written, content staged. Ready to run.
 
-**Phase 1 first.** Get speed numbers and basic quality assessment. That alone might be enough to pick the reindex model.
+**Early signal from Michael:** Nemotron-3-nano is the speed leader at 160+ tok/s, and qualitative testing ("teach me about Go concurrency") showed both nemotron and qwen3.5-35b performing well. Speed alone makes nemotron the front-runner for batch processing (reindex). Quality testing will confirm or challenge that.
 
-**Don't overengineer the harness.** A PowerShell script with `Invoke-RestMethod` is fine. We're not building a product.
+**Phase 1 first.** Run the full suite against each model. Same prompts, same content. Get the apples-to-apples numbers. Then iterate prompts for any models that seem to under-perform on the standard prompts.
+
+**Embedding: punt for now.** Lean toward 8B adoption, but test retrieval quality before committing. Both 4B and 8B support instruct-aware mode, so there's no urgency to upgrade for that feature alone.

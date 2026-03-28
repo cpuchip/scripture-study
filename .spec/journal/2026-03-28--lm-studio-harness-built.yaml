@@ -1,0 +1,59 @@
+date: "2026-03-28"
+title: "LM Studio Harness Built — Autoresearch Pattern Applied"
+mood: building
+phase: plan
+agent: plan
+
+summary: >
+  Session 2 of the LM Studio model experiments. Michael's key input: we need a
+  harness, not just prompts. The project has covenant, intent, and instructions that
+  form a framework — models should be tested within that framework, not bare. Also:
+  embedding experiments split to separate track (both 4B and 8B support instruct-aware
+  mode), LM Studio can run 1 embedding + 1 inference concurrently, two-pass testing
+  pattern (standard then tailored), and nemotron is the speed front-runner. Reviewed
+  karpathy's autoresearch for the experiment loop pattern. Built the complete harness.
+
+discoveries:
+  - >
+    Qwen3-Embedding-4B already supports instruct-aware mode AND MRL (custom dimensions
+    32-2560). This was not documented in our scratch file from session 1. The 8B upgrade
+    gives slightly better MTEB scores (+1 multilingual, +0.6 English) and higher max
+    dimensions (4096 vs 2560), but instruct support is NOT a differentiator — we can
+    use it with the current 4B model right now by adding task-specific prefixes to
+    gospel-vec's embed.go.
+  - >
+    Autoresearch's core insight applies directly: program.md (human-authored context)
+    is separate from train.py (the thing being iterated on). For us, context.md
+    (covenant/intent extract) is fixed, and the prompt templates are what get iterated
+    between pass 1 and pass 2. The agent can iterate prompts far longer than Michael
+    can — that's the autoresearch spirit.
+  - >
+    Michael's correction on LM Studio concurrency: it CAN run 1 embedding model + 1
+    inference model simultaneously. Previous session noted "one OR the other" — that
+    was wrong for our use case. At max context lengths we limit to this pair.
+
+reflections:
+  - >
+    Michael's instinct to include the covenant/intent as system context is right. We're
+    not testing bare models — we're testing whether models can work within a specific
+    framework. A model that produces great generic output but ignores the study framework
+    is less useful than a model that follows the framework even if its prose is rougher.
+  - >
+    The two-pass pattern is a genuinely good experiment design. Pass 1 answers "which
+    model is best out of the box?" Pass 2 answers "which model responds best to prompt
+    engineering?" These could give different answers — a model that's mediocre on pass 1
+    might become the best on pass 2 if it's more responsive to instruction.
+  - >
+    Splitting embeddings to a separate track was the right call. The inference model
+    decision blocks conference reindex. The embedding upgrade is valuable but independent.
+
+carry_forward:
+  - "Run the suite: load nemotron in LM Studio, run-suite.ps1, score, then next model"
+  - "Embedding instruct support is available NOW on 4B — could update gospel-vec embed.go independently"
+  - "Pass 2 prompt tailoring — agent can iterate after pass 1 results are scored"
+  - "GLM-4.7-Flash context discrepancy still needs verification (128k vs 202,752)"
+
+open_questions:
+  - "Does the covenant/intent system context actually improve output quality, or is it wasted tokens for local models with limited instruction following?"
+  - "How much does prompt tailoring (pass 2) actually help vs standard prompts (pass 1)?"
+  - "Should we add a 'rag-reader' prompt that tests the model as a RAG pipeline reader specifically?"

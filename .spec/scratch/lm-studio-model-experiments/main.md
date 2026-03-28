@@ -196,3 +196,66 @@ Going from 4B to 8B embedding model:
 3. Should embedding experiments (Qwen3-8B) be a separate spec or bundled here?
 4. How do we handle the LM Studio limitation of one embedding model OR multiple LLMs at a time?
 5. Should we build a simple harness script to automate prompt → model → score?
+
+### Answers (Mar 28 — Michael's decisions)
+
+1. **Both.** Run the same prompts through all 5 (pass 1, apples-to-apples). Then tailor prompts per model to see if targeted prompting gets better results (pass 2). The agent can burn more iteration time on prompt-tuning than Michael can — autoresearch spirit.
+2. **Yes, blocks reindex.** Michael wants to see if one of these models is better before reindexing. Conference timing is the forcing function.
+3. **Split out.** Embeddings become a separate track. Inference model decision is the blocker; embedding upgrade can follow independently. Michael leans toward Qwen3-Embedding-8B adoption since it's formally Qwen-supported (vs VL variant which is community/user-supported).
+4. **1 embedding + 1 inference at a time.** LM Studio can run both concurrently. At max context lengths, we limit to this pair. No multi-LLM concurrent loading.
+5. **Yes, built.** Harness at `experiments/lm-studio/scripts/`. PowerShell. `run-test.ps1` (single test), `run-suite.ps1` (full suite), `context.md` (system prompt from covenant/intent), prompt templates, content files, results.tsv log.
+
+---
+
+## Autoresearch Pattern (Mar 28)
+
+Cloned [karpathy/autoresearch](https://github.com/karpathy/autoresearch) to `external_context/autoresearch/`. The pattern:
+- `program.md` (human-edited context/instructions for the agent)
+- `train.py` (the single file the agent modifies and iterates on)
+- `results.tsv` (structured tab-separated results log)
+- Autonomous loop: try → measure → keep/discard → iterate
+
+Applied to our experiment:
+- `context.md` = our `program.md` (covenant/intent extract as system prompt)
+- Prompt files = our `train.py` (the thing being iterated between pass 1 and pass 2)
+- `results.tsv` = same pattern (structured log, human scores added manually)
+- Not fully autonomous (Michael scores quality) but the prompt-iteration can be agent-driven
+
+---
+
+## Qwen3-Embedding-4B Instruct Support (Mar 28)
+
+**Confirmed:** Qwen3-Embedding-4B DOES support:
+- **Instruct-aware mode:** YES. `Instruct: {task_description}\nQuery:{query}` format. Same as 8B.
+- **MRL (custom dimensions):** YES, 32-2560 (vs 8B which goes to 4096).
+- **MTEB multilingual:** 69.45 (vs 8B at 70.58). English: 74.60 vs 75.22.
+- **Formally supported:** Yes, from Qwen directly. Apache 2.0.
+
+So both models have instruct support. The 8B upgrade gives:
+- Slightly better MTEB scores (~1 point multilingual, 0.6 English)
+- Higher max dimensions (4096 vs 2560)
+- 2x the parameters = more VRAM, slower
+
+The instruct feature alone is NOT a reason to upgrade — we can use it with 4B right now by updating the gospel-vec embed.go to include task-specific prefixes. The dimension increase and marginal quality bump are the real differentiators for 8B.
+
+---
+
+## System Context Design (Mar 28)
+
+Michael's insight: the project has built agent modes, skills, copilot instructions, covenants, and intent. Most of that is out of scope for testing local models — but **covenant, intent, and core instructions** should be part of the test. We're not testing bare models; we're testing whether they can work within our framework.
+
+The system context (`context.md`) extracts:
+- Core values from intent.yaml (depth over breadth, honest exploration, faith as framework)
+- Key constraints (accurate quotes, specific scriptures, admit uncertainty)
+- What good output looks like (cross-references, word analysis, teaching patterns, becoming)
+- Standard works reference
+
+This is ~250 tokens of system context — light enough that it doesn't eat into the content window, heavy enough that it provides framework.
+
+---
+
+## Early Quality Signal (Mar 28)
+
+Michael reports: both nemotron-3-nano and qwen3.5-35b performed well on "teach me about Go concurrency" — a general knowledge task, not gospel-specific. This is encouraging but not conclusive for our use case. The harness tests will give gospel-specific signal.
+
+Speed difference is dramatic: nemotron at 160+ tok/s vs qwen at ~50 tok/s. For batch processing (conference reindex with thousands of documents), 3x speed is the difference between a 2-hour reindex and a 6-hour one. Speed alone makes nemotron the front-runner for batch work.
