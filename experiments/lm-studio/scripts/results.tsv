@@ -118,3 +118,6 @@ timestamp	model	prompt	content	tag	tokens_in	tokens_out	gen_tok_per_sec	tok_per_
 2026-03-28 10:18:42	nemotron-3-nano	titsw-v2	kearon-receive-his-gift	titsw-v2	5215	4096	0	103.5	39583	0	39583		
 2026-03-28 10:19:32	nemotron-3-nano	titsw-v2	kearon-receive-his-gift	titsw-v2-retry	5215	3123	550.4	102.1	24926	5674	30600		
 2026-03-28 10:20:03	nemotron-3-nano	titsw	kearon-receive-his-gift	titsw-v1	4909	1583	340.9	92.1	12535	4644	17179		
+2026-03-28 15:19:01	nemotron-3-nano	titsw-v3	alma-32	v3-ctx-validation	13090	4096	531.7	83.7	41208	7704	48912		
+2026-03-28 15:19:57	nemotron-3-nano	titsw-v3	kearon-receive-his-gift	v3-ctx-validation	10384	3625	368.6	80.2	35389	9834	45223		
+2026-03-28 15:20:45	nemotron-3-nano	titsw-v3	kearon-receive-his-gift	v3-noctx-validation	5598	3189	381.8	84.2	29543	8353	37896		

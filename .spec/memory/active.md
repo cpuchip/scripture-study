@@ -1,6 +1,6 @@
 # Active Context
 
-*Last updated: 2026-03-30*
+*Last updated: 2026-03-28*
 *Archive: [archive/active-2026-03-22.md](archive/active-2026-03-22.md) — detailed records through Mar 22*
 *Note: Migrated to new computer on Mar 27. Plex restored. Old desktop (LEPTON) decommissioned.*
 *Note: Dual 4090s confirmed in new desktop (Mar 28). Hardware enables 30B+ models at full context.*
@@ -18,7 +18,13 @@
    - **gospel-vocab.md** — 7 patterns, ~1,960 tokens. Verified from 18 source blocks across all five standard works. Final: [experiments/lm-studio/scripts/context/gospel-vocab.md](../../experiments/lm-studio/scripts/context/gospel-vocab.md). Scratch: [study/.scratch/gospel-vocab.md](../../study/.scratch/gospel-vocab.md).
    - **titsw-framework.md** — 6 sections (2 meta-principles + 4 principles), ~1,990 tokens. Synthesized from 6 TITSW manual chapters + Michael's overview study + ground truth scoring. Each principle: definition, sub-dimensions with Christ exemplars, key differentiator, score-level anchors (3 vs 7). Anti-inflation guardrail at the end. Final: [experiments/lm-studio/scripts/context/01-titsw-framework.md](../../experiments/lm-studio/scripts/context/01-titsw-framework.md). Scratch: [study/.scratch/titsw-framework.md](../../study/.scratch/titsw-framework.md).
    - Combined Layer 2+3: ~3,950 tokens in system message — well within architecture budget.
-   **Dev stream** (next session): update harness (`-Context` param, `cache_prompt: true`), write TITSW v3 prompt (0-9), validate against ground truth. Proposal: [.spec/proposals/context-engineering.md](../proposals/context-engineering.md). Scratch: [.spec/scratch/context-engineering/main.md](../scratch/context-engineering/main.md). Ground truth: [experiments/lm-studio/scripts/references/ground-truth-alma32-kearon.md](../../experiments/lm-studio/scripts/references/ground-truth-alma32-kearon.md).
+   **DEV STREAM COMPLETE.** All 4 deliverables shipped and validated:
+   - **run-test.ps1** — `-Context` parameter loads context directory files into system message. `cache_prompt: true` in request body eliminates redundant system prompt prefill.
+   - **run-suite.ps1** — forwards `-Context` and `-NoThink` parameters.
+   - **titsw-v3.md** — 0-9 scale with anchored rubric, anti-inflation language, reference-aware instruction, new JSON fields (typological_depth, cross_reference_density, surface_vs_deep_delta). All v2 content preserved.
+   - **Validation results (Mar 28):** Alma 32 teach_about_christ=7 with context (was 1-2, target ≥5 ✅). Kearon teach_about_christ=8, doctrine=7, invite=7 (all within ±1 of ground truth ✅). No systematic inflation from context ✅. cache_prompt works ✅. Known issue: love/spirit inflated on Kearon (model weakness, not context-induced — same inflation with and without context).
+   - Proposal: [.spec/proposals/context-engineering.md](../proposals/context-engineering.md). Dev spec: [.spec/proposals/context-engineering-dev.md](../proposals/context-engineering-dev.md). Ground truth: [experiments/lm-studio/scripts/references/ground-truth-alma32-kearon.md](../../experiments/lm-studio/scripts/references/ground-truth-alma32-kearon.md).
+   **Next:** Full batch reindex of 5,500 talks. Consider love/spirit calibration in a future prompt iteration.
 4. **Debugging book** — DONE. Agans' "Debugging: The 9 Indispensable Rules" extracted to `books/debugging/9-indispensable-rules/` (17 chapter markdown files). Debug agent created at `.github/agents/debug.agent.md`. Connections mapped: Moroni 10:4 inverse hypothesis = falsification, scientific method = the 9 rules, Abraham 4:18 = Rule 9 (verify the fix), council moment = Rule 8 (get a fresh view). Analysis at `.spec/scratch/debugging-agent/main.md`. 2006 expanded edition (192pp, ISBN 9780814474570) available used ~$19 on AbeBooks.
 5. **WS1 multi-agent framework** — Continue building. Next: Phase 3c (auto-routing + review queue).
 6. **Desktop swap** — DONE. New computer operational (Mar 27). Plex restored from LEPTON backup (11.2 GB, v1.42→v1.43 forward migration). All four media drives (D/E/F/G) mounted correctly. Libraries, watch history, and play state all verified. Old desktop ready to decommission.
