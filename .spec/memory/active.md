@@ -2,6 +2,7 @@
 
 *Last updated: 2026-03-27*
 *Archive: [archive/active-2026-03-22.md](archive/active-2026-03-22.md) — detailed records through Mar 22*
+*Note: Migrated to new computer on Mar 27. Plex restored. Old desktop (LEPTON) decommissioned.*
 
 ---
 
@@ -15,7 +16,7 @@
 3. **Model experiments** — Run same prompts through Haiku/Sonnet/Opus, evaluate quality. D&C 107 ratios for model-tier stewardship. Claude subscription likely needed next month.
 4. **Debugging book** — DONE. Agans' "Debugging: The 9 Indispensable Rules" extracted to `books/debugging/9-indispensable-rules/` (17 chapter markdown files). Debug agent created at `.github/agents/debug.agent.md`. Connections mapped: Moroni 10:4 inverse hypothesis = falsification, scientific method = the 9 rules, Abraham 4:18 = Rule 9 (verify the fix), council moment = Rule 8 (get a fresh view). Analysis at `.spec/scratch/debugging-agent/main.md`. 2006 expanded edition (192pp, ISBN 9780814474570) available used ~$19 on AbeBooks.
 5. **WS1 multi-agent framework** — Continue building. Next: Phase 3c (auto-routing + review queue).
-6. **Desktop swap** — Decommission old desktop (migrate Plex, finalize). Do NOT repurpose. **Plex migration proposal written** (`private/.spec/proposals/plex-migration/main.md`). Custom backup/restore PowerShell scripts recommended — no external dependencies, scripts live on D: drive. Awaiting approval to build Phase 1 (backup script).
+6. **Desktop swap** — DONE. New computer operational (Mar 27). Plex restored from LEPTON backup (11.2 GB, v1.42→v1.43 forward migration). All four media drives (D/E/F/G) mounted correctly. Libraries, watch history, and play state all verified. Old desktop ready to decommission.
 7. **Server deployment** — App container on NOCIX. Domain rotated (Mar 22, confirmed working).
 
 ### Key Decisions (this cycle)
