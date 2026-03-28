@@ -199,6 +199,75 @@ Going from 4B to 8B embedding model:
 
 ---
 
+## Deep Content Study — Ground Truth (Mar 28)
+
+Michael's insight: "if we don't understand the content ourself deeper, I'm not sure we'll come up with good prompts on the indexing side." Before refining prompts further, we studied both test documents to establish what the *right* answers actually are.
+
+### Alma 32 — The Christological Architecture
+
+**Surface reading:** Alma teaches about faith using a seed metaphor. Christ is barely mentioned by name. A model rating `teach_about_christ` based on surface text gets a 1 (nemotron v2) or 2 (GLM).
+
+**Typological reading:** The seed-tree-fruit parable IS the tree of life vision:
+
+1. **Alma 32:40** — "the fruit of the tree of life" — footnote cross-references Gen 2:9, 1 Ne 15:36
+2. **Alma 32:42** — "most precious, sweet above all that is sweet, white above all that is white" — nearly verbatim from 1 Ne 8:10-11 (footnote 42b points there)
+3. **1 Nephi 11:21-25** — The interpretation: "Knowest thou the meaning of the tree?" → "it is the love of God, which sheddeth itself abroad in the hearts of the children of men" → "the tree of life was a representation of the love of God"
+4. **1 Nephi 11:25** — "the rod of iron... was the **word** of God, which led to... the tree of life"
+
+So: The **word** (rod of iron/seed) leads to the **tree of life** (love of God = Christ's love). Alma's entire parable — plant the word → it becomes a tree → feast on its fruit — is a step-by-step description of how Christ enters the heart. The seed IS Christ.
+
+This is reinforced by:
+- **John 1:1** — "the Word was God" (the word=Christ, the seed=Christ)
+- **Alma 33:22** — Alma's next chapter makes it explicit: "believe in the Son of God, that he will come to redeem his people"
+- **Alma 33:19** — Moses raised a "type" in the wilderness — the brass serpent as a type of Christ. Alma is drawing typological parallels throughout.
+
+**The "sheddeth itself abroad" thread:**
+- 1 Ne 11:22 — the love of God "sheddeth itself abroad in the hearts of the children of men"
+- Moroni 8:26 — the Comforter "filleth with hope and perfect love" which "endureth by diligence" — same fruiting process as Alma 32
+- Romans 5:5 — "the love of God is shed abroad in our hearts by the Holy Ghost" — Paul uses the identical language
+
+**What this means for scoring:** `teach_about_christ` on Alma 32 depends entirely on reading depth:
+- Surface: 1 (Christ barely mentioned)
+- With cross-references: 6-7 (Christ is the underlying architecture)
+- Full typological: 8-9 (the entire parable IS about receiving Christ)
+
+### Kearon — "Receive His Gift"
+
+**Surface reading:** Explicitly, repeatedly about Christ. Easy 3/3 on teach_about_christ and help_come_unto_christ.
+
+**Deeper connections:**
+- Footnote 5 cites **1 Nephi 11:17** — "I know that he loveth his children" — same chapter as the tree = love of God interpretation
+- The gift metaphor (given → accepted/opened → received) maps to Alma 32's seed metaphor (planted → nourished → fruited). Same process, different frame.
+- "Just let it in" (Kearon) vs "give place, that a seed may be planted in your heart" (Alma 32:28) — both about creating receptivity
+- D&C 88:33 (Kearon's fn 9) — "what doth it profit a man if a gift is bestowed upon him, and he receive not the gift?" — the receiving theme
+
+**What's weaker (GLM was right):**
+- Love (2 not 3): Kearon talks *about* God's love doctrinally but doesn't demonstrate personal knowledge of his audience. The car story shows his father's love, not Christlike love for the listener.
+- Spirit (2 not 3): No pauses, no "take a moment," no departure from script. The Spirit is invoked doctrinally ("the Holy Spirit can bear witness") but the talk doesn't create space for the Spirit to work in real-time.
+
+### Scale Assessment (0-3 vs 0-9)
+
+A 0-3 scale can't capture typological depth. All three models (nemotron, GLM, the ground truth) arrive at different answers for `teach_about_christ` on Alma 32 — and all are defensible at different reading depths.
+
+A 0-9 scale would allow:
+- 1-2: Christ mentioned incidentally
+- 3-4: Deliberate Christ reference but not central
+- 5-6: Christ woven through, surface topic dominates (Alma 32 without cross-references)
+- 7-8: Christ is the deep architecture even when surface says something else (Alma 32 WITH typological awareness)
+- 9: Explicitly, pervasively about Christ (1 Nephi 11, 3 Nephi 11)
+
+**Problem:** A local 30B-parameter model can only see what's in its context window. It receives Alma 32's text + footnote markers, but NOT 1 Nephi 11, NOT Alma 33, NOT the typological tradition. It can only score surface-level.
+
+**Options:**
+1. **Accept surface scoring** — score what the text says on its face. Fast. Consistent. Misses depth.
+2. **Enrich the content** — resolve key cross-references in a pre-processing step and include them. The model sees Alma 32 + "Note: Alma 32:42's tree of life imagery connects to 1 Ne 11:22-25 where the tree = the love of God = Christ." Accurate but requires per-document work.
+3. **Add a "typological depth" field** — let the model score surface AND flag potential depth. "This passage uses tree of life imagery that may connect to Christological typology in 1 Ne 11." Then a human or a second pass can evaluate.
+4. **Two-pass scoring** — first pass on the document alone (surface scores), second pass with cross-references injected (deep scores). Expensive but most accurate.
+
+For 5,500 conference talks (#1 is sufficient — talks are usually explicit about their Christ-connections). For scriptures, option 2 or 4 is needed. This means the reindex pipeline might need different prompts for talks vs scriptures.
+
+---
+
 ## Prompt Refinement — TITSW v2 (Mar 28)
 
 ### Problem
