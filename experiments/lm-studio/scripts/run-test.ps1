@@ -46,7 +46,7 @@ param(
     [Parameter(Mandatory)][string]$Prompt,
     [Parameter(Mandatory)][string]$Content,
     [string]$Model = "",
-    [int]$MaxTokens = 2048,
+    [int]$MaxTokens = 4096,
     [double]$Temperature = 0.7,
     [string]$Tag = "",
     [switch]$NoSave,
@@ -143,20 +143,55 @@ $requestBody = @{
     )
     max_tokens = $MaxTokens
     temperature = $Temperature
-    stream = $false
+    stream = $true
+    stream_options = @{ include_usage = $true }
 } | ConvertTo-Json -Depth 10
 
-# --- Send request and time it ---
+# --- Send streaming request and time it ---
 
 Write-Host "`nSending request..." -ForegroundColor Yellow
 $stopwatch = [System.Diagnostics.Stopwatch]::StartNew()
 
 try {
-    $response = Invoke-RestMethod -Uri "$BaseURL/chat/completions" `
-        -Method Post `
-        -Body $requestBody `
-        -ContentType "application/json; charset=utf-8" `
-        -TimeoutSec 600
+    $bodyBytes = [System.Text.Encoding]::UTF8.GetBytes($requestBody)
+    $httpRequest = [System.Net.HttpWebRequest]::Create("$BaseURL/chat/completions")
+    $httpRequest.Method = "POST"
+    $httpRequest.ContentType = "application/json; charset=utf-8"
+    $httpRequest.Timeout = 600000
+    $reqStream = $httpRequest.GetRequestStream()
+    $reqStream.Write($bodyBytes, 0, $bodyBytes.Length)
+    $reqStream.Close()
+
+    $httpResponse = $httpRequest.GetResponse()
+    $reader = New-Object System.IO.StreamReader($httpResponse.GetResponseStream())
+
+    $ttftMs = $null
+    $responseText = ""
+    $tokensIn = 0
+    $tokensOut = 0
+
+    while (-not $reader.EndOfStream) {
+        $line = $reader.ReadLine()
+        if (-not $line -or -not $line.StartsWith("data: ")) { continue }
+        $data = $line.Substring(6)
+        if ($data -eq "[DONE]") { break }
+        try {
+            $chunk = $data | ConvertFrom-Json
+            # Check for content delta
+            $delta = $chunk.choices[0].delta.content
+            if ($delta) {
+                if (-not $ttftMs) { $ttftMs = $stopwatch.ElapsedMilliseconds }
+                $responseText += $delta
+            }
+            # Check for usage in final chunk
+            if ($chunk.usage) {
+                $tokensIn = $chunk.usage.prompt_tokens
+                $tokensOut = $chunk.usage.completion_tokens
+            }
+        } catch { }
+    }
+    $reader.Close()
+    $httpResponse.Close()
 } catch {
     $stopwatch.Stop()
     Write-Error "API call failed after $($stopwatch.ElapsedMilliseconds)ms: $_"
@@ -165,16 +200,13 @@ try {
 
 $stopwatch.Stop()
 $latencyMs = $stopwatch.ElapsedMilliseconds
+if (-not $ttftMs) { $ttftMs = $latencyMs }
+$genTimeMs = $latencyMs - $ttftMs
+$totalTokens = $tokensIn + $tokensOut
 
-# --- Extract results ---
-
-$responseText = $response.choices[0].message.content
-$tokensIn = $response.usage.prompt_tokens
-$tokensOut = $response.usage.completion_tokens
-$totalTokens = $response.usage.total_tokens
-
-# Calculate tok/s (output tokens / wall time)
+# Calculate tok/s: overall (output/wall) and generation-only (output/gen_time)
 $tokPerSec = if ($latencyMs -gt 0) { [math]::Round($tokensOut / ($latencyMs / 1000), 1) } else { 0 }
+$genTokPerSec = if ($genTimeMs -gt 0) { [math]::Round($tokensOut / ($genTimeMs / 1000), 1) } else { 0 }
 
 # --- Display results ---
 
@@ -184,8 +216,11 @@ Write-Host "`n--- Stats ---" -ForegroundColor Green
 Write-Host "Tokens in:  $tokensIn"
 Write-Host "Tokens out: $tokensOut"
 Write-Host "Total:      $totalTokens"
-Write-Host "Latency:    $($latencyMs)ms"
-Write-Host "Tok/s:      $tokPerSec"
+Write-Host "TTFT:       $($ttftMs)ms"
+Write-Host "Gen time:   $($genTimeMs)ms"
+Write-Host "Total time: $($latencyMs)ms"
+Write-Host "Gen tok/s:  $genTokPerSec" -ForegroundColor Cyan
+Write-Host "Overall tok/s: $tokPerSec"
 
 # --- Save raw response ---
 
@@ -208,7 +243,10 @@ if (-not $NoSave) {
         tokens_in = $tokensIn
         tokens_out = $tokensOut
         tokens_total = $totalTokens
+        ttft_ms = $ttftMs
+        gen_time_ms = $genTimeMs
         latency_ms = $latencyMs
+        gen_tok_per_sec = $genTokPerSec
         tok_per_sec = $tokPerSec
         system_message = $systemMessage
         user_message = $userMessage
@@ -223,7 +261,7 @@ if (-not $NoSave) {
 
 # Create header if file doesn't exist
 if (-not (Test-Path $resultsTsv)) {
-    "timestamp`tmodel`tprompt`tcontent`ttag`ttokens_in`ttokens_out`ttok_per_sec`tlatency_ms`tscore`tnotes" |
+    "timestamp`tmodel`tprompt`tcontent`ttag`ttokens_in`ttokens_out`tgen_tok_per_sec`ttok_per_sec`tttft_ms`tgen_time_ms`tlatency_ms`tscore`tnotes" |
         Set-Content $resultsTsv -Encoding UTF8
 }
 
@@ -235,7 +273,10 @@ $tsvLine = @(
     $Tag
     $tokensIn
     $tokensOut
+    $genTokPerSec
     $tokPerSec
+    $ttftMs
+    $genTimeMs
     $latencyMs
     ""  # score — filled in by Michael
     ""  # notes — filled in by Michael

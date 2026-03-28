@@ -449,6 +449,86 @@ This is where models differentiate:
 
 ---
 
+## Pass 2 Results (Mar 28)
+
+### Infrastructure Discoveries
+
+**LM Studio REST API load endpoint:** `POST http://localhost:1234/api/v1/models/load` supports full programmatic control — `context_length`, `eval_batch_size`, `flash_attention`, `num_experts`, `offload_kv_cache_to_gpu`, `echo_load_config`. The CLI (`lms load`) only supports `--gpu`, `-c`, `--parallel`, `--ttl`. Future model loads should use the REST API.
+
+**Speed gap resolved:** LM Studio UI reports generation-only speed. Our harness measured wall-clock including prefill. With streaming measurement (TTFT + gen separation), we confirmed nemotron sustains 170-180 tok/s generation at 1M context, matching UI. The "85 tok/s" from pass 1 was overall throughput including 2.7-7s prefill per request.
+
+**Harness upgraded for pass 2:**
+- Switched from `Invoke-RestMethod` to `HttpWebRequest` with SSE streaming
+- Measures TTFT (time-to-first-token) and gen_tok_per_sec separately
+- Default `max_tokens` bumped from 2048 to 4096
+- New TSV columns: `gen_tok_per_sec`, `ttft_ms`, `gen_time_ms`
+
+**Measurement artifact:** When the server buffers many tokens during prefill and flushes them in a burst, `gen_time_ms` approaches zero and `gen_tok_per_sec` becomes astronomical (e.g., 21k). Total wall-clock (`latency_ms`) remains the reliable metric.
+
+### Pass 2 Settings
+
+| Model | Context | Max Tokens | Eval Batch | Flash Attn | NoThink |
+|-------|---------|-----------|-----------|-----------|---------|
+| nemotron-3-nano | 1,048,576 | 4096 | 512 | Yes | No |
+| glm-4.7-flash | 202,752 | 4096 | 512 | Yes | Yes |
+
+Both loaded via LM Studio UI with optimized settings (GPU Offload 35, 6 experts where applicable, Unified KV Cache).
+
+### Wall-Clock Comparison (seconds)
+
+| Prompt | Content | Nemotron | GLM | Ratio |
+|--------|---------|----------|-----|-------|
+| cross-reference | alma | 26.4 | 73.9 | 2.8x |
+| cross-reference | kearon | 22.6 | 67.6 | 3.0x |
+| deep-study | alma | 18.7 | 71.0 | 3.8x |
+| deep-study | kearon | 18.7 | 47.6 | 2.5x |
+| needle | alma | 7.6 | 22.9 | 3.0x |
+| needle | kearon | 6.2 | 13.7 | 2.2x |
+| summarize | alma | 27.0 | 76.8 | 2.8x |
+| summarize | kearon | 16.2 | 51.6 | 3.2x |
+| teaching | alma | 22.6 | 53.8 | 2.4x |
+| teaching | kearon | 18.6 | 57.7 | 3.1x |
+| titsw | alma | 22.7 | 64.0 | 2.8x |
+| titsw | kearon | 14.9 | 70.6 | 4.7x |
+| **Average** | | **18.5s** | **55.9s** | **3.0x** |
+
+### TTFT Breakdown (seconds)
+
+| | Nemotron Range | GLM Range |
+|---|---|---|
+| Needle (short output) | 5.6 – 7.0 | 12.2 – 21.7 |
+| Prose (long output) | 2.7 – 13.4 | 26.3 – 57.1 |
+| Worst case | 26.8 (summarize-alma) | 76.8 (summarize-alma) |
+
+GLM's TTFT dominates its total time — it spends 60-80% of wall-clock just in prefill. Nemotron's TTFT is 15-50% of its wall-clock.
+
+### At Scale (5,500 talks)
+
+| Model | Avg per talk | Total estimate |
+|-------|-------------|---------------|
+| Nemotron | 18.5s | ~28 hours |
+| GLM | 55.9s | ~85 hours |
+
+### Quality Comparison (TITSW)
+
+GLM is the more discerning evaluator:
+- **Scoring:** GLM gives differentiated scores (love:2, spirit:2 alongside doctrine:3, invite:3). Nemotron tends toward blanket 3s.
+- **Growth opportunity:** GLM explains *why* — "focuses heavily on the *content* and *logic* of the gift rather than the immediate, experiential feeling of the Spirit's presence." Nemotron gives a generic observation.
+- **Examples:** GLM provides 3-4 per field vs nemotron's 2.
+- **Critical eye:** GLM's non-3 scores are defensible and add signal. Nemotron's all-3s don't differentiate.
+
+**But:** From pass 1, nemotron caught the biggest single insight — `teach_about_christ=1` on Alma 32 (it's scripture, not a talk *about* Christ). GLM scored that 2, which is less precise. So nemotron has higher ceilings on the most important classifications, even if its typical output is less nuanced.
+
+### Pass 2 Verdict
+
+**Nemotron-3-nano is the clear choice for batch processing.** 3x faster, comparable quality on the most important classifications, no thinking mode trap, 1M context. GLM's nuance advantage doesn't justify 3x the processing time for 5,500 talks.
+
+**GLM's role:** Interactive quality work where nuance matters and latency is acceptable — study sessions, individual talk deep-dives, prompt iteration. Not batch.
+
+**Remaining models (lfm2, qwen3.5, devstral):** Pass 2 deprioritized. The nemotron vs GLM comparison answered the binding question: nemotron for batch, GLM for quality. The other three models are slower than nemotron (from pass 1) and don't offer GLM's quality advantage. No point spending the time unless a specific use case emerges.
+
+---
+
 ## Autoresearch Pattern (Mar 28)
 
 Cloned [karpathy/autoresearch](https://github.com/karpathy/autoresearch) to `external_context/autoresearch/`. The pattern:
