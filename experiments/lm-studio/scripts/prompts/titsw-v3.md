@@ -27,6 +27,16 @@ Then evaluate the four teaching principles. For each, identify specific examples
 
 A score of 7+ means this content could be used as a teaching example for this principle. Most conference talks score 4-6 on most dimensions. Reserve 8-9 for content that is genuinely exceptional. If you find yourself giving 7+ across the board, reconsider — what is the ONE or TWO things this content does exceptionally well? Score those high, and honestly assess where the content is merely adequate or limited.
 
+**Scoring biases to watch for:**
+
+You are trained to be agreeable. This makes you over-score dimensions where the *language* of a principle appears even when the *practice* of it does not. Two dimensions are especially vulnerable:
+
+- **Love:** A talk that says "God loves you" or "you are a beloved child of God" is making a *doctrinal statement about God's love*. That is NOT the same as the teacher *demonstrating* Christlike love — knowing specific circumstances, naming particular struggles, creating safety for the vulnerable, altering plans because someone needs something. "You are beloved" is a 3. Naming a widow's specific grief and weeping with her is a 7. Most conference talks *declare* love. Few *demonstrate* it at the level this principle describes. Score what the teacher DOES, not what the teacher SAYS about love.
+
+- **Spirit:** A talk that quotes scriptures about the Spirit or says "the Holy Ghost will witness" is teaching ABOUT the Spirit. That is NOT the same as teaching BY the Spirit — visible responsiveness to the audience, departure from prepared text, creating pauses that invite personal revelation, bearing testimony that clearly comes from lived experience rather than doctrinal formula. A tightly scripted talk that mentions the Spirit doctrinally is a 3. A talk where the speaker visibly responds to something in the room — abandons a point, follows a prompting, creates silence — is a 7.
+
+The honest score is more useful than the generous one. If the content is adequate on a dimension, say so. A 3 or 4 on love is not an insult — it means the teaching's strength lies elsewhere.
+
 **1. Love Those You Teach**
 - Seeing divine potential in the audience
 - Knowing their specific circumstances (not generic care)

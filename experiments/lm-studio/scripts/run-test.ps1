@@ -46,7 +46,7 @@ param(
     [Parameter(Mandatory)][string]$Prompt,
     [Parameter(Mandatory)][string]$Content,
     [string]$Model = "",
-    [int]$MaxTokens = 4096,
+    [int]$MaxTokens = 16384,
     [double]$Temperature = 0.7,
     [string]$Tag = "",
     [string]$Context = "",
