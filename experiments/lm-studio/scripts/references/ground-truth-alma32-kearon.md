@@ -292,7 +292,7 @@ All runs: nemotron-3-nano, titsw-v3 (with bias calibration section), Temperature
 | | doctrine | 9 | 8 | -1 | Close — model at least sees doctrine as dominant |
 | | invite | 6 | 7 | +1 | Close |
 
-### Summary Statistics
+### v3 Summary Statistics
 
 | Metric | Value |
 |--------|-------|
@@ -305,36 +305,112 @@ All runs: nemotron-3-nano, titsw-v3 (with bias calibration section), Temperature
 | Worst underscoring | D&C 121 doctrine: -2 (GT 8, model 6) |
 | Mean absolute error | 1.3 |
 
-### Pattern Analysis
+---
 
-**What's working well:**
+## v4 Prompt — Research-Driven Iteration (Mar 28, 2026)
 
-1. **High-signal content scores accurately.** When the text clearly enacts a principle (3 Ne 17 love, Holland spirit, Kearon teach_about_christ), the model nails it. 11 exact matches across 36 scores.
+### Research Phase
 
-2. **Love calibration works for talks.** Kearon love (GT 4, model 4) is exact. Holland love (GT 4, model 5) is +1. The "stated vs demonstrated" bias instruction is landing on conference talks.
+Before implementing v4, extensive research was conducted on nemotron-3-nano's architecture and training:
 
-3. **Spirit calibration works for intellectual content.** Bednar spirit (GT 3, model 3) is exact. The "tightly scripted = 3" instruction lands when there's nothing experiential to confuse it.
+**Architecture:** Hybrid Mamba-2 + Transformer + sparse MoE. 52 total layers: 23 Mamba-2, 23 MoE, only 6 GQA attention layers. Each MoE layer has 128 routed experts (top-6 activated per token) plus 1 shared expert. The sparse attention means weak fine-grained structural pattern detection across long passages.
 
-4. **Holland is the best-calibrated piece.** 2 exact matches, 4 within ±1, no score off by more than 1. The model reads emotional testimony correctly.
+**Training pipeline:** SFT (reasoning ON/OFF modes via chat template) → RLVR (multi-environment GRPO across math, code, tool use, structured output) → RLHF (GenRM trained on Qwen3-235B-A22B, produces individual helpfulness scores) + DPO (tool hallucination reduction).
 
-**What's still broken:**
+**Key insight — RLHF positive bias:** The GenRM rewards "helpfulness," which directly causes score inflation. When asked to rate content, the model inflates positive-sounding dimensions because higher positive scores ≈ more helpful response in its training.
 
-1. **Love inflation on scripture/revelation.** D&C 121 love (GT 5, model 7) and Bednar love (GT 2, model 6) are both inflated. The model reads "love unfeigned" (D&C 121:41) and "love one another" (Bednar quoting Moses 7) as demonstrated love. The calibration section says "score what the teacher DOES, not what the teacher SAYS about love" — but the model doesn't distinguish between a scriptural text *prescribing* love and a teacher *demonstrating* it. Bednar's +4 is the worst miss in the suite.
+**Inference parameters:** NVIDIA recommends temp=0.6/top_p=0.95 for structured output; greedy search for reasoning OFF. Budget control exists for capped thinking (not just binary on/off).
 
-2. **Spirit inflation persists.** Alma 32 spirit (+2.5), Kearon spirit (+2), D&C 121 spirit (+3). The model still confuses *doctrinal references to the Holy Ghost* with *teaching by the Spirit*. D&C 121:46 — "The Holy Ghost shall be thy constant companion" — is a promise about the Spirit's future role, not a moment of the Spirit working in the teaching. The current bias instruction isn't enough to break this pattern.
+### v4 Changes (from v3)
 
-3. **Doctrine/invite underscoring on scripture.** Alma 32 doctrine (GT 8-9, model 7) and invite (GT 8-9, model 7) are both underscored. D&C 121 doctrine (GT 8, model 6) and invite (GT 7, model 5) are worse. The model doesn't recognize when doctrine or invitation IS the dominant mode of a scriptural passage. It may be that scripture — where there's no human "teacher" — confuses the model's TITSW framework, which is designed for evaluating a teacher's approach.
+1. **Dominant mode detection** — Pre-scoring step: "Before scoring, identify which 1-2 dimensions DEFINE this content."
+2. **Scripture vs talk distinction** — "Scripture is its own teacher. Evaluate what the text achieves through structure, doctrine, literary power."
+3. **Love calibration for scripture** — "When a passage prescribes love, score it under doctrine, not love."
+4. **Spirit classification-first rule** — "Classify each Spirit reference as DOCTRINAL or EXPERIENTIAL before scoring."
+5. **teach_about_christ precision** — "Acknowledging Christ as necessary mechanism = 4-5. Teaching ABOUT Christ = revealing His person, character, actions."
+6. **teach_about_christ bias subsection** — Third bias dimension targeting RLHF Christ-mention inflation.
+7. **JSON fields** — Added `source_type` and `dominant_dimensions`.
 
-4. **teach_about_christ inflation on Bednar.** The model gave Bednar 8 (GT 5). Bednar names Christ as the enabling mechanism but doesn't teach ABOUT Christ — the teaching focus is agency and judgment. The model counts any Christ-mention as teaching about Christ, rather than distinguishing between "Christ is architecturally necessary" and "the teaching reveals Christ's person, titles, or character."
+### Iteration History
 
-### Recommendations for v4 Prompt
+Three rounds of refinement during testing:
+- **v4.0**: Initial implementation. Fixed love inflation (Bednar +4→+1). But spirit overcorrected everywhere (3 Nephi 17: +1→-4, Holland: 0→-3). D&C 121 collapsed (teach/help/invite all nosedived). Scoring floor amplified dominant-mode misidentification.
+- **v4.1**: Softened scripture instruction ("Scripture CAN score highly"). Added positive spirit examples. Added scoring floor for dominant dimensions. D&C 121 dramatically improved (3 exact). But scoring floor backfired on Holland (doctrine: 6→9) and 3 Nephi 17 (invite: 5→9).
+- **v4.2**: Removed scoring floor (amplifies misidentification). Replaced spirit bias with classification-first rule (DOCTRINAL vs EXPERIENTIAL). Holland spirit recovered to exact. 3 Nephi 17 spirit recovered to +1. All metrics improved over v3.
 
-1. **Scripture vs. talk distinction.** The TITSW framework evaluates a *teacher's approach*. Scripture doesn't have a human teacher — it IS the teaching. The model needs guidance: "For scripture, evaluate the text as a teaching instrument. For talks, evaluate the speaker's teaching approach."
+### v4.2 Full Comparison Table
 
-2. **Love calibration for scripture.** The current instruction works for talks but not for scripture/revelation. Need: "When a passage *prescribes* love ('love unfeigned,' 'charity towards all men'), this is doctrinal content about love, not the author demonstrating love for the reader. Score doctrine, not love, unless the author enacts love toward specific people within the text."
+| Content | Dim | GT | v3 | v4.2 | v3Δ | v4.2Δ |
+|---------|-----|----|-----|------|-----|-------|
+| **Alma 32** | teach_about_christ | 7-8 | 6 | 6 | -1.5 | -1.5 |
+| | help_come_unto_christ | 8 | 7 | 7 | -1 | -1 |
+| | love | 7-8 | 7 | 3 | -0.5 | **-4.5** |
+| | spirit | 3-4 | 6 | 2 | +2.5 | -1.5 |
+| | doctrine | 8-9 | 7 | 7 | -1.5 | -1.5 |
+| | invite | 8-9 | 7 | 7 | -1.5 | -1.5 |
+| **Kearon** | teach_about_christ | 8 | 8 | 7 | 0 | -1 |
+| | help_come_unto_christ | 8 | 8 | 8 | 0 | 0 |
+| | love | 4 | 4 | 3 | 0 | -1 |
+| | spirit | 3 | 5 | 4 | +2 | +1 |
+| | doctrine | 7 | 6 | 7 | -1 | 0 |
+| | invite | 8 | 7 | 8 | -1 | 0 |
+| **3 Nephi 17** | teach_about_christ | 9 | 9 | 9 | 0 | 0 |
+| | help_come_unto_christ | 9 | 9 | 9 | 0 | 0 |
+| | love | 9 | 9 | 9 | 0 | 0 |
+| | spirit | 8 | 9 | 9 | +1 | +1 |
+| | doctrine | 4 | 5 | 6 | +1 | +2 |
+| | invite | 5 | 7 | 9 | +2 | +4 |
+| **D&C 121** | teach_about_christ | 5 | 3 | 4 | -2 | -1 |
+| | help_come_unto_christ | 5 | 3 | 4 | -2 | -1 |
+| | love | 5 | 7 | 4 | +2 | -1 |
+| | spirit | 4 | 7 | 4 | +3 | 0 |
+| | doctrine | 8 | 6 | 7 | -2 | -1 |
+| | invite | 7 | 5 | 6 | -2 | -1 |
+| **Holland** | teach_about_christ | 7 | 8 | 7 | +1 | 0 |
+| | help_come_unto_christ | 6 | 7 | 8 | +1 | +2 |
+| | love | 4 | 5 | 3 | +1 | -1 |
+| | spirit | 7 | 7 | 7 | 0 | 0 |
+| | doctrine | 6 | 6 | 6 | 0 | 0 |
+| | invite | 3 | 4 | 7 | +1 | +4 |
+| **Bednar** | teach_about_christ | 5 | 8 | 5 | +3 | 0 |
+| | help_come_unto_christ | 5 | 7 | 4 | +2 | -1 |
+| | love | 2 | 6 | 3 | +4 | +1 |
+| | spirit | 3 | 3 | 3 | 0 | 0 |
+| | doctrine | 9 | 8 | 7 | -1 | -2 |
+| | invite | 6 | 7 | 4 | +1 | -2 |
 
-3. **Spirit calibration needs teeth.** The current instruction describes what teaching BY the Spirit looks like but the model still scores high when the Spirit is *mentioned*. Need stronger negative examples: "D&C 121:46 promises the Holy Ghost as a companion. This is doctrine ABOUT the Spirit's future role. It is NOT the author teaching by the Spirit. Score 3-4 for doctrinal references to the Spirit, even when they are beautiful and theologically significant."
+### v3 → v4.2 Statistics Comparison
 
-4. **Dominant-mode detection.** The model under-detects when a single principle IS the dominant mode. Need: "Before scoring, identify which 1-2 dimensions define this content. If the content is sustained doctrinal exposition from start to finish, doctrine should be 7+. If the entire piece functions as an escalating invitation to act, invite should be 7+. Score the dominant mode first, then evaluate the rest."
+| Metric | v3 | v4.2 | Change |
+|--------|-----|------|--------|
+| Exact (±0) | 11 (31%) | **12 (33%)** | +1 |
+| Within ±1 | 23 (64%) | **27 (75%)** | **+4** |
+| Inflation ≥+2 | 9 (25%) | **4 (11%)** | **-5** |
+| Underscoring ≤-2 | 4 (11%) | **3 (8%)** | -1 |
+| MAE | 1.3 | **1.10** | **-0.20** |
 
-5. **teach_about_christ precision.** Need: "Mentioning Christ as the mechanism of salvation ('through Christ's atonement') is NOT the same as teaching about Christ — revealing His person, character, titles, or typological presence. A talk that says 'Christ makes this possible' but focuses on human agency is a 4-5 on teach_about_christ, not an 8."
+### What v4 Fixed
+
+1. **Bednar love:** +4 → +1. The love prescription-vs-demonstration instruction is the most effective single change.
+2. **D&C 121 spirit:** +3 → 0 (exact). Classification-first rule correctly identifies all Spirit references as doctrinal.
+3. **Holland spirit:** Maintained exact (0). Classification-first rule correctly identifies personal testimony as experiential.
+4. **Bednar teach_about_christ:** +3 → 0 (exact). The precision check distinguishes "Christ is architecturally necessary" from "teaching about Christ."
+5. **D&C 121 across all 6 dimensions:** Every dimension improved. All 6 within ±1. Most improved piece.
+6. **Kearon doctrine and invite:** Both fixed to exact.
+
+### What v4 Broke or Didn't Fix
+
+1. **Invite inflation on narrative content.** 3 Nephi 17 invite: +2 → +4. Holland invite: +1 → +4. The model treats any invitation in content as strong invite, doesn't distinguish "invitations exist" from "invitation is the dominant teaching mode." This is the biggest new problem.
+2. **Alma 32 love overcorrection.** -0.5 → -4.5. The scripture love instruction suppresses legitimate love demonstration (Alma's visible joy, turning face toward the poor). The instruction says "only score love when the author enacts love toward specific people" but Alma's relationship with the poor Zoramites IS enacted love — the model just doesn't see it because the instruction biases against all scripture love.
+3. **Doctrine ceiling at 7.** Bednar doctrine: -1 → -2 (GT 9, model 7). D&C 121 doctrine: -2 → -1. The model identifies doctrine as dominant but caps at 7. Likely RLHF "moderate response" tendency — avoids extreme scores.
+4. **Alma 32 spirit overcorrection.** +2.5 → -1.5. Better direction but overcorrected.
+
+### Recommendations for v5 Prompt
+
+1. **Invite calibration.** Add an invite bias section similar to love/spirit: "Not every invitation to act makes invite the dominant dimension. 'Bring them hither' is a command within a narrative, not a structured teaching invitation. Invite scores 7+ when the content builds an escalating call to action: diagnosis → prescription → specific action → promise. A few commands woven into narrative score 4-5 on invite."
+
+2. **Love for scripture characters.** Soften the scripture love instruction: "Scripture CAN demonstrate love when a character in the text enacts love toward specific people — Alma's visible joy for the humble poor (Alma 32:6), Jesus healing every one and taking children one by one (3 Nephi 17). Score the character's demonstrated love, not the passage's doctrinal content about love."
+
+3. **Doctrine ceiling breaker.** The model needs stronger language for extreme scores: "A score of 9 means this is the textbook example. If the entire content is sustained doctrinal exposition with 7+ scriptural citations building causally on each other (not just listed), doctrine should be 8-9. Do not cap at 7."
+
+4. **Thinking budget experiment.** The model's reasoning OFF mode may limit structural analysis. Try: enable thinking with a 256-512 token budget for the "identify dominant mode" step. The classification-first approach for spirit worked because it decomposed the problem; dominant mode detection might similarly benefit from some reasoning tokens.
