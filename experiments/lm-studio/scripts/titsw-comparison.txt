@@ -1,0 +1,192 @@
+
+========== nemotron-3-nano | alma-32 ==========
+
+{
+  "title": "Alma 32",
+  "focus_on_christ": {
+    "teach_about_christ": {
+      "score": 2,
+      "examples": [
+        "the Lord is merciful unto all who believe on his name"
+      ]
+    },
+    "help_come_unto_christ": {
+      "score": 3,
+      "examples": [
+        "ye shall feast upon this fruit even until ye are filled, that ye hunger not, neither shall ye thirst"
+      ]
+    }
+  },
+  "scores": {
+    "love": 3,
+    "spirit": 2,
+    "doctrine": 3,
+    "invite": 3
+  },
+  "examples": {
+    "love": [
+      "I behold that ye are lowly in heart; and if so, blessed are ye."
+    ],
+    "spirit": [
+      "he stretched forth his hand, and cried unto those whom he beheld, who were truly penitent"
+    ],
+    "doctrine": [
+      "faith is not to have a perfect knowledge of things; therefore if ye have faith ye hope for things which are not seen, which are true."
+    ],
+    "invite": [
+      "ye must needs know that the seed is good"
+    ]
+  },
+  "strongest_dimension": "invite",
+  "growth_opportunity": "spirit is least present; to strengthen, incorporate more explicit prayerful preparation and personal testimony to invite the Spirit more directly.",
+  "overall_teaching_pattern": "Alma lovingly addresses the humble poor, uses the seed metaphor to teach doctrine of faith, and invites them to experiment on and nourish the word, leading them to experience Christ's blessings."
+}
+
+========== nemotron-3-nano | kearon-receive-his-gift ==========
+
+{
+  "title": "Receive His Gift — Elder Patrick Kearon",
+  "focus_on_christ": {
+    "teach_about_christ": {
+      "score": 3,
+      "examples": [
+        "the greatest of all the Father’s gifts, His beloved Lamb, His Son, Jesus Christ.",
+        "Jesus Christ, our merciful Redeemer, is the supreme gift from our Father of lights."
+      ]
+    },
+    "help_come_unto_christ": {
+      "score": 3,
+      "examples": [
+        "Come unto Christ and receive all His gifts of joy, peace, hope, light, truth, revelation, knowledge, and wisdom.",
+        "the Holy Spirit can bear witness to your heart that you are indeed a child of the Most High."
+      ]
+    }
+  },
+  "scores": {
+    "love": 3,
+    "spirit": 3,
+    "doctrine": 3,
+    "invite": 3
+  },
+  "examples": {
+    "love": [
+      "You are a beloved daughter of God, you are a cherished son of God.",
+      "I think my dad loved giving me that car at least as much as I loved receiving it."
+    ],
+    "spirit": [
+      "the Holy Spirit can bear witness to your heart that you are indeed a child of the Most High.",
+      "I invite you to pray to understand if you are truly receiving this transformative knowledge deep in your soul."
+    ],
+    "doctrine": [
+      "we really are God’s children.",
+      "the greatest of all the Father’s gifts, His beloved Lamb, His Son, Jesus Christ."
+    ],
+    "invite": [
+      "Will you please accept, open, and receive this gift of knowledge and understanding from Him?",
+      "Come unto Christ and receive all His gifts of joy, peace, hope, light, truth, revelation, knowledge, and wisdom."
+    ]
+  },
+  "strongest_dimension": "doctrine",
+  "growth_opportunity": "spirit – the spiritual witness could be deepened by adding more explicit personal testimony and invitation to feel the Spirit directly.",
+  "overall_teaching_pattern": "The talk centers on the doctrine that we are God’s children, inviting learners to receive this truth through personal revelation and action, while illustrating love and spiritual witness."
+}
+
+========== glm-4.7-flash | alma-32 ==========
+```json
+{
+  "title": "Alma 32",
+  "focus_on_christ": {
+    "teach_about_christ": {
+      "score": 2,
+      "examples": [
+        "Alma teaches that God is merciful unto all who believe on His name (Alma 32:22).",
+        "Alma uses the imagery of the 'tree of life' (Alma 32:40), which is a type of Christ.",
+        "Alma explains that the Word is the agent of salvation, pointing to the Savior's role."
+      ]
+    },
+    "help_come_unto_christ": {
+      "score": 2,
+      "examples": [
+        "The chapter describes the internal experience of the word taking root in the soul (Alma 32:28), moving from information to feeling.",
+        "Alma promises the fruit of the 'tree of life' to those who nourish the word, connecting the doctrine to eternal life through Christ."
+      ]
+    }
+  },
+  "scores": {
+    "love": 3,
+    "spirit": 2,
+    "doctrine": 3,
+    "invite": 3
+  },
+  "examples": {
+    "love": [
+      "Alma beheld the people with great joy, recognizing that their afflictions had truly humbled them (Alma 32:6).",
+      "Alma blessed them, saying, 'I behold that ye are lowly in heart; and if so, blessed are ye' (Alma 32:8)."
+    ],
+    "spirit": [
+      "Alma stopped addressing the general crowd and focused his words specifically on those who were truly penitent (Alma 32:7).",
+      "Alma speaks of the Spirit working through the word, noting that the word 'beginneth to enlighten my understanding' (Alma 32:28)."
+    ],
+    "doctrine": [
+      "Alma teaches the doctrine of faith as a principle of power, distinguishing between knowledge and belief (Alma 32:21-22).",
+      "The entire chapter is a doctrinal exposition using an interactive parable (Alma 32:28-43)."
+    ],
+    "invite": [
+      "Alma invites agency and action: 'If ye will not nourish the word... ye can never pluck of the fruit of the tree of life' (Alma 32:40).",
+      "Alma invites personal responsibility: 'ye will awake and arouse your faculties... exercise a particle of faith' (Alma 32:27)."
+    ]
+  },
+  "strongest_dimension": "Doctrine",
+  "growth_opportunity": "Teach by the Spirit",
+  "overall_teaching_pattern": "Alma employs an interactive parable and experiential language to teach the doctrine of faith, shifting the focus from the audience's external poverty to their internal spiritual agency and the power of the Word."
+}
+```
+
+========== glm-4.7-flash | kearon-receive-his-gift ==========
+```json
+{
+  "title": "Receive His Gift",
+  "focus_on_christ": {
+    "teach_about_christ": {
+      "score": 3,
+      "examples": [
+        "You are a beloved daughter of God, you are a cherished son of God, and He has gifted you His perfect, holy Son.",
+        "But we could receive nothing without the greatest of all the Father’s gifts, His beloved Lamb, His Son, Jesus Christ.",
+        "Jesus Christ, our merciful Redeemer, is the supreme gift from our Father of lights.",
+        "In the gift of his Son hath God prepared [for us] a more excellent way."
+      ]
+    },
+    "help_come_unto_christ": {
+      "score": 3,
+      "examples": [
+        "You can feel His love, hear His voice, and recognise His hand, no matter what is happening, or not happening, in your life.",
+        "Your covenant bond with your Saviour becomes even stronger, and through the lens of this sweet gift, life takes on new brilliance, beauty, and hope.",
+        "I marvel at how earlier sorrow, pain, and grief in my life would have been reframed, soothed, and much of it overcome had I known this beautiful truth."
+      ]
+    }
+  },
+  "scores": {
+    "love": 2,
+    "spirit": 2,
+    "doctrine": 3,
+    "invite": 3
+  },
+  "examples": {
+    "love": [
+      "You are a beloved daughter of God, you are a cherished son of God."
+    ],
+    "spirit": [
+      "The Holy Spirit can bear witness to your heart that you are indeed a child of the Most High."
+    ],
+    "doctrine": [
+      "I invite you to receive, either for the first time or to a greater extent than ever before, the magnificent realisation that you truly are God’s beloved child."
+    ],
+    "invite": [
+      "Will you please accept, open, and receive this gift of knowledge and understanding from Him? Will you hold it close as the precious treasure it is?"
+    ]
+  },
+  "strongest_dimension": "Doctrine",
+  "growth_opportunity": "Teach by the Spirit",
+  "overall_teaching_pattern": "Elder Kearon masterfully utilizes the metaphor of gift-giving to weave together personal narrative, extensive scriptural citations, and doctrinal truth, creating a seamless transition from the concept of divine identity to the practical application of receiving Christ's love."
+}
+```

@@ -199,6 +199,63 @@ Going from 4B to 8B embedding model:
 
 ---
 
+## Prompt Refinement — TITSW v2 (Mar 28)
+
+### Problem
+
+Nemotron defaults to blanket 3s on every scoring dimension. GLM gives differentiated scores (love:2, spirit:2 on Kearon) with better justifications. Can prompt engineering close this quality gap?
+
+### Changes (titsw.md → titsw-v2.md)
+
+1. **Explicit scoring rubric.** Defined what 0/1/2/3 mean concretely ("3 = defining feature — this is what makes this content distinctive"). Added: "If you find yourself giving 3 across the board, reconsider."
+2. **Scripture vs talk distinction.** "Is this passage *about* Christ, or does it teach principles that apply generally?"
+3. **Minimum examples.** "At least 2-3 specific quotes with references, or explain why fewer exist."
+4. **Verse/paragraph references** required in all examples.
+5. **Growth opportunity reframed.** "Explain specifically what is missing from the content" instead of generic "how to strengthen."
+6. **"Raw JSON only, no markdown fencing."** Fixes GLM's \`\`\`json wrapping and primes clean output.
+
+### Results (nemotron, 131k context, temp 0.7)
+
+**Kearon — "Receive His Gift":**
+
+| Dimension | v1 | v2 | GLM ref |
+|-----------|----|----|---------|
+| teach_about_christ | 3 | 3 | 3 |
+| help_come_unto_christ | 3 | 3 | 3 |
+| love | **3** | **2** ✓ | 2 |
+| spirit | **3** | **2** ✓ | 2 |
+| doctrine | **3** | **2** | 3 |
+| invite | 3 | 3 | 3 |
+
+v2 matches GLM on love and spirit — the two most over-rated dimensions from v1.
+
+**Alma 32:**
+
+| Dimension | v1 | v2 | GLM ref |
+|-----------|----|----|---------|
+| teach_about_christ | 2 | **1** ✓ | 2 |
+| help_come_unto_christ | 3 | **2** ✓ | 2 |
+| love | 3 | 3 | 3 |
+| spirit | 3 | 3 | 2 |
+| doctrine | 3 | **2** | 3 |
+| invite | 3 | 3 | 3 |
+
+teach_about_christ=1 is nemotron's best insight — Alma 32 isn't *about* Christ explicitly. v2 preserves this. help_come_unto_christ dropped to 2, matching GLM.
+
+### Assessment
+
+The scoring rubric was the most impactful change. Simply telling the model "a score of 3 means this is what makes the content distinctive" and "if you give 3 across the board, reconsider" produced GLM-quality differentiation at nemotron speed.
+
+The one failed run (empty response, 4096 tokens consumed in prefill) is a known streaming measurement artifact, not a prompt issue. Retry succeeded.
+
+### Next Steps
+
+- **Adopt titsw-v2 as the standard TITSW prompt** for the conference reindex pipeline
+- Consider applying the same rubric-anchoring technique to other evaluation prompts
+- Run a few more talks with v2 to confirm consistency (the randomness at temp 0.7 means single-test results are suggestive, not definitive)
+
+---
+
 ## Session 3 Triage — Idea Cascade (Mar 28)
 
 Michael sent a burst of connected ideas pivoting from "which model" toward "what should the model produce." Here's the triage.
