@@ -1,0 +1,70 @@
+date: "2026-03-28"
+title: "LM Studio Model Experiments — Hardware Inventory and Spec"
+mood: energized
+phase: plan
+agent: plan
+
+summary: >
+  Michael has both RTX 4090s (48GB combined VRAM) in one desktop for the first time and
+  has been testing local LLMs via LM Studio. He wanted to channel the excitement into a
+  systematic experiment spec before the upcoming conference reindex. Session covered:
+  surveyed all 6 MCP servers and their tool inventories, surveyed the full gospel-library
+  content (~11,000+ files, ~1.3-1.5 GB), documented content structure in .spec/content/
+  (6 files), did extensive web research on 5 candidate models and 2 embedding models,
+  created a comprehensive research scratch file, and produced a formal 5-phase experiment
+  proposal. The forcing function is real — conference is coming and the reindex model
+  decision needs to be made.
+
+discoveries:
+  - >
+    Nemotron-3-Nano is architecturally fascinating — 31.6B params but only 3.6B active
+    (Mamba2-Transformer MoE). Hits 160+ tok/s on Michael's dual 4090s. 1M context window.
+    RULER benchmark shows 87.5% at 64K but drops to 70.56% at 512K. The quality-at-distance
+    question is the key experiment for this model.
+  - >
+    Qwen3-Embedding-8B has two known LM Studio bugs: #965 (misclassified as inference model
+    instead of embedding model) and #101 (dimensions parameter may always return 4096
+    regardless of requested dimension). The existing gospel-vec experiment framework
+    (benchmark-queries.json with 12 queries, run-experiment.ps1) can be reused for
+    Phase 4 embedding tests.
+  - >
+    LM Studio can run one embedding model OR multiple LLMs at a time, but not both
+    simultaneously. This constrains experiment workflow — RAG experiments (Phase 3)
+    need careful orchestration to test both components.
+  - >
+    Content scale analysis reveals what fits in each context window: at 32K only individual
+    chapters/talks, at 262K a full conference or small book, at 1M potentially the entire
+    Book of Mormon or 2+ conferences. Nemotron's 1M window could enable qualitatively
+    different study workflows.
+  - >
+    Michael reported GLM-4.7-Flash context at 202,752 tokens — LM Studio page shows 128k.
+    May be using extended context via RoPE scaling or a different quantization. Worth
+    verifying in Phase 1.
+
+reflections:
+  - >
+    Michael acknowledged being sidetracked from the conference reindex by hardware
+    excitement. Good self-awareness. The proposal channels the sidetrack into something
+    productive — the experiments directly inform the reindex model decision.
+  - >
+    The existing experiment infrastructure in scripts/gospel-vec/experiments/ is more
+    mature than expected. benchmark-queries.json already has 12 carefully crafted queries
+    spanning semantic similarity, cross-reference, doctrinal concepts, and edge cases.
+    Phase 4 can lean on this rather than starting from scratch.
+  - >
+    The content documentation (.spec/content/) fills a real gap. Previously there was no
+    single place documenting what content exists, at what scale, and in what format. This
+    will serve multiple future projects beyond just the model experiments.
+
+carry_forward:
+  - "Phase 1 of experiments is next: speed + basic quality assessment across all 5 models"
+  - "Conference reindex is time-sensitive — experiments should complete before reindex begins"
+  - "Embedding dimension bug (#101) needs testing before committing to Qwen3-Embedding-8B"
+  - "Devstral-Small-2 has vision support — could enable image-aware study workflows later"
+  - "GLM-4.7-Flash context discrepancy (128k vs 202,752) needs verification"
+
+open_questions:
+  - "Which model becomes the default for conference reindex? Phase 1 speed data + Phase 2 quality data should answer this."
+  - "Is 4096-dimension embeddings worth the storage/compute cost over the current ~384d baseline? Phase 4 will test this."
+  - "Can nemotron-3-nano's 1M context actually produce useful output at full utilization, or does RULER's 70.56% at 512K mean quality degrades too much for scripture study?"
+  - "Should the harness script be Go (matching existing tooling) or PowerShell (quick iteration)? Proposal recommends PowerShell for Phase 1, Go if it graduates to permanent tooling."
