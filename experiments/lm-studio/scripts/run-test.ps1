@@ -191,9 +191,12 @@ try {
     $reader = New-Object System.IO.StreamReader($httpResponse.GetResponseStream())
 
     $ttftMs = $null
+    $reasoningTtftMs = $null
     $responseText = ""
+    $reasoningText = ""
     $tokensIn = 0
     $tokensOut = 0
+    $reasoningTokens = 0
 
     while (-not $reader.EndOfStream) {
         $line = $reader.ReadLine()
@@ -202,16 +205,27 @@ try {
         if ($data -eq "[DONE]") { break }
         try {
             $chunk = $data | ConvertFrom-Json
-            # Check for content delta
-            $delta = $chunk.choices[0].delta.content
-            if ($delta) {
-                if (-not $ttftMs) { $ttftMs = $stopwatch.ElapsedMilliseconds }
-                $responseText += $delta
+            if ($chunk.choices -and $chunk.choices.Count -gt 0) {
+                # Check for reasoning delta (reasoning models like GPT-OSS)
+                $reasoning = $chunk.choices[0].delta.reasoning
+                if ($reasoning) {
+                    if (-not $reasoningTtftMs) { $reasoningTtftMs = $stopwatch.ElapsedMilliseconds }
+                    $reasoningText += $reasoning
+                }
+                # Check for content delta
+                $delta = $chunk.choices[0].delta.content
+                if ($delta) {
+                    if (-not $ttftMs) { $ttftMs = $stopwatch.ElapsedMilliseconds }
+                    $responseText += $delta
+                }
             }
             # Check for usage in final chunk
             if ($chunk.usage) {
                 $tokensIn = $chunk.usage.prompt_tokens
                 $tokensOut = $chunk.usage.completion_tokens
+                if ($chunk.usage.completion_tokens_details) {
+                    $reasoningTokens = $chunk.usage.completion_tokens_details.reasoning_tokens
+                }
             }
         } catch { }
     }
@@ -228,6 +242,7 @@ $latencyMs = $stopwatch.ElapsedMilliseconds
 if (-not $ttftMs) { $ttftMs = $latencyMs }
 $genTimeMs = $latencyMs - $ttftMs
 $totalTokens = $tokensIn + $tokensOut
+$contentTokens = $tokensOut - $reasoningTokens
 
 # Calculate tok/s: overall (output/wall) and generation-only (output/gen_time)
 $tokPerSec = if ($latencyMs -gt 0) { [math]::Round($tokensOut / ($latencyMs / 1000), 1) } else { 0 }
@@ -235,11 +250,22 @@ $genTokPerSec = if ($genTimeMs -gt 0) { [math]::Round($tokensOut / ($genTimeMs /
 
 # --- Display results ---
 
+if ($reasoningText) {
+    Write-Host "`n--- Reasoning ($reasoningTokens tokens) ---" -ForegroundColor DarkYellow
+    # Show truncated reasoning (first/last 200 chars)
+    if ($reasoningText.Length -gt 500) {
+        Write-Host "$($reasoningText.Substring(0, 200))..."
+        Write-Host "...$($reasoningText.Substring($reasoningText.Length - 200))"
+    } else {
+        Write-Host $reasoningText
+    }
+}
+
 Write-Host "`n--- Response ---" -ForegroundColor Green
 Write-Host $responseText
 Write-Host "`n--- Stats ---" -ForegroundColor Green
 Write-Host "Tokens in:  $tokensIn"
-Write-Host "Tokens out: $tokensOut"
+Write-Host "Tokens out: $tokensOut$(if ($reasoningTokens) { " (reasoning: $reasoningTokens, content: $contentTokens)" })"
 Write-Host "Total:      $totalTokens"
 Write-Host "TTFT:       $($ttftMs)ms"
 Write-Host "Gen time:   $($genTimeMs)ms"
@@ -268,6 +294,8 @@ if (-not $NoSave) {
         tokens_in = $tokensIn
         tokens_out = $tokensOut
         tokens_total = $totalTokens
+        reasoning_tokens = $reasoningTokens
+        content_tokens = $contentTokens
         ttft_ms = $ttftMs
         gen_time_ms = $genTimeMs
         latency_ms = $latencyMs
@@ -275,6 +303,7 @@ if (-not $NoSave) {
         tok_per_sec = $tokPerSec
         system_message = $systemMessage
         user_message = $userMessage
+        reasoning = $reasoningText
         response = $responseText
     }
 
