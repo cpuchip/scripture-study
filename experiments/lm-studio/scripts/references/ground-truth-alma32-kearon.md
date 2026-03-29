@@ -600,3 +600,114 @@ v5.1 shifts the error distribution: **inflation down, underscoring up.** The mod
 3. **Bednar doctrine floor:** Consider an even more explicit ceiling-breaker with an exemplar example. The model needs permission to score 9.
 
 4. **Thinking budget experiment (carried from v4 recommendations):** Still untested. The classification-before-scoring pattern partially serves the same purpose — giving the model a structured pre-scoring step. But a small thinking budget (256 tokens) might help with the nuanced cases like Holland spirit where the classification step alone is too blunt.
+
+---
+
+## v6 Prompt — Targeted Fixes for v5.1 Remaining Problems (Mar 28, 2026)
+
+### v6 Design: 4 Changes Applied to v5.1
+
+Created titsw-v6.md as a copy of v5.1, then applied these modifications:
+
+1. **Spirit vulnerability signal:** Added VULNERABILITY SIGNAL sub-category to EXPERIENTIAL classification: "Personal testimony drawn from decades of lived experience and emotional vulnerability = experiential, even if the Spirit is mentioned only once explicitly." Targets Holland spirit (-3).
+
+2. **Doctrine citation-purpose qualifier:** Added to the 8-9 anchor: "If the citations serve testimony or invitation rather than building a doctrinal argument, keep doctrine at 5-6 even with high citation count." Targets Holland doctrine (+2).
+
+3. **Bednar doctrine ceiling-breaker exemplar:** Added explicit Score 9 anchor: "The entire talk is a structured argument building from definitions through 7+ scriptural proofs to a doctrinal conclusion." Targets Bednar doctrine (-2).
+
+4. **Invite narrative qualifier:** Expanded the Score 3 anchor: "In scripture, characters giving instructions within the story ('come forth,' 'arise,' 'be healed') are narrative actions, not invitations to the reader. Score invite based on whether the TEXT invites the READER to act, not whether characters in the story command other characters." Targets 3 Nephi invite (+3).
+
+### v6 Full Comparison Table
+
+| Content | Dim | GT | v3 | v4.2 | v5.0 | v5.1 | v6 | v6Δ |
+|---------|-----|----|-----|------|------|------|----|-----|
+| **Alma 32** | teach | 7-8 | 6 | 6 | 3 | 6 | 5 | -2.5 |
+| | help | 8 | 7 | 7 | 5 | 6 | 6 | -2 |
+| | love | 7-8 | 7 | 3 | 7 | 7 | 5 | -2.5 |
+| | spirit | 3-4 | 6 | 2 | 3 | 3 | 3 | -0.5 |
+| | doctrine | 8-9 | 7 | 7 | 6 | 8 | 7 | -1.5 |
+| | invite | 8-9 | 7 | 7 | 8 | 7 | 7 | -1.5 |
+| **Kearon** | teach | 8 | 8 | 7 | 6 | 6 | 6 | -2 |
+| | help | 8 | 8 | 8 | 7 | 7 | 7 | -1 |
+| | love | 4 | 4 | 3 | 6 | 4 | 3 | -1 |
+| | spirit | 3 | 5 | 4 | 4 | 3 | 4 | +1 |
+| | doctrine | 7 | 6 | 7 | 6 | 6 | 5 | -2 |
+| | invite | 8 | 7 | 8 | 8 | 8 | 8 | 0 |
+| **3 Nephi** | teach | 9 | 9 | 9 | 9 | 7 | 7 | -2 |
+| | help | 9 | 9 | 9 | 9 | 8 | 7 | -2 |
+| | love | 9 | 9 | 9 | 9 | 9 | 9 | 0 |
+| | spirit | 8 | 9 | 9 | 9 | 8 | 8 | 0 |
+| | doctrine | 4 | 5 | 6 | 6 | 3 | 5 | +1 |
+| | invite | 5 | 7 | 9 | 7 | 8 | 6 | +1 |
+| **D&C 121** | teach | 5 | 3 | 4 | 3 | 3 | 4 | -1 |
+| | help | 5 | 3 | 4 | 7 | 4 | 5 | 0 |
+| | love | 5 | 7 | 4 | 7 | 4 | 2 | -3 |
+| | spirit | 4 | 7 | 4 | 5 | 4 | 4 | 0 |
+| | doctrine | 8 | 6 | 7 | 6 | 8 | 6 | -2 |
+| | invite | 7 | 5 | 6 | 9 | 5 | 5 | -2 |
+| **Holland** | teach | 7 | 8 | 7 | 7 | 7 | 7 | 0 |
+| | help | 6 | 7 | 8 | 6 | 6 | 6 | 0 |
+| | love | 4 | 5 | 3 | 5 | 5 | 4 | 0 |
+| | spirit | 7 | 7 | 7 | 4 | 4 | 4 | -3 |
+| | doctrine | 6 | 6 | 6 | 5 | 8 | 7 | +1 |
+| | invite | 3 | 4 | 7 | 4 | 6 | 5 | +2 |
+| **Bednar** | teach | 5 | 8 | 5 | 5 | 5 | 6 | +1 |
+| | help | 5 | 7 | 4 | 5 | 4 | 4 | -1 |
+| | love | 2 | 6 | 3 | 3 | 2 | 3 | +1 |
+| | spirit | 3 | 3 | 3 | 3 | 3 | 3 | 0 |
+| | doctrine | 9 | 8 | 7 | 7 | 7 | 7 | -2 |
+| | invite | 6 | 7 | 4 | 5 | 3 | 3 | -3 |
+
+### Version Statistics Comparison
+
+| Metric | v3 | v4.2 | v5.0 | v5.1 | v6 | Best |
+|--------|-----|------|------|------|-----|------|
+| Exact (±0) | 11 (31%) | 12 (33%) | 8 (22%) | **14 (39%)** | 10 (28%) | v5.1 |
+| Within ±1 | 23 (64%) | **27 (75%)** | 20 (56%) | 23 (64%) | 20 (56%) | v4.2 |
+| Inflation ≥+2 | 9 (25%) | 4 (11%) | 6 (17%) | 3 (8%) | **1 (3%)** | v6 |
+| Underscoring ≤-2 | 4 (11%) | **3 (8%)** | 7 (19%) | 8 (22%) | 13 (36%) | v4.2 |
+| MAE | 1.3 | 1.10 | 1.24 | **1.06** | 1.26 | v5.1 |
+
+### v6 Analysis
+
+**v6 is a regression.** MAE increased from 1.06→1.26, exact matches dropped from 14→10, and underscoring exploded from 8→13 (36% of all scores). The only metric that improved was inflation, which dropped to a single case — but at catastrophic cost to overall accuracy.
+
+**What worked:**
+- **3 Nephi invite: +3→+1.** The narrative command qualifier successfully distinguished narrative commands from reader invitations. The model scored 6 (GT 5) instead of 8.
+- **Holland doctrine: +2→+1.** The citation-purpose qualifier reduced Holland's doctrine from 8→7 (GT 6).
+- **Holland love: +1→0.** New exact match (4=4).
+
+**What didn't work:**
+- **Holland spirit: Still -3.** The vulnerability signal had zero effect. The model scored 4 again, identical to v5.1. The language about "decades of lived vulnerability" either doesn't trigger the model's reclassification or gets overridden by the "count explicit Spirit references" heuristic.
+- **Bednar doctrine: Still -2 (7, GT 9).** The explicit Score 9 exemplar didn't break through. The model recognizes doctrine as dominant but won't score higher than 7.
+
+**Collateral damage (the real problem):**
+- **Doctrine citation-purpose qualifier was too broad.** It suppressed doctrine scores everywhere, not just where citations serve testimony:
+  - D&C 121 doctrine: 8→6 (GT 8). D&C 121 IS sustained doctrinal exposition, but the qualifier told the model the citations serve invitation rather than exposition.
+  - Kearon doctrine: 6→5 (GT 7). Worsened.
+  - Alma 32 doctrine: 8→7 (GT 8-9). The v5.1 breakthrough was lost.
+- **General conservative overcorrection.** Alma 32 love dropped from 7→5, D&C 121 love dropped from 4→2. The model became globally more conservative, not just on the targeted dimensions.
+
+### Key Insight
+
+**Qualifiers without precise scoping become blanket suppressors.** The same lesson from v5.0→v5.1 applies: broad rules get applied broadly. The doctrine citation-purpose qualifier was intended for Holland (where citations serve testimony, not exposition) but the model applied it everywhere, damaging scores on D&C 121 and Alma 32 where the citations genuinely ARE doctrinal exposition.
+
+The invite narrative qualifier was more precisely scoped — it specifically says "characters giving instructions within the story" and "score based on whether the TEXT invites the READER." This precision is why it worked without collateral damage.
+
+### Conclusion
+
+**v5.1 remains the best prompt.** The v6 experiment confirms:
+1. Precisely scoped qualifiers (invite narrative) work without collateral damage
+2. Broadly scoped qualifiers (doctrine citation-purpose) cause more harm than they fix
+3. The Holland spirit problem may not be solvable through prompt engineering alone — the model's DOCTRINAL/EXPERIENTIAL classification step consistently classifies Holland's single explicit Spirit reference as insufficient, regardless of how the vulnerability signal is framed
+4. The Bednar doctrine ceiling (7, GT 9) is also resistant to prompt-level fixes — the model recognizes doctrine as dominant but consistently caps at 7
+
+### Recommendations for Next Steps
+
+1. **Cherry-pick the invite narrative qualifier** back into v5.1 — it improved 3 Nephi invite from +3→+1 without collateral damage. This would create v5.2.
+
+2. **Abandon the doctrine citation-purpose qualifier** in its current form. If a narrower version is needed, it should say something like: "If the PRIMARY mode is personal testimony and citations are used to support that testimony rather than to build a doctrinal argument, keep doctrine at 5-6." But even this risks misapplication.
+
+3. **Thinking budget experiment** for Holland spirit and Bednar doctrine. These two problems may require giving the model actual reasoning tokens rather than more prompt text. A 256-512 token thinking budget could help the model chain through: "Holland mentions the Spirit once explicitly, BUT his entire testimony is Spirit-borne because..." — reasoning that a classification step can't do.
+
+4. **Consider ground truth recalibration.** Some persistent misalignments (Bednar invite at 3 vs GT 6; D&C 121 invite at 5 vs GT 7) may warrant re-examining whether the ground truth scores are well-calibrated for those specific dimensions.
