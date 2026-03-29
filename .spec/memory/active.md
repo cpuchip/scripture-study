@@ -55,8 +55,11 @@
 6. **Desktop swap** — DONE. New computer operational (Mar 27). Plex restored from LEPTON backup (11.2 GB, v1.42→v1.43 forward migration). All four media drives (D/E/F/G) mounted correctly. Libraries, watch history, and play state all verified. Old desktop ready to decommission.
 7. **Server deployment** — App container on NOCIX. Domain rotated (Mar 22, confirmed working).
 
+8. **Gospel Graph Visualization** — NEW (Mar 29). Vision: interactive graph tab in ibeco.me reader showing scripture cross-reference network. Phase 1 PROPOSED — add `GraphPanel.vue` (Cytoscape.js) + `/api/graph/edges` endpoint reading gospel-mcp's SQLite cross_references table. Proposal: [.spec/proposals/gospel-graph/main.md](../proposals/gospel-graph/main.md). Scratch: [.spec/scratch/gospel-graph/main.md](../scratch/gospel-graph/main.md). 6-phase roadmap, Phase 1 has zero blockers. Critical analysis: build Phase 1 now (1-2 sessions), but don't displace enriched indexer or teaching.
+
 ### Key Decisions (this cycle)
 All settled decisions are in [decisions.md](decisions.md). New this cycle:
+- **Gospel Graph proposal written (Mar 29).** Option C (extend ibeco.me backend). Phase 1: graph tab with cross-reference visualization. Cytoscape.js for rendering. gospel-mcp SQLite read directly (read-only). 6 phases total, 1 stands alone.
 - **Covenant created.** `.spec/covenant.yaml`. Bilateral commitments. Added to session-start (Step 2).
 - **Council moment added.** General principle for all agents. Abraham 4:26.
 - **NOCIX server live.** Database migrated. App container not yet deployed.
