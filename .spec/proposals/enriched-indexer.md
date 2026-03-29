@@ -204,26 +204,17 @@ CALIBRATION:
 - love and spirit inflate easily. A 7+ means the dimension is enacted, not just referenced.
 ```
 
-#### Calibration Context (for T4)
+#### Calibration Context (for T4) — REFINED
 
-A scored example from ground truth, showing the model what appropriate scores look like:
+The original T4 used a single Kearon example. Phase 0 revealed same-speaker anchoring: Kearon teach dropped from 8→5 (-3 error) because the model saw Kearon in the calibration and over-anchored to those scores.
 
-```
-CALIBRATION EXAMPLE
+**Refined version** uses two examples (Bednar + Holland) spanning diverse score profiles, plus explicit anti-inflation guidance for love/spirit. See [`scripts/gospel-engine/context/talk-calibration.md`](../../scripts/gospel-engine/context/talk-calibration.md) for the production-ready context file.
 
-Speaker: Elder Patrick Kearon, "Welcome to the Church of Joy"
-DOMINANT: help_come_to_christ, love
-MODE: enacted
-PATTERN: invitation→doctrine→testimony
-TEACH_SCORE: 5  (Christ present but not the central developed content)
-HELP_SCORE: 7  (explicit, sustained focus on helping people come to Christ through belonging)
-LOVE_SCORE: 7  (models warmth and welcome — enacted, not just stated)
-SPIRIT_SCORE: 5  (bears testimony, invites the Spirit)
-DOCTRINE_SCORE: 4  (some doctrinal grounding but primarily pastoral)
-INVITE_SCORE: 7  (specific invitation to welcome, belong, stay)
-
-Note: Scores cluster 4-6 for most dimensions. A 7+ is exceptional and specific.
-```
+Key changes:
+- Two examples instead of one (doctrine-dominant Bednar + spirit-dominant Holland)
+- Explicit "most dimensions score 4-6" guidance at the top
+- Anti-inflation notes: love=2 explained (no individualized connection), spirit=3 explained (doctrinal mention ≠ experiential evidence)
+- Each example includes parenthetical reasoning for every score
 
 #### Experiment Protocol
 

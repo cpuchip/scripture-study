@@ -95,6 +95,18 @@ Options that were considered:
 - `gospel-engine` — ✅ captures both indexing and search, expandable
 - `gospel-core` — the foundational tool everything else builds on
 
+### Calibration context refinement
+
+**DECIDED: Bednar + Holland replace Kearon.** Phase 0 showed same-speaker anchoring with a single Kearon example (teach 8→5, -3 error). Refined context at `scripts/gospel-engine/context/talk-calibration.md` uses:
+- **2 examples** spanning diverse score profiles instead of 1
+- **Bednar "Their Own Judges"** (5,5,2,3,9,6) — doctrine-dominant, shows what low love/spirit looks like
+- **Holland "And Now I See"** (7,6,4,7,6,3) — spirit-dominant, shows testimony mode
+- **Explicit "most dimensions score 4-6" guidance** at the top
+- **Anti-inflation notes** for love (requires demonstrated action, not declared warmth) and spirit (requires experiential evidence, not doctrinal mention)
+- **Parenthetical reasoning** for every score so the model learns the WHY, not just the number
+
+Key insight: with 2 diverse examples, the model anchors to the *pattern* (most dimensions low, 1-2 dominant high) rather than to one speaker's scores. The "KEY PATTERNS TO NOTICE" section at the end explicitly teaches the model to look for score clustering.
+
 ### Data directory structure
 
 ```

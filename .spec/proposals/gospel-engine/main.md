@@ -79,6 +79,7 @@ Today, studying scripture with AI search requires two separate MCP servers:
 | [enriched-indexer.md](../enriched-indexer.md) | TITSW vocabulary approach for talks, lens approach for scripture, calibration context, Phase 0 experiment results (T4 best, MAE=1.83). |
 | [enriched-search.md](../enriched-search.md) | Schema design for TITSW columns, FTS enhancement, search filter params, get response format. Now superseded architecturally but schema designs are valid. |
 | [Phase 0 analysis](../../../experiments/lm-studio/scripts/results/phase0-analysis.md) | 18 experiments confirming calibration context works, gospel-vocab causes inflation on talks, love/spirit inflate inherently. |
+| [talk-calibration.md](../../../scripts/gospel-engine/context/talk-calibration.md) | Refined calibration context: 2 examples (Bednar doctrine-dominant + Holland spirit-dominant) with anti-inflation guidance. Replaces original single-Kearon example that caused same-speaker anchoring. |
 
 ---
 
