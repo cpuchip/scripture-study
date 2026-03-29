@@ -414,3 +414,189 @@ Three rounds of refinement during testing:
 3. **Doctrine ceiling breaker.** The model needs stronger language for extreme scores: "A score of 9 means this is the textbook example. If the entire content is sustained doctrinal exposition with 7+ scriptural citations building causally on each other (not just listed), doctrine should be 8-9. Do not cap at 7."
 
 4. **Thinking budget experiment.** The model's reasoning OFF mode may limit structural analysis. Try: enable thinking with a 256-512 token budget for the "identify dominant mode" step. The classification-first approach for spirit worked because it decomposed the problem; dominant mode detection might similarly benefit from some reasoning tokens.
+
+---
+
+## v5 Prompt — Paradigm Shift: Positive Exemplars + Classification Steps (Mar 28, 2026)
+
+### Research Phase
+
+Extensive research conducted before v5 design:
+
+**Claude prompting best practices:** "Tell what to do, not what not to do." "3-5 examples for best results. Relevant, diverse, structured."
+
+**RULERS paper (arxiv 2601.08654, Jan 2026):** Three failure modes: rubric instability, unverifiable reasoning, **scale misalignment**. Key insight: **"Central tendency bias — models hedge predictions towards the statistical mean, resulting in a generic bell curve."** Solution techniques: boundary justification ("Why not +1 AND why not -1?"), anti-halo constraint, checklist decomposition to binary items, evidence gate for high scores.
+
+**LLM-Rubric paper (ACL 2024, arxiv 2501.00274v1):** Multidimensional rubric evaluation with per-question score-level definitions. Raw LLM scores unreliable without calibration. Per-question meaning for each score level matters.
+
+**Coverage gap analysis:** Score 1-2 has almost zero positive exemplars across all dimensions. Score 7-9 is rich. The model has almost no anchor for what low scores look like.
+
+### v5.0 Design: 6 Key Changes
+
+1. **Dimension-specific score anchors** — For each dimension, concrete descriptions of what specific score levels LOOK LIKE
+2. **Boundary justification** — From RULERS: for dominant dimension and any 7+, require "why not +1 / why not -1"
+3. **Remove all negatively-framed bias sections** — Replace v4's "you have a tendency to over-score" with positive score-level descriptions
+4. **Invite calibration** — "Bring them hither is a command within a narrative, not a structured teaching invitation"
+5. **Scripture love correction** — "Scripture CAN demonstrate love when a character enacts love"
+6. **Doctrine ceiling breaker** — "If 7+ scriptural citations building causally, doctrine should be 8-9"
+
+### v5.0 Test Results
+
+| Content | Dim | GT | v4.2 | v5.0 | v5.0Δ |
+|---------|-----|----|------|------|-------|
+| **Alma 32** | teach | 7-8 | 6 | 3 | -4.5 |
+| | help | 8 | 7 | 5 | -3 |
+| | love | 7-8 | 3 | **7** | **-0.5** |
+| | spirit | 3-4 | 2 | **3** | -0.5 |
+| | doctrine | 8-9 | 7 | 6 | -2.5 |
+| | invite | 8-9 | 7 | **8** | -0.5 |
+| **Kearon** | teach | 8 | 7 | 6 | -2 |
+| | help | 8 | 8 | 7 | -1 |
+| | love | 4 | 3 | 6 | **+2** |
+| | spirit | 3 | 4 | 4 | +1 |
+| | doctrine | 7 | 7 | 6 | -1 |
+| | invite | 8 | 8 | **8** | **0** |
+| **3 Nephi** | teach | 9 | 9 | **9** | **0** |
+| | help | 9 | 9 | **9** | **0** |
+| | love | 9 | 9 | **9** | **0** |
+| | spirit | 8 | 9 | 9 | +1 |
+| | doctrine | 4 | 6 | 6 | +2 |
+| | invite | 5 | 9 | **7** | **+2** |
+| **D&C 121** | teach | 5 | 4 | 3 | -2 |
+| | help | 5 | 4 | 7 | +2 |
+| | love | 5 | 4 | 7 | +2 |
+| | spirit | 4 | 4 | 5 | +1 |
+| | doctrine | 8 | 7 | 6 | -2 |
+| | invite | 7 | 6 | 9 | +2 |
+| **Holland** | teach | 7 | 7 | **7** | **0** |
+| | help | 6 | 8 | **6** | **0** |
+| | love | 4 | 3 | 5 | +1 |
+| | spirit | 7 | 7 | 4 | **-3** |
+| | doctrine | 6 | 6 | 5 | -1 |
+| | invite | 3 | 7 | **4** | **+1** |
+| **Bednar** | teach | 5 | 5 | **5** | **0** |
+| | help | 5 | 4 | **5** | **0** |
+| | love | 2 | 3 | 3 | +1 |
+| | spirit | 3 | 3 | **3** | **0** |
+| | doctrine | 9 | 7 | 7 | -2 |
+| | invite | 6 | 4 | 5 | -1 |
+
+### v5.0 Statistics
+
+| Metric | v4.2 | v5.0 |
+|--------|------|------|
+| Exact (±0) | 12 (33%) | 8 (22%) |
+| Within ±1 | 27 (75%) | 20 (56%) |
+| Inflation ≥+2 | 4 (11%) | 6 (17%) |
+| Underscoring ≤-2 | 3 (8%) | 7 (19%) |
+| MAE | 1.10 | 1.24 |
+
+**v5.0 was an overall regression**, but the pattern was revealing:
+
+**What v5.0 fixed (confirmed effective):**
+- Alma 32 love: -4.5 → -0.5 (scripture love correction)
+- Holland invite: +4 → +1 (invite calibration)
+- 3 Nephi invite: +4 → +2 (invite calibration)
+- Holland help: +2 → 0
+
+**What v5.0 broke (diagnosed):**
+- teach_about_christ plummeted on all non-obvious content (Alma 3→, Kearon 6, D&C 3)
+- D&C 121 dominant mode misidentified as invite (should be doctrine)
+- Holland spirit: 7→4 (lost experiential detection)
+- Kearon and D&C love inflation returned without explicit classification
+
+**Root cause:** v4's negative framings were effective not because they're negative, but because they **decompose the scoring task into a binary classification step** before scoring. Score-level anchors alone don't force that decomposition.
+
+### v5.1 Design: Combine v5 Innovations + v4 Classification Steps
+
+Kept from v5.0: score-level anchors, boundary justification, invite calibration, scripture love correction, doctrine ceiling breaker.
+
+Restored from v4: "Before scoring, classify:" steps for teach_about_christ, love, spirit, doctrine. Added new doctrine classifier: "count and classify — how many scriptural citations? Do they build causally?"
+
+### v5.1 Full Comparison Table
+
+| Content | Dim | GT | v3 | v4.2 | v5.0 | v5.1 | v5.1Δ |
+|---------|-----|----|-----|------|------|------|-------|
+| **Alma 32** | teach | 7-8 | 6 | 6 | 3 | 6 | -1.5 |
+| | help | 8 | 7 | 7 | 5 | 6 | -2 |
+| | love | 7-8 | 7 | 3 | 7 | **7** | **-0.5** |
+| | spirit | 3-4 | 6 | 2 | 3 | **3** | **-0.5** |
+| | doctrine | 8-9 | 7 | 7 | 6 | **8** | **-0.5** |
+| | invite | 8-9 | 7 | 7 | 8 | 7 | -1.5 |
+| **Kearon** | teach | 8 | 8 | 7 | 6 | 6 | -2 |
+| | help | 8 | 8 | 8 | 7 | 7 | -1 |
+| | love | 4 | 4 | 3 | 6 | **4** | **0** |
+| | spirit | 3 | 5 | 4 | 4 | **3** | **0** |
+| | doctrine | 7 | 6 | 7 | 6 | 6 | -1 |
+| | invite | 8 | 7 | 8 | 8 | **8** | **0** |
+| **3 Nephi** | teach | 9 | 9 | 9 | 9 | 7 | -2 |
+| | help | 9 | 9 | 9 | 9 | 8 | -1 |
+| | love | 9 | 9 | 9 | 9 | **9** | **0** |
+| | spirit | 8 | 9 | 9 | 9 | **8** | **0** |
+| | doctrine | 4 | 5 | 6 | 6 | 3 | -1 |
+| | invite | 5 | 7 | 9 | 7 | 8 | +3 |
+| **D&C 121** | teach | 5 | 3 | 4 | 3 | 3 | -2 |
+| | help | 5 | 3 | 4 | 7 | 4 | -1 |
+| | love | 5 | 7 | 4 | 7 | 4 | -1 |
+| | spirit | 4 | 7 | 4 | 5 | **4** | **0** |
+| | doctrine | 8 | 6 | 7 | 6 | **8** | **0** |
+| | invite | 7 | 5 | 6 | 9 | 5 | -2 |
+| **Holland** | teach | 7 | 8 | 7 | 7 | **7** | **0** |
+| | help | 6 | 7 | 8 | 6 | **6** | **0** |
+| | love | 4 | 5 | 3 | 5 | 5 | +1 |
+| | spirit | 7 | 7 | 7 | 4 | 4 | -3 |
+| | doctrine | 6 | 6 | 6 | 5 | 8 | +2 |
+| | invite | 3 | 4 | 7 | 4 | 6 | +3 |
+| **Bednar** | teach | 5 | 8 | 5 | 5 | **5** | **0** |
+| | help | 5 | 7 | 4 | 5 | 4 | -1 |
+| | love | 2 | 6 | 3 | 3 | **2** | **0** |
+| | spirit | 3 | 3 | 3 | 3 | **3** | **0** |
+| | doctrine | 9 | 8 | 7 | 7 | 7 | -2 |
+| | invite | 6 | 7 | 4 | 5 | 3 | -3 |
+
+### Version Statistics Comparison
+
+| Metric | v3 | v4.2 | v5.0 | v5.1 | Best |
+|--------|-----|------|------|------|------|
+| Exact (±0) | 11 (31%) | 12 (33%) | 8 (22%) | **14 (39%)** | v5.1 |
+| Within ±1 | 23 (64%) | **27 (75%)** | 20 (56%) | 23 (64%) | v4.2 |
+| Inflation ≥+2 | 9 (25%) | 4 (11%) | 6 (17%) | **3 (8%)** | v5.1 |
+| Underscoring ≤-2 | 4 (11%) | **3 (8%)** | 7 (19%) | 8 (22%) | v4.2 |
+| MAE | 1.3 | 1.10 | 1.24 | **1.06** | v5.1 |
+
+### What v5.1 Fixed
+
+1. **14 exact matches (39%)** — best of any version. The classification-before-scoring pattern + score-level anchors produce the most precise scoring.
+2. **Lowest inflation ever (3 cases, 8%).** The model now rarely over-scores — RLHF helpfulness bias is substantially controlled.
+3. **Lowest MAE (1.06).** Best overall accuracy.
+4. **Alma 32 doctrine: 7→8 (GT 8-9).** The count-and-classify step broke the doctrine ceiling for the first time.
+5. **D&C 121 doctrine: 7→8 (GT 8).** Same mechanism — exact match.
+6. **Kearon love: 3/6→4 (GT 4).** Exact — declared-vs-demonstrated classification controls inflation.
+7. **Bednar love: 3→2 (GT 2).** Exact — first time ever.
+8. **3 Nephi spirit: 9→8 (GT 8).** Exact — first time ever.
+
+### What v5.1 Didn't Fix (Remaining Problems)
+
+1. **Holland spirit: -3 (GT 7, model 4).** The DOCTRINAL/EXPERIENTIAL classification can't detect Holland's implicit vulnerability. His "I have at times been overwhelmed by the Holy Spirit of God" and the "Amazing Grace" ending are experiential, but the classification step sees mostly scripted text with one Spirit reference: insufficient for 7+. The model correctly applies the rule but misses the nuance that Holland's ENTIRE testimony IS experiential even though only one explicit Spirit sentence exists.
+
+2. **Holland doctrine/invite: +2/+3.** The count-and-classify step for doctrine over-triggers on Holland's multiple citations, scoring 8 (GT 6). The model sees citations and calls it sustained doctrinal exposition, but in Holland those citations serve testimony, not exposition. Similarly, invite inflates to 6 (GT 3) because the model reads Holland's testimony and considers it implicitly invitational.
+
+3. **Bednar/3 Nephi doctrine ceiling persists for Bednar (7, GT 9).** D&C 121 and Alma 32 both broke through to 8, but Bednar is stuck at 7. The model recognizes doctrine as dominant but won't go higher. Bednar's talk IS the textbook example — the model needs an even stronger ceiling-breaker, possibly explicit exemplar: "If the entire talk is a structured argument building from definitions through 7+ scriptural proofs to a doctrinal conclusion, score 9."
+
+4. **Bednar invite underscored (-3, GT 6).** The invite calibration prevents incidental commands from inflating invite, but now oversuppresses Bednar's implicit invitation through doctrinal framework.
+
+5. **3 Nephi invite: +3 (GT 5, model 8).** The model still over-scores invite on narrative content where commands exist.
+
+### Trade-off Analysis
+
+v5.1 shifts the error distribution: **inflation down, underscoring up.** The model now errs on the conservative side — it rarely claims a dimension is strong when it isn't, but sometimes underestimates dimensions that are genuinely strong. This is a healthier bias direction for a reindex pipeline: false positives (inflated scores) corrupt the index more than false negatives (conservative scores). A chapter scored slightly low on invite still gets indexed — one scored wildly high gets surfaced for the wrong reason.
+
+### Recommendations for v6
+
+1. **Holland spirit problem:** The experiential classification needs a "vulnerability signal" — personal testimony drawn from decades of lived experience, even if the Spirit is named only once, IS teaching by the Spirit. Consider: "Personal testimony that draws on decades of lived experience and emotional vulnerability = experiential, even if the Spirit is mentioned only once."
+
+2. **Doctrine count-classify needs context:** "Multiple citations building causally = 8-9" should be qualified: "If the citations serve testimony or invitation rather than exposition, keep doctrine at 5-6 even with high citation count."
+
+3. **Bednar doctrine floor:** Consider an even more explicit ceiling-breaker with an exemplar example. The model needs permission to score 9.
+
+4. **Thinking budget experiment (carried from v4 recommendations):** Still untested. The classification-before-scoring pattern partially serves the same purpose — giving the model a structured pre-scoring step. But a small thinking budget (256 tokens) might help with the nuanced cases like Holland spirit where the classification step alone is too blunt.
