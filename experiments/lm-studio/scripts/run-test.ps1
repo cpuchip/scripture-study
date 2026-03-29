@@ -50,6 +50,7 @@ param(
     [double]$Temperature = 0.7,
     [string]$Tag = "",
     [string]$Context = "",
+    [int]$ContextLength = 0,
     [switch]$NoSave,
     [switch]$NoThink,
     [switch]$DisableThinking,
@@ -111,10 +112,56 @@ if ($NoThink) {
     $userMessage = "/no_think`n$userMessage"
 }
 
-# --- Detect model from LM Studio ---
+# --- Ensure model is loaded with correct context length ---
 
 if (-not $Model) {
     Write-Host "No model specified, detecting from LM Studio..."
+}
+
+# Check if lms CLI is available for model management
+$lmsAvailable = $null -ne (Get-Command lms -ErrorAction SilentlyContinue)
+
+if ($ContextLength -gt 0 -and $lmsAvailable -and $Model) {
+    # Parse lms ps output to check if model is loaded with correct context
+    $psOutput = & lms ps 2>&1 | Out-String
+    $modelLoaded = $false
+    $contextCorrect = $false
+
+    if ($psOutput -match [regex]::Escape($Model)) {
+        $modelLoaded = $true
+        # Extract context length from the ps output line containing our model
+        $lines = $psOutput -split "`n" | Where-Object { $_ -match [regex]::Escape($Model) }
+        foreach ($line in $lines) {
+            if ($line -match '\b(\d{4,})\b') {
+                # Find context length value (4+ digit number after the model name columns)
+                $fields = $line.Trim() -split '\s{2,}'
+                foreach ($f in $fields) {
+                    if ($f -match '^\d+$' -and [int]$f -ge 1024) {
+                        if ([int]$f -eq $ContextLength) { $contextCorrect = $true }
+                        break
+                    }
+                }
+            }
+        }
+    }
+
+    if (-not $modelLoaded -or -not $contextCorrect) {
+        if ($modelLoaded) {
+            Write-Host "Reloading $Model with context length $ContextLength..." -ForegroundColor Yellow
+            & lms unload $Model -y 2>&1 | Out-Null
+            Start-Sleep -Seconds 2
+        } else {
+            Write-Host "Loading $Model with context length $ContextLength..." -ForegroundColor Yellow
+        }
+        $loadOutput = & lms load $Model -c $ContextLength --gpu max -y 2>&1 | Out-String
+        if ($loadOutput -match 'loaded successfully') {
+            Write-Host "Model loaded ($ContextLength context)" -ForegroundColor Green
+        } else {
+            Write-Warning "Model load output: $loadOutput"
+        }
+    } else {
+        Write-Host "Model already loaded with context $ContextLength" -ForegroundColor DarkGray
+    }
 }
 
 try {

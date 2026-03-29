@@ -46,6 +46,7 @@ param(
     [int]$MaxTokens = 2048,
     [double]$Temperature = 0.7,
     [string]$Context = "",
+    [int]$ContextLength = 0,
     [switch]$NoThink,
     [string]$BaseURL = "http://localhost:1234/v1"
 )
@@ -110,6 +111,7 @@ foreach ($prompt in $promptList) {
             }
             if ($NoThink) { $testArgs['NoThink'] = $true }
             if ($Context) { $testArgs['Context'] = $Context }
+            if ($ContextLength -gt 0) { $testArgs['ContextLength'] = $ContextLength }
             & (Join-Path $scriptDir "run-test.ps1") @testArgs
         } catch {
             Write-Warning "FAILED: $prompt × $content — $_"
