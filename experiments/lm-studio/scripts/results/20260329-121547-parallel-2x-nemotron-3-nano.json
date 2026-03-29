@@ -1,0 +1,40 @@
+{
+  "total_tokens_out": 4923,
+  "model": "nvidia/nemotron-3-nano",
+  "total_tokens_in": 11916,
+  "aggregate_tok_per_sec": 151.0,
+  "tag": "parallel-2x-thinkon",
+  "timestamp": "2026-03-29T12:15:47.6665378-05:00",
+  "context": "context-t4",
+  "no_think": true,
+  "wall_ms": 32601,
+  "prompt": "titsw-enriched-talk",
+  "concurrency": 2,
+  "temperature": 0.2,
+  "gpu_summary": null,
+  "contents": [
+    "kearon-receive-his-gift",
+    "bednar-their-own-judges"
+  ],
+  "requests": [
+    {
+      "response": "\nKEYWORDS: [Heavenly Father, Jesus Christ, gift of eternal truth, children of God, receiving, love, invitation, doctrine, covenant, redemption, truth, gratitude, belonging, transformation, eternal perspective]  \nSUMMARY: [Elder Patrick Kearon teaches that Heavenly Father’s greatest gift is the knowledge that we are His beloved children, a truth that must be actively received and internalized. He illustrates gift‑giving, explains the three stages of giving, accepting, and receiving, and invites listeners to pray, open their hearts, and come unto Christ to obtain this transformative understanding.]  \nKEY_QUOTE: [\"You really are God’s child.\"]  \nTEACHING_PROFILE:  \nDOMINANT: [help_come_to_christ]  \nMODE: [declared]  \nPATTERN: [story→doctrine→invitation]  \nTEACH_SCORE: [5]  \nHELP_SCORE: [7]  \nLOVE_SCORE: [6]  \nSPIRIT_SCORE: [6]  \nDOCTRINE_SCORE: [7]  \nINVITE_SCORE: [7]",
+      "content": "kearon-receive-his-gift",
+      "tokens_out": 2337,
+      "error": null,
+      "tokens_in": 4719,
+      "elapsed_ms": 30185,
+      "index": 0
+    },
+    {
+      "response": "\nKEYWORDS: judgment, repentance, covenant, moral agency, come unto Christ, love, plan of happiness, atonement, godly fear, final judgment, agency, salvation, mercy, grace, accountability  \nSUMMARY: Elder David A. Bednar teaches that through covenant keeping and repentance the judgment bar will be pleasing, inviting all to come unto Christ. He explains moral agency as a divine power to choose good, links it to loving God and neighbor, and contrasts godly fear with worldly dread, promising mercy and eternal progression to the faithful.  \nKEY_QUOTE: “I soon go to rest in the paradise of God, until my spirit and body shall again reunite, and I am brought forth triumphant through the air, to meet you before the pleasing bar of the great Jehovah, the Eternal Judge of both quick and dead.”  \nTEACHING_PROFILE:  \nDOMINANT: help_come_to_christ  \nMODE: declared  \nPATTERN: invitation→doctrine→promise  \nTEACH_SCORE: 6  \nHELP_SCORE: 7  \nLOVE_SCORE: 6  \nSPIRIT_SCORE: 6  \nDOCTRINE_SCORE: 7  \nINVITE_SCORE: 7",
+      "content": "bednar-their-own-judges",
+      "tokens_out": 2586,
+      "error": null,
+      "tokens_in": 7197,
+      "elapsed_ms": 32593,
+      "index": 1
+    }
+  ],
+  "max_tokens": 32768
+}

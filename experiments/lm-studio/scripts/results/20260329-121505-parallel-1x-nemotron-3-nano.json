@@ -1,0 +1,30 @@
+{
+  "total_tokens_out": 1213,
+  "model": "nvidia/nemotron-3-nano",
+  "total_tokens_in": 4719,
+  "aggregate_tok_per_sec": 83.9,
+  "tag": "parallel-1x-thinkon",
+  "timestamp": "2026-03-29T12:15:05.8658197-05:00",
+  "context": "context-t4",
+  "no_think": true,
+  "wall_ms": 14464,
+  "prompt": "titsw-enriched-talk",
+  "concurrency": 1,
+  "temperature": 0.2,
+  "gpu_summary": null,
+  "contents": [
+    "kearon-receive-his-gift"
+  ],
+  "requests": [
+    {
+      "response": "\nKEYWORDS: receiving gift, Heavenly Father, Jesus Christ, children of God, eternal truth, gratitude, invitation, love, doctrine, spirit, covenant, gift giving  \n\nSUMMARY: Elder Kearon teaches that our Heavenly Father gives countless gifts, especially the gift of His Son, and invites each of us to receive the truth that we are His beloved children; he urges sincere acceptance, gratitude, and active use of this gift to deepen our relationship with Christ and feel His love continually.  \n\nKEY_QUOTE: “You really are His cherished daughter. You really are His precious son.”  \n\nTEACHING_PROFILE:\nDOMINANT: help_come_to_christ\nMODE: declared\nPATTERN: gift giving→receiving→transformation\nTEACH_SCORE: 5\nHELP_SCORE: 7\nLOVE_SCORE: 6\nSPIRIT_SCORE: 6\nDOCTRINE_SCORE: 5\nINVITE_SCORE: 7",
+      "content": "kearon-receive-his-gift",
+      "tokens_out": 1213,
+      "error": null,
+      "tokens_in": 4719,
+      "elapsed_ms": 14430,
+      "index": 0
+    }
+  ],
+  "max_tokens": 32768
+}

@@ -1,0 +1,49 @@
+{
+  "total_tokens_out": 250,
+  "model": "nvidia/nemotron-3-nano",
+  "total_tokens_in": 4719,
+  "aggregate_tok_per_sec": 45.3,
+  "tag": "parallel-1x-thinkoff",
+  "timestamp": "2026-03-29T12:19:54.1227830-05:00",
+  "context": "context-t4",
+  "no_think": true,
+  "wall_ms": 5521,
+  "prompt": "titsw-enriched-talk",
+  "concurrency": 1,
+  "temperature": 0.2,
+  "gpu_summary": [
+    {
+      "avg_util": 0.0,
+      "sample_count": 0,
+      "max_temp": null,
+      "gpu": "0",
+      "max_power": 0.0,
+      "avg_power": 0.0,
+      "max_util": null
+    },
+    {
+      "avg_util": 0.0,
+      "sample_count": 0,
+      "max_temp": null,
+      "gpu": "1",
+      "max_power": 0.0,
+      "avg_power": 0.0,
+      "max_util": null
+    }
+  ],
+  "contents": [
+    "kearon-receive-his-gift"
+  ],
+  "requests": [
+    {
+      "response": "KEYWORDS: Heavenly Father, Jesus Christ, gift of eternal truth, children of God, redemption, Holy Spirit, covenant, joy, repentance, eternal life  \nSUMMARY: Elder Kearon teaches that the greatest gift from Heavenly Father is the knowledge that we are His beloved children, made possible through Jesus Christ. He explains gift-giving as a three-part process—giving, accepting, and receiving—and invites listeners to fully receive this foundational truth, which transforms their understanding of self, purpose, and divine love.  \nKEY_QUOTE: \"You really are His cherished daughter. You really are His precious son. And the path you are on is His plan of happiness.\"  \nTEACHING_PROFILE:  \nDOMINANT: help_come_to_christ  \nMODE: declared  \nPATTERN: problem→principle→promise  \nTEACH_SCORE: 6  \nHELP_SCORE: 8  \nLOVE_SCORE: 7  \nSPIRIT_SCORE: 7  \nDOCTRINE_SCORE: 7  \nINVITE_SCORE: 8",
+      "content": "kearon-receive-his-gift",
+      "tokens_out": 250,
+      "error": null,
+      "tokens_in": 4719,
+      "elapsed_ms": 5517,
+      "index": 0
+    }
+  ],
+  "max_tokens": 32768
+}

@@ -1,0 +1,69 @@
+{
+  "total_tokens_out": 788,
+  "model": "nvidia/nemotron-3-nano",
+  "total_tokens_in": 15322,
+  "aggregate_tok_per_sec": 118.9,
+  "tag": "parallel-3x-thinkoff",
+  "timestamp": "2026-03-29T12:20:24.0592728-05:00",
+  "context": "context-t4",
+  "no_think": true,
+  "wall_ms": 6630,
+  "prompt": "titsw-enriched-talk",
+  "concurrency": 3,
+  "temperature": 0.2,
+  "gpu_summary": [
+    {
+      "avg_util": 0.0,
+      "sample_count": 0,
+      "max_temp": null,
+      "gpu": "0",
+      "max_power": 0.0,
+      "avg_power": 0.0,
+      "max_util": null
+    },
+    {
+      "avg_util": 0.0,
+      "sample_count": 0,
+      "max_temp": null,
+      "gpu": "1",
+      "max_power": 0.0,
+      "avg_power": 0.0,
+      "max_util": null
+    }
+  ],
+  "contents": [
+    "kearon-receive-his-gift",
+    "bednar-their-own-judges",
+    "holland-and-now-i-see"
+  ],
+  "requests": [
+    {
+      "response": "KEYWORDS: Heavenly Father, Jesus Christ, gift of eternal truth, children of God, redemption, Holy Spirit, covenant, joy, gratitude, eternal life  \nSUMMARY: Elder Kearon teaches that the greatest gift from Heavenly Father is the knowledge that we are His beloved children, made possible through Jesus Christ. He explains gift-giving as a three-part process—giving, accepting, receiving—and emphasizes that true reception requires active, heartfelt acceptance of this foundational truth to access all other blessings.  \nKEY_QUOTE: \"You really are His cherished daughter. You really are His precious son. And the path you are on is His plan of happiness.\"  \nTEACHING_PROFILE:  \nDOMINANT: help_come_to_christ  \nMODE: declared  \nPATTERN: problem→principle→promise  \nTEACH_SCORE: 5  \nHELP_SCORE: 7  \nLOVE_SCORE: 6  \nSPIRIT_SCORE: 6  \nDOCTRINE_SCORE: 6  \nINVITE_SCORE: 7",
+      "content": "kearon-receive-his-gift",
+      "tokens_out": 246,
+      "error": null,
+      "tokens_in": 4719,
+      "elapsed_ms": 6233,
+      "index": 0
+    },
+    {
+      "response": "KEYWORDS: Final Judgment, moral agency, plan of happiness, atonement, godly fear, repentance, judgment bar, pleasing judgment, love one another, choose God  \nSUMMARY: Elder David A. Bednar teaches that through Christ’s doctrine, the Final Judgment can be pleasing to the faithful. He explains that moral agency—our power to act righteously—is central to God’s plan. By exercising agency to love God and others, repent, and endure, individuals become like Christ and stand confidently before the judgment bar.  \nKEY_QUOTE: \"I soon go to rest in the paradise of God, until my spirit and body shall again reunite, and I am brought forth triumphant through the air, to meet you before the pleasing bar of the great Jehovah, the Eternal Judge of both quick and dead.\"  \n\nTEACHING_PROFILE:  \nDOMINANT: help_come_to_christ  \nMODE: doctrinal  \nPATTERN: doctrine→invitation→promise  \nTEACH_SCORE: 6  \nHELP_SCORE: 7  \nLOVE_SCORE: 6  \nSPIRIT_SCORE: 6  \nDOCTRINE_SCORE: 7  \nINVITE_SCORE: 6",
+      "content": "bednar-their-own-judges",
+      "tokens_out": 285,
+      "error": null,
+      "tokens_in": 7197,
+      "elapsed_ms": 6622,
+      "index": 1
+    },
+    {
+      "response": "KEYWORDS: Jesus Christ, Book of Mormon, restoration, miracles, faith, obedience, love, testimony, redemption, ordinances  \nSUMMARY: Elder Holland draws a powerful parallel between Jesus healing the blind man in John 9 and the transformative power of the Book of Mormon in his life. He emphasizes that God often uses simple, humble means to manifest His works and bring people to Christ. Through personal witness and scriptural insight, he testifies that the Church is a true restoration of Christ’s original church, guided by divine authority and infinite love.  \nKEY_QUOTE: \"The impact of the Book of Mormon in my life is no less miraculous than was the application of spit and dirt placed on the blind man’s eyes.\"  \nTEACHING_PROFILE:  \nDOMINANT: help_come_to_christ  \nMODE: enacted  \nPATTERN: miracle→invitation→testimony  \nTEACH_SCORE: 5  \nHELP_SCORE: 7  \nLOVE_SCORE: 7  \nSPIRIT_SCORE: 5  \nDOCTRINE_SCORE: 4  \nINVITE_SCORE: 7",
+      "content": "holland-and-now-i-see",
+      "tokens_out": 257,
+      "error": null,
+      "tokens_in": 3406,
+      "elapsed_ms": 6370,
+      "index": 2
+    }
+  ],
+  "max_tokens": 32768
+}

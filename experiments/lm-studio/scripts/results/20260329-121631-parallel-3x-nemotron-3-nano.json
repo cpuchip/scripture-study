@@ -1,0 +1,50 @@
+{
+  "total_tokens_out": 5464,
+  "model": "nvidia/nemotron-3-nano",
+  "total_tokens_in": 15322,
+  "aggregate_tok_per_sec": 158.4,
+  "tag": "parallel-3x-thinkon",
+  "timestamp": "2026-03-29T12:16:31.0713601-05:00",
+  "context": "context-t4",
+  "no_think": true,
+  "wall_ms": 34493,
+  "prompt": "titsw-enriched-talk",
+  "concurrency": 3,
+  "temperature": 0.2,
+  "gpu_summary": null,
+  "contents": [
+    "kearon-receive-his-gift",
+    "bednar-their-own-judges",
+    "holland-and-now-i-see"
+  ],
+  "requests": [
+    {
+      "response": "\nKEYWORDS: doctrines, gift, receiving, Heavenly Father, Jesus Christ, eternal truth, children of God, love, invitation, testimony, redemption, covenant  \nSUMMARY: Elder Patrick Kearon teaches that every person is a beloved child of God and that the Savior is the greatest gift from a loving Father. He explains gift‑giving as a three‑step process—giving, accepting, receiving—and urges listeners to open and internalize the truth that they are God’s children, allowing this knowledge to transform their lives and deepen their relationship with Christ.  \nKEY_QUOTE: \"You are a beloved daughter of God, you are a cherished son of God, and He has gifted you His perfect, holy Son.\"  \nTEACHING_PROFILE:\nDOMINANT: help_come_to_christ\nMODE: declared\nPATTERN: story→doctrine→invitation\nTEACH_SCORE: 6\nHELP_SCORE: 7\nLOVE_SCORE: 7\nSPIRIT_SCORE: 6\nDOCTRINE_SCORE: 6\nINVITE_SCORE: 7",
+      "content": "kearon-receive-his-gift",
+      "tokens_out": 1988,
+      "error": null,
+      "tokens_in": 4719,
+      "elapsed_ms": 33414,
+      "index": 0
+    },
+    {
+      "response": "\nKEYWORDS: [Final Judgment, Moroni, plan of happiness, moral agency, atonement, love, agency, invitation, doctrine, salvation, accountability, restoration]\n\nSUMMARY: [Elder David A. Bednar teaches that the Final Judgment will be pleasing to those who have exercised faith in Jesus Christ, kept covenants, and repented. He explains Moroni’s invitation to come unto Christ, emphasizes moral agency, the plan of happiness, and the Savior’s atoning role, and promises that the righteous will stand confidently before the pleasing bar of God.]\n\nKEY_QUOTE: [“I soon go to rest in the paradise of God, until my spirit and body shall again reunite, and I am brought forth triumphant through the air, to meet you before the pleasing bar of the great Jehovah, the Eternal Judge of both quick and dead.”]\n\nTEACHING_PROFILE:\nDOMINANT: [help_come_to_christ, love]\nMODE: [declared]\nPATTERN: [invitation→doctrine→promise]\nTEACH_SCORE: [5]\nHELP_SCORE: [7]\nLOVE_SCORE: [6]\nSPIRIT_SCORE: [6]\nDOCTRINE_SCORE: [7]\nINVITE_SCORE: [7]",
+      "content": "bednar-their-own-judges",
+      "tokens_out": 2081,
+      "error": null,
+      "tokens_in": 7197,
+      "elapsed_ms": 34473,
+      "index": 1
+    },
+    {
+      "response": "\nKEYWORDS: Book of Mormon, Jesus Christ, restoration, miracles, love, testimony, redemption, ordinances, discipleship, divine authority  \nSUMMARY: Elder Holland uses the story of the blind man in John 9 to illustrate how simple means can manifest God’s power, shares his personal witness of the Book of Mormon, and testifies that Christ’s restoration brings light and invites all to come unto Him through personal revelation and humble obedience.  \nKEY_QUOTE: \"Amazing grace—how sweet the sound—That saved a wretch like me! I once was lost, but now am found, Was blind, but now I see.\"  \nTEACHING_PROFILE:\nDOMINANT: love\nMODE: declared\nPATTERN: story→doctrine→invitation\nTEACH_SCORE: 7\nHELP_SCORE: 7\nLOVE_SCORE: 8\nSPIRIT_SCORE: 7\nDOCTRINE_SCORE: 6\nINVITE_SCORE: 7",
+      "content": "holland-and-now-i-see",
+      "tokens_out": 1395,
+      "error": null,
+      "tokens_in": 3406,
+      "elapsed_ms": 23092,
+      "index": 2
+    }
+  ],
+  "max_tokens": 32768
+}

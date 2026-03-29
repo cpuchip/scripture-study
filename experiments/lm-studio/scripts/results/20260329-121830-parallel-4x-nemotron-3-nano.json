@@ -1,0 +1,79 @@
+{
+  "total_tokens_out": 8048,
+  "model": "nvidia/nemotron-3-nano",
+  "total_tokens_in": 20077,
+  "aggregate_tok_per_sec": 229.4,
+  "tag": "parallel-4x-thinkon-v2",
+  "timestamp": "2026-03-29T12:18:30.9691500-05:00",
+  "context": "context-t4",
+  "no_think": true,
+  "wall_ms": 35088,
+  "prompt": "titsw-enriched-talk",
+  "concurrency": 4,
+  "temperature": 0.2,
+  "gpu_summary": [
+    {
+      "avg_util": 0.0,
+      "sample_count": 0,
+      "max_temp": null,
+      "gpu": "0",
+      "max_power": 0.0,
+      "avg_power": 0.0,
+      "max_util": null
+    },
+    {
+      "avg_util": 0.0,
+      "sample_count": 0,
+      "max_temp": null,
+      "gpu": "1",
+      "max_power": 0.0,
+      "avg_power": 0.0,
+      "max_util": null
+    }
+  ],
+  "contents": [
+    "kearon-receive-his-gift",
+    "bednar-their-own-judges",
+    "holland-and-now-i-see",
+    "oaks-trust-in-the-lord"
+  ],
+  "requests": [
+    {
+      "response": "\nKEYWORDS: gift, heavenly father, jesus christ, children of god, eternal truth, receiving, love, invitation, doctrine, redemption\nSUMMARY: Elder Patrick Kearson teaches that every person is a beloved child of God and that the greatest gift from the Father is Jesus Christ. He explains gift‑giving as a three‑part process and urges listeners to open and receive the truth that they are God’s children, inviting them to come unto Christ and partake of all other blessings.\nKEY_QUOTE: \"You really are His cherished daughter. You really are His precious son.\"\nTEACHING_PROFILE:\nDOMINANT: help_come_to_christ\nMODE: declared\nPATTERN: invitation→doctrine→testimony\nTEACH_SCORE: 5\nHELP_SCORE: 7\nLOVE_SCORE: 6\nSPIRIT_SCORE: 5\nDOCTRINE_SCORE: 5\nINVITE_SCORE: 7",
+      "content": "kearon-receive-his-gift",
+      "tokens_out": 1749,
+      "error": null,
+      "tokens_in": 4719,
+      "elapsed_ms": 28673,
+      "index": 0
+    },
+    {
+      "response": "\nKEYWORDS: judgment, repentance, covenant, moral agency, plan of happiness, atonement, love, invitation, doctrine, salvation\nSUMMARY: Elder David A. Bednar teaches that through Christ’s atonement and faithful covenant keeping, the final judgment will be pleasing to the righteous. He explains moral agency, the plan of happiness, and the need to love God and others, inviting all to come unto Christ, experience His peace, and become like Him.\nKEY_QUOTE: “I soon go to rest in the paradise of God, until my spirit and body shall again reunite, and I am brought forth triumphant through the air, to meet you before the pleasing bar of the great Jehovah, the Eternal Judge of both quick and dead.”\nTEACHING_PROFILE:\nDOMINANT: help_come_to_christ\nMODE: doctrinal\nPATTERN: problem→principle→promise\nTEACH_SCORE: 6\nHELP_SCORE: 7\nLOVE_SCORE: 6\nSPIRIT_SCORE: 5\nDOCTRINE_SCORE: 7\nINVITE_SCORE: 7",
+      "content": "bednar-their-own-judges",
+      "tokens_out": 1988,
+      "error": null,
+      "tokens_in": 7197,
+      "elapsed_ms": 31856,
+      "index": 1
+    },
+    {
+      "response": "\nKEYWORDS: restoration, Jesus Christ, Book of Mormon, miracles, obedience, ordinances, love, testimony, redemption, divine authority, mercy, covenant, light, grace  \nSUMMARY: Elder Holland teaches that the Savior’s miracles, like the healing of the blind man, show that God’s power works through simple means to manifest divine truth. He testifies that the Book of Mormon is a miraculous instrument of light, urging listeners to obey, seek ordinances, and come unto Christ with faith and love.  \nKEY_QUOTE: And surely they have, and surely they will.  \nTEACHING_PROFILE:\nDOMINANT: help_come_to_christ\nMODE: declared\nPATTERN: story→doctrine→invitation\nTEACH_SCORE: 6\nHELP_SCORE: 7\nLOVE_SCORE: 7\nSPIRIT_SCORE: 6\nDOCTRINE_SCORE: 6\nINVITE_SCORE: 7",
+      "content": "holland-and-now-i-see",
+      "tokens_out": 2314,
+      "error": null,
+      "tokens_in": 3406,
+      "elapsed_ms": 35077,
+      "index": 2
+    },
+    {
+      "response": "\nKEYWORDS: trust in the Lord, spirit world, salvation, proxy ordinances, resurrection, bondage, scriptures, revelation, love, obedience\nSUMMARY: President Dallin H. Oaks teaches that our only sure reliance is to trust in the Lord and His love for His children. He discusses the spirit world, emphasizing that the work of salvation continues there, that proxy ordinances are performed for the dead, and that the righteous await resurrection. He urges members to focus on personal righteousness, avoid speculation, and trust divine guidance.\nKEY_QUOTE: Our only sure reliance is to trust in the Lord and His love for His children.\nTEACHING_PROFILE:\nDOMINANT: love\nMODE: declared\nPATTERN: problem→principle→promise\nTEACH_SCORE: 5\nHELP_SCORE: 6\nLOVE_SCORE: 8\nSPIRIT_SCORE: 7\nDOCTRINE_SCORE: 7\nINVITE_SCORE: 6",
+      "content": "oaks-trust-in-the-lord",
+      "tokens_out": 1997,
+      "error": null,
+      "tokens_in": 4755,
+      "elapsed_ms": 32006,
+      "index": 3
+    }
+  ],
+  "max_tokens": 32768
+}

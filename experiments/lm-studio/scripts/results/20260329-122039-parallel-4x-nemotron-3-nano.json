@@ -1,0 +1,79 @@
+{
+  "total_tokens_out": 1022,
+  "model": "nvidia/nemotron-3-nano",
+  "total_tokens_in": 20077,
+  "aggregate_tok_per_sec": 139.3,
+  "tag": "parallel-4x-thinkoff",
+  "timestamp": "2026-03-29T12:20:39.2154306-05:00",
+  "context": "context-t4",
+  "no_think": true,
+  "wall_ms": 7337,
+  "prompt": "titsw-enriched-talk",
+  "concurrency": 4,
+  "temperature": 0.2,
+  "gpu_summary": [
+    {
+      "avg_util": 0.0,
+      "sample_count": 0,
+      "max_temp": null,
+      "gpu": "0",
+      "max_power": 0.0,
+      "avg_power": 0.0,
+      "max_util": null
+    },
+    {
+      "avg_util": 0.0,
+      "sample_count": 0,
+      "max_temp": null,
+      "gpu": "1",
+      "max_power": 0.0,
+      "avg_power": 0.0,
+      "max_util": null
+    }
+  ],
+  "contents": [
+    "kearon-receive-his-gift",
+    "bednar-their-own-judges",
+    "holland-and-now-i-see",
+    "oaks-trust-in-the-lord"
+  ],
+  "requests": [
+    {
+      "response": "KEYWORDS: Heavenly Father, Jesus Christ, gifts, eternal truth, children of God, redemption, invitation, love, testimony, doctrine  \nSUMMARY: Elder Kearon teaches that Heavenly Father’s greatest gift is Jesus Christ, and that understanding we are His beloved children is an eternal truth that must be actively received to unlock all other blessings.  \nKEY_QUOTE: \"You really are His cherished daughter. You really are His precious son. And the path you are on is His plan of happiness.\"  \nTEACHING_PROFILE:  \nDOMINANT: help_come_to_christ  \nMODE: declared  \nPATTERN: invitation→doctrine→testimony  \nTEACH_SCORE: 5  \nHELP_SCORE: 7  \nLOVE_SCORE: 7  \nSPIRIT_SCORE: 5  \nDOCTRINE_SCORE: 6  \nINVITE_SCORE: 7",
+      "content": "kearon-receive-his-gift",
+      "tokens_out": 214,
+      "error": null,
+      "tokens_in": 4719,
+      "elapsed_ms": 6376,
+      "index": 0
+    },
+    {
+      "response": "KEYWORDS: Moroni, Final Judgment, moral agency, plan of happiness, atonement, godly fear, Alma, repentance, covenant, salvation  \nSUMMARY: Elder David A. Bednar teaches that through Christ’s Atonement and righteous use of moral agency, we can anticipate the Final Judgment as “pleasing” rather than fearful, as we become like Him by loving God and others and exercising faith.  \nKEY_QUOTE: \"I soon go to rest in the paradise of God, until my spirit and body shall again reunite, and I am brought forth triumphant through the air, to meet you before the pleasing bar of the great Jehovah, the Eternal Judge of both quick and dead.\"  \nTEACHING_PROFILE:  \nDOMINANT: help_come_to_christ  \nMODE: doctrinal  \nPATTERN: doctrine→invitation→promise  \nTEACH_SCORE: 5  \nHELP_SCORE: 7  \nLOVE_SCORE: 6  \nSPIRIT_SCORE: 6  \nDOCTRINE_SCORE: 7  \nINVITE_SCORE: 6",
+      "content": "bednar-their-own-judges",
+      "tokens_out": 260,
+      "error": null,
+      "tokens_in": 7197,
+      "elapsed_ms": 6935,
+      "index": 1
+    },
+    {
+      "response": "KEYWORDS: Jesus Christ, Book of Mormon, restoration, miracles, faith, obedience, ordinances, grace, redemption, testimony  \nSUMMARY: Elder Holland draws a powerful parallel between the Savior’s miraculous healing of the blind man in John 9 and the transformative power of the Book of Mormon in his own life. He emphasizes that God often uses simple, humble means—like clay and spit or a sacred record—to manifest divine glory and invite all people to come unto Christ.  \nKEY_QUOTE: \"The impact of the Book of Mormon in my life is no less miraculous than was the application of spit and dirt placed on the blind man’s eyes.\"  \nTEACHING_PROFILE:  \nDOMINANT: help_come_to_christ  \nMODE: declared  \nPATTERN: problem→principle→promise  \nTEACH_SCORE: 5  \nHELP_SCORE: 7  \nLOVE_SCORE: 6  \nSPIRIT_SCORE: 6  \nDOCTRINE_SCORE: 6  \nINVITE_SCORE: 6",
+      "content": "holland-and-now-i-see",
+      "tokens_out": 244,
+      "error": null,
+      "tokens_in": 3406,
+      "elapsed_ms": 6760,
+      "index": 2
+    },
+    {
+      "response": "KEYWORDS: trust in the Lord, spirit world, resurrection, salvation, proxy ordinances, revelation, doctrine, comfort, faith, obedience  \nSUMMARY: President Oaks teaches that our only sure reliance is to trust in the Lord and His love, especially amid unanswered questions about the spirit world and eternal relationships. He explains that the spirit world involves work of salvation, including teaching the gospel to the righteous and wicked, freeing spirits from bondage, and performing proxy ordinances on earth. He emphasizes that God’s plan includes resurrection for all, and that the Savior’s work of redemption continues there. He urges members to focus on personal repentance, covenant keeping, and trusting God’s wisdom rather than speculating about details not revealed as official doctrine.  \nKEY_QUOTE: “Trust in the Lord with all thine heart; and lean not unto thine own understanding. In all thy ways acknowledge him, and he shall direct thy paths.”  \n\nTEACHING_PROFILE:  \nDOMINANT: help_come_to_christ  \nMODE: doctrinal  \nPATTERN: problem→principle→promise  \nTEACH_SCORE: 5  \nHELP_SCORE: 7  \nLOVE_SCORE: 6  \nSPIRIT_SCORE: 6  \nDOCTRINE_SCORE: 7  \nINVITE_SCORE: 5",
+      "content": "oaks-trust-in-the-lord",
+      "tokens_out": 304,
+      "error": null,
+      "tokens_in": 4755,
+      "elapsed_ms": 7323,
+      "index": 3
+    }
+  ],
+  "max_tokens": 32768
+}

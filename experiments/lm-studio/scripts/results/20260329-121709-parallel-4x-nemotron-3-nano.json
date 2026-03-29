@@ -1,0 +1,60 @@
+{
+  "total_tokens_out": 6465,
+  "model": "nvidia/nemotron-3-nano",
+  "total_tokens_in": 20077,
+  "aggregate_tok_per_sec": 218.0,
+  "tag": "parallel-4x-thinkon",
+  "timestamp": "2026-03-29T12:17:09.8178190-05:00",
+  "context": "context-t4",
+  "no_think": true,
+  "wall_ms": 29658,
+  "prompt": "titsw-enriched-talk",
+  "concurrency": 4,
+  "temperature": 0.2,
+  "gpu_summary": null,
+  "contents": [
+    "kearon-receive-his-gift",
+    "bednar-their-own-judges",
+    "holland-and-now-i-see",
+    "oaks-trust-in-the-lord"
+  ],
+  "requests": [
+    {
+      "response": "\nKEYWORDS: gift giving, Heavenly Father, Jesus Christ, eternal truth, children of God, receiving gifts, love, invitation, doctrine, testimony  \nSUMMARY: Elder Patrick Kearon teaches that Heavenly Father’s greatest gift is Jesus Christ and that each person is a beloved child of God. He explains the three stages of gift giving—giving, accepting, receiving—and urges listeners to open and truly receive the gift of knowing they are God’s children, allowing this truth to transform their lives.  \nKEY_QUOTE: “You really are His cherished daughter. You really are His precious son.”  \n\nTEACHING_PROFILE:\nDOMINANT: help_come_to_christ\nMODE: declared\nPATTERN: invitation→doctrine→testimony\nTEACH_SCORE: 7\nHELP_SCORE: 7\nLOVE_SCORE: 6\nSPIRIT_SCORE: 6\nDOCTRINE_SCORE: 6\nINVITE_SCORE: 7",
+      "content": "kearon-receive-his-gift",
+      "tokens_out": 1386,
+      "error": null,
+      "tokens_in": 4719,
+      "elapsed_ms": 23915,
+      "index": 0
+    },
+    {
+      "response": "\nKEYWORDS: Moroni, Final Judgment, pleasing bar, moral agency, love one another, choose God, atonement, godly fear, restoration, plan of happiness\nSUMMARY: Elder David A. Bednar teaches that the Final Judgment will be pleasing to those who have exercised faith in Jesus Christ, kept covenants, and repented. He explains that Moroni’s invitation to “come unto Christ” and “be perfected in Him” reflects the plan of happiness, moral agency, and the need to love God and others.\nKEY_QUOTE: “I soon go to rest in the paradise of God, until my spirit and body shall again reunite, and I am brought forth triumphant through the air, to meet you before the pleasing bar of the great Jehovah, the Eternal Judge of both quick and dead.”\nTEACHING_PROFILE:\nDOMINANT: help_come_to_christ\nMODE: declared\nPATTERN: invitation→doctrine→testimony\nTEACH_SCORE: 6\nHELP_SCORE: 7\nLOVE_SCORE: 7\nSPIRIT_SCORE: 6\nDOCTRINE_SCORE: 7\nINVITE_SCORE: 7",
+      "content": "bednar-their-own-judges",
+      "tokens_out": 1905,
+      "error": null,
+      "tokens_in": 7197,
+      "elapsed_ms": 29652,
+      "index": 1
+    },
+    {
+      "response": "\nKEYWORDS: restoration, Book of Mormon, miracles, evidence, love, redemption, ordinances, mercy, salvation, testimony, discipleship, grace, faith, disciples, Jesus Christ  \nSUMMARY: Elder Jeffrey R. Holland teaches that the Savior’s miracles, such as the healing of the blind man, illustrate how God uses simple means to manifest divine power and invite all to come unto Christ. He testifies that the Book of Mormon and modern priesthood authority provide further evidence of the true church, urging listeners to embrace love, faith, and personal revelation.  \nKEY_QUOTE: \"Amazing grace—how sweet the sound—That saved a wretch like me!\"  \nTEACHING_PROFILE:\nDOMINANT: help_come_to_christ\nMODE: declared\nPATTERN: story→doctrine→invitation\nTEACH_SCORE: 6\nHELP_SCORE: 7\nLOVE_SCORE: 7\nSPIRIT_SCORE: 6\nDOCTRINE_SCORE: 5\nINVITE_SCORE: 7",
+      "content": "holland-and-now-i-see",
+      "tokens_out": 1690,
+      "error": null,
+      "tokens_in": 3406,
+      "elapsed_ms": 27661,
+      "index": 2
+    },
+    {
+      "response": "\nKEYWORDS: trust in the Lord, spirit world, resurrection, salvation, proxy ordinances, repentance, bondage, scripture, official doctrine, love  \nSUMMARY: President Oaks teaches that our only sure reliance is to trust in the Lord and His love, urging believers to focus on personal righteousness rather than speculative questions about the spirit world, and to trust that God will provide promised blessings as we obey covenants, perform proxy ordinances for the dead, and continue the work of salvation. He emphasizes that the Savior’s atonement makes all things possible and that each of us must teach doctrine, keep commandments, love one another, and trust the Lord’s perfect plan.  \nKEY_QUOTE: “Our only sure reliance is to trust in the Lord and His love for His children.”  \nTEACHING_PROFILE:  \nDOMINANT: help_come_to_christ  \nMODE: declared  \nPATTERN: question→principle→invitation  \nTEACH_SCORE: 5  \nHELP_SCORE: 7  \nLOVE_SCORE: 6  \nSPIRIT_SCORE: 5  \nDOCTRINE_SCORE: 6  \nINVITE_SCORE: 6",
+      "content": "oaks-trust-in-the-lord",
+      "tokens_out": 1484,
+      "error": null,
+      "tokens_in": 4755,
+      "elapsed_ms": 25331,
+      "index": 3
+    }
+  ],
+  "max_tokens": 32768
+}
