@@ -181,3 +181,7 @@ timestamp	model	prompt	content	tag	tokens_in	tokens_out	gen_tok_per_sec	tok_per_
 2026-03-28 20:31:33	nemotron-3-nano	titsw-v5	1-chronicles-1	v5.1-new	6619	4143	551.6	85.5	40926	7511	48437		
 2026-03-28 20:32:18	nemotron-3-nano	titsw-v5	kearon-church-of-joy	v5.1-new	7611	4018	504.3	92.9	35269	7968	43237		
 2026-03-28 20:33:14	nemotron-3-nano	titsw-v5	joseph-smith-ch3-redeemer	v5.1-new	10294	5030	456.7	94	42498	11015	53513		
+2026-03-28 20:45:11	nemotron-3-nano	titsw-v5	oaks-trust-in-the-lord	v5.1-round2	7669	3982	597.5	92.2	36507	6664	43171		
+2026-03-28 20:46:04	nemotron-3-nano	titsw-v5	maxwell-encircled-in-his-love	v5.1-round2	7908	4969	437.1	97.6	39545	11368	50913		
+2026-03-28 20:46:57	nemotron-3-nano	titsw-v5	john-17	v5.1-round2	7935	4881	502.2	96.9	40673	9720	50393		
+2026-03-28 20:47:40	nemotron-3-nano	titsw-v5	abraham-4	v5.1-round2	7175	4013	631.2	98.8	34271	6358	40629		
