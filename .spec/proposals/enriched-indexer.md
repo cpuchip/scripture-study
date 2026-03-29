@@ -34,9 +34,9 @@ The gospel-vec indexer produces generic summaries that surface nothing useful fo
 - **Model:** nemotron-3-nano via LM Studio at localhost:1234. Temperature 0.2, 131k context.
 - **Storage:** chromem-go metadata is `map[string]string` — no nested objects. New fields must be flat strings.
 - **Scale:** 5,500+ talks, 19+ manual collections, all standard works.
-- **Batch time:** Full conference reindex ~28 hours at 18.5s/talk. Acceptable for a one-time migration.
+- **Batch time:** Full conference reindex ~28 hours at 18.5s/talk sequential. Explore 2-concurrent requests (API supports 4x) to halve this.
 - **Cache:** Existing cached summaries invalidated by prompt change. New cache entries use `prompt_version: "v2"`.
-- **NOT in scope:** gospel-mcp schema changes (Phase 4, separate proposal). Brain app integration. Love/Spirit score calibration (known unreliable — track but don't optimize).
+- **NOT in scope:** gospel-mcp schema changes (separate proposal: [enriched-search.md](enriched-search.md)). Brain app integration.
 
 ---
 
@@ -96,6 +96,9 @@ MODE: [primary from: enacted (models it) | declared (testifies) | doctrinal (exp
 PATTERN: [brief label: "story→doctrine→invitation" or "problem→principle→promise"]
 TEACH_SCORE: [0-9, how central is Christ to the content]
 HELP_SCORE: [0-9, how much does this help people come to Christ]
+LOVE_SCORE: [0-9, how strongly does this demonstrate or teach love]
+SPIRIT_SCORE: [0-9, how directly does this invite the Spirit or bear testimony]
+DOCTRINE_SCORE: [0-9, how deeply does this engage with doctrine]
 INVITE_SCORE: [0-9, how directly does this invite to specific action]
 
 Scoring guidance:
@@ -108,8 +111,8 @@ Keep total output under 300 words. No other text.
 ```
 
 Key design choices:
-- **No love/spirit scores.** These proved unreliable (inflation). Omitting them avoids noise.
-- **No context documents.** Proven counterproductive for talks.
+- **Include love/spirit scores.** Known to inflate, but tracked anyway — may reveal interesting patterns. Downstream consumers can ignore if noisy.
+- **No context documents (baseline).** Proven counterproductive for talks — but see "Talk Context Experiments" below for planned validation.
 - **Scoring guidance is minimal** — just 4 anchor points. The model doesn't need the full framework.
 - **max_tokens: 500** (up from 300). The TEACHING_PROFILE section adds ~100 tokens of output.
 
@@ -127,6 +130,9 @@ TitswMode       string `json:"titsw_mode,omitempty"`       // "enacted" | "decla
 TitswPattern    string `json:"titsw_pattern,omitempty"`    // "story→doctrine→invitation"
 TitswTeach      string `json:"titsw_teach,omitempty"`      // "7" (0-9 score as string)
 TitswHelp       string `json:"titsw_help,omitempty"`       // "6"
+TitswLove       string `json:"titsw_love,omitempty"`       // "4" (known to inflate — tracked for patterns)
+TitswSpirit     string `json:"titsw_spirit,omitempty"`     // "5" (known to inflate — tracked for patterns)
+TitswDoctrine   string `json:"titsw_doctrine,omitempty"`   // "7"
 TitswInvite     string `json:"titsw_invite,omitempty"`     // "5"
 ```
 
@@ -136,21 +142,126 @@ These become flat `map[string]string` entries in `ToMap()`, enabling `Where("tit
 
 The summary cache JSON gains a `teaching_profile` object alongside the existing `summary` object. Cache key remains `talk-{year}-{month}-{filename}` but prompt_version changes to `"v2"` — old `"v1"` entries are not overwritten, new entries coexist.
 
+### Parallelism
+
+The current indexer processes talks sequentially (one summary request at a time). LM Studio supports 4 concurrent requests. Implementation:
+- Add a configurable `--concurrency` flag (default 1, max 4)
+- Use a worker pool with a semaphore channel
+- Start with 2 concurrent requests, test for stability and VRAM pressure on dual 4090s
+- Monitor for quality degradation (batch inference can sometimes affect model output quality)
+- If 2x is stable, try 4x — could reduce batch time from 28 hours to 7
+
+### Talk Context Experiments (Phase 0)
+
+**This is the unexplored territory.** We proved that scripture context (gospel-vocab.md + titsw-framework.md) hurts talks. But we never tested whether a *different kind* of context helps.
+
+The inflation mechanism is specific: `gospel-vocab.md` provides 7 theological patterns for detecting *hidden* Christ-typology (tree of life, types and shadows, etc.). Conference talks are already explicit about Christ. When the model has a vocabulary for finding hidden connections AND the content is already explicit, it over-reads — every mention of Christ gets amplified through multiple theological lenses simultaneously.
+
+But no one ever isolated which context document causes the inflation, or tested talk-specific alternatives. Here's the experiment matrix:
+
+#### Experiment Set
+
+**Test pieces:** Kearon "Receive His Gift", Bednar "Their Own Judges", Holland "And Now I See" (all have ground truth scores)
+
+**Prompt:** Enriched talk prompt (the one above with TEACHING_PROFILE) for all experiments
+
+| Exp | Context | Hypothesis | What it tests |
+|-----|---------|------------|---------------|
+| T0 | None (vocabulary only) | Baseline. Vocabulary approach works. | This is the default proposed approach. |
+| T1 | titsw-framework.md only | Framework without typological lens may help without inflation. | Isolates gospel-vocab.md as inflation source. |
+| T2 | gospel-vocab.md only | Typological lens alone — probably causes most of the inflation. | Confirms/denies gospel-vocab is the culprit. |
+| T3 | Talk-specific rhetorical context | Helps the model identify teaching modes and patterns. | New context type — rhetorical rather than theological. |
+| T4 | Calibration context (scored examples) | Few-shot anchoring reduces score variance. | Does an exemplar ground the model? |
+| T5 | Best of T1-T4 combined | Optimal context stack for talks. | Combination effect. |
+
+#### Talk-Specific Context Document (for T3)
+
+A new document describing conference talk conventions. Not what to look for spiritually (that's gospel-vocab's job) but what rhetorical patterns indicate what teaching mode:
+
+```
+CONFERENCE TALK PATTERNS
+
+Conference talks follow recognizable rhetorical structures:
+
+TEACHING MODES — how the speaker conveys truth:
+- ENACTED: The speaker demonstrates the principle by doing it, not just describing it.
+  (Elder Kearon welcomed members with joy rather than listing reasons for joy.)
+- DECLARED: Direct testimony — "I know..." "I bear witness..."
+- DOCTRINAL: Systematic exposition of doctrine with scriptural support.
+- EXPERIENTIAL: Personal narrative as the primary vehicle for truth.
+
+STRUCTURAL PATTERNS — how talks flow:
+- Story → Doctrine → Invitation (most common)
+- Problem → Principle → Promise
+- Question → Exploration → Testimony
+- Narrative arc (sustained story with embedded doctrine)
+- Systematic exposition (topic-by-topic)
+
+CALIBRATION:
+- Most conference talks score 4-6 on teach_about_christ. Christ is the default subject.
+- A teach score of 7+ means Christ isn't just mentioned — He's the specific, developed content.
+- Most talks score 3-4 on invite. A specific, actionable invitation scores 7+.
+- love and spirit inflate easily. A 7+ means the dimension is enacted, not just referenced.
+```
+
+#### Calibration Context (for T4)
+
+A scored example from ground truth, showing the model what appropriate scores look like:
+
+```
+CALIBRATION EXAMPLE
+
+Speaker: Elder Patrick Kearon, "Welcome to the Church of Joy"
+DOMINANT: help_come_to_christ, love
+MODE: enacted
+PATTERN: invitation→doctrine→testimony
+TEACH_SCORE: 5  (Christ present but not the central developed content)
+HELP_SCORE: 7  (explicit, sustained focus on helping people come to Christ through belonging)
+LOVE_SCORE: 7  (models warmth and welcome — enacted, not just stated)
+SPIRIT_SCORE: 5  (bears testimony, invites the Spirit)
+DOCTRINE_SCORE: 4  (some doctrinal grounding but primarily pastoral)
+INVITE_SCORE: 7  (specific invitation to welcome, belong, stay)
+
+Note: Scores cluster 4-6 for most dimensions. A 7+ is exceptional and specific.
+```
+
+#### Experiment Protocol
+
+1. Run all 6 experiments on 3 ground-truth talks (18 test runs)
+2. Compare scores against ground truth — MAE per experiment
+3. Also inspect qualitative output: are modes/patterns/dominant labels better with any context?
+4. If any context approach beats T0 (baseline), incorporate into Phase 1 before batch run
+5. If T0 wins, the vocabulary-only approach is confirmed and we proceed as designed
+
+**This is Phase 0 — run BEFORE Phase 1.** If context helps talks after all, we want to know before burning 28 hours on the wrong approach. 18 test runs at ~18.5s each = ~6 minutes total.
+
 ---
 
 ## Phased Delivery
+
+### Phase 0: Talk Context Experiments (1 session, ~30 min)
+
+**Delivers:** Data-driven decision on whether talks benefit from ANY context, and which kind.
+
+1. Create talk-rhetorical-context.md and talk-calibration-context.md in `experiments/lm-studio/scripts/context-talk/`
+2. Run 6 experiments × 3 ground-truth talks (18 runs, ~6 minutes)
+3. Compare MAE and qualitative output against T0 baseline
+4. Decision: vocabulary-only (T0) or vocabulary + best context for Phase 1
+
+**Phase 0 gates Phase 1.** We don't want to burn 28 hours on a suboptimal prompt.
 
 ### Phase 1: Talk Pipeline Enrichment (1 session)
 
 **Delivers:** TITSW-enriched talk summaries with teaching profile metadata.
 
-1. Add TITSW metadata fields to `DocMetadata` and `ToMap()`
-2. Write `generateTalkSummaryV2()` with enriched prompt
+1. Add TITSW metadata fields to `DocMetadata` and `ToMap()` (10 new fields including love/spirit/doctrine)
+2. Write `generateTalkSummaryV2()` with enriched prompt (+ best context from Phase 0 if any beat baseline)
 3. Write `parseTalkTeachingProfile()` to extract TEACHING_PROFILE fields from response
 4. Update `ChunkTalkAsSummary()` to populate new metadata fields
 5. Add prompt version tag to cache format
-6. **Test:** Run on 5 ground-truth talks. Compare scores to established targets (±2 tolerance).
-7. **Verify:** Inspect 3 summaries manually for quality of mode/pattern/dominant labels.
+6. Add `--concurrency` flag to indexer (default 1, test with 2)
+7. **Test:** Run on 5 ground-truth talks. Compare scores to established targets (±2 tolerance).
+8. **Verify:** Inspect 3 summaries manually for quality of mode/pattern/dominant labels.
 
 **Phase 1 stands alone.** Even without scripture or manual enrichment, enriched talk summaries immediately improve search quality for conference content.
 
@@ -168,19 +279,18 @@ The summary cache JSON gains a `teaching_profile` object alongside the existing 
 
 **Delivers:** Enriched manual summaries, talk theme detection.
 
-1. Classify `KnownManuals()` list into content vs. meta-teaching
+1. Classify `KnownManuals()` list into content vs. meta-teaching (meta-teaching manuals like TITSW skip TITSW scoring — evaluating the framework against itself is circular)
 2. Apply talk-style enrichment to content manuals
-3. (Stretch) Add `DetectTalkThemes()` — identify rhetorical sections in talks (story, doctrine, application, invitation)
-4. **Test:** Run on 3 CFM lessons, 2 Teachings of Presidents chapters.
+3. Add `DetectTalkThemes()` — identify rhetorical sections in talks (story, doctrine, application, invitation, testimony). This is the talk-level analog of `DetectThemes()` for scripture.
+4. **Test:** Run on 3 CFM lessons, 2 Teachings of Presidents chapters. Inspect theme sections on 5 ground-truth talks.
 
 ### Phase 4: gospel-mcp Integration (separate proposal)
 
-**Delivers:** TITSW fields searchable in gospel-mcp's FTS system.
-
-1. Add TITSW columns to talks table in gospel-mcp schema
-2. Populate during indexing from gospel-vec output or direct LLM call
-3. Update MCP tools to expose new fields in search results
-4. This phase warrants its own proposal — different codebase, different concerns.
+See [enriched-search.md](enriched-search.md) — full separate proposal covering:
+- Where to add FTS on enriched fields (gospel-mcp SQLite vs. adding SQLite to gospel-vec)
+- Schema changes for TITSW metadata
+- MCP tool updates to expose teaching profiles in search results
+- Architectural question: one DB or two?
 
 ---
 
@@ -188,12 +298,16 @@ The summary cache JSON gains a `teaching_profile` object alongside the existing 
 
 | Phase | Verification | Criteria |
 |---|---|---|
+| 0 | Context A/B comparison | MAE per experiment, qualitative mode/pattern quality |
+| 0 | Decision gate | Best approach identified before Phase 1 batch run |
 | 1 | Ground truth scores | 5 talks score within ±2 of Michael's targets |
 | 1 | Manual inspection | Mode/pattern/dominant labels are sensible for 3+ talks |
 | 1 | Backward compat | KEYWORDS/SUMMARY/KEY_QUOTE still present and well-formed |
+| 1 | Parallelism test | 2-concurrent runs produce same quality as sequential |
 | 2 | Before/after compare | Alma 32 keywords include typological terms not in current summary |
 | 2 | No regression | Summary quality doesn't degrade on simple chapters |
 | 3 | Manual classification | Meta-teaching manuals correctly skipped for TITSW scoring |
+| 3 | Theme detection | Talk rhetorical sections identified for 3+ ground-truth talks |
 | All | Full reindex | Completes without errors on entire corpus |
 
 ---
@@ -202,7 +316,7 @@ The summary cache JSON gains a `teaching_profile` object alongside the existing 
 
 | Cost | Impact | Mitigation |
 |------|--------|------------|
-| Cache invalidation | All 5,500 talk summaries need regeneration | One-time cost. ~28 hours GPU time. Run overnight. |
+| Cache invalidation | All 5,500 talk summaries need regeneration | One-time cost. ~14-28 hours depending on parallelism. Run overnight. |
 | Token increase | max_tokens 300→500 per call | Within model capacity. Negligible cost increase. |
 | Metadata size | 6 new fields per talk chunk | Trivial storage impact. ~50 bytes per chunk. |
 | Prompt fragility | Model may not consistently follow TEACHING_PROFILE format | Parse with fallback — if fields are missing, store empty. Don't fail the summary. |

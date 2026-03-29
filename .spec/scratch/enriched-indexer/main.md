@@ -277,10 +277,44 @@ This adds ~4,000 tokens to the system message (context docs). For scripture chap
 
 ---
 
-## Open Questions
+## Open Questions (RESOLVED Mar 29)
 
-1. **Love/Spirit dimension reliability.** Scores proved unreliable in v5.1 testing (inflation). Should we include them in the talk teaching profile or omit?
-2. **Theme detection for talks.** Currently only scripture gets theme detection. Talks have clear rhetorical structure. Worth adding a DetectTalkThemes function?
-3. **Cache migration.** 5,500+ cached talk summaries exist. Do we clear the cache and regenerate all, or version the cache format?
-4. **Batch time.** Full conference reindex at ~18.5s/talk = ~28 hours. Acceptable? Or do we need parallelism?
-5. **gospel-mcp sync.** Should gospel-mcp also store TITSW fields, or only gospel-vec? Both serve different query patterns.
+~1. **Love/Spirit dimension reliability.**~ → **DECIDED: Keep them.** May reveal interesting patterns. Downstream can ignore if noisy. Added to prompt and metadata fields.
+~2. **Theme detection for talks.**~ → **DECIDED: Yes, Phase 3.** Not stretch goal — core feature. Michael originally wanted it.
+~3. **Cache migration.**~ → **DECIDED: Full reindex.** 28 hours acceptable. Pushed for parallelism.
+~4. **Batch time.**~ → **DECIDED: Explore concurrency.** LM Studio supports 4x. Try 2 concurrent, then 4. Could cut to 7-14 hours.
+~5. **gospel-mcp sync.**~ → **DECIDED: Separate proposal.** [enriched-search.md](../../proposals/enriched-search.md). Option C (gospel-mcp reads gospel-vec cache). gospel-vec has NO SQLite — confirmed.
+
+---
+
+## New Research (Mar 29 Session 2)
+
+### gospel-vec Architecture Confirmation
+- **No SQLite in gospel-vec.** Pure chromem-go. go.mod has only `philippgille/chromem-go` as dependency.
+- Storage: `storage.go` uses `chromem.NewDB()` (in-memory) + `ExportToFile()`/`ImportFromFile()` with gob.gz format.
+- Four per-source files: `scriptures.gob.gz`, `conference.gob.gz`, `manual.gob.gz`, `music.gob.gz`.
+- No SQL queries anywhere. No FTS capability.
+
+### Talk Context Experiment Gap (CRITICAL FINDING)
+Explored full experiment history. Found that the "context hurts talks" conclusion was based on applying **scripture-focused context** to talks. Specifically:
+- `gospel-vocab.md` — 7 theological patterns for detecting *hidden* Christ-typology
+- `01-titsw-framework.md` — scoring anchors with scripture-flavored examples
+
+**What was NEVER tested:**
+1. Only `titsw-framework.md` without `gospel-vocab.md` (isolating the inflation source)
+2. Only `gospel-vocab.md` without `titsw-framework.md` 
+3. Talk-specific rhetorical context (teaching modes, structural patterns, calibration anchors)
+4. Talk-specific calibration examples (scored ground-truth as few-shot anchor)
+5. Anti-inflation calibration ("most talks score 4-6 on teach_about_christ")
+
+**Inflation mechanism identified:** `gospel-vocab.md` provides patterns to find *hidden* connections. Talks are already explicit. When the model has a toolkit for finding hidden things AND the content is already explicit, it over-reads — every mention amplifies through multiple theological lenses.
+
+**Experiment plan added to proposal:** Phase 0 with 6 controlled experiments (T0-T5) on 3 ground-truth talks. Run BEFORE Phase 1 to validate or improve the vocabulary-only approach. ~6 minutes total.
+
+### gospel-mcp Architecture (for integration proposal)
+- Go + SQLite + FTS5. Three MCP tools: `gospel_search`, `gospel_get`, `gospel_list`.
+- `talks` table: year, month, session, speaker, title, content, file_path, source_url. Zero TITSW fields.
+- `talks_fts`: FTS5 on title, speaker, content.
+- Schema version tracking in `schema_version` table. Migration path via `ALTER TABLE`.
+- **Recommended integration:** Option C — gospel-mcp reads gospel-vec's summary cache JSON during its own index step. Simplest. No cross-process coordination. Separate proposal at [enriched-search.md](../../proposals/enriched-search.md).
+
