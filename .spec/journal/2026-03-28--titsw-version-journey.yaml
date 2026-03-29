@@ -1,0 +1,296 @@
+date: "2026-03-28"
+title: "TITSW Version Journey — What We Got Right, Where We Dropped the Ball"
+mood: reflective
+phase: reflect
+agent: dev
+
+summary: >
+  Comprehensive journal of the TITSW prompt optimization journey from v1 through v5.4,
+  the debugging pivot, and the Gas Station Insight. This session runs the v5.1 no-context
+  baseline to close the mixed-context question, then documents what we learned across 8+
+  prompt versions. Key theme: we optimized the wrong metric for 10 sessions before the
+  debug agent caught it.
+
+# ─── THE VERSION HISTORY ───────────────────────────────────────────────────────
+
+version_history:
+  v1_titsw:
+    description: "Original TITSW prompt — bare 4-dimension scoring"
+    what_worked: "Established the love/spirit/doctrine/invite framework from the manual"
+    what_failed: "Too vague, no anchors, models hallucinated scores freely"
+
+  v2_titsw:
+    description: "Added structured rubric, clearer dimension definitions"
+    what_worked: "Validated the TITSW framework conceptually. Became the baseline for model comparison across 5 candidates."
+    what_failed: "Still no classification-first logic. Models scored linearly instead of understanding types."
+
+  v3_titsw:
+    description: "0-9 scale with anchored rubric, anti-inflation language, new JSON fields (typological_depth, cross_reference_density, surface_vs_deep_delta)"
+    what_worked: "Reference-aware scoring, expanded output fields"
+    what_failed: "Scale expansion without classification steps led to loose scoring"
+
+  v4_to_v4_2:
+    description: "Classification-first rules introduced. Love prescription-vs-demonstration. Teach precision improvements."
+    what_worked: >
+      v4.2 achieved MAE 1.10, exact match 33%, inflation down to 11%. The classification
+      step was a genuine breakthrough — asking 'what TYPE of teaching is this' before scoring.
+    what_failed: "Still room for improvement on spirit and help dimensions"
+
+  v5_pure_positive:
+    description: "Pure positive anchors — tried to go all-in on positive examples"
+    what_worked: "Proved that good examples matter"
+    what_failed: >
+      REGRESSION: MAE 1.24. Proved classification decomposition steps are ESSENTIAL.
+      Removing them tanks the model. This was a clear lesson: don't remove what works
+      to make room for something new.
+
+  v5_1_hybrid:
+    description: "v5 innovations + v4 classification steps. The hybrid that became the best."
+    what_worked: >
+      BEST EVER: MAE 0.93, exact 38%, within ±1 79%. The hybrid approach — keep classification
+      steps from v4, add positive anchors from v5 — worked perfectly. The 3-step process
+      (dominant mode → source type → score) became the gold standard.
+    what_failed: >
+      CONTEXT CONTAMINATION: We ran the original 6 pieces WITH context (~18KB TITSW framework
+      + gospel vocabulary) and didn't realize it. The expansion 7 pieces ran WITHOUT context.
+      This made v5.1's MAE 0.93 a mixed result. We didn't catch this for WEEKS. The context
+      leaked through because run-test.ps1 loads context.md by default, and we had TITSW
+      framework files sitting in the context directory from development.
+    lesson: >
+      ALWAYS document and control your experimental conditions. The mixed-context problem
+      contaminated every comparison we made against v5.1. Token forensics (tokens_in analysis)
+      is how we finally caught it.
+
+  v5_2:
+    description: "Tested with and without thinking mode"
+    what_worked: "Exposed a critical model behavior"
+    what_failed: >
+      BOTH REGRESSED. CRITICAL FINDING: Thinking mode is harmful for nemotron-3-nano.
+      The model's <think> blocks consume tokens without improving output quality.
+    lesson: "Thinking mode is not universally beneficial. Test it, don't assume it."
+
+  v5_3_enum_labels:
+    description: "Enum labels coupled to score ranges"
+    what_worked: "Concept of named tiers was interesting"
+    what_failed: >
+      MAE 1.52, exact 23%. Labels created a classification bottleneck — the model spent
+      effort matching text labels to score ranges instead of evaluating the content.
+    lesson: "Don't couple classification labels to specific numeric outputs. They compete for model attention."
+
+  v5_4_three_axis:
+    description: "Score + mode + category + insights. Decoupled three independent axes."
+    what_worked: >
+      MAE 1.30, exact 35%, within ±1 71%. Modes and categories produced EXCELLENT qualitative
+      data. Kearon output: love mode='enacted', spirit mode='doctrinal', insights correctly
+      identify genre/tension/connection patterns. dominant_dimensions field is exactly what
+      the index needs.
+    what_failed: "MAE regressed 0.52 vs v5.1 on fair comparison. Spirit accounts for 41% of regression, help 27%."
+    lesson: >
+      This was the RIGHT direction despite the MAE regression. The debugging session proved
+      that modes/categories/insights are the real product for indexing, not precise numeric
+      scores. We spent sessions trying to improve MAE when the downstream system doesn't
+      need MAE precision.
+
+  v5_4_ctx:
+    description: "v5.4 re-run with full context package"
+    what_worked: "Definitively proved context is counterproductive for talks"
+    what_failed: >
+      MAE 1.47, exact 21% — WORSE with context. Context inflated scores on expansion pieces.
+      Both subsets worse: expansion 7 went from 1.429→1.571, original 6 from 1.153→1.347.
+    lesson: "Context helps typological Scripture analysis. It HURTS explicit conference talks. Different pipelines need different contexts."
+
+  v6:
+    description: "4 targeted fixes on v5.1"
+    what_worked: "Invite narrative qualifier worked"
+    what_failed: >
+      Doctrine citation-purpose qualifier caused MASSIVE collateral damage. One targeted
+      fix ruined the whole prompt.
+    lesson: "Surgical prompt changes can have blast-radius effects. Test ONE change at a time."
+
+# ─── THINGS WE GOT RIGHT ──────────────────────────────────────────────────────
+
+things_we_got_right:
+  - >
+    Classification-first logic. Introduced in v4, preserved through v5.1, proven essential
+    by v5's regression when removed. "What TYPE of teaching is this?" before "What SCORE?"
+    is the single most important prompting pattern we found.
+  - >
+    Building the harness. run-test.ps1, run-suite.ps1, scoring.exe (Go CLI with SQLite),
+    results.tsv logging. Without structured measurement, we'd be doing vibes-based evaluation.
+    The autoresearch pattern (program.md + iterate) was the right frame.
+  - >
+    Ground truth investment. 13 content pieces, 78 ground truth scores. Calibrated by
+    Michael's actual reading. This gave us something real to measure against. The ground
+    truth IS the discernment — the human's Spirit-informed judgment.
+  - >
+    -NoThink flag. Discovered thinking mode is poison for nemotron-3-nano in pass 1.
+    Built it into the harness immediately. Prevented weeks of wasted runs.
+  - >
+    Nemotron selection. 3x faster than alternatives, no thinking trap, good quality.
+    The speed×quality decision for batch processing was correct. For 5,500 talks, speed
+    matters.
+  - >
+    Three-axis output design (v5.4). Despite MAE regression, this turned out to be
+    the right direction for the actual downstream use case. We just didn't know that yet.
+
+# ─── WHERE WE DROPPED THE BALL ────────────────────────────────────────────────
+
+where_we_dropped_the_ball:
+  - title: "Context contamination — the big one"
+    detail: >
+      The original 6 v5.1 runs had ~18KB of context (TITSW framework + gospel vocabulary)
+      injected via run-test.ps1's default context.md loading. The expansion 7 pieces did NOT.
+      Every comparison between v5.1 and later versions was apples-to-oranges. We didn't
+      catch this for weeks. Token forensics (tokens_in 10K-19K vs 6K-10K) is how we finally
+      discovered it. This is a basic experimental control failure.
+    lesson: "Log and verify ALL experimental parameters. Token counts are a forensic tool."
+
+  - title: "Optimizing the wrong metric"
+    detail: >
+      We spent 10+ sessions chasing MAE precision when the downstream consumers (gospel-vec
+      vector search, gospel-mcp structured queries, future knowledge graph) need rich
+      qualitative metadata, not precise numeric scores. The v5.4 outputs that 'regressed'
+      on MAE actually produced the most useful data for indexing. We optimized the exam
+      grade instead of the learning.
+    lesson: >
+      Before optimizing, ask: 'What does the consumer of this output actually need?'
+      Trace the data flow end-to-end. The Gas Station Insight (Rule 7: Check the Plug).
+
+  - title: "Not using the debug agent sooner"
+    detail: >
+      The debug agent existed since March 22. We had Agans' 9 Rules extracted and ready.
+      We didn't invoke the debug agent until March 28 when Michael's gas station insight
+      forced the question. If we'd applied Rule 1 (Understand the System) and Rule 7
+      (Check the Plug) to the very first regression, we would have caught the wrong-metric
+      problem days earlier.
+    lesson: "When stuck in a cycle of diminishing returns, step back and debug the problem definition, not the solution."
+
+  - title: "Not reading the existing index code earlier"
+    detail: >
+      gospel-vec's talk indexing produces KEYWORDS + SUMMARY + KEY_QUOTE. gospel-mcp has
+      talks with speaker/year/content but NO TITSW fields. This matters enormously for
+      knowing what the output needs to look like. We designed prompts without examining
+      the consumer. The debug session's Rule 3 (Quit Thinking and Look) applied here —
+      we were theorizing about what the index needs without reading the indexer code.
+    lesson: "Read the code before designing the output format. grep_search the consumer."
+
+# ─── THE DEBUGGING PIVOT ──────────────────────────────────────────────────────
+
+debugging_pivot:
+  trigger: >
+    Michael at a gas station: 'I fear we're trying to optimize a number when really
+    quality of summaries and observations is what really matters. These are going to be
+    indexed and vectorized, and graphed. We need results that link and are searchable.
+    So what really matters here? What's the root of it?'
+  method: >
+    First-ever invocation of the debug agent. Applied Agans' Rules 1, 3, and 7. Read
+    gospel-mcp schema, gospel-vec types/chunking/summary/index code, both prompt files,
+    actual v5.4 JSON output, ground truth, and the context-engineering proposal.
+  diagnosis: >
+    We've been optimizing the wrong output for the wrong consumer. MAE measures numeric
+    precision. Downstream needs qualitative richness (modes, categories, dominant_dimensions,
+    insights, keywords, themes). The v5.4 three-axis output was the RIGHT direction.
+  output: ".spec/scratch/debug-titsw-optimization/main.md — 180+ line diagnosis document"
+
+# ─── FIRST USE OF DEBUG AGENT ─────────────────────────────────────────────────
+
+debug_agent_notes:
+  - >
+    This was the first real invocation of the debug agent built from Agans' 9 Rules
+    (created March 22). The agent's systematic approach — understand the system, quit
+    thinking and look, check the plug — produced a diagnosis that 10 sessions of
+    prompt iteration hadn't reached.
+  - >
+    The agent read 10+ source files before writing a single conclusion. That's Rule 3
+    in action. The diagnosis document is genuinely useful — it traces data flow through
+    three consumers and identifies exactly where the optimization went wrong.
+  - >
+    Key lesson for debug agent usage: invoke it when you're stuck in a cycle, not after
+    you've exhausted all options. The earlier you apply systematic debugging to the
+    problem DEFINITION, the less time you waste optimizing the wrong thing.
+
+discoveries:
+  - >
+    Context contamination was hiding in plain sight. Token forensics (tokens_in column
+    in results) made it visible. Any experiment harness should log ALL input parameters
+    including injected context size.
+  - >
+    v5.4's 'regression' was actually progress toward the right goal. Modes, categories,
+    and insights are genuinely useful for vector search indexing. 'love=enacted' produces
+    better embeddings than 'love=4'.
+  - >
+    Three downstream consumers have different needs: vector search wants rich text with
+    TITSW vocabulary in it, structured queries want dominant_dimensions + modes for filtering,
+    knowledge graph wants labeled edges (teaches_about, demonstrates, references).
+  - >
+    Context proven counterproductive for talks — inflation on both subsets. Save context
+    for scripture pipeline where typological depth actually matters.
+
+reflections:
+  - >
+    The Gas Station Insight is a perfect example of Rule 7 (Check the Plug). Before
+    debugging the code, debug the problem statement. Are we solving the right problem?
+    This applies to more than prompt optimization — it's a general principle for any
+    iterative improvement cycle.
+  - >
+    There's a meta-pattern here: we built the debug agent from a debugging book, then
+    needed the debug agent to debug our own optimization process. The tools we build
+    should be the first ones we reach for. We had it and didn't use it until the human
+    forced the question.
+  - >
+    The 'things we got right' list is longer than the 'dropped the ball' list. That
+    matters. The harness, the ground truth, the classification-first logic, the NoThink
+    discovery — these are real engineering wins that will serve the project going forward.
+
+carry_forward:
+  - "v5.1-noctx baseline run — closes the mixed-context question"
+  - "Qualitative evaluation of v5.4 outputs across multiple content pieces"
+  - "Index schema design — what fields go into gospel-vec and gospel-mcp?"
+  - "Build enriched talk indexer incorporating TITSW qualitative data"
+  - "Harmonize existing keywords/themes with new TITSW profile"
+  - "MAE is now a sanity check, not the optimization target"
+  - "Context should be skipped for 5,500-talk batch"
+
+open_questions:
+  - "Can v5.4 be simplified to improve both MAE AND qualitative output?"
+  - "What's the right balance between prompt complexity and model bandwidth?"
+  - "How do we evaluate qualitative output systematically (not just vibes)?"
+  - "Should the enriched summary include TITSW vocabulary in the text itself for better embeddings?"
+
+# ─── v5.1-NOCTX BASELINE RESULTS ──────────────────────────────────────────────
+
+v5_1_noctx_results:
+  summary: >
+    Ran v5.1 (titsw-v5 prompt) on original 6 content pieces WITHOUT context.
+    5 of 6 succeeded (DC-121 hit 32768 token limit with empty response).
+    This establishes the honest no-context baseline for comparison.
+  stats:
+    mae: 1.35
+    exact: "10/30 (33%)"
+    within_1: "23/30 (77%)"
+    inflation: "0/30 (0%)"
+    underscoring: "7/30 (23%)"
+  fair_comparison:
+    description: "Same 5 content pieces, same prompt, same model, only difference is context"
+    v5_1_with_context_mae: 0.95
+    v5_1_no_context_mae: 1.35
+    context_benefit: 0.40
+  key_finding: >
+    Context improved v5.1 by 0.40 MAE on the original pieces. The benefit is concentrated
+    on SCRIPTURE (Alma 32: teach 6→2, help 6→1, doctrine 8→5 without context). Talks
+    showed minimal context benefit. This confirms the two-pipeline conclusion: context
+    helps scripture (typological depth) but not talks (already explicit).
+  alma_32_detail: >
+    Without context, the model scored teach=2 and help=1 on Alma 32 (ground truth 7.5 and 8).
+    It literally cannot see the Christological teaching without the TITSW framework explaining
+    what typological Christ-teaching looks like. With context, it scored 6 and 6 — still
+    under, but recognizing the pattern. This is exactly what context was designed to solve.
+  dc_121_failure: >
+    DC-121 (25998 chars, largest content piece) produced empty response with tokens_out=32768.
+    The model exhausted its output budget without producing visible content. Possible causes:
+    invisible thinking despite NoThink flag, or content too long for effective processing.
+    TTFT was 487 seconds — model struggled with this input.
+  token_forensics: >
+    No-context tokens_in: alma-32=10339, bednar=10111, dc-121=14487, holland=6320,
+    kearon=7633, 3-nephi=7332. Compare original v5.1 WITH context: would have been
+    ~4-5K tokens higher per piece from the TITSW framework + gospel vocabulary injection.

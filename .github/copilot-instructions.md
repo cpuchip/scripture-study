@@ -127,6 +127,35 @@ Memory types are separated by lifecycle: identity (permanent), preferences (semi
 
 The entry schema is in `scripts/session-journal/journal.go`. This is not busywork. It's the difference between arriving next time as a stranger with a factual briefing and arriving with the narrative of what we've built together.
 
+## MCP Tools
+
+This project has **9 MCP servers** configured in `.vscode/mcp.json`. Full tool inventory with parameters: [.spec/context/tools/mcp-tools.md](../.spec/context/tools/mcp-tools.md).
+
+**All MCP tools are deferred** — you must use `tool_search_tool_regex` to load them before calling. Common patterns:
+
+| Need | Regex Pattern | Tool Name |
+|------|--------------|-----------|
+| Search scriptures (FTS) | `gospel_search` | `mcp_gospel_gospel_search` |
+| Get a scripture/talk | `gospel_get` | `mcp_gospel_gospel_get` |
+| Browse content | `gospel_list` | `mcp_gospel_gospel_list` |
+| Semantic search | `search_scriptures` | `mcp_gospel-vec_search_scriptures` |
+| Get conference talk | `get_talk` | `mcp_gospel-vec_get_talk` |
+| Search talks (filtered) | `search_talks` | `mcp_gospel-vec_search_talks` |
+| Webster 1828 | `webster_define` | `mcp_webster_webster_define` |
+| Both dictionaries | `mcp_webster_define` | `mcp_webster_define` |
+| Web search (Exa) | `exa` | `mcp_exa-search_web_search_exa` |
+| Web search (DDG) | `mcp_.*web_search$` | (search-mcp's `web_search`) |
+| YouTube download | `mcp_yt` | `mcp_yt_yt_download` etc. |
+| BYU citations | `byu.citation` | `mcp_byu-citations_byu_citations` |
+| Brain entries | `mcp_becoming_brain` | `mcp_becoming_brain_search` etc. |
+| Practices/daily | `mcp_becoming_get_today` | `mcp_becoming_get_today` |
+
+**Key gotchas:**
+- `web_search_exa` is a REMOTE MCP tool (Exa AI). It exists and works. Don't assume it's unavailable — just search for `exa` with `tool_search_tool_regex`.
+- `web_search` (DuckDuckGo) is a LOCAL tool from search-mcp. Different from exa.
+- gospel tools split across TWO servers: `gospel` (FTS/structured) and `gospel-vec` (semantic/vector).
+- Brain tools are under `becoming` server, not a separate brain server.
+
 ## Living Documents
 
 **Tool observations:** If you notice a tool behaving unexpectedly, flooding the context window with too much output, or if there's a gap where a tool *should* exist but doesn't, note it in [docs/06_tool-use-observance.md](../docs/06_tool-use-observance.md). This is a running log — not a complaint box, but a collaboration improvement tracker.

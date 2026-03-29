@@ -1,6 +1,6 @@
 # Active Context
 
-*Last updated: 2026-03-28*
+*Last updated: 2026-03-29*
 *Archive: [archive/active-2026-03-22.md](archive/active-2026-03-22.md) — detailed records through Mar 22*
 *Note: Migrated to new computer on Mar 27. Plex restored. Old desktop (LEPTON) decommissioned.*
 *Note: Dual 4090s confirmed in new desktop (Mar 28). Hardware enables 30B+ models at full context.*
@@ -24,7 +24,17 @@
    - **titsw-v3.md** — 0-9 scale with anchored rubric, anti-inflation language, reference-aware instruction, new JSON fields (typological_depth, cross_reference_density, surface_vs_deep_delta). All v2 content preserved.
    - **Validation results (Mar 28):** Alma 32 teach_about_christ=7 with context (was 1-2, target ≥5 ✅). Kearon teach_about_christ=8, doctrine=7, invite=7 (all within ±1 of ground truth ✅). No systematic inflation from context ✅. cache_prompt works ✅. Known issue: love/spirit inflated on Kearon (model weakness, not context-induced — same inflation with and without context).
    - Proposal: [.spec/proposals/context-engineering.md](../proposals/context-engineering.md). Dev spec: [.spec/proposals/context-engineering-dev.md](../proposals/context-engineering-dev.md). Ground truth: [experiments/lm-studio/scripts/references/ground-truth-alma32-kearon.md](../../experiments/lm-studio/scripts/references/ground-truth-alma32-kearon.md).
-   **Next:** Full batch reindex of 5,500 talks. Consider love/spirit calibration in a future prompt iteration.
+   **PROMPT OPTIMIZATION COMPLETE (Mar 28).** Context question closed with data:
+   - v5.1 WITH context on 5 original pieces: MAE=0.95
+   - v5.1 WITHOUT context on same 5 pieces: MAE=1.35
+   - Context benefit = 0.40 MAE, concentrated on scripture (Alma 32: teach 6→2, help 6→1, doctrine 8→5 without context). Talks show minimal benefit.
+   - v5.4 three-axis (modes/categories/insights): MAE=1.30 no-ctx, MAE=1.47 with-ctx. Context hurts talks via inflation.
+   - DC-121 failed at 32768 max_tokens (empty response, 487s TTFT). Model can't handle 26K char content at these settings.
+   - **Two-pipeline conclusion confirmed:** Context for scripture pipeline, no context for talk pipeline.
+   - **Gas Station Insight:** MAE is a sanity check, not the optimization target. Qualitative richness (modes, categories, insights from v5.4) is what downstream consumers need. We were optimizing the wrong metric.
+   - Full version journey documented: [.spec/journal/2026-03-28--titsw-version-journey.yaml](../journal/2026-03-28--titsw-version-journey.yaml)
+   - All scoring data in `experiments/lm-studio/scripts/scoring/scoring.db` (tags: v5, v5.1, v5.1-noctx, v5.2, v5.3, v5.4, v5.4-ctx, v6)
+   **Next:** Index schema design (what TITSW fields go into gospel-vec/gospel-mcp). Build enriched talk indexer with two-pipeline strategy. Harmonize existing keywords/themes with new TITSW profile. Consider love/spirit calibration in a future prompt iteration.
 4. **Debugging book** — DONE. Agans' "Debugging: The 9 Indispensable Rules" extracted to `books/debugging/9-indispensable-rules/` (17 chapter markdown files). Debug agent created at `.github/agents/debug.agent.md`. Connections mapped: Moroni 10:4 inverse hypothesis = falsification, scientific method = the 9 rules, Abraham 4:18 = Rule 9 (verify the fix), council moment = Rule 8 (get a fresh view). Analysis at `.spec/scratch/debugging-agent/main.md`. 2006 expanded edition (192pp, ISBN 9780814474570) available used ~$19 on AbeBooks.
 5. **WS1 multi-agent framework** — Continue building. Next: Phase 3c (auto-routing + review queue).
 6. **Desktop swap** — DONE. New computer operational (Mar 27). Plex restored from LEPTON backup (11.2 GB, v1.42→v1.43 forward migration). All four media drives (D/E/F/G) mounted correctly. Libraries, watch history, and play state all verified. Old desktop ready to decommission.
