@@ -1,0 +1,18 @@
+# Data directory (large, generated — SQLite + vector + summaries)
+data/*
+
+# Vector data files
+*.gob
+*.gob.gz
+*.gob.gz.enc
+
+# SQLite database and WAL files
+*.db
+*.db-shm
+*.db-wal
+
+# Build artifacts
+gospel-graphs
+gospel-graphs.exe
+*.exe~
+__debug_bin*

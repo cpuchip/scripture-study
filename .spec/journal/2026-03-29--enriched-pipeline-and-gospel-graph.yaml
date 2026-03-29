@@ -94,10 +94,11 @@ decisions:
 carry_forward:
   - priority: high
     item: "Write combined gospel tool proposal"
+    status: DONE
     details: >
-      New proposal merging gospel-mcp + gospel-vec into one app. Use enriched-search.md
-      schema designs as starting point. Decide: name (gospel-study?), location (scripts/gospel-study/),
-      what MCP tools it exposes, how it relates to originals.
+      Written as gospel-graphs. Proposal: .spec/proposals/gospel-graphs/main.md.
+      Scratch: .spec/scratch/gospel-graphs/main.md. 5 phases, 3 consolidated MCP tools,
+      TITSW enrichment built in. .gitignore created for data directory.
 
   - priority: high
     item: "Refine calibration context for Phase 1"
@@ -146,7 +147,7 @@ dynamics:
 # ─── OPEN QUESTIONS ────────────────────────────────────────────────────────────
 
 open_questions:
-  - "What should the combined gospel tool be called? gospel-study? gospel-combined? gospel-unified?"
-  - "Does the combined tool expose the same MCP tool names (gospel_search, gospel_get) or new ones?"
+  - "What should the combined gospel tool be called? Working name is gospel-graphs, but Michael isn't sure. Options explored in proposal appendix: gospel-core, gospel-search, gospel-engine, gospel-db."
+  - "ANSWERED: Does the combined tool expose the same MCP tool names? YES — gospel_search, gospel_get, gospel_list. 7 tools consolidated to 3. gospel_search gains mode param (keyword/semantic/combined)."
   - "How does study.ibeco.me's import pipeline change if it reads from the combined tool instead of two separate ones?"
   - "Should the combined tool also handle BYU citation data, or leave that to byu-citations MCP?"
