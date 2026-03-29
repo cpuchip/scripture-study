@@ -164,3 +164,63 @@ That reframe changes everything:
 - **Three-axis output:** Keep it. The modes and categories ARE the product.
 - **Keywords/themes:** KEEP from the existing system. These feed different search surfaces.
 - **Prompt design:** Simplify if it helps output quality. The model doesn't need the full v5.4 prompt to produce good qualitative labels — a lighter prompt with clear taxonomy might work better and faster.
+
+---
+
+## Audit: Current Indexer Prompts vs. TITSW Learning (Mar 28)
+
+*Rule 1: Understand the System. Rule 3: Quit Thinking and Look.*
+
+### Existing Prompts in gospel-vec
+
+gospel-vec has **three distinct summarization prompts** for three content types. gospel-mcp has **zero** — it's pure structural parsing with FTS5.
+
+| Content Type | Prompt Location | System Prompt Core | Unique Framing | Layers |
+|---|---|---|---|---|
+| Scriptures | `summary.go:SummarizeChapter` | "summary optimized for semantic search" | None — generic | verse, paragraph, summary, theme |
+| Scriptures (themes) | `summary.go:DetectThemes` | "Identify narrative sections, return JSON" | Verse ranges, 2-5 sections | theme only |
+| Talks | `index.go:generateTalkSummary` | "summary of this conference talk optimized for semantic search" | Includes speaker/month/year/title | paragraph, summary |
+| Manuals | `index.go:generateManualSummary` | "summary of this manual chapter optimized for semantic search" | Includes manual name/title | paragraph, summary |
+
+All three share:
+- Same output format: KEYWORDS (10-15) / SUMMARY (50-75 words) / KEY_QUOTE or KEY_VERSE
+- Same word budget: "under 200 words total"
+- Same temperature: 0.2
+- Same max_tokens: 300
+- Same generic instruction: "optimized for semantic search indexing"
+
+Differences:
+- Scriptures get theme detection; talks and manuals don't
+- Talks use KEY_QUOTE; scriptures use KEY_VERSE
+- Content truncation varies: scriptures=full chapter, talks=25 paragraphs, manuals=6000 chars
+- User prompt includes type-specific metadata (speaker, year for talks; manual name for manuals)
+
+### What Our TITSW Work Proved
+
+1. **Prompt framework transforms model perception.** Alma 32 without context: teach=2, help=1. With context: teach=6, help=6. Same content. Same model. Different prompt = different extraction.
+
+2. **Generic prompts produce generic summaries.** "Summarize for semantic search" yields "faith, repentance, atonement" — words that exist in every summary and therefore distinguish nothing. TITSW-framed prompts yield "enacted love, typological christology, diagnosis-prescription pattern" — vocabulary that makes search results useful.
+
+3. **Context helps scripture (implicit content), hurts talks (explicit content).** The two-pipeline finding. Scripture needs the framework to see beneath the surface. Talks are explicit — the speaker says what they mean.
+
+4. **Qualitative richness > numeric precision.** The Gas Station Insight. Downstream consumers need modes, categories, and insights — not 0-9 scores accurate to ±1.
+
+### The Gap
+
+The existing indexer prompts contain **zero TITSW vocabulary.** No teaching modes, no dimension names, no qualitative labels. The summary layer exists but produces thin metadata that doesn't surface what we've learned the model CAN extract with the right framing.
+
+Theme detection exists for scriptures but **not for talks** — a significant gap given that talks have clear rhetorical structure (story → doctrine → application → invitation) that would improve both search and study.
+
+### Implication for Enriched Indexer Design
+
+The enriched talk indexer should produce TWO things per talk:
+
+1. **Existing summary** (KEYWORDS/SUMMARY/KEY_QUOTE) — keep this for backward compatibility and generic search. But enrich the system prompt with TITSW vocabulary so the 50-75 word summary uses teaching-quality language instead of generic terms.
+
+2. **TITSW teaching profile** (NEW) — dominant dimensions, scores (sanity check level), modes, categories, brief insights. This becomes a separate summary-layer chunk OR additional metadata fields.
+
+For scripture indexer: the existing theme detection stays. Add context documents (gospel-vocab + titsw-framework) to the summary prompt for richer chapter summaries. The context helps here — we proved it.
+
+For talks: no context documents (proven counterproductive). But the system prompt SHOULD include TITSW vocabulary as output format guidance: "describe teaching modes as enacted/declared/doctrinal/experiential" — taxonomy, not framework. The model doesn't need to be told what love looks like in a talk. It needs the *words* to describe what it already sees.
+
+That's the pivot: for scripture, give the model a **lens** (context). For talks, give the model a **vocabulary** (terminology in the system prompt).
