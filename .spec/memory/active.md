@@ -36,11 +36,20 @@
    - All scoring data in `experiments/lm-studio/scripts/scoring/scoring.db` (tags: v5, v5.1, v5.1-noctx, v5.2, v5.3, v5.4, v5.4-ctx, v6)
    **ENRICHED INDEXER: PROPOSAL WRITTEN + DECISIONS MADE (Mar 29).** Debug audit identified the gap: gospel-vec has 3 generic prompts, zero TITSW vocabulary. Lens vs. vocabulary distinction confirmed. Michael's decisions: (1) keep love/spirit scores, (2) theme detection confirmed for Phase 3, (3) full reindex approved, (4) explore 2-4x parallelism, (5) gospel-mcp integration is separate proposal.
    
-   **CRITICAL FINDING:** "Context hurts talks" was tested with *scripture-focused* context only. Talk-specific context (rhetorical patterns, calibration examples) was never tested. Phase 0 experiment plan added: 6 experiments × 3 talks, ~6 minutes, gates Phase 1.
+   **PHASE 0 EXPERIMENTS COMPLETE (Mar 29).** 18 runs across 6 experiment conditions (T0-T5) × 3 ground-truth talks. Key results:
+   - T0 (no context) MAE=2.61 — massive inflation, all scores 8-9
+   - T1 (framework only) MAE=2.06 — modest improvement
+   - T2 (gospel-vocab only) MAE=2.39 — **confirmed gospel-vocab is the inflation culprit** (love: +5 to +6 across all talks)
+   - T3 (talk rhetorical) MAE=2.00 — new context type helps mode identification, Bednar correctly "doctrinal"
+   - **T4 (calibration example) MAE=1.83** — BEST. One-shot score anchoring works. Kearon teach underscored (-3) due to same-speaker anchoring.
+   - T5 (T3+T4 combined) MAE=2.11 — worse than T4 alone, more context = more noise
+   - **Love/spirit inflation persists** even with best context (+2 to +4). This is an inherent model bias, not fixable by context alone.
+   - **Decision: Use calibration context for Phase 1 batch.** Refinements needed: use different talk for calibration example (avoid same-speaker anchoring), consider 2-3 examples spanning different score distributions, add explicit "most dimensions score 3-5" guidance to prompt.
+   - Full analysis: [experiments/lm-studio/scripts/results/phase0-analysis.md](../../experiments/lm-studio/scripts/results/phase0-analysis.md)
    
    Proposals: [.spec/proposals/enriched-indexer.md](../proposals/enriched-indexer.md) (5 phases: 0=experiments, 1=talk enrichment, 2=scripture enrichment, 3=manuals+themes). [.spec/proposals/enriched-search.md](../proposals/enriched-search.md) (3 phases: schema+import, search enhancement, get enhancement). Scratch: [.spec/scratch/enriched-indexer/main.md](../scratch/enriched-indexer/main.md).
    
-   **Next:** Run Phase 0 talk context experiments → dev agent builds Phase 1.
+   **Next:** Refine calibration context (different speaker, multiple examples) → dev agent builds Phase 1.
 4. **Debugging book** — DONE. Agans' "Debugging: The 9 Indispensable Rules" extracted to `books/debugging/9-indispensable-rules/` (17 chapter markdown files). Debug agent created at `.github/agents/debug.agent.md`. Connections mapped: Moroni 10:4 inverse hypothesis = falsification, scientific method = the 9 rules, Abraham 4:18 = Rule 9 (verify the fix), council moment = Rule 8 (get a fresh view). Analysis at `.spec/scratch/debugging-agent/main.md`. 2006 expanded edition (192pp, ISBN 9780814474570) available used ~$19 on AbeBooks.
 5. **WS1 multi-agent framework** — Continue building. Next: Phase 3c (auto-routing + review queue).
 6. **Desktop swap** — DONE. New computer operational (Mar 27). Plex restored from LEPTON backup (11.2 GB, v1.42→v1.43 forward migration). All four media drives (D/E/F/G) mounted correctly. Libraries, watch history, and play state all verified. Old desktop ready to decommission.
