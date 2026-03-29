@@ -52,6 +52,7 @@ param(
     [string]$Context = "",
     [switch]$NoSave,
     [switch]$NoThink,
+    [switch]$DisableThinking,
     [string]$BaseURL = "http://localhost:1234/v1"
 )
 
@@ -151,7 +152,7 @@ if ($Context) { Write-Host "Context: $Context" -ForegroundColor Cyan }
 
 # --- Build request ---
 
-$requestBody = @{
+$body = @{
     model = $modelId
     messages = @(
         @{ role = "system"; content = $systemMessage }
@@ -162,7 +163,14 @@ $requestBody = @{
     stream = $true
     stream_options = @{ include_usage = $true }
     cache_prompt = $true
-} | ConvertTo-Json -Depth 10
+}
+
+if ($DisableThinking) {
+    $body.chat_template_kwargs = @{ enable_thinking = $false }
+    Write-Host "API: chat_template_kwargs.enable_thinking = false" -ForegroundColor Magenta
+}
+
+$requestBody = $body | ConvertTo-Json -Depth 10
 
 # --- Send streaming request and time it ---
 
