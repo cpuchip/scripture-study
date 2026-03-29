@@ -33,6 +33,8 @@ func main() {
 		cmdCompare(os.Args[2:])
 	case "gt":
 		cmdGT(os.Args[2:])
+	case "merge":
+		cmdMerge(os.Args[2:])
 	default:
 		fmt.Fprintf(os.Stderr, "unknown command: %s\n", cmd)
 		usage()
@@ -50,7 +52,8 @@ Commands:
   compare <tag1,tag2..> Compare multiple versions side-by-side
   gt [set|list]         Manage ground truth scores
     gt list             List all ground truth scores
-    gt set <content> <dim> <score> [<hi>]  Set a ground truth score (range if hi given)`)
+    gt set <content> <dim> <score> [<hi>]  Set a ground truth score (range if hi given)
+  merge <from> <into>   Copy scores from one tag into another (fills gaps)`)
 }
 
 // --- Database ---
@@ -669,6 +672,31 @@ func cmdGTSet(args []string) {
 		fmt.Printf("-%.0f", hi)
 	}
 	fmt.Println()
+}
+
+// --- Merge ---
+
+func cmdMerge(args []string) {
+	if len(args) < 2 {
+		fmt.Fprintln(os.Stderr, "Usage: scoring merge <from-tag> <into-tag>")
+		os.Exit(1)
+	}
+	from := args[0]
+	into := args[1]
+
+	db := openDB()
+	defer db.Close()
+
+	res, err := db.Exec(`
+		INSERT OR IGNORE INTO results (tag, content, dimension, score, model, timestamp, tokens_in, tokens_out, ttft_ms, latency_ms)
+		SELECT ?, content, dimension, score, model, timestamp, tokens_in, tokens_out, ttft_ms, latency_ms
+		FROM results WHERE tag = ?
+	`, into, from)
+	if err != nil {
+		fatal("merge: %v", err)
+	}
+	n, _ := res.RowsAffected()
+	fmt.Printf("Merged %d scores from %s into %s\n", n, from, into)
 }
 
 // --- Helpers ---
