@@ -96,8 +96,8 @@ carry_forward:
     item: "Write combined gospel tool proposal"
     status: DONE
     details: >
-      Written as gospel-graphs. Proposal: .spec/proposals/gospel-graphs/main.md.
-      Scratch: .spec/scratch/gospel-graphs/main.md. 5 phases, 3 consolidated MCP tools,
+      Written as gospel-engine (renamed from gospel-graphs). Proposal: .spec/proposals/gospel-engine/main.md.
+      Scratch: .spec/scratch/gospel-engine/main.md. 5 phases, 3 consolidated MCP tools,
       TITSW enrichment built in. .gitignore created for data directory.
 
   - priority: high
@@ -147,7 +147,7 @@ dynamics:
 # ─── OPEN QUESTIONS ────────────────────────────────────────────────────────────
 
 open_questions:
-  - "What should the combined gospel tool be called? Working name is gospel-graphs, but Michael isn't sure. Options explored in proposal appendix: gospel-core, gospel-search, gospel-engine, gospel-db."
+  - "ANSWERED: Name is gospel-engine. Michael chose it — captures indexing + search + expandability. Not pretentious when it's the actual foundation."
   - "ANSWERED: Does the combined tool expose the same MCP tool names? YES — gospel_search, gospel_get, gospel_list. 7 tools consolidated to 3. gospel_search gains mode param (keyword/semantic/combined)."
   - "How does study.ibeco.me's import pipeline change if it reads from the combined tool instead of two separate ones?"
   - "Should the combined tool also handle BYU citation data, or leave that to byu-citations MCP?"

@@ -12,7 +12,7 @@ data/*
 *.db-wal
 
 # Build artifacts
-gospel-graphs
-gospel-graphs.exe
+gospel-engine
+gospel-engine.exe
 *.exe~
 __debug_bin*

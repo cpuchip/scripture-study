@@ -1,9 +1,9 @@
-# gospel-graphs — Combined Gospel Search & Indexing Tool
+# gospel-engine — Combined Gospel Search & Indexing Tool
 
 **Binding problem:** gospel-mcp and gospel-vec are complementary tools split across two processes, two databases, and two MCP server entries. Full-text search lives in one, semantic search in the other, and neither knows about the other's data. The enriched indexer pipeline needs both — TITSW metadata generated during vector indexing, structured search over that metadata in SQLite. Keeping them separate means import pipelines, cache format coupling, and two tools that should be one.
 
 **Created:** 2026-03-29
-**Scratch:** [.spec/scratch/gospel-graphs/main.md](../../scratch/gospel-graphs/main.md)
+**Scratch:** [.spec/scratch/gospel-engine/main.md](../../scratch/gospel-engine/main.md)
 **Replaces:** gospel-mcp (`scripts/gospel-mcp/`) + gospel-vec (`scripts/gospel-vec/`)
 **Absorbs:** [enriched-indexer.md](../enriched-indexer.md) Phases 1-3, [enriched-search.md](../enriched-search.md) schema + tool enhancements
 **Status:** Proposed
@@ -21,7 +21,7 @@ Today, studying scripture with AI search requires two separate MCP servers:
 
 **Who's affected:** Michael doing study and lesson prep. Every MCP consumer (brain app, study.ibeco.me, any future tool). The agent context window — 7 tools is a lot of tool surface to reason about.
 
-**How would we know it's fixed:** One MCP server, 3 tools. `gospel_search` can do keyword search, semantic search, or both. Talks have TITSW teaching profiles. You can ask "find talks that enact love and mention the Atonement" and get a combined result. One `index` command builds everything.
+**How would we know it's fixed:** One MCP server, 3 tools. `gospel_search` can do keyword search, semantic search, or both. Talks have TITSW teaching profiles. You can ask "find talks that enact love and mention the Atonement" and get a combined result. One `index` command builds everything. Cross-reference and thematic links computed at index time, not at query time.
 
 ---
 
@@ -36,14 +36,15 @@ Today, studying scripture with AI search requires two separate MCP servers:
 7. **Enriched summaries** — talks get TITSW vocabulary approach; scripture gets lens approach (gospel-vocab + titsw-framework context)
 8. **Parallelism** — `--concurrency` flag for batch indexing (1-4 workers)
 9. **Data directory gitignored** — no gigabyte data in the repo
-10. **Drop-in MCP replacement** — swap gospel + gospel-vec server configs for one gospel-graphs config
+10. **Drop-in MCP replacement** — swap gospel + gospel-vec server configs for one gospel-engine config
+11. **Graph layer at index time** — cross-reference links, thematic connections, and relational edges computed during indexing, stored in SQLite, available instantly at query time
 
 ---
 
 ## 3. Constraints & Boundaries
 
 ### In scope
-- New Go module at `scripts/gospel-graphs/`
+- New Go module at `scripts/gospel-engine/`
 - SQLite + FTS5 for structured data (from gospel-mcp)
 - chromem-go for vector embeddings (from gospel-vec)
 - LM Studio integration for summaries, themes, and TITSW enrichment (from gospel-vec + enriched indexer)
@@ -86,7 +87,7 @@ Today, studying scripture with AI search requires two separate MCP servers:
 ### One binary, two storage engines
 
 ```
-gospel-graphs
+gospel-engine
 ├── SQLite (gospel.db)          ← structured data + FTS5
 │   ├── scriptures              (41,995 verses)
 │   ├── chapters                (1,584 chapters)
@@ -112,20 +113,17 @@ One indexer writes to both databases in a single pass. One search engine queries
 ### Commands
 
 ```
-gospel-graphs index [flags]           # Index all content (scriptures, talks, manuals, books, music)
-gospel-graphs index --source talks    # Index only conference talks
-gospel-graphs index --source scriptures --volumes bofm,nt
-gospel-graphs index --concurrency 2   # Parallel LLM requests
-gospel-graphs index --incremental     # Only reindex changed files
-gospel-graphs index --force           # Full reindex, ignore cache
+gospel-engine index [flags]           # Index all content (scriptures, talks, manuals, books, music)
+gospel-engine index --source talks    # Index only conference talks
+gospel-engine index --source scriptures --volumes bofm,nt
+gospel-engine index --concurrency 2   # Parallel LLM requests
+gospel-engine index --incremental     # Only reindex changed files
+gospel-engine index --force           # Full reindex, ignore cache
 
-gospel-graphs serve                   # MCP server on stdio
-gospel-graphs search "atonement"      # CLI search for testing
-gospel-graphs stats                   # Database statistics
-gospel-graphs version                 # Version info
-
-gospel-graphs migrate-mcp            # Import existing gospel-mcp SQLite
-gospel-graphs migrate-vec            # Import existing gospel-vec data files
+gospel-engine serve                   # MCP server on stdio
+gospel-engine search "atonement"      # CLI search for testing
+gospel-engine stats                   # Database statistics
+gospel-engine version                 # Version info
 ```
 
 ### Unified indexer flow
@@ -141,11 +139,12 @@ For each content file (scripture chapter, conference talk, manual section):
 6. For talks: generate TITSW teaching profile (vocabulary approach + calibration context)
 7. For scripture: generate enriched summary (lens approach with gospel-vocab + titsw-framework)
 8. Write TITSW columns to SQLite talks table
-9. Write all chunks + metadata to chromem-go
-10. Update index_metadata for incremental tracking
+9. Build graph edges — cross-reference links, thematic connections, related content
+10. Write all chunks + metadata to chromem-go
+11. Update index_metadata for incremental tracking
 ```
 
-Steps 2-3 (SQLite) and 4-9 (vector + LLM) happen in the same pass. No second import step.
+Steps 2-3 (SQLite structured) and 4-10 (LLM + vector + graph) happen in the same pass. Graph edges are computed at index time so queries don't pay that cost.
 
 ### MCP tools (3 tools, replacing 7)
 
@@ -274,28 +273,29 @@ CREATE VIRTUAL TABLE IF NOT EXISTS talks_fts USING fts5(
 ### Code structure
 
 ```
-scripts/gospel-graphs/
-├── cmd/gospel-graphs/main.go       # Entry point, command dispatch
+scripts/gospel-engine/
+├── cmd/gospel-engine/main.go       # Entry point, command dispatch
 ├── internal/
 │   ├── db/                          # SQLite layer
 │   │   ├── db.go                    # Open, Close, Query, Exec
-│   │   ├── schema.sql               # Full schema (embedded)
+│   │   ├── schema.sql               # Full schema including edges table (embedded)
 │   │   └── metadata.go              # Incremental indexing metadata
 │   ├── vec/                          # Vector layer
 │   │   ├── store.go                  # chromem-go wrapper, per-source persistence
 │   │   ├── embedder.go               # Embedding function
 │   │   └── lmstudio.go              # LM Studio lifecycle management
-│   ├── indexer/                      # Unified indexer (writes to both)
+│   ├── indexer/                      # Unified indexer (writes to both + graph)
 │   │   ├── indexer.go                # Orchestrator: index all sources
 │   │   ├── scripture.go              # Parse + index scripture markdown
 │   │   ├── talk.go                   # Parse + index talk markdown
 │   │   ├── manual.go                 # Parse + index manuals
 │   │   ├── book.go                   # Parse + index books
 │   │   ├── music.go                  # Parse + index music
-│   │   ├── crossref.go              # Cross-reference extraction
+│   │   ├── crossref.go              # Cross-reference extraction → edges
+│   │   ├── graph.go                  # Semantic nearest-neighbor edges (batch)
 │   │   ├── chunking.go              # Verse, paragraph, summary, theme chunking
 │   │   ├── enricher.go              # TITSW enrichment (vocabulary + lens + calibration)
-│   │   ├── summary.go               # LLM summarization + theme detection
+│   │   ├── summary.go               # LLM summarization + theme detection + thematic edges
 │   │   └── cache.go                  # Summary/TITSW cache (JSON files)
 │   ├── search/                       # Unified search
 │   │   ├── keyword.go                # FTS5 queries
@@ -309,7 +309,7 @@ scripts/gospel-graphs/
 │   └── mcp/                          # MCP server registration
 │       └── server.go
 ├── data/                             # .gitignored — all runtime data
-│   ├── gospel.db
+│   ├── gospel.db                     # SQLite (structured + FTS + edges)
 │   ├── scriptures.gob.gz
 │   ├── conference.gob.gz
 │   ├── manual.gob.gz
@@ -328,22 +328,22 @@ scripts/gospel-graphs/
 ### Configuration
 
 ```
-GOSPEL_GRAPHS_DATA_DIR          # Default: ./data
-GOSPEL_GRAPHS_DB                # Default: ./data/gospel.db
-GOSPEL_GRAPHS_EMBEDDING_URL     # Default: http://localhost:1234/v1
-GOSPEL_GRAPHS_EMBEDDING_MODEL   # Default: text-embedding-qwen3-embedding-4b
-GOSPEL_GRAPHS_CHAT_URL          # Default: http://localhost:1234/v1
-GOSPEL_GRAPHS_CHAT_MODEL        # Default: (auto-detect nemotron-3-nano)
-GOSPEL_GRAPHS_ROOT              # Default: (auto-detect workspace root)
+GOSPEL_ENGINE_DATA_DIR          # Default: ./data
+GOSPEL_ENGINE_DB                # Default: ./data/gospel.db
+GOSPEL_ENGINE_EMBEDDING_URL     # Default: http://localhost:1234/v1
+GOSPEL_ENGINE_EMBEDDING_MODEL   # Default: text-embedding-qwen3-embedding-4b
+GOSPEL_ENGINE_CHAT_URL          # Default: http://localhost:1234/v1
+GOSPEL_ENGINE_CHAT_MODEL        # Default: (auto-detect nemotron-3-nano)
+GOSPEL_ENGINE_ROOT              # Default: (auto-detect workspace root)
 ```
 
 ### MCP server config (replaces both gospel + gospel-vec)
 
 ```json
 {
-  "gospel-graphs": {
-    "command": "C:/.../scripts/gospel-graphs/gospel-graphs.exe",
-    "args": ["serve", "--data", "C:/.../scripts/gospel-graphs/data"],
+  "gospel-engine": {
+    "command": "C:/.../scripts/gospel-engine/gospel-engine.exe",
+    "args": ["serve", "--data", "C:/.../scripts/gospel-engine/data"],
     "type": "stdio"
   }
 }
@@ -351,62 +351,104 @@ GOSPEL_GRAPHS_ROOT              # Default: (auto-detect workspace root)
 
 ---
 
-## 6. Migration Strategy
+## 6. Data Strategy — Fresh Build
 
-The originals stay put. gospel-graphs builds its own databases from the same source markdown files. No data migration needed for the core content — just re-run `gospel-graphs index`.
+No migration. gospel-engine builds its own databases from the source markdown files in `/gospel-library/`. The enriched pipeline generates new embeddings and summaries that wouldn't exist in the old data anyway — migrating old data just to overwrite it adds complexity for no value.
 
-For the vector embeddings (which take hours to generate), migration commands import existing data:
+**Build-up plan:**
+1. Build gospel-engine with full indexing capabilities
+2. Run `gospel-engine index` — builds SQLite, embeddings, summaries, TITSW profiles, and graph edges from scratch
+3. Verify: capabilities match or exceed the originals
+4. Swap MCP config: remove gospel + gospel-vec, add gospel-engine
+5. Keep originals in `scripts/` as fallback (not deleted)
 
+The full index (structured + embeddings + LLM summaries + enrichment) will take time — run overnight. Incremental mode handles subsequent updates.
+
+### Graph Layer — Building Links at Index Time
+
+**The question:** Should relational links (cross-references, thematic connections, related talks) be computed at index time or at query time?
+
+**Answer: Index time.** Here's why:
+
+1. **Cross-references are already in the source.** Every scripture chapter has footnotes linking to other passages, topic guide entries, and Bible Dictionary entries. gospel-mcp already parses these into `cross_references` (1.5M+ rows). This is pure extraction — no LLM needed, no ambiguity. gospel-engine inherits this.
+
+2. **Thematic links from embeddings come free.** During indexing, every chunk gets embedded. After embedding, computing nearest-neighbor connections between chunks is a vector similarity operation — fast, batch-friendly, and already happening implicitly when we store vectors. The question is only whether to *persist* those connections. Yes — store the top-N most similar documents for each indexed item as edges in SQLite. This turns "find related content" from a runtime vector search into a SQLite lookup.
+
+3. **LLM-detected thematic connections belong at index time.** When the LLM generates summaries and themes for a chapter, it can also identify which other books/themes this connects to (types, prophecy-fulfillment, doctrinal parallels). This is the same LLM call — just an additional output field. No extra cost.
+
+4. **Study time should be fast.** The whole point of pre-computing is that when you're in a study session and ask "what connects to this passage?" the answer comes back instantly from SQLite, not from a real-time embedding search + LLM synthesis.
+
+**What we store:**
+
+```sql
+-- Graph edges table (new)
+CREATE TABLE IF NOT EXISTS edges (
+    id INTEGER PRIMARY KEY,
+    source_type TEXT NOT NULL,       -- 'scripture', 'talk', 'manual'
+    source_id TEXT NOT NULL,         -- reference or path
+    target_type TEXT NOT NULL,
+    target_id TEXT NOT NULL,
+    edge_type TEXT NOT NULL,         -- 'cross_reference', 'thematic', 'semantic', 'typological'
+    weight REAL DEFAULT 1.0,         -- similarity score or confidence
+    metadata TEXT,                   -- JSON: { "reason": "both discuss faith unto repentance" }
+    created_at TEXT DEFAULT (datetime('now'))
+);
+CREATE INDEX idx_edges_source ON edges(source_type, source_id);
+CREATE INDEX idx_edges_target ON edges(target_type, target_id);
+CREATE INDEX idx_edges_type ON edges(edge_type);
 ```
-gospel-graphs migrate-mcp --db ../gospel-mcp/gospel.db     # Import SQLite data
-gospel-graphs migrate-vec --data ../gospel-vec/data/        # Import vector data + summary cache
-```
 
-**Transition plan:**
-1. Build gospel-graphs with all capabilities
-2. Run `migrate-mcp` + `migrate-vec` to bootstrap data (fast, no LLM calls)
-3. Verify: every query that worked on the originals still works
-4. Run enriched reindex on talks (this is the first new value — TITSW profiles)
-5. Swap MCP config: remove gospel + gospel-vec, add gospel-graphs
-6. Keep originals in `scripts/` as fallback (not deleted)
+**Edge types built at index time:**
+
+| Edge Type | Source | Cost | When |
+|-----------|--------|------|------|
+| `cross_reference` | Footnote parsing (gospel-mcp logic) | Zero LLM cost | Phase 1 |
+| `semantic` | Top-N nearest neighbors from embeddings | Vector math, no LLM | Phase 1 |
+| `thematic` | LLM summary output: "this chapter connects to..." | Same LLM call as summary | Phase 2-3 |
+| `typological` | Enriched scripture lens: Christ-type identification | Same LLM call as enrichment | Phase 3 |
+
+**What this means for study.ibeco.me:** The graph visualization site reads pre-computed edges from gospel-engine's SQLite. No real-time computation at query time — just SELECT and render. This is the reason to build the graph at index time: study.ibeco.me becomes a thin reader, not a compute engine.
+
+**Do we need to worry about this now?** The cross-reference edges (Phase 1) and semantic edges (Phase 1) are essentially free — we're already doing the work. Thematic and typological edges ride on LLM calls we're already making. The `edges` table just needs to exist in the schema. The indexer writes to it as a side effect of work it's already doing. This isn't a separate feature — it's capturing connections the engine is already computing.
 
 ---
 
 ## 7. Phased Delivery
 
-### Phase 1: Foundation — Scaffold + Migration (1-2 sessions)
+### Phase 1: Foundation — Scaffold + Index (1-2 sessions)
 
-**Scope:** New Go module that compiles, runs, and passes through to both databases. No enrichment yet — just proving the combined architecture works.
+**Scope:** New Go module that compiles, indexes the full corpus from source, and serves all 3 MCP tools. No enrichment yet — just proving the combined architecture works and building up data from scratch.
 
 | Deliverable | Detail |
 |-------------|--------|
-| `scripts/gospel-graphs/` | New Go module with both dependencies |
+| `scripts/gospel-engine/` | New Go module with both dependencies |
 | `.gitignore` | Data directory excluded |
-| `cmd/gospel-graphs/main.go` | Command dispatch: index, serve, stats, version, migrate-mcp, migrate-vec |
-| `internal/db/` | SQLite layer — schema from gospel-mcp, open/close/query |
-| `internal/vec/` | chromem-go layer — store from gospel-vec, load/save/search |
+| `cmd/gospel-engine/main.go` | Command dispatch: index, serve, stats, version |
+| `internal/db/` | SQLite layer — schema with edges table, open/close/query |
+| `internal/vec/` | chromem-go layer — store, load/save/search |
 | `internal/indexer/` | Scripture + talk + manual + book + music indexing, writing to both SQLite and chromem-go |
 | `internal/indexer/summary.go` | LLM summarization + theme detection (ported from gospel-vec) |
 | `internal/indexer/cache.go` | Summary cache (ported from gospel-vec) |
+| `internal/indexer/crossref.go` | Cross-reference extraction → edges table |
+| `internal/indexer/graph.go` | Semantic nearest-neighbor edges (post-embedding batch) |
 | `internal/vec/lmstudio.go` | LM Studio lifecycle (ported from gospel-vec) |
 | `internal/search/` | Keyword search (FTS5) + semantic search (chromem-go) — separate, not yet combined |
 | `internal/tools/` + `internal/mcp/` | 3 MCP tools: gospel_search (keyword + semantic via mode), gospel_get, gospel_list |
-| `migrate-mcp` | Import gospel-mcp SQLite into gospel-graphs SQLite |
-| `migrate-vec` | Import gospel-vec .gob.gz + summaries into gospel-graphs data |
 | `context/` | Embed gospel-vocab.md, titsw-framework.md, talk-calibration.md |
 
 **Verification:**
-1. `gospel-graphs migrate-mcp && gospel-graphs migrate-vec` completes
-2. `gospel-graphs stats` shows same counts as gospel-mcp + gospel-vec separately
-3. `gospel-graphs search "faith in christ"` returns keyword results
-4. `gospel-graphs search --mode semantic "faith in christ"` returns semantic results
-5. MCP serve mode: all 3 tools respond correctly
+1. `gospel-engine index` completes — full corpus indexed from source markdown
+2. `gospel-engine stats` shows expected counts (scriptures ~42K, talks ~5.5K, etc.)
+3. `gospel-engine search "faith in christ"` returns keyword results
+4. `gospel-engine search --mode semantic "faith in christ"` returns semantic results
+5. `edges` table populated with cross_reference + semantic edges
+6. MCP serve mode: all 3 tools respond correctly
 
-**Stands alone:** Yes. This is a working replacement for both tools, without enrichment.
+**Stands alone:** Yes. This is a working replacement for both tools, with graph edges as a bonus, without enrichment.
 
 ### Phase 2: TITSW Talk Enrichment (1-2 sessions)
 
-**Scope:** Add TITSW enrichment to the talk indexing pipeline. This IS enriched-indexer Phase 1, built directly into gospel-graphs.
+**Scope:** Add TITSW enrichment to the talk indexing pipeline. This IS enriched-indexer Phase 1, built directly into gospel-engine.
 
 | Deliverable | Detail |
 |-------------|--------|
@@ -417,7 +459,8 @@ gospel-graphs migrate-vec --data ../gospel-vec/data/        # Import vector data
 | TITSW search filters | `gospel_search` accepts titsw_mode, titsw_dominant, titsw_min_* params |
 | TITSW in `gospel_get` | Talk responses include teaching profile |
 | `--concurrency` flag | Worker pool for parallel LLM requests (default 1, max 4) |
-|  FTS5 extended | talks_fts includes titsw_dominant, titsw_mode, titsw_keywords, titsw_summary |
+| FTS5 extended | talks_fts includes titsw_dominant, titsw_mode, titsw_keywords, titsw_summary |
+| Thematic edges | LLM summary call includes "related talks/themes" output → edges table |
 
 **Verification:**
 1. Index 5 ground-truth talks — scores within ±2 of targets
@@ -425,6 +468,7 @@ gospel-graphs migrate-vec --data ../gospel-vec/data/        # Import vector data
 3. `gospel_search --source conference --titsw_min_teach 7` returns high-teach talks
 4. `gospel_get` for a talk includes TITSW profile
 5. FTS: `gospel_search "enacted love"` matches via FTS on titsw columns
+6. Thematic edge rows exist linking related talks
 
 ### Phase 3: Scripture Enrichment (1 session)
 
@@ -435,8 +479,9 @@ gospel-graphs migrate-vec --data ../gospel-vec/data/        # Import vector data
 | Lens injection | gospel-vocab.md + titsw-framework.md injected into scripture summary prompt |
 | Deeper keywords | Typological connections, Christ-type identification in keywords |
 | Enriched scripture summaries | Richer summaries with theological depth |
+| Typological edges | LLM identifies Christ-types, prophecy-fulfillment pairs → edges table |
 
-**Verification:** Compare Alma 32, Zechariah 3, 1 Nephi 11 summaries before/after — typological terms present that weren't before.
+**Verification:** Compare Alma 32, Zechariah 3, 1 Nephi 11 summaries before/after — typological terms present that weren't before. Typological edges link OT passages to their NT/BofM fulfillments.
 
 ### Phase 4: Combined Search + Manual Enrichment (1 session)
 
@@ -459,14 +504,16 @@ gospel-graphs migrate-vec --data ../gospel-vec/data/        # Import vector data
 |-------------|--------|
 | Full talk reindex | All conference talks with TITSW enrichment |
 | Full scripture reindex | All standard works with lens-enriched summaries |
-| MCP config swap | Replace gospel + gospel-vec with gospel-graphs |
+| MCP config swap | Replace gospel + gospel-vec with gospel-engine |
 | Verification suite | Automated checks against ground truth |
+| Complete graph | All edge types populated across full corpus |
 
 **Verification:**
-1. `gospel-graphs stats` shows complete counts
+1. `gospel-engine stats` shows complete counts
 2. 5 ground-truth talks within ±2 of targets
 3. All existing study agent/lesson agent workflows still work
 4. Old tools still compile and are available as fallback
+5. Edges table has cross-reference, semantic, thematic, and typological edges
 
 ---
 
@@ -474,11 +521,14 @@ gospel-graphs migrate-vec --data ../gospel-vec/data/        # Import vector data
 
 | Phase | Verification | Criteria |
 |-------|-------------|---------|
-| 1 | Migration correctness | Row counts match originals. 10 random queries produce same results. |
+| 1 | Index correctness | Row counts match expectations. 10 random queries produce sensible results. |
 | 1 | MCP tool parity | All 7 original tool capabilities accessible through 3 new tools |
+| 1 | Graph edges | cross_reference + semantic edges populated in edges table |
 | 2 | TITSW scores | 5 ground-truth talks within ±2 |
 | 2 | TITSW filters | Structured queries return correct subsets |
+| 2 | Thematic edges | Talk-to-talk thematic connections stored |
 | 3 | Enriched scripture | Typological keywords present in Alma 32, Zechariah 3 |
+| 3 | Typological edges | OT→NT/BofM fulfillment links stored |
 | 4 | Combined search | Hybrid results outperform keyword-only for ambiguous queries |
 | 5 | Full reindex | No errors across 5,500+ talks. Stats match expectations. |
 | 5 | Cutover | All agents work with new MCP config |
@@ -496,22 +546,24 @@ gospel-graphs migrate-vec --data ../gospel-vec/data/        # Import vector data
 
 | Risk | Mitigation |
 |------|-----------|
-| Scope: replacing two working tools is high-stakes | Migration commands + verification before cutover. Originals stay as fallback. |
+| Scope: replacing two working tools is high-stakes | Fresh index from source + verification before cutover. Originals stay as fallback. |
 | Combined search complexity | Phase 4 — build after simpler modes are proven. Combined mode is additive, not required. |
 | TITSW enrichment quality | Phase 0 experiments already complete (MAE=1.83). Calibration context proven. |
-| Reindex time | --concurrency flag. Run overnight. Incremental mode after initial build. |
+| Full index time | --concurrency flag. Run overnight. Incremental mode after initial build. |
 | Two databases in one process | Memory: chromem-go is in-memory during search. SQLite is file-backed. Tested separately, should compose fine. |
+| Graph edge explosion | Top-N cap on semantic edges (e.g., 20 per document). Thematic edges are sparse by nature. |
 
 ### What gets worse
 - Larger single binary
-- More complex indexer (writes to two databases per content item)
-- If gospel-graphs has a bug, both search types are down (vs. one of two being down)
+- More complex indexer (writes to two databases + edges per content item)
+- If gospel-engine has a bug, both search types are down (vs. one of two being down)
 
 ### What gets better
 - One MCP config instead of two
 - 3 tools instead of 7 — less agent confusion, less context window consumption
 - No import pipeline — TITSW metadata generated and stored in one pass
 - Combined search — the capability that neither tool offers alone
+- Graph edges computed at index time — study.ibeco.me reads pre-computed connections instead of computing them
 - One build, one update, one mental model
 
 ---
@@ -520,15 +572,15 @@ gospel-graphs migrate-vec --data ../gospel-vec/data/        # Import vector data
 
 | Step | Question | This proposal |
 |------|----------|--------------|
-| **Intent** | Why? | Unified search is the foundation everything else builds on — study.ibeco.me, brain app, lesson prep. |
+| **Intent** | Why? | Unified search + pre-computed graph is the foundation everything else builds on — study.ibeco.me, brain app, lesson prep. |
 | **Covenant** | Rules? | Existing Go conventions. gospel-mcp + gospel-vec patterns. No data loss during migration. |
 | **Stewardship** | Who? | dev agent builds. Michael reviews. gospel-mcp/gospel-vec maintained as fallback by existing code. |
 | **Spiritual Creation** | Spec precise? | Schema, tool definitions, data flow, migration strategy all specified. Phase 1 is buildable. |
 | **Line upon Line** | Phasing? | 5 phases. Phase 1 stands alone as a working replacement. Enrichment is additive. |
 | **Physical Creation** | Who executes? | dev agent, one phase at a time. |
 | **Review** | How to verify? | Migration row counts, ground-truth scores, MCP tool parity tests. |
-| **Atonement** | If wrong? | Originals stay in scripts/. Revert MCP config. No data destroyed. |
-| **Sabbath** | When to pause? | After Phase 1 — does the combined tool work as a replacement? After Phase 2 — are TITSW profiles good? After Phase 5 — full cutover, is study improved? |
+| **Atonement** | If wrong? | Originals stay in scripts/. Revert MCP config. Data built from source — re-index to recover. |
+| **Sabbath** | When to pause? | After Phase 1 — does the combined tool work as a replacement? After Phase 2 — are TITSW profiles good? After Phase 5 — full cutover, is the graph useful for study? |
 | **Consecration** | Who benefits? | Michael directly. study.ibeco.me. brain app. Any downstream consumer. |
 | **Zion** | Integration? | This IS the integration — two tools becoming one. Everything downstream gets simpler. |
 
@@ -536,33 +588,17 @@ gospel-graphs migrate-vec --data ../gospel-vec/data/        # Import vector data
 
 ## 11. Recommendation
 
-**Build. This is the natural convergence of gospel-mcp and gospel-vec, and the home for the enriched pipeline.**
+**Build. This is the natural convergence of gospel-mcp and gospel-vec, the home for the enriched pipeline, and the engine that study.ibeco.me reads from.**
 
-Phase 1 is the critical path — prove the combined architecture works, migrate existing data, verify parity. This is mostly porting existing code into a new structure. Phase 2 is where the new value starts — TITSW profiles on talks. Phase 5 is the commitment — swapping MCP config.
+Phase 1 is the critical path — prove the combined architecture works, index from source, verify parity. This is mostly porting existing code into a new structure with the edges table as an addition. Phase 2 is where the new value starts — TITSW profiles on talks. Phase 5 is the commitment — swapping MCP config.
 
-The enriched indexer proposal (Phases 1-3) folds directly into this tool's Phases 2-4. Instead of building enrichment into gospel-vec and then porting, build once into gospel-graphs.
+The enriched indexer proposal (Phases 1-3) folds directly into this tool's Phases 2-4. Instead of building enrichment into gospel-vec and then porting, build once into gospel-engine.
 
 **Sequencing in the overall plan:**
-1. gospel-graphs Phase 1 (foundation + migration) — first
-2. gospel-graphs Phase 2 (TITSW talk enrichment) — this IS enriched-indexer Phase 1
-3. gospel-graphs Phases 3-4 (scripture enrichment, combined search)
-4. gospel-graphs Phase 5 (full reindex, cutover)
-5. study.ibeco.me Phase 1 — reads from gospel-graphs instead of two separate tools
+1. gospel-engine Phase 1 (foundation + fresh index) — first
+2. gospel-engine Phase 2 (TITSW talk enrichment) — this IS enriched-indexer Phase 1
+3. gospel-engine Phases 3-4 (scripture enrichment, combined search)
+4. gospel-engine Phase 5 (full reindex, cutover)
+5. study.ibeco.me Phase 1 — reads pre-computed edges + search from gospel-engine
 
 **Hand off to:** dev agent, with this proposal + [enriched-indexer.md](../enriched-indexer.md) as spec references.
-
----
-
-## Appendix: Name Discussion
-
-Michael said "gospel-graphs" but isn't sure. The name implies graph visualization (which is study.ibeco.me's job). Options for reconsideration:
-
-| Name | Pros | Cons |
-|------|------|------|
-| `gospel-graphs` | Michael's first instinct. "Graphs" can mean data graphs, not just visual. | Could confuse with study.ibeco.me graph visualization |
-| `gospel-core` | Captures "foundation everything builds on" | Slightly generic |
-| `gospel-search` | Clear purpose | Doesn't capture indexing role |
-| `gospel-engine` | Captures both indexing + search | Slightly pretentious |
-| `gospel-db` | Accurate | Boring |
-
-Michael decides. Proposal uses `gospel-graphs` throughout as the working name.

@@ -1,7 +1,7 @@
-# Scratch: gospel-graphs — Combined Gospel Tool
+# Scratch: gospel-engine — Combined Gospel Tool
 
 *Created: 2026-03-29*
-*Proposal: [.spec/proposals/gospel-graphs/main.md](../../proposals/gospel-graphs/main.md)*
+*Proposal: [.spec/proposals/gospel-engine/main.md](../../proposals/gospel-engine/main.md)*
 
 ---
 
@@ -84,23 +84,21 @@ Result: **3 tools** (search, get, list) that do everything 7 tools did, with cle
 
 ### Name question
 
-Michael: "gospel-graphs (i don't know if I love that name...)"
+**DECIDED: gospel-engine.** Michael chose it. The name captures both indexing and search — and it IS the engine that study.ibeco.me, brain app, and all downstream tools build on. Not pretentious when it's actually the foundation.
 
-Options considered:
+Options that were considered:
 - `gospel-graphs` — implies the graph visualization site, not the search tool
 - `gospel` — too generic, conflicts with existing MCP server name
 - `gospel-search` — emphasizes search but it does indexing too
 - `gospel-index` — emphasizes indexing but it does search too
 - `gospel-db` — boring but accurate
-- `gospel-engine` — pretentious
+- `gospel-engine` — ✅ captures both indexing and search, expandable
 - `gospel-core` — the foundational tool everything else builds on
-
-Michael should decide. For now, using `gospel-graphs` as working name per his request.
 
 ### Data directory structure
 
 ```
-scripts/gospel-graphs/
+scripts/gospel-engine/
 ├── data/                          # .gitignored
 │   ├── gospel.db                  # SQLite (FTS + structured)
 │   ├── gospel.db-shm              # SQLite WAL
@@ -114,7 +112,7 @@ scripts/gospel-graphs/
 │       ├── 1-nephi-3.json
 │       └── ...
 ├── cmd/
-│   └── gospel-graphs/
+│   └── gospel-engine/
 │       └── main.go                # Entry point
 ├── internal/
 │   ├── db/                        # SQLite layer
