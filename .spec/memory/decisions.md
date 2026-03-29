@@ -95,6 +95,13 @@
 - **Decision:** 11-episode experiential arc. Sabbath-agent-level depth — expensive but worth it for honesty. Teaching agent created with three quality checks: ring check, posture check, Ben Test. Section 7 humility covenant formalized in `.spec/covenant.yaml`.
 - **Rationale:** "I commit to that." Michael named public exposure, performer drift, and mean comments as real risks. The guardrails exist to protect against those, not as busywork.
 
+### Decision: Combined gospel tool for enriched pipeline
+- **Date:** 2026-03-29
+- **Decided by:** Michael
+- **Decision:** Build a NEW combined gospel tool that merges gospel-mcp (SQLite/FTS) and gospel-vec (vector/chromem-go) into one application, sharing one SQLite DB and one vector DB. Keep the originals (gospel-mcp and gospel-vec) unchanged — they remain available for study work during reindexing. The enriched indexer and enriched search proposals should target this new combined tool, not modify the originals.
+- **Rationale:** "I want to keep gospel-mcp and gospel-vec for study work during reindexing." The new combined tool avoids disrupting working MCP servers while enabling the unified structured + semantic search the enriched pipeline needs. The originals stay stable and usable even when the new tool is being rebuilt or reindexed.
+- **Supersedes:** enriched-search.md Option C (ALTER TABLE in gospel-mcp, import pipeline between two tools). The new architecture is a single app, not two tools passing data.
+
 ### Decision: Teaching covenant is bilateral
 - **Date:** 2026-03-24
 - **Decided by:** Both

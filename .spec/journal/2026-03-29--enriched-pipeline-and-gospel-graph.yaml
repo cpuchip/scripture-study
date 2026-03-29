@@ -1,0 +1,152 @@
+date: "2026-03-29"
+title: "Enriched Pipeline Ships Paper, Gospel Graph Vision, and the Combined Tool Decision"
+mood: productive-but-buggy
+phase: plan
+agent: plan
+
+summary: >
+  Massive planning day — four proposals written or reworked, Phase 0 experiments run,
+  parallel test infrastructure built. The session got buggy (context compaction issues
+  across multiple continuations) but the work landed. Key surprise: Michael's decision
+  to build a combined gospel-mcp + gospel-vec tool instead of modifying the originals.
+  This came at the very end of a long session — the kind of quiet architectural insight
+  that changes the whole downstream plan.
+
+# ─── WHAT SHIPPED ──────────────────────────────────────────────────────────────
+
+shipped:
+  enriched_indexer_proposal:
+    description: "Full 360-line proposal for TITSW-enriched talk summaries in gospel-vec"
+    details: >
+      5 phases: 0=experiments (COMPLETE), 1=talk enrichment, 2=scripture enrichment,
+      3=manuals+themes, 4=combined tool integration. Vocabulary vs. lens distinction
+      established. Michael decided: keep love/spirit scores, theme detection for Phase 3,
+      full reindex approved, explore parallelism.
+    file: ".spec/proposals/enriched-indexer.md"
+
+  phase0_experiments:
+    description: "18 runs across 6 experiment conditions × 3 ground-truth talks"
+    details: >
+      T4 (calibration example) won with MAE=1.83. Gospel-vocab confirmed as the inflation
+      culprit (love: +5 to +6 across all talks in T2). Love/spirit inflation persists even
+      with best context (+2 to +4) — inherent model bias. Decision: use calibration context
+      for Phase 1 batch, but refine first (different speaker, multiple examples, explicit
+      "most dimensions score 3-5" guidance).
+    file: "experiments/lm-studio/scripts/results/phase0-analysis.md"
+
+  enriched_search_proposal:
+    description: "263-line proposal for gospel-mcp TITSW integration"
+    details: >
+      Option C chosen (ALTER TABLE talks, import gospel-vec cache). Schema design, FTS
+      enhancement, search/get tool enhancements all spec'd. NOW SUPERSEDED by combined
+      tool decision — but schema designs remain valid reference.
+    file: ".spec/proposals/enriched-search.md"
+    status: "superseded-in-current-form"
+
+  gospel_graph_proposal:
+    description: "study.ibeco.me — standalone gospel graph visualization site"
+    details: >
+      Originally written as an ibeco.me extension (Option C), reworked after Michael's
+      direction to a standalone site with own Go backend, Vue 3 frontend, PostgreSQL.
+      5 phases, sequenced after enriched indexer. Import pipeline from gospel-mcp +
+      gospel-vec + byu-citations. Cytoscape.js for graph rendering.
+    file: ".spec/proposals/gospel-graph/main.md"
+
+  parallel_test_infrastructure:
+    description: "run-parallel-test.ps1 — tests 1x-4x concurrency on LM Studio"
+    details: >
+      Built to validate enriched indexer parallelism claims. Tested nemotron-3-nano
+      at 1x, 2x, 3x, 4x concurrent requests.
+    file: "experiments/lm-studio/scripts/run-parallel-test.ps1"
+
+# ─── DECISIONS ─────────────────────────────────────────────────────────────────
+
+decisions:
+  combined_gospel_tool:
+    description: >
+      Build a NEW combined gospel tool merging gospel-mcp (SQLite/FTS) and gospel-vec
+      (vector/chromem-go) into one application. Keep originals unchanged for study use
+      during reindexing.
+    rationale: >
+      "I want to keep gospel-mcp and gospel-vec for study work during reindexing."
+      The new combined tool avoids disrupting working MCP servers while enabling unified
+      structured + semantic search. The originals stay stable.
+    impact: >
+      Supersedes enriched-search.md Option C. Schema and tool enhancement designs remain
+      valid — just target the new tool. New proposal needed.
+
+  gospel_graph_standalone:
+    description: >
+      study.ibeco.me is a standalone site, NOT an ibeco.me extension. Own codebase,
+      own PostgreSQL database, own Dokploy container.
+    rationale: >
+      "I don't want to take the burden of verifying all the things." Separate site avoids
+      ibeco.me verification burden, allows independent evolution.
+
+  calibration_context_for_batch:
+    description: >
+      Use T4 calibration context for Phase 1 batch enrichment. Refine first: different
+      speaker for calibration example, consider 2-3 examples, add "most dimensions score
+      3-5" guidance.
+
+# ─── CARRY FORWARD ─────────────────────────────────────────────────────────────
+
+carry_forward:
+  - priority: high
+    item: "Write combined gospel tool proposal"
+    details: >
+      New proposal merging gospel-mcp + gospel-vec into one app. Use enriched-search.md
+      schema designs as starting point. Decide: name (gospel-study?), location (scripts/gospel-study/),
+      what MCP tools it exposes, how it relates to originals.
+
+  - priority: high
+    item: "Refine calibration context for Phase 1"
+    details: >
+      Current T4 context uses Kearon as calibration example — same-speaker anchoring
+      caused Kearon teach score to be underscored by 3. Use a different talk (Bednar or
+      Holland). Consider 2-3 examples spanning different score distributions. Add explicit
+      "most dimensions score 3-5" guidance.
+
+  - priority: high
+    item: "Build enriched indexer Phase 1"
+    details: >
+      Add TITSW metadata fields to DocMetadata, write enriched talk prompt, build parser,
+      add concurrency flag, test on 5 ground-truth talks. Dev agent handoff.
+
+  - priority: medium
+    item: "Update gospel-graph proposal for combined tool"
+    details: >
+      study.ibeco.me currently plans to import from gospel-mcp + gospel-vec separately.
+      If the combined tool ships first, study.ibeco.me imports from one source instead of two.
+      Update import pipeline section after combined tool proposal is written.
+
+  - priority: low
+    item: "Push unpushed commits"
+    details: >
+      6 commits ahead of origin/main. ~3,200 lines across 53 files. All committed
+      locally but not pushed.
+
+# ─── SESSION DYNAMICS ──────────────────────────────────────────────────────────
+
+dynamics:
+  - >
+    Session got buggy with context compaction across multiple continuations. The gospel-graph
+    proposal was deleted and needed recreation — context window ran out mid-edit, leaving the
+    file in a deleted state. Recovered on continuation.
+  - >
+    The combined gospel tool decision came quietly at the end of a long session. Michael said
+    it almost as an aside, but it changes the entire downstream architecture. The instinct is
+    right: keep working tools working, build new things separately. Same pattern as the
+    study.ibeco.me decision.
+  - >
+    Pattern emerging: Michael consistently chooses "new tool alongside old" over "modify working
+    tool." ibeco.me vs study.ibeco.me. gospel-mcp/gospel-vec vs combined tool. The principle
+    is stability — don't break what works while building what's next.
+
+# ─── OPEN QUESTIONS ────────────────────────────────────────────────────────────
+
+open_questions:
+  - "What should the combined gospel tool be called? gospel-study? gospel-combined? gospel-unified?"
+  - "Does the combined tool expose the same MCP tool names (gospel_search, gospel_get) or new ones?"
+  - "How does study.ibeco.me's import pipeline change if it reads from the combined tool instead of two separate ones?"
+  - "Should the combined tool also handle BYU citation data, or leave that to byu-citations MCP?"

@@ -6,6 +6,24 @@
 
 ---
 
+## ⚠️ ARCHITECTURAL PIVOT (Mar 29)
+
+**This proposal is SUPERSEDED in its current form.** Michael decided (Mar 29) to build a **new combined gospel tool** that merges gospel-mcp (SQLite/FTS) and gospel-vec (vector/chromem-go) into one application, rather than modifying the originals.
+
+**Rationale:** Keep gospel-mcp and gospel-vec unchanged and available for study work during reindexing. The new combined tool shares one SQLite DB and one vector DB, avoiding the two-tool import pipeline described below.
+
+**What changes:**
+- Option C below (ALTER TABLE in gospel-mcp, read gospel-vec cache) → replaced by a single app that owns both databases
+- The schema design (TITSW columns, FTS enhancement) is still valid — just lives in the new tool
+- The search/get tool enhancements are still valid — just exposed by the new tool's MCP server
+- No import pipeline needed between separate tools — the combined tool indexes and queries in one codebase
+
+**Decision recorded in:** [decisions.md](../memory/decisions.md) — "Combined gospel tool for enriched pipeline"
+
+**Next step:** Write a new proposal for the combined tool (working name: `gospel-study` or `gospel-combined`). This proposal remains as historical reference for the schema design and tool enhancement specs.
+
+---
+
 ## Binding Problem
 
 gospel-vec will produce enriched summaries with TITSW teaching profiles (dominant dimensions, teaching modes, scores). But gospel-vec only supports *semantic* search — you can search by meaning but not by exact field values. There's no way to ask "find all talks where titsw_mode = enacted" or "all talks with teach_score >= 7" efficiently.

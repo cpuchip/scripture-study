@@ -284,13 +284,9 @@ Note: Scores cluster 4-6 for most dimensions. A 7+ is exceptional and specific.
 3. Add `DetectTalkThemes()` — identify rhetorical sections in talks (story, doctrine, application, invitation, testimony). This is the talk-level analog of `DetectThemes()` for scripture.
 4. **Test:** Run on 3 CFM lessons, 2 Teachings of Presidents chapters. Inspect theme sections on 5 ground-truth talks.
 
-### Phase 4: gospel-mcp Integration (separate proposal)
+### Phase 4: Combined Gospel Tool Integration (separate proposal)
 
-See [enriched-search.md](enriched-search.md) — full separate proposal covering:
-- Where to add FTS on enriched fields (gospel-mcp SQLite vs. adding SQLite to gospel-vec)
-- Schema changes for TITSW metadata
-- MCP tool updates to expose teaching profiles in search results
-- Architectural question: one DB or two?
+See [enriched-search.md](enriched-search.md) for the original design (now superseded). Michael decided (Mar 29) to build a **new combined gospel tool** merging gospel-mcp + gospel-vec into one application, rather than modifying the originals. The enriched data will be consumed by this new combined tool. New proposal needed. Original schema designs and tool enhancement specs in enriched-search.md remain valid reference.
 
 ---
 
