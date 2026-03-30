@@ -3,6 +3,7 @@ package config
 import (
 	"os"
 	"path/filepath"
+	"strconv"
 )
 
 // Config holds all configuration for gospel-engine.
@@ -14,8 +15,9 @@ type Config struct {
 	DBPath string
 
 	// LM Studio embedding endpoint
-	EmbeddingURL   string
-	EmbeddingModel string
+	EmbeddingURL           string
+	EmbeddingModel         string
+	EmbeddingContextLength int
 
 	// LM Studio chat endpoint (for summaries/enrichment)
 	ChatURL   string
@@ -35,10 +37,11 @@ type Config struct {
 // Default returns sensible defaults, auto-detecting workspace root.
 func Default() *Config {
 	cfg := &Config{
-		EmbeddingURL:   "http://localhost:1234/v1",
-		EmbeddingModel: "text-embedding-qwen3-embedding-8b",
-		ChatURL:        "http://localhost:1234/v1",
-		ChatModel:      "",
+		EmbeddingURL:           "http://localhost:1234/v1",
+		EmbeddingModel:         "text-embedding-qwen3-embedding-8b",
+		EmbeddingContextLength: 16384,
+		ChatURL:                "http://localhost:1234/v1",
+		ChatModel:              "",
 	}
 
 	// Detect workspace root
@@ -77,6 +80,11 @@ func Default() *Config {
 	}
 	if v := os.Getenv("GOSPEL_ENGINE_EMBEDDING_MODEL"); v != "" {
 		cfg.EmbeddingModel = v
+	}
+	if v := os.Getenv("GOSPEL_ENGINE_EMBEDDING_CONTEXT_LENGTH"); v != "" {
+		if n, err := strconv.Atoi(v); err == nil && n > 0 {
+			cfg.EmbeddingContextLength = n
+		}
 	}
 	if v := os.Getenv("GOSPEL_ENGINE_CHAT_URL"); v != "" {
 		cfg.ChatURL = v

@@ -1,5 +1,6 @@
 # Data directory (large, generated — SQLite + vector + summaries)
 data/*
+index-log.txt
 
 # Vector data files
 *.gob
