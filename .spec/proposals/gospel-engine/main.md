@@ -33,7 +33,7 @@ Today, studying scripture with AI search requires two separate MCP servers:
 4. **TITSW teaching profiles** on all conference talks — dominant dimensions, mode, pattern, 6 dimension scores
 5. **TITSW structured filters** — filter by mode, min scores, dominant dimensions
 6. **One index command** writes to both SQLite and vector DB in a single pass
-7. **Enriched summaries** — talks get TITSW vocabulary approach; scripture gets lens approach (gospel-vocab + titsw-framework context)
+7. **Enriched summaries** — talks get calibrated prompt approach (titsw-calibrated.md); scripture gets lens approach (gospel-vocab + titsw-framework context)
 8. **Parallelism** — `--concurrency` flag for batch indexing (1-4 workers)
 9. **Data directory gitignored** — no gigabyte data in the repo
 10. **Drop-in MCP replacement** — swap gospel + gospel-vec server configs for one gospel-engine config
@@ -76,10 +76,12 @@ Today, studying scripture with AI search requires two separate MCP servers:
 |--------|--------------------|
 | [gospel-mcp](../../../scripts/gospel-mcp/) | SQLite schema, FTS5 search, cross-reference parsing, content retrieval, list browsing. 3 MCP tools. |
 | [gospel-vec](../../../scripts/gospel-vec/) | chromem-go storage, 4-layer indexing, LLM summarization, semantic search, LM Studio lifecycle. 4 MCP tools. |
-| [enriched-indexer.md](../enriched-indexer.md) | TITSW vocabulary approach for talks, lens approach for scripture, calibration context, Phase 0 experiment results (T4 best, MAE=1.83). |
+| [enriched-indexer.md](../enriched-indexer.md) | TITSW vocabulary approach for talks, lens approach for scripture, calibration context. Phase 0 experiments on nemotron (T4 calibration context, MAE=1.83). |
 | [enriched-search.md](../enriched-search.md) | Schema design for TITSW columns, FTS enhancement, search filter params, get response format. Now superseded architecturally but schema designs are valid. |
 | [Phase 0 analysis](../../../experiments/lm-studio/scripts/results/phase0-analysis.md) | 18 experiments confirming calibration context works, gospel-vocab causes inflation on talks, love/spirit inflate inherently. |
 | [talk-calibration.md](../../../scripts/gospel-engine/context/talk-calibration.md) | Refined calibration context: 2 examples (Bednar doctrine-dominant + Holland spirit-dominant) with anti-inflation guidance. Replaces original single-Kearon example that caused same-speaker anchoring. |
+| [titsw-experiment-spec.md](../../../experiments/lm-studio/scripts/references/titsw-experiment-spec.md) | Comprehensive experiment reference. **Production config: ministral-3-14b-reasoning + titsw-calibrated.md + T=0.2, MAE=1.32.** All models tested, prompt evolution, known limitations, batch timing estimates. |
+| [titsw-calibrated.md](../../../experiments/lm-studio/scripts/prompts/titsw-calibrated.md) | Production TITSW scoring prompt — per-dimension 4-level anchor tables (3/5/7/9), spirit ABOUT/BY distinction, scoring distribution warning. Used for Phase 2 talk enrichment. |
 
 ---
 
@@ -137,7 +139,7 @@ For each content file (scripture chapter, conference talk, manual section):
 3. Parse cross-references → write to cross_references table
 4. Chunk content by requested layers (verse, paragraph)
 5. Generate LLM summary + themes (with cache)
-6. For talks: generate TITSW teaching profile (vocabulary approach + calibration context)
+6. For talks: generate TITSW teaching profile (calibrated prompt + talk-calibration.md context)
 7. For scripture: generate enriched summary (lens approach with gospel-vocab + titsw-framework)
 8. Write TITSW columns to SQLite talks table
 9. Build graph edges — cross-reference links, thematic connections, related content
@@ -295,7 +297,7 @@ scripts/gospel-engine/
 │   │   ├── crossref.go              # Cross-reference extraction → edges
 │   │   ├── graph.go                  # Semantic nearest-neighbor edges (batch)
 │   │   ├── chunking.go              # Verse, paragraph, summary, theme chunking
-│   │   ├── enricher.go              # TITSW enrichment (vocabulary + lens + calibration)
+│   │   ├── enricher.go              # TITSW enrichment (calibrated prompt for talks, lens approach for scripture)
 │   │   ├── summary.go               # LLM summarization + theme detection + thematic edges
 │   │   └── cache.go                  # Summary/TITSW cache (JSON files)
 │   ├── search/                       # Unified search
@@ -317,9 +319,9 @@ scripts/gospel-engine/
 │   ├── music.gob.gz
 │   └── summaries/
 ├── context/                          # Enrichment context documents (committed)
-│   ├── gospel-vocab.md
-│   ├── titsw-framework.md
-│   └── talk-calibration.md
+│   ├── talk-calibration.md           # Phase 1-2: calibration examples for talk TITSW scoring
+│   ├── gospel-vocab.md               # Phase 3: scripture lens approach (NOT used for talks)
+│   └── titsw-framework.md            # Phase 3: scripture lens approach (NOT used for talks)
 ├── go.mod
 ├── go.sum
 ├── .gitignore
@@ -334,7 +336,7 @@ GOSPEL_ENGINE_DB                # Default: ./data/gospel.db
 GOSPEL_ENGINE_EMBEDDING_URL     # Default: http://localhost:1234/v1
 GOSPEL_ENGINE_EMBEDDING_MODEL   # Default: text-embedding-qwen3-embedding-4b
 GOSPEL_ENGINE_CHAT_URL          # Default: http://localhost:1234/v1
-GOSPEL_ENGINE_CHAT_MODEL        # Default: (auto-detect nemotron-3-nano)
+GOSPEL_ENGINE_CHAT_MODEL        # Default: ministral-3-14b-reasoning (production model, MAE=1.32)
 GOSPEL_ENGINE_ROOT              # Default: (auto-detect workspace root)
 ```
 
@@ -435,7 +437,7 @@ CREATE INDEX idx_edges_type ON edges(edge_type);
 | `internal/vec/lmstudio.go` | LM Studio lifecycle (ported from gospel-vec) |
 | `internal/search/` | Keyword search (FTS5) + semantic search (chromem-go) — separate, not yet combined |
 | `internal/tools/` + `internal/mcp/` | 3 MCP tools: gospel_search (keyword + semantic via mode), gospel_get, gospel_list |
-| `context/` | Embed gospel-vocab.md, titsw-framework.md, talk-calibration.md |
+| `context/` | talk-calibration.md committed (Phase 1). gospel-vocab.md and titsw-framework.md are Phase 3 (scripture lens — NOT used for talks). |
 
 **Verification:**
 1. `gospel-engine index` completes — full corpus indexed from source markdown
@@ -453,7 +455,7 @@ CREATE INDEX idx_edges_type ON edges(edge_type);
 
 | Deliverable | Detail |
 |-------------|--------|
-| `internal/indexer/enricher.go` | TITSW teaching profile extraction — vocabulary approach + calibration context |
+| `internal/indexer/enricher.go` | TITSW teaching profile extraction — calibrated prompt approach ([titsw-calibrated.md](../../../experiments/lm-studio/scripts/prompts/titsw-calibrated.md)) + [talk-calibration.md](../../../scripts/gospel-engine/context/talk-calibration.md) context |
 | Enriched talk prompt | TEACHING_PROFILE output format in system prompt |
 | TITSW columns in SQLite | titsw_dominant, titsw_mode, etc. populated during index |
 | TITSW metadata in chromem-go | Flat `map[string]string` fields in DocMetadata |
@@ -540,7 +542,7 @@ CREATE INDEX idx_edges_type ON edges(edge_type);
 
 ### Costs
 - **Development time:** 5-8 sessions across 5 phases
-- **Reindex time:** Full talk reindex ~14-28 hours (depending on concurrency). Full scripture reindex ~4-6 hours. Run overnight.
+- **Reindex time:** Full talk reindex ~18-20s per talk sequential on ministral-3-14b-reasoning (50-63 tok/s). ~28 hours for 5,500 talks at 1× concurrency, ~15 hours at 2× (dual 4090), ~8 hours at 4× (with remote). Scripture reindex ~4-6 hours. Run overnight.
 - **Both dependencies:** Binary is larger (SQLite + chromem-go). Both are well-tested Go libraries.
 
 ### Risks
@@ -549,7 +551,7 @@ CREATE INDEX idx_edges_type ON edges(edge_type);
 |------|-----------|
 | Scope: replacing two working tools is high-stakes | Fresh index from source + verification before cutover. Originals stay as fallback. |
 | Combined search complexity | Phase 4 — build after simpler modes are proven. Combined mode is additive, not required. |
-| TITSW enrichment quality | Phase 0 experiments already complete (MAE=1.83). Calibration context proven. |
+| TITSW enrichment quality | Full experiment suite complete (MAE=1.32 production on ministral-3-14b-reasoning with calibrated prompt). See [titsw-experiment-spec.md](../../../experiments/lm-studio/scripts/references/titsw-experiment-spec.md). |
 | Full index time | --concurrency flag. Run overnight. Incremental mode after initial build. |
 | Two databases in one process | Memory: chromem-go is in-memory during search. SQLite is file-backed. Tested separately, should compose fine. |
 | Graph edge explosion | Top-N cap on semantic edges (e.g., 20 per document). Thematic edges are sparse by nature. |

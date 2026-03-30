@@ -1,5 +1,7 @@
 # Context Engineering — Dev Stream Handoff
 
+**Status: COMPLETE** — All 5 deliverables implemented. Production configuration settled: ministral-3-14b-reasoning + titsw-calibrated + T=0.2, MAE 1.32. Full experiment history and decisions captured in [`references/titsw-experiment-spec.md`](../../experiments/lm-studio/scripts/references/titsw-experiment-spec.md).
+
 *Self-contained spec for parallel execution. No access to the planning conversation needed.*
 
 ---
