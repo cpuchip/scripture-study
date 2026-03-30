@@ -152,11 +152,119 @@ Three prompt variants tested against all 6 pieces at temperature 0.2 on ministra
 
 **Alma 32 remains the hardest piece.** All four variants score MAE 2.08-2.58 on Alma 32. The typological depth (seed=Christ, tree=tree of life) is invisible to the model at any prompt level. This requires enriched context, not just prompt engineering.
 
+## Context Injection Experiment (Mar 29, 2026)
+
+Tested whether injecting cross-reference scriptures alongside Alma 32 fixes the typological blindness.
+
+**Setup:** Used `alma-32-with-refs.md` which appends 1 Nephi 8:10-12, 1 Nephi 11:21-25, Alma 33:22-23, and John 1:1,14 to the Alma 32 text. Ran with titsw-calibrated prompt at T=0.2.
+
+**Result:**
+
+| Dimension | GT | Calibrated (plain) | Context Injected | Plain Δ | CI Δ |
+|-----------|-----|-------------------|-----------------|---------|------|
+| teach | 7.5 | 5 | **7** | -2.5 | **-0.5** |
+| help | 8 | 7 | 6 | -1 | -2 |
+| love | 7.5 | 3 | 3 | -4.5 | -4.5 |
+| spirit | 3.5 | 5 | 5 | +1.5 | +1.5 |
+| doctrine | 8.5 | 7 | 7 | -1.5 | -1.5 |
+| invite | 8.5 | 7 | 6 | -1.5 | -2.5 |
+| **MAE** | | **2.08** | **2.08** | | |
+
+**Key finding: Context injection fixed teach_about_christ.** Teach went from 5→7 (GT=7.5, only -0.5 error). The model's reasoning explicitly connected "the 'word-seed' (Alma 32:41)" to "cross-referenced to 1 Nephi 8–11, John 1" and stated "the seed is explicitly tied to belief in Christ's Atonement (Alma 33:22-23)." The typological connection was made.
+
+**But overall MAE didn't improve** because help and invite deflated. The cross-references may have "used up" the model's attention budget — it saw the Christ connections but scored the practical dimensions lower. Love remained at 3 despite the tree of life = love of God connection being in the injected text (1 Ne 11:22-25). The model read the words but didn't apply them to the love dimension.
+
+**Implication:** Context injection is necessary but not sufficient. A two-step approach may be needed: (1) inject context, (2) explicitly tell the model that the tree of life = love of God = the love dimension, not just the teach dimension. Alternatively, the scoring rubric itself needs a note that typological Christ-connections elevate both teach AND love/help.
+
+## Temperature Sweep (Mar 29, 2026)
+
+Ran titsw-calibrated at T=0.1, T=0.3, T=0.4 across all 6 pieces (T=0.2 from previous experiment).
+
+### Results Summary
+
+| Temperature | Overall MAE | Best Piece | Worst Piece |
+|-------------|-------------|------------|-------------|
+| T=0.1 | **1.40** | Bednar 0.67 | Alma 32 2.08 |
+| **T=0.2** | **1.32** | DC 121 0.67 | Alma 32 2.08 |
+| T=0.3 | 1.43 | DC 121 0.67 | Alma 32 3.08 |
+| **T=0.4** | **1.31** | DC 121 0.58 | Alma 32 2.25 |
+
+### Per-Piece Scores
+
+**T=0.1:**
+
+| Piece | teach | help | love | spirit | doctrine | invite | MAE |
+|-------|-------|------|------|--------|----------|--------|-----|
+| Alma 32 | 5(-2.5) | 7(-1) | 3(-4.5) | 5(+1.5) | 7(-1.5) | 7(-1.5) | 2.08 |
+| Bednar | **5(0)** | **5(0)** | 3(+1) | **3(0)** | 7(-2) | 5(-1) | 0.67 |
+| DC 121 | **5(0)** | **5(0)** | 7(+2) | 5(+1) | 7(-1) | 5(-2) | 1.00 |
+| Holland | **7(0)** | 5(-1) | 7(+3) | 5(-2) | **6(0)** | 5(+2) | 1.33 |
+| Kearon | 5(-3) | 7(-1) | 5(+1) | 5(+2) | **7(0)** | 7(-1) | 1.33 |
+| 3 Ne 17 | **9(0)** | 5(-4) | 7(-2) | 5(-3) | 7(+3) | **5(0)** | 2.00 |
+
+**T=0.3:**
+
+| Piece | teach | help | love | spirit | doctrine | invite | MAE |
+|-------|-------|------|------|--------|----------|--------|-----|
+| Alma 32 | 5(-2.5) | 4(-4) | 3(-4.5) | 4(+0.5) | 7(-1.5) | 3(-5.5) | **3.08** |
+| Bednar | **5(0)** | 4(-1) | 3(+1) | 4(+1) | 7(-2) | 4(-2) | 1.17 |
+| DC 121 | **5(0)** | **5(0)** | **5(0)** | 5(+1) | 7(-1) | 5(-2) | 0.67 |
+| Holland | **7(0)** | 5(-1) | 6(+2) | 4(-3) | **6(0)** | 5(+2) | 1.33 |
+| Kearon | 5(-3) | 7(-1) | 5(+1) | **3(0)** | **7(0)** | 9(+1) | 1.00 |
+| 3 Ne 17 | **9(0)** | 5(-4) | **9(0)** | 7(-1) | 5(+1) | 3(-2) | 1.33 |
+
+**T=0.4:**
+
+| Piece | teach | help | love | spirit | doctrine | invite | MAE |
+|-------|-------|------|------|--------|----------|--------|-----|
+| Alma 32 | 7(-0.5) | 5(-3) | 3(-4.5) | 5(+1.5) | 6(-2.5) | 7(-1.5) | 2.25 |
+| Bednar | **5(0)** | **5(0)** | 3(+1) | **3(0)** | 7(-2) | 5(-1) | 0.67 |
+| DC 121 | **5(0)** | **5(0)** | **5(0)** | 3.5(-0.5) | 7(-1) | 5(-2) | 0.58 |
+| Holland | 6(-1) | 5(-1) | 6(+2) | 4(-3) | 5(-1) | 6(+3) | 1.83 |
+| Kearon | 7(-1) | 5(-3) | 5(+1) | **3(0)** | **7(0)** | 7(-1) | 1.00 |
+| 3 Ne 17 | **9(0)** | 4(-5) | **9(0)** | 7(-1) | 7(+3) | **5(0)** | 1.50 |
+
+### Temperature Analysis
+
+**T=0.2 and T=0.4 are tied for best overall MAE** (1.32 and 1.31). But their error profiles differ:
+
+| Property | T=0.1 | T=0.2 | T=0.3 | T=0.4 |
+|----------|-------|-------|-------|-------|
+| Overall MAE | 1.40 | **1.32** | 1.43 | **1.31** |
+| Max single error | 4.5 | 4.5 | **5.5** | **5.0** |
+| Pieces with MAE < 1.0 | 1 | 2 | 1 | 2 |
+| Pieces with MAE > 2.0 | 1 | 1 | 1 | 1 |
+| Catastrophic (≥5) | 0 | 0 | 1 | 1 |
+
+**T=0.2 is the safest temperature.** Lowest max error tied with T=0.1, no catastrophic single-dimension errors, and second-best overall MAE. T=0.4 achieves marginally better MAE (1.31 vs 1.32) but introduces a 5-point error (3 Ne 17 help=4 vs GT=9) and Holland invite inflates to +3.
+
+**T=0.3 is the worst.** It has a catastrophic 5.5-point error on Alma 32 invite (3 vs GT 8.5) and the highest overall MAE. Higher temperature + calibration cues = overcorrection on some pieces.
+
+**Temperature doesn't fix the core problems.** Alma 32 love stays at 3 across all temperatures. 3 Ne 17 help deflates at every temperature. These are structural limitations of the prompt, not sampling artifacts.
+
+**Recommendation: Stay at T=0.2.** The 0.01 MAE improvement at T=0.4 isn't worth the increased variance and catastrophic error risk.
+
+### Combined Experiment Summary
+
+| Configuration | MAE | Note |
+|--------------|-----|------|
+| Baseline (enriched-talk-reasoning, T=0.2) | 1.54 | Starting point |
+| Calibrated T=0.2 | **1.32** | Best prompt × safest temp |
+| Calibrated T=0.4 | 1.31 | Marginally better but riskier |
+| Calibrated T=0.1 | 1.40 | Too deterministic |
+| Calibrated T=0.3 | 1.43 | Worst of the sweep |
+| Anchored T=0.2 | 1.43 | Two-shot helped some, hurt others |
+| Deflate T=0.2 | 1.71 | Light nudge made things worse |
+| Context injection (Alma 32 only, calibrated T=0.2) | 2.08* | Fixed teach (5→7), same MAE overall |
+
+*\*Context injection MAE is for Alma 32 only, not comparable to full-suite MAE*
+
 ### Next Steps
 
-1. **Hybrid prompt**: Combine calibrated's per-dimension anchors with a softer distribution warning ("some pieces genuinely deserve multiple high scores").
-2. **Context injection**: Test whether injecting cross-reference context (1 Ne 11:22-25, John 1:1, Alma 33:22-23) fixes the Alma 32 problem specifically.
-3. **Temperature sweep**: Run calibrated at T=0.1, 0.3, 0.4 to see if temperature affects the inflation/deflation balance.
+1. **Hybrid prompt**: Combine calibrated anchors with softer distribution warning ("some pieces genuinely deserve multiple high scores — Christ literally ministering earns 9s").
+2. **Targeted context injection**: Test enriched context for ALL 6 pieces (not just Alma 32) to see if contextual support consistently helps teach_about_christ.
+3. **Rubric fix for love**: The love dimension description needs to account for typological love (tree of life = love of God), not just demonstrated pastoral love.
+4. **Production configuration**: titsw-calibrated at T=0.2 is the current recommendation for deployment.
 
 ## Comparison Notes
 
