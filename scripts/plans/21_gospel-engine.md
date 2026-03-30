@@ -93,3 +93,40 @@ github.com/philippgille/chromem-go # Vector DB (from gospel-vec, Go 1.25.6)
 - Sequential: ~18-20s per talk, ~28h for 5,500 talks
 - 2× concurrent: ~15h
 - 4× (with remote): ~8h
+
+## Phase 1 Results (Mar 30, 2026)
+
+Full index completed in **2h 43m**. 239,830 vector chunks across 15,514 files.
+
+| Source | Files | Vec Chunks | Notes |
+|--------|-------|------------|-------|
+| Scriptures | 7,467 | ~55,991 | 41,995 verses, 1,584 chapters, 42,795 cross-refs |
+| Conference | 4,231 | ~183,839 | All general-conference talks |
+| Manual | 3,462 | 0 | No vec chunking yet |
+| Books | 116 | 0 | No vec chunking yet |
+| Music | 238 | 0 | No vec chunking yet |
+
+Persistence: `scriptures.gob.gz` (1 GB), `conference.gob.gz` (2.8 GB), `gospel.db` (219 MB).
+
+### Unindexed Content (58K+ files)
+
+The gospel-library has **73,879** markdown files. Only 15,514 are indexed. The gap is church magazines and other periodicals:
+
+| Directory | Files | Content |
+|-----------|-------|---------|
+| ensign | 24,485 | Ensign magazine articles (1971–2020) |
+| liahona | 19,578 | Liahona magazine articles |
+| new-era | 12,098 | New Era magazine articles |
+| ftsoy | 1,276 | For the Strength of Youth magazine |
+| friend | 457 | Friend magazine |
+| broadcasts | 225 | Broadcasts |
+| ya-weekly | 278 | Young Adults weekly |
+| video | 84 | Video transcripts |
+
+Additionally, **3,426 non-markdown files** exist: 2,659 MP3s and 767 PDFs. These should be cataloged as metadata (title, size, format) in a future phase.
+
+### Future Phase: Magazine & Media Indexing
+
+- **Magazine articles** — Add indexers for ensign, liahona, new-era, ftsoy, friend, ya-weekly. These are article-format markdown, similar to talks but with different path structures.
+- **Non-markdown catalog** — Register MP3s and PDFs in the database with metadata (title, size, format, path) but no full-text or vector indexing. This makes them discoverable via `gospel_list` even if we can't search their content.
+- **Manual/book vec chunks** — Add vector chunking to manual and book indexers (currently SQLite-only).

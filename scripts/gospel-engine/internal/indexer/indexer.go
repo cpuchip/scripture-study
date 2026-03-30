@@ -57,6 +57,8 @@ type Result struct {
 	VecChunksAdded    int
 	Errors            []string
 	Duration          time.Duration
+
+	lastCheckpointVecChunks int // internal: vec chunks at last checkpoint save
 }
 
 // New creates a new Indexer.
@@ -153,15 +155,18 @@ func (idx *Indexer) indexSource(ctx context.Context, source string, opts Options
 				fmt.Printf("   ... %d files processed (%d skipped, %d vec chunks)\n",
 					result.FilesProcessed, result.FilesSkipped, result.VecChunksAdded)
 			}
-			// Periodic vector store save
-			if opts.SaveInterval > 0 && idx.vec != nil && result.VecChunksAdded > 0 &&
+			// Periodic vector store save — only when new chunks have been added since last save
+			if opts.SaveInterval > 0 && idx.vec != nil &&
+				result.VecChunksAdded > result.lastCheckpointVecChunks &&
 				result.FilesProcessed%opts.SaveInterval == 0 {
 				if opts.Verbose {
-					fmt.Printf("💾 Checkpoint save at %d files...\n", result.FilesProcessed)
+					fmt.Printf("💾 Checkpoint save at %d files (%d new chunks since last save)...\n",
+						result.FilesProcessed, result.VecChunksAdded-result.lastCheckpointVecChunks)
 				}
 				if err := idx.vec.Save(); err != nil {
 					result.Errors = append(result.Errors, fmt.Sprintf("checkpoint save: %v", err))
 				}
+				result.lastCheckpointVecChunks = result.VecChunksAdded
 			}
 		}
 
