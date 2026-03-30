@@ -138,7 +138,7 @@ Use to discover what content is available for search and retrieval.`,
 }
 
 // Handler creates a tool call handler using the given database and vector store.
-func Handler(database *db.DB, store *vec.Store, root string) func(name string, args json.RawMessage) (string, error) {
+func Handler(database *db.DB, store vec.Searcher, root string) func(name string, args json.RawMessage) (string, error) {
 	engine := search.NewEngine(database, store)
 
 	return func(name string, args json.RawMessage) (string, error) {
@@ -284,7 +284,7 @@ func handleGet(database *db.DB, root string, args json.RawMessage) (string, erro
 	return "", fmt.Errorf("provide file_path, volume+book+chapter, or speaker(+year+month)")
 }
 
-func handleList(database *db.DB, store *vec.Store, args json.RawMessage) (string, error) {
+func handleList(database *db.DB, store vec.Searcher, args json.RawMessage) (string, error) {
 	var params struct {
 		Type   string `json:"type"`
 		Volume string `json:"volume"`

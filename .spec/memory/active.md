@@ -1,6 +1,6 @@
 # Active Context
 
-*Last updated: 2026-03-29*
+*Last updated: 2026-03-30*
 *Archive: [archive/active-2026-03-22.md](archive/active-2026-03-22.md) — detailed records through Mar 22*
 *Note: Migrated to new computer on Mar 27. Plex restored. Old desktop (LEPTON) decommissioned.*
 *Note: Dual 4090s confirmed in new desktop (Mar 28). Hardware enables 30B+ models at full context.*
@@ -52,6 +52,10 @@
    **GOSPEL-ENGINE PROPOSAL UPDATED (Mar 29).** All experiment-era references corrected: model→ministral-3-14b-reasoning, MAE→1.32, prompt→titsw-calibrated.md, context files phased (talk-calibration.md for talks in Phase 1-2, gospel-vocab/titsw-framework for scripture lens in Phase 3), batch timing updated for ministral speeds (50-63 tok/s). Prior art table now references titsw-experiment-spec.md and titsw-calibrated.md. Proposal is current and ready for Phase 1 build.
    
    **Next:** dev agent builds gospel-engine Phase 1 (foundation + fresh index). Starting doc: [.spec/proposals/gospel-engine/main.md](../proposals/gospel-engine/main.md).
+   
+   **GOSPEL-ENGINE PHASE 1 COMPLETE (Mar 30).** All packages built, binary compiles with `-tags fts5`. Full corpus indexed: 41,995 verses, 1,584 chapters, 4,231 talks, 3,700 manuals, 116 books, 85,590 cross-refs, 239,830 vec chunks. Three MCP tools working: gospel_search (keyword/semantic/combined), gospel_get, gospel_list. Registered in `.vscode/mcp.json`. Compared favorably against gospel-mcp (broken FTS5 tag) and gospel-vec (semantic only). See plan: [scripts/plans/21_gospel-engine.md](../../scripts/plans/21_gospel-engine.md).
+   
+   **MMAP VECTOR STORAGE (Mar 30).** Converted chromem-go gob.gz → flat `.vecf` format with `golang.org/x/exp/mmap`. Server startup: **15-30 seconds → 2ms** (~1000x improvement). Conversion: 213,356 docs in 6.4s → 3.3 GB .vecf files. Architecture: `.vecf` flat binary (pre-normalized float32 embeddings) + SQLite `vec_docs` metadata table. `vec.Searcher` interface enables transparent backend switching. Server auto-detects mmap when .vecf files exist.
    
    **COMBINED GOSPEL TOOL DECISION (Mar 29).** Instead of modifying gospel-mcp/gospel-vec for enriched data, build a NEW combined tool that merges both (shared SQLite + vector DB in one app). Keep originals unchanged for study use during reindexing. enriched-search.md superseded — schema/tool designs remain valid, just target the new combined tool. **PROPOSAL WRITTEN (Mar 29).** gospel-engine: 5 phases, 3 consolidated MCP tools, TITSW enrichment pipeline + graph layer built in. Proposal: [.spec/proposals/gospel-engine/main.md](../proposals/gospel-engine/main.md). Scratch: [.spec/scratch/gospel-engine/main.md](../scratch/gospel-engine/main.md). Decision recorded in decisions.md.
 4. **Debugging book** — DONE. Agans' "Debugging: The 9 Indispensable Rules" extracted to `books/debugging/9-indispensable-rules/` (17 chapter markdown files). Debug agent created at `.github/agents/debug.agent.md`. Connections mapped: Moroni 10:4 inverse hypothesis = falsification, scientific method = the 9 rules, Abraham 4:18 = Rule 9 (verify the fix), council moment = Rule 8 (get a fresh view). Analysis at `.spec/scratch/debugging-agent/main.md`. 2006 expanded edition (192pp, ISBN 9780814474570) available used ~$19 on AbeBooks.
@@ -125,6 +129,7 @@ All settled decisions are in [decisions.md](decisions.md). New this cycle:
 | 17: Proactive Surfacing | NOT STARTED | WS2 Phase 3 |
 | 18: Widget Overhaul | Phase 1-2 DONE | Phase 3-4 PAUSED |
 | 19: Brain App Ideas | Captured | Not started |
+| 21: Gospel Engine | Phase 1 DONE + MMAP | Full index + mmap storage. Phase 2 (TITSW) next |
 | Notifications | Phase 1 DONE | Phases 2-4 remaining |
 | Data Safety | ALL DONE | |
 | Overview | DECISIONS RECORDED | All guidance Qs answered |

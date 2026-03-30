@@ -248,3 +248,33 @@ CREATE TABLE IF NOT EXISTS schema_version (
 );
 
 INSERT OR IGNORE INTO schema_version (version) VALUES (1);
+
+-- ============================================================================
+-- VECTOR DOCUMENT METADATA (for mmap-backed vector search)
+-- ============================================================================
+
+CREATE TABLE IF NOT EXISTS vec_docs (
+    id INTEGER PRIMARY KEY,
+    collection TEXT NOT NULL,       -- e.g. "scriptures-verse", "conference-paragraph"
+    vec_idx INTEGER NOT NULL,       -- position in the .vecf file (0-indexed)
+    doc_id TEXT NOT NULL,           -- original chromem document ID
+    content TEXT NOT NULL,          -- the indexed text content
+    source TEXT NOT NULL,           -- scriptures, conference, manual, music
+    layer TEXT NOT NULL,            -- verse, paragraph, summary, theme
+    book TEXT DEFAULT '',
+    chapter INTEGER DEFAULT 0,
+    reference TEXT DEFAULT '',
+    range_text TEXT DEFAULT '',
+    file_path TEXT DEFAULT '',
+    speaker TEXT DEFAULT '',
+    position TEXT DEFAULT '',
+    year INTEGER DEFAULT 0,
+    month TEXT DEFAULT '',
+    session TEXT DEFAULT '',
+    talk_title TEXT DEFAULT '',
+    UNIQUE(collection, vec_idx)
+);
+
+CREATE INDEX IF NOT EXISTS idx_vec_docs_coll ON vec_docs(collection);
+CREATE INDEX IF NOT EXISTS idx_vec_docs_source ON vec_docs(source);
+CREATE INDEX IF NOT EXISTS idx_vec_docs_lookup ON vec_docs(collection, vec_idx);

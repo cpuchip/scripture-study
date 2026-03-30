@@ -54,11 +54,11 @@ type Options struct {
 // Engine provides unified search.
 type Engine struct {
 	db  *db.DB
-	vec *vec.Store
+	vec vec.Searcher
 }
 
 // NewEngine creates a new search engine.
-func NewEngine(database *db.DB, store *vec.Store) *Engine {
+func NewEngine(database *db.DB, store vec.Searcher) *Engine {
 	return &Engine{db: database, vec: store}
 }
 

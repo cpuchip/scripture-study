@@ -1,0 +1,6 @@
+{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2024-11-05","capabilities":{},"clientInfo":{"name":"test","version":"1.0"}}}
+{"jsonrpc":"2.0","method":"notifications/initialized"}
+{"jsonrpc":"2.0","id":2,"method":"tools/call","params":{"name":"gospel_search","arguments":{"query":"faith in Christ","mode":"keyword","limit":5,"sources":["scriptures"]}}}
+{"jsonrpc":"2.0","id":3,"method":"tools/call","params":{"name":"gospel_search","arguments":{"query":"faith in Christ","mode":"keyword","limit":5,"sources":["conference"]}}}
+{"jsonrpc":"2.0","id":4,"method":"tools/call","params":{"name":"gospel_list","arguments":{"type":"stats"}}}
+{"jsonrpc":"2.0","id":5,"method":"tools/call","params":{"name":"gospel_get","arguments":{"volume":"bofm","book":"alma","chapter":32}}}

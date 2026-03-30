@@ -108,6 +108,26 @@ Full index completed in **2h 43m**. 239,830 vector chunks across 15,514 files.
 
 Persistence: `scriptures.gob.gz` (1 GB), `conference.gob.gz` (2.8 GB), `gospel.db` (219 MB).
 
+### Mmap Vector Storage (Mar 30, 2026)
+
+Converted from chromem-go gob.gz to flat `.vecf` format with `golang.org/x/exp/mmap`. Server startup dropped from **15-30 seconds → 2ms** (~1000x improvement).
+
+**Conversion:** `gospel-engine convert` — extracted 213,356 documents in 6.4 seconds.
+
+| File | Size | Vectors |
+|------|------|---------|
+| scriptures-verse.vecf | 656 MB | 41,995 |
+| scriptures-paragraph.vecf | 219 MB | 13,996 |
+| conference-paragraph.vecf | 2,459 MB | 157,365 |
+| gospel.db (with vec_docs) | 362 MB | 213,356 rows |
+
+**Architecture:**
+- `.vecf` format: 16-byte header (magic "VECF" + version + dim + count) + flat float32 embeddings (pre-normalized unit vectors)
+- Metadata stored in SQLite `vec_docs` table (collection, doc_id, content, source, speaker, reference, etc.)
+- `mmap.ReaderAt` maps files into virtual address space — OS pages in data on-demand during search
+- `vec.Searcher` interface allows transparent switching between chromem-go and mmap backends
+- Server auto-detects: if `.vecf` files exist → mmap (instant), else → gob.gz (slow fallback)
+
 ### Unindexed Content (58K+ files)
 
 The gospel-library has **73,879** markdown files. Only 15,514 are indexed. The gap is church magazines and other periodicals:
