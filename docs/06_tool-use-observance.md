@@ -50,6 +50,25 @@ Full-text search works well for exact phrases. Semantic search via gospel-vec co
 
 ---
 
+### March 31, 2026
+
+**Gospel-engine semantic search excels for talk discovery (Win)**
+During the Art of Delegation study, `gospel_search` with `mode: "semantic"` and `sources: ["conference"]` found 4 relevant talks including Ballard's "O Be Wise" (2006), Holland's "A Robe, a Ring, and a Fatted Calf" (1985), and Christofferson's "Moral Agency" (2009). Source filtering works well — narrowing to conference talks gave focused, relevant results. This is exactly the tool's sweet spot: discovering content you don't have a reference for.
+
+**`read_file` still preferred for known-reference deep reading (Pattern)**
+For 9 of 11 scripture sources in the study, the agent bypassed gospel-engine entirely and used `read_file` on gospel-library markdown files. When you already know the reference (e.g., Exodus 18, D&C 84:33-42), `read_file` gives full context — surrounding verses, footnotes, formatting — that a retrieval tool truncates. **Design principle:** MCP tools are for *discovery*; `read_file` is for *understanding*. Don't use MCP snippets as a crutch to avoid reading the full source in context. Good for direct quotes, bad for total context understanding. Michael has flagged this pattern before.
+
+**`gospel_get` has no verse-level retrieval (Regression from gospel-mcp)**
+Gospel-engine's `handleGet` fetches *entire chapters* from the `chapters` table — no verse-level granularity at all. The old gospel-mcp had verse-range support (fixed Feb 15) using the `scriptures` table. Gospel-engine has the `scriptures` table indexed with individual verses, but `handleGet` doesn't query it. During the study, requesting D&C 84 returned the full 48KB chapter. Fell back to `grep_search` + `read_file` (3 calls instead of 1). The proposal's Phase 1 tool spec envisions a `reference` parameter with scripture reference parsing, but it wasn't implemented.
+
+**`/gospel-library/` in `.gitignore` breaks VS Code search tools (Root cause identified)**
+`grep_search` and `file_search` silently exclude `/gospel-library/` because it's gitignored (line 4 of `.gitignore`). Setting `includeIgnoredFiles: true` works around this, but the agent doesn't use it by default. This creates a pattern where the agent tries to search gospel-library content with workspace tools, gets empty results, and falls back to MCP or blind `read_file` guesses. Three solutions: (1) `.vscode/settings.json` to override `search.exclude`, (2) agent instructions to always pass `includeIgnoredFiles: true`, (3) rely on gospel-engine MCP for retrieval. Option 2 is cheapest. Option 3 is most robust.
+
+**Cross-references exist in the DB but no tool exposes them (Gap)**
+The `cross_references` table has 85,590 entries. The `edges` table holds graph relationships. Neither is accessible through any MCP tool. During the study, tracing delegation patterns across standard works required manual cross-referencing — opening each chapter's markdown and scanning footnotes. A tool that returns "what scriptures are cross-referenced from this verse?" would have accelerated the study significantly.
+
+---
+
 ## Ideas for New Tools / Improvements
 
 | Idea | Priority | Status | Notes |
@@ -59,6 +78,9 @@ Full-text search works well for exact phrases. Semantic search via gospel-vec co
 | ~~Fix `" 0"` artifact on TG entries~~ | ~~Medium~~ | **Done** | `formatScriptureRef` now handles study aids (chapter=0, verse=0) |
 | ~~Remove `get_chapter` from gospel-vec~~ | ~~Medium~~ | **Done** | Redundant with `gospel_get` + `read_file`. `search_scriptures` description updated to point to `gospel_get` |
 | ~~Default context=0 in `gospel_get`~~ | ~~Medium~~ | **Done** | Lean by default for document building. Pass `context=N` when you want surrounding verses |
+| Verse-level retrieval in gospel-engine `gospel_get` | **High** | Open | Phase 1 only has volume/book/chapter. Needs `reference` param with scripture parsing (e.g., "D&C 93:24-30") querying the `scriptures` table. Regression from gospel-mcp. |
+| Cross-reference retrieval tool or parameter | **High** | Open | 85,590 cross-refs in DB, no tool exposes them. Add `cross_references: true` param to `gospel_get` or a dedicated tool. |
+| Agent instruction for `includeIgnoredFiles` | Medium | Open | `/gospel-library/` is gitignored → `grep_search` / `file_search` return nothing. Either update copilot-instructions or create `.vscode/settings.json`. |
 | Study document index | Low | Open | Search across `/study/` files by topic, date, or connected scriptures |
 | BYU Speeches downloader / MCP tool | Medium | Open | BYU devotionals (speeches.byu.edu) are not in gospel-library but are frequently cited primary sources. Maxwell's "Meekly Drenched in Destiny" was a gap during the [Mormon YouTube evaluation](../study/yt/UjzeDUBMaUA-problem-with-mormon-youtube.md). A `byu-speeches/` directory + download tool (similar to yt-mcp) would cover Holland, Eyring, Maxwell devotionals, etc. Site has clean HTML with full text, audio, and video. |
 
