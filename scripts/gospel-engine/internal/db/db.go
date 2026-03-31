@@ -45,7 +45,46 @@ func Open(path string) (*DB, error) {
 
 func (db *DB) initSchema() error {
 	_, err := db.Exec(schemaSQL)
-	return err
+	if err != nil {
+		return err
+	}
+	return db.migrate()
+}
+
+// migrate applies incremental schema changes to existing databases.
+func (db *DB) migrate() error {
+	// Add TITSW analysis columns (reasoning, raw_output, model) if missing.
+	// These were added after the initial schema.
+	migrations := []string{
+		"ALTER TABLE talks ADD COLUMN titsw_reasoning TEXT",
+		"ALTER TABLE talks ADD COLUMN titsw_raw_output TEXT",
+		"ALTER TABLE talks ADD COLUMN titsw_model TEXT",
+	}
+	for _, m := range migrations {
+		// ALTER TABLE ADD COLUMN fails if column exists; ignore that error.
+		db.Exec(m)
+	}
+
+	// Rebuild FTS5 if it doesn't have titsw columns.
+	// Check by looking at the column count in the FTS table.
+	var colCount int
+	err := db.QueryRow(`SELECT COUNT(*) FROM pragma_table_info('talks_fts')`).Scan(&colCount)
+	if err == nil && colCount < 7 {
+		// Old FTS has 3 columns (title, speaker, content). New has 7 (+titsw_dominant, titsw_mode, titsw_keywords, titsw_summary).
+		db.Exec("DROP TRIGGER IF EXISTS talks_ai")
+		db.Exec("DROP TRIGGER IF EXISTS talks_ad")
+		db.Exec("DROP TRIGGER IF EXISTS talks_au")
+		db.Exec("DROP TABLE IF EXISTS talks_fts")
+		// Re-create from schema (which now has the extended FTS + triggers)
+		_, err = db.Exec(schemaSQL)
+		if err != nil {
+			return fmt.Errorf("rebuilding FTS: %w", err)
+		}
+		// Rebuild FTS content from existing talks
+		db.Exec(`INSERT INTO talks_fts(talks_fts) VALUES('rebuild')`)
+	}
+
+	return nil
 }
 
 // Path returns the database file path.

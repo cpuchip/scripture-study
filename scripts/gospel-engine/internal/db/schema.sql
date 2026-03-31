@@ -86,6 +86,9 @@ CREATE TABLE IF NOT EXISTS talks (
     titsw_summary TEXT,
     titsw_key_quote TEXT,
     titsw_keywords TEXT,
+    titsw_reasoning TEXT,
+    titsw_raw_output TEXT,
+    titsw_model TEXT,
     UNIQUE(file_path)
 );
 
@@ -97,19 +100,27 @@ CREATE VIRTUAL TABLE IF NOT EXISTS talks_fts USING fts5(
     title,
     speaker,
     content,
+    titsw_dominant,
+    titsw_mode,
+    titsw_keywords,
+    titsw_summary,
     content='talks',
     content_rowid='id'
 );
 
 CREATE TRIGGER IF NOT EXISTS talks_ai AFTER INSERT ON talks BEGIN
-    INSERT INTO talks_fts(rowid, title, speaker, content) VALUES (new.id, new.title, new.speaker, new.content);
+    INSERT INTO talks_fts(rowid, title, speaker, content, titsw_dominant, titsw_mode, titsw_keywords, titsw_summary)
+    VALUES (new.id, new.title, new.speaker, new.content, new.titsw_dominant, new.titsw_mode, new.titsw_keywords, new.titsw_summary);
 END;
 CREATE TRIGGER IF NOT EXISTS talks_ad AFTER DELETE ON talks BEGIN
-    INSERT INTO talks_fts(talks_fts, rowid, title, speaker, content) VALUES('delete', old.id, old.title, old.speaker, old.content);
+    INSERT INTO talks_fts(talks_fts, rowid, title, speaker, content, titsw_dominant, titsw_mode, titsw_keywords, titsw_summary)
+    VALUES('delete', old.id, old.title, old.speaker, old.content, old.titsw_dominant, old.titsw_mode, old.titsw_keywords, old.titsw_summary);
 END;
 CREATE TRIGGER IF NOT EXISTS talks_au AFTER UPDATE ON talks BEGIN
-    INSERT INTO talks_fts(talks_fts, rowid, title, speaker, content) VALUES('delete', old.id, old.title, old.speaker, old.content);
-    INSERT INTO talks_fts(rowid, title, speaker, content) VALUES (new.id, new.title, new.speaker, new.content);
+    INSERT INTO talks_fts(talks_fts, rowid, title, speaker, content, titsw_dominant, titsw_mode, titsw_keywords, titsw_summary)
+    VALUES('delete', old.id, old.title, old.speaker, old.content, old.titsw_dominant, old.titsw_mode, old.titsw_keywords, old.titsw_summary);
+    INSERT INTO talks_fts(rowid, title, speaker, content, titsw_dominant, titsw_mode, titsw_keywords, titsw_summary)
+    VALUES (new.id, new.title, new.speaker, new.content, new.titsw_dominant, new.titsw_mode, new.titsw_keywords, new.titsw_summary);
 END;
 
 -- ============================================================================
