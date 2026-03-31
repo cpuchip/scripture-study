@@ -130,6 +130,82 @@ Store in SQLite alongside brain entries. Surface in brain-app dashboard.
 
 **Consecration principle:** Know exactly where tokens go. If study sessions cost 10x dev sessions, that's a conscious choice — not an invisible drain.
 
+### A7. Iterative Retrieval — Spawn Contracts (Adopt in WS1 Phase 3c)
+
+**Source:** Squad's `iterative-retrieval` skill — 3-cycle max with structured spawn prompts.
+
+**Problem:** Our current agent dispatch is "give it a prompt and see what comes back." No success criteria, no escalation path, no cycle cap.
+
+**Action:** When brain.exe spawns sub-agents, every dispatch must include four sections:
+
+```
+## Task
+{What needs done — concrete and bounded}
+
+## WHY this matters
+{Motivation + context. What system or user goal does this serve? What breaks if skipped?}
+
+## Success criteria
+{How to know the output is correct. Checkboxes, not vibes.}
+- [ ] File X exists and contains Y
+- [ ] No regressions in existing tests
+
+## Escalation path
+{What to do if stuck. "Stop and ask" is valid.}
+- If requirements ambiguous → stop, surface to coordinator
+- If blocked by dependency → note the block, explain
+- If 3 cycles exhausted → write summary, escalate to human
+```
+
+**3-Cycle Protocol:**
+
+| Cycle | Description | Exit |
+|-------|-------------|------|
+| 1 | Initial attempt | Done → validate. Incomplete → surface delta. |
+| 2 | Targeted retry with specific corrections from cycle 1 | Done → validate. Incomplete → one more. |
+| 3 | Final attempt with all context from 1-2 | Done or escalate — no cycle 4. |
+
+**Key rules:**
+- Coordinator validates output against success criteria between cycles (not just at end)
+- Each subsequent cycle includes what was tried and what's still missing — not just the original prompt
+- Cycle 3 exhausted → escalate to human with full context of all attempts
+
+**Why this matters for us:** brain.exe Phase 3c auto-routes work to agents. Without spawn contracts, agents run unbounded, produce unvalidated output, and there's no escalation when they fail. The 3-cycle cap prevents infinite loops. The WHY context prevents agents from making scope trade-offs they don't have authority to make.
+
+### A8. Reflect — In-Session Learning Capture (Adopted Mar 31)
+
+**Source:** Squad's `reflect` skill — learning capture triggered by corrections, praise, edge cases.
+
+**Problem:** Our `.spec/learnings/` captures post-incident analysis of big failures. Most of Michael's feedback is smaller: micro-corrections, tool preferences, formatting adjustments. These are lost by session end.
+
+**Action:** Created `.github/skills/reflect/SKILL.md`. During sessions, corrections are logged to `.spec/scratch/reflect.md`. At session end, entries graduate to learnings/, preferences.yaml, decisions.md, or agent instructions as appropriate.
+
+**Status:** Skill created. Needs to be listed in copilot-instructions.md and wired into all agents.
+
+### A9. Task Coordination — Persistent Backlog (Evaluate for WS1 Phase 3)
+
+**Source:** tpg (cpuchip/tpg) — SQLite-based task tracker designed specifically for AI agent session boundaries. Also: squad's 0% markdown / 85% Issues finding from retro-enforcement.
+
+**Problem:** Our carry-forward items live in active.md (markdown) and session journal carry_forward fields (YAML). Squad measured 0% completion on markdown checklists across 6 retros, vs 85%+ when the same items were GitHub Issues. tpg addresses this directly: tasks with IDs, dependencies, progress logs, and stale detection in a local SQLite DB.
+
+**Options under consideration:**
+
+| Approach | Pros | Cons |
+|----------|------|------|
+| **tpg** (local SQLite) | Purpose-built for agent sessions, dependency-aware `ready` queue, context engine for learnings, Go binary, local-only | Another CLI tool to maintain, no notifications, no mobile access |
+| **GitHub Issues** | Notifications, assignees, mobile access, proven 85% completion rate, existing ecosystem | Requires internet, public/private repo complexity, heavier than needed for personal scale |
+| **brain.exe tasks table** | Already have the DB, already have the app, already have mobile via brain-app | Would need to add dependency tracking, progress logs, and `ready` queue semantics |
+| **ibeco.me tasks** (existing) | Already built, already deployed, already has practices/journal | Missing dependency tracking, not agent-oriented, no `tpg prime` equivalent |
+
+**Recommendation (Mar 31):** Evaluate tpg's architecture for integration into brain.exe rather than running it as a separate tool. The key patterns worth adopting:
+1. **Dependency-aware ready queue** — `ready` only shows unblocked work
+2. **Progress logs per task** — timestamped, not just status changes
+3. **Context engine** — learnings tagged to concepts, two-phase retrieval
+4. **Agent onboarding** — `prime` injects backlog into session start
+5. **Stale detection** — in-progress tasks older than threshold get flagged
+
+This needs a proper proposal when WS1 Phase 3c is scoped.
+
 ---
 
 ## 3. What We're NOT Adopting
@@ -179,11 +255,16 @@ The current spec says "brain.exe routes captured idea to appropriate agent." The
 1. **Routing table** (A2) — classification determines work type, routing table determines agent
 2. **Hook governance** (A3) — Go middleware on tool calls, not prompt instructions
 3. **Reviewer lockout** (A4) — rejected work routed to different agent
-4. **Multi-agent format** — assembled result at top, raw agent outputs in appendix (Squad pattern)
-5. **Decision propagation** — agents read decisions.md, write to inbox, brain.exe merges
+4. **Spawn contracts** (A7) — every agent dispatch gets Task + WHY + Success Criteria + Escalation Path, 3-cycle max
+5. **Task coordination** (A9) — persistent backlog with dependency-aware ready queue (evaluate tpg patterns for brain.exe integration)
+6. **Multi-agent format** — assembled result at top, raw agent outputs in appendix (Squad pattern)
+7. **Decision propagation** — agents read decisions.md, write to inbox, brain.exe merges
 
-### New: A1 (Decisions File) — Immediate, no code needed
+### New: A1 (Decisions File) — Immediate, no code needed ✅ DONE
 Create `.spec/memory/decisions.md` now. Start the habit before the infrastructure.
+
+### New: A8 (Reflect Skill) — Immediate, no code needed ✅ DONE (Mar 31)
+Created `.github/skills/reflect/SKILL.md`. In-session learning capture for micro-corrections.
 
 ---
 
@@ -195,7 +276,7 @@ Create `.spec/memory/decisions.md` now. Start the habit before the infrastructur
 | Covenant | Rules of engagement? | Adopt patterns that are proven. Don't adopt patterns that serve a different scale or purpose. |
 | Stewardship | Who owns what? | brain.exe owns orchestration (Go). Agents own their domains. Decisions.md owned by the human. |
 | Spiritual Creation | Is the spec precise enough? | A2-A6 need implementation specs when we reach WS1 Phase 3. A1 is ready now. |
-| Line Upon Line | Phasing? | A1 now → A5-A6 in Phase 2 → A2-A4 in Phase 3 |
+| Line Upon Line | Phasing? | A1 now ✅ → A8 now ✅ → A5-A6 in Phase 2 → A2-A4, A7, A9 in Phase 3 |
 | Physical Creation | Who executes? | dev agent for implementation. plan-exp1 for Phase 3 spec expansion. |
 | Review | How do we know it's right? | Each adoption item has a verification criterion. See Section 2. |
 | Atonement | If it goes wrong? | These are additive patterns. If a hook is too restrictive, relax it. If cost tracking is noisy, reduce granularity. All reversible. |
