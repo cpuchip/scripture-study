@@ -24,6 +24,11 @@ Modes:
 - "semantic": Vector similarity search. Best for concepts, themes, and meaning-based queries.
 - "combined" (default): Runs both and merges results.
 
+TITSW Filters (conference talks only — requires enrichment):
+- titsw_mode: Filter by teaching mode (enacted, declared, doctrinal, experiential)
+- titsw_dominant: Filter by dominant dimension (teach_about_christ, help_come_to_christ, love, spirit, doctrine, invite)
+- titsw_min_*: Minimum score (0-9) for each dimension
+
 IMPORTANT: Results labeled [AI SUMMARY] or [AI THEME] are NOT direct quotes — always verify against the source file before quoting. Results include file paths for follow-up with read_file.
 
 Tip: Use gospel_get to read the full source text after finding relevant content.`,
@@ -64,6 +69,39 @@ Tip: Use gospel_get to read the full source text after finding relevant content.
 					"year_to": map[string]any{
 						"type":        "integer",
 						"description": "Filter talks to this year (inclusive)",
+					},
+					"titsw_mode": map[string]any{
+						"type":        "string",
+						"enum":        []string{"enacted", "declared", "doctrinal", "experiential"},
+						"description": "Filter talks by TITSW teaching mode",
+					},
+					"titsw_dominant": map[string]any{
+						"type":        "string",
+						"description": "Filter talks by dominant dimension (teach_about_christ, help_come_to_christ, love, spirit, doctrine, invite)",
+					},
+					"titsw_min_teach": map[string]any{
+						"type":        "integer",
+						"description": "Minimum teach_about_christ score (0-9)",
+					},
+					"titsw_min_help": map[string]any{
+						"type":        "integer",
+						"description": "Minimum help_come_to_christ score (0-9)",
+					},
+					"titsw_min_love": map[string]any{
+						"type":        "integer",
+						"description": "Minimum love score (0-9)",
+					},
+					"titsw_min_spirit": map[string]any{
+						"type":        "integer",
+						"description": "Minimum spirit score (0-9)",
+					},
+					"titsw_min_doctrine": map[string]any{
+						"type":        "integer",
+						"description": "Minimum doctrine score (0-9)",
+					},
+					"titsw_min_invite": map[string]any{
+						"type":        "integer",
+						"description": "Minimum invite score (0-9)",
 					},
 				},
 				"required": []string{"query"},
@@ -167,25 +205,41 @@ func Handler(database *db.DB, store vec.Searcher, root string) func(name string,
 
 func handleSearch(engine *search.Engine, args json.RawMessage) (string, error) {
 	var params struct {
-		Query    string   `json:"query"`
-		Mode     string   `json:"mode"`
-		Limit    int      `json:"limit"`
-		Sources  []string `json:"sources"`
-		Layers   []string `json:"layers"`
-		Speaker  string   `json:"speaker"`
-		YearFrom int      `json:"year_from"`
-		YearTo   int      `json:"year_to"`
+		Query           string   `json:"query"`
+		Mode            string   `json:"mode"`
+		Limit           int      `json:"limit"`
+		Sources         []string `json:"sources"`
+		Layers          []string `json:"layers"`
+		Speaker         string   `json:"speaker"`
+		YearFrom        int      `json:"year_from"`
+		YearTo          int      `json:"year_to"`
+		TITSWMode       string   `json:"titsw_mode"`
+		TITSWDominant   string   `json:"titsw_dominant"`
+		TITSWMinTeach   int      `json:"titsw_min_teach"`
+		TITSWMinHelp    int      `json:"titsw_min_help"`
+		TITSWMinLove    int      `json:"titsw_min_love"`
+		TITSWMinSpirit  int      `json:"titsw_min_spirit"`
+		TITSWMinDoctrine int     `json:"titsw_min_doctrine"`
+		TITSWMinInvite  int      `json:"titsw_min_invite"`
 	}
 	if err := json.Unmarshal(args, &params); err != nil {
 		return "", fmt.Errorf("parsing arguments: %w", err)
 	}
 
 	opts := search.Options{
-		Limit:    params.Limit,
-		Sources:  params.Sources,
-		Speaker:  params.Speaker,
-		YearFrom: params.YearFrom,
-		YearTo:   params.YearTo,
+		Limit:            params.Limit,
+		Sources:          params.Sources,
+		Speaker:          params.Speaker,
+		YearFrom:         params.YearFrom,
+		YearTo:           params.YearTo,
+		TITSWMode:        params.TITSWMode,
+		TITSWDominant:    params.TITSWDominant,
+		TITSWMinTeach:    params.TITSWMinTeach,
+		TITSWMinHelp:     params.TITSWMinHelp,
+		TITSWMinLove:     params.TITSWMinLove,
+		TITSWMinSpirit:   params.TITSWMinSpirit,
+		TITSWMinDoctrine: params.TITSWMinDoctrine,
+		TITSWMinInvite:   params.TITSWMinInvite,
 	}
 
 	switch params.Mode {
@@ -283,7 +337,11 @@ func handleGet(database *db.DB, root string, args json.RawMessage) (string, erro
 
 	// Talk lookup by speaker + year + month
 	if params.Speaker != "" {
-		q := `SELECT content, file_path FROM talks WHERE speaker LIKE ?`
+		q := `SELECT content, file_path, speaker, title, year, month,
+		       titsw_dominant, titsw_mode, titsw_pattern,
+		       titsw_teach, titsw_help, titsw_love, titsw_spirit, titsw_doctrine, titsw_invite,
+		       titsw_summary, titsw_key_quote, titsw_keywords
+		FROM talks WHERE speaker LIKE ?`
 		qArgs := []any{"%" + params.Speaker + "%"}
 
 		if params.Year > 0 {
@@ -296,11 +354,51 @@ func handleGet(database *db.DB, root string, args json.RawMessage) (string, erro
 		}
 		q += " LIMIT 1"
 
-		var content, filePath string
-		if err := database.QueryRow(q, qArgs...).Scan(&content, &filePath); err != nil {
+		var content, filePath, speaker, title string
+		var year, month int
+		var titswDominant, titswMode, titswPattern, titswSummary, titswKeyQuote, titswKeywords *string
+		var titswTeach, titswHelp, titswLove, titswSpirit, titswDoctrine, titswInvite *int
+
+		if err := database.QueryRow(q, qArgs...).Scan(
+			&content, &filePath, &speaker, &title, &year, &month,
+			&titswDominant, &titswMode, &titswPattern,
+			&titswTeach, &titswHelp, &titswLove, &titswSpirit, &titswDoctrine, &titswInvite,
+			&titswSummary, &titswKeyQuote, &titswKeywords,
+		); err != nil {
 			return "", fmt.Errorf("talk not found for speaker: %s", params.Speaker)
 		}
-		return fmt.Sprintf("File: %s\n\n%s", filePath, content), nil
+
+		var sb strings.Builder
+		sb.WriteString(fmt.Sprintf("**%s — \"%s\" (%d/%02d)**\n", speaker, title, year, month))
+		sb.WriteString(fmt.Sprintf("File: %s\n\n", filePath))
+
+		if titswTeach != nil {
+			sb.WriteString("**TITSW Teaching Profile:**\n")
+			if titswDominant != nil {
+				sb.WriteString(fmt.Sprintf("  Dominant: %s\n", *titswDominant))
+			}
+			if titswMode != nil {
+				sb.WriteString(fmt.Sprintf("  Mode: %s\n", *titswMode))
+			}
+			if titswPattern != nil {
+				sb.WriteString(fmt.Sprintf("  Pattern: %s\n", *titswPattern))
+			}
+			sb.WriteString(fmt.Sprintf("  Scores: teach=%d help=%d love=%d spirit=%d doctrine=%d invite=%d\n",
+				*titswTeach, *titswHelp, *titswLove, *titswSpirit, *titswDoctrine, *titswInvite))
+			if titswSummary != nil {
+				sb.WriteString(fmt.Sprintf("  Summary: %s\n", *titswSummary))
+			}
+			if titswKeyQuote != nil {
+				sb.WriteString(fmt.Sprintf("  Key Quote: %s\n", *titswKeyQuote))
+			}
+			if titswKeywords != nil {
+				sb.WriteString(fmt.Sprintf("  Keywords: %s\n", *titswKeywords))
+			}
+			sb.WriteString("\n")
+		}
+
+		sb.WriteString(content)
+		return sb.String(), nil
 	}
 
 	return "", fmt.Errorf("provide reference, file_path, volume+book+chapter, or speaker(+year+month)")
@@ -438,15 +536,59 @@ func getScriptureRange(database *db.DB, ref parsedRef, crossRefs bool) (string, 
 
 // getTalkByRef retrieves a talk by parsed speaker reference.
 func getTalkByRef(database *db.DB, ref parsedRef) (string, error) {
-	var content, filePath string
+	var content, filePath, speaker, title string
+	var year, month int
+	var titswDominant, titswMode, titswPattern, titswSummary, titswKeyQuote, titswKeywords *string
+	var titswTeach, titswHelp, titswLove, titswSpirit, titswDoctrine, titswInvite *int
+
 	err := database.QueryRow(`
-		SELECT content, file_path FROM talks
+		SELECT content, file_path, speaker, title, year, month,
+		       titsw_dominant, titsw_mode, titsw_pattern,
+		       titsw_teach, titsw_help, titsw_love, titsw_spirit, titsw_doctrine, titsw_invite,
+		       titsw_summary, titsw_key_quote, titsw_keywords
+		FROM talks
 		WHERE speaker LIKE ? ORDER BY year DESC, month DESC LIMIT 1
-	`, "%"+ref.Speaker+"%").Scan(&content, &filePath)
+	`, "%"+ref.Speaker+"%").Scan(
+		&content, &filePath, &speaker, &title, &year, &month,
+		&titswDominant, &titswMode, &titswPattern,
+		&titswTeach, &titswHelp, &titswLove, &titswSpirit, &titswDoctrine, &titswInvite,
+		&titswSummary, &titswKeyQuote, &titswKeywords,
+	)
 	if err != nil {
 		return "", fmt.Errorf("talk not found: %s", ref.Speaker)
 	}
-	return fmt.Sprintf("File: %s\n\n%s", filePath, content), nil
+
+	var sb strings.Builder
+	sb.WriteString(fmt.Sprintf("**%s — \"%s\" (%d/%02d)**\n", speaker, title, year, month))
+	sb.WriteString(fmt.Sprintf("File: %s\n\n", filePath))
+
+	if titswTeach != nil {
+		sb.WriteString("**TITSW Teaching Profile:**\n")
+		if titswDominant != nil {
+			sb.WriteString(fmt.Sprintf("  Dominant: %s\n", *titswDominant))
+		}
+		if titswMode != nil {
+			sb.WriteString(fmt.Sprintf("  Mode: %s\n", *titswMode))
+		}
+		if titswPattern != nil {
+			sb.WriteString(fmt.Sprintf("  Pattern: %s\n", *titswPattern))
+		}
+		sb.WriteString(fmt.Sprintf("  Scores: teach=%d help=%d love=%d spirit=%d doctrine=%d invite=%d\n",
+			*titswTeach, *titswHelp, *titswLove, *titswSpirit, *titswDoctrine, *titswInvite))
+		if titswSummary != nil {
+			sb.WriteString(fmt.Sprintf("  Summary: %s\n", *titswSummary))
+		}
+		if titswKeyQuote != nil {
+			sb.WriteString(fmt.Sprintf("  Key Quote: %s\n", *titswKeyQuote))
+		}
+		if titswKeywords != nil {
+			sb.WriteString(fmt.Sprintf("  Keywords: %s\n", *titswKeywords))
+		}
+		sb.WriteString("\n")
+	}
+
+	sb.WriteString(content)
+	return sb.String(), nil
 }
 
 // crossRef represents a cross-reference result.

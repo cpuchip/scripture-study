@@ -49,6 +49,15 @@ type Options struct {
 	Speaker  string
 	YearFrom int
 	YearTo   int
+	// TITSW filters (conference talks only)
+	TITSWMode     string // enacted, declared, doctrinal, experiential
+	TITSWDominant string // filter by dominant dimension substring
+	TITSWMinTeach    int // 0 = no filter
+	TITSWMinHelp     int
+	TITSWMinLove     int
+	TITSWMinSpirit   int
+	TITSWMinDoctrine int
+	TITSWMinInvite   int
 }
 
 // Engine provides unified search.
@@ -191,6 +200,38 @@ func (e *Engine) ftsQuery(table, query string, opts Options) ([]Result, error) {
 		if opts.YearTo > 0 {
 			q += " AND t.year <= ?"
 			args = append(args, opts.YearTo)
+		}
+		if opts.TITSWMode != "" {
+			q += " AND t.titsw_mode = ?"
+			args = append(args, opts.TITSWMode)
+		}
+		if opts.TITSWDominant != "" {
+			q += " AND t.titsw_dominant LIKE ?"
+			args = append(args, "%"+opts.TITSWDominant+"%")
+		}
+		if opts.TITSWMinTeach > 0 {
+			q += " AND t.titsw_teach >= ?"
+			args = append(args, opts.TITSWMinTeach)
+		}
+		if opts.TITSWMinHelp > 0 {
+			q += " AND t.titsw_help >= ?"
+			args = append(args, opts.TITSWMinHelp)
+		}
+		if opts.TITSWMinLove > 0 {
+			q += " AND t.titsw_love >= ?"
+			args = append(args, opts.TITSWMinLove)
+		}
+		if opts.TITSWMinSpirit > 0 {
+			q += " AND t.titsw_spirit >= ?"
+			args = append(args, opts.TITSWMinSpirit)
+		}
+		if opts.TITSWMinDoctrine > 0 {
+			q += " AND t.titsw_doctrine >= ?"
+			args = append(args, opts.TITSWMinDoctrine)
+		}
+		if opts.TITSWMinInvite > 0 {
+			q += " AND t.titsw_invite >= ?"
+			args = append(args, opts.TITSWMinInvite)
 		}
 
 		q += " ORDER BY rank LIMIT ?"
