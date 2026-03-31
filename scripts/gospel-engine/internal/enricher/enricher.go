@@ -120,12 +120,12 @@ func parseProfile(text string) (*TITSWProfile, error) {
 		return nil, err
 	}
 
-	// Extract text fields
-	p.Dominant = extractField(dominantRe, text)
-	p.Mode = extractField(modeRe, text)
-	p.Pattern = extractField(patternRe, text)
-	p.Keywords = extractField(keywordsRe, text)
-	p.KeyQuote = extractField(keyQuoteRe, text)
+	// Extract text fields — strip markdown bold/italic markers from LLM output
+	p.Dominant = cleanMarkdown(extractField(dominantRe, text))
+	p.Mode = cleanMarkdown(extractField(modeRe, text))
+	p.Pattern = cleanMarkdown(extractField(patternRe, text))
+	p.Keywords = cleanMarkdown(extractField(keywordsRe, text))
+	p.KeyQuote = cleanMarkdown(extractField(keyQuoteRe, text))
 
 	// Clean up mode — take first word (before any parenthetical)
 	if idx := strings.IndexAny(p.Mode, " ("); idx > 0 {
@@ -167,6 +167,12 @@ func extractField(re *regexp.Regexp, text string) string {
 		return ""
 	}
 	return strings.TrimSpace(m[1])
+}
+
+// cleanMarkdown strips bold/italic markdown markers (* and **) from LLM output.
+func cleanMarkdown(s string) string {
+	s = strings.ReplaceAll(s, "*", "")
+	return strings.TrimSpace(s)
 }
 
 func extractBetween(text, start, end string) string {
