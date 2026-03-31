@@ -54,6 +54,8 @@ At the start of substantive sessions, after loading memory and before diving int
 
 **Prefer local copies.** Always reference cached files in `/gospel-library/` over linking to the website. Verify files exist with `file_search` or `list_dir` before claiming they don't.
 
+**Gospel Library is gitignored.** The `/gospel-library/` directory is too large for git, so it's in `.gitignore`. When using `grep_search` or `file_search` on gospel-library content, always pass `includeIgnoredFiles: true`. Prefer `gospel_search` and `gospel_get` (MCP tools) for scripture/talk discovery and retrieval. Use `read_file` for full chapter context with footnotes and formatting.
+
 ## Writing Voice
 
 Write like a book, not a YouTube script. Michael's voice is concrete, direct, and unadorned. The full analysis is in [study/yt/voice-analysis-ai-vs-michael.md](../study/yt/voice-analysis-ai-vs-michael.md). Key rules:

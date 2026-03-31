@@ -71,21 +71,27 @@ Tip: Use gospel_get to read the full source text after finding relevant content.
 		},
 		{
 			Name: "gospel_get",
-			Description: `Get the full text of a scripture chapter, conference talk, manual section, or book section.
+			Description: `Retrieve scripture verses, conference talks, manual sections, or book sections by reference or path.
 
-Use after gospel_search finds relevant content, or when you know the specific reference. Always use this to read the actual text before quoting.
+For scriptures, use the "reference" parameter with natural references like "1 Nephi 3:7", "D&C 93:24-30", or "Mosiah 4". Returns individual verses — lean output for quoting. For full chapter context with footnotes and formatting, use read_file on the file_path returned.
 
-For scriptures, provide volume + book + chapter. For talks, provide file_path (from search results) or speaker + year + month.`,
+For talks, use file_path (from search results) or speaker + year + month.
+
+Set cross_refs=true to include cross-references for scripture verses.`,
 			InputSchema: map[string]any{
 				"type": "object",
 				"properties": map[string]any{
+					"reference": map[string]any{
+						"type":        "string",
+						"description": "Scripture reference: '1 Nephi 3:7', 'D&C 93:24-30', 'Mosiah 4'. Supports single verse, verse range, or chapter.",
+					},
 					"file_path": map[string]any{
 						"type":        "string",
 						"description": "Direct file path (from search results). If provided, other params are ignored.",
 					},
 					"volume": map[string]any{
 						"type":        "string",
-						"description": "Scripture volume: ot, nt, bofm, dc-testament, pgp",
+						"description": "Scripture volume: ot, nt, bofm, dc-testament, pgp (fallback if reference not provided)",
 					},
 					"book": map[string]any{
 						"type":        "string",
@@ -94,6 +100,10 @@ For scriptures, provide volume + book + chapter. For talks, provide file_path (f
 					"chapter": map[string]any{
 						"type":        "integer",
 						"description": "Chapter number",
+					},
+					"cross_refs": map[string]any{
+						"type":        "boolean",
+						"description": "Include cross-references for scripture verses (default: false)",
 					},
 					"speaker": map[string]any{
 						"type":        "string",
@@ -229,59 +239,293 @@ func handleSearch(engine *search.Engine, args json.RawMessage) (string, error) {
 
 func handleGet(database *db.DB, root string, args json.RawMessage) (string, error) {
 	var params struct {
-		FilePath string `json:"file_path"`
-		Volume   string `json:"volume"`
-		Book     string `json:"book"`
-		Chapter  int    `json:"chapter"`
-		Speaker  string `json:"speaker"`
-		Year     int    `json:"year"`
-		Month    string `json:"month"`
+		Reference string `json:"reference"`
+		FilePath  string `json:"file_path"`
+		Volume    string `json:"volume"`
+		Book      string `json:"book"`
+		Chapter   int    `json:"chapter"`
+		CrossRefs bool   `json:"cross_refs"`
+		Speaker   string `json:"speaker"`
+		Year      int    `json:"year"`
+		Month     string `json:"month"`
 	}
 	if err := json.Unmarshal(args, &params); err != nil {
 		return "", fmt.Errorf("parsing arguments: %w", err)
 	}
 
-	// Direct file path
+	// Direct file path — highest priority
 	if params.FilePath != "" {
 		return readFileContent(root, params.FilePath)
 	}
 
-	// Scripture lookup
-	if params.Volume != "" && params.Book != "" && params.Chapter > 0 {
-		var content string
-		err := database.QueryRow(`
-			SELECT full_content FROM chapters
-			WHERE volume = ? AND book = ? AND chapter = ?
-		`, params.Volume, params.Book, params.Chapter).Scan(&content)
-		if err != nil {
-			return "", fmt.Errorf("chapter not found: %s %s %d", params.Volume, params.Book, params.Chapter)
+	// Reference-based lookup — parse natural scripture references
+	if params.Reference != "" {
+		ref := parseReference(params.Reference)
+		switch ref.Type {
+		case "scripture":
+			return getScripture(database, ref, params.CrossRefs)
+		case "talk":
+			return getTalkByRef(database, ref)
+		default:
+			return "", fmt.Errorf("could not parse reference: %s", params.Reference)
 		}
-		return content, nil
+	}
+
+	// Structured scripture lookup (volume + book + chapter fallback)
+	if params.Volume != "" && params.Book != "" && params.Chapter > 0 {
+		ref := parsedRef{
+			Type:    "scripture",
+			Book:    params.Book,
+			Chapter: params.Chapter,
+		}
+		return getScripture(database, ref, params.CrossRefs)
 	}
 
 	// Talk lookup by speaker + year + month
 	if params.Speaker != "" {
 		q := `SELECT content, file_path FROM talks WHERE speaker LIKE ?`
-		args := []any{"%" + params.Speaker + "%"}
+		qArgs := []any{"%" + params.Speaker + "%"}
 
 		if params.Year > 0 {
 			q += " AND year = ?"
-			args = append(args, params.Year)
+			qArgs = append(qArgs, params.Year)
 		}
 		if params.Month != "" {
 			q += " AND month = ?"
-			args = append(args, params.Month)
+			qArgs = append(qArgs, params.Month)
 		}
 		q += " LIMIT 1"
 
 		var content, filePath string
-		if err := database.QueryRow(q, args...).Scan(&content, &filePath); err != nil {
+		if err := database.QueryRow(q, qArgs...).Scan(&content, &filePath); err != nil {
 			return "", fmt.Errorf("talk not found for speaker: %s", params.Speaker)
 		}
 		return fmt.Sprintf("File: %s\n\n%s", filePath, content), nil
 	}
 
-	return "", fmt.Errorf("provide file_path, volume+book+chapter, or speaker(+year+month)")
+	return "", fmt.Errorf("provide reference, file_path, volume+book+chapter, or speaker(+year+month)")
+}
+
+// getScripture handles verse, verse range, and chapter retrieval.
+func getScripture(database *db.DB, ref parsedRef, crossRefs bool) (string, error) {
+	var sb strings.Builder
+
+	if ref.Verse > 0 && ref.EndVerse > 0 {
+		// Verse range
+		return getScriptureRange(database, ref, crossRefs)
+	}
+
+	if ref.Verse > 0 {
+		// Single verse
+		return getScriptureVerse(database, ref, crossRefs)
+	}
+
+	// Full chapter — query individual verses for consistent formatting
+	rows, err := database.Query(`
+		SELECT verse, text FROM scriptures
+		WHERE book = ? AND chapter = ?
+		ORDER BY verse
+	`, ref.Book, ref.Chapter)
+	if err != nil {
+		return "", fmt.Errorf("chapter not found: %s %d", ref.Book, ref.Chapter)
+	}
+	defer rows.Close()
+
+	var filePath string
+	var count int
+	for rows.Next() {
+		var v int
+		var text string
+		if err := rows.Scan(&v, &text); err != nil {
+			continue
+		}
+		sb.WriteString(fmt.Sprintf("%d. %s\n\n", v, text))
+		count++
+	}
+
+	if count == 0 {
+		return "", fmt.Errorf("chapter not found: %s %d", ref.Book, ref.Chapter)
+	}
+
+	// Get file path from first verse
+	database.QueryRow(`
+		SELECT file_path FROM scriptures WHERE book = ? AND chapter = ? LIMIT 1
+	`, ref.Book, ref.Chapter).Scan(&filePath)
+
+	header := fmt.Sprintf("**%s**\nFile: %s\n\n", formatScriptureRef(ref.Book, ref.Chapter, 0), filePath)
+	return header + sb.String(), nil
+}
+
+// getScriptureVerse retrieves a single verse.
+func getScriptureVerse(database *db.DB, ref parsedRef, crossRefs bool) (string, error) {
+	var text, filePath, sourceURL string
+	err := database.QueryRow(`
+		SELECT text, file_path, source_url FROM scriptures
+		WHERE book = ? AND chapter = ? AND verse = ?
+	`, ref.Book, ref.Chapter, ref.Verse).Scan(&text, &filePath, &sourceURL)
+	if err != nil {
+		return "", fmt.Errorf("verse not found: %s %d:%d", ref.Book, ref.Chapter, ref.Verse)
+	}
+
+	var sb strings.Builder
+	sb.WriteString(fmt.Sprintf("**%s**\n", formatScriptureRef(ref.Book, ref.Chapter, ref.Verse)))
+	sb.WriteString(fmt.Sprintf("File: %s\n\n", filePath))
+	sb.WriteString(fmt.Sprintf("%d. %s\n", ref.Verse, text))
+
+	if crossRefs {
+		refs := getCrossReferences(database, ref.Book, ref.Chapter, ref.Verse)
+		if len(refs) > 0 {
+			sb.WriteString("\nCross-references:\n")
+			for _, r := range refs {
+				sb.WriteString(fmt.Sprintf("  - %s (%s)\n", r.Reference, r.Type))
+			}
+		}
+	}
+
+	return sb.String(), nil
+}
+
+// getScriptureRange retrieves a range of verses.
+func getScriptureRange(database *db.DB, ref parsedRef, crossRefs bool) (string, error) {
+	rows, err := database.Query(`
+		SELECT verse, text, file_path FROM scriptures
+		WHERE book = ? AND chapter = ? AND verse >= ? AND verse <= ?
+		ORDER BY verse
+	`, ref.Book, ref.Chapter, ref.Verse, ref.EndVerse)
+	if err != nil {
+		return "", fmt.Errorf("verse range not found: %s %d:%d-%d", ref.Book, ref.Chapter, ref.Verse, ref.EndVerse)
+	}
+	defer rows.Close()
+
+	var sb strings.Builder
+	var filePath string
+	var count int
+
+	for rows.Next() {
+		var v int
+		var text, fp string
+		if err := rows.Scan(&v, &text, &fp); err != nil {
+			continue
+		}
+		if filePath == "" {
+			filePath = fp
+		}
+		sb.WriteString(fmt.Sprintf("%d. %s\n\n", v, text))
+		count++
+	}
+
+	if count == 0 {
+		return "", fmt.Errorf("verse range not found: %s %d:%d-%d", ref.Book, ref.Chapter, ref.Verse, ref.EndVerse)
+	}
+
+	rangeRef := fmt.Sprintf("%s %d:%d-%d", formatBookName(ref.Book), ref.Chapter, ref.Verse, ref.EndVerse)
+	header := fmt.Sprintf("**%s**\nFile: %s\n\n", rangeRef, filePath)
+
+	result := header + sb.String()
+
+	if crossRefs {
+		allRefs := getCrossReferencesForRange(database, ref.Book, ref.Chapter, ref.Verse, ref.EndVerse)
+		if len(allRefs) > 0 {
+			result += "Cross-references:\n"
+			for _, r := range allRefs {
+				result += fmt.Sprintf("  - %s (%s)\n", r.Reference, r.Type)
+			}
+		}
+	}
+
+	return result, nil
+}
+
+// getTalkByRef retrieves a talk by parsed speaker reference.
+func getTalkByRef(database *db.DB, ref parsedRef) (string, error) {
+	var content, filePath string
+	err := database.QueryRow(`
+		SELECT content, file_path FROM talks
+		WHERE speaker LIKE ? ORDER BY year DESC, month DESC LIMIT 1
+	`, "%"+ref.Speaker+"%").Scan(&content, &filePath)
+	if err != nil {
+		return "", fmt.Errorf("talk not found: %s", ref.Speaker)
+	}
+	return fmt.Sprintf("File: %s\n\n%s", filePath, content), nil
+}
+
+// crossRef represents a cross-reference result.
+type crossRef struct {
+	Reference string
+	Type      string
+}
+
+// getCrossReferences returns cross-references for a single verse.
+func getCrossReferences(database *db.DB, book string, chapter, verse int) []crossRef {
+	rows, err := database.Query(`
+		SELECT DISTINCT target_book, target_chapter, target_verse, reference_type
+		FROM cross_references
+		WHERE source_book = ? AND source_chapter = ? AND source_verse = ?
+		LIMIT 20
+	`, book, chapter, verse)
+	if err != nil {
+		return nil
+	}
+	defer rows.Close()
+
+	var refs []crossRef
+	for rows.Next() {
+		var targetBook, refType string
+		var targetChapter int
+		var targetVerse *int
+
+		if err := rows.Scan(&targetBook, &targetChapter, &targetVerse, &refType); err != nil {
+			continue
+		}
+
+		v := 0
+		if targetVerse != nil {
+			v = *targetVerse
+		}
+
+		refs = append(refs, crossRef{
+			Reference: formatScriptureRef(targetBook, targetChapter, v),
+			Type:      refType,
+		})
+	}
+	return refs
+}
+
+// getCrossReferencesForRange returns deduplicated cross-references for a verse range.
+func getCrossReferencesForRange(database *db.DB, book string, chapter, startVerse, endVerse int) []crossRef {
+	rows, err := database.Query(`
+		SELECT DISTINCT target_book, target_chapter, target_verse, reference_type
+		FROM cross_references
+		WHERE source_book = ? AND source_chapter = ? AND source_verse >= ? AND source_verse <= ?
+		ORDER BY target_book, target_chapter, target_verse
+		LIMIT 50
+	`, book, chapter, startVerse, endVerse)
+	if err != nil {
+		return nil
+	}
+	defer rows.Close()
+
+	var refs []crossRef
+	for rows.Next() {
+		var targetBook, refType string
+		var targetChapter int
+		var targetVerse *int
+
+		if err := rows.Scan(&targetBook, &targetChapter, &targetVerse, &refType); err != nil {
+			continue
+		}
+
+		v := 0
+		if targetVerse != nil {
+			v = *targetVerse
+		}
+
+		refs = append(refs, crossRef{
+			Reference: formatScriptureRef(targetBook, targetChapter, v),
+			Type:      refType,
+		})
+	}
+	return refs
 }
 
 func handleList(database *db.DB, store vec.Searcher, args json.RawMessage) (string, error) {
