@@ -1,6 +1,6 @@
 # Active Context
 
-*Last updated: 2026-03-30*
+*Last updated: 2026-03-31*
 *Archive: [archive/active-2026-03-22.md](archive/active-2026-03-22.md) — detailed records through Mar 22*
 *Note: Migrated to new computer on Mar 27. Plex restored. Old desktop (LEPTON) decommissioned.*
 *Note: Dual 4090s confirmed in new desktop (Mar 28). Hardware enables 30B+ models at full context.*
@@ -108,12 +108,21 @@ All settled decisions are in [decisions.md](decisions.md). New this cycle:
 - A4: Reviewer lockout with model escalation
 - A5: Response tier / model selection
 - A6: Cost tracking
+- A7: Iterative retrieval / spawn contracts — Task + WHY + Success Criteria + Escalation Path template for brain.exe Phase 3c
+- A8: Reflect skill — DONE (`.github/skills/reflect/SKILL.md`)
+- A9: Task coordination — evaluate tpg patterns for brain.exe task tracking (sqlite vs GitHub Issues)
 - Proposal: [.spec/proposals/squad-learnings.md](../proposals/squad-learnings.md)
 
 ### Progressive Trust Tracking (from stewardship reflections)
 - Model capability experiments needed before assigning trust levels
 - D&C 107 ratios framework: Haiku 1:12, Sonnet 1:48, Opus 1:96
 - Details: [study/stewardship-pattern-reflections.md](../../study/stewardship-pattern-reflections.md)
+
+### Review: 4-Step & 11-Step Guides
+- Reflect on `docs/work-with-ai/` (11-step creation cycle) and the 4-part guide
+- Check if lessons from recent work (squad patterns, reflect skill, spawn contracts, context engineering, gospel-engine) warrant updates
+- Also review superpowers' verification patterns for comparison
+- Low urgency — when there's a natural pause
 
 ### Pending Cleanup
 - ~~Delete `scripts/brain/internal/ai/tools.go` and `scripts/brain/test-spec.md`~~ DONE — already deleted
