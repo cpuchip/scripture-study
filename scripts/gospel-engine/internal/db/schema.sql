@@ -52,12 +52,44 @@ CREATE TABLE IF NOT EXISTS chapters (
     full_content TEXT NOT NULL,
     file_path TEXT NOT NULL,
     source_url TEXT,
+    -- Scripture enrichment columns (Phase 3)
+    enrichment_summary TEXT,
+    enrichment_keywords TEXT,
+    enrichment_key_verse TEXT,
+    enrichment_christ_types TEXT,    -- comma-separated typological connections
+    enrichment_connections TEXT,     -- JSON array of {target, type, reason}
+    enrichment_model TEXT,
+    enrichment_raw_output TEXT,
     UNIQUE(volume, book, chapter)
 );
 
 CREATE INDEX IF NOT EXISTS idx_chapters_volume ON chapters(volume);
 CREATE INDEX IF NOT EXISTS idx_chapters_book ON chapters(volume, book);
 CREATE INDEX IF NOT EXISTS idx_chapters_file ON chapters(file_path);
+
+CREATE VIRTUAL TABLE IF NOT EXISTS chapters_fts USING fts5(
+    title,
+    enrichment_summary,
+    enrichment_keywords,
+    enrichment_christ_types,
+    content='chapters',
+    content_rowid='id'
+);
+
+CREATE TRIGGER IF NOT EXISTS chapters_ai AFTER INSERT ON chapters BEGIN
+    INSERT INTO chapters_fts(rowid, title, enrichment_summary, enrichment_keywords, enrichment_christ_types)
+    VALUES (new.id, new.title, new.enrichment_summary, new.enrichment_keywords, new.enrichment_christ_types);
+END;
+CREATE TRIGGER IF NOT EXISTS chapters_ad AFTER DELETE ON chapters BEGIN
+    INSERT INTO chapters_fts(chapters_fts, rowid, title, enrichment_summary, enrichment_keywords, enrichment_christ_types)
+    VALUES('delete', old.id, old.title, old.enrichment_summary, old.enrichment_keywords, old.enrichment_christ_types);
+END;
+CREATE TRIGGER IF NOT EXISTS chapters_au AFTER UPDATE ON chapters BEGIN
+    INSERT INTO chapters_fts(chapters_fts, rowid, title, enrichment_summary, enrichment_keywords, enrichment_christ_types)
+    VALUES('delete', old.id, old.title, old.enrichment_summary, old.enrichment_keywords, old.enrichment_christ_types);
+    INSERT INTO chapters_fts(rowid, title, enrichment_summary, enrichment_keywords, enrichment_christ_types)
+    VALUES (new.id, new.title, new.enrichment_summary, new.enrichment_keywords, new.enrichment_christ_types);
+END;
 
 -- ============================================================================
 -- TALKS

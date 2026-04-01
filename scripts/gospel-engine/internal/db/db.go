@@ -59,13 +59,21 @@ func (db *DB) migrate() error {
 		"ALTER TABLE talks ADD COLUMN titsw_reasoning TEXT",
 		"ALTER TABLE talks ADD COLUMN titsw_raw_output TEXT",
 		"ALTER TABLE talks ADD COLUMN titsw_model TEXT",
+		// Phase 3: Scripture enrichment columns on chapters
+		"ALTER TABLE chapters ADD COLUMN enrichment_summary TEXT",
+		"ALTER TABLE chapters ADD COLUMN enrichment_keywords TEXT",
+		"ALTER TABLE chapters ADD COLUMN enrichment_key_verse TEXT",
+		"ALTER TABLE chapters ADD COLUMN enrichment_christ_types TEXT",
+		"ALTER TABLE chapters ADD COLUMN enrichment_connections TEXT",
+		"ALTER TABLE chapters ADD COLUMN enrichment_model TEXT",
+		"ALTER TABLE chapters ADD COLUMN enrichment_raw_output TEXT",
 	}
 	for _, m := range migrations {
 		// ALTER TABLE ADD COLUMN fails if column exists; ignore that error.
 		db.Exec(m)
 	}
 
-	// Rebuild FTS5 if it doesn't have titsw columns.
+	// Rebuild talks FTS5 if it doesn't have titsw columns.
 	// Check by looking at the column count in the FTS table.
 	var colCount int
 	err := db.QueryRow(`SELECT COUNT(*) FROM pragma_table_info('talks_fts')`).Scan(&colCount)
@@ -82,6 +90,15 @@ func (db *DB) migrate() error {
 		}
 		// Rebuild FTS content from existing talks
 		db.Exec(`INSERT INTO talks_fts(talks_fts) VALUES('rebuild')`)
+	}
+
+	// Create chapters FTS if it doesn't exist yet (Phase 3).
+	var chaptersFtsExists int
+	err = db.QueryRow(`SELECT COUNT(*) FROM sqlite_master WHERE type='table' AND name='chapters_fts'`).Scan(&chaptersFtsExists)
+	if err == nil && chaptersFtsExists == 0 {
+		// Re-run schema to create chapters_fts + triggers
+		db.Exec(schemaSQL)
+		db.Exec(`INSERT INTO chapters_fts(chapters_fts) VALUES('rebuild')`)
 	}
 
 	return nil

@@ -65,6 +65,9 @@ func (e *Enricher) Enrich(ctx context.Context, talkContent string) (*TITSWProfil
 		return nil, fmt.Errorf("LLM completion: %w", err)
 	}
 
+	// Strip reasoning model's <think>...</think> block if present
+	text = stripThinkingBlock(text)
+
 	profile, err := parseProfile(text)
 	if err != nil {
 		return nil, fmt.Errorf("parsing profile: %w", err)
@@ -169,10 +172,29 @@ func extractField(re *regexp.Regexp, text string) string {
 	return strings.TrimSpace(m[1])
 }
 
-// cleanMarkdown strips bold/italic markdown markers (* and **) from LLM output.
+// cleanMarkdown strips markdown formatting artifacts from LLM output.
 func cleanMarkdown(s string) string {
 	s = strings.ReplaceAll(s, "*", "")
-	return strings.TrimSpace(s)
+	// Strip heading markers (### etc.) and horizontal rules (---)
+	lines := strings.Split(s, "\n")
+	var cleaned []string
+	for _, line := range lines {
+		trimmed := strings.TrimSpace(line)
+		if trimmed == "" {
+			cleaned = append(cleaned, "")
+			continue
+		}
+		// Skip lines that are only # markers or --- separators
+		if strings.Trim(trimmed, "#- ") == "" {
+			continue
+		}
+		// Strip leading # markers from heading lines
+		for strings.HasPrefix(trimmed, "#") {
+			trimmed = strings.TrimPrefix(trimmed, "#")
+		}
+		cleaned = append(cleaned, strings.TrimSpace(trimmed))
+	}
+	return strings.TrimSpace(strings.Join(cleaned, "\n"))
 }
 
 func extractBetween(text, start, end string) string {
@@ -189,4 +211,22 @@ func extractBetween(text, start, end string) string {
 	}
 
 	return strings.TrimSpace(text[startIdx : startIdx+endIdx])
+}
+
+// stripThinkingBlock removes <think>...</think> blocks from reasoning model output.
+func stripThinkingBlock(text string) string {
+	for {
+		start := strings.Index(text, "<think>")
+		if start < 0 {
+			break
+		}
+		end := strings.Index(text[start:], "</think>")
+		if end < 0 {
+			// Unclosed think block — remove from <think> to end
+			text = text[:start]
+			break
+		}
+		text = text[:start] + text[start+end+len("</think>"):]
+	}
+	return strings.TrimSpace(text)
 }
