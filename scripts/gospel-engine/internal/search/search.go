@@ -113,13 +113,14 @@ func (e *Engine) keywordSearch(query string, opts Options) ([]Result, error) {
 // sourcesToTables maps source names to FTS table names.
 func sourcesToTables(sources []string) []string {
 	if len(sources) == 0 {
-		return []string{"scriptures", "talks", "manuals", "books"}
+		return []string{"scriptures", "chapters", "talks", "manuals", "books"}
 	}
 	var tables []string
 	for _, s := range sources {
 		switch s {
 		case "scriptures":
 			tables = append(tables, "scriptures")
+			tables = append(tables, "chapters") // enriched chapter summaries
 		case "conference":
 			tables = append(tables, "talks")
 		case "manual":
@@ -129,7 +130,7 @@ func sourcesToTables(sources []string) []string {
 		}
 	}
 	if len(tables) == 0 {
-		return []string{"scriptures", "talks", "manuals", "books"}
+		return []string{"scriptures", "chapters", "talks", "manuals", "books"}
 	}
 	return tables
 }
@@ -325,6 +326,48 @@ func (e *Engine) ftsQuery(table, query string, opts Options) ([]Result, error) {
 				Score:     -rank,
 			})
 		}
+
+	case "chapters":
+		rows, err := e.db.Query(`
+			SELECT c.volume, c.book, c.chapter, c.title, c.file_path,
+			       c.enrichment_summary, c.enrichment_christ_types,
+			       rank
+			FROM chapters_fts f
+			JOIN chapters c ON c.id = f.rowid
+			WHERE chapters_fts MATCH ?
+			ORDER BY rank
+			LIMIT ?
+		`, query, limit)
+		if err != nil {
+			return nil, err
+		}
+		defer rows.Close()
+		for rows.Next() {
+			var volume, book, title, filePath string
+			var summary, christTypes *string
+			var chapter int
+			var rank float64
+			if err := rows.Scan(&volume, &book, &chapter, &title, &filePath, &summary, &christTypes, &rank); err != nil {
+				continue
+			}
+			content := ""
+			if summary != nil {
+				content = *summary
+			}
+			if christTypes != nil && *christTypes != "" && *christTypes != "none" {
+				content += "\nChrist types: " + *christTypes
+			}
+			results = append(results, Result{
+				Source:    "scriptures",
+				Type:      "chapter",
+				Reference: fmt.Sprintf("%s %d", book, chapter),
+				Content:   content,
+				FilePath:  filePath,
+				Score:     -rank,
+				Book:      book,
+				Chapter:   chapter,
+			})
+		}
 	}
 
 	return results, nil
@@ -394,53 +437,5 @@ func (e *Engine) semanticSearch(ctx context.Context, query string, opts Options)
 }
 
 func (e *Engine) combinedSearch(ctx context.Context, query string, opts Options) ([]Result, error) {
-	// Run both searches in parallel
-	kwCh := make(chan []Result, 1)
-	vecCh := make(chan []Result, 1)
-
-	go func() {
-		r, _ := e.keywordSearch(query, opts)
-		kwCh <- r
-	}()
-
-	go func() {
-		r, _ := e.semanticSearch(ctx, query, opts)
-		vecCh <- r
-	}()
-
-	kwResults := <-kwCh
-	vecResults := <-vecCh
-
-	// Merge and deduplicate by file_path + reference
-	seen := make(map[string]bool)
-	var merged []Result
-
-	// Vector results first (usually more relevant)
-	for _, r := range vecResults {
-		key := r.FilePath + "|" + r.Reference
-		if !seen[key] {
-			seen[key] = true
-			merged = append(merged, r)
-		}
-	}
-
-	// Then keyword results
-	for _, r := range kwResults {
-		key := r.FilePath + "|" + r.Reference
-		if !seen[key] {
-			seen[key] = true
-			// Normalize FTS scores to 0-1 range roughly
-			if r.Score > 1 {
-				r.Score = r.Score / 100
-			}
-			merged = append(merged, r)
-		}
-	}
-
-	sort.Slice(merged, func(i, j int) bool { return merged[i].Score > merged[j].Score })
-	if len(merged) > opts.Limit {
-		merged = merged[:opts.Limit]
-	}
-
-	return merged, nil
+	return e.rrfCombinedSearch(ctx, query, opts)
 }

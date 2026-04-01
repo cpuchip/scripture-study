@@ -50,7 +50,17 @@
    
    **GOSPEL-ENGINE PROPOSAL UPDATED (Mar 29).** All experiment-era references corrected: model→ministral-3-14b-reasoning, MAE→1.32, prompt→titsw-calibrated.md, context files phased (talk-calibration.md for talks in Phase 1-2, gospel-vocab/titsw-framework for scripture lens in Phase 3), batch timing updated for ministral speeds (50-63 tok/s). Prior art table now references titsw-experiment-spec.md and titsw-calibrated.md. Proposal is current and ready for Phase 1 build.
    
-   **Next:** dev agent builds gospel-engine Phase 1 (foundation + fresh index). Starting doc: [.spec/proposals/gospel-engine/main.md](../proposals/gospel-engine/main.md).
+   **GOSPEL-ENGINE PHASE 2 COMPLETE (Mar 31).** TITSW talk enrichment pipeline shipped. Schema: 15 TITSW columns on talks table (scores, mode, pattern, keywords, key_quote, dominant, reasoning, raw_output, model). FTS5 extended with 4 TITSW columns. Parser handles markdown stripping (`cleanMarkdown`), reasoning model `<think>` blocks (`stripThinkingBlock`). Live tested: 3 talks enriched successfully with ministral-3-14b-reasoning. Calibration context (calibration.md) used as system message — no gospel-vocab/titsw-framework for talks (causes inflation). Bug fixes: markdown in parsed fields, flag parsing (`--limit 3` vs `--limit=3`), 67 corrupted rows reset from initial bad run.
+   
+   **GOSPEL-ENGINE PHASE 3 COMPLETE (Mar 31).** Scripture enrichment pipeline shipped. Lens approach: gospel-vocab.md + titsw-framework.md as system message (embedded via `go:embed`). Schema: 7 enrichment columns on chapters table + chapters_fts FTS5 virtual table + 3 triggers. Parser: `normalizeScriptureOutput()` handles model formatting variations (`### **SUMMARY**` vs `**KEYWORDS:**` vs plain `KEYWORDS:`). All fields extracted via `extractBetween()` for multi-line value support. CLI: `enrich-scriptures` command with `--limit`, `--force`, `--volume`, `--book`, `--chapter`, `--temperature`, `--verbose` flags. Edge writing: `writeTypologicalEdges()` for Christ-type connections, `writeConnectionEdges()` for thematic cross-references. Verified on proposal targets:
+   - **1 Nephi 11:** 5 Christ types (tree→love of God, rod→word of God, waters→love, Lamb→Son, dove→Holy Ghost). Connected to John 4:14, 3 Nephi 27.
+   - **Alma 32:** seed→word of God, tree of life→eternal life. Connected to 1 Nephi 8, Alma 33, John 15.
+   - **Genesis 22:** ram→paschal lamb with footnote evidence. Connected to Galatians 3, John 19, Alma 33.
+   Anti-inflation working correctly — model outputs "none" when no clear typological evidence exists.
+   
+   **GOSPEL-ENGINE PHASE 4 COMPLETE (Mar 31).** Combined search — hybrid keyword+semantic using Reciprocal Rank Fusion (RRF). Architecture: both retrievers run in parallel with 3x candidate pools, fused by rank position (`score = 1/(k+rank_kw) + 1/(k+rank_vec)`, k=60). Graceful fallback when one retriever fails. Deduplication handles different reference formats across retrievers (keyword returns `1-cor 13:13`, semantic returns `1 Corinthians 13:13` — resolved via FilePath + verse number extraction). Added `chapters_fts` to keyword pipeline (enrichment data now searchable). CLI `search` command for live testing. Unit tests: 5 passing (RRFScore, BuildRankMap, DocKey with subtests, Truncate, RRFRankingOrder). Live verification: combined search correctly interleaves keyword-driven and semantic-driven results, with items appearing in both retrievers scoring highest. Files: `internal/search/combined.go`, `internal/search/combined_test.go` (new), `internal/search/search.go` (modified), `cmd/gospel-engine/main.go` (search command added).
+   
+   **Next:** Phase 5 (full batch reindex + cutover).
    
    **GOSPEL-ENGINE PHASE 1 COMPLETE (Mar 30).** All packages built, binary compiles with `-tags fts5`. Full corpus indexed: 41,995 verses, 1,584 chapters, 4,231 talks, 3,700 manuals, 116 books, 85,590 cross-refs, 239,830 vec chunks. Three MCP tools working: gospel_search (keyword/semantic/combined), gospel_get, gospel_list. Registered in `.vscode/mcp.json`. Compared favorably against gospel-mcp (broken FTS5 tag) and gospel-vec (semantic only). See plan: [scripts/plans/21_gospel-engine.md](../../scripts/plans/21_gospel-engine.md).
    
@@ -139,7 +149,7 @@ All settled decisions are in [decisions.md](decisions.md). New this cycle:
 | 17: Proactive Surfacing | NOT STARTED | WS2 Phase 3 |
 | 18: Widget Overhaul | Phase 1-2 DONE | Phase 3-4 PAUSED |
 | 19: Brain App Ideas | Captured | Not started |
-| 21: Gospel Engine | Phase 1 DONE + MMAP | Full index + mmap storage. Phase 2 (TITSW) next |
+| 21: Gospel Engine | Phase 4 DONE | Phase 5 (full batch reindex + cutover) next |
 | Notifications | Phase 1 DONE | Phases 2-4 remaining |
 | Data Safety | ALL DONE | |
 | Overview | DECISIONS RECORDED | All guidance Qs answered |
