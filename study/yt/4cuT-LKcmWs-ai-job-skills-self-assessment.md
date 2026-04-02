@@ -43,6 +43,8 @@ The customer support example Nate gives at [5:46](https://www.youtube.com/watch?
 
 **Honest check:** The specification skill is genuine and deeply practiced. 18 months of iterating on agent instructions, catching failures, refining. This is Nate's most fundamental skill and it's also where this project started.
 
+**Industry crossover:** The same 4-layer pattern drives a professional engineering workflow — 23 custom skills, 6 specialized agent modes, and spec-driven ticket work across enterprise codebases. See [industry companion](4cuT-LKcmWs-industry-practice.md#skill-1-specification-precision--industry-evidence).
+
 ---
 
 ### Skill 2: Evaluation & Quality Judgment ★★★★☆
@@ -65,6 +67,8 @@ But the deeper eval skill lives in the *disciplines*:
 The Anthropic standard Nate cites at [9:03](https://www.youtube.com/watch?v=4cuT-LKcmWs&t=543) — "a good eval task is one where multiple engineers reach the same pass/fail" — we hit this. The TITSW calibration experiments showed inter-model agreement improving with better context. Alma 32 `teach_about_christ` went from 1-2 (no context) to 7 (with context), matching the ground truth target of ≥5.
 
 **Where the star is missing:** One domain. The eval harness evaluates conference talk teaching quality. It doesn't evaluate customer-facing agent interactions, code quality, or production systems. The skill transfers, but the demonstrated breadth is narrow. And evals are manual — no CI/CD pipeline, no automated regression testing.
+
+**Industry crossover:** Professional MR reviews demonstrate code/infrastructure evaluation — catching systemic bugs across 15 services, tracing root causes across CPU architectures, and the Ben Test as formalized honesty calibration. Narrows the domain gap from ★★★★ to ★★★★½. See [industry companion](4cuT-LKcmWs-industry-practice.md#skill-2-evaluation--quality-judgment--industry-evidence).
 
 ---
 
@@ -125,6 +129,8 @@ The TRUST side is genuinely strong:
 
 This is ironic — Michael works in security professionally (Python/Go backend, security & smart home). That expertise should be crossing over into AI security design but hasn't yet. This is the gap where professional experience + project experience should MULTIPLY but currently they're in separate lanes.
 
+**Industry crossover (★★★☆☆ → ★★★★☆):** Turns out the expertise IS crossing over, just not in the personal project. Professionally: enforced decision boundary matrix (autonomous / requires-human / NEVER tiers), progressive trust model with 4 levels, reversibility-based autonomy design mapped to Nate's framework, local-first as critical-severity security constraint. The remaining gap is adversarial testing and technical enforcement — the trust boundaries are policy-based, not technically enforced beyond instruction constraints. See [industry companion](4cuT-LKcmWs-industry-practice.md#skill-5-trust--security-design--industry-evidence).
+
 ---
 
 ### Skill 6: Context Architecture ★★★★★+
@@ -180,25 +186,28 @@ Budget-aware design at the personal scale:
 
 ## The Honest Summary
 
+> **Note:** This assessment covers the personal project only. A companion document — [Industry Practice Evidence](4cuT-LKcmWs-industry-practice.md) — maps how these same 7 skills are exercised professionally (enterprise backend engineering, multi-cluster infrastructure, 549-repo codebase, production Kubernetes operations). The combined ratings below reflect both domains.
+
 ### What We're Genuinely Great At
 
-| Skill | Rating | Why |
-|-------|--------|-----|
-| **Context Architecture** | ★★★★★+ | The project IS a context architecture. Multi-scale, token-budgeted, tool-supplied, lifecycle-aware. This is the skill Nate says companies will pay almost anything for. |
-| **Failure Pattern Recognition** | ★★★★★ | Named patterns matching all 6 of Nate's failure types. Systematic tracking, in-session capture, iterative correction. |
-| **Specification Precision** | ★★★★★ | Multi-layer specification system (values → covenant → workflow → procedure → quality gates) more sophisticated than most enterprise agent specs. |
-| **Evaluation & Quality Judgment** | ★★★★☆ | Full eval harness with ground truth, calibration, and the wisdom to know when the metric isn't the real target. |
+| Skill | Personal | Combined | Why |
+|-------|----------|----------|-----|
+| **Context Architecture** | ★★★★★+ | ★★★★★+ | The project IS a context architecture. Professionally: ~330 repo context cache, chip-brain indexing 549 repos with dependency graph, Progressive Context Disclosure (LOD model). |
+| **Failure Pattern Recognition** | ★★★★★ | ★★★★★ | Named patterns matching all 6 of Nate's failure types. Professionally: debug agent codifying Agans' 9 Rules, layered problem identification in production, silent-failure detection in Helm value chains. |
+| **Specification Precision** | ★★★★★ | ★★★★★ | Multi-layer specification system (values → covenant → workflow → procedure → quality gates). Professionally: 23 custom skills, 6 agent modes, spec-driven ticket workflow across enterprise codebases. |
+| **Trust & Security Design** | ★★★☆☆ | ★★★★☆ | **Biggest upgrade.** Personal project had philosophy only. Professionally: enforced decision boundary matrix, progressive trust model with 4 levels, reversibility-based autonomy, local-first security architecture. |
+| **Evaluation & Quality Judgment** | ★★★★☆ | ★★★★½ | Full eval harness with ground truth and calibration. Professionally: MR reviews catching systemic bugs across 15 services, the Ben Test as formalized honesty check, self-correction at system level. |
 
 ### Where We Have Real Gaps
 
-| Gap | Severity | Why It Matters |
-|-----|----------|---------------|
-| **1. Multi-Agent Orchestration** | HIGH | Deliberately gated at Level 2. No planner-agent → sub-agent systems. This is what the $400K roles build. |
-| **2. Production / Enterprise Scale** | HIGH | Every skill is demonstrated at personal-project scope. No customer-facing systems, production monitoring, or multi-user agent pipelines. |
-| **3. AI Security Engineering** | MEDIUM-HIGH | Trust philosophy is strong, security engineering absent. Professional security experience not crossing over to AI guardrail design. |
-| **4. Portfolio / Demonstrability** | MEDIUM-HIGH | All work is in a private religious-content repo. Skills are real but invisible to the market. |
-| **5. Teaching / Team Uplift** | MEDIUM | 30 files drafted, teaching agent created, nothing published. No track record of upskilling others. |
-| **6. Automated Eval Pipelines** | MEDIUM | Evals exist but are manual. No CI/CD for agent quality, no automated regression testing. |
+| Gap | Personal-Only | With Industry | Why It Matters |
+|-----|--------------|---------------|---------------|
+| **1. Multi-Agent Orchestration** | HIGH | HIGH | Deliberately gated at Level 2. No planner-agent → sub-agent systems. This is what the $400K roles build. Professional work is larger scope but same human→single-agent pattern. |
+| **2. Production / Enterprise Scale** | HIGH | **MEDIUM-HIGH** | Professional work IS enterprise scale — multi-cluster K8s, 549 repos, production infra. The remaining gap is customer-facing agent systems, not scale itself. |
+| **3. AI Security Engineering** | MEDIUM-HIGH | **MEDIUM** | Trust boundaries ARE professionally applied and enforced. Remaining gap: adversarial testing (prompt injection, tool abuse) and technical enforcement vs. policy-based constraints. |
+| **4. Portfolio / Demonstrability** | MEDIUM-HIGH | MEDIUM-HIGH | Both personal and professional work are invisible to the market. Skills are real but no public artifacts. |
+| **5. Teaching / Team Uplift** | MEDIUM | MEDIUM | 30 files drafted, teaching agent created, nothing published. No track record of upskilling others. |
+| **6. Automated Eval Pipelines** | MEDIUM | MEDIUM | Evals exist but are manual in both contexts. No CI/CD for agent quality, no automated regression testing. |
 
 ---
 
@@ -314,4 +323,5 @@ The skills are real. The gaps are addressable. The work continues.
 ---
 
 **Scratch file:** [study/.scratch/yt/4cuT-LKcmWs-ai-job-skills-self-assessment.md](../../../study/.scratch/yt/4cuT-LKcmWs-ai-job-skills-self-assessment.md)
+**Industry companion:** [4cuT-LKcmWs-industry-practice.md](4cuT-LKcmWs-industry-practice.md)
 **Transcript:** [yt/ai-news-strategy-daily-nate-b-jones/4cuT-LKcmWs](../../../yt/ai-news-strategy-daily-nate-b-jones/4cuT-LKcmWs)
