@@ -42,9 +42,11 @@ When running without `--systray` (e.g. from terminal, MCP mode, `brain exec`), b
 
 ### New Dependency
 
-Use [`github.com/getlantern/systray`](https://github.com/getlantern/systray) — mature, well-maintained, pure Go, supports Windows/Mac/Linux.
+Use [`fyne.io/systray`](https://github.com/fyne-io/systray) — actively maintained fork (last commit: 2 weeks ago, 2026-03-19). The original `getlantern/systray` hasn't been updated in 3 years.
 
-Alternative: [`fyne.io/systray`](https://github.com/fyne-io/systray) — fork of getlantern, actively maintained by the Fyne project. Either works.
+**CGo requirement:** Both libraries require `CGO_ENABLED=1`. On Windows, this means a C compiler (mingw-w64 via `choco install mingw` or MSYS2). brain.exe currently builds without CGo — this is an additive build requirement. Build tag isolation (`//go:build windows`) keeps the CGo dependency out of MCP and exec modes, but the binary will need CGo for the main build.
+
+**Build flag:** Windows systray binaries need `-ldflags "-H=windowsgui"` to suppress the console window.
 
 ### Subcommand Structure
 
@@ -72,6 +74,13 @@ func onSystrayReady() {
     systray.SetTooltip("brain.exe — running")
 
     mOpen := systray.AddMenuItem("Open Web UI", "Open brain in browser")
+    systray.AddSeparator()
+    mStatus := systray.AddMenuItem("Status: Running", "")
+    mStatus.Disable() // read-only status line
+    mSessions := systray.AddMenuItem("Active Sessions: 0", "")
+    mSessions.Disable()
+    mEntries := systray.AddMenuItem("Pending Routes: 0", "")
+    mEntries.Disable()
     systray.AddSeparator()
     mRestart := systray.AddMenuItem("Restart", "Restart brain daemon")
     mAutostart := systray.AddMenuItemCheckbox("Start on Login", "Auto-start when you sign in", isAutostartEnabled())
@@ -185,7 +194,7 @@ For hot-reload during development: the web UI's shutdown endpoint (`/api/shutdow
 
 | Risk | Severity | Mitigation |
 |------|----------|------------|
-| CGo dependency from systray | Medium | getlantern/systray is pure Go on Windows (uses Windows API directly) |
+| CGo dependency from systray | Medium | Both systray libs require CGo. Install mingw-w64 via `choco install mingw`. Build-tag isolation keeps CGo out of non-systray builds. |
 | Build complexity (icon embedding, build tags) | Low | Single `//go:embed brain.ico` and `//go:build windows` tags |
 | Conflicting instances | Low | Check if port is already in use at startup, show error in tooltip |
 | MCP mode conflict | None | `--systray` is opt-in. MCP and exec subcommands never use it. |
