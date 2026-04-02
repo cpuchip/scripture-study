@@ -1,6 +1,6 @@
 # Active Context
 
-*Last updated: 2026-04-01*
+*Last updated: 2026-04-02*
 *Note: Migrated to new computer on Mar 27. Plex restored. Old desktop (LEPTON) decommissioned.*
 *Note: Dual 4090s confirmed in new desktop (Mar 28). Hardware enables 30B+ models at full context.*
 
@@ -84,7 +84,7 @@
    
    **COMBINED GOSPEL TOOL DECISION (Mar 29).** Instead of modifying gospel-mcp/gospel-vec for enriched data, build a NEW combined tool that merges both (shared SQLite + vector DB in one app). Keep originals unchanged for study use during reindexing. enriched-search.md superseded — schema/tool designs remain valid, just target the new combined tool. **PROPOSAL WRITTEN (Mar 29).** gospel-engine: 5 phases, 3 consolidated MCP tools, TITSW enrichment pipeline + graph layer built in. Proposal: [.spec/proposals/gospel-engine/main.md](../proposals/gospel-engine/main.md). Scratch: [.spec/scratch/gospel-engine/main.md](../scratch/gospel-engine/main.md). Decision recorded in decisions.md.
 4. **Debugging book** — DONE. Agans' "Debugging: The 9 Indispensable Rules" extracted to `books/debugging/9-indispensable-rules/` (17 chapter markdown files). Debug agent created at `.github/agents/debug.agent.md`. Connections mapped: Moroni 10:4 inverse hypothesis = falsification, scientific method = the 9 rules, Abraham 4:18 = Rule 9 (verify the fix), council moment = Rule 8 (get a fresh view). Analysis at `.spec/scratch/debugging-agent/main.md`. 2006 expanded edition (192pp, ISBN 9780814474570) available used ~$19 on AbeBooks.
-5. **WS1 multi-agent framework** — Continue building. Next: Phase 3c (auto-routing + review queue).
+5. **WS1 multi-agent framework** — Continue building. Next: Phase 3c (auto-routing + review queue). **EXPANDED (Apr 2):** Phase 3c now includes SDK custom agent integration — two-session delivery. Session 1: original auto-routing + review queue. Session 2: wire agents into Copilot SDK `CustomAgentConfig` for intent-based delegation in interactive sessions. Proposal: [.spec/proposals/brain-phase3c-sdk-agents.md](../proposals/brain-phase3c-sdk-agents.md). This is the Track 1 exercise from the AI skills gap-closing program — moving brain.exe from Level 2 to Level 3 autonomy.
 6. **Desktop swap** — DONE. New computer operational (Mar 27). Plex restored from LEPTON backup (11.2 GB, v1.42→v1.43 forward migration). All four media drives (D/E/F/G) mounted correctly. Libraries, watch history, and play state all verified. Old desktop ready to decommission.
 7. **Server deployment** — App container on NOCIX. Domain rotated (Mar 22, confirmed working).
 
@@ -92,6 +92,10 @@
 
 ### Key Decisions (this cycle)
 All settled decisions are in [decisions.md](decisions.md). New this cycle:
+- **AI Skills Self-Assessment completed (Apr 1-2).** 7-skill framework from Nate B Jones video mapped to personal + professional evidence. 5 tracks in becoming program. Study: [study/yt/4cuT-LKcmWs-ai-job-skills-self-assessment.md](../../study/yt/4cuT-LKcmWs-ai-job-skills-self-assessment.md). Companion: [study/yt/4cuT-LKcmWs-industry-practice.md](../../study/yt/4cuT-LKcmWs-industry-practice.md). Key gap: multi-agent orchestration (Level 2→3). Track 1 integrated into WS1 Phase 3c.
+- **Phase 3c expanded with SDK custom agents (Apr 2).** Two-session delivery. Copilot SDK v0.1.32 `CustomAgentConfig` confirmed. Proposal: [.spec/proposals/brain-phase3c-sdk-agents.md](../proposals/brain-phase3c-sdk-agents.md).
+- **Brain Windows service decided (Apr 2).** Systray built into brain.exe, not Windows Service. `--systray` flag, auto-start via Registry, right-click menu. Proposal: [.spec/proposals/brain-windows-service.md](../proposals/brain-windows-service.md).
+- **ibeco.me is the showcase project (Apr 2).** Security audit + becoming coach agent. Exercises Trust & Security Design skill (biggest rating gap between personal and combined).
 - **Gospel Graph proposal written (Mar 29).** Reworked to standalone site: study.ibeco.me (separate Go + Vue 3 + PostgreSQL site, not an ibeco.me extension). Cytoscape.js for graph rendering. Import pipeline from gospel-mcp/gospel-vec/byu-citations → PostgreSQL. 5 phases, sequenced AFTER enriched indexer + enriched search ships.
 - **Combined gospel tool decided (Mar 29).** gospel-engine: merged gospel-mcp + gospel-vec into one app (shared SQLite + vector DB + graph edges). Keep originals for study use during reindexing. Supersedes enriched-search.md Option C. **Proposal written:** [.spec/proposals/gospel-engine/main.md](../proposals/gospel-engine/main.md).
 - **Covenant created.** `.spec/covenant.yaml`. Bilateral commitments. Added to session-start (Step 2).
@@ -123,10 +127,24 @@ All settled decisions are in [decisions.md](decisions.md). New this cycle:
 
 ## In Flight
 
-### WS1 Phase 3c: Auto-Routing + Review Queue
+### WS1 Phase 3c: Auto-Routing + Review Queue + SDK Custom Agents
 - Phases 3a (agent pool + routing) and 3b (governance + token budgets) shipped Mar 21
-- Next: auto-routing with human review of output
-- Proposal: [.spec/proposals/brain-multi-agent/main.md](../proposals/brain-multi-agent/main.md)
+- **Session 1:** auto-routing with human review of output (original Phase 3c)
+- **Session 2:** SDK custom agent integration — wire agents into `CustomAgentConfig` for intent-based delegation
+- Proposals: [.spec/proposals/brain-multi-agent/main.md](../proposals/brain-multi-agent/main.md), [.spec/proposals/brain-phase3c-sdk-agents.md](../proposals/brain-phase3c-sdk-agents.md)
+- SDK v0.1.32 confirmed: `CustomAgentConfig` exists with Tools, Prompt, MCPServers, Infer fields
+
+### Brain Windows Service (Systray)
+- NEW (Apr 2). brain.exe should auto-start on login, show systray icon, easy to stop.
+- Proposal: [.spec/proposals/brain-windows-service.md](../proposals/brain-windows-service.md)
+- Phase 1: basic systray with `getlantern/systray`, Phase 2: autostart via Windows Registry
+- Infrastructure for all other brain workstreams — if brain isn't running, capture→route never fires
+
+### ibeco.me Security Audit + Showcase
+- NEW (Apr 2). ibeco.me is the showcase project. Needs security hardening.
+- Security audit: OWASP Top 10, relay WebSocket protocol, auth flows, adversarial testing
+- Becoming coach agent: customer-facing AI agent with trust boundaries, eval harness
+- Part of AI skills gap-closing Track 2 (AI Security Engineering)
 
 ### Squad Adoption Items (remaining)
 - A2: Agent routing table — partially done (Phase 3a)

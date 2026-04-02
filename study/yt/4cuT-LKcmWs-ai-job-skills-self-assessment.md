@@ -219,43 +219,57 @@ The plan targets the biggest gaps first, leverages what we're already strong at,
 
 **Goal:** Build a real planner → sub-agent system and experience the failure modes firsthand.
 
-**Phase 1 — Graduated Trust (Week 1-2)**
-Move from Level 2 (human assigns each spec) to Level 3 (planner agent assigns sub-tasks with human approval):
-- [ ] Build a planner agent that reads active.md + proposals and generates a prioritized task list
-- [ ] Let it assign tasks to sub-agents (study, dev, plan) with explicit specs
-- [ ] Human reviews and approves before execution
-- [ ] Log every handoff, every approval, every deviation
+**Integration:** This track IS WS1 Phase 3c + the SDK custom agent expansion. It's not a side project — it's the next workstream. Full proposal: [.spec/proposals/brain-phase3c-sdk-agents.md](../../.spec/proposals/brain-phase3c-sdk-agents.md).
 
-**Phase 2 — Multi-Agent Pipeline (Week 3-4)**
-Build a real multi-agent workflow using an existing project need:
-- [ ] Study agent produces a study → podcast agent transforms it → teaching agent does Ben Test
-- [ ] Each handoff is a file on disk (not in-context)
-- [ ] Build the planner orchestration in a spec before implementing
-- [ ] Document every failure: context degradation, spec drift, cascading failures
+**Key discovery (Apr 2):** The Copilot SDK v0.1.32 already has `CustomAgentConfig` with tool scoping per agent, per-agent MCP servers, and intent-based auto-delegation (`Infer` flag). brain.exe already has the AgentPool, Router, and GovernancePolicy shipped (Phase 3a+3b). The SDK custom agents map directly onto the existing architecture — brain.exe does entry-triggered routing via classification, SDK does intent-triggered delegation for interactive sessions. Both are needed for Level 3.
 
-**Phase 3 — Reflect & Write (Week 5)**
-- [ ] Write up the experience: what worked, what failed, what you'd tell someone building their first multi-agent system
-- [ ] Add to docs/work-with-ai/ as a real episode in the teaching series
+**Phase 1 — Auto-Routing + Review Queue (WS1 Phase 3c Session 1)**
+Ship the original Phase 3c plan — closes the core capture → agent → review loop:
+- [ ] Route mode `"auto"` — entries routed immediately after classification
+- [ ] Review queue: `GET /api/agent/review` — pending agent outputs for human review
+- [ ] Accept/reject workflow: `POST /api/agent/review/{id}`
+- [ ] End-to-end verification: capture a thought via relay → classified → auto-routed → agent output in review queue
+
+**Phase 2 — SDK Custom Agent Integration (WS1 Phase 3c Session 2)**
+Wire existing agents into SDK `CustomAgentConfig` for interactive delegation:
+- [ ] Spike: create 1 custom agent (study), wire into default session, verify intent-based delegation
+- [ ] Build full custom agent set (study, journal, plan, dev, eval) with tool scoping per agent
+- [ ] Enumerate available tools from MCP server handshake at startup
+- [ ] Default agent (interactive `POST /api/agent/ask`) gets custom agents wired in — SDK auto-routes
+- [ ] Named agents (from entry routing) don't get custom agents — they ARE the routed agent
+
+**Phase 3 — Production Experience + Write-Up**
+- [ ] Run both paths (entry routing + interactive delegation) for 2 weeks. Log every failure.
+- [ ] Document: context degradation patterns, tool scoping surprises, governance gaps, delegation misroutes
+- [ ] Write up as a real episode in the teaching series (docs/work-with-ai/)
 - [ ] Update becoming/ with the exercised skill
+
+**What Level 3 looks like when this ships:**
+| Path | Trigger | Routing | Execution | Review |
+|------|---------|---------|-----------|--------|
+| Entry (passive) | Capture via relay/discord/web | Classification → RouteRule → AgentPool | Agent produces output with governance hooks | Human reviews via queue |
+| Interactive (active) | User asks brain | SDK intent matching → CustomAgentConfig | Agent executes with tool scoping | Human reviews response |
 
 ---
 
 ### Track 2: Production Scale & AI Security (Gaps #2-3 — HIGH)
 
-**Goal:** Cross professional security expertise into AI agent security. Build something customer-facing.
+**Goal:** Cross professional security expertise into AI agent security. Make ibeco.me the showcase project — "like Scotty as a miracle worker."
 
-**Phase 1 — Security Audit of Existing Tools (Week 1-2)**
-- [ ] Run adversarial tests against gospel-engine MCP tools (prompt injection, tool abuse)
-- [ ] Design guardrails: what happens if someone tries to make the search tool return incorrect results?
-- [ ] Write a security review document for the MCP tools, following the same rigor as professional security reviews
-- [ ] Apply the cost-of-error / reversibility / frequency / verifiability framework from Nate's video
+**Phase 1 — ibeco.me Security Audit (Week 1-2)**
+- [ ] Run adversarial tests: prompt injection against any user-facing text fields, auth bypass attempts, CSRF, session fixation
+- [ ] Audit the relay WebSocket protocol (brain ↔ ibeco.me): message validation, auth token handling, message replay
+- [ ] Review OAuth + email/password auth flows against OWASP Top 10
+- [ ] Write a security review document following the cost-of-error / reversibility / frequency / verifiability framework
+- [ ] Apply findings: fix vulnerabilities, add rate limiting, input validation, CSP headers
 
-**Phase 2 — Customer-Facing Agent Prototype (Week 3-6)**
-Build a small but REAL customer-facing system. ibeco.me is the natural candidate:
-- [ ] Design a becoming coach agent: takes user's practice data, suggests next steps, answers questions about their practices
-- [ ] Define trust boundaries: what can the agent do vs what needs human approval?
-- [ ] Build eval harness: automated checks on coach responses (does it stay within guardrails? does it give correct practice data?)
-- [ ] Production deployment with monitoring and logging
+**Phase 2 — Becoming Coach Agent (Week 3-6)**
+Build a customer-facing agent on ibeco.me using brain.exe's agent infrastructure:
+- [ ] Design a becoming coach: takes user's practice data, suggests next steps, answers questions
+- [ ] Define trust boundaries: what can the coach access? What requires human approval? What is NEVER automated?
+- [ ] Build eval harness: automated checks on coach responses (stays within guardrails? returns correct practice data?)
+- [ ] Production deployment with monitoring, rate limiting, and audit logging
+- [ ] This is the showcase — the place where every skill in the framework is exercised in a real product
 
 **Phase 3 — Write the Security Design Pattern (Week 7-8)**
 - [ ] Document the trust boundary design pattern: how to decide where agents act vs where humans approve
@@ -299,6 +313,28 @@ Build a small but REAL customer-facing system. ibeco.me is the natural candidate
 - [ ] Extract the eval harness into a reusable pattern
 - [ ] Apply it to the becoming coach agent (Track 2)
 - [ ] Write up how it could apply to any agentic system
+
+---
+
+### Track 5: Brain as Always-On Service (Infrastructure)
+
+**Goal:** brain.exe starts when Michael logs in, stays running, easy to stop.
+
+Full proposal: [.spec/proposals/brain-windows-service.md](../../.spec/proposals/brain-windows-service.md).
+
+**Phase 1 — Basic Systray (1 session)**
+- [ ] Add `getlantern/systray` dependency to brain.exe
+- [ ] `--systray` flag: starts daemon minimized to system tray with icon
+- [ ] Right-click menu: Open Web UI / Exit
+- [ ] File logging when running in systray mode (no terminal)
+
+**Phase 2 — Autostart + Controls (1 session)**
+- [ ] `brain install` / `brain uninstall` subcommands for Windows Registry autostart
+- [ ] "Start on Login" toggle checkbox in systray menu
+- [ ] "Restart" menu item
+- [ ] Status tooltip (running / error / starting)
+
+**Why this matters:** Every other track assumes brain.exe is running. If it's not always-on, the capture → classify → route loop from Track 1 never fires. This is infrastructure for everything above.
 
 ---
 
