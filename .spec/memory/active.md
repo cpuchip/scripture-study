@@ -1,6 +1,6 @@
 # Active Context
 
-*Last updated: 2026-03-31*
+*Last updated: 2026-04-01*
 *Note: Migrated to new computer on Mar 27. Plex restored. Old desktop (LEPTON) decommissioned.*
 *Note: Dual 4090s confirmed in new desktop (Mar 28). Hardware enables 30B+ models at full context.*
 
@@ -61,6 +61,20 @@
    **GOSPEL-ENGINE PHASE 4 COMPLETE (Mar 31).** Combined search — hybrid keyword+semantic using Reciprocal Rank Fusion (RRF). Architecture: both retrievers run in parallel with 3x candidate pools, fused by rank position (`score = 1/(k+rank_kw) + 1/(k+rank_vec)`, k=60). Graceful fallback when one retriever fails. Deduplication handles different reference formats across retrievers (keyword returns `1-cor 13:13`, semantic returns `1 Corinthians 13:13` — resolved via FilePath + verse number extraction). Added `chapters_fts` to keyword pipeline (enrichment data now searchable). CLI `search` command for live testing. Unit tests: 5 passing (RRFScore, BuildRankMap, DocKey with subtests, Truncate, RRFRankingOrder). Live verification: combined search correctly interleaves keyword-driven and semantic-driven results, with items appearing in both retrievers scoring highest. Files: `internal/search/combined.go`, `internal/search/combined_test.go` (new), `internal/search/search.go` (modified), `cmd/gospel-engine/main.go` (search command added).
    
    **Next:** Phase 5 (full batch reindex + cutover).
+   
+   **GOSPEL-ENGINE PHASE 5 COMPLETE (Apr 1).** Full batch enrichment and cutover. Pipeline results:
+   - **Scripture enrichment:** 1,584/1,584 chapters enriched (0 errors). 1 Nephi force-re-enriched (22 chapters) after garbage data from early 32K context run.
+   - **Talk enrichment:** 4,228/4,231 talks enriched (3 truly empty). 27 initial failures (4 LLM 500s + 23 parsing failures) — 13 caught by accidental re-run, 14 by retry script.
+   - **Embedding:** 1,584 scripture-summary + 4,228 conference-summary vectors. Clean re-embedding after initial VRAM contention (ministral still running inference when embedding started).
+   - **Retry script:** `retry-failures.ps1` created at `scripts/gospel-engine/` — 4-step: re-enrich 1 Nephi (--force) → enrich remaining NULL talks → re-embed both → stats.
+   - **HTTP timeout fix:** `internal/llm/client.go` bumped 120s → 300s. Committed.
+   - **Mmap conversion:** Re-ran `convert` command after enrichment. Now 5 collections in `.vecf` format: scriptures-verse (41,995), scriptures-paragraph (13,996), scriptures-summary (1,584 — NEW), conference-paragraph (157,365), conference-summary (4,228 — NEW). Conversion: 6.1s.
+   - **Graph edges:** 4,803 (was 4,726 after Phase 4).
+   - **Search validation:** Combined search returns excellent results (15 quality hits for "faith mustard seed"). Summary-layer semantic search working after mmap conversion — correctly matches conceptual queries (Isaiah 53 + Mosiah 14 for "suffering servant," McConkie "Build Zion" + Christofferson "Come to Zion" for consecration themes). Summary layer eliminates noise from short statistical snippets that plague paragraph-level vectors.
+   - **Models:** mistralai/ministral-3-14b-reasoning (chat, context=131072, parallel=3), text-embedding-qwen3-embedding-8b (embed, context=16300).
+   - **Total enrichment time:** ~15 hours (scripture enrichment 1h44m, talk enrichment 13h23m, embedding ~30m across runs).
+   
+   **Phase 5 is DONE. Gospel-engine enrichment pipeline is complete and validated.**
    
    **GOSPEL-ENGINE PHASE 1 COMPLETE (Mar 30).** All packages built, binary compiles with `-tags fts5`. Full corpus indexed: 41,995 verses, 1,584 chapters, 4,231 talks, 3,700 manuals, 116 books, 85,590 cross-refs, 239,830 vec chunks. Three MCP tools working: gospel_search (keyword/semantic/combined), gospel_get, gospel_list. Registered in `.vscode/mcp.json`. Compared favorably against gospel-mcp (broken FTS5 tag) and gospel-vec (semantic only). See plan: [scripts/plans/21_gospel-engine.md](../../scripts/plans/21_gospel-engine.md).
    
@@ -149,7 +163,7 @@ All settled decisions are in [decisions.md](decisions.md). New this cycle:
 | 17: Proactive Surfacing | NOT STARTED | WS2 Phase 3 |
 | 18: Widget Overhaul | Phase 1-2 DONE | Phase 3-4 PAUSED |
 | 19: Brain App Ideas | Captured | Not started |
-| 21: Gospel Engine | Phase 4 DONE | Phase 5 (full batch reindex + cutover) next |
+| 21: Gospel Engine | Phase 5 DONE | Full enrichment pipeline complete + validated |
 | Notifications | Phase 1 DONE | Phases 2-4 remaining |
 | Data Safety | ALL DONE | |
 | Overview | DECISIONS RECORDED | All guidance Qs answered |
