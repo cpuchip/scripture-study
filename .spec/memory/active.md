@@ -84,18 +84,23 @@
    
    **COMBINED GOSPEL TOOL DECISION (Mar 29).** Instead of modifying gospel-mcp/gospel-vec for enriched data, build a NEW combined tool that merges both (shared SQLite + vector DB in one app). Keep originals unchanged for study use during reindexing. enriched-search.md superseded — schema/tool designs remain valid, just target the new combined tool. **PROPOSAL WRITTEN (Mar 29).** gospel-engine: 5 phases, 3 consolidated MCP tools, TITSW enrichment pipeline + graph layer built in. Proposal: [.spec/proposals/gospel-engine/main.md](../proposals/gospel-engine/main.md). Scratch: [.spec/scratch/gospel-engine/main.md](../scratch/gospel-engine/main.md). Decision recorded in decisions.md.
 4. **Debugging book** — DONE. Agans' "Debugging: The 9 Indispensable Rules" extracted to `books/debugging/9-indispensable-rules/` (17 chapter markdown files). Debug agent created at `.github/agents/debug.agent.md`. Connections mapped: Moroni 10:4 inverse hypothesis = falsification, scientific method = the 9 rules, Abraham 4:18 = Rule 9 (verify the fix), council moment = Rule 8 (get a fresh view). Analysis at `.spec/scratch/debugging-agent/main.md`. 2006 expanded edition (192pp, ISBN 9780814474570) available used ~$19 on AbeBooks.
-5. **WS1 multi-agent framework** — Continue building. **Phase 3c Session 1 SHIPPED (Apr 2).** Auto-routing + review queue built and compiling. Changes:
+5. **WS1 multi-agent framework** — **Phase 3c COMPLETE (Apr 2).** Both sessions shipped.
+   
+   **Session 1: Auto-Routing + Review Queue** — Backend code compiling, 5 files changed, 3 new API endpoints. Changes:
    - `router.go`: Added `RouteStatusAccepted` and `RouteStatusRejected` constants
    - `config.go`: Added `AutoRouteEnabled bool` field + `BRAIN_AUTO_ROUTE` env var (default: false)
    - `db.go`: Added `ListByRouteStatus(status)` query (returns entries with body, agent output, tokens)
    - `store.go`: Added `ListByRouteStatus` passthrough
    - `server.go`: Extracted `routeEntry()` shared method. Post-classification now auto-routes when `AutoRouteEnabled && mode == auto`. New endpoints: `GET /api/agent/review` (review queue), `POST /api/agent/review/{id}` (accept/reject)
+   - **Activation:** Set `BRAIN_AUTO_ROUTE=true` in `.env`, then change any DefaultRoute mode from `suggest` to `auto` in `router.go`.
    
-   **Activation:** Set `BRAIN_AUTO_ROUTE=true` in `.env`, then change any DefaultRoute mode from `suggest` to `auto` in `router.go`. Default routes are still all "suggest" — opt-in at both config and per-category level.
+   **Session 2: SDK Custom Agent Integration** — Intent-based delegation for interactive sessions. Changes:
+   - `custom_agents.go` (NEW): `BuildCustomAgents(wc)` creates `[]copilot.CustomAgentConfig` from workspace `.github/agents/`. Each agent gets Infer flag (study/journal/plan=true, dev/eval/others=false), display name, and system message from `BuildSystemMessage`.
+   - `agent.go`: Added `CustomAgents` field to `AgentConfig`. `createSession()` wires `cfg.CustomAgents` into SDK `SessionConfig`.
+   - `pool.go`: `GetOrCreate("")` (default agent) now calls `BuildCustomAgents(wc)` and attaches them. Named agents don't get custom agents — they ARE the target.
+   - **How it works:** `POST /api/agent/ask {"prompt": "Study Alma 32"}` → default agent → SDK sees custom agents with `Infer: true` → routes to study agent automatically.
    
-   **Next: Phase 3c Session 2** — Wire agents into Copilot SDK `CustomAgentConfig` for intent-based delegation in interactive sessions. Proposal: [.spec/proposals/brain-phase3c-sdk-agents.md](../proposals/brain-phase3c-sdk-agents.md). This completes Level 3 autonomy for both capture (entry-triggered) and conversation (intent-triggered) paths.
-   
-   **Remaining after Session 2:** Frontend review UI (view agent output, accept/reject buttons, queue badge). Not blocking — API-first means we can test via curl/API before building UI.
+   **Remaining:** Frontend review UI (view agent output, accept/reject buttons, queue badge). Not blocking — API-first.
 6. **Desktop swap** — DONE. New computer operational (Mar 27). Plex restored from LEPTON backup (11.2 GB, v1.42→v1.43 forward migration). All four media drives (D/E/F/G) mounted correctly. Libraries, watch history, and play state all verified. Old desktop ready to decommission.
 7. **Server deployment** — App container on NOCIX. Domain rotated (Mar 22, confirmed working).
 
@@ -103,7 +108,7 @@
 
 ### Key Decisions (this cycle)
 All settled decisions are in [decisions.md](decisions.md). New this cycle:
-- **Phase 3c Session 1 shipped (Apr 2).** Auto-routing + review queue built. 5 files changed across ai/config/store/web packages. `go vet` and `go build` pass clean. API endpoints live: `GET /api/agent/review`, `POST /api/agent/review/{id}`. Auto-route gated behind `BRAIN_AUTO_ROUTE=true` env var + per-category mode change.
+- **Phase 3c fully shipped (Apr 2).** Both sessions built: Session 1 (auto-routing + review queue, 5 files), Session 2 (SDK custom agents, 3 files + 1 new). `go vet` and `go build` pass clean. brain.exe now at Level 3 autonomy for both capture and conversation paths.
 - **AI Skills Self-Assessment completed (Apr 1-2).** 7-skill framework from Nate B Jones video mapped to personal + professional evidence. 5 tracks in becoming program. Study: [study/yt/4cuT-LKcmWs-ai-job-skills-self-assessment.md](../../study/yt/4cuT-LKcmWs-ai-job-skills-self-assessment.md). Companion: [study/yt/4cuT-LKcmWs-industry-practice.md](../../study/yt/4cuT-LKcmWs-industry-practice.md). Key gap: multi-agent orchestration (Level 2→3). Track 1 integrated into WS1 Phase 3c.
 - **Phase 3c expanded with SDK custom agents (Apr 2).** Two-session delivery. Copilot SDK v0.1.32 `CustomAgentConfig` confirmed. Proposal: [.spec/proposals/brain-phase3c-sdk-agents.md](../proposals/brain-phase3c-sdk-agents.md).
 - **Brain Windows service decided (Apr 2).** Systray built into brain.exe, not Windows Service. `--systray` flag, auto-start via Registry, right-click menu. Proposal: [.spec/proposals/brain-windows-service.md](../proposals/brain-windows-service.md).
