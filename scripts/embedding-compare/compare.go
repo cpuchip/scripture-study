@@ -565,21 +565,62 @@ func generateReport(a, b *EmbedResult, results []QueryResult, layers []string, g
 	sb.WriteString("\n## Verdict\n\n")
 	allAvgT10 := avgFloat(mapInt(results, func(r QueryResult) int { return r.Top10Overlap }), 10)
 	allAvgRho := avgRhoF(results)
+	allAvgNDCG := avgNDCGF(results)
 
 	t10Pct := allAvgT10 / 10 * 100
-	equivalent := t10Pct >= 80 && allAvgRho >= 0.85
+	rankEquivalent := t10Pct >= 80 && allAvgRho >= 0.85
 
 	sb.WriteString(fmt.Sprintf("- **Overall Top-10 Overlap:** %.1f/10 (%.0f%%) — threshold: ≥80%%\n", allAvgT10, t10Pct))
-	sb.WriteString(fmt.Sprintf("- **Overall Spearman ρ:** %.3f — threshold: ≥0.85\n\n", allAvgRho))
+	sb.WriteString(fmt.Sprintf("- **Overall Spearman ρ:** %.3f — threshold: ≥0.85\n", allAvgRho))
+	sb.WriteString(fmt.Sprintf("- **Overall NDCG@10:** %.3f\n", allAvgNDCG))
 
-	if equivalent {
+	// Ground truth summary for verdict
+	var aGTPct, bGTPct float64
+	if len(gtResults) > 0 {
+		var aTotal, bTotal, gtTotal int
+		for _, gt := range gtResults {
+			aTotal += gt.AHits
+			bTotal += gt.BHits
+			gtTotal += min(3, gt.ATotal)
+		}
+		aGTPct = float64(aTotal) / float64(gtTotal) * 100
+		bGTPct = float64(bTotal) / float64(gtTotal) * 100
+		sb.WriteString(fmt.Sprintf("- **Ground Truth Precision:** A=%.0f%%, B=%.0f%%\n", aGTPct, bGTPct))
+	}
+
+	// Perturbation summary for verdict
+	var aPertAvg, bPertAvg float64
+	if len(pertResults) > 0 {
+		var aSum, bSum int
+		for _, p := range pertResults {
+			aSum += p.AOverlap
+			bSum += p.BOverlap
+		}
+		aPertAvg = float64(aSum) / float64(len(pertResults))
+		bPertAvg = float64(bSum) / float64(len(pertResults))
+		sb.WriteString(fmt.Sprintf("- **Perturbation Stability:** A=%.1f/5, B=%.1f/5\n", aPertAvg, bPertAvg))
+	}
+	sb.WriteString("\n")
+
+	if rankEquivalent {
 		sb.WriteString("**VERDICT: Models are equivalent.** The smaller model produces search results that are\n")
 		sb.WriteString("statistically indistinguishable from the larger model on this corpus. The VRAM savings\n")
 		sb.WriteString("are justified.\n")
 	} else {
-		sb.WriteString("**VERDICT: Models differ meaningfully.** The larger model produces measurably different\n")
-		sb.WriteString("search results. Whether the difference justifies the VRAM cost depends on which query\n")
-		sb.WriteString("categories matter most — see breakdown below.\n")
+		// Different rankings, but check if the larger model actually wins on quality
+		bWinsGT := bGTPct > aGTPct+5         // B needs >5pp better ground truth
+		bWinsPert := bPertAvg > aPertAvg+0.5 // B needs >0.5 better perturbation
+		bWinsOverall := bWinsGT && bWinsPert
+
+		if bWinsOverall {
+			sb.WriteString("**VERDICT: Larger model is meaningfully better.** Model B produces different rankings\n")
+			sb.WriteString("AND wins on both ground truth precision and perturbation stability. The VRAM cost\n")
+			sb.WriteString("may be justified.\n")
+		} else {
+			sb.WriteString("**VERDICT: Different but not better.** The models produce different rankings, but the\n")
+			sb.WriteString("larger model does not consistently outperform on quality metrics (ground truth precision\n")
+			sb.WriteString("and perturbation stability). The smaller model is the better value.\n")
+		}
 	}
 
 	// Per-category breakdown

@@ -38,7 +38,7 @@ type Config struct {
 func Default() *Config {
 	cfg := &Config{
 		EmbeddingURL:           "http://localhost:1234/v1",
-		EmbeddingModel:         "text-embedding-qwen3-embedding-8b",
+		EmbeddingModel:         "text-embedding-qwen3-embedding-4b",
 		EmbeddingContextLength: 16384,
 		ChatURL:                "http://localhost:1234/v1",
 		ChatModel:              "",
