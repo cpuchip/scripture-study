@@ -4,6 +4,7 @@ use (
 	./scripts/becoming
 	./scripts/brain
 	./scripts/byu-citations
+	./scripts/embedding-compare
 	./scripts/gospel-engine
 	./scripts/chromem-exp
 	./scripts/gospel-library
