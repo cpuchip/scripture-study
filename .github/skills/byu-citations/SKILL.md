@@ -1,4 +1,3 @@
-```skill
 ---
 name: byu-citations
 description: "Look up which General Conference talks, Journal of Discourses entries, and other sources cite a particular scripture verse using the BYU Scripture Citation Index (scriptures.byu.edu). Use when you want to know who has taught about a verse, how frequently a verse appears in conference, or to discover that a verse has surprisingly little modern commentary."
@@ -92,4 +91,3 @@ The BYU Citation Index tells you *who cited a verse*. The `gospel-vec` search te
 1. Use `byu_citations` to find who cited the specific verse
 2. Use `gospel-vec` to search for thematic discussions that may allude to the verse without citing it directly
 3. `read_file` the actual talks to verify
-```

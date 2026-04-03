@@ -1,4 +1,3 @@
-```skill
 ---
 name: ben-test
 description: "Stress-test our own practice against our principles. Named for Ben, who observed 'Your AI is very complimentary. Perhaps too complimentary?' Apply when assessing whether we practice what we've written — in evaluations, proposals, self-assessments, and especially when we're about to tell someone else what they could learn from us."
@@ -82,4 +81,3 @@ After Ben Test: "Our 11-step cycle describes principles we practice at ~33%. Ste
 ---
 
 *In honor of Ben, who had the courage to say the thing that needed saying.*
-```

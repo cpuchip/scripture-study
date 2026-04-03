@@ -1,4 +1,3 @@
-```skill
 ---
 name: wide-search
 description: "Cast a broad net across the entire library — semantic search, conference talks, cross-volume connections. Surfaces patterns and relationships that deep reading misses. Use after deep-reading to widen the study, or independently for exploratory research."
@@ -109,4 +108,3 @@ In a phased study plan:
 4. **Becoming** closes with personal application
 
 Wide search feeds synthesis with the breadth and cross-references that make studies like [serpent-and-dragon.md](../../study/serpent-and-dragon.md) comprehensive — 24 source files across all 5 standard works.
-```

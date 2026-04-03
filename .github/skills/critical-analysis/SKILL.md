@@ -1,4 +1,3 @@
-```skill
 ---
 name: critical-analysis
 description: "Stress-test the study's arguments, assumptions, and gaps before finalizing. Asks 'what are we missing?', 'where are we overreaching?', and 'does the text actually say what we think it says?' Use between gap analysis and first draft to sharpen the study."
@@ -94,4 +93,3 @@ Honest critical analysis often opens space for the Spirit to teach. When you sit
 > "Study it out in your mind; then you must ask me if it be right" — D&C 9:8
 
 The "studying it out" includes checking your work. The asking comes after.
-```

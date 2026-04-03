@@ -1,4 +1,3 @@
-```skill
 ---
 name: deep-reading
 description: "Telescope into a specific scripture passage or narrow topic. Follow every footnote, trace every cross-reference, read full chapters for context. Produces intermediate findings in a working document. Use for focused, depth-first study on a single text or concept."
@@ -76,4 +75,3 @@ In a phased study plan (see `study-plan` prompt):
 4. **Becoming** closes with personal application
 
 Deep reading feeds wide search with specific threads to pull. Wide search feeds synthesis with breadth and connections. The plan coordinates them.
-```

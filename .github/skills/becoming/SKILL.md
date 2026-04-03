@@ -1,4 +1,3 @@
-```skill
 ---
 name: becoming
 description: "Bridge from study to life. Ensures every study lands somewhere personal — specific commitments, practical application, and connections to the becoming/ directory. Load at the end of any study, lesson, or evaluation."
@@ -85,4 +84,3 @@ This is not the AI generating becoming content *for* the user. The becoming sect
 - **Connect** rather than create — link to what exists in becoming/, don't fabricate a journey
 
 The user has the Spirit to judge the fruit. Our job is to make sure the study *offers* fruit — not just leaves it on the tree.
-```

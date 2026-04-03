@@ -1,4 +1,3 @@
-```skill
 ---
 name: quote-log
 description: "Externalize verified quotes and observations to a scratch file as you read, so they survive context compaction. Use during any study session to build a durable working document alongside source reading. This skill exists because files are durable — context is not."
@@ -102,4 +101,3 @@ Create a working file at `study/.scratch/{topic}.md` at the start of the study, 
 - **Kept permanently:** Scratch files are research provenance — they trace how observations and arguments were developed. Published alongside studies.
 
 The scratch file is both scaffolding AND audit trail. It shows how the building was constructed.
-```
