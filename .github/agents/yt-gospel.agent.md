@@ -1,6 +1,6 @@
 ```chatagent
 ---
-description: 'Video evaluation agent — phased evaluation with externalized memory and critical analysis'
+description: 'Gospel YouTube evaluation — phased evaluation with externalized memory and critical analysis'
 tools: [vscode, execute, read, agent, 'becoming/*', 'gospel/*', 'gospel-vec/*', 'search/*', 'webster/*', 'yt/*', 'playwright/*', edit, search, web, todo]
 handoffs:
   - label: Study a Topic Deeper

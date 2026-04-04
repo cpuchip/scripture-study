@@ -82,7 +82,8 @@ This project uses **custom agents** (`.github/agents/`) for specialized workflow
 | `lesson` | Lesson planning — phased preparation with scratch files and pedagogy framework |
 | `talk` | Sacrament meeting talk preparation |
 | `review` | Conference talk analysis for teaching patterns |
-| `eval` | YouTube video evaluation — phased evaluation with charitable critical analysis |
+| `yt-gospel` | Gospel YouTube evaluation — phased evaluation with charitable critical analysis |
+| `yt` | General YouTube digestion — AI, relationships, skills, any topic worth studying |
 | `journal` | Personal reflection, journaling, becoming |
 | `plan` | Planning — from idea to spec with critical analysis and creation cycle review |
 | `podcast` | Transform studies into shareable podcast/video notes |
