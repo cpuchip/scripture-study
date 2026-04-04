@@ -1,6 +1,6 @@
 # Claude Code Integration — Scratch File
 
-**Binding Problem:** brain.exe agents currently depend solely on the GitHub Copilot SDK for LLM reasoning. This creates a single point of cost (300 premium requests/month) and a single point of capability. Adding Claude Code as an alternative backend would spread cost and provide access to different model capabilities (200K context, project caching, different agent loop).
+**Binding Problem:** brain.exe agents currently depend solely on the GitHub Copilot SDK for LLM reasoning. This creates a single point of cost (1500 premium requests/month on Pro+) and a single point of capability. Adding Claude Code as an alternative backend would spread cost and provide access to different model capabilities (200K context, project caching, different agent loop).
 
 **Created:** 2026-04-04
 

@@ -4,7 +4,7 @@
 
 brain.exe's agent pipeline depends solely on the GitHub Copilot SDK for LLM reasoning. This creates two constraints:
 
-1. **Cost concentration.** All agent work (research, plan, interactive) draws from a single pool of 300 premium requests/month. At 1.33 premium requests per pipeline entry, that's ~225 entries/month maximum — and interactive sessions compete for the same budget.
+1. **Cost concentration.** All agent work (research, plan, interactive) draws from a single pool of 1500 premium requests/month (Pro+). At 1.33 premium requests per pipeline entry, that's ~1125 entries/month maximum — but interactive Copilot sessions in VS Code compete for the same budget.
 2. **Capability lock-in.** The Copilot SDK is excellent but has a specific context model. Claude Code offers different strengths: 200K context window, project-level caching, built-in file/bash tools, and a different agent loop.
 3. **Experience gap.** Michael identified Claude Code fluency as a skill to develop (not just for cost, but for understanding the tool's model). Learning by integrating it into brain.exe is hands-on experience with a real production use case.
 

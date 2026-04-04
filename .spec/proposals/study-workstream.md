@@ -39,6 +39,8 @@ Beyond these seeds, there are unresolved threads worth tracking: the Abraham 4-5
 
 **Binding question:** What does it mean to preside — not just hold the title — and what scriptures, talks, and patterns distinguish a functioning presidency from a one-cylinder operation?
 
+**Status: DONE** (Mar 27) — [study/art-of-presidency.md](../../study/art-of-presidency.md)
+
 **Why first:** This is the foundation. You can't study delegation within a presidency until you understand what a presidency IS. The problem is happening now — presidency meetings aren't happening, plans aren't going out, one person is carrying the load.
 
 **Source material:**
@@ -61,6 +63,8 @@ Beyond these seeds, there are unresolved threads worth tracking: the Abraham 4-5
 ### Study 2: The Art of Delegation
 
 **Binding question:** How do you delegate to humans the way you've learned to delegate to AI — with clear stewardships, progressive trust, accountability, and covenant — and what does scripture reveal about why human delegation is harder and holier?
+
+**Status: DONE** (Mar 31) — [study/art-of-delegation.md](../../study/art-of-delegation.md)
 
 **Why second:** The stewardship pattern study answered "how does God delegate?" This study answers "how do *I* delegate to my counselors?" It applies the AI-learned patterns (spec, context, trust gradient) to the human relationships where Michael identified the gap.
 

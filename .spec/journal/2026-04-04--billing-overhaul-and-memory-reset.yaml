@@ -35,8 +35,8 @@ discoveries:
   - title: "Pipeline cost model is cleaner than expected"
     detail: >
       Research pass at 0.33 (Haiku) + Plan pass at 1.0 (Sonnet) = 1.33
-      premium requests per brain entry. With 300/month budget that's ~225
-      entries before cost pressure. Plenty of headroom at 19% utilization.
+      premium requests per brain entry. With 1500/month budget (Pro+) that's
+      ~1125 entries before cost pressure. Plenty of headroom at 19% utilization.
 
 surprises:
   - >

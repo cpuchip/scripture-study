@@ -1,6 +1,6 @@
 # Plan 21: gospel-engine — Combined Gospel MCP Server
 
-**Status:** READY TO BUILD
+**Status:** Phase 5 COMPLETE (all enrichment shipped). Phase 1.5 ergonomics next.
 **Proposal:** [.spec/proposals/gospel-engine/main.md](../../.spec/proposals/gospel-engine/main.md) (updated Mar 29, 2026)
 **Agent:** dev
 **Target:** `scripts/gospel-engine/`

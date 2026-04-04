@@ -68,13 +68,23 @@ Full implementation detail archived in [.spec/memory/archive/active-2026-03-22.m
 
 **Pending cleanup:** Delete `scripts/brain/internal/ai/tools.go` and `scripts/brain/test-spec.md`.
 
-#### Phase 3c: Auto-Routing + Review Queue — NEXT
+#### Phase 3c: Auto-Routing + Review Queue — SHIPPED (Mar–Apr)
+
+Implemented classification-aware routing, approval queue, suggest-mode agent sessions.
+
+#### Phase 4a–c: Pipeline + Maturity Model — SHIPPED (Apr 4)
+
+- **Phase 4a:** Maturity ladder (raw → researched → planned → specced → executing → verified), scenario enforcement, 24 tests green.
+- **Phase 4b:** Research agent (Haiku, PremiumRequestCost=0.33) — category-aware MCP selection, token caps raised for research quality.
+- **Phase 4c:** Plan agent (Sonnet, PremiumRequestCost=1.0) — proposal generation, end-to-end pipeline validation.
+- **Billing overhaul:** TokenHardCap removed, PremiumRequestCost tracking, BILLING log lines per prompt. MCP key renamed "mcp" → "becoming".
+
+#### Phase 4d: REST API + Execution — NEXT
 
 | Item | Detail |
 |------|--------|
-| **Task** | brain.exe routes a captured idea to the appropriate agent session |
-| **Pattern** | Capture → classify → if "spec-worthy" → create proposal skeleton → assign to agent |
-| **Verify** | End-to-end: brain capture → proposal draft appears in `.spec/proposals/` |
+| **Task** | REST endpoints for pipeline operations, execution integration, emergency stop |
+| **Verify** | Pipeline controllable from brain UI dashboard |
 
 ### Workstream 2: Brain Consolidation
 
@@ -144,7 +154,7 @@ Full implementation detail archived in [.spec/memory/archive/active-2026-03-22.m
 
 | Item | Status | Notes |
 |------|--------|-------|
-| Model capability experiments | PLANNED | Haiku/Sonnet/Opus comparison, D&C 107 ratios for model-tier stewardship. Need baseline before scaling agentic work. |
+| Model capability experiments | **DONE** (Mar 28) | Haiku/Sonnet/Opus comparison complete. Full experiment data in `experiments/lm-studio/`. Informed pipeline agent model selection. |
 | Debugging book digestion | DONE | Agans' 9 Rules extracted (17 chapter markdown files). Debug agent created. Connections mapped. |
 | Voice analysis follow-up | OPEN | `study/yt/voice-analysis-ai-vs-michael.md` patterns. |
 
@@ -155,9 +165,11 @@ Full implementation detail archived in [.spec/memory/archive/active-2026-03-22.m
 | Item | Status | Notes |
 |------|--------|-------|
 | Progressive trust tracking | PLANNED | Define how models earn wider autonomy. From stewardship reflections. |
-| Claude subscription evaluation | RADAR | Cost analysis for pay-per-token vs included credits. |
+| Claude Code integration | **PROPOSAL READY** (Apr 4) | Alternative agent backend via CLI subprocess. [Proposal](../claude-code-integration.md). Cost spreading + experience building. |
+| Claude subscription evaluation | **DONE** (Apr 4) | Resolved: Pro+ $40/mo (1500 requests) for Copilot. Claude Pro $20/mo for Claude Code. |
+| Gospel Engine (Plan 21) | **Phase 5 DONE** | Combined gospel-mcp + gospel-vec. Not originally in this overview — emerged from enriched search/indexer proposals. Phase 1.5 (ergonomics) next. |
 | Stewardship → 11-step integration | PLANNED | Apply stewardship pattern to multi-agent work. |
-| Overview/active.md sync | ONGOING | Keep documents aligned. Archive mechanism created Mar 22. |
+| Overview/active.md sync | ONGOING | Keep documents aligned. Archive mechanism created Mar 22. Major refresh Apr 4. |
 
 ### Workstream T: Teaching (Added Mar 23)
 
@@ -187,9 +199,9 @@ Full implementation detail archived in [.spec/memory/archive/active-2026-03-22.m
 
 | Study | Binding Question | Status |
 |-------|-----------------|--------|
-| The Art of Presidency | What does it mean to preside, and what distinguishes a functioning presidency from a one-cylinder operation? | NOT STARTED — next study |
-| The Art of Delegation | How do you delegate to humans the way you've learned to delegate to AI? | WAITING (after Presidency) |
-| Zion in a Presidency | What does "one heart and one mind" look like in the smallest organizational unit? | WAITING (after Delegation) |
+| The Art of Presidency | What does it mean to preside, and what distinguishes a functioning presidency from a one-cylinder operation? | **DONE** (Mar 27) |
+| The Art of Delegation | How do you delegate to humans the way you've learned to delegate to AI? | **DONE** (Mar 31) |
+| Zion in a Presidency | What does "one heart and one mind" look like in the smallest organizational unit? | **NEXT** |
 
 **Study Queue** (after presidency cluster):
 
@@ -262,16 +274,18 @@ A multi-year family discipleship program grounded in the Book of Mormon. 5 ranks
 
 ---
 
-## 6. Current Focus (updated Mar 22)
+## 6. Current Focus (updated Apr 4)
 
-**WS1:** Phase 3c (auto-routing + review queue) is next. Phases 1–3b shipped.
+**WS1:** Phase 4c shipped. Phase 4d (REST API + execution + emergency stop) NEXT. Billing model overhauled to premium request tracking. Claude Code integration researched — [proposal](.spec/proposals/claude-code-integration.md) ready for Phase 1.
 **WS2:** Phase 1 (quick wins) when there's bandwidth. Not blocked.
 **WS3:** Phase 1 (scheduled tasks) when there's bandwidth. Not blocked.
-**WS-R:** Model experiments are the next research priority. Debugging book when PDF is available.
-**WS-P:** Progressive trust tracking spec after model experiments produce data.
+**WS-R:** Model experiments DONE (Mar 28). Gospel Engine Phases 1–5 all shipped (not originally in this plan — emerged from enriched search/indexer proposals). Gospel Engine Phase 1.5 (ergonomics) is next research-adjacent work.
+**WS-P:** Claude Code integration proposal written (Apr 4). Overview refreshed.
+**WS-S:** Art of Presidency DONE (Mar 27). Art of Delegation DONE (Mar 31). "Zion in a Presidency" is NEXT.
+**WS-T:** Teaching agent + repo scaffolded. Content not started.
 **Study:** Always. "It keeps me in the spirit."
 
-*The Week 1-3 sprint plan from the original proposal is superseded. Work proceeds by priority and available energy, not by rigid schedule.*
+**Key billing fact (corrected Apr 4):** GitHub Copilot Pro+ = 1500 premium requests/month ($40/mo). Pipeline cost = 1.33 requests/entry. ~1125 entries before cost pressure.
 
 ---
 

@@ -327,3 +327,76 @@ Consider making Dashboard the default landing page (replace `/` → `/dashboard`
 **Build it.** Two sessions. Phase 1 (backend) can ship independently — endpoints work via curl/Postman even without the frontend. Phase 2 (frontend) makes it human-friendly.
 
 This is the bridge between "Phase 3a shipped the routing infrastructure" and "Michael actually uses it." Without this UI, the routing table is infrastructure that sits idle.
+
+---
+
+## 10. Additional Dashboard Requirements (Added Apr 4)
+
+Michael reviewed the current dashboard UI and identified three gaps:
+
+### 10.1 Entry Body Preview in Approval Queue
+
+**Problem:** Approval queue cards show only the title and category badge. Michael can't see what the entry actually says, making it hard to decide whether to route or skip.
+
+**Solution:** Show the entry body text (or first ~200 chars) in each approval queue card, below the title. The `GET /api/agent/routable` endpoint already returns full entries — the frontend just needs to render the `body` field.
+
+```
+┌─────────────────────────────────────────────────────┐
+│  Reflect back what wife says                journal │
+│  → journal agent                                    │
+│                                                     │
+│  She told me about her day and I realized I was     │
+│  already thinking about my response instead of...   │
+│                                                     │
+│                           [X Skip]  [✓ Route]       │
+└─────────────────────────────────────────────────────┘
+```
+
+### 10.2 Model Selector on Approval Queue Entries
+
+**Problem:** All routed entries use the agent's default model. Sometimes Michael wants a more powerful model for a specific task (e.g., Opus for a complex plan, Haiku for a quick categorization). There's no per-entry model override.
+
+**Solution:** Add a model dropdown to each approval queue card. Default shows the agent's configured model. Michael can override before clicking "Route."
+
+**Backend change:** `POST /api/agent/route` needs an optional `model` field. The agent pool creates the session with the specified model instead of the default. `AgentConfig.Model` becomes the default but `RouteRequest.Model` can override it.
+
+```go
+type RouteRequest struct {
+    EntryID string `json:"entry_id"`
+    Model   string `json:"model,omitempty"` // optional override
+}
+```
+
+**Frontend change:** Small dropdown or chip selector showing available models (Haiku, Sonnet, Opus, GPT-4.1, etc.) on each card. Agent's default is pre-selected.
+
+**Available models:** Pull from a new `GET /api/models` endpoint or hardcode the known Copilot SDK models. If Claude Code backend is added later, include those too.
+
+### 10.3 Entry Edit Dialog
+
+**Problem:** If an entry is routed to the wrong agent (e.g., a study entry classified as "ideas"), Michael has to go to the entry detail page to fix it. There's no quick way to change the agent routing from the dashboard.
+
+**Solution:** Click on an entry title or an "Edit" button → opens a modal/dialog with:
+- **Title** (editable)
+- **Body** (editable, textarea)
+- **Category** (dropdown — actions, ideas, journal, people, projects, study, inbox)
+- **Agent route** (dropdown — journal, plan, study, research, or custom)
+- **Save** button → `PATCH /api/entries/{id}` + auto-updates routing
+
+**Backend change:** `PATCH /api/entries/{id}` already exists for some fields. Extend to accept `agent_route` and `route_status` fields. Or add a dedicated `POST /api/entries/{id}/reroute` endpoint.
+
+**UX flow:**
+1. Dashboard → see entry in approval queue
+2. Click entry title → edit dialog opens
+3. Change category from "ideas" to "study", agent from "plan" to "study"
+4. Save → dialog closes, card updates in place
+5. Route with correct settings
+
+### Implementation Sequencing
+
+These three features slot into the existing Phase 2 (Frontend):
+- **Body preview:** Trivial — just render `entry.body` in the card template
+- **Edit dialog:** Medium — new Vue component, extends existing PATCH endpoint
+- **Model selector:** Medium — new dropdown, new API field, agent pool override logic
+
+All three can be built in the same frontend session. The model selector requires a small backend change (adding `model` to the route request).
+

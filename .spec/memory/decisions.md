@@ -154,7 +154,7 @@
 - **Date:** 2026-04-04
 - **Decided by:** Michael + dev agent
 - **Decision:** Removed `TokenHardCap` from `AgentConfig` entirely. Added `PremiumRequestCost float64` to track cost per prompt in Copilot premium request units. `SessionUsage` tracks `Prompts` and `PremiumRequests` (no more `HardCapHit`). BILLING log lines emitted per prompt. `checkBudgetBeforePrompt()` deleted — observability only, no enforcement.
-- **Rationale:** Premium requests are the actual constraint (300/month on Pro). Token counting was an implementation detail that didn't match the real billing model. Research=0.33 (Haiku), Plan=1.0 (Sonnet).
+- **Rationale:** Premium requests are the actual constraint (1500/month on Pro+, $40/mo). Token counting was an implementation detail that didn't match the real billing model. Research=0.33 (Haiku), Plan=1.0 (Sonnet).
 - **Supersedes:** All token-based budget enforcement in agent.go
 
 ### Decision: MCP server key "mcp" → "becoming"

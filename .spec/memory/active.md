@@ -17,7 +17,7 @@
 4. **Claude Code integration** — NEW (Apr 4). Plan: add as alternative agent backend alongside Copilot SDK. Both cost spreading and gaining experience. Proposal forthcoming.
 
 ### Key Facts
-- **GitHub Copilot billing:** 300 premium requests/month ($10/mo Pro). Multipliers: Haiku=0.33, Sonnet=1.0, Opus=3.0, GPT-4.1/4o/5-mini=0 (free). Tool calls within agentic sessions are free. 19% utilization on Apr 4.
+- **GitHub Copilot billing:** 1500 premium requests/month ($40/mo Pro+). Multipliers: Haiku=0.33, Sonnet=1.0, Opus=3.0, GPT-4.1/4o/5-mini=0 (free). Tool calls within agentic sessions are free. 19% utilization on Apr 4.
 - **Claude Code:** Pro $20/mo (includes Claude Code + Sonnet + Opus). Usage-based with 5-hour session window + weekly limits. 200K context. Project caching. Different billing model from Copilot.
 - **Pipeline costs:** Research pass=0.33 + Plan pass=1.0 = 1.33 premium requests per entry.
 - **Space Center:** Dream business — planetarium, space/science center, starship bridge simulator. Related repos on GitHub (cpuchip). Haiku-class models need this in prompt context (not in training data).
@@ -31,10 +31,10 @@
 - **Phase 4a-c all shipped.** Maturity ladder, research agent (Haiku), plan agent (Sonnet), scenario enforcement, proposal generation. 24 tests green.
 - Proposal: [.spec/proposals/brain-phase4-pipeline.md](../proposals/brain-phase4-pipeline.md)
 
-### Claude Code Integration (NEW)
-- Plan in progress. Alternative agent backend to Copilot SDK.
+### Claude Code Integration
+- Alternative agent backend to Copilot SDK via CLI subprocess.
 - Motivated by: cost spreading, gaining experience, different capabilities (200K context, project caching).
-- Status: Research done, proposal needed.
+- Status: Research done, proposal written. [Proposal](../proposals/claude-code-integration.md).
 
 ### Brain Windows Service (Systray)
 - brain.exe should auto-start on login, show systray icon.
