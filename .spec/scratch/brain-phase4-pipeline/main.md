@@ -149,3 +149,25 @@ Brain-app (phone, Discord, relay) → capture → classify (category + maturity=
 - Human gate before every execution — no auto-execute
 - Maturity stages confirmed: raw → researched → planned → specced → executing → verified
 - Quick triage for simple items, conversational refinement for complex ones
+
+### From Pass 4 — Governance + Testing (Apr 3)
+
+- **Option A confirmed** for classifier enhancement: post-classification maturity assessment, keep classifier simple
+- **Per-layer governance documents added.** 5 docs mapping to 11-step creation cycle:
+  - `classifier-stewardship.md` (Steps 1-3): never act on content
+  - `maturity-stewardship.md` (Steps 1-3): assess readiness, not quality
+  - `research-covenant.md` (Steps 1-5): internal first, write everything, never decide
+  - `plan-covenant.md` (Steps 1-7): produce binding problem + scenarios, flag when idea fails analysis
+  - `execution-covenant.md` (Full cycle): build per spec, stay within boundaries
+- **Governance gap confirmed:** all brain governance currently hardcoded in Go — functional but invisible, not auditable, agents can't reflect on their own boundaries
+- **Documents loaded into system messages at runtime** via BuildSystemMessage — same pattern as .agent.md files but for boundary docs
+- **Test harness: sandbox approach, not Docker.**
+  - `.gitignored` `test-sandbox/` directory with fresh brain.db per run
+  - `pipeline-bench` CLI command (extends classify-bench pattern)
+  - Seeds test entries including prompt injection attacks
+  - `--research` and `--plan` flags to test deeper pipeline stages
+  - `--clean` flag to wipe sandbox
+  - Brain's env-var config (`BRAIN_DATA_DIR`) makes isolation trivial
+  - Docker deferred to CI/CD phase — Copilot SDK auth forwarding is possible but painful for iteration loop
+- **Phase 4a expanded:** now includes governance docs + test harness (1-2 sessions instead of 1)
+- **Each subsequent phase includes its layer's governance doc as a deliverable**
