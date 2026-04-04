@@ -145,3 +145,27 @@
 - **Decided by:** Michael + dev agent
 - **Decision:** Each widget instance stores `practice_filter_{widgetId}` in shared prefs. Cycle header tap or flyover activity to change.
 - **Rationale:** Users want different widgets showing different categories.
+
+---
+
+## Billing & Cost Model (Apr 4)
+
+### Decision: Billing model is premium requests, not token caps
+- **Date:** 2026-04-04
+- **Decided by:** Michael + dev agent
+- **Decision:** Removed `TokenHardCap` from `AgentConfig` entirely. Added `PremiumRequestCost float64` to track cost per prompt in Copilot premium request units. `SessionUsage` tracks `Prompts` and `PremiumRequests` (no more `HardCapHit`). BILLING log lines emitted per prompt. `checkBudgetBeforePrompt()` deleted — observability only, no enforcement.
+- **Rationale:** Premium requests are the actual constraint (300/month on Pro). Token counting was an implementation detail that didn't match the real billing model. Research=0.33 (Haiku), Plan=1.0 (Sonnet).
+- **Supersedes:** All token-based budget enforcement in agent.go
+
+### Decision: MCP server key "mcp" → "becoming"
+- **Date:** 2026-04-04
+- **Decided by:** Michael + dev agent
+- **Decision:** The MCP server registered as `"mcp"` in brain.exe config is now keyed as `"becoming"` (matching the actual server name). Added `key` field to `serverSpec` struct in config.go. Updated `mcpDefsForCategory()` in research.go accordingly.
+- **Rationale:** The key should describe what the server is, not be a generic "mcp". Reduces confusion when adding more MCP servers.
+
+### Decision: Claude Code CLI subprocess for integration
+- **Date:** 2026-04-04
+- **Decided by:** Michael + dev agent (plan agent)
+- **Decision:** Integrate Claude Code as alternative agent backend via CLI subprocess (`claude -p "query" --output-format json`), NOT via the Claude Agent SDK (Python/TypeScript only, uses API key billing). Creates `AgentBackend` interface with `CopilotBackend` and `ClaudeCodeBackend` implementations. Configurable per-agent.
+- **Rationale:** CLI subprocess uses Pro subscription billing ($20/mo) — achieves cost-spreading goal. Agent SDK uses API key billing (different cost model). Go can shell out to CLI easily. Claude Code CLI has MCP support, system prompts, budget limits, session persistence.
+- **Proposal:** `.spec/proposals/claude-code-integration.md`

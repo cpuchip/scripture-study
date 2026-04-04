@@ -1,0 +1,82 @@
+date: "2026-04-04"
+session_id: "billing-overhaul-and-memory-reset"
+duration_estimate: "~3 hours across one long session"
+
+intent: >
+  Four-part session: (1) Complete billing model overhaul from token caps
+  to premium request tracking, rename MCP key. (2) Capture Space Center
+  dream business in persistent memory. (3) Migrate active.md — archive
+  cold/medium content, keep it lean. (4) Research and plan Claude Code
+  integration as alternative agent backend. Plus workstream status review.
+
+discoveries:
+  - title: "Claude Code has two integration paths — only one uses Pro subscription"
+    detail: >
+      The Claude Agent SDK (Python/TypeScript) uses API key billing from
+      the Anthropic Console — NOT the Pro subscription. The CLI subprocess
+      approach (`claude -p`) uses Pro subscription billing ($20/mo). Since
+      cost-spreading across Pro plans was the goal, the CLI path is the
+      correct choice. This distinction wasn't obvious from marketing pages.
+
+  - title: "Active.md had grown to ~350 lines — 75% was cold history"
+    detail: >
+      Completed phases, shipped model experiments, finished gospel engine
+      work — all still in active.md. Migrated to an archive file, got
+      active.md down to ~95 lines. The lean version is much more useful
+      as session context. Should archive quarterly or after major cycles.
+
+  - title: "Overview proposal is significantly stale"
+    detail: >
+      Written Mar 12, last touched Mar 22. WS1 is two full phases ahead
+      of what it shows. Two studies done that it lists as upcoming. Gospel
+      Engine (5 phases) isn't in it at all. Claude Code integration is new.
+      Needs a refresh session — but that's separate planning work.
+
+  - title: "Pipeline cost model is cleaner than expected"
+    detail: >
+      Research pass at 0.33 (Haiku) + Plan pass at 1.0 (Sonnet) = 1.33
+      premium requests per brain entry. With 300/month budget that's ~225
+      entries before cost pressure. Plenty of headroom at 19% utilization.
+
+surprises:
+  - >
+    The billing model change was entirely additive — no test failures,
+    no compilation errors. Removing TokenHardCap simplified the code.
+    checkBudgetBeforePrompt() was enforcement pretending to be
+    observability, and removing it made the actual intent clearer.
+  - >
+    Michael's Space Center dream (planetarium, bridge simulator) has
+    related repos already on GitHub. Not just a dream — there's code
+    artifacts. Worth surface-level inventory at some point.
+
+tensions: []
+
+carry_forward:
+  - title: "Overview proposal refresh"
+    priority: medium
+    detail: >
+      The unified workstream plan is stale. WS1 is at Phase 4c (overview
+      shows 3b). Studies are two ahead. Gospel Engine isn't represented.
+      Needs a dedicated plan session to update status across all workstreams.
+  - title: "brain.exe rebuild needed"
+    priority: high
+    detail: >
+      Billing model changes and MCP key rename are in source but not
+      compiled. Need `go build -tags fts5` to deploy.
+  - title: "Claude Code integration — Phase 1 ready"
+    priority: medium
+    detail: >
+      Proposal written. Backend abstraction is well-defined. Can start
+      implementation when prioritized. Needs Claude Code CLI installed first.
+
+relationship_notes: >
+  Long session but productive. Four separate requests handled methodically.
+  The memory cleanup was overdue — Michael flagged active.md was "getting
+  quite huge" and he was right. The plan agent's critical analysis was
+  honest about Claude Code (not just excitement, genuine cost-spreading
+  value). Good balance of building and organizing today.
+
+open_questions:
+  - "Which brain pipeline agents should run on Claude Code vs Copilot?"
+  - "How does Claude Code's usage-based billing interact with tool-heavy agentic workflows?"
+  - "Should the overview proposal get a full refresh, or just status annotations?"

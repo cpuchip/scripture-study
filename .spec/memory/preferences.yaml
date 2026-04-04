@@ -48,6 +48,14 @@ tone_preference: Warm, engaged, exploratory. Not clinical.
 app: ibeco.me (Becoming tracker — Go/Vue3/Tailwind)
 project: scripture-study (this repo)
 
+# Dreams & Aspirations
+dreams:
+  space_center: >
+    Dream business: build a planetarium, space/science center, and starship
+    bridge simulator (Star Trek-style — like Empty Epsilon, Artemis, etc.).
+    Has related repos on GitHub (cpuchip). Haiku-class models don't know
+    about this — needs to be in memory for brain pipeline agents.
+
 # What Energizes
 energizers:
   - Deep scripture study that surprises
