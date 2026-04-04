@@ -95,6 +95,7 @@ At any review point, the human can:
 - Scenario field on spec-stage items
 - Classifier prompt injection fix (delimiters around entry text)
 - REST API endpoints for pipeline operations
+- Emergency stop API (kill running agents/Copilot CLI from any surface)
 
 **Out of scope (deferred):**
 - ibeco.me pipeline interaction (kick off passes, iterate on entries — separate proposal, but the API supports it)
@@ -278,6 +279,40 @@ New endpoints on the web server (parallel to MCP tools, for ibeco.me/brain-app f
 | `/api/pipeline/{id}` | GET | Full item context (same as `brain_review`) |
 | `/api/pipeline/{id}/advance` | POST | Advance/revise/reject/defer (same as `brain_advance`) |
 | `/api/pipeline/{id}/scenarios` | PUT | Update scenarios for an item |
+| `/api/emergency-stop` | POST | Kill all running agents and Copilot CLI subprocesses |
+| `/api/emergency-stop/{id}` | POST | Kill a specific running agent task |
+| `/api/status` | GET | Health check: running tasks, process IDs, uptime |
+
+### 5.12 Emergency Stop
+
+If an agent goes runaway — burning tokens, writing garbage, looping — Michael needs to kill it from wherever he is: phone (brain-app), browser (ibeco.me), or terminal. Not "wait until I get to my desk."
+
+**What it does:**
+
+1. `POST /api/emergency-stop` — kills ALL running agent subprocesses (Copilot CLI, any `StartTask` goroutines), cancels pending work, logs what was stopped and why
+2. `POST /api/emergency-stop/{id}` — kills a specific entry's running task by canceling its context
+3. `GET /api/status` — shows what's currently running (entry ID, agent name, model, duration, PID) so you know *what* to stop
+
+**Implementation:**
+
+The agent pool already tracks running tasks via `StartTask`. Each task runs in a goroutine with a `context.Context`. Emergency stop = cancel the context + kill the Copilot CLI subprocess if one is running.
+
+```go
+// In internal/ai/pool.go — add to AgentPool
+func (p *AgentPool) EmergencyStop(entryID string) error {
+    // Cancel the task's context → Copilot CLI gets SIGTERM
+    // Log: what was killed, how long it ran, what it produced so far
+}
+
+func (p *AgentPool) EmergencyStopAll() []StoppedTask {
+    // Cancel all active contexts
+    // Return list of what was stopped for the response
+}
+```
+
+**MCP tool:** `brain_stop` — same functionality accessible from VS Code chat. Parameters: `id` (optional, omit for stop-all).
+
+**Safety:** The stop endpoint requires no special auth beyond what brain.exe already uses (it's on localhost or behind ibeco.me's auth). But it logs everything — timestamp, what was running, who stopped it, partial output preserved.
 
 ### 5.10 Governance Documents (Per-Layer Intent, Covenant & Stewardship)
 
@@ -476,11 +511,13 @@ $env:BRAIN_CODE_DIR = "."
 - `brain_advance` with scenarios finalizes to specced, writes proposal file
 - `pipeline-bench --plan` runs full pipeline (classify → mature → research → plan) on sandbox entries
 
-### Phase 4d: Pipeline REST API + Execution Integration (1 session)
+### Phase 4d: Pipeline REST API + Execution Integration + Emergency Stop (1 session)
 
 **Deliverables:**
 - Governance document for execution agents (`docs/governance/execution-covenant.md`)
 - REST endpoints (`/api/pipeline/*`) for future ibeco.me dashboard
+- Emergency stop endpoint (`/api/emergency-stop`) + `brain_stop` MCP tool
+- Status endpoint (`/api/status`) for running task visibility
 - Execution routing from specced items to existing agent pool (loads execution-covenant.md)
 - End-check: human reviews agent output against scenarios
 
@@ -489,6 +526,10 @@ $env:BRAIN_CODE_DIR = "."
 - `POST /api/pipeline/{id}/advance` with approval triggers agent execution
 - Agent output linked to entry; scenarios available for human verification
 - Execution agent system message includes execution-covenant.md + agent-specific .agent.md
+- `POST /api/emergency-stop` kills all running agent tasks and returns what was stopped
+- `POST /api/emergency-stop/{id}` kills a specific task, partial output preserved
+- `GET /api/status` shows running tasks with entry ID, agent, model, duration
+- `brain_stop` from VS Code chat kills a runaway agent by entry ID or stops all
 
 ---
 
