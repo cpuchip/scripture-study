@@ -1,6 +1,6 @@
 # Active Context
 
-*Last updated: 2026-04-03*
+*Last updated: 2026-04-04*
 *Note: Migrated to new computer on Mar 27. Plex restored. Old desktop (LEPTON) decommissioned.*
 *Note: Dual 4090s confirmed in new desktop (Mar 28). Hardware enables 30B+ models at full context.*
 
@@ -148,18 +148,20 @@ All settled decisions are in [decisions.md](decisions.md). New this cycle:
 - Phases 3a-3c all shipped. Auto-routing, review queue, SDK custom agents all built.
 - Proposals: [.spec/proposals/brain-multi-agent/main.md](../proposals/brain-multi-agent/main.md), [.spec/proposals/brain-phase3c-sdk-agents.md](../proposals/brain-phase3c-sdk-agents.md)
 
-### WS1 Phase 4: Brain Pipeline Maturity — PROPOSAL WRITTEN (Apr 3)
+### WS1 Phase 4: Brain Pipeline Maturity — PHASE 4a COMPLETE (Apr 3-4)
 - **Binding problem:** brain classifies *what* but not *how ready*. Human is the maturity router. Queue is invisible.
 - **Maturity ladder:** raw → researched → planned → specced → executing → verified
-- **MCP-first interaction:** 3 new tools (`brain_queue`, `brain_advance`, `brain_review`) for VS Code chat
-- **Research pass:** cheap model (Haiku/Flash) does internal + external research, writes scratch file
-- **Plan pass:** Sonnet structures binding problem, scope, suggested scenarios
-- **Human gate on everything.** No auto-execute. Pipeline prepares, Michael decides.
-- **Classifier injection fix** included (structural delimiters around entry text)
-- **4 phases:** 4a (schema + queue + classifier fix), 4b (research pass), 4c (plan pass + specs), 4d (REST API + execution)
-- **Key design decisions from Q&A:** VS Code is primary surface, pull-based morning brief, scratch files are the artifact, ibeco.me is dashboard/glance surface (TBD — agent decision, needs Michael confirmation)
+- **Phase 4a SHIPPED (Apr 3-4).** All deliverables:
+  - Governance docs: `docs/governance/classifier-stewardship.md`, `docs/governance/maturity-stewardship.md`
+  - Schema migration: 5 maturity columns + index + 4 new DB methods (SetMaturity, SetScratchPath, SetScenarios, ListPipeline)
+  - Classifier injection fix: `WrapEntryText()` delimiters + system prompt hardening
+  - Maturity assessment: heuristic in `internal/classifier/maturity.go` (raw/planned/specced), wired into both Store.Save (relay path) and handleClassify (web reclassify path)
+  - `brain_queue` MCP tool: grouped pipeline view with stage/category/limit filters
+  - `pipeline-bench` CLI: sandbox DB + 12 test entries (3 injection attacks) → 12/12 pass
+  - Maturity heuristic tuning: strong vs weak spec signals, concrete pattern counting. "must be" alone ≠ specced.
+- **Phase 4b NEXT:** Research pass + brain_advance + brain_review MCP tools
 - Proposal: [.spec/proposals/brain-phase4-pipeline.md](../proposals/brain-phase4-pipeline.md). Scratch: [.spec/scratch/brain-phase4-pipeline/main.md](../scratch/brain-phase4-pipeline/main.md).
-- **Prompt injection note:** classifier vulnerable to entry content that reads like instructions. Michael's own brain entries triggered research behavior in raptor model. Structural fix in Phase 4a.
+- **Prompt injection note:** FIXED in 4a. Classifier now wraps entry text in structural delimiters + system prompt explicitly states content is data to classify, not instructions to follow.
 
 ### Brain Windows Service (Systray)
 - NEW (Apr 2). brain.exe should auto-start on login, show systray icon, easy to stop.
