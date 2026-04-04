@@ -26,6 +26,14 @@
 
 ## In Flight
 
+### Brain Project-Kanban (NEW Apr 4)
+- **Vision:** Transform brain from flat entry list to project-based goal orchestrator with iterative agent turns.
+- **3 phases:** P1 Projects + Dashboard, P2 Iterative Sessions, P3 Scheduled Tasks + Library.
+- **Absorbs** brain-ui-dashboard (§10 features) and complements brain-phase4-pipeline (maturity as kanban engine).
+- **Guide section written:** [07_developer-to-steward.md](../../docs/work-with-ai/guide/07_developer-to-steward.md) — paradigm shift from developer-focused to steward goal-based.
+- Proposal: [.spec/proposals/brain-project-kanban.md](../proposals/brain-project-kanban.md)
+- Research: [.spec/scratch/brain-project-kanban/main.md](../scratch/brain-project-kanban/main.md)
+
 ### WS1 Phase 4d: Pipeline REST API + Execution
 - **Next up.** REST endpoints for pipeline operations, execution integration, emergency stop.
 - **Phase 4a-c all shipped.** Maturity ladder, research agent (Haiku), plan agent (Sonnet), scenario enforcement, proposal generation. 24 tests green.
@@ -74,7 +82,7 @@
 | Progressive Trust Tracking | Noted | D&C 107 ratios, model capability experiments |
 | Squad A4/A5/A9 | Not started | After pipeline stabilizes |
 | Review 4-Step & 11-Step Guides | Low urgency | Natural pause |
-| Brain as Agent OS Platform | Researched | Ready for plan pass when prioritized |
+| Brain as Agent OS Platform | Superseded by brain-project-kanban proposal | Vision captured, concrete phases defined |
 
 ---
 
