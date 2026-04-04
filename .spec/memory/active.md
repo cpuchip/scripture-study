@@ -1,6 +1,6 @@
 # Active Context
 
-*Last updated: 2026-04-02*
+*Last updated: 2026-04-03*
 *Note: Migrated to new computer on Mar 27. Plex restored. Old desktop (LEPTON) decommissioned.*
 *Note: Dual 4090s confirmed in new desktop (Mar 28). Hardware enables 30B+ models at full context.*
 
@@ -144,12 +144,22 @@ All settled decisions are in [decisions.md](decisions.md). New this cycle:
 
 ## In Flight
 
-### WS1 Phase 3c: Auto-Routing + Review Queue + SDK Custom Agents
-- Phases 3a (agent pool + routing) and 3b (governance + token budgets) shipped Mar 21
-- **Session 1:** auto-routing with human review of output (original Phase 3c)
-- **Session 2:** SDK custom agent integration — wire agents into `CustomAgentConfig` for intent-based delegation
+### WS1 Phase 3c: Auto-Routing + Review Queue + SDK Custom Agents — SHIPPED
+- Phases 3a-3c all shipped. Auto-routing, review queue, SDK custom agents all built.
 - Proposals: [.spec/proposals/brain-multi-agent/main.md](../proposals/brain-multi-agent/main.md), [.spec/proposals/brain-phase3c-sdk-agents.md](../proposals/brain-phase3c-sdk-agents.md)
-- SDK v0.1.32 confirmed: `CustomAgentConfig` exists with Tools, Prompt, MCPServers, Infer fields
+
+### WS1 Phase 4: Brain Pipeline Maturity — PROPOSAL WRITTEN (Apr 3)
+- **Binding problem:** brain classifies *what* but not *how ready*. Human is the maturity router. Queue is invisible.
+- **Maturity ladder:** raw → researched → planned → specced → executing → verified
+- **MCP-first interaction:** 3 new tools (`brain_queue`, `brain_advance`, `brain_review`) for VS Code chat
+- **Research pass:** cheap model (Haiku/Flash) does internal + external research, writes scratch file
+- **Plan pass:** Sonnet structures binding problem, scope, suggested scenarios
+- **Human gate on everything.** No auto-execute. Pipeline prepares, Michael decides.
+- **Classifier injection fix** included (structural delimiters around entry text)
+- **4 phases:** 4a (schema + queue + classifier fix), 4b (research pass), 4c (plan pass + specs), 4d (REST API + execution)
+- **Key design decisions from Q&A:** VS Code is primary surface, pull-based morning brief, scratch files are the artifact, ibeco.me is dashboard/glance surface (TBD — agent decision, needs Michael confirmation)
+- Proposal: [.spec/proposals/brain-phase4-pipeline.md](../proposals/brain-phase4-pipeline.md). Scratch: [.spec/scratch/brain-phase4-pipeline/main.md](../scratch/brain-phase4-pipeline/main.md).
+- **Prompt injection note:** classifier vulnerable to entry content that reads like instructions. Michael's own brain entries triggered research behavior in raptor model. Structural fix in Phase 4a.
 
 ### Brain Windows Service (Systray)
 - NEW (Apr 2). brain.exe should auto-start on login, show systray icon, easy to stop.
