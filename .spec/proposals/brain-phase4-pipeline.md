@@ -97,8 +97,8 @@ At any review point, the human can:
 - REST API endpoints for pipeline operations
 
 **Out of scope (deferred):**
-- ibeco.me dashboard for pipeline view (separate proposal — but the API supports it)
-- brain-app pipeline UI (brain-app stays as capture surface for now)
+- ibeco.me pipeline interaction (kick off passes, iterate on entries — separate proposal, but the API supports it)
+- brain-app pipeline UI beyond status view (brain-app = view status/progress/items + capture)
 - Auto-execution of fully specced items (human gate always required)
 - Multi-agent handoffs during execution
 - Automated scenario verification (human verifies for now)
@@ -417,6 +417,10 @@ $env:BRAIN_CODE_DIR = "."
 
 **When Docker makes sense:** When brain.exe is deployed to NOCIX and we want automated pipeline testing in CI. At that point, the test harness already exists — it just needs a Dockerfile that forwards the auth token and points to LM Studio.
 
+**Prior art for Docker phase:**
+- [copilot_here](https://github.com/GordonBeeming/copilot_here) — wraps Copilot CLI in Docker with `gh` auth forwarding already solved. Mounts current directory, manages token permissions, supports Go image variant (`--golang`). The auth forwarding problem we deferred is solved here.
+- [Docker Sandboxes (`sbx`)](https://www.docker.com/products/docker-sandboxes/) — microVM isolation for AI agents. Supports Copilot CLI natively. `winget install Docker.sbx` on Windows. Gives filesystem/network controls without full Docker Compose ceremony.
+
 ### Phase 4a: Governance + Schema + Classifier Fix + Test Harness (1-2 sessions)
 
 **Deliverables:**
@@ -543,4 +547,7 @@ $env:BRAIN_CODE_DIR = "."
 
 **ibeco.me dashboard is a follow-on proposal** — the REST API in Phase 4d is designed to support it, but the MCP tools in VS Code are the primary UI. Dashboard spec should be written separately once the pipeline is proven in practice.
 
-**Note for Michael's review:** The ibeco.me role was decided by the agent (Michael was away): ibeco.me = dashboard/glance surface, VS Code = work surface, brain-app = capture surface. Three surfaces, three roles. Confirm or redirect.
+**Three surfaces, three roles (confirmed):**
+- **VS Code + brain.exe** — primary work surface. Everything: triage, iterate, study, build. This is where Michael lives.
+- **ibeco.me** — dashboard/glance surface AND interaction surface. View status, kick things off, iterate with the agent through progressive entries on a topic. Not just read-only — it can drive the pipeline too.
+- **brain-app** — capture + status. View progress/items, capture new entries on the go. Lightweight by design.

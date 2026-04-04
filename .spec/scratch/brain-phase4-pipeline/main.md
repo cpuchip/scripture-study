@@ -138,7 +138,10 @@ Brain-app (phone, Discord, relay) → capture → classify (category + maturity=
 - **Research pass scope:** Smart mix — internal (existing studies, proposals, brain entries, prior art) AND external (web search, YouTube, articles) weighted by what the item needs.
 - **Pipeline categories:** Ideas + Projects + Study. Actions and journal don't need maturity pipeline (actions have a clear "done" state, journal is reflective not actionable).
 - **Spec template — what makes "specced" ready?** Scenarios. Everything else (binding problem, success criteria, scope, phasing) is important but scenarios are the gating field. If you can't write a testable scenario for what "done" looks like, the spec isn't ready.
-- **ibeco.me role:** (Michael stepped away — agent decision) ibeco.me serves as the **dashboard/glance surface** — pipeline status at a glance, accessible from phone or browser. VS Code chat is the **work surface** where refinement happens via MCP tools. brain-app remains the **capture surface**. Three surfaces, three roles, no overlap. **Mark for Michael's review.**
+- **ibeco.me role:** (Michael stepped away — agent decision) ibeco.me serves as the **dashboard/glance surface** — pipeline status at a glance, accessible from phone or browser. VS Code chat is the **work surface** where refinement happens via MCP tools. brain-app remains the **capture surface**. Three surfaces, three roles, no overlap. **CONFIRMED by Michael (Apr 3).** Additional nuance:
+  - ibeco.me is not just read-only — Michael should be able to kick things off, iterate through progressive entries on a topic
+  - brain-app = view status/progress/items + capture, intentionally lightweight
+  - VS Code = full work surface, everything including triage, iterate, study, build
 - **Prompt injection:** Fix in Phase 4 as part of pipeline integrity. Classifier needs structural protection (delimiters, input validation) not just prompt hardening.
 
 ### From Q&A Passes 1-2
@@ -171,3 +174,11 @@ Brain-app (phone, Discord, relay) → capture → classify (category + maturity=
   - Docker deferred to CI/CD phase — Copilot SDK auth forwarding is possible but painful for iteration loop
 - **Phase 4a expanded:** now includes governance docs + test harness (1-2 sessions instead of 1)
 - **Each subsequent phase includes its layer's governance doc as a deliverable**
+
+### From Pass 5 — Surface Roles + Docker Prior Art (Apr 3)
+
+- **Surface roles confirmed.** ibeco.me = dashboard + interaction, VS Code = primary work, brain-app = capture + status view.
+- **ibeco.me capabilites refined:** not just glance — should support kicking off pipeline stages, iterating on entries. The REST API (§5.9) enables this.
+- **Docker prior art saved for CI/CD phase:**
+  - [copilot_here](https://github.com/GordonBeeming/copilot_here) — Copilot CLI in Docker, `gh` auth forwarding solved, Go image variant available. The auth problem we deferred is already solved here.
+  - [Docker Sandboxes (sbx)](https://www.docker.com/products/docker-sandboxes/) — microVM isolation for AI agents. `winget install Docker.sbx` on Windows. Supports Copilot CLI natively. MicroVM > container for agent isolation.
