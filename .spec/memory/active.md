@@ -148,7 +148,7 @@ All settled decisions are in [decisions.md](decisions.md). New this cycle:
 - Phases 3a-3c all shipped. Auto-routing, review queue, SDK custom agents all built.
 - Proposals: [.spec/proposals/brain-multi-agent/main.md](../proposals/brain-multi-agent/main.md), [.spec/proposals/brain-phase3c-sdk-agents.md](../proposals/brain-phase3c-sdk-agents.md)
 
-### WS1 Phase 4: Brain Pipeline Maturity — PHASE 4a COMPLETE (Apr 3-4)
+### WS1 Phase 4: Brain Pipeline Maturity — PHASE 4c COMPLETE (Apr 3-5)
 - **Binding problem:** brain classifies *what* but not *how ready*. Human is the maturity router. Queue is invisible.
 - **Maturity ladder:** raw → researched → planned → specced → executing → verified
 - **Phase 4a SHIPPED (Apr 3-4).** All deliverables:
@@ -159,7 +159,22 @@ All settled decisions are in [decisions.md](decisions.md). New this cycle:
   - `brain_queue` MCP tool: grouped pipeline view with stage/category/limit filters
   - `pipeline-bench` CLI: sandbox DB + 12 test entries (3 injection attacks) → 12/12 pass
   - Maturity heuristic tuning: strong vs weak spec signals, concrete pattern counting. "must be" alone ≠ specced.
-- **Phase 4b NEXT:** Research pass + brain_advance + brain_review MCP tools
+- **Phase 4b SHIPPED (Apr 4-5).** All deliverables:
+  - Governance document: `docs/governance/research-covenant.md`
+  - Pipeline package: `internal/pipeline/research.go` — Pipeline struct with Advance(), runResearch(), buildResearchPrompt(), slugify()
+  - `brain_advance` MCP tool, `brain_review` MCP tool, web API endpoints
+  - Agent pool: `Client()` accessor, governance write paths for "research" agent
+  - Tests: 16 new (8 pipeline + 8 MCP)
+- **Phase 4c SHIPPED (Apr 5).** All deliverables:
+  - Governance document: `docs/governance/plan-covenant.md` (plan agent covenant)
+  - Plan pass agent: `runPlan()` using Sonnet model (claude-sonnet-4), loads plan-covenant.md, appends plan to scratch file
+  - Scenario support: `brain_advance` MCP tool now accepts `scenarios` parameter, enforced for planned→specced
+  - Proposal file generation: `generateProposal()` creates `.spec/proposals/{slug}.md` with scenarios + scratch content
+  - Plan revise: `revise` action at planned stage re-runs plan pass with feedback
+  - Governance: "plan" agent write paths updated to include study/.scratch
+  - Tests: 24 total (13 pipeline + 11 MCP), all green. Full suite: 5 packages pass.
+- **Phase 4d NEXT:** Pipeline REST API + execution integration + emergency stop
+- **Deferred items:** pipeline-bench --research/--plan flags, frontend UI, end-to-end tests with real Copilot passes
 - Proposal: [.spec/proposals/brain-phase4-pipeline.md](../proposals/brain-phase4-pipeline.md). Scratch: [.spec/scratch/brain-phase4-pipeline/main.md](../scratch/brain-phase4-pipeline/main.md).
 - **Prompt injection note:** FIXED in 4a. Classifier now wraps entry text in structural delimiters + system prompt explicitly states content is data to classify, not instructions to follow.
 
