@@ -33,9 +33,9 @@
 - **Phase 2 — SHIPPED (Apr 5):** `session_messages` table, `your_turn` route status, 4 API endpoints (messages, reply, complete, your-turn), conversation thread UI in EntryDetailView (message history, reply textarea, Ctrl+Enter), "Your Turn" dashboard section with amber badges.
 - **Phase 3 — SHIPPED (Apr 5):** `scheduled_tasks` + `task_runs` tables, scheduler goroutine (checks every 60s), 7 scheduled task API endpoints (CRUD + runs + trigger), 3 library endpoints (agents/skills/memory), activity feed endpoint, ScheduledView (create/edit/pause/delete/run-now with run history), LibraryView (tabbed agents/skills/memory browser), dashboard activity feed section. Nav updated: Scheduled + Library links.
 - **ALL PHASES 1-3 COMPLETE.** Entry sorting done (67 entries across 8 projects, 2 new: YouTube/Content, Budget App).
-- **Phase 4 — PLANNED (Apr 5):** Project Flow + AI Turn Automation. 5 sub-phases:
-  - 4a: Project Board View + Pipeline UI (kanban columns, advance/revise/defer buttons, dashboard stats) — **BUILD NEXT**
-  - 4b: Auto-assignment in classifier (suggest project_id during classification)
+- **Phase 4 — BUILDING (Apr 5):** Project Flow + AI Turn Automation. 5 sub-phases:
+  - 4a: Project Board View + Pipeline UI — **SHIPPED (Apr 5).** Kanban columns by maturity, advance/revise/defer buttons, slide-out panel with conversation history, board/list toggle (localStorage), stage distribution bars + your_turn badges on dashboard, `GET /api/projects/{id}/stats` endpoint.
+  - 4b: Auto-assignment in classifier (suggest project_id during classification) — **SHIPPED (Apr 5).** ProjectContext type in classifier, project_id in JSON schema + system prompt, all 4 Classify() call sites updated (web, relay x2, discord), store.Save applies project_id, ListUnassigned + CountUnassigned DB methods, unassigned_count in stats API, "Unassigned" filter tab in EntriesView, unassigned badge on DashboardView.
   - 4c: AI push-back loop (scheduled review of stale entries, clarifying questions, auto-advance on reply)
   - 4d: Project-aware agent context (inject project name, siblings, context file into agent prompts)
   - 4e: Execution gate (specced → executing from UI, scenario verification checklist)

@@ -6,7 +6,7 @@
 **Research:** [.spec/scratch/brain-project-kanban/main.md](../../scratch/brain-project-kanban/main.md)
 **Depends on:** WS1 Phase 3c (auto-routing + review queue) — SHIPPED, brain-ui-dashboard (in progress)
 **Affects:** All brain usage, daily workflow, ibeco.me, brain-app
-**Status:** Building — Phases 1-3 shipped (Apr 4-5). Phase 4 planned (Apr 5).
+**Status:** Building — Phases 1-3 shipped (Apr 4-5). Phase 4a-4b shipped (Apr 5). Phase 4c next.
 **Inspiration:** Simon Scrapes "Agentic OS Command Center" (https://youtu.be/uhMCy25NBfw)
 
 ---
