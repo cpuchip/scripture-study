@@ -31,7 +31,8 @@
 - **3 phases:** P1 Projects + Dashboard, P2 Iterative Sessions, P3 Scheduled Tasks + Library.
 - **Phase 1 — SHIPPED (Apr 4-5):** `projects` table + FK, CRUD API (7 routes), ProjectsView, ProjectDetailView, Dashboard projects section, project selector on EntryDetailView, body previews + project badges on EntriesView. All views grouped by maturity stage.
 - **Phase 2 — SHIPPED (Apr 5):** `session_messages` table, `your_turn` route status, 4 API endpoints (messages, reply, complete, your-turn), conversation thread UI in EntryDetailView (message history, reply textarea, Ctrl+Enter), "Your Turn" dashboard section with amber badges.
-- **Phase 3 — NOT STARTED:** Scheduled tasks + Library view. Revisit after using P1+P2 for a week.
+- **Phase 3 — SHIPPED (Apr 5):** `scheduled_tasks` + `task_runs` tables, scheduler goroutine (checks every 60s), 7 scheduled task API endpoints (CRUD + runs + trigger), 3 library endpoints (agents/skills/memory), activity feed endpoint, ScheduledView (create/edit/pause/delete/run-now with run history), LibraryView (tabbed agents/skills/memory browser), dashboard activity feed section. Nav updated: Scheduled + Library links.
+- **ALL PHASES COMPLETE.** Proposal delivered. Use it for a week, then evaluate what's working.
 - **Absorbs** brain-ui-dashboard (§10 features) and complements brain-phase4-pipeline (maturity as kanban engine).
 - **Guide section written:** [07_developer-to-steward.md](../../docs/work-with-ai/guide/07_developer-to-steward.md)
 - Proposal: [.spec/proposals/brain-project-kanban.md](../proposals/brain-project-kanban.md)
