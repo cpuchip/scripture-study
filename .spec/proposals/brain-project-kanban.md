@@ -61,7 +61,7 @@ Michael lives in VS Code for development. All planning, progress tracking, and a
 **Out of scope:**
 - Multi-client / multi-user (this is personal)
 - VS Code extension (noted as future possibility, not this proposal)
-- tpg integration (may revisit in Phase 2 — tpg's task/epic/dependency model could complement projects)
+- tpg-style task/epic/dependency model (may reimplement concepts if the model works out — tpg is Richard's project, not ours)
 - Mobile brain-app changes (Flutter app stays as-is for now)
 - Full Paperclip-style org charts, role budgeting, or hierarchy
 
