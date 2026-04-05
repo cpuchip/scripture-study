@@ -13,7 +13,7 @@
 ### Priorities
 1. **Study** — "It keeps me in the spirit." Next: "Zion in a Presidency" (third sabbath seed). Workstream: [.spec/proposals/study-workstream.md](../proposals/study-workstream.md).
 2. **Teaching** — 11-episode experiential arc (Option C). Teaching agent + repo scaffolded. Content not yet started. Proposal: [.spec/proposals/teaching-workstream.md](../proposals/teaching-workstream.md).
-3. **Brain pipeline** — Phase 4c shipped. Phase 4d next (REST API + execution + emergency stop). Billing model overhauled to premium requests.
+3. **Brain pipeline** — Phase 4 complete (all 5 sub-phases shipped Apr 5). Full project flow: board view, auto-assignment, AI push-back, context injection, execution gate with verification.
 4. **Claude Code integration** — NEW (Apr 4). Plan: add as alternative agent backend alongside Copilot SDK. Both cost spreading and gaining experience. Proposal forthcoming.
 
 ### Key Facts
@@ -36,9 +36,9 @@
 - **Phase 4 — BUILDING (Apr 5):** Project Flow + AI Turn Automation. 5 sub-phases:
   - 4a: Project Board View + Pipeline UI — **SHIPPED (Apr 5).** Kanban columns by maturity, advance/revise/defer buttons, slide-out panel with conversation history, board/list toggle (localStorage), stage distribution bars + your_turn badges on dashboard, `GET /api/projects/{id}/stats` endpoint.
   - 4b: Auto-assignment in classifier (suggest project_id during classification) — **SHIPPED (Apr 5).** ProjectContext type in classifier, project_id in JSON schema + system prompt, all 4 Classify() call sites updated (web, relay x2, discord), store.Save applies project_id, ListUnassigned + CountUnassigned DB methods, unassigned_count in stats API, "Unassigned" filter tab in EntriesView, unassigned badge on DashboardView.
-  - 4c: AI push-back loop (scheduled review of stale entries, clarifying questions, auto-advance on reply)
-  - 4d: Project-aware agent context (inject project name, siblings, context file into agent prompts)
-  - 4e: Execution gate (specced → executing from UI, scenario verification checklist)
+  - 4c: AI push-back loop (scheduled review of stale entries, clarifying questions, auto-advance on reply) — **SHIPPED (Apr 5).** ReviewConfig with WakeHours [7,11,15,19] (saves overnight API requests), stale entry scanner with Haiku nudge agent, reply auto-advance handler, purple "🤖 Review" badges on frontend.
+  - 4d: Project-aware agent context (inject project name, siblings, context file into agent prompts) — **SHIPPED (Apr 5).** `pipeline/context.go` with BuildProjectContext/FormatProjectContext, injected into all 4 prompt paths (routing, research, plan, nudge), `context_file` field on projects with CRUD, `GET /api/entries/{id}/context` preview endpoint, frontend Agent Context collapsible in EntryDetailView.
+  - 4e: Execution gate (specced → executing from UI, scenario verification checklist) — **SHIPPED (Apr 5).** `pipeline/execute.go` with Execute/Verify/BuildExecutionContext, async goroutine execution with Sonnet, scenario pass/fail verification (all pass→verified, any fail→planned with feedback), 3 new API endpoints (execute, verify, execution-context), execute confirmation dialog with cost/model/scenario preview, verify dialog with scenario checkboxes, dashboard "ready to execute" and "awaiting verification" badges.
 - Also noted: classifier could suggest projects based on content similarity to existing project entries.
 - **Absorbs** brain-ui-dashboard (§10 features) and complements brain-phase4-pipeline (maturity as kanban engine).
 - **Guide section written:** [07_developer-to-steward.md](../../docs/work-with-ai/guide/07_developer-to-steward.md)

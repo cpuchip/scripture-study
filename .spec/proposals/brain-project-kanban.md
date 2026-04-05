@@ -392,7 +392,7 @@ In `classifier.go`:
 
 ---
 
-### Phase 4c: AI Push-Back Loop
+### Phase 4c: AI Push-Back Loop — SHIPPED (Apr 5)
 
 **Delivers:** AI proactively reviews stale entries, asks clarifying questions, drives entries toward specced.
 
@@ -434,7 +434,7 @@ New scheduled task behavior: `project_review`
 
 ---
 
-### Phase 4d: Agent Context Injection (Project-Aware Agents)
+### Phase 4d: Agent Context Injection (Project-Aware Agents) — SHIPPED (Apr 5)
 
 **Delivers:** When agents work on entries, they get project context: what the project is about, what other entries are in it, and what stage they're at.
 
@@ -475,7 +475,7 @@ Entry context:
 
 ---
 
-### Phase 4e: Execution Gate
+### Phase 4e: Execution Gate — SHIPPED (Apr 5)
 
 **Delivers:** Specced entries with scenarios can be kicked to execution from the UI, with cost visibility and result verification against scenarios.
 
