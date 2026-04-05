@@ -6,7 +6,7 @@
 **Research:** [.spec/scratch/brain-project-kanban/main.md](../../scratch/brain-project-kanban/main.md)
 **Depends on:** WS1 Phase 3c (auto-routing + review queue) — SHIPPED, brain-ui-dashboard (in progress)
 **Affects:** All brain usage, daily workflow, ibeco.me, brain-app
-**Status:** Complete — All 3 phases shipped (Apr 4-5). Phase 1: Projects+Dashboard. Phase 2: Iterative Sessions. Phase 3: Scheduled Tasks+Library+Activity Feed.
+**Status:** Building — Phases 1-3 shipped (Apr 4-5). Phase 4 planned (Apr 5).
 **Inspiration:** Simon Scrapes "Agentic OS Command Center" (https://youtu.be/uhMCy25NBfw)
 
 ---
@@ -298,3 +298,254 @@ This proposal supersedes and absorbs:
 It complements but does not replace:
 - brain-as-agent-os-platform scratch (broader vision, this is the next concrete step)
 - brain-multi-agent (routing infrastructure stays, this adds the project layer above)
+
+---
+
+## Phase 4: Project Flow + AI Turn Automation
+
+**Binding problem:** Phases 1-3 gave us projects, turns, scheduled tasks, and a library — the building blocks. But nothing ties them together into a managed workflow. There's no board view to see entries flowing through maturity stages, no AI push-back when entries are under-specified, no auto-assignment of incoming entries to projects, and no execution gate. Michael still has to manually drive every entry through every stage. The infrastructure is there. The workflow isn't.
+
+**Research:** [.spec/scratch/brain-project-kanban-phase4/main.md](../../scratch/brain-project-kanban-phase4/main.md)
+
+### What Exists (from Phases 1-3 + Pipeline 4a-c)
+
+| Capability | Status | Gap |
+|------------|--------|-----|
+| Projects table + FK on entries | Shipped | — |
+| Maturity stages (raw→verified) | Shipped (pipeline 4a-c) | No UI to drive transitions |
+| Session messages (iterative turns) | Shipped | No AI-initiated push-back |
+| Scheduled tasks | Shipped | No "project review" task type |
+| Pipeline advance/revise/reject/defer | Shipped (MCP only) | No REST endpoint or UI button |
+| Research pass (raw→researched) | Shipped | Only via MCP `brain_advance` |
+| Plan pass (researched→planned) | Shipped | Only via MCP `brain_advance` |
+| Classifier | Shipped | Doesn't suggest projects |
+| Agent routing | Shipped | No project-aware context |
+| ProjectDetailView groups by maturity | Shipped | Vertical list, not board; no actions |
+
+### Sub-Phases
+
+Phase 4 is broken into five independent sub-phases. Each delivers value alone. Order matters — 4a is foundation, the rest build on it.
+
+---
+
+### Phase 4a: Project Board View + Pipeline UI
+
+**Delivers:** Kanban-style project board, pipeline actions in UI, per-project status rollup on dashboard.
+
+**Backend changes:**
+- `POST /api/pipeline/{id}/advance` — REST wrapper around existing `pipeline.Advance()`. Accepts: `action` (advance/revise/reject/defer), `feedback`, `scenarios`. Returns updated entry.
+- `GET /api/projects/{id}/stats` — Returns per-maturity-stage entry counts, your_turn count, in-flight count.
+- `POST /api/entries/{id}/advance-quick` — Shorthand: advance to next stage with no feedback (for drag-and-drop).
+
+**Frontend changes:**
+
+**ProjectDetailView → Board mode:**
+- Horizontal columns for maturity stages (raw | researched | planned | specced | executing | verified)
+- Entry cards show: title, category badge, route_status indicator (your_turn amber, running blue, complete green)
+- Click entry card → slide-out panel with entry details, conversation history, scratch file preview
+- Action buttons per entry: Advance ▶, Revise ↻, Defer ⏸ (calls pipeline advance endpoint)
+- "Your Turn" entries get amber left border + bell icon
+- Column headers show count
+- Toggle between board view and current list view
+
+**DashboardView enhancements:**
+- Project cards show: stage distribution bar (colored segments for raw/researched/planned/specced/executing/verified)
+- "Blocked on you" count badge (your_turn entries across all projects)
+- "In flight" count (running entries)
+
+**Scenarios (testable):**
+1. ProjectDetailView shows horizontal kanban columns grouped by maturity
+2. Clicking "Advance" on a raw entry triggers research pass; entry moves to researched column
+3. Dashboard project cards show colored stage distribution bars
+4. "Blocked on you" badge shows accurate count of your_turn entries
+5. Board/list toggle persists across navigation
+
+**Stands alone:** Yes. This is the highest-value sub-phase — it turns the existing data into a visible, actionable workflow.
+
+---
+
+### Phase 4b: Project Auto-Assignment in Classifier
+
+**Delivers:** New entries get a suggested project_id during classification.
+
+**Backend changes:**
+
+In `classifier.go`:
+- After classification, load all active projects (name + description) from DB
+- Add project context to classifier prompt: "Given these projects: [{name}: {description}, ...], suggest which project_id this entry best fits. Return null if none fit well."
+- Add `ProjectID *int` field to `classifier.Result`
+- Store suggested project_id on the entry during `InsertEntry`
+- Low-confidence suggestions (classifier isn't sure) → leave null, surface in UI as "unassigned"
+
+**Frontend changes:**
+- EntriesView: "Unassigned" filter to show entries without a project
+- DashboardView: "Unassigned entries" count that links to filtered view
+- EntryDetailView: one-click project assignment from suggestions (if classifier suggested but confidence was low)
+
+**Scenarios:**
+1. A new entry about "bridge simulator design" gets auto-assigned to Space Center (project 4)
+2. A new entry about "grocery list" gets no project assignment (null)
+3. Unassigned entries are visible on the dashboard with a count badge
+4. Manual override still works via EntryDetailView dropdown
+
+**Stands alone:** Yes. Even without the board view, auto-assignment reduces manual sorting (like the 67 entries we just sorted by hand).
+
+---
+
+### Phase 4c: AI Push-Back Loop
+
+**Delivers:** AI proactively reviews stale entries, asks clarifying questions, drives entries toward specced.
+
+**Backend changes:**
+
+New scheduled task behavior: `project_review`
+- System-provided (not user-created) scheduled task that runs every 4 hours
+- Scans all active projects for entries where:
+  - `maturity = 'raw'` and `updated_at` is 24h+ ago
+  - `maturity = 'researched'` and `updated_at` is 48h+ ago
+  - `route_status = 'complete'` and `updated_at` is 24h+ ago (agent finished but human hasn't reviewed)
+- For each stale entry:
+  - AI reads entry body + scratch file (if exists) + project context
+  - Generates 2-3 specific clarifying questions or next-step suggestions
+  - Posts as session message (role: "agent")
+  - Sets route_status to "your_turn"
+- Uses cheap model (Haiku) to keep costs low
+- Configurable: enable/disable per project, adjustable staleness thresholds
+
+**Reply → Auto-advance handler:**
+- When Michael replies to a your_turn entry that was pushed back by the review agent:
+  - If entry is raw + reply has enough substance → auto-trigger research pass
+  - If entry is researched + reply refines direction → auto-trigger plan pass
+  - If entry is planned + reply includes scenarios → advance to specced
+  - Otherwise: just store the reply, keep as your_turn for continued conversation
+
+**Frontend changes:**
+- Entries pushed back by AI show "🤖 Review" badge to distinguish from agent-route turns
+- Notification dot on project card when there are your_turn entries from push-back
+
+**Scenarios:**
+1. A raw entry untouched for 24h gets AI-generated questions posted as session messages
+2. Entry moves to your_turn after push-back
+3. Michael replies with clarification → research pass auto-triggers
+4. Push-back can be disabled per project via project settings
+5. Push-back uses cheap model (≤0.33 premium requests per entry)
+
+**Stands alone:** Yes. This is the "keep tasks moving" behavior Michael asked for.
+
+---
+
+### Phase 4d: Agent Context Injection (Project-Aware Agents)
+
+**Delivers:** When agents work on entries, they get project context: what the project is about, what other entries are in it, and what stage they're at.
+
+**Backend changes:**
+
+In `routeEntry()` / agent prompt construction:
+- Load entry's project (if assigned): name, description
+- Load sibling entries (same project, limit 20): title, maturity, route_status
+- Load project scratch/context files if they exist
+- Inject into prompt template:
+
+```
+Project: {project.Name}
+Description: {project.Description}
+
+Related entries in this project:
+- [specced] Build bridge simulator movement system
+- [researched] Star Trek UI with Pretext
+- [raw] Build Physical Display Dashboard
+
+Entry context:
+- Maturity: {entry.Maturity}
+- Previous research: {scratch file summary or "none"}
+- Scenarios: {entry.Scenarios or "not yet defined"}
+```
+
+- New project field: `context_file TEXT` — optional path to a project-level context document that agents always receive
+
+**Frontend changes:**
+- Project edit form gets "Context file" field (path to a markdown file in the workspace)
+- Entry detail shows "Agent context" expandable section showing what the agent will receive
+
+**Scenarios:**
+1. Agent working on a Space Center entry sees other Space Center entries in its context
+2. Agent working on a 2nd Brain entry gets brain project description in its prompt
+3. Project context file (if set) is included in every agent prompt for that project
+4. Agent output quality improves with project context (qualitative, human-assessed)
+
+---
+
+### Phase 4e: Execution Gate
+
+**Delivers:** Specced entries with scenarios can be kicked to execution from the UI, with cost visibility and result verification against scenarios.
+
+**Backend changes:**
+- `POST /api/entries/{id}/execute` — Validates entry is specced + has scenarios. Creates pipeline advance to "executing". Routes to appropriate agent with full context (project + spec + scenarios + scratch file). Returns immediately (runs async).
+- `POST /api/entries/{id}/verify` — After execution completes, present scenarios as a checklist. Michael marks each pass/fail. All pass → verified. Any fail → revise with feedback.
+- `GET /api/entries/{id}/execution-context` — Returns the full prompt that would be sent to the agent, so Michael can preview before approving.
+
+**Frontend changes:**
+
+In ProjectDetailView board:
+- Specced entries with scenarios show "Execute ▶" button
+- Click shows confirmation dialog: agent name, model, scenario count, estimated cost (model multiplier × rough token estimate)
+- Approve → entry moves to executing column, spinner shows
+- When complete → entry shows "Verify" button
+- Verify view: list of scenarios as checkboxes. Check each one that passes. Submit → verified or back to planned with feedback.
+
+In DashboardView:
+- "Ready to Execute" count badge (specced entries with scenarios)
+- "Awaiting Verification" count badge (executing-complete entries)
+
+**Scenarios:**
+1. Specced entry with 3 scenarios shows "Execute" button in board view
+2. Execution preview shows the full agent prompt before approval
+3. After agent completes, verify view shows scenario checklist
+4. All scenarios pass → entry moves to verified
+5. Failed scenario → entry returns to planned with feedback attached
+
+---
+
+### Phase Summary
+
+| Sub-Phase | Core Deliverable | Dependencies | Estimated Size |
+|-----------|-----------------|--------------|---------------|
+| 4a | Board view + pipeline UI | Existing pipeline API | Medium (1-2 sessions) |
+| 4b | Auto-assign projects in classifier | Projects exist | Small (1 session) |
+| 4c | AI push-back loop | Session messages + scheduled tasks | Medium (1-2 sessions) |
+| 4d | Project-aware agent context | Agent routing exists | Small (1 session) |
+| 4e | Execution gate + verification | Board view (4a) | Medium (1-2 sessions) |
+
+### Recommended Build Order
+
+**4a first** — highest value, most visible. Everything else builds on seeing the board.
+**4b second** — quick win, prevents manual sorting as new entries come in.
+**4d third** — improves agent quality for everything that follows.
+**4c fourth** — the automation layer, depends on having good agent context (4d).
+**4e last** — the full-circle close, needs everything else working.
+
+### Creation Cycle Review (Phase 4)
+
+| Step | Answer |
+|------|--------|
+| Intent | Close the loop: entries flow through stages visibly, AI keeps them moving, agents work with project context |
+| Covenant | Gated autonomy. AI pushes entries forward but never executes without approval. Cheap models for push-back. |
+| Stewardship | brain.exe (Go + Vue). Dev agent builds. Michael reviews each sub-phase. |
+| Spiritual Creation | This spec. Precise enough for 4a, directional for 4b-4e. |
+| Line upon Line | 5 sub-phases, each stands alone. 4a is the priority. |
+| Physical Creation | Dev agent executes against this spec. |
+| Review | Scenarios per sub-phase above. |
+| Atonement | Each sub-phase is reversible. Board view is additive (list view preserved as toggle). Push-back can be disabled per project. |
+| Sabbath | After 4a ships, use it for a few days before building 4b. Natural pause after each sub-phase. |
+| Consecration | Michael directly. Eventually: the Agentic OS pattern becomes shareable. |
+| Zion | Brain becomes the coordination fabric across all projects. Agents work with project context instead of in isolation. |
+
+### Costs & Risks
+
+| Risk | Severity | Mitigation |
+|------|----------|------------|
+| Board view adds JS complexity | Medium | Keep it simple — CSS grid columns, not a drag-and-drop library. Click to advance, not drag. |
+| Push-back could annoy if too aggressive | Medium | Configurable per project. Start with 24h staleness. Off by default. |
+| Auto-assignment may misclassify | Low | Confidence threshold — only assign when clear. Null is fine. |
+| Project context bloats agent prompts | Low | Limit to 20 sibling entries (titles only). Project description ≤500 chars. |
+| Scope creep into "full PM tool" | High | This is NOT Jira. No sprints, no story points, no burndown charts. Maturity stages + gated autonomy is the whole model. |
