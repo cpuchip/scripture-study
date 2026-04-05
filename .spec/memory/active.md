@@ -1,6 +1,6 @@
 # Active Context
 
-*Last updated: 2026-04-05*
+*Last updated: 2026-04-05 (project sync audit)*
 *Previous cycle archived: [archive/active-2026-04-04.md](archive/active-2026-04-04.md)*
 *Hardware: Dual 4090s desktop (Mar 27). NOCIX server live.*
 
@@ -9,12 +9,13 @@
 ## Current State
 
 **Last Sabbath:** March 22, 2026. Cycle "Infrastructure and Foundation" (Mar 18–22) declared good.
+**Project Sync:** Apr 5 — brain entries synced with spec/plan files. 101 total entries. 30 verified, 10 specced, 4 planned, 57 raw.
 
 ### Priorities
 1. **Study** — "It keeps me in the spirit." Next: "Zion in a Presidency" (third sabbath seed). Workstream: [.spec/proposals/study-workstream.md](../proposals/study-workstream.md).
 2. **Teaching** — 11-episode experiential arc (Option C). Teaching agent + repo scaffolded. Content not yet started. Proposal: [.spec/proposals/teaching-workstream.md](../proposals/teaching-workstream.md).
-3. **Brain pipeline** — Phase 4 complete (all 5 sub-phases shipped Apr 5). Full project flow: board view, auto-assignment, AI push-back, context injection, execution gate with verification.
-4. **Claude Code integration** — NEW (Apr 4). Plan: add as alternative agent backend alongside Copilot SDK. Both cost spreading and gaining experience. Proposal forthcoming.
+3. **Brain pipeline** — Phase 4 complete (all 5 sub-phases shipped Apr 5). Full project flow: board view, auto-assignment, AI push-back, context injection, execution gate with verification. Project sync completed: all specs have brain entries at correct maturity.
+4. **Claude Code integration** — SPECCED. Alternative agent backend alongside Copilot SDK. Proposal: [.spec/proposals/claude-code-integration.md](../proposals/claude-code-integration.md).
 
 ### Key Facts
 - **GitHub Copilot billing:** 1500 premium requests/month ($40/mo Pro+). Multipliers: Haiku=0.33, Sonnet=1.0, Opus=3.0, GPT-4.1/4o/5-mini=0 (free). Tool calls within agentic sessions are free. 19% utilization on Apr 4.
@@ -26,24 +27,15 @@
 
 ## In Flight
 
-### Brain Project-Kanban (Apr 4–5)
+### Brain Project-Kanban — ALL PHASES COMPLETE (Apr 4–5)
 - **Vision:** Transform brain from flat entry list to project-based goal orchestrator with iterative agent turns.
-- **3 phases:** P1 Projects + Dashboard, P2 Iterative Sessions, P3 Scheduled Tasks + Library.
-- **Phase 1 — SHIPPED (Apr 4-5):** `projects` table + FK, CRUD API (7 routes), ProjectsView, ProjectDetailView, Dashboard projects section, project selector on EntryDetailView, body previews + project badges on EntriesView. All views grouped by maturity stage.
-- **Phase 2 — SHIPPED (Apr 5):** `session_messages` table, `your_turn` route status, 4 API endpoints (messages, reply, complete, your-turn), conversation thread UI in EntryDetailView (message history, reply textarea, Ctrl+Enter), "Your Turn" dashboard section with amber badges.
-- **Phase 3 — SHIPPED (Apr 5):** `scheduled_tasks` + `task_runs` tables, scheduler goroutine (checks every 60s), 7 scheduled task API endpoints (CRUD + runs + trigger), 3 library endpoints (agents/skills/memory), activity feed endpoint, ScheduledView (create/edit/pause/delete/run-now with run history), LibraryView (tabbed agents/skills/memory browser), dashboard activity feed section. Nav updated: Scheduled + Library links.
-- **ALL PHASES 1-3 COMPLETE.** Entry sorting done (67 entries across 8 projects, 2 new: YouTube/Content, Budget App).
-- **Phase 4 — BUILDING (Apr 5):** Project Flow + AI Turn Automation. 5 sub-phases:
-  - 4a: Project Board View + Pipeline UI — **SHIPPED (Apr 5).** Kanban columns by maturity, advance/revise/defer buttons, slide-out panel with conversation history, board/list toggle (localStorage), stage distribution bars + your_turn badges on dashboard, `GET /api/projects/{id}/stats` endpoint.
-  - 4b: Auto-assignment in classifier (suggest project_id during classification) — **SHIPPED (Apr 5).** ProjectContext type in classifier, project_id in JSON schema + system prompt, all 4 Classify() call sites updated (web, relay x2, discord), store.Save applies project_id, ListUnassigned + CountUnassigned DB methods, unassigned_count in stats API, "Unassigned" filter tab in EntriesView, unassigned badge on DashboardView.
-  - 4c: AI push-back loop (scheduled review of stale entries, clarifying questions, auto-advance on reply) — **SHIPPED (Apr 5).** ReviewConfig with WakeHours [7,11,15,19] (saves overnight API requests), stale entry scanner with Haiku nudge agent, reply auto-advance handler, purple "🤖 Review" badges on frontend.
-  - 4d: Project-aware agent context (inject project name, siblings, context file into agent prompts) — **SHIPPED (Apr 5).** `pipeline/context.go` with BuildProjectContext/FormatProjectContext, injected into all 4 prompt paths (routing, research, plan, nudge), `context_file` field on projects with CRUD, `GET /api/entries/{id}/context` preview endpoint, frontend Agent Context collapsible in EntryDetailView.
-  - 4e: Execution gate (specced → executing from UI, scenario verification checklist) — **SHIPPED (Apr 5).** `pipeline/execute.go` with Execute/Verify/BuildExecutionContext, async goroutine execution with Sonnet, scenario pass/fail verification (all pass→verified, any fail→planned with feedback), 3 new API endpoints (execute, verify, execution-context), execute confirmation dialog with cost/model/scenario preview, verify dialog with scenario checkboxes, dashboard "ready to execute" and "awaiting verification" badges.
-- Also noted: classifier could suggest projects based on content similarity to existing project entries.
-- **Absorbs** brain-ui-dashboard (§10 features) and complements brain-phase4-pipeline (maturity as kanban engine).
+- **Phases 1-4 ALL SHIPPED (Apr 5).** Projects, iterative sessions, scheduled tasks, library, kanban board, auto-assignment, AI push-back, context injection, execution gate with verification.
+- **Project Sync Audit (Apr 5):** Cross-referenced all spec/plan files against brain entries. Created 22 new entries, marked 22 existing entries as verified, deleted 8 duplicates. Fixed ListAll/ListCategory/ListUnassigned SQL queries to include maturity column. Enhanced handleUpdateEntry to support maturity + route_status updates.
+- **Final state:** 101 entries (30 verified, 10 specced, 4 planned, 57 raw). 8 plans + 12 proposals archived.
+- **Absorbs** brain-ui-dashboard and complements brain-phase4-pipeline.
 - **Guide section written:** [07_developer-to-steward.md](../../docs/work-with-ai/guide/07_developer-to-steward.md)
 - Proposal: [.spec/proposals/brain-project-kanban.md](../proposals/brain-project-kanban.md)
-- Research: [.spec/scratch/brain-project-kanban/main.md](../scratch/brain-project-kanban/main.md)
+- Cross-ref audit: [.spec/scratch/project-sync/main.md](../scratch/project-sync/main.md)
 
 ### WS1 Phase 4d: Pipeline REST API + Execution
 - **Next up.** REST endpoints for pipeline operations, execution integration, emergency stop.
@@ -101,11 +93,18 @@
 
 | Plan | Status |
 |------|--------|
-| 15–16: Brain App | DONE |
+| 02: Layout | Active |
+| 05: Tool Todo | Active |
+| 07: Scheduled Tasks | Active |
+| 16: Brain App Today | Active |
 | 17: Proactive Surfacing | NOT STARTED |
 | 18: Widget Overhaul | PAUSED (Ph 1-2 done) |
-| 21: Gospel Engine | Phase 5 DONE (all enrichment) |
+| 20: NOCIX Dokploy | Active |
+| 21: Gospel Engine | ARCHIVED (Phase 5 done) |
 | Brain Pipeline (WS1) | Phase 4c DONE, 4d next |
+| Brain Project-Kanban | ALL PHASES COMPLETE |
+
+*Archived (Apr 5):* Plans 03, 06, 08, 09, 10, 11, 15, 21. Proposals: brain-memory, brain-phase3c-sdk-agents, brain-relay, brain-ui-dashboard, context-engineering, context-engineering-dev, enriched-search, session-journal, squad-learnings, brain-multi-agent, notifications, brain-unified-dashboard.
 
 ---
 
