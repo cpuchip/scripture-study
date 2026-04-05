@@ -1,6 +1,6 @@
 # Active Context
 
-*Last updated: 2026-04-04*
+*Last updated: 2026-04-05*
 *Previous cycle archived: [archive/active-2026-04-04.md](archive/active-2026-04-04.md)*
 *Hardware: Dual 4090s desktop (Mar 27). NOCIX server live.*
 
@@ -26,11 +26,14 @@
 
 ## In Flight
 
-### Brain Project-Kanban (NEW Apr 4)
+### Brain Project-Kanban (Apr 4–5)
 - **Vision:** Transform brain from flat entry list to project-based goal orchestrator with iterative agent turns.
 - **3 phases:** P1 Projects + Dashboard, P2 Iterative Sessions, P3 Scheduled Tasks + Library.
+- **Phase 1 — SHIPPED (Apr 4-5):** `projects` table + FK, CRUD API (7 routes), ProjectsView, ProjectDetailView, Dashboard projects section, project selector on EntryDetailView, body previews + project badges on EntriesView. All views grouped by maturity stage.
+- **Phase 2 — SHIPPED (Apr 5):** `session_messages` table, `your_turn` route status, 4 API endpoints (messages, reply, complete, your-turn), conversation thread UI in EntryDetailView (message history, reply textarea, Ctrl+Enter), "Your Turn" dashboard section with amber badges.
+- **Phase 3 — NOT STARTED:** Scheduled tasks + Library view. Revisit after using P1+P2 for a week.
 - **Absorbs** brain-ui-dashboard (§10 features) and complements brain-phase4-pipeline (maturity as kanban engine).
-- **Guide section written:** [07_developer-to-steward.md](../../docs/work-with-ai/guide/07_developer-to-steward.md) — paradigm shift from developer-focused to steward goal-based.
+- **Guide section written:** [07_developer-to-steward.md](../../docs/work-with-ai/guide/07_developer-to-steward.md)
 - Proposal: [.spec/proposals/brain-project-kanban.md](../proposals/brain-project-kanban.md)
 - Research: [.spec/scratch/brain-project-kanban/main.md](../scratch/brain-project-kanban/main.md)
 
