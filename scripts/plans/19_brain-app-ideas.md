@@ -56,6 +56,28 @@
 | 3. Image pipeline | Plan 12 (attachments + file storage) |
 | 4. Copilot SDK study | Plan 13 (agentic chat framework) |
 
+---
+
+## Future Workstream Ideas (Apr 5, 2026)
+
+### 5. Session-First Entry Flow
+**Idea:** Instead of classify → route → agent → store, every entry becomes a **session** at birth. Raptor opens a Copilot SDK session, uses MCP tool calls to classify, research, advance, and close the entry — all within one persistent thread. The session shows up in VS Code's sidebar. User interacts directly there. When done, archive the session.
+**Why:** Eliminates the strict JSON classification step. Drops formality — agent takes *actions* via tools instead of producing structured *output*. Aligns with how Copilot CLI sessions already work in VS Code. Fewer context switches between browser and editor.
+**Status:** Exploring — research notes at `.spec/scratch/session-first-flow/main.md`
+**Effort:** Large (major architecture shift)
+**Open questions:** SDK session persistence, per-entry vs. per-project sessions, cost model, brain-as-its-own-MCP-server circular dependency
+**Connects to:** brain-workspace-aware proposal, claude-code-integration proposal
+
+### 6. Projected Filesystem (TigerFS-like)
+**Idea:** Instead of agents, skills, memory, and .spec files living as literal files replicated in each repo, they're **virtual files projected from a central database** (brain). Changes propagate in real time across all workspaces. Think of brain as the storage engine and a projected FS (FUSE/WinFsp) as how editors and tools see the data.
+**Why:** Multi-project memory sharing (scripture study insights inform brain-app development automatically). Agent/skill sharing like npm packages without a publish cycle. Central versioning — roll back a skill change across all projects simultaneously. No git conflicts on shared infrastructure.
+**Challenges:** VS Code assumes real files (extensions, language servers, git all assume disk). FUSE on Windows is painful (WinFsp exists but fragile). Latency must be invisible or editor UX degrades. Conflict resolution when two projects evolve the same agent differently.
+**Status:** Noodling — recorded for future exploration
+**Effort:** Very Large (infrastructure + OS-level integration)
+**Connects to:** brain-as-OS-platform vision, projected FS could be brain's interface layer for multi-workspace orchestration
+
+---
+
 ## Priority Recommendation
 
 **Quick win:** #1 (single-subtask collapse) — small effort, improves daily UX
