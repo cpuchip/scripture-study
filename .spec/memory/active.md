@@ -1,6 +1,6 @@
 # Active Context
 
-*Last updated: 2026-04-05 (project sync audit)*
+*Last updated: 2026-04-05 (brain simplification reflection + pipeline test planning)*
 *Previous cycle archived: [archive/active-2026-04-04.md](archive/active-2026-04-04.md)*
 *Hardware: Dual 4090s desktop (Mar 27). NOCIX server live.*
 
@@ -10,22 +10,53 @@
 
 **Last Sabbath:** March 22, 2026. Cycle "Infrastructure and Foundation" (Mar 18–22) declared good.
 **Project Sync:** Apr 5 — brain entries synced with spec/plan files. 101 total entries. 30 verified, 10 specced, 4 planned, 57 raw.
+**KISS Reflection:** Apr 5 — honest assessment: pipeline is sophisticated but overserves 90% of entries. Both simplified AND automated paths needed. Scratch notes at [.spec/scratch/brain-simplification/main.md](../scratch/brain-simplification/main.md).
 
 ### Priorities
 1. **Study** — "It keeps me in the spirit." Next: "Zion in a Presidency" (third sabbath seed). Workstream: [.spec/proposals/study-workstream.md](../proposals/study-workstream.md).
 2. **Teaching** — 11-episode experiential arc (Option C). Teaching agent + repo scaffolded. Content not yet started. Proposal: [.spec/proposals/teaching-workstream.md](../proposals/teaching-workstream.md).
-3. **Brain pipeline** — Phase 4 complete (all 5 sub-phases shipped Apr 5). Full project flow: board view, auto-assignment, AI push-back, context injection, execution gate with verification. Project sync completed: all specs have brain entries at correct maturity.
-4. **Claude Code integration** — SPECCED. Alternative agent backend alongside Copilot SDK. Proposal: [.spec/proposals/claude-code-integration.md](../proposals/claude-code-integration.md).
+3. **Brain pipeline** — Phase 4 complete. Now: simplification + inline panel + nudge bot controls. Both simplified (notebook/3-column) AND fully automated (auto-continuation) workflows desired.
+4. **Space Center pipeline test** — Practice automated pipeline on Space Center project as low-stakes test bed. Plan: [.spec/scratch/space-center-pipeline-test/main.md](../scratch/space-center-pipeline-test/main.md).
+
+### Key Decisions (Apr 5 Session)
+- **Both paths wanted.** Simplified workflow (notebook, 3 columns) AND fully automated pipeline (auto-continuation). Not one or the other.
+- **KISS for captures, power for delegation.** 90% of entries are simple captures. 10% are delegation. Design for both.
+- **Nudge bot needs controls.** Must be visible in Scheduled Tasks, pausable, transparent. Currently invisible hardcoded goroutine.
+- **Board simplification: 3 columns.** Inbox / Working / Done. Sub-stage badges instead of separate columns.
+- **Space Center as test bed.** 5 seed entries, observe full automated cycle end-to-end.
+- **"By small and simple things."** Stop building infrastructure ahead of use case. Build, use, then iterate.
 
 ### Key Facts
 - **GitHub Copilot billing:** 1500 premium requests/month ($40/mo Pro+). Multipliers: Haiku=0.33, Sonnet=1.0, Opus=3.0, GPT-4.1/4o/5-mini=0 (free). Tool calls within agentic sessions are free. 19% utilization on Apr 4.
 - **Claude Code:** Pro $20/mo (includes Claude Code + Sonnet + Opus). Usage-based with 5-hour session window + weekly limits. 200K context. Project caching. Different billing model from Copilot.
-- **Pipeline costs:** Research pass=0.33 + Plan pass=1.0 = 1.33 premium requests per entry.
+- **Pipeline costs:** Research pass=0.33 + Plan pass=1.0 = 1.33 premium requests per entry. Nudge bot: 0.33 per entry, up to 10 entries 4x/day = 13.2/day worst case.
 - **Space Center:** Dream business — planetarium, space/science center, starship bridge simulator. Related repos on GitHub (cpuchip). Haiku-class models need this in prompt context (not in training data).
+- **Review nudge bot:** Fires at [7,11,15,19] hours, uses Haiku, scans up to 10 stale entries, not visible in UI, not pausable. Creates VS Code sidebar sessions per nudge.
 
 ---
 
 ## In Flight
+
+### Brain Inline Panel + Nudge Bot Controls
+- **Phase 1:** Reply textarea + close-with-reason in slide-out panel. Self-contained, one session build.
+- **Phase 2:** Surface nudge bot in Scheduled Tasks tab with pause/resume and run history.
+- Proposal: [.spec/proposals/brain-inline-panel.md](../proposals/brain-inline-panel.md)
+
+### Brain Simplification
+- 3-column board (Inbox/Working/Done) with sub-stage badges
+- Notebook mode for captures that don't need pipeline
+- Auto-continuation checkbox for delegation entries
+- Research notes: [.spec/scratch/brain-simplification/main.md](../scratch/brain-simplification/main.md)
+
+### Space Center Pipeline Test
+- 5 seed entries, observe fully automated pipeline end-to-end
+- Low-stakes test bed for the delegation workflow
+- Plan: [.spec/scratch/space-center-pipeline-test/main.md](../scratch/space-center-pipeline-test/main.md)
+
+### Session-First Flow (Exploring)
+- Every entry becomes a session instead of going through classification stages
+- Research notes: [.spec/scratch/session-first-flow/main.md](../scratch/session-first-flow/main.md)
+- Idea #5 in Plan 19
 
 ### Brain Project-Kanban — ALL PHASES COMPLETE (Apr 4–5)
 - **Vision:** Transform brain from flat entry list to project-based goal orchestrator with iterative agent turns.
@@ -115,3 +146,6 @@
 - Should the Abraham 4-5 framework become a standalone study? (Mar 4)
 - What model should Claude Code use for brain pipeline? Sonnet for cost, Opus for quality? (Apr 4)
 - How does Claude Code's usage-based billing interact with agentic tool-heavy workflows? (Apr 4)
+- Does the review nudge bot actually move things along, or is it just noise? (Apr 5) — test via Space Center
+- What's the right threshold for auto-continuation? Run until stuck? Run N stages max? (Apr 5)
+- Should notebook entries be a category or a flag on any entry? (Apr 5)
