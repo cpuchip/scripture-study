@@ -1,6 +1,6 @@
 # Active Context
 
-*Last updated: 2026-04-06 (WS3 Phase 4 Cost Tracking shipped)*
+*Last updated: 2026-04-06 (WS3 Phase 6 Reader UX shipped)*
 *Previous cycle archived: [archive/active-2026-04-04.md](archive/active-2026-04-04.md)*
 *Hardware: Dual 4090s desktop (Mar 27). NOCIX server live.*
 
@@ -48,8 +48,8 @@
 - **Phase 2 (DONE):** File browser in Library tab — recursive tree endpoint, TreeNode component, search filter, wide layout. Verified Apr 6.
 - **Phase 3 (DONE):** WebSocket push updates — Hub broadcasts entry.updated/message.new/entry.created. Dashboard, EntryDetailView, ProjectDetailView all receive live updates. Auto-reconnect with exponential backoff. Verified Apr 6.
 - **Phase 4 (DONE):** Cost tracking per entry — `premium_requests_used` column, IncrementPremiumRequests after each pipeline agent call (research 0.33, plan 1.0, execute 1.0, nudge 0.33), badge in EntryDetailView, aggregate in ProjectDetailView. Shipped Apr 6.
-- **Phase 6 (NEXT):** Reader UX — backtick/code link fix, internal link following, route deep linking (`/library?file=path`), back/forward navigation history. Frontend-only.
-- **Phase 7 (SPECCED):** Git status in file browser — `GET /api/git/status` endpoint, TreeNode status indicators (green/yellow/red dots), summary bar.
+- **Phase 6 (DONE):** Reader UX — backtick/code link fix (added `>` and backtick to FILE_PATH_RE lookbehind), internal link following in Library + FileViewer, route deep linking (`/library?file=path`), "Open in Reader" button in FileViewer, back/forward navigation history with full history stack. Shipped Apr 6.
+- **Phase 7 (NEXT):** Git status in file browser — `GET /api/git/status` endpoint, TreeNode status indicators (green/yellow/red dots), summary bar.
 - **Phase 8 (DEFERRED):** Auto-commit after agent sessions. Needs own proposal. Revisit after Phase 7 in use.
 - Proposal: [.spec/proposals/brain-ux-quality-of-life.md](../proposals/brain-ux-quality-of-life.md)
 - Research: [.spec/scratch/brain-ux-quality-of-life/main.md](../scratch/brain-ux-quality-of-life/main.md)

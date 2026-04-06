@@ -1,7 +1,7 @@
 # WS3: Brain UX Quality-of-Life Improvements
 
 **Workstream:** WS3 (Brain UX)
-**Status:** in-progress (Phase 1 ✅, Phase 5 ✅, Phase 2 ✅, Phase 3 ✅, Phase 4 ✅, Phase 6 next, Phase 7 specced)
+**Status:** in-progress (Phase 1 ✅, Phase 5 ✅, Phase 2 ✅, Phase 3 ✅, Phase 4 ✅, Phase 6 ✅, Phase 7 next)
 **Binding problem:** After an agent auto-advances an entry, the user can't see what was generated, can't tell what the agent needs next, and has to switch to VS Code to read the output. The reply textbox is too small for substantive responses. There's no real-time feedback. The brain app pipeline works mechanically but is opaque to the user.
 
 **Discovered:** 2026-04-05, during first real review cycle on "Build Physical Display Dashboard" entry.
@@ -309,9 +309,9 @@ Project rollup:
 
 ---
 
-## Phase 6: Reader UX — Links, Navigation, History
+## Phase 6: Reader UX — Links, Navigation, History ✅ COMPLETE (Apr 6)
 
-*Make the reading experience a connected system, not isolated views.*
+*Shipped: FILE_PATH_RE lookbehind fix (added `>` and backtick for code spans), click handlers on Library and FileViewer content areas for `.file-link` navigation, `/library?file=path` deep linking with route watcher for same-page navigation, "Open in Reader →" button in FileViewer header, full back/forward navigation history with `fileHistory[]` + `historyIndex`, `openFileFromQuery()` helper that expands parent dirs and switches to files tab.*
 
 **Origin:** Backtick-wrapped file paths aren't detected as links. File links in entry detail open a sidebar but can't follow internal links. The Library reader has no navigation history and no deep linking. These gaps prevent the brain from being the single interface for project awareness.
 
@@ -384,12 +384,12 @@ const canGoForward = computed(() => historyIndex.value < fileHistory.value.lengt
 
 ### Phase 6 Verification
 
-- [ ] `` `scripts/brain/foo.go` `` renders as a clickable link (code span detection)
-- [ ] Click a file path in Library reader content → opens that file in reader
-- [ ] Navigate to `/library?file=.spec/proposals/brain-ux-quality-of-life.md` → file opens directly
-- [ ] Click file link in entry detail → navigates to Library reader
-- [ ] Open file A → click link to file B → click link to file C → back button returns to B → forward returns to C
-- [ ] Back button disabled when at start of history
+- [x] `` `scripts/brain/foo.go` `` renders as a clickable link (code span detection)
+- [x] Click a file path in Library reader content → opens that file in reader
+- [x] Navigate to `/library?file=.spec/proposals/brain-ux-quality-of-life.md` → file opens directly
+- [x] Click file link in entry detail → navigates to Library reader
+- [x] Open file A → click link to file B → click link to file C → back button returns to B → forward returns to C
+- [x] Back button disabled when at start of history
 
 ---
 
