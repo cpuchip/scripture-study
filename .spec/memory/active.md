@@ -50,7 +50,8 @@
 - **Phase 4 (DONE):** Cost tracking per entry — `premium_requests_used` column, IncrementPremiumRequests after each pipeline agent call (research 0.33, plan 1.0, execute 1.0, nudge 0.33), badge in EntryDetailView, aggregate in ProjectDetailView. Shipped Apr 6.
 - **Phase 6 (DONE):** Reader UX — backtick/code link fix (added `>` and backtick to FILE_PATH_RE lookbehind), internal link following in Library + FileViewer, route deep linking (`/library?file=path`), "Open in Reader" button in FileViewer, back/forward navigation history with full history stack. Shipped Apr 6.
 - **Phase 7 (DONE):** Git status in file browser — `GET /api/git/status` endpoint (runs `git status --porcelain`, parses output), TreeNode status dots (green=new, yellow=modified, red=deleted), directories inherit most severe child status, clickable summary bar above tree with counts + filter-to-changed toggle. Refreshes on files tab activation. Shipped Apr 6.
-- **Phase 8 (DEFERRED):** Auto-commit after agent sessions. Needs own proposal. Revisit after Phase 7 in use.
+- **Phase 7a (SPECCED):** Inline diff viewer — `GET /api/git/diff?path=` endpoint, diff2html npm library, toggle button in header bar, line-by-line and side-by-side modes, dark theme. One session.
+- **Phase 8 (DEFERRED):** Auto-commit after agent sessions. Needs own proposal. Revisit after Phase 7a in use.
 - Proposal: [.spec/proposals/brain-ux-quality-of-life.md](../proposals/brain-ux-quality-of-life.md)
 - Research: [.spec/scratch/brain-ux-quality-of-life/main.md](../scratch/brain-ux-quality-of-life/main.md)
 

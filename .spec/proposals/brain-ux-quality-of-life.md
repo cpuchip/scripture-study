@@ -1,7 +1,7 @@
 # WS3: Brain UX Quality-of-Life Improvements
 
 **Workstream:** WS3 (Brain UX)
-**Status:** in-progress (Phase 1 ✅, Phase 5 ✅, Phase 2 ✅, Phase 3 ✅, Phase 4 ✅, Phase 6 ✅, Phase 7 ✅, Phase 8 deferred)
+**Status:** in-progress (Phase 1 ✅, Phase 5 ✅, Phase 2 ✅, Phase 3 ✅, Phase 4 ✅, Phase 6 ✅, Phase 7 ✅, Phase 7a specced, Phase 8 deferred)
 **Binding problem:** After an agent auto-advances an entry, the user can't see what was generated, can't tell what the agent needs next, and has to switch to VS Code to read the output. The reply textbox is too small for substantive responses. There's no real-time feedback. The brain app pipeline works mechanically but is opaque to the user.
 
 **Discovered:** 2026-04-05, during first real review cycle on "Build Physical Display Dashboard" entry.
@@ -443,6 +443,169 @@ Above the file tree, show a summary line: "3 new, 2 modified" with counts. Click
 - [x] Modify an existing file → yellow dot appears
 - [x] Summary bar shows correct counts
 - [x] Git status refreshes on Library tab activation (not continuously polling)
+
+---
+
+## Phase 7a: Inline Diff Viewer
+
+*See what changed without leaving the brain. Toggle between rendered content and diff view for any file with git changes.*
+
+**Origin:** Phase 7 shows which files changed (dots + summary bar), but not what changed. To review agent work or your own edits, you currently have to switch to VS Code or a terminal. The diff should live where the reading already happens.
+
+### 7a-1. Backend — Git Diff Endpoint
+
+`GET /api/git/diff?path=<file>` — returns the unified diff for a single file.
+
+```go
+func (s *Server) handleGitDiff(w http.ResponseWriter, r *http.Request) {
+    // Same workspace root derivation as handleGitStatus
+    pathParam := r.URL.Query().Get("path")
+    // Path traversal protection (same as handleFileRead)
+    
+    // For tracked modified files: git diff HEAD -- <path>
+    // For untracked new files: git diff --no-index /dev/null <path>
+    // Return raw unified diff text (Content-Type: text/plain)
+}
+```
+
+**Design decisions:**
+- `git diff HEAD -- <path>` shows both staged and unstaged changes vs last commit. Simpler than separate staged/unstaged views.
+- For new (untracked) files: `git diff --no-index /dev/null <path>` creates a proper unified diff showing all lines as additions. Alternatively, fabricate a minimal diff header + all-green output.
+- Path safety: reuse the same traversal protection from `handleFileRead` (resolve absolute, check prefix).
+- Returns raw text, not JSON — the frontend passes it directly to diff2html.
+
+**Route:** `s.mux.HandleFunc("GET /api/git/diff", s.cors(s.handleGitDiff))`
+
+### 7a-2. Frontend — diff2html Integration
+
+**New dependency:** `diff2html` (npm, MIT, 434K weekly downloads, 2 deps). Supports `git diff` output directly.
+
+```bash
+npm install diff2html
+```
+
+**Usage in LibraryView:**
+```typescript
+import { html as diff2html } from 'diff2html'
+import 'diff2html/bundles/css/diff2html.min.css'
+
+const showDiff = ref(false)
+const diffContent = ref('')
+const diffLoading = ref(false)
+const diffMode = ref<'line-by-line' | 'side-by-side'>('line-by-line')
+
+// Computed: is current file changed?
+const currentFileChanged = computed(() => gitStatusMap.value.has(currentFilePath.value))
+
+async function loadDiff() {
+  diffLoading.value = true
+  try {
+    diffContent.value = await api.gitDiff(currentFilePath.value)
+  } catch (e: any) {
+    diffContent.value = ''
+  } finally {
+    diffLoading.value = false
+  }
+}
+
+const renderedDiff = computed(() => {
+  if (!diffContent.value) return ''
+  return diff2html(diffContent.value, {
+    outputFormat: diffMode.value,
+    drawFileList: false,
+    matching: 'lines',
+    colorScheme: 'dark',
+  })
+})
+```
+
+**API addition:**
+```typescript
+async gitDiff(path: string): Promise<string> {
+  const res = await fetch(`/api/git/diff?path=${encodeURIComponent(path)}`)
+  if (!res.ok) throw new Error(`${res.status}: ${res.statusText}`)
+  return res.text()
+}
+```
+
+### 7a-3. UI — Toggle Button + Diff Rendering
+
+**Header bar** (where ← → and file path already live):
+
+```vue
+<!-- Only show when file has git changes -->
+<button
+  v-if="currentFileChanged"
+  @click="toggleDiff"
+  class="text-xs px-2 py-0.5 rounded transition-colors"
+  :class="showDiff
+    ? 'bg-yellow-900/50 text-yellow-300'
+    : 'text-gray-500 hover:text-gray-300'"
+>
+  {{ showDiff ? '✕ Diff' : 'Δ Diff' }}
+</button>
+
+<!-- Mode toggle (only when diff is showing) -->
+<button
+  v-if="showDiff"
+  @click="diffMode = diffMode === 'line-by-line' ? 'side-by-side' : 'line-by-line'"
+  class="text-xs text-gray-500 hover:text-gray-300 px-1"
+>
+  {{ diffMode === 'line-by-line' ? '⇔' : '⇕' }}
+</button>
+```
+
+**Content area** — swap between rendered markdown and diff:
+
+```vue
+<div class="flex-1 overflow-auto p-6" @click="handleContentClick">
+  <!-- Normal view -->
+  <div v-if="!showDiff" ...>
+    <!-- existing markdown rendering -->
+  </div>
+  <!-- Diff view -->
+  <div v-else>
+    <div v-if="diffLoading" class="text-gray-500 text-sm">Loading diff...</div>
+    <div v-else-if="!diffContent" class="text-gray-600 text-sm">No changes</div>
+    <div v-else v-html="renderedDiff" />
+  </div>
+</div>
+```
+
+**Behavior:**
+- Toggle button is only visible when `currentFileChanged` is true (file appears in `gitStatusMap`)
+- Clicking "Δ Diff" fetches the diff (lazy — not pre-fetched for every file) and shows it
+- Clicking "✕ Diff" returns to the rendered markdown view
+- `showDiff` resets to `false` when navigating to a different file
+- Mode toggle switches between line-by-line (unified) and side-by-side (split)
+
+### 7a-4. CSS — Dark Theme Alignment
+
+diff2html ships its own CSS. The dark color scheme (`colorScheme: 'dark'`) handles most of it, but may need minor overrides to blend with the gray-900 background:
+
+```css
+/* If needed — scope to our container */
+.d2h-wrapper {
+  --d2h-dark-bg: theme('colors.gray.900');
+}
+```
+
+Test in browser first before adding overrides. The `colorScheme: 'dark'` option may be sufficient.
+
+### Phase 7a Verification
+
+- [ ] modified file → "Δ Diff" button appears in header bar
+- [ ] click "Δ Diff" → unified diff renders with green/red lines
+- [ ] toggle to side-by-side → two-column diff view
+- [ ] navigate to different file → diff view resets to normal view
+- [ ] untracked (new) file → diff shows all lines as additions
+- [ ] file with no changes → no diff button shown
+
+### Effort Estimate
+
+- Backend: ~30 lines (one handler, reuses workspace root + path safety from existing handlers)
+- Frontend: ~50 lines of script, ~20 lines of template, 1 new npm dependency
+- Scope: one session. No database changes. No new components (just additions to LibraryView).
 
 ---
 
