@@ -1,7 +1,7 @@
 # WS4: Brain Pipeline Evolution — Creation Cycle Completion
 
 **Workstream:** WS4 (Brain Pipeline Evolution)
-**Status:** specced (all phases drafted, none started)
+**Status:** Phase 1 shipped (governance docs), Phases 2-7 specced
 **Binding problem:** The brain pipeline handles the mechanical stages (research → plan → execute → verify) but skips 5 of the 11 creation cycle steps. It has no per-entry covenant, no error recovery beyond silent rollback, no reflection pause, no "who benefits" check, and no integration verification. It also forces all entries through the same pipeline regardless of type, and the nudge bot operates invisibly. These gaps mean the pipeline does work but doesn't do it *wisely*.
 
 **Created:** 2026-04-06
@@ -57,10 +57,10 @@
 
 ### Phase 1 Verification
 
-- [ ] `research-covenant.md` exists and is loaded (no "warning: not found" in logs)
-- [ ] `plan-covenant.md` exists with "Who benefits?" and "Integration" sections
-- [ ] `execution-covenant.md` exists
-- [ ] `review-covenant.md` exists
+- [x] `research-covenant.md` exists and is loaded (no "warning: not found" in logs)
+- [x] `plan-covenant.md` exists with "Who benefits?" and "Integration" sections
+- [x] `execute-covenant.md` exists (note: code expects `execute-`, not `execution-`)
+- [x] `review-covenant.md` exists
 - [ ] Agent output quality noticeably improves with governance context
 
 ---
