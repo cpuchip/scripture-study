@@ -1,7 +1,7 @@
 # WS3: Brain UX Quality-of-Life Improvements
 
 **Workstream:** WS3 (Brain UX)
-**Status:** in-progress (Phase 1 ✅, Phase 5 ✅, Phase 2 ✅, Phase 3 ✅, Phase 4 ✅, Phase 6 ✅, Phase 7 ✅, Phase 7a specced, Phase 8 deferred)
+**Status:** in-progress (Phase 1 ✅, Phase 5 ✅, Phase 2 ✅, Phase 3 ✅, Phase 4 ✅, Phase 6 ✅, Phase 7 ✅, Phase 7a ✅, Phase 7b specced, Phase 8 deferred)
 **Binding problem:** After an agent auto-advances an entry, the user can't see what was generated, can't tell what the agent needs next, and has to switch to VS Code to read the output. The reply textbox is too small for substantive responses. There's no real-time feedback. The brain app pipeline works mechanically but is opaque to the user.
 
 **Discovered:** 2026-04-05, during first real review cycle on "Build Physical Display Dashboard" entry.
@@ -446,7 +446,7 @@ Above the file tree, show a summary line: "3 new, 2 modified" with counts. Click
 
 ---
 
-## Phase 7a: Inline Diff Viewer
+## Phase 7a: Inline Diff Viewer ✅ COMPLETE (Apr 6)
 
 *See what changed without leaving the brain. Toggle between rendered content and diff view for any file with git changes.*
 
@@ -594,18 +594,140 @@ Test in browser first before adding overrides. The `colorScheme: 'dark'` option 
 
 ### Phase 7a Verification
 
-- [ ] modified file → "Δ Diff" button appears in header bar
-- [ ] click "Δ Diff" → unified diff renders with green/red lines
-- [ ] toggle to side-by-side → two-column diff view
-- [ ] navigate to different file → diff view resets to normal view
-- [ ] untracked (new) file → diff shows all lines as additions
-- [ ] file with no changes → no diff button shown
+- [x] modified file → "Δ Diff" button appears in header bar
+- [x] click "Δ Diff" → unified diff renders with green/red lines
+- [x] toggle to side-by-side → two-column diff view
+- [x] navigate to different file → diff view resets to normal view
+- [x] untracked (new) file → diff shows all lines as additions
+- [x] file with no changes → no diff button shown
+
+**Shipped:** Apr 6, 2026. Backend: `handleGitDiff` handler (~65 lines, full path safety). Frontend: `diff2html` with `ColorSchemeType.DARK`, toggle buttons, lazy loading, mode switch. LibraryView JS chunk grew from 11KB to 54KB (includes diff2html).
+
+---
+
+## Phase 7b: Nested Git Repo Awareness
+
+*Make the brain aware of all 13+ nested git repos in the workspace. Show diffs for subrepo files, and mark repo root directories in the file tree.*
+
+**Origin:** The workspace contains nested repos (`scripts/brain/`, `teaching/`, `private/`, `external_context/*`, etc.). Phases 7 and 7a only query the workspace root's git, so all subrepo changes are invisible. The most actively developed repo (brain itself) has no git status or diff support in the UI.
+
+### 7b-1. Backend — Repo Discovery + Aggregated Git Status
+
+**Repo discovery function** — walks workspace root (depth ≤ 4) looking for `.git` directories. Returns a list of repo paths relative to workspace root. Cached per request (or per `handleGitStatus` call).
+
+```go
+func discoverGitRepos(workspaceRoot string) []string {
+    // Walk looking for .git dirs. Returns relative paths like:
+    // "." (workspace root), "scripts/brain", "teaching", "private", etc.
+    // Skip dirs already in skipDirs that won't appear in tree (node_modules, .venv, etc.)
+}
+```
+
+**`handleGitStatus` changes:**
+- Call `discoverGitRepos` to find all repos
+- For each repo, run `git status --porcelain` in that directory
+- Prefix each file's path with the repo's relative path (for non-root repos)
+- Add `repo` field to response: `{"path": "internal/web/server.go", "status": "modified", "repo": "scripts/brain"}`
+- Root repo files have `repo: "."` 
+- Return unified list across all repos
+
+Updated response type:
+```go
+type GitFileStatus struct {
+    Path   string `json:"path"`
+    Status string `json:"status"`
+    Repo   string `json:"repo"`  // relative path to repo root, "." for workspace root
+}
+```
+
+### 7b-2. Backend — Repo-Aware Git Diff
+
+**`handleGitDiff` changes:**
+- Given a file path (e.g., `scripts/brain/internal/web/server.go`), determine which repo owns it
+- Walk up from the file path to find which discovered repo prefix matches
+- Run `git diff` in that repo's root, with the path *relative to that repo* (e.g., `internal/web/server.go`)
+- Same `/dev/null` fallback for untracked files
+
+```go
+func findRepoForPath(repos []string, filePath string) (repoRoot string, relPath string) {
+    // Find the longest matching repo prefix
+    // e.g., "scripts/brain/internal/web/server.go" → repo="scripts/brain", rel="internal/web/server.go"
+}
+```
+
+### 7b-3. Backend — File Tree Git Repo Indicator
+
+**`handleFileTree` changes:**
+- When building tree nodes for directories, check if directory contains a `.git` subdirectory
+- Add `IsGitRepo bool` to TreeNode struct
+
+```go
+type TreeNode struct {
+    Name      string      `json:"name"`
+    Path      string      `json:"path"`
+    IsDir     bool        `json:"is_dir"`
+    IsGitRepo bool        `json:"is_git_repo,omitempty"`
+    Children  []*TreeNode `json:"children,omitempty"`
+}
+```
+
+The check is simple: `os.Stat(filepath.Join(dir, name, ".git"))` succeeds → `IsGitRepo: true`. No recursive walk needed here since we're already iterating children.
+
+### 7b-4. Frontend — FileTreeNode + TreeNode.vue
+
+**`FileTreeNode` interface update:**
+```typescript
+export interface FileTreeNode {
+  name: string
+  path: string
+  is_dir: boolean
+  is_git_repo?: boolean
+  children?: FileTreeNode[]
+}
+```
+
+**`GitFileStatus` interface update:**
+```typescript
+export interface GitFileStatus {
+  path: string
+  status: 'new' | 'modified' | 'deleted' | 'renamed'
+  repo: string
+}
+```
+
+**`TreeNode.vue` changes:**
+- Directory entries with `is_git_repo` get a repo indicator badge (small icon or label)
+- Something like: `<span v-if="node.is_git_repo" class="text-[9px] text-violet-400 ml-1">⎇</span>` (branch symbol) or a small "git" badge
+- Git status still works the same — the Map keys are still full workspace-relative paths
+
+**`LibraryView.vue` changes:**
+- `loadGitStatus()` — the response now includes `repo` field, but `gitStatusMap` is still keyed by full path (same as before since backend returns full workspace-relative paths)
+- No other changes needed — the aggregation happens on the backend
+
+### 7b-5. Git Status Path Convention
+
+The backend needs a clear path convention:
+
+- **Git status paths** are always workspace-relative: `scripts/brain/internal/web/server.go`
+- **Git diff** receives workspace-relative path, backend resolves to correct repo + relative path
+- **Tree node paths** are already workspace-relative
+
+For the root repo, `git status --porcelain` already returns workspace-relative paths. For subrepos, the backend must prepend the repo prefix: if `scripts/brain/` reports `internal/web/server.go`, the unified path becomes `scripts/brain/internal/web/server.go`.
+
+### Phase 7b Verification
+
+- [ ] `scripts/brain/` directory shows git repo indicator (⎇) in file tree
+- [ ] files changed in brain subrepo appear in git status summary bar
+- [ ] clicking a changed brain file → "Δ Diff" button works, shows correct diff
+- [ ] workspace root changes still work as before
+- [ ] multiple repos can show changes simultaneously
+- [ ] repo indicator visible for `teaching/`, `private/`, `external_context/*` directories
 
 ### Effort Estimate
 
-- Backend: ~30 lines (one handler, reuses workspace root + path safety from existing handlers)
-- Frontend: ~50 lines of script, ~20 lines of template, 1 new npm dependency
-- Scope: one session. No database changes. No new components (just additions to LibraryView).
+- Backend: ~80 lines (repo discovery ~25, status aggregation ~25, diff routing ~15, tree flag ~5, helper ~10)
+- Frontend: ~10 lines (FileTreeNode field, TreeNode badge, GitFileStatus repo field)
+- Scope: one session. No database changes. No new dependencies.
 
 ---
 
