@@ -1,7 +1,7 @@
 # WS3: Brain UX Quality-of-Life Improvements
 
 **Workstream:** WS3 (Brain UX)
-**Status:** in-progress (Phase 1 ✅, Phase 5 ✅, Phase 2 ✅, Phase 3 ✅, Phase 4 next, Phase 6-7 specced)
+**Status:** in-progress (Phase 1 ✅, Phase 5 ✅, Phase 2 ✅, Phase 3 ✅, Phase 4 ✅, Phase 6 next, Phase 7 specced)
 **Binding problem:** After an agent auto-advances an entry, the user can't see what was generated, can't tell what the agent needs next, and has to switch to VS Code to read the output. The reply textbox is too small for substantive responses. There's no real-time feedback. The brain app pipeline works mechanically but is opaque to the user.
 
 **Discovered:** 2026-04-05, during first real review cycle on "Build Physical Display Dashboard" entry.
@@ -270,9 +270,11 @@ export function useWebSocket() {
 
 ---
 
-## Phase 4: Cost Tracking
+## Phase 4: Cost Tracking ✅ COMPLETE (Apr 6)
 
 *Know what the pipeline is spending.*
+
+*Shipped: `premium_requests_used REAL` column on entries table, atomic IncrementPremiumRequests after every pipeline agent call (research=0.33, plan=1.0, execute=1.0, nudge=0.33), badge in EntryDetailView metadata row, aggregate total in ProjectDetailView header.*
 
 ### 4a. Track Premium Requests Per Entry
 
@@ -300,10 +302,10 @@ Project rollup:
 
 ### Phase 4 Verification
 
-- [ ] Research pass increments premium_requests_used by 0.33
-- [ ] Plan pass increments by 1.0
-- [ ] Entry detail shows the running total
-- [ ] Project detail shows aggregate across entries
+- [x] Research pass increments premium_requests_used by 0.33
+- [x] Plan pass increments by 1.0
+- [x] Entry detail shows the running total
+- [x] Project detail shows aggregate across entries
 
 ---
 
