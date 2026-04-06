@@ -61,6 +61,7 @@
 - 11-step creation cycle gap analysis: Steps 2, 8, 9, 10, 11 now have specced phases.
 - 7 phases: Governance Docs, Failure Visibility, Reflection Pauses + Auto-Continue, Notebook Mode, Nudge Bot Controls, 3-Column Board, Project Scaffolding.
 - **Phase 1 (DONE):** Governance Documents — updated `research-covenant.md` (added Boundaries + Budget), updated `plan-covenant.md` (added Boundaries, Budget, "Who Benefits?" consecration check, "How Does This Integrate?" Zion check), created `execute-covenant.md` (full 11-step cycle mapping), created `review-covenant.md` (Steps 7-9: Review, Atonement, Sabbath). No code changes. Brain restarts with zero governance warnings. Shipped Apr 6.
+- **Phase 2 (DONE):** Failure Visibility — `failure_count` + `last_failure_reason` columns via SQLite migration, `IncrementFailureCount`/`ResetFailureCount` DB methods, `recordFailure` pipeline helper posts session messages with recovery options on any advance/revise/execute failure, escalation message at 3+ consecutive failures, failure count reset on success, red 🔴 badge in EntryDetailView with tooltip showing last failure reason. Shipped Apr 6.
 - Phase 3 (Reflection Pauses + Auto-Continue) resolves both Sabbath gap and delegation workflow.
 - Phase 7 (Project Scaffolding) enables multi-repo projects with their own copilot-instructions, agents, skills, and GitHub remotes.
 - Proposal: [.spec/proposals/brain-pipeline-evolution.md](../proposals/brain-pipeline-evolution.md)

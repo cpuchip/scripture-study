@@ -1,7 +1,7 @@
 # WS4: Brain Pipeline Evolution — Creation Cycle Completion
 
 **Workstream:** WS4 (Brain Pipeline Evolution)
-**Status:** Phase 1 shipped (governance docs), Phases 2-7 specced
+**Status:** Phase 1-2 shipped (governance docs, failure visibility), Phases 3-7 specced
 **Binding problem:** The brain pipeline handles the mechanical stages (research → plan → execute → verify) but skips 5 of the 11 creation cycle steps. It has no per-entry covenant, no error recovery beyond silent rollback, no reflection pause, no "who benefits" check, and no integration verification. It also forces all entries through the same pipeline regardless of type, and the nudge bot operates invisibly. These gaps mean the pipeline does work but doesn't do it *wisely*.
 
 **Created:** 2026-04-06
@@ -106,11 +106,11 @@ Show failure history in EntryDetailView — small section below maturity badge s
 
 ### Phase 2 Verification
 
-- [ ] Research failure → session message posted with recovery options
-- [ ] Plan failure → session message posted
-- [ ] 3 consecutive failures → escalation warning
-- [ ] Entry detail shows failure count when > 0
-- [ ] Successful advance resets failure count
+- [x] Research failure → session message posted with recovery options
+- [x] Plan failure → session message posted
+- [x] 3 consecutive failures → escalation warning
+- [x] Entry detail shows failure count when > 0
+- [x] Successful advance resets failure count
 
 ---
 
