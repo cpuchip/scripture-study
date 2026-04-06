@@ -1,6 +1,6 @@
 # Active Context
 
-*Last updated: 2026-04-06 (WS3 Phase 7a Inline Diff Viewer shipped)*
+*Last updated: 2026-04-06 (WS3 Phase 7b Nested Git Repo Awareness shipped)*
 *Previous cycle archived: [archive/active-2026-04-04.md](archive/active-2026-04-04.md)*
 *Hardware: Dual 4090s desktop (Mar 27). NOCIX server live.*
 
@@ -51,8 +51,8 @@
 - **Phase 6 (DONE):** Reader UX — backtick/code link fix (added `>` and backtick to FILE_PATH_RE lookbehind), internal link following in Library + FileViewer, route deep linking (`/library?file=path`), "Open in Reader" button in FileViewer, back/forward navigation history with full history stack. Shipped Apr 6.
 - **Phase 7 (DONE):** Git status in file browser — `GET /api/git/status` endpoint (runs `git status --porcelain`, parses output), TreeNode status dots (green=new, yellow=modified, red=deleted), directories inherit most severe child status, clickable summary bar above tree with counts + filter-to-changed toggle. Refreshes on files tab activation. Shipped Apr 6.
 - **Phase 7a (DONE):** Inline diff viewer — `GET /api/git/diff?path=` endpoint (path-safe, serves unified diff for tracked/untracked files), `diff2html` npm library with `ColorSchemeType.DARK`, "Δ Diff" / "✕ Diff" toggle in header bar (visible only for changed files), line-by-line / side-by-side mode toggle, lazy diff loading, resets on file navigation. Shipped Apr 6.
-- **Phase 7b (SPECCED):** Nested git repo awareness — backend discovers all nested `.git` repos (13 in workspace), aggregates `git status` across all repos, routes `git diff` to correct repo, adds `is_git_repo` flag to file tree nodes. Frontend shows repo indicator badge on git directories. One session.
-- **Phase 8 (DEFERRED):** Auto-commit after agent sessions. Needs own proposal. Revisit after 7b in use.
+- **Phase 7b (DONE):** Nested git repo awareness — `discoverGitRepos()` walks workspace for `.git` dirs (13 found), `handleGitStatus` aggregates across all repos with `repo` field, `handleGitDiff` routes to correct repo via `findRepoForPath()`, `is_git_repo` flag on file tree nodes. Frontend shows ⎇ badge on repo directories. Shipped Apr 6.
+- **Phase 8 (DEFERRED):** Auto-commit after agent sessions. Needs own proposal.
 - Proposal: [.spec/proposals/brain-ux-quality-of-life.md](../proposals/brain-ux-quality-of-life.md)
 - Research: [.spec/scratch/brain-ux-quality-of-life/main.md](../scratch/brain-ux-quality-of-life/main.md)
 

@@ -1,7 +1,7 @@
 # WS3: Brain UX Quality-of-Life Improvements
 
 **Workstream:** WS3 (Brain UX)
-**Status:** in-progress (Phase 1 ✅, Phase 5 ✅, Phase 2 ✅, Phase 3 ✅, Phase 4 ✅, Phase 6 ✅, Phase 7 ✅, Phase 7a ✅, Phase 7b specced, Phase 8 deferred)
+**Status:** in-progress (Phase 1 ✅, Phase 5 ✅, Phase 2 ✅, Phase 3 ✅, Phase 4 ✅, Phase 6 ✅, Phase 7 ✅, Phase 7a ✅, Phase 7b ✅, Phase 8 deferred)
 **Binding problem:** After an agent auto-advances an entry, the user can't see what was generated, can't tell what the agent needs next, and has to switch to VS Code to read the output. The reply textbox is too small for substantive responses. There's no real-time feedback. The brain app pipeline works mechanically but is opaque to the user.
 
 **Discovered:** 2026-04-05, during first real review cycle on "Build Physical Display Dashboard" entry.
@@ -605,7 +605,7 @@ Test in browser first before adding overrides. The `colorScheme: 'dark'` option 
 
 ---
 
-## Phase 7b: Nested Git Repo Awareness
+## Phase 7b: Nested Git Repo Awareness ✅ COMPLETE (Apr 6)
 
 *Make the brain aware of all 13+ nested git repos in the workspace. Show diffs for subrepo files, and mark repo root directories in the file tree.*
 
@@ -716,18 +716,14 @@ For the root repo, `git status --porcelain` already returns workspace-relative p
 
 ### Phase 7b Verification
 
-- [ ] `scripts/brain/` directory shows git repo indicator (⎇) in file tree
-- [ ] files changed in brain subrepo appear in git status summary bar
-- [ ] clicking a changed brain file → "Δ Diff" button works, shows correct diff
-- [ ] workspace root changes still work as before
-- [ ] multiple repos can show changes simultaneously
-- [ ] repo indicator visible for `teaching/`, `private/`, `external_context/*` directories
+- [x] `scripts/brain/` directory shows git repo indicator (⎇) in file tree
+- [x] files changed in brain subrepo appear in git status summary bar
+- [x] clicking a changed brain file → "Δ Diff" button works, shows correct diff
+- [x] workspace root changes still work as before
+- [x] multiple repos can show changes simultaneously
+- [x] repo indicator visible for `teaching/`, `private/`, `external_context/*` directories
 
-### Effort Estimate
-
-- Backend: ~80 lines (repo discovery ~25, status aggregation ~25, diff routing ~15, tree flag ~5, helper ~10)
-- Frontend: ~10 lines (FileTreeNode field, TreeNode badge, GitFileStatus repo field)
-- Scope: one session. No database changes. No new dependencies.
+**Shipped:** Apr 6, 2026. Backend: `discoverGitRepos()` + `findRepoForPath()` helpers, aggregated `handleGitStatus` across all repos with `repo` field, repo-aware `handleGitDiff` routing, `is_git_repo` flag on TreeNode. Frontend: `⎇` badge on repo directories, updated interfaces. 13 nested repos detected, status/diff verified for `scripts/brain` and `private-brain`.
 
 ---
 
