@@ -1,6 +1,6 @@
 # Active Context
 
-*Last updated: 2026-04-05 (brain simplification reflection + pipeline test planning)*
+*Last updated: 2026-04-05 (brain UX quality-of-life proposal from real usage feedback)*
 *Previous cycle archived: [archive/active-2026-04-04.md](archive/active-2026-04-04.md)*
 *Hardware: Dual 4090s desktop (Mar 27). NOCIX server live.*
 
@@ -15,8 +15,8 @@
 ### Priorities
 1. **Study** — "It keeps me in the spirit." Next: "Zion in a Presidency" (third sabbath seed). Workstream: [.spec/proposals/study-workstream.md](../proposals/study-workstream.md).
 2. **Teaching** — 11-episode experiential arc (Option C). Teaching agent + repo scaffolded. Content not yet started. Proposal: [.spec/proposals/teaching-workstream.md](../proposals/teaching-workstream.md).
-3. **Brain pipeline** — Phase 4 complete. Now: simplification + inline panel + nudge bot controls. Both simplified (notebook/3-column) AND fully automated (auto-continuation) workflows desired.
-4. **Space Center pipeline test** — Practice automated pipeline on Space Center project as low-stakes test bed. Plan: [.spec/scratch/space-center-pipeline-test/main.md](../scratch/space-center-pipeline-test/main.md).
+3. **Brain pipeline** — Phase 4 complete. Now: simplification + inline panel + nudge bot controls + UX quality-of-life. Both simplified (notebook/3-column) AND fully automated (auto-continuation) workflows desired. First real usage exposed 6 UX pain points — proposal written.
+4. **Space Center pipeline test** — Practice automated pipeline on Space Center project as low-stakes test bed. First entry (display dashboard) already revealed the UX gaps. Plan: [.spec/scratch/space-center-pipeline-test/main.md](../scratch/space-center-pipeline-test/main.md).
 
 ### Key Decisions (Apr 5 Session)
 - **Both paths wanted.** Simplified workflow (notebook, 3 columns) AND fully automated pipeline (auto-continuation). Not one or the other.
@@ -41,6 +41,15 @@
 - **Phase 1:** Reply textarea + close-with-reason in slide-out panel. Self-contained, one session build.
 - **Phase 2:** Surface nudge bot in Scheduled Tasks tab with pause/resume and run history.
 - Proposal: [.spec/proposals/brain-inline-panel.md](../proposals/brain-inline-panel.md)
+
+### Brain UX Quality-of-Life (NEW — from real usage)
+- **Phase 1 (critical):** Auto-expanding textarea, markdown rendering in messages, clickable file paths, inline file viewer modal. One session.
+- **Phase 2:** File browser sidebar (port ibeco.me ReaderView pattern). One session.
+- **Phase 3:** WebSocket push updates (gorilla/websocket already in go.mod). One session.
+- **Phase 4:** Cost tracking per entry (premium requests used). One session.
+- **Phase 5:** Smarter auto-advance messages (include question summary + file link). Small backend change.
+- Proposal: [.spec/proposals/brain-ux-quality-of-life.md](../proposals/brain-ux-quality-of-life.md)
+- Research: [.spec/scratch/brain-ux-quality-of-life/main.md](../scratch/brain-ux-quality-of-life/main.md)
 
 ### Brain Simplification
 - 3-column board (Inbox/Working/Done) with sub-stage badges
@@ -149,3 +158,5 @@
 - Does the review nudge bot actually move things along, or is it just noise? (Apr 5) — test via Space Center
 - What's the right threshold for auto-continuation? Run until stuck? Run N stages max? (Apr 5)
 - Should notebook entries be a category or a flag on any entry? (Apr 5)
+- Is the inline file viewer (Phase 1) sufficient, or do we need a full file browser (Phase 2)? (Apr 5) — use it first, then decide
+- Should WebSocket events replace polling entirely, or coexist as fallback? (Apr 5)
