@@ -227,12 +227,12 @@ Many existing entries (captures, tasks) should be notebooks. Add bulk action in 
 
 ### Phase 4 Verification
 
-- [ ] New entry can be marked as notebook
-- [ ] Notebook entries don't appear in review queue
-- [ ] Notebook entries don't get nudged
-- [ ] Notebook entries appear in search and project views
-- [ ] Existing entry can toggle notebook on/off
-- [ ] Bulk reclassify works for 5+ entries at once
+- [x] New entry can be marked as notebook
+- [x] Notebook entries don't appear in review queue
+- [x] Notebook entries don't get nudged
+- [x] Notebook entries appear in search and project views
+- [x] Existing entry can toggle notebook on/off
+- [x] Bulk reclassify works for 5+ entries at once
 
 ---
 
