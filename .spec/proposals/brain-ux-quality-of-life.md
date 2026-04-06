@@ -1,6 +1,6 @@
 # Brain UX Quality-of-Life Improvements
 
-**Status:** proposed
+**Status:** in-progress (Phase 1 ✅, Phase 5 ✅, Phase 2 ✅, Phase 3 ✅, Phase 4 next)
 **Binding problem:** After an agent auto-advances an entry, the user can't see what was generated, can't tell what the agent needs next, and has to switch to VS Code to read the output. The reply textbox is too small for substantive responses. There's no real-time feedback. The brain app pipeline works mechanically but is opaque to the user.
 
 **Discovered:** 2026-04-05, during first real review cycle on "Build Physical Display Dashboard" entry.
@@ -33,9 +33,9 @@
 
 ---
 
-## Phase 1: See What the Agent Did
+## Phase 1: See What the Agent Did ✅ COMPLETE (Apr 5)
 
-*The critical path. Without this, the review flow requires switching to VS Code.*
+*Shipped: auto-expanding textarea, markdown-it rendering, clickable file paths with backslash normalization, FileViewer sidebar panel (not modal), content shift via shared reactive useFilePanel, external links target=_blank, onUnmounted cleanup.*
 
 ### 1a. Auto-Expanding Textarea
 
@@ -161,20 +161,20 @@ Add a markdown-it plugin or post-process the rendered HTML to detect workspace-r
 
 **Effort:** ~60 lines backend, ~80 lines frontend (endpoint + detection + modal + rendering)
 
-### Phase 1 Verification
+### Phase 1 Verification ✅
 
-- [ ] Type a 5-paragraph reply — textarea grows to accommodate, caps at max height, scrolls after
-- [ ] Agent message with markdown headings/lists renders properly (not raw `##` text)
-- [ ] Agent message "Findings at .spec/scratch/foo/main.md" → "Findings at" is text, path is a clickable link
-- [ ] Click file path → modal opens with rendered markdown content
-- [ ] Path traversal attempt (`../../etc/passwd`) returns 403
-- [ ] Modal has close button, scrolls for long files
+- [x] Type a 5-paragraph reply — textarea grows to accommodate, caps at max height, scrolls after
+- [x] Agent message with markdown headings/lists renders properly (not raw `##` text)
+- [x] Agent message "Findings at .spec/scratch/foo/main.md" → "Findings at" is text, path is a clickable link
+- [x] Click file path → sidebar panel opens with rendered markdown content
+- [x] Path traversal attempt (`../../etc/passwd`) returns 403
+- [x] Panel has close button, scrolls for long files
 
 ---
 
-## Phase 2: File Browser
+## Phase 2: File Browser ✅ COMPLETE (Apr 6)
 
-*Port ibeco.me's reader pattern so users can browse workspace files without VS Code.*
+*Shipped: GET /api/files/tree endpoint with security validation, TreeNode.vue recursive component, Library files tab with search filter, wide layout (max-w-6xl) when browsing files, .spec auto-expanded on load.*
 
 ### 2a. Backend — File Tree Endpoint
 
@@ -206,17 +206,17 @@ Port from ibeco.me:
 
 ### Phase 2 Verification
 
-- [ ] Navigate to `/library` → see tree of workspace files
-- [ ] Click a directory → expands to show children
-- [ ] Click a `.md` file → renders in content area
-- [ ] Search filter narrows tree results
-- [ ] Nav header shows "Library" as a top-level section
+- [x] Navigate to `/library` → see tree of workspace files
+- [x] Click a directory → expands to show children
+- [x] Click a `.md` file → renders in content area
+- [x] Search filter narrows tree results
+- [x] Nav header shows "Library" as a top-level section
 
 ---
 
-## Phase 3: Real-Time Updates (WebSockets)
+## Phase 3: Real-Time Updates (WebSockets) ✅ COMPLETE (Apr 6)
 
-*Stop polling. Push events to the frontend.*
+*Shipped: Hub with gorilla/websocket, GET /ws endpoint with localhost-only origin check, Event broadcasts from HTTP handlers (create/update/reply/complete/advance) and pipeline background goroutines (research/plan/execute/verify/nudge). Frontend useWebSocket composable with auto-reconnect + exponential backoff. Dashboard, EntryDetailView, and ProjectDetailView all receive live updates.*
 
 ### 3a. Backend — WebSocket Server
 
@@ -262,10 +262,10 @@ export function useWebSocket() {
 
 ### Phase 3 Verification
 
-- [ ] Open entry detail → agent runs in background → new message appears without refresh
-- [ ] Open project board → agent advances entry → badge updates live
-- [ ] Close browser tab → reopen → WebSocket reconnects
-- [ ] Multiple browser tabs → all receive updates
+- [x] Open entry detail → agent runs in background → new message appears without refresh
+- [x] Open project board → agent advances entry → badge updates live
+- [x] Close browser tab → reopen → WebSocket reconnects
+- [x] Multiple browser tabs → all receive updates
 
 ---
 
@@ -306,9 +306,9 @@ Project rollup:
 
 ---
 
-## Phase 5: Smarter Auto-Advance Messages
+## Phase 5: Smarter Auto-Advance Messages ✅ COMPLETE (Apr 5)
 
-*Tell the user what you need, not just what you did.*
+*Shipped: extractQuestionSummary() in research.go parses scratch file, counts numbered questions under "Open Questions" heading, lists category sub-headings. Appended to auto-advance message.*
 
 ### Current Message
 
@@ -328,11 +328,11 @@ Project rollup:
 
 **Effort:** ~30 lines in pipeline/research.go
 
-### Phase 5 Verification
+### Phase 5 Verification ✅
 
-- [ ] Auto-advance message includes question count and categories
-- [ ] File link in message is clickable (Phase 1 makes this work)
-- [ ] Message doesn't bloat — summary is 3-4 lines max
+- [x] Auto-advance message includes question count and categories
+- [x] File link in message is clickable (Phase 1 makes this work)
+- [x] Message doesn't bloat — summary is 3-4 lines max
 
 ---
 

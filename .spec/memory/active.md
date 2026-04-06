@@ -1,6 +1,6 @@
 # Active Context
 
-*Last updated: 2026-04-05 (brain UX quality-of-life proposal from real usage feedback)*
+*Last updated: 2026-04-06 (UX QoL Phase 2 + Phase 3 shipped — File Browser + WebSockets)*
 *Previous cycle archived: [archive/active-2026-04-04.md](archive/active-2026-04-04.md)*
 *Hardware: Dual 4090s desktop (Mar 27). NOCIX server live.*
 
@@ -42,12 +42,13 @@
 - **Phase 2:** Surface nudge bot in Scheduled Tasks tab with pause/resume and run history.
 - Proposal: [.spec/proposals/brain-inline-panel.md](../proposals/brain-inline-panel.md)
 
-### Brain UX Quality-of-Life (NEW — from real usage)
-- **Phase 1 (critical):** Auto-expanding textarea, markdown rendering in messages, clickable file paths, inline file viewer modal. One session.
-- **Phase 2:** File browser sidebar (port ibeco.me ReaderView pattern). One session.
-- **Phase 3:** WebSocket push updates (gorilla/websocket already in go.mod). One session.
+### Brain UX Quality-of-Life (from real usage)
+- **Phase 1 (DONE):** Auto-expanding textarea, markdown rendering in messages, clickable file paths, inline file viewer sidebar panel, content shift when panel open. External links open in new tabs. Backslash path normalization for Windows.
+- **Phase 5 (DONE):** Smarter auto-advance messages — extractQuestionSummary reads scratch file, counts questions, lists categories.
+- **Phase 2 (DONE):** File browser in Library tab — recursive tree endpoint, TreeNode component, search filter, wide layout. Verified Apr 6.
+- **Phase 3 (DONE):** WebSocket push updates — Hub broadcasts entry.updated/message.new/entry.created. Dashboard, EntryDetailView, ProjectDetailView all receive live updates. Auto-reconnect with exponential backoff. Verified Apr 6.
+- **Phase 4 (NEXT):** Cost tracking per entry (premium requests used). One session.
 - **Phase 4:** Cost tracking per entry (premium requests used). One session.
-- **Phase 5:** Smarter auto-advance messages (include question summary + file link). Small backend change.
 - Proposal: [.spec/proposals/brain-ux-quality-of-life.md](../proposals/brain-ux-quality-of-life.md)
 - Research: [.spec/scratch/brain-ux-quality-of-life/main.md](../scratch/brain-ux-quality-of-life/main.md)
 
