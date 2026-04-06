@@ -1,5 +1,6 @@
-# Brain UX Quality-of-Life Improvements
+# WS3: Brain UX Quality-of-Life Improvements
 
+**Workstream:** WS3 (Brain UX)
 **Status:** in-progress (Phase 1 ✅, Phase 5 ✅, Phase 2 ✅, Phase 3 ✅, Phase 4 next, Phase 6-7 specced)
 **Binding problem:** After an agent auto-advances an entry, the user can't see what was generated, can't tell what the agent needs next, and has to switch to VS Code to read the output. The reply textbox is too small for substantive responses. There's no real-time feedback. The brain app pipeline works mechanically but is opaque to the user.
 

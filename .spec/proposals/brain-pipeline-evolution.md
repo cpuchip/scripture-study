@@ -1,11 +1,12 @@
-# Brain Pipeline Evolution — Creation Cycle Completion
+# WS4: Brain Pipeline Evolution — Creation Cycle Completion
 
+**Workstream:** WS4 (Brain Pipeline Evolution)
 **Status:** specced (all phases drafted, none started)
 **Binding problem:** The brain pipeline handles the mechanical stages (research → plan → execute → verify) but skips 5 of the 11 creation cycle steps. It has no per-entry covenant, no error recovery beyond silent rollback, no reflection pause, no "who benefits" check, and no integration verification. It also forces all entries through the same pipeline regardless of type, and the nudge bot operates invisibly. These gaps mean the pipeline does work but doesn't do it *wisely*.
 
 **Created:** 2026-04-06
 **Source:** [brain-simplification scratch](.spec/scratch/brain-simplification/main.md) (gap analysis, Apr 5) + [pipeline evolution research](.spec/scratch/brain-pipeline-evolution/main.md)
-**Depends on:** Brain Phase 4 Pipeline (shipped), Brain UX QoL (in progress)
+**Depends on:** Brain Phase 4 Pipeline (WS1, shipped), Brain UX QoL (WS3, in progress)
 **Related:** [brain-inline-panel.md](.spec/proposals/brain-inline-panel.md), [brain-ux-quality-of-life.md](.spec/proposals/brain-ux-quality-of-life.md)
 
 ---
@@ -296,6 +297,76 @@ This is primarily a frontend change to ProjectDetailView or a new board view. Th
 
 ---
 
+## Phase 7: Project Scaffolding (Multi-Repo Deliverables)
+
+*Not every project lives in scripture-study. The pipeline needs to know where to put things.*
+
+Currently the execution agent assumes all work happens in the scripture-study workspace. But projects like Space Center, a budget app, or a new teaching tool need:
+- Their own git repo (created fresh or existing)
+- Their own `copilot-instructions.md` and `.github/` structure
+- Potentially their own agents and skills
+- GitHub remote on cpuchip (public or private)
+
+### 7a. Project Workspace Configuration
+
+Add to the project model:
+
+```sql
+ALTER TABLE projects ADD COLUMN workspace_path TEXT;      -- e.g., "C:\Users\cpuch\Documents\code\stuffleberry\space-center"
+ALTER TABLE projects ADD COLUMN github_repo TEXT;          -- e.g., "cpuchip/space-center"
+ALTER TABLE projects ADD COLUMN repo_visibility TEXT;      -- "public" or "private"
+```
+
+- `workspace_path = NULL` → deliverables go in scripture-study (default, current behavior)
+- `workspace_path = "path"` → execution agent works in that directory
+
+### 7b. Repo Initialization
+
+When a project specifies a workspace_path that doesn't exist yet:
+
+1. `mkdir -p` the directory
+2. `git init`
+3. Scaffold `.github/copilot-instructions.md` from a template (project name, binding problem, conventions)
+4. Scaffold `.github/agents/` with project-appropriate agent modes
+5. Initial commit
+6. `gh repo create cpuchip/{name} --{visibility} --source=. --push`
+
+This could be a pipeline hook on first execution, or a UI button ("Initialize Project Repo").
+
+### 7c. Execution Context Injection
+
+The execution agent's system message and working directory must respect project workspace:
+
+```go
+// In runExecute(), use project workspace if configured:
+workDir := p.workspaceRoot // default: scripture-study
+if project != nil && project.WorkspacePath != "" {
+    workDir = project.WorkspacePath
+}
+```
+
+Governance docs, skills, and agent modes from the project repo take precedence over scripture-study defaults.
+
+### 7d. GitHub Integration
+
+For repos with a GitHub remote:
+- Show repo link in project detail view
+- Auto-commit integration (ties to WS3 Phase 8 when built)
+- Branch management for execution (main vs feature branches)
+
+**Effort:** ~80 lines backend (schema + init logic), ~30 lines frontend (project settings). One session for 7a-7b, second session for 7c-7d.
+
+### Phase 7 Verification
+
+- [ ] Project settings show workspace path and GitHub repo fields
+- [ ] New project with workspace_path creates directory + git init
+- [ ] `gh repo create` runs successfully with correct visibility
+- [ ] Execution agent works in project workspace, not scripture-study
+- [ ] Project with no workspace_path uses scripture-study (backward compatible)
+- [ ] Scaffolded repo has copilot-instructions.md with project context
+
+---
+
 ## Costs & Risks
 
 | Phase | Backend | Frontend | Risk | Creation Cycle Step |
@@ -306,10 +377,11 @@ This is primarily a frontend change to ProjectDetailView or a new board view. Th
 | 4: Notebook Mode | ~30 lines | ~40 lines | Low — additive, doesn't change pipeline | — (workflow) |
 | 5: Nudge Bot Controls | ~50 lines | ~40 lines | Medium — touches review.go goroutine | Step 7 (Review+) |
 | 6: 3-Column Board | 0 | ~80 lines | Low — frontend grouping only | — (UX) |
+| 7: Project Scaffolding | ~80 lines | ~30 lines | Medium — runs git/gh CLI, creates dirs | Step 6 (Physical Creation) |
 
 **Consecration (Step 10) and Zion (Step 11)** are handled through Phase 1 — the plan-covenant.md governance doc adds "Who benefits?" and "How does this integrate?" sections to every plan output. No separate phase needed.
 
-**Total:** ~180 lines backend, ~210 lines frontend across 6 phases. Each phase ships independently.
+**Total:** ~260 lines backend, ~240 lines frontend across 7 phases. Each phase ships independently.
 
 ---
 
@@ -318,9 +390,10 @@ This is primarily a frontend change to ProjectDetailView or a new board view. Th
 1. **Phase 1 (Governance Docs)** — Zero code, immediate impact on agent quality. Write first.
 2. **Phase 3 (Reflection Pauses + Auto-Continue)** — Resolves the biggest philosophical gap AND delivers the most-requested feature (auto-continuation).
 3. **Phase 4 (Notebook Mode)** — Second most-requested. Frees 90% of entries from unnecessary pipeline.
-4. **Phase 2 (Failure Visibility)** — Important for reliability but not blocking daily use.
-5. **Phase 5 (Nudge Bot Controls)** — Important but nudge bot tolerable short-term.
-6. **Phase 6 (3-Column Board)** — Nice visual improvement, not urgent.
+4. **Phase 7 (Project Scaffolding)** — Unlocks multi-repo projects. Needed before Space Center or other external projects can use the pipeline.
+5. **Phase 2 (Failure Visibility)** — Important for reliability but not blocking daily use.
+6. **Phase 5 (Nudge Bot Controls)** — Important but nudge bot tolerable short-term.
+7. **Phase 6 (3-Column Board)** — Nice visual improvement, not urgent.
 
 ---
 
@@ -331,11 +404,11 @@ This is primarily a frontend change to ProjectDetailView or a new board view. Th
 | Intent | Why? | Pipeline does work but doesn't do it wisely. 5/11 creation steps missing. |
 | Covenant | Rules? | Each phase ships alone. Don't break existing behavior. |
 | Stewardship | Who owns what? | dev agent executes. Governance docs: plan agent writes content. |
-| Spiritual Creation | Spec precise enough? | Phases 1-6 all specced with verification checklists. |
-| Line upon Line | Phasing? | 6 phases, recommended order above. Phase 1 is content-only. |
+| Spiritual Creation | Spec precise enough? | Phases 1-7 all specced with verification checklists. |
+| Line upon Line | Phasing? | 7 phases, recommended order above. Phase 1 is content-only. |
 | Physical Creation | Who executes? | dev agent for code. Michael + AI together for governance doc content. |
 | Review | How do we know it's right? | Verification checklists per phase. Agent output quality for Phase 1. |
 | Atonement | What if it goes wrong? | Additive changes — existing behavior unchanged. Auto-continue has safety (stops at verification). |
 | Sabbath | When do we stop? | After Phase 3 — use reflection pauses + auto-continue, then decide what's next. |
 | Consecration | Who benefits? | Michael directly. Model for principled AI pipeline design. |
-| Zion | Integration? | Phase 1 improves every pipeline run. Phase 3 enables Space Center delegation test. |
+| Zion | Integration? | Phase 1 improves every pipeline run. Phase 3 enables Space Center delegation test. Phase 7 enables multi-repo projects. |

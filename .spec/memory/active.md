@@ -42,7 +42,7 @@
 - **Phase 2:** Surface nudge bot in Scheduled Tasks tab with pause/resume and run history.
 - Proposal: [.spec/proposals/brain-inline-panel.md](../proposals/brain-inline-panel.md)
 
-### Brain UX Quality-of-Life (from real usage)
+### WS3: Brain UX Quality-of-Life (from real usage)
 - **Phase 1 (DONE):** Auto-expanding textarea, markdown rendering in messages, clickable file paths, inline file viewer sidebar panel, content shift when panel open. External links open in new tabs. Backslash path normalization for Windows.
 - **Phase 5 (DONE):** Smarter auto-advance messages — extractQuestionSummary reads scratch file, counts questions, lists categories.
 - **Phase 2 (DONE):** File browser in Library tab — recursive tree endpoint, TreeNode component, search filter, wide layout. Verified Apr 6.
@@ -54,12 +54,13 @@
 - Proposal: [.spec/proposals/brain-ux-quality-of-life.md](../proposals/brain-ux-quality-of-life.md)
 - Research: [.spec/scratch/brain-ux-quality-of-life/main.md](../scratch/brain-ux-quality-of-life/main.md)
 
-### Brain Simplification → Brain Pipeline Evolution
+### WS4: Brain Pipeline Evolution (from creation cycle gap analysis)
 - **Graduated** from scratch research to full proposal on Apr 6.
 - 11-step creation cycle gap analysis: Steps 2, 8, 9, 10, 11 now have specced phases.
-- 6 phases: Governance Docs, Failure Visibility, Reflection Pauses + Auto-Continue, Notebook Mode, Nudge Bot Controls, 3-Column Board.
+- 7 phases: Governance Docs, Failure Visibility, Reflection Pauses + Auto-Continue, Notebook Mode, Nudge Bot Controls, 3-Column Board, Project Scaffolding.
 - Phase 1 (Governance Docs) is zero-code and highest priority.
 - Phase 3 (Reflection Pauses + Auto-Continue) resolves both Sabbath gap and delegation workflow.
+- Phase 7 (Project Scaffolding) enables multi-repo projects with their own copilot-instructions, agents, skills, and GitHub remotes.
 - Proposal: [.spec/proposals/brain-pipeline-evolution.md](../proposals/brain-pipeline-evolution.md)
 - Research: [.spec/scratch/brain-pipeline-evolution/main.md](../scratch/brain-pipeline-evolution/main.md)
 - Prior research: [.spec/scratch/brain-simplification/main.md](../scratch/brain-simplification/main.md)
@@ -149,6 +150,8 @@
 | 20: NOCIX Dokploy | Active |
 | 21: Gospel Engine | ARCHIVED (Phase 5 done) |
 | Brain Pipeline (WS1) | Phase 4c DONE, 4d next |
+| Brain UX (WS3) | Phase 1✅ 5✅ 2✅ 3✅, Phase 4 next |
+| Brain Pipeline Evolution (WS4) | All 7 phases specced, none started |
 | Brain Project-Kanban | ALL PHASES COMPLETE |
 
 *Archived (Apr 5):* Plans 03, 06, 08, 09, 10, 11, 15, 21. Proposals: brain-memory, brain-phase3c-sdk-agents, brain-relay, brain-ui-dashboard, context-engineering, context-engineering-dev, enriched-search, session-journal, squad-learnings, brain-multi-agent, notifications, brain-unified-dashboard.
