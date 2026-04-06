@@ -1,7 +1,7 @@
 # WS3: Brain UX Quality-of-Life Improvements
 
 **Workstream:** WS3 (Brain UX)
-**Status:** in-progress (Phase 1 ✅, Phase 5 ✅, Phase 2 ✅, Phase 3 ✅, Phase 4 ✅, Phase 6 ✅, Phase 7 next)
+**Status:** in-progress (Phase 1 ✅, Phase 5 ✅, Phase 2 ✅, Phase 3 ✅, Phase 4 ✅, Phase 6 ✅, Phase 7 ✅, Phase 8 deferred)
 **Binding problem:** After an agent auto-advances an entry, the user can't see what was generated, can't tell what the agent needs next, and has to switch to VS Code to read the output. The reply textbox is too small for substantive responses. There's no real-time feedback. The brain app pipeline works mechanically but is opaque to the user.
 
 **Discovered:** 2026-04-05, during first real review cycle on "Build Physical Display Dashboard" entry.
@@ -393,9 +393,9 @@ const canGoForward = computed(() => historyIndex.value < fileHistory.value.lengt
 
 ---
 
-## Phase 7: Git Status in File Browser
+## Phase 7: Git Status in File Browser ✅ COMPLETE (Apr 6)
 
-*See what's changed without leaving the brain.*
+*Shipped: `GET /api/git/status` endpoint using `git status --porcelain`, parsed into `{path, status}` JSON. Frontend: `gitStatusMap` loaded on mount and tab activation, passed to TreeNode. TreeNode shows colored dots (green=new, yellow=modified, red=deleted) for files and inherits most severe status for directories. Summary bar above file tree shows counts (`3 new, 2 modified`) and toggles a "show only changed" filter. No polling — refreshes when files tab activates.*
 
 ### 7a. Backend — Git Status Endpoint
 
@@ -439,10 +439,10 @@ Above the file tree, show a summary line: "3 new, 2 modified" with counts. Click
 
 ### Phase 7 Verification
 
-- [ ] Create a new file → green dot appears in file tree (after refresh)
-- [ ] Modify an existing file → yellow dot appears
-- [ ] Summary bar shows correct counts
-- [ ] Git status refreshes on Library tab activation (not continuously polling)
+- [x] Create a new file → green dot appears in file tree (after refresh)
+- [x] Modify an existing file → yellow dot appears
+- [x] Summary bar shows correct counts
+- [x] Git status refreshes on Library tab activation (not continuously polling)
 
 ---
 
