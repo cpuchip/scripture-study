@@ -62,7 +62,7 @@
 - 7 phases: Governance Docs, Failure Visibility, Reflection Pauses + Auto-Continue, Notebook Mode, Nudge Bot Controls, 3-Column Board, Project Scaffolding.
 - **Phase 1 (DONE):** Governance Documents — updated `research-covenant.md` (added Boundaries + Budget), updated `plan-covenant.md` (added Boundaries, Budget, "Who Benefits?" consecration check, "How Does This Integrate?" Zion check), created `execute-covenant.md` (full 11-step cycle mapping), created `review-covenant.md` (Steps 7-9: Review, Atonement, Sabbath). No code changes. Brain restarts with zero governance warnings. Shipped Apr 6.
 - **Phase 2 (DONE):** Failure Visibility — `failure_count` + `last_failure_reason` columns via SQLite migration, `IncrementFailureCount`/`ResetFailureCount` DB methods, `recordFailure` pipeline helper posts session messages with recovery options on any advance/revise/execute failure, escalation message at 3+ consecutive failures, failure count reset on success, red 🔴 badge in EntryDetailView with tooltip showing last failure reason. Shipped Apr 6.
-- Phase 3 (Reflection Pauses + Auto-Continue) resolves both Sabbath gap and delegation workflow.
+- **Phase 3 (DONE):** Reflection Pauses + Auto-Continue — `auto_continue BOOLEAN DEFAULT FALSE` column via SQLite migration, `SetAutoContinue` DB method, `PUT /api/entries/{id}/auto-continue` endpoint. Sabbath path (default): `route_status = "your_turn"` set after research and plan complete, with session messages prompting review. Delegation path (`auto_continue = true`): `maybeAutoContinue` goroutine fires 2s after advance, auto-advances through researched→planned stages, always stops before verification. Sabbath prompt: verification success message includes "What worked well? What would you do differently?" reflection. Frontend: checkbox toggle in entry detail header (⚡ Auto / 🕊️ Sabbath). Shipped Apr 6.
 - Phase 7 (Project Scaffolding) enables multi-repo projects with their own copilot-instructions, agents, skills, and GitHub remotes.
 - Proposal: [.spec/proposals/brain-pipeline-evolution.md](../proposals/brain-pipeline-evolution.md)
 - Research: [.spec/scratch/brain-pipeline-evolution/main.md](../scratch/brain-pipeline-evolution/main.md)
@@ -154,7 +154,7 @@
 | 21: Gospel Engine | ARCHIVED (Phase 5 done) |
 | Brain Pipeline (WS1) | Phase 4c DONE, 4d next |
 | Brain UX (WS3) | Phase 1✅ 5✅ 2✅ 3✅, Phase 4 next |
-| Brain Pipeline Evolution (WS4) | All 7 phases specced, none started |
+| Brain Pipeline Evolution (WS4) | Phases 1-3 shipped, Phases 4-7 specced |
 | Brain Project-Kanban | ALL PHASES COMPLETE |
 
 *Archived (Apr 5):* Plans 03, 06, 08, 09, 10, 11, 15, 21. Proposals: brain-memory, brain-phase3c-sdk-agents, brain-relay, brain-ui-dashboard, context-engineering, context-engineering-dev, enriched-search, session-journal, squad-learnings, brain-multi-agent, notifications, brain-unified-dashboard.

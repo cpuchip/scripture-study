@@ -1,7 +1,7 @@
 # WS4: Brain Pipeline Evolution — Creation Cycle Completion
 
 **Workstream:** WS4 (Brain Pipeline Evolution)
-**Status:** Phase 1-2 shipped (governance docs, failure visibility), Phases 3-7 specced
+**Status:** Phase 1-3 shipped (governance docs, failure visibility, reflection pauses), Phases 4-7 specced
 **Binding problem:** The brain pipeline handles the mechanical stages (research → plan → execute → verify) but skips 5 of the 11 creation cycle steps. It has no per-entry covenant, no error recovery beyond silent rollback, no reflection pause, no "who benefits" check, and no integration verification. It also forces all entries through the same pipeline regardless of type, and the nudge bot operates invisibly. These gaps mean the pipeline does work but doesn't do it *wisely*.
 
 **Created:** 2026-04-06
@@ -182,12 +182,12 @@ This is the Sabbath moment — stopping to see and declare before moving on.
 
 ### Phase 3 Verification
 
-- [ ] Research completes → entry shows in "Your Turn" queue (when auto_continue=false)
-- [ ] Plan completes → entry shows in "Your Turn" queue
-- [ ] Auto-continue toggle visible in entry detail
-- [ ] Toggle on → stages advance automatically past research and plan
-- [ ] Auto-continue always stops at verification
-- [ ] Verification success shows reflection prompt
+- [x] Research completes → entry shows in "Your Turn" queue (when auto_continue=false)
+- [x] Plan completes → entry shows in "Your Turn" queue
+- [x] Auto-continue toggle visible in entry detail
+- [x] Toggle on → stages advance automatically past research and plan
+- [x] Auto-continue always stops at verification
+- [x] Verification success shows reflection prompt
 
 ---
 
