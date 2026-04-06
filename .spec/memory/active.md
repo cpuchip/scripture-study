@@ -1,6 +1,6 @@
 # Active Context
 
-*Last updated: 2026-04-06 (UX QoL Phase 2 + Phase 3 shipped — File Browser + WebSockets)*
+*Last updated: 2026-04-06 (UX QoL Phases 6-7 specced, Pipeline Evolution proposal written)*
 *Previous cycle archived: [archive/active-2026-04-04.md](archive/active-2026-04-04.md)*
 *Hardware: Dual 4090s desktop (Mar 27). NOCIX server live.*
 
@@ -48,15 +48,21 @@
 - **Phase 2 (DONE):** File browser in Library tab — recursive tree endpoint, TreeNode component, search filter, wide layout. Verified Apr 6.
 - **Phase 3 (DONE):** WebSocket push updates — Hub broadcasts entry.updated/message.new/entry.created. Dashboard, EntryDetailView, ProjectDetailView all receive live updates. Auto-reconnect with exponential backoff. Verified Apr 6.
 - **Phase 4 (NEXT):** Cost tracking per entry (premium requests used). One session.
-- **Phase 4:** Cost tracking per entry (premium requests used). One session.
+- **Phase 6 (SPECCED):** Reader UX — backtick/code link fix, internal link following, route deep linking (`/library?file=path`), back/forward navigation history. Frontend-only.
+- **Phase 7 (SPECCED):** Git status in file browser — `GET /api/git/status` endpoint, TreeNode status indicators (green/yellow/red dots), summary bar.
+- **Phase 8 (DEFERRED):** Auto-commit after agent sessions. Needs own proposal. Revisit after Phase 7 in use.
 - Proposal: [.spec/proposals/brain-ux-quality-of-life.md](../proposals/brain-ux-quality-of-life.md)
 - Research: [.spec/scratch/brain-ux-quality-of-life/main.md](../scratch/brain-ux-quality-of-life/main.md)
 
-### Brain Simplification
-- 3-column board (Inbox/Working/Done) with sub-stage badges
-- Notebook mode for captures that don't need pipeline
-- Auto-continuation checkbox for delegation entries
-- Research notes: [.spec/scratch/brain-simplification/main.md](../scratch/brain-simplification/main.md)
+### Brain Simplification → Brain Pipeline Evolution
+- **Graduated** from scratch research to full proposal on Apr 6.
+- 11-step creation cycle gap analysis: Steps 2, 8, 9, 10, 11 now have specced phases.
+- 6 phases: Governance Docs, Failure Visibility, Reflection Pauses + Auto-Continue, Notebook Mode, Nudge Bot Controls, 3-Column Board.
+- Phase 1 (Governance Docs) is zero-code and highest priority.
+- Phase 3 (Reflection Pauses + Auto-Continue) resolves both Sabbath gap and delegation workflow.
+- Proposal: [.spec/proposals/brain-pipeline-evolution.md](../proposals/brain-pipeline-evolution.md)
+- Research: [.spec/scratch/brain-pipeline-evolution/main.md](../scratch/brain-pipeline-evolution/main.md)
+- Prior research: [.spec/scratch/brain-simplification/main.md](../scratch/brain-simplification/main.md)
 
 ### Space Center Pipeline Test
 - 5 seed entries, observe fully automated pipeline end-to-end

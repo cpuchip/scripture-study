@@ -117,6 +117,16 @@ Problems identified:
 
 1. **Build inline panel spec** (reply + close) — small, solves real friction (ALREADY SPECCED)
 2. **Add nudge bot to Scheduled Tasks** — make it visible and controllable
+
+---
+
+## Graduated to Proposal (Apr 6)
+
+This scratch file's findings — the 11-step creation cycle gap analysis, notebook mode, auto-continuation, 3-column board, and nudge bot concerns — have been graduated into a formal proposal:
+
+**[Brain Pipeline Evolution — Creation Cycle Completion](../../proposals/brain-pipeline-evolution.md)**
+
+Research provenance for the proposal: [.spec/scratch/brain-pipeline-evolution/main.md](../brain-pipeline-evolution/main.md)
 3. **Simplify board** — 3 columns (Inbox/Working/Done), badges for sub-stages
 4. **Add notebook mode** — captures that are just captures
 5. **Auto-continuation for delegation** — let it run until it hits a question

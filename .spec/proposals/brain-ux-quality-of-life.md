@@ -1,6 +1,6 @@
 # Brain UX Quality-of-Life Improvements
 
-**Status:** in-progress (Phase 1 ✅, Phase 5 ✅, Phase 2 ✅, Phase 3 ✅, Phase 4 next)
+**Status:** in-progress (Phase 1 ✅, Phase 5 ✅, Phase 2 ✅, Phase 3 ✅, Phase 4 next, Phase 6-7 specced)
 **Binding problem:** After an agent auto-advances an entry, the user can't see what was generated, can't tell what the agent needs next, and has to switch to VS Code to read the output. The reply textbox is too small for substantive responses. There's no real-time feedback. The brain app pipeline works mechanically but is opaque to the user.
 
 **Discovered:** 2026-04-05, during first real review cycle on "Build Physical Display Dashboard" entry.
@@ -306,6 +306,163 @@ Project rollup:
 
 ---
 
+## Phase 6: Reader UX — Links, Navigation, History
+
+*Make the reading experience a connected system, not isolated views.*
+
+**Origin:** Backtick-wrapped file paths aren't detected as links. File links in entry detail open a sidebar but can't follow internal links. The Library reader has no navigation history and no deep linking. These gaps prevent the brain from being the single interface for project awareness.
+
+### 6a. Fix File Path Detection in Code Spans
+
+**Bug:** `FILE_PATH_RE` lookbehind is `(?:^|\s|["'(])`. Markdown-it converts `` `scripts/brain/foo.go` `` to `<code>scripts/brain/foo.go</code>`. The regex runs on rendered HTML, so:
+- The backtick itself is gone (consumed by markdown-it)
+- The path is now preceded by `>` (from `<code>`)
+- `>` is not in the lookbehind character class
+
+**Fix:** Add `>` to the lookbehind: `(?:^|\s|["'(>])`. This catches paths inside `<code>` tags. Also add backtick for edge cases where raw backticks survive (non-markdown contexts): `(?:^|\s|["'(>\x60])`.
+
+**Effort:** One character class change in `useMarkdown.ts`.
+
+### 6b. Internal Link Following in Reader Content
+
+Add click handlers to rendered content in both `LibraryView.vue` and `FileViewer.vue`:
+
+```typescript
+// LibraryView — content area click handler
+function handleContentClick(e: MouseEvent) {
+  const target = e.target as HTMLElement
+  if (target.classList.contains('file-link') && target.dataset.filePath) {
+    e.preventDefault()
+    openFile(target.dataset.filePath)
+  }
+}
+```
+
+**Apply to:**
+- Library reader content area (`@click="handleContentClick"`)
+- FileViewer.vue rendered content (same pattern — clicking a link in a file opens the next file)
+
+### 6c. Route-Based Deep Linking
+
+Add `file` query parameter to the `/library` route:
+
+```typescript
+// Router: /library supports ?file=path
+{ path: '/library', component: LibraryView }
+
+// LibraryView — on mount, check for query param
+onMounted(() => {
+  const filePath = route.query.file as string
+  if (filePath) openFile(filePath)
+})
+```
+
+**Cross-view navigation:** Keep the FileViewer sidebar for quick peeks. Add an "Open in Reader" link (upper-right of the sidebar header, next to the close button) that navigates to `/library?file=path` for full-context reading. This gives both: fast inline access AND the full reader when you want it.
+
+### 6d. Navigation History (Back/Forward)
+
+```typescript
+const fileHistory = ref<string[]>([])
+const historyIndex = ref(-1)
+
+function navigateToFile(path: string) {
+  // Trim forward history
+  fileHistory.value = fileHistory.value.slice(0, historyIndex.value + 1)
+  fileHistory.value.push(path)
+  historyIndex.value++
+  loadFile(path)
+}
+
+const canGoBack = computed(() => historyIndex.value > 0)
+const canGoForward = computed(() => historyIndex.value < fileHistory.value.length - 1)
+```
+
+**UI:** Back/forward arrows in the file content header bar, next to the file path. Disabled state when at ends of history. Breadcrumb trail optional (could show last 3-5 files).
+
+### Phase 6 Verification
+
+- [ ] `` `scripts/brain/foo.go` `` renders as a clickable link (code span detection)
+- [ ] Click a file path in Library reader content → opens that file in reader
+- [ ] Navigate to `/library?file=.spec/proposals/brain-ux-quality-of-life.md` → file opens directly
+- [ ] Click file link in entry detail → navigates to Library reader
+- [ ] Open file A → click link to file B → click link to file C → back button returns to B → forward returns to C
+- [ ] Back button disabled when at start of history
+
+---
+
+## Phase 7: Git Status in File Browser
+
+*See what's changed without leaving the brain.*
+
+### 7a. Backend — Git Status Endpoint
+
+`GET /api/git/status` — runs `git status --porcelain` in the workspace root, parses output, returns JSON.
+
+```go
+type GitFileStatus struct {
+    Path   string `json:"path"`
+    Status string `json:"status"` // "new", "modified", "deleted", "renamed"
+}
+
+func (s *Server) handleGitStatus(w http.ResponseWriter, r *http.Request) {
+    cmd := exec.Command("git", "status", "--porcelain")
+    cmd.Dir = workspaceRoot
+    out, err := cmd.Output()
+    // Parse: "?? file" → new, " M file" → modified, " D file" → deleted
+    // Return: [{ "path": "study/foo.md", "status": "new" }, ...]
+}
+```
+
+**Security:** Localhost-only server. Workspace-scoped. No user input in the git command (no path injection). Safe.
+
+### 7b. Frontend — Status Indicators in TreeNode
+
+Fetch git status on Library mount. Pass status map as prop to TreeNode.
+
+**Visual indicators:**
+- 🟢 Green dot — new/untracked file
+- 🟡 Yellow dot — modified
+- 🔴 Red dot — deleted
+- Directory inherits the "most severe" status of its children
+
+```vue
+<!-- TreeNode.vue addition -->
+<span v-if="statusIndicator" class="ml-1 text-xs" :class="statusClass">●</span>
+```
+
+### 7c. Stretch — Summary Bar
+
+Above the file tree, show a summary line: "3 new, 2 modified" with counts. Clickable to filter tree to only changed files.
+
+### Phase 7 Verification
+
+- [ ] Create a new file → green dot appears in file tree (after refresh)
+- [ ] Modify an existing file → yellow dot appears
+- [ ] Summary bar shows correct counts
+- [ ] Git status refreshes on Library tab activation (not continuously polling)
+
+---
+
+## Phase 8: Auto-Commit After Agent Sessions (Deferred)
+
+*Plan only — not building yet. Needs its own proposal when the time comes.*
+
+**Concept:** When an agent session completes (pipeline stage transition), the brain evaluates what files were created/modified, generates a meaningful commit message, and commits the work.
+
+**Key design questions (to resolve in a future proposal):**
+1. **Trigger:** Automatic on stage transition? Button in UI? Both?
+2. **Scope:** Which files? All changes since last commit? Only files the agent touched? Need a way to track agent-modified files.
+3. **Message:** AI-generated summary of the work? Template with entry title + stage? Human-editable before commit?
+4. **Push:** Opt-in per commit? Global setting? Never auto-push?
+5. **Safety:** Commits are permanent (in reflog). Push is more consequential. Need confirmation or at minimum clear audit trail.
+6. **Architecture:** Pipeline post-stage hook (Go) vs. UI button + backend endpoint. Pipeline hook is cleaner for automation, button gives more control. Could start with button, add automation later.
+
+**Prerequisite:** Phase 7 (git status) gives us the UI foundation. Auto-commit builds on knowing what changed.
+
+**Revisit when:** After Phase 7 is shipped and in daily use. The git status display will surface whether auto-commit is actually needed or whether manual commits are fine.
+
+---
+
 ## Phase 5: Smarter Auto-Advance Messages ✅ COMPLETE (Apr 5)
 
 *Shipped: extractQuestionSummary() in research.go parses scratch file, counts numbered questions under "Open Questions" heading, lists category sub-headings. Appended to auto-advance message.*
@@ -345,8 +502,12 @@ Project rollup:
 | 3: WebSockets | ~120 lines | ~80 lines | None (gorilla already in go.mod) | Medium — connection lifecycle management |
 | 4: Cost Tracking | ~30 lines | ~20 lines | None | Low — DB schema + display |
 | 5: Smarter Messages | ~30 lines | 0 | None | Low — backend-only change |
+| 6: Reader UX | 0 | ~80 lines | None | Low — frontend-only, builds on Phase 1+2 |
+| 7: Git Status | ~50 lines | ~30 lines | None (os/exec) | Low — read-only git commands |
+| 8: Auto-Commit | TBD | TBD | TBD | Medium — destructive actions need safety |
 
-**Total across all phases:** ~290 backend, ~380 frontend. But delivered incrementally — each phase stands alone.
+**Total Phases 1-7:** ~340 backend, ~490 frontend. Delivered incrementally — each phase stands alone.
+**Phase 8:** Deferred. Needs its own proposal.
 
 **Biggest risk:** Phase 3 (WebSockets) changes the communication model. If buggy, could cause connection leaks or missed events. Mitigate with timeouts, heartbeats, and graceful degradation (fall back to polling).
 
@@ -356,20 +517,18 @@ Project rollup:
 
 | Step | Question | Answer |
 |------|----------|--------|
-| Intent | Why? | The pipeline is opaque. User can't see agent output without switching tools. |
+| Intent | Why? | The pipeline is opaque. User can't see agent output without switching tools. Reader exists but doesn't connect. |
 | Covenant | Rules? | OWASP for file serving. Match ibeco.me patterns. One session per phase. |
 | Stewardship | Who owns what? | dev agent executes each phase against this spec. |
-| Spiritual Creation | Spec precise enough? | Phase 1 yes. Phases 2-5 need detail when they're next up. |
-| Line upon Line | Phasing? | 5 phases, each independent. Phase 1 is highest priority. |
+| Spiritual Creation | Spec precise enough? | Phases 1-3 ✅ shipped. Phase 4-7 specced. Phase 8 deferred to own proposal. |
+| Line upon Line | Phasing? | 8 phases, each independent. Phases 6-7 build on 1+2 but ship standalone value. |
 | Physical Creation | Who executes? | dev agent with brain.exe running locally. |
 | Review | How do we know it's right? | Verification checklists per phase. |
-| Atonement | What if it goes wrong? | File serving has security checks. WebSocket has fallback to polling. |
-| Sabbath | When do we stop? | After Phase 1 — use it, then decide what's next. |
-| Consecration | Who benefits? | Michael directly. Also: model for brain-as-tool UX. |
-| Zion | Integration? | Phase 3 benefits ibeco.me relay too. Phase 2 is portable. |
+| Atonement | What if it goes wrong? | File serving has security checks. WebSocket has fallback. Git endpoints are read-only. Auto-commit (Phase 8) deferred until safety model is designed. |
+| Sabbath | When do we stop? | After Phase 7. Phase 8 gets its own proposal and review cycle. |
+| Consecration | Who benefits? | Michael directly. Model for brain-as-tool UX. |
+| Zion | Integration? | Phase 3 benefits ibeco.me relay. Phase 6 makes reader a connected system. |
 
 ## Recommendation
 
-**Build Phase 1 first.** It solves 80% of the pain (can't see output, can't type replies, can't access files). One focused session. Use it on the Space Center entries, then decide if Phase 2-5 are needed or if the inline viewer is sufficient.
-
-Phase 5 (smarter messages) could also be done quickly and independently since it's backend-only.
+**Phase 6 next after Phase 4.** Phase 6 is the cohesive reader experience — link fix, internal navigation, deep linking, history. It makes Phases 1+2 fully useful. Phase 7 (git status) is nice-to-have but not blocking daily use. Phase 8 is explicitly deferred.
