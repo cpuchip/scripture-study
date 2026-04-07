@@ -297,73 +297,154 @@ This is primarily a frontend change to ProjectDetailView or a new board view. Th
 
 ---
 
-## Phase 7: Project Scaffolding (Multi-Repo Deliverables)
+## Phase 7: Project Scaffolding (Multi-Workspace Deliverables)
 
-*Not every project lives in scripture-study. The pipeline needs to know where to put things.*
+*Not every project lives in scripture-study root. The pipeline needs to know where things live and how to govern them.*
 
-Currently the execution agent assumes all work happens in the scripture-study workspace. But projects like Space Center, a budget app, or a new teaching tool need:
-- Their own git repo (created fresh or existing)
-- Their own `copilot-instructions.md` and `.github/` structure
-- Potentially their own agents and skills
-- GitHub remote on cpuchip (public or private)
+### The Problem
 
-### 7a. Project Workspace Configuration
+Currently the pipeline assumes all work happens in the scripture-study workspace root. But projects vary:
+- ibeco.me lives in `scripts/becoming/` — a subfolder, same git repo
+- brain lives in `scripts/brain/` — nested separate git repo
+- Future projects (Space Center, budget app) need their own repos and provenance
 
-Add to the project model:
+Additionally, scripture-study's `.github/copilot-instructions.md` (personality, voice, covenant, principles) is NOT injected into pipeline agents — they only see the phase-specific governance covenants. Pipeline agents lack the base layer that makes them work well.
+
+### Design Decisions
+
+1. **Governance injection (Option C):** Thin project instructions on disk, pipeline injects scripture-study base layer at runtime. Projects don't duplicate the full base — they add what's unique.
+2. **Explicit workspace_type:** User chooses `integrated`, `subfolder`, or `external` when creating a project. No inference from path.
+3. **`./projects/` folder:** New external projects live at `./projects/{name}/` with their own `.git`, `.spec/`, `.github/`, and full provenance.
+
+### 7a. Schema Changes
 
 ```sql
-ALTER TABLE projects ADD COLUMN workspace_path TEXT;      -- e.g., "C:\Users\cpuch\Documents\code\stuffleberry\space-center"
-ALTER TABLE projects ADD COLUMN github_repo TEXT;          -- e.g., "cpuchip/space-center"
-ALTER TABLE projects ADD COLUMN repo_visibility TEXT;      -- "public" or "private"
+ALTER TABLE projects ADD COLUMN workspace_type TEXT DEFAULT 'integrated';
+-- 'integrated' = scripture-study root (default, current behavior)
+-- 'subfolder'  = relative path within scripture-study, same git
+-- 'external'   = own git repo in ./projects/{name}/
+
+ALTER TABLE projects ADD COLUMN workspace_path TEXT;
+-- subfolder:  "scripts/becoming/"
+-- external:   "projects/space-center/"
+-- integrated: NULL
+
+ALTER TABLE projects ADD COLUMN github_repo TEXT;
+-- e.g., "cpuchip/space-center"
+
+ALTER TABLE projects ADD COLUMN repo_visibility TEXT DEFAULT 'private';
+-- "public" or "private"
 ```
 
-- `workspace_path = NULL` → deliverables go in scripture-study (default, current behavior)
-- `workspace_path = "path"` → execution agent works in that directory
+### 7b. Governance Injection into Pipeline Agents
 
-### 7b. Repo Initialization
-
-When a project specifies a workspace_path that doesn't exist yet:
-
-1. `mkdir -p` the directory
-2. `git init`
-3. Scaffold `.github/copilot-instructions.md` from a template (project name, binding problem, conventions)
-4. Scaffold `.github/agents/` with project-appropriate agent modes
-5. Initial commit
-6. `gh repo create cpuchip/{name} --{visibility} --source=. --push`
-
-This could be a pipeline hook on first execution, or a UI button ("Initialize Project Repo").
-
-### 7c. Execution Context Injection
-
-The execution agent's system message and working directory must respect project workspace:
+Add scripture-study's base instructions as Layer 0 in all pipeline agent system messages.
 
 ```go
-// In runExecute(), use project workspace if configured:
-workDir := p.workspaceRoot // default: scripture-study
-if project != nil && project.WorkspacePath != "" {
-    workDir = project.WorkspacePath
+// Load workspace base instructions (trimmed for token budget)
+baseInstructions := ""
+instrPath := filepath.Join(p.workspace, ".github", "copilot-instructions.md")
+if data, err := os.ReadFile(instrPath); err == nil {
+    baseInstructions = trimBaseInstructions(string(data))
 }
 ```
 
-Governance docs, skills, and agent modes from the project repo take precedence over scripture-study defaults.
+Prompt assembly order for every pipeline agent:
+1. **Workspace base** — scripture-study copilot-instructions (trimmed/summarized to ~2000 tokens — voice, covenant, core principles only; strip MCP tool tables, agent mode lists, session memory procedures)
+2. **Phase covenant** — `docs/governance/{phase}-covenant.md` (stewardship, boundaries, budget)
+3. **Project context** — `Project.ContextFile` or project's `copilot-instructions.md` (architecture, conventions)
+4. **Task instructions** — what to do with this specific entry
 
-### 7d. GitHub Integration
+Also wire `review-covenant.md` into `review.go` nudge prompts (currently missing).
 
-For repos with a GitHub remote:
-- Show repo link in project detail view
-- Auto-commit integration (ties to WS3 Phase 8 when built)
-- Branch management for execution (main vs feature branches)
+### 7c. External Project Scaffolding
 
-**Effort:** ~80 lines backend (schema + init logic), ~30 lines frontend (project settings). One session for 7a-7b, second session for 7c-7d.
+When creating a project with `workspace_type = "external"`:
+
+1. Create `./projects/{name}/` directory
+2. `git init`
+3. Scaffold directory structure:
+
+```
+projects/space-center/
+├── .git/
+├── .github/
+│   └── copilot-instructions.md    # Thin: project identity + architecture + conventions
+├── .spec/
+│   ├── proposals/                  # Project work proposals
+│   ├── scratch/                    # Research provenance
+│   └── memory/                     # Project-specific memory
+├── docs/                           # Project documentation
+└── README.md                       # Auto-generated from project name + description
+```
+
+The scaffolded `copilot-instructions.md` contains:
+- Project name, description, binding problem
+- Reference back to scripture-study for base governance principles
+- Project-specific conventions (tech stack, patterns, etc.) — starts minimal, grows
+- NOT a copy of scripture-study's full instructions
+
+4. Initial commit
+5. `gh repo create cpuchip/{name} --{visibility} --source=. --push` (if GitHub integration configured)
+
+This could be a UI button ("Initialize Project") or automatic on first advance.
+
+### 7d. Agent Working Directory
+
+```go
+func (p *Pipeline) resolveWorkDir(entry *store.Entry) string {
+    project := p.getProject(entry)
+    if project == nil {
+        return p.workspace // default: scripture-study root
+    }
+    switch project.WorkspaceType {
+    case "subfolder":
+        // Agent works in scripture-study root but gets project context
+        return p.workspace
+    case "external":
+        if project.WorkspacePath != "" {
+            abs := project.WorkspacePath
+            if !filepath.IsAbs(abs) {
+                abs = filepath.Join(p.workspace, abs)
+            }
+            return abs
+        }
+        return p.workspace
+    default: // "integrated"
+        return p.workspace
+    }
+}
+```
+
+For **subfolder** projects, `WorkingDir` stays scripture-study but the project context tells the agent to focus on that subfolder. For **external** projects, `WorkingDir` becomes the project directory.
+
+### 7e. Frontend: Project Settings
+
+Add to the project create/edit form:
+- Workspace type dropdown: Integrated / Subfolder / External
+- Workspace path input (shown for subfolder and external, with sensible defaults)
+- GitHub repo field (shown for external)
+- Repo visibility toggle (shown for external)
+- "Initialize Project" button (shown for external projects without a `.git`)
+
+### 7f. Context File Cap
+
+Raise the `ContextFile` content cap from 3000 to 8000 chars for projects with `workspace_type != "integrated"`. These projects rely more heavily on the context doc for governance.
+
+**Effort:** ~120 lines backend (schema + governance injection + scaffold + workdir resolution), ~60 lines frontend (project settings form). Two sessions: 7a-7b-7f first, 7c-7d-7e second.
 
 ### Phase 7 Verification
 
-- [ ] Project settings show workspace path and GitHub repo fields
-- [ ] New project with workspace_path creates directory + git init
+- [ ] Pipeline agents receive scripture-study base instructions in system message
+- [ ] review-covenant.md loaded in review.go nudge prompts
+- [ ] Project create/edit shows workspace type, path, and GitHub fields
+- [ ] New external project creates `./projects/{name}/` with scaffold structure
 - [ ] `gh repo create` runs successfully with correct visibility
-- [ ] Execution agent works in project workspace, not scripture-study
-- [ ] Project with no workspace_path uses scripture-study (backward compatible)
-- [ ] Scaffolded repo has copilot-instructions.md with project context
+- [ ] Execution agent `WorkingDir` respects workspace type
+- [ ] Subfolder project: agent works in scripture-study root with project context
+- [ ] External project: agent works in project directory
+- [ ] Integrated project (no workspace_path): backward compatible
+- [ ] Scaffolded project has thin `copilot-instructions.md` with reference back
 
 ---
 
@@ -377,7 +458,7 @@ For repos with a GitHub remote:
 | 4: Notebook Mode | ~30 lines | ~40 lines | Low — additive, doesn't change pipeline | — (workflow) |
 | 5: Nudge Bot Controls | ~50 lines | ~40 lines | Medium — touches review.go goroutine | Step 7 (Review+) |
 | 6: 3-Column Board | 0 | ~80 lines | Low — frontend grouping only | — (UX) |
-| 7: Project Scaffolding | ~80 lines | ~30 lines | Medium — runs git/gh CLI, creates dirs | Step 6 (Physical Creation) |
+| 7: Project Scaffolding | ~120 lines | ~60 lines | Medium — governance injection, scaffold, git CLI | Steps 2+6 (Covenant + Physical) |
 
 **Consecration (Step 10) and Zion (Step 11)** are handled through Phase 1 — the plan-covenant.md governance doc adds "Who benefits?" and "How does this integrate?" sections to every plan output. No separate phase needed.
 
