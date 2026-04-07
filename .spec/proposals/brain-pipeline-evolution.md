@@ -289,11 +289,11 @@ This is primarily a frontend change to ProjectDetailView or a new board view. Th
 
 ### Phase 6 Verification
 
-- [ ] Board shows 3 columns with counts
-- [ ] Entries land in correct column based on maturity
-- [ ] Badges show sub-stage within Working column
+- [x] Board shows 3 columns with counts
+- [x] Entries land in correct column based on maturity
+- [x] Badges show sub-stage within Working column
 - [ ] Drag-and-drop or quick-action to move between columns (stretch)
-- [ ] Notebook entries appear in Inbox with distinct visual
+- [x] Notebook entries appear in Inbox with distinct visual
 
 ---
 
