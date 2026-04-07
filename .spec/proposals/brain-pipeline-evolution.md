@@ -493,3 +493,93 @@ Raise the `ContextFile` content cap from 3000 to 8000 chars for projects with `w
 | Sabbath | When do we stop? | After Phase 3 — use reflection pauses + auto-continue, then decide what's next. |
 | Consecration | Who benefits? | Michael directly. Model for principled AI pipeline design. |
 | Zion | Integration? | Phase 1 improves every pipeline run. Phase 3 enables Space Center delegation test. Phase 7 enables multi-repo projects. |
+
+---
+
+## Phase 8: Agent-Driven Project Initialization
+
+**Problem:** Phase 7c's `ScaffoldProject` creates mechanical directory structures with placeholder comments (`<!-- Add ... here -->`). Nobody reads placeholder files. The "Initialize" button only works for external projects. There's no way to tell the system what a project is *about* in enough detail for meaningful initialization.
+
+**Solution:** Add an `init_instructions` field to projects and evolve initialization from mechanical scaffolding to agent-driven content creation with mechanical fallback.
+
+### 8a: Schema — `init_instructions TEXT` column
+
+Add `migrateInitInstructions()` to db.go:
+```go
+func (d *DB) migrateInitInstructions() error {
+    cols := columnNames("projects")
+    if !cols["init_instructions"] {
+        _, err := d.db.Exec("ALTER TABLE projects ADD COLUMN init_instructions TEXT")
+        return err
+    }
+    return nil
+}
+```
+
+Chain: `migrateProjectWorkspace → migrateInitInstructions`.
+
+Add to Project struct in types.go:
+```go
+InitInstructions string `json:"init_instructions,omitempty"` // detailed instructions for agent initialization
+```
+
+Wire through all CRUD (CreateProject, GetProject, ListProjects, UpdateProject) and API handlers (handleCreateProject, handleUpdateProject partial-update).
+
+### 8b: Agent-Driven `InitializeProject`
+
+Evolve `scaffold.go`. New function: `InitializeProject(project *store.Project) (*InitResult, error)`.
+
+**InitResult struct:**
+```go
+type InitResult struct {
+    Method       string   `json:"method"`       // "agent" or "mechanical"
+    FilesCreated []string `json:"files_created"` // paths relative to project dir
+    ProjectDir   string   `json:"project_dir,omitempty"`
+    GitInited    bool     `json:"git_inited"`
+    GHCreated    bool     `json:"gh_created"`
+    Error        string   `json:"error,omitempty"`
+}
+```
+
+**Logic by workspace type:**
+
+| Type | Agent path | Mechanical fallback |
+|------|-----------|-------------------|
+| External | Create dirs + git init, then agent writes copilot-instructions.md, README, identity.md, etc. based on init_instructions. Git add + commit after. Optional gh repo create. | Current ScaffoldProject logic but uses init_instructions in the copilot-instructions.md template. |
+| Subfolder | Agent writes a project context doc at `context_file` path. | Write init_instructions as context file content. |
+| Integrated | Agent writes a project context doc at `context_file` path. | Write init_instructions as context file content. |
+
+**Agent configuration:**
+- Model: Sonnet (1.0 premium request — one-time cost)
+- WorkingDir: resolved project directory (external) or workspace root (subfolder/integrated)
+- AllowedWritePaths: `{"."}` (initialization needs broad write access)
+- System message: Describes the role, explains workspace types, instructs to write real content not placeholders
+- Prompt: Project name, description, init_instructions, workspace_type, context_file path
+
+**Fallback trigger:** `p.pool == nil` (no Copilot SDK agent pool configured).
+
+### 8c: Route + Frontend
+
+**API:** Replace `POST /api/projects/{id}/scaffold` → `POST /api/projects/{id}/initialize`. Handler calls `s.pipeline.InitializeProject(project)`.
+
+**Frontend api.ts:** Replace `scaffoldProject` with `initializeProject`. Update Project interface and createProject/updateProject to include `init_instructions`.
+
+**ProjectsView.vue:** Add `init_instructions` textarea to create form (below description).
+
+**ProjectDetailView.vue:**
+- Initialize button available for ALL project types (remove `v-if="external"`)
+- `doScaffold` → `doInitialize`
+- Add `init_instructions` to edit form
+- Update result type to match InitResult
+
+### Phase 8 Verification
+
+- [ ] `go vet ./...` clean
+- [ ] `npx vue-tsc --noEmit` clean
+- [ ] `go test ./...` all pass
+- [ ] Create project with init_instructions → field persists through create/get/edit
+- [ ] Initialize external project with agent → creates meaningful copilot-instructions.md (not placeholders)
+- [ ] Initialize integrated project → context file created at configured path
+- [ ] Initialize without agent pool → mechanical fallback works
+- [ ] Initialize button visible for all workspace types
+- [ ] Old scaffold endpoint replaced, no 404s
