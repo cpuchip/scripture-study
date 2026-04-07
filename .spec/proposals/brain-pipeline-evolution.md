@@ -263,11 +263,11 @@ Per-entry: show when nudged, what the nudge said, whether the user responded. Th
 
 ### Phase 5 Verification
 
-- [ ] Nudge bot appears in Scheduled Tasks view
-- [ ] Pause/resume toggle works
-- [ ] Last run time and nudge count visible
-- [ ] Nudge bot doesn't fire when no user activity in 2+ hours
-- [ ] Entry detail shows nudge history
+- [x] Nudge bot appears in Scheduled Tasks view
+- [x] Pause/resume toggle works
+- [x] Last run time and nudge count visible
+- [x] Nudge bot doesn't fire when no user activity in 2+ hours
+- [x] Entry detail shows nudge history
 
 ---
 
