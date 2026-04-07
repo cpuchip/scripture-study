@@ -438,13 +438,13 @@ Raise the `ContextFile` content cap from 3000 to 8000 chars for projects with `w
 - [x] Pipeline agents receive scripture-study base instructions in system message
 - [x] review-covenant.md loaded in review.go nudge prompts
 - [x] Project create/edit shows workspace type, path, and GitHub fields
-- [ ] New external project creates `./projects/{name}/` with scaffold structure
-- [ ] `gh repo create` runs successfully with correct visibility
-- [ ] Execution agent `WorkingDir` respects workspace type
-- [ ] Subfolder project: agent works in scripture-study root with project context
-- [ ] External project: agent works in project directory
+- [x] New external project creates `./projects/{name}/` with scaffold structure
+- [x] `gh repo create` runs successfully with correct visibility
+- [x] Execution agent `WorkingDir` respects workspace type
+- [x] Subfolder project: agent works in scripture-study root with project context
+- [x] External project: agent works in project directory
 - [x] Integrated project (no workspace_path): backward compatible
-- [ ] Scaffolded project has thin `copilot-instructions.md` with reference back
+- [x] Scaffolded project has thin `copilot-instructions.md` with reference back
 
 ---
 
