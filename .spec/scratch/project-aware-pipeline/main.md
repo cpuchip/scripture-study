@@ -152,14 +152,26 @@ Michael said "I didn't see the haiku agent run" — he expected option 2. But op
 **D1: Scratch path strategy for existing entries**
 - Go forward only (new entries get project-scoped paths, existing keep workspace-root paths)
 - Or migrate existing dashboard entry manually after the fix
+- **DECIDED:** Move the file manually + update DB. ✅ Done — moved to `projects/space-center/.spec/scratch/build-physical-display-dashboard/main.md`.
 
 **D2: Commit message style**
 - Mechanical: `"brain: Build Physical Display Dashboard"` — free, instant
 - Haiku-generated from diff — 0.33 premium requests per commit, better messages
+- **DECIDED:** Haiku-generated from the start. Format: `brain({slug}): {haiku-generated description}`. The slug comes from the entry title as a prefix so git log shows which entry the work belongs to.
 
 **D3: Commit scope for integrated projects**
 - Integrated projects live in scripture-study workspace root. Committing there after every execution could be noisy. Should we only auto-commit for external/subfolder projects?
 - Or commit for all but require the user to review with `git status` before push?
+- **DECIDED:** Auto-commit for ALL project types including integrated. But SELECTIVE — only `git add` the specific files the agent session wrote (tracked via PostToolUse hook + isWriteTool + extractPathCandidates). Never `git add -A`. This protects Michael's in-progress work while ensuring agent output is committed.]
+
+### Implementation Notes from D3 Decision
+
+File tracking approach:
+1. `Agent.writtenFiles map[string]bool` — populated in PostToolUse hook when `isWriteTool()` is true
+2. `extractPathCandidates()` already handles common tool arg keys (path, filepath, dirpath, old_path, new_path)
+3. `run_in_terminal` writes won't be tracked (opaque) — known/acceptable limitation
+4. Files grouped by git repo root via `findGitRoot()` walk — handles 13 nested repos
+5. Separate commits per repo, each with Haiku-generated message
 
 ---
 

@@ -32,9 +32,10 @@ When an entry belongs to an external project (like Space Center at `projects/spa
 ## Constraints
 
 - No database schema changes. scratch_path is just a string — the fix is in how it's computed and resolved.
-- New entries going forward get project-scoped paths. Existing entries may keep workspace-root paths (option 3 from analysis).
+- New entries going forward get project-scoped paths. Existing dashboard entry already moved manually (D1 done).
 - Git commits are best-effort — failures log warnings but don't block the pipeline.
-- No Haiku commit agent in Phase 1 — mechanical commits with `"brain: {entry.Title}"` messages. Can upgrade later.
+- Haiku-generated commit messages from the start (D2), not mechanical.
+- Auto-commit for ALL project types including integrated (D3), but selective — only files the session changed.
 
 ---
 
@@ -144,59 +145,116 @@ For integrated projects (WorkspaceType="" or "integrated", no WorkspacePath), no
 
 ---
 
-## 9c — Post-Execution Git Commit
+## 9c — Post-Execution Git Commit (Selective, All Project Types)
 
 **Problem:** After `runExecute()` completes, no git operations happen. Files created by the agent sit uncommitted.
 
-**Fix:** Add a `commitAfterExecution()` step that runs `git add -A && git commit` in the appropriate directory after successful execution.
+**Fix:** Track which files the agent writes during the session, then selectively `git add` only those files and commit with a Haiku-generated message. Applies to ALL project types — external, subfolder, and integrated.
 
-### Changes
+### Design Decisions (from Michael)
 
-**`execute.go` — after execution success (after `SetAgentOutput`, before route_status update):**
+- **D2: Haiku commit messages from the start.** Not mechanical — the review agent (Haiku 3.5, 0.33 premium requests) generates the commit message. Format: `brain({slug}): {haiku-generated description}`. The slug comes from the entry title (e.g., `brain(build-physical-display-dashboard): scaffold dashboard layout with tile grid and API routes`).
+- **D3: Selective commits for ALL project types.** Including integrated projects in the base workspace. But ONLY the files that the agent session actually touched — never `git add -A`. This prevents accidentally committing Michael's in-progress work.
+
+### Part 1: File Tracking in Agent Sessions
+
+The PostToolUse hook in `agent.go` already fires for every tool call and we already have `isWriteTool()` and `extractPathCandidates()` in `governance.go`. We reuse these to collect written file paths.
+
+**`ai/agent.go` — Add file tracking:**
 ```go
-// Commit changes if applicable
-p.commitAfterExecution(entry)
-```
+// In Agent struct, add:
+writtenFiles map[string]bool // set of absolute file paths written during session
 
-**New function in `execute.go` or `context.go`:**
-```go
-// commitAfterExecution runs git add + commit in the project directory after
-// successful execution. Best-effort — failures log but don't block.
-func (p *Pipeline) commitAfterExecution(entry *store.Entry) {
-    dir := p.resolveWorkDir(entry)
-
-    // Only auto-commit for external/subfolder projects with their own directory.
-    // Integrated projects share the workspace root — too noisy to auto-commit.
-    if dir == p.workspace {
-        return
+// In createSession() PostToolUse hook, after existing AUDIT log:
+if isWriteTool(input.ToolName) {
+    for _, path := range extractPathCandidates(input.ToolArgs) {
+        abs := path
+        if !filepath.IsAbs(abs) {
+            abs = filepath.Join(a.config.WorkingDir, abs)
+        }
+        abs = filepath.Clean(abs)
+        a.writtenFiles[abs] = true
     }
-
-    // Check if this is actually a git repo
-    gitDir := filepath.Join(dir, ".git")
-    if _, err := os.Stat(gitDir); os.IsNotExist(err) {
-        return
-    }
-
-    msg := fmt.Sprintf("brain: %s", entry.Title)
-    if err := gitCommitAll(dir, msg); err != nil {
-        log.Printf("post-execution commit failed for %s: %v", entry.ID, err)
-        return
-    }
-    log.Printf("post-execution commit: %s in %s", msg, dir)
 }
 
-// gitCommitAll stages all changes and commits in the given directory.
-func gitCommitAll(dir, message string) error {
-    // git add -A
-    add := exec.Command("git", "add", "-A")
-    add.Dir = dir
+// New method:
+func (a *Agent) WrittenFiles() []string {
+    files := make([]string, 0, len(a.writtenFiles))
+    for f := range a.writtenFiles {
+        files = append(files, f)
+    }
+    return files
+}
+```
+
+**Key:** `extractPathCandidates()` already handles the common tool arg keys (path, filepath, dirpath, old_path, new_path, workspacefolder). For `run_in_terminal`, file tracking won't capture paths (terminal commands are opaque) — but that's acceptable since most agent writes use the file tools.
+
+### Part 2: Selective Git Commit
+
+After execution, commit only the tracked files. Determine the correct git repo for each file.
+
+**New function in `execute.go`:**
+```go
+// commitAfterExecution selectively commits files written during the agent session.
+// Groups files by git repo and commits each group separately.
+// Best-effort — failures log but don't block the pipeline.
+func (p *Pipeline) commitAfterExecution(entry *store.Entry, writtenFiles []string) {
+    if len(writtenFiles) == 0 {
+        return
+    }
+
+    // Group files by their git repo root
+    repoFiles := map[string][]string{} // repoRoot -> []relativePaths
+    for _, absPath := range writtenFiles {
+        repoRoot := findGitRoot(absPath)
+        if repoRoot == "" {
+            continue // not in a git repo
+        }
+        rel, err := filepath.Rel(repoRoot, absPath)
+        if err != nil {
+            continue
+        }
+        repoFiles[repoRoot] = append(repoFiles[repoRoot], rel)
+    }
+
+    for repoRoot, files := range repoFiles {
+        msg := p.generateCommitMessage(entry, files)
+        if err := gitCommitSelective(repoRoot, files, msg); err != nil {
+            log.Printf("post-execution commit failed in %s: %v", repoRoot, err)
+            continue
+        }
+        log.Printf("post-execution commit: %s (%d files in %s)", msg, len(files), repoRoot)
+    }
+}
+
+// findGitRoot walks up from the given path to find the nearest .git directory.
+func findGitRoot(path string) string {
+    dir := filepath.Dir(path)
+    for {
+        if _, err := os.Stat(filepath.Join(dir, ".git")); err == nil {
+            return dir
+        }
+        parent := filepath.Dir(dir)
+        if parent == dir {
+            return "" // reached filesystem root
+        }
+        dir = parent
+    }
+}
+
+// gitCommitSelective stages specific files and commits.
+func gitCommitSelective(repoRoot string, files []string, message string) error {
+    // git add <file1> <file2> ...
+    args := append([]string{"add", "--"}, files...)
+    add := exec.Command("git", args...)
+    add.Dir = repoRoot
     if out, err := add.CombinedOutput(); err != nil {
         return fmt.Errorf("git add: %w (%s)", err, string(out))
     }
 
-    // git commit -m message (--allow-empty is not needed; skip if nothing staged)
+    // git commit -m message
     commit := exec.Command("git", "commit", "-m", message)
-    commit.Dir = dir
+    commit.Dir = repoRoot
     out, err := commit.CombinedOutput()
     if err != nil {
         if strings.Contains(string(out), "nothing to commit") {
@@ -208,23 +266,67 @@ func gitCommitAll(dir, message string) error {
 }
 ```
 
-**Scope:** Only external/subfolder projects get auto-commit. Integrated projects share the workspace root where Michael's own work is in progress — auto-committing there would be disruptive. This matches Michael's expectation: project repos should be self-managing.
+### Part 3: Haiku Commit Message Generation
+
+The commit message is generated by Haiku (0.33 premium requests) with the entry title prepended as context.
+
+**New function in `execute.go`:**
+```go
+// generateCommitMessage uses Haiku to generate a short commit message.
+// Falls back to mechanical message if Haiku fails.
+func (p *Pipeline) generateCommitMessage(entry *store.Entry, files []string) string {
+    slug := slugify(entry.Title)
+    prefix := fmt.Sprintf("brain(%s)", slug)
+
+    // Build a short prompt listing the files changed
+    fileList := strings.Join(files, "\n  ")
+    prompt := fmt.Sprintf(
+        "Generate a concise git commit message (one line, max 72 chars after the prefix) "+
+            "for these changes made while working on '%s':\n  %s\n"+
+            "Reply with ONLY the message body, no prefix.",
+        entry.Title, fileList,
+    )
+
+    // Quick Haiku call — single turn, no tools
+    body, err := p.quickHaikuCall(prompt)
+    if err != nil || body == "" {
+        // Fallback: mechanical message
+        return fmt.Sprintf("%s: pipeline execution", prefix)
+    }
+
+    // Trim and enforce length
+    body = strings.TrimSpace(body)
+    if len(body) > 72-len(prefix)-2 {
+        body = body[:72-len(prefix)-2]
+    }
+    return fmt.Sprintf("%s: %s", prefix, body)
+}
+```
+
+`quickHaikuCall()` creates a minimal single-turn Haiku session (no tools, no MCP) just for the commit message. Cost: 0.33 premium requests per commit.
 
 ### Verification
-- [ ] After executing a Space Center entry, `projects/space-center/` gets a git commit
-- [ ] The commit message includes the entry title
+- [ ] After executing a Space Center entry, files in `projects/space-center/` are selectively committed
+- [ ] After executing an integrated entry, only the files the agent wrote in the workspace root are committed
+- [ ] Files written via `create_file`, `replace_string_in_file`, etc. are tracked
+- [ ] The commit message starts with `brain({slug}):` and includes a Haiku-generated description
+- [ ] If Haiku fails, the fallback message is `brain({slug}): pipeline execution`
 - [ ] If nothing changed, no empty commit is created
 - [ ] If git fails, execution still succeeds (best-effort)
-- [ ] Integrated entries do NOT trigger auto-commit in workspace root
-- [ ] The commit appears in `git log` for the project directory
+- [ ] Files in different git repos get separate commits
+- [ ] `run_in_terminal` writes are not tracked (known limitation, acceptable)
 
 ---
 
 ## Phased Delivery
 
-**Phase 1 (this session):** All three fixes — 9a, 9b, 9c. They're tightly coupled and individually small. Total: ~100 lines of Go changes across context.go, research.go, execute.go.
+**Single phase (this session):** All three fixes — 9a, 9b, 9c. They're tightly coupled and individually small. 9c is the largest due to file tracking + Haiku commit messages, but the pieces are well-defined.
 
-**Phase 2 (future, optional):** Haiku commit message generation. After Phase 1 proves the pattern, upgrade from mechanical to AI-generated commit messages that describe what changed. Cost: 0.33 premium requests per commit.
+Estimated changes:
+- `context.go`: ~10 lines (struct fields + format output)
+- `research.go`: ~15 lines (projectRelPath helper + 3 call sites)
+- `execute.go`: ~80 lines (commitAfterExecution, findGitRoot, gitCommitSelective, generateCommitMessage)
+- `agent.go`: ~20 lines (writtenFiles tracking in PostToolUse hook + WrittenFiles() method)
 
 ---
 
@@ -234,5 +336,8 @@ func gitCommitAll(dir, message string) error {
 |------|------|------|
 | 9a: Prompt context | ~50 tokens/prompt | None — additive |
 | 9b: Scratch paths | Code change only | Existing entries keep old paths — minor inconsistency |
+| 9c: File tracking | Memory — map in Agent struct | `run_in_terminal` writes not tracked (known limitation) |
+| 9c: Haiku commit msg | 0.33 premium requests/commit | Could fail — falls back to mechanical message |
 | 9c: Git commit | `exec.Command("git", ...)` | Could fail if git not configured; best-effort mitigates |
-| Total dev time | ~1 session | Low — pattern exists in scaffold.go |
+| 9c: Multi-repo | findGitRoot walk | 13 nested repos — must find correct one per file |
+| Total dev time | ~1 session | Medium — file tracking is new infrastructure |

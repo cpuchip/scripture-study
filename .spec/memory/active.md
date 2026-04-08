@@ -1,6 +1,6 @@
 # Active Context
 
-*Last updated: 2026-04-06 (WS3 Phase 7b Nested Git Repo Awareness shipped)*
+*Last updated: 2026-04-07 (Phase 9 proposal finalized — Project-Aware Pipeline)*
 *Previous cycle archived: [archive/active-2026-04-04.md](archive/active-2026-04-04.md)*
 *Hardware: Dual 4090s desktop (Mar 27). NOCIX server live.*
 
@@ -52,7 +52,6 @@
 - **Phase 7 (DONE):** Git status in file browser — `GET /api/git/status` endpoint (runs `git status --porcelain`, parses output), TreeNode status dots (green=new, yellow=modified, red=deleted), directories inherit most severe child status, clickable summary bar above tree with counts + filter-to-changed toggle. Refreshes on files tab activation. Shipped Apr 6.
 - **Phase 7a (DONE):** Inline diff viewer — `GET /api/git/diff?path=` endpoint (path-safe, serves unified diff for tracked/untracked files), `diff2html` npm library with `ColorSchemeType.DARK`, "Δ Diff" / "✕ Diff" toggle in header bar (visible only for changed files), line-by-line / side-by-side mode toggle, lazy diff loading, resets on file navigation. Shipped Apr 6.
 - **Phase 7b (DONE):** Nested git repo awareness — `discoverGitRepos()` walks workspace for `.git` dirs (13 found), `handleGitStatus` aggregates across all repos with `repo` field, `handleGitDiff` routes to correct repo via `findRepoForPath()`, `is_git_repo` flag on file tree nodes. Frontend shows ⎇ badge on repo directories. Shipped Apr 6.
-- **Phase 8 (DEFERRED):** Auto-commit after agent sessions. Needs own proposal.
 - Proposal: [.spec/proposals/brain-ux-quality-of-life.md](../proposals/brain-ux-quality-of-life.md)
 - Research: [.spec/scratch/brain-ux-quality-of-life/main.md](../scratch/brain-ux-quality-of-life/main.md)
 
@@ -68,6 +67,10 @@
 - **Phase 6 (DONE):** 3-Column Board — Replaced 6-column maturity board in ProjectDetailView with 3 columns: Inbox (raw/unset/notebook), Working (researched/planned/specced/executing), Done (verified). `boardColumns` computed groups entries, `grid-cols-3` layout replaces horizontal scroll. Working entries show maturity sub-stage badge, notebook entries show 📓 badge in Inbox. Removed unused `maturityBorderColor` and `boardStages`. Pure frontend change, ~0 backend. Shipped Apr 6.
 - **Phase 7a-7b-7f (DONE):** Schema + Governance Injection + Context Cap — (7a) Added `workspace_type`, `workspace_path`, `github_repo`, `repo_visibility` columns to projects table via `migrateProjectWorkspace()`. Updated CreateProject, GetProject, ListProjects, UpdateProject. Frontend: Project interface extended, edit form shows workspace type dropdown, conditional workspace path + GitHub fields for subfolder/external types. (7b) Added `loadBaseInstructions()` + `trimBaseInstructions()` that loads and trims `.github/copilot-instructions.md` (strips MCP tables, agent modes, session memory — keeps voice, covenant, principles). Injected as Layer 0 in research, plan, execute, and review agent system messages. Wired `review-covenant.md` into nudge bot via `buildNudgeSystemMessage()`. (7f) Raised context file cap from 3000→8000 chars. Shipped Apr 6.
 - Phase 7c-7d-7e (DONE) — External project scaffolding (`ScaffoldProject` creates dirs, README, thin copilot-instructions.md, git init, initial commit, optional `gh repo create`), `resolveWorkDir` routes external projects to their own directory (falls back to workspace root if dir missing), `POST /api/projects/{id}/scaffold` endpoint, frontend "Initialize" button with result feedback. All 4 pipeline agents (research, plan, execute, review) now use `resolveWorkDir(entry)` for `WorkingDir`. Phase 7 complete. Shipped Apr 7.
+- **Phase 8 (DONE):** Agent-Driven Project Initialization — `InitializeProject` uses Copilot SDK agent to scaffold project dirs, README, copilot-instructions based on entry descriptions. Mechanical fallback. v-else build fix applied. Shipped Apr 7.
+- **Phase 9: Project-Aware Pipeline** — PROPOSAL FINALIZED, READY TO BUILD. Three fixes: (9a) FormatProjectContext includes workspace_path so agents know where they are, (9b) scratch/proposal paths are project-scoped for external projects, (9c) selective post-execution git commit for ALL project types with Haiku-generated commit messages (`brain({slug}): ...`) and file tracking via PostToolUse hook. Decisions: D1 done (manual file move), D2 decided (Haiku commits from start), D3 decided (selective commits, all types).
+- Proposal: [.spec/proposals/project-aware-pipeline.md](../proposals/project-aware-pipeline.md)
+- Research: [.spec/scratch/project-aware-pipeline/main.md](../scratch/project-aware-pipeline/main.md)
 - Proposal: [.spec/proposals/brain-pipeline-evolution.md](../proposals/brain-pipeline-evolution.md)
 - Research: [.spec/scratch/brain-pipeline-evolution/main.md](../scratch/brain-pipeline-evolution/main.md)
 - Prior research: [.spec/scratch/brain-simplification/main.md](../scratch/brain-simplification/main.md)
