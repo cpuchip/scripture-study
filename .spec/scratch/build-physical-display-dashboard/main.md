@@ -115,3 +115,172 @@ Build an LCARS-based (Star Trek: The Next Generation) dashboard on a Waveshare E
 
 **I Become (ibeco.me)**
 - https://ibeco.me — Website loads as React SPA; no documentation found on API or data export format
+
+---
+
+## Plan
+
+**Scope:** 4-5 sessions
+**Complexity:** medium
+
+### What to Build
+
+Build an LCARS-style dashboard for the Waveshare ESP32-S3 4.3" touch display with:
+- HTML/CSS prototype first (for design validation)
+- C/LVGL firmware for ESP32-S3 hardware
+- Weather integration (National Weather Service API)  
+- ibeco.me integration (todos, scripture memorization)
+- Docker development environment
+- Auto-cycling screens with pause functionality
+
+**Files/Packages:**
+- `projects/space-center/dashboard/` - Main project directory
+- `projects/space-center/dashboard/prototype/` - HTML/CSS demo
+- `projects/space-center/dashboard/firmware/` - ESP32 firmware
+- `projects/space-center/dashboard/docs/` - Hardware specs, API docs
+
+### Phases
+
+1. **Phase 1: HTML/CSS Prototype** (1 session)
+   - Deliverable: Working HTML/CSS demo with LCARS styling
+   - Files: `prototype/index.html`, `prototype/style.css`, `prototype/script.js`
+   - Test touch interactions, screen cycling, LCARS aesthetic
+
+2. **Phase 2: Development Environment** (1 session)
+   - Deliverable: Docker container with ESP-IDF + LVGL toolchain
+   - Files: `Dockerfile`, `docker-compose.yml`, development docs
+   - Verify compilation and flashing workflow
+
+3. **Phase 3: Basic LVGL Display** (1 session)  
+   - Deliverable: LVGL "Hello World" running on hardware
+   - Files: `firmware/main.c`, LVGL configuration, display drivers
+   - Establish touch input and basic UI framework
+
+4. **Phase 4: API Integration** (1-2 sessions)
+   - Deliverable: WiFi connectivity + data fetching from APIs
+   - Files: WiFi setup, HTTP client code, JSON parsing
+   - Weather from NWS API, todos/scripture from ibeco.me API
+
+### Scenarios
+
+**HTML Prototype Validation:**
+- When user loads prototype in browser, then LCARS-styled interface displays
+- When user touches screen areas (simulated), then visual feedback appears
+- When auto-cycle timer expires, then screen transitions to next view
+
+**Hardware Display:**
+- When device boots, then LVGL UI displays on 4.3" screen  
+- When user touches display, then touch coordinates are detected and processed
+- When WiFi connects, then weather data fetches from NWS API
+- When device cycles screens, then transitions between weather/todos/scripture views
+
+**API Integration:**
+- When device requests weather, then current conditions display for configured location
+- When device fetches todos, then active tasks from selected ibeco.me groups appear
+- When device shows scripture, then memorization verses display with touch interactions
+- When user touches todo checkbox, then API call marks task complete
+
+**Dashboard Operation:**
+- When device starts auto-cycle, then screens change every 30 seconds
+- When user touches pause button, then auto-cycle stops until un-paused
+- When device refreshes data, then weather updates hourly, todos/scripture on each cycle
+
+### Decisions Needed
+
+1. **Hardware Configuration:** Touch vs non-touch version?
+   - Touch version: Interactive checkboxes, pause controls, manual navigation
+   - Non-touch: Display-only, simpler code, lower cost
+   - Trade-off: Interactivity vs complexity
+
+2. **Development Framework:** Arduino IDE vs ESP-IDF?
+   - Arduino: Easier learning curve, more examples available online
+   - ESP-IDF: More professional, better performance control, official tooling
+   - Trade-off: Development speed vs capabilities
+
+3. **LCARS Fidelity:** How faithful to original design?
+   - High fidelity: Curves, specific colors, authentic fonts (complex CSS/LVGL)
+   - Simplified: Rounded rectangles, color scheme, general aesthetic (easier)
+   - Trade-off: Visual appeal vs development time
+
+4. **Data Storage:** Local caching vs live fetching?
+   - Live: Always current, simpler code, requires constant WiFi
+   - Cached: Works offline, more complex sync, handles network failures  
+   - Trade-off: Reliability vs simplicity
+
+### Risks
+
+**Hardware Complexity:** ESP32-S3 uses CH422G I/O expander for display control
+- Mitigation: Follow Waveshare examples exactly, use their provided libraries
+
+**LVGL Learning Curve:** LVGL has different paradigms than web development
+- Mitigation: Start with simple examples, build complexity gradually
+
+**API Rate Limits:** NWS and ibeco.me may have usage restrictions
+- Mitigation: Cache responses, implement reasonable request intervals
+
+**Touch Calibration:** Capacitive touch may need device-specific calibration
+- Mitigation: Use proven touch libraries, implement calibration routine
+
+**Power Management:** Always-on display may drain battery quickly
+- Mitigation: Implement display dimming, consider sleep cycles for battery operation
+
+### Dependencies
+
+**Hardware:**
+- Waveshare ESP32-S3-Touch-LCD-4.3 development board (confirmed available)
+- USB-C cable for programming and power
+- WiFi network access for API connectivity
+
+**Software:**
+- Docker for development environment consistency
+- ESP-IDF v5.3+ (per Waveshare documentation)
+- LVGL v8.4.0 library (required for ESP32-S3-Touch-LCD-4.3)
+- ESP32_Display_Panel library (Waveshare specific)
+
+**External Services:**
+- National Weather Service API (free, no key required)
+- ibeco.me API (requires API key from becoming-mcp configuration)
+- Local WiFi network with internet access
+
+**Workspace Integration:**
+- ibeco.me API documentation in `./scripts/becoming`
+- Space Center project structure in `projects/space-center`
+- Existing knowledge pipeline infrastructure
+
+### Who Benefits? (Consecration Check)
+
+**Primary Users:**
+- Michael (Space Center developer) - Visual progress tracker, design validation
+- Space Center visitors - Future bridge console UI patterns and aesthetics  
+- Family/household - Weather and task visibility in common areas
+
+**Broader Stewardship:**
+- Space Center project - Proof of concept for physical control interfaces
+- Dashboard concept - Reusable patterns for other IoT displays
+- LCARS design exploration - Authentic sci-fi aesthetic for educational/entertainment use
+
+This serves the larger vision of the Space Center as an educational destination that makes space science engaging and accessible.
+
+### How Does This Integrate? (Zion Check)
+
+**Extends Existing Work:**
+- Builds on Space Center project architecture and documentation
+- Integrates with existing ibeco.me API and data structures
+- Uses established development patterns (Docker containers, Git workflows)
+
+**Creates New Capabilities:**
+- Physical display interfaces (new domain for scripture-study workspace)
+- Hardware-software integration patterns
+- LVGL/embedded GUI development expertise
+
+**Complements Without Competing:**
+- Different interface for existing ibeco.me data (web → physical display)
+- Proof of concept for Space Center simulator consoles (research vs production)
+- Expands project scope without duplicating existing functionality
+
+**Foundation for Future Work:**
+- Hardware patterns for other embedded displays
+- LCARS design system for Space Center simulator
+- IoT integration approaches for physical spaces
+
+The physical dashboard connects digital task tracking to ambient awareness — making spiritual commitments visible in daily life.
