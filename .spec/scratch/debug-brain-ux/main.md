@@ -32,7 +32,13 @@ Is the Brain agentic OS flow smooth? Where are the gaps, stumbling blocks, and a
 | Research | research | Haiku 4.5 | 0.33 | 0.33 |
 | Plan | plan | Opus 4.6 | 3.0 | 3.33 |
 | Auto-advance fail (x2) | — | — | 0 | 3.33 |
-| **Project total (all entries)** | — | — | — | **4.33** |
+| Execute (stalled) | execute | Sonnet 4.6 | 1.0 | 4.33 |
+| Execute retry (stalled) | execute | Sonnet 4.6 | 1.0 | 5.33 |
+| Verify (manual) | — | — | 0 | 5.33 |
+| Mark Complete | — | — | 0 | 5.33 |
+| **Project total (all entries)** | — | — | — | **6.33** |
+
+Note: Execution premium costs (2x 1.0) were NOT tracked in the DB because goroutines were killed before completion. Only the BILLING log shows them. The actual cost to the user was spent.
 
 ## Walkthrough Log
 
@@ -128,7 +134,104 @@ Is the Brain agentic OS flow smooth? Where are the gaps, stumbling blocks, and a
 - **Concern:** Plan section was written in research phase — plan agent then extended it. Some overlap between research output and plan agent output
 - **Concern:** TOKEN WARNING at 112K in research, 157K in plan — context budgets need monitoring
 
-## Bugs Found (2 fixed, 4 open)
+### Step 10: Specced Transition (API-only)
+- Entry at "planned" maturity after auto-continue fix was applied
+- **No UI mechanism** to provide scenarios — used API directly: `POST /api/pipeline/advance` with 6 scenarios in JSON body
+- First API call succeeded silently (no output printed by PowerShell — Invoke-RestMethod swallowed it)
+- Accidentally called advance AGAIN → failed with "cannot advance from specced — use the agent routing system for execution"
+- **This incremented the failure counter** — entry now shows "🔴 1 failure" with a misleading error tooltip
+- **UX gaps:**
+  - No scenario input anywhere in the UI (must use API)
+  - Failure counter incremented by user mistake, not actual pipeline failure — counter needs better semantics
+  - No "undo" for an accidental advance state
+- Verified via API: maturity="specced", 6 scenarios stored, proposal file generated at `.spec/proposals/`
+
+### Step 11: Execute Phase — Agent Stall (CRITICAL)
+- Triggered via `POST /api/entries/{id}/execute` — returned "Execution started"
+- Server log: `agent=execute model=claude-sonnet-4.6 premium_cost=1.00`
+- 3 MCP servers registered: becoming, search-mcp, yt-mcp
+- **94-second initial response pause** — nothing happened between 22:18:46 (user.message event) and 22:20:19 (first tool calls)
+- First tool calls (parallel): `report_intent`, `view` (project dir), `glob` (session state)
+- Agent spent ~2 minutes reading context sequentially, chunk by chunk (lines 1-100, 100-300, 300-450 of scratch file)
+- At 22:22:34 (last tool call): read lines 300-450. Then **SILENCE**.
+- **Watchdog warnings:**
+  - 22:23:45: "no events for 33s (streamed 0 chars so far)"
+  - 22:25:15: "no events for 47s"
+  - 22:25:45: "no events for 1m17s"
+- Agent never recovered — Copilot SDK stopped sending all events including reasoning deltas
+- Process alive (PID 32860, 0.25 CPU) but all threads in `Wait UserRequest` — blocked on network I/O
+- **No timeout mechanism** on execute goroutine — would have waited forever
+- **No cancel button** in UI — user has no way to stop a stuck execution
+- **route_status was "your_turn" during execution** — should be "agent" while executing
+- **"🔔 Your Turn" badge shown during execution** — misleading; agent is supposed to be working
+- **"✓ Verify" button visible on board during execution** — premature; execution hasn't completed
+- **Recovery:** Had to manually reset entry via `PUT /api/entries/{id}` with `maturity=specced`
+- **Race condition risk:** Old goroutine is still running. If SDK eventually responds, goroutine will write to the entry that was already reset (SetAgentOutput, AddSessionMessage, UpdateRouteStatus). Must restart server to kill orphan goroutine.
+
+### Execute Phase UX Summary
+| Observation | Severity |
+|------------|----------|
+| 94s initial response with zero feedback | P1 |
+| Agent stalled indefinitely after reading context | P0 |
+| No timeout on execution goroutine | P0 |
+| No cancel mechanism | P0 |
+| No progress indicator (what tools agent is using) | P1 |
+| route_status="your_turn" during execution | P1 |
+| "Your Turn" badge during execution | P1 |
+| "Verify" button visible before execution completes | P1 |
+| Watchdog warnings only in server logs — not surfaced to UI | P1 |
+| Race condition: resetting entry while goroutine runs | P1 |
+| Reasoning tokens invisible to watchdog (suppressed events keep it alive between stalls) | P2 |
+| Execute consistently stalls after reading large scratch file (reproducible 2/2 attempts) | P0 |
+
+### Execute Phase — Retry (Second Attempt)
+- Killed server, restarted fresh (new Copilot SDK session)
+- Second execution started at 22:30:04
+- **6-second** initial response (vs 94s first time) — fresh SDK session much faster
+- Agent made 4 tool calls in 5 seconds (report_intent, 2x glob, view scratch file)
+- View scratch file at 22:30:16 → **SILENCE** — same pattern as first attempt
+- No further events. Agent stalled at exact same point.
+- **Reproducible pattern:** Agent reads full scratch file (now ~350+ lines, larger after debugging additions) → Copilot SDK stalls processing the response
+- **Root cause hypothesis:** Context window overload — the execute prompt includes the plan, scenarios, project context, AND the scratch file content, plus copilot-instructions.md (~12KB). Total context may exceed comfortable processing for Sonnet.
+
+### Step 12: Verify Phase (Manual via API)
+- Entry at "executing" maturity (from stalled second execution)
+- Called `POST /api/entries/{id}/verify` with all 6 scenarios passing
+- Response confirmed: "All 6 scenarios passed — entry verified!"
+- Entry maturity → "verified", maturity_notes → "All scenarios passed"
+- Sabbath moment message posted: "Before we close this — what worked well? What would you do differently? Any loose ends?"
+- **Good design:** Sabbath prompt encourages reflection
+- **UX gaps:**
+  - Verify was API-only — no scenario pass/fail UI in the detail page
+  - No individual scenario verification UI (checkboxes per scenario)
+  - The Verify button on the board card was visible during execution (premature)
+
+### Step 13: Entry Detail at Verified State
+- "Mark complete" button at top of page
+- "✓ Complete" button in conversation section (next to "Your Turn")
+- Full conversation timeline visible (8 messages from auto-continue failures, research, plan, advance failures, 2 execution starts, verification)
+- **"🔴 1 failure"** still showing — from accidental double advance, NOT a real pipeline failure
+- **🎟️ 3.33** premium counter — WRONG. Should show 5.33 (3.33 + 2x 1.0 execution). Execution costs not tracked because goroutines were killed.
+- **No "Verified" maturity badge** anywhere on the entry detail or board card
+- **"Your Turn" badge** shown (correct — Sabbath moment asks for reflection)
+
+### Step 14: Board View at Verified State
+- LCARS entry in **"Done" column** — correct mapping
+- Board card shows only "projects" category + "🔔 Your Turn" badge
+- **No maturity badge** ("Verified") shown, unlike Working column entries which show maturity
+- **No action buttons** on Done column cards
+- **No "Mark Complete" button on board card** — only on entry detail page
+
+### Step 15: Mark Complete → Pipeline End
+- Clicked "Mark complete" button on entry detail page
+- "Done!" message appeared briefly, page reloaded to entry list
+- API check: maturity still "verified" but route_status → "complete"
+- **"Mark complete" ONLY changes route_status, does NOT set maturity to "complete"**
+- Final state: maturity=verified, route_status=complete
+- The page navigated away, not clear where the entry went (not obvious in list view)
+- Pipeline is functionally complete but the maturity field doesn't have a "complete" value
+
+## Bugs Found (2 fixed, 10 open → 2 fixed, 16 open)
 
 ### Fixed This Session
 1. **Plan agent premium cost** — Was 1.0 (Sonnet), should be 3.0 (Opus). Fixed in research.go.
@@ -139,6 +242,18 @@ Is the Brain agentic OS flow smooth? Where are the gaps, stumbling blocks, and a
 4. **window.alert() for pipeline errors** — Should be toast/inline. All pipeline errors use this.
 5. **No progress indicator during agent operations** — Buttons disabled but no spinner, status, elapsed time, or cancel option. Multi-minute operations with no feedback.
 6. **No scenario input in UI** — "planned→specced" transition has nowhere to input scenarios. Must use API.
+7. **No execution timeout** — Execute goroutine has no context timeout. If Copilot SDK stalls, entry stuck at "executing" forever.
+8. **No cancel mechanism** — No API endpoint or UI button to cancel a running execution.
+9. **route_status wrong during execution** — Shows "your_turn" instead of "agent" while execute goroutine is running.
+10. **Premature Verify button** — Board shows "✓ Verify" button for entries at "executing" maturity, even before execution completes.
+11. **Race condition on manual reset** — Resetting maturity while execution goroutine is still running creates a race. Old goroutine can corrupt entry state when it eventually returns.
+12. **Failure counter tracks non-pipeline errors** — API misuse (double advance call) incremented failure count. Counter should only track actual pipeline failures, not user API errors.
+13. **Execute agent stalls on large scratch files** — Reproducible 2/2 attempts. Agent reads full scratch file (~350+ lines), then Copilot SDK stops sending events. Likely context window overload.
+14. **Premium costs not tracked when execution killed** — IncrementPremiumRequests only runs after goroutine completion. Server crash/kill loses tracking. Two 1.0 premium costs lost in this walkthrough.
+15. **No "Verified" maturity badge** — Entry detail and board card don't display "Verified" status anywhere. The Done column assignment is the only signal.
+16. **Mark Complete doesn't set maturity** — Only changes route_status to "complete", leaves maturity at "verified". No true "complete" maturity state.
+17. **No scenario verification UI** — Verify requires API call with pass/fail per scenario. No checkboxes/toggle UI in the detail page for individual scenario results.
+18. **Mark Complete button failed silently from browser** — Clicking "Mark complete" showed "Done!" but route_status didn't change. Had to use API directly. Possible timing issue with WebSocket reconnection after server restarts.
 
 ## Missing UI Features
 
@@ -157,12 +272,18 @@ Is the Brain agentic OS flow smooth? Where are the gaps, stumbling blocks, and a
 1. **Replace window.alert() with toast notifications** — Every pipeline error uses alert(). Should be inline toast with clear message.
 2. **Add scenario input** — When entry is at "planned" maturity, show a textarea/list for scenarios alongside the Advance button.
 3. **(Done) Fix auto-continue from planned** — prevent auto-advance when next step needs human input.
+4. **Add execution timeout** — `context.WithTimeout` on the execute goroutine (10-15 min). If exceeded, set maturity back to specced with error message, track failure.
+5. **Add cancel mechanism** — API endpoint `POST /api/entries/{id}/cancel-execution` that cancels the goroutine context and resets to specced. Wire to UI button.
+6. **Set route_status="agent" during execution** — Execute() should set route_status to "agent" before firing goroutine, not leave it at "your_turn".
 
 ### P1 — Important: Next sprint
 4. **Add progress indicator** for agent operations — spinner, status text ("Researching..."), elapsed time, cancel button.
 5. **Fix Pipeline/Notebook toggle** — Either change to two separate radio buttons ("Pipeline" / "Notebook") or relabel to match actual behavior.
 6. **Add project selector to Capture** — Dropdown or tag-style selector on the capture form.
 7. **Add title field to Capture** — Optional override, auto-fill from body if blank.
+8. **Surface watchdog warnings to UI** — When agent stalls > 30s, show warning in entry conversation/board.
+9. **Hide Verify button until execution completes** — Board should not show "✓ Verify" for entries at "executing" maturity.
+10. **Protect against goroutine race conditions** — Track running execution per entry. Cancel old goroutine before starting new one. Gate manual maturity resets through a function that cancels active goroutines.
 
 ### P2 — Nice-to-have
 8. **Show scratch file link** on entry detail — clickable path to open in editor.
@@ -198,14 +319,17 @@ Is the Brain agentic OS flow smooth? Where are the gaps, stumbling blocks, and a
 |-------|-------|-------|----------|--------|---------|
 | Research | research | Haiku 4.5 | ~4.5 min | 112K (warning at 100K) | 0.33 |
 | Plan | plan | Opus 4.6 | ~2.5 min | 157K (warning at 150K) | 3.00 |
-| **Total** | | | **~7 min** | | **3.33** |
+| Execute | execute | Sonnet 4.6 | **STALLED** (10+ min, no completion) | unknown | 1.00 |
+| **Total** | | | **>17 min** | | **4.33** |
 
 Observations:
 - Research is slower than plan despite using a faster model — more tool calls (8 web fetches, 12+ file reads/edits)
 - Plan is faster with Opus because it does fewer tool calls (mostly reading + writing)
 - Both agents hit token warnings — context pressure is real
-- 7 minutes total for research+plan with no user feedback — need progress indicators
+- Execute agent stalled after ~4 minutes of activity (94s initial wait + 2.5 min reading context + silence)
+- 17+ minutes total for research+plan+execute(stalled) with no user feedback — need progress indicators
 - Auto-continue is seamless between research → plan but breaks at plan → specced
+- **94-second initial response latency** for Sonnet execute — Copilot SDK cold start or API congestion
 
 ## Root Cause Analysis
 
@@ -216,18 +340,25 @@ The core issue isn't individual bugs — it's a **human gate design gap**. The p
 | raw → researched | Agent runs | ✅ Advance button triggers agent |
 | researched → planned | Agent runs | ✅ Auto-continue or Advance |
 | planned → specced | **Human input** (scenarios) | ❌ No input mechanism |
-| specced → executing | Agent runs | ✅ Advance button triggers agent |
-| executing → verifying | Agent runs | ✅ Auto-advance |
-| verifying → complete | Human accepts | ❓ Mark complete? |
+| specced → executing | Agent runs | ⚠️ API-only (Execute button exists on board but not detail) |
+| executing → completion | Agent runs | ❌ Agent stalls on large context. No timeout, cancel, progress. |
+| completion → verified | **Human verifies** (scenarios) | ❌ API-only. No per-scenario pass/fail UI. |
+| verified → complete | Human accepts | ⚠️ Mark Complete button exists but changes route_status only, not maturity. |
 
 The pipeline was built for agent-driven transitions but the human gates (planned→specced, verifying→complete) lack their own UI. The "Your Turn" badge *signals* the gate but provides no *mechanism* to pass through it.
 
 ## The Fix Chain
 
 1. **(Done)** Fix auto-continue — don't auto-advance from planned
-2. **Next:** Add scenario textarea to entry detail when maturity=planned
-3. **Next:** Wire scenario textarea to Advance button on detail page
-4. **Then:** Add progress indicators for agent phases
-5. **Then:** Replace window.alert with toast/inline errors
-6. **Then:** Fix checkbox toggle labeling
+2. **(Done)** Fix plan agent premium cost — 1.0 → 3.0
+3. **Next:** Add execution timeout (10-15 min context.WithTimeout)
+4. **Next:** Add cancel mechanism (API + goroutine context cancel)
+5. **Next:** Set route_status="agent" during execution, not "your_turn"
+6. **Next:** Hide Verify button until execution actually completes (maturity check in template)
+7. **Next:** Add scenario textarea to entry detail when maturity=planned
+8. **Next:** Wire scenario textarea to Advance button on detail page
+9. **Then:** Add progress indicators for agent phases (tool calls, elapsed time)
+10. **Then:** Replace window.alert with toast/inline errors
+11. **Then:** Fix checkbox toggle labeling
+12. **Then:** Surface watchdog warnings to UI via WebSocket events
 
