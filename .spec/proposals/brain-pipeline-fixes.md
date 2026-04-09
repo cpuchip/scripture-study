@@ -5,7 +5,23 @@
 **Created:** 2026-04-09
 **Source:** [UX audit walkthrough](../../.spec/scratch/debug-brain-ux/main.md), [research](../../.spec/scratch/brain-pipeline-fixes/main.md)
 **Depends on:** WS1 Phase 4 (shipped), WS4 Phases 1-3 (shipped)
-**Status:** Draft
+**Status:** Phase 1 complete, Phase 2 in progress
+
+---
+
+## Phase 1 Status: ✅ COMPLETE (2026-04-09)
+
+All backend fixes shipped and verified (`go build` + `go vet` clean):
+
+| Fix | File | Status |
+|-----|------|--------|
+| Slim execute prompt (path not content) | `execute.go` — `buildExecutePrompt()` | ✅ |
+| 10-minute execution timeout | `pool.go` — `StartTask()` | ✅ |
+| Cancel endpoint wired to HTTP | `server.go` — `POST /api/entries/{id}/cancel-execution` | ✅ |
+| Route status = "agent" during execution | `execute.go` — `Execute()` | ✅ |
+| Premium cost tracked before Ask() | `execute.go` — `runExecute()` | ✅ |
+| Race guard after Ask() returns | `execute.go` — `runExecute()` | ✅ |
+| Mark Complete sets maturity + route_status | `server.go` — `handleMarkComplete()` | ✅ |
 
 ---
 
@@ -113,6 +129,8 @@ if err != nil || current.Maturity != "executing" {
 - `internal/web/server.go` — cancel endpoint
 
 ### Phase 2: Human Gate UI (Frontend)
+
+**Status: ✅ COMPLETE (2026-04-09)**
 
 **Scenario Input** (planned → specced):
 
