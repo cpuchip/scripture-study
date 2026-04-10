@@ -5,7 +5,7 @@
 **Created:** 2026-04-09
 **Source:** [UX audit walkthrough](../../.spec/scratch/debug-brain-ux/main.md), [research](../../.spec/scratch/brain-pipeline-fixes/main.md)
 **Depends on:** WS1 Phase 4 (shipped), WS4 Phases 1-3 (shipped)
-**Status:** ✅ All 3 phases complete (2026-04-09)
+**Status:** ✅ All 3 phases + Phase 3.5 complete (2026-04-10)
 
 ---
 
@@ -49,6 +49,20 @@ All polish items shipped and verified:
 | Pipeline/Notebook toggle (checkbox → button group) | `EntryDetailView.vue` | ✅ |
 | Hide premature Verify button | (Done in Phase 2) | ✅ |
 | Maturity badge on Done column | (Done in Phase 2) | ✅ |
+
+## Phase 3.5 Status: ✅ COMPLETE (2026-04-10)
+
+Discovered during testing: two different "complete" concepts used the same label and one was irreversible.
+
+| Fix | File | Status |
+|-----|------|--------|
+| Disambiguate circle checkbox: "Mark done"/"Reopen" | `EntryDetailView.vue` | ✅ |
+| Conversation `✓ Complete` → `✓ Dismiss` (calls dismissRoute) | `EntryDetailView.vue` | ✅ |
+| Route status "complete" badge → "✓ Routed" (not "✓ Complete") | `ProjectDetailView.vue` | ✅ |
+| ↩ Undo pipeline complete (reverts to verified) | `EntryDetailView.vue`, `ProjectDetailView.vue` | ✅ |
+| Fixed accidental complete on Build Physical Display Dashboard | API call (dismiss-route) | ✅ |
+
+**Root cause:** `route_status: complete` (agent routing finished) and `maturity: complete` (pipeline finished) both showed as "✓ Complete". The conversation section had a `✓ Complete` button that called `handleMarkComplete` (irreversible pipeline complete) when users expected it to acknowledge the route status badge.
 
 ---
 

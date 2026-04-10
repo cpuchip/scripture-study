@@ -126,6 +126,16 @@
 
 ---
 
+## UX Disambiguation (Apr 10)
+
+### Decision: Two "completes" are distinct concepts with distinct labels
+- **Date:** 2026-04-10
+- **Decided by:** Michael + dev agent
+- **Decision:** The circle checkbox (entry header) toggles project `status` = done/active ("Mark done"/"Reopen"). The pipeline `✓ Mark Complete` button sets `maturity` = complete. These are different things with different labels. Route status "complete" (agent routing finished) shows as "✓ Routed" not "✓ Complete". Pipeline complete is reversible (↩ Undo reverts to verified). The conversation section's Complete button was replaced with "✓ Dismiss" (calls dismissRoute).
+- **Rationale:** Accidentally pipeline-completed a planned entry because the conversation section's `✓ Complete` button called `handleMarkComplete` for any entry with a route_status. Three identically-labeled "complete" concepts with different irreversible consequences.
+
+---
+
 ## Technical Implementation (Mar 8-12)
 
 ### Decision: Secondary Flutter entrypoints in main.dart

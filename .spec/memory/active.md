@@ -1,6 +1,6 @@
 # Active Context
 
-*Last updated: 2026-04-07 (Phase 9 Project-Aware Pipeline shipped)*
+*Last updated: 2026-04-10 (Pipeline Fixes Phases 1-3 + 3.5 shipped)*
 *Previous cycle archived: [archive/active-2026-04-04.md](archive/active-2026-04-04.md)*
 *Hardware: Dual 4090s desktop (Mar 27). NOCIX server live.*
 
@@ -15,7 +15,7 @@
 ### Priorities
 1. **Study** — "It keeps me in the spirit." Next: "Zion in a Presidency" (third sabbath seed). Workstream: [.spec/proposals/study-workstream.md](../proposals/study-workstream.md).
 2. **Teaching** — 11-episode experiential arc (Option C). Teaching agent + repo scaffolded. Content not yet started. Proposal: [.spec/proposals/teaching-workstream.md](../proposals/teaching-workstream.md).
-3. **Brain pipeline** — Phase 4 complete. Now: simplification + inline panel + nudge bot controls + UX quality-of-life. Both simplified (notebook/3-column) AND fully automated (auto-continuation) workflows desired. First real usage exposed 6 UX pain points — proposal written.
+3. **Brain pipeline** — Phase 4 complete. Pipeline fixes (execute reliability + human gate UI) ALL SHIPPED (Apr 9-10). Execution stall fixed, 10-min timeout, cancel endpoint, toast system, scenario dialogs, undo-complete, progress streaming. Ready for end-to-end testing. Next: simplification + inline panel + nudge bot controls + UX quality-of-life.
 4. **Space Center pipeline test** — Practice automated pipeline on Space Center project as low-stakes test bed. First entry (display dashboard) already revealed the UX gaps. Plan: [.spec/scratch/space-center-pipeline-test/main.md](../scratch/space-center-pipeline-test/main.md).
 
 ### Key Decisions (Apr 5 Session)
@@ -78,7 +78,16 @@
 ### Space Center Pipeline Test
 - 5 seed entries, observe fully automated pipeline end-to-end
 - Low-stakes test bed for the delegation workflow
+- **Blocked on:** Pipeline reliability — now unblocked by pipeline fixes (Apr 9-10)
 - Plan: [.spec/scratch/space-center-pipeline-test/main.md](../scratch/space-center-pipeline-test/main.md)
+
+### Brain Pipeline Fixes — ALL PHASES COMPLETE (Apr 9-10)
+- **Phase 1 (DONE):** Backend — slim execute prompt (path not content), 10-min timeout, cancel endpoint, route_status="agent" during execution, premium cost before Ask(), race guard, handleMarkComplete fix.
+- **Phase 2 (DONE):** Frontend — toast system replacing all alert() calls, scenario input dialog (planned→specced), cancel/complete/verify buttons everywhere (board/list/panel/detail), maturity badges, pipeline gate sections.
+- **Phase 3 (DONE):** Polish — OnToolCall callback streams execution tool events to WebSocket, Pipeline/Notebook toggle button group replaces confusing checkbox.
+- **Phase 3.5 (DONE):** Two-completes disambiguation — circle checkbox renamed "Mark done"/"Reopen", conversation Complete→Dismiss (calls dismissRoute instead of pipeline complete), route_status "complete" badge→"Routed", ↩ Undo pipeline complete (reverts to verified).
+- **Ready for end-to-end testing.** Reset LCARS entry to specced, trigger execute, verify the slim prompt fix works.
+- Proposal: [.spec/proposals/brain-pipeline-fixes.md](../proposals/brain-pipeline-fixes.md)
 
 ### Session-First Flow (Exploring)
 - Every entry becomes a session instead of going through classification stages
@@ -160,6 +169,7 @@
 | 20: NOCIX Dokploy | Active |
 | 21: Gospel Engine | ARCHIVED (Phase 5 done) |
 | Brain Pipeline (WS1) | Phase 4c DONE, 4d next |
+| Brain Pipeline Fixes | ALL PHASES COMPLETE (Apr 9-10) |
 | Brain UX (WS3) | Phase 1✅ 5✅ 2✅ 3✅, Phase 4 next |
 | Brain Pipeline Evolution (WS4) | Phases 1-3 shipped, Phases 4-7 specced |
 | Brain Project-Kanban | ALL PHASES COMPLETE |
