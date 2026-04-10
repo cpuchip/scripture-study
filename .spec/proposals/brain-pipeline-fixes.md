@@ -5,7 +5,7 @@
 **Created:** 2026-04-09
 **Source:** [UX audit walkthrough](../../.spec/scratch/debug-brain-ux/main.md), [research](../../.spec/scratch/brain-pipeline-fixes/main.md)
 **Depends on:** WS1 Phase 4 (shipped), WS4 Phases 1-3 (shipped)
-**Status:** Phase 1 complete, Phase 2 in progress
+**Status:** ✅ All 3 phases complete (2026-04-09)
 
 ---
 
@@ -22,6 +22,33 @@ All backend fixes shipped and verified (`go build` + `go vet` clean):
 | Premium cost tracked before Ask() | `execute.go` — `runExecute()` | ✅ |
 | Race guard after Ask() returns | `execute.go` — `runExecute()` | ✅ |
 | Mark Complete sets maturity + route_status | `server.go` — `handleMarkComplete()` | ✅ |
+
+## Phase 2 Status: ✅ COMPLETE (2026-04-09)
+
+All human gate UI shipped and verified (`vue-tsc`, `vite build`, `go build` clean):
+
+| Fix | File | Status |
+|-----|------|--------|
+| Toast system replacing all `alert()` calls | `ProjectDetailView.vue` | ✅ |
+| Scenario input dialog (planned→specced) | `ProjectDetailView.vue` | ✅ |
+| Cancel execution button (board/list/panel/detail) | `ProjectDetailView.vue`, `EntryDetailView.vue` | ✅ |
+| Complete button (verified→complete) | `ProjectDetailView.vue`, `EntryDetailView.vue` | ✅ |
+| Done column shows `complete` entries with badge | `ProjectDetailView.vue` | ✅ |
+| Maturity badge in entry detail header | `EntryDetailView.vue` | ✅ |
+| Pipeline gate sections (scenario/execute/verify/advance/complete) | `EntryDetailView.vue` | ✅ |
+| `cancelExecution()` API method | `api.ts` | ✅ |
+
+## Phase 3 Status: ✅ COMPLETE (2026-04-09)
+
+All polish items shipped and verified:
+
+| Fix | File | Status |
+|-----|------|--------|
+| Replace `window.alert()` with toast | (Done in Phase 2) | ✅ |
+| Execution progress indicator (stream tool events) | `agent.go`, `execute.go`, `EntryDetailView.vue` | ✅ |
+| Pipeline/Notebook toggle (checkbox → button group) | `EntryDetailView.vue` | ✅ |
+| Hide premature Verify button | (Done in Phase 2) | ✅ |
+| Maturity badge on Done column | (Done in Phase 2) | ✅ |
 
 ---
 
