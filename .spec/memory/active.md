@@ -1,6 +1,6 @@
 # Active Context
 
-*Last updated: 2026-04-11 (Orchestrator steward Phase 5 — nudge bot integration built and tested)*
+*Last updated: 2026-04-11 (Orchestrator steward Phase 6 — commission model built and tested)*
 *Previous cycle archived: [archive/active-2026-04-04.md](archive/active-2026-04-04.md)*
 *Hardware: Dual 4090s desktop (Mar 27). NOCIX server live.*
 
@@ -52,6 +52,8 @@
 - **Phase 5 (DONE):** Nudge Bot Integration — Absorbed the pipeline's separate review loop into the steward's unified watch loop. New `nudge.go` with `Nudger` interface (pipeline implements via exported `NudgeEntry()`), `NudgeConfig`/`NudgeStatus`/`nudgeState` types, `StartWatchLoop()` replaces `Pipeline.StartReviewLoop()`. Steward owns: loop timing (wake hours), paused/presence state, stale entry detection via `ListStaleEntries()`, nudge stats. Pipeline provides AI nudge execution. Server.go: nudge bot APIs route through steward, `TouchActivity()` through steward, `StartReviewLoop()` deprecated. One goroutine instead of two. 66 tests all passing (12 new). Shipped Apr 11.
 - **Design:** Steward loop (Watch → Diagnose → Act → Account) wrapping existing pipeline. Informed by Good Shepherd, Watchman on Tower, Olive Tree allegory patterns. Model escalation chain: Haiku → Sonnet → Opus → Human.
 - **Next:** Phase 6 — Steward with Commission (delegated judgment, graduated authority).
+- **Phase 6 (DONE):** Commission Model — Delegated judgment with graduated authority. `Commission` + `CommissionDecision` types in store. `commissions` + `commission_decisions` tables with UUID PK. Full CRUD: Create/Get/List/UpdateStatus/UpdateCost + decision log. `commission.go` (~480 lines): `CommissionRunner` interface extending PipelineRetrier with `EvaluateGate`, `GenerateScenarios`, `EvaluateAndVerify`. `runCommission` goroutine loops entry through raw→researched→planned→specced→executing→verified with gate evaluation at each stage. Two authority levels: `advance_and_execute` (full) and `advance_only` (surfaces at specced). Budget tracking, pause/resume/revoke lifecycle, goroutine cancellation. `pipeline/gate.go` (~350 lines): AI-powered gate evaluation, scenario generation, verification — each creates fresh agents with model-specific cost. JSON parsing helpers handle markdown code fences. 6 API endpoints: POST/GET/GET{id}/PUT pause/PUT resume/PUT revoke. 86 tests all passing (22 commission + 20 parsing). Shipped Apr 11.
+- **Next:** All 6 steward phases complete. End-to-end commission testing with real entries. Consider Phase 7+ (multi-entry commissions, project-scope).
 
 ### WS3: Brain UX Quality-of-Life (from real usage)
 - **Phase 1 (DONE):** Auto-expanding textarea, markdown rendering in messages, clickable file paths, inline file viewer sidebar panel, content shift when panel open. External links open in new tabs. Backslash path normalization for Windows.
