@@ -1,6 +1,6 @@
 # Active Context
 
-*Last updated: 2026-04-10 (Pipeline E2E test complete — LCARS entry walked raw→verified→done)*
+*Last updated: 2026-04-10 (Pipeline E2E fix plan written — 11 fixes across Phases 4–4j)*
 *Previous cycle archived: [archive/active-2026-04-04.md](archive/active-2026-04-04.md)*
 *Hardware: Dual 4090s desktop (Mar 27). NOCIX server live.*
 
@@ -91,7 +91,7 @@
 - **Phase 3 (DONE):** Polish — OnToolCall callback streams execution tool events to WebSocket, Pipeline/Notebook toggle button group replaces confusing checkbox.
 - **Phase 3.5 (DONE):** Two-completes disambiguation — circle checkbox renamed "Mark done"/"Reopen", conversation Complete→Dismiss (calls dismissRoute instead of pipeline complete), route_status "complete" badge→"Routed", ↩ Undo pipeline complete (reverts to verified).
 - **Ready for end-to-end testing.** ✅ TESTED (Apr 10). LCARS entry walked through full pipeline. Timeout hit at 10 min but work was complete. 12 friction points documented. See [debug-pipeline-e2e/main.md](../scratch/debug-pipeline-e2e/main.md).
-- **Next:** Fix BUG-3 (verify doesn't reset failure count), increase timeout, add liveness indicator.
+- **Next:** Phase 4 fix plan written — 11 fixes prioritized (P0→P2). See [debug-pipeline-e2e/main.md](../scratch/debug-pipeline-e2e/main.md). Start with 4a (BUG-3, 5 min) then Phase 4 (activity-based 30-min timeout with 2-min inactivity, 1-2 hrs).
 - Proposal: [.spec/proposals/brain-pipeline-fixes.md](../proposals/brain-pipeline-fixes.md)
 
 ### Session-First Flow (Exploring)
