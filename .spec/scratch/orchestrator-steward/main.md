@@ -224,4 +224,103 @@ The Lord of the vineyard personally tends the trees across ages. Key passages:
 
 ---
 
-**Proposal written from these findings:** [.spec/proposals/orchestrator-steward/main.md](../../proposals/orchestrator-steward/main.md)
+### The Zion Pattern — Enoch and the Weeping God (Moses 7)
+
+#### The Weeping God (v28-41)
+God weeps over his children. Enoch is astonished — "How is it that thou canst weep, seeing thou art holy, and from all eternity to all eternity?" (v29). The answer: because they are "the workmanship of mine own hands" (v32), because He gave them agency (v32), and because "among all the workmanship of mine hands there has not been so great wickedness" (v36). He weeps not because He failed but because they chose wrongly despite everything He provided.
+
+This parallels Jacob 5:41 — "What could I have done more?" — but with a relational dimension Jacob 5 doesn't have. The Lord doesn't just grieve the wasted investment. He grieves the relationship.
+
+#### Enoch Becomes Like the Lord (v41-44)
+After seeing what God sees, "Enoch knew, and looked upon their wickedness, and their misery, and wept and stretched forth his arms, and his heart swelled wide as eternity; and his bowels yearned; and all eternity shook" (v41). Enoch weeps. He refuses to be comforted (v44). He has been *changed* by seeing through the Lord's eyes.
+
+**Pattern: The steward who truly watches eventually feels what the Lord feels.** The watchman on the tower doesn't just see danger — if faithful, he comes to care about what he's watching. This is the difference between monitoring-as-metrics and monitoring-as-stewardship.
+
+#### Zion Achieved (v18-21)
+"The Lord called his people Zion, because they were of one heart and one mind, and dwelt in righteousness; and there was no poor among them" (v18). Zion was "taken up into heaven" (v21) — not destroyed, not abandoned, but *received*.
+
+The path: Enoch preaches → people respond → they become one → God receives them. Not top-down imposition but collaborative transformation.
+
+#### The Reunion (v63)
+"Then shalt thou and all thy city meet them there, and we will receive them into our bosom, and they shall see us; and we will fall upon their necks, and they shall fall upon our necks, and we will kiss each other."
+
+**Pattern: Zion is the outcome of successful stewardship.** When the steward has done the work — watched, wept, labored, refused to give up — the result is reunion. Not just "task completed" but restoration of relationship. The pipeline's "done" state should feel like completion, not just termination.
+
+#### How Zion Maps to the Orchestrator
+
+1. **"Of one heart and one mind"** — The orchestrator and the human operating from the same intent. Not the human giving orders and the system executing blindly, but shared purpose. The debug agent session demonstrated this: Opus understood what Michael wanted across the whole project and made decisions aligned with his intent.
+
+2. **"No poor among them"** — No entry left behind. No orphaned tasks. The steward's job is to ensure every entry gets what it needs — not just the exciting ones.
+
+3. **Enoch weeping = the steward seeing through the lord's eyes.** The orchestrator doesn't just track failure counts. If we build it right, it has enough context to understand *why* something matters, not just *that* it failed.
+
+4. **Reunion as the terminal state.** The purpose of the pipeline isn't to produce output. It's to bring Michael's ideas to completion — to bring them "home." The done state is the reunion.
+
+---
+
+### Ammon as Steward-Missionary (Alma 17-18)
+
+#### Stewardship as a Door (Alma 17:25)
+"I will be thy servant." Ammon *chose* the servant role. He was a Nephite prince who could have come as a conqueror or a diplomat. Instead he became a steward over flocks. The stewardship was the vehicle for the real mission — teaching the gospel.
+
+#### Faithful Execution Opens Bigger Doors (Alma 18:10)
+"Surely there has not been any servant among all my servants that has been so faithful as this man; for even he doth remember all my commandments to execute them."
+
+Lamoni didn't say "this man is clever" or "this man is powerful." He said: **faithful** and **remembers all my commandments to execute them**. Faithfulness in the small stewardship (watching flocks, preparing horses) created the trust for the larger stewardship (teaching the king).
+
+#### The Steward's Secret Motive (Alma 17:29)
+"I will show forth my power unto these my fellow-servants... that I may win the hearts of these my fellow-servants, that I may lead them to believe in my words."
+
+Ammon had a purpose beyond the immediate task. Protecting the flocks was real work — he really did protect them. But it served a deeper purpose. The faithfulness was genuine AND strategic.
+
+#### How Ammon Maps to the Orchestrator
+
+1. **Stewardship as trust-building.** The system earns trust by being faithful in small things (retry, monitor, report) before being given larger authority (delegated judgment, project-level decisions). This directly addresses Michael's question about auto-execution: the steward earns that delegation by proving faithful.
+
+2. **"Remembers all my commandments to execute them."** Not creative reinterpretation. Not partial compliance. Complete, faithful execution. The orchestrator's first job is to do what it's told reliably. Only after that does it earn the trust for judgment calls.
+
+3. **The deeper purpose.** The pipeline's purpose isn't just to produce software or studies. It's part of the becoming infrastructure — helping Michael organize his creative capacity, delegate effectively, and focus on what only he can do. The orchestrator serves this deeper purpose.
+
+4. **Service before authority.** Ammon didn't walk in and say "I should be king." He served, proved faithful, then was given authority. The steward earns auto-execution authority the same way.
+
+---
+
+### Delegated Judgment — A Different Ask than Auto-Execution
+
+Michael's question: "Would it be possible to have the steward help move things along as if it's the human?"
+
+This is NOT the same as auto-executing individual specced entries. The distinction:
+
+**Auto-execution (per-entry):** The system automatically moves any entry from specced → executing without human review. This is dangerous because each entry is an independent decision — the system doesn't know which entries matter most, which have hidden dependencies, or which Michael actually wants built right now.
+
+**Delegated judgment (project-level):** The system acts *as Michael* across a whole project — prioritizing entries, deciding execution order, reviewing results, making revise/advance/defer decisions — because it has enough context about the project's goals to make decisions close to what Michael would make. This is what happened in the debug agent session.
+
+The debug session proved Opus can do this. It saw the clock and calculator entries, understood the shared LCARS theme goal, made execution decisions, verified results, and produced work that was "very nearly what I wanted."
+
+**What makes this different and more powerful:**
+- It's not just one entry at a time — it's project-aware orchestration
+- It makes judgment calls (which entry next? is this good enough? does this need revision?)
+- It operates from understanding of the *whole* intent, not just individual specs
+- It's the Ammon pattern — earned trust enabling larger delegation
+
+**What makes this require careful design:**
+- It requires project-level context (all entries, all specs, the project goal)
+- It requires a decision-making framework ("act as if you're Michael" needs to be operationalized)
+- It has different failure modes (bad judgment is harder to detect than bad execution)
+- It touches the `your_turn` gate philosophy — not removing the gate but optionally delegating it
+
+**Proposed framing: "Steward with Commission"**
+
+Like Ammon being commissioned by King Mosiah (Alma 17:12-14), the steward receives a specific commission from Michael: "Take this project. Here's my intent. Move it through the pipeline as if you're me. Surface anything you're unsure about."
+
+The commission is:
+- Scoped to one project
+- Time-bounded (one session, one batch)
+- Revocable (Michael can take back control at any moment)
+- Accountable (the steward renders a full report)
+
+This could be Phase 6 of the steward proposal, or a separate proposal that depends on Phases 1-4 being proven.
+
+---
+
+**Proposal updated with these findings:** [.spec/proposals/orchestrator-steward/main.md](../../proposals/orchestrator-steward/main.md)

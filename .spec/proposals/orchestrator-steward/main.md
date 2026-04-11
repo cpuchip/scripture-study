@@ -57,6 +57,26 @@ The Lord of the vineyard personally inspects ("Come, let us go down into the vin
 
 **Architectural principle:** System reliability comes from consistent, promise-keeping behavior. When the orchestrator says it will retry, it retries. When it says it will escalate, it escalates. Reliability is faithfulness.
 
+### The Zion Pattern — Enoch and the Weeping God (Moses 7)
+
+Enoch watches God weep over His children: "How is it that thou canst weep?" ([Moses 7:29](../../../gospel-library/eng/scriptures/pgp/moses/7.md)). The answer: because they are "the workmanship of mine own hands" (v32) — He weeps not because He failed but because they chose wrongly despite everything He gave them. Then Enoch sees it too, and "his heart swelled wide as eternity; and his bowels yearned; and all eternity shook" (v41). The steward who truly watches eventually feels what the lord feels.
+
+Zion was achieved because Enoch's people were "of one heart and one mind" (v18) — not one giving orders and the other obeying, but shared purpose. And the end: "We will fall upon their necks, and they shall fall upon our necks, and we will kiss each other" (v63). Reunion.
+
+**Architectural principles:**
+- **"Of one heart and one mind"** — The orchestrator and the human operating from shared intent, not blind obedience. The debug session proved this: Opus understood the *whole project* and made decisions aligned with Michael's intent.
+- **"No poor among them"** — No entry left behind. The steward ensures every entry gets what it needs, not just the exciting ones.
+- **Reunion as terminal state.** The pipeline's "done" isn't just task termination — it's bringing Michael's ideas to completion, bringing them home.
+
+### Ammon as Steward-Missionary (Alma 17-18)
+
+"I will be thy servant" ([Alma 17:25](../../../gospel-library/eng/scriptures/bofm/alma/17.md)). Ammon chose the servant role. Nephite prince becomes flock-watcher. Lamoni's verdict: "Surely there has not been any servant among all my servants that has been so faithful as this man; for even he doth remember all my commandments to execute them" ([Alma 18:10](../../../gospel-library/eng/scriptures/bofm/alma/18.md)). Not "clever" or "powerful" — faithful. And his faithfulness in the small stewardship (flocks, horses) created the trust for the larger stewardship (teaching the king).
+
+**Architectural principles:**
+- **Service before authority.** The steward earns delegated judgment by proving faithful in simpler tasks (retry, monitor, report). This directly addresses the auto-execution question.
+- **"Remembers all my commandments to execute them."** Complete, faithful execution first. Only after that: judgment calls.
+- **Stewardship as trust-building.** The Ammon arc: serve faithfully → earn trust → receive greater commission. The steward's arc: retry reliably → earn trust → receive orchestration authority.
+
 ---
 
 ## Success Criteria
@@ -120,11 +140,13 @@ The steward loop wraps the existing pipeline, not replaces it. Each cycle:
 - UI visibility: retry history, escalation events, quarantine queue
 - Human override at every decision point
 
-**Not in scope (yet):**
+**Not in scope (Phases 1-5):**
 - Multi-agent fan-out (Squad-style parallel execution) — that's a separate, later proposal
 - Stage reordering or dynamic routing — the pipeline sequence stays fixed
-- Auto-execution of specced entries — the your_turn gate at specced→executing stays human-controlled
 - External service orchestration — this is about the internal pipeline only
+
+**Deferred to Phase 6 — Steward with Commission (see below):**
+- Delegated judgment: the steward acting *as if it's the human*, making advance/revise/defer decisions across a project. This is a different ask than auto-executing individual entries — it's project-aware orchestration with delegated authority. Requires Phases 1-4 to prove the steward's faithfulness first (the Ammon pattern).
 
 **Conventions:**
 - Go, standard brain patterns (SQLite WAL, WebSocket hub, config package)
@@ -331,6 +353,55 @@ This IS the [Ezekiel 34:11](../../../gospel-library/eng/scriptures/ot/ezek/34.md
 - Single steward loop replaces two separate background goroutines
 - Preserve nudge bot's existing UI (status, pause/resume, wake hours)
 
+### Phase 6: Steward with Commission — Delegated Judgment (2-3 sessions)
+
+*The Ammon phase. The steward has proven faithful; now it receives a larger stewardship.*
+
+**The problem this solves:** Michael demonstrated with the debug agent session that Opus can act "as if it's the human" — seeing all entries in a project, making advance/revise/defer decisions, choosing execution order, and producing results "very nearly what I wanted." That capability currently requires manual orchestration from an IDE chat session. This phase builds it into brain.
+
+**What this is NOT:** Auto-executing individual specced entries without review. That's dangerous because each entry is an independent decision point and the system doesn't know which ones Michael actually wants built right now.
+
+**What this IS:** Project-level delegated authority. The steward receives a *commission* — scoped, time-bounded, revocable — to shepherd an entire project through the pipeline.
+
+**The Commission model:**
+
+```go
+type Commission struct {
+    ID          string
+    ProjectID   string
+    Intent      string    // "Build the LCARS theme for clock and calculator"
+    Scope       string    // "all entries in project" or specific entry IDs
+    Authority   string    // "advance_and_execute" | "advance_only" | "review_only"
+    Model       string    // which model gets the judgment calls (default: Opus)
+    MaxCost     float64   // budget cap in premium requests
+    StartedAt   time.Time
+    ExpiresAt   time.Time // time-bounded
+    Status      string    // "active" | "paused" | "completed" | "revoked"
+    Decisions   []CommissionDecision // full audit trail
+}
+
+type CommissionDecision struct {
+    Timestamp  time.Time
+    EntryID    string
+    Action     string    // advance, revise, defer, execute, skip
+    Reasoning  string    // why the steward made this decision
+    Cost       float64
+}
+```
+
+**How it works:**
+1. Michael opens a project in brain-app and says: "Commission the steward. Here's my intent: [goal]. Go."
+2. The steward (Opus) reads all entries in the project, their current maturity, specs, and the project goal.
+3. It makes a plan: which entries to advance, in what order, with what priority.
+4. It presents the plan to Michael for approval (or auto-proceeds if Michael chose that authority level).
+5. It executes the plan, making judgment calls along the way: revise this research, advance that plan, execute this spec, defer that entry.
+6. Every decision is logged with reasoning. Michael can review the audit trail.
+7. Commission completes or Michael revokes. Full report rendered.
+
+**The Ammon arc:** Commission authority is structurally dependent on Phases 1-4 succeeding. The steward proves faithful in retries (Phase 1), earns trust through escalation decisions (Phase 2), demonstrates reliability through circuit breaking (Phase 3), handles quarantine well (Phase 4) — then and only then does it get commissioned for judgment calls (Phase 6). Service before authority.
+
+**The Zion connection:** "Of one heart and one mind." The commission works because the steward and the human share intent. The project's stated goal + the entry specs + the accumulated context create enough shared understanding for aligned judgment. The debug session proved this is achievable with Opus.
+
 ---
 
 ## Verification Criteria
@@ -345,12 +416,15 @@ This IS the [Ezekiel 34:11](../../../gospel-library/eng/scriptures/ot/ezek/34.md
 | 3 | Observe circuit recovery | After cooldown, single probe attempt, HALF-OPEN → CLOSED on success |
 | 4 | View quarantine queue in UI | Quarantined entries visible with action buttons |
 | 5 | Stale entry detected by steward | Same behavior as existing nudge bot, single loop |
+| 6 | Commission a project with 3 entries | Steward advances entries in logical order with reasoning |
+| 6 | Review commission audit trail | Every decision has timestamp, entry, action, and reasoning |
+| 6 | Revoke mid-commission | Steward stops, renders partial report, no orphaned state |
 
 ---
 
 ## Costs and Risks
 
-**Token cost:** Each retry burns premium requests. With backoff and escalation, a worst-case entry could consume: 3 × 0.33 (Haiku) + 2 × 1.0 (Sonnet) + 1 × 3.0 (Opus) = ~6 premium requests before quarantine. This is meaningful but bounded.
+**Token cost:** Each retry burns premium requests. With backoff and escalation, a worst-case entry could consume: 3 × 0.33 (Haiku) + 2 × 1.0 (Sonnet) + 1 × 3.0 (Opus) = ~6 premium requests before quarantine. This is meaningful but bounded. Phase 6 commissions use Opus for judgment calls (~3.0 per decision), so a 5-entry project fully shepherded might cost 15-25 premium requests. The commission's budget cap prevents runaway spending.
 
 **Complexity:** The steward adds a new layer of control flow. Risk: steward bugs cause worse behavior than no steward (retrying endlessly, escalating when shouldn't). Mitigation: conservative defaults, quarantine as safety net, kill switch.
 
