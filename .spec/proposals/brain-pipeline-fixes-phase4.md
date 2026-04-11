@@ -23,15 +23,17 @@
 
 **Problem:** Go's `context.WithTimeout` is a hard wall — cannot extend. The 10-minute limit killed a successful execution that was actively creating files.
 
-**Solution:** Replace the fixed-deadline context with a custom "activity deadline" mechanism. Cancel after 30 minutes of *wall clock* OR 2 minutes of *inactivity* — whichever comes first.
+**Solution:** Replace the fixed-deadline context with an **inactivity-based** timeout. The context cancels only when the agent goes silent — no hard wall clock. The human (or a future orchestrator) is the circuit breaker, not an arbitrary timer.
+
+**Design rationale:** Michael's experience includes 8-hour iterative sessions and 14-hour monitoring runs where the agent worked continuously. A wall clock cap would kill legitimate long-running work. The real signal for "something is wrong" is *silence* — no SDK events flowing. If events are flowing, the agent is alive and productive.
 
 **Architecture:**
 
 ```
 pool.go — StartTask() returns ctx + touch func
   └── activityContext wraps context.Background() with:
-      • 30-minute maximum wall-clock deadline (hard cap, never resets)
-      • 2-minute inactivity deadline (resets on each touch)
+      • 5-minute inactivity deadline (resets on each touch)
+      • No wall clock cap (manual cancel is the circuit breaker)
       • cancel() for manual cancellation
 
 agent.go — AskStreaming() already has touchEvent() on every SDK event
@@ -45,16 +47,15 @@ execute.go — runExecute() wires them together
 **Implementation details:**
 
 1. **New type `activityContext` in pool.go:**
-   - Embeds `context.Context` (the parent)
-   - `*time.Timer` for inactivity deadline (2 min, resets on `Touch()`)
-   - `*time.Timer` for hard deadline (30 min, never resets)
+   - Embeds `context.Context` (the parent, via `context.WithCancel`)
+   - `*time.Timer` for inactivity deadline (5 min, resets on `Touch()`)
    - `Touch()` method resets the inactivity timer
-   - When either timer fires → cancel the derived context
+   - When timer fires → cancel the derived context
    - `Done()` channel from the derived context
 
 2. **pool.go changes:**
-   - `ExecutionTimeout` → `MaxExecutionTime = 30 * time.Minute`
-   - New `InactivityTimeout = 2 * time.Minute`
+   - `ExecutionTimeout` → `InactivityTimeout = 5 * time.Minute`
+   - Remove hard wall clock cap
    - `StartTask()` returns `(ctx context.Context, touch func())` instead of just `ctx`
    - `runningTask` gains a `touch func()` field
 
@@ -66,10 +67,10 @@ execute.go — runExecute() wires them together
    - `ctx, touch := p.pool.StartTask(entry.ID, "execute")`
    - Set `agentCfg.OnActivity = touch`
 
-**Why 2 minutes for inactivity:** The 8-minute "thinking pause" observed in E2E wasn't inactivity — the SDK sends `AssistantReasoningDelta` events every few seconds. `touchEvent()` fires continuously. A 2-minute gap with zero events means the connection is actually stalled.
+**Why 5 minutes for inactivity:** The 8-minute "thinking pause" observed in E2E wasn't inactivity — the SDK sends `AssistantReasoningDelta` events every few seconds. `touchEvent()` fires continuously. A 5-minute gap with zero events means the connection is genuinely stalled. Generous enough to avoid false positives, short enough to catch real stalls.
 
 **Files:** `pool.go`, `agent.go`, `execute.go`
-**Tests:** Unit test `activityContext` — verify inactivity fires, verify touch resets, verify hard cap fires regardless.
+**Tests:** Unit test `activityContext` — verify inactivity fires, verify touch resets, verify cancel works.
 
 ---
 

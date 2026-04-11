@@ -1,6 +1,6 @@
 # Active Context
 
-*Last updated: 2026-04-10 (Pipeline E2E fix plan written — 11 fixes across Phases 4–4j)*
+*Last updated: 2026-04-10 (Orchestrator steward proposal written — scriptural stewardship patterns as design foundation)*
 *Previous cycle archived: [archive/active-2026-04-04.md](archive/active-2026-04-04.md)*
 *Hardware: Dual 4090s desktop (Mar 27). NOCIX server live.*
 
@@ -41,6 +41,13 @@
 - **Phase 1:** Reply textarea + close-with-reason in slide-out panel. Self-contained, one session build.
 - **Phase 2:** Surface nudge bot in Scheduled Tasks tab with pause/resume and run history.
 - Proposal: [.spec/proposals/brain-inline-panel.md](../proposals/brain-inline-panel.md)
+
+### Orchestrator Steward
+- **Proposal:** [.spec/proposals/orchestrator-steward/main.md](../proposals/orchestrator-steward/main.md)
+- **Research:** [.spec/scratch/orchestrator-steward/main.md](../scratch/orchestrator-steward/main.md)
+- **Phase 1:** Failure retry with diagnostic context (2-3 sessions). Depends on Phase 4 timeout fix shipping first.
+- **Design:** Steward loop (Watch → Diagnose → Act → Account) wrapping existing pipeline. Informed by Good Shepherd, Watchman on Tower, Olive Tree allegory patterns. Model escalation chain: Haiku → Sonnet → Opus → Human.
+- **Status:** Proposed, pending review.
 
 ### WS3: Brain UX Quality-of-Life (from real usage)
 - **Phase 1 (DONE):** Auto-expanding textarea, markdown rendering in messages, clickable file paths, inline file viewer sidebar panel, content shift when panel open. External links open in new tabs. Backslash path normalization for Windows.
