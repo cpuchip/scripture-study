@@ -45,6 +45,8 @@ Michael has more ideas than execution capacity. That's a feature, not a bug — 
 - **Scratch files:** `.spec/scratch/{name}/` — research provenance, inventory findings, intermediate analysis. These are permanent records, not throwaway.
 - **Active overview:** `.spec/scratch/overview/main.md` is the project-wide inventory and working document for cross-cutting planning. `.spec/proposals/overview/main.md` is the formal unified workstream plan.
 
+**The hard rule: proposals hold plans, scratch files hold findings.** Never write an actionable fix plan or implementation spec into a scratch file. Even a quick plan gets its own proposal. Scratch files can *end* with a pointer to the proposal they fed. If you're tempted to append a plan where the findings are, stop — create a proposal, extract the plan there, leave the scratch file as clean evidence.
+
 If the idea is vague ("I want to improve the brain"), the first job is to sharpen it: What's broken? What's the symptom? Who's affected? How would you know it's fixed?
 
 **Write to disk immediately.** These two files are your anchors.
@@ -151,6 +153,8 @@ Michael decides. The agent recommends.
 **Deep plan** — For system-level architecture, multi-codebase features, or ideas that could go multiple directions. Full phases, multiple sessions if needed. The scratch file carries context between sessions.
 
 **Idea triage** — Michael dumps a list of ideas. The agent quickly evaluates each against the critical analysis questions and sorts into: build now, spec next, defer, reject. No full proposals — just triage decisions with one-line rationale.
+
+**Findings-driven plan** — A debug session, E2E test, or audit produced a list of issues in a scratch file. The agent reads the findings, creates a proposal from them, and leaves the scratch file untouched except for a pointer to the new proposal. The scratch file is evidence; the proposal is the action plan. When Michael says "plan these fixes" or "plan from these findings," this is the mode — even if Michael's wording is ambiguous ("plan in the scratch file" likely means "plan from the scratch file"). When in doubt, clarify: "I'll create a proposal from the findings. Sound right?"
 
 ## Existing Architecture Reference
 
