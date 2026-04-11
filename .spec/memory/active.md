@@ -1,6 +1,6 @@
 # Active Context
 
-*Last updated: 2026-04-12 (Orchestrator steward Phase 2 — model escalation built and tested)*
+*Last updated: 2026-04-11 (Orchestrator steward Phase 3 — circuit breaker built and tested)*
 *Previous cycle archived: [archive/active-2026-04-04.md](archive/active-2026-04-04.md)*
 *Hardware: Dual 4090s desktop (Mar 27). NOCIX server live.*
 
@@ -46,9 +46,10 @@
 - **Proposal:** [.spec/proposals/orchestrator-steward/main.md](../proposals/orchestrator-steward/main.md)
 - **Research:** [.spec/scratch/orchestrator-steward/main.md](../scratch/orchestrator-steward/main.md)
 - **Phase 1 (DONE):** Failure retry with diagnostic context — Steward struct with Watch→Diagnose→Act→Account loop, failure classification (timeout/transient/tool_error/model_limit/unknown), retry context builder, PipelineRetrier interface, exponential backoff, quarantine, 22 tests. Shipped Apr 10-11.
-- **Phase 2 (DONE):** Model escalation — EscalationChain (Haiku→Sonnet→Opus→Human), `pickModel()` decides escalation based on diagnosis + failure count, `ModelOverride` threaded through Pipeline (AdvanceRequest, ExecuteRequest, runResearch, runPlan, runExecute), `config.ModelCost()` for cost lookup, `MaxCostPerEntry` cost guardrail (10.0 default), `quarantineCostLimit()` for budget-exceeded entries, escalation tracking in Status/Action, 33 tests all passing. Shipped Apr 12.
+- **Phase 2 (DONE):** Model escalation — EscalationChain (Haiku→Sonnet→Opus→Human), `pickModel()` decides escalation based on diagnosis + failure count, `ModelOverride` threaded through Pipeline (AdvanceRequest, ExecuteRequest, runResearch, runPlan, runExecute), `config.ModelCost()` for cost lookup, `MaxCostPerEntry` cost guardrail (10.0 default), `quarantineCostLimit()` for budget-exceeded entries, escalation tracking in Status/Action, 33 tests all passing. Shipped Apr 11.
+- **Phase 3 (DONE):** Circuit breaker — per-stage CLOSED→OPEN→HALF-OPEN state machine in `breaker.go`. `CircuitBreaker` tracks consecutive failures across entries per stage, opens after threshold (default 5), cooldown (default 10m) before half-open probe. Wired into `handleFailure()` — checks `Allow()` before retry, `RecordFailure` on quarantine/dispatch error, `RecordSuccess` on dispatch success. `ResetBreaker()` for manual override. `PUT /api/steward/breaker/reset` endpoint. Breaker status in `/api/steward/status` response. 46 tests all passing. Shipped Apr 11.
 - **Design:** Steward loop (Watch → Diagnose → Act → Account) wrapping existing pipeline. Informed by Good Shepherd, Watchman on Tower, Olive Tree allegory patterns. Model escalation chain: Haiku → Sonnet → Opus → Human.
-- **Next:** Phase 3 — Failure Memory (store retry outcomes, learn across entries).
+- **Next:** Phase 4 — Quarantine Queue & UI (quarantined flag, "Needs Attention" section, human actions).
 
 ### WS3: Brain UX Quality-of-Life (from real usage)
 - **Phase 1 (DONE):** Auto-expanding textarea, markdown rendering in messages, clickable file paths, inline file viewer sidebar panel, content shift when panel open. External links open in new tabs. Backslash path normalization for Windows.
