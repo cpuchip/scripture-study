@@ -1,6 +1,6 @@
 # Active Context
 
-*Last updated: 2026-04-10 (Pipeline Fixes Phases 1-3 + 3.5 shipped)*
+*Last updated: 2026-04-10 (Pipeline E2E test complete — LCARS entry walked raw→verified→done)*
 *Previous cycle archived: [archive/active-2026-04-04.md](archive/active-2026-04-04.md)*
 *Hardware: Dual 4090s desktop (Mar 27). NOCIX server live.*
 
@@ -78,7 +78,11 @@
 ### Space Center Pipeline Test
 - 5 seed entries, observe fully automated pipeline end-to-end
 - Low-stakes test bed for the delegation workflow
-- **Blocked on:** Pipeline reliability — now unblocked by pipeline fixes (Apr 9-10)
+- **E2E test completed (Apr 10):** LCARS Vue3 Theme entry walked through full pipeline raw→verified→done.
+  - Execution timed out at 10 min but agent created 35 source files, 20 passing tests, both apps build.
+  - Manually advanced past timeout, verified all 6 scenarios (clock, calculator, LCARS styling, RPN stack, localStorage persistence).
+  - 12 UX friction points documented in [debug-pipeline-e2e/main.md](../scratch/debug-pipeline-e2e/main.md).
+  - Key issues: 10-min timeout too short, no liveness indicator during long generation, failure badge doesn't reset on verify.
 - Plan: [.spec/scratch/space-center-pipeline-test/main.md](../scratch/space-center-pipeline-test/main.md)
 
 ### Brain Pipeline Fixes — ALL PHASES COMPLETE (Apr 9-10)
@@ -86,7 +90,8 @@
 - **Phase 2 (DONE):** Frontend — toast system replacing all alert() calls, scenario input dialog (planned→specced), cancel/complete/verify buttons everywhere (board/list/panel/detail), maturity badges, pipeline gate sections.
 - **Phase 3 (DONE):** Polish — OnToolCall callback streams execution tool events to WebSocket, Pipeline/Notebook toggle button group replaces confusing checkbox.
 - **Phase 3.5 (DONE):** Two-completes disambiguation — circle checkbox renamed "Mark done"/"Reopen", conversation Complete→Dismiss (calls dismissRoute instead of pipeline complete), route_status "complete" badge→"Routed", ↩ Undo pipeline complete (reverts to verified).
-- **Ready for end-to-end testing.** Reset LCARS entry to specced, trigger execute, verify the slim prompt fix works.
+- **Ready for end-to-end testing.** ✅ TESTED (Apr 10). LCARS entry walked through full pipeline. Timeout hit at 10 min but work was complete. 12 friction points documented. See [debug-pipeline-e2e/main.md](../scratch/debug-pipeline-e2e/main.md).
+- **Next:** Fix BUG-3 (verify doesn't reset failure count), increase timeout, add liveness indicator.
 - Proposal: [.spec/proposals/brain-pipeline-fixes.md](../proposals/brain-pipeline-fixes.md)
 
 ### Session-First Flow (Exploring)
