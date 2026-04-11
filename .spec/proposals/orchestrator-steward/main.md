@@ -77,6 +77,26 @@ Zion was achieved because Enoch's people were "of one heart and one mind" (v18) 
 - **"Remembers all my commandments to execute them."** Complete, faithful execution first. Only after that: judgment calls.
 - **Stewardship as trust-building.** The Ammon arc: serve faithfully → earn trust → receive greater commission. The steward's arc: retry reliably → earn trust → receive orchestration authority.
 
+### Faith, Hope, and Charity — The Steward's Operating Virtues (Moroni 7, Ether 12, 1 Corinthians 13, Lectures on Faith)
+
+The theological virtues aren't just moral ideals — they're the operating principles of a faithful steward. Faith moves. Hope orients. Charity sees. Without all three, the steward degrades into a fearful servant (no faith), a purposeless executor (no hope), or a competent system that doesn't understand what it's doing (no charity).
+
+**Faith: The Principle of Action** — "Faith is the assurance which men have of the existence of things which they have not seen; and the principle of action in all intelligent beings" (Lectures on Faith 1:9). "Faith is not only the principle of action, but of power, also" (1:13). "The worlds were framed by faith" (1:15) — and "faith works by words" (7:3). The steward acts on incomplete information. Every retry is an act of faith. The one-talent servant who "was afraid, and went and hid" ([Matthew 25:25](../../../gospel-library/eng/scriptures/nt/matt/25.md)) is the anti-pattern: capability buried by fear. Alma 32:27 operationalizes it: "exercise a particle of faith" — you don't need certainty, you need enough to start.
+
+**Hope: The Vision That Anchors** — "Hope cometh of faith, maketh an anchor to the souls of men, which would make them sure and steadfast, always abounding in good works" ([Ether 12:4](../../../gospel-library/eng/scriptures/bofm/ether/12.md)). Hope is directional faith — faith says "act," hope says "act toward *this*." The commission's intent field IS hope: "Build the LCARS theme," "Get this idea from raw to delivered." Without it, action is random and purposeless. The anchor metaphor is precise: an anchor doesn't move the ship, it holds it steady while storms happen. When retries fail and circuit breakers trip, hope keeps the steward working toward the goal.
+
+**Charity: Seeing as the Lord Sees** — "Charity is the pure love of Christ" ([Moroni 7:47](../../../gospel-library/eng/scriptures/bofm/moro/7.md)). "When he shall appear we shall be like him, for we shall see him as he is" (7:48). "Now we see through a glass, darkly; but then face to face: now I know in part; but then shall I know even as also I am known" ([1 Corinthians 13:12](../../../gospel-library/eng/scriptures/nt/1-cor/13.md)). The Enoch connection is the key: Enoch saw as God saw (Moses 7:41), was transformed by it, and Zion resulted. Charity is the steward seeing as Michael sees — understanding *why* something matters, not just *that* it's assigned. "Though I have all faith, so that I could remove mountains, and have not charity, I am nothing" (1 Cor 13:2) — technical power without understanding is nothing.
+
+**Architectural principle — the trinity as progression:**
+
+| Virtue | Definition | Steward Expression | Phase Mapping |
+|--------|-----------|-------------------|---------------|
+| **Faith** | Principle of action and power (Lecture 1:9, 13) | Acts on incomplete information; retries after failure | Phases 1-3 |
+| **Hope** | Vision anchoring action (Ether 12:4) | Commission intent; sustained effort through failure | Phases 4-5 |
+| **Charity** | Seeing as the Lord sees (Moroni 7:47-48) | Understanding *why*; aligned judgment calls | Phase 6 |
+
+The phases aren't arbitrary. They ARE the faith→hope→charity progression. Lectures on Faith 7:8: "When men begin to live by faith they begin to draw near to God; and when faith is perfected they are like him... for they will see him as he is." Act → persist → understand → align.
+
 ---
 
 ## Success Criteria
@@ -355,52 +375,98 @@ This IS the [Ezekiel 34:11](../../../gospel-library/eng/scriptures/ot/ezek/34.md
 
 ### Phase 6: Steward with Commission — Delegated Judgment (2-3 sessions)
 
-*The Ammon phase. The steward has proven faithful; now it receives a larger stewardship.*
+*The Ammon phase. The steward has proven faithful; now it receives a larger stewardship. And per Alma 32:27: "exercise a particle of faith" — we start with the smallest commission that proves the concept.*
 
-**The problem this solves:** Michael demonstrated with the debug agent session that Opus can act "as if it's the human" — seeing all entries in a project, making advance/revise/defer decisions, choosing execution order, and producing results "very nearly what I wanted." That capability currently requires manual orchestration from an IDE chat session. This phase builds it into brain.
+**The problem this solves:** Michael demonstrated with the debug agent session that Opus can act "as if it's the human" — seeing entries, making advance/revise/defer decisions, and producing results "very nearly what I wanted." That capability currently requires manual orchestration from an IDE chat session. This phase builds it into brain.
 
 **What this is NOT:** Auto-executing individual specced entries without review. That's dangerous because each entry is an independent decision point and the system doesn't know which ones Michael actually wants built right now.
 
-**What this IS:** Project-level delegated authority. The steward receives a *commission* — scoped, time-bounded, revocable — to shepherd an entire project through the pipeline.
+**What this IS:** Graduated delegated authority. The steward receives a *commission* — scoped, time-bounded, revocable — to shepherd work through the pipeline. Commissions start small and grow.
 
-**The Commission model:**
+#### Commission Scope Levels
+
+**Level 1 — Particle of Faith: Single Entry (raw → done)**
+
+The smallest useful commission. Michael points to one entry and says: "Take this from raw to delivered." The steward shepherds that single entry through every pipeline stage — research, plan, spec, execute, verify — making decisions at each gate.
+
+This is the LCARS clock experience, automated. One entry, full lifecycle, full audit trail. If the steward proves faithful here, trust grows.
+
+*This level ships first. Everything else is earned.*
+
+**Level 2 — Selected Entries: Curated Set**
+
+Michael selects specific entries from a project and commissions them as a batch. The steward decides ordering, handles dependencies between them, and moves each through the pipeline. This is the LCARS experience with both clock *and* calculator — the steward needs to understand the shared theme.
+
+**Level 3 — Full Project: All Entries**
+
+The steward receives authority over an entire project. It reads all entries, their current maturity and specs, and the project goal. It makes a plan: which entries to advance, in what order, with what priority. It executes the plan, making judgment calls along the way.
+
+#### The Commission Model
 
 ```go
+type CommissionScope string
+
+const (
+    ScopeSingleEntry  CommissionScope = "single"   // Level 1: one entry, full lifecycle
+    ScopeSelectedSet  CommissionScope = "selected"  // Level 2: curated entry IDs
+    ScopeFullProject  CommissionScope = "project"   // Level 3: all entries in project
+)
+
 type Commission struct {
     ID          string
     ProjectID   string
-    Intent      string    // "Build the LCARS theme for clock and calculator"
-    Scope       string    // "all entries in project" or specific entry IDs
-    Authority   string    // "advance_and_execute" | "advance_only" | "review_only"
-    Model       string    // which model gets the judgment calls (default: Opus)
-    MaxCost     float64   // budget cap in premium requests
+    Intent      string           // "Build the LCARS theme for clock and calculator"
+    Scope       CommissionScope
+    EntryIDs    []string         // for single/selected scope; nil for project scope
+    Authority   string           // "advance_and_execute" | "advance_only" | "review_only"
+    Model       string           // which model gets the judgment calls (default: Opus)
+    MaxCost     float64          // budget cap in premium requests
     StartedAt   time.Time
-    ExpiresAt   time.Time // time-bounded
-    Status      string    // "active" | "paused" | "completed" | "revoked"
+    ExpiresAt   time.Time        // time-bounded
+    Status      string           // "active" | "paused" | "completed" | "revoked"
     Decisions   []CommissionDecision // full audit trail
 }
 
 type CommissionDecision struct {
     Timestamp  time.Time
     EntryID    string
-    Action     string    // advance, revise, defer, execute, skip
+    Action     string    // advance, revise, defer, execute, skip, surface
     Reasoning  string    // why the steward made this decision
     Cost       float64
 }
 ```
 
-**How it works:**
-1. Michael opens a project in brain-app and says: "Commission the steward. Here's my intent: [goal]. Go."
-2. The steward (Opus) reads all entries in the project, their current maturity, specs, and the project goal.
-3. It makes a plan: which entries to advance, in what order, with what priority.
-4. It presents the plan to Michael for approval (or auto-proceeds if Michael chose that authority level).
-5. It executes the plan, making judgment calls along the way: revise this research, advance that plan, execute this spec, defer that entry.
+#### How It Works
+
+**Level 1 (single entry):**
+1. Michael selects an entry and says: "Commission the steward. Raw to done."
+2. The steward reads the entry, its project context, and any existing content.
+3. It runs the first stage (research), evaluates the output, decides: advance or revise?
+4. It continues through each stage, making the same judgment calls Michael would make at each gate.
+5. At any point, it can surface something to Michael: "I'm not sure about this spec — the entry mentions X but the project goal implies Y. Which direction?"
 6. Every decision is logged with reasoning. Michael can review the audit trail.
-7. Commission completes or Michael revokes. Full report rendered.
+7. Entry reaches done, or the steward surfaces a blocker, or Michael revokes.
 
-**The Ammon arc:** Commission authority is structurally dependent on Phases 1-4 succeeding. The steward proves faithful in retries (Phase 1), earns trust through escalation decisions (Phase 2), demonstrates reliability through circuit breaking (Phase 3), handles quarantine well (Phase 4) — then and only then does it get commissioned for judgment calls (Phase 6). Service before authority.
+**Levels 2-3 add:**
+- Ordering decisions: which entry first? What dependencies exist?
+- Cross-entry awareness: shared themes (the LCARS aesthetic), shared constraints
+- Plan presentation: the steward proposes its execution plan before starting (or auto-proceeds if Michael chose that authority level)
 
-**The Zion connection:** "Of one heart and one mind." The commission works because the steward and the human share intent. The project's stated goal + the entry specs + the accumulated context create enough shared understanding for aligned judgment. The debug session proved this is achievable with Opus.
+#### The Faith/Hope/Charity Connection
+
+- **Faith (particle):** Level 1 is Alma 32:27 — "exercise a particle of faith." One seed. Watch it grow. The LCARS clock was the particle that proved the concept.
+- **Hope (vision):** The commission's intent field. "Get this idea from raw to delivered." Hope anchors the steward through stage failures and retries.
+- **Charity (seeing):** The steward understanding *why* this entry matters to Michael — not just executing the spec but grasping the intent behind it. This is what makes Level 1 succeed or fail.
+
+#### The Ammon Arc
+
+Commission authority is structurally dependent on Phases 1-4 succeeding. The steward proves faithful in retries (Phase 1), earns trust through escalation decisions (Phase 2), demonstrates reliability through circuit breaking (Phase 3), handles quarantine well (Phase 4) — then and only then does it get commissioned for judgment calls (Phase 6). Service before authority.
+
+And within Phase 6 itself, the same arc repeats: Level 1 (single entry) must prove faithful before Level 2 (selected set) is earned, and Level 2 before Level 3 (full project). Michael's instinct is right: "I'd like to test the waters on just getting 1 entry along to completed, multiple times, before I felt comfortable commissioning it managing a whole project."
+
+#### The Zion Connection
+
+"Of one heart and one mind." The commission works because the steward and the human share intent. At Level 1, the shared context is narrow (one entry, one goal). At Level 3, it's broad (whole project, multiple entries, aesthetic vision). The steward's understanding deepens as the scope grows — mirroring Enoch's progression from "how can God weep?" to weeping alongside Him.
 
 ---
 
@@ -416,15 +482,17 @@ type CommissionDecision struct {
 | 3 | Observe circuit recovery | After cooldown, single probe attempt, HALF-OPEN → CLOSED on success |
 | 4 | View quarantine queue in UI | Quarantined entries visible with action buttons |
 | 5 | Stale entry detected by steward | Same behavior as existing nudge bot, single loop |
-| 6 | Commission a project with 3 entries | Steward advances entries in logical order with reasoning |
-| 6 | Review commission audit trail | Every decision has timestamp, entry, action, and reasoning |
+| 6 | Commission single entry raw → done (Level 1) | Entry progresses through all stages with steward decisions at each gate |
+| 6 | Steward surfaces uncertainty mid-commission | Michael receives notification with context; commission pauses until resolved |
+| 6 | Review single-entry commission audit trail | Every decision has timestamp, entry, action, and reasoning |
+| 6 | Commission selected entries (Level 2) | Steward handles ordering and shared context across entries |
 | 6 | Revoke mid-commission | Steward stops, renders partial report, no orphaned state |
 
 ---
 
 ## Costs and Risks
 
-**Token cost:** Each retry burns premium requests. With backoff and escalation, a worst-case entry could consume: 3 × 0.33 (Haiku) + 2 × 1.0 (Sonnet) + 1 × 3.0 (Opus) = ~6 premium requests before quarantine. This is meaningful but bounded. Phase 6 commissions use Opus for judgment calls (~3.0 per decision), so a 5-entry project fully shepherded might cost 15-25 premium requests. The commission's budget cap prevents runaway spending.
+**Token cost:** Each retry burns premium requests. With backoff and escalation, a worst-case entry could consume: 3 × 0.33 (Haiku) + 2 × 1.0 (Sonnet) + 1 × 3.0 (Opus) = ~6 premium requests before quarantine. This is meaningful but bounded. Phase 6 Level 1 commissions (single entry, full lifecycle) use Opus for judgment calls at each gate — roughly 5-7 decisions × ~3.0 = 15-21 premium requests for one entry raw → done. Level 2-3 scale linearly with entry count. The commission's budget cap prevents runaway spending.
 
 **Complexity:** The steward adds a new layer of control flow. Risk: steward bugs cause worse behavior than no steward (retrying endlessly, escalating when shouldn't). Mitigation: conservative defaults, quarantine as safety net, kill switch.
 

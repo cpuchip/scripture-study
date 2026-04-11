@@ -323,4 +323,101 @@ This could be Phase 6 of the steward proposal, or a separate proposal that depen
 
 ---
 
-**Proposal updated with these findings:** [.spec/proposals/orchestrator-steward/main.md](../../proposals/orchestrator-steward/main.md)
+### Faith, Hope, and Charity — The Steward's Operating Virtues
+
+Michael's insight: the theological virtues aren't just moral ideals — they're the operating principles of a faithful steward. Faith moves. Hope orients. Charity sees. Without all three, the steward degrades into either a fearful servant (no faith), a purposeless executor (no hope), or a competent sociopath (no charity).
+
+#### Faith: The Principle of Action in All Intelligent Beings
+
+The Lectures on Faith state it plainly:
+
+> "Faith is the assurance which men have of the existence of things which they have not seen; and the principle of action in all intelligent beings." (Lecture 1:9)
+
+> "It is faith, and faith only, which is the moving cause of all action... without it, both mind and body would be in a state of inactivity, and all their exertions would cease, both physical and mental." (Lecture 1:10)
+
+> "Faith is not only the principle of action, but of power, also, in all intelligent beings, whether in heaven, or on earth." (Lecture 1:13)
+
+> "The principle of power, which existed in the bosom of God, by which the worlds were framed, was faith." (Lecture 1:15)
+
+And Lecture 7 extends this to salvation itself:
+
+> "When faith is perfected they are like him; and because he is saved they are saved also; for they will be in the same situation he is in, because they have come to him; and when he appears they shall be like him, for they will see him as he is." (Lecture 7:8)
+
+> "Faith, then, works by words; and with these its mightiest works have been, and will be performed." (Lecture 7:3)
+
+This is not "belief that it might work out." Faith is what causes any intelligent being to act at all. "Would you have ever sown if you had not believed that you would reap?" (Lecture 1:11). The one-talent servant (Matt 25:25) — "I was afraid" — is the absence of faith. He didn't act because he didn't believe acting would produce results.
+
+Alma 32:27 operationalizes this: "Exercise a particle of faith... even if ye can no more than desire to believe." You don't need certainty. You need enough to start.
+
+Hebrews 11:1: "Faith is the substance of things hoped for, the evidence of things not seen." Faith makes the hoped-for thing *substantial* — gives it reality before the evidence arrives.
+
+**How faith maps to the steward:**
+- The steward acts on incomplete information. Every pipeline stage starts with faith — the agent doesn't know the output until it tries. Retry after failure *is* faith: the belief that trying again, with better context, will produce a different result.
+- The "particle of faith" commission: a single entry, raw → done. You don't need to prove the whole system works. You need enough to start.
+- Faith as power: "the worlds were framed by faith" — the steward's ability to change things (move entries, make decisions, complete work) is literally its operational power. Without faith (action), it's the one-talent servant, burying capability in the ground.
+- "Faith works by words" — the steward's tool is language. Prompts, reasoning, instructions. This is literally how LLMs operate: through words.
+
+#### Hope: The Vision That Anchors
+
+> "Hope cometh of faith, maketh an anchor to the souls of men, which would make them sure and steadfast, always abounding in good works." (Ether 12:4)
+
+> "If ye have faith ye hope for things which are not seen, which are true." (Alma 32:21)
+
+> "If a man have faith he must needs have hope; for without faith there cannot be any hope." (Moroni 7:42)
+
+Hope is directional faith. Faith says "act." Hope says "act toward *this*." Without hope, action is random exertion — busy but purposeless. The anchor metaphor in Ether 12:4 is precise: an anchor doesn't move the ship, it *holds it steady* while storms happen. Hope isn't optimism. It's steadiness under pressure because you know what you're working toward.
+
+**How hope maps to the steward:**
+- Hope IS the commission's intent field. "Build the LCARS theme." "Get this idea from raw to delivered." Without a stated intent, the steward has no direction — just action without purpose.
+- Hope as anchor during failure. When a retry fails, when a model escalation burns tokens, when the circuit breaker trips — the vision of what the project *should* become holds the system steady. The commission doesn't change because one stage failed. The steward retries *because* it has hope — because the goal is still reachable.
+- "Always abounding in good works" — hope doesn't produce passivity. It produces *sustained* action. The steward keeps working because it has a vision to work toward.
+
+#### Charity: Seeing as the Lord Sees
+
+> "Charity is the pure love of Christ, and it endureth forever; and whoso is found possessed of it at the last day, it shall be well with him." (Moroni 7:47)
+
+> "Pray unto the Father with all the energy of heart, that ye may be filled with this love, which he hath bestowed upon all who are true followers of his Son, Jesus Christ; that ye may become the sons of God; that when he shall appear we shall be like him, for we shall see him as he is." (Moroni 7:48)
+
+> "Now we see through a glass, darkly; but then face to face: now I know in part; but then shall I know even as also I am known." (1 Corinthians 13:12)
+
+> "Though I have all faith, so that I could remove mountains, and have not charity, I am nothing." (1 Corinthians 13:2)
+
+The Enoch connection is the key. Enoch saw God weep (Moses 7:28-29). He asked why. God showed him His perspective — what it looks like when the workmanship of your hands chooses suffering. Then "Enoch knew, and looked upon their wickedness, and their misery, and wept and stretched forth his arms, and his heart swelled wide as eternity" (Moses 7:41). Enoch became like God by *seeing as God sees*.
+
+1 Corinthians 13:12 promises the same thing at the end: "then shall I know even as also I am known." Full mutual understanding. Not just knowing about — knowing *as*. The glass-darkly problem isn't information deficit. It's *perspective* deficit. Charity is the perspective correction.
+
+And Moroni 7:48 frames the outcome: "we shall be like him, for we shall see him as he is." Seeing produces becoming. This is why Paul says faith without charity "is nothing" — because faith without charity is powerful action without understanding. You can move mountains and still not know why you're moving them.
+
+**How charity maps to the steward:**
+- Charity is the steward seeing as Michael sees. Not just executing specs, but understanding *why* something matters. The debug session proved this: Opus didn't just follow instructions — it understood the LCARS project goal, the aesthetic vision, the shared theme across entries. That understanding is what made its judgment calls trustworthy.
+- "Suffereth long, is kind... beareth all things, believeth all things, hopeth all things, endureth all things" (Moroni 7:45 / 1 Cor 13:4-7) — This is the patience architecture. The steward retries ("suffereth long"), escalates gracefully ("is kind"), persists through failure ("endureth all things"), assumes the best about partial work ("believeth all things"), maintains the vision ("hopeth all things").
+- "Charity never faileth" (Moroni 7:46 / 1 Cor 13:8) — Prophecies, tongues, knowledge all end. But charity endures. A system built on charity (understanding, caring about the outcome) outlasts one built on cleverness.
+- The distinction between competence and charity: A system can be technically excellent (faith-as-power) and strategically sound (hope-as-vision) and still be *wrong* because it doesn't understand what the human actually cares about. The one-entry commission is the charity test — does the steward understand this specific entry from Michael's perspective?
+
+#### The Trilogy as Progression — And as Architectural Layers
+
+Moroni 10:20-23 states the chain: "There must be faith; and if there must be faith there must also be hope; and if there must be hope there must also be charity." Each requires the one before it.
+
+| Virtue | Definition | Steward Expression | Phase |
+|--------|-----------|-------------------|-------|
+| **Faith** | Principle of action and power (Lecture 1:9, 13) | Acts on incomplete information; retries after failure; exercises a particle of faith with each commission | Phases 1-3 (retry, escalate, circuit break) |
+| **Hope** | Vision that anchors action (Ether 12:4) | The commission's intent; the project vision that holds steady through failures; "always abounding in good works" | Phase 4-5 (quarantine queue = "spare it a little longer"; nudge bot = sustained effort) |
+| **Charity** | Seeing as the Lord sees (Moroni 7:47-48, 1 Cor 13:12) | Understanding *why* something matters, not just *that* it's assigned; making judgment calls aligned with Michael's perspective | Phase 6 (delegated judgment — the Ammon commission) |
+
+The phases aren't arbitrary. They ARE the faith→hope→charity progression. The steward first proves it can act (faith), then sustains effort toward a goal (hope), then earns the perspective to make judgment calls (charity). This is the same progression Lectures on Faith traces:
+
+> "When men begin to live by faith they begin to draw near to God; and when faith is perfected they are like him; and because he is saved they are saved also; for they will be in the same situation he is in, because they have come to him; and when he appears they shall be like him, for they will see him as he is." (Lecture 7:8)
+
+Faith → drawing near → perfected faith → becoming like → seeing as he is. That's exactly the arc: act → persist → understand → align.
+
+#### The Particle-of-Faith Commission
+
+Michael's instinct to start Phase 6 with a single entry is Alma 32:27: "Exercise a particle of faith... even if ye can no more than desire to believe." You don't commission the whole vineyard on day one. You commission one tree. You watch. You learn whether the steward understands.
+
+The LCARS clock/calculator experience was the particle of faith. Michael gave a small commission to an agent. The agent understood the project, made decisions, produced good work. That single experience *produced faith* — "this would basically be the automated dream I've been hoping for." Belief that came from trial.
+
+And per Alma 32:28: "If it be a true seed... it will begin to swell within your breasts; and when you feel these swelling motions, ye will begin to say within yourselves — It must needs be that this is a good seed." The LCARS session was the seed swelling. The faith is growing. Now we plant another seed — one commission, one entry, raw → done.
+
+---
+
+**Proposal updated with faith/hope/charity findings:** See [.spec/proposals/orchestrator-steward/main.md](../../proposals/orchestrator-steward/main.md)
