@@ -1,6 +1,6 @@
 # Active Context
 
-*Last updated: 2026-04-11 (Orchestrator steward Phase 4 — quarantine queue backend built and tested)*
+*Last updated: 2026-04-11 (Orchestrator steward Phase 5 — nudge bot integration built and tested)*
 *Previous cycle archived: [archive/active-2026-04-04.md](archive/active-2026-04-04.md)*
 *Hardware: Dual 4090s desktop (Mar 27). NOCIX server live.*
 
@@ -49,8 +49,9 @@
 - **Phase 2 (DONE):** Model escalation — EscalationChain (Haiku→Sonnet→Opus→Human), `pickModel()` decides escalation based on diagnosis + failure count, `ModelOverride` threaded through Pipeline (AdvanceRequest, ExecuteRequest, runResearch, runPlan, runExecute), `config.ModelCost()` for cost lookup, `MaxCostPerEntry` cost guardrail (10.0 default), `quarantineCostLimit()` for budget-exceeded entries, escalation tracking in Status/Action, 33 tests all passing. Shipped Apr 11.
 - **Phase 3 (DONE):** Circuit breaker — per-stage CLOSED→OPEN→HALF-OPEN state machine in `breaker.go`. `CircuitBreaker` tracks consecutive failures across entries per stage, opens after threshold (default 5), cooldown (default 10m) before half-open probe. Wired into `handleFailure()` — checks `Allow()` before retry, `RecordFailure` on quarantine/dispatch error, `RecordSuccess` on dispatch success. `ResetBreaker()` for manual override. `PUT /api/steward/breaker/reset` endpoint. Breaker status in `/api/steward/status` response. 46 tests all passing. Shipped Apr 11.
 - **Phase 4 (DONE):** Quarantine Queue — `quarantined` boolean + `quarantined_at` timestamp columns via SQLite migration. `SetQuarantined()` and `ListQuarantined()` DB methods. `Unquarantine()` steward method clears quarantine flag, resets failure count, posts feedback + system messages, records action. `quarantine()` and `quarantineCostLimit()` now set the quarantined flag alongside route_status. API endpoints: `GET /api/quarantine` (list quarantined entries), `PUT /api/entries/{id}/unquarantine` (clear quarantine with optional feedback). 54 tests all passing (8 new: SetQuarantined, ListQuarantined, ListQuarantinedEmpty, Unquarantine, UnquarantineNoFeedback, UnquarantineRecordsAction, QuarantineSetsFlag, QuarantineCostLimitSetsFlag). Shipped Apr 11.
+- **Phase 5 (DONE):** Nudge Bot Integration — Absorbed the pipeline's separate review loop into the steward's unified watch loop. New `nudge.go` with `Nudger` interface (pipeline implements via exported `NudgeEntry()`), `NudgeConfig`/`NudgeStatus`/`nudgeState` types, `StartWatchLoop()` replaces `Pipeline.StartReviewLoop()`. Steward owns: loop timing (wake hours), paused/presence state, stale entry detection via `ListStaleEntries()`, nudge stats. Pipeline provides AI nudge execution. Server.go: nudge bot APIs route through steward, `TouchActivity()` through steward, `StartReviewLoop()` deprecated. One goroutine instead of two. 66 tests all passing (12 new). Shipped Apr 11.
 - **Design:** Steward loop (Watch → Diagnose → Act → Account) wrapping existing pipeline. Informed by Good Shepherd, Watchman on Tower, Olive Tree allegory patterns. Model escalation chain: Haiku → Sonnet → Opus → Human.
-- **Next:** Phase 5 — Nudge Bot Integration (absorb stale-entry detection into steward, single loop replaces two goroutines).
+- **Next:** Phase 6 — Steward with Commission (delegated judgment, graduated authority).
 
 ### WS3: Brain UX Quality-of-Life (from real usage)
 - **Phase 1 (DONE):** Auto-expanding textarea, markdown rendering in messages, clickable file paths, inline file viewer sidebar panel, content shift when panel open. External links open in new tabs. Backslash path normalization for Windows.
