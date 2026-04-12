@@ -1,6 +1,6 @@
 # Active Context
 
-*Last updated: 2026-04-11 (Pipeline fixes Phase 4a + Phase 4 — activity-based timeout)*
+*Last updated: 2026-04-11 (Pipeline fixes Phase 4a–4d — all execution reliability fixes shipped)*
 *Previous cycle archived: [archive/active-2026-04-04.md](archive/active-2026-04-04.md)*
 *Hardware: Dual 4090s desktop (Mar 27). NOCIX server live.*
 
@@ -104,9 +104,12 @@
 - **Phase 3 (DONE):** Polish — OnToolCall callback streams execution tool events to WebSocket, Pipeline/Notebook toggle button group replaces confusing checkbox.
 - **Phase 3.5 (DONE):** Two-completes disambiguation — circle checkbox renamed "Mark done"/"Reopen", conversation Complete→Dismiss (calls dismissRoute instead of pipeline complete), route_status "complete" badge→"Routed", ↩ Undo pipeline complete (reverts to verified).
 - **Ready for end-to-end testing.** ✅ TESTED (Apr 10). LCARS entry walked through full pipeline. Timeout hit at 10 min but work was complete. 12 friction points documented. See [debug-pipeline-e2e/main.md](../scratch/debug-pipeline-e2e/main.md).
-- **Next:** Phase 4 fix plan written — 11 fixes prioritized (P0→P2). See [debug-pipeline-e2e/main.md](../scratch/debug-pipeline-e2e/main.md). Phase 4a (reset failure on verify) and Phase 4 (activity-based inactivity timeout) shipped Apr 11. Next: Phase 4b (liveness indicator), Phase 4c (tool event detail), Phase 4d (smart failure messages).
+- **Next:** Phase 4 fix plan written — 11 fixes prioritized (P0→P2). See [debug-pipeline-e2e/main.md](../scratch/debug-pipeline-e2e/main.md). Phases 4, 4a, 4b, 4c, 4d all shipped Apr 11. Next: Phase 4e–4j (P1–P2 polish items).
 - **Phase 4a (DONE):** Reset failure count on verify — added `ResetFailureCount()` call in `Verify()` all-passed path. Shipped Apr 11.
 - **Phase 4 (DONE):** Activity-based timeout — replaced hard 10-min `context.WithTimeout` with `activityContext` type in `pool.go`. Inactivity timer (5 min) resets on every SDK event via `Touch()` callback. No wall clock cap — the steward/human is the circuit breaker. `OnActivity func()` field added to `AgentConfig`, wired into `touchEvent()` in `AskStreaming()`. `StartTask` returns `(context.Context, func())`. Pipeline execute wires touch; server.go route discards it (shared agents). 5 new tests. Shipped Apr 11.
+- **Phase 4b (DONE):** Liveness indicator + elapsed timer — backend emits `execution.started` WebSocket event with `started_at` timestamp, plus `execution.heartbeat` every 30s from a goroutine that runs alongside execution. Frontend shows elapsed timer `(3m 42s)` next to pulsing amber dot during execution, computed via `setInterval` from start timestamp. Timer clears when execution ends. Shipped Apr 11.
+- **Phase 4c (DONE):** Tool event detail — `toolCallSummary()` helper extracts context from tool args: file path for file tools, query for search tools, fallback to first string arg. Detail included in `execution.tool` WebSocket event. Frontend shows tool name + detail (truncated, with title tooltip). 6 new tests. Shipped Apr 11.
+- **Phase 4d (DONE):** Smart failure messages — failure path now checks `agent.WrittenFiles()`. If files exist: "Execution timed out, but the agent created N file(s)." If no files: "No files were created." Also attempts `commitAfterExecution` on failure to preserve work in git. Shipped Apr 11.
 - Proposal: [.spec/proposals/brain-pipeline-fixes.md](../proposals/brain-pipeline-fixes.md)
 
 ### Session-First Flow (Exploring)
