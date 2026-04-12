@@ -1,6 +1,6 @@
 # Active Context
 
-*Last updated: 2026-04-11 (Commission UI proposal written — ready for build)*
+*Last updated: 2026-04-11 (Commission UI Phase 1-2 shipped)*
 *Previous cycle archived: [archive/active-2026-04-04.md](archive/active-2026-04-04.md)*
 *Hardware: Dual 4090s desktop (Mar 27). NOCIX server live.*
 
@@ -17,7 +17,7 @@
 2. **Teaching** — 11-episode experiential arc (Option C). Teaching agent + repo scaffolded. Content not yet started. Proposal: [.spec/proposals/teaching-workstream.md](../proposals/teaching-workstream.md).
 3. **Brain pipeline** — Phase 4 complete. Pipeline fixes (execute reliability + human gate UI) ALL SHIPPED (Apr 9-10). Execution stall fixed, 10-min timeout, cancel endpoint, toast system, scenario dialogs, undo-complete, progress streaming. Ready for end-to-end testing. Next: simplification + inline panel + nudge bot controls + UX quality-of-life.
 4. **Space Center pipeline test** — Practice automated pipeline on Space Center project as low-stakes test bed. First entry (display dashboard) already revealed the UX gaps. Plan: [.spec/scratch/space-center-pipeline-test/main.md](../scratch/space-center-pipeline-test/main.md).
-5. **Commission UI** — Proposal written. Pure frontend — types, API wrappers, CommissionDialog component, commission triggers on entry detail + project board, "New Entry" on project board with commission shortcut. 3 phases, no backend changes. Proposal: [.spec/proposals/commission-ui.md](../proposals/commission-ui.md). Research: [.spec/scratch/commission-ui/main.md](../scratch/commission-ui/main.md).
+5. **Commission UI** — Phase 1-2 shipped. Types, API wrappers, CommissionDialog component, commission triggers on EntryDetailView + ProjectDetailView (board + list), commission status panel with pause/resume/revoke + decision log, commission badge on cards, guard hiding manual pipeline buttons when commissioned. Next: Phase 3 ("New Entry" on project board with commission shortcut). Proposal: [.spec/proposals/commission-ui.md](../proposals/commission-ui.md). Research: [.spec/scratch/commission-ui/main.md](../scratch/commission-ui/main.md).
 
 ### Key Decisions (Apr 5 Session)
 - **Both paths wanted.** Simplified workflow (notebook, 3 columns) AND fully automated pipeline (auto-continuation). Not one or the other.

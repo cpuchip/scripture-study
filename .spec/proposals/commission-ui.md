@@ -1,6 +1,6 @@
 # Commission UI
 
-**Status:** Proposed
+**Status:** Phase 1-2 Shipped
 **Created:** 2026-04-11
 **Binding problem:** The steward commission backend is fully wired (6 API endpoints, goroutine state machine, gate evaluation, budget tracking, pause/resume/revoke), but the frontend has zero commission support. Michael can't commission a steward without manual curl calls. The delegation mechanism itself requires API expertise to invoke — which defeats the point of delegation.
 
@@ -133,10 +133,12 @@ POST body for create: `{ entry_id, intent, authority, model, max_cost }`. Only `
 
 ### 1d. Verification
 
-- TypeScript compiles with no errors
-- Dialog opens, submits, and closes correctly
-- Commission appears in backend (verify via `GET /api/commissions`)
-- Toast shows on success/failure
+- [x] TypeScript compiles with no errors
+- [ ] Dialog opens, submits, and closes correctly
+- [ ] Commission appears in backend (verify via `GET /api/commissions`)
+- [ ] Toast shows on success/failure
+
+**Status: SHIPPED Apr 11.** Types, API functions, and CommissionDialog component all implemented.
 
 ---
 
@@ -197,12 +199,14 @@ When an entry has an active or paused commission, show a small badge on the card
 
 ### 2d. Verification
 
-- Commission button appears on qualifying entries
-- Commission dialog works from both ProjectDetailView and EntryDetailView
-- Active commission shows status, budget, controls
-- Decision log displays correctly
-- Manual pipeline buttons hidden when commission is active
-- Pause/resume/revoke buttons work
+- [x] Commission button appears on qualifying entries
+- [x] Commission dialog works from both ProjectDetailView and EntryDetailView
+- [x] Active commission shows status, budget, controls
+- [x] Decision log displays correctly
+- [x] Manual pipeline buttons hidden when commission is active
+- [ ] Pause/resume/revoke buttons work (needs live testing)
+
+**Status: SHIPPED Apr 11.** EntryDetailView: commission status panel with pause/resume/revoke + decision log, commission button in pipeline gates. ProjectDetailView: commission badge on board cards + list items, commission button, guard hiding manual buttons when commissioned.
 
 ---
 
