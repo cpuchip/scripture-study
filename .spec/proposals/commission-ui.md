@@ -1,6 +1,6 @@
 # Commission UI
 
-**Status:** Phase 1-2 Shipped
+**Status:** Phase 1-3 Shipped
 **Created:** 2026-04-11
 **Binding problem:** The steward commission backend is fully wired (6 API endpoints, goroutine state machine, gate evaluation, budget tracking, pause/resume/revoke), but the frontend has zero commission support. Michael can't commission a steward without manual curl calls. The delegation mechanism itself requires API expertise to invoke — which defeats the point of delegation.
 
@@ -251,11 +251,12 @@ This is two dialogs in sequence (create → commission), not one giant form. Kee
 
 ### 3c. Verification
 
-- "New Entry" button visible on project board
-- Entry is created and assigned to the correct project
-- Entry appears in Inbox column immediately (via WebSocket `entry.created` event or manual refresh)
-- Commission checkbox triggers CommissionDialog after creation
-- Full flow: type body → create → commission dialog → confirm → steward starts
+- [x] "+ New Entry" button in project header, Inbox column header (+), and empty state
+- [x] Dialog: textarea for body, "Commission steward immediately" checkbox, Ctrl+Enter support
+- [x] Entry created and assigned to project via `createEntry` + `setEntryProject`
+- [x] Entry appears in Inbox column immediately (WebSocket `entry.created` event already wired)
+- [x] Commission checkbox triggers CommissionDialog after creation with new entry ID
+- [x] `vue-tsc --noEmit` passes clean
 
 ---
 
