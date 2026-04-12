@@ -190,7 +190,7 @@ func listCollections(store *Store) []string {
 // detectDimension gets the embedding dimension by querying a single document.
 func detectDimension(col *chromem.Collection, embedFunc chromem.EmbeddingFunc) int {
 	// Try dimensions commonly used by embedding models (most likely first)
-	for _, dim := range []int{4096, 3072, 1536, 768, 384} {
+	for _, dim := range []int{4096, 3072, 2560, 1536, 768, 384} {
 		unitVec := make([]float32, dim)
 		unitVec[0] = 1.0
 
