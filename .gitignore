@@ -51,6 +51,7 @@ external_context/
 /scripts/chip-voice/
 /teaching/
 /projects/space-center/
+/projects/cpuchip.net/
 
 # ignore env
 .env
