@@ -1,7 +1,7 @@
 # Proposal: Brain Project UX Improvements
 
 *Created: 2026-04-14*
-*Status: Proposed*
+*Status: Phase 1-2 Shipped (2026-04-14)*
 *Type: Quick plan — 4 frontend/backend improvements*
 *Research: [.spec/scratch/brain-project-ux/main.md](../scratch/brain-project-ux/main.md)*
 
