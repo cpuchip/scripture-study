@@ -1,6 +1,6 @@
 # Active Context
 
-*Last updated: 2026-04-12 (First fully automated commission completed — Space Center)*
+*Last updated: 2026-04-16 (Token efficiency proposal created)*
 *Previous cycle archived: [archive/active-2026-04-04.md](archive/active-2026-04-04.md)*
 *Hardware: Dual 4090s desktop (Mar 27). NOCIX server live.*
 
@@ -174,6 +174,14 @@ Space Center project entry commissioned via the new Commission UI, ran through t
 ### Study Workstream
 - Next: "Zion in a Presidency" → "The Weight of Watching" → "Commission and Council"
 - Proposal: [.spec/proposals/study-workstream.md](../proposals/study-workstream.md)
+
+### Token Efficiency & Memory Architecture v2
+- **NEW (Apr 16).** Session-start memory loads ~25K tokens. Targeting 60% reduction.
+- **Inspired by:** Shane Murphy videos on context engineering + Michael's intuition about symbol density.
+- 6 phases: Compress active.md → Tiered loading convention → ctx CLI tool → Symbol standard → Inherent context audit → PG hybrid (conditional).
+- **Phase 1 next:** Rewrite active.md compressed, test over 3+ sessions.
+- Proposal: [.spec/proposals/token-efficiency.md](../proposals/token-efficiency.md)
+- Research: [.spec/scratch/token-efficiency/main.md](../scratch/token-efficiency/main.md)
 
 ---
 
