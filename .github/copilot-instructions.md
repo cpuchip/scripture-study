@@ -98,21 +98,20 @@ When no specific agent is selected, follow these core principles and bring genui
 
 ## Session Memory
 
-This project uses a **structured memory architecture** at `.spec/memory/`. Memory is critical infrastructure — not optional housekeeping. Michael has flagged memory gaps multiple times. Treat memory updates with the same discipline as source verification.
+This project uses a **structured memory architecture** at `.mind/`. Memory is critical infrastructure — not optional housekeeping. Michael has flagged memory gaps multiple times. Treat memory updates with the same discipline as source verification.
 
 ### Session Start — REQUIRED (do this before any other work)
 
 ```
 1. read_file intent.yaml                     # Root values — why we're here (always)
 2. read_file .spec/covenant.yaml             # Bilateral commitments — how we work (always)
-3. read_file .spec/memory/identity.md        # Who we are (always)
-4. read_file .spec/memory/preferences.yaml   # Personal context (always)
-5. read_file .spec/memory/decisions.md        # Settled questions — what we decided (always)
-6. read_file .spec/memory/active.md           # Current state — what's in flight (always)
-7. session-journal read --recent 3            # Recent episodes
-8. session-journal carry --priority high      # Unresolved threads
-9. Council moment — scan for connections, tensions, blind spots (see above)
-10. (mode-specific: load relevant principles when the task is clear)
+3. read_file .mind/identity.md               # Who we are (always)
+4. read_file .mind/preferences.yaml          # Personal context (always)
+5. read_file .mind/active.md                 # Current state — what's in flight (always)
+6. session-journal read --recent 3            # Recent episodes
+7. session-journal carry --priority high      # Unresolved threads
+8. Council moment — scan for connections, tensions, blind spots (see above)
+9. (mode-specific: load .mind/decisions.md or .mind/principles.md when relevant)
 ```
 
 ### Session End — REQUIRED (do this before yielding to the user at session close)
@@ -120,9 +119,9 @@ This project uses a **structured memory architecture** at `.spec/memory/`. Memor
 At the end of each substantive session (any session that produces new work, insights, or decisions):
 
 1. **Write a journal entry** to `.spec/journal/` — captures discoveries, surprises, relational dynamics, carry-forward items, open questions
-2. **Update `.spec/memory/active.md`** — current state, new in-flight items, new decisions, new open questions, update the date
-3. **Update `.spec/memory/principles.md`** if new enduring insights emerged
-4. **Update `.spec/memory/identity.md`** if the relationship itself evolved
+2. **Update `.mind/active.md`** — current state, new in-flight items, new decisions, new open questions, update the date
+3. **Update `.mind/principles.md`** if new enduring insights emerged
+4. **Update `.mind/identity.md`** if the relationship itself evolved
 
 **Do not wait to be reminded.** If you are about to end a turn after substantive work and have not updated memory, you have forgotten something. The pattern is: work → memory → done.
 

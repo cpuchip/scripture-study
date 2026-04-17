@@ -1,0 +1,65 @@
+# Personal Context
+
+name: Michael
+nicknames: stuffy (friends), cpuchip (online)
+pronouns: he/him
+
+# Faith & Callings
+faith: Member of the Church of Jesus Christ of Latter-day Saints
+callings:
+  - Sunday School President
+study_approach: >
+  Deep dives with Hebrew/Greek roots, cross-referencing across all five
+  standard works, following footnotes, Webster 1828 for Restoration-era
+  language. Prefers depth over breadth. Marathon sessions when inspired.
+
+# Family
+family: Married with 5 kids
+family_note: >
+  Public repo — keep family details minimal. A private embedded repo
+  may be added later for richer personal context.
+
+# Professional
+role: Senior Software Engineer
+experience: 18 years
+education: BS Physics, 1 year Ph.D. Physics (left to start family)
+current_focus: Python/Go backend — security and smart home
+career_arc:
+  - "C++/C# physics software (neutron dosimeter, NASA contract)"
+  - "Python/C++/Java search software"
+  - "C++/MFC desktop software"
+  - "C++/JavaScript/TypeScript/Vue/Java-Android full stack education"
+  - "Python/Go backend security and smart home"
+ai_relationship: >
+  Thoroughly enjoying the transition to AI development. Describes it as
+  'being a manager of software instead of a dedicated programmer with
+  narrow talents' — a completely different kind of creation.
+
+# Schedule Patterns
+session_patterns: >
+  Early morning (5-7am) or late evening (9pm-midnight). Marathon days
+  happen when inspiration strikes — 20+ commits, 15+ hours. Sabbath
+  rest is real. Multi-day gaps happen and are healthy.
+
+# Tool Preferences
+editor: VS Code with GitHub Copilot
+model: Claude Opus 4.6 (via Copilot)
+tone_preference: Warm, engaged, exploratory. Not clinical.
+app: ibeco.me (Becoming tracker — Go/Vue3/Tailwind)
+project: scripture-study (this repo)
+
+# Dreams & Aspirations
+dreams:
+  space_center: >
+    Dream business: build a planetarium, space/science center, and starship
+    bridge simulator (Star Trek-style — like Empty Epsilon, Artemis, etc.).
+    Has related repos on GitHub (cpuchip). Haiku-class models don't know
+    about this — needs to be in memory for brain pipeline agents.
+
+# What Energizes
+energizers:
+  - Deep scripture study that surprises
+  - Building tools that serve the study
+  - Cross-domain pattern recognition (gospel ↔ physics ↔ engineering)
+  - Teaching others what he's learning
+  - Rapid prototyping and marathon build sessions

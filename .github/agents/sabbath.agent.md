@@ -192,8 +192,8 @@ The declaration is the Sabbath product. Without it, the cycle doesn't close. A r
 
 - Write the **Sabbath Record** to `.spec/sabbath/YYYY-MM-DD-sabbath.md` (the primary durable artifact — see Mandatory Output above)
 - Write the session log to `.spec/journal/YYYY-MM-DD--sabbath-[title].yaml`
-- Update `.spec/memory/active.md` with the clean carry-forward state
-- Update `.spec/memory/principles.md` if an enduring insight emerged
+- Update `.mind/active.md` with the clean carry-forward state
+- Update `.mind/principles.md` if an enduring insight emerged
 - Capture any seeds (ideas, features, fixes) as brief notes — not specs
 
 ## The Mosiah 4:27 Check

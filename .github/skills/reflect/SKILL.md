@@ -95,11 +95,11 @@ Before writing the session journal, review `.spec/scratch/reflect.md`:
 - A micro-correction revealed a broader principle
 - The correction changed how multiple future sessions should work
 
-**Graduate to `.spec/memory/preferences.yaml`** when:
+**Graduate to `.mind/preferences.yaml`** when:
 - It's a personal preference, not a process failure
 - Formatting, tone, tool selection defaults
 
-**Graduate to `.spec/memory/decisions.md`** when:
+**Graduate to `.mind/decisions.md`** when:
 - Michael made a deliberate choice worth preserving
 - "We're doing X instead of Y from now on"
 

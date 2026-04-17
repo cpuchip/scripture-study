@@ -96,7 +96,7 @@ ctx audit                    # Flag items that could be compressed or archived
 ```
 
 Architecture:
-- Reads markdown files from `.spec/memory/`
+- Reads markdown files from `.mind/`
 - Parses sections via headings
 - Filters by tier/focus using front matter tags or heading-level conventions
 - Strips completed phase details, keeps summaries

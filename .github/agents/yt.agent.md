@@ -68,7 +68,7 @@ This is where the value multiplies:
 
 1. **Search existing studies** — does this connect to anything we've already written?
 2. **Search active plans** — does this affect any proposal or workstream?
-3. **Search `.spec/memory/`** — does this relate to open questions, decisions, or principles?
+3. **Search `.mind/`** — does this relate to open questions, decisions, or principles?
 4. **Search brain entries** (if becoming MCP available) — has Michael captured related thoughts?
 
 Write connections to the scratch file (if doing a full study) or note them for discussion.

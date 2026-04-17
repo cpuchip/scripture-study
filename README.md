@@ -265,23 +265,24 @@ The `.github/` instructions are written for **GitHub Copilot in VS Code**. If yo
 
 - **Claude Code / Cursor / Windsurf** — Translate `.github/copilot-instructions.md` into your tool's system prompt or project instructions format. Agent files and skills will need adapting.
 - **OpenCode / other CLI agents** — Extract core principles and MCP tool descriptions into your agent's config.
-- **Key things to preserve:** source-verification discipline (read before quoting), scripture linking conventions, the session memory architecture at `.spec/memory/`.
+- **Key things to preserve:** source-verification discipline (read before quoting), scripture linking conventions, the session memory architecture at `.mind/`.
 
 ---
 
 ## Session Memory & Specification
 
-The `.spec/` directory contains the project's memory architecture, covenant, and planning documents:
+The `.spec/` directory contains the project's covenant and planning documents. The `.mind/` directory holds persistent memory:
 
 ```
+.mind/
+├── identity.md            # Who we are together
+├── preferences.yaml       # Personal context
+├── active.md              # Current state — what's in flight
+├── decisions.md           # Settled questions
+└── principles.md          # Enduring insights
+
 .spec/
 ├── covenant.yaml              # Bilateral commitment governing collaboration
-├── memory/                    # Persistent context across sessions
-│   ├── identity.md            # Who we are together
-│   ├── preferences.yaml       # Personal context
-│   ├── active.md              # Current state — what's in flight
-│   ├── decisions.md           # Settled questions
-│   └── principles.md          # Enduring insights
 ├── journal/                   # Session journal entries (YAML)
 ├── learnings/                 # Named failures → learning entries
 ├── sabbath/                   # Sabbath reflection records

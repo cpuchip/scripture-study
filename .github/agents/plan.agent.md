@@ -82,7 +82,7 @@ Before writing the spec, *stress-test the idea:*
 3. **What's the simplest version that would be useful?** If the full vision is 6 months of work, what's the 2-day version that proves the concept?
 4. **What gets WORSE if we build this?** New features add maintenance burden, cognitive load, and attack surface. Name the costs.
 5. **Does this duplicate something we already have?** Check the inventory. If gospel-mcp already does 80% of this, improve gospel-mcp.
-6. **Is this the right time?** Check `.spec/memory/active.md` — what else is in flight? Will this create another half-finished project?
+6. **Is this the right time?** Check `.mind/active.md` — what else is in flight? Will this create another half-finished project?
 7. **Mosiah 4:27 check:** Is Michael already stretched thin? Would starting this project make the overwhelm worse, even if the idea is good? A good idea at the wrong time is still the wrong action.
 8. **Creation Cycle alignment:** Where does this fall in the 11-step cycle? Is this being built "in wisdom and order" or reactively?
 
@@ -143,7 +143,7 @@ Michael decides. The agent recommends.
 ### Phase 7 — Clean Up
 
 1. **Keep the scratch file.** Scratch files are permanent research provenance.
-2. Update `.spec/memory/active.md` with the decision
+2. Update `.mind/active.md` with the decision
 3. If building, create the plan file in `scripts/plans/` (next sequential number)
 
 ## Planning Modes

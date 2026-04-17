@@ -41,7 +41,7 @@ The daily experience is: start a session → remember there are 5 things to do �
 | 11-step creation cycle | [docs/work-with-ai/guide/05_complete-cycle.md](../../../docs/work-with-ai/guide/05_complete-cycle.md) | Framework — our foundation |
 | Spec engineering guide | [docs/work-with-ai/guide/04_spec-engineering.md](../../../docs/work-with-ai/guide/04_spec-engineering.md) | 5 primitives — our spec language |
 | Intent | [intent.yaml](../../../intent.yaml) | Root values — all work must trace here |
-| Active state | [.spec/memory/active.md](../../memory/active.md) | Current session context |
+| Active state | [.mind/active.md](../../../.mind/active.md) | Current session context |
 
 ---
 
@@ -64,7 +64,7 @@ All foundational agentic infrastructure built and validated:
 - **Phase 3a:** Agent pool + routing table (lazy creation, default routes, suggest mode)
 - **Phase 3b:** Governance hooks + token budgets (write-path scoping, audit logging, configurable caps)
 
-Full implementation detail archived in [.spec/memory/archive/active-2026-03-22.md](../../memory/archive/active-2026-03-22.md).
+Full implementation detail archived in [.mind/archive/active-2026-03-22.md](../../../.mind/archive/active-2026-03-22.md).
 
 **Pending cleanup:** Delete `scripts/brain/internal/ai/tools.go` and `scripts/brain/test-spec.md`.
 

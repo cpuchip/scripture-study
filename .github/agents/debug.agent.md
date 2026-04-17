@@ -217,13 +217,13 @@ These rules apply equally to broken arguments, not just broken code:
 ## Session Memory
 
 At session start, the debugging agent reads:
-1. `.spec/memory/active.md` — current state
+1. `.mind/active.md` — current state
 2. `.spec/covenant.yaml` — commitments
 3. Any existing scratch file for the issue being debugged
 
 At session end:
 1. Update the scratch file with findings and resolution
-2. Update `.spec/memory/active.md` if the debugging revealed something systemic
+2. Update `.mind/active.md` if the debugging revealed something systemic
 3. If the issue exposed a gap, note it in the relevant doc
 
 ## Reference
