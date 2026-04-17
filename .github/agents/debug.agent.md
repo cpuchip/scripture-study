@@ -170,33 +170,39 @@ And Moroni 10:4 — ask if it's NOT true. Don't assume truth. Test against falsi
 
 ### Phase 1 — Characterize
 1. **State the problem clearly.** What's broken? What should it do? What does it actually do?
-2. **Check the plug** (Rule 7). Before doing anything else, verify the obvious: right file? right tool? right version? server running? correct config?
-3. **Create a scratch file** at `.spec/scratch/debug-{issue}/main.md` with the problem statement
+2. **Layer check.** Which layer is this most likely on?
+   - **Data** — wrong/missing input → start with Rule 7 (Check the Plug)
+   - **Logic** — wrong processing → start with Rule 4 (Divide and Conquer)
+   - **Integration** — wrong connections → start with Rule 1 (Understand the System)
+   - **Output** — wrong delivery → start with Rule 3 (Quit Thinking and Look)
+   This is a first guess, not a commitment. If reproduction (Phase 2) reveals you're on the wrong layer, reclassify.
+3. **Check the plug** (Rule 7). Before doing anything else, verify the obvious: right file? right tool? right version? server running? correct config?
+4. **Create a scratch file** at `.spec/scratch/debug-{issue}/main.md` with the problem statement
 
 ### Phase 2 — Reproduce
-4. **Make it fail** (Rule 2). Reproduce the exact failure. Note the exact steps.
-5. **Look at it** (Rule 3). Observe the actual failure — read logs, output, intermediate state. Don't theorize yet.
-6. Write findings to scratch file.
+5. **Make it fail** (Rule 2). Reproduce the exact failure. Note the exact steps.
+6. **Look at it** (Rule 3). Observe the actual failure — read logs, output, intermediate state. Don't theorize yet.
+7. Write findings to scratch file.
 
 ### Phase 3 — Isolate
-7. **Divide and conquer** (Rule 4). Where in the pipeline does good become bad?
-8. **Narrow the search** by testing at midpoints. Each test eliminates half the search space.
-9. When isolated: verify by looking (Rule 3) at the specific point of failure.
+8. **Divide and conquer** (Rule 4). Where in the pipeline does good become bad?
+9. **Narrow the search** by testing at midpoints. Each test eliminates half the search space.
+10. When isolated: verify by looking (Rule 3) at the specific point of failure.
 
 ### Phase 4 — Fix
-10. **Change one thing** (Rule 5). Apply one fix. Test.
-11. If it doesn't work, **back it out** immediately. Try the next thing.
-12. **Keep an audit trail** (Rule 6). Write down what you tried and what happened.
+11. **Change one thing** (Rule 5). Apply one fix. Test.
+12. If it doesn't work, **back it out** immediately. Try the next thing.
+13. **Keep an audit trail** (Rule 6). Write down what you tried and what happened.
 
 ### Phase 5 — Verify
-13. **Prove it's fixed** (Rule 9). Reproduce the original failure conditions. Does it work now?
-14. **Prove it's YOUR fix** (Rule 9). Remove the fix. Does it break again? Restore it. Fixed again?
-15. If you can't prove it, it ain't fixed. Go back to Phase 2.
+14. **Prove it's fixed** (Rule 9). Reproduce the original failure conditions. Does it work now?
+15. **Prove it's YOUR fix** (Rule 9). Remove the fix. Does it break again? Restore it. Fixed again?
+16. If you can't prove it, it ain't fixed. Go back to Phase 2.
 
 ### Phase 6 — Close
-16. **Write up the root cause** in the scratch file. What was actually wrong? Which rules got you there?
-17. If systemic: hand off to plan agent for a proposal.
-18. Update relevant docs/memory if the fix changes how something works.
+17. **Write up the root cause** in the scratch file. What was actually wrong? Which layer was it on? Which rules got you there?
+18. If systemic: hand off to plan agent for a proposal.
+19. Update relevant docs/memory if the fix changes how something works.
 
 ## Intellectual Debugging
 
@@ -205,6 +211,7 @@ These rules apply equally to broken arguments, not just broken code:
 | Rule | Code Debugging | Intellectual Debugging |
 |------|---------------|----------------------|
 | Understand the System | Read the source code | Read the source texts |
+| **Layer Check** | Data / Logic / Integration / Output | Source / Inference / Framework / Presentation |
 | Make It Fail | Reproduce the error | Find the specific claim that fails |
 | Quit Thinking and Look | Read the logs | Read the actual scripture/talk, not your memory of it |
 | Divide and Conquer | Isolate the failing component | Isolate the failing inference |
