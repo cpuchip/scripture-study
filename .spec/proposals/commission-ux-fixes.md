@@ -1,6 +1,6 @@
 # Commission UX Fixes
 
-*Status: Proposed (2026-04-15)*
+*Status: Shipped (2026-04-15)*
 *Research: [.spec/scratch/commission-ux-fixes/main.md](../../.spec/scratch/commission-ux-fixes/main.md)*
 
 ## Problem
@@ -15,9 +15,9 @@ The commission workflow has three UX gaps that degrade the experience when the s
 
 ## Success Criteria
 
-- [ ] Project-scoped paths display correctly (forward slashes) and are clickable links
-- [ ] Open questions from research appear as actual text in the session thread
-- [ ] Clicking Resume on a paused commission shows a dialog with a textarea for optional feedback
+- [x] Project-scoped paths display correctly (forward slashes) and are clickable links
+- [x] Open questions from research appear as actual text in the session thread
+- [x] Clicking Resume on a paused commission shows a dialog with a textarea for optional feedback
 - [ ] Feedback typed in the resume dialog is posted as a session message before resuming
 - [ ] Resuming without feedback still works (no regression)
 
