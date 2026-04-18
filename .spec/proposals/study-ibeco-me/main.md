@@ -3,6 +3,7 @@
 **Binding problem:** Gospel search is trapped inside a local MCP server. It can't serve web clients, can't be shared, and dies when the desktop goes offline. There's no way for ibeco.me, study.ibeco.me, remote agents, or other users to search scriptures without running the full gospel-engine binary locally. Moving to a hosted service at study.ibeco.me would make gospel search a permanent, always-available API — accessible from MCP clients, web browsers, and any HTTP client — while keeping the database self-hosted on NOCIX.
 
 **Created:** 2026-04-18
+**Updated:** 2026-04-18 — Dokploy raw Dockerfile deployment, PG18, self-hosted MCP binary for auto-update, pre-loaded gospel-library
 **Research:** [.spec/scratch/study-ibeco-me/main.md](../../scratch/study-ibeco-me/main.md)
 **Supersedes:** [gospel-engine-postgresql proposal](../gospel-engine-postgresql/main.md) (PG schema, embedding strategy, and extension stack carry forward; deployment model and architecture change)
 **Related:** [gospel-graph proposal](../gospel-graph/main.md) (graph viz frontend becomes a consumer of this API)
@@ -30,34 +31,44 @@ The current gospel search ecosystem is fragmented across three MCP servers (gosp
 ## 2. Success Criteria
 
 1. **study.ibeco.me serves a REST API** for gospel search (keyword, semantic, hybrid), content retrieval, and listing — the same capabilities as the current three MCP servers combined
-2. **PostgreSQL with pgvector + FTS** stores all content and embeddings in one database
+2. **PostgreSQL 18 with pgvector + pg_trgm** stores all content and embeddings in one database (via `pgvector/pgvector:pg18` image, no custom build needed)
 3. **Embedding generation** runs on NOCIX via LM Studio headless (nomic-embed-text, CPU). LM Link to desktop GPU is optional acceleration.
 4. **Gospel-library downloads** are managed server-side — the backend pulls content from the Church API, indexes, and embeds it
 5. **Token-based auth** protects the API from abuse. Tokens provisioned via ibeco.me (service token delegation)
 6. **A new MCP client** (`gospel-mcp`) translates MCP JSON-RPC to HTTP calls against study.ibeco.me
-7. **Deployed on Dokploy** alongside ibeco.me on the NOCIX server
+7. **Deployed on Dokploy** alongside ibeco.me on the NOCIX server using **two services**: a Database service (`pgvector/pgvector:pg18`) and an Application service (raw Dockerfile, built on the Dokploy server)
 8. **Current MCP tools are preserved** — agents using `gospel_search`, `gospel_get`, `gospel_list` see identical behavior through the new MCP client
+9. **MCP client auto-updates** by checking the server's `/api/version` endpoint on startup and downloading new builds from `/download/gospel-mcp-{os}-{arch}`
+10. **Gospel-library content is pre-loaded** to `/opt/gospel-library` on NOCIX (rsync from Michael's machine) and mounted read-only into the container — no Church API bulk download from server IP
+11. **Embeddings are pre-computed on desktop** (where qwen3-4B + dual 4090s already run) and uploaded to NOCIX alongside content. Server bulk-loads on first run; only query-time embedding (~50ms) runs on NOCIX CPU.
+12. **TITSW and enrichment data** from the current gospel-engine is migrated to PG (TITSW columns on conference_talks, chapter_lenses table, etc.)
+13. **Backups** automated via Dokploy's built-in PG backup (local + optional S3)
 
 ---
 
 ## 3. Scope
 
 ### In scope (Phase 1 — Core API)
-- Go backend HTTP server with chi router
-- PostgreSQL schema (scriptures, talks, embeddings, cross-references) — from PG migration proposal
-- Custom Docker image (pgvector + pg_trgm on PG17)
+- Go backend HTTP server with chi router (single Dockerfile, built by Dokploy)
+- PostgreSQL 18 via Dokploy **Database** service using `pgvector/pgvector:pg18` directly (no custom image needed for Phase 1)
+- Schema migrations run by the Go server on startup (pgvector + pg_trgm extensions are already included in the pgvector image)
 - REST endpoints: `/api/search`, `/api/get/{ref}`, `/api/list`, `/api/health`
 - Token validation middleware (bearer tokens, `stdy_` prefix)
 - Content indexing pipeline (parse gospel-library markdown → PG)
 - Embedding pipeline (content → llmster → pgvector)
-- docker-compose.yml for Dokploy deployment
-- MCP client binary that wraps the HTTP API
+- Gospel-library pre-loaded to `/opt/gospel-library` on NOCIX (mounted into container as read-only volume) — avoids initial Church API download
+- **Embeddings pre-computed on desktop** and rsynced to `/opt/gospel-embeddings/` on NOCIX (mounted read-only). Server bulk-loads via PG `COPY` on first run.
+- **TITSW + enrichment migration script:** one-time export from existing gospel-engine SQLite → PG insert
+- Static file server for MCP client binaries (`/download/gospel-mcp-{os}-{arch}`) — enables one-binary distribution and auto-update
+- MCP client binary that wraps the HTTP API and supports self-update (with rollback safety: `<self>.prev` backup, SHA256 verify, opt-out env, "first successful run" gate)
+- Single Dockerfile deployed to Dokploy (no docker-compose)
+- Dokploy-scheduled PG backups configured at deploy time
 
 ### In scope (Phase 2 — Content Management)
-- Gospel-library download module (port from `scripts/gospel-library/`)
-- Automatic indexing of new content
+- Gospel-library download module (port from `scripts/gospel-library/`) — for incremental updates after initial pre-load
+- Automatic indexing of new content (scheduled checks for new conference talks, manual updates)
 - Admin endpoints for triggering re-index / re-embed
-- Apache AGE graph extension (if PG17 build is stable)
+- Apache AGE graph extension (requires custom PG image at that point — see Phase 2 architecture notes)
 
 ### In scope (Phase 3 — Auth Delegation)
 - Service token for ibeco.me → study.ibeco.me delegation
@@ -70,7 +81,7 @@ The current gospel search ecosystem is fragmented across three MCP servers (gosp
 - study.ibeco.me frontend / UI
 - GitHub Copilot SDK integration
 - Multi-user study sharing
-- Apache AGE graph queries (move to Phase 2 if PG17 build is problematic)
+- Apache AGE graph queries (Phase 2; may require custom PG18 image if AGE doesn't support PG18 by then)
 
 ### Out of scope
 - Changes to ibeco.me's existing auth system (only adding one new endpoint)
@@ -83,7 +94,9 @@ The current gospel search ecosystem is fragmented across three MCP servers (gosp
 - `pgvector/pgvector-go` for vector types
 - `go-chi/chi/v5` for HTTP routing (same as ibeco.me)
 - LM Studio headless via OpenAI-compatible `/v1/embeddings`
-- Docker deployment via Dokploy
+- Deployment: **single Dockerfile** per service, built on the Dokploy server itself. No docker-compose, no intermediate registry. PG is a separate Dokploy Database service.
+- PostgreSQL 18 (latest stable). pgvector image: `pgvector/pgvector:pg18`.
+- Gospel-library content: pre-loaded to `/opt/gospel-library` on NOCIX, mounted read-only into the app container.
 - Bearer token auth: `stdy_` prefix + 64 hex chars, bcrypt hashed
 - Environment variables for all config (same pattern as ibeco.me)
 
@@ -93,7 +106,7 @@ The current gospel search ecosystem is fragmented across three MCP servers (gosp
 
 | Source | Relevance |
 |--------|-----------|
-| ibeco.me (scripts/becoming/) | Proven Dokploy deployment pattern. Chi router. PG backend. Token auth with bcrypt + prefix lookup. Google OAuth. Docker-compose for Dokploy. |
+| ibeco.me (scripts/becoming/) | Proven Dokploy deployment pattern. Chi router. PG backend. Token auth with bcrypt + prefix lookup. Google OAuth. |
 | gospel-engine (scripts/gospel-engine/) | MCP server with 3 tools (search, get, list). Hybrid search (FTS5 + vector). Embedder uses OpenAI-compatible API. Schema and query patterns carry forward. |
 | gospel-mcp (scripts/gospel-mcp/) | FTS-only MCP server. Being replaced. |
 | gospel-vec (scripts/gospel-vec/) | Vector-only MCP server with chromem-go. Being replaced. |
@@ -190,12 +203,14 @@ gospel-engine-v2/
 │   │   ├── search.go          # /api/search handler
 │   │   ├── get.go             # /api/get handler
 │   │   ├── list.go            # /api/list handler
+│   │   ├── download.go        # /download/gospel-mcp-{os}-{arch}
 │   │   └── admin.go           # /api/admin/* handlers
 │   ├── auth/                  # Token validation + rate limiting
 │   │   ├── middleware.go
 │   │   └── tokens.go
 │   ├── db/                    # PostgreSQL access layer
 │   │   ├── db.go              # Connection, migrations
+│   │   ├── migrate.go         # Runs SQL migrations on startup
 │   │   ├── scriptures.go      # Scripture queries
 │   │   ├── talks.go           # Conference talk queries
 │   │   ├── search.go          # Hybrid search queries
@@ -204,21 +219,73 @@ gospel-engine-v2/
 │   │   └── embedder.go
 │   ├── index/                 # Content indexing pipeline
 │   │   └── indexer.go
+│   ├── selfupdate/            # MCP client self-update logic
+│   │   └── updater.go
 │   └── search/                # Search orchestration
 │       └── hybrid.go          # FTS + vector + RRF merging
-├── docker/
-│   └── gospel-db/
-│       ├── Dockerfile         # PG17 + pgvector + pg_trgm
-│       └── init.sql           # Extension creation
-├── migrations/
+├── migrations/                # SQL migration files (embedded via go:embed)
 │   ├── 001_schema.sql
 │   └── 002_indexes.sql
-├── docker-compose.yml         # Dokploy deployment
-├── Dockerfile                 # App server image
+├── Dockerfile                 # Single Dockerfile, built by Dokploy
+├── .dockerignore
 ├── go.mod
 ├── go.sum
 └── README.md
 ```
+
+**Note:** No docker-compose, no `docker/gospel-db/` directory. PG is provisioned as a separate Dokploy Database service using the `pgvector/pgvector:pg18` image directly. The app's Dockerfile builds both binaries (`gospel-engine` server and `gospel-mcp` client) for distribution.
+
+### Dockerfile Pattern (single-stage build, multiple targets)
+
+```dockerfile
+FROM golang:1.24-alpine AS builder
+WORKDIR /build
+COPY go.mod go.sum ./
+RUN go mod download
+COPY . .
+
+# Build server
+RUN go build -o /build/gospel-engine ./cmd/gospel-engine
+
+# Build MCP client for multiple platforms (distributed via HTTP)
+RUN mkdir -p /build/binaries && \
+    GOOS=windows GOARCH=amd64 go build -o /build/binaries/gospel-mcp-windows-amd64.exe ./cmd/gospel-mcp && \
+    GOOS=linux   GOARCH=amd64 go build -o /build/binaries/gospel-mcp-linux-amd64 ./cmd/gospel-mcp && \
+    GOOS=darwin  GOARCH=amd64 go build -o /build/binaries/gospel-mcp-darwin-amd64 ./cmd/gospel-mcp && \
+    GOOS=darwin  GOARCH=arm64 go build -o /build/binaries/gospel-mcp-darwin-arm64 ./cmd/gospel-mcp
+
+FROM alpine:3.20
+RUN apk add --no-cache ca-certificates
+COPY --from=builder /build/gospel-engine /usr/local/bin/
+COPY --from=builder /build/binaries /opt/mcp-binaries
+EXPOSE 8080
+ENTRYPOINT ["/usr/local/bin/gospel-engine"]
+```
+
+Dokploy builds this Dockerfile locally on the NOCIX server on each deploy. No intermediate registry needed.
+
+### Self-Updating MCP Client
+
+The gospel-engine server hosts the MCP client binaries it built at `/download/gospel-mcp-{os}-{arch}`. The MCP client checks for updates on startup:
+
+1. On startup, `gospel-mcp` calls `GET https://study.ibeco.me/api/version` — returns `{ "version": "2026.04.18-abc123", "sha256": "..." }`
+2. If the running version differs, download the new binary to `<self>.new`
+3. Verify SHA256 match
+4. Platform-specific replacement:
+   - **Unix:** `os.Rename("<self>.new", "<self>")`, re-exec
+   - **Windows:** can't overwrite running exe. Write `<self>.new`, spawn a small updater script that waits for the parent to exit, then renames and re-launches.
+5. Continue normal operation
+
+This means users install the MCP client once; subsequent updates are automatic whenever the server is redeployed. Auto-update can be disabled via `GOSPEL_AUTO_UPDATE=false` env var.
+
+### Gospel-Library Pre-Loading
+
+To avoid hammering the Church API from the NOCIX IP on first deploy:
+
+1. **Upload to NOCIX:** `rsync -avz gospel-library/ nocix:/opt/gospel-library/` (one-time, from Michael's machine)
+2. **Mount read-only into container** via Dokploy volume config: `/opt/gospel-library:/gospel-library:ro`
+3. **Server reads from `/gospel-library`** on startup, indexes everything into PG
+4. **Phase 2** adds incremental downloads for new conference talks (April + October) — these are minimal Church API hits (~30 talks twice a year)
 
 ---
 
@@ -265,7 +332,6 @@ CREATE TABLE embeddings (
     source_id   BIGINT NOT NULL,
     layer       TEXT NOT NULL,        -- verse, paragraph, summary, theme
     embedding   vector(768) NOT NULL, -- nomic-embed-text dimensions
-    content     TEXT NOT NULL,        -- the text that was embedded
     model       TEXT NOT NULL DEFAULT 'nomic-embed-text',
     created_at  TIMESTAMPTZ DEFAULT NOW()
 );
@@ -316,34 +382,41 @@ CREATE TABLE index_metadata (
 ### Phase 1: Core API + Database + MCP Client
 **Scope:** Stateless scripture search service. Identical functionality to current MCP servers, but hosted.
 
-1. Initialize Go module in gospel-engine-v2
-2. Build custom PG Docker image (pgvector + pg_trgm on PG17)
-3. Write docker-compose.yml (PG + app)
-4. Create migration files (schema above, minus AGE)
-5. Implement DB layer: connection pool, migrations, queries
-6. Port indexing pipeline from gospel-engine (parse markdown → PG, generate tsvector)
-7. Port embedding pipeline (content → llmster `/v1/embeddings` → pgvector)
-8. Implement search endpoints: `/api/search`, `/api/get`, `/api/list`
-9. Add token auth middleware (validate `stdy_` tokens, rate limit)
-10. Seed initial token manually (for Michael's MCP use)
-11. Write MCP client (`gospel-mcp`) that translates JSON-RPC → HTTP
-12. Deploy to Dokploy, configure study.ibeco.me domain
-13. Index existing gospel-library content on NOCIX
-14. Verify: MCP client produces identical results to current gospel-engine MCP
+1. Initialize Go module in gospel-engine-v2 (single Dockerfile, no compose)
+2. Write Dockerfile: Go builder stage → compiles both `gospel-engine` server and `gospel-mcp` for 4 platforms → alpine runtime
+3. Create migration files with embedded SQL (`go:embed`), schema above, extensions: `CREATE EXTENSION vector; CREATE EXTENSION pg_trgm;`
+4. Implement DB layer: connection pool, migration runner (runs on startup), queries
+5. Pre-load gospel-library: `rsync` from Michael's machine to NOCIX `/opt/gospel-library/`
+6. **Pre-compute embeddings on desktop** (using existing LM Studio + qwen3-4B or nomic on GPU): export as JSONL/COPY format, rsync to NOCIX `/opt/gospel-embeddings/`
+7. Implement indexing pipeline (reads mounted `/gospel-library`, parses markdown → PG, generates tsvector)
+8. Implement embedding pipeline:
+   - Bulk load: COPY pre-computed embeddings from `/opt/gospel-embeddings/` into pgvector
+   - Query-time: content → llmster `/v1/embeddings` → pgvector (only for new content + queries)
+9. **Migrate TITSW + enrichment data** from existing gospel-engine SQLite into PG (script reads SQLite, writes to PG)
+10. Implement search endpoints: `/api/search`, `/api/get`, `/api/list`, `/api/health` (with TITSW filters preserved)
+11. Implement static download endpoints: `/download/gospel-mcp-{os}-{arch}`, `/api/version`
+12. Add token auth middleware (validate `stdy_` tokens, simple rate limit)
+13. Implement MCP client (`gospel-mcp`) that translates JSON-RPC → HTTP + self-update logic with safeguards (prior binary backup, opt-out env, SHA256 verify, "first successful run" gate before enabling auto-update)
+14. Provision Dokploy services on NOCIX:
+    - **Database service:** name `gospel-db`, image `pgvector/pgvector:pg18`, mount volume for `/var/lib/postgresql/data`, **enable scheduled backups (Dokploy built-in)**
+    - **Application service:** name `gospel-engine`, connect to GitHub repo, build from Dockerfile, mount `/opt/gospel-library` read-only and `/opt/gospel-embeddings` read-only, set env vars (`GOSPEL_DB`, `EMBEDDING_URL=http://host.docker.internal:1234/v1`, etc.)
+    - **Domain:** configure `study.ibeco.me` pointing at the app service (Dokploy handles TLS via Traefik)
+15. Seed initial service token manually (direct DB insert or first-run bootstrap)
+16. Verify: MCP client produces identical results to current gospel-engine MCP, including TITSW filters
 
-**Deliverable:** `study.ibeco.me/api/search?q=faith` works. MCP client in `.vscode/mcp.json` replaces all three current MCP servers.
+**Deliverable:** `study.ibeco.me/api/search?q=faith` works. MCP client in `.vscode/mcp.json` replaces all three current MCP servers and auto-updates on redeploy.
 **Estimate:** 4-6 sessions.
 
 ### Phase 2: Content Management + Graph
-**Scope:** Self-managing content pipeline. Server downloads and indexes gospel-library.
+**Scope:** Self-managing content pipeline. Server handles incremental downloads for new content.
 
-1. Port gospel-library downloader into backend
+1. Port gospel-library downloader into backend (the bulk content is already pre-loaded; downloader handles new conference talks and manual updates)
 2. Admin endpoints: trigger download, re-index, re-embed, check status
-3. Scheduled indexing (new conference talks, manual updates)
-4. Add Apache AGE if PG17 build is stable
-5. Graph-aware search (cross-reference traversal)
+3. Scheduled indexing (April/October conference checks, quarterly manual check)
+4. **If AGE is needed:** switch to custom PG image at this point (`pgvector/pgvector:pg18` base + AGE compiled in). Published to GHCR, Dokploy Database service updated to pull from there. Until then, pg18 image used directly.
+5. Graph-aware search (cross-reference traversal via AGE, or recursive CTEs as fallback)
 
-**Deliverable:** Server manages its own content. No manual file copying.
+**Deliverable:** Server manages its own content. No manual rsync after initial pre-load.
 **Estimate:** 2-3 sessions.
 
 ### Phase 3: Auth Delegation (ibeco.me integration)
@@ -398,14 +471,15 @@ CREATE TABLE index_metadata (
 ### Costs
 - **Development time:** Phase 1 is substantial (4-6 sessions). New repo, new service, new deployment.
 - **NOCIX resources:** PG + app + llmster ≈ 4GB RAM. Well within 32GB.
-- **Docker image:** Custom PG image needs building and hosting (GHCR, free for public repos).
+- **Docker image:** Phase 1 uses `pgvector/pgvector:pg18` directly (no custom image). Phase 2 may add a custom image only if AGE is needed.
 - **Maintenance:** Running web service requires monitoring, backups, updates.
 - **Complexity:** Three components (PG, backend, MCP client) vs current single binary.
 
 ### Risks
-- **AGE on PG17:** Apache AGE PG17 support may be unstable. Mitigation: defer to Phase 2, start without graph.
-- **llmster in Docker vs host:** LM Link needs host networking, but gospel-engine runs in Docker. Mitigation: `host.docker.internal` or install llmster on host, access from Docker container.
-- **Church API rate limiting:** Downloading gospel-library from NOCIX (server IP) may trigger different rate limits than desktop. Mitigation: same 20 req/sec limit, respectful User-Agent.
+- **AGE on PG18:** Apache AGE's PG18 support may lag behind (PG18 is the latest stable). Mitigation: defer graph to Phase 2, build custom image only if AGE is needed. Phase 1 uses vanilla `pgvector/pgvector:pg18`.
+- **llmster in Docker vs host:** LM Link needs host networking, but gospel-engine runs in Docker. Mitigation: llmster installed on host (NOCIX), app accesses via `host.docker.internal:1234` (works on Dokploy's Docker setup).
+- **Church API rate limiting on incremental downloads:** Downloading new talks from NOCIX IP may trigger different rate limits. Mitigation: initial content is pre-loaded via rsync (Phase 1); only incremental downloads hit the API (~30 talks twice a year at 20 req/sec — well within limits).
+- **Self-update on Windows:** Can't overwrite a running exe. Mitigation: spawn updater helper that waits for parent exit (well-known pattern; used by VS Code, Chrome, etc.).
 - **Scope creep:** User features (Phase 4) could expand indefinitely. Mitigation: strict phasing. Phase 1 is stateless API only.
 - **Token security:** Tokens over HTTPS are standard. bcrypt + prefix lookup is proven (same as ibeco.me). No novel security risks.
 
@@ -453,7 +527,7 @@ The deferred pieces (content management, auth delegation, user features) are gen
 
 **Execute with:** `@dev` agent
 **Phase 1 scope:** 4-6 sessions
-**First action:** Initialize Go module, build custom PG Docker image, write docker-compose.yml, create schema migrations
+**First action:** Initialize Go module, write single Dockerfile (builds server + 4 MCP client binaries), create `go:embed`-ed migration files with `CREATE EXTENSION vector; CREATE EXTENSION pg_trgm;` targeting PG18
 
 ---
 
@@ -465,6 +539,14 @@ The deferred pieces (content management, auth delegation, user features) are gen
 | 2026-04-18 | Two binaries: gospel-engine (server) + gospel-mcp (client) | Server is heavy (PG, embedding). MCP client is thin (HTTP calls). Different deployment targets. |
 | 2026-04-18 | Service token delegation (ibeco.me → study.ibeco.me) | Clean separation. study.ibeco.me is independent but ibeco.me manages user-facing token provisioning. |
 | 2026-04-18 | `stdy_` token prefix | Distinct from `bec_` (ibeco.me). Same bcrypt + prefix lookup pattern. |
-| 2026-04-18 | Defer AGE to Phase 2 | PG17 AGE build may be unstable. Core value is FTS + vector, not graph. |
+| 2026-04-18 | Defer AGE to Phase 2 (or later) | Latest PG (18) may not have AGE support yet. Core value is FTS + vector. |
 | 2026-04-18 | Defer user features to Phase 4 | Stateless API is the foundation. User features are additive. |
-| 2026-04-18 | LM Studio headless on host, not in Docker | LM Link requires host networking. Container accesses via host.docker.internal. |
+| 2026-04-18 | LM Studio headless on host, not in Docker | LM Link requires host networking. Container accesses via `host.docker.internal`. |
+| 2026-04-18 | Single Dockerfile, Dokploy builds on server | Matches Michael's existing Dokploy workflow. No intermediate registry. Dokploy Database service handles PG separately. |
+| 2026-04-18 | PostgreSQL 18 (latest stable) via `pgvector/pgvector:pg18` | Latest stable. pgvector already builds an image for it. No custom image needed for Phase 1. |
+| 2026-04-18 | MCP binaries hosted by the server (`/download/gospel-mcp-{os}-{arch}`) with self-update | Distribution + update channel in one. Users install once; subsequent updates are automatic on server redeploy. |
+| 2026-04-18 | Gospel-library pre-loaded via rsync to `/opt/gospel-library` | Avoids initial Church API bulk download from NOCIX IP. Mounted read-only into container. Incremental updates in Phase 2. |
+| 2026-04-18 | Embeddings pre-computed on desktop, rsynced to `/opt/gospel-embeddings` | Desktop has GPU (4090s). NOCIX is CPU-only. Eliminates 6-8 hour bulk-embed on server. Only query-time embedding runs on NOCIX. |
+| 2026-04-18 | TITSW + enrichment migrated from existing SQLite to PG | Years of enrichment work shouldn't be lost. One-time migration script in Phase 1. |
+| 2026-04-18 | MCP self-update safeguards: prior binary backup, SHA256 verify, opt-out env, "first successful run" gate | Auto-update is risky. These prevent silent breakage from a bad release. |
+| 2026-04-18 | Backups via Dokploy built-in PG backup | Free, integrated. Embeddings are expensive to regenerate (6-8h CPU). Backup is essential. |
