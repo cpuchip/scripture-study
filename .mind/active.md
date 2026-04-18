@@ -7,7 +7,7 @@
 
 ## Priorities
 
-1. ★ **Study** — "It keeps me in the spirit." Next: "Zion in a Presidency" → [.spec/proposals/study-workstream.md]
+1. ★ **Study** — "It keeps me in the spirit." Next: "Zion in a Presidency" → [.spec89/proposals/study-workstream.md]
 2. ★ **Teaching** — 11-episode arc (Option C). Agent + repo scaffolded. Content not started → [.spec/proposals/teaching-workstream.md]
 3. **Brain pipeline** — Phase 4 complete. Pipeline fixes ALL SHIPPED (Apr 9-10). Next: simplification + inline panel + UX QoL
 4. **Token efficiency** — NEW (Apr 16). Compress memory, tiered loading → [.spec/proposals/token-efficiency.md]

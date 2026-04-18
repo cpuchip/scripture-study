@@ -52,6 +52,7 @@ external_context/
 /teaching/
 /projects/space-center/
 /projects/cpuchip.net/
+/projects/storygames
 
 # ignore env
 .env
