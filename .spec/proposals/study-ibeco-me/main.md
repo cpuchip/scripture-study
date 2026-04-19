@@ -39,8 +39,8 @@ The current gospel search ecosystem is fragmented across three MCP servers (gosp
 7. **Deployed on Dokploy** alongside ibeco.me on the NOCIX server using **two services**: a Database service (`pgvector/pgvector:pg18`) and an Application service (raw Dockerfile, built on the Dokploy server)
 8. **Current MCP tools are preserved** — agents using `gospel_search`, `gospel_get`, `gospel_list` see identical behavior through the new MCP client
 9. **MCP client auto-updates** by checking the server's `/api/version` endpoint on startup and downloading new builds from `/download/gospel-mcp-{os}-{arch}`
-10. **Gospel-library content is pre-loaded** to `/opt/gospel-library` on NOCIX (rsync from Michael's machine) and mounted read-only into the container — no Church API bulk download from server IP
-11. **Embeddings are pre-computed on desktop** (where qwen3-4B + dual 4090s already run) and uploaded to NOCIX alongside content. Server bulk-loads on first run; only query-time embedding (~50ms) runs on NOCIX CPU.
+10. **Gospel-library content is pre-loaded** to `/opt/gospel/gospel-library/` and `/opt/gospel/books/` on NOCIX (already streaming via rsync from Michael's machine) and mounted read-only into the container — no Church API bulk download from server IP
+11. **Embeddings are pre-computed on desktop using nomic-embed-text v1.5** (the SAME model that runs on NOCIX — embeddings cannot be mixed across models) accelerated by Michael's dual 4090s via LM Studio, then uploaded to NOCIX. Server bulk-loads on first run; only query-time embedding (~50ms) runs on NOCIX CPU using the identical nomic model.
 12. **TITSW and enrichment data** from the current gospel-engine is migrated to PG (TITSW columns on conference_talks, chapter_lenses table, etc.)
 13. **Backups** automated via Dokploy's built-in PG backup (local + optional S3)
 
@@ -56,8 +56,8 @@ The current gospel search ecosystem is fragmented across three MCP servers (gosp
 - Token validation middleware (bearer tokens, `stdy_` prefix)
 - Content indexing pipeline (parse gospel-library markdown → PG)
 - Embedding pipeline (content → llmster → pgvector)
-- Gospel-library pre-loaded to `/opt/gospel-library` on NOCIX (mounted into container as read-only volume) — avoids initial Church API download
-- **Embeddings pre-computed on desktop** and rsynced to `/opt/gospel-embeddings/` on NOCIX (mounted read-only). Server bulk-loads via PG `COPY` on first run.
+- Gospel-library + books pre-loaded to `/opt/gospel/gospel-library/` and `/opt/gospel/books/` on NOCIX (mounted into container as read-only volume) — avoids initial Church API download
+- **Embeddings pre-computed on desktop using nomic-embed-text v1.5** (identical model to server) and rsynced to `/opt/gospel/embeddings/` on NOCIX (mounted read-only). Server bulk-loads via PG `COPY` on first run.
 - **TITSW + enrichment migration script:** one-time export from existing gospel-engine SQLite → PG insert
 - Static file server for MCP client binaries (`/download/gospel-mcp-{os}-{arch}`) — enables one-binary distribution and auto-update
 - MCP client binary that wraps the HTTP API and supports self-update (with rollback safety: `<self>.prev` backup, SHA256 verify, opt-out env, "first successful run" gate)
@@ -96,7 +96,8 @@ The current gospel search ecosystem is fragmented across three MCP servers (gosp
 - LM Studio headless via OpenAI-compatible `/v1/embeddings`
 - Deployment: **single Dockerfile** per service, built on the Dokploy server itself. No docker-compose, no intermediate registry. PG is a separate Dokploy Database service.
 - PostgreSQL 18 (latest stable). pgvector image: `pgvector/pgvector:pg18`.
-- Gospel-library content: pre-loaded to `/opt/gospel-library` on NOCIX, mounted read-only into the app container.
+- Gospel-library + books: pre-loaded to `/opt/gospel/gospel-library/` and `/opt/gospel/books/` on NOCIX, mounted read-only into the app container at `/data/gospel-library` and `/data/books`.
+- **Embedding model is fixed: nomic-embed-text v1.5 (768-dim).** Used identically on desktop (GPU pre-compute) and NOCIX (CPU query-time). Embeddings are not portable across models, so changing requires full re-embed.
 - Bearer token auth: `stdy_` prefix + 64 hex chars, bcrypt hashed
 - Environment variables for all config (same pattern as ibeco.me)
 
@@ -282,9 +283,12 @@ This means users install the MCP client once; subsequent updates are automatic w
 
 To avoid hammering the Church API from the NOCIX IP on first deploy:
 
-1. **Upload to NOCIX:** `rsync -avz gospel-library/ nocix:/opt/gospel-library/` (one-time, from Michael's machine)
-2. **Mount read-only into container** via Dokploy volume config: `/opt/gospel-library:/gospel-library:ro`
-3. **Server reads from `/gospel-library`** on startup, indexes everything into PG
+1. **Upload to NOCIX:** `rsync -avz gospel-library/ nocix:/opt/gospel/gospel-library/` and `rsync -avz books/ nocix:/opt/gospel/books/` (one-time, from Michael's machine — already in progress)
+2. **Mount read-only into container** via Dokploy volume config:
+   - `/opt/gospel/gospel-library:/data/gospel-library:ro`
+   - `/opt/gospel/books:/data/books:ro`
+   - `/opt/gospel/embeddings:/data/embeddings:ro`
+3. **Server reads from `/data/gospel-library` and `/data/books`** on startup, indexes everything into PG
 4. **Phase 2** adds incremental downloads for new conference talks (April + October) — these are minimal Church API hits (~30 talks twice a year)
 
 ---
@@ -386,11 +390,11 @@ CREATE TABLE index_metadata (
 2. Write Dockerfile: Go builder stage → compiles both `gospel-engine` server and `gospel-mcp` for 4 platforms → alpine runtime
 3. Create migration files with embedded SQL (`go:embed`), schema above, extensions: `CREATE EXTENSION vector; CREATE EXTENSION pg_trgm;`
 4. Implement DB layer: connection pool, migration runner (runs on startup), queries
-5. Pre-load gospel-library: `rsync` from Michael's machine to NOCIX `/opt/gospel-library/`
-6. **Pre-compute embeddings on desktop** (using existing LM Studio + qwen3-4B or nomic on GPU): export as JSONL/COPY format, rsync to NOCIX `/opt/gospel-embeddings/`
+5. Pre-load gospel-library + books: `rsync` from Michael's machine to NOCIX `/opt/gospel/gospel-library/` and `/opt/gospel/books/` (in progress)
+6. **Pre-compute embeddings on desktop using nomic-embed-text v1.5** (loaded into LM Studio with GPU acceleration on the 4090s — same model as server, just GPU-accelerated): export as JSONL with `(source_type, source_id, layer, embedding)` rows, rsync to NOCIX `/opt/gospel/embeddings/`
 7. Implement indexing pipeline (reads mounted `/gospel-library`, parses markdown → PG, generates tsvector)
 8. Implement embedding pipeline:
-   - Bulk load: COPY pre-computed embeddings from `/opt/gospel-embeddings/` into pgvector
+   - Bulk load: COPY pre-computed embeddings from `/data/embeddings/` into pgvector
    - Query-time: content → llmster `/v1/embeddings` → pgvector (only for new content + queries)
 9. **Migrate TITSW + enrichment data** from existing gospel-engine SQLite into PG (script reads SQLite, writes to PG)
 10. Implement search endpoints: `/api/search`, `/api/get`, `/api/list`, `/api/health` (with TITSW filters preserved)
@@ -399,7 +403,7 @@ CREATE TABLE index_metadata (
 13. Implement MCP client (`gospel-mcp`) that translates JSON-RPC → HTTP + self-update logic with safeguards (prior binary backup, opt-out env, SHA256 verify, "first successful run" gate before enabling auto-update)
 14. Provision Dokploy services on NOCIX:
     - **Database service:** name `gospel-db`, image `pgvector/pgvector:pg18`, mount volume for `/var/lib/postgresql/data`, **enable scheduled backups (Dokploy built-in)**
-    - **Application service:** name `gospel-engine`, connect to GitHub repo, build from Dockerfile, mount `/opt/gospel-library` read-only and `/opt/gospel-embeddings` read-only, set env vars (`GOSPEL_DB`, `EMBEDDING_URL=http://host.docker.internal:1234/v1`, etc.)
+    - **Application service:** name `gospel-engine`, connect to GitHub repo, build from Dockerfile, mount `/opt/gospel/gospel-library:/data/gospel-library:ro`, `/opt/gospel/books:/data/books:ro`, `/opt/gospel/embeddings:/data/embeddings:ro`, set env vars (`GOSPEL_DB`, `EMBEDDING_URL=http://host.docker.internal:1234/v1`, `EMBEDDING_MODEL=nomic-embed-text-v1.5`, etc.)
     - **Domain:** configure `study.ibeco.me` pointing at the app service (Dokploy handles TLS via Traefik)
 15. Seed initial service token manually (direct DB insert or first-run bootstrap)
 16. Verify: MCP client produces identical results to current gospel-engine MCP, including TITSW filters
@@ -545,8 +549,8 @@ The deferred pieces (content management, auth delegation, user features) are gen
 | 2026-04-18 | Single Dockerfile, Dokploy builds on server | Matches Michael's existing Dokploy workflow. No intermediate registry. Dokploy Database service handles PG separately. |
 | 2026-04-18 | PostgreSQL 18 (latest stable) via `pgvector/pgvector:pg18` | Latest stable. pgvector already builds an image for it. No custom image needed for Phase 1. |
 | 2026-04-18 | MCP binaries hosted by the server (`/download/gospel-mcp-{os}-{arch}`) with self-update | Distribution + update channel in one. Users install once; subsequent updates are automatic on server redeploy. |
-| 2026-04-18 | Gospel-library pre-loaded via rsync to `/opt/gospel-library` | Avoids initial Church API bulk download from NOCIX IP. Mounted read-only into container. Incremental updates in Phase 2. |
-| 2026-04-18 | Embeddings pre-computed on desktop, rsynced to `/opt/gospel-embeddings` | Desktop has GPU (4090s). NOCIX is CPU-only. Eliminates 6-8 hour bulk-embed on server. Only query-time embedding runs on NOCIX. |
+| 2026-04-18 | Gospel-library + books pre-loaded via rsync to `/opt/gospel/gospel-library/` and `/opt/gospel/books/` | Avoids initial Church API bulk download from NOCIX IP. Mounted read-only into container at `/data/`. Incremental updates in Phase 2. |
+| 2026-04-18 | Embeddings pre-computed on desktop with **same** nomic-embed-text v1.5 model (just GPU-accelerated) | Embeddings cannot be mixed across models. Pre-compute uses identical model that NOCIX runs at query time, only difference is GPU vs CPU. NOCIX cannot rely on GPU access. |
 | 2026-04-18 | TITSW + enrichment migrated from existing SQLite to PG | Years of enrichment work shouldn't be lost. One-time migration script in Phase 1. |
 | 2026-04-18 | MCP self-update safeguards: prior binary backup, SHA256 verify, opt-out env, "first successful run" gate | Auto-update is risky. These prevent silent breakage from a bad release. |
 | 2026-04-18 | Backups via Dokploy built-in PG backup | Free, integrated. Embeddings are expensive to regenerate (6-8h CPU). Backup is essential. |
