@@ -14,6 +14,7 @@ import (
 	"github.com/cpuchip/scripture-study/scripts/becoming/internal/auth"
 	"github.com/cpuchip/scripture-study/scripts/becoming/internal/brain"
 	"github.com/cpuchip/scripture-study/scripts/becoming/internal/db"
+	"github.com/cpuchip/scripture-study/scripts/becoming/internal/engine"
 	"github.com/cpuchip/scripture-study/scripts/becoming/internal/envload"
 	"github.com/cpuchip/scripture-study/scripts/becoming/internal/notify"
 	"github.com/go-chi/chi/v5"
@@ -75,6 +76,17 @@ func main() {
 	}
 	if oauthConfig != nil {
 		log.Printf("Google OAuth enabled (redirect: %s)", oauthConfig.RedirectURL)
+	}
+
+	// Gospel-engine integration (optional). When ENGINE_URL + ENGINE_SERVICE_TOKEN
+	// are set, users can mint per-user engine tokens from their account settings.
+	engineURL := os.Getenv("ENGINE_URL")
+	engineToken := os.Getenv("ENGINE_SERVICE_TOKEN")
+	engineClient := engine.New(engineURL, engineToken)
+	if engineClient.Configured() {
+		log.Printf("Gospel-engine integration enabled (url: %s)", engineURL)
+	} else {
+		log.Println("Gospel-engine integration disabled (set ENGINE_URL and ENGINE_SERVICE_TOKEN to enable)")
 	}
 
 	// Build router
@@ -162,6 +174,13 @@ func main() {
 		r.Post("/api/tokens", authHandlers.CreateToken)
 		r.Patch("/api/tokens/{id}", authHandlers.UpdateToken)
 		r.Delete("/api/tokens/{id}", authHandlers.DeleteToken)
+
+		// Gospel-engine tokens (proxied to engine.ibeco.me admin API)
+		engineHandlers := &engine.Handlers{Client: engineClient}
+		r.Get("/api/engine-tokens/status", engineHandlers.Status)
+		r.Get("/api/engine-tokens", engineHandlers.List)
+		r.Post("/api/engine-tokens", engineHandlers.Create)
+		r.Delete("/api/engine-tokens/{id}", engineHandlers.Revoke)
 
 		// Data export
 		r.Get("/api/export", authHandlers.ExportData)

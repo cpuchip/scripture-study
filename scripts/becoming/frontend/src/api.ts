@@ -815,6 +815,16 @@ export interface APIToken {
   brain_enabled: boolean
 }
 
+export interface EngineToken {
+  id: number
+  name: string
+  prefix: string
+  created_at: string
+  last_used?: string
+  expires_at?: string
+  rate_limit: number
+}
+
 export interface SessionInfo {
   id: string
   user_agent: string
@@ -880,6 +890,26 @@ export const authApi = {
       method: 'PATCH',
       body: JSON.stringify(updates),
     })
+  },
+
+  // Gospel-engine tokens (proxied through ibeco.me to engine.ibeco.me).
+  engineTokenStatus() {
+    return request<{ configured: boolean; engine_url: string }>('/engine-tokens/status')
+  },
+
+  listEngineTokens() {
+    return request<EngineToken[]>('/engine-tokens')
+  },
+
+  createEngineToken(name: string) {
+    return request<{ token: EngineToken; raw: string }>('/engine-tokens', {
+      method: 'POST',
+      body: JSON.stringify({ name }),
+    })
+  },
+
+  revokeEngineToken(id: number) {
+    return request<void>(`/engine-tokens/${id}`, { method: 'DELETE' })
   },
 
   // Password

@@ -3,7 +3,7 @@ import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { useAuth } from '../composables/useAuth'
 import { useNotifications } from '../composables/useNotifications'
-import { authApi, type APIToken, type AuthProviders, type SessionInfo } from '../api'
+import { authApi, type APIToken, type AuthProviders, type EngineToken, type SessionInfo } from '../api'
 
 const router = useRouter()
 const { user, refresh, logout } = useAuth()
@@ -301,12 +301,78 @@ function formatDate(dateStr: string): string {
   })
 }
 
+// Gospel-engine tokens (study.ibeco.me / engine.ibeco.me)
+const engineConfigured = ref(false)
+const engineUrl = ref('')
+const engineTokens = ref<EngineToken[]>([])
+const loadingEngineTokens = ref(true)
+const showEngineCreateForm = ref(false)
+const newEngineTokenName = ref('')
+const creatingEngineToken = ref(false)
+const newlyCreatedEngineToken = ref<string | null>(null)
+const copiedEngineToken = ref(false)
+
+async function loadEngineTokens() {
+  loadingEngineTokens.value = true
+  try {
+    const status = await authApi.engineTokenStatus()
+    engineConfigured.value = status.configured
+    engineUrl.value = status.engine_url
+    if (status.configured) {
+      engineTokens.value = await authApi.listEngineTokens()
+    }
+  } catch (e: any) {
+    console.error('Failed to load engine tokens:', e)
+  } finally {
+    loadingEngineTokens.value = false
+  }
+}
+
+async function createEngineToken() {
+  if (!newEngineTokenName.value.trim()) return
+  creatingEngineToken.value = true
+  try {
+    const result = await authApi.createEngineToken(newEngineTokenName.value.trim())
+    newlyCreatedEngineToken.value = result.raw
+    newEngineTokenName.value = ''
+    showEngineCreateForm.value = false
+    await loadEngineTokens()
+  } catch (e: any) {
+    alert(e.message)
+  } finally {
+    creatingEngineToken.value = false
+  }
+}
+
+async function copyEngineToken() {
+  if (!newlyCreatedEngineToken.value) return
+  await navigator.clipboard.writeText(newlyCreatedEngineToken.value)
+  copiedEngineToken.value = true
+  setTimeout(() => (copiedEngineToken.value = false), 2000)
+}
+
+function dismissEngineToken() {
+  newlyCreatedEngineToken.value = null
+  copiedEngineToken.value = false
+}
+
+async function revokeEngineToken(id: number, name: string) {
+  if (!confirm(`Revoke gospel-engine token "${name}"? This cannot be undone.`)) return
+  try {
+    await authApi.revokeEngineToken(id)
+    await loadEngineTokens()
+  } catch (e: any) {
+    alert(e.message)
+  }
+}
+
 onMounted(() => {
   loadProviders()
   loadTokens()
   loadSessions()
   checkSubscription()
   loadSettings()
+  loadEngineTokens()
 })
 </script>
 
@@ -746,6 +812,115 @@ onMounted(() => {
               Revoke
             </button>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Gospel-Engine Tokens Section -->
+    <section v-if="engineConfigured" class="bg-white rounded-lg border border-gray-200 p-6">
+      <div class="flex items-center justify-between mb-4">
+        <div>
+          <h2 class="text-lg font-semibold">Gospel-Engine Tokens</h2>
+          <p class="text-sm text-gray-500 mt-1">
+            Use these tokens with the
+            <code class="bg-gray-100 px-1 py-0.5 rounded text-xs">gospel-mcp</code>
+            client to access scripture search at
+            <code class="bg-gray-100 px-1 py-0.5 rounded text-xs">{{ engineUrl }}</code>
+            from VS Code, Claude Desktop, or any MCP host.
+          </p>
+        </div>
+        <button
+          v-if="!showEngineCreateForm"
+          @click="showEngineCreateForm = true"
+          class="bg-indigo-600 text-white text-sm px-4 py-2 rounded hover:bg-indigo-700"
+        >
+          New Token
+        </button>
+      </div>
+
+      <!-- Newly created token banner -->
+      <div
+        v-if="newlyCreatedEngineToken"
+        class="mb-4 p-4 bg-green-50 border border-green-200 rounded-lg"
+      >
+        <p class="text-sm text-green-800 font-medium mb-2">
+          Token created! Copy it now — you won't be able to see it again.
+        </p>
+        <div class="flex items-center gap-2">
+          <code class="flex-1 bg-white border border-green-300 rounded px-3 py-2 text-sm font-mono break-all select-all">
+            {{ newlyCreatedEngineToken }}
+          </code>
+          <button
+            @click="copyEngineToken"
+            class="shrink-0 bg-green-600 text-white text-sm px-3 py-2 rounded hover:bg-green-700"
+          >
+            {{ copiedEngineToken ? 'Copied!' : 'Copy' }}
+          </button>
+        </div>
+        <button
+          @click="dismissEngineToken"
+          class="mt-2 text-sm text-green-600 hover:text-green-800"
+        >
+          I've saved it, dismiss
+        </button>
+      </div>
+
+      <!-- Create form -->
+      <div v-if="showEngineCreateForm" class="mb-4 p-4 bg-gray-50 rounded-lg border border-gray-200">
+        <label class="block text-sm font-medium text-gray-700 mb-1">Token name</label>
+        <div class="flex gap-2">
+          <input
+            v-model="newEngineTokenName"
+            @keyup.enter="createEngineToken"
+            @keyup.escape="showEngineCreateForm = false"
+            class="flex-1 border border-gray-300 rounded px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            placeholder="e.g., Laptop MCP, Desktop Claude"
+            autofocus
+          />
+          <button
+            @click="createEngineToken"
+            :disabled="creatingEngineToken || !newEngineTokenName.trim()"
+            class="bg-indigo-600 text-white text-sm px-4 py-1.5 rounded hover:bg-indigo-700 disabled:opacity-50"
+          >
+            Create
+          </button>
+          <button
+            @click="showEngineCreateForm = false"
+            class="text-sm text-gray-500 hover:text-gray-700"
+          >
+            Cancel
+          </button>
+        </div>
+      </div>
+
+      <!-- Token list -->
+      <div v-if="loadingEngineTokens" class="text-sm text-gray-500">Loading tokens...</div>
+      <div v-else-if="engineTokens.length === 0" class="text-sm text-gray-500">
+        No gospel-engine tokens yet. Create one to start using semantic scripture search from your MCP client.
+      </div>
+      <div v-else class="divide-y divide-gray-100">
+        <div
+          v-for="token in engineTokens"
+          :key="token.id"
+          class="flex items-center justify-between py-3"
+        >
+          <div class="flex-1 min-w-0">
+            <p class="font-medium text-sm">{{ token.name }}</p>
+            <p class="text-xs text-gray-500">
+              <code class="bg-gray-100 px-1.5 py-0.5 rounded">{{ token.prefix }}...</code>
+              &middot; Created {{ formatDate(token.created_at) }}
+              <template v-if="token.last_used">
+                &middot; Last used {{ formatDate(token.last_used) }}
+              </template>
+              &middot; {{ token.rate_limit }}/min
+            </p>
+          </div>
+          <button
+            @click="revokeEngineToken(token.id, token.name)"
+            class="shrink-0 text-sm text-red-500 hover:text-red-700"
+          >
+            Revoke
+          </button>
         </div>
       </div>
     </section>
