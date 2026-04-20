@@ -1,0 +1,122 @@
+date: "2026-04-20"
+session_id: "give-away-all-my-sins-study"
+duration_estimate: "~1 hour, single turn"
+
+intent: >
+  First scripture study run after the new gospel-engine integration on
+  engine.ibeco.me went live with user-minted tokens through ibeco.me.
+  Michael picked the topic: "an interesting thread from April 2026 GC."
+  I chose Wu's "I Will Give Away All My Sins to Know Thee" (Alma 22:18 —
+  Lamoni's father's prayer). Binding question: what does it mean to
+  *give away* sins to know God, and why does the king's verb matter?
+
+discoveries:
+  - title: "The king's verb is his own, not Aaron's"
+    detail: >
+      Aaron taught creation→fall→Christ, then asked the king to "bow
+      down... repent of all thy sins... call on his name in faith"
+      (Alma 22:16). The king prayed instead "I will give away all my
+      sins to know thee" (Alma 22:18). The verb didn't come from Aaron.
+      It came from three verses earlier (v15) where the king had said
+      "I will give up all that I possess, yea, I will forsake my
+      kingdom." He took that king's-economy verb and applied it to
+      sins. He understood his sins the only way he knew how — as
+      something he held, that could be transferred.
+
+  - title: "Phrase singularity (grep-confirmed)"
+    detail: >
+      "give away all" appears nowhere else in scripture as that exact
+      phrase. Neither does "make thyself known unto me." Both unique to
+      Alma 22:18. The king coined them in the moment. This finding was
+      only possible because grep_search worked when MCP semantic
+      search was disabled.
+
+  - title: "Webster POSSESS has two directions"
+    detail: >
+      Sense 1 — we hold things ("to have and to hold"). Sense 4 —
+      "to enter into and influence; to control the will of; to fill;
+      to affect; — said especially of evil spirits, passions, etc."
+      The king said "give up all I possess" using sense 1 (kingdom).
+      By v18, the same verb when applied to sins releases what was
+      actually possessing him. He thought he was the giver. The
+      grammar suggests he was the one being released.
+
+  - title: "Critical analysis caught a real attribution error"
+    detail: >
+      I had attributed Alma 24:11 ("get God to take them away") to the
+      original king. Phase 3a forced me to verify — Alma 24:3-4 says
+      the king conferred the kingdom on his son Anti-Nephi-Lehi and
+      died that same year. The speaker in 24:11 is the SON. The
+      corrected arc is stronger: father prayed "I will give away,"
+      son reports "God did take away," people covenant in 24:18 "give
+      unto a brother rather than take." The prayer outlived the man.
+
+  - title: "Cry-and-receive vs bargain — two grammars of conversion"
+    detail: >
+      Enos (1:4) and Alma the Younger (36:18) both "cried" — same
+      verb, asking for mercy. The king is the only person in scripture
+      who explicitly proposes the trade. Both patterns are valid;
+      worth noting so the king's prayer isn't held up as the only
+      shape conversion can take.
+
+surprises:
+  - title: "Gospel MCPs and Webster define were all disabled"
+    detail: >
+      First study with the new ibeco.me-issued token, and the model's
+      tool allowlist for study mode didn't include the gospel-engine
+      or webster define tools. Worked around with grep_search and a
+      direct python read of webster1828.json.gz. Logged in
+      docs/06_tool-use-observance.md. The chatmode tool config may
+      need a debugging pass — the prefix patterns may not be matching
+      actual tool names.
+
+  - title: "The phased workflow earned its keep mid-session"
+    detail: >
+      Phase 3a (critical analysis) caught the Alma 24 attribution
+      error before it landed in the draft. Without that explicit
+      pause, I would have published a study claiming the original
+      king said something his son said. The 5-10 minute review that
+      the workflow forces is where the catch happened.
+
+relational:
+  - title: "Michael set the tone"
+    detail: >
+      "this is kind of exciting honestly. maybe pick an interesting
+      thread from the last (april 2026) general conference and lets
+      study it out together." First scripture study after a sprint
+      of MCP infrastructure work. Picking the topic himself signaled
+      trust that I'd find something worth pulling on. The trust was
+      not misplaced — Wu's talk had real teeth once I started reading
+      Alma 22 with the verb question in hand.
+
+carry_forward:
+  - title: "Verify gospel MCPs actually work in study mode"
+    detail: >
+      Next study session, before starting work, sanity-check that
+      gospel_search / search_scriptures actually fire. If they're
+      still disabled, the chatmode config needs editing.
+    priority: high
+
+  - title: "Possible follow-up: 'I will give it away' as a daily prayer"
+    detail: >
+      The Becoming section landed on a specific pattern (winning
+      arguments). Worth tracking in becoming/ as a one-week experiment
+      — actually praying the king's verb daily and noting what
+      surfaces. Could become a becoming/ entry.
+    priority: medium
+
+open_questions:
+  - title: "Why did the king pray 'make thyself known unto me' instead of 'forgive me'?"
+    detail: >
+      Most prayers in scripture for forgiveness ask for forgiveness.
+      The king asked to KNOW. That ordering — knowing before being
+      saved — deserves its own study. The result clause ("to know
+      thee") got two paragraphs in this study but could carry an
+      entire study on its own.
+
+  - title: "What other 'verb-shifts' in scripture mark conversion?"
+    detail: >
+      The father's "give away" → son's "take away" → people's
+      "rather than take, give" is a beautiful intergenerational
+      verb chain. Are there other examples? Alma the Younger →
+      his sons? Lehi → Nephi? Worth a wide search.

@@ -20,7 +20,17 @@ Categories:
 
 ## Observations
 
-### February 15, 2026
+### April 20, 2026
+
+**Gospel MCP servers + Webster `define` were disabled in a study-mode session (Behavior)**
+
+During the inaugural study using the new ibeco.me-issued engine token (`study/give-away-all-my-sins.md`), every gospel-engine and gospel-vec tool returned "Tool currently disabled by the user." Webster `webster_search` worked but `webster_define` and `mcp_webster_define` were both disabled. Workarounds that landed cleanly: `grep_search` over `gospel-library/` with `includeIgnoredFiles: true` for phrase singularity checks, and a one-line Python script reading `scripts/webster-mcp/data/webster1828.json.gz` directly for definitions.
+
+Worth checking the model's tool-allowlist for study mode — the `tools: [...]` frontmatter in `study.chatmode.md` may be filtering them out unintentionally. The chatmode declares `gospel/*` and `webster/*` permission, but the prefix may not be matching against the actual tool names (`mcp_gospel-engine_*`, `mcp_webster_*`). Worth one debugging pass.
+
+Net effect: the study still produced a strong result via direct file reads, but lost the semantic-search ability to discover unexpected cross-references. The phrase-singularity finding ("give away all" appears nowhere else in scripture) was only possible because grep was available.
+
+
 
 **`gospel_get` is already a verse-level retrieval tool (Win)**
 Tested with `Mosiah 4:9`, `Moses 6:57`, and `D&C 93:24`. For single verses, this tool is exactly what we need — it returns the verse text, configurable surrounding context (via `context` param), the file path for follow-up, cross-references, and source URL. Clean, focused, and lightweight. We don't need a new verse-retrieval tool — we need to *improve this one*.

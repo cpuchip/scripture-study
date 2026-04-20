@@ -1,6 +1,6 @@
 # Active Context
 
-*Updated: 2026-04-16 · Previous: [archive/active-2026-04-04.md](archive/active-2026-04-04.md)*
+*Updated: 2026-04-20 · Previous: [archive/active-2026-04-04.md](archive/active-2026-04-04.md)*
 *Hardware: Dual 4090s desktop. NOCIX server live.*
 
 ---
@@ -20,6 +20,7 @@
 | Apr 5 | Project sync: 101 entries (30 verified, 10 specced, 4 planned, 57 raw) |
 | Apr 5 | KISS reflection: pipeline overserves 90% of entries. Both paths needed |
 | Apr 12 | 🏆 First fully automated commission (Space Center). 39 premium requests. 18+ research docs. AI converged on family's independent brainstorm |
+| Apr 20 | First study on new ibeco.me-issued engine token: "I Will Give Away All My Sins to Know Thee" (Alma 22:18). Gospel MCPs were disabled — used grep + direct file reads. Phase 3a critical analysis caught a real attribution error. |
 
 ## Key Decisions (Recent)
 
