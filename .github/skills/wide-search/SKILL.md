@@ -31,21 +31,23 @@ If this is standalone, articulate 3-5 search queries before starting:
 - What words or phrases might appear?
 - What semantic ideas (not just keywords) connect to this topic?
 
-### Step 2: Keyword Search (gospel-mcp)
-Use `gospel_search` for specific phrases, names, or terms:
+### Step 2: Keyword Search
+Use `gospel_search` with `mode: "keyword"` (the default) for specific phrases, names, or terms:
 - Exact phrases from scripture ("lifted up," "look and live")
 - Key names (Melchizedek, Enoch, Moses)
 - Doctrinal terms (priestcraft, atonement, covenant)
 
 **Remember:** These results are *pointers*. Note file paths. Do NOT quote from search results.
 
-### Step 3: Semantic Search (gospel-vec)
-Use `search_scriptures` and `search_talks` for conceptual connections:
+### Step 3: Semantic Search
+Use `gospel_search` with `mode: "semantic"` for conceptual connections:
 - Ideas that might be expressed in different words
 - Thematic parallels across dispensations
 - Conference talks that address the same principle
 
-**Semantic search finds what keyword search misses.** "Serpent as a type of Christ" won't match keyword search, but semantic search will find Numbers 21, John 3, and Helaman 8 together.
+**Semantic search finds what keyword search misses.** "Serpent as a type of Christ" won't match keyword search, but semantic search finds Numbers 21, John 3, and Helaman 8 together.
+
+For the best of both, use `mode: "combined"` — keyword candidates reranked by semantic similarity. Use `source: "conference"` to scope to talks; filter by `speaker`, `year_from`, `year_to`, or TITSW dimensions when relevant.
 
 ### Step 4: Check Existing Studies
 Search `study/*.md` for related work. The study corpus is an interconnected web — previous studies may have already traced threads relevant to this topic.
@@ -87,17 +89,17 @@ Add findings to the working document (if phased study) or compile for synthesis:
 | Keyword OR semantic | Both keyword AND semantic, deliberately |
 | Results go straight to study | Results go to working notes, then to synthesis |
 
-## The Two-Tool Pattern
+## The Three-Mode Pattern
 
-**Always use both search tools.** They find different things:
+`gospel_search` is one tool with three modes. Each finds different things:
 
-| gospel-mcp (keyword) | gospel-vec (semantic) |
-|----------------------|----------------------|
-| Finds exact phrases | Finds related concepts |
-| Good for: names, specific terms, quoted phrases | Good for: themes, parallels, "verses about X" |
-| Misses: paraphrases, different vocabulary | Misses: exact matches, specific rare terms |
+| `mode: "keyword"` | `mode: "semantic"` | `mode: "combined"` |
+|-------------------|--------------------|--------------------|
+| Finds exact phrases | Finds related concepts | Keyword candidates, semantic rerank |
+| Good for: names, specific terms, quoted phrases | Good for: themes, parallels, "verses about X" | Good for: best precision + recall |
+| Misses: paraphrases, different vocabulary | Misses: exact matches, specific rare terms | More expensive — use when you want both |
 
-A study that only uses keyword search misses entire classes of results. A study that only uses semantic search misses specific critical passages. Use both.
+A study that only uses one mode misses entire classes of results. Run keyword first, then semantic on the same concept; if results diverge wildly, run combined.
 
 ## Integration with Phased Studies
 

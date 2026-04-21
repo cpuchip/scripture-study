@@ -1,5 +1,16 @@
 # study.ibeco.me — Hosted Gospel Study Service
 
+> **Scope Refocus (2026-04-21):**
+>
+> This proposal originally bundled two things: the engine-server backend (PG + pgvector + MCP client + auth delegation) and the user-facing study site (search UI, histories, notes, annotations). The backend has **SHIPPED** as `engine.ibeco.me` and now lives in its own proposal: [`gospel-engine/v2-hosted.md`](../gospel-engine/v2-hosted.md).
+>
+> Going forward, **`study-ibeco-me/` is the UI-only roadmap.** What was "Phase 4 deferred" (user-facing web features, search histories, notes, studies, annotations) is the next thing to spec under this name. The text below is the original combined proposal, kept for historical context until the UI-only rewrite lands.
+>
+> **Backend status:** SHIPPED Apr 20. First study used a user-minted token same day.
+> **UI status:** not started.
+
+---
+
 **Binding problem:** Gospel search is trapped inside a local MCP server. It can't serve web clients, can't be shared, and dies when the desktop goes offline. There's no way for ibeco.me, study.ibeco.me, remote agents, or other users to search scriptures without running the full gospel-engine binary locally. Moving to a hosted service at study.ibeco.me would make gospel search a permanent, always-available API — accessible from MCP clients, web browsers, and any HTTP client — while keeping the database self-hosted on NOCIX.
 
 **Created:** 2026-04-18

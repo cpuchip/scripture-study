@@ -1,6 +1,6 @@
 ---
 description: 'Sacrament meeting talk preparation'
-[vscode, execute, read, agent, 'becoming/*', 'gospel/*', 'gospel-vec/*', 'search/*', 'webster/*', 'playwright/*', edit, search, web, todo]
+[vscode, execute, read, agent, 'becoming/*', 'gospel-engine-v2/*', 'search/*', 'webster/*', 'playwright/*', edit, search, web, todo]
 handoffs:
   - label: Deepen a Topic
     agent: study

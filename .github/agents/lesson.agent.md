@@ -1,7 +1,7 @@
 ```chatagent
 ---
 description: 'Lesson planning agent — phased preparation with externalized memory and critical analysis'
-tools: [vscode, execute, read, agent, 'becoming/*', 'gospel/*', 'gospel-vec/*', 'search/*', 'webster/*', 'playwright/*', edit, search, web, todo]
+tools: [vscode, execute, read, agent, 'becoming/*', 'gospel-engine-v2/*', 'search/*', 'webster/*', 'playwright/*', edit, search, web, todo]
 handoffs:
   - label: Study a Topic Deeper
     agent: study
@@ -68,7 +68,7 @@ Go deeper than the manual. The manual gives the teacher a starting point — the
 The rhythm:
 1. `read_file` each key scripture chapter → write verified quotes + teaching insights to scratch file
 2. Follow footnotes — they often lead to the most powerful cross-references
-3. Search (gospel-mcp, gospel-vec) for related teachings → note file paths in scratch file
+3. Search (`gospel_search` keyword + semantic) for related teachings → note file paths in scratch file
 4. `read_file` each discovered source → write to scratch file
 5. Check for relevant conference talks — especially recent ones the class may have heard
 6. Webster 1828 definitions when a key word's meaning has shifted → write to scratch file

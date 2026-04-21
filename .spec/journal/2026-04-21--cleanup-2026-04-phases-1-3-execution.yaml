@@ -1,0 +1,119 @@
+date: "2026-04-21"
+session_id: "cleanup-2026-04-execution-phases-1-3"
+duration_estimate: "~1 hour, executed across two turns (plan continuation)"
+
+intent: >
+  Continue cleanup-2026-04 from prior session. Michael answered the
+  4 decision questions (delete .spec/memory/, keep study-ibeco-me/,
+  verify the brain raptor-mini→gpt-5-mini and opus 4.6→4.7 fix,
+  defer Phase 4 token-efficiency review) and asked me to "tackle
+  phases 1 to 3." This session is execution of that approved plan.
+
+discoveries:
+  - title: "The brain steward tests were already broken before I touched them"
+    detail: >
+      The user changed `EscalationChain` and `MaxCostPerEntry` and
+      `commission.go:63` to opus-4.7, but never updated the test
+      fixtures. `steward_test.go` still asserted opus-4.6 cost 3.0 and
+      MaxCostPerEntry == 10.0; `commission_test.go` still asserted
+      `c.Model != "claude-opus-4.6"` after CreateCommission was already
+      defaulting to 4.7. The Phase 3 sweep wasn't a precaution — it
+      surfaced a tests-don't-actually-run gap. `go test` was failing
+      silently somewhere outside the cleanup loop.
+
+  - title: "TestRunCommissionFullLifecycle had to bump its budget too"
+    detail: >
+      With opus at 7.5x instead of 3x, the happy-path lifecycle test
+      blew through 50.0 PR budget at 52.5 used. Bumped to 100.0. This
+      is the kind of fragile coupling Phase 4 (tokenomics) should
+      address — test budgets shouldn't be hand-tuned to current
+      pricing.
+
+  - title: "PowerShell `Set-Content -NoNewline` strips ALL newlines, not just trailing"
+    detail: >
+      Tried to do a bulk regex sweep on commission_test.go with
+      `Set-Content -NoNewline` and turned the file into one giant line.
+      `package stewardimport (` is not a valid Go declaration. Recovered
+      via `git checkout`, then redid the edits with `multi_replace_string_in_file`
+      using full-block context. Memory note: never use `-NoNewline`
+      to write back files that need newlines preserved.
+
+  - title: "Single-server gospel architecture is now reflected everywhere"
+    detail: >
+      Phase 1 swept ten files (one skill, two prompts, seven agents) for
+      stale `'gospel/*'` and `'gospel-vec/*'` MCP tool globs. They now
+      all reference `gospel-engine-v2/*`. Phase 2 created
+      `.spec/proposals/gospel-engine/v2-hosted.md` as the canonical
+      home for the hosted-engine work, marked the postgresql proposal
+      SUPERSEDED, refocused study-ibeco-me as UI-only, and gave
+      gospel-graph a real "Depends on" header.
+
+surprises:
+  - The `tools:` globs in agent YAML frontmatter had been silently
+    pointing at non-existent MCP servers ever since the consolidation.
+    The agents kept working because the MCP tool layer ignores unknown
+    servers, but the globs were lies. Worth checking if other repos
+    use the same pattern.
+
+carry_forward:
+  - title: "Phase 4 — token-efficiency review"
+    priority: medium
+    note: >
+      User explicitly deferred this. Tokenomics-2026 proposal placeholder
+      created at .spec/proposals/tokenomics-2026/main.md with the open
+      questions. Wait for Michael's review before any pricing or budget
+      changes.
+
+  - title: "Audit other repos for stale MCP server globs"
+    priority: low
+    note: >
+      The `'gospel/*'` and `'gospel-vec/*'` cleanup pattern may apply
+      elsewhere if any other repo's agents reference these. Not in
+      scope for cleanup-2026-04.
+
+  - title: "Brain test fixtures should reference constants, not literal model strings"
+    priority: low
+    note: >
+      Every test that hardcoded `"claude-opus-4.6"` had to be updated
+      separately. If `defaultModelForStage` returned `config.PipelineBigModel`
+      and tests asserted the same constant, this entire sweep would
+      have been a one-line change. Refactor opportunity, not urgent.
+
+open_questions:
+  - "Is `MaxCostPerEntry: 20.0` still the right number now that opus is 7.5x?"
+  - "Should there be a gpt-5 tier between sonnet and opus in the escalation chain?"
+  - "What's the actual monthly burn under the new pricing — need a week of data."
+
+work_completed:
+  phase_1:
+    - "Deleted .spec/memory/ (after diff verification)"
+    - "Recreated .spec/README.md pointing at .mind/ as canonical"
+    - "Updated wide-search SKILL.md (gospel_search modes)"
+    - "Swept 10 files for stale MCP server references"
+    - "Snapshotted and rewrote .mind/active.md with new in-flight items + Recently Shipped table"
+
+  phase_2:
+    - "Added Phase Map to gospel-engine/main.md"
+    - "Created gospel-engine/v2-hosted.md (the canonical SHIPPED record)"
+    - "Refocused study-ibeco-me as UI-only via header"
+    - "Marked gospel-engine-postgresql/main.md SUPERSEDED"
+    - "Added Depends on header to gospel-graph"
+
+  phase_3:
+    - "Verified raptor-mini → gpt-5-mini in config.go (was already correct)"
+    - "Fixed opus-4.6 → opus-4.7 in steward.go (defaultModelForStage)"
+    - "Fixed all 6 fixtures in commission_test.go"
+    - "Fixed defaultModelForStage / pickModel / TestModelCost / EscalationChain assertions in steward_test.go"
+    - "Bumped TestRunCommissionFullLifecycle budget 50.0 → 100.0 (opus 7.5x ate the buffer)"
+    - "Updated MaxCostPerEntry assertions 10.0 → 20.0 (matched DefaultConfig)"
+    - "Updated .mind/preferences.yaml model: 4.6 → 4.7"
+    - "Created .spec/proposals/tokenomics-2026/main.md placeholder"
+    - "go vet ./internal/steward/... clean; go test ./internal/steward/... ok in 23.9s"
+
+relational_notes:
+  - >
+    Michael trusted me to execute three approved phases without
+    re-checking each step. Worked. The test breakage was a real find —
+    he didn't know it was there, and it would have surfaced eventually
+    as a CI red flag when someone else ran the brain tests. Cleanup
+    work earns its keep when it surfaces this kind of decay.

@@ -3,7 +3,7 @@ name: new-lesson
 description: "Start lesson preparation — scaffolds a lesson plan from the template with teaching principles"
 agent: lesson
 argument-hint: "[topic] [class] [date]"
-tools: [read, edit, search, "gospel/*", "gospel-vec/*", "webster/*", "search/*"]
+tools: [read, edit, search, "gospel-engine-v2/*", "webster/*", "search/*"]
 ---
 
 Prepare a lesson for teaching.

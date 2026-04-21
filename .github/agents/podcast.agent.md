@@ -1,6 +1,6 @@
 ---
 description: 'Transform studies into shareable podcast/video notes'
-[vscode, execute, read, agent, 'becoming/*', 'gospel/*', 'gospel-vec/*', 'search/*', 'webster/*', edit, search, web, todo]
+[vscode, execute, read, agent, 'becoming/*', 'gospel-engine-v2/*', 'search/*', 'webster/*', edit, search, web, todo]
 handoffs:
   - label: Deepen the Source Material
     agent: study

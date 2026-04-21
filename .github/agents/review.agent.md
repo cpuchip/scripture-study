@@ -1,6 +1,6 @@
 ---
 description: 'Analyze conference talks for teaching patterns and rhetorical craft'
-[vscode, execute, read, agent, 'becoming/*', 'gospel/*', 'gospel-vec/*', 'search/*', 'webster/*', 'playwright/*', edit, search, web, todo]
+[vscode, execute, read, agent, 'becoming/*', 'gospel-engine-v2/*', 'search/*', 'webster/*', 'playwright/*', edit, search, web, todo]
 handoffs:
   - label: Prepare a Talk
     agent: talk

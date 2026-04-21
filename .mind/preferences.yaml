@@ -43,7 +43,7 @@ session_patterns: >
 
 # Tool Preferences
 editor: VS Code with GitHub Copilot
-model: Claude Opus 4.6 (via Copilot)
+model: Claude Opus 4.7 (via Copilot)
 tone_preference: Warm, engaged, exploratory. Not clinical.
 app: ibeco.me (Becoming tracker — Go/Vue3/Tailwind)
 project: scripture-study (this repo)

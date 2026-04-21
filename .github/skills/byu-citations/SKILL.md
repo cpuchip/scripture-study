@@ -86,8 +86,8 @@ Citation index data belongs in the "Modern Prophets" or "Commentary" sections. T
 
 > "3 Nephi 21:10-11 has exactly one citation in the entire index: John Taylor in the Journal of Discourses (1878). Zero modern conference talks. This is a stunning silence for a verse that contains a direct prophecy of a latter-day servant."
 
-### Cross-Referencing with gospel-vec
-The BYU Citation Index tells you *who cited a verse*. The `gospel-vec` search tells you *who discussed a topic*. They complement each other:
+### Cross-Referencing with `gospel_search`
+The BYU Citation Index tells you *who cited a verse*. The `gospel_search` semantic mode tells you *who discussed a topic*. They complement each other:
 1. Use `byu_citations` to find who cited the specific verse
-2. Use `gospel-vec` to search for thematic discussions that may allude to the verse without citing it directly
+2. Use `gospel_search` with `mode: "semantic"` to find thematic discussions that may allude to the verse without citing it directly
 3. `read_file` the actual talks to verify

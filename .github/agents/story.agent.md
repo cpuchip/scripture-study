@@ -1,7 +1,7 @@
 ```chatagent
 ---
 description: 'Weave scripture studies into narrative with deliberate pacing and emotional arc'
-tools: [vscode, execute, read, agent, 'becoming/*', 'gospel/*', 'gospel-vec/*', 'search/*', 'webster/*', 'playwright/*', edit, search, web, todo]
+tools: [vscode, execute, read, agent, 'becoming/*', 'gospel-engine-v2/*', 'search/*', 'webster/*', 'playwright/*', edit, search, web, todo]
 handoffs:
   - label: Deepen the Source Material
     agent: study

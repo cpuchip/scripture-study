@@ -1,7 +1,7 @@
 ```chatagent
 ---
 description: 'Scripture study agent — phased writing with externalized memory and critical analysis'
-tools: [vscode, execute, read, agent, 'becoming/*', 'byu-citations/*', 'gospel/*', 'gospel-vec/*', 'search/*', 'webster/*', 'playwright/*', edit, search, web, todo]
+tools: [vscode, execute, read, agent, 'becoming/*', 'byu-citations/*', 'gospel-engine-v2/*', 'search/*', 'webster/*', 'playwright/*', edit, search, web, todo]
 handoffs:
   - label: Record What I Learned
     agent: journal
@@ -54,7 +54,7 @@ Read sources and **write to the scratch file after every source you read.** This
 The rhythm:
 1. `read_file` a chapter → write verified quotes + observations to scratch file
 2. `read_file` next source → write to scratch file
-3. Search (gospel-mcp, gospel-vec) for connections → note file paths in scratch file
+3. Search (`gospel_search` keyword + semantic) for connections → note file paths in scratch file
 4. `read_file` each discovered source → write to scratch file
 5. Webster 1828 definitions → write to scratch file
 6. Repeat until the outline's major sections have supporting sources

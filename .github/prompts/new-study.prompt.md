@@ -3,7 +3,7 @@ name: new-study
 description: "Start a new scripture study — scaffolds a study document from the template with discovery-reading-writing workflow"
 agent: study
 argument-hint: "[topic or scripture passage]"
-tools: [read, edit, search, "gospel/*", "gospel-vec/*", "webster/*", "search/*"]
+tools: [read, edit, search, "gospel-engine-v2/*", "webster/*", "search/*"]
 ---
 
 Start a new scripture study on the given topic.

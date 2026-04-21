@@ -1,5 +1,10 @@
 # study.ibeco.me — Gospel Graph Visualization
 
+> **Depends on (added 2026-04-21):**
+> - **gospel-engine v2 hosted backend** — SHIPPED Apr 20. See [`gospel-engine/v2-hosted.md`](../gospel-engine/v2-hosted.md). The graph queries this backend's PG database directly (or via the API).
+> - **Apache AGE on PostgreSQL 18** — BLOCKED until AGE supports PG18 (or we accept a separate PG instance / pinned older PG). Track upstream AGE release notes before scheduling.
+> - **study-ibeco-me UI shell** — the graph viz lives inside the UI-only [`study-ibeco-me/main.md`](../study-ibeco-me/main.md) roadmap; build the reader first, then the graph pane.
+
 **Binding problem:** Scripture cross-references and study connections exist in structured data (footnotes, BYU Citation Index, our own studies) but are invisible during reading. The reading experience is linear when the content is a graph. You can't see the web of connections from a passage, explore them interactively, or trace how your own studies fit into the canonical cross-reference network.
 
 **Created:** 2026-03-29

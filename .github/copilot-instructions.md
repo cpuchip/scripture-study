@@ -31,7 +31,7 @@ See [biases.md](../docs/biases.md) for reflection on collaboration dynamics and 
 | `/journal/` | Personal journal entries by date |
 | `/becoming/` | Personal transformation — applying what we learn |
 | `/docs/` | Meta-documentation, templates, reflections on our process |
-| `/scripts/` | MCP servers (gospel-mcp, gospel-vec, webster-mcp, becoming, yt-mcp, search-mcp), session-journal, and utilities |
+| `/scripts/` | MCP servers (gospel-engine-v2, webster-mcp, becoming, yt-mcp, search-mcp, byu-citations), session-journal, and utilities. Legacy: gospel-mcp, gospel-vec, gospel-engine (kept as fallback, not registered). |
 | `/.spec/` | Memory system (`memory/`), session journal (`journal/`), learnings, prompts, proposals |
 
 ## Covenant
@@ -145,16 +145,12 @@ This project has **9 MCP servers** configured in `.vscode/mcp.json`. Full tool i
 
 | Need | Regex Pattern | Tool Name |
 |------|--------------|-----------|
-| Search scriptures (FTS) | `gospel_search` | `mcp_gospel_gospel_search` |
-| Get a scripture/talk | `gospel_get` | `mcp_gospel_gospel_get` |
-| Browse content | `gospel_list` | `mcp_gospel_gospel_list` |
-| Semantic search | `search_scriptures` | `mcp_gospel-vec_search_scriptures` |
-| Get conference talk | `get_talk` | `mcp_gospel-vec_get_talk` |
-| Search talks (filtered) | `search_talks` | `mcp_gospel-vec_search_talks` |
+| Search scriptures/talks (keyword, semantic, or combined) | `gospel_search` | `mcp_gospel-engine-v2_gospel_search` |
+| Get a scripture/talk | `gospel_get` | `mcp_gospel-engine-v2_gospel_get` |
+| Browse content | `gospel_list` | `mcp_gospel-engine-v2_gospel_list` |
 | Webster 1828 | `webster_define` | `mcp_webster_webster_define` |
 | Both dictionaries | `mcp_webster_define` | `mcp_webster_define` |
 | Web search (Exa) | `exa` | `mcp_exa-search_web_search_exa` |
-| Web search (DDG) | `mcp_.*web_search$` | (search-mcp's `web_search`) |
 | YouTube download | `mcp_yt` | `mcp_yt_yt_download` etc. |
 | BYU citations | `byu.citation` | `mcp_byu-citations_byu_citations` |
 | Brain entries | `mcp_becoming_brain` | `mcp_becoming_brain_search` etc. |
@@ -162,8 +158,7 @@ This project has **9 MCP servers** configured in `.vscode/mcp.json`. Full tool i
 
 **Key gotchas:**
 - `web_search_exa` is a REMOTE MCP tool (Exa AI). It exists and works. Don't assume it's unavailable — just search for `exa` with `tool_search_tool_regex`.
-- `web_search` (DuckDuckGo) is a LOCAL tool from search-mcp. Different from exa.
-- gospel tools split across TWO servers: `gospel` (FTS/structured) and `gospel-vec` (semantic/vector).
+- Gospel tools live on ONE MCP server: `gospel-engine-v2` (hosted at engine.ibeco.me, accessed via the `gospel-mcp.exe` client). The old split between `gospel` (FTS) and `gospel-vec` (semantic) is gone — `gospel_search` now does both via `mode: "keyword" | "semantic" | "combined"`.
 - Brain tools are under `becoming` server, not a separate brain server.
 
 ## Living Documents

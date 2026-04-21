@@ -18,12 +18,17 @@ This workspace contains several Go MCP servers and utility scripts:
 
 | Server | Location | Purpose |
 |--------|----------|---------|
-| gospel-mcp | `scripts/gospel-mcp/` | FTS5 full-text search of gospel library |
-| gospel-vec | `scripts/gospel-vec/` | Semantic vector search with chromem-go |
+| gospel-engine v2 (hosted) | `scripts/gospel-engine-v2/` + `engine.ibeco.me` | Hosted PG + pgvector backend. Thin MCP client (`gospel-mcp.exe`) shipped via `engine.ibeco.me`. Active MCP server in `.vscode/mcp.json`. |
 | webster-mcp | `scripts/webster-mcp/` | Webster 1828 + modern dictionary |
 | becoming-mcp | `scripts/becoming/` | Practice tracking, journal, memorization |
 | yt-mcp | `scripts/yt-mcp/` | YouTube transcript download and search |
 | search-mcp | `scripts/search-mcp/` | DuckDuckGo web search |
+| byu-citations | `scripts/byu-citations/` | BYU Citation Index lookups |
+
+**Legacy (kept for fallback, not registered in mcp.json):**
+- `scripts/gospel-mcp/` — FTS5-only. Superseded by gospel-engine.
+- `scripts/gospel-vec/` — chromem-go vector. Superseded by gospel-engine.
+- `scripts/gospel-engine/` — local combined. Superseded by hosted gospel-engine-v2.
 
 Additional scripts:
 - `scripts/publish/` — Converts study/lesson/talk documents to public HTML

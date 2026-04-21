@@ -6,7 +6,7 @@
 **Updated:** 2026-04-18 — Added LM Studio headless + LM Link embedding strategy, revised to fully self-hosted vision
 **Research:** [.spec/scratch/gospel-engine-postgresql/main.md](../../scratch/gospel-engine-postgresql/main.md)
 **Related:** [gospel-graph proposal](../gospel-graph/main.md) (subsumes data layer), [gospel-engine proposal](../gospel-engine/main.md) (next evolution)
-**Status:** Superseded by [study-ibeco-me proposal](../study-ibeco-me/main.md) — PG schema, embedding strategy, and extension research carry forward into the hosted service vision.
+**Status:** **SUPERSEDED** by [gospel-engine/v2-hosted.md](../gospel-engine/v2-hosted.md) (the canonical hosted-backend spec) and [study-ibeco-me/main.md](../study-ibeco-me/main.md) (the UI roadmap). PG schema, embedding strategy, and extension research from this file carried forward into the v2-hosted implementation. **The v2-hosted backend SHIPPED on 2026-04-20.** This file is kept for research provenance only — do not implement against it.
 
 ---
 

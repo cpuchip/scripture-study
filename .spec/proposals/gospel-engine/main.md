@@ -1,12 +1,25 @@
 # gospel-engine — Combined Gospel Search & Indexing Tool
 
+> **Phase Map (added 2026-04-21):**
+>
+> | Phase | Scope | Status |
+> |-------|-------|--------|
+> | **v1 — local** | Combined SQLite/FTS5 + chromem-go vector backend, MCP server over stdio. Replaces gospel-mcp + gospel-vec locally. | **SHIPPED** (`scripts/gospel-engine/`) |
+> | **v1.5 — ergonomics** | Quality-of-life improvements on the v1 local engine | OPEN — see [phase1.5-ergonomics.md](phase1.5-ergonomics.md) |
+> | **v2 — hosted** | Same capabilities deployed at `engine.ibeco.me` (Postgres + pgvector). Thin MCP client (`gospel-mcp.exe`) talks to the hosted API with bearer-token auth. | **SHIPPED** Apr 20 — see [v2-hosted.md](v2-hosted.md) |
+> | **v3 — graph** | Add Apache AGE on top of the v2 backend for cross-reference / citation graph traversal. | DEFERRED — see [../gospel-graph/main.md](../gospel-graph/main.md) |
+>
+> The body below is the original v1 spec. v2 and v3 each have their own files.
+
+---
+
 **Binding problem:** gospel-mcp and gospel-vec are complementary tools split across two processes, two databases, and two MCP server entries. Full-text search lives in one, semantic search in the other, and neither knows about the other's data. The enriched indexer pipeline needs both — TITSW metadata generated during vector indexing, structured search over that metadata in SQLite. Keeping them separate means import pipelines, cache format coupling, and two tools that should be one.
 
 **Created:** 2026-03-29
 **Scratch:** [.spec/scratch/gospel-engine/main.md](../../scratch/gospel-engine/main.md)
 **Replaces:** gospel-mcp (`scripts/gospel-mcp/`) + gospel-vec (`scripts/gospel-vec/`)
 **Absorbs:** [enriched-indexer.md](../enriched-indexer.md) Phases 1-3, [enriched-search.md](../enriched-search.md) schema + tool enhancements
-**Status:** Proposed
+**Status:** v1 SHIPPED — see Phase Map above
 
 ---
 
