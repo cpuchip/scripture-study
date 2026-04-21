@@ -170,3 +170,72 @@ The conference itself is structurally about the trade Lamoni's father made. East
 - **Risk: don't overstate the king's agency.** The Webster GIVE definition #2 ("to yield possession of; to deliver over… in exchange for something") makes the trade language clean. But Alma 24:11 corrects any prosperity-gospel reading: the people learned the active verb was God's. Keep this honest.
 - **Ring check:** Binding question was about the verb. The study should circle back to *why* the verb matters — and the answer is: he treated sins as detachable possessions instead of part of his identity. That distinction is what made the prayer prayable.
 - **Posture check:** Initial draft was building only toward the strength of the king's prayer. The Enos / Alma the Younger contrast keeps the picture honest — there is more than one valid grammar of conversion.
+
+
+---
+
+## Deepening pass — gospel-engine + BYU citations (this session)
+
+After the gospel-engine MCP came online (engine.ibeco.me with user-minted token), I re-ran the singularity claim with proper search and gathered the verse's preaching history.
+
+### Phrase singularity — verified via gospel_search
+
+**Keyword search across all scripture (41,995 entries) for `"give away all"`:**
+Alma 22:18 is the only verse where the phrase carries this construction. Other matches in the result list (1 Kings 11:13 — "rend away all the kingdom… give one tribe"; Alma 24:18; Matt 5:31 / 3 Ne 12:31 — divorce passages) contain *give* and *away* near each other but not the king's construction.
+
+**Keyword search for `"make thyself known unto me"`:**
+Only Alma 22:18. Closest neighbor is Ruth 3:3, which uses the inverse: "make *not* thyself known unto the man." Daniel 5:17 is unrelated context.
+
+### Preaching history — BYU Scripture Citation Index
+
+30 General Conference citations of Alma 22:18:
+
+- Heber J. Grant, *Testimony and Blessing* (1944-A)
+- David O. McKay, *Quests Determine Man's Successes* (1950-O) — quoted as President of the Church
+- Ezra Taft Benson — 1979-A and 1983-O
+- **Neal A. Maxwell — six talks across eight years**: *Murmur Not* (1989-O), *Repentance* (1991-O), *Settle This in Your Hearts* (1992-O), *Brightness of Hope* (1994-O), *Deny Yourselves of All Ungodliness* (1995-A), *According to the Desire of [Our] Hearts* (1996-O)
+- J. Richard Clarke (1993-A), Howard W. Hunter, *Jesus, the Very Thought of Thee* (1993-A)
+- Alexander B. Morrison (1999-O, 2000-O)
+- Anne C. Pingree (2004-O), David S. Baxter (2006-O), Elaine S. Dalton (2006-O, 2012-A)
+- Robert D. Hales, *Becoming Provident Providers* (2009-A), Michael T. Ringwood (2009-O)
+- Dallin H. Oaks, *Desire* (2011-A)
+- Robert C. Gay, *What Shall a Man Give in Exchange for His Soul?* (2012-O)
+- David A. Bednar, *If Ye Had Known Me* (2016-O)
+- D. Todd Christofferson, *The Living Bread Which Came Down from Heaven* (2017-O)
+- David F. Evans (2017-O), Brian K. Taylor (2018-A)
+- Russell M. Nelson, *Overcome the World and Find Rest* (2022-O)
+- Kristin M. Yee (2024-O), James R. Rasband, *The Plan of Mercy* (2025-A)
+- Wan-Liang Wu, *I Will Give Away All My Sins to Know Thee* (2026-A)
+
+### Two anchor uses to weave into the study
+
+**Featherstone, April 1972 — _A Challenge to the Priesthood_** (talk id 90, his first conference talk after being called to the Presiding Bishopric; not in the BYU list above because BYU's index may not extend back that far for non-apostles):
+
+> "There is a great host of Aaronic Priesthood bearers who would give away all their sins, they would give away all that the world would offer, and they would give away their riches, if they but knew that he was there."
+
+Featherstone extends the king's verb beyond sins to riches and worldly things — and reads the verse as conditional: the *willingness* is latent; what's missing is the *knowing*.
+
+**Maxwell, October 1991 — _Repentance_** (talk id 1626):
+
+> "True contrition brings full capitulation. One simply surrenders, caring only about what God thinks, not what 'they' think, while meekly offering, 'O God, … make thyself known unto me, and I will give away all my sins to know thee' (Alma 22:18). **Giving away all our sins is the only way we can come to know God.**"
+>
+> "those who hold back some of their sins will be held back."
+
+Maxwell makes the cross-wiring move I had been making in section 2 — the trade only flows one direction, and the release of what holds you is the *condition* of the knowing. The claim is no longer "my move" — it's Maxwell's, in plain text, in 1991.
+
+### Wu's actual cited Oaks quote
+
+Wu's footnote 7 cites Oaks's October 2003 talk *Repentance and Change*:
+
+> "The gospel of Jesus Christ challenges us to change. 'Repent' is its most frequent message, and repenting means giving up all of our practices — personal, family, ethnic, and national — that are contrary to the commandments of God. The purpose of the gospel is to transform common creatures into celestial citizens, and that requires change."
+
+This replaces my speculation about *why* Wu chose the verse for the Easter conference. Wu's own footnote tells us: he reads Alma 22:18 through Oaks's "give up practices" frame from 2003.
+
+### Tonal corrections from this pass
+
+1. Removed "the king coined both in the moment" — overstated; just stated the search result.
+2. Removed "unprecedented" — vague superlative.
+3. Replaced "workspace search" with "keyword search across the standard works" — names the tool honestly.
+4. Removed "this is a move I'm making" caveat in section 2 — Maxwell made the same move first, so the framing now attributes to him.
+5. Removed speculation that "Wu chose Lamoni's father's prayer for that conference because…" — Wu doesn't say. Stuck to what his footnotes show.
+6. Updated the closing meta-note to reflect that this pass exercised the new MCP stack end-to-end.
