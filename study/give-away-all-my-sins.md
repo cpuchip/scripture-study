@@ -31,7 +31,7 @@ So why, when the king prostrates himself in v17 and cries mightily in v18, does 
 
 The verb is his own. He took the language he had used three verses earlier — "give up all that I possess" — and applied it to sins. He was a king. Kings deal in transfers of property. He understood his sins the only way he knew how: as something he held, that could be handed over.
 
-And the phrase is unprecedented. A workspace search across all five standard works confirms: "give away all" appears nowhere else in scripture as an exact phrase. Neither does "make thyself known unto me." The king coined both in the moment.
+The phrasing is also singular. A keyword search across the standard works for "give away all" returns Alma 22:18 as the only verse where the phrase carries this meaning. Other matches in the result list (1 Kings 11:13, Alma 24:18, the divorce passages in Matthew 5 and 3 Nephi 12) contain the words *give* and *away* near each other but not the construction the king used. The same is true for "make thyself known unto me" — it appears only in Alma 22:18. The closest neighbor, Ruth 3:3, uses the inverse: "make *not* thyself known unto the man." The king's two clauses don't echo any earlier scripture. They came out of him.
 
 ---
 
@@ -57,7 +57,7 @@ Webster's entry on *possess* is what makes the king's verb interesting:
 
 We possess things. Things — especially evil ones — possess us. The king said "I will give up all that I possess" using sense one. He owned a kingdom. By verse 18, the language has flipped. To give away all his sins meant releasing what was actually possessing *him*. He thought he was the giver. The grammar suggests he was the one being released.
 
-This is a move I'm making, not a move the king made aloud. He never says "possess" of his sins. But Webster invites the cross-wiring, and it sharpens what the king felt his way into — the recognition that whatever it is he's holding, it's also holding him.
+The king never says "possess" of his sins, so this cross-wiring is a move on the verse rather than a move in it. But Elder Maxwell makes the same move and goes further. In his October 1991 conference talk on repentance, after quoting Alma 22:18, he writes plainly: "Giving away all our sins is the only way we can come to know God" (["Repentance," Oct. 1991](../gospel-library/eng/general-conference/1991/10/repentance.md)). The trade runs in one direction. The release of what holds you is the condition of the knowing.
 
 ---
 
@@ -106,6 +106,20 @@ The rich young ruler in the very next chapter ([Luke 18:18–22](../gospel-libra
 
 ---
 
+## Fifty years of preachers have stopped at this verse
+
+The BYU Scripture Citation Index lists thirty general conference citations of Alma 22:18. The earliest in the dataset is Heber J. Grant in April 1944 (*Testimony and Blessing*); David O. McKay quoted it as President of the Church in October 1950. Ezra Taft Benson returned to it in 1979 and 1983. Then Neal A. Maxwell took it up and held onto it: six talks across eight years (1989, 1991, 1992, 1994, 1995, 1996). Howard W. Hunter cited it in his April 1993 talk on Christ. Dallin H. Oaks cited it in 2011 (*Desire*). Christofferson cited it in 2017. Bednar cited it in 2016. Russell M. Nelson cited it in October 2022 (*Overcome the World and Find Rest*). Rasband cited it in April 2025, Yee in October 2024. Wu in 2026.
+
+Two of those uses are worth pausing on.
+
+In April 1972, Bishop Vaughn J. Featherstone closed his first conference talk after being called to the Presiding Bishopric by quoting Alma 22:15–18 in full and then turning the king's verb on a different audience: "There is a great host of Aaronic Priesthood bearers who would give away all their sins, they would give away all that the world would offer, and they would give away their riches, if they but knew that he was there" (["A Challenge to the Priesthood," Apr. 1972](../gospel-library/eng/general-conference/1972/04/a-challenge-to-the-priesthood.md)). Featherstone reads the verse as a conditional: the willingness is already there, latent, in those who haven't yet been brought to certainty about God. The missing piece isn't the giving — it's the knowing.
+
+Maxwell, in October 1991, ends his treatment of repentance by quoting the verse and then writes the line that does the cross-wiring Webster only suggests: "Giving away all our sins is the only way we can come to know God" (["Repentance," Oct. 1991](../gospel-library/eng/general-conference/1991/10/repentance.md)). One direction. The verb only flows the way the king pointed it.
+
+This is not a verse that has been overlooked. Generations of speakers have stopped here, told the story, and applied it as the paradigm for how the willing heart approaches God. Wu's 2026 talk continues a conversation, not initiates one.
+
+---
+
 ## The prayer outlived the man
 
 The king prayed in Alma 22:18 and was struck down "as if he were dead." His household converted. His kingdom converted. He died in the year war broke out against his people. [Alma 24:3–4](../gospel-library/eng/scriptures/bofm/alma/24.md): "Now the king conferred the kingdom upon his son, and he called his name Anti-Nephi-Lehi. And the king died in that selfsame year."
@@ -128,15 +142,15 @@ The prayer outlived the man. It was bigger than him from the moment he prayed it
 
 ## April 2026 — Easter, a solemn assembly, and the trade
 
-Wu's talk landed in the April 2026 conference, which was the Easter conference, held immediately after the solemn assembly that sustained President Dallin H. Oaks as President of the Church. Asked in his first interview what one phrase he wanted members to carry, President Oaks answered: ["Jesus Christ is the way."](../gospel-library/eng/general-conference/2026/04/26wunderli.md)
+Wu's talk landed in the April 2026 conference, the Easter conference, held immediately after the solemn assembly that sustained President Dallin H. Oaks as President of the Church. In his first interview as prophet, asked what one phrase he wanted members to carry, President Oaks answered: "Jesus Christ is the way" — quoted by Brother David J. Wunderli in the same conference (["Jesus Christ Is Not Our Burden; He Is Our Relief," Apr. 2026](../gospel-library/eng/general-conference/2026/04/26wunderli.md)).
 
-Wu chose Lamoni's father's prayer for that conference because the prayer's second clause is exactly what Easter delivers: "that I may be raised from the dead, and be saved at the last day." The whole conference is structurally about the trade the king made — he gave away what was killing him, in order to know what could raise him.
+Wu's footnotes show what he leaned on. Beyond Alma 22 itself, he cites John 17:3 ("this is life eternal, that they might know thee") and John 14:6 ("I am the way"), and he quotes President Oaks's October 2003 talk *Repentance and Change*: "Repenting means giving up all of our practices — personal, family, ethnic, and national — that are contrary to the commandments of God" ([Oaks, Oct. 2003](../gospel-library/eng/general-conference/2003/10/repentance-and-change.md)). That citation matters. Wu reads the king's "give away all" through the same lens Oaks used twenty-three years earlier: repentance as the surrender of *practices*, not just feelings of regret.
 
 Wu's question, after telling the story, is direct:
 
 > "The king did not remain stuck in his state of astonishment; he chose to believe and to act. He was willing to forsake all his sins that he might know God. **What are we willing to give up or change to truly know God and be saved at the last day?**"
 
-The question is the king's verb in second person. *What are you willing to give away?* And the deeper question Webster surfaces: *what is currently possessing you that you have been calling yours?*
+The question is the king's verb in second person. *What are you willing to give away?* And the deeper question Webster and Maxwell both surface: *what is currently possessing you that you have been calling yours?*
 
 ---
 
@@ -156,4 +170,4 @@ That's the prayer. Not "remove this from me," which keeps it as my problem. *I w
 
 ## A note on this study
 
-This was the first study run after the new gospel-engine integration on `engine.ibeco.me` went live with user-minted tokens through `ibeco.me`. Direct file reads carried the verification work; the gospel MCPs were unavailable in this session and will need a session-tools check next time. The phased workflow (outline → scratch → critical analysis → draft) caught one real error in the middle: I had attributed Alma 24:11 to the original king when it belongs to his son. The corrected arc — that the prayer outlived the man — is the stronger reading.
+The first draft of this study was written without the gospel-engine MCP — direct file reads and grep carried the verification work, and the singularity claim about "give away all" was asserted from a workspace text search rather than proven. This revision exercises the gospel-engine, gospel-vec, BYU Citation Index, and Webster MCPs end-to-end on the new `engine.ibeco.me` stack with a user-minted token from `ibeco.me`. The keyword-search proof of phrase singularity, the BYU Citation Index count, the Featherstone and Maxwell sections, and the corrected attribution of the Oaks quote that Wu actually cites all came from that second pass. The phased workflow caught one factual error in the first draft (Alma 24:11 belongs to the son, not the father); the second pass caught one rhetorical overreach (treating the cross-wiring as my move when Maxwell had already made it explicit in 1991).
