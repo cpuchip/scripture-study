@@ -29,9 +29,19 @@ user-invokable: false
 
 ## The Cite Count Rule
 
-For **N** citations in your output, perform at least **N** `read_file` calls.
+For **N** citations in your output, perform at least **N** `read_file` calls (or equivalent verified tool reads — e.g., a `byu_citations` lookup, a `webster_define` call, a `gospel_get` for the full source).
 
-If you cite 8 scriptures and 2 conference talks, you should have called `read_file` at least 10 times on actual source files.
+If you cite 8 scriptures and 2 conference talks, you should have called `read_file` (or `gospel_get`) at least 10 times on actual source files.
+
+**Citations include numbers and biographical claims, not just quotes.** Each of these is a claim of fact and must trace to a tool result you got *this session*:
+
+- **Counts.** "Thirty general conference citations." "Six talks across eight years." "Twelve scriptures use this phrase." → BYU Citation Index, gospel_search results, or your own verified count.
+- **Dates and chronology.** "The earliest reference is 1944." "He last cited it in October 2022." "The first apostle to use this construction was…" → Verify against the actual citation list, not inference from training data.
+- **Biographical claims.** "Featherstone's first conference talk after his call." "Maxwell wrote this six months after his cancer diagnosis." → Verify against the talk file, the speaker's biography, or a primary source.
+- **Comparative claims.** "More than any other apostle." "The most-cited verse in this chapter." → Verify both sides of the comparison or rephrase as a non-comparative observation.
+- **"Only," "first," "last," "never," "always."** Universal quantifiers are easy to write and hard to verify. Either prove them with a search result, or soften to "appears to be" / "I haven't found another."
+
+If you cannot point to a tool call from this session that produced the number, the date, or the biographical claim, treat it the same as an unverified quote: rephrase as paraphrase ("appears in many talks," "in the modern conference record I checked"), or remove it.
 
 ## What Counts as a Source
 
@@ -92,6 +102,7 @@ Before finalizing any document that cites sources (study, lesson, talk, evaluati
 - [ ] Webster 1828 definitions used where historical meaning differs from modern usage
 - [ ] All markdown links are relative and follow project conventions
 - [ ] `read_file` was used at least once per cited source (the cite-count rule)
+- [ ] **Every number, count, date, and "earliest/latest/only/first/never" claim traces to a tool call from this session.** If you wrote "30 citations" or "six talks" or "the first apostle to," you must be able to point to the search result that produced that number. If not, rephrase to remove the unverified specificity.
 - [ ] Footnotes were followed and incorporated where they add insight
-- [ ] Study/lesson documents include a \"Becoming\" section with specific personal application
+- [ ] Study/lesson documents include a "Becoming" section with specific personal application
 - [ ] If a related `becoming/` document exists, it's linked

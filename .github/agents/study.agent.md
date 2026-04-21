@@ -104,6 +104,13 @@ If you need to check a quote's surrounding context during drafting, read the scr
 2. Check for coherence, flow, and completeness
 3. Verify all links follow the `scripture-linking` skill conventions
 4. Ensure the Becoming section exists and lands personally
+5. **Voice audit** (don't skip this — it is where Opus tonal regressions get caught):
+   - Count em-dashes per paragraph. Goal is one or fewer (citation dashes don't count). If a paragraph has more, restructure: comma, period, colon, or parens.
+   - Search the draft for the cut-list phrases: "let that," "sit with," "here's the thing," "this matters because," "read that again," "stops me cold," "that's not nothing." Each hit gets removed or rewritten.
+   - Look for the **three-beat inversion pivot** ("He thought X. The Y suggests Z." / "He didn't ask for A. He didn't ask for B. He asked for C."). Once per study is fine; twice in a section is a tic. Rewrite to state the observation directly.
+   - Look for **refrains** — restating the thesis as a one-liner at the end of multiple sections. Cut all but one.
+   - Look for "this isn't just X — it's Y." Same once-per-study budget.
+6. **Stats audit:** scan for every number, date, count, "earliest/latest/only/first/never" claim. For each, confirm there is a tool call from this session that produced it (BYU Citation Index, gospel_search count, the talk file itself). If not, rephrase to remove the unverified specificity. This is where statistical hallucination shows up — and it reads as authoritative even when wrong.
 
 ### Phase 6 — Becoming
 **Skill:** `becoming`

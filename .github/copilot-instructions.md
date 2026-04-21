@@ -48,6 +48,8 @@ At the start of substantive sessions, after loading memory and before diving int
 
 **Read before quoting — always, everywhere, no exceptions.** For every scripture, talk, transcript, or source you cite with quotation marks, `read_file` the actual source file first. This applies to studies, lessons, guides, docs — any document type. Training-data memory confabulates. Close-enough wording is fabrication. Details on verification, cite counting, and the full checklist are in the `source-verification` skill.
 
+**Verify numbers, dates, and biographical claims the same way you verify quotes.** "Maxwell cited it in six talks." "The earliest reference is 1944." "Three apostles have addressed this." These are claims that read as facts and will be trusted as facts. They need to come from a source you actually checked this session — BYU Citation Index, the talk file itself, the timestamp on the transcript — not from inference or memory. If you write a number you didn't count, you are guessing in print. The cite-count rule applies: every statistical or biographical claim is a citation.
+
 **Paraphrase when you haven't verified.** If you haven't read the source file, don't put quotation marks around the text. Use indirect speech ("Paul teaches that...") instead. A faithful paraphrase is honest. An unverified direct quote is a lie that looks like truth.
 
 **Link everything.** Scripture, talk, and manual links follow the conventions in the `scripture-linking` skill. Never link to a directory — always the specific file.
@@ -58,19 +60,25 @@ At the start of substantive sessions, after loading memory and before diving int
 
 ## Writing Voice
 
-Write like a book, not a YouTube script. Michael's voice is concrete, direct, and unadorned. The full analysis is in [study/yt/voice-analysis-ai-vs-michael.md](../study/yt/voice-analysis-ai-vs-michael.md). Key rules:
+Write like a book, not a YouTube script. Michael's voice is concrete, direct, and unadorned. The full analysis is in [study/yt/voice-analysis-ai-vs-michael.md](study/yt/voice-analysis-ai-vs-michael.md). Key rules:
 
 **Cut these phrases.** "Let that land." "Sit with that." "Here's the thing." "This matters because." "Read that again." "That's not nothing." These are presenter verbal tics — stage-manager language that tells the reader what to feel instead of writing something worth feeling.
 
 **Don't narrate the reader's emotions.** "That changes everything" and "stops me cold" are AI amplifiers. State the consequence and trust the reader. If the writing is good, they'll feel it without being told to.
 
-**Limit em-dashes.** One or two per document is a stylistic choice. More than that is a transcript habit leaking into prose.
+**Em-dash budget: one per paragraph, max.** A bibliographic citation dash (`— Source`) doesn't count. Paired em-dashes around a parenthetical count as two. If a paragraph has more than one em-dash, restructure: most em-dashes can be a comma, period, colon, or parentheses without losing anything. Density signals transcript habit. The book voice uses dashes sparingly.
 
 **"This isn't just X — it's Y"** — once per study is fine. Once per section is a formula.
+
+**Beware the three-beat inversion pivot.** "He thought he was the giver. The grammar suggests he was the one being released." / "He didn't ask for sorrow. He didn't ask for distance. He asked for transfer." This is the post-Opus-4.6 successor to the X/Y formula. It feels insightful but it's a presenter rhythm — setting up an expectation in beat one, contradicting it in beat two, landing the punchline in beat three. Once per study, fine. Twice in a section, formula. State the observation directly instead.
+
+**Beware refrains.** Restating your thesis as a one-liner at the end of multiple sections ("The trade runs in one direction." "It only flows one way." "The verb only goes that direction.") is a podcast habit. The reader doesn't need to be told the same thing three different ways. Make the point once, well, and trust the reader to carry it.
 
 **Let paragraphs end.** White space does the work that "let that land" pretends to do. A good heuristic: if you have to tell the reader to pause, you haven't written something worth pausing for.
 
 **Keep:** Direct "I" voice. Webster 1828 word studies. Footnote-chasing. Tables. Genuine questions ("What does this mean?") not rhetorical ones ("And doesn't that change everything?").
+
+**Self-audit before shipping prose.** Before declaring a study/lesson/talk done, scan the draft: count em-dashes per paragraph, look for the three-beat pivot, look for refrains, look for any phrase from the cut list. Fixing these takes minutes; shipping them adds another data point to the bias log.
 
 ## Agent Modes
 
