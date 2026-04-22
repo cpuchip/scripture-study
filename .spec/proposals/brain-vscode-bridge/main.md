@@ -1,9 +1,10 @@
 ---
 workstream: WS5
-status: proposed
+status: building
 brain_project: 6
 created: 2026-04-21
-last_updated: 2026-04-21
+last_updated: 2026-04-22
+phase_status: "Phase 0 shipped 2026-04-22 (workstream + proposal_path columns added to brain.db, harness_inspect.py CLI). Phase 1+ Go-side work pending."
 ---
 
 # Brain ↔ VS Code Bridge — Bidirectional Sync Between Plans and Work Items
@@ -14,8 +15,22 @@ This proposal designs a structural fix: make proposals and brain entries explici
 
 **Created:** 2026-04-21
 **Type:** Architecture / system design
-**Status:** Proposed — design only, no implementation in this session
+**Status:** Building — Phase 0 (schema + read-only Python inspector) shipped 2026-04-22. Go-side bridge pending.
 **Sibling:** [cleanup-2026-04-part2](../cleanup-2026-04-part2/main.md) (the immediate reconciliation work this is meant to make obsolete)
+
+---
+
+## Phase 0 — Schema beachhead (SHIPPED 2026-04-22)
+
+Before the Go-side bridge can sync anything, brain needs the vocabulary. Phase 0 added it:
+
+- `entries.workstream TEXT` — backfilled from project_id with per-entry overrides. 98/115 entries tagged.
+- `entries.proposal_path TEXT` — backfilled by scraping body for `.spec/proposals/...` references. 14 entries linked.
+- `scripts/harness/harness_inspect.py` — read-only CLI showing per-workstream proposal+entry alignment, gaps (mature entries without proposal_path), and orphans (proposals with no brain entry).
+
+Migration script: `.spec/scratch/brain-audit-2026-04-22/harness_phase1_migration.py` (idempotent).
+
+This is the structural prerequisite for everything below. The Go bridge work can now reference `workstream` and `proposal_path` as first-class columns instead of inferring them.
 
 ---
 

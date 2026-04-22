@@ -1,0 +1,24 @@
+C:\Users\cpuch\Documents\code\stuffleberry\scripture-study\.spec\scratch\brain-audit-2026-04-22\apply_abe.py:96: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = datetime.datetime.utcnow().isoformat() + 'Z'
+Action                           Target                                             Rows
+------------------------------------------------------------------------------------------
+A.done                           190f9ad5                                           1
+A.done                           4ed38e7b                                           1
+A.done                           4ce75e3d                                           1
+A.done                           17729990                                           1
+A.done                           0d756be3                                           1
+A.done                           17730350                                           1
+A.done                           c0796e7c                                           1
+A.done                           17731960                                           1
+A.archive_personal               b22c77c9                                           1
+Traceback (most recent call last):
+  File "C:\Users\cpuch\Documents\code\stuffleberry\scripture-study\.spec\scratch\brain-audit-2026-04-22\apply_abe.py", line 164, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\cpuch\Documents\code\stuffleberry\scripture-study\.spec\scratch\brain-audit-2026-04-22\apply_abe.py", line 149, in main
+    print(f"{action:<32} {str(target)[:49]:<50} {rows}")
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\cpuch\AppData\Local\Python\pythoncore-3.14-64\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\u2192' in position 9: character maps to <undefined>

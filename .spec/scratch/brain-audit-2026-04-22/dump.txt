@@ -1,0 +1,191 @@
+
+
+========== INBOX (project_id IS NULL) ==========
+[22e0426d] <inbox>                verified   st=None      done=0 | Session Journal Tool
+           CLI tool for session memory continuity. Shipping and in daily use.
+[88cf9fb9] <inbox>                verified   st=None      done=0 | Becoming App Phases 1-3 Complete
+           Commitment tracking, spaced repetition, pillars, notes, reflections, auth. All shipped.
+[1038828b] <inbox>                verified   st=None      done=0 | Desktop Notifications Phase 1
+           ibeco.me notifications. Global toggle, subscriptions. Shipped Mar 17-18.
+[a86ebb14] <inbox>                verified   st=None      done=0 | Context Engineering TITSW Enrichment
+           TITSW scoring for conference talks. Prompt context enrichment shipped.
+[732b63de] <inbox>                verified   st=None      done=0 | Gospel Engine ù FTS + Vector Search
+           Plan 21. Merged gospel-mcp + gospel-vec. Phases 1-5 complete.
+[537edd66] <inbox>                verified   st=None      done=0 | Multi-Agent Routing + Classification
+           WS1 Phase 3. Entry classification, agent routing, governance. Shipped.
+[01fd99fd] <inbox>                verified   st=None      done=0 | Brain Relay via ibeco.me
+           WebSocket relay replacing Discord capture. Shipped.
+[a632a729] <inbox>                verified   st=None      done=0 | Brain Project-Kanban ù All Phases Shipped
+           Phases 1-4 shipped Apr 4-5. Kanban boards, iterative sessions, scheduled tasks, pipeline UI, auto-assignment, AI push-ba
+[ed09792d] <inbox>                specced    st=None      done=0 | Brain ibecome Layer 2 ù Bidirectional Sync
+           Bidirectional brain-ibecome sync. One-way exists. Spec: .spec/proposals/brain-ibecome-layer2.md
+[cd6ccf77] <inbox>                specced    st=None      done=0 | Embedding Comparison 4B vs 8B
+           Benchmark Qwen 4B vs 8B embeddings on scripture data. Spec: .spec/proposals/embedding-comparison.md
+[36b54a69] <inbox>                specced    st=None      done=0 | Brain Workspace-Aware Sessions
+           Load agents, skills, instructions into Copilot SDK sessions. Spec: .spec/proposals/brain-workspace-aware/main.md
+[d6c00fb2] <inbox>                specced    st=None      done=0 | Claude Code Integration
+           Alternative agent backend via CLI subprocess. Cost spreading + 200K context. Spec: .spec/proposals/claude-code-integrati
+[6988583c] <inbox>                specced    st=None      done=0 | Brain Windows Service (Systray)
+           Auto-start brain.exe on login, systray icon, kill switch. Spec: .spec/proposals/brain-windows-service.md
+[f1f8dc89] <inbox>                specced    st=None      done=0 | Gospel Graph Visualization
+           study.ibeco.me interactive graph of cross-references + BYU citations. Spec: .spec/proposals/gospel-graph/main.md
+[989e9375] <inbox>                specced    st=None      done=0 | Data Safety ù Dev Agent Hardening
+           Prevent destructive mutations, add audit log. Spec: .spec/proposals/data-safety/main.md
+[4b1df2ca] <inbox>                specced    st=None      done=0 | Classifier Qwen Fix
+           Fix Qwen 3.5 9B empty response issue. Small, low-risk fix. Spec: .spec/proposals/classifier-qwen-fix.md
+[c68b4a64] <inbox>                specced    st=None      done=0 | Sabbath Agent
+           End, see, declare completed work. 11-step cycle completion. Spec: .spec/proposals/sabbath-agent.md
+[2318a15b] <inbox>                specced    st=None      done=0 | Memory Architecture Enhancement
+           Multi-scope memory design. 6 root causes + 8 principles. Spec: .spec/proposals/memory-architecture.md
+[17765208] <inbox>                raw        st=None      done=0 | Will need to research memory systems for ai agents for our 2
+[17766038] <inbox>                raw        st=None      done=0 | What are the gpu requirements to train a small model like a 
+[17767284] <inbox>                raw        st=None      done=0 | Could this be gospel engine v3? Proxy-pointer instead of our
+[17762740] <inbox>                raw        st=None      done=0 | It would be fun to create a johari (spelling?) Windows ai ag
+[17763075] <inbox>                raw        st=None      done=0 | For my personal and work brains this is an interesting idea,
+[17763948] <inbox>                raw        st=None      done=0 | Is there a better file format that agents can read naturally
+[acef973d] <inbox>                raw        st=active    done=0 | Custom Desk Project
+           Getting custom desk made with deposit pending
+[17753153] <inbox>                raw        st=None      done=0 | Reflect back what wife says
+           My wife pointed out that I need to get better at telling her what I am hearing from her from what she is saying. That wa
+[17753148] <inbox>                raw        st=None      done=0 | KISS principle reminder from comment
+           I was reading a comment on a homeland article and this phrase stood out, it reminded me of my physics teaching in high s
+[17749663] <inbox>                raw        st=None      done=0 | Uncertainty about AI's role in content creation
+           Im pretty sure AI opus/sonnet wrote the article, but im also 95% sure he used AI to write is comment responses https://d
+[17729061] <inbox>                raw        st=archived  done=1 | Store trip for cold and flu meds
+           okay I'm going to the store I need options for flu stuff options for a Cold Tylenol and ibuprofen
+[1597e29f] <inbox>                raw        st=None      done=0 | Grocery Shopping List
+           I need to go grocery shopping, I need to buy 1 milk, and 3 packages of hotdogs
+[17729329] <inbox>                raw        st=active    done=0 | Grocery shopping list
+           Get milk, tomatoes, and onions
+[b22c77c9] <inbox>                raw        st=active    done=1 | Keda deployment sync with ben
+           Finalize keda deployment with Ben, did the changes to the scaling algorithm work?
+[17729138] <inbox>                raw        st=None      done=0 | Schedule Temple Visit with Kurt
+[0ede7b82] <inbox>                raw        st=None      done=0 | Build PC hardware assembly
+           Assemble and test new computer components (CPU, GPU, RAM, etc.)
+[09991d90] <inbox>                raw        st=archived  done=1 | Order ATX Computer Case
+           Purchase and arrange delivery of an ATX-compatible computer case
+[0cde48e2] <inbox>                planned    st=None      done=0 | Gospel Engine Phase 1.5 Ergonomics
+           Verse-range retrieval, cross-ref query tool, gitignore ergonomics. Spec: .spec/proposals/gospel-engine/phase1.5-ergonomi
+[b0257582] <inbox>                planned    st=None      done=0 | Teaching Workstream ù 11 Episode Arc
+           Map docs + studies + experience into teaching series. Agent + scaffold built. Spec: .spec/proposals/teaching-workstream.
+[ff51406e] <inbox>                planned    st=None      done=0 | Study Workstream Sequencing
+           40+ studies sequenced into intentional clusters. Next: Zion in a Presidency. Spec: .spec/proposals/study-workstream.md
+[12fa3f78] <inbox>                planned    st=None      done=0 | Classification Quality Benchmark
+           Benchmark 6 models on real entries. Reusable tool. Spec: .spec/proposals/classify-bench.md
+--- 39 rows ---
+
+
+========== Mature entries (planned/specced/verified/complete) ù need workspace records ==========
+[17753587] 2nd Brain              verified   st=None      done=0 | Mount DB as filesystem for AI collaboration
+           I literally had this idea earlier for working with AI. Mount a DB as a filesystem to enable humans and Ai to collaborate
+[17753205] 2nd Brain              verified   st=None      done=0 | Brain as agent OS platform
+           Idea, turn brain into an agent os like that earlier video. I need project differentiators, like sunday school, space cen
+[17753137] 2nd Brain              verified   st=None      done=0 | Use existing tools like Kanban
+           Brain ideas: we've been building our own UI for managing tasks and ideas and maybe we need to use other tools already bu
+[17752826] 2nd Brain              verified   st=None      done=0 | AI personal assistant beyond second brain
+           Personal assistant, like my ai 2nd brain, but maybe I need it to be more like a personal assistant?  Maybe a good agent 
+[17752229] 2nd Brain              verified   st=None      done=0 | Brain research pre-step pipeline
+           For the Brian project. I think about just letting it do research and study. As a pre-step. Like if I say, study out this
+[17748767] 2nd Brain              verified   st=None      done=0 | Agent Sandbox for Brain Sandbox Foundation
+           Agent sandbox as a basis for our brain sandbox? https://sandbox.agent-infra.com/ https://github.com/agent-infra/sandbox
+[17735051] 2nd Brain              verified   st=None      done=0 | Context-Mode Integration for Brain Project
+           See how this could help our brain project https://github.com/mksglu/context-mode
+[17730350] 2nd Brain              verified   st=None      done=1 | Test brain app captures from widgets
+[a249be5d] 2nd Brain              verified   st=someday   done=0 | Brain app task structure idea
+           Brain app task structure suggestion
+[5d7d781a] 2nd Brain              verified   st=active    done=0 | Fix captured widgets not showing
+           In brain app Captured from widgets dont show up in the captures area.
+[17752218] 2nd Brain              verified   st=None      done=0 | Okay, I need to work this out for our brain: I think im stru
+[22e0426d] <inbox>                verified   st=None      done=0 | Session Journal Tool
+           CLI tool for session memory continuity. Shipping and in daily use.
+[88cf9fb9] <inbox>                verified   st=None      done=0 | Becoming App Phases 1-3 Complete
+           Commitment tracking, spaced repetition, pillars, notes, reflections, auth. All shipped.
+[1038828b] <inbox>                verified   st=None      done=0 | Desktop Notifications Phase 1
+           ibeco.me notifications. Global toggle, subscriptions. Shipped Mar 17-18.
+[a86ebb14] <inbox>                verified   st=None      done=0 | Context Engineering TITSW Enrichment
+           TITSW scoring for conference talks. Prompt context enrichment shipped.
+[732b63de] <inbox>                verified   st=None      done=0 | Gospel Engine ù FTS + Vector Search
+           Plan 21. Merged gospel-mcp + gospel-vec. Phases 1-5 complete.
+[537edd66] <inbox>                verified   st=None      done=0 | Multi-Agent Routing + Classification
+           WS1 Phase 3. Entry classification, agent routing, governance. Shipped.
+[01fd99fd] <inbox>                verified   st=None      done=0 | Brain Relay via ibeco.me
+           WebSocket relay replacing Discord capture. Shipped.
+[a632a729] <inbox>                verified   st=None      done=0 | Brain Project-Kanban ù All Phases Shipped
+           Phases 1-4 shipped Apr 4-5. Kanban boards, iterative sessions, scheduled tasks, pipeline UI, auto-assignment, AI push-ba
+[ed09792d] <inbox>                specced    st=None      done=0 | Brain ibecome Layer 2 ù Bidirectional Sync
+           Bidirectional brain-ibecome sync. One-way exists. Spec: .spec/proposals/brain-ibecome-layer2.md
+[cd6ccf77] <inbox>                specced    st=None      done=0 | Embedding Comparison 4B vs 8B
+           Benchmark Qwen 4B vs 8B embeddings on scripture data. Spec: .spec/proposals/embedding-comparison.md
+[36b54a69] <inbox>                specced    st=None      done=0 | Brain Workspace-Aware Sessions
+           Load agents, skills, instructions into Copilot SDK sessions. Spec: .spec/proposals/brain-workspace-aware/main.md
+[d6c00fb2] <inbox>                specced    st=None      done=0 | Claude Code Integration
+           Alternative agent backend via CLI subprocess. Cost spreading + 200K context. Spec: .spec/proposals/claude-code-integrati
+[6988583c] <inbox>                specced    st=None      done=0 | Brain Windows Service (Systray)
+           Auto-start brain.exe on login, systray icon, kill switch. Spec: .spec/proposals/brain-windows-service.md
+[f1f8dc89] <inbox>                specced    st=None      done=0 | Gospel Graph Visualization
+           study.ibeco.me interactive graph of cross-references + BYU citations. Spec: .spec/proposals/gospel-graph/main.md
+[989e9375] <inbox>                specced    st=None      done=0 | Data Safety ù Dev Agent Hardening
+           Prevent destructive mutations, add audit log. Spec: .spec/proposals/data-safety/main.md
+[4b1df2ca] <inbox>                specced    st=None      done=0 | Classifier Qwen Fix
+           Fix Qwen 3.5 9B empty response issue. Small, low-risk fix. Spec: .spec/proposals/classifier-qwen-fix.md
+[c68b4a64] <inbox>                specced    st=None      done=0 | Sabbath Agent
+           End, see, declare completed work. 11-step cycle completion. Spec: .spec/proposals/sabbath-agent.md
+[2318a15b] <inbox>                specced    st=None      done=0 | Memory Architecture Enhancement
+           Multi-scope memory design. 6 root causes + 8 principles. Spec: .spec/proposals/memory-architecture.md
+[0cde48e2] <inbox>                planned    st=None      done=0 | Gospel Engine Phase 1.5 Ergonomics
+           Verse-range retrieval, cross-ref query tool, gitignore ergonomics. Spec: .spec/proposals/gospel-engine/phase1.5-ergonomi
+[b0257582] <inbox>                planned    st=None      done=0 | Teaching Workstream ù 11 Episode Arc
+           Map docs + studies + experience into teaching series. Agent + scaffold built. Spec: .spec/proposals/teaching-workstream.
+[ff51406e] <inbox>                planned    st=None      done=0 | Study Workstream Sequencing
+           40+ studies sequenced into intentional clusters. Next: Zion in a Presidency. Spec: .spec/proposals/study-workstream.md
+[12fa3f78] <inbox>                planned    st=None      done=0 | Classification Quality Benchmark
+           Benchmark 6 models on real entries. Reusable tool. Spec: .spec/proposals/classify-bench.md
+[22b8d8b2] Space Center           verified   st=None      done=0 | I'm seriously looking at what it would take to do a science 
+           I'm seriously looking at what it would take to do a science center here in marshfield missouri. we're thinking of callin
+[17729989] Space Center           planned    st=None      done=0 | Build Physical Display Dashboard
+[03549801] Space Center           complete   st=done      done=0 | LCARS Vue3 Theme ù Clock & RPN Calculator
+           Star Trek LCARS-style Vue3 theme for Space Center apps. Build a reusable Vue3 component library with LCARS-inspired styl
+[17746750] Workspace improvements verified   st=None      done=0 | Assessing AI Skills and Career Positioning
+           Ai jobs and skills, where do I stand? https://youtu.be/4cuT-LKcmWs?si=CqAizAMZy0Jhq90r
+[17750525] Workspace improvements verified   st=None      done=0 | Research GitHub Copilot Agent-Driven Development
+           Look into how they are using github copilot sdk and agents! https://github.blog/ai-and-ml/github-copilot/agent-driven-de
+[17744822] Workspace improvements verified   st=None      done=0 | Enhance Study Material Digestion System
+           Study enhancement? See if there are other ways of digesting our study materials, and build out digesting our own study c
+[17743715] Workspace improvements verified   st=None      done=0 | GitHub Copilot Skills Examples
+           More examples of using github copilot skills https://github.blog/ai-and-ml/github-copilot/building-ai-powered-github-iss
+[17743563] Workspace improvements verified   st=None      done=0 | Agentic Platform Engineering with GitHub Copilot
+           Agentic platform engineering with github copilot https://devblogs.microsoft.com/all-things-azure/agentic-platform-engine
+[17742746] Workspace improvements verified   st=None      done=0 | Nate B Jones Delegation Video Notes
+           Nate b Jones talks about delegation https://youtu.be/fyHnGHxGuhI
+[17739741] Workspace improvements verified   st=None      done=0 | Learning from SQUAD AI Agent Flow
+           Squad for ai agent flow, what can we learn? https://github.blog/ai-and-ml/github-copilot/how-squad-runs-coordinated-ai-a
+[17740194] Workspace improvements verified   st=None      done=0 | Squad vs Superpowers Project Comparison
+           Compare this to squad https://github.com/obra/superpowers
+[17735267] Workspace improvements verified   st=None      done=0 | Integrate Agent Hooks in VS Code for Study
+           Agent hooks in vs code! We should integrate that into our workflow for study https://code.visualstudio.com/updates/v1_11
+[20ce036a] cpuchip.net            verified   st=None      done=0 | Pull down all of the images and blog posts from the archive.
+           Pull down all of the images and blog posts from the archive.org snapshot of cpuchip.net from the wayback machine. put to
+[17733627] ibeco.me               verified   st=None      done=0 | Implement Gateway Auth for Projects
+           For the brain.exe and other projects I need a way to gateway auth requests like vault stores secrets like passwords and 
+[17739252] study                  verified   st=None      done=0 | Intelligence Study Article Reference
+           Intelligence study article https://youtu.be/lxt6S0uS8Ro
+--- 48 rows ---
+
+
+========== Done by action but status open ù needs closure ==========
+[17730350] 2nd Brain              verified   st=None      done=1 | Test brain app captures from widgets
+[4ce75e3d] 2nd Brain              raw        st=active    done=1 | Capture history display options
+           UI capture history display options
+[4ed38e7b] 2nd Brain              raw        st=active    done=1 | Brain app widget refresh button issue
+           In brain app 4x2 widget, the refresh button launches the app instead of directly refreshing the list
+[0d756be3] 2nd Brain              raw        st=None      done=1 | Scriptures not showing in Brain app
+           In brain app the scriptures dont show the body of the memorize items
+[17729990] 2nd Brain              raw        st=None      done=1 | Check Coder for Copilot SDK Security
+[c0796e7c] 2nd Brain              raw        st=None      done=1 | Widget size and mic functionality in Brain App
+           2x4 widget is oversized; microphone button non-functional
+[190f9ad5] 2nd Brain              raw        st=None      done=1 | Android bottom navigation bar compatibility
+           Missing support for AndroidÆs persistent bottom navigation bar in Brain app history view
+[b22c77c9] <inbox>                raw        st=active    done=1 | Keda deployment sync with ben
+           Finalize keda deployment with Ben, did the changes to the scaling algorithm work?
+[17731960] Notebook               raw        st=None      done=1 | Get birthday present for mom
+--- 9 rows ---

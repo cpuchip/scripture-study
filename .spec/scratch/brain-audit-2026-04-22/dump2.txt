@@ -1,0 +1,50 @@
+== action_done=1 (15 rows) ==
+[b22c77c9] <inbox>                raw        st=active    | Keda deployment sync with ben
+[09991d90] <inbox>                raw        st=archived  | Order ATX Computer Case
+[17729061] <inbox>                raw        st=archived  | Store trip for cold and flu meds
+[190f9ad5] 2nd Brain              raw        st=None      | Android bottom navigation bar compatibility
+[0c822f0a] 2nd Brain              raw        st=done      | Archive feature for Brain app
+[4ed38e7b] 2nd Brain              raw        st=active    | Brain app widget refresh button issue
+[4ce75e3d] 2nd Brain              raw        st=active    | Capture history display options
+[17729990] 2nd Brain              raw        st=None      | Check Coder for Copilot SDK Security
+[4fc4b81f] 2nd Brain              raw        st=done      | Edit session cards UI feature
+[17730329] 2nd Brain              raw        st=done      | In brain app Scrollable items in widgets
+[0d756be3] 2nd Brain              raw        st=None      | Scriptures not showing in Brain app
+[5daeb6fc] 2nd Brain              raw        st=done      | Speech-to-Text Toggle Feature
+[17730350] 2nd Brain              verified   st=None      | Test brain app captures from widgets
+[c0796e7c] 2nd Brain              raw        st=None      | Widget size and mic functionality in Brain App
+[17731960] Notebook               raw        st=None      | Get birthday present for mom
+
+
+== Workspace improvements raw (16) ==
+[17761796] raw        st=None      done=0 | Multi-step Agents for Gospel RAG
+           Maybe this research paper is a good idea for our gospel-engine rag approach?  https://venturebeat.co
+[17754148] raw        st=None      done=0 | Autoagent to Improve AI Harness
+           Autoagent to improve our ai harness? Its like autoresearch but applied specifically to improving ai 
+[17752858] raw        st=None      done=0 | AI improvement ideas from Hormozi
+           Maybe some ideas here would could use to get better at Ai https://youtu.be/9q5ojtkqsBs
+[17752798] raw        st=None      done=0 | AI Dungeons YouTube Video
+           Ai dungeons https://youtu.be/HK2Eb5ABJL4?si=0Pyo_Iqy0kAlqdyQ
+[17752224] raw        st=None      done=0 | Try Trinity 57B AI model
+           Trinity Ai models! We should try out the 57 billion one. It looks promising https://huggingface.co/c
+[17751941] raw        st=None      done=0 | Continue LightRAG research and evaluation
+           Continue to look into lightrag as an opinion?  https://github.com/HKUDS/LightRAG https://lightrag.gi
+[17751939] raw        st=None      done=0 | Investigate LightRAG for gospel-engine
+           We need to investigate lightrag Would that replace gospel-engine for study? For code connection?  ht
+[17750573] raw        st=None      done=0 | HIPAA-Compliant AI Research
+           Bryce physical therapy. Research hippa compliant AI. Github copilot?
+[17746749] raw        st=None      done=0 | Claude AI Research Project
+           Claude scientific research https://www.anthropic.com/research/long-running-Claude
+[17750225] raw        st=None      done=0 | MetaClaw for Memory Issue Solutions
+           Would this help the memory issue? https://github.com/aiming-lab/MetaClaw
+[17743562] raw        st=None      done=0 | Try calm on Linux with vLLM
+           Try out calm https://www.reddit.com/r/LocalLLaMA/comments/1s0bzwz/a_few_days_ago_i_switched_to_linux
+[a4eae47c] raw        st=None      done=0 | Agentic AI Memory Site Evaluation
+           Look at if this is a worthwhile site to digest agentically, How does it compare to my work and study
+[10839464] raw        st=None      done=0 | Evaluate website for agentical digestion
+           Look at if this is a worthwhile site to digest agentically. How does it compare to my work and study
+[9262c7be] raw        st=None      done=0 | Research autoresearch and large models on limited hardware
+           Research how autoresearch and this article on running larger models then you can on limited hardware
+[17740452] raw        st=None      done=0 | Stripe Minions Coding Agents
+           Stripe minions https://stripe.dev/blog/minions-stripes-one-shot-end-to-end-coding-agents
+[17743564] raw        st=None      done=0 | Try Brave MCP for Web Search
