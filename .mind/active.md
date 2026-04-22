@@ -11,7 +11,7 @@
 
 1. ★ **Study** — "It keeps me in the spirit." Next: "Zion in a Presidency" → [.spec/proposals/study-workstream.md](../.spec/proposals/study-workstream.md)
 2. ★ **Teaching** — 11-episode arc (Option C). Agent + repo scaffolded. Content not started → [.spec/proposals/teaching-workstream.md](../.spec/proposals/teaching-workstream.md)
-3. **Spec hygiene** — cleanup-2026-04 in progress. Phases 1-3 today → [.spec/proposals/cleanup-2026-04/main.md](../.spec/proposals/cleanup-2026-04/main.md)
+3. **Spec hygiene** — cleanup-2026-04-part2 in progress. Phase A done, Phase B (16 archives + kanban Status fix + P8 spinoff) done today → [.spec/proposals/cleanup-2026-04-part2/main.md](../.spec/proposals/cleanup-2026-04-part2/main.md)
 4. **Token efficiency** — proposal from Apr 16 awaiting refresh review → [.spec/proposals/token-efficiency.md](../.spec/proposals/token-efficiency.md)
 
 ## Milestones
@@ -22,7 +22,7 @@
 | Apr 5 | Project sync: 101 entries (30 verified, 10 specced, 4 planned, 57 raw) |
 | Apr 12 | 🏆 First fully automated commission (Space Center). 39 premium requests. AI converged on family's independent brainstorm |
 | Apr 20 | engine.ibeco.me Phase 1-3 shipped. First study on user-minted engine token: "I Will Give Away All My Sins to Know Thee" |
-| Apr 21 | Voice/bias harness updated (em-dash budget, three-beat pivot, refrains, stats audit). cleanup-2026-04 proposal written + Phase 1-3 executed |
+| Apr 21 | Voice/bias harness updated (em-dash budget, three-beat pivot, refrains, stats audit). cleanup-2026-04 P1-3 + part2 Phases A-B executed (16 proposals archived) |
 
 ## Key Decisions (Recent)
 
@@ -43,9 +43,14 @@
 
 ## In Flight
 
-### cleanup-2026-04
-✅ Phase 1-3 done today (spec dedup, gospel-engine reorg as v2-hosted.md, model audit + brain test fixes opus-4.6→4.7). Phase 4 (token-efficiency execution) deferred pending Michael's review of [tokenomics-2026](../.spec/proposals/tokenomics-2026/main.md)
-→ [.spec/proposals/cleanup-2026-04/main.md](../.spec/proposals/cleanup-2026-04/main.md)
+### cleanup-2026-04 / part2
+✅ cleanup-2026-04 P1-3 done Apr 21 (spec dedup, gospel-engine reorg, model audit + brain test fixes opus-4.6→4.7). Phase 4 deferred to [tokenomics-2026](../.spec/proposals/tokenomics-2026/main.md).
+✅ cleanup-2026-04-part2 Phases A-B done Apr 21 (active.md duplication fix, 16 proposals archived, P8 split off, kanban Status corrected). Phases C-E (workstream re-vocabulary + active.md rewrite) pending.
+→ [cleanup-2026-04/main.md](../.spec/proposals/cleanup-2026-04/main.md) · [cleanup-2026-04-part2/main.md](../.spec/proposals/cleanup-2026-04-part2/main.md)
+
+### Brain ↔ VS Code Bridge (proposed)
+📝 Architecture proposal written Apr 21. Bidirectional sync between proposals and brain entries. Phase 1-2 carry most of the value.
+→ [.spec/proposals/brain-vscode-bridge/main.md](../.spec/proposals/brain-vscode-bridge/main.md)
 
 ### Brain Inline Panel + Nudge Bot Controls
 ▶ P1: Reply textarea + close-with-reason slide-out. P2: Nudge bot in Scheduled Tasks
@@ -59,13 +64,15 @@
 
 | Item | Status | Ref |
 |------|--------|-----|
-| WS1 P4d: Pipeline REST + Execution | ▶ next | [.spec/proposals/brain-phase4-pipeline.md](../.spec/proposals/brain-phase4-pipeline.md) |
+| Brain Project-Kanban Phase 4c | ▶ next | [.spec/proposals/brain-project-kanban.md](../.spec/proposals/brain-project-kanban.md) |
 | Claude Code Integration | researched | [.spec/proposals/claude-code-integration.md](../.spec/proposals/claude-code-integration.md) |
 | Brain Windows Service (systray) | specced | [.spec/proposals/brain-windows-service.md](../.spec/proposals/brain-windows-service.md) |
 | ibeco.me Security Audit | not started | — |
 | Gospel Engine v1.5 Ergonomics | specced | [.spec/proposals/gospel-engine/phase1.5-ergonomics.md](../.spec/proposals/gospel-engine/phase1.5-ergonomics.md) |
 | Gospel Graph Visualization | specced, depends on engine v2 | [.spec/proposals/gospel-graph/main.md](../.spec/proposals/gospel-graph/main.md) |
 | tokenomics-2026 (research) | placeholder | [.spec/proposals/tokenomics-2026/main.md](../.spec/proposals/tokenomics-2026/main.md) |
+| Sabbath agent | ready to build | [.spec/proposals/sabbath-agent.md](../.spec/proposals/sabbath-agent.md) |
+| Classifier qwen fix | ready to build | [.spec/proposals/classifier-qwen-fix.md](../.spec/proposals/classifier-qwen-fix.md) |
 
 ---
 
@@ -78,7 +85,7 @@ Move to archive when older than ~60 days or when scope is fully closed.
 | engine.ibeco.me Phase 1-3 | Apr 20 | Hosted gospel search at engine.ibeco.me. Token UI in ibeco.me Settings. First study used it |
 | Voice/bias harness v2 | Apr 21 | em-dash budget, three-beat pivot detection, stats cite-count rule extension |
 | Commission UX Fixes | Apr 15 | Path mangling, link normalization, and gaps surfaced from Space Center test |
-| Brain Project-Kanban | Apr 4-5 | All phases. Projects, kanban, auto-assignment, AI push-back |
+| Brain Project-Kanban | Apr 4-5 | Phases 1-3 + 4a-4b. Projects, kanban, auto-assignment, AI push-back. **Phase 4c still pending — see In Flight** |
 | Orchestrator Steward P1-6 | Apr 10-11 | Failure retry, model escalation, circuit breaker, quarantine, nudge bot, commission. 86 tests |
 | Commission UI P1-3 | Apr 11 | Types/API, dialog, triggers, status panel, badge, +New Entry dialog |
 | WS3 Brain UX QoL P1-7b | Apr 6 | Textarea, markdown render, file viewer, file browser, WebSocket push, cost tracking, reader UX, git status, inline diff, nested git repos |
@@ -96,3 +103,4 @@ Move to archive when older than ~60 days or when scope is fully closed.
 | Notifications (Ph 2-4) | After systray |
 | Progressive Trust Tracking | D&C 107, model experiments |
 | Squad A4/A5/A9 | After pipeline stabilizes |
+| Brain UX QoL Phase 8 (auto-commit) | After Phase 7 in daily use → [.spec/proposals/brain-ux-qol-phase8-autocommit.md](../.spec/proposals/brain-ux-qol-phase8-autocommit.md) |

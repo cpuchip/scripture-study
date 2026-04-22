@@ -1,5 +1,7 @@
 # Layer 2: Bidirectional Brain ↔ ibecome Sync
 
+> **SHIPPED via WebSocket implementation** (status not marked at the time — confirmed 2026-04-21 during cleanup). The bidirectional sync described here was built using the WebSocket relay path. Archived without further changes.
+
 > Design plan — not code yet. Review and decide before building.
 
 ## Problem
