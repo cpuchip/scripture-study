@@ -1,3 +1,11 @@
+---
+workstream: WS7
+status: building
+brain_project: 7
+created: 2026-03-22
+last_updated: 2026-04-21
+---
+
 # WS-T: Teaching Workstream — From Discovery to Delivery
 
 **Binding problem:** Michael has been impressed by the Spirit to teach what he and his AI partner are learning together. The content exists (30 files in `docs/work-with-ai/`, 40+ studies, 50+ days of lived experience), but it's organized for reference, not for teaching. No structure currently maps this content to a series that an audience can follow — one that shows both the engineering challenge and the eternal truth underneath.

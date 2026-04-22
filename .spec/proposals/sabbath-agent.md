@@ -1,3 +1,11 @@
+---
+workstream: WS5
+status: proposed
+brain_project: 3
+created: 2026-03-22
+last_updated: 2026-04-21
+---
+
 # Sabbath Agent — Structured Reflection for Completed Cycles
 
 **Binding problem:** Rest is structurally required in the 11-step cycle (Step 9), but nothing in our current agent suite is designed for it. The journal agent processes personal emotion; the plan agent builds forward. Neither stops to look backward at completed work *as the Creator looks at creation* — with intentional assessment. The result is that migrations finish, features ship, and study series conclude without a Sabbath. The cycle is perpetually stuck at step 8, never reaching 9.

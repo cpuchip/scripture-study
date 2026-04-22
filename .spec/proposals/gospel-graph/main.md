@@ -1,3 +1,12 @@
+---
+workstream: WS3
+status: proposed
+brain_project: 3
+created: 2026-04-15
+last_updated: 2026-04-21
+revisit_when: "After Apache AGE supports PG18 (or accept separate PG instance)"
+---
+
 # study.ibeco.me — Gospel Graph Visualization
 
 > **Depends on (added 2026-04-21):**

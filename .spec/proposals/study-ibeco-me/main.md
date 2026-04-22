@@ -1,3 +1,11 @@
+---
+workstream: WS4
+status: proposed
+brain_project: 5
+created: 2026-04-10
+last_updated: 2026-04-21
+---
+
 # study.ibeco.me — Hosted Gospel Study Service
 
 > **Scope Refocus (2026-04-21):**

@@ -1,3 +1,11 @@
+---
+workstream: WS1
+status: proposed
+brain_project: 6
+created: 2026-03-19
+last_updated: 2026-04-21
+---
+
 # Data Safety: Dev Agent Hardening + Audit Log
 
 ## Binding Problem

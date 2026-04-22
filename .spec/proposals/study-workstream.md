@@ -1,3 +1,11 @@
+---
+workstream: WS6
+status: building
+brain_project: 1
+created: 2026-03-22
+last_updated: 2026-04-21
+---
+
 # WS-S: Study Workstream — What to Study Next
 
 **Binding problem:** Michael has three study seeds from the March 22 sabbath review, a body of 40+ completed studies, and no plan for which studies come next, in what order, and why. Study is the highest priority ("it keeps me in the spirit" — decision Mar 19), but without sequencing, each session starts from "what do I feel like studying?" instead of "what's prepared for me?"

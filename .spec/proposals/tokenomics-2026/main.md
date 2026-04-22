@@ -1,3 +1,11 @@
+---
+workstream: WS5
+status: proposed
+brain_project: 3
+created: 2026-04-21
+last_updated: 2026-04-21
+---
+
 # Tokenomics 2026
 
 **Status:** Research / Open Questions

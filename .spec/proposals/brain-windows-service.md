@@ -1,3 +1,11 @@
+---
+workstream: WS2
+status: proposed
+brain_project: 6
+created: 2026-04-02
+last_updated: 2026-04-21
+---
+
 # Brain Windows Service: Systray App with Auto-Start
 
 **Created:** 2026-04-02

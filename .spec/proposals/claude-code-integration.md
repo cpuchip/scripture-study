@@ -1,3 +1,11 @@
+---
+workstream: WS5
+status: proposed
+brain_project: 3
+created: 2026-04-10
+last_updated: 2026-04-21
+---
+
 # Claude Code Integration — Alternative Agent Backend
 
 ## Problem Statement

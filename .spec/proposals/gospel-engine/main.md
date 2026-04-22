@@ -1,3 +1,12 @@
+---
+workstream: WS3
+status: building
+brain_project: 3
+created: 2026-03-15
+last_updated: 2026-04-21
+phase_status: "v1 SHIPPED, v1.5 ergonomics next, v2 hosted SHIPPED, v3 graph deferred"
+---
+
 # gospel-engine — Combined Gospel Search & Indexing Tool
 
 > **Phase Map (added 2026-04-21):**

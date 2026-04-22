@@ -1,3 +1,11 @@
+---
+workstream: WS3
+status: proposed
+brain_project: 3
+created: 2026-04-10
+last_updated: 2026-04-21
+---
+
 # gospel-engine Phase 1.5 — Agent-Ergonomic Improvements
 
 **Binding problem:** Gospel-engine Phase 1 ships 3 working MCP tools, but the agent's actual study workflow during the Art of Delegation study revealed three friction points: (1) `gospel_get` fetches entire chapters with no verse-level retrieval — a regression from gospel-mcp's Feb 15 verse-range fix, (2) 85,590 cross-references sit in the database with no tool to query them, and (3) `/gospel-library/` being gitignored makes VS Code's `grep_search` and `file_search` silently return nothing for scripture files.

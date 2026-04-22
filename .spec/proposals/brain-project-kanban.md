@@ -1,3 +1,12 @@
+---
+workstream: WS2
+status: building
+brain_project: 6
+created: 2026-04-04
+last_updated: 2026-04-21
+phase_status: "P1-3 + P4a-4b shipped, P4c next"
+---
+
 # Brain Project-Kanban: From Capture Tool to Goal Orchestrator
 
 **Binding problem:** brain.exe captures and classifies thoughts but operates as a flat entry list with no project-level organization, no iterative agent sessions, and no way for Michael to manage work outside VS Code. The approval queue surfaces individual entries but not goals. Agents fire-and-forget instead of iterating. There's no way to say "show me everything for Sunday School" or "what's the agent working on for the space center?" The UI is a monitoring afterthought when it should be the primary work surface.

@@ -1,3 +1,11 @@
+---
+workstream: WS2
+status: building
+brain_project: 6
+created: 2026-04-02
+last_updated: 2026-04-21
+---
+
 # Brain Inline Panel: Reply + Close from Slide-Out
 
 **Status:** planned

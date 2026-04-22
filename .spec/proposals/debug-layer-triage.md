@@ -1,3 +1,11 @@
+---
+workstream: WS5
+status: proposed
+brain_project: 3
+created: 2026-04-17
+last_updated: 2026-04-21
+---
+
 # Debug Agent: Layer Triage Enhancement
 
 *Proposal for adding a lightweight layer classification step to the debug agent's workflow.*

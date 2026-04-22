@@ -1,3 +1,12 @@
+---
+workstream: WS5
+status: building
+brain_project: 3
+created: 2026-04-20
+last_updated: 2026-04-21
+phase_status: "P1-3 done; P4 (token-efficiency exec) deferred to tokenomics-2026"
+---
+
 # Cleanup 2026-04 — Spec, Mind, and Plan Reorganization
 
 **Binding problem:** The `.spec/` and `.mind/` directories have drifted out of alignment with each other and with the actual state of the work. Memory lives in two places. Two gospel-engine proposals describe overlapping pieces of one system without a clean split. `active.md` lists workstreams that have shipped. Skills and proposals still point at gospel-vec and gospel-mcp by name even though gospel-engine replaced them. Every session pays a context-budget tax to load and reconcile the staleness.

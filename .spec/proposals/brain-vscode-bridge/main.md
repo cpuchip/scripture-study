@@ -1,3 +1,11 @@
+---
+workstream: WS5
+status: proposed
+brain_project: 6
+created: 2026-04-21
+last_updated: 2026-04-21
+---
+
 # Brain ↔ VS Code Bridge — Bidirectional Sync Between Plans and Work Items
 
 **Binding problem:** `.spec/proposals/` is the long-form planning view. The brain's `entries` table is the actionable kanban. They describe the same work but have no link between them. Work in VS Code updates the proposal — the brain doesn't know. Work in the brain advances entries — the proposal stays stale. Every reconciliation pass is a manual cross-reference (see [cleanup-2026-04-part2/main.md](../cleanup-2026-04-part2/main.md) for the latest one). This burns tokens and Michael's attention.

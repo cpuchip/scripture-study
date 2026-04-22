@@ -1,3 +1,12 @@
+---
+workstream: WS2
+status: deferred
+brain_project: 6
+created: 2026-04-21
+last_updated: 2026-04-21
+revisit_when: "After P7 git-status in daily use long enough to validate need"
+---
+
 # Brain UX QoL — Phase 8: Auto-Commit After Agent Sessions
 
 **Status:** Deferred — needs design + safety review before building

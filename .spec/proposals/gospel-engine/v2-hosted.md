@@ -1,3 +1,11 @@
+---
+workstream: WS3
+status: shipped
+brain_project: 3
+created: 2026-04-21
+last_updated: 2026-04-21
+---
+
 # gospel-engine v2 — Hosted Backend (engine.ibeco.me)
 
 **Status:** **SHIPPED** 2026-04-20 (Phases 1–3)

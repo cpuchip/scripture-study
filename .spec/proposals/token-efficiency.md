@@ -1,3 +1,11 @@
+---
+workstream: WS5
+status: proposed
+brain_project: 3
+created: 2026-04-16
+last_updated: 2026-04-21
+---
+
 # Token Efficiency & Memory Architecture v2
 
 *Proposal for optimizing context window usage across interactive sessions and pipeline agents.*

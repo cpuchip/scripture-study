@@ -1,3 +1,12 @@
+---
+workstream: WS5
+status: building
+brain_project: 3
+created: 2026-04-21
+last_updated: 2026-04-21
+phase_status: "Phase A done, Phase B done (16 archives), Phase C in progress"
+---
+
 # Cleanup 2026-04 Part 2 — Reality Reconciliation
 
 **Binding problem:** Three separate views of "what we're doing" — `.spec/proposals/`, `.mind/active.md`, and brain DB projects+entries — have drifted out of sync with each other and with the actual state of the work. Michael burns tokens every session re-establishing what's actually in flight. Proposals say "Proposed" for work that shipped two weeks ago. `active.md` lists shipped work as in-flight. Brain has 107 open entries with no link back to the proposals that own them.
