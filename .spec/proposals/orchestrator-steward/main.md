@@ -5,7 +5,7 @@
 **Created:** 2026-04-10
 **Source:** [E2E walkthrough findings](../../.spec/scratch/debug-pipeline-e2e/main.md), [orchestrator research](../../.spec/scratch/orchestrator-steward/main.md)
 **Related:** [brain-pipeline-fixes-phase4.md](../brain-pipeline-fixes-phase4.md), [brain-pipeline-evolution.md](../brain-pipeline-evolution.md)
-**Status:** Proposed
+**Status:** SHIPPED — Phases 1-6 complete (2026-04-10 → 2026-04-11). 86 tests. Failure retry, model escalation (Haiku→Sonnet→Opus→Human), circuit breaker, quarantine queue, nudge bot integration, commission model. Phase 7+ (multi-entry, project-scope) not yet planned.
 
 ---
 
