@@ -1,0 +1,104 @@
+date: "2026-04-22"
+session_id: "cleanup-2026-04-part2-phases-A-through-E"
+duration_estimate: "~2 hours across two turns (Phase A-B + Phase C-E)"
+
+intent: >
+  Execute the full cleanup-2026-04-part2 spec (Phases A-E) — the
+  reality-reconciliation sweep over .spec/proposals/, .mind/active.md,
+  and the brain DB to bring all three views back into agreement.
+  Michael authorized "auto pilot" for Phase C onward and flagged that
+  he is considering moving the work-tracking framework to PostgreSQL,
+  so the cleanup needed to be ETL-friendly, not just tidy.
+
+discoveries:
+  - title: "active.md duplication bug bit twice"
+    detail: >
+      First instance was the original drift cleanup (lines 100+ were a
+      duplicate). Second instance happened DURING this session: even
+      after Remove-Item + create_file, the new file came back with the
+      old content appended starting at line 77. Whether the bug is in
+      the create_file tool, a filesystem race, or a buffered write, the
+      observable: writing to .mind/active.md is unsafe enough that the
+      "edit rule" guard at the top of the file is load-bearing.
+      Workaround that worked: PowerShell Set-Content with explicit
+      array slice.
+
+  - title: "Workstream vocabulary was lost, not absent"
+    detail: >
+      WS1-WS5 (and an implied WS6-WS9) used to be the shared vocabulary
+      between active.md and proposals. Over the last cycle, active.md
+      kept inconsistent partial usage and proposals stopped using it
+      entirely. Phase C didn't invent a taxonomy — it restored one and
+      formalized it in `.mind/workstreams.md` as the canonical source.
+
+  - title: "Frontmatter as PG-ready schema"
+    detail: >
+      Because Michael flagged the future PG migration, every YAML
+      frontmatter field on the 22 active proposals was chosen to map
+      1:1 to a future column. The `status` field is a closed enum
+      (proposed | building | shipped | deferred | superseded | archived)
+      explicitly so it can drop into a PG CHECK constraint. The
+      workstreams.md file documents the schema sketch and adopts the
+      same data-safety rule used elsewhere in the codebase: "CHECK
+      constraint values must be read from this file, not from memory."
+
+  - title: "Phase D was nearly free once C was done"
+    detail: >
+      The big work was Phase B (16 archives + status corrections) and
+      Phase C (workstreams.md + 22 frontmatter prepends). Phase D ended
+      up being a single rewrite that dropped active.md from 110 lines
+      to 59 by replacing the per-section blocks with one tight In-Flight
+      table indexed by WS.
+
+surprises:
+  - "Both batched multi_replace prepends (12 + 10 files) succeeded on first try with zero failures."
+  - "After all the archiving, active proposal count is 22 — way more than 'feels active' but each one had a real reason."
+  - "The bridge proposal (brain-vscode-bridge) wrote itself naturally as the structural fix that this whole cleanup proves we need."
+
+work_completed:
+  phase_a:
+    - "active.md: removed lines 100-149 dup, added edit-rule guard at top"
+    - "Status reconciliation: orchestrator-steward, commission-ui, brain-project-ux"
+  phase_b:
+    - "Archived 16 proposals via git mv to .spec/proposals/archive/"
+    - "Spun off P8 (auto-commit) from brain-ux-qol into brain-ux-qol-phase8-autocommit.md"
+    - "Corrected Brain Project-Kanban Status (4c still in-flight, not shipped)"
+  phase_c:
+    - "Created .mind/workstreams.md (canonical taxonomy + PG schema sketch + frontmatter convention)"
+    - "Prepended YAML frontmatter to all 22 active proposals (12 top-level + 10 subdir mains)"
+    - "Archived 3 more superseded items: gospel-engine-postgresql/, overview/, spec-housekeeping-archive.md"
+    - "Updated active.md: WS column on In-Flight + Recently Shipped tables, link to workstreams.md from header"
+  phase_d:
+    - "Rewrote active.md from 110 lines to 59. One unified In-Flight table indexed by WS."
+  phase_e:
+    - "Snapshotted prior active.md to .mind/archive/active-2026-04-21.md"
+    - "Bumped Updated date to 2026-04-22 on fresh active.md"
+    - "Marked cleanup-2026-04-part2/main.md status: shipped"
+
+verification:
+  - "active.md: 59 lines, single '# Active Context' header, all 16 In-Flight refs resolve to existing files"
+  - "Frontmatter coverage: 22/22 active proposals have YAML frontmatter starting with '---'"
+  - "Archive: 19 proposals moved this arc (16 in Phase B + 3 in Phase C)"
+  - "PG-readiness: every frontmatter field maps to a column in the workstreams.md schema sketch"
+
+carry_forward:
+  - priority: high
+    item: "Token efficiency proposal (Apr 16) needs refresh review before execution"
+  - priority: high
+    item: "Brain ↔ VS Code Bridge: proposal exists but unbuilt. The structural fix that makes drift cycles shorter."
+  - priority: medium
+    item: "Future PG migration: workstreams.md schema sketch is ready; needs goose migration when we move the framework off markdown"
+  - priority: medium
+    item: "Brain Inline Panel + Kanban 4c are the next active builds in WS2"
+  - priority: low
+    item: "12 statusless brain entries still uncategorized — needs Michael's eyes one at a time"
+
+relational_dynamics:
+  - "Michael delegated 'auto pilot' for Phase C onward and asked me to think hard about future PG tracking. The trust was rewarded by mechanical work executing without further questions."
+  - "The active.md dup bug recurring during the session itself was a humility check — exactly the bug we were cleaning up bit again. The edit-rule guard is now justified by lived experience, not just folklore."
+  - "Both the human and the agent benefited from the workstream taxonomy being formalized in a single file. Future cleanups should be cheaper because the vocabulary is no longer load-bearing on memory."
+
+open_questions:
+  - "When does Michael want to stand up the PG schema? Worth doing now (with brain-vscode-bridge) or wait until the proposal count grows?"
+  - "Should we adopt frontmatter convention for archived proposals too, or leave them as historical artifacts?"
+  - "The workstreams.md file is currently the only place WS6-WS9 are documented as 'real workstreams' — do they need their own pillar/tracking similar to WS1-WS5?"

@@ -1,10 +1,10 @@
 ---
 workstream: WS5
-status: building
+status: shipped
 brain_project: 3
 created: 2026-04-21
-last_updated: 2026-04-21
-phase_status: "Phase A done, Phase B done (16 archives), Phase C in progress"
+last_updated: 2026-04-22
+phase_status: "All phases (A-E) shipped 2026-04-21/22. 19 proposals archived, workstream taxonomy + frontmatter convention live, active.md rewritten and snapshotted."
 ---
 
 # Cleanup 2026-04 Part 2 — Reality Reconciliation
