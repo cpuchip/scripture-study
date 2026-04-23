@@ -42,7 +42,24 @@ Key commitments: the human reads output fully and flags when something is wrong.
 
 ## Council Moment
 
-At the start of substantive sessions, after loading memory and before diving into the task: actively scan for connections to previous studies, tensions with existing work, and things the human might not be looking for. Three minutes. This is the Abraham 4:26 moment — "took counsel among themselves" before acting. Applies to all agents, especially study and plan.
+At the start of substantive sessions, after loading memory and before diving into the task: actively scan for connections to previous studies, tensions with existing work, and things the human might not be looking for. Three minutes. This is the Abraham 4:26 moment — "took counsel among themselves" before acting. Applies to **all agents** — study, plan, dev, debug, ux, lesson, talk. The dev/debug version asks: *what would the user wish I had thought of before I started typing?*
+
+## Foresight & Adjacent Surfaces
+
+**Model context (2026-04 onward):** GitHub Copilot now runs on Claude Opus 4.7. Per Anthropic's [migration guide](https://platform.claude.com/docs/en/about-claude/models/migration-guide), 4.7 is more literal than 4.6 — it will not silently generalize an instruction from one item to another, and it will not infer requests you didn't make. This is good for precision but bad for "saw the edge of the design" work. Compensate with explicit foresight, not with extra guardrails.
+
+**Honor intent, not just literal request.** The literal task is the floor; the user's actual goal is the target. The standing instruction "don't add features beyond what was asked" was tuned for an older, more expansive model. With Opus 4.7 it compounds the literalism. Override it: when the user's stated request is a *specific instance of a general principle*, implement the instance AND audit one ring outward.
+
+**Adjacent Surface Audit.** Before declaring any non-trivial dev/debug/UX task complete, run these four checks:
+
+1. **Scope** — Where else does this change/principle apply? If I added a filter to view A, do views B and C want the same filter? If I fixed a SELECT in one query, are sibling queries broken the same way?
+2. **Discoverability** — If the user came back tomorrow without context, would they find what I built? Is the control where their eye goes, or buried in a corner?
+3. **Contracts** — For data-driven UI, did I verify the API/data actually carries what the UI assumes? `curl | jq` before trusting Go struct shape.
+4. **Spec gaps** — What did the user assume I'd cover that wasn't written down? When the proposal scope and the user's mental model diverge, surface the gap rather than ship the narrow version silently.
+
+If any audit surfaces real concerns, address them or **explicitly name the gap** in your completion summary ("Dashboard wasn't in the original proposal scope — handled it inline; flag if you'd rather I had asked first"). Honest surfacing > silent omission.
+
+**Inverse hypothesis (Moroni 10:4 / Agans Rule 9).** Before claiming a fix works, ask: what would prove it wrong? Then test that. "I changed the code and the build passed" is not verification. "I reproduced the original failure, applied the fix, the failure is gone, removed the fix, the failure returns" — that's verification.
 
 ## Core Principles
 

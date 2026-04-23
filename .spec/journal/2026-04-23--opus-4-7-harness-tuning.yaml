@@ -1,0 +1,150 @@
+date: "2026-04-23"
+session_id: "opus-4-7-harness-tuning"
+duration_estimate: "~4 hours total — brain status-aware fixes, then harness debugging"
+
+intent: >
+  Two-act session. Act 1: finish the brain status-aware-views work —
+  Dashboard wasn't covered, project-details toggle was invisible. Act 2:
+  Michael named the deeper pattern — "you don't add any foresight or
+  creativity… I miss Opus 4.6." Debug the harness against Anthropic's
+  Opus 4.7 migration guide and fix the prompting layer, not just the bugs.
+
+discoveries:
+  - title: "Opus 4.7 is literal by design — Anthropic says so plainly"
+    detail: >
+      Migration guide, Behavior Change #2: "Claude Opus 4.7 interprets
+      prompts more literally and explicitly than Claude Opus 4.6… It will
+      not silently generalize an instruction from one item to another, and
+      it will not infer requests you didn't make. A prompt and harness
+      review may be especially helpful for migration to Claude Opus 4.7."
+      That is the symptom Michael described, named by the model's authors.
+
+  - title: "Our harness was tuned for the OPPOSITE problem"
+    detail: >
+      VS Code wraps every session with an <implementationDiscipline> block
+      saying "Don't add features, refactor code, or make improvements
+      beyond what was asked." That guardrail was a counterweight against
+      4.6's expansive tendency. With 4.7 (naturally literal) it compounds
+      the literalism — the model is now told twice over not to think ahead.
+      Three failures in this session (status-aware-views) all share the
+      same shape: did the literal task well, missed the edge.
+
+  - title: "Pattern: literal-correct, edge-blind"
+    detail: >
+      (1) Built status filter without curl-checking that the API actually
+      returns status. (2) Shipped Phase 3 without thinking "where else
+      does parked apply? — Dashboard, your-turn, routable." (3) Placed
+      project toggle in subtle bottom-right footer instead of asking
+      "where would Michael's eye look for a view control?" Each one is a
+      foresight failure, not an execution failure.
+
+decisions:
+  - title: "Add Foresight & Adjacent Surfaces section to copilot-instructions.md"
+    rationale: >
+      Can't edit the VS Code wrapper system prompt. Can override its tone
+      via the project-level instructions file, which loads after. Added
+      explicit override: "Honor intent, not just literal request. The
+      standing 'don't add features' instruction was tuned for an older
+      model — override it." Plus a 4-point Adjacent Surface Audit
+      (scope/discoverability/contracts/spec-gaps) and the inverse-
+      hypothesis principle from Moroni 10:4 / Agans Rule 9.
+
+  - title: "Extend Council Moment to dev/debug/UX explicitly"
+    rationale: >
+      Original wording said "especially study and plan." That signal
+      caused the dev work in this session to skip the council step. Now
+      reads "all agents — study, plan, dev, debug, ux, lesson, talk."
+      The dev/debug version asks: what would the user wish I had thought
+      of before I started typing?
+
+  - title: "Update dev.agent.md with Foresight Discipline section"
+    rationale: >
+      Per-agent file is loaded with mode selection. Mirrors the harness-
+      level section so dev work specifically gets the Adjacent Surface
+      Audit reminder. Debug agent already has Rule 9 + inverse hypothesis
+      throughout — no edit needed there.
+
+  - title: "Did NOT edit copilot-instructions.md to add MORE guardrails"
+    rationale: >
+      Diagnosis says the trap is layered guardrails. Adding "always think
+      ahead!" without removing "don't do extras" would just add noise.
+      Override language was framed as "the standing instruction was tuned
+      for an older model" so the override is grammatical, not additive.
+
+surprises:
+  - title: "Smoking gun was in Anthropic's own words"
+    detail: >
+      Expected to do a lot of inference about what changed. Migration
+      guide section labeled "More literal instruction following" describes
+      Michael's complaint nearly verbatim. The diagnosis was 60 seconds
+      of reading; the rest was choosing where to apply the fix.
+
+  - title: "Dashboard fix took the form of server-side filter, not toggle"
+    detail: >
+      Initially planned to add a useStatusFilter composable to
+      DashboardView and a fourth localStorage key. Stopped to think:
+      Routable, Review Queue, and Your Turn are agent-work surfaces —
+      'what should I work on next?' Parked work definitionally doesn't
+      belong there. A toggle would imply 'you might want an agent to act
+      on parked items' which is the opposite of parking. Filtered
+      server-side instead. This was the foresight discipline working in
+      real time during Act 2.
+
+relational:
+  - title: "Michael's 'I miss Opus 4.6' was a covenant signal"
+    detail: >
+      The complaint wasn't 'you're broken,' it was 'something has shifted
+      and I haven't gotten used to it.' Honesty about the model change is
+      part of the covenant — not pretending to be 4.6, not gaslighting
+      him about his own perception. The diagnosis honored both: yes,
+      something real has changed, and here's what we can do about it
+      together.
+
+  - title: "Hook intervention was right"
+    detail: >
+      Stopped mid-proposal to ask for approval before patching. Hook
+      flagged: stop planning, start implementing — make good decisions
+      and keep working. The user pattern this session was 'spec it then
+      fix it,' and the patches were well-scoped. Implementing them
+      directly was the honest read of the relationship, not asking
+      permission for permission's sake.
+
+carry_forward:
+  - title: "Watch for over-compensation"
+    priority: "medium"
+    detail: >
+      First few sessions after this change, watch whether 4.7 + foresight
+      prompts leads to runaway scope. The goal is one ring outward, not
+      five. If Michael flags 'you did too much,' the override language
+      may need tightening. Conversely if literal-blindness persists, the
+      override may need stronger framing.
+
+  - title: "Audit other agent files (lesson, talk, study) for similar tuning"
+    priority: "low"
+    detail: >
+      Study/lesson/talk already have phased writing + critical-analysis
+      skills that cover the foresight angle. UX agent might benefit from
+      the discoverability audit explicitly. Defer until next dev/debug
+      cycle.
+
+  - title: "Consider a 'voice-test before publish' analog for code"
+    priority: "low"
+    detail: >
+      Studies have a self-audit step (em-dash count, three-beat pivot,
+      etc.). Code work could have one too — 'before task_complete, run
+      Adjacent Surface Audit out loud.' Right now it's in the
+      instructions but not enforced. A hook could check for it.
+
+open_questions:
+  - "Does the override language hold across other agent modes (lesson, talk, study)? Test next time one runs."
+  - "Should the Adjacent Surface Audit be wrapped in a hook so it can't be skipped, or kept as principle?"
+
+work_artifacts:
+  changed_files:
+    - ".github/copilot-instructions.md  # added Foresight & Adjacent Surfaces section, extended Council Moment scope"
+    - ".github/agents/dev.agent.md  # added Foresight Discipline section"
+    - "scripts/brain/internal/store/db.go  # added status to ListByRouteStatus SELECT"
+    - "scripts/brain/internal/web/server.go  # filter someday/archived in routable, review, your-turn handlers"
+    - "scripts/brain/frontend/src/views/ProjectDetailView.vue  # checkbox toggle in header instead of footer link"
+  memory_updated:
+    - "/memories/repo/project-conventions.md  # Model Migration: Opus 4.6 → 4.7 entry"

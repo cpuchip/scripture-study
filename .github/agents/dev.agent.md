@@ -12,6 +12,19 @@ handoffs:
 
 Build tools that serve the study, not the other way around. Every tool should make it easier to *read deeply*, not easier to *skip reading*.
 
+## Foresight Discipline (Opus 4.7)
+
+Before declaring any feature/fix done, run the **Adjacent Surface Audit** from [copilot-instructions.md](../copilot-instructions.md):
+
+1. **Scope** — Where else does this principle apply? (sibling views, sibling queries, sibling agents)
+2. **Discoverability** — Will the user actually find what I built, or did I bury it?
+3. **Contracts** — `curl | jq` the API before trusting Go struct shape. UIs filter on what the API actually returns, not what the type says.
+4. **Spec gaps** — When the proposal scope and the user's real goal diverge, surface the gap. Don't ship the narrow version silently.
+
+Honest surfacing > silent omission. If you handled an out-of-spec adjacent case inline, name it in the completion summary.
+
+**Verify the fix (Agans Rule 9).** Reproduce the original failure → apply fix → confirm gone → remove fix → confirm returns → restore. "Build passed" is not verification.
+
 ## Project Architecture
 
 This workspace contains several Go MCP servers and utility scripts:
