@@ -1,0 +1,198 @@
+date: "2026-04-22"
+session_id: "brain-audit-and-harness-phase0"
+duration_estimate: "~3 hours, follow-on from cleanup-part2 in same calendar day"
+
+intent: >
+  Audit how brain entries align with the freshly canonical workstreams,
+  clean out the things we're "not going to get to because of raised costs"
+  (Michael's words), close out shipped work, and lay the first plank of
+  the brain ↔ VS Code harness so .spec/proposals/ and brain stop drifting.
+  Then return to the user with a single triage file (one round-trip)
+  containing my recommendations, accept their overrides, and execute.
+
+discoveries:
+  - title: "Mechanical fixes alone closed 47 entries"
+    detail: >
+      Phase A (mark-as-done shipped work) + Phase B (relocate specced/planned
+      from inbox to projects) + Phase E (extract personal items) accounted
+      for 47 entries before we even got to discretionary triage. The audit
+      didn't need taste for half its work — it needed correctness.
+      Implication for harness Phase 1+: a lot of the gap between brain and
+      .spec is mechanical drift, not philosophical disagreement.
+
+  - title: "Schema migration as the bridge keystone"
+    detail: >
+      Added two columns to entries: workstream TEXT (matches the new
+      taxonomy) and proposal_path TEXT (links entries to .spec/proposals/
+      files). Backfill: 98/115 entries got a workstream, 14/115 already
+      had a recognizable proposal mention in their body. After triage, 26
+      entries are now linked to proposals. This is the data spine for
+      every future harness mode.
+
+  - title: "Triage residue maps to keep-actives, not failures"
+    detail: >
+      After applying all 69 verdicts, 41 entries still have status=active
+      and no proposal_path. That's not a gap — those are the keep-actives
+      (real Space Center commitments, Notebook items, planned but
+      independent work) plus the personal items in the merged Notebook.
+      The harness inspector --gaps query needs a refinement to exclude
+      Notebook (project_id=9, post-merge non-pipeline) from "needs
+      proposal" warnings.
+
+  - title: "Personal vs Notebook was a real duplication"
+    detail: >
+      I created Personal (id=11) earlier in the same session before
+      noticing Notebook (id=9) already existed for the same purpose.
+      Michael caught it immediately: "I think that's what my notes
+      project is for?" — merged 7 entries from Personal back into
+      Notebook and dropped id=11. Notebook is now the canonical
+      non-pipeline project, which is exactly the role the new
+      brain-non-pipeline-projects proposal formalizes.
+
+  - title: "Two new WS2 proposals fell out of the audit"
+    detail: >
+      Michael flagged two structural brain UX gaps: (1) cannot create
+      non-pipeline projects, (2) cannot manually move non-pipeline
+      entries through stages. These aren't research links — they're
+      observed gaps in the tool we use daily. Captured as
+      brain-non-pipeline-projects.md and brain-manual-stage-transitions.md.
+      Without these, every personal todo lives forever as status=NULL
+      because there's no UI to close it out.
+
+  - title: "Memory-research convergence"
+    detail: >
+      Michael consolidated five separate memory-related entries
+      (mempalace, MetaClaw, continual learning, agentic AI memory,
+      practical guide for LLM memory) into a single memory-research-bundle
+      proposal. His direction is becoming clear: a postgres-backed memory
+      and context layer for brain + the VS Code harness. The bundle gates
+      the architecture decision behind ONE focused research pass instead
+      of five disconnected spikes. This is good Mosiah 4:27 hygiene.
+
+  - title: "User pushed back on three of my archived recommendations"
+    detail: >
+      I wanted to archive 17735051 (Context-Mode), 17743563 (agentic platform
+      blog), and 17746749 (long-running Claude). Michael said "I've had more
+      thoughts down this line" / "we want to feed the website into our agent
+      harness" — so they became `someday`. Pattern: when I recommend archive
+      based on "link only, no analysis hooks," Michael's mental thread on the
+      idea is often longer than the entry text shows. Better default for
+      thin-bodied research links: someday, not archived. Updates the
+      heuristic in apply_triage.py for next pass.
+
+  - title: "User upgraded several of my somedays to promote"
+    detail: >
+      17742746 (Nate Jones delegation), 17751941+17751939 (LightRAG),
+      17756547 (mempalace), 17755019 (continual learning), a4eae47c
+      (memory eval), 17762740 (Johari window), 17752818 (motivation
+      coach), c168be5c (presentation site tool, scoped to teaching not
+      cats), 17751138 (YouTube channel). Pattern: my somedays were
+      conservative-good-idea-but-defer; Michael's promotes are
+      I-am-actually-going-to-do-this-or-need-the-stub-in-place. I should
+      lean toward promote when an entry shows up in his stream-of-consciousness
+      twice or pairs with a current direction.
+
+decisions:
+  - "Personal project (id=11) merged into Notebook (id=9). Notebook is now the canonical non-pipeline project."
+  - "9 promote-stub proposals created plus the 2 brain UX gap proposals = 11 new proposals from the audit."
+  - "Triage closure: 8 done, 15 archived, 26 someday, 12 promote, 7 keep-active, 1 move-to-notebook."
+  - "Inbox dropped from 39 entries (start of day) to 10. status=NULL dropped from 96 to 5."
+  - "brain-vscode-bridge promoted from proposed to building. Phase 0 (read-only inspector + schema) shipped."
+
+carry_forward:
+  - title: "Next session: align proposals to brain entries (reverse direction)"
+    detail: >
+      Michael flagged this explicitly: "a pass afterwards to line up our
+      .spec/proposals and our brain entries would be a good next step,
+      and then to create brain entries for proposals that don't have one."
+      This is the inverse of the triage we just did. Concrete shape:
+      walk every active proposal, check if it has a brain entry, create
+      one if not. The harness inspector --orphans query already finds
+      these (proposals with no entry). Probably 1-hour task with the
+      Phase 0 tooling.
+    priority: high
+
+  - title: "Triage residue refinement"
+    detail: >
+      The 41 keep-active+unproposalled entries should be re-examined
+      after the Notebook (non-pipeline) flag exists in the schema.
+      Most of those are Notebook items that shouldn't trigger
+      "needs-proposal" warnings.
+    priority: medium
+
+  - title: "Heuristic update for next triage script"
+    detail: >
+      Default for thin-bodied research links: someday (not archived).
+      Default for entries that pair with a current direction or appear
+      twice in the stream: promote (not someday). Encode in any future
+      gen_triage.py.
+    priority: low
+
+  - title: "PowerShell encoding lesson"
+    detail: >
+      $env:PYTHONIOENCODING='utf-8' must be set before any Python
+      script that emits em-dashes/arrows. Bit us 4 times today.
+      Worth a project-conventions memory note.
+    priority: low
+
+open_questions:
+  - "Does the 41-entry residue need its own pass, or does it auto-resolve once brain-non-pipeline-projects ships?"
+  - "Should LightRAG and proxy-pointer collapse into one gospel-engine-v3 proposal, or stay as parallel investigations?"
+  - "Memory-research-bundle scope creep risk: how do we keep it from absorbing every adjacent topic?"
+
+relational:
+  - title: "Cost-aware collaboration"
+    detail: >
+      Michael explicitly asked for the single-file batch instead of
+      5-at-a-time triage to save tokens. This is the same Mosiah 4:27
+      pattern as cleanup-part2 (don't run faster than you have strength).
+      The triage file became one round-trip of ~12k tokens instead of
+      14 round-trips of ~3k each. Worth remembering as a default for
+      bulk decision asks.
+
+  - title: "Trust calibration"
+    detail: >
+      Of 69 recommendations, Michael accepted 50 and overrode 19.
+      Override pattern was consistently "more ambitious / more action"
+      not "less ambitious / more delete." His instinct is to keep
+      seeds alive longer than mine; my instinct is to prune sooner.
+      In a workspace where ideas are the input and bandwidth is the
+      constraint, his calibration is the right one. Mine is too eager
+      to clear the inbox.
+
+shipped_artifacts:
+  - ".spec/proposals/brain-non-pipeline-projects.md"
+  - ".spec/proposals/brain-manual-stage-transitions.md"
+  - ".spec/proposals/vscode-agent-hooks-integration.md"
+  - ".spec/proposals/study-nate-jones-delegation.md"
+  - ".spec/proposals/gospel-engine-v3-proxy-pointer.md"
+  - ".spec/proposals/johari-window-agent-mode.md"
+  - ".spec/proposals/motivation-coach-agent-mode.md"
+  - ".spec/proposals/ai-presentation-site-tool.md"
+  - ".spec/proposals/launch-youtube-channel.md"
+  - ".spec/proposals/lightrag-investigation.md"
+  - ".spec/proposals/memory-research-bundle.md"
+  - "scripts/harness/harness_inspect.py (read-only inspector)"
+  - "private-brain/brain.db schema migration (workstream + proposal_path columns, backfilled)"
+  - ".spec/scratch/brain-audit-2026-04-22/findings.md"
+  - ".spec/scratch/brain-audit-2026-04-22/apply_abe.py"
+  - ".spec/scratch/brain-audit-2026-04-22/harness_phase1_migration.py"
+  - ".spec/scratch/brain-audit-2026-04-22/gen_triage_final.py"
+  - ".spec/scratch/brain-audit-2026-04-22/triage.md (with user-filled verdicts)"
+  - ".spec/scratch/brain-audit-2026-04-22/apply_triage.py"
+
+stats:
+  brain_entries_total: 115
+  inbox_before: 39
+  inbox_after: 10
+  status_null_before: 96
+  status_null_after: 5
+  status_done_before: 5
+  status_done_after: 29
+  status_archived_after: 23
+  status_someday_after: 27
+  proposal_path_linked: 26
+  proposals_created_this_session: 11
+  triage_decisions_applied: 69
+  recommendations_accepted: 50
+  recommendations_overridden: 19
