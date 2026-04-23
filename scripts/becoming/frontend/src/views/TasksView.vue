@@ -13,6 +13,7 @@ const agentOnline = ref(false)
 const loading = ref(true)
 const activeTab = ref<'tasks' | 'brain'>('brain')
 const brainFilter = ref('')
+const showParked = ref(false)
 const toast = ref('')
 
 // Task form
@@ -96,7 +97,7 @@ async function load() {
   ]
   if (hasBrain.value) {
     promises.push(
-      api.listBrainEntries().then(r => {
+      api.listBrainEntries(undefined, showParked.value).then(r => {
         brainEntries.value = r.entries
         agentOnline.value = r.agent_online
       })
@@ -305,7 +306,7 @@ function startPolling() {
   pollTimer = setInterval(async () => {
     if (!hasBrain.value || activeTab.value !== 'brain') return
     try {
-      const r = await api.listBrainEntries()
+      const r = await api.listBrainEntries(undefined, showParked.value)
       brainEntries.value = r.entries
       agentOnline.value = r.agent_online
     } catch { /* silent */ }
@@ -568,7 +569,7 @@ onUnmounted(stopPolling)
     <!-- Brain entries view -->
     <template v-else-if="hasBrain && activeTab === 'brain'">
       <!-- Category filter chips -->
-      <div v-if="brainEntries.length > 0" class="flex flex-wrap gap-2 mb-4">
+      <div v-if="brainEntries.length > 0" class="flex flex-wrap items-center gap-2 mb-4">
         <button
           @click="brainFilter = ''"
           class="px-3 py-1 text-xs rounded-full transition-colors"
@@ -585,6 +586,15 @@ onUnmounted(stopPolling)
         >
           {{ cat }} ({{ entries.length }})
         </button>
+        <label class="ml-auto inline-flex items-center gap-1.5 text-xs text-gray-600 cursor-pointer select-none">
+          <input
+            type="checkbox"
+            :checked="showParked"
+            @change="showParked = ($event.target as HTMLInputElement).checked; load()"
+            class="accent-sky-500"
+          />
+          Show parked (someday / archived)
+        </label>
       </div>
 
       <div v-if="brainEntries.length === 0" class="text-center py-12 text-gray-500">

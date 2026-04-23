@@ -33,13 +33,15 @@
 
 | WS | Item | Status | Ref |
 |----|------|--------|-----|
-| WS2 | Brain status-aware-views ecosystem parity (ibeco.me + brain-app) | 📝 proposed Apr 23 | [brain-status-aware-views-ecosystem-parity.md](../.spec/proposals/brain-status-aware-views-ecosystem-parity.md) |
+| WS2 | Brain status-aware-views ecosystem parity (ibeco.me + brain-app) | ✅ Phases 1+2 shipped Apr 23; Phase 3 verify post-deploy | [brain-status-aware-views-ecosystem-parity.md](../.spec/proposals/brain-status-aware-views-ecosystem-parity.md) |
+| WS2 | Brain manual stage transitions (refined Apr 23) | 📝 ready to build (audit done) | [brain-manual-stage-transitions.md](../.spec/proposals/brain-manual-stage-transitions.md) |
+| WS2 | Brain non-pipeline projects (refined Apr 23) | 📝 ready to build (audit done) | [brain-non-pipeline-projects.md](../.spec/proposals/brain-non-pipeline-projects.md) |
 | WS2 | Brain Inline Panel + Nudge Bot Controls | ▶ P1 next | [brain-inline-panel.md](../.spec/proposals/brain-inline-panel.md) |
 | WS2 | Brain Project-Kanban Phase 4c | ▶ next | [brain-project-kanban.md](../.spec/proposals/brain-project-kanban.md) |
 | WS5 | Token Efficiency & Memory v2 | ⏸ awaiting refresh | [token-efficiency.md](../.spec/proposals/token-efficiency.md) |
 | WS5 | Brain ↔ VS Code Bridge | � building (Phase 0 shipped Apr 22) | [brain-vscode-bridge/main.md](../.spec/proposals/brain-vscode-bridge/main.md) |
-| WS2 | Brain non-pipeline projects | 📝 proposed Apr 22 | [brain-non-pipeline-projects.md](../.spec/proposals/brain-non-pipeline-projects.md) |
-| WS2 | Brain manual stage transitions | 📝 proposed Apr 22 | [brain-manual-stage-transitions.md](../.spec/proposals/brain-manual-stage-transitions.md) |
+| WS2 | Brain non-pipeline projects | 📝 proposed Apr 22 (refined Apr 23) | [brain-non-pipeline-projects.md](../.spec/proposals/brain-non-pipeline-projects.md) |
+| WS2 | Brain manual stage transitions | 📝 proposed Apr 22 (refined Apr 23) | [brain-manual-stage-transitions.md](../.spec/proposals/brain-manual-stage-transitions.md) |
 | WS2 | Johari window agent mode | 📝 proposed Apr 22 | [johari-window-agent-mode.md](../.spec/proposals/johari-window-agent-mode.md) |
 | WS2 | Motivation coach agent mode | 📝 proposed Apr 22 | [motivation-coach-agent-mode.md](../.spec/proposals/motivation-coach-agent-mode.md) |
 | WS3 | LightRAG investigation | 📝 proposed Apr 22 | [lightrag-investigation.md](../.spec/proposals/lightrag-investigation.md) |
@@ -68,6 +70,7 @@
 
 | WS | Item | Shipped | Notes |
 |----|------|---------|-------|
+| WS2 | brain status-aware-views ecosystem parity (Phases 1+2) | Apr 23 | ibeco.me `ListBrainEntries` honors `?include_parked=1` (default off). brain-app history `_showParked` covers both someday+archived. Phase 3 cross-surface check pending Dokploy deploy. |
 | WS5 | Opus 4.7 harness tuning | Apr 23 | Foresight & Adjacent Surfaces section in copilot-instructions.md, dev.agent.md update, Council Moment extended to dev/debug/ux. Diagnosis + fix for literalism failures. |
 | WS2 | brain-status-aware-views (Phases 1-3 + Dashboard) | Apr 23 | All planned phases shipped. Phase 4 (Capture semantic) deferred. Server-side `/api/entries` filter (`?include_parked=1` opts in). Project board toggle relocated to visible header checkbox. Dashboard agent surfaces (routable/review/your-turn) filter parked server-side. |
 | WS2 | brain-status-field-on-list-queries (full SELECT audit) | Apr 23 | All 6 list queries now expose `status`: ListAll, ListCategory, ListEntriesByProject, ListByRouteStatus, ListUnassigned, ListPipeline. Future filter UIs no longer guess data layer contracts. |

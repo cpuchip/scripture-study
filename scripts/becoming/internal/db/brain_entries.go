@@ -142,13 +142,18 @@ func (db *DB) BulkUpsertBrainEntries(userID int64, entries []*BrainEntry) error 
 }
 
 // ListBrainEntries returns all cached brain entries for a user, newest first.
-func (db *DB) ListBrainEntries(userID int64, category string) ([]*BrainEntry, error) {
+// When includeParked is false, entries with status "someday" or "archived" are
+// hidden — mirroring brain.exe's /api/entries default (shipped 04-23).
+func (db *DB) ListBrainEntries(userID int64, category string, includeParked bool) ([]*BrainEntry, error) {
 	query := `SELECT id, title, category, body, status, action_done, due_date, next_action, tags, subtasks, source, created_at, updated_at, synced_at
 		FROM brain_entries WHERE user_id = ?`
 	args := []any{userID}
 	if category != "" {
 		query += ` AND category = ?`
 		args = append(args, category)
+	}
+	if !includeParked {
+		query += ` AND (status IS NULL OR status NOT IN ('someday','archived'))`
 	}
 	query += ` ORDER BY updated_at DESC`
 

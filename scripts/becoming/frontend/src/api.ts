@@ -390,8 +390,11 @@ export const api = {
   },
 
   // Brain entries (cached from brain.exe via relay)
-  listBrainEntries(category?: string) {
-    const params = category ? `?category=${category}` : ''
+  listBrainEntries(category?: string, includeParked?: boolean) {
+    const parts: string[] = []
+    if (category) parts.push(`category=${encodeURIComponent(category)}`)
+    if (includeParked) parts.push('include_parked=1')
+    const params = parts.length ? `?${parts.join('&')}` : ''
     return request<BrainEntriesResponse>(`/brain/entries${params}`)
   },
 

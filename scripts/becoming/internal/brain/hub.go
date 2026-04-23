@@ -655,7 +655,9 @@ func (h *Hub) handleEntriesSync(userID int64, data []byte) {
 // handleEntriesRequest processes an entries_request message from the app,
 // returning cached brain entries over the WebSocket.
 func (h *Hub) handleEntriesRequest(sender *conn) {
-	entries, err := h.db.ListBrainEntries(sender.userID, "")
+	// Pass includeParked=true: the app needs the full local cache; it filters
+	// parked entries client-side (see brain-app history_screen.dart _showParked).
+	entries, err := h.db.ListBrainEntries(sender.userID, "", true)
 	if err != nil {
 		log.Printf("[brain] entries_request error (user %d): %v", sender.userID, err)
 		return
@@ -687,7 +689,8 @@ func (h *Hub) HandleBrainEntries(w http.ResponseWriter, r *http.Request) {
 	}
 
 	category := r.URL.Query().Get("category")
-	entries, err := h.db.ListBrainEntries(userID, category)
+	includeParked := r.URL.Query().Get("include_parked") == "1" || r.URL.Query().Get("include_parked") == "true"
+	entries, err := h.db.ListBrainEntries(userID, category, includeParked)
 	if err != nil {
 		log.Printf("[brain] brain entries error: %v", err)
 		http.Error(w, "internal error", http.StatusInternalServerError)

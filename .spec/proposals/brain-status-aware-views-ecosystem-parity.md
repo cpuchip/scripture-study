@@ -1,8 +1,9 @@
 ---
 workstream: WS2
-status: proposed
+status: shipped Phases 1+2 (2026-04-23); Phase 3 verification pending Dokploy deploy
 brain_project: 6
 created: 2026-04-23
+shipped: 2026-04-23
 binding_problem: |
   brain.exe (desktop) now hides someday/archived entries by default after 04-23 shipping.
   But the brain ecosystem has three surfaces: brain.exe, ibeco.me (web cache), and brain-app (Flutter mobile).
@@ -21,11 +22,11 @@ predecessor:
 
 ## Implementation Status
 
-| Phase | Surface | Codebase | Effort | Status |
-|-------|---------|----------|--------|--------|
-| 1 | ibeco.me web TasksView | `scripts/becoming/` | ~30 min | proposed |
-| 2 | brain-app history screen | `scripts/brain-app/` | ~20 min | proposed |
-| 3 | (verify) Migration / data integrity | both | ~10 min | proposed |
+| Phase | Surface | Codebase | Status | Notes |
+|-------|---------|----------|--------|-------|
+| 1 | ibeco.me web TasksView | `scripts/becoming/` | ✅ shipped 04-23 | `ListBrainEntries(userID, category, includeParked)` signature change. `?include_parked=1` opts in. WebSocket `entries_request` flow passes `true` (mobile filters locally). "Show parked (someday / archived)" checkbox in TasksView brain tab header. |
+| 2 | brain-app history screen | `scripts/brain-app/` | ✅ shipped 04-23 | `_showArchived` renamed to `_showParked`, filter broadened to cover both `someday` and `archived`. Toggle icon tooltip updated. |
+| 3 | Cross-surface verification | both | ⏳ build/type green; production cross-surface check pending Dokploy auto-deploy | Inverse hypothesis (Agans Rule 9) doable post-deploy: triage one entry to `someday`, verify it disappears from web/mobile defaults, reappears with toggle on. |
 
 ## Background
 
