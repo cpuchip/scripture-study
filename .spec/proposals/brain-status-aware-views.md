@@ -56,11 +56,15 @@ The fix is small and concentrated in three files. The expensive part is taste de
 | Status | CaptureView Recent | EntriesView default | ProjectBoard lanes | Search |
 |--------|---------------------|----------------------|---------------------|--------|
 | `active` (or NULL) | shown | shown | shown | shown |
-| `done` | hidden after N days | shown with strikethrough | shown in Done lane | shown |
+| `done` | shown if completed within 7 days; older = collapsed | shown if completed within 30 days by default; older = collapsed | shown in Done lane (last 10, older collapsed) | shown |
 | `waiting` | shown with badge | shown | shown in Working lane | shown |
 | `someday` | **hidden** | hidden by default | collapsed footer | shown |
 | `archived` | **hidden** | hidden by default | collapsed footer | shown |
 | `roadmap` | shown with badge | shown | shown in Working lane | shown |
+
+### Done roll-off
+
+Done is its own thing. Hiding it entirely steals the satisfaction of seeing finished work. Showing all of it forever buries the active stuff. Compromise: a recency window (7 days for CaptureView, 30 days for EntriesView, last-10 cap for the project board's Done lane). Older done entries collapse into the same "X parked" footer with a checkbox to show all. The window respects `updated_at` (since that's when status flipped to done in practice).
 
 ### Toggle UX
 
@@ -146,6 +150,6 @@ This is more opinionated and could land later as a separate refinement.
 
 ## Open Questions
 
-1. Should `done` entries auto-hide from CaptureView Recent after N days? (Lean: yes, after 7 days.)
+1. Should `done` entries auto-hide from CaptureView Recent after N days? (**Decided 2026-04-22:** yes, 7 days for Capture, 30 days for Entries, last-10 cap for project board Done lane. "Show all" toggle reveals older.)
 2. Should the project board collapse `someday`/`archived` per-lane or as one footer? (Lean: one footer beneath the board, simpler.)
-3. Does the API server already accept a status filter, or is this a new param? (Verify first thing in Phase 2.)
+3. Does the API server already accept a status filter, or is this a new param? (**Verified 2026-04-22:** no, it does not. Phase 2 must add it server-side. Phase 1 stays purely client-side.)
