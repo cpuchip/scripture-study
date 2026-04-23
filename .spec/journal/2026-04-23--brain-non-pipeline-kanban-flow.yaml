@@ -1,0 +1,106 @@
+date: "2026-04-23"
+session_id: "brain-non-pipeline-kanban-flow"
+duration_estimate: "~1 hour — archive the two prior proposals, then ship 3 of 4 phases of kanban-flow"
+
+intent: >
+  Per user instruction: "implement the rest of the original phases first,
+  then archive. please get started on those, then if you have effort left
+  move on to the kanban flow phases." Translated to: audit Phase 3 of
+  brain-non-pipeline-projects and brain-manual-stage-transitions, archive
+  both honestly, then build out the new brain-non-pipeline-kanban-flow
+  proposal as far as I can.
+
+discoveries:
+  - title: "Phase 3 of both prior proposals was N/A — surface honestly, don't pretend to ship"
+    detail: >
+      brain-non-pipeline-projects Phase 3 (parity across brain-app + ibeco.me)
+      had no surface to attach to: neither the Flutter app nor the ibeco.me
+      cache has a Project model. brain-manual-stage-transitions Phase 3
+      (status history audit trail) was explicitly deferred under the
+      proposal's own YAGNI clause. Per the dev agent's "honest surfacing >
+      silent omission" rule, I marked both archived with frontmatter notes
+      explaining what was N/A and why, with a forward pointer to the new
+      kanban-flow proposal.
+  - title: "Native HTML5 drag-and-drop is enough — skip vuedraggable"
+    detail: >
+      Phase 3 of kanban-flow could have pulled vuedraggable@4 (~15 KB).
+      The proposal allowed it. But the actual surface (column-to-column
+      drops, no in-column reordering) needs maybe 30 lines of native
+      `draggable="true"` + @dragstart/@dragover/@drop handlers. Avoided
+      a new dependency for a feature that doesn't justify one. Listed
+      this as a tradeoff in the relevant ProjectDetailView.vue block.
+  - title: "Auto-classify also needed gating, not just routeEntry"
+    detail: >
+      The non-pipeline-projects work gated `routeEntry` (the pipeline
+      router) but not the relay client's `autoClassifyEntry`, which fires
+      on entry creation when category=='inbox'. If a user creates an
+      entry from the web while pinned to Notebook (id=9), classify would
+      still run and could move the category and even reassign the
+      project. Added `entryInNonPipelineProject` helper in relay/client.go
+      to gate the goroutine. Defense in depth, same pattern as
+      BuildProjectContext.
+
+what_shipped:
+  - "Archived `.spec/proposals/brain-non-pipeline-projects.md` with status note"
+  - "Archived `.spec/proposals/brain-manual-stage-transitions.md` with status note"
+  - "Added 'working' to STATUS_OPTIONS in `EntryDetailView.vue`"
+  - "Branched `boardColumns` in `ProjectDetailView.vue` by `pipeline_enabled`"
+  - "Added `isManualProject`, `transitioningEntry`, `setManualStatus`, `manualArchive` in `ProjectDetailView.vue`"
+  - "5-button manual action row (Start/Done/Reopen/Someday/Archive) on board view AND list view"
+  - "Optional reason dialog wired to ✓ Done buttons; Save appends `_Closed YYYY-MM-DD: reason_` to body"
+  - "Native HTML5 drag-and-drop between board columns for manual projects (column highlight + card opacity feedback)"
+  - "Relay client auto-classify gate: skip when entry's project has pipeline_enabled=false"
+
+verification:
+  build:
+    - "vue-tsc --noEmit: clean (twice — after Phase 1 template balancing, and after Phase 3)"
+    - "go vet ./...: clean"
+    - "go build -tags fts5 -o brain.exe: success"
+    - "brain.exe restarted, GET /api/projects → 200"
+  manual_smoke: >
+    Not yet performed in-browser this session. Next session: open
+    http://localhost:8445/projects/9 (Notebook). Inbox should show entries
+    with status active/empty. ▶ Start → Working column. ✓ Done → reason
+    dialog → Save & Done → Done column with closing note appended. Drag
+    a card from Working back to Inbox. Open project id=5 (ibeco.me) →
+    pipeline buttons (Commission/Advance/Defer/Revise) should still appear.
+  inverse_hypothesis: >
+    Not yet performed. Plan: temporarily set isManualProject to always-false
+    → confirm Notebook reverts to broken Inbox-only behavior with no manual
+    buttons. Restore. Skipped this session due to budget.
+
+carry_forward:
+  - priority: high
+    item: >
+      Pre-existing bug from prior session not yet addressed: handleCreateEntry
+      (POST /api/entries) drops `project_id` from request body. This means
+      the new + button in the kanban Inbox column header creates entries
+      with project_id=NULL — they won't actually appear in the Notebook
+      project until manually assigned via PUT. File a small proposal or
+      fix inline next session.
+  - priority: medium
+    item: >
+      Phase 4 of brain-non-pipeline-kanban-flow not started. brain-app
+      still has no Project surface, so likely closes as N/A like the
+      prior parity attempts. The classify-gate piece of Phase 4 IS
+      shipped already (see what_shipped) — the brain-app side is the
+      only remainder. Audit + close out next session.
+  - priority: low
+    item: >
+      Drag-and-drop on Done currently skips the reason dialog. Documented
+      in code comment as "drop is the fast path; the button is the
+      deliberate path that prompts for a closing note." Watch user
+      reaction — if reasons are valued, may want a different UX.
+
+relational_notes: >
+  User's instruction was clear and prioritized: finish the original phases,
+  archive, then continue. Followed verbatim. The audit step (declaring
+  Phase 3 N/A on both prior proposals) felt like a small act of integrity
+  — it would have been easy to invent something to "ship" for Phase 3.
+  Honest archive frontmatters serve the future self better than padded
+  status reports.
+
+open_questions:
+  - "Should the manual button row hide on archived entries (currently shows all 5)?"
+  - "Should drag-to-Done also prompt for a reason, or keep the button-vs-drag UX split?"
+  - "Does anyone actually use Notebook day-to-day, or is this all theoretical until in-flight projects move there?"

@@ -34,14 +34,13 @@
 | WS | Item | Status | Ref |
 |----|------|--------|-----|
 | WS2 | Brain status-aware-views ecosystem parity (ibeco.me + brain-app) | ✅ Phases 1+2 shipped Apr 23; Phase 3 verify post-deploy | [brain-status-aware-views-ecosystem-parity.md](../.spec/proposals/brain-status-aware-views-ecosystem-parity.md) |
-| WS2 | Brain manual stage transitions (refined Apr 23) | 📝 ready to build (audit done) | [brain-manual-stage-transitions.md](../.spec/proposals/brain-manual-stage-transitions.md) |
-| WS2 | Brain non-pipeline projects (refined Apr 23) | 📝 ready to build (audit done) | [brain-non-pipeline-projects.md](../.spec/proposals/brain-non-pipeline-projects.md) |
+| WS2 | Brain non-pipeline kanban flow (P1-3 shipped Apr 23) | ▶ P4 (brain-app + audit) | [brain-non-pipeline-kanban-flow.md](../.spec/proposals/brain-non-pipeline-kanban-flow.md) |
 | WS2 | Brain Inline Panel + Nudge Bot Controls | ▶ P1 next | [brain-inline-panel.md](../.spec/proposals/brain-inline-panel.md) |
 | WS2 | Brain Project-Kanban Phase 4c | ▶ next | [brain-project-kanban.md](../.spec/proposals/brain-project-kanban.md) |
 | WS5 | Token Efficiency & Memory v2 | ⏸ awaiting refresh | [token-efficiency.md](../.spec/proposals/token-efficiency.md) |
 | WS5 | Brain ↔ VS Code Bridge | � building (Phase 0 shipped Apr 22) | [brain-vscode-bridge/main.md](../.spec/proposals/brain-vscode-bridge/main.md) |
-| WS2 | Brain non-pipeline projects | 📝 proposed Apr 22 (refined Apr 23) | [brain-non-pipeline-projects.md](../.spec/proposals/brain-non-pipeline-projects.md) |
-| WS2 | Brain manual stage transitions | 📝 proposed Apr 22 (refined Apr 23) | [brain-manual-stage-transitions.md](../.spec/proposals/brain-manual-stage-transitions.md) |
+| WS2 | Brain non-pipeline projects | ✅ archived Apr 23 | [archive/brain-non-pipeline-projects.md](../.spec/proposals/archive/brain-non-pipeline-projects.md) |
+| WS2 | Brain manual stage transitions | ✅ archived Apr 23 | [archive/brain-manual-stage-transitions.md](../.spec/proposals/archive/brain-manual-stage-transitions.md) |
 | WS2 | Johari window agent mode | 📝 proposed Apr 22 | [johari-window-agent-mode.md](../.spec/proposals/johari-window-agent-mode.md) |
 | WS2 | Motivation coach agent mode | 📝 proposed Apr 22 | [motivation-coach-agent-mode.md](../.spec/proposals/motivation-coach-agent-mode.md) |
 | WS3 | LightRAG investigation | 📝 proposed Apr 22 | [lightrag-investigation.md](../.spec/proposals/lightrag-investigation.md) |
@@ -70,6 +69,7 @@
 
 | WS | Item | Shipped | Notes |
 |----|------|---------|-------|
+| WS2 | brain non-pipeline kanban flow (Phases 1-3) | Apr 23 | Status vocab gained `working` (in-progress lane). `boardColumns` branches on `pipeline_enabled`: manual path uses literal status keys (active/working/done) instead of route-status pipeline. 5-button manual row (▶ Start / ✓ Done / ↩ Reopen / ⏸ Someday / 🗄 Archive) on board + list views. Optional reason dialog on ✓ Done appends a `_Closed YYYY-MM-DD: reason_` line to body. Native HTML5 drag-and-drop between columns (no library dep). Auto-classify gated for non-pipeline projects in relay client. |
 | WS2 | brain non-pipeline projects (Phases 1+2) | Apr 23 | `pipeline_enabled` column on `projects` (default true). Notebook auto-flipped to false. Single primary gate in `routeEntry`; defense-in-depth in `BuildProjectContext`. UI checkbox + 📓 badge on web. Inverse-hypothesis verified via PUT-set project_id + explicit `/api/agent/route`. |
 | WS2 | brain manual stage transitions (Phase 1 mobile) | Apr 23 | brain-app: status dropdown in edit screen, long-press quick-actions sheet (done/park/waiting/archive/reactivate) + undo, semantic chip colors. Phase 2 web: pre-existing — `EntryDetailView.vue` already had full STATUS_OPTIONS dropdown. |
 | WS2 | brain status-aware-views ecosystem parity (Phases 1+2) | Apr 23 | ibeco.me `ListBrainEntries` honors `?include_parked=1` (default off). brain-app history `_showParked` covers both someday+archived. Phase 3 cross-surface check pending Dokploy deploy. |

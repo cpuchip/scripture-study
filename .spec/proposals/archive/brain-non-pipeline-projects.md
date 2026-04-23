@@ -1,6 +1,6 @@
 ---
 title: Brain — Non-Pipeline Projects
-status: shipped Phase 1+2 (2026-04-23)
+status: shipped (2026-04-23) — Phase 1 backend + Phase 2 web frontend. Phase 3 (brain-app + ibeco.me parity) audited as N/A: neither surface has a Project model yet, so there's nothing to attach a `pipeline_enabled` badge to. Revisit if/when those surfaces gain project awareness. Followup work continues in `brain-non-pipeline-kanban-flow.md`.
 workstream: WS2 Brain UX
 created: 2026-04-22
 refined: 2026-04-23

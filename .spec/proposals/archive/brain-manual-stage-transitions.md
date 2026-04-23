@@ -1,6 +1,6 @@
 ---
 title: Brain — Manual Stage Transitions
-status: shipped Phase 1 mobile (2026-04-23); Phase 2 web pre-existing
+status: shipped (2026-04-23) — Phase 1 mobile + Phase 2 web (pre-existing). Phase 3 (status history audit trail) explicitly deferred per the proposal's own YAGNI clause. Followup work continues in `brain-non-pipeline-kanban-flow.md`.
 workstream: WS2 Brain UX
 created: 2026-04-22
 refined: 2026-04-23
