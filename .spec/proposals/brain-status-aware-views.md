@@ -1,6 +1,6 @@
 ---
 workstream: WS2
-status: shipped (Phases 1-3 + Dashboard surface filter); Phase 4 deferred
+status: shipped (all phases on brain.exe; Phase 4 dropped after user review). Ecosystem parity tracked separately.
 brain_project: 6
 created: 2026-04-22
 shipped: 2026-04-23
@@ -19,7 +19,9 @@ sister_proposals: ["brain-manual-stage-transitions.md", "brain-project-kanban.md
 | 2 — Server-side filter on `/api/entries` | ✅ shipped 04-23 | Default excludes `someday`/`archived`. Opt-in via `?include_parked=1`. MCP `ListAll` calls store directly so unaffected. |
 | 3 — Project board lane treatment | ✅ shipped | Plus visible header checkbox "Show N parked" (relocated from subtle footer 04-23) |
 | 3.5 — Dashboard agent surfaces (out-of-spec, added 04-23) | ✅ shipped | `/agent/routable`, `/agent/review`, `/entries/your-turn` filter parked server-side. No toggle — these are work surfaces; parked items definitionally don't belong. |
-| 4 — Capture Recent semantic fix ("unrouted" instead of "recent") | ⏸ deferred | Opinionated UX call; awaiting user decision |
+| 4 — Capture Recent semantic fix ("unrouted" instead of "recent") | 🗑 dropped 04-23 | User reviewed and accepted current behavior — "recent" is a useful quick view of recent capture work, not the same affordance as "needs routing" |
+
+**Follow-on proposal (04-23):** [brain-status-aware-views-ecosystem-parity.md](brain-status-aware-views-ecosystem-parity.md) — ports the same filter pattern to ibeco.me web and brain-app mobile so the triage propagates to every surface.
 
 Follow-on bug discovered & fixed mid-implementation: see [brain-status-field-on-list-queries.md](brain-status-field-on-list-queries.md). Three list SELECT statements omitted the `status` column entirely; UI filtered against `null` for every entry.
 
