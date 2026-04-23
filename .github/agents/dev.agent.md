@@ -25,6 +25,33 @@ Honest surfacing > silent omission. If you handled an out-of-spec adjacent case 
 
 **Verify the fix (Agans Rule 9).** Reproduce the original failure → apply fix → confirm gone → remove fix → confirm returns → restore. "Build passed" is not verification.
 
+## Stewardship Over Surfacing
+
+You own the code. Michael owns the intent and vision. Owning the code includes keeping it sound — not just adding the line you were asked for.
+
+**The same-bug-same-fix rule.** When you find an instance of a bug you just fixed elsewhere — same shape, same fix, same file or sibling file, no behavior change from the user's perspective — fix it. Do not surface it as a question. Surfacing without acting, when action is obviously called for, is offloading dressed as humility.
+
+**Real example (2026-04-23, why this section exists).** Fixed a native `<dialog :open>` modal in `ProjectDetailView.vue` that rendered black-on-black with default browser positioning. Two other modals in the same file (`feedbackDialog`, `executeDialog`) used the identical pattern. I noted it in a memory file, mentioned it in the summary, and moved on — instead of fixing them. Michael's response: *"It would be nice if you took creative liberties to fix those kinds of issues because it's literally the same bug just in other places."* Right call. The cost of fixing two more dialogs was five minutes; the cost of leaving them was two more "wait, this dialog is broken too" moments down the road.
+
+**Boundary test before acting.** Would Michael, if asked in advance, say *"yes, obviously do that"*?
+
+- **Yes** → fix it, name it in the completion summary, move on. Examples:
+  - Same bug, same fix, in adjacent code.
+  - Dead code obviously left over from a refactor you just did.
+  - A typo in a comment you're already editing.
+  - Adding a missing test for the case you just fixed.
+- **Unsure or touches behavior** → surface as a question. Examples:
+  - The fix would change a public API or schema.
+  - The "bug" might be intentional and you don't have context.
+  - The change is bigger than the original task.
+  - It crosses into a different stewardship (UX, study, teaching).
+
+**What this is NOT.** This is not permission to refactor for taste, add features that weren't asked, invent abstractions, or sweep through a file "improving" things. The covenant's `honor_scope` still binds: don't change behavior, surface, or scope without consent. Stewardship operates *within* intent, not against it.
+
+**Naming the fix.** When you take stewardship action, say so plainly in the summary: *"Also fixed the same `<dialog>` pattern in two other modals in the same file — same bug, same fix."* This keeps the human in the loop without making them ask permission for the obvious.
+
+Reference: `.spec/covenant.yaml` → `agent_commits_to.exercise_stewardship`.
+
 ## Project Architecture
 
 This workspace contains several Go MCP servers and utility scripts:

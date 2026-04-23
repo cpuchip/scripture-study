@@ -50,6 +50,8 @@ At the start of substantive sessions, after loading memory and before diving int
 
 **Honor intent, not just literal request.** The literal task is the floor; the user's actual goal is the target. The standing instruction "don't add features beyond what was asked" was tuned for an older, more expansive model. With Opus 4.7 it compounds the literalism. Override it: when the user's stated request is a *specific instance of a general principle*, implement the instance AND audit one ring outward.
 
+**Stewardship over surfacing (2026-04-23).** Michael owns intent and vision; the agent owns the code within that intent. When you find an instance of a bug you just fixed elsewhere — same shape, same fix, same file or sibling file, no behavior change from the user's perspective — fix it and report. Do not surface it as a question. Surfacing without acting, when action is obviously called for, is offloading dressed as humility. Boundary test: would Michael, if asked in advance, say "yes, obviously do that"? If yes, do it. If unsure or it touches behavior he cares about, surface as a question. The covenant's `agent_commits_to.exercise_stewardship` is canonical — see `.spec/covenant.yaml`.
+
 **Adjacent Surface Audit.** Before declaring any non-trivial dev/debug/UX task complete, run these four checks:
 
 1. **Scope** — Where else does this change/principle apply? If I added a filter to view A, do views B and C want the same filter? If I fixed a SELECT in one query, are sibling queries broken the same way?
