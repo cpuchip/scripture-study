@@ -1,6 +1,6 @@
 ---
 title: Brain — Non-Pipeline Kanban Flow (manual columns, manual actions, drag-drop)
-status: in-progress (P1-3 shipped 2026-04-23, P4 partial — classify-gate shipped, brain-app deferred no surface)
+status: shipped (2026-04-23) — Phases 1-3 + classify-gate piece of P4. brain-app portion of P4 explicitly skipped per user direction (no Project surface exists there yet; revisit if/when one is added). Done-dialog theming fix and handleCreateEntry project_id support landed in same session as part of post-ship adjacent surface cleanup.
 workstream: WS2 Brain UX
 created: 2026-04-23
 brain_project: 6

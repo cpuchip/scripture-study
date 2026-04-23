@@ -104,3 +104,28 @@ open_questions:
   - "Should the manual button row hide on archived entries (currently shows all 5)?"
   - "Should drag-to-Done also prompt for a reason, or keep the button-vs-drag UX split?"
   - "Does anyone actually use Notebook day-to-day, or is this all theoretical until in-flight projects move there?"
+
+closeout_addendum:
+  date: "2026-04-23 (later same day)"
+  trigger: "User used the dialog in real life and reported: black-on-black textarea, dialog was tiny in upper-left."
+  fixes_shipped:
+    - "Done dialog rewrite: native <dialog> → <div role='dialog'> wrapper matching New Entry pattern. Centered via flex inset-0, max-w-lg, text-gray-100 on the wrapper plus explicit text-gray-100 on the textarea. Now matches the visual weight + readability of the New Entry dialog."
+    - "handleCreateEntry now accepts `project_id` (createEntryRequest gained the field, handler calls SetEntryProject after InsertEntry since the entries table INSERT statement doesn't include project_id). api.ts createEntry signature updated. Verified single-call POST round-trips: POST {title, body, project_id:9} → entry.project_id == 9."
+    - "Phase 4 brain-app mirror skipped per user direction. Proposal archived."
+  lesson: >
+    The native <dialog> element with :open had two problems versus a plain
+    <div role='dialog'>: (1) browser UA stylesheet positions it absolutely
+    in the top-left and uses default text color (which was inheriting black
+    from somewhere despite the dark wrapper), and (2) Tailwind's text-gray-100
+    on the wrapper didn't cascade into the textarea. Lesson — for dark-theme
+    overlays, follow the existing pattern in the same file (here: New Entry
+    Dialog) instead of inventing a new one. The other dialog in the file
+    (feedbackDialog) has the same potential issue and uses the same <dialog>
+    pattern — it works in practice only because pipeline projects are dark
+    enough that nobody noticed. Watch for it.
+  agans_verification: >
+    Single-call POST verification: POST /api/entries {title, body,
+    project_id:9} → 201 Created with project_id=9 in response. Inverse
+    not run (would require setting project_id null and checking it stays
+    null — trivial, not done).
+
