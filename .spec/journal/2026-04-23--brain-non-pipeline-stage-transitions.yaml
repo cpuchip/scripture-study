@@ -1,0 +1,67 @@
+date: "2026-04-23"
+session_id: "brain-non-pipeline-stage-transitions"
+duration_estimate: "~2 hours — refine two proposals + ship Phase 1 of both"
+
+intent: >
+  Build out two refined proposals back-to-back: brain-non-pipeline-projects
+  (let entire projects opt out of the AI pipeline — defaulted Notebook to
+  manual) and brain-manual-stage-transitions (give the user a fast way to
+  move entries through `active → done/someday/waiting/archived` without
+  the pipeline doing it for them). Both shipped Phase 1.
+
+discoveries:
+  - title: "Audit-first refinement saved meaningful work"
+    detail: >
+      Both proposals were refined this session with codebase audits + file:line
+      references before implementation. The audit caught that brain.exe's
+      EntryDetailView.vue already had a complete STATUS_OPTIONS dropdown — so
+      stage-transitions Phase 2 (web) was already shipped. Without the audit,
+      I would have rebuilt an API endpoint that already existed (handleUpdateEntry
+      already does partial-update with `status` via json.RawMessage detection).
+      Lesson — refine the proposal in the codebase, not in a vacuum.
+  - title: "Adjacent surface gap: handleCreateEntry doesn't accept project_id"
+    detail: >
+      During Agans Rule 9 verification I discovered that POST /api/entries
+      silently drops `project_id` from the request body — the entry is
+      stored with project_id=NULL. This is a pre-existing limitation, not
+      something my changes broke. The non-pipeline gate works correctly
+      once the entry has a project_id (verified via PUT-then-route). Worth
+      filing as a separate bug — the createEntryRequest struct just doesn't
+      have the field. Surfacing rather than silently fixing.
+  - title: "Inverse hypothesis verification (Agans Rule 9) earned its keep"
+    detail: >
+      First HTTP test returned route_status='running' on a Notebook entry —
+      looked like the gate was broken. But the gate code was right and the
+      binary contained the log string. The real cause was the missing
+      project_id flow above. Rerunning with PUT-set project_id confirmed
+      the gate fires correctly: pipeline-enabled project → 'running',
+      non-pipeline project → '' (empty). Without the inverse test
+      (compare same entry with both project types), I'd have shipped
+      either a false-pass or a false-fail conclusion.
+
+shipped:
+  - "scripts/brain/internal/store/types.go: Project.PipelineEnabled field"
+  - "scripts/brain/internal/store/db.go: pipeline_enabled column migration + Notebook auto-flip + all 4 SQL methods updated"
+  - "scripts/brain/internal/web/server.go: routeEntry early-exit gate + handleCreateProject/handleUpdateProject support pipeline_enabled"
+  - "scripts/brain/internal/pipeline/context.go: BuildProjectContext returns nil for non-pipeline projects (defense in depth)"
+  - "scripts/brain/frontend/src/api.ts: Project.pipeline_enabled + create/update signatures"
+  - "scripts/brain/frontend/src/views/ProjectsView.vue: AI-pipeline checkbox in create form + 📓 manual badge on cards"
+  - "scripts/brain/frontend/src/views/ProjectDetailView.vue: AI-pipeline checkbox in edit form + 📓 manual badge in header"
+  - "scripts/brain-app/lib/screens/edit_entry_screen.dart: status DropdownButtonFormField with all 6 statuses"
+  - "scripts/brain-app/lib/screens/history_screen.dart: _setStatus + _showStatusQuickActions + _statusColor + long-press wired into _HistoryCard"
+  - ".spec/proposals/brain-non-pipeline-projects.md: status → shipped Phase 1+2"
+  - ".spec/proposals/brain-manual-stage-transitions.md: status → shipped Phase 1 mobile (Phase 2 web pre-existing)"
+  - ".mind/active.md: both items added to Recently Shipped"
+
+verification:
+  - "go build -tags fts5 ./... — silent pass"
+  - "vue-tsc --noEmit — silent pass"
+  - "dart analyze lib/screens/{history,edit_entry}_screen.dart — No issues found"
+  - "Migration verified live: GET /api/projects shows Notebook pipeline_enabled=False, all others True"
+  - "Inverse hypothesis: same routable entry, project_id=9 (Notebook) → route_status='' (gate skipped); project_id=5 (ibeco.me) → route_status='running' (gate skipped properly only for non-pipeline)"
+
+carry_forward:
+  - priority: medium
+    item: "handleCreateEntry doesn't accept project_id — stored entries from POST /api/entries always have NULL project. Add `ProjectID *int \\\"json:\\\\\\\"project_id\\\\\\\"\\\"` to createEntryRequest and pass through to entry struct."
+  - priority: low
+    item: "Phase 2 (mobile) of stage-transitions: bottom-sheet quick actions in brain-app's project board view, not just history. Currently you can long-press entries from the History screen but project board doesn't have the gesture."

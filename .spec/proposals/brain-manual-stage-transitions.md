@@ -1,6 +1,6 @@
 ---
 title: Brain — Manual Stage Transitions
-status: proposed (refined 2026-04-23)
+status: shipped Phase 1 mobile (2026-04-23); Phase 2 web pre-existing
 workstream: WS2 Brain UX
 created: 2026-04-22
 refined: 2026-04-23

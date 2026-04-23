@@ -1,6 +1,6 @@
 ---
 title: Brain — Non-Pipeline Projects
-status: proposed (refined 2026-04-23)
+status: shipped Phase 1+2 (2026-04-23)
 workstream: WS2 Brain UX
 created: 2026-04-22
 refined: 2026-04-23
