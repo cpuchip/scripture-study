@@ -1,10 +1,25 @@
 # Brain — Expose `status` Field on List Queries
 
-**Date:** 2026-04-22 (next session: 04-23)
-**Status:** Proposal → Active fix
+**Date:** 2026-04-22 (fixed: 04-23)
+**Status:** ✅ shipped
 **Severity:** Critical — silent data loss in UX. Two phases of UI work shipped against a non-existent field.
 
-## Symptom
+## Implementation Status (2026-04-23)
+
+| List query | Status | Used by |
+|------------|--------|---------|
+| `ListAll` | ✅ added `status` | `/api/entries` (Capture/Entries/Dashboard) + MCP `brain_recent` |
+| `ListCategory` | ✅ added `status` | `/api/entries?category=X` |
+| `ListEntriesByProject` | ✅ added `status` | `/api/projects/{id}/entries` (project detail) |
+| `ListByRouteStatus` | ✅ added `status` 04-23 | `/agent/review`, `/entries/your-turn` (dashboard surfaces) |
+| `ListUnassigned` | ✅ added `status` 04-23 | `/api/entries?unassigned=true` (parity, no behavior change) |
+| `ListPipeline` | ✅ added `status` 04-23 | Pipeline view (parity, no behavior change) |
+
+All list queries now expose `status` on the wire. Future filter UIs no longer need to guess the data layer's contract.
+
+---
+
+## Symptom (original)
 
 User set entries to `status='someday'` via the new entry-detail dropdown.
 Entry detail page shows the badge `someday ▾` correctly.

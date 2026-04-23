@@ -1,11 +1,13 @@
 # Active Context
 
-*Updated: 2026-04-22 · Previous: [archive/active-2026-04-21.md](archive/active-2026-04-21.md)*
+*Updated: 2026-04-23 · Previous: [archive/active-2026-04-21.md](archive/active-2026-04-21.md) (Apr 22 state was not snapshotted)*
 *Hardware: Dual 4090s desktop. NOCIX server live.*
 
 > **Edit rule:** Rewrite this file directly. Do NOT cat/append the old content first — its archive snapshot lives under `.mind/archive/`. Appending duplicates the document and doubles every memory load. (Bug: 2026-04-20.)
 
 > **Workstream taxonomy:** [.mind/workstreams.md](workstreams.md) is canonical: WS1–WS9, status enum, frontmatter convention. Every active proposal carries `workstream:` frontmatter. Read that file before tagging anything new.
+
+> **Model:** GitHub Copilot now runs Claude Opus 4.7 (was 4.6 through April). 4.7 is more literal — see Foresight & Adjacent Surfaces section in [.github/copilot-instructions.md](../.github/copilot-instructions.md). Adjacent Surface Audit is now standard before declaring dev/debug work complete.
 
 ---
 
@@ -65,8 +67,10 @@
 
 | WS | Item | Shipped | Notes |
 |----|------|---------|-------|
+| WS5 | Opus 4.7 harness tuning | Apr 23 | Foresight & Adjacent Surfaces section in copilot-instructions.md, dev.agent.md update, Council Moment extended to dev/debug/ux. Diagnosis + fix for literalism failures. |
+| WS2 | brain-status-aware-views (Phases 1-3 + Dashboard) | Apr 23 | All planned phases shipped. Phase 4 (Capture semantic) deferred. Server-side `/api/entries` filter (`?include_parked=1` opts in). Project board toggle relocated to visible header checkbox. Dashboard agent surfaces (routable/review/your-turn) filter parked server-side. |
+| WS2 | brain-status-field-on-list-queries (full SELECT audit) | Apr 23 | All 6 list queries now expose `status`: ListAll, ListCategory, ListEntriesByProject, ListByRouteStatus, ListUnassigned, ListPipeline. Future filter UIs no longer guess data layer contracts. |
 | WS2 | Brain audit 2026-04-22 | Apr 22 | 69 entries triaged. Personal merged into Notebook. inbox 39→10, status=NULL 96→5 |
-| WS2 | brain-status-aware-views | Apr 22 | New — read side of brain-manual-stage-transitions. Make `someday`/`archived` actually hide. Phase 1 = ~1hr client filter. |
 | WS5 | Brain↔VS Code bridge Phase 0 | Apr 22 | Schema migration (workstream + proposal_path columns). Read-only inspector at scripts/harness/harness_inspect.py |
 | WS5 | cleanup-2026-04 + part2 (all phases) | Apr 21-22 | Spec dedup, 19 proposals archived, workstream taxonomy + frontmatter convention, active.md rewritten |
 | WS5 | Voice/bias harness v2 | Apr 21 | em-dash budget, three-beat pivot, refrains, stats cite-count |

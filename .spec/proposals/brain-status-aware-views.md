@@ -1,11 +1,28 @@
 ---
 workstream: WS2
-status: proposed
+status: shipped (Phases 1-3 + Dashboard surface filter); Phase 4 deferred
 brain_project: 6
 created: 2026-04-22
+shipped: 2026-04-23
 binding_problem: Brain stores status verbs (someday, archived, done, waiting) but no view filters by them. After today's audit set 26 entries to someday and 23 to archived, the UI looks identical — the cleanup is invisible. Michael is still overwhelmed by an inbox that doesn't honor his own triage.
 related_brain_entries: ["22b8d8b2", "17749618"]
-sister_proposals: ["brain-manual-stage-transitions.md", "brain-project-kanban.md"]
+sister_proposals: ["brain-manual-stage-transitions.md", "brain-project-kanban.md", "brain-status-field-on-list-queries.md"]
+---
+
+# Brain — Status-Aware Views
+
+## Implementation Status (2026-04-23)
+
+| Phase | Status | Notes |
+|-------|--------|-------|
+| 1 — Capture + Entries client filter | ✅ shipped | `useStatusFilter` composable, per-view localStorage keys, "X hidden" badge |
+| 2 — Server-side filter on `/api/entries` | ✅ shipped 04-23 | Default excludes `someday`/`archived`. Opt-in via `?include_parked=1`. MCP `ListAll` calls store directly so unaffected. |
+| 3 — Project board lane treatment | ✅ shipped | Plus visible header checkbox "Show N parked" (relocated from subtle footer 04-23) |
+| 3.5 — Dashboard agent surfaces (out-of-spec, added 04-23) | ✅ shipped | `/agent/routable`, `/agent/review`, `/entries/your-turn` filter parked server-side. No toggle — these are work surfaces; parked items definitionally don't belong. |
+| 4 — Capture Recent semantic fix ("unrouted" instead of "recent") | ⏸ deferred | Opinionated UX call; awaiting user decision |
+
+Follow-on bug discovered & fixed mid-implementation: see [brain-status-field-on-list-queries.md](brain-status-field-on-list-queries.md). Three list SELECT statements omitted the `status` column entirely; UI filtered against `null` for every entry.
+
 ---
 
 # Brain — Status-Aware Views

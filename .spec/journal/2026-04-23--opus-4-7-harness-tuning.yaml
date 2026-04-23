@@ -143,8 +143,25 @@ work_artifacts:
   changed_files:
     - ".github/copilot-instructions.md  # added Foresight & Adjacent Surfaces section, extended Council Moment scope"
     - ".github/agents/dev.agent.md  # added Foresight Discipline section"
-    - "scripts/brain/internal/store/db.go  # added status to ListByRouteStatus SELECT"
-    - "scripts/brain/internal/web/server.go  # filter someday/archived in routable, review, your-turn handlers"
+    - "scripts/brain/internal/store/db.go  # added status to ListByRouteStatus, ListUnassigned, ListPipeline SELECTs"
+    - "scripts/brain/internal/web/server.go  # filter someday/archived in routable, review, your-turn, AND /api/entries (Phase 2). include_parked=1 opts in."
     - "scripts/brain/frontend/src/views/ProjectDetailView.vue  # checkbox toggle in header instead of footer link"
+    - ".spec/proposals/brain-status-aware-views.md  # frontmatter status: shipped + Implementation Status table (Phases 1-3 + Dashboard surface filter; Phase 4 deferred)"
+    - ".spec/proposals/brain-status-field-on-list-queries.md  # status: shipped + table of all 6 list queries now exposing status"
+    - ".mind/active.md  # rewritten for Apr 23, model migration note added"
   memory_updated:
     - "/memories/repo/project-conventions.md  # Model Migration: Opus 4.6 → 4.7 entry"
+
+phase2_followup:
+  context: >
+    After the harness tuning was applied, I went back to verify "did all our work
+    on brain this session get logged" per Michael's check-in. Found that
+    brain-status-aware-views.md Phase 2 (server-side /api/entries filter) was
+    deferred and never shipped, and brain-status-field-on-list-queries.md said
+    ListPipeline + ListUnassigned were "audit later" — never done.
+  shipped_followup:
+    - "Phase 2: handleListEntries now filters someday/archived by default. ?include_parked=1 opts in. Verified: 115→65 entries default, 115 with opt-in, 50 parked. MCP brain_recent unaffected (calls store directly)."
+    - "ListPipeline + ListUnassigned: status added to SELECT for parity. No behavior change yet — just exposes the field for future filter UIs and prevents the 'silent null' class of bug from recurring."
+  deferred_explicitly:
+    - "Phase 4 (CaptureView Recent → 'unrouted' semantic). Opinionated UX call. Awaiting Michael's input."
+
