@@ -66,6 +66,7 @@
 | WS | Item | Shipped | Notes |
 |----|------|---------|-------|
 | WS2 | Brain audit 2026-04-22 | Apr 22 | 69 entries triaged. Personal merged into Notebook. inbox 39→10, status=NULL 96→5 |
+| WS2 | brain-status-aware-views | Apr 22 | New — read side of brain-manual-stage-transitions. Make `someday`/`archived` actually hide. Phase 1 = ~1hr client filter. |
 | WS5 | Brain↔VS Code bridge Phase 0 | Apr 22 | Schema migration (workstream + proposal_path columns). Read-only inspector at scripts/harness/harness_inspect.py |
 | WS5 | cleanup-2026-04 + part2 (all phases) | Apr 21-22 | Spec dedup, 19 proposals archived, workstream taxonomy + frontmatter convention, active.md rewritten |
 | WS5 | Voice/bias harness v2 | Apr 21 | em-dash budget, three-beat pivot, refrains, stats cite-count |
