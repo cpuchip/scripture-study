@@ -62,37 +62,37 @@ That single verse is Moses 7:18 spoken in a different dialect. *No contention, o
 
 A weekly gathering to teach. Mutual imparting according to need. Walking uprightly. That is the structure of Zion in a forest, with no temple, no city, and four hundred and fifty people.
 
-What I notice: Alma is the de facto president of this body. He teaches, he ordains priests at a one-to-fifty ratio, he sets the gathering rhythm, he commands the imparting. But he does it inside a covenant the people have *clapped for joy* over. He is not building Zion *on top of* an unwilling congregation. He is naming and shaping a desire they already had. The cell forms because the desire was there and the leader gave it structure.
+Alma is the de facto president of this body. He teaches, he ordains priests at a one-to-fifty ratio, he sets the gathering rhythm, he commands the imparting. But he does it inside a covenant the people have *clapped for joy* over. He is not building Zion *on top of* an unwilling congregation. He is naming and shaping a desire they already had. The cell forms because the desire was there and the leader gave it structure.
 
 The early Christians show the same pattern at scale. Acts 2:42 lists the four practices that held them: "the apostles' doctrine and fellowship, and in breaking of bread, and in prayers." Verse 46 adds the structural detail: they continued daily "with one accord in the temple, and breaking bread from house to house." Both scales operating at once — the large gathering and the small. Acts 4:32 declares the result: "of one heart and of one soul." Acts 4:34 reports the outcome: "Neither was there any among them that lacked." Moses 7:18's third condition, tested in Jerusalem.
 
-Two scriptures, two cultures, one pattern. Zion forms in cells, propagates outward, manifests itself in shared substance and one-heartedness. The presidency *is* the cell. It is not the manager of Zion — it is one of the small bodies inside which Zion can actually be lived. If the presidency is not one heart and one mind, no organizational chart will rescue the ward.
+Two scriptures, two cultures, one pattern. Zion forms in cells, propagates outward, manifests itself in shared substance and one-heartedness. The presidency *is* the cell. It is not the manager of Zion; it is one of the small bodies inside which Zion can actually be lived. If the presidency is not one heart and one mind, no organizational chart will rescue the ward.
 
 ## III. The Teacher Council as Practice
 
 Last Sunday, in our teacher council meeting, the part of the agenda meant to take twenty minutes took twenty-five. We were supposed to spend that time sharing experiences and counseling together, then move into a fifteen-minute "learn something new" segment, then close with ten minutes of "what will you take away." Instead the counsel ran long, the learning ran shorter, and we barely got to "take away."
 
-I do not feel bad about that.
-
-What was happening in that overrun was the four practices of Acts 2:42 condensed into a single hour. We were holding the apostles' doctrine: *Teaching in the Savior's Way* and the principles of Christlike teaching. We were in fellowship; these are people I see every week, but in this meeting I was hearing what they actually carry as teachers. There was no breaking of bread, but there was something close: the mutual imparting that Mosiah 18:27 describes, the willingness to say "this is hard for me" and "here's what worked for me." And there were prayers, opening and closing, framing the rest as something held by the Lord.
+That trade was right. What was happening in the overrun was the four practices of Acts 2:42 condensed into a single hour. We were holding the apostles' doctrine: *Teaching in the Savior's Way* and the principles of Christlike teaching. We were in fellowship; these are people I see every week, but in this meeting I was hearing what they actually carry as teachers. There was no breaking of bread, but there was something close: the mutual imparting that Mosiah 18:27 describes, the willingness to say "this is hard for me" and "here's what worked for me." And there were prayers, opening and closing, framing the rest as something held by the Lord.
 
 The handbook gives the format. The handbook doesn't and can't make the meeting Zion. What makes a teacher council Zion-shaped is the same thing that made Mosiah 18 Zion-shaped: people willing to bear one another's burdens, looking with one eye toward the same Christ, imparting both temporally and spiritually according to need.
 
-There is a specific point I want to name. *Counseling together about how to teach the gospel of Jesus Christ* is itself a form of teaching the gospel of Jesus Christ. It isn't pre-teaching, or planning-to-teach. It is teaching. When the four of us sat in that room and tried to figure out how to apply *Teaching in the Savior's Way* to the actual challenges in our actual classes, the doctrine was being lived between us in real time. The counsel is the curriculum.
+*Counseling together about how to teach the gospel of Jesus Christ* is itself a form of teaching the gospel of Jesus Christ. It isn't pre-teaching, or planning-to-teach. It is teaching. When the four of us sat in that room and tried to figure out how to apply *Teaching in the Savior's Way* to the actual challenges in our actual classes, the doctrine was being lived between us in real time. The counsel is the curriculum.
 
 This is what Elder Ballard meant in 1994 when he described the bishop who finally opened the floor to his council and the effect "was like opening the floodgates of heaven." The floodgates language is Zion language. When a council functions as designed, *something heavenly flows*. The flow is not the result of the council. It is one of the ways the Lord comes to dwell. Moses 7:16 again: He comes, and then they are called Zion. The council is one of the rooms He is willing to come into.
 
 ## IV. Classes as Councils
 
-Here is the inference that Michael and I have been chewing on, which I want to present honestly as an inference and not a mandate. The handbook distinguishes between teacher council meetings (held quarterly or so, attended by teachers) and Sunday classes (attended by everyone). They are different forums with different purposes. Nothing I'm about to argue erases that distinction.
+The General Handbook distinguishes teacher council meetings (held quarterly, attended by teachers) from Sunday classes (attended by everyone). Different forums, different purposes. Nothing in this section erases that distinction.
 
-But the *spiritual structure* of a teacher council (counsel together, learn together, decide together how this lands in life) is, if you look at it without the labels, also the structure of every Zion gathering described in scripture. Mosiah 18:25 calls it gathering "to teach the people." Acts 2:46 calls it "with one accord in the temple, and breaking bread from house to house." Mosiah 18:29 calls it "imparting to one another both temporally and spiritually according to their needs and their wants." None of those describe a lecture. They describe a body that gathers, hears doctrine, and works out together how to live it.
+But the spiritual structure of a teacher council, stripped of its labels, is the same structure every Zion gathering in scripture wears. Mosiah 18:25 calls it gathering "to teach the people." Acts 2:46 calls it being "with one accord in the temple, and breaking bread from house to house." Mosiah 18:29 calls it "imparting to one another both temporally and spiritually according to their needs and their wants." None of those describe a lecture. They describe a body that gathers, hears doctrine, and works out together how to live it.
+
+A Sunday School class meets weekly. It holds the doctrine of the lesson. The people in the room are *living* that doctrine, or trying to. Acts 2:46 puts the large gathering and the small in one sentence — temple AND house to house — because the same people moved between scales without changing their posture. The hour of class is closer to "house to house" than we usually treat it. It is small enough that the people can know each other, address each other, mourn and comfort each other in real time.
 
 What if Sunday School classes (the actual classroom hour, not the teacher council) were held closer to that spiritual structure? Not "let's just have a discussion" instead of a lesson; that's the failure mode in the other direction. Closer to: a class that knows the doctrine being taught is the same doctrine the people in the room are *living*, and that the hour is a chance to counsel together about how the principles in this lesson can help with the daily struggles we have.
 
-The textual ground for this is mostly indirect — TSW's principles, Acts 2:46's house-to-house pattern, Ballard's floodgates, the Abraham 4:26 council pattern that runs from creation through every priesthood quorum and Relief Society meeting we hold. Scripture doesn't legislate classroom format. So I want to be careful: this isn't doctrine. It's a thoughtful application.
+The textual ground for this is mostly indirect. TSW's principles. Acts 2:46's house-to-house pattern. Ballard's floodgates. The Abraham 4:26 council pattern that runs from creation through every priesthood quorum and Relief Society meeting we hold. Scripture doesn't legislate classroom format. This isn't doctrine; it is a thoughtful application.
 
-But there is one piece of textual ground that is direct, and it's pointed in the opposite direction — at what we should *not* do. Look at how 4 Nephi describes the moment Zion broke:
+But there is one piece of textual ground that is direct, and it points at what Zion *stops* looking like:
 
 > "And they began to be divided into classes; and they began to build up churches unto themselves to get gain." — [4 Nephi 1:26](../gospel-library/eng/scriptures/bofm/4-ne/1.md)
 
@@ -132,9 +132,7 @@ The 200-year hinge in 4 Nephi was the moment the heart-condition shifted. Cook's
 
 ## VI. How a President Helps
 
-The user asked specifically (this is me, writing to myself): as a Sunday School president, how do I help my teachers? Section VI is the answer, in five patterns.
-
-The reframe from Section I has to govern this section. The president does not manufacture Zion. The president removes obstacles to the Lord coming and dwelling. With that constraint, here is what scripture and the predecessor studies actually authorize.
+So how does a Sunday School president help his teachers? The Section I reframe has to govern the answer: the president does not manufacture Zion; he removes obstacles to the Lord coming and dwelling. With that constraint, here is what scripture and the predecessor studies actually authorize.
 
 **1. Be one with your counselors first.** Before anything propagates outward, the cell has to be Zion. If your presidency of two or three people is not of one heart and one mind facing Christ, no amount of teacher-council scheduling will fix it. The first work is small, hidden, and unglamorous: praying together, counseling honestly, esteeming each other as Christ esteems each of you. D&C 82:19 names the operational test: "every man seeking the interest of his neighbor." If you are seeking your counselor's interest before your own, the cell is forming. If you are not, you are still pre-Zion.
 
@@ -154,9 +152,7 @@ There is no shortcut. A presidency that lives celestial law in miniature, esteem
 
 ## VII. Becoming — Next Sunday and Beyond
 
-I am teaching Sunday School this coming Sunday. The class will be larger than the teacher council was. Most of the people in the room will not have been in the council meeting where doctrine moved between us last week. Section IV's inference about classes-as-councils does not get implemented in one Sunday by an act of will.
-
-So the small thing first.
+I am teaching Sunday School this coming Sunday. The class will be larger than the teacher council was. Most of the people in the room will not have been in the council meeting where doctrine moved between us last week. Section IV's inference about classes-as-councils does not get implemented in one Sunday by an act of will. The small thing first.
 
 **One commitment for this Sunday:** When I teach, I will treat the class the way Mosiah 18:21 describes the covenant body — looking with one eye, hearts knit, in love one towards another. Practically, that means I will not perform a lesson at them. I will hold the doctrine in front of us and ask honest questions about how it lands in the lives of the people in the room. The hour is theirs to counsel as much as it is mine to teach.
 
@@ -165,8 +161,6 @@ So the small thing first.
 **One commitment for the teacher council, next time:** Less anxiety about the timing. More attention to whether the four practices of Acts 2:42 are actually present: doctrine, fellowship, breaking of bread (or its functional equivalent, mutual imparting), prayers. If those four are happening, the meeting is doing its work whether or not the segments balance to the minute.
 
 **One thing to watch in myself:** the 4 Nephi 1:24 diagnostic. Pride. Comparison. The temptation to evaluate my teachers against each other, or my classes against other classes, or my presidency against other presidencies. That is the first failure. If I catch it in myself, I have a chance. If I don't, the cascade has a head start.
-
-Zion is not a project to complete. It is a posture in which the Lord is willing to come and dwell. The presidency is a small body where that posture can be practiced first, before anything propagates anywhere. If we are one in the cell, Zion has already begun. The teachers and classes will feel it before they have words for it. If we are not one in the cell, no outward structure will compensate.
 
 The waters of Mormon were a fountain in a forest, four hundred and fifty souls, no temple, no city, no organizational chart. They were Zion because their hearts were knit and they were willing to bear one another's burdens and they imparted what they had. We have more than they had. The question is whether we will use it for the same thing.
 
