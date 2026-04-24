@@ -1,6 +1,6 @@
 # Active Context
 
-*Updated: 2026-04-23 · Previous: [archive/active-2026-04-21.md](archive/active-2026-04-21.md) (Apr 22 state was not snapshotted)*
+*Updated: 2026-04-23 (evening — steward cost discipline + research bump) · Previous: [archive/active-2026-04-21.md](archive/active-2026-04-21.md) (Apr 22 state was not snapshotted)*
 *Hardware: Dual 4090s desktop. NOCIX server live.*
 
 > **Edit rule:** Rewrite this file directly. Do NOT cat/append the old content first — its archive snapshot lives under `.mind/archive/`. Appending duplicates the document and doubles every memory load. (Bug: 2026-04-20.)
@@ -22,8 +22,9 @@
 
 - Copilot: 1500 premium/mo ($40 Pro+). Haiku 4.5=0.33x, Sonnet 4.6=1.0x, Opus 4.7=7.5x, GPT-5/5-mini/4.1/4o=0
 - Brain default model: gpt-5-mini (0x). Pipeline big = claude-opus-4.7 (7.5x)
+- **Brain stage defaults (Apr 23 cost discipline):** research=sonnet, plan=opus, spec=sonnet, execute=sonnet, verify=haiku (hard-pinned), revise=sonnet. Commission `Model` field = steward judgment only (gate eval). Revise loop capped at 2 → surface.
 - Claude Code: Pro $20/mo. 200K context. Project caching
-- Pipeline cost: research=0.33 + plan=1.0 = 1.33/entry
+- Pipeline cost: research=0.33 + plan=1.0 = 1.33/entry  *(stale — see stage defaults above)*
 - Active MCP servers: gospel-engine-v2 (engine.ibeco.me), webster, yt, byu-citations, becoming, exa-search
 - gospel-engine v2 hosted is the single canonical search backend; gospel-mcp + gospel-vec retired as fallback
 
@@ -69,6 +70,8 @@
 
 | WS | Item | Shipped | Notes |
 |----|------|---------|-------|
+| WS2 | brain-steward-cost-discipline | Apr 23 | Three-defect fix: (1) commission `Model` no longer overrides every stage — `modelForStage` helper routes through `config.StageDefaults`; `c.Model` reserved for `EvaluateGate` only. (2) Verify hard-pinned to haiku regardless of catalog. (3) Revise loop capped at 2 → surface `loop_limit_exceeded`. `RevisionCount` field on Commission with DB migration; "Revised X/2" badge on EntryDetailView. Same fix applied to `commissionWaitForExecution` (the loop that actually burned 105 credits). Best-case opus commission ~25 credits (was ~52); worst case ~28-35 (was unbounded, hit 105). Followup Apr 23: research bumped haiku→sonnet per Michael ("stronger model researching is good") — chain still escalates from sonnet, just one fewer step before quarantine. |
+| WS2 | brain-model-catalog-sot | Apr 23 | Single source of truth at `internal/config/models.go`: `Catalog` slice + `StageDefaults` map. Two pre-existing drifted maps (`modelCosts`, `AvailableModels`) and `steward.EscalationChain` now derive from it. New `GET /api/models` endpoint; frontend composable + dynamic dropdowns in CommissionDialog and ProjectDetailView inline commission. Default is now Claude Opus 4.7 (7.5×) instead of stale Opus 4.6 (3.0×). Stewardship sweep: same-bug-same-fix on `feedbackDialog` and `executeDialog` modals (UA-stylesheet dark-theme bug from doneDialog fix earlier same day). Note: `/api/models` path collided with legacy LM Studio profiles handler — moved to `/api/models/profiles` (no consumers found). |
 | WS2 | brain non-pipeline kanban flow (Phases 1-3 + classify gate) | Apr 23 | Status vocab gained `working` (in-progress lane). `boardColumns` branches on `pipeline_enabled`: manual path uses literal status keys (active/working/done) instead of route-status pipeline. 5-button manual row (▶ Start / ✓ Done / ↩ Reopen / ⏸ Someday / 🗄 Archive) on board + list views. Optional reason dialog on ✓ Done appends a `_Closed YYYY-MM-DD: reason_` line to body. Native HTML5 drag-and-drop between columns (no library dep). Auto-classify gated for non-pipeline projects in relay client. Done-dialog theming fix (centered, larger, dark-theme textarea). `handleCreateEntry` now accepts `project_id` — single-call POST round-trips correctly. brain-app P4 mirror skipped per user direction (no Project surface). |
 | WS2 | brain non-pipeline projects (Phases 1+2) | Apr 23 | `pipeline_enabled` column on `projects` (default true). Notebook auto-flipped to false. Single primary gate in `routeEntry`; defense-in-depth in `BuildProjectContext`. UI checkbox + 📓 badge on web. Inverse-hypothesis verified via PUT-set project_id + explicit `/api/agent/route`. |
 | WS2 | brain manual stage transitions (Phase 1 mobile) | Apr 23 | brain-app: status dropdown in edit screen, long-press quick-actions sheet (done/park/waiting/archive/reactivate) + undo, semantic chip colors. Phase 2 web: pre-existing — `EntryDetailView.vue` already had full STATUS_OPTIONS dropdown. |
