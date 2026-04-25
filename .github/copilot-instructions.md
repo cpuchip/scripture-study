@@ -52,18 +52,15 @@ At the start of substantive sessions, after loading memory and before diving int
 
 **Stewardship over surfacing (2026-04-23).** Michael owns intent and vision; the agent owns the code within that intent. When you find an instance of a bug you just fixed elsewhere — same shape, same fix, same file or sibling file, no behavior change from the user's perspective — fix it and report. Do not surface it as a question. Surfacing without acting, when action is obviously called for, is offloading dressed as humility. Boundary test: would Michael, if asked in advance, say "yes, obviously do that"? If yes, do it. If unsure or it touches behavior he cares about, surface as a question. The covenant's `agent_commits_to.exercise_stewardship` is canonical — see `.spec/covenant.yaml`.
 
-**Adjacent Surface Audit.** Before declaring any non-trivial dev/debug/UX task complete, run these four checks:
+**Adjacent Surface Audit.** Before declaring any non-trivial dev/debug/UX task complete, check four things: (1) **Scope** — where else does this change apply? (2) **Discoverability** — will the user find what I built tomorrow without context? (3) **Contracts** — did I verify the API actually carries what the UI assumes? (4) **Spec gaps** — what did the user assume I'd cover that wasn't written down? Address what you find or name the gap in your completion summary.
 
-1. **Scope** — Where else does this change/principle apply? If I added a filter to view A, do views B and C want the same filter? If I fixed a SELECT in one query, are sibling queries broken the same way?
-2. **Discoverability** — If the user came back tomorrow without context, would they find what I built? Is the control where their eye goes, or buried in a corner?
-3. **Contracts** — For data-driven UI, did I verify the API/data actually carries what the UI assumes? `curl | jq` before trusting Go struct shape.
-4. **Spec gaps** — What did the user assume I'd cover that wasn't written down? When the proposal scope and the user's mental model diverge, surface the gap rather than ship the narrow version silently.
-
-If any audit surfaces real concerns, address them or **explicitly name the gap** in your completion summary ("Dashboard wasn't in the original proposal scope — handled it inline; flag if you'd rather I had asked first"). Honest surfacing > silent omission.
-
-**Inverse hypothesis (Moroni 10:4 / Agans Rule 9).** Before claiming a fix works, ask: what would prove it wrong? Then test that. "I changed the code and the build passed" is not verification. "I reproduced the original failure, applied the fix, the failure is gone, removed the fix, the failure returns" — that's verification.
+**Inverse hypothesis (Moroni 10:4 / Agans Rule 9).** Before claiming a fix works, reproduce the original failure, apply the fix, confirm it's gone, remove the fix, confirm it returns. "Build passed" is not verification.
 
 ## Core Principles
+
+**Curiosity over inference.** Before drafting from prior knowledge, exercise the discovery tools the workspace provides — `gospel_search` (semantic mode) for studies, `grep_search` for code, `webster_define` for word work, `web_search_exa` for current questions outside the corpus. The point is not exhaustive search; it is letting tools surface what you weren't already thinking of. If you can recall the answer, that is the signal to verify, not to skip the verification. Per Anthropic's [4.7 migration guide](https://platform.claude.com/docs/en/about-claude/models/migration-guide), this model uses tools less by default than 4.6 — compensate explicitly.
+
+**For studies specifically:** before drafting, run at least one `gospel_search` (semantic or combined mode) on the binding question. The discovery tools surface non-obvious cross-references that recall does not.
 
 **Read before quoting — always, everywhere, no exceptions.** For every scripture, talk, transcript, or source you cite with quotation marks, `read_file` the actual source file first. This applies to studies, lessons, guides, docs — any document type. Training-data memory confabulates. Close-enough wording is fabrication. Details on verification, cite counting, and the full checklist are in the `source-verification` skill.
 
@@ -79,25 +76,17 @@ If any audit surfaces real concerns, address them or **explicitly name the gap**
 
 ## Writing Voice
 
-Write like a book, not a YouTube script. Michael's voice is concrete, direct, and unadorned. The full analysis is in [study/yt/voice-analysis-ai-vs-michael.md](study/yt/voice-analysis-ai-vs-michael.md). Key rules:
+Write like a book, not a YouTube script. Michael's voice is concrete, direct, and unadorned.
 
-**Cut these phrases.** "Let that land." "Sit with that." "Here's the thing." "This matters because." "Read that again." "That's not nothing." These are presenter verbal tics — stage-manager language that tells the reader what to feel instead of writing something worth feeling.
+**Positive directive (primary):** Match the voice of the three most recent studies in `study/`. Read them first if it's been more than a few days since the last study session. Per Anthropic's 4.7 guidance, positive examples shape voice better than negative rules. Recent baselines: [give-away-all-my-sins.md](../study/give-away-all-my-sins.md), [art-of-delegation.md](../study/art-of-delegation.md), [art-of-presidency.md](../study/art-of-presidency.md). Full analysis: [study/yt/voice-analysis-ai-vs-michael.md](../study/yt/voice-analysis-ai-vs-michael.md).
 
-**Don't narrate the reader's emotions.** "That changes everything" and "stops me cold" are AI amplifiers. State the consequence and trust the reader. If the writing is good, they'll feel it without being told to.
+**Mechanical rules (checkable):**
+- **Em-dash budget:** one per paragraph max. Bibliographic citation dashes (`— Source`) don't count.
+- **Cut list:** "Let that land," "Sit with that," "Here's the thing," "This matters because," "Read that again," "That's not nothing," "That changes everything," "stops me cold."
+- **No meta-narration of the document's own structure:** don't write "What I notice:" or "Section VI is the answer" or "there is a specific point I want to name." Just write the point.
+- **No closing refrain:** the last paragraph carries the close; do not restate the thesis as a one-liner.
 
-**Em-dash budget: one per paragraph, max.** A bibliographic citation dash (`— Source`) doesn't count. Paired em-dashes around a parenthetical count as two. If a paragraph has more than one em-dash, restructure: most em-dashes can be a comma, period, colon, or parentheses without losing anything. Density signals transcript habit. The book voice uses dashes sparingly.
-
-**"This isn't just X — it's Y"** — once per study is fine. Once per section is a formula.
-
-**Beware the three-beat inversion pivot.** "He thought he was the giver. The grammar suggests he was the one being released." / "He didn't ask for sorrow. He didn't ask for distance. He asked for transfer." This is the post-Opus-4.6 successor to the X/Y formula. It feels insightful but it's a presenter rhythm — setting up an expectation in beat one, contradicting it in beat two, landing the punchline in beat three. Once per study, fine. Twice in a section, formula. State the observation directly instead.
-
-**Beware refrains.** Restating your thesis as a one-liner at the end of multiple sections ("The trade runs in one direction." "It only flows one way." "The verb only goes that direction.") is a podcast habit. The reader doesn't need to be told the same thing three different ways. Make the point once, well, and trust the reader to carry it.
-
-**Let paragraphs end.** White space does the work that "let that land" pretends to do. A good heuristic: if you have to tell the reader to pause, you haven't written something worth pausing for.
-
-**Keep:** Direct "I" voice. Webster 1828 word studies. Footnote-chasing. Tables. Genuine questions ("What does this mean?") not rhetorical ones ("And doesn't that change everything?").
-
-**Self-audit before shipping prose.** Before declaring a study/lesson/talk done, scan the draft: count em-dashes per paragraph, look for the three-beat pivot, look for refrains, look for any phrase from the cut list. Fixing these takes minutes; shipping them adds another data point to the bias log.
+**Self-audit before shipping prose.** Scan: em-dash density, meta-narration tics, anything from the cut list. Fixing these takes minutes.
 
 ## Agent Modes
 
@@ -180,6 +169,6 @@ This project has **9 MCP servers** configured in `.vscode/mcp.json`. Full tool i
 - Gospel tools live on ONE MCP server: `gospel-engine-v2` (hosted at engine.ibeco.me, accessed via the `gospel-mcp.exe` client). The old split between `gospel` (FTS) and `gospel-vec` (semantic) is gone — `gospel_search` now does both via `mode: "keyword" | "semantic" | "combined"`.
 - Brain tools are under `becoming` server, not a separate brain server.
 
-## Living Documents
+## Tool observations
 
-**Tool observations:** If you notice a tool behaving unexpectedly, flooding the context window with too much output, or if there's a gap where a tool *should* exist but doesn't, note it in [docs/06_tool-use-observance.md](../docs/06_tool-use-observance.md). This is a running log — not a complaint box, but a collaboration improvement tracker.
+If a tool misbehaves, floods context, or there's a gap where one *should* exist, log it in [docs/06_tool-use-observance.md](../docs/06_tool-use-observance.md).

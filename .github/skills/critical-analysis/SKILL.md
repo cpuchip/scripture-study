@@ -48,6 +48,8 @@ Scripture study can easily become an echo chamber of favorite passages. Ask:
 - **Have I checked all five standard works?** If a pattern appears in the Book of Mormon and D&C but I haven't checked the Bible or Pearl of Great Price, there might be a missing voice.
 - **Are there modern prophets who address this differently?** Conference talks sometimes add nuance that changes the shape of a scriptural argument.
 
+**Tool check.** If you have not run `gospel_search` (semantic or combined mode) on the binding question this session, do it now. This is the single most common cause of missing voices on Opus 4.7 — the model defaults to recall, and recall is biased toward what you already think. Semantic search surfaces the verse that would have reframed the study.
+
 ### 4. Check the Framing
 
 - **Am I presenting speculation as doctrine?** Doctrinal classification matters: "the Lord said" ≠ "this suggests" ≠ "I believe."

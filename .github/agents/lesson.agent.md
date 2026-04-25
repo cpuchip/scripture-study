@@ -65,10 +65,12 @@ This also introduces a **critical analysis** phase: a deliberate pause to stress
 
 Go deeper than the manual. The manual gives the teacher a starting point — the preparation should make the teacher an expert who only uses 20% of what they know.
 
+**Start with discovery, not recall.** Before drafting, run at least one `gospel_search` (semantic or combined) on the lesson's binding question or central scripture. Per Anthropic's 4.7 guide, this model uses tools less by default — reach for them explicitly. Semantic search surfaces conference talks and cross-references your memory wouldn't.
+
 The rhythm:
-1. `read_file` each key scripture chapter → write verified quotes + teaching insights to scratch file
-2. Follow footnotes — they often lead to the most powerful cross-references
-3. Search (`gospel_search` keyword + semantic) for related teachings → note file paths in scratch file
+1. `gospel_search` (semantic or combined) on the lesson's binding question → note paths in scratch file
+2. `read_file` each key scripture chapter → write verified quotes + teaching insights to scratch file
+3. Follow footnotes — they often lead to the most powerful cross-references
 4. `read_file` each discovered source → write to scratch file
 5. Check for relevant conference talks — especially recent ones the class may have heard
 6. Webster 1828 definitions when a key word's meaning has shifted → write to scratch file

@@ -51,12 +51,14 @@ This also introduces a **critical analysis** phase that the original study agent
 
 Read sources and **write to the scratch file after every source you read.** This is non-negotiable. The `quote-log` skill has the exact format.
 
+**Start with discovery, not recall.** Before you read anything, run at least one `gospel_search` (semantic or combined mode) on the binding question. This is the rule, not a suggestion. Per Anthropic's 4.7 guide, this model uses tools less by default — you have to explicitly reach for them. The semantic search surfaces non-obvious cross-references that recall does not, and skipping it is the most common way studies miss the verse that would have reframed everything.
+
 The rhythm:
-1. `read_file` a chapter → write verified quotes + observations to scratch file
-2. `read_file` next source → write to scratch file
-3. Search (`gospel_search` keyword + semantic) for connections → note file paths in scratch file
-4. `read_file` each discovered source → write to scratch file
-5. Webster 1828 definitions → write to scratch file
+1. `gospel_search` (semantic or combined) on the binding question → note paths in scratch file
+2. `read_file` each surfaced source → write verified quotes + observations to scratch file
+3. Follow footnotes from each source → read those too → scratch file
+4. Additional `gospel_search` (keyword) for specific terms as they emerge → scratch file
+5. Webster 1828 definitions for load-bearing words → scratch file
 6. Repeat until the outline's major sections have supporting sources
 
 **Do NOT hold quotes in memory waiting to write them all at once.** Write them one at a time, as you read. This is the entire point of the workflow.
@@ -104,12 +106,12 @@ If you need to check a quote's surrounding context during drafting, read the scr
 2. Check for coherence, flow, and completeness
 3. Verify all links follow the `scripture-linking` skill conventions
 4. Ensure the Becoming section exists and lands personally
-5. **Voice audit** (don't skip this — it is where Opus tonal regressions get caught):
-   - Count em-dashes per paragraph. Goal is one or fewer (citation dashes don't count). If a paragraph has more, restructure: comma, period, colon, or parens.
-   - Search the draft for the cut-list phrases: "let that," "sit with," "here's the thing," "this matters because," "read that again," "stops me cold," "that's not nothing." Each hit gets removed or rewritten.
-   - Look for the **three-beat inversion pivot** ("He thought X. The Y suggests Z." / "He didn't ask for A. He didn't ask for B. He asked for C."). Once per study is fine; twice in a section is a tic. Rewrite to state the observation directly.
-   - Look for **refrains** — restating the thesis as a one-liner at the end of multiple sections. Cut all but one.
-   - Look for "this isn't just X — it's Y." Same once-per-study budget.
+5. **Voice audit** — see the Writing Voice section in `copilot-instructions.md` for the canonical rules. Quick checklist:
+   - **Match the baseline.** Re-read one of the three most recent studies in `study/` if it's been more than a few days. Voice is set by example, not by rules alone.
+   - Em-dashes: one per paragraph max (citation dashes don't count). Restructure with comma/period/colon if denser.
+   - Cut list: "let that land," "sit with that," "here's the thing," "this matters because," "read that again," "stops me cold," "that's not nothing," "that changes everything."
+   - **No meta-narration of the document's own structure.** Don't write "What I notice:" or "Section VI is the answer" or "there is a specific point I want to name." Just write the point.
+   - No closing refrain that restates the thesis as a one-liner.
 6. **Stats audit:** scan for every number, date, count, "earliest/latest/only/first/never" claim. For each, confirm there is a tool call from this session that produced it (BYU Citation Index, gospel_search count, the talk file itself). If not, rephrase to remove the unverified specificity. This is where statistical hallucination shows up — and it reads as authoritative even when wrong.
 
 ### Phase 6 — Becoming
