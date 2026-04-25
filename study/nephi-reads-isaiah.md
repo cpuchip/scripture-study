@@ -32,7 +32,7 @@ That is the first hinge. Likening is not creative reading. It is locational read
 
 ## II. The Authorization
 
-Before Nephi quotes the second large block of Isaiah, what becomes [2 Nephi 12-24](../gospel-library/eng/scriptures/bofm/2-ne/12.md) (or Isaiah 2-14), he stops to explain why he can do what he is about to do:
+But Nephi cannot just splice thirteen chapters of someone else's scripture into his own record without explaining why he can. Before he quotes the second large block of Isaiah (what becomes [2 Nephi 12-24](../gospel-library/eng/scriptures/bofm/2-ne/12.md), or Isaiah 2-14), he stops and gives his license:
 
 > "And now I, Nephi, write more of the words of Isaiah, for my soul delighteth in his words. For I will liken his words unto my people, and I will send them forth unto all my children, for he verily saw my Redeemer, even as I have seen him.
 >
@@ -46,13 +46,13 @@ This connects directly to the doublet pattern worked out in [hope-and-the-gramma
 
 ## III. Splice and Frame
 
-The first thing Nephi actually does, after announcing his method in [1 Ne. 19:23-24](../gospel-library/eng/scriptures/bofm/1-ne/19.md), is drop in two whole chapters of Isaiah (48 and 49) as [1 Nephi 20-21](../gospel-library/eng/scriptures/bofm/1-ne/20.md). Then, when his brothers ask what it meant, he expounds in 1 Nephi 22:
+Having claimed the witness law, Nephi acts on it. After announcing his method in [1 Ne. 19:23-24](../gospel-library/eng/scriptures/bofm/1-ne/19.md), he drops in two whole chapters of Isaiah (48 and 49) as [1 Nephi 20-21](../gospel-library/eng/scriptures/bofm/1-ne/20.md). His brothers ask what it meant, and he expounds in 1 Nephi 22:
 
 > "What meaneth these things which ye have read? Behold, are they to be understood according to things which are spiritual, which shall come to pass according to the spirit and not the flesh?
 >
 > And I, Nephi, said unto them: Behold they were manifest unto the prophet by the voice of the Spirit; for by the Spirit are all things made known unto the prophets, which shall come upon the children of men according to the flesh." ([1 Ne. 22:1-2](../gospel-library/eng/scriptures/bofm/1-ne/22.md))
 
-The pattern is announce, splice, expound. He does it again in 2 Nephi, this time at scale — Isaiah 2-14 inserted as 2 Nephi 12-24, with the announcement at chapter 11 and the exposition at chapter 25. And he does it through Jacob in [2 Nephi 6-10](../gospel-library/eng/scriptures/bofm/2-ne/6.md), where Jacob announces in 6:4-5, quotes Isaiah 49-52 across 6:6 through 8:25, and then expounds in 9-10. Nephi has trained his brother to read the same way he reads.
+The pattern is announce, splice, expound. Because it works for two chapters, Nephi runs it at scale: Isaiah 2-14 inserted as 2 Nephi 12-24, with the announcement at chapter 11 and the exposition at chapter 25. He runs it through Jacob in [2 Nephi 6-10](../gospel-library/eng/scriptures/bofm/2-ne/6.md), where Jacob announces in 6:4-5, quotes Isaiah 49-52 across 6:6 through 8:25, and expounds in 9-10. Nephi has trained his brother to read the same way he reads.
 
 The verb of the third move is worth pausing on. It is *expound*, not *interpret*. Nephi never says he is decoding Isaiah. He says he is making him plain. The text already meant what it meant; the work is to make the meaning land in a Lehite audience that does not know "the manner of the Jews" ([2 Ne. 25:5-6](../gospel-library/eng/scriptures/bofm/2-ne/25.md)). The splice carries the cargo. The frame docks it.
 
@@ -60,13 +60,13 @@ This is a different operation from what Abinadi does in [Mosiah 14-15](../gospel
 
 ## IV. The Hermeneutic Key
 
-After the second large Isaiah block, Nephi pauses and tells his readers exactly why some people will understand what he just gave them and others will not:
+Thirteen chapters of Isaiah is a lot to drop on a Lehite audience. Nephi knows it. Before moving on, he tells his readers exactly why some of them will understand what he just gave them and others will not:
 
 > "Hearken, O my people, which are of the house of Israel, and give ear unto my words; for because the words of Isaiah are not plain unto you, nevertheless they are plain unto all those that are filled with the spirit of prophecy. But I give unto you a prophecy, according to the spirit which is in me; wherefore I shall prophesy according to the plainness which hath been with me from the time that I came out from Jerusalem with my father; for behold, my soul delighteth in plainness unto my people, that they may learn." ([2 Ne. 25:4](../gospel-library/eng/scriptures/bofm/2-ne/25.md))
 
 Read that twice. Plainness is not a property of the text. Isaiah's words are not plain unto the people Nephi is addressing. They are plain unto people in a particular spiritual condition — those filled with the spirit of prophecy. The same words, read by two readers, will yield different plainness. The difference is the reader.
 
-This puts Nephi in close company with Abinadi. When Abinadi confronted the priests of Noah, he diagnosed their failure not as a lack of information but as a lack of disposition: "Ye have not applied your hearts to understanding; therefore, ye have not been wise" ([Mosiah 12:27](../gospel-library/eng/scriptures/bofm/mosiah/12.md)). The priests had memorized the text. They could quote Isaiah 52:7 from the breastwork of their gold seats. They could not read it because their hearts were elsewhere. Nephi names the same problem in the positive: those who have the spirit of prophecy will find Isaiah plain, because the spirit of prophecy is the disposition that lets the text deliver itself.
+Therefore Nephi's diagnosis matches Abinadi's. When Abinadi confronted the priests of Noah, he diagnosed their failure not as a lack of information but as a lack of disposition: "Ye have not applied your hearts to understanding; therefore, ye have not been wise" ([Mosiah 12:27](../gospel-library/eng/scriptures/bofm/mosiah/12.md)). The priests had memorized the text. They could quote Isaiah 52:7 from the breastwork of their gold seats. But they could not read it, because their hearts were elsewhere. Nephi names the same problem in the positive: those who have the spirit of prophecy will find Isaiah plain, because the spirit of prophecy is the disposition that lets the text deliver itself.
 
 The Bible Dictionary captures the cargo of "spirit of prophecy" tightly: the Holy Ghost's testimony of Jesus Christ ([Rev. 19:10](../gospel-library/eng/scriptures/nt/rev/19.md), "the testimony of Jesus is the spirit of prophecy"). Read against Nephi's claim, the logic closes. Isaiah's vision was of Christ; Nephi's vision was of Christ; the spirit of prophecy is the testimony of Christ; *therefore* a reader filled with that spirit reads Isaiah and finds Christ on every page, and finds him plainly. A reader without it reads the same chapters and finds them obscure.
 
@@ -110,7 +110,7 @@ This is the way to hold Nephi's example without breaking it. Read with him. Reco
 
 ## VII. What This Changes
 
-Two things, for any serious reader of Isaiah.
+Therefore two things change for any serious reader of Isaiah.
 
 **First**, plainness is a spiritual achievement, not a literary one. The complaint that Isaiah is hard is true at the level of vocabulary and reference, and a good study Bible helps. But Nephi's diagnosis cuts deeper. Isaiah is plain to those filled with the spirit of prophecy and obscure to those who are not, and the difference is the reader's testimony of Christ. The way to read Isaiah is not first to learn ancient near-eastern history; it is first to repent toward Christ until the Spirit can rest on the reading. The history helps after that. It cannot replace it.
 
