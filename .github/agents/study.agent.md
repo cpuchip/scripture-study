@@ -109,6 +109,7 @@ If you need to check a quote's surrounding context during drafting, read the scr
 5. **Voice audit** — see the Writing Voice section in `copilot-instructions.md` for the canonical rules. Quick checklist:
    - **Match the baseline.** Re-read one of the three most recent studies in `study/` if it's been more than a few days. Voice is set by example, not by rules alone.
    - Em-dashes: one per paragraph max (citation dashes don't count). Restructure with comma/period/colon if denser.
+   - **Therefore/But audit.** Scan section openings and paragraph transitions. If a section's opening sentence could begin with *Therefore* without breaking, it's doing argumentative work — surface the causation. If transitions only work with *Now / Also / The first thing / After that*, the section is collecting rather than building. Search for "and then" — every hit is suspect (eschatological *and then* survives; sequencer *and then* doesn't). The therefore/but chain is usually already in the scripture text; the writer's job is to surface it.
    - Cut list: "let that land," "sit with that," "here's the thing," "this matters because," "read that again," "stops me cold," "that's not nothing," "that changes everything."
    - **No meta-narration of the document's own structure.** Don't write "What I notice:" or "Section VI is the answer" or "there is a specific point I want to name." Just write the point.
    - No closing refrain that restates the thesis as a one-liner.

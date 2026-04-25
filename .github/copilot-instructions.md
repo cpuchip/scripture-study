@@ -82,11 +82,12 @@ Write like a book, not a YouTube script. Michael's voice is concrete, direct, an
 
 **Mechanical rules (checkable):**
 - **Em-dash budget:** one per paragraph max. Bibliographic citation dashes (`— Source`) don't count.
+- **Therefore/But, not "and then."** Sections and paragraphs should connect by causation (*therefore*) or disruption (*but*), not by sequence (*and then*, *next*, *also*, *the first thing... the second thing*). Trey Parker / Matt Stone's rule applies beyond storytelling: a study where every beat earns the next has momentum; one that just lists has none. Scripture is full of explicit *therefore* chains — surface them rather than hiding them under spatial transitions. Full principle: `.mind/principles.md` (Therefore/But, Not "And Then").
 - **Cut list:** "Let that land," "Sit with that," "Here's the thing," "This matters because," "Read that again," "That's not nothing," "That changes everything," "stops me cold."
 - **No meta-narration of the document's own structure:** don't write "What I notice:" or "Section VI is the answer" or "there is a specific point I want to name." Just write the point.
 - **No closing refrain:** the last paragraph carries the close; do not restate the thesis as a one-liner.
 
-**Self-audit before shipping prose.** Scan: em-dash density, meta-narration tics, anything from the cut list. Fixing these takes minutes.
+**Self-audit before shipping prose.** Scan: em-dash density, therefore/but vs. and-then transitions, meta-narration tics, anything from the cut list. Fixing these takes minutes.
 
 ## Agent Modes
 
