@@ -93,6 +93,10 @@ Write the critical analysis notes to the scratch file. Adjust the outline if nee
 ### Phase 4 — First Draft
 **Skills:** `scripture-linking`, `becoming`
 
+**Precondition (hard, structural):** Before writing the draft, the scratch file MUST contain a `## Gap & Critical Analysis` section with notes from Phases 3 and 3a. If it does not, those phases were not done — regardless of what was said in chat — and the agent must do them now and write the section before drafting. Saying "skipping the gap and critical-analysis phases" in chat is not a license to skip them; it is a license to fail. The scratch file is the durable record. If the section is not in the file, the work did not happen.
+
+The same applies to one-shot studies done in a single session. The phases are not optional based on study size or perceived clarity. A "tight, focused study with one binding question" is exactly the kind of study most likely to be confirming a hypothesis rather than discovering one — which is the failure mode Phase 3a exists to catch.
+
 1. Read the scratch file (this is your primary source now — not the original chapters)
 2. Write the study draft to `study/{topic}.md`, replacing the outline skeleton
 3. Weave quotes with analysis, connections, and synthesis
