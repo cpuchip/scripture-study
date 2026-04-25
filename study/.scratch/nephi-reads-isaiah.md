@@ -65,3 +65,31 @@ If that schema holds, the modern reader gets mode 1 by study and the Spirit, and
 This is a meaty study. Probably needs phased work: read all four blocks of Nephite Isaiah fresh, then Abinadi for comparison, then 3 Nephi 16/20 for Christ's own hermeneutic, then write. Estimated 2-3 sessions if Michael wants to do it deeply. Could also be done lightly (one session) with the binding question narrowed to just 2 Ne 26-27.
 
 **Decision pending:** narrow vs. broad scope. Recommend asking before starting.
+
+---
+
+## Verification log (2026-04-25)
+
+All keystone passages read directly from gospel-library files this session:
+- 1 Ne 19:1-24 (purpose statement, "I did liken all scriptures unto us" v.23) — verified
+- 1 Ne 22:1-16 (brothers' question, Nephi's exposition) — verified
+- 2 Ne 6:1-11 (Jacob follows Nephi's pattern, "they may be likened unto you" v.5) — verified
+- 2 Ne 11:1-8 (three-witnesses authorization, "he verily saw my Redeemer, even as I have seen him" v.2) — verified
+- 2 Ne 25:1-8 (the hermeneutic key: "plain unto all those that are filled with the spirit of prophecy" v.4) — verified
+- 2 Ne 26:1-11 (Nephi prophesying in extension) — verified
+- 2 Ne 27:1-35 (the rewrite/expansion of Isaiah 29) — verified
+- Isaiah 29:1-24 (the parent text — 24 verses vs. 2 Ne 27's 35) — verified
+
+## Comparison: Isaiah 29 vs. 2 Nephi 27
+
+Isaiah 29 has 24 verses. 2 Nephi 27 has 35.
+
+Material in 2 Ne 27 with NO parent in Isaiah 29:
+- vv. 6-10 (the book delivered, the sealed/unsealed split, the words read on housetops)
+- vv. 12-14 (THREE WITNESSES shall behold the book)
+- vv. 15-22 (the dramatized learned-man exchange — what Isaiah 29:11-12 sketches in 2 brief verses, Nephi expands into a full prophetic narrative including the seal-and-hide commandment)
+
+Authorizing principle: 2 Ne 11:2-3. Isaiah saw the Redeemer; Jacob saw the Redeemer; Nephi saw the Redeemer. "By the words of three, God hath said, I will establish my word." This connects directly to the witness law worked out in [hope-and-the-grammar-of-pairs.md](../hope-and-the-grammar-of-pairs.md) Section V.
+
+Guardrail: 2 Ne 25:4. Plainness is in the READER, not in the text. "The spirit of prophecy" is the condition that makes Isaiah readable.
+
