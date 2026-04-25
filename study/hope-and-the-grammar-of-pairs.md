@@ -104,6 +104,30 @@ D&C 4 raises one complication worth naming. There the list is not three but four
 
 Note also the phrase tucked into v.5: "with an eye single to the glory of God." The eye image returns at the moment hope is named, just as it returns in Moro. 7:48 ("we shall see him as he is"). Hope keeps showing up alongside vision because hope *is* the way the soul sees forward.
 
+### The Organ of Hope Is the Eye
+
+Track the eye through the verses that have already arrived in this section: Moroni 7:48 — "*we shall see him as he is*"; 1 John 3:2 — "*we shall see him as he is*"; D&C 4:5 — "*with an eye single* to the glory of God." Three texts, three witnesses, one image. The eye is not incidental to hope; it is the organ through which hope operates.
+
+The Sermon on the Mount states the principle as physiology:
+
+> "The light of the body is the eye: if therefore thine eye be single, thy whole body shall be full of light." ([Matt. 6:22](../gospel-library/eng/scriptures/nt/matt/6.md))
+
+A single eye is not a symbolic eye. It is an eye fixed on one object so steadily that everything coming in is the same kind of light. Whatever the eye is gazing at is what the body is being filled with. This is a claim about how souls work. The body becomes what the eye stays open to.
+
+Joseph's school takes the same image and stretches it forward into glory:
+
+> "And if your eye be single to my glory, your whole bodies shall be filled with light, and there shall be no darkness in you; and that body which is filled with light comprehendeth all things… Therefore, sanctify yourselves that your minds become single to God, and the days will come that you shall see him; for he will unveil his face unto you." ([D&C 88:67-68](../gospel-library/eng/scriptures/dc-testament/dc/88.md))
+
+Read v.68 against Hebrews 6:19. Paul's hope-anchor "entereth into that within the veil." D&C 88:68 says the Lord "will unveil his face unto you." Same vocabulary, same direction, same payoff. The veil that the anchor entered is the veil that gets pulled back. Hope reaches in; the Savior reaches out. The single eye is what makes the meeting possible.
+
+*Lectures on Faith* 7 picks up the same passage from John's epistle and builds a theology of salvation on it. The lecture asks where we shall find a saved being to be assimilated into, and answers: Christ is "the prototype or standard of salvation." The lecture then quotes 1 John 3:2-3 directly and presses the question: "Why purify himself as he is pure? because, if they do not they cannot be like him." The conclusion is the line on which the whole hope study turns:
+
+> "He proposed to make them like unto himself; and he was like the Father, the great prototype of all saved beings: And for any portion of the human family to be assimilated into their likeness is to be saved; and to be unlike them is to be destroyed: and on this hinge turns the door of salvation." (LoF 7:16)
+
+The hinge is the assimilation. The way assimilation happens is the eye fixed on the prototype long enough that the body fills with the prototype's light. *Lectures on Faith* states it theologically. Matthew 6 states it physiologically. D&C 88 states it covenantally. Mormon and John state it eschatologically. Five witnesses, one mechanism: where the eye stays, the soul becomes.
+
+This is also why despair is such a serious thing. To despair is to take the eye off the prototype. The body, no longer filling with that light, fills with whatever else is in view. Repentance, in this frame, is not first a re-doing of behavior but a re-aiming of the eye. Behavior follows what the eye is fixed on, the way the body follows the head. The fight to keep hope is the fight to keep the eye where it must stay.
+
 ## IV. Other Doublets and Triplets
 
 The faith-hope-charity triplet is not an isolated phenomenon. The gospel arrives in pairs and triads constantly. The deeper question is whether these pairings are pedagogical (a writer's repetition for emphasis) or structural (the truth itself comes bound). Most are structural.
