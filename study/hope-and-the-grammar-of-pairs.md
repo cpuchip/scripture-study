@@ -18,7 +18,7 @@ That second piece — expectation — is the load-bearing one. The Bible Diction
 
 But the BD definition adds a qualifier the modern ear can miss: the things hoped for must be *true*. Gospel hope is not directed at any wished-for thing. It is directed at real things that happen to be unseen. This distinguishes it from wishful thinking and from optimism. Optimism trusts the trend. Hope trusts a Person.
 
-Webster's second sense makes the Person explicit: "One who, or that which, gives hope... The Lord will be the hope of his people. Joel iii. 16." Paul says it as flatly as Joel: "Christ, which is our hope" ([1 Tim. 1:1](../gospel-library/eng/scriptures/nt/1-tim/1.md)). Hope is not a mood. It is an attachment to a Person who has promised something specific.
+Webster's second sense makes the Person explicit: "One who, or that which, gives hope... The Lord will be the hope of his people" — quoting [Joel 3:16](../gospel-library/eng/scriptures/ot/joel/3.md). Paul says it as flatly as Joel: "Christ, which is our hope" ([1 Tim. 1:1](../gospel-library/eng/scriptures/nt/1-tim/1.md)). Hope is not a mood. It is an attachment to a Person who has promised something specific.
 
 Mormon names that something specific in the densest passage on hope in scripture:
 
