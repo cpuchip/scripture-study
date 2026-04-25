@@ -51,7 +51,7 @@ A thin MCP client (`gospel-mcp.exe`) translates MCP JSON-RPC ↔ HTTPS calls. It
 }
 ```
 
-Tool names visible to agents: `mcp_gospel-engine-v2_gospel_search`, `mcp_gospel-engine-v2_gospel_get`, `mcp_gospel-engine-v2_gospel_list`. The local v1 MCP server (`scripts/gospel-engine/`) and the legacy `gospel-mcp` / `gospel-vec` servers are no longer registered; they remain on disk as fallback only.
+Tool names visible to agents: `mcp_gospel-engine_gospel_search`, `mcp_gospel-engine_gospel_get`, `mcp_gospel-engine_gospel_list` (note: VS Code strips the `-v2` suffix from the server name when generating function names). The local v1 MCP server (`scripts/gospel-engine/`) and the legacy `gospel-mcp` / `gospel-vec` servers are no longer registered; they remain on disk as fallback only.
 
 ## Architecture (as deployed)
 

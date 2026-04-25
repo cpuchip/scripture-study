@@ -10,9 +10,9 @@ AI-assisted scripture study for members of The Church of Jesus Christ of Latter-
 
 | Requirement | Why |
 |---|---|
-| **Go 1.21+** (with CGO support) | Build all tools. Windows: install [mingw-w64](https://www.mingw-w64.org/) for the C compiler needed by gospel-mcp's SQLite/FTS5. |
+| **Go 1.21+** (with CGO support) | Build all tools. Windows: install [mingw-w64](https://www.mingw-w64.org/) for the C compiler needed by the legacy gospel-mcp's SQLite/FTS5 (the active gospel-engine-v2 client does not require CGO). |
 | **An AI coding agent** | GitHub Copilot (VS Code), Cursor, Claude Code, OpenCode, Windsurf, etc. |
-| **LM Studio _or_ an OpenAI-compatible embeddings API** | Required for gospel-vec (semantic search). Default: `http://localhost:1234/v1` with `text-embedding-qwen3-embedding-4b`. |
+| **LM Studio _or_ an OpenAI-compatible embeddings API** | _Only required if you build the legacy gospel-vec for fully local semantic search._ Default: `http://localhost:1234/v1` with `text-embedding-qwen3-embedding-4b`. The active gospel-engine-v2 uses the hosted backend and does not need this. |
 
 > **Model recommendation:** We use **GitHub Copilot with Claude Opus 4.6** for study sessions. Any capable model will work, but Opus-class models handle the cross-referencing depth and source-verification discipline best.
 
@@ -60,21 +60,14 @@ go run .\scripts\gospel-library\cmd\gospel-downloader --standard
 
 See [scripts/gospel-library/README.md](scripts/gospel-library/README.md) for details.
 
-### Step 4 — Build & Index the MCP Servers
+### Step 4 — Build the MCP Servers
 
-Build each server from its directory, then index your downloaded content:
+Build each server from its directory:
 
 ```powershell
-# gospel-mcp — full-text search (SQLite FTS5)
-cd scripts/gospel-mcp
-go build -tags "fts5" -o gospel-mcp.exe ./cmd/gospel-mcp
-./gospel-mcp.exe index --root ../../
-cd ../..
-
-# gospel-vec — semantic/vector search (requires embeddings endpoint running)
-cd scripts/gospel-vec
-go build -o gospel-vec.exe .
-./gospel-vec.exe index
+# gospel-engine-v2 — thin client to hosted PG + pgvector backend at engine.ibeco.me
+cd scripts/gospel-engine
+go build -o gospel-mcp.exe ./cmd/gospel-mcp
 cd ../..
 
 # webster-mcp — Webster 1828 + modern dictionary
@@ -103,6 +96,22 @@ go build -o becoming-mcp.exe .
 cd ../../../..
 ```
 
+**Legacy fallbacks** (not registered in `mcp.json` by default; build only if you want to run a fully local gospel backend):
+
+```powershell
+# gospel-mcp — local FTS5-only (legacy, superseded by gospel-engine-v2)
+cd scripts/gospel-mcp
+go build -tags "fts5" -o gospel-mcp.exe ./cmd/gospel-mcp
+./gospel-mcp.exe index --root ../../
+cd ../..
+
+# gospel-vec — local semantic/vector (legacy, superseded by gospel-engine-v2)
+cd scripts/gospel-vec
+go build -o gospel-vec.exe .
+./gospel-vec.exe index
+cd ../..
+```
+
 ### Step 5 — Configure MCP Servers
 
 Create `.vscode/mcp.json` (already in `.gitignore`) pointing to your built executables. Example:
@@ -110,14 +119,13 @@ Create `.vscode/mcp.json` (already in `.gitignore`) pointing to your built execu
 ```jsonc
 {
   "servers": {
-    "gospel": {
-      "command": "<repo>/scripts/gospel-mcp/gospel-mcp.exe",
-      "args": ["serve", "--db", "<repo>/scripts/gospel-mcp/gospel.db"],
-      "type": "stdio"
-    },
-    "gospel-vec": {
-      "command": "<repo>/scripts/gospel-vec/gospel-vec.exe",
-      "args": ["mcp", "-data", "<repo>/scripts/gospel-vec/data"],
+    "gospel-engine-v2": {
+      "command": "<repo>/scripts/gospel-engine/gospel-mcp.exe",
+      "env": {
+        "GOSPEL_ENGINE_URL": "https://engine.ibeco.me",
+        "GOSPEL_ENGINE_TOKEN": "<your-token>",
+        "GOSPEL_AUTO_UPDATE": "true"
+      },
       "type": "stdio"
     },
     "webster": {
@@ -144,9 +152,13 @@ Create `.vscode/mcp.json` (already in `.gitignore`) pointing to your built execu
       "type": "stdio"
     },
     "becoming": {
-      "command": "<repo>/scripts/becoming/cmd/mcp/becoming-mcp.exe",
+      "command": "<repo>/scripts/becoming/mcp.exe",
       "env": { "BECOMING_URL": "https://your-instance", "BECOMING_TOKEN": "your-token" },
       "type": "stdio"
+    },
+    "exa-search": {
+      "url": "https://mcp.exa.ai/mcp?tools=web_search_exa",
+      "type": "http"
     }
   }
 }
@@ -164,18 +176,23 @@ Open the workspace in your AI agent. The `.github/copilot-instructions.md` file 
 
 | Server | Tech | Purpose | MCP Tools |
 |---|---|---|---|
-| **gospel-mcp** | Go + SQLite/FTS5 | Full-text search over all gospel library content | `gospel_search`, `gospel_get`, `gospel_list` |
-| **gospel-vec** | Go + embeddings | Semantic/vector search over scriptures & talks | `search_scriptures`, `search_talks`, `list_books`, `get_talk` |
-| **webster-mcp** | Go | Webster 1828 dictionary + Free Dictionary (modern) | `webster_define`, `modern_define`, `webster_search` |
-| **yt-mcp** | Go | YouTube transcript download & processing | `yt_download`, `yt_get`, `yt_search`, `yt_list` |
-| **search-mcp** | Go | Web search via DuckDuckGo | `web_search` |
-| **byu-citations** | Go | BYU Scripture Citation Index — find talks that cite a verse | `byu_citations`, `byu_citations_books`, `byu_citations_bulk` |
-| **becoming** | Go | Personal transformation tracking (habit/practice logging) | `create_task`, `log_practice`, `get_today`, etc. |
-| **session-journal** | Go (CLI) | Session journaling — captures discoveries, carry-forward items | CLI: `read`, `carry`, `write` |
+| **gospel-engine-v2** | Go thin client → hosted PG + pgvector at `engine.ibeco.me` | Combined keyword + semantic search over scriptures, talks, manuals, books | `gospel_search` (modes: keyword/semantic/combined), `gospel_get`, `gospel_list` |
+| **webster** | Go | Webster 1828 dictionary + Free Dictionary (modern) | `webster_define`, `modern_define`, `define`, `webster_search`, `webster_search_definitions` |
+| **yt** | Go + yt-dlp | YouTube transcript download & processing | `yt_download`, `yt_get`, `yt_search`, `yt_list` |
+| **search** | Go | Web search via DuckDuckGo | `web_search`, `news_search`, `instant_answer` |
+| **byu-citations** | Go | BYU Scripture Citation Index — who cited a verse in conference | `byu_citations`, `byu_citations_bulk`, `byu_citations_books` |
+| **becoming** | Go (relay to ibeco.me) | Practices, journal, memorization, tasks, notes, brain | `get_today`, `log_practice`, `brain_search`, `create_task`, etc. |
+| **exa-search** (remote) | Hosted at `mcp.exa.ai` | Neural web search with content extraction | `web_search_exa` |
+| **session-journal** | Go (CLI, not MCP) | Session journaling — captures discoveries, carry-forward items | CLI: `read`, `carry`, `write` |
 
-### gospel-vec Environment Variables
+**Legacy** (kept on disk as fallback, not registered in `.vscode/mcp.json`):
+- `scripts/gospel-mcp/` — local FTS5-only. Superseded by gospel-engine-v2.
+- `scripts/gospel-vec/` — local chromem-go vector. Superseded by gospel-engine-v2.
+- `scripts/gospel-engine/` (the v1 source, not the v2 client) — local combined backend. Superseded by hosted v2.
 
-gospel-vec defaults to LM Studio at `localhost:1234`. Override with:
+### Legacy: gospel-vec Environment Variables
+
+If you build the legacy gospel-vec server, it defaults to LM Studio at `localhost:1234`. Override with:
 
 | Variable | Default | Description |
 |---|---|---|

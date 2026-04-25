@@ -31,7 +31,7 @@ See [biases.md](../docs/biases.md) for reflection on collaboration dynamics and 
 | `/journal/` | Personal journal entries by date |
 | `/becoming/` | Personal transformation — applying what we learn |
 | `/docs/` | Meta-documentation, templates, reflections on our process |
-| `/scripts/` | MCP servers (gospel-engine-v2, webster-mcp, becoming, yt-mcp, search-mcp, byu-citations), session-journal, and utilities. Legacy: gospel-mcp, gospel-vec, gospel-engine (kept as fallback, not registered). |
+| `/scripts/` | MCP servers (gospel-engine-v2, webster-mcp, becoming, yt-mcp, search-mcp, byu-citations), session-journal, and utilities. Plus remote: exa-search. Legacy: gospel-mcp, gospel-vec, gospel-engine (kept as fallback, not registered). |
 | `/.spec/` | Memory system (`memory/`), session journal (`journal/`), learnings, prompts, proposals |
 
 ## Covenant
@@ -147,27 +147,30 @@ The entry schema is in `scripts/session-journal/journal.go`. This is not busywor
 
 ## MCP Tools
 
-This project has **9 MCP servers** configured in `.vscode/mcp.json`. Full tool inventory with parameters: [.spec/context/tools/mcp-tools.md](../.spec/context/tools/mcp-tools.md).
+This project has **7 MCP servers** configured in `.vscode/mcp.json`. Full tool inventory with parameters: [.spec/context/tools/mcp-tools.md](../.spec/context/tools/mcp-tools.md).
 
-**All MCP tools are deferred** — you must use `tool_search_tool_regex` to load them before calling. Common patterns:
+**Deferred tool naming (verified by what actually works):** Most MCP tools appear in the deferred-tools list and can be called directly. Their function names follow the pattern `mcp_{vscode-tool-prefix}_{tool-name}`. The vscode tool prefix is **not always identical to the server name in mcp.json** — VS Code strips trailing version suffixes like `-v2`. Use the table below for the names that actually work.
 
-| Need | Regex Pattern | Tool Name |
-|------|--------------|-----------|
-| Search scriptures/talks (keyword, semantic, or combined) | `gospel_search` | `mcp_gospel-engine-v2_gospel_search` |
-| Get a scripture/talk | `gospel_get` | `mcp_gospel-engine-v2_gospel_get` |
-| Browse content | `gospel_list` | `mcp_gospel-engine-v2_gospel_list` |
-| Webster 1828 | `webster_define` | `mcp_webster_webster_define` |
-| Both dictionaries | `mcp_webster_define` | `mcp_webster_define` |
-| Web search (Exa) | `exa` | `mcp_exa-search_web_search_exa` |
-| YouTube download | `mcp_yt` | `mcp_yt_yt_download` etc. |
-| BYU citations | `byu.citation` | `mcp_byu-citations_byu_citations` |
-| Brain entries | `mcp_becoming_brain` | `mcp_becoming_brain_search` etc. |
-| Practices/daily | `mcp_becoming_get_today` | `mcp_becoming_get_today` |
+| Need | Working Tool Name |
+|------|-------------------|
+| Search scriptures/talks (keyword, semantic, or combined) | `mcp_gospel-engine_gospel_search` |
+| Get a scripture/talk | `mcp_gospel-engine_gospel_get` |
+| Browse content | `mcp_gospel-engine_gospel_list` |
+| Webster 1828 | `mcp_webster_webster_define` |
+| Both dictionaries side by side | `mcp_webster_define` |
+| Web search (Exa, neural) | `mcp_exa-search_web_search_exa` |
+| Web search (DuckDuckGo, fast) | `mcp_search_web_search` |
+| YouTube download | `mcp_yt_yt_download` (also `_yt_get`, `_yt_list`, `_yt_search`) |
+| BYU citations | `mcp_byu-citations_byu_citations` (also `_bulk`, `_books`) |
+| Brain entries | `mcp_becoming_brain_search` (also `_recent`, `_get`, `_create`, `_update`, `_delete`, `_stats`, `_tags`) |
+| Practices/daily | `mcp_becoming_get_today` (also `_log_practice`, `_get_due_cards`, `_review_card`, etc.) |
 
 **Key gotchas:**
-- `web_search_exa` is a REMOTE MCP tool (Exa AI). It exists and works. Don't assume it's unavailable — just search for `exa` with `tool_search_tool_regex`.
-- Gospel tools live on ONE MCP server: `gospel-engine-v2` (hosted at engine.ibeco.me, accessed via the `gospel-mcp.exe` client). The old split between `gospel` (FTS) and `gospel-vec` (semantic) is gone — `gospel_search` now does both via `mode: "keyword" | "semantic" | "combined"`.
-- Brain tools are under `becoming` server, not a separate brain server.
+- The server is named `gospel-engine-v2` in `mcp.json` but the deferred tool prefix is `mcp_gospel-engine_` (no `-v2`). This trips us up repeatedly — the working name is the one in the table above.
+- Gospel tools live on ONE MCP server. The old split between `gospel` (FTS) and `gospel-vec` (semantic) is gone — `gospel_search` now does both via `mode: "keyword" | "semantic" | "combined"`.
+- `web_search_exa` is a REMOTE MCP tool (Exa AI) hosted at `mcp.exa.ai`. It works without local binaries.
+- Brain tools are under the `becoming` server, not a separate brain server.
+- If a tool is listed in the deferred-tools section of the system prompt, try calling it directly first. The `tool_search_tool_regex` step is an optimization for tools not yet loaded; it is not always required.
 
 ## Tool observations
 

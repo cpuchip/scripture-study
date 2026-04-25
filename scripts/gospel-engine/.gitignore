@@ -15,5 +15,6 @@ index-log.txt
 # Build artifacts
 /gospel-engine
 /gospel-engine.exe
+/gospel-mcp.exe.first-run-ok
 *.exe~
 __debug_bin*

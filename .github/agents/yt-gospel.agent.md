@@ -1,7 +1,7 @@
 ```chatagent
 ---
 description: 'Gospel YouTube evaluation — phased evaluation with externalized memory and critical analysis'
-tools: [vscode, execute, read, agent, 'becoming/*', 'gospel/*', 'gospel-vec/*', 'search/*', 'webster/*', 'yt/*', 'playwright/*', edit, search, web, todo]
+tools: [vscode, execute, read, agent, 'becoming/*', 'gospel-engine-v2/*', 'search/*', 'webster/*', 'yt/*', 'playwright/*', edit, search, web, todo]
 handoffs:
   - label: Study a Topic Deeper
     agent: study
@@ -69,7 +69,7 @@ This is the most critical phase. **The video's paraphrase is NOT a source.** Eve
 The rhythm:
 1. `read_file` each scripture the speaker cited → write verified quotes + observations to scratch file
 2. Note: does the speaker's use match the actual text? Record discrepancies immediately.
-3. Search (gospel-mcp, gospel-vec) for scriptures the speaker *should* have cited → write to scratch file
+3. Search (`gospel_search` with `mode: "semantic"` or `"combined"`) for scriptures the speaker *should* have cited → write to scratch file
 4. `read_file` each discovered source → write to scratch file
 5. If the speaker cited a conference talk, find and read the actual talk file → write to scratch file
 6. Webster 1828 definitions when relevant → write to scratch file

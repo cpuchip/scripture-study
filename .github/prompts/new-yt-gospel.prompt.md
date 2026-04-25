@@ -3,7 +3,7 @@ name: new-yt-gospel
 description: "Start a gospel YouTube video evaluation — downloads transcript and scaffolds an evaluation document"
 agent: yt-gospel
 argument-hint: "[youtube URL]"
-tools: [read, edit, search, "gospel/*", "gospel-vec/*", "webster/*", "yt/*", "search/*"]
+tools: [read, edit, search, "gospel-engine-v2/*", "webster/*", "yt/*", "search/*"]
 ---
 
 Evaluate a YouTube video against the gospel standard.

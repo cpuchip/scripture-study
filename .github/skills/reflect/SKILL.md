@@ -79,11 +79,11 @@ Example:
 Example:
 
 ```markdown
-## [MED] Tool Use: Prefer gospel-vec for conceptual queries
-**Trigger:** "did you use gospel-vec to search for scriptures this time?"
-**Wrong:** Used gospel-mcp keyword search for conceptual/relationship queries (got zero results, didn't switch)
-**Right:** Conceptual queries → gospel-vec semantic search. Keyword queries → gospel-mcp FTS5.
-**Pattern:** Zero results from a conceptual query = signal to switch tools, not accept and work around.
+## [MED] Tool Use: Use the right gospel_search mode for the query
+**Trigger:** "did you actually search semantically this time?"
+**Wrong:** Called `gospel_search` with default/keyword mode for a conceptual/relationship query (got zero results, didn't switch)
+**Right:** Conceptual queries → `gospel_search` with `mode: "semantic"` or `"combined"`. Exact-phrase queries → `mode: "keyword"`.
+**Pattern:** Zero results from a conceptual query = signal to switch modes, not accept and work around.
 ```
 
 ### 3. At Session End: Graduate or Discard

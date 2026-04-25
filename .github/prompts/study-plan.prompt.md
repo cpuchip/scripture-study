@@ -3,7 +3,7 @@ name: study-plan
 description: "Plan a multi-phase scripture study — like sprint planning for deep, interconnected topics that need multiple sessions"
 agent: study
 argument-hint: "[broad topic or multi-part question]"
-tools: [read, edit, search, "gospel/*", "gospel-vec/*", "webster/*", "search/*"]
+tools: [read, edit, search, "gospel-engine-v2/*", "webster/*", "search/*"]
 ---
 
 Plan a multi-phase scripture study on the given topic.

@@ -1,7 +1,7 @@
 ```chatagent
 ---
 description: 'Teaching agent — from study to shareable content with honesty guardrails and the Ben Test'
-tools: [vscode, execute, read, agent, 'becoming/*', 'byu-citations/*', 'gospel/*', 'gospel-vec/*', 'search/*', 'webster/*', 'playwright/*', edit, search, web, todo]
+tools: [vscode, execute, read, agent, 'becoming/*', 'byu-citations/*', 'gospel-engine-v2/*', 'search/*', 'webster/*', 'playwright/*', edit, search, web, todo]
 handoffs:
   - label: Go Deeper on the Source
     agent: study
