@@ -119,6 +119,45 @@ VI. Becoming
 
 **Observation:** Paul's most compressed definition. Faith is the *substance* (Gr. hypostasis — underlying reality, ground) of what is hoped for. So hope furnishes the object; faith supplies the underlying reality of that object. Hope sees the thing; faith makes the thing real before it is seen. Together they are the past-and-future of the same trust.
 
+---
+
+## Threads to Pull (added 2026-04-25)
+
+### Thread A: The Eye is Hope's Organ (FOR EXPANSION INTO THIS STUDY)
+
+The "eye" image keeps surfacing alongside hope and gets noted at end of Section III but never followed:
+
+- Moroni 7:48 — "we shall **see** him as he is"
+- 1 John 3:2 — "we shall **see** him as he is"
+- D&C 4:5 — "with an **eye single** to the glory of God"
+- Lectures on Faith 7:16 — "on this hinge turns the door of salvation" (the hinge = seeing-and-becoming-like)
+
+**The verses that lock the pattern (not yet folded in):**
+
+> "The light of the body is the eye: if therefore thine eye be single, thy whole body shall be full of light." ([Matt 6:22](../../gospel-library/eng/scriptures/nt/matt/6.md))
+
+> "And if your eye be single to my glory, your whole bodies shall be filled with light, and there shall be no darkness in you; and that body which is filled with light comprehendeth all things… he that keepeth his commandments receiveth truth and light, until he is glorified in truth and knoweth all things." ([D&C 88:67-68](../../gospel-library/eng/scriptures/dc-testament/dc/88.md))
+
+The doctrine: where the eye is fixed determines what light enters → what light enters determines what the body becomes. That is Mormon/John's "see Him as He is and we shall be like Him" stated as physics. The eye is the organ of hope.
+
+**Three Joseph anchors to pull on for LoF 7 expansion (currently one paragraph, deserves three):**
+- LoF 7:9 — "the doctrine of faith… is calculated to bring all the saints into this oneness… that they may be glorified together as Christ and his Father are one"
+- LoF 7:16 — Christ as **prototype of saved beings**; salvation = being made like Him
+- LoF 7:9 ties faith-knowledge-becoming together in the same chain Section III describes
+
+**Proposed structural move:** Insert a new subsection in Section III titled "The Organ of Hope is the Eye" — bridges from Moro 7:48/1 John 3:2 (already quoted) into Matt 6:22 + D&C 88:67-68 + LoF 7. Pulls the prototype doctrine forward as the *theological* form of what Matt 6 says *physiologically*. Probably 4-5 paragraphs. Lands the section.
+
+### Thread B: Nephi reads Isaiah (DEFER TO NEW STUDY — see scratch/nephi-reads-isaiah.md)
+
+Sister study to abinadi-how-to-read.md. Nephi's hermeneutic is more aggressive than Abinadi's — Abinadi expands typology within verse boundaries; Nephi splices entire chapters, frames them, and in 2 Ne 26-27 *rewrites* Isaiah 29 with material not in Isaiah's text but presented as what Isaiah saw. Binding question: "What does it mean to liken scripture, and where is the line between likening and rewriting?"
+
+Punted to its own study scratch.
+
+### Thread C (parking lot, do not pursue now): The two cities
+
+Section II's "Veil Made Visible" insertion opened a Babylon/New Jerusalem pair that could become its own study someday. Revelation 17-22 read as the apocalyptic form of the Mosiah 18 / 4 Nephi pattern (Zion vs Babylon as covenant cell vs. anti-covenant city). NOT for this study. Note for later.
+
+
 ### D&C 4:5-6 (qualifying for the ministry)
 
 > "And faith, hope, charity and love, with an eye single to the glory of God, qualify him for the work.
