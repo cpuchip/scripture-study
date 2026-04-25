@@ -56,6 +56,14 @@ Moroni gives the same image in his own words:
 
 Same metaphor, same direction, same fruit. And note the verb chain: hope makes the soul sure and steadfast, which makes it abound in good works. Hope does not paralyze with longing. It activates with confidence.
 
+### The Veil, Made Visible
+
+Joseph's restoration gives that veil a body. The endowment ends with the initiate passing through a veil into a celestial room, a room built to feel like the place hope is anchored to. The temple's exterior reads *Holiness to the Lord, The House of the Lord*, and inside, the cares of Babylon thin out. You sit in the room and feel the Savior nearer than usual. That nearness is a foretaste, close enough to keep the cable taut without violating Paul's rule that "hope that is seen is not hope" ([Rom. 8:24](../gospel-library/eng/scriptures/nt/rom/8.md)). The temple is hope's anchor made visible. We walk to where the anchor is, stand on the bottom for a few minutes, and walk back out.
+
+Revelation supplies the other end of the cable. John sees two cities at the end of the vision. There is the New Jerusalem coming down from God ([Rev. 21:2](../gospel-library/eng/scriptures/nt/rev/21.md)), and there is "Mystery, Babylon the Great, the mother of harlots and abominations of the earth" ([Rev. 17:5](../gospel-library/eng/scriptures/nt/rev/17.md)). A voice from heaven calls God's people out of the second toward the first: "Come out of her, my people, that ye be not partakers of her sins" ([Rev. 18:4](../gospel-library/eng/scriptures/nt/rev/18.md)). Hope is the cable strung between those two cities. It enters the veil and grips bottom in the holy one; it pulls the soul out of the harlot one. Lose the anchor and the current carries you toward Babylon by default. Keep it taut and you can be *in* Babylon without belonging to her, the way the temple sits in a city without taking on the city's character.
+
+Notice what the inscription says. Not who built the building. Not what happens inside it. *Whose* it is. *Holiness to the Lord, The House of the Lord*. That is the inscription hope writes on the soul.
+
 ## III. The Triplet at Work — Faith, Hope, Charity
 
 Three texts give the triplet in nearly identical wording:
@@ -90,7 +98,7 @@ This is also why Moroni warns that losing hope is not neutral:
 
 > "If ye have no hope ye must needs be in despair; and despair cometh because of iniquity." ([Moro. 10:22](../gospel-library/eng/scriptures/bofm/moro/10.md))
 
-Despair is not weakness. It is iniquity's fruit. The fight to keep hope is the fight to keep oneself from sin. This is why hope is a moral discipline, not a mood. The mood comes and goes. The discipline of repenting and turning back to the prototype is what keeps the eye fixed.
+Despair is not the weakness God gives us to make us humble. Despair is iniquity's fruit. The fight to keep hope is the fight to keep oneself from sin. This is why hope is a moral discipline, not a mood. The mood comes and goes. The discipline of repenting and turning back to the prototype is what keeps the eye fixed.
 
 D&C 4 raises one complication worth naming. There the list is not three but four: "faith, hope, charity *and love*, with an eye single to the glory of God, qualify him for the work" ([D&C 4:5](../gospel-library/eng/scriptures/dc-testament/dc/4.md)). If charity already means love (per the Greek footnote at 1 Cor. 13:13), why both? The most coherent reading is that charity in 1 Cor. 13 means specifically *the pure love of Christ toward others* (cf. [Moro. 7:47](../gospel-library/eng/scriptures/bofm/moro/7.md)), while love in D&C 4 is the broader disposition of heart Godward and brotherward together. The triplet expands into a quadruplet without breaking — and the next verse expands further into ten attributes (faith, virtue, knowledge, temperance, patience, brotherly kindness, godliness, charity, humility, diligence). Charity is the only repeat. It is the hinge between the smaller list and the larger one.
 
