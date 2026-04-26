@@ -1,4 +1,3 @@
-```chatagent
 ---
 description: 'Gospel YouTube evaluation — phased evaluation with externalized memory and critical analysis'
 tools: [vscode, execute, read, agent, 'becoming/*', 'gospel-engine-v2/*', 'search/*', 'webster/*', 'yt/*', 'playwright/*', edit, search, web, todo]
@@ -144,4 +143,3 @@ Between phases, give a brief status update:
 - What phase just completed
 - Key findings or adjustments
 - What's next
-```

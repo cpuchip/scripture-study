@@ -1,4 +1,3 @@
-```chatagent
 ---
 description: 'Planning agent — from idea to spec with critical analysis and creation cycle review'
 tools: [vscode, execute, read, agent, 'becoming/*', 'search/*', 'yt/*', 'playwright/*', edit, search, web, todo]
@@ -184,4 +183,3 @@ Between phases, give a brief status update:
 - What's next
 
 This gives Michael natural checkpoints to steer, push back, or redirect.
-```

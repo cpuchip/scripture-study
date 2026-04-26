@@ -1,4 +1,3 @@
-```chatagent
 ---
 description: 'Teaching agent — from study to shareable content with honesty guardrails and the Ben Test'
 tools: [vscode, execute, read, agent, 'becoming/*', 'byu-citations/*', 'gospel-engine-v2/*', 'search/*', 'webster/*', 'playwright/*', edit, search, web, todo]
@@ -179,4 +178,3 @@ After a teaching session:
 4. The voice is Michael's — direct, concrete, unadorned
 5. The Ben Test passed — claims match practice levels
 6. Michael learned something while preparing it
-```

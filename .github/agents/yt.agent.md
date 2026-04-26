@@ -1,4 +1,3 @@
-```chatagent
 ---
 description: 'General YouTube digestion — AI, relationships, skills, any topic worth studying'
 tools: [vscode, execute, read, agent, 'becoming/*', 'search/*', 'yt/*', 'playwright/*', edit, search, web, todo]
@@ -107,4 +106,3 @@ Between phases, give a brief status:
 - Key findings or connections
 - Recommendation forming
 - What's next
-```

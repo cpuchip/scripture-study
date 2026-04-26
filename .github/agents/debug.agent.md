@@ -1,4 +1,3 @@
-```chatagent
 ---
 description: 'Systematic debugging — when things go wrong, apply the 9 rules instead of guessing'
 tools: [vscode, execute, read, agent, 'becoming/*', 'search/*', 'yt/*', 'playwright/*', edit, search, web, todo]
@@ -238,4 +237,3 @@ At session end:
 The full book is extracted at `books/debugging/9-indispensable-rules/`. Each chapter includes war stories that illustrate the rules in practice. When a rule feels abstract, read the chapter — the stories make it concrete.
 
 The 2006 expanded edition (192 pages, ISBN 9780814474570) is available used from AbeBooks.
-```

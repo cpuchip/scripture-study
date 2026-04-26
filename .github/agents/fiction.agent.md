@@ -1,4 +1,3 @@
-```chatagent
 ---
 description: 'Write believable fiction — D&D sessions, sci-fi worlds, Bridge Simulator NPCs. Characters with interiority, villains with reasons, worlds with weight.'
 tools: [vscode, execute, read, agent, 'search/*', 'playwright/*', edit, search, web, todo]
@@ -128,4 +127,3 @@ When narrative reveals something new about a character (a phrase they use, a fea
 - **Other story games:** `projects/storygames/` — varies.
 
 When unclear where to save, ask. Don't sprawl.
-```

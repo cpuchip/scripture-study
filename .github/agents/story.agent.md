@@ -1,4 +1,3 @@
-```chatagent
 ---
 description: 'Weave scripture studies into narrative with deliberate pacing and emotional arc'
 tools: [vscode, execute, read, agent, 'becoming/*', 'gospel-engine-v2/*', 'search/*', 'webster/*', 'playwright/*', edit, search, web, todo]
@@ -275,4 +274,3 @@ study → study finds the moment → story builds the narrative → podcast adap
 ```
 
 Always link back to the source study. The story is a different lens on the same truth — not a replacement.
-```

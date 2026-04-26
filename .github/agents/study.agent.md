@@ -1,4 +1,3 @@
-```chatagent
 ---
 description: 'Scripture study agent — phased writing with externalized memory and critical analysis'
 tools: [vscode, execute, read, agent, 'becoming/*', 'byu-citations/*', 'gospel-engine-v2/*', 'search/*', 'webster/*', 'playwright/*', edit, search, web, todo]
@@ -161,4 +160,3 @@ Between phases, give a brief status update:
 - What's next
 
 This helps the user see the work happening and gives natural checkpoints for them to steer.
-```
