@@ -97,7 +97,7 @@ This is where most writers stop too early. The death scene is not the moment the
 - The survivor who reaches automatically for the door, then remembers, then doesn't open it.
 - The captain's log entry that the captain can't bring herself to record.
 
-Write the aftermath. Three small images. Done.
+Write the aftermath. Give the reader a few specific, mundane consequences of the absence. Done.
 
 This is where `emotional-resonance` Rule 6 (the empty chair) does its heaviest work. The dead character should be *more present* in the aftermath than they were when alive — because now everything in the room is shaped by the absence.
 
@@ -140,6 +140,6 @@ Before writing a major character's death:
 - [ ] At least one survivor will visibly carry the loss.
 - [ ] (If sacrifice) The cost of the choice is visible — they give up what they spent the story protecting.
 - [ ] Death scene is short, concrete, ends on a small image, leaves silence after.
-- [ ] At least three aftermath images are planned (the empty chair, the unfinished thing, the kept-but-now-meaningless habit).
+- [ ] At least one aftermath image or consequence is planned (the empty chair, the unfinished thing, the kept-but-now-meaningless habit).
 
 If you can't check the first three boxes, the death will not land. Either build them in first, or don't kill the character yet.

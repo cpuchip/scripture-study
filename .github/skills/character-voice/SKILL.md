@@ -75,25 +75,27 @@ What a character doesn't say in dialogue is often more interesting than what the
 
 Characters who deliver exposition disguised as dialogue are wooden. Characters who evade hard questions until forced contain friction. Find the deflection point.
 
-## Dialogue Without Tags
+## Ground Dialogue with Action (Not Just Voice)
 
-A scene of strong character voice needs almost no dialogue tags. The reader knows who's speaking from the line itself.
+A common piece of amateur advice is to remove all dialogue tags because "the voice should carry who is speaking." **Do not do this.** Relying entirely on voice for attribution leads to "Floating Head Syndrome," where characters talk in a white room without bodies. 
 
-**Bad (relying on tags):**
+Use simple tags ("said") because they are invisible to the reader, but more importantly, use **action beats** to ground the dialogue in the physical world and control pacing.
 
-> "We should attack now," said Kaelen.
-> "We should wait," said Tilly.
-> "I think we should sing about it first," said Finn.
+**Bad (Floating Heads):**
 
-**Better (voice carries the speaker):**
+> "We should attack now."
+> "Define 'now.' Are we counting the guards?"
+> "Let's at least consider fainting romantically."
 
-> "Now. While they're sleeping. End it."
+**Better (Grounded with Action and Pacing):**
+
+> "Now. While they're sleeping. End it." Kaelen's hand didn't stray from his hammer.
 >
 > A pair of goggles came down off a forehead. "Define 'now.' Are we counting the four guards on the south wall? Because *I'm* counting the four guards on the south wall."
 >
-> Finn was already strumming. "Friends, friends. Let's at least *consider* the version where someone faints romantically and we walk through the front door."
+> Finn shifted his weight, already strumming a loose chord. "Friends, friends. Let's at least *consider* the version where someone faints romantically and we walk through the front door."
 
-Same beat. Tags absent. Voice doing the work.
+The voice is doing the heavy lifting, but the physical action anchors the characters in the room and sets the rhythm of the conversation.
 
 ## Interiority — What's In Their Head
 
