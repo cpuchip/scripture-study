@@ -1,6 +1,6 @@
 # Teacher Council Framework — Teaching the Savior's Way
 
-*Built from [Tad R. Callister's "Teaching the Savior's Way"](../../study/yt/GybaxBERWMk-callister-teaching-saviors-way.md), the [Teaching in the Savior's Way (2022)](../../gospel-library/eng/manual/teaching-in-the-saviors-way-2022/01-introduction/03a-overview-of-christlike-teaching.md) manual structure, and the [Hope](../../study/hope-and-the-grammar-of-pairs.md) and [Tree of Life](../../study/tree-of-life-and-the-chain.md) studies.*
+*Built from [Tad R. Callister's "Teaching the Savior's Way"](../../study/yt/GybaxBERWMk-callister-teaching-saviors-way.md), [Jan E. Newman's April 2021 General Conference talk of the same title](../../gospel-library/eng/general-conference/2021/04/14newman.md), the [Teaching in the Savior's Way (2022)](../../gospel-library/eng/manual/teaching-in-the-saviors-way-2022/01-introduction/03a-overview-of-christlike-teaching.md) manual structure, and the [Hope](../../study/hope-and-the-grammar-of-pairs.md) and [Tree of Life](../../study/tree-of-life-and-the-chain.md) studies.*
 
 This document is your map for the Sunday teacher council and for any time you teach *Teaching in the Savior's Way* itself. It folds Callister's video into the manual's two-part architecture so you have a framework, not just a list of points.
 
@@ -30,7 +30,23 @@ This is TSW Part 1 in one sentence. The reason it matters is what Callister adds
 
 The teacher's authority comes from the gap being closed. Not from credentials, not from preparation alone, not from skill at running a discussion. From living the thing you teach.
 
-This connects directly to the hope study. [Moroni 7:48](../../gospel-library/eng/scriptures/bofm/moro/7.md) and [1 John 3:2-3](../../gospel-library/eng/scriptures/nt/1-jn/3.md) and *Lectures on Faith* 7:16 each give the same doctrine: when He shall appear we shall see Him as He is, and every man that hath this hope in him purifieth himself, even as He is pure. *The seeing-ahead is what shapes the soul.* Callister stated the principle ("become like Him") without pulling the verse. You can pull the verse in your council to give the principle its scriptural anchor.
+This connects directly to the hope study. [Moroni 7:48](../../gospel-library/eng/scriptures/bofm/moro/7.md) and [1 John 3:2-3](../../gospel-library/eng/scriptures/nt/1-jn/3.md) and *Lectures on Faith* 7:16 each give the same doctrine: when He shall appear we shall see Him as He is, and every man that hath this hope in him purifieth himself, even as He is pure. *The seeing-ahead is what shapes the soul.* Callister stated the principle ("become like Him") without pulling the verse explicitly. But Jan E. Newman, one year earlier, *closed his entire talk on the same subject* with that exact verse, footnoted as Moroni 7:48 ([14newman.md fn 11](../../gospel-library/eng/general-conference/2021/04/14newman.md)). Newman, then Second Counselor in the Sunday School General Presidency, gave the talk in April 2021 General Conference. Callister, former Sunday School General President (2014–2018), gave his video in April 2022, as the updated TSW manual rolled out. Two Sunday School general leaders, one verse anchor, one year apart. That is the witness law operating across two Sunday-School-presidency voices on the same doctrine.
+
+## A Second Witness — Newman, April 2021
+
+Elder Jan E. Newman, then Second Counselor in the Sunday School General Presidency, gave the talk "Teaching in the Savior's Way" in the April 2021 General Conference. The 2022 TSW manual update followed; Callister's video came in April 2022, essentially alongside the manual's release. Read together, the two talks form a doublet that establishes the Part 1 / Part 2 architecture from above (Newman, in conference) and from in-the-room practice (Callister, demonstrating it).
+
+Newman's Part 1 anchor uses different words for the same instruction Callister gives:
+
+> "First and foremost, take it upon yourself to learn all you can about the Master Teacher Himself. How did He show love for others? What did they feel when He taught? What did He teach? What were His expectations of those He taught? After you explore questions like these, evaluate and adjust your way of teaching to be more like His." — [Newman, April 2021](../../gospel-library/eng/general-conference/2021/04/14newman.md)
+
+Same target. Same order of operations. *Become like Him first; teach from there.* Two witnesses to the same Part 1 claim.
+
+Newman adds three things Callister does not:
+
+1. **Apostolic-level authorization for TSW itself.** Newman explicitly invites the church to read TSW: "I invite you to read and study its every word. Its principles will assist you in your efforts to be more Christlike in your teaching." That sentence, given in conference, is the prophetic warrant for treating TSW as the operating manual rather than an optional supplement.
+2. **The St. Andrews analogy** — strengthens commitment #4 below.
+3. **The council itself** — "I invite leaders and teachers in every organization of the Church to counsel together with parents and youth in order to dramatically improve teaching at every level — in stakes, in wards, and in homes." Your teacher council exists *because Newman invited it.* The framework is not an extra structure you laid on top of the calling; it is the structure the talk asked for.
 
 The chain works for the teacher and for the class together:
 - **Faith** trusts the Savior is real and the becoming is possible
@@ -83,6 +99,12 @@ The pivot verse is [Helaman 11:23](../../gospel-library/eng/scriptures/bofm/hel/
 
 The act of recording is what trains the soul to receive more. Not because God is grading effort, but because the recording is the *acknowledgment* that what came was worth keeping.
 
+**Newman gives the same principle through a different image.** He tells of playing the Old Course at St. Andrews with his son and trying afterward to convey the experience: "Photos, videos, and my best descriptions were totally inadequate. I finally realized the only way for someone to know the grandeur of St. Andrews is to experience it." Therefore, he says:
+
+> "So it is with the word of God. We can teach it, we can preach it, we can explain it. We can talk about it, we can describe it, we can even testify of it. But until a person feels the sacred word of God distill upon his or her soul like the dews from heaven through the power of the Spirit, it will be like looking at a postcard or someone else's vacation photos. You have to go there yourself." — [Newman, April 2021](../../gospel-library/eng/general-conference/2021/04/14newman.md)
+
+This sets the teacher's task precisely. The teacher cannot give the class the experience; the teacher creates conditions for the firsthand experience and then hands them the practice (recording) that captures it. Callister's Helaman 11:23 ("they did receive many revelations daily") and Newman's St. Andrews are the same point from two angles — revelation accumulates *in the recipient*, drop by drop, and the recording is what trains the soul to notice the next drop. Newman pairs the experience analogy with the parable of the Ten Virgins: "this precious oil is acquired one drop at a time, patiently and persistently. No shortcut is available." Drops of oil. Drops of revelation. Same accumulation, same source, same need to be present for each drop as it arrives.
+
 ## Folded Together
 
 | TSW Part 2 chapter | Callister's commitment | One-line operating question |
@@ -108,10 +130,10 @@ The video is 38 minutes. A teacher council segment is shorter. Going wide turns 
 
 If your gut tells you which one your teachers most need, follow it. If you don't have a gut answer yet, *recording spiritual impressions* is the highest-leverage one — it's the practice that compounds, and it's the one most teachers haven't built yet. Helaman 11:23 + the Joseph Smith warning quote are unforgettable hooks for it.
 
-**3. Bring the verse Callister didn't.**
-Callister stated the principle ("become like Him") without quoting the verse. The verse is [Moroni 7:48](../../gospel-library/eng/scriptures/bofm/moro/7.md) / [1 John 3:2-3](../../gospel-library/eng/scriptures/nt/1-jn/3.md): "When he shall appear we shall be like him; for we shall see him as he is. And every man that hath this hope in him purifieth himself, even as he is pure."
+**3. Bring the verse — and name the second witness.**
+The verse is [Moroni 7:48](../../gospel-library/eng/scriptures/bofm/moro/7.md) / [1 John 3:2-3](../../gospel-library/eng/scriptures/nt/1-jn/3.md): "When he shall appear we shall be like him; for we shall see him as he is. And every man that hath this hope in him purifieth himself, even as he is pure."
 
-That single verse pair gives your teachers the doctrinal anchor for everything Callister was saying. The seeing-ahead is what shapes the soul. Their teaching is, at root, helping the class fix its eye on the Savior so the class gets shaped by what it's looking at — and the same is true for the teacher.
+Callister stated the principle without quoting the verse. Newman closed his entire General Conference talk with it. Bringing both into the room is doing what scripture does — establishing the word in the mouth of two witnesses. The seeing-ahead is what shapes the soul. The teachers' work is, at root, helping the class fix its eye on the Savior so the class gets shaped by what it's looking at, and the same is true for the teachers themselves.
 
 **4. Demonstrate, don't just describe.**
 The most effective thing in Callister's video is not what he says — it's what he does. He prepares spiritually before he teaches. He asks. He waits. He hands the microphone to the room. He confirms what the Spirit gave through the attendee. He moves on without dominating.
@@ -128,7 +150,9 @@ That sentence holds Part 1, Part 2, and the four practices together in one breat
 
 ## Cross-references
 
-- Video: [study/yt/GybaxBERWMk-callister-teaching-saviors-way.md](../../study/yt/GybaxBERWMk-callister-teaching-saviors-way.md)
+- Newman talk (canonical): [gospel-library/eng/general-conference/2021/04/14newman.md](../../gospel-library/eng/general-conference/2021/04/14newman.md)
+- Newman talk (transcript): [yt/general-conference-of-the-church-of-jesus-christ/_Ul2BRIFZbc/](../../yt/general-conference-of-the-church-of-jesus-christ/_Ul2BRIFZbc/)
+- Callister video: [study/yt/GybaxBERWMk-callister-teaching-saviors-way.md](../../study/yt/GybaxBERWMk-callister-teaching-saviors-way.md)
 - TSW manual entry point: [overview](../../gospel-library/eng/manual/teaching-in-the-saviors-way-2022/01-introduction/03a-overview-of-christlike-teaching.md)
 - TSW chapters: [Teach about Jesus Christ](../../gospel-library/eng/manual/teaching-in-the-saviors-way-2022/04-part-1/05-teach-about-jesus-christ.md) · [Help Learners Come unto Christ](../../gospel-library/eng/manual/teaching-in-the-saviors-way-2022/04-part-1/06-help-learners-come-unto-christ.md) · [Love Those You Teach](../../gospel-library/eng/manual/teaching-in-the-saviors-way-2022/07-part-2/08-love-those-you-teach.md) · [Teach by the Spirit](../../gospel-library/eng/manual/teaching-in-the-saviors-way-2022/07-part-2/09-teach-by-the-spirit.md) · [Teach the Doctrine](../../gospel-library/eng/manual/teaching-in-the-saviors-way-2022/07-part-2/10-teach-the-doctrine.md) · [Invite Diligent Learning](../../gospel-library/eng/manual/teaching-in-the-saviors-way-2022/07-part-2/11-invite-diligent-learning.md)
 - Hope study (faith-hope-charity grammar): [study/hope-and-the-grammar-of-pairs.md](../../study/hope-and-the-grammar-of-pairs.md)
