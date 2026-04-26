@@ -442,19 +442,47 @@ Neverember sat in a cell beneath the Open Lord's Palace. He did not speak. He di
 
 They returned to Daggerford at dusk.
 
-The Boar's Tooth was the same. The ale was the same. The people were the same. The tavern smelled like woodsmoke and old wood, and the fire in the hearth was warm.
+The Boar's Tooth was the same. The fire in the hearth was the same. The ale on the bar was the same. The regulars in the corner were the same — arguing about the same things, drinking the same way, unaware that the world had almost ended and six people had stopped it.
 
-They sat around their table — the same table, the same chairs, the same place where it had all begun.
+They sat at their table.
 
-Finn raised his mug. He did not play Whisper. He did not need to. The song was already written.
+Kaelen set his hammer down first. It hit the wood with a sound that made the bartender flinch. The hammer was notched now, scarred from the tower, the villa, the Neverwood, the deep chamber. Kaelen's hands were the same hands that had carried it — but they were different. They rested easier. The grip had loosened.
 
-"To the five travelers," he said. "And the sixth who read the truth."
+Lyra sat beside him. She reached into her pouch, habit, and pulled out nothing. The seeds were gone — given to the Neverwood, planted in the repurposed device. Her fingers curled into an empty fist, then opened. She did not reach again.
+
+Malachi's orb sat on the table. It pulsed — slow, uncertain, the rhythm of a patron whose power was fading. He had not chosen yet: renew, renegotiate, sever. He watched the pulse, and the pulse watched him back. Neither blinked.
+
+Elara unstrapped her shield. The red gauntlet was dented, the paint chipped, the metal worn from Undermountain's pressure. She set it down like a man setting down a burden he no longer needed to carry. Tomas was still gone. The city was still safe. Both things lived in her, and she did not ask one to cancel the other.
+
+Finn set Whisper against the wall. The willow wood was warm, but he did not tune it. He did not play. The song was written — every note, every verse, every silence between the verses. He had played it in his head a hundred times on the road back. Playing it now would not add anything.
+
+Tilly removed her goggles. She set them on the table, lenses down, and rubbed her eyes. Behind them, her face was tired. Not the tired of a long walk. The tired of someone who had read the truth and found it heavier than she expected. Oren was still gone. The book would be written. Both things lived in her, and she did not ask one to cancel the other.
+
+Remi was not there. He had not been there since the Milestone. The Harper network did not rest, and neither did he. His chair was empty, but no one reached for it.
+
+The bartender brought ale. Six mugs. One empty chair.
+
+Finn raised his mug. He did not look at the others. He looked at the fire — the same fire, the same flames, the same heat.
+
+"To the five travelers," he said.
+
+He paused. The fire crackled. The regulars kept arguing. The world kept turning.
+
+"And to the sixth," he said. "Who read the truth and carried it when none of us could."
 
 They drank.
 
-The coast was safe. The network was stable. The seals held.
+The ale was bitter. It always had been.
 
-For now.
+Outside, the road stretched south toward Baldur's Gate, east toward the Way of the Lion, north toward the Neverwood. The seals held. The network was stable. The coast was alive.
+
+Inside, six people sat in a tavern they recognized, drinking ale they recognized, surrounded by people who had no idea how close the dark had come.
+
+Kaelen did not speak. Lyra did not reach for her pouch. Malachi did not look at his orb. Elara did not touch her shield. Finn did not pick up Whisper. Tilly did not put her goggles back on.
+
+They sat. They drank. They remembered.
+
+And the fire burned on.
 
 ---
 
