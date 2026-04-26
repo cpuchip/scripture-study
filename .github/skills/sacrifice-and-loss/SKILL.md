@@ -25,7 +25,13 @@ Not their general personality. Their *specific current want*. The thing they wer
 
 The unfulfilled want makes the loss specific. Without it, the death is just generic mortality.
 
-### 2. The Reader Has Seen This Character at Rest
+### 2. The Sense of Inevitability
+
+A truly devastating loss feels shocking in the moment, but deeply inevitable in hindsight. It shouldn't feel like a random accident (unless randomness is the explicit theme). It should feel like the natural, tragic culmination of the character's choices up to that point.
+
+When looking back, the reader should recognize that the character *had* to make the choice that killed them because of who they were. That is where tragedy takes root.
+
+### 3. The Reader Has Seen This Character at Rest
 
 Not always fighting. Not always serving the plot. There must be at least one scene where the character is *just being* — eating, joking, complaining, humming — for the reader to know what is being subtracted from the world.
 
@@ -33,7 +39,7 @@ This is why ensemble shows kill characters more effectively than action movies. 
 
 If you're about to kill a character and the reader has only seen them in combat, briefings, and exposition: stop. Write the at-rest scene first. Then kill them.
 
-### 3. Someone in the Story Will Carry the Loss
+### 4. Someone in the Story Will Carry the Loss
 
 Grief in fiction belongs to the *survivors*, not the dead. The dead don't grieve — they're gone. The reader grieves *through* the character who keeps living.
 

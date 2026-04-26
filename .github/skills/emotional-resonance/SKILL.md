@@ -14,7 +14,7 @@ This skill exists because of a specific failure: D&D Session 5's first ending wa
 
 **Core principle:** Emotion lives in the gap between what is said and what is shown. Your job is to widen that gap with care.
 
-## The Eight Rules
+## The Nine Rules
 
 ### 1. End scenes with objects, not declarations.
 
@@ -90,9 +90,18 @@ Use them deliberately:
 
 But beware: pauses without earned weight are theatrical. You don't get a free dramatic moment by hitting Enter twice. The line that stands alone has to deserve the room you gave it.
 
+### 9. The Body Knows First (Somatic Response).
+
+Before a character *knows* they are angry, their jaw tightens. Before they *know* they are terrified, the air leaves their lungs or their skin goes cold. Emotion triggers a physical, physiological response before the brain can attach a label to it.
+
+- ❌ "He felt a sudden surge of panic." (Labeling)
+- ✅ "His stomach dropped out, and the room suddenly felt too bright." (Somatic)
+
+When you are tempted to name an emotion (sadness, rage, relief), delete the word. Describe what happened to the character's breathing, hands, or temperature instead. Let the reader feel the body's reaction; the reader will name the emotion themselves.
+
 ## How to Use This Skill
 
-When you've drafted an emotional scene, scan against the eight rules:
+When you've drafted an emotional scene, scan against the nine rules:
 
 1. Does the scene end with an object or a declaration? *(If declaration, find the object.)*
 2. Have I shown what the character stopped doing? *(If only what they're still doing, look for an abandoned habit.)*
@@ -102,8 +111,9 @@ When you've drafted an emotional scene, scan against the eight rules:
 6. Is absence a character? *(If someone is gone, are they more present than they were?)*
 7. Is the last line small? *(If grand, rewrite smaller.)*
 8. Are pauses earned? *(Or are they decorative?)*
+9. Does the body know first? *(If you named the emotion, delete it and describe the physical sensation.)*
 
-You won't hit all eight every scene. But two or three of them, used well, is the difference between a scene that lands and a scene that lists.
+You won't hit all nine every scene. But two or three of them, used well, is the difference between a scene that lands and a scene that lists.
 
 ## A Worked Example
 

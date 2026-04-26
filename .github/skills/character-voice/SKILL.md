@@ -14,7 +14,7 @@ A character has voice when you could read one of their lines on a strip of paper
 
 ## The Four Layers of Voice
 
-A distinct character voice has four layers. Most writers do one or two. Doing three or four is the difference between believable and forgettable.
+A distinct character voice has five layers. Most writers do one or two. Doing three, four, or five is the difference between believable and forgettable.
 
 ### Layer 1 — Vocabulary
 
@@ -65,6 +65,15 @@ This is the most powerful layer and the one most often skipped.
 - Lyra will not speak of her grandmother in past tense, even though her grandmother is dead. She uses present tense and the others don't correct her.
 
 Avoidance creates depth without requiring backstory dumps. The reader senses the wound by watching the character flinch around it.
+
+### Layer 5 — Subtext & Deflection
+
+What a character doesn't say in dialogue is often more interesting than what they do. Real people communicate imperfectly. They interrupt, they deflect, and they hide the truth. They answer the subtext, not the spoken question.
+
+- **Direct (Telling):** "Are you okay?" "No, I'm terrified."
+- **Deflection (Subtext):** "Are you okay?" He picked up his mug, set it down, and picked it up again. "What were you saying about the perimeter guards?"
+
+Characters who deliver exposition disguised as dialogue are wooden. Characters who evade hard questions until forced contain friction. Find the deflection point.
 
 ## Dialogue Without Tags
 
@@ -121,7 +130,7 @@ Take three lines of dialogue from the same character across three different scen
 
 If yes — voice is working.
 
-If they sound like generic-fantasy-protagonist or generic-sci-fi-officer or generic-warlock, the layers haven't been built. Go back to the four layers and pick one to deepen.
+If they sound like generic-fantasy-protagonist or generic-sci-fi-officer or generic-warlock, the layers haven't been built. Go back to the five layers and pick one to deepen.
 
 ## What NOT to Do
 

@@ -36,12 +36,21 @@ Ideologies are dangerous because they generalize. The villain takes a true thing
 
 ### Root 3 — A Real Need
 
-They want something concrete and specific. Not "power." A *specific* lever of power, for a *specific* reason, by a *specific* date.
+They want something concrete and specific. Not "power." A specific lever of power, for a *specific* reason, by a *specific* date.
 
 - Neverember needs the Underground Network operational by winter to break the merchant guild's stranglehold on Waterdeep's grain prices, because the famine is real and the grain merchants are gouging.
 - A trade-faction captain needs the deuterium contract signed before quarterly review, or her crew loses pension benefits. She'll betray the alliance to get it. She knows it's wrong. She does it anyway.
 
 Specific needs make villains *plottable*. You know what they'll do next, because you know what they're trying to get.
+
+### Root 4 — The Core Lie
+
+The most compelling villains believe a lie about themselves or the universe. This isn't an ideology they preach—it's the assumption that justifies everything they do.
+
+- "If I am not in absolute control, everyone I love will die." (The lie of control protecting innocence.)
+- "I am uniquely positioned to carry this burden; anyone else is too weak." (The lie of indispensable martyrdom.)
+
+When the heroes present evidence that shatters the Core Lie, the villain must either break or double down. The moment they double down, the tragic trajectory is cemented.
 
 ## The Mirror Test
 

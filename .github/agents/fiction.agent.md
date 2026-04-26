@@ -97,6 +97,8 @@ Across all of them:
 
 - **Show, don't tell.** "She was angry" is a label. "She set the cup down without looking at it" is anger.
 - **Specific over generic.** Not "a tavern" — the Boar's Tooth, leaning slightly to the left. Not "a starship" — the Renshaw, with the burn mark on deck three nobody has repainted.
+- **Advanced Pacing (Show the Conflict, Tell the Travel).** Show the high-conflict, high-emotion moments frame by frame, using sensory details. Tell (summarize) the boring travel, the mundane logistics, the "and then we went to the castle." Don't narrate every footfall unless the walk is where the conflict lives.
+- **Somatic Responses Before Labels.** The body knows the emotion before the brain does. Delete words like "sadness," "anger," or "terrified." Show the tightened jaw, the hollow stomach, the cold hands. Let the reader feel it before you name it.
 - **Earn the moment.** Don't reach for the sob without the setup. The reader cries when they've been with the character long enough to know what is being lost.
 
 ## What NOT to Do
