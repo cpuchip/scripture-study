@@ -3,28 +3,69 @@ character_name: Tilly Cogsworth
 gender: Female
 race: Rock Gnome
 class: Wizard
-subclass: School of Abjuration
-level: 3
+subclass: "—" (chooses at level 2)
+level: 1
 background: Cloistered Scholar
 alignment: Neutral Good
 proficiency_bonus: 2
-proficiencies:
-  armor: []
-  weapons: [Daggers, Dart, Slings, Quarterstaff, Light crossbows]
-  tools: [Tinker's tools]
-  saving_throws: [Intelligence, Wisdom]
-skills:
-  - Arcana
-  - Investigation
-  - Medicine
-  - History
+hit_dice: 1d6
+ability_scores:
+  strength: 8
+  dexterity: 12
+  constitution: 13
+  intelligence: 17
+  wisdom: 14
+  charisma: 10
+modifiers:
+  strength: -1
+  dexterity: 1
+  constitution: 1
+  intelligence: 3
+  wisdom: 2
+  charisma: 0
+hp: 7
+max_hp: 7
+ac: 12  # Dex (+1) + 11 (no armor)
+initiative: 1
+speed: 25
+saving_throws:
+  intelligence: 5
+  wisdom: 4
+skill_proficiencies:
+  - Arcana (+5)
+  - Investigation (+5)
+  - Medicine (+4)
+  - History (+5)
+tool_proficiencies:
+  - Tinker's tools (+2)
+armor_proficiencies: []
+weapon_proficiencies: [Daggers, Darts, Slings, Quarterstaffs, Light crossbows]
+spellcasting_ability: Intelligence
+spell_save_dc: 13
+spell_attack_bonus: 5
+cantrips_known: 3
+spells_known: 6
+spellbook_spells: 6
+spell_slots:
+  level_1: 2
+cantrips:
+  - Fire Bolt (+5 to hit, 1d10 fire)
+  - Prestidigitation
+  - Mage Hand
+spells:
+  - Shield (AC 21 until next turn, no save)
+  - Magic Missile (3 darts, 1d4+1 force each, auto-hit)
+  - Feather Fall
+  - Light
+  - Detect Magic
+  - Friends
 languages:
   - Common
   - Gnomish
   - Dwarvish
   - Primordial
 equipment:
-  - Quarterstaff
+  - Quarterstaff (+2 to hit, 1d6+1 bludgeoning)
   - Dagger
   - Arcane focus (crystal)
   - Tinker's tools
@@ -32,20 +73,26 @@ equipment:
   - Spellbook
   - Goggles of minute observation (self-made)
   - Belt pouch with 16 gp
-xp: 700
+gold: 16
+xp: 0
 death_saves:
   successes: 0
   failures: 0
-features:
-  - Spellcasting
-  - Arcane Recovery
-  - Abjuration Savant
-  - Arcane Ward
-inspiration: 0
+level_1_features:
+  - Spellcasting (full caster, Intelligence-based)
+  - Arcane Recovery (1/long rest: recover spell slots totaling up to 1st level)
+racial_traits:
+  - Artificer's Intelligence (+1 to Intelligence)
+  - Gnome Cunning (advantage on Int, Wis, and Cha saves vs magic)
+  - Small size
+  - Darkvision (60 ft)
+  - Speed 25 ft
+  - Tinker (proficiency with tinker's tools; can craft Tiny clockwork devices)
 notes: >
-  Tilly's spellbook contains 23 spells, including 7 she invented herself.
+  Tilly's spellbook contains 6 spells at level 1.
   Her goggles allow her to see magical auras and tiny mechanisms.
   She keeps a journal of every magical anomaly she encounters.
+  At level 2, Tilly will choose School of Abjuration as her Wizard subclass.
 ---
 
 # Tilly Cogsworth

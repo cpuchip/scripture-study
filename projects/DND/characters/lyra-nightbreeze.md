@@ -3,21 +3,43 @@ character_name: Lyra Nightbreeze
 gender: Female
 race: Wood Elf
 class: Ranger
-subclass: Gloom Stalker
-level: 3
+subclass: "—" (chooses at level 3)
+level: 1
 background: Folk Hero
 alignment: Chaotic Good
 proficiency_bonus: 2
-proficiencies:
-  armor: [Light armor, Medium armor, Shields]
-  weapons: [Simple weapons, Martial weapons]
-  tools: [Herbalism kit]
-  saving_throws: [Strength, Dexterity]
-skills:
-  - Animal Handling
-  - Survival
-  - Stealth
-  - Perception
+hit_dice: 1d10
+ability_scores:
+  strength: 12
+  dexterity: 17
+  constitution: 13
+  intelligence: 8
+  wisdom: 15
+  charisma: 10
+modifiers:
+  strength: 1
+  dexterity: 3
+  constitution: 1
+  intelligence: -1
+  wisdom: 2
+  charisma: 0
+hp: 11
+max_hp: 11
+ac: 14  # Leather (11) + Dex (+3)
+initiative: 3
+speed: 35  # Elf speed
+saving_throws:
+  strength: 3
+  dexterity: 5
+skill_proficiencies:
+  - Animal Handling (+4)
+  - Survival (+4)
+  - Medicine (+2)  # Folk Hero
+  - Persuasion (+2)  # Folk Hero
+tool_proficiencies:
+  - Herbalism kit (+2)  # Folk Hero
+armor_proficiencies: [Light armor, Medium armor, Shields]
+weapon_proficiencies: [Simple weapons, Martial weapons]
 languages:
   - Common
   - Elvish
@@ -25,25 +47,33 @@ languages:
   - Sylvan
 equipment:
   - Leather armor
-  - Longbow + 20 arrows
-  - Scimitar
+  - Longbow (+5 to hit, 1d8+3 piercing)
+  - 20 arrows
+  - Scimitar (+5 to hit, 1d6+3 slashing)
   - Sling + 10 sling bullets
   - Herbalism kit
   - Explorer's pack
   - Cloak of the woods (home-made, bark and moss)
   - Belt pouch with 12 gp
-xp: 700
+gold: 12
+xp: 0
 death_saves:
   successes: 0
   failures: 0
-features:
-  - Favored Enemy (Goblinoids, Undead)
-  - Natural Explorer (Forests)
-  - Gloom Stalker: Dread Ambusher, Umbral Sight, Dark Magic
-inspiration: 0
+level_1_features:
+  - Favored Enemy (Goblinoids): Advantage on Nature/Wisdom checks to find/track them
+  - Natural Explorer (Forests): +2 to Survival, advantage on Survival to navigate, party not lost due to guide error, forage yields doubled
+racial_traits:
+  - Fey Ancestry (advantage on saves vs being charmed; magic can't put you to sleep)
+  - Trance (don't sleep; meditate for 4 hours instead)
+  - Darkvision (60 ft)
+  - Speed 35 ft
+  - Weapon Training (longsword, shortbow, longbow, hand crossbow)
+  - Mask of the Wild (can attempt to hide even when lightly obscured by plants)
 notes: >
   Lyra's bow is strung with sinew from a dire wolf she killed at age 112.
   She tracks using a system of knots in a leather cord at her wrist.
+  At level 3, Lyra will choose Gloom Stalker as her Ranger subclass.
 ---
 
 # Lyra Nightbreeze

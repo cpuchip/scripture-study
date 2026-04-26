@@ -3,48 +3,72 @@ character_name: Kaelen Ironheart
 gender: Male
 race: Hill Dwarf
 class: Fighter
-subclass: Battle Master
-level: 3
+subclass: "—" (chooses at level 3)
+level: 1
 background: Clan Crafter
 alignment: Lawful Good
 proficiency_bonus: 2
-proficiencies:
-  armor: [Light armor, Medium armor, Shields]
-  weapons: [Simple weapons, Martial weapons]
-  tools: [Smith's tools]
-  saving_throws: [Strength, Constitution]
-skills:
-  - Athletics
-  - Intimidation
-  - Insight
-  - History
+hit_dice: 1d10
+ability_scores:
+  strength: 15
+  dexterity: 14
+  constitution: 15
+  intelligence: 8
+  wisdom: 11
+  charisma: 12
+modifiers:
+  strength: 2
+  dexterity: 2
+  constitution: 2
+  intelligence: -1
+  wisdom: 0
+  charisma: 0
+hp: 12
+max_hp: 12
+ac: 17  # Chain mail (16) + Fighting Style Defense (+1)
+initiative: 2
+speed: 25  # Dwarf speed (not increased by Hill subtype)
+saving_throws:
+  strength: 4
+  constitution: 4
+skill_proficiencies:
+  - Athletics (+4)
+  - Intimidation (+2)
+  tool_proficiencies:
+    - Smith's tools (+2)
+armor_proficiencies: [Light armor, Medium armor, Heavy armor, Shields]
+weapon_proficiencies: [Simple weapons, Martial weapons]
 languages:
   - Common
   - Dwarvish
-  - Giant
 equipment:
   - Chain mail
   - Shield
-  - Longsword
-  - Hammer (mithral, family heirloom)
+  - Longsword (+4 to hit, 1d8+2 slashing)
+  - Hammer (mithral, family heirloom "Dawnbreaker")
   - Smith's tools
   - Dwarven armor (home-brewed)
   - Shield bearing Ironheart clan sigil
   - Backpack with trail rations (3 days)
   - Belt pouch with 15 gp
-xp: 700
+gold: 15
+xp: 0
 death_saves:
   successes: 0
   failures: 0
-features:
-  - Second Wind
-  - Fighting Style: Defense
-  - Battle Master maneuvers (3): Maneuvers, Commander's Strike, Pushing Attack, Menacing Attack
-  - Superiority Dice (d8, 4)
-inspiration: 0
+level_1_features:
+  - Fighting Style: Defense (+1 AC while wearing armor)
+  - Second Wind (1/burst of action: 1d10+2 HP, 1/short rest)
+racial_traits:
+  - Darkvision (60 ft)
+  - Dwarven Resilience (advantage on saves vs poison)
+  - Dwarven Combat Training (+1 with battleaxe, handaxe, light hammer, warhammer)
+  - Stonecunning (advantage on Int (History) checks about stone construction)
+  - Speed 25 ft (no penalty in armor)
 notes: >
   Kaelen's hammer, "Dawnbreaker," was forged by his grandfather before Mithral Hall's fall.
   It hums faintly when near ancient dwarven magic.
+  At level 3, Kaelen will choose Battle Master as his Fighting Style subclass.
 ---
 
 # Kaelen Ironheart

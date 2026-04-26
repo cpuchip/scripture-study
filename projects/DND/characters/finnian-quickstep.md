@@ -3,21 +3,60 @@ character_name: Finnian "Finn" Quickstep
 gender: Male
 race: Lightfoot Halfling
 class: Bard
-subclass: College of Lore
-level: 3
+subclass: "—" (chooses at level 3)
+level: 1
 background: Entertainer
 alignment: Chaotic Neutral
 proficiency_bonus: 2
-proficiencies:
-  armor: [Light armor]
-  weapons: [Simple weapons, Hand crossbows, Longswords, Rapiers]
-  tools: [3 musical instruments: Lute, Flute, Drum]
-  saving_throws: [Dexterity, Charisma]
-skills:
-  - Acrobatics
-  - Performance
-  - Persuasion
-  - Deception
+hit_dice: 1d8
+ability_scores:
+  strength: 8
+  dexterity: 14
+  constitution: 12
+  intelligence: 13
+  wisdom: 10
+  charisma: 17
+modifiers:
+  strength: -1
+  dexterity: 2
+  constitution: 1
+  intelligence: 1
+  wisdom: 0
+  charisma: 3
+hp: 9
+max_hp: 9
+ac: 12  # Leather (11) + Dex (+1)
+initiative: 2
+speed: 25
+saving_throws:
+  dexterity: 4
+  charisma: 5
+skill_proficiencies:
+  - Acrobatics (+4)
+  - Performance (+5)
+  - Persuasion (+5)
+  - Deception (+5)
+tool_proficiencies:
+  - Lute (+5)
+  - Flute (+5)
+  - Drum (+5)
+armor_proficiencies: [Light armor]
+weapon_proficiencies: [Simple weapons, Hand crossbows, Longswords, Rapiers]
+spellcasting_ability: Charisma
+spell_save_dc: 13
+spell_attack_bonus: 5
+cantrips_known: 2
+spells_known: 4
+spell_slots:
+  level_1: 2
+cantrips:
+  - Vicious Mockery (1d4 psychic, target makes DC 13 Wis save or has disadvantage on next attack)
+  - Mage Hand
+spells:
+  - Cure Wounds (1d4+3 healing)
+  - Dissonant Whispers (1d6 psychic, target makes DC 13 Wis save or must move away from target)
+  - Feather Fall
+  - Friends
 languages:
   - Common
   - Halfling
@@ -25,31 +64,32 @@ languages:
   - Sylvan
 equipment:
   - Leather armor
-  - Rapier
+  - Rapier (+4 to hit, 1d8+2 piercing)
   - Dagger
   - Lute
   - Flute
   - Hand drum
   - Entertainer's pack
   - Belt pouch with 22 gp
-xp: 700
+gold: 22
+xp: 0
 death_saves:
   successes: 0
   failures: 0
-features:
-  - Spellcasting
-  - Bardic Inspiration (d6)
-  - Jack of All Trades
-  - Song of Rest (d4)
-  - Fellow Quester
-  - Tool Expert
-  - Additional Magical Secrets
-  - Cutting Words
-inspiration: 1
+level_1_features:
+  - Spellcasting (full caster, Charisma-based)
+  - Bardic Inspiration (1/long rest: grant a d6 temp bonus to an ability check, attack roll, or save; target must hear you)
+racial_traits:
+  - Lucky (roll 1d20 and take the higher result on any attack roll, ability check, or saving throw; 1/long rest)
+  - Nimble (can attempt to hide when obscured by a creature one or two sizes larger)
+  - Darkvision (60 ft)
+  - Speed 25 ft
+  - Mask of the Wild (can attempt to hide even when lightly obscured by natural phenomena)
 notes: >
   Finn's lute is named "Whisper" and was carved from a single piece of willow wood.
   He can play 17 different tunes without thinking.
   He keeps a small pouch of sweet rations in his coat at all times.
+  At level 3, Finn will choose College of Lore as his Bard subclass.
 ---
 
 # Finnian "Finn" Quickstep

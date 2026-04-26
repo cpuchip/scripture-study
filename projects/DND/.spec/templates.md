@@ -78,28 +78,68 @@ character_name: Name
 gender: Male | Female | Nonbinary
 race: Race
 class: Class
-subclass: Subclass
-level: number
+subclass: "—" (chooses at level X)
+level: 1
 background: Background
 alignment: Alignment
-proficiency_bonus: number
-proficiencies:
-  armor: [types]
-  weapons: [types]
-  tools: [types]
-  saving_throws: [abilities]
-skills: [skill1, skill2]
+proficiency_bonus: 2
+hit_dice: 1dX
+ability_scores:
+  strength: 15
+  dexterity: 14
+  constitution: 13
+  intelligence: 12
+  wisdom: 10
+  charisma: 8
+modifiers:
+  strength: 2
+  dexterity: 2
+  constitution: 1
+  intelligence: 1
+  wisdom: 0
+  charisma: -1
+hp: 12
+max_hp: 12
+ac: 16
+initiative: +2
+speed: 30
+saving_throws:
+  strength: 4
+  constitution: 3
+skill_proficiencies:
+  - SkillName (+modifier)
+armor_proficiencies: [types]
+weapon_proficiencies: [types]
+spellcasting_ability: Charisma | Intelligence | Wisdom | "—"
+spell_save_dc: 13
+spell_attack_bonus: 5
+cantrips_known: 0
+spells_known: 0
+spell_slots:
+  level_1: 0
+cantrips: []
+spells: []
 languages: [lang1, lang2]
-equipment: [item1, item2]
-xp: number
+equipment:
+  - Item (+X to hit, YdZ+W damage type)
+gold: 15
+xp: 0
 death_saves:
   successes: 0
   failures: 0
-features: [feature1, feature2]
-inspiration: 0
+level_1_features: [feature1, feature2]
+racial_traits: [trait1, trait2]
 notes: freeform_text
 ---
 ```
+
+**Level 1 rules (standard array: 15, 14, 13, 12, 10, 8):**
+- HP = max hit die + Con modifier
+- Proficiency bonus = +2 at level 1
+- Subclass chosen at level 3 (except Wizard: level 2, Sorcerer/Cleric: level 1)
+- Spell save DC = 8 + proficiency bonus + spellcasting ability modifier
+- Spell attack bonus = proficiency bonus + spellcasting ability modifier
+- Attack bonus = proficiency bonus + relevant ability modifier (Str for melee, Dex for ranged/finesse)
 
 **Prose sections:**
 - `## Appearance`

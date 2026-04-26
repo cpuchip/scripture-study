@@ -3,44 +3,85 @@ character_name: Malachi Vane
 gender: Male
 race: Feral Tiefling
 class: Warlock
-subclass: The Fiend
-level: 3
+subclass: The Fiend (Patron chosen at level 1)
+level: 1
 background: Hermit
 alignment: Neutral Evil
 proficiency_bonus: 2
-proficiencies:
-  armor: []
-  weapons: [Simple weapons]
-  tools: [Calligrapher's supplies]
-  saving_throws: [Constitution, Charisma]
-skills:
-  - Arcana
-  - History
-  - Religion
-  - Persuasion
+hit_dice: 1d8
+ability_scores:
+  strength: 8
+  dexterity: 14
+  constitution: 13
+  intelligence: 12
+  wisdom: 10
+  charisma: 17
+modifiers:
+  strength: -1
+  dexterity: 2
+  constitution: 1
+  intelligence: 1
+  wisdom: 0
+  charisma: 3
+hp: 9
+max_hp: 9
+ac: 13  # Leather (11) + Dex (+2)
+initiative: 2
+speed: 30
+saving_throws:
+  wisdom: 2
+  charisma: 5
+skill_proficiencies:
+  - Arcana (+3)
+  - History (+3)
+  - Investigation (+3)  # Hermit
+  - Medicine (+2)  # Hermit
+tool_proficiencies:
+  - Calligrapher's supplies (+2)  # Hermit
+armor_proficiencies: []
+weapon_proficiencies: [Simple weapons]
+spellcasting_ability: Charisma
+spell_save_dc: 13
+spell_attack_bonus: 5
+cantrips_known: 2
+spells_known: 4
+spell_slots:
+  level_1: 1
+cantrips:
+  - Eldritch Blast (+5 to hit, 1d10 force)
+  - Mage Hand
+spells:
+  - Armor of Agathys
+  - Burning Hands
+  - Charm Person
+  - Hellish Rebuke
 languages:
   - Common
   - Infernal
   - Aboleth
 equipment:
   - Leather armor
-  - Light crossbow + 10 bolts
+  - Light crossbow (+4 to hit, 1d8 piercing)
+  - 10 bolts
   - Arcane focus (obsidian orb)
   - Calligrapher's supplies
   - Scholar's pack
   - Robes of the fiendish court (dark crimson)
   - Belt pouch with 25 gp
-xp: 700
+gold: 25
+xp: 0
 death_saves:
   successes: 0
   failures: 0
-features:
+level_1_features:
   - Otherworldly Patron: The Fiend
-  - Pact Magic (Spell slots: 2nd level, 2 slots)
-  - Eldritch Invocations (2): Agonizing Blast, Thirsting Blade
-  - Dark One's Blessing
-  - Dark One's Own Luck
-inspiration: 0
+  - Pact Magic (1 first-level spell slot, recovers on short rest)
+  - Dark One's Blessing (when you reduce a hostile creature to 0 HP, gain temp HP equal to 2 + Warlock level = 4)
+racial_traits:
+  - Hellish Resistance (advantage on saves vs being charmed; resistance to necrotic damage)
+  - Darkvision (60 ft)
+  - Speed 30 ft
+  - Infernal Legacy (can cast Thaumaturgy at will; learn Silent Image at level 3; resistance to one damage type — choose fire)
 notes: >
   Malachi's pact is not with any specific demon he named.
   The patron chose him. He did not choose the patron.
