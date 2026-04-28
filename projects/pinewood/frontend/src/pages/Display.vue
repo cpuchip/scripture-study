@@ -17,6 +17,19 @@ onUnmounted(() => sock.close())
 const current = computed(() => state.value?.current || null)
 const onDeck = computed(() => state.value?.on_deck || null)
 const top5 = computed(() => (state.value?.standings || []).slice(0, 5))
+
+// Most recent completed heat — sits above On Deck so parents can verify what was recorded.
+const justScored = computed(() => {
+  const heats = state.value?.heats || []
+  const cur = current.value
+  const startIdx = cur
+    ? heats.findIndex(h => h.id === cur.id) - 1
+    : heats.length - 1
+  for (let i = startIdx; i >= 0; i--) {
+    if (heats[i].status === 'complete') return heats[i]
+  }
+  return null
+})
 </script>
 
 <template>
@@ -44,18 +57,37 @@ const top5 = computed(() => (state.value?.standings || []).slice(0, 5))
         </div>
       </div>
 
-      <!-- On-deck + leaderboard -->
-      <div class="space-y-8">
+      <!-- Just scored + On-deck + leaderboard -->
+      <div class="space-y-6">
+        <div v-if="justScored">
+          <div class="text-2xl text-emerald-400 uppercase tracking-wider">Just Scored</div>
+          <div class="text-4xl font-bold mb-2">Heat {{ justScored.heat_number }}</div>
+          <div class="grid grid-cols-3 gap-3">
+            <div v-for="lane in 3" :key="lane"
+                 class="bg-emerald-900/40 border border-emerald-800 rounded-xl p-3 text-center">
+              <div class="text-emerald-300 text-sm">L{{ lane }}</div>
+              <template v-for="s in justScored.slots" :key="s.id">
+                <div v-if="s.lane === lane">
+                  <div class="text-2xl font-mono font-bold">#{{ s.car_number }}</div>
+                  <div class="text-xs text-emerald-200 truncate">{{ s.car_name }}</div>
+                  <div v-if="s.place" class="text-5xl font-bold text-yellow-400 mt-1">{{ s.place }}</div>
+                  <div v-else class="text-xl text-slate-500 mt-1">—</div>
+                </div>
+              </template>
+            </div>
+          </div>
+        </div>
+
         <div v-if="onDeck">
           <div class="text-2xl text-slate-400 uppercase tracking-wider">On Deck</div>
-          <div class="text-6xl font-bold mb-3">Heat {{ onDeck.heat_number }}</div>
+          <div class="text-4xl font-bold mb-2">Heat {{ onDeck.heat_number }}</div>
           <div class="grid grid-cols-3 gap-3">
             <div v-for="lane in 3" :key="lane" class="bg-slate-900 rounded-xl p-3 text-center">
               <div class="text-slate-400 text-sm">L{{ lane }}</div>
               <template v-for="s in onDeck.slots" :key="s.id">
                 <div v-if="s.lane === lane">
-                  <div class="text-3xl font-mono font-bold">#{{ s.car_number }}</div>
-                  <div class="text-sm text-slate-400">{{ s.car_name }}</div>
+                  <div class="text-2xl font-mono font-bold">#{{ s.car_number }}</div>
+                  <div class="text-xs text-slate-400 truncate">{{ s.car_name }}</div>
                 </div>
               </template>
             </div>
@@ -64,7 +96,7 @@ const top5 = computed(() => (state.value?.standings || []).slice(0, 5))
 
         <div>
           <div class="text-2xl text-slate-400 uppercase tracking-wider mb-3">Top 5 (lowest = best)</div>
-          <table class="w-full text-3xl">
+          <table class="w-full text-2xl">
             <tr v-for="s in top5" :key="s.car_id" class="border-b border-slate-700">
               <td class="py-2 text-slate-400 w-16">#{{ s.rank }}</td>
               <td class="py-2 font-mono">#{{ s.car_number }}</td>

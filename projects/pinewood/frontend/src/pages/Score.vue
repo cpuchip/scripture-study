@@ -1,15 +1,13 @@
 <script setup>
 import { ref, computed, onMounted, onUnmounted, nextTick, watch } from 'vue'
-import { useRouter } from 'vue-router'
 import { api } from '../lib/api.js'
 import { useSocket } from '../lib/ws.js'
 
 const props = defineProps({ id: String, heat: String })
-const router = useRouter()
 const heats = ref([])
-const heatIdx = ref(0)  // index into heats
+const heatIdx = ref(0)
 const places = ref([null, null, null])
-const inputRefs = [ref(null), ref(null), ref(null)]
+const inputEls = []          // populated by :ref function below
 const error = ref('')
 
 async function load() {
@@ -18,7 +16,6 @@ async function load() {
     const idx = heats.value.findIndex(h => h.heat_number === parseInt(props.heat, 10))
     if (idx >= 0) heatIdx.value = idx
   } else {
-    // jump to first non-complete heat
     const idx = heats.value.findIndex(h => h.status !== 'complete')
     if (idx >= 0) heatIdx.value = idx
   }
@@ -33,29 +30,49 @@ onUnmounted(() => sock.close())
 
 const heat = computed(() => heats.value[heatIdx.value] || null)
 
+// ±2 surrounding heats for verification context.
+const contextHeats = computed(() => {
+  const out = []
+  for (let d = -2; d <= 2; d++) {
+    const i = heatIdx.value + d
+    if (i >= 0 && i < heats.value.length) {
+      out.push({ ...heats.value[i], _offset: d })
+    }
+  }
+  return out
+})
+
 function syncPlaces() {
   if (!heat.value) return
   places.value = [null, null, null]
   for (const s of heat.value.slots) {
     places.value[s.lane - 1] = s.place ?? null
   }
-  nextTick(() => focusFirstEmpty())
+  nextTick(focusFirstEmpty)
 }
 
 watch(heatIdx, syncPlaces)
 
+function focusLane(lane) {
+  const el = inputEls[lane - 1]
+  if (el && !el.disabled) {
+    el.focus()
+    el.select?.()
+    return true
+  }
+  return false
+}
+
 function focusFirstEmpty() {
   for (let i = 0; i < 3; i++) {
     if (places.value[i] == null && hasCar(i + 1)) {
-      inputRefs[i].value?.focus()
-      inputRefs[i].value?.select?.()
-      return
+      if (focusLane(i + 1)) return
     }
   }
 }
 
 function hasCar(lane) {
-  return heat.value?.slots.find(s => s.lane === lane && s.car_id)
+  return !!heat.value?.slots.find(s => s.lane === lane && s.car_id)
 }
 
 function carInLane(lane) {
@@ -71,14 +88,11 @@ async function setPlace(lane, val) {
     const n = parseInt(val, 10)
     if (![1, 2, 3].includes(n)) {
       error.value = `Lane ${lane}: place must be 1, 2 or 3.`
-      return
+      return false
     }
-    // Detect duplicate within this heat (warn, not block — manual override may be intentional).
     const dup = places.value.findIndex((v, i) => v === n && (i + 1) !== lane)
     if (dup >= 0) {
-      if (!confirm(`Lane ${dup + 1} already has place ${n}. Continue?`)) {
-        return
-      }
+      if (!confirm(`Lane ${dup + 1} already has place ${n}. Continue?`)) return false
     }
     p = n
   }
@@ -87,21 +101,31 @@ async function setPlace(lane, val) {
     await api.score(props.id, heat.value.heat_number, lane, p)
   } catch (e) {
     error.value = 'Save failed: ' + e.message
-    return
+    return false
   }
-  // auto-advance
-  if (p != null) advanceFocus(lane)
+  return true
 }
 
-function advanceFocus(fromLane) {
-  for (let i = fromLane; i < 3; i++) {
-    if (places.value[i] == null && hasCar(i + 1)) {
-      inputRefs[i].value?.focus()
-      inputRefs[i].value?.select?.()
-      return
+// Save current input, then move focus to the next lane that needs a score.
+// If all lanes in this heat are scored, advance to the next heat.
+async function saveAndAdvance(lane, val) {
+  const ok = await setPlace(lane, val)
+  if (!ok) return
+  // Look for next lane after `lane` that still needs a place.
+  for (let nextLane = lane + 1; nextLane <= 3; nextLane++) {
+    if (places.value[nextLane - 1] == null && hasCar(nextLane)) {
+      await nextTick()
+      if (focusLane(nextLane)) return
     }
   }
-  // all filled → next heat
+  // Then check earlier lanes (in case officials skipped one).
+  for (let i = 1; i < lane; i++) {
+    if (places.value[i - 1] == null && hasCar(i)) {
+      await nextTick()
+      if (focusLane(i)) return
+    }
+  }
+  // All lanes scored → next heat.
   if (heatIdx.value < heats.value.length - 1) {
     heatIdx.value++
   }
@@ -112,25 +136,35 @@ function jump(delta) {
   if (next >= 0 && next < heats.value.length) heatIdx.value = next
 }
 
-function jumpTo() {
-  const n = prompt(`Jump to heat (1–${heats.value.length}):`)
-  if (!n) return
-  const idx = heats.value.findIndex(h => h.heat_number === parseInt(n, 10))
+function jumpToHeat(num) {
+  const idx = heats.value.findIndex(h => h.heat_number === num)
   if (idx >= 0) heatIdx.value = idx
 }
 
+function jumpToPrompt() {
+  const n = prompt(`Jump to heat (1–${heats.value.length}):`)
+  if (!n) return
+  jumpToHeat(parseInt(n, 10))
+}
+
 function onKey(e, lane) {
-  if (e.key === 'Enter') {
+  if (e.key === 'Enter' || e.key === 'Tab') {
     e.preventDefault()
-    setPlace(lane, e.target.value)
+    saveAndAdvance(lane, e.target.value)
   } else if (e.key === 'Backspace' && e.target.value === '') {
     e.preventDefault()
     setPlace(lane, null)
   } else if (e.key === 'ArrowRight') {
-    inputRefs[Math.min(2, lane)].value?.focus()
+    e.preventDefault()
+    focusLane(Math.min(3, lane + 1))
   } else if (e.key === 'ArrowLeft') {
-    inputRefs[Math.max(0, lane - 2)].value?.focus()
+    e.preventDefault()
+    focusLane(Math.max(1, lane - 1))
   }
+}
+
+function slotForLane(h, lane) {
+  return h.slots?.find(s => s.lane === lane)
 }
 </script>
 
@@ -145,7 +179,7 @@ function onKey(e, lane) {
         <div class="text-center">
           <div class="text-sm text-slate-500">Heat</div>
           <div class="text-5xl font-bold">{{ heat.heat_number }}</div>
-          <button class="text-sm text-blue-700 hover:underline" @click="jumpTo">jump to…</button>
+          <button class="text-sm text-blue-700 hover:underline" @click="jumpToPrompt">jump to…</button>
           <span class="ml-2 text-sm text-slate-500">({{ heatIdx + 1 }} / {{ heats.length }})</span>
         </div>
         <button class="btn-secondary" :disabled="heatIdx >= heats.length - 1" @click="jump(1)">Next →</button>
@@ -162,7 +196,7 @@ function onKey(e, lane) {
           </div>
           <div class="text-sm text-slate-600 mb-3 h-5">{{ carInLane(lane)?.car_name || '' }}</div>
           <input
-            :ref="inputRefs[lane - 1]"
+            :ref="el => inputEls[lane - 1] = el"
             class="numpad-input"
             inputmode="numeric"
             type="number"
@@ -172,11 +206,58 @@ function onKey(e, lane) {
             @keydown="onKey($event, lane)"
             placeholder="—"
           />
-          <div class="text-xs text-slate-500 mt-1">Enter 1, 2 or 3 → Enter</div>
+          <div class="text-xs text-slate-500 mt-1">Type 1, 2 or 3 → Enter</div>
         </div>
       </div>
 
       <p v-if="error" class="text-red-600 mt-4">{{ error }}</p>
+
+      <!-- Verification strip: previous, current, upcoming heats. -->
+      <div class="mt-8 card">
+        <div class="text-sm font-semibold text-slate-600 mb-2 uppercase tracking-wider">
+          Recently scored / upcoming
+        </div>
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="text-left text-slate-500 border-b">
+              <th class="py-1 w-16">Heat</th>
+              <th class="py-1">Lane 1</th>
+              <th class="py-1">Lane 2</th>
+              <th class="py-1">Lane 3</th>
+              <th class="py-1 w-20"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="h in contextHeats" :key="h.id"
+                :class="{
+                  'bg-yellow-50 font-semibold': h._offset === 0,
+                  'text-slate-400': h._offset > 0,
+                  'cursor-pointer hover:bg-slate-50': h._offset !== 0,
+                }"
+                @click="h._offset !== 0 && jumpToHeat(h.heat_number)">
+              <td class="py-2 font-mono">{{ h.heat_number }}</td>
+              <td v-for="lane in 3" :key="lane" class="py-2">
+                <template v-if="slotForLane(h, lane)?.car_id">
+                  <span class="font-mono">#{{ slotForLane(h, lane).car_number }}</span>
+                  <span v-if="slotForLane(h, lane).place"
+                        class="ml-2 inline-block px-2 py-0.5 rounded bg-blue-600 text-white text-xs font-bold">
+                    {{ slotForLane(h, lane).place }}
+                  </span>
+                  <span v-else-if="h._offset < 0"
+                        class="ml-2 text-red-500 text-xs">unscored</span>
+                </template>
+                <template v-else>—</template>
+              </td>
+              <td class="py-2 text-right text-xs">
+                <span v-if="h._offset === 0" class="text-yellow-700">scoring</span>
+                <span v-else-if="h._offset < 0" class="text-slate-400">{{ h.status }}</span>
+                <span v-else class="text-slate-400">upcoming</span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="text-xs text-slate-400 mt-2">Click a previous or upcoming row to jump there.</p>
+      </div>
     </template>
   </div>
 </template>
