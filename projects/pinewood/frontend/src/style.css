@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body, #app { height: 100%; }
+.numpad-input {
+  @apply w-full text-6xl font-mono text-center border-2 border-slate-300 rounded-xl py-6 focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-200;
+}
+.btn { @apply px-4 py-2 rounded-lg font-semibold transition; }
+.btn-primary { @apply btn bg-blue-600 text-white hover:bg-blue-700 disabled:bg-slate-300; }
+.btn-secondary { @apply btn bg-slate-200 text-slate-900 hover:bg-slate-300; }
+.btn-danger { @apply btn bg-red-600 text-white hover:bg-red-700; }
+.card { @apply bg-white rounded-2xl shadow p-6; }

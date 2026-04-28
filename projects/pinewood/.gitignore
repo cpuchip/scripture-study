@@ -1,0 +1,7 @@
+# typescript/go common ignores
+node_modules/
+dist/
+
+pinewood.exe
+derby.db
+derby.log
