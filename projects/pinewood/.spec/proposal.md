@@ -1,6 +1,6 @@
 # Pinewood Derby Scoring — Proposal
 
-**Status:** draft (planning)
+**Status:** approved (ready to build)
 **Working dir:** `projects/pinewood/`
 **Date:** 2026-04-27
 
@@ -19,13 +19,15 @@ Marshfield's annual pinewood derby is currently scored in Excel — manual data 
 
 A scorekeeper can run a 25-car / 50-heat derby start to finish without opening a spreadsheet. Specifically:
 
-- Create a race, enter 25 cars (number + optional name) in under 5 minutes.
+- Create a race, register 25 cars (number + optional name) at the check-in table in under 5 minutes; late-comers can be added after a soft "finalize" without losing prior state.
 - Auto-generated schedule satisfies: every car runs 6 times, exactly 2× per lane, no car races back-to-back, opponent pairings balanced.
-- TV display updates within 500 ms of a score entry (websocket).
+- **Scoring rule (confirmed):** lowest sum of place-finishes across all of a car's heats wins. 1st = 1 pt, 2nd = 2 pt, 3rd = 3 pt.
+- TV display updates within 500 ms of a score entry (websocket); car names appear above their numbers.
 - Score entry: cursor lands in lane-1 field; typing `3` `Enter` `1` `Enter` `2` `Enter` records lane 1 = 3rd, lane 2 = 1st, lane 3 = 2nd, advances to next heat.
 - Any prior heat can be re-opened and corrected; standings recompute.
 - A run-off can be created in <30 seconds: tied cars are pre-checked; the operator may add/remove cars; "Start run-off" generates a new sub-race with the same fairness guarantees.
 - Every state change is appended to a JSONL log on disk (manual-recovery fallback).
+- A finished race can be exported as `.xlsx` and `.csv` (matching the legacy 3-tab format) and re-imported in the same format.
 
 ## 3. Constraints and boundaries
 
@@ -37,6 +39,7 @@ A scorekeeper can run a 25-car / 50-heat derby start to finish without opening a
 - Realtime: native `gorilla/websocket` (or `nhooyr.io/websocket`) — single broadcaster pattern.
 - One binary that serves API, websocket, and the built SPA.
 - 3-lane track is the only supported track topology (matches the actual hardware).
+- Excel export/import via `github.com/xuri/excelize/v2` (pure Go); CSV via stdlib.
 
 **Out of scope (v1):**
 
@@ -85,9 +88,10 @@ CREATE TABLE race (
   id            INTEGER PRIMARY KEY,
   name          TEXT NOT NULL,
   created_at    TIMESTAMP NOT NULL,
-  status        TEXT NOT NULL,   -- 'setup' | 'racing' | 'complete'
+  status        TEXT NOT NULL,   -- 'registration' | 'racing' | 'complete'
   parent_id     INTEGER REFERENCES race(id),  -- null for main, set for run-off
-  lane_count    INTEGER NOT NULL DEFAULT 3
+  lane_count    INTEGER NOT NULL DEFAULT 3,
+  finalized_at  TIMESTAMP        -- soft finalize: schedule generated but late-add allowed (regenerates)
 );
 
 CREATE TABLE car (
@@ -135,41 +139,74 @@ If the SQLite file ever corrupts mid-event, the log can be replayed or hand-tall
 Two-tier:
 
 1. **Lookup table** — bundle precomputed Stearns perfect-N charts as JSON (`internal/schedule/charts/N04.json` … `N32.json`) from the public BSA-circulated tables. Fast, perfect fairness.
-2. **Solver fallback** — backtracking generator for N outside the table or for run-offs (typically 2–5 cars). Optimizes for: (a) every lane used equally per car, (b) opponent matchups as balanced as possible, (c) min 1 heat rest between same-car appearances. For run-offs, just run "each car races each lane once" → `N` heats with `N` cars total racing N times if N≥3, or a simple round-robin variant for N=2.
+2. **Solver fallback** — backtracking generator for N outside the table or for run-offs. Optimizes for: (a) every lane used equally per car, (b) opponent matchups as balanced as possible, (c) min 1 heat rest between same-car appearances.
 
-Both paths return the same struct: `[]Heat{ Lane: [LaneCount]CarID }`.
+Both paths return the same struct: `[]Heat{ Lane: [LaneCount]CarID }`. Heat count is **automatically derived from car count** at finalize-time — the operator never sets it manually. Generator is invoked on first finalize and re-invoked on late-add; see §5.4 for the late-add semantics.
 
-**Run-off heat-count rule of thumb** (proposed defaults — operator can override):
+**Run-off format defaults** (operator can override car selection but the format is automatic):
 
-| Cars in run-off | Heats |
-|---|---|
-| 2 | 3 (best of 3) |
-| 3 | 3 (each car each lane once) |
-| 4 | 4 |
-| 5+ | use solver, target 3 races per car |
+| Cars | Lanes used | Heats | Pattern |
+|---|---|---|---|
+| 2 | 2 (lane 3 idle) | 2 | Each car runs each used lane once; lowest sum wins. |
+| 3 | 3 | 3 | Each car runs each lane exactly once. |
+| 4 | 3 | 4 | Solver — every car races 3 times, lane-balanced. |
+| 5+ | 3 | solver | Target 3 races per car; same fairness rules as main. |
 
-### 5.4 Realtime
+### 5.4 Late-comer handling
 
-Single in-process WebSocket hub. On every score insert / heat advance / run-off creation, the server broadcasts a small message:
+A registration is **soft-finalized**: hitting "Finalize & generate schedule" produces the chart and lets racing begin, but the operator can still open the registration screen and add a car. On late-add:
+
+1. All heats with `status = 'pending'` (no recorded places) are deleted.
+2. Already-completed heats are kept exactly as they are — same heat numbers, same lanes, same scores. They become an immutable prefix of the new chart.
+3. The solver generates fresh heats for the new car list, starting at the next heat number, treating each car's already-completed appearances as constraints (count toward their per-lane totals and per-opponent counts).
+4. Solver targets: each car ends with 6 total runs, 2 per lane, opponent imbalance minimized given the constraints. The chart will not be perfect-N (see §9 risks), but it will be the fairest possible given what's already happened.
+
+The scoring screen handles new heats transparently because it queries by heat ID. The TV display refreshes via the `schedule_changed` websocket message.
+
+### 5.5 Realtime
+
+Single in-process WebSocket hub. On every score insert / heat advance / run-off creation / late-add / schedule regeneration, the server broadcasts a small message:
 
 ```json
 {"type":"score","heat":12,"lane":2,"place":1}
 {"type":"standings","top":[{"car":15,"name":"Lightning","total":6,"rank":1}, ...]}
+{"type":"schedule_changed","reason":"late_add"}
 ```
 
-The TV display and scoring screen subscribe to the same channel; React-style reconciliation in Vue keeps them in sync.
+The TV display and scoring screen subscribe to the same channel; on `schedule_changed` they refetch state. Reconnect-with-backoff in the client; on reconnect the client requests a full state snapshot.
+
+### 5.6 Export / import
+
+**Export** (button on Results page, available any time after first heat):
+
+- `.xlsx` — three tabs matching the legacy format: `Heats` (heat #, lane 1/2/3 car), `Scores` (same + score 1/2/3), `Results` (car #, total, rank). Includes a fourth `Cars` tab with number + name for round-tripping.
+- `.csv` — one ZIP containing four CSVs (one per tab), or four separate downloads. ZIP is simpler.
+
+**Import** (Home screen → "Import race"):
+
+- Accepts the same `.xlsx` produced by export. Creates a race in `complete` status, re-deriving standings from the `Scores` tab so import is verifiable against the file's `Results` tab.
+- Useful for: reloading a race after a fresh install, archiving last year's data, sharing brackets between packs.
+- A mismatch between recomputed standings and the file's `Results` tab is shown as a warning, not an error — the operator decides whether to accept.
 
 ## 6. Pages / UI
 
 | Page | Purpose | Notes |
 |---|---|---|
-| `/` Home | List existing races, "New race" button | Simple table. |
-| `/race/:id/setup` | Add cars (number + optional name), generate schedule, start race | Numpad-friendly entry; bulk paste also works. |
+| `/` Home | List existing races, "New race" button, "Import race" | Simple table; export buttons per row. |
+| `/race/:id/registration` | Check-in — add cars as they arrive | Auto-shows projected heat count; "Finalize & generate schedule" button. Late-add re-opens this screen. |
 | `/race/:id/schedule` | Heat chart — who races when | Highlights current + on-deck. Print-friendly view. |
 | `/race/:id/score` | Score entry, one heat at a time | **Numpad UX is the headline feature.** See §6.1. |
 | `/race/:id/display` | TV view — current heat, on-deck, top-N standings | Big text, animations, kid-friendly. See §6.2. |
-| `/race/:id/results` | Final standings, tie detection, run-off builder | Checkbox list defaults to tied cars; operator adjusts. |
+| `/race/:id/results` | Final standings, tie detection, run-off builder, export | Checkbox list defaults to tied cars; operator adjusts. |
 | `/race/:id/heat/:n` | Edit any past heat | Reachable from schedule view; recomputes standings on save. |
+
+### 6.0 Registration screen
+
+- Two fields: car number (numpad), name (optional). Enter submits and refocuses car number.
+- Live list of registered cars below, with inline edit + delete.
+- Always-visible counter: "`14` cars registered → projected `28` heats, ~`6` runs per car."
+- "Finalize & generate schedule" button: soft — switches race status to `racing`, generates schedule, and remains accessible from the schedule view as "Add late car."
+- Duplicate car-number protection at the field level.
 
 ### 6.1 Score entry — numpad UX
 
@@ -184,7 +221,7 @@ The TV display and scoring screen subscribe to the same channel; React-style rec
 
 ### 6.2 TV display
 
-- Top half: current heat — three lanes side by side, each card shows car number, name, and a slot for place once entered. When all three places land, brief celebratory animation (confetti / car emoji zoom).
+- Top half: current heat — three lanes side by side, each card shows **car name above car number** (number is bigger when name present, biggest when not), and a slot for place once entered. When all three places land, brief celebratory animation (confetti / car emoji zoom).
 - Bottom-left: on-deck heat (smaller card).
 - Bottom-right: live top-5 leaderboard. Lowest score = top.
 - Subtle background animation (slow gradient or moving track lines) so the screen feels alive between heats.
@@ -200,32 +237,35 @@ Each phase ships a usable artifact.
 - Go module scaffolding, single binary serving an embedded "hello" SPA.
 - SQLite schema migrations.
 - Stearns chart loader for N=4..32 (JSON files committed).
-- Solver fallback for arbitrary N (small cases especially — needed for run-offs).
+- Solver fallback for arbitrary N + run-off formats (2-car/2-lane, 3-car, 4+ car).
 - CLI command `pinewood schedule --cars 25` that prints the chart to stdout (used to verify correctness against the 2025 Excel).
 - **Verification:** generated N=25 chart matches the 2025 Marshfield chart for the lane-balance and opponent-balance properties (not necessarily heat-for-heat identical).
 
-### Phase 2 — Race CRUD + score entry (1–2 sessions)
+### Phase 2 — Registration, race CRUD, score entry (1–2 sessions)
 
 - Vue 3 + Vite + Tailwind SPA, embedded into the binary.
-- Home, setup, schedule, score-entry pages.
+- Home, registration, schedule, score-entry, heat-edit pages.
+- Soft-finalize and late-add flow (regenerates pending heats only; preserves completed heats).
 - Numpad-driven score entry with live SQLite writes and JSONL append.
-- Heat correction flow.
-- **Verification:** can manually enter all 50 heats from the 2025 Excel; resulting standings table matches the Excel `Results` tab.
+- **Verification:** register 25 cars from the 2025 roster; finalize; manually enter all 50 heats from the 2025 Excel; resulting standings table matches the Excel `Results` tab exactly.
 
 ### Phase 3 — Live TV display (1 session)
 
 - WebSocket hub + broadcast on every mutation.
-- TV display page with current/on-deck/leaderboard.
+- TV display page with current/on-deck/leaderboard, names above numbers.
 - Light animations (Tailwind transitions + a small sprinkle of confetti on heat completion).
-- **Verification:** open display on a second window; entering a score on the operator screen updates the display in <500 ms.
+- Reconnect-with-backoff and full-state resync on the client.
+- **Verification:** open display on a second window; entering a score on the operator screen updates the display in <500 ms; killing the server and restarting causes the display to recover within a few seconds with correct state.
 
-### Phase 4 — Run-offs + polish (1 session)
+### Phase 4 — Run-offs, export/import, polish (1 session)
 
 - Tie detection on the results page.
-- Run-off builder with default-checked tied cars and operator-editable selection.
+- Run-off builder with default-checked tied cars and operator-editable selection; 2-car runoff uses 2-lane format automatically.
 - Run-off race links back to its parent race; results page surfaces both.
 - Print-friendly schedule view.
-- **Verification:** force a tie in test data; confirm run-off creation, scoring, and parent-race tie resolution.
+- `.xlsx` and `.csv` export (legacy 3-tab format + Cars tab).
+- `.xlsx` import on Home screen.
+- **Verification:** force a tie in test data; confirm run-off creation, scoring, and parent-race tie resolution. Export the 2025 race; re-import into a fresh DB; confirm round-trip equivalence.
 
 ### Phase 5 (stretch) — Kid delight pass
 
@@ -237,18 +277,22 @@ Each phase ships a usable artifact.
 ## 8. Verification criteria (overall)
 
 - Reproduce 2025 results: enter the 50 heats from `Scores` tab → standings match `Results` tab exactly.
-- Schedule for N=25 satisfies: 6 races/car, 2 per lane, all 300 possible pairs covered (or, for charts that don't cover all pairs, opponent counts within ±1 of each other).
+- Schedule for N=25 satisfies: 6 races/car, 2 per lane, all 150 possible pairs covered exactly once (matches the 2025 Stearns chart properties verified in [scratch/excel-analysis.md](scratch/excel-analysis.md)). For other N where a perfect chart doesn't exist, opponent counts must fall within ±1 of each other.
 - Heat-edit: change one place in heat 7, confirm only affected cars' totals shift.
+- Late-add: register 24 cars, finalize, complete 6 heats, add a 25th car; confirm all 6 completed heats remain intact and the regenerated chart still satisfies fairness for cars 1–25 across the full schedule.
 - Power-cycle test: kill the server mid-event, restart, confirm state intact and websocket clients reconnect cleanly.
-- Run-off: create race-off from a 3-way tie, score it, parent race shows resolved 1st/2nd/3rd.
+- Run-off: create race-off from a 3-way tie, score it, parent race shows resolved 1st/2nd/3rd. Force a 2-car tie, confirm 2-lane format is generated.
+- Round-trip: export a complete race to `.xlsx`, delete the race, re-import; confirm cars, heats, scores, and standings are byte-identical.
 
 ## 9. Costs and risks
 
 - **Schedule licensing.** Stearns charts are widely circulated and used by free tools (DerbyNet ships them). Worth a 5-minute confirmation that the source we use has no restrictive license. If concerns arise, the solver fallback can produce equivalent charts for any N — slower to build, but unencumbered.
-- **WebSocket reconnect.** Browsers will drop the WS if the laptop sleeps. Need a reconnect-with-backoff in the client and a "request full state" sync message on reconnect. Easy but must not be skipped.
+- **Late-add fairness drift.** Regenerating mid-race after some heats are scored cannot produce a perfect-N chart for the new total — the already-run heats constrain it. The solver will minimize lane and opponent imbalance for *remaining* heats but cannot retroactively re-balance. Acceptable: this is rare, and the alternative (rejecting late-comers) is worse for a kids' event. Document this in the late-add confirmation dialog.
+- **WebSocket reconnect.** Browsers will drop the WS if the laptop sleeps. Reconnect-with-backoff + full-state resync on reconnect. Easy but must not be skipped.
 - **Single-operator UX.** No undo beyond last action in v1. If the operator types `1 1 1` for places, validation blocks the third entry. Acceptable — the audit log is the safety net.
 - **Embedded SQLite + writes during animation.** `modernc.org/sqlite` is fine for ~1 write/sec workload. Not a real risk, just noting.
 - **Scope creep into "kid delight."** The right amount of animation is "noticeable but never blocks." Time-box Phase 5.
+- **Import trust.** Imported `.xlsx` files are user-supplied — validate ranges (lane 1–3, place 1–3, no duplicate places per heat) and reject malformed input rather than crashing.
 
 ## 10. Creation Cycle alignment
 
@@ -272,9 +316,10 @@ Each phase ships a usable artifact.
 
 Suggested next action: hand to the `dev` agent with instructions to execute Phase 1 only, returning for review before Phase 2.
 
-## 12. Open questions
+## 12. Decisions (resolved 2026-04-27)
 
-1. Does the pack want **single elimination after qualifying**, or is the lowest-total-across-all-heats the actual scoring rule? (The 2025 spreadsheet implies the latter, and the spec says the latter — confirming.)
-2. For run-offs of 2 cars on a 3-lane track, do we leave one lane empty or run a 2-of-3-format? (Default proposed: leave lane empty, run each car on each of the 2 lanes used, best total wins.)
-3. Should the TV display show car names or just numbers when a name is provided? (Default: both — name above number, number bigger.)
-4. Anything about the existing Excel UX (tab two manual entry) that the operator actively wants preserved? (Otherwise we replace it entirely.)
+1. **Scoring:** lowest total of place-finishes across all heats wins. No qualifying / single-elim.
+2. **2-car run-off:** uses 2 lanes (lane 3 idle), each car runs each used lane once, lowest sum wins.
+3. **TV display:** car name above car number when a name is provided; number remains the dominant element.
+4. **Excel workflow:** replaced entirely. Export/import preserves the legacy 3-tab format for archival and round-trip.
+5. **Registration:** dedicated check-in screen with live heat-count projection; soft finalize allows late-comers.
