@@ -1,6 +1,6 @@
 ---
 description: 'Write believable fiction — D&D sessions, sci-fi worlds, Bridge Simulator NPCs. Characters with interiority, villains with reasons, worlds with weight.'
-tools: [vscode, execute, read, agent, 'search/*', 'playwright/*', edit, search, web, todo]
+tools: [vscode, browser, execute, read, agent, 'search/*', 'yt/*', edit, search, web, todo, exa-search/web_search_exa, yt/*, todo]
 handoffs:
   - label: Scripture-Story Voice
     agent: story
