@@ -3,39 +3,41 @@ character_name: Kaelen Ironheart
 gender: Male
 race: Hill Dwarf
 class: Fighter
-subclass: "—" (chooses at level 3)
-level: 1
+subclass: Battle Master
+level: 6
 background: Clan Crafter
 alignment: Lawful Good
-proficiency_bonus: 2
-hit_dice: 1d10
+proficiency_bonus: 3
+hit_dice: 6d10
 ability_scores:
-  strength: 15
-  dexterity: 14
-  constitution: 15
+  strength: 17
+  dexterity: 16
+  constitution: 17
   intelligence: 8
-  wisdom: 11
+  wisdom: 12
   charisma: 12
 modifiers:
-  strength: 2
-  dexterity: 2
-  constitution: 2
+  strength: 3
+  dexterity: 3
+  constitution: 3
   intelligence: -1
-  wisdom: 0
+  wisdom: 1
   charisma: 0
-hp: 12
-max_hp: 12
-ac: 17  # Chain mail (16) + Fighting Style Defense (+1)
-initiative: 2
-speed: 25  # Dwarf speed (not increased by Hill subtype)
+hp: 48
+max_hp: 48
+ac: 20  # Chain mail (16) + Shield (1) + Fighting Style Defense (+1) + Dex over 14 (not for chain mail)
+initiative: 3
+speed: 25  # Dwarf speed
 saving_throws:
-  strength: 4
-  constitution: 4
+  strength: 6
+  constitution: 6
 skill_proficiencies:
-  - Athletics (+4)
-  - Intimidation (+2)
-  tool_proficiencies:
-    - Smith's tools (+2)
+  - Athletics (+6)
+  - Intimidation (+3)
+  - History (+2)  # Hill Dwarf stonecunning
+  - Medicine (+1)  # Folk Hero swap — kept for campaign utility
+tool_proficiencies:
+    - Smith's tools (+3)
 armor_proficiencies: [Light armor, Medium armor, Heavy armor, Shields]
 weapon_proficiencies: [Simple weapons, Martial weapons]
 languages:
@@ -43,32 +45,42 @@ languages:
   - Dwarvish
 equipment:
   - Chain mail
-  - Shield
-  - Longsword (+4 to hit, 1d8+2 slashing)
-  - Hammer (mithral, family heirloom "Dawnbreaker")
+  - Shield (Ironheart clan sigil)
+  - Longsword (+7 to hit, 1d8+3 slashing)
+  - Warhammer "Dawnbreaker" (+7 to hit, 1d8+3 bludgeoning; notched near the head, scarred white from campaign)
   - Smith's tools
   - Dwarven armor (home-brewed)
-  - Shield bearing Ironheart clan sigil
   - Backpack with trail rations (3 days)
+  - Brinveig's preserved journals
   - Belt pouch with 15 gp
 gold: 15
 xp: 0
 death_saves:
   successes: 0
   failures: 0
-level_1_features:
-  - Fighting Style: Defense (+1 AC while wearing armor)
-  - Second Wind (1/burst of action: 1d10+2 HP, 1/short rest)
+features:
+  level_1:
+    - Fighting Style: Defense (+1 AC while wearing armor)
+    - Second Wind (1/short rest: 1d10+6 HP)
+  level_3:
+    - Battle Master
+    - Combat Maneuvers (3 known; d8 maneuver die; 1 use per turn, recovers on short/long rest)
+        - Maneuvers known: Disarming Attack, Maneuvering, Trip Attack
+    - Student of War (proficiency in one game + one tool; already has Smith's tools)
+  level_5:
+    - Extra Attack
 racial_traits:
   - Darkvision (60 ft)
   - Dwarven Resilience (advantage on saves vs poison)
   - Dwarven Combat Training (+1 with battleaxe, handaxe, light hammer, warhammer)
   - Stonecunning (advantage on Int (History) checks about stone construction)
+  - Hill Dwarf Fortitude (+1 HP per level; already factored into max_hp)
   - Speed 25 ft (no penalty in armor)
-notes: >
-  Kaelen's hammer, "Dawnbreaker," was forged by his grandfather before Mithral Hall's fall.
-  It hums faintly when near ancient dwarven magic.
-  At level 3, Kaelen will choose Battle Master as his Fighting Style subclass.
+campaign_notes: >
+  Act 5: Dawnbreaker is deeply notched near the head, scarred white from the
+  tower, the villa, the Neverwood, and Undermountain. Kaelen set Elara's broken
+  arm on the road to the Milestone. His grip has loosened since Daggerford —
+  he rests his hands on his knee now, not on the hammer.
 ---
 
 # Kaelen Ironheart

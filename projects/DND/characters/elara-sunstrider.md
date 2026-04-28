@@ -3,39 +3,39 @@ character_name: Elara Sunstrider
 gender: Female
 race: Dragonborn
 class: Paladin
-subclass: "—" (chooses at level 3)
-level: 1
+subclass: Oath of the Crown
+level: 6
 background: Soldier
 alignment: Lawful Good
-proficiency_bonus: 2
-hit_dice: 1d10
+proficiency_bonus: 3
+hit_dice: 6d10
 ability_scores:
   strength: 15
   dexterity: 10
-  constitution: 13
+  constitution: 15
   intelligence: 8
   wisdom: 12
-  charisma: 17
+  charisma: 21
 modifiers:
   strength: 2
   dexterity: 0
-  constitution: 1
+  constitution: 2
   intelligence: -1
   wisdom: 1
-  charisma: 3
-hp: 11
-max_hp: 11
-ac: 18  # Plate (18, Dex doesn't bonus plate)
+  charisma: 5
+hp: 54
+max_hp: 54
+ac: 20  # Plate (18) + Shield (2) — shield shattered in Act 5; now 18
 initiative: 0
 speed: 30
 saving_throws:
-  wisdom: 3
-  charisma: 5
+  wisdom: 4
+  charisma: 8
 skill_proficiencies:
   - Athletics (+4)
-  - Insight (+3)
-  - Persuasion (+5)
-  - Religion (+3)
+  - Insight (+4)
+  - Persuasion (+8)
+  - Religion (+2)
 armor_proficiencies: [Light armor, Medium armor, Heavy armor, Shields]
 weapon_proficiencies: [Simple weapons, Martial weapons]
 languages:
@@ -44,30 +44,44 @@ languages:
   - Dwarvish
 equipment:
   - Plate armor
-  - Longsword (+4 to hit, 1d8+2 slashing)
-  - Warhammer (+4 to hit, 1d8+2 bludgeoning)
-  - Shield
+  - Warhammer "Justice's Weight" (+6 to hit, 1d8+2 bludgeoning)
+  - Longsword (+6 to hit, 1d8+2 slashing)
+  - Shield (shattered in Undermountain; pieces left on the road)
   - Explorer's pack
   - Holy symbol (amulet of Tyr)
+  - Ledger of oaths (two pages of broken names)
+  - Carved wooden bird (Tomas's token)
   - Belt pouch with 18 gp
 gold: 18
 xp: 0
 death_saves:
   successes: 0
   failures: 0
-level_1_features:
-  - Divine Sense (1/long rest: detect celestials, fiends, undead within 60 ft)
-  - Lay on Hands (5 HP pool: touch a creature to heal up to 5 HP total per long rest)
+features:
+  level_1:
+    - Divine Sense (1/long rest: detect celestials, fiends, undead within 60 ft)
+    - Lay on Hands (18 HP pool: touch a creature to heal up to 18 HP total per long rest)
+  level_2:
+    - Aura of Protection (+3 to all saving throws for self and within 10 ft)
+    - Fighting Style: Defense (+1 AC while wearing armor)
+  level_3:
+    - Oath of the Crown
+    - Channel Divinity (2/long rest):
+        - Crown's Wrath: 3d6 radiant damage in 30 ft cone, DC 15 Str save
+        - Unity of the Crown: grant 2d10 temp HP to creatures within 30 ft
+    - Aura of War (+1 damage for self and within 10 ft)
+  level_5:
+    - Extra Attack
 racial_traits:
-  - Breath Weapon (1/short rest: 2d6 fire in a 15 ft cone, DC 12 Dex save)
+  - Breath Weapon (1/short rest: 2d6 fire in a 15 ft cone, DC 14 Dex save)
   - Damage Resistance (acid resistance)
   - Darkvision (60 ft)
   - Speed 30 ft
-notes: >
-  Elara's warhammer is named "Justice's Weight."
-  She keeps a ledger of every oath she has made and every oath she has broken.
-  The ledger is mostly empty on the second page.
-  At level 3, Elara will choose Oath of the Crown as her Paladin subclass.
+campaign_notes: >
+  Act 5: Broke her own shield striking the seal crystal in Undermountain.
+  Radius snapped in the shockwave. Arm set by Kaelen on the road to the Milestone.
+  Did not reach for her holy symbol to heal it. Some breaks heal the slow way.
+  The carved bird from Tomas hangs heavier now.
 ---
 
 # Elara Sunstrider

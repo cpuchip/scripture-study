@@ -3,41 +3,41 @@ character_name: Lyra Nightbreeze
 gender: Female
 race: Wood Elf
 class: Ranger
-subclass: "—" (chooses at level 3)
-level: 1
+subclass: Gloom Stalker
+level: 6
 background: Folk Hero
 alignment: Chaotic Good
-proficiency_bonus: 2
-hit_dice: 1d10
+proficiency_bonus: 3
+hit_dice: 6d10
 ability_scores:
   strength: 12
-  dexterity: 17
-  constitution: 13
+  dexterity: 20
+  constitution: 14
   intelligence: 8
-  wisdom: 15
+  wisdom: 17
   charisma: 10
 modifiers:
   strength: 1
-  dexterity: 3
-  constitution: 1
-  intelligence: -1
-  wisdom: 2
-  charisma: 0
-hp: 11
-max_hp: 11
-ac: 14  # Leather (11) + Dex (+3)
-initiative: 3
-speed: 35  # Elf speed
-saving_throws:
-  strength: 3
   dexterity: 5
+  constitution: 2
+  intelligence: -1
+  wisdom: 3
+  charisma: 0
+hp: 48
+max_hp: 48
+ac: 16  # Leather (11) + Dex (+5)
+initiative: 5
+speed: 40  # Elf speed + Vault (+10)
+saving_throws:
+  strength: 4
+  dexterity: 8
 skill_proficiencies:
-  - Animal Handling (+4)
-  - Survival (+4)
-  - Medicine (+2)  # Folk Hero
-  - Persuasion (+2)  # Folk Hero
+  - Animal Handling (+7)
+  - Survival (+7)
+  - Medicine (+5)  # Folk Hero
+  - Persuasion (+3)  # Folk Hero
 tool_proficiencies:
-  - Herbalism kit (+2)  # Folk Hero
+  - Herbalism kit (+3)  # Folk Hero
 armor_proficiencies: [Light armor, Medium armor, Shields]
 weapon_proficiencies: [Simple weapons, Martial weapons]
 languages:
@@ -47,33 +47,54 @@ languages:
   - Sylvan
 equipment:
   - Leather armor
-  - Longbow (+5 to hit, 1d8+3 piercing)
+  - Longbow (+8 to hit, 1d8+5 piercing)
   - 20 arrows
-  - Scimitar (+5 to hit, 1d6+3 slashing)
+  - Scimitar (+8 to hit, 1d6+5 slashing)
   - Sling + 10 sling bullets
   - Herbalism kit
   - Explorer's pack
   - Cloak of the woods (home-made, bark and moss)
+  - Empty seed pouch (seeds planted in the Neverwood, Act 4)
+  - Lock of Elandil's hair (small pouch)
+  - Mother's druid journal
   - Belt pouch with 12 gp
 gold: 12
 xp: 0
 death_saves:
   successes: 0
   failures: 0
-level_1_features:
-  - Favored Enemy (Goblinoids): Advantage on Nature/Wisdom checks to find/track them
-  - Natural Explorer (Forests): +2 to Survival, advantage on Survival to navigate, party not lost due to guide error, forage yields doubled
+spellcasting:
+  ability: Wisdom
+  spell_save_dc: 14
+  spell_attack_bonus: 6
+  spell_slots:
+    level_1: 4
+features:
+  level_1:
+    - Favored Enemy (Goblinoids, Undead): Advantage on Nature/Wisdom checks to find/track them
+    - Natural Explorer (Forests): +2 to Survival, advantage on Survival to navigate, party not lost due to guide error, forage yields doubled
+  level_2:
+    - Spellcasting (druid spell list, Wisdom-based)
+    - Archery (+2 to attack rolls with ranged weapons)
+  level_3:
+    - Gloom Stalker
+    - Dread Ambusher: advantage on initiative vs creatures you can see/hear; first turn of combat, move up to half speed without provoking opportunity attacks, then make weapon attack as bonus action (extra 1d6 damage)
+    - Spacer's Cloak: advantage on saves vs divination spells; others have disadvantage on attacks targeting you if you're not incapacitated and have at least 1 HP
+    - Umbral Sight: creatures within 10 ft can't benefit from invisibility against you
+  level_5:
+    - Vault: +10 ft movement when Dash is used; can jump that distance
 racial_traits:
   - Fey Ancestry (advantage on saves vs being charmed; magic can't put you to sleep)
   - Trance (don't sleep; meditate for 4 hours instead)
   - Darkvision (60 ft)
-  - Speed 35 ft
+  - Speed 35 ft (base; modified by Vault)
   - Weapon Training (longsword, shortbow, longbow, hand crossbow)
   - Mask of the Wild (can attempt to hide even when lightly obscured by plants)
-notes: >
-  Lyra's bow is strung with sinew from a dire wolf she killed at age 112.
-  She tracks using a system of knots in a leather cord at her wrist.
-  At level 3, Lyra will choose Gloom Stalker as her Ranger subclass.
+campaign_notes: >
+  Act 4: Planted the seeds in the repurposed device at the Neverwood. The pouch
+  at her belt is flat and empty now. When she sits, her fingers hover over the
+  leather for a moment — tracing absent shapes — then drop to her lap.
+  The Wardens accepted her. She earned the forest's name.
 ---
 
 # Lyra Nightbreeze

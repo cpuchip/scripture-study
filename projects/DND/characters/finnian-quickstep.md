@@ -3,60 +3,74 @@ character_name: Finnian "Finn" Quickstep
 gender: Male
 race: Lightfoot Halfling
 class: Bard
-subclass: "—" (chooses at level 3)
-level: 1
+subclass: College of Lore
+level: 6
 background: Entertainer
 alignment: Chaotic Neutral
-proficiency_bonus: 2
-hit_dice: 1d8
+proficiency_bonus: 3
+hit_dice: 6d8
 ability_scores:
   strength: 8
   dexterity: 14
-  constitution: 12
+  constitution: 14
   intelligence: 13
-  wisdom: 10
-  charisma: 17
+  wisdom: 12
+  charisma: 21
 modifiers:
   strength: -1
   dexterity: 2
-  constitution: 1
+  constitution: 2
   intelligence: 1
-  wisdom: 0
-  charisma: 3
-hp: 9
-max_hp: 9
-ac: 12  # Leather (11) + Dex (+1)
+  wisdom: 1
+  charisma: 5
+hp: 36
+max_hp: 36
+ac: 14  # Leather (11) + Dex (+3)
 initiative: 2
 speed: 25
 saving_throws:
-  dexterity: 4
-  charisma: 5
+  dexterity: 5
+  charisma: 8
 skill_proficiencies:
-  - Acrobatics (+4)
-  - Performance (+5)
-  - Persuasion (+5)
-  - Deception (+5)
+  - Acrobatics (+5)
+  - Performance (+8)
+  - Persuasion (+8)
+  - Deception (+8)
+  - Medicine (+4)  # College of Lore bonus
 tool_proficiencies:
-  - Lute (+5)
-  - Flute (+5)
-  - Drum (+5)
+  - Lute (+8)
+  - Flute (+8)
+  - Drum (+8)
 armor_proficiencies: [Light armor]
 weapon_proficiencies: [Simple weapons, Hand crossbows, Longswords, Rapiers]
 spellcasting_ability: Charisma
-spell_save_dc: 13
-spell_attack_bonus: 5
-cantrips_known: 2
-spells_known: 4
+spell_save_dc: 16
+spell_attack_bonus: 8
+cantrips_known: 5
+spells_known: 9
 spell_slots:
-  level_1: 2
+  level_1: 4
+  level_2: 3
+  level_3: 2
 cantrips:
-  - Vicious Mockery (1d4 psychic, target makes DC 13 Wis save or has disadvantage on next attack)
+  - Vicious Mockery (1d4 psychic, target makes DC 16 Wis save or has disadvantage on next attack)
   - Mage Hand
-spells:
-  - Cure Wounds (1d4+3 healing)
-  - Dissonant Whispers (1d6 psychic, target makes DC 13 Wis save or must move away from target)
-  - Feather Fall
   - Friends
+  - Minor Illusion
+  - Prestidigitation
+spells:
+  level_1:
+    - Cure Wounds (1d4+5 healing)
+    - Dissonant Whispers (1d6 psychic, target makes DC 16 Wis save or must move away)
+    - Feather Fall
+    - Shield of Faith (+2 AC, concentration, 10 min)
+    - Heroism (concentration, 1 min)
+  level_2:
+    - Suggestion (DC 16 Wis save, concentration, 8 hours)
+    - See Invisibility (10 min)
+    - Lesser Restoration
+  level_3:
+    - Hypnotic Pattern (DC 16 Wis save, concentration, 1 min)
 languages:
   - Common
   - Halfling
@@ -64,32 +78,45 @@ languages:
   - Sylvan
 equipment:
   - Leather armor
-  - Rapier (+4 to hit, 1d8+2 piercing)
+  - Rapier (+6 to hit, 1d8+2 piercing)
   - Dagger
-  - Lute
-  - Flute
+  - Lute "Whisper" (willow wood, warm to the touch)
+  - Flute (carved by grandmother; glows gold at unpredictable moments)
   - Hand drum
   - Entertainer's pack
+  - Lirael's journal (treasured; filled with songs and secrets)
+  - Pouch of sweet rations
   - Belt pouch with 22 gp
 gold: 22
 xp: 0
 death_saves:
   successes: 0
   failures: 0
-level_1_features:
-  - Spellcasting (full caster, Charisma-based)
-  - Bardic Inspiration (1/long rest: grant a d6 temp bonus to an ability check, attack roll, or save; target must hear you)
+features:
+  level_1:
+    - Spellcasting (full caster, Charisma-based)
+    - Bardic Inspiration (1/long rest: grant a d8 bonus to an ability check, attack roll, or save)
+  level_2:
+    - Jack of All Trades (+1 to any ability check, attack roll, or save using a proficiency he doesn't have)
+  level_3:
+    - College of Lore
+    - Bonus Cantrip
+    - Shield of Knowledge: when you or creature within 30 ft has disadvantage on an Int/Wis/Cha check from lack of knowledge, add Bardic Inspiration die to that check
+    - Additional Magical Secrets: learn 2 spells from any class
+  level_5:
+    - Countercharm: 10 min concentration to grant self and creatures within 30 ft advantage on saves vs being charmed or frightened
+    - Expertise: double proficiency bonus for chosen skills (Deception, Performance)
 racial_traits:
   - Lucky (roll 1d20 and take the higher result on any attack roll, ability check, or saving throw; 1/long rest)
   - Nimble (can attempt to hide when obscured by a creature one or two sizes larger)
   - Darkvision (60 ft)
   - Speed 25 ft
   - Mask of the Wild (can attempt to hide even when lightly obscured by natural phenomena)
-notes: >
-  Finn's lute is named "Whisper" and was carved from a single piece of willow wood.
-  He can play 17 different tunes without thinking.
-  He keeps a small pouch of sweet rations in his coat at all times.
-  At level 3, Finn will choose College of Lore as his Bard subclass.
+campaign_notes: >
+  Act 5: Leaned Whisper against the wall in the Boar's Tooth. Didn't reach for
+  the strings. The song was written in his head a hundred times on the road back.
+  Playing it now wouldn't add anything. He played a dirge in Undermountain — slow,
+  heartbreaking, meant to sow doubt in Neverember's guards.
 ---
 
 # Finnian "Finn" Quickstep

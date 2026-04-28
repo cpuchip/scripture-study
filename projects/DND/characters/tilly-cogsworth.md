@@ -3,84 +3,110 @@ character_name: Tilly Cogsworth
 gender: Female
 race: Rock Gnome
 class: Wizard
-subclass: "—" (chooses at level 2)
-level: 1
+subclass: School of Abjuration
+level: 6
 background: Cloistered Scholar
 alignment: Neutral Good
-proficiency_bonus: 2
-hit_dice: 1d6
+proficiency_bonus: 3
+hit_dice: 6d6
 ability_scores:
   strength: 8
   dexterity: 12
-  constitution: 13
+  constitution: 15
   intelligence: 17
   wisdom: 14
   charisma: 10
 modifiers:
   strength: -1
   dexterity: 1
-  constitution: 1
+  constitution: 2
   intelligence: 3
   wisdom: 2
   charisma: 0
-hp: 7
-max_hp: 7
-ac: 12  # Dex (+1) + 11 (no armor)
+hp: 30
+max_hp: 30
+ac: 13  # Dex (+1) + 12 (no armor; Arcane Ward provides buffer)
 initiative: 1
 speed: 25
 saving_throws:
-  intelligence: 5
-  wisdom: 4
+  intelligence: 6
+  wisdom: 5
 skill_proficiencies:
-  - Arcana (+5)
-  - Investigation (+5)
-  - Medicine (+4)
-  - History (+5)
+  - Arcana (+6)
+  - Investigation (+6)
+  - Medicine (+5)
+  - History (+6)
 tool_proficiencies:
-  - Tinker's tools (+2)
+  - Tinker's tools (+3)
 armor_proficiencies: []
 weapon_proficiencies: [Daggers, Darts, Slings, Quarterstaffs, Light crossbows]
 spellcasting_ability: Intelligence
-spell_save_dc: 13
-spell_attack_bonus: 5
-cantrips_known: 3
-spells_known: 6
-spellbook_spells: 6
+spell_save_dc: 16
+spell_attack_bonus: 6
+cantrips_known: 4
+spells_known: 9
+spellbook_spells: 12
 spell_slots:
-  level_1: 2
+  level_1: 4
+  level_2: 3
+  level_3: 2
 cantrips:
-  - Fire Bolt (+5 to hit, 1d10 fire)
+  - Fire Bolt (+6 to hit, 1d10 fire)
   - Prestidigitation
   - Mage Hand
-spells:
-  - Shield (AC 21 until next turn, no save)
-  - Magic Missile (3 darts, 1d4+1 force each, auto-hit)
-  - Feather Fall
   - Light
-  - Detect Magic
-  - Friends
+spells:
+  level_1:
+    - Shield (AC 21 until next turn, no save)
+    - Magic Missile (3 darts, 1d4+1 force each, auto-hit)
+    - Feather Fall
+    - Detect Magic
+    - Identify
+  level_2:
+    - Mirror Image
+    - Warding Bond (concentration, 1 hour)
+    - See Invisibility (10 min)
+  level_3:
+    - Counterspell (DC 16 Arcana check to interrupt)
+    - Dispel Magic (DC 16 Arcana check to dispel)
+    - Glyph of Warding
 languages:
   - Common
   - Gnomish
   - Dwarvish
   - Primordial
 equipment:
-  - Quarterstaff (+2 to hit, 1d6+1 bludgeoning)
+  - Quarterstaff (+3 to hit, 1d6-1 bludgeoning)
   - Dagger
   - Arcane focus (crystal)
   - Tinker's tools
   - Scholar's pack
-  - Spellbook
-  - Goggles of minute observation (self-made)
+  - Spellbook (12 spells; contains theory about the Weave as a living thing)
+  - Goggles of minute observation (self-made; see magical auras and tiny mechanisms)
+  - Journal of magical anomalies
   - Belt pouch with 16 gp
 gold: 16
 xp: 0
 death_saves:
   successes: 0
   failures: 0
-level_1_features:
-  - Spellcasting (full caster, Intelligence-based)
-  - Arcane Recovery (1/long rest: recover spell slots totaling up to 1st level)
+features:
+  level_1:
+    - Spellcasting (full caster, Intelligence-based)
+    - Arcane Recovery (1/long rest: recover spell slots totaling up to half wizard level, rounded down = 3 levels worth)
+  level_2:
+    - Abjuration Savant: ignore material components (non-gold cost) for abjuration spells
+    - Arcane Ward: create a ward of force with HP equal to 2 x wizard level + Int mod = 12 HP; absorbs damage to you first; recharge on long rest or as bonus action (1/short rest)
+  level_3:
+    - Ablative Barrier: when casting abjuration spell of 2nd level or higher, increase Arcane Ward HP by 2
+    - Arcane Ward can be shared with creature within 30 ft
+  level_4:
+    - Ability Score Improvement (Con +2)
+  level_5:
+    - Spell Mastery: cast Shield and Magic Missile at 1st level without spell slot or material components (1/long rest)
+  level_6:
+    - Third-Level Spell Mastery: cast Counterspell at 3rd level without spell slot (1/long rest)
+    - Arcane Ward HP increases to 18
 racial_traits:
   - Artificer's Intelligence (+1 to Intelligence)
   - Gnome Cunning (advantage on Int, Wis, and Cha saves vs magic)
@@ -88,11 +114,12 @@ racial_traits:
   - Darkvision (60 ft)
   - Speed 25 ft
   - Tinker (proficiency with tinker's tools; can craft Tiny clockwork devices)
-notes: >
-  Tilly's spellbook contains 6 spells at level 1.
-  Her goggles allow her to see magical auras and tiny mechanisms.
-  She keeps a journal of every magical anomaly she encounters.
-  At level 2, Tilly will choose School of Abjuration as her Wizard subclass.
+campaign_notes: >
+  Act 5: Read the third language at the Cormyrean Milestone. Took her goggles off,
+  wiped them on her sleeve, and put them back on. They didn't help, but the ritual
+  was necessary. Rubbed the bridge of her nose in the Boar's Tooth afterward. Not
+  the tired of a long walk. The tired of someone who had read the truth and found
+  it heavier than she expected. Oren was still gone. The book would be written.
 ---
 
 # Tilly Cogsworth

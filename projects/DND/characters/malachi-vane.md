@@ -3,67 +3,74 @@ character_name: Malachi Vane
 gender: Male
 race: Feral Tiefling
 class: Warlock
-subclass: The Fiend (Patron chosen at level 1)
-level: 1
+subclass: The Fiend
+level: 6
 background: Hermit
 alignment: Neutral Evil
-proficiency_bonus: 2
-hit_dice: 1d8
+proficiency_bonus: 3
+hit_dice: 6d8
 ability_scores:
   strength: 8
-  dexterity: 14
-  constitution: 13
+  dexterity: 16
+  constitution: 15
   intelligence: 12
   wisdom: 10
-  charisma: 17
+  charisma: 21
 modifiers:
   strength: -1
-  dexterity: 2
-  constitution: 1
+  dexterity: 3
+  constitution: 2
   intelligence: 1
   wisdom: 0
-  charisma: 3
-hp: 9
-max_hp: 9
-ac: 13  # Leather (11) + Dex (+2)
-initiative: 2
+  charisma: 5
+hp: 36
+max_hp: 36
+ac: 14  # Leather (11) + Dex (+3)
+initiative: 3
 speed: 30
 saving_throws:
-  wisdom: 2
-  charisma: 5
+  wisdom: 3
+  charisma: 8
 skill_proficiencies:
-  - Arcana (+3)
-  - History (+3)
-  - Investigation (+3)  # Hermit
-  - Medicine (+2)  # Hermit
+  - Arcana (+4)
+  - History (+4)
+  - Investigation (+4)  # Hermit
+  - Medicine (+3)  # Hermit
 tool_proficiencies:
-  - Calligrapher's supplies (+2)  # Hermit
+  - Calligrapher's supplies (+3)  # Hermit
 armor_proficiencies: []
 weapon_proficiencies: [Simple weapons]
 spellcasting_ability: Charisma
-spell_save_dc: 13
-spell_attack_bonus: 5
-cantrips_known: 2
-spells_known: 4
+spell_save_dc: 16
+spell_attack_bonus: 8
+cantrips_known: 4
+spells_known: 7
 spell_slots:
-  level_1: 1
+  level_3: 4  # Pact Magic slots
+invocation_slots:
+  level_1: 1  # from Pact of the Tome
 cantrips:
-  - Eldritch Blast (+5 to hit, 1d10 force)
+  - Eldritch Blast (+8 to hit, 1d10 force)
   - Mage Hand
+  - Armor of Agathys (cantrip)
+  - Thaumaturgy (Infernal Legacy, at will)
 spells:
-  - Armor of Agathys
   - Burning Hands
   - Charm Person
   - Hellish Rebuke
+  - Armor of Agathys
+  - Darkness
+  - Hellish Rebuke
+  - Scorching Ray
 languages:
   - Common
   - Infernal
   - Aboleth
 equipment:
   - Leather armor
-  - Light crossbow (+4 to hit, 1d8 piercing)
+  - Light crossbow (+6 to hit, 1d8+3 piercing)
   - 10 bolts
-  - Arcane focus (obsidian orb)
+  - Arcane focus (obsidian orb — pulses faint red; a fragment of the patron is trapped inside)
   - Calligrapher's supplies
   - Scholar's pack
   - Robes of the fiendish court (dark crimson)
@@ -73,19 +80,32 @@ xp: 0
 death_saves:
   successes: 0
   failures: 0
-level_1_features:
-  - Otherworldly Patron: The Fiend
-  - Pact Magic (1 first-level spell slot, recovers on short rest)
-  - Dark One's Blessing (when you reduce a hostile creature to 0 HP, gain temp HP equal to 2 + Warlock level = 4)
+features:
+  level_1:
+    - Pact Magic (spell slots recover on short rest)
+    - Otherworldly Patron: The Fiend
+    - Dark One's Blessing (when you reduce a hostile creature to 0 HP, gain temp HP equal to 2 + Warlock level = 8)
+  level_2:
+    - Pact of the Tome (3 additional cantrips from any class)
+  level_3:
+    - Eldritch Blast upgrades (via invocations)
+    - Fiendish Resilience (resistance to one damage type: fire — already had from Infernal Legacy)
+  level_4:
+    - Ability Score Improvement (Dex +2, Con +2)
+  level_5:
+    - Misty Step (4th level spell, gained via pact magic)
+  level_6:
+    - Fiendish Vigor: cast False Life as a bonus action, at will
 racial_traits:
   - Hellish Resistance (advantage on saves vs being charmed; resistance to necrotic damage)
   - Darkvision (60 ft)
   - Speed 30 ft
-  - Infernal Legacy (can cast Thaumaturgy at will; learn Silent Image at level 3; resistance to one damage type — choose fire)
-notes: >
-  Malachi's pact is not with any specific demon he named.
-  The patron chose him. He did not choose the patron.
-  The obsidian orb pulses with a faint red light when danger is near.
+  - Infernal Legacy (Thaumaturgy at will; Silent Image at level 3; fire resistance)
+campaign_notes: >
+  Act 5: The obsidian orb pulsed slow and uncertain after the seals stabilized.
+  His patron's power was reduced by the seal stabilization. Three choices loom:
+  renew the pact, renegotiate, or sever it entirely. He did not choose yet.
+  He watched the pulse, and the pulse watched him back. Neither blinked.
 ---
 
 # Malachi Vane
