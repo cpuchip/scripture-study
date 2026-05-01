@@ -101,6 +101,8 @@ This project uses **custom agents** (`.github/agents/`) for specialized workflow
 | `review` | Conference talk analysis for teaching patterns |
 | `yt-gospel` | Gospel YouTube evaluation — phased evaluation with charitable critical analysis |
 | `yt` | General YouTube digestion — AI, relationships, skills, any topic worth studying |
+| `research-gospel` | Find and evaluate non-canonical sources (books, articles, web) under Restoration discernment standards |
+| `research` | General research agent — find and evaluate non-canonical sources for any topic |
 | `journal` | Personal reflection, journaling, becoming |
 | `plan` | Planning — from idea to spec with critical analysis and creation cycle review |
 | `podcast` | Transform studies into shareable podcast/video notes |
