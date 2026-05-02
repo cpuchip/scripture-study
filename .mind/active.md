@@ -1,6 +1,6 @@
 # Active Context
 
-*Updated: 2026-04-23 (late evening — Zion in a Presidency study shipped) · Previous: [archive/active-2026-04-21.md](archive/active-2026-04-21.md) (Apr 22 state was not snapshotted)*
+*Updated: 2026-05-01 (early morning — Broken Heart and Contrite Spirit study shipped) · Previous: [archive/active-2026-04-23.md](archive/active-2026-04-23.md)*
 *Hardware: Dual 4090s desktop. NOCIX server live.*
 
 > **Edit rule:** Rewrite this file directly. Do NOT cat/append the old content first — its archive snapshot lives under `.mind/archive/`. Appending duplicates the document and doubles every memory load. (Bug: 2026-04-20.)
@@ -13,7 +13,7 @@
 
 ## Priorities
 
-1. ★ **[WS6] Study** — "It keeps me in the spirit." Latest: [zion-in-a-presidency.md](../study/zion-in-a-presidency.md) (Apr 23, third in arc with art-of-presidency + art-of-delegation). Next: TBD → [study-workstream.md](../.spec/proposals/study-workstream.md)
+1. ★ **[WS6] Study** — "It keeps me in the spirit." Latest: [broken-heart-and-contrite-spirit.md](../study/broken-heart-and-contrite-spirit.md) (May 1, fourth in arc: art-of-presidency + art-of-delegation + zion-in-a-presidency + broken-heart). Next: TBD → [study-workstream.md](../.spec/proposals/study-workstream.md)
 2. ★ **[WS7] Teaching** — 11-episode arc (Option C). Agent + repo scaffolded. Content not started → [teaching-workstream.md](../.spec/proposals/teaching-workstream.md)
 3. **[WS5] Token efficiency** — Apr 16 proposal awaiting refresh review → [token-efficiency.md](../.spec/proposals/token-efficiency.md)
 4. **[WS2] Brain Inline Panel + Kanban 4c** — next active build → [brain-inline-panel.md](../.spec/proposals/brain-inline-panel.md) · [brain-project-kanban.md](../.spec/proposals/brain-project-kanban.md)
