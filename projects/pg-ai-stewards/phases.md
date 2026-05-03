@@ -165,13 +165,41 @@ and at least one LLM-using path goes through the bgworker.
    message `unknown provider: no_such_provider` and stamps
    `embedding_error` on the brain row. Restoring the trigger and
    re-UPDATEing succeeds and clears the error.
-7. **Second real provider call: chat via OpenCode Go.** Send a
-   `stewards.work_items` row with `kind = 'chat'` and
-   `provider = 'opencode_go'`, model `kimi-k2.6`. Bgworker hits
-   `https://opencode.ai/zen/go/v1/chat/completions` with the bearer
-   key from env, writes the response back. Same code path as Ollama
-   chat — just a different provider entry. This is the proof that
-   the OpenAI-compat lingua franca decision actually pays off.
+7. **Second real provider call: chat via OpenCode Go.** ✅ done 2026-05-03.
+   Built on top of the Phase 1.5 harness:
+   - `stewards.chat_enqueue(agent_family, model, session_id, user_input,
+     provider)` composes the body via `dry_run_chat`, persists the
+     user turn, and enqueues `kind='chat'` with the body in payload.
+   - Bgworker `dispatch()` `chat` arm POSTs to
+     `<base>/chat/completions`, parses standard OpenAI shape
+     (`choices[0].message`, `usage`, `model`), and phase 3 inserts
+     the assistant message into `stewards.messages` (with `tool_calls`
+     verbatim if present, `finish_reason`, `tokens_in/out`).
+   - Verified: 4.4s round-trip kimi-k2.6 via OpenCode Go gateway. Kimi
+     answered "what is your job here?" by accurately restating the
+     persona we composed in `agents.prompt` — proving the Phase 1.5
+     harness shape arrives intact at the model.
+   - Provider echo persisted: we asked for `kimi-k2.6`, OpenCode Go's
+     gateway returned `moonshotai/kimi-k2.6-20260420`. We store what
+     the provider actually used, not what we asked for.
+   - Inverse hypothesis (Agans Rule 9): bad provider →
+     `work_queue.status='error'` with `unknown provider:
+     does_not_exist`, no row leaks, no broken state.
+   - Stewardship action: an early draft included a `chat_round_trip()`
+     SQL fn that enqueued + polled in one tx. Caught immediately on
+     first run when the open tx hid its own enqueued row from the
+     bgworker (MVCC) AND blocked every other writer on the session
+     row lock. Removed; left an inline comment so future-me doesn't
+     reach for it. Real polling needs `LISTEN stewards_done` from
+     outside Postgres, or a separate statement.
+
+   What's still NOT here (Phase 1.6 / step 8):
+   - Tool execution. Assistant's `tool_calls` jsonb is persisted but
+     nothing reads it yet.
+   - The agent loop. One turn only — no `while assistant.tool_calls
+     and steps < agent.steps`.
+   - Tool result messages (`role='tool'`, `tool_call_id`). Schema
+     supports them; nothing writes them yet.
 
 ### Done when
 

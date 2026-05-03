@@ -1,6 +1,6 @@
 # Active Context
 
-*Updated: 2026-05-03 (pg-ai-stewards Phase 1.5 harness sketch done — dry_run_chat returns full OpenAI POST body with variant-by-glob resolution) · Previous: [archive/active-2026-04-23.md](archive/active-2026-04-23.md)*
+*Updated: 2026-05-03 (pg-ai-stewards step 7 done — chat round-trip kimi-k2.6 via OpenCode Go, 4.4s, persona arrived intact) · Previous: [archive/active-2026-04-23.md](archive/active-2026-04-23.md)*
 *Hardware: Dual 4090s desktop. NOCIX server live.*
 
 > **Edit rule:** Rewrite this file directly. Do NOT cat/append the old content first — its archive snapshot lives under `.mind/archive/`. Appending duplicates the document and doubles every memory load. (Bug: 2026-04-20.)
@@ -17,7 +17,7 @@
 2. ★ **[WS7] Teaching** — 11-episode arc (Option C). Agent + repo scaffolded. Content not started → [teaching-workstream.md](../.spec/proposals/teaching-workstream.md)
 3. **[WS5] Token efficiency** — Apr 16 proposal awaiting refresh review → [token-efficiency.md](../.spec/proposals/token-efficiency.md)
 4. **[WS2] Brain Inline Panel + Kanban 4c** — next active build → [brain-inline-panel.md](../.spec/proposals/brain-inline-panel.md) · [brain-project-kanban.md](../.spec/proposals/brain-project-kanban.md)
-5. **[WS5] pg-ai-stewards** — Postgres-as-AI-substrate. **Phase 1 steps 1–3+6 done May 2–3; Phase 1.5 (harness sketch detour) done May 3.** Real LM Studio embeddings landing in vector(768); `dry_run_chat()` returns full OpenAI-shape POST body with variant-by-glob agent/skill/instruction resolution (kimi system prompt is 86 chars longer than gpt-5 system prompt for same agent family because `kimi-*` variant adds "be terse" clause and nothing else varies). Step 7 (real OpenCode Go chat) is now smaller — compose the body via `dry_run_chat`, POST it, parse response, write `tool_calls` rows. → [projects/pg-ai-stewards/extension/README.md](../projects/pg-ai-stewards/extension/README.md) · [phases.md](../projects/pg-ai-stewards/phases.md)
+5. **[WS5] pg-ai-stewards** — Postgres-as-AI-substrate. **Phase 1 steps 1–3+6+7 done May 2–3; Phase 1.5 (harness sketch) done May 3.** Real LM Studio embeddings landing in vector(768); `dry_run_chat()` returns full OpenAI POST body with variant-by-glob agent/skill/instruction resolution; `chat_enqueue()` composes + persists + enqueues, bgworker POSTs and writes assistant message back (4.4s end-to-end to kimi-k2.6 via OpenCode Go, persona arrived intact). Inverse hypothesis green both ways. Caught and removed a `chat_round_trip()` footgun where a SQL fn polled in its own tx (MVCC blindness + row lock). Next: **Phase 1.6** — tool execution loop (read `assistant.tool_calls`, dispatch via `tool_defs.execute_target`, append `role='tool'` reply, repeat until `finish_reason='stop'` or `steps` exhausted). → [projects/pg-ai-stewards/extension/README.md](../projects/pg-ai-stewards/extension/README.md) · [phases.md](../projects/pg-ai-stewards/phases.md)
 
 ## Key Facts
 
@@ -44,7 +44,7 @@
 | WS2 | Brain non-pipeline projects | ✅ archived Apr 23 | [archive/brain-non-pipeline-projects.md](../.spec/proposals/archive/brain-non-pipeline-projects.md) |
 | WS2 | Brain manual stage transitions | ✅ archived Apr 23 | [archive/brain-manual-stage-transitions.md](../.spec/proposals/archive/brain-manual-stage-transitions.md) |
 | WS2 | Johari window agent mode | 📝 proposed Apr 22 | [johari-window-agent-mode.md](../.spec/proposals/johari-window-agent-mode.md) |
-| WS5 | pg-ai-stewards (Postgres substrate for agent state, memory, work, model calls) | 🔨 Phase 1 steps 1–3+6 + **Phase 1.5 harness sketch** done May 2–3. `dry_run_chat()` returns full OpenAI POST body with variant-by-glob model resolution. Next: step 4 (migrator) or step 7 (real OpenCode Go chat). | [projects/pg-ai-stewards/extension/README.md](../projects/pg-ai-stewards/extension/README.md) |
+| WS5 | pg-ai-stewards (Postgres substrate for agent state, memory, work, model calls) | 🔨 Phase 1 steps 1–3+6+7 + **Phase 1.5 harness** done May 2–3. Chat round-trip to kimi-k2.6 via OpenCode Go works (4.4s, persona arrived intact). Next: **Phase 1.6** — tool execution loop. | [projects/pg-ai-stewards/extension/README.md](../projects/pg-ai-stewards/extension/README.md) |
 | WS2 | Motivation coach agent mode | 📝 proposed Apr 22 | [motivation-coach-agent-mode.md](../.spec/proposals/motivation-coach-agent-mode.md) |
 | WS3 | LightRAG investigation | 📝 proposed Apr 22 | [lightrag-investigation.md](../.spec/proposals/lightrag-investigation.md) |
 | WS3 | Gospel engine v3 proxy-pointer | 📝 proposed Apr 22 | [gospel-engine-v3-proxy-pointer.md](../.spec/proposals/gospel-engine-v3-proxy-pointer.md) |

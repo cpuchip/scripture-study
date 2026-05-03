@@ -186,11 +186,18 @@ extension_sql!(
                         REFERENCES stewards.sessions(id) ON DELETE CASCADE,
         role            text NOT NULL
                         CHECK (role IN ('user','assistant','system','tool')),
-        content         text NOT NULL,
+        content         text NOT NULL DEFAULT '',
         model           text,
         tokens_in       int,
         tokens_out      int,
         cost_usd        numeric(10, 6),
+
+        -- Assistant messages may carry tool_calls instead of (or in
+        -- addition to) content. Stored verbatim; Phase 1.6's loop
+        -- will read this to dispatch tools. Step 7 just records.
+        tool_calls      jsonb,
+        finish_reason   text,
+        tool_call_id    text,        -- set on role='tool' replies
 
         embedding       vector(768),
         embedded_at     timestamptz,
@@ -909,6 +916,85 @@ extension_sql!(
 );
 
 // ---------------------------------------------------------------------------
+// Step 7: chat round-trip helpers.
+//
+// chat_enqueue composes the body via dry_run_chat, inserts the user
+// message, and enqueues a 'chat' work item. The bgworker dispatch
+// 'chat' arm POSTs the body, parses the response, and writes the
+// assistant message into stewards.messages.
+//
+// Tool-call dispatch is intentionally NOT here. Phase 1.6 adds the
+// loop that reads assistant.tool_calls and dispatches via
+// tool_defs.execute_target. Step 7 just proves the round-trip.
+// ---------------------------------------------------------------------------
+
+extension_sql!(
+    r#"
+    -- chat_enqueue: compose body, persist user turn, enqueue work.
+    -- Returns the work_queue id so the caller can poll/listen.
+    --
+    -- Note: we compose the body NOW (in the calling tx) and store it
+    -- in payload. The bgworker re-reads the payload at dispatch time
+    -- and POSTs it as-is. This keeps the slow HTTP call outside the
+    -- claim transaction (matches the embed pattern from step 6) and
+    -- makes the body inspectable in work_queue.payload before send.
+    CREATE FUNCTION stewards.chat_enqueue(
+        p_agent_family text,
+        p_model        text,
+        p_session_id   text,
+        p_user_input   text,
+        p_provider     text
+    ) RETURNS bigint
+    LANGUAGE plpgsql AS $func$
+    DECLARE
+        v_body    jsonb;
+        v_payload jsonb;
+        v_work_id bigint;
+    BEGIN
+        -- Build the POST body BEFORE inserting the user message,
+        -- because dry_run_chat takes user_input as an arg and
+        -- composes [system, ...history, user] itself. Inserting
+        -- first would duplicate the user turn in messages[].
+        v_body := stewards.dry_run_chat(
+            p_agent_family, p_model, p_session_id, p_user_input);
+
+        -- Strip _meta before sending to the provider; keep it for
+        -- the work_queue payload as an audit trail of what variant
+        -- resolved.
+        v_payload := jsonb_build_object(
+            'session_id',    p_session_id,
+            'agent_family',  p_agent_family,
+            'requested_model', p_model,
+            'meta',          v_body->'_meta',
+            'body',          v_body - '_meta'
+        );
+
+        -- Persist the user turn now that the body is composed.
+        INSERT INTO stewards.messages (session_id, role, content, model)
+        VALUES (p_session_id, 'user', p_user_input, p_model);
+
+        INSERT INTO stewards.work_queue (kind, provider, payload)
+        VALUES ('chat', p_provider, v_payload)
+        RETURNING id INTO v_work_id;
+
+        RETURN v_work_id;
+    END;
+    $func$;
+
+    -- NOTE: an earlier draft included a chat_round_trip() that
+    -- enqueued + polled inside one SQL function. That's a footgun:
+    -- the SQL function holds an open transaction for the whole loop,
+    -- so the work_queue row it just inserted is invisible to the
+    -- bgworker (MVCC), AND the still-open tx blocks other writers
+    -- on row locks (e.g., the sessions row from the same call).
+    -- Removed. Callers should `chat_enqueue()` then either LISTEN
+    -- stewards_done or poll work_queue from a separate statement.
+    "#,
+    name = "create_chat_helpers",
+    requires = ["seed_harness"],
+);
+
+// ---------------------------------------------------------------------------
 // Diagnostic SQL functions
 // ---------------------------------------------------------------------------
 
@@ -1277,6 +1363,62 @@ fn process_one_pending() -> bool {
                         &[id.into(), result_jsonb.into()],
                     )?;
                 }
+                Ok(WorkOutcome::Chatted {
+                    response,
+                    session_id,
+                    model,
+                    assistant_content,
+                    assistant_tool_calls,
+                    finish_reason,
+                    tokens_in,
+                    tokens_out,
+                }) => {
+                    // Insert the assistant turn. tool_calls is stored
+                    // verbatim — Phase 1.6's loop will read it to
+                    // dispatch tools. Step 7 just records.
+                    let tool_calls_jsonb = assistant_tool_calls
+                        .clone()
+                        .map(pgrx::JsonB);
+                    client.update(
+                        "INSERT INTO stewards.messages \
+                            (session_id, role, content, model, \
+                             tool_calls, finish_reason, tokens_in, tokens_out) \
+                         VALUES ($1, 'assistant', $2, $3, $4, $5, $6, $7)",
+                        None,
+                        &[
+                            session_id.clone().into(),
+                            assistant_content.clone().into(),
+                            model.clone().into(),
+                            tool_calls_jsonb.into(),
+                            finish_reason.clone().into(),
+                            (*tokens_in).into(),
+                            (*tokens_out).into(),
+                        ],
+                    )?;
+
+                    let result_jsonb = pgrx::JsonB(serde_json::json!({
+                        "kind": "chat",
+                        "provider": provider,
+                        "model": model,
+                        "session_id": session_id,
+                        "finish_reason": finish_reason,
+                        "tokens_in": tokens_in,
+                        "tokens_out": tokens_out,
+                        "tool_call_count":
+                            assistant_tool_calls.as_ref()
+                                .and_then(|v| v.as_array())
+                                .map(|a| a.len())
+                                .unwrap_or(0),
+                        "response": response,
+                    }));
+                    client.update(
+                        "UPDATE stewards.work_queue \
+                         SET status = 'done', result = $2, done_at = now() \
+                         WHERE id = $1",
+                        None,
+                        &[id.into(), result_jsonb.into()],
+                    )?;
+                }
                 Err(msg) => {
                     pgrx::log!("stewards: work_item id={} failed: {}", id, msg);
                     // Best-effort: also stamp the brain row's
@@ -1334,6 +1476,20 @@ enum WorkOutcome {
         embedding_text: String,
         dimensions: i32,
     },
+    Chatted {
+        // Raw provider response (full JSON), for the work_queue audit trail.
+        response: serde_json::Value,
+        // Echo back so phase 3 can persist the assistant message.
+        session_id: String,
+        // Model the provider actually used (echo from response.model).
+        model: String,
+        // Extracted bits we want to write into stewards.messages.
+        assistant_content: String,
+        assistant_tool_calls: Option<serde_json::Value>,
+        finish_reason: Option<String>,
+        tokens_in: Option<i32>,
+        tokens_out: Option<i32>,
+    },
 }
 
 /// Dispatch a work item by `kind`. Returns `Ok(WorkOutcome)` on
@@ -1352,6 +1508,7 @@ fn dispatch(
             "stub": "pg_ai_stewards echo",
         }))),
         "embed" => embed(provider, payload),
+        "chat"  => chat(provider, payload),
         other => Err(format!("unknown work kind: {}", other)),
     }
 }
@@ -1467,6 +1624,124 @@ fn embed(provider_name: &str, payload: &serde_json::Value) -> Result<WorkOutcome
         model: model.to_string(),
         embedding_text: s,
         dimensions: expected_dim,
+    })
+}
+
+/// Call an OpenAI-compatible /v1/chat/completions endpoint.
+///
+/// Payload shape (built by stewards.chat_enqueue):
+///   {
+///     "session_id":      "<id>",
+///     "agent_family":    "<family>",
+///     "requested_model": "<model>",
+///     "meta":            { ... audit only, not sent ... },
+///     "body":            { "model":..., "messages":[...], "tools":[...], ... }
+///   }
+///
+/// On success, returns Chatted with the parsed assistant message
+/// extracted into top-level fields. Phase 3 inserts that message
+/// into stewards.messages and stamps usage.
+fn chat(provider_name: &str, payload: &serde_json::Value) -> Result<WorkOutcome, String> {
+    let provider = PROVIDER_REGISTRY
+        .get()
+        .ok_or_else(|| "provider registry not initialized".to_string())?
+        .providers
+        .iter()
+        .find(|p| p.name == provider_name)
+        .ok_or_else(|| format!("unknown provider: {}", provider_name))?;
+
+    let session_id = payload
+        .get("session_id")
+        .and_then(|v| v.as_str())
+        .ok_or_else(|| "payload.session_id missing".to_string())?
+        .to_string();
+    let body = payload
+        .get("body")
+        .ok_or_else(|| "payload.body missing".to_string())?;
+
+    let url = format!(
+        "{}/chat/completions",
+        provider.base_url.trim_end_matches('/')
+    );
+
+    // Same 120s timeout as embeddings — first kimi-k2.6 turn over
+    // OpenCode Go can be slow if the gateway is cold.
+    let client = reqwest::blocking::Client::builder()
+        .timeout(std::time::Duration::from_secs(120))
+        .build()
+        .map_err(|e| format!("http client build: {}", e))?;
+
+    let mut req = client.post(&url).json(body);
+    if let Some(key) = &provider.api_key {
+        req = req.bearer_auth(key);
+    }
+
+    let resp = req
+        .send()
+        .map_err(|e| format!("POST {}: {}", url, e))?;
+    let status = resp.status();
+    if !status.is_success() {
+        let resp_body = resp.text().unwrap_or_default();
+        return Err(format!("chat HTTP {}: {}", status, resp_body));
+    }
+
+    let parsed: serde_json::Value = resp
+        .json()
+        .map_err(|e| format!("decode chat response: {}", e))?;
+
+    // Standard OpenAI shape: { choices: [{ message: { role, content,
+    // tool_calls? }, finish_reason }], usage: { prompt_tokens,
+    // completion_tokens } }
+    let choice = parsed
+        .get("choices")
+        .and_then(|c| c.as_array())
+        .and_then(|a| a.first())
+        .ok_or_else(|| format!("no choices[0] in response: {}", parsed))?;
+    let message = choice
+        .get("message")
+        .ok_or_else(|| format!("no choices[0].message: {}", parsed))?;
+
+    // OpenAI returns content as either a string OR null (when only
+    // tool_calls are present). NOT NULL on messages.content with
+    // default '' handles both — we coerce to "".
+    let assistant_content = message
+        .get("content")
+        .and_then(|v| v.as_str())
+        .unwrap_or("")
+        .to_string();
+    let assistant_tool_calls = message.get("tool_calls").cloned();
+    let finish_reason = choice
+        .get("finish_reason")
+        .and_then(|v| v.as_str())
+        .map(String::from);
+
+    let model = parsed
+        .get("model")
+        .and_then(|v| v.as_str())
+        .unwrap_or_else(|| {
+            body.get("model").and_then(|v| v.as_str()).unwrap_or("?")
+        })
+        .to_string();
+
+    let usage = parsed.get("usage");
+    let tokens_in = usage
+        .and_then(|u| u.get("prompt_tokens"))
+        .and_then(|v| v.as_i64())
+        .map(|v| v as i32);
+    let tokens_out = usage
+        .and_then(|u| u.get("completion_tokens"))
+        .and_then(|v| v.as_i64())
+        .map(|v| v as i32);
+
+    Ok(WorkOutcome::Chatted {
+        response: parsed,
+        session_id,
+        model,
+        assistant_content,
+        assistant_tool_calls,
+        finish_reason,
+        tokens_in,
+        tokens_out,
     })
 }
 

@@ -48,6 +48,32 @@ Everything else from the [phase plan](../phases.md#phase-1--foundation-extension
 migrator in step 4) is still ahead. Step 7 is now smaller because
 the composition shape is frozen.
 
+**Phase 1, step 7 done (2026-05-03) — chat round-trip via OpenCode Go:**
+- `stewards.chat_enqueue(agent_family, model, session_id, user_input,
+  provider)` composes body via `dry_run_chat`, persists user turn,
+  enqueues `kind='chat'`. Returns work_queue id.
+- Bgworker `dispatch()` `chat` arm POSTs to `<base>/chat/completions`,
+  parses OpenAI shape (`choices[0].message`, `usage`, `model`),
+  phase 3 inserts assistant message into `stewards.messages` with
+  `tool_calls` jsonb (verbatim, for Phase 1.6), `finish_reason`,
+  `tokens_in/out`.
+- Verified: **4.4s round-trip** to kimi-k2.6 via OpenCode Go
+  (`https://opencode.ai/zen/go/v1`). Kimi accurately restated the
+  persona we composed in Phase 1.5 — proving the harness shape
+  arrives intact at the model.
+- Provider echo persisted (asked `kimi-k2.6`, got
+  `moonshotai/kimi-k2.6-20260420`). We record what the provider
+  actually used.
+- Inverse hypothesis: bad provider → `unknown provider:
+  does_not_exist` in `work_queue.error`, no row leaks.
+- **Stewardship action surfaced:** a draft `chat_round_trip()` SQL
+  fn was caught on first run — it polled inside its own tx, hiding
+  its own enqueued row from the bgworker (MVCC). Removed with an
+  inline `-- NOTE:` comment for future-me. SQL functions cannot
+  COMMIT mid-loop; real callers should `LISTEN stewards_done`.
+- Tool dispatch + agent loop NOT here — that's Phase 1.6.
+  `assistant.tool_calls` is persisted but unread.
+
 ## Layout
 
 ```
