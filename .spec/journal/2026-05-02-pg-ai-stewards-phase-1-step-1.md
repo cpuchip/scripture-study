@@ -53,3 +53,27 @@ I caught myself almost surfacing the "should we set up a faster dev loop?" quest
 ## Relational note
 
 The "have fun and build this" framing combined with the "use Sonnet 4.6 or lighter for tests" hint was perfectly calibrated. Permission to move fast plus a sane spending guardrail. The build went fast because I knew the constraint upfront and didn't agonize over whether to spawn subagents (I didn't; foreground was right for this session size).
+
+## Addendum — same evening — provider/secrets shape lands
+
+Michael followed up with: LM Studio is running qwen3.6-27b free locally, OpenCode Go gives him Kimi K2.6 on subscription, and we'll need API keys wired into pg-ai-stewards "when we get there." Two doc links: opencode.ai/docs/sdk and opencode.ai/docs/go.
+
+The temptation was to start writing a provider client. The right move was to read the docs and *bake the shape* into proposal.md and phases.md without code, so the bgworker scaffold (next session) lands with the registry already correct.
+
+What the docs revealed that simplified the design: **OpenCode Go is OpenAI-compatible.** Every Go model except MiniMax uses `@ai-sdk/openai-compatible` per opencode.ai/docs/go. LM Studio is too. Ollama is too. So the bgworker has *one* HTTP client — `(base_url, api_key, model)` per provider — not three adapters. MiniMax (Anthropic shape `/v1/messages`) is deferred to Phase 2+ when we actually want it. Big simplifier I might have missed if I'd started coding before reading.
+
+Also clarified: the `@opencode-ai/sdk` npm package controls an opencode AGENT server, not raw model calls. Different beast. For pg-ai-stewards we just hit `https://opencode.ai/zen/go/v1/chat/completions` directly.
+
+Decision on secrets storage:
+
+- **Phase 1: env vars only.** `STEWARDS_PROVIDER_<NAME>_<FIELD>` shape, bgworker reads at startup, in-memory registry. SQL references provider by friendly id (`provider := 'opencode_go'`). Raw keys never touch DB columns or logs.
+- **Phase 2+: `stewards.providers` table** with optional pgcrypto-encrypted key column under a master env var. *Defer until env-var-only friction shows up.* This is the YAGNI move — don't build the encryption-at-rest story before there's a concrete need to swap providers without a Postgres restart.
+- `.env` gitignored, `.env.example` committed as the shape reference. `docker-compose.yaml` uses `env_file: [{path: .env, required: false}]` so the stack runs with or without local secrets present.
+
+Files touched this addendum: proposal.md (new section "Provider abstraction and secrets"), phases.md (Phase 1 step 2 references the registry; new step 7 = first OpenCode Go chat call as proof the lingua-franca decision pays off), extension/.env.example (new), extension/docker-compose.yaml (env_file + extra_hosts: host.docker.internal), extension/.gitignore (.env), extension/README.md (note about .env), .mind/active.md, /memories/repo/recent-studies.md, /memories/repo/provider-secrets.md (new — quick cheat sheet for next session).
+
+Verified: `docker compose config` parses, container recreates cleanly, `stewards.version()` still returns `0.1.0` after the compose changes.
+
+What I deliberately did *not* do: write a single line of provider-call code. The bgworker doesn't exist yet. Step 2 is bgworker scaffold; the registry and the first real call (Ollama embedding, then OpenCode Go chat) come together in steps 6–7. Building the client before the worker would be backwards.
+
+The pattern here is worth keeping: when Michael flags a future need with "when we get there," the right response is *make the shape visible now, write the code later*. Examples committed to disk are cheaper to course-correct than imagined APIs in my head.

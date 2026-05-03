@@ -28,9 +28,17 @@ extension/
 
 ```pwsh
 cd projects\pg-ai-stewards\extension
+copy .env.example .env       # then fill in OPENCODE_GO_API_KEY (others have defaults)
 docker compose build         # ~2 min cold; ~30s warm thanks to layer cache
 docker compose up -d
 ```
+
+`.env` is optional — the compose file falls back to inline defaults
+if it's missing, so `docker compose up -d` works without it. Real
+provider keys (OpenCode Go etc.) only matter once Phase 1 step 6/7
+wires the bgworker; for now `.env` is just the committed shape.
+See [proposal § Provider abstraction and secrets](../proposal.md#provider-abstraction-and-secrets)
+for the full design.
 
 Then verify:
 

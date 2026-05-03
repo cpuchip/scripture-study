@@ -3,12 +3,23 @@ services:
     build: .
     image: pg-ai-stewards-dev:pg18
     container_name: pg-ai-stewards-dev
+    # Optional .env file holds POSTGRES_* and STEWARDS_PROVIDER_*
+    # secrets. Falls through to inline defaults if absent. Copy
+    # .env.example to .env to fill in real values.
+    env_file:
+      - path: .env
+        required: false
     environment:
-      POSTGRES_USER: stewards
-      POSTGRES_PASSWORD: stewards
-      POSTGRES_DB: stewards
+      POSTGRES_USER: ${POSTGRES_USER:-stewards}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-stewards}
+      POSTGRES_DB: ${POSTGRES_DB:-stewards}
     ports:
       - "55433:5432"   # offset from probe's 55432 so both can run side by side
+    extra_hosts:
+      # Lets the bgworker reach LM Studio / Ollama on the host on
+      # Linux containers (Docker Desktop on Windows/Mac aliases this
+      # automatically; on plain Linux Docker we need the explicit map).
+      - "host.docker.internal:host-gateway"
     volumes:
       - pgdata:/var/lib/postgresql
       - ./init:/docker-entrypoint-initdb.d:ro

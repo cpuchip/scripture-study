@@ -37,6 +37,11 @@ and at least one LLM-using path goes through the bgworker.
    - On notify, reads a row from `stewards.work_queue`, calls a stub
      "echo" provider, writes the result back, `NOTIFY stewards_done`.
    - Handles SIGTERM cleanly. Restarts cleanly.
+   - **Reads provider registry from env vars on startup**
+     (`STEWARDS_PROVIDER_*` — see [proposal § Provider abstraction and
+     secrets](proposal.md#provider-abstraction-and-secrets)). Even
+     the echo stub goes through this so the registry is real from
+     day one.
 3. **Schema for brain replacement**
    - `stewards.brain_entries` (six categories, JSONB props,
      embedding column, HNSW index).
@@ -51,6 +56,13 @@ and at least one LLM-using path goes through the bgworker.
    "embedding generation" path. Insert a brain entry → bgworker
    computes embedding via Ollama → writes pgvector column → search
    works.
+7. **Second real provider call: chat via OpenCode Go.** Send a
+   `stewards.work_items` row with `kind = 'chat'` and
+   `provider = 'opencode_go'`, model `kimi-k2.6`. Bgworker hits
+   `https://opencode.ai/zen/go/v1/chat/completions` with the bearer
+   key from env, writes the response back. Same code path as Ollama
+   chat — just a different provider entry. This is the proof that
+   the OpenAI-compat lingua franca decision actually pays off.
 
 ### Done when
 

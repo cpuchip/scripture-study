@@ -148,6 +148,63 @@ Same embedding space lets us compare a study draft directly to a
 scripture verse vector across the DB seam, via gospel's HTTP API or
 via shared embedding generation.
 
+### Provider abstraction and secrets
+
+**Lingua franca: OpenAI-compatible chat/completions and embeddings.**
+Three of the providers we want from day one all speak it:
+
+| Provider | Endpoint | Auth | Use |
+|----------|----------|------|-----|
+| **LM Studio** (local) | `http://host.docker.internal:1234/v1` | placeholder key | free local chat (qwen3.6-27b on Michael's box) |
+| **Ollama** (local) | `http://host.docker.internal:11434/v1` | none | embeddings (`nomic-embed-text-v1.5`) and free local chat |
+| **OpenCode Go** | `https://opencode.ai/zen/go/v1` | bearer API key | paid chat — Kimi K2.6, GLM-5.1, DeepSeek V4, Qwen3.6 Plus, etc. |
+
+[OpenCode Go's docs](https://opencode.ai/docs/go/) confirm every
+coding model on the platform except MiniMax uses
+`@ai-sdk/openai-compatible`. MiniMax (Anthropic-shape `/v1/messages`)
+is a Phase 2+ concern — add a second adapter only when we want it.
+This means **one HTTP client** in the bgworker, not three.
+
+**Provider registry lives in two places:**
+
+1. **Bootstrap from env vars** at bgworker startup. Shape:
+
+   ```
+   STEWARDS_PROVIDER_<NAME>_BASE_URL
+   STEWARDS_PROVIDER_<NAME>_API_KEY      # optional for keyless local providers
+   STEWARDS_PROVIDER_<NAME>_DEFAULT_MODEL
+   STEWARDS_PROVIDER_<NAME>_KIND          # "openai" | "anthropic" (Phase 2+)
+   ```
+
+   `<NAME>` is uppercase-snake of a friendly id. Phase 1 registers
+   three: `OLLAMA`, `LM_STUDIO`, `OPENCODE_GO`.
+
+2. **Runtime overrides via SQL.** A `stewards.providers` table
+   (Phase 2) lets the user add/swap providers without restarting
+   Postgres. Schema sketch: `(name pk, kind, base_url, default_model,
+   api_key_secret_ref, enabled)`. Actual API keys stored
+   `pgcrypto`-encrypted with a master key from a separate env var
+   (`STEWARDS_MASTER_KEY`), or just left in env if the user prefers.
+   Defer this until env-var-only friction shows up.
+
+**SQL never sees raw keys.** A row in `stewards.work_queue` references
+a provider by name (`provider := 'opencode_go'`) and the bgworker
+resolves the name to its current credentials at dispatch time. Keys
+live in the worker's process memory; they are not logged, not
+returned from any function, and not written to DB columns in Phase 1.
+
+**Local files:** `.env` for actual values (gitignored), `.env.example`
+for the shape (committed). `docker-compose.yaml` loads via `env_file:
+.env` so the same shape works for `cargo pgrx run` outside Docker if
+we ever want it.
+
+**Cost discipline.** Default model selection follows the existing
+`.mind/active.md` rule: Sonnet 4.6 or lighter for routine work, Opus
+4.7 only when explicitly requested. With OpenCode Go in the mix the
+default for chat tasks shifts to a Go model (Kimi K2.6 first
+candidate) because the marginal cost is bounded by the $10/mo
+subscription rather than per-token.
+
 ### Replacement of `scripts/brain/`
 
 Brain's six categories become a `stewards.brain_entries` table with

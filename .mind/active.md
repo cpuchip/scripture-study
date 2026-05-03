@@ -17,7 +17,7 @@
 2. ★ **[WS7] Teaching** — 11-episode arc (Option C). Agent + repo scaffolded. Content not started → [teaching-workstream.md](../.spec/proposals/teaching-workstream.md)
 3. **[WS5] Token efficiency** — Apr 16 proposal awaiting refresh review → [token-efficiency.md](../.spec/proposals/token-efficiency.md)
 4. **[WS2] Brain Inline Panel + Kanban 4c** — next active build → [brain-inline-panel.md](../.spec/proposals/brain-inline-panel.md) · [brain-project-kanban.md](../.spec/proposals/brain-project-kanban.md)
-5. **[WS5] pg-ai-stewards** — Postgres-as-AI-substrate. **Phase 1 in flight: step 1 (extension scaffold) done May 2 — pgrx 0.18 extension loads on PG18 alongside pgvector + AGE.** Next: bgworker scaffold + brain schema. → [projects/pg-ai-stewards/extension/README.md](../projects/pg-ai-stewards/extension/README.md) · [phases.md](../projects/pg-ai-stewards/phases.md)
+5. **[WS5] pg-ai-stewards** — Postgres-as-AI-substrate. **Phase 1 in flight: step 1 (extension scaffold) done May 2 — pgrx 0.18 extension loads on PG18 alongside pgvector + AGE. Provider/secrets design baked in same day (OpenAI-compat lingua franca for LM Studio, Ollama, OpenCode Go).** Next: bgworker scaffold + brain schema. → [projects/pg-ai-stewards/extension/README.md](../projects/pg-ai-stewards/extension/README.md) · [phases.md](../projects/pg-ai-stewards/phases.md)
 
 ## Key Facts
 
