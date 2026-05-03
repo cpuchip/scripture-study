@@ -1,0 +1,13 @@
+# pgrx + Rust artifacts
+target/
+**/*.rs.bk
+Cargo.lock
+
+# pgrx-managed Postgres data (when running outside Docker)
+.pgrx/
+
+# IDE / OS
+.idea/
+.vscode/
+*.swp
+.DS_Store

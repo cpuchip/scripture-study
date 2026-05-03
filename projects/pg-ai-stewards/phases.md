@@ -27,6 +27,11 @@ and at least one LLM-using path goes through the bgworker.
    - Builds and loads in a docker compose alongside pgvector + AGE.
    - One trivial SQL function (`stewards.version()`) to prove the
      extension actually loaded.
+
+   **✅ Done 2026-05-02.** Lives at [extension/](extension/). Image
+   `pg-ai-stewards-dev:pg18` runs on host port 55433 with all three
+   extensions installed. `stewards.version()` returns `0.1.0`. See
+   [extension/README.md](extension/README.md).
 2. **bgworker with reqwest + tokio**
    - Listens on `LISTEN stewards_dispatch`.
    - On notify, reads a row from `stewards.work_queue`, calls a stub

@@ -1,0 +1,7 @@
+comment = 'pg-ai-stewards: AI agent state, memory, and pipelines as Postgres rows'
+default_version = '0.1.0'
+module_pathname = '$libdir/pg_ai_stewards'
+relocatable = false
+schema = 'stewards'
+superuser = true
+trusted = false
