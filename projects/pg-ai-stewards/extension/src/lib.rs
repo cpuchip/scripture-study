@@ -190,6 +190,12 @@ extension_sql!(
         model           text,
         tokens_in       int,
         tokens_out      int,
+        -- Reasoning tokens are billed separately by some providers
+        -- (kimi-k2.6 via OpenCode reports them under
+        -- usage.completion_tokens_details.reasoning_tokens). They
+        -- are NOT included in tokens_out, so cost computation must
+        -- sum both. Captured here so we don't under-count.
+        reasoning_tokens int,
         cost_usd        numeric(10, 6),
 
         -- Assistant messages may carry tool_calls instead of (or in
@@ -961,12 +967,18 @@ extension_sql!(
         -- Strip _meta before sending to the provider; keep it for
         -- the work_queue payload as an audit trail of what variant
         -- resolved.
+        --
+        -- Also inject `user = <session_id>` so providers that surface
+        -- per-session billing (OpenCode Go's usage dashboard, OpenAI's
+        -- end-user analytics) can attribute cost to our session row.
+        -- The OpenAI spec field is named `user`; OpenCode honors it.
         v_payload := jsonb_build_object(
             'session_id',    p_session_id,
             'agent_family',  p_agent_family,
             'requested_model', p_model,
             'meta',          v_body->'_meta',
-            'body',          v_body - '_meta'
+            'body',          (v_body - '_meta')
+                             || jsonb_build_object('user', p_session_id)
         );
 
         -- Persist the user turn now that the body is composed.
@@ -1372,6 +1384,7 @@ fn process_one_pending() -> bool {
                     finish_reason,
                     tokens_in,
                     tokens_out,
+                    reasoning_tokens,
                 }) => {
                     // Insert the assistant turn. tool_calls is stored
                     // verbatim — Phase 1.6's loop will read it to
@@ -1382,8 +1395,9 @@ fn process_one_pending() -> bool {
                     client.update(
                         "INSERT INTO stewards.messages \
                             (session_id, role, content, model, \
-                             tool_calls, finish_reason, tokens_in, tokens_out) \
-                         VALUES ($1, 'assistant', $2, $3, $4, $5, $6, $7)",
+                             tool_calls, finish_reason, \
+                             tokens_in, tokens_out, reasoning_tokens) \
+                         VALUES ($1, 'assistant', $2, $3, $4, $5, $6, $7, $8)",
                         None,
                         &[
                             session_id.clone().into(),
@@ -1393,6 +1407,7 @@ fn process_one_pending() -> bool {
                             finish_reason.clone().into(),
                             (*tokens_in).into(),
                             (*tokens_out).into(),
+                            (*reasoning_tokens).into(),
                         ],
                     )?;
 
@@ -1404,6 +1419,10 @@ fn process_one_pending() -> bool {
                         "finish_reason": finish_reason,
                         "tokens_in": tokens_in,
                         "tokens_out": tokens_out,
+                        "reasoning_tokens": reasoning_tokens,
+                        "billable_output":
+                            tokens_out.unwrap_or(0)
+                            + reasoning_tokens.unwrap_or(0),
                         "tool_call_count":
                             assistant_tool_calls.as_ref()
                                 .and_then(|v| v.as_array())
@@ -1489,6 +1508,10 @@ enum WorkOutcome {
         finish_reason: Option<String>,
         tokens_in: Option<i32>,
         tokens_out: Option<i32>,
+        // OpenAI usage.completion_tokens_details.reasoning_tokens.
+        // Billed separately from tokens_out by kimi/o1-style models;
+        // store so cost computation can sum both. None when absent.
+        reasoning_tokens: Option<i32>,
     },
 }
 
@@ -1732,6 +1755,17 @@ fn chat(provider_name: &str, payload: &serde_json::Value) -> Result<WorkOutcome,
         .and_then(|u| u.get("completion_tokens"))
         .and_then(|v| v.as_i64())
         .map(|v| v as i32);
+    // OpenAI's newer usage shape:
+    //   usage.completion_tokens_details.reasoning_tokens
+    // Reasoning tokens are NOT a subset of completion_tokens for kimi/
+    // o1-class models — they're billed separately. The OpenCode Go
+    // dashboard's "OUTPUT" column sums both; we record them apart so
+    // cost math stays honest.
+    let reasoning_tokens = usage
+        .and_then(|u| u.get("completion_tokens_details"))
+        .and_then(|d| d.get("reasoning_tokens"))
+        .and_then(|v| v.as_i64())
+        .map(|v| v as i32);
 
     Ok(WorkOutcome::Chatted {
         response: parsed,
@@ -1742,6 +1776,7 @@ fn chat(provider_name: &str, payload: &serde_json::Value) -> Result<WorkOutcome,
         finish_reason,
         tokens_in,
         tokens_out,
+        reasoning_tokens,
     })
 }
 

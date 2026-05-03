@@ -195,11 +195,27 @@ and at least one LLM-using path goes through the bgworker.
 
    What's still NOT here (Phase 1.6 / step 8):
    - Tool execution. Assistant's `tool_calls` jsonb is persisted but
-     nothing reads it yet.
+     nothing reads it yet. (Confirmed kimi DOES invoke tools when
+     the question warrants it — "name two virtues from Moroni 7"
+     produced a valid `brain_search_text` call with sensible args.)
    - The agent loop. One turn only — no `while assistant.tool_calls
      and steps < agent.steps`.
    - Tool result messages (`role='tool'`, `tool_call_id`). Schema
      supports them; nothing writes them yet.
+
+   Cost-correctness adds (same session, post-first-roundtrip):
+   - `messages.reasoning_tokens int` column, populated from
+     `usage.completion_tokens_details.reasoning_tokens`. Kimi-class
+     models bill reasoning tokens SEPARATELY from `completion_tokens`;
+     under-counting them halves the apparent cost. Real test showed
+     `tokens_out=111, reasoning_tokens=93, billable_out=204`.
+   - `chat_enqueue` injects `user = <session_id>` into the outgoing
+     body (OpenAI-spec field). Providers that surface per-session
+     billing (OpenCode Go's usage dashboard) tag the request with
+     our session id, giving free cost-per-session attribution.
+   - `work_queue.result.billable_output` = `tokens_out +
+     reasoning_tokens`, ready for a future cost helper to multiply
+     by per-model rates.
 
 ### Done when
 
