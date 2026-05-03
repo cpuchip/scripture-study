@@ -42,6 +42,25 @@ and at least one LLM-using path goes through the bgworker.
      secrets](proposal.md#provider-abstraction-and-secrets)). Even
      the echo stub goes through this so the registry is real from
      day one.
+
+   **✅ Done 2026-05-02 (revised approach).** Lives in
+   [extension/src/lib.rs](extension/src/lib.rs). The honest scope
+   change: we **poll** every 500ms with `wait_latch` rather than
+   `LISTEN`-driven wake-up. Reason: `LISTEN` from a bgworker requires
+   going under pgrx's covers (SPI doesn't expose libpq's NOTIFY
+   channel). Polling-with-completion-NOTIFY matches `pg_vectorize`'s
+   pattern. End-to-end latency observed: avg **138 ms** for a small
+   batch (well under tick), max bound by the 500 ms tick.
+   We still `NOTIFY stewards_done '<id>'` on completion so external
+   listeners can react in real time. tokio + reqwest deferred to
+   step 6/7 when there's an actual HTTP call to make.
+
+   Verified via inverse hypothesis (Agans Rule 9): with
+   `shared_preload_libraries=pg_ai_stewards` removed, an enqueued
+   row stays `pending` forever; restoring it drains the same row in
+   under a tick. SIGTERM exits cleanly
+   (`stewards: bgworker received SIGTERM, exiting` in the log) and
+   the postmaster respawns the worker on container restart.
 3. **Schema for brain replacement**
    - `stewards.brain_entries` (six categories, JSONB props,
      embedding column, HNSW index).

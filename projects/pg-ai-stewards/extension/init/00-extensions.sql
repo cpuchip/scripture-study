@@ -16,3 +16,10 @@ SELECT 'pgvector ' || extversion AS ok FROM pg_extension WHERE extname = 'vector
 SELECT 'age ' || extversion AS ok FROM pg_extension WHERE extname = 'age';
 SELECT 'pg_ai_stewards ' || extversion AS ok FROM pg_extension WHERE extname = 'pg_ai_stewards';
 SELECT 'stewards.version() = ' || stewards.version() AS ok;
+SELECT 'providers loaded:' AS ok, count(*) FROM stewards.providers_loaded();
+
+-- Smoke-test the bgworker round-trip. We enqueue here at init time,
+-- but the worker won't actually run until the postmaster takes over
+-- after init finishes. The next docker logs check should show the
+-- row processed within ~1 second of the database accepting connections.
+SELECT stewards.enqueue('echo', 'echo', '{"hello": "world"}'::jsonb) AS enqueued_id;

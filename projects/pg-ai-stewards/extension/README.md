@@ -4,11 +4,26 @@ The actual Postgres extension. Phase 1 of [the project](../).
 
 ## Status
 
-**Phase 1, step 1 done (2026-05-02):** pgrx scaffold builds, the
-extension loads into PG18 alongside pgvector + Apache AGE, and
-`stewards.version()` returns `0.1.0` end-to-end. Everything else from
-the [phase plan](../phases.md#phase-1--foundation-extension-scaffold--bgworker--brain-port)
-is still ahead.
+**Phase 1, steps 1+2 done (2026-05-02):**
+- pgrx 0.18 extension builds, loads on PG18 alongside pgvector + AGE,
+  `stewards.version()` returns `0.1.0`.
+- Bgworker registered via `shared_preload_libraries`, polls
+  `stewards.work_queue` every 500ms, claims rows with
+  `FOR UPDATE SKIP LOCKED`, runs the stub echo provider, writes
+  results back, `NOTIFY stewards_done '<id>'` on completion. Avg
+  round-trip **~138 ms**. SIGTERM exits cleanly; the postmaster
+  respawns the worker on container restart.
+- Provider registry (LM Studio / Ollama / OpenCode Go) parsed from
+  `STEWARDS_PROVIDER_*` env vars in `_PG_init` (postmaster), inherited
+  by all backends and the worker via fork() copy-on-write.
+  Visible — without secrets — via `stewards.providers_loaded()`.
+- Verified via inverse hypothesis: enqueue with no
+  `shared_preload_libraries` set → row stays `pending`; restore the
+  preload → same row drains in under a tick.
+
+Everything else from the [phase plan](../phases.md#phase-1--foundation-extension-scaffold--bgworker--brain-port)
+(brain schema, migrator, brain CLI driver, real provider calls) is
+still ahead.
 
 ## Layout
 

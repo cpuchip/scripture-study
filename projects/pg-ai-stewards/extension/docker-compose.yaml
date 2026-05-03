@@ -15,6 +15,13 @@ services:
       POSTGRES_DB: ${POSTGRES_DB:-stewards}
     ports:
       - "55433:5432"   # offset from probe's 55432 so both can run side by side
+    # Preload our extension so the bgworker registers in _PG_init.
+    # Without this, `CREATE EXTENSION` still works but the worker
+    # never starts — enqueued rows would sit in 'pending' forever.
+    command:
+      - postgres
+      - -c
+      - shared_preload_libraries=pg_ai_stewards
     extra_hosts:
       # Lets the bgworker reach LM Studio / Ollama on the host on
       # Linux containers (Docker Desktop on Windows/Mac aliases this
