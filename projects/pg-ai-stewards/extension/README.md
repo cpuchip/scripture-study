@@ -4,40 +4,49 @@ The actual Postgres extension. Phase 1 of [the project](../).
 
 ## Status
 
-**Phase 1, steps 1+2+3+6 done (2026-05-02):**
-- pgrx 0.18 extension builds, loads on PG18 alongside pgvector + AGE,
-  `stewards.version()` returns `0.1.0`.
-- Bgworker registered via `shared_preload_libraries`, polls
-  `stewards.work_queue` every 500ms, claims rows with
-  `FOR UPDATE SKIP LOCKED`, dispatches by `kind`, writes results
-  back, `NOTIFY stewards_done '<id>'` on completion. Three-phase
-  pattern (claim/commit, HTTP outside any tx, write/commit) so
-  slow provider calls don't hold row locks. SIGTERM exits cleanly;
-  the postmaster respawns the worker on container restart.
-- Provider registry (LM Studio / Ollama / OpenCode Go) parsed from
-  `STEWARDS_PROVIDER_*` env vars in `_PG_init` (postmaster), inherited
-  by all backends and the worker via fork() copy-on-write.
-  Visible — without secrets — via `stewards.providers_loaded()`.
-- Brain schema: `brain_entries` (single-table + JSONB props),
-  `brain_entry_tags`, `brain_subtasks`, `brain_versions`, `sessions`,
-  `messages`. `vector(768)` embedding columns + HNSW indexes (cosine).
-  `body_tsv` generated tsvector + GIN gives free FTS. Triggers
-  snapshot prior versions on content change (not on embedding
-  writes) and enqueue `kind='embed'` work items on title/body change.
-  Helpers: `brain_upsert(...)`, `brain_search_text(...)`,
-  `brain_search_vec(...)`.
+**Phase 1, steps 1+2+3+6 done (2026-05-02 / 2026-05-03):**
+- pgrx 0.18 extension builds, loads on PG18 alongside pgvector + AGE.
+- Bgworker registered via `shared_preload_libraries`, three-phase
+  dispatch (claim/HTTP/write) so cold model loads don't hold row locks.
+- Provider registry parsed from `STEWARDS_PROVIDER_*` env in
+  `_PG_init`; visible without secrets via `stewards.providers_loaded()`.
+- Brain schema: `brain_entries` + companions, `vector(768)` + HNSW
+  cosine, generated tsvector + GIN, version-snapshot trigger gated
+  on content change, embed-enqueue trigger.
 - **Real LM Studio embeddings landing in the vector column.**
-  `reqwest::blocking` + rustls. Average **610ms** warm round-trip
-  per embed (~3s on first cold model load). `brain_search_vec`
-  returns sensible cosine rankings against real query vectors.
-- Verified via inverse hypothesis on both bgworker presence
-  (no preload → row stays pending) and provider failure (bad
-  provider name → `work_queue.status='error'` + brain row's
-  `embedding_error` stamped; retry after fix clears it).
+  Average **610ms warm**, ~3s cold. `brain_search_vec` ranks
+  correctly against real query vectors.
+
+**Phase 1.5 done (2026-05-03) — harness sketch (detour before step 7):**
+- `stewards.agents`, `stewards.skills`, `stewards.instructions`,
+  `stewards.tool_defs`, `stewards.agent_tool_perms`,
+  `stewards.agent_skill_perms`, `stewards.tool_calls` schema.
+- **Variant-by-glob:** agents/skills/instructions can ship multiple
+  rows per logical family, differentiated by `model_match` glob
+  (`'kimi-*'`, with `'*'` as the catch-all default). Resolver picks
+  the longest matching pattern. Same workflow rules, model-tuned
+  personas.
+- `glob_match(pattern, value)` — sanitized `LIKE` translation,
+  reused by `tool_permission`/`skill_permission` (3-state
+  `allow`/`ask`/`deny`, last-matching wins, default-allow).
+- `compose_system_prompt` / `compose_messages` / `compose_tools` —
+  pure read-only assembly, all `STABLE`.
+- `dry_run_chat(family, model, session, input)` returns the exact
+  JSON body that would POST to `/v1/chat/completions`. The
+  verification target: read the bytes, judge the shape, then build
+  step 7 against a frozen contract.
+- Skill advertising follows the OpenCode pattern (`<available_skills>`
+  XML block inside the `skill` tool description, NOT in the system
+  prompt body) — token-efficient, agent loads on demand.
+- Verified: kimi system prompt is exactly 86 chars longer than
+  gpt-5 system prompt for the same agent family, because the
+  `kimi-*` agent variant adds a "be terse" clause and nothing else
+  varies. Inverse hypothesis: unknown agent family raises cleanly.
 
 Everything else from the [phase plan](../phases.md#phase-1--foundation-extension-scaffold--bgworker--brain-port)
 (brain CLI driver in step 5, OpenCode Go chat in step 7, Go
-migrator in step 4) is still ahead.
+migrator in step 4) is still ahead. Step 7 is now smaller because
+the composition shape is frozen.
 
 ## Layout
 

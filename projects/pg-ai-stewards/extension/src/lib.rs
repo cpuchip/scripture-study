@@ -392,6 +392,523 @@ extension_sql!(
 );
 
 // ---------------------------------------------------------------------------
+// Phase 1.5: Harness sketch — agents, skills, instructions, tool_defs.
+//
+// Goal: prove the prompt-assembly + tools[] round-trip BEFORE step 7
+// makes a real chat call. `dry_run_chat(family, model, session, input)`
+// returns the exact JSON body that would go to /v1/chat/completions
+// so we can read it and judge the shape before sending bytes.
+//
+// Variant-by-glob design: agents/skills/instructions can have multiple
+// rows for the same logical "family", differentiated by `model_match`
+// (a glob like 'kimi-*'). The catch-all default uses '*', which
+// glob-matches everything; resolution picks the LONGEST matching
+// pattern, so '*' (length 1) is always the last-resort fallback and
+// any specific glob wins over it. Using '*' instead of NULL keeps the
+// PK clean and ON CONFLICT honest (PG treats NULL keys as distinct).
+// This lets us tune prompts per-model without duplicating workflow
+// rules. See `glob_match` and `resolve_*` below.
+//
+// Tools deliberately do NOT have variants in v1 — a tool's description
+// is structural ("what does this do"), not stylistic ("how do I phrase
+// this for Qwen"). Stylistic per-model guidance lives in instructions.
+// ---------------------------------------------------------------------------
+
+extension_sql!(
+    r#"
+    -- ============================================================
+    -- glob matcher — used by all resolve_* and *_permission helpers.
+    --
+    -- Converts a shell-style glob ('kimi-*', 'brain_*') to a
+    -- Postgres LIKE pattern. We escape `\`, `%`, `_` first so
+    -- they match literally, then turn `*` into `%`. `?` (single-char)
+    -- is intentionally NOT supported — model names don't need it
+    -- and supporting it would require escaping `_` differently.
+    -- ============================================================
+
+    CREATE FUNCTION stewards.glob_match(p_pattern text, p_value text)
+    RETURNS bool
+    LANGUAGE sql IMMUTABLE AS $func$
+        SELECT p_value LIKE
+            replace(
+                replace(
+                    replace(
+                        replace(p_pattern, '\', '\\'),
+                        '%', '\%'),
+                    '_', '\_'),
+                '*', '%')
+    $func$;
+
+    -- ============================================================
+    -- Agents — one row per (family, model_match). NULL model_match
+    -- is the catch-all default; non-NULL globs win when they match.
+    -- ============================================================
+
+    CREATE TABLE stewards.agents (
+        family       text NOT NULL,
+        model_match  text NOT NULL DEFAULT '*',    -- glob; '*' = default
+        description  text NOT NULL,
+        mode         text NOT NULL DEFAULT 'primary'
+                     CHECK (mode IN ('primary','subagent','all')),
+        model_pin    text,                         -- override session model
+        prompt       text NOT NULL,                -- agent persona/role
+        temperature  real,
+        top_p        real,
+        steps        int,                          -- max agentic iterations
+        active       bool NOT NULL DEFAULT true,
+        created_at   timestamptz NOT NULL DEFAULT now(),
+        PRIMARY KEY (family, model_match)
+    );
+
+    -- ============================================================
+    -- Skills — same variant pattern as agents.
+    -- ============================================================
+
+    CREATE TABLE stewards.skills (
+        family       text NOT NULL
+                     CHECK (family ~ '^[a-z0-9]+(-[a-z0-9]+)*$'),
+        model_match  text NOT NULL DEFAULT '*',
+        description  text NOT NULL
+                     CHECK (length(description) BETWEEN 1 AND 1024),
+        body         text NOT NULL,
+        license      text,
+        metadata     jsonb NOT NULL DEFAULT '{}',
+        active       bool NOT NULL DEFAULT true,
+        created_at   timestamptz NOT NULL DEFAULT now(),
+        PRIMARY KEY (family, model_match)
+    );
+
+    -- ============================================================
+    -- Instructions — flat-merged into the system prompt.
+    -- scope = 'global' | 'agent:<family>' | 'session:<id>'
+    -- ord = sort order within scope (lower first)
+    -- ============================================================
+
+    CREATE TABLE stewards.instructions (
+        id            bigserial PRIMARY KEY,
+        family        text NOT NULL,                  -- logical name for variant grouping
+        model_match   text NOT NULL DEFAULT '*',
+        scope         text NOT NULL,
+        body          text NOT NULL,
+        ord           int  NOT NULL DEFAULT 100,
+        active        bool NOT NULL DEFAULT true,
+        source_label  text,                            -- e.g. 'project:AGENTS.md'
+        created_at    timestamptz NOT NULL DEFAULT now(),
+        UNIQUE (family, model_match, scope)
+    );
+    CREATE INDEX instructions_scope_idx ON stewards.instructions (scope, ord);
+
+    -- ============================================================
+    -- Tool defs — what tools an agent can see. No variants in v1.
+    -- name follows '<prefix>_<rest>' convention (brain_*, gospel_*).
+    -- execute_target is jsonb describing dispatch. v1 supports:
+    --   {"kind":"sql_fn","schema":"stewards","name":"brain_search_text"}
+    -- Future kinds: 'http', 'subagent', 'mcp'.
+    -- ============================================================
+
+    CREATE TABLE stewards.tool_defs (
+        name            text PRIMARY KEY
+                        CHECK (name ~ '^[a-z][a-z0-9_]*$'),
+        description     text NOT NULL,
+        args_schema     jsonb NOT NULL,        -- JSON Schema for params
+        execute_target  jsonb NOT NULL,
+        active          bool NOT NULL DEFAULT true,
+        created_at      timestamptz NOT NULL DEFAULT now()
+    );
+
+    -- ============================================================
+    -- Per-agent permissions for tools and skills.
+    -- Glob-matched against tool name / skill family.
+    -- Last (longest) matching pattern wins. Default: 'allow' if
+    -- no rule exists (mirrors opencode's default-allow behavior).
+    -- ============================================================
+
+    CREATE TABLE stewards.agent_tool_perms (
+        agent_family  text NOT NULL,
+        tool_pattern  text NOT NULL,
+        action        text NOT NULL CHECK (action IN ('allow','ask','deny')),
+        PRIMARY KEY (agent_family, tool_pattern)
+    );
+
+    CREATE TABLE stewards.agent_skill_perms (
+        agent_family  text NOT NULL,
+        skill_pattern text NOT NULL,
+        action        text NOT NULL CHECK (action IN ('allow','ask','deny')),
+        PRIMARY KEY (agent_family, skill_pattern)
+    );
+
+    -- ============================================================
+    -- Tool calls — one row per tool invocation by an agent. Empty
+    -- in v1 (no agent loop yet); the table exists so step 7+ can
+    -- write to it without a migration.
+    -- ============================================================
+
+    CREATE TABLE stewards.tool_calls (
+        id            bigserial PRIMARY KEY,
+        message_id    bigint REFERENCES stewards.messages(id) ON DELETE CASCADE,
+        tool          text NOT NULL,
+        args          jsonb NOT NULL,
+        result        jsonb,
+        status        text NOT NULL DEFAULT 'pending'
+                      CHECK (status IN ('pending','running','done','error')),
+        error         text,
+        started_at    timestamptz,
+        ended_at      timestamptz
+    );
+    CREATE INDEX tool_calls_message_idx ON stewards.tool_calls (message_id);
+
+    -- ============================================================
+    -- Resolution — pick the most-specific row matching this model.
+    -- Longest non-NULL pattern wins; NULL is the catch-all fallback.
+    -- ============================================================
+
+    CREATE FUNCTION stewards.resolve_agent(p_family text, p_model text)
+    RETURNS stewards.agents
+    LANGUAGE sql STABLE AS $func$
+        SELECT *
+        FROM stewards.agents
+        WHERE family = p_family
+          AND active
+          AND stewards.glob_match(model_match, p_model)
+        ORDER BY length(model_match) DESC, model_match
+        LIMIT 1
+    $func$;
+
+    CREATE FUNCTION stewards.resolve_skill(p_family text, p_model text)
+    RETURNS stewards.skills
+    LANGUAGE sql STABLE AS $func$
+        SELECT *
+        FROM stewards.skills
+        WHERE family = p_family
+          AND active
+          AND stewards.glob_match(model_match, p_model)
+        ORDER BY length(model_match) DESC, model_match
+        LIMIT 1
+    $func$;
+
+    -- Permission lookup — returns 'allow'|'ask'|'deny'. Default 'allow'.
+    CREATE FUNCTION stewards.tool_permission(p_agent text, p_tool text)
+    RETURNS text
+    LANGUAGE sql STABLE AS $func$
+        SELECT coalesce(
+            (SELECT action FROM stewards.agent_tool_perms
+             WHERE agent_family = p_agent
+               AND stewards.glob_match(tool_pattern, p_tool)
+             ORDER BY length(tool_pattern) DESC LIMIT 1),
+            'allow')
+    $func$;
+
+    CREATE FUNCTION stewards.skill_permission(p_agent text, p_skill text)
+    RETURNS text
+    LANGUAGE sql STABLE AS $func$
+        SELECT coalesce(
+            (SELECT action FROM stewards.agent_skill_perms
+             WHERE agent_family = p_agent
+               AND stewards.glob_match(skill_pattern, p_skill)
+             ORDER BY length(skill_pattern) DESC LIMIT 1),
+            'allow')
+    $func$;
+
+    -- ============================================================
+    -- Composition — these are the functions step 7 will reuse.
+    -- All STABLE / read-only. dry_run_chat is the verification target.
+    -- ============================================================
+
+    -- compose_system_prompt: agent.prompt + matching instructions
+    -- + (if 'skill' tool permitted) <available_skills> XML block.
+    CREATE FUNCTION stewards.compose_system_prompt(
+        p_agent_family text, p_model text, p_session_id text
+    ) RETURNS text
+    LANGUAGE plpgsql STABLE AS $func$
+    DECLARE
+        v_agent stewards.agents;
+        v_prompt text := '';
+        v_instructions text;
+        v_skills_block text;
+    BEGIN
+        v_agent := stewards.resolve_agent(p_agent_family, p_model);
+        IF v_agent.family IS NULL THEN
+            RAISE EXCEPTION
+                'no agent variant resolved: family=% model=%',
+                p_agent_family, p_model;
+        END IF;
+        v_prompt := v_agent.prompt;
+
+        -- Append global + agent-scoped instructions (one row per
+        -- family, picking the best model match per family).
+        SELECT string_agg(body, E'\n\n' ORDER BY ord, family)
+        INTO v_instructions
+        FROM (
+            SELECT DISTINCT ON (family)
+                family, body, ord
+            FROM stewards.instructions
+            WHERE active
+              AND scope IN ('global', 'agent:' || p_agent_family)
+              AND stewards.glob_match(model_match, p_model)
+            ORDER BY family, length(model_match) DESC, model_match
+        ) t;
+        IF v_instructions IS NOT NULL THEN
+            v_prompt := v_prompt || E'\n\n' || v_instructions;
+        END IF;
+
+        -- Append <available_skills> if 'skill' tool isn't denied.
+        -- Per opencode pattern: skills are advertised here, loaded
+        -- on-demand by the agent calling skill({name: 'foo'}).
+        IF stewards.tool_permission(p_agent_family, 'skill') <> 'deny' THEN
+            SELECT E'\n\n<available_skills>\n' || string_agg(
+                '  <skill>' || E'\n'
+                || '    <name>' || family || '</name>' || E'\n'
+                || '    <description>' || description || '</description>' || E'\n'
+                || '  </skill>',
+                E'\n'
+                ORDER BY family
+            ) || E'\n</available_skills>'
+            INTO v_skills_block
+            FROM (
+                SELECT DISTINCT ON (family) family, description
+                FROM stewards.skills
+                WHERE active
+                  AND stewards.glob_match(model_match, p_model)
+                  AND stewards.skill_permission(p_agent_family, family) <> 'deny'
+                ORDER BY family, length(model_match) DESC, model_match
+            ) s;
+            IF v_skills_block IS NOT NULL THEN
+                v_prompt := v_prompt || v_skills_block;
+            END IF;
+        END IF;
+
+        RETURN v_prompt;
+    END;
+    $func$;
+
+    -- compose_messages: [system, ...history, ?user]
+    CREATE FUNCTION stewards.compose_messages(
+        p_agent_family text,
+        p_model text,
+        p_session_id text,
+        p_user_input text DEFAULT NULL
+    ) RETURNS jsonb
+    LANGUAGE plpgsql STABLE AS $func$
+    DECLARE
+        v_system  text;
+        v_history jsonb;
+        v_result  jsonb;
+    BEGIN
+        v_system := stewards.compose_system_prompt(p_agent_family, p_model, p_session_id);
+
+        SELECT coalesce(jsonb_agg(
+            jsonb_build_object('role', m.role, 'content', m.content)
+            ORDER BY m.created_at, m.id
+        ), '[]'::jsonb)
+        INTO v_history
+        FROM stewards.messages m
+        WHERE m.session_id = p_session_id;
+
+        v_result := jsonb_build_array(
+            jsonb_build_object('role', 'system', 'content', v_system)
+        ) || v_history;
+
+        IF p_user_input IS NOT NULL THEN
+            v_result := v_result || jsonb_build_array(
+                jsonb_build_object('role', 'user', 'content', p_user_input)
+            );
+        END IF;
+
+        RETURN v_result;
+    END;
+    $func$;
+
+    -- compose_tools: OpenAI-shape tools[] array, filtered by perms.
+    -- 'ask' tools are included (the loop will handle prompting); only
+    -- 'deny' is excluded.
+    CREATE FUNCTION stewards.compose_tools(p_agent_family text)
+    RETURNS jsonb
+    LANGUAGE sql STABLE AS $func$
+        SELECT coalesce(jsonb_agg(
+            jsonb_build_object(
+                'type', 'function',
+                'function', jsonb_build_object(
+                    'name', t.name,
+                    'description', t.description,
+                    'parameters', t.args_schema
+                )
+            )
+            ORDER BY t.name
+        ), '[]'::jsonb)
+        FROM stewards.tool_defs t
+        WHERE t.active
+          AND stewards.tool_permission(p_agent_family, t.name) <> 'deny'
+    $func$;
+
+    -- dry_run_chat: returns the EXACT POST body /v1/chat/completions
+    -- would receive — but does NOT send. The verification target.
+    CREATE FUNCTION stewards.dry_run_chat(
+        p_agent_family text,
+        p_model text,
+        p_session_id text,
+        p_user_input text DEFAULT NULL
+    ) RETURNS jsonb
+    LANGUAGE plpgsql STABLE AS $func$
+    DECLARE
+        v_agent stewards.agents;
+        v_body  jsonb;
+    BEGIN
+        v_agent := stewards.resolve_agent(p_agent_family, p_model);
+        IF v_agent.family IS NULL THEN
+            RAISE EXCEPTION
+                'no agent variant resolved: family=% model=%',
+                p_agent_family, p_model;
+        END IF;
+
+        v_body := jsonb_build_object(
+            'model', coalesce(v_agent.model_pin, p_model),
+            'messages', stewards.compose_messages(
+                p_agent_family, p_model, p_session_id, p_user_input),
+            'tools', stewards.compose_tools(p_agent_family)
+        );
+        IF v_agent.temperature IS NOT NULL THEN
+            v_body := v_body || jsonb_build_object('temperature', v_agent.temperature);
+        END IF;
+        IF v_agent.top_p IS NOT NULL THEN
+            v_body := v_body || jsonb_build_object('top_p', v_agent.top_p);
+        END IF;
+
+        RETURN v_body || jsonb_build_object(
+            '_meta', jsonb_build_object(
+                'agent_family', p_agent_family,
+                'agent_variant_match', v_agent.model_match,
+                'requested_model', p_model,
+                'pinned_model', v_agent.model_pin,
+                'session_id', p_session_id
+            )
+        );
+    END;
+    $func$;
+    "#,
+    name = "create_harness_schema",
+    requires = ["create_brain_schema"],
+);
+
+// ---------------------------------------------------------------------------
+// Phase 1.5 seed data — minimum to exercise dry_run_chat against
+// real-shaped data. Idempotent; safe to re-run.
+// ---------------------------------------------------------------------------
+
+extension_sql!(
+    r#"
+    -- One agent family with a default + a kimi-specific variant
+    -- so the resolver actually has to pick. Both share workflow
+    -- rules (which live in instructions); only the persona differs.
+    INSERT INTO stewards.agents
+        (family, model_match, description, mode, prompt, temperature, top_p, steps)
+    VALUES
+        (
+            'stewards-explore', '*',
+            'Read-only researcher over the brain and gospel corpus',
+            'primary',
+            E'You are a careful researcher with access to a Postgres-backed brain of notes and a corpus of scripture.\n\nYour job: when asked a question, search before answering. Cite the brain entry IDs (or scripture references) you actually consulted. If the brain has no entry on a topic, say so plainly — do not invent IDs.',
+            0.2, NULL, 8
+        ),
+        (
+            'stewards-explore', 'kimi-*',
+            'Read-only researcher (Kimi tuning)',
+            'primary',
+            E'You are a careful researcher with access to a Postgres-backed brain of notes and a corpus of scripture.\n\nYour job: when asked a question, search before answering. Cite the brain entry IDs (or scripture references) you actually consulted. If the brain has no entry on a topic, say so plainly — do not invent IDs.\n\nKimi-specific: be terse. Prefer 2-3 sentences over paragraphs. Skip throat-clearing.',
+            0.2, NULL, 8
+        )
+    ON CONFLICT (family, model_match) DO NOTHING;
+
+    -- Workflow rules shared across model variants.
+    INSERT INTO stewards.instructions
+        (family, model_match, scope, body, ord, source_label)
+    VALUES
+        (
+            'honesty', '*', 'global',
+            E'## Honesty\n- Read before quoting. Do not paraphrase from memory.\n- If a search returns no results, report that. Do not fabricate.',
+            10, 'seed:phase-1.5'
+        ),
+        (
+            'search-budget', '*', 'agent:stewards-explore',
+            E'## Search budget\n- Run at most 3 searches before responding. If still uncertain after 3, say what you searched and ask the user to narrow the question.',
+            20, 'seed:phase-1.5'
+        )
+    ON CONFLICT (family, model_match, scope) DO NOTHING;
+
+    -- Two skills lifted in spirit from .github/skills/. Real bodies
+    -- would be longer; these prove the shape, not the corpus.
+    INSERT INTO stewards.skills
+        (family, model_match, description, body, license, metadata)
+    VALUES
+        (
+            'source-verification', '*',
+            'Verify scripture and talk quotes against actual source files before quoting',
+            E'# Source Verification\n\nBefore using quotation marks around any scripture or talk text, you must have read the actual source row in this session. Training-data memory confabulates.\n\nIf you have not verified, paraphrase using indirect speech ("Paul teaches that...") rather than direct quotation.',
+            'MIT', '{"audience":"researcher"}'::jsonb
+        ),
+        (
+            'scripture-linking', '*',
+            'Format scripture and conference talk references as workspace-relative links',
+            E'# Scripture Linking\n\nScripture references should be cited by their canonical short form (e.g., "Moroni 7:45-48") and accompanied by the brain entry ID if one exists.',
+            'MIT', '{"audience":"researcher"}'::jsonb
+        )
+    ON CONFLICT (family, model_match) DO NOTHING;
+
+    -- Tool defs the agent will actually see. Two for v1: a real
+    -- search tool and the special skill-loader. brain_search_vec
+    -- is intentionally omitted because the agent can't construct
+    -- a vector input directly; a future brain_search_semantic
+    -- (text-in, embed-via-worker, vec-search) will replace it.
+    INSERT INTO stewards.tool_defs
+        (name, description, args_schema, execute_target)
+    VALUES
+        (
+            'brain_search_text',
+            'Full-text search over brain entries (notes, ideas, study fragments). Returns ranked matches with id, title, category, and rank score.',
+            $j${
+                "type": "object",
+                "properties": {
+                    "query":    {"type": "string", "description": "Search terms (plain language)."},
+                    "category": {"type": "string", "description": "Optional category filter.",
+                                 "enum": ["inbox","study","journal","action","idea","person","project"]},
+                    "limit":    {"type": "integer", "description": "Max results (default 20).", "minimum": 1, "maximum": 100}
+                },
+                "required": ["query"]
+            }$j$::jsonb,
+            $j${"kind":"sql_fn","schema":"stewards","name":"brain_search_text"}$j$::jsonb
+        ),
+        (
+            'skill',
+            'Load the body of a named skill from the <available_skills> list and return its content into the conversation. Use when a skill''s description matches the task at hand.',
+            $j${
+                "type": "object",
+                "properties": {
+                    "name": {"type": "string", "description": "The skill family name (e.g., source-verification)."}
+                },
+                "required": ["name"]
+            }$j$::jsonb,
+            $j${"kind":"builtin","name":"load_skill"}$j$::jsonb
+        )
+    ON CONFLICT (name) DO NOTHING;
+
+    -- Permissions for stewards-explore: deny anything not brain_*
+    -- or skill, allow those explicitly. Demonstrates the glob model.
+    INSERT INTO stewards.agent_tool_perms (agent_family, tool_pattern, action)
+    VALUES
+        ('stewards-explore', '*',          'deny'),
+        ('stewards-explore', 'brain_*',    'allow'),
+        ('stewards-explore', 'skill',      'allow')
+    ON CONFLICT (agent_family, tool_pattern) DO NOTHING;
+
+    INSERT INTO stewards.agent_skill_perms (agent_family, skill_pattern, action)
+    VALUES
+        ('stewards-explore', '*', 'allow')
+    ON CONFLICT (agent_family, skill_pattern) DO NOTHING;
+    "#,
+    name = "seed_harness",
+    requires = ["create_harness_schema"],
+);
+
+// ---------------------------------------------------------------------------
 // Diagnostic SQL functions
 // ---------------------------------------------------------------------------
 

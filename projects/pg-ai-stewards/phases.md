@@ -193,6 +193,144 @@ and at least one LLM-using path goes through the bgworker.
 - Migration from SQLite + chromem loses data we can't reconstruct.
   Probability: low if we keep SQLite as read-only fallback.
 
+## Phase 1.5 — Harness sketch (detour) ✅ done 2026-05-03
+
+**Why a detour:** after step 6 landed real LM Studio embeddings,
+Michael flagged the obvious gap: copilot-sdk had been carrying the
+agentic plumbing (prompt assembly, tool registry, skill dispatch,
+MCP server lifecycle) silently. Step 7 ("OpenCode Go chat through
+the bgworker") would have built another single-shot provider call
+without answering: when the agent loop arrives, where do the
+`messages[]` come from? what's in the `tools[]`? how do skills
+show up? Better to sketch the harness first, look at the JSON we'd
+send, and let the schema critique itself — *before* committing to a
+chat-shaped data path that might want different bones.
+
+**What it builds:** a minimum read-only harness in pure SQL, no HTTP.
+Deliverable is `stewards.dry_run_chat(agent_family, model, session,
+input)` returning the exact JSON body that would be POSTed to
+`/v1/chat/completions`. We *look* at the body and judge the shape
+before step 7 makes it real.
+
+**Inputs that shaped the design** (after reading [opencode source](https://github.com/anomalyco/opencode/) and docs):
+- Skills are NOT injected into the system prompt by default. They're
+  advertised via an `<available_skills>` XML block inside the `skill`
+  tool's description; the agent calls `skill({name})` to load a body.
+  Token-efficient. We adopt this.
+- Agent IS its config. `(name, mode, prompt, model_pin?, temperature,
+  top_p, steps, permissions)`. Subagent invocation is just another
+  tool call. Built-ins: `build`/`plan` (primary), `general`/`explore`
+  (subagent), three hidden housekeeping (`compaction`/`title`/
+  `summary`).
+- Tool name = `<prefix>_<name>` is universal. MCP server prefix or
+  filename prefix. Permissions glob on the prefix (`brain_*: allow`).
+- Permissions are 3-state (`allow`/`ask`/`deny`), glob-matched, last
+  matching rule wins. Per-agent overrides global.
+
+**Variant-by-glob (Michael's contribution):** Different models reason
+about the same instructions differently. Kimi over-explains; GPT-5
+ignores temperature; Qwen wants its own defaults. We add a
+`model_match` column to `agents`, `skills`, and `instructions` —
+glob like `kimi-*`, with `'*'` as the catch-all default. Resolver
+picks the longest matching pattern. Tools deliberately *don't* get
+variants (a tool's description is structural, not stylistic).
+
+### Schema (in [extension/src/lib.rs](extension/src/lib.rs))
+
+- `stewards.agents` — PK `(family, model_match)`, persona prompt,
+  temperature/top_p/steps. NULL eliminated by using `'*'` sentinel
+  so the PK works and `ON CONFLICT` is honest.
+- `stewards.skills` — same shape. Family must match
+  `^[a-z0-9]+(-[a-z0-9]+)*$` (opencode rule). Description
+  1-1024 chars (opencode rule).
+- `stewards.instructions` — `(family, model_match, scope)` UNIQUE,
+  `scope` is `'global' | 'agent:<family>' | 'session:<id>'`,
+  `ord` for sort order.
+- `stewards.tool_defs` — `name` PK with `^[a-z][a-z0-9_]*$` check,
+  `args_schema` jsonb (JSON Schema), `execute_target` jsonb
+  describing dispatch (`{kind:'sql_fn'|'http'|'subagent', ...}`).
+  No model variants in v1.
+- `stewards.agent_tool_perms` / `stewards.agent_skill_perms` —
+  glob patterns + 3-state action.
+- `stewards.tool_calls` — empty in v1, exists so step 7+ can write
+  without a migration.
+
+### Functions
+
+- `glob_match(pattern, value)` — escape `\`, `%`, `_` then turn `*`
+  into `%`, run as `LIKE`. Doesn't support `?` (single-char) — model
+  names don't need it.
+- `resolve_agent(family, model)` / `resolve_skill(family, model)` —
+  longest matching `model_match` wins; `'*'` is length 1 so any
+  specific glob beats it.
+- `tool_permission(agent, tool)` / `skill_permission(agent, skill)` —
+  longest matching pattern wins; default `'allow'` if no rule.
+- `compose_system_prompt(family, model, session)` — agent persona +
+  matching instructions (deduped per family by best variant) +
+  `<available_skills>` XML if `skill` tool isn't denied.
+- `compose_messages(family, model, session, user_input?)` —
+  `[system, ...history, ?user]` as jsonb.
+- `compose_tools(family)` — OpenAI-shape `tools[]` filtered by
+  permissions (only `deny` excluded; `ask` included for the loop
+  to handle).
+- `dry_run_chat(...)` — the verification target. Returns full POST
+  body plus `_meta` showing which variant resolved.
+
+### Seed data
+
+- One agent family `stewards-explore` with two variants: default
+  (`'*'`) and `'kimi-*'` (with extra "be terse" clause).
+- Two instructions families: `honesty` (global) and `search-budget`
+  (agent-scoped). Both `'*'` (model-agnostic for v1).
+- Two skills modeled on real `.github/skills/` entries:
+  `source-verification` and `scripture-linking`.
+- Two tool defs: `brain_search_text` (real, dispatches to existing
+  `stewards.brain_search_text` SQL fn) and `skill` (special loader).
+- Permissions for `stewards-explore`: `*: deny`, `brain_*: allow`,
+  `skill: allow`. Explicitly proves the deny-by-default-then-whitelist
+  pattern.
+
+### Verification (the actual point)
+
+```
+dry_run_chat('stewards-explore', 'kimi-k2.6', 'dry-run-1', 'and what about hope?')
+dry_run_chat('stewards-explore', 'gpt-5.1',   'dry-run-1', 'and what about hope?')
+```
+
+- Kimi: `_meta.agent_variant_match = 'kimi-*'`, system prompt 1049 chars.
+- GPT-5: `_meta.agent_variant_match = '*'`,    system prompt 963 chars.
+- 86-char delta = the "be terse" paragraph, present only on Kimi.
+- Same instructions block, same `<available_skills>`, same tools[],
+  same temperature. Persona is the only delta.
+- `tools[]` has 2 entries with canonical OpenAI shape
+  (`{type, function: {name, description, parameters}}`); JSON Schema
+  intact (enum, min/max).
+- `messages[]` = `[system, user, assistant, user]` (system + 2-turn
+  history + new user input).
+- Inverse hypothesis (Agans Rule 9): `dry_run_chat('does-not-exist',
+  ...)` raises `no agent variant resolved: family=does-not-exist
+  model=gpt-5.1` cleanly.
+
+### What this unlocks for step 7
+
+Step 7 now becomes: "call `dry_run_chat()` to get the body, POST it
+to `<provider>/chat/completions`, parse the response, append the
+assistant message to `stewards.messages`, write `tool_calls` rows
+for any `tool_calls[]` in the response." The agent loop is
+then one wrapper around step 7 plus the dispatcher for
+`tool_defs.execute_target`. The composition concerns are settled.
+
+### What it deliberately doesn't build
+
+- No agent loop. Single-turn dry run only.
+- No real tool execution. `execute_target` is data; nothing reads it yet.
+- No real MCP transport. "MCP equivalent" in v1 is the
+  `execute_target: {kind:'sql_fn', name:...}` shape. Real MCP client
+  comes later when we want to consume gospel-engine's MCP from
+  inside stewards.
+- No `steps` enforcement. Column exists; the loop that respects it doesn't.
+- No session-scoped instructions. Schema supports it; nothing writes them yet.
+
 ## Phase 2 — Studies + AGE: citations as edges
 
 **Goal:** make studies first-class rows that link to canonical
