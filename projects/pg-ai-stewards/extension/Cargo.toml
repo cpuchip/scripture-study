@@ -16,6 +16,11 @@ pg_test = []
 pgrx = "=0.18.0"
 serde = { version = "1", features = ["derive"] }
 serde_json = "1"
+# Blocking HTTP client for the bgworker. The worker is already a sync
+# loop (one item per tick), so we don't need a tokio runtime — blocking
+# reqwest under the covers spins its own. rustls-tls avoids the need
+# for libssl-dev in the runtime image.
+reqwest = { version = "0.12", default-features = false, features = ["blocking", "json", "rustls-tls"] }
 
 [dev-dependencies]
 pgrx-tests = "=0.18.0"

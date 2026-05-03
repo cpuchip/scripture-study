@@ -210,17 +210,25 @@ extension_sql!(
     -- ============================================================
 
     -- Bump updated_at AND snapshot the previous version on UPDATE.
+    -- Only snapshots when the *content* (title, category, body, props)
+    -- actually changed. Embedding writes from the bgworker would
+    -- otherwise create one junk brain_versions row per embed.
     CREATE FUNCTION stewards.touch_brain_entry() RETURNS trigger
     LANGUAGE plpgsql AS $func$
     BEGIN
         IF TG_OP = 'UPDATE' THEN
-            -- Snapshot the OLD row before changes land.
-            INSERT INTO stewards.brain_versions
-                (entry_id, title, category, body, props, changed_by)
-            VALUES
-                (OLD.id, OLD.title, OLD.category, OLD.body, OLD.props,
-                 coalesce(current_setting('stewards.actor', true), 'system'));
-            NEW.updated_at := now();
+            IF NEW.title    IS DISTINCT FROM OLD.title
+               OR NEW.category IS DISTINCT FROM OLD.category
+               OR NEW.body     IS DISTINCT FROM OLD.body
+               OR NEW.props    IS DISTINCT FROM OLD.props
+            THEN
+                INSERT INTO stewards.brain_versions
+                    (entry_id, title, category, body, props, changed_by)
+                VALUES
+                    (OLD.id, OLD.title, OLD.category, OLD.body, OLD.props,
+                     coalesce(current_setting('stewards.actor', true), 'system'));
+                NEW.updated_at := now();
+            END IF;
         END IF;
         RETURN NEW;
     END;
@@ -231,13 +239,13 @@ extension_sql!(
         FOR EACH ROW EXECUTE FUNCTION stewards.touch_brain_entry();
 
     -- Enqueue an embedding job whenever title/body changes (or row
-    -- is inserted). The bgworker will pick it up; in step 3 the
-    -- echo stub still runs, so embedding stays NULL until step 6
-    -- swaps the stub for a real Ollama HTTP call.
+    -- is inserted). The bgworker (step 6) calls LM Studio's
+    -- /v1/embeddings with model nomic-embed-text-v1.5 and writes
+    -- the resulting 768-dim vector back to NEW.embedding.
     --
-    -- Provider name 'ollama' resolves to the registry entry loaded
-    -- from STEWARDS_PROVIDER_OLLAMA_*. Match gospel-engine-v2's
-    -- model: nomic-embed-text v1.5, 768 dimensions.
+    -- Provider name 'lm_studio' resolves to the registry entry
+    -- loaded from STEWARDS_PROVIDER_LM_STUDIO_*. Model name matches
+    -- gospel-engine-v2 exactly so vectors are comparable across DBs.
     CREATE FUNCTION stewards.enqueue_brain_embed() RETURNS trigger
     LANGUAGE plpgsql AS $func$
     BEGIN
@@ -248,12 +256,12 @@ extension_sql!(
             INSERT INTO stewards.work_queue (kind, provider, payload)
             VALUES (
                 'embed',
-                'ollama',
+                'lm_studio',
                 jsonb_build_object(
                     'target_table', 'brain_entries',
                     'target_id',    NEW.id,
                     'text',         coalesce(NEW.title, '') || E'\n\n' || coalesce(NEW.body, ''),
-                    'model',        'nomic-embed-text:v1.5',
+                    'model',        'nomic-embed-text-v1.5',
                     'dimensions',   768
                 )
             );
@@ -629,84 +637,320 @@ pub extern "C-unwind" fn stewards_dispatcher_main(_arg: pg_sys::Datum) {
 /// Try to claim and process exactly one pending row. Returns true if
 /// a row was processed (caller may want to immediately try again),
 /// false if the queue was empty.
+///
+/// The work happens in three phases so we don't hold a row lock
+/// across a slow HTTP call (LM Studio first-request model load can
+/// be 30s+):
+///
+///   1. Tx A: claim oldest pending row, mark `in_progress`. Commit.
+///   2. No tx: dispatch by kind, possibly making HTTP calls.
+///   3. Tx B: write result or error, `NOTIFY stewards_done`. Commit.
 fn process_one_pending() -> bool {
-    let outcome: Result<bool, pgrx::spi::Error> = BackgroundWorker::transaction(|| {
+    // ----- Phase 1: claim -----
+    let claim: Result<Option<(i64, String, String, serde_json::Value)>, pgrx::spi::Error> =
+        BackgroundWorker::transaction(|| {
+            Spi::connect_mut(|client| {
+                let claimed = client.update(
+                    "WITH next AS ( \
+                         SELECT id FROM stewards.work_queue \
+                         WHERE status = 'pending' \
+                         ORDER BY created_at \
+                         FOR UPDATE SKIP LOCKED \
+                         LIMIT 1 \
+                     ) \
+                     UPDATE stewards.work_queue q \
+                     SET status = 'in_progress', claimed_at = now() \
+                     FROM next \
+                     WHERE q.id = next.id \
+                     RETURNING q.id, q.kind, q.provider, q.payload",
+                    Some(1),
+                    &[],
+                )?;
+
+                let mut iter = claimed.into_iter();
+                let Some(row) = iter.next() else {
+                    return Ok(None);
+                };
+
+                let id: i64 = row.get(1)?.expect("id non-null");
+                let kind: String = row.get(2)?.expect("kind non-null");
+                let provider: String = row.get(3)?.expect("provider non-null");
+                let payload: pgrx::JsonB = row.get(4)?.expect("payload non-null");
+                Ok(Some((id, kind, provider, payload.0)))
+            })
+        });
+
+    let Some((id, kind, provider, payload)) = (match claim {
+        Ok(opt) => opt,
+        Err(e) => {
+            pgrx::log!("stewards: claim phase errored: {}", e);
+            return false;
+        }
+    }) else {
+        return false;
+    };
+
+    pgrx::log!(
+        "stewards: claimed work_item id={} kind={} provider={}",
+        id,
+        kind,
+        provider
+    );
+
+    // ----- Phase 2: dispatch (no tx; HTTP allowed) -----
+    let outcome = dispatch(&kind, &provider, &payload);
+
+    // ----- Phase 3: write result -----
+    let write: Result<(), pgrx::spi::Error> = BackgroundWorker::transaction(|| {
         Spi::connect_mut(|client| {
-            // Claim oldest pending row. SKIP LOCKED makes this safe
-            // if multiple worker processes ever exist.
-            let claimed = client.update(
-                "WITH next AS ( \
-                     SELECT id FROM stewards.work_queue \
-                     WHERE status = 'pending' \
-                     ORDER BY created_at \
-                     FOR UPDATE SKIP LOCKED \
-                     LIMIT 1 \
-                 ) \
-                 UPDATE stewards.work_queue q \
-                 SET status = 'in_progress', claimed_at = now() \
-                 FROM next \
-                 WHERE q.id = next.id \
-                 RETURNING q.id, q.kind, q.provider, q.payload",
-                Some(1),
-                &[],
-            )?;
+            match &outcome {
+                Ok(WorkOutcome::Embedded {
+                    target_table,
+                    target_id,
+                    model,
+                    embedding_text,
+                    dimensions,
+                }) => {
+                    // Write vector back to the target row. We hard-code
+                    // brain_entries for now; messages comes when chat
+                    // step lands. The cast to vector(N) validates
+                    // dimensions; mismatch raises a Postgres error
+                    // that the outer match converts to row error.
+                    let update_target = format!(
+                        "UPDATE stewards.{} \
+                         SET embedding = $2::vector({}), \
+                             embedded_at = now(), \
+                             embedded_model = $3, \
+                             embedding_error = NULL \
+                         WHERE id = $1",
+                        target_table, dimensions
+                    );
+                    client.update(
+                        &update_target,
+                        None,
+                        &[
+                            target_id.clone().into(),
+                            embedding_text.clone().into(),
+                            model.clone().into(),
+                        ],
+                    )?;
 
-            let mut iter = claimed.into_iter();
-            let Some(row) = iter.next() else {
-                return Ok(false);
-            };
-
-            let id: i64 = row.get(1)?.expect("id non-null");
-            let kind: String = row.get(2)?.expect("kind non-null");
-            let provider: String = row.get(3)?.expect("provider non-null");
-            let payload: pgrx::JsonB = row.get(4)?.expect("payload non-null");
-
-            pgrx::log!(
-                "stewards: claimed work_item id={} kind={} provider={}",
-                id,
-                kind,
-                provider
-            );
-
-            // ---- Stub "echo" provider. -------------------------
-            // Real provider dispatch (Ollama / LM Studio /
-            // OpenCode Go) lives in step 6/7. For now every
-            // provider value resolves to the echo stub so we
-            // can prove the round-trip works end-to-end.
-            let result_value = serde_json::json!({
-                "echo": payload.0,
-                "kind": kind,
-                "provider": provider,
-                "stub": "pg_ai_stewards step-2 echo",
-            });
-            let result_jsonb = pgrx::JsonB(result_value);
-            // ----------------------------------------------------
-
-            client.update(
-                "UPDATE stewards.work_queue \
-                 SET status = 'done', result = $2, done_at = now() \
-                 WHERE id = $1",
-                None,
-                &[id.into(), result_jsonb.into()],
-            )?;
+                    let result_jsonb = pgrx::JsonB(serde_json::json!({
+                        "kind": "embed",
+                        "provider": provider,
+                        "model": model,
+                        "dimensions": dimensions,
+                        "target": format!("{}#{}", target_table, target_id),
+                    }));
+                    client.update(
+                        "UPDATE stewards.work_queue \
+                         SET status = 'done', result = $2, done_at = now() \
+                         WHERE id = $1",
+                        None,
+                        &[id.into(), result_jsonb.into()],
+                    )?;
+                }
+                Ok(WorkOutcome::Echo(value)) => {
+                    let result_jsonb = pgrx::JsonB(value.clone());
+                    client.update(
+                        "UPDATE stewards.work_queue \
+                         SET status = 'done', result = $2, done_at = now() \
+                         WHERE id = $1",
+                        None,
+                        &[id.into(), result_jsonb.into()],
+                    )?;
+                }
+                Err(msg) => {
+                    pgrx::log!("stewards: work_item id={} failed: {}", id, msg);
+                    // Best-effort: also stamp the brain row's
+                    // embedding_error if this was an embed job, so
+                    // the failure surfaces in app queries.
+                    if kind == "embed" {
+                        if let (Some(table), Some(target_id)) = (
+                            payload.get("target_table").and_then(|v| v.as_str()),
+                            payload.get("target_id").and_then(|v| v.as_str()),
+                        ) {
+                            let stamp = format!(
+                                "UPDATE stewards.{} SET embedding_error = $2 WHERE id = $1",
+                                table
+                            );
+                            // Ignore secondary errors (e.g., table
+                            // we don't know about) — primary error
+                            // is already on its way to the queue.
+                            let _ = client.update(
+                                &stamp,
+                                None,
+                                &[target_id.to_string().into(), msg.clone().into()],
+                            );
+                        }
+                    }
+                    client.update(
+                        "UPDATE stewards.work_queue \
+                         SET status = 'error', error = $2, done_at = now() \
+                         WHERE id = $1",
+                        None,
+                        &[id.into(), msg.clone().into()],
+                    )?;
+                }
+            }
 
             // NOTIFY listeners with the row id as payload.
-            // Anyone running `LISTEN stewards_done` from a normal
-            // client connection will get this on commit.
             let notify_sql = format!("NOTIFY stewards_done, '{}'", id);
             client.update(&notify_sql, None, &[])?;
-
-            Ok(true)
+            Ok(())
         })
     });
 
-    match outcome {
-        Ok(processed) => processed,
-        Err(e) => {
-            pgrx::log!("stewards: bgworker tick errored: {}", e);
-            false
-        }
+    if let Err(e) = write {
+        pgrx::log!("stewards: write phase errored for id={}: {}", id, e);
     }
+    true
+}
+
+/// Result of running a single work item, before it's written back.
+enum WorkOutcome {
+    Echo(serde_json::Value),
+    Embedded {
+        target_table: String,
+        target_id: String,
+        model: String,
+        embedding_text: String,
+        dimensions: i32,
+    },
+}
+
+/// Dispatch a work item by `kind`. Returns `Ok(WorkOutcome)` on
+/// success, `Err(message)` on failure (the message is stored in
+/// `work_queue.error` and surfaces to callers).
+fn dispatch(
+    kind: &str,
+    provider: &str,
+    payload: &serde_json::Value,
+) -> Result<WorkOutcome, String> {
+    match kind {
+        "echo" => Ok(WorkOutcome::Echo(serde_json::json!({
+            "echo": payload,
+            "kind": kind,
+            "provider": provider,
+            "stub": "pg_ai_stewards echo",
+        }))),
+        "embed" => embed(provider, payload),
+        other => Err(format!("unknown work kind: {}", other)),
+    }
+}
+
+/// Call an OpenAI-compatible /v1/embeddings endpoint and format the
+/// response as a Postgres `vector` text literal (e.g. "[0.1,0.2,...]").
+fn embed(provider_name: &str, payload: &serde_json::Value) -> Result<WorkOutcome, String> {
+    let provider = PROVIDER_REGISTRY
+        .get()
+        .ok_or_else(|| "provider registry not initialized".to_string())?
+        .providers
+        .iter()
+        .find(|p| p.name == provider_name)
+        .ok_or_else(|| format!("unknown provider: {}", provider_name))?;
+
+    let text = payload
+        .get("text")
+        .and_then(|v| v.as_str())
+        .ok_or_else(|| "payload.text missing".to_string())?;
+    let model = payload
+        .get("model")
+        .and_then(|v| v.as_str())
+        .unwrap_or(&provider.default_model);
+    let target_table = payload
+        .get("target_table")
+        .and_then(|v| v.as_str())
+        .ok_or_else(|| "payload.target_table missing".to_string())?
+        .to_string();
+    let target_id = payload
+        .get("target_id")
+        .and_then(|v| v.as_str())
+        .ok_or_else(|| "payload.target_id missing".to_string())?
+        .to_string();
+    let expected_dim = payload
+        .get("dimensions")
+        .and_then(|v| v.as_i64())
+        .unwrap_or(768) as i32;
+
+    let url = format!(
+        "{}/embeddings",
+        provider.base_url.trim_end_matches('/')
+    );
+    let body = serde_json::json!({
+        "model": model,
+        "input": text,
+    });
+
+    // 120s timeout: LM Studio's first request after a cold start
+    // can take that long while it loads the model into memory.
+    let client = reqwest::blocking::Client::builder()
+        .timeout(std::time::Duration::from_secs(120))
+        .build()
+        .map_err(|e| format!("http client build: {}", e))?;
+
+    let mut req = client.post(&url).json(&body);
+    if let Some(key) = &provider.api_key {
+        req = req.bearer_auth(key);
+    }
+
+    let resp = req
+        .send()
+        .map_err(|e| format!("POST {}: {}", url, e))?;
+    let status = resp.status();
+    if !status.is_success() {
+        let body = resp.text().unwrap_or_default();
+        return Err(format!("embeddings HTTP {}: {}", status, body));
+    }
+
+    let parsed: serde_json::Value = resp
+        .json()
+        .map_err(|e| format!("decode embeddings response: {}", e))?;
+
+    let arr = parsed
+        .get("data")
+        .and_then(|d| d.as_array())
+        .and_then(|a| a.first())
+        .and_then(|d| d.get("embedding"))
+        .and_then(|e| e.as_array())
+        .ok_or_else(|| {
+            format!(
+                "unexpected embeddings response shape: {}",
+                parsed
+            )
+        })?;
+
+    if arr.len() as i32 != expected_dim {
+        return Err(format!(
+            "embedding dimension mismatch: got {}, expected {}",
+            arr.len(),
+            expected_dim
+        ));
+    }
+
+    // Build pgvector's text format: "[v1,v2,...]". No spaces; floats
+    // formatted with full f32 precision.
+    let mut s = String::with_capacity(arr.len() * 12);
+    s.push('[');
+    for (i, v) in arr.iter().enumerate() {
+        if i > 0 {
+            s.push(',');
+        }
+        let f = v
+            .as_f64()
+            .ok_or_else(|| format!("embedding[{}] not a number", i))?;
+        // f32 max precision is ~9 digits; pgvector stores f32 anyway.
+        s.push_str(&format!("{}", f));
+    }
+    s.push(']');
+
+    Ok(WorkOutcome::Embedded {
+        target_table,
+        target_id,
+        model: model.to_string(),
+        embedding_text: s,
+        dimensions: expected_dim,
+    })
 }
 
 // ---------------------------------------------------------------------------

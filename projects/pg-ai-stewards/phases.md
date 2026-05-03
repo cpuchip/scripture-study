@@ -122,6 +122,49 @@ and at least one LLM-using path goes through the bgworker.
    "embedding generation" path. Insert a brain entry → bgworker
    computes embedding via Ollama → writes pgvector column → search
    works.
+
+   **✅ Done 2026-05-02 (with LM Studio, not Ollama).** Michael
+   doesn't run Ollama locally; LM Studio serves the same
+   nomic-embed-text-v1.5 at 768 dims via the same OpenAI-compatible
+   `/v1/embeddings` endpoint. Trigger updated to enqueue with
+   `provider='lm_studio'`. Implementation notes in
+   [extension/src/lib.rs](extension/src/lib.rs):
+   - **`reqwest = { default-features = false, features = ["blocking",
+     "json", "rustls-tls"] }`** — blocking client (worker is already
+     a sync per-tick loop, no tokio runtime needed) with rustls so
+     we don't need libssl-dev in the runtime image.
+   - **Three-phase dispatch** in `process_one_pending`: Tx A claims
+     the row and commits, Tx B holds nothing while HTTP runs (LM
+     Studio's first cold load takes 2–3s and we don't want to hold
+     a row lock through that), Tx C writes the result and NOTIFYs.
+   - **`dispatch(kind, provider, payload)`** matches on kind. Echo
+     keeps working unchanged. New `embed` arm calls
+     `<base_url>/embeddings` with `{model, input}`, expects the
+     standard `{data: [{embedding: [f64...]}]}` shape, validates
+     `len == dimensions`, formats the floats as pgvector's text
+     literal (`[v1,v2,...]`), and returns `WorkOutcome::Embedded`.
+   - **120s HTTP timeout** for cold-load tolerance.
+   - **Cast in the UPDATE**: `SET embedding = $2::vector(768)`.
+     Dimension mismatch raises a Postgres error rather than silently
+     storing wrong shape.
+   - **Failure path** stamps `embedding_error` on the brain row
+     too, so app queries see why a row never embedded — not just
+     a NULL vector.
+   - **Trigger fix bundled in:** `touch_brain_entry` now only
+     snapshots into `brain_versions` when title/category/body/props
+     actually change, so embedding writes don't generate junk
+     version rows.
+
+   Verified end-to-end: 5 brain entries embedded via LM Studio
+   (avg **610ms** warm, ~3s first cold call), `vector_dims = 768`,
+   `brain_search_vec` ranks correctly ("Charity is the pure love
+   of Christ" → 0.195 distance from "pure love of Christ moroni",
+   "Faith hope and charity" → 0.363, self → 0.0). Inverse hypothesis
+   confirmed (Agans Rule 9): rewriting the trigger to point at a
+   non-existent provider produces `work_queue.status='error'` with
+   message `unknown provider: no_such_provider` and stamps
+   `embedding_error` on the brain row. Restoring the trigger and
+   re-UPDATEing succeeds and clears the error.
 7. **Second real provider call: chat via OpenCode Go.** Send a
    `stewards.work_items` row with `kind = 'chat'` and
    `provider = 'opencode_go'`, model `kimi-k2.6`. Bgworker hits

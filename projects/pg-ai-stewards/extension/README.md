@@ -4,35 +4,40 @@ The actual Postgres extension. Phase 1 of [the project](../).
 
 ## Status
 
-**Phase 1, steps 1+2+3 done (2026-05-02):**
+**Phase 1, steps 1+2+3+6 done (2026-05-02):**
 - pgrx 0.18 extension builds, loads on PG18 alongside pgvector + AGE,
   `stewards.version()` returns `0.1.0`.
 - Bgworker registered via `shared_preload_libraries`, polls
   `stewards.work_queue` every 500ms, claims rows with
-  `FOR UPDATE SKIP LOCKED`, runs the stub echo provider, writes
-  results back, `NOTIFY stewards_done '<id>'` on completion. Avg
-  round-trip **~138 ms**. SIGTERM exits cleanly; the postmaster
-  respawns the worker on container restart.
+  `FOR UPDATE SKIP LOCKED`, dispatches by `kind`, writes results
+  back, `NOTIFY stewards_done '<id>'` on completion. Three-phase
+  pattern (claim/commit, HTTP outside any tx, write/commit) so
+  slow provider calls don't hold row locks. SIGTERM exits cleanly;
+  the postmaster respawns the worker on container restart.
 - Provider registry (LM Studio / Ollama / OpenCode Go) parsed from
   `STEWARDS_PROVIDER_*` env vars in `_PG_init` (postmaster), inherited
   by all backends and the worker via fork() copy-on-write.
   Visible — without secrets — via `stewards.providers_loaded()`.
-- Brain schema landed: `brain_entries` (single-table + JSONB props),
+- Brain schema: `brain_entries` (single-table + JSONB props),
   `brain_entry_tags`, `brain_subtasks`, `brain_versions`, `sessions`,
   `messages`. `vector(768)` embedding columns + HNSW indexes (cosine).
   `body_tsv` generated tsvector + GIN gives free FTS. Triggers
-  snapshot prior versions on UPDATE and enqueue `kind='embed'
-  provider='ollama'` work items on title/body change — ready for
-  step 6 to swap the echo stub for a real Ollama HTTP call.
+  snapshot prior versions on content change (not on embedding
+  writes) and enqueue `kind='embed'` work items on title/body change.
   Helpers: `brain_upsert(...)`, `brain_search_text(...)`,
   `brain_search_vec(...)`.
-- Verified via inverse hypothesis: enqueue with no
-  `shared_preload_libraries` set → row stays `pending`; restore the
-  preload → same row drains in under a tick.
+- **Real LM Studio embeddings landing in the vector column.**
+  `reqwest::blocking` + rustls. Average **610ms** warm round-trip
+  per embed (~3s on first cold model load). `brain_search_vec`
+  returns sensible cosine rankings against real query vectors.
+- Verified via inverse hypothesis on both bgworker presence
+  (no preload → row stays pending) and provider failure (bad
+  provider name → `work_queue.status='error'` + brain row's
+  `embedding_error` stamped; retry after fix clears it).
 
 Everything else from the [phase plan](../phases.md#phase-1--foundation-extension-scaffold--bgworker--brain-port)
-(brain CLI driver, real Ollama embedding call, OpenCode Go chat
-proof) is still ahead.
+(brain CLI driver in step 5, OpenCode Go chat in step 7, Go
+migrator in step 4) is still ahead.
 
 ## Layout
 
