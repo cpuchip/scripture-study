@@ -5,3 +5,6 @@ relocatable = false
 schema = 'stewards'
 superuser = true
 trusted = false
+# pgvector ships the vector(N) type used by brain_entries.embedding and
+# messages.embedding. Postgres will create it transitively if missing.
+requires = 'vector'

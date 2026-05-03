@@ -66,6 +66,53 @@ and at least one LLM-using path goes through the bgworker.
      embedding column, HNSW index).
    - `stewards.messages` (basic conversation log so we have something
      to embed and query end-to-end).
+
+   **✅ Done 2026-05-02.** Lives alongside step 2 in
+   [extension/src/lib.rs](extension/src/lib.rs) as a second
+   `extension_sql!` block (`requires = ["create_work_queue"]` for
+   ordering). Implementation notes:
+   - **Seven** categories in the CHECK constraint, not six —
+     `inbox` is the unclassified default that brain's classifier and
+     `web/server.go` both write. Read from
+     `scripts/brain/internal/classifier/classifier.go` per the
+     data-safety checklist (categories never get listed from memory).
+   - Single `brain_entries` table + JSONB `props` instead of one
+     table per category. Matches chromem-go's storage shape and
+     keeps the migrator (step 4) simple. Brain's category-specific
+     columns (`name`, `follow_ups`, `status`, `due_date`, `mood`,
+     `gratitude`, ...) all fold into `props`.
+   - Aux tables landed too: `brain_entry_tags`, `brain_subtasks`,
+     `brain_versions`, `sessions`, `messages`. Step 4's migrator
+     reads from SQLite tables of the same shape, so doing them now
+     keeps step 4 to pure read/write/verify.
+   - Embedding column is `vector(768)` to match gospel-engine-v2.
+     HNSW with `vector_cosine_ops`. NULL embeddings are skipped
+     by the index naturally; queries also filter `IS NOT NULL`.
+   - `body_tsv tsvector GENERATED ALWAYS AS (...) STORED` plus a
+     GIN index gives free FTS — no triggers, no inconsistency
+     window. Wrapped by `stewards.brain_search_text()`.
+   - Two triggers on `brain_entries`: `BEFORE UPDATE` snapshots
+     OLD into `brain_versions` and bumps `updated_at`;
+     `AFTER INSERT OR UPDATE OF title, body` enqueues
+     `(kind='embed', provider='ollama')` in `stewards.work_queue`.
+     The bgworker's echo stub (still in place from step 2) marks
+     them `done` without writing the embedding — step 6 swaps the
+     stub for a real Ollama HTTP call.
+   - Helpers: `brain_upsert(category, title, body, props, tags,
+     id?, source?)`, `brain_search_text(query, category?, limit)`,
+     `brain_search_vec(embedding, category?, limit)`.
+   - `requires = 'vector'` added to `.control` so `CREATE EXTENSION
+     pg_ai_stewards` pulls in pgvector transitively if missing.
+   - **Hybrid FTS+vector search deferred.** Phases.md mentions a
+     combined `brain_search`. Until step 6 fills the embedding
+     column there's nothing to combine, and rank-fusion strategy
+     benefits from real query traffic to tune. Surfaced as an
+     explicit deferral instead of shipping a half-done version.
+
+   Verified end-to-end via init SQL + manual probes: brain entry
+   inserted, embed-enqueue trigger fired on both INSERT and UPDATE,
+   FTS finds revised text, version snapshot captured the OLD title,
+   sessions/messages cascade works.
 4. **Migrator** — one-shot Go binary that reads existing SQLite +
    chromem, writes to Postgres.
 5. **Brain CLI driver** — new backend in `scripts/brain/` that talks

@@ -4,7 +4,7 @@ The actual Postgres extension. Phase 1 of [the project](../).
 
 ## Status
 
-**Phase 1, steps 1+2 done (2026-05-02):**
+**Phase 1, steps 1+2+3 done (2026-05-02):**
 - pgrx 0.18 extension builds, loads on PG18 alongside pgvector + AGE,
   `stewards.version()` returns `0.1.0`.
 - Bgworker registered via `shared_preload_libraries`, polls
@@ -17,13 +17,22 @@ The actual Postgres extension. Phase 1 of [the project](../).
   `STEWARDS_PROVIDER_*` env vars in `_PG_init` (postmaster), inherited
   by all backends and the worker via fork() copy-on-write.
   Visible — without secrets — via `stewards.providers_loaded()`.
+- Brain schema landed: `brain_entries` (single-table + JSONB props),
+  `brain_entry_tags`, `brain_subtasks`, `brain_versions`, `sessions`,
+  `messages`. `vector(768)` embedding columns + HNSW indexes (cosine).
+  `body_tsv` generated tsvector + GIN gives free FTS. Triggers
+  snapshot prior versions on UPDATE and enqueue `kind='embed'
+  provider='ollama'` work items on title/body change — ready for
+  step 6 to swap the echo stub for a real Ollama HTTP call.
+  Helpers: `brain_upsert(...)`, `brain_search_text(...)`,
+  `brain_search_vec(...)`.
 - Verified via inverse hypothesis: enqueue with no
   `shared_preload_libraries` set → row stays `pending`; restore the
   preload → same row drains in under a tick.
 
 Everything else from the [phase plan](../phases.md#phase-1--foundation-extension-scaffold--bgworker--brain-port)
-(brain schema, migrator, brain CLI driver, real provider calls) is
-still ahead.
+(brain CLI driver, real Ollama embedding call, OpenCode Go chat
+proof) is still ahead.
 
 ## Layout
 

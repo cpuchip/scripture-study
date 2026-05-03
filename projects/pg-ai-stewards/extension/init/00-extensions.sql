@@ -23,3 +23,20 @@ SELECT 'providers loaded:' AS ok, count(*) FROM stewards.providers_loaded();
 -- after init finishes. The next docker logs check should show the
 -- row processed within ~1 second of the database accepting connections.
 SELECT stewards.enqueue('echo', 'echo', '{"hello": "world"}'::jsonb) AS enqueued_id;
+
+-- Step 3 smoke test: insert a brain entry, confirm the embed-enqueue
+-- trigger fired (work_queue should have a kind='embed' row), and
+-- confirm full-text search finds it.
+SELECT stewards.brain_upsert(
+    'study',
+    'Charity is the pure love of Christ',
+    'Moroni 7:47 — pure love of Christ. The fruit of the tree of life. Connected to the great commandment.',
+    '{"references": "Moroni 7:47; 1 Ne 11:21-25; Matt 22:37-40", "insight": "Charity is fruit, not effort."}'::jsonb,
+    ARRAY['charity', 'love', 'moroni']
+) AS new_brain_entry_id;
+
+SELECT 'embed work queued: ' || count(*)::text AS ok
+    FROM stewards.work_queue WHERE kind = 'embed';
+
+SELECT 'fts hits for charity: ' || count(*)::text AS ok
+    FROM stewards.brain_search_text('charity');

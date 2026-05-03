@@ -1,6 +1,6 @@
 # Active Context
 
-*Updated: 2026-05-02 (pg-ai-stewards Phase 1 steps 1+2 — extension scaffold + bgworker dispatcher live on PG18) · Previous: [archive/active-2026-04-23.md](archive/active-2026-04-23.md)*
+*Updated: 2026-05-02 (pg-ai-stewards Phase 1 steps 1–3 done — extension + bgworker + brain schema all live on PG18) · Previous: [archive/active-2026-04-23.md](archive/active-2026-04-23.md)*
 *Hardware: Dual 4090s desktop. NOCIX server live.*
 
 > **Edit rule:** Rewrite this file directly. Do NOT cat/append the old content first — its archive snapshot lives under `.mind/archive/`. Appending duplicates the document and doubles every memory load. (Bug: 2026-04-20.)
@@ -17,7 +17,7 @@
 2. ★ **[WS7] Teaching** — 11-episode arc (Option C). Agent + repo scaffolded. Content not started → [teaching-workstream.md](../.spec/proposals/teaching-workstream.md)
 3. **[WS5] Token efficiency** — Apr 16 proposal awaiting refresh review → [token-efficiency.md](../.spec/proposals/token-efficiency.md)
 4. **[WS2] Brain Inline Panel + Kanban 4c** — next active build → [brain-inline-panel.md](../.spec/proposals/brain-inline-panel.md) · [brain-project-kanban.md](../.spec/proposals/brain-project-kanban.md)
-5. **[WS5] pg-ai-stewards** — Postgres-as-AI-substrate. **Phase 1 in flight: steps 1+2 done May 2 — pgrx 0.18 extension loads on PG18 alongside pgvector + AGE; bgworker dispatches `stewards.work_queue` rows via 500ms polling with NOTIFY-on-completion; provider registry (LM Studio + Ollama + OpenCode Go) parsed from env in postmaster, inherited by all backends + worker.** Verified via inverse hypothesis. Avg round-trip 138 ms. Next: brain schema (step 3). → [projects/pg-ai-stewards/extension/README.md](../projects/pg-ai-stewards/extension/README.md) · [phases.md](../projects/pg-ai-stewards/phases.md)
+5. **[WS5] pg-ai-stewards** — Postgres-as-AI-substrate. **Phase 1 steps 1–3 done May 2: extension scaffold, bgworker dispatcher (~138ms round-trip), brain schema (single brain_entries table + JSONB props, 7 categories incl. inbox, vector(768) embedding + HNSW, FTS via generated tsvector, embed-enqueue + version-snapshot triggers, brain_upsert/search_text/search_vec helpers).** Next: step 4 (Go migrator from SQLite+chromem-go to Postgres) or step 6 (real Ollama embed call to swap the echo stub). → [projects/pg-ai-stewards/extension/README.md](../projects/pg-ai-stewards/extension/README.md) · [phases.md](../projects/pg-ai-stewards/phases.md)
 
 ## Key Facts
 
@@ -44,7 +44,7 @@
 | WS2 | Brain non-pipeline projects | ✅ archived Apr 23 | [archive/brain-non-pipeline-projects.md](../.spec/proposals/archive/brain-non-pipeline-projects.md) |
 | WS2 | Brain manual stage transitions | ✅ archived Apr 23 | [archive/brain-manual-stage-transitions.md](../.spec/proposals/archive/brain-manual-stage-transitions.md) |
 | WS2 | Johari window agent mode | 📝 proposed Apr 22 | [johari-window-agent-mode.md](../.spec/proposals/johari-window-agent-mode.md) |
-| WS5 | pg-ai-stewards (Postgres substrate for agent state, memory, work, model calls) | 🔨 Phase 1 steps 1+2 done May 2 (pgrx 0.18 extension + bgworker dispatcher polling `stewards.work_queue`, ~138ms round-trip, 3-provider env registry inherited postmaster→backends, NOTIFY-on-completion). Next: brain schema (step 3). | [projects/pg-ai-stewards/extension/README.md](../projects/pg-ai-stewards/extension/README.md) |
+| WS5 | pg-ai-stewards (Postgres substrate for agent state, memory, work, model calls) | 🔨 Phase 1 steps 1–3 done May 2 (extension + bgworker + brain schema with vector(768) HNSW + FTS + embed-enqueue trigger + helpers). Next: migrator (step 4) or real Ollama embed (step 6). | [projects/pg-ai-stewards/extension/README.md](../projects/pg-ai-stewards/extension/README.md) |
 | WS2 | Motivation coach agent mode | 📝 proposed Apr 22 | [motivation-coach-agent-mode.md](../.spec/proposals/motivation-coach-agent-mode.md) |
 | WS3 | LightRAG investigation | 📝 proposed Apr 22 | [lightrag-investigation.md](../.spec/proposals/lightrag-investigation.md) |
 | WS3 | Gospel engine v3 proxy-pointer | 📝 proposed Apr 22 | [gospel-engine-v3-proxy-pointer.md](../.spec/proposals/gospel-engine-v3-proxy-pointer.md) |

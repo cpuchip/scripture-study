@@ -54,6 +54,335 @@ extension_sql!(
     name = "create_work_queue",
 );
 
+extension_sql!(
+    r#"
+    -- ============================================================
+    -- Step 3: brain replacement schema.
+    --
+    -- Single brain_entries table with a category enum + jsonb props,
+    -- chosen over six per-category tables because it matches how
+    -- chromem-go stores them today and keeps the migrator simple.
+    -- Category-specific fields (name, follow_ups, status, due_date,
+    -- mood, gratitude, ...) all live in `props`.
+    --
+    -- Categories enumerated in the CHECK constraint below come from
+    -- scripts/brain/internal/classifier/classifier.go (the six the
+    -- LLM classifier emits) plus 'inbox' (the unclassified default
+    -- set by classifier.go and web/server.go). Read from code per
+    -- the data-safety checklist; do NOT add categories from memory.
+    -- ============================================================
+
+    CREATE TABLE stewards.brain_entries (
+        id              text PRIMARY KEY DEFAULT gen_random_uuid()::text,
+        category        text NOT NULL
+                        CHECK (category IN
+                            ('people','projects','ideas','actions',
+                             'study','journal','inbox')),
+        title           text NOT NULL,
+        body            text NOT NULL DEFAULT '',
+        props           jsonb NOT NULL DEFAULT '{}'::jsonb,
+
+        -- Provenance + classification metadata
+        source          text NOT NULL DEFAULT 'cli',
+        confidence      real NOT NULL DEFAULT 0.0,
+        needs_review    boolean NOT NULL DEFAULT false,
+        quarantined     boolean NOT NULL DEFAULT false,
+        original_body   text,
+
+        -- Embedding (populated async by bgworker; see embed trigger
+        -- below + step 6/7 for the actual provider call).
+        embedding       vector(768),
+        embedded_at     timestamptz,
+        embedded_model  text,
+        embedding_error text,
+
+        -- Full-text search column maintained automatically.
+        body_tsv        tsvector
+                        GENERATED ALWAYS AS (
+                            to_tsvector('english',
+                                coalesce(title, '') || ' ' || coalesce(body, ''))
+                        ) STORED,
+
+        created_at      timestamptz NOT NULL DEFAULT now(),
+        updated_at      timestamptz NOT NULL DEFAULT now()
+    );
+
+    CREATE INDEX brain_entries_category_idx
+        ON stewards.brain_entries (category);
+    CREATE INDEX brain_entries_created_idx
+        ON stewards.brain_entries (created_at DESC);
+    CREATE INDEX brain_entries_needs_review_idx
+        ON stewards.brain_entries (needs_review)
+        WHERE needs_review = true;
+    CREATE INDEX brain_entries_fts_idx
+        ON stewards.brain_entries USING gin (body_tsv);
+    CREATE INDEX brain_entries_props_idx
+        ON stewards.brain_entries USING gin (props);
+
+    -- HNSW index for cosine similarity. NULL embeddings are skipped
+    -- by the index naturally; we filter them in queries too.
+    CREATE INDEX brain_entries_embedding_idx
+        ON stewards.brain_entries
+        USING hnsw (embedding vector_cosine_ops);
+
+    -- Tags split out for query / index efficiency. Mirrors the
+    -- existing brain SQLite layout.
+    CREATE TABLE stewards.brain_entry_tags (
+        entry_id text NOT NULL
+                 REFERENCES stewards.brain_entries(id) ON DELETE CASCADE,
+        tag      text NOT NULL,
+        PRIMARY KEY (entry_id, tag)
+    );
+    CREATE INDEX brain_entry_tags_tag_idx
+        ON stewards.brain_entry_tags (tag);
+
+    CREATE TABLE stewards.brain_subtasks (
+        id          bigserial PRIMARY KEY,
+        entry_id    text NOT NULL
+                    REFERENCES stewards.brain_entries(id) ON DELETE CASCADE,
+        body        text NOT NULL,
+        done        boolean NOT NULL DEFAULT false,
+        sort_order  int NOT NULL DEFAULT 0,
+        created_at  timestamptz NOT NULL DEFAULT now(),
+        updated_at  timestamptz NOT NULL DEFAULT now()
+    );
+    CREATE INDEX brain_subtasks_entry_idx
+        ON stewards.brain_subtasks (entry_id, sort_order);
+
+    -- Snapshot history. Captures (title, category, body, props) at
+    -- mutation time; the touch_updated_at trigger inserts here on UPDATE.
+    CREATE TABLE stewards.brain_versions (
+        id          bigserial PRIMARY KEY,
+        entry_id    text NOT NULL
+                    REFERENCES stewards.brain_entries(id) ON DELETE CASCADE,
+        title       text NOT NULL,
+        category    text NOT NULL,
+        body        text NOT NULL,
+        props       jsonb NOT NULL DEFAULT '{}'::jsonb,
+        changed_by  text NOT NULL DEFAULT 'system',
+        changed_at  timestamptz NOT NULL DEFAULT now()
+    );
+    CREATE INDEX brain_versions_entry_idx
+        ON stewards.brain_versions (entry_id, changed_at DESC);
+
+    -- ============================================================
+    -- Sessions + messages (basic conversation log).
+    -- Goal: have something to embed and query end-to-end so step 6
+    -- can prove the round-trip on more than a single table.
+    -- ============================================================
+
+    CREATE TABLE stewards.sessions (
+        id              text PRIMARY KEY DEFAULT gen_random_uuid()::text,
+        label           text,
+        kind            text NOT NULL DEFAULT 'chat'
+                        CHECK (kind IN ('chat','agent','tool','study','dev')),
+        created_at      timestamptz NOT NULL DEFAULT now(),
+        last_active_at  timestamptz NOT NULL DEFAULT now()
+    );
+
+    CREATE TABLE stewards.messages (
+        id              bigserial PRIMARY KEY,
+        session_id      text NOT NULL
+                        REFERENCES stewards.sessions(id) ON DELETE CASCADE,
+        role            text NOT NULL
+                        CHECK (role IN ('user','assistant','system','tool')),
+        content         text NOT NULL,
+        model           text,
+        tokens_in       int,
+        tokens_out      int,
+        cost_usd        numeric(10, 6),
+
+        embedding       vector(768),
+        embedded_at     timestamptz,
+        embedded_model  text,
+        embedding_error text,
+
+        created_at      timestamptz NOT NULL DEFAULT now()
+    );
+    CREATE INDEX messages_session_idx
+        ON stewards.messages (session_id, created_at);
+    CREATE INDEX messages_embedding_idx
+        ON stewards.messages
+        USING hnsw (embedding vector_cosine_ops);
+
+    -- ============================================================
+    -- Triggers
+    -- ============================================================
+
+    -- Bump updated_at AND snapshot the previous version on UPDATE.
+    CREATE FUNCTION stewards.touch_brain_entry() RETURNS trigger
+    LANGUAGE plpgsql AS $func$
+    BEGIN
+        IF TG_OP = 'UPDATE' THEN
+            -- Snapshot the OLD row before changes land.
+            INSERT INTO stewards.brain_versions
+                (entry_id, title, category, body, props, changed_by)
+            VALUES
+                (OLD.id, OLD.title, OLD.category, OLD.body, OLD.props,
+                 coalesce(current_setting('stewards.actor', true), 'system'));
+            NEW.updated_at := now();
+        END IF;
+        RETURN NEW;
+    END;
+    $func$;
+
+    CREATE TRIGGER brain_entries_touch
+        BEFORE UPDATE ON stewards.brain_entries
+        FOR EACH ROW EXECUTE FUNCTION stewards.touch_brain_entry();
+
+    -- Enqueue an embedding job whenever title/body changes (or row
+    -- is inserted). The bgworker will pick it up; in step 3 the
+    -- echo stub still runs, so embedding stays NULL until step 6
+    -- swaps the stub for a real Ollama HTTP call.
+    --
+    -- Provider name 'ollama' resolves to the registry entry loaded
+    -- from STEWARDS_PROVIDER_OLLAMA_*. Match gospel-engine-v2's
+    -- model: nomic-embed-text v1.5, 768 dimensions.
+    CREATE FUNCTION stewards.enqueue_brain_embed() RETURNS trigger
+    LANGUAGE plpgsql AS $func$
+    BEGIN
+        IF TG_OP = 'INSERT'
+           OR NEW.title IS DISTINCT FROM OLD.title
+           OR NEW.body  IS DISTINCT FROM OLD.body
+        THEN
+            INSERT INTO stewards.work_queue (kind, provider, payload)
+            VALUES (
+                'embed',
+                'ollama',
+                jsonb_build_object(
+                    'target_table', 'brain_entries',
+                    'target_id',    NEW.id,
+                    'text',         coalesce(NEW.title, '') || E'\n\n' || coalesce(NEW.body, ''),
+                    'model',        'nomic-embed-text:v1.5',
+                    'dimensions',   768
+                )
+            );
+        END IF;
+        RETURN NEW;
+    END;
+    $func$;
+
+    CREATE TRIGGER brain_entries_enqueue_embed
+        AFTER INSERT OR UPDATE OF title, body
+        ON stewards.brain_entries
+        FOR EACH ROW EXECUTE FUNCTION stewards.enqueue_brain_embed();
+
+    CREATE FUNCTION stewards.touch_message() RETURNS trigger
+    LANGUAGE plpgsql AS $func$
+    BEGIN
+        UPDATE stewards.sessions
+        SET last_active_at = now()
+        WHERE id = NEW.session_id;
+        RETURN NEW;
+    END;
+    $func$;
+
+    CREATE TRIGGER messages_touch_session
+        AFTER INSERT ON stewards.messages
+        FOR EACH ROW EXECUTE FUNCTION stewards.touch_message();
+
+    -- ============================================================
+    -- Helper SQL functions. Thin wrappers; the brain CLI driver
+    -- (step 5) will call these instead of writing raw SQL.
+    -- ============================================================
+
+    -- Insert or update a brain entry. Returns the row's id.
+    -- If `entry_id` is NULL a new id is generated and a row created;
+    -- otherwise the matching row is updated. Tags are replaced wholesale
+    -- (delete-then-insert under one transaction).
+    CREATE FUNCTION stewards.brain_upsert(
+        p_category text,
+        p_title    text,
+        p_body     text DEFAULT '',
+        p_props    jsonb DEFAULT '{}'::jsonb,
+        p_tags     text[] DEFAULT NULL,
+        p_id       text DEFAULT NULL,
+        p_source   text DEFAULT 'cli'
+    ) RETURNS text
+    LANGUAGE plpgsql AS $func$
+    DECLARE
+        v_id text;
+    BEGIN
+        IF p_id IS NULL THEN
+            INSERT INTO stewards.brain_entries
+                (category, title, body, props, source)
+            VALUES
+                (p_category, p_title, p_body, p_props, p_source)
+            RETURNING id INTO v_id;
+        ELSE
+            INSERT INTO stewards.brain_entries
+                (id, category, title, body, props, source)
+            VALUES
+                (p_id, p_category, p_title, p_body, p_props, p_source)
+            ON CONFLICT (id) DO UPDATE SET
+                category = EXCLUDED.category,
+                title    = EXCLUDED.title,
+                body     = EXCLUDED.body,
+                props    = EXCLUDED.props,
+                source   = EXCLUDED.source
+            RETURNING id INTO v_id;
+        END IF;
+
+        IF p_tags IS NOT NULL THEN
+            DELETE FROM stewards.brain_entry_tags WHERE entry_id = v_id;
+            INSERT INTO stewards.brain_entry_tags (entry_id, tag)
+            SELECT v_id, unnest(p_tags);
+        END IF;
+
+        RETURN v_id;
+    END;
+    $func$;
+
+    -- Full-text search. Returns id, title, category, ts_rank score.
+    CREATE FUNCTION stewards.brain_search_text(
+        p_query    text,
+        p_category text DEFAULT NULL,
+        p_limit    int DEFAULT 20
+    ) RETURNS TABLE (
+        id       text,
+        title    text,
+        category text,
+        rank     real
+    )
+    LANGUAGE sql STABLE AS $func$
+        SELECT e.id, e.title, e.category,
+               ts_rank(e.body_tsv, plainto_tsquery('english', p_query)) AS rank
+        FROM stewards.brain_entries e
+        WHERE e.body_tsv @@ plainto_tsquery('english', p_query)
+          AND (p_category IS NULL OR e.category = p_category)
+          AND NOT e.quarantined
+        ORDER BY rank DESC
+        LIMIT p_limit;
+    $func$;
+
+    -- Vector search. Caller passes a 768-dim embedding (computed
+    -- elsewhere in step 3; in step 6 a sibling helper will accept
+    -- raw text and route through Ollama via the work queue).
+    CREATE FUNCTION stewards.brain_search_vec(
+        p_embedding vector(768),
+        p_category  text DEFAULT NULL,
+        p_limit     int DEFAULT 20
+    ) RETURNS TABLE (
+        id       text,
+        title    text,
+        category text,
+        distance real
+    )
+    LANGUAGE sql STABLE AS $func$
+        SELECT e.id, e.title, e.category,
+               (e.embedding <=> p_embedding)::real AS distance
+        FROM stewards.brain_entries e
+        WHERE e.embedding IS NOT NULL
+          AND (p_category IS NULL OR e.category = p_category)
+          AND NOT e.quarantined
+        ORDER BY e.embedding <=> p_embedding
+        LIMIT p_limit;
+    $func$;
+    "#,
+    name = "create_brain_schema",
+    requires = ["create_work_queue"],
+);
+
 // ---------------------------------------------------------------------------
 // Diagnostic SQL functions
 // ---------------------------------------------------------------------------
