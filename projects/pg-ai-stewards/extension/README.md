@@ -40,6 +40,49 @@ wires the bgworker; for now `.env` is just the committed shape.
 See [proposal § Provider abstraction and secrets](../proposal.md#provider-abstraction-and-secrets)
 for the full design.
 
+### Secrets — what stays local
+
+**`.env` never enters the Docker image.** The [Dockerfile](Dockerfile)
+only copies `Cargo.toml`, `pg_ai_stewards.control`, and `src/` into
+the builder stage. There is no `COPY .env` and no `COPY . .`.
+[`.dockerignore`](.dockerignore) is belt-and-suspenders: even if the
+Dockerfile is later refactored to `COPY . .`, `.env` and `.env.*`
+are excluded from the build context (only `.env.example` passes through).
+
+`docker compose` reads `.env` at *runtime* via `env_file:` and sets
+the values as environment variables on the running **container**.
+Those values are:
+
+- visible to processes inside the container (the bgworker reads them
+  on startup)
+- visible via `docker inspect <running-container>` on your local machine
+- **NOT** in the image filesystem
+- **NOT** in any layer (`docker history` is clean)
+- **NOT** included if you `docker push` the image or `docker save` it
+
+You can verify this for yourself:
+
+```pwsh
+# Layer history — should print nothing
+docker history pg-ai-stewards-dev:pg18 --no-trunc --format "{{.CreatedBy}}" `
+  | Select-String -Pattern 'STEWARDS_PROVIDER|API_KEY' -SimpleMatch
+
+# Image-level Env — should only show stock Postgres vars (PG_MAJOR, LANG, etc.)
+docker image inspect pg-ai-stewards-dev:pg18 --format "{{json .Config.Env}}"
+
+# Filesystem grep — should print nothing
+docker run --rm --entrypoint sh pg-ai-stewards-dev:pg18 `
+  -c "grep -rI 'STEWARDS_PROVIDER_OPENCODE' / 2>/dev/null | head -5"
+```
+
+**For a future standalone public repo** (when this project graduates
+out of `scripture-study`), the same model works: ship `.env.example`
+and `.dockerignore`, never ship `.env`. For shared dev environments
+or production, swap `.env` for [Docker secrets](https://docs.docker.com/engine/swarm/secrets/)
+or a real secret manager (Vault, 1Password, AWS Secrets Manager) —
+the bgworker reads env vars regardless of how they got there, so the
+bootstrap surface doesn't change.
+
 Then verify:
 
 ```pwsh

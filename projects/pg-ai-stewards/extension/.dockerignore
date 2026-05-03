@@ -1,0 +1,32 @@
+# projects/pg-ai-stewards/extension/.dockerignore
+#
+# Belt-and-suspenders defense against ever leaking a local secret into
+# a built image. Even if the Dockerfile is later changed to `COPY . .`
+# (a common refactor mistake), Docker will skip everything below.
+#
+# This file does NOT replace .gitignore — the goal is "if it isn't
+# explicitly Cargo source or extension metadata, it doesn't enter the
+# build context."
+
+# Local secrets — the whole point of this file
+.env
+.env.*
+!.env.example
+
+# Rust + pgrx artifacts (never wanted in the image; recompiled in builder)
+target/
+**/*.rs.bk
+.pgrx/
+
+# Editor / OS noise
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# Project meta — useful for humans, irrelevant inside the container
+README.md
+docker-compose.yaml
+init/

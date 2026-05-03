@@ -7,9 +7,11 @@ Cargo.lock
 .pgrx/
 
 # Local secrets (provider API keys for Ollama / LM Studio / OpenCode Go etc.)
-# .env.example is the committed shape reference; .env holds real values.
+# .env.example is the committed shape reference; .env (and any variant) holds real values.
 .env
-.env.local
+.env.*
+!.env.example
+!.env.*.example
 
 # IDE / OS
 .idea/

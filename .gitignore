@@ -38,6 +38,12 @@ becoming-mcp.log
 becoming.db*
 scripts/becoming/becoming.exe
 
+# Local secrets — never commit. .env.example is the committed shape.
+.env
+.env.*
+!.env.example
+!.env.*.example
+
 # External things like github repos to ignore
 external_context/
 
@@ -54,5 +60,4 @@ external_context/
 /projects/cpuchip.net/
 /projects/storygames
 
-# ignore env
-.env
+# (.env coverage moved up to the "Local secrets" block above)
