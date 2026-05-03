@@ -1,0 +1,17 @@
+services:
+  pg:
+    build: .
+    image: pg-ai-stewards-probe:pg18
+    container_name: pg-ai-stewards-probe
+    environment:
+      POSTGRES_USER: stewards
+      POSTGRES_PASSWORD: stewards
+      POSTGRES_DB: stewards
+    ports:
+      - "55432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql
+      - ./init:/docker-entrypoint-initdb.d:ro
+
+volumes:
+  pgdata:

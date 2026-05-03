@@ -39,18 +39,74 @@ Working notes during source triage. Permanent provenance — do not delete.
 - Final extension release `extension-0.11.2` 2025-10-14; final Python
   lib `pgai-v0.12.1` 2025-10-13; archived 2026-02-26. About four months
   of Python-only releases before the final shutter.
-- **Inferred archival reason** (not yet verified from official Timescale
-  blog): the extension model called LLM endpoints from inside backend
-  processes, which holds connections, blocks transactions, and breaks
-  under managed-Postgres environments that don't allow custom
-  extensions. Timescale is a managed-DB vendor; their customers can't
-  install arbitrary extensions on RDS/Aurora/Cloud SQL/etc. Outside-worker
-  model serves them better.
-- **For us this signal is different**: we are self-hosted, single-user.
-  We *can* install extensions. The constraint that killed it for
-  Timescale doesn't bind us. Read its code for design lessons; do not
-  fork.
+- **Confirmed archival rationale** (verified 2026-05-02 via the
+  archived repo's README and corroborating reporting on the
+  Timescale → TigerData rebrand from June 2025):
+  - Timescale rebranded to **TigerData** in June 2025 with a new
+    "Agentic Postgres" product line. The pgai repo's own front-page
+    description still markets the *Python library + vectorizer-worker*
+    pattern as the recommended path; the in-extension `ai.*` SQL
+    functions had become a side branch.
+  - The PG extension was archived 2026-02-26 because the company
+    consolidated on the outside-worker pattern. *Not* because the
+    in-DB direction failed — because the worker pattern won inside
+    Timescale's product strategy as part of the rebrand.
+  - Timescale is a managed-DB vendor. Many of their customers can't
+    install custom extensions on RDS/Aurora/Cloud SQL. The Python
+    library serves them; the extension didn't.
+- **For us the signal is *confirming*, not disconfirming.** We are
+  self-hosted, single-user. We *can* install extensions. And the
+  architectural lesson Timescale paid tuition for — never call
+  providers from foreground backends, always own a worker — is what
+  we already planned to do. Read pgai's code for design lessons; do
+  not fork.
 - Cloned to [external_context/pgai/](../../external_context/pgai/).
+
+### microsoft/graphrag — https://github.com/microsoft/graphrag
+- **License:** MIT. **Active.** v3.0.9 released ~3 weeks ago. 32.7k
+  stars. Microsoft Research project that became a real product.
+- *Not* a Postgres extension. It's a Python data pipeline that
+  extracts a knowledge graph from unstructured text using an LLM,
+  performs Leiden hierarchical community detection, generates
+  community summaries, and provides three query modes:
+  - **Global Search** — answers "what are the themes across the
+    whole corpus" questions using community summaries.
+  - **Local Search** — answers "tell me about entity X" questions by
+    fanning out from a node.
+  - **DRIFT Search** — local search with added community context.
+- Useful as a *complementary* tool, not a substrate. We could run it
+  against the scripture + talk corpus (in `gospel`) and write the
+  resulting community summaries into AGE. That's Phase 4+ optional;
+  not Phase 1.
+- Warning from the README: indexing is expensive. "start small."
+
+### Azure-Samples/PostgreSQL-graphRAG-docker — https://github.com/Azure-Samples/PostgreSQL-graphRAG-docker
+- **License: MIT.** Active (last commit ~2 months ago, v2 was Mar 2026).
+- **This is the closest reference design we've found.** Single Docker
+  image: Postgres 16 + Apache AGE + pgvector + GraphRAG 3.0.5 +
+  Microsoft Agent Framework + an MCP server exposing five tools to
+  agents:
+  - `graphrag_search` — runtime-tunable local/global search
+  - `age_get_schema_cached` — schema introspection
+  - `age_entity_lookup` — substring entity discovery ("who is X?")
+  - `age_cypher_query` — execute user-provided Cypher
+  - `age_nl2cypher_query` — natural language → Cypher → execute
+  - Plus a router agent that decides which to invoke per question.
+- Authored by Helen Zeng (helenzusa1), Microsoft. Companion blog
+  post: [techcommunity.microsoft.com (Mar 2026)](https://techcommunity.microsoft.com/blog/adforpostgresql/graphrag-and-postgresql-integration-in-docker-with-cypher-query-and-ai-agents-ve/4503586).
+- **Caveats** (read the docker-compose.yaml — verified 2026-05-02):
+  - Volumes are hardcoded to `/mnt/c/Users/helenzeng/...` WSL paths.
+    Not runnable as-is on Windows.
+  - Tightly coupled to Azure OpenAI for embeddings + LLM. Swappable
+    in principle but requires editing.
+  - Postgres 16, not 18. AGE branch `release/PG16/1.5.0`. Older
+    pgvector (`v0.7.4`).
+  - Single-container architecture (Postgres + Python + GraphRAG +
+    MCP all in one). Nice for demo, wrong for production.
+- **Use as: tool-shape blueprint for the MCP server we expose in
+  Phase 3.** The five-tool router agent pattern is gold and we
+  should mostly copy it. Cloned to
+  [external_context/PostgreSQL-graphRAG-docker/](../../external_context/PostgreSQL-graphRAG-docker/).
 
 ### ChuckHend/pg_vectorize
 - **License: PostgreSQL License** (Tembo, 2023). Confirmed 2026-05-02
@@ -318,22 +374,28 @@ Where I might still be wrong:
 5. The "replace VS Code" claim is *partially* true — substrate yes,
    editor no. Be precise about which.
 
-## Open questions / probes before any code
+## Open questions / probes — STATUS UPDATE 2026-05-02
 
-- Read pg_vectorize's bgworker source. How does it own a tokio runtime?
-  Where does it handle backend signals, cancellation, shutdown?
-- Read pgai's archival announcement (or the Timescale blog) for the
-  official rationale, not just my inference.
-- Stand up a docker-compose locally with `pgvector/pgvector:pg18` +
-  `apache/age` extension installed in the same image. `CREATE EXTENSION
-  vector; CREATE EXTENSION age;` in one DB. Run the Microsoft "bridge"
-  example end-to-end. Cheapest reality check.
+- ~~Read pg_vectorize's bgworker source. How does it own a tokio
+  runtime?~~ → **Deferred to Phase 1.** Will be the first concrete
+  task after the extension scaffold is in place; pg_vectorize
+  remains the reference at
+  [external_context/pg_vectorize/](../../external_context/pg_vectorize/).
+- ~~Read pgai's archival rationale.~~ → **Done.** See "Confirmed
+  archival rationale" above. Net read: confirming, not
+  disconfirming. The lesson (worker outside backend) is what we
+  already planned.
+- ~~Stand up a docker-compose locally with `pgvector/pgvector:pg18`
+  + `apache/age` and run the bridge end-to-end.~~ → **DONE.** See
+  [probe/RESULTS.md](probe/RESULTS.md). All seven test blocks pass
+  on PG18 + pgvector 0.8.2 + AGE 1.7.0. Two rough edges discovered
+  and documented (`::name` cast, vertex agtype JSON cast).
+- ~~Confirm `postgres_fdw` works against pgvector columns and AGE
+  graphs.~~ → **Deferred to Phase 4 (or never).** The proposal uses
+  URI-string references and gospel-engine-v2's HTTP API for cross-DB
+  resolution. SQL-level joins via FDW are a possible upgrade later;
+  not on the critical path.
 - Sketch the SQLite→Postgres migration for `scripts/brain/`'s six
-  categories. If the schema sketch is awkward, the abstraction is wrong.
-- Decide embedding model. Gospel-engine-v2 uses `nomic-embed-text-v1.5`
-  (768d). Stewards should match unless there's a reason not to — same
-  embedding space means we can compare a "study draft" vector to a
-  "scripture verse" vector directly across the DB seam.
-- Confirm `postgres_fdw` works against pgvector columns and AGE
-  graphs. Likely yes for vector (it's a regular composite type), unclear
-  for `agtype`.
+  categories — **Phase 1 deliverable.** See [phases.md](phases.md).
+- Decide embedding model — **Decided: match gospel-engine-v2's
+  `nomic-embed-text-v1.5` (768d).** Captured in [proposal.md](proposal.md).

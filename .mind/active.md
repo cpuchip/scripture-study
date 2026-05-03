@@ -1,6 +1,6 @@
 # Active Context
 
-*Updated: 2026-05-01 (early morning — Broken Heart and Contrite Spirit study shipped) · Previous: [archive/active-2026-04-23.md](archive/active-2026-04-23.md)*
+*Updated: 2026-05-02 (pg-ai-stewards graduated to proposal + phases; probe stack passing) · Previous: [archive/active-2026-04-23.md](archive/active-2026-04-23.md)*
 *Hardware: Dual 4090s desktop. NOCIX server live.*
 
 > **Edit rule:** Rewrite this file directly. Do NOT cat/append the old content first — its archive snapshot lives under `.mind/archive/`. Appending duplicates the document and doubles every memory load. (Bug: 2026-04-20.)
@@ -17,6 +17,7 @@
 2. ★ **[WS7] Teaching** — 11-episode arc (Option C). Agent + repo scaffolded. Content not started → [teaching-workstream.md](../.spec/proposals/teaching-workstream.md)
 3. **[WS5] Token efficiency** — Apr 16 proposal awaiting refresh review → [token-efficiency.md](../.spec/proposals/token-efficiency.md)
 4. **[WS2] Brain Inline Panel + Kanban 4c** — next active build → [brain-inline-panel.md](../.spec/proposals/brain-inline-panel.md) · [brain-project-kanban.md](../.spec/proposals/brain-project-kanban.md)
+5. **[WS5] pg-ai-stewards** — Postgres-as-AI-substrate. Research → proposal + phases shipped May 2 with passing probe stack. Phase 1 (extension scaffold + bgworker + brain port to Postgres) is the next concrete build. → [projects/pg-ai-stewards/proposal.md](../projects/pg-ai-stewards/proposal.md) · [phases.md](../projects/pg-ai-stewards/phases.md) · [probe/RESULTS.md](../projects/pg-ai-stewards/probe/RESULTS.md)
 
 ## Key Facts
 
@@ -43,6 +44,7 @@
 | WS2 | Brain non-pipeline projects | ✅ archived Apr 23 | [archive/brain-non-pipeline-projects.md](../.spec/proposals/archive/brain-non-pipeline-projects.md) |
 | WS2 | Brain manual stage transitions | ✅ archived Apr 23 | [archive/brain-manual-stage-transitions.md](../.spec/proposals/archive/brain-manual-stage-transitions.md) |
 | WS2 | Johari window agent mode | 📝 proposed Apr 22 | [johari-window-agent-mode.md](../.spec/proposals/johari-window-agent-mode.md) |
+| WS5 | pg-ai-stewards (Postgres substrate for agent state, memory, work, model calls) | 📋 proposal + phases shipped May 2; probe stack passing (PG18 + pgvector + AGE bridge proven). Phase 1 next: pgrx scaffold + bgworker + brain SQLite→Postgres port | [projects/pg-ai-stewards/proposal.md](../projects/pg-ai-stewards/proposal.md) |
 | WS2 | Motivation coach agent mode | 📝 proposed Apr 22 | [motivation-coach-agent-mode.md](../.spec/proposals/motivation-coach-agent-mode.md) |
 | WS3 | LightRAG investigation | 📝 proposed Apr 22 | [lightrag-investigation.md](../.spec/proposals/lightrag-investigation.md) |
 | WS3 | Gospel engine v3 proxy-pointer | 📝 proposed Apr 22 | [gospel-engine-v3-proxy-pointer.md](../.spec/proposals/gospel-engine-v3-proxy-pointer.md) |

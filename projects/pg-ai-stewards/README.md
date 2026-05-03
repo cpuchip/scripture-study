@@ -319,17 +319,34 @@ specific clarification is that VS Code remains for the moments Michael
 
 ## Status
 
-Research complete enough to make the directional call:
+Graduated from research to **proposal + phased plan** on 2026-05-02.
 
-> Build, don't fork. pgrx + pgvector + AGE. Bgworker for model calls.
-> Same Postgres cluster as gospel-engine-v2, separate database. Cross-DB
-> references via stable URI strings. VS Code remains as editor; web UI
-> in becoming/ becomes the new agent-work surface.
+- **Direction confirmed.** Build, don't fork. pgrx + pgvector + AGE.
+  Bgworker for model calls. Same Postgres cluster as gospel-engine-v2,
+  separate database. Cross-DB references via stable URI strings.
+  VS Code remains as editor; web UI in `becoming/` becomes the new
+  agent-work surface.
+- **Probe passed end-to-end.** A working docker stack with PG18 +
+  pgvector + AGE in one container, plus seven SQL test blocks
+  exercising the bridge pattern, all passing. See
+  [probe/RESULTS.md](probe/RESULTS.md).
+- **Closest reference design found and digested.** Microsoft's
+  Azure-Samples/PostgreSQL-graphRAG-docker (MIT) — same recipe,
+  different choices (Azure OpenAI, PG16, single container). We steal
+  the five-tool MCP router pattern in Phase 3.
+- **pgai archival rationale resolved.** Timescale rebranded to
+  TigerData in June 2025 and consolidated on the
+  Python-library + outside-worker pattern. Confirming signal, not
+  disconfirming — they didn't kill the in-DB direction, they doubled
+  down on the *worker pattern* (which we already planned).
 
-Not yet a build spec. Next step: turn the open questions above into a
-small set of probes (license check ✅, archival post-mortem, schema sketch,
-local docker-compose with both extensions) and graduate this to a `plan/`
-document if the probes confirm.
+Read next:
+
+- **[proposal.md](proposal.md)** — what we're building and why
+- **[phases.md](phases.md)** — Phase 1 → Phase 5+ delivery plan with
+  concrete deliverables and kill criteria
+- **[probe/](probe/)** — working proof-of-concept stack and results
+- **[scratch.md](scratch.md)** — full source provenance
 
 ## Related work in this workspace
 
