@@ -1,0 +1,34 @@
+date: "2026-05-04"
+session_id: pg-ai-stewards-2-2
+intent: Phase 2.2 — gospel-engine resolver. Citation edges become real verse text via cached HTTP round-trips.
+discoveries:
+    - title: Resolver ships as a normal work_kind, not a special path
+      detail: Adding 'resolve_ref' alongside embed/chat/tool_dispatch took ~150 lines of Rust. The bgworker's three-phase pattern (claim/HTTP/write) accommodated it without touching the dispatcher loop. Same enqueue model, same retry surface, same NOTIFY hook.
+    - title: Stewards parser uncovered gospel-engine v2 corpus gaps
+      detail: After normalization (Rom.→Romans, 3 Ne.→3 Nephi, Psalm→Psalms, Heb.→Hebrews, etc.), 175 verses across 21 studies still 404. Direct curl confirms Hebrews/James/1 Corinthians/Jeremiah/Ezekiel/Job/most general epistles aren't indexed. Source markdown EXISTS in gospel-library — gospel-engine ingest skipped them. This is a finding to feed back, not a bug to chase further in stewards.
+    - title: Sticky errors changed the math from 'tax' to 'amortized cost'
+      detail: 'First implementation only skipped re-enqueue on success. A 404 came back into the queue every refresh. Switching to ''ANY cached row blocks re-enqueue'' (with explicit invalidate_ref escape hatch) means a corpus refresh costs ~1300 round-trips ONCE, then ~0 after. Verify suite proved it: rerun_enqueued = 0.'
+surprises:
+    - Verify Test 4 originally returned 3 (the errored refs being re-enqueued). I'd written it as a passing test before noticing — the 'idempotency' wasn't actually idempotent until errors went sticky. Inverse hypothesis caught it before I shipped.
+    - Half of the early 404s were normalization gaps, not corpus gaps. 'Psalm 23:1' vs 'Psalms 23:1' — singular slip — accounted for 23 of the original misses.
+relationship:
+    - quality: Trusted iteration
+      detail: 'Michael handed me production credentials for engine.ibeco.me without ceremony, said ''you can also fire up gospel-engine locally too in docker if needed'', and stepped back. The cadence is: he authorizes a phase, I build with the inverse-hypothesis discipline, he reviews the verify output. The covenant''s ''exercise stewardship'' clause is doing the work it was written for.'
+carry_forward:
+    - priority: high
+      note: Feed gospel-engine v2 owner the missing-books list. 175 verses across Hebrews/James/1 Cor/Jeremiah/Ezekiel/Job/Proverbs/most general epistles need ingest. The list lives in stewards.resolved_refs WHERE error IS NOT NULL — group by book.
+    - priority: medium
+      note: Phase 2.3 — similarity bridge (pgvector → SIMILAR_TO edges between Studies and between Study↔Talk). Now that 87% of citations resolve to text, vector queries against verse content become useful.
+    - priority: medium
+      note: Talks (and chapter-only refs like 'D&C 76') currently return empty resolved_verses. Need a path-based gospel-engine endpoint or a different parser that recognizes /eng/general-conference/<year>/<month>/<slug>.md URIs.
+    - priority: low
+      note: Phase 2.4 — stewards study show <slug> CLI that renders study_citations_resolved as a formatted reading view.
+questions:
+    - When stewards eventually exposes a chat endpoint that can answer 'show me Mosiah 18:8', should it call gospel-engine through stewards' resolver cache, or call gospel-engine MCP directly? The cache argues for the former; provider abstraction argues for the latter.
+tags:
+    - pg-ai-stewards
+    - phase-2
+    - gospel-engine
+    - resolver
+    - postgres
+    - bgworker

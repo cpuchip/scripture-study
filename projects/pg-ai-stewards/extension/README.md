@@ -162,9 +162,52 @@ a latent bug. Always use `cypher()`'s 3-argument form to bind via
 `$param` placeholders: `cypher('graph', $$ ... $name ... $$, $1)`
 where `$1` is `(jsonb_build_object(...)::text)::ag_catalog.agtype`.
 
-**Phase 2.2/2.3/2.4 deferred** — resolver (gospel-engine HTTP
-round-trip + cache), similarity bridge (pgvector → SIMILAR_TO edges),
-and `stewards study show` CLI. See [phases.md](../phases.md).
+**Phase 2.2 done (2026-05-04) — gospel-engine resolver:**
+- `stewards.resolved_refs` cache table keyed by single-verse
+  reference string ("Mosiah 18:8", "D&C 88:67"). Verse ranges in
+  citation anchor_text fan out to one row per verse — a 5-citation
+  range is one round-trip per verse but each verse is reusable.
+- `stewards.parse_reference(text)` — parses anchor_text into the
+  canonical reference shapes, normalizing en-dashes and chapter
+  numbering. Returns empty for chapter-only refs ("D&C 76") and
+  for non-scripture anchors ("Maxwell 1991") — those gracefully
+  show empty `resolved_verses` arrays rather than enqueuing waste.
+- `stewards.normalize_book(book)` — maps LDS-standard abbreviations
+  ("Rom.", "3 Ne.", "Heb.", "Jas.", "Psalm") to the full forms
+  gospel-engine v2 stores ("Romans", "3 Nephi", etc.). Also fixes
+  the singular/plural slip "Psalm" → "Psalms".
+- New `resolve_ref` work_kind. Bgworker hits
+  `{GOSPEL_ENGINE_URL}/api/get?ref=<ref>` with the bearer token from
+  `GOSPEL_ENGINE_TOKEN`. Both env vars read once in `_PG_init`.
+- 404 from gospel-engine is a soft-error: the response body is
+  cached in `resolved_refs.error` rather than retried. Errors are
+  sticky — `enqueue_resolve` skips refs with ANY cached row. Use
+  `stewards.invalidate_ref(ref)` to force a re-resolve after fixing
+  the parser or backfilling gospel-engine.
+- `stewards.refresh_study_refs(slug)` and
+  `stewards.refresh_all_study_refs()` enqueue all unresolved refs
+  for a study or the whole corpus. Both are idempotent.
+- `stewards.study_citations_resolved(slug)` joins citations to
+  cached verse text in one query. UI gets a jsonb array of
+  `{ref, content, error}` objects per CITES edge, ready to render.
+- Verified end-to-end on the full corpus: **1363 verses cached,
+  87.2% success rate, 0 retries on cached rows.** The 12.8% misses
+  are real corpus gaps in gospel-engine v2 (Hebrews, James,
+  1 Corinthians, Jeremiah, Ezekiel, Job, Proverbs, several minor
+  prophets, most general epistles) — confirmed by direct curl;
+  those books simply aren't indexed there yet.
+
+**Resolver finding to feed back to gospel-engine v2:** `/api/get?ref=`
+returns 404 for many books that ARE present in the source markdown
+under `gospel-library/eng/scriptures/nt/heb/*.md` etc. Either the
+ingest skipped those books or the canonical-reference index missed
+them. 175 verses across 21 studies are blocked on this. The list
+of missing books and counts is in `stewards.resolved_refs WHERE
+error IS NOT NULL`.
+
+**Phase 2.3/2.4 deferred** — similarity bridge (pgvector →
+SIMILAR_TO edges), and `stewards study show` CLI. See
+[phases.md](../phases.md).
 
 **Phase 1 deliverables 4 + 5 (brain migrator + brain CLI port) deferred** —
 substrate work (1.5/1.6) turned out to matter more than the brain

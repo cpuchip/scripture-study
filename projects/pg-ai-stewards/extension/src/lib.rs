@@ -1662,6 +1662,364 @@ extension_sql!(
 );
 
 // ---------------------------------------------------------------------------
+// Phase 2.2 — gospel-engine resolver
+//
+// Citations carry only an anchor_text and a URI. To show actual verse
+// text in study views, we hit gospel-engine-v2's /api/get?ref=<ref>
+// over HTTP. Results cache in stewards.resolved_refs keyed by the
+// single-verse reference string ("Mosiah 18:8") so verse-range
+// citations decompose into reusable rows.
+//
+// Bgworker handles the HTTP round-trip via a new 'resolve_ref' work
+// kind. The resolver only knows about scripture references for now —
+// talk URIs ("eng/general-conference/.../<slug>.md") cannot be parsed
+// from anchor_text alone and are left for a future sub-phase that
+// adds a path-based gospel-engine endpoint.
+// ---------------------------------------------------------------------------
+extension_sql!(
+    r#"
+    -- Cache table. Key is the canonical single-verse reference string
+    -- in the form gospel-engine accepts: "Mosiah 18:8", "D&C 88:67",
+    -- "Abraham 3:22". Verse ranges fan out to one row per verse.
+    CREATE TABLE stewards.resolved_refs (
+        ref          text PRIMARY KEY,
+        content      jsonb,
+        error        text,
+        fetched_at   timestamptz NOT NULL DEFAULT now(),
+        attempt_count int NOT NULL DEFAULT 1
+    );
+    CREATE INDEX resolved_refs_fetched_idx
+        ON stewards.resolved_refs (fetched_at DESC);
+    CREATE INDEX resolved_refs_error_idx
+        ON stewards.resolved_refs (ref) WHERE error IS NOT NULL;
+
+    -- ============================================================
+    -- normalize_book(book) — map LDS-standard abbreviations to the
+    -- full names gospel-engine v2 stores in scriptures.reference.
+    --
+    -- Two normalizations:
+    --   1. Drop trailing dots: "Rom." -> "Rom" then look up.
+    --   2. Map BoM/NT/OT short forms to full names ("Rom" -> "Romans",
+    --      "3 Ne" -> "3 Nephi"). Also fixes "Psalm" -> "Psalms"
+    --      (common author error since the LDS scripture is plural).
+    --
+    -- Returns the input unchanged if no mapping applies, so genuinely
+    -- unknown books (or already-normalized ones) pass through.
+    -- ============================================================
+    CREATE FUNCTION stewards.normalize_book(p_book text)
+    RETURNS text
+    LANGUAGE sql IMMUTABLE AS $func$
+        SELECT CASE rtrim(p_book, '.')
+            -- OT
+            WHEN 'Gen'    THEN 'Genesis'
+            WHEN 'Ex'     THEN 'Exodus'
+            WHEN 'Lev'    THEN 'Leviticus'
+            WHEN 'Num'    THEN 'Numbers'
+            WHEN 'Deut'   THEN 'Deuteronomy'
+            WHEN 'Josh'   THEN 'Joshua'
+            WHEN 'Judg'   THEN 'Judges'
+            WHEN 'Sam'    THEN 'Samuel'
+            WHEN '1 Sam'  THEN '1 Samuel'
+            WHEN '2 Sam'  THEN '2 Samuel'
+            WHEN '1 Kgs'  THEN '1 Kings'
+            WHEN '2 Kgs'  THEN '2 Kings'
+            WHEN '1 Chr'  THEN '1 Chronicles'
+            WHEN '2 Chr'  THEN '2 Chronicles'
+            WHEN 'Neh'    THEN 'Nehemiah'
+            WHEN 'Esth'   THEN 'Esther'
+            WHEN 'Ps'     THEN 'Psalms'
+            WHEN 'Psalm'  THEN 'Psalms'   -- common singular/plural slip
+            WHEN 'Prov'   THEN 'Proverbs'
+            WHEN 'Eccl'   THEN 'Ecclesiastes'
+            WHEN 'Song'   THEN 'Song of Solomon'
+            WHEN 'Isa'    THEN 'Isaiah'
+            WHEN 'Jer'    THEN 'Jeremiah'
+            WHEN 'Lam'    THEN 'Lamentations'
+            WHEN 'Ezek'   THEN 'Ezekiel'
+            WHEN 'Dan'    THEN 'Daniel'
+            WHEN 'Hos'    THEN 'Hosea'
+            WHEN 'Obad'   THEN 'Obadiah'
+            WHEN 'Mic'    THEN 'Micah'
+            WHEN 'Nah'    THEN 'Nahum'
+            WHEN 'Hab'    THEN 'Habakkuk'
+            WHEN 'Zeph'   THEN 'Zephaniah'
+            WHEN 'Hag'    THEN 'Haggai'
+            WHEN 'Zech'   THEN 'Zechariah'
+            WHEN 'Mal'    THEN 'Malachi'
+            -- NT
+            WHEN 'Matt'   THEN 'Matthew'
+            WHEN 'Rom'    THEN 'Romans'
+            WHEN '1 Cor'  THEN '1 Corinthians'
+            WHEN '2 Cor'  THEN '2 Corinthians'
+            WHEN 'Gal'    THEN 'Galatians'
+            WHEN 'Eph'    THEN 'Ephesians'
+            WHEN 'Philip' THEN 'Philippians'
+            WHEN 'Phil'   THEN 'Philippians'
+            WHEN 'Col'    THEN 'Colossians'
+            WHEN '1 Thes' THEN '1 Thessalonians'
+            WHEN '2 Thes' THEN '2 Thessalonians'
+            WHEN '1 Tim'  THEN '1 Timothy'
+            WHEN '2 Tim'  THEN '2 Timothy'
+            WHEN 'Tit'    THEN 'Titus'
+            WHEN 'Philem' THEN 'Philemon'
+            WHEN 'Heb'    THEN 'Hebrews'
+            WHEN 'Jas'    THEN 'James'
+            WHEN '1 Pet'  THEN '1 Peter'
+            WHEN '2 Pet'  THEN '2 Peter'
+            WHEN '1 Jn'   THEN '1 John'
+            WHEN '2 Jn'   THEN '2 John'
+            WHEN '3 Jn'   THEN '3 John'
+            WHEN 'Rev'    THEN 'Revelation'
+            -- BoM
+            WHEN '1 Ne'   THEN '1 Nephi'
+            WHEN '2 Ne'   THEN '2 Nephi'
+            WHEN '3 Ne'   THEN '3 Nephi'
+            WHEN '4 Ne'   THEN '4 Nephi'
+            WHEN 'WofM'   THEN 'Words of Mormon'
+            WHEN 'Mosiah' THEN 'Mosiah'
+            WHEN 'Hel'    THEN 'Helaman'
+            WHEN 'Morm'   THEN 'Mormon'
+            WHEN 'Moro'   THEN 'Moroni'
+            -- D&C / PGP — already full forms
+            ELSE rtrim(p_book, '.')
+        END;
+    $func$;
+    --
+    -- Examples handled:
+    --   "Mosiah 18:8"        -> {"Mosiah 18:8"}
+    --   "Mosiah 18:8-9"      -> {"Mosiah 18:8", "Mosiah 18:9"}
+    --   "Mosiah 18:8\u20139" -> {"Mosiah 18:8", "Mosiah 18:9"}  (en-dash)
+    --   "D&C 88:67-68"       -> {"D&C 88:67", "D&C 88:68"}
+    --   "Mosiah 18:8, 11"    -> {"Mosiah 18:8", "Mosiah 18:11"}
+    --   "Mosiah 18"          -> {} (chapter-only; needs path endpoint)
+    --   "Maxwell 1991"       -> {} (not a scripture reference)
+    --
+    -- Returns empty when the text doesn't match the
+    -- "<book> <chap>:<verses>" shape. Callers use this to skip
+    -- talks and chapter-only links, both of which need different
+    -- resolution paths (deferred to 2.2.x).
+    -- ============================================================
+    CREATE FUNCTION stewards.parse_reference(p_text text)
+    RETURNS SETOF text
+    LANGUAGE plpgsql IMMUTABLE AS $func$
+    DECLARE
+        v_norm   text;
+        v_match  text[];
+        v_book   text;
+        v_chap   text;
+        v_verses text;
+        v_part   text;
+        v_lo     int;
+        v_hi     int;
+        v_v      int;
+    BEGIN
+        -- Normalize en/em dashes to hyphen; collapse whitespace.
+        v_norm := regexp_replace(p_text, '[\u2013\u2014]', '-', 'g');
+        v_norm := regexp_replace(v_norm, '\s+', ' ', 'g');
+        v_norm := trim(v_norm);
+
+        -- Match "<book> <chap>:<verselist>"
+        --   group 1 = book ("1 Nephi", "Mosiah", "D&C", "JS-H")
+        --   group 2 = chapter
+        --   group 3 = verse part
+        -- Book is: optional leading numeric prefix ("1 ", "2 ", "3 ",
+        -- "4 ") then a Letter, then any of letters / spaces / & / .
+        -- / hyphens. Trailing space + chapter:verses is required.
+        v_match := regexp_match(v_norm,
+            '^((?:[1-4] )?[A-Za-z][A-Za-z &\.\-]*?) (\d+):([\d, \-]+)$');
+        IF v_match IS NULL THEN
+            RETURN;
+        END IF;
+        v_book   := stewards.normalize_book(trim(v_match[1]));
+        v_chap   := v_match[2];
+        v_verses := v_match[3];
+
+        -- Iterate comma-separated parts; each is either "N" or "A-B".
+        FOR v_part IN
+            SELECT trim(p) FROM unnest(string_to_array(v_verses, ',')) AS p
+        LOOP
+            IF v_part ~ '^\d+-\d+$' THEN
+                v_lo := split_part(v_part, '-', 1)::int;
+                v_hi := split_part(v_part, '-', 2)::int;
+                IF v_hi < v_lo OR v_hi - v_lo > 100 THEN
+                    -- Defensive cap: a 100-verse range is pathological.
+                    CONTINUE;
+                END IF;
+                FOR v_v IN v_lo..v_hi LOOP
+                    RETURN NEXT format('%s %s:%s', v_book, v_chap, v_v);
+                END LOOP;
+            ELSIF v_part ~ '^\d+$' THEN
+                RETURN NEXT format('%s %s:%s', v_book, v_chap, v_part);
+            END IF;
+        END LOOP;
+    END;
+    $func$;
+
+    -- ============================================================
+    -- enqueue_resolve(ref) — idempotent enqueue.
+    --
+    -- Skips if ref already has ANY cached row (success OR error).
+    -- Errors are sticky: a 404 from gospel-engine is almost always
+    -- a corpus gap (e.g. NT epistles at the time of writing), and
+    -- re-fetching every time a study is refreshed wastes work.
+    -- Callers who want to force a retry should DELETE the row first
+    -- (or call stewards.invalidate_ref(ref) once that lands).
+    --
+    -- Also skips if the same ref is already pending/running, to
+    -- prevent dup enqueues from concurrent callers.
+    --
+    -- Returns work_queue id, or NULL if no enqueue happened.
+    -- ============================================================
+    CREATE FUNCTION stewards.enqueue_resolve(p_ref text)
+    RETURNS bigint
+    LANGUAGE plpgsql AS $func$
+    DECLARE
+        v_id bigint;
+    BEGIN
+        IF EXISTS (
+            SELECT 1 FROM stewards.resolved_refs WHERE ref = p_ref
+        ) THEN
+            RETURN NULL;
+        END IF;
+        IF EXISTS (
+            SELECT 1 FROM stewards.work_queue
+             WHERE kind = 'resolve_ref'
+               AND status IN ('pending', 'running')
+               AND payload->>'ref' = p_ref
+        ) THEN
+            RETURN NULL;
+        END IF;
+
+        INSERT INTO stewards.work_queue (kind, provider, payload)
+        VALUES (
+            'resolve_ref',
+            'gospel_engine',
+            jsonb_build_object('ref', p_ref)
+        )
+        RETURNING id INTO v_id;
+        RETURN v_id;
+    END;
+    $func$;
+
+    -- Force a single ref to re-resolve next time refresh runs.
+    -- Returns true if a row was deleted, false if it wasn't cached.
+    CREATE FUNCTION stewards.invalidate_ref(p_ref text)
+    RETURNS boolean
+    LANGUAGE sql AS $func$
+        WITH d AS (
+            DELETE FROM stewards.resolved_refs
+             WHERE ref = p_ref
+             RETURNING 1
+        )
+        SELECT EXISTS (SELECT 1 FROM d);
+    $func$;
+
+    -- Refresh refs for every study in the corpus. Returns total
+    -- newly enqueued items. Use after a parser/normalizer change
+    -- (followed by `DELETE FROM stewards.resolved_refs WHERE error
+    -- IS NOT NULL` to retry the previously-missing refs).
+    CREATE FUNCTION stewards.refresh_all_study_refs()
+    RETURNS int
+    LANGUAGE sql AS $func$
+        SELECT coalesce(sum(stewards.refresh_study_refs(slug))::int, 0)
+          FROM stewards.studies;
+    $func$;
+
+    -- ============================================================
+    -- refresh_study_refs(slug) — for every CITES edge under the
+    -- study, parse anchor_text into single-verse refs and enqueue
+    -- the unresolved ones. Returns count of newly enqueued items.
+    --
+    -- Idempotent — calling twice without intervening work just
+    -- returns 0 the second time.
+    -- ============================================================
+    CREATE FUNCTION stewards.refresh_study_refs(p_slug text)
+    RETURNS int
+    LANGUAGE plpgsql AS $func$
+    DECLARE
+        v_enqueued int := 0;
+        v_link     record;
+        v_ref      text;
+        v_id       bigint;
+    BEGIN
+        FOR v_link IN
+            SELECT cited_uri, anchor_text
+              FROM stewards.study_citations(p_slug)
+        LOOP
+            FOR v_ref IN
+                SELECT * FROM stewards.parse_reference(v_link.anchor_text)
+            LOOP
+                v_id := stewards.enqueue_resolve(v_ref);
+                IF v_id IS NOT NULL THEN
+                    v_enqueued := v_enqueued + 1;
+                END IF;
+            END LOOP;
+        END LOOP;
+        RETURN v_enqueued;
+    END;
+    $func$;
+
+    -- ============================================================
+    -- study_citations_resolved(slug) — citations joined with
+    -- resolved verse text. One row per CITES edge (chapter-level),
+    -- with an aggregated array of resolved verse contents.
+    --
+    -- For talks and chapter-only refs (which parse_reference can't
+    -- decompose), resolved_verses is an empty array — UI should
+    -- show "open the source file" rather than verse text.
+    -- ============================================================
+    CREATE FUNCTION stewards.study_citations_resolved(p_slug text)
+    RETURNS TABLE (
+        cited_uri        text,
+        cited_kind       text,
+        anchor_text      text,
+        citation_count   int,
+        resolved_verses  jsonb
+    )
+    LANGUAGE plpgsql STABLE AS $func$
+    BEGIN
+        RETURN QUERY
+        WITH cites AS (
+            SELECT * FROM stewards.study_citations(p_slug)
+        ),
+        verses AS (
+            SELECT c.cited_uri,
+                   c.anchor_text,
+                   pr.ref,
+                   rr.content,
+                   rr.error
+              FROM cites c
+              CROSS JOIN LATERAL stewards.parse_reference(c.anchor_text) AS pr(ref)
+              LEFT JOIN stewards.resolved_refs rr ON rr.ref = pr.ref
+        )
+        SELECT
+            c.cited_uri,
+            c.cited_kind,
+            c.anchor_text,
+            c.citation_count,
+            coalesce(
+                (SELECT jsonb_agg(
+                    jsonb_build_object(
+                        'ref',     v.ref,
+                        'content', v.content,
+                        'error',   v.error
+                    ) ORDER BY v.ref
+                  )
+                  FROM verses v
+                 WHERE v.cited_uri = c.cited_uri
+                   AND v.anchor_text = c.anchor_text),
+                '[]'::jsonb
+            ) AS resolved_verses
+          FROM cites c
+         ORDER BY c.citation_count DESC, c.cited_uri ASC;
+    END;
+    $func$;
+    "#,
+    name = "create_resolver",
+    requires = ["create_studies"],
+);
+
+// ---------------------------------------------------------------------------
 // Diagnostic SQL functions
 // ---------------------------------------------------------------------------
 
@@ -1824,6 +2182,18 @@ fn split_provider_key(rest: &str) -> Option<(String, String)> {
 /// startup and never reloads.
 static PROVIDER_REGISTRY: OnceLock<ProviderRegistry> = OnceLock::new();
 
+/// Phase 2.2 — gospel-engine resolver config. Read once from env at
+/// postmaster startup. URL has no trailing slash; token is bearer.
+/// Both Optional so the resolver can fail gracefully if env is unset
+/// (returns "GOSPEL_ENGINE_URL not set" which is stored in
+/// resolved_refs.error and visible to callers).
+#[derive(Debug, Clone, Default)]
+struct GospelEngineConfig {
+    url: Option<String>,
+    token: Option<String>,
+}
+static GOSPEL_ENGINE_CONFIG: OnceLock<GospelEngineConfig> = OnceLock::new();
+
 // ---------------------------------------------------------------------------
 // Bgworker registration
 // ---------------------------------------------------------------------------
@@ -1857,6 +2227,24 @@ pub extern "C-unwind" fn _PG_init() {
         );
     }
     let _ = PROVIDER_REGISTRY.set(registry);
+
+    // Phase 2.2 — read gospel-engine config from env. Trim trailing
+    // slashes from URL so {url}/api/get?... composes cleanly.
+    let ge_cfg = GospelEngineConfig {
+        url: std::env::var("GOSPEL_ENGINE_URL")
+            .ok()
+            .map(|s| s.trim_end_matches('/').to_string())
+            .filter(|s| !s.is_empty()),
+        token: std::env::var("GOSPEL_ENGINE_TOKEN")
+            .ok()
+            .filter(|s| !s.is_empty()),
+    };
+    pgrx::log!(
+        "stewards: gospel-engine url={} token={}",
+        ge_cfg.url.as_deref().unwrap_or("<unset>"),
+        if ge_cfg.token.is_some() { "yes" } else { "no" }
+    );
+    let _ = GOSPEL_ENGINE_CONFIG.set(ge_cfg);
 
     BackgroundWorkerBuilder::new("pg_ai_stewards dispatcher")
         .set_function("stewards_dispatcher_main")
@@ -2323,6 +2711,45 @@ fn process_one_pending() -> bool {
                         &[id.into(), result_jsonb.into()],
                     )?;
                 }
+                Ok(WorkOutcome::Resolved {
+                    ref_str,
+                    content,
+                    error,
+                }) => {
+                    // UPSERT the cache row. attempt_count increments
+                    // on conflict so we can see how many tries a
+                    // flaky ref has taken.
+                    let content_jsonb = content.clone().map(pgrx::JsonB);
+                    client.update(
+                        "INSERT INTO stewards.resolved_refs \
+                            (ref, content, error, fetched_at, attempt_count) \
+                         VALUES ($1, $2, $3, now(), 1) \
+                         ON CONFLICT (ref) DO UPDATE \
+                         SET content = EXCLUDED.content, \
+                             error   = EXCLUDED.error, \
+                             fetched_at = now(), \
+                             attempt_count = stewards.resolved_refs.attempt_count + 1",
+                        None,
+                        &[
+                            ref_str.clone().into(),
+                            content_jsonb.into(),
+                            error.clone().into(),
+                        ],
+                    )?;
+                    let result_jsonb = pgrx::JsonB(serde_json::json!({
+                        "kind": "resolve_ref",
+                        "ref":  ref_str,
+                        "cached": content.is_some(),
+                        "error": error,
+                    }));
+                    client.update(
+                        "UPDATE stewards.work_queue \
+                         SET status = 'done', result = $2, done_at = now() \
+                         WHERE id = $1",
+                        None,
+                        &[id.into(), result_jsonb.into()],
+                    )?;
+                }
                 Err(msg) => {
                     pgrx::log!("stewards: work_item id={} failed: {}", id, msg);
                     // Best-effort: also stamp the brain row's
@@ -2467,6 +2894,14 @@ enum WorkOutcome {
         // either the JSON-stringified tool result or {"error": "..."}.
         tool_messages: Vec<(String, String, String)>,
     },
+    /// Result of resolving a single gospel-engine reference. Write
+    /// phase UPSERTs into stewards.resolved_refs. content is the
+    /// raw JSON returned by /api/get?ref=... (or null if errored).
+    Resolved {
+        ref_str: String,
+        content: Option<serde_json::Value>,
+        error: Option<String>,
+    },
 }
 
 /// Dispatch a work item by `kind`. Returns `Ok(WorkOutcome)` on
@@ -2487,6 +2922,7 @@ fn dispatch(
         "embed" => embed(provider, payload),
         "chat"  => chat(provider, payload),
         "tool_dispatch" => tool_dispatch(payload),
+        "resolve_ref"   => resolve_ref(payload),
         other => Err(format!("unknown work kind: {}", other)),
     }
 }
@@ -2773,6 +3209,102 @@ fn chat(provider_name: &str, payload: &serde_json::Value) -> Result<WorkOutcome,
 // model sees what went wrong and can recover. Only structural
 // failures (no parent message, malformed payload) raise Err.
 // ---------------------------------------------------------------------------
+
+/// Phase 2.2 — resolve a single gospel-engine reference like
+/// "Mosiah 18:8". GETs {GOSPEL_ENGINE_URL}/api/get?ref=<urlencoded>
+/// with the bearer token from GOSPEL_ENGINE_TOKEN.
+///
+/// Soft-error semantics: a 404 from gospel-engine becomes a Resolved
+/// row with content=NULL and error="not found", NOT an Err. This way
+/// the work item completes successfully (no retry storms on
+/// genuinely-missing refs) and the cache row records the negative
+/// result. Only network failures and 5xx responses raise Err so the
+/// bgworker's retry policy can take over.
+fn resolve_ref(payload: &serde_json::Value) -> Result<WorkOutcome, String> {
+    let ref_str = payload
+        .get("ref")
+        .and_then(|v| v.as_str())
+        .ok_or_else(|| "payload.ref missing".to_string())?
+        .to_string();
+
+    let cfg = GOSPEL_ENGINE_CONFIG
+        .get()
+        .cloned()
+        .unwrap_or_default();
+
+    let Some(base) = cfg.url else {
+        // Cache the failure so we don't keep retrying with no config.
+        return Ok(WorkOutcome::Resolved {
+            ref_str,
+            content: None,
+            error: Some("GOSPEL_ENGINE_URL not set".to_string()),
+        });
+    };
+
+    // Build URL with manual encoding of the ref (spaces -> %20, colon
+    // is fine in a query string but we percent-encode '&' which
+    // appears in "D&C 88:67"). reqwest's Client.get(url) does NOT
+    // re-encode the path/query, so we encode here.
+    let encoded = url_encode_query_value(&ref_str);
+    let url = format!("{}/api/get?ref={}", base, encoded);
+
+    let client = reqwest::blocking::Client::builder()
+        .timeout(std::time::Duration::from_secs(30))
+        .build()
+        .map_err(|e| format!("http client build: {}", e))?;
+
+    let mut req = client.get(&url);
+    if let Some(tok) = &cfg.token {
+        req = req.bearer_auth(tok);
+    }
+    let resp = req
+        .send()
+        .map_err(|e| format!("GET {}: {}", url, e))?;
+    let status = resp.status();
+    let body = resp.text().unwrap_or_default();
+
+    if status == reqwest::StatusCode::NOT_FOUND {
+        return Ok(WorkOutcome::Resolved {
+            ref_str,
+            content: None,
+            error: Some(format!("not found: {}", body.trim())),
+        });
+    }
+    if !status.is_success() {
+        // 5xx, 401, etc. — surface as Err so the work_queue marks
+        // 'error' and ops can see the failure mode.
+        return Err(format!("gospel-engine HTTP {}: {}", status, body));
+    }
+
+    let parsed: serde_json::Value = serde_json::from_str(&body)
+        .map_err(|e| format!("decode gospel-engine response: {} (body={})", e, body))?;
+
+    Ok(WorkOutcome::Resolved {
+        ref_str,
+        content: Some(parsed),
+        error: None,
+    })
+}
+
+/// Minimal RFC 3986 query-value percent encoder. Encodes everything
+/// outside ALPHA / DIGIT / "-._~" plus a few we know are safe in
+/// gospel-engine refs (':' is safe in a query). Avoids pulling
+/// percent-encoding crate for one call site.
+fn url_encode_query_value(s: &str) -> String {
+    let mut out = String::with_capacity(s.len() + 8);
+    for b in s.bytes() {
+        let safe = b.is_ascii_alphanumeric()
+            || matches!(b, b'-' | b'.' | b'_' | b'~' | b':');
+        if safe {
+            out.push(b as char);
+        } else if b == b' ' {
+            out.push_str("%20");
+        } else {
+            out.push_str(&format!("%{:02X}", b));
+        }
+    }
+    out
+}
 
 fn tool_dispatch(payload: &serde_json::Value) -> Result<WorkOutcome, String> {
     let parent_work_id = payload
