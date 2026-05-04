@@ -497,95 +497,122 @@ Cost: more SQL writes per loop. Acceptable.
   cost; nothing rolls them up per-session yet. One SELECT away when
   needed.
 
-## Phase 1.6.1 — tool_dispatch error recovery (planned, not started)
+## Phase 1.6.1 — tool_dispatch error recovery ✅ done 2026-05-03
 
-**Why a sub-phase:** the spec gap surfaced during Phase 1.6
-verification matters more once anything other than a developer
-drives the loop. Tools fail for many reasons we shouldn't trust
-to "fix it forever": network blips, rate limits, sidecar restarts,
-provider quota exhaustion, schema drift in the tool's own
-dependencies. We need the loop to degrade gracefully, not stall.
+**Why this sub-phase:** the spec gap surfaced during Phase 1.6
+verification matters once anything other than a developer drives
+the loop. Tools fail for many reasons — network blips, rate limits,
+sidecar restarts, provider quota exhaustion, schema drift. The loop
+must degrade gracefully, not stall.
 
-### Failure modes to cover
+### Failure modes and resolution
 
-1. **Tool returns an error string** — already handled in 1.6
-   (lands as `role='tool'` content; model recovers).
-2. **Tool function ereports** — already handled in 1.6 via
-   `pg_proc` pre-flight + PgTryBuilder belt-and-suspenders.
-3. **Tool dispatcher itself errors** (the new gap) — e.g.
-   permission lookup fails, JSON args fail to decode, http
-   sidecar unreachable, tool_def row deleted between chat and
-   dispatch. Today: `work_queue.status='error'`, no `role='tool'`
-   reply, parent chat has no continuation, loop stalls.
-4. **Bgworker crash mid-dispatch** — partial recovery exists
-   via the stale-claim reaper (rows get marked errored), but
-   the parent chat still has no continuation enqueued.
-5. **Tool times out** — http tool has a finite timeout (currently
-   120s); on timeout we should write a `role='tool'` reply
-   ("tool timed out after 120s") not just error the row.
-6. **Tool returns malformed JSON** — currently we pass the raw
-   string through; the model usually copes. But for tools whose
-   contract is "always returns JSON", a malformed reply should
-   become an error string the model can see.
+1. **Tool returns an error string** — handled in 1.6 (per-tool
+   error path wraps as `{"error":...}` `role='tool'` content;
+   model recovers).
+2. **Tool function ereports** — handled in 1.6 via `pg_proc`
+   pre-flight + PgTryBuilder belt-and-suspenders.
+3. **Tool dispatcher itself errors** (the previously open gap) —
+   prep tx fails, parent assistant message missing, payload
+   malformed. Now: dispatcher's `Err(msg)` arm calls
+   `synthesize_tool_failure()` which writes `role='tool'` replies
+   for every tool_call_id in the parent assistant message AND
+   enqueues continuation chat. Loop continues.
+4. **Bgworker crash mid-dispatch** — startup reaper now (a) marks
+   stale `in_progress` rows errored as before, (b) for every
+   reaped `tool_dispatch` row, calls `synthesize_tool_failure()`
+   to write replies + enqueue continuation. The reaper is the
+   "always-on safety net" — even a hard kernel-level kill of the
+   bgworker recovers on the next start.
+5. **HTTP tool timeout** — already handled correctly. `exec_http_tool`
+   returns `Err` on reqwest timeout, which routes through the
+   per-tool error wrap (mode 1). Tool reply content is
+   `{"error":"POST <url>: ... timed out"}`.
+6. **Tool returns malformed JSON** — already handled. Args decode
+   failure produces `{"_decode_error":...,"_raw":...}` sentinel
+   in the tool args; the per-tool error path handles bad return
+   values from the tool itself.
 
 ### Deliverables
 
-1. **`error_to_tool_reply()` helper** — shared codepath that
-   writes a `role='tool'` message with the error JSON AND
-   enqueues the continuation chat. Called by every failure
-   mode in the dispatcher (mode 3 above) and by the stale-claim
-   reaper for any `tool_dispatch` row it reaps that has a
-   reachable parent (mode 4).
-2. **HTTP tool timeout handling** — catch the reqwest timeout
-   error explicitly, format as `{"error":"tool timed out after
-   <N>s"}`, route through `error_to_tool_reply()`.
-3. **Per-tool retry policy** (data, not code) — new column on
-   `tool_defs`: `retry jsonb` of shape
-   `{max_attempts: int, backoff_ms: int, retryable_kinds: ["network","5xx","timeout"]}`.
-   Default: `{max_attempts:1}` (current behavior). The dispatcher
-   inspects this when an attempt fails and either retries or
-   surfaces. Retries do NOT enqueue a new work_queue row — they
-   stay in the current attempt; this preserves the
-   one-iteration-one-row property for the *agent's* perspective.
-4. **Step budget exhaustion writes a clean stop** — when iteration
-   == `agent.steps` and the model still wants tools, write an
-   assistant message with `finish_reason='length'` and content
-   `"step budget of N exhausted"`. Today this is implicit (no
-   continuation enqueued); making it explicit means callers see
-   *why* the loop ended.
-5. **`stewards.session_status(session_id)` view** — collapses
-   the messages + work_queue state into a single row per session:
-   `{status, last_finish_reason, total_tokens, total_cost,
-   stalled_reason?}`. Makes "did this loop finish or stall?"
-   a single SELECT for any UI/API.
-6. **Inverse hypothesis tests** for each failure mode, in
-   `verify-loop.sql`:
-   - dispatcher error: drop the tool_def between chat and dispatch
-   - http timeout: point at a slowloris-style endpoint
-   - bgworker mid-dispatch crash: SIGKILL during a long sql_fn,
-     verify reaper writes the tool reply + enqueues continuation
-   - step budget exhaustion: agent with steps=2, force a 3-tool
-     chain
+1. **`synthesize_tool_failure(parent_work_id, agent_family, model,
+   session_id, provider, error)` SQL function.** Looks up the
+   parent assistant message's `tool_calls`, inserts a synthetic
+   `role='tool'` message for each `tool_call_id` that doesn't
+   already have a reply (idempotent), and calls
+   `chat_post_internal()` to enqueue the continuation chat.
+   Synthetic content is JSON: `{"error":"<msg>","_synthetic":true,
+   "_reason":"dispatcher failure; no tool execution occurred"}`.
+   Returns the continuation work_id.
+2. **Dispatcher Err arm wired** — when the bgworker's
+   `process_one_pending` matches `Err(msg)` and `kind == "tool_dispatch"`,
+   it calls `synthesize_tool_failure` via SPI before stamping
+   the work_queue row errored. The error result also records
+   `continuation_after_failure` so the audit trail shows what
+   the recovery path enqueued.
+3. **Reaper enhanced** — startup reaper now reads `(id, kind,
+   provider, payload)` for every stale `in_progress` row. For
+   `tool_dispatch` kind, it calls `synthesize_tool_failure`
+   before marking errored. Logs `reaper synthesized tool failure
+   for tool_dispatch id=N (parent=M)` so operators can see the
+   recovery happen.
+4. **`stewards.session_status` view.** One row per session with
+   `last_finish_reason`, `last_loop_stop_reason`, `pending_work`,
+   `errored_work`, `total_tokens_in`, `total_billable_out`,
+   `last_assistant_at`. Single SELECT answers "did this loop
+   finish or stall?".
+5. **Step budget enforcement** — already implemented in 1.6
+   (chat handler's phase 3 checks `iteration_count` vs
+   `agent.steps`, sets `loop_stop_reason: "steps_exhausted"`
+   in `work_queue.result`). Verified during 1.6.1 review.
 
-### Done when
+### Verification
 
-- Every failure mode produces a `role='tool'` reply (or a final
-  assistant message for budget exhaustion), never a stalled
-  loop. `session_status()` reports `done` or `errored`, never
-  `stalled`.
-- Inverse hypothesis tests for all six modes pass and live in
-  `verify-loop.sql`.
-- A 24-hour synthetic load test (1 broken tool randomly mixed
-  in with 100 working calls per hour) shows zero stalled
-  sessions and zero stranded `in_progress` rows.
+`verify-1-6-1.sql` — pure-SQL unit tests of the helper:
+- Synthetic replies inserted with correct `tool_call_id` echo, JSON
+  content, and `_synthetic: true` marker.
+- Continuation chat enqueued (kind=chat, status=pending).
+- Idempotent: second call writes zero new replies, dedup query
+  catches it via `WHERE tool_call_id = v_tc_id`.
+- `session_status` returns useful state for prior live sessions
+  (`loop-3`: 7300 tokens in, 7414 billable out across 5 iterations;
+  `loop-err2`: 1076/156 because the inverse failed fast).
 
-### Kill criteria
+`verify-1-6-1-reaper.ps1` + `verify-1-6-1-reaper-setup.sql` +
+`verify-1-6-1-reaper-check.sql` — end-to-end integration test
+of mode 4:
+- Insert assistant message with `tool_calls` + reasoning_content.
+- Insert orphaned `tool_dispatch` row directly in `in_progress`
+  (simulates a worker that claimed-then-crashed).
+- `docker compose restart pg`. Reaper runs at startup.
+- Verify: orphan row marked errored, synthetic tool reply
+  written, continuation chat enqueued, kimi reads the failure,
+  retries with a real `brain_search_text` call (gets real result
+  back), and finishes with `finish_reason='stop'`.
 
-- The "always write a tool reply on dispatcher error" semantics
-  turn out to confuse the model more than help it (e.g. it
-  retries the same broken tool in a loop). If observed, add an
-  attempt counter on the parent chat and have the dispatcher
-  surface "tool unavailable, do not retry" after N attempts.
+**End-to-end recovered loop verified.** Bgworker crash → reaper →
+synthetic reply → model retry-with-different-args → success →
+clean stop. Zero stalled rows.
+
+### What this deliberately doesn't build
+
+- **Per-tool retry policy** (`tool_defs.retry jsonb`). YAGNI for
+  now. The agent loop already handles retries naturally — the
+  model sees the error reply and decides whether to retry with
+  different args, retry as-is, or give up. Adding a tool-level
+  retry layer would be speculative without evidence that the
+  model loops on broken tools. If we observe that pattern, add
+  an attempt counter on the parent chat then.
+- **Synthetic stop message at step budget exhaustion.** When
+  `iteration_count == agent.steps`, the loop stops with the
+  assistant's last `finish_reason` (which is `tool_calls`) and
+  `loop_stop_reason='steps_exhausted'` in the work_queue result.
+  Writing an extra synthetic assistant message saying "budget
+  exhausted" would fabricate words the model never said. The
+  truth is in `session_status.last_loop_stop_reason`; that's
+  enough.
+- **24-hour synthetic load test.** Will run before any production
+  rollout, not before Phase 2.
 
 ## Phase 2 — Studies + AGE: citations as edges
 

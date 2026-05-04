@@ -1155,6 +1155,139 @@ extension_sql!(
           );
     $func$;
 
+    -- synthesize_tool_failure: when a tool_dispatch row fails BEFORE
+    -- the per-tool dispatcher could write its own role='tool' replies
+    -- (mode 3 = dispatcher itself errors; mode 4 = bgworker crashed
+    -- mid-dispatch and the reaper is cleaning up), this builds the
+    -- missing tool replies AND enqueues the continuation chat so the
+    -- loop never stalls.
+    --
+    -- For each tool_call in the parent assistant message that does
+    -- NOT already have a matching role='tool' reply in the session
+    -- history, insert a synthetic reply with the error message. Then
+    -- call chat_post_internal to enqueue the continuation. The model
+    -- sees the failure, decides whether to retry-with-different-args
+    -- or give up gracefully.
+    --
+    -- Idempotent: if all tool_calls already have replies (e.g. half
+    -- the dispatch succeeded before crash), only the missing ones get
+    -- synthesized. If the parent has no tool_calls (caller invoked
+    -- this for the wrong row), it's a no-op and returns NULL.
+    CREATE FUNCTION stewards.synthesize_tool_failure(
+        p_parent_work_id bigint,
+        p_agent_family   text,
+        p_model          text,
+        p_session_id     text,
+        p_provider       text,
+        p_error          text
+    ) RETURNS bigint
+    LANGUAGE plpgsql AS $func$
+    DECLARE
+        v_parent_assistant_id bigint;
+        v_tool_calls          jsonb;
+        v_tc                  jsonb;
+        v_tc_id               text;
+        v_synthetic_count     int := 0;
+        v_continuation_id     bigint;
+    BEGIN
+        -- Find the parent assistant message (the one that requested
+        -- the tools).
+        SELECT id, tool_calls
+        INTO v_parent_assistant_id, v_tool_calls
+        FROM stewards.messages
+        WHERE parent_work_id = p_parent_work_id
+          AND role = 'assistant'
+        ORDER BY id DESC
+        LIMIT 1;
+
+        IF v_parent_assistant_id IS NULL OR v_tool_calls IS NULL
+           OR jsonb_array_length(v_tool_calls) = 0 THEN
+            RETURN NULL;
+        END IF;
+
+        -- For each tool_call, insert a synthetic reply UNLESS one
+        -- already exists for that tool_call_id in this session.
+        FOR v_tc IN SELECT * FROM jsonb_array_elements(v_tool_calls)
+        LOOP
+            v_tc_id := v_tc->>'id';
+            IF v_tc_id IS NULL THEN CONTINUE; END IF;
+
+            IF NOT EXISTS (
+                SELECT 1 FROM stewards.messages
+                WHERE session_id = p_session_id
+                  AND role = 'tool'
+                  AND tool_call_id = v_tc_id
+            ) THEN
+                INSERT INTO stewards.messages
+                    (session_id, role, content,
+                     tool_call_id, parent_work_id)
+                VALUES (
+                    p_session_id, 'tool',
+                    jsonb_build_object(
+                        'error', p_error,
+                        '_synthetic', true,
+                        '_reason', 'dispatcher failure; no tool execution occurred'
+                    )::text,
+                    v_tc_id,
+                    p_parent_work_id
+                );
+                v_synthetic_count := v_synthetic_count + 1;
+            END IF;
+        END LOOP;
+
+        -- Always enqueue continuation, even if all replies already
+        -- existed (caller may be retrying after a previous reaper
+        -- run wrote replies but didn't enqueue continuation).
+        v_continuation_id := stewards.chat_post_internal(
+            p_agent_family, p_model, p_session_id, p_provider);
+
+        RAISE NOTICE 'synthesize_tool_failure: parent=% synthetic=% continuation=%',
+            p_parent_work_id, v_synthetic_count, v_continuation_id;
+        RETURN v_continuation_id;
+    END;
+    $func$;
+
+    -- session_status: collapse a session's state into one row.
+    -- Useful for any UI/API answering "did this loop finish or stall?".
+    -- Joins the latest assistant message's finish_reason with the
+    -- latest chat work_queue row's loop_stop_reason and any errored
+    -- work_queue rows in the session's parent_work_id chain.
+    CREATE VIEW stewards.session_status AS
+    SELECT
+        s.id AS session_id,
+        s.kind,
+        s.label,
+        -- Latest assistant message in the session
+        (SELECT m.finish_reason FROM stewards.messages m
+         WHERE m.session_id = s.id AND m.role = 'assistant'
+         ORDER BY m.id DESC LIMIT 1) AS last_finish_reason,
+        (SELECT m.created_at FROM stewards.messages m
+         WHERE m.session_id = s.id AND m.role = 'assistant'
+         ORDER BY m.id DESC LIMIT 1) AS last_assistant_at,
+        -- Latest chat work_queue row's loop_stop_reason (e.g.
+        -- 'steps_exhausted' or 'truncated_tool_calls')
+        (SELECT (w.result->>'loop_stop_reason') FROM stewards.work_queue w
+         WHERE w.kind = 'chat'
+           AND w.payload->>'session_id' = s.id
+         ORDER BY w.id DESC LIMIT 1) AS last_loop_stop_reason,
+        -- Anything pending or in_progress for this session?
+        (SELECT count(*)::int FROM stewards.work_queue w
+         WHERE w.payload->>'session_id' = s.id
+           AND w.status IN ('pending', 'in_progress')) AS pending_work,
+        -- Anything errored?
+        (SELECT count(*)::int FROM stewards.work_queue w
+         WHERE w.payload->>'session_id' = s.id
+           AND w.status = 'error') AS errored_work,
+        -- Token + cost rollup across all assistant turns
+        (SELECT coalesce(sum(m.tokens_in), 0)::bigint
+         FROM stewards.messages m
+         WHERE m.session_id = s.id) AS total_tokens_in,
+        (SELECT coalesce(sum(m.tokens_out + coalesce(m.reasoning_tokens, 0)), 0)::bigint
+         FROM stewards.messages m
+         WHERE m.session_id = s.id) AS total_billable_out,
+        s.created_at
+    FROM stewards.sessions s;
+
     -- NOTE: an earlier draft included a chat_round_trip() that
     -- enqueued + polled inside one SQL function. That's a footgun:
     -- the SQL function holds an open transaction for the whole loop,
@@ -1395,11 +1528,71 @@ pub extern "C-unwind" fn stewards_dispatcher_main(_arg: pg_sys::Datum) {
     // bgworker crash is unreachable \u2014 we never reclaim our own
     // claims (that would risk double-side-effects). Mark them errored
     // at startup with a clear message so the caller knows what
-    // happened and can decide whether to re-enqueue. Five-minute
-    // grace window keeps us from racing a sibling worker (we don't
-    // run multiples today, but the field is cheap).
+    // happened and can decide whether to re-enqueue.
+    //
+    // For tool_dispatch rows specifically, also call
+    // synthesize_tool_failure: write the missing role='tool' replies
+    // and enqueue a continuation chat. Otherwise the parent chat's
+    // loop stalls forever waiting for tool replies that will never
+    // come (Phase 1.6.1).
     let _ = BackgroundWorker::transaction(|| {
         Spi::connect_mut(|client| {
+            // Pull the rows we're about to reap so we can synthesize
+            // continuations for tool_dispatch ones.
+            let stale_rows: Vec<(i64, String, String, serde_json::Value)> = {
+                let rows = client.select(
+                    "SELECT id, kind, provider, payload \
+                     FROM stewards.work_queue \
+                     WHERE status = 'in_progress'",
+                    None, &[],
+                )?;
+                rows.into_iter().filter_map(|r| {
+                    let id: i64 = r.get(1).ok()??;
+                    let kind: String = r.get(2).ok()??;
+                    let provider: String = r.get(3).ok()??;
+                    let payload: pgrx::JsonB = r.get(4).ok()??;
+                    Some((id, kind, provider, payload.0))
+                }).collect()
+            };
+
+            for (id, kind, provider, payload) in &stale_rows {
+                if kind == "tool_dispatch" {
+                    if let (Some(parent), Some(session), Some(family), Some(model)) = (
+                        payload.get("parent_work_id").and_then(|v| v.as_i64()),
+                        payload.get("session_id").and_then(|v| v.as_str()),
+                        payload.get("agent_family").and_then(|v| v.as_str()),
+                        payload.get("model").and_then(|v| v.as_str()),
+                    ) {
+                        let synth = client.select(
+                            "SELECT stewards.synthesize_tool_failure($1, $2, $3, $4, $5, $6)",
+                            Some(1),
+                            &[
+                                parent.into(),
+                                family.to_string().into(),
+                                model.to_string().into(),
+                                session.to_string().into(),
+                                provider.to_string().into(),
+                                format!(
+                                    "bgworker crashed mid-dispatch on work_item id={}; loop continued via reaper",
+                                    id
+                                ).into(),
+                            ],
+                        );
+                        if let Err(e) = synth {
+                            pgrx::log!(
+                                "stewards: reaper synthesize failed for id={}: {}",
+                                id, e
+                            );
+                        } else {
+                            pgrx::log!(
+                                "stewards: reaper synthesized tool failure for tool_dispatch id={} (parent={})",
+                                id, parent
+                            );
+                        }
+                    }
+                }
+            }
+
             client.update(
                 "UPDATE stewards.work_queue \
                  SET status = 'error', \
@@ -1794,12 +1987,59 @@ fn process_one_pending() -> bool {
                             );
                         }
                     }
+                    // tool_dispatch failures: write synthetic
+                    // role='tool' replies + enqueue continuation so
+                    // the loop never stalls. Phase 1.6 left this
+                    // gap open. Phase 1.6.1 closes it.
+                    let mut continuation: Option<i64> = None;
+                    if kind == "tool_dispatch" {
+                        if let (Some(parent), Some(session), Some(family), Some(model_str)) = (
+                            payload.get("parent_work_id").and_then(|v| v.as_i64()),
+                            payload.get("session_id").and_then(|v| v.as_str()),
+                            payload.get("agent_family").and_then(|v| v.as_str()),
+                            payload.get("model").and_then(|v| v.as_str()),
+                        ) {
+                            let synth = client.select(
+                                "SELECT stewards.synthesize_tool_failure($1, $2, $3, $4, $5, $6)",
+                                Some(1),
+                                &[
+                                    parent.into(),
+                                    family.to_string().into(),
+                                    model_str.to_string().into(),
+                                    session.to_string().into(),
+                                    provider.to_string().into(),
+                                    msg.clone().into(),
+                                ],
+                            );
+                            match synth {
+                                Ok(rows) => {
+                                    continuation = rows.into_iter().next()
+                                        .and_then(|r| r.get(1).ok().flatten());
+                                    pgrx::log!(
+                                        "stewards: synthesized tool failure for parent={}; continuation={:?}",
+                                        parent, continuation
+                                    );
+                                }
+                                Err(e) => {
+                                    pgrx::log!(
+                                        "stewards: synthesize_tool_failure SPI failed: {} (loop will stall)",
+                                        e
+                                    );
+                                }
+                            }
+                        }
+                    }
+                    let err_result = pgrx::JsonB(serde_json::json!({
+                        "error": msg,
+                        "continuation_after_failure": continuation,
+                    }));
                     client.update(
                         "UPDATE stewards.work_queue \
-                         SET status = 'error', error = $2, done_at = now() \
+                         SET status = 'error', error = $2, result = $3, \
+                             done_at = now() \
                          WHERE id = $1",
                         None,
-                        &[id.into(), msg.clone().into()],
+                        &[id.into(), msg.clone().into(), err_result.into()],
                     )?;
                 }
             }

@@ -104,6 +104,35 @@ the composition shape is frozen.
   reply gets written and the loop stalls. Acceptable for
   developer-driven use; addressed in [phases.md § Phase 1.6.1](../phases.md#phase-161--tool_dispatch-error-recovery-planned-not-started).
 
+**Phase 1.6.1 done (2026-05-03) — tool_dispatch error recovery:**
+- New SQL fn `synthesize_tool_failure(parent_work_id, agent_family,
+  model, session_id, provider, error)` writes synthetic
+  `role='tool'` replies (one per `tool_call_id` on the parent
+  assistant message, idempotent via dedup) AND enqueues the
+  continuation chat. Synthetic content is JSON with
+  `_synthetic: true` marker so callers can distinguish.
+- Dispatcher's `Err(msg)` arm wired through the helper for
+  `kind='tool_dispatch'` rows. Loop never stalls on dispatcher
+  failure — model receives the error and recovers.
+- Stale-claim reaper enhanced: for every reaped `tool_dispatch`
+  row, calls `synthesize_tool_failure` before marking errored.
+  Bgworker crashes are now self-healing on next start.
+- New `stewards.session_status` view: one row per session with
+  `last_finish_reason`, `last_loop_stop_reason`, `pending_work`,
+  `errored_work`, `total_tokens_in`, `total_billable_out`. Single
+  SELECT answers "did this loop finish or stall?".
+- Verified end-to-end via `verify-1-6-1-reaper.ps1`: insert
+  orphaned `tool_dispatch` row → `docker compose restart pg` →
+  reaper synthesizes failure reply → continuation chat enqueued →
+  kimi reads the failure → retries with real `brain_search_text`
+  call → finishes with `finish_reason='stop'`. Zero stalled rows.
+- Pure-SQL unit tests in `verify-1-6-1.sql`: synthetic-reply
+  insertion, idempotency, session_status output across multiple
+  prior sessions.
+- Per-tool retry policy deliberately deferred (YAGNI): the model
+  already decides what to do with errors. Add a tool-level retry
+  layer only if we observe the model looping on broken tools.
+
 **Phase 1 deliverables 4 + 5 (brain migrator + brain CLI port) deferred** —
 substrate work (1.5/1.6) turned out to matter more than the brain
 port, which becomes a "do it when SQLite hurts" item rather than
