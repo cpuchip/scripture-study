@@ -115,9 +115,20 @@ and at least one LLM-using path goes through the bgworker.
    sessions/messages cascade works.
 4. **Migrator** — one-shot Go binary that reads existing SQLite +
    chromem, writes to Postgres.
+
+   **⏸ Deferred 2026-05-03.** Phase 1 was originally framed as
+   "replace brain.exe storage." That framing is now stale: the
+   substrate (composition + agent loop, steps 1.5/1.6) turned out
+   to be the load-bearing deliverable, and we proved it without
+   migrating brain. brain.exe on SQLite continues to work; this
+   becomes a "do it when SQLite hurts" item, not a Phase 2 blocker.
+   Tracked as a future Phase 1.7 if we re-prioritize.
 5. **Brain CLI driver** — new backend in `scripts/brain/` that talks
    to Postgres via the existing brain API surface. Old SQLite driver
    stays as read-only fallback.
+
+   **⏸ Deferred 2026-05-03.** Same reason as #4 — paired work;
+   together they form Phase 1.7 if/when we revisit.
 6. **At least one real provider call through the bgworker** — the
    "embedding generation" path. Insert a brain entry → bgworker
    computes embedding via Ollama → writes pgvector column → search
@@ -374,6 +385,207 @@ then one wrapper around step 7 plus the dispatcher for
   inside stewards.
 - No `steps` enforcement. Column exists; the loop that respects it doesn't.
 - No session-scoped instructions. Schema supports it; nothing writes them yet.
+
+## Phase 1.6 — Agent loop ✅ done 2026-05-03
+
+**Goal:** close the loop. Phase 1.5 settled composition; step 7
+proved one round-trip. Phase 1.6 makes the model's `tool_calls`
+actually execute, feed back as `role='tool'` messages, and
+continue until `finish_reason ∈ {stop, length, content_filter}`
+or the step budget runs out.
+
+### Architectural choice: work-item-per-iteration
+
+Two reasonable architectures: (A) keep one bgworker tick busy until
+the loop terminates, (B) every iteration is its own work_queue row.
+We chose B. Reasons:
+- Every step is durable (work_queue row) and observable (NOTIFY on
+  each transition).
+- Cancellation is one UPDATE on a pending continuation.
+- A 30-second tool call can't starve other sessions — bgworker
+  picks up siblings between iterations.
+- Steps remain auditable after the fact; you can replay or branch
+  from any point.
+
+Cost: more SQL writes per loop. Acceptable.
+
+### Deliverables
+
+1. **Schema additions to `stewards.messages`**
+   - `parent_work_id bigint` — back-pointer to the work_queue row
+     that produced this message. Used by tool_dispatch to find the
+     assistant message it's responding to.
+   - `reasoning_content text` — captured from gateway response. Some
+     gateways (Moonshot direct) require this back on the next request
+     for thinking-enabled models or return 400.
+   - `reasoning_details jsonb` — captured from gateway response.
+     OpenCode Go uses this field name; we emit both because different
+     gateways read different names.
+
+2. **`kind='tool_dispatch'` work item + dispatcher**
+   - Reads `tool_calls` from the parent assistant message.
+   - For each call, resolves the tool against `stewards.tool_defs`,
+     checks `agent_tool_perms`, executes via `sql_fn` or `http`.
+   - Inserts `role='tool'` messages with proper `tool_call_id`
+     echoes (one per tool call).
+   - Enqueues a continuation `kind='chat'` work item.
+
+3. **Phase-3 of `chat` arm**
+   - When response has `tool_calls` AND iteration < `agent.steps`,
+     enqueues `tool_dispatch` instead of stopping.
+   - `parent_work_id` on the assistant message links the chain.
+
+4. **`compose_messages` upgrades**
+   - Emits full message shape: `tool_calls` on assistant, `tool_call_id`
+     on tool, `reasoning_content`/`reasoning_details` echoed back.
+   - Builds `[system, ...history, ?user]` with monotonically growing
+     prefix — enables prompt caching on identical `system + tools`.
+
+5. **Two seeded sql_fn tools**
+   - `brain_search_text_tool(jsonb) -> jsonb` — wrapper around the
+     existing FTS function.
+   - `load_skill_tool(jsonb) -> jsonb` — pulls a skill body from
+     `stewards.skills` for the `skill` builtin.
+
+6. **Bgworker resilience**
+   - **Stale-claim reaper at startup** — any `in_progress` row at
+     bgworker startup is by definition orphaned (we run one worker).
+     Marked errored with a clear message so callers can decide what
+     to do. Window is zero.
+   - **`pg_proc` pre-flight on sql_fn dispatch** — checks the target
+     function exists before constructing the SELECT. Returns a normal
+     Rust `Err` if not, so the missing-function ereport is never
+     triggered. Workaround for a pgrx 0.18 quirk: PgTryBuilder does
+     NOT empirically catch ereports through `BackgroundWorker::
+     transaction` + `Spi::connect`, so the cheapest defense is to
+     not trigger them.
+
+### Verification
+
+- **Success path** (`verify-loop.sql` `loop-3` session): "In one
+  sentence, name two virtues from Moroni 7." → kimi calls
+  `brain_search_text` (empty result) AND `skill` (loads
+  source-verification body) → reads both replies → answers
+  "I found no brain entries on this topic, but Moroni 7:45 names
+  virtues such as patience and kindness." `finish_reason: stop`.
+  18s end-to-end, ~$0.0005.
+- **Inverse hypothesis** (Agans Rule 9, `loop-err2` session):
+  pre-registered `always_fails` tool pointing at a non-existent
+  function. Request: "Please call the always_fails tool and report
+  what happens." → tool dispatch returns
+  `{"error":"sql_fn target stewards.nonexistent_function(jsonb) does not exist"}`
+  as a `role='tool'` message → kimi reads it and replies "The tool
+  failed with a SQL error: ...". `finish_reason: stop`. **Bgworker
+  did not crash.** Verified in postmaster logs.
+- **Reasoning replay** verified: both turns of `loop-3` carry
+  reasoning_content (266 chars turn 1, 2982 chars turn 2). Without
+  echoing them, Moonshot returns 400.
+
+### What this still doesn't build (deliberately)
+
+- **`tool_dispatch`-itself error recovery.** If the dispatcher row
+  ERRORS (vs. a tool returning an error string), no `role='tool'`
+  reply gets written and the model never sees what happened — the
+  parent chat's continuation expectation is unfulfilled. Acceptable
+  now (only happens on truly broken tool config that a developer
+  fixes), but tracked for Phase 1.6.1 below.
+- **`steps` budget enforcement.** Column exists on `agents`;
+  iteration counter exists on messages via `parent_work_id` chain.
+  Wire the actual cutoff next time we need it (current default
+  agent has `steps=10`, we haven't hit it).
+- **Per-call billing aggregation.** Each work_queue row records
+  cost; nothing rolls them up per-session yet. One SELECT away when
+  needed.
+
+## Phase 1.6.1 — tool_dispatch error recovery (planned, not started)
+
+**Why a sub-phase:** the spec gap surfaced during Phase 1.6
+verification matters more once anything other than a developer
+drives the loop. Tools fail for many reasons we shouldn't trust
+to "fix it forever": network blips, rate limits, sidecar restarts,
+provider quota exhaustion, schema drift in the tool's own
+dependencies. We need the loop to degrade gracefully, not stall.
+
+### Failure modes to cover
+
+1. **Tool returns an error string** — already handled in 1.6
+   (lands as `role='tool'` content; model recovers).
+2. **Tool function ereports** — already handled in 1.6 via
+   `pg_proc` pre-flight + PgTryBuilder belt-and-suspenders.
+3. **Tool dispatcher itself errors** (the new gap) — e.g.
+   permission lookup fails, JSON args fail to decode, http
+   sidecar unreachable, tool_def row deleted between chat and
+   dispatch. Today: `work_queue.status='error'`, no `role='tool'`
+   reply, parent chat has no continuation, loop stalls.
+4. **Bgworker crash mid-dispatch** — partial recovery exists
+   via the stale-claim reaper (rows get marked errored), but
+   the parent chat still has no continuation enqueued.
+5. **Tool times out** — http tool has a finite timeout (currently
+   120s); on timeout we should write a `role='tool'` reply
+   ("tool timed out after 120s") not just error the row.
+6. **Tool returns malformed JSON** — currently we pass the raw
+   string through; the model usually copes. But for tools whose
+   contract is "always returns JSON", a malformed reply should
+   become an error string the model can see.
+
+### Deliverables
+
+1. **`error_to_tool_reply()` helper** — shared codepath that
+   writes a `role='tool'` message with the error JSON AND
+   enqueues the continuation chat. Called by every failure
+   mode in the dispatcher (mode 3 above) and by the stale-claim
+   reaper for any `tool_dispatch` row it reaps that has a
+   reachable parent (mode 4).
+2. **HTTP tool timeout handling** — catch the reqwest timeout
+   error explicitly, format as `{"error":"tool timed out after
+   <N>s"}`, route through `error_to_tool_reply()`.
+3. **Per-tool retry policy** (data, not code) — new column on
+   `tool_defs`: `retry jsonb` of shape
+   `{max_attempts: int, backoff_ms: int, retryable_kinds: ["network","5xx","timeout"]}`.
+   Default: `{max_attempts:1}` (current behavior). The dispatcher
+   inspects this when an attempt fails and either retries or
+   surfaces. Retries do NOT enqueue a new work_queue row — they
+   stay in the current attempt; this preserves the
+   one-iteration-one-row property for the *agent's* perspective.
+4. **Step budget exhaustion writes a clean stop** — when iteration
+   == `agent.steps` and the model still wants tools, write an
+   assistant message with `finish_reason='length'` and content
+   `"step budget of N exhausted"`. Today this is implicit (no
+   continuation enqueued); making it explicit means callers see
+   *why* the loop ended.
+5. **`stewards.session_status(session_id)` view** — collapses
+   the messages + work_queue state into a single row per session:
+   `{status, last_finish_reason, total_tokens, total_cost,
+   stalled_reason?}`. Makes "did this loop finish or stall?"
+   a single SELECT for any UI/API.
+6. **Inverse hypothesis tests** for each failure mode, in
+   `verify-loop.sql`:
+   - dispatcher error: drop the tool_def between chat and dispatch
+   - http timeout: point at a slowloris-style endpoint
+   - bgworker mid-dispatch crash: SIGKILL during a long sql_fn,
+     verify reaper writes the tool reply + enqueues continuation
+   - step budget exhaustion: agent with steps=2, force a 3-tool
+     chain
+
+### Done when
+
+- Every failure mode produces a `role='tool'` reply (or a final
+  assistant message for budget exhaustion), never a stalled
+  loop. `session_status()` reports `done` or `errored`, never
+  `stalled`.
+- Inverse hypothesis tests for all six modes pass and live in
+  `verify-loop.sql`.
+- A 24-hour synthetic load test (1 broken tool randomly mixed
+  in with 100 working calls per hour) shows zero stalled
+  sessions and zero stranded `in_progress` rows.
+
+### Kill criteria
+
+- The "always write a tool reply on dispatcher error" semantics
+  turn out to confuse the model more than help it (e.g. it
+  retries the same broken tool in a loop). If observed, add an
+  attempt counter on the parent chat and have the dispatcher
+  surface "tool unavailable, do not retry" after N attempts.
 
 ## Phase 2 — Studies + AGE: citations as edges
 

@@ -74,6 +74,41 @@ the composition shape is frozen.
 - Tool dispatch + agent loop NOT here — that's Phase 1.6.
   `assistant.tool_calls` is persisted but unread.
 
+**Phase 1.6 done (2026-05-03) — agent loop closes:**
+- Schema: `messages.parent_work_id` chains iterations,
+  `messages.reasoning_content` + `messages.reasoning_details`
+  capture and replay thinking-model state (Moonshot returns 400
+  without it).
+- New `kind='tool_dispatch'` work item: reads parent assistant's
+  `tool_calls`, executes each (sql_fn or http), inserts
+  `role='tool'` messages with proper `tool_call_id` echo, enqueues
+  continuation chat. Work-item-per-iteration architecture — every
+  step durable, observable, cancellable, no starvation.
+- Phase-3 of `chat`: when response has `tool_calls` AND iteration
+  < `agent.steps`, enqueues `tool_dispatch` instead of stopping.
+- Two seeded sql_fn tools: `brain_search_text_tool`, `load_skill_tool`.
+- Bgworker resilience: stale-claim reaper at startup (zero window),
+  `pg_proc` pre-flight before sql_fn dispatch (workaround for
+  pgrx 0.18 quirk where PgTryBuilder doesn't catch ereports
+  through `BackgroundWorker::transaction`).
+- **Verified end-to-end** (`verify-loop.sql`):
+  - Success: "name two virtues from Moroni 7" → kimi calls
+    `brain_search_text` + `skill` → reads replies → answers →
+    `finish_reason='stop'`. 18s, ~$0.0005.
+  - Inverse (Agans Rule 9): broken tool → error JSON lands as
+    `role='tool'` content → kimi recovers and finishes cleanly.
+    **Bgworker did not crash.**
+  - Reasoning replay verified: 266 + 2982 chars round-tripped.
+- Spec gap named for Phase 1.6.1: if `tool_dispatch` *itself*
+  errors (vs. tool returning an error string), no `role='tool'`
+  reply gets written and the loop stalls. Acceptable for
+  developer-driven use; addressed in [phases.md § Phase 1.6.1](../phases.md#phase-161--tool_dispatch-error-recovery-planned-not-started).
+
+**Phase 1 deliverables 4 + 5 (brain migrator + brain CLI port) deferred** —
+substrate work (1.5/1.6) turned out to matter more than the brain
+port, which becomes a "do it when SQLite hurts" item rather than
+a Phase 2 blocker. See [phases.md](../phases.md#phase-1--foundation-extension-scaffold--bgworker--brain-port).
+
 ## Layout
 
 ```
