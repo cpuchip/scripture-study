@@ -1302,6 +1302,366 @@ extension_sql!(
 );
 
 // ---------------------------------------------------------------------------
+// Phase 2.1 — Studies + AGE citations
+//
+// Studies are first-class rows with embeddings (so similarity search
+// works the same way it does for brain entries). Citations to scriptures
+// and conference talks are AGE edges — one Study vertex per study row,
+// one ScriptureRef / Talk vertex per unique URI cited.
+//
+// URI scheme: we use the workspace-relative path under gospel-library/
+// as the canonical id. Examples:
+//   eng/scriptures/bofm/mosiah/18.md          (whole chapter)
+//   eng/scriptures/bofm/mosiah/18.md#11       (single verse)
+//   eng/general-conference/2024/04/<slug>.md  (talk)
+// This avoids inventing an lds:// scheme before we know what the
+// resolver will need; gospel-engine-v2's /api/get already accepts
+// these paths.
+//
+// The AGE graph 'stewards_graph' is created in init/00-extensions.sql
+// because it requires AGE to be loaded in the session, and CREATE
+// EXTENSION pg_ai_stewards may run before the session has LOAD'd age.
+// import_study() defends against the graph not existing by calling
+// stewards.ensure_studies_graph() on first invocation per session.
+// ---------------------------------------------------------------------------
+extension_sql!(
+    r#"
+    CREATE TABLE stewards.studies (
+        id              text PRIMARY KEY DEFAULT gen_random_uuid()::text,
+        slug            text NOT NULL UNIQUE,
+        title           text NOT NULL,
+        file_path       text NOT NULL,
+        body            text NOT NULL DEFAULT '',
+        frontmatter     jsonb NOT NULL DEFAULT '{}'::jsonb,
+
+        -- Embedding (populated async via the same embed work_queue
+        -- path that brain_entries uses; trigger below).
+        embedding       vector(768),
+        embedded_at     timestamptz,
+        embedded_model  text,
+        embedding_error text,
+
+        body_tsv        tsvector
+                        GENERATED ALWAYS AS (
+                            to_tsvector('english',
+                                coalesce(title, '') || ' ' || coalesce(body, ''))
+                        ) STORED,
+
+        created_at      timestamptz NOT NULL DEFAULT now(),
+        updated_at      timestamptz NOT NULL DEFAULT now()
+    );
+
+    CREATE INDEX studies_slug_idx       ON stewards.studies (slug);
+    CREATE INDEX studies_created_idx    ON stewards.studies (created_at DESC);
+    CREATE INDEX studies_fts_idx        ON stewards.studies USING gin (body_tsv);
+    CREATE INDEX studies_embedding_idx  ON stewards.studies
+        USING hnsw (embedding vector_cosine_ops);
+    CREATE INDEX studies_frontmatter_idx ON stewards.studies USING gin (frontmatter);
+
+    CREATE TABLE stewards.study_versions (
+        id          bigserial PRIMARY KEY,
+        study_id    text NOT NULL
+                    REFERENCES stewards.studies(id) ON DELETE CASCADE,
+        title       text NOT NULL,
+        body        text NOT NULL,
+        frontmatter jsonb NOT NULL DEFAULT '{}'::jsonb,
+        changed_by  text NOT NULL DEFAULT 'system',
+        changed_at  timestamptz NOT NULL DEFAULT now()
+    );
+    CREATE INDEX study_versions_study_idx
+        ON stewards.study_versions (study_id, changed_at DESC);
+
+    CREATE FUNCTION stewards.touch_study() RETURNS trigger
+    LANGUAGE plpgsql AS $func$
+    BEGIN
+        IF TG_OP = 'UPDATE' THEN
+            IF NEW.title       IS DISTINCT FROM OLD.title
+               OR NEW.body         IS DISTINCT FROM OLD.body
+               OR NEW.frontmatter  IS DISTINCT FROM OLD.frontmatter
+            THEN
+                INSERT INTO stewards.study_versions
+                    (study_id, title, body, frontmatter, changed_by)
+                VALUES
+                    (OLD.id, OLD.title, OLD.body, OLD.frontmatter,
+                     coalesce(current_setting('stewards.actor', true), 'system'));
+                NEW.updated_at := now();
+            END IF;
+        END IF;
+        RETURN NEW;
+    END;
+    $func$;
+
+    CREATE TRIGGER studies_touch
+        BEFORE UPDATE ON stewards.studies
+        FOR EACH ROW EXECUTE FUNCTION stewards.touch_study();
+
+    -- Embed-enqueue trigger. Reuses the existing 'embed' work_kind
+    -- in the bgworker (which UPDATEs stewards.<target_table> by id).
+    CREATE FUNCTION stewards.enqueue_study_embed() RETURNS trigger
+    LANGUAGE plpgsql AS $func$
+    BEGIN
+        IF TG_OP = 'INSERT'
+           OR NEW.title IS DISTINCT FROM OLD.title
+           OR NEW.body  IS DISTINCT FROM OLD.body
+        THEN
+            INSERT INTO stewards.work_queue (kind, provider, payload)
+            VALUES (
+                'embed',
+                'lm_studio',
+                jsonb_build_object(
+                    'target_table', 'studies',
+                    'target_id',    NEW.id,
+                    'text',         coalesce(NEW.title, '') || E'\n\n' || coalesce(NEW.body, ''),
+                    'model',        'nomic-embed-text-v1.5',
+                    'dimensions',   768
+                )
+            );
+        END IF;
+        RETURN NEW;
+    END;
+    $func$;
+
+    CREATE TRIGGER studies_enqueue_embed
+        AFTER INSERT OR UPDATE OF title, body
+        ON stewards.studies
+        FOR EACH ROW EXECUTE FUNCTION stewards.enqueue_study_embed();
+
+    -- ============================================================
+    -- AGE graph bootstrap.
+    --
+    -- ensure_studies_graph() is idempotent and safe to call from any
+    -- session. It LOADs age and creates the graph if missing. Called
+    -- at startup from 00-extensions.sql AND defensively from
+    -- import_study so a fresh session can ingest without a separate
+    -- bootstrap step.
+    -- ============================================================
+    CREATE FUNCTION stewards.ensure_studies_graph() RETURNS void
+    LANGUAGE plpgsql AS $func$
+    BEGIN
+        LOAD 'age';
+        PERFORM set_config('search_path',
+            'ag_catalog,' || current_setting('search_path'), true);
+        IF NOT EXISTS (
+            SELECT 1 FROM ag_catalog.ag_graph WHERE name = 'stewards_graph'
+        ) THEN
+            PERFORM ag_catalog.create_graph('stewards_graph');
+            RAISE NOTICE 'created AGE graph stewards_graph';
+        END IF;
+    END;
+    $func$;
+
+    -- ============================================================
+    -- Markdown link parser.
+    --
+    -- parse_gospel_links(body) returns one row per gospel-library
+    -- link found in the markdown. Handles three shapes:
+    --   1. Workspace-relative: ../gospel-library/eng/scriptures/...
+    --   2. Workspace-relative: ../../gospel-library/eng/...
+    --   3. Workspace-absolute: /gospel-library/eng/...
+    -- For each match returns:
+    --   uri         text  -- canonical eng/<...>.md[#anchor] form
+    --   anchor_text text  -- the [text] portion (e.g. 'Mosiah 18:8-9')
+    --   kind        text  -- 'scripture' | 'talk' | 'manual' | 'other'
+    --
+    -- Uses regexp_matches with the 'g' flag so all links in the body
+    -- are returned. Verse anchors (#11) are preserved when present.
+    -- ============================================================
+    CREATE FUNCTION stewards.parse_gospel_links(p_body text)
+    RETURNS TABLE (uri text, anchor_text text, kind text)
+    LANGUAGE plpgsql STABLE AS $func$
+    DECLARE
+        v_match text[];
+        v_path  text;
+        v_uri   text;
+        v_kind  text;
+    BEGIN
+        FOR v_match IN
+            SELECT regexp_matches(
+                p_body,
+                -- group 1: link text; group 2: full URL portion
+                E'\\[([^\\]]+)\\]\\(([^)]*gospel-library/[^)]+)\\)',
+                'g'
+            )
+        LOOP
+            v_path := v_match[2];
+            -- Strip leading ../ segments and any leading slash.
+            v_path := regexp_replace(v_path, '^(\.\./)+', '');
+            v_path := regexp_replace(v_path, '^/+', '');
+            -- Drop the gospel-library/ prefix to leave eng/...
+            v_path := regexp_replace(v_path, '^gospel-library/', '');
+            -- Some links use the bare path with a verse anchor as
+            -- ?id=... or #N — keep #N, drop ?id= variants.
+            v_path := regexp_replace(v_path, '\?id=[^#]*', '');
+
+            v_uri := v_path;
+
+            v_kind := CASE
+                WHEN v_uri LIKE 'eng/scriptures/%' THEN 'scripture'
+                WHEN v_uri LIKE 'eng/general-conference/%' THEN 'talk'
+                WHEN v_uri LIKE 'eng/manual/%' THEN 'manual'
+                ELSE 'other'
+            END;
+
+            uri := v_uri;
+            anchor_text := v_match[1];
+            kind := v_kind;
+            RETURN NEXT;
+        END LOOP;
+    END;
+    $func$;
+
+    -- ============================================================
+    -- import_study: insert/upsert the row + sync AGE graph.
+    --
+    -- - INSERT or UPDATE stewards.studies on slug conflict.
+    -- - For each unique gospel-library link in the body, MERGE the
+    --   target vertex (Scripture/Talk/Manual) and a CITES edge.
+    -- - Existing CITES edges from this Study are deleted first
+    --   (sync semantics: edges always reflect the current body).
+    --
+    -- AGE writes use cypher()'s 3-argument form: the third arg is
+    -- an agtype passed as $param inside the Cypher body. This is
+    -- the only safe way to inject user data into Cypher — string
+    -- interpolation breaks on apostrophes (AGE does NOT recognize
+    -- PG's '' escape as a single quote inside Cypher string literals).
+    --
+    -- Returns the study id.
+    -- ============================================================
+    CREATE FUNCTION stewards.import_study(
+        p_slug        text,
+        p_file_path   text,
+        p_title       text,
+        p_body        text,
+        p_frontmatter jsonb DEFAULT '{}'::jsonb
+    ) RETURNS text
+    LANGUAGE plpgsql AS $func$
+    DECLARE
+        v_id      text;
+        v_link    record;
+        v_label   text;
+        v_cypher  text;
+    BEGIN
+        PERFORM stewards.ensure_studies_graph();
+
+        INSERT INTO stewards.studies (slug, file_path, title, body, frontmatter)
+        VALUES (p_slug, p_file_path, p_title, p_body, p_frontmatter)
+        ON CONFLICT (slug) DO UPDATE
+            SET title       = EXCLUDED.title,
+                file_path   = EXCLUDED.file_path,
+                body        = EXCLUDED.body,
+                frontmatter = EXCLUDED.frontmatter
+        RETURNING id INTO v_id;
+
+        -- MERGE the Study vertex. Param-bound, no interpolation.
+        EXECUTE
+            $cy$
+            SELECT * FROM cypher('stewards_graph', $$
+                MERGE (s:Study {slug: $slug})
+                SET s.id = $id, s.title = $title, s.file_path = $file_path
+                RETURN s
+            $$, $1) AS (v agtype)
+            $cy$
+        USING (jsonb_build_object(
+            'slug',      p_slug,
+            'id',        v_id,
+            'title',     p_title,
+            'file_path', p_file_path
+        )::text)::ag_catalog.agtype;
+
+        -- Drop existing CITES edges so re-imports stay in sync with body.
+        EXECUTE
+            $cy$
+            SELECT * FROM cypher('stewards_graph', $$
+                MATCH (s:Study {slug: $slug})-[r:CITES]->()
+                DELETE r
+            $$, $1) AS (v agtype)
+            $cy$
+        USING (jsonb_build_object('slug', p_slug)::text)::ag_catalog.agtype;
+
+        -- For each unique cited URI, MERGE target vertex + CITES edge.
+        -- The vertex label varies by kind, which means the Cypher text
+        -- itself differs per row — we build it per-link and bind values.
+        FOR v_link IN
+            SELECT uri,
+                   max(anchor_text) AS anchor_text,
+                   max(kind)        AS kind,
+                   count(*)::int    AS citation_count
+              FROM stewards.parse_gospel_links(p_body)
+             GROUP BY uri
+        LOOP
+            v_label := CASE v_link.kind
+                WHEN 'scripture' THEN 'Scripture'
+                WHEN 'talk'      THEN 'Talk'
+                WHEN 'manual'    THEN 'Manual'
+                ELSE 'Reference'
+            END;
+
+            v_cypher := format(
+                $cy$
+                SELECT * FROM cypher('stewards_graph', $$
+                    MATCH (s:Study {slug: $slug})
+                    MERGE (t:%s {uri: $uri})
+                    SET t.kind = $kind
+                    MERGE (s)-[r:CITES]->(t)
+                    SET r.anchor_text = $anchor_text,
+                        r.citation_count = $citation_count
+                    RETURN r
+                $$, $1) AS (v agtype)
+                $cy$,
+                v_label
+            );
+
+            EXECUTE v_cypher
+            USING (jsonb_build_object(
+                'slug',           p_slug,
+                'uri',            v_link.uri,
+                'kind',           v_link.kind,
+                'anchor_text',    v_link.anchor_text,
+                'citation_count', v_link.citation_count
+            )::text)::ag_catalog.agtype;
+        END LOOP;
+
+        RETURN v_id;
+    END;
+    $func$;
+
+    -- Convenience read function: return one row per Study with its
+    -- citation count and a sample of cited URIs.
+    CREATE FUNCTION stewards.study_citations(p_slug text)
+    RETURNS TABLE (
+        study_slug text,
+        cited_uri  text,
+        cited_kind text,
+        anchor_text text,
+        citation_count int
+    )
+    LANGUAGE plpgsql STABLE AS $func$
+    BEGIN
+        PERFORM stewards.ensure_studies_graph();
+        RETURN QUERY EXECUTE
+            $cy$
+            SELECT
+                ag_catalog.agtype_to_text(s_slug)::text,
+                ag_catalog.agtype_to_text(t_uri)::text,
+                ag_catalog.agtype_to_text(t_kind)::text,
+                ag_catalog.agtype_to_text(r_anchor)::text,
+                ag_catalog.agtype_to_int8(r_count)::int
+            FROM cypher('stewards_graph', $$
+                MATCH (s:Study {slug: $slug})-[r:CITES]->(t)
+                RETURN s.slug, t.uri, t.kind, r.anchor_text, r.citation_count
+                ORDER BY r.citation_count DESC, t.uri ASC
+            $$, $1) AS (s_slug agtype, t_uri agtype, t_kind agtype,
+                        r_anchor agtype, r_count agtype)
+            $cy$
+        USING (jsonb_build_object('slug', p_slug)::text)::ag_catalog.agtype;
+    END;
+    $func$;
+    "#,
+    name = "create_studies",
+    requires = ["create_chat_helpers"],
+);
+
+// ---------------------------------------------------------------------------
 // Diagnostic SQL functions
 // ---------------------------------------------------------------------------
 

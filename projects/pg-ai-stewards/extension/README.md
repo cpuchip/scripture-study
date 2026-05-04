@@ -133,6 +133,39 @@ the composition shape is frozen.
   already decides what to do with errors. Add a tool-level retry
   layer only if we observe the model looping on broken tools.
 
+**Phase 2.1 done (2026-05-04) — studies + AGE citations:**
+- New `stewards.studies` table mirroring brain_entries shape (slug PK,
+  title, body, frontmatter jsonb, vector(768) embedding via the
+  existing `embed` work_kind, FTS, version snapshots).
+- AGE graph `stewards_graph` with `Study` and `Scripture`/`Talk`/
+  `Manual` vertices and `CITES` edges. Bootstrap fn
+  `stewards.ensure_studies_graph()` is idempotent and called both
+  from init and defensively from import.
+- `stewards.parse_gospel_links(body)` extracts `[text](.../gospel-library/eng/...)`
+  links, normalizes to canonical URIs (`eng/scriptures/bofm/mosiah/18.md`,
+  `eng/.../moro/7.md#47`, `eng/general-conference/2024/04/<slug>.md`).
+- `stewards.import_study(slug, file_path, title, body, frontmatter)`
+  upserts the row + syncs the graph (deletes existing CITES edges
+  then re-creates from current body).
+- `stewards.study_citations(slug)` reads the graph back to relational rows.
+- PowerShell importer `import-studies.ps1` bulk-loads all 69 studies
+  via `docker cp + psql -f` (avoids heredoc encoding pitfalls).
+- Verified end-to-end: 69 studies, 432 unique scripture vertices,
+  1256 CITES edges, all 69 embeddings populated. `verify-2-1.sql`
+  runs seven inverse-hypothesis tests including the apostrophe/em-dash
+  survival case that broke 13 of 69 imports on the first attempt.
+
+**Critical AGE pattern (recorded everywhere AGE writes happen):**
+Cypher does NOT honor PG's `''` single-quote escape inside string
+literals. `format()`-built Cypher with `replace(x, '''', '''''')` is
+a latent bug. Always use `cypher()`'s 3-argument form to bind via
+`$param` placeholders: `cypher('graph', $$ ... $name ... $$, $1)`
+where `$1` is `(jsonb_build_object(...)::text)::ag_catalog.agtype`.
+
+**Phase 2.2/2.3/2.4 deferred** — resolver (gospel-engine HTTP
+round-trip + cache), similarity bridge (pgvector → SIMILAR_TO edges),
+and `stewards study show` CLI. See [phases.md](../phases.md).
+
 **Phase 1 deliverables 4 + 5 (brain migrator + brain CLI port) deferred** —
 substrate work (1.5/1.6) turned out to matter more than the brain
 port, which becomes a "do it when SQLite hurts" item rather than

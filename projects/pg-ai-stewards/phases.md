@@ -619,7 +619,102 @@ clean stop. Zero stalled rows.
 **Goal:** make studies first-class rows that link to canonical
 sources via AGE edges, with cross-DB resolution to gospel-engine-v2.
 
-### Deliverables
+Broken into sub-phases the same way Phase 1 was. Phase 2.1 ships the
+substrate (rows + graph + importer); Phase 2.2 adds the resolver;
+Phase 2.3 adds similarity bridging; Phase 2.4 adds the CLI.
+
+## Phase 2.1 — studies table + AGE citations ✅ done 2026-05-04
+
+**What shipped:**
+
+1. **`stewards.studies` table** — id, slug (UNIQUE), title, file_path,
+   body, frontmatter (jsonb), embedding (vector(768)),
+   embedded_at/model/error, body_tsv (FTS), created_at/updated_at.
+   Indexes on slug, created_at DESC, body_tsv (gin), embedding (hnsw),
+   frontmatter (gin).
+2. **`stewards.study_versions`** — snapshot history identical in shape
+   to brain_versions. Trigger snapshots on title/body/frontmatter
+   change, NOT on embedding-only writes.
+3. **Embed-enqueue trigger** — same pattern as brain_entries; reuses
+   the existing `embed` work_kind (which UPDATEs
+   `stewards.<target_table>` by id, so adding a new embeddable table
+   is just "set up the same column shape").
+4. **`stewards.ensure_studies_graph()`** — idempotent AGE bootstrap.
+   `LOAD 'age'`, sets search_path, creates the `stewards_graph` if
+   missing. Called from `00-extensions.sql` at first boot AND
+   defensively from `import_study()` so a fresh session never sees
+   "graph does not exist".
+5. **`stewards.parse_gospel_links(body)`** — extracts every
+   `[text](.../gospel-library/eng/...)` link from a markdown body.
+   Returns (uri, anchor_text, kind ∈ {scripture, talk, manual,
+   other}). Strips `../` prefixes; preserves `#verse` anchors;
+   handles workspace-relative and workspace-absolute paths.
+6. **`stewards.import_study(slug, file_path, title, body, frontmatter)`** —
+   upserts the row (ON CONFLICT on slug, keeps id stable across
+   re-imports), MERGEs the Study vertex, deletes existing CITES
+   edges, then re-creates them from the current body. Sync
+   semantics — re-importing always reflects the present markdown.
+7. **`stewards.study_citations(slug)`** — read-side helper that
+   round-trips the graph back to relational rows. Returns
+   (study_slug, cited_uri, cited_kind, anchor_text, citation_count)
+   ordered by citation_count DESC.
+8. **PowerShell importer** (`import-studies.ps1`) — bulk-loads all
+   markdown under `study/`. Per-file SQL written to a temp dir and
+   `psql -f`'d via `docker cp` to avoid heredoc/pipe encoding issues
+   with large bodies. Reads with `[System.IO.File]::ReadAllText(...,
+   UTF8)` to keep em-dashes intact through PS5's default Windows-1252
+   codepage.
+9. **Verification** — `verify-2-1.sql` runs seven inverse-hypothesis
+   tests: corpus loaded, parser shapes, apostrophe/em-dash/paren
+   survival, re-import idempotency, edge-removal-on-link-removal,
+   cross-study cypher query, cleanup. End-to-end: 69 studies, 432
+   unique scripture vertices, 1256 CITES edges, all 69 embeddings
+   populated by the bgworker.
+
+**The actual bug we found and closed (worth recording):** AGE Cypher
+does NOT recognize PG's `''` as an escape for a single quote inside
+string literals. First implementation used `replace(p_title, '''',
+'''''')` and `format()`-built Cypher; this silently produced syntax
+errors on every study with an apostrophe or em-dash in the title or a
+link's anchor text (13 of 69). Inverse hypothesis confirmed: raw
+`SELECT * FROM cypher('g', $$ MERGE (x:T {l: 'don''t'}) ... $$)`
+errors with "syntax error at or near `'t`". Fix: use `cypher()`'s
+3-argument form to bind values via `$param` placeholders, with the
+agtype built from `jsonb_build_object(...)::text::ag_catalog.agtype`.
+This is the *only* safe way to inject user data into Cypher under
+pg_age — record everywhere AGE writes happen.
+
+**URI scheme.** Workspace-relative paths under `gospel-library/`
+serve as canonical IDs:
+- `eng/scriptures/bofm/mosiah/18.md` (chapter)
+- `eng/scriptures/bofm/moro/7.md#47` (verse)
+- `eng/general-conference/2024/04/<slug>.md` (talk)
+
+This avoids inventing an `lds://` scheme before knowing what the
+resolver needs; gospel-engine-v2's `/api/get?ref=...` already accepts
+these paths.
+
+### Deferred to later sub-phases (deliberately, not gaps)
+
+- **Phase 2.2 — resolver.** Currently CITES edges only carry the URI;
+  no scripture text is materialized inside the stewards DB. The
+  resolver will hit gospel-engine-v2's `/api/get?ref=...` over HTTP
+  (via the existing http tool dispatch path) and cache results in
+  `stewards.resolved_refs` with TTL. Done when `study_citations()`
+  can optionally return resolved verse text alongside the URI.
+- **Phase 2.3 — similarity bridge.** All 69 studies are embedded.
+  The bridge pattern (pgvector cosine + AGE `:SIMILAR_TO` edge) is
+  proven by the probe; just port it into a `stewards.refresh_study_similarity()`
+  function. Done when "similar studies" appears in the study_show
+  output.
+- **Phase 2.4 — `stewards study show <slug>` CLI.** Pulls together
+  row + citations (resolved) + similar studies into a single view.
+  Done when running it on `give-away-all-my-sins` returns the
+  study, scripture citations *with verse text*, and three similar
+  studies.
+
+## Phase 2 — original deliverable list (preserved for reference)
+
 
 1. **`stewards.studies` table** + a one-shot importer for existing
    markdown studies in `study/`. Each gets an embedding.

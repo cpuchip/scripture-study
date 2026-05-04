@@ -40,3 +40,11 @@ SELECT 'embed work queued: ' || count(*)::text AS ok
 
 SELECT 'fts hits for charity: ' || count(*)::text AS ok
     FROM stewards.brain_search_text('charity');
+
+-- Phase 2.1: ensure the AGE graph exists at first boot. The fn is
+-- idempotent and also self-defends in import_study(), but creating
+-- it here means the very first call from any psql session sees
+-- the graph already in place.
+SELECT stewards.ensure_studies_graph();
+SELECT 'AGE graph ready: ' || name AS ok
+    FROM ag_catalog.ag_graph WHERE name = 'stewards_graph';
