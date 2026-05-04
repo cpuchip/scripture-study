@@ -205,6 +205,23 @@ extension_sql!(
         finish_reason   text,
         tool_call_id    text,        -- set on role='tool' replies
 
+        -- Reasoning fields. Required for echo-back when continuing a
+        -- chat with thinking-enabled models (kimi-k2.6, o1-class).
+        -- Without these, Moonshot returns 400:
+        --   "thinking is enabled but reasoning_content is missing in
+        --    assistant tool call message at index N"
+        -- Capture both shapes — plain `reasoning` is what OpenRouter
+        -- emits; `reasoning_details` is the structured array. We
+        -- echo both back on the next request for cross-provider safety.
+        reasoning_content text,
+        reasoning_details jsonb,
+
+        -- For role='tool' messages: which work_queue tool_dispatch
+        -- row produced this. For 'assistant' messages: which 'chat'
+        -- work_queue row produced this. NULL for 'user' / 'system'.
+        -- Used for trace and to count loop iterations cleanly.
+        parent_work_id  bigint REFERENCES stewards.work_queue(id) ON DELETE SET NULL,
+
         embedding       vector(768),
         embedded_at     timestamptz,
         embedded_model  text,
@@ -405,6 +422,48 @@ extension_sql!(
 );
 
 // ---------------------------------------------------------------------------
+// Phase 1.6: Tool wrappers (one-arg jsonb in, jsonb out).
+// Convention: every sql_fn tool MUST have signature
+//   fn(p_args jsonb) RETURNS jsonb
+// so the Rust dispatcher is one line: SELECT <fn>($1). Underlying
+// SQL fns can have arbitrary signatures; the wrapper unpacks args.
+// ---------------------------------------------------------------------------
+
+extension_sql!(
+    r#"
+    CREATE FUNCTION stewards.brain_search_text_tool(p_args jsonb)
+    RETURNS jsonb
+    LANGUAGE sql STABLE AS $func$
+        SELECT coalesce(jsonb_agg(row_to_json(t)), '[]'::jsonb)
+        FROM stewards.brain_search_text(
+            p_args->>'query',
+            p_args->>'category',
+            coalesce((p_args->>'limit')::int, 20)
+        ) t;
+    $func$;
+
+    -- load_skill_tool: returns the body of the named skill (variant-
+    -- resolved against caller model is not done here; we just pick
+    -- the longest matching pattern across active rows). The LLM sees
+    -- the skill body as the tool reply and folds it into context.
+    CREATE FUNCTION stewards.load_skill_tool(p_args jsonb)
+    RETURNS jsonb
+    LANGUAGE sql STABLE AS $func$
+        SELECT coalesce(
+            (SELECT to_jsonb(s.body)
+               FROM stewards.skills s
+              WHERE s.family = p_args->>'name' AND s.active
+              ORDER BY length(model_match) DESC, model_match
+              LIMIT 1),
+            to_jsonb(format('skill not found: %s', p_args->>'name'))
+        );
+    $func$;
+    "#,
+    name = "create_tool_wrappers",
+    requires = ["create_brain_schema"],
+);
+
+// ---------------------------------------------------------------------------
 // Phase 1.5: Harness sketch — agents, skills, instructions, tool_defs.
 //
 // Goal: prove the prompt-assembly + tools[] round-trip BEFORE step 7
@@ -467,7 +526,7 @@ extension_sql!(
         prompt       text NOT NULL,                -- agent persona/role
         temperature  real,
         top_p        real,
-        steps        int,                          -- max agentic iterations
+        steps        int NOT NULL DEFAULT 8,        -- max agentic iterations
         active       bool NOT NULL DEFAULT true,
         created_at   timestamptz NOT NULL DEFAULT now(),
         PRIMARY KEY (family, model_match)
@@ -695,6 +754,20 @@ extension_sql!(
     $func$;
 
     -- compose_messages: [system, ...history, ?user]
+    --
+    -- Each history row is emitted with the FULL OpenAI message shape
+    -- so multi-turn tool flows are valid. Concretely:
+    --   - role='user'/'system': {role, content}
+    --   - role='assistant' WITHOUT tool_calls: {role, content}
+    --   - role='assistant' WITH tool_calls: {role, content, tool_calls}
+    --     (content may be empty string when only tool_calls were
+    --     emitted; OpenAI requires the field to exist)
+    --   - role='tool': {role, tool_call_id, content}
+    --     (NO content field omission — must be present and string)
+    --
+    -- Stripping any of these would cause the provider to 400 with
+    -- "messages with role 'tool' must follow an assistant message
+    -- with tool_calls" or similar shape errors. Do not simplify.
     CREATE FUNCTION stewards.compose_messages(
         p_agent_family text,
         p_model text,
@@ -710,7 +783,37 @@ extension_sql!(
         v_system := stewards.compose_system_prompt(p_agent_family, p_model, p_session_id);
 
         SELECT coalesce(jsonb_agg(
-            jsonb_build_object('role', m.role, 'content', m.content)
+            CASE m.role
+                WHEN 'tool' THEN jsonb_build_object(
+                    'role', 'tool',
+                    'tool_call_id', coalesce(m.tool_call_id, ''),
+                    'content', m.content
+                )
+                WHEN 'assistant' THEN
+                    -- Build the assistant message field-by-field. We
+                    -- ALWAYS include role+content. tool_calls and the
+                    -- reasoning fields are added only when present so
+                    -- non-tool, non-thinking turns stay minimal.
+                    --
+                    -- Why both reasoning_content AND reasoning_details:
+                    -- Moonshot's request-side validation reads
+                    -- `reasoning_content` (string). OpenRouter's pass-
+                    -- through reads `reasoning_details` (structured).
+                    -- Sending both lets the next request work whether
+                    -- the gateway normalizes or not.
+                    jsonb_build_object('role', 'assistant', 'content', m.content)
+                    || (CASE WHEN m.tool_calls IS NOT NULL
+                             THEN jsonb_build_object('tool_calls', m.tool_calls)
+                             ELSE '{}'::jsonb END)
+                    || (CASE WHEN m.reasoning_content IS NOT NULL
+                             THEN jsonb_build_object('reasoning_content', m.reasoning_content)
+                             ELSE '{}'::jsonb END)
+                    || (CASE WHEN m.reasoning_details IS NOT NULL
+                             THEN jsonb_build_object('reasoning_details', m.reasoning_details)
+                             ELSE '{}'::jsonb END)
+                ELSE
+                    jsonb_build_object('role', m.role, 'content', m.content)
+            END
             ORDER BY m.created_at, m.id
         ), '[]'::jsonb)
         INTO v_history
@@ -887,7 +990,7 @@ extension_sql!(
                 },
                 "required": ["query"]
             }$j$::jsonb,
-            $j${"kind":"sql_fn","schema":"stewards","name":"brain_search_text"}$j$::jsonb
+            $j${"kind":"sql_fn","schema":"stewards","name":"brain_search_text_tool"}$j$::jsonb
         ),
         (
             'skill',
@@ -899,7 +1002,7 @@ extension_sql!(
                 },
                 "required": ["name"]
             }$j$::jsonb,
-            $j${"kind":"builtin","name":"load_skill"}$j$::jsonb
+            $j${"kind":"sql_fn","schema":"stewards","name":"load_skill_tool"}$j$::jsonb
         )
     ON CONFLICT (name) DO NOTHING;
 
@@ -922,33 +1025,38 @@ extension_sql!(
 );
 
 // ---------------------------------------------------------------------------
-// Step 7: chat round-trip helpers.
+// Step 7 / Phase 1.6: chat round-trip helpers + agent loop enqueuers.
 //
-// chat_enqueue composes the body via dry_run_chat, inserts the user
-// message, and enqueues a 'chat' work item. The bgworker dispatch
-// 'chat' arm POSTs the body, parses the response, and writes the
-// assistant message into stewards.messages.
+// Architecture (Option B — work-item-per-iteration):
+//   chat_enqueue      → chat_post_internal → enqueues kind='chat'
+//   bgworker chat()   → POSTs, writes assistant message
+//   if assistant.tool_calls present AND iteration<steps:
+//     phase 3 enqueues kind='tool_dispatch' (carries parent_work_id)
+//   bgworker tool_dispatch() → runs each tool, returns ToolsDispatched
+//     phase 3 inserts N role='tool' messages, then enqueues kind='chat'
+//     (no user input — the messages history already has the new tool
+//     replies, compose_messages picks them up automatically)
+//   loop terminates when finish_reason='stop'/'length'/'content_filter'
+//   OR iteration count >= agent.steps.
 //
-// Tool-call dispatch is intentionally NOT here. Phase 1.6 adds the
-// loop that reads assistant.tool_calls and dispatches via
-// tool_defs.execute_target. Step 7 just proves the round-trip.
+// Stable-prefix discipline for prompt caching:
+//   Every body produced by compose_messages within a session has the
+//   same [system, ...prior_history] prefix. Only NEW messages append.
+//   This is exactly what OpenAI/Moonshot automatic prompt caching
+//   wants. Do not insert anything that varies between system and
+//   history (e.g., timestamps, request IDs, freshly-rolled UUIDs).
 // ---------------------------------------------------------------------------
 
 extension_sql!(
     r#"
-    -- chat_enqueue: compose body, persist user turn, enqueue work.
-    -- Returns the work_queue id so the caller can poll/listen.
-    --
-    -- Note: we compose the body NOW (in the calling tx) and store it
-    -- in payload. The bgworker re-reads the payload at dispatch time
-    -- and POSTs it as-is. This keeps the slow HTTP call outside the
-    -- claim transaction (matches the embed pattern from step 6) and
-    -- makes the body inspectable in work_queue.payload before send.
-    CREATE FUNCTION stewards.chat_enqueue(
+    -- chat_post_internal: compose body from CURRENT session state
+    -- (no user input append) and enqueue a chat work item. Used by
+    -- chat_enqueue for the first turn AND by tool_dispatch's phase 3
+    -- to continue the loop after appending tool replies.
+    CREATE FUNCTION stewards.chat_post_internal(
         p_agent_family text,
         p_model        text,
         p_session_id   text,
-        p_user_input   text,
         p_provider     text
     ) RETURNS bigint
     LANGUAGE plpgsql AS $func$
@@ -957,33 +1065,24 @@ extension_sql!(
         v_payload jsonb;
         v_work_id bigint;
     BEGIN
-        -- Build the POST body BEFORE inserting the user message,
-        -- because dry_run_chat takes user_input as an arg and
-        -- composes [system, ...history, user] itself. Inserting
-        -- first would duplicate the user turn in messages[].
+        -- compose with NULL user_input — history already contains
+        -- everything we need (the user message was inserted by the
+        -- caller of chat_enqueue, or the tool replies were inserted
+        -- by tool_dispatch's phase 3).
         v_body := stewards.dry_run_chat(
-            p_agent_family, p_model, p_session_id, p_user_input);
+            p_agent_family, p_model, p_session_id, NULL);
 
-        -- Strip _meta before sending to the provider; keep it for
-        -- the work_queue payload as an audit trail of what variant
-        -- resolved.
-        --
-        -- Also inject `user = <session_id>` so providers that surface
-        -- per-session billing (OpenCode Go's usage dashboard, OpenAI's
-        -- end-user analytics) can attribute cost to our session row.
-        -- The OpenAI spec field is named `user`; OpenCode honors it.
         v_payload := jsonb_build_object(
-            'session_id',    p_session_id,
-            'agent_family',  p_agent_family,
+            'session_id',      p_session_id,
+            'agent_family',    p_agent_family,
             'requested_model', p_model,
-            'meta',          v_body->'_meta',
-            'body',          (v_body - '_meta')
-                             || jsonb_build_object('user', p_session_id)
+            'meta',            v_body->'_meta',
+            -- Inject `user = <session_id>` so OpenCode (and other
+            -- providers that surface per-session billing) can attribute
+            -- cost AND so prompt caching keys on a stable user id.
+            'body',            (v_body - '_meta')
+                               || jsonb_build_object('user', p_session_id)
         );
-
-        -- Persist the user turn now that the body is composed.
-        INSERT INTO stewards.messages (session_id, role, content, model)
-        VALUES (p_session_id, 'user', p_user_input, p_model);
 
         INSERT INTO stewards.work_queue (kind, provider, payload)
         VALUES ('chat', p_provider, v_payload)
@@ -991,6 +1090,69 @@ extension_sql!(
 
         RETURN v_work_id;
     END;
+    $func$;
+
+    -- chat_enqueue: persist user turn + delegate to chat_post_internal.
+    -- Caller-facing entry point for starting or continuing a chat
+    -- with a new user message. Returns the chat work_queue id.
+    CREATE FUNCTION stewards.chat_enqueue(
+        p_agent_family text,
+        p_model        text,
+        p_session_id   text,
+        p_user_input   text,
+        p_provider     text
+    ) RETURNS bigint
+    LANGUAGE plpgsql AS $func$
+    BEGIN
+        INSERT INTO stewards.messages (session_id, role, content, model)
+        VALUES (p_session_id, 'user', p_user_input, p_model);
+
+        RETURN stewards.chat_post_internal(
+            p_agent_family, p_model, p_session_id, p_provider);
+    END;
+    $func$;
+
+    -- tool_dispatch_enqueue: called from the bgworker (via SPI) when
+    -- a chat response carried tool_calls AND iteration < agent.steps.
+    -- Builds the tool_dispatch payload and inserts the work row.
+    -- The actual tool execution happens in the bgworker dispatch arm.
+    CREATE FUNCTION stewards.tool_dispatch_enqueue(
+        p_parent_work_id bigint,
+        p_agent_family   text,
+        p_model          text,
+        p_session_id     text,
+        p_provider       text
+    ) RETURNS bigint
+    LANGUAGE sql AS $func$
+        INSERT INTO stewards.work_queue (kind, provider, payload)
+        VALUES (
+            'tool_dispatch',
+            p_provider,
+            jsonb_build_object(
+                'parent_work_id', p_parent_work_id,
+                'agent_family',   p_agent_family,
+                'model',          p_model,
+                'session_id',     p_session_id
+            )
+        )
+        RETURNING id;
+    $func$;
+
+    -- iteration_count: number of assistant messages in this session
+    -- since the last user message. Used by the chat handler's phase 3
+    -- to compare against agent.steps and decide whether to continue
+    -- the loop or stop.
+    CREATE FUNCTION stewards.iteration_count(p_session_id text)
+    RETURNS int
+    LANGUAGE sql STABLE AS $func$
+        SELECT count(*)::int FROM stewards.messages
+        WHERE session_id = p_session_id
+          AND role = 'assistant'
+          AND created_at > coalesce(
+            (SELECT max(created_at) FROM stewards.messages
+             WHERE session_id = p_session_id AND role = 'user'),
+            'epoch'::timestamptz
+          );
     $func$;
 
     -- NOTE: an earlier draft included a chat_round_trip() that
@@ -1229,6 +1391,28 @@ pub extern "C-unwind" fn stewards_dispatcher_main(_arg: pg_sys::Datum) {
         provider_count
     );
 
+    // Stale-claim reaper: any row left in 'in_progress' by a previous
+    // bgworker crash is unreachable \u2014 we never reclaim our own
+    // claims (that would risk double-side-effects). Mark them errored
+    // at startup with a clear message so the caller knows what
+    // happened and can decide whether to re-enqueue. Five-minute
+    // grace window keeps us from racing a sibling worker (we don't
+    // run multiples today, but the field is cheap).
+    let _ = BackgroundWorker::transaction(|| {
+        Spi::connect_mut(|client| {
+            client.update(
+                "UPDATE stewards.work_queue \
+                 SET status = 'error', \
+                     error  = coalesce(error, '') \
+                              || 'bgworker crashed before completion (stale in_progress reaped at startup)', \
+                     done_at = now() \
+                 WHERE status = 'in_progress'",
+                None, &[]
+            )?;
+            Ok::<(), pgrx::spi::Error>(())
+        })
+    });
+
     while BackgroundWorker::wait_latch(Some(Duration::from_millis(500))) {
         if BackgroundWorker::sighup_received() {
             pgrx::log!("stewards: SIGHUP received");
@@ -1379,25 +1563,37 @@ fn process_one_pending() -> bool {
                     response,
                     session_id,
                     model,
+                    agent_family,
+                    requested_model,
                     assistant_content,
                     assistant_tool_calls,
+                    reasoning_content,
+                    reasoning_details,
                     finish_reason,
                     tokens_in,
                     tokens_out,
                     reasoning_tokens,
                 }) => {
-                    // Insert the assistant turn. tool_calls is stored
-                    // verbatim — Phase 1.6's loop will read it to
-                    // dispatch tools. Step 7 just records.
+                    // Insert the assistant turn. tool_calls and the
+                    // reasoning fields are stored verbatim so the
+                    // next compose_messages call can echo them back
+                    // (required by Moonshot when thinking is enabled).
+                    // parent_work_id ties this message back to THIS
+                    // work item so tool_dispatch can find it.
                     let tool_calls_jsonb = assistant_tool_calls
+                        .clone()
+                        .map(pgrx::JsonB);
+                    let reasoning_details_jsonb = reasoning_details
                         .clone()
                         .map(pgrx::JsonB);
                     client.update(
                         "INSERT INTO stewards.messages \
                             (session_id, role, content, model, \
                              tool_calls, finish_reason, \
-                             tokens_in, tokens_out, reasoning_tokens) \
-                         VALUES ($1, 'assistant', $2, $3, $4, $5, $6, $7, $8)",
+                             tokens_in, tokens_out, reasoning_tokens, \
+                             reasoning_content, reasoning_details, \
+                             parent_work_id) \
+                         VALUES ($1, 'assistant', $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)",
                         None,
                         &[
                             session_id.clone().into(),
@@ -1408,8 +1604,74 @@ fn process_one_pending() -> bool {
                             (*tokens_in).into(),
                             (*tokens_out).into(),
                             (*reasoning_tokens).into(),
+                            reasoning_content.clone().into(),
+                            reasoning_details_jsonb.into(),
+                            id.into(),
                         ],
                     )?;
+
+                    // Loop continuation: if assistant returned
+                    // tool_calls AND we haven't exhausted agent.steps,
+                    // enqueue a tool_dispatch row. The bgworker will
+                    // pick it up on the next poll (~500ms).
+                    let has_tool_calls = assistant_tool_calls
+                        .as_ref()
+                        .and_then(|v| v.as_array())
+                        .map(|a| !a.is_empty())
+                        .unwrap_or(false);
+                    let mut continuation_enqueued: Option<i64> = None;
+                    let mut stop_reason: Option<&'static str> = None;
+                    if has_tool_calls && finish_reason.as_deref() == Some("tool_calls") {
+                        // Pull iteration count and agent.steps in one
+                        // round-trip. Default steps to 8 if the agent
+                        // row's steps column is somehow NULL.
+                        let iter_row = client.select(
+                            "SELECT \
+                                stewards.iteration_count($1) AS iter, \
+                                coalesce((stewards.resolve_agent($2, $3)).steps, 8) AS max_steps",
+                            Some(1),
+                            &[
+                                session_id.clone().into(),
+                                agent_family.clone().into(),
+                                requested_model.clone().into(),
+                            ],
+                        )?;
+                        let mut iter_iter = iter_row.into_iter();
+                        let iter_r = iter_iter.next().expect("iter row");
+                        let iter_count: i32 = iter_r.get(1)?.unwrap_or(0);
+                        let max_steps: i32 = iter_r.get(2)?.unwrap_or(8);
+
+                        if iter_count < max_steps {
+                            let enq_row = client.select(
+                                "SELECT stewards.tool_dispatch_enqueue($1, $2, $3, $4, $5)",
+                                Some(1),
+                                &[
+                                    id.into(),
+                                    agent_family.clone().into(),
+                                    requested_model.clone().into(),
+                                    session_id.clone().into(),
+                                    provider.to_string().into(),
+                                ],
+                            )?;
+                            let mut e_iter = enq_row.into_iter();
+                            let e_r = e_iter.next().expect("enqueue returns id");
+                            continuation_enqueued = Some(e_r.get(1)?.unwrap_or(0));
+                        } else {
+                            pgrx::log!(
+                                "stewards: agent step budget exhausted ({} >= {}); not continuing",
+                                iter_count, max_steps
+                            );
+                            stop_reason = Some("steps_exhausted");
+                        }
+                    } else if has_tool_calls {
+                        // Provider returned tool_calls but with a
+                        // finish_reason other than 'tool_calls'
+                        // (e.g., 'length' truncation mid-call). Don't
+                        // try to continue — the call list may be
+                        // incomplete and dispatching it would corrupt
+                        // the conversation.
+                        stop_reason = Some("truncated_tool_calls");
+                    }
 
                     let result_jsonb = pgrx::JsonB(serde_json::json!({
                         "kind": "chat",
@@ -1428,7 +1690,77 @@ fn process_one_pending() -> bool {
                                 .and_then(|v| v.as_array())
                                 .map(|a| a.len())
                                 .unwrap_or(0),
+                        "continuation_enqueued": continuation_enqueued,
+                        "loop_stop_reason": stop_reason,
                         "response": response,
+                    }));
+                    client.update(
+                        "UPDATE stewards.work_queue \
+                         SET status = 'done', result = $2, done_at = now() \
+                         WHERE id = $1",
+                        None,
+                        &[id.into(), result_jsonb.into()],
+                    )?;
+                }
+                Ok(WorkOutcome::ToolsDispatched {
+                    parent_work_id,
+                    session_id,
+                    agent_family,
+                    model,
+                    tool_messages,
+                }) => {
+                    // Insert one role='tool' message per dispatched
+                    // call, with tool_call_id echoing the assistant's
+                    // tool_call.id (provider requirement: each tool
+                    // reply must reference its call). parent_work_id
+                    // points at THIS tool_dispatch row for trace.
+                    for (tc_id, _name, content) in tool_messages.iter() {
+                        client.update(
+                            "INSERT INTO stewards.messages \
+                                (session_id, role, content, \
+                                 tool_call_id, parent_work_id) \
+                             VALUES ($1, 'tool', $2, $3, $4)",
+                            None,
+                            &[
+                                session_id.clone().into(),
+                                content.clone().into(),
+                                tc_id.clone().into(),
+                                id.into(),
+                            ],
+                        )?;
+                    }
+
+                    // Enqueue the next chat round. compose_messages
+                    // will pick up the new tool messages automatically
+                    // because they're now in the session history.
+                    let next_row = client.select(
+                        "SELECT stewards.chat_post_internal($1, $2, $3, $4)",
+                        Some(1),
+                        &[
+                            agent_family.clone().into(),
+                            model.clone().into(),
+                            session_id.clone().into(),
+                            provider.to_string().into(),
+                        ],
+                    )?;
+                    let mut n_iter = next_row.into_iter();
+                    let next_chat_work_id: i64 = n_iter
+                        .next()
+                        .and_then(|r| r.get(1).ok().flatten())
+                        .unwrap_or(0);
+
+                    let result_jsonb = pgrx::JsonB(serde_json::json!({
+                        "kind": "tool_dispatch",
+                        "parent_work_id": parent_work_id,
+                        "session_id": session_id,
+                        "tool_count": tool_messages.len(),
+                        "tools": tool_messages.iter()
+                            .map(|(tc_id, name, _)| serde_json::json!({
+                                "tool_call_id": tc_id,
+                                "name": name,
+                            }))
+                            .collect::<Vec<_>>(),
+                        "next_chat_work_id": next_chat_work_id,
                     }));
                     client.update(
                         "UPDATE stewards.work_queue \
@@ -1502,9 +1834,18 @@ enum WorkOutcome {
         session_id: String,
         // Model the provider actually used (echo from response.model).
         model: String,
+        // Continuation context: needed if assistant returned tool_calls
+        // and we want to enqueue a tool_dispatch for the next loop step.
+        // These mirror what was in the original payload.
+        agent_family: String,
+        requested_model: String,
         // Extracted bits we want to write into stewards.messages.
         assistant_content: String,
         assistant_tool_calls: Option<serde_json::Value>,
+        // Captured reasoning fields. Required to echo back on the
+        // next request when thinking is enabled (kimi-k2.6, o1).
+        reasoning_content: Option<String>,
+        reasoning_details: Option<serde_json::Value>,
         finish_reason: Option<String>,
         tokens_in: Option<i32>,
         tokens_out: Option<i32>,
@@ -1512,6 +1853,19 @@ enum WorkOutcome {
         // Billed separately from tokens_out by kimi/o1-style models;
         // store so cost computation can sum both. None when absent.
         reasoning_tokens: Option<i32>,
+    },
+    /// Result of executing one or more tool calls. Phase 3 inserts
+    /// each (tool_call_id, content) as a `role='tool'` message and
+    /// then enqueues the next chat round to continue the loop.
+    ToolsDispatched {
+        parent_work_id: i64,
+        session_id: String,
+        agent_family: String,
+        model: String,
+        // Per call: (tool_call_id, tool_name, content_jsonb_string).
+        // content is what the model will see in the next turn. It's
+        // either the JSON-stringified tool result or {"error": "..."}.
+        tool_messages: Vec<(String, String, String)>,
     },
 }
 
@@ -1532,6 +1886,7 @@ fn dispatch(
         }))),
         "embed" => embed(provider, payload),
         "chat"  => chat(provider, payload),
+        "tool_dispatch" => tool_dispatch(payload),
         other => Err(format!("unknown work kind: {}", other)),
     }
 }
@@ -1678,6 +2033,16 @@ fn chat(provider_name: &str, payload: &serde_json::Value) -> Result<WorkOutcome,
         .and_then(|v| v.as_str())
         .ok_or_else(|| "payload.session_id missing".to_string())?
         .to_string();
+    let agent_family = payload
+        .get("agent_family")
+        .and_then(|v| v.as_str())
+        .ok_or_else(|| "payload.agent_family missing".to_string())?
+        .to_string();
+    let requested_model = payload
+        .get("requested_model")
+        .and_then(|v| v.as_str())
+        .ok_or_else(|| "payload.requested_model missing".to_string())?
+        .to_string();
     let body = payload
         .get("body")
         .ok_or_else(|| "payload.body missing".to_string())?;
@@ -1733,6 +2098,16 @@ fn chat(provider_name: &str, payload: &serde_json::Value) -> Result<WorkOutcome,
         .unwrap_or("")
         .to_string();
     let assistant_tool_calls = message.get("tool_calls").cloned();
+    // Reasoning capture. Field names vary by gateway:
+    //   OpenRouter / OpenCode Go: `reasoning` (string), `reasoning_details` (array)
+    //   Moonshot direct:          `reasoning_content` (string)
+    // Coalesce both string forms; keep details verbatim for fidelity.
+    let reasoning_content = message
+        .get("reasoning_content")
+        .or_else(|| message.get("reasoning"))
+        .and_then(|v| v.as_str())
+        .map(String::from);
+    let reasoning_details = message.get("reasoning_details").cloned();
     let finish_reason = choice
         .get("finish_reason")
         .and_then(|v| v.as_str())
@@ -1771,13 +2146,325 @@ fn chat(provider_name: &str, payload: &serde_json::Value) -> Result<WorkOutcome,
         response: parsed,
         session_id,
         model,
+        agent_family,
+        requested_model,
         assistant_content,
         assistant_tool_calls,
+        reasoning_content,
+        reasoning_details,
         finish_reason,
         tokens_in,
         tokens_out,
         reasoning_tokens,
     })
+}
+
+// ---------------------------------------------------------------------------
+// Phase 1.6: tool_dispatch — execute the tool_calls from a parent
+// assistant message and produce N role='tool' replies for phase 3.
+//
+// Two execute_target kinds are wired up:
+//   sql_fn: SELECT <schema>.<name>($1::jsonb)::text
+//   http:   POST args as JSON body, response.text() returned as-is
+// Future kinds (subagent, mcp) are deferred.
+//
+// Tool errors are NOT returned as Err(). Each per-call failure is
+// captured into the tool reply content as {"error": "..."}, so the
+// model sees what went wrong and can recover. Only structural
+// failures (no parent message, malformed payload) raise Err.
+// ---------------------------------------------------------------------------
+
+fn tool_dispatch(payload: &serde_json::Value) -> Result<WorkOutcome, String> {
+    let parent_work_id = payload
+        .get("parent_work_id")
+        .and_then(|v| v.as_i64())
+        .ok_or_else(|| "payload.parent_work_id missing".to_string())?;
+    let session_id = payload
+        .get("session_id")
+        .and_then(|v| v.as_str())
+        .ok_or_else(|| "payload.session_id missing".to_string())?
+        .to_string();
+    let agent_family = payload
+        .get("agent_family")
+        .and_then(|v| v.as_str())
+        .ok_or_else(|| "payload.agent_family missing".to_string())?
+        .to_string();
+    let model = payload
+        .get("model")
+        .and_then(|v| v.as_str())
+        .ok_or_else(|| "payload.model missing".to_string())?
+        .to_string();
+
+    // Tx A: read the parent assistant message's tool_calls and grab
+    // the (already fetched) tool_def execute_target for each name.
+    // We do this in one tx so the dispatch loop below sees a coherent
+    // snapshot. The dispatch itself runs OUTSIDE this tx so HTTP
+    // tools don't hold row locks.
+    type Prep = Vec<(String, String, serde_json::Value, serde_json::Value)>;
+    let prep: Result<Option<Prep>, pgrx::spi::Error> =
+        BackgroundWorker::transaction(|| {
+            Spi::connect(|client| {
+                // Find the assistant message produced by the parent
+                // chat work item. We look it up by parent_work_id
+                // (set in phase 3 of chat).
+                let rows = client.select(
+                    "SELECT tool_calls FROM stewards.messages \
+                     WHERE parent_work_id = $1 AND role = 'assistant' \
+                     ORDER BY id DESC LIMIT 1",
+                    Some(1),
+                    &[parent_work_id.into()],
+                )?;
+                let mut iter = rows.into_iter();
+                let Some(row) = iter.next() else {
+                    return Ok(None);
+                };
+                let tool_calls: pgrx::JsonB = row.get(1)?.expect("tool_calls non-null");
+                let tcs = tool_calls.0.as_array().cloned().unwrap_or_default();
+
+                // For each tool_call, look up the tool_def. Build
+                // (tool_call_id, name, args_jsonb, target_jsonb).
+                let mut prepped: Prep = Vec::with_capacity(tcs.len());
+                for tc in tcs {
+                    let tc_id: String = tc.get("id")
+                        .and_then(|v| v.as_str())
+                        .unwrap_or("unknown")
+                        .to_string();
+                    let name: String = tc.get("function")
+                        .and_then(|f| f.get("name"))
+                        .and_then(|v| v.as_str())
+                        .unwrap_or("")
+                        .to_string();
+                    // OpenAI returns function.arguments as a STRING
+                    // (JSON-encoded). Decode here so dispatch sees a
+                    // jsonb. If the model emits malformed JSON, fall
+                    // back to a sentinel so dispatch can still run
+                    // and the tool can complain meaningfully.
+                    let args_str = tc.get("function")
+                        .and_then(|f| f.get("arguments"))
+                        .and_then(|v| v.as_str())
+                        .unwrap_or("{}");
+                    let args = serde_json::from_str::<serde_json::Value>(args_str)
+                        .unwrap_or_else(|_| serde_json::json!({
+                            "_decode_error": "function.arguments was not valid JSON",
+                            "_raw": args_str,
+                        }));
+
+                    // Look up tool_def. If absent, store a sentinel
+                    // target so dispatch can return a structured
+                    // error reply (the model needs to know).
+                    let target_rows = client.select(
+                        "SELECT execute_target FROM stewards.tool_defs \
+                         WHERE name = $1 AND active",
+                        Some(1),
+                        &[name.clone().into()],
+                    )?;
+                    let target = match target_rows.into_iter().next() {
+                        Some(r) => r.get::<pgrx::JsonB>(1)?.map(|j| j.0)
+                            .unwrap_or(serde_json::json!({"kind":"missing"})),
+                        None => serde_json::json!({"kind":"missing"}),
+                    };
+                    prepped.push((tc_id, name, args, target));
+                }
+                Ok(Some(prepped))
+            })
+        });
+
+    let prepped = prep
+        .map_err(|e| format!("tool_dispatch prep tx: {}", e))?
+        .ok_or_else(|| format!(
+            "no assistant message found for parent_work_id={}", parent_work_id
+        ))?;
+
+    // Phase 2 (no tx): execute each tool. Collect (tc_id, name, content).
+    let mut tool_messages: Vec<(String, String, String)> =
+        Vec::with_capacity(prepped.len());
+    for (tc_id, name, args, target) in prepped.into_iter() {
+        let content = match exec_one_tool(&name, &args, &target) {
+            Ok(s) => s,
+            Err(e) => {
+                pgrx::log!("stewards: tool '{}' failed: {}", name, e);
+                serde_json::json!({"error": e}).to_string()
+            }
+        };
+        tool_messages.push((tc_id, name, content));
+    }
+
+    Ok(WorkOutcome::ToolsDispatched {
+        parent_work_id,
+        session_id,
+        agent_family,
+        model,
+        tool_messages,
+    })
+}
+
+/// Dispatch a single tool call. Returns the content string the
+/// model will see as the tool reply. SHOULD be a JSON-parseable
+/// string (the convention is that tools return JSON), but the
+/// LLM is told this is a tool reply so freeform strings work too.
+fn exec_one_tool(
+    name: &str,
+    args: &serde_json::Value,
+    target: &serde_json::Value,
+) -> Result<String, String> {
+    let kind = target.get("kind")
+        .and_then(|v| v.as_str())
+        .ok_or_else(|| "tool execute_target.kind missing".to_string())?;
+    match kind {
+        "sql_fn" => exec_sql_fn_tool(target, args),
+        "http"   => exec_http_tool(target, args),
+        "missing" => Err(format!("tool '{}' is not registered or inactive", name)),
+        other    => Err(format!("unsupported tool kind: {}", other)),
+    }
+}
+
+/// SQL function tool. Convention: the target SQL fn has signature
+///   fn(p_args jsonb) RETURNS jsonb
+/// Wrapped by stewards.<name>_tool functions for this convention.
+fn exec_sql_fn_tool(
+    target: &serde_json::Value,
+    args: &serde_json::Value,
+) -> Result<String, String> {
+    let schema = target.get("schema")
+        .and_then(|v| v.as_str())
+        .ok_or_else(|| "sql_fn target.schema missing".to_string())?;
+    let fn_name = target.get("name")
+        .and_then(|v| v.as_str())
+        .ok_or_else(|| "sql_fn target.name missing".to_string())?;
+
+    // Identifier-safe-ish guard: schema and name must match a
+    // simple identifier pattern. This is a defense-in-depth measure
+    // because we're string-formatting these into SQL. The CHECK
+    // constraint on tool_defs.name already enforces this at insert,
+    // but the schema field is free-form.
+    let safe = |s: &str| s.chars().all(|c| c.is_ascii_alphanumeric() || c == '_');
+    if !safe(schema) || !safe(fn_name) {
+        return Err(format!("unsafe identifier in sql_fn target: {}.{}", schema, fn_name));
+    }
+
+    let sql = format!("SELECT {}.{}($1)::text", schema, fn_name);
+    // JsonB doesn't impl Clone in pgrx 0.18; build the value once and
+    // wrap it in Rc so multiple PgTryBuilder retries (if any) could
+    // share it. We currently only call it once, so a fresh build per
+    // entry is fine — just don't try to .clone() it later.
+    let args_value = args.clone();
+
+    // Pre-flight: does the function exist with a jsonb signature?
+    // PG ereports on missing function would otherwise reach the
+    // bgworker via longjmp; PgTryBuilder is supposed to catch them
+    // but in pgrx 0.18 + BackgroundWorker::transaction the longjmp
+    // path empirically still kills the worker (verified in
+    // testing — see verify-loop.sql). The cheapest defense is to
+    // check pg_proc first and never trigger the ereport.
+    let exists: Result<bool, pgrx::spi::Error> =
+        BackgroundWorker::transaction(|| {
+            Spi::connect(|client| {
+                let row = client.select(
+                    "SELECT EXISTS ( \
+                        SELECT 1 FROM pg_proc p \
+                        JOIN pg_namespace n ON p.pronamespace = n.oid \
+                        WHERE n.nspname = $1 AND p.proname = $2 \
+                          AND pg_get_function_arguments(p.oid) ILIKE '%jsonb%' \
+                     )",
+                    Some(1),
+                    &[schema.into(), fn_name.into()],
+                )?;
+                Ok(row.into_iter().next()
+                    .and_then(|r| r.get::<bool>(1).ok().flatten())
+                    .unwrap_or(false))
+            })
+        });
+    match exists {
+        Ok(true) => { /* fall through */ }
+        Ok(false) => return Err(format!(
+            "sql_fn target {}.{}(jsonb) does not exist", schema, fn_name)),
+        Err(e) => return Err(format!("sql_fn pre-flight: {}", e)),
+    }
+
+    use pgrx::PgTryBuilder;
+
+    // PgTryBuilder wraps PG_TRY/PG_CATCH. It catches the ereport,
+    // unwinds the implicit subtx pgrx opened around BackgroundWorker
+    // ::transaction, and returns a recoverable Err we match on here.
+    // The bgworker survives.
+    //
+    // We do NOT use SAVEPOINT here. SAVEPOINT requires an explicit
+    // BEGIN, but BackgroundWorker::transaction opens an implicit one
+    // \u2014 trying to issue SAVEPOINT inside it errors with
+    // "SAVEPOINT can only be used in transaction blocks", which
+    // ironically broke even the success path. PG_TRY handles the
+    // unwind without our help.
+    let result: Result<Option<String>, String> = PgTryBuilder::new(|| {
+        let outer: Result<Option<String>, pgrx::spi::Error> =
+            BackgroundWorker::transaction(|| {
+                Spi::connect(|client| {
+                    let row = client.select(
+                        &sql, Some(1),
+                        &[pgrx::JsonB(args_value.clone()).into()]
+                    )?;
+                    let mut iter = row.into_iter();
+                    match iter.next() {
+                        Some(r) => r.get::<String>(1),
+                        None => Ok(None),
+                    }
+                })
+            });
+        outer.map_err(|e| format!("spi: {}", e))
+    })
+    .catch_others(|cause| {
+        Err(format!("postgres error: {:?}", cause))
+    })
+    .execute();
+
+    match result {
+        Ok(Some(s)) => Ok(s),
+        Ok(None) => Ok("null".to_string()),
+        Err(e) => Err(format!("sql_fn {}.{}: {}", schema, fn_name, e)),
+    }
+}
+
+/// HTTP tool. Target shape:
+///   {"kind":"http", "method":"POST", "url":"...", "headers":{...}}
+/// Method defaults to POST. Args are sent as JSON body. Response
+/// body is returned as-is (assumed JSON; freeform strings also OK).
+fn exec_http_tool(
+    target: &serde_json::Value,
+    args: &serde_json::Value,
+) -> Result<String, String> {
+    let url = target.get("url")
+        .and_then(|v| v.as_str())
+        .ok_or_else(|| "http target.url missing".to_string())?;
+    let method = target.get("method")
+        .and_then(|v| v.as_str())
+        .unwrap_or("POST")
+        .to_uppercase();
+
+    let client = reqwest::blocking::Client::builder()
+        .timeout(std::time::Duration::from_secs(60))
+        .build()
+        .map_err(|e| format!("http client build: {}", e))?;
+
+    let mut req = match method.as_str() {
+        "POST" => client.post(url).json(args),
+        "GET"  => client.get(url),
+        other  => return Err(format!("unsupported http method: {}", other)),
+    };
+
+    if let Some(headers) = target.get("headers").and_then(|v| v.as_object()) {
+        for (k, v) in headers {
+            if let Some(vs) = v.as_str() {
+                req = req.header(k.as_str(), vs);
+            }
+        }
+    }
+
+    let resp = req.send().map_err(|e| format!("POST {}: {}", url, e))?;
+    let status = resp.status();
+    let body = resp.text().unwrap_or_default();
+    if !status.is_success() {
+        return Err(format!("http {} {}: {}", method, status, body));
+    }
+    Ok(body)
 }
 
 // ---------------------------------------------------------------------------
