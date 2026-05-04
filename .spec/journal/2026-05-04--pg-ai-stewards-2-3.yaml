@@ -1,0 +1,35 @@
+date: "2026-05-04"
+session_id: pg-ai-stewards-2-3
+intent: Phase 2.3 — similarity bridge. pgvector cosine → AGE :SIMILAR_TO edges between studies. Real semantic clusters become first-class graph data.
+discoveries:
+    - title: Inverse hypothesis caught a 'silent stale cache' bug
+      detail: 'First implementation of refresh_study_similarity returned early when the source embedding was NULL — BEFORE running the DELETE. So nulling a study''s embedding and calling refresh left stale outgoing edges in place. Verify Test 6 was the only thing that surfaced it; without the inverse round-trip (null → refresh → expect empty → restore → refresh → expect baseline), this would have shipped looking correct. Fix: always DELETE first, conditionally skip the WRITE. Canonical pattern for any cache refresh: the DELETE is part of the contract, not the WRITE.'
+    - title: Top-K asymmetry is real and meaningful
+      detail: 'Across 345 corpus edges: 214 mutual + 131 outgoing + 121 incoming. The ''mutual'' label means both studies picked each other as top-K — strong similarity. ''Outgoing-only'' means A picked B but B''s top-5 was strong enough that A didn''t make it. The asymmetry isn''t noise to flatten; it''s information about study density in embedding space. study_similar() exposes it via the direction column.'
+    - title: AGE has two cypher() invocation patterns and they're not interchangeable
+      detail: '`SELECT * FROM cypher(''graph'', $$ ... $$, $1) AS (...)` works at top level. The same shape inside a CTE / WITH clause throws ''third argument of cypher function must be a parameter.'' AGE wants a literal $N reference — fine when it''s the only statement; broken inside multi-CTE plans. Workaround: lift the agtype expression into a PL/pgSQL variable, then EXECUTE ... USING. Cost: two round-trips instead of one CTE; benefit: it actually works.'
+surprises:
+    - Score distribution was tighter than expected. Even random pairs of LDS scripture studies cluster at p50=0.74 cosine. nomic-embed-text-v1.5 sees them all as 'roughly the same domain' — the differentiation lives in the 0.74–0.94 band. min_score=0.5 is a no-op floor; real filtering starts around 0.78.
+    - 'stewards.studies.id is text (UUID) not bigint. I wrote `v_src_id bigint` reflexively, copying the brain_entries pattern, and got ''invalid input syntax for type bigint: <UUID>'' on the first run. Fixed by using slug for self-exclusion instead.'
+relationship:
+    - quality: Compounded velocity
+      detail: Phase 2.1 (import + AGE), 2.2 (resolver), 2.3 (similarity) all landed today. The pattern from 2.1 (param-bound cypher), the discipline from 2.2 (sticky errors, inverse hypothesis), and the schema from 2.1 (studies table with HNSW already built) made 2.3 mostly mechanical. The substrate is paying off.
+carry_forward:
+    - priority: high
+      note: 'Phase 2.4 — stewards study show <slug> CLI. Tie together: stewards.studies row + study_citations_resolved (Phase 2.2) + study_similar (Phase 2.3) into a single rendered view. This is the demo that proves Phase 2 was worth it.'
+    - priority: medium
+      note: AGE cypher() third-arg rule deserves a comment block in lib.rs near the first complex cypher() call — it's the kind of thing future-me will trip on again. (Recorded in /memories/repo/pg-ai-stewards-similarity.md but not in code yet.)
+    - priority: low
+      note: 'Per-direction score storage: currently `study_similar` returns max(score) when both directions exist. Could expose both scores separately if a UI ever wants to show ''A says B is 0.85, B says A is 0.79.'' Defer until asked.'
+    - priority: low
+      note: Auto-refresh on re-embed via NOTIFY. Not worth wiring until corpus grows past ~1000 studies; manual refresh after import is fine.
+questions:
+    - Should the similarity edges be per-method or per-pair? Right now we MERGE on the (a, b, method) tuple. If we add fts_overlap as a second method later, a pair could have two SIMILAR_TO edges with different methods. study_similar currently doesn't distinguish — should it filter by method, or aggregate across methods?
+    - When the user reads 'show me similar studies,' do they want ranked-by-score or grouped-by-cluster? The graph would let us do both — community detection on the SIMILAR_TO subgraph would produce study clusters. Probably overkill for 69 studies, interesting at 1000+.
+tags:
+    - pg-ai-stewards
+    - phase-2
+    - similarity
+    - pgvector
+    - apache-age
+    - inverse-hypothesis

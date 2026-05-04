@@ -2020,6 +2020,239 @@ extension_sql!(
 );
 
 // ---------------------------------------------------------------------------
+// Phase 2.3 — similarity bridge (pgvector cosine -> AGE :SIMILAR_TO)
+//
+// All studies are embedded by the existing `embed` work_kind (Phase 2.1).
+// This block ports the probe's bridge pattern into production:
+//   1. For one source study, compute cosine similarity against every
+//      other embedded study using pgvector's `<=>` operator.
+//   2. Take top-K above min_score, MERGE :SIMILAR_TO edges in AGE
+//      with `score` and `method` properties.
+//   3. Edges are directional from the source's perspective. Reads
+//      use undirected MATCH so "similar to X" returns both
+//      X->Y (X picked Y as top-K) and Y->X (Y picked X as top-K).
+//
+// Kept deliberately simple:
+//   - One method only ('pgvector_cosine'). Future phases can add
+//     'maxsim_pooled' or 'fts_overlap' as additional edges.
+//   - No vector aggregation across citations yet — body embedding
+//     IS the study's representation. If we later want sub-document
+//     similarity (e.g. "this paragraph of A matches that paragraph
+//     of B"), it lives in a separate :SIMILAR_PARAGRAPH edge type.
+//   - Refresh is on-demand. Re-embeds don't auto-trigger refresh
+//     because the corpus is small (69 studies; bulk refresh runs
+//     in <1s) and tying it via NOTIFY would couple the embed
+//     pipeline to the AGE write path. Manual call after re-import
+//     is fine; we'll add NOTIFY-triggered refresh when the corpus
+//     grows past ~1000 studies and bulk refresh starts to hurt.
+// ---------------------------------------------------------------------------
+extension_sql!(
+    r#"
+    -- ============================================================
+    -- refresh_study_similarity(slug, top_k, min_score)
+    --
+    -- For one source study, drop its outgoing :SIMILAR_TO edges
+    -- and write fresh ones for the top-K nearest other studies
+    -- with cosine similarity >= min_score.
+    --
+    -- Returns the count of edges written. Returns 0 (and writes
+    -- nothing) when the source study has no embedding yet.
+    --
+    -- Defaults: top_k=5, min_score=0.5. The 0.5 floor is a guess
+    -- based on Phase 2.1 probe results; tune after observing real
+    -- score distributions across the 69-study corpus.
+    -- ============================================================
+    CREATE FUNCTION stewards.refresh_study_similarity(
+        p_slug      text,
+        p_top_k     int     DEFAULT 5,
+        p_min_score float   DEFAULT 0.5
+    )
+    RETURNS int
+    LANGUAGE plpgsql AS $func$
+    DECLARE
+        v_src_emb     vector(768);
+        v_written     int := 0;
+        v_pair        record;
+    BEGIN
+        PERFORM stewards.ensure_studies_graph();
+
+        SELECT embedding INTO v_src_emb
+          FROM stewards.studies
+         WHERE slug = p_slug;
+
+        IF NOT FOUND THEN
+            RAISE EXCEPTION 'study not found: %', p_slug;
+        END IF;
+
+        -- Always drop existing outgoing edges first — even when the
+        -- embedding is NULL. "Refresh\" means the cache reflects
+        -- current state; if the source has no embedding, current
+        -- state is "no edges,\" not "whatever was here before.\"
+        -- (Inverse hypothesis caught this: nulling the embedding +
+        -- refreshing previously left stale edges in place.)
+        EXECUTE
+            $cy$
+            SELECT * FROM cypher('stewards_graph', $$
+                MATCH (s:Study {slug: $slug})-[r:SIMILAR_TO {method: 'pgvector_cosine'}]->()
+                DELETE r
+            $$, $1) AS (v agtype)
+            $cy$
+        USING (jsonb_build_object('slug', p_slug)::text)::ag_catalog.agtype;
+
+        IF v_src_emb IS NULL THEN
+            -- Not embedded yet — outgoing edges cleared, nothing to
+            -- write. Caller can re-run after the embed bgworker drains.
+            RETURN 0;
+        END IF;
+
+        -- Compute top-K and write each edge. Cosine similarity is
+        -- 1 - (a <=> b) where <=> is pgvector's cosine distance.
+        FOR v_pair IN
+            SELECT s.slug AS dst_slug,
+                   round((1 - (s.embedding <=> v_src_emb))::numeric, 4)::float AS score
+              FROM stewards.studies s
+             WHERE s.slug <> p_slug
+               AND s.embedding IS NOT NULL
+               AND (1 - (s.embedding <=> v_src_emb)) >= p_min_score
+             ORDER BY s.embedding <=> v_src_emb
+             LIMIT p_top_k
+        LOOP
+            EXECUTE
+                $cy$
+                SELECT * FROM cypher('stewards_graph', $$
+                    MATCH (a:Study {slug: $src_slug}), (b:Study {slug: $dst_slug})
+                    MERGE (a)-[r:SIMILAR_TO {method: 'pgvector_cosine'}]->(b)
+                    SET r.score = $score
+                    RETURN r
+                $$, $1) AS (v agtype)
+                $cy$
+            USING (jsonb_build_object(
+                'src_slug', p_slug,
+                'dst_slug', v_pair.dst_slug,
+                'score',    v_pair.score
+            )::text)::ag_catalog.agtype;
+            v_written := v_written + 1;
+        END LOOP;
+
+        RETURN v_written;
+    END;
+    $func$;
+
+    -- Convenience: refresh every study that has an embedding.
+    -- Returns total edges written across the corpus.
+    CREATE FUNCTION stewards.refresh_all_study_similarity(
+        p_top_k     int   DEFAULT 5,
+        p_min_score float DEFAULT 0.5
+    )
+    RETURNS int
+    LANGUAGE sql AS $func$
+        SELECT coalesce(sum(stewards.refresh_study_similarity(slug, p_top_k, p_min_score))::int, 0)
+          FROM stewards.studies
+         WHERE embedding IS NOT NULL;
+    $func$;
+
+    -- ============================================================
+    -- study_similar(slug, limit) — read SIMILAR_TO edges back.
+    --
+    -- Returns one row per OTHER study related to the input slug.
+    -- Matches edges in BOTH directions (a->b OR b->a), takes the
+    -- higher score per pair (since both directions may exist with
+    -- different scores — cosine is symmetric but top-K cutoffs
+    -- can asymmetrically include/exclude an edge).
+    --
+    -- Joins back to stewards.studies so callers get title +
+    -- file_path without a second round trip.
+    -- ============================================================
+    CREATE FUNCTION stewards.study_similar(
+        p_slug  text,
+        p_limit int DEFAULT 10
+    )
+    RETURNS TABLE (
+        slug      text,
+        title     text,
+        file_path text,
+        score     float,
+        direction text   -- 'outgoing' | 'incoming' | 'mutual'
+    )
+    LANGUAGE plpgsql AS $func$
+    DECLARE
+        v_param ag_catalog.agtype;
+    BEGIN
+        -- Suppress the NOTICE chatter from DROP TABLE IF EXISTS when
+        -- this function is called repeatedly (e.g. lateral joins).
+        SET LOCAL client_min_messages = WARNING;
+        PERFORM stewards.ensure_studies_graph();
+        v_param := (jsonb_build_object('slug', p_slug)::text)::ag_catalog.agtype;
+
+        -- AGE requires the third arg of cypher() to be a literal $N
+        -- parameter, not an inline expression \u2014 hence two EXECUTEs
+        -- with USING rather than two CTEs in a single statement.
+        --
+        -- Results land in a session-local TEMP table that we drop at
+        -- function exit so re-entrant calls (e.g. lateral joins) don't
+        -- accumulate state. We avoid CREATE TEMP IF NOT EXISTS because
+        -- it spams NOTICE on every call inside a lateral join.
+        DROP TABLE IF EXISTS pg_temp._study_similar_buf;
+        CREATE TEMP TABLE pg_temp._study_similar_buf (
+            other_slug text,
+            score      float,
+            dir        text
+        ) ON COMMIT DROP;
+
+        EXECUTE
+            $cy$
+            INSERT INTO pg_temp._study_similar_buf (other_slug, score, dir)
+            SELECT ag_catalog.agtype_to_text(other_slug)::text,
+                   ag_catalog.agtype_to_float8(score_v)::float,
+                   'outgoing'
+            FROM cypher('stewards_graph', $$
+                MATCH (a:Study {slug: $slug})-[r:SIMILAR_TO]->(b:Study)
+                RETURN b.slug, r.score
+            $$, $1) AS (other_slug agtype, score_v agtype)
+            $cy$
+        USING v_param;
+
+        EXECUTE
+            $cy$
+            INSERT INTO pg_temp._study_similar_buf (other_slug, score, dir)
+            SELECT ag_catalog.agtype_to_text(other_slug)::text,
+                   ag_catalog.agtype_to_float8(score_v)::float,
+                   'incoming'
+            FROM cypher('stewards_graph', $$
+                MATCH (a:Study {slug: $slug})<-[r:SIMILAR_TO]-(b:Study)
+                RETURN b.slug, r.score
+            $$, $1) AS (other_slug agtype, score_v agtype)
+            $cy$
+        USING v_param;
+
+        RETURN QUERY
+        WITH merged AS (
+            SELECT b.other_slug AS slug,
+                   max(b.score) AS score,
+                   CASE
+                       WHEN bool_or(b.dir = 'outgoing') AND bool_or(b.dir = 'incoming')
+                            THEN 'mutual'
+                       WHEN bool_or(b.dir = 'outgoing') THEN 'outgoing'
+                       ELSE 'incoming'
+                   END AS direction
+              FROM pg_temp._study_similar_buf b
+             GROUP BY b.other_slug
+        )
+        SELECT m.slug, st.title, st.file_path, m.score, m.direction
+          FROM merged m
+          JOIN stewards.studies st ON st.slug = m.slug
+         ORDER BY m.score DESC, m.slug ASC
+         LIMIT p_limit;
+
+        DROP TABLE pg_temp._study_similar_buf;
+    END;
+    $func$;
+    "#,
+    name = "create_similarity",
+    requires = ["create_resolver"],
+);
+
+// ---------------------------------------------------------------------------
 // Diagnostic SQL functions
 // ---------------------------------------------------------------------------
 

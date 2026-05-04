@@ -205,8 +205,38 @@ them. 175 verses across 21 studies are blocked on this. The list
 of missing books and counts is in `stewards.resolved_refs WHERE
 error IS NOT NULL`.
 
-**Phase 2.3/2.4 deferred** — similarity bridge (pgvector →
-SIMILAR_TO edges), and `stewards study show` CLI. See
+**Phase 2.3 done (2026-05-04) — similarity bridge:**
+- `stewards.refresh_study_similarity(slug, top_k=5, min_score=0.5)`
+  ports the probe's bridge pattern into production. For one source
+  study, drops outgoing `:SIMILAR_TO {method:'pgvector_cosine'}`
+  edges and writes top-K neighbors above min_score using pgvector's
+  `<=>` (cosine distance) operator and the HNSW index from Phase 1.
+- `stewards.refresh_all_study_similarity()` loops over every embedded
+  study; corpus refresh (69 × 5 = 345 edges) runs in <1s.
+- `stewards.study_similar(slug, limit=10)` reads edges back in BOTH
+  directions and labels each result `outgoing` / `incoming` / `mutual`.
+  The asymmetry is meaningful: mutual = both studies picked each other
+  in their top-K; outgoing-only = A picked B but B didn't reciprocate.
+- Score distribution across the 69-study corpus: min=0.62, p50=0.74,
+  p95=0.81, max=0.94. Default 0.5 floor is permissive enough that
+  every embedded study gets its top-K; UI / agents can tighten via
+  the `min_score` parameter.
+- Real clusters surface immediately. `art-of-delegation` →
+  `stewardship-pattern` (0.888), `art-of-presidency`,
+  `stewardship-pattern-reflections`. `charity` → `enoch-charity`
+  (0.843), `tree-of-life-and-the-chain`, `miracles-references`.
+  `give-away-all-my-sins` → `atoning-love-andersen`,
+  `only-begotten`, `broken-heart-and-contrite-spirit`.
+- Bug caught by inverse hypothesis: original `refresh_study_similarity`
+  returned early when `embedding IS NULL` BEFORE deleting outgoing
+  edges, so a freshly-nulled embedding kept stale edges. Fix: delete
+  always, skip writes only when no embedding. Verify Test 6 now
+  round-trips cleanly: baseline → null+refresh → 0 → restore+refresh
+  → original neighbors. Without that ordering the test reveals stale
+  cache that survives “refresh.”
+
+**Phase 2.4 deferred** — `stewards study show <slug>` CLI that pulls
+study + resolved citations + similar studies into a single view. See
 [phases.md](../phases.md).
 
 **Phase 1 deliverables 4 + 5 (brain migrator + brain CLI port) deferred** —
