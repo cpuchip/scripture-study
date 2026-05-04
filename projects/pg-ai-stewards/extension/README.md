@@ -235,9 +235,35 @@ error IS NOT NULL`.
   → original neighbors. Without that ordering the test reveals stale
   cache that survives “refresh.”
 
-**Phase 2.4 deferred** — `stewards study show <slug>` CLI that pulls
-study + resolved citations + similar studies into a single view. See
-[phases.md](../phases.md).
+**Phase 2.4 done (2026-05-04) — `stewards study show` view:**
+- `stewards.study_show(slug, sim_limit, cite_limit, verse_chars)`
+  pulls together everything Phase 2 built into one formatted text
+  blob: study row + frontmatter + embedded_at, resolved citations
+  with verse text inlined, similar studies ranked by score with
+  outgoing/incoming/mutual labels, and a footer count.
+- Thin PowerShell wrapper [stewards.ps1](stewards.ps1): `study show`,
+  `study list`, `study refresh [slug]`. Forces UTF-8 console encoding
+  so em-dashes survive psql's text output (Windows defaults to cp1252
+  and renders — as mojibake).
+- **Phase 2 done criteria met:** running
+  `.\stewards.ps1 study show give-away-all-my-sins` returns the
+  study, 14 resolved scripture verses across 6 citations, and 5
+  similar studies (`atoning-love-andersen`, `only-begotten`,
+  `moses-6-gospel-to-adam`, `know-god`, `receive`).
+- Talk citations and chapter-only refs gracefully render as
+  "_(no resolvable verses for this anchor)_" — Phase 2.2's
+  deferred-by-design path working end-to-end.
+
+**Generalization question raised by 2.4 output (→ Phase 2.5 candidate):**
+The importer is hardcoded to `study/`, but the schema is generic.
+`docs/work-with-ai/*-gospel.md` files ("The Creation Pattern: Working
+with AI as God Works with Intelligence", "Watching Until They Obey:
+The Feedback Loop as Divine Pattern") belong in the same graph as the
+scripture studies. Recommended Phase 2.5: parameterize the importer
+over a `-Sources` list, add a `corpus text` column to
+`stewards.studies` (study/doc/lesson/journal), keep the `:Study` AGE
+label as the slight misnomer it becomes — cost of corpus-wide rename
+outweighs cosmetic gain.
 
 **Phase 1 deliverables 4 + 5 (brain migrator + brain CLI port) deferred** —
 substrate work (1.5/1.6) turned out to matter more than the brain

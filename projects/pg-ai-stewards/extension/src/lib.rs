@@ -2253,6 +2253,158 @@ extension_sql!(
 );
 
 // ---------------------------------------------------------------------------
+// Phase 2.4 — `study show` view
+//
+// One SQL function that pulls together everything Phase 2 built:
+//   - the study row (title, file_path, frontmatter)
+//   - resolved citations (Phase 2.2) with verse text
+//   - similar studies (Phase 2.3) ranked by cosine score
+//
+// Returns a single text blob formatted as markdown so a thin CLI
+// wrapper just prints it. Keeping all formatting in SQL means the
+// CLI is a one-liner (`psql -t -A -c "SELECT stewards.study_show(...)"`)
+// and any client (psql, Go binary, MCP tool, eventual web UI)
+// renders the same view.
+//
+// Cite text is truncated for the show view (~140 chars) so the
+// output stays scannable; full text is always available via
+// stewards.study_citations_resolved(slug).
+// ---------------------------------------------------------------------------
+extension_sql!(
+    r#"
+    CREATE FUNCTION stewards.study_show(
+        p_slug             text,
+        p_similarity_limit int DEFAULT 5,
+        p_citation_limit   int DEFAULT 20,
+        p_verse_chars      int DEFAULT 140
+    )
+    RETURNS text
+    LANGUAGE plpgsql AS $func$
+    DECLARE
+        v_study      stewards.studies%ROWTYPE;
+        v_out        text := '';
+        v_cite       record;
+        v_verse      jsonb;
+        v_sim        record;
+        v_resolved_count int := 0;
+        v_missing_count  int := 0;
+        v_sim_count      int := 0;
+    BEGIN
+        SELECT * INTO v_study FROM stewards.studies WHERE slug = p_slug;
+        IF NOT FOUND THEN
+            RAISE EXCEPTION 'study not found: %', p_slug;
+        END IF;
+
+        v_out := v_out || '# ' || v_study.title || E'\n\n';
+        v_out := v_out || '*slug:* `' || v_study.slug || '`'
+                       || '  *file:* `' || v_study.file_path || '`' || E'\n';
+
+        IF v_study.frontmatter IS NOT NULL
+           AND v_study.frontmatter <> '{}'::jsonb
+           AND jsonb_typeof(v_study.frontmatter) = 'object'
+           AND (SELECT count(*) FROM jsonb_object_keys(v_study.frontmatter)) > 0 THEN
+            v_out := v_out || E'\n*frontmatter:* `'
+                           || v_study.frontmatter::text || '`' || E'\n';
+        END IF;
+
+        IF v_study.embedded_at IS NULL THEN
+            v_out := v_out || E'\n*embedding:* not yet computed\n';
+        ELSE
+            v_out := v_out || E'\n*embedded:* '
+                           || to_char(v_study.embedded_at, 'YYYY-MM-DD HH24:MI')
+                           || ' (' || coalesce(v_study.embedded_model, '?') || ')'
+                           || E'\n';
+        END IF;
+
+        -- ---------------- Citations (resolved) ----------------
+        v_out := v_out || E'\n## Citations\n\n';
+
+        FOR v_cite IN
+            SELECT cited_uri, cited_kind, anchor_text, citation_count, resolved_verses
+              FROM stewards.study_citations_resolved(p_slug)
+             ORDER BY citation_count DESC, anchor_text ASC
+             LIMIT p_citation_limit
+        LOOP
+            v_out := v_out
+                || '### ' || v_cite.anchor_text
+                || '  *(' || v_cite.cited_kind || ', '
+                || v_cite.citation_count::text
+                || ' uses)*' || E'\n';
+            v_out := v_out
+                || '`' || v_cite.cited_uri || '`' || E'\n\n';
+
+            -- Walk the resolved_verses array. Each element is
+            -- {ref, content:{text,...}, error}.
+            IF jsonb_array_length(coalesce(v_cite.resolved_verses, '[]'::jsonb)) = 0 THEN
+                v_out := v_out
+                    || '> _(no resolvable verses for this anchor — '
+                    || 'chapter-only ref, talk URI, or unparseable)_'
+                    || E'\n\n';
+            ELSE
+                FOR v_verse IN
+                    SELECT * FROM jsonb_array_elements(v_cite.resolved_verses)
+                LOOP
+                    IF v_verse->>'error' IS NOT NULL THEN
+                        v_out := v_out
+                            || '- **' || (v_verse->>'ref') || '** _('
+                            || (v_verse->>'error') || ')_' || E'\n';
+                        v_missing_count := v_missing_count + 1;
+                    ELSE
+                        v_out := v_out
+                            || '- **' || (v_verse->>'ref') || '** '
+                            || left(coalesce(v_verse->'content'->>'text', ''), p_verse_chars)
+                            || CASE
+                                 WHEN length(coalesce(v_verse->'content'->>'text', ''))
+                                      > p_verse_chars
+                                 THEN ' …'
+                                 ELSE ''
+                               END
+                            || E'\n';
+                        v_resolved_count := v_resolved_count + 1;
+                    END IF;
+                END LOOP;
+                v_out := v_out || E'\n';
+            END IF;
+        END LOOP;
+
+        -- ---------------- Similar studies ----------------
+        v_out := v_out || E'## Similar studies\n\n';
+
+        FOR v_sim IN
+            SELECT slug, title, score, direction
+              FROM stewards.study_similar(p_slug, p_similarity_limit)
+        LOOP
+            v_out := v_out
+                || '- **' || v_sim.title || '** '
+                || '(`' || v_sim.slug || '`) — '
+                || 'score=' || to_char(v_sim.score, 'FM0.000')
+                || ', ' || v_sim.direction || E'\n';
+            v_sim_count := v_sim_count + 1;
+        END LOOP;
+
+        IF v_sim_count = 0 THEN
+            v_out := v_out
+                || '_(no similarity edges — run '
+                || '`SELECT stewards.refresh_study_similarity(''' || p_slug || ''')` '
+                || 'to compute them)_' || E'\n';
+        END IF;
+
+        -- ---------------- Footer ----------------
+        v_out := v_out
+            || E'\n---\n'
+            || '*' || v_resolved_count::text || ' verses resolved, '
+            || v_missing_count::text || ' missing, '
+            || v_sim_count::text || ' similar studies*' || E'\n';
+
+        RETURN v_out;
+    END;
+    $func$;
+    "#,
+    name = "create_study_show",
+    requires = ["create_similarity"],
+);
+
+// ---------------------------------------------------------------------------
 // Diagnostic SQL functions
 // ---------------------------------------------------------------------------
 

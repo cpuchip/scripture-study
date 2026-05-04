@@ -1,0 +1,36 @@
+date: "2026-05-04"
+session_id: pg-ai-stewards-2-4
+intent: 'Phase 2.4 — ship the `stewards study show` CLI that proves Phase 2 was worth it. Then sit with Michael''s question: have we generalized beyond just studies?'
+discoveries:
+    - title: All formatting in SQL keeps the CLI a one-liner
+      detail: 'study_show is a PL/pgSQL function returning text — not JSON to be rendered, not rows to be templated, just the final markdown blob. The PowerShell wrapper is `psql -t -A -c ''SELECT stewards.study_show(...)'' | output`. Cost: PL/pgSQL string concatenation is verbose. Benefit: every future client (psql, Go binary, MCP tool, web UI) renders the same view, and the data <-> view boundary lives in one place. When the surface grows past `show / list / refresh` the right call is to port to a Go binary against libpq, not to push formatting into the client.'
+    - title: The corpus already does the bridge — Michael's question isn't speculative
+      detail: 'Studies titled ''Charity: The Pure Love of Christ'', ''Agency, Liberty, and Freedom'', and especially ''Creation Patterns: Divine Design and AI Collaboration'' are already in the graph. They cluster with each other and would cluster with `docs/work-with-ai/*-gospel.md` (literally titled ''The Creation Pattern: Working with AI as God Works with Intelligence'', ''Watching Until They Obey: The Feedback Loop as Divine Pattern'', ''Intelligence Cleaveth Unto Intelligence''). The `stewards.studies` table name is the only thing that says ''study'' — every column is generic. The folder name was load-bearing for nothing.'
+    - title: Phase 2 done criteria literally met
+      detail: 'Spec: ''returns the study, scripture citations *with verse text*, and three similar studies.'' Output on give-away-all-my-sins: study + 14 verses across 6 citations + 5 similar studies, all in one function call. Talk URIs and chapter-only refs gracefully render ''_(no resolvable verses for this anchor)_'' — the deferred-by-design path from Phase 2.2 working end-to-end through the show layer.'
+surprises:
+    - 'psql -t -A on Windows mojibakes em-dashes by default (— → ΓÇö). The DB content is correct; psql writes UTF-8 to a stream that PowerShell decodes as cp1252. Fix is per-script: set [Console]::OutputEncoding + PGCLIENTENCODING=UTF8 before invoking docker exec. Wrote it into stewards.ps1 with a try/finally to restore the previous encoding so the script doesn''t pollute the host shell.'
+    - PowerShell reserves -DB as a parameter alias for -Debug. First CLI run errored with 'cannot be specified because it conflicts with the parameter alias of the same name for parameter Debug.' Renamed to -Database. Same trap probably waits for -User (alias for -UserName in some contexts). Renamed to -DbUser preemptively.
+relationship:
+    - quality: The implicit graph mirrors interest
+      detail: Michael's framing — 'the implicit graph of studies I've done directly relates to those topics I'm interested in' — isn't metaphor. study_similar('charity') returns enoch-charity, tree-of-life-and-the-chain, miracles-references, hope-and-the-grammar-of-pairs. study_similar('art-of-delegation') returns stewardship-pattern, art-of-presidency, atoning-love-andersen. The graph is the topology of his attention over years of writing. That's the thing the substrate is for — not retrieval, but seeing what you've been thinking about.
+carry_forward:
+    - priority: high
+      note: 'Phase 2.5 candidate — generalize the corpus. Recommended approach: parameterize import-studies.ps1 with -Sources list of (dir, prefix) pairs; add `corpus text` column to stewards.studies (study/doc/lesson/journal); keep `:Study` AGE label as the slight misnomer it becomes (cost of corpus-wide rename outweighs cosmetic gain); first import target is `docs/work-with-ai/` (smallest, most thematically connected). Watch what new edges form, then decide about lessons/journal/becoming.'
+    - priority: medium
+      note: When CLI surface grows past ~10 commands, port to Go binary at scripts/stewards-cli/. PowerShell wrapper is fine for now but it accumulates Windows-specific quirks (the -DB / -User param-alias collisions, codepage handling). A Go binary using libpq would cross-platform cleanly and could ship as a standalone exe.
+    - priority: low
+      note: study_show truncates verse text to 140 chars in the show view. For agents reading via MCP, may want a `stewards.study_show_full(slug)` that doesn't truncate, or a `stewards.study_export_markdown(slug)` that produces a fully-resolved canonical form (study body + every cited verse fully inlined as blockquote).
+    - priority: low
+      note: The PowerShell -Sim / -Cites / -VerseChars param names are positional defaults; if we add `study export` it'll want different defaults. When that happens, switch to subcommand-specific param sets rather than overloading.
+questions:
+    - 'When `docs/work-with-ai/` lands in the same graph, will the gospel-and-AI bridge documents (`*-gospel.md`) cluster with the gospel studies, or with the AI docs, or form their own bridge cluster? My prediction: bridge cluster. Worth a short writeup once the import lands.'
+    - Should `:CITES` edges get added for non-scripture references too? `docs/work-with-ai/*-gospel.md` cites scriptures. Same parser, same edges. Probably yes — falls out of the generalization for free.
+    - Do we want a 'reverse lookup' — stewards.scripture_cited_by(uri) returns all studies that cite Mosiah 18:8? Trivial Cypher query, would surface 'who has thought about this verse' nicely. Probably Phase 2.6.
+tags:
+    - pg-ai-stewards
+    - phase-2
+    - cli
+    - generalization
+    - corpus-design
+    - postgres
