@@ -265,6 +265,31 @@ over a `-Sources` list, add a `corpus text` column to
 label as the slight misnomer it becomes — cost of corpus-wide rename
 outweighs cosmetic gain.
 
+**Phase 2.5 done (2026-05-04) — generic document substrate:**
+- `kind text NOT NULL DEFAULT 'study'` column added to
+  `stewards.studies` (+ btree index). `import_study()` gained
+  `p_kind text DEFAULT 'study'` (back-compat with all pre-2.5 callers).
+- AGE `:Study` vertices now carry `kind` as a property; the AGE label
+  itself stays `:Study` because corpus-wide rename costs more than the
+  cosmetic gain. `study_show` displays the kind in the header.
+- New Go CLI: [scripts/stewards-cli](../../../scripts/stewards-cli).
+  Cross-compiles to linux/amd64 (13.8 MB) and windows/amd64. Replaces
+  PowerShell importer + show wrapper. `import --source <kind>:<path>`
+  is repeatable; subcommands are `study show|list|refresh`.
+- Slug strategy that recovered the 30 lost study documents: bare
+  basename for root-level studies (preserves all existing references),
+  kind+subdir prefix elsewhere. The pre-2.5 importer was silently
+  losing 12% of the corpus to basename collisions.
+- Journal YAML parser tolerates four schema versions and falls back
+  to raw-text indexing for syntactically broken entries (1 file).
+- **Corpus state:** 359 documents (188 study + 73 proposal + 65 journal
+  + 32 doc + 1 phase-doc), 1,795 similarity edges, 2,625 resolves.
+  Cross-kind bridge verified: `proposal-pg-ai-stewards-phase-2-5-...`'s
+  top-3 mutual neighbors are the journal entries from 2.2/2.3/2.4 —
+  the substrate rendered the timeline of its own creation.
+- Phase 2.6 (typed edges + hierarchy) is its own design pass; see
+  [proposal](../../../.spec/proposals/pg-ai-stewards-phase-2-5-generic-substrate.md).
+
 **Phase 1 deliverables 4 + 5 (brain migrator + brain CLI port) deferred** —
 substrate work (1.5/1.6) turned out to matter more than the brain
 port, which becomes a "do it when SQLite hurts" item rather than

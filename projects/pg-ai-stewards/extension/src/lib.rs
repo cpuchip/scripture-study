@@ -1334,6 +1334,14 @@ extension_sql!(
         body            text NOT NULL DEFAULT '',
         frontmatter     jsonb NOT NULL DEFAULT '{}'::jsonb,
 
+        -- Phase 2.5: kind discriminator. 'study' is the default for
+        -- back-compat with all pre-2.5 import_study() calls. Other
+        -- known kinds: 'doc', 'proposal', 'phase-doc', 'journal'.
+        -- A CHECK constraint is intentionally NOT added yet — the
+        -- taxonomy is still settling and we don't want migration
+        -- pain when a new kind appears.
+        kind            text NOT NULL DEFAULT 'study',
+
         -- Embedding (populated async via the same embed work_queue
         -- path that brain_entries uses; trigger below).
         embedding       vector(768),
@@ -1352,6 +1360,7 @@ extension_sql!(
     );
 
     CREATE INDEX studies_slug_idx       ON stewards.studies (slug);
+    CREATE INDEX studies_kind_idx        ON stewards.studies (kind);
     CREATE INDEX studies_created_idx    ON stewards.studies (created_at DESC);
     CREATE INDEX studies_fts_idx        ON stewards.studies USING gin (body_tsv);
     CREATE INDEX studies_embedding_idx  ON stewards.studies
@@ -1532,7 +1541,8 @@ extension_sql!(
         p_file_path   text,
         p_title       text,
         p_body        text,
-        p_frontmatter jsonb DEFAULT '{}'::jsonb
+        p_frontmatter jsonb DEFAULT '{}'::jsonb,
+        p_kind        text  DEFAULT 'study'
     ) RETURNS text
     LANGUAGE plpgsql AS $func$
     DECLARE
@@ -1543,21 +1553,26 @@ extension_sql!(
     BEGIN
         PERFORM stewards.ensure_studies_graph();
 
-        INSERT INTO stewards.studies (slug, file_path, title, body, frontmatter)
-        VALUES (p_slug, p_file_path, p_title, p_body, p_frontmatter)
+        INSERT INTO stewards.studies (slug, file_path, title, body, frontmatter, kind)
+        VALUES (p_slug, p_file_path, p_title, p_body, p_frontmatter, p_kind)
         ON CONFLICT (slug) DO UPDATE
             SET title       = EXCLUDED.title,
                 file_path   = EXCLUDED.file_path,
                 body        = EXCLUDED.body,
-                frontmatter = EXCLUDED.frontmatter
+                frontmatter = EXCLUDED.frontmatter,
+                kind        = EXCLUDED.kind
         RETURNING id INTO v_id;
 
         -- MERGE the Study vertex. Param-bound, no interpolation.
+        -- The AGE label stays :Study even for non-study kinds — a
+        -- corpus-wide label rename costs more than the cosmetic gain
+        -- and we rely on the table's `kind` column for filtering.
         EXECUTE
             $cy$
             SELECT * FROM cypher('stewards_graph', $$
                 MERGE (s:Study {slug: $slug})
-                SET s.id = $id, s.title = $title, s.file_path = $file_path
+                SET s.id = $id, s.title = $title, s.file_path = $file_path,
+                    s.kind = $kind
                 RETURN s
             $$, $1) AS (v agtype)
             $cy$
@@ -1565,7 +1580,8 @@ extension_sql!(
             'slug',      p_slug,
             'id',        v_id,
             'title',     p_title,
-            'file_path', p_file_path
+            'file_path', p_file_path,
+            'kind',      p_kind
         )::text)::ag_catalog.agtype;
 
         -- Drop existing CITES edges so re-imports stay in sync with body.
@@ -2296,7 +2312,8 @@ extension_sql!(
         END IF;
 
         v_out := v_out || '# ' || v_study.title || E'\n\n';
-        v_out := v_out || '*slug:* `' || v_study.slug || '`'
+        v_out := v_out || '*kind:* `' || v_study.kind || '`'
+                       || '  *slug:* `' || v_study.slug || '`'
                        || '  *file:* `' || v_study.file_path || '`' || E'\n';
 
         IF v_study.frontmatter IS NOT NULL

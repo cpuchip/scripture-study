@@ -1,0 +1,46 @@
+date: "2026-05-04"
+session_id: pg-ai-stewards-2-5
+intent: Phase 2.5 — generic document substrate. Importer beyond just studies (docs, proposals, phase-doc, journal). Go CLI replaces PowerShell so Linux deploy works. Validate the cross-kind similarity bridge prediction with real data.
+discoveries:
+    - title: The pre-2.5 importer was silently losing 12% of the study corpus
+      detail: 188 .md files exist in study/ (including subdirs). The slug-from-basename strategy collapsed 30 of them via collisions. art-of-delegation.md, abinadi-how-to-read.md, broken-heart-and-contrite-spirit.md, divine-love.md — all of these existed in BOTH study/ and study/talks/ (or study/yt/) with the same basename. The second import always overwrote the first. This bug existed in the PowerShell importer too. Phase 2.5's slug builder — bare basename for root-level studies (preserves all existing references), kind+subdir prefix elsewhere — recovered all of them. Going from 'we have 158 studies' to 'we actually have 188 studies and 73 proposals and 65 journals and 32 docs' is a real change in what the substrate sees.
+    - title: Journal YAML schema drifted across versions; loose-typing parser absorbed it
+      detail: 'First strict-typed JournalEntry struct failed on 14 of 65 entries. The drift: early entries (2026-03 era) used `session` + `title` keys, discoveries as `[]string`, `relational_dynamics` instead of `relationship`, carry_forward items with a `topic` field. Later entries used `session_id`, `[{title, detail}]` shape, `relationship`, no `topic`. Loosening to map[string]any + `firstString(keys...)` + per-shape dispatch in writeSection fixed 13 of 14. The 15th was a genuine YAML syntax error (unbalanced quote on line 20 of one file); we now fall back to indexing the raw text rather than rejecting the entry. Net: 65/65 imported. Michael''s instinct that ''the parser pain we hit will harden us for arbitrary shapes later'' was exactly right.'
+    - title: The cross-kind bridge prediction landed strongly
+      detail: 'Three results worth naming. (1) `creation` (study) → top mutual at 0.915 is `doc-01_planning-then-create-gospel`; #2 at 0.868 is `journal-2026-01-21--project-genesis` (the day the project began — the journal entry that generated the first study). (2) `stewardship-pattern` (study) connects to `art-of-delegation` (study), `journal-2026-03-31--art-of-delegation-study` (the journal from the day it was written), AND `proposal-archive-orchestrator-steward-main` + `proposal-study-nate-jones-delegation`. The graph just rendered a workstream. (3) `proposal-pg-ai-stewards-phase-2-5-generic-substrate` — the proposal I wrote 30 minutes before importing it — has its top-3 mutual neighbors as the journal entries from Phase 2.2/2.3/2.4. The substrate rendered the timeline of its own creation. This is L3 (typed edges, hierarchy) emerging implicitly from L1 (just embeddings).'
+    - title: Go CLI cross-compiles cleanly to linux/amd64 in ~5 seconds
+      detail: '13.8 MB binary, no CGo (pgx is pure Go), no system dependencies beyond glibc. Drop-in replacement for the PowerShell importer + show wrapper. Subcommands: `import --source <kind>:<path>` (repeatable), `study show <slug>`, `study list [--kind X]`, `study refresh [<slug>]`. The Windows console mojibake is a PowerShell-stdout issue, not a data issue — verified with `encode(...::bytea, ''hex'')`: stored bytes are correct UTF-8. Linux deploys won''t see it.'
+surprises:
+    - I expected the cross-kind bridge to be modest — maybe one or two doc neighbors for `creation`. The actual result is 4 of the top 8 neighbors are non-study (3 docs + 1 journal). The embedder doesn't care about file location; it sees thematic content. Folder structure is genuinely a UI convention, not an ontological fact, and the substrate now reflects that.
+    - I almost shipped the per-kind slug rule as `kind-basename` for ALL kinds (uniform = pretty), then realized that would invalidate every existing similarity edge, citation, /memories/repo file, and copilot-instructions reference to study slugs. The compromise (bare for root-level study, prefixed elsewhere) keeps all old references valid AND prevents the collision bug.
+    - 'Go''s stdlib `flag` package stops parsing at the first non-flag positional arg. So `study show <slug> --sim 5` puts --sim 5 in fs.Args() unconsumed. Discovered when the first invocation errored ''study show: <slug> required'' even though I passed a slug. Fix: tell users to put flags first. Could move to spf13/cobra but the dep isn''t worth it for 4 subcommands.'
+    - PowerShell's heredoc (@"..."@) hung when piped to docker exec. No idea why. Worked fine when written to a temp .sql file and `Get-Content -Raw | docker exec`. Logged this for the next time I want to send multiline SQL through a pipe.
+relationship:
+    - quality: Honest scope expansion handled well
+      detail: 'Michael responded to the original Phase 2.5 plan (just import as studies, one column added) with a much bigger vision: typed shapes, cross-kind edges, progressive context disclosure, hierarchy. Rather than try to build all of it, I split it into L1+L2 (this phase) and L3 (Phase 2.6 — needs its own design pass). The split was honest about what''s hard: edge ontology is a design decision, not an implementation step, and pretending otherwise would have produced a half-baked schema. Recording the L3 open questions in the proposal file (not just in conversation) means Phase 2.6 starts from a real shared spec, not from memory.'
+    - quality: 'Stewardship action: parser tolerance'
+      detail: Discovering that 14 journal files failed to parse was the kind of thing the old me would have surfaced as a question ('these 14 files have schema drift, want me to fix them?'). Instead I rewrote the parser to handle the drift and reported it as a finding. Same shape as the dialog-pattern fix in copilot-instructions.md — if Michael would say 'yes obviously do that,' just do it and name it in the summary.
+carry_forward:
+    - priority: high
+      note: 'Phase 2.6 — typed edges + hierarchy. Open questions documented in the proposal file under ''## Phase 2.6 — typed edges + hierarchy''. Do not start implementation until those questions have written answers. Specifically: how are typed semantic edges (:FEEDS, :REFINES) authored — frontmatter, link inference, or LLM pass? What''s a ''todo'' as a vertex? How does workstream backfill happen?'
+    - priority: medium
+      note: Phase 2.6 prerequisite — split phases.md per-phase. Right now `projects/pg-ai-stewards/phases.md` imports as one document; the embed is a coarse 'what is this project about' vector. Per-phase splitting needs a stable rule (## Phase X.Y headers, with the section being the body and the slug being kind-prefix + parent-dir + phase number).
+    - priority: medium
+      note: stewards.study_similar() doesn't return `kind`. Every cross-kind query has to JOIN on stewards.studies to get it. Should add `kind text` to the RETURNS TABLE — trivial change but ergonomic.
+    - priority: low
+      note: Windows console em-dash mojibake when reading stdout via PowerShell pipe. Stored data is fine, only display affected. `chcp 65001` doesn't fix it, `[Console]::OutputEncoding = [System.Text.Encoding]::UTF8` in the parent shell does. Document or accept; not worth fixing in the CLI.
+    - priority: low
+      note: 'PowerShell heredoc hung when piped to docker exec. Workaround: write to .sql file and read with Get-Content -Raw. Investigate root cause if this becomes a regular pattern.'
+questions:
+    - When phases.md gets split per-phase in 2.6, should each phase be `kind='phase'` (own kind) or stay `kind='phase-doc'` with frontmatter discriminating? Probably 'phase' — matches the typed-edge story.
+    - The proposal-pg-ai-stewards-phase-2-5-generic-substrate ↔ journal-2026-05-04--pg-ai-stewards-2-X cluster is so tight (mutual at 0.879, 0.861, 0.820) that Phase 2.6's :PRODUCED edge between phase and journal might be inferable purely from similarity + tag overlap, without explicit declaration. Worth testing as the L3 design starts.
+    - Should there be a 'recently changed' query — `stewards.recently_active(days)` returns slugs with embedded_at within the window, ranked by neighborhood activity? The 'what am I working on' question that 2.6 wants to answer might not need typed edges at all if temporal locality + similarity is enough.
+tags:
+    - pg-ai-stewards
+    - phase-2-5
+    - generic-substrate
+    - cross-kind-bridge
+    - go-cli
+    - postgres
+    - parser-tolerance
+    - silent-data-loss
