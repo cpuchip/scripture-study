@@ -1,11 +1,11 @@
 ---
 workstream: WS5
-status: shipped (2.5 done; 2.6 design pending)
+status: 2.5 shipped; 2.6 spec'd; 2.7 sketched
 created: 2026-05-04
 shipped: 2026-05-04
 ---
 
-# pg-ai-stewards Phase 2.5 + 2.6 — Generic Document Substrate
+# pg-ai-stewards Phase 2.5 + 2.6 + 2.7 — Generic Substrate, Typed Edges, Watchman
 
 > *Scratch context: this proposal exists because Phase 2.4 surfaced
 > that `stewards.studies` was already generic enough in schema to hold
@@ -228,31 +228,374 @@ for users who don't want the host port published).
    proposal" with "load the workstream, the parent proposal, sibling
    phases, and the most-similar prior journal entries."
 
-### Open ontology questions (NOT to be answered while implementing 2.5)
+### Resolved ontology decisions (2026-05-04 — answers Michael landed on after Phase 2.5 shipped)
 
-- **How are typed semantic edges (`:FEEDS`, `:REFINES`) authored?**
-  Three options: (a) declared in frontmatter (`feeds: [other-slug]`);
-  (b) inferred from markdown link text ("see also X", "supersedes Y");
-  (c) computed by an LLM pass over the corpus. Probably some
-  combination — frontmatter for the user-authored cases, LLM pass for
-  retroactive discovery on existing documents.
-- **What's a "todo" as a vertex?** Right now todos live in
-  `manage_todo_list` calls (ephemeral) and in `.mind/active.md`
-  bullets (semi-persistent). Neither is a file. Does Phase 2.6
-  introduce a `stewards.todos` table, or extract todos from existing
-  documents as virtual vertices?
-- **How does workstream backfill happen?** Some workstreams have
-  multiple proposals; some proposals have no workstream tag. What's
-  the migration story?
-- **What edges does the agent walk for "what am I working on"?** This
-  is the canonical query. Proposed: `MATCH path = (active_phase)-[:HAS_PHASE|HAS_PROPOSAL|HAS_TODO|FEEDS|SIMILAR_TO*1..2]-(other) WHERE active_phase.status = 'in-progress' RETURN other ORDER BY [some scoring]`. The scoring needs design.
+These were the four open questions; they now have answers, and 2.6
+implements against them rather than re-deriving.
 
-### Phase 2.6 explicitly defers to its own writeup
+**1. How are typed semantic edges authored? Three doors, one schema.**
 
-**Do not start 2.6 work until the open questions above have a written
-answer.** The temptation will be to "just add an edge while we're in
-there" during 2.5. Resist. The point of separating 2.6 is so the edge
-ontology is designed coherently, not accreted.
+All three authorship paths land in the same edge structure with a
+`provenance` discriminator:
+
+```cypher
+(:Study|Doc|Proposal|...) -[:FEEDS {
+    provenance: 'declared' | 'linked' | 'inferred',
+    confidence: 0.0..1.0,
+    source: '<frontmatter-key | markdown-link | model-id>',
+    created_at: timestamptz,
+    confirmed_by: 'human' | 'agent-session-id' | null
+}]-> (:Study|Doc|Proposal|...)
+```
+
+- **`'declared'`** — frontmatter (`feeds: [other-slug]`,
+  `supersedes: [other-slug]`, `implements: [other-slug]`).
+  Authoritative. Confidence 1.0. No confirmation needed.
+- **`'linked'`** — markdown links (`[X](path/to/Y.md)`) parsed during
+  import become `:REFERENCES` edges by default; certain link contexts
+  ("see also", "supersedes", "based on") promote to typed edges via
+  regex over the surrounding sentence. Confidence 0.7-0.9. Auto-merged.
+- **`'inferred'`** — LLM pass (kimi-k2.6, cheap and good) runs as a
+  bgworker job over similarity neighbors above a threshold. Writes to
+  `stewards.edge_proposals` rather than directly to the graph. Never
+  auto-merges into the active graph. Confidence per the model's output.
+
+Default queries filter to `provenance IN ('declared', 'linked')` for
+trust. The inferred layer is a *suggestion surface* the agent or human
+walks separately. This is the **Restoration discernment standard
+applied to graph edges**: the substrate can propose, only the steward
+can confirm.
+
+**2. What's a "todo" as a vertex?** A persistent connector vertex with
+state and lifecycle. Implemented in 2.6. Key properties:
+
+- Scope: any document kind (workstream | proposal | phase | etc.)
+- Lifecycle: `open | in_progress | done | dropped` — todos persist
+  after completion as a permanent record of what was done. Marking
+  done is a state change, not deletion.
+- Roll-up as audit: when a parent (phase, proposal) is marked done
+  with open child todos, that's a *correctness signal* — we shipped
+  with known unfinished work. Surface as a query, never auto-resolve.
+- Connector shape: a todo with both `:ON` (parent scope) and
+  `:LINKS_TO` (other docs the work touches) edges is itself an
+  edge-with-state — a hyperedge that can carry assignee, blocker, and
+  agent-session provenance.
+
+**3. Workstream backfill — solved by making it agent work, not
+migration work.** Untagged proposals don't block 2.6. The system
+proposes its own taxonomy:
+
+- Frontmatter `workstream:` declarations are authoritative when present
+- A bgworker job scans untagged docs, examines frontmatter date +
+  similarity neighborhood + active.md context, proposes a workstream
+  assignment, writes to `stewards.tag_proposals`
+- The next agent session reviews and confirms (or corrects) those
+  proposals — same mechanism as inferred edges
+- This is the test case for whether the agentic-pipeline framing works
+  on the system's own state. If it can't tag its own corpus correctly,
+  it's not going to manage anyone else's work either.
+
+**4. "What am I working on" is a status query, not a separate table.**
+The truth lives in the graph. The query:
+
+```cypher
+MATCH (ws:Workstream {status: 'active'})
+      -[:HAS_PROPOSAL]-> (p:Proposal {status: 'in-progress'})
+      -[:HAS_PHASE]-> (ph:Phase {status: 'in-progress'})
+      -[:HAS_TODO]-> (t:Todo)
+WHERE t.status IN ('open', 'in_progress')
+RETURN ws, p, ph, t
+```
+
+`stewards.context_for(slug, depth)` walks outward from a vertex,
+returning ranked related vertices. `.mind/active.md` becomes a
+*generated artifact* that Watchman (Phase 2.7) renders out of this
+query during weekly consolidation — git-tracked, human-readable, but
+never the source of truth. **Files become a renderable view of
+substrate state.**
+
+Full background and the conversation that produced these answers:
+[2026-05-04 journal](../journal/2026-05-04--pg-ai-stewards-2-5.yaml)
+and the agent-side reasoning in the Copilot session that landed 2.5.
+
+---
+
+## Phase 2.6 — Workstream + Todo + 3-door edges
+
+**Status:** spec'd 2026-05-04. Implementation not yet started.
+**Builds on:** 2.5 (kind column, generic substrate, importer).
+**Defers to:** 2.7 (Watchman / consolidation), 2.8 (LLM-inferred edges).
+
+### Binding question
+
+Make the graph carry the *structure of how work happens*, not just the
+*similarity of what's written*. After 2.6, the canonical query "what
+am I working on, and what's adjacent to it" should run against typed
+structural edges, with similarity edges available as a fallback layer
+beneath them.
+
+### Done when
+
+1. `:Workstream` vertices exist for WS1-WS6 (and any others in
+   `.mind/active.md`'s workstream table).
+2. `:Todo` vertices exist with the lifecycle states above. The CLI
+   has `stewards-cli todo create | done | drop | list` subcommands.
+   Roll-up audit query exists and runs clean (no false-positive done
+   parents with open children).
+3. `phases.md` is split per-`## Phase X.Y`, producing N `:Phase`
+   vertices per project. Slug pattern: `phase-{project-dir}-{X-Y}`.
+4. Three-door edge ingestion works: declared edges from frontmatter,
+   linked edges from markdown link parsing, edge proposals table for
+   inferred (no LLM pass yet — that's 2.8).
+5. `stewards.context_for(slug, depth)` returns the right neighborhood
+   for at least three test cases:
+   - `proposal-pg-ai-stewards-phase-2-6` returns the workstream, sibling
+     phases, related journals, declared `:FEEDS` from 2.5
+   - `study-charity` returns its kindred studies + any docs that
+     declare `:FEEDS` from it
+   - `journal-2026-05-04--pg-ai-stewards-2-5` returns its phase, sibling
+     journal entries from the same workstream
+6. `.mind/active.md` can be regenerated from the graph and matches
+   what we'd write by hand (modulo formatting). Doesn't have to ship
+   automated — proves the data is sufficient.
+
+### What this requires
+
+**1. Schema additions to `stewards.studies` family:**
+
+- New `stewards.workstreams` table:
+  `(id text PK, title text, status text, created_at, frontmatter jsonb)`
+- New `stewards.todos` table:
+  ```sql
+  (id uuid PK, slug text UNIQUE, title text, body text,
+   status text CHECK IN ('open','in_progress','done','dropped'),
+   created_at, updated_at, completed_at,
+   parent_kind text, parent_slug text,    -- denormalized for fast roll-up
+   created_by_session text,
+   completed_by_session text,
+   frontmatter jsonb)
+  ```
+  Todos live in their own table, not in `studies`, because their
+  lifecycle is different (rapid mutation vs. write-once).
+- New `stewards.edge_proposals` table:
+  ```sql
+  (id uuid PK, from_slug text, to_slug text, edge_type text,
+   provenance text, confidence float, source text,
+   created_at, status text CHECK IN ('pending','confirmed','rejected'),
+   reviewed_by text, reviewed_at)
+  ```
+
+**2. Importer changes:**
+
+- Parse `workstream:`, `feeds:`, `supersedes:`, `implements:` from
+  frontmatter → `:DECLARED` edges to graph.
+- Parse markdown link bodies during import. Default: `:REFERENCES`
+  edge with `provenance='linked'`. Promotion regex for "supersedes",
+  "see also", "based on", "feeds into" → typed edge.
+- Phase splitter: parse `projects/*/phases.md` by `## Phase X.Y`
+  headers. Each section becomes a `:Phase` vertex. Section body is
+  the embedded text.
+
+**3. CLI additions:**
+
+```
+stewards-cli workstream list | show <id>
+stewards-cli todo create --parent <kind>:<slug> --title "..." [--body "..."]
+stewards-cli todo done <id-or-slug>
+stewards-cli todo list [--scope <slug>] [--status <state>]
+stewards-cli todo audit          # roll-up correctness check
+stewards-cli context <slug> [--depth N]
+stewards-cli edges proposed [--accept <id>] [--reject <id>]
+```
+
+**4. SQL functions:**
+
+- `stewards.context_for(slug text, depth int DEFAULT 2)` — graph walk
+- `stewards.todo_rollup_audit()` — returns rows where parent is done
+  with open children, or all-children-done with parent still open
+- `stewards.regenerate_active_md()` — produces the active.md content
+  from the graph; doesn't write the file (CLI does that, optionally)
+
+### Phasing within 2.6
+
+Three sub-phases that each deliver value independently:
+
+- **2.6a — Workstream + frontmatter edges.** Workstreams as vertices,
+  frontmatter declarations parsed into `:DECLARED` edges. No todos
+  yet. Done when `proposal-pg-ai-stewards-phase-2-6`'s graph
+  neighborhood includes WS5 and the 2.5 proposal as `:DECLARED` edges.
+- **2.6b — Todos.** Schema, CLI subcommands, roll-up audit. Backfill
+  by importing existing `manage_todo_list` snapshots from journal
+  entries. Done when an active session can create a todo, mark it
+  done, see it in roll-up.
+- **2.6c — Phase splitting + context_for.** Phase splitter for
+  phases.md. `context_for()` query. `regenerate_active_md()`. Done
+  when the regenerated active.md matches the hand-written one.
+
+Each sub-phase ships independently. 2.6a unblocks 2.6b unblocks 2.6c,
+but each is its own session's work.
+
+### Risks and explicit non-goals
+
+- **Not in scope: the LLM inference pass.** That's 2.8. The
+  `edge_proposals` table exists; no producer fills it yet. Manual
+  inserts for testing are fine.
+- **Not in scope: Watchman / consolidation.** That's 2.7. 2.6 builds
+  the substrate Watchman runs on but doesn't run any scheduled work.
+- **Risk: todo schema drift.** The `parent_kind`/`parent_slug`
+  denormalization could fall out of sync with the graph. Mitigation:
+  a single function (`stewards.create_todo`) writes both the row AND
+  the `:HAS_TODO` edge in one transaction; never write directly.
+- **Risk: link parsing produces edge spam.** Every `[X](path/Y.md)` is
+  candidate `:REFERENCES`. The corpus has thousands of these. Mitigation:
+  cap edges per source-doc (e.g., 50), and exclude link targets that
+  resolve to the same kind+slug already linked structurally.
+
+---
+
+## Phase 2.7 — Watchman (consolidation, freshness, anti-loop discipline)
+
+**Status:** spec'd 2026-05-04 (sketch level — full design lives in
+[study/yt/matt-pocock-ai-workflow-research.md](../../study/yt/matt-pocock-ai-workflow-research.md#point-1--sabbath-as-rem-sleep-cycle-for-spec-freshness)).
+**Builds on:** 2.6 (workstream + todos + typed edges).
+**Hard constraint:** must not loop on the same items burning tokens —
+this is the brain v1 nudge bot's failure mode and is the one thing
+2.7 absolutely cannot inherit.
+
+### Binding question
+
+Make the substrate self-maintaining without burning tokens on
+already-evaluated work. The scheduler runs forever; the work it does
+must shrink as items reach a terminal state.
+
+### Anti-loop discipline (the load-bearing constraint)
+
+Brain v1's nudge bot ran every 4 hours and re-scanned the same stale
+entries on every pass. Token waste and no progress. Watchman 2.7 must
+make this *structurally impossible*, not merely *unlikely*.
+
+The discipline:
+
+1. **Every doc has a `last_consolidated_at` and a `last_touched_at`
+   timestamp.** Touched is set by any agent edit; consolidated is set
+   by Watchman. Watchman skips docs where
+   `last_consolidated_at >= last_touched_at` AND prior verdict was
+   terminal (`done`, `superseded`, `archived`).
+2. **Verdicts are terminal-or-not.** A consolidation pass produces one
+   of: `clean` (still matches code/spec, no action), `drift` (action
+   needed, surfaces to human), `done` (acceptance criteria met → archive
+   recommendation), `superseded` (newer doc replaces it → archive
+   recommendation), `stale` (untouched and not in active.md). Only
+   `done`, `superseded`, and `archived` are terminal — items in those
+   states never re-enter the queue unless explicitly touched.
+3. **Drift surfaces to the human and exits the queue until acted on.**
+   Watchman doesn't keep nagging. It writes ONE recommendation row to
+   `stewards.consolidation_findings`, marks the doc with a
+   `pending_review_since` timestamp, and stops looking at it. The
+   human (or a session-end agent) clears the pending-review state by
+   either resolving the drift or marking the finding as
+   acknowledged/wontfix. *Until that happens, Watchman doesn't touch
+   the doc again.*
+4. **Token budget per pass is bounded.** Default: 50K tokens per pass,
+   configurable. When the budget is hit, the pass stops cleanly and
+   resumes from the same cursor next run. No infinite loops; every
+   run terminates.
+5. **A doc can be re-evaluated only when its `last_touched_at` advances
+   past `last_consolidated_at`.** This is the dirty-bit. Without it,
+   the same doc can never be consolidated twice, period. With it, the
+   doc gets one consolidation pass per touch — bounded by how often
+   the doc actually changes.
+
+The combination: terminal verdicts + dirty-bit + per-pass token cap +
+"surface once and stop" produces a system whose worst case is
+"Watchman runs forever doing zero work" rather than "Watchman runs
+forever burning tokens."
+
+### Three phases per pass (mirroring SCM paper biology)
+
+1. **NREM (consolidation).** For each dirty doc, evaluate against
+   current code/spec/active state. Write verdict + finding row.
+   Cheap model (haiku, qwen-3, or kimi-k2.6 in cheap-mode). This
+   is most of the work.
+2. **REM (synthesis).** Pick 3-5 docs from the `clean` set that are
+   thematically clustered, ask the model "do these connect in a way
+   the docs don't note?" Output to `stewards.learnings` as candidate
+   insights. Skip on most passes — budget controls when this fires.
+   Expensive model (full Opus or Kimi). Optional per pass.
+3. **Forgetting.** For terminal verdicts (`done`, `superseded`),
+   write archive recommendations to a queue. Never auto-archive —
+   moves stay human-confirmed. Removes from active queries.
+
+### Triggers
+
+- **Time-based:** weekly cron (e.g., Sunday 03:00). The Sabbath
+  schedule is doctrinally honest, not just cute.
+- **Pressure-based:** when `active.md` exceeds a threshold (e.g., 15K
+  tokens), a smaller pass runs to find archive candidates.
+- **Idle-based:** when no human-in-loop session has run for >48h,
+  a small synthesis-only pass runs.
+
+### Done when (2.7)
+
+1. Watchman runs as a bgworker job in pg-ai-stewards.
+2. A 30-day soak test shows: total tokens-per-day decreasing as the
+   corpus stabilizes (proves the anti-loop discipline works).
+3. At least 3 drift findings surfaced to the human and resolved
+   through the recommendation→action→acknowledgement loop.
+4. At least 1 synthesis (REM) finding produced an insight the human
+   judges genuinely new (not "you already wrote this").
+5. `regenerate_active_md()` (from 2.6c) is automated as a Watchman
+   output: a fresh `.mind/active.md` is written at the end of each
+   weekly pass.
+
+### Risks and explicit non-goals
+
+- **Risk: confirmation bias in the dirty-bit.** If an agent edits a
+  doc in a way that doesn't actually change its alignment, Watchman
+  re-evaluates anyway and burns the budget. Mitigation: agents that
+  edit docs should set `last_touched_at` only when they make
+  semantically meaningful changes, not formatting-only edits. Add a
+  `--touched` flag to the CLI's edit operations.
+- **Risk: REM synthesis hallucinates connections.** Mitigation: REM
+  output is always to `learnings` as candidate, never directly to the
+  graph. Same discernment frame as inferred edges in 2.6.
+- **Not in scope: Watchman editing its own instructions.** Phase 2.9 or
+  later, if at all. The vision Michael named — "agent rewrites its own
+  prompts/skills/agent-modes" — needs more covenant scaffolding than
+  exists yet. Watchman 2.7 is read-mostly with one write surface
+  (recommendations); it doesn't modify agents, instructions, or skills.
+
+---
+
+## Future phases (sketches, not specs)
+
+**Phase 2.8 — LLM-inferred edges (kimi-k2.6).** The producer for
+`edge_proposals`. Walks similarity neighbors above a confidence
+threshold, asks the model "is there a typed semantic relationship
+here, and if so which?" Writes proposals. Same anti-loop discipline as
+Watchman: dirty-bit per pair, terminal verdicts, bounded budget.
+
+**Phase 2.9 — Agent self-modification surface.** The hard one. Lets
+agents propose changes to their own instructions/skills/agent-modes,
+gated through a `stewards.self_modifications` review queue. Only
+implementable after Watchman has 30+ days of clean operation, because
+this is the surface where "the system goes off the rails" becomes
+plausible. Covenant scaffolding TBD.
+
+**Phase 3 — External arms.** Docker-sandboxed git work, MCP wiring,
+multi-model dispatch (Google Gemini Pro/Flash, Veo, TTS for the space
+center work; Anthropic Opus/Sonnet via API; Kimi via opencode go/zen; local
+models via lm studio). The pg-ai-stewards bgworker pattern is the spine;
+each model becomes a tool sidecar. Token cost per task becomes a
+queryable metric, not an estimate. Tokenomics (per Michael's coining)
+becomes first-class telemetry.
+
+**Phase 4 — Project work.** Marsfield Science Center exhibits, D&D
+campaign generation, Empty Epsilon prop/mission/voice content. The
+substrate proves itself by producing tangible outputs in domains
+outside its own development.
+
+---
 
 ## Plan persistence
 
