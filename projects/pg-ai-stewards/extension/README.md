@@ -272,7 +272,7 @@ outweighs cosmetic gain.
 - AGE `:Study` vertices now carry `kind` as a property; the AGE label
   itself stays `:Study` because corpus-wide rename costs more than the
   cosmetic gain. `study_show` displays the kind in the header.
-- New Go CLI: [scripts/stewards-cli](../../../scripts/stewards-cli).
+- New Go CLI: [../cmd/stewards-cli](../cmd/stewards-cli).
   Cross-compiles to linux/amd64 (13.8 MB) and windows/amd64. Replaces
   PowerShell importer + show wrapper. `import --source <kind>:<path>`
   is repeatable; subcommands are `study show|list|refresh`.

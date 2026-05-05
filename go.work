@@ -14,7 +14,7 @@ use (
 	./scripts/publish
 	./scripts/search-mcp
 	./scripts/session-journal
-	./scripts/stewards-cli
+	./projects/pg-ai-stewards/cmd/stewards-cli
 	./scripts/webster-mcp
 	./scripts/yt-mcp
 	./external_context/tpg

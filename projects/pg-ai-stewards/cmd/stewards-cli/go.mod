@@ -1,4 +1,4 @@
-module github.com/cpuchip/scripture-study/scripts/stewards-cli
+module github.com/cpuchip/scripture-study/projects/pg-ai-stewards/cmd/stewards-cli
 
 go 1.25.6
 

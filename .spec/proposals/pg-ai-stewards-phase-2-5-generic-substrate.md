@@ -48,11 +48,11 @@ sweep and shouldn't be guessed during implementation.
    syntax error in the source file; we now fall back to indexing the
    raw text rather than rejecting the entry.
 3. **Cross-kind bridge formed strongly.** The full verification is in
-   the [stewards-cli README](../../scripts/stewards-cli/README.md) but
+   the [stewards-cli README](../../projects/pg-ai-stewards/cmd/stewards-cli/README.md) but
    the headline: `proposal-pg-ai-stewards-phase-2-5-generic-substrate`'s
    top-3 mutual neighbors are the journal entries from Phase 2.2, 2.3,
    and 2.4 — the substrate rendered the timeline of its own creation.
-4. **CLI shipped:** `scripts/stewards-cli/` with `import`,
+4. **CLI shipped:** `projects/pg-ai-stewards/cmd/stewards-cli/` with `import`,
    `study show|list|refresh`. Cross-compiles cleanly to linux/amd64
    (13.8 MB binary).
 
@@ -135,7 +135,7 @@ explicitly here so we don't forget.
 ### The Go CLI shape
 
 ```
-scripts/stewards-cli/
+projects/pg-ai-stewards/cmd/stewards-cli/   # moved here 2026-05-04
 ├── go.mod
 ├── main.go              # cobra/flag, subcommand routing
 ├── internal/

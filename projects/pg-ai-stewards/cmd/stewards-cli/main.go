@@ -21,9 +21,9 @@ import (
 	"os"
 	"strings"
 
-	"github.com/cpuchip/scripture-study/scripts/stewards-cli/internal/db"
-	"github.com/cpuchip/scripture-study/scripts/stewards-cli/internal/importer"
-	"github.com/cpuchip/scripture-study/scripts/stewards-cli/internal/show"
+	"github.com/cpuchip/scripture-study/projects/pg-ai-stewards/cmd/stewards-cli/internal/db"
+	"github.com/cpuchip/scripture-study/projects/pg-ai-stewards/cmd/stewards-cli/internal/importer"
+	"github.com/cpuchip/scripture-study/projects/pg-ai-stewards/cmd/stewards-cli/internal/show"
 )
 
 func main() {
