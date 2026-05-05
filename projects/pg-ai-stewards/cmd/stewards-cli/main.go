@@ -48,6 +48,8 @@ func main() {
 		runWorkstream(ctx, os.Args[2:])
 	case "edges":
 		runEdges(ctx, os.Args[2:])
+	case "todo":
+		runTodo(ctx, os.Args[2:])
 	case "-h", "--help", "help":
 		usage()
 	default:
@@ -87,6 +89,18 @@ Commands:
 
   edges <slug>
       Show outbound declared-provenance edges for a slug (Phase 2.6a).
+
+  todo create --parent <kind>:<slug> --title "..." [--body "..."] [--slug X] [--session SID]
+      Create a todo attached to a parent vertex (Workstream|Study|Phase|Todo).
+
+  todo done <id-or-slug> [--session SID] [--status done|dropped]
+      Mark a todo done (or other terminal status).
+
+  todo list [--parent <kind>:<slug>] [--status open|in_progress|done|dropped]
+      List todos with optional parent and status filters.
+
+  todo audit
+      Run roll-up audit (parent done with open children, etc.).
 
 Environment:
   STEWARDS_DSN    Postgres DSN (default: postgres://stewards:stewards@localhost:5432/stewards?sslmode=disable)
@@ -254,6 +268,90 @@ func runEdges(ctx context.Context, args []string) {
 	defer pool.Close()
 	if err := show.DeclaredEdges(ctx, pool, args[0]); err != nil {
 		fmt.Fprintf(os.Stderr, "edges: %v\n", err)
+		os.Exit(1)
+	}
+}
+
+// ---------- todo (Phase 2.6b) ----------
+
+func runTodo(ctx context.Context, args []string) {
+	if len(args) == 0 {
+		fmt.Fprintln(os.Stderr, "todo: subcommand required (create|done|list|audit)")
+		os.Exit(1)
+	}
+	pool, err := db.Connect(ctx)
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "db: %v\n", err)
+		os.Exit(1)
+	}
+	defer pool.Close()
+
+	switch args[0] {
+	case "create":
+		fs := flag.NewFlagSet("todo create", flag.ExitOnError)
+		parent := fs.String("parent", "", "<kind>:<slug> (e.g. Workstream:WS5, Study:proposal-token-efficiency)")
+		title := fs.String("title", "", "todo title (required)")
+		body := fs.String("body", "", "todo body")
+		slug := fs.String("slug", "", "optional human-friendly slug (must be unique)")
+		session := fs.String("session", "", "creating session id (free-form)")
+		if err := fs.Parse(args[1:]); err != nil {
+			os.Exit(1)
+		}
+		if *parent == "" || *title == "" {
+			fmt.Fprintln(os.Stderr, "todo create: --parent and --title required")
+			os.Exit(1)
+		}
+		idx := strings.Index(*parent, ":")
+		if idx <= 0 || idx == len(*parent)-1 {
+			fmt.Fprintf(os.Stderr, "todo create: --parent must be <kind>:<slug>, got %q\n", *parent)
+			os.Exit(1)
+		}
+		if err := show.TodoCreate(ctx, pool, (*parent)[:idx], (*parent)[idx+1:], *title, *body, *slug, *session); err != nil {
+			fmt.Fprintf(os.Stderr, "create: %v\n", err)
+			os.Exit(1)
+		}
+	case "done":
+		fs := flag.NewFlagSet("todo done", flag.ExitOnError)
+		session := fs.String("session", "", "completing session id")
+		status := fs.String("status", "done", "terminal status (done|dropped|in_progress|open)")
+		if err := fs.Parse(args[1:]); err != nil {
+			os.Exit(1)
+		}
+		if fs.NArg() != 1 {
+			fmt.Fprintln(os.Stderr, "todo done: <id-or-slug> required")
+			os.Exit(1)
+		}
+		if err := show.TodoComplete(ctx, pool, fs.Arg(0), *session, *status); err != nil {
+			fmt.Fprintf(os.Stderr, "done: %v\n", err)
+			os.Exit(1)
+		}
+	case "list":
+		fs := flag.NewFlagSet("todo list", flag.ExitOnError)
+		parent := fs.String("parent", "", "<kind>:<slug> filter")
+		status := fs.String("status", "", "status filter")
+		if err := fs.Parse(args[1:]); err != nil {
+			os.Exit(1)
+		}
+		pk, ps := "", ""
+		if *parent != "" {
+			idx := strings.Index(*parent, ":")
+			if idx <= 0 || idx == len(*parent)-1 {
+				fmt.Fprintf(os.Stderr, "todo list: --parent must be <kind>:<slug>, got %q\n", *parent)
+				os.Exit(1)
+			}
+			pk, ps = (*parent)[:idx], (*parent)[idx+1:]
+		}
+		if err := show.TodoList(ctx, pool, pk, ps, *status); err != nil {
+			fmt.Fprintf(os.Stderr, "list: %v\n", err)
+			os.Exit(1)
+		}
+	case "audit":
+		if err := show.TodoAudit(ctx, pool); err != nil {
+			fmt.Fprintf(os.Stderr, "audit: %v\n", err)
+			os.Exit(1)
+		}
+	default:
+		fmt.Fprintf(os.Stderr, "todo: unknown subcommand %q (create|done|list|audit)\n", args[0])
 		os.Exit(1)
 	}
 }

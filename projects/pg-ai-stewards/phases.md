@@ -777,10 +777,38 @@ First pipeline to land: **the system writes its own scripture studies
 using gospel-engine-v2 + the existing MCPs as tools.** Drop a
 `study_request` row (binding question + scope), bgworker dispatches,
 Kimi k2.6 (or whichever model is configured) does discovery via
-`gospel_search`, reads sources via `gospel_get`, drafts the study,
-self-reviews against `source-verification` skill, writes the
-`study/<slug>.md` file, opens a brain entry for human review. **This
-is the proof of concept that the substrate can do the agent work itself.**
+`gospel_search`, reads sources via `gospel_get`, builds intermediate
+**scratch documents** as the work proceeds (collections of quotes,
+notes, outlines — each row, each with the original source URI
+preserved as a graph edge), drafts the study, self-reviews against
+`source-verification` skill, and **inserts the finished study as a
+new row in `stewards.studies` with `kind='study'`**. From there the
+embed trigger fires, similarity edges grow, and the human reviews via
+the web UI (becoming/ibeco.me, eventually). **Output is never a file
+on disk.** This is the proof of concept that the substrate can do the
+agent work itself.
+
+> **Architectural principle (named explicitly here because the file-vs-DB
+> distinction shapes everything downstream):** pg-ai-stewards is
+> **DB-centric**. Outputs that are *documents* — studies, scratch notes,
+> outlines, quote collections, journal entries the agent writes — live
+> as DB rows, not files. This means every output is **immediately a
+> graph citizen**: it gets an embedding, similarity edges, frontmatter-
+> declared edges, and shows up in `context_for()` walks the next
+> instant. No filesystem round-trip, no re-import step, no slug
+> collisions. The graph self-grows and self-links from the *process*,
+> not just the artifact.
+>
+> File writing is reserved for **code and binary deliverables** that
+> don't fit a DB — generated source files, images, audio (TTS for
+> Marsfield/Empty Epsilon), video (Veo), `.go` files for new sidecars.
+> Everything else lives in Postgres.
+>
+> **Reading surface.** The web UI lives in `becoming/` (ibeco.me) —
+> the same cloud hub the brain ecosystem already uses. Studies render
+> as DB-backed pages with their citations, similar studies, and graph
+> neighborhood inline. study.ibeco.me (WS4) is already pointed at the
+> reading surface; pg-ai-stewards becomes its second backend.
 
 Why scripture studies as the POC and not something more impressive:
 

@@ -193,3 +193,105 @@ func DeclaredEdges(ctx context.Context, pool *pgxpool.Pool, slug string) error {
 	fmt.Printf("\n%d edge(s) from %s\n", count, slug)
 	return rows.Err()
 }
+
+// ============================================================
+// Phase 2.6b — Todos
+// ============================================================
+
+// TodoCreate calls stewards.create_todo and prints the new uuid.
+func TodoCreate(ctx context.Context, pool *pgxpool.Pool, parentKind, parentSlug, title, body, slug, session string) error {
+	var id string
+	err := pool.QueryRow(ctx,
+		`SELECT stewards.create_todo($1, $2, $3, $4, NULLIF($5, ''), NULLIF($6, ''))::text`,
+		parentKind, parentSlug, title, body, slug, session,
+	).Scan(&id)
+	if err != nil {
+		return err
+	}
+	fmt.Printf("created %s\n  parent: %s/%s\n  title:  %s\n", id, parentKind, parentSlug, title)
+	return nil
+}
+
+// TodoComplete marks a todo done (or other terminal status).
+func TodoComplete(ctx context.Context, pool *pgxpool.Pool, ref, session, status string) error {
+	var id string
+	err := pool.QueryRow(ctx,
+		`SELECT stewards.complete_todo($1, NULLIF($2, ''), $3)::text`,
+		ref, session, status,
+	).Scan(&id)
+	if err != nil {
+		return err
+	}
+	fmt.Printf("%s -> %s (%s)\n", ref, status, id)
+	return nil
+}
+
+// TodoList prints todos, optionally filtered by parent and status.
+func TodoList(ctx context.Context, pool *pgxpool.Pool, parentKind, parentSlug, status string) error {
+	rows, err := pool.Query(ctx,
+		`SELECT id::text, coalesce(slug,''), title, status,
+                coalesce(parent_kind,''), coalesce(parent_slug,''),
+                to_char(created_at, 'YYYY-MM-DD HH24:MI'),
+                coalesce(to_char(completed_at, 'YYYY-MM-DD HH24:MI'), '')
+           FROM stewards.list_todos(NULLIF($1,''), NULLIF($2,''), NULLIF($3,''))`,
+		parentKind, parentSlug, status,
+	)
+	if err != nil {
+		return err
+	}
+	defer rows.Close()
+
+	tw := tabwriter.NewWriter(os.Stdout, 0, 0, 2, ' ', 0)
+	fmt.Fprintln(tw, "STATUS\tPARENT\tTITLE\tCREATED\tCOMPLETED\tID")
+	count := 0
+	for rows.Next() {
+		var id, slug, title, st, pk, ps, created, completed string
+		if err := rows.Scan(&id, &slug, &title, &st, &pk, &ps, &created, &completed); err != nil {
+			return err
+		}
+		parent := pk + "/" + ps
+		short := id
+		if len(short) > 8 {
+			short = short[:8]
+		}
+		display := title
+		if slug != "" {
+			display = slug + " — " + title
+		}
+		fmt.Fprintf(tw, "%s\t%s\t%s\t%s\t%s\t%s\n", st, parent, display, created, completed, short)
+		count++
+	}
+	tw.Flush()
+	fmt.Printf("\n%d todo(s)\n", count)
+	return rows.Err()
+}
+
+// TodoAudit prints rows from stewards.todo_rollup_audit().
+func TodoAudit(ctx context.Context, pool *pgxpool.Pool) error {
+	rows, err := pool.Query(ctx, `SELECT finding, parent_kind, parent_slug,
+        coalesce(parent_title,''), todo_count, open_count, done_count
+        FROM stewards.todo_rollup_audit()`)
+	if err != nil {
+		return err
+	}
+	defer rows.Close()
+	tw := tabwriter.NewWriter(os.Stdout, 0, 0, 2, ' ', 0)
+	fmt.Fprintln(tw, "FINDING\tPARENT\tTITLE\tTOTAL\tOPEN\tDONE")
+	count := 0
+	for rows.Next() {
+		var finding, pk, ps, title string
+		var total, open, done int
+		if err := rows.Scan(&finding, &pk, &ps, &title, &total, &open, &done); err != nil {
+			return err
+		}
+		fmt.Fprintf(tw, "%s\t%s/%s\t%s\t%d\t%d\t%d\n", finding, pk, ps, title, total, open, done)
+		count++
+	}
+	tw.Flush()
+	if count == 0 {
+		fmt.Println("audit: clean (no findings)")
+	} else {
+		fmt.Printf("\n%d finding(s)\n", count)
+	}
+	return rows.Err()
+}
