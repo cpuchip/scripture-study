@@ -755,6 +755,74 @@ these paths.
 
 ## Phase 3 — Pipelines + MCP + External arms: agents that work without an IDE
 
+> **Honest scope split (2026-05-05).** Phase 3 as originally written
+> bundled six deliverables. Same trap as Phase 2.7. Shipped as 3a; the
+> rest are real but not blocking and ship when needed:
+>
+> | Sub-phase | What | Status |
+> |-----------|------|--------|
+> | **3a** | Model dispatch + Watchman pass (CLI orchestrator on top of bgworker) | **shipped 2026-05-05** |
+> | 3b | Input shaping for big docs (trim or bump bgworker reqwest timeout) + `response_format: json_object` injection | not started |
+> | 3c | `stewards.pipelines` + `stewards.work_items` tables (deliverable 1 below) | not started |
+> | 3d | Tool sidecars: sandboxed git, shell (deliverable 2 below) | not started |
+> | 3e | MCP server: `stewards_search`, `stewards_brain`, `stewards_work_item`, `gospel_passthrough` (deliverable 3) | not started |
+> | 3f | Web UI surface = `a.ibeco.me` (deliverable 4 + becoming integration deliverable 5) | not started |
+> | 3g | Multi-provider expansion: Anthropic, Gemini, Veo, TTS (deliverable 6 expansion beyond opencode_go + lm_studio) | not started |
+>
+> 3a is the unblocker for 2.7b (Watchman bgworker), 2.8 (LLM-inferred
+> edges), and the `a.ibeco.me` reading surface. The rest can ship in
+> any order driven by actual need.
+
+### Phase 3a — shipped 2026-05-05
+
+**What landed:**
+
+- `watchman-consolidator` agent family in `stewards.agents` (default
+  + kimi-* variant, same prompt, temp=0, steps=1, no tools)
+- `agent_tool_perms ('watchman-consolidator', '*', 'deny')` —
+  structural enforcement (compose_tools is allow-by-default; new
+  no-tool agents need explicit deny)
+- `stewards.watchman_input(slug)` SQL function — composes the user
+  message: doc body + 1-hop graph neighborhood from `context_for(slug, 1)`
+- `stewards-cli watchman pass [--slug X] [--limit N] [--provider opencode_go] [--model kimi-k2.6] [--timeout 180] [--dry-run]`
+  — Go orchestrator in `cmd/stewards-cli/internal/show/show.go::WatchmanPass`
+- System prompt enforces strict JSON output (`{verdict, reasoning, finding?}`)
+  with five verdicts: `clean | drift | done | superseded | skipped`
+
+**Architectural choice:** the bgworker stays generic (just `chat`,
+`embed`, `tool_dispatch`, `resolve_ref` work kinds — no
+watchman-specific semantics in Rust). All watchman orchestration
+lives in the CLI Go for 3a. When 2.7b lands, this same logic
+transcribes into a Postgres bgworker scheduled pass.
+
+**Verified end-to-end:** 2 model verdicts in `stewards.verdicts`
+with actor=watchman, model=kimi-k2.6, tokens logged (734 in / 3861 out
+on phase-pg-ai-stewards-0; 882 in / 1277 out on .scratch-README).
+The first verdict was `skipped` with the reasoning *"I cannot verify
+external artifacts not in the 1-hop neighborhood"* — kimi
+self-surfaced a 3b agenda item. Discipline holds.
+
+**Known limitations carried into 3b:**
+
+- Bgworker `reqwest::blocking::Client` has a hard 120s timeout for
+  chat. Big docs (50KB+ scratch files, the proposal itself) time out.
+  Phase 3b: trim input OR bump the timeout (needs binary rebuild).
+- kimi at temp=0 with reasoning is not perfectly deterministic.
+  Same input got `skipped` (dry-run) then `done` (live) — both
+  defensible. Phase 3b: inject `response_format: {type:"json_object"}`
+  into the body that `chat_post_internal` builds (schema change to
+  `agents` table or to `dry_run_chat`).
+
+**Foldback debt:** `extension/3a-watchman-pass.sql` is now the FIFTH
+SQL file (alongside 2-6a/b/c + 2-7a) waiting to fold into
+`extension/src/lib.rs` at next intentional rebuild.
+
+### Phase 3b–3g — original full-scope spec (preserved)
+
+Everything below is the as-written Phase 3 spec from 2026-05. It
+remains accurate as a target; we just don't ship all of it at once.
+
+
 **Goal:** long-running agent work runs without an open VS Code
 window. Tool sidecars execute work; the bgworker dispatches; results
 flow back to a thin web UI for review. **Multi-model dispatch** —

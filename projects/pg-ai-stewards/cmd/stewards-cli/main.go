@@ -21,6 +21,7 @@ import (
 	"os"
 	"strconv"
 	"strings"
+	"time"
 
 	"github.com/cpuchip/scripture-study/projects/pg-ai-stewards/cmd/stewards-cli/internal/db"
 	"github.com/cpuchip/scripture-study/projects/pg-ai-stewards/cmd/stewards-cli/internal/importer"
@@ -514,6 +515,30 @@ func runWatchman(ctx context.Context, args []string) {
 		}
 		if err := show.WatchmanHistory(ctx, pool, fs.Arg(0)); err != nil {
 			fmt.Fprintf(os.Stderr, "watchman history: %v\n", err)
+			os.Exit(1)
+		}
+	case "pass":
+		// Phase 3a: model-driven consolidation pass.
+		// Defaults to opencode_go + kimi-k2.6 (proven cheap+fast path
+		// from Phase 1.6). Local alternative: --provider lm_studio
+		// --model qwen/qwen3.6-27b.
+		fs := flag.NewFlagSet("watchman pass", flag.ExitOnError)
+		provider := fs.String("provider", "opencode_go", "lm_studio|opencode_go|ollama")
+		model := fs.String("model", "kimi-k2.6", "model id (provider-specific)")
+		agentFamily := fs.String("agent", "watchman-consolidator", "agent family from stewards.agents")
+		limit := fs.Int("limit", 5, "max docs to consolidate this pass")
+		timeoutSec := fs.Int("timeout", 180, "per-item poll timeout in seconds (bgworker reqwest ceiling is 120s; raise both for big inputs)")
+		dryRun := fs.Bool("dry-run", false, "print verdicts but do NOT call record_verdict/record_finding")
+		slug := fs.String("slug", "", "if set, run only this slug (bypasses dirty_queue) — useful for repro")
+		if err := fs.Parse(rest); err != nil {
+			os.Exit(1)
+		}
+		if err := show.WatchmanPass(ctx, pool,
+			*provider, *model, *agentFamily,
+			*limit, time.Duration(*timeoutSec)*time.Second,
+			*dryRun, *slug,
+		); err != nil {
+			fmt.Fprintf(os.Stderr, "watchman pass: %v\n", err)
 			os.Exit(1)
 		}
 	default:

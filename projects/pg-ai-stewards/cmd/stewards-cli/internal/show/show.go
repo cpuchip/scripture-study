@@ -3,8 +3,11 @@ package show
 
 import (
 	"context"
+	"database/sql"
+	"encoding/json"
 	"fmt"
 	"os"
+	"strings"
 	"text/tabwriter"
 	"time"
 
@@ -466,3 +469,305 @@ func nullable(s string) any {
 	}
 	return s
 }
+
+// =====================================================================
+// Phase 3a — model-driven Watchman pass.
+//
+// Orchestrates: dirty_queue -> chat_enqueue -> poll -> parse JSON ->
+// record_verdict (+ record_finding when verdict != clean).
+//
+// The bgworker stays generic. All watchman-specific semantics live
+// here in the CLI orchestration. When 2.7b lands, this same logic
+// moves into the bgworker as a scheduled pass.
+// =====================================================================
+
+// WatchmanPassResult is the parsed JSON shape the watchman-consolidator
+// agent is asked to emit. See extension/3a-watchman-pass.sql for the
+// authoritative schema description in the system prompt.
+type WatchmanPassResult struct {
+	Verdict   string                  `json:"verdict"`
+	Reasoning string                  `json:"reasoning"`
+	Finding   *WatchmanPassFinding    `json:"finding,omitempty"`
+}
+
+type WatchmanPassFinding struct {
+	Kind             string `json:"kind"`
+	Severity         string `json:"severity"`
+	Message          string `json:"message"`
+	SuggestedAction  string `json:"suggested_action"`
+}
+
+// WatchmanPass runs ONE consolidation pass over the dirty queue.
+// Up to `limit` docs (oldest-touched first). Each doc gets one chat
+// dispatch through the watchman-consolidator agent. The pass terminates
+// cleanly when the queue is empty or the limit is hit.
+//
+// Provider/model defaults: opencode_go + kimi-k2.6 (the cheap, proven
+// path from Phase 1.6). LM Studio + qwen3.6-27b is the local
+// alternative. No remote API key required for the local path.
+func WatchmanPass(ctx context.Context, pool *pgxpool.Pool,
+	provider, model, agentFamily string,
+	limit int, perItemTimeout time.Duration,
+	dryRun bool, slugFilter string,
+) error {
+	passID := fmt.Sprintf("watchman-%s", time.Now().UTC().Format("20060102T150405Z"))
+
+	// Build the queue. If a slug filter is given, run only that one
+	// doc (useful for repro tests). Otherwise pull from dirty_queue.
+	var slugs []string
+	if slugFilter != "" {
+		slugs = []string{slugFilter}
+	} else {
+		rows, err := pool.Query(ctx,
+			`SELECT slug FROM stewards.dirty_queue ORDER BY updated_at ASC NULLS FIRST LIMIT $1`,
+			limit,
+		)
+		if err != nil {
+			return fmt.Errorf("dirty_queue: %w", err)
+		}
+		for rows.Next() {
+			var s string
+			if err := rows.Scan(&s); err != nil {
+				rows.Close()
+				return err
+			}
+			slugs = append(slugs, s)
+		}
+		rows.Close()
+		if err := rows.Err(); err != nil {
+			return err
+		}
+	}
+
+	if len(slugs) == 0 {
+		fmt.Printf("watchman pass %s: dirty queue empty, nothing to do\n", passID)
+		return nil
+	}
+
+	fmt.Printf("watchman pass %s: %d doc(s), provider=%s, model=%s\n",
+		passID, len(slugs), provider, model)
+	if dryRun {
+		fmt.Println("  (dry-run: will print verdicts but NOT call record_verdict/record_finding)")
+	}
+
+	tw := tabwriter.NewWriter(os.Stdout, 0, 0, 2, ' ', 0)
+	fmt.Fprintln(tw, "SLUG\tVERDICT\tELAPSED\tTOK_IN\tTOK_OUT\tFINDING?")
+
+	var nClean, nDrift, nDone, nSuperseded, nSkipped, nErr int
+	totalIn, totalOut := 0, 0
+
+	for _, slug := range slugs {
+		res, elapsed, tIn, tOut, err := watchmanPassOne(
+			ctx, pool, slug, provider, model, agentFamily, passID, perItemTimeout)
+		if err != nil {
+			fmt.Fprintf(tw, "%s\tERROR\t%s\t-\t-\t%v\n", slug, elapsed.Round(time.Millisecond), err)
+			nErr++
+			continue
+		}
+		totalIn += tIn
+		totalOut += tOut
+		findingStr := "no"
+		if res.Finding != nil {
+			findingStr = fmt.Sprintf("yes:%s/%s", res.Finding.Kind, res.Finding.Severity)
+		}
+		fmt.Fprintf(tw, "%s\t%s\t%s\t%d\t%d\t%s\n",
+			slug, res.Verdict, elapsed.Round(time.Millisecond), tIn, tOut, findingStr)
+
+		switch res.Verdict {
+		case "clean":
+			nClean++
+		case "drift":
+			nDrift++
+		case "done":
+			nDone++
+		case "superseded":
+			nSuperseded++
+		case "skipped":
+			nSkipped++
+		}
+
+		if dryRun {
+			continue
+		}
+
+		// Record verdict (advances last_consolidated_at as a side effect).
+		// Signature: (slug, verdict, reasoning, model, tokens_in, tokens_out, pass_id, actor)
+		if _, err := pool.Exec(ctx,
+			`SELECT stewards.record_verdict($1, $2, $3, $4, $5, $6, $7, $8)`,
+			slug, res.Verdict, res.Reasoning, model, tIn, tOut, passID, "watchman",
+		); err != nil {
+			fmt.Fprintf(os.Stderr, "  record_verdict(%s): %v\n", slug, err)
+			continue
+		}
+
+		// Record finding when present.
+		// Signature: (slug, kind, message, severity, suggested_action, related_slugs[], pass_id, actor)
+		if res.Finding != nil {
+			if _, err := pool.Exec(ctx,
+				`SELECT stewards.record_finding($1, $2, $3, $4, $5, $6, $7, $8)`,
+				slug,
+				res.Finding.Kind,
+				res.Finding.Message,
+				res.Finding.Severity,
+				res.Finding.SuggestedAction,
+				[]string{},
+				passID,
+				"watchman",
+			); err != nil {
+				fmt.Fprintf(os.Stderr, "  record_finding(%s): %v\n", slug, err)
+			}
+		}
+	}
+
+	tw.Flush()
+	fmt.Printf("\npass %s done: clean=%d drift=%d done=%d superseded=%d skipped=%d err=%d  tokens=%d in / %d out\n",
+		passID, nClean, nDrift, nDone, nSuperseded, nSkipped, nErr, totalIn, totalOut)
+	return nil
+}
+
+// watchmanPassOne runs the loop for a single doc.
+//
+// Steps:
+//   1. Build session id (deterministic per pass+slug for replay).
+//   2. INSERT INTO sessions.
+//   3. Compose user input via stewards.watchman_input(slug).
+//   4. chat_enqueue → returns work_queue.id.
+//   5. Poll work_queue.id until status='done' or 'error'.
+//   6. Read assistant message from messages WHERE session_id=... AND role='assistant'.
+//   7. Parse JSON (defensive — strip ``` fences if present).
+func watchmanPassOne(ctx context.Context, pool *pgxpool.Pool,
+	slug, provider, model, agentFamily, passID string,
+	timeout time.Duration,
+) (WatchmanPassResult, time.Duration, int, int, error) {
+	start := time.Now()
+	var zero WatchmanPassResult
+
+	sessionID := fmt.Sprintf("%s--%s", passID, slug)
+	if len(sessionID) > 200 {
+		sessionID = sessionID[:200]
+	}
+
+	// 1+2. Session.
+	if _, err := pool.Exec(ctx,
+		`INSERT INTO stewards.sessions (id, label, kind) VALUES ($1, $2, 'agent')
+         ON CONFLICT (id) DO NOTHING`,
+		sessionID, fmt.Sprintf("Watchman pass %s for %s", passID, slug),
+	); err != nil {
+		return zero, time.Since(start), 0, 0, fmt.Errorf("session insert: %w", err)
+	}
+
+	// 3. Compose input.
+	var userInput string
+	if err := pool.QueryRow(ctx,
+		`SELECT stewards.watchman_input($1)`,
+		slug,
+	).Scan(&userInput); err != nil {
+		return zero, time.Since(start), 0, 0, fmt.Errorf("watchman_input: %w", err)
+	}
+	if userInput == "" {
+		return zero, time.Since(start), 0, 0, fmt.Errorf("study not found: %s", slug)
+	}
+
+	// 4. chat_enqueue.
+	var workID int64
+	if err := pool.QueryRow(ctx,
+		`SELECT stewards.chat_enqueue($1, $2, $3, $4, $5)`,
+		agentFamily, model, sessionID, userInput, provider,
+	).Scan(&workID); err != nil {
+		return zero, time.Since(start), 0, 0, fmt.Errorf("chat_enqueue: %w", err)
+	}
+
+	// 5. Poll. Polling is fine at this scale; LISTEN/NOTIFY can come
+	// later if it becomes a bottleneck. 250ms tick keeps the local
+	// latency low; total bounded by `timeout`.
+	deadline := time.Now().Add(timeout)
+	tick := time.NewTicker(250 * time.Millisecond)
+	defer tick.Stop()
+	var status, errStr string
+	for {
+		if err := pool.QueryRow(ctx,
+			`SELECT status, COALESCE(error, '') FROM stewards.work_queue WHERE id = $1`,
+			workID,
+		).Scan(&status, &errStr); err != nil {
+			return zero, time.Since(start), 0, 0, fmt.Errorf("poll: %w", err)
+		}
+		if status == "done" {
+			break
+		}
+		if status == "error" {
+			return zero, time.Since(start), 0, 0, fmt.Errorf("work_queue error: %s", errStr)
+		}
+		if time.Now().After(deadline) {
+			return zero, time.Since(start), 0, 0, fmt.Errorf("timeout (status=%s)", status)
+		}
+		<-tick.C
+	}
+
+	// 6. Read assistant message. There may be multiple if the agent
+	// mistakenly tried tools (we gave it none, but be defensive). Take
+	// the most recent.
+	var content string
+	var tIn, tOut sql.NullInt32
+	if err := pool.QueryRow(ctx,
+		`SELECT content, tokens_in, tokens_out
+           FROM stewards.messages
+          WHERE session_id = $1 AND role = 'assistant'
+          ORDER BY id DESC LIMIT 1`,
+		sessionID,
+	).Scan(&content, &tIn, &tOut); err != nil {
+		return zero, time.Since(start), 0, 0, fmt.Errorf("read assistant msg: %w", err)
+	}
+
+	// 7. Parse JSON, defensively.
+	parsed, err := parseWatchmanJSON(content)
+	if err != nil {
+		return zero, time.Since(start), int(tIn.Int32), int(tOut.Int32),
+			fmt.Errorf("parse JSON: %w (raw: %s)", err, truncate(content, 200))
+	}
+
+	return parsed, time.Since(start), int(tIn.Int32), int(tOut.Int32), nil
+}
+
+// parseWatchmanJSON extracts the JSON object from the model's reply.
+// Strips markdown fences if present (defensive — kimi/qwen sometimes
+// wrap JSON in ```json ... ``` even when told not to).
+func parseWatchmanJSON(s string) (WatchmanPassResult, error) {
+	var zero WatchmanPassResult
+	t := strings.TrimSpace(s)
+	// Strip ```json or ``` fences.
+	if strings.HasPrefix(t, "```") {
+		// drop first line (the fence with optional language tag)
+		if nl := strings.Index(t, "\n"); nl > 0 {
+			t = t[nl+1:]
+		}
+		// drop trailing fence
+		if i := strings.LastIndex(t, "```"); i >= 0 {
+			t = t[:i]
+		}
+		t = strings.TrimSpace(t)
+	}
+	// Last-resort: find first { and last }.
+	if i := strings.Index(t, "{"); i > 0 {
+		t = t[i:]
+	}
+	if i := strings.LastIndex(t, "}"); i >= 0 && i < len(t)-1 {
+		t = t[:i+1]
+	}
+
+	var r WatchmanPassResult
+	if err := json.Unmarshal([]byte(t), &r); err != nil {
+		return zero, err
+	}
+	if r.Verdict == "" {
+		return zero, fmt.Errorf("missing verdict field")
+	}
+	return r, nil
+}
+
+func truncate(s string, n int) string {
+	if len(s) <= n {
+		return s
+	}
+	return s[:n] + "..."
+}
+
