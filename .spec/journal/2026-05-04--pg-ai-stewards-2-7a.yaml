@@ -1,0 +1,54 @@
+date: "2026-05-04"
+session_id: pg-ai-stewards-2-7a
+intent: 'Phase 2.7a — Watchman substrate (no model required) plus AGE-QUIRKS.md + Phase 6 (AGE upstream contributions) sketch + honest split of Phase 2.7 into 2.7a (substrate, ships now) and 2.7b (automation, waits on Phase 3 model dispatch). Driven by Michael''s three asks: catalog the AGE quirks in their own file, look at upstream AGE later, and start Phase 2.7. The split was not in his ask but emerged from the binding question — full Watchman needs model dispatch which is Phase 3, so without splitting 2.7 blocks indefinitely.'
+discoveries:
+    - title: 'The anti-loop discipline is enforced by the schema, not the agent'
+      detail: 'Brain v1''s nudge-bot failure was a 4-hour loop that re-scanned the same stale entries every pass. The fix Michael wanted for Phase 2.7 was "make this structurally impossible, not merely unlikely." The schema now does it: stewards.dirty_queue is a view that says (updated_at > coalesce(last_consolidated_at, ''-infinity'')) AND NOT EXISTS (open drift finding for this study). The first clause is the dirty-bit; the second is the surface-once-and-stop discipline. Verified end-to-end: edited a doc, recorded drift verdict + finding, then EDITED IT AGAIN — and the doc stayed OUT of the queue because the open finding suppressed re-evaluation. Brain v1''s loop is structurally impossible because the suppression is a NOT EXISTS in a view, not a hopeful agent rule.'
+    - title: 'updated_at already serves as the dirty-bit; no new column needed'
+      detail: 'My initial 2.7a sketch added both last_touched_at and last_consolidated_at columns. Then I read lib.rs and saw touch_study() already bumps updated_at on title/body/frontmatter changes only (formatting-only changes don''t count, just the way Michael''s "confirmation bias in the dirty-bit" risk wanted it). So 2.7a only needed last_consolidated_at. One column instead of two. Less surface area, less opportunity for triggers to disagree. Reading the existing schema before writing the migration paid for itself.'
+    - title: 'AGE-QUIRKS.md catalog with categories opens a real upstream contribution path'
+      detail: 'Wrote docs/AGE-QUIRKS.md consolidating all 8 quirks with reproductions, workarounds, and categories: bug-candidate (3), spec-divergence (3), by-design (1), our-mistake (1). The category split is the load-bearing thing — bug-candidate items (#2 apostrophe-in-Cypher, #6 cypher() arg restriction, #7 #>> on agtype scalars) are worth filing PRs against Apache AGE; spec-divergence items (#1 ON CREATE SET, #3 WITH between MERGE and MATCH, #5 variable-length paths) are workarounds we live with; by-design (#4 labels-as-schema) doesn''t fight the spec; our-mistake (#8 PL/pgSQL OUT param shadowing) lives in the catalog so we don''t re-discover it. Phase 6 in phases.md now points at this catalog with the explicit goal of contributing the bug-candidate fixes upstream when steady-state allows.'
+    - title: 'Splitting Phase 2.7 into 2.7a/2.7b was not in the ask but was the right call'
+      detail: 'Michael said "are we now at 2.7?!! that''s big, lets do it." The literal request was "do 2.7." The actual constraint: the Watchman spec calls for a bgworker that dispatches NREM/REM passes to a model — and model dispatch is Phase 3, not part of 2.7. Doing the literal ask would have meant building a Watchman that can''t actually do consolidation passes until Phase 3 lands months from now. The split: 2.7a = everything that makes the discipline real and human-drivable (schemas, dirty-bit, verdicts, findings, CLI); 2.7b = the bgworker that automates 2.7a once Phase 3''s sidecar exists. This is the exact stewardship pattern from copilot-instructions.md: when the user''s stated request is a specific instance of a general principle, implement the instance AND audit one ring outward. Honest scoping made 2.7a shippable today; the proposal now reflects this split.'
+    - title: 'WS5 todo board now shows the honest work-state'
+      detail: 'After 2.7a: 6 todos under WS5. 3 done from 2.6c (phase-splitter, context-for, regenerate-active dropped with reasoning), 1 done from 2.7a (substrate), 2 open and forward-pointing (2.7b waiting on Phase 3, AGE upstream PRs waiting on steady-state). Plus 2 fold-back-debt todos on the proposal vertex (2-6 SQL + 2-7a SQL — both need to fold into lib.rs at next rebuild). The substrate is now carrying its own roadmap; `stewards-cli todo list --parent Workstream:WS5` is a more honest snapshot of "where is this project right now" than my own active.md narrative is.'
+    - title: 'Three meta-decisions captured durably (not just in this journal)'
+      detail: '(1) AGE quirks live in their own file under projects/pg-ai-stewards/docs/ — Michael''s exact ask, and the right home (project-scoped reference, not session-scoped journal). (2) Phase 6 (AGE upstream contributions) is now in phases.md with explicit categorization of which quirks are PR-worthy. (3) Phase 2.7 is split into 2.7a and 2.7b in BOTH phases.md (Sequencing section) and the proposal (Done-when sections). Three artifacts updated, not just memory — these are decisions that need to outlive any session.'
+relationship:
+    - quality: 'Michael''s "lets do it" was not a literal request and I treated it correctly'
+      detail: 'The "lets do it" was emotional momentum, not a spec. The actual question — "what does it mean to ship 2.7 today?" — needed me to honestly say "the full spec needs Phase 3 to be real, but the substrate that enforces the anti-loop discipline can ship now and that''s the load-bearing piece." That''s the split. If I had built a fake Watchman with hard-coded verdicts to claim "2.7 done," I would have shipped a Potemkin village. If I had said "we can''t do 2.7 until Phase 3," I would have been technically right but would have left the discipline-enforcement piece on the floor for months. The split honored both Michael''s momentum AND the actual constraint.'
+    - quality: 'Stewardship-over-surfacing applied to the Phase 5+ heading collision'
+      detail: 'My multi_replace inserted Phase 6 in a way that orphaned the "Phase 5+ Maybe-someday" heading and duplicated the bullet content under a new "Phase 7+" heading. Caught it immediately via grep_search of section headings. Fixed both (deleted empty Phase 5+, deduplicated the bullets) without surfacing it as a question. This is exactly the boundary-test from the dev mode: would Michael, asked in advance, say "yes, fix that obvious cleanup"? Yes. So I fixed it inline and named it here.'
+    - quality: 'Reproduce-after-fix verification (Agans 9) on the Watchman cycle'
+      detail: 'Verified the FULL anti-loop cycle: initial-dirty -> verdict-clean-leaves-queue -> edit-makes-dirty-again -> drift-verdict-records -> finding-suppresses-re-evaluation-even-after-touch -> ack-finding-allows-re-evaluation. Six steps, each verified in psql. The load-bearing one is step 5 (touch + suppression) because that''s where Brain v1''s loop would have re-engaged. Without checking the touch-after-suppression step, I would have shipped a substrate where the ANTI-loop discipline appeared to work but the LOOP could still re-engage on a second touch. Specifically counted what should be true at each step rather than handwaving "looks right."'
+carry_forward:
+    - priority: high
+      note: 'Two foldback debts now: 2-6 SQL files (a/b/c) AND 2-7a SQL. Both need to fold into extension/src/lib.rs as new extension_sql! blocks at next intentional rebuild. The debt is real (binary contains old schema, live DB has new) and growing — every new live-DB migration adds a fold-back item.'
+    - priority: high
+      note: 'Phase 2.7b is now blocked on Phase 3 (model dispatch sidecar). Don''t start 2.7b before Phase 3 has at least one working tool sidecar. The bgworker that automates Watchman needs to call the model — until that exists, 2.7b is design-only. Phase 3 is the next real frontier.'
+    - priority: medium
+      note: 'AGE upstream PRs (Phase 6, ws6-age-upstream-prs todo) is parked until steady-state. Specifically the three bug-candidates: #2 apostrophe escape, #6 cypher() arg restriction, #7 #>> on agtype scalars. Each PR needs its own scoping pass against the AGE codebase — don''t commit to all three at once.'
+    - priority: medium
+      note: 'CLI flag-stops-at-positional gotcha hit again this session (4th time now). Watchman commands all use flag-first patterns to avoid it. Cobra migration is the right answer when bandwidth allows — current workaround works but is a recurring papercut.'
+    - priority: medium
+      note: 'Watchman ack does NOT advance updated_at on the doc, by design — the touches that happened during suppression are still pending. This is the correct behavior (the human acknowledged the finding; the doc still has unconsolidated changes that need a fresh verdict). Verified in step 10 of the smoke test. Worth a comment in the SQL when folding back to lib.rs.'
+    - priority: low
+      note: 'Findings have related_study_ids (text[] of study ids resolved at write time). For synthesis findings spanning multiple docs, this is fine. For drift findings, related is usually empty. Consider whether the dirty-queue suppression should cascade to related study_ids for synthesis findings (currently it only suppresses the primary study_id). Probably not — synthesis findings should re-fire as the related set evolves. But worth thinking about when 2.7b actually generates them.'
+questions:
+    - 'Should regenerate_active_md() be Phase 2.7c (separate from 2.7b) or part of 2.7b? The original 2.6c plan had it; deferred for kind-status conventions. Probably a 2.7c or 2.8 task — ties to the "what is the canonical status of each kind" question that needs an answer before automated active.md generation can be honest.'
+    - 'Should Watchman verdicts have a confidence score (like SIMILAR_TO edges do)? A model verdict could be "clean (0.85)" vs "clean (0.99)" and that would matter for prioritization in 2.7b''s pass scheduler. Not adding now — schema has tokens_in/out which is a proxy for "how much did the model think about this." But worth considering when 2.7b gets real model output.'
+    - 'When 2.7b runs, the bgworker needs an actor identity for verdicts/findings. Currently the actor column defaults to ''system''. Should it be the specific model name (claude-haiku-4) or the bgworker job id (watchman-pass-2026-05-11)? Probably both — actor=''watchman'' and model=''claude-haiku-4''. Decide when 2.7b designs its bgworker.'
+tags:
+    - pg-ai-stewards
+    - phase-2-7a
+    - watchman-substrate
+    - anti-loop-discipline
+    - dirty-bit
+    - verdicts
+    - findings
+    - surface-once-and-stop
+    - age-quirks-catalog
+    - phase-6-age-upstream
+    - honest-scope-split
+    - dogfood-moment
+    - agans-rule-9

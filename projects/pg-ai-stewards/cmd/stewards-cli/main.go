@@ -19,6 +19,7 @@ import (
 	"flag"
 	"fmt"
 	"os"
+	"strconv"
 	"strings"
 
 	"github.com/cpuchip/scripture-study/projects/pg-ai-stewards/cmd/stewards-cli/internal/db"
@@ -52,6 +53,8 @@ func main() {
 		runTodo(ctx, os.Args[2:])
 	case "context", "ctx":
 		runContext(ctx, os.Args[2:])
+	case "watchman":
+		runWatchman(ctx, os.Args[2:])
 	case "-h", "--help", "help":
 		usage()
 	default:
@@ -108,6 +111,22 @@ Commands:
       Walk the graph neighborhood of a slug (Phase 2.6c). Depth
       clamped 1..4. Returns one row per (hop, direction, edge,
       neighbor) with closest-hop-wins dedup.
+
+  watchman queue [--limit N]
+  watchman verdict <slug> --status clean|drift|done|superseded|skipped
+                          [--reasoning T] [--model M] [--pass-id P]
+                          [--tokens-in N] [--tokens-out N]
+  watchman finding <slug> --kind drift|synthesis --message T
+                          [--severity low|medium|high]
+                          [--suggested-action T] [--related slug,slug]
+                          [--pass-id P]
+  watchman ack <id> [--resolution acted|dismissed|deferred]
+  watchman history <slug>
+      Watchman substrate (Phase 2.7a). Inspect the dirty queue,
+      record verdicts (which reset the dirty-bit) and findings
+      (which suppress re-evaluation until acknowledged), and view
+      the verdict + finding timeline for a doc. The bgworker that
+      automates this is Phase 2.7b.
 
 Environment:
   STEWARDS_DSN    Postgres DSN (default: postgres://stewards:stewards@localhost:5432/stewards?sslmode=disable)
@@ -383,6 +402,122 @@ func runContext(ctx context.Context, args []string) {
 	defer pool.Close()
 	if err := show.Context(ctx, pool, fs.Arg(0), *depth); err != nil {
 		fmt.Fprintf(os.Stderr, "context: %v\n", err)
+		os.Exit(1)
+	}
+}
+
+// ---------- watchman (Phase 2.7a) ----------
+
+func runWatchman(ctx context.Context, args []string) {
+	if len(args) == 0 {
+		fmt.Fprintln(os.Stderr, "watchman: subcommand required (queue|verdict|finding|ack|history)")
+		os.Exit(1)
+	}
+	pool, err := db.Connect(ctx)
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "db: %v\n", err)
+		os.Exit(1)
+	}
+	defer pool.Close()
+
+	sub := args[0]
+	rest := args[1:]
+	switch sub {
+	case "queue":
+		fs := flag.NewFlagSet("watchman queue", flag.ExitOnError)
+		limit := fs.Int("limit", 50, "max rows")
+		if err := fs.Parse(rest); err != nil {
+			os.Exit(1)
+		}
+		if err := show.WatchmanQueue(ctx, pool, *limit); err != nil {
+			fmt.Fprintf(os.Stderr, "watchman queue: %v\n", err)
+			os.Exit(1)
+		}
+	case "verdict":
+		fs := flag.NewFlagSet("watchman verdict", flag.ExitOnError)
+		status := fs.String("status", "", "clean|drift|done|superseded|skipped (required)")
+		reasoning := fs.String("reasoning", "", "why this verdict")
+		model := fs.String("model", "", "model used (NULL for human)")
+		passID := fs.String("pass-id", "", "groups verdicts in one pass")
+		tokensIn := fs.Int("tokens-in", 0, "tokens consumed (input)")
+		tokensOut := fs.Int("tokens-out", 0, "tokens consumed (output)")
+		actor := fs.String("actor", "human", "actor recording the verdict")
+		if err := fs.Parse(rest); err != nil {
+			os.Exit(1)
+		}
+		if fs.NArg() != 1 || *status == "" {
+			fmt.Fprintln(os.Stderr, "watchman verdict: <slug> + --status required")
+			os.Exit(1)
+		}
+		if err := show.WatchmanVerdict(ctx, pool, fs.Arg(0), *status,
+			*reasoning, *model, *passID, *actor, *tokensIn, *tokensOut); err != nil {
+			fmt.Fprintf(os.Stderr, "watchman verdict: %v\n", err)
+			os.Exit(1)
+		}
+	case "finding":
+		fs := flag.NewFlagSet("watchman finding", flag.ExitOnError)
+		kind := fs.String("kind", "drift", "drift|synthesis")
+		message := fs.String("message", "", "finding message (required)")
+		severity := fs.String("severity", "medium", "low|medium|high")
+		action := fs.String("suggested-action", "", "what to do about it")
+		related := fs.String("related", "", "comma-separated related slugs")
+		passID := fs.String("pass-id", "", "groups findings in one pass")
+		actor := fs.String("actor", "human", "actor recording the finding")
+		if err := fs.Parse(rest); err != nil {
+			os.Exit(1)
+		}
+		if fs.NArg() != 1 || *message == "" {
+			fmt.Fprintln(os.Stderr, "watchman finding: <slug> + --message required")
+			os.Exit(1)
+		}
+		var relatedSlugs []string
+		if *related != "" {
+			for _, s := range strings.Split(*related, ",") {
+				if t := strings.TrimSpace(s); t != "" {
+					relatedSlugs = append(relatedSlugs, t)
+				}
+			}
+		}
+		if err := show.WatchmanFinding(ctx, pool, fs.Arg(0), *kind, *message,
+			*severity, *action, *passID, *actor, relatedSlugs); err != nil {
+			fmt.Fprintf(os.Stderr, "watchman finding: %v\n", err)
+			os.Exit(1)
+		}
+	case "ack":
+		fs := flag.NewFlagSet("watchman ack", flag.ExitOnError)
+		resolution := fs.String("resolution", "acted", "acted|dismissed|deferred")
+		actor := fs.String("actor", "human", "actor acknowledging")
+		if err := fs.Parse(rest); err != nil {
+			os.Exit(1)
+		}
+		if fs.NArg() != 1 {
+			fmt.Fprintln(os.Stderr, "watchman ack: <finding-id> required")
+			os.Exit(1)
+		}
+		id, err := strconv.ParseInt(fs.Arg(0), 10, 64)
+		if err != nil {
+			fmt.Fprintf(os.Stderr, "watchman ack: invalid id %q\n", fs.Arg(0))
+			os.Exit(1)
+		}
+		if err := show.WatchmanAcknowledge(ctx, pool, id, *resolution, *actor); err != nil {
+			fmt.Fprintf(os.Stderr, "watchman ack: %v\n", err)
+			os.Exit(1)
+		}
+	case "history":
+		fs := flag.NewFlagSet("watchman history", flag.ExitOnError)
+		if err := fs.Parse(rest); err != nil {
+			os.Exit(1)
+		}
+		if fs.NArg() != 1 {
+			fmt.Fprintln(os.Stderr, "watchman history: <slug> required")
+			os.Exit(1)
+		}
+		if err := show.WatchmanHistory(ctx, pool, fs.Arg(0)); err != nil {
+			fmt.Fprintf(os.Stderr, "watchman history: %v\n", err)
+			os.Exit(1)
+		}
+	default:
+		fmt.Fprintf(os.Stderr, "watchman: unknown subcommand %q\n", sub)
 		os.Exit(1)
 	}
 }

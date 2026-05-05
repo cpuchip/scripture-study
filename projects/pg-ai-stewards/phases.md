@@ -908,7 +908,64 @@ This is *optional*. We do it only if Phases 1–3 surface the need.
 - We won't know if we need it until we've used Phases 1–3 for a few
   months.
 
-## Phase 5+ — Maybe-someday
+## Phase 6 — AGE upstream contributions
+
+**Status:** sketched 2026-05-04. Triggered by 8 AGE quirks accumulated
+during Phase 2.6 work. Not committed — do this when pg-ai-stewards
+reaches a steady state and we have bandwidth to invest in the
+ecosystem rather than ship features.
+
+### Goal
+
+Give back to Apache AGE in the form of (a) PR fixes for the quirks
+that are genuinely bugs and (b) upstream documentation for the
+quirks that are spec-divergences-by-necessity. Reduces our future
+technical debt; helps everyone else who hits the same walls.
+
+### Catalog
+
+Full catalog with reproductions, workarounds, and category
+([bug-candidate / spec-divergence / by-design / our-mistake]) lives
+at [docs/AGE-QUIRKS.md](docs/AGE-QUIRKS.md). Categories matter:
+
+- **PR-worthy (bug-candidate):** quirks #2, #6, #7
+  - Apostrophe-in-interpolated-Cypher error message + auto-escape.
+  - `cypher()` 3rd-arg should accept any `ag_catalog.agtype`
+    expression, not just placeholders.
+  - `#>>` (and likely `->>`, `->`) should handle agtype scalars as
+    pass-through.
+- **Document upstream as caveats (spec-divergence):** quirks #1, #3, #5
+  - `ON CREATE SET` / `ON MATCH SET` after MERGE.
+  - Implicit `WITH *` between MERGE and a subsequent MATCH.
+  - Variable-length path syntax operations.
+- **By design (don't fight):** quirk #4 (labels as schema).
+- **Our problem (don't bother upstream):** quirk #8.
+
+### Why Phase 6 and not earlier
+
+PRs need a working test environment, a familiar codebase, and
+reviewer cycles. None of those are cheap. The honest move is to
+file the catalog now (we have it), keep adding to it as we hit
+new quirks, and contribute back when our own substrate is stable
+enough that AGE work isn't pulling cycles from delivery.
+
+### Done when (if pursued)
+
+- At least one PR landed against Apache AGE for one of the
+  bug-candidate quirks.
+- AGE-QUIRKS.md updated with PR links + status (merged / open /
+  rejected with reasoning).
+- For rejected PRs, the quirk's category is updated to reflect the
+  upstream verdict (e.g., "by-design per maintainer feedback").
+
+### Risks
+
+- AGE is Apache-governed; PR review can be slow. Don't block our own
+  work waiting on upstream.
+- A PR for #6 or #7 may require deep changes to the agtype type
+  system. Scope each PR before committing time.
+
+## Phase 7+ — Maybe-someday
 
 Listed but not committed:
 
@@ -960,6 +1017,13 @@ Phase 2 needs Phase 1 (it uses the bgworker for resolver / embedding).
 Phase 3 needs Phases 1 + 2 (pipelines act on studies and brain entries).
 Phase 4 is independent of Phase 3 and could happen in parallel — but
 shouldn't, until 3 is real.
+**Phase 2.7a** (Watchman substrate) needs Phase 2.6 only — no model
+dispatch required, just dirty-bit + verdict/finding tables.
+**Phase 2.7b** (Watchman automation) needs Phase 3 (model dispatch).
+This split means the anti-loop discipline is human-drivable now and
+automatable when Phase 3 lands.
+**Phase 6** (AGE upstream contributions) is fully independent of
+delivery phases — pursue when steady-state allows.
 
 ## Cadence
 

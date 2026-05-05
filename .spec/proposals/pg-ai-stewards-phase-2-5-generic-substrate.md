@@ -539,7 +539,69 @@ forever burning tokens."
 - **Idle-based:** when no human-in-loop session has run for >48h,
   a small synthesis-only pass runs.
 
-### Done when (2.7)
+### Honest scope split — 2.7a vs 2.7b
+
+The full Watchman spec above requires a model dispatch sidecar to
+perform consolidation passes. Model dispatch is **Phase 3**, not
+Phase 2. Without splitting, 2.7 blocks indefinitely on Phase 3.
+
+The split:
+
+**Phase 2.7a — Watchman substrate (no model required).** Everything
+that makes the anti-loop discipline real and human-drivable, with
+zero model calls:
+
+- `last_touched_at` + `last_consolidated_at` columns on
+  `stewards.studies`.
+- `stewards.verdicts` table (one row per consolidation pass,
+  status terminal-or-not, doc id, pass timestamp, model used,
+  tokens spent, verdict, reasoning).
+- `stewards.findings` table (drift recommendations + REM synthesis
+  candidates, with `acknowledged_at` for the surface-once-and-stop
+  discipline).
+- Triggers: any UPDATE to a study's `body` or `frontmatter` advances
+  `last_touched_at`. `record_verdict()` advances
+  `last_consolidated_at`.
+- `stewards.dirty_queue()` view: docs where
+  `last_touched_at > coalesce(last_consolidated_at, '-infinity')`,
+  ordered by oldest-touched.
+- CLI: `stewards-cli watchman queue|verdict|finding|history` —
+  inspect the dirty queue, manually record a verdict (a human can
+  drive a pass on one doc), record a finding, list per-doc history.
+
+When 2.7a ships, the dirty-bit + verdict-resets-it loop works
+end-to-end. The human can do consolidation passes by hand. The
+data structures the bgworker will eventually drive are real and
+exercised.
+
+**Phase 2.7b — Watchman automation (needs Phase 3 sidecar).** The
+bgworker job that reads `dirty_queue()`, dispatches NREM/REM passes
+to the model via Phase 3's tool sidecars, writes verdicts/findings
+automatically, enforces the per-pass token budget, and runs the
+7-day soak. `regenerate_active_md()` automation (item 5 in the
+done-when list below) is part of 2.7b.
+
+The split is honest: 2.7a is what we can ship today; 2.7b is what
+needs to wait. Both maintain the anti-loop discipline because the
+discipline is enforced by the schema (terminal verdicts, dirty-bit,
+acknowledged findings), not the bgworker.
+
+### Done when (2.7a)
+
+1. Schema lands: `last_touched_at`, `last_consolidated_at`,
+   `stewards.verdicts`, `stewards.findings`, dirty-bit triggers.
+2. `dirty_queue()` view returns docs in
+   touched-since-last-consolidated order.
+3. CLI: `stewards-cli watchman queue` lists the queue;
+   `watchman verdict <slug> --status clean|drift|done|superseded`
+   records a verdict and resets the dirty-bit; `watchman finding
+   <slug> --kind drift|synthesis --message "..."` writes a finding;
+   `watchman history <slug>` shows verdicts + findings for a doc.
+4. End-to-end manual loop verified: edit a study via importer,
+   confirm it appears in `dirty_queue()`, record a verdict, confirm
+   it leaves the queue.
+
+### Done when (2.7b)
 
 1. Watchman runs as a bgworker job in pg-ai-stewards.
 2. A 7-day soak test shows: total tokens-per-day decreasing as the
@@ -552,7 +614,8 @@ forever burning tokens."
    through the recommendation→action→acknowledgement loop.
 4. At least 1 synthesis (REM) finding produced an insight the human
    judges genuinely new (not "you already wrote this").
-5. `regenerate_active_md()` (from 2.6c) is automated as a Watchman
+5. `regenerate_active_md()` is implemented (deferred from 2.6c
+   pending kind-status conventions) and automated as a Watchman
    output: a fresh `.mind/active.md` is written at the end of each
    weekly pass.
 

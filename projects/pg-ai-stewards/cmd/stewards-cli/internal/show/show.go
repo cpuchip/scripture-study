@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"os"
 	"text/tabwriter"
+	"time"
 
 	"github.com/jackc/pgx/v5/pgxpool"
 )
@@ -327,4 +328,141 @@ func Context(ctx context.Context, pool *pgxpool.Pool, slug string, depth int) er
 	tw.Flush()
 	fmt.Printf("\n%d neighbor(s) of %s within depth %d\n", count, slug, depth)
 	return rows.Err()
+}
+
+// ============================================================
+// Phase 2.7a — Watchman substrate
+// ============================================================
+
+// WatchmanQueue prints the dirty queue (oldest-touched first).
+func WatchmanQueue(ctx context.Context, pool *pgxpool.Pool, limit int) error {
+	rows, err := pool.Query(ctx,
+		`SELECT slug, kind, title, updated_at, last_consolidated_at, dirty_for
+           FROM stewards.dirty_queue
+          LIMIT $1`,
+		limit,
+	)
+	if err != nil {
+		return err
+	}
+	defer rows.Close()
+	tw := tabwriter.NewWriter(os.Stdout, 0, 0, 2, ' ', 0)
+	fmt.Fprintln(tw, "SLUG\tKIND\tTOUCHED\tLAST_CONSOLIDATED\tDIRTY_FOR\tTITLE")
+	count := 0
+	for rows.Next() {
+		var slug, kind, title string
+		var touched time.Time
+		var lastCons *time.Time
+		var dirtyFor time.Duration
+		if err := rows.Scan(&slug, &kind, &title, &touched, &lastCons, &dirtyFor); err != nil {
+			return err
+		}
+		lastConsStr := "(never)"
+		if lastCons != nil {
+			lastConsStr = lastCons.Format("2006-01-02 15:04")
+		}
+		// Truncate title for table readability.
+		if len(title) > 60 {
+			title = title[:57] + "..."
+		}
+		fmt.Fprintf(tw, "%s\t%s\t%s\t%s\t%s\t%s\n",
+			slug, kind, touched.Format("2006-01-02 15:04"),
+			lastConsStr, dirtyFor.Truncate(time.Minute), title)
+		count++
+	}
+	tw.Flush()
+	fmt.Printf("\n%d doc(s) in dirty queue (limit %d)\n", count, limit)
+	return rows.Err()
+}
+
+// WatchmanVerdict records a verdict for a doc, bumping
+// last_consolidated_at in the same transaction.
+func WatchmanVerdict(ctx context.Context, pool *pgxpool.Pool,
+	slug, verdict, reasoning, model, passID, actor string,
+	tokensIn, tokensOut int) error {
+	var id int64
+	err := pool.QueryRow(ctx,
+		`SELECT stewards.record_verdict($1, $2, $3, $4, $5, $6, $7, $8)`,
+		slug, verdict, reasoning,
+		nullable(model), tokensIn, tokensOut,
+		nullable(passID), actor,
+	).Scan(&id)
+	if err != nil {
+		return err
+	}
+	fmt.Printf("verdict %s recorded for %s (id=%d, dirty-bit reset)\n", verdict, slug, id)
+	return nil
+}
+
+// WatchmanFinding writes a finding row.
+func WatchmanFinding(ctx context.Context, pool *pgxpool.Pool,
+	slug, kind, message, severity, suggestedAction, passID, actor string,
+	related []string) error {
+	var id int64
+	err := pool.QueryRow(ctx,
+		`SELECT stewards.record_finding($1, $2, $3, $4, $5, $6, $7, $8)`,
+		slug, kind, message, severity,
+		nullable(suggestedAction), related,
+		nullable(passID), actor,
+	).Scan(&id)
+	if err != nil {
+		return err
+	}
+	fmt.Printf("finding %s/%s recorded for %s (id=%d)\n", kind, severity, slug, id)
+	return nil
+}
+
+// WatchmanAcknowledge marks a finding acknowledged.
+func WatchmanAcknowledge(ctx context.Context, pool *pgxpool.Pool,
+	id int64, resolution, actor string) error {
+	if _, err := pool.Exec(ctx,
+		`SELECT stewards.acknowledge_finding($1, $2, $3)`,
+		id, resolution, actor,
+	); err != nil {
+		return err
+	}
+	fmt.Printf("finding %d acknowledged (%s)\n", id, resolution)
+	return nil
+}
+
+// WatchmanHistory prints the verdict + finding timeline for a doc.
+func WatchmanHistory(ctx context.Context, pool *pgxpool.Pool, slug string) error {
+	rows, err := pool.Query(ctx,
+		`SELECT event_at, event_type, detail, actor, extra
+           FROM stewards.study_history($1)`,
+		slug,
+	)
+	if err != nil {
+		return err
+	}
+	defer rows.Close()
+	tw := tabwriter.NewWriter(os.Stdout, 0, 0, 2, ' ', 0)
+	fmt.Fprintln(tw, "WHEN\tTYPE\tACTOR\tDETAIL")
+	count := 0
+	for rows.Next() {
+		var at time.Time
+		var etype, detail, actor string
+		var extra []byte
+		if err := rows.Scan(&at, &etype, &detail, &actor, &extra); err != nil {
+			return err
+		}
+		_ = extra // available for verbose mode later
+		if len(detail) > 80 {
+			detail = detail[:77] + "..."
+		}
+		fmt.Fprintf(tw, "%s\t%s\t%s\t%s\n",
+			at.Format("2006-01-02 15:04"), etype, actor, detail)
+		count++
+	}
+	tw.Flush()
+	fmt.Printf("\n%d event(s) for %s\n", count, slug)
+	return rows.Err()
+}
+
+// nullable returns nil for empty strings so they go to SQL as NULL.
+func nullable(s string) any {
+	if s == "" {
+		return nil
+	}
+	return s
 }
