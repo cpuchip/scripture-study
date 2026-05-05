@@ -44,6 +44,10 @@ func main() {
 		runImport(ctx, os.Args[2:])
 	case "study":
 		runStudy(ctx, os.Args[2:])
+	case "workstream", "ws":
+		runWorkstream(ctx, os.Args[2:])
+	case "edges":
+		runEdges(ctx, os.Args[2:])
 	case "-h", "--help", "help":
 		usage()
 	default:
@@ -74,6 +78,15 @@ Commands:
 
   study refresh [<slug>]
       Re-resolve citations + recompute similarity for one slug, or all.
+
+  workstream list
+      List all workstreams + count of declared proposals.
+
+  workstream show <id>
+      Show one workstream + its declared proposals (from graph).
+
+  edges <slug>
+      Show outbound declared-provenance edges for a slug (Phase 2.6a).
 
 Environment:
   STEWARDS_DSN    Postgres DSN (default: postgres://stewards:stewards@localhost:5432/stewards?sslmode=disable)
@@ -187,6 +200,60 @@ func runStudy(ctx context.Context, args []string) {
 		}
 	default:
 		fmt.Fprintf(os.Stderr, "study: unknown subcommand %q (show|list|refresh)\n", args[0])
+		os.Exit(1)
+	}
+}
+
+// ---------- workstream (Phase 2.6a) ----------
+
+func runWorkstream(ctx context.Context, args []string) {
+	if len(args) == 0 {
+		fmt.Fprintln(os.Stderr, "workstream: subcommand required (list|show)")
+		os.Exit(1)
+	}
+	pool, err := db.Connect(ctx)
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "db: %v\n", err)
+		os.Exit(1)
+	}
+	defer pool.Close()
+
+	switch args[0] {
+	case "list":
+		if err := show.WorkstreamList(ctx, pool); err != nil {
+			fmt.Fprintf(os.Stderr, "list: %v\n", err)
+			os.Exit(1)
+		}
+	case "show":
+		if len(args) < 2 {
+			fmt.Fprintln(os.Stderr, "workstream show: <id> required (e.g. WS5)")
+			os.Exit(1)
+		}
+		if err := show.WorkstreamShow(ctx, pool, args[1]); err != nil {
+			fmt.Fprintf(os.Stderr, "show: %v\n", err)
+			os.Exit(1)
+		}
+	default:
+		fmt.Fprintf(os.Stderr, "workstream: unknown subcommand %q (list|show)\n", args[0])
+		os.Exit(1)
+	}
+}
+
+// ---------- edges (Phase 2.6a) ----------
+
+func runEdges(ctx context.Context, args []string) {
+	if len(args) == 0 {
+		fmt.Fprintln(os.Stderr, "edges: <slug> required")
+		os.Exit(1)
+	}
+	pool, err := db.Connect(ctx)
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "db: %v\n", err)
+		os.Exit(1)
+	}
+	defer pool.Close()
+	if err := show.DeclaredEdges(ctx, pool, args[0]); err != nil {
+		fmt.Fprintf(os.Stderr, "edges: %v\n", err)
 		os.Exit(1)
 	}
 }

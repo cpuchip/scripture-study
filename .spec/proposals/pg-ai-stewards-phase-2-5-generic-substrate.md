@@ -3,6 +3,10 @@ workstream: WS5
 status: 2.5 shipped; 2.6 spec'd; 2.7 sketched
 created: 2026-05-04
 shipped: 2026-05-04
+feeds:
+  - proposal-sabbath-agent
+  - proposal-token-efficiency
+  - proposal-brain-vscode-bridge-main
 ---
 
 # pg-ai-stewards Phase 2.5 + 2.6 + 2.7 — Generic Substrate, Typed Edges, Watchman
@@ -538,8 +542,12 @@ forever burning tokens."
 ### Done when (2.7)
 
 1. Watchman runs as a bgworker job in pg-ai-stewards.
-2. A 30-day soak test shows: total tokens-per-day decreasing as the
-   corpus stabilizes (proves the anti-loop discipline works).
+2. A 7-day soak test shows: total tokens-per-day decreasing as the
+   corpus stabilizes (proves the anti-loop discipline works). Tighter
+   than the original 30-day target because we don't have 30 days —
+   the *trend* is what matters, and 7 days of touched-but-now-stable
+   docs is enough signal. If the trend is wrong at day 7, fix and
+   re-soak; if it's right, ship and let production extend the proof.
 3. At least 3 drift findings surfaced to the human and resolved
    through the recommendation→action→acknowledgement loop.
 4. At least 1 synthesis (REM) finding produced an insight the human
@@ -578,7 +586,7 @@ Watchman: dirty-bit per pair, terminal verdicts, bounded budget.
 **Phase 2.9 — Agent self-modification surface.** The hard one. Lets
 agents propose changes to their own instructions/skills/agent-modes,
 gated through a `stewards.self_modifications` review queue. Only
-implementable after Watchman has 30+ days of clean operation, because
+implementable after Watchman has 7+ days of clean operation, because
 this is the surface where "the system goes off the rails" becomes
 plausible. Covenant scaffolding TBD.
 

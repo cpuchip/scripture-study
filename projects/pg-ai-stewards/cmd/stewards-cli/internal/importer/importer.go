@@ -149,7 +149,11 @@ func ImportSource(ctx context.Context, pool *pgxpool.Pool, src Source, limit int
 }
 
 // upsert calls stewards.import_study via pgx — fully parameterized,
-// no SQL string building, no apostrophe-escape issues.
+// no SQL string building, no apostrophe-escape issues. After the
+// upsert, calls stewards.link_declared_edges() to refresh frontmatter-
+// declared :HAS_PROPOSAL / :FEEDS / :SUPERSEDES / :IMPLEMENTS edges
+// (Phase 2.6a). The function is idempotent and tolerant of empty
+// frontmatter — for documents without those keys it's a cheap no-op.
 func upsert(ctx context.Context, pool *pgxpool.Pool, doc *Doc) error {
 	fmJSON, err := json.Marshal(doc.Frontmatter)
 	if err != nil {
@@ -158,9 +162,20 @@ func upsert(ctx context.Context, pool *pgxpool.Pool, doc *Doc) error {
 	if len(fmJSON) == 0 || string(fmJSON) == "null" {
 		fmJSON = []byte("{}")
 	}
-	_, err = pool.Exec(ctx,
+	if _, err := pool.Exec(ctx,
 		`SELECT stewards.import_study($1, $2, $3, $4, $5::jsonb, $6)`,
 		doc.Slug, doc.FilePath, doc.Title, doc.Body, string(fmJSON), doc.Kind,
-	)
-	return err
+	); err != nil {
+		return err
+	}
+	// Phase 2.6a: declared edges. Failure here is non-fatal for the
+	// import itself — log and continue so a malformed frontmatter
+	// doesn't kill a 359-doc reimport.
+	if _, err := pool.Exec(ctx,
+		`SELECT stewards.link_declared_edges($1, $2::jsonb)`,
+		doc.Slug, string(fmJSON),
+	); err != nil {
+		fmt.Fprintf(os.Stderr, "  WARN link_declared_edges %s: %v\n", doc.Slug, err)
+	}
+	return nil
 }

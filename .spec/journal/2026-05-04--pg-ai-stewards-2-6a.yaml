@@ -1,0 +1,43 @@
+date: "2026-05-04"
+session_id: pg-ai-stewards-2-6a
+intent: 'Phase 2.6a — workstream vertices + frontmatter :DECLARED edges. First sub-phase of 2.6, deliberately scoped small so it ships in one session under a tight token budget. Resolves the four open ontology questions Michael landed answers on at end of 2.5: three-door edge ingestion (declared/linked/inferred), todos as persistent connector vertices, agentic workstream backfill, "what am I working on" as a status query (not a separate table).'
+discoveries:
+    - title: 'Live-DB migration pattern saved a rebuild and the 359-doc corpus'
+      detail: 'Phase 2.6a ships as `extension/2-6a-workstreams.sql` rather than a new `extension_sql!` block in lib.rs because rebuilding the docker image and dropping/recreating the extension would have lost everything from 2.1 through 2.5. The trade: the file is checked in and will be folded into lib.rs at the next intentional rebuild. Same shape as the existing verify-2-*.sql scripts. This pattern (raw SQL for live migrations, fold-into-lib.rs for fresh installs) is the one the becoming/ideco.me ecosystem also uses (goose migrations on the live DB, schema embedded in code for fresh setup). Worth naming as an extension-development convention.'
+    - title: 'AGE Cypher does NOT support `MERGE ... ON CREATE SET`'
+      detail: 'First draft of `link_declared_edges` used `MERGE (w:Workstream {id: $ws_id}) ON CREATE SET w.name = $ws_id, w.status = ''unknown''` to handle the "frontmatter cites a workstream we haven''t seeded yet" case. AGE rejected with "syntax error at or near ON". Apache AGE implements a subset of Cypher; ON CREATE SET / ON MATCH SET are notable omissions. Workaround: drop the ON CREATE clause and let `import_workstream()` fill in name/status separately. Logging this for the AGE-quirks list alongside the apostrophe-escape bug from 2.1.'
+    - title: 'Single-file --source produces a different slug than directory --source'
+      detail: 'Reimporting `--source proposal:.spec/proposals/pg-ai-stewards-phase-2-5-generic-substrate.md` (single file) produced slug `proposal-..-pg-ai-stewards-phase-2-5-generic-substrate` (with `..` literal). Reimporting `--source proposal:.spec/proposals` (directory) produced the correct `proposal-pg-ai-stewards-phase-2-5-generic-substrate`. Cause: the slug builder uses the path between sourceRoot and basename; when the file IS the source, the builder walks up from the file path and includes path segments. Cost a debug round-trip. Carry-forward: either reject single-file source for kinds that participate in slug-prefix conventions, OR detect the file-as-source case and use the parent directory as sourceRoot. Medium priority.'
+    - title: 'The three-door edge schema works exactly as designed'
+      detail: 'WS5 vertex now links to all 9 of its declared proposals via `:HAS_PROPOSAL {provenance:''declared'', confidence:1.0, source:''frontmatter:workstream''}`. Adding `feeds: [proposal-sabbath-agent, proposal-token-efficiency, proposal-brain-vscode-bridge-main]` to the pg-ai-stewards proposal''s frontmatter and re-importing produced 3 :FEEDS edges with the same provenance schema. Idempotent: the function drops existing :DECLARED-provenance edges from the slug first, so re-imports stay in sync. The default `WHERE provenance IN (''declared'',''linked'')` filter pattern (named in the proposal) is now meaningful — even though there are no inferred edges yet, the schema is ready for them.'
+relationship:
+    - quality: 'Hard cap on tokens forced clean scoping'
+      detail: 'Michael named that he has ~70 GitHub Copilot Opus 4.7 requests left for the month and is at 50% of his weekly session limit on day 2. The instinct could have been "let''s skip 2.6a''s clean phasing and bash out the whole 2.6 in one swing." Instead we held the line: 2.6a only (workstreams + frontmatter edges), 2.6b (todos) and 2.6c (phase splitting + context_for) get their own sessions. The discipline was Michael''s call, not mine — he wrote 2.6a/b/c as independent sub-phases in the spec exactly so each could ship under a session-window cap.'
+    - quality: 'Stewardship action: foldback discipline'
+      detail: 'When the live-DB SQL works, I noted in the file that it should be folded into lib.rs at the next rebuild. Without that note, the SQL would silently diverge: live DB has it, fresh installs don''t. This is the same class of bug as the goose-migration-missing-from-PostgreSQL bug from March 19. Naming the foldback debt in the file itself (not just in memory or chat) is the pattern that prevents it.'
+    - quality: 'Honest scope tweak from Michael'
+      detail: 'Michael noted that "we use LM Studio instead of Ollama" and "opencode go/zen instead of OpenRouter (for now)" in the Phase 3 sketch. Small corrections, but they matter — these are the actual tool choices, and naming them right in the proposal means future-me (or future-agent) doesn''t implement against the wrong assumption. Updated. Also: 30-day Watchman soak test compressed to 7-day, because Michael does not have 30 days. The trend is what matters.'
+carry_forward:
+    - priority: high
+      note: 'Phase 2.6b — todos. Schema (`stewards.todos`), CLI (`stewards-cli todo create|done|list|audit`), roll-up audit query. Spec''d in the proposal under "Phasing within 2.6". Ready to implement next session.'
+    - priority: high
+      note: 'Phase 2.6c — phase splitter for phases.md + `context_for(slug, depth)` + `regenerate_active_md()`. The query that proves "what am I working on" works against the graph rather than against `.mind/active.md`. After 2.6c, active.md becomes a generated artifact.'
+    - priority: medium
+      note: 'Single-file --source slug bug. `--source proposal:path/to/file.md` produces a different slug than `--source proposal:path/to/dir` containing the same file. Either reject single-file source for kinds with slug-prefix conventions, or detect the file-as-source case and use parent dir as sourceRoot. Cost a debug round in 2.6a; will keep biting until fixed.'
+    - priority: medium
+      note: 'Foldback debt: `extension/2-6a-workstreams.sql` needs to land in `extension/src/lib.rs` as a new `extension_sql!` block (`requires = ["create_studies"]`) at the next intentional extension rebuild. Without this, fresh `docker compose build` installs would not have workstreams. Same class of bug as the missing-PostgreSQL-migration pattern.'
+    - priority: low
+      note: 'AGE Cypher quirks list (for 2.6b+): no `ON CREATE SET` / `ON MATCH SET`, apostrophes break string-interpolated Cypher (must use param binding), `WITH` is required between MERGE and a subsequent MATCH. Document somewhere durable when there are 4+ entries.'
+questions:
+    - 'How should `:HAS_PROPOSAL` direction be queried from the proposal side? Current `edges <slug>` only shows OUTBOUND edges, so a proposal shows :FEEDS but not the :HAS_PROPOSAL pointing at it from a workstream. Probably want a separate `incoming` query or a flag. Decide in 2.6b when designing the todo edge surface.'
+    - 'When we get to 2.8 (LLM-inferred edges via Kimi k2.6), how does confidence calibrate? `provenance=''declared''` is 1.0 by definition, `''linked''` is 0.7-0.9 (high precision). What does Kimi need to return for an edge to be auto-confirmed vs surfaced for review? Probably needs a calibration pass against a hand-labeled gold set.'
+    - 'Watchman 2.7 anti-loop discipline names `last_consolidated_at`/`last_touched_at` as load-bearing. Should those columns be added now (cheap) so 2.6 docs accumulate the timestamps even before Watchman runs? Or wait until 2.7? Adding now is the cheaper path; defer only if the design changes.'
+tags:
+    - pg-ai-stewards
+    - phase-2-6a
+    - workstreams
+    - typed-edges
+    - declared-provenance
+    - age-quirks
+    - tokenomics
+    - opus-4-7

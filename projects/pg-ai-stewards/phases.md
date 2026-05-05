@@ -753,11 +753,50 @@ these paths.
   edges we'd create. Probability: low based on probe; revisit if
   >100k edges starts misbehaving.
 
-## Phase 3 — Pipelines + MCP: agents that work without an IDE
+## Phase 3 — Pipelines + MCP + External arms: agents that work without an IDE
 
 **Goal:** long-running agent work runs without an open VS Code
 window. Tool sidecars execute work; the bgworker dispatches; results
-flow back to a thin web UI for review.
+flow back to a thin web UI for review. **Multi-model dispatch** —
+the substrate routes to Anthropic (Opus/Sonnet via API), Google
+(Gemini Pro/Flash, Veo, TTS), Kimi k2.6 (via opencode go/zen),
+and local models (LM Studio). Token cost per task becomes a queryable
+metric.
+
+> This is the long-form spec for what the proposal
+> ([phase-2-5-generic-substrate.md](../../.spec/proposals/pg-ai-stewards-phase-2-5-generic-substrate.md))
+> sketched as "Phase 3 — External arms." The two are the same phase,
+> different altitudes. The proposal sketch named the *what*
+> (multi-model dispatch, sandboxed git, MCP wiring, tokenomics as
+> telemetry); this section names the *how* (pipeline tables, sidecar
+> protocol, web UI, becoming integration).
+
+### Inaugural pipeline (POC) — automated scripture studies
+
+First pipeline to land: **the system writes its own scripture studies
+using gospel-engine-v2 + the existing MCPs as tools.** Drop a
+`study_request` row (binding question + scope), bgworker dispatches,
+Kimi k2.6 (or whichever model is configured) does discovery via
+`gospel_search`, reads sources via `gospel_get`, drafts the study,
+self-reviews against `source-verification` skill, writes the
+`study/<slug>.md` file, opens a brain entry for human review. **This
+is the proof of concept that the substrate can do the agent work itself.**
+
+Why scripture studies as the POC and not something more impressive:
+
+- **Stakes are right-sized.** A bad study is a learning opportunity,
+  not a production outage.
+- **Tooling already exists.** gospel-engine-v2, webster, byu-citations
+  are running today. No new MCP work blocks it.
+- **Verification is concrete.** The `source-verification` skill +
+  cite-count rule + read-before-quoting are checkable. The agent's
+  work can be graded against the same standards we hold ourselves to.
+- **Output has independent value.** Even imperfect drafts save
+  setup time on real studies.
+
+If this works for studies, the next pipelines (Marsfield exhibit
+briefs, D&D campaign elements, Empty Epsilon mission scripts) become
+variations on the same shape.
 
 ### Deliverables
 
@@ -782,6 +821,13 @@ flow back to a thin web UI for review.
 5. **Becoming integration** — the Discord relay reads/writes brain
    entries and work items via the same DB. ibeco.me web reads from
    the same DB.
+6. **Multi-model dispatch.** Each model is a tool sidecar with its
+   own credentials and pricing. Per-call token cost lands as a
+   `stewards.model_calls` row alongside the work_item. `tokenomics`
+   (Michael's coining) becomes first-class queryable telemetry, not
+   an estimate. First sidecars: Anthropic (Opus/Sonnet API),
+   Google (Gemini Pro/Flash, Veo, TTS — for space-center work),
+   Kimi k2.6 (via opencode go/zen), LM Studio (local models).
 
 ### Done when
 
@@ -790,6 +836,9 @@ flow back to a thin web UI for review.
   runs without an IDE window, posts a result back, and Michael
   reviews it from any device.
 - The web UI can interrupt an in-flight model call.
+- **The scripture-study POC has produced at least 3 studies that
+  pass source-verification on first review** (no fabricated quotes,
+  links resolve, citations match what's actually in the cited text).
 
 ### Kill criteria
 
