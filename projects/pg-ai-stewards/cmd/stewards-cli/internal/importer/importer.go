@@ -37,28 +37,43 @@ type Doc struct {
 	Kind        string
 }
 
-// Parser turns one file into one Doc. The sourceRoot is the absolute
+// Parser turns one file into one-or-many Docs. Most parsers return a
+// single-element slice; the phase splitter (Phase 2.6c) returns one
+// Doc per `## Phase X.Y` section. The sourceRoot is the absolute
 // path of the --source root, used to compute the file's subpath
 // (everything between sourceRoot and the basename) so the slug can be
 // disambiguated when basenames collide across subdirs. (Studies were
 // silently overwriting each other in the old PowerShell importer
 // when `study/x.md` and `study/talks/x.md` existed in parallel.)
-type Parser func(absPath, relPath, sourceRoot string) (*Doc, error)
+type Parser func(absPath, relPath, sourceRoot string) ([]*Doc, error)
 
 func parserFor(kind string) (Parser, string, error) {
 	switch kind {
 	case "study":
-		return parseMarkdownStudy, ".md", nil
+		return singleParser(parseMarkdownStudy), ".md", nil
 	case "doc":
-		return parseMarkdownDoc, ".md", nil
+		return singleParser(parseMarkdownDoc), ".md", nil
 	case "proposal":
-		return parseMarkdownProposal, ".md", nil
+		return singleParser(parseMarkdownProposal), ".md", nil
 	case "phase-doc":
-		return parseMarkdownPhaseDoc, ".md", nil
+		return singleParser(parseMarkdownPhaseDoc), ".md", nil
+	case "phase":
+		return parseMarkdownPhaseSplit, ".md", nil
 	case "journal":
-		return parseJournalYAML, ".yaml", nil
+		return singleParser(parseJournalYAML), ".yaml", nil
 	default:
-		return nil, "", fmt.Errorf("unknown kind: %s (want study|doc|proposal|phase-doc|journal)", kind)
+		return nil, "", fmt.Errorf("unknown kind: %s (want study|doc|proposal|phase-doc|phase|journal)", kind)
+	}
+}
+
+// singleParser wraps a one-doc parser into the multi-doc Parser shape.
+func singleParser(p func(absPath, relPath, sourceRoot string) (*Doc, error)) Parser {
+	return func(absPath, relPath, sourceRoot string) ([]*Doc, error) {
+		d, err := p(absPath, relPath, sourceRoot)
+		if err != nil {
+			return nil, err
+		}
+		return []*Doc{d}, nil
 	}
 }
 
@@ -133,17 +148,18 @@ func ImportSource(ctx context.Context, pool *pgxpool.Pool, src Source, limit int
 			fail++
 			continue
 		}
-		doc.Kind = src.Kind
-
-		if err := upsert(ctx, pool, doc); err != nil {
-			fmt.Fprintf(os.Stderr, "  IMPORT FAIL: %s: %v\n", rel, err)
-			fail++
-			continue
+		for _, d := range doc {
+			d.Kind = src.Kind
+			if err := upsert(ctx, pool, d); err != nil {
+				fmt.Fprintf(os.Stderr, "  IMPORT FAIL: %s: %v\n", d.Slug, err)
+				fail++
+				continue
+			}
+			if verbose {
+				fmt.Printf("  ok: %s (%s)\n", d.Slug, rel)
+			}
+			ok++
 		}
-		if verbose {
-			fmt.Printf("  ok: %s (%s)\n", doc.Slug, rel)
-		}
-		ok++
 	}
 	return ok, fail
 }
@@ -176,6 +192,18 @@ func upsert(ctx context.Context, pool *pgxpool.Pool, doc *Doc) error {
 		doc.Slug, string(fmJSON),
 	); err != nil {
 		fmt.Fprintf(os.Stderr, "  WARN link_declared_edges %s: %v\n", doc.Slug, err)
+	}
+	// Phase 2.6c: if this is a phase, link it back to its parent
+	// phase-doc via :HAS_PHASE.
+	if doc.Kind == "phase" {
+		if parent, ok := doc.Frontmatter["parent_doc"].(string); ok && parent != "" {
+			if _, err := pool.Exec(ctx,
+				`SELECT stewards.link_phase_to_doc($1, $2)`,
+				doc.Slug, parent,
+			); err != nil {
+				fmt.Fprintf(os.Stderr, "  WARN link_phase_to_doc %s -> %s: %v\n", doc.Slug, parent, err)
+			}
+		}
 	}
 	return nil
 }

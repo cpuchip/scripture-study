@@ -809,6 +809,14 @@ agent work itself.
 > as DB-backed pages with their citations, similar studies, and graph
 > neighborhood inline. study.ibeco.me (WS4) is already pointed at the
 > reading surface; pg-ai-stewards becomes its second backend.
+>
+> **Working name for the agent surface: `a.ibeco.me`** ("a becoming" /
+> "ai become"). Sibling to study.ibeco.me. Not a code editor — a
+> worklist, a review queue for agent-produced studies, and an
+> in-flight model-call inspector. Don't build until Phase 3's
+> bgworker side is real; the meaningful version of this UI is the
+> one that lets you watch an agent work, intervene, accept/reject —
+> which requires the producer side to exist first.
 
 Why scripture studies as the POC and not something more impressive:
 
@@ -906,7 +914,39 @@ Listed but not committed:
 
 - **`postgres_fdw` from stewards into gospel** for SQL-level joins
   (currently we go via HTTP API).
-- **Multi-tenant RLS** if ibeco.me ever hosts other people.
+- **Multi-tenant RLS** if ibeco.me ever hosts other people. **Open
+  design questions worth recording now (not solving):**
+  - **Workstream as the unit of sharing.** Workstreams are already
+    vertices with stable ids. Visibility scopes (private / group /
+    public) attach naturally there; everything reachable through
+    `:HAS_PROPOSAL` / `:HAS_TODO` inherits unless explicitly
+    overridden.
+  - **Row-level: `owner_user_id` + `visibility` on every table.**
+    Add to `stewards.studies`, `stewards.todos`, `stewards.workstreams`,
+    `stewards.model_calls`. RLS policies based on session-set
+    `app.current_user_id`.
+  - **The AGE caveat.** pgvector RLS works naturally (it's a
+    standard `WHERE`). **AGE Cypher does NOT automatically enforce
+    RLS on traversed labels** — a `MATCH (a)-[:CITES]->(b)` can
+    return `b` rows the current user shouldn't see. Mitigation
+    options to evaluate: (a) every Cypher query post-filtered by
+    joining `cypher()` output back to the SQL table with RLS active,
+    (b) per-user materialized graph subsets, (c) write a Cypher
+    wrapper that injects visibility predicates. Path (a) is
+    cheapest; (b) is fastest at read time; (c) is most correct.
+    Decide when first non-Michael user is real.
+  - **API key vault.** New `stewards.user_secrets` table
+    (`user_id, provider, key_encrypted, created_at`), encrypted at
+    rest with `pgcrypto`. bgworker fetches per-user keys at
+    dispatch time; per-user tokenomics roll up against the same
+    keys. Never logged, never returned through the MCP surface.
+  - **Edge ownership.** Whichever endpoint has lower visibility wins
+    — a private todo on a public workstream is private; a public
+    annotation on a private study is private. Default-deny.
+  - **Not before:** authentication (let becoming/ibeco.me's existing
+    OAuth do the work — `app.current_user_id` is set from the
+    authenticated session), audit logging, sharing-link UX. Those
+    are surface-level concerns once the substrate enforces correctly.
 - **`pg_diskann`** if HNSW becomes the bottleneck.
 - **Replace VS Code chat client with a Postgres-native one.** Big
   scope; only if the existing surface stops being good enough.

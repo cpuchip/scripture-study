@@ -153,6 +153,96 @@ func parseMarkdownPhaseDoc(absPath, relPath, sourceRoot string) (*Doc, error) {
 	return &Doc{Slug: slug, FilePath: relPath, Title: title, Body: body, Frontmatter: fm}, nil
 }
 
+// phaseHeaderRe matches `## Phase X[.Y[.Z][a-z]?]` headers and
+// captures the phase id (e.g. "2.6a", "1.6.1", "5+") and the
+// trailing title text. Multiple dotted segments are supported so
+// that `## Phase 1.6.1` parses as id="1.6.1", not id="1.6" with
+// ".1" leaking into the title.
+var phaseHeaderRe = regexp.MustCompile(`(?m)^##\s+Phase\s+([0-9]+(?:\.[0-9]+)*[a-z]?\+?)\s*[—\-:]?\s*(.*)$`)
+
+// parseMarkdownPhaseSplit: splits a phases.md file into one Doc per
+// `## Phase X.Y` section (Phase 2.6c). Each phase becomes its own
+// row with kind='phase' and frontmatter pointing back to the parent
+// phase-doc via `parent_doc`. The importer's upsert layer reads
+// parent_doc and writes the :HAS_PHASE edge after insert.
+//
+// Phase id slug rule: "2.6a" → "2-6a", "5+" → "5-plus".
+// Doc slug: "phase-{project}-{phase-id-slug}".
+func parseMarkdownPhaseSplit(absPath, relPath, sourceRoot string) ([]*Doc, error) {
+	body, err := readUTF8(absPath)
+	if err != nil {
+		return nil, err
+	}
+	body, _ = splitYAMLFrontmatter(body)
+	project := filepath.Base(filepath.Dir(absPath))
+	parentDoc := fmt.Sprintf("phase-doc-%s-phases", project)
+
+	matches := phaseHeaderRe.FindAllStringSubmatchIndex(body, -1)
+	if len(matches) == 0 {
+		return nil, fmt.Errorf("no `## Phase X.Y` headers found in %s", relPath)
+	}
+
+	docs := make([]*Doc, 0, len(matches))
+	slugSeen := make(map[string]int) // disambiguate duplicate phase ids
+	for i, m := range matches {
+		startBody := m[0]
+		endBody := len(body)
+		if i+1 < len(matches) {
+			endBody = matches[i+1][0]
+		}
+		phaseID := body[m[2]:m[3]]
+		title := strings.TrimSpace(body[m[4]:m[5]])
+		section := body[startBody:endBody]
+
+		idSlug := phaseIDToSlug(phaseID)
+		slug := fmt.Sprintf("phase-%s-%s", project, idSlug)
+		// On collision (e.g. two `## Phase 2` headers in the same
+		// file), append -2, -3 ... so each phase still gets a row.
+		// Counts the FIRST occurrence as the un-suffixed slug.
+		if n := slugSeen[slug]; n > 0 {
+			slug = fmt.Sprintf("%s-%d", slug, n+1)
+		}
+		slugSeen[fmt.Sprintf("phase-%s-%s", project, idSlug)]++
+
+		fullTitle := fmt.Sprintf("Phase %s — %s", phaseID, title)
+		if title == "" {
+			fullTitle = fmt.Sprintf("Phase %s", phaseID)
+		}
+
+		docs = append(docs, &Doc{
+			Slug:     slug,
+			FilePath: relPath,
+			Title:    fullTitle,
+			Body:     section,
+			Frontmatter: map[string]any{
+				"project":    project,
+				"phase_id":   phaseID,
+				"parent_doc": parentDoc,
+			},
+		})
+	}
+	return docs, nil
+}
+
+// phaseIDToSlug normalizes a phase id like "2.6a" into a slug-safe
+// "2-6a", and "5+" into "5-plus". Anything outside [a-z0-9] becomes "-".
+func phaseIDToSlug(id string) string {
+	id = strings.ReplaceAll(id, "+", "-plus")
+	id = strings.ReplaceAll(id, ".", "-")
+	id = strings.ToLower(id)
+	// Defensive: collapse stray non-[a-z0-9-] just in case.
+	var b strings.Builder
+	for _, r := range id {
+		switch {
+		case r >= 'a' && r <= 'z', r >= '0' && r <= '9', r == '-':
+			b.WriteRune(r)
+		default:
+			b.WriteRune('-')
+		}
+	}
+	return strings.Trim(b.String(), "-")
+}
+
 // splitYAMLFrontmatter peels a leading --- ... --- block off the
 // document and parses it as YAML into a map. Returns the body without
 // the frontmatter and the parsed map (empty if absent or malformed).

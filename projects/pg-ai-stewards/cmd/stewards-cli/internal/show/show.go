@@ -295,3 +295,36 @@ func TodoAudit(ctx context.Context, pool *pgxpool.Pool) error {
 	}
 	return rows.Err()
 }
+
+// ============================================================
+// Phase 2.6c — context_for graph walk
+// ============================================================
+
+// Context prints the typed graph neighborhood of a slug up to depth.
+func Context(ctx context.Context, pool *pgxpool.Pool, slug string, depth int) error {
+	rows, err := pool.Query(ctx,
+		`SELECT hop, direction, edge_type, neighbor, neighbor_kind, provenance, confidence
+           FROM stewards.context_for($1, $2)`,
+		slug, depth,
+	)
+	if err != nil {
+		return err
+	}
+	defer rows.Close()
+	tw := tabwriter.NewWriter(os.Stdout, 0, 0, 2, ' ', 0)
+	fmt.Fprintln(tw, "HOP\tDIR\tEDGE\tNEIGHBOR\tKIND\tPROV\tCONF")
+	count := 0
+	for rows.Next() {
+		var hop int
+		var dir, etype, neighbor, kind, prov string
+		var conf float64
+		if err := rows.Scan(&hop, &dir, &etype, &neighbor, &kind, &prov, &conf); err != nil {
+			return err
+		}
+		fmt.Fprintf(tw, "%d\t%s\t%s\t%s\t%s\t%s\t%.2f\n", hop, dir, etype, neighbor, kind, prov, conf)
+		count++
+	}
+	tw.Flush()
+	fmt.Printf("\n%d neighbor(s) of %s within depth %d\n", count, slug, depth)
+	return rows.Err()
+}

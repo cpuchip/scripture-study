@@ -50,6 +50,8 @@ func main() {
 		runEdges(ctx, os.Args[2:])
 	case "todo":
 		runTodo(ctx, os.Args[2:])
+	case "context", "ctx":
+		runContext(ctx, os.Args[2:])
 	case "-h", "--help", "help":
 		usage()
 	default:
@@ -101,6 +103,11 @@ Commands:
 
   todo audit
       Run roll-up audit (parent done with open children, etc.).
+
+  context <slug> [--depth N]
+      Walk the graph neighborhood of a slug (Phase 2.6c). Depth
+      clamped 1..4. Returns one row per (hop, direction, edge,
+      neighbor) with closest-hop-wins dedup.
 
 Environment:
   STEWARDS_DSN    Postgres DSN (default: postgres://stewards:stewards@localhost:5432/stewards?sslmode=disable)
@@ -352,6 +359,30 @@ func runTodo(ctx context.Context, args []string) {
 		}
 	default:
 		fmt.Fprintf(os.Stderr, "todo: unknown subcommand %q (create|done|list|audit)\n", args[0])
+		os.Exit(1)
+	}
+}
+
+// ---------- context (Phase 2.6c) ----------
+
+func runContext(ctx context.Context, args []string) {
+	fs := flag.NewFlagSet("context", flag.ExitOnError)
+	depth := fs.Int("depth", 2, "hops to walk (clamped 1..4)")
+	if err := fs.Parse(args); err != nil {
+		os.Exit(1)
+	}
+	if fs.NArg() != 1 {
+		fmt.Fprintln(os.Stderr, "context: <slug> required")
+		os.Exit(1)
+	}
+	pool, err := db.Connect(ctx)
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "db: %v\n", err)
+		os.Exit(1)
+	}
+	defer pool.Close()
+	if err := show.Context(ctx, pool, fs.Arg(0), *depth); err != nil {
+		fmt.Fprintf(os.Stderr, "context: %v\n", err)
 		os.Exit(1)
 	}
 }
