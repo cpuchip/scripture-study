@@ -880,7 +880,7 @@ func WatchmanPasses(ctx context.Context, pool *pgxpool.Pool, limit int) error {
 		`SELECT pass_id, started_at, finished_at, status, trigger,
 		        provider, model, doc_count_planned, doc_count_done,
 		        n_clean, n_drift, n_done, n_superseded, n_skipped,
-		        tokens_in, tokens_out
+		        tokens_in, tokens_out, budget_stopped
 		   FROM stewards.watchman_pass_summary
 		  ORDER BY started_at DESC
 		  LIMIT $1`,
@@ -892,7 +892,7 @@ func WatchmanPasses(ctx context.Context, pool *pgxpool.Pool, limit int) error {
 	defer rows.Close()
 
 	tw := tabwriter.NewWriter(os.Stdout, 0, 0, 2, ' ', 0)
-	fmt.Fprintln(tw, "PASS_ID\tSTARTED\tELAPSED\tSTATUS\tTRIG\tMODEL\tDONE/PLAN\tCLN\tDRF\tDNE\tSUP\tSKP\tTOK_IN\tTOK_OUT")
+	fmt.Fprintln(tw, "PASS_ID\tSTARTED\tELAPSED\tSTATUS\tTRIG\tMODEL\tDONE/PLAN\tCLN\tDRF\tDNE\tSUP\tSKP\tTOK_IN\tTOK_OUT\tBUDGET")
 	count := 0
 	for rows.Next() {
 		var (
@@ -902,10 +902,11 @@ func WatchmanPasses(ctx context.Context, pool *pgxpool.Pool, limit int) error {
 			planned, done                            int
 			nC, nDr, nDn, nS, nSk                    int
 			tIn, tOut                                int
+			budgetStopped                            bool
 		)
 		if err := rows.Scan(&passID, &started, &finished, &status, &trigger,
 			&provider, &model, &planned, &done,
-			&nC, &nDr, &nDn, &nS, &nSk, &tIn, &tOut); err != nil {
+			&nC, &nDr, &nDn, &nS, &nSk, &tIn, &tOut, &budgetStopped); err != nil {
 			return err
 		}
 		_ = provider
@@ -915,11 +916,15 @@ func WatchmanPasses(ctx context.Context, pool *pgxpool.Pool, limit int) error {
 		} else if status == "in_progress" {
 			elapsed = time.Since(started).Round(time.Second).String() + "+"
 		}
+		budgetMark := "ok"
+		if budgetStopped {
+			budgetMark = "STOPPED"
+		}
 		fmt.Fprintf(tw,
-			"%s\t%s\t%s\t%s\t%s\t%s\t%d/%d\t%d\t%d\t%d\t%d\t%d\t%d\t%d\n",
+			"%s\t%s\t%s\t%s\t%s\t%s\t%d/%d\t%d\t%d\t%d\t%d\t%d\t%d\t%d\t%s\n",
 			passID, started.Format("2006-01-02 15:04"), elapsed,
 			status, trigger, model, done, planned,
-			nC, nDr, nDn, nS, nSk, tIn, tOut)
+			nC, nDr, nDn, nS, nSk, tIn, tOut, budgetMark)
 		count++
 	}
 	tw.Flush()
@@ -942,15 +947,17 @@ func printWatchmanPassDetail(ctx context.Context, pool *pgxpool.Pool, passID str
 		actor                            string
 		planned, done, tIn, tOut, budget int
 		verdictCounts                    []byte
+		budgetStopped                    bool
 	)
 	err := pool.QueryRow(ctx,
 		`SELECT started_at, finished_at, status, trigger, provider, model,
 		        actor, doc_count_planned, doc_count_done, tokens_in,
-		        tokens_out, token_budget, verdict_counts
+		        tokens_out, token_budget, verdict_counts, budget_stopped
 		   FROM stewards.watchman_passes WHERE pass_id = $1`,
 		passID,
 	).Scan(&started, &finished, &status, &trigger, &provider, &model,
-		&actor, &planned, &done, &tIn, &tOut, &budget, &verdictCounts)
+		&actor, &planned, &done, &tIn, &tOut, &budget, &verdictCounts,
+		&budgetStopped)
 	if err != nil {
 		return fmt.Errorf("pass not found: %w", err)
 	}
@@ -970,7 +977,12 @@ func printWatchmanPassDetail(ctx context.Context, pool *pgxpool.Pool, passID str
 	fmt.Printf("provider:   %s\n", provider)
 	fmt.Printf("model:      %s\n", model)
 	fmt.Printf("docs:       %d done / %d planned\n", done, planned)
-	fmt.Printf("tokens:     %d in / %d out  (budget %d)\n", tIn, tOut, budget)
+	budgetMark := ""
+	if budgetStopped {
+		budgetMark = "  ⚠ STOPPED enqueueing because next doc estimate would have exceeded budget"
+	}
+	fmt.Printf("tokens:     %d in / %d out  (budget %d)%s\n",
+		tIn, tOut, budget, budgetMark)
 	fmt.Printf("verdicts:   %s\n", string(verdictCounts))
 
 	// Verdict rows for this pass.

@@ -2507,6 +2507,12 @@ extension_sql_file!(
     requires = ["create_watchman_automation"],
 );
 
+extension_sql_file!(
+    "../2-7b3-watchman-budget.sql",
+    name = "create_watchman_budget",
+    requires = ["create_watchman_scheduler"],
+);
+
 // ---------------------------------------------------------------------------
 // Diagnostic SQL functions
 // ---------------------------------------------------------------------------

@@ -780,7 +780,7 @@ verdict | finding | ack | history` for human-driven passes.
 > |-----------|------|--------|
 > | **2.7b.1** | SQL substrate: `watchman_passes` + `watchman_config` tables, `watchman_pass_start()` enqueuer, `AFTER UPDATE` trigger on `work_queue` that records verdict/finding from completed watchman chats. CLI: `watchman pass-now`, `watchman passes`, `watchman pass-detail`, `watchman config show/set`. **No bgworker changes.** | **shipped 2026-05-06** |
 > | **2.7b.2** | Bgworker scheduler tick (~60s). Reads `watchman_config`, calls `watchman_pass_start` when cron / pressure / idle trigger fires. SQL `watchman_should_fire()` owns the decision; Rust just polls. | **shipped 2026-05-06** |
-> | 2.7b.3 | Per-pass token budget enforcement: `watchman_pass_start` stops enqueueing when projected tokens cross threshold; partial passes are valid. | not started |
+> | **2.7b.3** | Per-pass token budget enforcement: `watchman_pass_start` stops enqueueing when projected tokens cross threshold; partial passes are valid. `estimate_chat_tokens(slug)` produces per-doc estimate from input length + system overhead + recent avg output. `budget_stopped` flag distinguishes "budget hit" from "queue empty / limit reached". | **shipped 2026-05-06** |
 > | 2.7b.4 | 7-day soak + `regenerate_active_md()` SQL fn invoked at end of pass. | not started |
 
 #### Phase 2.7b.1 — SQL substrate + completion trigger
@@ -997,6 +997,89 @@ TODO-style comment in the Dockerfile as a reminder.
 guard) but no token budget is enforced inside `watchman_pass_start`
 yet — that's 2.7b.3. The `schedule_enabled` master switch is the
 load-bearing kill-switch until 2.7b.3 lands.
+
+#### Phase 2.7b.3 — per-pass token budget enforcement (shipped 2026-05-06)
+
+The `token_budget` column on `watchman_passes` was informational in
+2.7b.1; 2.7b.3 makes it load-bearing.
+
+**Files**
+
+- `extension/2-7b3-watchman-budget.sql` — adds `budget_stopped boolean`
+  column to `watchman_passes`, `stewards.estimate_chat_tokens(slug)`
+  function, replaces `watchman_pass_start()` with a budget-aware
+  version. Updates `watchman_pass_summary` view to expose
+  `budget_stopped`.
+- `extension/src/lib.rs` — eighth `extension_sql_file!` reference.
+- `extension/Dockerfile` — added `2-7b3-watchman-budget.sql` to COPY.
+- `cmd/stewards-cli/internal/show/show.go` —
+  `WatchmanPasses` adds a `BUDGET` column ("ok" / "STOPPED").
+  `printWatchmanPassDetail` shows a ⚠ marker on the tokens line
+  when `budget_stopped=true`.
+- `extension/verify-2-7b3-budget.sql` — pure-SQL verification (4
+  trials at budgets 1000 / 10000 / 25000 / 999999); aborts each test
+  pass before dispatch so no model tokens are spent.
+
+**Estimation formula**
+
+```
+estimate(slug) = chars(watchman_input(slug)) / 4   -- input tokens
+              + 1500                                -- system + persona overhead
+              + avg(verdicts.tokens_out, last 30d)  -- output (3500 fallback)
+```
+
+Per-doc estimates ranged 7700–14500 across the live corpus.
+
+**Enforcement**
+
+In `watchman_pass_start`, before enqueueing each candidate doc:
+- Compute `v_estimate = estimate_chat_tokens(slug)`.
+- If `v_planned_tokens + v_estimate > v_budget`, exit the loop and
+  set `v_budget_stopped = true`.
+- Otherwise enqueue + add `v_estimate` to running total.
+
+Stricter than the obvious "always allow at least one doc" rule: if
+the FIRST doc's estimate exceeds the budget, refuse to enqueue
+(empty pass, `budget_stopped=true`). Honest signal that the budget
+is unworkable.
+
+The estimate is also written into the work_queue payload as
+`_watchman_estimate` for post-hoc analysis (e.g., comparing
+estimate-vs-actual to refine the formula).
+
+**Verification (4 SQL trials, no tokens spent)**
+
+| # | Budget | Result | Why |
+|---|--------|--------|-----|
+| 1 | 1000 | 0 planned, `budget_stopped=true`, status=`completed` | First doc estimate ~9748 alone exceeds 1000 |
+| 2 | 10000 | 1 planned, `budget_stopped=true` | First doc 9748 fits; +second 8794 → 18542 stops |
+| 3 | 25000 | 2 planned, `budget_stopped=true` | 9748 + 8794 = 18542 fits; +14400 → 32942 > 25000 stops |
+| 4 | 999999 | 5 planned (limit), `budget_stopped=false` | All 5 fit, hit `p_limit` not budget |
+
+Each trial calls `watchman_pass_start`, observes the result, then
+aborts the test pass via a `pg_temp.abort_test_pass(pass_id)` helper
+that marks pending work_queue rows errored before the bgworker can
+dispatch them. Zero model tokens spent.
+
+**What this deliberately doesn't build**
+
+- **Mid-pass abort.** If a chat already enqueued runs much longer
+  than its estimate predicted, the actual spend will exceed budget
+  by some margin. Acceptable for v1. If it bites, 2.7b.3.1 could
+  add an actual-spend watcher that aborts pending chats once
+  realized cost crosses budget.
+- **Estimate calibration.** The formula uses raw averages from the
+  last 30 days. A more sophisticated approach would weight by doc
+  size or model. Defer until we observe estimate-vs-actual drift.
+
+**Why the master kill switch is no longer load-bearing**
+
+Pre-2.7b.3, `schedule_enabled=false` was the only way to prevent a
+runaway scheduler loop on 350+ dirty docs. Post-2.7b.3, the budget
+caps spend per pass: even if pressure fires every hour for the next
+day, total spend is bounded by `(passes_per_day × token_budget)`,
+which is a knowable number. The master switch remains a kill switch;
+it's no longer the *only* kill switch.
 
 ## Phase 3 — Pipelines + MCP + External arms: agents that work without an IDE
 

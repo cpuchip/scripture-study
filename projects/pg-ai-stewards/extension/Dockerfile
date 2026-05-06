@@ -48,7 +48,8 @@ COPY src ./src
 # call in src/lib.rs and update this list.
 COPY 2-6a-workstreams.sql 2-6b-todos.sql 2-6c-phases-context.sql \
      2-7a-watchman-substrate.sql 3a-watchman-pass.sql \
-     2-7b1-watchman-automation.sql 2-7b2-watchman-scheduler.sql ./
+     2-7b1-watchman-automation.sql 2-7b2-watchman-scheduler.sql \
+     2-7b3-watchman-budget.sql ./
 
 # `cargo pgrx package` produces ./target/release/pg_ai_stewards-pg18/
 # with the directory tree rooted at /, containing the .so, .control,
