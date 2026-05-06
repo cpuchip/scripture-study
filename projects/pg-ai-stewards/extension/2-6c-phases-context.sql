@@ -62,40 +62,42 @@ CREATE OR REPLACE FUNCTION stewards.context_for_hop(
     confidence    float
 )
 LANGUAGE plpgsql STABLE AS $func$
+DECLARE
+    v_params ag_catalog.agtype := (jsonb_build_object('slug', p_seed_slug)::text)::ag_catalog.agtype;
 BEGIN
     PERFORM stewards.ensure_studies_graph();
 
     RETURN QUERY
     SELECT 'out'::text,
-           (etype#>>'{}')::text,
-           coalesce(n_slug#>>'{}', n_id#>>'{}'),
-           (n_kind#>>'{}')::text,
-           coalesce(prov#>>'{}', 'unknown'),
-           coalesce((conf#>>'{}')::float, 0.0)
+            etype::text,
+               coalesce(n_slug::text, n_id::text, n_uri::text),
+            coalesce(n_kind::text, 'Study'),
+            coalesce(prov::text, 'unknown'),
+            coalesce(conf::text::float, 0.0)
       FROM cypher('stewards_graph', $$
             MATCH (s)-[r]->(n)
             WHERE s.slug = $slug OR s.id = $slug
-            RETURN type(r), labels(n)[0], n.slug, n.id,
+              RETURN type(r), n.kind, n.slug, n.id, n.uri,
                    r.provenance, r.confidence
-        $$, (jsonb_build_object('slug', p_seed_slug)::text)::ag_catalog.agtype)
+                $$, v_params)
         AS h(etype agtype, n_kind agtype,
-             n_slug agtype, n_id agtype,
+               n_slug agtype, n_id agtype, n_uri agtype,
              prov agtype, conf agtype)
     UNION ALL
     SELECT 'in'::text,
-           (etype#>>'{}')::text,
-           coalesce(n_slug#>>'{}', n_id#>>'{}'),
-           (n_kind#>>'{}')::text,
-           coalesce(prov#>>'{}', 'unknown'),
-           coalesce((conf#>>'{}')::float, 0.0)
+            etype::text,
+               coalesce(n_slug::text, n_id::text, n_uri::text),
+            coalesce(n_kind::text, 'Study'),
+            coalesce(prov::text, 'unknown'),
+            coalesce(conf::text::float, 0.0)
       FROM cypher('stewards_graph', $$
             MATCH (n)-[r]->(s)
             WHERE s.slug = $slug OR s.id = $slug
-            RETURN type(r), labels(n)[0], n.slug, n.id,
+              RETURN type(r), n.kind, n.slug, n.id, n.uri,
                    r.provenance, r.confidence
-        $$, (jsonb_build_object('slug', p_seed_slug)::text)::ag_catalog.agtype)
+                $$, v_params)
         AS h(etype agtype, n_kind agtype,
-             n_slug agtype, n_id agtype,
+               n_slug agtype, n_id agtype, n_uri agtype,
              prov agtype, conf agtype);
 END;
 $func$;
@@ -167,11 +169,11 @@ BEGIN
             SELECT e.hop, e.direction, e.edge_type, e.neighbor,
                    e.neighbor_kind, e.provenance, e.confidence
               FROM expanded e
-            RETURNING neighbor
+            RETURNING _ctx_results.neighbor AS new_neighbor
         ),
         ins_seen AS (
             INSERT INTO _ctx_seen(slug)
-            SELECT DISTINCT i.neighbor FROM ins_results i
+            SELECT DISTINCT i.new_neighbor FROM ins_results i
             ON CONFLICT DO NOTHING
             RETURNING slug
         )

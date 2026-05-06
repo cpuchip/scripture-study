@@ -279,30 +279,9 @@ $func$;
 -- Read from that file; do not invent. If WS1-9 changes there, this
 -- block must be updated to match.
 -- ============================================================
-SELECT stewards.import_workstream('WS1', 'Brain Core',
-    'Pipeline, steward, commissions, classifier, retry/escalation, model selection, data safety',
-    'active');
-SELECT stewards.import_workstream('WS2', 'Brain UX',
-    'UI panels, dialogs, kanban, file viewer, inline panel, Windows service/systray',
-    'active');
-SELECT stewards.import_workstream('WS3', 'Gospel Engine',
-    'engine.ibeco.me, gospel-engine MCP, search/index, graph, hosted backend',
-    'active');
-SELECT stewards.import_workstream('WS4', 'study.ibeco.me',
-    'Web UI for studies, notes, reader, public study pages',
-    'active');
-SELECT stewards.import_workstream('WS5', 'Memory & Process',
-    '.mind/, agents, skills, voice/bias, cleanup passes, tokenomics, brain<->VS Code bridge, debug agent, Claude Code integration, Sabbath agent, pg-ai-stewards',
-    'active');
-SELECT stewards.import_workstream('WS6', 'Studies',
-    'Scripture study output (study/, becoming/)',
-    'active');
-SELECT stewards.import_workstream('WS7', 'Teaching',
-    'YouTube content arc, talks, public-facing teaching',
-    'active');
-SELECT stewards.import_workstream('WS8', 'Sunday School',
-    'Calling — lesson prep, ward council',
-    'active');
-SELECT stewards.import_workstream('WS9', 'Other Apps',
-    'Budget app, cpuchip.net rebuild, Space Center',
-    'active');
+-- Seed moved to init/00-extensions.sql at v0.2.0 because it calls
+-- import_workstream() -> AGE cypher() which requires ag_catalog on
+-- search_path. Running it during CREATE EXTENSION corrupted the
+-- install transaction's search_path and shoved every later
+-- pgrx-emitted pg_extern (version, enqueue, providers_loaded, ...)
+-- into ag_catalog. Seed lives outside the install transaction now.
