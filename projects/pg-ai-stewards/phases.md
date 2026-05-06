@@ -762,7 +762,7 @@ these paths.
 > | Sub-phase | What | Status |
 > |-----------|------|--------|
 > | **3a** | Model dispatch + Watchman pass (CLI orchestrator on top of bgworker) | **shipped 2026-05-05** |
-> | 3b | Input shaping for big docs (trim or bump bgworker reqwest timeout) + `response_format: json_object` injection | not started |
+> | **3b** | Input shaping for big docs (trim or bump bgworker reqwest timeout) + `response_format: json_object` injection | **shipped 2026-05-06** |
 > | 3c | `stewards.pipelines` + `stewards.work_items` tables (deliverable 1 below) | not started |
 > | 3d | Tool sidecars: sandboxed git, shell (deliverable 2 below) | not started |
 > | 3e | MCP server: `stewards_search`, `stewards_brain`, `stewards_work_item`, `gospel_passthrough` (deliverable 3) | not started |
@@ -802,20 +802,27 @@ The first verdict was `skipped` with the reasoning *"I cannot verify
 external artifacts not in the 1-hop neighborhood"* — kimi
 self-surfaced a 3b agenda item. Discipline holds.
 
-**Known limitations carried into 3b:**
+**Known limitations resolved in post-3a work (May 5–6):**
 
-- Bgworker `reqwest::blocking::Client` has a hard 120s timeout for
-  chat. Big docs (50KB+ scratch files, the proposal itself) time out.
-  Phase 3b: trim input OR bump the timeout (needs binary rebuild).
-- kimi at temp=0 with reasoning is not perfectly deterministic.
-  Same input got `skipped` (dry-run) then `done` (live) — both
-  defensible. Phase 3b: inject `response_format: {type:"json_object"}`
-  into the body that `chat_post_internal` builds (schema change to
-  `agents` table or to `dry_run_chat`).
+- **Bgworker timeout:** bumped from 120s to 600s; CLI `--max-input-chars`
+  flag added with 60/40 head/tail split + elision marker. Big docs
+  (proposal, scratch files) no longer time out with a 30K char trim.
+  Verified: 180s timeout → ERROR; 660s + `--max-input-chars 30000` →
+  `skipped` with synthesis finding. ✅
+- **Non-determinism:** `response_format: {"type":"json_object"}` is now
+  a first-class column on `stewards.agents`. `dry_run_chat` injects it
+  when non-NULL. `watchman-consolidator` agent seeded with it at
+  `temp=0`. Verified via `payload->'body'->'response_format'` in
+  `stewards.work_queue`. ✅
 
-**Foldback debt:** `extension/3a-watchman-pass.sql` is now the FIFTH
-SQL file (alongside 2-6a/b/c + 2-7a) waiting to fold into
-`extension/src/lib.rs` at next intentional rebuild.
+**Foldback debt resolved (v0.2.0, May 5–6):** All five SQL files
+(2-6a/b/c + 2-7a + 3a) are now folded into `extension/src/lib.rs`
+via `extension_sql_file!`. Extension bumped to 0.2.0. `init/01-seed-workstreams.sql`
+extracted as post-install script (avoids search_path corruption during
+CREATE EXTENSION — documented as AGE-QUIRKS #9). ✅
+
+**AGE-QUIRKS.md now at 9 entries** (added #9: `set_config` search_path
+leak during CREATE EXTENSION corrupts PGRX pg_extern declarations).
 
 ### Phase 3b–3g — original full-scope spec (preserved)
 
