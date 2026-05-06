@@ -13,8 +13,7 @@
 --
 -- Idempotent: every CREATE uses IF NOT EXISTS / OR REPLACE.
 
-BEGIN;
-
+-- BEGIN;  -- (folded into extension_sql_file! v0.2.0; CREATE EXTENSION already wraps in tx)
 -- ============================================================
 -- Table: stewards.workstreams
 -- ============================================================
@@ -274,8 +273,7 @@ BEGIN
 END;
 $func$;
 
-COMMIT;
-
+-- COMMIT; -- (folded into extension_sql_file! v0.2.0; CREATE EXTENSION already wraps in tx)
 -- ============================================================
 -- Seed: WS1–WS9 from .mind/workstreams.md (canonical taxonomy).
 -- Read from that file; do not invent. If WS1-9 changes there, this

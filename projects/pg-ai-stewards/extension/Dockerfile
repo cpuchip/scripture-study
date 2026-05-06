@@ -41,6 +41,11 @@ RUN cargo pgrx init --pg18 /usr/lib/postgresql/18/bin/pg_config
 WORKDIR /build/pg_ai_stewards
 COPY Cargo.toml pg_ai_stewards.control ./
 COPY src ./src
+# The 2-6*/2-7*/3a*.sql files are read at compile time by
+# extension_sql_file! macros in src/lib.rs (folded back from live-DB
+# migrations as of v0.2.0). They must be present in the build context.
+COPY 2-6a-workstreams.sql 2-6b-todos.sql 2-6c-phases-context.sql \
+     2-7a-watchman-substrate.sql 3a-watchman-pass.sql ./
 
 # `cargo pgrx package` produces ./target/release/pg_ai_stewards-pg18/
 # with the directory tree rooted at /, containing the .so, .control,

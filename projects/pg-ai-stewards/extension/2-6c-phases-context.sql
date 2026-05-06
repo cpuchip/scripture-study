@@ -9,8 +9,7 @@
 -- results, dedupe in SQL. AGE quirks list now at 5: variable-length
 -- paths are awkward enough we just don't use them.
 
-BEGIN;
-
+-- BEGIN;  -- (folded into extension_sql_file! v0.2.0; CREATE EXTENSION already wraps in tx)
 -- ============================================================
 -- Function: link_phase_to_doc(phase_slug, parent_doc_slug)
 --
@@ -193,4 +192,4 @@ BEGIN
 END;
 $func$;
 
-COMMIT;
+-- COMMIT; -- (folded into extension_sql_file! v0.2.0; CREATE EXTENSION already wraps in tx)

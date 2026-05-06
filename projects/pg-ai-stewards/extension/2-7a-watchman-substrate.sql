@@ -33,8 +33,7 @@
 -- This file ships the substrate. The bgworker that automates it
 -- is Phase 2.7b — needs Phase 3's model dispatch sidecar to exist.
 
-BEGIN;
-
+-- BEGIN;  -- (folded into extension_sql_file! v0.2.0; CREATE EXTENSION already wraps in tx)
 -- ============================================================
 -- studies.last_consolidated_at
 -- ============================================================
@@ -321,4 +320,4 @@ LANGUAGE sql STABLE AS $func$
     ORDER BY 1 DESC;
 $func$;
 
-COMMIT;
+-- COMMIT; -- (folded into extension_sql_file! v0.2.0; CREATE EXTENSION already wraps in tx)

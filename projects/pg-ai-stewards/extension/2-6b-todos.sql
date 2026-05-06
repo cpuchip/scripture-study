@@ -12,8 +12,7 @@
 -- Single-write rule: stewards.create_todo() writes BOTH the row
 -- AND the graph edge in one transaction. Never INSERT directly.
 
-BEGIN;
-
+-- BEGIN;  -- (folded into extension_sql_file! v0.2.0; CREATE EXTENSION already wraps in tx)
 -- ============================================================
 -- Table: stewards.todos
 -- ============================================================
@@ -338,4 +337,4 @@ LANGUAGE sql STABLE AS $func$
      ORDER BY t.parent_kind, t.parent_slug, t.created_at DESC;
 $func$;
 
-COMMIT;
+-- COMMIT; -- (folded into extension_sql_file! v0.2.0; CREATE EXTENSION already wraps in tx)

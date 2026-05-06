@@ -509,6 +509,7 @@ func WatchmanPass(ctx context.Context, pool *pgxpool.Pool,
 	provider, model, agentFamily string,
 	limit int, perItemTimeout time.Duration,
 	dryRun bool, slugFilter string,
+	maxInputChars int,
 ) error {
 	passID := fmt.Sprintf("watchman-%s", time.Now().UTC().Format("20060102T150405Z"))
 
@@ -558,7 +559,7 @@ func WatchmanPass(ctx context.Context, pool *pgxpool.Pool,
 
 	for _, slug := range slugs {
 		res, elapsed, tIn, tOut, err := watchmanPassOne(
-			ctx, pool, slug, provider, model, agentFamily, passID, perItemTimeout)
+			ctx, pool, slug, provider, model, agentFamily, passID, perItemTimeout, maxInputChars)
 		if err != nil {
 			fmt.Fprintf(tw, "%s\tERROR\t%s\t-\t-\t%v\n", slug, elapsed.Round(time.Millisecond), err)
 			nErr++
@@ -637,7 +638,7 @@ func WatchmanPass(ctx context.Context, pool *pgxpool.Pool,
 //   7. Parse JSON (defensive — strip ``` fences if present).
 func watchmanPassOne(ctx context.Context, pool *pgxpool.Pool,
 	slug, provider, model, agentFamily, passID string,
-	timeout time.Duration,
+	timeout time.Duration, maxInputChars int,
 ) (WatchmanPassResult, time.Duration, int, int, error) {
 	start := time.Now()
 	var zero WatchmanPassResult
@@ -656,7 +657,9 @@ func watchmanPassOne(ctx context.Context, pool *pgxpool.Pool,
 		return zero, time.Since(start), 0, 0, fmt.Errorf("session insert: %w", err)
 	}
 
-	// 3. Compose input.
+	// 3. Compose input. Apply truncation AFTER the SQL composer so we
+	// keep the doc-header + body + neighborhood structure intact and
+	// only reach in to truncate the body if needed.
 	var userInput string
 	if err := pool.QueryRow(ctx,
 		`SELECT stewards.watchman_input($1)`,
@@ -666,6 +669,9 @@ func watchmanPassOne(ctx context.Context, pool *pgxpool.Pool,
 	}
 	if userInput == "" {
 		return zero, time.Since(start), 0, 0, fmt.Errorf("study not found: %s", slug)
+	}
+	if maxInputChars > 0 && len(userInput) > maxInputChars {
+		userInput = truncateMiddle(userInput, maxInputChars)
 	}
 
 	// 4. chat_enqueue.
@@ -769,5 +775,35 @@ func truncate(s string, n int) string {
 		return s
 	}
 	return s[:n] + "..."
+}
+
+// truncateMiddle keeps the head and tail of s and replaces the middle
+// with an explicit elision marker. Used for big watchman inputs that
+// would otherwise blow past the bgworker chat timeout. Head/tail split
+// is 60/40 — the document header (slug, kind, title, updated_at) lives
+// in the first ~200 chars and we prefer to lose body-middle over
+// neighborhood-tail because the neighborhood lists are short and the
+// 1-hop edges are often the strongest drift signal.
+//
+// The elision marker is human-readable AND tells the model what was
+// dropped so it can render an honest 'skipped' verdict if the missing
+// content matters.
+func truncateMiddle(s string, max int) string {
+	if len(s) <= max {
+		return s
+	}
+	dropped := len(s) - max
+	marker := fmt.Sprintf(
+		"\n\n[... %d characters elided by stewards-cli --max-input-chars to fit bgworker chat timeout. If the missing middle is load-bearing, render verdict='skipped' with reasoning that calls out the truncation. ...]\n\n",
+		dropped,
+	)
+	budget := max - len(marker)
+	if budget < 200 {
+		// Marker is bigger than budget; just hard-truncate.
+		return s[:max]
+	}
+	head := budget * 6 / 10
+	tail := budget - head
+	return s[:head] + marker + s[len(s)-tail:]
 }
 

@@ -2421,6 +2421,64 @@ extension_sql!(
     requires = ["create_similarity"],
 );
 
+// =====================================================================
+// Phase 2.6 / 2.7 / 3a — folded back from live-DB migration files.
+//
+// These five blocks were originally applied incrementally to the dev
+// database via psql redirects (extension/2-6a-*.sql etc) so we could
+// iterate on the substrate without rebuilding the extension binary
+// every time. As of v0.2.0 they are part of the canonical install
+// chain, in linear dependency order:
+//
+//   create_study_show
+//      └─ create_workstreams           (2-6a: workstream vertices + DECLARED edges)
+//          └─ create_todos             (2-6b: todos as persistent connector vertices)
+//              └─ create_phases_context (2-6c: phase splitter + context_for() walk)
+//                  └─ create_watchman_substrate (2-7a: dirty-bit + verdicts + findings + dirty_queue)
+//                      └─ create_watchman_pass  (3a: watchman-consolidator agent + watchman_input())
+//
+// The .sql files remain in the repo as the canonical source of each
+// block's text (extension_sql_file! reads them at compile time via
+// include_str! semantics). Editing the SQL files is the right move;
+// editing the macro signatures here is only for renames/dependency
+// changes.
+//
+// Idempotency: every block uses CREATE OR REPLACE, ADD COLUMN IF NOT
+// EXISTS, ON CONFLICT DO UPDATE, etc. so applying the same block twice
+// is a no-op. This matters for `cargo pgrx schema` which may run blocks
+// multiple times during development.
+// =====================================================================
+
+extension_sql_file!(
+    "../2-6a-workstreams.sql",
+    name = "create_workstreams",
+    requires = ["create_study_show"],
+);
+
+extension_sql_file!(
+    "../2-6b-todos.sql",
+    name = "create_todos",
+    requires = ["create_workstreams"],
+);
+
+extension_sql_file!(
+    "../2-6c-phases-context.sql",
+    name = "create_phases_context",
+    requires = ["create_todos"],
+);
+
+extension_sql_file!(
+    "../2-7a-watchman-substrate.sql",
+    name = "create_watchman_substrate",
+    requires = ["create_phases_context"],
+);
+
+extension_sql_file!(
+    "../3a-watchman-pass.sql",
+    name = "create_watchman_pass",
+    requires = ["create_watchman_substrate"],
+);
+
 // ---------------------------------------------------------------------------
 // Diagnostic SQL functions
 // ---------------------------------------------------------------------------
@@ -3490,10 +3548,20 @@ fn chat(provider_name: &str, payload: &serde_json::Value) -> Result<WorkOutcome,
         provider.base_url.trim_end_matches('/')
     );
 
-    // Same 120s timeout as embeddings — first kimi-k2.6 turn over
-    // OpenCode Go can be slow if the gateway is cold.
+    // Chat timeout. 120s was the original (matched embeddings) but
+    // reasoning models on big inputs blow past that — the proposal
+    // doc + ~50KB scratch files timed out during Phase 3a Watchman
+    // smoke. Default raised to 600s; override via STEWARDS_CHAT_TIMEOUT_SECONDS
+    // for ops tuning without a binary rebuild. The bgworker is
+    // single-threaded per process, so a long chat blocks the queue —
+    // the right Phase 3b move is also CLI-side input trimming, not
+    // unbounded server time.
+    let timeout_secs: u64 = std::env::var("STEWARDS_CHAT_TIMEOUT_SECONDS")
+        .ok()
+        .and_then(|s| s.parse().ok())
+        .unwrap_or(600);
     let client = reqwest::blocking::Client::builder()
-        .timeout(std::time::Duration::from_secs(120))
+        .timeout(std::time::Duration::from_secs(timeout_secs))
         .build()
         .map_err(|e| format!("http client build: {}", e))?;
 

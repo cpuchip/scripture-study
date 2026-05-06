@@ -527,16 +527,17 @@ func runWatchman(ctx context.Context, args []string) {
 		model := fs.String("model", "kimi-k2.6", "model id (provider-specific)")
 		agentFamily := fs.String("agent", "watchman-consolidator", "agent family from stewards.agents")
 		limit := fs.Int("limit", 5, "max docs to consolidate this pass")
-		timeoutSec := fs.Int("timeout", 180, "per-item poll timeout in seconds (bgworker reqwest ceiling is 120s; raise both for big inputs)")
+		timeoutSec := fs.Int("timeout", 660, "per-item poll timeout in seconds (bgworker chat default is 600s; raise both for very large inputs or use --max-input-chars)")
 		dryRun := fs.Bool("dry-run", false, "print verdicts but do NOT call record_verdict/record_finding")
 		slug := fs.String("slug", "", "if set, run only this slug (bypasses dirty_queue) — useful for repro")
+		maxInputChars := fs.Int("max-input-chars", 0, "if >0, truncate doc input to this many chars (head/tail with elision marker). 0 = no limit. Use ~30000 for big docs to fit chat timeout.")
 		if err := fs.Parse(rest); err != nil {
 			os.Exit(1)
 		}
 		if err := show.WatchmanPass(ctx, pool,
 			*provider, *model, *agentFamily,
 			*limit, time.Duration(*timeoutSec)*time.Second,
-			*dryRun, *slug,
+			*dryRun, *slug, *maxInputChars,
 		); err != nil {
 			fmt.Fprintf(os.Stderr, "watchman pass: %v\n", err)
 			os.Exit(1)
