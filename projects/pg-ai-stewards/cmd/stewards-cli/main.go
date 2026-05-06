@@ -151,9 +151,20 @@ Commands:
   watchman config show
   watchman config set [--schedule S] [--budget T] [--model M]
                       [--provider P] [--agent A] [--dirty-threshold N]
-                      [--idle-hours N]
+                      [--idle-hours N] [--enabled BOOL]
+                      [--min-interval-hours N] [--preferred-dow N]
+                      [--preferred-hour N] [--pass-limit N]
+                      [--pressure-cooldown-hours N]
+                      [--idle-cooldown-hours N]
       View / edit the singleton stewards.watchman_config row.
-      Schedule + thresholds become load-bearing in Phase 2.7b.2.
+      Phase 2.7b.2 scheduler fields: --enabled, --min-interval-hours,
+      --preferred-dow (-1=any, 0=Sun..6=Sat), --preferred-hour
+      (-1=any, 0..23 UTC), --pass-limit, cooldown hours.
+
+  watchman scheduler-status
+      Print stewards.watchman_should_fire() decision + the live inputs
+      feeding it (dirty count, hours since last pass, in-progress pass,
+      etc.). Useful for "why isn't it firing?" debugging.
 
 Environment:
   STEWARDS_DSN    Postgres DSN (default: postgres://stewards:stewards@localhost:5432/stewards?sslmode=disable)
@@ -629,35 +640,101 @@ func runWatchman(ctx context.Context, args []string) {
 			}
 		case "set":
 			fs := flag.NewFlagSet("watchman config set", flag.ExitOnError)
-			schedule := fs.String("schedule", "", "schedule_cron")
+			schedule := fs.String("schedule", "", "schedule_cron (human label)")
 			provider := fs.String("provider", "", "default_provider")
 			model := fs.String("model", "", "default_model")
 			agent := fs.String("agent", "", "default_agent_family")
 			budget := fs.Int("budget", 0, "token_budget")
-			dirtyThreshold := fs.Int("dirty-threshold", 0, "dirty_threshold")
-			idleHours := fs.Int("idle-hours", 0, "idle_threshold_hours")
+			dirtyThreshold := fs.Int("dirty-threshold", 0, "dirty_threshold (pressure trigger)")
+			idleHours := fs.Int("idle-hours", 0, "idle_threshold_hours (0=off)")
+			// Phase 2.7b.2 scheduler fields
+			enabled := fs.Bool("enabled", false, "schedule_enabled (master switch)")
+			minInterval := fs.Int("min-interval-hours", 0, "schedule_min_interval_hours (cron gap)")
+			preferredDOW := fs.Int("preferred-dow", -1, "schedule_preferred_dow_utc (0=Sun..6=Sat, -1=any)")
+			preferredHour := fs.Int("preferred-hour", -1, "schedule_preferred_hour_utc (0..23, -1=any)")
+			passLimit := fs.Int("pass-limit", 0, "schedule_pass_limit")
+			pressureCooldown := fs.Int("pressure-cooldown-hours", 0, "schedule_pressure_cooldown_hours")
+			idleCooldown := fs.Int("idle-cooldown-hours", 0, "schedule_idle_cooldown_hours")
 			if err := fs.Parse(rest[1:]); err != nil {
 				os.Exit(1)
 			}
-			// Detect which flags the user actually passed by walking
-			// the parsed flag set (Go's flag package doesn't expose
-			// "was this set" directly).
 			seen := map[string]bool{}
 			fs.Visit(func(f *flag.Flag) { seen[f.Name] = true })
-			if err := show.WatchmanConfigSet(ctx, pool,
-				*schedule, seen["schedule"],
-				*provider, seen["provider"],
-				*model, seen["model"],
-				*agent, seen["agent"],
-				*budget, seen["budget"],
-				*dirtyThreshold, seen["dirty-threshold"],
-				*idleHours, seen["idle-hours"],
-			); err != nil {
+			fields := []show.WatchmanConfigSetField{}
+			if seen["schedule"] {
+				fields = append(fields, show.WatchmanConfigSetField{Column: "schedule_cron", Value: *schedule})
+			}
+			if seen["provider"] {
+				fields = append(fields, show.WatchmanConfigSetField{Column: "default_provider", Value: *provider})
+			}
+			if seen["model"] {
+				fields = append(fields, show.WatchmanConfigSetField{Column: "default_model", Value: *model})
+			}
+			if seen["agent"] {
+				fields = append(fields, show.WatchmanConfigSetField{Column: "default_agent_family", Value: *agent})
+			}
+			if seen["budget"] {
+				fields = append(fields, show.WatchmanConfigSetField{Column: "token_budget", Value: *budget})
+			}
+			if seen["dirty-threshold"] {
+				fields = append(fields, show.WatchmanConfigSetField{Column: "dirty_threshold", Value: *dirtyThreshold})
+			}
+			if seen["idle-hours"] {
+				fields = append(fields, show.WatchmanConfigSetField{Column: "idle_threshold_hours", Value: *idleHours})
+			}
+			if seen["enabled"] {
+				fields = append(fields, show.WatchmanConfigSetField{Column: "schedule_enabled", Value: *enabled})
+			}
+			if seen["min-interval-hours"] {
+				fields = append(fields, show.WatchmanConfigSetField{Column: "schedule_min_interval_hours", Value: *minInterval})
+			}
+			if seen["preferred-dow"] {
+				// -1 → NULL (any day); 0..6 → that day; outside range → error
+				if *preferredDOW == -1 {
+					fields = append(fields, show.WatchmanConfigSetField{Column: "schedule_preferred_dow_utc", Value: nil})
+				} else if *preferredDOW >= 0 && *preferredDOW <= 6 {
+					fields = append(fields, show.WatchmanConfigSetField{Column: "schedule_preferred_dow_utc", Value: *preferredDOW})
+				} else {
+					fmt.Fprintf(os.Stderr, "watchman config set: --preferred-dow must be -1..6, got %d\n", *preferredDOW)
+					os.Exit(1)
+				}
+			}
+			if seen["preferred-hour"] {
+				if *preferredHour == -1 {
+					fields = append(fields, show.WatchmanConfigSetField{Column: "schedule_preferred_hour_utc", Value: nil})
+				} else if *preferredHour >= 0 && *preferredHour <= 23 {
+					fields = append(fields, show.WatchmanConfigSetField{Column: "schedule_preferred_hour_utc", Value: *preferredHour})
+				} else {
+					fmt.Fprintf(os.Stderr, "watchman config set: --preferred-hour must be -1..23, got %d\n", *preferredHour)
+					os.Exit(1)
+				}
+			}
+			if seen["pass-limit"] {
+				fields = append(fields, show.WatchmanConfigSetField{Column: "schedule_pass_limit", Value: *passLimit})
+			}
+			if seen["pressure-cooldown-hours"] {
+				fields = append(fields, show.WatchmanConfigSetField{Column: "schedule_pressure_cooldown_hours", Value: *pressureCooldown})
+			}
+			if seen["idle-cooldown-hours"] {
+				fields = append(fields, show.WatchmanConfigSetField{Column: "schedule_idle_cooldown_hours", Value: *idleCooldown})
+			}
+			if err := show.WatchmanConfigSet(ctx, pool, fields); err != nil {
 				fmt.Fprintf(os.Stderr, "watchman config set: %v\n", err)
 				os.Exit(1)
 			}
 		default:
 			fmt.Fprintf(os.Stderr, "watchman config: unknown subcommand %q (show|set)\n", rest[0])
+			os.Exit(1)
+		}
+	case "scheduler-status":
+		// Phase 2.7b.2 — print should_fire() decision + the inputs
+		// feeding it. Useful when "the scheduler isn't firing, why?"
+		fs := flag.NewFlagSet("watchman scheduler-status", flag.ExitOnError)
+		if err := fs.Parse(rest); err != nil {
+			os.Exit(1)
+		}
+		if err := show.WatchmanSchedulerStatus(ctx, pool); err != nil {
+			fmt.Fprintf(os.Stderr, "watchman scheduler-status: %v\n", err)
 			os.Exit(1)
 		}
 	default:

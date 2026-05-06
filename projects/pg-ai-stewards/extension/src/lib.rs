@@ -19,7 +19,7 @@
 use pgrx::bgworkers::*;
 use pgrx::prelude::*;
 use std::sync::OnceLock;
-use std::time::Duration;
+use std::time::{Duration, Instant};
 
 ::pgrx::pg_module_magic!();
 
@@ -2501,6 +2501,12 @@ extension_sql_file!(
     requires = ["create_watchman_pass"],
 );
 
+extension_sql_file!(
+    "../2-7b2-watchman-scheduler.sql",
+    name = "create_watchman_scheduler",
+    requires = ["create_watchman_automation"],
+);
+
 // ---------------------------------------------------------------------------
 // Diagnostic SQL functions
 // ---------------------------------------------------------------------------
@@ -2836,6 +2842,19 @@ pub extern "C-unwind" fn stewards_dispatcher_main(_arg: pg_sys::Datum) {
         })
     });
 
+    // Phase 2.7b.2 — Watchman scheduler tick.
+    //
+    // The bgworker drains the work_queue every 500ms. Independently
+    // (and much more rarely), it checks whether a Watchman pass should
+    // fire. Decision logic lives entirely in SQL (stewards.watchman_
+    // should_fire); Rust just calls it on a 60s tick and dispatches.
+    //
+    // last_sched=None on entry forces an immediate check on first tick,
+    // useful when a fresh bgworker comes up after being down for a
+    // while (don't make the user wait 60s for the first decision).
+    let mut last_sched: Option<Instant> = None;
+    const SCHED_INTERVAL: Duration = Duration::from_secs(60);
+
     while BackgroundWorker::wait_latch(Some(Duration::from_millis(500))) {
         if BackgroundWorker::sighup_received() {
             pgrx::log!("stewards: SIGHUP received");
@@ -2851,9 +2870,62 @@ pub extern "C-unwind" fn stewards_dispatcher_main(_arg: pg_sys::Datum) {
                 break;
             }
         }
+
+        // Watchman scheduler tick. Cheap when no trigger is hot
+        // (single SPI call returning NULL). Two SPI calls when a
+        // trigger fires (decide → enqueue chats).
+        if last_sched.map_or(true, |t| t.elapsed() >= SCHED_INTERVAL) {
+            last_sched = Some(Instant::now());
+            check_watchman_schedule();
+        }
     }
 
     pgrx::log!("stewards: bgworker received SIGTERM, exiting");
+}
+
+/// Phase 2.7b.2 — invoke the Watchman scheduler decision function.
+///
+/// Calls `stewards.watchman_scheduler_fire()` which itself calls
+/// `watchman_should_fire()` and (if non-NULL) `watchman_pass_start()`.
+/// Always logs the outcome:
+///   - `pass_id != NULL` → a pass was started
+///   - `pass_id == NULL` → either disabled, in cooldown, or no trigger
+///
+/// Errors here are swallowed (logged only) so a transient SPI failure
+/// doesn't take down the bgworker. The next tick will try again.
+fn check_watchman_schedule() {
+    // Use connect_mut even though our SPI client only does a SELECT —
+    // the SQL function it invokes (watchman_scheduler_fire) does
+    // INSERTs/UPDATEs internally, and a read-only SPI context would
+    // block those. Mirrors process_one_pending() and the reaper.
+    let result: Result<Option<String>, pgrx::spi::Error> =
+        BackgroundWorker::transaction(|| {
+            Spi::connect_mut(|client| {
+                let row = client.select(
+                    "SELECT stewards.watchman_scheduler_fire()",
+                    Some(1), &[],
+                )?;
+                let pass_id: Option<String> = row.into_iter().next()
+                    .and_then(|r| r.get(1).ok().flatten());
+                Ok::<Option<String>, pgrx::spi::Error>(pass_id)
+            })
+        });
+
+    match result {
+        Ok(Some(pass_id)) => {
+            pgrx::log!(
+                "stewards: scheduler fired Watchman pass: {}",
+                pass_id
+            );
+        }
+        Ok(None) => {
+            // No-op (no trigger, disabled, in cooldown). Don't log
+            // every 60 seconds — that floods the postmaster log.
+        }
+        Err(e) => {
+            pgrx::log!("stewards: scheduler check errored: {}", e);
+        }
+    }
 }
 
 /// Try to claim and process exactly one pending row. Returns true if

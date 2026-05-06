@@ -1064,77 +1064,169 @@ func WatchmanConfigShow(ctx context.Context, pool *pgxpool.Pool) error {
 		budget, dirtyThreshold, idleHours         int
 		lastPass                                  *time.Time
 		updated                                   time.Time
+		// Phase 2.7b.2 fields
+		scheduleEnabled                       bool
+		minIntervalHours, passLimit           int
+		preferredDOW, preferredHour           *int
+		pressureCooldown, idleCooldown        int
 	)
 	err := pool.QueryRow(ctx,
 		`SELECT schedule_cron, default_provider, default_model,
 		        default_agent_family, token_budget, dirty_threshold,
-		        idle_threshold_hours, last_pass_at, updated_at
+		        idle_threshold_hours, last_pass_at, updated_at,
+		        schedule_enabled, schedule_min_interval_hours,
+		        schedule_preferred_dow_utc, schedule_preferred_hour_utc,
+		        schedule_pass_limit, schedule_pressure_cooldown_hours,
+		        schedule_idle_cooldown_hours
 		   FROM stewards.watchman_config WHERE id = 1`,
 	).Scan(&schedule, &defProvider, &defModel, &defAgent,
-		&budget, &dirtyThreshold, &idleHours, &lastPass, &updated)
+		&budget, &dirtyThreshold, &idleHours, &lastPass, &updated,
+		&scheduleEnabled, &minIntervalHours,
+		&preferredDOW, &preferredHour,
+		&passLimit, &pressureCooldown, &idleCooldown)
 	if err != nil {
 		return err
 	}
 	fmt.Println("watchman_config (singleton id=1):")
-	fmt.Printf("  schedule_cron:        %s\n", schedule)
-	fmt.Printf("  default_provider:     %s\n", defProvider)
-	fmt.Printf("  default_model:        %s\n", defModel)
-	fmt.Printf("  default_agent_family: %s\n", defAgent)
-	fmt.Printf("  token_budget:         %d\n", budget)
-	fmt.Printf("  dirty_threshold:      %d\n", dirtyThreshold)
-	fmt.Printf("  idle_threshold_hours: %d\n", idleHours)
-	if lastPass != nil {
-		fmt.Printf("  last_pass_at:         %s\n", lastPass.Format("2006-01-02 15:04:05 MST"))
+	fmt.Println("  --- defaults for watchman_pass_start ---")
+	fmt.Printf("  default_provider:                %s\n", defProvider)
+	fmt.Printf("  default_model:                   %s\n", defModel)
+	fmt.Printf("  default_agent_family:            %s\n", defAgent)
+	fmt.Printf("  token_budget:                    %d\n", budget)
+	fmt.Println("  --- bgworker scheduler (Phase 2.7b.2) ---")
+	fmt.Printf("  schedule_enabled:                %v\n", scheduleEnabled)
+	fmt.Printf("  schedule_cron:                   %s\n", schedule)
+	fmt.Printf("  schedule_pass_limit:             %d\n", passLimit)
+	fmt.Printf("  schedule_min_interval_hours:     %d  (cron min gap)\n", minIntervalHours)
+	if preferredDOW != nil {
+		dowName := []string{"Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"}
+		dn := "?"
+		if *preferredDOW >= 0 && *preferredDOW <= 6 {
+			dn = dowName[*preferredDOW]
+		}
+		fmt.Printf("  schedule_preferred_dow_utc:      %d (%s)\n", *preferredDOW, dn)
 	} else {
-		fmt.Printf("  last_pass_at:         (never)\n")
+		fmt.Printf("  schedule_preferred_dow_utc:      (any)\n")
 	}
-	fmt.Printf("  updated_at:           %s\n", updated.Format("2006-01-02 15:04:05 MST"))
+	if preferredHour != nil {
+		fmt.Printf("  schedule_preferred_hour_utc:     %02d:00 UTC\n", *preferredHour)
+	} else {
+		fmt.Printf("  schedule_preferred_hour_utc:     (any)\n")
+	}
+	fmt.Printf("  schedule_pressure_cooldown_hours: %d\n", pressureCooldown)
+	fmt.Printf("  schedule_idle_cooldown_hours:    %d\n", idleCooldown)
+	fmt.Printf("  dirty_threshold:                 %d  (pressure trigger)\n", dirtyThreshold)
+	fmt.Printf("  idle_threshold_hours:            %d  (idle trigger; 0=off)\n", idleHours)
+	fmt.Println("  --- runtime state ---")
+	if lastPass != nil {
+		fmt.Printf("  last_pass_at:                    %s\n", lastPass.Format("2006-01-02 15:04:05 MST"))
+	} else {
+		fmt.Printf("  last_pass_at:                    (never)\n")
+	}
+	fmt.Printf("  updated_at:                      %s\n", updated.Format("2006-01-02 15:04:05 MST"))
 	return nil
 }
 
-// WatchmanConfigSet updates the singleton config row. Each parameter
-// is applied only if its corresponding "set" flag is true (sentinel
-// for absent flags vs. zero values).
+// WatchmanSchedulerStatus prints the scheduler decision + the inputs
+// feeding it. Useful for "why isn't it firing?" debugging.
+func WatchmanSchedulerStatus(ctx context.Context, pool *pgxpool.Pool) error {
+	var (
+		enabled             bool
+		dirtyCount, dirtyTh int
+		hoursSincePass      *float64
+		minInterval         int
+		preferredDOW        *int
+		preferredHour       *int
+		nowDOW, nowHour     int
+		hoursSinceHuman     *float64
+		idleThreshold       int
+		inflightPassID      *string
+		inflightAgeHours    *float64
+	)
+	err := pool.QueryRow(ctx,
+		`SELECT * FROM stewards.watchman_scheduler_inputs()`,
+	).Scan(&enabled, &dirtyCount, &dirtyTh, &hoursSincePass,
+		&minInterval, &preferredDOW, &preferredHour,
+		&nowDOW, &nowHour, &hoursSinceHuman, &idleThreshold,
+		&inflightPassID, &inflightAgeHours)
+	if err != nil {
+		return err
+	}
+
+	var decision *string
+	if err := pool.QueryRow(ctx,
+		`SELECT stewards.watchman_should_fire()`,
+	).Scan(&decision); err != nil {
+		return err
+	}
+
+	fmt.Println("watchman scheduler status:")
+	fmt.Println("  --- decision ---")
+	if decision != nil {
+		fmt.Printf("  should_fire NOW:                 %s\n", *decision)
+	} else {
+		fmt.Printf("  should_fire NOW:                 (no — not firing)\n")
+	}
+	fmt.Println("  --- inputs ---")
+	fmt.Printf("  schedule_enabled:                %v\n", enabled)
+	fmt.Printf("  dirty_count:                     %d  (threshold %d → pressure when ≥)\n", dirtyCount, dirtyTh)
+	if hoursSincePass != nil {
+		fmt.Printf("  hours_since_last_pass:           %.2f\n", *hoursSincePass)
+	} else {
+		fmt.Printf("  hours_since_last_pass:           (no prior pass)\n")
+	}
+	fmt.Printf("  schedule_min_interval_hours:     %d  (cron gate)\n", minInterval)
+	if preferredDOW != nil {
+		fmt.Printf("  schedule_preferred_dow_utc:      %d  (now: %d)\n", *preferredDOW, nowDOW)
+	} else {
+		fmt.Printf("  schedule_preferred_dow_utc:      (any; now: %d)\n", nowDOW)
+	}
+	if preferredHour != nil {
+		fmt.Printf("  schedule_preferred_hour_utc:     %02d  (now: %02d)\n", *preferredHour, nowHour)
+	} else {
+		fmt.Printf("  schedule_preferred_hour_utc:     (any; now: %02d)\n", nowHour)
+	}
+	if hoursSinceHuman != nil {
+		fmt.Printf("  hours_since_last_human_session:  %.2f\n", *hoursSinceHuman)
+	} else {
+		fmt.Printf("  hours_since_last_human_session:  (no human chat sessions)\n")
+	}
+	fmt.Printf("  idle_threshold_hours:            %d  (0 = idle trigger off)\n", idleThreshold)
+	if inflightPassID != nil {
+		ageStr := "?"
+		if inflightAgeHours != nil {
+			ageStr = fmt.Sprintf("%.2fh", *inflightAgeHours)
+		}
+		fmt.Printf("  in_progress_pass:                %s (age %s) — blocks new firing if <1h\n",
+			*inflightPassID, ageStr)
+	} else {
+		fmt.Printf("  in_progress_pass:                (none)\n")
+	}
+	return nil
+}
+
+// WatchmanConfigSetField is one column update — exists so we can pass
+// a heterogeneous list to WatchmanConfigSet without N pairs of (val,
+// set) parameters.
+type WatchmanConfigSetField struct {
+	Column string
+	Value  any
+}
+
+// WatchmanConfigSet updates the singleton config row. Each field in
+// the slice becomes one assignment; the caller decides which fields
+// were actually passed by the user (absent flags are not appended).
 func WatchmanConfigSet(ctx context.Context, pool *pgxpool.Pool,
-	schedule string, scheduleSet bool,
-	provider string, providerSet bool,
-	model string, modelSet bool,
-	agent string, agentSet bool,
-	budget int, budgetSet bool,
-	dirtyThreshold int, dirtySet bool,
-	idleHours int, idleSet bool,
+	fields []WatchmanConfigSetField,
 ) error {
-	parts := make([]string, 0, 7)
-	args := make([]any, 0, 7)
-	idx := 1
-	add := func(col string, val any) {
-		parts = append(parts, fmt.Sprintf("%s = $%d", col, idx))
-		args = append(args, val)
-		idx++
-	}
-	if scheduleSet {
-		add("schedule_cron", schedule)
-	}
-	if providerSet {
-		add("default_provider", provider)
-	}
-	if modelSet {
-		add("default_model", model)
-	}
-	if agentSet {
-		add("default_agent_family", agent)
-	}
-	if budgetSet {
-		add("token_budget", budget)
-	}
-	if dirtySet {
-		add("dirty_threshold", dirtyThreshold)
-	}
-	if idleSet {
-		add("idle_threshold_hours", idleHours)
-	}
-	if len(parts) == 0 {
+	if len(fields) == 0 {
 		return fmt.Errorf("config set: nothing to update; pass at least one --field")
+	}
+	parts := make([]string, 0, len(fields)+1)
+	args := make([]any, 0, len(fields))
+	for i, f := range fields {
+		parts = append(parts, fmt.Sprintf("%s = $%d", f.Column, i+1))
+		args = append(args, f.Value)
 	}
 	parts = append(parts, "updated_at = now()")
 	q := "UPDATE stewards.watchman_config SET " +

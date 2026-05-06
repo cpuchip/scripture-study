@@ -779,7 +779,7 @@ verdict | finding | ack | history` for human-driven passes.
 > | Sub-phase | What | Status |
 > |-----------|------|--------|
 > | **2.7b.1** | SQL substrate: `watchman_passes` + `watchman_config` tables, `watchman_pass_start()` enqueuer, `AFTER UPDATE` trigger on `work_queue` that records verdict/finding from completed watchman chats. CLI: `watchman pass-now`, `watchman passes`, `watchman pass-detail`, `watchman config show/set`. **No bgworker changes.** | **shipped 2026-05-06** |
-> | 2.7b.2 | Bgworker scheduler tick (~60s). Reads `watchman_config`, calls `watchman_pass_start` when cron / pressure / idle trigger fires. | not started |
+> | **2.7b.2** | Bgworker scheduler tick (~60s). Reads `watchman_config`, calls `watchman_pass_start` when cron / pressure / idle trigger fires. SQL `watchman_should_fire()` owns the decision; Rust just polls. | **shipped 2026-05-06** |
 > | 2.7b.3 | Per-pass token budget enforcement: `watchman_pass_start` stops enqueueing when projected tokens cross threshold; partial passes are valid. | not started |
 > | 2.7b.4 | 7-day soak + `regenerate_active_md()` SQL fn invoked at end of pass. | not started |
 
@@ -903,6 +903,100 @@ harvested verdict=`skipped` + drift finding cleanly, pass auto-marked
 - The 3a Go-orchestrator path (`watchman pass`) is preserved as a
   fallback. Same SQL fixtures, different control loop. Useful for
   `--slug` single-doc repro and Go-side log visibility.
+
+#### Phase 2.7b.2 — bgworker scheduler tick (shipped 2026-05-06)
+
+The bgworker now wakes the scheduler on its own. Three triggers
+(pressure, cron, idle), all decided in SQL.
+
+**Files**
+
+- `extension/2-7b2-watchman-scheduler.sql` — adds 7 schedule columns
+  to `watchman_config`, `watchman_scheduler_inputs()` (observability),
+  `watchman_should_fire()` (decision: returns `'cron'|'pressure'|
+  'idle'|NULL`), and `watchman_scheduler_fire()` (decide → if non-NULL,
+  call `watchman_pass_start` with `actor='scheduler'`).
+- `extension/src/lib.rs` — bgworker main loop now runs a 60s
+  scheduler tick alongside the 500ms work-drain. `last_sched=None` on
+  startup so the first tick happens immediately. Calls
+  `stewards.watchman_scheduler_fire()` via `Spi::connect_mut`. Logs
+  on fire only — silent on no-op (don't flood the postmaster log).
+- `extension/Dockerfile` — added `2-7b1-watchman-automation.sql`
+  and `2-7b2-watchman-scheduler.sql` to the `COPY` directive for the
+  build context.
+- `cmd/stewards-cli/main.go` + `internal/show/show.go` —
+  `watchman config show` now displays scheduler fields;
+  `watchman config set` accepts `--enabled`, `--min-interval-hours`,
+  `--preferred-dow`, `--preferred-hour`, `--pass-limit`,
+  `--pressure-cooldown-hours`, `--idle-cooldown-hours`. New
+  `watchman scheduler-status` command prints the live decision and
+  every input feeding it.
+- `extension/verify-2-7b2-decision.sql` — pure-SQL decision-function
+  verification (9 trials).
+
+**Decision matrix (priority order)**
+
+| Trigger | Fires when |
+|---------|------------|
+| (none) | `schedule_enabled = false` OR a pass started <1h ago is still in_progress |
+| `pressure` | `count(dirty_queue) >= dirty_threshold` AND last_pass older than `schedule_pressure_cooldown_hours` |
+| `cron` | last_pass older than `schedule_min_interval_hours` AND we're inside the preferred DOW + hour window (NULL = any) |
+| `idle` | `idle_threshold_hours > 0` AND last_pass older than `schedule_idle_cooldown_hours` AND no `kind='chat'` session in N hours |
+
+**Decision verification (9 SQL trials, no model tokens)**
+
+All 9 trials pass:
+
+| # | Setup | Got |
+|---|-------|-----|
+| 1 | `schedule_enabled = false` | NULL ✓ |
+| 2 | dirty heavy, past cooldown | `pressure` ✓ |
+| 3 | dirty_threshold = 9999 (suppresses pressure), DOW/hour mismatch | NULL ✓ |
+| 4 | preferred DOW/hour = NULL (any) + min_interval=0 | `cron` ✓ |
+| 5 | min_interval=168, last_pass 12h ago, dirty under threshold | NULL ✓ |
+| 6 | idle_threshold_hours=1, idle_cooldown=1, no human sessions | `idle` ✓ |
+| 7 | idle_threshold_hours=0 | NULL ✓ |
+| 8 | inflight pass <1h old | NULL ✓ (don't pile up) |
+| 9 | inflight pass >1h old (90 min) | `pressure` ✓ (allowed) |
+
+**End-to-end live verification (real bgworker tick)**
+
+After rebuild + restart with `schedule_enabled=true` and the corpus
+358 docs over the 50 threshold:
+
+- 21:36:21 UTC: bgworker started fresh
+- 21:36:22 UTC: first scheduler tick (`last_sched=None`) → returns NULL because schedule was still disabled at that exact instant (we hadn't flipped it yet)
+- 21:36:30ish UTC: human flipped `schedule_enabled=true`
+- 21:37:22 UTC: 60s after `last_sched`, second tick fires
+- 21:37:22 UTC: bgworker logs `stewards: scheduler fired Watchman pass: watchman-20260506T213722Z-0705d4`
+- pass started with `trigger='pressure'`, `actor='scheduler'`, `doc_count_planned=5` (used `schedule_pass_limit=5` from config)
+
+Within 60s of being enabled, the bgworker scheduler decided pressure
+was hot, called `watchman_scheduler_fire`, which dispatched a real
+pass through the same trigger-driven harvest path 2.7b.1 ships.
+
+**Discovery during build:** `Spi::connect` is read-only and would
+silently block `INSERT`/`UPDATE` operations performed by the SQL
+function it invoked (PG SPI propagates the read-only flag down).
+Switched `check_watchman_schedule()` to `Spi::connect_mut`. Caught
+proactively (not by failure) by reviewing the existing
+`process_one_pending` and reaper code, both of which use
+`connect_mut`.
+
+**Discovery during build:** the `Dockerfile` `COPY` directive lists
+SQL files explicitly. New `extension_sql_file!` references in lib.rs
+require updating that list — otherwise the rust compile fails with
+`couldn't read 'src/../<file>.sql'`. 2-7b1 had been added to lib.rs
+without updating the Dockerfile in 2.7b.1, but only failed now
+because that section never got rebuilt — the live-DB migration
+pattern lets the SQL file land without a docker rebuild. Added a
+TODO-style comment in the Dockerfile as a reminder.
+
+**Cost discipline.** The 2.7b.2 scheduler is structurally bounded
+(per-pass `schedule_pass_limit`, per-trigger cooldowns, in-progress
+guard) but no token budget is enforced inside `watchman_pass_start`
+yet — that's 2.7b.3. The `schedule_enabled` master switch is the
+load-bearing kill-switch until 2.7b.3 lands.
 
 ## Phase 3 — Pipelines + MCP + External arms: agents that work without an IDE
 

@@ -44,8 +44,11 @@ COPY src ./src
 # The 2-6*/2-7*/3a*.sql files are read at compile time by
 # extension_sql_file! macros in src/lib.rs (folded back from live-DB
 # migrations as of v0.2.0). They must be present in the build context.
+# When adding a new file, also add the corresponding extension_sql_file!
+# call in src/lib.rs and update this list.
 COPY 2-6a-workstreams.sql 2-6b-todos.sql 2-6c-phases-context.sql \
-     2-7a-watchman-substrate.sql 3a-watchman-pass.sql ./
+     2-7a-watchman-substrate.sql 3a-watchman-pass.sql \
+     2-7b1-watchman-automation.sql 2-7b2-watchman-scheduler.sql ./
 
 # `cargo pgrx package` produces ./target/release/pg_ai_stewards-pg18/
 # with the directory tree rooted at /, containing the .so, .control,
