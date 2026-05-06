@@ -37,7 +37,7 @@
 -- ---------------------------------------------------------------------
 
 INSERT INTO stewards.agents
-    (family, model_match, description, mode, prompt, temperature, top_p, steps)
+    (family, model_match, description, mode, prompt, temperature, top_p, response_format, steps)
 VALUES (
     'watchman-consolidator',
     '*',
@@ -115,16 +115,15 @@ Output schema:
 You are not chatting. You are not helpful. You are a structural reviewer rendering one verdict.$prompt$,
     0.0,
     NULL,
+    '{"type": "json_object"}'::jsonb,
     1
 )
 ON CONFLICT (family, model_match) DO UPDATE
-   SET description = EXCLUDED.description,
-       prompt      = EXCLUDED.prompt,
-       temperature = EXCLUDED.temperature,
-       steps       = EXCLUDED.steps;
-
--- ---------------------------------------------------------------------
--- Tool permissions: watchman-consolidator denies ALL tools.
+   SET description     = EXCLUDED.description,
+       prompt          = EXCLUDED.prompt,
+       temperature     = EXCLUDED.temperature,
+       response_format = EXCLUDED.response_format,
+       steps           = EXCLUDED.steps;
 --
 -- This is structural enforcement. Even if a model gets a tool list,
 -- compose_tools filters it down to tools that pass the permission

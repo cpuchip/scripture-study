@@ -20,6 +20,7 @@ workarounds we live with (or document upstream as caveats);
 | 6   | `cypher()`'s 3rd argument MUST be a parameter placeholder     | bug-candidate     | 2.6c       |
 | 7   | `#>>` jsonb-path operator fails on agtype scalars             | bug-candidate     | 2.6c       |
 | 8   | PL/pgSQL OUT params shadow column names in `RETURNING`       | our-mistake       | 2.6c       |
+| 9   | `set_config('search_path', ..., true)` leaks during `CREATE EXTENSION` | our-mistake       | 2.6a       |
 
 ---
 
@@ -281,6 +282,19 @@ $$ LANGUAGE plpgsql;
 ```
 
 **First seen:** 2.6c, building `context_for()`.
+
+---
+
+## #9 — `set_config('search_path', ..., true)` leaks during `CREATE EXTENSION`
+
+**Category:** our-mistake (interaction between PL/pgSQL, PGRX, and AGE).
+
+**Symptom:** During extension initialization (e.g., seeding data via an `extension_sql_file!` script), if you call a PL/pgSQL function that uses `set_config('search_path', 'ag_catalog,...', true)` to enable AGE functions, it corrupts the search path for the rest of the `CREATE EXTENSION` transaction. As a result, subsequent `pg_extern` Rust functions (which PGRX generates as unqualified `CREATE FUNCTION` statements at the very end of the install script) end up in `ag_catalog` instead of your extension's intended schema (e.g., `stewards`).
+
+**Workaround:** 
+Do not invoke any schema-altering cypher calls during the `CREATE EXTENSION` step itself. Move initial graph seeds to a post-install script (e.g., `init/01-seed-workstreams.sql`) that runs outside the extension installation transaction.
+
+**First seen:** 2.6a/v0.2.0 foldback, while attempting to seed workstreams during install.
 
 ---
 

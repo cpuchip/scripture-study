@@ -479,6 +479,7 @@ The ordering of items is not stable, it is driven by a dependency graph.
         prompt       text NOT NULL,                -- agent persona/role
         temperature  real,
         top_p        real,
+        response_format jsonb,                       -- e.g. {"type": "json_object"}
         steps        int NOT NULL DEFAULT 8,        -- max agentic iterations
         active       bool NOT NULL DEFAULT true,
         created_at   timestamptz NOT NULL DEFAULT now(),
@@ -840,6 +841,9 @@ The ordering of items is not stable, it is driven by a dependency graph.
         END IF;
         IF v_agent.top_p IS NOT NULL THEN
             v_body := v_body || jsonb_build_object('top_p', v_agent.top_p);
+        END IF;
+        IF v_agent.response_format IS NOT NULL THEN
+            v_body := v_body || jsonb_build_object('response_format', v_agent.response_format);
         END IF;
 
         RETURN v_body || jsonb_build_object(
@@ -3506,7 +3510,7 @@ $func$;
 -- ---------------------------------------------------------------------
 
 INSERT INTO stewards.agents
-    (family, model_match, description, mode, prompt, temperature, top_p, steps)
+    (family, model_match, description, mode, prompt, temperature, top_p, response_format, steps)
 VALUES (
     'watchman-consolidator',
     '*',
@@ -3584,16 +3588,15 @@ Output schema:
 You are not chatting. You are not helpful. You are a structural reviewer rendering one verdict.$prompt$,
     0.0,
     NULL,
+    '{"type": "json_object"}'::jsonb,
     1
 )
 ON CONFLICT (family, model_match) DO UPDATE
-   SET description = EXCLUDED.description,
-       prompt      = EXCLUDED.prompt,
-       temperature = EXCLUDED.temperature,
-       steps       = EXCLUDED.steps;
-
--- ---------------------------------------------------------------------
--- Tool permissions: watchman-consolidator denies ALL tools.
+   SET description     = EXCLUDED.description,
+       prompt          = EXCLUDED.prompt,
+       temperature     = EXCLUDED.temperature,
+       response_format = EXCLUDED.response_format,
+       steps           = EXCLUDED.steps;
 --
 -- This is structural enforcement. Even if a model gets a tool list,
 -- compose_tools filters it down to tools that pass the permission

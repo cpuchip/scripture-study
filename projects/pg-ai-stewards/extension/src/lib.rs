@@ -526,6 +526,7 @@ extension_sql!(
         prompt       text NOT NULL,                -- agent persona/role
         temperature  real,
         top_p        real,
+        response_format jsonb,                       -- e.g. {"type": "json_object"}
         steps        int NOT NULL DEFAULT 8,        -- max agentic iterations
         active       bool NOT NULL DEFAULT true,
         created_at   timestamptz NOT NULL DEFAULT now(),
@@ -887,6 +888,9 @@ extension_sql!(
         END IF;
         IF v_agent.top_p IS NOT NULL THEN
             v_body := v_body || jsonb_build_object('top_p', v_agent.top_p);
+        IF v_agent.response_format IS NOT NULL THEN
+            v_body := v_body || jsonb_build_object('response_format', v_agent.response_format);
+        END IF;
         END IF;
 
         RETURN v_body || jsonb_build_object(
