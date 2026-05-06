@@ -126,8 +126,34 @@ Commands:
       Watchman substrate (Phase 2.7a). Inspect the dirty queue,
       record verdicts (which reset the dirty-bit) and findings
       (which suppress re-evaluation until acknowledged), and view
-      the verdict + finding timeline for a doc. The bgworker that
-      automates this is Phase 2.7b.
+      the verdict + finding timeline for a doc.
+
+  watchman pass [--limit N] [--provider P] [--model M] [--timeout S]
+                [--max-input-chars N] [--dry-run] [--slug X]
+      Phase 3a Go-orchestrator pass. CLI loops over slugs, polls
+      work_queue per slug, parses JSON in Go, calls record_verdict.
+      Useful for --slug single-doc repro and Go-side log visibility.
+
+  watchman pass-now [--limit N] [--provider P] [--model M] [--budget T]
+                    [--actor A] [--timeout S]
+      Phase 2.7b.1 trigger-driven pass. SQL function enqueues N
+      chats; the AFTER UPDATE trigger on work_queue records each
+      verdict transactionally with the chat completion. CLI polls
+      stewards.watchman_passes until the row reaches a terminal
+      status. Faster, no race window, bgworker stays generic.
+
+  watchman passes [--limit N]
+      List recent passes (newest first) with rolled-up verdict counts.
+
+  watchman pass-detail <pass-id>
+      Show one pass + every verdict and finding it produced.
+
+  watchman config show
+  watchman config set [--schedule S] [--budget T] [--model M]
+                      [--provider P] [--agent A] [--dirty-threshold N]
+                      [--idle-hours N]
+      View / edit the singleton stewards.watchman_config row.
+      Schedule + thresholds become load-bearing in Phase 2.7b.2.
 
 Environment:
   STEWARDS_DSN    Postgres DSN (default: postgres://stewards:stewards@localhost:5432/stewards?sslmode=disable)
@@ -540,6 +566,98 @@ func runWatchman(ctx context.Context, args []string) {
 			*dryRun, *slug, *maxInputChars,
 		); err != nil {
 			fmt.Fprintf(os.Stderr, "watchman pass: %v\n", err)
+			os.Exit(1)
+		}
+	case "pass-now":
+		// Phase 2.7b.1 trigger-driven pass. Calls
+		// stewards.watchman_pass_start, polls watchman_passes until
+		// terminal. Defaults are NULL so the SQL function falls
+		// through to watchman_config defaults; pass an explicit
+		// flag value to override.
+		fs := flag.NewFlagSet("watchman pass-now", flag.ExitOnError)
+		limit := fs.Int("limit", 5, "max docs to consolidate this pass")
+		provider := fs.String("provider", "", "override default_provider (empty = use config)")
+		model := fs.String("model", "", "override default_model (empty = use config)")
+		agent := fs.String("agent", "", "override default_agent_family (empty = use config)")
+		actor := fs.String("actor", "watchman", "actor recording verdicts (audit trail)")
+		budget := fs.Int("budget", 0, "override token_budget (0 = use config)")
+		timeoutSec := fs.Int("timeout", 1200, "max seconds to wait for the whole pass")
+		if err := fs.Parse(rest); err != nil {
+			os.Exit(1)
+		}
+		if err := show.WatchmanPassNow(ctx, pool,
+			*limit, *provider, *model, *agent, *actor,
+			*budget, time.Duration(*timeoutSec)*time.Second,
+		); err != nil {
+			fmt.Fprintf(os.Stderr, "watchman pass-now: %v\n", err)
+			os.Exit(1)
+		}
+	case "passes":
+		fs := flag.NewFlagSet("watchman passes", flag.ExitOnError)
+		limit := fs.Int("limit", 20, "max passes to list (newest first)")
+		if err := fs.Parse(rest); err != nil {
+			os.Exit(1)
+		}
+		if err := show.WatchmanPasses(ctx, pool, *limit); err != nil {
+			fmt.Fprintf(os.Stderr, "watchman passes: %v\n", err)
+			os.Exit(1)
+		}
+	case "pass-detail":
+		fs := flag.NewFlagSet("watchman pass-detail", flag.ExitOnError)
+		if err := fs.Parse(rest); err != nil {
+			os.Exit(1)
+		}
+		if fs.NArg() != 1 {
+			fmt.Fprintln(os.Stderr, "watchman pass-detail: <pass-id> required")
+			os.Exit(1)
+		}
+		if err := show.WatchmanPassDetail(ctx, pool, fs.Arg(0)); err != nil {
+			fmt.Fprintf(os.Stderr, "watchman pass-detail: %v\n", err)
+			os.Exit(1)
+		}
+	case "config":
+		// `watchman config show` | `watchman config set --field ...`
+		if len(rest) == 0 {
+			fmt.Fprintln(os.Stderr, "watchman config: subcommand required (show|set)")
+			os.Exit(1)
+		}
+		switch rest[0] {
+		case "show":
+			if err := show.WatchmanConfigShow(ctx, pool); err != nil {
+				fmt.Fprintf(os.Stderr, "watchman config show: %v\n", err)
+				os.Exit(1)
+			}
+		case "set":
+			fs := flag.NewFlagSet("watchman config set", flag.ExitOnError)
+			schedule := fs.String("schedule", "", "schedule_cron")
+			provider := fs.String("provider", "", "default_provider")
+			model := fs.String("model", "", "default_model")
+			agent := fs.String("agent", "", "default_agent_family")
+			budget := fs.Int("budget", 0, "token_budget")
+			dirtyThreshold := fs.Int("dirty-threshold", 0, "dirty_threshold")
+			idleHours := fs.Int("idle-hours", 0, "idle_threshold_hours")
+			if err := fs.Parse(rest[1:]); err != nil {
+				os.Exit(1)
+			}
+			// Detect which flags the user actually passed by walking
+			// the parsed flag set (Go's flag package doesn't expose
+			// "was this set" directly).
+			seen := map[string]bool{}
+			fs.Visit(func(f *flag.Flag) { seen[f.Name] = true })
+			if err := show.WatchmanConfigSet(ctx, pool,
+				*schedule, seen["schedule"],
+				*provider, seen["provider"],
+				*model, seen["model"],
+				*agent, seen["agent"],
+				*budget, seen["budget"],
+				*dirtyThreshold, seen["dirty-threshold"],
+				*idleHours, seen["idle-hours"],
+			); err != nil {
+				fmt.Fprintf(os.Stderr, "watchman config set: %v\n", err)
+				os.Exit(1)
+			}
+		default:
+			fmt.Fprintf(os.Stderr, "watchman config: unknown subcommand %q (show|set)\n", rest[0])
 			os.Exit(1)
 		}
 	default:

@@ -777,6 +777,374 @@ func truncate(s string, n int) string {
 	return s[:n] + "..."
 }
 
+// =====================================================================
+// Phase 2.7b.1 — Trigger-driven Watchman pass.
+//
+// Architecture differs from the 3a CLI orchestrator above:
+//   - 3a path:        CLI loops over slugs, polls work_queue.id per
+//                     slug, parses JSON in Go, calls record_verdict
+//                     from Go.
+//   - 2.7b.1 path:    CLI calls watchman_pass_start() once. The SQL
+//                     function enqueues N chats. The completion
+//                     trigger on work_queue records verdicts in the
+//                     same tx as each work_queue UPDATE. CLI polls
+//                     watchman_passes until status='completed'.
+//
+// Result: no race window, no per-row Go polling, the bgworker stays
+// generic. The 3a CLI path remains as a fallback for --slug single-doc
+// repro and for cases where you want Go-side log visibility.
+// =====================================================================
+
+// WatchmanPassNow enqueues a Watchman pass via stewards.watchman_pass_start
+// and polls stewards.watchman_passes until it reaches a terminal status.
+// Returns when the pass completes, errors, or the timeout fires.
+func WatchmanPassNow(ctx context.Context, pool *pgxpool.Pool,
+	limit int, provider, model, agent, actor string,
+	budget int, totalTimeout time.Duration,
+) error {
+	// Convert empty strings to NULL so the SQL function's COALESCE
+	// chain falls through to the watchman_config defaults.
+	args := []any{
+		limit,
+		nullable(provider),
+		nullable(model),
+		nullable(agent),
+		actor,
+		"manual",
+	}
+	if budget > 0 {
+		args = append(args, budget)
+	} else {
+		args = append(args, nil)
+	}
+
+	var passID string
+	if err := pool.QueryRow(ctx,
+		`SELECT stewards.watchman_pass_start($1, $2, $3, $4, $5, $6, $7)`,
+		args...,
+	).Scan(&passID); err != nil {
+		return fmt.Errorf("watchman_pass_start: %w", err)
+	}
+
+	fmt.Printf("watchman pass %s: started\n", passID)
+
+	// Pull initial state to show how many docs were planned. If
+	// planned=0 the pass will already be 'completed' (empty queue).
+	var planned int
+	var status string
+	if err := pool.QueryRow(ctx,
+		`SELECT doc_count_planned, status
+		   FROM stewards.watchman_passes WHERE pass_id = $1`,
+		passID,
+	).Scan(&planned, &status); err != nil {
+		return fmt.Errorf("read planned: %w", err)
+	}
+	fmt.Printf("  planned=%d  initial_status=%s\n", planned, status)
+	if planned == 0 || status == "completed" {
+		return printWatchmanPassDetail(ctx, pool, passID)
+	}
+
+	// Poll the pass row. 1s tick is plenty — pass duration is
+	// (planned * model_latency), tens of seconds at minimum.
+	deadline := time.Now().Add(totalTimeout)
+	tick := time.NewTicker(1 * time.Second)
+	defer tick.Stop()
+	var done int
+	for {
+		if err := pool.QueryRow(ctx,
+			`SELECT status, doc_count_done
+			   FROM stewards.watchman_passes WHERE pass_id = $1`,
+			passID,
+		).Scan(&status, &done); err != nil {
+			return fmt.Errorf("poll: %w", err)
+		}
+		if status != "in_progress" {
+			break
+		}
+		if time.Now().After(deadline) {
+			fmt.Printf("  TIMEOUT after %s (done=%d/%d)\n",
+				totalTimeout, done, planned)
+			fmt.Println("  pass continues server-side; tail with `watchman pass-detail " + passID + "`")
+			return nil
+		}
+		<-tick.C
+	}
+
+	fmt.Printf("  final_status=%s  done=%d/%d\n", status, done, planned)
+	return printWatchmanPassDetail(ctx, pool, passID)
+}
+
+// WatchmanPasses lists past passes (newest first).
+func WatchmanPasses(ctx context.Context, pool *pgxpool.Pool, limit int) error {
+	rows, err := pool.Query(ctx,
+		`SELECT pass_id, started_at, finished_at, status, trigger,
+		        provider, model, doc_count_planned, doc_count_done,
+		        n_clean, n_drift, n_done, n_superseded, n_skipped,
+		        tokens_in, tokens_out
+		   FROM stewards.watchman_pass_summary
+		  ORDER BY started_at DESC
+		  LIMIT $1`,
+		limit,
+	)
+	if err != nil {
+		return err
+	}
+	defer rows.Close()
+
+	tw := tabwriter.NewWriter(os.Stdout, 0, 0, 2, ' ', 0)
+	fmt.Fprintln(tw, "PASS_ID\tSTARTED\tELAPSED\tSTATUS\tTRIG\tMODEL\tDONE/PLAN\tCLN\tDRF\tDNE\tSUP\tSKP\tTOK_IN\tTOK_OUT")
+	count := 0
+	for rows.Next() {
+		var (
+			passID, status, trigger, provider, model string
+			started                                  time.Time
+			finished                                 *time.Time
+			planned, done                            int
+			nC, nDr, nDn, nS, nSk                    int
+			tIn, tOut                                int
+		)
+		if err := rows.Scan(&passID, &started, &finished, &status, &trigger,
+			&provider, &model, &planned, &done,
+			&nC, &nDr, &nDn, &nS, &nSk, &tIn, &tOut); err != nil {
+			return err
+		}
+		_ = provider
+		elapsed := "—"
+		if finished != nil {
+			elapsed = finished.Sub(started).Round(time.Second).String()
+		} else if status == "in_progress" {
+			elapsed = time.Since(started).Round(time.Second).String() + "+"
+		}
+		fmt.Fprintf(tw,
+			"%s\t%s\t%s\t%s\t%s\t%s\t%d/%d\t%d\t%d\t%d\t%d\t%d\t%d\t%d\n",
+			passID, started.Format("2006-01-02 15:04"), elapsed,
+			status, trigger, model, done, planned,
+			nC, nDr, nDn, nS, nSk, tIn, tOut)
+		count++
+	}
+	tw.Flush()
+	fmt.Printf("\n%d pass(es)\n", count)
+	return rows.Err()
+}
+
+// WatchmanPassDetail prints one pass + every verdict and finding in it.
+func WatchmanPassDetail(ctx context.Context, pool *pgxpool.Pool, passID string) error {
+	return printWatchmanPassDetail(ctx, pool, passID)
+}
+
+// printWatchmanPassDetail is the shared impl reused by pass-now's
+// completion print and pass-detail.
+func printWatchmanPassDetail(ctx context.Context, pool *pgxpool.Pool, passID string) error {
+	var (
+		started                          time.Time
+		finished                         *time.Time
+		status, trigger, provider, model string
+		actor                            string
+		planned, done, tIn, tOut, budget int
+		verdictCounts                    []byte
+	)
+	err := pool.QueryRow(ctx,
+		`SELECT started_at, finished_at, status, trigger, provider, model,
+		        actor, doc_count_planned, doc_count_done, tokens_in,
+		        tokens_out, token_budget, verdict_counts
+		   FROM stewards.watchman_passes WHERE pass_id = $1`,
+		passID,
+	).Scan(&started, &finished, &status, &trigger, &provider, &model,
+		&actor, &planned, &done, &tIn, &tOut, &budget, &verdictCounts)
+	if err != nil {
+		return fmt.Errorf("pass not found: %w", err)
+	}
+
+	fmt.Printf("\n## %s\n", passID)
+	fmt.Printf("started:    %s\n", started.Format("2006-01-02 15:04:05 MST"))
+	if finished != nil {
+		fmt.Printf("finished:   %s  (elapsed %s)\n",
+			finished.Format("2006-01-02 15:04:05 MST"),
+			finished.Sub(started).Round(time.Second))
+	} else {
+		fmt.Printf("finished:   (still %s)\n", status)
+	}
+	fmt.Printf("status:     %s\n", status)
+	fmt.Printf("trigger:    %s\n", trigger)
+	fmt.Printf("actor:      %s\n", actor)
+	fmt.Printf("provider:   %s\n", provider)
+	fmt.Printf("model:      %s\n", model)
+	fmt.Printf("docs:       %d done / %d planned\n", done, planned)
+	fmt.Printf("tokens:     %d in / %d out  (budget %d)\n", tIn, tOut, budget)
+	fmt.Printf("verdicts:   %s\n", string(verdictCounts))
+
+	// Verdict rows for this pass.
+	rows, err := pool.Query(ctx,
+		`SELECT s.slug, v.verdict, v.tokens_in, v.tokens_out,
+		        v.created_at, v.reasoning
+		   FROM stewards.verdicts v
+		   JOIN stewards.studies s ON s.id = v.study_id
+		  WHERE v.pass_id = $1
+		  ORDER BY v.created_at`,
+		passID,
+	)
+	if err != nil {
+		return err
+	}
+	defer rows.Close()
+	tw := tabwriter.NewWriter(os.Stdout, 0, 0, 2, ' ', 0)
+	fmt.Fprintln(tw, "\nSLUG\tVERDICT\tTOK_IN\tTOK_OUT\tWHEN\tREASONING")
+	for rows.Next() {
+		var slug, verdict, reasoning string
+		var vIn, vOut int
+		var when time.Time
+		if err := rows.Scan(&slug, &verdict, &vIn, &vOut, &when, &reasoning); err != nil {
+			return err
+		}
+		short := reasoning
+		if len(short) > 100 {
+			short = short[:97] + "..."
+		}
+		fmt.Fprintf(tw, "%s\t%s\t%d\t%d\t%s\t%s\n",
+			slug, verdict, vIn, vOut, when.Format("15:04:05"), short)
+	}
+	tw.Flush()
+
+	// Findings for this pass.
+	frows, err := pool.Query(ctx,
+		`SELECT s.slug, f.kind, f.severity, f.created_at,
+		        f.message, coalesce(f.suggested_action, ''),
+		        f.acknowledged_at IS NOT NULL AS acked
+		   FROM stewards.findings f
+		   LEFT JOIN stewards.studies s ON s.id = f.study_id
+		  WHERE f.pass_id = $1
+		  ORDER BY f.created_at`,
+		passID,
+	)
+	if err != nil {
+		return err
+	}
+	defer frows.Close()
+	fcount := 0
+	ftw := tabwriter.NewWriter(os.Stdout, 0, 0, 2, ' ', 0)
+	for frows.Next() {
+		if fcount == 0 {
+			fmt.Fprintln(ftw, "\nFINDING_SLUG\tKIND\tSEV\tACK\tMESSAGE\tACTION")
+		}
+		var slug, kind, sev, msg, action string
+		var when time.Time
+		var acked bool
+		if err := frows.Scan(&slug, &kind, &sev, &when, &msg, &action, &acked); err != nil {
+			return err
+		}
+		ackStr := "no"
+		if acked {
+			ackStr = "yes"
+		}
+		shortMsg := msg
+		if len(shortMsg) > 60 {
+			shortMsg = shortMsg[:57] + "..."
+		}
+		shortAction := action
+		if len(shortAction) > 60 {
+			shortAction = shortAction[:57] + "..."
+		}
+		fmt.Fprintf(ftw, "%s\t%s\t%s\t%s\t%s\t%s\n",
+			slug, kind, sev, ackStr, shortMsg, shortAction)
+		fcount++
+	}
+	ftw.Flush()
+	if fcount == 0 {
+		fmt.Println("\nfindings: none")
+	} else {
+		fmt.Printf("\n%d finding(s) in this pass\n", fcount)
+	}
+	return frows.Err()
+}
+
+// WatchmanConfigShow prints the singleton config row.
+func WatchmanConfigShow(ctx context.Context, pool *pgxpool.Pool) error {
+	var (
+		schedule, defProvider, defModel, defAgent string
+		budget, dirtyThreshold, idleHours         int
+		lastPass                                  *time.Time
+		updated                                   time.Time
+	)
+	err := pool.QueryRow(ctx,
+		`SELECT schedule_cron, default_provider, default_model,
+		        default_agent_family, token_budget, dirty_threshold,
+		        idle_threshold_hours, last_pass_at, updated_at
+		   FROM stewards.watchman_config WHERE id = 1`,
+	).Scan(&schedule, &defProvider, &defModel, &defAgent,
+		&budget, &dirtyThreshold, &idleHours, &lastPass, &updated)
+	if err != nil {
+		return err
+	}
+	fmt.Println("watchman_config (singleton id=1):")
+	fmt.Printf("  schedule_cron:        %s\n", schedule)
+	fmt.Printf("  default_provider:     %s\n", defProvider)
+	fmt.Printf("  default_model:        %s\n", defModel)
+	fmt.Printf("  default_agent_family: %s\n", defAgent)
+	fmt.Printf("  token_budget:         %d\n", budget)
+	fmt.Printf("  dirty_threshold:      %d\n", dirtyThreshold)
+	fmt.Printf("  idle_threshold_hours: %d\n", idleHours)
+	if lastPass != nil {
+		fmt.Printf("  last_pass_at:         %s\n", lastPass.Format("2006-01-02 15:04:05 MST"))
+	} else {
+		fmt.Printf("  last_pass_at:         (never)\n")
+	}
+	fmt.Printf("  updated_at:           %s\n", updated.Format("2006-01-02 15:04:05 MST"))
+	return nil
+}
+
+// WatchmanConfigSet updates the singleton config row. Each parameter
+// is applied only if its corresponding "set" flag is true (sentinel
+// for absent flags vs. zero values).
+func WatchmanConfigSet(ctx context.Context, pool *pgxpool.Pool,
+	schedule string, scheduleSet bool,
+	provider string, providerSet bool,
+	model string, modelSet bool,
+	agent string, agentSet bool,
+	budget int, budgetSet bool,
+	dirtyThreshold int, dirtySet bool,
+	idleHours int, idleSet bool,
+) error {
+	parts := make([]string, 0, 7)
+	args := make([]any, 0, 7)
+	idx := 1
+	add := func(col string, val any) {
+		parts = append(parts, fmt.Sprintf("%s = $%d", col, idx))
+		args = append(args, val)
+		idx++
+	}
+	if scheduleSet {
+		add("schedule_cron", schedule)
+	}
+	if providerSet {
+		add("default_provider", provider)
+	}
+	if modelSet {
+		add("default_model", model)
+	}
+	if agentSet {
+		add("default_agent_family", agent)
+	}
+	if budgetSet {
+		add("token_budget", budget)
+	}
+	if dirtySet {
+		add("dirty_threshold", dirtyThreshold)
+	}
+	if idleSet {
+		add("idle_threshold_hours", idleHours)
+	}
+	if len(parts) == 0 {
+		return fmt.Errorf("config set: nothing to update; pass at least one --field")
+	}
+	parts = append(parts, "updated_at = now()")
+	q := "UPDATE stewards.watchman_config SET " +
+		strings.Join(parts, ", ") + " WHERE id = 1"
+	if _, err := pool.Exec(ctx, q, args...); err != nil {
+		return err
+	}
+	return WatchmanConfigShow(ctx, pool)
+}
+
 // truncateMiddle keeps the head and tail of s and replaces the middle
 // with an explicit elision marker. Used for big watchman inputs that
 // would otherwise blow past the bgworker chat timeout. Head/tail split

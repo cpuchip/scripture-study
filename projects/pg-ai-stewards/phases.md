@@ -753,6 +753,157 @@ these paths.
   edges we'd create. Probability: low based on probe; revisit if
   >100k edges starts misbehaving.
 
+## Phase 2.7 — Watchman (consolidation, dirty-bit, anti-loop)
+
+Full design lives in the proposal: [phase-2-5-generic-substrate.md
+§ Phase 2.7](../../.spec/proposals/pg-ai-stewards-phase-2-5-generic-substrate.md#phase-27--watchman-consolidation-freshness-anti-loop-discipline).
+phases.md tracks delivery status only.
+
+### Phase 2.7a — Watchman substrate ✅ done 2026-05-04
+
+`last_consolidated_at` column, `stewards.verdicts` + `stewards.findings`
+tables, `dirty_queue` view (terminal verdicts + open-finding suppression
+encoded directly), `record_verdict` / `record_finding` /
+`acknowledge_finding`, `study_history`. `stewards-cli watchman queue |
+verdict | finding | ack | history` for human-driven passes.
+
+### Phase 2.7b — Watchman automation (bgworker-driven)
+
+> **Honest scope split (2026-05-06).** 2.7b as originally specced bundled
+> bgworker, scheduling, token budget, and a 7-day soak. Splitting it
+> the same way Phase 3 was split (3a/3b/...) so each piece ships
+> independently. The trigger-based architecture (chosen over a Rust
+> result-harvester) means the bgworker stays generic — Watchman
+> semantics live entirely in SQL.
+>
+> | Sub-phase | What | Status |
+> |-----------|------|--------|
+> | **2.7b.1** | SQL substrate: `watchman_passes` + `watchman_config` tables, `watchman_pass_start()` enqueuer, `AFTER UPDATE` trigger on `work_queue` that records verdict/finding from completed watchman chats. CLI: `watchman pass-now`, `watchman passes`, `watchman pass-detail`, `watchman config show/set`. **No bgworker changes.** | **shipped 2026-05-06** |
+> | 2.7b.2 | Bgworker scheduler tick (~60s). Reads `watchman_config`, calls `watchman_pass_start` when cron / pressure / idle trigger fires. | not started |
+> | 2.7b.3 | Per-pass token budget enforcement: `watchman_pass_start` stops enqueueing when projected tokens cross threshold; partial passes are valid. | not started |
+> | 2.7b.4 | 7-day soak + `regenerate_active_md()` SQL fn invoked at end of pass. | not started |
+
+#### Phase 2.7b.1 — SQL substrate + completion trigger
+
+**Goal:** replace the 3a Go orchestrator's polling loop with a
+trigger-driven, transactional version. Manual triggering only; the
+scheduler that wakes the pass automatically is 2.7b.2.
+
+**Architecture (Option B — pure SQL + trigger):**
+
+- `stewards.watchman_passes` — one row per pass. Carries pass-level
+  config (provider, model, budget, trigger), planned/done counts,
+  rolled-up tokens, and per-verdict counters advanced by the trigger.
+- `stewards.watchman_config` — singleton (id=1) with default provider /
+  model / agent / token_budget / cron_schedule / dirty_threshold /
+  idle_threshold_hours / last_pass_at. 2.7b.2 reads it; 2.7b.1 just
+  creates it with sane defaults.
+- `stewards.watchman_pass_start(p_limit, p_provider, p_model,
+  p_agent_family, p_actor, p_trigger, p_token_budget) → text` —
+  inserts the `watchman_passes` row, pulls top-N dirty docs, for each:
+  composes input via `watchman_input(slug)`, creates a session,
+  inserts the user message, composes the body via `dry_run_chat`,
+  enqueues a `kind='chat'` work_queue row whose payload includes
+  `_watchman_pass_id`, `_watchman_slug`, `_watchman_actor`. Returns
+  the new pass_id.
+- **`AFTER UPDATE OF status` trigger on `stewards.work_queue`** with
+  `WHEN ((NEW.kind = 'chat') AND (NEW.payload ? '_watchman_pass_id'))`.
+  When a watchman chat row transitions to `done`/`error`:
+    1. Reads the latest assistant message for the session.
+    2. Strips optional ```json fences.
+    3. Casts content to `jsonb`. Bad JSON → records `verdict='skipped'`
+       with reasoning describing the parse error.
+    4. Validates verdict against the 5-element enum. Invalid → `skipped`.
+    5. Calls `record_verdict(...)`; if `verdict != 'clean'` and a
+       `finding` object is present, calls `record_finding(...)`.
+    6. Advances `watchman_passes` counters via
+       `advance_watchman_pass_counters(pass_id, verdict, tokens_in,
+       tokens_out)`. When `doc_count_done >= doc_count_planned`, marks
+       the pass `completed`.
+  All side-effects happen in the same transaction as the work_queue
+  status flip — no race window where a row is `done` but its verdict
+  isn't recorded.
+
+**CLI additions** (`stewards-cli`):
+
+- `watchman pass-now [--limit N] [--provider P] [--model M] [--budget T] [--actor A]`
+  — calls `watchman_pass_start`, polls `watchman_passes` row until
+  `status='completed'`, prints summary.
+- `watchman passes [--limit N]` — list past passes.
+- `watchman pass-detail <pass-id>` — verdict + finding rows for one pass.
+- `watchman config show` / `watchman config set --schedule X --budget T
+  --model Y --provider Z` — view/edit the singleton (used by 2.7b.2;
+  schema-only role in 2.7b.1).
+
+The existing `watchman pass` (3a Go orchestrator) stays for now as a
+fallback — useful for repro and `--slug` single-doc runs without
+creating a `watchman_passes` row.
+
+**Done when:**
+
+1. `pass-now --limit 5` enqueues 5 chats; bgworker drains them; trigger
+   writes 5 verdicts; `dirty_queue` shrinks by 5; `watchman_passes` row
+   shows `status='completed'` with verdict_counts populated.
+2. `pass-now` against a slug whose model returns malformed JSON records
+   `verdict='skipped'` cleanly (no trigger error, no work_queue stall).
+3. Inverse hypothesis (Agans Rule 9): drop the trigger → run a pass →
+   confirm verdicts NOT recorded; restore the trigger → re-fire the
+   completion → confirm verdicts now recorded.
+
+#### 2.7b.1 verification (2026-05-06)
+
+All three "done when" gates met. Files:
+
+- `extension/2-7b1-watchman-automation.sql` — live-DB migration applied,
+  also referenced via `extension_sql_file!` in
+  `extension/src/lib.rs` (sixth folded file: 2-6a/b/c, 2-7a, 3a, 2-7b1).
+- `extension/verify-2-7b1-inverse.sql` — pure-SQL inverse hypothesis
+  test (4 trials).
+- `extension/verify-2-7b1.log` — captured CLI output of the 5-doc
+  real-model verification pass.
+
+**Smoke test (1 doc):** pass `watchman-20260506T200536Z-9b2de6` →
+elapsed 3m22s (opencode_go was being unusually slow today), trigger
+harvested verdict=`skipped` + drift finding cleanly, pass auto-marked
+`completed` with `verdict_counts={"skipped":1}`.
+
+**Inverse hypothesis (synthetic, no model tokens):**
+
+| Trial | Setup | Expected | Got |
+|-------|-------|----------|-----|
+| 1 | trigger present, drift+finding JSON | 1 verdict, 1 finding, pass completed | ✓ |
+| 2 | trigger DROPPED | 0 verdicts, 0 findings, pass stays in_progress | ✓ proves trigger is load-bearing |
+| 3 | trigger restored, clean JSON | 1 verdict, 0 findings, pass completed | ✓ |
+| 4 | trigger present, malformed JSON | verdict=`skipped` with parse-error reasoning, no raise | ✓ defensive path works |
+
+**5-doc real-model verification (`actor=verify-2-7b1`):**
+
+- 5/5 docs harvested in 7m45s. Tokens: 18902 in / 18677 out (well under
+  50k budget). Verdicts: 1 clean + 4 skipped (kimi keeps surfacing the
+  "I can't see external context" pattern from 3a, which is honest).
+- 3 findings recorded (2 drift, 1 synthesis).
+- **Real-world error-path validation:** `art-of-presidency` hit
+  `opencode_go` HTTP 502 mid-pass. The trigger's error path recorded
+  `verdict='skipped'` with `reasoning="watchman chat errored: chat
+  HTTP 502 Bad Gateway: error code: 502"`. The rest of the pass kept
+  going; doc_count_done advanced; pass auto-completed. Trial 4's
+  defensive path proven in the wild.
+
+**Architectural notes:**
+
+- Trigger fires `AFTER UPDATE OF status` with WHEN-clause filtering
+  on `kind = 'chat' AND payload ? '_watchman_pass_id' AND status IN
+  ('done','error') AND OLD.status IS DISTINCT FROM NEW.status`. Cheap
+  pre-filter on every work_queue UPDATE; only watchman rows allocate
+  a function call.
+- Every `record_verdict` / `record_finding` / `advance_counters` call
+  is wrapped in `BEGIN...EXCEPTION WHEN OTHERS THEN ... END` so a bug
+  in the harvester never breaks the bgworker's status flip. The
+  trigger logs `RAISE WARNING` for any non-fatal failure.
+- The 3a Go-orchestrator path (`watchman pass`) is preserved as a
+  fallback. Same SQL fixtures, different control loop. Useful for
+  `--slug` single-doc repro and Go-side log visibility.
+
 ## Phase 3 — Pipelines + MCP + External arms: agents that work without an IDE
 
 > **Honest scope split (2026-05-05).** Phase 3 as originally written

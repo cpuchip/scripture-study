@@ -1,0 +1,29 @@
+watchman pass watchman-20260506T201415Z-b9056d: started
+  planned=5  initial_status=in_progress
+  final_status=completed  done=5/5
+
+## watchman-20260506T201415Z-b9056d
+started:    2026-05-06 15:14:15 CDT
+finished:   2026-05-06 15:22:00 CDT  (elapsed 7m45s)
+status:     completed
+trigger:    manual
+actor:      verify-2-7b1
+provider:   opencode_go
+model:      kimi-k2.6
+docs:       5 done / 5 planned
+tokens:     18902 in / 18677 out  (budget 50000)
+verdicts:   {"clean": 1, "skipped": 4}
+
+SLUG                                      VERDICT  TOK_IN  TOK_OUT  WHEN      REASONING
+ai-responsible-use                        skipped  3496    3901     15:15:12  The document’s core claims depend on the existence and content of Elder Bednar’s November 202...
+art-of-delegation                         clean    6266    1997     15:16:09  This is a completed theological study note dated March 31, 2026, with static citations to canonic...
+art-of-presidency                         skipped  0       0        15:17:48  watchman chat errored: chat HTTP 502 Bad Gateway: error code: 502
+atoning-love-andersen                     skipped  3446    5120     15:20:12  The document contains extensive direct quotations attributed to Elder Neil L. Andersen's October ...
+best-books-and-the-spirit-of-discernment  skipped  5694    7659     15:22:00  The document is a theological study whose argument rests entirely on the text and meaning of spec...
+
+FINDING_SLUG                              KIND       SEV  ACK  MESSAGE                                                       ACTION
+ai-responsible-use                        drift      low  no   The document extensively quotes and summarizes a 2024 tal...  Provide the contents of the cited 2024 devotional and Chu...
+atoning-love-andersen                     drift      low  no   The document's accuracy depends on external source texts ...  Include the source talk document and scripture contents i...
+best-books-and-the-spirit-of-discernment  synthesis  low  no   The cited scripture nodes are present in the graph but th...  Supply the content of the 14 cited scripture files or hav...
+
+3 finding(s) in this pass

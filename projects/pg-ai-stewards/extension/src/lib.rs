@@ -2495,6 +2495,12 @@ extension_sql_file!(
     requires = ["create_watchman_substrate"],
 );
 
+extension_sql_file!(
+    "../2-7b1-watchman-automation.sql",
+    name = "create_watchman_automation",
+    requires = ["create_watchman_pass"],
+);
+
 // ---------------------------------------------------------------------------
 // Diagnostic SQL functions
 // ---------------------------------------------------------------------------
