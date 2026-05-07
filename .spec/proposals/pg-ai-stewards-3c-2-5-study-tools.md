@@ -45,33 +45,73 @@ FTS over `studies.body_tsv` (GIN-indexed since Phase 2.1).
 args_schema: {
   "type": "object",
   "properties": {
-    "query": {"type": "string", "minLength": 1, "maxLength": 200},
-    "kind":  {"type": "string", "enum": ["study","doc","proposal","journal","phase-doc"]},
-    "limit": {"type": "integer", "minimum": 1, "maximum": 20, "default": 10}
+    "query":  {"type": "string", "minLength": 1, "maxLength": 200},
+    "kinds":  {
+      "type": "array",
+      "items": {"type": "string",
+                "enum": ["study","doc","proposal","journal","phase-doc"]},
+      "default": []   // empty = all kinds
+    },
+    "limit":  {"type": "integer", "minimum": 1, "maximum": 20, "default": 10}
   },
   "required": ["query"]
 }
 returns: [{slug, kind, title, snippet, rank}]
 ```
 
+`kinds` is a multi-select array — empty (default) means all kinds.
+Common patterns the agent will use:
+- `kinds: ["study"]` — only canonical scripture studies
+- `kinds: ["study","doc"]` — studies + meta-docs (e.g., docs/work-with-ai)
+- `kinds: ["journal"]` — only personal reflection
+- empty — survey across everything
+
+SQL filter: `WHERE cardinality($1::text[]) = 0 OR kind = ANY($1)`.
+
 ### 2. `study_get`
 
-Read a doc's full body + frontmatter + citation summary.
+Read a doc's body + frontmatter + citation summary, with **line-based
+pagination** so large docs don't blow context.
+
+Mirrors the Read tool's `offset`/`limit` semantics that work well in
+agent reasoning — line boundaries are natural reading units (no
+mid-word splits) and the model can plan "give me lines 200-400 next."
 
 ```jsonc
 args_schema: {
   "properties": {
-    "slug": {"type": "string"},
-    "include_body": {"type": "boolean", "default": true},
-    "max_body_chars": {"type": "integer", "default": 20000, "maximum": 50000}
+    "slug":             {"type": "string"},
+    "include_body":     {"type": "boolean", "default": true},
+    "body_line_offset": {"type": "integer", "minimum": 0, "default": 0},
+    "body_line_count":  {"type": "integer", "minimum": 1, "maximum": 1000, "default": 200},
+    "max_body_chars":   {"type": "integer", "default": 20000, "maximum": 50000}
   },
   "required": ["slug"]
 }
-returns: {slug, kind, title, frontmatter, body?, citation_count}
+returns: {
+  slug, kind, title, frontmatter,
+  body?:                  string,    // only if include_body=true
+  body_line_offset:       int,       // echo of requested offset
+  body_lines_returned:    int,       // actual lines in this slice
+  body_total_lines:       int,       // total in the document
+  body_truncated_by_chars: bool,     // true if max_body_chars hit before line_count
+  citation_count:         int
+}
 ```
 
-The `include_body=false` mode is for when the agent is browsing
-metadata; saves context.
+**Default `include_body=true`** — that's the point of the command;
+the metadata-only mode is the override, not the default.
+
+The agent decides whether to page. If `body_total_lines >
+body_line_offset + body_lines_returned`, it can call again with
+`body_line_offset = previous_offset + body_lines_returned` to
+continue. The 1000-line / 50000-char ceilings are hard caps; defaults
+are 200 lines / 20K chars (loose enough for a typical study, tight
+enough that reading 5 docs fills 100K of context, not a million).
+
+**Limits worth iterating on once we have data:** 200 might be too
+tight for proposals (avg ~400 lines). 20K chars might be too tight
+for stage-1 outline reading. Track real usage and tune.
 
 ### 3. `study_similar`
 
@@ -100,10 +140,17 @@ args_schema: { "properties": { "slug": {"type":"string"} }, "required": ["slug"]
 returns: [{cited_uri, cited_kind, anchor_text, citation_count}]
 ```
 
-### 5. `context_for`
+### 5. `study_context_for`
 
 Graph walk outward from a doc — typed edges (`:HAS_PROPOSAL`,
-`:CITES`, `:FEEDS`, `:SIMILAR_TO`) up to depth N. Already exists.
+`:CITES`, `:FEEDS`, `:SIMILAR_TO`) up to depth N. Underlying SQL
+function `stewards.context_for(slug, depth)` already exists; we
+register it as `study_context_for` to keep the agent-facing tool
+namespace consistent (`study_*` for tools that operate over
+`stewards.studies`).
+
+Anticipates future kinds: `brain_context_for`, `todo_context_for`,
+etc. as we add other table-rooted graph walks.
 
 ```jsonc
 args_schema: {
@@ -115,6 +162,12 @@ args_schema: {
 }
 returns: [{hop, direction, edge_type, neighbor, neighbor_kind}]
 ```
+
+The underlying SQL function stays at `stewards.context_for` (the
+CLI's `runContext` and `watchman_input` already call it; renaming
+breaks both). Only the agent-tool name is `study_context_for` —
+the wrapper `stewards.study_context_for_tool(jsonb)` calls the
+existing function under the hood.
 
 ## Wrapper pattern
 
@@ -246,22 +299,26 @@ lib.rs `extension_sql_file!` chain, add to Dockerfile COPY list.
    back via the existing tool_dispatch loop. (No need for a real
    multi-stage pipeline — that's 3c.3.)
 
-## Open design questions for review
+## Resolved decisions (2026-05-07)
 
-1. **Should `study_get` return the body by default?** Tradeoff: agent
-   convenience vs. context cost. 20K-char default cap is generous
-   for most studies but smaller than the largest (proposal-pg-ai-stewards
-   is 30K+). Default `include_body=true` with a `max_body_chars`
-   knob seems right but worth confirming.
-2. **Should `study_search_text` allow multi-kind filter?** E.g.,
-   `kind: ["study","journal"]`? More flexible but a bit more SQL.
-   For v1: single-kind enum or NULL (any). Easy to extend later.
-3. **Naming consistency:** brain tools use `brain_*` prefix; should
-   study tools use `study_*` prefix? `context_for` doesn't fit that
-   pattern but it's pre-existing. Suggestion: rename to
-   `study_context_for` for consistency, or accept the inconsistency
-   because `context_for` is the existing function name and changing
-   adds churn.
+1. **`study_get` body inclusion:** YES default `include_body=true` —
+   that's the point of the command. **Plus line-based pagination**
+   (mirrors the Read-tool semantics that work well in agent
+   reasoning): `body_line_offset` + `body_line_count` with a
+   `max_body_chars` safety cap. Limits worth iterating on once we
+   have real usage data — Michael's note: "we should play with the
+   limits."
+2. **`study_search_text` multi-kind filter:** YES, multi-kind via
+   array. Renamed arg from `kind` (singular) to `kinds` (plural,
+   array). Empty array = all kinds. Common pattern: `kinds:
+   ["study","doc"]` to skip journals + proposals.
+3. **Naming consistency:** YES, rename to `study_context_for` for
+   the agent-facing tool. Underlying SQL function stays at
+   `stewards.context_for` (it's already called by the CLI's
+   `runContext` and `watchman_input`; renaming the SQL function
+   would break those). The wrapper `stewards.study_context_for_tool(jsonb)`
+   bridges. Anticipates future `brain_context_for`, `todo_context_for`
+   etc. as we add other table-rooted graph walks.
 
 ## What's deliberately NOT in 3c.2.5
 
