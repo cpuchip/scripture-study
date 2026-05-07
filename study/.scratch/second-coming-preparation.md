@@ -238,6 +238,34 @@ VI. What This Means for a Family Right Now
 
 ---
 
+### Bednar Oct 2022 — "Put On Thy Strength, O Zion"
+*file: gospel-library/eng/general-conference/2022/10/46bednar.md*
+*Context: Q12 under Nelson. Same conference as Nelson's "Overcome the World." Two-parable convergence with Oaks 2004.*
+
+**The parable: Matthew 22 — the royal marriage feast**
+King throws wedding feast for his son. Originally invited guests refuse (distracted by farms and merchandise). Servants go to highways and gather anyone. But one guest at the feast has no wedding garment and is cast out.
+
+**Key historical detail: the garment was provided.**
+> "The custom in those days was for the host of a wedding feast—in this parable, the king—to provide garments for the wedding guests. Such wedding garments were simple, nondescript robes that all attendees wore. … the king likely gave guests the garments from his own wardrobe. Everyone was given the opportunity to clothe themselves in garments of royalty."
+
+**The man wasn't without a garment — he refused it:**
+> From Talmage: "The king's summons had been freely extended to all… but each of them had to enter the royal palace by the door; and before reaching the banquet room… each would be properly attired; but the deficient one, by some means had entered by another way."
+> From Reid: "he was, in fact, determined not to wear one. The man… desired the honor of attending the wedding feast, but… did not want to follow the custom of the king. He wanted to do things his own way. His lack of proper dress revealed his inner rebellion against the king and his instructions."
+
+**JST of "many are called, but few are chosen":**
+> "For many are called, but few are chosen; *wherefore all do not have on the wedding garment.*" (JST Matthew 22, emphasis Bednar's)
+
+**What chosen means:**
+> "The invitation to the wedding feast and the choice to partake in the feast are related but different. The invitation is to all men and women. An individual may even accept the invitation and sit down at the feast—yet not be chosen to partake because he or she does not have the appropriate wedding garment of converting faith in the Lord Jesus and His divine grace."
+
+**Why people aren't chosen:**
+> "Because their hearts are set so much upon the things of this world, and aspire to the honors of men." (D&C 121:34–35)
+> "God does not have a list of favorites to which we must hope our names will someday be added. He does not limit 'the chosen' to a restricted few. Instead, *our* hearts, *our* desires, *our* honoring of sacred gospel covenants and ordinances, *our* obedience to the commandments, and, most importantly, the Savior's redeeming grace and mercy determine whether we are counted as one of God's chosen."
+
+**Key observation:** Bednar is running a second parable alongside Oaks's ten virgins — different story, identical logic. Both parables: (1) membership-level acceptance isn't enough, (2) the gap between called and chosen is personal and self-determined, (3) the thing that's missing (oil / garment) was available to everyone, (4) the deficiency is a choice, not an accident. The JST sharpens the point — Joseph Smith literally added "wherefore all do not have on the wedding garment" to clarify exactly why few are chosen.
+
+---
+
 ## Threads to Pull
 
 **Covered well:**
