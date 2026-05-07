@@ -1081,6 +1081,19 @@ day, total spend is bounded by `(passes_per_day × token_budget)`,
 which is a knowable number. The master switch remains a kill switch;
 it's no longer the *only* kill switch.
 
+#### Open work before 2.7b.4 soak — frontmatter watchman-exempt
+
+Tracked as todo `watchman-frontmatter-exempt` under Workstream WS5
+(filed 2026-05-06 via `stewards-cli todo create`). The 2.7b.4 7-day
+soak will produce noise findings against `kind='journal'` and other
+point-in-time snapshot docs that *intentionally* don't match current
+reality. Cheap fix: a one-line addition to the `dirty_queue` view
+that excludes rows where `coalesce(frontmatter->>'watchman','')`
+matches `'skip'` or `'exempt'`. The frontmatter `jsonb` column with
+its GIN index already exists (Phase 2.1); user just adds
+`watchman: skip` to YAML in docs they want exempt and re-imports.
+Bulk-tag all 70 journals before starting the soak.
+
 ## Phase 3 — Pipelines + MCP + External arms: agents that work without an IDE
 
 > **Honest scope split (2026-05-05).** Phase 3 as originally written
