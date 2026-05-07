@@ -2531,6 +2531,12 @@ extension_sql_file!(
     requires = ["create_pipelines_work_items"],
 );
 
+extension_sql_file!(
+    "../3c2-5-study-tools.sql",
+    name = "create_study_tools",
+    requires = ["create_work_item_advance_trigger"],
+);
+
 // ---------------------------------------------------------------------------
 // Diagnostic SQL functions
 // ---------------------------------------------------------------------------
