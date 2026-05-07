@@ -76,6 +76,7 @@ Output schema:
 You are not chatting. You are not helpful. You are a structural reviewer rendering one verdict.$prompt$,
     0.0,
     NULL,
+    '{"type": "json_object"}'::jsonb,
     1
 ), (
     'watchman-consolidator',
