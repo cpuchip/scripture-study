@@ -2525,6 +2525,12 @@ extension_sql_file!(
     requires = ["create_watchman_soak_prep"],
 );
 
+extension_sql_file!(
+    "../3c2-work-item-advance-trigger.sql",
+    name = "create_work_item_advance_trigger",
+    requires = ["create_pipelines_work_items"],
+);
+
 // ---------------------------------------------------------------------------
 // Diagnostic SQL functions
 // ---------------------------------------------------------------------------
