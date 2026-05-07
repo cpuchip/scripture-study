@@ -96,6 +96,63 @@ What an agent loop looks like at rest.
 - `resolve_skill(family, model)` → same for `skills`.
 - `tool_permission(agent, tool)` / `skill_permission(agent, skill)` → `'allow' \| 'ask' \| 'deny'`.
 
+#### Tool gating: two gates, not one
+
+`compose_tools(family)` only emits a tool when it passes BOTH:
+
+1. **Registry gate** — there's a row in `tool_defs` with that `name`,
+   carrying its `args_schema` (JSON Schema) and `execute_target`
+   (`{kind:'sql_fn'\|'http'\|'subagent', ...}`).
+2. **Permission gate** — the agent's `agent_tool_perms` allow-list
+   matches the tool name. Glob rules; longest match wins; default
+   `'deny'` if no rule matches.
+
+Adding a tool to `tool_defs` is **necessary but not sufficient** —
+the agent that should use it also needs an `agent_tool_perms` allow.
+This bit us during Phase 3c.2.5: substrate tools like
+`study_search_text` were registered, but the imported agents'
+allow-lists were Copilot-pattern aspirational (`gospel-engine-v2/*`,
+`becoming/*`) and matched nothing in the substrate. The deny-`*`
+fallback won; `compose_tools` emitted nothing.
+
+**The mismatch is real and intentional for now.** Imported tool
+patterns (Copilot/MCP-style) and the substrate's tool registry are
+two separate vocabularies — the import preserved the patterns
+verbatim as future MCP-bridge promises, not as live perms. Phase 3e
+(MCP client in the bgworker) is the structural fix; until then,
+substrate tools need explicit perm grants when registered.
+
+**The recipe for adding a new substrate tool:**
+
+```sql
+-- 1. Wrapper function (jsonb → jsonb), mirrors brain_search_text_tool shape.
+CREATE FUNCTION stewards.<name>_tool(p_args jsonb) RETURNS jsonb ...;
+
+-- 2. Register in tool_defs.
+INSERT INTO stewards.tool_defs (name, description, args_schema, execute_target)
+VALUES ('<name>', '...', '{...JSON Schema...}'::jsonb,
+        '{"kind":"sql_fn","schema":"stewards","name":"<name>_tool"}'::jsonb);
+
+-- 3. Grant perms. For read-only tools, blanket-allow across agents:
+INSERT INTO stewards.agent_tool_perms (agent_family, tool_pattern, action)
+SELECT DISTINCT a.family, '<name_or_glob>', 'allow'
+  FROM stewards.agents a WHERE a.family NOT LIKE 'watchman%'
+ON CONFLICT (agent_family, tool_pattern) DO UPDATE SET action = EXCLUDED.action;
+-- (DISTINCT because agents.family can have multiple model_match rows.)
+```
+
+**Watchman agents are deliberately excluded** from the blanket grant
+because watchman ships with a no-tools-by-design philosophy
+(structural enforcement: see `agent_tool_perms` row
+`('watchman-consolidator', '*', 'deny')` and the absence of any
+`'allow'` rows). The deny-everything pattern is preserved across
+broadcasts so Watchman stays single-shot-no-tools.
+
+**For destructive or write-side tools (future):** narrower scope.
+Either grant per-agent rather than broadcast, or use the
+3-state `'ask'` action so the bgworker pauses for human ack
+before dispatch.
+
 Starter queries:
 
 ```sql
