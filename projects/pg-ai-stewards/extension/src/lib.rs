@@ -2513,6 +2513,12 @@ extension_sql_file!(
     requires = ["create_watchman_scheduler"],
 );
 
+extension_sql_file!(
+    "../2-7b4-watchman-soak-prep.sql",
+    name = "create_watchman_soak_prep",
+    requires = ["create_watchman_budget"],
+);
+
 // ---------------------------------------------------------------------------
 // Diagnostic SQL functions
 // ---------------------------------------------------------------------------

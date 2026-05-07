@@ -781,7 +781,7 @@ verdict | finding | ack | history` for human-driven passes.
 > | **2.7b.1** | SQL substrate: `watchman_passes` + `watchman_config` tables, `watchman_pass_start()` enqueuer, `AFTER UPDATE` trigger on `work_queue` that records verdict/finding from completed watchman chats. CLI: `watchman pass-now`, `watchman passes`, `watchman pass-detail`, `watchman config show/set`. **No bgworker changes.** | **shipped 2026-05-06** |
 > | **2.7b.2** | Bgworker scheduler tick (~60s). Reads `watchman_config`, calls `watchman_pass_start` when cron / pressure / idle trigger fires. SQL `watchman_should_fire()` owns the decision; Rust just polls. | **shipped 2026-05-06** |
 > | **2.7b.3** | Per-pass token budget enforcement: `watchman_pass_start` stops enqueueing when projected tokens cross threshold; partial passes are valid. `estimate_chat_tokens(slug)` produces per-doc estimate from input length + system overhead + recent avg output. `budget_stopped` flag distinguishes "budget hit" from "queue empty / limit reached". | **shipped 2026-05-06** |
-> | 2.7b.4 | 7-day soak + `regenerate_active_md()` SQL fn invoked at end of pass. | not started |
+> | **2.7b.4** | `dirty_queue` excludes `frontmatter->>'watchman' = 'skip'` (option 3 from the design conversation); `regenerate_active_md()` returns markdown status report (In Flight / Findings / Todos / Recent Watchman / Corpus Stats). CLI: `watchman active-md`. The 7-day soak is the runtime observation that follows. | **shipped 2026-05-06** (soak: pending start) |
 
 #### Phase 2.7b.1 — SQL substrate + completion trigger
 
@@ -1081,18 +1081,83 @@ day, total spend is bounded by `(passes_per_day × token_budget)`,
 which is a knowable number. The master switch remains a kill switch;
 it's no longer the *only* kill switch.
 
-#### Open work before 2.7b.4 soak — frontmatter watchman-exempt
+#### Phase 2.7b.4 — soak prep (shipped 2026-05-06)
 
-Tracked as todo `watchman-frontmatter-exempt` under Workstream WS5
-(filed 2026-05-06 via `stewards-cli todo create`). The 2.7b.4 7-day
-soak will produce noise findings against `kind='journal'` and other
-point-in-time snapshot docs that *intentionally* don't match current
-reality. Cheap fix: a one-line addition to the `dirty_queue` view
-that excludes rows where `coalesce(frontmatter->>'watchman','')`
-matches `'skip'` or `'exempt'`. The frontmatter `jsonb` column with
-its GIN index already exists (Phase 2.1); user just adds
-`watchman: skip` to YAML in docs they want exempt and re-imports.
-Bulk-tag all 70 journals before starting the soak.
+Closed the `watchman-frontmatter-exempt` todo (1c503ff6) AND shipped
+`regenerate_active_md()` in one cut. The soak itself (the third
+deliverable per the original 2.7b.4 plan) is runtime observation,
+not code; starts when `schedule_enabled=true` is flipped on for a
+sustained period.
+
+**Files**
+
+- `extension/2-7b4-watchman-soak-prep.sql` — modifies `dirty_queue`
+  view to exclude docs where `frontmatter->>'watchman'` is `'skip'`
+  or `'exempt'`; adds `stewards.regenerate_active_md()` returning
+  markdown text.
+- `extension/src/lib.rs` — ninth `extension_sql_file!` reference
+  (`requires = ["create_watchman_budget"]`).
+- `extension/Dockerfile` — added `2-7b4-watchman-soak-prep.sql` to
+  the `COPY` directive in stage 1.
+- `cmd/stewards-cli/internal/show/show.go` — new `WatchmanActiveMD`
+  function. `cmd/stewards-cli/main.go` — new `watchman active-md`
+  subcommand.
+
+**Frontmatter exemption — option 3 implementation**
+
+```sql
+-- New gate in dirty_queue:
+AND coalesce(lower(s.frontmatter->>'watchman'), '')
+    NOT IN ('skip', 'exempt')
+```
+
+`lower()` for case insensitivity. `NOT IN ('skip','exempt')` because
+both are reasonable spellings; we accept either. The frontmatter
+`jsonb` column + GIN index already exist (Phase 2.1) — zero schema
+change. Users add `watchman: skip` to YAML and re-import.
+
+**`regenerate_active_md()` sections**
+
+- **In Flight** — workstreams (status='active') with their declared
+  proposals (joined via `frontmatter->>'workstream'`). Workstreams
+  without proposals show `_(no declared proposals)_`.
+- **Open Findings** — drift + synthesis findings without
+  `acknowledged_at`, ordered by severity (high → low). Shows
+  message + suggested action, indented.
+- **Open Todos** — `status IN ('open','in_progress')`, grouped by
+  parent. `▶` marker for in-progress.
+- **Recent Watchman Activity** — last 5 passes with verdict_counts.
+- **Corpus Stats** — markdown table with kind / total / embedded /
+  in-dirty-queue. The dirty-queue column shows the gates working:
+  e.g., a corpus where journals are tagged `watchman: skip` would
+  show `journal | 70 | 70 | 0` instead of the current `70 | 70 | 70`.
+
+**What it deliberately doesn't do**
+
+- **Doesn't write to disk.** Returns text. Caller decides where it
+  goes. CLI prints to stdout; future Watchman automation may pipe to
+  `.mind/active.md`.
+- **Doesn't include human-curated sections** (Priorities, Key Facts).
+  Those live in the hand-written `.mind/active.md` and are not
+  derivable from substrate state.
+- **Doesn't auto-tag journals.** The dirty_queue gate is in place;
+  the YAML files still need `watchman: skip` added before the soak
+  starts. Easy bulk edit; deferred to be human-driven.
+
+**Soak gating**
+
+Before flipping `schedule_enabled=true` for the 7-day soak:
+
+1. Bulk-tag all `kind='journal'` YAML files with `watchman: skip`
+   (in `.spec/journal/*.yaml`). 70 files; trivial sed/python loop.
+2. Re-run `stewards-cli import --source journal:.spec/journal` so
+   the substrate picks up the tags.
+3. Verify `SELECT count(*) FROM stewards.dirty_queue WHERE kind='journal'` returns 0.
+4. Set `schedule_enabled = true`.
+5. Watch trend: `tokens_in + tokens_out` per day across
+   `watchman_passes` should *decline* as the corpus stabilizes. If
+   it rises or stays flat after a few days, the discernment loop is
+   leaking somewhere.
 
 ## Phase 3 — Pipelines + MCP + External arms: agents that work without an IDE
 

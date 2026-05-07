@@ -1069,6 +1069,19 @@ func printWatchmanPassDetail(ctx context.Context, pool *pgxpool.Pool, passID str
 	return frows.Err()
 }
 
+// WatchmanActiveMD prints the markdown rendering of substrate state
+// produced by stewards.regenerate_active_md(). Phase 2.7b.4.
+func WatchmanActiveMD(ctx context.Context, pool *pgxpool.Pool) error {
+	var md string
+	if err := pool.QueryRow(ctx,
+		`SELECT stewards.regenerate_active_md()`,
+	).Scan(&md); err != nil {
+		return err
+	}
+	fmt.Print(md)
+	return nil
+}
+
 // WatchmanConfigShow prints the singleton config row.
 func WatchmanConfigShow(ctx context.Context, pool *pgxpool.Pool) error {
 	var (

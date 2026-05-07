@@ -166,6 +166,12 @@ Commands:
       feeding it (dirty count, hours since last pass, in-progress pass,
       etc.). Useful for "why isn't it firing?" debugging.
 
+  watchman active-md
+      Render a markdown status report from substrate state via
+      stewards.regenerate_active_md(). Sections: In Flight by
+      workstream, Open Findings, Open Todos, Recent Watchman
+      Activity, Corpus Stats. Phase 2.7b.4.
+
 Environment:
   STEWARDS_DSN    Postgres DSN (default: postgres://stewards:stewards@localhost:5432/stewards?sslmode=disable)
 `)
@@ -735,6 +741,16 @@ func runWatchman(ctx context.Context, args []string) {
 		}
 		if err := show.WatchmanSchedulerStatus(ctx, pool); err != nil {
 			fmt.Fprintf(os.Stderr, "watchman scheduler-status: %v\n", err)
+			os.Exit(1)
+		}
+	case "active-md":
+		// Phase 2.7b.4 — print the substrate-derived active.md report.
+		fs := flag.NewFlagSet("watchman active-md", flag.ExitOnError)
+		if err := fs.Parse(rest); err != nil {
+			os.Exit(1)
+		}
+		if err := show.WatchmanActiveMD(ctx, pool); err != nil {
+			fmt.Fprintf(os.Stderr, "watchman active-md: %v\n", err)
 			os.Exit(1)
 		}
 	default:
