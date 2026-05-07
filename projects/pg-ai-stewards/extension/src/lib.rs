@@ -2537,6 +2537,12 @@ extension_sql_file!(
     requires = ["create_work_item_advance_trigger"],
 );
 
+extension_sql_file!(
+    "../3c3-stage-templating-and-study-write.sql",
+    name = "create_stage_templating_and_study_write",
+    requires = ["create_study_tools"],
+);
+
 // ---------------------------------------------------------------------------
 // Diagnostic SQL functions
 // ---------------------------------------------------------------------------
