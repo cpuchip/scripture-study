@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(Set-Location \"c:\\\\Users\\\\cpuch\\\\Documents\\\\code\\\\stuffleberry\\\\scripture-study\\\\projects\\\\pg-ai-stewards\\\\cmd\\\\stewards-cli\"; go build -o stewards-cli.exe . 2>&1; \"build exit: $LASTEXITCODE\"; Set-Location \"c:\\\\Users\\\\cpuch\\\\Documents\\\\code\\\\stuffleberry\\\\scripture-study\"; $env:STEWARDS_DSN = \"postgres://stewards:stewards@localhost:55433/stewards?sslmode=disable\"; & \"projects\\\\pg-ai-stewards\\\\cmd\\\\stewards-cli\\\\stewards-cli.exe\" import --source \"journal:.spec/journal\" 2>&1 | Select-Object -Last 5)"
+    ]
+  }
+}
