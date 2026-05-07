@@ -266,6 +266,33 @@ King throws wedding feast for his son. Originally invited guests refuse (distrac
 
 ---
 
+### Nelson Apr 2021 — "Christ Is Risen; Faith in Him Will Move Mountains"
+*file: gospel-library/eng/general-conference/2021/04/49nelson.md*
+*Context: Nelson as prophet, Easter conference. The practical answer to HOW you fill the lamp.*
+
+**Core thesis:**
+> "Faith in Jesus Christ is the greatest power available to us in this life. All things are possible to them that believe."
+
+**The mustard seed frame:**
+> "The Lord does not require *perfect* faith for us to have access to His *perfect* power. But He does ask us to believe."
+
+**Alma's particle of faith:**
+> "Alma asks us simply to *experiment* upon the word and 'exercise a *particle* of faith, yea, even if [we] can no more than desire to believe.'" — connects to mustard seed: small faith grows.
+
+**Five practices to increase faith (the oil-building method):**
+1. **Study** — immerse in scriptures; internalize that the Atonement applies *to you*; learn about miracles
+2. **Choose to believe** — take doubts to the Lord, not to other doubters; "study with the desire to *believe* rather than with the hope that you can find a flaw"
+3. **Act in faith** — "What would you do if you had *more* faith? … *receive more* faith by doing something that *requires more* faith"
+4. **Partake of sacred ordinances worthily** — "Ordinances unlock the power of God for your life"
+5. **Ask** — "every one that asketh receiveth; and he that seeketh findeth"
+
+**On the mountains not moving on our schedule:**
+> "Moving your mountains may require a miracle. Learn about miracles. Miracles come according to your faith in the Lord. Central to that faith is trusting His will and timetable—how and when He will bless you with the miraculous help you desire. Only *your* *un*belief will keep God from blessing you with miracles to move the mountains in *your* life."
+
+**Key observation:** This talk is the procedural answer to Oaks's ten virgins problem. Oaks diagnoses the gap (half unprepared). Nelson Apr 2021 gives the five practices that close it. The mustard seed grows — faith is not a fixed quantity. Lazy learners and lax disciples stay small. Engaged, acting disciples accumulate oil.
+
+---
+
 ## Threads to Pull
 
 **Covered well:**
