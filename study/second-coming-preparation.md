@@ -20,7 +20,7 @@ Christofferson, speaking at Easter 2026, quoted Peter's deeper question directly
 
 ## II. The Early Drumbeat (1971–1985): Geography and Signs
 
-For the first fifteen years of the modern conference record, the Second Coming was addressed in explicit, structural terms. LeGrand Richards spoke four times between 1971 and 1978 — on "Laying a Foundation for the Millennium," "He Has Sent His Messenger to Prepare the Way," "Prophecy," and "The Second Coming of Christ." His era is the drumbeat: the Restoration itself IS the preparation. Priesthood restored. Keys restored. Israel gathering. Zion being built.
+For the first fifteen years of the modern conference record, the Second Coming was addressed in explicit, structural terms. LeGrand Richards spoke repeatedly during the Kimball era on topics including Millennium foundations, the gathering, and the Second Coming itself — the drumbeat that the Restoration is not background: it is the preparation. Priesthood restored. Keys restored. Israel gathering. Zion being built. The structure is in place. What remains is filling it.
 
 Bruce R. McConkie, speaking in Lima, Peru in 1977 at President Kimball's request, answered the most practical geographic question: *where do we gather?* The early commandment — gather to North America — had been completed. Now, he said, we are in Phase II of a three-phase process:
 
@@ -121,6 +121,22 @@ Oaks asked the question that cuts through all the prophecy-watching: if you knew
 
 **Covenants — kept, not just made.** Nelson's central contribution is that covenants give access to power. Making them is the entry. Keeping them is the mechanism. The oil in the ten virgins' lamps is not just baptism. It is daily repentance, scripture, Sabbath, prayer, fast, temple attendance — the whole sustained practice of covenant-keeping over time. Oaks: "We are promisers who do not fulfill and believers who do not perform." The question is not whether you are covenanted but whether the covenant is active in your life.
 
+**How to fill the lamp.** Naming the covenant practices is not enough. The oil has to come from somewhere. Nelson's April 2021 Easter address — ["Christ Is Risen; Faith in Him Will Move Mountains"](../gospel-library/eng/general-conference/2021/04/49nelson.md) — is the most direct answer to how. His premise: "The Lord does not require *perfect* faith for us to have access to His *perfect* power. But He does ask us to believe."
+
+He gives five practices.
+
+*Study.* Immerse yourself in scripture. Learn about Christ's power and the Atonement's reach into your specific life. Nelson: "He took upon Himself *your* misery, *your* mistakes, *your* weakness, and *your* sins. He paid the compensatory price and provided the power for you to move *every* mountain you will ever face. You obtain that power with your faith, trust, and willingness to follow Him."
+
+*Choose to believe.* This is an act of will, not a state you passively arrive at. "Take your questions to the Lord and to other faithful sources. Study with the desire to *believe* rather than with the hope that you can find a flaw. … Stop increasing your doubts by rehearsing them with other doubters."
+
+*Act in faith.* Nelson's formulation here is precise: "What would you do if you had *more* faith? Think about it. Write about it. Then *receive more* faith by doing something that *requires more* faith." Faith is not accumulated passively. You grow it by acting on what you already have.
+
+*Partake of sacred ordinances worthily.* "Ordinances unlock the power of God for your life." This is the same point as Bednar's garment and Oaks's oil — the access point was already provided. The question is whether you are using it.
+
+*Ask.* "Every one that asketh receiveth; and he that seeketh findeth; and to him that knocketh it shall be opened." God knows what will help your faith grow. Ask, and then ask again.
+
+The mustard seed is not a metaphor for smallness. It is a metaphor for growth. Nelson is direct about the failure mode: "Lazy learners and lax disciples will always struggle to muster even a particle of faith." The particle grows into a tree large enough for birds to nest in — but it requires the same conditions as any growing thing: consistent attention, repeated return.
+
 **The temple — more, not less.** Every talk in this study points toward the temple. McConkie: stakes are built so the full ordinances are available. Oaks: the temple is a holy place. Nelson: spend more time there. Cook: help others get there. The temple is not an event. It is the training environment for becoming the kind of person who can abide the day of His coming. Your family's temple attendance is not optional preparation — it is the preparation.
 
 **Home — the other holy place.** Oaks's definition of holy places is precise: "a home where children are treasured and parents are respected." The home is not incidental to the preparation. It is co-equal with the temple. What happens in your home — the conversations you have, how you treat each other, whether scripture is alive there, whether prayer is real there — is preparation. The wicked Nephites "did not sin ignorantly, for they knew the will of God concerning them" (3 Nephi 6:18). Knowledge is not the problem. Practice is.
@@ -149,5 +165,5 @@ Benson's contribution was urgent and simple: read 3 Nephi. The survivors were th
 
 *Sources: [.scratch/second-coming-preparation.md](.scratch/second-coming-preparation.md)*
 
-*Key talks: [Oaks 2004](../gospel-library/eng/general-conference/2004/04/preparation-for-the-second-coming.md) · [Golden 2021](../gospel-library/eng/general-conference/2021/10/27golden.md) · [Nelson 2022](../gospel-library/eng/general-conference/2022/10/47nelson.md) · [Bednar 2022](../gospel-library/eng/general-conference/2022/10/46bednar.md) · [Hinckley 1999](../gospel-library/eng/general-conference/1999/10/at-the-summit-of-the-ages.md) · [McConkie 1977](../gospel-library/eng/general-conference/1977/04/come-let-israel-build-zion.md) · [Cook 2023](../gospel-library/eng/general-conference/2023/04/15cook.md) · [Eubank 2017](../gospel-library/eng/general-conference/2017/10/turn-on-your-light.md) · [Christofferson 2026](../gospel-library/eng/general-conference/2026/04/51christofferson.md) · [Benson 1987](../gospel-library/eng/general-conference/1987/04/the-saviors-visit-to-america.md)*
+*Key talks: [Oaks 2004](../gospel-library/eng/general-conference/2004/04/preparation-for-the-second-coming.md) · [Nelson 2021](../gospel-library/eng/general-conference/2021/04/49nelson.md) · [Golden 2021](../gospel-library/eng/general-conference/2021/10/27golden.md) · [Nelson 2022](../gospel-library/eng/general-conference/2022/10/47nelson.md) · [Bednar 2022](../gospel-library/eng/general-conference/2022/10/46bednar.md) · [Hinckley 1999](../gospel-library/eng/general-conference/1999/10/at-the-summit-of-the-ages.md) · [McConkie 1977](../gospel-library/eng/general-conference/1977/04/come-let-israel-build-zion.md) · [Cook 2023](../gospel-library/eng/general-conference/2023/04/15cook.md) · [Eubank 2017](../gospel-library/eng/general-conference/2017/10/turn-on-your-light.md) · [Christofferson 2026](../gospel-library/eng/general-conference/2026/04/51christofferson.md) · [Benson 1987](../gospel-library/eng/general-conference/1987/04/the-saviors-visit-to-america.md)*
 
