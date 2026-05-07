@@ -2543,6 +2543,12 @@ extension_sql_file!(
     requires = ["create_study_tools"],
 );
 
+extension_sql_file!(
+    "../3c3-1-trigger-bugfixes.sql",
+    name = "create_trigger_bugfixes_3c3_1",
+    requires = ["create_stage_templating_and_study_write"],
+);
+
 // ---------------------------------------------------------------------------
 // Diagnostic SQL functions
 // ---------------------------------------------------------------------------
