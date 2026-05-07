@@ -44,7 +44,7 @@
 | WS2 | Brain non-pipeline projects | ✅ archived Apr 23 | [archive/brain-non-pipeline-projects.md](../.spec/proposals/archive/brain-non-pipeline-projects.md) |
 | WS2 | Brain manual stage transitions | ✅ archived Apr 23 | [archive/brain-manual-stage-transitions.md](../.spec/proposals/archive/brain-manual-stage-transitions.md) |
 | WS2 | Johari window agent mode | 📝 proposed Apr 22 | [johari-window-agent-mode.md](../.spec/proposals/johari-window-agent-mode.md) |
-| WS5 | pg-ai-stewards (Postgres substrate for agent state, memory, work, model calls) | 🔨 **3c.3.2 ran end-to-end May 7 — substrate produced a real meta-study.** 17m14s, 626K/64K tokens, 6 sections, self-review revision notes. The system works for what it was built for. Soak ready but not started. | [proposal](../.spec/proposals/pg-ai-stewards-phase-2-5-generic-substrate.md) |
+| WS5 | pg-ai-stewards (Postgres substrate for agent state, memory, work, model calls) | 🔨 **3c.3.2 ran end-to-end May 7 — substrate produced a real meta-study** (`study/two-triplets-one-ascent.md`). **Watchman soak started May 7 ~16:30 CDT** — `schedule_enabled=true`, dirty_queue 269, will fire pressure passes hourly until corpus stabilizes. | [proposal](../.spec/proposals/pg-ai-stewards-phase-2-5-generic-substrate.md) |
 | WS2 | Motivation coach agent mode | 📝 proposed Apr 22 | [motivation-coach-agent-mode.md](../.spec/proposals/motivation-coach-agent-mode.md) |
 | WS3 | LightRAG investigation | 📝 proposed Apr 22 | [lightrag-investigation.md](../.spec/proposals/lightrag-investigation.md) |
 | WS3 | Gospel engine v3 proxy-pointer | 📝 proposed Apr 22 | [gospel-engine-v3-proxy-pointer.md](../.spec/proposals/gospel-engine-v3-proxy-pointer.md) |
