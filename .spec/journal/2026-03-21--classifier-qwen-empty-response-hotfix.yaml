@@ -1,8 +1,9 @@
+watchman: skip
 date: "2026-03-21"
 title: "Classifier hotfix — Qwen empty responses resolved"
 type: dev
 
-summary: >
+intent: >
   The classifier was failing in production logs with repeated "empty response from
   LM Studio" for `qwen/qwen3.5-9b`. We traced this to profile configuration:
   the model was set to structured output (JSON schema grammar sampling) while
@@ -48,7 +49,7 @@ technical_notes:
     scored 10/10,
     `--focus category` scored 7/8 without empty-response errors.
 
-open_questions:
+questions:
   - >
     Should we encode an explicit model capability flag (e.g.,
     `SupportsStructuredOutput`) separate from profile intent to prevent

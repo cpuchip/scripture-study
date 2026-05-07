@@ -1,3 +1,4 @@
+watchman: skip
 date: "2026-02-24"
 session_id: "intent-engineering"
 duration_estimate: "full day — morning evaluations, afternoon/evening intent engineering"

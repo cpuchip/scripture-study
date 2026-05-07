@@ -1,10 +1,11 @@
+watchman: skip
 date: "2026-03-29"
 title: "Enriched Pipeline Ships Paper, Gospel Graph Vision, and the Combined Tool Decision"
 mood: productive-but-buggy
 phase: plan
 agent: plan
 
-summary: >
+intent: >
   Massive planning day — four proposals written or reworked, Phase 0 experiments run,
   parallel test infrastructure built. The session got buggy (context compaction issues
   across multiple continuations) but the work landed. Key surprise: Michael's decision
@@ -146,7 +147,7 @@ dynamics:
 
 # ─── OPEN QUESTIONS ────────────────────────────────────────────────────────────
 
-open_questions:
+questions:
   - "ANSWERED: Name is gospel-engine. Michael chose it — captures indexing + search + expandability. Not pretentious when it's the actual foundation."
   - "ANSWERED: Does the combined tool expose the same MCP tool names? YES — gospel_search, gospel_get, gospel_list. 7 tools consolidated to 3. gospel_search gains mode param (keyword/semantic/combined)."
   - "How does study.ibeco.me's import pipeline change if it reads from the combined tool instead of two separate ones?"

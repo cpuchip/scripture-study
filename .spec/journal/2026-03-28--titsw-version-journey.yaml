@@ -1,10 +1,11 @@
+watchman: skip
 date: "2026-03-28"
 title: "TITSW Version Journey — What We Got Right, Where We Dropped the Ball"
 mood: reflective
 phase: reflect
 agent: dev
 
-summary: >
+intent: >
   Comprehensive journal of the TITSW prompt optimization journey from v1 through v5.4,
   the debugging pivot, and the Gas Station Insight. This session runs the v5.1 no-context
   baseline to close the mixed-context question, then documents what we learned across 8+
@@ -251,7 +252,7 @@ carry_forward:
   - "MAE is now a sanity check, not the optimization target"
   - "Context should be skipped for 5,500-talk batch"
 
-open_questions:
+questions:
   - "Can v5.4 be simplified to improve both MAE AND qualitative output?"
   - "What's the right balance between prompt complexity and model bandwidth?"
   - "How do we evaluate qualitative output systematically (not just vibes)?"

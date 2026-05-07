@@ -1,3 +1,4 @@
+watchman: skip
 date: "2026-05-04"
 session_id: pg-ai-stewards-2-4
 intent: 'Phase 2.4 — ship the `stewards study show` CLI that proves Phase 2 was worth it. Then sit with Michael''s question: have we generalized beyond just studies?'

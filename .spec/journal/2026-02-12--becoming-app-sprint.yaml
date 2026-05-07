@@ -1,3 +1,4 @@
+watchman: skip
 date: "2026-02-12"
 session_id: "becoming-app-sprint"
 duration_estimate: "full day — 10am to 11pm, 20+ commits"

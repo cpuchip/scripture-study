@@ -1,3 +1,4 @@
+watchman: skip
 date: "2026-04-04"
 session_id: "billing-overhaul-and-memory-reset"
 duration_estimate: "~3 hours across one long session"
@@ -76,7 +77,7 @@ relationship_notes: >
   honest about Claude Code (not just excitement, genuine cost-spreading
   value). Good balance of building and organizing today.
 
-open_questions:
+questions:
   - "Which brain pipeline agents should run on Claude Code vs Copilot?"
   - "How does Claude Code's usage-based billing interact with tool-heavy agentic workflows?"
   - "Should the overview proposal get a full refresh, or just status annotations?"

@@ -1,8 +1,9 @@
+watchman: skip
 date: "2026-03-12"
 title: "How Is It Done Part 2 — The Prophetic Witness"
 type: study
 
-summary: >
+intent: >
   This session completed the second half of the atonement mechanics study — moving from
   scripture (Part 1) to the prophetic/apostolic witness (Part 2). Where Part 1 asked "What
   does scripture say about HOW the atonement works?" this study asked "What do modern prophets
@@ -84,7 +85,7 @@ carry_forward:
   - priority: low
     item: "Mosiah 15:5 absence from the apostolic witness is interesting — potential future exploration"
 
-open_questions:
+questions:
   - "Why don't the modern apostles engage Mosiah 15:5 ('will of the Son swallowed up in the will of the Father') when discussing the cross? Is it because the verse is so theologically loaded it would complicate the withdrawal narrative?"
   - "Is there a pre-Talmage tradition on the Father's withdrawal, or did Talmage genuinely originate it in Latter-day Saint theology?"
   - "Could the four tensions be resolved by distinguishing between what happened in Gethsemane vs. what happened at Golgotha — or do all voices treat them as a single event?"

@@ -1,3 +1,4 @@
+watchman: skip
 date: "2026-04-20"
 session_id: "give-away-all-my-sins-study"
 duration_estimate: "~1 hour, single turn"
@@ -78,7 +79,7 @@ surprises:
       king said something his son said. The 5-10 minute review that
       the workflow forces is where the catch happened.
 
-relational:
+relationship:
   - title: "Michael set the tone"
     detail: >
       "this is kind of exciting honestly. maybe pick an interesting
@@ -105,7 +106,7 @@ carry_forward:
       surfaces. Could become a becoming/ entry.
     priority: medium
 
-open_questions:
+questions:
   - title: "Why did the king pray 'make thyself known unto me' instead of 'forgive me'?"
     detail: >
       Most prayers in scripture for forgiveness ask for forgiveness.

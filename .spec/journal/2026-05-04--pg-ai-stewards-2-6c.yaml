@@ -1,3 +1,4 @@
+watchman: skip
 date: "2026-05-04"
 session_id: pg-ai-stewards-2-6c
 intent: 'Phase 2.6c — phase splitter for phases.md + context_for(slug, depth) graph walk. Plus three meta-questions from Michael (eating-our-own-dogfood, a.ibeco.me as agent surface, multi-tenant Phase 5 sketch) addressed up front before the build. The substrate just closed its own loops for the first time.'

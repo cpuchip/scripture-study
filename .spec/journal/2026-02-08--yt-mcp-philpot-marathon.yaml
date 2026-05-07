@@ -1,3 +1,4 @@
+watchman: skip
 date: "2026-02-08"
 session_id: "yt-mcp-philpot-marathon"
 duration_estimate: "all day — 2am to 10pm, 20+ commits"

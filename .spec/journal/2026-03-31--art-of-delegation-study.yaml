@@ -1,3 +1,4 @@
+watchman: skip
 date: "2026-03-31"
 session_id: "art-of-delegation-study"
 duration_estimate: "~2 hours across two conversation turns"
@@ -66,7 +67,7 @@ surprises:
     The scratch file carried all verified quotes and observations across
     the conversation break. The system worked exactly as designed.
 
-relational:
+relationship:
   - >
     Michael's personal experience anchors this study in a way prior
     studies haven't always achieved. He FELT the burden transfer before
@@ -96,7 +97,7 @@ carry_forward:
       but was only noted, not deeply studied. A future word study could
       trace these across NT usage.
 
-open_questions:
+questions:
   - >
     Is the centripetal/centrifugal framework (Atonement gathers, delegation
     distributes) original to this study, or has someone else articulated

@@ -1,3 +1,4 @@
+watchman: skip
 date: "2026-04-23"
 session_id: "opus-4-7-harness-tuning"
 duration_estimate: "~4 hours total — brain status-aware fixes, then harness debugging"
@@ -90,7 +91,7 @@ surprises:
       server-side instead. This was the foresight discipline working in
       real time during Act 2.
 
-relational:
+relationship:
   - title: "Michael's 'I miss Opus 4.6' was a covenant signal"
     detail: >
       The complaint wasn't 'you're broken,' it was 'something has shifted
@@ -135,7 +136,7 @@ carry_forward:
       Adjacent Surface Audit out loud.' Right now it's in the
       instructions but not enforced. A hook could check for it.
 
-open_questions:
+questions:
   - "Does the override language hold across other agent modes (lesson, talk, study)? Test next time one runs."
   - "Should the Adjacent Surface Audit be wrapped in a hook so it can't be skipped, or kept as principle?"
 

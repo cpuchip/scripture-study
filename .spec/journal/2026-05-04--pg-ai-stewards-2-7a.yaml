@@ -1,3 +1,4 @@
+watchman: skip
 date: "2026-05-04"
 session_id: pg-ai-stewards-2-7a
 intent: 'Phase 2.7a — Watchman substrate (no model required) plus AGE-QUIRKS.md + Phase 6 (AGE upstream contributions) sketch + honest split of Phase 2.7 into 2.7a (substrate, ships now) and 2.7b (automation, waits on Phase 3 model dispatch). Driven by Michael''s three asks: catalog the AGE quirks in their own file, look at upstream AGE later, and start Phase 2.7. The split was not in his ask but emerged from the binding question — full Watchman needs model dispatch which is Phase 3, so without splitting 2.7 blocks indefinitely.'

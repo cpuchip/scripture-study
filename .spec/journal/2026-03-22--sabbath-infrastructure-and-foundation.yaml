@@ -1,10 +1,11 @@
+watchman: skip
 date: "2026-03-22"
 title: "First Sabbath — Infrastructure and Foundation"
 mood: honest
 phase: sabbath
 agent: sabbath
 
-summary: >
+intent: >
   First formal Sabbath session using the new sabbath agent. Reviewed the March 18-22 cycle:
   data safety sprint, server migration, disk crisis, WS1 governance hooks, Only Begotten
   study, sabbath agent creation, hardware decisions. Ran the full 11-question review.
@@ -40,7 +41,7 @@ reflections:
   - "The micro-correction burden (review-test-correct after every AI work phase) is the biggest open question."
   - "The sabbath agent's hard constraint (no building) held. Insights were captured as seeds, not specs."
 
-open_questions:
+questions:
   - "Will the multi-agent framework actually reduce the micro-correction burden, or just shift it?"
   - "How to translate AI delegation skills into human presidency leadership?"
   - "What does 'organize yourselves; prepare every needful thing' look like concretely for next cycle?"

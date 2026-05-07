@@ -1,8 +1,9 @@
+watchman: skip
 date: "2026-03-18"
 title: "First data loss incident — partial update corruption in Phase 2 notifications"
 type: dev
 
-summary: >
+intent: >
   Our first catastrophic failure. During Phase 2 notification development, I introduced
   a togglePracticeNotify function that sent partial practice updates — only the config
   field — to the updatePractice endpoint. The backend blindly overwrote ALL columns
@@ -49,7 +50,7 @@ discoveries:
       old data until the next page load. The user experienced the corruption as the
       practice simply vanishing.
 
-relational:
+relationship:
   tone: "Serious and collaborative — Michael called this our first catastrophic failure"
   dynamics: >
     Michael discovered the bug through normal use — toggling the bell icon I had just
@@ -87,7 +88,7 @@ carry_forward:
       A migration to add CHECK(name != '') and CHECK(type != '') would prevent this
       class of corruption at the database level.
 
-open_questions:
+questions:
   - "Should we add audit logging for practice updates? A before/after diff would have made this immediately diagnosable."
   - "Should PUT endpoints require complete objects and PATCH be used for partial updates? REST semantics say yes."
   - "Multi-computer notification subscription: Michael said enabling on a second computer failed. Is there a subscription uniqueness constraint?"

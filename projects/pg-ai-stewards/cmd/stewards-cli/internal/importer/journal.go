@@ -85,6 +85,10 @@ func parseJournalYAML(absPath, relPath, sourceRoot string) (*Doc, error) {
 		"date":       firstString(entry, "date"),
 		"session_id": firstString(entry, "session_id", "session"),
 		"tags":       entry["tags"],
+		// Phase 2.7b.4: pass through `watchman` so the dirty_queue
+		// exemption (e.g., `watchman: skip` to keep journals out of
+		// Watchman passes) actually reaches the substrate.
+		"watchman":   firstString(entry, "watchman"),
 	}
 	for k, v := range fm {
 		if v == nil || v == "" {

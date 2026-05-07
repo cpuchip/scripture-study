@@ -1,3 +1,4 @@
+watchman: skip
 date: "2026-05-04"
 session_id: pg-ai-stewards-2-2
 intent: Phase 2.2 — gospel-engine resolver. Citation edges become real verse text via cached HTTP round-trips.

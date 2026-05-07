@@ -1,8 +1,9 @@
+watchman: skip
 date: "2026-03-20"
 title: "The Only Begotten of the Father — Complete Study"
 type: study
 
-summary: >
+intent: >
   A full phased study on "The Only Begotten of the Father" across all five standard works,
   using the scratch-file workflow to survive context compaction across what became a
   multi-checkpoint session. The study was initiated in a prior session (Phase 1 outline,
@@ -111,7 +112,7 @@ carry_forward:
       complete the set: Only Begotten deals with unique sonship, Firstborn deals with
       priority and inheritance."
 
-open_questions:
+questions:
   - "Why does Moses 5:9 have the Holy Ghost speak in the first person as the Only Begotten?
     Is this a typological/pedagogical speech act, or does it reveal something about the
     relationship between the Holy Ghost and the Son that the rest of scripture doesn't

@@ -1,9 +1,10 @@
+watchman: skip
 date: "2026-03-22"
 title: "Three Births — Spirit, Flesh, and Covenant"
 mood: engaged
 phase: study
 
-summary: >
+intent: >
   Completed two sessions of work on the Only Begotten studies. Added Moses 2:26–27 
   (creation council) and Romans 8:16–17, 29 sections to the existing study/only-begotten.md.
   Then wrote a full second study (study/only-begotten-deeper.md) in response to the user's
@@ -37,7 +38,7 @@ discoveries:
     not a literal co-parent role. The divine family model (D&C 132, D&C 130:2) suggests
     exalted couples become creators, but that's a separate pattern.
 
-open_questions:
+questions:
   - >
     Heavenly Mother — we know she exists (Family Proclamation, "O My Father" hymn history,
     prophetic statements), but almost nothing specific is revealed. Why the comparative

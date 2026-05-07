@@ -1,3 +1,4 @@
+watchman: skip
 date: "2026-04-23"
 session_id: "brain-non-pipeline-kanban-flow"
 duration_estimate: "~1 hour — archive the two prior proposals, then ship 3 of 4 phases of kanban-flow"
@@ -100,7 +101,7 @@ relational_notes: >
   Honest archive frontmatters serve the future self better than padded
   status reports.
 
-open_questions:
+questions:
   - "Should the manual button row hide on archived entries (currently shows all 5)?"
   - "Should drag-to-Done also prompt for a reason, or keep the button-vs-drag UX split?"
   - "Does anyone actually use Notebook day-to-day, or is this all theoretical until in-flight projects move there?"

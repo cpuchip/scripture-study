@@ -1,9 +1,10 @@
+watchman: skip
 date: "2026-03-03"
 title: "Abinadi — How to Read Scripture"
 type: study
 mode: study-exp1
 
-summary: >
+intent: >
   AI-selected study topic. During the endtimes-servant work, Mosiah 15 kept
   surfacing as the key to multi-referent reading. Chose to study Abinadi's
   HERMENEUTIC METHOD — not what he teaches, but HOW he reads. Full study-exp1
@@ -69,7 +70,7 @@ carry_forward:
   - priority: medium
     item: "BYU citation density as hermeneutic lens — the pattern of what gets cited and what doesn't reveals how the tradition reads. Could become a methodology study."
 
-open_questions:
+questions:
   - "Does Abinadi's hermeneutic require prophetic authority, or does it transmit to ordinary readers via the Spirit?"
   - "Why does the citation tradition skip structural/methodological verses while citing doctrinal/identity verses?"
   - "Is Abinadi's 'everything is type of Christ' reading reductive, or is Christ the CONTEXT that makes everything else legible?"

@@ -1,8 +1,9 @@
+watchman: skip
 date: "2026-03-21"
 title: "Brain startup script fallback for Windows Application Control"
 type: dev
 
-summary: >
+intent: >
   Diagnosed startup failure from user logs as a runtime execution policy block,
   not a build failure. `start.ps1` built frontend/server successfully, then failed
   at launching `brain.exe` due to Windows Application Control.
@@ -35,7 +36,7 @@ technical_notes:
     Validation run: `start.ps1 -SkipBuild` reached normal server startup logs
     (Brain starting / Web UI / relay connect) in this environment.
 
-open_questions:
+questions:
   - >
     Should fallback also trigger for broader `ResourceUnavailable` cases,
     or remain explicitly scoped to Application Control messaging only?

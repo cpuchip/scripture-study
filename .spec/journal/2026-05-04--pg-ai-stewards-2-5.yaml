@@ -1,3 +1,4 @@
+watchman: skip
 date: "2026-05-04"
 session_id: pg-ai-stewards-2-5
 intent: Phase 2.5 — generic document substrate. Importer beyond just studies (docs, proposals, phase-doc, journal). Go CLI replaces PowerShell so Linux deploy works. Validate the cross-kind similarity bridge prediction with real data.

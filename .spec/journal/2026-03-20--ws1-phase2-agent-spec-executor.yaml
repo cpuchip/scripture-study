@@ -1,8 +1,9 @@
+watchman: skip
 date: "2026-03-20"
 title: "WS1 Phase 2 — Agent executes a spec and makes correct changes"
 type: dev
 
-summary: >
+intent: >
   The agent-as-spec-executor proof of concept works. We built `brain exec`, pointed it
   at a real spec (add markdown_link to gospel-mcp's GetResponse), and watched the Copilot
   SDK agent autonomously explore the codebase and make correct, idiomatic changes. It
@@ -61,7 +62,7 @@ technical_notes:
     gospel-mcp GetResponse now has MarkdownLink field populated in all 8 construction
     sites. This is a real shipped improvement alongside the Phase 2 test.
 
-open_questions:
+questions:
   - >
     Is the 60-second timeout in SendAndWait hardcoded in the SDK, or is it controlled
     by the Copilot CLI server? If the latter, there might be a CLI flag to extend it.

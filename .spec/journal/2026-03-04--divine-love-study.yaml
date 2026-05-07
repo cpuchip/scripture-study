@@ -1,8 +1,9 @@
+watchman: skip
 date: "2026-03-04"
 title: "Divine Love study — disposition vs. access, the father was watching the road"
 type: study
 
-summary: >
+intent: >
   Michael asked whether God's love is conditional, prompted by Nelson's "Divine Love"
   article. He held two truths in tension: God favors those who serve him, AND God is
   no respecter of persons. He kept thinking about the prodigal son.
@@ -71,7 +72,7 @@ carry_forward:
   - priority: low
     item: "The elder son (Luke 15:25-32) deserves his own study someday — the faithful who don't understand what they already have"
 
-open_questions:
+questions:
   - "Does the love-vs-blessings distinction hold up under further prophetic scrutiny, or are there voices that genuinely argue love itself is withdrawn?"
   - "How does D&C 121:46 ('the Holy Ghost shall be thy constant companion') relate to this — is the Spirit's presence conditional even if love is not?"
   - "Is there a connection between 'when he came to himself' (prodigal) and 'the natural man' (Mosiah 3:19)? Coming to yourself = putting off the natural man?"

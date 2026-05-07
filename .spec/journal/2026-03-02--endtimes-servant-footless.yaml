@@ -1,3 +1,4 @@
+watchman: skip
 date: "2026-03-02"
 session_id: "endtimes-servant-footless"
 duration_estimate: "long — full phased study session"
@@ -111,7 +112,7 @@ carry_forward:
       It's another Joseph-name prophecy that would strengthen or complicate
       the footless reading.
 
-open_questions:
+questions:
   - "If footnotes are hyperlinks and not arguments, what IS the role of the study apparatus? Is it Topical Guide that does the real interpretive work, not the footnotes themselves?"
   - "Can Gileadi's future-Davidic-servant reading coexist with the Joseph Smith identification, or are they mutually exclusive?"
   - "Why does 3 Nephi 21:10 have only ONE BYU citation when it's such a pivotal verse? Is it underexplored or considered too clear to need commentary?"

@@ -1,9 +1,10 @@
+watchman: skip
 date: "2026-03-22"
 title: "The Seventh Day — Server Migration Complete, No Data Loss"
 mood: peaceful
 phase: sabbath
 
-summary: >
+intent: >
   Multi-session emergency recovery → planned migration. Session started with brain.exe relay
   auth failing (token validation failed). Root cause was 31GB root partition at 100% full —
   PostgreSQL could not write init files and refused ALL connections. docker system prune -f
@@ -38,7 +39,7 @@ discoveries:
     recovery. The whole stack — brain.exe (local) → relay (ibeco.me) → MCP servers — is
     functioning.
 
-open_questions:
+questions:
   - "When should ibeco.me domain be rotated to new server (server.ibeco.me)? What's the test criteria?"
   - "Does brain.exe need any config changes after domain rotation, or will it transparently follow the same URL?"
   - "Should we set up disk monitoring alerts before decommissioning old server, or is docker prune cron enough?"

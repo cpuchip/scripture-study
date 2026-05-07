@@ -1,10 +1,11 @@
+watchman: skip
 date: "2026-04-12"
 title: "First Fully Automated Commission — Space Center"
 type: milestone
 participants: [michael, ai]
 tags: [commission, pipeline, space-center, milestone, delegation, second-brain]
 
-summary: |
+intent: |
   The Space Center project's first commissioned entry ran fully automated
   through the entire pipeline overnight — raw through verified — producing
   18+ research documents. 39 premium requests. Two bugs encountered and
@@ -16,9 +17,11 @@ discoveries:
     science experiments, bridge simulators — without being told. This is
     strong evidence that the brain captures intent well enough for
     delegated judgment to align with the human's actual purpose.
-  - Commission pipeline handles the full lifecycle: gate evaluation at
+  - >
+    Commission pipeline handles the full lifecycle: gate evaluation at
     each stage, scenario generation, verification of all 6 test scenarios.
-  - Two bugs were natural growing pains, not design flaws: (1) inbox
+  - >
+    Two bugs were natural growing pains, not design flaws: (1) inbox
     category not pipeline-compatible, fixed with defensive reclassification;
     (2) redundant RetryAdvance after GenerateScenarios, fixed by removing
     the duplicate call.
@@ -34,7 +37,7 @@ surprises:
     "If it wasn't so late I'd jump for joy." This is the kind of moment
     the project exists for.
 
-relational:
+relationship:
   - This is the Abraham 4-5 pattern in full operation. The Gods counseled
     (commission creation), created spiritually (spec), created physically
     (execution), watched until it obeyed (verification), and found it
@@ -52,10 +55,11 @@ carry_forward:
     need cost aggregation.
   - The .spec folder needs housekeeping — many completed proposals and
     scratch files from shipped work. Archive proposal incoming.
-  - Next sabbath opportunity: reflect on the Infrastructure cycle that
+  - >
+    Next sabbath opportunity: reflect on the Infrastructure cycle that
     made this possible (Mar 18 → Apr 12).
 
-open_questions:
+questions:
   - What's the right cadence for commissions? One at a time? Batch?
   - How do we handle commission results that are wrong but confident?
     (The verification step passed, but humans haven't reviewed yet.)

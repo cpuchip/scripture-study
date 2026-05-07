@@ -1,10 +1,11 @@
+watchman: skip
 date: "2026-03-28"
 title: "Pass 1 Complete — All 5 Models Run Through Full Suite"
 mood: productive
 phase: execute
 agent: dev
 
-summary: >
+intent: >
   Ran all 5 candidate models (nemotron-3-nano, qwen3.5-35b, lfm2-24b, glm-4.7-flash,
   devstral-small-2) through the full 12-test suite (6 prompts × 2 content files). Every
   model produced usable output. Two significant discoveries during execution: (1) default
@@ -58,7 +59,7 @@ carry_forward:
   - "Nemotron appears to be the front-runner for batch processing — speed + quality + 1M context + no thinking trap"
   - "GLM is the quality runner-up but 1.7x slower and needs -NoThink management"
 
-open_questions:
+questions:
   - "Does raising nemotron's max_tokens meaningfully improve output quality, or does it just pad?"
   - "Can prompt tuning close the TITSW quality gap between nemotron and GLM?"
   - "Is the conference reindex prompt fundamentally different from the experiment prompts?"

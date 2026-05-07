@@ -1,3 +1,4 @@
+watchman: skip
 date: "2026-04-22"
 session_id: "brain-audit-and-harness-phase0"
 duration_estimate: "~3 hours, follow-on from cleanup-part2 in same calendar day"
@@ -135,12 +136,12 @@ carry_forward:
       Worth a project-conventions memory note.
     priority: low
 
-open_questions:
+questions:
   - "Does the 41-entry residue need its own pass, or does it auto-resolve once brain-non-pipeline-projects ships?"
   - "Should LightRAG and proxy-pointer collapse into one gospel-engine-v3 proposal, or stay as parallel investigations?"
   - "Memory-research-bundle scope creep risk: how do we keep it from absorbing every adjacent topic?"
 
-relational:
+relationship:
   - title: "Cost-aware collaboration"
     detail: >
       Michael explicitly asked for the single-file batch instead of

@@ -1,8 +1,9 @@
+watchman: skip
 date: "2026-03-12"
 title: "Brain-app dev sprint — daily_slots, widget sync, machine migration handoff"
 type: dev
 
-summary: >
+intent: >
   Intensive 5-day dev sprint (Mar 8-12) focused on the brain-app practice widget and
   daily_slots support. Started with Plan 18 Phase 2 (practice widget) completion, then
   burned through 6 bug fixes across two sub-sessions, added a widget refresh button,
@@ -75,7 +76,7 @@ carry_forward:
   - priority: low
     item: "chip-voice Phase 1 working but not integrated into any workflow yet"
 
-open_questions:
+questions:
   - "Should widget WorkManager background refresh (Plan 18 Phase 4) come before or after the memorize widget (Phase 3)?"
   - "Is the triple-pattern (optimistic prefs + API + widget update) reliable enough, or do we need a proper sync queue?"
 

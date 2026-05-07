@@ -1,3 +1,4 @@
+watchman: skip
 date: "2026-03-02"
 session_id: "byu-citations-mcp-build"
 duration_estimate: "medium — focused engineering sprint"

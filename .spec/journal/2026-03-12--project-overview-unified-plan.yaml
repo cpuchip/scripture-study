@@ -1,3 +1,4 @@
+watchman: skip
 date: 2026-03-12
 session_id: project-overview-unified-plan
 intent: Survey all plans, proposals, and roadmaps across the entire project. Create a unified workstream plan that organizes work for parallel execution via Copilot SDK. Follow the 11-step creation cycle.

@@ -1,8 +1,9 @@
+watchman: skip
 date: "2026-03-04"
 title: "Abinadi study response — hermeneutic, silence, Abraham 4-5"
 type: journal-and-reflection
 
-summary: >
+intent: >
   Michael is reading the Abinadi study (~1/3 through). Two principles struck him
   deeply: "the readers become the reading" and "the reader's heart is a hermeneutic
   instrument." He sees people weaponize scripture — using the word as a sword against
@@ -55,7 +56,7 @@ carry_forward:
   - priority: low
     item: "The woman's silence could become a study thread about how people evaluate truth claims — channel vs. content"
 
-open_questions:
+questions:
   - "How do we help people evaluate AI-assisted study by fruit rather than by label?"
   - "Is the Abraham 4-5 framework something that should be written up as a standalone document?"
   - "Michael was overwhelmed — what's in flight that can be completed or set aside?"

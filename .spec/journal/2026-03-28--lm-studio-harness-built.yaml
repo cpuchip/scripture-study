@@ -1,10 +1,11 @@
+watchman: skip
 date: "2026-03-28"
 title: "LM Studio Harness Built — Autoresearch Pattern Applied"
 mood: building
 phase: plan
 agent: plan
 
-summary: >
+intent: >
   Session 2 of the LM Studio model experiments. Michael's key input: we need a
   harness, not just prompts. The project has covenant, intent, and instructions that
   form a framework — models should be tested within that framework, not bare. Also:
@@ -53,7 +54,7 @@ carry_forward:
   - "Pass 2 prompt tailoring — agent can iterate after pass 1 results are scored"
   - "GLM-4.7-Flash context discrepancy still needs verification (128k vs 202,752)"
 
-open_questions:
+questions:
   - "Does the covenant/intent system context actually improve output quality, or is it wasted tokens for local models with limited instruction following?"
   - "How much does prompt tailoring (pass 2) actually help vs standard prompts (pass 1)?"
   - "Should we add a 'rag-reader' prompt that tests the model as a RAG pipeline reader specifically?"

@@ -1,3 +1,4 @@
+watchman: skip
 date: "2026-04-22"
 session_id: "cleanup-2026-04-part2-phases-A-through-E"
 duration_estimate: "~2 hours across two turns (Phase A-B + Phase C-E)"
@@ -93,12 +94,12 @@ carry_forward:
   - priority: low
     item: "12 statusless brain entries still uncategorized — needs Michael's eyes one at a time"
 
-relational_dynamics:
+relationship:
   - "Michael delegated 'auto pilot' for Phase C onward and asked me to think hard about future PG tracking. The trust was rewarded by mechanical work executing without further questions."
   - "The active.md dup bug recurring during the session itself was a humility check — exactly the bug we were cleaning up bit again. The edit-rule guard is now justified by lived experience, not just folklore."
   - "Both the human and the agent benefited from the workstream taxonomy being formalized in a single file. Future cleanups should be cheaper because the vocabulary is no longer load-bearing on memory."
 
-open_questions:
+questions:
   - "When does Michael want to stand up the PG schema? Worth doing now (with brain-vscode-bridge) or wait until the proposal count grows?"
   - "Should we adopt frontmatter convention for archived proposals too, or leave them as historical artifacts?"
   - "The workstreams.md file is currently the only place WS6-WS9 are documented as 'real workstreams' — do they need their own pillar/tracking similar to WS1-WS5?"

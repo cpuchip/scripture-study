@@ -1,5 +1,6 @@
+watchman: skip
 date: 2026-03-02
-session: zion-blueprint
+session_id: zion-blueprint
 title: "The Blueprint of Zion — From Consumption to Consecration"
 
 discoveries:
@@ -15,7 +16,7 @@ surprises:
   - "3 Nephi 19:9 — what the disciples most desired was the Holy Ghost, not healing or protection or knowledge. The thing they wanted most was the Spirit."
   - "3 Nephi 26:19 is the hinge verse between Jesus' teaching and 4 Nephi's result: 'all things common, every man dealing justly.' One verse bridges sermon and civilization."
 
-relational_dynamics:
+relationship:
   - "This study flowed naturally from the consumption-decreed work — Michael's instinct to study the antidote (Zion) after studying the disease (consumption) was exactly right. The Spirit leads through curiosity."
   - "His question about 365 years as metaphor was genuinely insightful — it opened the *shanah* / repetition angle I wouldn't have reached alone."
   - "The 'actionable things we can do today' emphasis kept the study grounded. Without that anchor, it could have stayed theoretical."
@@ -31,7 +32,7 @@ carry_forward:
     priority: high
     note: "Enoch's priesthood lineage (Adam → Seth → Enos → Jared → Enoch) was a FAMILY chain that transmitted faith across generations. How do modern families do this practically?"
 
-open_questions:
+questions:
   - "Is there a tipping point where a family or community shifts from 'trying to be good' to 'dwelling in Zion'? What triggers the phase transition?"
   - "Why did the Nephite Zion last only 200 years while Enoch's lasted 365? Was it the absence of Jesus' physical presence? The scale difference? Something else?"
   - "4 Nephi says prosperity led to pride. Is there a way to be prosperous AND Zion? Or does prosperity always eventually corrode?"

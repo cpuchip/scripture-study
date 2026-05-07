@@ -1,8 +1,9 @@
+watchman: skip
 date: "2026-03-11"
 title: "Four studies in one session — atonement, nevertheless, staying relevant, multi-agent vision"
 type: study
 
-summary: >
+intent: >
   This was the most productive study session since the project began. Four complete documents
   in a single sitting, moving from deep theology to personal crisis to forward vision — and
   each study grew organically from the one before it.
@@ -98,7 +99,7 @@ carry_forward:
   - priority: low
     item: "The 'double nevertheless' pattern deserves its own deeper theological treatment someday"
 
-open_questions:
+questions:
   - "Does the Comprehension Principle fully account for the justice/mercy relationship, or is there more to explore there?"
   - "How does the multi-agent pipeline handle failure gracefully? The creation cycle has 'atonement' as step 8 — what does error recovery look like in practice?"
   - "Is study-exp1 now the default for all deep studies, or should the original study agent remain available for lighter topics?"

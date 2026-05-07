@@ -1,3 +1,4 @@
+watchman: skip
 date: "2026-05-04"
 session_id: pg-ai-stewards-2-6b
 intent: 'Phase 2.6b — todos as persistent connector vertices. The cross-cut between work-in-flight and the rest of the graph. Same session as 2.6a (token budget allowed); shipping both as independent sub-phases keeps the foldback story clean.'

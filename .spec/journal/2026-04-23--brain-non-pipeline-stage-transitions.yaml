@@ -1,3 +1,4 @@
+watchman: skip
 date: "2026-04-23"
 session_id: "brain-non-pipeline-stage-transitions"
 duration_estimate: "~2 hours — refine two proposals + ship Phase 1 of both"

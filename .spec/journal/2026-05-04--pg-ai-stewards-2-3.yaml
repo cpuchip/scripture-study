@@ -1,3 +1,4 @@
+watchman: skip
 date: "2026-05-04"
 session_id: pg-ai-stewards-2-3
 intent: Phase 2.3 — similarity bridge. pgvector cosine → AGE :SIMILAR_TO edges between studies. Real semantic clusters become first-class graph data.

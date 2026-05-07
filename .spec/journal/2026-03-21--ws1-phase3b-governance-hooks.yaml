@@ -1,8 +1,9 @@
+watchman: skip
 date: "2026-03-21"
 title: "WS1 Phase 3b — Governance hooks and token budgets shipped"
 type: dev
 
-summary: >
+intent: >
   Phase 3b is now implemented on top of the shipped 3a routing/pool foundation.
   The core shift is from unrestricted agent execution to governed execution with
   explicit guardrails. We added pre-tool checks for path scoping and destructive
@@ -51,7 +52,7 @@ technical_notes:
   - >
     `/api/agent/sessions` response now includes `details` and `budgets` fields.
 
-open_questions:
+questions:
   - >
     Should path-scope defaults move fully into config (YAML/env) per deployment,
     or remain code defaults with optional overrides?
