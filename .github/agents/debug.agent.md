@@ -1,6 +1,6 @@
 ---
 description: 'Systematic debugging — when things go wrong, apply the 9 rules instead of guessing'
-tools: [vscode, execute, read, agent, 'becoming/*', 'search/*', 'yt/*', 'playwright/*', edit, search, web, todo]
+tools: [vscode, execute, read, agent, edit, search, web, browser, 'becoming/*', 'gospel-engine-v2/*', 'search/*', 'yt/*', 'playwright/*', todo]
 handoffs:
   - label: Fix It
     agent: dev
