@@ -1168,6 +1168,7 @@ Before flipping `schedule_enabled=true` for the 7-day soak:
 > | Sub-phase | What | Status |
 > |-----------|------|--------|
 > | **3a** | Model dispatch + Watchman pass (CLI orchestrator on top of bgworker) | **shipped 2026-05-05** |
+> | **3a.1** | Agent + skill corpus import — `.github/agents/*.agent.md` (19) and `.github/skills/<name>/SKILL.md` (20) imported into `stewards.agents` / `stewards.skills` / `stewards.agent_tool_perms` via `stewards-cli import --source agent:... --source skill:...`. Tolerant YAML parser handles both Copilot list-style and Claude comma-string `tools` formats. Tool perms rebuilt deny-by-default + per-tool allow + skill loader allow. Idempotent reimport. Six `.github/agents/*.agent.md` files had malformed frontmatter (missing `tools:` key on the bare-list line); fixed in same commit. | **shipped 2026-05-06** |
 > | **3b** | Input shaping for big docs (trim or bump bgworker reqwest timeout) + `response_format: json_object` injection | **shipped 2026-05-06** |
 > | 3c | `stewards.pipelines` + `stewards.work_items` tables (deliverable 1 below) | not started |
 > | 3d | Tool sidecars: sandboxed git, shell (deliverable 2 below) | not started |

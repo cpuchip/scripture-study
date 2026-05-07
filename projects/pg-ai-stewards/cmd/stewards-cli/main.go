@@ -70,13 +70,18 @@ func usage() {
 
 Commands:
   import --source <kind>:<dir-or-file> [--source ...]
-      Import documents into stewards.studies. May be repeated.
+      Import documents/agents/skills into the substrate. May be
+      repeated. Document kinds (study|doc|proposal|phase-doc|phase|
+      journal) target stewards.studies; agents and skills target
+      stewards.agents / stewards.skills.
       Examples:
           --source study:study
           --source doc:docs/work-with-ai
           --source proposal:.spec/proposals
           --source phase-doc:projects/pg-ai-stewards/phases.md
           --source journal:.spec/journal
+          --source agent:.github/agents
+          --source skill:.github/skills
 
   study show <slug> [--sim N] [--cites N] [--verse-chars N]
       Print a formatted view of a study + resolved citations + similar.
@@ -221,7 +226,19 @@ func runImport(ctx context.Context, args []string) {
 
 	totalOK, totalFail := 0, 0
 	for _, src := range sources {
-		ok, fail := importer.ImportSource(ctx, pool, src, *limit, *verbose)
+		var ok, fail int
+		// Dispatch by kind: agents/skills go to specialized importers
+		// that target stewards.agents / stewards.skills tables; other
+		// kinds (study, doc, proposal, journal, ...) go through
+		// stewards.import_study() into stewards.studies.
+		switch src.Kind {
+		case "agent", "agents":
+			ok, fail = importer.ImportAgents(ctx, pool, src, *limit, *verbose)
+		case "skill", "skills":
+			ok, fail = importer.ImportSkills(ctx, pool, src, *limit, *verbose)
+		default:
+			ok, fail = importer.ImportSource(ctx, pool, src, *limit, *verbose)
+		}
 		fmt.Printf("=== %s (%s): ok=%d fail=%d ===\n", src.Kind, src.Path, ok, fail)
 		totalOK += ok
 		totalFail += fail

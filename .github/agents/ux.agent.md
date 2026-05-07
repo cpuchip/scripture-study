@@ -1,6 +1,6 @@
 ---
 description: 'UI/UX expert — design patterns, interaction flows, and visual quality'
-[vscode, execute, read, agent, 'becoming/*', 'playwright/*', edit, search, web, todo]
+tools: [vscode, execute, read, agent, 'becoming/*', 'playwright/*', edit, search, web, todo]
 handoffs:
   - label: Build the Feature
     agent: dev
