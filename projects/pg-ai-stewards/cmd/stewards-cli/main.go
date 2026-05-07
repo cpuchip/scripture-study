@@ -16,6 +16,7 @@ package main
 
 import (
 	"context"
+	"encoding/json"
 	"flag"
 	"fmt"
 	"os"
@@ -56,6 +57,10 @@ func main() {
 		runContext(ctx, os.Args[2:])
 	case "watchman":
 		runWatchman(ctx, os.Args[2:])
+	case "pipeline":
+		runPipeline(ctx, os.Args[2:])
+	case "work-item", "wi":
+		runWorkItem(ctx, os.Args[2:])
 	case "-h", "--help", "help":
 		usage()
 	default:
@@ -176,6 +181,21 @@ Commands:
       stewards.regenerate_active_md(). Sections: In Flight by
       workstream, Open Findings, Open Todos, Recent Watchman
       Activity, Corpus Stats. Phase 2.7b.4.
+
+  pipeline list | show <family>
+      List or inspect pipeline definitions (Phase 3c.1).
+
+  work-item create --pipeline P [--slug S] [--input JSON]
+                   [--user-input "..."] [--actor A] [--budget T]
+  work-item list [--pipeline P] [--status S]
+  work-item show <id-or-slug>
+  work-item dispatch <id-or-slug> [--user-input "..."]
+  work-item advance <id-or-slug> [--output JSON]
+  work-item cancel <id-or-slug> [--reason R]
+      Phase 3c.1: pipeline instances flowing through stages. dispatch
+      enqueues a chat for the current stage; advance records its
+      output and transitions to the next stage (or marks completed).
+      Auto-advance via trigger comes in Phase 3c.2.
 
 Environment:
   STEWARDS_DSN    Postgres DSN (default: postgres://stewards:stewards@localhost:5432/stewards?sslmode=disable)
@@ -772,6 +792,153 @@ func runWatchman(ctx context.Context, args []string) {
 		}
 	default:
 		fmt.Fprintf(os.Stderr, "watchman: unknown subcommand %q\n", sub)
+		os.Exit(1)
+	}
+}
+
+// ---------- pipeline (Phase 3c.1) ----------
+
+func runPipeline(ctx context.Context, args []string) {
+	if len(args) == 0 {
+		fmt.Fprintln(os.Stderr, "pipeline: subcommand required (list|show)")
+		os.Exit(1)
+	}
+	pool, err := db.Connect(ctx)
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "db: %v\n", err)
+		os.Exit(1)
+	}
+	defer pool.Close()
+
+	switch args[0] {
+	case "list":
+		if err := show.PipelineList(ctx, pool); err != nil {
+			fmt.Fprintf(os.Stderr, "pipeline list: %v\n", err)
+			os.Exit(1)
+		}
+	case "show":
+		if len(args) < 2 {
+			fmt.Fprintln(os.Stderr, "pipeline show: <family> required")
+			os.Exit(1)
+		}
+		if err := show.PipelineShow(ctx, pool, args[1]); err != nil {
+			fmt.Fprintf(os.Stderr, "pipeline show: %v\n", err)
+			os.Exit(1)
+		}
+	default:
+		fmt.Fprintf(os.Stderr, "pipeline: unknown subcommand %q (list|show)\n", args[0])
+		os.Exit(1)
+	}
+}
+
+// ---------- work-item (Phase 3c.1) ----------
+
+func runWorkItem(ctx context.Context, args []string) {
+	if len(args) == 0 {
+		fmt.Fprintln(os.Stderr, "work-item: subcommand required (create|list|show|dispatch|advance|cancel)")
+		os.Exit(1)
+	}
+	pool, err := db.Connect(ctx)
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "db: %v\n", err)
+		os.Exit(1)
+	}
+	defer pool.Close()
+
+	switch args[0] {
+	case "create":
+		fs := flag.NewFlagSet("work-item create", flag.ExitOnError)
+		pipeline := fs.String("pipeline", "", "pipeline family (required)")
+		slug := fs.String("slug", "", "optional human-readable slug (must be unique)")
+		actor := fs.String("actor", "human", "who initiated this work_item")
+		inputJSON := fs.String("input", "{}", "input as JSON object")
+		userInput := fs.String("user-input", "", "shorthand for --input '{\"user_input\":\"...\"}'")
+		budget := fs.Int("budget", 0, "token budget across all stages (0 = unbounded)")
+		if err := fs.Parse(args[1:]); err != nil {
+			os.Exit(1)
+		}
+		if *pipeline == "" {
+			fmt.Fprintln(os.Stderr, "work-item create: --pipeline required")
+			os.Exit(1)
+		}
+		input := *inputJSON
+		if *userInput != "" {
+			b, err := json.Marshal(map[string]any{"user_input": *userInput})
+			if err != nil {
+				fmt.Fprintf(os.Stderr, "work-item create: encode user_input: %v\n", err)
+				os.Exit(1)
+			}
+			input = string(b)
+		}
+		if err := show.WorkItemCreate(ctx, pool, *pipeline, *slug, *actor,
+			[]byte(input), *budget); err != nil {
+			fmt.Fprintf(os.Stderr, "work-item create: %v\n", err)
+			os.Exit(1)
+		}
+	case "list":
+		fs := flag.NewFlagSet("work-item list", flag.ExitOnError)
+		pipeline := fs.String("pipeline", "", "filter by pipeline family")
+		status := fs.String("status", "", "filter by status")
+		if err := fs.Parse(args[1:]); err != nil {
+			os.Exit(1)
+		}
+		if err := show.WorkItemList(ctx, pool, *pipeline, *status); err != nil {
+			fmt.Fprintf(os.Stderr, "work-item list: %v\n", err)
+			os.Exit(1)
+		}
+	case "show":
+		if len(args) < 2 {
+			fmt.Fprintln(os.Stderr, "work-item show: <id-or-slug> required")
+			os.Exit(1)
+		}
+		if err := show.WorkItemShow(ctx, pool, args[1]); err != nil {
+			fmt.Fprintf(os.Stderr, "work-item show: %v\n", err)
+			os.Exit(1)
+		}
+	case "dispatch":
+		fs := flag.NewFlagSet("work-item dispatch", flag.ExitOnError)
+		userInput := fs.String("user-input", "", "override user input for the current stage")
+		if err := fs.Parse(args[1:]); err != nil {
+			os.Exit(1)
+		}
+		if fs.NArg() != 1 {
+			fmt.Fprintln(os.Stderr, "work-item dispatch: <id-or-slug> required")
+			os.Exit(1)
+		}
+		if err := show.WorkItemDispatch(ctx, pool, fs.Arg(0), *userInput); err != nil {
+			fmt.Fprintf(os.Stderr, "work-item dispatch: %v\n", err)
+			os.Exit(1)
+		}
+	case "advance":
+		fs := flag.NewFlagSet("work-item advance", flag.ExitOnError)
+		output := fs.String("output", "{}", "stage output as JSON object")
+		if err := fs.Parse(args[1:]); err != nil {
+			os.Exit(1)
+		}
+		if fs.NArg() != 1 {
+			fmt.Fprintln(os.Stderr, "work-item advance: <id-or-slug> required")
+			os.Exit(1)
+		}
+		if err := show.WorkItemAdvance(ctx, pool, fs.Arg(0), []byte(*output)); err != nil {
+			fmt.Fprintf(os.Stderr, "work-item advance: %v\n", err)
+			os.Exit(1)
+		}
+	case "cancel":
+		fs := flag.NewFlagSet("work-item cancel", flag.ExitOnError)
+		reason := fs.String("reason", "", "optional cancellation reason")
+		if err := fs.Parse(args[1:]); err != nil {
+			os.Exit(1)
+		}
+		if fs.NArg() != 1 {
+			fmt.Fprintln(os.Stderr, "work-item cancel: <id-or-slug> required")
+			os.Exit(1)
+		}
+		if err := show.WorkItemCancel(ctx, pool, fs.Arg(0), *reason); err != nil {
+			fmt.Fprintf(os.Stderr, "work-item cancel: %v\n", err)
+			os.Exit(1)
+		}
+	default:
+		fmt.Fprintf(os.Stderr, "work-item: unknown subcommand %q\n", args[0])
 		os.Exit(1)
 	}
 }

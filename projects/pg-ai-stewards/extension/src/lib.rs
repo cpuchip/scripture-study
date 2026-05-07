@@ -2519,6 +2519,12 @@ extension_sql_file!(
     requires = ["create_watchman_budget"],
 );
 
+extension_sql_file!(
+    "../3c1-pipelines-work-items.sql",
+    name = "create_pipelines_work_items",
+    requires = ["create_watchman_soak_prep"],
+);
+
 // ---------------------------------------------------------------------------
 // Diagnostic SQL functions
 // ---------------------------------------------------------------------------
