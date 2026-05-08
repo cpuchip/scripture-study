@@ -1,0 +1,13 @@
+{
+  "enabledMcpjsonServers": [
+    "gospel-engine-v2",
+    "webster",
+    "yt",
+    "byu-citations",
+    "becoming",
+    "exa-search"
+  ],
+  "disabledMcpjsonServers": [
+    "search"
+  ]
+}
