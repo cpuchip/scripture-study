@@ -69,12 +69,41 @@ projects/pg-ai-stewards/cmd/stewards-mcp/
 - **Resources** (the MCP "read-only data sources" surface). Not used by the substrate yet; not blocking anything.
 - **Prompts** (the MCP "templated prompts" surface). Same — not used.
 
-## Future sub-phases (planned)
+## 3e.1.1 — shipped 2026-05-08
 
-### 3e.1.1 — polish (small)
-- Fix the jsonschema struct-tag syntax to emit proper minimum/maximum constraints
-- Add `study_similar(slug, limit)` — wraps `stewards.study_similar(slug, limit)`. Mechanical.
-- Add `study_citations(slug)` — wraps `stewards.study_citations(slug)`. Mechanical.
+### What changed
+
+- **jsonschema struct-tag syntax fixed.** Per jsonschema-go's `For` documentation, tag values are description-only — there is **no** `description=foo,minimum=1,maximum=100` syntax. The library explicitly reserves `WORD=` prefixes for future syntax and forbids descriptions starting with that pattern. My v1 tags violated this in two ways: prepending `description=` and embedding `,minimum=1,maximum=100` constraints. Rewrote all tags to plain prose. Constraints would require manual `*Schema` construction; the substrate's own SQL functions enforce reasonable bounds, so we don't bother at the MCP layer.
+- **`study_similar(slug, limit)` added.** Wraps `stewards.study_similar`. Live-tested: returns 0 results because substrate's similarity-edge graph isn't populated yet (separate Watchman 2.x work). Tool wrapper is correct; it'll surface results as edges materialize.
+- **`study_citations(slug)` added.** Wraps `stewards.study_citations`. Live-tested against gadianton-robbers: 35 citations including Ether 8-9 (15 refs), Helaman 6:38-39 (13), Moses 5:51 (9), Mosiah 18:5 (1) — exactly the cross-references threaded through the secret-combinations argument.
+
+### Surprises
+
+- **The jsonschema-go library doesn't support constraints at all via struct tags.** The MCP SDK's research output suggested `jsonschema:"minimum=1,maximum=100"` as syntax; that was wrong. The actual library reads only the description string. Constraints (min, max, enum, format) require constructing `*Schema` manually. This is a real limitation worth noting — captured in the mcp-server-go skill.
+
+## 3e.4 v1 — shipped 2026-05-08
+
+### What changed
+
+Four read-only inbound tools in a new `inspection.go` module:
+
+- **`work_item_list(pipeline?, status?, limit?)`** — list recent work_items with optional filters. Returns `id, slug, pipeline, current_stage, status, tokens_in, tokens_out, token_budget, actor, created_at, updated_at, completed_at`.
+- **`work_item_show(id_or_slug)`** — full detail for one work_item including `stage_results` JSONB and original `input`. Looks up by UUID OR slug.
+- **`watchman_passes_list(limit?)`** — recent soak passes with `pass_id, status, trigger, started_at, finished_at, provider, model, agent_family, doc_count_planned/done, tokens_in/out, token_budget, budget_stopped, verdict_counts`.
+- **`watchman_pass_show(pass_id)`** — one pass header plus per-doc verdicts (`study_id, verdict, reasoning, model, tokens, actor, created_at`).
+
+### Live-tested
+
+- `work_item_list(pipeline=study-write, limit=3)` returned the 3 expected voice-experiment runs in created_at DESC order.
+- `watchman_passes_list(limit=2)` returned the 2 most recent soak passes with `verdict_counts` JSONB decoded properly into the response (e.g. `{clean: 3, drift: 1, skipped: 1}`).
+
+### Decisions
+
+- **Dropped `stewards_brain` from the original 3e spec.** The substrate's `brain_entries` table has 1 row vs `studies` 370. The v3→v4 migration consolidated brain corpus into studies; a separate `stewards_brain` tool wraps a dead table.
+- **Write-mutating tools deferred to 3e.4 v2.** `work_item_create`, `work_item_dispatch`, `work_item_advance`, `watchman_pass_now`. Cost risk: a confused tool call could fire real model work. Mitigation: substrate's `token_budget` per work_item bounds blast radius, and Claude Code prompts for approval per tool. Still: let v1 read-only prove out before letting Claude Code drive the substrate.
+- **Module split (inspection.go separate from tools.go).** Clean concern boundary — studies-corpus tools in one file, runtime-state inspection in another. Future write-tool ops will go in their own file.
+
+## Future sub-phases (planned)
 
 ### 3e.2 — outbound HTTP path (the former 3c.4)
 The hard part. Substrate-internal agents (running inside pipeline work_items) need to verify scripture quotes by calling gospel-engine-v2. Two options:
