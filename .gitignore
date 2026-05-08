@@ -21,6 +21,7 @@ Thumbs.db
 # Claude Code project MCP config (contains API tokens — same reason .vscode/mcp.json is ignored)
 .mcp.json
 .claude/settings.local.json
+.claude/cache/
 
 # Go build artifacts
 scripts/gospel-library/gospel-library

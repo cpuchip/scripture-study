@@ -3,5 +3,41 @@
     "allow": [
       "PowerShell(Set-Location \"c:\\\\Users\\\\cpuch\\\\Documents\\\\code\\\\stuffleberry\\\\scripture-study\\\\projects\\\\pg-ai-stewards\\\\cmd\\\\stewards-cli\"; go build -o stewards-cli.exe . 2>&1; \"build exit: $LASTEXITCODE\"; Set-Location \"c:\\\\Users\\\\cpuch\\\\Documents\\\\code\\\\stuffleberry\\\\scripture-study\"; $env:STEWARDS_DSN = \"postgres://stewards:stewards@localhost:55433/stewards?sslmode=disable\"; & \"projects\\\\pg-ai-stewards\\\\cmd\\\\stewards-cli\\\\stewards-cli.exe\" import --source \"journal:.spec/journal\" 2>&1 | Select-Object -Last 5)"
     ]
+  },
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "startup|resume|clear",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "cat <<'JSONEOF'\n{\"hookSpecificOutput\":{\"hookEventName\":\"SessionStart\",\"additionalContext\":\"Re-read .mind/intent.yaml, .spec/covenant.yaml, .mind/identity.md, .mind/active.md, and .mind/principles.md (if it exists) NOW before responding. Your grounding in these shapes everything that follows in this session. Use the Read tool, do not work from memory.\"}}\nJSONEOF",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "mkdir -p .claude/cache 2>/dev/null; n=$(cat .claude/cache/last-ground.txt 2>/dev/null || echo 0); echo $((n+1)) > .claude/cache/last-ground.txt",
+            "timeout": 5
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "n=$(cat .claude/cache/last-ground.txt 2>/dev/null || echo 0); if [ \"$n\" -gt 50 ]; then echo 0 > .claude/cache/last-ground.txt; printf '{\"hookSpecificOutput\":{\"hookEventName\":\"Stop\",\"additionalContext\":\"Re-grounding check: %s tool uses since last refresh. Re-read .mind/active.md, .spec/covenant.yaml, and .mind/intent.yaml before continuing. Are your current actions still aligned with the intent? If you have drifted, course-correct now.\"}}' \"$n\"; fi",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
   }
 }
