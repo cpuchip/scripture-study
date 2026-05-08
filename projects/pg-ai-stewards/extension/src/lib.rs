@@ -18,8 +18,13 @@
 
 use pgrx::bgworkers::*;
 use pgrx::prelude::*;
-use std::sync::OnceLock;
 use std::time::{Duration, Instant};
+
+mod providers;
+use providers::{
+    GospelEngineConfig, Provider, ProviderRegistry, ProviderSummary, GOSPEL_ENGINE_CONFIG,
+    PROVIDER_REGISTRY,
+};
 
 ::pgrx::pg_module_magic!();
 
@@ -2618,123 +2623,9 @@ fn providers_loaded() -> TableIterator<
 }
 
 // ---------------------------------------------------------------------------
-// Provider registry (Phase 1: env-var bootstrap, in-process only)
+// Provider registry types + GospelEngineConfig moved to providers.rs
+// (Phase 3c.3.6 module split, 2026-05-08).
 // ---------------------------------------------------------------------------
-
-/// Snapshot of one provider's metadata, minus the secret. Returned
-/// from `stewards.providers_loaded()`.
-#[derive(Clone, Debug)]
-struct ProviderSummary {
-    name: String,
-    base_url: String,
-    default_model: String,
-    kind: String,
-    has_api_key: bool,
-}
-
-#[derive(Clone, Debug)]
-struct Provider {
-    name: String,
-    base_url: String,
-    default_model: String,
-    kind: String,
-    api_key: Option<String>,
-}
-
-#[derive(Default, Debug)]
-struct ProviderRegistry {
-    providers: Vec<Provider>,
-}
-
-impl ProviderRegistry {
-    /// Parse `STEWARDS_PROVIDER_<NAME>_<FIELD>` env vars into a
-    /// registry. Lossy by design: malformed entries are skipped with
-    /// a warning rather than aborting the worker.
-    fn from_env() -> Self {
-        use std::collections::BTreeMap;
-
-        let mut by_name: BTreeMap<String, BTreeMap<String, String>> = BTreeMap::new();
-
-        for (key, value) in std::env::vars() {
-            let Some(rest) = key.strip_prefix("STEWARDS_PROVIDER_") else {
-                continue;
-            };
-            // rest = "<NAME>_<FIELD>", where FIELD is one of
-            // BASE_URL | API_KEY | DEFAULT_MODEL | KIND
-            let Some((name, field)) = split_provider_key(rest) else {
-                continue;
-            };
-            by_name.entry(name).or_default().insert(field, value);
-        }
-
-        let mut providers = Vec::with_capacity(by_name.len());
-        for (name_upper, fields) in by_name {
-            let Some(base_url) = fields.get("BASE_URL").cloned() else {
-                pgrx::log!(
-                    "stewards: provider '{}' missing BASE_URL, skipping",
-                    name_upper
-                );
-                continue;
-            };
-            providers.push(Provider {
-                name: name_upper.to_lowercase(),
-                base_url,
-                default_model: fields.get("DEFAULT_MODEL").cloned().unwrap_or_default(),
-                kind: fields
-                    .get("KIND")
-                    .cloned()
-                    .unwrap_or_else(|| "openai".to_string()),
-                api_key: fields.get("API_KEY").cloned().filter(|s| !s.is_empty()),
-            });
-        }
-
-        Self { providers }
-    }
-
-    fn summary(&self) -> Vec<ProviderSummary> {
-        self.providers
-            .iter()
-            .map(|p| ProviderSummary {
-                name: p.name.clone(),
-                base_url: p.base_url.clone(),
-                default_model: p.default_model.clone(),
-                kind: p.kind.clone(),
-                has_api_key: p.api_key.is_some(),
-            })
-            .collect()
-    }
-}
-
-/// Parse `<NAME>_<FIELD>` where FIELD is one of the four known suffixes.
-fn split_provider_key(rest: &str) -> Option<(String, String)> {
-    const FIELDS: &[&str] = &["BASE_URL", "API_KEY", "DEFAULT_MODEL", "KIND"];
-    for field in FIELDS {
-        if let Some(stripped) = rest.strip_suffix(field) {
-            if let Some(name) = stripped.strip_suffix('_') {
-                if !name.is_empty() {
-                    return Some((name.to_string(), field.to_string()));
-                }
-            }
-        }
-    }
-    None
-}
-
-/// Lazily initialized once per bgworker process. Worker reads env on
-/// startup and never reloads.
-static PROVIDER_REGISTRY: OnceLock<ProviderRegistry> = OnceLock::new();
-
-/// Phase 2.2 — gospel-engine resolver config. Read once from env at
-/// postmaster startup. URL has no trailing slash; token is bearer.
-/// Both Optional so the resolver can fail gracefully if env is unset
-/// (returns "GOSPEL_ENGINE_URL not set" which is stored in
-/// resolved_refs.error and visible to callers).
-#[derive(Debug, Clone, Default)]
-struct GospelEngineConfig {
-    url: Option<String>,
-    token: Option<String>,
-}
-static GOSPEL_ENGINE_CONFIG: OnceLock<GospelEngineConfig> = OnceLock::new();
 
 // ---------------------------------------------------------------------------
 // Bgworker registration
