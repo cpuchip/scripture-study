@@ -14,25 +14,32 @@ import (
 
 // AgentDoc is the parsed shape of one Copilot/Claude agent file.
 //
-//	.github/agents/<name>.agent.md   — Copilot format (YAML list tools)
-//	.claude/agents/<name>.md         — Claude format (comma-string tools)
+//	.github/agents/<name>.agent.md      — Copilot format (YAML list tools)
+//	.claude/agents/<name>.md            — Claude format (comma-string tools)
+//	.stewards/<model>/<name>.agent.md   — model-tuned variant (declares model_match)
 type AgentDoc struct {
 	Family      string   // filename without .agent.md or .md
 	Description string   // frontmatter description
 	Body        string   // markdown body (becomes agents.prompt)
 	Tools       []string // tool patterns to allow
 	Model       string   // optional preferred model (logged, not stored yet)
+	ModelMatch  string   // optional glob for stewards.agents.model_match; '' → '*'
 	Handoffs    string   // optional handoffs YAML (logged, not stored yet)
 }
 
 // agentFrontmatter is the lenient YAML shape we accept. tools may be
 // either a list (Copilot YAML) or a single comma-separated string
 // (Claude format); we normalize after parse.
+//
+// model_match is the new field as of Phase 3c.3.3 — when set, the
+// agent row is upserted under (family, model_match) instead of the
+// default (family, '*'), enabling per-model prompt variants.
 type agentFrontmatter struct {
 	Description string      `yaml:"description"`
 	Name        string      `yaml:"name"`
 	Tools       interface{} `yaml:"tools"`
 	Model       string      `yaml:"model"`
+	ModelMatch  string      `yaml:"model_match"`
 	Handoffs    interface{} `yaml:"handoffs,omitempty"`
 }
 
@@ -104,6 +111,7 @@ func parseAgentMarkdown(absPath string) (*AgentDoc, error) {
 		Body:        strings.TrimSpace(body),
 		Tools:       tools,
 		Model:       strings.TrimSpace(fm.Model),
+		ModelMatch:  strings.TrimSpace(fm.ModelMatch),
 		Handoffs:    handoffsYAML,
 	}, nil
 }
@@ -117,23 +125,43 @@ func parseAgentMarkdown(absPath string) (*AgentDoc, error) {
 //   ('agent', <tool>, 'allow') for each tool   — declared allow list
 //   ('agent', 'skill', 'allow')                — so the agent can load skills
 func upsertAgent(ctx context.Context, pool *pgxpool.Pool, a *AgentDoc) error {
+	// Resolve model_match. Empty → '*' (the default variant). Per-model
+	// variants like 'kimi-*' are upserted side-by-side with the default,
+	// because the agents PK is (family, model_match).
+	modelMatch := a.ModelMatch
+	if modelMatch == "" {
+		modelMatch = "*"
+	}
+
 	// 1. Upsert agents row. steps defaults to 8 (the Phase 1.5
-	//    substrate default; agents.steps is NOT NULL).
+	//    substrate default; agents.steps is NOT NULL). Live DB has
+	//    a separate UPDATE that bumps non-watchman agents to 50 — see
+	//    3c.3.1 trigger bugfixes. New variants land at 8 and inherit
+	//    the bump on the next migration apply.
 	if _, err := pool.Exec(ctx,
 		`INSERT INTO stewards.agents
 		    (family, model_match, description, mode, prompt,
 		     temperature, top_p, response_format, steps)
-		 VALUES ($1, '*', $2, 'primary', $3, NULL, NULL, NULL, 8)
+		 VALUES ($1, $2, $3, 'primary', $4, NULL, NULL, NULL, 8)
 		 ON CONFLICT (family, model_match) DO UPDATE
 		 SET description = EXCLUDED.description,
 		     mode        = EXCLUDED.mode,
 		     prompt      = EXCLUDED.prompt`,
-		a.Family, a.Description, a.Body,
+		a.Family, modelMatch, a.Description, a.Body,
 	); err != nil {
-		return fmt.Errorf("upsert agent %s: %w", a.Family, err)
+		return fmt.Errorf("upsert agent %s/%s: %w", a.Family, modelMatch, err)
 	}
 
-	// 2. Clear existing tool perms for this family so removed tools
+	// 2. Tool perms are keyed by (agent_family, tool_pattern), not by
+	//    model_match — they're shared across all variants of a family.
+	//    So we ONLY rebuild perms when importing the default ('*') variant.
+	//    Variant imports (e.g. kimi-*) leave the existing perms alone;
+	//    they inherit whatever the default declared.
+	if modelMatch != "*" {
+		return nil
+	}
+
+	// 3. Clear existing tool perms for this family so removed tools
 	//    actually disappear on reimport.
 	if _, err := pool.Exec(ctx,
 		`DELETE FROM stewards.agent_tool_perms WHERE agent_family = $1`,
@@ -142,7 +170,7 @@ func upsertAgent(ctx context.Context, pool *pgxpool.Pool, a *AgentDoc) error {
 		return fmt.Errorf("clear tool perms %s: %w", a.Family, err)
 	}
 
-	// 3. Insert deny-* + allow-skill + one allow per declared tool.
+	// 4. Insert deny-* + allow-skill + one allow per declared tool.
 	rules := [][2]string{{"*", "deny"}, {"skill", "allow"}}
 	for _, t := range a.Tools {
 		// Skip 'skill' if the agent already declared it; we always
@@ -216,6 +244,17 @@ func ImportAgents(ctx context.Context, pool *pgxpool.Pool,
 	for _, abs := range files {
 		a, err := parseAgentMarkdown(abs)
 		if err != nil {
+			// Files without YAML frontmatter (README.md, NOTES.md,
+			// etc.) get silently skipped rather than counted as a
+			// failure — agent directories often include free-text docs
+			// alongside the canonical *.agent.md files.
+			if strings.Contains(err.Error(), "no YAML frontmatter") {
+				if verbose {
+					fmt.Printf("  skip: %s (no frontmatter)\n",
+						filepath.Base(abs))
+				}
+				continue
+			}
 			fmt.Fprintf(os.Stderr, "  PARSE FAIL: %s: %v\n",
 				filepath.Base(abs), err)
 			fail++
@@ -227,7 +266,12 @@ func ImportAgents(ctx context.Context, pool *pgxpool.Pool,
 			continue
 		}
 		if verbose {
-			fmt.Printf("  ok: agent %s (%d tools)\n", a.Family, len(a.Tools))
+			variant := a.ModelMatch
+			if variant == "" {
+				variant = "*"
+			}
+			fmt.Printf("  ok: agent %s/%s (%d tools)\n",
+				a.Family, variant, len(a.Tools))
 		}
 		ok++
 	}
