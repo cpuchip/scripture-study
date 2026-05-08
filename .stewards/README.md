@@ -120,6 +120,20 @@ produced under it requires no voice-cleanup before publishing. Until
 then, every produced study should be reviewed by a person before
 landing in `study/`.
 
+## Status (2026-05-08)
+
+Two variants live and validated on the FtC/WtL binding question:
+`.stewards/kimi-k2.6/study.agent.md` and `.stewards/qwen-3.6/study.agent.md`.
+Generalization across study types (focused exegesis, character study,
+talk analysis) is **deferred** until Phase 3e (MCP server) + 3c.4
+(gospel-engine HTTP tools) + 3f (web UI) land. Tracking proposal:
+[`.spec/proposals/pg-ai-stewards-per-model-prompt-tuning.md`](../.spec/proposals/pg-ai-stewards-per-model-prompt-tuning.md).
+Relevant prior practice: the 2026-03/04 brain-classifier rubric work
+(see [classify-bench](../.spec/proposals/classify-bench.md) and
+[lm-studio-model-experiments](../.spec/proposals/archive/lm-studio-model-experiments/main.md))
+gives us the bench-CLI shape and dimensional-scoring pattern we should
+reuse when the cross-topic validation suite lands.
+
 ## What this directory is **not**
 
 - Not a place for one-off prompts or research notes. Use

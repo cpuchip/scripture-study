@@ -1187,6 +1187,7 @@ Before flipping `schedule_enabled=true` for the 7-day soak:
 > | 3e | MCP server: `stewards_search`, `stewards_brain`, `stewards_work_item`, `gospel_passthrough` (deliverable 3) | not started |
 > | 3f | Web UI surface = `a.ibeco.me` (deliverable 4 + becoming integration deliverable 5) | not started |
 > | 3g | Multi-provider expansion: Anthropic, Gemini, Veo, TTS (deliverable 6 expansion beyond opencode_go + lm_studio) | not started |
+> | **3h** | Per-model prompt tuning generalized — cross-topic validation of `.stewards/<model>/*.agent.md` variants, `study-bench` CLI mirroring `classify-bench`, extension to non-study agent families. **Prototype shipped 2026-05-08 (kimi-k2.6 + qwen-3.6 study variants validated on FtC/WtL only); full effort deferred until 3e/3c.4/3f land**, because voice tuning is downstream of substrate-as-external-tool surface and real-quote verification. References prior brain-classifier rubric work. → [proposal](../../.spec/proposals/pg-ai-stewards-per-model-prompt-tuning.md) | **deferred** (prototype complete) |
 >
 > 3a is the unblocker for 2.7b (Watchman bgworker), 2.8 (LLM-inferred
 > edges), and the `a.ibeco.me` reading surface. The rest can ship in
