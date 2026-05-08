@@ -34,8 +34,8 @@ func toolError(format string, args ...any) *mcp.CallToolResult {
 	}
 }
 
-// registerStudyTools wires up the v1 (Phase 3e.1) tool surface:
-// study_search and study_get.
+// registerStudyTools wires up the v1+v1.1 (Phase 3e.1, 3e.1.1) tool surface:
+// study_search, study_get, study_similar, study_citations.
 func registerStudyTools(srv *mcp.Server, pool *pgxpool.Pool) {
 	mcp.AddTool(srv, &mcp.Tool{
 		Name: "study_search",
@@ -53,6 +53,22 @@ func registerStudyTools(srv *mcp.Server, pool *pgxpool.Pool) {
 			"file path, and metadata as a single JSON object. Use study_search " +
 			"first to find slugs by topic.",
 	}, makeStudyGet(pool))
+
+	mcp.AddTool(srv, &mcp.Tool{
+		Name: "study_similar",
+		Description: "Find studies similar to a given slug, via the substrate's " +
+			"precomputed embedding edges. Returns related slugs with similarity " +
+			"scores and edge direction (in/out/both). Useful after study_get to " +
+			"surface adjacent material the author may have cross-referenced.",
+	}, makeStudySimilar(pool))
+
+	mcp.AddTool(srv, &mcp.Tool{
+		Name: "study_citations",
+		Description: "List the canonical sources (scriptures, talks, etc.) that a " +
+			"given study cites. Returns cited URIs grouped by kind, with anchor " +
+			"text and citation count per URI. The URIs are resolvable via " +
+			"gospel-engine-v2 (path semantics like 'eng/scriptures/bofm/mosiah/18.md#11').",
+	}, makeStudyCitations(pool))
 }
 
 // ---------------------------------------------------------------------
@@ -60,10 +76,17 @@ func registerStudyTools(srv *mcp.Server, pool *pgxpool.Pool) {
 // ---------------------------------------------------------------------
 
 // StudySearchInput mirrors stewards.study_search_text(text, text[], int).
+//
+// jsonschema struct tags are description-only per jsonschema-go's For
+// documentation. The library reserves WORD= prefixes for future syntax,
+// so do not write 'description=foo,minimum=1' — that violates the
+// future-compatibility rule. Use plain prose. Constraints (min, max,
+// enum) require manual *Schema construction; the substrate's own SQL
+// functions already enforce reasonable bounds, so we don't bother.
 type StudySearchInput struct {
 	Query string   `json:"query" jsonschema:"natural-language search text (websearch_to_tsquery semantics)"`
-	Kinds []string `json:"kinds,omitempty" jsonschema:"optional filter on document kinds (e.g. study journal proposal phase-doc doc); empty matches all"`
-	Limit int      `json:"limit,omitempty" jsonschema:"max results (default 10),minimum=1,maximum=100"`
+	Kinds []string `json:"kinds,omitempty" jsonschema:"optional filter on document kinds (study journal proposal phase-doc doc); empty matches all"`
+	Limit int      `json:"limit,omitempty" jsonschema:"max results, default 10, capped at 100"`
 }
 
 // StudySearchHit is one row returned by stewards.study_search_text.
@@ -145,9 +168,9 @@ func makeStudySearch(pool *pgxpool.Pool) func(
 // slug for the common case.
 type StudyGetInput struct {
 	Slug       string `json:"slug" jsonschema:"substrate study slug (kebab-case e.g. way-truth-life or substrate--ftc-wtl-meta-v3-kimi-tuned)"`
-	LineOffset int    `json:"line_offset,omitempty" jsonschema:"0-indexed line to start at (default 0),minimum=0"`
-	LineCount  int    `json:"line_count,omitempty" jsonschema:"max body lines (default 200),minimum=1,maximum=2000"`
-	MaxChars   int    `json:"max_chars,omitempty" jsonschema:"hard cap on body characters returned (default 20000),minimum=100,maximum=200000"`
+	LineOffset int    `json:"line_offset,omitempty" jsonschema:"0-indexed line to start at, default 0"`
+	LineCount  int    `json:"line_count,omitempty" jsonschema:"max body lines, default 200, capped at 2000"`
+	MaxChars   int    `json:"max_chars,omitempty" jsonschema:"hard cap on body characters returned, default 20000, capped at 200000"`
 }
 
 // StudyGetOutput is the substrate fn's jsonb return value, decoded.
@@ -186,11 +209,147 @@ func makeStudyGet(pool *pgxpool.Pool) func(
 		}
 		// The substrate fn returns NULL when the slug doesn't exist.
 		// pgx scans NULL jsonb into raw=nil → Unmarshal succeeds with
-		// out=nil. Detect and surface as a model-visible error.
-		if out == nil || len(out) == 0 {
+		// out=nil. len() on a nil map returns 0, so this check covers
+		// both the truly-empty and the not-found cases.
+		if len(out) == 0 {
 			return toolError("study_get: no study with slug %q", in.Slug), nil, nil
 		}
 
 		return nil, out, nil
+	}
+}
+
+// ---------------------------------------------------------------------
+// study_similar
+// ---------------------------------------------------------------------
+
+// StudySimilarInput mirrors stewards.study_similar(text, int).
+type StudySimilarInput struct {
+	Slug  string `json:"slug" jsonschema:"substrate study slug to find neighbors of"`
+	Limit int    `json:"limit,omitempty" jsonschema:"max neighbors returned, default 10, capped at 100"`
+}
+
+// StudySimilarHit is one row from stewards.study_similar.
+// `direction` is one of 'in' (cited by slug), 'out' (slug cites it),
+// or 'both' (mutual). Score is cosine similarity in [0, 1].
+type StudySimilarHit struct {
+	Slug      string  `json:"slug"`
+	Title     string  `json:"title"`
+	FilePath  string  `json:"file_path"`
+	Score     float64 `json:"score"`
+	Direction string  `json:"direction"`
+}
+
+type StudySimilarOutput struct {
+	Results []StudySimilarHit `json:"results"`
+	Count   int               `json:"count"`
+}
+
+func makeStudySimilar(pool *pgxpool.Pool) func(
+	ctx context.Context, req *mcp.CallToolRequest, in StudySimilarInput,
+) (*mcp.CallToolResult, StudySimilarOutput, error) {
+	return func(
+		ctx context.Context, req *mcp.CallToolRequest, in StudySimilarInput,
+	) (*mcp.CallToolResult, StudySimilarOutput, error) {
+		if in.Slug == "" {
+			return toolError("study_similar: 'slug' is required"),
+				StudySimilarOutput{}, nil
+		}
+		if in.Limit <= 0 {
+			in.Limit = 10
+		}
+
+		rows, err := pool.Query(ctx,
+			"SELECT slug, title, file_path, score, direction "+
+				"FROM stewards.study_similar($1, $2)",
+			in.Slug, in.Limit)
+		if err != nil {
+			return toolError("study_similar query: %v (slug=%q)", err, in.Slug),
+				StudySimilarOutput{}, nil
+		}
+		defer rows.Close()
+
+		var results []StudySimilarHit
+		for rows.Next() {
+			var h StudySimilarHit
+			if err := rows.Scan(&h.Slug, &h.Title, &h.FilePath, &h.Score, &h.Direction); err != nil {
+				return toolError("study_similar scan: %v", err),
+					StudySimilarOutput{}, nil
+			}
+			results = append(results, h)
+		}
+		if err := rows.Err(); err != nil {
+			return toolError("study_similar rows: %v", err),
+				StudySimilarOutput{}, nil
+		}
+
+		return nil, StudySimilarOutput{Results: results, Count: len(results)}, nil
+	}
+}
+
+// ---------------------------------------------------------------------
+// study_citations
+// ---------------------------------------------------------------------
+
+// StudyCitationsInput mirrors stewards.study_citations(text).
+type StudyCitationsInput struct {
+	Slug string `json:"slug" jsonschema:"substrate study slug to list citations for"`
+}
+
+// StudyCitation is one row from stewards.study_citations.
+// study_slug is repeated per row (the substrate fn could in principle
+// be reused for graph walks across multiple studies, but for now it's
+// always the input slug). cited_kind is e.g. 'scripture', 'talk',
+// 'manual'. anchor_text is the displayed link text. citation_count is
+// how many times this URI is cited within the source study.
+type StudyCitation struct {
+	StudySlug     string `json:"study_slug"`
+	CitedURI      string `json:"cited_uri"`
+	CitedKind     string `json:"cited_kind"`
+	AnchorText    string `json:"anchor_text"`
+	CitationCount int    `json:"citation_count"`
+}
+
+type StudyCitationsOutput struct {
+	Citations []StudyCitation `json:"citations"`
+	Count     int             `json:"count"`
+}
+
+func makeStudyCitations(pool *pgxpool.Pool) func(
+	ctx context.Context, req *mcp.CallToolRequest, in StudyCitationsInput,
+) (*mcp.CallToolResult, StudyCitationsOutput, error) {
+	return func(
+		ctx context.Context, req *mcp.CallToolRequest, in StudyCitationsInput,
+	) (*mcp.CallToolResult, StudyCitationsOutput, error) {
+		if in.Slug == "" {
+			return toolError("study_citations: 'slug' is required"),
+				StudyCitationsOutput{}, nil
+		}
+
+		rows, err := pool.Query(ctx,
+			"SELECT study_slug, cited_uri, cited_kind, anchor_text, citation_count "+
+				"FROM stewards.study_citations($1)",
+			in.Slug)
+		if err != nil {
+			return toolError("study_citations query: %v (slug=%q)", err, in.Slug),
+				StudyCitationsOutput{}, nil
+		}
+		defer rows.Close()
+
+		var results []StudyCitation
+		for rows.Next() {
+			var c StudyCitation
+			if err := rows.Scan(&c.StudySlug, &c.CitedURI, &c.CitedKind, &c.AnchorText, &c.CitationCount); err != nil {
+				return toolError("study_citations scan: %v", err),
+					StudyCitationsOutput{}, nil
+			}
+			results = append(results, c)
+		}
+		if err := rows.Err(); err != nil {
+			return toolError("study_citations rows: %v", err),
+				StudyCitationsOutput{}, nil
+		}
+
+		return nil, StudyCitationsOutput{Citations: results, Count: len(results)}, nil
 	}
 }
