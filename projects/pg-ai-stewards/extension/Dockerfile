@@ -52,7 +52,9 @@ COPY 2-6a-workstreams.sql 2-6b-todos.sql 2-6c-phases-context.sql \
      2-7b3-watchman-budget.sql 2-7b4-watchman-soak-prep.sql \
      3c1-pipelines-work-items.sql 3c2-work-item-advance-trigger.sql \
      3c2-5-study-tools.sql 3c3-stage-templating-and-study-write.sql \
-     3c3-1-trigger-bugfixes.sql ./
+     3c3-1-trigger-bugfixes.sql \
+     3c3-3-agent-tool-perms-provenance.sql \
+     3c3-5-work-items-to-studies.sql ./
 
 # `cargo pgrx package` produces ./target/release/pg_ai_stewards-pg18/
 # with the directory tree rooted at /, containing the .so, .control,

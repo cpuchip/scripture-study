@@ -338,6 +338,15 @@ SET description    = EXCLUDED.description,
 -- glob_match: `study_*` is length 7, beats `*: deny` (length 1)
 -- via the longest-match-wins resolver.
 -- ---------------------------------------------------------------------
+-- The `source` column is added by 3c3-3-agent-tool-perms-provenance.sql.
+-- That file runs LATER in the foldback chain than this one, so on a
+-- fresh CREATE EXTENSION the column doesn't exist yet here. Add it
+-- defensively so 3c2-5 is self-contained — 3c3-3's ADD COLUMN IF NOT
+-- EXISTS is a no-op when this fires first, and the CHECK constraint
+-- it adds covers the values we use here.
+ALTER TABLE stewards.agent_tool_perms
+  ADD COLUMN IF NOT EXISTS source text NOT NULL DEFAULT 'frontmatter';
+
 -- Tagged source='broadcast' (per 3c3-3) so the importer's reimport-DELETE
 -- (filtered by source='frontmatter') doesn't wipe it. ON CONFLICT updates
 -- only `action` to avoid downgrading a row that the agent's frontmatter

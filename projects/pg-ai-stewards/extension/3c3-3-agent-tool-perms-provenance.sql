@@ -31,10 +31,30 @@
 
 -- ---------------------------------------------------------------------
 -- 1. Schema migration
+--
+-- Note: 3c2-5-study-tools.sql also issues this ADD COLUMN IF NOT EXISTS
+-- because it runs earlier in the foldback chain and references the
+-- `source` column. We re-issue here so this file is self-contained when
+-- replayed against an older DB that has 3c.3.3 but not 3c.3.5. The
+-- CHECK constraint is added separately below because ADD COLUMN IF
+-- NOT EXISTS does NOT add the CHECK when the column already exists.
 -- ---------------------------------------------------------------------
 ALTER TABLE stewards.agent_tool_perms
-  ADD COLUMN IF NOT EXISTS source text NOT NULL DEFAULT 'frontmatter'
-  CHECK (source IN ('frontmatter', 'broadcast', 'manual'));
+  ADD COLUMN IF NOT EXISTS source text NOT NULL DEFAULT 'frontmatter';
+
+DO $$
+BEGIN
+    IF NOT EXISTS (
+        SELECT 1 FROM pg_constraint
+         WHERE conrelid = 'stewards.agent_tool_perms'::regclass
+           AND conname  = 'agent_tool_perms_source_check'
+    ) THEN
+        ALTER TABLE stewards.agent_tool_perms
+          ADD CONSTRAINT agent_tool_perms_source_check
+          CHECK (source IN ('frontmatter', 'broadcast', 'manual'));
+    END IF;
+END;
+$$;
 
 COMMENT ON COLUMN stewards.agent_tool_perms.source IS
   'Provenance of this perm row: frontmatter (declared in agent .agent.md), '

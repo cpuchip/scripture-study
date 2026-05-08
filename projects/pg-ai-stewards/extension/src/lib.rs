@@ -2555,6 +2555,12 @@ extension_sql_file!(
     requires = ["create_trigger_bugfixes_3c3_1"],
 );
 
+extension_sql_file!(
+    "../3c3-5-work-items-to-studies.sql",
+    name = "create_work_items_to_studies_promotion",
+    requires = ["create_agent_tool_perms_provenance"],
+);
+
 // ---------------------------------------------------------------------------
 // Diagnostic SQL functions
 // ---------------------------------------------------------------------------
