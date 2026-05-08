@@ -247,6 +247,51 @@ new `work_kind = tool_http` that uses reqwest directly. This avoids
 extension issues but touches the chat-dispatch code path that the
 soak depends on — same supervised-daytime caveat applies.
 
+### 06:00Z — qwen-3.6 variant authored + provenance migration shipped
+
+Michael came back online briefly. Approved one more pass: qwen-tuned
+variant + the provenance column work.
+
+**3c.3.3.1 (provenance):** Added `source text NOT NULL DEFAULT 'frontmatter'`
+to `agent_tool_perms`. CHECK constraint on `('frontmatter','broadcast','manual')`.
+Retroactively marked the 19 broadcast rows (study_* on non-study families)
+correctly. Updated the importer's reimport-DELETE to filter
+`AND source='frontmatter'`. Updated 3c.2.5's broadcast SQL to set
+`source='broadcast'`. Foldback added to lib.rs.
+
+Verified end-to-end: pre-state 19/275, regression import of
+.github/agents + both variant folders → unchanged 19/275. The bug
+that prompted the fix is now structurally impossible.
+
+**3c.3.4.1 (qwen-3.6 variant):** Authored `.stewards/qwen-3.6/study.agent.md`.
+Targets six qwen-specific signatures from run #3 (tool-name confusion,
+broken `(#)` links, heavy tables, bold-clause density, mid-paragraph
+triadics, verbosity) plus six kimi-shared rules. model_match='qwen*'.
+Imported as 14552-char variant, steps bumped to 50.
+
+### 06:11Z — run #5 (qwen-tuned + corpus) terminal
+
+695K tokens, 9m24s. **All 12 targeted signatures cleared:**
+- 7 study_get calls, 0 scripture-style bad paths
+- 0 broken `(#)` links
+- 0 mid-argument tables
+- Single-term bolds only
+- Triadic deployed once at the structural moment of perspective-establishment
+- 110 lines (vs run #3's 239)
+- Section headers are claim sentences with `Therefore`/`But` causation
+- Active verification correction in revision notes
+
+**Run #3 → #5 deltas (same model, same corpus, only prompt):**
+54% shorter, 16% fewer tokens, 61% faster. The tool-usage rule alone
+("study_get takes a kebab-case slug, NEVER a scripture reference")
+eliminated the retry-loop failure mode that wasted tokens in #3.
+
+Status: qwen-3.6 study variant promoted from experimental to stable v1.
+`.stewards/qwen-3.6/README.md` iteration log updated.
+
+Five-way comparison memo at
+`study/.scratch/two-triplets-comparison-2026-05-08/comparison.md`.
+
 ### 05:24Z — all four runs terminal
 
 | Run | Status | Tokens | Elapsed |

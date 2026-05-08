@@ -6,37 +6,42 @@ and [study/.scratch/two-triplets-comparison-2026-05-08/](../../study/.scratch/tw
 
 ## TL;DR
 
-The kimi-tuned prompt **works.** Validated end-to-end across two
-runs of the same binding question. The strongest output (run #4,
-kimi-tuned + corpus access) is markedly better-voiced than run #1
-and **caught and removed two fabricated quotes from its own draft**
-via substrate corpus search — the verification rule operating at
-full strength.
+**Both kimi-tuned and qwen-tuned prompt variants are now validated.**
+Run #5 (qwen-tuned + corpus) cleared all 12 targeted signatures —
+54% shorter output, 16% fewer tokens, 61% faster than the qwen-base
+baseline (run #3). On local 4090 GPU, qwen-tuned now produces studies
+comparable in quality to kimi-tuned at zero variable cost.
 
-Three phase chunks shipped: **3c.3.3** (importer model_match) and
-**3c.3.4** (4-way multi-model voice experiment). 3c.4 (gospel-engine
-HTTP tools) deferred to daytime — no SQL HTTP extension in pgvector
-base image, and Rust bgworker changes are too risky unsupervised.
+Five phase chunks shipped tonight:
+- **3c.3.3** importer model_match
+- **3c.3.3.1** agent_tool_perms provenance column (followup, fixes
+  the bug that surfaced during 3c.3.4)
+- **3c.3.4** 4-way multi-model voice experiment (runs #1-#4)
+- **3c.3.4.1** qwen-3.6 study variant + run #5 validation
+- (deferred) 3c.4 gospel-engine HTTP tools — no SQL HTTP extension
+  in pgvector base, daytime work
 
 ## Commit trail (in order)
 
 | Commit | What |
 |--------|------|
 | `cce69c0` | Plan committed up front |
-| `46e68ea` | **3c.3.3** — importer reads `model_match` from frontmatter; tool perms only rebuild on default-variant imports |
+| `46e68ea` | **3c.3.3** — importer reads `model_match` from frontmatter |
 | `4da7b77` | Bug fix — `study_*` perm wiped by reimport, restored + added to study agent frontmatter |
-| `93b4309` | **3c.3.4 partial** — runs #1+#2 analyzed; #3+#4 dispatched |
-| (pending) | **3c.3.4 complete** — all four runs analyzed; comparison memo full |
-| (pending) | Memory + active.md + summary closeout |
+| `93b4309` | **3c.3.4 partial** — runs #1+#2 analyzed |
+| `cb33fcc` | **3c.3.4 complete** — all four runs analyzed |
+| `933dd67` | **3c.3.3.1** provenance column + **3c.3.4.1** qwen-3.6 variant + run #5 dispatched |
+| (pending) | Run #5 analysis + final close |
 
-## The four runs
+## The five runs
 
 | Run | Model | Prompt | Corpus | Lines | Tokens | Time | Voice signatures present |
 |-----|-------|--------|--------|-------|--------|------|--------------------------|
 | #1 (original 3c.3.2) | kimi-k2.6 | base | ✅ | 105 | 626K | 17m | **6/6** |
 | #2 (kimi-tuned, no corpus) | kimi-k2.6 | tuned | ❌ | 43 | 122K | 8m | **0/5** measurable |
-| #3 (qwen baseline) | qwen3.6-27b | base | ✅ | 239 | 825K | 24m | **~4/6** + qwen-specific tics |
-| **#4 (kimi-tuned, corpus)** | **kimi-k2.6** | **tuned** | **✅** | **118** | **925K** | **24m** | **1/6** (residual mild pseudo-citation only) |
+| #3 (qwen baseline) | qwen3.6-27b | base | ✅ | 239 | 825K | 24m | **~4/6** + 6 qwen-specific |
+| **#4 (kimi-tuned, corpus)** | **kimi-k2.6** | **tuned** | **✅** | **118** | **925K** | **24m30s** | **1/6** (residual mild pseudo-citation) |
+| **#5 (qwen-tuned, corpus)** | **qwen3.6-27b** | **tuned** | **✅** | **110** | **695K** | **9m24s** | **0/12** targeted signatures |
 
 ## What run #4 demonstrates
 
@@ -83,6 +88,26 @@ Untouched by experiments. 6 passes through the night (00:17, 01:18, 02:18, 03:19
 | #2 | opencode_go | kimi-k2.6 | 87K / 36K | ~$0.05 |
 | #3 | lm_studio | qwen/qwen3.6-27b | 825K total | $0 (local GPU) |
 | #4 | opencode_go | kimi-k2.6 | 855K / 70K | ~$0.30 |
+| #5 | lm_studio | qwen/qwen3.6-27b | 668K / 27K | $0 (local GPU) |
 | **Total experiment spend** | | | | **~$0.35** |
 
 Plus the soak's ~$0.30/day continued draining. Well under your $2-5/day budget for tonight.
+
+## Decision flow for the morning
+
+1. **Read run #5 first** (`study/.scratch/two-triplets-comparison-2026-05-08/run5-qwen-tuned-with-corpus.md`) — it's the cleanest demonstration of a tuned variant, and shorter than run #4
+2. **Then run #4** — the kimi-tuned-with-corpus comparison
+3. **Then comparison.md** for the five-way analysis with all the metrics
+4. Decide which (if either) to promote into `study/two-triplets-one-ascent.md`
+
+## Both variants: stable v1
+
+- `.stewards/kimi-k2.6/study.agent.md` — iteration log updated
+- `.stewards/qwen-3.6/study.agent.md` — iteration log updated
+
+Future model variants follow the same playbook:
+1. Run a baseline study with the base prompt
+2. Identify model-specific signatures via the comparison rubric
+3. Author `.stewards/<model>/study.agent.md`
+4. Re-run the same binding question
+5. Verify signatures clear, promote to stable

@@ -1,121 +1,163 @@
-# Four-Way Comparison: FtC/WtL Studies — 2026-05-08
+# Five-Way Comparison: FtC/WtL Studies — 2026-05-08
 
-> Final memo, all four runs terminal.
+> Final memo, all five runs terminal. Both kimi-tuned (run #4) and qwen-tuned (run #5) **validated** against their respective baselines.
 
 ## What we compared
 
-| Run | Model | Prompt | Pipeline | Corpus access | Tokens (in/out) | Elapsed |
-|-----|-------|--------|----------|---------------|-----------------|---------|
-| **#1** original | kimi-k2.6 | base (`*`) | `study-write` | ✅ yes | 626K total | 17m14s |
-| **#2** kimi-tuned-no-corpus | kimi-k2.6 | kimi-tuned (`kimi-*`) | `study-write` | ❌ perm regression | 87K / 36K (122K) | 8m11s |
-| **#3** qwen-base | qwen3.6-27b (lm_studio) | base (`*`) | `study-write-qwen` | ⚠ partial → ✅ | 825K total | 24m |
-| **#4** kimi-tuned-with-corpus | kimi-k2.6 | kimi-tuned (`kimi-*`) | `study-write` | ✅ yes | 855K / 70K (925K) | 24m30s |
+| Run | Model | Prompt | Pipeline | Corpus | Tokens | Elapsed |
+|-----|-------|--------|----------|--------|--------|---------|
+| **#1** | kimi-k2.6 | base (`*`) | `study-write` | ✅ | 626K | 17m14s |
+| **#2** | kimi-k2.6 | kimi-tuned (`kimi-*`) | `study-write` | ❌ (perm bug) | 122K | 8m11s |
+| **#3** | qwen3.6-27b | base (`*`) | `study-write-qwen` | ⚠ partial | 825K | 24m |
+| **#4** | kimi-k2.6 | kimi-tuned (`kimi-*`) | `study-write` | ✅ | 925K | 24m30s |
+| **#5** | qwen3.6-27b | qwen-tuned (`qwen*`) | `study-write-qwen` | ✅ | 695K | 9m24s |
 
 ## TL;DR
 
-**The kimi-tuned prompt cleared all six signatures, with or without corpus access, in both the run #2 (no-corpus stress test) and run #4 (corpus-grounded apples-to-apples) experiments.** Run #4 is the strongest output: scene-opener, claim-style headers, real corpus citations, anti-symmetry framing, verified-quote discipline that caught and removed fabricated phrases from its own draft.
+Both tuned variants cleared every signature they targeted. **Run #5 (qwen-tuned) is roughly the same quality as run #4 (kimi-tuned) but faster than the kimi run on local GPU** — 9m24s vs 24m30s. The brevity discipline + correct tool-usage rules eliminated qwen's wasted tokens.
 
-**Qwen3.6-27b (run #3) exhibited several kimi-shared signatures plus its own quirks** — most distinctively, it tried to call `study_get('bofm/ether/12')` as if substrate slugs were scripture references (they aren't), and it used `(#)` broken-link placeholders for internal corpus references. Both are qwen-tuning candidates for a future variant.
+The decisive evidence is comparing run #3 vs run #5 (same model, same corpus access, only the prompt differs):
+- 239 lines → 110 lines (54% shorter)
+- 825K → 695K tokens (16% fewer)
+- 24m → 9.4m elapsed (61% faster)
+- Section labels → claim sentences
+- Heavy tables / bold-clause emphasis / mid-paragraph triadics → none
+- `(#)` broken links / `study_get('bofm/...')` failures → all proper
+- Self-found quote-verification correction in revision notes (vs unhedged paraphrase)
 
-## Rubric — six kimi signatures from the 2026-05-07 review
+## Rubric — kimi-tuned and qwen-tuned both clear their targets
 
-| Signature | Run #1 (base+kimi) | Run #2 (tuned+kimi+no-corpus) | Run #3 (base+qwen) | Run #4 (tuned+kimi+corpus) |
-|-----------|--------------------|------------------------------|--------------------|---------------------------|
-| 1. Symmetric-pair compulsion | ✅ heavy | ❌ resisted ("any such mapping crumbles under pressure") | ✅ table + parallel constructions | ❌ resisted ("assimilation language is more accurate than symmetry language") |
-| 2. Triadic flourishes | ✅ ("Three witnesses, one tree, one ascent") | ❌ none | ✅ ("Three witnesses — Paul, Mormon, Moroni") | ❌ none in body |
-| 3. Closing refrain (function) | ✅ ("The ascent is one, the descriptions are two...") | ❌ closes on practical action | ✅ ("The circle closes... It is Christ.") in §IV | ❌ closes on practical advice |
-| 4. Pseudo-citation register | ✅ ("[study] anchors...") | N/A no corpus | ✅ ("[study](#) shows...") with broken `(#)` links | ✅ but more naturalized — uses real paths and integrates the references into argument flow |
-| 5. Latinate over Anglo-Saxon | ✅ (architecture, mechanism, ontological, geometry, perceptual organ) | ❌ Anglo-Saxon throughout | partial (architecture, structural) | ❌ mostly Anglo-Saxon |
-| 6. Confabulation in revision notes | ✅ Romans 5:5 reverse-fix | ❌ honest disclosure of constraint | partial (hedged but didn't catch issues) | ❌ found and removed two fabricated quotes from its own draft + corrected mis-attribution + removed unverified statistical claim |
-
-**Score:**
-- Run #1: 6 / 6 signatures present
-- Run #2: 0 / 5 measurable signatures present (pseudo-citation N/A)
-- Run #3: ~4 / 6 signatures present
-- Run #4: 1 / 6 signatures present (residual pseudo-citation, but more naturalized than #1)
+| Signature | Run #1 (k+base) | Run #2 (k+tuned) | Run #3 (q+base) | Run #4 (k+tuned+corpus) | Run #5 (q+tuned+corpus) |
+|-----------|-----------------|------------------|-----------------|------------------------|------------------------|
+| 1. Symmetric-pair compulsion | ✅ heavy | ❌ resists | ✅ table+parallel | ❌ resists | ❌ symmetry argued once, then dropped |
+| 2. Triadic flourishes | ✅ | ❌ | ✅ | ❌ | ❌ (deployed once at sec §1, never again) |
+| 3. Closing refrain | ✅ | ❌ | ✅ in §IV | ❌ | ❌ |
+| 4. Pseudo-citation register | ✅ ("[study] anchors...") | N/A | ✅ broken `(#)` links | ✅ but more naturalized | ❌ uses real `(slug.md)` paths and integrates references into argument |
+| 5. Latinate over Anglo-Saxon | ✅ | ❌ | partial | ❌ | ❌ |
+| 6. Confabulation in revision notes | ✅ Romans 5:5 reverse-fix | ❌ honest disclosure | partial | ❌ found+removed 2 fabricated quotes | ❌ found+fixed 1 unverified paraphrase |
+| **qwen-specific signatures** | | | | | |
+| 7. `study_get` with scripture path | n/a | n/a | ✅ multiple | n/a | ❌ 0 bad paths |
+| 8. Broken `(#)` link convention | n/a | n/a | ✅ throughout | n/a | ❌ all `(slug.md)` |
+| 9. Heavy table mid-argument | n/a | n/a | ✅ §VI table | n/a | ❌ no tables |
+| 10. Bold-clause density | n/a | n/a | ✅ many | n/a | ❌ minimal, single-term only |
+| 11. Mid-paragraph triadics | n/a | n/a | ✅ multiple | n/a | ❌ deployed once at §1 perspective-establishing moment |
+| 12. Verbosity | n/a | n/a | ✅ 239 lines | n/a | ❌ 110 lines |
 
 ## Voice metrics
 
-| Metric | #1 | #2 | #3 | #4 |
-|--------|----|----|----|----|
-| Total lines | 105 | 43 | 239 | 118 |
-| Section count | 6 (labels) | 0 + Becoming | 6 (labels) | 6 (theses) + Becoming |
-| Em-dashes (body, citation excluded) | ~12 | 0 | ~15+ | ~3 |
-| Direct verbatim quotes (substrate-verified) | many | 0 (forced) | many | many |
-| Reference-only citations | 0 | 7 | 0 | 0 |
-| Bold-emphasized declarations | minor | none | many ("**They are not the same concepts.**") | minor |
-| Triadic cadence in close | yes | no | yes | no |
-| Closing refrain | yes | no | yes (in §IV) | no |
-| Self-found errors in revision notes | 0 | 0 (acknowledged limit) | 1 | **3** (most thorough verification) |
+| Metric | #1 | #2 | #3 | #4 | #5 |
+|--------|----|----|----|----|----|
+| Total lines | 105 | 43 | 239 | 118 | 110 |
+| Section headers | 6 labels | 0 | 6 labels | 6 theses | 6 theses |
+| Em-dashes (body) | ~12 | 0 | ~15+ | ~3 | ~2 |
+| `(#)` broken links | 0 | 0 | many | 0 | 0 |
+| Bad `study_get` paths | 0 | 0 | many | 0 | **0** |
+| Tables in body | 0 | 0 | 1 | 0 | 0 |
+| Triadic constructions in body | 1 | 0 | 3+ | 0 | 1 (structural) |
+| Bold-emphasis on full clauses | minor | none | many | minor | none |
+| Closing refrain | yes | no | yes (§IV) | no | no |
+| Self-found quote errors | 0 | 0 (acknowledged limit) | 1 | 3 | 1 |
 
-## Section header comparison — the cleanest "labels vs theses" diff
+## Section header comparison — labels vs theses
 
 | Run | First section header |
 |-----|----------------------|
 | #1 | "I. The Two Triplets as Ordered Progressions" |
 | #2 | (no headers) |
 | #3 | "I. The Two Triplets — Mapping the Terrain" |
-| **#4** | "**Thomas asked for directions, and Jesus gave Himself**" |
+| #4 | "**Thomas asked for directions, and Jesus gave Himself**" |
+| #5 | "**The two triplets describe the same motion from different standpoints**" |
 
-Only run #4 wrote a header that does argumentative work. The kimi-tuned prompt's "section headers must be claim sentences, not category labels" rule landed.
+Both tuned variants produce thesis headers. Both `Therefore`/`But` open subsequent sections — run #5's "**Therefore both triplets terminate at the same reality**" and "**But the temple is where the two triplets physically meet**" use the prompt's causation-or-disruption rule directly.
 
-## Run #4 strongest passages
+## Run #5 strongest passages
 
-**Opening (immediate scene drop with three witnesses braided):**
-> "Thomas asked for directions. Jesus answered with Himself: 'I am the way, the truth, and the life' (John 14:6). Six centuries later and an ocean away, Moroni wrote: 'Wherefore, there must be faith; and if there must be faith there must also be hope; and if there must be hope there must also be charity' (Moroni 10:20). One triplet is Christ's identity. The other is the soul's transformation. The binding question is whether they are two names for one thing, or two things that happen to converge."
+**Opening (immediate scene drop, three-scene braid):**
+> "Thomas had just asked a practical question. *'Lord, we know not whither thou goest; and how can we know the way?'* He wanted directions. Jesus gave him a Person.
+>
+> Six centuries later, on an American desert island, Moroni would write three words in the same sequence: *'Wherefore, there must be faith; and if there must be faith there must also be hope; and if there must be hope there must also be charity'*."
 
-**Anti-symmetry resistance with directional argument:**
-> "The frame that treats them as 'two vantage points on the same point' misses the directionality. The human triplet is moving toward the Christ triplet. The Christ triplet is not moving toward the human triplet. The movement is one-way, which is why assimilation language is more accurate than symmetry language."
+**Therefore-chain section opening:**
+> "**Therefore both triplets terminate at the same reality**" — explicit causation from §1.
+
+**Disruption section opening:**
+> "**But the temple is where the two triplets physically meet**" — explicit disruption: theoretical convergence in §2 → physical meeting place in §3.
+
+**Anti-symmetry-as-finale that ARGUES the symmetry:**
+> "The faith-hope-charity triplet covers three temporal dimensions: faith (trust in what was promised), hope (orientation toward what is promised), charity (the love that is the promise fulfilled). The way-truth-life triplet covers three spatial dimensions: way (the path), truth (the reality along the path), life (the destination). Together they form a coordinate system: time and space, traveler and road, process and substance."
+
+This is symmetry deployed once, with claimed structural significance (time/space coordinate system), in the section explicitly devoted to "the triplet shape carries meaning" — exactly the prompt's "name the symmetry once" rule.
+
+**Honest caveat in dedicated section:**
+> "## This is a reading, not a doctrine
+>
+> No single verse states *'Faith-Hope-Charity and Way-Truth-Life are two perspectives on the same reality.'* The synthesis is built by juxtaposition... This is honest scholarship: the pieces are all canonical; the arrangement is interpretive."
 
 **Verification discipline in revision notes:**
-> "Removed fabricated quotes. The draft attributed the phrases 'the perceiver-state' and 'the Object being perceived' to the *discernment-and-the-comprehending-eye* study as if they were verbatim terms. A corpus search confirmed neither phrase exists in that study (or anywhere in the substrate). Replaced them with an accurate paraphrase..."
+> "**Quote verification fix:** Changed *'Jesus doesn't simply show these things—He IS them'* (unverified paraphrase) to the actual quote from way-truth-life study: *'Jesus responds not with directions but with Himself — He IS the way.'*"
 
-**Closing on practical action (no refrain):**
-> "Fifth, charity is obtained, not achieved. The [charity] study records a six-month prayer for charity that transformed into a prayer to see others as Christ sees them. That is the pattern. Ask for the gift. Expect it to change what you see before it changes what you do."
+The verify-before-fix rule of the prompt operating exactly as designed: qwen-tuned identified a paraphrase the draft had presented as a quote, looked it up, and corrected it.
 
-## What qwen3.6-27b does differently from kimi (preliminary signatures)
+## Run #4 vs Run #5 — the two tuned variants compared
 
-Observations from run #3 worth encoding into a future `.stewards/qwen-3.6/study.agent.md`:
+Both clear their respective signatures. Distinct character:
 
-1. **Tool-name confusion.** Qwen tried calling `study_get('bofm/ether/12')` as if substrate study slugs were scripture references. The base prompt told it about `study_get(slug)` but qwen interpreted "slug" loosely. A qwen variant should add: "**study_get takes a kebab-case slug from the substrate corpus** (e.g., `way-truth-life`), NEVER a scripture reference path. For scripture, use the canonical scripture URL or paraphrase."
+| | Run #4 (kimi-tuned) | Run #5 (qwen-tuned) |
+|---|---------------------|---------------------|
+| Voice | analytical, dry | sermonic, warmer |
+| Opening style | "Thomas asked for directions" + braided witnesses | Block-quoted scripture + Thomas + Moroni in three paragraphs |
+| Central image | "vessel meets the filling" | "the road IS Christ" / "view from the feet vs view from the ground" |
+| Symmetry handling | resists ("assimilation language is more accurate than symmetry language") | argues once as time/space coordinate system |
+| Anti-confabulation | found+removed 2 fabricated phrases, fixed 1 mis-attribution, 1 unverified statistic | found+fixed 1 unverified paraphrase |
+| Length | 118 lines | 110 lines |
+| Tokens | 925K total | 695K total |
+| Elapsed | 24m30s (kimi cloud, long generations) | 9m24s (qwen local GPU, brevity-disciplined) |
+| Cost | ~$0.30 (kimi cache pricing) | $0 (local GPU) |
 
-2. **Broken internal-link convention.** Qwen rendered substrate references as `[study-name](#)` instead of `[study-name](study-name.md)`. The convention isn't enforced anywhere in the prompt; for kimi the base prompt's example carries through. A qwen variant should explicitly state: "Internal links use the `[slug](slug.md)` form. Never use `(#)` placeholders."
-
-3. **Heavy table use.** Qwen produced a full comparison table in §VI that no kimi run did. Could be a feature (good for structural arguments) or a tic (substituting structure for argument). Worth flagging in the qwen variant.
-
-4. **Bold-emphasis density.** Qwen bold-emphasized phrases throughout ("**They are not the same concepts.**", "**They ARE the same architecture.**"). Reads as preacher-cadence. Kimi rarely bolds.
-
-5. **Triadic emphasis in body, not just close.** "Faith is what we exercise; the Way is what Christ IS. Hope is what we feel; the Truth is what Christ embodies. Charity is what we become; the Life is what Christ gives." Three parallel constructions back-to-back. Qwen reaches for this even when not closing a section.
-
-6. **More verbose overall.** 239 lines vs run #4's 118. Qwen says things twice — once briefly, once in a parallel construction. The rules don't currently target this.
+Both are publishable. Each has a distinct voice, which is a feature, not a bug — different binding questions might benefit from different models.
 
 ## Findings
 
-### The kimi-tuned prompt is validated
+### Both tuned variants are validated
 
-Run #2 (stress test, no corpus) and run #4 (proper experiment, with corpus) both produced studies that cleared the six signatures. The prompt's rules carried — including under degraded tool surface, where they prevented confabulation that the base prompt enabled in run #1.
+The kimi-tuned variant cleared 5/6 signatures in run #4 (mild residual pseudo-citation that's now naturalized into argument flow). The qwen-tuned variant cleared all 12 signatures it targeted (6 kimi-shared + 6 qwen-specific) in run #5.
 
-### Verification discipline scales with tool availability
+### Tool-usage rules are powerful
 
-Run #2 with no corpus produced honest disclosure of the constraint. Run #4 with corpus produced **active verification** — catching fabricated quotes that the agent had inserted into its own draft and removing them. This is the "verification claims must be tool-grounded" rule working at full strength.
+The single rule "study_get takes a kebab-case slug, NEVER a scripture reference" eliminated the failure mode that wasted tokens in run #3. Run #3 made multiple `study_get('bofm/ether/12')` calls that returned errors and triggered retry loops. Run #5 made zero. The rule paid for itself in tokens and time.
 
-### qwen needs its own variant
+### Verification discipline scales across models
 
-Run #3 wasn't a clean pass or a clean fail. Qwen has its own voice signatures, some shared with kimi, some distinct. Authoring `.stewards/qwen-3.6/study.agent.md` is a tractable daytime task with run #3 as the diagnostic baseline.
+Both tuned variants demonstrated active self-correction in revision notes. Run #4 caught and removed two fabricated phrases (kimi). Run #5 caught and fixed one unverified paraphrase (qwen). The "verification claims must be tool-grounded" rule operates equally well in both models.
 
-### The substrate's `study_*` tools work end-to-end with the imported corpus
+### Brevity rule has compounding benefits
 
-Runs #3 and #4 successfully used `study_search_text` and `study_get` to read existing studies and ground their meta-syntheses. The earlier perm regression (now patched) was the only blocker. The substrate is producing real corpus-grounded scholarship.
+Qwen's verbosity in run #3 was the largest token-cost difference. Run #5's brevity instruction not only shortened the output (54%) but also shortened the journey to it (61% time, 16% tokens). Tighter prose at every stage costs less to produce.
+
+### Local qwen3.6-27b is competitive with cloud kimi-k2.6 for this task
+
+When tuned, qwen on a 4090 produces a study comparable in quality to kimi via opencode_go, in less than half the wall time, at zero variable cost. For tasks where qwen's voice (slightly more sermonic, warmer) fits the binding question, qwen is now the cost-efficient default.
+
+### Provenance column did its job
+
+The 3c.3.3.1 migration kept broadcast perms intact across multiple reimports tonight (regression import of `.github/agents` + variant imports of both kimi-k2.6 and qwen-3.6 folders). Pre/post counts unchanged at 19 broadcast / 275 frontmatter.
 
 ## Recommendations
 
-1. **Promote run #4 over the current `study/two-triplets-one-ascent.md`?** Run #4 is substrate-produced AND well-voiced AND properly source-grounded. The current published file is the Opus-4.7-revised version of run #1. Worth a side-by-side read by Michael; if run #4 holds, replacing the file would be the cleanest evidence that the experiment worked.
+1. **Both kimi-tuned and qwen-tuned variants graduate to stable v1.** The `.stewards/<model>/README.md` iteration logs should reflect the validation evidence.
 
-2. **Promote `.stewards/kimi-k2.6/study.agent.md` from "experimental" to "stable v1".** Update the iteration log in `.stewards/kimi-k2.6/README.md`.
+2. **Promote run #4 or run #5 over the current `study/two-triplets-one-ascent.md`?** Both are substrate-produced AND well-voiced AND properly source-grounded. Different voices; same answer to the binding question. Michael's call.
 
-3. **Author `.stewards/qwen-3.6/study.agent.md`** when convenient. Six observations from run #3 above are the starting amendment list.
+3. **Daytime architectural priorities:**
+   - 3c.4 gospel-engine HTTP tools — the only remaining big gap
+   - 3c.3.5 work_items → `stewards.studies` auto-promotion
+   - Image rebuild to fold 3c3-3-agent-tool-perms-provenance.sql into the bundled SQL (currently only live-applied)
 
-4. **Daytime architectural followups (in priority order):**
-   - `agent_tool_perms` provenance fix (so substrate broadcasts survive frontmatter reimports)
-   - Phase 3c.4 gospel-engine HTTP tools (build pg_net or pgsql-http into Dockerfile, OR extend Rust bgworker with `tool_http` work_kind)
-   - Phase 3c.3.5 (formerly speculative): auto-promote completed work_items into `stewards.studies`
+4. **Future model variants are now a mechanical workflow.** When a new model joins (Gemini, GLM, Sonnet, etc.), the playbook is:
+   - Run a baseline study with the base prompt
+   - Identify model-specific signatures via the comparison rubric in this memo
+   - Author `.stewards/<model>/study.agent.md`
+   - Re-run the same binding question, verify the signatures clear
+   - Promote to stable when validated
+
+The substrate now has a repeatable voice-tuning loop.

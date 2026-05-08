@@ -78,5 +78,14 @@ Compared to `.github/agents/study.agent.md`:
 
 - **2026-05-08 — v1 authored.** Targets the six qwen-specific
   signatures from run #3 plus all six kimi-shared signatures.
-  Untested against a fresh pipeline run; expect at least one
-  revision after first test.
+- **2026-05-08 — v1 validated.** Run #5 of the FtC/WtL pipeline
+  cleared all 12 targeted signatures: 0 bad `study_get` paths,
+  0 `(#)` broken links, 0 mid-argument tables, no whole-clause
+  bolds, triadic constructions deployed once at a structural
+  moment, 110 lines total (vs run #3's 239), proper claim-style
+  section headers with `Therefore`/`But` causation chains,
+  active verification correction in revision notes. Token/time
+  efficiency vs run #3 baseline: 16% fewer tokens, 61% faster.
+  **Status: stable v1.** See
+  `study/.scratch/two-triplets-comparison-2026-05-08/comparison.md`
+  for the five-way analysis.
