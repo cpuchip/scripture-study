@@ -48,14 +48,16 @@ Single 4246-line file, no module structure. Mixes:
 | 3911-4218 | `tool_dispatch`, `exec_one_tool`, `exec_sql_fn_tool`, `exec_http_tool` | `tools.rs` |
 | 4220-4246 | (final tail — likely diagnostic helpers) | TBD |
 
-## Risks identified before starting
+## Risks identified before starting (and how research resolved them)
 
-1. **`pgrx` macro visibility.** `#[pg_extern]` and `extension_sql_file!` may need to be at crate root to register correctly with pgrx's build system. Splitting them across modules could break extension generation.
-2. **`extension_sql_file!` `requires=` chain.** Macros declare named dependencies between SQL blocks. If we move them to a submodule, the macro names still need to be unique across the crate. Probably fine since they're already namespaced.
-3. **`#[pg_guard]` on `_PG_init`.** Bgworker entry point. May need to stay in `lib.rs` or be `pub use`'d from `bgworker.rs`. Will verify.
-4. **Cross-module visibility.** Functions currently default-private (no `pub`). Moving them across modules requires `pub` annotations or `pub(crate)` for crate-internal sharing.
-5. **`reqwest` and tokio runtime.** The bgworker uses a blocking reqwest client. Moving the HTTP dispatch to a separate module shouldn't change runtime behavior, but type signatures may need adjusting.
-6. **Compile-time impact.** The whole point. Want to measure before/after.
+**Update 2026-05-08 after research:** all four pgrx-macro-visibility concerns turned out to be unfounded. Detailed answers in the new `.github/skills/pgrx-rust/SKILL.md` skill. Summary:
+
+1. **`pgrx` macro visibility — RESOLVED.** `#[pg_extern]`, `extension_sql!`, `extension_sql_file!`, `#[pg_guard]` all work in submodules. pgrx's SQL emitter walks the entire crate via `pgrx_embed.rs` and harvests metadata symbols regardless of source-file location. **Reference:** pg_vectorize puts `_PG_init` two levels deep at `extension/src/workers/pg_bgw.rs` with no `pub use` re-export.
+2. **`extension_sql_file!` `requires=` chain — RESOLVED.** Names resolve via dependency graph, not lexical position. **One real gotcha discovered:** `extension_sql_file!("../sql/foo.sql")` paths are FILE-relative, not crate-relative. Adjust paths if blocks move to a nested directory. Our moves stay at `src/` depth so this doesn't bite us, but worth remembering.
+3. **`#[pg_guard]` on `_PG_init` — RESOLVED.** Works in any submodule. Postgres finds it at `dlopen` time via C linkage; module path doesn't matter. Plain `mod bgworker;` is enough — no `pub use` needed.
+4. **Cross-module visibility — minor.** `pub(crate)` on items used across modules. Default visibility hides items from siblings. Compiler errors are clear and easy to fix.
+5. **`reqwest` and tokio runtime — non-issue.** Just plain Rust function calls; module split doesn't affect runtime behavior.
+6. **Compile-time impact** still TBD. First move (providers.rs) didn't show measurable improvement because Cargo recompiles the whole crate on any source change. The win is *navigation* and future-edit-blast-radius, not compile time.
 
 ## Strategy
 
