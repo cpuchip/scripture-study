@@ -22,18 +22,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "mkdir -p .claude/cache 2>/dev/null; n=$(cat .claude/cache/last-ground.txt 2>/dev/null || echo 0); echo $((n+1)) > .claude/cache/last-ground.txt",
-            "timeout": 5
-          }
-        ]
-      }
-    ],
-    "Stop": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "n=$(cat .claude/cache/last-ground.txt 2>/dev/null || echo 0); if [ \"$n\" -gt 50 ]; then echo 0 > .claude/cache/last-ground.txt; printf '{\"hookSpecificOutput\":{\"hookEventName\":\"Stop\",\"additionalContext\":\"Re-grounding check: %s tool uses since last refresh. Re-read .mind/active.md, .spec/covenant.yaml, and .mind/intent.yaml before continuing. Are your current actions still aligned with the intent? If you have drifted, course-correct now.\"}}' \"$n\"; fi",
+            "command": "mkdir -p .claude/cache 2>/dev/null; n=$(cat .claude/cache/last-ground.txt 2>/dev/null || echo 0); n=$((n+1)); if [ \"$n\" -gt 50 ]; then echo 0 > .claude/cache/last-ground.txt; printf '{\"hookSpecificOutput\":{\"hookEventName\":\"PostToolUse\",\"additionalContext\":\"Re-grounding check: 50+ tool uses since last refresh. Re-read .mind/active.md, .spec/covenant.yaml, and .mind/intent.yaml before continuing. Are your current actions still aligned with the intent? If you have drifted, course-correct now.\"}}'; else echo $n > .claude/cache/last-ground.txt; fi",
             "timeout": 10
           }
         ]
