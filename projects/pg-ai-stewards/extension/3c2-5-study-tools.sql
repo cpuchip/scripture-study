@@ -338,8 +338,12 @@ SET description    = EXCLUDED.description,
 -- glob_match: `study_*` is length 7, beats `*: deny` (length 1)
 -- via the longest-match-wins resolver.
 -- ---------------------------------------------------------------------
-INSERT INTO stewards.agent_tool_perms (agent_family, tool_pattern, action)
-SELECT DISTINCT a.family, 'study_*', 'allow'
+-- Tagged source='broadcast' (per 3c3-3) so the importer's reimport-DELETE
+-- (filtered by source='frontmatter') doesn't wipe it. ON CONFLICT updates
+-- only `action` to avoid downgrading a row that the agent's frontmatter
+-- has since declared explicitly.
+INSERT INTO stewards.agent_tool_perms (agent_family, tool_pattern, action, source)
+SELECT DISTINCT a.family, 'study_*', 'allow', 'broadcast'
   FROM stewards.agents a
  WHERE a.family NOT LIKE 'watchman%'
 ON CONFLICT (agent_family, tool_pattern) DO UPDATE

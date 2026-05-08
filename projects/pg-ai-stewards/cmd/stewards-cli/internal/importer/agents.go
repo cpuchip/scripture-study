@@ -161,16 +161,22 @@ func upsertAgent(ctx context.Context, pool *pgxpool.Pool, a *AgentDoc) error {
 		return nil
 	}
 
-	// 3. Clear existing tool perms for this family so removed tools
-	//    actually disappear on reimport.
+	// 3. Clear existing FRONTMATTER tool perms for this family so removed
+	//    tools actually disappear on reimport. Critically: do NOT touch
+	//    rows where source='broadcast' or source='manual' — those are
+	//    substrate-internal grants (e.g. 3c.2.5's blanket study_*: allow)
+	//    that the importer doesn't own. See 3c3-3-agent-tool-perms-provenance.sql
+	//    for the column rationale.
 	if _, err := pool.Exec(ctx,
-		`DELETE FROM stewards.agent_tool_perms WHERE agent_family = $1`,
+		`DELETE FROM stewards.agent_tool_perms
+		  WHERE agent_family = $1 AND source = 'frontmatter'`,
 		a.Family,
 	); err != nil {
 		return fmt.Errorf("clear tool perms %s: %w", a.Family, err)
 	}
 
 	// 4. Insert deny-* + allow-skill + one allow per declared tool.
+	//    All rows from this path are tagged source='frontmatter'.
 	rules := [][2]string{{"*", "deny"}, {"skill", "allow"}}
 	for _, t := range a.Tools {
 		// Skip 'skill' if the agent already declared it; we always
@@ -182,12 +188,17 @@ func upsertAgent(ctx context.Context, pool *pgxpool.Pool, a *AgentDoc) error {
 		rules = append(rules, [2]string{t, "allow"})
 	}
 	for _, r := range rules {
+		// ON CONFLICT updates `action` and `source` so a previously
+		// broadcast/manual row that's now declared in frontmatter gets
+		// re-tagged as frontmatter (and will be cleaned up properly on
+		// the next import).
 		if _, err := pool.Exec(ctx,
 			`INSERT INTO stewards.agent_tool_perms
-			    (agent_family, tool_pattern, action)
-			 VALUES ($1, $2, $3)
+			    (agent_family, tool_pattern, action, source)
+			 VALUES ($1, $2, $3, 'frontmatter')
 			 ON CONFLICT (agent_family, tool_pattern) DO UPDATE
-			 SET action = EXCLUDED.action`,
+			 SET action = EXCLUDED.action,
+			     source = 'frontmatter'`,
 			a.Family, r[0], r[1],
 		); err != nil {
 			return fmt.Errorf("insert tool perm %s/%s: %w", a.Family, r[0], err)

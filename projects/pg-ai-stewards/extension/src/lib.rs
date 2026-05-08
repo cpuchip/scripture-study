@@ -2549,6 +2549,12 @@ extension_sql_file!(
     requires = ["create_stage_templating_and_study_write"],
 );
 
+extension_sql_file!(
+    "../3c3-3-agent-tool-perms-provenance.sql",
+    name = "create_agent_tool_perms_provenance",
+    requires = ["create_trigger_bugfixes_3c3_1"],
+);
+
 // ---------------------------------------------------------------------------
 // Diagnostic SQL functions
 // ---------------------------------------------------------------------------
