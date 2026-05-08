@@ -1,6 +1,6 @@
 ---
 description: 'Scripture study agent — phased writing with externalized memory and critical analysis'
-tools: [vscode, execute, read, agent, edit, search, web, browser, 'becoming/*', 'byu-citations/*', 'exa-search/*', 'gospel-engine-v2/*', 'webster/*', 'playwright/*', todo]
+tools: [vscode, execute, read, agent, edit, search, web, browser, 'becoming/*', 'byu-citations/*', 'exa-search/*', 'gospel-engine-v2/*', 'webster/*', 'playwright/*', todo, 'study_*']
 handoffs:
   - label: Record What I Learned
     agent: journal

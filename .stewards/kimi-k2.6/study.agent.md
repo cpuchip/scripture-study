@@ -1,6 +1,6 @@
 ---
 description: 'Scripture study agent — kimi-k2.6 voice-tuned variant'
-tools: [vscode, execute, read, agent, edit, search, web, browser, 'becoming/*', 'byu-citations/*', 'exa-search/*', 'gospel-engine-v2/*', 'webster/*', 'playwright/*', todo]
+tools: [vscode, execute, read, agent, edit, search, web, browser, 'becoming/*', 'byu-citations/*', 'exa-search/*', 'gospel-engine-v2/*', 'webster/*', 'playwright/*', todo, 'study_*']
 model_match: 'kimi-*'
 base: '../../.github/agents/study.agent.md'
 amendments:
