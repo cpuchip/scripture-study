@@ -103,5 +103,15 @@ Compared to `.github/agents/study.agent.md`:
 ## Iteration log
 
 - **2026-05-08 — v1 authored.** Targets the six kimi signatures
-  identified in the two-triplets review. Untested against a fresh
-  pipeline run; expect at least one revision after first test.
+  identified in the two-triplets review.
+- **2026-05-08 — v1 validated.** Two pipeline runs of the same FtC/WtL
+  binding question (run #2 no-corpus stress test + run #4 corpus-grounded
+  apples-to-apples) cleared 5/5 and 1/6 signatures respectively (the
+  residual signature in run #4 is a more naturalized version of the
+  pseudo-citation register). Run #4 actively caught and removed two
+  fabricated quotes from its own draft via `study_search_text` —
+  the "verification claims must be tool-grounded" rule working at
+  full strength. **Status: stable v1.** See
+  `study/.scratch/two-triplets-comparison-2026-05-08/comparison.md`
+  for the four-way diff against run #1 (base prompt) and run #3
+  (qwen + base prompt).

@@ -247,6 +247,31 @@ new `work_kind = tool_http` that uses reqwest directly. This avoids
 extension issues but touches the chat-dispatch code path that the
 soak depends on — same supervised-daytime caveat applies.
 
+### 05:24Z — all four runs terminal
+
+| Run | Status | Tokens | Elapsed |
+|-----|--------|--------|---------|
+| #2 | completed | 122K | 8m11s |
+| #3 | completed | 825K | 24m |
+| #4 | completed | 925K | 24m30s |
+
+Run #4 is the strongest. Caught and removed two fabricated quotes
+from its own draft via substrate corpus search. Restored Moroni
+attribution on a verse the draft mis-attributed to Mormon. Replaced
+"three continents, three centuries" with the substrate's verifiable
+"separated by oceans and centuries." This is the first substrate-
+produced study where the agent actively verified itself rather than
+confabulating verifications, which run #1 did with the Romans 5:5
+reverse-fix.
+
+Comparison memo, all four runs analyzed:
+`study/.scratch/two-triplets-comparison-2026-05-08/comparison.md`.
+Top-of-journal summary for Michael:
+`.spec/journal/2026-05-08-overnight-summary-for-michael.md`.
+
+Status: kimi-k2.6 study variant promoted from experimental to
+stable v1. Updated iteration log in `.stewards/kimi-k2.6/README.md`.
+
 ### 05:00Z — bug found: my reimport wiped substrate-internal perms
 
 While checking run #2's progress, found the kimi-tuned agent
