@@ -160,3 +160,113 @@ extension/src/
 
 Total LOC: 4265 (+19 from comments/headers). Image rebuilds cleanly. Live container restarted, soak re-enabled. Phase 3c.3.6 ships as v1; v2-v4 are documented above.
 
+### Move 2a — `types.rs` (2026-05-08)
+
+**Scope:** `WorkOutcome` enum (~58 lines). Pure type, prerequisite for tools.rs and bgworker.rs splits.
+
+**Result:**
+- lib.rs: 4137 → 4081 lines (-56)
+- types.rs: 64 lines (new)
+- Build clean
+
+**Surprises:** none. Single enum, marked `pub(crate)`, plain `mod types;` + `use types::WorkOutcome;` in lib.rs. Same pattern as providers.rs.
+
+### Move 2b — `tools.rs` (2026-05-08)
+
+**Scope:** `resolve_ref` + `tool_dispatch` + `exec_*` helpers (~390 lines).
+
+**Result:**
+- lib.rs: 4081 → 3685 lines (-396)
+- tools.rs: 418 lines (new, includes 23-line header)
+- Build clean
+
+**Mechanics:** Used `sed -i '3658,4045d' lib.rs` for the line-range delete since the block was too large for a clean Edit-tool match. Added `mod tools;` + `use tools::{resolve_ref, tool_dispatch};` to lib.rs.
+
+**Surprises:** none. The functions touched `pgrx::Spi`, `BackgroundWorker::transaction`, `reqwest`, `pgrx::PgTryBuilder` — all available via `use pgrx::prelude::*;` + `use pgrx::bgworkers::*;` in tools.rs.
+
+### Move 3 — `bgworker.rs` (2026-05-08)
+
+**Scope:** `_PG_init` + bgworker tick loop + `dispatch`/`embed`/`chat` (~1018 lines). The biggest single move.
+
+**Result:**
+- lib.rs: 3685 → 2658 lines (-1027)
+- bgworker.rs: 1041 lines (new)
+- Build clean
+
+**Mechanics:**
+- Used `sed -n '2634,3651p' lib.rs > /tmp/bgworker-body.rs` to extract
+- `cat header > bgworker.rs && cat body >> bgworker.rs` to assemble
+- `sed -i '2634,3651d' lib.rs` to remove
+- Added `mod bgworker;` to lib.rs (no `use` needed — nothing in lib.rs references bgworker functions; Postgres calls `_PG_init` via C linkage)
+- Cleaned up `use pgrx::bgworkers::*;` and `use std::time::{Duration, Instant};` from lib.rs (only bgworker uses them now)
+
+**Surprises:** none. The pgrx-rust skill research was 100% correct: `_PG_init` works in any submodule. No `pub use` needed. No `#[pg_guard]` placement issue. Plain `mod bgworker;` is enough.
+
+### Move 4 — `schema.rs` (2026-05-08)
+
+**Scope:** All `extension_sql!` blocks (~2412 lines). The largest extraction.
+
+**Result:**
+- lib.rs: 2658 → 246 lines (-2412)
+- schema.rs: 2432 lines (new)
+- Build clean
+- Smoke test on fresh DB: 4 agents, 7 tool_defs, 2 pipelines (matches pre-split baseline)
+- 30+ SQL entities discovered correctly
+
+**Mechanics:** Same `sed` extract-pattern as move 3. Added `mod schema;` to lib.rs declarations.
+
+**Surprises:** none. The `extension_sql!` blocks emitted correctly from the submodule. Per the pgrx-rust skill, pgrx walks the entire crate via `pgrx_embed.rs` for SQL discovery — module location doesn't matter. The `extension_sql_file!` macros stayed in lib.rs because their relative paths reference the file location of the macro call.
+
+## Final state after all moves
+
+```
+extension/src/
+├── lib.rs         246 lines  (was 4246, -94%)
+├── schema.rs     2432 lines  (extension_sql! DDL blocks)
+├── bgworker.rs   1041 lines  (_PG_init, tick loop, dispatch/embed/chat)
+├── tools.rs       418 lines  (resolve_ref, tool_dispatch, exec_* helpers)
+├── providers.rs   127 lines  (Provider, ProviderRegistry, Gospel config)
+└── types.rs        64 lines  (WorkOutcome enum)
+```
+
+**Total: 4328 lines (+82 from headers/breadcrumbs).**
+
+lib.rs now contains:
+- Module declarations (`mod bgworker; mod providers; mod schema; mod tools; mod types;`)
+- `use pgrx::prelude::*;` and `use providers::{...};`
+- `pgrx::pg_module_magic!()`
+- 16 `extension_sql_file!` macros (foldback chain — kept in lib.rs because relative paths point at `../foo.sql`)
+- 4 `#[pg_extern]` SQL-exposed wrappers: `version`, `pgrx_version`, `enqueue`, `providers_loaded`
+- The `#[cfg(test)] mod tests` and `pub mod pg_test` blocks (test framework requires crate-root visibility)
+
+## Verification
+
+- **Build:** all 5 commits' images built cleanly with `cargo pgrx package` reporting "Discovered 30 SQL entities" (no change from pre-split baseline)
+- **Smoke test on fresh DB after schema.rs split:** `CREATE EXTENSION CASCADE` clean, all expected substrate state present (4 agents, 7 tool_defs, 2 pipelines, work_item_promote_trg trigger, agent_tool_perms_source_check constraint, all major tables)
+- **Live container restart on the final image:** state preserved (6 substrate studies, 188 dirty queue, 19 broadcast / 275 frontmatter perm provenance), soak schedule_enabled re-flipped on, bgworker poll loop active with 4 providers
+
+## What this enables
+
+1. **Easier next-feature work.** When 3e (MCP) lands, the new module(s) will declare `mod mcp;` + `mod http_dispatch;` etc. without touching lib.rs's bulk.
+2. **Clearer ownership.** A bug in chat dispatch lives in bgworker.rs. A bug in DDL lives in schema.rs. Grep ranges are bounded.
+3. **Faster compile times for partial edits** (in theory — Cargo's incremental compilation works at file granularity for some cases, though `cargo pgrx package` does a full rebuild). Not measured.
+4. **Lower context-window cost** when reading parts of the codebase via the Read tool — no more 4000-line files.
+
+## Key skill: `pgrx-rust`
+
+Authored as `.github/skills/pgrx-rust/SKILL.md` based on research into pg_vectorize, ParadeDB pg_search, and pgrx examples. Captures the four critical questions (`_PG_init` placement, `extension_sql!` placement, `#[pg_extern]` placement, `pub use` re-exports) so future sessions don't have to re-derive them.
+
+## Time and effort
+
+- Research phase (delegated to general-purpose subagent): ~3 minutes
+- Skill authoring: ~10 minutes
+- Move 2a (types.rs): ~5 minutes including build
+- Move 2b (tools.rs): ~10 minutes including build
+- Move 3 (bgworker.rs): ~15 minutes including build (biggest move)
+- Move 4 (schema.rs): ~10 minutes including build
+- Final restart + verification: ~5 minutes
+
+**Total: ~1 hour** for what was estimated at 3-5 hours. The research front-loaded all the uncertainty; the moves themselves were mechanical once the pgrx-rust skill answered the visibility questions.
+
+The `sed` line-range pattern (`sed -n 'A,Bp' lib.rs > /tmp/body.rs && sed -i 'A,Bd' lib.rs`) was the right tool for >100-line moves where Edit's exact-string-match would be cumbersome.
+
