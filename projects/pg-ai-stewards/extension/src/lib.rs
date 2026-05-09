@@ -170,6 +170,12 @@ extension_sql_file!(
     requires = ["create_mcp_proxy_dispatch"],
 );
 
+extension_sql_file!(
+    "../3e2-4-fetch-md-seed.sql",
+    name = "create_fetch_md_seed",
+    requires = ["create_mcp_tool_cache_promote"],
+);
+
 // ---------------------------------------------------------------------------
 // Diagnostic SQL functions
 // ---------------------------------------------------------------------------

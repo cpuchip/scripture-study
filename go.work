@@ -5,6 +5,7 @@ use (
 	./scripts/brain
 	./scripts/byu-citations
 	./scripts/embedding-compare
+	./scripts/fetch-md-mcp
 	./scripts/gospel-engine
 	./scripts/chromem-exp
 	./scripts/gospel-library
