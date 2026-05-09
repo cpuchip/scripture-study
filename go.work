@@ -15,6 +15,7 @@ use (
 	./scripts/publish
 	./scripts/search-mcp
 	./scripts/session-journal
+	./scripts/study-export
 	./projects/pg-ai-stewards/cmd/stewards-cli
 	./projects/pg-ai-stewards/cmd/stewards-mcp
 	./scripts/webster-mcp
