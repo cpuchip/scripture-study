@@ -41,6 +41,18 @@ func main() {
 	log.SetPrefix("stewards-mcp: ")
 	log.SetFlags(log.LstdFlags | log.Lmicroseconds)
 
+	// Subcommand dispatch. The default mode (no subcommand) is the MCP
+	// stdio server for inbound tool calls (Phase 3e.1+). The `bridge`
+	// subcommand puts us in outbound MCP-client mode (Phase 3e.2.a) —
+	// connecting to external MCP servers and populating the substrate's
+	// mcp_tool_cache.
+	if len(os.Args) > 1 && os.Args[1] == "bridge" {
+		if err := runBridge(os.Args[2:]); err != nil {
+			log.Fatalf("bridge: %v", err)
+		}
+		return
+	}
+
 	// CLI flags. DSN can also come from STEWARDS_DSN env var (same as
 	// stewards-cli) so the .mcp.json config can stay terse.
 	var dsn string

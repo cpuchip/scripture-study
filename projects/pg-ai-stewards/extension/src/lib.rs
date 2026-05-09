@@ -152,6 +152,12 @@ extension_sql_file!(
     requires = ["create_agent_tool_perms_provenance"],
 );
 
+extension_sql_file!(
+    "../3e2-1-mcp-bridge-schemas.sql",
+    name = "create_mcp_bridge_schemas",
+    requires = ["create_work_items_to_studies_promotion"],
+);
+
 // ---------------------------------------------------------------------------
 // Diagnostic SQL functions
 // ---------------------------------------------------------------------------

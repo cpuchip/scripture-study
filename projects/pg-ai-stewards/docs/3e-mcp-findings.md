@@ -103,6 +103,134 @@ Four read-only inbound tools in a new `inspection.go` module:
 - **Write-mutating tools deferred to 3e.4 v2.** `work_item_create`, `work_item_dispatch`, `work_item_advance`, `watchman_pass_now`. Cost risk: a confused tool call could fire real model work. Mitigation: substrate's `token_budget` per work_item bounds blast radius, and Claude Code prompts for approval per tool. Still: let v1 read-only prove out before letting Claude Code drive the substrate.
 - **Module split (inspection.go separate from tools.go).** Clean concern boundary — studies-corpus tools in one file, runtime-state inspection in another. Future write-tool ops will go in their own file.
 
+## 3e.2.a v1 — shipped 2026-05-08
+
+### Scope
+
+First half of the outbound MCP-client path — schema + bridge daemon
+skeleton + multi-bgworker concurrency. Substrate now knows about the
+external MCP servers and can refresh their tool catalogs on demand.
+What's still missing (deferred to 3e.2.b/c) is the LISTEN/NOTIFY wire
+between bgworker `execute_target='mcp_proxy'` rows and the bridge.
+
+### What changed
+
+- **`stewards.mcp_servers`** registry table — name PK, transport
+  (stdio|http), command/args/url/env, enabled flag, telemetry columns
+  (last_health_check_at, last_tools_refresh_at, last_error). Transport
+  CHECK enforces stdio→command, http→url. Seven seed rows for
+  gospel-engine-v2, webster, yt, byu-citations, becoming, search,
+  exa-search — all `enabled=false` initially.
+- **`stewards.mcp_tool_cache`** table — per-server tool catalog
+  populated by `bridge refresh-tools`. Keys on (server_name, tool_name);
+  active=false soft-hides without losing schema. `input_schema` and
+  `output_schema` stored as jsonb so 3e.2.d can synthesize
+  `stewards.tool_defs` rows.
+- **`stewards.mcp_bridge_state`** view — at-a-glance: which servers
+  are responding, when they were last checked, how many tools cached.
+- **Multi-bgworker registration.** `_PG_init` now registers N (default
+  4, max 16, override `STEWARDS_DISPATCHER_WORKERS`) dispatcher
+  workers. Each tick-loops on the same `process_one_pending` claim
+  but `FOR UPDATE SKIP LOCKED` keeps them from racing. **Worker 0 is
+  the "leader"** — owns the once-per-postmaster stale-claim reaper
+  and the periodic Watchman scheduler tick. Other workers skip both
+  to avoid duplicating work.
+- **`stewards-mcp bridge refresh-tools`** subcommand. Reads
+  `mcp_servers WHERE enabled` (or `--all`), connects via
+  `CommandTransport` (stdio) or `StreamableClientTransport` (http),
+  calls `tools/list`, upserts results, stamps timestamps. Failures
+  are recorded in `last_error`; one server's failure doesn't abort
+  the rest. Resolves `$env:VARNAME` placeholders in the row's `env`
+  jsonb against the bridge process's environment.
+
+### Live-tested 2026-05-08
+
+```
+$ stewards-mcp bridge refresh-tools --all --timeout 60
+Refreshing 7 MCP server(s)
+  [ OK ] becoming             24 tool(s)
+  [ OK ] byu-citations         3 tool(s)
+  [ OK ] exa-search            1 tool  (Streamable HTTP, remote)
+  [ OK ] gospel-engine-v2      3 tool(s)
+  [FAIL] search                tools/list: invalid request
+  [ OK ] webster               5 tool(s)
+  [ OK ] yt                    4 tool(s)
+
+Refresh complete: 6/7 successful
+```
+
+40 tools cached. Both transport types (stdio + Streamable HTTP)
+verified. Multi-bgworker registration verified on both ephemeral
+smoke and live container restart — 4 workers spawn, exactly one
+becomes leader.
+
+### Surprises
+
+1. **search-mcp protocol mismatch.** Our DuckDuckGo MCP server
+   returns "invalid request" to `tools/list`. Likely an older MCP
+   protocol version that doesn't recognize the method, or a
+   deserialization bug in our server code. Out of scope for 3e.2.a;
+   noted in `last_error` so the operator sees it. Lowest-priority
+   server of the seven (DuckDuckGo can be hit via plain HTTP if
+   needed — that's the kind of fallback Path A `execute_target='http'`
+   exists for).
+
+2. **`StreamableClientTransport` doesn't expose Headers field.** For
+   bearer-token-authenticated remote MCP servers, auth has to flow
+   through a custom `http.Client.Transport` wrapping
+   `http.DefaultTransport` with a `RoundTripper` that injects
+   `Authorization`. Tonight's seed only has exa-search using token
+   in URL (`?token=...`), so we don't hit this. Document for the
+   first server that needs it.
+
+3. **`extension_sql_file!` foldback was mechanical.** Just added one
+   `extension_sql_file!("../3e2-1-mcp-bridge-schemas.sql", name=...,
+   requires=["create_work_items_to_studies_promotion"])` block in
+   `lib.rs` and one entry to the Dockerfile COPY. The pgrx-rust skill
+   was right: file location of `extension_sql!`/`extension_sql_file!`
+   doesn't matter; only the dependency-graph names do. Built clean
+   first try.
+
+4. **`pg_sys::Datum::from(u64)` + `arg.value() as usize`** is the
+   correct round-trip for passing a worker index through
+   `BackgroundWorkerBuilder::set_argument()`. Verified working;
+   compiled clean first try.
+
+5. **Soft-deactivation of stale tools.** When `tools/list` returns
+   N tools, we `UPDATE ... SET active=false WHERE tool_name <> ALL($2)`
+   — but Postgres doesn't accept `<> ALL(empty array)`. Padded with
+   a sentinel empty string when the server returns zero tools. Edge
+   case but worth getting right.
+
+### What 3e.2.a does NOT include
+
+- **bgworker `execute_target='mcp_proxy'` dispatch arm.** Substrate
+  agents can't yet route a tool call to the bridge. That's 3e.2.c.
+- **LISTEN/NOTIFY wire** between substrate and bridge. Same.
+- **Long-running `bridge run` daemon.** Today's `refresh-tools` is a
+  one-shot. Daemon mode is needed before `mcp_proxy` can work.
+- **Auto-promotion of cached tools to `stewards.tool_defs`.** Each
+  cached tool would synthesize a tool_def with deny-by-default
+  agent_tool_perms. That's 3e.2.d.
+- **Bearer-token headers for HTTP transport** (item 2 above).
+- **Linux-in-Docker bridge** (Michael's preferred long-run shape).
+  Tonight runs the bridge on the Windows host because the binaries
+  live there. Future migration when 3e.2.c lands.
+
+### Files
+
+```
+projects/pg-ai-stewards/extension/
+├── 3e2-1-mcp-bridge-schemas.sql   # registry + cache + 7 seed rows + view
+├── src/lib.rs                     # +1 extension_sql_file! block
+├── src/bgworker.rs                # multi-worker registration + leader gating
+└── Dockerfile                     # +1 COPY entry
+
+projects/pg-ai-stewards/cmd/stewards-mcp/
+├── main.go                        # +bridge subcommand dispatch
+└── bridge.go                      # NEW — refreshOneServer, transports, upserts
+```
+
 ## Future sub-phases (planned)
 
 ### 3e.2 — outbound HTTP path (the former 3c.4)

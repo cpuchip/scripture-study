@@ -73,19 +73,47 @@ pub extern "C-unwind" fn _PG_init() {
     );
     let _ = GOSPEL_ENGINE_CONFIG.set(ge_cfg);
 
-    BackgroundWorkerBuilder::new("pg_ai_stewards dispatcher")
-        .set_function("stewards_dispatcher_main")
-        .set_library("pg_ai_stewards")
-        .enable_spi_access()
-        .set_restart_time(Some(Duration::from_secs(5)))
-        .load();
+    // Phase 3e.2.a — register N dispatcher workers. Each worker runs
+    // the same tick loop but claims rows independently via FOR UPDATE
+    // SKIP LOCKED, so concurrent draining is safe. The first worker
+    // (index 0) is also responsible for once-per-postmaster startup
+    // chores (stale-claim reaper) and the periodic Watchman scheduler
+    // tick — those would race or duplicate work if all N ran them.
+    //
+    // Worker count is configurable via STEWARDS_DISPATCHER_WORKERS,
+    // defaulting to 4. Cap at 16 to keep postmaster registration tidy.
+    let worker_count: usize = std::env::var("STEWARDS_DISPATCHER_WORKERS")
+        .ok()
+        .and_then(|s| s.parse().ok())
+        .unwrap_or(4)
+        .min(16)
+        .max(1);
+    pgrx::log!("stewards: registering {} dispatcher worker(s)", worker_count);
+    for i in 0..worker_count {
+        BackgroundWorkerBuilder::new(&format!("pg_ai_stewards dispatcher #{}", i))
+            .set_function("stewards_dispatcher_main")
+            .set_library("pg_ai_stewards")
+            .enable_spi_access()
+            .set_restart_time(Some(Duration::from_secs(5)))
+            .set_argument(Some(pg_sys::Datum::from(i as u64)))
+            .load();
+    }
 }
 
 /// Worker entry point. Polls `stewards.work_queue` every 500ms,
 /// claims one row, runs the stub provider, writes the result back.
+///
+/// `arg` carries the worker index assigned at registration time
+/// (0..N). Worker 0 is the "leader" — it owns the stale-claim reaper
+/// and the Watchman scheduler tick, both of which must not run from
+/// every worker simultaneously. All workers share the claim loop
+/// (FOR UPDATE SKIP LOCKED makes that safe).
 #[pg_guard]
 #[unsafe(no_mangle)]
-pub extern "C-unwind" fn stewards_dispatcher_main(_arg: pg_sys::Datum) {
+pub extern "C-unwind" fn stewards_dispatcher_main(arg: pg_sys::Datum) {
+    let worker_index: usize = arg.value() as usize;
+    let is_leader: bool = worker_index == 0;
+
     BackgroundWorker::attach_signal_handlers(
         SignalWakeFlags::SIGHUP | SignalWakeFlags::SIGTERM,
     );
@@ -95,8 +123,8 @@ pub extern "C-unwind" fn stewards_dispatcher_main(_arg: pg_sys::Datum) {
 
     let provider_count = PROVIDER_REGISTRY.get().map(|r| r.providers.len()).unwrap_or(0);
     pgrx::log!(
-        "stewards: bgworker entering poll loop (500ms tick); {} provider(s) inherited from postmaster",
-        provider_count
+        "stewards: bgworker #{} entering poll loop (500ms tick); leader={}; {} provider(s) inherited from postmaster",
+        worker_index, is_leader, provider_count
     );
 
     // Stale-claim reaper: any row left in 'in_progress' by a previous
@@ -110,6 +138,10 @@ pub extern "C-unwind" fn stewards_dispatcher_main(_arg: pg_sys::Datum) {
     // and enqueue a continuation chat. Otherwise the parent chat's
     // loop stalls forever waiting for tool replies that will never
     // come (Phase 1.6.1).
+    //
+    // Leader-only (worker 0): otherwise N workers race to reap and
+    // synthesize, producing duplicate continuation chats.
+    if is_leader {
     let _ = BackgroundWorker::transaction(|| {
         Spi::connect_mut(|client| {
             // Pull the rows we're about to reap so we can synthesize
@@ -180,6 +212,7 @@ pub extern "C-unwind" fn stewards_dispatcher_main(_arg: pg_sys::Datum) {
             Ok::<(), pgrx::spi::Error>(())
         })
     });
+    }
 
     // Phase 2.7b.2 — Watchman scheduler tick.
     //
@@ -212,14 +245,16 @@ pub extern "C-unwind" fn stewards_dispatcher_main(_arg: pg_sys::Datum) {
 
         // Watchman scheduler tick. Cheap when no trigger is hot
         // (single SPI call returning NULL). Two SPI calls when a
-        // trigger fires (decide → enqueue chats).
-        if last_sched.map_or(true, |t| t.elapsed() >= SCHED_INTERVAL) {
+        // trigger fires (decide → enqueue chats). Leader-only —
+        // running it from every worker would multiply the firing
+        // decisions and risk duplicate passes despite cooldown logic.
+        if is_leader && last_sched.map_or(true, |t| t.elapsed() >= SCHED_INTERVAL) {
             last_sched = Some(Instant::now());
             check_watchman_schedule();
         }
     }
 
-    pgrx::log!("stewards: bgworker received SIGTERM, exiting");
+    pgrx::log!("stewards: bgworker #{} received SIGTERM, exiting", worker_index);
 }
 
 /// Phase 2.7b.2 — invoke the Watchman scheduler decision function.
