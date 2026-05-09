@@ -78,8 +78,8 @@ func (s *Server) handleRequest(req *Request) {
 	switch req.Method {
 	case "initialize":
 		s.handleInitialize(req)
-	case "initialized":
-		// No response needed
+	case "notifications/initialized", "initialized":
+		// JSON-RPC notification — no response, even if unknown.
 	case "tools/list":
 		s.handleToolsList(req)
 	case "tools/call":
@@ -88,7 +88,11 @@ func (s *Server) handleRequest(req *Request) {
 		s.sendResult(req.ID, nil)
 		os.Exit(0)
 	default:
-		s.sendError(req.ID, -32601, "Method not found", req.Method)
+		// JSON-RPC 2.0: notifications (no id) MUST NOT receive a
+		// response, even an error. Only error on real requests.
+		if req.ID != nil {
+			s.sendError(req.ID, -32601, "Method not found", req.Method)
+		}
 	}
 }
 

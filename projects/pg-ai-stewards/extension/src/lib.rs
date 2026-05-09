@@ -176,6 +176,12 @@ extension_sql_file!(
     requires = ["create_mcp_tool_cache_promote"],
 );
 
+extension_sql_file!(
+    "../3e2-5-broaden-mcp-grants.sql",
+    name = "create_broaden_mcp_grants",
+    requires = ["create_fetch_md_seed"],
+);
+
 // ---------------------------------------------------------------------------
 // Diagnostic SQL functions
 // ---------------------------------------------------------------------------
