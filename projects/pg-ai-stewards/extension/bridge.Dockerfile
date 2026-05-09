@@ -31,6 +31,7 @@ COPY projects/pg-ai-stewards/cmd/stewards-mcp/ ./projects/pg-ai-stewards/cmd/ste
 
 # Spawn targets
 COPY scripts/fetch-md-mcp/      ./scripts/fetch-md-mcp/
+COPY scripts/git-mcp/           ./scripts/git-mcp/
 COPY scripts/webster-mcp/       ./scripts/webster-mcp/
 COPY scripts/byu-citations/     ./scripts/byu-citations/
 COPY scripts/yt-mcp/            ./scripts/yt-mcp/
@@ -83,6 +84,8 @@ RUN cd projects/pg-ai-stewards/cmd/stewards-mcp \
 # Spawn targets in workspace
 RUN cd scripts/fetch-md-mcp \
     && go build -trimpath -ldflags="-s -w" -o /out/fetch-md-mcp .
+RUN cd scripts/git-mcp \
+    && go build -trimpath -ldflags="-s -w" -o /out/git-mcp .
 RUN cd scripts/webster-mcp \
     && go build -trimpath -ldflags="-s -w" -o /out/webster-mcp ./cmd/webster-mcp
 RUN cd scripts/byu-citations \
@@ -106,11 +109,14 @@ RUN cd scripts/gospel-engine-v2 \
 FROM alpine:3.20
 
 # ca-certificates for HTTPS (gospel-engine, becoming, exa-search HTTP).
-RUN apk add --no-cache ca-certificates tzdata
+# git + github-cli (gh) for git-mcp's spawn targets. chromium for
+# fetch-md-mcp v2's JS-rendering path (chromedp finds it via $PATH).
+RUN apk add --no-cache ca-certificates tzdata git github-cli chromium
 
 # Binaries
 COPY --from=builder /out/stewards-mcp   /usr/local/bin/stewards-mcp
 COPY --from=builder /out/fetch-md-mcp   /usr/local/bin/fetch-md-mcp
+COPY --from=builder /out/git-mcp        /usr/local/bin/git-mcp
 COPY --from=builder /out/webster-mcp    /usr/local/bin/webster-mcp
 COPY --from=builder /out/byu-citations  /usr/local/bin/byu-citations
 COPY --from=builder /out/yt-mcp         /usr/local/bin/yt-mcp

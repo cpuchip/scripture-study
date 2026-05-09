@@ -67,6 +67,8 @@ func registerFetchTools(srv *mcp.Server, cfg *fetchConfig) {
 type fetchURLInput struct {
 	URL      string `json:"url" jsonschema:"URL to fetch"`
 	MaxChars int    `json:"max_chars,omitempty" jsonschema:"Truncate markdown to this many characters (0 = no truncation)"`
+	JS       bool   `json:"js,omitempty" jsonschema:"Render JavaScript via headless Chromium (slower; needed for SPAs and JS-required pages)"`
+	WaitMS   int    `json:"wait_ms,omitempty" jsonschema:"Post-load settle delay in ms when js=true (default 500)"`
 }
 
 type fetchURLOutput struct {
@@ -83,13 +85,23 @@ func makeFetchURL(cfg *fetchConfig) func(context.Context, *mcp.CallToolRequest, 
 		if strings.TrimSpace(in.URL) == "" {
 			return toolError("url is required"), fetchURLOutput{}, nil
 		}
-		body, finalURL, err := httpGet(ctx, cfg, in.URL)
+		var (
+			bodyStr  string
+			finalURL string
+			err      error
+		)
+		if in.JS {
+			bodyStr, finalURL, err = fetchURLJS(ctx, cfg, in.URL, in.WaitMS)
+		} else {
+			b, fu, e := httpGet(ctx, cfg, in.URL)
+			bodyStr, finalURL, err = string(b), fu, e
+		}
 		if err != nil {
-			return toolError("fetch %s: %v", in.URL, err), fetchURLOutput{}, nil
+			return toolError("fetch %s (js=%v): %v", in.URL, in.JS, err), fetchURLOutput{}, nil
 		}
 
 		parsed, _ := url.Parse(finalURL)
-		article, err := readability.FromReader(strings.NewReader(string(body)), parsed)
+		article, err := readability.FromReader(strings.NewReader(bodyStr), parsed)
 		if err != nil {
 			return toolError("readability: %v", err), fetchURLOutput{}, nil
 		}
@@ -123,6 +135,8 @@ func makeFetchURL(cfg *fetchConfig) func(context.Context, *mcp.CallToolRequest, 
 type fetchURLsInput struct {
 	URLs     []string `json:"urls" jsonschema:"URLs to fetch concurrently"`
 	MaxChars int      `json:"max_chars,omitempty" jsonschema:"Truncate each markdown body to this many characters (0 = no truncation)"`
+	JS       bool     `json:"js,omitempty" jsonschema:"Render JavaScript via headless Chromium for each URL (slower)"`
+	WaitMS   int      `json:"wait_ms,omitempty" jsonschema:"Post-load settle delay in ms when js=true (default 500)"`
 }
 
 type fetchURLsOutput struct {
@@ -157,13 +171,23 @@ func makeFetchURLs(cfg *fetchConfig) func(context.Context, *mcp.CallToolRequest,
 				sem <- struct{}{}
 				defer func() { <-sem }()
 
-				body, finalURL, err := httpGet(ctx, cfg, target)
+				var (
+					bodyStr  string
+					finalURL string
+					err      error
+				)
+				if in.JS {
+					bodyStr, finalURL, err = fetchURLJS(ctx, cfg, target, in.WaitMS)
+				} else {
+					b, fu, e := httpGet(ctx, cfg, target)
+					bodyStr, finalURL, err = string(b), fu, e
+				}
 				if err != nil {
 					results[idx] = fetchURLsOneResult{URL: target, Error: err.Error()}
 					return
 				}
 				parsed, _ := url.Parse(finalURL)
-				article, err := readability.FromReader(strings.NewReader(string(body)), parsed)
+				article, err := readability.FromReader(strings.NewReader(bodyStr), parsed)
 				if err != nil {
 					results[idx] = fetchURLsOneResult{URL: finalURL, Error: fmt.Sprintf("readability: %v", err)}
 					return
@@ -198,7 +222,9 @@ func makeFetchURLs(cfg *fetchConfig) func(context.Context, *mcp.CallToolRequest,
 // ---------------------------------------------------------------------
 
 type extractLinksInput struct {
-	URL string `json:"url" jsonschema:"URL whose links you want to enumerate"`
+	URL    string `json:"url" jsonschema:"URL whose links you want to enumerate"`
+	JS     bool   `json:"js,omitempty" jsonschema:"Render JavaScript via headless Chromium before extracting links (slower; needed for SPAs)"`
+	WaitMS int    `json:"wait_ms,omitempty" jsonschema:"Post-load settle delay in ms when js=true (default 500)"`
 }
 
 type extractLinksOutput struct {
@@ -245,9 +271,19 @@ func makeExtractLinks(cfg *fetchConfig) func(context.Context, *mcp.CallToolReque
 		if strings.TrimSpace(in.URL) == "" {
 			return toolError("url is required"), extractLinksOutput{}, nil
 		}
-		body, finalURL, err := httpGet(ctx, cfg, in.URL)
+		var (
+			bodyStr  string
+			finalURL string
+			err      error
+		)
+		if in.JS {
+			bodyStr, finalURL, err = fetchURLJS(ctx, cfg, in.URL, in.WaitMS)
+		} else {
+			b, fu, e := httpGet(ctx, cfg, in.URL)
+			bodyStr, finalURL, err = string(b), fu, e
+		}
 		if err != nil {
-			return toolError("fetch %s: %v", in.URL, err), extractLinksOutput{}, nil
+			return toolError("fetch %s (js=%v): %v", in.URL, in.JS, err), extractLinksOutput{}, nil
 		}
 		parsedFinal, err := url.Parse(finalURL)
 		if err != nil {
@@ -258,7 +294,7 @@ func makeExtractLinks(cfg *fetchConfig) func(context.Context, *mcp.CallToolReque
 		out := extractLinksOutput{URL: finalURL}
 		seen := map[string]bool{}
 
-		walkLinks(strings.NewReader(string(body)), func(href, text string) {
+		walkLinks(strings.NewReader(bodyStr), func(href, text string) {
 			if href == "" || seen[href] {
 				return
 			}
@@ -359,6 +395,8 @@ func textContent(n *html.Node) string {
 type fetchURLRawInput struct {
 	URL      string `json:"url" jsonschema:"URL to fetch"`
 	MaxChars int    `json:"max_chars,omitempty" jsonschema:"Truncate raw HTML to this many characters (0 = no truncation)"`
+	JS       bool   `json:"js,omitempty" jsonschema:"Render JavaScript via headless Chromium and return the post-render HTML"`
+	WaitMS   int    `json:"wait_ms,omitempty" jsonschema:"Post-load settle delay in ms when js=true (default 500)"`
 }
 
 type fetchURLRawOutput struct {
@@ -374,11 +412,22 @@ func makeFetchURLRaw(cfg *fetchConfig) func(context.Context, *mcp.CallToolReques
 		if strings.TrimSpace(in.URL) == "" {
 			return toolError("url is required"), fetchURLRawOutput{}, nil
 		}
-		body, finalURL, statusCode, err := httpGetWithStatus(ctx, cfg, in.URL)
-		if err != nil {
-			return toolError("fetch %s: %v", in.URL, err), fetchURLRawOutput{}, nil
+		var (
+			raw        string
+			finalURL   string
+			statusCode int
+			err        error
+		)
+		if in.JS {
+			raw, finalURL, err = fetchURLJS(ctx, cfg, in.URL, in.WaitMS)
+			statusCode = 200 // chromedp doesn't surface HTTP status
+		} else {
+			b, fu, sc, e := httpGetWithStatus(ctx, cfg, in.URL)
+			raw, finalURL, statusCode, err = string(b), fu, sc, e
 		}
-		raw := string(body)
+		if err != nil {
+			return toolError("fetch %s (js=%v): %v", in.URL, in.JS, err), fetchURLRawOutput{}, nil
+		}
 		truncated := false
 		if in.MaxChars > 0 && len(raw) > in.MaxChars {
 			raw = raw[:in.MaxChars] + "\n<!-- […truncated] -->"

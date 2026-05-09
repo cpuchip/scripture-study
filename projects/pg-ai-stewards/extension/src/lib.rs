@@ -188,6 +188,12 @@ extension_sql_file!(
     requires = ["create_broaden_mcp_grants"],
 );
 
+extension_sql_file!(
+    "../3e2-7-git-mcp-seed.sql",
+    name = "create_git_mcp_seed",
+    requires = ["create_mcp_servers_linux_paths"],
+);
+
 // ---------------------------------------------------------------------------
 // Diagnostic SQL functions
 // ---------------------------------------------------------------------------
