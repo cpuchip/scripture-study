@@ -75,7 +75,11 @@ func (s *MCPServer) handleRequest(enc *json.Encoder, req *MCPRequest) {
 	case "notifications/initialized":
 		// Client notification, no response needed
 	default:
-		s.sendError(enc, req.ID, -32601, "Method not found", req.Method)
+		// JSON-RPC 2.0: notifications (no id) MUST NOT receive a
+		// response, even an error. Only error on real requests.
+		if req.ID != nil {
+			s.sendError(enc, req.ID, -32601, "Method not found", req.Method)
+		}
 	}
 }
 

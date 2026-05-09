@@ -64,7 +64,11 @@ func (s *Server) handleRequest(req *Request) {
 	case "notifications/initialized":
 		// Client acknowledgment, no response needed
 	default:
-		s.sendError(req.ID, -32601, "Method not found", req.Method)
+		// JSON-RPC 2.0: notifications (no id) MUST NOT receive a
+		// response, even an error.
+		if req.ID != nil {
+			s.sendError(req.ID, -32601, "Method not found", req.Method)
+		}
 	}
 }
 
