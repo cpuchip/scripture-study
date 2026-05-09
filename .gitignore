@@ -38,6 +38,15 @@ tpg.exe
 .playwright-mcp/
 .playwright*
 
+# stewards-ui frontend build artifacts. The dist/index.html stub is
+# committed (go:embed needs a file at compile time); local npm run
+# build overwrites it with hashed-filename real output that we don't
+# commit.
+scripts/stewards-ui/frontend/node_modules/
+scripts/stewards-ui/frontend/dist/*
+!scripts/stewards-ui/frontend/dist/index.html
+scripts/stewards-ui/stewards-ui.exe
+
 # Stray log files
 becoming-mcp.log
 becoming.db*

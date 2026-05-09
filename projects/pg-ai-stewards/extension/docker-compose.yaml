@@ -76,5 +76,29 @@ services:
     # ENTRYPOINT is `stewards-mcp bridge run` (set in bridge.Dockerfile).
     # Override with `command:` here if workers/tick need tuning.
 
+  ui:
+    # Local pg-ai-stewards UI (Phase 3f v1) — Vue SPA + Go API in a
+    # single binary. Single-user, local-only; bound to 127.0.0.1 on
+    # the host for safety. ~12MB binary; ~50MB image after the
+    # frontend build stage.
+    build:
+      context: ../../..
+      dockerfile: projects/pg-ai-stewards/extension/ui.Dockerfile
+    image: pg-ai-stewards-ui:latest
+    container_name: pg-ai-stewards-ui
+    depends_on:
+      pg:
+        condition: service_healthy
+    env_file:
+      - path: .env
+        required: false
+    environment:
+      STEWARDS_DSN: "postgres://${POSTGRES_USER:-stewards}:${POSTGRES_PASSWORD:-stewards}@pg:5432/${POSTGRES_DB:-stewards}?sslmode=disable"
+    ports:
+      # 127.0.0.1 binding — local-only. If you ever want LAN access,
+      # change to "8080:8080" or set up an SSH tunnel.
+      - "127.0.0.1:8080:8080"
+    restart: unless-stopped
+
 volumes:
   pgdata:
