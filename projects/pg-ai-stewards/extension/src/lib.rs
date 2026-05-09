@@ -164,6 +164,12 @@ extension_sql_file!(
     requires = ["create_mcp_bridge_schemas"],
 );
 
+extension_sql_file!(
+    "../3e2-3-mcp-tool-cache-promote.sql",
+    name = "create_mcp_tool_cache_promote",
+    requires = ["create_mcp_proxy_dispatch"],
+);
+
 // ---------------------------------------------------------------------------
 // Diagnostic SQL functions
 // ---------------------------------------------------------------------------

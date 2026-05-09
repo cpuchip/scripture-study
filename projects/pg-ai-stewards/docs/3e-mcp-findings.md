@@ -401,6 +401,147 @@ projects/pg-ai-stewards/cmd/stewards-mcp/
 └── bridge_run.go                 # NEW — daemon, session cache, workers
 ```
 
+## 3e.2.d/e v1 — shipped 2026-05-08
+
+### Scope
+
+Closed two of the three known-limitations from 3e.2.b/c:
+
+- **3e.2.d** — auto-promote `mcp_tool_cache` rows into
+  `stewards.tool_defs`. Every cached MCP tool now becomes a
+  bridge-routable tool_def automatically. Per-agent grants opened
+  for six agent families covering scripture-corpus and research
+  workflows.
+- **3e.2.e** — bridge session crash recovery. CallTool errors now
+  invalidate the cached session so the next call re-inits.
+
+The third 3e.2.b/c follow-up — running a real chat through the
+bridge — is left for organic exercise: now that grants exist, the
+next study/lesson/talk pipeline run will hit the bridge naturally.
+
+### What changed
+
+- **`stewards.promote_mcp_tool_cache_to_tool_defs()`** — bulk sync.
+  Iterates active cache rows, upserts one tool_def per cache row
+  with `name = tool_name`, `execute_target = {kind:'mcp_proxy', server, tool}`.
+  Soft-deactivates orphaned mcp_proxy tool_defs (cache row gone or
+  marked inactive). Returns count touched. Idempotent.
+- **`stewards.mcp_tool_cache_sync_trigger()` + AFTER trigger** —
+  row-level on insert/update/delete. Keeps tool_defs in lockstep
+  with the cache without waiting for the next bulk sync. Verified by
+  toggling `mcp_tool_cache.active` and observing `tool_defs.active`
+  flip in the same transaction.
+- **Bootstrap call** at end of migration — runs the bulk sync once
+  so existing live caches (40 tools across 6 servers) get promoted
+  immediately on extension upgrade.
+- **12 manual `agent_tool_perms` grants** (source='manual', so the
+  importer's frontmatter rebuild leaves them alone):
+  - `study`, `lesson`, `talk` → `gospel_search`, `gospel_get`, `webster_define`
+  - `journal`, `review` → `gospel_search`
+  - `research` → `web_search_exa`
+- **`sessionCache.invalidate(name)`** in bridge_run.go — drops a
+  named session from the cache, calls `Close()`. Triggered on any
+  `CallTool` error (transport-level failure, not tool-level
+  IsError=true). Next call to that server lazy-reinits. We do NOT
+  auto-retry the failing call — the agent's iteration loop or the
+  parent's retry policy handles that; reinventing retries here
+  would risk thundering-herd against a flapping server.
+
+### Live-tested 2026-05-08
+
+```
+-- After live restart, bootstrap auto-promoted from existing cache:
+SELECT count(*) FROM stewards.tool_defs WHERE active AND execute_target->>'kind'='mcp_proxy';
+                            -- 40
+
+-- Trigger toggles tool_def with the cache:
+UPDATE stewards.mcp_tool_cache SET active=false WHERE tool_name='gospel_search' ...;
+SELECT active FROM stewards.tool_defs WHERE name='gospel_search';   -- f
+UPDATE stewards.mcp_tool_cache SET active=true ...;
+SELECT active FROM stewards.tool_defs WHERE name='gospel_search';   -- t
+
+-- compose_tools picks up the grants — study agent's tool list:
+SELECT count(*) FROM jsonb_array_elements(stewards.compose_tools('study'));
+                            -- 9 (was 6: 4 sql_fn study_* + 2 inspection,
+                            --   now +3 mcp_proxy: gospel_search, gospel_get, webster_define)
+```
+
+The `compose_tools('study')` result also includes the new tools'
+input_schemas verbatim from the cache, so models see real
+parameter contracts when they decide to call.
+
+### Surprises
+
+1. **`agent_tool_perms` PK is 2-column, not 3-column.** Wrote
+   `ON CONFLICT (agent_family, tool_pattern, action) DO NOTHING`
+   in the grant INSERT; the PK is `(agent_family, tool_pattern)`
+   only. Caught by inspecting `pg_constraint` before the first
+   apply — a habit worth keeping. Implication: the same
+   `(family, pattern)` pair can have only one action — you can't
+   insert both `allow` and `deny` for the same pattern. That's
+   actually how compose_tools wants it.
+
+2. **Bare names match Copilot's frontmatter perms by accident-not-
+   accident.** The agents already had `gospel-engine-v2/*: allow`
+   imported from frontmatter (Copilot-style). Those patterns are
+   dormant — nothing matches the slash-namespaced shape — but
+   adding bare-name allows next to them coexists fine. Not a
+   collision; the dormant frontmatter perm just stays dormant.
+   Tomorrow's 3e.2.f could strip the dormant patterns or convert
+   them; today they're harmless noise.
+
+3. **`compose_tools('study')` returned 9, not 7.** I expected the
+   substrate's 4 sql_fn study_* tools + my 3 mcp_proxy = 7. The
+   extra 2 are `study_search_text`'s sibling tools (`study_get`,
+   `study_similar`, `study_citations`, `study_context_for`) plus
+   maybe `skill`. Some come from the substrate-internal broadcast
+   `study_*: allow`. Reading the actual count rather than the
+   expected count caught this — worth knowing the imported study
+   agent already has the broadcast surface.
+
+4. **Web-fetch tool doesn't exist in the cache.** Michael
+   requested "research agent with exa search and web fetch."
+   `web_search_exa` is in the cache (granted). No MCP server in
+   our seed exposes a generic web fetcher. Building one is well
+   beyond 3e.2 scope. Granted exa-search only; flagged as an
+   unmet ask for a future MCP server addition (likely a thin
+   wrapper around playwright-cli or a Go fetcher).
+
+### What 3e.2.d/e v1 does NOT include
+
+- **Real chat exercising mcp_proxy through the bridge.** Grants
+  are wired; the next time a granted agent (study, lesson, talk,
+  journal, review, research) decides to call one of these tools,
+  the bridge handles it. We didn't trigger one synthetically
+  because it requires real model spend and the path is now
+  exercise-by-doing.
+- **Web-fetch MCP** for the research agent (item 4 above).
+- **Cross-server tool name collisions.** Verified absent today
+  (no two MCP servers expose a tool with the same name); a
+  future MCP addition could collide and silently overwrite via
+  ON CONFLICT. 3e.2.f or later should add a uniqueness check or
+  switch to a non-colliding namespace scheme.
+- **Bridge auto-retry** on transient failures. Session is
+  invalidated on error, but the failing call itself isn't
+  retried — caller observes the error.
+- **Pre-flight server health gating.** Bridge will spawn / connect
+  to a server when first called; if the server is broken, the
+  call fails and the session invalidates. We don't probe at
+  daemon startup. Lazy-init was a deliberate simplicity choice;
+  a `bridge run --warm-all` flag would be a one-line follow-up.
+
+### Files
+
+```
+projects/pg-ai-stewards/extension/
+├── 3e2-3-mcp-tool-cache-promote.sql  # NEW — promote fn + trigger + 12 grants
+├── src/lib.rs                        # +1 extension_sql_file! block
+└── Dockerfile                        # +1 COPY entry
+
+projects/pg-ai-stewards/cmd/stewards-mcp/
+└── bridge_run.go                     # invalidate(name) method + crash recovery
+```
+
 ## Future sub-phases (planned)
 
 ### 3e.2 — outbound HTTP path (the former 3c.4)

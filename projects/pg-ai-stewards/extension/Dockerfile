@@ -56,7 +56,8 @@ COPY 2-6a-workstreams.sql 2-6b-todos.sql 2-6c-phases-context.sql \
      3c3-3-agent-tool-perms-provenance.sql \
      3c3-5-work-items-to-studies.sql \
      3e2-1-mcp-bridge-schemas.sql \
-     3e2-2-mcp-proxy-dispatch.sql ./
+     3e2-2-mcp-proxy-dispatch.sql \
+     3e2-3-mcp-tool-cache-promote.sql ./
 
 # `cargo pgrx package` produces ./target/release/pg_ai_stewards-pg18/
 # with the directory tree rooted at /, containing the .so, .control,

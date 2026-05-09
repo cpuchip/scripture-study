@@ -248,7 +248,15 @@ func dispatchOne(ctx context.Context, workerID int, pool *pgxpool.Pool,
 		Arguments: args,
 	})
 	if err != nil {
-		writeError(ctx, pool, jobID, fmt.Errorf("CallTool(%s/%s): %w",
+		// Phase 3e.2.e — session crash recovery. Any non-nil err
+		// from CallTool is a transport-level failure (broken pipe,
+		// JSON parse, server died). Tool-level errors come back as
+		// IsError=true with err=nil. Invalidate the session so the
+		// next call to this server lazy-reinits a fresh subprocess
+		// or HTTP session. We do NOT auto-retry the failing call —
+		// the parent's retry policy (or the agent loop) handles it.
+		cache.invalidate(payload.Server)
+		writeError(ctx, pool, jobID, fmt.Errorf("CallTool(%s/%s): %w (session invalidated)",
 			payload.Server, payload.Tool, err))
 		return
 	}
@@ -401,6 +409,19 @@ func (c *sessionCache) get(ctx context.Context, pool *pgxpool.Pool, name string)
 	c.sessions[name] = session
 	log.Printf("bridge run: session opened for %s", name)
 	return session, nil
+}
+
+// invalidate removes a server's session from the cache, closing it.
+// The next get() call for that name will lazy-reinit. Safe to call
+// when the named session doesn't exist (no-op).
+func (c *sessionCache) invalidate(name string) {
+	c.mu.Lock()
+	defer c.mu.Unlock()
+	if s, ok := c.sessions[name]; ok {
+		_ = s.Close()
+		delete(c.sessions, name)
+		log.Printf("bridge run: session invalidated for %s", name)
+	}
 }
 
 func (c *sessionCache) closeAll() {
