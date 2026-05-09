@@ -49,3 +49,26 @@ scripts/becoming/frontend/dist/
 LICENSE
 go.work
 go.work.sum
+
+# ---------------------------------------------------------------
+# Bridge image overrides (projects/pg-ai-stewards/extension/bridge.Dockerfile)
+# Re-include sources the bridge build needs. The Becoming Dockerfile
+# uses selective COPY (only scripts/becoming/), so these re-includes
+# don't affect its image — they just allow the bridge build to find
+# what it needs in the build context.
+# ---------------------------------------------------------------
+!go.work
+!go.work.sum
+!scripts/search-mcp/
+!scripts/webster-mcp/
+!scripts/yt-mcp/
+!scripts/gospel-mcp/go.mod
+!scripts/gospel-mcp/go.sum
+!scripts/gospel-vec/go.mod
+!scripts/gospel-vec/go.sum
+!scripts/lectures-on-faith/go.mod
+!scripts/lectures-on-faith/go.sum
+!scripts/publish/go.mod
+!scripts/publish/go.sum
+!scripts/chromem-exp/go.mod
+!scripts/chromem-exp/go.sum

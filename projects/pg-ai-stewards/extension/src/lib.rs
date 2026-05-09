@@ -182,6 +182,12 @@ extension_sql_file!(
     requires = ["create_fetch_md_seed"],
 );
 
+extension_sql_file!(
+    "../3e2-6-mcp-servers-linux-paths.sql",
+    name = "create_mcp_servers_linux_paths",
+    requires = ["create_broaden_mcp_grants"],
+);
+
 // ---------------------------------------------------------------------------
 // Diagnostic SQL functions
 // ---------------------------------------------------------------------------

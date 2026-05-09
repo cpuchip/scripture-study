@@ -30,6 +30,51 @@ services:
     volumes:
       - pgdata:/var/lib/postgresql
       - ./init:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      # Bridge depends_on this; pg_isready is the standard probe.
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-stewards} -d ${POSTGRES_DB:-stewards}"]
+      interval: 5s
+      timeout: 3s
+      retries: 12
+      start_period: 10s
+
+  bridge:
+    # Long-lived MCP bridge daemon — spawns the seven stdio MCP server
+    # binaries on demand, brokers tool calls between substrate-internal
+    # agents and the external MCP world. Replaces the earlier
+    # host-shell `stewards-mcp bridge run` setup.
+    #
+    # Build context = repo root (../../..) so the multi-stage Dockerfile
+    # can reach scripts/ and projects/. The compose file lives at
+    # projects/pg-ai-stewards/extension/, so ../../.. = repo root.
+    build:
+      context: ../../..
+      dockerfile: projects/pg-ai-stewards/extension/bridge.Dockerfile
+    image: pg-ai-stewards-bridge:latest
+    container_name: pg-ai-stewards-bridge
+    depends_on:
+      pg:
+        condition: service_healthy
+    env_file:
+      - path: .env
+        required: false
+    environment:
+      # DSN points at the compose service name `pg` on the internal
+      # network (port 5432). The host-side 55433 mapping is for
+      # external tools like psql; internally we use the service.
+      STEWARDS_DSN: "postgres://${POSTGRES_USER:-stewards}:${POSTGRES_PASSWORD:-stewards}@pg:5432/${POSTGRES_DB:-stewards}?sslmode=disable"
+      # Tokens for the spawned MCP servers. These flow through to
+      # gospel-mcp / becoming-mcp at spawn time via the $$env:
+      # placeholders in stewards.mcp_servers.env.
+      GOSPEL_ENGINE_URL: "${GOSPEL_ENGINE_URL:-https://engine.ibeco.me}"
+      GOSPEL_ENGINE_TOKEN: "${GOSPEL_ENGINE_TOKEN:-}"
+      BECOMING_URL: "${BECOMING_URL:-https://ibeco.me}"
+      BECOMING_TOKEN: "${BECOMING_TOKEN:-}"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    restart: unless-stopped
+    # ENTRYPOINT is `stewards-mcp bridge run` (set in bridge.Dockerfile).
+    # Override with `command:` here if workers/tick need tuning.
 
 volumes:
   pgdata:

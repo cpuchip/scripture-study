@@ -59,7 +59,8 @@ COPY 2-6a-workstreams.sql 2-6b-todos.sql 2-6c-phases-context.sql \
      3e2-2-mcp-proxy-dispatch.sql \
      3e2-3-mcp-tool-cache-promote.sql \
      3e2-4-fetch-md-seed.sql \
-     3e2-5-broaden-mcp-grants.sql ./
+     3e2-5-broaden-mcp-grants.sql \
+     3e2-6-mcp-servers-linux-paths.sql ./
 
 # `cargo pgrx package` produces ./target/release/pg_ai_stewards-pg18/
 # with the directory tree rooted at /, containing the .so, .control,
