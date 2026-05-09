@@ -158,6 +158,12 @@ extension_sql_file!(
     requires = ["create_work_items_to_studies_promotion"],
 );
 
+extension_sql_file!(
+    "../3e2-2-mcp-proxy-dispatch.sql",
+    name = "create_mcp_proxy_dispatch",
+    requires = ["create_mcp_bridge_schemas"],
+);
+
 // ---------------------------------------------------------------------------
 // Diagnostic SQL functions
 // ---------------------------------------------------------------------------

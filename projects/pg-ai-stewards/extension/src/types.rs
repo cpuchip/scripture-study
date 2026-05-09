@@ -53,6 +53,28 @@ pub(crate) enum WorkOutcome {
         // either the JSON-stringified tool result or {"error": "..."}.
         tool_messages: Vec<(String, String, String)>,
     },
+    /// Phase 3e.2.b — async-fan-out of tool calls. At least one
+    /// tool routed to mcp_proxy and the bridge daemon is now
+    /// processing the child rows. The bgworker writes status=
+    /// 'waiting_for_tools' and stores `resolved` (sync replies
+    /// already in hand) + `pending` (tc_id → child_work_id map)
+    /// in result jsonb. The completion pass
+    /// (`stewards.tool_dispatch_complete_waiting`) promotes the
+    /// row to 'done' once all children resolve.
+    WaitingForTools {
+        parent_work_id: i64,
+        session_id: String,
+        agent_family: String,
+        model: String,
+        // (tc_id, name, content) for sync tools (sql_fn/http) that
+        // already finished during Phase 2. Stored verbatim so the
+        // SQL completion pass can concat them with bridge results.
+        resolved: Vec<(String, String, String)>,
+        // (tc_id, name, child_work_id) for async tools dispatched
+        // to mcp_proxy children. Completion pass joins on
+        // child_work_id to read each child's result/error.
+        pending: Vec<(String, String, i64)>,
+    },
     /// Result of resolving a single gospel-engine reference. Write
     /// phase UPSERTs into stewards.resolved_refs. content is the
     /// raw JSON returned by /api/get?ref=... (or null if errored).

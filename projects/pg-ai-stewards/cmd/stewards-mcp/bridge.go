@@ -32,25 +32,28 @@ import (
 	"github.com/modelcontextprotocol/go-sdk/mcp"
 )
 
-// resolveSecret expands `$env:VAR` indirection. The seed rows in
+// resolveSecret expands env-pointer indirection. The seed rows in
 // 3e2-1-mcp-bridge-schemas.sql store secret values as
-// `$env:GOSPEL_ENGINE_TOKEN`, `$env:BECOMING_TOKEN`, etc. The bridge
-// resolves them against its own process environment at connect time.
-// Anything that doesn't start with `$env:` passes through unchanged.
+// `$env:GOSPEL_ENGINE_TOKEN`, `$env:BECOMING_TOKEN`, etc. (some
+// shipped with `$$env:` because the original SQL author over-escaped
+// the dollar — both prefixes are honored). The bridge resolves them
+// against its own process environment at connect time. Anything that
+// doesn't match passes through unchanged.
 func resolveSecret(value string) string {
-	const prefix = "$env:"
-	if !strings.HasPrefix(value, prefix) {
-		return value
+	for _, prefix := range []string{"$$env:", "$env:"} {
+		if strings.HasPrefix(value, prefix) {
+			name := strings.TrimPrefix(value, prefix)
+			resolved := os.Getenv(name)
+			if resolved == "" {
+				// Leave the placeholder visible — the call will
+				// likely fail, but the failure mode is clearer
+				// than silently sending the literal placeholder.
+				return value
+			}
+			return resolved
+		}
 	}
-	name := strings.TrimPrefix(value, prefix)
-	resolved := os.Getenv(name)
-	if resolved == "" {
-		// Leave the placeholder visible — the call will likely fail,
-		// but the failure mode is clearer than silently sending the
-		// literal "$env:..." as a header.
-		return value
-	}
-	return resolved
+	return value
 }
 
 // mcpServerRow mirrors the relevant columns from stewards.mcp_servers.
@@ -63,17 +66,19 @@ type mcpServerRow struct {
 	Env       map[string]string
 }
 
-// runBridge dispatches `bridge <subcommand> [args]`. Today we only
-// implement `refresh-tools`; future actions will include `run` for
-// the long-lived daemon and `health` for ad-hoc connectivity checks.
+// runBridge dispatches `bridge <subcommand> [args]`. `refresh-tools`
+// is the one-shot discovery pass; `run` is the long-running daemon
+// that services mcp_proxy work_queue rows (Phase 3e.2.c).
 func runBridge(args []string) error {
 	if len(args) == 0 {
-		return fmt.Errorf("usage: stewards-mcp bridge <action> [flags]\n  actions: refresh-tools")
+		return fmt.Errorf("usage: stewards-mcp bridge <action> [flags]\n  actions: refresh-tools, run")
 	}
 	action, rest := args[0], args[1:]
 	switch action {
 	case "refresh-tools":
 		return runBridgeRefreshTools(rest)
+	case "run":
+		return runBridgeRun(rest)
 	default:
 		return fmt.Errorf("unknown bridge action: %s", action)
 	}

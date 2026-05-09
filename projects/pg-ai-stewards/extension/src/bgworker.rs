@@ -146,11 +146,17 @@ pub extern "C-unwind" fn stewards_dispatcher_main(arg: pg_sys::Datum) {
         Spi::connect_mut(|client| {
             // Pull the rows we're about to reap so we can synthesize
             // continuations for tool_dispatch ones.
+            //
+            // Phase 3e.2.b: skip kind='mcp_proxy'. Those rows belong
+            // to the bridge daemon's lifecycle, not the bgworker's.
+            // The bridge has its own startup reaper for stale
+            // mcp_proxy rows it left in_progress at last shutdown.
             let stale_rows: Vec<(i64, String, String, serde_json::Value)> = {
                 let rows = client.select(
                     "SELECT id, kind, provider, payload \
                      FROM stewards.work_queue \
-                     WHERE status = 'in_progress'",
+                     WHERE status = 'in_progress' \
+                       AND kind <> 'mcp_proxy'",
                     None, &[],
                 )?;
                 rows.into_iter().filter_map(|r| {
@@ -206,7 +212,8 @@ pub extern "C-unwind" fn stewards_dispatcher_main(arg: pg_sys::Datum) {
                      error  = coalesce(error, '') \
                               || 'bgworker crashed before completion (stale in_progress reaped at startup)', \
                      done_at = now() \
-                 WHERE status = 'in_progress'",
+                 WHERE status = 'in_progress' \
+                   AND kind <> 'mcp_proxy'",
                 None, &[]
             )?;
             Ok::<(), pgrx::spi::Error>(())
@@ -243,6 +250,15 @@ pub extern "C-unwind" fn stewards_dispatcher_main(arg: pg_sys::Datum) {
             }
         }
 
+        // Phase 3e.2.b — async-fan-out completion pass. Promotes any
+        // tool_dispatch row whose mcp_proxy children have all
+        // resolved out of 'waiting_for_tools' into 'done', writing
+        // tool messages and enqueueing the continuation chat. All
+        // workers run this (FOR UPDATE SKIP LOCKED inside the SQL
+        // function keeps them from racing) so tool reply latency
+        // doesn't hinge on a single leader.
+        complete_waiting_tool_dispatches();
+
         // Watchman scheduler tick. Cheap when no trigger is hot
         // (single SPI call returning NULL). Two SPI calls when a
         // trigger fires (decide → enqueue chats). Leader-only —
@@ -255,6 +271,44 @@ pub extern "C-unwind" fn stewards_dispatcher_main(arg: pg_sys::Datum) {
     }
 
     pgrx::log!("stewards: bgworker #{} received SIGTERM, exiting", worker_index);
+}
+
+/// Phase 3e.2.b — completion pass for waiting tool_dispatch rows.
+///
+/// Calls `stewards.tool_dispatch_complete_waiting()` which scans
+/// `kind='tool_dispatch' AND status='waiting_for_tools'` rows, joins
+/// each one's pending children to check whether they've all resolved,
+/// and (if so) inserts the tool messages, enqueues the continuation
+/// chat, and promotes the parent to status='done'. Concurrent-safe
+/// via FOR UPDATE SKIP LOCKED inside the function.
+///
+/// Errors are logged but never propagated — a transient SPI failure
+/// shouldn't kill the bgworker. The next tick retries.
+fn complete_waiting_tool_dispatches() {
+    let result: Result<Option<i32>, pgrx::spi::Error> =
+        BackgroundWorker::transaction(|| {
+            Spi::connect_mut(|client| {
+                let row = client.select(
+                    "SELECT stewards.tool_dispatch_complete_waiting()",
+                    Some(1), &[],
+                )?;
+                let n: Option<i32> = row.into_iter().next()
+                    .and_then(|r| r.get(1).ok().flatten());
+                Ok::<Option<i32>, pgrx::spi::Error>(n)
+            })
+        });
+
+    match result {
+        Ok(Some(n)) if n > 0 => {
+            pgrx::log!("stewards: completed {} waiting tool_dispatch row(s)", n);
+        }
+        Ok(_) => {
+            // Silent on zero — runs every tick, would flood the log.
+        }
+        Err(e) => {
+            pgrx::log!("stewards: tool_dispatch completion pass errored: {}", e);
+        }
+    }
 }
 
 /// Phase 2.7b.2 — invoke the Watchman scheduler decision function.
@@ -318,10 +372,16 @@ fn process_one_pending() -> bool {
     let claim: Result<Option<(i64, String, String, serde_json::Value)>, pgrx::spi::Error> =
         BackgroundWorker::transaction(|| {
             Spi::connect_mut(|client| {
+                // Phase 3e.2.b: bgworker explicitly skips kind='mcp_proxy'
+                // rows. Those are owned by the bridge daemon
+                // (cmd/stewards-mcp/bridge.go `bridge run`), which uses
+                // the same SKIP LOCKED claim against this queue but
+                // filters TO kind='mcp_proxy'. The two sides partition
+                // by kind without coordinating beyond the row lock.
                 let claimed = client.update(
                     "WITH next AS ( \
                          SELECT id FROM stewards.work_queue \
-                         WHERE status = 'pending' \
+                         WHERE status = 'pending' AND kind <> 'mcp_proxy' \
                          ORDER BY created_at \
                          FOR UPDATE SKIP LOCKED \
                          LIMIT 1 \
@@ -638,6 +698,61 @@ fn process_one_pending() -> bool {
                         None,
                         &[id.into(), result_jsonb.into()],
                     )?;
+                }
+                Ok(WorkOutcome::WaitingForTools {
+                    parent_work_id,
+                    session_id,
+                    agent_family,
+                    model,
+                    resolved,
+                    pending,
+                }) => {
+                    // Phase 3e.2.b — async fan-out. The dispatch
+                    // emitted at least one mcp_proxy child; we
+                    // pause this tool_dispatch row in
+                    // 'waiting_for_tools' and store enough state
+                    // for the SQL completion pass to finish the
+                    // job once children resolve. NO message inserts
+                    // and NO continuation chat enqueue here — both
+                    // happen inside tool_dispatch_complete_waiting().
+                    let resolved_json: Vec<serde_json::Value> = resolved
+                        .iter()
+                        .map(|(tc_id, name, content)| serde_json::json!({
+                            "tc_id":   tc_id,
+                            "name":    name,
+                            "content": content,
+                        }))
+                        .collect();
+                    let pending_json: Vec<serde_json::Value> = pending
+                        .iter()
+                        .map(|(tc_id, name, child_id)| serde_json::json!({
+                            "tc_id":         tc_id,
+                            "name":          name,
+                            "child_work_id": child_id,
+                        }))
+                        .collect();
+                    let result_jsonb = pgrx::JsonB(serde_json::json!({
+                        "kind": "tool_dispatch_waiting",
+                        "parent_work_id": parent_work_id,
+                        "session_id": session_id,
+                        "agent_family": agent_family,
+                        "model": model,
+                        "provider": provider,
+                        "resolved": resolved_json,
+                        "pending":  pending_json,
+                        "started_waiting_at": format!("{:?}", std::time::SystemTime::now()),
+                    }));
+                    client.update(
+                        "UPDATE stewards.work_queue \
+                         SET status = 'waiting_for_tools', result = $2 \
+                         WHERE id = $1",
+                        None,
+                        &[id.into(), result_jsonb.into()],
+                    )?;
+                    pgrx::log!(
+                        "stewards: tool_dispatch id={} waiting on {} mcp_proxy child(ren)",
+                        id, pending.len()
+                    );
                 }
                 Ok(WorkOutcome::Resolved {
                     ref_str,

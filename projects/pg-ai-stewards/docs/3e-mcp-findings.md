@@ -231,6 +231,176 @@ projects/pg-ai-stewards/cmd/stewards-mcp/
 └── bridge.go                      # NEW — refreshOneServer, transports, upserts
 ```
 
+## 3e.2.b/c v1 — shipped 2026-05-08
+
+### Scope
+
+Second half of the outbound MCP-client path. Substrate-internal
+agents can now (in principle — see "deny-by-default" below) route
+tool calls through `execute_target='mcp_proxy'`. The bgworker emits
+a child work_queue row, the bridge daemon picks it up, and the SQL
+completion pass releases the parent tool_dispatch row when all
+children resolve.
+
+### Architecture chosen
+
+**Async fan-out + continuation** over block-poll. When `tool_dispatch`
+sees an mcp_proxy tool, it enqueues a child mcp_proxy row and returns
+`WorkOutcome::WaitingForTools` instead of `ToolsDispatched`. The
+bgworker writes the parent row to `status='waiting_for_tools'` with
+`{resolved: [...sync], pending: [{tc_id, name, child_work_id}, ...]}`
+in `result`. A new SQL function `tool_dispatch_complete_waiting()` —
+called from each bgworker tick — joins pending children by id, and
+when they're all `done`/`error`, runs the original Phase 3 work
+(insert tool messages + enqueue continuation chat + promote to done).
+
+This was a deliberate ~2× code investment over a simpler block-poll
+pattern. The win is concurrency: a chat with three mcp_proxy tools
+resolves them in parallel through the bridge instead of
+sequentially monopolizing one bgworker. With four bgworkers and
+parallel children, throughput stays alive even when individual
+calls are slow.
+
+### What changed
+
+- **`stewards.work_queue.status` CHECK** gained `'waiting_for_tools'`.
+- **`stewards.mcp_proxy_enqueue(server, tool, args, parent_id)`** —
+  inserts a child row with `kind='mcp_proxy'`, `provider=<server>`,
+  payload `{server, tool, args, parent_tool_dispatch_id}`. NOTIFY's
+  `stewards_mcp_proxy` so the bridge wakes immediately. Refuses if
+  the server isn't registered or `enabled=false`.
+- **`stewards.tool_dispatch_complete_waiting()`** — completion pass.
+  Concurrency-safe via FOR UPDATE SKIP LOCKED. Returns the count of
+  rows promoted (for log-on-nonzero discipline).
+- **`WorkOutcome::WaitingForTools`** + bgworker write arm — pauses
+  the parent in `waiting_for_tools` with the (resolved, pending)
+  split persisted in result jsonb.
+- **`ToolReply` enum in tools.rs** — `Sync(String)` for sql_fn/http,
+  `Async { child_work_id }` for mcp_proxy. `tool_dispatch` now
+  branches on whether any async children were emitted.
+- **bgworker claim filter** — `WHERE kind <> 'mcp_proxy'`. Bridge
+  uses the inverse filter; the two sides partition by kind without
+  coordinating beyond row-locks.
+- **Reaper filter** — bgworker startup reaper skips mcp_proxy rows;
+  bridge has its own startup reaper for those.
+- **3 example tool_defs** routed to mcp_proxy: `gospel_search`,
+  `gospel_get`, `webster_define`. **Deny-by-default** —
+  agent_tool_perms not granted to any agent. Operators must
+  explicitly allow these per-agent before substrate chats can use
+  them. Preserves the existing soak surface.
+- **`stewards-mcp bridge run`** subcommand — long-running daemon.
+  LISTEN+claim+dispatch with N worker goroutines. Lazy
+  per-server session cache (sync.Map under a single mutex).
+  Graceful shutdown on SIGINT/SIGTERM. Reaps stale in_progress
+  mcp_proxy rows on startup.
+
+### Live-tested 2026-05-08
+
+```
+$ stewards-mcp bridge run --workers 2 --tick-ms 500
+bridge run: connected to substrate
+bridge run: spawned 2 worker(s); call-timeout=60s
+bridge run: LISTENing on stewards_mcp_proxy
+
+$ psql ...
+SELECT stewards.mcp_proxy_enqueue(
+   'gospel-engine-v2', 'gospel_search',
+   '{"query":"faith hope charity","limit":3}', NULL);
+                            -- enqueued id=821
+                            -- bridge claimed within 2.4ms
+                            -- result returned in 258ms total
+                            -- 3 real search results
+                            -- isError=false, status=done
+```
+
+End-to-end: tool_def lookup → mcp_proxy_enqueue → bridge claim →
+session.CallTool → result write → row done. The path works.
+
+### Surprises
+
+1. **`$$env:` vs `$env:` secrets prefix.** The 3e.2.a seed SQL wrote
+   `'$$env:GOSPEL_ENGINE_TOKEN'` (double dollar — I'd been unsure if
+   `$env:` would be parsed as a dollar-quote tag, so I over-escaped).
+   It's not — Postgres dollar-quotes need a closing tag, single `$`
+   inside string literals is fine. But the stored value ended up
+   with two dollars, and my `resolveSecret` only stripped `$env:`
+   (single). Result: subprocess got the literal placeholder as the
+   token, gospel-engine returned 401. Fix: `resolveSecret` now
+   strips both `$$env:` and `$env:` prefixes. The 3e.2.a SQL stays
+   as-is to avoid a needless re-migration.
+
+2. **psql `:variable` substitution doesn't enter `DO $$ ... $$`
+   blocks.** First verify-3e2-2.sql polled status inside a
+   `DO $$ DECLARE ... LOOP ... END $$` block referring to
+   `:enqueued_id`. Got "syntax error at or near `:`" because psql
+   does NOT substitute inside dollar-quoted strings. Fix: drop the
+   polling loop and use `SELECT pg_sleep(10)` — bridge is fast
+   enough that a fixed wait is fine.
+
+3. **Lazy session cache makes the first call expensive.** First
+   gospel-engine-v2 call in a fresh bridge run paid ~12s of
+   subprocess spawn + initialize handshake. Subsequent calls were
+   under 200ms. For production agents this is fine (sessions
+   persist across calls); for one-shot smoke tests it's worth
+   knowing the warmup cost.
+
+4. **The completion pass deliberately doesn't sit in the bgworker
+   leader.** Earlier I wrote the watchman scheduler tick as
+   leader-only to avoid duplicate firings; reflexively I almost did
+   the same here. But unlike scheduler firings (which need
+   exactly-once semantics), `tool_dispatch_complete_waiting()` is
+   safe to run concurrently — `FOR UPDATE SKIP LOCKED` partitions
+   work cleanly, and the function only commits side-effects after
+   confirming all children are resolved. All 4 workers run it on
+   each tick, so completion latency is ~500ms regardless of which
+   worker first sees a row become ready.
+
+5. **The bridge writes errors AS results.** When the MCP server
+   returns `IsError=true` (tool-level failure — bad args, server
+   error), the bridge still writes `status='done'` with the error
+   payload in `content`. The model needs to see the error so it
+   can recover. Real bridge-side failures (server unreachable,
+   payload decode fail) write `status='error'` and the completion
+   pass synthesizes a `{"error":"..."}` reply. This split was
+   conscious — it mirrors the existing sql_fn/http arms.
+
+### What 3e.2.b/c v1 does NOT include
+
+- **Auto-promotion** of mcp_tool_cache rows into tool_defs (3e.2.d).
+  Today's three example tool_defs are hand-curated; an operator
+  must `INSERT` more by hand or write the auto-promotion SQL.
+- **Per-agent grants** for the new mcp_proxy tools. Deny-by-default
+  is the safe choice; the soak's existing tool surface is
+  preserved. Operators flip `agent_tool_perms` rows when they want
+  a specific agent to use the bridge.
+- **Session crash recovery.** If a stdio MCP server crashes
+  mid-conversation, future calls fail and the bridge needs a
+  restart to re-init the session. v2 should detect connection
+  errors and rebuild on next access.
+- **Multi-bridge coordination.** Today only one bridge can run
+  per substrate (NOTIFY/LISTEN works fine for any number, but
+  there's no bridge ID claimed_by attribution). For HA we'd want
+  bridge identity in the work_queue rows.
+- **HTTP transport with bearer auth.** Same as 3e.2.a — first
+  server that needs it adds the RoundTripper plumbing.
+
+### Files
+
+```
+projects/pg-ai-stewards/extension/
+├── 3e2-2-mcp-proxy-dispatch.sql  # status check + 2 SQL fns + 3 tool_defs
+├── verify-3e2-2.sql              # synthetic e2e test
+├── src/lib.rs                    # +1 extension_sql_file! block
+├── src/types.rs                  # +WorkOutcome::WaitingForTools
+├── src/tools.rs                  # ToolReply enum + mcp_proxy arm
+├── src/bgworker.rs               # claim filter, write arm, completion pass
+└── Dockerfile                    # +1 COPY entry
+
+projects/pg-ai-stewards/cmd/stewards-mcp/
+├── bridge.go                     # +run dispatch, $$env: handling
+└── bridge_run.go                 # NEW — daemon, session cache, workers
+```
+
 ## Future sub-phases (planned)
 
 ### 3e.2 — outbound HTTP path (the former 3c.4)

@@ -17,16 +17,35 @@ use pgrx::prelude::*;
 // Phase 1.6: tool_dispatch — execute the tool_calls from a parent
 // assistant message and produce N role='tool' replies for phase 3.
 //
-// Two execute_target kinds are wired up:
-//   sql_fn: SELECT <schema>.<name>($1::jsonb)::text
-//   http:   POST args as JSON body, response.text() returned as-is
-// Future kinds (subagent, mcp) are deferred.
+// Three execute_target kinds are wired up:
+//   sql_fn:    SELECT <schema>.<name>($1::jsonb)::text  (sync)
+//   http:      POST args as JSON body, response.text() returned as-is  (sync)
+//   mcp_proxy: enqueue child mcp_proxy work_queue row, bridge resolves  (async — Phase 3e.2.b)
 //
 // Tool errors are NOT returned as Err(). Each per-call failure is
 // captured into the tool reply content as {"error": "..."}, so the
 // model sees what went wrong and can recover. Only structural
 // failures (no parent message, malformed payload) raise Err.
+//
+// Phase 3e.2.b: when at least one tool routes to mcp_proxy, the
+// dispatcher returns WorkOutcome::WaitingForTools instead of
+// ToolsDispatched. The bgworker write phase then transitions the
+// tool_dispatch row to 'waiting_for_tools' status and stores the
+// (resolved, pending) split in result jsonb. The SQL completion
+// function `stewards.tool_dispatch_complete_waiting()` (called from
+// the bgworker tick loop) promotes the row to 'done' once all
+// pending children resolve, then runs the equivalent of Phase 3.
 // ---------------------------------------------------------------------------
+
+/// Per-call result inside `tool_dispatch`. Sync tools (sql_fn / http)
+/// return their content directly; mcp_proxy returns a child work_queue
+/// id that the completion pass will join on later.
+pub(crate) enum ToolReply {
+    Sync(String),
+    Async {
+        child_work_id: i64,
+    },
+}
 
 /// Phase 2.2 — resolve a single gospel-engine reference like
 /// "Mosiah 18:8". GETs {GOSPEL_ENGINE_URL}/api/get?ref=<urlencoded>
@@ -225,46 +244,121 @@ pub(crate) fn tool_dispatch(payload: &serde_json::Value) -> Result<WorkOutcome, 
             "no assistant message found for parent_work_id={}", parent_work_id
         ))?;
 
-    // Phase 2 (no tx): execute each tool. Collect (tc_id, name, content).
-    let mut tool_messages: Vec<(String, String, String)> =
-        Vec::with_capacity(prepped.len());
+    // Phase 2 (no tx): execute each tool. Sync tools resolve here;
+    // async (mcp_proxy) tools enqueue a child row and we collect the
+    // child id for the completion pass.
+    let mut resolved: Vec<(String, String, String)> = Vec::new();
+    let mut pending: Vec<(String, String, i64)> = Vec::new();
     for (tc_id, name, args, target) in prepped.into_iter() {
-        let content = match exec_one_tool(&name, &args, &target) {
-            Ok(s) => s,
+        match exec_one_tool(&name, &args, &target) {
+            Ok(ToolReply::Sync(content)) => {
+                resolved.push((tc_id, name, content));
+            }
+            Ok(ToolReply::Async { child_work_id }) => {
+                pending.push((tc_id, name, child_work_id));
+            }
             Err(e) => {
                 pgrx::log!("stewards: tool '{}' failed: {}", name, e);
-                serde_json::json!({"error": e}).to_string()
+                resolved.push((
+                    tc_id,
+                    name,
+                    serde_json::json!({"error": e}).to_string(),
+                ));
             }
-        };
-        tool_messages.push((tc_id, name, content));
+        }
     }
 
-    Ok(WorkOutcome::ToolsDispatched {
-        parent_work_id,
-        session_id,
-        agent_family,
-        model,
-        tool_messages,
-    })
+    if pending.is_empty() {
+        // All-sync path: behaves identically to pre-3e.2.b.
+        Ok(WorkOutcome::ToolsDispatched {
+            parent_work_id,
+            session_id,
+            agent_family,
+            model,
+            tool_messages: resolved,
+        })
+    } else {
+        Ok(WorkOutcome::WaitingForTools {
+            parent_work_id,
+            session_id,
+            agent_family,
+            model,
+            resolved,
+            pending,
+        })
+    }
 }
 
-/// Dispatch a single tool call. Returns the content string the
-/// model will see as the tool reply. SHOULD be a JSON-parseable
-/// string (the convention is that tools return JSON), but the
-/// LLM is told this is a tool reply so freeform strings work too.
+/// Dispatch a single tool call. Returns either a sync content string
+/// (model sees it directly) or an async child work_queue id (the
+/// completion pass will join on it once the bridge writes the
+/// result back). SHOULD be JSON-parseable for sync, but freeform
+/// strings work since the LLM is told this is a tool reply.
 fn exec_one_tool(
     name: &str,
     args: &serde_json::Value,
     target: &serde_json::Value,
-) -> Result<String, String> {
+) -> Result<ToolReply, String> {
     let kind = target.get("kind")
         .and_then(|v| v.as_str())
         .ok_or_else(|| "tool execute_target.kind missing".to_string())?;
     match kind {
-        "sql_fn" => exec_sql_fn_tool(target, args),
-        "http"   => exec_http_tool(target, args),
-        "missing" => Err(format!("tool '{}' is not registered or inactive", name)),
-        other    => Err(format!("unsupported tool kind: {}", other)),
+        "sql_fn"    => exec_sql_fn_tool(target, args).map(ToolReply::Sync),
+        "http"      => exec_http_tool(target, args).map(ToolReply::Sync),
+        "mcp_proxy" => exec_mcp_proxy_tool(target, args),
+        "missing"   => Err(format!("tool '{}' is not registered or inactive", name)),
+        other       => Err(format!("unsupported tool kind: {}", other)),
+    }
+}
+
+/// MCP proxy tool. Target shape:
+///   {"kind":"mcp_proxy", "server":"<name>", "tool":"<tool_name>"}
+/// Calls `stewards.mcp_proxy_enqueue(server, tool, args, NULL)` which
+/// inserts a child work_queue row of kind='mcp_proxy' and NOTIFY's
+/// `stewards_mcp_proxy`. Bridge daemon claims the row and writes the
+/// result back.
+///
+/// Errors here (server not registered, server not enabled, SPI
+/// failure) raise Err — the dispatcher captures them into a
+/// {"error": "..."} sync reply rather than blocking.
+fn exec_mcp_proxy_tool(
+    target: &serde_json::Value,
+    args: &serde_json::Value,
+) -> Result<ToolReply, String> {
+    let server = target.get("server")
+        .and_then(|v| v.as_str())
+        .ok_or_else(|| "mcp_proxy target.server missing".to_string())?;
+    let tool = target.get("tool")
+        .and_then(|v| v.as_str())
+        .ok_or_else(|| "mcp_proxy target.tool missing".to_string())?;
+
+    let args_value = args.clone();
+
+    let result: Result<Option<i64>, pgrx::spi::Error> =
+        BackgroundWorker::transaction(|| {
+            Spi::connect(|client| {
+                let row = client.select(
+                    "SELECT stewards.mcp_proxy_enqueue($1, $2, $3, NULL)",
+                    Some(1),
+                    &[
+                        server.into(),
+                        tool.into(),
+                        pgrx::JsonB(args_value).into(),
+                    ],
+                )?;
+                Ok(row.into_iter().next()
+                    .and_then(|r| r.get::<i64>(1).ok().flatten()))
+            })
+        });
+
+    match result {
+        Ok(Some(id)) => Ok(ToolReply::Async { child_work_id: id }),
+        Ok(None) => Err(format!(
+            "mcp_proxy_enqueue({}, {}) returned NULL", server, tool
+        )),
+        Err(e) => Err(format!(
+            "mcp_proxy_enqueue({}, {}) SPI: {}", server, tool, e
+        )),
     }
 }
 
