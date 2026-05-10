@@ -1,0 +1,159 @@
+=== A. Schema presence ===
+      object      | rows 
+------------------+------
+ model_pricing    |    9
+ cost_events      |    0
+ cost_buckets     |    4
+ stage_models     |   14
+ model_escalation |   20
+(5 rows)
+
+
+=== B. work_items new columns ===
+       column_name       |        data_type         | is_nullable 
+-------------------------+--------------------------+-------------
+ cost_cap_micro          | bigint                   | YES
+ cost_capped_at          | timestamp with time zone | YES
+ cost_micro_dollars      | bigint                   | NO
+ escalation_attempts     | integer                  | NO
+ escalation_claimed_at   | timestamp with time zone | YES
+ escalation_claimed_by   | text                     | YES
+ escalation_completed_at | timestamp with time zone | YES
+ escalation_state        | text                     | NO
+ model_override          | text                     | YES
+(9 rows)
+
+
+=== C. Pricing seed (Chinese models) ===
+    model     | input_micro_per_mtok | output_micro_per_mtok | cache_write_micro_per_mtok | cache_read_micro_per_mtok 
+--------------+----------------------+-----------------------+----------------------------+---------------------------
+ minimax-m2.7 |               300000 |               1200000 |                     375000 |                     60000
+ qwen3.6-plus |               500000 |               3000000 |                     625000 |                     50000
+ kimi-k2.6    |               950000 |               4000000 |                            |                    160000
+ glm-5.1      |              1400000 |               4400000 |                            |                    260000
+(4 rows)
+
+
+=== D. Pricing seed (Anthropic via OpenCode Zen) ===
+       model       | input_micro_per_mtok | output_micro_per_mtok | cache_write_micro_per_mtok | cache_read_micro_per_mtok 
+-------------------+----------------------+-----------------------+----------------------------+---------------------------
+ claude-haiku-4-5  |              1000000 |               5000000 |                    1250000 |                    100000
+ claude-sonnet-4-6 |              3000000 |              15000000 |                    3750000 |                    300000
+ claude-opus-4-7   |              5000000 |              25000000 |                    6250000 |                    500000
+ claude-opus-4-6   |              5000000 |              25000000 |                    6250000 |                    500000
+ claude-opus-4-5   |              5000000 |              25000000 |                    6250000 |                    500000
+(5 rows)
+
+
+=== E. Bucket seed + caps ===
+ bucket_kind |  p_start   |   p_end    | bucket_limit_micro |                              notes                               
+-------------+------------+------------+--------------------+------------------------------------------------------------------
+ session_5h  | 2026-05-10 | 2026-05-11 |                    | informational; OpenCode does not expose 5h window
+ daily       | 2026-05-10 | 2026-05-11 |           12000000 | OpenCode Go daily soft cap ($12); overage via Zen pay-per-token
+ weekly      | 2026-05-04 | 2026-05-11 |                    | OpenCode Go weekly cap TBD; bucket informational until confirmed
+ monthly     | 2026-05-01 | 2026-06-01 |           60000000 | OpenCode Go monthly cap ($60); overage via Zen pay-per-token
+(4 rows)
+
+
+=== F. compute_cost: Kimi 1M input + 500K output ===
+    Expected micro_dollars = 950000 + 2000000 = 2950000 ($2.95)
+ micro_dollars |     pricing_effective_at      
+---------------+-------------------------------
+       2950000 | 2026-05-10 21:59:07.535305+00
+(1 row)
+
+
+=== G. compute_cost: cache-aware MiniMax (input+cache_write+cache_read) ===
+    Expected: 100000 input * 300000/1M = 30000
+            + 50000 cache_write * 375000/1M = 18750
+            + 200000 cache_read * 60000/1M = 12000
+            + 50000 output * 1200000/1M = 60000
+            = 120750 micro_dollars ($0.121)
+ micro_dollars |     pricing_effective_at      
+---------------+-------------------------------
+        120750 | 2026-05-10 21:59:07.535305+00
+(1 row)
+
+
+=== H. compute_cost: provider/model that does not exist ===
+    Expected micro_dollars=0, pricing_effective_at=-infinity
+ micro_dollars | pricing_effective_at 
+---------------+----------------------
+             0 | -infinity
+(1 row)
+
+
+=== I. pick_model: study/research, attempt 1 ===
+    Expected: kimi-k2.6 (stage default)
+   model   
+-----------
+ kimi-k2.6
+(1 row)
+
+
+=== J. pick_model: study/research, attempt 2 model_limit ===
+    Expected: glm-5.1 (Kimi escalates immediately on model_limit)
+  model  
+---------
+ glm-5.1
+(1 row)
+
+
+=== K. pick_model: study/research, attempt 3 model_limit ===
+    Expected: __queue_for_opus__ (GLM escalates to queue on its attempt 2)
+       model        
+--------------------
+ __queue_for_opus__
+(1 row)
+
+
+=== L. pick_model: study/research, attempt 5 transient ===
+    Expected: kimi-k2.6 (transient stays on same model regardless of attempts)
+   model   
+-----------
+ kimi-k2.6
+(1 row)
+
+
+=== M. pick_model: dev/plan starts at top of chain ===
+    Expected: glm-5.1 (dev/plan stage default)
+  model  
+---------
+ glm-5.1
+(1 row)
+
+
+=== N. pick_model: nonexistent pipeline raises ===
+    Expected: ERROR
+
+=== O. Escalation matrix coverage check ===
+    Every (current_model, diagnosis) for our 4 chain models should have a row
+psql:/tmp/verify-4a.sql:97: ERROR:  no stage_models row for nonexistent/x
+CONTEXT:  PL/pgSQL function pick_model(text,text,integer,text) line 13 at RAISE
+               escalating_models               | queue_sentinels | stay_on_current | total_rules 
+-----------------------------------------------+-----------------+-----------------+-------------
+ {glm-5.1,kimi-k2.6,minimax-m2.7,qwen3.6-plus} |               4 |               4 |          20
+(1 row)
+
+
+=== P. Stage-models coverage ===
+ pipeline_family | stages |                     stage_list                      
+-----------------+--------+-----------------------------------------------------
+ dev             |      3 | {execute,plan,verify}
+ _gate           |      3 | {evaluate_gate,generate_scenarios,verify_scenarios}
+ lesson          |      4 | {draft,outline,research,verify}
+ study           |      4 | {draft,outline,research,verify}
+(4 rows)
+
+
+=== Q. bucket_period_for sanity ===
+  ?column?  |                  bucket_period_for                  
+------------+-----------------------------------------------------
+ daily      | ("2026-05-10 00:00:00+00","2026-05-11 00:00:00+00")
+ weekly     | ("2026-05-04 00:00:00+00","2026-05-11 00:00:00+00")
+ monthly    | ("2026-05-01 00:00:00+00","2026-06-01 00:00:00+00")
+ session_5h | ("2026-05-10 10:00:00+00","2026-05-10 15:00:00+00")
+(4 rows)
+
+
+=== Phase 4a smoke test complete ===

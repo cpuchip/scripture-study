@@ -1,0 +1,251 @@
+ Image pg-ai-stewards-dev:pg18 Building 
+#1 [internal] load local bake definitions
+#1 reading from stdin 654B done
+#1 DONE 0.0s
+
+#2 [internal] load build definition from Dockerfile
+#2 transferring dockerfile: 4.45kB done
+#2 DONE 0.0s
+
+#3 [internal] load metadata for docker.io/pgvector/pgvector:pg18
+#3 DONE 0.0s
+
+#4 [internal] load metadata for docker.io/library/rust:1-bookworm
+#4 DONE 0.3s
+
+#5 [internal] load .dockerignore
+#5 transferring context: 847B done
+#5 DONE 0.0s
+
+#6 [stage-1 1/3] FROM docker.io/pgvector/pgvector:pg18@sha256:b48c110f4911eb3d73ba7b6bd8964a5f26be740c2d580158530471c3c0f66487
+#6 resolve docker.io/pgvector/pgvector:pg18@sha256:b48c110f4911eb3d73ba7b6bd8964a5f26be740c2d580158530471c3c0f66487 0.0s done
+#6 DONE 0.0s
+
+#7 [builder 1/9] FROM docker.io/library/rust:1-bookworm@sha256:503651ea31e66ecb74623beabde781059a5978df1595a9e8ed03974d5fec1bf0
+#7 resolve docker.io/library/rust:1-bookworm@sha256:503651ea31e66ecb74623beabde781059a5978df1595a9e8ed03974d5fec1bf0 0.0s done
+#7 DONE 0.0s
+
+#8 [internal] load build context
+#8 transferring context: 35.49kB done
+#8 DONE 0.0s
+
+#9 [builder 4/9] RUN cargo pgrx init --pg18 /usr/lib/postgresql/18/bin/pg_config
+#9 CACHED
+
+#10 [builder 5/9] WORKDIR /build/pg_ai_stewards
+#10 CACHED
+
+#11 [builder 2/9] RUN apt-get update && apt-get install -y --no-install-recommends         ca-certificates curl gnupg lsb-release         build-essential pkg-config         libclang-dev clang         libreadline-dev zlib1g-dev libssl-dev     && curl -fsSL https://www.postgresql.org/media/keys/ACCC4CF8.asc        | gpg --dearmor -o /etc/apt/trusted.gpg.d/postgresql.gpg     && echo "deb http://apt.postgresql.org/pub/repos/apt bookworm-pgdg main"        > /etc/apt/sources.list.d/pgdg.list     && apt-get update     && apt-get install -y --no-install-recommends         postgresql-18 postgresql-server-dev-18     && rm -rf /var/lib/apt/lists/*
+#11 CACHED
+
+#12 [builder 6/9] COPY Cargo.toml pg_ai_stewards.control ./
+#12 CACHED
+
+#13 [builder 3/9] RUN cargo install --locked cargo-pgrx --version 0.18.0
+#13 CACHED
+
+#14 [builder 7/9] COPY src ./src
+#14 CACHED
+
+#15 [builder 8/9] COPY 2-6a-workstreams.sql 2-6b-todos.sql 2-6c-phases-context.sql      2-7a-watchman-substrate.sql 3a-watchman-pass.sql      2-7b1-watchman-automation.sql 2-7b2-watchman-scheduler.sql      2-7b3-watchman-budget.sql 2-7b4-watchman-soak-prep.sql      3c1-pipelines-work-items.sql 3c2-work-item-advance-trigger.sql      3c2-5-study-tools.sql 3c3-stage-templating-and-study-write.sql      3c3-1-trigger-bugfixes.sql      3c3-3-agent-tool-perms-provenance.sql      3c3-5-work-items-to-studies.sql      3e2-1-mcp-bridge-schemas.sql      3e2-2-mcp-proxy-dispatch.sql      3e2-3-mcp-tool-cache-promote.sql      3e2-4-fetch-md-seed.sql      3e2-5-broaden-mcp-grants.sql      3e2-6-mcp-servers-linux-paths.sql      3e2-7-git-mcp-seed.sql      4a-cost-tracking.sql      4a-escalation-chain.sql ./
+#15 DONE 0.1s
+
+#16 [builder 9/9] RUN cargo pgrx package         --pg-config /usr/lib/postgresql/18/bin/pg_config         --out-dir /out
+#16 5.294 [32m[1m       Using[0m[39m [37m[1mPgConfig("pg18")[0m[39m and `pg_config` from [36m/usr/lib/postgresql/18/bin/pg_config[39m
+#16 5.296 [32m[1m    Building[0m[39m extension with features [36mpg18[39m
+#16 5.296 [32m[1m     Running[0m[39m command [36m"/usr/local/rustup/toolchains/1.95.0-x86_64-unknown-linux-gnu/bin/cargo" "build" "--lib" "--release" "--features" "pg18" "--no-default-features" "--message-format=json-render-diagnostics"[39m
+#16 5.444    Compiling proc-macro2 v1.0.106
+#16 5.444    Compiling quote v1.0.45
+#16 5.445    Compiling unicode-ident v1.0.24
+#16 5.445    Compiling libc v0.2.186
+#16 5.446    Compiling icu_normalizer_data v2.2.0
+#16 5.447    Compiling icu_properties_data v2.2.0
+#16 5.447    Compiling stable_deref_trait v1.2.1
+#16 5.449    Compiling shlex v1.3.0
+#16 5.449    Compiling find-msvc-tools v0.1.9
+#16 5.452    Compiling serde_core v1.0.228
+#16 5.452    Compiling serde v1.0.228
+#16 5.453    Compiling eyre v0.6.12
+#16 5.455    Compiling writeable v0.6.3
+#16 5.458    Compiling memchr v2.8.0
+#16 5.460    Compiling zmij v1.0.21
+#16 5.461    Compiling litemap v0.8.2
+#16 5.463    Compiling thiserror v2.0.18
+#16 5.463    Compiling utf8_iter v1.0.4
+#16 5.467    Compiling itoa v1.0.18
+#16 5.469    Compiling serde_json v1.0.149
+#16 5.473    Compiling pin-project-lite v0.2.17
+#16 5.473    Compiling bytes v1.11.1
+#16 5.474    Compiling once_cell v1.21.4
+#16 5.477    Compiling smallvec v1.15.1
+#16 5.477    Compiling cfg-if v1.0.4
+#16 5.477    Compiling futures-core v0.3.32
+#16 5.477    Compiling glob v0.3.3
+#16 5.478    Compiling winnow v1.0.2
+#16 5.478    Compiling indenter v0.3.4
+#16 5.519    Compiling anyhow v1.0.102
+#16 5.526    Compiling cc v1.2.62
+#16 5.555    Compiling regex-syntax v0.8.10
+#16 5.578    Compiling percent-encoding v2.3.2
+#16 5.581    Compiling winnow v0.7.15
+#16 5.589    Compiling is_ci v1.2.0
+#16 5.589    Compiling minimal-lexical v0.2.1
+#16 5.590    Compiling toml_writer v1.1.1+spec-1.1.0
+#16 5.613    Compiling futures-sink v0.3.32
+#16 5.616    Compiling owo-colors v4.3.0
+#16 5.623    Compiling libloading v0.8.9
+#16 5.634    Compiling supports-color v3.0.2
+#16 5.653    Compiling form_urlencoded v1.2.2
+#16 5.656    Compiling zeroize v1.8.2
+#16 5.656    Compiling either v1.15.0
+#16 5.668    Compiling anstyle v1.0.14
+#16 5.671    Compiling bindgen v0.72.1
+#16 5.677    Compiling unicode-width v0.2.2
+#16 5.725    Compiling futures-task v0.3.32
+#16 5.729    Compiling same-file v1.0.6
+#16 5.732    Compiling rustc-hash v2.1.2
+#16 5.740    Compiling untrusted v0.9.0
+#16 5.741    Compiling httparse v1.10.1
+#16 5.755    Compiling rustls-pki-types v1.14.1
+#16 5.776    Compiling toml_parser v1.1.2+spec-1.1.0
+#16 5.780    Compiling itertools v0.13.0
+#16 5.790    Compiling clang-sys v1.8.1
+#16 5.792    Compiling futures-io v0.3.32
+#16 5.797    Compiling foldhash v0.1.5
+#16 5.800    Compiling slab v0.4.12
+#16 5.800    Compiling bitflags v2.11.1
+#16 5.804    Compiling equivalent v1.0.2
+#16 5.805    Compiling hashbrown v0.17.1
+#16 5.815    Compiling walkdir v2.5.0
+#16 5.826    Compiling aho-corasick v1.1.4
+#16 5.831    Compiling nom v7.1.3
+#16 5.833    Compiling annotate-snippets v0.11.5
+#16 5.858    Compiling rustls v0.23.40
+#16 5.891    Compiling hashbrown v0.15.5
+#16 5.898    Compiling try-lock v0.2.5
+#16 5.907    Compiling unicode-segmentation v1.13.2
+#16 5.914    Compiling fixedbitset v0.5.7
+#16 5.922    Compiling tower-service v0.3.3
+#16 5.944    Compiling want v0.3.1
+#16 5.952    Compiling http v1.4.0
+#16 5.968    Compiling futures-util v0.3.32
+#16 6.017    Compiling futures-channel v0.3.32
+#16 6.027    Compiling tracing-core v0.1.36
+#16 6.105    Compiling atomic-waker v1.1.2
+#16 6.143    Compiling subtle v2.6.1
+#16 6.160    Compiling radium v0.7.0
+#16 6.180    Compiling getrandom v0.4.2
+#16 6.193    Compiling syn v2.0.117
+#16 6.240    Compiling convert_case v0.8.0
+#16 6.247    Compiling unescape v0.1.0
+#16 6.288    Compiling indexmap v2.14.0
+#16 6.310    Compiling sync_wrapper v1.0.2
+#16 6.319    Compiling tap v1.0.1
+#16 6.361    Compiling tracing v0.1.44
+#16 6.373    Compiling base64 v0.22.1
+#16 6.408    Compiling mio v1.2.0
+#16 6.430    Compiling socket2 v0.6.3
+#16 6.450    Compiling getrandom v0.2.17
+#16 6.457    Compiling pathsearch v0.2.0
+#16 6.513    Compiling ipnet v2.12.0
+#16 6.517    Compiling tower-layer v0.3.3
+#16 6.539    Compiling wyz v0.5.1
+#16 6.584    Compiling webpki-roots v1.0.7
+#16 6.589    Compiling funty v2.0.0
+#16 6.601    Compiling ryu v1.0.23
+#16 6.607    Compiling half v1.8.3
+#16 6.612    Compiling seahash v4.1.0
+#16 6.618    Compiling ring v0.17.14
+#16 6.637    Compiling http-body v1.0.1
+#16 6.642    Compiling cee-scape v0.2.0
+#16 6.645    Compiling uuid v1.23.1
+#16 6.655    Compiling log v0.4.29
+#16 6.699    Compiling http-body-util v0.1.3
+#16 6.715    Compiling tokio v1.52.3
+#16 6.770    Compiling petgraph v0.8.3
+#16 6.844    Compiling bitvec v1.0.1
+#16 6.945    Compiling cexpr v0.6.0
+#16 6.956    Compiling regex-automata v0.4.14
+#16 7.177    Compiling serde_spanned v1.1.1
+#16 7.177    Compiling toml_datetime v0.7.5+spec-1.1.0
+#16 7.273    Compiling toml v0.9.12+spec-1.1.0
+#16 7.974    Compiling regex v1.12.3
+#16 8.240    Compiling synstructure v0.13.2
+#16 8.434    Compiling zerofrom-derive v0.1.7
+#16 8.435    Compiling yoke-derive v0.8.2
+#16 8.435    Compiling zerovec-derive v0.11.3
+#16 8.435    Compiling displaydoc v0.2.5
+#16 8.437    Compiling serde_derive v1.0.228
+#16 8.438    Compiling thiserror-impl v2.0.18
+#16 8.441    Compiling enum-map-derive v0.17.0
+#16 8.585    Compiling enum-map v2.7.3
+#16 8.763    Compiling zerofrom v0.1.7
+#16 8.799    Compiling yoke v0.8.2
+#16 8.857    Compiling zerovec v0.11.6
+#16 8.857    Compiling zerotrie v0.2.4
+#16 8.870    Compiling hyper v1.9.0
+#16 8.870    Compiling tower v0.5.3
+#16 8.880    Compiling pgrx-sql-entity-graph v0.18.0
+#16 9.081    Compiling tinystr v0.8.3
+#16 9.081    Compiling potential_utf v0.1.5
+#16 9.109    Compiling icu_collections v2.2.0
+#16 9.138    Compiling icu_locale_core v2.2.0
+#16 9.342    Compiling hyper-util v0.1.20
+#16 9.561    Compiling icu_provider v2.2.0
+#16 9.662    Compiling icu_normalizer v2.2.0
+#16 9.662    Compiling icu_properties v2.2.0
+#16 9.735    Compiling cargo_toml v0.22.3
+#16 9.783    Compiling serde_urlencoded v0.7.1
+#16 9.783    Compiling serde_cbor v0.11.2
+#16 10.18    Compiling idna_adapter v1.2.2
+#16 10.21    Compiling idna v1.1.0
+#16 10.37    Compiling url v2.5.8
+#16 10.62    Compiling pgrx-pg-config v0.18.0
+#16 10.70    Compiling pgrx-macros v0.18.0
+#16 10.81    Compiling pgrx-bindgen v0.18.0
+#16 10.91    Compiling tower-http v0.6.10
+#16 11.10    Compiling pgrx-pg-sys v0.18.0
+#16 11.55    Compiling rustls-webpki v0.103.13
+#16 13.58    Compiling tokio-rustls v0.26.4
+#16 13.69    Compiling hyper-rustls v0.27.9
+#16 13.77    Compiling reqwest v0.12.28
+#16 21.41    Compiling pgrx v0.18.0
+#16 29.55    Compiling pg_ai_stewards v0.2.0 (/build/pg_ai_stewards)
+#16 29.61 warning: unused imports: `ProviderRegistry`, `ProviderSummary`, and `Provider`
+#16 29.61   --> src/lib.rs:26:17
+#16 29.61    |
+#16 29.61 26 | use providers::{Provider, ProviderRegistry, ProviderSummary, PROVIDER_REGISTRY};
+#16 29.61    |                 ^^^^^^^^  ^^^^^^^^^^^^^^^^  ^^^^^^^^^^^^^^^
+#16 29.61    |
+#16 29.61    = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+#16 29.61 
+#16 34.64 warning: `pg_ai_stewards` (lib) generated 1 warning (run `cargo fix --lib -p pg_ai_stewards` to apply 1 suggestion)
+#16 34.64     Finished `release` profile [optimized] target(s) in 29.34s
+#16 34.65 [32m[1m  Installing[0m[39m extension
+#16 34.66 [32m[1m     Copying[0m[39m control file to [36m/out/usr/share/postgresql/18/extension/pg_ai_stewards.control[39m
+#16 34.67 [32m[1m     Copying[0m[39m shared library to [36m/out/usr/lib/postgresql/18/lib/pg_ai_stewards.so[39m
+#16 34.68 [32m[1m  Discovered[0m[39m [36m[1m39[0m[39m SQL entities: [36m[1m0[0m[39m schemas ([36m[1m0[0m[39m unique), [36m[1m4[0m[39m functions, [36m[1m0[0m[39m types, [36m[1m0[0m[39m enums, [36m[1m35[0m[39m sqls, [36m[1m0[0m[39m ords, [36m[1m0[0m[39m hashes, [36m[1m0[0m[39m aggregates, [36m[1m0[0m[39m triggers
+#16 34.68 [32m[1m     Writing[0m[39m SQL entities to /out/usr/share/postgresql/18/extension/pg_ai_stewards--0.2.0.sql
+#16 34.68 [32m[1m    Finished[0m[39m installing pg_ai_stewards
+#16 DONE 34.9s
+
+#17 [stage-1 2/3] RUN apt-get update && apt-get install -y --no-install-recommends         ca-certificates curl git         build-essential make clang         postgresql-server-dev-18         libreadline-dev zlib1g-dev flex bison     && git clone --depth 1 --branch release/PG18/1.7.0 https://github.com/apache/age.git /tmp/age     && cd /tmp/age     && make install     && rm -rf /tmp/age     && apt-get purge -y --auto-remove build-essential clang make git         postgresql-server-dev-18 libreadline-dev zlib1g-dev flex bison     && rm -rf /var/lib/apt/lists/*
+#17 CACHED
+
+#18 [stage-1 3/3] COPY --from=builder /out/ /
+#18 DONE 0.0s
+
+#19 exporting to image
+#19 exporting layers
+#19 exporting layers 0.2s done
+#19 exporting manifest sha256:062eb2daf66b08a5893ff67b80cb7bbff7beb08fad53789169a3190f39560ef9 0.0s done
+#19 exporting config sha256:451904fe6177bb207d06954d09361c6eebd220069491da14efb7306443123ce6 done
+#19 exporting attestation manifest sha256:52724a5abbdb2c2db6544505c41f59fb23132585ea1b7b8c5465b61bde93a919 0.0s done
+#19 exporting manifest list sha256:4bffdef11a5bf165df59c6af2dc15841e4bd76b9b9a6ade3cc699b99fabf5ba1 done
+#19 naming to docker.io/library/pg-ai-stewards-dev:pg18 done
+#19 unpacking to docker.io/library/pg-ai-stewards-dev:pg18 0.1s done
+#19 DONE 0.3s
+
+#20 resolving provenance for metadata file
+#20 DONE 0.0s
+ Image pg-ai-stewards-dev:pg18 Built 

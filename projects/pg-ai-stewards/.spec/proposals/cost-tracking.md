@@ -188,21 +188,49 @@ VALUES
 
 **Provider naming:** all rows use `provider='opencode-zen'` because per WebFetch, OpenCode Zen carries both the cheap Chinese models AND the Anthropic models — single provider, different tiers within. (See bucket-vs-per-token note below.)
 
-### V.4.1 Bucket modeling — UNRESOLVED, needs Michael clarification
+### V.4.1 Bucket modeling — RESOLVED 2026-05-10
 
-Michael described OpenCode pricing as having three concentric session buckets:
-- **5-hour session bucket**
-- **Weekly bucket** (resets Sunday 9pm — configurable?)
-- **Monthly bucket** (default 1st of month — configurable)
+Michael clarified the OpenCode pricing model after the WebFetch surfaced only per-token rates:
 
-The OpenCode Zen documentation page (fetched 2026-05-10) shows **only per-token pricing** — no session-bucket or weekly/monthly reset tiers, only "optional monthly spending limits." This is a tension worth resolving before Phase A.cost ships.
+- **OpenCode Zen** = pure pay-per-token at the rates seeded above
+- **OpenCode Go** = monthly subscription (~$10/mo) that grants generous bucket allowances *priced at the same per-token rates*. Approximate caps:
+  - **~$12/day** (rolling 24h or daily reset — TBD)
+  - **~$60/month** (calendar month, or subscription anniversary — TBD)
+  - Weekly cap unconfirmed but likely exists between daily and monthly
+- **Overage path:** if the Go bucket is exhausted, the customer can fund the API key with Zen dollars and continue at pay-per-token rates without interruption
 
-**Possible interpretations:**
-1. The bucket pricing exists on a different OpenCode tier/page (e.g., OpenCode Go vs OpenCode Zen)
-2. The bucket pricing is a customer-account feature not on public docs
-3. Michael's mental model conflated OpenCode with Claude Code's own session-bucket model (Claude Pro's 5-hour usage windows) — possible since Claude Code itself uses 5h sessions
+This is the cleanest possible billing model for the substrate: same rate table, two consumption modes, soft-overage available. Bucket schema becomes meaningful for enforcement (the Go subscription is finite); cost cap stays as the per-work_item discipline.
 
-**Spec decision:** ratified per Michael's D-A4 answer ("Lets track both, but no limit on bucket headroom"). Schema accommodates both:
+**Spec decision (updated):** `bucket_limit_micro` IS populated for Go subscription users. Default seed:
+
+```sql
+INSERT INTO stewards.cost_buckets (provider, bucket_kind, bucket_limit_micro, notes)
+VALUES
+  ('opencode-zen', 'session_5h',  NULL,       'placeholder; bucket structure TBD'),
+  ('opencode-zen', 'weekly',      NULL,       'OpenCode Go weekly cap — confirm exact value'),
+  ('opencode-zen', 'monthly',     60000000,   'OpenCode Go monthly cap ($60); overage via Zen pay-per-token allowed');
+-- Daily cap likely needed too:
+INSERT INTO stewards.cost_buckets (provider, bucket_kind, bucket_limit_micro, notes)
+VALUES
+  ('opencode-zen', 'daily',       12000000,   'OpenCode Go daily soft cap ($12)');
+```
+
+Bucket consumption is tracked alongside cost_events. Cap behavior:
+- **Soft warning** (cost_events.notes flags "approaching $X cap, $Y remaining") at 80%
+- **Hard block** at 100% — steward_tick refuses dispatch and either: (a) waits for reset (5h/daily/monthly periods are short enough this is sometimes acceptable), or (b) sets work_item to a new state `awaiting_bucket_reset` OR `awaiting_zen_overage_consent` per pipeline policy
+- **Overage opt-in** — Stewards-UI button "Continue via Zen overage" toggles a per-work_item flag that bypasses bucket checks (still records cost_events normally)
+
+The bucket_kind enum needs `daily` added:
+
+```sql
+ALTER TABLE stewards.cost_buckets DROP CONSTRAINT cost_buckets_bucket_kind_check;
+ALTER TABLE stewards.cost_buckets ADD CONSTRAINT cost_buckets_bucket_kind_check
+  CHECK (bucket_kind IN ('session_5h','daily','weekly','monthly'));
+```
+
+**What ships in Phase A.cost.1:** schema + bucket roll logic + accumulation + UI bucket consumption display. Hard-block enforcement and overage-consent flow are A.cost.2 (bgworker integration).
+
+(Original bucket-tracking schema below is preserved; bucket_limit_micro is now meaningfully populated.)
 
 ```sql
 -- Bucket tracking schema, additive to model_pricing.

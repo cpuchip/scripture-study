@@ -195,6 +195,24 @@ extension_sql_file!(
 );
 
 // ---------------------------------------------------------------------------
+// Phase 4a — Substrate-Phase-A schema (D-A4 cost tracking + D-B1 escalation
+// chain + D-EC3 human-mediated escalation queue).
+// Spec: projects/pg-ai-stewards/.spec/proposals/{cost-tracking,escalation-chain}.md
+// ---------------------------------------------------------------------------
+
+extension_sql_file!(
+    "../4a-cost-tracking.sql",
+    name = "create_phase_4a_cost_tracking",
+    requires = ["create_git_mcp_seed"],
+);
+
+extension_sql_file!(
+    "../4a-escalation-chain.sql",
+    name = "create_phase_4a_escalation_chain",
+    requires = ["create_phase_4a_cost_tracking"],
+);
+
+// ---------------------------------------------------------------------------
 // Diagnostic SQL functions
 // ---------------------------------------------------------------------------
 
