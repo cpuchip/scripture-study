@@ -234,6 +234,22 @@ pub extern "C-unwind" fn stewards_dispatcher_main(arg: pg_sys::Datum) {
     let mut last_sched: Option<Instant> = None;
     const SCHED_INTERVAL: Duration = Duration::from_secs(60);
 
+    // Phase 4d — Steward tick.
+    //
+    // Same pattern as the Watchman scheduler tick: independent of the
+    // 500ms work_queue drain, the leader periodically calls
+    // stewards.steward_tick() which walks failed work_items applying
+    // cost-cap + breaker + diagnosis + escalation logic and dispatching
+    // retries. 30s tick is chosen to balance retry latency against
+    // log noise (the function returns 0 most of the time).
+    //
+    // Leader-only because steward_tick uses FOR UPDATE SKIP LOCKED
+    // internally — multiple workers calling it would be SAFE but would
+    // double the SQL traffic without throughput gain (the lock-skip
+    // means each item is processed once anyway).
+    let mut last_steward: Option<Instant> = None;
+    const STEWARD_INTERVAL: Duration = Duration::from_secs(30);
+
     while BackgroundWorker::wait_latch(Some(Duration::from_millis(500))) {
         if BackgroundWorker::sighup_received() {
             pgrx::log!("stewards: SIGHUP received");
@@ -267,6 +283,15 @@ pub extern "C-unwind" fn stewards_dispatcher_main(arg: pg_sys::Datum) {
         if is_leader && last_sched.map_or(true, |t| t.elapsed() >= SCHED_INTERVAL) {
             last_sched = Some(Instant::now());
             check_watchman_schedule();
+        }
+
+        // Phase 4d — Steward tick. Walks failed work_items that need
+        // retry decisions. Returns count of actions taken (cost-cap
+        // quarantine, breaker defer, queue-for-opus, retry dispatch,
+        // or tick_error). Leader-only.
+        if is_leader && last_steward.map_or(true, |t| t.elapsed() >= STEWARD_INTERVAL) {
+            last_steward = Some(Instant::now());
+            check_steward_tick();
         }
     }
 
@@ -352,6 +377,40 @@ fn check_watchman_schedule() {
         }
         Err(e) => {
             pgrx::log!("stewards: scheduler check errored: {}", e);
+        }
+    }
+}
+
+/// Phase 4d — invoke the steward tick.
+///
+/// Calls `stewards.steward_tick()` which walks failed work_items and
+/// applies cost-cap + breaker + diagnosis + escalation logic, then
+/// dispatches retries via work_item_dispatch_stage. Returns count of
+/// actions taken in this tick (0 = no failed work_items needed
+/// attention). Errors swallowed — next tick retries.
+fn check_steward_tick() {
+    let result: Result<Option<i32>, pgrx::spi::Error> =
+        BackgroundWorker::transaction(|| {
+            Spi::connect_mut(|client| {
+                let row = client.select(
+                    "SELECT stewards.steward_tick()",
+                    Some(1), &[],
+                )?;
+                let n: Option<i32> = row.into_iter().next()
+                    .and_then(|r| r.get(1).ok().flatten());
+                Ok::<Option<i32>, pgrx::spi::Error>(n)
+            })
+        });
+
+    match result {
+        Ok(Some(n)) if n > 0 => {
+            pgrx::log!("stewards: steward_tick processed {} action(s)", n);
+        }
+        Ok(_) => {
+            // Silent on zero — runs every 30s, would flood the log.
+        }
+        Err(e) => {
+            pgrx::log!("stewards: steward_tick errored: {}", e);
         }
     }
 }
