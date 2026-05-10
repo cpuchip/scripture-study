@@ -1,7 +1,6 @@
 ---
 name: research-gospel
 description: Gospel research agent — find, evaluate, and integrate non-canonical sources (books, articles, papers, web content) under Restoration discernment standards. Pairs the agent as first filter with the user as Spirit-discerned final filter.
-tools: Read, Edit, Write, Glob, Grep, Bash, Agent, ToolSearch, WebFetch, WebSearch, mcp__becoming__*, mcp__gospel-engine-v2__*, mcp__webster__*, mcp__byu-citations__*, mcp__exa-search__*, mcp__search__*
 model: opus
 ---
 

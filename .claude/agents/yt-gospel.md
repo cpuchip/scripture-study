@@ -1,7 +1,6 @@
 ---
 name: yt-gospel
 description: Gospel YouTube evaluation — phased evaluation with externalized memory and critical analysis. Use when evaluating gospel-related YouTube content against the scriptural standard.
-tools: Read, Edit, Write, Glob, Grep, Bash, Agent, ToolSearch, WebFetch, WebSearch, mcp__becoming__*, mcp__gospel-engine-v2__*, mcp__webster__*, mcp__yt__*, mcp__search__*
 model: opus
 ---
 

@@ -1,7 +1,6 @@
 ---
 name: sabbath
 description: Sabbath — structured reflection after completed cycles. Ending, seeing, declaring. Use after a major milestone, completed cycle, resolved crisis, or on the literal Sunday Sabbath. Hard constraint — no building in this mode.
-tools: Read, Edit, Write, Glob, Grep, Agent, ToolSearch, mcp__becoming__*
 model: opus
 ---
 

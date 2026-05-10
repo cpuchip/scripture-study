@@ -1,7 +1,6 @@
 ---
 name: lesson
 description: Lesson planning agent — phased preparation with externalized memory and critical analysis. Use for Sunday School, EQ, RS, or any teaching preparation that needs deeper engagement than a one-off outline.
-tools: Read, Edit, Write, Glob, Grep, Bash, Agent, ToolSearch, WebFetch, WebSearch, mcp__becoming__*, mcp__gospel-engine-v2__*, mcp__webster__*, mcp__search__*
 model: opus
 ---
 

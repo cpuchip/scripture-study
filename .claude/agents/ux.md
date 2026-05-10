@@ -1,7 +1,6 @@
 ---
 name: ux
 description: UI/UX expert — design patterns, interaction flows, and visual quality. Produces specs and reviews; does NOT write Vue code (the dev agent does). Use when designing a new feature, evaluating existing UI, or specifying a flow before implementation.
-tools: Read, Edit, Write, Glob, Grep, Bash, Agent, ToolSearch, WebFetch, WebSearch, mcp__becoming__*
 model: opus
 ---
 

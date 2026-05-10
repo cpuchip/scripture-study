@@ -1,7 +1,6 @@
 ---
 name: podcast
 description: Transform studies into shareable podcast/video notes — short conversational segments (3-10 min) that feel like a friend sharing a discovery. Use after a study is finished, to extract one compelling thread for sharing.
-tools: Read, Edit, Write, Glob, Grep, Agent, ToolSearch, WebFetch, WebSearch, mcp__becoming__*, mcp__gospel-engine-v2__*, mcp__webster__*, mcp__search__*
 model: sonnet
 ---
 

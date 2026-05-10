@@ -379,4 +379,365 @@ This session ran without `mcp__gospel-engine-v2__gospel_search`, `mcp__webster__
 
 The original outline holds with one revision: **Section III** should explicitly name "chain" as the user's reading, not the scripture's vocabulary, and ground the reading in Helaman 3:29-30 (which uses the functional language: "lay hold upon," "lead across the gulf," "land their souls"). **Section IV** should expand to acknowledge the multi-group complexity of Lehi's vision and name the four-group framing as a useful simplification. **Section V** should hold both halves of the Heb-vs-Ether anchor tension and not collapse them. **A new short section after Section IV (call it Section IV.5 or fold into V)**: the convergence of all the names on Christ — that the chain and the anchor are both Christ, which is why the whole image holds together.
 
+---
+
+# PART 2 — Modern Prophets and the Triad
+
+## Part 2 — Binding Question (Same)
+
+Is the iron rod (the word of God) the chain that tethers our souls to the anchor of hope — drawing us from here, through the veil, into the celestial kingdom of God? And what do the four groups in Lehi and Nephi's vision teach us about how people relate to hope through the word?
+
+## Part 2 — What's Different
+
+Part 1 was scripture-heavy with one apostolic voice (Bednar 2022). Part 2 expounds the same question through the modern prophetic tradition — finding what apostles and prophets have taught about:
+- The tree of life vision (1 Ne 8, 11-15)
+- The rod of iron as word of God
+- Faith, hope, charity as a triad (1 Cor 13, Moroni 7, Ether 12)
+- The way, the truth, the life (John 14:6) joined to the iron-rod motif
+
+## Part 2 — Outline (provisional)
+
+A. The Triad in Modern Voice — faith, hope, charity as motion not feeling
+B. The Rod of Iron in the Modern Pulpit — Eyring, Holland, Bednar, Maxwell, Packer, Faust
+C. Hope as Anchor in Modern Voice — Eyring, Maxwell, Faust, Holland
+D. The Way, the Truth, the Life — modern voices on John 14:6 + the iron-rod motif
+E. The Four Groups Read by Modern Apostles — heeding, holding fast, falling away
+F. Becoming — what the modern prophetic voice adds to Michael's commitments
+
+## Part 2 — Tool Validation Failure (named honestly)
+
+**MCP tools are not registered as deferred tools in this subagent context.** Confirmed by ToolSearch with multiple queries — `mcp__gospel-engine-v2__gospel_search`, `mcp__gospel-engine-v2__gospel_get`, `mcp__webster__define`, `mcp__byu-citations__byu_citations`, `mcp__becoming__brain_search` are all unavailable. Only `WebSearch` and `WebFetch` are surfaced via ToolSearch.
+
+This means: no semantic gospel search on the binding question, no Webster 1828 word definitions, no BYU citation density check on Heb 6:19 / Ether 12:4 / 1 Ne 8:24 / 1 Ne 11:25 / Moroni 7:41. **Loss is real and named.** Compensation: heavy use of `Read` and `Grep` against the local gospel-library files (which contain conference talks 1971-2025 and all Teachings of the Presidents manuals).
+
+## Part 2 — Source Gathering
+
+### gospel-library/eng/general-conference/1999/10/hope-an-anchor-of-the-soul.md — President James E. Faust, "Hope, an Anchor of the Soul" (Oct 1999)
+
+**Title is the thesis.** This is the closest direct apostolic statement of the binding question's anchor half. Faust quotes Ether 12:4 and 2 Ne 31:20 in adjacent paragraphs — the exact two-text combination Part 1 traces.
+
+**The hope-anchor stated as direct apostolic doctrine:**
+> "Hope is the anchor of our souls. I know of no one who is not in need of hope—young or old, strong or weak, rich or poor. In the Book of Mormon we are exhorted, 'Wherefore, whoso believeth in God might *with surety hope* for a better world, yea, even a place at the right hand of God, which hope cometh of faith, maketh an anchor to the souls of men, which would make them sure and steadfast, always abounding in good works, being led to glorify God.'"
+> — Faust, "Hope, an Anchor of the Soul," Oct 1999
+
+**Observation:** Faust does not collapse Heb 6 and Ether 12 the way Part 1 wrestles with — he simply states "hope is the anchor of our souls" and then quotes Ether 12:4. Apostolic shorthand. The Heb-vs-Ether grammar tension Part 1 names is a reading-level problem; at the pulpit level Faust treats them as one thing.
+
+**Hope tied to feasting on the word and pressing forward (next paragraph):**
+> "Nephi admonished those of his day, 'Wherefore, ye must press forward with a steadfastness in Christ, having a perfect brightness of hope, and a love of God and of all men … , feasting upon the word of Christ, and endure to the end, behold, thus saith the Father: Ye shall have eternal life.'"
+> — Faust, ibid.
+
+**Observation:** Part 1 traced this exact link in Section VI. Faust traces it in paragraph 4. The connection between hope-as-anchor and pressing-forward-feasting-on-the-word is apostolically established.
+
+**Peter's hope anchored to the Rock:**
+> "His hope became firmly anchored to an eternal Rock, even our Redeemer, Jesus Christ."
+> — Faust, ibid. (citing Hel 5:12 in fn 14)
+
+**Observation:** This is the convergence Part 1 made structurally — that the anchor's far end is gripped on Christ. Faust says it explicitly: "anchored to an eternal Rock, even our Redeemer." The Rock and the anchor are Christ. Faust cites Helaman 5:12 — "remember that it is upon the rock of our Redeemer, who is Christ, the Son of God, that ye must build your foundation… that when the devil shall send forth his mighty winds… it shall have no power over you to drag you down." The Rock-foundation language of Helaman 5 is pulled into the anchor framework.
+
+**Hope as trust:**
+> "Hope is trust in God's promises, faith that if we act now, the desired blessings will be fulfilled in the future. Abraham 'against hope believed in hope, that he might become the father of many nations.' Contrary to human reason, he trusted God, 'fully persuaded' that God would fulfill His promises…"
+> — Faust, ibid.
+
+**Observation:** This is functionally identical to Part 1's reading of Hebrews 6:13-18 — the "two immutable things" are God's promise and oath to Abraham, which is the *foundation* on which hope as anchor rests. Faust cites Romans 4:18-21. Same pastoral logic Hebrews uses.
+
+**Connects to:** Part 2 sections A (triad), C (anchor in modern voice), and back-references Part 1 §II.
+
+### gospel-library/eng/general-conference/2013/10/continually-holding-fast.md — Elder Kevin S. Hamilton, "Continually Holding Fast" (Oct 2013)
+
+Hamilton is a Seventy, not an apostle. Citation weight is lower than apostolic, but he is citing Bednar's 2007 CES fireside — which is itself the apostolic source.
+
+**Hamilton's gloss on Group 3 (citing Bednar):**
+> "About this group of people, Elder David A. Bednar has taught: 'The key phrase in this verse is "continually holding fast" to the rod of iron. … Perhaps this third group of people *consistently* read *and* studied *and* searched the words of Christ. … This is the group you and I should strive to join.'"
+> — Hamilton, "Continually Holding Fast," Oct 2013, citing Bednar, "A Reservoir of Living Water," CES fireside, Feb 4, 2007
+
+**Observation:** This is the major find for Michael. Bednar's gloss makes "continually holding fast to the rod" = "consistently reading, studying, and searching the words of Christ." Group 3's distinguishing posture is *daily scripture study*. The rod is iron; the hand grips it; the grip is continuous; the continuous grip is daily reading. Part 1's Becoming section already pointed at this; Bednar (via Hamilton) makes it explicit. The morning desk work IS the rod-grip.
+
+**Hamilton's framing of the path through "good" alternatives:**
+> "There will always be some 'good' activity that can and should be sacrificed for the better choice of Church meeting attendance. This is in fact one of the ways that the adversary 'cheateth \[our] souls, and leadeth \[us carefully] away.' He uses 'good' activities as substitutes for 'better' or even 'best' activities."
+> — Hamilton, ibid., citing 2 Ne 28:21 and Oaks, "Good, Better, Best"
+
+**Observation:** This adds a new dimension to Group 1 (those who pressed forward but never reached the rod). Their failure is not catastrophic sin. It is the substitution of "good" for "better." The Sunday afternoon ride in the country is the case-in-chief: not evil, just not the rod. The mist is not just darkness — it is the soft, plausible, harmless-looking alternative that draws the foot off the path one decision at a time.
+
+**Connects to:** Part 2 sections B (rod in modern pulpit), E (four groups), F (Becoming).
+
+### gospel-library/eng/general-conference/1994/10/brightness-of-hope.md — Elder Neal A. Maxwell, "Brightness of Hope" (Oct 1994)
+
+**The triad has converging linkage on Christ:**
+> "Unsurprisingly the triad of faith, hope, and charity, which brings us to Christ, has strong and converging linkage: faith is in the Lord Jesus Christ, hope is in His atonement, and charity is the 'pure love of Christ'! Each of these attributes qualifies us for the celestial kingdom. Each, first of all, requires us to be meek and lowly."
+> — Maxwell, "Brightness of Hope," Oct 1994
+
+**Observation:** Maxwell makes the three apostolic moves Part 2 needs in one paragraph. (1) The triad's linkage is *converging on Christ*. (2) Each member of the triad takes Christ as its object: faith *in* Christ, hope *in* His atonement, charity *as* His pure love. (3) Each "qualifies us for the celestial kingdom" — direct anchor to Michael's binding question half ("into the celestial kingdom of God"). Maxwell cites Moroni 10:20-21 and Ether 12:34. The triad's destination is the celestial kingdom, by direct apostolic statement.
+
+**Hope's circumference:**
+> "In the geometry of restored theology, hope has a greater circumference than faith. If faith increases, the perimeter of hope stretches correspondingly."
+> — Maxwell, ibid.
+
+**Observation:** Striking spatial image. Maxwell calls it "geometry." Faith and hope are not the same shape; hope encompasses more than faith. This adds dimension to the chain image — hope is the circumference of what the soul reaches toward, faith is the substance within. (Hebrews 11:1: "faith is the substance of things hoped for" — Paul gives the same shape: hope is the perimeter, faith is what fills it.)
+
+**Hope and the eye of faith:**
+> "Those with true hope often see their personal circumstances shaken, like kaleidoscopes, again and again. Yet with the 'eye of faith,' they still see divine pattern and purpose."
+> — Maxwell, ibid., citing Alma 5:15
+
+**Observation:** Direct apostolic confirmation of Part 1's Section VI move (the eye as organ of hope, drawn from `hope-and-the-grammar-of-pairs.md`). Maxwell ties hope to "eye of faith." The seeing organ is what stays oriented when circumstances shake.
+
+**Hope feasts on the words of Christ:**
+> "Hope feasts on the words of Christ, 'written for our learning,' so that 'having all these witnesses' through the 'comfort of the scriptures \[we] might have hope.' We sing, too, of how 'more holiness' involves having 'more hope in his word.'"
+> — Maxwell, ibid., citing Rom 15:4, Jacob 4:6, 2 Ne 31:20
+
+**Observation:** Apostolic confirmation of Part 1's collapse of three things into one: scripture study = feasting = hope-cultivating. Maxwell uses the exact verb "feasts." The words of Christ are what hope eats. The rod is iron, but it is also food.
+
+**Despair comes of iniquity:**
+> "Causality can be assigned to one or another form of iniquity. No wonder, as the scriptures say, despair comes of iniquity!"
+> — Maxwell, ibid., citing Moroni 10:22
+
+**Observation:** This was already in `hope-and-the-grammar-of-pairs.md` (despair = iniquity). Maxwell preached it. The opposite of hope is not pessimism; it is sin.
+
+**Hope as stiffening the spine:**
+> "Real hope is much more than wishful musing. It stiffens, not slackens, the spiritual spine. It is composed, not giddy, eager without being naive, and pleasantly steady without being smug. Hope is realistic anticipation taking the form of determination — a determination not merely to survive but to 'endure … well' to the end."
+> — Maxwell, ibid.
+
+**Observation:** Hope is *iron*. Maxwell does not use the word — but his metaphor is structural rigidity. Hope stiffens the spine the way the rod is iron and not silk. Same image, different term. The rod and hope are made of the same material.
+
+**The "if not" of three valiant men:**
+> "Having ultimate hope does not mean we will always be rescued from proximate problems, but we will be rescued from everlasting death! Meanwhile, ultimate hope makes it possible to say the same three words used centuries ago by three valiant men. They knew God could rescue them from the fiery furnace if He chose. 'But if not,' they said, nevertheless, they would still serve Him!"
+> — Maxwell, ibid., citing Daniel 3:18
+
+**Observation:** This is the apostolic check on Part 1's claim that the chain pulls. Maxwell distinguishes "ultimate hope" (anchored on Christ, the resurrection, the celestial kingdom) from "proximate hopes" (the things we wish for in this life). The chain pulls *toward* the ultimate destination. It does not promise *every* proximate request. The three Hebrew children's "but if not" is hope holding the line even when the immediate rescue is withheld.
+
+**Connects to:** Part 2 sections A (triad), C (anchor), D (eye/feasting on word).
+
+### gospel-library/eng/general-conference/2008/10/the-infinite-power-of-hope.md — President Dieter F. Uchtdorf, "The Infinite Power of Hope" (Oct 2008)
+
+**Hope as anchor + foundation simultaneously:**
+> "The hope of salvation is like a protective helmet; it is the foundation of our faith and an anchor to our souls."
+> — Uchtdorf, "The Infinite Power of Hope," Oct 2008, footnoting Heb 11:1, Moroni 7:40 (foundation), Heb 6:19, Ether 12:4 (anchor)
+
+**Observation:** Uchtdorf names hope as *both* anchor and foundation. Faith's foundation is hope; the soul's anchor is hope. So in the chain image, hope is what grounds the chain on this side (foundation) AND what holds it on the far side (anchor). Hope is at both ends. Faith stands on hope; the soul is held by hope. Two structural functions of one virtue.
+
+**Things we hope FOR vs. things we hope IN:**
+> "The things we hope *for* are often future events… Things we hope *in* sustain us during our daily walk… The things we hope *for* lead us to faith, while the things we hope *in* lead us to charity."
+> — Uchtdorf, ibid.
+
+**Observation:** This is a major distinction Part 1 did not have. Hope has two grammatical objects. Hoping *for* something — eternal life, the celestial kingdom, a place at God's right hand — is the future-oriented grip on what is at the far end of the chain. Hoping *in* someone — Christ, His atonement, His goodness — is the present-tense grip on the line itself. Both are needed. The line is gripped *in* the One it is fastened to. The destination is hoped *for* through Him. Hope's two prepositions are the two ends of the chain.
+
+**Hope grows by feasting and by walking:**
+> "We learn to cultivate hope the same way we learn to walk, one step at a time. As we study the scriptures, speak with our Heavenly Father daily, and commit to keep the commandments of God, like the Word of Wisdom and paying a full tithing, we attain hope."
+> — Uchtdorf, ibid.
+
+**Observation:** Apostolic confirmation that the rod-grip and hope are co-developed. Daily scripture study, daily prayer, daily obedience = how hope is cultivated. Hope is not a feeling that arrives; it is a virtue that walks. One step. Then another. (Same posture as Group 3 — "continually holding fast.")
+
+**The Camus inversion:**
+> "There may be times when we must make a courageous decision to hope even when everything around us contradicts this hope. Like Father Abraham, we will 'against hope \[believe] in hope.' Or, as one writer expressed, 'in the depth of winter, \[we find] within \[us] an invincible summer.'"
+> — Uchtdorf, ibid., quoting Albert Camus
+
+**Observation:** Uchtdorf quotes Camus alongside Romans 4:18. The atheist existentialist's "invincible summer" line is approved as a hope image by an apostle. The point: hope is a *decision* in the face of contradicting circumstance — exactly Group 3's posture in the mist.
+
+**Hope's contagion:**
+> "Hope can be contagious, so we are to be 'ready always to give an answer to every man that asketh … a reason of the hope that is in \[us]'."
+> — Uchtdorf cites 1 Pet 3:15 (and Maxwell does too in his 1994 talk)
+
+**Observation:** This connects directly to Michael's Sunday-School teaching practice. The reason of the hope that is in you is what the rod-grip becomes once it is shared. The chain extends through a class one grip making the next grip possible (Part 1, Section VII).
+
+**Connects to:** Part 2 sections A, C, D, F.
+
+### gospel-library/eng/general-conference/2009/10/safety-for-the-soul.md — Elder Jeffrey R. Holland, "Safety for the Soul" (Oct 2009)
+
+**The rod runs unfailingly along the path:**
+> "The principal point of the story is that the successful travelers resist all distractions, including the lure of forbidden paths and jeering taunts from the vain and proud who have taken those paths. The record says that the protected 'did press their way forward, continually \[and, I might add, tenaciously] holding fast' to a rod of iron that runs unfailingly along the course of the true path. However dark the night *or* the day, the rod marks the way of that solitary, redeeming trail."
+> — Holland, "Safety for the Soul," Oct 2009, citing 1 Ne 8:30
+
+**Observation:** Apostolic statement of the spatial claim Part 1 makes in §III: the rod *runs the full length of the path*. Holland's word is "unfailingly." The rod does not begin at one place and end at another; it is continuous. This is the chain-image grounded in apostolic preaching, not just textual inference. The rod is unfailingly continuous, like a chain.
+
+**Mist falls on faithful and unfaithful alike:**
+> "It is imperative to note that this mist of darkness descends on *all* the travelers — the faithful and the determined ones (the elect, we might even say) as well as the weaker and ungrounded ones."
+> — Holland, ibid.
+
+**Observation:** Apostolic correction of a common Sunday School misreading. The mist is not a punishment for the unfaithful. It is an environmental fact of mortal travel. Even Group 3 walks through the mist — they just hold fast through it. This protects the binding question's pastoral honesty: the mist is not evidence that you are off the path; it is evidence that you are *on* it.
+
+**The Book of Mormon as the keystone counter-offensive:**
+> "It has always been significant to me that the Book of Mormon, one of the Lord's powerful keystones in this counteroffensive against latter-day ills, begins with a great parable of life, an extended allegory of hope versus fear, of light versus darkness, of salvation versus destruction."
+> — Holland, ibid.
+
+**Observation:** Holland reads Lehi's vision as the Book of Mormon's *opening allegory*. The vision is not a Sunday-School staple bolted onto the book; it is the book's structural front door. "Hope versus fear" is the binary — same as `hope-and-the-grammar-of-pairs.md` ("the grammar of pairs"). Whatever the Book of Mormon does in 530 pages is announced in 1 Nephi 8.
+
+**Treasure up my word and shall not be deceived:**
+> "Whoso treasureth up my word, shall not be deceived—and in the last days neither your heart nor your faith will fail you."
+> — Holland, ibid., citing JS-Matt 1:37
+
+**Observation:** Holland's closing. The line is the protection. Not occasional engagement with the word — *treasuring up* the word. Continual storage. Same posture as Group 3's "continually holding fast" but in a different metaphor (storing rather than gripping). The word in you is what does not fail when faith is tested.
+
+**Connects to:** Part 2 sections B, E, F.
+
+### gospel-library/eng/general-conference/2022/04/23holland.md — Elder Jeffrey R. Holland, "Fear Not: Believe Only!" (April 2022)
+
+**The iron rod given precisely because of dark days:**
+> "It is precisely *because* there would be dark days and difficult issues that God promised He would, out of a cloud by day and a pillar of fire by night, guide prophets, give an iron rod, open a narrow gate leading to a strait path, and above all grant us the power to finish the course."
+> — Holland, "Fear Not: Believe Only!", April 2022, footnote 13 cites Ex 13:21-22, Amos 3:7, 1 Ne 8:24, 1 Ne 8:30, 2 Ne 9:41
+
+**Observation:** Holland names *both* 1 Ne 8:24 (Group 2, who clung) and 1 Ne 8:30 (Group 3, who held continually) in one footnote — confirming Part 1's reading that both groups gripped the rod and the difference was duration, not initial reach. Holland also collapses Exodus's pillar-and-cloud, Amos's "Surely the Lord God will do nothing, but he revealeth his secret unto his servants the prophets," and Lehi's iron rod into one composite gift God gave *because of* the dark days. The rod is given as protection *for* the storm. Iron because the storm is real.
+
+**Connects to:** Part 2 sections B, E.
+
+### gospel-library/eng/general-conference/2015/04/stay-by-the-tree.md — Elder Kevin W. Pearson, "Stay by the Tree" (April 2015)
+
+Pearson is a Seventy. Citation weight is supporting, not load-bearing.
+
+**The tree, the way, the truth, the life:**
+> "The tree of life is the central focus in Lehi's dream. Everything points to the tree of life. The tree represents Christ, who is the clear manifestation of the love of God. The fruit is His infinite Atonement and is great evidence of God's love. Eternal life with our loved ones is sweeter and more desirable than any other thing. To realize this gift, we must 'come unto Christ, and be perfected in him.' He is 'the way, the truth, and the life.'"
+> — Pearson, "Stay by the Tree," April 2015, citing Moroni 10:32 and John 14:6
+
+**Observation:** Pearson explicitly links the tree of life to John 14:6. Same identification Part 1 has Bednar making (Christ = the Word = the rod). Pearson takes it one step farther: Christ is the way (the path), the truth (the rod / word), and the life (the fruit / tree). The whole geometry is Christ. This is the same convergence Part 1 §III names ("Three names of one Person") but expanded to the whole vision: the path, the rod, the tree, and the fruit are all Christ.
+
+**Continually holding fast = daily scripture study:**
+> "Trials are like great mists of darkness that can blind our eyes and harden our hearts. Unless we are 'continually holding fast' to the word of God and living it, we will become spiritually blinded rather than spiritually minded. Search the Book of Mormon and the words of the living prophets every day, every day, every day! It's the key to spiritual survival and avoiding deception. Without it, we are spiritually lost."
+> — Pearson, ibid.
+
+**Observation:** "Every day, every day, every day." This is the discipline named at the seventy level in 2015 — same as Bednar 2007 (via Hamilton 2013) and Holland 2009. Three voices, one decade, same instruction: the rod is held by daily scripture study. The discipline is not weekly. Not Sundays. *Daily.*
+
+**Heeding = paying attention:**
+> "To heed is to give careful attention. Heeding those who do not believe in Christ will not help you find Him. Searching #spaciousbuilding for knowledge will not lead you to truth. It's not posted there. Only the Savior has 'the words of eternal life.' Everything else is just words."
+> — Pearson, ibid.
+
+**Observation:** Same gloss Bednar 2022 will give seven years later: "heed" = "give attention to." The hashtag joke (#spaciousbuilding) updates the building image for the social-media era — but the doctrine is identical. The building today is the platform that holds attention.
+
+**Connects to:** Part 2 sections D (way/truth/life), E (four groups, heeding).
+
+### gospel-library/eng/general-conference/2022/10/51eyring.md — President Henry B. Eyring, "Legacy of Encouragement" (Oct 2022)
+
+**The triad's order, drawn from Moroni 7:**
+> "How is it that ye can attain unto faith, save ye shall have hope?
+> "And what is it that ye shall hope for? Behold I say unto you that ye shall have hope through the atonement of Christ and the power of his resurrection, to be raised unto life eternal, and this because of your faith in him according to the promise.
+> "Wherefore, if a man have faith he must needs have hope; for without faith there cannot be any hope.
+> "And again, behold I say unto you that he cannot have faith and hope, save he shall be meek, and lowly of heart."
+> — Eyring, "Legacy of Encouragement," Oct 2022, citing Moroni 7:40-43
+
+**Observation:** Eyring quotes Moroni at length. Note Mormon's own internal tension: "How is it that ye can attain unto faith, save ye shall have hope?" — hope precedes faith. Then: "if a man have faith he must needs have hope" — faith precedes hope. The order is reciprocal. Faith and hope feed each other; you cannot have one without the other. Maxwell 1994 said the same: "Faith and hope are constantly interactive and may not always be precisely distinguished or sequenced." Both apostles converge on the reciprocity.
+
+**Meekness as precondition for both:**
+> "He cannot have faith and hope, save he shall be meek, and lowly of heart."
+> — Eyring quoting Moroni 7:43
+
+**Observation:** Both faith AND hope require meekness. This is the condition the rod's hand can only grip from. A proud hand cannot hold the rod long. A meek hand can hold continuously. The "fall down and partook" of Group 3 (1 Ne 8:30) — humility at the tree — matches Mormon's "meek and lowly of heart." Group 3 is meek; the meek hold continuously.
+
+**Charity is the third member, and the greatest:**
+> "He must needs have charity; for if he have not charity he is nothing… cleave unto charity, which is the greatest of all, for all things must fail."
+> — Eyring quoting Moroni 7:44, 46
+
+**Observation:** Charity is what the triad becomes when faith and hope have done their work long enough. "Charity is the pure love of Christ" (Moroni 7:47). The destination of the chain is the love of God (1 Ne 11:25 — the tree, the fountain). The triad lands at charity; the chain lands at the tree; both land at Christ. Same destination, two vocabularies.
+
+**Connects to:** Part 2 sections A (triad), F (Becoming).
+
+### gospel-library/eng/manual/teachings-of-presidents-of-the-church-ezra-taft-benson/chapter-8-the-power-of-the-word.md — President Ezra Taft Benson, "The Power of the Word" (Apr 1986 priesthood leadership address; preserved in 2014 manual)
+
+**Lehi's vision read prophetically for our day:**
+> "The prophet Lehi also saw our day in his great visionary dream of the tree of life. He saw that many people would wander blindly in the mists of darkness, which symbolized the temptations of the devil. He saw some fall away 'in forbidden paths,' others drown in rivers of filthiness, and still others wander in 'strange roads.'… Not all of those Lehi saw perishing were of the world. Some had come to the tree and partaken of the fruit. In other words, some members of the Church today are among those souls Lehi saw which were lost."
+> — Benson, "The Power of the Word," Apr 1986
+
+**Observation:** Benson reads Lehi's vision as a prophecy of the latter days — and explicitly identifies "some members of the Church today" with Group 2 (those who tasted the fruit and fell away). This is prophetic application. The vision is not just symbolic of a generic spiritual journey; it is a specific warning to *Saints in our time*. Group 2 is in the chapel, not outside it.
+
+**The rod = the word, by direct prophetic statement:**
+> "In his dream, Lehi saw an iron rod which led through the mists of darkness. He saw that if people would hold fast to that rod, they could avoid the rivers of filthiness, stay away from the forbidden paths, stop from wandering in the strange roads that lead to destruction. Later his son Nephi clearly explained the symbolism of the iron rod… 'It was the word of God; and \[note this promise] *whoso would hearken unto the word of God, and would hold fast unto it, they would never perish; neither could the temptations and the fiery darts of the adversary overpower them unto blindness, to lead them away to destruction.*' Not only will the word of God lead us to the fruit which is desirable above all others, but in the word of God and through it we can find the power to resist temptation, the power to thwart the work of Satan and his emissaries."
+> — Benson, ibid., quoting 1 Ne 15:23-24
+
+**Observation:** The President of the Church teaches the rod-as-word equation directly, with the same load-bearing verse Part 1 uses (1 Ne 15:24). And he names two distinct functions: the rod *leads* to the fruit AND in the rod *and through it* is found *power to resist*. The rod is conducting AND fortifying. This matches Part 1's distinction between the rod-as-line (that leads) and the rod-as-iron (that holds against the wind).
+
+**The Helaman 3:29 keystone, named by a prophet:**
+> "Are there members of your flock who are deep in sin and need to pull themselves back? Helaman's promise is for them: 'Yea, we see that whosoever will may lay hold upon the word of God, which is quick and powerful, which shall divide asunder all the cunning and the snares and the wiles of the devil.'"
+> — Benson, ibid., citing Hel 3:29
+
+**Observation:** Part 1 named Helaman 3:29-30 as the keystone verse for the chain image. Benson uses the same verse, calling it the *promise* for those who are deep in sin and need to pull back. The verb "pull back" is functionally chain language. Benson's pastoral logic matches Part 1's structural logic.
+
+**Benson's seven-fold list of the word's promises:**
+> "Success in righteousness, the power to avoid deception and resist temptation, guidance in our daily lives, healing of the soul — these are but a few of the promises the Lord has given to those who will come to His word."
+> — Benson, ibid.
+
+**Observation:** Benson's list of the word's effects matches Hebrews 4:12 + Helaman 3:29 + 1 Ne 15:24 stacked together. Same body of promises Part 1 §III drew from. Benson teaches the consolidated promise as one thing.
+
+**The closing imperative:**
+> "Oh, my brethren, let us not treat lightly the great things we have received from the hand of the Lord! His word is one of the most valuable gifts He has given us. I urge you to recommit yourselves to a study of the scriptures. Immerse yourselves in them daily…"
+> — Benson, ibid.
+
+**Observation:** "Immerse yourselves in them daily." Same daily-discipline call as Pearson 2015, Holland 2009, Hamilton 2013, Bednar 2007. Across 30+ years (1986 → 2022), the apostolic call is consistent: the rod is iron and the hand is on it through *daily* engagement with the word. Not weekly. Daily.
+
+**The whole talk is a sustained reading of Lehi's vision applied to the Restoration's last-days condition.** This is prophetic-level confirmation of the binding question's framing — that the rod (the word) is what tethers Saints through the mist to the tree (Christ). Benson does not use the words "anchor" or "chain," but the function he describes is identical.
+
+**Connects to:** Part 2 sections B, E, F.
+
+---
+
+## Part 2 — Gap & Critical Analysis
+
+### Tool constraint (named honestly — same finding as Part 1)
+
+MCP tools confirmed unavailable in this subagent context. ToolSearch returned no matches for any `mcp__*` tool. Only `WebSearch` and `WebFetch` are surfaced. The user's frontmatter wildcard fix did not propagate to subagents. **No semantic gospel search, no Webster 1828 word definitions, no BYU citation density check.** Compensation: heavy `Read` + `Grep` against local gospel-library files. The local corpus is rich and the modern voices found are strong, but I cannot rule out that semantic search would have surfaced different voices (e.g., earlier Maxwell talks, Christofferson's specific iron-rod treatments, or Nelson talks I did not check).
+
+### Gap Analysis (Phase 3) — Sources mapped to Part 2 outline
+
+| Section | Sources gathered | Coverage |
+|---|---|---|
+| A. Triad in modern voice | Maxwell 1994, Uchtdorf 2008, Eyring 2022 | Strong (three apostolic voices on faith-hope-charity ordering and converging on Christ) |
+| B. Rod in modern pulpit | Holland 2009 ("rod runs unfailingly"), Holland 2022 (rod given because of dark days), Benson 1986 (Power of the Word) | Strong (one apostle twice, one prophet) |
+| C. Anchor in modern voice | Faust 1999 ("Hope, an Anchor of the Soul"), Maxwell 1994, Uchtdorf 2008 | Strong (title-level apostolic statement + two supporting) |
+| D. Way/Truth/Life joined to rod | Pearson 2015 (Seventy: tree=Christ=way/truth/life), Bednar 2022 (cited in Part 1: Christ=Word=rod) | Adequate (Seventy + apostle from Part 1) |
+| E. Four groups read by modern apostles | Hamilton 2013 (citing Bednar 2007), Holland 2009 (mist on all), Holland 2022 (1 Ne 8:24+30 paired), Benson 1986 (Group 2 = members today) | Strong |
+| F. Becoming | (To compose) | — |
+
+**Holes I will name in the draft, not paper over:**
+- I did not pull specific Christofferson or Nelson talks on the rod, though Christofferson 2019 surfaced in the faith-hope-charity grep. Decision: the apostolic voices I have are sufficient; over-citation would dilute.
+- I did not pull a Joseph Smith or Brigham Young direct teaching on the rod or the anchor. Their voices are *implicit* in the Restoration's reading of Lehi's vision (carried by Benson, Holland, Bednar, Maxwell), but I do not have a direct quote from the founding generation. **I will name this gap.**
+- I did not run BYU citation density on Heb 6:19 / Ether 12:4 / 1 Ne 8:24 / 1 Ne 11:25 / Moroni 7:41. The user explicitly asked for this. **Tool unavailability prevents it.** I will name this honestly.
+
+### Critical Analysis (Phase 3a)
+
+#### Confirmed Strong by Modern Voices
+
+- **The rod is the word, by prophetic statement.** Benson 1986 (President), Holland 2009 + 2022 (Apostle), Bednar 2022 (Apostle, cited in Part 1). The equation is not Michael's framing imposed; it is the canonical apostolic reading.
+- **Hope is the anchor of the soul, by direct apostolic title.** Faust 1999. The talk itself is named after the binding question's image. Title-level apostolic warrant.
+- **The triad converges on Christ, by direct apostolic statement.** Maxwell 1994: "faith is in the Lord Jesus Christ, hope is in His atonement, and charity is the 'pure love of Christ.'" Three Christ-objects, one Person.
+- **Continually holding fast = daily scripture study.** Bednar 2007 (via Hamilton 2013), Holland 2009, Pearson 2015, Benson 1986. Four voices across three decades, same instruction.
+- **Group 2 is in the Church today.** Benson 1986 prophetic application. Some who taste the fruit fall. The vision warns Saints, not just the world.
+
+#### Tensions Surfaced
+
+- **The "anchor" image vs. the "Rock" image.** Faust 1999 says Peter's "hope became firmly anchored to an eternal Rock, even our Redeemer." This *fuses* Heb 6:19 (anchor) with Hel 5:12 (rock). Part 1 worked carefully with the anchor language and treated the Rock language as a separate Helaman 5 image. Faust does not separate them — for him, the anchor's gripping point IS the Rock. **This actually reinforces Part 1's claim** that the chain's far end is gripped on Christ. The anchor and the Rock are the same Christ.
+- **Hope precedes faith vs. faith precedes hope.** Eyring quoting Moroni 7:40-43 surfaces the reciprocity directly. Maxwell 1994 names the same: "Faith and hope are constantly interactive and may not always be precisely distinguished or sequenced." Mormon himself does both moves in adjacent verses. This is not a contradiction modern apostles solve — it is a reciprocity they preserve. The Part 2 draft should preserve it too.
+- **Hope IN vs. hope FOR.** Uchtdorf 2008 makes this distinction Part 1 did not have. This sharpens the chain image: hoping *in* Christ is the present-tense grip on the line; hoping *for* the celestial kingdom is the future-tense grip on what is at the far end. **The chain image survives this distinction and is enriched by it.**
+
+#### What's Genuinely New in Part 2
+
+The most surprising find from the modern corpus: **the discipline of "every day, every day, every day."** Pearson 2015 says this phrase three times. Benson 1986 says "immerse yourselves in them daily." Bednar 2007 (via Hamilton) says "consistently read and studied and searched the words of Christ." Holland 2009 says "treasure up my word." Across thirty-five years and four voices, the apostolic call is structurally the same: the rod is held by *daily* discipline. Part 1's Becoming section pointed at this; Part 2 confirms it from the pulpit.
+
+The second most surprising: **Faust 1999 anchored Hope to the Rock by name.** The "Rock" image (Helaman 5:12) and the "anchor" image (Hebrews 6:19) are taught by Mormon-era and apostolic voices as describing the same thing — the immovable far-end of the line.
+
+The third most surprising: **Holland 2009 read the mist as falling on the faithful too.** Part 1 did not name this explicitly. The mist is not a marker of unfaithfulness. It is the environmental fact of mortal travel. Group 3 is *not* in clear weather; they are in the mist with Group 2 — they just hold continuously.
+
+#### Posture Check (Phase 3a, again)
+
+Am I reading to discover or to confirm? Honest answer: I went looking for confirmation of Part 1's framing in the modern corpus. I largely found it. But two genuinely new things emerged that I did not expect:
+1. Uchtdorf's hope-IN-vs-hope-FOR distinction. This is a *new structural insight* about the chain image.
+2. Holland's reading of the mist as falling on all travelers. This *softens* Part 1's implicit reading that the mist is what separates the failing from the faithful.
+
+So Part 2 is not pure confirmation. There are genuine new findings. I will name them as such, not bury them as confirmation.
+
+#### Ring Check
+
+Does Part 2 answer the binding question? Yes. The modern apostolic corpus directly affirms:
+- The rod is the word of God (Benson, Holland, Bednar)
+- Hope is the anchor of the soul (Faust)
+- The anchor's grip is on Christ (Faust + Hebrews 6:20 read together)
+- The triad's destination is the celestial kingdom (Maxwell)
+- The four groups in Lehi's vision are diagnostic for Saints today (Benson)
+
+The chain that tethers the soul to the anchor of hope, drawing it through the veil into the celestial kingdom, is — in the modern apostolic teaching — the daily-held word of God, gripped continuously, with the hand meek, the eye on Christ, the foot pressing forward.
+
+#### Outline Adjustment
+
+The outline holds. I will fold sections into a tighter structure for the draft:
+- A. The Triad: Faith → Hope → Charity, Each in Christ (Maxwell, Eyring, Uchtdorf)
+- B. The Rod, by Apostolic Title (Benson, Holland, Bednar)
+- C. The Anchor, by Apostolic Title (Faust, Maxwell, Uchtdorf)
+- D. The Two Hopes — Hope IN, Hope FOR (Uchtdorf's structural addition)
+- E. The Mist Falls on All (Holland's correction to a common misreading)
+- F. Becoming — what daily, every day, every day adds to Michael's commitments
+
 
