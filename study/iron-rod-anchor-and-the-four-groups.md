@@ -312,4 +312,190 @@ The chain is Christ. The hand is on the iron because of His word that is also Hi
 
 ---
 
+## Part 3 — The Tree as Christ, the Destination as Love
+
+Part 1 read the rod as the chain and the anchor's grip as Christ on the far side of the veil. Part 2 added the apostolic witness across thirty-five years that the rod is the daily-held word, that hope takes two prepositions, and that the mist falls on all travelers. Both parts named in passing what Part 3 will now hold steady: that every metaphor of grace in Lehi's vision points to one Person. The binding question for Part 3 is whether the closing move holds — is the destination of the chain Christ-as-love, and does the text, read carefully, sustain the identification of tree, fruit, fountain, anchor, rod, and way as a single Christology in image-form?
+
+### XVI. What the Prior Tree Study Already Said
+
+[Tree of Life and the Chain](tree-of-life-and-the-chain.md) did much of the load-bearing work. That study established that the tree is the love of God ([1 Nephi 11:22, 25](../gospel-library/eng/scriptures/bofm/1-ne/11.md)), that the fruit is the love of God *received*, that "God is love" ([1 John 4:8](../gospel-library/eng/scriptures/nt/1-jn/4.md)) collapses the love and the Person, and therefore that the fruit, finally, is Christ Himself.
+
+What that study did not yet have was the structure Part 1 and Part 2 added — the chain, the anchor, the two prepositions of hope, the four groups' relation to grip. Part 3 returns to the tree carrying the chain. The question is no longer just *what is the tree?* but *where does the chain land, and is the place where it lands the same Person whose word the chain is made of?*
+
+### XVII. The Lamb Shown Before the Tree Named
+
+The angel's pedagogy in 1 Nephi 11 is worth slowing down for. Read the verbs in order.
+
+> "Behold the Lamb of God, yea, even the Son of the Eternal Father! Knowest thou the meaning of the tree which thy father saw?" — [1 Nephi 11:21](../gospel-library/eng/scriptures/bofm/1-ne/11.md)
+
+The angel does not define the tree. He shows the Lamb in the virgin's arms (v. 20) and immediately asks Nephi about the tree. The juxtaposition is the answer before Nephi gives the answer. Nephi has just seen what the tree means; the angel is asking him to *recognize* it. And Nephi does:
+
+> "Yea, it is the love of God, which sheddeth itself abroad in the hearts of the children of men; wherefore, it is the most desirable above all things." — [1 Nephi 11:22](../gospel-library/eng/scriptures/bofm/1-ne/11.md)
+
+Then verse 24, the angel returns to the Lamb:
+
+> "I looked, and I beheld the Son of God going forth among the children of men; and I saw many fall down at his feet and worship him." — [1 Nephi 11:24](../gospel-library/eng/scriptures/bofm/1-ne/11.md)
+
+The phrase *fall down at his feet* is the same phrase Lehi used of Group 3 four chapters earlier: "they came forth and fell down and partook of the fruit of the tree" ([1 Nephi 8:30](../gospel-library/eng/scriptures/bofm/1-ne/8.md)). Same Greek-equivalent gesture. The posture of partaking the fruit and the posture of worshiping the Lamb are one posture, told in two scenes. To partake of the fruit IS to fall down at His feet. The vision tells the reader the equation twice, once in image (Lehi, the tree) and once in person (Nephi, the Lamb), and the gesture connects them.
+
+The footnote at 11:25e routes the tree of life to [Genesis 2:9](../gospel-library/eng/scriptures/ot/gen/2.md), [Proverbs 11:30](../gospel-library/eng/scriptures/ot/prov/11.md), and [Moses 4:28](../gospel-library/eng/scriptures/pgp/moses/4.md). The Eden tree, the proverbial tree, the Restoration's tree, and Lehi's tree are linked by the canon's own footnote system. The tree is one motif across the standard works, and it is always the same tree — the tree that gives life, the tree whose fruit ends death. In Eden it was guarded; in Lehi's vision it was reachable by the rod; in Revelation 22 it stands in the midst of the city. Same tree, three stages of the plan: barred from the Fall, accessed by the gospel, restored in the kingdom.
+
+Pearson named this directly in April 2015: stay by the tree. The instruction is the same across dispensations. Whatever else changes, the tree does not move, and the path to it has always run by the rod.
+
+### XVIII. The Fruit Is the Atonement
+
+Hold three descriptions of the fruit together.
+
+Lehi:
+
+> "It was most sweet, above all that I ever before tasted. Yea, and I beheld that the fruit thereof was white, to exceed all the whiteness that I had ever seen... it filled my soul with exceedingly great joy." — [1 Nephi 8:11-12](../gospel-library/eng/scriptures/bofm/1-ne/8.md)
+
+Alma, preaching the experiment of faith:
+
+> "And because of your diligence and your faith and your patience with the word in nourishing it, that it may take root in you, behold, by and by ye shall pluck the fruit thereof, which is most precious, which is sweet above all that is sweet, and which is white above all that is white, yea, and pure above all that is pure; and ye shall feast upon this fruit even until ye are filled, that ye hunger not, neither shall ye thirst." — [Alma 32:42](../gospel-library/eng/scriptures/bofm/alma/32.md)
+
+Christ to the Samaritan woman:
+
+> "Whosoever drinketh of the water that I shall give him shall never thirst; but the water that I shall give him shall be in him a well of water springing up into everlasting life." — [John 4:14](../gospel-library/eng/scriptures/nt/john/4.md)
+
+Three texts, separated by centuries and oceans, share the same satisfaction. *Hunger not. Thirst not.* The fruit Lehi tasted fills the soul; the fruit Alma promises ends hunger and thirst; the water Christ gives ends thirst. The promise that the *fruit* ends hunger and thirst is the promise *Christ makes about Himself*. He is the bread; He is the water; partaking of the fruit and drinking the water and eating the bread are one act, named three ways.
+
+Corbridge stacked the I-AM sayings in October 2008 and said the equation aloud:
+
+> "Jesus Christ is the Way. He is Light and Life, Bread and Water, the Beginning and the End, the Resurrection and the Life, the Savior of the world, the Truth, and the Way." — [Corbridge, The Way](../gospel-library/eng/general-conference/2008/10/the-way.md)
+
+So the question of what the fruit *is* answers itself once the names are stacked. The fruit is what He is. To partake is to receive Him.
+
+The whiteness of the fruit is not just any whiteness. Lehi: "white, to exceed all the whiteness that I had ever seen." Nephi later, of the tree: "the whiteness thereof did exceed the whiteness of the driven snow" ([1 Nephi 11:8](../gospel-library/eng/scriptures/bofm/1-ne/11.md)). Compare Christ glorified, "his head and his hairs were white like wool, as white as snow" ([Revelation 1:14](../gospel-library/eng/scriptures/nt/rev/1.md)). Compare His disciples in His presence, who "were as white as the countenance and also the garments of Jesus" ([3 Nephi 19:25](../gospel-library/eng/scriptures/bofm/3-ne/19.md)). The fruit's whiteness is the whiteness of Christ. To partake is to receive what colors the disciple into Him.
+
+Uchtdorf in October 2009 names the mechanism plainly:
+
+> "Heavenly Father's love for His children is the core message of the plan of happiness, which plan is made active through the Atonement of Jesus Christ — the greatest expression of love the world has ever known." — [Uchtdorf, The Love of God](../gospel-library/eng/general-conference/2009/10/the-love-of-god.md)
+
+The Atonement is not a transaction that purchases love; it *is* love, performed. When Nephi sees the Lamb going forth, healing the sick, being judged, being lifted up upon the cross ([1 Nephi 11:24-33](../gospel-library/eng/scriptures/bofm/1-ne/11.md)), he is seeing love-of-God enacted in flesh. The tree shows what love looks like when it walks among men. The fruit is what that love is, given to the receiver. The descriptors are descriptors of Atonement received: most sweet, exceeding white, hunger no more.
+
+This is reading, not exegesis of a single verse. Nephi never writes "the fruit is the Atonement" in those words. But the angel shows Nephi the Lamb's whole ministry between verses 24 and 33 — birth, baptism, healing, judgment, crucifixion — *immediately after* Nephi names the tree as love of God. The vision answers the question of what love-of-God *is* with the entire Atonement narrative. The angel's pedagogy is consistent: show the thing, then identify it. He shows the Atonement; Nephi has already named what it is.
+
+### XIX. The Fountain Is a Person
+
+The fountain of living waters has a longer history than Lehi's vision. Jeremiah heard the Lord's voice in the first person:
+
+> "For my people have committed two evils; they have forsaken me the fountain of living waters, and hewed them out cisterns, broken cisterns, that can hold no water." — [Jeremiah 2:13](../gospel-library/eng/scriptures/ot/jer/2.md)
+
+"They have forsaken *me* the fountain of living waters." The Lord identifies *Himself*, not a place, as the fountain. The OT root of the image is therefore not metaphorical. The fountain is the Lord's first-person self-description. When Lehi sees a fountain at the head of the path and Nephi is told the fountain represents the love of God ([1 Nephi 11:25](../gospel-library/eng/scriptures/bofm/1-ne/11.md)), the reader who has heard Jeremiah hears the same Voice naming the same Person.
+
+The two evils in Jeremiah are coupled. Forsaking the fountain is one evil; *hewing out broken cisterns that can hold no water* is the second. They go together. Wherever the soul abandons the true fountain, it digs counterfeits. This is the textual root of Lehi's contrast: the fountain at the head of the path is the love of God; the river of filthiness on the other side is hell ([1 Nephi 15:27](../gospel-library/eng/scriptures/bofm/1-ne/15.md), Nephi's clarification). The drowned in the river are those who left the fountain and went to broken cisterns. Jeremiah teaches the mechanism. The same wickedness Israel committed in the OT, Lehi's vision dramatizes in image: the soul that forsakes the true fountain mistakes the river of filthiness for water.
+
+Christ at the well in John 4 brings the image forward and adds the interior turn:
+
+> "Whosoever drinketh of the water that I shall give him shall never thirst; but the water that I shall give him shall be in him a well of water springing up into everlasting life." — [John 4:14](../gospel-library/eng/scriptures/nt/john/4.md)
+
+The water Christ gives becomes a well *in the receiver*. The fountain pours into the soul, and the soul becomes a fountain. At the Feast of Tabernacles Christ extends the image:
+
+> "If any man thirst, let him come unto me, and drink. He that believeth on me, as the scripture hath said, out of his belly shall flow rivers of living water. (But this spake he of the Spirit, which they that believe on him should receive...)" — [John 7:37-39](../gospel-library/eng/scriptures/nt/john/7.md)
+
+The "rivers of living water" flowing out of the believer are named explicitly: the Spirit. So the full mechanism is on the table. Christ is the fountain (Jeremiah's first-person identification). Christ gives the water (John 4). The water *is* the Spirit (John 7). The Spirit becomes a spring within the believer (John 4:14). The spring flows outward (John 7:38). The believer becomes a conduit of the same love that was given to him.
+
+This matches Paul exactly:
+
+> "Hope maketh not ashamed; because the love of God is shed abroad in our hearts by the Holy Ghost which is given unto us." — [Romans 5:5](../gospel-library/eng/scriptures/nt/rom/5.md)
+
+And Mormon, in his epistle to Moroni on infant baptism, writes the chain in full:
+
+> "The remission of sins bringeth meekness, and lowliness of heart; and because of meekness and lowliness of heart cometh the visitation of the Holy Ghost, which Comforter filleth with hope and perfect love, which love endureth by diligence unto prayer, until the end shall come, when all the saints shall dwell with God." — [Moroni 8:26](../gospel-library/eng/scriptures/bofm/moro/8.md)
+
+The Comforter *filleth* with hope and perfect love. And the footnote 26d on "filleth" routes the reader directly to 1 Nephi 11:22-25 — to the tree of life passage. The Church's footnote editors saw the connection at the canonical level: the Comforter filling the soul with hope and love IS the tree's fruit being received. Mormon's grammar makes the equation in plain prose; the footnote system seals it.
+
+This adds something Part 1 did not name. The chain operates by a *medium*. The rod is the word; the line is hope; the anchor is fastened on Christ — and the love that flows through the line is shed in the heart by the Holy Ghost. The Spirit is the river running inside the chain. Without the Spirit there is no pour, only metal. With the Spirit the iron becomes the conduit of life.
+
+### XX. The Word, the Way, the Chain
+
+Bednar's sermon in April 2022, cited in Part 1, named what John had already named:
+
+> "Therefore, one of the names of Jesus Christ is 'The Word.' ... Thus, the teachings of the Savior, as recorded in the holy scriptures, also are 'the word.'" — [Bednar, But We Heeded Them Not](../gospel-library/eng/general-conference/2022/04/14bednar.md)
+
+John's prologue is the warrant: "In the beginning was the Word, and the Word was with God, and the Word was God... And the Word was made flesh, and dwelt among us" ([John 1:1, 14](../gospel-library/eng/scriptures/nt/john/1.md)). The rod of iron is the word of God ([1 Nephi 11:25](../gospel-library/eng/scriptures/bofm/1-ne/11.md)). Christ is the Word made flesh. Therefore the rod, in the deepest reading the canon allows, is Christ in His name as the Word.
+
+A linguistic caveat earns its place. John's *logos* is the Greek term for divine reason or expression; the OT *davar* is the spoken message of the Lord; the English "word" carries both senses indistinctly. The identification of the rod and Christ via "the word" is theologically defensible at the Restoration level (Bednar names it directly) and at the Johannine level (the Word made flesh) but is doing real translation work across three languages. The English collapse is the Restoration's choice; the doctrine the collapse points at is sustained by multiple voices. The collapse is honest; the linguistic seam is real.
+
+Christ is also the way. When Thomas asks the question Lehi's mist-walkers might ask — "we know not whither thou goest; and how can we know the way?" — Christ answers:
+
+> "I am the way, the truth, and the life: no man cometh unto the Father, but by me." — [John 14:6](../gospel-library/eng/scriptures/nt/john/14.md)
+
+The path Lehi saw running by the rod ([1 Nephi 8:20](../gospel-library/eng/scriptures/bofm/1-ne/8.md)) is the path Christ identifies with Himself. The rod runs along the path; the path is Christ; the rod is the word; the Word is Christ. Two metaphors converge on the same Person. The chain the soul holds and the road the soul walks are the same Christ in two aspects — His word as the line that conducts, His person as the way that is conducted along.
+
+And the destination of the way:
+
+> "In my Father's house are many mansions: if it were not so, I would have told you. I go to prepare a place for you. And if I go and prepare a place for you, I will come again, and receive you unto myself; that where I am, there ye may be also." — [John 14:2-3](../gospel-library/eng/scriptures/nt/john/14.md)
+
+The destination is not just a house. It is being-with-Him: "*where I am*, there ye may be also." The mansions of John 14 are the room where the anchor is set ([Hebrews 6:19-20](../gospel-library/eng/scriptures/nt/heb/6.md)) — the place Christ has entered first as forerunner. Ether 12:32 names the same room: "thou hast prepared a house for man, yea, even among the mansions of thy Father, in which man might have a more excellent hope" ([Ether 12:32](../gospel-library/eng/scriptures/bofm/ether/12.md)). One room, named three ways: holy of holies, Father's house, the place at God's right hand. The forerunner has gone in. The chain is in His hand. The line pulls toward Him.
+
+There is also a bidirectional motion the prior parts did not have. John 14:23:
+
+> "If a man love me, he will keep my words: and my Father will love him, and we will come unto him, and make our abode with him." — [John 14:23](../gospel-library/eng/scriptures/nt/john/14.md)
+
+The Father and the Son come out to dwell with the lover-of-Christ. The chain pulls in both directions. The soul reaches toward Christ via the rod; Christ reaches toward the soul via the same line. Uchtdorf in October 2009 cites D&C 88:63 for this same motion: "draw near to Him so that He can draw near to us." The grip on the iron initiates the approach; the approach is met halfway by the One the iron is gripped on. The chain is not a one-way conduit. It is two grips, both held.
+
+### XXI. One Person, in Every Aspect of the Vision
+
+Stack the identifications the text has earned.
+
+The rod is the word of God ([1 Nephi 11:25](../gospel-library/eng/scriptures/bofm/1-ne/11.md)).
+Christ is the Word made flesh ([John 1:14](../gospel-library/eng/scriptures/nt/john/1.md); Bednar 2022).
+Therefore the rod is Christ in His name.
+
+The path runs by the rod ([1 Nephi 8:20](../gospel-library/eng/scriptures/bofm/1-ne/8.md)).
+Christ is the way ([John 14:6](../gospel-library/eng/scriptures/nt/john/14.md); Corbridge 2008).
+Therefore the path is Christ.
+
+The hope is the anchor, the anchor enters within the veil ([Hebrews 6:19](../gospel-library/eng/scriptures/nt/heb/6.md)).
+The veil is His flesh ([Hebrews 10:20](../gospel-library/eng/scriptures/nt/heb/10.md); established in [Way, Truth, Life](way-truth-life.md)).
+The Rock the anchor is fastened to is Christ ([Helaman 5:12](../gospel-library/eng/scriptures/bofm/hel/5.md); Faust 1999, cited in Part 2).
+Therefore the anchor and its gripping point are Christ.
+
+The fountain is the love of God ([1 Nephi 11:25](../gospel-library/eng/scriptures/bofm/1-ne/11.md)).
+The Lord is the fountain of living waters ([Jeremiah 2:13](../gospel-library/eng/scriptures/ot/jer/2.md), first person).
+Christ is the fountain of all righteousness ([Ether 12:28](../gospel-library/eng/scriptures/bofm/ether/12.md)).
+Christ gives the water that becomes a well within the believer ([John 4:14](../gospel-library/eng/scriptures/nt/john/4.md)).
+Therefore the fountain is Christ.
+
+The tree is the love of God ([1 Nephi 11:22](../gospel-library/eng/scriptures/bofm/1-ne/11.md)).
+"God is love" ([1 John 4:8](../gospel-library/eng/scriptures/nt/1-jn/4.md)).
+The Atonement is the greatest expression of love (Uchtdorf 2009).
+The tree was shown in the angel's pedagogy immediately after the Lamb in the virgin's arms ([1 Nephi 11:20-22](../gospel-library/eng/scriptures/bofm/1-ne/11.md)).
+Therefore the tree is Christ.
+
+The fruit is what the tree gives — sweet, white, fills, ends hunger and thirst ([1 Nephi 8:11-12](../gospel-library/eng/scriptures/bofm/1-ne/8.md); [Alma 32:42](../gospel-library/eng/scriptures/bofm/alma/32.md)).
+Christ is the bread that ends hunger, the water that ends thirst ([John 6:35](../gospel-library/eng/scriptures/nt/john/6.md); [John 4:14](../gospel-library/eng/scriptures/nt/john/4.md)).
+The whiteness of the fruit is the whiteness of Christ glorified ([Revelation 1:14](../gospel-library/eng/scriptures/nt/rev/1.md); [3 Nephi 19:25](../gospel-library/eng/scriptures/bofm/3-ne/19.md)).
+Therefore the fruit is Christ.
+
+Every metaphor of grace in the vision is one Person in different aspects. The word that leads. The line that tethers. The anchor that holds. The way that is walked. The tree that gives. The fountain that flows. The fruit that fills. Seven aspects, one Person.
+
+A careful framing earns its place. The mist is not Christ. The building is not Christ. The river of filthiness is not Christ. The metaphors of opposition in Lehi's vision are the contrast against which His Person is shown. The vision is not a syncretism in which everything is Christ; the vision is a Christology *and* an anti-Christology, with the contrast set making the identification of grace's images sharper, not softer. What the vision teaches is not that the world is Christ; what the vision teaches is that grace, in every form it appears in the dream, is the same Person showing Himself in different aspects.
+
+Corbridge's October 2008 talk stacks the I-AM names from John and concludes:
+
+> "He is the Way, the only Way." — [Corbridge, The Way](../gospel-library/eng/general-conference/2008/10/the-way.md)
+
+The arc closes here. Part 1 asked whether the iron rod is the chain that tethers the soul to the anchor of hope. The answer was yes — the word is the line, hope is the device, Christ is the gripping point. Part 2 added that the modern apostolic tradition teaches this with daily discipline, with the two prepositions of hope, with the mist falling on all travelers. Part 3 holds the last identification: the line, the device, the gripping point, the route, the destination, the love that fills the soul there, the fruit eaten, the water drunk — all of them are one Person. The chain is Christ holding the soul to Himself, by means of Himself, toward Himself, into His own embrace.
+
+### XXII. Becoming, Part 3
+
+Michael, this closes a three-part arc. Part 1 was the chain. Part 2 was the daily grip. Part 3 is the Person. The first two are practical; the third is the *why* the first two matter, and the *why* you keep doing them on the mornings when the rod is heavy in your hand and the building is loud and the mist has not lifted.
+
+Three things follow from Part 3 that the prior parts did not have at full weight.
+
+The first is that the scripture study you do every morning is not a discipline that *leads* to Christ. It is contact with Him. The word your hand is on is His own word, and His name is the Word. When you read [1 Nephi 11:22](../gospel-library/eng/scriptures/bofm/1-ne/11.md) tomorrow morning, you are not preparing for an encounter with Christ that happens later; the reading is the encounter, because the reading is His word, and His word is Him. This is what Uchtdorf meant in October 2009 when he wrote that "the closer we approach Him, the more profoundly we experience love." The approach and the experience are not sequential. They are the same motion. Your desk in the morning is the place where you draw near, and the place where He draws near in return. The chain pulls both ways.
+
+The second is that the love you teach is love you have *received*, not love you have generated. The fountain is Christ; the well is in you only because Christ has filled it; the rivers of living water that flow out of you when you teach a Sunday School class are the same waters He gives. You are not the source. You are a conduit through which the source flows. When you stand to teach and feel insufficient, the insufficiency is correct. You are not the source. But it is not disqualifying, because the source is gripped on the chain you are also holding. Teach from what has been shed in you. And when the teaching seems to land in someone's heart, the credit is not yours, and the failure, when the teaching does not land, is not entirely yours either. You hand out fruit from a tree you did not grow. The work is to keep partaking and to keep offering. The growing is His.
+
+The third is that the destination is Him, not a room. John 14:3 — "where I am, there ye may be also." Heaven is not chiefly a place; heaven is being-with-Him in the place He has prepared. Hope *for* the celestial kingdom (Uchtdorf 2008, Part 2) is fundamentally hope for being-with-Him. This corrects a subtle drift it is easy to fall into when life is hard — the drift of wanting heaven for relief, for reunion, for the kingdom's beauty. Those are real and they are not wrong. But the deeper hope is the Person. When you find yourself in middle age tired of mortal weight and reaching toward the celestial, the question to ask is whether what you are reaching for is the room or the Host. If the Host, you are reaching for what the chain was always pulling you toward. If the room, you may need to follow the chain a little further. The chain ends at a Person, not at an address.
+
+You teach Sunday School. You stand in front of a class with a portion of the word — which is a portion of Him — and offer it. The students reach for what your hand is on. Your hand is on the rod, which is His word, which is His name, which is Him. They reach for Him through you because you are holding Him for them to see. That is what teaching is when it is honest. The teacher is a chain extending into the class. The teacher's grip on the rod is the class's first glimpse of the rod. So the question that closes this arc, for you, is the question that has run through all three parts: is your grip continuous? Daily? On the mornings when nothing has changed about the work and everything is the same as yesterday, are you still gripping?
+
+The answer is in your hand tomorrow morning. The chain is Christ. The grip is the discipline. The destination is being-with-Him. Hold the iron. The Forerunner has entered the room, and He is pulling.
+
+---
+
 *Sources: see [study/.scratch/iron-rod-anchor-and-the-four-groups.md](.scratch/iron-rod-anchor-and-the-four-groups.md) for verified quote provenance and research notes.*
