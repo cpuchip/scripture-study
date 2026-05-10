@@ -35,9 +35,9 @@ The Adjacent Surface Audit principle from `.github/copilot-instructions.md` exis
 - **The `mcpServers:` field is the proper grant mechanism for MCP-specific access**, separate from `tools:`. We don't need it in our case because all servers are already in `.mcp.json`, but it's the right tool when you want a server scoped to a single subagent without polluting the parent's context.
 - **Permission-rule syntax ≠ subagent tools-field syntax.** The `mcp__server__*` wildcard works in `settings.json` permission rules. It does not work in subagent `tools:` lists. They look the same but parse differently.
 
-## Open Question
+## Resolution
 
-Michael chose to test mid-session before restarting. If the next study run still has no MCP tools, the docs are right and we restart. If it does have them, the docs may overstate the restart requirement (or our session caches differently than documented). Either outcome is informative.
+Tested mid-session via a Part 3 study agent with an explicit bail-early gate (run `ToolSearch` for MCP tool schemas first; if none surface, write a failure note and halt before any study work). Gate fired cleanly — `ToolSearch` returned no matching MCP schemas; the only deferred tools in the subagent's environment were `WebSearch` and `WebFetch`. **Anthropic's docs are right: agent definitions are loaded at session start. File edits do not propagate mid-session.** Restart pending. Bail-early discipline saved a third half-blind study run.
 
 ## Files Touched
 

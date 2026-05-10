@@ -740,4 +740,20 @@ The outline holds. I will fold sections into a tighter structure for the draft:
 - E. The Mist Falls on All (Holland's correction to a common misreading)
 - F. Becoming — what daily, every day, every day adds to Michael's commitments
 
+---
+
+## Part 3 Harness Validation Attempt — Tools Unavailable
+
+Date: 2026-05-10. Subagent: study agent invoked for Part 3 of the iron-rod arc.
+
+The session opened with a harness validation gate: confirm MCP tools are reachable mid-session after a frontmatter patch to all 19 agent files (removal of the `tools:` field so subagents inherit the parent's full tool set). The gate required loading three tool schemas via `ToolSearch` and then making a single real call to `mcp__gospel-engine-v2__gospel_search`.
+
+**Result: gate failed.**
+
+- `ToolSearch` query `select:mcp__gospel-engine-v2__gospel_search,mcp__webster__define,mcp__byu-citations__byu_citations` returned `No matching deferred tools found`.
+- Follow-up `ToolSearch` queries (`gospel scripture search`, `webster define dictionary`, `mcp`) surfaced only `WebSearch` and `WebFetch`. None of the gospel-engine-v2, webster, byu-citations, exa-search, search, yt, or becoming MCP servers appear in this subagent's deferred tool list.
+- No real tool call to `mcp__gospel-engine-v2__gospel_search` was made — there was no schema to invoke.
+
+The mid-session edit was insufficient. Per the gate's instructions, I am halting before any Part 3 study work begins. No source gathering, no drafting, no scratch-file additions beyond this report. A harness restart is required before Part 3 can proceed under the discovery-first discipline this study demands.
+
 
