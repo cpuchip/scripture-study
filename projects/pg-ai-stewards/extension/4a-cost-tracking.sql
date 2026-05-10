@@ -395,18 +395,18 @@ INSERT INTO stewards.model_pricing
      cache_write_micro_per_mtok, cache_read_micro_per_mtok, notes)
 VALUES
     -- Chinese models (substrate's main chain)
-    ('opencode-zen', 'kimi-k2.6',          950000,  4000000,    NULL,  160000,
+    ('opencode_go', 'kimi-k2.6',          950000,  4000000,    NULL,  160000,
      'Cache write rate not exposed by provider'),
-    ('opencode-zen', 'glm-5.1',           1400000,  4400000,    NULL,  260000,
+    ('opencode_go', 'glm-5.1',           1400000,  4400000,    NULL,  260000,
      'Cache write rate not exposed by provider'),
-    ('opencode-zen', 'minimax-m2.7',       300000,  1200000,  375000,   60000, ''),
-    ('opencode-zen', 'qwen3.6-plus',       500000,  3000000,  625000,   50000, ''),
+    ('opencode_go', 'minimax-m2.7',       300000,  1200000,  375000,   60000, ''),
+    ('opencode_go', 'qwen3.6-plus',       500000,  3000000,  625000,   50000, ''),
     -- Anthropic via OpenCode Zen (used only via human-mediated escalation queue)
-    ('opencode-zen', 'claude-opus-4-7',   5000000, 25000000, 6250000,  500000, ''),
-    ('opencode-zen', 'claude-opus-4-6',   5000000, 25000000, 6250000,  500000, ''),
-    ('opencode-zen', 'claude-opus-4-5',   5000000, 25000000, 6250000,  500000, ''),
-    ('opencode-zen', 'claude-sonnet-4-6', 3000000, 15000000, 3750000,  300000, ''),
-    ('opencode-zen', 'claude-haiku-4-5',  1000000,  5000000, 1250000,  100000, '')
+    ('opencode_go', 'claude-opus-4-7',   5000000, 25000000, 6250000,  500000, ''),
+    ('opencode_go', 'claude-opus-4-6',   5000000, 25000000, 6250000,  500000, ''),
+    ('opencode_go', 'claude-opus-4-5',   5000000, 25000000, 6250000,  500000, ''),
+    ('opencode_go', 'claude-sonnet-4-6', 3000000, 15000000, 3750000,  300000, ''),
+    ('opencode_go', 'claude-haiku-4-5',  1000000,  5000000, 1250000,  100000, '')
 ON CONFLICT (provider, model, effective_at) DO UPDATE
 SET input_micro_per_mtok       = EXCLUDED.input_micro_per_mtok,
     output_micro_per_mtok      = EXCLUDED.output_micro_per_mtok,
@@ -439,13 +439,13 @@ BEGIN
         (provider, bucket_kind, period_start, period_end,
          micro_dollars, bucket_limit_micro, notes)
     VALUES
-        ('opencode-zen', 'session_5h', v_5h.period_start, v_5h.period_end,
+        ('opencode_go', 'session_5h', v_5h.period_start, v_5h.period_end,
          0, NULL, 'informational; OpenCode does not expose 5h window'),
-        ('opencode-zen', 'daily',      v_d.period_start,  v_d.period_end,
+        ('opencode_go', 'daily',      v_d.period_start,  v_d.period_end,
          0, 12000000, 'OpenCode Go daily soft cap ($12); overage via Zen pay-per-token'),
-        ('opencode-zen', 'weekly',     v_w.period_start,  v_w.period_end,
+        ('opencode_go', 'weekly',     v_w.period_start,  v_w.period_end,
          0, NULL, 'OpenCode Go weekly cap TBD; bucket informational until confirmed'),
-        ('opencode-zen', 'monthly',    v_m.period_start,  v_m.period_end,
+        ('opencode_go', 'monthly',    v_m.period_start,  v_m.period_end,
          0, 60000000, 'OpenCode Go monthly cap ($60); overage via Zen pay-per-token')
     ON CONFLICT (provider, bucket_kind, period_start) DO UPDATE
     SET bucket_limit_micro = EXCLUDED.bucket_limit_micro,
@@ -455,6 +455,6 @@ $seed$;
 
 -- =====================================================================
 -- Done. Phase 4a-cost is operational.
--- Acceptance: SELECT * FROM stewards.compute_cost('opencode-zen','kimi-k2.6',1000000,500000);
+-- Acceptance: SELECT * FROM stewards.compute_cost('opencode_go','kimi-k2.6',1000000,500000);
 -- Expected:   micro_dollars = 950000 + 2000000 = 2950000  ($2.95)
 -- =====================================================================

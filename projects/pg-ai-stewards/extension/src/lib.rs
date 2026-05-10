@@ -218,6 +218,15 @@ extension_sql_file!(
     requires = ["create_phase_4a_escalation_chain"],
 );
 
+extension_sql_file!(
+    "../4b-dispatch-override.sql",
+    name = "create_phase_4b_dispatch_override",
+    requires = [
+        "create_phase_4a_steward",
+        "create_stage_templating_and_study_write"
+    ],
+);
+
 // ---------------------------------------------------------------------------
 // Diagnostic SQL functions
 // ---------------------------------------------------------------------------
