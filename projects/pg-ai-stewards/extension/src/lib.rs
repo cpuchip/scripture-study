@@ -227,6 +227,18 @@ extension_sql_file!(
     ],
 );
 
+extension_sql_file!(
+    "../4c-steward-dispatch.sql",
+    name = "create_phase_4c_steward_dispatch",
+    requires = ["create_phase_4b_dispatch_override"],
+);
+
+extension_sql_file!(
+    "../4d-steward-realign.sql",
+    name = "create_phase_4d_steward_realign",
+    requires = ["create_phase_4c_steward_dispatch"],
+);
+
 // ---------------------------------------------------------------------------
 // Diagnostic SQL functions
 // ---------------------------------------------------------------------------
