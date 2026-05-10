@@ -763,44 +763,77 @@ before starting the next.
 
 ## VI. Decisions Michael needs to ratify (consolidated)
 
-Numbered for reference. None of these need to be answered
-today — but A's decisions need to be made before A's first
-programming session, and so on.
+*Ratified by Michael 2026-05-10 in a walk-through session. Each decision
+records the choice + any nuance Michael added that the original options
+didn't fully capture.*
 
 **Phase A:**
 - D-A1: Five failure types, or collapse `tool_error`?
+  **Ratified:** Keep all 5 (transient, timeout, model_limit, tool_error, unknown).
 - D-A2: Backoff schedule — adaptive or fixed `2^n`?
+  **Ratified:** Fixed `2^n` minutes capped at 15. Brain-tested. Add adaptive later if telemetry warrants.
 - D-A3: Quarantine threshold — 3 or 5?
+  **Ratified:** 3 failures (matches brain). "Three strikes" pattern.
 - D-A4: Add cost cap (dollars) alongside token_budget?
+  **Ratified:** Yes, **as a token-cost multiplier model** rather than a flat dollar cap.
+  Track input tokens (write/cache-write distinct, since Anthropic
+  charges differently for cache writes), output tokens (cached/uncached
+  where the provider exposes the distinction), then multiply by per-model
+  rates from a `stewards.model_pricing` table. Cap is computed per
+  work_item from accumulated cost. More accurate than a flat dollar cap
+  because cached vs uncached writes have very different rates.
 
 **Phase B:**
 - D-B1: Default gate model — sonnet or opus?
+  **Ratified:** Use **OpenCode Go session-bucket models, NOT Zen pay-per-token models** (Zen too expensive — a single study costs ~$16 on Opus via Zen). The escalation chain shifts to:
+  - **Kimi K2.6** — general-purpose default (Opus/Sonnet replacement candidate; Michael likes this model)
+  - **GLM-5.1** — Opus replacement for heaviest synthesis steps
+  - **MiniMax M2.7** — Sonnet/Haiku replacement for mid-tier
+  - **Qwen3.6 Plus** — Haiku replacement, cheapest tier for binary gate calls
+  Default gate model: likely Qwen3.6 Plus or MiniMax M2.7 (cheap, fast, binary action). Confirm in Phase B design sub-spec. Brain v3's sonnet/opus assumptions need full chain-rewrite, not direct port.
 - D-B2: Revision cap — 2 (brain) or higher?
+  **Ratified:** 2 revisions, then surface. Brain's choice.
 - D-B3: Scenarios — LLM-generated, human-authored, or both?
+  **Ratified:** LLM-generated, human-editable in Stewards-UI before execute begins.
 - D-B4: Maturity-to-stage mapping in config table or by convention?
+  **Ratified:** Config table (`pipeline_stages.produces_maturity` column). Explicit and queryable.
 
 **Phase C:**
 - D-C1: `intent.yaml` source-of-truth + seed substrate? Or move?
+  **Ratified:** Keep YAML canonical at repo root. Seed substrate from it on init / file-change. Best of both worlds: git history preserved, runtime injection available.
 - D-C2: Same for `.spec/covenant.yaml`?
+  **Ratified:** Same as intent — YAML canonical, seed substrate.
 - D-C3: Require intent_id on every work_item?
+  **Ratified:** Yes, required at creation. The friction IS the discipline. NewWork form enforces.
 - D-C4: How does the gate evaluate covenant adherence?
+  **Ratified:** **Free-form gate prompt asks "does this honor the covenant?"** (chose option 2 over the recommended checklist). Lighter prompt; trusts the gate model to internalize covenant language. Reconsider if early gates show inconsistent covenant judgments.
 
 **Phase D:**
 - D-D1: Sabbath default — opt-in or opt-out per pipeline?
+  **Ratified:** Opt-out per pipeline_family. study/lesson/talk default ON; debug/dev default OFF.
 - D-D2: Atonement adopted at all? Cost-vs-value tradeoff.
+  **Ratified:** Yes, opt-in initially. Lessons aggregation makes the substrate self-correcting over time.
 - D-D3: Lessons → `.mind/principles.md` automatically or via
   human curation?
+  **Ratified:** Human curation in Stewards-UI. Atonement proposes; human ratifies before promotion. `stewards.lessons` tracks proposed-vs-ratified state.
 
 **Phase E:**
 - D-E1: Trust levels — 6-tier or 3-tier?
+  **Ratified:** 3-tier — trainee / journeyman / master. Maps to preparation / labor / consecration.
 - D-E2: Manual trust adjustments require recorded justification?
+  **Ratified:** Yes, justification required. Stewardship decisions visible to future-self.
 - D-E3: Human override of agent gate counts as failure for trust?
+  **Ratified:** Yes, counts as failure (full weight). The agent's gate judgment was wrong — that's the signal. Tracked in `human_overrides` column with equal weight to actual failures.
 
 **Phase F:**
 - D-F1: How many concurrent councils?
+  **Ratified:** 1 at a time for initial Phase F. Lift after a month if real demand emerges.
 - D-F2: Can senior agents serve as bishop?
+  **Ratified:** **Master-tier agents may bishop low-stakes councils** (chose option 2 over the recommended "always human in F1"). For technical/factual questions where Spirit-discernment isn't load-bearing. High-stakes councils still default to human bishop. Define "low-stakes" criteria in Phase F design sub-spec.
 - D-F3: Council resolution destination(s)?
+  **Ratified:** All three — `stewards.resolutions` canonical, with hooks to promote to `study/` (doctrinal) OR `.mind/decisions.md` (engineering) based on type-of-question.
 - D-F4: Auto-convening on lesson accumulation, or manual only?
+  **Ratified:** **Manual + system-suggested notification** (chose option 2 over the recommended "manual only initially"). Watchman flags "consider convening a council on X" when patterns emerge; human still convenes. Middle ground between pure manual and auto-fire.
 
 ---
 
