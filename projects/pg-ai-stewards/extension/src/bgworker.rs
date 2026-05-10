@@ -598,6 +598,64 @@ fn process_one_pending() -> bool {
                         ],
                     )?;
 
+                    // Phase 4f — Record a cost_event so cost-cap discipline
+                    // and bucket tracking actually receive token data.
+                    // Only fires when the chat is tied to a work_item (the
+                    // payload's _work_item_id field, set by work_item_
+                    // dispatch_stage). Ad-hoc chats without a work_item
+                    // (e.g., watchman passes) are not cost-tracked yet —
+                    // cost_events.work_item_id has a NOT NULL FK so they
+                    // can't be recorded without a schema change.
+                    //
+                    // IMPORTANT: use `requested_model` (the substrate's
+                    // canonical short name like 'kimi-k2.6'), NOT `model`
+                    // (the provider's full versioned identifier like
+                    // 'moonshotai/kimi-k2.6-20260420'). model_pricing is
+                    // keyed on the canonical name; the provider response
+                    // echoes back its own internal versioned name which
+                    // doesn't exist in our pricing table → micro_dollars=0.
+                    //
+                    // Cache token parsing (cache_creation_input_tokens,
+                    // cache_read_input_tokens from Anthropic-style
+                    // providers) is deferred — we pass 0/0 for now.
+                    //
+                    // Errors logged, never propagated — a missing pricing
+                    // row or transient SPI failure should not poison the
+                    // chat write.
+                    if let Some(wi_str) = payload
+                        .get("_work_item_id")
+                        .and_then(|v| v.as_str())
+                    {
+                        let in_tok = tokens_in.unwrap_or(0);
+                        let out_tok = tokens_out.unwrap_or(0);
+                        if in_tok > 0 || out_tok > 0 {
+                            let cost_result = client.update(
+                                "SELECT stewards.record_cost_event( \
+                                    $1::uuid, \
+                                    (SELECT count(*)::int + 1 FROM stewards.cost_events WHERE work_item_id = $1::uuid), \
+                                    $2, $3, $4, $5, 0, 0, $6)",
+                                Some(1),
+                                &[
+                                    wi_str.into(),
+                                    provider.to_string().into(),
+                                    requested_model.clone().into(),
+                                    in_tok.into(),
+                                    out_tok.into(),
+                                    format!(
+                                        "work_id={} session={} response_model={}",
+                                        id, session_id, model
+                                    ).into(),
+                                ],
+                            );
+                            if let Err(e) = cost_result {
+                                pgrx::log!(
+                                    "stewards: record_cost_event failed for work_item {} (work_id {}): {}",
+                                    wi_str, id, e
+                                );
+                            }
+                        }
+                    }
+
                     // Loop continuation: if assistant returned
                     // tool_calls AND we haven't exhausted agent.steps,
                     // enqueue a tool_dispatch row. The bgworker will
