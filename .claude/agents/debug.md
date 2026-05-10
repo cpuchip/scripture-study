@@ -1,7 +1,7 @@
 ---
 name: debug
 description: Systematic debugging — when things go wrong, apply Agans' 9 rules instead of guessing. Use for tool errors, agent output that doesn't match sources, study contradictions, build failures, "used to work" regressions, or any situation where the first instinct is to retry blindly.
-tools: Read, Edit, Write, Glob, Grep, Bash, PowerShell, Agent, ToolSearch, WebFetch, WebSearch
+tools: Read, Edit, Write, Glob, Grep, Bash, PowerShell, Agent, ToolSearch, WebFetch, WebSearch, mcp__becoming__*, mcp__gospel-engine-v2__*, mcp__yt__*, mcp__search__*
 model: opus
 ---
 

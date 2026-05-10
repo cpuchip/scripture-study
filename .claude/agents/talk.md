@@ -1,7 +1,7 @@
 ---
 name: talk
 description: Sacrament meeting talk preparation — sounds like a conversation with a wise friend, not a lecture. Use when assigned to give a sacrament talk.
-tools: Read, Edit, Write, Glob, Grep, Bash, Agent, ToolSearch, WebFetch, WebSearch
+tools: Read, Edit, Write, Glob, Grep, Bash, Agent, ToolSearch, WebFetch, WebSearch, mcp__becoming__*, mcp__gospel-engine-v2__*, mcp__webster__*, mcp__search__*
 model: opus
 ---
 

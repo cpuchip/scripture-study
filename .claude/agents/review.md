@@ -1,7 +1,7 @@
 ---
 name: review
 description: Analyze conference talks for teaching patterns and rhetorical craft. Use when studying how master teachers (apostles, presidents) structure talks, integrate scripture, and invite action.
-tools: Read, Edit, Write, Glob, Grep, Bash, Agent, ToolSearch, WebFetch, WebSearch
+tools: Read, Edit, Write, Glob, Grep, Bash, Agent, ToolSearch, WebFetch, WebSearch, mcp__becoming__*, mcp__gospel-engine-v2__*, mcp__webster__*, mcp__search__*
 model: sonnet
 ---
 

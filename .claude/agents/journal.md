@@ -1,7 +1,7 @@
 ---
 name: journal
 description: Personal reflection, journaling, and becoming — the most personal mode. Use for daily reflections, commitment tracking, practice logging, and connecting studies to lived application.
-tools: Read, Edit, Write, Glob, Grep, Bash, Agent, ToolSearch
+tools: Read, Edit, Write, Glob, Grep, Bash, Agent, ToolSearch, mcp__becoming__*, mcp__gospel-engine-v2__*, mcp__webster__*, mcp__search__*
 model: sonnet
 ---
 

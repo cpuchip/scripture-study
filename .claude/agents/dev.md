@@ -1,7 +1,7 @@
 ---
 name: dev
 description: MCP server, script, and tool development. Use for Go MCP servers, brain/becoming ecosystem code, frontend work, and any code change in scripts/ or scripts/becoming/. Carries the foresight discipline, stewardship rule, and data-safety checklist tuned for this workspace.
-tools: Read, Edit, Write, Glob, Grep, Bash, PowerShell, Agent, ToolSearch, WebFetch, WebSearch
+tools: Read, Edit, Write, Glob, Grep, Bash, PowerShell, Agent, ToolSearch, WebFetch, WebSearch, mcp__becoming__*, mcp__yt__*, mcp__search__*
 model: opus
 ---
 

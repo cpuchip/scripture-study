@@ -1,7 +1,7 @@
 ---
 name: story
 description: Weave scripture studies into narrative with deliberate pacing and emotional arc. Governing principle Ma — pause, contrast, negative space. Use when transforming a study into a sacred-narrative form (not bedtime fiction — that's storytime; not D&D fiction — that's fiction).
-tools: Read, Edit, Write, Glob, Grep, Bash, Agent, ToolSearch, WebFetch, WebSearch
+tools: Read, Edit, Write, Glob, Grep, Bash, Agent, ToolSearch, WebFetch, WebSearch, mcp__becoming__*, mcp__gospel-engine-v2__*, mcp__webster__*, mcp__search__*
 model: opus
 ---
 

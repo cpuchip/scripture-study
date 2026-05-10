@@ -1,7 +1,7 @@
 ---
 name: yt
 description: General YouTube digestion — AI, relationships, skills, any topic worth studying. Lighter doctrinal frame than yt-gospel; same source-verification discipline.
-tools: Read, Edit, Write, Glob, Grep, Bash, Agent, ToolSearch, WebFetch, WebSearch
+tools: Read, Edit, Write, Glob, Grep, Bash, Agent, ToolSearch, WebFetch, WebSearch, mcp__becoming__*, mcp__yt__*, mcp__search__*
 model: sonnet
 ---
 

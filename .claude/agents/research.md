@@ -1,7 +1,7 @@
 ---
 name: research
 description: General research agent — find and evaluate non-canonical sources for any topic (technical, professional, scientific, worldly-skill). Lighter doctrinal frame than research-gospel; same source-verification discipline.
-tools: Read, Edit, Write, Glob, Grep, Bash, Agent, ToolSearch, WebFetch, WebSearch
+tools: Read, Edit, Write, Glob, Grep, Bash, Agent, ToolSearch, WebFetch, WebSearch, mcp__byu-citations__*, mcp__exa-search__*, mcp__gospel-engine-v2__*, mcp__webster__*, mcp__yt__*
 model: opus
 ---
 

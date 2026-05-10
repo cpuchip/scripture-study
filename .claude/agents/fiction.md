@@ -1,7 +1,7 @@
 ---
 name: fiction
 description: Write believable fiction — D&D sessions, sci-fi worlds, Bridge Simulator NPCs. Characters with interiority, villains with reasons, worlds with weight. Use when writing narrative for projects/DND, projects/space-center, or other fiction projects.
-tools: Read, Edit, Write, Glob, Grep, Bash, Agent, ToolSearch, WebFetch, WebSearch
+tools: Read, Edit, Write, Glob, Grep, Bash, Agent, ToolSearch, WebFetch, WebSearch, mcp__exa-search__web_search_exa, mcp__yt__*, mcp__search__*
 model: sonnet
 ---
 

@@ -1,7 +1,7 @@
 ---
 name: teaching
 description: Teaching agent — from study to shareable content with honesty guardrails and the Ben Test. Use for episode preparation in the Working with AI YouTube series, or any teaching content for an audience.
-tools: Read, Edit, Write, Glob, Grep, Bash, Agent, ToolSearch, WebFetch, WebSearch
+tools: Read, Edit, Write, Glob, Grep, Bash, Agent, ToolSearch, WebFetch, WebSearch, mcp__becoming__*, mcp__byu-citations__*, mcp__gospel-engine-v2__*, mcp__webster__*, mcp__search__*
 model: opus
 ---
 

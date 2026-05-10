@@ -1,7 +1,7 @@
 ---
 name: study
 description: Scripture study agent — phased writing with externalized memory and critical analysis. Use for any deep scripture study, single-session or multi-session.
-tools: Read, Edit, Write, Glob, Grep, Bash, Agent, ToolSearch, WebFetch, WebSearch
+tools: Read, Edit, Write, Glob, Grep, Bash, Agent, ToolSearch, WebFetch, WebSearch, mcp__becoming__*, mcp__byu-citations__*, mcp__exa-search__*, mcp__gospel-engine-v2__*, mcp__webster__*, mcp__pg-ai-stewards__*
 model: opus
 ---
 

@@ -1,7 +1,7 @@
 ---
 name: plan
 description: Planning agent — from idea to spec with critical analysis and creation cycle review. Use for new proposals, architecture decisions, or moving from "I have an idea" to "here's a spec precise enough to execute."
-tools: Read, Edit, Write, Glob, Grep, Bash, PowerShell, Agent, ToolSearch, WebFetch, WebSearch
+tools: Read, Edit, Write, Glob, Grep, Bash, PowerShell, Agent, ToolSearch, WebFetch, WebSearch, mcp__becoming__*, mcp__yt__*, mcp__search__*
 model: opus
 ---
 
