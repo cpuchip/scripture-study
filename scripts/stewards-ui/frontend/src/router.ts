@@ -5,19 +5,28 @@ import { createRouter, createWebHistory, type RouteRecordRaw } from 'vue-router'
 // Placeholder view via dynamic resolution. As phases land,
 // replace each with the real view import.
 const Dashboard = () => import('./views/Dashboard.vue')
-const Placeholder = () => import('./views/Placeholder.vue')
+const Studies = () => import('./views/Studies.vue')
+const StudyDetail = () => import('./views/StudyDetail.vue')
+const WorkItems = () => import('./views/WorkItems.vue')
+const WorkItemDetail = () => import('./views/WorkItemDetail.vue')
+const Sessions = () => import('./views/Sessions.vue')
+const Watchman = () => import('./views/Watchman.vue')
+const BridgeState = () => import('./views/BridgeState.vue')
+const NewWork = () => import('./views/NewWork.vue')
+const Graph = () => import('./views/Graph.vue')
 
 const routes: RouteRecordRaw[] = [
   { path: '/',           name: 'dashboard',  component: Dashboard },
-  { path: '/studies',    name: 'studies',    component: Placeholder, meta: { title: 'Studies' } },
-  { path: '/studies/:slug', name: 'study-detail', component: Placeholder, meta: { title: 'Study detail' }, props: true },
-  { path: '/work-items', name: 'work-items', component: Placeholder, meta: { title: 'Work items' } },
-  { path: '/work-items/:id', name: 'work-item-detail', component: Placeholder, meta: { title: 'Work item detail' }, props: true },
-  { path: '/sessions',   name: 'sessions',   component: Placeholder, meta: { title: 'Sessions' } },
-  { path: '/watchman',   name: 'watchman',   component: Placeholder, meta: { title: 'Watchman' } },
-  { path: '/bridge',     name: 'bridge',     component: Placeholder, meta: { title: 'Bridge state' } },
-  { path: '/graph',      name: 'graph',      component: Placeholder, meta: { title: 'Graph' } },
-  { path: '/new',        name: 'new-work',   component: Placeholder, meta: { title: 'New work' } },
+  { path: '/studies',    name: 'studies',    component: Studies, meta: { title: 'Studies' } },
+  { path: '/studies/:slug', name: 'study-detail', component: StudyDetail, meta: { title: 'Study detail' }, props: true },
+  { path: '/work-items', name: 'work-items', component: WorkItems, meta: { title: 'Work items' } },
+  { path: '/work-items/:id', name: 'work-item-detail', component: WorkItemDetail, meta: { title: 'Work item detail' }, props: true },
+  { path: '/sessions',   name: 'sessions',   component: Sessions, meta: { title: 'Sessions' } },
+  { path: '/sessions/:sid', name: 'session-detail', component: Sessions, meta: { title: 'Session' }, props: true },
+  { path: '/watchman',   name: 'watchman',   component: Watchman, meta: { title: 'Watchman' } },
+  { path: '/bridge',     name: 'bridge',     component: BridgeState, meta: { title: 'Bridge state' } },
+  { path: '/graph',      name: 'graph',      component: Graph, meta: { title: 'Graph' } },
+  { path: '/new',        name: 'new-work',   component: NewWork, meta: { title: 'New work' } },
 ]
 
 export default createRouter({

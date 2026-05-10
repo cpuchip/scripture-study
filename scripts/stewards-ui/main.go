@@ -25,6 +25,8 @@ import (
 	"time"
 
 	"github.com/jackc/pgx/v5/pgxpool"
+
+	"github.com/cpuchip/scripture-study/scripts/stewards-ui/api"
 )
 
 //go:embed all:frontend/dist
@@ -75,11 +77,10 @@ func main() {
 		_, _ = w.Write([]byte("ok"))
 	})
 
-	// /api/* — handlers come in Phase 2+. Phase 1 stub returns 501
-	// so the SPA can detect the absence cleanly.
-	mux.HandleFunc("/api/", func(w http.ResponseWriter, r *http.Request) {
-		http.Error(w, "stewards-ui phase 1: api endpoints not yet implemented", http.StatusNotImplemented)
-	})
+	// /api/* handlers — registered by api.Register(). Each endpoint
+	// owns its own file under api/. Unknown /api/* paths fall through
+	// to mux's default-not-found.
+	api.Register(mux, &api.Deps{Pool: pool})
 
 	// SPA static files. Strip the embed prefix so / maps to dist/.
 	distSub, err := fs.Sub(distFS, "frontend/dist")

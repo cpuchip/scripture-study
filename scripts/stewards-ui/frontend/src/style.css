@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 
 /* shadcn-vue palette tokens. Copy-paste from https://www.shadcn-vue.com/
    when components land. Phase 1 keeps a minimal dark theme. */
