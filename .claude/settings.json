@@ -27,6 +27,28 @@
           }
         ]
       }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "if [ -n \"$(git status --porcelain 2>/dev/null)\" ]; then printf '{\"hookSpecificOutput\":{\"hookEventName\":\"Stop\",\"additionalContext\":\"Session is ending with uncommitted changes \\u2014 substantive work happened. Before yielding: (1) write a journal entry to .spec/journal/ capturing discoveries, surprises, carry-forward; (2) update .mind/active.md with new state; (3) update .mind/principles.md if enduring insight emerged. Covenant: agent_commits_to.update_memory \\u2014 \\\"do not wait to be reminded.\\\" Pattern: work \\u2192 memory \\u2192 done. If this turn was conversational/research only, ignore.\"}}'; fi",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "if grep -iqE '(rm[ -]+rf|force[- ]?push|drop[ -]+table|reset[ -]+-hard|--no-verify|--no-gpg-sign|delete( all| everything| everything)?|wipe|nuke)' < /dev/stdin 2>/dev/null; then printf '{\"hookSpecificOutput\":{\"hookEventName\":\"UserPromptSubmit\",\"additionalContext\":\"Destructive-operation language detected in prompt. Covenant reminder: agent_commits_to.honor_scope binds (do not change behavior/surface/scope without consent). Per executing-actions-with-care: destructive ops warrant explicit per-instance confirmation, not assumed authorization from prior approval. Confirm scope and target explicitly before executing. If user authorized this specific destructive action in this exact prompt, proceed \\u2014 but read carefully.\"}}'; fi",
+            "timeout": 10
+          }
+        ]
+      }
     ]
   }
 }
