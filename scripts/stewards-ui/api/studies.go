@@ -47,7 +47,7 @@ func (d *Deps) studiesListHandler(w http.ResponseWriter, r *http.Request) {
 	limit := atoiDefault(q.Get("limit"), 100, 1, 500)
 	offset := atoiDefault(q.Get("offset"), 0, 0, 1_000_000)
 
-	resp := studiesListResp{}
+	resp := studiesListResp{Items: []studyBrief{}}
 
 	// total count
 	if err := d.Pool.QueryRow(ctx,

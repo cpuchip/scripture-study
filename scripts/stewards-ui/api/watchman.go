@@ -59,7 +59,7 @@ func (d *Deps) watchmanPassesHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	defer rows.Close()
-	resp := passesResp{}
+	resp := passesResp{Items: []passRow{}}
 	for rows.Next() {
 		var p passRow
 		if err := rows.Scan(&p.PassID, &p.Status, &p.Trigger, &p.StartedAt, &p.FinishedAt,

@@ -58,7 +58,7 @@ func (d *Deps) workItemsListHandler(w http.ResponseWriter, r *http.Request) {
 		where = " WHERE " + joinAnd(whereClauses)
 	}
 
-	resp := workItemsListResp{}
+	resp := workItemsListResp{Items: []workItemRow{}}
 	if err := d.Pool.QueryRow(ctx,
 		"SELECT count(*) FROM stewards.work_items"+where, args...,
 	).Scan(&resp.Total); err != nil {

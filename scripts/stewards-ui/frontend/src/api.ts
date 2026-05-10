@@ -143,6 +143,7 @@ export const api = {
   watchmanPass: (passId: string) =>
     getJSON<PassDetailResp>(`/api/watchman/pass?id=${encodeURIComponent(passId)}`),
   bridgeState: () => getJSON<BridgeStateResp>('/api/bridge/state'),
+  providers: () => getJSON<ProvidersResp>('/api/providers'),
   graphStudiesCitations: (limit?: number) => {
     const q = limit ? `?limit=${limit}` : ''
     return getJSON<GraphResp>(`/api/graph/studies-citations${q}`)
@@ -281,9 +282,34 @@ export type MessageRow = {
   created_at?: string
 }
 
+export type ChatDispatch = {
+  work_id: number
+  provider: string
+  model?: string
+  agent_family?: string
+  system_prompt?: string
+  tools?: unknown
+  messages_count: number
+  body_messages?: unknown
+  status: string
+  created_at?: string
+  done_at?: string
+}
+
 export type SessionDetail = {
   session_id: string
   messages: MessageRow[]
+  dispatches: ChatDispatch[]
   tokens_in: number
   tokens_out: number
 }
+
+export type ProviderRow = {
+  name: string
+  base_url: string
+  default_model: string
+  kind: string
+  has_api_key: boolean
+}
+
+export type ProvidersResp = { items: ProviderRow[] }

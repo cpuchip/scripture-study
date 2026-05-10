@@ -52,7 +52,7 @@ func (d *Deps) bridgeStateHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	defer rows.Close()
-	resp := bridgeStateResp{}
+	resp := bridgeStateResp{Servers: []serverState{}}
 	for rows.Next() {
 		var s serverState
 		var lastErr *string

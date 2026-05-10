@@ -62,7 +62,11 @@ func (d *Deps) dashboardHandler(w http.ResponseWriter, r *http.Request) {
 	ctx, cancel := context.WithTimeout(r.Context(), 5*time.Second)
 	defer cancel()
 
-	resp := dashboardResponse{FetchedAtMs: time.Now().UnixMilli()}
+	resp := dashboardResponse{
+		FetchedAtMs: time.Now().UnixMilli(),
+		InFlight:    []workItemBrief{},
+		RecentError: []errorBrief{},
+	}
 
 	var wg sync.WaitGroup
 	wg.Add(4)

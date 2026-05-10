@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
-import { api } from '@/api'
+import { api, type ProviderRow } from '@/api'
 
 const router = useRouter()
 
@@ -11,6 +11,21 @@ const bindingQuestion = ref('')
 const actor = ref('michael')
 const tokenBudget = ref<number | null>(null)
 const dispatch = ref(true)
+
+// Phase 2 of NewWork: model picker. Pipeline-level model overrides
+// land later; for now this is informational — substrate routes to
+// the agent's configured (provider, model) by default. Showing the
+// catalog helps Michael see what the substrate can reach.
+const providers = ref<ProviderRow[]>([])
+const providersError = ref('')
+onMounted(async () => {
+  try {
+    const r = await api.providers()
+    providers.value = r.items
+  } catch (e) {
+    providersError.value = String(e)
+  }
+})
 
 const submitting = ref(false)
 const error = ref('')
@@ -121,6 +136,31 @@ function goToWorkItem() {
         <input v-model="dispatch" type="checkbox" class="accent-emerald-500" />
         <span>Dispatch first stage immediately after create</span>
       </label>
+
+      <details class="rounded-md border border-zinc-800 bg-zinc-900/50 p-3">
+        <summary class="cursor-pointer text-xs text-zinc-400 hover:text-zinc-200">
+          Available models (substrate provider catalog)
+          <span class="text-zinc-600">— {{ providers.length }} loaded</span>
+        </summary>
+        <div v-if="providersError" class="text-xs text-red-400 mt-2">
+          {{ providersError }}
+        </div>
+        <ul v-else class="text-xs mt-2 space-y-1">
+          <li v-for="p in providers" :key="p.name" class="flex items-baseline gap-3 font-mono">
+            <span class="text-zinc-200">{{ p.name }}</span>
+            <span class="text-zinc-500">{{ p.default_model }}</span>
+            <span class="text-zinc-600">{{ p.kind }}</span>
+            <span
+              v-if="!p.has_api_key"
+              class="text-amber-500 text-[10px] uppercase tracking-wide"
+            >no api key</span>
+          </li>
+        </ul>
+        <p class="text-xs text-zinc-500 mt-2">
+          Per-pipeline model override is a v2 feature; the substrate currently
+          routes to the agent's configured (provider, model) per stage.
+        </p>
+      </details>
 
       <div class="flex items-center gap-3">
         <button

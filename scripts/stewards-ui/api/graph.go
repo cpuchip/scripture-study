@@ -41,7 +41,9 @@ func (d *Deps) graphStudiesCitationsHandler(w http.ResponseWriter, r *http.Reque
 
 	limitNodes := atoiDefault(r.URL.Query().Get("limit"), 200, 10, 1000)
 
-	resp := graphResp{}
+	// Initialize as empty slices (not nil) so JSON marshals as
+	// `[]` not `null` — frontend consumers do .length safely.
+	resp := graphResp{Nodes: []graphNode{}, Edges: []graphEdge{}}
 	idx := map[string]bool{} // slug → present
 
 	// Get most-recently-updated studies as nodes (deterministic + bounded)

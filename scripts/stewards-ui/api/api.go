@@ -35,6 +35,7 @@ func Register(mux *http.ServeMux, deps *Deps) {
 	deps.registerBridge(mux)
 	deps.registerNewWork(mux)
 	deps.registerGraph(mux)
+	deps.registerProviders(mux)
 }
 
 // writeJSON marshals v to JSON, sets the Content-Type header, and
