@@ -212,6 +212,12 @@ extension_sql_file!(
     requires = ["create_phase_4a_cost_tracking"],
 );
 
+extension_sql_file!(
+    "../4a-steward.sql",
+    name = "create_phase_4a_steward",
+    requires = ["create_phase_4a_escalation_chain"],
+);
+
 // ---------------------------------------------------------------------------
 // Diagnostic SQL functions
 // ---------------------------------------------------------------------------

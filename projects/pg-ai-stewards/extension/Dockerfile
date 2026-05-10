@@ -63,7 +63,8 @@ COPY 2-6a-workstreams.sql 2-6b-todos.sql 2-6c-phases-context.sql \
      3e2-6-mcp-servers-linux-paths.sql \
      3e2-7-git-mcp-seed.sql \
      4a-cost-tracking.sql \
-     4a-escalation-chain.sql ./
+     4a-escalation-chain.sql \
+     4a-steward.sql ./
 
 # `cargo pgrx package` produces ./target/release/pg_ai_stewards-pg18/
 # with the directory tree rooted at /, containing the .so, .control,
