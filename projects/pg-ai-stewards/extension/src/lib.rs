@@ -285,6 +285,12 @@ extension_sql_file!(
     requires = ["create_phase_5d2_seed_fns"],
 );
 
+extension_sql_file!(
+    "../5d4-backfill-intent.sql",
+    name = "create_phase_5d4_backfill_intent",
+    requires = ["create_phase_5d3_compose_with_intent"],
+);
+
 // ---------------------------------------------------------------------------
 // Diagnostic SQL functions
 // ---------------------------------------------------------------------------
