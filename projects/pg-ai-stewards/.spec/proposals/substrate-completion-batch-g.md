@@ -1,13 +1,26 @@
 ---
 title: Substrate Completion (Batch G) — make the substrate land in real files
 date: 2026-05-11
-status: design sub-spec — build-ready
+status: design sub-spec — ratified 2026-05-11, building
 parent: open-items.md (Sections I, II, III.1)
 purpose: >
   Close the gap between "Phases A–F shipped" and "first real Phase D + E + F
-  end-to-end run is possible." Four items, all small-to-medium effort,
-  none requiring new ratification. After Batch G ships, the substrate's
-  built primitives connect into a working loop with real outputs.
+  end-to-end run is possible." Four items, all small-to-medium effort.
+  After Batch G ships, the substrate's built primitives connect into a
+  working loop with real outputs.
+ratifications:
+  - 2026-05-11 architecture nuance from Michael: file outputs are an
+    opt-in deliverable per work_item, not a default. DB-default
+    everywhere; explicit human gesture to materialize. Generalized
+    mechanism that any pipeline can use.
+  - D-G1 — Pipeline file_destination_template is UI suggestion only,
+    NOT enforced default. Human chooses per work_item.
+  - D-G2 — Materialization triggered by explicit "Materialize now"
+    button on WorkItemDetail. Auto-fire deferred to v2 if the
+    explicit-gesture pattern proves trustworthy.
+  - D-G3 — Lessons + resolutions keep their separate promoted_to
+    columns + per-item buttons. The new mechanism handles work_item-
+    level file outputs (a different unit of decision).
 ---
 
 # Batch G — make the substrate land in real files

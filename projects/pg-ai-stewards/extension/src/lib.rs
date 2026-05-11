@@ -375,6 +375,13 @@ extension_sql_file!(
     requires = ["create_phase_5g3_synthesize_and_resolve"],
 );
 
+// Batch G — make the substrate land in real files.
+extension_sql_file!(
+    "../6a-studies-file-path-nullable.sql",
+    name = "create_batch_g1_studies_file_path_nullable",
+    requires = ["create_phase_5g4_bishop_and_suggest"],
+);
+
 // ---------------------------------------------------------------------------
 // Diagnostic SQL functions
 // ---------------------------------------------------------------------------
