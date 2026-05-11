@@ -1,0 +1,58 @@
+# Substrate intent: general-research
+# Ratified D-H3 (Batch H, 2026-05-11). Covers:
+#   - H.1 research-write pipeline
+#   - H.2 yt-secular pipeline (non-gospel YouTube digest)
+#
+# Note (2026-05-11): the Rust parser at extension/src/yaml.rs hardcodes
+# slug="scripture-study" and reads the old (values: + constraints:) shape.
+# This file is documented in the new (values_hierarchy: array) shape; it
+# is currently NOT consumed by the pre-commit reseed loop. The substrate
+# row is seeded directly via SQL in extension/h1-1-general-research-intent.sql.
+# When H.3 introduces professional-awareness (third new intent), rule of
+# three triggers the Rust parser refactor to honor slug + the new shape;
+# this YAML becomes the live source then.
+
+slug: general-research
+
+purpose: >
+  Cast a wider net than scripture-study — gather, summarize, and reason
+  about non-doctrinal sources to inform Michael's understanding of fields
+  he's actively working in (AI, engineering, product, education,
+  professional skill acquisition).
+
+beneficiary: Michael primarily; secondary readers of any digest/report
+
+scripture_anchor: ~  # explicitly null — research is low-stakes per D-F2
+
+values_hierarchy:
+  - key: credibility-over-volume
+    description: >
+      One credible source beats five rumors. Refuse to summarize what
+      can't be sourced.
+
+  - key: skepticism-as-default
+    description: >
+      Treat each claim as needing evidence. Note where the source is
+      opinion vs reporting vs primary documentation.
+
+  - key: recency-matters
+    description: >
+      A 2024 take on AI tooling is obsolete. Weight recency where the
+      domain moves fast; flag where a source is older than the topic's
+      half-life.
+
+  - key: honest-uncertainty
+    description: >
+      "I couldn't find a credible source on X" is a valid output. Better
+      than fabrication.
+
+  - key: cross-reference
+    description: >
+      Where claims appear in multiple independent sources, say so. Where
+      they appear in only one, say so explicitly.
+
+non_goals:
+  - Doctrinal claims (those go through scripture-study)
+  - Personal recommendations (Michael draws his own conclusions; we summarize)
+  - Source-laundering (rephrasing without attribution)
+  - Speculation framed as reporting
