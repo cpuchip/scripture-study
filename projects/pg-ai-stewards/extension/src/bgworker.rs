@@ -561,6 +561,8 @@ fn process_one_pending() -> bool {
                     tokens_in,
                     tokens_out,
                     reasoning_tokens,
+                    cache_creation_tokens,
+                    cache_read_tokens,
                 }) => {
                     // Insert the assistant turn. tool_calls and the
                     // reasoning fields are stored verbatim so the
@@ -598,61 +600,69 @@ fn process_one_pending() -> bool {
                         ],
                     )?;
 
-                    // Phase 4f — Record a cost_event so cost-cap discipline
-                    // and bucket tracking actually receive token data.
-                    // Only fires when the chat is tied to a work_item (the
-                    // payload's _work_item_id field, set by work_item_
-                    // dispatch_stage). Ad-hoc chats without a work_item
-                    // (e.g., watchman passes) are not cost-tracked yet —
-                    // cost_events.work_item_id has a NOT NULL FK so they
-                    // can't be recorded without a schema change.
+                    // Phase 4f/4g/4h — Record a cost_event for every chat
+                    // dispatch (work-item-tied OR ad-hoc, e.g., watchman).
                     //
-                    // IMPORTANT: use `requested_model` (the substrate's
-                    // canonical short name like 'kimi-k2.6'), NOT `model`
-                    // (the provider's full versioned identifier like
-                    // 'moonshotai/kimi-k2.6-20260420'). model_pricing is
-                    // keyed on the canonical name; the provider response
-                    // echoes back its own internal versioned name which
-                    // doesn't exist in our pricing table → micro_dollars=0.
+                    // Phase 4g: cost_events.work_item_id is now nullable.
+                    // For ad-hoc chats, work_item_id is NULL and session_id
+                    // is the canonical owner identifier (a watchman pass
+                    // dispatches multiple chats; each chat has its own
+                    // session derived from the pass + slug).
                     //
-                    // Cache token parsing (cache_creation_input_tokens,
-                    // cache_read_input_tokens from Anthropic-style
-                    // providers) is deferred — we pass 0/0 for now.
+                    // Phase 4h: cache_creation_tokens + cache_read_tokens
+                    // are passed through. compute_cost gates each on the
+                    // model's per-rate column being non-NULL, so providers
+                    // that don't expose cache distinction (e.g., most
+                    // OpenCode Go Chinese models) silently skip those
+                    // contributions.
                     //
-                    // Errors logged, never propagated — a missing pricing
-                    // row or transient SPI failure should not poison the
-                    // chat write.
-                    if let Some(wi_str) = payload
-                        .get("_work_item_id")
-                        .and_then(|v| v.as_str())
-                    {
-                        let in_tok = tokens_in.unwrap_or(0);
-                        let out_tok = tokens_out.unwrap_or(0);
-                        if in_tok > 0 || out_tok > 0 {
-                            let cost_result = client.update(
-                                "SELECT stewards.record_cost_event( \
-                                    $1::uuid, \
-                                    (SELECT count(*)::int + 1 FROM stewards.cost_events WHERE work_item_id = $1::uuid), \
-                                    $2, $3, $4, $5, 0, 0, $6)",
-                                Some(1),
-                                &[
-                                    wi_str.into(),
-                                    provider.to_string().into(),
-                                    requested_model.clone().into(),
-                                    in_tok.into(),
-                                    out_tok.into(),
-                                    format!(
-                                        "work_id={} session={} response_model={}",
-                                        id, session_id, model
-                                    ).into(),
-                                ],
+                    // Use `requested_model` (canonical short name like
+                    // 'kimi-k2.6'), NOT `model` (the provider's full
+                    // versioned identifier). model_pricing is keyed on
+                    // the canonical name. The response model is preserved
+                    // in cost_events.notes for audit.
+                    //
+                    // Errors logged, never propagated.
+                    let in_tok = tokens_in.unwrap_or(0);
+                    let out_tok = tokens_out.unwrap_or(0);
+                    let cache_write_tok = cache_creation_tokens.unwrap_or(0);
+                    let cache_read_tok = cache_read_tokens.unwrap_or(0);
+
+                    if in_tok > 0 || out_tok > 0 || cache_write_tok > 0 || cache_read_tok > 0 {
+                        let wi_opt: Option<&str> = payload
+                            .get("_work_item_id")
+                            .and_then(|v| v.as_str());
+
+                        let cost_result = client.update(
+                            "SELECT stewards.record_cost_event( \
+                                $1::uuid, \
+                                CASE \
+                                  WHEN $1::uuid IS NULL \
+                                    THEN (SELECT count(*)::int + 1 FROM stewards.cost_events WHERE session_id = $7) \
+                                  ELSE (SELECT count(*)::int + 1 FROM stewards.cost_events WHERE work_item_id = $1::uuid) \
+                                END, \
+                                $2, $3, $4, $5, $6, $8, $7, $9)",
+                            Some(1),
+                            &[
+                                wi_opt.into(),
+                                provider.to_string().into(),
+                                requested_model.clone().into(),
+                                in_tok.into(),
+                                out_tok.into(),
+                                cache_write_tok.into(),
+                                session_id.clone().into(),
+                                cache_read_tok.into(),
+                                format!(
+                                    "work_id={} response_model={}",
+                                    id, model
+                                ).into(),
+                            ],
+                        );
+                        if let Err(e) = cost_result {
+                            pgrx::log!(
+                                "stewards: record_cost_event failed for work_id={} session={}: {}",
+                                id, session_id, e
                             );
-                            if let Err(e) = cost_result {
-                                pgrx::log!(
-                                    "stewards: record_cost_event failed for work_item {} (work_id {}): {}",
-                                    wi_str, id, e
-                                );
-                            }
                         }
                     }
 
@@ -1290,6 +1300,24 @@ fn chat(provider_name: &str, payload: &serde_json::Value) -> Result<WorkOutcome,
         .and_then(|v| v.as_i64())
         .map(|v| v as i32);
 
+    // Phase 4h — Anthropic-style cache token fields.
+    // Anthropic API exposes:
+    //   usage.cache_creation_input_tokens (writes to cache, billed ~1.25x input)
+    //   usage.cache_read_input_tokens     (reads from cache, billed ~0.1x input)
+    // OpenCode Zen passes these through verbatim for Anthropic models.
+    // OpenAI-compatible endpoints (most non-Anthropic models) don't
+    // expose this; the fields will be None and compute_cost will skip
+    // their contribution (it gates on the per-model rate being non-NULL
+    // in model_pricing).
+    let cache_creation_tokens = usage
+        .and_then(|u| u.get("cache_creation_input_tokens"))
+        .and_then(|v| v.as_i64())
+        .map(|v| v as i32);
+    let cache_read_tokens = usage
+        .and_then(|u| u.get("cache_read_input_tokens"))
+        .and_then(|v| v.as_i64())
+        .map(|v| v as i32);
+
     Ok(WorkOutcome::Chatted {
         response: parsed,
         session_id,
@@ -1304,5 +1332,7 @@ fn chat(provider_name: &str, payload: &serde_json::Value) -> Result<WorkOutcome,
         tokens_in,
         tokens_out,
         reasoning_tokens,
+        cache_creation_tokens,
+        cache_read_tokens,
     })
 }

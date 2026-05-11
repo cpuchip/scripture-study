@@ -239,6 +239,12 @@ extension_sql_file!(
     requires = ["create_phase_4c_steward_dispatch"],
 );
 
+extension_sql_file!(
+    "../4g-ad-hoc-cost.sql",
+    name = "create_phase_4g_ad_hoc_cost",
+    requires = ["create_phase_4d_steward_realign"],
+);
+
 // ---------------------------------------------------------------------------
 // Diagnostic SQL functions
 // ---------------------------------------------------------------------------

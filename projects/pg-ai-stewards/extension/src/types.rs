@@ -39,6 +39,12 @@ pub(crate) enum WorkOutcome {
         // Billed separately from tokens_out by kimi/o1-style models;
         // store so cost computation can sum both. None when absent.
         reasoning_tokens: Option<i32>,
+        // Phase 4h — Anthropic-style usage fields. Most OpenCode Go
+        // Chinese models don't expose these; Anthropic models via
+        // OpenCode Zen do. Recorded to cost_events so cache discount
+        // (cache_read ~10% of input rate) is applied accurately.
+        cache_creation_tokens: Option<i32>,
+        cache_read_tokens: Option<i32>,
     },
     /// Result of executing one or more tool calls. Phase 3 inserts
     /// each (tool_call_id, content) as a `role='tool'` message and
