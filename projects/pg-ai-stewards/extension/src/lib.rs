@@ -327,6 +327,12 @@ extension_sql_file!(
     requires = ["create_phase_5e4_promotion_gate_and_triggers"],
 );
 
+extension_sql_file!(
+    "../5f2-evaluate-trust.sql",
+    name = "create_phase_5f2_evaluate_trust",
+    requires = ["create_phase_5f_trust"],
+);
+
 // ---------------------------------------------------------------------------
 // Diagnostic SQL functions
 // ---------------------------------------------------------------------------
