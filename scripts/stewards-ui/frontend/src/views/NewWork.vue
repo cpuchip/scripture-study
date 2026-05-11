@@ -11,6 +11,15 @@ const pipelinesError = ref('')
 // Batch G.4.4 — file destination
 const writeFile = ref(false)
 const fileDestination = ref('')
+// Track the last value we auto-rendered so we can distinguish "still
+// matches our auto-render" (safe to update on slug change) from "user
+// has manually edited" (leave alone). Without this, the watcher's
+// `.includes('<slug>')` guard stopped firing after the first slug
+// substitution, so subsequent slug edits never updated the path.
+// Bug surfaced 2026-05-11 (physics-news work_item materialized as
+// research/P.md because slug was 'P' when fileDestination first
+// rendered; later slug edits didn't propagate).
+const lastAutoRendered = ref('')
 const slug = ref('')
 const bindingQuestion = ref('')
 const actor = ref('michael')
@@ -108,11 +117,19 @@ function renderTemplate(template: string): string {
 watch([pipeline, slug, pipelines], () => {
   const p = pipelines.value.find(pp => pp.family === pipeline.value)
   if (p?.file_destination_template) {
+    const rendered = renderTemplate(p.file_destination_template)
     if (!writeFile.value && !fileDestination.value) {
+      // First time we're rendering: enable writeFile and set both refs.
       writeFile.value = true
-      fileDestination.value = renderTemplate(p.file_destination_template)
-    } else if (writeFile.value && fileDestination.value.includes('<slug>')) {
-      fileDestination.value = renderTemplate(p.file_destination_template)
+      fileDestination.value = rendered
+      lastAutoRendered.value = rendered
+    } else if (writeFile.value && fileDestination.value === lastAutoRendered.value) {
+      // Field still shows our prior auto-render → safe to re-render on
+      // slug/pipeline change. Once the user edits the input, the two
+      // refs diverge and this branch stops firing — manual edits are
+      // preserved.
+      fileDestination.value = rendered
+      lastAutoRendered.value = rendered
     }
   } else {
     // Pipeline has no template → DB-only by default
