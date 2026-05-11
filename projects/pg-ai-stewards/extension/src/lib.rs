@@ -297,6 +297,12 @@ extension_sql_file!(
     requires = ["create_phase_5d4_backfill_intent"],
 );
 
+extension_sql_file!(
+    "../5e-lessons-and-pipeline-flags.sql",
+    name = "create_phase_5e_lessons_and_pipeline_flags",
+    requires = ["create_phase_5d5_tools_off_and_templates"],
+);
+
 // ---------------------------------------------------------------------------
 // Diagnostic SQL functions
 // ---------------------------------------------------------------------------
