@@ -245,6 +245,15 @@ extension_sql_file!(
     requires = ["create_phase_4d_steward_realign"],
 );
 
+extension_sql_file!(
+    "../5a-maturity-gate.sql",
+    name = "create_phase_5a_maturity_gate",
+    requires = [
+        "create_phase_4g_ad_hoc_cost",
+        "create_stage_templating_and_study_write"
+    ],
+);
+
 // ---------------------------------------------------------------------------
 // Diagnostic SQL functions
 // ---------------------------------------------------------------------------

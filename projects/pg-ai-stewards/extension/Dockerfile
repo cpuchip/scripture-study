@@ -68,7 +68,8 @@ COPY 2-6a-workstreams.sql 2-6b-todos.sql 2-6c-phases-context.sql \
      4b-dispatch-override.sql \
      4c-steward-dispatch.sql \
      4d-steward-realign.sql \
-     4g-ad-hoc-cost.sql ./
+     4g-ad-hoc-cost.sql \
+     5a-maturity-gate.sql ./
 
 # `cargo pgrx package` produces ./target/release/pg_ai_stewards-pg18/
 # with the directory tree rooted at /, containing the .so, .control,
