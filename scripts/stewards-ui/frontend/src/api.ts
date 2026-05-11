@@ -163,6 +163,29 @@ export const api = {
   covenantActive: (scope?: string) =>
     getJSON<CovenantRow>(`/api/covenants/active${scope ? '?scope=' + encodeURIComponent(scope) : ''}`),
   covenantsList: () => getJSON<CovenantsListResp>('/api/covenants/list'),
+  lessonsList: (params?: { kind?: string; ratified?: 'true' | 'false'; limit?: number }) => {
+    const q = new URLSearchParams()
+    if (params?.kind) q.set('kind', params.kind)
+    if (params?.ratified) q.set('ratified', params.ratified)
+    if (params?.limit) q.set('limit', String(params.limit))
+    const qs = q.toString()
+    return getJSON<LessonsListResp>(`/api/lessons/list${qs ? '?' + qs : ''}`)
+  },
+  lessonRatify: async (req: LessonRatifyReq): Promise<LessonRatifyResp> => {
+    const r = await fetch('/api/lessons/ratify', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(req),
+    })
+    if (!r.ok) {
+      let msg = `HTTP ${r.status}`
+      try { const b = await r.json(); if (b.error) msg = b.error } catch {}
+      throw new Error(msg)
+    }
+    return r.json()
+  },
+  sabbathList: (pipeline?: string) =>
+    getJSON<SabbathListResp>(`/api/sabbath/list${pipeline ? '?pipeline=' + encodeURIComponent(pipeline) : ''}`),
   sessionGet: (sid: string) =>
     getJSON<SessionDetail>(`/api/sessions/get?id=${encodeURIComponent(sid)}`),
   watchmanPasses: (limit?: number) => {
@@ -269,6 +292,56 @@ export type CovenantRow = {
 
 export type CovenantsListResp = {
   items: CovenantRow[]
+  total: number
+}
+
+// Phase 5e (D.6+D.7) — lessons + sabbath types
+
+export type LessonRow = {
+  id: number
+  work_item_id?: string
+  work_item_slug?: string
+  at?: string
+  kind: 'principle' | 'decision' | 'lesson' | 'sabbath_reflection'
+  content: string
+  raw_response?: unknown
+  ratified_at?: string
+  ratified_by?: string
+  promoted_to?: string
+  work_id?: number
+  pipeline_family?: string
+  current_stage?: string
+}
+
+export type LessonsListResp = {
+  items: LessonRow[]
+  total: number
+}
+
+export type LessonRatifyReq = {
+  id: number
+  ratified_by: string
+  promoted_to?: string
+}
+
+export type LessonRatifyResp = {
+  id: number
+  ratified_at: string
+}
+
+export type SabbathRow = {
+  id: number
+  work_item_id: string
+  work_item_slug: string
+  pipeline_family: string
+  at?: string
+  reflection: string
+  carry_forward?: string
+  surprise?: string
+}
+
+export type SabbathListResp = {
+  items: SabbathRow[]
   total: number
 }
 

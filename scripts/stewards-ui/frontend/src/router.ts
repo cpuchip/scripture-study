@@ -16,6 +16,8 @@ const NewWork = () => import('./views/NewWork.vue')
 const Graph = () => import('./views/Graph.vue')
 const Intents = () => import('./views/Intents.vue')
 const Covenants = () => import('./views/Covenants.vue')
+const Sabbath = () => import('./views/Sabbath.vue')
+const Lessons = () => import('./views/Lessons.vue')
 
 const routes: RouteRecordRaw[] = [
   { path: '/',           name: 'dashboard',  component: Dashboard },
@@ -31,6 +33,8 @@ const routes: RouteRecordRaw[] = [
   { path: '/new',        name: 'new-work',   component: NewWork, meta: { title: 'New work' } },
   { path: '/intents',    name: 'intents',    component: Intents, meta: { title: 'Intents' } },
   { path: '/covenants',  name: 'covenants',  component: Covenants, meta: { title: 'Covenant' } },
+  { path: '/sabbath',    name: 'sabbath',    component: Sabbath, meta: { title: 'Sabbath log' } },
+  { path: '/lessons',    name: 'lessons',    component: Lessons, meta: { title: 'Lessons' } },
 ]
 
 export default createRouter({

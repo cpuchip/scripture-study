@@ -18,6 +18,8 @@ import { RouterLink, RouterView } from 'vue-router'
         <span class="text-zinc-700">|</span>
         <RouterLink to="/intents" class="hover:text-zinc-100">Intents</RouterLink>
         <RouterLink to="/covenants" class="hover:text-zinc-100">Covenant</RouterLink>
+        <RouterLink to="/sabbath" class="hover:text-zinc-100">Sabbath</RouterLink>
+        <RouterLink to="/lessons" class="hover:text-zinc-100">Lessons</RouterLink>
       </nav>
     </header>
 
