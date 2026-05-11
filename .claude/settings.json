@@ -26,6 +26,15 @@
             "timeout": 10
           }
         ]
+      },
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "input=$(cat); cmd=$(printf '%s' \"$input\" | python3 -c 'import sys,json; d=json.load(sys.stdin); ti=d.get(\"tool_input\",{}); print(ti.get(\"command\",\"\"))' 2>/dev/null || echo \"\"); cwd=$(pwd); if printf '%s' \"$cmd\" | grep -qE 'docker compose build pg(\\b|$| )' && printf '%s' \"$cwd\" | grep -q 'pg-ai-stewards/extension'; then if [ -x ./scripts/bump-extension.sh ]; then out=$(./scripts/bump-extension.sh 2>&1); printf '{\"hookSpecificOutput\":{\"hookEventName\":\"PostToolUse\",\"additionalContext\":\"Lesson #3 auto-fix ran after docker compose build pg.\\n%s\"}}' \"$(printf '%s' \"$out\" | sed 's/\"/\\\\\"/g' | tr '\\n' ' ')\"; fi; fi",
+            "timeout": 60
+          }
+        ]
       }
     ],
     "Stop": [
