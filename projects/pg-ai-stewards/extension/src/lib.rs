@@ -351,6 +351,12 @@ extension_sql_file!(
     requires = ["create_phase_5f4_retry_with_lessons"],
 );
 
+extension_sql_file!(
+    "../5g-council.sql",
+    name = "create_phase_5g_council",
+    requires = ["create_phase_5f5_apply_gate_override"],
+);
+
 // ---------------------------------------------------------------------------
 // Diagnostic SQL functions
 // ---------------------------------------------------------------------------
