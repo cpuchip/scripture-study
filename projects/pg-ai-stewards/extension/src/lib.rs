@@ -303,6 +303,12 @@ extension_sql_file!(
     requires = ["create_phase_5d5_tools_off_and_templates"],
 );
 
+extension_sql_file!(
+    "../5e2-sabbath.sql",
+    name = "create_phase_5e2_sabbath",
+    requires = ["create_phase_5e_lessons_and_pipeline_flags"],
+);
+
 // ---------------------------------------------------------------------------
 // Diagnostic SQL functions
 // ---------------------------------------------------------------------------

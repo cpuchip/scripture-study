@@ -77,7 +77,8 @@ COPY 2-6a-workstreams.sql 2-6b-todos.sql 2-6c-phases-context.sql \
      5d3-compose-with-intent.sql \
      5d4-backfill-intent.sql \
      5d5-tools-off-and-templates.sql \
-     5e-lessons-and-pipeline-flags.sql ./
+     5e-lessons-and-pipeline-flags.sql \
+     5e2-sabbath.sql ./
 
 # `cargo pgrx package` produces ./target/release/pg_ai_stewards-pg18/
 # with the directory tree rooted at /, containing the .so, .control,
