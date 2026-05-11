@@ -291,6 +291,12 @@ extension_sql_file!(
     requires = ["create_phase_5d3_compose_with_intent"],
 );
 
+extension_sql_file!(
+    "../5d5-tools-off-and-templates.sql",
+    name = "create_phase_5d5_tools_off_and_templates",
+    requires = ["create_phase_5d4_backfill_intent"],
+);
+
 // ---------------------------------------------------------------------------
 // Diagnostic SQL functions
 // ---------------------------------------------------------------------------

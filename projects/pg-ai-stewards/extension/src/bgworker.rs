@@ -1321,9 +1321,30 @@ fn chat(provider_name: &str, payload: &serde_json::Value) -> Result<WorkOutcome,
         .and_then(|v| v.as_str())
         .ok_or_else(|| "payload.requested_model missing".to_string())?
         .to_string();
-    let body = payload
+    let body_orig = payload
         .get("body")
         .ok_or_else(|| "payload.body missing".to_string())?;
+
+    // Phase 5d (C.6): tools_disabled flag. When set on the payload,
+    // strip the `tools` key from the body before POST. Used by
+    // gate-style dispatches (gate eval, scenarios, verify, sabbath,
+    // atonement, covenant_check) where the model returns structured
+    // JSON and tool loops 5x the cost (Phase B lesson 2026-05-11).
+    let tools_disabled = payload
+        .get("tools_disabled")
+        .and_then(|v| v.as_bool())
+        .unwrap_or(false);
+    let body_owned;
+    let body: &serde_json::Value = if tools_disabled {
+        let mut b = body_orig.clone();
+        if let serde_json::Value::Object(ref mut m) = b {
+            m.remove("tools");
+        }
+        body_owned = b;
+        &body_owned
+    } else {
+        body_orig
+    };
 
     let url = format!(
         "{}/chat/completions",
