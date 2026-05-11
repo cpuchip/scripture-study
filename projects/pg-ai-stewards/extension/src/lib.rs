@@ -394,6 +394,12 @@ extension_sql_file!(
     requires = ["create_batch_g2_steward_retry_lessons"],
 );
 
+extension_sql_file!(
+    "../6d-pending-file-writes.sql",
+    name = "create_batch_g4_1_pending_file_writes",
+    requires = ["create_batch_g3_quarantine_fires_atonement"],
+);
+
 // ---------------------------------------------------------------------------
 // Diagnostic SQL functions
 // ---------------------------------------------------------------------------
