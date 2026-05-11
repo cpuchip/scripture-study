@@ -333,6 +333,12 @@ extension_sql_file!(
     requires = ["create_phase_5f_trust"],
 );
 
+extension_sql_file!(
+    "../5f3-gate-trust-check.sql",
+    name = "create_phase_5f3_gate_trust_check",
+    requires = ["create_phase_5f2_evaluate_trust"],
+);
+
 // ---------------------------------------------------------------------------
 // Diagnostic SQL functions
 // ---------------------------------------------------------------------------
