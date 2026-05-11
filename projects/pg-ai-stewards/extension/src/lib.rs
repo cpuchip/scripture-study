@@ -388,6 +388,12 @@ extension_sql_file!(
     requires = ["create_batch_g1_studies_file_path_nullable"],
 );
 
+extension_sql_file!(
+    "../6c-quarantine-fires-atonement.sql",
+    name = "create_batch_g3_quarantine_fires_atonement",
+    requires = ["create_batch_g2_steward_retry_lessons"],
+);
+
 // ---------------------------------------------------------------------------
 // Diagnostic SQL functions
 // ---------------------------------------------------------------------------
