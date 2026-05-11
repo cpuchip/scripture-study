@@ -254,6 +254,18 @@ extension_sql_file!(
     ],
 );
 
+extension_sql_file!(
+    "../5b-scenarios-verify.sql",
+    name = "create_phase_5b_scenarios_verify",
+    requires = ["create_phase_5a_maturity_gate"],
+);
+
+extension_sql_file!(
+    "../5c-sessions-gate-kind.sql",
+    name = "create_phase_5c_sessions_gate_kind",
+    requires = ["create_phase_5b_scenarios_verify"],
+);
+
 // ---------------------------------------------------------------------------
 // Diagnostic SQL functions
 // ---------------------------------------------------------------------------

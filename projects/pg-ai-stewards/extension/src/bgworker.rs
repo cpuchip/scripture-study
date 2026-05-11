@@ -666,6 +666,136 @@ fn process_one_pending() -> bool {
                         }
                     }
 
+                    // Phase 5a/5b — Gate auto-fire (3 variants).
+                    // After a gate-style chat completes, parse the JSON
+                    // response and call the appropriate apply_* function.
+                    // Three markers: _gate_eval, _scenarios_gen, _verify.
+                    // Errors logged, never propagated — chat is already
+                    // saved + work_queue is 'done'; failed auto-apply
+                    // leaves the work_item un-transitioned for human
+                    // hand-apply or re-trigger.
+                    let wi_opt = payload
+                        .get("_work_item_id")
+                        .and_then(|v| v.as_str());
+                    let is_gate_eval = payload
+                        .get("_gate_eval")
+                        .and_then(|v| v.as_bool())
+                        .unwrap_or(false);
+                    let is_scenarios_gen = payload
+                        .get("_scenarios_gen")
+                        .and_then(|v| v.as_bool())
+                        .unwrap_or(false);
+                    let is_verify = payload
+                        .get("_verify")
+                        .and_then(|v| v.as_bool())
+                        .unwrap_or(false);
+
+                    if let Some(wi_str) = wi_opt {
+                        if is_gate_eval || is_scenarios_gen || is_verify {
+                            let parsed: Result<Option<pgrx::JsonB>, pgrx::spi::Error> =
+                                client.update(
+                                    "SELECT stewards.parse_gate_response($1)",
+                                    Some(1),
+                                    &[id.into()],
+                                ).and_then(|rs| {
+                                    let mut it = rs.into_iter();
+                                    if let Some(r) = it.next() {
+                                        Ok(r.get::<pgrx::JsonB>(1)?)
+                                    } else {
+                                        Ok(None)
+                                    }
+                                });
+
+                            match parsed {
+                                Ok(Some(json)) => {
+                                    if is_gate_eval {
+                                        let r: Result<Option<String>, pgrx::spi::Error> =
+                                            client.update(
+                                                "SELECT stewards.apply_gate_decision($1::uuid, $2, $3)",
+                                                Some(1),
+                                                &[wi_str.into(), json.into(), id.into()],
+                                            ).and_then(|rs| {
+                                                let mut it = rs.into_iter();
+                                                if let Some(r) = it.next() {
+                                                    Ok(r.get::<String>(1)?)
+                                                } else { Ok(None) }
+                                            });
+                                        match r {
+                                            Ok(Some(m)) => pgrx::log!(
+                                                "stewards: gate decision applied for work_item={} → maturity={}",
+                                                wi_str, m),
+                                            Ok(None) => pgrx::log!(
+                                                "stewards: gate apply returned null for work_item={}",
+                                                wi_str),
+                                            Err(e) => pgrx::log!(
+                                                "stewards: apply_gate_decision failed for work_item={}: {}",
+                                                wi_str, e),
+                                        }
+                                    } else if is_scenarios_gen {
+                                        let r: Result<Option<i32>, pgrx::spi::Error> =
+                                            client.update(
+                                                "SELECT stewards.apply_scenarios_result($1::uuid, $2, $3)",
+                                                Some(1),
+                                                &[wi_str.into(), json.into(), id.into()],
+                                            ).and_then(|rs| {
+                                                let mut it = rs.into_iter();
+                                                if let Some(r) = it.next() {
+                                                    Ok(r.get::<i32>(1)?)
+                                                } else { Ok(None) }
+                                            });
+                                        match r {
+                                            Ok(Some(n)) => pgrx::log!(
+                                                "stewards: {} scenarios generated for work_item={}",
+                                                n, wi_str),
+                                            Ok(None) => pgrx::log!(
+                                                "stewards: scenarios apply returned null for work_item={}",
+                                                wi_str),
+                                            Err(e) => pgrx::log!(
+                                                "stewards: apply_scenarios_result failed for work_item={}: {}",
+                                                wi_str, e),
+                                        }
+                                    } else if is_verify {
+                                        let r: Result<Option<bool>, pgrx::spi::Error> =
+                                            client.update(
+                                                "SELECT stewards.apply_verify_result($1::uuid, $2, $3)",
+                                                Some(1),
+                                                &[wi_str.into(), json.into(), id.into()],
+                                            ).and_then(|rs| {
+                                                let mut it = rs.into_iter();
+                                                if let Some(r) = it.next() {
+                                                    Ok(r.get::<bool>(1)?)
+                                                } else { Ok(None) }
+                                            });
+                                        match r {
+                                            Ok(Some(passed)) => pgrx::log!(
+                                                "stewards: verify {} for work_item={}",
+                                                if passed { "PASSED" } else { "FAILED" },
+                                                wi_str),
+                                            Ok(None) => pgrx::log!(
+                                                "stewards: verify apply returned null for work_item={}",
+                                                wi_str),
+                                            Err(e) => pgrx::log!(
+                                                "stewards: apply_verify_result failed for work_item={}: {}",
+                                                wi_str, e),
+                                        }
+                                    }
+                                }
+                                Ok(None) => {
+                                    pgrx::log!(
+                                        "stewards: gate response unparseable for work_item={} work_id={} (gate_eval={} scenarios={} verify={})",
+                                        wi_str, id, is_gate_eval, is_scenarios_gen, is_verify
+                                    );
+                                }
+                                Err(e) => {
+                                    pgrx::log!(
+                                        "stewards: parse_gate_response failed for work_id={}: {}",
+                                        id, e
+                                    );
+                                }
+                            }
+                        }
+                    }
+
                     // Loop continuation: if assistant returned
                     // tool_calls AND we haven't exhausted agent.steps,
                     // enqueue a tool_dispatch row. The bgworker will
