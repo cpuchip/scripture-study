@@ -315,6 +315,12 @@ extension_sql_file!(
     requires = ["create_phase_5e2_sabbath"],
 );
 
+extension_sql_file!(
+    "../5e4-promotion-gate-and-triggers.sql",
+    name = "create_phase_5e4_promotion_gate_and_triggers",
+    requires = ["create_phase_5e3_atonement"],
+);
+
 // ---------------------------------------------------------------------------
 // Diagnostic SQL functions
 // ---------------------------------------------------------------------------
