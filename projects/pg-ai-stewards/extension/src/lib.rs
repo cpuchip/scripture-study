@@ -382,6 +382,12 @@ extension_sql_file!(
     requires = ["create_phase_5g4_bishop_and_suggest"],
 );
 
+extension_sql_file!(
+    "../6b-steward-retry-lessons.sql",
+    name = "create_batch_g2_steward_retry_lessons",
+    requires = ["create_batch_g1_studies_file_path_nullable"],
+);
+
 // ---------------------------------------------------------------------------
 // Diagnostic SQL functions
 // ---------------------------------------------------------------------------
