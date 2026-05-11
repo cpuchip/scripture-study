@@ -26,6 +26,7 @@ type workItemCreateReq struct {
 	Dispatch            bool            `json:"dispatch,omitempty"`
 	DestinationMaturity string          `json:"destination_maturity,omitempty"`
 	IntentID            string          `json:"intent_id,omitempty"`
+	FileDestination     string          `json:"file_destination,omitempty"`
 }
 
 type workItemCreateResp struct {
@@ -87,6 +88,19 @@ func (d *Deps) workItemCreateHandler(w http.ResponseWriter, r *http.Request) {
 		)
 		if err != nil {
 			writeErr(w, http.StatusInternalServerError, "set destination_maturity: "+err.Error())
+			return
+		}
+	}
+
+	// Batch G.4: optional file_destination prefilled from pipeline
+	// template or human-edited. NULL = DB-only (default).
+	if req.FileDestination != "" {
+		_, err := d.Pool.Exec(ctx,
+			`UPDATE stewards.work_items SET file_destination = $1 WHERE id = $2::uuid`,
+			req.FileDestination, newID,
+		)
+		if err != nil {
+			writeErr(w, http.StatusInternalServerError, "set file_destination: "+err.Error())
 			return
 		}
 	}

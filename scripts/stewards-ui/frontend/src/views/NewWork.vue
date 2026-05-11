@@ -1,11 +1,16 @@
 <script setup lang="ts">
-import { ref, computed, onMounted } from 'vue'
+import { ref, computed, onMounted, watch } from 'vue'
 import { useRouter } from 'vue-router'
-import { api, type ProviderRow, type IntentRow } from '@/api'
+import { api, type ProviderRow, type IntentRow, type PipelineRow } from '@/api'
 
 const router = useRouter()
 
 const pipeline = ref('study-write')
+const pipelines = ref<PipelineRow[]>([])
+const pipelinesError = ref('')
+// Batch G.4.4 — file destination
+const writeFile = ref(false)
+const fileDestination = ref('')
 const slug = ref('')
 const bindingQuestion = ref('')
 const actor = ref('michael')
@@ -83,6 +88,40 @@ async function createIntent() {
 // catalog helps Michael see what the substrate can reach.
 const providers = ref<ProviderRow[]>([])
 const providersError = ref('')
+async function loadPipelines() {
+  try {
+    const r = await api.pipelinesList()
+    pipelines.value = r.items
+  } catch (e) {
+    pipelinesError.value = String(e)
+  }
+}
+
+// When pipeline changes, prefill file destination from the pipeline's
+// template (D-G1: suggestion only — human can change or unset).
+function renderTemplate(template: string): string {
+  // <slug> placeholder; if user hasn't typed a slug, leave the literal
+  return template.replace(/<slug>/g, slug.value || '<slug>')
+                 .replace(/<id>/g, '<id>')
+}
+
+watch([pipeline, slug, pipelines], () => {
+  const p = pipelines.value.find(pp => pp.family === pipeline.value)
+  if (p?.file_destination_template) {
+    if (!writeFile.value && !fileDestination.value) {
+      writeFile.value = true
+      fileDestination.value = renderTemplate(p.file_destination_template)
+    } else if (writeFile.value && fileDestination.value.includes('<slug>')) {
+      fileDestination.value = renderTemplate(p.file_destination_template)
+    }
+  } else {
+    // Pipeline has no template → DB-only by default
+    if (!fileDestination.value) {
+      writeFile.value = false
+    }
+  }
+}, { immediate: false })
+
 onMounted(async () => {
   try {
     const r = await api.providers()
@@ -91,6 +130,7 @@ onMounted(async () => {
     providersError.value = String(e)
   }
   await loadIntents()
+  await loadPipelines()
 })
 
 const submitting = ref(false)
@@ -116,6 +156,9 @@ async function submit() {
       dispatch: dispatch.value,
       destination_maturity: destinationMaturity.value || undefined,
       intent_id: intentId.value || undefined,
+      file_destination: writeFile.value && fileDestination.value
+        ? fileDestination.value.replace(/<slug>/g, slug.value || '<slug>')
+        : undefined,
     })
     result.value = { id: r.id, dispatched: r.dispatched }
   } catch (e) {
@@ -176,9 +219,12 @@ function goToWorkItem() {
           v-model="pipeline"
           class="w-full px-3 py-2 rounded border border-zinc-700 bg-zinc-900 text-sm focus:border-zinc-500 focus:outline-none"
         >
-          <option value="study-write">study-write</option>
-          <option value="echo-test">echo-test</option>
+          <option v-for="p in pipelines" :key="p.family" :value="p.family">
+            {{ p.family }}{{ p.file_destination_template ? '  (→ ' + p.file_destination_template + ')' : '' }}
+          </option>
+          <option v-if="pipelines.length === 0" value="study-write">study-write</option>
         </select>
+        <p v-if="pipelinesError" class="text-xs text-red-400 mt-1">{{ pipelinesError }}</p>
       </div>
 
       <div>
@@ -253,6 +299,35 @@ function goToWorkItem() {
         <input v-model="dispatch" type="checkbox" class="accent-emerald-500" />
         <span>Dispatch first stage immediately after create</span>
       </label>
+
+      <!-- Batch G.4.4 — file destination (DB-only by default; opt-in) -->
+      <div class="rounded-md border border-zinc-800 bg-zinc-900/30 p-3 space-y-2">
+        <label class="flex items-center gap-2 text-sm text-zinc-300 cursor-pointer">
+          <input v-model="writeFile" type="checkbox" class="accent-emerald-500" />
+          <span>Write to file when complete</span>
+        </label>
+        <div v-if="writeFile">
+          <label class="block text-xs uppercase tracking-wide text-zinc-500 mb-1">
+            File destination
+          </label>
+          <input
+            v-model="fileDestination"
+            type="text"
+            placeholder="e.g. study/substrate--<slug>.md"
+            class="w-full px-3 py-2 rounded border border-zinc-700 bg-zinc-950 text-sm font-mono focus:border-zinc-500 focus:outline-none"
+          />
+          <p class="text-xs text-zinc-500 mt-1">
+            <code class="font-mono">&lt;slug&gt;</code> renders to the work_item slug at materialization.
+            Editable later from WorkItemDetail. Materialization is explicit
+            (click "Materialize now" after review) — files don't write at completion.
+          </p>
+        </div>
+        <p v-else class="text-xs text-zinc-500">
+          DB-only by default. The work_item lives in the substrate; no file
+          on disk. You can change this any time before clicking "Materialize now"
+          on WorkItemDetail.
+        </p>
+      </div>
 
       <details class="rounded-md border border-zinc-800 bg-zinc-900/50 p-3">
         <summary class="cursor-pointer text-xs text-zinc-400 hover:text-zinc-200">

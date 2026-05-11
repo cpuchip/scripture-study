@@ -140,6 +140,33 @@ export const api = {
     getJSON<StewardActionsResp>(`/api/work-items/actions?id=${encodeURIComponent(id)}`),
   workItemGateDecisions: (id: string) =>
     getJSON<GateDecisionsResp>(`/api/work-items/gate-decisions?id=${encodeURIComponent(id)}`),
+  pipelinesList: () => getJSON<PipelinesListResp>('/api/pipelines/list'),
+  workItemSetFileDestination: async (req: SetFileDestinationReq): Promise<SetFileDestinationResp> => {
+    const r = await fetch('/api/work-items/set-file-destination', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(req),
+    })
+    if (!r.ok) {
+      let msg = `HTTP ${r.status}`
+      try { const b = await r.json(); if (b.error) msg = b.error } catch {}
+      throw new Error(msg)
+    }
+    return r.json()
+  },
+  workItemMaterializeFile: async (id: string): Promise<MaterializeFileResp> => {
+    const r = await fetch('/api/work-items/materialize-file', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ id }),
+    })
+    if (!r.ok) {
+      let msg = `HTTP ${r.status}`
+      try { const b = await r.json(); if (b.error) msg = b.error } catch {}
+      throw new Error(msg)
+    }
+    return r.json()
+  },
   intentsList: () => getJSON<IntentsListResp>('/api/intents/list'),
   intentGet: (idOrSlug: string) => {
     const q = idOrSlug.length === 36 && idOrSlug.includes('-')
@@ -293,6 +320,7 @@ export type WorkItemCreateReq = {
   dispatch?: boolean
   destination_maturity?: string
   intent_id?: string
+  file_destination?: string
 }
 
 // Phase 5d (C.7+C.8) — intent + covenant types
@@ -675,6 +703,42 @@ export type WorkItemDetail = WorkItemRow & {
   revision_count: number
   scenarios?: unknown
   spec?: string
+  // Batch G.4 — file destination + materialization
+  file_destination?: string
+  materialized_at?: string
+  pipeline_file_template?: string
+}
+
+// Batch G.4 — pipeline + file destination types
+
+export type PipelineRow = {
+  family: string
+  description: string
+  sabbath_enabled: boolean
+  atonement_enabled: boolean
+  file_destination_template?: string
+  file_content_jsonpath?: string
+}
+
+export type PipelinesListResp = {
+  items: PipelineRow[]
+  total: number
+}
+
+export type SetFileDestinationReq = {
+  id: string
+  file_destination: string // empty = DB-only
+}
+
+export type SetFileDestinationResp = {
+  id: string
+  file_destination: string
+}
+
+export type MaterializeFileResp = {
+  pending_file_write_id?: number
+  skipped: boolean
+  skip_reason?: string
 }
 
 export type GateDecisionRow = {

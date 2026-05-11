@@ -15,6 +15,8 @@ func (d *Deps) registerWorkItems(mux *http.ServeMux) {
 	mux.HandleFunc("GET /api/work-items/cost", d.workItemsCostHandler)
 	mux.HandleFunc("GET /api/work-items/actions", d.workItemsActionsHandler)
 	mux.HandleFunc("GET /api/work-items/gate-decisions", d.workItemsGateDecisionsHandler)
+	mux.HandleFunc("POST /api/work-items/set-file-destination", d.workItemsSetFileDestinationHandler)
+	mux.HandleFunc("POST /api/work-items/materialize-file", d.workItemsMaterializeFileHandler)
 }
 
 type workItemRow struct {
@@ -122,6 +124,10 @@ type workItemDetail struct {
 	RevisionCount        int             `json:"revision_count"`
 	Scenarios            json.RawMessage `json:"scenarios,omitempty"`
 	Spec                 string          `json:"spec,omitempty"`
+	// Batch G.4 — file destination + materialization
+	FileDestination          string     `json:"file_destination,omitempty"`
+	MaterializedAt           *time.Time `json:"materialized_at,omitempty"`
+	PipelineFileTemplate     string     `json:"pipeline_file_template,omitempty"`
 }
 
 func (d *Deps) workItemsGetHandler(w http.ResponseWriter, r *http.Request) {
@@ -145,34 +151,38 @@ func (d *Deps) workItemsGetHandler(w http.ResponseWriter, r *http.Request) {
 		whereArg = slug
 	}
 	err := d.Pool.QueryRow(ctx,
-		`SELECT id::text, slug, pipeline_family, current_stage, status,
-		        coalesce(actor, ''),
-		        coalesce(tokens_in, 0), coalesce(tokens_out, 0),
-		        token_budget,
-		        created_at, updated_at, completed_at,
-		        input, stage_results,
-		        coalesce(session_ids, ARRAY[]::text[]),
-		        coalesce(error, ''),
-		        coalesce(failure_count, 0),
-		        coalesce(last_failure_reason, ''),
-		        coalesce(last_failure_diagnosis, ''),
-		        quarantined_at,
-		        coalesce(quarantine_reason, ''),
-		        coalesce(model_override, ''),
-		        coalesce(provider_override, ''),
-		        coalesce(escalation_state, 'normal'),
-		        coalesce(escalation_claimed_by, ''),
-		        coalesce(escalation_attempts, 0),
-		        coalesce(cost_micro_dollars, 0),
-		        cost_cap_micro,
-		        cost_capped_at,
-		        coalesce(maturity, 'raw'),
-		        coalesce(destination_maturity, ''),
-		        coalesce(revision_count, 0),
-		        coalesce(scenarios, '[]'::jsonb),
-		        coalesce(spec, '')
-		   FROM stewards.work_items
-		  WHERE `+whereSQL,
+		`SELECT wi.id::text, wi.slug, wi.pipeline_family, wi.current_stage, wi.status,
+		        coalesce(wi.actor, ''),
+		        coalesce(wi.tokens_in, 0), coalesce(wi.tokens_out, 0),
+		        wi.token_budget,
+		        wi.created_at, wi.updated_at, wi.completed_at,
+		        wi.input, wi.stage_results,
+		        coalesce(wi.session_ids, ARRAY[]::text[]),
+		        coalesce(wi.error, ''),
+		        coalesce(wi.failure_count, 0),
+		        coalesce(wi.last_failure_reason, ''),
+		        coalesce(wi.last_failure_diagnosis, ''),
+		        wi.quarantined_at,
+		        coalesce(wi.quarantine_reason, ''),
+		        coalesce(wi.model_override, ''),
+		        coalesce(wi.provider_override, ''),
+		        coalesce(wi.escalation_state, 'normal'),
+		        coalesce(wi.escalation_claimed_by, ''),
+		        coalesce(wi.escalation_attempts, 0),
+		        coalesce(wi.cost_micro_dollars, 0),
+		        wi.cost_cap_micro,
+		        wi.cost_capped_at,
+		        coalesce(wi.maturity, 'raw'),
+		        coalesce(wi.destination_maturity, ''),
+		        coalesce(wi.revision_count, 0),
+		        coalesce(wi.scenarios, '[]'::jsonb),
+		        coalesce(wi.spec, ''),
+		        coalesce(wi.file_destination, ''),
+		        wi.materialized_at,
+		        coalesce(p.file_destination_template, '')
+		   FROM stewards.work_items wi
+		   LEFT JOIN stewards.pipelines p ON p.family = wi.pipeline_family
+		  WHERE wi.`+whereSQL,
 		whereArg,
 	).Scan(&wd.ID, &wd.Slug, &wd.Pipeline, &wd.CurrentStage, &wd.Status,
 		&wd.Actor, &wd.TokensIn, &wd.TokensOut, &wd.TokenBudget,
@@ -184,7 +194,8 @@ func (d *Deps) workItemsGetHandler(w http.ResponseWriter, r *http.Request) {
 		&wd.EscalationState, &wd.EscalationClaimedBy, &wd.EscalationAttempts,
 		&wd.CostMicroDollars, &wd.CostCapMicro, &wd.CostCappedAt,
 		&wd.Maturity, &wd.DestinationMaturity, &wd.RevisionCount,
-		&wd.Scenarios, &wd.Spec)
+		&wd.Scenarios, &wd.Spec,
+		&wd.FileDestination, &wd.MaterializedAt, &wd.PipelineFileTemplate)
 	if err != nil {
 		writeErr(w, http.StatusNotFound, err.Error())
 		return
@@ -410,4 +421,94 @@ func joinAnd(ss []string) string {
 		out += " AND " + s
 	}
 	return out
+}
+
+// =====================================================================
+// Batch G.4 — file destination + materialize endpoints
+// =====================================================================
+
+type setFileDestinationReq struct {
+	ID              string `json:"id"`
+	FileDestination string `json:"file_destination"` // empty string = DB-only (NULL in DB)
+}
+
+type setFileDestinationResp struct {
+	ID              string `json:"id"`
+	FileDestination string `json:"file_destination"`
+}
+
+func (d *Deps) workItemsSetFileDestinationHandler(w http.ResponseWriter, r *http.Request) {
+	ctx, cancel := context.WithTimeout(r.Context(), 5*time.Second)
+	defer cancel()
+
+	var req setFileDestinationReq
+	if err := json.NewDecoder(r.Body).Decode(&req); err != nil {
+		writeErr(w, http.StatusBadRequest, "decode body: "+err.Error())
+		return
+	}
+	if req.ID == "" {
+		writeErr(w, http.StatusBadRequest, "id required")
+		return
+	}
+
+	var arg any
+	if req.FileDestination == "" {
+		arg = nil
+	} else {
+		arg = req.FileDestination
+	}
+
+	_, err := d.Pool.Exec(ctx,
+		`UPDATE stewards.work_items
+		    SET file_destination = $1
+		  WHERE id = $2::uuid`,
+		arg, req.ID)
+	if err != nil {
+		writeErr(w, http.StatusBadRequest, err.Error())
+		return
+	}
+	writeJSON(w, http.StatusOK, setFileDestinationResp{
+		ID: req.ID, FileDestination: req.FileDestination,
+	})
+}
+
+type materializeFileReq struct {
+	ID string `json:"id"`
+}
+
+type materializeFileResp struct {
+	PendingFileWriteID *int64 `json:"pending_file_write_id,omitempty"`
+	Skipped            bool   `json:"skipped"` // true when file_destination IS NULL
+	SkipReason         string `json:"skip_reason,omitempty"`
+}
+
+func (d *Deps) workItemsMaterializeFileHandler(w http.ResponseWriter, r *http.Request) {
+	ctx, cancel := context.WithTimeout(r.Context(), 5*time.Second)
+	defer cancel()
+
+	var req materializeFileReq
+	if err := json.NewDecoder(r.Body).Decode(&req); err != nil {
+		writeErr(w, http.StatusBadRequest, "decode body: "+err.Error())
+		return
+	}
+	if req.ID == "" {
+		writeErr(w, http.StatusBadRequest, "id required")
+		return
+	}
+
+	var pwid *int64
+	err := d.Pool.QueryRow(ctx,
+		`SELECT stewards.enqueue_work_item_file($1::uuid, 'ui')`,
+		req.ID,
+	).Scan(&pwid)
+	if err != nil {
+		writeErr(w, http.StatusBadRequest, err.Error())
+		return
+	}
+	resp := materializeFileResp{PendingFileWriteID: pwid}
+	if pwid == nil {
+		resp.Skipped = true
+		resp.SkipReason = "work_items.file_destination is NULL (DB-only)"
+	}
+	writeJSON(w, http.StatusOK, resp)
 }

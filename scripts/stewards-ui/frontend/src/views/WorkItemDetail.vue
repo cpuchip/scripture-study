@@ -71,6 +71,63 @@ function escalationBadge(state: string): { label: string; cls: string } {
       return { label: 'normal', cls: 'bg-zinc-800 text-zinc-400 border-zinc-700' }
   }
 }
+// Batch G.4.4 — file destination panel
+const editingFileDestination = ref(false)
+const editFileDestinationValue = ref('')
+const savingFileDestination = ref(false)
+const fileDestinationError = ref('')
+const materializingFile = ref(false)
+const materializeMsg = ref('')
+
+function startEditFileDestination() {
+  editFileDestinationValue.value = wi.value?.file_destination || ''
+  editingFileDestination.value = true
+  fileDestinationError.value = ''
+}
+
+function useTemplateForFileDestination() {
+  if (!wi.value?.pipeline_file_template) return
+  editFileDestinationValue.value = wi.value.pipeline_file_template
+    .replace(/<slug>/g, wi.value.slug || '<slug>')
+}
+
+async function saveFileDestination() {
+  if (!wi.value) return
+  savingFileDestination.value = true
+  fileDestinationError.value = ''
+  try {
+    await api.workItemSetFileDestination({
+      id: wi.value.id,
+      file_destination: editFileDestinationValue.value.trim(),
+    })
+    editingFileDestination.value = false
+    await load(wi.value.id)
+  } catch (e) {
+    fileDestinationError.value = String(e)
+  } finally {
+    savingFileDestination.value = false
+  }
+}
+
+async function materializeFile() {
+  if (!wi.value) return
+  materializingFile.value = true
+  materializeMsg.value = ''
+  try {
+    const r = await api.workItemMaterializeFile(wi.value.id)
+    if (r.skipped) {
+      materializeMsg.value = `Skipped: ${r.skip_reason || 'no destination set'}`
+    } else {
+      materializeMsg.value = `Queued pending file write #${r.pending_file_write_id}. Run \`stewards-cli materialize-writes\` (or commit — pre-commit hook materializes automatically).`
+    }
+    await load(wi.value.id)
+  } catch (e) {
+    materializeMsg.value = `Error: ${e}`
+  } finally {
+    materializingFile.value = false
+  }
+}
+
 // Phase 5a — maturity ladder helpers
 const MATURITY_LADDER = ['raw', 'researched', 'planned', 'specced', 'executing', 'verified']
 function maturityIndex(m: string): number {
@@ -217,6 +274,69 @@ function actionTone(action: string): string {
           Substrate will surface for review when maturity reaches
           <span class="font-mono text-blue-300">{{ wi.destination_maturity }}</span>.
         </p>
+      </section>
+
+      <!-- Batch G.4.4 — File destination panel -->
+      <section class="rounded-md border border-zinc-800 bg-zinc-900/50 p-4 space-y-3">
+        <div class="flex items-baseline justify-between">
+          <div class="text-xs uppercase tracking-wide text-zinc-500">File destination</div>
+          <span
+            v-if="wi.materialized_at"
+            class="text-xs text-emerald-500 font-mono"
+          >✓ materialized {{ fmtDate(wi.materialized_at) }}</span>
+        </div>
+
+        <div v-if="!editingFileDestination">
+          <div v-if="wi.file_destination" class="text-sm font-mono text-zinc-200">
+            {{ wi.file_destination }}
+          </div>
+          <div v-else class="text-sm text-zinc-500 italic">
+            DB-only (no file write)
+          </div>
+          <div class="flex items-center gap-2 mt-2">
+            <button
+              class="text-xs px-3 py-1 rounded border border-zinc-700 hover:bg-zinc-800 text-zinc-300"
+              @click="startEditFileDestination"
+            >{{ wi.file_destination ? 'Edit' : 'Set destination' }}</button>
+            <button
+              v-if="wi.file_destination && !wi.materialized_at"
+              class="text-xs px-3 py-1 rounded bg-emerald-700 hover:bg-emerald-600 text-white disabled:opacity-50"
+              :disabled="materializingFile"
+              @click="materializeFile"
+            >{{ materializingFile ? 'queueing…' : 'Materialize now' }}</button>
+            <span v-if="materializeMsg" class="text-xs text-zinc-400">{{ materializeMsg }}</span>
+          </div>
+        </div>
+
+        <div v-else class="space-y-2">
+          <input
+            v-model="editFileDestinationValue"
+            type="text"
+            placeholder="path (or blank for DB-only)"
+            class="w-full px-3 py-2 rounded border border-zinc-700 bg-zinc-950 text-sm font-mono focus:border-zinc-500 focus:outline-none"
+          />
+          <div class="flex items-center gap-2 text-xs">
+            <button
+              class="px-3 py-1 rounded bg-emerald-700 hover:bg-emerald-600 text-white disabled:opacity-50"
+              :disabled="savingFileDestination"
+              @click="saveFileDestination"
+            >{{ savingFileDestination ? 'saving…' : 'Save' }}</button>
+            <button
+              class="px-3 py-1 rounded border border-zinc-700 hover:bg-zinc-800 text-zinc-300"
+              @click="editingFileDestination = false"
+            >Cancel</button>
+            <button
+              v-if="wi.pipeline_file_template"
+              class="px-3 py-1 rounded border border-zinc-700 hover:bg-zinc-800 text-zinc-300"
+              @click="useTemplateForFileDestination"
+              :title="wi.pipeline_file_template"
+            >Use pipeline default</button>
+            <span v-if="fileDestinationError" class="text-red-400">{{ fileDestinationError }}</span>
+          </div>
+          <p class="text-xs text-zinc-500">
+            Empty = DB-only. <code class="font-mono">&lt;slug&gt;</code> in the path renders to the work_item slug.
+          </p>
+        </div>
       </section>
 
       <!-- Phase 5a (Phase B): Scenarios panel — only shown if any -->
