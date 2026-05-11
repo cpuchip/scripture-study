@@ -345,6 +345,12 @@ extension_sql_file!(
     requires = ["create_phase_5f3_gate_trust_check"],
 );
 
+extension_sql_file!(
+    "../5f5-apply-gate-override.sql",
+    name = "create_phase_5f5_apply_gate_override",
+    requires = ["create_phase_5f4_retry_with_lessons"],
+);
+
 // ---------------------------------------------------------------------------
 // Diagnostic SQL functions
 // ---------------------------------------------------------------------------
