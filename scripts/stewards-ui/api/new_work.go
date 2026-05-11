@@ -25,6 +25,7 @@ type workItemCreateReq struct {
 	TokenBudget         *int            `json:"token_budget,omitempty"`
 	Dispatch            bool            `json:"dispatch,omitempty"`
 	DestinationMaturity string          `json:"destination_maturity,omitempty"`
+	IntentID            string          `json:"intent_id,omitempty"`
 }
 
 type workItemCreateResp struct {
@@ -62,10 +63,14 @@ func (d *Deps) workItemCreateHandler(w http.ResponseWriter, r *http.Request) {
 		budgetArg = *req.TokenBudget
 	}
 
+	var intentArg any = nil
+	if req.IntentID != "" {
+		intentArg = req.IntentID
+	}
 	var newID string
 	err := d.Pool.QueryRow(ctx,
-		`SELECT stewards.work_item_create($1, $2::jsonb, $3, $4, $5)::text`,
-		req.Pipeline, string(req.Input), slugArg, req.Actor, budgetArg,
+		`SELECT stewards.work_item_create($1, $2::jsonb, $3, $4, $5, $6::uuid)::text`,
+		req.Pipeline, string(req.Input), slugArg, req.Actor, budgetArg, intentArg,
 	).Scan(&newID)
 	if err != nil {
 		writeErr(w, http.StatusInternalServerError, "create: "+err.Error())

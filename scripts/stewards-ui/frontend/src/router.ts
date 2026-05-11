@@ -14,6 +14,8 @@ const Watchman = () => import('./views/Watchman.vue')
 const BridgeState = () => import('./views/BridgeState.vue')
 const NewWork = () => import('./views/NewWork.vue')
 const Graph = () => import('./views/Graph.vue')
+const Intents = () => import('./views/Intents.vue')
+const Covenants = () => import('./views/Covenants.vue')
 
 const routes: RouteRecordRaw[] = [
   { path: '/',           name: 'dashboard',  component: Dashboard },
@@ -27,6 +29,8 @@ const routes: RouteRecordRaw[] = [
   { path: '/bridge',     name: 'bridge',     component: BridgeState, meta: { title: 'Bridge state' } },
   { path: '/graph',      name: 'graph',      component: Graph, meta: { title: 'Graph' } },
   { path: '/new',        name: 'new-work',   component: NewWork, meta: { title: 'New work' } },
+  { path: '/intents',    name: 'intents',    component: Intents, meta: { title: 'Intents' } },
+  { path: '/covenants',  name: 'covenants',  component: Covenants, meta: { title: 'Covenant' } },
 ]
 
 export default createRouter({

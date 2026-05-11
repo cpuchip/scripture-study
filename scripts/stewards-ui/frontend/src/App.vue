@@ -15,6 +15,9 @@ import { RouterLink, RouterView } from 'vue-router'
         <RouterLink to="/bridge" class="hover:text-zinc-100">Bridge</RouterLink>
         <RouterLink to="/graph" class="hover:text-zinc-100">Graph</RouterLink>
         <RouterLink to="/new" class="hover:text-zinc-100">New work</RouterLink>
+        <span class="text-zinc-700">|</span>
+        <RouterLink to="/intents" class="hover:text-zinc-100">Intents</RouterLink>
+        <RouterLink to="/covenants" class="hover:text-zinc-100">Covenant</RouterLink>
       </nav>
     </header>
 

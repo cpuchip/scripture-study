@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, computed, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
-import { api, type ProviderRow } from '@/api'
+import { api, type ProviderRow, type IntentRow } from '@/api'
 
 const router = useRouter()
 
@@ -16,6 +16,66 @@ const dispatch = ref(true)
 // lower rung to have the substrate surface for human review before
 // continuing past that rung.
 const destinationMaturity = ref<string>('')
+// Phase 5d (C.8): intent_id required at creation per D-C3.
+const intents = ref<IntentRow[]>([])
+const intentId = ref<string>('')
+const intentsError = ref('')
+
+// Inline create-new-intent modal state
+const showCreateIntent = ref(false)
+const newIntentSlug = ref('')
+const newIntentPurpose = ref('')
+const newIntentBeneficiary = ref('')
+const newIntentScripture = ref('')
+const creatingIntent = ref(false)
+const createIntentError = ref('')
+
+async function loadIntents() {
+  try {
+    const r = await api.intentsList()
+    intents.value = r.items
+    if (intents.value.length > 0 && !intentId.value) {
+      // Default to scripture-study (the project-level intent), if present
+      const defaultIntent = intents.value.find(i => i.slug === 'scripture-study')
+      const fallback = intents.value[0]
+      if (defaultIntent) {
+        intentId.value = defaultIntent.id
+      } else if (fallback) {
+        intentId.value = fallback.id
+      }
+    }
+  } catch (e) {
+    intentsError.value = String(e)
+  }
+}
+
+async function createIntent() {
+  if (!newIntentSlug.value || !newIntentPurpose.value) {
+    createIntentError.value = 'slug + purpose required'
+    return
+  }
+  creatingIntent.value = true
+  createIntentError.value = ''
+  try {
+    const r = await api.intentCreate({
+      slug: newIntentSlug.value,
+      purpose: newIntentPurpose.value,
+      beneficiary: newIntentBeneficiary.value || undefined,
+      scripture_anchor: newIntentScripture.value || undefined,
+    })
+    await loadIntents()
+    intentId.value = r.id
+    showCreateIntent.value = false
+    newIntentSlug.value = ''
+    newIntentPurpose.value = ''
+    newIntentBeneficiary.value = ''
+    newIntentScripture.value = ''
+  } catch (e) {
+    createIntentError.value = String(e)
+  } finally {
+    creatingIntent.value = false
+  }
+}
 
 // Phase 2 of NewWork: model picker. Pipeline-level model overrides
 // land later; for now this is informational — substrate routes to
@@ -30,6 +90,7 @@ onMounted(async () => {
   } catch (e) {
     providersError.value = String(e)
   }
+  await loadIntents()
 })
 
 const submitting = ref(false)
@@ -54,6 +115,7 @@ async function submit() {
       token_budget: tokenBudget.value || undefined,
       dispatch: dispatch.value,
       destination_maturity: destinationMaturity.value || undefined,
+      intent_id: intentId.value || undefined,
     })
     result.value = { id: r.id, dispatched: r.dispatched }
   } catch (e) {
@@ -78,6 +140,34 @@ function goToWorkItem() {
     </p>
 
     <form class="space-y-4" @submit.prevent="submit">
+      <div>
+        <label class="block text-xs uppercase tracking-wide text-zinc-500 mb-1">
+          Intent <span class="text-red-400">*</span>
+        </label>
+        <div class="flex gap-2">
+          <select
+            v-model="intentId"
+            required
+            class="flex-1 px-3 py-2 rounded border border-zinc-700 bg-zinc-900 text-sm focus:border-zinc-500 focus:outline-none"
+          >
+            <option value="">— pick one —</option>
+            <option v-for="i in intents" :key="i.id" :value="i.id">
+              {{ i.slug }} — {{ i.purpose.slice(0, 80) }}{{ i.purpose.length > 80 ? '…' : '' }}
+            </option>
+          </select>
+          <button
+            type="button"
+            class="px-3 py-2 text-xs rounded border border-zinc-700 hover:bg-zinc-800 text-zinc-300"
+            @click="showCreateIntent = true"
+          >+ new</button>
+        </div>
+        <p v-if="intentsError" class="text-xs text-red-400 mt-1">{{ intentsError }}</p>
+        <p class="text-xs text-zinc-500 mt-1">
+          Required (D-C3 — friction is the discipline). The substrate injects the intent's
+          purpose + values into every dispatched chat for this work_item.
+        </p>
+      </div>
+
       <div>
         <label class="block text-xs uppercase tracking-wide text-zinc-500 mb-1">
           Pipeline
@@ -192,7 +282,7 @@ function goToWorkItem() {
       <div class="flex items-center gap-3">
         <button
           type="submit"
-          :disabled="submitting || !bindingQuestion.trim()"
+          :disabled="submitting || !bindingQuestion.trim() || !intentId"
           class="px-4 py-2 rounded bg-emerald-700 hover:bg-emerald-600 text-white text-sm font-medium disabled:opacity-50 disabled:cursor-not-allowed"
         >
           {{ submitting ? 'creating…' : (dispatch ? 'create + dispatch' : 'create') }}
@@ -200,6 +290,73 @@ function goToWorkItem() {
         <span v-if="error" class="text-sm text-red-400">{{ error }}</span>
       </div>
     </form>
+
+    <!-- Inline create-new-intent modal (Phase 5d C.8) -->
+    <div
+      v-if="showCreateIntent"
+      class="fixed inset-0 z-50 flex items-center justify-center bg-black/60"
+      @click.self="showCreateIntent = false"
+    >
+      <div class="bg-zinc-900 border border-zinc-700 rounded-lg p-5 max-w-lg w-full space-y-3">
+        <h3 class="text-lg font-semibold">Create new intent</h3>
+        <p class="text-xs text-zinc-500">
+          Substrate-native intents created here are NOT in YAML. Use this for one-off work
+          that doesn't fit any repo-tracked intent.
+        </p>
+        <div>
+          <label class="block text-xs uppercase tracking-wide text-zinc-500 mb-1">Slug *</label>
+          <input
+            v-model="newIntentSlug"
+            type="text"
+            placeholder="e.g. spike-lightrag-eval"
+            class="w-full px-3 py-2 rounded border border-zinc-700 bg-zinc-950 text-sm font-mono focus:border-zinc-500 focus:outline-none"
+          />
+        </div>
+        <div>
+          <label class="block text-xs uppercase tracking-wide text-zinc-500 mb-1">Purpose *</label>
+          <textarea
+            v-model="newIntentPurpose"
+            rows="3"
+            placeholder="The why. One paragraph."
+            class="w-full px-3 py-2 rounded border border-zinc-700 bg-zinc-950 text-sm focus:border-zinc-500 focus:outline-none resize-y"
+          />
+        </div>
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-xs uppercase tracking-wide text-zinc-500 mb-1">Beneficiary</label>
+            <input
+              v-model="newIntentBeneficiary"
+              type="text"
+              placeholder="who benefits"
+              class="w-full px-3 py-2 rounded border border-zinc-700 bg-zinc-950 text-sm focus:border-zinc-500 focus:outline-none"
+            />
+          </div>
+          <div>
+            <label class="block text-xs uppercase tracking-wide text-zinc-500 mb-1">Scripture anchor</label>
+            <input
+              v-model="newIntentScripture"
+              type="text"
+              placeholder="e.g. D&C 88:118"
+              class="w-full px-3 py-2 rounded border border-zinc-700 bg-zinc-950 text-sm focus:border-zinc-500 focus:outline-none"
+            />
+          </div>
+        </div>
+        <div class="flex items-center gap-3 pt-2">
+          <button
+            type="button"
+            class="px-4 py-2 rounded bg-emerald-700 hover:bg-emerald-600 text-white text-sm font-medium disabled:opacity-50"
+            :disabled="creatingIntent || !newIntentSlug || !newIntentPurpose"
+            @click="createIntent"
+          >{{ creatingIntent ? 'creating…' : 'Create' }}</button>
+          <button
+            type="button"
+            class="px-3 py-2 text-xs rounded border border-zinc-700 hover:bg-zinc-800 text-zinc-300"
+            @click="showCreateIntent = false"
+          >Cancel</button>
+          <span v-if="createIntentError" class="text-xs text-red-400">{{ createIntentError }}</span>
+        </div>
+      </div>
+    </div>
 
     <div
       v-if="result"

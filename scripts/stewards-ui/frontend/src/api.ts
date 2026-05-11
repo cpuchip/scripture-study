@@ -140,6 +140,29 @@ export const api = {
     getJSON<StewardActionsResp>(`/api/work-items/actions?id=${encodeURIComponent(id)}`),
   workItemGateDecisions: (id: string) =>
     getJSON<GateDecisionsResp>(`/api/work-items/gate-decisions?id=${encodeURIComponent(id)}`),
+  intentsList: () => getJSON<IntentsListResp>('/api/intents/list'),
+  intentGet: (idOrSlug: string) => {
+    const q = idOrSlug.length === 36 && idOrSlug.includes('-')
+      ? `id=${encodeURIComponent(idOrSlug)}`
+      : `slug=${encodeURIComponent(idOrSlug)}`
+    return getJSON<IntentRow>(`/api/intents/get?${q}`)
+  },
+  intentCreate: async (req: IntentCreateReq): Promise<IntentCreateResp> => {
+    const r = await fetch('/api/intents/create', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(req),
+    })
+    if (!r.ok) {
+      let msg = `HTTP ${r.status}`
+      try { const b = await r.json(); if (b.error) msg = b.error } catch {}
+      throw new Error(msg)
+    }
+    return r.json()
+  },
+  covenantActive: (scope?: string) =>
+    getJSON<CovenantRow>(`/api/covenants/active${scope ? '?scope=' + encodeURIComponent(scope) : ''}`),
+  covenantsList: () => getJSON<CovenantsListResp>('/api/covenants/list'),
   sessionGet: (sid: string) =>
     getJSON<SessionDetail>(`/api/sessions/get?id=${encodeURIComponent(sid)}`),
   watchmanPasses: (limit?: number) => {
@@ -178,6 +201,75 @@ export type WorkItemCreateReq = {
   token_budget?: number
   dispatch?: boolean
   destination_maturity?: string
+  intent_id?: string
+}
+
+// Phase 5d (C.7+C.8) — intent + covenant types
+
+export type IntentValue = {
+  key: string
+  description: string
+  source?: string
+  kind?: string
+  severity?: string
+}
+
+export type IntentRow = {
+  id: string
+  slug: string
+  purpose: string
+  beneficiary?: string
+  values_hierarchy: IntentValue[]
+  non_goals?: string[]
+  scripture_anchor?: string
+  source_file?: string
+  work_item_count: number
+  created_at?: string
+  updated_at?: string
+}
+
+export type IntentsListResp = {
+  items: IntentRow[]
+  total: number
+}
+
+export type IntentCreateReq = {
+  slug: string
+  purpose: string
+  beneficiary?: string
+  non_goals?: string[]
+  scripture_anchor?: string
+}
+
+export type IntentCreateResp = {
+  id: string
+  slug: string
+}
+
+export type CovenantCommit = {
+  key: string
+  description: string
+  why?: string
+}
+
+export type CovenantRow = {
+  id: string
+  scope: string
+  human_commits_to: CovenantCommit[]
+  agent_commits_to: CovenantCommit[]
+  when_broken?: string
+  recovery?: string
+  council_moment?: string
+  teaching_extension?: unknown
+  activated_at?: string
+  deactivated_at?: string
+  ratified_by: string
+  source_file?: string
+}
+
+export type CovenantsListResp = {
+  items: CovenantRow[]
+  total: number
 }
 
 export type WorkItemCreateResp = {
