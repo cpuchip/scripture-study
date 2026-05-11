@@ -1,6 +1,6 @@
 ---
 title: pg-ai-stewards open items — consolidated review
-date: 2026-05-11
+date: 2026-05-11 (revised, +Sec X-XV from older proposals + phases.md)
 status: living document — update after each work session
 purpose: >
   Single inventory of every unresolved carry-forward, open question, and
@@ -277,16 +277,182 @@ None of these should ship before observing real substrate behavior. Revisit afte
 
 ---
 
-## IX. Glossary of source documents
+## X. Items from older proposals + phases.md (added 2026-05-11 revision)
 
-Sub-specs (phase build plans):
+First pass of this document focused on Phase C–F sub-specs + recent journals. Michael flagged that I missed the older `.spec/proposals/pg-ai-stewards-*` proposals and `projects/pg-ai-stewards/phases.md` — this section captures what those add.
+
+### X.1 Multi-provider expansion (Phase 3g)
+- **Source:** `phases.md` line 1201 ("Phase 3g — Multi-provider expansion: Anthropic, Gemini, Veo, TTS")
+- **Status:** not started
+- **Effort:** medium per provider (1 session each)
+- **Risk:** today's substrate routes everything through `opencode_go` (with `lm_studio` as fallback). Adding native Anthropic / Gemini / Veo / TTS providers would mean: provider registry rows, response-shape normalization (each provider's `usage` shape differs), agent variant rules (model_match patterns), and possibly tool-shape adapters.
+- **Why deferred:** OpenCode Go's Chinese-model gateway (Kimi K2.6, GLM-5.1, MiniMax M2.7, Qwen3.6 Plus) covers the cost-discipline scenario. Anthropic via OpenCode Zen handles the "boost to opus" case via the human-mediated escalation queue. Native integrations are a v2 question.
+- **Recommendation:** **revisit when there's a concrete need** (e.g. Gemini gives uniquely useful output for some pipeline; TTS for the YouTube workflow). Don't build speculatively.
+
+### X.2 Per-model prompt tuning generalization (Phase 3h family)
+- **Source:** `proposals/pg-ai-stewards-per-model-prompt-tuning.md` (entire doc — status: deferred)
+- **Status:** prototype shipped 2026-05-08 (`.stewards/kimi-k2.6/study.agent.md` + `.stewards/qwen-3.6/study.agent.md`); full effort deferred until 3e+3f land (both have shipped)
+- **Effort:** large (4 phases × 1-2 sessions each = ~6-8 sessions total)
+- **Risk:** prototype validates on only ONE binding question (FtC/WtL). Cross-topic validation hasn't run. Without it we can't claim the tuned variants improve study quality across the corpus — only that they did on that specific question.
+- **Sub-phases per proposal:**
+  - **3h.1** Cross-topic validation suite — re-run base + tuned variants of kimi + qwen study agents on three structurally distinct binding questions (focused exegesis / character study / modern-prophet talk analysis). Confirm tuned variants improve, regress, or are neutral on each.
+  - **3h.2** Extend variant authoring to other agents (`lesson`, `talk`, `journal`, `research-gospel`). Each variant: baseline run + signature identification + tuned authoring + validation.
+  - **3h.3** Onboard additional models (Sonnet, Gemini, GLM, etc.). Each new model runs the cross-topic suite as both base and tuned.
+  - **3h.4** Migrate to `study-bench` CLI (mirroring `classify-bench` shape) so model evaluation is repeatable + produces structured comparison artifacts.
+- **Project memory references:** `project_kimi_voice_signatures.md`, `project_qwen_voice_signatures.md` — the validated signature catalogs from the prototype.
+- **Recommendation:** **wait until Batch H produces real study runs** through the new substrate. That will give 3h.1 cross-topic validation actual cross-topic data (instead of being a synthetic exercise).
+
+### X.3 Watchman soak — the 7-day continuous run never happened
+- **Source:** `phases.md` lines 784 + 1087-1090 ("The soak itself (the third deliverable per the original 2.7b.4 plan) is runtime observation, not code; starts when schedule_enabled=true is flipped on for a sustained period")
+- **Status:** soak has been **running intermittently** since 2026-05-06 (paused for build sessions, re-enabled at session ends). The intended **7-day continuous observation period** never happened — every Phase A–F build session paused it.
+- **Effort:** zero coding; just leave `schedule_enabled=true` for 7 consecutive days
+- **Risk:** the soak was meant to surface watchman runtime behaviors (pressure schedule firing pattern, dirty queue convergence rate, token-budget actual spend vs. configured cap) on real corpus traffic. Without a sustained observation period we have no empirical answer to "is the watchman cadence right?"
+- **What we learned anyway:** the existing intermittent soak shipped watchman passes at the expected pace. No catastrophic behavior. Token budget worked. But we don't have the longitudinal data the soak was designed to produce.
+- **Recommendation:** **start a real 7-day soak after Batch G ships** (the file-write mechanism is the last missing piece for substrate "completeness"). Schedule a week with no substrate build sessions, monitor the dashboards, journal observations.
+
+### X.4 AGE upstream contributions (Phase 6)
+- **Source:** `phases.md` lines 1418-1474, full catalog in `projects/pg-ai-stewards/docs/AGE-QUIRKS.md`
+- **Status:** 8 AGE quirks catalogued during Phase 2.6 work; no PRs filed
+- **Effort:** large (per PR: working test environment + familiar codebase + reviewer cycles)
+- **Risk:** AGE is Apache-governed; PR cycles are slow. Don't block our own work waiting on upstream.
+- **PR-worthy bug candidates (3):**
+  - #2 Apostrophe-in-interpolated-Cypher error message + auto-escape
+  - #6 `cypher()` 3rd-arg should accept any `ag_catalog.agtype` expression
+  - #7 `#>>` (and likely `->>`, `->`) should handle agtype scalars as pass-through
+- **Document-only (3):** quirks #1, #3, #5 (spec-divergences)
+- **By-design (1):** quirk #4 (labels as schema)
+- **Our problem (1):** quirk #8
+- **Recommendation:** **defer until the substrate hits steady state.** This is "give back when delivery isn't pulling cycles." When that happens, start with #2 (cheapest PR) before #6 / #7 (deeper changes to agtype type system).
+
+### X.5 Phase 4 — GraphRAG over the canon (optional)
+- **Source:** `phases.md` lines 1393-1416
+- **Status:** explicitly optional ("only if Phases 1-3 surface the need")
+- **Effort:** large (Microsoft GraphRAG indexing run + AGE schema collaboration with gospel-engine-v2 + new MCP tool)
+- **Risk:** none — explicitly speculative. We won't know if we need it until we've used Phases 1-3 (now A-F) for a few months.
+- **Recommendation:** **don't build it.** Revisit only if a real "themes across the whole corpus" question fails with current substrate + gospel-engine-v2 tools.
+
+### X.6 Phase 7+ "Maybe-someday"
+- **Source:** `phases.md` lines 1475-1518
+- Items:
+  - **`postgres_fdw` from stewards into gospel** — SQL-level joins instead of HTTP. Trigger: if a substrate query needs to join gospel-library data with stewards data repeatedly, FDW would be faster. Not pressing.
+  - **Multi-tenant RLS** — if ibeco.me ever hosts other people. Has detailed sub-questions catalogued in phases.md lines 1481-1518 (workstream-as-sharing-unit, owner_user_id + visibility columns, AGE Cypher RLS caveat).
+- **Recommendation:** **don't build either.** Single-user substrate has no real shape for these.
+
+### X.7 Phase 2.6 typed edges + Workstream + Todo schema
+- **Source:** `proposals/pg-ai-stewards-phase-2-5-generic-substrate.md` lines 327-460
+- **Status:** spec'd 2026-05-04; 2.6a (workstreams) + 2.6b (todos) + 2.6c (phases-context) all shipped (referenced in `extension/2-6a-workstreams.sql` etc.)
+- **Open from the spec:** `stewards.todo_rollup_audit()` was specified; verify it landed and runs cleanly. If not built, audit is a real gap for "parent done with open children" correctness checks.
+- **Action:** verify in a smoke session whether `stewards.todo_rollup_audit()` exists + returns sensible data. If missing, small fix.
+
+### X.8 Phase 1.7 — Brain CLI driver + hybrid FTS+vector search (deferred)
+- **Source:** `phases.md` lines 119-131
+- **Status:** deferred 2026-05-03 ("paired work; together they form Phase 1.7 if/when we revisit")
+- **Effort:** medium-large
+- **Risk:** today's brain CLI uses the SQLite driver as read-only fallback; the Postgres backend exists but isn't wired through brain's CLI surface. Hybrid FTS+vector search across brain entries was deferred until the embedding column had real traffic.
+- **Recommendation:** **revisit only if SQLite-as-brain-backend starts hurting.** It hasn't yet.
+
+### X.9 3d.2 Docker sidecar wrapper + 3d.3 safe_outputs proxy
+- **Source:** `proposals/pg-ai-stewards-3d-sandboxed-git.md` lines 327-338
+- **Status:** 3d v1 (Option A — native Go MCP wrapper) shipped 2026-05-09. 3d.2 (Docker sidecar) + 3d.3 (safe_outputs proxy) are layered improvements deferred.
+- **Effort:** medium each
+- **Trigger criteria** (from sub-spec):
+  - **3d.2 Docker sidecar:** ship if/when 3d v1 surfaces an escape risk worth more isolation, OR if we want multi-pipeline parallel git work (one workdir per pipeline → containers prevent cross-contamination)
+  - **3d.3 safe_outputs proxy:** ship if/when 3d.1 + 3d.2 are stable enough that the buffer-and-vet flow (GitHub Agentic Workflows pattern) has something to wrap
+- **Recommendation:** **wait for the trigger.** v1 has been adequate. The next prompt to revisit is when a study agent actually wants to write to a repo at scale.
+
+### X.10 GITHUB_TOKEN setup (PAT) for 3d v1
+- **Source:** `phases.md` line 1187 ("PAT setup deferred per Michael; live test triggers when GITHUB_TOKEN lands in .env")
+- **Status:** deferred per Michael; no live git-mcp test has run because the token isn't in .env
+- **Effort:** small (~5 min — generate PAT, add to .env, restart bridge)
+- **Risk:** 3d v1 is theoretically functional but unverified end-to-end. First real attempt to use git-mcp will surface any wiring bugs.
+- **Recommendation:** when Michael wants the substrate to start opening PRs.
+
+### X.11 3f UI extensions (write actions + cloud)
+- **Source:** `proposals/pg-ai-stewards-3f-local-ui.md` lines 248-260, also surfaced in `2026-05-09-stewards-ui-phases-2-7.md` carry_forward
+- **3f.3 — Write actions beyond pipeline:** edit agents, edit tool_defs, broadcast a message into a session. Triggers when Michael wants to manage substrate state visually instead of via psql.
+- **3f.4 — Multi-user / cloud:** when/if shared substrate or `a.ibeco.me`-style hosting is wanted. Original cloud spec preserved at top of 3f proposal.
+- **Recommendation:** **3f.3 is a real "use is asking for it" question** — defer until you find yourself running `psql -c "UPDATE stewards.agents …"` more than 3 times in a session. 3f.4 requires a multi-user shape we don't have.
+
+### X.12 3c.4 — HTTP tools for gospel-engine-v2 (Path A)
+- **Source:** `proposals/pg-ai-stewards-3c-2-5-study-tools.md` line 325 + carry-forward §339
+- **Status:** named in 3c-2-5 carry-forward; "deferred to 3c.4 or later. Cleanest after 3c.3 demonstrates the pipeline pattern works on B." Phase 3e absorbed this work via MCP-proxy (substrate agents now reach gospel-engine via the mcp_proxy tool dispatcher). 
+- **Action:** **probably resolved by 3e.** Verify by checking whether a substrate agent's gospel_search call goes through bridge → mcp_proxy or through some hypothetical 3c.4 HTTP path. Spot-check next session.
+
+### X.13 Inline open questions in the foundational proposal
+- **Source:** `proposals/pg-ai-stewards-11-cycle-review.md` lines 225-255 (5 open questions Michael answered as part of full-agentic-substrate.md §VI ratification on 2026-05-10)
+- **Status:** **resolved.** The 5 open questions in the 11-cycle review (which phase first / steward as bgworker module / gate eval model / 0-dirty-docs goal / per-pipeline covenant) all map to ratifications captured in full-agentic-substrate.md §VI or the 2026-05-11 amendment block. Nothing new to add.
+
+### X.14 Things explicitly NOT in scope (preserved for the menu)
+These are listed as deliberate exclusions in older proposals; included here so they're visible if the substrate's needs change:
+
+- **3c.2.5:** no `study_show` exposure as a tool (use `study_get` + `study_citations` + `study_similar` trio instead); no write-side tools (substrate's pipeline terminal stage inserts via `import_study()` directly); no embedding-on-the-fly for arbitrary user query vector search.
+- **3h (per-model tuning):** no variants for watchman-consolidator agent (already tuned); no variants for embedding models.
+- **3d:** never expose `git_tag` or `git_push --tags` (branch protection bypass vector). Workdir paths strictly anchored.
+
+---
+
+## XI. Revised Batch recommendations
+
+The first pass recommended 4 batches (G/H/I/J). Adding items from older proposals doesn't change the top of the queue — Batch G is still "make the substrate land in real files." But it adds two new candidate batches further down:
+
+### Batch K — "Soak validation week"
+After Batch G ships, schedule **one calendar week with no substrate build sessions**. Leave `schedule_enabled=true`. Observe the dashboards. Journal what you see. This is X.3 — the 7-day soak that was supposed to happen 2026-05-06 but got displaced by every Phase build session.
+
+What to watch:
+- Watchman pass cadence (pressure vs. cron mix)
+- Dirty queue convergence (does it actually approach 0, or stay stuck?)
+- Token-budget actual spend vs. configured cap
+- Any unexpected errors in `stewards.work_queue` or `steward_actions`
+
+### Batch L — "Per-model voice tuning generalization" (3h family)
+Wait until Batch H has produced 2-3 real study runs on the new substrate (with intent + covenant + gates + sabbath). Then start 3h.1 — cross-topic validation of the kimi + qwen tuned variants on those binding questions. Effort: large (6-8 sessions across 3h.1 through 3h.4). Decisive question: do the tuned variants generalize, or were they FtC/WtL-specific?
+
+### Things to actively NOT do
+- Phase 3g (multi-provider) — speculative; only build when a specific provider is uniquely useful
+- Phase 4 (GraphRAG) — only if real "themes across the corpus" need surfaces
+- Phase 6 (AGE upstream) — only after substrate is in steady state
+- Phase 7+ items — single-user substrate has no shape for these
+
+---
+
+## XII. What I missed in the first pass
+
+For honesty: my first pass of this document covered Phase B–F sub-specs + recent journals but missed the foundational proposal + `phases.md`. The items I missed (now captured in Section X):
+- Phase 3g (multi-provider expansion) — was in phases.md
+- Phase 3h family (per-model prompt tuning) — has its own deferred-status proposal
+- The 7-day Watchman soak — referenced repeatedly in phases.md as "pending start"
+- Phase 6 (AGE upstream) — sketched in phases.md
+- Phase 4 (GraphRAG) — sketched in phases.md
+- Phase 7+ stretch items (postgres_fdw, multi-tenant RLS) — listed in phases.md
+- 3d.2 + 3d.3 (git-mcp follow-ons) — deferred in 3d proposal
+- 3c.4 (gospel-engine HTTP path) — possibly resolved by 3e, verify
+- GITHUB_TOKEN setup deferred per Michael
+- 3f.3 + 3f.4 (UI write actions + cloud) — flagged in 3f proposal
+- todo_rollup_audit() — spec'd in 2.6b, need to verify it shipped
+
+Process note: the journal entries we shipped per-phase do a good job of capturing per-session carry-forward, but the *standing backlog* lives in `phases.md` and the proposals — those need a separate sweep. Worth doing every major-phase milestone (which this is) rather than letting them drift further from awareness.
+
+---
+
+## XIII. Glossary of source documents
+
+Sub-specs (phase build plans, in `projects/pg-ai-stewards/.spec/proposals/`):
 - `cost-tracking.md` — Phase A cost layer
 - `escalation-chain.md` — Phase A model escalation
 - `steward-bgworker-integration.md` — Phase A bgworker tick
 - `phase-c-design.md` through `phase-f-design.md` — phase-by-phase build specs
-
-Foundational:
 - `full-agentic-substrate.md` — the original 6-phase proposal + §VI ratification + 2026-05-11 amendment block
+
+Older proposals (in `.spec/proposals/pg-ai-stewards-*`):
+- `pg-ai-stewards-phase-2-5-generic-substrate.md` — foundational: studies / AGE citations / workstreams / todos / typed edges
+- `pg-ai-stewards-11-cycle-review.md` — original 11-cycle gap analysis that morphed into full-agentic-substrate
+- `pg-ai-stewards-3c-2-5-study-tools.md` — 5 MCP tools for study agents (study_search_text, study_get, etc.)
+- `pg-ai-stewards-3d-sandboxed-git.md` — git-mcp wrapper with allow-list discipline
+- `pg-ai-stewards-3f-local-ui.md` — local Vue UI proposal (stewards-ui)
+- `pg-ai-stewards-per-model-prompt-tuning.md` — Phase 3h family, status=deferred
+
+Phase tracking:
+- `projects/pg-ai-stewards/phases.md` — the canonical phase tracking doc (1539 lines; Phases 0-7+)
 
 Recent journal entries (substrate work):
 - `2026-05-09-full-agentic-substrate-proposal.md` — initial research session
