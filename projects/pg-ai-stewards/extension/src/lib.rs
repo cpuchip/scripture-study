@@ -363,6 +363,12 @@ extension_sql_file!(
     requires = ["create_phase_5g_council"],
 );
 
+extension_sql_file!(
+    "../5g3-synthesize-and-resolve.sql",
+    name = "create_phase_5g3_synthesize_and_resolve",
+    requires = ["create_phase_5g2_convene_council"],
+);
+
 // ---------------------------------------------------------------------------
 // Diagnostic SQL functions
 // ---------------------------------------------------------------------------
