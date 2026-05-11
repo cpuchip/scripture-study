@@ -20,6 +20,7 @@ import (
 	"flag"
 	"fmt"
 	"os"
+	"path/filepath"
 	"strconv"
 	"strings"
 	"time"
@@ -27,6 +28,7 @@ import (
 	"github.com/cpuchip/scripture-study/projects/pg-ai-stewards/cmd/stewards-cli/internal/db"
 	"github.com/cpuchip/scripture-study/projects/pg-ai-stewards/cmd/stewards-cli/internal/importer"
 	"github.com/cpuchip/scripture-study/projects/pg-ai-stewards/cmd/stewards-cli/internal/show"
+	"github.com/jackc/pgx/v5/pgxpool"
 )
 
 func main() {
@@ -61,6 +63,8 @@ func main() {
 		runPipeline(ctx, os.Args[2:])
 	case "work-item", "wi":
 		runWorkItem(ctx, os.Args[2:])
+	case "materialize-writes":
+		runMaterializeWrites(ctx, os.Args[2:])
 	case "-h", "--help", "help":
 		usage()
 	default:
@@ -941,4 +945,190 @@ func runWorkItem(ctx context.Context, args []string) {
 		fmt.Fprintf(os.Stderr, "work-item: unknown subcommand %q\n", args[0])
 		os.Exit(1)
 	}
+}
+
+// ---------- materialize-writes (Batch G.4.2) ----------
+//
+// Consumer for stewards.pending_file_writes. Drains unmaterialized rows
+// and performs the file write (append or create). Idempotent — already-
+// materialized rows are skipped.
+//
+// Usage:
+//
+//	stewards-cli materialize-writes [--dry-run] [--limit N] [--repo-root PATH]
+//
+// target_path on each pending row is resolved against --repo-root (default:
+// current working directory). 'create' mode refuses to overwrite an existing
+// file; 'append' mode creates if missing.
+
+func runMaterializeWrites(ctx context.Context, args []string) {
+	fs := flag.NewFlagSet("materialize-writes", flag.ExitOnError)
+	dryRun := fs.Bool("dry-run", false, "print what would be written without touching the filesystem")
+	limit := fs.Int("limit", 100, "max rows to process per invocation")
+	repoRoot := fs.String("repo-root", ".", "directory target_path values are resolved against")
+	if err := fs.Parse(args); err != nil {
+		os.Exit(1)
+	}
+
+	rootAbs, err := filepath.Abs(*repoRoot)
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "materialize-writes: --repo-root: %v\n", err)
+		os.Exit(1)
+	}
+
+	pool, err := db.Connect(ctx)
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "db: %v\n", err)
+		os.Exit(1)
+	}
+	defer pool.Close()
+
+	rows, err := pool.Query(ctx, `
+		SELECT id, requested_at, requested_by, target_path, write_mode,
+		       content, coalesce(source_kind,''), coalesce(source_id,'')
+		  FROM stewards.pending_file_writes
+		 WHERE materialized_at IS NULL
+		 ORDER BY requested_at ASC
+		 LIMIT $1`, *limit)
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "materialize-writes query: %v\n", err)
+		os.Exit(1)
+	}
+	type pending struct {
+		id          int64
+		requestedAt time.Time
+		requestedBy string
+		targetPath  string
+		writeMode   string
+		content     string
+		sourceKind  string
+		sourceID    string
+	}
+	var batch []pending
+	for rows.Next() {
+		var p pending
+		if err := rows.Scan(&p.id, &p.requestedAt, &p.requestedBy, &p.targetPath,
+			&p.writeMode, &p.content, &p.sourceKind, &p.sourceID); err != nil {
+			fmt.Fprintf(os.Stderr, "scan: %v\n", err)
+			continue
+		}
+		batch = append(batch, p)
+	}
+	rows.Close()
+
+	if len(batch) == 0 {
+		fmt.Println("materialize-writes: nothing pending")
+		return
+	}
+
+	var ok, failed, skipped int
+	for _, p := range batch {
+		// Resolve target relative to repo-root. Refuse paths that
+		// escape the root (no leading "/", no "..").
+		clean := filepath.Clean(p.targetPath)
+		if filepath.IsAbs(clean) || strings.HasPrefix(clean, "..") {
+			recordError(ctx, pool, p.id, fmt.Sprintf("path escape: %s", p.targetPath))
+			fmt.Fprintf(os.Stderr, "skip #%d: path escape: %s\n", p.id, p.targetPath)
+			failed++
+			continue
+		}
+		full := filepath.Join(rootAbs, clean)
+
+		// Tag with dry-run
+		if *dryRun {
+			info := fmt.Sprintf("DRY-RUN #%d (%s, %s) → %s [%d bytes]",
+				p.id, p.requestedBy, p.writeMode, full, len(p.content))
+			fmt.Println(info)
+			continue
+		}
+
+		// Ensure parent directory exists
+		if err := os.MkdirAll(filepath.Dir(full), 0o755); err != nil {
+			recordError(ctx, pool, p.id, "mkdir: "+err.Error())
+			fmt.Fprintf(os.Stderr, "skip #%d: mkdir %s: %v\n", p.id, filepath.Dir(full), err)
+			failed++
+			continue
+		}
+
+		switch p.writeMode {
+		case "create":
+			// Refuse to overwrite. If the file exists, mark skipped.
+			if _, err := os.Stat(full); err == nil {
+				recordError(ctx, pool, p.id, "create: file exists; refusing to overwrite")
+				fmt.Fprintf(os.Stderr, "skip #%d: %s already exists (create mode won't overwrite)\n", p.id, full)
+				skipped++
+				continue
+			}
+			if err := os.WriteFile(full, []byte(p.content), 0o644); err != nil {
+				recordError(ctx, pool, p.id, "write: "+err.Error())
+				fmt.Fprintf(os.Stderr, "fail #%d: write %s: %v\n", p.id, full, err)
+				failed++
+				continue
+			}
+		case "append":
+			f, err := os.OpenFile(full, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0o644)
+			if err != nil {
+				recordError(ctx, pool, p.id, "open: "+err.Error())
+				fmt.Fprintf(os.Stderr, "fail #%d: open %s: %v\n", p.id, full, err)
+				failed++
+				continue
+			}
+			if _, err := f.WriteString(p.content); err != nil {
+				f.Close()
+				recordError(ctx, pool, p.id, "append: "+err.Error())
+				fmt.Fprintf(os.Stderr, "fail #%d: append %s: %v\n", p.id, full, err)
+				failed++
+				continue
+			}
+			f.Close()
+		default:
+			recordError(ctx, pool, p.id, "unknown write_mode: "+p.writeMode)
+			fmt.Fprintf(os.Stderr, "fail #%d: unknown write_mode %q\n", p.id, p.writeMode)
+			failed++
+			continue
+		}
+
+		// Mark materialized
+		_, err := pool.Exec(ctx,
+			`UPDATE stewards.pending_file_writes
+			    SET materialized_at = now(), materialized_by = 'cli'
+			  WHERE id = $1`, p.id)
+		if err != nil {
+			fmt.Fprintf(os.Stderr, "warn #%d: wrote file but UPDATE failed: %v\n", p.id, err)
+			// File is written but DB not updated; next run will re-attempt
+			// the create which will then fail with "file exists." That's
+			// fine — manual intervention then.
+		}
+
+		// If sourceKind='work_item', also update the studies row's
+		// file_path if the work_item promoted to one. The promotion
+		// path inserts into stewards.studies; we set the file_path
+		// here once the file actually exists.
+		if p.sourceKind == "work_item" && strings.HasSuffix(p.targetPath, ".md") {
+			_, _ = pool.Exec(ctx,
+				`UPDATE stewards.studies
+				    SET file_path = $1
+				  WHERE slug = 'substrate--' || (
+				          SELECT slug FROM stewards.work_items WHERE id = $2::uuid
+				        )`, p.targetPath, p.sourceID)
+		}
+
+		fmt.Printf("ok #%d (%s, %s) → %s\n", p.id, p.requestedBy, p.writeMode, full)
+		ok++
+	}
+
+	fmt.Printf("\nmaterialize-writes: ok=%d skipped=%d failed=%d (total=%d)\n",
+		ok, skipped, failed, len(batch))
+	if failed > 0 {
+		os.Exit(1)
+	}
+}
+
+func recordError(ctx context.Context, pool *pgxpool.Pool, id int64, msg string) {
+	// best-effort log into materialized_by; don't fail if this fails
+	_, _ = pool.Exec(ctx,
+		`UPDATE stewards.pending_file_writes
+		    SET materialized_by = 'error:' || $1
+		  WHERE id = $2 AND materialized_at IS NULL`,
+		msg, id)
 }
