@@ -279,6 +279,12 @@ extension_sql_file!(
     requires = ["create_phase_5d_intents_covenants"],
 );
 
+extension_sql_file!(
+    "../5d3-compose-with-intent.sql",
+    name = "create_phase_5d3_compose_with_intent",
+    requires = ["create_phase_5d2_seed_fns"],
+);
+
 // ---------------------------------------------------------------------------
 // Diagnostic SQL functions
 // ---------------------------------------------------------------------------
