@@ -101,6 +101,7 @@ func main() {
 	// queries; the pool is already context-aware and goroutine-safe.
 	registerStudyTools(srv, pool)
 	registerInspectionTools(srv, pool)
+	registerEscalationTools(srv, pool)
 
 	log.Printf("server starting on stdio (mcp protocol)")
 	if err := srv.Run(ctx, &mcp.StdioTransport{}); err != nil {
