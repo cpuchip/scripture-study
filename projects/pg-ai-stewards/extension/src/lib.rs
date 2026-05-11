@@ -321,6 +321,12 @@ extension_sql_file!(
     requires = ["create_phase_5e3_atonement"],
 );
 
+extension_sql_file!(
+    "../5f-trust.sql",
+    name = "create_phase_5f_trust",
+    requires = ["create_phase_5e4_promotion_gate_and_triggers"],
+);
+
 // ---------------------------------------------------------------------------
 // Diagnostic SQL functions
 // ---------------------------------------------------------------------------
