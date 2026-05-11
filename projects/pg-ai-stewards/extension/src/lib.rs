@@ -339,6 +339,12 @@ extension_sql_file!(
     requires = ["create_phase_5f2_evaluate_trust"],
 );
 
+extension_sql_file!(
+    "../5f4-retry-with-lessons.sql",
+    name = "create_phase_5f4_retry_with_lessons",
+    requires = ["create_phase_5f3_gate_trust_check"],
+);
+
 // ---------------------------------------------------------------------------
 // Diagnostic SQL functions
 // ---------------------------------------------------------------------------

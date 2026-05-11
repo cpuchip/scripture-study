@@ -83,7 +83,8 @@ COPY 2-6a-workstreams.sql 2-6b-todos.sql 2-6c-phases-context.sql \
      5e4-promotion-gate-and-triggers.sql \
      5f-trust.sql \
      5f2-evaluate-trust.sql \
-     5f3-gate-trust-check.sql ./
+     5f3-gate-trust-check.sql \
+     5f4-retry-with-lessons.sql ./
 
 # `cargo pgrx package` produces ./target/release/pg_ai_stewards-pg18/
 # with the directory tree rooted at /, containing the .so, .control,
