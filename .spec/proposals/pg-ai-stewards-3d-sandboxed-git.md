@@ -11,6 +11,14 @@ references:
 
 # Phase 3d — Sandboxed git/gh for substrate-driven repo operations
 
+> **Carry-forward (2026-05-11 consolidation):** 3d v1 shipped 2026-05-09.
+> Deferred layers and follow-ups tracked in
+> `projects/pg-ai-stewards/.spec/proposals/substrate-deferred-items.md`:
+> - 3d.2 Docker sidecar wrapper → § A.5
+> - 3d.3 safe_outputs proxy → § A.5
+> - GITHUB_TOKEN PAT setup (live e2e) → § A.6
+> - gh_issue_create grant → still NOT granted to study agent
+
 > Design doc; **no implementation yet**. Michael flagged the line at
 > phases.md:1272 ("sandboxed git") on 2026-05-09 as next direction.
 > The producer side of the substrate (3a–3e) is real, agents are

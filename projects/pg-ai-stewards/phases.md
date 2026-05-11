@@ -7,6 +7,29 @@ either lands real value or kills the project early.
 The proposal is at [proposal.md](proposal.md). The probe that backs
 Phase 1's feasibility is at [probe/](probe/).
 
+> **Carry-forward (2026-05-11 consolidation):** Phases 0–3 shipped over
+> 2026-05-02 through 2026-05-09. The full-agentic-substrate work
+> (Phases A–F, 2026-05-10 through 2026-05-11) extended this plan with
+> the 6-phase agentic creation cycle. **Master open-items inventory is at
+> [.spec/open-items.md](.spec/open-items.md).** Specific items previously
+> referenced in this doc are now routed to:
+>
+> - Phase 1.7 (brain CLI driver + hybrid FTS+vector) → [substrate-deferred-items.md § A.4](.spec/proposals/substrate-deferred-items.md)
+> - Phase 2.7b.4 7-day soak observation → open-items.md § X.3 (Batch K)
+> - Phase 3g multi-provider expansion → substrate-deferred-items.md § A.1
+> - Phase 3h per-model prompt tuning (full effort) → substrate-deferred-items.md § C.2
+> - Phase 4 GraphRAG → substrate-deferred-items.md § A.2
+> - Phase 6 AGE upstream contributions → substrate-deferred-items.md § C.1
+> - Phase 7+ postgres_fdw + multi-tenant RLS → substrate-deferred-items.md § A.3
+>
+> The substrate's NEW active build queue (post-Phase F) is:
+> - [substrate-completion-batch-g.md](.spec/proposals/substrate-completion-batch-g.md) — make substrate land in real files (Batch G)
+> - [substrate-pipelines-expansion.md](.spec/proposals/substrate-pipelines-expansion.md) — research/YT/scheduled pipelines
+> - [stewards-ui-evolution.md](.spec/proposals/stewards-ui-evolution.md) — UI authoring + chat + nav + write actions
+>
+> This phases.md remains the historical record of how the substrate got
+> here. The above proposals are how it grows from here.
+
 ## Phase 0 — Done (this session, 2026-05-02)
 
 - Research scratch with verified sources: [scratch.md](scratch.md)

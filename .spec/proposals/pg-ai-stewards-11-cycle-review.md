@@ -11,6 +11,14 @@ related:
 
 # pg-ai-stewards vs. the 11-Cycle Creation Process
 
+> **Carry-forward (2026-05-11 consolidation):** This analysis became the
+> foundation for `projects/pg-ai-stewards/.spec/proposals/full-agentic-substrate.md`
+> (2026-05-09 expansion) which then shipped as Phases A–F (2026-05-10
+> through 2026-05-11). The 5 open questions at lines 225-255 of this doc
+> were ratified during the full-agentic-substrate §VI walk-through.
+> Substrate is feature-complete through Phase F. Status of this proposal:
+> historical reference, no longer load-bearing.
+
 > Michael's framing (2026-05-09): *"Are we putting in intent, covenants,
 > instructions in the start of each session? I think we've developed a
 > simple single turn studies workflow and that's great, but I'd like to

@@ -7,6 +7,13 @@ last_updated: 2026-05-08
 
 # Per-Model Prompt Tuning for Substrate Agents
 
+> **Carry-forward (2026-05-11 consolidation):** Still deferred. Trigger
+> for un-deferring: Batch H ("Use validation" — first real Phase A–F
+> study runs) produces 2-3 cross-topic study runs. Then 3h.1 cross-topic
+> validation has real data instead of being synthetic. Tracked at
+> `projects/pg-ai-stewards/.spec/proposals/substrate-deferred-items.md`
+> § C.2.
+
 ## Binding Problem
 
 Different models have different default voices and tool-use tendencies. The same study agent prompt that produces well-voiced output on Opus 4.7 produces output on kimi-k2.6 with closing refrains, triadic flourishes, Latinate register, and confabulated revision notes. On qwen-3.6 it produces tool-name confusion, broken `(#)` link conventions, heavy mid-argument tables, and verbosity. The substrate's `(family, model_match)` agent variant table makes per-model prompt overrides structurally possible (Phase 3a shipped this for `watchman-consolidator`); the question is when and how to operationalize it across the full agent corpus.

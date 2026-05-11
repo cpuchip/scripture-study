@@ -11,6 +11,13 @@ feeds:
 
 # pg-ai-stewards Phase 2.5 + 2.6 + 2.7 — Generic Substrate, Typed Edges, Watchman
 
+> **Carry-forward (2026-05-11 consolidation):** Open items from this proposal
+> are tracked in `projects/pg-ai-stewards/.spec/open-items.md` and routed to:
+> - 2.6b `todo_rollup_audit()` verify: `substrate-deferred-items.md` § D.1
+> - 2.7b.4 7-day soak observation: `open-items.md` § X.3 (Batch K)
+> Phases 2.5 / 2.6 / 2.7 substrate themselves shipped; this banner is for the
+> remaining loose ends.
+
 > *Scratch context: this proposal exists because Phase 2.4 surfaced
 > that `stewards.studies` was already generic enough in schema to hold
 > any document, and that the implicit graph of Michael's work spans

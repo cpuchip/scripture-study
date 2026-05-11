@@ -1,0 +1,223 @@
+---
+title: Substrate pipelines expansion — beyond study-write
+date: 2026-05-11
+status: design proposal — needs ratification before build
+parent: open-items.md (Michael's 2026-05-11 ask — three new pipeline categories)
+purpose: >
+  The substrate's six-phase agentic creation cycle is built; today only
+  study-write + study-write-qwen + echo-test pipelines exercise it.
+  Three new pipeline categories the substrate is ready for: research
+  (e.g. "AI news at 7am"), YouTube analysis (gospel + secular), and
+  scheduled-pipeline infrastructure. This proposal scopes each.
+---
+
+# Substrate pipelines expansion
+
+## I. Binding problem
+
+The substrate has powerful infrastructure — intent + covenant + gates + sabbath + atonement + trust + councils — but only **one shape of work** uses it today: writing studies from the corpus. Three categories of work are natural fits for the same infrastructure but have no pipeline definitions yet:
+
+1. **Research pipelines.** Cast a wider net than scripture-study — gather + summarize external sources on a topic. Example concrete use: "Summarize today's AI news at 7am UTC so I can see what shipped overnight."
+2. **YouTube analysis pipelines.** Two paths sharing transcript+ingest but diverging on rubric:
+   - **YT gospel** — evaluate a video against the Restoration discernment standard (current `yt-gospel` agent's lane)
+   - **YT secular** — extract patterns from non-doctrinal content (current `yt` agent's lane — AI / engineering / relationships / skills)
+3. **Scheduled pipelines.** Today every work_item is human-triggered or watchman-pressure-triggered. Some pipelines benefit from cron-style scheduling: "every weekday at 7am, run AI-news-summary."
+
+All three are within reach because the substrate primitives are built. What's missing: pipeline definitions, supporting MCP tools where they don't exist yet, and a scheduling table.
+
+## II. Success criteria
+
+1. **A research pipeline exists** that takes a topic + sources spec, gathers content via web search + page fetch, synthesizes a structured summary, and produces a substrate-promoted study (or a different output kind — see V.1).
+2. **YouTube gospel and YouTube secular pipelines exist** that share an ingest-transcript stage but diverge on the analysis rubric. Each produces a substrate-promoted evaluation document.
+3. **Scheduled pipelines work.** A `stewards.scheduled_pipelines` config row says "run pipeline_family=ai-news-summary every weekday at 13:00 UTC with this input template." Bgworker tick dispatches when due.
+4. **The first scheduled run actually fires** end-to-end without manual intervention. Output appears in the substrate by 7am local time the next morning.
+
+## III. Constraints and boundaries
+
+**In scope:**
+- 3–4 new pipeline definitions in `stewards.pipelines` (research, yt-gospel-evaluate, yt-secular-digest, ai-news-summary as the canonical scheduled example)
+- `stewards.scheduled_pipelines` table + bgworker scheduler tick extension
+- Optional: new MCP tools where gaps exist (research probably wants a more capable `fetch_url` or paginated search; YouTube needs the existing yt-mcp tools wired to pipeline agents)
+- Substrate-UI surface: scheduled-pipelines view (list + edit cron), "Last 7 scheduled runs" badge on dashboard
+
+**Out of scope:**
+- Building NEW agents for these pipelines from scratch — reuse existing `research`, `yt-gospel`, `yt` agents from the workspace where possible, then tune via the deferred `phase-3h` per-model-prompt-tuning effort
+- Multi-tenancy on schedules (single-user only for now)
+- Email / push notifications on scheduled completion (it'll just appear in Studies + Sabbath log when finished)
+- Web-app scrape engines beyond fetch-md-mcp (Readability + chromedp js mode) and exa-search
+
+## IV. Prior art
+
+- **fetch-md-mcp** (Phase 3e.4) — Mozilla Readability + html-to-markdown + chromedp js mode. 4 tools: `fetch_url`, `fetch_urls`, `extract_links`, `fetch_url_raw`. Already granted to `research` agent.
+- **exa-search** — remote MCP at mcp.exa.ai. Already used by research agent for web search.
+- **yt-mcp** — Go MCP at `scripts/yt-mcp/`. 4 tools: `yt_download`, `yt_get`, `yt_list`, `yt_search`. Downloads transcripts via yt-dlp.
+- **byu-citations** — for the gospel YT path (scripture citation density checking).
+- **Phase 2.7b.2 scheduler tick** — bgworker already has a 60s scheduler tick that fires watchman passes on cron OR pressure triggers. Same mechanism extends to scheduled pipelines.
+- **work_item_create + work_item_dispatch_stage** — the canonical entry points. Scheduled pipelines just call these on cron.
+
+## V. Proposed approach
+
+### V.1 Research pipeline
+
+**Pipeline family:** `research-summary` (placeholder name; ratify in §VI)
+
+**Stages:**
+1. **gather** — `research` agent uses `web_search_exa` + `fetch_url` to collect 5–15 sources on the topic. Outputs a list of {url, title, retrieved_at, excerpt}.
+2. **synthesize** — same agent (or kimi-k2.6 for synthesis) takes the gather output + intent + binding question, writes a structured summary. Output: markdown with sections (Headlines, Notable, Skeptical-takes, Carry-forward).
+3. **review** — quick voice + verification pass (does each claim cite a source? are there obvious holes?).
+
+**Input shape:**
+```jsonb
+{
+  "binding_question": "What shipped in AI today that I should know about?",
+  "sources_spec": {
+    "queries": ["AI news today", "claude code update", "openai release"],
+    "max_per_query": 10,
+    "since": "24h"
+  },
+  "output_kind": "daily-digest"   -- vs 'deep-research'
+}
+```
+
+**Output kind:**
+- `daily-digest` — short summary, no substrate-study promotion (lives in stewards.studies with kind='daily-digest', browsable in UI but doesn't pollute Studies list with one-off news)
+- `deep-research` — full study promotion, eligible for sabbath + atonement like any study-write run
+
+### V.2 YouTube gospel pipeline
+
+**Pipeline family:** `yt-gospel-evaluate`
+
+**Stages:**
+1. **ingest** — `yt` agent (or a thin agent variant) calls `yt_download(video_url)` to capture transcript. Outputs transcript text + metadata.
+2. **evaluate** — `yt-gospel` agent applies the Restoration discernment rubric. Checks scriptural citation density via byu-citations where claims are made. Output: evaluation document with sections (binding question, evidence, alignment with canon, witness questions, becoming).
+3. **review** — voice + source verification.
+
+**Input shape:**
+```jsonb
+{
+  "binding_question": "Does X's argument about Y align with the Restoration framework?",
+  "video_url": "https://www.youtube.com/watch?v=...",
+  "evaluator_focus": ["doctrinal" | "rhetorical" | "fruit-bearing"]   -- optional
+}
+```
+
+### V.3 YouTube secular pipeline
+
+**Pipeline family:** `yt-secular-digest`
+
+**Stages:**
+1. **ingest** — same as V.2.1
+2. **digest** — `yt` agent extracts what's worth keeping (insights, contradictions to existing notes, what to skeptically question). Output: digest document with sections (1-sentence summary, key claims, contradictions, application).
+3. **review** — voice pass.
+
+**Input shape:**
+```jsonb
+{
+  "binding_question": "What about Nate B Jones's talk is worth holding on to?",
+  "video_url": "...",
+  "context_tags": ["ai", "engineering", "agents"]   -- aids cross-reference
+}
+```
+
+### V.4 Scheduled pipelines
+
+**Schema:**
+
+```sql
+CREATE TABLE stewards.scheduled_pipelines (
+    id              uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+    slug            text UNIQUE NOT NULL,            -- 'ai-news-7am'
+    pipeline_family text NOT NULL REFERENCES stewards.pipelines(family),
+    intent_id       uuid NOT NULL REFERENCES stewards.intents(id),
+    cron_pattern    text NOT NULL,                   -- '0 13 * * 1-5' (UTC; 7am MT weekdays)
+    input_template  jsonb NOT NULL,                  -- merged into work_item.input on dispatch
+    enabled         boolean NOT NULL DEFAULT true,
+    last_dispatched_at timestamptz,
+    next_due_at     timestamptz,                     -- materialized by scheduler tick
+    created_at      timestamptz NOT NULL DEFAULT now(),
+    notes           text
+);
+
+CREATE INDEX scheduled_pipelines_due
+    ON stewards.scheduled_pipelines (next_due_at)
+    WHERE enabled = true;
+```
+
+**Bgworker scheduler tick:**
+- Extends the existing 60s watchman scheduler tick (`extension/2-7b2-watchman-scheduler.sql`).
+- Each tick: scans `scheduled_pipelines WHERE enabled = true AND next_due_at <= now()`.
+- For each due row: `work_item_create(pipeline_family, input_template, slug=auto-from-cron-pattern-+-now)`, then `work_item_dispatch_stage(new_id)`, then UPDATE `last_dispatched_at = now()` and recompute `next_due_at` via a small cron-parser.
+- Cron parsing: a minimal subset is fine for v1 (`MM HH * * D`). Skip ranges, lists, ?, L, etc. Use a Go function in stewards-cli or a small Rust crate (`cron-parser` if licensing fits).
+
+**Seed:**
+```sql
+INSERT INTO stewards.scheduled_pipelines (slug, pipeline_family, intent_id, cron_pattern, input_template, notes) VALUES
+    ('ai-news-7am',
+     'research-summary',
+     (SELECT id FROM stewards.intents WHERE slug='scripture-study'),   -- or a new 'professional-awareness' intent
+     '0 13 * * 1-5',                                                   -- 7am MT weekdays in UTC
+     '{"binding_question":"What shipped in AI today that I should know about?","sources_spec":{"queries":["AI news today","claude release","openai update","anthropic announcement"],"max_per_query":10,"since":"24h"},"output_kind":"daily-digest"}'::jsonb,
+     'Daily AI news digest. Weekdays 7am MT. Output is daily-digest kind (lives in studies, doesn''t bloat the Studies list).');
+```
+
+### V.5 Stewards-UI surfaces
+
+- New `/scheduled` route showing scheduled_pipelines with enable/disable toggles + edit-cron modal + "next due" countdown.
+- Dashboard card: "Last 7 scheduled runs" — quick list with status badges + click-through to the work_item.
+- NewWork.vue: pipeline dropdown grows from {study-write, echo-test} to include {research-summary, yt-gospel-evaluate, yt-secular-digest, study-write, study-write-qwen, echo-test}. Per-pipeline input form schema (research-summary needs source queries; yt-* needs video URL; study-* needs binding question).
+
+### V.6 Pipeline-stage maturity mapping
+
+Per phase-b D-B4 ratification: maturity-to-stage mapping in `stewards.pipeline_stage_maturity`. New pipelines need rows:
+
+```sql
+INSERT INTO stewards.pipeline_stage_maturity (pipeline_family, stage_name, produces_maturity, notes) VALUES
+    ('research-summary',   'gather',    'researched', 'sources collected'),
+    ('research-summary',   'synthesize','planned',    'structure proposed'),
+    ('research-summary',   'review',    'verified',   'voice + verification'),
+    ('yt-gospel-evaluate', 'ingest',    'researched', 'transcript captured'),
+    ('yt-gospel-evaluate', 'evaluate',  'planned',    'rubric applied'),
+    ('yt-gospel-evaluate', 'review',    'verified',   'voice + verification'),
+    ('yt-secular-digest',  'ingest',    'researched', 'transcript captured'),
+    ('yt-secular-digest',  'digest',    'planned',    'patterns extracted'),
+    ('yt-secular-digest',  'review',    'verified',   'voice + verification');
+```
+
+Sabbath enabled per D-D1: all three default ON (they're study/lesson/talk-like work).
+
+## VI. Decision points for Michael
+
+These need ratification before build.
+
+- **D-PE1: Research pipeline output kind.** Two options offered (daily-digest vs deep-research). Default `daily-digest` for scheduled runs (don't bloat Studies); default `deep-research` for human-triggered "really dig into X." Or: always deep-research, just tag scheduled runs differently. **Recommendation: keep both; let the input shape carry it.**
+- **D-PE2: Should research / YT pipelines share intent with scripture-study, or get their own?** scripture-study's values include `faith-as-framework` and `trust-the-discernment` which fit YT-gospel but feel weird for AI news. Recommend: **separate intent for professional-awareness work** (`professional-awareness` slug; values: stay-current / honest-skepticism / breadth-then-depth). YT-gospel can stay under scripture-study.
+- **D-PE3: Scheduled pipeline frequency cap.** Should the scheduler refuse cron patterns that fire more than once per hour to prevent runaway? Recommend: yes, hard floor 1h between runs of the same scheduled_pipelines row.
+- **D-PE4: Catch-up on missed runs.** If the substrate is down at 7am, when it comes back up should it run the missed schedule? Recommend: no — fire once per next_due_at being reached, no backfill. Otherwise a 3-day outage produces a flood.
+- **D-PE5: YT pipeline scope.** v1 ingests transcripts only (no video frames, no audio analysis beyond what yt-dlp's transcript provides). Confirm.
+- **D-PE6: Cron-pattern v1 subset.** `MM HH * * DAY` is enough for "every weekday at 7am" + "every Sunday at noon." Ranges + lists + step values can wait. Confirm.
+- **D-PE7: AGE Cypher integration for research output.** Should research-summary outputs participate in the AGE citation graph? Recommend: yes for deep-research, no for daily-digest. Daily digests pollute the graph; deep-research benefits from it.
+
+## VII. Estimated programming time
+
+- V.1 Research pipeline definition + seed: 1 session
+- V.2 + V.3 YouTube pipelines (gospel + secular share most): 1 session
+- V.4 Scheduled pipelines schema + bgworker tick + cron parser: 1–2 sessions
+- V.5 UI surfaces (new /scheduled route + dashboard card + per-pipeline form): 1 session
+- First real e2e scheduled run + tuning: ~30 min (overnight; observe morning)
+
+**Total: 4–5 sessions.**
+
+Should be sequenced AFTER Batch G (file-write mechanism lets these new pipelines actually produce on-disk outputs). Could ship the schema + pipelines first (PE.1 + PE.2/3), then scheduler (PE.4 + PE.5), as two separate batches.
+
+## VIII. Acceptance scenarios
+
+1. `INSERT INTO stewards.scheduled_pipelines (ai-news-7am, ...)`. Bgworker scheduler tick at next 13:00 UTC dispatches a research-summary work_item. By 13:05 UTC the gather stage chat has fired; by 13:10 the synthesize is done; daily digest appears in `/studies?kind=daily-digest`.
+2. Manual `work_item_create('yt-gospel-evaluate', {binding_question, video_url})` via NewWork form. Stage 1 calls `yt_download`, stage 2 evaluates, stage 3 reviews. Output study appears in Studies list with kind='gospel-evaluation'.
+3. Cron pattern '0 * * * *' rejected with `frequency_floor_violation` (D-PE3 hard floor).
+4. Substrate down for 6 hours covering a scheduled run; on recovery, scheduler advances `next_due_at` to the NEXT scheduled time, doesn't backfire the missed one (D-PE4 no-backfill).
+
+## IX. Why now
+
+The substrate's primitives are mature; one pipeline is a poor showcase of what they enable. The proposed pipelines also have direct utility: a daily AI news digest at 7am is something Michael will actually read. YouTube digestion replaces an ad-hoc manual workflow.
+
+The scheduled-pipelines machinery is independently useful — once it exists, future pipelines (e.g. weekly "stewardship review", monthly "studies-not-yet-cited audit") become 5-minute additions, not 5-day proposals.

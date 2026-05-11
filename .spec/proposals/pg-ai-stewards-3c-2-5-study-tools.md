@@ -9,6 +9,11 @@ feeds:
 
 # pg-ai-stewards Phase 3c.2.5 — Study tool registration (sql_fn)
 
+> **Carry-forward (2026-05-11 consolidation):** This phase shipped 2026-05-07.
+> Its carry-forward item (3c.4 gospel-engine HTTP path) was largely absorbed
+> by Phase 3e's bridge → mcp_proxy mechanism. Verification spot-check tracked
+> in `projects/pg-ai-stewards/.spec/proposals/substrate-deferred-items.md` § D.2.
+
 > Substrate-internal tool registration so a `study` agent dispatched
 > via the 3c.1 pipeline machinery has a real tool surface to use.
 > Sized between 3c.2 (auto-advance trigger) and 3c.3 (first real

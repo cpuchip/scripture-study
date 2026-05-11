@@ -1,16 +1,26 @@
 ---
-title: pg-ai-stewards open items — consolidated review
-date: 2026-05-11 (revised, +Sec X-XV from older proposals + phases.md)
+title: pg-ai-stewards open items — navigation hub
+date: 2026-05-11 (consolidated into proposals; this is now a directory)
 status: living document — update after each work session
 purpose: >
-  Single inventory of every unresolved carry-forward, open question, and
-  follow-up across the substrate's sub-specs and journal entries. Prevents
-  items from getting lost in journal archaeology. Grouped by theme so
-  Michael can pick a "next batch" using the cadence that worked for
-  Phases C–F (decisions upfront → gated phased build).
+  Navigation hub for substrate work-in-progress. As of 2026-05-11
+  consolidation, the items listed here are also captured in topic-grouped
+  proposals under `.spec/proposals/`. This document remains as the
+  cross-reference table + the "what's the queue look like?" view.
 ---
 
 # pg-ai-stewards open items
+
+## 0. Active proposal queue (2026-05-11 consolidation)
+
+| Proposal | Scope | Status |
+|---|---|---|
+| [`substrate-completion-batch-g.md`](proposals/substrate-completion-batch-g.md) | file_path fix + retry-pulls-lessons + quarantine-fires-atonement + file-write mechanism | **build-ready** (no new ratifications needed) |
+| [`substrate-pipelines-expansion.md`](proposals/substrate-pipelines-expansion.md) | research + YouTube (gospel + secular) + scheduled-pipeline machinery | **needs ratification** (D-PE1 through D-PE7) |
+| [`stewards-ui-evolution.md`](proposals/stewards-ui-evolution.md) | intent/covenant authoring + substrate-aware chat + sidebar grouping + write actions | **needs ratification** (D-UI1 through D-UI12) |
+| [`substrate-deferred-items.md`](proposals/substrate-deferred-items.md) | catalog of "wait for signal" items (NOT a build proposal) | reference only |
+
+Master rule: **start a build session from one of those proposals, not from this document.** This document is the index.
 
 Substrate is feature-complete through Phase F as of 2026-05-11. This document collects every unfinished item the substrate work has surfaced — cleanups, bugs, validation gaps, and future evolution paths — so the next session has a single inventory to pick from rather than re-deriving the queue from journal archaeology.
 

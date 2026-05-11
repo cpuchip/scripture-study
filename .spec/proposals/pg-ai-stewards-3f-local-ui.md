@@ -11,6 +11,15 @@ related:
 
 # Phase 3f — Local pg-ai-stewards UI
 
+> **Carry-forward (2026-05-11 consolidation):** 3f v1 shipped 2026-05-09 (all 7
+> phases). Subsequent UI work (per-phase surfaces in C.8 / D.7 / E.7 / F.7)
+> + the next evolution layer (authoring UI + substrate-aware chat + sidebar
+> grouping + write actions) is tracked in
+> `projects/pg-ai-stewards/.spec/proposals/stewards-ui-evolution.md`.
+> Deferred 3f.3 / 3f.4 items + SSE + citation extraction tracked in
+> `projects/pg-ai-stewards/.spec/proposals/substrate-deferred-items.md`
+> §§ A.7-A.8.
+
 > Design doc; **no implementation yet**. Michael's pivoted vision (2026-05-09):
 >
 > > "My idea for a.ibeco.me probably needs to be more flushed out since

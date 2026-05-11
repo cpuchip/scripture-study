@@ -18,6 +18,15 @@ purpose: >
 
 # Full Agentic Substrate
 
+> **Status (2026-05-11):** Phases A–F all SHIPPED. Substrate feature-complete
+> through Phase F. §VI ratifications stand (with 2026-05-11 amendment block).
+> Active follow-on work tracked in:
+> - `substrate-completion-batch-g.md` — make substrate land in real files
+> - `substrate-pipelines-expansion.md` — research/YouTube/scheduled pipelines
+> - `stewards-ui-evolution.md` — authoring + chat + sidebar + write actions
+> - `substrate-deferred-items.md` — catalog of "wait for signal" items
+> Master inventory: `open-items.md`.
+
 > "And the Gods saw that they were obeyed."  
 > — [Abraham 4:18](../../../../gospel-library/eng/scriptures/pgp/abr/4.md)
 
