@@ -134,6 +134,10 @@ export const api = {
       : `slug=${encodeURIComponent(idOrSlug)}`
     return getJSON<WorkItemDetail>(`/api/work-items/get?${q}`)
   },
+  workItemCost: (id: string) =>
+    getJSON<CostEventsResp>(`/api/work-items/cost?id=${encodeURIComponent(id)}`),
+  workItemActions: (id: string) =>
+    getJSON<StewardActionsResp>(`/api/work-items/actions?id=${encodeURIComponent(id)}`),
   sessionGet: (sid: string) =>
     getJSON<SessionDetail>(`/api/sessions/get?id=${encodeURIComponent(sid)}`),
   watchmanPasses: (limit?: number) => {
@@ -265,6 +269,60 @@ export type WorkItemDetail = WorkItemRow & {
   stage_results: unknown
   session_ids?: string[]
   error?: string
+  // Phase 4j — steward + cost surface
+  failure_count: number
+  last_failure_reason?: string
+  last_failure_diagnosis?: string
+  quarantined_at?: string
+  quarantine_reason?: string
+  model_override?: string
+  provider_override?: string
+  escalation_state: string
+  escalation_claimed_by?: string
+  escalation_attempts: number
+  cost_micro_dollars: number
+  cost_cap_micro?: number
+  cost_capped_at?: string
+}
+
+export type CostEvent = {
+  id: number
+  attempt_seq: number
+  at?: string
+  provider: string
+  model: string
+  input_tokens: number
+  output_tokens: number
+  cache_write_tokens: number
+  cache_read_tokens: number
+  micro_dollars: number
+  pricing_effective_at?: string
+  notes?: string
+}
+
+export type CostEventsResp = {
+  items: CostEvent[]
+  total_events: number
+  total_micro_dollars: number
+  work_item_cost_micro: number
+  cost_cap_micro?: number
+  cost_capped_at?: string
+}
+
+export type StewardAction = {
+  id: number
+  at?: string
+  observation: string
+  diagnosis?: string
+  action: string
+  details?: unknown
+  model_used?: string
+  cost_micro?: number
+}
+
+export type StewardActionsResp = {
+  items: StewardAction[]
+  count: number
 }
 
 export type MessageRow = {

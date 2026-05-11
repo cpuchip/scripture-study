@@ -12,6 +12,8 @@ import (
 func (d *Deps) registerWorkItems(mux *http.ServeMux) {
 	mux.HandleFunc("GET /api/work-items/list", d.workItemsListHandler)
 	mux.HandleFunc("GET /api/work-items/get",  d.workItemsGetHandler)
+	mux.HandleFunc("GET /api/work-items/cost", d.workItemsCostHandler)
+	mux.HandleFunc("GET /api/work-items/actions", d.workItemsActionsHandler)
 }
 
 type workItemRow struct {
@@ -95,10 +97,24 @@ func (d *Deps) workItemsListHandler(w http.ResponseWriter, r *http.Request) {
 
 type workItemDetail struct {
 	workItemRow
-	Input        json.RawMessage `json:"input"`
-	StageResults json.RawMessage `json:"stage_results"`
-	SessionIDs   []string        `json:"session_ids,omitempty"`
-	Error        string          `json:"error,omitempty"`
+	Input                json.RawMessage `json:"input"`
+	StageResults         json.RawMessage `json:"stage_results"`
+	SessionIDs           []string        `json:"session_ids,omitempty"`
+	Error                string          `json:"error,omitempty"`
+	// Phase 4j — steward + cost surface on detail view
+	FailureCount         int             `json:"failure_count"`
+	LastFailureReason    string          `json:"last_failure_reason,omitempty"`
+	LastFailureDiagnosis string          `json:"last_failure_diagnosis,omitempty"`
+	QuarantinedAt        *time.Time      `json:"quarantined_at,omitempty"`
+	QuarantineReason     string          `json:"quarantine_reason,omitempty"`
+	ModelOverride        string          `json:"model_override,omitempty"`
+	ProviderOverride     string          `json:"provider_override,omitempty"`
+	EscalationState      string          `json:"escalation_state"`
+	EscalationClaimedBy  string          `json:"escalation_claimed_by,omitempty"`
+	EscalationAttempts   int             `json:"escalation_attempts"`
+	CostMicroDollars     int64           `json:"cost_micro_dollars"`
+	CostCapMicro         *int64          `json:"cost_cap_micro,omitempty"`
+	CostCappedAt         *time.Time      `json:"cost_capped_at,omitempty"`
 }
 
 func (d *Deps) workItemsGetHandler(w http.ResponseWriter, r *http.Request) {
@@ -129,19 +145,166 @@ func (d *Deps) workItemsGetHandler(w http.ResponseWriter, r *http.Request) {
 		        created_at, updated_at, completed_at,
 		        input, stage_results,
 		        coalesce(session_ids, ARRAY[]::text[]),
-		        coalesce(error, '')
+		        coalesce(error, ''),
+		        coalesce(failure_count, 0),
+		        coalesce(last_failure_reason, ''),
+		        coalesce(last_failure_diagnosis, ''),
+		        quarantined_at,
+		        coalesce(quarantine_reason, ''),
+		        coalesce(model_override, ''),
+		        coalesce(provider_override, ''),
+		        coalesce(escalation_state, 'normal'),
+		        coalesce(escalation_claimed_by, ''),
+		        coalesce(escalation_attempts, 0),
+		        coalesce(cost_micro_dollars, 0),
+		        cost_cap_micro,
+		        cost_capped_at
 		   FROM stewards.work_items
 		  WHERE `+whereSQL,
 		whereArg,
 	).Scan(&wd.ID, &wd.Slug, &wd.Pipeline, &wd.CurrentStage, &wd.Status,
 		&wd.Actor, &wd.TokensIn, &wd.TokensOut, &wd.TokenBudget,
 		&wd.CreatedAt, &wd.UpdatedAt, &wd.CompletedAt,
-		&wd.Input, &wd.StageResults, &wd.SessionIDs, &wd.Error)
+		&wd.Input, &wd.StageResults, &wd.SessionIDs, &wd.Error,
+		&wd.FailureCount, &wd.LastFailureReason, &wd.LastFailureDiagnosis,
+		&wd.QuarantinedAt, &wd.QuarantineReason,
+		&wd.ModelOverride, &wd.ProviderOverride,
+		&wd.EscalationState, &wd.EscalationClaimedBy, &wd.EscalationAttempts,
+		&wd.CostMicroDollars, &wd.CostCapMicro, &wd.CostCappedAt)
 	if err != nil {
 		writeErr(w, http.StatusNotFound, err.Error())
 		return
 	}
 	writeJSON(w, http.StatusOK, wd)
+}
+
+// =====================================================================
+// Phase 4j — cost_events + steward_actions endpoints for WorkItemDetail
+// =====================================================================
+
+type costEvent struct {
+	ID                  int64      `json:"id"`
+	AttemptSeq          int        `json:"attempt_seq"`
+	At                  *time.Time `json:"at,omitempty"`
+	Provider            string     `json:"provider"`
+	Model               string     `json:"model"`
+	InputTokens         int        `json:"input_tokens"`
+	OutputTokens        int        `json:"output_tokens"`
+	CacheWriteTokens    int        `json:"cache_write_tokens"`
+	CacheReadTokens     int        `json:"cache_read_tokens"`
+	MicroDollars        int64      `json:"micro_dollars"`
+	PricingEffectiveAt  *time.Time `json:"pricing_effective_at,omitempty"`
+	Notes               string     `json:"notes,omitempty"`
+}
+
+type costEventsResp struct {
+	Items            []costEvent `json:"items"`
+	TotalEvents      int         `json:"total_events"`
+	TotalMicro       int64       `json:"total_micro_dollars"`
+	WorkItemCostMicro int64      `json:"work_item_cost_micro"`
+	CostCapMicro     *int64      `json:"cost_cap_micro,omitempty"`
+	CostCappedAt     *time.Time  `json:"cost_capped_at,omitempty"`
+}
+
+func (d *Deps) workItemsCostHandler(w http.ResponseWriter, r *http.Request) {
+	ctx, cancel := context.WithTimeout(r.Context(), 5*time.Second)
+	defer cancel()
+
+	id := r.URL.Query().Get("id")
+	if id == "" {
+		writeErr(w, http.StatusBadRequest, "id query param required")
+		return
+	}
+
+	resp := costEventsResp{Items: []costEvent{}}
+
+	// Fetch the work_item's denormalized cost summary first
+	if err := d.Pool.QueryRow(ctx,
+		`SELECT coalesce(cost_micro_dollars, 0), cost_cap_micro, cost_capped_at
+		   FROM stewards.work_items WHERE id = $1::uuid`,
+		id,
+	).Scan(&resp.WorkItemCostMicro, &resp.CostCapMicro, &resp.CostCappedAt); err != nil {
+		writeErr(w, http.StatusNotFound, err.Error())
+		return
+	}
+
+	rows, err := d.Pool.Query(ctx,
+		`SELECT id, attempt_seq, at, provider, model,
+		        input_tokens, output_tokens, cache_write_tokens, cache_read_tokens,
+		        micro_dollars, pricing_effective_at, coalesce(notes, '')
+		   FROM stewards.cost_events
+		  WHERE work_item_id = $1::uuid
+		  ORDER BY id ASC`,
+		id,
+	)
+	if err != nil {
+		writeErr(w, http.StatusInternalServerError, err.Error())
+		return
+	}
+	defer rows.Close()
+	for rows.Next() {
+		var ev costEvent
+		if err := rows.Scan(&ev.ID, &ev.AttemptSeq, &ev.At, &ev.Provider, &ev.Model,
+			&ev.InputTokens, &ev.OutputTokens, &ev.CacheWriteTokens, &ev.CacheReadTokens,
+			&ev.MicroDollars, &ev.PricingEffectiveAt, &ev.Notes); err == nil {
+			resp.Items = append(resp.Items, ev)
+			resp.TotalMicro += ev.MicroDollars
+		}
+	}
+	resp.TotalEvents = len(resp.Items)
+	writeJSON(w, http.StatusOK, resp)
+}
+
+type stewardAction struct {
+	ID          int64           `json:"id"`
+	At          *time.Time      `json:"at,omitempty"`
+	Observation string          `json:"observation"`
+	Diagnosis   string          `json:"diagnosis,omitempty"`
+	Action      string          `json:"action"`
+	Details     json.RawMessage `json:"details,omitempty"`
+	ModelUsed   string          `json:"model_used,omitempty"`
+	CostMicro   *int64          `json:"cost_micro,omitempty"`
+}
+
+type stewardActionsResp struct {
+	Items []stewardAction `json:"items"`
+	Count int             `json:"count"`
+}
+
+func (d *Deps) workItemsActionsHandler(w http.ResponseWriter, r *http.Request) {
+	ctx, cancel := context.WithTimeout(r.Context(), 5*time.Second)
+	defer cancel()
+
+	id := r.URL.Query().Get("id")
+	if id == "" {
+		writeErr(w, http.StatusBadRequest, "id query param required")
+		return
+	}
+
+	resp := stewardActionsResp{Items: []stewardAction{}}
+	rows, err := d.Pool.Query(ctx,
+		`SELECT id, at, observation, coalesce(diagnosis, ''), action,
+		        details, coalesce(model_used, ''), cost_micro
+		   FROM stewards.steward_actions
+		  WHERE work_item_id = $1::uuid
+		  ORDER BY id DESC
+		  LIMIT 50`,
+		id,
+	)
+	if err != nil {
+		writeErr(w, http.StatusInternalServerError, err.Error())
+		return
+	}
+	defer rows.Close()
+	for rows.Next() {
+		var a stewardAction
+		if err := rows.Scan(&a.ID, &a.At, &a.Observation, &a.Diagnosis, &a.Action,
+			&a.Details, &a.ModelUsed, &a.CostMicro); err == nil {
+			resp.Items = append(resp.Items, a)
+		}
+	}
+	resp.Count = len(resp.Items)
+	writeJSON(w, http.StatusOK, resp)
 }
 
 // Tiny string helpers — keep local to avoid pulling strings/strconv
