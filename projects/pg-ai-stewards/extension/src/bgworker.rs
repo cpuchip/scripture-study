@@ -698,6 +698,145 @@ fn process_one_pending() -> bool {
                         .get("_atonement")
                         .and_then(|v| v.as_bool())
                         .unwrap_or(false);
+                    // Phase 5g (F.4): two more for Council. _council_member
+                    // routes by role: proposer/critic just store the response
+                    // and check whether all members have responded; synthesizer
+                    // dispatches go straight to apply_synthesize_result.
+                    let council_id_opt = payload
+                        .get("_council_id")
+                        .and_then(|v| v.as_str());
+                    let is_council_member = payload
+                        .get("_council_member")
+                        .and_then(|v| v.as_bool())
+                        .unwrap_or(false);
+                    let is_council_synth = payload
+                        .get("_council_synthesize")
+                        .and_then(|v| v.as_bool())
+                        .unwrap_or(false);
+                    let council_role = payload
+                        .get("_council_role")
+                        .and_then(|v| v.as_str())
+                        .unwrap_or("");
+
+                    // Council member chats don't have _work_item_id;
+                    // process them BEFORE the wi_opt check below.
+                    if let Some(council_id) = council_id_opt {
+                        if is_council_member {
+                            let role = council_role;
+                            // Pull the assistant content from the just-saved
+                            // message (the loop above already INSERTed it).
+                            let r: Result<Option<String>, pgrx::spi::Error> =
+                                client.update(
+                                    "SELECT content FROM stewards.messages WHERE session_id = $1 AND role='assistant' ORDER BY id DESC LIMIT 1",
+                                    Some(1),
+                                    &[session_id.as_str().into()],
+                                ).and_then(|rs| {
+                                    let mut it = rs.into_iter();
+                                    if let Some(r) = it.next() {
+                                        Ok(r.get::<String>(1)?)
+                                    } else { Ok(None) }
+                                });
+                            if let Ok(Some(content)) = r {
+                                let upd: Result<(), pgrx::spi::Error> =
+                                    client.update(
+                                        "UPDATE stewards.council_members SET response = $1, completed_at = now() WHERE council_id = $2::uuid AND role = $3 AND work_id = $4",
+                                        Some(1),
+                                        &[content.into(), council_id.into(), role.into(), id.into()],
+                                    ).map(|_| ());
+                                if let Err(e) = upd {
+                                    pgrx::log!(
+                                        "stewards: council_members update failed for council={} role={}: {}",
+                                        council_id, role, e
+                                    );
+                                }
+
+                                // Fire synthesize when all proposer + critic
+                                // members are done (synthesizer member, if any
+                                // dispatched at convene time, is ignored — the
+                                // canonical synthesizer is the one fired here).
+                                let count_done: Result<Option<i64>, pgrx::spi::Error> =
+                                    client.update(
+                                        "SELECT count(*) FROM stewards.council_members WHERE council_id=$1::uuid AND role IN ('proposer','critic') AND completed_at IS NULL",
+                                        Some(1),
+                                        &[council_id.into()],
+                                    ).and_then(|rs| {
+                                        let mut it = rs.into_iter();
+                                        if let Some(r) = it.next() {
+                                            Ok(r.get::<i64>(1)?)
+                                        } else { Ok(None) }
+                                    });
+                                if let Ok(Some(remaining)) = count_done {
+                                    if remaining == 0 {
+                                        let synth: Result<Option<i64>, pgrx::spi::Error> =
+                                            client.update(
+                                                "SELECT stewards.synthesize_council($1::uuid)",
+                                                Some(1),
+                                                &[council_id.into()],
+                                            ).and_then(|rs| {
+                                                let mut it = rs.into_iter();
+                                                if let Some(r) = it.next() {
+                                                    Ok(r.get::<i64>(1)?)
+                                                } else { Ok(None) }
+                                            });
+                                        match synth {
+                                            Ok(Some(wid)) => pgrx::log!(
+                                                "stewards: council {} all members done → synthesize work_id={}",
+                                                council_id, wid),
+                                            Ok(None) => {},
+                                            Err(e) => pgrx::log!(
+                                                "stewards: synthesize_council failed for council={}: {}",
+                                                council_id, e),
+                                        }
+                                    }
+                                }
+                            }
+                        } else if is_council_synth {
+                            // Parse the synthesizer's JSON response and apply
+                            let parsed: Result<Option<pgrx::JsonB>, pgrx::spi::Error> =
+                                client.update(
+                                    "SELECT stewards.parse_gate_response($1)",
+                                    Some(1),
+                                    &[id.into()],
+                                ).and_then(|rs| {
+                                    let mut it = rs.into_iter();
+                                    if let Some(r) = it.next() {
+                                        Ok(r.get::<pgrx::JsonB>(1)?)
+                                    } else { Ok(None) }
+                                });
+                            match parsed {
+                                Ok(Some(json)) => {
+                                    let r: Result<Option<pgrx::Uuid>, pgrx::spi::Error> =
+                                        client.update(
+                                            "SELECT stewards.apply_synthesize_result($1::uuid, $2, $3)",
+                                            Some(1),
+                                            &[council_id.into(), json.into(), id.into()],
+                                        ).and_then(|rs| {
+                                            let mut it = rs.into_iter();
+                                            if let Some(r) = it.next() {
+                                                Ok(r.get::<pgrx::Uuid>(1)?)
+                                            } else { Ok(None) }
+                                        });
+                                    match r {
+                                        Ok(Some(rid)) => pgrx::log!(
+                                            "stewards: council {} synthesize → resolution {}",
+                                            council_id, rid),
+                                        Ok(None) => pgrx::log!(
+                                            "stewards: apply_synthesize_result returned null for council={}",
+                                            council_id),
+                                        Err(e) => pgrx::log!(
+                                            "stewards: apply_synthesize_result failed for council={}: {}",
+                                            council_id, e),
+                                    }
+                                }
+                                Ok(None) => pgrx::log!(
+                                    "stewards: synthesize response unparseable for council={} work_id={}",
+                                    council_id, id),
+                                Err(e) => pgrx::log!(
+                                    "stewards: parse_gate_response failed for synthesize work_id={}: {}",
+                                    id, e),
+                            }
+                        }
+                    }
 
                     if let Some(wi_str) = wi_opt {
                         if is_gate_eval || is_scenarios_gen || is_verify || is_sabbath || is_atonement {
