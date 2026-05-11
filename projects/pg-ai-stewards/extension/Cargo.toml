@@ -16,6 +16,12 @@ pg_test = []
 pgrx = "=0.18.0"
 serde = { version = "1", features = ["derive"] }
 serde_json = "1"
+# Phase 5d (Phase C.2): YAML parsing for seed_intents_from_yaml +
+# seed_covenant_from_yaml. Keeps the substrate self-contained — no
+# plpython3u dependency needed.
+serde_yaml = "0.9"
+sha2 = "0.10"
+hex = "0.4"
 # Blocking HTTP client for the bgworker. The worker is already a sync
 # loop (one item per tick), so we don't need a tokio runtime — blocking
 # reqwest under the covers spins its own. rustls-tls avoids the need

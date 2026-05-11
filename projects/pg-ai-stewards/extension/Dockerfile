@@ -72,7 +72,8 @@ COPY 2-6a-workstreams.sql 2-6b-todos.sql 2-6c-phases-context.sql \
      5a-maturity-gate.sql \
      5b-scenarios-verify.sql \
      5c-sessions-gate-kind.sql \
-     5d-intents-covenants.sql ./
+     5d-intents-covenants.sql \
+     5d2-seed-fns.sql ./
 
 # `cargo pgrx package` produces ./target/release/pg_ai_stewards-pg18/
 # with the directory tree rooted at /, containing the .so, .control,

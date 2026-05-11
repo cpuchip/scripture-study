@@ -23,6 +23,7 @@ mod providers;
 mod schema;
 mod tools;
 mod types;
+mod yaml;
 use providers::{Provider, ProviderRegistry, ProviderSummary, PROVIDER_REGISTRY};
 
 ::pgrx::pg_module_magic!();
@@ -270,6 +271,12 @@ extension_sql_file!(
     "../5d-intents-covenants.sql",
     name = "create_phase_5d_intents_covenants",
     requires = ["create_phase_5c_sessions_gate_kind"],
+);
+
+extension_sql_file!(
+    "../5d2-seed-fns.sql",
+    name = "create_phase_5d2_seed_fns",
+    requires = ["create_phase_5d_intents_covenants"],
 );
 
 // ---------------------------------------------------------------------------
