@@ -1,0 +1,58 @@
+#!/bin/bash
+# Phase 5d (Phase C.3): re-seed substrate when intent.yaml or
+# .spec/covenant.yaml changes.
+#
+# Activated by symlink:
+#   ln -s ../../scripts/git-hooks/pre-commit .git/hooks/pre-commit
+# (Or by copy if symlinks aren't an option in the dev env.)
+#
+# If the dev container isn't running, the hook prints a warning and
+# allows the commit to proceed — the seed can be re-run manually
+# via:
+#   docker exec pg-ai-stewards-dev psql -U stewards -d stewards \
+#     -c "SELECT stewards.seed_intents_from_yaml(pg_read_file('/tmp/intent.yaml'));"
+# (after docker cp-ing the YAML file in).
+
+set -e
+
+CHANGED=$(git diff --cached --name-only)
+CONTAINER="pg-ai-stewards-dev"
+
+container_running() {
+    docker ps --format '{{.Names}}' 2>/dev/null | grep -q "^${CONTAINER}$"
+}
+
+reseed_intent() {
+    if ! container_running; then
+        echo "pre-commit: $CONTAINER not running; skipping intent re-seed."
+        echo "  (manual: docker cp intent.yaml $CONTAINER:/tmp/ && psql -c \"SELECT stewards.seed_intents_from_yaml(pg_read_file('/tmp/intent.yaml'));\")"
+        return 0
+    fi
+    echo "pre-commit: intent.yaml changed — reseeding stewards.intents"
+    docker cp intent.yaml "${CONTAINER}:/tmp/intent.yaml" >/dev/null
+    docker exec "${CONTAINER}" psql -U stewards -d stewards -tAc \
+        "SELECT stewards.seed_intents_from_yaml(pg_read_file('/tmp/intent.yaml'));" \
+        | sed 's/^/  intent_id=/'
+}
+
+reseed_covenant() {
+    if ! container_running; then
+        echo "pre-commit: $CONTAINER not running; skipping covenant re-seed."
+        return 0
+    fi
+    echo "pre-commit: .spec/covenant.yaml changed — reseeding stewards.covenants"
+    docker cp .spec/covenant.yaml "${CONTAINER}:/tmp/covenant.yaml" >/dev/null
+    docker exec "${CONTAINER}" psql -U stewards -d stewards -tAc \
+        "SELECT stewards.seed_covenant_from_yaml(pg_read_file('/tmp/covenant.yaml'));" \
+        | sed 's/^/  covenant_id=/'
+}
+
+if echo "$CHANGED" | grep -qE '^intent\.yaml$'; then
+    reseed_intent
+fi
+
+if echo "$CHANGED" | grep -qE '^\.spec/covenant\.yaml$'; then
+    reseed_covenant
+fi
+
+exit 0
