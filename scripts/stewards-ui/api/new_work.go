@@ -17,13 +17,14 @@ func (d *Deps) registerNewWork(mux *http.ServeMux) {
 }
 
 type workItemCreateReq struct {
-	Pipeline    string          `json:"pipeline"`
-	Slug        string          `json:"slug,omitempty"`
-	Input       json.RawMessage `json:"input,omitempty"`
-	UserInput   string          `json:"user_input,omitempty"`
-	Actor       string          `json:"actor,omitempty"`
-	TokenBudget *int            `json:"token_budget,omitempty"`
-	Dispatch    bool            `json:"dispatch,omitempty"`
+	Pipeline            string          `json:"pipeline"`
+	Slug                string          `json:"slug,omitempty"`
+	Input               json.RawMessage `json:"input,omitempty"`
+	UserInput           string          `json:"user_input,omitempty"`
+	Actor               string          `json:"actor,omitempty"`
+	TokenBudget         *int            `json:"token_budget,omitempty"`
+	Dispatch            bool            `json:"dispatch,omitempty"`
+	DestinationMaturity string          `json:"destination_maturity,omitempty"`
 }
 
 type workItemCreateResp struct {
@@ -69,6 +70,20 @@ func (d *Deps) workItemCreateHandler(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		writeErr(w, http.StatusInternalServerError, "create: "+err.Error())
 		return
+	}
+
+	// Phase 5a: optional destination_maturity sets the human's ceiling.
+	// NULL = default = full Ammon-loop to verified; set lower (e.g.
+	// specced) to surface for review before continuing.
+	if req.DestinationMaturity != "" {
+		_, err := d.Pool.Exec(ctx,
+			`UPDATE stewards.work_items SET destination_maturity = $1 WHERE id = $2::uuid`,
+			req.DestinationMaturity, newID,
+		)
+		if err != nil {
+			writeErr(w, http.StatusInternalServerError, "set destination_maturity: "+err.Error())
+			return
+		}
 	}
 
 	resp := workItemCreateResp{ID: newID}

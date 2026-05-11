@@ -1,12 +1,13 @@
 <script setup lang="ts">
 import { ref, onMounted, watch, computed } from 'vue'
 import { useRoute, RouterLink } from 'vue-router'
-import { api, type WorkItemDetail, type CostEventsResp, type StewardActionsResp } from '@/api'
+import { api, type WorkItemDetail, type CostEventsResp, type StewardActionsResp, type GateDecisionsResp } from '@/api'
 
 const route = useRoute()
 const wi = ref<WorkItemDetail | null>(null)
 const cost = ref<CostEventsResp | null>(null)
 const actions = ref<StewardActionsResp | null>(null)
+const gateDecisions = ref<GateDecisionsResp | null>(null)
 const error = ref<string>('')
 const loading = ref(false)
 
@@ -16,16 +17,19 @@ async function load(idOrSlug: string) {
   wi.value = null
   cost.value = null
   actions.value = null
+  gateDecisions.value = null
   try {
     const detail = await api.workItemGet(idOrSlug)
     wi.value = detail
-    // Fire cost + actions in parallel; failures don't block the view
-    const [c, a] = await Promise.allSettled([
+    // Fire cost + actions + gate decisions in parallel; failures don't block the view
+    const [c, a, g] = await Promise.allSettled([
       api.workItemCost(detail.id),
       api.workItemActions(detail.id),
+      api.workItemGateDecisions(detail.id),
     ])
     if (c.status === 'fulfilled') cost.value = c.value
     if (a.status === 'fulfilled') actions.value = a.value
+    if (g.status === 'fulfilled') gateDecisions.value = g.value
   } catch (e) {
     error.value = String(e)
   } finally {
@@ -67,6 +71,22 @@ function escalationBadge(state: string): { label: string; cls: string } {
       return { label: 'normal', cls: 'bg-zinc-800 text-zinc-400 border-zinc-700' }
   }
 }
+// Phase 5a — maturity ladder helpers
+const MATURITY_LADDER = ['raw', 'researched', 'planned', 'specced', 'executing', 'verified']
+function maturityIndex(m: string): number {
+  return MATURITY_LADDER.indexOf(m)
+}
+function gateActionTone(action: string): string {
+  if (action === 'advance') return 'text-emerald-300 border-emerald-700/50 bg-emerald-900/30'
+  if (action === 'revise') return 'text-amber-300 border-amber-700/50 bg-amber-900/30'
+  if (action === 'surface') return 'text-blue-300 border-blue-700/50 bg-blue-900/30'
+  return 'text-zinc-300 border-zinc-700 bg-zinc-800'
+}
+function scenariosArray(s: unknown): string[] {
+  if (!Array.isArray(s)) return []
+  return s.map((x) => (typeof x === 'string' ? x : JSON.stringify(x)))
+}
+
 function actionTone(action: string): string {
   if (action === 'retry_dispatched') return 'text-blue-300'
   if (action === 'queue_for_opus') return 'text-amber-300'
@@ -109,6 +129,105 @@ function actionTone(action: string): string {
       >
         <div class="text-xs uppercase tracking-wide text-red-400 mb-1">Error</div>
         <pre class="whitespace-pre-wrap text-red-300 font-mono text-xs">{{ wi.error }}</pre>
+      </section>
+
+      <!-- Phase 5a (Phase B): Maturity ladder panel -->
+      <section class="rounded-md border border-zinc-800 bg-zinc-900/50 p-4">
+        <div class="flex items-baseline justify-between mb-3">
+          <div class="text-xs uppercase tracking-wide text-zinc-500">Maturity</div>
+          <div class="text-xs text-zinc-500 font-mono">
+            <span v-if="wi.destination_maturity">ceiling: {{ wi.destination_maturity }}</span>
+            <span v-else>full Ammon-loop → verified</span>
+            <span v-if="wi.revision_count > 0" class="ml-3 text-amber-400">
+              revisions: {{ wi.revision_count }} / 2
+            </span>
+          </div>
+        </div>
+        <ol class="flex items-center gap-1 text-xs font-mono">
+          <li
+            v-for="(m, i) in MATURITY_LADDER"
+            :key="m"
+            class="flex items-center gap-1"
+          >
+            <span
+              class="px-2 py-1 rounded border"
+              :class="[
+                maturityIndex(wi.maturity) === i
+                  ? 'bg-emerald-900/40 text-emerald-200 border-emerald-700/60 font-semibold'
+                  : maturityIndex(wi.maturity) > i
+                    ? 'bg-zinc-800/50 text-zinc-500 border-zinc-700'
+                    : 'bg-zinc-900 text-zinc-600 border-zinc-800',
+                wi.destination_maturity === m
+                  ? 'ring-1 ring-blue-500/50'
+                  : '',
+              ]"
+            >{{ m }}</span>
+            <span
+              v-if="i < MATURITY_LADDER.length - 1"
+              class="text-zinc-700"
+            >→</span>
+          </li>
+        </ol>
+        <p v-if="wi.destination_maturity" class="text-xs text-zinc-500 mt-2">
+          Substrate will surface for review when maturity reaches
+          <span class="font-mono text-blue-300">{{ wi.destination_maturity }}</span>.
+        </p>
+      </section>
+
+      <!-- Phase 5a (Phase B): Scenarios panel — only shown if any -->
+      <section
+        v-if="scenariosArray(wi.scenarios).length > 0"
+        class="rounded-md border border-zinc-800 bg-zinc-900/50 p-4"
+      >
+        <div class="text-xs uppercase tracking-wide text-zinc-500 mb-2">
+          Scenarios <span class="text-zinc-600">— acceptance criteria</span>
+        </div>
+        <ul class="text-sm text-zinc-200 space-y-1 list-disc list-inside">
+          <li v-for="(s, i) in scenariosArray(wi.scenarios)" :key="i">{{ s }}</li>
+        </ul>
+      </section>
+
+      <!-- Phase 5a (Phase B): Spec panel — only shown if non-empty -->
+      <section
+        v-if="wi.spec"
+        class="rounded-md border border-zinc-800 bg-zinc-900/50 p-4"
+      >
+        <div class="text-xs uppercase tracking-wide text-zinc-500 mb-2">Spec</div>
+        <pre class="text-xs font-mono text-zinc-300 whitespace-pre-wrap overflow-auto max-h-96">{{ wi.spec }}</pre>
+      </section>
+
+      <!-- Phase 5a (Phase B): Gate decisions audit -->
+      <section
+        v-if="gateDecisions && gateDecisions.count > 0"
+        class="rounded-md border border-zinc-800 bg-zinc-900/50 overflow-hidden"
+      >
+        <div class="px-4 py-3 border-b border-zinc-800 flex items-baseline justify-between">
+          <h3 class="text-sm font-semibold">Gate decisions ({{ gateDecisions.count }})</h3>
+          <span class="text-xs text-zinc-500">most recent first</span>
+        </div>
+        <ul class="divide-y divide-zinc-800/50">
+          <li v-for="g in gateDecisions.items" :key="g.id" class="px-4 py-3 text-xs">
+            <div class="flex items-baseline gap-3 flex-wrap">
+              <span
+                class="px-2 py-0.5 rounded border font-mono uppercase tracking-wide"
+                :class="gateActionTone(g.action)"
+              >{{ g.action }}</span>
+              <span class="text-zinc-500 font-mono">from: {{ g.from_maturity }}</span>
+              <span v-if="g.revision_count > 0" class="text-amber-400 font-mono">rev #{{ g.revision_count }}</span>
+              <span v-if="g.work_id" class="text-zinc-500 font-mono">work_id: {{ g.work_id }}</span>
+              <span class="ml-auto text-zinc-500 tabular-nums">{{ fmtDate(g.at) }}</span>
+            </div>
+            <div v-if="g.reasoning" class="mt-2 text-zinc-300 leading-relaxed">{{ g.reasoning }}</div>
+            <details v-if="g.feedback" class="mt-2">
+              <summary class="cursor-pointer text-zinc-500 hover:text-zinc-300">feedback</summary>
+              <pre class="mt-1 font-mono text-zinc-400 whitespace-pre-wrap">{{ g.feedback }}</pre>
+            </details>
+            <details v-if="g.raw_response && Object.keys(g.raw_response as object).length > 0" class="mt-1">
+              <summary class="cursor-pointer text-zinc-600 hover:text-zinc-400">raw response</summary>
+              <pre class="mt-1 font-mono text-zinc-400 whitespace-pre-wrap">{{ fmtJson(g.raw_response) }}</pre>
+            </details>
+          </li>
+        </ul>
       </section>
 
       <!-- Phase 4j: Steward status panel -->

@@ -11,6 +11,11 @@ const bindingQuestion = ref('')
 const actor = ref('michael')
 const tokenBudget = ref<number | null>(null)
 const dispatch = ref(true)
+// Phase 5a: destination maturity = human's ceiling for the maturity
+// ladder. Empty string = NULL = full Ammon-loop to verified. Pick a
+// lower rung to have the substrate surface for human review before
+// continuing past that rung.
+const destinationMaturity = ref<string>('')
 
 // Phase 2 of NewWork: model picker. Pipeline-level model overrides
 // land later; for now this is informational — substrate routes to
@@ -48,6 +53,7 @@ async function submit() {
       actor: actor.value || 'human',
       token_budget: tokenBudget.value || undefined,
       dispatch: dispatch.value,
+      destination_maturity: destinationMaturity.value || undefined,
     })
     result.value = { id: r.id, dispatched: r.dispatched }
   } catch (e) {
@@ -130,6 +136,27 @@ function goToWorkItem() {
             class="w-full px-3 py-2 rounded border border-zinc-700 bg-zinc-900 text-sm focus:border-zinc-500 focus:outline-none tabular-nums"
           />
         </div>
+      </div>
+
+      <div>
+        <label class="block text-xs uppercase tracking-wide text-zinc-500 mb-1">
+          Destination maturity (optional ceiling)
+        </label>
+        <select
+          v-model="destinationMaturity"
+          class="w-full px-3 py-2 rounded border border-zinc-700 bg-zinc-900 text-sm focus:border-zinc-500 focus:outline-none"
+        >
+          <option value="">— full Ammon-loop (default → verified)</option>
+          <option value="researched">researched (stop after research)</option>
+          <option value="planned">planned (stop after outline/plan)</option>
+          <option value="specced">specced (stop after spec)</option>
+          <option value="executing">executing (stop after first draft)</option>
+          <option value="verified">verified (explicit, same as default)</option>
+        </select>
+        <p class="text-xs text-zinc-500 mt-1">
+          The substrate's gate ladder surfaces work for review when it reaches
+          this rung. Leave blank to let it run all the way to verified.
+        </p>
       </div>
 
       <label class="flex items-center gap-2 text-sm text-zinc-300 cursor-pointer">

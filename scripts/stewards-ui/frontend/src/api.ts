@@ -138,6 +138,8 @@ export const api = {
     getJSON<CostEventsResp>(`/api/work-items/cost?id=${encodeURIComponent(id)}`),
   workItemActions: (id: string) =>
     getJSON<StewardActionsResp>(`/api/work-items/actions?id=${encodeURIComponent(id)}`),
+  workItemGateDecisions: (id: string) =>
+    getJSON<GateDecisionsResp>(`/api/work-items/gate-decisions?id=${encodeURIComponent(id)}`),
   sessionGet: (sid: string) =>
     getJSON<SessionDetail>(`/api/sessions/get?id=${encodeURIComponent(sid)}`),
   watchmanPasses: (limit?: number) => {
@@ -175,6 +177,7 @@ export type WorkItemCreateReq = {
   actor?: string
   token_budget?: number
   dispatch?: boolean
+  destination_maturity?: string
 }
 
 export type WorkItemCreateResp = {
@@ -283,6 +286,29 @@ export type WorkItemDetail = WorkItemRow & {
   cost_micro_dollars: number
   cost_cap_micro?: number
   cost_capped_at?: string
+  // Phase 5a — maturity ladder surface
+  maturity: string
+  destination_maturity?: string
+  revision_count: number
+  scenarios?: unknown
+  spec?: string
+}
+
+export type GateDecisionRow = {
+  id: number
+  at?: string
+  from_maturity: string
+  action: string
+  reasoning?: string
+  feedback?: string
+  work_id?: number
+  revision_count: number
+  raw_response?: unknown
+}
+
+export type GateDecisionsResp = {
+  items: GateDecisionRow[]
+  count: number
 }
 
 export type CostEvent = {

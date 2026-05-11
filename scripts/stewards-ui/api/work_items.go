@@ -14,6 +14,7 @@ func (d *Deps) registerWorkItems(mux *http.ServeMux) {
 	mux.HandleFunc("GET /api/work-items/get",  d.workItemsGetHandler)
 	mux.HandleFunc("GET /api/work-items/cost", d.workItemsCostHandler)
 	mux.HandleFunc("GET /api/work-items/actions", d.workItemsActionsHandler)
+	mux.HandleFunc("GET /api/work-items/gate-decisions", d.workItemsGateDecisionsHandler)
 }
 
 type workItemRow struct {
@@ -115,6 +116,12 @@ type workItemDetail struct {
 	CostMicroDollars     int64           `json:"cost_micro_dollars"`
 	CostCapMicro         *int64          `json:"cost_cap_micro,omitempty"`
 	CostCappedAt         *time.Time      `json:"cost_capped_at,omitempty"`
+	// Phase 5a (Phase B) — maturity ladder surface
+	Maturity             string          `json:"maturity"`
+	DestinationMaturity  string          `json:"destination_maturity,omitempty"`
+	RevisionCount        int             `json:"revision_count"`
+	Scenarios            json.RawMessage `json:"scenarios,omitempty"`
+	Spec                 string          `json:"spec,omitempty"`
 }
 
 func (d *Deps) workItemsGetHandler(w http.ResponseWriter, r *http.Request) {
@@ -158,7 +165,12 @@ func (d *Deps) workItemsGetHandler(w http.ResponseWriter, r *http.Request) {
 		        coalesce(escalation_attempts, 0),
 		        coalesce(cost_micro_dollars, 0),
 		        cost_cap_micro,
-		        cost_capped_at
+		        cost_capped_at,
+		        coalesce(maturity, 'raw'),
+		        coalesce(destination_maturity, ''),
+		        coalesce(revision_count, 0),
+		        coalesce(scenarios, '[]'::jsonb),
+		        coalesce(spec, '')
 		   FROM stewards.work_items
 		  WHERE `+whereSQL,
 		whereArg,
@@ -170,7 +182,9 @@ func (d *Deps) workItemsGetHandler(w http.ResponseWriter, r *http.Request) {
 		&wd.QuarantinedAt, &wd.QuarantineReason,
 		&wd.ModelOverride, &wd.ProviderOverride,
 		&wd.EscalationState, &wd.EscalationClaimedBy, &wd.EscalationAttempts,
-		&wd.CostMicroDollars, &wd.CostCapMicro, &wd.CostCappedAt)
+		&wd.CostMicroDollars, &wd.CostCapMicro, &wd.CostCappedAt,
+		&wd.Maturity, &wd.DestinationMaturity, &wd.RevisionCount,
+		&wd.Scenarios, &wd.Spec)
 	if err != nil {
 		writeErr(w, http.StatusNotFound, err.Error())
 		return
@@ -301,6 +315,65 @@ func (d *Deps) workItemsActionsHandler(w http.ResponseWriter, r *http.Request) {
 		if err := rows.Scan(&a.ID, &a.At, &a.Observation, &a.Diagnosis, &a.Action,
 			&a.Details, &a.ModelUsed, &a.CostMicro); err == nil {
 			resp.Items = append(resp.Items, a)
+		}
+	}
+	resp.Count = len(resp.Items)
+	writeJSON(w, http.StatusOK, resp)
+}
+
+// =====================================================================
+// Phase 5a (Phase B) — gate_decisions audit endpoint for WorkItemDetail
+// =====================================================================
+
+type gateDecisionRow struct {
+	ID             int64           `json:"id"`
+	At             *time.Time      `json:"at,omitempty"`
+	FromMaturity   string          `json:"from_maturity"`
+	Action         string          `json:"action"`
+	Reasoning      string          `json:"reasoning,omitempty"`
+	Feedback       string          `json:"feedback,omitempty"`
+	WorkID         *int64          `json:"work_id,omitempty"`
+	RevisionCount  int             `json:"revision_count"`
+	RawResponse    json.RawMessage `json:"raw_response,omitempty"`
+}
+
+type gateDecisionsResp struct {
+	Items []gateDecisionRow `json:"items"`
+	Count int               `json:"count"`
+}
+
+func (d *Deps) workItemsGateDecisionsHandler(w http.ResponseWriter, r *http.Request) {
+	ctx, cancel := context.WithTimeout(r.Context(), 5*time.Second)
+	defer cancel()
+
+	id := r.URL.Query().Get("id")
+	if id == "" {
+		writeErr(w, http.StatusBadRequest, "id query param required")
+		return
+	}
+
+	resp := gateDecisionsResp{Items: []gateDecisionRow{}}
+	rows, err := d.Pool.Query(ctx,
+		`SELECT id, at, from_maturity, action,
+		        coalesce(reasoning, ''), coalesce(feedback, ''),
+		        work_id, revision_count, coalesce(raw_response, '{}'::jsonb)
+		   FROM stewards.gate_decisions
+		  WHERE work_item_id = $1::uuid
+		  ORDER BY at DESC, id DESC
+		  LIMIT 50`,
+		id,
+	)
+	if err != nil {
+		writeErr(w, http.StatusInternalServerError, err.Error())
+		return
+	}
+	defer rows.Close()
+	for rows.Next() {
+		var g gateDecisionRow
+		if err := rows.Scan(&g.ID, &g.At, &g.FromMaturity, &g.Action,
+			&g.Reasoning, &g.Feedback, &g.WorkID, &g.RevisionCount,
+			&g.RawResponse); err == nil {
+			resp.Items = append(resp.Items, g)
 		}
 	}
 	resp.Count = len(resp.Items)
