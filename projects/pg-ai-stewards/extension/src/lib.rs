@@ -309,6 +309,12 @@ extension_sql_file!(
     requires = ["create_phase_5e_lessons_and_pipeline_flags"],
 );
 
+extension_sql_file!(
+    "../5e3-atonement.sql",
+    name = "create_phase_5e3_atonement",
+    requires = ["create_phase_5e2_sabbath"],
+);
+
 // ---------------------------------------------------------------------------
 // Diagnostic SQL functions
 // ---------------------------------------------------------------------------
