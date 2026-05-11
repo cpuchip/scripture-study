@@ -689,9 +689,18 @@ fn process_one_pending() -> bool {
                         .get("_verify")
                         .and_then(|v| v.as_bool())
                         .unwrap_or(false);
+                    // Phase 5e (D.4): two more markers for Sabbath + Atonement.
+                    let is_sabbath = payload
+                        .get("_sabbath")
+                        .and_then(|v| v.as_bool())
+                        .unwrap_or(false);
+                    let is_atonement = payload
+                        .get("_atonement")
+                        .and_then(|v| v.as_bool())
+                        .unwrap_or(false);
 
                     if let Some(wi_str) = wi_opt {
-                        if is_gate_eval || is_scenarios_gen || is_verify {
+                        if is_gate_eval || is_scenarios_gen || is_verify || is_sabbath || is_atonement {
                             let parsed: Result<Option<pgrx::JsonB>, pgrx::spi::Error> =
                                 client.update(
                                     "SELECT stewards.parse_gate_response($1)",
@@ -778,12 +787,58 @@ fn process_one_pending() -> bool {
                                                 "stewards: apply_verify_result failed for work_item={}: {}",
                                                 wi_str, e),
                                         }
+                                    } else if is_sabbath {
+                                        let r: Result<Option<i64>, pgrx::spi::Error> =
+                                            client.update(
+                                                "SELECT stewards.apply_sabbath_result($1::uuid, $2, $3)",
+                                                Some(1),
+                                                &[wi_str.into(), json.into(), id.into()],
+                                            ).and_then(|rs| {
+                                                let mut it = rs.into_iter();
+                                                if let Some(r) = it.next() {
+                                                    Ok(r.get::<i64>(1)?)
+                                                } else { Ok(None) }
+                                            });
+                                        match r {
+                                            Ok(Some(lid)) => pgrx::log!(
+                                                "stewards: sabbath reflection #{} written for work_item={}",
+                                                lid, wi_str),
+                                            Ok(None) => pgrx::log!(
+                                                "stewards: sabbath apply returned null for work_item={}",
+                                                wi_str),
+                                            Err(e) => pgrx::log!(
+                                                "stewards: apply_sabbath_result failed for work_item={}: {}",
+                                                wi_str, e),
+                                        }
+                                    } else if is_atonement {
+                                        let r: Result<Option<i32>, pgrx::spi::Error> =
+                                            client.update(
+                                                "SELECT stewards.apply_atonement_result($1::uuid, $2, $3)",
+                                                Some(1),
+                                                &[wi_str.into(), json.into(), id.into()],
+                                            ).and_then(|rs| {
+                                                let mut it = rs.into_iter();
+                                                if let Some(r) = it.next() {
+                                                    Ok(r.get::<i32>(1)?)
+                                                } else { Ok(None) }
+                                            });
+                                        match r {
+                                            Ok(Some(n)) => pgrx::log!(
+                                                "stewards: {} atonement lessons written for work_item={}",
+                                                n, wi_str),
+                                            Ok(None) => pgrx::log!(
+                                                "stewards: atonement apply returned null for work_item={}",
+                                                wi_str),
+                                            Err(e) => pgrx::log!(
+                                                "stewards: apply_atonement_result failed for work_item={}: {}",
+                                                wi_str, e),
+                                        }
                                     }
                                 }
                                 Ok(None) => {
                                     pgrx::log!(
-                                        "stewards: gate response unparseable for work_item={} work_id={} (gate_eval={} scenarios={} verify={})",
-                                        wi_str, id, is_gate_eval, is_scenarios_gen, is_verify
+                                        "stewards: gate response unparseable for work_item={} work_id={} (gate_eval={} scenarios={} verify={} sabbath={} atonement={})",
+                                        wi_str, id, is_gate_eval, is_scenarios_gen, is_verify, is_sabbath, is_atonement
                                     );
                                 }
                                 Err(e) => {
