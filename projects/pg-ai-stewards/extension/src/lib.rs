@@ -369,6 +369,12 @@ extension_sql_file!(
     requires = ["create_phase_5g2_convene_council"],
 );
 
+extension_sql_file!(
+    "../5g4-bishop-and-suggest.sql",
+    name = "create_phase_5g4_bishop_and_suggest",
+    requires = ["create_phase_5g3_synthesize_and_resolve"],
+);
+
 // ---------------------------------------------------------------------------
 // Diagnostic SQL functions
 // ---------------------------------------------------------------------------
