@@ -357,6 +357,12 @@ extension_sql_file!(
     requires = ["create_phase_5f5_apply_gate_override"],
 );
 
+extension_sql_file!(
+    "../5g2-convene-council.sql",
+    name = "create_phase_5g2_convene_council",
+    requires = ["create_phase_5g_council"],
+);
+
 // ---------------------------------------------------------------------------
 // Diagnostic SQL functions
 // ---------------------------------------------------------------------------
