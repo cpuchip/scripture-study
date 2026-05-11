@@ -767,6 +767,25 @@ before starting the next.
 records the choice + any nuance Michael added that the original options
 didn't fully capture.*
 
+> **2026-05-11 re-validation amendments** (after Phase B feature-complete):
+>
+> - **D-B-revise (NEW, hybrid):** Phase B's revise path uses hybrid — revise #1 stays same model + injects feedback into prompt; revise #2 escalates model AND keeps feedback. Cap at 2 → surface (D-B2) unchanged. See `phase-b-revise-hybrid` carry-forward.
+> - **D-C4 (revised):** Free-form covenant gate prompt with **tools disabled**. Original ratification was free-form; the tools-disabled refinement came after Phase B's gate-eval cost surprise (5× cost from research loop). Same fix applies retroactively to Phase B's `evaluate` template.
+> - **D-D-Sabbath gating (NEW):** Sabbath blocks `work_item_promote_to_study` for sabbath-enabled pipelines. The discipline is endings recorded.
+> - **D-D-Atonement tools (NEW):** Atonement dispatched with tools disabled (same fix as D-C4).
+> - **D-D-Lessons schema (NEW):** `stewards.lessons` mirrors `gate_decisions` audit-ledger shape (kind column over structured triplet). Stewards-UI already knows how to render this pattern.
+> - **D-E-trust-keying (revised):** Trust keyed on `(agent_family, pipeline_family, model)` not the proposal's `(agent_family, pipeline_family)`. Recognizes that "kimi-k2.6 doing study-write outline" is genuinely different from "qwen3.6-plus doing the same."
+> - **D-E-promotion-signal (NEW):** Successful completion = maturity reached verified (not just `status='done'`). Aligns trust with Phase B's quality signal.
+> - **D-E-retry-lessons (NEW):** Retry composer pulls last 3 ratified lessons for `(pipeline, stage)` from `lessons_recent_ratified` view.
+> - **D-F2-nuance (NEW):** Phase F1 ships with master-on-pipeline-of-intent rule for agent bishops. Future evolution path: introduce `council_authority` as separate trust dimension; debug agent is candidate first cultivator (its skills are designed to get at the root, well-suited for bishop's facilitation role).
+> - **D-F-low-stakes-def (NEW):** Low-stakes intents = `intent.scripture_anchor IS NULL AND values_hierarchy doesn't contain 'doctrinal'|'spiritual'|'discernment'`. Doctrinal/discernment intents always require human bishop.
+> - **D-F-member-keying (NEW):** Council members keyed `(council_id, agent_family, role)` — model floats per dispatch. Matches commission flow.
+> - **D-F-watchman-suggest (NEW):** System-suggested convening surfaces in BOTH watchman pass output AND Stewards-UI dashboard banner.
+> - **Seed mechanism (NEW):** YAML → substrate via manual `seed_intents_from_yaml` / `seed_covenant_from_yaml` SQL functions, called from a git pre-commit hook when YAML changes.
+>
+> Per-phase build-ready sub-specs land at `phase-c-design.md`, `phase-d-design.md`, `phase-e-design.md`, `phase-f-design.md`.
+
+
 **Phase A:**
 - D-A1: Five failure types, or collapse `tool_error`?
   **Ratified:** Keep all 5 (transient, timeout, model_limit, tool_error, unknown).
