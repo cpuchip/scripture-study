@@ -82,6 +82,51 @@ function gateActionTone(action: string): string {
   if (action === 'surface') return 'text-blue-300 border-blue-700/50 bg-blue-900/30'
   return 'text-zinc-300 border-zinc-700 bg-zinc-800'
 }
+
+// Phase 5f (E.7) — gate override modal state
+const overrideOpen = ref<{ id: number; current_action: string } | null>(null)
+const overrideNewAction = ref<'advance' | 'revise' | 'surface'>('revise')
+const overrideJustification = ref('')
+const overrideBy = ref('michael')
+const overriding = ref(false)
+const overrideError = ref('')
+
+function openOverride(g: { id: number; action: string }) {
+  overrideOpen.value = { id: g.id, current_action: g.action }
+  overrideNewAction.value = g.action === 'advance' ? 'revise'
+                          : g.action === 'revise'  ? 'surface'
+                          : 'advance'
+  overrideJustification.value = ''
+  overrideError.value = ''
+}
+
+async function submitOverride() {
+  if (!overrideOpen.value) return
+  if (overrideJustification.value.trim().length < 10) {
+    overrideError.value = 'Justification must be at least 10 characters'
+    return
+  }
+  if (overrideNewAction.value === overrideOpen.value.current_action) {
+    overrideError.value = 'New action must differ from original'
+    return
+  }
+  overriding.value = true
+  overrideError.value = ''
+  try {
+    await api.gateOverrideApply({
+      gate_decision_id: overrideOpen.value.id,
+      overridden_by: overrideBy.value || 'human',
+      new_action: overrideNewAction.value,
+      justification: overrideJustification.value,
+    })
+    overrideOpen.value = null
+    if (wi.value) await load(wi.value.id)
+  } catch (e) {
+    overrideError.value = String(e)
+  } finally {
+    overriding.value = false
+  }
+}
 function scenariosArray(s: unknown): string[] {
   if (!Array.isArray(s)) return []
   return s.map((x) => (typeof x === 'string' ? x : JSON.stringify(x)))
@@ -226,9 +271,71 @@ function actionTone(action: string): string {
               <summary class="cursor-pointer text-zinc-600 hover:text-zinc-400">raw response</summary>
               <pre class="mt-1 font-mono text-zinc-400 whitespace-pre-wrap">{{ fmtJson(g.raw_response) }}</pre>
             </details>
+            <button
+              class="mt-2 text-xs px-2 py-1 rounded border border-purple-700 hover:bg-purple-900/30 text-purple-300"
+              @click="openOverride(g)"
+            >Override gate decision…</button>
           </li>
         </ul>
       </section>
+
+      <!-- Phase 5f (E.7): override modal -->
+      <div
+        v-if="overrideOpen"
+        class="fixed inset-0 z-50 flex items-center justify-center bg-black/60"
+        @click.self="overrideOpen = null"
+      >
+        <div class="bg-zinc-900 border border-zinc-700 rounded-lg p-5 max-w-lg w-full space-y-3">
+          <h3 class="text-lg font-semibold">Override gate decision</h3>
+          <p class="text-xs text-zinc-500">
+            Original action: <span class="font-mono">{{ overrideOpen.current_action }}</span>.
+            Override counts as a failure for trust scoring (D-E3) — the cell auto-demotes one level.
+          </p>
+          <div>
+            <label class="block text-xs uppercase tracking-wide text-zinc-500 mb-1">New action</label>
+            <select
+              v-model="overrideNewAction"
+              class="w-full px-3 py-2 rounded border border-zinc-700 bg-zinc-950 text-sm focus:border-zinc-500 focus:outline-none"
+            >
+              <option value="advance">advance</option>
+              <option value="revise">revise</option>
+              <option value="surface">surface</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-xs uppercase tracking-wide text-zinc-500 mb-1">Overridden by</label>
+            <input
+              v-model="overrideBy"
+              type="text"
+              class="w-full px-3 py-2 rounded border border-zinc-700 bg-zinc-950 text-sm focus:border-zinc-500 focus:outline-none"
+            />
+          </div>
+          <div>
+            <label class="block text-xs uppercase tracking-wide text-zinc-500 mb-1">
+              Justification <span class="text-red-400">*</span>
+              <span class="text-zinc-600 normal-case">(at least 10 chars)</span>
+            </label>
+            <textarea
+              v-model="overrideJustification"
+              rows="3"
+              placeholder="why is the gate's call wrong?"
+              class="w-full px-3 py-2 rounded border border-zinc-700 bg-zinc-950 text-sm focus:border-zinc-500 focus:outline-none resize-y"
+            ></textarea>
+          </div>
+          <div class="flex items-center gap-3 pt-2">
+            <button
+              class="px-4 py-2 rounded bg-purple-700 hover:bg-purple-600 text-white text-sm font-medium disabled:opacity-50"
+              :disabled="overriding || overrideJustification.trim().length < 10"
+              @click="submitOverride"
+            >{{ overriding ? 'submitting…' : 'Apply override' }}</button>
+            <button
+              class="px-3 py-2 text-xs rounded border border-zinc-700 hover:bg-zinc-800 text-zinc-300"
+              @click="overrideOpen = null"
+            >Cancel</button>
+            <span v-if="overrideError" class="text-xs text-red-400">{{ overrideError }}</span>
+          </div>
+        </div>
+      </div>
 
       <!-- Phase 4j: Steward status panel -->
       <section

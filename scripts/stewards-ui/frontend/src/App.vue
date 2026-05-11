@@ -20,6 +20,7 @@ import { RouterLink, RouterView } from 'vue-router'
         <RouterLink to="/covenants" class="hover:text-zinc-100">Covenant</RouterLink>
         <RouterLink to="/sabbath" class="hover:text-zinc-100">Sabbath</RouterLink>
         <RouterLink to="/lessons" class="hover:text-zinc-100">Lessons</RouterLink>
+        <RouterLink to="/trust" class="hover:text-zinc-100">Trust</RouterLink>
       </nav>
     </header>
 

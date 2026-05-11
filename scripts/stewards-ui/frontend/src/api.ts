@@ -186,6 +186,42 @@ export const api = {
   },
   sabbathList: (pipeline?: string) =>
     getJSON<SabbathListResp>(`/api/sabbath/list${pipeline ? '?pipeline=' + encodeURIComponent(pipeline) : ''}`),
+  trustScores: () => getJSON<TrustScoresResp>('/api/trust/scores'),
+  trustTransitions: (params?: { agent?: string; pipeline?: string; model?: string; limit?: number }) => {
+    const q = new URLSearchParams()
+    if (params?.agent) q.set('agent', params.agent)
+    if (params?.pipeline) q.set('pipeline', params.pipeline)
+    if (params?.model) q.set('model', params.model)
+    if (params?.limit) q.set('limit', String(params.limit))
+    const qs = q.toString()
+    return getJSON<TrustTransitionsResp>(`/api/trust/transitions${qs ? '?' + qs : ''}`)
+  },
+  trustAdjust: async (req: TrustAdjustReq): Promise<TrustAdjustResp> => {
+    const r = await fetch('/api/trust/adjust', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(req),
+    })
+    if (!r.ok) {
+      let msg = `HTTP ${r.status}`
+      try { const b = await r.json(); if (b.error) msg = b.error } catch {}
+      throw new Error(msg)
+    }
+    return r.json()
+  },
+  gateOverrideApply: async (req: GateOverrideApplyReq): Promise<GateOverrideApplyResp> => {
+    const r = await fetch('/api/gate-overrides/apply', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(req),
+    })
+    if (!r.ok) {
+      let msg = `HTTP ${r.status}`
+      try { const b = await r.json(); if (b.error) msg = b.error } catch {}
+      throw new Error(msg)
+    }
+    return r.json()
+  },
   sessionGet: (sid: string) =>
     getJSON<SessionDetail>(`/api/sessions/get?id=${encodeURIComponent(sid)}`),
   watchmanPasses: (limit?: number) => {
@@ -343,6 +379,68 @@ export type SabbathRow = {
 export type SabbathListResp = {
   items: SabbathRow[]
   total: number
+}
+
+// Phase 5f (E.6+E.7) — trust + gate override types
+
+export type TrustScoreRow = {
+  agent_family: string
+  pipeline_family: string
+  model: string
+  successful_completions: number
+  failed_completions: number
+  human_overrides: number
+  trust_level: 'trainee' | 'journeyman' | 'master'
+  last_evaluated_at?: string
+  last_completion_at?: string
+}
+
+export type TrustScoresResp = {
+  items: TrustScoreRow[]
+  total: number
+}
+
+export type TrustTransitionRow = {
+  id: number
+  at?: string
+  agent_family: string
+  pipeline_family: string
+  model: string
+  from_level: string
+  to_level: string
+  transition_kind: 'auto' | 'manual'
+  actor: string
+  justification?: string
+  metrics?: unknown
+}
+
+export type TrustTransitionsResp = {
+  items: TrustTransitionRow[]
+  total: number
+}
+
+export type TrustAdjustReq = {
+  agent_family: string
+  pipeline_family: string
+  model: string
+  new_level: 'trainee' | 'journeyman' | 'master'
+  actor: string
+  justification: string
+}
+
+export type TrustAdjustResp = {
+  new_level: string
+}
+
+export type GateOverrideApplyReq = {
+  gate_decision_id: number
+  overridden_by: string
+  new_action: 'advance' | 'revise' | 'surface'
+  justification: string
+}
+
+export type GateOverrideApplyResp = {
+  new_maturity: string
 }
 
 export type WorkItemCreateResp = {

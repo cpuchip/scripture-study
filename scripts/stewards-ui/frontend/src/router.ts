@@ -18,6 +18,7 @@ const Intents = () => import('./views/Intents.vue')
 const Covenants = () => import('./views/Covenants.vue')
 const Sabbath = () => import('./views/Sabbath.vue')
 const Lessons = () => import('./views/Lessons.vue')
+const Trust = () => import('./views/Trust.vue')
 
 const routes: RouteRecordRaw[] = [
   { path: '/',           name: 'dashboard',  component: Dashboard },
@@ -35,6 +36,7 @@ const routes: RouteRecordRaw[] = [
   { path: '/covenants',  name: 'covenants',  component: Covenants, meta: { title: 'Covenant' } },
   { path: '/sabbath',    name: 'sabbath',    component: Sabbath, meta: { title: 'Sabbath log' } },
   { path: '/lessons',    name: 'lessons',    component: Lessons, meta: { title: 'Lessons' } },
+  { path: '/trust',      name: 'trust',      component: Trust, meta: { title: 'Trust matrix' } },
 ]
 
 export default createRouter({
