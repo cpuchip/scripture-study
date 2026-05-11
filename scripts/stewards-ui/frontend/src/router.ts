@@ -19,6 +19,8 @@ const Covenants = () => import('./views/Covenants.vue')
 const Sabbath = () => import('./views/Sabbath.vue')
 const Lessons = () => import('./views/Lessons.vue')
 const Trust = () => import('./views/Trust.vue')
+const Councils = () => import('./views/Councils.vue')
+const CouncilDetail = () => import('./views/CouncilDetail.vue')
 
 const routes: RouteRecordRaw[] = [
   { path: '/',           name: 'dashboard',  component: Dashboard },
@@ -37,6 +39,8 @@ const routes: RouteRecordRaw[] = [
   { path: '/sabbath',    name: 'sabbath',    component: Sabbath, meta: { title: 'Sabbath log' } },
   { path: '/lessons',    name: 'lessons',    component: Lessons, meta: { title: 'Lessons' } },
   { path: '/trust',      name: 'trust',      component: Trust, meta: { title: 'Trust matrix' } },
+  { path: '/councils',   name: 'councils',   component: Councils, meta: { title: 'Councils' } },
+  { path: '/councils/:id', name: 'council-detail', component: CouncilDetail, meta: { title: 'Council' }, props: true },
 ]
 
 export default createRouter({

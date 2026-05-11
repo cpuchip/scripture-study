@@ -222,6 +222,38 @@ export const api = {
     }
     return r.json()
   },
+  councilsList: (limit?: number) =>
+    getJSON<CouncilsListResp>(`/api/councils/list${limit ? '?limit=' + limit : ''}`),
+  councilGet: (id: string) =>
+    getJSON<CouncilDetail>(`/api/councils/get?id=${encodeURIComponent(id)}`),
+  councilSuggestions: (minLessons?: number) =>
+    getJSON<CouncilSuggestionsResp>(`/api/councils/suggestions${minLessons ? '?min_lessons=' + minLessons : ''}`),
+  councilConvene: async (req: CouncilConveneReq): Promise<CouncilConveneResp> => {
+    const r = await fetch('/api/councils/convene', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(req),
+    })
+    if (!r.ok) {
+      let msg = `HTTP ${r.status}`
+      try { const b = await r.json(); if (b.error) msg = b.error } catch {}
+      throw new Error(msg)
+    }
+    return r.json()
+  },
+  councilResolve: async (req: CouncilResolveReq): Promise<CouncilResolveResp> => {
+    const r = await fetch('/api/councils/resolve', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(req),
+    })
+    if (!r.ok) {
+      let msg = `HTTP ${r.status}`
+      try { const b = await r.json(); if (b.error) msg = b.error } catch {}
+      throw new Error(msg)
+    }
+    return r.json()
+  },
   sessionGet: (sid: string) =>
     getJSON<SessionDetail>(`/api/sessions/get?id=${encodeURIComponent(sid)}`),
   watchmanPasses: (limit?: number) => {
@@ -441,6 +473,94 @@ export type GateOverrideApplyReq = {
 
 export type GateOverrideApplyResp = {
   new_maturity: string
+}
+
+// Phase 5g (F.6+F.7) — council types
+
+export type CouncilRow = {
+  id: string
+  intent_id: string
+  intent_slug?: string
+  binding_question: string
+  convened_at?: string
+  convened_by: string
+  bishop: string
+  status: 'deliberating' | 'synthesizing' | 'awaiting_bishop' | 'resolved' | 'dissolved'
+  resolution_id?: string
+  dissolved_reason?: string
+  resolved_at?: string
+}
+
+export type CouncilsListResp = {
+  items: CouncilRow[]
+  total: number
+}
+
+export type CouncilMember = {
+  agent_family: string
+  role: 'proposer' | 'critic' | 'synthesizer'
+  work_id?: number
+  response?: string
+  completed_at?: string
+}
+
+export type CouncilResolution = {
+  id: string
+  resolved_by: string
+  text: string
+  promoted_to?: string
+  promoted_at?: string
+  raw_proposal?: unknown
+  resolved_at?: string
+}
+
+export type CouncilDetail = CouncilRow & {
+  intent_purpose?: string
+  members: CouncilMember[]
+  resolution?: CouncilResolution
+}
+
+export type CouncilMemberSpec = {
+  agent_family: string
+  role: 'proposer' | 'critic' | 'synthesizer'
+  model?: string
+}
+
+export type CouncilConveneReq = {
+  intent_id: string
+  binding_question: string
+  members: CouncilMemberSpec[]
+  bishop: string
+  convened_by?: string
+}
+
+export type CouncilConveneResp = {
+  id: string
+}
+
+export type CouncilResolveReq = {
+  council_id: string
+  action: 'accept' | 'request_revision' | 'dissolve'
+  resolution_text?: string
+  destination?: 'study' | 'decisions' | ''
+  resolved_by?: string
+  dissolved_reason?: string
+}
+
+export type CouncilResolveResp = {
+  resolution_id: string
+}
+
+export type CouncilSuggestion = {
+  pipeline_family: string
+  current_stage: string
+  lesson_count: number
+  sample_content: string
+}
+
+export type CouncilSuggestionsResp = {
+  items: CouncilSuggestion[]
+  total: number
 }
 
 export type WorkItemCreateResp = {
