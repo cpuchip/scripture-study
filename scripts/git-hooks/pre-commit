@@ -55,4 +55,63 @@ if echo "$CHANGED" | grep -qE '^\.spec/covenant\.yaml$'; then
     reseed_covenant
 fi
 
+# ---------------------------------------------------------------------
+# Batch G.4.3 — materialize substrate's pending file writes.
+#
+# Drains stewards.pending_file_writes via stewards-cli materialize-writes.
+# Files materialize into the working tree BEFORE the commit completes,
+# so the newly-written files are NOT automatically staged — git status
+# will show them after the commit and they'll be included in the NEXT
+# commit (Michael's choice on staging keeps a human in the loop on what
+# gets versioned).
+#
+# Skips gracefully if container is down or the CLI binary is missing.
+# ---------------------------------------------------------------------
+
+materialize_writes() {
+    if ! container_running; then
+        echo "pre-commit: $CONTAINER not running; skipping materialize-writes."
+        return 0
+    fi
+
+    # Find the CLI binary. Look in canonical project bin/ first.
+    local cli=""
+    local repo_root
+    repo_root="$(git rev-parse --show-toplevel)"
+    for candidate in \
+        "${repo_root}/projects/pg-ai-stewards/bin/stewards-cli.exe" \
+        "${repo_root}/projects/pg-ai-stewards/bin/stewards-cli" \
+        "${repo_root}/bin/stewards-cli.exe" \
+        "${repo_root}/bin/stewards-cli"
+    do
+        if [ -x "$candidate" ]; then
+            cli="$candidate"
+            break
+        fi
+    done
+    if [ -z "$cli" ] && command -v stewards-cli >/dev/null 2>&1; then
+        cli="stewards-cli"
+    fi
+    if [ -z "$cli" ]; then
+        echo "pre-commit: stewards-cli not found; skipping materialize-writes."
+        echo "  (build: cd projects/pg-ai-stewards/cmd/stewards-cli && go build -o ../../bin/stewards-cli.exe .)"
+        return 0
+    fi
+
+    # Quick check: any pending rows? If not, no output noise.
+    local count
+    count=$(docker exec "${CONTAINER}" psql -U stewards -d stewards -tAc \
+        "SELECT count(*) FROM stewards.pending_file_writes WHERE materialized_at IS NULL" 2>/dev/null || echo "0")
+    if [ "$count" = "0" ]; then
+        return 0
+    fi
+
+    echo "pre-commit: $count pending file write(s); materializing"
+    STEWARDS_DSN="${STEWARDS_DSN:-postgres://stewards:stewards@localhost:55433/stewards?sslmode=disable}" \
+        "$cli" materialize-writes --repo-root "$(git rev-parse --show-toplevel)" 2>&1 \
+        | sed 's/^/  /'
+}
+
+materialize_writes
+
 exit 0
