@@ -1,0 +1,308 @@
+---
+title: pg-ai-stewards open items — consolidated review
+date: 2026-05-11
+status: living document — update after each work session
+purpose: >
+  Single inventory of every unresolved carry-forward, open question, and
+  follow-up across the substrate's sub-specs and journal entries. Prevents
+  items from getting lost in journal archaeology. Grouped by theme so
+  Michael can pick a "next batch" using the cadence that worked for
+  Phases C–F (decisions upfront → gated phased build).
+---
+
+# pg-ai-stewards open items
+
+Substrate is feature-complete through Phase F as of 2026-05-11. This document collects every unfinished item the substrate work has surfaced — cleanups, bugs, validation gaps, and future evolution paths — so the next session has a single inventory to pick from rather than re-deriving the queue from journal archaeology.
+
+Each item carries:
+- **Source** — the journal entry or sub-spec it came from
+- **Effort** — small (≤30 min) / medium (1 session) / large (2+ sessions)
+- **Risk** — what breaks if we don't do this
+
+Items are grouped by **theme**, not phase. The phase that surfaced the item is in parentheses for traceability.
+
+---
+
+## I. Pre-existing bugs (do these first)
+
+These predate the substrate work but were caught during it. They block functionality the substrate now depends on.
+
+### 1.1 `studies.file_path NOT NULL` blocks `promote_to_study`
+- **Source:** `journal/2026-05-11-substrate-phase-d-shipped.md`, surfaced again in E + F journals
+- **Effort:** small (≤30 min)
+- **Risk:** every successful study-write run that reaches verified will fail at the consecration step. The Sabbath gate (D.5) now correctly waves them past the sabbath check, only to hit this NOT NULL. Effectively: `work_item_promote_to_study` has been silently failing for any study slug long enough that no one noticed until D.5 lit it up.
+- **Fix:** either make `file_path` nullable, or compute it from the slug at insert time (`study/<slug>.md`).
+- **Recommendation:** **do this before the first real Phase D end-to-end run.** Otherwise the first Sabbath-gated promotion will fail and we'll waste an LLM round.
+
+---
+
+## II. Wiring gaps (substrate built, not yet plumbed end-to-end)
+
+The Build sessions left a few SQL helpers + Rust hooks that aren't called from where they should be. None block; all are 1-2 line surgeries.
+
+### 2.1 Steward retry doesn't pull lessons yet
+- **Source:** `journal/2026-05-11-substrate-phase-e-shipped.md`, sub-spec `phase-e-design.md` § V.6
+- **Effort:** small (≤30 min)
+- **Risk:** Phase E's `retry_guidance_with_lessons` exists but `4c-steward-dispatch.sql` still calls plain `retry_guidance`. Line-upon-line discipline is never exercised on real retries.
+- **Fix:** swap the function call in `steward_dispatch.sql` to `retry_guidance_with_lessons(diagnosis, attempt, pipeline_family, current_stage)`. Live-apply via `docker cp + psql -f`.
+
+### 2.2 Steward quarantine doesn't fire atonement yet
+- **Source:** `journal/2026-05-11-substrate-phase-d-shipped.md`
+- **Effort:** small (≤30 min)
+- **Risk:** Phase D's `maybe_enqueue_atonement(work_item_id)` helper exists but the steward's quarantine path doesn't call it. So even with `pipeline.atonement_enabled=true`, no atonement fires when a work_item gets quarantined.
+- **Fix:** add `PERFORM stewards.maybe_enqueue_atonement(v_work_item_id);` at the quarantine point in `steward_dispatch.sql`.
+
+### 2.3 Hybrid revise (revise #1 same model + feedback prepended)
+- **Source:** project memory `project_pg_ai_stewards_revise_hybrid.md` (ratified 2026-05-11)
+- **Effort:** medium (1 session)
+- **Risk:** today's revise immediately escalates model on retry #1. Wastes the focused-critique opportunity that the gate's feedback represents.
+- **Fix:** add `feedback` column to dispatch payload; `work_item_dispatch_stage` prepends as "Previous attempt critique:" when set; steward retry path stashes feedback + skips model_override on revision_count=0; only escalates on revision_count=1 (the second revise). Cap stays at 2 → surface (D-B2 unchanged).
+
+### 2.4 covenant_check template is seeded but un-dispatched
+- **Source:** `journal/2026-05-11-substrate-phase-c-shipped.md`
+- **Effort:** small (≤30 min) for a `covenant_check_dispatch` SQL fn; medium if we wire it into the maturity ladder as another auto-fire moment
+- **Risk:** Phase C.6 added the `covenant_check` template + bgworker auto-fire path but nothing calls it. The template is ready; the dispatch function and the trigger point aren't.
+- **Fix v1:** ship `stewards.covenant_check_dispatch(work_item_id)` as a manual entry point + a stewards-ui "Run covenant check" button on WorkItemDetail. Decide later whether to auto-fire it on stage completion or leave it human-triggered.
+- **Recommendation:** decide-then-build. The auto-fire-vs-manual question is a real ratification, not a code question.
+
+---
+
+## III. Missing infrastructure (subsystems set, action stubs)
+
+Both Phase D and Phase F set `promoted_to` columns but no actual file write happens.
+
+### 3.1 File-write mechanism for promoted lessons + resolutions
+- **Source:** `phase-d-design.md` § VI, `phase-f-design.md` § VI, journal entries D + F
+- **Effort:** medium (1 session) for the simplest approach (pending-write table + sidecar that materializes on `git commit`); large for any cleaner approach (host-mount + plpython3u, etc.)
+- **Risk:** "Approve & promote → .mind/principles.md" buttons in Lessons.vue + "Accept + promote to .mind/decisions.md" in CouncilDetail.vue both set the database column but produce no file write. Without this, lessons stay substrate-only and the gospel framework's `.mind/principles.md` never grows from substrate experience.
+- **Approaches:**
+  - (a) **Pending-write table** — substrate INSERTs into `stewards.pending_file_writes (path, content, requested_at, materialized_at)`. A small CLI command (`stewards-cli materialize-writes`) appends the queued content to the target files. Run manually before each `git commit`, or wire into the pre-commit hook.
+  - (b) **Sidecar daemon** — bridge container watches the pending_file_writes table via NOTIFY and writes immediately. More moving parts; substrate stops being FS-stateless.
+  - (c) **plpython3u** — pg writes files directly. Fast but introduces a new extension dep + tighter coupling.
+- **Recommendation:** (a). Matches the "substrate stays stateless on FS" principle from both sub-specs.
+
+### 3.2 First real council convene + run end-to-end
+- **Source:** `journal/2026-05-11-substrate-phase-f-complete.md`
+- **Effort:** medium (1 session) — pick intent, design members, run, watch, accept
+- **Risk:** Phase F is fully built but never exercised with an LLM. Cost ~$0.04-0.10 per council. Synthetic smoke verified D-F1 enforcement + bishop_eligible logic but the room hasn't filled with real responses.
+- **Recommendation:** pick a low-stakes intent (or create a new "evaluate workflow X" intent) so an agent bishop can also be tested. Two or three members. Watch the live deliberation in `/councils/:id`.
+
+### 3.3 First real Atonement-on-quarantine end-to-end
+- **Source:** `journal/2026-05-11-substrate-phase-d-shipped.md`
+- **Effort:** small (≤30 min) once 2.2 above lands — just need a quarantined work_item to sacrifice
+- **Risk:** Phase D atonement is wired symmetrically with sabbath, so the auto-fire path is verified by D.4's sabbath test. But the actual atonement output (principles + decisions + lessons across 3 arrays) hasn't been observed on a real failure.
+
+### 3.4 Trust state needs to be exercised by real work_items
+- **Source:** `journal/2026-05-11-substrate-phase-e-shipped.md`
+- **Effort:** falls out naturally from any real study run that reaches verified
+- **Risk:** synthetic counter increments proved the promotion + demotion logic; the actual gate path that increments trust hasn't fired in production. First study run with the trust gate enabled will surface any wiring bugs.
+
+---
+
+## IV. Cleanups (low-risk, low-priority, do when convenient)
+
+### 4.1 `bgworker.payload._kind` enum refactor
+- **Source:** journals D, E, F
+- **Effort:** small (≤1 hour)
+- **Risk:** none. Bgworker now switches on 7 marker booleans (`_gate_eval`, `_scenarios_gen`, `_verify`, `_sabbath`, `_atonement`, `_council_member`, `_council_synthesize`). Every variant has slightly different shape (council_member needs role, synthesize doesn't have work_item) so the case-by-case is justified for now — but a `_kind` enum + match would be cleaner.
+- **Recommendation:** defer until the 8th marker lands or a real bug forces the refactor. Today's switch isn't broken; refactoring it now is premature.
+
+### 4.2 Stewards-UI sidebar grouping (route count = 14)
+- **Source:** journals E + F + sub-spec phase-e-design.md § VI
+- **Effort:** medium (1 session)
+- **Risk:** none, but the nav header is genuinely cluttered. Routes today: Dashboard, Studies, Work items, Sessions, Watchman, Bridge, Graph, New work, Intents, Covenant, Sabbath, Lessons, Trust, Councils.
+- **Recommendation:** group as **Substrate** (Intents, Covenant, Sabbath, Lessons, Trust, Councils) / **Surfaces** (Work items, Sessions, Watchman, Bridge) / **Records** (Studies, Graph) / **Action** (New work). Move from horizontal nav to a left sidebar.
+
+### 4.3 Token-cost audit of compose_system_prompt injection
+- **Source:** `journal/2026-05-11-substrate-phase-c-shipped.md`, sub-spec phase-c-design.md § VI
+- **Effort:** small (just measure)
+- **Risk:** Phase C.4 injects ~600 tokens of covenant + intent into every dispatched chat. Predicted to be acceptable; never measured on a real workload. If it spikes the cost panel on a long study run, add `compose_system_prompt(skip_covenant=true)` for stage chats that don't benefit from re-stating commitments mid-loop.
+- **Recommendation:** check the cost panel after the first real study run completes. Decide based on data.
+
+### 4.4 YAML edits don't trigger work_item dispatch refresh
+- **Source:** `journal/2026-05-11-substrate-phase-c-shipped.md`
+- **Effort:** none — documenting intentional behavior
+- **Risk:** none. If you edit `intent.yaml` mid-flight, the substrate's intent row gets updated in place; existing work_items pick up the new values on next dispatch via `compose_system_prompt`'s fresh query. Documented here so future-self doesn't think it's a bug.
+
+### 4.5 `gh_issue_create` grant for study agent (deferred from 3d)
+- **Source:** `journal/2026-05-09-pg-ai-stewards-3d-fetch-md-v2-3f.md`
+- **Effort:** small (single grant + smoke)
+- **Risk:** study agent can already use git (`gh_pr_create` etc.) but not `gh_issue_create`. Issue creation has higher blast-radius (publicly visible). Defaulted to NOT granted in 3d. Worth revisiting once a study run actually wants to file an issue.
+- **Recommendation:** wait for an organic need.
+
+### 4.6 SSE live tail for work_queue
+- **Source:** `journal/2026-05-09-stewards-ui-phases-2-7.md` carry_forward
+- **Effort:** large (~2 hours infra)
+- **Risk:** none. 5s dashboard polling covers the same use case for now. Worth doing only when we want CouncilDetail-style live deliberation streaming on more surfaces.
+
+### 4.7 Watchman finding-ack action
+- **Source:** `journal/2026-05-09-stewards-ui-phases-2-7.md` carry_forward
+- **Effort:** small (~30 min — POST /api/watchman/findings/ack)
+- **Risk:** read-only watchman page in v1; ack/dismiss actions skipped. Worth adding when Michael actually uses the UI to triage findings (vs. reading them in passing).
+
+### 4.8 Bridge refresh-tools button
+- **Source:** `journal/2026-05-09-stewards-ui-phases-2-7.md` carry_forward
+- **Effort:** small (~45 min — POST /api/bridge/refresh-tools triggers `bridge refresh-tools` via NOTIFY)
+- **Risk:** read-only bridge page. The action exists in the bridge daemon CLI; surfacing it in UI is convenience, not correctness.
+
+### 4.9 Substrate-promoted studies don't have AGE citation graph
+- **Source:** `journal/2026-05-09-stewards-ui-phases-2-7.md` carry_forward
+- **Effort:** medium (lives in 3c.3.5 follow-up territory)
+- **Risk:** `/api/graph` returns 0 edges for substrate--*.md studies because the promotion pipeline doesn't extract citations. Workspace-imported studies do show edges. Cosmetic for now; real value comes when substrate studies start citing each other.
+
+### 4.10 work_item write actions on WorkItemDetail (advance/cancel)
+- **Source:** `journal/2026-05-09-stewards-ui-phases-2-7.md` carry_forward
+- **Effort:** small (~30 min)
+- **Risk:** read-only WorkItemDetail today. SQL fns exist (`work_item_advance`, etc.); adding buttons is mostly UI work.
+
+---
+
+## V. Future evolution paths (decide when relevant)
+
+These are deliberate "v2" paths the sub-specs flagged for revisit after the substrate gets lived-with. None are blocking; all involve real ratification choices.
+
+### 5.1 F2 evolution: `council_authority` as separate trust dimension
+- **Source:** `phase-f-design.md` § V.5, journal F
+- **Effort:** medium (1 session) when ready
+- **Risk:** today's `bishop_eligible` requires master-on-pipeline-of-intent for agent bishops. Michael's 2026-05-11 nuance flagged that bishop authority is a *cultivated skill* (different from execution authority). Debug agent is the candidate first cultivator because its skills are designed to get at the root.
+- **Recommendation:** revisit after first real council with an agent bishop attempt — see whether master-on-pipeline maps cleanly to bishop facilitation in practice.
+
+### 5.2 D-F1 concurrency lift criterion
+- **Source:** `phase-f-design.md` § VI
+- **Effort:** small (just a `trust_thresholds`-style change) once we know if it's needed
+- **Risk:** today's `one_active_council` index allows exactly 1 concurrent. Lift to 3 if `>5 refusals/week` (per the sub-spec heuristic). Need actual usage data.
+
+### 5.3 Atonement cost guardrail (separate cap?)
+- **Source:** `phase-d-design.md` § VI
+- **Effort:** small once decided
+- **Risk:** Atonement on a long failure history is one of the larger prompts in the substrate. Today it shares the per-work_item cost cap. After observing cost on real atonements, decide whether it deserves its own cap (probably not — work_item cap should suffice).
+
+### 5.4 Lesson de-duplication signal
+- **Source:** `phase-d-design.md` § VI
+- **Effort:** medium
+- **Risk:** if the same insight surfaces in 5+ atonement events, that's a substrate-meaningful signal. Today nothing detects it. Worth instrumenting once we have ≥10 ratified lessons to look at.
+
+### 5.5 Override weighting (advance vs. revise vs. surface)
+- **Source:** `phase-e-design.md` § VI
+- **Effort:** small (per-action multiplier in trust_thresholds)
+- **Risk:** today every override counts as full-weight failure. Should "I think you should have surfaced this" weigh differently from "I think you should have advanced this"? Recommended equal weight initially; revisit if the trust signal feels noisy.
+
+### 5.6 First-completion bootstrap friction (5 surfaces to escape trainee)
+- **Source:** `phase-e-design.md` § VI
+- **Effort:** small (lower the threshold in `trust_thresholds`)
+- **Risk:** every new (agent, pipeline, model) cell starts trainee. With 5 surfaces required, the first 5 work_items per cell are heavy on human attention. Recommended keep at 5 initially; lower if it feels heavy after a month.
+
+### 5.7 System-suggested council binding question (specificity)
+- **Source:** `phase-f-design.md` § VI
+- **Effort:** small
+- **Risk:** today `suggest_councils` returns the cluster (pipeline, stage, sample lessons) but doesn't propose a binding question. The Vue Convene-from-suggestion handler synthesizes one from the lesson count, but it's a simple template. Worth letting an LLM compose a sharper binding question once we see real clusters.
+
+### 5.8 What if all council members error?
+- **Source:** `phase-f-design.md` § VI
+- **Effort:** small once decided
+- **Risk:** today the bgworker auto-fires synthesize when 0 proposer/critic members have `completed_at IS NULL`. If a member errored (work_queue.status='error'), `completed_at` stays NULL forever and the council hangs. Recommend: treat error as completion-with-empty-response so synthesize fires with whatever succeeded.
+
+### 5.9 Bishop dispatch path for agent bishops
+- **Source:** `phase-f-design.md` § VI
+- **Effort:** medium
+- **Risk:** today, when bishop is an agent identifier, the resolution still requires a human to click Accept in the UI. For agent bishops to actually work, need a `_council_bishop_dispatch=true` chat path that runs the agent through the resolution decision and writes back. Deferred until F2 lands.
+
+---
+
+## VI. Substrate-wide infrastructure debt
+
+### 6.1 Lesson #3 — proper extension version-bump strategy
+- **Source:** `journal/2026-05-11-substrate-phase-c-shipped.md` + carried in every Phase journal since
+- **Effort:** medium (real version-bump system) or current `bump-extension.sh` is "good enough"
+- **Status:** PARTIALLY ADDRESSED. Phase C close shipped `scripts/bump-extension.sh` + skill + PostToolUse hook (`9c1ae8d`) that auto-refreshes pgrx CREATE FUNCTION registrations after `docker compose build pg`. It worked cleanly in Phases D, E, F.
+- **Remaining gap:** the workaround patches `pg_proc` directly without bumping `pg_extension.extversion` or registering functions in `pg_depend` as extension members. Functional for dev iteration; slightly drifty for production.
+- **Recommendation:** keep the current workaround until the substrate moves toward production. If/when that happens, build a proper version-bump system with upgrade scripts (`pg_ai_stewards--<from>--<to>.sql`) and idempotent CREATE TABLE statements throughout the bundled SQL.
+
+### 6.2 stewards-ui sidebar grouping (see 4.2)
+- Already covered above.
+
+---
+
+## VII. Recommended next batches
+
+The pattern that worked for Phases C–F (decisions upfront → gated phased build with smoke at each commit) suggests grouping these into focused work sessions. Two natural batches:
+
+### Batch G — "Make the substrate land in real files" (~1 session)
+The bare minimum to take the substrate from BUILD-COMPLETE to USE-READY. All blocking-or-nearly-blocking items.
+
+| Item | Why now |
+|---|---|
+| 1.1 studies.file_path NOT NULL | Without this, first sabbath-gated study completion will fail |
+| 2.1 Steward retry pulls lessons | Line-upon-line never exercised otherwise |
+| 2.2 Steward quarantine fires atonement | Atonement never exercised otherwise |
+| 3.1 File-write mechanism (option a — pending_file_writes table + CLI materializer) | Ratified lessons + accepted council resolutions never reach .mind/ otherwise |
+
+After Batch G: the first real Phase D + E + F end-to-end runs become possible.
+
+### Batch H — "Use validation" (1-2 sessions of guided usage, not coding)
+- 3.2 First real council convene + run
+- 3.3 First real Atonement-on-quarantine
+- 3.4 First study run that earns trust transitions
+- 4.3 Token-cost measurement on the first real study run
+
+This batch is mostly **observation**, not coding. The interesting outputs are: do the gates make sharp enough calls? does atonement produce useful lessons? does the trust matrix populate the way we expected?
+
+### Batch I — "Hybrid revise" (1 session, decision-driven)
+- 2.3 Hybrid revise (revise #1 same-model + feedback prepended)
+- 2.4 covenant_check dispatch path
+
+Both involve genuine ratification questions (when to escalate; auto-fire vs manual) so they fit the "decide-then-build" cadence.
+
+### Batch J — "Polish" (whenever, low-priority)
+- 4.1 bgworker `_kind` enum refactor
+- 4.2 stewards-ui sidebar grouping
+- 4.5 gh_issue_create grant
+- 4.6 SSE live tail (only if real volume warrants)
+- 4.7 Watchman finding-ack action
+- 4.8 Bridge refresh-tools button
+- 4.9 Substrate-promoted studies citation extraction
+- 4.10 work_item write actions on WorkItemDetail
+
+### Section V items — "Wait for usage data"
+None of these should ship before observing real substrate behavior. Revisit after Batches G + H produce actual data.
+
+---
+
+## VIII. How to use this document
+
+- **Update after each session.** When an item ships, mark it ✅ here and remove from the active list. When a session surfaces a new item, add it under the right theme.
+- **Don't treat as a TODO list.** This is a *menu*. Items only become TODOs when Michael picks a batch.
+- **The phase journals are still authoritative.** This document is a navigation aid; the journal entries carry the full context for why each item exists.
+- **Living document.** Date-stamped at top; bump the date on every edit.
+
+---
+
+## IX. Glossary of source documents
+
+Sub-specs (phase build plans):
+- `cost-tracking.md` — Phase A cost layer
+- `escalation-chain.md` — Phase A model escalation
+- `steward-bgworker-integration.md` — Phase A bgworker tick
+- `phase-c-design.md` through `phase-f-design.md` — phase-by-phase build specs
+
+Foundational:
+- `full-agentic-substrate.md` — the original 6-phase proposal + §VI ratification + 2026-05-11 amendment block
+
+Recent journal entries (substrate work):
+- `2026-05-09-full-agentic-substrate-proposal.md` — initial research session
+- `2026-05-10-substrate-phase-a-specs.md` — A ratification + sub-spec drafting
+- `2026-05-10-substrate-phase-4a-schema-live.md` — A schema layer
+- `2026-05-11-substrate-phase-b-feature-complete.md`
+- `2026-05-11-substrate-phases-cdef-revalidation.md` — re-validation + 4 sub-specs
+- `2026-05-11-substrate-phase-c-shipped.md`
+- `2026-05-11-substrate-phase-d-shipped.md`
+- `2026-05-11-substrate-phase-e-shipped.md`
+- `2026-05-11-substrate-phase-f-complete.md`
+
+Journal entries from earlier substrate work (Phases 2.7 / 3.x / 4):
+- `2026-05-04` through `2026-05-09` — these mostly carry items that have since been folded into the recent C–F journals; spot-checked, no new items extracted.
+
+Project memory:
+- `project_pg_ai_stewards_revise_hybrid.md` (2026-05-11) — hybrid revise decision
+- `project_pg_ai_stewards_state.md` — substrate state snapshot
+- `feedback_pg_ai_stewards_rebuild_discipline.md` — image rebuild discipline
