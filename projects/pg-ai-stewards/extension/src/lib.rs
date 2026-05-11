@@ -266,6 +266,12 @@ extension_sql_file!(
     requires = ["create_phase_5b_scenarios_verify"],
 );
 
+extension_sql_file!(
+    "../5d-intents-covenants.sql",
+    name = "create_phase_5d_intents_covenants",
+    requires = ["create_phase_5c_sessions_gate_kind"],
+);
+
 // ---------------------------------------------------------------------------
 // Diagnostic SQL functions
 // ---------------------------------------------------------------------------
