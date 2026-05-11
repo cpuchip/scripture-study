@@ -39,6 +39,7 @@ func Register(mux *http.ServeMux, deps *Deps) {
 	deps.registerIntents(mux)
 	deps.registerCovenants(mux)
 	deps.registerLessons(mux)
+	deps.registerTrust(mux)
 }
 
 // writeJSON marshals v to JSON, sets the Content-Type header, and
