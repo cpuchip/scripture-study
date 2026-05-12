@@ -72,6 +72,14 @@ services:
       BECOMING_TOKEN: "${BECOMING_TOKEN:-}"
     extra_hosts:
       - "host.docker.internal:host-gateway"
+    # Read-only mount of the repo root at /workspace so fs-read-mcp
+    # can serve scoped journal/proposal/mind/docs reads to the research
+    # agent. The sandbox enforces path scope at the MCP tool layer;
+    # mounting the whole repo read-only here is the simplest path —
+    # adding new fs-read scopes later only requires updating the
+    # mcp_servers row, not the docker-compose file.
+    volumes:
+      - ../../..:/workspace:ro
     restart: unless-stopped
     # ENTRYPOINT is `stewards-mcp bridge run` (set in bridge.Dockerfile).
     # Override with `command:` here if workers/tick need tuning.

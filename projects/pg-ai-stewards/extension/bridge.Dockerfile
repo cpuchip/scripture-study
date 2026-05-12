@@ -28,6 +28,7 @@ COPY go.work go.work.sum ./
 
 # Bridge itself + tools it ships
 COPY projects/pg-ai-stewards/cmd/stewards-mcp/ ./projects/pg-ai-stewards/cmd/stewards-mcp/
+COPY projects/pg-ai-stewards/cmd/fs-read-mcp/  ./projects/pg-ai-stewards/cmd/fs-read-mcp/
 
 # Spawn targets
 COPY scripts/fetch-md-mcp/      ./scripts/fetch-md-mcp/
@@ -81,6 +82,10 @@ ENV CGO_ENABLED=0 GOOS=linux GOARCH=amd64
 RUN cd projects/pg-ai-stewards/cmd/stewards-mcp \
     && go build -trimpath -ldflags="-s -w" -o /out/stewards-mcp .
 
+# fs-read-mcp — H.1.7 path-scoped filesystem read MCP for the research agent.
+RUN cd projects/pg-ai-stewards/cmd/fs-read-mcp \
+    && go build -trimpath -ldflags="-s -w" -o /out/fs-read-mcp .
+
 # Spawn targets in workspace
 RUN cd scripts/fetch-md-mcp \
     && go build -trimpath -ldflags="-s -w" -o /out/fetch-md-mcp .
@@ -123,6 +128,7 @@ COPY --from=builder /out/yt-mcp         /usr/local/bin/yt-mcp
 COPY --from=builder /out/search-mcp     /usr/local/bin/search-mcp
 COPY --from=builder /out/becoming-mcp   /usr/local/bin/becoming-mcp
 COPY --from=builder /out/gospel-mcp     /usr/local/bin/gospel-mcp
+COPY --from=builder /out/fs-read-mcp    /usr/local/bin/fs-read-mcp
 
 # Data files — webster needs the 1828 dictionary at a known path. The
 # mcp_servers seed (3e2-6) points args at /opt/webster/data/.
