@@ -65,6 +65,8 @@ func main() {
 		runWorkItem(ctx, os.Args[2:])
 	case "materialize-writes":
 		runMaterializeWrites(ctx, os.Args[2:])
+	case "migrate":
+		runMigrate(ctx, os.Args[2:])
 	case "-h", "--help", "help":
 		usage()
 	default:
