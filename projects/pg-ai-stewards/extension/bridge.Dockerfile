@@ -29,6 +29,9 @@ COPY go.work go.work.sum ./
 # Bridge itself + tools it ships
 COPY projects/pg-ai-stewards/cmd/stewards-mcp/ ./projects/pg-ai-stewards/cmd/stewards-mcp/
 COPY projects/pg-ai-stewards/cmd/fs-read-mcp/  ./projects/pg-ai-stewards/cmd/fs-read-mcp/
+# stewards-cli copied fully (not just go.mod stub) so the migrate
+# command can be built into the bridge image and run from the entrypoint.
+COPY projects/pg-ai-stewards/cmd/stewards-cli/ ./projects/pg-ai-stewards/cmd/stewards-cli/
 
 # Spawn targets
 COPY scripts/fetch-md-mcp/      ./scripts/fetch-md-mcp/
@@ -71,8 +74,8 @@ COPY scripts/stewards-ui/go.mod                            ./scripts/stewards-ui
 COPY scripts/stewards-ui/go.sum                            ./scripts/stewards-ui/go.sum
 COPY scripts/study-export/go.mod                           ./scripts/study-export/go.mod
 COPY scripts/study-export/go.sum                           ./scripts/study-export/go.sum
-COPY projects/pg-ai-stewards/cmd/stewards-cli/go.mod       ./projects/pg-ai-stewards/cmd/stewards-cli/go.mod
-COPY projects/pg-ai-stewards/cmd/stewards-cli/go.sum       ./projects/pg-ai-stewards/cmd/stewards-cli/go.sum
+# stewards-cli is now COPYed in full higher up (so it can be BUILT,
+# not just satisfy go.work). Stub COPYs removed.
 COPY external_context/tpg/go.mod                           ./external_context/tpg/go.mod
 COPY external_context/tpg/go.sum                           ./external_context/tpg/go.sum
 COPY experiments/lm-studio/scripts/scoring/go.mod          ./experiments/lm-studio/scripts/scoring/go.mod
@@ -87,6 +90,11 @@ RUN cd projects/pg-ai-stewards/cmd/stewards-mcp \
 # fs-read-mcp — H.1.7 path-scoped filesystem read MCP for the research agent.
 RUN cd projects/pg-ai-stewards/cmd/fs-read-mcp \
     && go build -trimpath -ldflags="-s -w" -o /out/fs-read-mcp .
+
+# stewards-cli — runs the migration ledger on startup (h-ledger-N batch).
+# Also useful as an ad-hoc CLI inside the container.
+RUN cd projects/pg-ai-stewards/cmd/stewards-cli \
+    && go build -trimpath -ldflags="-s -w" -o /out/stewards-cli .
 
 # Spawn targets in workspace
 RUN cd scripts/fetch-md-mcp \
@@ -131,6 +139,7 @@ COPY --from=builder /out/search-mcp     /usr/local/bin/search-mcp
 COPY --from=builder /out/becoming-mcp   /usr/local/bin/becoming-mcp
 COPY --from=builder /out/gospel-mcp     /usr/local/bin/gospel-mcp
 COPY --from=builder /out/fs-read-mcp    /usr/local/bin/fs-read-mcp
+COPY --from=builder /out/stewards-cli   /usr/local/bin/stewards-cli
 
 # Data files — webster needs the 1828 dictionary at a known path. The
 # mcp_servers seed (3e2-6) points args at /opt/webster/data/.
@@ -146,5 +155,15 @@ RUN mkdir -p /opt/yt/yt /opt/yt/study
 # Tokens are injected via env from compose (.env file at extension/.env).
 ENV STEWARDS_DSN="postgres://stewards:stewards@pg:5432/stewards?sslmode=disable"
 
-# Bridge daemon. Workers/tick configurable via compose `command:` if needed.
-ENTRYPOINT ["/usr/local/bin/stewards-mcp", "bridge", "run"]
+# Entrypoint script: runs migrations FIRST (substrate auto-current on
+# every bridge restart), then execs the bridge daemon. The repo is
+# bind-mounted at /workspace by docker-compose so stewards-cli can
+# read extension/*.sql for migration discovery.
+#
+# Failure mode: if migrations fail, the bridge does NOT start —
+# substrate would be in an inconsistent state. Log + exit non-zero.
+# Operator inspects logs and re-runs after fixing.
+COPY projects/pg-ai-stewards/extension/bridge-entrypoint.sh /usr/local/bin/bridge-entrypoint.sh
+RUN chmod +x /usr/local/bin/bridge-entrypoint.sh
+
+ENTRYPOINT ["/usr/local/bin/bridge-entrypoint.sh"]
