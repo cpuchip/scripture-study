@@ -99,42 +99,31 @@ func makeFsList(sb *sandbox) func(
 				FsListOutput{}, nil
 		}
 
-		// Walk the directory tree rooted at repo-root, applying the
-		// glob and then re-validating each match against the
-		// allow-list. The walk is bounded by visiting only paths
-		// whose prefix could potentially match the glob's prefix.
-		var matches []string
-		walkRoot := globWalkRoot(sb.repoRoot, clean)
-		err := filepath.WalkDir(walkRoot, func(path string, d fs.DirEntry, walkErr error) error {
-			if walkErr != nil {
-				// Permission errors etc. — skip the entry, continue walking.
-				return nil
+		// Walk the allow-list's prefix roots, applying the user glob
+		// as a filter. CRITICAL: we walk by allowed-path prefix, not
+		// by the user glob's expanded prefix. A user glob like
+		// "**/*.md" expands to root "/workspace", which on the
+		// container's 9P-from-Windows-host mount means walking 50k+
+		// files including all of gospel-library — easily >60s, which
+		// hits the bridge call-timeout. Walking only the four
+		// allowed-path roots (.spec/journal/*, .spec/proposals/*,
+		// .mind/*, docs/**) keeps the walk bounded by what the
+		// sandbox would have accepted anyway.
+		matches := walkAllowedFiltered(sb, clean, in.Limit*2)
+		// Final dedupe + allow-list check is redundant given the walk
+		// scope, but kept as defense-in-depth.
+		filtered := make([]string, 0, len(matches))
+		seen := make(map[string]struct{}, len(matches))
+		for _, m := range matches {
+			if _, ok := seen[m]; ok {
+				continue
 			}
-			if d.IsDir() {
-				return nil
+			seen[m] = struct{}{}
+			if sb.matchesAllowed(m) {
+				filtered = append(filtered, m)
 			}
-			rel, err := filepath.Rel(sb.repoRoot, path)
-			if err != nil {
-				return nil
-			}
-			rel = filepath.ToSlash(rel)
-			if !matchGlob(clean, rel) {
-				return nil
-			}
-			// Final check: result must sit inside the allow-list.
-			if !sb.matchesAllowed(rel) {
-				return nil
-			}
-			matches = append(matches, rel)
-			if len(matches) >= in.Limit*2 {
-				// Soft early-exit; sort+truncate happens below.
-				return filepath.SkipAll
-			}
-			return nil
-		})
-		if err != nil {
-			return toolError("fs_list: walk error: %v", err), FsListOutput{}, nil
 		}
+		matches = filtered
 
 		sort.Strings(matches)
 		if len(matches) > in.Limit {
@@ -344,33 +333,57 @@ func makeFsSearch(sb *sandbox) func(
 	}
 }
 
-// filesMatchingGlob returns the repo-root-relative file paths under
-// sb.repoRoot that match the given glob AND sit inside the sandbox's
-// allow-list. The glob may itself be one of the allow-list patterns
-// or a tighter user-provided narrowing.
-func filesMatchingGlob(sb *sandbox, glob string) []string {
-	walkRoot := globWalkRoot(sb.repoRoot, glob)
+// walkAllowedFiltered walks only the directories named by the
+// sandbox's allowedGlobs, applying the user-supplied glob as an
+// additional filter. softLimit*2 stops the walk early once we have
+// enough candidates to satisfy the caller's limit after sort/dedupe.
+//
+// This is THE substrate-safety primitive: walk roots come from the
+// allow-list, never from the user glob. Otherwise a glob like
+// "**/*.md" walks `/workspace` (the entire container mount, including
+// gospel-library's 50k+ files), and on the 9P Windows->Linux mount
+// that walk easily exceeds the bridge's 60s call-timeout.
+//
+// Pass an empty userGlob to match every file under the allow-list.
+func walkAllowedFiltered(sb *sandbox, userGlob string, softLimit int) []string {
 	var out []string
-	_ = filepath.WalkDir(walkRoot, func(path string, d fs.DirEntry, walkErr error) error {
-		if walkErr != nil {
+	seen := make(map[string]struct{})
+	for _, allowedGlob := range sb.allowedGlobs {
+		walkRoot := globWalkRoot(sb.repoRoot, allowedGlob)
+		_ = filepath.WalkDir(walkRoot, func(path string, d fs.DirEntry, walkErr error) error {
+			if walkErr != nil || d.IsDir() {
+				return nil
+			}
+			rel, err := filepath.Rel(sb.repoRoot, path)
+			if err != nil {
+				return nil
+			}
+			rel = filepath.ToSlash(rel)
+			if !matchGlob(allowedGlob, rel) {
+				return nil
+			}
+			if userGlob != "" && !matchGlob(userGlob, rel) {
+				return nil
+			}
+			if _, ok := seen[rel]; ok {
+				return nil
+			}
+			seen[rel] = struct{}{}
+			out = append(out, rel)
+			if softLimit > 0 && len(out) >= softLimit {
+				return filepath.SkipAll
+			}
 			return nil
+		})
+		if softLimit > 0 && len(out) >= softLimit {
+			break
 		}
-		if d.IsDir() {
-			return nil
-		}
-		rel, err := filepath.Rel(sb.repoRoot, path)
-		if err != nil {
-			return nil
-		}
-		rel = filepath.ToSlash(rel)
-		if !matchGlob(glob, rel) {
-			return nil
-		}
-		if !sb.matchesAllowed(rel) {
-			return nil
-		}
-		out = append(out, rel)
-		return nil
-	})
+	}
 	return out
+}
+
+// filesMatchingGlob is the legacy alias used by fs_search. Behavior
+// is identical to walkAllowedFiltered with no soft limit.
+func filesMatchingGlob(sb *sandbox, glob string) []string {
+	return walkAllowedFiltered(sb, glob, 0)
 }

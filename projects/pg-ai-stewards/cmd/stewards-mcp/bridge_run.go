@@ -326,15 +326,30 @@ func contentToText(content []mcp.Content) string {
 // normal tool reply). Sets status='error' and leaves a structured
 // error column so the completion pass can synthesize a meaningful
 // tool reply for the model.
-func writeError(ctx context.Context, pool *pgxpool.Pool, id int64, e error) {
+//
+// IMPORTANT: uses a DETACHED context, not the caller's. The most common
+// reason writeError gets called is "CallTool returned context deadline
+// exceeded" — which means the caller's ctx is already canceled. If we
+// passed that ctx to pool.Exec here, the UPDATE would silently fail to
+// run, leaving the work_queue row stuck in_progress (the exact bug
+// that bit H.1.7 + H.2 validations + Michael's science-center-experiments
+// run on 2026-05-11). 5s background-context budget is plenty for a
+// single UPDATE + NOTIFY.
+func writeError(_ context.Context, pool *pgxpool.Pool, id int64, e error) {
 	log.Printf("bridge run id=%d: %v", id, e)
-	_, _ = pool.Exec(ctx,
+	writeCtx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
+	defer cancel()
+	if _, err := pool.Exec(writeCtx,
 		`UPDATE stewards.work_queue
 		    SET status = 'error', error = $2, done_at = now()
 		  WHERE id = $1`,
 		id, e.Error(),
-	)
-	_, _ = pool.Exec(ctx, fmt.Sprintf("NOTIFY stewards_done, '%d'", id))
+	); err != nil {
+		log.Printf("bridge run id=%d: writeError UPDATE failed: %v", id, err)
+	}
+	if _, err := pool.Exec(writeCtx, fmt.Sprintf("NOTIFY stewards_done, '%d'", id)); err != nil {
+		log.Printf("bridge run id=%d: writeError NOTIFY failed: %v", id, err)
+	}
 }
 
 // reapStaleMcpProxyRows handles the bridge's startup recovery pass.
