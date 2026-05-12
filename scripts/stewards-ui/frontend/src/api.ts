@@ -120,6 +120,45 @@ export const api = {
     if (opts?.limit) p.set('limit', String(opts.limit))
     return getJSON<SearchResp>(`/api/studies/search?${p}`)
   },
+  workItemRatify: async (id: string): Promise<WorkItemActionResp> => {
+    const r = await fetch('/api/work-items/ratify', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ id }),
+    })
+    if (!r.ok) {
+      let msg = `HTTP ${r.status}`
+      try { const b = await r.json(); if (b.error) msg = b.error } catch {}
+      throw new Error(msg)
+    }
+    return r.json()
+  },
+  workItemDispatch: async (id: string): Promise<WorkItemActionResp> => {
+    const r = await fetch('/api/work-items/dispatch', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ id }),
+    })
+    if (!r.ok) {
+      let msg = `HTTP ${r.status}`
+      try { const b = await r.json(); if (b.error) msg = b.error } catch {}
+      throw new Error(msg)
+    }
+    return r.json()
+  },
+  workItemCancelProposal: async (id: string, reason?: string): Promise<WorkItemActionResp> => {
+    const r = await fetch('/api/work-items/cancel-proposal', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ id, reason }),
+    })
+    if (!r.ok) {
+      let msg = `HTTP ${r.status}`
+      try { const b = await r.json(); if (b.error) msg = b.error } catch {}
+      throw new Error(msg)
+    }
+    return r.json()
+  },
   workItemsList: (params?: { pipeline?: string; status?: string; origin?: string; project_association?: string; limit?: number }) => {
     const q = new URLSearchParams()
     if (params?.pipeline) q.set('pipeline', params.pipeline)
@@ -841,6 +880,14 @@ export type SessionDetail = {
   dispatches: ChatDispatch[]
   tokens_in: number
   tokens_out: number
+}
+
+export type WorkItemActionResp = {
+  id: string
+  status?: string
+  maturity?: string
+  work_queue_id?: number
+  message?: string
 }
 
 export type SessionListItem = {

@@ -11,6 +11,66 @@ const gateDecisions = ref<GateDecisionsResp | null>(null)
 const error = ref<string>('')
 const loading = ref(false)
 
+// H.3-followup-B: proposal action state
+const actionBusy = ref(false)
+const actionMsg = ref<string>('')
+const actionErr = ref<string>('')
+
+async function ratifyProposal() {
+  if (!wi.value) return
+  actionBusy.value = true
+  actionMsg.value = ''
+  actionErr.value = ''
+  try {
+    const r = await api.workItemRatify(wi.value.id)
+    actionMsg.value = r.message || 'ratified'
+    await load(idFromRoute.value)
+  } catch (e) {
+    actionErr.value = String(e)
+  } finally {
+    actionBusy.value = false
+  }
+}
+
+async function dispatchProposal() {
+  if (!wi.value) return
+  actionBusy.value = true
+  actionMsg.value = ''
+  actionErr.value = ''
+  try {
+    const r = await api.workItemDispatch(wi.value.id)
+    actionMsg.value = r.message
+      ? `${r.message} (work_queue id=${r.work_queue_id})`
+      : `dispatched (work_queue id=${r.work_queue_id})`
+    await load(idFromRoute.value)
+  } catch (e) {
+    actionErr.value = String(e)
+  } finally {
+    actionBusy.value = false
+  }
+}
+
+async function cancelProposal() {
+  if (!wi.value) return
+  if (!confirm(`Cancel proposal "${wi.value.slug}"? It stays in the DB but won't surface in active queues.`)) return
+  actionBusy.value = true
+  actionMsg.value = ''
+  actionErr.value = ''
+  try {
+    const r = await api.workItemCancelProposal(wi.value.id, 'cancelled via UI')
+    actionMsg.value = r.message || 'cancelled'
+    await load(idFromRoute.value)
+  } catch (e) {
+    actionErr.value = String(e)
+  } finally {
+    actionBusy.value = false
+  }
+}
+
+const isProposal = computed(() =>
+  wi.value?.origin === 'agent_planning' && wi.value?.status !== 'cancelled',
+)
+
 async function load(idOrSlug: string) {
   loading.value = true
   error.value = ''
@@ -231,6 +291,66 @@ function actionTone(action: string): string {
       >
         <div class="text-xs uppercase tracking-wide text-red-400 mb-1">Error</div>
         <pre class="whitespace-pre-wrap text-red-300 font-mono text-xs">{{ wi.error }}</pre>
+      </section>
+
+      <!-- H.3-followup-B: proposal action panel for agent_planning work_items -->
+      <section
+        v-if="isProposal"
+        class="rounded-md border border-purple-800/60 bg-purple-950/20 p-4 space-y-3"
+      >
+        <div class="flex items-baseline justify-between">
+          <div class="text-xs uppercase tracking-wide text-purple-300 flex items-center gap-2">
+            <span>✨ Proposed work</span>
+            <span class="text-zinc-500 normal-case">— from planning run</span>
+          </div>
+          <RouterLink
+            v-if="wi.parent_work_item_id"
+            :to="`/work-items/${wi.parent_work_item_id}`"
+            class="text-xs text-purple-300 hover:text-purple-100 font-mono"
+          >
+            ← parent
+          </RouterLink>
+        </div>
+
+        <div v-if="wi.input && (wi.input as any).rationale_from_planning"
+             class="text-sm text-zinc-300 leading-relaxed">
+          <span class="text-xs text-zinc-500 uppercase tracking-wide">Rationale:</span>
+          {{ (wi.input as any).rationale_from_planning }}
+        </div>
+
+        <div class="flex flex-wrap gap-2 items-center">
+          <button
+            v-if="wi.maturity === 'raw'"
+            class="px-3 py-2 rounded bg-emerald-900/40 text-emerald-200 hover:bg-emerald-900/60 border border-emerald-800/60 text-sm font-semibold disabled:opacity-50"
+            :disabled="actionBusy"
+            @click="ratifyProposal"
+          >
+            ✓ Ratify (raw → researched)
+          </button>
+          <button
+            v-if="wi.maturity !== 'raw' && wi.status === 'pending'"
+            class="px-3 py-2 rounded bg-blue-900/40 text-blue-200 hover:bg-blue-900/60 border border-blue-800/60 text-sm font-semibold disabled:opacity-50"
+            :disabled="actionBusy"
+            @click="dispatchProposal"
+          >
+            ▶ Dispatch (run first stage)
+          </button>
+          <button
+            class="ml-auto px-3 py-2 rounded bg-zinc-800 text-zinc-400 hover:bg-zinc-700 hover:text-zinc-200 border border-zinc-700 text-sm disabled:opacity-50"
+            :disabled="actionBusy"
+            @click="cancelProposal"
+          >
+            ✕ Cancel proposal
+          </button>
+        </div>
+
+        <div v-if="actionMsg" class="text-xs text-emerald-300">{{ actionMsg }}</div>
+        <div v-if="actionErr" class="text-xs text-red-400">{{ actionErr }}</div>
+
+        <p class="text-xs text-zinc-500">
+          Ratifying advances maturity but doesn't dispatch yet — you can adjust the
+          pipeline_family_hint / project / inputs first if needed, then click Dispatch.
+        </p>
       </section>
 
       <!-- Phase 5a (Phase B): Maturity ladder panel -->

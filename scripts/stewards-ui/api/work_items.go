@@ -17,6 +17,10 @@ func (d *Deps) registerWorkItems(mux *http.ServeMux) {
 	mux.HandleFunc("GET /api/work-items/gate-decisions", d.workItemsGateDecisionsHandler)
 	mux.HandleFunc("POST /api/work-items/set-file-destination", d.workItemsSetFileDestinationHandler)
 	mux.HandleFunc("POST /api/work-items/materialize-file", d.workItemsMaterializeFileHandler)
+	// H.3-followup: agent_planning proposal actions
+	mux.HandleFunc("POST /api/work-items/ratify", d.workItemsRatifyHandler)
+	mux.HandleFunc("POST /api/work-items/dispatch", d.workItemsDispatchHandler)
+	mux.HandleFunc("POST /api/work-items/cancel-proposal", d.workItemsCancelProposalHandler)
 }
 
 type workItemRow struct {
@@ -532,5 +536,152 @@ func (d *Deps) workItemsMaterializeFileHandler(w http.ResponseWriter, r *http.Re
 		resp.Skipped = true
 		resp.SkipReason = "work_items.file_destination is NULL (DB-only)"
 	}
+	writeJSON(w, http.StatusOK, resp)
+}
+
+// =====================================================================
+// H.3-followup-B — agent_planning proposal action handlers
+//
+// Three actions a human can take on a proposed work_item:
+//
+//   ratify          — advance maturity from raw to researched. The
+//                     work_item stays at status='pending'. Marks
+//                     the proposal as accepted; next action is
+//                     dispatch.
+//   dispatch        — call work_item_dispatch_stage to fire the
+//                     current stage. Returns the chat work_queue id.
+//   cancel-proposal — set status='cancelled' with a quarantine_reason
+//                     note. The row stays in the DB as historical
+//                     record but won't surface in active queues.
+//
+// All three accept a simple { id } JSON body and return a small
+// confirmation envelope. UI shows them only when origin='agent_planning'
+// AND maturity='raw' (ratify+cancel) or AND maturity='researched'
+// (dispatch).
+// =====================================================================
+
+type workItemActionReq struct {
+	ID     string `json:"id"`
+	Reason string `json:"reason,omitempty"` // optional, used by cancel-proposal
+}
+
+type workItemActionResp struct {
+	ID          string `json:"id"`
+	Status      string `json:"status,omitempty"`
+	Maturity    string `json:"maturity,omitempty"`
+	WorkQueueID *int64 `json:"work_queue_id,omitempty"`
+	Message     string `json:"message,omitempty"`
+}
+
+// workItemsRatifyHandler advances maturity from 'raw' to 'researched'
+// for proposed work_items. Validates that origin='agent_planning' to
+// prevent the button from being a general-purpose maturity-advance lever.
+func (d *Deps) workItemsRatifyHandler(w http.ResponseWriter, r *http.Request) {
+	ctx, cancel := context.WithTimeout(r.Context(), 5*time.Second)
+	defer cancel()
+
+	var req workItemActionReq
+	if err := json.NewDecoder(r.Body).Decode(&req); err != nil {
+		writeErr(w, http.StatusBadRequest, "decode body: "+err.Error())
+		return
+	}
+	if req.ID == "" {
+		writeErr(w, http.StatusBadRequest, "id required")
+		return
+	}
+
+	var resp workItemActionResp
+	resp.ID = req.ID
+	err := d.Pool.QueryRow(ctx,
+		`UPDATE stewards.work_items
+		    SET maturity = 'researched',
+		        updated_at = now()
+		  WHERE id = $1::uuid
+		    AND origin = 'agent_planning'
+		    AND maturity = 'raw'
+		  RETURNING status, maturity`,
+		req.ID,
+	).Scan(&resp.Status, &resp.Maturity)
+	if err != nil {
+		writeErr(w, http.StatusBadRequest,
+			"ratify failed (must be origin=agent_planning + maturity=raw): "+err.Error())
+		return
+	}
+	resp.Message = "ratified: maturity advanced raw → researched"
+	writeJSON(w, http.StatusOK, resp)
+}
+
+// workItemsDispatchHandler invokes work_item_dispatch_stage on a
+// work_item. The SQL function handles its own validation (pending or
+// awaiting_review status, current_stage resolvable, etc.).
+func (d *Deps) workItemsDispatchHandler(w http.ResponseWriter, r *http.Request) {
+	ctx, cancel := context.WithTimeout(r.Context(), 5*time.Second)
+	defer cancel()
+
+	var req workItemActionReq
+	if err := json.NewDecoder(r.Body).Decode(&req); err != nil {
+		writeErr(w, http.StatusBadRequest, "decode body: "+err.Error())
+		return
+	}
+	if req.ID == "" {
+		writeErr(w, http.StatusBadRequest, "id required")
+		return
+	}
+
+	var resp workItemActionResp
+	resp.ID = req.ID
+	var wqID int64
+	err := d.Pool.QueryRow(ctx,
+		`SELECT stewards.work_item_dispatch_stage($1::uuid)`,
+		req.ID,
+	).Scan(&wqID)
+	if err != nil {
+		writeErr(w, http.StatusBadRequest, "dispatch failed: "+err.Error())
+		return
+	}
+	resp.WorkQueueID = &wqID
+	resp.Message = "dispatched"
+	writeJSON(w, http.StatusOK, resp)
+}
+
+// workItemsCancelProposalHandler marks a proposed work_item cancelled.
+// Stores the reason in quarantine_reason for historical record.
+// Restricted to origin='agent_planning' so this isn't a general cancel.
+func (d *Deps) workItemsCancelProposalHandler(w http.ResponseWriter, r *http.Request) {
+	ctx, cancel := context.WithTimeout(r.Context(), 5*time.Second)
+	defer cancel()
+
+	var req workItemActionReq
+	if err := json.NewDecoder(r.Body).Decode(&req); err != nil {
+		writeErr(w, http.StatusBadRequest, "decode body: "+err.Error())
+		return
+	}
+	if req.ID == "" {
+		writeErr(w, http.StatusBadRequest, "id required")
+		return
+	}
+	reason := req.Reason
+	if reason == "" {
+		reason = "user-cancelled via UI"
+	}
+
+	var resp workItemActionResp
+	resp.ID = req.ID
+	err := d.Pool.QueryRow(ctx,
+		`UPDATE stewards.work_items
+		    SET status = 'cancelled',
+		        quarantine_reason = $2,
+		        updated_at = now()
+		  WHERE id = $1::uuid
+		    AND origin = 'agent_planning'
+		  RETURNING status`,
+		req.ID, reason,
+	).Scan(&resp.Status)
+	if err != nil {
+		writeErr(w, http.StatusBadRequest,
+			"cancel failed (must be origin=agent_planning): "+err.Error())
+		return
+	}
+	resp.Message = "cancelled"
 	writeJSON(w, http.StatusOK, resp)
 }
