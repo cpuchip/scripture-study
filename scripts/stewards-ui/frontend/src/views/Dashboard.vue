@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted, computed } from 'vue'
+import { useRouter } from 'vue-router'
 import { api, type DashboardResp } from '@/api'
+
+const router = useRouter()
 
 const data = ref<DashboardResp | null>(null)
 const error = ref<string>('')
@@ -140,9 +143,12 @@ const errorCount = computed(() => data.value?.recent_errors?.length ?? 0)
           <tr
             v-for="w in data?.in_flight ?? []"
             :key="w.id"
-            class="border-t border-zinc-800/50 hover:bg-zinc-900"
+            class="border-t border-zinc-800/50 hover:bg-zinc-900 cursor-pointer"
+            @click="router.push(`/work-items/${w.id}`)"
           >
-            <td class="px-4 py-2 font-mono text-xs">{{ w.slug }}</td>
+            <td class="px-4 py-2 font-mono text-xs text-zinc-100">
+              <span class="hover:underline">{{ w.slug }}</span>
+            </td>
             <td class="px-4 py-2 text-zinc-300">{{ w.pipeline }}</td>
             <td class="px-4 py-2 text-zinc-300">{{ w.current_stage }}</td>
             <td class="px-4 py-2">

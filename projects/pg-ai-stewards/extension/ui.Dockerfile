@@ -82,6 +82,8 @@ COPY scripts/search-mcp/go.mod                             ./scripts/search-mcp/
 COPY scripts/search-mcp/go.sum                             ./scripts/search-mcp/go.sum
 COPY scripts/becoming/go.mod                               ./scripts/becoming/go.mod
 COPY scripts/becoming/go.sum                               ./scripts/becoming/go.sum
+COPY projects/pg-ai-stewards/cmd/fs-read-mcp/go.mod        ./projects/pg-ai-stewards/cmd/fs-read-mcp/go.mod
+COPY projects/pg-ai-stewards/cmd/fs-read-mcp/go.sum        ./projects/pg-ai-stewards/cmd/fs-read-mcp/go.sum
 COPY projects/pg-ai-stewards/cmd/stewards-cli/go.mod       ./projects/pg-ai-stewards/cmd/stewards-cli/go.mod
 COPY projects/pg-ai-stewards/cmd/stewards-cli/go.sum       ./projects/pg-ai-stewards/cmd/stewards-cli/go.sum
 COPY projects/pg-ai-stewards/cmd/stewards-mcp/go.mod       ./projects/pg-ai-stewards/cmd/stewards-mcp/go.mod

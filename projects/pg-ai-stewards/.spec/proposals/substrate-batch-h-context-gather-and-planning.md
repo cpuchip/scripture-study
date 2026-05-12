@@ -351,37 +351,41 @@ Existing `studies.file_path NOT NULL` blocker (open-items §1.1)
 must be resolved as part of this migration — make it nullable or
 compute at insert.
 
-### IV.6 Open questions (need ratification before H.3 build)
-
-These are the questions I'm NOT deciding within stewardship —
-each is a load-bearing design choice that affects future work.
+### IV.6 Open questions — RATIFIED 2026-05-11 (later this session)
 
 **Q-H3.1 — How does the `propose_work` stage emit work_items?**
-- (a) Strict JSON output, substrate validates schema, rejects
-  malformed → revise loop
-- (b) Free-form output, post-stage parser extracts proposed items
-  by pattern
-- (c) Tool call: give the stage a `propose_work_item` tool that
-  inserts directly into a `proposed_work_items` staging table
+- **RATIFIED: (a) Strict JSON output + substrate schema validation.**
+  Stage emits `[{slug, binding_question, pipeline_family_hint, rationale}]`
+  array; substrate trigger validates against schema; malformed →
+  existing review/revise machinery handles it. Schema doubles as
+  documentation for the model.
 
-**Q-H3.2 — When proposed work_items land, do they auto-show up in
-the UI's "Inbox" or "Proposals" surface, or live in a separate
-review queue?**
-- Affects stewards-ui scope. May be a follow-up UI batch.
+**Q-H3.2 — When proposed work_items land, where do they show up?**
+- **RATIFIED: Inline in existing work_items list, badged
+  `origin='agent_planning'`.** Reuses existing surface; one place
+  to look. Add a filter chip if the queue gets busy. Avoids a
+  separate UI batch.
 
-**Q-H3.3 — Cost cap for planning pipelines.** Research-write caps
-at ~$0.40. Planning has 5 stages vs 3, plus uses tools more
-heavily. Likely cap: $0.75-$1.00. Need ratification.
+**Q-H3.3 — Cost cap for planning pipelines.**
+- **RATIFIED: $0.75 default.** Anchors near the H.1.6.5 pg-ext run
+  ($0.19) plus the extra context_gather + explore + propose_work
+  stages. Moderate; leaves room without runaway.
 
-**Q-H3.4 — Does planning need its own review template?** The
-existing review template asks "does this verify the binding
-question?" — planning's binding question is exploratory, so
-"verifies" is a different shape. Probably needs a
-`review_plan` gate prompt.
+**Q-H3.4 — Does planning need its own review template?**
+- **RATIFIED: Author a new `review_plan` gate prompt.** Plans need
+  different verification questions than research artifacts — "are
+  assumptions surfaced?", "are proposed work_items small enough?",
+  "are risks named?". The existing research review template
+  ("does this verify the binding question?") misses the
+  planning-specific health checks.
 
-**Q-H3.5 — `project_association` enum or freeform?** Freeform is
-flexible; enum prevents typos and enables project-page UI
-features later. Probably freeform with a "known projects" view.
+**Q-H3.5 — `project_association` enum or freeform?**
+- **DECIDED (stewardship): freeform text + a future "known
+  projects" view.** Lower friction during multi-project,
+  exploratory phase. The enum lock-in isn't worth the rigidity
+  yet. If duplicate-spelling becomes a problem, surface a
+  "known projects" view that aggregates distinct values for
+  selection.
 
 ### IV.7 H.3 build plan once ratified
 

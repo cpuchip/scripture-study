@@ -1,13 +1,34 @@
 <script setup lang="ts">
-import { ref, onMounted, watch, computed } from 'vue'
+import { ref, onMounted, onUnmounted, watch, computed } from 'vue'
 import { useRoute, RouterLink } from 'vue-router'
-import { api, type SessionDetail, type MessageRow, type ChatDispatch } from '@/api'
+import { api, type SessionDetail, type MessageRow, type ChatDispatch, type SessionListItem } from '@/api'
 
 const route = useRoute()
 const session = ref<SessionDetail | null>(null)
 const error = ref<string>('')
 const loading = ref(false)
 const tab = ref<'timeline' | 'dispatches'>('timeline')
+
+// List-mode state. Populated when no :sid is in the route — shows
+// active sessions the user can click into. Refreshes every 5s
+// (cheap query; same cadence as the dashboard).
+const activeSessions = ref<SessionListItem[]>([])
+const listError = ref<string>('')
+const listLoading = ref(false)
+let listTimer: number | undefined
+
+async function loadList() {
+  listLoading.value = true
+  listError.value = ''
+  try {
+    const r = await api.sessionsList()
+    activeSessions.value = r.sessions
+  } catch (e) {
+    listError.value = String(e)
+  } finally {
+    listLoading.value = false
+  }
+}
 
 async function load(sid: string) {
   loading.value = true
@@ -23,8 +44,40 @@ async function load(sid: string) {
 }
 
 const sidFromRoute = computed(() => String(route.params.sid ?? ''))
-onMounted(() => sidFromRoute.value && load(sidFromRoute.value))
-watch(sidFromRoute, (v) => v && load(v))
+onMounted(() => {
+  if (sidFromRoute.value) {
+    load(sidFromRoute.value)
+  } else {
+    loadList()
+    listTimer = window.setInterval(loadList, 5000)
+  }
+})
+onUnmounted(() => {
+  if (listTimer) window.clearInterval(listTimer)
+})
+watch(sidFromRoute, (v) => {
+  if (v) {
+    if (listTimer) { window.clearInterval(listTimer); listTimer = undefined }
+    load(v)
+  } else {
+    loadList()
+    if (!listTimer) listTimer = window.setInterval(loadList, 5000)
+  }
+})
+
+function fmtRelative(s?: string) {
+  if (!s) return ''
+  const d = new Date(s)
+  if (isNaN(d.getTime())) return s
+  const diffMs = Date.now() - d.getTime()
+  const sec = Math.floor(diffMs / 1000)
+  if (sec < 60) return `${sec}s ago`
+  const min = Math.floor(sec / 60)
+  if (min < 60) return `${min}m ago`
+  const hr = Math.floor(min / 60)
+  if (hr < 24) return `${hr}h ago`
+  return `${Math.floor(hr / 24)}d ago`
+}
 
 function roleClass(role: string) {
   switch (role) {
@@ -91,12 +144,108 @@ function fmtDate(s?: string) {
 
 <template>
   <div class="space-y-6">
-    <p v-if="!sidFromRoute" class="text-sm text-zinc-500">
-      Open a work item to drill into its sessions.
-      <RouterLink to="/work-items" class="text-zinc-300 hover:text-white">
-        Browse work items →
-      </RouterLink>
-    </p>
+    <!-- List mode: no session ID in the route -->
+    <template v-if="!sidFromRoute">
+      <header class="flex items-baseline justify-between border-b border-zinc-800 pb-4">
+        <h2 class="text-2xl font-semibold tracking-tight">Active sessions</h2>
+        <div class="text-xs text-zinc-500 flex items-center gap-3">
+          <span v-if="listLoading" class="text-zinc-400">refreshing…</span>
+          <span v-else-if="listError" class="text-red-400">{{ listError }}</span>
+          <span v-else>{{ activeSessions.length }} session(s) · auto-refresh 5s</span>
+          <button
+            class="text-xs px-2 py-1 rounded border border-zinc-700 hover:bg-zinc-800"
+            @click="loadList"
+          >
+            refresh
+          </button>
+        </div>
+      </header>
+
+      <p class="text-sm text-zinc-500">
+        Sessions linked to in-progress work_items, plus any sessions active in the last hour.
+        Click into one for the full message timeline + dispatch payloads.
+      </p>
+
+      <section
+        v-if="activeSessions.length > 0"
+        class="rounded-md border border-zinc-800 bg-zinc-900/50 overflow-hidden"
+      >
+        <table class="w-full text-sm">
+          <thead class="text-zinc-500 text-xs uppercase tracking-wide">
+            <tr>
+              <th class="text-left px-4 py-2 font-medium">Session</th>
+              <th class="text-left px-4 py-2 font-medium">Work item</th>
+              <th class="text-left px-4 py-2 font-medium">Stage</th>
+              <th class="text-left px-4 py-2 font-medium">Status</th>
+              <th class="text-right px-4 py-2 font-medium">Messages</th>
+              <th class="text-right px-4 py-2 font-medium">Cost</th>
+              <th class="text-right px-4 py-2 font-medium">Active</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              v-for="s in activeSessions"
+              :key="s.session_id"
+              class="border-t border-zinc-800/50 hover:bg-zinc-900 cursor-pointer"
+              @click="$router.push(`/sessions/${encodeURIComponent(s.session_id)}`)"
+            >
+              <td class="px-4 py-2 font-mono text-xs">
+                <RouterLink
+                  :to="`/sessions/${encodeURIComponent(s.session_id)}`"
+                  class="text-zinc-200 hover:text-white"
+                  @click.stop
+                >
+                  {{ s.session_id }}
+                </RouterLink>
+              </td>
+              <td class="px-4 py-2">
+                <RouterLink
+                  v-if="s.work_item_id"
+                  :to="`/work-items/${s.work_item_id}`"
+                  class="text-zinc-300 hover:text-white font-mono text-xs"
+                  @click.stop
+                >
+                  {{ s.work_item_slug || s.work_item_id.slice(0, 8) }}
+                </RouterLink>
+                <span v-else class="text-zinc-600 text-xs">—</span>
+              </td>
+              <td class="px-4 py-2 text-zinc-300">{{ s.current_stage || '—' }}</td>
+              <td class="px-4 py-2">
+                <span
+                  v-if="s.work_item_status"
+                  class="inline-block px-2 py-0.5 rounded text-xs"
+                  :class="{
+                    'bg-emerald-900/40 text-emerald-300': s.work_item_active,
+                    'bg-zinc-800 text-zinc-400': !s.work_item_active,
+                  }"
+                >
+                  {{ s.work_item_status }}
+                </span>
+                <span v-else class="text-zinc-600 text-xs">—</span>
+              </td>
+              <td class="px-4 py-2 text-right tabular-nums text-zinc-400">
+                {{ s.message_count.toLocaleString() }}
+                <span class="text-zinc-600">·</span>
+                <span class="text-zinc-500">{{ s.assistant_count }} asst</span>
+              </td>
+              <td class="px-4 py-2 text-right tabular-nums text-zinc-400">
+                {{ s.cost_total > 0 ? `$${s.cost_total.toFixed(4)}` : '—' }}
+              </td>
+              <td class="px-4 py-2 text-right text-zinc-500 text-xs">
+                {{ fmtRelative(s.last_active_at) }}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <div v-else-if="!listLoading" class="text-sm text-zinc-500">
+        No active sessions. The substrate is quiet.
+        <RouterLink to="/work-items" class="text-zinc-300 hover:text-white">
+          Browse all work items →
+        </RouterLink>
+      </div>
+    </template>
 
     <template v-else>
       <header class="border-b border-zinc-800 pb-4">

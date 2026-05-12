@@ -11,6 +11,103 @@ import (
 
 func (d *Deps) registerSessions(mux *http.ServeMux) {
 	mux.HandleFunc("GET /api/sessions/get", d.sessionsGetHandler)
+	mux.HandleFunc("GET /api/sessions/list", d.sessionsListHandler)
+}
+
+// sessionListItem is a row in the active-sessions list — session summary
+// plus the linked work_item context so the user can navigate from
+// "what's running right now" to either the session timeline or the
+// owning work_item.
+type sessionListItem struct {
+	SessionID       string     `json:"session_id"`
+	Label           string     `json:"label,omitempty"`
+	Kind            string     `json:"kind"`
+	LastActiveAt    *time.Time `json:"last_active_at,omitempty"`
+	MessageCount    int        `json:"message_count"`
+	AssistantCount  int        `json:"assistant_count"`
+	CostTotal       float64    `json:"cost_total"`
+	WorkItemID      string     `json:"work_item_id,omitempty"`
+	WorkItemSlug    string     `json:"work_item_slug,omitempty"`
+	PipelineFamily  string     `json:"pipeline_family,omitempty"`
+	CurrentStage    string     `json:"current_stage,omitempty"`
+	WorkItemStatus  string     `json:"work_item_status,omitempty"`
+	WorkItemActive  bool       `json:"work_item_active"` // true if status=in_progress
+}
+
+type sessionListResp struct {
+	Sessions []sessionListItem `json:"sessions"`
+	Count    int               `json:"count"`
+}
+
+// sessionsListHandler returns sessions considered "active":
+//   - sessions tied to a work_item with status='in_progress' (anything
+//     the substrate is currently working on)
+//   - OR sessions with last_active_at within the last hour
+//
+// Limited to 50 results sorted by last_active_at DESC. This is the
+// "what's going on right now" view — the dashboard's in-flight table
+// shows work_items; this shows sessions (which carry the actual
+// model-level transcript a user might want to drill into).
+func (d *Deps) sessionsListHandler(w http.ResponseWriter, r *http.Request) {
+	ctx, cancel := context.WithTimeout(r.Context(), 5*time.Second)
+	defer cancel()
+
+	resp := sessionListResp{Sessions: []sessionListItem{}}
+
+	rows, err := d.Pool.Query(ctx, `
+		WITH msg_agg AS (
+		    SELECT session_id,
+		           count(*) AS msg_count,
+		           count(*) FILTER (WHERE role='assistant') AS asst_count,
+		           coalesce(sum(cost_usd)::float8, 0) AS cost_total
+		      FROM stewards.messages
+		     GROUP BY session_id
+		)
+		SELECT s.id,
+		       coalesce(s.label, ''),
+		       s.kind,
+		       s.last_active_at,
+		       coalesce(m.msg_count, 0),
+		       coalesce(m.asst_count, 0),
+		       coalesce(m.cost_total, 0),
+		       coalesce(wi.id::text, ''),
+		       coalesce(wi.slug, ''),
+		       coalesce(wi.pipeline_family, ''),
+		       coalesce(wi.current_stage, ''),
+		       coalesce(wi.status, ''),
+		       (wi.status = 'in_progress') AS wi_active
+		  FROM stewards.sessions s
+		  LEFT JOIN msg_agg m ON m.session_id = s.id
+		  LEFT JOIN LATERAL (
+		      SELECT id, slug, pipeline_family, current_stage, status
+		        FROM stewards.work_items
+		       WHERE s.id = ANY(session_ids)
+		       ORDER BY (status = 'in_progress') DESC, updated_at DESC
+		       LIMIT 1
+		  ) wi ON TRUE
+		 WHERE wi.status = 'in_progress'
+		    OR s.last_active_at > now() - interval '1 hour'
+		 ORDER BY (wi.status = 'in_progress') DESC NULLS LAST,
+		          s.last_active_at DESC
+		 LIMIT 50`)
+	if err != nil {
+		writeErr(w, http.StatusInternalServerError, err.Error())
+		return
+	}
+	defer rows.Close()
+
+	for rows.Next() {
+		var it sessionListItem
+		if err := rows.Scan(&it.SessionID, &it.Label, &it.Kind,
+			&it.LastActiveAt, &it.MessageCount, &it.AssistantCount,
+			&it.CostTotal, &it.WorkItemID, &it.WorkItemSlug,
+			&it.PipelineFamily, &it.CurrentStage, &it.WorkItemStatus,
+			&it.WorkItemActive); err == nil {
+			resp.Sessions = append(resp.Sessions, it)
+		}
+	}
+	resp.Count = len(resp.Sessions)
+	writeJSON(w, http.StatusOK, resp)
 }
 
 type messageRow struct {

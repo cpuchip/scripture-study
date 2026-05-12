@@ -283,6 +283,8 @@ export const api = {
   },
   sessionGet: (sid: string) =>
     getJSON<SessionDetail>(`/api/sessions/get?id=${encodeURIComponent(sid)}`),
+  sessionsList: () =>
+    getJSON<SessionsListResp>('/api/sessions/list'),
   watchmanPasses: (limit?: number) => {
     const q = limit ? `?limit=${limit}` : ''
     return getJSON<{ items: PassRow[] }>(`/api/watchman/passes${q}`)
@@ -833,6 +835,27 @@ export type SessionDetail = {
   dispatches: ChatDispatch[]
   tokens_in: number
   tokens_out: number
+}
+
+export type SessionListItem = {
+  session_id: string
+  label?: string
+  kind: string
+  last_active_at?: string
+  message_count: number
+  assistant_count: number
+  cost_total: number
+  work_item_id?: string
+  work_item_slug?: string
+  pipeline_family?: string
+  current_stage?: string
+  work_item_status?: string
+  work_item_active: boolean
+}
+
+export type SessionsListResp = {
+  sessions: SessionListItem[]
+  count: number
 }
 
 export type ProviderRow = {
