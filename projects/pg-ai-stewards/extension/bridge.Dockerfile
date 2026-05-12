@@ -67,6 +67,8 @@ COPY scripts/lectures-on-faith/go.mod                      ./scripts/lectures-on
 COPY scripts/publish/go.mod                                ./scripts/publish/go.mod
 COPY scripts/session-journal/go.mod                        ./scripts/session-journal/go.mod
 COPY scripts/session-journal/go.sum                        ./scripts/session-journal/go.sum
+COPY scripts/stewards-ui/go.mod                            ./scripts/stewards-ui/go.mod
+COPY scripts/stewards-ui/go.sum                            ./scripts/stewards-ui/go.sum
 COPY scripts/study-export/go.mod                           ./scripts/study-export/go.mod
 COPY scripts/study-export/go.sum                           ./scripts/study-export/go.sum
 COPY projects/pg-ai-stewards/cmd/stewards-cli/go.mod       ./projects/pg-ai-stewards/cmd/stewards-cli/go.mod
