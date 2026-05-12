@@ -120,6 +120,68 @@ export const api = {
     if (opts?.limit) p.set('limit', String(opts.limit))
     return getJSON<SearchResp>(`/api/studies/search?${p}`)
   },
+  // Edit + AI-revise (third proposal mode)
+  workItemEditProposal: async (req: {
+    id: string
+    binding_question?: string
+    slug?: string
+    pipeline_family_hint?: string
+    project_association?: string
+    rationale?: string
+  }): Promise<{ id: string; message: string }> => {
+    const r = await fetch('/api/work-items/edit-proposal', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(req),
+    })
+    if (!r.ok) {
+      let msg = `HTTP ${r.status}`
+      try { const b = await r.json(); if (b.error) msg = b.error } catch {}
+      throw new Error(msg)
+    }
+    return r.json()
+  },
+  workItemReviseWithFeedback: async (id: string, feedback: string): Promise<ReviseResp> => {
+    const r = await fetch('/api/work-items/revise-with-feedback', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ id, feedback }),
+    })
+    if (!r.ok) {
+      let msg = `HTTP ${r.status}`
+      try { const b = await r.json(); if (b.error) msg = b.error } catch {}
+      throw new Error(msg)
+    }
+    return r.json()
+  },
+  workItemPendingRevisions: (id: string) =>
+    getJSON<PendingRevisionsResp>(`/api/work-items/pending-revisions?id=${encodeURIComponent(id)}`),
+  workItemApplyRevision: async (id: string): Promise<WorkItemActionResp> => {
+    const r = await fetch('/api/work-items/apply-revision', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ id }),
+    })
+    if (!r.ok) {
+      let msg = `HTTP ${r.status}`
+      try { const b = await r.json(); if (b.error) msg = b.error } catch {}
+      throw new Error(msg)
+    }
+    return r.json()
+  },
+  workItemRejectRevision: async (id: string, reason?: string): Promise<WorkItemActionResp> => {
+    const r = await fetch('/api/work-items/reject-revision', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ id, reason }),
+    })
+    if (!r.ok) {
+      let msg = `HTTP ${r.status}`
+      try { const b = await r.json(); if (b.error) msg = b.error } catch {}
+      throw new Error(msg)
+    }
+    return r.json()
+  },
   workItemRatify: async (id: string): Promise<WorkItemActionResp> => {
     const r = await fetch('/api/work-items/ratify', {
       method: 'POST',
@@ -888,6 +950,39 @@ export type WorkItemActionResp = {
   maturity?: string
   work_queue_id?: number
   message?: string
+}
+
+export type ReviseResp = {
+  revise_work_item_id: string
+  work_queue_id: number
+  message: string
+}
+
+// Revision JSON shape emitted by the revise stage (partial — only
+// changed fields are present).
+export type RevisionJSON = {
+  binding_question?: string
+  rationale?: string
+  slug?: string
+  pipeline_family_hint?: string
+  project_association?: string
+}
+
+export type PendingRevisionRow = {
+  id: string
+  slug: string
+  status: string
+  maturity: string
+  created_at?: string
+  completed_at?: string
+  cost_micro: number
+  feedback?: string
+  revision_json?: RevisionJSON
+}
+
+export type PendingRevisionsResp = {
+  revisions: PendingRevisionRow[]
+  count: number
 }
 
 export type SessionListItem = {

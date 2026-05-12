@@ -71,6 +71,214 @@ const isProposal = computed(() =>
   wi.value?.origin === 'agent_planning' && wi.value?.status !== 'cancelled',
 )
 
+// ---------------------------------------------------------------------
+// Edit + AI-revise (third proposal mode)
+// ---------------------------------------------------------------------
+
+import { type PendingRevisionRow, type RevisionJSON } from '@/api'
+
+// Direct edit state
+const editing = ref(false)
+const editForm = ref({
+  binding_question: '',
+  slug: '',
+  pipeline_family_hint: '',
+  project_association: '',
+  rationale: '',
+})
+const editBusy = ref(false)
+
+function startEdit() {
+  if (!wi.value) return
+  const input = wi.value.input as any
+  editForm.value = {
+    binding_question: input?.binding_question ?? '',
+    slug: wi.value.slug ?? '',
+    pipeline_family_hint: wi.value.pipeline ?? '',
+    project_association: wi.value.project_association ?? '',
+    rationale: input?.rationale_from_planning ?? '',
+  }
+  editing.value = true
+  actionMsg.value = ''
+  actionErr.value = ''
+}
+
+function cancelEdit() {
+  editing.value = false
+}
+
+async function submitEdit() {
+  if (!wi.value) return
+  editBusy.value = true
+  actionMsg.value = ''
+  actionErr.value = ''
+  try {
+    const input = wi.value.input as any
+    const req: any = { id: wi.value.id }
+    if (editForm.value.binding_question !== (input?.binding_question ?? '')) {
+      req.binding_question = editForm.value.binding_question
+    }
+    if (editForm.value.slug !== wi.value.slug) {
+      req.slug = editForm.value.slug
+    }
+    if (editForm.value.pipeline_family_hint !== wi.value.pipeline) {
+      req.pipeline_family_hint = editForm.value.pipeline_family_hint
+    }
+    if (editForm.value.project_association !== (wi.value.project_association ?? '')) {
+      req.project_association = editForm.value.project_association
+    }
+    if (editForm.value.rationale !== (input?.rationale_from_planning ?? '')) {
+      req.rationale = editForm.value.rationale
+    }
+    const r = await api.workItemEditProposal(req)
+    actionMsg.value = r.message || 'edited'
+    editing.value = false
+    await load(idFromRoute.value)
+  } catch (e) {
+    actionErr.value = String(e)
+  } finally {
+    editBusy.value = false
+  }
+}
+
+// AI revise state
+const reviseOpen = ref(false)
+const reviseFeedback = ref('')
+const reviseBusy = ref(false)
+const pendingRevisions = ref<PendingRevisionRow[]>([])
+let revisionsPollTimer: number | undefined
+
+function openRevise() {
+  reviseOpen.value = true
+  reviseFeedback.value = ''
+}
+
+function cancelRevise() {
+  reviseOpen.value = false
+  reviseFeedback.value = ''
+}
+
+async function submitRevise() {
+  if (!wi.value || !reviseFeedback.value.trim()) return
+  reviseBusy.value = true
+  actionMsg.value = ''
+  actionErr.value = ''
+  try {
+    const r = await api.workItemReviseWithFeedback(wi.value.id, reviseFeedback.value.trim())
+    actionMsg.value = r.message
+    reviseOpen.value = false
+    reviseFeedback.value = ''
+    // Kick off polling for the revision result.
+    await loadPendingRevisions()
+    startRevisionsPoll()
+  } catch (e) {
+    actionErr.value = String(e)
+  } finally {
+    reviseBusy.value = false
+  }
+}
+
+async function loadPendingRevisions() {
+  if (!wi.value) return
+  try {
+    const r = await api.workItemPendingRevisions(wi.value.id)
+    pendingRevisions.value = r.revisions
+    // Stop polling once all revisions are terminal (completed or in their
+    // diff-card state with revision_json set).
+    const stillRunning = r.revisions.some(rev => rev.status === 'in_progress' || rev.status === 'pending')
+    if (!stillRunning && revisionsPollTimer) {
+      window.clearInterval(revisionsPollTimer)
+      revisionsPollTimer = undefined
+    }
+  } catch {
+    /* tolerate transient errors */
+  }
+}
+
+function startRevisionsPoll() {
+  if (revisionsPollTimer) window.clearInterval(revisionsPollTimer)
+  revisionsPollTimer = window.setInterval(loadPendingRevisions, 4000)
+}
+
+async function acceptRevision(revId: string) {
+  try {
+    const r = await api.workItemApplyRevision(revId)
+    actionMsg.value = r.message || 'applied'
+    await load(idFromRoute.value)
+    await loadPendingRevisions()
+  } catch (e) {
+    actionErr.value = String(e)
+  }
+}
+
+async function rejectRevision(revId: string) {
+  try {
+    const r = await api.workItemRejectRevision(revId, 'rejected via UI')
+    actionMsg.value = r.message || 'rejected'
+    await loadPendingRevisions()
+  } catch (e) {
+    actionErr.value = String(e)
+  }
+}
+
+// Diff rendering helper. Returns labeled before/after rows for any
+// revision field that's actually being changed (compares revision JSON
+// to current work_item state).
+function diffRows(rev: PendingRevisionRow): Array<{ label: string; before: string; after: string }> {
+  const out: Array<{ label: string; before: string; after: string }> = []
+  if (!wi.value || !rev.revision_json) return out
+  const r = rev.revision_json as RevisionJSON
+  const input = wi.value.input as any
+  if (r.binding_question !== undefined) {
+    out.push({
+      label: 'binding_question',
+      before: input?.binding_question ?? '',
+      after: r.binding_question,
+    })
+  }
+  if (r.rationale !== undefined) {
+    out.push({
+      label: 'rationale',
+      before: input?.rationale_from_planning ?? '',
+      after: r.rationale,
+    })
+  }
+  if (r.slug !== undefined) {
+    out.push({ label: 'slug', before: wi.value.slug ?? '', after: r.slug })
+  }
+  if (r.pipeline_family_hint !== undefined) {
+    out.push({
+      label: 'pipeline_family',
+      before: wi.value.pipeline ?? '',
+      after: r.pipeline_family_hint ?? '(cleared)',
+    })
+  }
+  if (r.project_association !== undefined) {
+    out.push({
+      label: 'project_association',
+      before: wi.value.project_association ?? '',
+      after: r.project_association ?? '(cleared)',
+    })
+  }
+  return out
+}
+
+// Load pending revisions whenever the work_item loads.
+watch(wi, async (v) => {
+  if (v && isProposal.value) {
+    await loadPendingRevisions()
+    // If any revision is still running, start polling.
+    if (pendingRevisions.value.some(r => r.status === 'in_progress' || r.status === 'pending')) {
+      startRevisionsPoll()
+    }
+  }
+})
+
+import { onUnmounted } from 'vue'
+onUnmounted(() => {
+  if (revisionsPollTimer) window.clearInterval(revisionsPollTimer)
+})
+
 async function load(idOrSlug: string) {
   loading.value = true
   error.value = ''
@@ -351,6 +559,172 @@ function actionTone(action: string): string {
           Ratifying advances maturity but doesn't dispatch yet — you can adjust the
           pipeline_family_hint / project / inputs first if needed, then click Dispatch.
         </p>
+
+        <!-- Edit + revise sub-panels (collapsible) -->
+        <div class="border-t border-purple-800/40 pt-3 mt-3 space-y-2">
+          <div class="flex flex-wrap gap-2">
+            <button
+              v-if="!editing"
+              class="px-3 py-1.5 rounded text-xs border border-zinc-700 hover:bg-zinc-800 text-zinc-300"
+              @click="startEdit"
+            >
+              ✎ Edit fields directly
+            </button>
+            <button
+              v-if="!reviseOpen"
+              class="px-3 py-1.5 rounded text-xs border border-purple-800/60 hover:bg-purple-900/30 text-purple-200"
+              @click="openRevise"
+            >
+              ↻ Revise with AI feedback
+            </button>
+          </div>
+
+          <!-- Direct edit form -->
+          <div
+            v-if="editing"
+            class="rounded border border-zinc-700 bg-zinc-900/70 p-3 space-y-2"
+          >
+            <div class="text-xs uppercase tracking-wide text-zinc-500 mb-1">Edit fields</div>
+
+            <label class="block text-xs text-zinc-400">slug
+              <input v-model="editForm.slug"
+                class="w-full mt-1 px-2 py-1 rounded bg-zinc-950 border border-zinc-700 text-sm font-mono text-zinc-200"
+                placeholder="kebab-case-slug" />
+            </label>
+
+            <label class="block text-xs text-zinc-400">binding_question
+              <textarea v-model="editForm.binding_question"
+                class="w-full mt-1 px-2 py-1 rounded bg-zinc-950 border border-zinc-700 text-sm text-zinc-200"
+                rows="3" />
+            </label>
+
+            <label class="block text-xs text-zinc-400">rationale
+              <textarea v-model="editForm.rationale"
+                class="w-full mt-1 px-2 py-1 rounded bg-zinc-950 border border-zinc-700 text-sm text-zinc-200"
+                rows="2" />
+            </label>
+
+            <div class="grid grid-cols-2 gap-2">
+              <label class="block text-xs text-zinc-400">pipeline_family
+                <input v-model="editForm.pipeline_family_hint"
+                  class="w-full mt-1 px-2 py-1 rounded bg-zinc-950 border border-zinc-700 text-sm font-mono text-zinc-200"
+                  placeholder="research-write | planning | …" />
+              </label>
+              <label class="block text-xs text-zinc-400">project_association
+                <input v-model="editForm.project_association"
+                  class="w-full mt-1 px-2 py-1 rounded bg-zinc-950 border border-zinc-700 text-sm font-mono text-zinc-200"
+                  placeholder="space-center | pg-ai-stewards | …" />
+              </label>
+            </div>
+
+            <div class="flex gap-2 pt-1">
+              <button
+                class="px-3 py-1.5 rounded text-xs bg-emerald-900/40 text-emerald-200 hover:bg-emerald-900/60 border border-emerald-800/60 disabled:opacity-50"
+                :disabled="editBusy"
+                @click="submitEdit"
+              >Save changes</button>
+              <button
+                class="px-3 py-1.5 rounded text-xs bg-zinc-800 text-zinc-400 hover:bg-zinc-700 border border-zinc-700"
+                :disabled="editBusy"
+                @click="cancelEdit"
+              >Cancel</button>
+            </div>
+          </div>
+
+          <!-- AI revise textarea -->
+          <div
+            v-if="reviseOpen"
+            class="rounded border border-purple-800/60 bg-purple-950/30 p-3 space-y-2"
+          >
+            <div class="text-xs uppercase tracking-wide text-purple-300 mb-1">
+              Revise with feedback
+            </div>
+            <p class="text-xs text-zinc-400">
+              Write what should change. The agent reads the original + parent plan + your feedback
+              and proposes a revision. You'll see a diff before it applies. ~$0.02-0.05 per revise.
+            </p>
+            <textarea v-model="reviseFeedback"
+              class="w-full mt-1 px-2 py-1 rounded bg-zinc-950 border border-purple-800/40 text-sm text-zinc-200"
+              rows="4"
+              placeholder="e.g. 'scope tighter — focus only on the webcam permissions test, not the full ML pipeline'" />
+            <div class="flex gap-2">
+              <button
+                class="px-3 py-1.5 rounded text-xs bg-purple-900/50 text-purple-100 hover:bg-purple-800/60 border border-purple-700/60 disabled:opacity-50"
+                :disabled="reviseBusy || !reviseFeedback.trim()"
+                @click="submitRevise"
+              >
+                {{ reviseBusy ? 'Dispatching…' : '↻ Send to agent' }}
+              </button>
+              <button
+                class="px-3 py-1.5 rounded text-xs bg-zinc-800 text-zinc-400 hover:bg-zinc-700 border border-zinc-700"
+                :disabled="reviseBusy"
+                @click="cancelRevise"
+              >Cancel</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pending revisions diff cards -->
+        <div
+          v-if="pendingRevisions.length > 0"
+          class="border-t border-purple-800/40 pt-3 mt-3 space-y-3"
+        >
+          <div class="text-xs uppercase tracking-wide text-purple-300">
+            Pending revisions ({{ pendingRevisions.length }})
+          </div>
+
+          <div
+            v-for="rev in pendingRevisions"
+            :key="rev.id"
+            class="rounded border border-purple-800/40 bg-zinc-950/60 p-3 space-y-2"
+          >
+            <div class="flex items-baseline justify-between text-xs">
+              <div class="text-purple-300 font-mono">{{ rev.slug }}</div>
+              <div class="text-zinc-500">
+                <span v-if="rev.status === 'in_progress' || rev.status === 'pending'"
+                      class="text-amber-400">⏳ {{ rev.status }} ({{ rev.maturity }})</span>
+                <span v-else>{{ rev.status }} · ${{ (rev.cost_micro / 1_000_000).toFixed(4) }}</span>
+              </div>
+            </div>
+
+            <div v-if="rev.feedback" class="text-xs text-zinc-400 italic">
+              <span class="text-zinc-500">your feedback:</span> "{{ rev.feedback }}"
+            </div>
+
+            <!-- Diff rows once revision_json is available -->
+            <template v-if="rev.revision_json && rev.status === 'completed'">
+              <div
+                v-for="row in diffRows(rev)"
+                :key="row.label"
+                class="grid grid-cols-2 gap-2 text-xs"
+              >
+                <div class="rounded bg-red-950/30 border border-red-900/30 p-2">
+                  <div class="text-red-400 uppercase tracking-wide text-[10px] mb-1">before · {{ row.label }}</div>
+                  <pre class="whitespace-pre-wrap font-sans text-zinc-300">{{ row.before }}</pre>
+                </div>
+                <div class="rounded bg-emerald-950/30 border border-emerald-900/30 p-2">
+                  <div class="text-emerald-400 uppercase tracking-wide text-[10px] mb-1">after · {{ row.label }}</div>
+                  <pre class="whitespace-pre-wrap font-sans text-zinc-200">{{ row.after }}</pre>
+                </div>
+              </div>
+
+              <div class="flex gap-2 pt-1">
+                <button
+                  class="px-3 py-1.5 rounded text-xs bg-emerald-900/40 text-emerald-200 hover:bg-emerald-900/60 border border-emerald-800/60"
+                  @click="acceptRevision(rev.id)"
+                >✓ Accept revision</button>
+                <button
+                  class="px-3 py-1.5 rounded text-xs bg-zinc-800 text-zinc-400 hover:bg-zinc-700 border border-zinc-700"
+                  @click="rejectRevision(rev.id)"
+                >✕ Reject</button>
+              </div>
+            </template>
+
+            <div v-else class="text-xs text-zinc-500 italic">
+              Revising… polling every 4s for completion.
+            </div>
+          </div>
+        </div>
       </section>
 
       <!-- Phase 5a (Phase B): Maturity ladder panel -->
