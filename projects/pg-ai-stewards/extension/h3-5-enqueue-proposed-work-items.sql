@@ -227,78 +227,28 @@ COMMENT ON FUNCTION stewards.enqueue_proposed_work_items(uuid) IS
 'H.3.5 (Batch H): reads a planning work_item''s stage_results.propose_work.output JSON array and inserts each proposed work_item with origin=agent_planning, parent_work_item_id pointing back, and intent inherited. Schema validation per Q-H3.1 ratification; malformed elements are skipped with NOTICE (not raised) so the trigger remains non-throwing.';
 
 -- ---------------------------------------------------------------------
--- Extend on_maturity_verified to call enqueue_proposed_work_items
+-- Trigger ownership: h3-followup-2 owns the canonical on_maturity_verified
+-- ---------------------------------------------------------------------
+--
+-- This file used to also CREATE OR REPLACE on_maturity_verified to add
+-- the propose_work_items branch. h3-followup-2 later extended the
+-- same trigger to add render_file_destination auto-rendering.
+--
+-- Re-running this file alone (e.g. to ship the input.today bugfix in
+-- the function above) was overwriting h3-followup-2's render extension
+-- and silently regressing the trigger. Three SC work_items completed
+-- with maturity=verified but file_destination=NULL because the trigger
+-- no longer rendered the template.
+--
+-- Fix: this file no longer touches the trigger. h3-followup-2 is the
+-- canonical owner of on_maturity_verified and includes both
+-- extensions (render_file_destination + enqueue_proposed_work_items).
+-- Future extensions that need to hook into the trigger should update
+-- h3-followup-2 (or supersede it) — not this file.
+--
+-- See also: docs lesson in journal 2026-05-12-trigger-regression-bugfix.md
+-- about the shared-trigger-ownership pattern.
 -- ---------------------------------------------------------------------
 
-CREATE OR REPLACE FUNCTION stewards.on_maturity_verified()
-RETURNS trigger
-LANGUAGE plpgsql
-AS $func$
-DECLARE
-    v_pipeline      stewards.pipelines%ROWTYPE;
-    v_sabbath       boolean;
-    v_auto_mat      boolean;
-    v_pwid          bigint;
-    v_dispatch_id   bigint;
-    v_proposed_n    int;
-BEGIN
-    -- Only act on transition TO 'verified'. NULL/non-verified previous
-    -- values both fire if the new value is 'verified' and not already.
-    IF NEW.maturity <> 'verified' OR OLD.maturity = 'verified' THEN
-        RETURN NEW;
-    END IF;
-
-    SELECT * INTO v_pipeline FROM stewards.pipelines WHERE family = NEW.pipeline_family;
-    IF v_pipeline.family IS NULL THEN
-        RAISE NOTICE 'on_maturity_verified: pipeline % not found', NEW.pipeline_family;
-        RETURN NEW;
-    END IF;
-
-    -- D-H6.2: sabbath_dispatch on transition to verified
-    v_sabbath := COALESCE(NEW.sabbath_enabled, v_pipeline.sabbath_enabled);
-    IF v_sabbath AND NEW.sabbath_completed_at IS NULL THEN
-        BEGIN
-            v_dispatch_id := stewards.sabbath_dispatch(NEW.id);
-            RAISE NOTICE 'on_maturity_verified: sabbath_dispatch work_id=% for work_item=%',
-                v_dispatch_id, NEW.id;
-        EXCEPTION WHEN OTHERS THEN
-            RAISE NOTICE 'on_maturity_verified: sabbath_dispatch failed: %', SQLERRM;
-        END;
-    END IF;
-
-    -- D-H6.3 + D-H6.4: auto-materialize on transition to verified
-    v_auto_mat := COALESCE(NEW.auto_materialize_enabled, v_pipeline.auto_materialize_on_verified);
-    IF v_auto_mat
-       AND NEW.file_destination IS NOT NULL
-       AND NEW.materialized_at IS NULL
-    THEN
-        BEGIN
-            v_pwid := stewards.enqueue_work_item_file(NEW.id, 'auto_materialize_on_verified');
-            RAISE NOTICE 'on_maturity_verified: enqueue_work_item_file pwid=% for work_item=%',
-                v_pwid, NEW.id;
-        EXCEPTION WHEN OTHERS THEN
-            RAISE NOTICE 'on_maturity_verified: enqueue_work_item_file failed: %', SQLERRM;
-        END;
-    END IF;
-
-    -- H.3.5: enqueue proposed work_items for planning pipeline family.
-    -- The function is no-op for non-planning pipelines.
-    IF NEW.pipeline_family = 'planning' THEN
-        BEGIN
-            v_proposed_n := stewards.enqueue_proposed_work_items(NEW.id);
-            RAISE NOTICE 'on_maturity_verified: enqueue_proposed_work_items inserted=% for work_item=%',
-                v_proposed_n, NEW.id;
-        EXCEPTION WHEN OTHERS THEN
-            RAISE NOTICE 'on_maturity_verified: enqueue_proposed_work_items failed: %', SQLERRM;
-        END;
-    END IF;
-
-    RETURN NEW;
-END;
-$func$;
-
--- Re-attach trigger (DROP + CREATE pattern stays — the CREATE OR
--- REPLACE FUNCTION already updated the function body; trigger
--- definition itself doesn't change).
 SELECT 'trigger present:' AS check_name, count(*)
   FROM pg_trigger WHERE tgname = 'work_items_on_maturity_verified';
