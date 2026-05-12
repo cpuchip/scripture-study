@@ -120,10 +120,12 @@ export const api = {
     if (opts?.limit) p.set('limit', String(opts.limit))
     return getJSON<SearchResp>(`/api/studies/search?${p}`)
   },
-  workItemsList: (params?: { pipeline?: string; status?: string; limit?: number }) => {
+  workItemsList: (params?: { pipeline?: string; status?: string; origin?: string; project_association?: string; limit?: number }) => {
     const q = new URLSearchParams()
     if (params?.pipeline) q.set('pipeline', params.pipeline)
     if (params?.status) q.set('status', params.status)
+    if (params?.origin) q.set('origin', params.origin)
+    if (params?.project_association) q.set('project_association', params.project_association)
     if (params?.limit) q.set('limit', String(params.limit))
     const qs = q.toString()
     return getJSON<WorkItemsListResp>(`/api/work-items/list${qs ? '?' + qs : ''}`)
@@ -673,6 +675,10 @@ export type WorkItemRow = {
   created_at?: string
   updated_at?: string
   completed_at?: string
+  // H.3 — origin + project + parent linkage
+  origin?: string
+  project_association?: string
+  parent_work_item_id?: string
 }
 
 export type WorkItemsListResp = {

@@ -11,6 +11,7 @@ const loading = ref(false)
 
 const pipeline = ref(String(route.query.pipeline ?? ''))
 const status = ref(String(route.query.status ?? ''))
+const origin = ref(String(route.query.origin ?? ''))
 
 async function load() {
   loading.value = true
@@ -19,6 +20,7 @@ async function load() {
     data.value = await api.workItemsList({
       pipeline: pipeline.value || undefined,
       status: status.value || undefined,
+      origin: origin.value || undefined,
       limit: 100,
     })
   } catch (e) {
@@ -31,8 +33,24 @@ function submit() {
   const q: Record<string, string> = {}
   if (pipeline.value) q.pipeline = pipeline.value
   if (status.value) q.status = status.value
+  if (origin.value) q.origin = origin.value
   router.replace({ path: '/work-items', query: q })
   load()
+}
+
+// H.3: visual style for the origin badge. agent_planning is the
+// substrate-proposed work that awaits human ratification — make it
+// visibly distinct from human-originated work.
+function originBadgeClass(o?: string): string {
+  switch (o) {
+    case 'agent_planning': return 'bg-purple-900/40 text-purple-300 border border-purple-800/60'
+    case 'scheduled':      return 'bg-cyan-900/40 text-cyan-300'
+    case 'watchman':       return 'bg-teal-900/40 text-teal-300'
+    case 'steward':        return 'bg-amber-900/40 text-amber-300'
+    case 'council':        return 'bg-indigo-900/40 text-indigo-300'
+    case 'human':
+    default:               return ''   // no badge for default human-originated
+  }
 }
 
 onMounted(load)
@@ -78,6 +96,18 @@ function fmtRelative(s?: string) {
         <option value="failed">failed</option>
         <option value="cancelled">cancelled</option>
       </select>
+      <select
+        v-model="origin"
+        class="px-3 py-2 rounded border border-zinc-700 bg-zinc-900 text-sm"
+      >
+        <option value="">all origins</option>
+        <option value="human">human</option>
+        <option value="agent_planning">agent_planning</option>
+        <option value="scheduled">scheduled</option>
+        <option value="watchman">watchman</option>
+        <option value="steward">steward</option>
+        <option value="council">council</option>
+      </select>
       <button type="submit" class="px-4 py-2 rounded border border-zinc-700 hover:bg-zinc-800 text-sm">
         go
       </button>
@@ -114,6 +144,21 @@ function fmtRelative(s?: string) {
               >
                 {{ w.slug }}
               </RouterLink>
+              <span
+                v-if="w.origin && w.origin !== 'human'"
+                class="ml-2 inline-block px-1.5 py-0.5 rounded text-xs"
+                :class="originBadgeClass(w.origin)"
+                :title="`origin: ${w.origin}`"
+              >
+                {{ w.origin === 'agent_planning' ? '✨ proposed' : w.origin }}
+              </span>
+              <span
+                v-if="w.project_association"
+                class="ml-2 inline-block px-1.5 py-0.5 rounded text-xs bg-zinc-800/50 text-zinc-400 font-mono"
+                :title="`project: ${w.project_association}`"
+              >
+                {{ w.project_association }}
+              </span>
             </td>
             <td class="px-4 py-2 text-zinc-300">{{ w.pipeline }}</td>
             <td class="px-4 py-2 text-zinc-300">{{ w.current_stage }}</td>

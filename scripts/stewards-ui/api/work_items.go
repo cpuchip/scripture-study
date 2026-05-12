@@ -20,18 +20,22 @@ func (d *Deps) registerWorkItems(mux *http.ServeMux) {
 }
 
 type workItemRow struct {
-	ID            string     `json:"id"`
-	Slug          string     `json:"slug"`
-	Pipeline      string     `json:"pipeline"`
-	CurrentStage  string     `json:"current_stage"`
-	Status        string     `json:"status"`
-	Actor         string     `json:"actor,omitempty"`
-	TokensIn      int        `json:"tokens_in"`
-	TokensOut     int        `json:"tokens_out"`
-	TokenBudget   *int       `json:"token_budget,omitempty"`
-	CreatedAt     *time.Time `json:"created_at,omitempty"`
-	UpdatedAt     *time.Time `json:"updated_at,omitempty"`
-	CompletedAt   *time.Time `json:"completed_at,omitempty"`
+	ID                  string     `json:"id"`
+	Slug                string     `json:"slug"`
+	Pipeline            string     `json:"pipeline"`
+	CurrentStage        string     `json:"current_stage"`
+	Status              string     `json:"status"`
+	Actor               string     `json:"actor,omitempty"`
+	TokensIn            int        `json:"tokens_in"`
+	TokensOut           int        `json:"tokens_out"`
+	TokenBudget         *int       `json:"token_budget,omitempty"`
+	CreatedAt           *time.Time `json:"created_at,omitempty"`
+	UpdatedAt           *time.Time `json:"updated_at,omitempty"`
+	CompletedAt         *time.Time `json:"completed_at,omitempty"`
+	// H.3 — origin + project + parent linkage
+	Origin              string     `json:"origin,omitempty"`
+	ProjectAssociation  string     `json:"project_association,omitempty"`
+	ParentWorkItemID    string     `json:"parent_work_item_id,omitempty"`
 }
 
 type workItemsListResp struct {
@@ -46,6 +50,8 @@ func (d *Deps) workItemsListHandler(w http.ResponseWriter, r *http.Request) {
 	q := r.URL.Query()
 	pipeline := q.Get("pipeline")
 	status := q.Get("status")
+	origin := q.Get("origin")
+	project := q.Get("project_association")
 	limit := atoiDefault(q.Get("limit"), 100, 1, 500)
 
 	whereClauses := []string{}
@@ -57,6 +63,14 @@ func (d *Deps) workItemsListHandler(w http.ResponseWriter, r *http.Request) {
 	if status != "" {
 		args = append(args, status)
 		whereClauses = append(whereClauses, "status = $"+itoa(len(args)))
+	}
+	if origin != "" {
+		args = append(args, origin)
+		whereClauses = append(whereClauses, "origin = $"+itoa(len(args)))
+	}
+	if project != "" {
+		args = append(args, project)
+		whereClauses = append(whereClauses, "project_association = $"+itoa(len(args)))
 	}
 	where := ""
 	if len(whereClauses) > 0 {
@@ -77,7 +91,10 @@ func (d *Deps) workItemsListHandler(w http.ResponseWriter, r *http.Request) {
 		        coalesce(actor, ''),
 		        coalesce(tokens_in, 0), coalesce(tokens_out, 0),
 		        token_budget,
-		        created_at, updated_at, completed_at
+		        created_at, updated_at, completed_at,
+		        coalesce(origin, 'human'),
+		        coalesce(project_association, ''),
+		        coalesce(parent_work_item_id::text, '')
 		   FROM stewards.work_items`+where+
 			` ORDER BY updated_at DESC NULLS LAST LIMIT $`+itoa(len(args)),
 		args...,
@@ -91,7 +108,8 @@ func (d *Deps) workItemsListHandler(w http.ResponseWriter, r *http.Request) {
 		var w workItemRow
 		if err := rows.Scan(&w.ID, &w.Slug, &w.Pipeline, &w.CurrentStage, &w.Status,
 			&w.Actor, &w.TokensIn, &w.TokensOut, &w.TokenBudget,
-			&w.CreatedAt, &w.UpdatedAt, &w.CompletedAt); err == nil {
+			&w.CreatedAt, &w.UpdatedAt, &w.CompletedAt,
+			&w.Origin, &w.ProjectAssociation, &w.ParentWorkItemID); err == nil {
 			resp.Items = append(resp.Items, w)
 		}
 	}
@@ -179,7 +197,10 @@ func (d *Deps) workItemsGetHandler(w http.ResponseWriter, r *http.Request) {
 		        coalesce(wi.spec, ''),
 		        coalesce(wi.file_destination, ''),
 		        wi.materialized_at,
-		        coalesce(p.file_destination_template, '')
+		        coalesce(p.file_destination_template, ''),
+		        coalesce(wi.origin, 'human'),
+		        coalesce(wi.project_association, ''),
+		        coalesce(wi.parent_work_item_id::text, '')
 		   FROM stewards.work_items wi
 		   LEFT JOIN stewards.pipelines p ON p.family = wi.pipeline_family
 		  WHERE wi.`+whereSQL,
@@ -195,7 +216,8 @@ func (d *Deps) workItemsGetHandler(w http.ResponseWriter, r *http.Request) {
 		&wd.CostMicroDollars, &wd.CostCapMicro, &wd.CostCappedAt,
 		&wd.Maturity, &wd.DestinationMaturity, &wd.RevisionCount,
 		&wd.Scenarios, &wd.Spec,
-		&wd.FileDestination, &wd.MaterializedAt, &wd.PipelineFileTemplate)
+		&wd.FileDestination, &wd.MaterializedAt, &wd.PipelineFileTemplate,
+		&wd.Origin, &wd.ProjectAssociation, &wd.ParentWorkItemID)
 	if err != nil {
 		writeErr(w, http.StatusNotFound, err.Error())
 		return
