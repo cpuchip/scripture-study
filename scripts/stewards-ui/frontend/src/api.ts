@@ -271,6 +271,48 @@ export const api = {
     return r.json()
   },
   intentsList: () => getJSON<IntentsListResp>('/api/intents/list'),
+
+  // Projects (Batch I.1)
+  projectsList: (includeArchived = false) =>
+    getJSON<ProjectsListResp>(`/api/projects/list${includeArchived ? '?include_archived=true' : ''}`),
+  projectGet: (slug: string) =>
+    getJSON<ProjectRow>(`/api/projects/get?slug=${encodeURIComponent(slug)}`),
+  projectCreate: async (req: { slug: string; name: string; description?: string; root_directory?: string }): Promise<{ slug: string; message: string }> => {
+    const r = await fetch('/api/projects/create', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(req),
+    })
+    if (!r.ok) {
+      let msg = `HTTP ${r.status}`
+      try { const b = await r.json(); if (b.error) msg = b.error } catch {}
+      throw new Error(msg)
+    }
+    return r.json()
+  },
+  projectUpdate: async (req: { slug: string; name?: string; description?: string; root_directory?: string }): Promise<{ slug: string; message: string }> => {
+    const r = await fetch('/api/projects/update', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(req),
+    })
+    if (!r.ok) {
+      let msg = `HTTP ${r.status}`
+      try { const b = await r.json(); if (b.error) msg = b.error } catch {}
+      throw new Error(msg)
+    }
+    return r.json()
+  },
+  projectArchive: async (slug: string, archived: boolean): Promise<{ slug: string; archived: boolean; message: string }> => {
+    const r = await fetch('/api/projects/archive', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ slug, archived }),
+    })
+    if (!r.ok) {
+      let msg = `HTTP ${r.status}`
+      try { const b = await r.json(); if (b.error) msg = b.error } catch {}
+      throw new Error(msg)
+    }
+    return r.json()
+  },
   intentGet: (idOrSlug: string) => {
     const q = idOrSlug.length === 36 && idOrSlug.includes('-')
       ? `id=${encodeURIComponent(idOrSlug)}`
@@ -426,6 +468,7 @@ export type WorkItemCreateReq = {
   destination_maturity?: string
   intent_id?: string
   file_destination?: string
+  project_association?: string
 }
 
 // Phase 5d (C.7+C.8) — intent + covenant types
@@ -942,6 +985,22 @@ export type SessionDetail = {
   dispatches: ChatDispatch[]
   tokens_in: number
   tokens_out: number
+}
+
+export type ProjectRow = {
+  slug: string
+  name: string
+  description?: string
+  root_directory?: string
+  archived: boolean
+  work_item_count: number
+  created_at?: string
+  updated_at?: string
+}
+
+export type ProjectsListResp = {
+  items: ProjectRow[]
+  total: number
 }
 
 export type WorkItemActionResp = {

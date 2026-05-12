@@ -27,6 +27,7 @@ type workItemCreateReq struct {
 	DestinationMaturity string          `json:"destination_maturity,omitempty"`
 	IntentID            string          `json:"intent_id,omitempty"`
 	FileDestination     string          `json:"file_destination,omitempty"`
+	ProjectAssociation  string          `json:"project_association,omitempty"`
 }
 
 type workItemCreateResp struct {
@@ -101,6 +102,20 @@ func (d *Deps) workItemCreateHandler(w http.ResponseWriter, r *http.Request) {
 		)
 		if err != nil {
 			writeErr(w, http.StatusInternalServerError, "set file_destination: "+err.Error())
+			return
+		}
+	}
+
+	// Batch I.1: optional project_association from the dropdown picker.
+	// Soft reference (no FK), so we don't validate against projects table —
+	// freeform fallback works alongside the picker.
+	if req.ProjectAssociation != "" {
+		_, err := d.Pool.Exec(ctx,
+			`UPDATE stewards.work_items SET project_association = $1 WHERE id = $2::uuid`,
+			req.ProjectAssociation, newID,
+		)
+		if err != nil {
+			writeErr(w, http.StatusInternalServerError, "set project_association: "+err.Error())
 			return
 		}
 	}

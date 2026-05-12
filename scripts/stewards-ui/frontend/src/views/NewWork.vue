@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, computed, onMounted, watch } from 'vue'
-import { useRouter } from 'vue-router'
+import { useRouter, RouterLink } from 'vue-router'
 import { api, type ProviderRow, type IntentRow, type PipelineRow } from '@/api'
 
 const router = useRouter()
@@ -34,6 +34,12 @@ const destinationMaturity = ref<string>('')
 const intents = ref<IntentRow[]>([])
 const intentId = ref<string>('')
 const intentsError = ref('')
+
+// Projects (Batch I.1)
+import { type ProjectRow } from '@/api'
+const projects = ref<ProjectRow[]>([])
+const projectAssociation = ref<string>('')
+const projectsError = ref('')
 
 // Inline create-new-intent modal state
 const showCreateIntent = ref(false)
@@ -148,6 +154,12 @@ onMounted(async () => {
   }
   await loadIntents()
   await loadPipelines()
+  try {
+    const r = await api.projectsList(false)
+    projects.value = r.items
+  } catch (e) {
+    projectsError.value = String(e)
+  }
 })
 
 const submitting = ref(false)
@@ -176,6 +188,7 @@ async function submit() {
       file_destination: writeFile.value && fileDestination.value
         ? fileDestination.value.replace(/<slug>/g, slug.value || '<slug>')
         : undefined,
+      project_association: projectAssociation.value || undefined,
     })
     result.value = { id: r.id, dispatched: r.dispatched }
   } catch (e) {
@@ -289,6 +302,34 @@ function goToWorkItem() {
             class="w-full px-3 py-2 rounded border border-zinc-700 bg-zinc-900 text-sm focus:border-zinc-500 focus:outline-none tabular-nums"
           />
         </div>
+      </div>
+
+      <!-- Batch I.1 — project picker -->
+      <div>
+        <label class="block text-xs uppercase tracking-wide text-zinc-500 mb-1">
+          Project (optional)
+        </label>
+        <div class="flex gap-2">
+          <select
+            v-model="projectAssociation"
+            class="flex-1 px-3 py-2 rounded border border-zinc-700 bg-zinc-900 text-sm focus:border-zinc-500 focus:outline-none"
+          >
+            <option value="">— (no project)</option>
+            <option v-for="p in projects" :key="p.slug" :value="p.slug">
+              {{ p.slug }} — {{ p.name }}
+            </option>
+          </select>
+          <RouterLink
+            to="/projects"
+            class="px-3 py-2 rounded border border-zinc-700 hover:bg-zinc-800 text-xs text-zinc-300 self-center"
+            title="Manage projects"
+          >manage ↗</RouterLink>
+        </div>
+        <p v-if="projectsError" class="text-xs text-red-400 mt-1">{{ projectsError }}</p>
+        <p class="text-xs text-zinc-500 mt-1">
+          Groups related work_items. Show on the WorkItems list as a chip. New
+          projects via the Projects page.
+        </p>
       </div>
 
       <div>

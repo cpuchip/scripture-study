@@ -21,6 +21,7 @@ const Lessons = () => import('./views/Lessons.vue')
 const Trust = () => import('./views/Trust.vue')
 const Councils = () => import('./views/Councils.vue')
 const CouncilDetail = () => import('./views/CouncilDetail.vue')
+const Projects = () => import('./views/Projects.vue')
 
 const routes: RouteRecordRaw[] = [
   { path: '/',           name: 'dashboard',  component: Dashboard },
@@ -41,6 +42,7 @@ const routes: RouteRecordRaw[] = [
   { path: '/trust',      name: 'trust',      component: Trust, meta: { title: 'Trust matrix' } },
   { path: '/councils',   name: 'councils',   component: Councils, meta: { title: 'Councils' } },
   { path: '/councils/:id', name: 'council-detail', component: CouncilDetail, meta: { title: 'Council' }, props: true },
+  { path: '/projects',   name: 'projects',   component: Projects, meta: { title: 'Projects' } },
 ]
 
 export default createRouter({
