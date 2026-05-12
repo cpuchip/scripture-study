@@ -193,7 +193,18 @@ BEGIN
                 'binding_question', v_binding,
                 'rationale_from_planning', v_rationale,
                 'proposed_by_work_item_id', v_wi.id::text,
-                'proposed_by_slug', v_wi.slug
+                'proposed_by_slug', v_wi.slug,
+                -- 2026-05-12 bugfix: substrate templates may reference
+                -- {{input.today}} (e.g., planning pipeline's synthesize
+                -- stage stamps the plan document with today's date).
+                -- Human-dispatched work_items got this set explicitly
+                -- in their SQL; agent-proposed ones didn't. Three SC
+                -- work_items failed at auto-dispatch of synthesize
+                -- with "resolve_template_path: path input.today
+                -- resolved to NULL" before this fix. Set it
+                -- unconditionally so proposed work_items have the
+                -- same context as human-created ones.
+                'today', to_char(current_date, 'YYYY-MM-DD')
             ),
             'agent',
             v_wi.intent_id,   -- inherit; user can swap at ratification
