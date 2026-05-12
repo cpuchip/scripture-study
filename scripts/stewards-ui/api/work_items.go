@@ -21,6 +21,12 @@ func (d *Deps) registerWorkItems(mux *http.ServeMux) {
 	mux.HandleFunc("POST /api/work-items/ratify", d.workItemsRatifyHandler)
 	mux.HandleFunc("POST /api/work-items/dispatch", d.workItemsDispatchHandler)
 	mux.HandleFunc("POST /api/work-items/cancel-proposal", d.workItemsCancelProposalHandler)
+	// Edit + AI-revise (third proposal mode)
+	mux.HandleFunc("POST /api/work-items/edit-proposal", d.workItemsEditProposalHandler)
+	mux.HandleFunc("POST /api/work-items/revise-with-feedback", d.workItemsReviseWithFeedbackHandler)
+	mux.HandleFunc("GET /api/work-items/pending-revisions", d.workItemsPendingRevisionsHandler)
+	mux.HandleFunc("POST /api/work-items/apply-revision", d.workItemsApplyRevisionHandler)
+	mux.HandleFunc("POST /api/work-items/reject-revision", d.workItemsRejectRevisionHandler)
 }
 
 type workItemRow struct {
@@ -683,5 +689,449 @@ func (d *Deps) workItemsCancelProposalHandler(w http.ResponseWriter, r *http.Req
 		return
 	}
 	resp.Message = "cancelled"
+	writeJSON(w, http.StatusOK, resp)
+}
+
+// =====================================================================
+// Edit + AI-revise — third proposal mode (this session)
+//
+// Two affordances on top of Ratify/Dispatch/Cancel:
+//   1. Direct edit fields (no AI) — UPDATE binding_question / slug /
+//      pipeline_family / project_association directly. Restricted to
+//      origin=agent_planning AND status != cancelled.
+//   2. AI revise-with-feedback — create + dispatch a revise-proposal
+//      work_item. When verified, the UI fetches pending-revisions and
+//      shows a diff card. User clicks Accept (calls apply-revision SQL)
+//      or Reject (UPDATE status=cancelled).
+// =====================================================================
+
+type editProposalReq struct {
+	ID                  string  `json:"id"`
+	BindingQuestion     *string `json:"binding_question,omitempty"`
+	Slug                *string `json:"slug,omitempty"`
+	PipelineFamilyHint  *string `json:"pipeline_family_hint,omitempty"`
+	ProjectAssociation  *string `json:"project_association,omitempty"`
+	Rationale           *string `json:"rationale,omitempty"`
+}
+
+// workItemsEditProposalHandler does direct UPDATE of editable fields on
+// a proposed work_item. No AI involved. Fields are optional; only the
+// ones present in the request body get updated. Restricted to
+// origin=agent_planning AND status != cancelled so the endpoint can't
+// become a general-purpose field-edit lever.
+func (d *Deps) workItemsEditProposalHandler(w http.ResponseWriter, r *http.Request) {
+	ctx, cancel := context.WithTimeout(r.Context(), 5*time.Second)
+	defer cancel()
+
+	var req editProposalReq
+	if err := json.NewDecoder(r.Body).Decode(&req); err != nil {
+		writeErr(w, http.StatusBadRequest, "decode body: "+err.Error())
+		return
+	}
+	if req.ID == "" {
+		writeErr(w, http.StatusBadRequest, "id required")
+		return
+	}
+
+	// Validate before touching the DB.
+	if req.Slug != nil && *req.Slug != "" {
+		// Defensive: same regex the substrate enforces internally.
+		matched := true
+		for _, c := range *req.Slug {
+			if !((c >= 'a' && c <= 'z') || (c >= '0' && c <= '9') || c == '-') {
+				matched = false
+				break
+			}
+		}
+		if !matched {
+			writeErr(w, http.StatusBadRequest, "slug must match ^[a-z0-9-]+$")
+			return
+		}
+	}
+	if req.BindingQuestion != nil && len(*req.BindingQuestion) > 0 && len(*req.BindingQuestion) < 20 {
+		writeErr(w, http.StatusBadRequest, "binding_question must be ≥20 chars")
+		return
+	}
+
+	// Build dynamic UPDATE. We always UPDATE input jsonb for
+	// binding_question / rationale; UPDATE top-level columns for slug
+	// / pipeline_family / project_association.
+	tx, err := d.Pool.Begin(ctx)
+	if err != nil {
+		writeErr(w, http.StatusInternalServerError, err.Error())
+		return
+	}
+	defer tx.Rollback(ctx)
+
+	// Guard: row must be a proposal in editable state.
+	var origin, status string
+	err = tx.QueryRow(ctx,
+		`SELECT origin, status FROM stewards.work_items WHERE id = $1::uuid`,
+		req.ID,
+	).Scan(&origin, &status)
+	if err != nil {
+		writeErr(w, http.StatusNotFound, "work_item not found: "+err.Error())
+		return
+	}
+	if origin != "agent_planning" {
+		writeErr(w, http.StatusBadRequest, "edit only allowed for origin=agent_planning (got "+origin+")")
+		return
+	}
+	if status == "cancelled" {
+		writeErr(w, http.StatusBadRequest, "cannot edit cancelled proposal")
+		return
+	}
+
+	if req.BindingQuestion != nil {
+		if _, err := tx.Exec(ctx,
+			`UPDATE stewards.work_items
+			    SET input = input || jsonb_build_object('binding_question', $2::text),
+			        updated_at = now()
+			  WHERE id = $1::uuid`,
+			req.ID, *req.BindingQuestion); err != nil {
+			writeErr(w, http.StatusBadRequest, "update binding: "+err.Error())
+			return
+		}
+	}
+	if req.Rationale != nil {
+		if _, err := tx.Exec(ctx,
+			`UPDATE stewards.work_items
+			    SET input = input || jsonb_build_object('rationale_from_planning', $2::text),
+			        updated_at = now()
+			  WHERE id = $1::uuid`,
+			req.ID, *req.Rationale); err != nil {
+			writeErr(w, http.StatusBadRequest, "update rationale: "+err.Error())
+			return
+		}
+	}
+	if req.Slug != nil && *req.Slug != "" {
+		if _, err := tx.Exec(ctx,
+			`UPDATE stewards.work_items SET slug = $2, updated_at = now() WHERE id = $1::uuid`,
+			req.ID, *req.Slug); err != nil {
+			writeErr(w, http.StatusBadRequest, "update slug: "+err.Error())
+			return
+		}
+	}
+	if req.PipelineFamilyHint != nil && *req.PipelineFamilyHint != "" {
+		// Validate pipeline_family exists and update current_stage to its first stage.
+		if _, err := tx.Exec(ctx,
+			`UPDATE stewards.work_items
+			    SET pipeline_family = $2,
+			        current_stage   = stewards.pipeline_first_stage_name($2),
+			        updated_at = now()
+			  WHERE id = $1::uuid
+			    AND EXISTS (SELECT 1 FROM stewards.pipelines WHERE family = $2)`,
+			req.ID, *req.PipelineFamilyHint); err != nil {
+			writeErr(w, http.StatusBadRequest, "update pipeline_family: "+err.Error())
+			return
+		}
+	}
+	if req.ProjectAssociation != nil {
+		// Empty string clears; nil = unchanged (above).
+		var pa any = *req.ProjectAssociation
+		if *req.ProjectAssociation == "" {
+			pa = nil
+		}
+		if _, err := tx.Exec(ctx,
+			`UPDATE stewards.work_items SET project_association = $2, updated_at = now() WHERE id = $1::uuid`,
+			req.ID, pa); err != nil {
+			writeErr(w, http.StatusBadRequest, "update project: "+err.Error())
+			return
+		}
+	}
+
+	if err := tx.Commit(ctx); err != nil {
+		writeErr(w, http.StatusInternalServerError, "commit: "+err.Error())
+		return
+	}
+	writeJSON(w, http.StatusOK, map[string]any{
+		"id":      req.ID,
+		"message": "edited",
+	})
+}
+
+type reviseWithFeedbackReq struct {
+	ID       string `json:"id"`
+	Feedback string `json:"feedback"`
+}
+
+type reviseWithFeedbackResp struct {
+	ReviseWorkItemID string `json:"revise_work_item_id"`
+	WorkQueueID      int64  `json:"work_queue_id"`
+	Message          string `json:"message"`
+}
+
+// workItemsReviseWithFeedbackHandler creates a revise-proposal work_item
+// linked to the proposal being revised, populates its input with the
+// original's fields + parent plan excerpt + user feedback, and dispatches
+// the revise stage. The UI then polls /pending-revisions.
+func (d *Deps) workItemsReviseWithFeedbackHandler(w http.ResponseWriter, r *http.Request) {
+	ctx, cancel := context.WithTimeout(r.Context(), 10*time.Second)
+	defer cancel()
+
+	var req reviseWithFeedbackReq
+	if err := json.NewDecoder(r.Body).Decode(&req); err != nil {
+		writeErr(w, http.StatusBadRequest, "decode body: "+err.Error())
+		return
+	}
+	if req.ID == "" || req.Feedback == "" {
+		writeErr(w, http.StatusBadRequest, "id and feedback required")
+		return
+	}
+	if len(req.Feedback) < 5 {
+		writeErr(w, http.StatusBadRequest, "feedback must be ≥5 chars")
+		return
+	}
+
+	// Pull the original proposal + parent plan excerpt (synthesize output)
+	// to compose the revise stage's input.
+	var (
+		originSlug, originBinding, originRationale string
+		originHint, originProject                  string
+		originID, originParentID                   string
+		parentPlanExcerpt                          string
+	)
+	err := d.Pool.QueryRow(ctx, `
+		SELECT wi.id::text,
+		       wi.slug,
+		       coalesce(wi.input->>'binding_question', ''),
+		       coalesce(wi.input->>'rationale_from_planning', ''),
+		       coalesce(wi.pipeline_family, ''),
+		       coalesce(wi.project_association, ''),
+		       coalesce(wi.parent_work_item_id::text, ''),
+		       coalesce(
+		           substring(
+		               (SELECT (parent.stage_results -> 'synthesize' -> 'output') #>> '{}'
+		                  FROM stewards.work_items parent
+		                 WHERE parent.id = wi.parent_work_item_id)
+		           FROM 1 FOR 4000),
+		           '(no parent plan excerpt available)'
+		       )
+		  FROM stewards.work_items wi
+		 WHERE wi.id = $1::uuid
+		   AND wi.origin = 'agent_planning'`,
+		req.ID,
+	).Scan(&originID, &originSlug, &originBinding, &originRationale,
+		&originHint, &originProject, &originParentID, &parentPlanExcerpt)
+	if err != nil {
+		writeErr(w, http.StatusBadRequest, "proposal lookup failed: "+err.Error())
+		return
+	}
+
+	// Build the revise work_item's input jsonb.
+	input := map[string]any{
+		"original_proposal_id":           originID,
+		"original_slug":                  originSlug,
+		"original_binding_question":      originBinding,
+		"original_rationale":             originRationale,
+		"original_pipeline_family_hint":  originHint,
+		"original_project_association":   originProject,
+		"parent_plan_excerpt":            parentPlanExcerpt,
+		"feedback":                       req.Feedback,
+	}
+	inputJSON, _ := json.Marshal(input)
+
+	// work_item_create gets us a fresh row with the right pipeline +
+	// intent + first stage. We then set parent_work_item_id +
+	// cost_cap_micro before dispatching.
+	tx, err := d.Pool.Begin(ctx)
+	if err != nil {
+		writeErr(w, http.StatusInternalServerError, err.Error())
+		return
+	}
+	defer tx.Rollback(ctx)
+
+	var reviseID string
+	err = tx.QueryRow(ctx, `
+		SELECT stewards.work_item_create(
+		    'revise-proposal',
+		    $1::jsonb,
+		    $2::text,
+		    'human',
+		    NULL,
+		    (SELECT id FROM stewards.intents WHERE slug='planning-partner')
+		)::text`,
+		inputJSON,
+		"revise-"+originSlug+"-"+time.Now().Format("20060102150405"),
+	).Scan(&reviseID)
+	if err != nil {
+		writeErr(w, http.StatusInternalServerError, "work_item_create: "+err.Error())
+		return
+	}
+
+	// Link to parent + set cost cap.
+	if _, err := tx.Exec(ctx, `
+		UPDATE stewards.work_items
+		   SET parent_work_item_id = $1::uuid,
+		       cost_cap_micro = 100000,
+		       project_association = $2
+		 WHERE id = $3::uuid`,
+		req.ID, originProject, reviseID); err != nil {
+		writeErr(w, http.StatusInternalServerError, "link parent: "+err.Error())
+		return
+	}
+
+	if err := tx.Commit(ctx); err != nil {
+		writeErr(w, http.StatusInternalServerError, "commit: "+err.Error())
+		return
+	}
+
+	// Dispatch the revise stage (outside tx — substrate auto-fire).
+	var wqID int64
+	if err := d.Pool.QueryRow(ctx,
+		`SELECT stewards.work_item_dispatch_stage($1::uuid)`, reviseID,
+	).Scan(&wqID); err != nil {
+		writeErr(w, http.StatusInternalServerError, "dispatch: "+err.Error())
+		return
+	}
+
+	writeJSON(w, http.StatusOK, reviseWithFeedbackResp{
+		ReviseWorkItemID: reviseID,
+		WorkQueueID:      wqID,
+		Message:          "revise dispatched; poll pending-revisions",
+	})
+}
+
+type pendingRevisionRow struct {
+	ID            string     `json:"id"`
+	Slug          string     `json:"slug"`
+	Status        string     `json:"status"`
+	Maturity      string     `json:"maturity"`
+	CreatedAt     *time.Time `json:"created_at,omitempty"`
+	CompletedAt   *time.Time `json:"completed_at,omitempty"`
+	CostMicro     int64      `json:"cost_micro"`
+	Feedback      string     `json:"feedback,omitempty"`
+	RevisionJSON  json.RawMessage `json:"revision_json,omitempty"`
+}
+
+type pendingRevisionsResp struct {
+	Revisions []pendingRevisionRow `json:"revisions"`
+	Count     int                  `json:"count"`
+}
+
+// workItemsPendingRevisionsHandler lists revise-proposal work_items
+// whose parent_work_item_id matches and which haven't been applied
+// or cancelled yet. The frontend polls this every few seconds while
+// a revise is in flight, then renders any completed ones as diff cards.
+func (d *Deps) workItemsPendingRevisionsHandler(w http.ResponseWriter, r *http.Request) {
+	ctx, cancel := context.WithTimeout(r.Context(), 5*time.Second)
+	defer cancel()
+
+	id := r.URL.Query().Get("id")
+	if id == "" {
+		writeErr(w, http.StatusBadRequest, "id required")
+		return
+	}
+
+	resp := pendingRevisionsResp{Revisions: []pendingRevisionRow{}}
+	rows, err := d.Pool.Query(ctx, `
+		SELECT id::text, slug, status, maturity, created_at, completed_at,
+		       coalesce(cost_micro_dollars, 0),
+		       coalesce(input->>'feedback', ''),
+		       CASE
+		           WHEN status='completed' AND maturity='verified'
+		               THEN (stage_results -> 'revise' -> 'output')
+		           ELSE NULL
+		       END
+		  FROM stewards.work_items
+		 WHERE parent_work_item_id = $1::uuid
+		   AND pipeline_family = 'revise-proposal'
+		   AND revision_applied_at IS NULL
+		   AND status != 'cancelled'
+		 ORDER BY created_at ASC`, id)
+	if err != nil {
+		writeErr(w, http.StatusInternalServerError, err.Error())
+		return
+	}
+	defer rows.Close()
+	for rows.Next() {
+		var row pendingRevisionRow
+		var rawJSON *string
+		if err := rows.Scan(&row.ID, &row.Slug, &row.Status, &row.Maturity,
+			&row.CreatedAt, &row.CompletedAt, &row.CostMicro,
+			&row.Feedback, &rawJSON); err == nil {
+			if rawJSON != nil {
+				row.RevisionJSON = json.RawMessage(*rawJSON)
+			}
+			resp.Revisions = append(resp.Revisions, row)
+		}
+	}
+	resp.Count = len(resp.Revisions)
+	writeJSON(w, http.StatusOK, resp)
+}
+
+// workItemsApplyRevisionHandler accepts a completed revise-proposal
+// work_item and UPDATEs the original (its parent_work_item_id). Calls
+// the apply_revision SQL function which handles validation + COALESCE
+// merge of revision fields.
+func (d *Deps) workItemsApplyRevisionHandler(w http.ResponseWriter, r *http.Request) {
+	ctx, cancel := context.WithTimeout(r.Context(), 5*time.Second)
+	defer cancel()
+
+	var req workItemActionReq
+	if err := json.NewDecoder(r.Body).Decode(&req); err != nil {
+		writeErr(w, http.StatusBadRequest, "decode body: "+err.Error())
+		return
+	}
+	if req.ID == "" {
+		writeErr(w, http.StatusBadRequest, "id required")
+		return
+	}
+
+	var ok bool
+	err := d.Pool.QueryRow(ctx,
+		`SELECT stewards.apply_revision($1::uuid)`, req.ID,
+	).Scan(&ok)
+	if err != nil {
+		writeErr(w, http.StatusBadRequest, "apply_revision failed: "+err.Error())
+		return
+	}
+	resp := workItemActionResp{ID: req.ID}
+	if ok {
+		resp.Message = "revision applied"
+	} else {
+		resp.Message = "revision NOT applied (already applied, rejected, or validation failed — see substrate NOTICE logs)"
+	}
+	writeJSON(w, http.StatusOK, resp)
+}
+
+// workItemsRejectRevisionHandler marks a revise-proposal work_item
+// cancelled so it no longer shows as pending. The original proposal
+// is untouched.
+func (d *Deps) workItemsRejectRevisionHandler(w http.ResponseWriter, r *http.Request) {
+	ctx, cancel := context.WithTimeout(r.Context(), 5*time.Second)
+	defer cancel()
+
+	var req workItemActionReq
+	if err := json.NewDecoder(r.Body).Decode(&req); err != nil {
+		writeErr(w, http.StatusBadRequest, "decode body: "+err.Error())
+		return
+	}
+	if req.ID == "" {
+		writeErr(w, http.StatusBadRequest, "id required")
+		return
+	}
+	reason := req.Reason
+	if reason == "" {
+		reason = "revision rejected via UI"
+	}
+
+	var resp workItemActionResp
+	resp.ID = req.ID
+	err := d.Pool.QueryRow(ctx,
+		`UPDATE stewards.work_items
+		    SET status = 'cancelled',
+		        quarantine_reason = $2,
+		        updated_at = now()
+		  WHERE id = $1::uuid
+		    AND pipeline_family = 'revise-proposal'
+		  RETURNING status`,
+		req.ID, reason,
+	).Scan(&resp.Status)
+	if err != nil {
+		writeErr(w, http.StatusBadRequest, "reject failed: "+err.Error())
+		return
+	}
+	resp.Message = "revision rejected"
 	writeJSON(w, http.StatusOK, resp)
 }
