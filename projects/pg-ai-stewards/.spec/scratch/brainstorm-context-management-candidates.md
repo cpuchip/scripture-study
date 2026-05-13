@@ -1,0 +1,22 @@
+# How Should an LLM Dispatch Substrate Manage Growing Context?
+
+Four brainstorming lenses explored progressive disclosure for a Postgres-backed LLM substrate that hit the Moonshot 262K input limit on 4 of 6 research-write children. The children converge on a core pattern: compress older tool results into short summaries via a cheap model, keep full results in Postgres, and expose them on demand — but diverge sharply on *when* to compress, *how* to summarize, and *what* risks to guard against.
+
+## Children
+
+| Slug | Title | One-line summary | Link |
+|---|---|---|---|
+| [brainstorm-context-mgmt-k-scamper](projects/pg-ai-stewards/.spec/scratch/brainstorm-context-mgmt-k-scamper.md) | SCAMPER lens | 14 ideas spanning embedding-based substitution, async materialized views, sliding compression scales, and semantic-relevance ordering. | [view](projects/pg-ai-stewards/.spec/scratch/brainstorm-context-mgmt-k-scamper.md) |
+| [brainstorm-context-mgmt-k-six-hats](projects/pg-ai-stewards/.spec/scratch/brainstorm-context-mgmt-k-six-hats.md) | Six Hats lens | Creative proposals (tiered LRU cache, agent-emitted archive tokens), industry precedents (MemGPT, RAG), and four concrete failure risks. | [view](projects/pg-ai-stewards/.spec/scratch/brainstorm-context-mgmt-k-six-hats.md) |
+| [brainstorm-context-mgmt-k-crazy8s](projects/pg-ai-stewards/.spec/scratch/brainstorm-context-mgmt-k-crazy8s.md) | Crazy 8s lens | 8 rapid-fire ideas: token budget gates, virtual memory paging, heuristic truncation, fine-tuned summarizers, and hierarchical TOC indexes. | [view](projects/pg-ai-stewards/.spec/scratch/brainstorm-context-mgmt-k-crazy8s.md) |
+| [brainstorm-context-mgmt-k-reverse](projects/pg-ai-stewards/.spec/scratch/brainstorm-context-mgmt-k-reverse.md) | Reverse brainstorming | 7 inverted failure modes → solutions: 70% proactive threshold, protected-class rules, entity-preserving summaries, size-based triggers. | [view](projects/pg-ai-stewards/.spec/scratch/brainstorm-context-mgmt-k-reverse.md) |
+
+## Synthesis
+
+**The architecture is clear; the triggers are not.** All four lenses agree on the progressive disclosure skeleton: full results stay in `stewards.messages`, summaries replace them in active context, and a retrieval tool fetches on demand. Where they diverge is *when* compression fires. SCAMPER proposes a dual threshold (turn count OR token budget), Reverse argues for size-based triggers at 70% of the model's limit, and Crazy 8s suggests a token budget gate inside `compose_messages()`. The strongest synthesis: **compress on cumulative tool-result byte count, not turn count**, with a hard ceiling at ~70% of the target model's context window.
+
+**The compression model matters more than the compression algorithm.** Six Hats' Black Hat surface the sharpest risk: a cheap summarizer that drops URLs, dates, or verbatim quotes directly violates the read-before-quoting covenant. Reverse's inversion — instruct the summarizer to preserve concrete entities (filenames, URLs, key numbers) — is the necessary guardrail. SCAMPER adds that content-type matters: prose compresses differently than structured JSON. A single summarizer won't work for all tool types.
+
+**Async is tempting but dangerous.** Three children propose offloading summarization to a background worker (SCAMPER's materialized views, Six Hats' tiered LRU promotion, Crazy 8s' fire-and-forget queue). But Six Hats' Black Hat nails the race condition: a fast follow-up message could trigger `compose_messages()` before the summary transaction commits, silently bursting the limit the compression was meant to prevent. The safest first implementation is **synchronous compression inside `compose_messages()`** using a cheap local model, with async as a later optimization once the race condition is solved.
+
+**What remains unanswered:** How does the main agent *know* which summarized result to fetch? Six Hats' checksum-addressable summaries and SCAMPER's embedding-based retrieval are competing answers. And no lens addressed the cost of the cheap model itself — if every turn triggers a local summarization call, that latency adds up. A heuristic truncation fallback (Crazy 8s' first/last 100 chars) might be the zero-cost safety net when the summarizer is unavailable.
