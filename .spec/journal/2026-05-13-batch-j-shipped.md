@@ -4,7 +4,7 @@ mode: build
 workstream: WS5 (substrate) + WS9 (science center)
 project: pg-ai-stewards
 title: "Batch J shipped — fan-out + brainstorm primitives + UI hierarchy"
-status: shipped (J.1, J.2, J.4, J.5 verified end-to-end; J.3 partially complete)
+status: shipped (J.1, J.2, J.4, J.5 verified end-to-end; J.3 partial — 2 of 6 children produced publishable briefs)
 carry_forward:
   - "research-write token-limit failures (Kimi 262K input limit) on 2 of 6 J.3 children — surfaced in gather stage when 5 rounds of web search return rich content. Substrate-level issue; not blocking J.3 partial completion."
   - "Brainstorm-lens output landed in single combined file via aggregator; individual lens outputs only viewable via work_item detail page. Future: per-lens file_destinations so each lens output is its own artifact."
@@ -58,12 +58,27 @@ End-to-end via `SELECT stewards.start_brainstorm('What biology-focused interacti
 
 Notable: the synthesis genuinely added value beyond the 4 lens outputs. The aggregator detected that Winogradsky columns appeared in 3 of 4 lenses (convergence signal), surfaced 6 design principles from the Reverse session as gates for the other lenses, and flagged the rural-Missouri-maintenance constraint that both Six-Hats BLACK and Reverse independently identified. The output is 4036 bytes of usable markdown at `projects/space-center/brainstorm/biology-exhibits-candidates.md`. Total cost: ~$0.09.
 
-### J.3 — Science-center exhibits fanout (partially complete at session yield)
+### J.3 — Science-center exhibits fanout (final)
 Hand-crafted 6-child manifest from the 8218aa77 survey. Each child runs research-write with a ~250-word binding question requesting the 6-field exhibit-brief structure (Story / Application / Demo / Science / History / Build). Each child writes to its own `projects/space-center/exhibits/<slug>.md`.
 
-Two children failed in the gather stage with Kimi K2.6 token-limit errors ("requested 373280, limit 262144"). The research-write gather stage's 5 rounds of web-search + fetch can produce too much context for some topics. This is a substrate-level constraint, not specific to J.3.
+**Final state: 2 of 6 children verified + aggregator wrote a 4KB index.** 4 children failed at various stages:
+- crystal-radio: gather, token limit (376K requested, 262K cap)
+- bacteriopolis-winogradsky: gather, token limit (373K vs 262K)
+- cs-unplugged: review, Moonshot 400 (token limit)
+- indicating-electrolysis: review (after slow MSDS fetch unblocked); cost $0.42
 
-The remaining 4 children continued. The trigger correctly excludes failed children from the sibling-count, so the aggregator dispatches when the 4 in-flight either verify or fail. Final J.3 result: 4-5 exhibit briefs (Crystal Radio, CS Unplugged, Indicating Electrolysis, Symmetry/Polyhedra, Rural Electrification) plus a README index covering whatever lands. Bacteriopolis-Winogradsky and possibly Crystal Radio missing from the set.
+2 children verified and wrote substantial briefs:
+- rural-electrification-webster-coop.md — 17KB, $0.81. Includes specific Webster Electric 1946 charter date, 2010 smart meter deployment, partnership concept note for WEC sponsorship, ~$314 build cost.
+- symmetry-polyhedra.md — 16KB, $0.49. Genuinely publishable quality: Marcus Hagler narrative from Versailles MO, Osage/Gasconade River bridge references, Klein's 1872 Erlangen Program with arXiv citation, California Math Show 1995 with named directors and funding source. Full markdown citations throughout.
+
+**Bug surfaced + fixed during J.3** (j7-failed-sibling-also-triggers-aggregator.sql):
+When the LAST sibling fails (rather than verifies), the original on_maturity_verified branch B never fired because of the early-return on maturity check. So the aggregator stayed pending forever even though all siblings were terminal. Required a manual `work_item_dispatch_stage` to unblock. Fix: extract sibling-count + dispatch logic into idempotent helper `check_and_dispatch_fanout_aggregator(parent_id)`; add a second trigger `on_child_status_terminal` that fires on status='failed'|'cancelled' and calls the same helper. Now the chain converges whether the last sibling succeeds OR fails.
+
+**Aggregator quality issue** (carry-forward, not blocking): The aggregator's index README links to cs-unplugged and indicating-electrolysis as if they completed, when actually they failed. The aggregator read each child's stage_results via work_item_show but didn't gate the link on maturity=verified. Future enhancement: aggregator prompt should explicitly check each child's terminal status before linking.
+
+**Slow tool-call hung the chain temporarily**: A `fetch_url_raw` call to a Universal Indicator MSDS site hung for 11+ minutes before I manually cancelled it. The periodic reaper (Phase A from yesterday) excludes `kind='mcp_proxy'` by design (since chat dispatches wait synchronously on tool results), so this case isn't covered. Carry-forward: consider per-tool timeouts at the bridge layer, or a separate reaper that catches stuck mcp_proxy older than N minutes.
+
+**Total J.3 cost: ~$2.95** across all 6 children (including failures) + $0.05 aggregator. Within budget.
 
 ## Issues surfaced
 
