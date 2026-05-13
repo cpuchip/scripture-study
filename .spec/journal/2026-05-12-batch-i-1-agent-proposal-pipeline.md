@@ -101,9 +101,11 @@ After I.3, kimi (or any agent) can propose `.sql` migrations from inside the sub
 - No FK from studies → projects.slug initially (mirrors i2's soft-then-harden pattern).
 - The rejected-validator-output path returns false (not RAISES) so the work_item stays at maturity=verified with apply_proposal_applied_at NULL and file_destination NULL. Operator can revise via revise-proposal pipeline (already shipped). Clean failure mode.
 
-## Bonus discovery
+## Correction (added 2026-05-12 later, during Batch I.3 session)
 
-While checking intents for the smoke test, noticed `stewards.intents` has 3 rows: `scripture-study`, `general-research`, `planning-partner`. **The rule-of-three for yaml.rs is already technically met** (three intents needing parsing). The earlier carry-forward "yaml.rs is rule-of-three gated until H.3 ratifies a third intent" — that condition is already true. Adding to carry-forward for re-evaluation after Batch I.3.
+I claimed here originally that "the rule-of-three for yaml.rs is already technically met" because `stewards.intents` has 3 rows. **That was wrong.** The rule-of-three for yaml.rs is about three distinct YAML SHAPES needing parsing, not three callers of one parser. `yaml.rs` today has `parse_yaml_intent` (intent.yaml shape, used for all 3 intents) and `parse_yaml_covenant` (covenant.yaml shape) — two parsers, one of which serves all three intents. That's one parser doing its job, not a rule-of-three trigger. yaml.rs refactor stays deferred until a third YAML SHAPE lands (agent.yaml, skill.yaml, principles.yaml, etc.).
+
+The carry-forward "yaml.rs is rule-of-three gated until a 3rd YAML shape lands" is the correct framing. Surfacing the mistake here so the record reflects truth, not the cleaner-sounding wrong story.
 
 ## Cost
 
