@@ -142,7 +142,14 @@ pub extern "C-unwind" fn stewards_dispatcher_main(arg: pg_sys::Datum) {
     // Leader-only (worker 0): otherwise N workers race to reap and
     // synthesize, producing duplicate continuation chats.
     if is_leader {
-    let _ = BackgroundWorker::transaction(|| {
+    use pgrx::PgTryBuilder;
+    // Phase A (Batch I + tonight, 2026-05-12): wrap the startup reaper
+    // in PgTryBuilder. The SPI calls themselves should never ereport
+    // on a healthy substrate, but if a corrupt row or missing function
+    // is hit, PgTryBuilder lets the bgworker survive and log instead
+    // of crashing into pg_ctl restart.
+    let reaper_result: Result<(), String> = PgTryBuilder::new(|| {
+        let outer: Result<(), pgrx::spi::Error> = BackgroundWorker::transaction(|| {
         Spi::connect_mut(|client| {
             // Pull the rows we're about to reap so we can synthesize
             // continuations for tool_dispatch ones.
@@ -218,7 +225,16 @@ pub extern "C-unwind" fn stewards_dispatcher_main(arg: pg_sys::Datum) {
             )?;
             Ok::<(), pgrx::spi::Error>(())
         })
-    });
+        });
+        outer.map_err(|e| format!("startup reaper SPI: {}", e))
+    })
+    .catch_others(|cause| {
+        Err(format!("startup reaper PG error: {:?}", cause))
+    })
+    .execute();
+    if let Err(e) = reaper_result {
+        pgrx::log!("stewards: startup reaper failed: {} (bgworker survived)", e);
+    }
     }
 
     // Phase 2.7b.2 — Watchman scheduler tick.
@@ -249,6 +265,20 @@ pub extern "C-unwind" fn stewards_dispatcher_main(arg: pg_sys::Datum) {
     // means each item is processed once anyway).
     let mut last_steward: Option<Instant> = None;
     const STEWARD_INTERVAL: Duration = Duration::from_secs(30);
+
+    // Phase A (2026-05-12) — Periodic reaper tick.
+    //
+    // Mirrors the startup reaper but runs every 60s. Catches rows that
+    // were left in_progress because a worker crashed mid-dispatch
+    // WITHOUT a process restart (e.g. a PgTryBuilder catch where the
+    // worker survived but didn't unwind the row claim). Threshold:
+    // 10 minutes — longer than any legitimate model call. User note
+    // 2026-05-12: agent processing can take several minutes; 10min
+    // is conservative.
+    //
+    // Leader-only: same reasoning as the other ticks.
+    let mut last_reaper: Option<Instant> = None;
+    const REAPER_INTERVAL: Duration = Duration::from_secs(60);
 
     while BackgroundWorker::wait_latch(Some(Duration::from_millis(500))) {
         if BackgroundWorker::sighup_received() {
@@ -293,6 +323,15 @@ pub extern "C-unwind" fn stewards_dispatcher_main(arg: pg_sys::Datum) {
             last_steward = Some(Instant::now());
             check_steward_tick();
         }
+
+        // Phase A (2026-05-12) — Periodic reaper tick. Catches rows
+        // orphaned mid-session (worker survived a PgTryBuilder catch
+        // without unwinding the claim). Threshold 10 min so genuinely-
+        // slow chats finish. Leader-only.
+        if is_leader && last_reaper.map_or(true, |t| t.elapsed() >= REAPER_INTERVAL) {
+            last_reaper = Some(Instant::now());
+            run_periodic_reaper();
+        }
     }
 
     pgrx::log!("stewards: bgworker #{} received SIGTERM, exiting", worker_index);
@@ -310,18 +349,26 @@ pub extern "C-unwind" fn stewards_dispatcher_main(arg: pg_sys::Datum) {
 /// Errors are logged but never propagated — a transient SPI failure
 /// shouldn't kill the bgworker. The next tick retries.
 fn complete_waiting_tool_dispatches() {
-    let result: Result<Option<i32>, pgrx::spi::Error> =
-        BackgroundWorker::transaction(|| {
-            Spi::connect_mut(|client| {
-                let row = client.select(
-                    "SELECT stewards.tool_dispatch_complete_waiting()",
-                    Some(1), &[],
-                )?;
-                let n: Option<i32> = row.into_iter().next()
-                    .and_then(|r| r.get(1).ok().flatten());
-                Ok::<Option<i32>, pgrx::spi::Error>(n)
-            })
-        });
+    use pgrx::PgTryBuilder;
+    // Phase A: PgTryBuilder wrap so a corrupted child row or missing
+    // function can't kill the bgworker.
+    let result: Result<Option<i32>, String> = PgTryBuilder::new(|| {
+        let outer: Result<Option<i32>, pgrx::spi::Error> =
+            BackgroundWorker::transaction(|| {
+                Spi::connect_mut(|client| {
+                    let row = client.select(
+                        "SELECT stewards.tool_dispatch_complete_waiting()",
+                        Some(1), &[],
+                    )?;
+                    let n: Option<i32> = row.into_iter().next()
+                        .and_then(|r| r.get(1).ok().flatten());
+                    Ok::<Option<i32>, pgrx::spi::Error>(n)
+                })
+            });
+        outer.map_err(|e| format!("spi: {}", e))
+    })
+    .catch_others(|cause| Err(format!("postgres error: {:?}", cause)))
+    .execute();
 
     match result {
         Ok(Some(n)) if n > 0 => {
@@ -331,7 +378,7 @@ fn complete_waiting_tool_dispatches() {
             // Silent on zero — runs every tick, would flood the log.
         }
         Err(e) => {
-            pgrx::log!("stewards: tool_dispatch completion pass errored: {}", e);
+            pgrx::log!("stewards: tool_dispatch completion pass errored: {} (bgworker survived)", e);
         }
     }
 }
@@ -351,18 +398,28 @@ fn check_watchman_schedule() {
     // the SQL function it invokes (watchman_scheduler_fire) does
     // INSERTs/UPDATEs internally, and a read-only SPI context would
     // block those. Mirrors process_one_pending() and the reaper.
-    let result: Result<Option<String>, pgrx::spi::Error> =
-        BackgroundWorker::transaction(|| {
-            Spi::connect_mut(|client| {
-                let row = client.select(
-                    "SELECT stewards.watchman_scheduler_fire()",
-                    Some(1), &[],
-                )?;
-                let pass_id: Option<String> = row.into_iter().next()
-                    .and_then(|r| r.get(1).ok().flatten());
-                Ok::<Option<String>, pgrx::spi::Error>(pass_id)
-            })
-        });
+    //
+    // Phase A: PgTryBuilder wrap so a watchman SQL bug can't kill the
+    // bgworker. The scheduler fires every 60s — a kill here would mean
+    // a restart loop until the bad row is cleared.
+    use pgrx::PgTryBuilder;
+    let result: Result<Option<String>, String> = PgTryBuilder::new(|| {
+        let outer: Result<Option<String>, pgrx::spi::Error> =
+            BackgroundWorker::transaction(|| {
+                Spi::connect_mut(|client| {
+                    let row = client.select(
+                        "SELECT stewards.watchman_scheduler_fire()",
+                        Some(1), &[],
+                    )?;
+                    let pass_id: Option<String> = row.into_iter().next()
+                        .and_then(|r| r.get(1).ok().flatten());
+                    Ok::<Option<String>, pgrx::spi::Error>(pass_id)
+                })
+            });
+        outer.map_err(|e| format!("spi: {}", e))
+    })
+    .catch_others(|cause| Err(format!("postgres error: {:?}", cause)))
+    .execute();
 
     match result {
         Ok(Some(pass_id)) => {
@@ -376,7 +433,7 @@ fn check_watchman_schedule() {
             // every 60 seconds — that floods the postmaster log.
         }
         Err(e) => {
-            pgrx::log!("stewards: scheduler check errored: {}", e);
+            pgrx::log!("stewards: scheduler check errored: {} (bgworker survived)", e);
         }
     }
 }
@@ -389,18 +446,26 @@ fn check_watchman_schedule() {
 /// actions taken in this tick (0 = no failed work_items needed
 /// attention). Errors swallowed — next tick retries.
 fn check_steward_tick() {
-    let result: Result<Option<i32>, pgrx::spi::Error> =
-        BackgroundWorker::transaction(|| {
-            Spi::connect_mut(|client| {
-                let row = client.select(
-                    "SELECT stewards.steward_tick()",
-                    Some(1), &[],
-                )?;
-                let n: Option<i32> = row.into_iter().next()
-                    .and_then(|r| r.get(1).ok().flatten());
-                Ok::<Option<i32>, pgrx::spi::Error>(n)
-            })
-        });
+    use pgrx::PgTryBuilder;
+    // Phase A: PgTryBuilder wrap. The steward_tick SQL function walks
+    // many tables — a corrupt row could ereport. Survive and log.
+    let result: Result<Option<i32>, String> = PgTryBuilder::new(|| {
+        let outer: Result<Option<i32>, pgrx::spi::Error> =
+            BackgroundWorker::transaction(|| {
+                Spi::connect_mut(|client| {
+                    let row = client.select(
+                        "SELECT stewards.steward_tick()",
+                        Some(1), &[],
+                    )?;
+                    let n: Option<i32> = row.into_iter().next()
+                        .and_then(|r| r.get(1).ok().flatten());
+                    Ok::<Option<i32>, pgrx::spi::Error>(n)
+                })
+            });
+        outer.map_err(|e| format!("spi: {}", e))
+    })
+    .catch_others(|cause| Err(format!("postgres error: {:?}", cause)))
+    .execute();
 
     match result {
         Ok(Some(n)) if n > 0 => {
@@ -410,7 +475,126 @@ fn check_steward_tick() {
             // Silent on zero — runs every 30s, would flood the log.
         }
         Err(e) => {
-            pgrx::log!("stewards: steward_tick errored: {}", e);
+            pgrx::log!("stewards: steward_tick errored: {} (bgworker survived)", e);
+        }
+    }
+}
+
+/// Phase A (2026-05-12) — Periodic reaper.
+///
+/// Runs every 60s (leader-only). Reaps work_queue rows that have been
+/// `in_progress` for > 10 minutes. Mirrors the startup reaper's logic:
+/// for `tool_dispatch` parents, synthesize tool-failure replies + enqueue
+/// continuation so the chain doesn't stall; for everything else, mark
+/// status=error with a clear diagnostic.
+///
+/// Threshold 10min (per ratification 2026-05-12): legitimate model
+/// calls can take several minutes, especially with cold-start. 10x the
+/// 60s call-timeout buffer means anything reaped is almost certainly
+/// orphaned by a worker that died mid-dispatch.
+///
+/// Wrapped in PgTryBuilder so the reaper itself can't take down the
+/// bgworker — a corrupted row or a broken synthesize_tool_failure call
+/// logs and we continue.
+fn run_periodic_reaper() {
+    use pgrx::PgTryBuilder;
+    let result: Result<i64, String> = PgTryBuilder::new(|| {
+        let outer: Result<i64, pgrx::spi::Error> = BackgroundWorker::transaction(|| {
+            Spi::connect_mut(|client| {
+                // Identify stale rows (mirrors startup reaper's logic
+                // but with the 10min threshold). Skip kind='mcp_proxy'
+                // (bridge owns those).
+                let stale_rows: Vec<(i64, String, String, serde_json::Value)> = {
+                    let rows = client.select(
+                        "SELECT id, kind, provider, payload \
+                         FROM stewards.work_queue \
+                         WHERE status = 'in_progress' \
+                           AND kind <> 'mcp_proxy' \
+                           AND claimed_at < now() - interval '10 minutes'",
+                        None, &[],
+                    )?;
+                    rows.into_iter().filter_map(|r| {
+                        let id: i64 = r.get(1).ok()??;
+                        let kind: String = r.get(2).ok()??;
+                        let provider: String = r.get(3).ok()??;
+                        let payload: pgrx::JsonB = r.get(4).ok()??;
+                        Some((id, kind, provider, payload.0))
+                    }).collect()
+                };
+
+                if stale_rows.is_empty() {
+                    return Ok::<i64, pgrx::spi::Error>(0);
+                }
+
+                let reaped_count = stale_rows.len() as i64;
+
+                for (id, kind, provider, payload) in &stale_rows {
+                    if kind == "tool_dispatch" {
+                        if let (Some(parent), Some(session), Some(family), Some(model)) = (
+                            payload.get("parent_work_id").and_then(|v| v.as_i64()),
+                            payload.get("session_id").and_then(|v| v.as_str()),
+                            payload.get("agent_family").and_then(|v| v.as_str()),
+                            payload.get("model").and_then(|v| v.as_str()),
+                        ) {
+                            let synth = client.select(
+                                "SELECT stewards.synthesize_tool_failure($1, $2, $3, $4, $5, $6)",
+                                Some(1),
+                                &[
+                                    parent.into(),
+                                    family.to_string().into(),
+                                    model.to_string().into(),
+                                    session.to_string().into(),
+                                    provider.to_string().into(),
+                                    format!(
+                                        "periodic reaper: tool_dispatch id={} stale >10min, synthesizing failure",
+                                        id
+                                    ).into(),
+                                ],
+                            );
+                            if let Err(e) = synth {
+                                pgrx::log!(
+                                    "stewards: periodic reaper synthesize failed for id={}: {}",
+                                    id, e
+                                );
+                            } else {
+                                pgrx::log!(
+                                    "stewards: periodic reaper synthesized tool failure for tool_dispatch id={} (parent={})",
+                                    id, parent
+                                );
+                            }
+                        }
+                    }
+                }
+
+                client.update(
+                    "UPDATE stewards.work_queue \
+                     SET status = 'error', \
+                         error  = coalesce(error, '') \
+                                  || 'periodic reaper: stale in_progress >10min', \
+                         done_at = now() \
+                     WHERE status = 'in_progress' \
+                       AND kind <> 'mcp_proxy' \
+                       AND claimed_at < now() - interval '10 minutes'",
+                    None, &[]
+                )?;
+
+                Ok::<i64, pgrx::spi::Error>(reaped_count)
+            })
+        });
+        outer.map_err(|e| format!("spi: {}", e))
+    })
+    .catch_others(|cause| Err(format!("postgres error: {:?}", cause)))
+    .execute();
+
+    match result {
+        Ok(n) if n > 0 => {
+            pgrx::log!("stewards: periodic reaper reaped {} stale in_progress row(s)", n);
+        }
+        Ok(_) => {
+            // Silent on zero — runs every 60s, would flood the log.
+        }
+        Err(e) => {
+            pgrx::log!("stewards: periodic reaper errored: {} (bgworker survived)", e);
         }
     }
 }
