@@ -1,6 +1,6 @@
 ---
 description: 'Building and improving MCP servers, scripts, and tools'
-tools: [vscode, execute, read, agent, 'becoming/*', 'search/*', 'yt/*', 'playwright/*', edit, search, web, todo]
+tools: [vscode/installExtension, vscode/memory, vscode/newWorkspace, vscode/resolveMemoryFileUri, vscode/runCommand, vscode/vscodeAPI, vscode/extensions, vscode/askQuestions, execute, read, agent, edit, search, web, browser, 'becoming/*', 'search/*', 'yt/*', 'playwright/*', todo]
 handoffs:
   - label: UX Review First
     agent: ux

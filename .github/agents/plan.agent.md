@@ -1,6 +1,6 @@
 ---
 description: 'Planning agent — from idea to spec with critical analysis and creation cycle review'
-tools: [vscode, execute, read, agent, 'becoming/*', 'search/*', 'yt/*', 'playwright/*', edit, search, web, todo]
+tools: [vscode, execute, read, agent, edit, search, web, browser, 'becoming/*', 'gospel-engine-v2/*', 'search/*', 'yt/*', 'playwright/*', todo]
 handoffs:
   - label: Build It
     agent: dev
