@@ -775,9 +775,9 @@ function actionTone(action: string): string {
         <div class="flex items-baseline justify-between">
           <div class="text-xs uppercase tracking-wide text-zinc-500">File destination</div>
           <span
-            v-if="wi.materialized_at"
+            v-if="wi.file_enqueued_at"
             class="text-xs text-emerald-500 font-mono"
-          >✓ materialized {{ fmtDate(wi.materialized_at) }}</span>
+          >✓ queued {{ fmtDate(wi.file_enqueued_at) }}</span>
         </div>
 
         <div v-if="!editingFileDestination">
@@ -793,7 +793,7 @@ function actionTone(action: string): string {
               @click="startEditFileDestination"
             >{{ wi.file_destination ? 'Edit' : 'Set destination' }}</button>
             <button
-              v-if="wi.file_destination && !wi.materialized_at"
+              v-if="wi.file_destination && !wi.file_enqueued_at"
               class="text-xs px-3 py-1 rounded bg-emerald-700 hover:bg-emerald-600 text-white disabled:opacity-50"
               :disabled="materializingFile"
               @click="materializeFile"

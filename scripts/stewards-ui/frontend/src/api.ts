@@ -855,9 +855,9 @@ export type WorkItemDetail = WorkItemRow & {
   revision_count: number
   scenarios?: unknown
   spec?: string
-  // Batch G.4 — file destination + materialization
+  // Batch G.4 — file destination + materialization (i3: materialized_at → file_enqueued_at)
   file_destination?: string
-  materialized_at?: string
+  file_enqueued_at?: string
   pipeline_file_template?: string
 }
 

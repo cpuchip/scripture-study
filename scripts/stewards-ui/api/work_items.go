@@ -152,9 +152,9 @@ type workItemDetail struct {
 	RevisionCount        int             `json:"revision_count"`
 	Scenarios            json.RawMessage `json:"scenarios,omitempty"`
 	Spec                 string          `json:"spec,omitempty"`
-	// Batch G.4 — file destination + materialization
+	// Batch G.4 — file destination + materialization (i3 rename: materialized_at → file_enqueued_at)
 	FileDestination          string     `json:"file_destination,omitempty"`
-	MaterializedAt           *time.Time `json:"materialized_at,omitempty"`
+	FileEnqueuedAt           *time.Time `json:"file_enqueued_at,omitempty"`
 	PipelineFileTemplate     string     `json:"pipeline_file_template,omitempty"`
 }
 
@@ -206,7 +206,7 @@ func (d *Deps) workItemsGetHandler(w http.ResponseWriter, r *http.Request) {
 		        coalesce(wi.scenarios, '[]'::jsonb),
 		        coalesce(wi.spec, ''),
 		        coalesce(wi.file_destination, ''),
-		        wi.materialized_at,
+		        wi.file_enqueued_at,
 		        coalesce(p.file_destination_template, ''),
 		        coalesce(wi.origin, 'human'),
 		        coalesce(wi.project_association, ''),
@@ -226,7 +226,7 @@ func (d *Deps) workItemsGetHandler(w http.ResponseWriter, r *http.Request) {
 		&wd.CostMicroDollars, &wd.CostCapMicro, &wd.CostCappedAt,
 		&wd.Maturity, &wd.DestinationMaturity, &wd.RevisionCount,
 		&wd.Scenarios, &wd.Spec,
-		&wd.FileDestination, &wd.MaterializedAt, &wd.PipelineFileTemplate,
+		&wd.FileDestination, &wd.FileEnqueuedAt, &wd.PipelineFileTemplate,
 		&wd.Origin, &wd.ProjectAssociation, &wd.ParentWorkItemID)
 	if err != nil {
 		writeErr(w, http.StatusNotFound, err.Error())
