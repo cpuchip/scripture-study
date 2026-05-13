@@ -44,6 +44,7 @@ function submit() {
 function originBadgeClass(o?: string): string {
   switch (o) {
     case 'agent_planning': return 'bg-purple-900/40 text-purple-300 border border-purple-800/60'
+    case 'agent_proposal': return 'bg-emerald-900/40 text-emerald-300 border border-emerald-800/60'
     case 'scheduled':      return 'bg-cyan-900/40 text-cyan-300'
     case 'watchman':       return 'bg-teal-900/40 text-teal-300'
     case 'steward':        return 'bg-amber-900/40 text-amber-300'
@@ -103,6 +104,7 @@ function fmtRelative(s?: string) {
         <option value="">all origins</option>
         <option value="human">human</option>
         <option value="agent_planning">agent_planning</option>
+        <option value="agent_proposal">agent_proposal</option>
         <option value="scheduled">scheduled</option>
         <option value="watchman">watchman</option>
         <option value="steward">steward</option>
@@ -150,7 +152,11 @@ function fmtRelative(s?: string) {
                 :class="originBadgeClass(w.origin)"
                 :title="`origin: ${w.origin}`"
               >
-                {{ w.origin === 'agent_planning' ? '✨ proposed' : w.origin }}
+                {{
+                  w.origin === 'agent_planning' ? '✨ proposed'
+                  : w.origin === 'agent_proposal' ? '🤖 agent write-back'
+                  : w.origin
+                }}
               </span>
               <span
                 v-if="w.project_association"
