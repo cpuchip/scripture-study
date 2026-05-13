@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { ref, onMounted, watch } from 'vue'
+import { ref, computed, onMounted, watch } from 'vue'
 import { useRoute, useRouter, RouterLink } from 'vue-router'
-import { api, type WorkItemsListResp } from '@/api'
+import { api, type WorkItemsListResp, type WorkItemRow } from '@/api'
 
 const route = useRoute()
 const router = useRouter()
@@ -10,8 +10,18 @@ const error = ref<string>('')
 const loading = ref(false)
 
 const pipeline = ref(String(route.query.pipeline ?? ''))
-const status = ref(String(route.query.status ?? ''))
+// J.1: default to 'open' so the page lands on what's in flight, not the
+// historical pile. User can switch to 'done' or 'all statuses' via the
+// status-group dropdown.
+const status = ref(String(route.query.status ?? 'open'))
 const origin = ref(String(route.query.origin ?? ''))
+
+// J.1: per-parent expand/collapse state for the tree. Default expanded;
+// click the chevron to collapse. Keyed by parent.id.
+const collapsed = ref<Record<string, boolean>>({})
+function toggle(parentId: string) {
+  collapsed.value[parentId] = !collapsed.value[parentId]
+}
 
 async function load() {
   loading.value = true
@@ -21,7 +31,7 @@ async function load() {
       pipeline: pipeline.value || undefined,
       status: status.value || undefined,
       origin: origin.value || undefined,
-      limit: 100,
+      limit: 200,
     })
   } catch (e) {
     error.value = String(e)
@@ -38,9 +48,6 @@ function submit() {
   load()
 }
 
-// H.3: visual style for the origin badge. agent_planning is the
-// substrate-proposed work that awaits human ratification — make it
-// visibly distinct from human-originated work.
 function originBadgeClass(o?: string): string {
   switch (o) {
     case 'agent_planning': return 'bg-purple-900/40 text-purple-300 border border-purple-800/60'
@@ -50,8 +57,54 @@ function originBadgeClass(o?: string): string {
     case 'steward':        return 'bg-amber-900/40 text-amber-300'
     case 'council':        return 'bg-indigo-900/40 text-indigo-300'
     case 'human':
-    default:               return ''   // no badge for default human-originated
+    default:               return ''
   }
+}
+
+// J.1: parent-link badge. If the parent is in the current result set,
+// show its slug; otherwise fall back to a short uuid for traceability.
+function parentLabel(parentId: string): string {
+  if (!parentId) return ''
+  const parent = data.value?.items.find(i => i.id === parentId)
+  return parent ? parent.slug : parentId.slice(0, 8)
+}
+
+// J.1: tree organization. We group by parent_work_item_id but only when
+// the parent is in the same result set; otherwise the orphaned child
+// renders top-level (and shows its parent-link badge for traceability).
+type TreeRow = { item: WorkItemRow; depth: number }
+const treeRows = computed<TreeRow[]>(() => {
+  if (!data.value) return []
+  const items = data.value.items
+  const byParent = new Map<string, WorkItemRow[]>()
+  const topLevel: WorkItemRow[] = []
+  const idsInView = new Set(items.map(i => i.id))
+
+  for (const it of items) {
+    const pid = it.parent_work_item_id || ''
+    if (pid && idsInView.has(pid)) {
+      const arr = byParent.get(pid) ?? []
+      arr.push(it)
+      byParent.set(pid, arr)
+    } else {
+      topLevel.push(it)
+    }
+  }
+
+  const out: TreeRow[] = []
+  function walk(row: WorkItemRow, depth: number) {
+    out.push({ item: row, depth })
+    if (collapsed.value[row.id]) return
+    const kids = byParent.get(row.id) ?? []
+    for (const k of kids) walk(k, depth + 1)
+  }
+  for (const t of topLevel) walk(t, 0)
+  return out
+})
+
+function hasChildrenInView(id: string): boolean {
+  if (!data.value) return false
+  return data.value.items.some(i => i.parent_work_item_id === id)
 }
 
 onMounted(load)
@@ -78,24 +131,34 @@ function fmtRelative(s?: string) {
       </span>
     </div>
 
-    <form class="flex gap-2" @submit.prevent="submit">
+    <form class="flex gap-2 flex-wrap" @submit.prevent="submit">
       <input
         v-model="pipeline"
         type="text"
         placeholder="pipeline filter (e.g. study-write)…"
-        class="flex-1 px-3 py-2 rounded border border-zinc-700 bg-zinc-900 text-sm focus:border-zinc-500 focus:outline-none"
+        class="flex-1 min-w-[12rem] px-3 py-2 rounded border border-zinc-700 bg-zinc-900 text-sm focus:border-zinc-500 focus:outline-none"
       />
+      <!-- J.1: status-group dropdown. Two virtual groups at the top
+           (open = pending/dispatched/in_progress; done =
+           completed/cancelled/failed) cover the common queries;
+           individual statuses follow underneath. -->
       <select
         v-model="status"
         class="px-3 py-2 rounded border border-zinc-700 bg-zinc-900 text-sm"
       >
-        <option value="">all status</option>
-        <option value="pending">pending</option>
-        <option value="dispatched">dispatched</option>
-        <option value="in_progress">in_progress</option>
-        <option value="completed">completed</option>
-        <option value="failed">failed</option>
-        <option value="cancelled">cancelled</option>
+        <optgroup label="Groups">
+          <option value="open">open (not done)</option>
+          <option value="done">done</option>
+          <option value="">all statuses</option>
+        </optgroup>
+        <optgroup label="Status">
+          <option value="pending">pending</option>
+          <option value="dispatched">dispatched</option>
+          <option value="in_progress">in_progress</option>
+          <option value="completed">completed</option>
+          <option value="failed">failed</option>
+          <option value="cancelled">cancelled</option>
+        </optgroup>
       </select>
       <select
         v-model="origin"
@@ -135,11 +198,30 @@ function fmtRelative(s?: string) {
         </thead>
         <tbody>
           <tr
-            v-for="w in data.items"
+            v-for="{ item: w, depth } in treeRows"
             :key="w.id"
             class="border-t border-zinc-800/50 hover:bg-zinc-900"
           >
             <td class="px-4 py-2">
+              <!-- J.1: tree indent. Each level adds 16px; the leaf rows
+                   carry a unicode tree-branch marker. -->
+              <span
+                v-if="depth > 0"
+                class="inline-block text-zinc-600 mr-1 select-none"
+                :style="{ paddingLeft: ((depth - 1) * 16) + 'px' }"
+              >└─</span>
+              <!-- Parents with children in view get an expand/collapse
+                   chevron. Leaf rows at depth 0 get a spacer so the slug
+                   column stays aligned across rows. -->
+              <button
+                v-if="hasChildrenInView(w.id)"
+                @click="toggle(w.id)"
+                type="button"
+                class="inline-block w-4 text-zinc-500 hover:text-zinc-200 select-none"
+                :title="collapsed[w.id] ? 'expand' : 'collapse'"
+              >{{ collapsed[w.id] ? '▶' : '▼' }}</button>
+              <span v-else-if="depth === 0" class="inline-block w-4"></span>
+
               <RouterLink
                 :to="`/work-items/${w.id}`"
                 class="text-zinc-100 hover:text-white font-mono text-xs"
@@ -165,6 +247,17 @@ function fmtRelative(s?: string) {
               >
                 {{ w.project_association }}
               </span>
+              <!-- J.1: parent-link badge. Always visible when a parent
+                   exists, so the relationship survives filters that hide
+                   the parent from the result set. -->
+              <RouterLink
+                v-if="w.parent_work_item_id"
+                :to="`/work-items/${w.parent_work_item_id}`"
+                class="ml-2 inline-block px-1.5 py-0.5 rounded text-xs bg-sky-900/40 text-sky-300 border border-sky-800/60 font-mono hover:bg-sky-900/60"
+                :title="`child of ${parentLabel(w.parent_work_item_id)}`"
+              >
+                ↪ {{ parentLabel(w.parent_work_item_id) }}
+              </RouterLink>
             </td>
             <td class="px-4 py-2 text-zinc-300">{{ w.pipeline }}</td>
             <td class="px-4 py-2 text-zinc-300">{{ w.current_stage }}</td>

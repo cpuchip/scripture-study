@@ -71,8 +71,17 @@ func (d *Deps) workItemsListHandler(w http.ResponseWriter, r *http.Request) {
 		whereClauses = append(whereClauses, "pipeline_family = $"+itoa(len(args)))
 	}
 	if status != "" {
-		args = append(args, status)
-		whereClauses = append(whereClauses, "status = $"+itoa(len(args)))
+		// J.1: virtual status groups. "open" = pending/dispatched/in_progress;
+		// "done" = completed/cancelled/failed. Everything else is exact match.
+		switch status {
+		case "open":
+			whereClauses = append(whereClauses, "status IN ('pending','dispatched','in_progress')")
+		case "done":
+			whereClauses = append(whereClauses, "status IN ('completed','cancelled','failed')")
+		default:
+			args = append(args, status)
+			whereClauses = append(whereClauses, "status = $"+itoa(len(args)))
+		}
 	}
 	if origin != "" {
 		args = append(args, origin)
