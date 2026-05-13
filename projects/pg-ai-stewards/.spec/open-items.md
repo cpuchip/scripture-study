@@ -15,6 +15,8 @@ purpose: >
 
 | Proposal | Scope | Status |
 |---|---|---|
+| [`substrate-batch-j-fanout-brainstorm.md`](proposals/substrate-batch-j-fanout-brainstorm.md) | fan-out pipeline + brainstorm pipeline + lens library + work-item hierarchy UI + open-filter | **ratified 2026-05-13** (12 decisions answered; J.2 building now) |
+| [`substrate-batch-i-agent-write-back.md`](proposals/substrate-batch-i-agent-write-back.md) | agent-proposal pipeline + HTTP endpoint + UI filter + schema-migration claude_attested gate | **shipped 2026-05-12** (I.1, I.2, I.3 + Phase A reaper) |
 | [`substrate-completion-batch-g.md`](proposals/substrate-completion-batch-g.md) | file_path fix + retry-pulls-lessons + quarantine-fires-atonement + file-write mechanism | **build-ready** (no new ratifications needed) |
 | [`substrate-pipelines-expansion.md`](proposals/substrate-pipelines-expansion.md) | research + YouTube (gospel + secular) + scheduled-pipeline machinery | **needs ratification** (D-PE1 through D-PE7) |
 | [`stewards-ui-evolution.md`](proposals/stewards-ui-evolution.md) | intent/covenant authoring + substrate-aware chat + sidebar grouping + write actions | **needs ratification** (D-UI1 through D-UI12) |
