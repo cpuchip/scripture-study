@@ -111,7 +111,7 @@
 | WS1 | Classification quality benchmark | proposed | [classify-bench.md](../.spec/proposals/classify-bench.md) |
 | WS1 | Data safety: dev hardening + audit log | proposed | [data-safety/main.md](../.spec/proposals/data-safety/main.md) |
 | WS2 | Brain Windows Service (systray) | proposed | [brain-windows-service.md](../.spec/proposals/brain-windows-service.md) |
-| WS3 | Gospel Engine v1.5 Ergonomics | proposed | [gospel-engine/phase1.5-ergonomics.md](../.spec/proposals/gospel-engine/phase1.5-ergonomics.md) |
+| WS3 | Gospel Engine v1.5 + research rollup | ratified 2026-05-13 — 6 phase files at `scripts/gospel-engine-v2/.spec/proposals/` (1.5a docs → 1.5b–1.5e code+indexer → single reindex → 3-research). Phase 2 TITSW deferred. | [rollup README](../scripts/gospel-engine-v2/.spec/proposals/README.md) · [parent (superseded)](../.spec/proposals/gospel-engine/phase1.5-ergonomics.md) |
 | WS3 | Gospel Graph Visualization | proposed (blocked on AGE/PG18) | [gospel-graph/main.md](../.spec/proposals/gospel-graph/main.md) |
 | WS4 | study.ibeco.me UI | proposed | [study-ibeco-me/main.md](../.spec/proposals/study-ibeco-me/main.md) |
 | WS4 | ibeco.me Security Audit | not started | — |

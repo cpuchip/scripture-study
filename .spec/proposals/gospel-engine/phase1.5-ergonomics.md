@@ -1,21 +1,33 @@
 ---
 workstream: WS3
-status: proposed
+status: superseded
 brain_project: 3
 created: 2026-04-10
-last_updated: 2026-04-21
+last_updated: 2026-05-13
+superseded_by: scripts/gospel-engine-v2/.spec/proposals/README.md
 ---
 
 # gospel-engine Phase 1.5 — Agent-Ergonomic Improvements
 
-**Binding problem:** Gospel-engine Phase 1 ships 3 working MCP tools, but the agent's actual study workflow during the Art of Delegation study revealed three friction points: (1) `gospel_get` fetches entire chapters with no verse-level retrieval — a regression from gospel-mcp's Feb 15 verse-range fix, (2) 85,590 cross-references sit in the database with no tool to query them, and (3) `/gospel-library/` being gitignored makes VS Code's `grep_search` and `file_search` silently return nothing for scripture files.
+> **Superseded 2026-05-13.** This proposal has been ratified into per-phase
+> execution specs that live in the gospel-engine-v2 repo (where the code
+> lives):
+>
+> - **Rollup overview:** [scripts/gospel-engine-v2/.spec/proposals/README.md](../../../scripts/gospel-engine-v2/.spec/proposals/README.md)
+> - Phase 1.5a — mode enum docs fix
+> - Phase 1.5b — `gospel_get` handler rewrite (ref/reference, verse-range, chapter-level)
+> - Phase 1.5c — cross-references (opt-in)
+> - Phase 1.5d — speaker indexer fix + parse-failures log
+> - Phase 1.5e — study aids indexed (TG, BD, GS, JST) — new `study_aids` table
+> - Phase 3-research — v3 architecture spike (proxy-pointer + LightRAG)
+>
+> **Phase 2 (TITSW migration to v2)** is deferred past this rollup; revisit
+> after 1.5 + research land. Original Phase 2 scope retained in [main.md](main.md).
+>
+> The body below is preserved as historical context for what was originally
+> proposed and how it evolved.
 
-These aren't Phase 2 (TITSW enrichment) items — they're foundational retrieval ergonomics that make the existing tool surface useful for study.
-
-**Created:** 2026-03-31
-**Parent proposal:** [main.md](main.md)
-**Observed during:** Art of Delegation study (March 31, 2026)
-**Logged in:** [docs/06_tool-use-observance.md](../../../docs/06_tool-use-observance.md)
+---
 
 ---
 
@@ -156,15 +168,66 @@ Small — straightforward SQL queries on an already-indexed table. The gospel-mc
 
 ---
 
+## Enhancements 4–6 (added 2026-05-13)
+
+Reproduced live against the running v2 hosted engine in this planning session.
+
+### Enhancement 4 — Mode enum drift (docs vs server)
+
+**Symptom.** Calling `gospel_search { mode: "combined" }` returns `ERROR: Your input to the tool was invalid (must be equal to one of the allowed values)`.
+
+**Root cause.** Server enum at `scripts/gospel-engine-v2/cmd/gospel-mcp/main.go:~280` is `["keyword", "semantic", "hybrid"]`. Documentation in `.github/copilot-instructions.md` says `"keyword" | "semantic" | "combined"`. CLAUDE.md likely echoes the same. Pure documentation drift.
+
+**Fix.** Update `.github/copilot-instructions.md` and any agent files that document the mode parameter to say `hybrid`, not `combined`. No code change.
+
+**Estimated effort.** 5 minutes.
+
+### Enhancement 5 — `ref` vs `reference` param-name leak
+
+**Symptom.** When the agent calls `gospel_get` wrong, the HTTP error message says `provide either ref= or (type= and id=)`. The MCP schema actually accepts `reference`, not `ref`. The agent reasonably retries with `ref:`, which the MCP layer silently drops, and the call fails again. Two passes lost to the mismatch.
+
+**Root cause.** Schema layer (MCP) and HTTP layer have different param names. Error message names the HTTP one.
+
+**Fix (recommended).** In `internal/api/server.go:handleGet`, accept BOTH `ref` and `reference` as query params. Five extra lines, eliminates the foot-gun forever. Update the error message to say `reference=` so future drift doesn't recur.
+
+**Estimated effort.** 10 minutes.
+
+### Enhancement 6 — Speaker field corrupted by indexer
+
+**Symptom.** `gospel_search` results include `"speaker": "🎧 Listen to Audio"` for talks instead of the actual speaker name (e.g., "Elder Wan-Liang Wu"). Reproduced 2026-05-13 on Wu's 2026-04 talk and on Benson's 1983-10 talk.
+
+**Root cause.** Indexer in `scripts/gospel-engine-v2/internal/indexer/` is grabbing the audio-link button text instead of the speaker line in the talk markdown.
+
+**Fix.** Locate the speaker-extraction selector in the indexer; correct it to read the actual speaker line. **Requires reindex of the `talks` table** to take effect on already-indexed content.
+
+**Estimated effort.** Half session including reindex.
+
+---
+
 ## Implementation Priority
 
-| Enhancement | Priority | Effort | Impact |
-|-------------|----------|--------|--------|
-| 1. Verse-level `gospel_get` | **High** | Small (port from gospel-mcp) | Eliminates the most common friction point |
-| 2. Cross-reference retrieval | **High** | Small (SQL on existing table) | Unlocks 85K cross-refs for study |
-| 3. Search filtering fix | Medium | Trivial (2 lines in instructions) | Prevents silent search failures |
+| # | Enhancement | Priority | Effort | Impact |
+|---|-------------|----------|--------|--------|
+| 1 | Verse-level `gospel_get` (range support) | **High** | Small (port from gospel-mcp) | Eliminates most common friction |
+| 2 | Cross-reference retrieval | **High** | Small (SQL on existing table) | Unlocks 85K cross-refs for study |
+| 3 | Search filtering fix (`includeIgnoredFiles`) | ~~Medium~~ | ~~Trivial~~ | **Done — in copilot-instructions.md** |
+| 4 | Mode enum docs fix (`combined` → `hybrid`) | **High** | 5 min, docs only | Stops every session burning a call on wrong enum |
+| 5 | Dual-accept `ref`/`reference` + error message fix | **High** | 10 min Go | Stops 2-pass loss when calls fail |
+| 6 | Speaker indexer fix + reindex | Medium | Half session | Search results show real speaker names |
 
-All three can ship in one session. Enhancement 3 can be done immediately (no code changes needed). Enhancements 1 and 2 are code changes to `scripts/gospel-engine/internal/mcp/tools.go`.
+**Phasing recommendation (2026-05-13).**
+- **Phase 1.5a — docs only (15 min):** ship #4 today. No build, no rebuild. Eliminates the cheapest, most-frequent papercut.
+- **Phase 1.5b — small Go (half session):** ship #1 + #5 together. Both touch `handleGet` + the MCP wrapper schema. Same rebuild.
+- **Phase 1.5c — indexer + reindex (half session):** ship #6. Decide reindex timing.
+- **Phase 1.5d — cross-refs (half-to-full session):** ship #2 once Phase 1.5b is stable.
+
+Enhancement #3 is closed; mark it done in the table above.
+
+Code paths to touch (v2):
+- `scripts/gospel-engine-v2/internal/api/server.go` — `handleGet`, `getByReference`, error messages
+- `scripts/gospel-engine-v2/cmd/gospel-mcp/main.go` — `gospel_get` schema (already takes `reference`; may add range docs)
+- `scripts/gospel-engine-v2/internal/indexer/` — speaker extraction
+- `.github/copilot-instructions.md` + `CLAUDE.md` — mode-enum line
 
 ---
 
