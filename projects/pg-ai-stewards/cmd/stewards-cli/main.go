@@ -65,6 +65,8 @@ func main() {
 		runWorkItem(ctx, os.Args[2:])
 	case "materialize-writes":
 		runMaterializeWrites(ctx, os.Args[2:])
+	case "validate-sql":
+		runValidateSQL(ctx, os.Args[2:])
 	case "migrate":
 		runMigrate(ctx, os.Args[2:])
 	case "-h", "--help", "help":
@@ -202,6 +204,13 @@ Commands:
       enqueues a chat for the current stage; advance records its
       output and transitions to the next stage (or marks completed).
       Auto-advance via trigger comes in Phase 3c.2.
+
+  validate-sql [--file PATH] [--quiet]
+      Batch I.3 (2026-05-12): syntax-validate a SQL file via BEGIN/
+      ROLLBACK against the live DB. Real Postgres parser; no side
+      effects. Exit 0 on parse OK; exit 1 with diagnostic on failure.
+      Defaults to stdin if --file omitted. materialize-writes auto-
+      runs this for .sql files targeting extension/.
 
 Environment:
   STEWARDS_DSN    Postgres DSN (default: postgres://stewards:stewards@localhost:5432/stewards?sslmode=disable)
@@ -1035,6 +1044,25 @@ func runMaterializeWrites(ctx context.Context, args []string) {
 			continue
 		}
 		full := filepath.Join(rootAbs, clean)
+
+		// Batch I.3 (2026-05-12): syntax-validate .sql files targeting
+		// extension/ before they land. Real PG parser via BEGIN/ROLLBACK.
+		// Failure surfaces as materialized_by='error:syntax:<diag>' and
+		// the file is not written. Runs in dry-run mode too — bad SQL
+		// is bad SQL regardless.
+		if strings.HasSuffix(clean, ".sql") &&
+			strings.HasPrefix(clean, "projects/pg-ai-stewards/extension/") {
+			if err := validateSQL(ctx, pool, p.content); err != nil {
+				msg := err.Error()
+				if len(msg) > 500 {
+					msg = msg[:500] + "..."
+				}
+				recordError(ctx, pool, p.id, "syntax:"+msg)
+				fmt.Fprintf(os.Stderr, "skip #%d: validate-sql failed: %s\n", p.id, msg)
+				failed++
+				continue
+			}
+		}
 
 		// Tag with dry-run
 		if *dryRun {
