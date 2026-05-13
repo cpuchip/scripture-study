@@ -37,6 +37,11 @@ services:
       timeout: 3s
       retries: 12
       start_period: 10s
+    # Match bridge/ui policy — pg is the foundation, so without auto-restart
+    # a Docker Desktop restart or host reboot leaves pg down and the other
+    # two flapping (they restart, fail to reach pg:5432, exit, repeat).
+    # `unless-stopped` still respects an intentional `docker compose stop pg`.
+    restart: unless-stopped
 
   bridge:
     # Long-lived MCP bridge daemon — spawns the seven stdio MCP server
