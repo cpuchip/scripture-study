@@ -50,10 +50,10 @@ This also introduces a **critical analysis** phase that the original study agent
 
 Read sources and **write to the scratch file after every source you read.** This is non-negotiable. The `quote-log` skill has the exact format.
 
-**Start with discovery, not recall.** Before you read anything, run at least one `gospel_search` (semantic or combined mode) on the binding question. This is the rule, not a suggestion. Per Anthropic's 4.7 guide, this model uses tools less by default — you have to explicitly reach for them. The semantic search surfaces non-obvious cross-references that recall does not, and skipping it is the most common way studies miss the verse that would have reframed everything.
+**Start with discovery, not recall.** Before you read anything, run at least one `gospel_search` (semantic or hybrid mode) on the binding question. This is the rule, not a suggestion. Per Anthropic's 4.7 guide, this model uses tools less by default — you have to explicitly reach for them. The semantic search surfaces non-obvious cross-references that recall does not, and skipping it is the most common way studies miss the verse that would have reframed everything.
 
 The rhythm:
-1. `gospel_search` (semantic or combined) on the binding question → note paths in scratch file
+1. `gospel_search` (semantic or hybrid) on the binding question → note paths in scratch file
 2. `read_file` each surfaced source → write verified quotes + observations to scratch file
 3. Follow footnotes from each source → read those too → scratch file
 4. Additional `gospel_search` (keyword) for specific terms as they emerge → scratch file

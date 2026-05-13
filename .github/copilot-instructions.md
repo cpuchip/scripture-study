@@ -60,7 +60,7 @@ At the start of substantive sessions, after loading memory and before diving int
 
 **Curiosity over inference.** Before drafting from prior knowledge, exercise the discovery tools the workspace provides — `gospel_search` (semantic mode) for studies, `grep_search` for code, `webster_define` for word work, `web_search_exa` for current questions outside the corpus. The point is not exhaustive search; it is letting tools surface what you weren't already thinking of. If you can recall the answer, that is the signal to verify, not to skip the verification. Per Anthropic's [4.7 migration guide](https://platform.claude.com/docs/en/about-claude/models/migration-guide), this model uses tools less by default than 4.6 — compensate explicitly.
 
-**For studies specifically:** before drafting, run at least one `gospel_search` (semantic or combined mode) on the binding question. The discovery tools surface non-obvious cross-references that recall does not.
+**For studies specifically:** before drafting, run at least one `gospel_search` (semantic or hybrid mode) on the binding question. The discovery tools surface non-obvious cross-references that recall does not.
 
 **Read before quoting — always, everywhere, no exceptions.** For every scripture, talk, transcript, or source you cite with quotation marks, `read_file` the actual source file first. This applies to studies, lessons, guides, docs — any document type. Training-data memory confabulates. Close-enough wording is fabrication. Details on verification, cite counting, and the full checklist are in the `source-verification` skill.
 
@@ -156,7 +156,7 @@ This project has **7 MCP servers** configured in `.vscode/mcp.json`. Full tool i
 
 | Need | Working Tool Name |
 |------|-------------------|
-| Search scriptures/talks (keyword, semantic, or combined) | `mcp_gospel-engine_gospel_search` |
+| Search scriptures/talks (keyword, semantic, or hybrid) | `mcp_gospel-engine_gospel_search` |
 | Get a scripture/talk | `mcp_gospel-engine_gospel_get` |
 | Browse content | `mcp_gospel-engine_gospel_list` |
 | Webster 1828 | `mcp_webster_webster_define` |
@@ -170,7 +170,7 @@ This project has **7 MCP servers** configured in `.vscode/mcp.json`. Full tool i
 
 **Key gotchas:**
 - The server is named `gospel-engine-v2` in `mcp.json` but the deferred tool prefix is `mcp_gospel-engine_` (no `-v2`). This trips us up repeatedly — the working name is the one in the table above.
-- Gospel tools live on ONE MCP server. The old split between `gospel` (FTS) and `gospel-vec` (semantic) is gone — `gospel_search` now does both via `mode: "keyword" | "semantic" | "combined"`.
+- Gospel tools live on ONE MCP server. The old split between `gospel` (FTS) and `gospel-vec` (semantic) is gone — `gospel_search` now does both via `mode: "keyword" | "semantic" | "hybrid"`.
 - `web_search_exa` is a REMOTE MCP tool (Exa AI) hosted at `mcp.exa.ai`. It works without local binaries.
 - Brain tools are under the `becoming` server, not a separate brain server.
 - If a tool is listed in the deferred-tools section of the system prompt, try calling it directly first. The `tool_search_tool_regex` step is an optimization for tools not yet loaded; it is not always required.

@@ -82,7 +82,7 @@ Example:
 ## [MED] Tool Use: Use the right gospel_search mode for the query
 **Trigger:** "did you actually search semantically this time?"
 **Wrong:** Called `mcp__gospel-engine-v2__gospel_search` with default/keyword mode for a conceptual/relationship query (got zero results, didn't switch)
-**Right:** Conceptual queries → `gospel_search` with `mode: "semantic"` or `"combined"`. Exact-phrase queries → `mode: "keyword"`.
+**Right:** Conceptual queries → `gospel_search` with `mode: "semantic"` or `"hybrid"`. Exact-phrase queries → `mode: "keyword"`.
 **Pattern:** Zero results from a conceptual query = signal to switch modes, not accept and work around.
 ```
 

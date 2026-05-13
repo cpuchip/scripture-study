@@ -55,7 +55,7 @@ This is the most critical phase. **The video's paraphrase is NOT a source.** Eve
 The rhythm:
 1. `Read` each scripture the speaker cited → write verified quotes + observations to scratch file
 2. Note: does the speaker's use match the actual text? Record discrepancies immediately.
-3. Search (`mcp__gospel-engine-v2__gospel_search` with `mode: "semantic"` or `"combined"`) for scriptures the speaker *should* have cited → write to scratch file
+3. Search (`mcp__gospel-engine-v2__gospel_search` with `mode: "semantic"` or `"hybrid"`) for scriptures the speaker *should* have cited → write to scratch file
 4. `Read` each discovered source → write to scratch file
 5. If the speaker cited a conference talk, find and read the actual talk file → write to scratch file
 6. Webster 1828 definitions when relevant → write to scratch file

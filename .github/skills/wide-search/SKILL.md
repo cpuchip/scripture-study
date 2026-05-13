@@ -47,7 +47,7 @@ Use `gospel_search` with `mode: "semantic"` for conceptual connections:
 
 **Semantic search finds what keyword search misses.** "Serpent as a type of Christ" won't match keyword search, but semantic search finds Numbers 21, John 3, and Helaman 8 together.
 
-For the best of both, use `mode: "combined"` — keyword candidates reranked by semantic similarity. Use `source: "conference"` to scope to talks; filter by `speaker`, `year_from`, `year_to`, or TITSW dimensions when relevant.
+For the best of both, use `mode: "hybrid"` — keyword candidates reranked by semantic similarity. Use `source: "conference"` to scope to talks; filter by `speaker`, `year_from`, `year_to`, or TITSW dimensions when relevant.
 
 ### Step 4: Check Existing Studies
 Search `study/*.md` for related work. The study corpus is an interconnected web — previous studies may have already traced threads relevant to this topic.
@@ -93,7 +93,7 @@ Add findings to the working document (if phased study) or compile for synthesis:
 
 `gospel_search` is one tool with three modes. Each finds different things:
 
-| `mode: "keyword"` | `mode: "semantic"` | `mode: "combined"` |
+| `mode: "keyword"` | `mode: "semantic"` | `mode: "hybrid"` |
 |-------------------|--------------------|--------------------|
 | Finds exact phrases | Finds related concepts | Keyword candidates, semantic rerank |
 | Good for: names, specific terms, quoted phrases | Good for: themes, parallels, "verses about X" | Good for: best precision + recall |
