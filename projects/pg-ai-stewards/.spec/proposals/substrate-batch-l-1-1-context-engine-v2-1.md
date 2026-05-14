@@ -188,10 +188,83 @@ consuming agent: vector search hits leaves → merge to parents →
 
 10 sub-phases. Heavier than L was, but the architecture is more right.
 
+## Eternal-truth council moment (2026-05-14)
+
+Stepping back from the nuts-and-bolts. Looking for principles we may have imported by accident but not yet named, or principles we're missing.
+
+### Already imported
+
+| What we built | What it mirrors |
+|---|---|
+| Maturity ladder (raw → researched → planned → specced → executing → verified) | Line upon line, precept upon precept |
+| Covenant.yaml (bilateral commitments, when_broken, recovery) | Covenant theology — D&C 82:10 |
+| Watching loop (bgworker tick, Phase A) | Abraham 4:18 — "watched until they obeyed" |
+| Council (Phase F proposer/critic/synthesizer) | Abraham 4:26 — "took counsel among themselves" |
+| Atonement dispatch (failure → learning → forward-recovery) | Repentance, restitution |
+| Sabbath dispatch (structured reflection after verified) | Sabbath rest |
+| Memory architecture (identity/principles/episodes/active) | Personal becoming + journals |
+| Trust scores (per-cell, line-upon-line promotion) | Stewardship grown by faithfulness |
+| Stewards (the project name itself) | D&C 104 — "every man accountable to me, a steward" |
+
+### The pattern we're missing — Judges (Exodus 18:21-22)
+
+The captains of tens / fifties / hundreds weren't executors running Moses's script. They were **judges with authority within their stewardship**. Moses taught principles, then trusted judgment, then escalated only by *difficulty* — "every great matter they shall bring unto thee, but every small matter they shall judge."
+
+The substrate today is mostly **executors**. Agents follow stage prompts. They make narrow decisions within prompts (e.g., engram extractor picks HOT/MEDIUM/COLD tier) but they don't *judge whether the work is theirs* or *whether to escalate this case to a higher authority*. Every work_item gets the full pipeline; cost cap is the only escalation gate.
+
+The captains weren't spawned per dispute. They *were there*, with authority, knowing their domain.
+
+#### Architectural shift this creates for L.1.1
+
+**Old framing (executor pattern):** the engine measures pressure, applies rules, produces output. Agent has no say.
+
+**New framing (judge pattern, Michael's call 2026-05-14):** the engine indexes the oversized content into a mini-corpus (using the parent-child + contextual-retrieval infrastructure from the research findings), then surfaces the situation to the consuming agent:
+
+> "Fetched 500K from `<url>`. Indexed into per-message mini-corpus (N parent chunks, M leaf chunks, embedded). Top-level overview: `<100 tokens>`. You may: retrieve from the mini-corpus by query, expand specific sections, mark engrams as precious, or discard."
+
+The agent then judges, applying their stewardship and binding question:
+
+- **Is the fruit good?** (quality assessment — should this content be preserved at all? Is it on-topic, credible, well-formed?)
+- **What is most precious to save?** (selection — which engrams matter for the binding question; mark them via `mark_engram_important`)
+- **What should be discarded?** (an active "this is noise" judgment, not just passive timeout)
+
+This is **expensive in LLM calls** (one or two extra rounds per oversized input — Michael ratified this cost) but **right in pattern**. It honors agency. It surfaces non-obvious quality decisions to the agent who has the binding-question context. It produces better engrams because the agent doing the work also judges what mattered.
+
+It also retroactively re-frames existing tools:
+
+- `mark_engram_important` (L.4) — not just "anti-loss insurance under pressure," but **active judgment of what is precious**. Reuse without modification.
+- `re_extract_engrams` (L.5) — when the judge says "this isn't tuned to my actual question," they can re-extract. Already shipped; the judge pattern explains why it matters.
+- `expand_message` (K.3) — the judge pulls back to raw when needed. Already shipped.
+
+#### Sub-phase shape — revised for judges
+
+- **L.1.1.1 — Budget schema.** (unchanged)
+- **L.1.1.2 — Agent-aware extraction threshold.** (unchanged — still wanted)
+- **L.1.1.3 — Per-stage context strategy.** (unchanged — still wanted for routine cases)
+- **L.1.1.4 — Overflow corpus storage (parent-child).** (unchanged — this is the judge's tooling)
+- **L.1.1.5 — Contextual prepend before embedding.** (unchanged)
+- **L.1.1.6 — Two-level chunking SQL fn (`chunk_and_index`).** (unchanged)
+- **L.1.1.7 — Auto-merging retrieval fn (`retrieve_with_merge`).** (unchanged)
+- **L.1.1.8 — Judge surface for oversized tool results.** NEW. Replaces the "bridge auto-compacts" framing. When a tool result exceeds the consuming stage's budget × 0.25:
+  - Index the content via L.1.1.6
+  - Generate a `<100-token` top-level overview via DeepSeek (cheap, prompt-cached)
+  - Surface to the consuming agent as a structured tool result with: overview + corpus metadata (parent/leaf counts, byte counts, top-level theme) + handle to a query tool (retrieve_from_corpus(corpus_id, query, k))
+  - Agent judges — within the same turn it can call retrieve_from_corpus, expand specific parents, mark engrams important, or discard the corpus entirely
+- **L.1.1.9 — Map-reduce engram extraction (`map_reduce_extract_engrams`).** Still needed for unattended cases (sabbath_dispatch reflection over an archive, etc.) where there's no live judge.
+- **L.1.1.10 — Subagent self-window-management.** (unchanged — judge pattern at the subagent level)
+- **L.1.1.11 — NEW: per-corpus judge prompt template.** Standardized template for how the judge surface presents the situation to the consuming agent — "Is the fruit good? What is most precious to save? What should be discarded?" Surfaces the three judgments explicitly, lets the agent reason about them.
+
+### Two more eternal patterns named (lower priority, but noted)
+
+**Multiplicity of witnesses (D&C 6:28, 2 Cor 13:1):** "in the mouth of two or three witnesses every word may be established." Our extractor is one model. Our reviewer is one model. Council pattern (Phase F) has three but is rarely used. For load-bearing extraction — especially super-large data mode where one bad chunk extraction corrupts retrieval — do we want two independent witnesses on critical engrams? Cost goes up; trustworthiness goes up. **Deferred to consideration as a Phase F extension; not in L.1.1 scope.**
+
+**Bear one another's burdens (Mosiah 18:8):** when a subagent fails today, the parent retries or surfaces. Errors fall on whoever was assigned. No peer-agent-comes-alongside pattern before parent escalation. Subagents are isolated, not in community. **Deferred to consideration as a separate batch (likely lives near the Trust + Council layers, not Context Engine).**
+
 ## Carry-forward into ratification
 
 Open tensions consolidate to 3-4 AskUserQuestion batches:
 1. Budget location (pipeline-stage vs agent-first) + cost-cap policy
-2. Sync vs async sliding-window extraction
+2. Sync vs async sliding-window extraction (likely resolved by the judge pattern — judge surface is sync by nature, since the agent is right there in the turn)
 3. Whether to also apply contextual retrieval to existing studies corpus (scope question)
 4. Sub-phase ordering and gating
+5. Per-corpus judge prompt template — exact wording for "fruit good / what is precious / what to discard"
