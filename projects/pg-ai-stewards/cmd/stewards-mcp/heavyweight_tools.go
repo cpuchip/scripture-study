@@ -104,6 +104,14 @@ func registerHeavyweightTools(srv *mcp.Server, pool *pgxpool.Pool) {
 			"current focus. The old engrams are archived in engrams._history; a fresh extraction runs with " +
 			"the new binding. Cost-capped at $0.10 per re-extraction by default.",
 	}, makeReExtractEngrams(pool))
+
+	// L.1.1.12 — corpus access for the judge surface.
+	mcp.AddTool(srv, &mcp.Tool{
+		Name: "read_corpus_parents",
+		Description: "Read parent chunks from an indexed corpus on a [CORPUS-INDEXED] tool message. " +
+			"Use after the L.1.1.8 judge surface presents you with a corpus — paginate with parent_ord_start + count. " +
+			"Mark anything precious with mark_engram_important once you find it.",
+	}, makeReadCorpusParents(pool))
 }
 
 func makeDeepResearch(pool *pgxpool.Pool) func(
@@ -447,5 +455,82 @@ func makeReExtractEngrams(pool *pgxpool.Pool) func(
 		return &mcp.CallToolResult{
 			Content: []mcp.Content{&mcp.TextContent{Text: body}},
 		}, out, nil
+	}
+}
+
+// ---------------------------------------------------------------------
+// L.1.1.12 — read_corpus_parents (paginated overflow read)
+// ---------------------------------------------------------------------
+
+type ReadCorpusParentsInput struct {
+	MessageID        int64 `json:"message_id" jsonschema:"the message id from the [CORPUS-INDEXED] surface header"`
+	ParentOrdStart   int   `json:"parent_ord_start,omitempty" jsonschema:"first parent ordinal to return (default 0)"`
+	Count            int   `json:"count,omitempty" jsonschema:"how many parents to return this call (default 4)"`
+	MaxCharsPerPart  int   `json:"max_chars_per_part,omitempty" jsonschema:"char cap per parent (default 14000)"`
+}
+
+type ReadCorpusParentsHit struct {
+	ParentOrdinal int    `json:"parent_ordinal"`
+	ByteSize      int    `json:"byte_size"`
+	Content       string `json:"content"`
+	HasMore       bool   `json:"has_more"`
+}
+
+type ReadCorpusParentsOutput struct {
+	Parents []ReadCorpusParentsHit `json:"parents"`
+	Count   int                    `json:"count"`
+	HasMore bool                   `json:"has_more"`
+}
+
+func makeReadCorpusParents(pool *pgxpool.Pool) func(
+	ctx context.Context, req *mcp.CallToolRequest, in ReadCorpusParentsInput,
+) (*mcp.CallToolResult, ReadCorpusParentsOutput, error) {
+	return func(
+		ctx context.Context, req *mcp.CallToolRequest, in ReadCorpusParentsInput,
+	) (*mcp.CallToolResult, ReadCorpusParentsOutput, error) {
+		if in.MessageID <= 0 {
+			return toolError("read_corpus_parents: 'message_id' is required and must be positive"),
+				ReadCorpusParentsOutput{}, nil
+		}
+		if in.Count <= 0 {
+			in.Count = 4
+		}
+		if in.MaxCharsPerPart <= 0 {
+			in.MaxCharsPerPart = 14000
+		}
+
+		rows, err := pool.Query(ctx,
+			`SELECT parent_ordinal, byte_size, content, has_more
+			   FROM stewards.read_corpus_parents($1, $2, $3, $4)`,
+			in.MessageID, in.ParentOrdStart, in.Count, in.MaxCharsPerPart,
+		)
+		if err != nil {
+			return toolError("read_corpus_parents query: %v (message_id=%d)",
+				err, in.MessageID), ReadCorpusParentsOutput{}, nil
+		}
+		defer rows.Close()
+
+		var hits []ReadCorpusParentsHit
+		hasMore := false
+		for rows.Next() {
+			var h ReadCorpusParentsHit
+			if err := rows.Scan(&h.ParentOrdinal, &h.ByteSize, &h.Content, &h.HasMore); err != nil {
+				return toolError("read_corpus_parents scan: %v", err),
+					ReadCorpusParentsOutput{}, nil
+			}
+			hits = append(hits, h)
+			hasMore = h.HasMore
+		}
+		if err := rows.Err(); err != nil {
+			return toolError("read_corpus_parents rows: %v", err),
+				ReadCorpusParentsOutput{}, nil
+		}
+
+		out := ReadCorpusParentsOutput{
+			Parents: hits,
+			Count:   len(hits),
+			HasMore: hasMore,
+		}
+		return nil, out, nil
 	}
 }
