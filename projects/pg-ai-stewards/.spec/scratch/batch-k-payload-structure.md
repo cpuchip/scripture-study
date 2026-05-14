@@ -188,15 +188,41 @@ Not yet a failure mode but worth a follow-up: if we add many more MCP tools, thi
 | 1: System (compose_system_prompt) | agent prompt + instructions + covenant + intent + skills | **NEVER** — prefix stability for caching; covenant must reach the agent verbatim |
 | 2: History — system message at position 0 | identical to zone 1 (and shouldn't be duplicated, but check) | NEVER |
 | 2: History — initial `user` (the binding question) | first user message in the session | **NEVER** — the agent must know what it's answering |
-| 2: History — recent N assistant+tool pairs | last 3-4 turns | **NEVER** — needed for the agent's working rhythm |
+| 2: History — recent 3 turns (assistant+tool sequences) | rhythm preservation per LangChain | **NEVER** — emit raw |
 | 2: History — error-traced tool results | any message containing error/traceback patterns | **NEVER** — per LangChain, helps avoid repeats |
 | 2: History — older user clarifications | mid-session user messages | RARELY — Hermes/PicoClaw default: preserve |
-| 2: History — older assistant tool_calls + tool results | the middle zone, biggest accumulator | **YES — primary target for compaction** |
+| 2: History — older `tool` results with engrams extracted | the torso zone (engrams jsonb populated) | **YES — emit HOT engrams instead of raw** |
+| 2: History — older `assistant` reasoning_content | reasoning models' thinking blocks | **YES — drop entirely from older turns** |
 | 3: Current-turn user message | stage input_template rendered | NEVER |
 | Tools array | function definitions | Separately — filter unused tools per agent rather than compact |
 
+## How compressed messages render in compose_messages (ratified K design)
+
+When a tool message has engrams extracted, `compose_messages` emits a synthetic block in place of the raw content:
+
+```text
+[Engrams from msg #4f2c, raw 426651 chars, 6 engrams extracted]
+
+⚠️ Source content showed signs of prompt injection. Raw available via
+   expand_message(id=4f2c, tier='raw', confirm_inspect_raw=true).
+   (banner only present when injection_suspected=true)
+
+## Pickard 1906 silicon-carbide detector
+Greenleaf Whittier Pickard filed for a silicon-carbide detector patent
+on August 30, 1906. The patent (US 836,531) described...
+Sources: https://en.wikipedia.org/wiki/Crystal_radio
+Quote: "this device, which I have termed the perikon detector..."
+
+## Cat-whisker mechanism and AM rectification
+[next HOT engram]
+
+(more available via expand_message(id=4f2c, tier='medium'|'cold'|'raw'))
+```
+
+Per compressed message: ~1500 tokens of HOT engrams. MEDIUM and COLD stored but not emitted by default — retrievable on agent demand.
+
 ## The "what to send" decision, rephrased
 
-Compaction is just `compose_messages()` choosing what to include. We change ONE function (and add a column or two to `stewards.messages` + a helper trigger to populate it) and the entire substrate benefits. The bgworker doesn't need to change. The bridge doesn't need to change. Every existing pipeline benefits the moment the function ships.
+Compaction is just `compose_messages()` choosing what to include. We change ONE function (and add a jsonb column to `stewards.messages` + an extractor trigger to populate it) and the entire substrate benefits. The bgworker doesn't need to change. The bridge doesn't need to change. Every existing pipeline benefits the moment the function ships.
 
-That's the leverage point. K is a `compose_messages()` rewrite, not a substrate rewrite.
+That's the leverage point. K is a `compose_messages()` rewrite plus the engram extraction pipeline that feeds it, not a substrate rewrite.
