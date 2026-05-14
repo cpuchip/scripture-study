@@ -1,11 +1,39 @@
 ---
 name: substrate-batch-l-1-1-context-engine-v2-1
-title: Batch L.1.1 — Context Engine v2.1 (Budget-Aware Compaction + Super-Large Data Mode)
-status: council-in-progress
+title: Batch L.1.1 — Context Engine v2.1 (Budget-Aware Compaction + Judge Pattern + Super-Large Data Mode)
+status: RATIFIED 2026-05-14 — build in progress
 created: 2026-05-14
 supersedes: nothing (extends L.1)
 blocks: bacteriopolis-retry, future-research-pipelines, any-pipeline-touching-large-fetches
-ratifies_from: 2026-05-14 council moment
+ratifies_from: 2026-05-14 council moment + research-agent run + 3 AskUserQuestion ratification batches
+---
+
+## Ratified decisions (2026-05-14)
+
+12 decisions across 3 batches, all by user vote:
+
+| # | Decision | Outcome |
+|---|---|---|
+| 1 | Budget location | Pipeline-stage > agent > provider cascade |
+| 2 | Cost cap policy | Hard cap per oversized input — $0.50 default, configurable per pipeline |
+| 3 | Intercept threshold | × 0.25 of remaining budget |
+| 4 | Judge cadence | Always when intercepted (one judge round per oversized result) |
+| 5 | Overflow storage | Two tables — `messages_raw_overflow` (parents) + `messages_raw_overflow_leaves` (embedded chunks) |
+| 6 | Contextual retrieval scope | L.1.1 new content only; studies-corpus backfill deferred |
+| 7 | Judge template location | Single canonical template in stewards table; per-pipeline override available |
+| 8 | Auto-merge threshold | 3 leaves under same parent → return parent |
+| 9 | Index timing during intercept | Synchronous block — full index complete before tool result returns |
+| 10 | Build order | Infra first (L.1.1.1-6) → then judge surface (L.1.1.7-11) |
+| 11 | Verification target | Bacteriopolis retry to verified |
+| 12 | Soak protocol | Pause `schedule_enabled` at session start, resume at end |
+
+Plus prior research-confirmed (not voted but accepted):
+- Chunk sizes: 4K parents / 512 leaves / 64 overlap
+- Embedding model: reuse studies' 768-dim
+- Splitter: recursive character (not semantic)
+- Extraction style: map-reduce (not refine)
+- Contextual prepend: 50-100 tok per leaf, prompt-cached source
+
 ---
 
 # Batch L.1.1 — Context Engine v2.1
