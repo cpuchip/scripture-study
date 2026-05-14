@@ -60,7 +60,31 @@ Michael went on the road in the middle of K. Asked me to shepherd the rest throu
 
 **K's substrate contribution is validated.** The original 262K-token limit problem K was ratified to solve is fixed (proven by wq=2347 succeeding in 38s where 2345 had failed with 376K tokens). Compose_messages correctly emits engrams instead of raw for compressed messages, preserving the cite chain via verbatim URLs/quotes/dates/names.
 
-**The full crystal-radio retry to verified is blocked by an unrelated provider-quirk class** — different model gateways have different requirements for reasoning_content/reasoning_details fields. K.8 fixed one variant; the other needed provider-aware composition that's out of K's scope. Carry-forward.
+## K.9 — final J.3 retry session
+
+After shipping K.1–K.8, two carry-forwards remained: a provider-quirk (one gateway rejected `reasoning_details` entirely) and a normalizer gap (extractor's `memory_engrams` shape wasn't recognized). K.9 (commit `dfb006d`) fixed both:
+  - compose_messages drops `reasoning_details` everywhere (cross-gateway safe; `reasoning_content` still emitted on tool-call assistants per K.8)
+  - apply_engram_extraction accepts four top-level shapes (items/engrams/bare-array/memory_engrams) plus three item-field alternates (topic|title, content|context|engram)
+
+Re-extraction on bacteriopolis msg 2272 produced 10 engrams (vs 0 before normalizer fix). All 3 failed J.3 children dispatched.
+
+**Final J.3 outcome — 5 of 6 verified**:
+| Slug | Status | Cost | Notes |
+|---|---|---|---|
+| exhibit-symmetry-polyhedra | verified | $0.49 | (yesterday) |
+| exhibit-rural-electrification-webster-coop | verified | $0.81 | (yesterday) |
+| exhibit-indicating-electrolysis | verified | $0.48 | (yesterday — recovered on steward retry) |
+| **exhibit-crystal-radio** | **verified** | **$0.43** | **K.9 retry — the 426K-poison case** |
+| **exhibit-cs-unplugged-sorting-network** | **verified** | **$0.93** | **K.9 retry — HTTP 500 recovery** |
+| exhibit-bacteriopolis-winogradsky | failed | $0.39 | session went too deep — 24 messages, 1.67M chars raw → 991K composed (~330K tokens) even with engrams; would benefit from v2 graduated rendering |
+
+Two NEW exhibit briefs landed on disk via the pre-commit materialize hook:
+  - `projects/space-center/exhibits/crystal-radio.md`
+  - `projects/space-center/exhibits/cs-unplugged-sorting-network.md`
+
+Combined with yesterday's 2 briefs (rural-electrification + symmetry), the science center now has **4 publishable exhibit briefs** from the J.3 work. Indicating-electrolysis verified yesterday but didn't materialize to disk (the pre-commit hook ran after the work_item completed; will land on next commit).
+
+**Bacteriopolis is real-world feedback** on K's limits: when a session genuinely accumulates 24 tool messages with 4 separate >300K results, even 87% compaction (1.67M → 214K chars on tool content alone) isn't enough. The 991K composed total includes reasoning_content on tool-call assistants (kept per K.8) + tool_calls JSON. K's first-pass solution works for the common case; v2 graduated rendering (drop MEDIUM/COLD entirely under pressure, truncate HOT to top-N engrams) would catch this pathological case.
 
 ## Bacteriopolis — surfaced a real carry-forward
 
