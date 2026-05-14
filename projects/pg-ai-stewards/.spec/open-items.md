@@ -15,7 +15,8 @@ purpose: >
 
 | Proposal | Scope | Status |
 |---|---|---|
-| [`substrate-batch-k-engram-context.md`](proposals/substrate-batch-k-engram-context.md) | engram-based context compaction + sub-agent delegation + injection defense; fixes the J.3 token-limit failure mode | **shipped 2026-05-14** (K.1-K.8; original 262K-token problem solved per crystal-radio retest; full retry blocked by provider-quirk carry-forward) |
+| [`substrate-batch-l-context-engine-v2.md`](proposals/substrate-batch-l-context-engine-v2.md) | Context Engine v2 — graduated rendering + provider-aware + engram search + marked-important + re-extraction + 6 wrappers + injection L3 + bridge wrap + depth cap | **ratified 2026-05-14, build pending** (12 decisions; 12 pulses estimated; bacteriopolis full retry is L.1 verification target) |
+| [`substrate-batch-k-engram-context.md`](proposals/substrate-batch-k-engram-context.md) | engram-based context compaction + sub-agent delegation + injection defense; fixes the J.3 token-limit failure mode | **shipped 2026-05-14** (K.1-K.9; 5 of 6 J.3 exhibits verified; bacteriopolis case → Batch L territory) |
 | [`substrate-batch-j-fanout-brainstorm.md`](proposals/substrate-batch-j-fanout-brainstorm.md) | fan-out pipeline + brainstorm pipeline + lens library + work-item hierarchy UI + open-filter | **shipped 2026-05-13** (J.1-J.5 all complete; J.3 partial with substrate-level lesson driving Batch K) |
 | [`substrate-batch-i-agent-write-back.md`](proposals/substrate-batch-i-agent-write-back.md) | agent-proposal pipeline + HTTP endpoint + UI filter + schema-migration claude_attested gate | **shipped 2026-05-12** (I.1, I.2, I.3 + Phase A reaper) |
 | [`substrate-completion-batch-g.md`](proposals/substrate-completion-batch-g.md) | file_path fix + retry-pulls-lessons + quarantine-fires-atonement + file-write mechanism | **build-ready** (no new ratifications needed) |
