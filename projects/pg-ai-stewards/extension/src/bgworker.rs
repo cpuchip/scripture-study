@@ -272,9 +272,11 @@ pub extern "C-unwind" fn stewards_dispatcher_main(arg: pg_sys::Datum) {
     // were left in_progress because a worker crashed mid-dispatch
     // WITHOUT a process restart (e.g. a PgTryBuilder catch where the
     // worker survived but didn't unwind the row claim). Threshold:
-    // 10 minutes — longer than any legitimate model call. User note
-    // 2026-05-12: agent processing can take several minutes; 10min
-    // is conservative.
+    // 15 minutes — longer than any legitimate model call. Bumped from
+    // 10 min on 2026-05-14 after K.1 smoke showed engram extraction
+    // on 426K-char inputs takes >10 min via DeepSeek V4 Flash on
+    // OpenCode Go. 15min gives outlier extractions room to land while
+    // still catching real hangs in reasonable time.
     //
     // Leader-only: same reasoning as the other ticks.
     let mut last_reaper: Option<Instant> = None;
@@ -483,7 +485,7 @@ fn check_steward_tick() {
 /// Phase A (2026-05-12) — Periodic reaper.
 ///
 /// Runs every 60s (leader-only). Reaps work_queue rows that have been
-/// `in_progress` for > 10 minutes. Mirrors the startup reaper's logic:
+/// `in_progress` for > 15 minutes. Mirrors the startup reaper's logic:
 /// for `tool_dispatch` parents, synthesize tool-failure replies + enqueue
 /// continuation so the chain doesn't stall; for everything else, mark
 /// status=error with a clear diagnostic.
@@ -510,7 +512,7 @@ fn run_periodic_reaper() {
                          FROM stewards.work_queue \
                          WHERE status = 'in_progress' \
                            AND kind <> 'mcp_proxy' \
-                           AND claimed_at < now() - interval '10 minutes'",
+                           AND claimed_at < now() - interval '15 minutes'",
                         None, &[],
                     )?;
                     rows.into_iter().filter_map(|r| {
@@ -546,7 +548,7 @@ fn run_periodic_reaper() {
                                     session.to_string().into(),
                                     provider.to_string().into(),
                                     format!(
-                                        "periodic reaper: tool_dispatch id={} stale >10min, synthesizing failure",
+                                        "periodic reaper: tool_dispatch id={} stale >15min, synthesizing failure",
                                         id
                                     ).into(),
                                 ],
@@ -570,11 +572,11 @@ fn run_periodic_reaper() {
                     "UPDATE stewards.work_queue \
                      SET status = 'error', \
                          error  = coalesce(error, '') \
-                                  || 'periodic reaper: stale in_progress >10min', \
+                                  || 'periodic reaper: stale in_progress >15min', \
                          done_at = now() \
                      WHERE status = 'in_progress' \
                        AND kind <> 'mcp_proxy' \
-                       AND claimed_at < now() - interval '10 minutes'",
+                       AND claimed_at < now() - interval '15 minutes'",
                     None, &[]
                 )?;
 
