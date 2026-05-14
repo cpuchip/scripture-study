@@ -104,6 +104,7 @@ func main() {
 	registerEscalationTools(srv, pool)
 	registerExpandTools(srv, pool)
 	registerSpawnSubagentTools(srv, pool)
+	registerHeavyweightTools(srv, pool)
 
 	log.Printf("server starting on stdio (mcp protocol)")
 	if err := srv.Run(ctx, &mcp.StdioTransport{}); err != nil {
