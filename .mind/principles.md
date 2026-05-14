@@ -121,6 +121,11 @@ Working with AI is practicing Abraham 4 and 5 in type and shadow form. The Gods 
 
 *Source: Michael's message to external contact, March 4, 2026. [journal/2026-03-04.md](../../journal/2026-03-04.md)*
 
+### Judges, Not Executors (Exodus 18:21-22)
+The captains of tens / fifties / hundreds in Jethro's counsel to Moses weren't executors running a script — they were **judges with authority within their stewardship**. Moses taught the principles, granted authority, trusted the judgment, and escalated only by *difficulty*: "every great matter they shall bring unto thee, but every small matter they shall judge." The substrate's name (pg-ai-stewards) already implied this. Named explicitly in the 2026-05-14 Batch L.1.1 council: agents should be judges, not executors. The architectural test: am I building a rule-driven path opaque to the agent (executor pattern), or am I surfacing the situation and letting the agent judge within their binding-question stewardship (judge pattern)? Applied to context compaction: instead of bridge-side auto-compaction, the engine indexes oversized content into a mini-corpus, then surfaces three judge questions — Is the fruit good? What is most precious to save? What should be discarded? The 1-2 extra LLM calls per oversized result are the cost of honoring agency; the better engrams, fewer hallucinations, and more interesting behavior are the return.
+
+*Source: Exodus 18:21-22, 2026-05-14 Batch L.1.1 council, [substrate-batch-l-1-1-context-engine-v2-1.md](../../projects/pg-ai-stewards/.spec/proposals/substrate-batch-l-1-1-context-engine-v2-1.md)*
+
 ---
 
 ## Tool Selection Heuristics
