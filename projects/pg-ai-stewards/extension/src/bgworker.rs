@@ -223,6 +223,26 @@ pub extern "C-unwind" fn stewards_dispatcher_main(arg: pg_sys::Datum) {
                    AND kind <> 'mcp_proxy'",
                 None, &[]
             )?;
+
+            // ES.1.s3: record one crash per distinct kind reaped. A
+            // genuine crash loop runs the reaper on every restart, so
+            // the per-kind counter accumulates to the pause threshold.
+            // One reaper pass = +1 per kind (not +1 per row) so a
+            // single bad restart with many in-flight rows doesn't
+            // instantly trip the breaker.
+            {
+                let mut seen: Vec<String> = Vec::new();
+                for (_id, kind, _provider, _payload) in &stale_rows {
+                    if !seen.iter().any(|k| k == kind) {
+                        seen.push(kind.clone());
+                        let _ = client.update(
+                            "SELECT stewards.record_kind_crash($1)",
+                            Some(1),
+                            &[kind.clone().into()],
+                        );
+                    }
+                }
+            }
             Ok::<(), pgrx::spi::Error>(())
         })
         });
@@ -623,10 +643,17 @@ fn process_one_pending() -> bool {
                 // the same SKIP LOCKED claim against this queue but
                 // filters TO kind='mcp_proxy'. The two sides partition
                 // by kind without coordinating beyond the row lock.
+                // ES.1.s3: skip kinds the circuit breaker has paused
+                // (5+ consecutive crash-reaps). The pause auto-expires
+                // after the cooldown; a successful completion resets it.
                 let claimed = client.update(
                     "WITH next AS ( \
                          SELECT id FROM stewards.work_queue \
                          WHERE status = 'pending' AND kind <> 'mcp_proxy' \
+                           AND kind NOT IN ( \
+                               SELECT kind FROM stewards.kind_circuit_breaker \
+                                WHERE paused_until > now() \
+                           ) \
                          ORDER BY created_at \
                          FOR UPDATE SKIP LOCKED \
                          LIMIT 1 \
@@ -1509,6 +1536,17 @@ fn process_one_pending() -> bool {
                         &[id.into(), msg.clone().into(), err_result.into()],
                     )?;
                 }
+            }
+
+            // ES.1.s3: a clean completion resets this kind's circuit-
+            // breaker crash counter (and clears any pause). No-op when
+            // the kind is already healthy.
+            if outcome.is_ok() {
+                let _ = client.update(
+                    "SELECT stewards.record_kind_success($1)",
+                    Some(1),
+                    &[kind.clone().into()],
+                );
             }
 
             // NOTIFY listeners with the row id as payload.
