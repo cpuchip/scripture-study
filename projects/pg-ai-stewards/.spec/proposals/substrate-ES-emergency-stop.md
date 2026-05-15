@@ -1,7 +1,7 @@
 ---
 name: substrate-ES-emergency-stop
 title: "ES — Emergency Stop: critical-failure findings, code trace, and remediation plan"
-status: ES.1 mostly shipped (4 of 6 fixes) — bleed structurally stopped; ES.1.s3+s4 + ES.3 council remain
+status: ES.1 COMPLETE (all guardrails shipped + verified by a clean pipeline smoke test); ES.3 council remains
 created: 2026-05-15
 trigger: 2026-05-14/15 bacteriopolis fix-bundle retry — runaway DeepSeek churn, bgworker crash loop, ~$20-70 in wasted contextualizer tokens
 debug_workflow: .claude/agents/debug.md (Agans' 9 rules)
@@ -205,11 +205,25 @@ Fixes that stop this class of incident regardless of the rearchitecture.
   (ratified): removed the embed INSERT from apply_contextualize_leaf
   rather than building a text-id cascade ES.3 may discard.
 
-**Bleed status: structurally stopped.** The specific crash loop cannot
-recur — no 500-leaf explosions (s2), no misrouted embeds (s5), no leaf
-embed crash (CF-2 Option B removes the enqueue), no runaway from
-cancelled work_items (s1). ES.1.s3 (crash-breaker) + ES.1.s4 (health
-check) remain as defense-in-depth, not bleed-stoppers.
+- **ES.1.s3 — bgworker crash-loop breaker (CF-3). SHIPPED `0dcdf75`.**
+  kind_circuit_breaker table; reaper records one crash per distinct kind;
+  5 consecutive crashes → 10-min pause; claim query skips paused kinds;
+  success resets. bgworker rebuilt.
+- **ES.1.s4 — embedding health check. SUBSUMED by s3.** The per-kind
+  breaker covers the LM-Studio-down case (embed fails → kind pauses →
+  cooldown → retries). CF-2 Option B already removed the embed-404 crash,
+  so embed failures fail gracefully now. A dedicated retry-on-transient
+  would be nicer — carry-forward, not ES.1-blocking.
+
+**ES.1 COMPLETE. Verified by a clean pipeline smoke test 2026-05-15:**
+a small research-write run (es-smoke-nomic-embed-compare) reached
+verified at $0.205. Every guardrail confirmed in production — no
+runaway (caps held: context_gather 4 rounds, synthesize 2), zero
+bgworker crashes, all 10 embed jobs routed to lm_studio and completed,
+the REVIEW: passes gate satisfied honestly, real 6377-char artifact
+produced. One cosmetic finding: kimi-k2.6 reported under 3 gateway
+identifiers (Fireworks / Moonshot / canonical) — model-name
+normalization is a low-priority ES.3-era cleanup.
 
 ### ES.2 — Schema fix (CF-2)
 
@@ -244,6 +258,16 @@ Council + ratify before building. Candidate shape:
   guardrails hold.
 
 ---
+
+## Model-name normalization (new, low priority)
+
+The smoke test surfaced that kimi-k2.6 is reported under three gateway
+identifiers — `kimi-k2.6`, `accounts/fireworks/models/kimi-k2p6`,
+`moonshotai/kimi-k2.6-20260420` — and the gather stage failed over
+between Fireworks and Moonshot routes mid-stage. Same logical model;
+not a bug. But cost attribution is split three ways and the L.1.1.15
+substitution detector can't see gateway-route changes. A canonical
+model-name mapping would fix both. ES.3-era cleanup, not urgent.
 
 ## Carry-forward / open questions
 
