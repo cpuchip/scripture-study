@@ -125,6 +125,26 @@ the ceiling: don't chunk — see ES.3 (rearchitecture). Also: the ratified
 L.1.1 cost cap ($0.50/oversized input) was never actually enforced at the
 chunk_and_index dispatch point.
 
+### CF-7 — Embed jobs misrouted to the opencode_go provider
+
+**Severity: high.** Embeddings run on **LM Studio** (provider `lm_studio`,
+local, port 1234, model `text-embedding-nomic-embed-text-v1.5`). But the
+embed-enqueueing SQL I wrote in L.1.1.5 (`l15`), L.1.1.12 (`l26`), and L.3
+(`l3`) hardcoded `provider => 'opencode_go'` on the embed work_queue row.
+730 embed rows are queued against `opencode_go` — they 404 against
+OpenCode Go's API (which has no embeddings endpoint) regardless of LM
+Studio being up. Only 409 rows correctly used `lm_studio`.
+
+**Fix:** change the provider literal to `lm_studio` in the embed-enqueue
+sites: `l3` lines ~126 and ~241, `l26` line ~161 (live
+`apply_contextualize_leaf`). `l15` is superseded by `l26`.
+
+**Resolved operationally 2026-05-15:** the nomic model was reloaded in LM
+Studio via `lms load text-embedding-nomic-embed-text-v1.5`; endpoint
+verified returning embeddings. The provider-string fix is still needed
+(ES.1) — without it, embed work goes to the wrong place even with LM
+Studio healthy.
+
 ### CF-6 — The whole leaf-chunk-and-embed architecture is the wrong
 abstraction (the deepest finding)
 
@@ -179,6 +199,9 @@ Fixes that stop this class of incident regardless of the rearchitecture.
   detection; quarantine the poison row/kind.
 - **ES.1.s4 — embedding provider health check (CF-4).** Pre-flight check
   before enqueueing/claiming embed work.
+- **ES.1.s5 — fix embed provider routing (CF-7).** Change `opencode_go` →
+  `lm_studio` in the embed-enqueue sites (l3, l26). Re-queue or discard the
+  730 misrouted rows.
 
 ### ES.2 — Schema fix (CF-2)
 
