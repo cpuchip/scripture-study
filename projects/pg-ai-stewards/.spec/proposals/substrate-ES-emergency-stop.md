@@ -1,7 +1,7 @@
 ---
 name: substrate-ES-emergency-stop
 title: "ES — Emergency Stop: critical-failure findings, code trace, and remediation plan"
-status: ES.0 stabilized (bleed stopped) — ES.1+ awaiting ratification
+status: ES.1 mostly shipped (4 of 6 fixes) — bleed structurally stopped; ES.1.s3+s4 + ES.3 council remain
 created: 2026-05-15
 trigger: 2026-05-14/15 bacteriopolis fix-bundle retry — runaway DeepSeek churn, bgworker crash loop, ~$20-70 in wasted contextualizer tokens
 debug_workflow: .claude/agents/debug.md (Agans' 9 rules)
@@ -184,24 +184,32 @@ place — but NOT as the default path for "agent fetched a page."
 
 ## ES phase plan
 
-### ES.1 — Stabilize & guardrails (build-ready after ratification)
+### ES.1 — Stabilize & guardrails
 
 Fixes that stop this class of incident regardless of the rearchitecture.
 
-- **ES.1.s1 — work_item_cancel cascade (CF-1).** `work_item_cancel(uuid)`
-  function: set status + kill non-terminal work_queue rows for all
-  session_ids + cancel waiting tool_dispatch rows. Add a status check in
-  the chat-continuation path.
-- **ES.1.s2 — chunk_and_index circuit breaker (CF-5).** Hard ceiling on
-  leaves/source-bytes. Beyond ceiling: refuse to chunk, surface to the
-  judge instead (bridges into ES.3).
-- **ES.1.s3 — bgworker crash-loop breaker (CF-3).** Consecutive-failure
-  detection; quarantine the poison row/kind.
-- **ES.1.s4 — embedding provider health check (CF-4).** Pre-flight check
-  before enqueueing/claiming embed work.
-- **ES.1.s5 — fix embed provider routing (CF-7).** Change `opencode_go` →
-  `lm_studio` in the embed-enqueue sites (l3, l26). Re-queue or discard the
-  730 misrouted rows.
+- **ES.1.s1 — work_item_cancel cascade (CF-1). SHIPPED `b6ac127`.**
+  work_item_cancel now hard-stops every non-terminal work_queue row
+  (pending/in_progress/waiting_for_tools) for the work_item's session_ids.
+- **ES.1.s2 — chunk_and_index circuit breaker (CF-5). SHIPPED `61f56d1`.**
+  40-leaf ceiling; over it, chunk_and_index returns {skipped:true} and the
+  intercept leaves the message raw + flags for ES.3.
+- **ES.1.s3 — bgworker crash-loop breaker (CF-3). NOT SHIPPED.** Needs a
+  bgworker.rs change + docker rebuild — fresh-context session.
+- **ES.1.s4 — embedding provider health check (CF-4). NOT SHIPPED.**
+  LM Studio nomic model reloaded operationally; the substrate-side
+  pre-flight health check is still to build.
+- **ES.1.s5 — embed provider routing (CF-7). SHIPPED `149a783`.** BEFORE
+  INSERT trigger forces every kind=embed row to provider=lm_studio.
+- **ES.2/CF-2 — disable leaf embed enqueue. SHIPPED `60cd8d2`.** Option B
+  (ratified): removed the embed INSERT from apply_contextualize_leaf
+  rather than building a text-id cascade ES.3 may discard.
+
+**Bleed status: structurally stopped.** The specific crash loop cannot
+recur — no 500-leaf explosions (s2), no misrouted embeds (s5), no leaf
+embed crash (CF-2 Option B removes the enqueue), no runaway from
+cancelled work_items (s1). ES.1.s3 (crash-breaker) + ES.1.s4 (health
+check) remain as defense-in-depth, not bleed-stoppers.
 
 ### ES.2 — Schema fix (CF-2)
 
