@@ -1,6 +1,6 @@
 # Assessment: Marshfield/Webster County "BLT Principle" Data Center Letter
 
-**Context:** A community-circulated letter about a data center proposed for Rifle Range Road outside Marshfield, MO (Webster County). User reports the actual project is **~10MW**; the letter repeatedly describes it as **100MW**. Companion to [research/data-center-2nd-3rd-order-jobs.md](research/data-center-2nd-3rd-order-jobs.md).
+**Context:** A community-circulated letter about a data center proposed for Rifle Range Road outside Marshfield, MO (Webster County). User reports the actual project is **~10MW**; the letter repeatedly describes it as **100MW**. Companion to [jobs-2nd-3rd-order.md](research/data-center/jobs-2nd-3rd-order.md).
 
 Letter text preserved in: editor buffer at time of review (not saved to disk by author; reproduced below in *Source Text* section).
 
@@ -57,7 +57,7 @@ This explains a pattern worth naming: AI-assisted advocacy writing tends to be r
 
 ## Factual verification
 
-(See companion file in [research/.scratch/marshfield-letter-verification.md](research/.scratch/marshfield-letter-verification.md) for raw notes, full quotes, and source URLs.)
+(See companion file in [.scratch/marshfield-letter-verification.md](research/data-center/.scratch/marshfield-letter-verification.md) for raw notes, full quotes, and source URLs.)
 
 | Claim | Status |
 |---|---|
