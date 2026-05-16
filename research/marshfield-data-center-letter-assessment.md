@@ -57,17 +57,42 @@ This explains a pattern worth naming: AI-assisted advocacy writing tends to be r
 
 ## Factual verification
 
-(See companion file in `.scratch/marshfield-letter-verification.md` for raw research notes.)
+(See companion file in [research/.scratch/marshfield-letter-verification.md](research/.scratch/marshfield-letter-verification.md) for raw notes, full quotes, and source URLs.)
 
-| Claim | Verified? | Notes |
-|---|---|---|
-| Marshfield project on Rifle Range Road | TBD | |
-| Project is 100MW | **No** | User says 10MW |
-| Kehoe EO 26-02 (Jan 2026) | TBD | |
-| Kehoe quote "AI is the space race of our time and we must win" to KOMU 8 | TBD | |
-| Metrobloks $1.4B Liberty, MO with 30 jobs | TBD | |
-| Mo. Rev. Stat. § 49.950(3) is the cited nuisance/noise statute | TBD | |
-| Camdenton rejected data center via municipal zoning | TBD | |
-| St. Louis currently writing data center zoning rules | TBD | |
+| Claim | Status |
+|---|---|
+| Marshfield project on Rifle Range Road (Lumon Solutions, 5-acre Tier III) | ✓ True |
+| **Project is 100MW** | **✗ Unsupported** — user says 10MW; KY3 reporting doesn't specify MW; 5-acre footprint is consistent with 10MW small/regional, not 100MW hyperscale |
+| EO 26-02 exists, dated Jan 13, 2026 | ✓ True |
+| EO 26-02 directs alignment with Trump national AI initiative + accelerate data centers | ⚠ **Partial — significantly mischaracterized.** The EO's actual text includes substantial **ratepayer-protection language** explicitly requiring data centers to "cover their full cost of electricity and infrastructure service" so they don't raise rates on residents/small businesses. The letter omits this entirely. The EO is more consumer-protective than the letter portrays. |
+| Kehoe "Missouri stands ready to welcome…" KOMU quote | ✓ True (Jan 22, 2026, KOMU 8) |
+| **Kehoe "AI is the space race of our time and we must win" quote** | **✗ Cannot verify — appears fabricated.** No such quote found in KOMU coverage. The "space race" framing comes from Janelle Higgins (VP Marketing, Missouri Partnership) in a separate West News Magazine article and that article's title. The letter presents it as "a direct quote" from Kehoe — classic AI confabulation conflating multiple sources. |
+| Metrobloks $1.4B, 30 jobs in Liberty | ✓ True |
+| (Omitted detail: Metrobloks is 150MW, $95,649 avg wage, includes a 25-year $27.75M Community Benefits Agreement for the Liberty Institute for Science and Ethics) | The CBA is exactly the kind of "right something" the letter calls for but doesn't acknowledge Missouri has already done |
+| Mo. Rev. Stat. § 49.950(3) — Webster County's cited nuisance/noise statute | ✓ True (confirmed by Ozarks First, May 14, 2026) |
+| Camdenton "turned the data center away at the door" via municipal zoning | ⚠ Partial — Camdenton actually passed a **12-month moratorium** (May 5–6, 2026) plus rescinded support for an Opportunity Zone that would have included a data center. Closer to "hit pause" than "turned away." But the underlying point — municipal authority gave them tools Webster County lacks — is correct. |
+| St. Louis "currently writing rules establishing where and under what conditions data centers can be located" | ✗ **Misleading.** Mayor Cara Spencer publicly *rejected* a moratorium and welcomed data centers. St. Louis is pro-data-center, not restricting them. |
 
-Filling these in below.
+## What the verification changes
+
+Three of the letter's most rhetorically loaded claims turned out to be wrong or misleading in ways the audience would not catch:
+
+1. **The Governor's EO is more sympathetic to the community's position than the letter portrays.** The ratepayer-protection language in EO 26-02 — "large users should cover their full cost of electricity and infrastructure service" so residential rates don't rise — is exactly the kind of state-level tool the letter is asking for. It already exists in the EO. The letter's framing of Kehoe as pure cheerleader for the industry omits the actual leverage his own order created. **This is the most useful thing the community could pivot on.**
+
+2. **The "space race" quote attributed to Kehoe appears to be fabricated.** Kehoe's real statements are softer and more procedural. The dramatic quote was likely confabulated by the AI assistant from the title of an unrelated West News Magazine article and a Missouri Partnership marketing official's remarks. **If anyone fact-checks the letter, this is where it falls apart credibility-wise.**
+
+3. **The Metrobloks Liberty case actually included a $27.75M Community Benefits Agreement.** The letter uses Metrobloks as a cautionary tale ($1.4B for only 30 jobs) but does not mention that Liberty negotiated a 25-year CBA worth $27.75M for a local Institute for Science and Ethics. That is precisely the kind of "right something" the letter calls for — and it happened in Missouri this year, with this Governor's support. It is a model Webster County could ask for.
+
+The Camdenton and St. Louis details are also off in ways that weaken the letter's contrast structure. Camdenton hit pause, not a final rejection. St. Louis is actively welcoming data centers, not restricting them.
+
+## Revised recommendation to the author
+
+The instinct, anger, and structural critique are all sound. The execution has three problems that will get the letter dismissed if it gets in front of anyone with a Google search bar:
+
+1. **Fix the 100MW → 10MW error.** This is the easy one and the most damaging if left.
+2. **Remove the fabricated "space race" quote or replace it with Kehoe's real KOMU statement.** The real statement is still rhetorically useful — it just doesn't punch as hard.
+3. **Engage honestly with EO 26-02's ratepayer protection language.** It is genuinely on the community's side. The letter's case gets STRONGER, not weaker, by acknowledging this: "The Governor's own EO requires data centers to cover their full cost of electricity. Webster County should demand this be enforced for Lumon Solutions before any permits are issued. Where is the cost-allocation analysis?"
+4. **Use Liberty's $27.75M CBA as the model ask.** "If Liberty got $27.75M over 25 years for 30 jobs at 150MW, what is the proportional ask for Webster County for a 10MW facility?" That is a concrete, defensible, Governor-aligned demand.
+5. **Correct the Camdenton characterization** (12-month moratorium, not rejection) and **either drop the St. Louis claim or research what actually is being drafted** there — Mayor Spencer's stance is publicly the opposite of what the letter implies.
+
+The letter as written is a protest. With these fixes, it becomes a negotiating position grounded in the Governor's own framework. That is a much harder thing to dismiss.
