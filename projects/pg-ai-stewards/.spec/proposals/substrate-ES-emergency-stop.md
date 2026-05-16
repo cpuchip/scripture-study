@@ -1,7 +1,7 @@
 ---
 name: substrate-ES-emergency-stop
 title: "ES — Emergency Stop: critical-failure findings, code trace, and remediation plan"
-status: ES.1 COMPLETE + verified. ES.3 RATIFIED 2026-05-15 (7 decisions, council held) — build-ready. ES.4 verify pending.
+status: ES.1 COMPLETE + verified. ES.3 s1-s4 SHIPPED + verified 2026-05-15 (real judge call confirmed); s5 deferred; soak PAUSED pending Michael's resume. ES.4 (full bacteriopolis re-run) pending.
 created: 2026-05-15
 trigger: 2026-05-14/15 bacteriopolis fix-bundle retry — runaway DeepSeek churn, bgworker crash loop, ~$20-70 in wasted contextualizer tokens
 debug_workflow: .claude/agents/debug.md (Agans' 9 rules)
@@ -292,6 +292,18 @@ can send back (D&C 104; the householder of Matt 13:52 — the treasure
 yields "things new and old").
 
 #### Sub-phases
+
+**SHIPPED 2026-05-15** — s1-s4 built, smoked, committed (`cc8fde9`,
+`84209ea`, `2f6c25a`, `c44ddbd`) and verified by a real deepseek-v4-flash
+judge call on a 72K-char document (7 well-formed engrams, correct
+provenance, embeds routed to lm_studio). Build note: the judge runs as
+a bare chat (the K.1 extract_engrams pattern) rather than a
+`spawn_subagent` work_item — a trigger context can't cleanly thread a
+work_item + pipeline + the spawn_subagent Go handler. `consult_subagent`
+keys on the **session** instead, which is the unifying handle for any
+sub-agent. s5 deferred (carry-forward). The soak is PAUSED — a full
+oversized-fetch inside a live multi-stage pipeline has not run
+unattended; resuming is Michael's call (ES.4 territory).
 
 - **ES.3.s1 — Engram provenance + brief schema.** Add `provenance`
   (`extracted` | `inferred`) to the engram shape. Define the compiled-brief
