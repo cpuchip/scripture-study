@@ -1,6 +1,6 @@
 ---
 description: 'General research agent — find and evaluate non-canonical sources for any topic (technical, professional, scientific, worldly-skill). Lighter doctrinal frame than research-gospel; same source-verification discipline.'
-tools: [vscode, execute, read, agent, edit, search, web, browser, 'byu-citations/*', 'exa-search/*', 'gospel-engine-v2/*', 'webster/*', 'yt/*', todo]
+tools: [vscode, execute, read, agent, edit, search, web, browser, 'byu-citations/*', 'exa-search/*', 'gospel-engine-v2/*', 'search/*', 'webster/*', 'yt/*', todo]
 handoffs:
   - label: Plan an Implementation
     agent: plan

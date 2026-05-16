@@ -1,7 +1,7 @@
 ---
 name: substrate-ES-emergency-stop
 title: "ES — Emergency Stop: critical-failure findings, code trace, and remediation plan"
-status: ES.1 COMPLETE (all guardrails shipped + verified by a clean pipeline smoke test); ES.3 council remains
+status: ES.1 COMPLETE + verified. ES.3 RATIFIED 2026-05-15 (7 decisions, council held) — build-ready. ES.4 verify pending.
 created: 2026-05-15
 trigger: 2026-05-14/15 bacteriopolis fix-bundle retry — runaway DeepSeek churn, bgworker crash loop, ~$20-70 in wasted contextualizer tokens
 debug_workflow: .claude/agents/debug.md (Agans' 9 rules)
@@ -232,30 +232,126 @@ normalization is a low-priority ES.3-era cleanup.
   (May be moot if ES.3 removes leaf embedding entirely — sequence ES.3's
   ratification first.)
 
-### ES.3 — Rearchitect compaction (CF-6, the real fix)
+### ES.3 — Rearchitect compaction: the judge-compiled-brief (CF-6, the real fix)
 
-Council + ratify before building. Candidate shape:
+**RATIFIED 2026-05-15.** Council held with identity + ES journal loaded,
+gospel research (Matthew 13:47-52 — the net), and six 2026 context-
+engineering sources. 7 decisions by user vote.
 
-- The L.1.1.8 intercept stops chunking-and-embedding by default.
-- Instead: an oversized web fetch is handed to a **judge sub-agent** with
-  the parent binding question. The sub-agent reads the document (using its
-  context window — kimi/qwen both 260K, deepseek-v4-pro 1M), and returns a
-  **compiled brief**: a small set of engrams (quote, fact, date, source
-  link) selected against the binding question. Few calls.
-- "Is the fruit good? What is most precious to save? What to discard?" —
-  answered in ONE pass, not 500.
-- Cross-document vector search (L.1.1.5-7, L.3) is retained as a SEPARATE,
-  opt-in primitive for the genuine "search across the whole corpus" job —
-  not the default for in-flight fetches.
-- Aligns with the video's "retrieval unit matches the work" + "write down
-  the bundle your agent needs" + "don't overbuild."
+#### Ratified decisions
+
+| # | Decision | Outcome |
+|---|---|---|
+| 1 | Judge model | deepseek-v4-flash — 1M context; **no `max_tokens` set** (the L.1.1.12 lesson — never restrict the reasoning budget) |
+| 2 | Judge timing | Always sync — every judge call returns a real brief in-turn |
+| 3 | Leaf index | DROP in ES.3 — the user's vote is the explicit ratification for the destructive SQL |
+| 4 | Re-engagement | **Generalized** (council 2026-05-15 round 2) — `consult_subagent` re-engages ANY spawned sub-agent, not just fetch-judges. Ships in ES.3. |
+| 5 | Re-ask cap | Soft STEWARD NOTICE after ~5 re-asks/document + work_item cost cap as hard backstop |
+| 6 | Re-ask engrams | Yes — provenance-tagged (`extracted` vs `inferred`) |
+| 7 | Empty verdict | The judge may return a brief with zero engrams + a reason — "cast the bad away" is a valid judgment |
+
+#### The architecture
+
+An oversized tool result is the **net** (Matt 13:47 — "gathered of every
+kind"). The net is not the sorting. The sort is a separate, deliberate act
+by a judge who *sits down* with the catch (v.48) and gathers the good into
+vessels. Our bug was making the net sort itself — 500 embedded leaves.
+
+Flow: oversized result → L.1.1.8 intercept → hand the **whole document** +
+the **binding question** to a judge sub-agent (deepseek-v4-flash, fresh
+isolated session) → judge reads once → returns a **compiled brief**: a
+handful of engrams (quote / fact / date + source pointer), each tagged to
+the binding question, plus a state line and an explicit *discarded* note.
+The brief replaces the result body in the consuming agent's context. The
+raw document stays in `messages_raw_overflow` for `expand_message
+tier='raw'` — **recoverable** summarization, not lossy (the 2026 field
+consensus: keep raw reachable; summarize last).
+
+#### The judge is not a special case — it is a `spawn_subagent`
+
+The substrate already has a general sub-agent primitive: `spawn_subagent`
+(Batch K.4) creates a child work_item running ANY registered pipeline
+(`research-write`, `study-write`, …), isolated context, own cost cap,
+depth-capped. The fetch-judge is just an instance: the L.1.1.8 intercept
+calls `spawn_subagent_create` internally with a `judge-brief` pipeline,
+the oversized document seeded as the child's context.
+
+Today the sub-agent lifecycle is **spawn → digest → done** — the child
+completes and its context is gone. ES.3 adds the missing half: a spawned
+sub-agent's session **persists addressable** after it returns its digest,
+for the parent work_item's lifetime (the ES.1.s1 cancel cascade still
+tears it down on cancel — no orphan spend).
+
+The brief returns with the child's `work_item_id` as the handle. The
+parent can later call `consult_subagent(work_item_id, question)` — a sync
+chat into the *same* child session, its context still resident
+(prompt-cached prefix → cheap re-ask). This works for ANY spawned
+sub-agent — a fetch-judge, a delegated scripture study, a transcript
+review — not just fetches. A report you file once becomes a steward you
+can send back (D&C 104; the householder of Matt 13:52 — the treasure
+yields "things new and old").
+
+#### Sub-phases
+
+- **ES.3.s1 — Engram provenance + brief schema.** Add `provenance`
+  (`extracted` | `inferred`) to the engram shape. Define the compiled-brief
+  structure: ≤7 engrams, state line (done / partial / empty), discarded
+  note. Provenance answers the Nate Jones warning — memory must not record
+  agent inference as sourced fact.
+- **ES.3.s2 — Judge dispatch + intercept rewrite.** L.1.1.8 intercept stops
+  calling `chunk_and_index`; instead calls `spawn_subagent_create` with a
+  `judge-brief` pipeline (deepseek-v4-flash, no max_tokens), the oversized
+  document as seeded context. Spawned sub-agent sessions persist addressable
+  after digest. Brief replaces the result body; raw → `messages_raw_overflow`;
+  consuming agent receives brief + the child `work_item_id` handle.
+- **ES.3.s3 — `consult_subagent` tool (general).** Sync dispatch into any
+  spawned sub-agent's persistent session — fetch-judge, delegated study,
+  transcript review. Companion to the existing `spawn_subagent`. Soft
+  STEWARD NOTICE after ~5 re-asks per child (the L.1.1.17 pattern). Re-ask
+  answers may mint provenance-tagged engrams.
+- **ES.3.s4 — Drop the leaf index (destructive — ratified, decision 3).**
+  `DROP TABLE messages_raw_overflow_leaves`; remove `contextualize_leaf`,
+  the leaf path of `chunk_and_index`, and `retrieve_with_merge`. One
+  migration, gated behind a smoke confirming the judge path works first.
+- **ES.3.s5 — (optional) model-name normalization.** Canonical mapping for
+  kimi-k2.6's three gateway identifiers. The judge is a new spend path;
+  clean cost attribution matters. Low-priority — may slip to carry-forward.
+
+#### Kept (not dropped)
+
+- `messages_raw_overflow` — raw parent recovery; the "recoverable" half of
+  recoverable summarization.
+- L.3 `engram_embeddings` — corpus-wide semantic search, retained as a
+  **separate opt-in** primitive (the dual-index lesson — retrieval-side and
+  agent-side chunking are different jobs). Not the default for in-flight
+  fetches.
+- `map_reduce_extract_engrams` — for unattended cases (sabbath reflection
+  over an archive, oversized study inputs) where no live judge holds a
+  binding question.
+
+#### Deferred (named, not in scope)
+
+- **Documents larger than the judge's window (>1M tokens).** The brief
+  schema's `state: partial` value is the seam — a judge past its window
+  returns an honest partial brief, and the parent can spawn another judge
+  on the remainder. `map_reduce_extract_engrams` (kept) is the natural home
+  for a windowed pre-pass that feeds the judge. Not designed here — cross
+  the bridge when a real >1M document forces it.
+- **Cross-work-item document reuse** — a shared document cache any mission
+  can address. Real and bigger; ES.3 sub-agent sessions are work_item-
+  scoped, and the ES.1.s1 cancel cascade tears them down — no orphan spend.
+- **Multi-witness extraction** (D&C 6:28) — two judges on load-bearing
+  engrams. Phase-F-adjacent; not ES.3.
 
 ### ES.4 — Verify
 
 - Bacteriopolis re-run under the rearchitected compaction. Cost target:
-  a web fetch should cost a few calls, not hundreds.
-- Agans Rule 9: reproduce the original runaway conditions, confirm the
-  guardrails hold.
+  a web fetch costs a few calls, not hundreds.
+- Verify a re-ask: parent calls `ask_document` on a judged document, gets a
+  coherent answer; the soft STEWARD NOTICE fires on the 6th re-ask.
+- Agans Rule 9 (inverse hypothesis): reproduce the original runaway
+  conditions — oversized fetch on a cancelled work_item — confirm no leaf
+  explosion, guardrails hold, judge path engages instead.
 
 ---
 
@@ -275,9 +371,9 @@ model-name mapping would fix both. ES.3-era cleanup, not urgent.
   OpenCode Go bill; substrate `cost_usd` was unpopulated so it didn't show.
 - `cost_usd` not being populated is its own finding — cost discipline can't
   work if cost isn't tracked. Possibly an ES.1 add.
-- L.1.1.5/6/7 disposition: keep as opt-in corpus-search primitive or remove
-  entirely — decide in ES.3 council.
-- The video's "memory accumulates bad conclusions" warning applies to our
-  engram system: an agent storing its own inference as confirmed fact.
-  Worth a guard — engrams should carry provenance (extracted-from-source
-  vs agent-inferred).
+- L.1.1.5/6/7 disposition: DECIDED in the 2026-05-15 council. Leaf index
+  (`messages_raw_overflow_leaves`, `contextualize_leaf`, `chunk_and_index`
+  leaf path, `retrieve_with_merge`) drops in ES.3.s4. `engram_embeddings`
+  (L.3) survives as an opt-in corpus-search primitive.
+- The video's "memory accumulates bad conclusions" warning: ADDRESSED by
+  ES.3.s1 — engrams gain a `provenance` field (`extracted` | `inferred`).
