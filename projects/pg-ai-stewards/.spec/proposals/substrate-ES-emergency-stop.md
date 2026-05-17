@@ -1,7 +1,7 @@
 ---
 name: substrate-ES-emergency-stop
 title: "ES — Emergency Stop: critical-failure findings, code trace, and remediation plan"
-status: ES.1 + ES.3(s1-s4) + ES.5(s1-s3) COMPLETE + verified. ES.4 first run 2026-05-15 — judge path verified live (1 call on a 430K fetch); pipeline failed downstream on a transient provider HTTP 500. ES.5.s1-s3 SHIPPED 2026-05-15 (fs_search ctx fix, PDF/Office extraction via tabula, consult_subagent granted live); s4 is policy. Soak PAUSED.
+status: ES.1 + ES.3(s1-s4) + ES.5(s1-s3) COMPLETE + verified. ES.4 first run 2026-05-15 — judge path verified live (1 call on a 430K fetch); pipeline failed downstream on a transient provider HTTP 500. ES.5.s1-s3 SHIPPED 2026-05-15 (fs_search ctx fix, PDF/Office extraction via tabula, consult_subagent granted live); s4 is policy. ES.4 re-run failed again at `review` — hard-diagnosed: qwen3.6-plus review generation exceeds a ~125s gateway timeout (pre-existing pipeline design, not ES.3/ES.5). ES.6 fix DRAFTED — needs ratification. Soak PAUSED.
 created: 2026-05-15
 trigger: 2026-05-14/15 bacteriopolis fix-bundle retry — runaway DeepSeek churn, bgworker crash loop, ~$20-70 in wasted contextualizer tokens
 debug_workflow: .claude/agents/debug.md (Agans' 9 rules)
@@ -446,6 +446,51 @@ Decision: the brief judge stays Tier 1. Two explicit revisit triggers:
   judge is observed hitting "I would need to look that up" walls. That
   observation is the signal to make the consult-judge a tool-capable
   spawn_subagent work_item — the originally-ratified judge design.
+
+### ES.4 run-2 result + ES.6 — Review-stage generation timeout
+
+**ES.4 re-run** (work_item `4bc0808d`, after ES.5, $3.50 cap):
+context_gather and synthesize ran clean — and notably ZERO judge calls
+fired, because ES.5.s2 now extracts a fetched PDF to compact text that
+no longer trips the oversized-fetch intercept. The run again FAILED at
+`review`.
+
+**Root cause — hard-diagnosed, deterministic, not transient.** All
+three review chats (initial + both retries) ran **125-126 seconds**
+then returned `HTTP 500 Internal Server Error` from the OpenCode Go
+gateway. context_gather chats finish in 3-21s. The `review` stage asks
+`qwen3.6-plus` to evaluate a ~2000-word draft against four criteria AND
+output the full draft verbatim (on "passes") or revised. That long
+reasoning-plus-generation consistently exceeds a ~125s gateway timeout,
+returned as a 500. It is a **pre-existing research-write pipeline
+design** colliding with a gateway limit — not an ES.3/ES.5 regression.
+Both ES.4 runs hit it identically.
+
+#### ES.6 — Review-stage fix (DRAFT — needs ratification)
+
+The review stage's output IS the final artifact (research-write has no
+`file_content_jsonpath`; the last stage's output materializes to
+`research/<slug>.md`). That is why review reproduces the whole draft —
+and why it generates long enough to hit the gateway timeout.
+
+- **ES.6.A — verdict-only review (recommended).** On "passes", review
+  emits just the verdict + brief notes, NOT the draft; the substrate
+  materializes `stage_results.synthesize.output` as the artifact. On
+  "revised", review emits the revised draft. Kills the long generation
+  for the common "passes" path. Touchpoints: review `input_template`,
+  the materialization path (pull synthesize output when review passes),
+  the l28 review-prefix gate. Residual: a "revised" verdict still
+  generates a long draft — the rarer path; pair with B or accept.
+- **ES.6.B — gateway-500 failover.** When a chat returns a gateway 500,
+  retry on a different model/route before counting a failure. General
+  resilience; complements A but does not fix the review-design root.
+- **ES.6.C — faster review model.** Switch review `qwen3.6-plus` →
+  `kimi-k2.6`. Band-aid — a long generation can still near 125s.
+- **Investigate** — confirm where the ~125s ceiling lives (OpenCode Go
+  gateway config, tunable? vs a hard limit).
+
+Recommendation: **ES.6.A** as the real fix + **ES.6.B** as the
+resilience net.
 
 ---
 
