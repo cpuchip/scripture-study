@@ -1,7 +1,7 @@
 ---
 name: substrate-ES-emergency-stop
 title: "ES — Emergency Stop: critical-failure findings, code trace, and remediation plan"
-status: ES.1 + ES.3(s1-s4) COMPLETE + verified. ES.4 first run 2026-05-15 — judge path verified live (1 call on a 430K fetch); pipeline failed downstream on a transient provider HTTP 500. ES.5 follow-ups RATIFIED 2026-05-15 (4 items) — build-ready. Soak PAUSED.
+status: ES.1 + ES.3(s1-s4) + ES.5(s1-s3) COMPLETE + verified. ES.4 first run 2026-05-15 — judge path verified live (1 call on a 430K fetch); pipeline failed downstream on a transient provider HTTP 500. ES.5.s1-s3 SHIPPED 2026-05-15 (fs_search ctx fix, PDF/Office extraction via tabula, consult_subagent granted live); s4 is policy. Soak PAUSED.
 created: 2026-05-15
 trigger: 2026-05-14/15 bacteriopolis fix-bundle retry — runaway DeepSeek churn, bgworker crash loop, ~$20-70 in wasted contextualizer tokens
 debug_workflow: .claude/agents/debug.md (Agans' 9 rules)
@@ -383,6 +383,15 @@ returns raw PDF binary (no text extraction), and `fs-read/fs_search` hit
 context-deadline timeouts.
 
 ### ES.5 — Post-verification follow-ups (RATIFIED 2026-05-15)
+
+**s1-s3 SHIPPED + verified 2026-05-15** (`4a3aa7c`, `028faf7`, `3f7203d`).
+s1: fs_search now honors ctx (the real cause — a leaked goroutine past
+the bridge deadline, not unbounded traversal) + skips dependency dirs;
+live-verified `count:5` clean. s2: fetch_url extracts PDF/Office docs
+via pure-Go tabula (MIT); live-verified a real PDF returned extracted
+text, not `%PDF` binary. s3: consult_subagent granted to all 16
+pipeline agents — `tool_permission` resolver confirms `allow`. s4 is a
+policy (judge tool tiers — defer with triggers), no build.
 
 Four items, ratified by user vote after the ES.4 run.
 
