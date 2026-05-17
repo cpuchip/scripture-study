@@ -3,11 +3,14 @@
 package main
 
 import (
+	"bytes"
 	"context"
 	"fmt"
 	"io"
 	"net/http"
 	"net/url"
+	"os"
+	"path"
 	"strings"
 	"sync"
 	"time"
@@ -15,6 +18,7 @@ import (
 	htmltomarkdown "github.com/JohannesKaufmann/html-to-markdown/v2"
 	readability "github.com/go-shiori/go-readability"
 	"github.com/modelcontextprotocol/go-sdk/mcp"
+	"github.com/tsawler/tabula"
 	"golang.org/x/net/html"
 )
 
@@ -94,6 +98,17 @@ func makeFetchURL(cfg *fetchConfig) func(context.Context, *mcp.CallToolRequest, 
 			bodyStr, finalURL, err = fetchURLJS(ctx, cfg, in.URL, in.WaitMS)
 		} else {
 			b, fu, e := httpGet(ctx, cfg, in.URL)
+			// ES.5.s2: a non-HTML document (PDF, docx, …) gets extracted
+			// to markdown via tabula instead of mangled through the HTML
+			// readability path.
+			if e == nil {
+				if md, isDoc, derr := extractIfDocument(b, fu); isDoc {
+					if derr != nil {
+						return toolError("document extraction failed for %s: %v", fu, derr), fetchURLOutput{}, nil
+					}
+					return nil, buildDocOutput(fu, md, in.MaxChars), nil
+				}
+			}
 			bodyStr, finalURL, err = string(b), fu, e
 		}
 		if err != nil {
@@ -180,6 +195,21 @@ func makeFetchURLs(cfg *fetchConfig) func(context.Context, *mcp.CallToolRequest,
 					bodyStr, finalURL, err = fetchURLJS(ctx, cfg, target, in.WaitMS)
 				} else {
 					b, fu, e := httpGet(ctx, cfg, target)
+					// ES.5.s2: extract non-HTML documents via tabula.
+					if e == nil {
+						if md, isDoc, derr := extractIfDocument(b, fu); isDoc {
+							if derr != nil {
+								results[idx] = fetchURLsOneResult{URL: fu, Error: fmt.Sprintf("document extraction: %v", derr)}
+								return
+							}
+							d := buildDocOutput(fu, md, in.MaxChars)
+							results[idx] = fetchURLsOneResult{
+								URL: d.URL, Title: d.Title, Markdown: d.Markdown,
+								WordCount: d.WordCount, Truncated: d.Truncated,
+							}
+							return
+						}
+					}
 					bodyStr, finalURL, err = string(b), fu, e
 				}
 				if err != nil {
@@ -487,6 +517,85 @@ func httpGetWithStatus(ctx context.Context, cfg *fetchConfig, target string) ([]
 
 func countWords(s string) int {
 	return len(strings.Fields(s))
+}
+
+// ---------------------------------------------------------------------
+// document extraction (ES.5.s2) — PDF / Office / EPUB via tabula
+// ---------------------------------------------------------------------
+
+// docExtensions are the non-HTML document types tabula extracts.
+var docExtensions = map[string]bool{
+	".pdf": true, ".docx": true, ".xlsx": true,
+	".pptx": true, ".odt": true, ".epub": true,
+}
+
+// detectDocExt returns a tabula file extension when the fetched body is
+// a non-HTML document, or "" to use the HTML readability path. PDF is
+// detected by magic bytes — robust regardless of URL or content-type
+// (the ES.4 run fetched a PDF whose body began with "%PDF"). The
+// zip-family formats (docx/xlsx/…) share the same magic bytes, so they
+// are detected by URL extension instead.
+func detectDocExt(body []byte, fetchURL string) string {
+	if bytes.HasPrefix(body, []byte("%PDF")) {
+		return ".pdf"
+	}
+	if u, err := url.Parse(fetchURL); err == nil {
+		ext := strings.ToLower(path.Ext(u.Path))
+		if docExtensions[ext] {
+			return ext
+		}
+	}
+	return ""
+}
+
+// extractIfDocument extracts markdown when body is a non-HTML document.
+// isDoc=false means "treat as HTML" — the caller falls through to the
+// readability path. tabula's API is path-based, so the fetched bytes
+// are written to a temp file (named with the detected extension so
+// tabula auto-detects the format).
+func extractIfDocument(body []byte, fetchURL string) (md string, isDoc bool, err error) {
+	ext := detectDocExt(body, fetchURL)
+	if ext == "" {
+		return "", false, nil
+	}
+	tmp, err := os.CreateTemp("", "fetchmd-*"+ext)
+	if err != nil {
+		return "", true, fmt.Errorf("temp file: %w", err)
+	}
+	defer os.Remove(tmp.Name())
+	if _, err := tmp.Write(body); err != nil {
+		tmp.Close()
+		return "", true, fmt.Errorf("write temp: %w", err)
+	}
+	tmp.Close()
+
+	out, _, err := tabula.Open(tmp.Name()).ToMarkdown()
+	if err != nil {
+		return "", true, fmt.Errorf("tabula extract %s: %w", ext, err)
+	}
+	return out, true, nil
+}
+
+// buildDocOutput assembles a fetchURLOutput from extracted document
+// markdown. Title is the URL basename — documents carry no <title>.
+func buildDocOutput(finalURL, md string, maxChars int) fetchURLOutput {
+	truncated := false
+	if maxChars > 0 && len(md) > maxChars {
+		md = md[:maxChars] + "\n\n[…truncated]"
+		truncated = true
+	}
+	title := ""
+	if u, err := url.Parse(finalURL); err == nil {
+		title = path.Base(u.Path)
+	}
+	return fetchURLOutput{
+		URL:         finalURL,
+		Title:       title,
+		Markdown:    md,
+		WordCount:   countWords(md),
+		Truncated:   truncated,
+		FetchedAtMs: time.Now().UnixMilli(),
+	}
 }
 
 func toolError(format string, args ...any) *mcp.CallToolResult {

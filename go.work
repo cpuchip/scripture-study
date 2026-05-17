@@ -21,8 +21,8 @@ use (
 	./scripts/publish
 	./scripts/search-mcp
 	./scripts/session-journal
-	./scripts/study-export
 	./scripts/stewards-ui
+	./scripts/study-export
 	./scripts/webster-mcp
 	./scripts/yt-mcp
 )
