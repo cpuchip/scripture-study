@@ -1752,17 +1752,23 @@ fn chat(provider_name: &str, payload: &serde_json::Value) -> Result<WorkOutcome,
         .get("tools_disabled")
         .and_then(|v| v.as_bool())
         .unwrap_or(false);
-    let body_owned;
-    let body: &serde_json::Value = if tools_disabled {
+    // ES.6: always clone the body — strip tools if disabled, and set
+    // stream:true. A non-streaming request sends no bytes during
+    // generation, so a proxy in front of OpenCode Zen kills the idle
+    // connection at ~125s (HTTP 500). Streaming keeps tokens flowing —
+    // the connection never idles. Empirically confirmed 2026-05-15:
+    // non-streaming 500 at 125.2s, streaming 200 at 185.8s.
+    let body_owned = {
         let mut b = body_orig.clone();
         if let serde_json::Value::Object(ref mut m) = b {
-            m.remove("tools");
+            if tools_disabled {
+                m.remove("tools");
+            }
+            m.insert("stream".to_string(), serde_json::Value::Bool(true));
         }
-        body_owned = b;
-        &body_owned
-    } else {
-        body_orig
+        b
     };
+    let body: &serde_json::Value = &body_owned;
 
     let url = format!(
         "{}/chat/completions",
@@ -1800,9 +1806,12 @@ fn chat(provider_name: &str, payload: &serde_json::Value) -> Result<WorkOutcome,
         return Err(format!("chat HTTP {}: {}", status, resp_body));
     }
 
-    let parsed: serde_json::Value = resp
-        .json()
-        .map_err(|e| format!("decode chat response: {}", e))?;
+    // ES.6: the request streams (stream:true). Parse the SSE event
+    // stream and reassemble it into the standard non-streaming response
+    // shape, so every downstream extraction below — and the SQL apply
+    // handlers that re-parse result.response — are unchanged.
+    let parsed: serde_json::Value = parse_chat_sse(resp)
+        .map_err(|e| format!("decode chat SSE stream: {}", e))?;
 
     // Standard OpenAI shape: { choices: [{ message: { role, content,
     // tool_calls? }, finish_reason }], usage: { prompt_tokens,
@@ -1904,4 +1913,169 @@ fn chat(provider_name: &str, payload: &serde_json::Value) -> Result<WorkOutcome,
         cache_creation_tokens,
         cache_read_tokens,
     })
+}
+
+// ES.6: a streamed tool_call, accumulated across SSE delta chunks.
+// OpenAI streaming sends a tool_call's id + function.name once, then
+// streams function.arguments as fragments — all keyed by `index`.
+#[derive(Default)]
+struct ToolCallAccum {
+    id: String,
+    name: String,
+    arguments: String,
+}
+
+/// Parse an OpenAI-compatible SSE chat-completion stream and reassemble
+/// it into the standard NON-streaming response object:
+///   { choices: [{ message: {role, content, tool_calls?,
+///                           reasoning_content?}, finish_reason }],
+///     usage: {...}, model: ... }
+/// so callers (and the SQL apply handlers reading result.response) see
+/// the same shape they did before ES.6. `[DONE]` ends the stream;
+/// an `error` event aborts with Err.
+fn parse_chat_sse(resp: reqwest::blocking::Response) -> Result<serde_json::Value, String> {
+    use std::io::BufRead;
+
+    let reader = std::io::BufReader::new(resp);
+    let mut content = String::new();
+    let mut reasoning = String::new();
+    let mut role = String::from("assistant");
+    let mut finish_reason: Option<String> = None;
+    let mut model: Option<String> = None;
+    let mut usage: Option<serde_json::Value> = None;
+    let mut tool_calls: Vec<ToolCallAccum> = Vec::new();
+
+    for line in reader.lines() {
+        let line = line.map_err(|e| format!("sse read: {}", e))?;
+        let line = line.trim_end();
+        if line.is_empty() {
+            continue;
+        }
+        // SSE: only `data:` fields carry payload; ignore event:/id:/comments.
+        let data = match line.strip_prefix("data:") {
+            Some(d) => d.trim(),
+            None => continue,
+        };
+        if data == "[DONE]" {
+            break;
+        }
+        let chunk: serde_json::Value = match serde_json::from_str(data) {
+            Ok(v) => v,
+            Err(_) => continue, // tolerate a stray non-JSON line
+        };
+        if let Some(err) = chunk.get("error") {
+            if !err.is_null() {
+                return Err(format!("sse error event: {}", err));
+            }
+        }
+        if model.is_none() {
+            if let Some(m) = chunk.get("model").and_then(|v| v.as_str()) {
+                model = Some(m.to_string());
+            }
+        }
+        if let Some(u) = chunk.get("usage") {
+            if !u.is_null() {
+                usage = Some(u.clone());
+            }
+        }
+        let choice0 = match chunk
+            .get("choices")
+            .and_then(|c| c.as_array())
+            .and_then(|a| a.first())
+        {
+            Some(c) => c,
+            None => continue, // usage-only / cost-only tail chunk
+        };
+        if let Some(fr) = choice0.get("finish_reason").and_then(|v| v.as_str()) {
+            finish_reason = Some(fr.to_string());
+        }
+        let delta = match choice0.get("delta") {
+            Some(d) => d,
+            None => continue,
+        };
+        if let Some(r) = delta.get("role").and_then(|v| v.as_str()) {
+            if !r.is_empty() {
+                role = r.to_string();
+            }
+        }
+        if let Some(c) = delta.get("content").and_then(|v| v.as_str()) {
+            content.push_str(c);
+        }
+        // reasoning streams as `reasoning_content` (Moonshot/Zen) or
+        // `reasoning` (OpenRouter) — coalesce both.
+        if let Some(rc) = delta.get("reasoning_content").and_then(|v| v.as_str()) {
+            reasoning.push_str(rc);
+        } else if let Some(rc) = delta.get("reasoning").and_then(|v| v.as_str()) {
+            reasoning.push_str(rc);
+        }
+        if let Some(tcs) = delta.get("tool_calls").and_then(|v| v.as_array()) {
+            for tc in tcs {
+                let idx = tc.get("index").and_then(|v| v.as_u64()).unwrap_or(0) as usize;
+                while tool_calls.len() <= idx {
+                    tool_calls.push(ToolCallAccum::default());
+                }
+                let acc = &mut tool_calls[idx];
+                if let Some(id) = tc.get("id").and_then(|v| v.as_str()) {
+                    if !id.is_empty() {
+                        acc.id = id.to_string();
+                    }
+                }
+                if let Some(f) = tc.get("function") {
+                    if let Some(n) = f.get("name").and_then(|v| v.as_str()) {
+                        if !n.is_empty() {
+                            acc.name.push_str(n);
+                        }
+                    }
+                    if let Some(a) = f.get("arguments").and_then(|v| v.as_str()) {
+                        acc.arguments.push_str(a);
+                    }
+                }
+            }
+        }
+    }
+
+    // Reassemble the non-streaming message object.
+    let mut message = serde_json::Map::new();
+    message.insert("role".to_string(), serde_json::Value::String(role));
+    if content.is_empty() && !tool_calls.is_empty() {
+        // tool-call-only turn: OpenAI uses null content here.
+        message.insert("content".to_string(), serde_json::Value::Null);
+    } else {
+        message.insert("content".to_string(), serde_json::Value::String(content));
+    }
+    if !tool_calls.is_empty() {
+        let arr: Vec<serde_json::Value> = tool_calls
+            .iter()
+            .map(|tc| {
+                serde_json::json!({
+                    "id": tc.id,
+                    "type": "function",
+                    "function": { "name": tc.name, "arguments": tc.arguments }
+                })
+            })
+            .collect();
+        message.insert("tool_calls".to_string(), serde_json::Value::Array(arr));
+    }
+    if !reasoning.is_empty() {
+        message.insert(
+            "reasoning_content".to_string(),
+            serde_json::Value::String(reasoning),
+        );
+    }
+
+    let mut resp_obj = serde_json::json!({
+        "object": "chat.completion",
+        "choices": [ {
+            "index": 0,
+            "message": serde_json::Value::Object(message),
+            "finish_reason": finish_reason,
+        } ],
+    });
+    if let Some(m) = model {
+        resp_obj["model"] = serde_json::Value::String(m);
+    }
+    if let Some(u) = usage {
+        resp_obj["usage"] = u;
+    }
+    Ok(resp_obj)
 }
