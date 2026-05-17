@@ -1,7 +1,7 @@
 ---
 name: substrate-ES-emergency-stop
 title: "ES — Emergency Stop: critical-failure findings, code trace, and remediation plan"
-status: ES.1 + ES.3(s1-s4) + ES.5(s1-s3) COMPLETE + verified. ES.4 first run 2026-05-15 — judge path verified live (1 call on a 430K fetch); pipeline failed downstream on a transient provider HTTP 500. ES.5.s1-s3 SHIPPED 2026-05-15 (fs_search ctx fix, PDF/Office extraction via tabula, consult_subagent granted live); s4 is policy. ES.4 re-run failed again at `review` — hard-diagnosed: qwen3.6-plus review generation exceeds a ~125s gateway timeout (pre-existing pipeline design, not ES.3/ES.5). ES.6 fix DRAFTED — needs ratification. Soak PAUSED.
+status: ES.1 + ES.3(s1-s4) + ES.5(s1-s3) COMPLETE + verified. ES.4 first run 2026-05-15 — judge path verified live (1 call on a 430K fetch); pipeline failed downstream on a transient provider HTTP 500. ES.5.s1-s3 SHIPPED 2026-05-15 (fs_search ctx fix, PDF/Office extraction via tabula, consult_subagent granted live); s4 is policy. ES.4 re-run failed at `review` — root cause CONFIRMED by empirical test: a ~125s OpenCode-Zen idle-timeout kills non-streaming long generations; streaming survives (200 at 185s). ES.6 fix = switch bgworker chat dispatch to streaming SSE — needs ratification. Soak PAUSED.
 created: 2026-05-15
 trigger: 2026-05-14/15 bacteriopolis fix-bundle retry — runaway DeepSeek churn, bgworker crash loop, ~$20-70 in wasted contextualizer tokens
 debug_workflow: .claude/agents/debug.md (Agans' 9 rules)
@@ -489,8 +489,43 @@ and why it generates long enough to hit the gateway timeout.
 - **Investigate** — confirm where the ~125s ceiling lives (OpenCode Go
   gateway config, tunable? vs a hard limit).
 
-Recommendation: **ES.6.A** as the real fix + **ES.6.B** as the
-resilience net.
+#### ES.6 — RESEARCH RESULT (2026-05-15): streaming is the root fix
+
+Empirical test against `opencode_go` (`https://opencode.ai/zen/go/v1`),
+a Winogradsky long-generation prompt on qwen3.6-plus — Agans Rule 9:
+
+- **Non-streaming** → HTTP 500 at **125.2s** — the failure reproduced
+  exactly.
+- **Streaming** (`"stream": true`) → HTTP 200 at **185.8s**, clean
+  `[DONE]`, 10,256 completion tokens. Ran 60s PAST the non-streaming
+  death point and completed.
+
+The ~125s ceiling is an **idle-timeout**: a non-streaming request sends
+no bytes during generation, so a proxy in front of OpenCode Zen kills
+the idle connection at ~125s. A streaming request keeps tokens flowing
+— the connection never idles and survives arbitrarily long.
+
+OpenCode docs document none of this — confirmed against Go, Server,
+Network, Troubleshooting, Zen. The substrate's own chat HTTP timeout is
+600s (`STEWARDS_CHAT_TIMEOUT_SECONDS`) — not the cause.
+
+**Revised plan — streaming chat dispatch IS the fix.** `bgworker.rs`
+currently POSTs non-streaming and parses `resp.json()`. ES.6 switches
+the chat dispatch to send `"stream": true` and parse the SSE stream:
+accumulate `delta.content` + `delta.reasoning_content`, assemble
+streamed `tool_calls` deltas by index, capture the final `usage` (and
+the OpenCode `cost` event), stop at `[DONE]`. Hot-path bgworker change
++ a `docker compose build pg` rebuild; the tool_calls-delta assembly is
+the part that needs care.
+
+It fixes the timeout **substrate-wide** — review, synthesize, AND the
+ES.3 judge (a judge on a near-1M-token document is the same long-
+generation risk). It may also finally populate `cost_usd` via the
+OpenCode `cost` event.
+
+ES.6.A (verdict-only review) and ES.6.B (failover) **demote to
+optional** — streaming removes their urgency. A stays a worthwhile
+design cleanup; B stays useful general resilience. Both → carry-forward.
 
 ---
 
