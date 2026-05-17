@@ -325,9 +325,13 @@ unattended; resuming is Michael's call (ES.4 territory).
   `DROP TABLE messages_raw_overflow_leaves`; remove `contextualize_leaf`,
   the leaf path of `chunk_and_index`, and `retrieve_with_merge`. One
   migration, gated behind a smoke confirming the judge path works first.
-- **ES.3.s5 — (optional) model-name normalization.** Canonical mapping for
-  kimi-k2.6's three gateway identifiers. The judge is a new spend path;
-  clean cost attribution matters. Low-priority — may slip to carry-forward.
+- **ES.3.s5 — gateway upstream-cost capture. SHIPPED 2026-05-17
+  (`b82c9c4`).** Originally specced as model-name normalization. A code
+  trace before building corrected the premise — see the section below;
+  normalization was dropped and the genuinely valuable half built
+  instead: `chat()` extracts `usage.cost_details.upstream_inference_cost`
+  into `cost_events.upstream_micro_dollars`, the gateway's real measured
+  cost beside the rate×token estimate.
 
 #### Kept (not dropped)
 
@@ -549,15 +553,32 @@ consult grant) → ES.6 (streaming). Soak RESUMED.
 
 ---
 
-## Model-name normalization (new, low priority)
+## Model-name normalization — investigated and DROPPED (2026-05-17)
 
-The smoke test surfaced that kimi-k2.6 is reported under three gateway
-identifiers — `kimi-k2.6`, `accounts/fireworks/models/kimi-k2p6`,
-`moonshotai/kimi-k2.6-20260420` — and the gather stage failed over
-between Fireworks and Moonshot routes mid-stage. Same logical model;
-not a bug. But cost attribution is split three ways and the L.1.1.15
-substitution detector can't see gateway-route changes. A canonical
-model-name mapping would fix both. ES.3-era cleanup, not urgent.
+kimi-k2.6 is reported under three gateway identifiers — `kimi-k2.6`,
+`accounts/fireworks/models/kimi-k2p6`, `moonshotai/kimi-k2.6-20260420`.
+ES.3.s5 was originally specced to normalize them, on the belief it
+would fix cost attribution and substitution detection.
+
+**A code trace before building proved that belief wrong on every
+count:**
+- **Cost** — `cost_events` records `requested_model` (canonical), not
+  the gateway response model. `bgworker.rs` even comments it explicitly.
+  Not split three ways.
+- **Substitution (`l29`)** — the detector fires at chat *enqueue* time,
+  comparing the pipeline-stage's declared model against
+  `requested_model` — both canonical. The gateway response model never
+  enters it.
+- **Trust** — `trust_scores` is keyed on model, but `trust_record_*`
+  receives the model from work-item actor metadata (pipeline-declared,
+  canonical), not the response.
+
+The three names land in exactly one place: `messages.model`, a stored
+audit/display field. Normalizing it is cosmetic. So normalization was
+**dropped** — and ES.3.s5 became the gateway upstream-cost capture
+instead (see the ES.3.s5 sub-phase above). Lesson: trace the consumers
+before specifying a fix; the substrate's authors had already
+canonicalized at every functional point.
 
 ## Carry-forward / open questions
 
