@@ -1,7 +1,7 @@
 ---
 name: substrate-ES-emergency-stop
 title: "ES — Emergency Stop: critical-failure findings, code trace, and remediation plan"
-status: ES.1 COMPLETE + verified. ES.3 s1-s4 SHIPPED + verified 2026-05-15 (real judge call confirmed); s5 deferred; soak PAUSED pending Michael's resume. ES.4 (full bacteriopolis re-run) pending.
+status: ES.1 + ES.3(s1-s4) COMPLETE + verified. ES.4 first run 2026-05-15 — judge path verified live (1 call on a 430K fetch); pipeline failed downstream on a transient provider HTTP 500. ES.5 follow-ups RATIFIED 2026-05-15 (4 items) — build-ready. Soak PAUSED.
 created: 2026-05-15
 trigger: 2026-05-14/15 bacteriopolis fix-bundle retry — runaway DeepSeek churn, bgworker crash loop, ~$20-70 in wasted contextualizer tokens
 debug_workflow: .claude/agents/debug.md (Agans' 9 rules)
@@ -364,6 +364,79 @@ unattended; resuming is Michael's call (ES.4 territory).
 - Agans Rule 9 (inverse hypothesis): reproduce the original runaway
   conditions — oversized fetch on a cancelled work_item — confirm no leaf
   explosion, guardrails hold, judge path engages instead.
+
+#### ES.4 result (2026-05-15 — first run)
+
+Dispatched a fresh research-write work_item with the bacteriopolis
+binding question, $2.00 cap. **The judge path is verified in a live
+pipeline.** A `fetch_url` returned a 430,824-char document → exactly ONE
+judge call (the old leaf path would have fired hundreds). The judge
+returned a clean `state: empty` verdict — the fetch was a raw `%PDF`
+binary blob; the judge correctly recognized unreadable content and cast
+it away. The parent resumed; the pipeline advanced context_gather →
+synthesize → review (maturity raw → researched → planned). Cost $0.41.
+
+The run then FAILED at the review stage — `chat HTTP 500 Internal
+Server Error`, a transient upstream provider failure unrelated to ES.3.
+The judge path itself: clean. Two side-findings drove ES.5 — `fetch_url`
+returns raw PDF binary (no text extraction), and `fs-read/fs_search` hit
+context-deadline timeouts.
+
+### ES.5 — Post-verification follow-ups (RATIFIED 2026-05-15)
+
+Four items, ratified by user vote after the ES.4 run.
+
+| # | Decision | Outcome |
+|---|---|---|
+| 1 | fs_search timeout | Scope the search (exclude gospel-library, .git, node_modules, target) + raise the call timeout for search-class tools. Root cause is unbounded traversal, not just time. |
+| 2 | Document extraction | fetch-md-mcp detects non-HTML documents and extracts text. Pure-Go via `github.com/tsawler/tabula` (RAG-designed; PDF + DOCX/XLSX/PPTX/ODT/HTML/EPUB; `.ToMarkdown()`; no CGo). PDF ships first; the other formats come nearly free. |
+| 3 | consult_subagent grant | Grant to ALL pipeline agents — any pipeline agent may re-engage a sub-agent. |
+| 4 | Judge tool tiers | Defer with triggers. Brief judge stays Tier 1 (tool-less). |
+
+#### ES.5.s1 — fs_search scope + timeout
+
+`fs-read-mcp`'s `fs_search` traverses `/workspace` (the whole repo) and
+times out at the bridge's 60s call ceiling; the timeout invalidates the
+fs-read session, so the next call fails too. Fix: (a) exclude
+`gospel-library/`, `.git/`, `node_modules/`, `target/` from traversal;
+(b) raise the call timeout for search-class tools; (c) respawn cleanly
+on session invalidation rather than cascading failures.
+
+#### ES.5.s2 — Document extraction in fetch-md-mcp
+
+`fetch_url` returns raw `%PDF…FlateDecode` binary for PDF URLs. Fix:
+detect a non-HTML document (content-type / extension / magic bytes) and
+run it through `tabula` → markdown instead of returning raw bytes.
+Library: `github.com/tsawler/tabula` — pure Go, no CGo, built for RAG
+text extraction; covers PDF + DOCX + XLSX + PPTX + ODT + HTML + EPUB;
+emits `.ToMarkdown()` matching fetch-md's existing contract. Verify
+tabula's license before adoption (expected MIT-family); fallback is
+`github.com/razvandimescu/gopdf` (MIT, PDF-only) if tabula disappoints.
+Ship PDF detection first; the remaining formats are the same call.
+
+#### ES.5.s3 — Grant consult_subagent
+
+`agent_tool_perms` insert for every pipeline agent. consult_subagent
+becomes live — any pipeline agent can re-engage a persistent sub-agent
+(judge or spawned child) with a new question. This grant is also what
+generates the evidence for ES.5.s4's Tier-3 decision.
+
+#### ES.5.s4 — Judge tool tiers (policy — no build now)
+
+Three tiers: (1) **tool-less** — reason about what's in the prompt;
+(2) **document-bounded** — page in more of the SAME document (safe,
+finite, no external surface); (3) **outward** — fetch / search / verify
+external sources (needs the L.1.1.17 caps; becomes a spawn_subagent
+work_item). The brief operation wants Tier 1/2; the consult operation is
+where Tier 3 earns its place.
+
+Decision: the brief judge stays Tier 1. Two explicit revisit triggers:
+- **Tier 2 trigger** — a real document exceeds the judge's context
+  window (a >1M-token fetch). Until then, not built.
+- **Tier 3 trigger** — consult is granted (ES.5.s3) and a re-engaged
+  judge is observed hitting "I would need to look that up" walls. That
+  observation is the signal to make the consult-judge a tool-capable
+  spawn_subagent work_item — the originally-ratified judge design.
 
 ---
 
