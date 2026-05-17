@@ -28,6 +28,26 @@ func toolError(format string, args ...any) *mcp.CallToolResult {
 	}
 }
 
+// ES.5.s1: directories never worth walking — dependency caches, build
+// output, VCS metadata, the gospel-library corpus. The fs-read
+// allow-list already excludes these at the top level, but a nested
+// node_modules under an allowed root would otherwise be traversed.
+// Skipping them also keeps the walk fast on the slow 9P host mount.
+var excludedDirs = map[string]struct{}{
+	".git": {}, "node_modules": {}, "target": {}, "gospel-library": {},
+	"vendor": {}, "dist": {}, "build": {}, ".venv": {}, ".next": {},
+}
+
+func isExcludedDir(name string) bool {
+	_, ok := excludedDirs[name]
+	return ok
+}
+
+// maxFilesScanned bounds fs_search so a pathologically large allowed
+// tree can't run unbounded. A partial result with Truncated=true beats
+// a leaked goroutine past the bridge call-timeout.
+const maxFilesScanned = 5000
+
 func registerTools(srv *mcp.Server, sb *sandbox) {
 	mcp.AddTool(srv, &mcp.Tool{
 		Name: "fs_list",
@@ -109,7 +129,7 @@ func makeFsList(sb *sandbox) func(
 		// allowed-path roots (.spec/journal/*, .spec/proposals/*,
 		// .mind/*, docs/**) keeps the walk bounded by what the
 		// sandbox would have accepted anyway.
-		matches := walkAllowedFiltered(sb, clean, in.Limit*2)
+		matches := walkAllowedFiltered(ctx, sb, clean, in.Limit*2)
 		// Final dedupe + allow-list check is redundant given the walk
 		// scope, but kept as defense-in-depth.
 		filtered := make([]string, 0, len(matches))
@@ -235,8 +255,9 @@ type FsSearchHit struct {
 }
 
 type FsSearchOutput struct {
-	Matches []FsSearchHit `json:"matches"`
-	Count   int           `json:"count"`
+	Matches   []FsSearchHit `json:"matches"`
+	Count     int           `json:"count"`
+	Truncated bool          `json:"truncated,omitempty"` // ES.5.s1: hit the deadline or file cap; results are partial
 }
 
 func makeFsSearch(sb *sandbox) func(
@@ -272,12 +293,12 @@ func makeFsSearch(sb *sandbox) func(
 		var files []string
 		if in.PathGlob != "" {
 			pg := filepath.ToSlash(filepath.Clean(in.PathGlob))
-			files = filesMatchingGlob(sb, pg)
+			files = filesMatchingGlob(ctx, sb, pg)
 		} else {
 			// Walk all files under any allowed glob's prefix.
 			seen := make(map[string]struct{})
 			for _, g := range sb.allowedGlobs {
-				for _, f := range filesMatchingGlob(sb, g) {
+				for _, f := range filesMatchingGlob(ctx, sb, g) {
 					if _, ok := seen[f]; !ok {
 						seen[f] = struct{}{}
 						files = append(files, f)
@@ -288,8 +309,22 @@ func makeFsSearch(sb *sandbox) func(
 		sort.Strings(files)
 
 		var matches []FsSearchHit
+		truncated := false
+		filesScanned := 0
 	OUTER:
 		for _, rel := range files {
+			// ES.5.s1: honor the deadline — return partial results
+			// promptly rather than leaking past the bridge timeout
+			// (which invalidates the fs-read session).
+			if ctx.Err() != nil {
+				truncated = true
+				break
+			}
+			if filesScanned >= maxFilesScanned {
+				truncated = true
+				break
+			}
+			filesScanned++
 			abs := filepath.Join(sb.repoRoot, rel)
 			info, err := os.Stat(abs)
 			if err != nil || info.IsDir() {
@@ -308,6 +343,12 @@ func makeFsSearch(sb *sandbox) func(
 			lineNo := 0
 			for sc.Scan() {
 				lineNo++
+				// ES.5.s1: periodic deadline check inside a large file.
+				if lineNo%2000 == 0 && ctx.Err() != nil {
+					f.Close()
+					truncated = true
+					break OUTER
+				}
 				line := sc.Text()
 				if !re.MatchString(line) {
 					continue
@@ -329,7 +370,11 @@ func makeFsSearch(sb *sandbox) func(
 			f.Close()
 		}
 
-		return nil, FsSearchOutput{Matches: matches, Count: len(matches)}, nil
+		return nil, FsSearchOutput{
+			Matches:   matches,
+			Count:     len(matches),
+			Truncated: truncated,
+		}, nil
 	}
 }
 
@@ -345,14 +390,29 @@ func makeFsSearch(sb *sandbox) func(
 // that walk easily exceeds the bridge's 60s call-timeout.
 //
 // Pass an empty userGlob to match every file under the allow-list.
-func walkAllowedFiltered(sb *sandbox, userGlob string, softLimit int) []string {
+func walkAllowedFiltered(ctx context.Context, sb *sandbox, userGlob string, softLimit int) []string {
 	var out []string
 	seen := make(map[string]struct{})
 	for _, allowedGlob := range sb.allowedGlobs {
+		if ctx.Err() != nil {
+			break
+		}
 		walkRoot := globWalkRoot(sb.repoRoot, allowedGlob)
 		_ = filepath.WalkDir(walkRoot, func(path string, d fs.DirEntry, walkErr error) error {
-			if walkErr != nil || d.IsDir() {
+			if walkErr != nil {
 				return nil
+			}
+			if d.IsDir() {
+				// ES.5.s1: never descend into dependency/build/corpus dirs.
+				if isExcludedDir(d.Name()) {
+					return filepath.SkipDir
+				}
+				return nil
+			}
+			// ES.5.s1: honor the caller's deadline — abort the walk
+			// promptly instead of churning past the bridge timeout.
+			if ctx.Err() != nil {
+				return filepath.SkipAll
 			}
 			rel, err := filepath.Rel(sb.repoRoot, path)
 			if err != nil {
@@ -384,6 +444,6 @@ func walkAllowedFiltered(sb *sandbox, userGlob string, softLimit int) []string {
 
 // filesMatchingGlob is the legacy alias used by fs_search. Behavior
 // is identical to walkAllowedFiltered with no soft limit.
-func filesMatchingGlob(sb *sandbox, glob string) []string {
-	return walkAllowedFiltered(sb, glob, 0)
+func filesMatchingGlob(ctx context.Context, sb *sandbox, glob string) []string {
+	return walkAllowedFiltered(ctx, sb, glob, 0)
 }

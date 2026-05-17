@@ -56,7 +56,7 @@ func runBridgeRun(args []string) error {
 		"Postgres DSN (default: $STEWARDS_DSN, then localhost compose port 55433)")
 	workers := fs.Int("workers", 4, "Number of concurrent worker goroutines")
 	tickMs := fs.Int("tick-ms", 1000, "Poll interval safety net in ms (LISTEN is primary)")
-	callTimeoutSecs := fs.Int("call-timeout", 60, "Per-tool-call timeout in seconds")
+	callTimeoutSecs := fs.Int("call-timeout", 120, "Per-tool-call timeout in seconds (ES.5.s1: 60->120 headroom; fs_search returns partial results gracefully on deadline)")
 	if err := fs.Parse(args); err != nil {
 		return err
 	}
