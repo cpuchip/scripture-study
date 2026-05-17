@@ -45,6 +45,12 @@ pub(crate) enum WorkOutcome {
         // (cache_read ~10% of input rate) is applied accurately.
         cache_creation_tokens: Option<i32>,
         cache_read_tokens: Option<i32>,
+        // ES.3.s5 — gateway-reported upstream inference cost, in
+        // micro-dollars (usage.cost_details.upstream_inference_cost ×
+        // 1e6). The real measured cost from OpenCode Zen, alongside the
+        // substrate's own rate×token estimate. None when the gateway
+        // doesn't report it.
+        upstream_cost_micro: Option<i64>,
     },
     /// Result of executing one or more tool calls. Phase 3 inserts
     /// each (tool_call_id, content) as a `role='tool'` message and

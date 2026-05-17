@@ -776,6 +776,7 @@ fn process_one_pending() -> bool {
                     reasoning_tokens,
                     cache_creation_tokens,
                     cache_read_tokens,
+                    upstream_cost_micro,
                 }) => {
                     // Insert the assistant turn. tool_calls and the
                     // reasoning fields are stored verbatim so the
@@ -854,7 +855,7 @@ fn process_one_pending() -> bool {
                                     THEN (SELECT count(*)::int + 1 FROM stewards.cost_events WHERE session_id = $7) \
                                   ELSE (SELECT count(*)::int + 1 FROM stewards.cost_events WHERE work_item_id = $1::uuid) \
                                 END, \
-                                $2, $3, $4, $5, $6, $8, $7, $9)",
+                                $2, $3, $4, $5, $6, $8, $7, $9, $10)",
                             Some(1),
                             &[
                                 wi_opt.into(),
@@ -869,6 +870,8 @@ fn process_one_pending() -> bool {
                                     "work_id={} response_model={}",
                                     id, model
                                 ).into(),
+                                // ES.3.s5: gateway-reported upstream cost.
+                                (*upstream_cost_micro).into(),
                             ],
                         );
                         if let Err(e) = cost_result {
@@ -1896,6 +1899,17 @@ fn chat(provider_name: &str, payload: &serde_json::Value) -> Result<WorkOutcome,
         .and_then(|v| v.as_i64())
         .map(|v| v as i32);
 
+    // ES.3.s5 — gateway-reported upstream inference cost. OpenCode Zen
+    // streams usage.cost_details.upstream_inference_cost (float dollars)
+    // — the real cost the upstream provider charged. The top-level
+    // `cost` field is 0 (subscription billing), so this detail is the
+    // meaningful measured number. Convert to micro-dollars.
+    let upstream_cost_micro = usage
+        .and_then(|u| u.get("cost_details"))
+        .and_then(|d| d.get("upstream_inference_cost"))
+        .and_then(|v| v.as_f64())
+        .map(|c| (c * 1_000_000.0).round() as i64);
+
     Ok(WorkOutcome::Chatted {
         response: parsed,
         session_id,
@@ -1912,6 +1926,7 @@ fn chat(provider_name: &str, payload: &serde_json::Value) -> Result<WorkOutcome,
         reasoning_tokens,
         cache_creation_tokens,
         cache_read_tokens,
+        upstream_cost_micro,
     })
 }
 
