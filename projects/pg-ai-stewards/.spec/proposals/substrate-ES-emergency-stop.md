@@ -1,7 +1,7 @@
 ---
 name: substrate-ES-emergency-stop
 title: "ES — Emergency Stop: critical-failure findings, code trace, and remediation plan"
-status: ES.1 + ES.3(s1-s4) + ES.5(s1-s3) COMPLETE + verified. ES.4 first run 2026-05-15 — judge path verified live (1 call on a 430K fetch); pipeline failed downstream on a transient provider HTTP 500. ES.5.s1-s3 SHIPPED 2026-05-15 (fs_search ctx fix, PDF/Office extraction via tabula, consult_subagent granted live); s4 is policy. ES.4 re-run failed at `review` — root cause CONFIRMED by empirical test: a ~125s OpenCode-Zen idle-timeout kills non-streaming long generations; streaming survives (200 at 185s). ES.6 fix = switch bgworker chat dispatch to streaming SSE — needs ratification. Soak PAUSED.
+status: ES.1 + ES.3(s1-s4) + ES.5(s1-s3) COMPLETE + verified. ES.4 first run 2026-05-15 — judge path verified live (1 call on a 430K fetch); pipeline failed downstream on a transient provider HTTP 500. ES.5.s1-s3 SHIPPED 2026-05-15 (fs_search ctx fix, PDF/Office extraction via tabula, consult_subagent granted live); s4 is policy. ES.6 (streaming chat dispatch) SHIPPED + verified — ES.4 run-3 reached completed/verified at $0.33; the review stage that 500'd twice ran 169s and passed. The full ES arc (ES.1/ES.3/ES.4/ES.5/ES.6) is complete and verified. Soak RESUMED 2026-05-15.
 created: 2026-05-15
 trigger: 2026-05-14/15 bacteriopolis fix-bundle retry — runaway DeepSeek churn, bgworker crash loop, ~$20-70 in wasted contextualizer tokens
 debug_workflow: .claude/agents/debug.md (Agans' 9 rules)
@@ -526,6 +526,26 @@ OpenCode `cost` event.
 ES.6.A (verdict-only review) and ES.6.B (failover) **demote to
 optional** — streaming removes their urgency. A stays a worthwhile
 design cleanup; B stays useful general resilience. Both → carry-forward.
+
+#### ES.6 — SHIPPED + verified 2026-05-15 (`5ca7580`)
+
+`chat()` in `bgworker.rs` now sends `stream:true` and parses the SSE
+stream (`parse_chat_sse`), reassembling it into the standard
+non-streaming response shape so all downstream extraction is unchanged.
+tool_call deltas accumulate by index; content + reasoning concatenated;
+usage from the tail chunk.
+
+**ES.4 run-3 (the verification): completed / verified, $0.33.** gather
+(streaming tool-calls), synthesize, and the `review` stage all passed —
+the review chat ran **169s** (44s past the ceiling that 500'd runs 1
+and 2) and completed. Agans Rule 9 closed: failure reproduced (Test 1,
+500 at 125s), fixed (streaming), confirmed gone in a full live pipeline
+to verified. The bacteriopolis exhibit materialized to
+`research/es4-bacteriopolis-judge-verify-3.md`.
+
+The full ES arc is complete: ES.1 (bleed-stoppers) → ES.3 (judge-
+compiled-brief) → ES.4 (verified live) → ES.5 (fs_search, PDF extract,
+consult grant) → ES.6 (streaming). Soak RESUMED.
 
 ---
 
