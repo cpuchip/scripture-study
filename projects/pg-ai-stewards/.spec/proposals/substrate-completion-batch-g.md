@@ -1,7 +1,7 @@
 ---
 title: Substrate Completion (Batch G) — make the substrate land in real files
 date: 2026-05-11
-status: design sub-spec — ratified 2026-05-11, building
+status: SHIPPED 2026-05-11 (8 commits — see .spec/journal/2026-05-11-substrate-batch-g-shipped.md)
 parent: open-items.md (Sections I, II, III.1)
 purpose: >
   Close the gap between "Phases A–F shipped" and "first real Phase D + E + F

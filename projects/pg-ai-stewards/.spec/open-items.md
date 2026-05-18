@@ -14,15 +14,13 @@ purpose: >
 ## 0. Active proposal queue (refreshed 2026-05-17 — post-ES arc)
 
 The build queue is drained: every ratified batch through the ES emergency-stop
-arc has shipped. What remains is two un-ratified proposals, one new idea, and
-one stale proposal that needs a freshness check.
+arc has shipped. What remains is two un-ratified proposals and one new idea.
 
 | Proposal | Scope | Status |
 |---|---|---|
 | [`substrate-pipelines-expansion.md`](proposals/substrate-pipelines-expansion.md) | research + YouTube (gospel + secular) pipelines + scheduled-pipeline machinery | **needs ratification** — D-PE1 through D-PE7. Live council queue. |
 | [`stewards-ui-evolution.md`](proposals/stewards-ui-evolution.md) | intent/covenant authoring + substrate-aware chat + sidebar grouping + write actions | **needs ratification** — D-UI1 through D-UI12. Live council queue. |
 | [`substrate-scheduled-workflows.md`](proposals/substrate-scheduled-workflows.md) | cron-style scheduled jobs — periodic research (physics news → exhibits), autonomous YouTube AI-video review, public-playlist ingestion | **new idea 2026-05-17 — needs council.** Stub drafted; decisions (D-SW1–D-SW7) not yet walked. |
-| [`substrate-completion-batch-g.md`](proposals/substrate-completion-batch-g.md) | file_path fix + retry-pulls-lessons + quarantine-fires-atonement + file-write mechanism | **stale — freshness check needed.** Predates J/K/L/ES; items may be absorbed or overtaken. Re-verify against current schema before starting from it. |
 | [`substrate-deferred-items.md`](proposals/substrate-deferred-items.md) | catalog of "wait for signal" items (NOT a build proposal) | reference only |
 
 Master rule: **start a build session from one of those proposals, not from this document.** This document is the index.
@@ -37,6 +35,7 @@ Master rule: **start a build session from one of those proposals, not from this 
 | [`substrate-batch-k-engram-context.md`](proposals/substrate-batch-k-engram-context.md) | **shipped 2026-05-14** — engram-based context compaction (K.1–K.9). |
 | [`substrate-batch-j-fanout-brainstorm.md`](proposals/substrate-batch-j-fanout-brainstorm.md) | **shipped 2026-05-13** — fan-out + brainstorm + work-item hierarchy UI (J.1–J.5). |
 | [`substrate-batch-i-agent-write-back.md`](proposals/substrate-batch-i-agent-write-back.md) | **shipped 2026-05-12** — agent-proposal pipeline + HTTP endpoint + UI filter. |
+| [`substrate-completion-batch-g.md`](proposals/substrate-completion-batch-g.md) | **shipped 2026-05-11** (8 commits) — substrate lands in real files: `file_path` nullable, retry-pulls-lessons, quarantine-fires-atonement, `pending_file_writes` + `stewards-cli materialize-writes` + pre-commit hook. Journal: `2026-05-11-substrate-batch-g-shipped.md`. Micro-carry: `failure_count_limit` quarantine doesn't fire atonement (only cost-cap quarantine does). |
 
 Substrate is feature-complete through Phase F as of 2026-05-11. This document collects every unfinished item the substrate work has surfaced — cleanups, bugs, validation gaps, and future evolution paths — so the next session has a single inventory to pick from rather than re-deriving the queue from journal archaeology.
 
