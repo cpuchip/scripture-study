@@ -11,17 +11,29 @@ purpose: >
 
 # pg-ai-stewards open items
 
-## 0. Active proposal queue (refreshed 2026-05-17 — post-ES arc)
+## 0. Active proposal queue (refreshed 2026-05-18 — council order set)
 
 The build queue is drained: every ratified batch through the ES emergency-stop
-arc has shipped. What remains is two un-ratified proposals and one new idea.
+arc has shipped. What remains is two un-ratified proposals and one new idea —
+to be councilled in the order Michael set on 2026-05-18 (① → ② → ③ below).
 
-| Proposal | Scope | Status |
-|---|---|---|
-| [`substrate-pipelines-expansion.md`](proposals/substrate-pipelines-expansion.md) | research + YouTube (gospel + secular) pipelines + scheduled-pipeline machinery | **needs ratification** — D-PE1 through D-PE7. Live council queue. |
-| [`stewards-ui-evolution.md`](proposals/stewards-ui-evolution.md) | intent/covenant authoring + substrate-aware chat + sidebar grouping + write actions | **needs ratification** — D-UI1 through D-UI12. Live council queue. |
-| [`substrate-scheduled-workflows.md`](proposals/substrate-scheduled-workflows.md) | cron-style scheduled jobs — periodic research (physics news → exhibits), autonomous YouTube AI-video review, public-playlist ingestion | **new idea 2026-05-17 — needs council.** Stub drafted; decisions (D-SW1–D-SW7) not yet walked. |
-| [`substrate-deferred-items.md`](proposals/substrate-deferred-items.md) | catalog of "wait for signal" items (NOT a build proposal) | reference only |
+| # | Proposal | Scope | Status |
+|---|---|---|---|
+| ① | [`substrate-pipelines-expansion.md`](proposals/substrate-pipelines-expansion.md) | research + YouTube (gospel + secular) pipelines + scheduled-pipeline machinery | **council FIRST** — D-PE1 through D-PE7. |
+| ② | [`substrate-scheduled-workflows.md`](proposals/substrate-scheduled-workflows.md) | cron-style scheduled jobs — periodic research (physics news → exhibits), autonomous YouTube AI-video review, public-playlist ingestion | **council SECOND** — new idea 2026-05-17. Stub drafted; D-SW1–D-SW7 not yet walked. Inherits PE's scheduled-pipeline machinery. |
+| ③ | [`stewards-ui-evolution.md`](proposals/stewards-ui-evolution.md) | intent/covenant authoring + substrate-aware chat + sidebar grouping + write actions | **council THIRD** — D-UI1 through D-UI12 (largest set). |
+| — | [`substrate-deferred-items.md`](proposals/substrate-deferred-items.md) | catalog of "wait for signal" items (NOT a build proposal) | reference only |
+
+**Directional lens (Michael, 2026-05-18):** the substrate is moving toward
+**hybrid work-together modes** — a workspace human and agent co-manage, not a
+fire-and-forget autonomous engine. Carry that into all three councils;
+`stewards-ui-evolution` (especially substrate-aware chat + write actions) is
+load-bearing for it, not polish.
+
+**Soak status:** the 7-day soak (Batch K / §X.3) self-validated 2026-05-15→18
+— the cpuchip.net detour was the no-build window it always needed. One
+watchman pass/day, ~5 docs, inside budget, zero pass errors. §X.3 now has its
+longitudinal data; cadence holds steady. Soak still RUNNING.
 
 Master rule: **start a build session from one of those proposals, not from this document.** This document is the index.
 
