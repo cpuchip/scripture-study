@@ -14,7 +14,7 @@
 
 ## Priorities
 
-1. ★ **[WS6] Study** — "It keeps me in the spirit." Latest: [broken-heart-and-contrite-spirit.md](../study/broken-heart-and-contrite-spirit.md) (May 1, fourth in arc: art-of-presidency + art-of-delegation + zion-in-a-presidency + broken-heart). Next: TBD → [study-workstream.md](../.spec/proposals/study-workstream.md)
+1. ★ **[WS6] Study** — "It keeps me in the spirit." Latest: [last-supper-four-cups.md](../study/last-supper-four-cups.md) (May 17 — Passover ↔ the Lord's Supper, the four cups, the bitter cup begun in Gethsemane and finished on the cross). Prior presidency arc: art-of-presidency → art-of-delegation → zion-in-a-presidency → broken-heart-and-contrite-spirit. Next: TBD → [study-workstream.md](../.spec/proposals/study-workstream.md)
 2. ★ **[WS7] Teaching** — 11-episode arc (Option C). Agent + repo scaffolded. Content not started → [teaching-workstream.md](../.spec/proposals/teaching-workstream.md)
 3. **[WS5] Token efficiency** — Apr 16 proposal awaiting refresh review → [token-efficiency.md](../.spec/proposals/token-efficiency.md)
 4. **[WS2] Brain Inline Panel + Kanban 4c** — next active build → [brain-inline-panel.md](../.spec/proposals/brain-inline-panel.md) · [brain-project-kanban.md](../.spec/proposals/brain-project-kanban.md)
@@ -36,14 +36,10 @@
 
 | WS | Item | Status | Ref |
 |----|------|--------|-----|
-| WS2 | Brain status-aware-views ecosystem parity (ibeco.me + brain-app) | ✅ Phases 1+2 shipped Apr 23; Phase 3 verify post-deploy | [brain-status-aware-views-ecosystem-parity.md](../.spec/proposals/brain-status-aware-views-ecosystem-parity.md) |
-| WS2 | Brain non-pipeline kanban flow | ✅ archived Apr 23 (all phases shipped or scoped out) | [archive/brain-non-pipeline-kanban-flow.md](../.spec/proposals/archive/brain-non-pipeline-kanban-flow.md) |
 | WS2 | Brain Inline Panel + Nudge Bot Controls | ▶ P1 next | [brain-inline-panel.md](../.spec/proposals/brain-inline-panel.md) |
 | WS2 | Brain Project-Kanban Phase 4c | ▶ next | [brain-project-kanban.md](../.spec/proposals/brain-project-kanban.md) |
 | WS5 | Token Efficiency & Memory v2 | ⏸ awaiting refresh | [token-efficiency.md](../.spec/proposals/token-efficiency.md) |
-| WS5 | Brain ↔ VS Code Bridge | � building (Phase 0 shipped Apr 22) | [brain-vscode-bridge/main.md](../.spec/proposals/brain-vscode-bridge/main.md) |
-| WS2 | Brain non-pipeline projects | ✅ archived Apr 23 | [archive/brain-non-pipeline-projects.md](../.spec/proposals/archive/brain-non-pipeline-projects.md) |
-| WS2 | Brain manual stage transitions | ✅ archived Apr 23 | [archive/brain-manual-stage-transitions.md](../.spec/proposals/archive/brain-manual-stage-transitions.md) |
+| WS5 | Brain ↔ VS Code Bridge | 🔨 building (Phase 0 shipped Apr 22) | [brain-vscode-bridge/main.md](../.spec/proposals/brain-vscode-bridge/main.md) |
 | WS2 | Johari window agent mode | 📝 proposed Apr 22 | [johari-window-agent-mode.md](../.spec/proposals/johari-window-agent-mode.md) |
 | WS5 | pg-ai-stewards (Postgres substrate for agent state, memory, work, model calls) | ✅ **Phases A–F + Batches G–L.1.1 + ES arc shipped (through 2026-05-17).** The MCP bridge (Phase 3e — inbound `stewards-mcp` server + outbound bridge daemon) is the live tool surface, extended through the ES arc with streaming dispatch, the judge-compiled-brief, and `consult_subagent`. Soak running. Active queue: [`open-items.md`](../projects/pg-ai-stewards/.spec/open-items.md) §0. | [open-items.md](../projects/pg-ai-stewards/.spec/open-items.md) |
 | WS2 | Motivation coach agent mode | 📝 proposed Apr 22 | [motivation-coach-agent-mode.md](../.spec/proposals/motivation-coach-agent-mode.md) |
@@ -73,6 +69,10 @@
 
 | WS | Item | Shipped | Notes |
 |----|------|---------|-------|
+| WS5 | pg-ai-stewards — ES emergency-stop arc (ES.1/3/4/5/6/3.s5) | May 15–17 | Bacteriopolis runaway diagnosed + closed: bleed-stoppers, judge-compiled-brief, streaming chat dispatch, fs/PDF/consult follow-ups, gateway upstream-cost capture. ~95 commits, zero rollbacks; the substrate runs a research pipeline clean to a verified artifact (~$0.33). |
+| WS5 | pg-ai-stewards — Batches G/H/I/J/K/L/L.1.1 | May 11–14 | File-write mechanism (G), research/planning pipelines (H), agent write-back (I), fan-out + brainstorm (J), engram context compaction (K), Context Engine v2 + v2.1 Judges pattern (L/L.1.1). |
+| WS5 | pg-ai-stewards — Phases A–F (agentic creation cycle) | May 10–11 | Watch→Diagnose→Act→Account loop, maturity ladder + gates, intent/covenant, atonement/sabbath/consecration, trust ladder, multi-agent council. |
+| WS6 | Study — last-supper-four-cups | May 17 | Passover ↔ the Lord's Supper; the four cups; the bitter cup begun in Gethsemane, finished on the cross. |
 | WS2 | brain-steward-cost-discipline | Apr 23 | Three-defect fix: (1) commission `Model` no longer overrides every stage — `modelForStage` helper routes through `config.StageDefaults`; `c.Model` reserved for `EvaluateGate` only. (2) Verify hard-pinned to haiku regardless of catalog. (3) Revise loop capped at 2 → surface `loop_limit_exceeded`. `RevisionCount` field on Commission with DB migration; "Revised X/2" badge on EntryDetailView. Same fix applied to `commissionWaitForExecution` (the loop that actually burned 105 credits). Best-case opus commission ~25 credits (was ~52); worst case ~28-35 (was unbounded, hit 105). Followup Apr 23: research bumped haiku→sonnet per Michael ("stronger model researching is good") — chain still escalates from sonnet, just one fewer step before quarantine. |
 | WS2 | brain-model-catalog-sot | Apr 23 | Single source of truth at `internal/config/models.go`: `Catalog` slice + `StageDefaults` map. Two pre-existing drifted maps (`modelCosts`, `AvailableModels`) and `steward.EscalationChain` now derive from it. New `GET /api/models` endpoint; frontend composable + dynamic dropdowns in CommissionDialog and ProjectDetailView inline commission. Default is now Claude Opus 4.7 (7.5×) instead of stale Opus 4.6 (3.0×). Stewardship sweep: same-bug-same-fix on `feedbackDialog` and `executeDialog` modals (UA-stylesheet dark-theme bug from doneDialog fix earlier same day). Note: `/api/models` path collided with legacy LM Studio profiles handler — moved to `/api/models/profiles` (no consumers found). |
 | WS2 | brain non-pipeline kanban flow (Phases 1-3 + classify gate) | Apr 23 | Status vocab gained `working` (in-progress lane). `boardColumns` branches on `pipeline_enabled`: manual path uses literal status keys (active/working/done) instead of route-status pipeline. 5-button manual row (▶ Start / ✓ Done / ↩ Reopen / ⏸ Someday / 🗄 Archive) on board + list views. Optional reason dialog on ✓ Done appends a `_Closed YYYY-MM-DD: reason_` line to body. Native HTML5 drag-and-drop between columns (no library dep). Auto-classify gated for non-pipeline projects in relay client. Done-dialog theming fix (centered, larger, dark-theme textarea). `handleCreateEntry` now accepts `project_id` — single-call POST round-trips correctly. brain-app P4 mirror skipped per user direction (no Project surface). |
@@ -87,12 +87,8 @@
 | WS5 | cleanup-2026-04 + part2 (all phases) | Apr 21-22 | Spec dedup, 19 proposals archived, workstream taxonomy + frontmatter convention, active.md rewritten |
 | WS5 | Voice/bias harness v2 | Apr 21 | em-dash budget, three-beat pivot, refrains, stats cite-count |
 | WS3 | engine.ibeco.me Phase 1-3 | Apr 20 | Hosted gospel search. Token UI. First study used it |
-| WS1 | Commission UX Fixes | Apr 15 | Path mangling, link normalization (Space Center) |
-| WS1 | Orchestrator Steward P1-6 | Apr 10-11 | Retry, escalation, circuit breaker, quarantine, nudge, commission. 86 tests |
-| WS2 | Commission UI P1-3 | Apr 11 | Types/API, dialog, triggers, status panel, badge |
-| WS2 | Brain UX QoL P1-7b | Apr 6 | Textarea, markdown, file viewer, WebSocket push, cost tracking, git status, nested repos |
-| WS1 | Brain Pipeline Evolution P1-9 | Apr 6-7 | Governance, failure visibility, notebook mode, 3-col board, project-aware pipeline |
-| WS2 | Brain Project-Kanban P1-4b | Apr 4-5 | Projects, kanban, auto-assignment, AI push-back. **4c still in flight** |
+
+*Older items (Apr 4–15: Commission UX, Orchestrator Steward, Commission UI, Brain UX QoL, Brain Pipeline Evolution, Brain Project-Kanban P1–4b) rolled off the 30-day window — recorded in git history + `.spec/journal/`.*
 
 ---
 
