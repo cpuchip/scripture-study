@@ -551,6 +551,24 @@ The full ES arc is complete: ES.1 (bleed-stoppers) → ES.3 (judge-
 compiled-brief) → ES.4 (verified live) → ES.5 (fs_search, PDF extract,
 consult grant) → ES.6 (streaming). Soak RESUMED.
 
+#### ES.6.A / ES.6.B — ARCHIVED 2026-05-17
+
+Both were demoted to optional carry-forward when streaming shipped (the
+section above). Reviewed 2026-05-17 with the ES arc fully closed and the
+soak running clean — **archived, not carried forward.** Streaming removed
+their urgency entirely; building either now would be speculative work
+against a problem that no longer reproduces.
+
+- **ES.6.A — verdict-only review.** Revive only if a *review*-stage
+  generation timeout or cost spike reappears — the "passes" path
+  re-emitting the whole draft is the design smell it would fix. Design
+  notes preserved in the ES.6 DRAFT section above.
+- **ES.6.B — gateway-500 failover.** Revive only if gateway 500s recur
+  on a path that streaming does not already cover.
+
+Neither is in the active queue. If either area shows future trouble, the
+ES.6 DRAFT section above is the starting point.
+
 ---
 
 ## Model-name normalization — investigated and DROPPED (2026-05-17)

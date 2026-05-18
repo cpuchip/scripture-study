@@ -1,6 +1,6 @@
 ---
 title: pg-ai-stewards open items — navigation hub
-date: 2026-05-11 (consolidated into proposals; this is now a directory)
+date: 2026-05-17 (Section 0 refreshed post-ES arc; consolidated into proposals 2026-05-11)
 status: living document — update after each work session
 purpose: >
   Navigation hub for substrate work-in-progress. As of 2026-05-11
@@ -11,20 +11,32 @@ purpose: >
 
 # pg-ai-stewards open items
 
-## 0. Active proposal queue (2026-05-11 consolidation)
+## 0. Active proposal queue (refreshed 2026-05-17 — post-ES arc)
+
+The build queue is drained: every ratified batch through the ES emergency-stop
+arc has shipped. What remains is two un-ratified proposals, one new idea, and
+one stale proposal that needs a freshness check.
 
 | Proposal | Scope | Status |
 |---|---|---|
-| [`substrate-batch-l-context-engine-v2.md`](proposals/substrate-batch-l-context-engine-v2.md) | Context Engine v2 — graduated rendering + provider-aware + engram search + marked-important + re-extraction + 6 wrappers + injection L3 + bridge wrap + depth cap | **ratified 2026-05-14, build pending** (12 decisions; 12 pulses estimated; bacteriopolis full retry is L.1 verification target) |
-| [`substrate-batch-k-engram-context.md`](proposals/substrate-batch-k-engram-context.md) | engram-based context compaction + sub-agent delegation + injection defense; fixes the J.3 token-limit failure mode | **shipped 2026-05-14** (K.1-K.9; 5 of 6 J.3 exhibits verified; bacteriopolis case → Batch L territory) |
-| [`substrate-batch-j-fanout-brainstorm.md`](proposals/substrate-batch-j-fanout-brainstorm.md) | fan-out pipeline + brainstorm pipeline + lens library + work-item hierarchy UI + open-filter | **shipped 2026-05-13** (J.1-J.5 all complete; J.3 partial with substrate-level lesson driving Batch K) |
-| [`substrate-batch-i-agent-write-back.md`](proposals/substrate-batch-i-agent-write-back.md) | agent-proposal pipeline + HTTP endpoint + UI filter + schema-migration claude_attested gate | **shipped 2026-05-12** (I.1, I.2, I.3 + Phase A reaper) |
-| [`substrate-completion-batch-g.md`](proposals/substrate-completion-batch-g.md) | file_path fix + retry-pulls-lessons + quarantine-fires-atonement + file-write mechanism | **build-ready** (no new ratifications needed) |
-| [`substrate-pipelines-expansion.md`](proposals/substrate-pipelines-expansion.md) | research + YouTube (gospel + secular) + scheduled-pipeline machinery | **needs ratification** (D-PE1 through D-PE7) |
-| [`stewards-ui-evolution.md`](proposals/stewards-ui-evolution.md) | intent/covenant authoring + substrate-aware chat + sidebar grouping + write actions | **needs ratification** (D-UI1 through D-UI12) |
+| [`substrate-pipelines-expansion.md`](proposals/substrate-pipelines-expansion.md) | research + YouTube (gospel + secular) pipelines + scheduled-pipeline machinery | **needs ratification** — D-PE1 through D-PE7. Live council queue. |
+| [`stewards-ui-evolution.md`](proposals/stewards-ui-evolution.md) | intent/covenant authoring + substrate-aware chat + sidebar grouping + write actions | **needs ratification** — D-UI1 through D-UI12. Live council queue. |
+| [`substrate-scheduled-workflows.md`](proposals/substrate-scheduled-workflows.md) | cron-style scheduled jobs — periodic research (physics news → exhibits), autonomous YouTube AI-video review, public-playlist ingestion | **new idea 2026-05-17 — needs council.** Stub drafted; decisions (D-SW1–D-SW7) not yet walked. |
+| [`substrate-completion-batch-g.md`](proposals/substrate-completion-batch-g.md) | file_path fix + retry-pulls-lessons + quarantine-fires-atonement + file-write mechanism | **stale — freshness check needed.** Predates J/K/L/ES; items may be absorbed or overtaken. Re-verify against current schema before starting from it. |
 | [`substrate-deferred-items.md`](proposals/substrate-deferred-items.md) | catalog of "wait for signal" items (NOT a build proposal) | reference only |
 
 Master rule: **start a build session from one of those proposals, not from this document.** This document is the index.
+
+### Shipped / closed (no longer in the queue)
+
+| Proposal | Status |
+|---|---|
+| [`substrate-ES-emergency-stop.md`](proposals/substrate-ES-emergency-stop.md) | **CLOSED 2026-05-17.** ES.1/3/4/5/6/3.s5 — the bacteriopolis runaway worked through; the substrate now runs it clean to a verified artifact (~$0.33). ~95 commits, zero rollbacks. ES.6.A/B archived (revive only if those areas show future trouble). |
+| [`substrate-batch-l-1-1-context-engine-v2-1.md`](proposals/substrate-batch-l-1-1-context-engine-v2-1.md) | **closed 2026-05-14** — Context Engine v2.1; the Judges pattern. |
+| [`substrate-batch-l-context-engine-v2.md`](proposals/substrate-batch-l-context-engine-v2.md) | **shipped 2026-05-14** — Context Engine v2 (graduated rendering + provider-aware + engram search + 6 wrappers + depth cap). |
+| [`substrate-batch-k-engram-context.md`](proposals/substrate-batch-k-engram-context.md) | **shipped 2026-05-14** — engram-based context compaction (K.1–K.9). |
+| [`substrate-batch-j-fanout-brainstorm.md`](proposals/substrate-batch-j-fanout-brainstorm.md) | **shipped 2026-05-13** — fan-out + brainstorm + work-item hierarchy UI (J.1–J.5). |
+| [`substrate-batch-i-agent-write-back.md`](proposals/substrate-batch-i-agent-write-back.md) | **shipped 2026-05-12** — agent-proposal pipeline + HTTP endpoint + UI filter. |
 
 Substrate is feature-complete through Phase F as of 2026-05-11. This document collects every unfinished item the substrate work has surfaced — cleanups, bugs, validation gaps, and future evolution paths — so the next session has a single inventory to pick from rather than re-deriving the queue from journal archaeology.
 
