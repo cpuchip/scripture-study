@@ -36,6 +36,7 @@
 
 | WS | Item | Status | Ref |
 |----|------|--------|-----|
+| WS7 | cpuchip.net — personal site revival (AI + Gospel) | 🔨 revival arc shipped — deploy, LCARS visual arc, scripture-panel component. Own repo + own `.mind`/`.spec`/`CLAUDE.md`. Next: republish two studies. | [projects/cpuchip.net/.mind/active.md](../projects/cpuchip.net/.mind/active.md) |
 | WS2 | Brain Inline Panel + Nudge Bot Controls | ▶ P1 next | [brain-inline-panel.md](../.spec/proposals/brain-inline-panel.md) |
 | WS2 | Brain Project-Kanban Phase 4c | ▶ next | [brain-project-kanban.md](../.spec/proposals/brain-project-kanban.md) |
 | WS5 | Token Efficiency & Memory v2 | ⏸ awaiting refresh | [token-efficiency.md](../.spec/proposals/token-efficiency.md) |
