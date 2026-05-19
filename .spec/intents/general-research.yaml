@@ -3,14 +3,17 @@
 #   - H.1 research-write pipeline
 #   - H.2 yt-secular pipeline (non-gospel YouTube digest)
 #
+# PE.1 update (2026-05-19): D-PE2' chose reuse over creating a separate
+# 'professional-awareness' intent. This intent now also covers the new
+# research-summary (daily-digest) and yt-secular-digest pipelines, with
+# two YT-aware values appended below. The rule-of-three Rust parser
+# refactor stays deferred since no third intent is being introduced.
+#
 # Note (2026-05-11): the Rust parser at extension/src/yaml.rs hardcodes
 # slug="scripture-study" and reads the old (values: + constraints:) shape.
 # This file is documented in the new (values_hierarchy: array) shape; it
 # is currently NOT consumed by the pre-commit reseed loop. The substrate
 # row is seeded directly via SQL in extension/h1-1-general-research-intent.sql.
-# When H.3 introduces professional-awareness (third new intent), rule of
-# three triggers the Rust parser refactor to honor slug + the new shape;
-# this YAML becomes the live source then.
 
 slug: general-research
 
@@ -50,6 +53,20 @@ values_hierarchy:
     description: >
       Where claims appear in multiple independent sources, say so. Where
       they appear in only one, say so explicitly.
+
+  - key: separate-claim-from-charisma
+    description: >
+      A confident or polished presentation is independent of whether
+      the claim is right. Evaluate the argument, not the delivery.
+      Especially relevant for video sources where rhetorical skill and
+      substantive truth can diverge.
+
+  - key: surface-the-rhetoric
+    description: >
+      Name the rhetorical pattern a video or article uses (contrarian
+      framing, urgency, "what they don't tell you", appeal to insider
+      status) so that pattern doesn't substitute for evidence. Restate
+      the actual claim plainly before evaluating it.
 
 non_goals:
   - Doctrinal claims (those go through scripture-study)

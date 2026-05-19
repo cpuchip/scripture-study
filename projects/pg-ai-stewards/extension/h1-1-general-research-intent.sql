@@ -16,6 +16,12 @@
 -- explicitly NULL classifies this intent as low-stakes per the
 -- 2026-05-11 §VI amendment for D-F2: master-tier agents can bishop
 -- councils convened on a general-research intent.
+--
+-- PE.1 update (2026-05-19): D-PE2' ratified reuse of general-research
+-- as the home for both research-summary and yt-secular-digest pipelines,
+-- with two YT-aware values appended (separate-claim-from-charisma,
+-- surface-the-rhetoric). The "rule of three" Rust parser refactor stays
+-- deferred since no third intent is being introduced.
 -- =====================================================================
 
 INSERT INTO stewards.intents (
@@ -53,6 +59,14 @@ VALUES (
         jsonb_build_object(
             'key', 'cross-reference',
             'description', 'Where claims appear in multiple independent sources, say so. Where they appear in only one, say so explicitly.'
+        ),
+        jsonb_build_object(
+            'key', 'separate-claim-from-charisma',
+            'description', 'A confident or polished presentation is independent of whether the claim is right. Evaluate the argument, not the delivery. Especially relevant for video sources where rhetorical skill and substantive truth can diverge.'
+        ),
+        jsonb_build_object(
+            'key', 'surface-the-rhetoric',
+            'description', 'Name the rhetorical pattern a video or article uses (contrarian framing, urgency, "what they don''t tell you", appeal to insider status) so that pattern doesn''t substitute for evidence. Restate the actual claim plainly before evaluating it.'
         )
     ),
     ARRAY[
@@ -63,7 +77,7 @@ VALUES (
     ],
     NULL,  -- scripture_anchor: explicitly NULL → low-stakes per D-F2
     '.spec/intents/general-research.yaml',
-    encode(sha256('h1-1-seed-2026-05-11'::bytea), 'hex'),  -- placeholder sha; Rust parser will compute real sha on H.3 refactor
+    encode(sha256('h1-1-seed-2026-05-19-pe1-yt-aware-values'::bytea), 'hex'),  -- placeholder sha; bumped on PE.1 update. Rust parser will compute real sha on H.3 refactor.
     now()
 )
 ON CONFLICT (slug) DO UPDATE SET
