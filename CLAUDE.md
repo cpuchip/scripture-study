@@ -53,7 +53,9 @@ When a translated agent does not yet exist for a workflow, fall back to followin
 
 ### Skills
 
-`.claude/skills/*` are **symlinks** to `.github/skills/*` (Windows symbolic links — Developer Mode required). Editing either side updates both. Exception: `playwright-cli` is not symlinked because the Claude-Code-shipped version differs from the Copilot version — both are kept independently.
+`.claude/skills/*` and `.github/skills/*` are **independent copies — not symlinks.** They are kept as real files on purpose: Claude Code and Copilot have diverging needs, and a skill is allowed to drift between the two trees as those needs pull on it. A shared skill starts identical in both and may diverge over time; some skills live in only one tree (`council-moment`, `intent-check`, `pgrx-extension-bump`, `sabbath-close` are Claude-Code-only; `playwright-cli` differs deliberately between the two).
+
+When creating or substantially editing a skill both harnesses use, write it to **both** `.github/skills/<name>/SKILL.md` and `.claude/skills/<name>/SKILL.md`. When the change is Claude-Code-specific, edit only the `.claude/` copy and let it drift.
 
 ### Slash commands (Copilot prompts)
 
