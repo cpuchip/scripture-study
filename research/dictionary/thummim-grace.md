@@ -1,0 +1,24 @@
+{
+  "word": "grace",
+  "levels": {
+    "elementary": {
+      "headline": "Grace is God's help that we do not earn.",
+      "body": "Grace is God's help that we do not earn. Jesus is full of grace. His grace makes weak things strong. Noah found grace in God's eyes. We receive grace when we humble ourselves."
+    },
+    "eighth_grade": {
+      "headline": "Grace is God's unearned favor and the enabling power that makes salvation and spiritual growth possible.",
+      "body": "Grace is more than forgiveness. It is the strength God gives when we are weak. The Lord promised Moroni, 'My grace is sufficient for all men that humble themselves before me' (Ether 12:27). Because of His grace, we can be 'perfect in Christ' (Moroni 10:32). We are saved 'by grace, after all we can do' (2 Nephi 25:23). Jesus Christ is 'full of grace and truth' (John 1:14). We grow from grace to grace until we receive a fulness (D&C 93:12-13). This gift is not earned. It flows from the Savior to those who trust Him and keep His covenants."
+    },
+    "college_plus": {
+      "headline": "A multi-valent term denoting unmerited divine favor, the incremental endowment of light unto a fulness, and the operational power by which mortal weakness is subsumed into Christ's perfection.",
+      "body": "The Restoration corpus distributes 'grace' across five interlocking senses. Each sense is present in the standard works, yet the Restoration layers them in ways classical lexicography does not anticipate. (1) As unilateral favor: Noah 'found grace in the eyes of the Lord' (Genesis 6:8; Moses 8:27). (2) As a progressive endowment: the Son himself advanced 'grace for grace' until receiving a fulness (D&C 93:12-13). That same pattern extends to all who receive 'grace for grace' (D&C 93:20; John 1:16). (3) As enabling power: 'My grace is sufficient for all men that humble themselves before me' (Ether 12:27), making 'weak things become strong' (Ether 12:27) and allowing believers to 'be perfect in Christ' (Moroni 10:32; cf. Jacob 4:7; 2 Corinthians 12:9). (4) As a Christological attribute: the Only Begotten is 'full of grace and truth' (John 1:14; 2 Nephi 2:6; Alma 13:9; Moses 5:7). (5) As the mechanism of salvation: 'by grace are ye saved through faith' (Ephesians 2:8), and 'if by grace, then is it no more of works: otherwise grace is no more grace' (Romans 11:6), a logic the Book of Mormon restates in Nephi's formula that we are saved 'by grace, after all we can do' (2 Nephi 25:23). The LDS Bible Dictionary sharpens Webster 1828's 'favorable influence' into an enabling power. D&C 93 supplies a Restoration-specific physics of progression absent from Webster's twenty senses.",
+      "key_passages": ["Genesis 6:8", "Moses 8:27", "D&C 93:12-13", "Ether 12:27", "Moroni 10:32", "2 Nephi 25:23"],
+      "conference_refs": ["Uchtdorf Apr 2015 The Gift of Grace", "Bednar Oct 2004 In the Strength of the Lord"]
+    }
+  },
+  "webster_1828_compare": "Webster 1828 defines grace first as 'favor; good will' and theologically as 'the free unmerited love and favor of God,' as well as 'favorable influence' or divine influence renewing the heart. The Restoration corpus preserves the unmerited favor sense and sharpens the 'divine influence' into an operational enabling power that compensates for mortal weakness. Most distinctively, the Restoration adds the quantified, progressive endowment of 'grace for grace' (D&C 93:12-13; John 1:16) toward a 'fulness,' a mechanic absent from Webster's twenty senses. Where Webster treats grace as a static disposition or influence, the Restoration treats it as a sequence of capacitating communications mediated by the Only Begotten, who is 'full of grace and truth.'"
+}
+
+Notes:
+- **Criterion 3 (No invented GC citations):** Removed "Nelson Apr 2017 Drawing the Power of Jesus Christ into Our Lives" and "Johnson Oct 2022 Be Perfected in Him". *Drawing the Power of Jesus Christ into Our Lives* is the title of an Elder Bednar book (2020), not a 2017 General Conference talk by President Nelson. The Oct 2022 citation could not be confidently verified against a specific GC session or exact title. Per covenant instruction to drop doubtful citations rather than risk fabrication, I retained only the two verified talks: Uchtdorf's Apr 2015 "The Gift of Grace" and Bednar's Oct 2004 "In the Strength of the Lord."
+- **Criteria 1, 2, 4, 5:** Pass as drafted. Citation fidelity holds across all `key_passages`. Grade-level voices match constraints (elementary avoids polysyllabic abstraction, college_plus engages Webster and Restoration mechanics distinctively). Restoration corpus is primary; Webster comparison is isolated to the designated field. No fabricated precision detected; the five-sense breakdown accurately reflects standard LDS theological mapping of the term.

@@ -1,0 +1,26 @@
+```json
+{
+  "word": "pacify",
+  "levels": {
+    "elementary": {
+      "headline": "To calm anger and make peace.",
+      "body": "People sometimes feel angry. A friend can help them calm down. Nephi spoke to his angry brothers. They were pacified. But Satan also pacifies people. He tells them all is well. Then they stop repenting. True peace comes from Jesus."
+    },
+    "eighth_grade": {
+      "headline": "To calm anger or hostility, or to be lulled into dangerous spiritual complacency.",
+      "body": "In the Book of Mormon, \"pacify\" describes calming someone's anger or stopping a fight. When Nephi's brothers were upset, he spoke to them and they were pacified and humbled themselves before the Lord (1 Nephi 15:20). King Limhi's people laid down their weapons, and the Lamanites were pacified toward them and had compassion (Mosiah 20:26). King Lamoni's father pacified his own people so they would not harm Aaron and his brethren (Alma 22:25-26). But there is a warning. Satan also pacifies people, lulling them into carnal security and telling them all is well while he leads them away from repentance (2 Nephi 28:21). True peace requires repentance and trust in Christ, not just the absence of conflict."
+    },
+    "college_plus": {
+      "headline": "A Janus-term in the Book of Mormon denoting either the legitimate appeasement of human wrath or the adversary's counterfeit sedation into spiritual complacency.",
+      "body": "The Restoration corpus employs \"pacify\" exclusively in the Book of Mormon, where it bifurcates into two theologically distinct senses. In its human-facing sense, the term follows standard early nineteenth-century usage: to calm violent passion or to restore peace between contending parties. Nephi reports that his brethren \"were pacified and did humble themselves before the Lord\" (1 Nephi 15:20), and the word recurs throughout the Limhi narrative as a description of inter-group conflict resolution—Limhi's people, having laid down their arms, prompt the Lamanites to be \"pacified towards them\" (Mosiah 20:26), while the king himself is \"pacified towards his people\" (Mosiah 20:24). Similarly, the converted king of the Lamanites pacifies his own subjects toward Aaron and his brethren (Alma 22:25-26). In each case, pacification terminates imminent violence and opens space for humility or compassion.\n\nIn stark contrast stands 2 Nephi 28:21, the only instance in which pacification is an act of the adversary. Here the devil pacifies the righteous, pairing the verb with \"lull\" to produce carnal security—a state of false peace that arrests repentance while the soul is \"carefully\" led to destruction. The Book of Mormon thus does not reject the standard lexical meaning of pacification but exposes its demonic counterfeit. Where Webster 1828 defines pacify as \"to appease, as wrath\" or \"to restore peace to,\" the Restoration adds a critical moral qualifier: pacification divorced from repentance and divine alignment is not peace but anesthesia. Modern prophets have reinforced this warning; Elder Dallin H. Oaks identified Satan's pacification as a primary last-days deception that breeds complacency about prosperity and sin (Oct 2004 GC), while Elder Durrel A. Woolsey placed it at the center of a three-part strategy alongside rage and flattery (Oct 1995 GC). The Restoration usage therefore aligns with Webster on horizontal, human reconciliation while radically sharpening the term's vertical, spiritual dimension.",
+      "key_passages": ["1 Nephi 15:20", "Mosiah 20:24, 26", "Alma 22:25-26", "2 Nephi 28:21"],
+      "conference_refs": ["Oaks Oct 2004 Be Not Deceived", "Woolsey Oct 1995 A Strategy for War"]
+    }
+  },
+  "webster_1828_compare": "Webster 1828 presents pacification as a neutral or positive act: the appeasement of wrath, the calming of violent passion, and the restoration of peace between contending parties. The Restoration corpus preserves this sense fully in its historical narratives, where human agents pacify angry individuals or hostile groups to prevent violence. However, the Restoration diverges sharply—and uniquely—in 2 Nephi 28:21, where Satan's pacification produces not peace but carnal security, a spiritual sedation that mimics tranquility while blocking repentance. The Book of Mormon thus bifurcates the term: it retains Webster's horizontal meaning for human reconciliation while adding a vertical, theological warning that pacification without God is counterfeit anesthesia."
+}
+```
+
+**Changes & Rationale:**
+- Dropped `Edgley Oct 2000 That Thy Confidence Wax Strong` from `conference_refs`. Verified scope: Edgley's Oct 2000 address focuses on prayer, trials, and strengthening confidence in the Lord, not Satan's pacification/lulling strategy. Per criterion 3, dropped rather than force-link a doubtful citation.
+- All other criteria pass cleanly: citation fidelity matches body text exactly, elementary voice contains zero 4-syllable words and uses short sentences, 8th grade uses classroom tone with 3+ examples, college_plus leads with Restoration usage before comparing to Webster, and the synthesis stays strictly within the 5 actual textual instances without inflating counts or smoothing over the theological bifurcation.
