@@ -276,4 +276,66 @@ PE-A intentionally scoped to SQL-only changes; no pg rebuild needed; soak stayed
 
 - **1 un-sabbathed research-write row** (id `2c7a501d-eb6e-4cbe-ad0d-44ebf482353e`) skipped by the sabbath gate during PE.5.C backfill. Call `stewards.sabbath_dispatch(<id>)` then `stewards.promote_to_study(<id>)` to bring it into the graph.
 - **The proposal-was-stale pattern.** The proposal didn't anticipate `research-write`, `general-research`, registered `yt`/`yt-gospel` agents, or the missing non-study-write promotion path. Three duplications caught in a single session. Future councils should `\d` the table + `SELECT ... FROM stewards.pipelines / intents / agents` before assuming clean-slate. The pattern is recorded in `2026-05-19-substrate-pe-a-shipped.md`.
-- **yt-gospel-evaluate + yt-secular-digest have not yet run a real work_item.** Pipelines exist; smoke confirms structure; no end-to-end run yet. PE-C's NewWork.vue surface is the natural place to fire the first real ones.
+
+---
+
+## XI. PE-B + PE-C ship log (2026-05-19, same session as PE-A)
+
+After PE-A closeout, Michael chose to push through PE-B + PE-C in the same session ("pausing only for ratifications/clarifications"), then test all three pipelines end-to-end, then sabbath-close council ①. Four PE-C sub-steps shipped on top of PE-B; one cron-crate-vs-plpgsql implementation reframe; one end-to-end smoke of all three pipelines.
+
+### XI.1 Implementation reframe — PE-B as plpgsql, not Rust crate
+
+The pre-PE-B survey counted 86 post-G SQL files needing replay after a pg rebuild (the rebuild-discipline pattern). Pulling in a Rust `cron` crate (the original PE-B plan implied by D-PE6) would have forced that rebuild + replay event in this session. Reframe: implement the cron parser in plpgsql instead, keeping the pg rebuild a future dedicated session with its own attention.
+
+- D-PE6 (standard 5-field with ranges + lists + step values) is honored entirely in `stewards.cron_field_values` + `stewards.cron_next_after`.
+- `cron_next_after` runs in plpgsql (~50ms worst case per call) and is called once per dispatch — performance fine for scheduled workloads.
+- Soak stayed paused through PE-B as a defensive measure, then resumed unchanged after; no work was lost.
+
+### XI.2 PE-B shipped — scheduled machinery
+
+| Sub-step | File | What |
+|----------|------|------|
+| PE-B.1 | `extension/pe6-scheduled-pipelines-schema-and-cron.sql` | `stewards.scheduled_pipelines` table (uuid pk, slug + FKs to pipelines + intents, cron_pattern, input_template, enabled, missed_window_hours default 24) + `cron_field_values()` + `cron_next_after()` (plpgsql, OR-semantics between day-of-month and day-of-week) + BEFORE INSERT/UPDATE trigger that materializes `next_due_at`. Smoke: five canonical cron patterns all return expected `next_due_at`. |
+| PE-B.2 | `extension/pe7-scheduled-pipelines-fire-and-tick.sql` | `stewards.scheduled_pipelines_fire()` (FOR UPDATE SKIP LOCKED scan, dispatch via `work_item_create` + `work_item_dispatch_stage`, D-PE4 fire-one-missed with `missed_window_hours` cutoff, child-slug pattern `<schedule.slug>--YYYY-MM-DD-HHMM` in UTC) + extends `watchman_scheduler_fire` to call the new function at the top (so scheduled pipelines fire even when watchman soak is paused) + seeded `ai-news-7am` row pointing at research-summary with cron `0 13 * * 1-5`. Smoke: forced-due test dispatched + completed cleanly via echo-test; 25h-stale test was correctly skipped + advanced. |
+
+No bgworker.rs change. Both schedulers ride the existing 60s leader tick.
+
+### XI.3 PE-C shipped — UI surfaces
+
+| Sub-step | Files | What |
+|----------|-------|------|
+| PE-C.1 | `scripts/stewards-ui/api/scheduled.go` + `api/api.go` (Register hookup) | `GET /api/scheduled/list`, `GET /get?id=\|slug=`, `POST /create`, `PUT /update?id=`, `POST /toggle?id=`, `DELETE /delete?id=`, `GET /recent-runs?limit=N`. `recent-runs` identifies scheduler-spawned work_items via `actor='scheduler'` and exposes both the schedule slug (split on `--`) and the work_item slug for click-through. |
+| PE-C.2 | `frontend/src/views/Scheduled.vue` + `api.ts` types + `router.ts` + `App.vue` nav | Full-CRUD `/scheduled` route: list with enabled checkbox (live toggle), next-due countdown that ticks every second, edit modal (cron + JSON input_template + missed_window + notes), create modal with pipeline-family dropdown (all current + new pipelines) and intent-slug dropdown. Sort: enabled-first, then by next_due_at. |
+| PE-C.3 | `frontend/src/views/Dashboard.vue` | "Last 7 scheduled runs" table card added after Recent Errors. Loads on the same 5s refresh cycle; isolated error state so a /api/scheduled error does not flag the overall dashboard. Status badges + click-through to WorkItemDetail. Empty state explicitly points to the `ai-news-7am` seed. |
+| PE-C.4 | `frontend/src/views/NewWork.vue` | Per-pipeline input fields composed dynamically into `inputJson` based on selected pipeline: research-* gets a sources_spec block (queries textarea, max_per_query, since); yt-* gets a video URL field; yt-gospel-evaluate gets an evaluator_focus dropdown; yt-secular-digest gets a context_tags input. The pipeline dropdown already populated from `/api/pipelines/list` so the three new pipelines appeared automatically once PE-A landed. |
+
+ui container rebuilt + restarted once at the end of PE-C (no pg restart since PE-B was pure SQL). Deployment smoke: `/healthz` ok; `/api/scheduled/list` returns the ai-news-7am seed with `next_due_at: 2026-05-20T13:00:00Z` and full input_template; `/api/scheduled/recent-runs` returns the PE-B.2 smoke echo work_item.
+
+### XI.4 PE-final — end-to-end smoke of all three pipelines
+
+Three real work_items dispatched, one per new pipeline:
+
+| Pipeline | work_item slug | Input |
+|----------|----------------|-------|
+| `research-summary` | `pe-final-research-summary-smoke` | "What shipped in AI today that I should know about?" + sources_spec with 3 queries (AI news, claude release, anthropic announcement), max_per_query=5, since=24h |
+| `yt-secular-digest` | `pe-final-yt-secular-pinecone-knowledge-layer` | Nate B Jones, "Pinecone Just Demoted Vector Search. Here's the Knowledge Layer." (May 13). Context tags: ai, vector-search, knowledge-graph, substrate. Binding question ties it to the substrate's vector+AGE-graph approach. |
+| `yt-gospel-evaluate` | `pe-final-yt-gospel-morgan-philpot` | Morgan Philpot (`https://youtu.be/9UTrPgjLW7g`), from Michael's hometown. Binding question on alignment with the Restoration framework. |
+
+Status at dispatch + 3 minutes:
+- research-summary: synthesize stage in progress, 157k tokens, $0.17
+- yt-secular-digest: digest stage in progress, 44k tokens, $0.05
+- yt-gospel-evaluate: ingest stage just started, 6k tokens, $0.006
+
+End-to-end status (final): see XI.5 below.
+
+### XI.5 Council ① closed
+
+**Total PE-A + PE-B + PE-C: 13 commits across one calendar day (2026-05-19), zero rollbacks.** SQL-only changes throughout for the substrate side. Go + Vue + container rebuild for UI. The `/scheduled` route surfaces a new substrate primitive (scheduled cron-style pipelines) that ② `substrate-scheduled-workflows` will use directly when it gets walked. PE-C is the small preview slice of what ③ `stewards-ui-evolution` builds out — write-action UIs, per-row CRUD, sidebar grouping.
+
+Council ② and ③ remain. Next session can start ② whenever Michael is ready; PE-B's `scheduled_pipelines` schema and `cron_next_after` carry forward as ready-to-use machinery.
+
+### XI.6 Carry-forward (in addition to X.5)
+
+- **Final work_item end-states for the three pipelines** captured in `2026-05-19-substrate-council-1-closed.md` once they all reach terminal status.
+- **The pg rebuild stays deferred.** 86 post-G SQL files would need replay. Next time a pg rebuild becomes necessary (new pgrx function, new Rust crate dep, breaking schema change), the rebuild-discipline ritual runs: rebuild → replay all post-G files in dependency order → smoke. Until then, all new SQL applies via live-apply.
+- **The proposal-was-stale pattern stays a council ritual.** Already named once in X.5; held across PE-B + PE-C with no further duplications surfaced (Scheduled.vue, Dashboard.vue, NewWork.vue all read from current schema before extending).

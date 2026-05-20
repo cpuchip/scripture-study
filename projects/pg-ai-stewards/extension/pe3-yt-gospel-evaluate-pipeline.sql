@@ -21,7 +21,8 @@
 
 INSERT INTO stewards.pipelines (
     family, stages, sabbath_enabled, atonement_enabled,
-    file_destination_template, file_content_jsonpath, maturity_ladder
+    file_destination_template, file_content_jsonpath, maturity_ladder,
+    auto_materialize_on_verified
 )
 VALUES (
     'yt-gospel-evaluate',
@@ -103,15 +104,21 @@ VALUES (
     true,   -- atonement_enabled (cost-cap on doctrinal eval is worth atoning over)
     'study/yt/gospel/<slug>.md',
     NULL,   -- file_content_jsonpath: v1 uses whole stage output
-    '["raw","researched","planned","specced","executing","verified"]'::jsonb
+    '["raw","researched","planned","specced","executing","verified"]'::jsonb,
+    true    -- auto_materialize_on_verified: PE-final fix 2026-05-19. Required for
+            -- on_maturity_verified to render file_destination AND fire promote_to_study
+            -- (the PE.5 promotion path is wired inside the auto-materialize block).
+            -- Without this, sabbathed verified work_items reached terminal status but
+            -- never entered stewards.studies or the AGE graph.
 )
 ON CONFLICT (family) DO UPDATE SET
-    stages                    = EXCLUDED.stages,
-    sabbath_enabled           = EXCLUDED.sabbath_enabled,
-    atonement_enabled         = EXCLUDED.atonement_enabled,
-    file_destination_template = EXCLUDED.file_destination_template,
-    file_content_jsonpath     = EXCLUDED.file_content_jsonpath,
-    maturity_ladder           = EXCLUDED.maturity_ladder;
+    stages                       = EXCLUDED.stages,
+    sabbath_enabled              = EXCLUDED.sabbath_enabled,
+    atonement_enabled            = EXCLUDED.atonement_enabled,
+    file_destination_template    = EXCLUDED.file_destination_template,
+    file_content_jsonpath        = EXCLUDED.file_content_jsonpath,
+    maturity_ladder              = EXCLUDED.maturity_ladder,
+    auto_materialize_on_verified = EXCLUDED.auto_materialize_on_verified;
 
 -- Stage models (mirrors research-write's model assignments).
 INSERT INTO stewards.stage_models (pipeline_family, stage_name, default_model, notes) VALUES

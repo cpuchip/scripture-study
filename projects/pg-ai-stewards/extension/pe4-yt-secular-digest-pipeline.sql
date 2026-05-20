@@ -21,7 +21,8 @@
 
 INSERT INTO stewards.pipelines (
     family, stages, sabbath_enabled, atonement_enabled,
-    file_destination_template, file_content_jsonpath, maturity_ladder
+    file_destination_template, file_content_jsonpath, maturity_ladder,
+    auto_materialize_on_verified
 )
 VALUES (
     'yt-secular-digest',
@@ -109,15 +110,17 @@ VALUES (
     true,   -- atonement_enabled (cost-cap on substantive secular eval worth atoning over)
     'study/yt/<slug>.md',
     NULL,
-    '["raw","researched","planned","specced","executing","verified"]'::jsonb
+    '["raw","researched","planned","specced","executing","verified"]'::jsonb,
+    true    -- auto_materialize_on_verified: PE-final fix 2026-05-19. See pe3 comment.
 )
 ON CONFLICT (family) DO UPDATE SET
-    stages                    = EXCLUDED.stages,
-    sabbath_enabled           = EXCLUDED.sabbath_enabled,
-    atonement_enabled         = EXCLUDED.atonement_enabled,
-    file_destination_template = EXCLUDED.file_destination_template,
-    file_content_jsonpath     = EXCLUDED.file_content_jsonpath,
-    maturity_ladder           = EXCLUDED.maturity_ladder;
+    stages                       = EXCLUDED.stages,
+    sabbath_enabled              = EXCLUDED.sabbath_enabled,
+    atonement_enabled            = EXCLUDED.atonement_enabled,
+    file_destination_template    = EXCLUDED.file_destination_template,
+    file_content_jsonpath        = EXCLUDED.file_content_jsonpath,
+    maturity_ladder              = EXCLUDED.maturity_ladder,
+    auto_materialize_on_verified = EXCLUDED.auto_materialize_on_verified;
 
 INSERT INTO stewards.stage_models (pipeline_family, stage_name, default_model, notes) VALUES
     ('yt-secular-digest', 'ingest', 'kimi-k2.6',    'YouTube transcript + metadata enrichment via yt_download / yt_get. Tools enabled. Identical to yt-gospel-evaluate.ingest.'),
