@@ -1,0 +1,65 @@
+@import "tailwindcss";
+
+/* 1828 Illuminated — design system
+ *
+ * Visual: warm-paper background, ink-dark text, restraint and depth over flash.
+ * Headings: serif (matching a 19th-century book feel). Body: sans-serif.
+ * Highlighted words: subtle underline + soft amber background on hover; clicking
+ * pops a definition card. Aim: invitation, not noise.
+ */
+
+:root {
+  --paper: #faf6ec;
+  --paper-2: #f2ecdc;
+  --ink: #1c1917;
+  --ink-2: #44403c;
+  --amber: #d97706;
+  --amber-soft: #fef3c7;
+  --rule: #d6d3d1;
+}
+
+html, body, #app {
+  height: 100%;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+h1, h2, h3, h4 {
+  font-family: ui-serif, Georgia, "Times New Roman", serif;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+/* Highlighted word — used in verse-render and word-search */
+.highlight {
+  background-color: var(--amber-soft);
+  border-bottom: 1px dotted var(--amber);
+  cursor: pointer;
+  padding: 0 1px;
+  transition: background-color 0.15s ease;
+}
+.highlight:hover {
+  background-color: #fde68a;
+}
+.highlight-tier-A {
+  border-bottom-width: 2px;
+}
+
+/* The dictionary card */
+.def-card {
+  background: white;
+  border: 1px solid var(--rule);
+  box-shadow: 0 1px 0 rgba(0,0,0,0.04), 0 8px 24px -8px rgba(0,0,0,0.08);
+  border-radius: 8px;
+}
+
+/* Smooth focus rings */
+:focus-visible {
+  outline: 2px solid var(--amber);
+  outline-offset: 2px;
+  border-radius: 4px;
+}

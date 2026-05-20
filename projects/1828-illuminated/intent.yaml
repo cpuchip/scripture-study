@@ -1,0 +1,72 @@
+# 1828-illuminated — Intent
+#
+# Public-facing reading-frame tool. Render the standard works with the
+# 1828 Webster meaning frame applied, so readers SEE where modern English
+# has drifted from the language the Restoration scripture was given in.
+#
+# Created: 2026-05-20
+
+purpose: >
+  Make the 1828 Webster meaning frame accessible to anyone studying the
+  scriptures, without requiring them to look up every word manually.
+  Surface the meaning-shifts our own substrate study work has already
+  found, plus the broader candidate pool from a direct intersect of
+  the canonical vocabulary with the 1828 dictionary.
+
+values:
+  illuminate-not-encode:
+    description: "1828 illuminates — it doesn't decode a hidden meaning. The tool opens conversation, not forecloses it."
+    source: ".spec/proposals/1828-illuminated-scriptures.md §IV"
+
+  curate-over-flood:
+    description: "Highlighting every word with a 1828 entry would drown the reader. Curate which words matter — 1828 isn't always deeper."
+    source: ".spec/proposals/1828-illuminated-scriptures.md §IV"
+
+  respect-the-canon:
+    description: "Scripture text is not bundled — copyright. Iframe to churchofjesuschrist.org or accept user-provided text. We surface MEANING, not the verses themselves."
+    source: "projects/cpuchip.net/CLAUDE.md (the published convention)"
+
+  study-cross-reference:
+    description: "When a word is one our substrate has already lensed (truth.md for 'intelligence', priesthood-oath-and-covenant.md for 'obtain', etc.), link to that study from the hover-card. Highest-leverage feature."
+    source: "research/gospel/1828/00-FINAL-highlight-candidates.md"
+
+constraints:
+  no-scripture-text-bundled:
+    description: "Per cpuchip.net's convention. Scripture references go to churchofjesuschrist.org via iframe."
+    severity: critical
+
+  static-deploy-target:
+    description: "Deploy target 1828.ibeco.me. Multi-stage Docker build → nginx-alpine serving a Vue SPA. No backend in MVP."
+    severity: high
+
+  no-mcp-load-on-lm-studio:
+    description: "Per Michael's directive (2026-05-19). Gospel-engine-v2 backend uses local LM Studio; don't over-tax it. 1828 dictionary data is bundled at build time; modern definitions are pre-fetched."
+    severity: high
+
+success_criteria:
+  - "User can search a word and see 1828 + modern definitions side by side"
+  - "User can pick a demo verse (Michael's existing study examples) and see the 1828-lensed words highlighted inline"
+  - "User can paste arbitrary verse text and see 1828-tier words highlighted"
+  - "Hover/click on a highlighted word reveals 1828 + modern + study cross-reference"
+  - "Site builds via `docker build` and serves on port 80 (nginx)"
+  - "Static bundle stays small — no LLM dependency for MVP"
+
+stretch_goals:
+  llm-rendering:
+    description: "User-supplied API key/model URL renders verse in modern English with 1828-faithful meanings. Gated; settings page; LM Studio + opencode-go support."
+    priority: low
+
+  thummim-dictionary:
+    description: "Build a Restoration-era dictionary from gospel works (scriptures + GC talks). Multi-level (elementary, 8th grade, high-school+). Working name 'Thummim 2026 Restoration Dictionary' — Urim & Thummim are 'lights and perfections'."
+    priority: low
+    notes: "Genuinely a substrate-project; pipeline-generated dictionary entries with grade-level filters."
+
+  presentation-mode:
+    description: "Tablet-friendly presentation layout. Per Brother Philpot's stated wish."
+    priority: low
+
+related:
+  proposal: "../../.spec/proposals/1828-illuminated-scriptures.md"
+  research: "../../research/gospel/1828/"
+  upstream_substrate: "../pg-ai-stewards/"
+  reference_pattern: "../cpuchip.net/src/components/ScripturePanel.vue (iframe-based scripture reference)"

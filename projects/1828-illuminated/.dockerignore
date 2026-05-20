@@ -1,0 +1,13 @@
+# Excludes from docker build context
+**/node_modules
+**/dist
+**/.vite
+**/.cache
+
+# Workspace artifacts
+.git
+.spec/scratch
+*.log
+
+# Don't ship the build scripts into the image (they run on host, not in container)
+scripts/

@@ -1,0 +1,10 @@
+# Build artifacts — regeneratable from source
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+
+# Fetcher in-progress log files (not currently used but reserved)
+scripts/fetcher.log
+
+# Tooling
+*.log
