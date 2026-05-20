@@ -126,7 +126,14 @@ FROM alpine:3.20
 # ca-certificates for HTTPS (gospel-engine, becoming, exa-search HTTP).
 # git + github-cli (gh) for git-mcp's spawn targets. chromium for
 # fetch-md-mcp v2's JS-rendering path (chromedp finds it via $PATH).
-RUN apk add --no-cache ca-certificates tzdata git github-cli chromium
+# python3 + ffmpeg for yt-dlp (substrate-yt-transcripts batch, 2026-05-19).
+# Alpine 3.20's apk yt-dlp pins to 2024.12.03 which YouTube has broken
+# (storyboards-only on all videos as of 2026-Q1). We install the latest
+# yt-dlp via pip instead — `--break-system-packages` accepts Alpine's
+# externally-managed warning since this is a single-purpose container
+# image not a shared Python environment.
+RUN apk add --no-cache ca-certificates tzdata git github-cli chromium python3 py3-pip ffmpeg curl \
+    && pip install --no-cache-dir --break-system-packages --upgrade yt-dlp
 
 # Binaries
 COPY --from=builder /out/stewards-mcp   /usr/local/bin/stewards-mcp

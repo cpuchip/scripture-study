@@ -30,6 +30,11 @@ services:
     volumes:
       - pgdata:/var/lib/postgresql
       - ./init:/docker-entrypoint-initdb.d:ro
+      # YT-T.4 (substrate-yt-transcripts, 2026-05-19): READ-ONLY mount
+      # of workspace yt/ so stewards.import_yt_transcript() can read
+      # cues.json + metadata.json via pg_read_file. Bridge has the same
+      # path mounted rw for writes; pg only reads.
+      - ../../../yt:/opt/yt/yt:ro
     healthcheck:
       # Bridge depends_on this; pg_isready is the standard probe.
       test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-stewards} -d ${POSTGRES_DB:-stewards}"]
@@ -83,8 +88,15 @@ services:
     # mounting the whole repo read-only here is the simplest path —
     # adding new fs-read scopes later only requires updating the
     # mcp_servers row, not the docker-compose file.
+    #
+    # Additionally, workspace yt/ is mounted READ-WRITE at /opt/yt/yt
+    # (substrate-yt-transcripts batch, 2026-05-19). yt-mcp inside the
+    # bridge writes downloaded transcripts here; the workspace yt/
+    # directory IS the local cache, immediately visible to host tooling
+    # and git. Per D-YTT1 ratification.
     volumes:
       - ../../..:/workspace:ro
+      - ../../../yt:/opt/yt/yt:rw
     restart: unless-stopped
     # ENTRYPOINT is `stewards-mcp bridge run` (set in bridge.Dockerfile).
     # Override with `command:` here if workers/tick need tuning.
