@@ -12,6 +12,7 @@ import { RouterLink, RouterView } from 'vue-router'
         <RouterLink to="/work-items" class="hover:text-zinc-100">Work items</RouterLink>
         <RouterLink to="/sessions" class="hover:text-zinc-100">Sessions</RouterLink>
         <RouterLink to="/watchman" class="hover:text-zinc-100">Watchman</RouterLink>
+        <RouterLink to="/scheduled" class="hover:text-zinc-100">Scheduled</RouterLink>
         <RouterLink to="/bridge" class="hover:text-zinc-100">Bridge</RouterLink>
         <RouterLink to="/graph" class="hover:text-zinc-100">Graph</RouterLink>
         <RouterLink to="/new" class="hover:text-zinc-100">New work</RouterLink>

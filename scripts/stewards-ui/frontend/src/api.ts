@@ -1074,3 +1074,117 @@ export type ProviderRow = {
 }
 
 export type ProvidersResp = { items: ProviderRow[] }
+
+// PE-C: scheduled_pipelines (cron-style pipeline dispatches).
+export type ScheduledRow = {
+  id: string
+  slug: string
+  pipeline_family: string
+  intent_id: string
+  intent_slug?: string
+  cron_pattern: string
+  input_template: Record<string, unknown>
+  enabled: boolean
+  missed_window_hours: number
+  last_dispatched_at?: string
+  next_due_at?: string
+  created_at?: string
+  updated_at?: string
+  notes?: string
+}
+
+export type ScheduledListResp = { items: ScheduledRow[]; total: number }
+
+export type ScheduledCreateReq = {
+  slug: string
+  pipeline_family: string
+  intent_slug: string
+  cron_pattern: string
+  input_template: Record<string, unknown>
+  enabled?: boolean
+  missed_window_hours?: number
+  notes?: string
+}
+
+export type ScheduledUpdateReq = {
+  cron_pattern?: string
+  input_template?: Record<string, unknown>
+  enabled?: boolean
+  missed_window_hours?: number
+  notes?: string
+}
+
+export type ScheduledRunRow = {
+  work_item_id: string
+  slug: string
+  schedule_slug?: string
+  pipeline_family: string
+  status: string
+  current_stage?: string
+  created_at?: string
+  completed_at?: string
+  file_path?: string
+}
+
+export type ScheduledRunsResp = { items: ScheduledRunRow[]; total: number }
+
+async function postJSON<T>(path: string, body: unknown): Promise<T> {
+  const r = await fetch(path, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(body),
+  })
+  if (!r.ok) {
+    let msg = `HTTP ${r.status}`
+    try { const b = await r.json(); if (b?.error) msg = b.error } catch { /* ignore */ }
+    throw new Error(msg)
+  }
+  return r.json() as Promise<T>
+}
+
+async function putJSON<T>(path: string, body: unknown): Promise<T> {
+  const r = await fetch(path, {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(body),
+  })
+  if (!r.ok) {
+    let msg = `HTTP ${r.status}`
+    try { const b = await r.json(); if (b?.error) msg = b.error } catch { /* ignore */ }
+    throw new Error(msg)
+  }
+  return r.json() as Promise<T>
+}
+
+async function deleteJSON<T>(path: string): Promise<T> {
+  const r = await fetch(path, { method: 'DELETE' })
+  if (!r.ok) {
+    let msg = `HTTP ${r.status}`
+    try { const b = await r.json(); if (b?.error) msg = b.error } catch { /* ignore */ }
+    throw new Error(msg)
+  }
+  return r.json() as Promise<T>
+}
+
+// Re-export onto api object. Defined as a const block below so the
+// closure captures the helpers without polluting the existing api
+// declaration order.
+export const scheduledApi = {
+  list: () => getJSON<ScheduledListResp>('/api/scheduled/list'),
+  get: (idOrSlug: { id?: string; slug?: string }) => {
+    const p = new URLSearchParams()
+    if (idOrSlug.id) p.set('id', idOrSlug.id)
+    if (idOrSlug.slug) p.set('slug', idOrSlug.slug)
+    return getJSON<ScheduledRow>(`/api/scheduled/get?${p}`)
+  },
+  create: (req: ScheduledCreateReq) =>
+    postJSON<{ id: string; slug: string }>('/api/scheduled/create', req),
+  update: (id: string, req: ScheduledUpdateReq) =>
+    putJSON<ScheduledRow>(`/api/scheduled/update?id=${encodeURIComponent(id)}`, req),
+  toggle: (id: string) =>
+    postJSON<{ enabled: boolean }>(`/api/scheduled/toggle?id=${encodeURIComponent(id)}`, {}),
+  remove: (id: string) =>
+    deleteJSON<{ deleted: string }>(`/api/scheduled/delete?id=${encodeURIComponent(id)}`),
+  recentRuns: (limit = 7) =>
+    getJSON<ScheduledRunsResp>(`/api/scheduled/recent-runs?limit=${limit}`),
+}
