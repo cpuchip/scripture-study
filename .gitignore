@@ -76,3 +76,6 @@ external_context/
 /projects/storygames
 
 # (.env coverage moved up to the "Local secrets" block above)
+
+# opencode mcp // need to move mcp to global config before this can be removed
+opencode.json
