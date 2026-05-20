@@ -2,6 +2,7 @@
 import { computed } from 'vue'
 import { RouterLink } from 'vue-router'
 import { useWordData, type TierWord } from '@/composables/useWordData'
+import LinkedDefinition from './LinkedDefinition.vue'
 
 const props = defineProps<{
   word: string
@@ -12,6 +13,12 @@ const data = useWordData()
 const tier = computed<TierWord | undefined>(() => data.findWord(props.word))
 const defs1828 = computed(() => data.get1828(props.word))
 const defModern = computed(() => data.getModern(props.word))
+
+// Studies live in the workspace repo at github.com/cpuchip/scripture-study.
+// Link out so readers can read the original lensing context.
+function studyHref(path: string): string {
+  return `https://github.com/cpuchip/scripture-study/blob/main/${path}`
+}
 </script>
 
 <template>
@@ -36,7 +43,9 @@ const defModern = computed(() => data.getModern(props.word))
       <div v-for="(entry, idx) in defs1828" :key="idx" class="mb-3 last:mb-0">
         <div class="text-xs italic text-stone-500 mb-1">{{ entry.pos }}</div>
         <ol class="list-decimal list-outside ml-5 text-sm leading-relaxed text-stone-800 space-y-1">
-          <li v-for="(def, di) in entry.definitions.slice(0, compact ? 2 : 12)" :key="di">{{ def }}</li>
+          <li v-for="(def, di) in entry.definitions.slice(0, compact ? 2 : 12)" :key="di">
+            <LinkedDefinition :text="def" />
+          </li>
         </ol>
         <div v-if="compact && entry.definitions.length > 2" class="text-xs text-stone-500 mt-1 italic">
           (+{{ entry.definitions.length - 2 }} more senses — open the word card for the full entry)
@@ -53,7 +62,9 @@ const defModern = computed(() => data.getModern(props.word))
       <div v-for="(entry, idx) in defModern.entries" :key="idx" class="mb-3 last:mb-0">
         <div class="text-xs italic text-stone-500 mb-1">{{ entry.pos }}</div>
         <ol class="list-decimal list-outside ml-5 text-sm leading-relaxed text-stone-800 space-y-1">
-          <li v-for="(def, di) in entry.definitions.slice(0, compact ? 1 : 6)" :key="di">{{ def }}</li>
+          <li v-for="(def, di) in entry.definitions.slice(0, compact ? 1 : 6)" :key="di">
+            <LinkedDefinition :text="def" />
+          </li>
         </ol>
       </div>
     </section>
@@ -71,7 +82,16 @@ const defModern = computed(() => data.getModern(props.word))
       <h3 class="text-sm uppercase tracking-wider text-stone-500 mb-2 font-sans">Lensed in our studies</h3>
       <ul class="text-sm space-y-1">
         <li v-for="s in tier.studies" :key="s" class="text-stone-700">
-          <code class="text-amber-700 bg-amber-50 px-1.5 py-0.5 rounded text-xs font-mono">{{ s }}</code>
+          <a
+            :href="studyHref(s)"
+            target="_blank"
+            rel="noopener"
+            class="inline-flex items-baseline gap-1 text-amber-700 bg-amber-50 hover:bg-amber-100 px-1.5 py-0.5 rounded text-xs font-mono transition"
+            :title="`Open ${s} on github.com/cpuchip/scripture-study`"
+          >
+            {{ s }}
+            <span class="text-amber-600 not-italic">↗</span>
+          </a>
         </li>
       </ul>
       <details v-if="tier.study_excerpts.length" class="mt-3">

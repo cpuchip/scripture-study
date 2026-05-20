@@ -110,7 +110,12 @@ watch(activeText, () => {
               </div>
               <div v-if="selectedVerse.study_link">
                 Substrate study that lensed this passage:
-                <code class="text-amber-700 bg-amber-50 px-1.5 py-0.5 rounded text-xs font-mono">{{ selectedVerse.study_link.replace(/^[./]+/, '') }}</code>
+                <a
+                  :href="`https://github.com/cpuchip/scripture-study/blob/main/${selectedVerse.study_link.replace(/^[./]+/, '')}`"
+                  target="_blank"
+                  rel="noopener"
+                  class="text-amber-700 bg-amber-50 hover:bg-amber-100 px-1.5 py-0.5 rounded text-xs font-mono inline-flex items-baseline gap-1 transition"
+                >{{ selectedVerse.study_link.replace(/^[./]+/, '') }} <span>↗</span></a>
               </div>
             </footer>
           </div>

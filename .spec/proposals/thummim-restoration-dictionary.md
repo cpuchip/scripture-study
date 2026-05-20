@@ -103,6 +103,32 @@ Per Michael's stewardship-delegation. Three artifacts:
 
 Builds nothing in pg-ai-stewards yet. The substrate pipeline is the next session's work, once we ratify D-THM-1 through D-THM-6.
 
+## VI.5 Future: AGE graph traversal (Michael, 2026-05-20)
+
+**Idea surfaced during batch generation:** once Thummim entries exist, build a
+graph database (using AGE — already installed in pg-ai-stewards at 1.7.0) where
+each Thummim entry is a `:Word` vertex and each word-mention-inside-another-entry
+is an `:USES` edge. Then graph traversal answers questions like:
+
+- *"What words connect to charity?"* — MATCH (charity)-[:USES*1..3]-(other) RETURN other
+- *"Which words have the most inbound references?"* — central concepts in the Restoration's own definitional structure
+- *"Cluster analysis"* — words that co-mention each other form natural doctrinal clusters (faith/grace/charity might cluster; intelligence/light/truth might cluster)
+
+**Implementation sketch** (deferred):
+- New AGE graph `thummim_graph` (separate from `stewards_graph` to keep concerns clean) or reuse existing graph with a new `:Word` label
+- A `stewards.thummim_index_word(word)` function that parses an entry's `levels.{*}.body` for tier-word mentions, MERGEs a `:Word` vertex, and MERGEs `:USES` edges to every mentioned word
+- A frontend `/graph` view (cytoscape.js, already a dep in stewards-ui)
+- Click a node → opens that word's Dictionary entry
+
+**Why AGE makes sense here:**
+The substrate's existing graph already proves the pattern (Study/Scripture/Talk vertices with CITES edges). The Thummim data has the same shape — definitional cross-references — but inside a smaller, more cohesive corpus. Graph traversal lets readers explore *how the Restoration's own vocabulary self-defines.*
+
+**Cost:** zero new LLM cost; the indexing happens on already-generated entries.
+
+Sits behind the v1-corpus generation (D-THM-4) — get entries first, then index them.
+
+---
+
 ## VII. Why this matters
 
 The 1828-illuminated tool surfaces meaning the Restoration *inherited* from secular 1828 English. But the Restoration also *redefined* words. *Intelligence* in 1828 was "the act or state of knowing." In D&C 93 it's a substance — *"that which is light, which is truth."* A 1828-only frame misses that.

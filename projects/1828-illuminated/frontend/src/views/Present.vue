@@ -2,6 +2,7 @@
 import { ref, computed, onMounted, onBeforeUnmount } from 'vue'
 import { useRoute, useRouter, RouterLink } from 'vue-router'
 import { tokenize, useWordData } from '@/composables/useWordData'
+import LinkedDefinition from '@/components/LinkedDefinition.vue'
 import demoData from '@/data/demo-verses.json'
 
 type DemoVerse = (typeof demoData.verses)[number]
@@ -127,7 +128,9 @@ onBeforeUnmount(() => window.removeEventListener('keydown', onKey))
           <div v-for="(entry, idx) in selected1828" :key="idx" class="mb-4 last:mb-0">
             <div class="text-sm italic text-stone-500 mb-1.5">{{ entry.pos }}</div>
             <ol class="list-decimal list-outside ml-6 text-base md:text-lg leading-relaxed text-stone-800 space-y-2">
-              <li v-for="(def, di) in entry.definitions.slice(0, 8)" :key="di">{{ def }}</li>
+              <li v-for="(def, di) in entry.definitions.slice(0, 8)" :key="di">
+                <LinkedDefinition :text="def" />
+              </li>
             </ol>
           </div>
         </section>
@@ -137,7 +140,9 @@ onBeforeUnmount(() => window.removeEventListener('keydown', onKey))
           <div v-for="(entry, idx) in selectedModern.entries" :key="idx" class="mb-4 last:mb-0">
             <div class="text-sm italic text-stone-500 mb-1.5">{{ entry.pos }}</div>
             <ol class="list-decimal list-outside ml-6 text-base md:text-lg leading-relaxed text-stone-800 space-y-2">
-              <li v-for="(def, di) in entry.definitions.slice(0, 4)" :key="di">{{ def }}</li>
+              <li v-for="(def, di) in entry.definitions.slice(0, 4)" :key="di">
+                <LinkedDefinition :text="def" />
+              </li>
             </ol>
           </div>
         </section>

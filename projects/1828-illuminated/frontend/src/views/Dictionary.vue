@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
+import LinkedDefinition from '@/components/LinkedDefinition.vue'
 import thummimData from '@/data/thummim-seed.json'
 
 type Level = 'elementary' | 'eighth_grade' | 'college_plus'
@@ -89,8 +90,8 @@ const LEVEL_LABELS: Record<Level, string> = {
         </p>
       </header>
 
-      <div class="font-serif text-lg leading-relaxed text-stone-900 whitespace-pre-wrap">
-        {{ current.levels[selectedLevel].body }}
+      <div class="font-serif text-lg leading-relaxed text-stone-900">
+        <LinkedDefinition :text="current.levels[selectedLevel].body" />
       </div>
 
       <section v-if="current.levels[selectedLevel].key_passages?.length" class="border-t border-stone-200 pt-4">
@@ -109,7 +110,19 @@ const LEVEL_LABELS: Record<Level, string> = {
 
       <section v-if="current.webster_1828_compare" class="border-t border-stone-200 pt-4 bg-stone-50/40 -mx-8 -mb-8 px-8 pb-8 rounded-b-lg">
         <h3 class="text-xs uppercase tracking-wider text-stone-500 mb-2 font-sans">Compare to Webster 1828</h3>
-        <p class="text-sm text-stone-700 leading-relaxed">{{ current.webster_1828_compare }}</p>
+        <p class="text-sm text-stone-700 leading-relaxed">
+          <LinkedDefinition :text="current.webster_1828_compare" />
+        </p>
+      </section>
+
+      <section v-if="current.substrate_study" class="border-t border-stone-200 pt-4">
+        <h3 class="text-xs uppercase tracking-wider text-stone-500 mb-2 font-sans">Substrate study that lensed this word</h3>
+        <a
+          :href="`https://github.com/cpuchip/scripture-study/blob/main/${current.substrate_study.replace(/^[./]+/, '')}`"
+          target="_blank"
+          rel="noopener"
+          class="text-sm text-amber-700 hover:underline font-mono"
+        >{{ current.substrate_study.replace(/^[./]+/, '') }} ↗</a>
       </section>
     </article>
 
