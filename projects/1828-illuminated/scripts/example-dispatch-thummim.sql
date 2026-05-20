@@ -1,0 +1,92 @@
+-- Example: dispatch a Thummim Dictionary work_item for the word "obtain".
+--
+-- Each Thummim entry is one work_item through the thummim-define pipeline.
+-- v1 corpus target is ~150-200 entries. Cost ~$0.30 per entry × 150 ≈ $45.
+--
+-- Usage:
+--   docker exec pg-ai-stewards-dev psql -U stewards -d stewards -f /tmp/this.sql
+--
+-- Or call work_item_create directly from psql:
+--
+--   SELECT stewards.work_item_create(
+--       'thummim-define',                            -- pipeline_family
+--       jsonb_build_object(
+--           'word', 'obtain',
+--           'binding_question',
+--           'How does the Restoration corpus use the word ''obtain'', and how does that compare to Webster 1828?'
+--       ),
+--       'thummim-obtain',                            -- work_item slug
+--       'human',                                     -- actor
+--       NULL,                                        -- token_budget
+--       (SELECT id FROM stewards.intents WHERE slug='scripture-study')
+--   );
+--   -- Then dispatch the first stage:
+--   SELECT stewards.work_item_dispatch_stage('<uuid-from-above>');
+--
+-- After the work_item completes (auto-materialize ON + 3 stages × ~$0.10):
+--   1. Output appears at research/dictionary/thummim-obtain.md (via Batch G
+--      pending_file_writes machinery)
+--   2. The synthesize stage's JSON output needs to be parsed into
+--      stewards.thummim_entries — this is the substrate hook NOT YET written
+--      (D-THM-?: should the JSON output auto-populate the table, or wait
+--      for explicit promote? Currently waits for explicit promote.)
+--   3. Run scripts/export_thummim.py to refresh the frontend JSON bundle.
+
+-- ---------------------------------------------------------------------
+-- One-word smoke (uncomment to actually dispatch):
+-- ---------------------------------------------------------------------
+-- DO $$
+-- DECLARE
+--     v_wi uuid;
+--     v_q  bigint;
+-- BEGIN
+--     v_wi := stewards.work_item_create(
+--         'thummim-define',
+--         jsonb_build_object(
+--             'word', 'obtain',
+--             'binding_question', 'How does the Restoration corpus use the word ''obtain'', and how does that compare to Webster 1828?'
+--         ),
+--         'thummim-obtain',
+--         'human',
+--         NULL,
+--         (SELECT id FROM stewards.intents WHERE slug='scripture-study')
+--     );
+--     v_q := stewards.work_item_dispatch_stage(v_wi);
+--     RAISE NOTICE 'Thummim work_item dispatched: % (queue id %)', v_wi, v_q;
+-- END
+-- $$;
+
+-- ---------------------------------------------------------------------
+-- v1 corpus dispatch (uncomment + careful — ~150 entries × ~$0.30 ≈ $45):
+-- ---------------------------------------------------------------------
+-- Tier A++/A+/B words from research/gospel/1828/00-FINAL-highlight-candidates.md
+-- Plus high-frequency abstract terms + doctrinal vocabulary.
+-- The list below is the starter — extend in follow-up.
+--
+-- WITH v1_words AS (
+--     SELECT unnest(ARRAY[
+--         'intelligence', 'obtain', 'charity', 'enjoy', 'tempest',
+--         'school', 'probation', 'storm', 'ordain', 'quicken',
+--         'comprehend', 'rest', 'broken', 'allow', 'suffer', 'endure',
+--         -- ... continue
+--         'covenant', 'ordinance', 'priesthood', 'atonement', 'sanctification'
+--     ]) AS word
+-- ),
+-- dispatched AS (
+--     INSERT INTO stewards.work_items (pipeline_family, slug, input, actor, intent_id, status, current_stage, maturity, created_at)
+--     SELECT
+--         'thummim-define',
+--         'thummim-' || v.word,
+--         jsonb_build_object('word', v.word,
+--                            'binding_question', 'How does the Restoration corpus use the word ''' || v.word || '''?'),
+--         'human',
+--         (SELECT id FROM stewards.intents WHERE slug='scripture-study'),
+--         'pending',
+--         'gather',
+--         'raw',
+--         now()
+--       FROM v1_words v
+--       ON CONFLICT (slug) DO NOTHING
+--       RETURNING id
+-- )
+-- SELECT stewards.work_item_dispatch_stage(id) FROM dispatched;
