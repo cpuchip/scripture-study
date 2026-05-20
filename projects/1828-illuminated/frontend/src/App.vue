@@ -13,6 +13,7 @@ import { RouterLink, RouterView } from 'vue-router'
         <nav class="flex gap-5 text-sm items-baseline">
           <RouterLink to="/word" class="text-stone-700 hover:text-stone-900" active-class="text-amber-700 font-medium">Word Search</RouterLink>
           <RouterLink to="/verse" class="text-stone-700 hover:text-stone-900" active-class="text-amber-700 font-medium">Verse Explorer</RouterLink>
+          <RouterLink to="/dictionary" class="text-stone-700 hover:text-stone-900" active-class="text-amber-700 font-medium">Dictionary <span class="text-xs text-amber-700">·preview</span></RouterLink>
           <RouterLink to="/about" class="text-stone-700 hover:text-stone-900" active-class="text-amber-700 font-medium">About</RouterLink>
           <RouterLink to="/settings" class="text-stone-500 hover:text-stone-900 text-xs" active-class="text-amber-700 font-medium" title="LLM endpoint settings">⚙</RouterLink>
         </nav>

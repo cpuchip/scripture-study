@@ -7,6 +7,7 @@ const WordDetail = () => import('./views/WordDetail.vue')
 const About = () => import('./views/About.vue')
 const Settings = () => import('./views/Settings.vue')
 const Present = () => import('./views/Present.vue')
+const Dictionary = () => import('./views/Dictionary.vue')
 
 const routes: RouteRecordRaw[] = [
   { path: '/', name: 'home', component: Home },
@@ -14,6 +15,7 @@ const routes: RouteRecordRaw[] = [
   { path: '/word/:word', name: 'word-detail', component: WordDetail, props: true },
   { path: '/verse', name: 'verse-explorer', component: VerseExplorer },
   { path: '/present', name: 'present', component: Present, meta: { fullscreen: true } },
+  { path: '/dictionary', name: 'dictionary', component: Dictionary },
   { path: '/about', name: 'about', component: About },
   { path: '/settings', name: 'settings', component: Settings },
 ]
