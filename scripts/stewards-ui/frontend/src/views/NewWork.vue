@@ -166,9 +166,55 @@ const submitting = ref(false)
 const error = ref('')
 const result = ref<{ id: string; dispatched: boolean } | null>(null)
 
+// PE-C.4 — per-pipeline input fields. Optional; shown conditionally
+// based on the selected pipeline. Composed into inputJson at submit.
+
+// research-* pipelines: sources_spec
+const sourcesQueriesText = ref('')   // one query per line
+const sourcesMaxPerQuery = ref<number | null>(10)
+const sourcesSince = ref('24h')
+
+// yt-* pipelines: video URL + extras
+const videoUrl = ref('')
+const evaluatorFocus = ref<string>('')  // yt-gospel-evaluate only
+const contextTagsText = ref('')         // yt-secular-digest only (comma-separated)
+
+const showSourcesSpec = computed(() => pipeline.value.startsWith('research-'))
+const showVideoUrl = computed(() => pipeline.value.startsWith('yt-'))
+const showEvaluatorFocus = computed(() => pipeline.value === 'yt-gospel-evaluate')
+const showContextTags = computed(() => pipeline.value === 'yt-secular-digest')
+
 const inputJson = computed(() => {
-  if (!bindingQuestion.value.trim()) return {}
-  return { binding_question: bindingQuestion.value.trim() }
+  const out: Record<string, unknown> = {}
+  if (bindingQuestion.value.trim()) {
+    out.binding_question = bindingQuestion.value.trim()
+  }
+  if (showSourcesSpec.value) {
+    const queries = sourcesQueriesText.value
+      .split('\n')
+      .map(s => s.trim())
+      .filter(s => s.length > 0)
+    if (queries.length > 0) {
+      out.sources_spec = {
+        queries,
+        max_per_query: sourcesMaxPerQuery.value ?? 10,
+        since: sourcesSince.value || '24h',
+      }
+    }
+  }
+  if (showVideoUrl.value && videoUrl.value.trim()) {
+    out.video_url = videoUrl.value.trim()
+  }
+  if (showEvaluatorFocus.value && evaluatorFocus.value) {
+    out.evaluator_focus = [evaluatorFocus.value]
+  }
+  if (showContextTags.value && contextTagsText.value.trim()) {
+    out.context_tags = contextTagsText.value
+      .split(',')
+      .map(s => s.trim())
+      .filter(s => s.length > 0)
+  }
+  return out
 })
 
 async function submit() {
@@ -279,6 +325,92 @@ function goToWorkItem() {
           placeholder="What specific question should this work item answer? Be precise — the agent's whole loop hangs on this."
           class="w-full px-3 py-2 rounded border border-zinc-700 bg-zinc-900 text-sm focus:border-zinc-500 focus:outline-none resize-y"
         ></textarea>
+      </div>
+
+      <!-- PE-C.4 — per-pipeline input fields -->
+
+      <!-- research-* pipelines: sources_spec -->
+      <div
+        v-if="showSourcesSpec"
+        class="rounded-md border border-zinc-800 bg-zinc-900/30 p-3 space-y-3"
+      >
+        <div class="text-xs uppercase tracking-wide text-zinc-500">Sources spec</div>
+        <div>
+          <label class="block text-xs text-zinc-500 mb-1">Queries (one per line)</label>
+          <textarea
+            v-model="sourcesQueriesText"
+            rows="4"
+            placeholder="AI news today&#10;claude release&#10;openai update&#10;anthropic announcement"
+            class="w-full px-3 py-2 rounded border border-zinc-700 bg-zinc-950 text-sm font-mono focus:border-zinc-500 focus:outline-none resize-y"
+          ></textarea>
+        </div>
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-xs text-zinc-500 mb-1">Max results per query</label>
+            <input
+              v-model.number="sourcesMaxPerQuery"
+              type="number"
+              min="1"
+              max="50"
+              class="w-full px-3 py-2 rounded border border-zinc-700 bg-zinc-950 text-sm tabular-nums focus:border-zinc-500 focus:outline-none"
+            />
+          </div>
+          <div>
+            <label class="block text-xs text-zinc-500 mb-1">Since (e.g. 24h, 7d)</label>
+            <input
+              v-model="sourcesSince"
+              type="text"
+              placeholder="24h"
+              class="w-full px-3 py-2 rounded border border-zinc-700 bg-zinc-950 text-sm font-mono focus:border-zinc-500 focus:outline-none"
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- yt-* pipelines: video URL -->
+      <div
+        v-if="showVideoUrl"
+        class="rounded-md border border-zinc-800 bg-zinc-900/30 p-3 space-y-3"
+      >
+        <div class="text-xs uppercase tracking-wide text-zinc-500">YouTube video</div>
+        <div>
+          <label class="block text-xs text-zinc-500 mb-1">Video URL</label>
+          <input
+            v-model="videoUrl"
+            type="text"
+            placeholder="https://www.youtube.com/watch?v=…"
+            class="w-full px-3 py-2 rounded border border-zinc-700 bg-zinc-950 text-sm font-mono focus:border-zinc-500 focus:outline-none"
+          />
+          <p class="text-xs text-zinc-500 mt-1">
+            The ingest stage downloads transcript + chapters + description + top comments via the yt MCP server.
+          </p>
+        </div>
+
+        <!-- yt-gospel-evaluate only: evaluator_focus -->
+        <div v-if="showEvaluatorFocus">
+          <label class="block text-xs text-zinc-500 mb-1">Evaluator focus (optional)</label>
+          <select
+            v-model="evaluatorFocus"
+            class="w-full px-3 py-2 rounded border border-zinc-700 bg-zinc-950 text-sm focus:border-zinc-500 focus:outline-none"
+          >
+            <option value="">— general (default)</option>
+            <option value="doctrinal">doctrinal — alignment with canon + citation density</option>
+            <option value="rhetorical">rhetorical — pattern + framing + delivery</option>
+            <option value="fruit-bearing">fruit-bearing — practical application + becoming</option>
+          </select>
+        </div>
+
+        <!-- yt-secular-digest only: context_tags -->
+        <div v-if="showContextTags">
+          <label class="block text-xs text-zinc-500 mb-1">Context tags (comma-separated, optional)</label>
+          <input
+            v-model="contextTagsText"
+            type="text"
+            placeholder="ai, engineering, agents"
+            class="w-full px-3 py-2 rounded border border-zinc-700 bg-zinc-950 text-sm font-mono focus:border-zinc-500 focus:outline-none"
+          />
+          <p class="text-xs text-zinc-500 mt-1">Aids cross-reference against existing notes.</p>
+        </div>
       </div>
 
       <div class="grid grid-cols-2 gap-4">
