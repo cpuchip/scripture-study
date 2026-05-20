@@ -221,3 +221,59 @@ Should be sequenced AFTER Batch G (file-write mechanism lets these new pipelines
 The substrate's primitives are mature; one pipeline is a poor showcase of what they enable. The proposed pipelines also have direct utility: a daily AI news digest at 7am is something Michael will actually read. YouTube digestion replaces an ad-hoc manual workflow.
 
 The scheduled-pipelines machinery is independently useful — once it exists, future pipelines (e.g. weekly "stewardship review", monthly "studies-not-yet-cited audit") become 5-minute additions, not 5-day proposals.
+
+---
+
+## X. Ratification + PE-A build log (2026-05-19)
+
+Council ① of the post-ES-arc queue. Decisions ratified, two new ones surfaced during build, PE-A shipped in one session.
+
+### X.1 Decisions ratified
+
+| ID | Choice | Note |
+|----|--------|------|
+| D-PE1 | Input field carries it | Both kinds, output_kind on the input |
+| D-PE2 | New 'professional-awareness' intent | Initial decision — superseded by D-PE2' during build |
+| D-PE3 | No hard floor | Trust the operator; cost-cap + quarantine + bucket caps are the safety net |
+| D-PE4 | Fire one missed run on recovery | Scheduler needs a missed-window threshold (probably 24h) |
+| D-PE5 | Transcript + metadata enrichment | yt ingest also pulls chapters + full description + top comments |
+| D-PE6 | Standard 5-field cron with ranges + lists | Pulls in a Rust cron crate; PE-B will need a soak pause + pg rebuild |
+| D-PE7 | All research output in the graph | Both research-write and research-summary; daily-digest included |
+
+### X.2 Two decisions surfaced during build
+
+**D-PE1' — pipeline selection itself is a judgment.** When `research-write` was discovered already in production (15 work_items, latest 2026-05-17), Option B was ratified: keep research-write for deep-research, add research-summary for daily-digest, and let the agent (or the human in NewWork) judge which pipeline fits the task. Same shape as `study-write` vs. `study-write-qwen` splitting on model choice. The "one family with output_kind switching" framing in §V.1 is superseded by per-family routing.
+
+**D-PE2' — reuse `general-research` over creating `professional-awareness`.** When the existing `general-research` intent was discovered (with concrete values + non-goals already source-backed via `.spec/intents/general-research.yaml`), reuse was chosen with two YT-aware values appended (`separate-claim-from-charisma`, `surface-the-rhetoric`). The "rule of three" Rust parser refactor stays deferred since no third intent is being introduced.
+
+**D-PE7' — non-study-write promotion path was missing.** During PE.5 build, found that `work_item_promote_to_study` is hardcoded to `study-write*` and `on_maturity_verified` only enqueues the file write — never inserts into `stewards.studies`. So D-PE7 ("all research output in the graph") required first building the studies-promotion path for non-study-write pipelines. Scope B chosen: narrow promotion path + backfill of the 15 existing research-write rows.
+
+### X.3 PE-A shipped (2026-05-19)
+
+Five sub-steps, five commits, zero rollbacks:
+
+| Sub-step | What | File |
+|----------|------|------|
+| PE.1 | Two YT-aware values appended to `general-research` intent | `extension/h1-1-general-research-intent.sql` (edit) + `.spec/intents/general-research.yaml` (doc sync) |
+| PE.2 | `research-summary` pipeline (daily-digest; sabbath/atonement OFF; auto-materialize ON) | `extension/pe2-research-summary-pipeline.sql` |
+| PE.3 | `yt-gospel-evaluate` pipeline (sabbath/atonement ON; agent yt-gospel; byu_citations/gospel_*/yt/* perms already granted) | `extension/pe3-yt-gospel-evaluate-pipeline.sql` |
+| PE.4 | `yt-secular-digest` pipeline (sabbath/atonement ON; agent yt; cross-reference via study_search_text/brain_search) | `extension/pe4-yt-secular-digest-pipeline.sql` |
+| PE.5 | `promote_to_study()` for the four non-study-write families + `on_maturity_verified` wiring + backfill of 14/15 research-write runs (1 skipped, un-sabbathed) | `extension/pe5-promote-to-study-non-study-write.sql` |
+
+Smoke after PE.5:
+- `stewards.studies` kinds now: study/195, proposal/73, journal/70, doc/32, **research/14**, phase-doc/1
+- AGE :Study nodes kind=research: **14** (was 0)
+- CITES edges from research nodes: 0 (expected — secular research outputs have no gospel-library citations)
+
+### X.4 Still pending — PE-B and PE-C
+
+PE-A intentionally scoped to SQL-only changes; no pg rebuild needed; soak stayed running throughout. Remaining work:
+
+- **PE-B (scheduled machinery)** — `stewards.scheduled_pipelines` schema + bgworker scheduler-tick extension + Rust cron crate + fire-one-missed logic. Requires soak pause + pg rebuild (Cargo.toml change).
+- **PE-C (UI surfaces)** — `/scheduled` route + dashboard "Last 7 scheduled runs" card + NewWork.vue per-pipeline forms. UI-only; no soak pause needed.
+
+### X.5 Carry-forward for future sessions
+
+- **1 un-sabbathed research-write row** (id `2c7a501d-eb6e-4cbe-ad0d-44ebf482353e`) skipped by the sabbath gate during PE.5.C backfill. Call `stewards.sabbath_dispatch(<id>)` then `stewards.promote_to_study(<id>)` to bring it into the graph.
+- **The proposal-was-stale pattern.** The proposal didn't anticipate `research-write`, `general-research`, registered `yt`/`yt-gospel` agents, or the missing non-study-write promotion path. Three duplications caught in a single session. Future councils should `\d` the table + `SELECT ... FROM stewards.pipelines / intents / agents` before assuming clean-slate. The pattern is recorded in `2026-05-19-substrate-pe-a-shipped.md`.
+- **yt-gospel-evaluate + yt-secular-digest have not yet run a real work_item.** Pipelines exist; smoke confirms structure; no end-to-end run yet. PE-C's NewWork.vue surface is the natural place to fire the first real ones.

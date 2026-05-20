@@ -1,6 +1,6 @@
 ---
 title: pg-ai-stewards open items — navigation hub
-date: 2026-05-17 (Section 0 refreshed post-ES arc; consolidated into proposals 2026-05-11)
+date: 2026-05-19 (PE-A shipped; queue refreshed)
 status: living document — update after each work session
 purpose: >
   Navigation hub for substrate work-in-progress. As of 2026-05-11
@@ -11,17 +11,17 @@ purpose: >
 
 # pg-ai-stewards open items
 
-## 0. Active proposal queue (refreshed 2026-05-18 — council order set)
+## 0. Active proposal queue (refreshed 2026-05-19 — PE-A shipped)
 
-The build queue is drained: every ratified batch through the ES emergency-stop
-arc has shipped. What remains is two un-ratified proposals and one new idea —
-to be councilled in the order Michael set on 2026-05-18 (① → ② → ③ below).
+Council ① in progress. PE-A (SQL-only first slice of pipelines-expansion)
+shipped 2026-05-19; PE-B (scheduled machinery, pg rebuild required) and
+PE-C (UI surfaces) still pending within ①. Then ② and ③ in order.
 
 | # | Proposal | Scope | Status |
 |---|---|---|---|
-| ① | [`substrate-pipelines-expansion.md`](proposals/substrate-pipelines-expansion.md) | research + YouTube (gospel + secular) pipelines + scheduled-pipeline machinery | **council FIRST** — D-PE1 through D-PE7. |
-| ② | [`substrate-scheduled-workflows.md`](proposals/substrate-scheduled-workflows.md) | cron-style scheduled jobs — periodic research (physics news → exhibits), autonomous YouTube AI-video review, public-playlist ingestion | **council SECOND** — new idea 2026-05-17. Stub drafted; D-SW1–D-SW7 not yet walked. Inherits PE's scheduled-pipeline machinery. |
-| ③ | [`stewards-ui-evolution.md`](proposals/stewards-ui-evolution.md) | intent/covenant authoring + substrate-aware chat + sidebar grouping + write actions | **council THIRD** — D-UI1 through D-UI12 (largest set). |
+| ① | [`substrate-pipelines-expansion.md`](proposals/substrate-pipelines-expansion.md) | research + YouTube pipelines + scheduled-pipeline machinery + UI | **PE-A shipped 2026-05-19** (3 pipelines + studies/AGE promotion path + backfill). PE-B (scheduled machinery — needs pg rebuild + soak pause) and PE-C (UI) still in council ①. Decisions ratified: D-PE1 through D-PE7 + D-PE1' + D-PE2' + D-PE7'. See §X of the proposal for the build log. |
+| ② | [`substrate-scheduled-workflows.md`](proposals/substrate-scheduled-workflows.md) | cron-style scheduled jobs — periodic research (physics news → exhibits), autonomous YouTube AI-video review, public-playlist ingestion | **council SECOND** — new idea 2026-05-17. Stub drafted; D-SW1–D-SW7 not yet walked. Inherits PE-B's scheduled-pipeline machinery once shipped. |
+| ③ | [`stewards-ui-evolution.md`](proposals/stewards-ui-evolution.md) | intent/covenant authoring + substrate-aware chat + sidebar grouping + write actions | **council THIRD** — D-UI1 through D-UI12 (largest set). PE-C is a preview slice (per-pipeline NewWork forms + /scheduled route). |
 | — | [`substrate-deferred-items.md`](proposals/substrate-deferred-items.md) | catalog of "wait for signal" items (NOT a build proposal) | reference only |
 
 **Directional lens (Michael, 2026-05-18):** the substrate is moving toward
