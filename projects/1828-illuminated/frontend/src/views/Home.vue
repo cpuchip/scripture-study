@@ -18,7 +18,7 @@ const tierA = data.allByTier().filter(w => w.tier === 'A++' || w.tier === 'A+')
       </p>
     </div>
 
-    <div class="grid sm:grid-cols-2 gap-6 mb-12">
+    <div class="grid sm:grid-cols-3 gap-6 mb-12">
       <RouterLink to="/word" class="def-card p-6 hover:border-amber-400 transition group">
         <h2 class="font-serif text-xl mb-2 group-hover:text-amber-700">Word search</h2>
         <p class="text-sm text-stone-600">
@@ -29,6 +29,12 @@ const tierA = data.allByTier().filter(w => w.tier === 'A++' || w.tier === 'A+')
         <h2 class="font-serif text-xl mb-2 group-hover:text-amber-700">Verse explorer</h2>
         <p class="text-sm text-stone-600">
           Pick a demo verse or paste your own. Words with meaning-shift are highlighted; click any to see both senses.
+        </p>
+      </RouterLink>
+      <RouterLink to="/present" class="def-card p-6 hover:border-amber-400 transition group">
+        <h2 class="font-serif text-xl mb-2 group-hover:text-amber-700">Presentation mode <span class="text-xs text-stone-400">tablet-friendly</span></h2>
+        <p class="text-sm text-stone-600">
+          Fullscreen, large-type rendering of the demo verses for teaching. Arrow keys to navigate; tap any word for the 1828 definition.
         </p>
       </RouterLink>
     </div>

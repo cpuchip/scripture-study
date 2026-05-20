@@ -6,12 +6,14 @@ const VerseExplorer = () => import('./views/VerseExplorer.vue')
 const WordDetail = () => import('./views/WordDetail.vue')
 const About = () => import('./views/About.vue')
 const Settings = () => import('./views/Settings.vue')
+const Present = () => import('./views/Present.vue')
 
 const routes: RouteRecordRaw[] = [
   { path: '/', name: 'home', component: Home },
   { path: '/word', name: 'word-search', component: WordSearch },
   { path: '/word/:word', name: 'word-detail', component: WordDetail, props: true },
   { path: '/verse', name: 'verse-explorer', component: VerseExplorer },
+  { path: '/present', name: 'present', component: Present, meta: { fullscreen: true } },
   { path: '/about', name: 'about', component: About },
   { path: '/settings', name: 'settings', component: Settings },
 ]

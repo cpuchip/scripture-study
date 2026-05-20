@@ -100,10 +100,13 @@ watch(activeText, () => {
               <p class="text-sm text-stone-600 mt-1">{{ selectedVerse.blurb }}</p>
             </header>
             <HighlightedText :text="selectedVerse.text" />
-            <footer class="text-xs text-stone-500 border-t border-stone-200 pt-3 space-y-1">
-              <div>
-                Full passage in context:
-                <a :href="selectedVerse.church_url" target="_blank" rel="noopener" class="underline text-amber-700">churchofjesuschrist.org ↗</a>
+            <footer class="text-xs text-stone-500 border-t border-stone-200 pt-3 space-y-1.5">
+              <div class="flex flex-wrap items-baseline gap-3">
+                <RouterLink
+                  :to="{ name: 'present', query: { v: selectedVerse.id } }"
+                  class="px-2.5 py-1 rounded border border-stone-400 text-stone-700 hover:bg-amber-50 hover:border-amber-500 transition no-underline"
+                >📖 Present this verse (fullscreen)</RouterLink>
+                <a :href="selectedVerse.church_url" target="_blank" rel="noopener" class="underline text-amber-700">Full passage at churchofjesuschrist.org ↗</a>
               </div>
               <div v-if="selectedVerse.study_link">
                 Substrate study that lensed this passage:
