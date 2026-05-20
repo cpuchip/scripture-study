@@ -134,5 +134,27 @@ function onPresetChange(id: 'lm-studio' | 'opencode-go' | 'custom') {
         This is a stretch-goal feature. Token costs land on your account / your local machine — that's why it's gated behind your own endpoint rather than running for every visitor.
       </p>
     </section>
+
+    <section class="mt-8 def-card p-6 bg-amber-50/40 border-amber-300">
+      <h2 class="font-serif text-lg mb-3">⚠ CORS: enable cross-origin in your endpoint</h2>
+      <p class="text-sm text-stone-700 leading-relaxed">
+        Browsers block requests from this site (e.g. <code class="bg-white px-1 rounded">localhost:8080</code>) to a different origin (e.g. LM Studio on <code class="bg-white px-1 rounded">localhost:1234</code>) unless the endpoint sends a permissive <code class="bg-white px-1 rounded">Access-Control-Allow-Origin</code> header. If "Render in modern English" returns a network error in your browser DevTools console, this is almost certainly why.
+      </p>
+      <h3 class="text-sm font-semibold text-stone-800 mt-4 mb-1">LM Studio</h3>
+      <ol class="text-sm text-stone-700 space-y-1 list-decimal list-inside">
+        <li>Open LM Studio</li>
+        <li>Click the <strong>Developer</strong> (or <strong>Local Server</strong>) tab in the left sidebar</li>
+        <li>Toggle <strong>"Enable CORS"</strong> ON before starting the server</li>
+        <li>(Re)start the server</li>
+      </ol>
+      <h3 class="text-sm font-semibold text-stone-800 mt-4 mb-1">OpenCode Go / custom endpoint</h3>
+      <p class="text-sm text-stone-700">
+        Add an <code class="bg-white px-1 rounded">Access-Control-Allow-Origin: *</code> response header (or restrict it to your specific origin) in your server config. The request is a standard OpenAI-compatible POST to <code class="bg-white px-1 rounded">/v1/chat/completions</code>; the browser will preflight with OPTIONS, so allow that method too.
+      </p>
+      <h3 class="text-sm font-semibold text-stone-800 mt-4 mb-1">Quick verification</h3>
+      <p class="text-sm text-stone-700">
+        Open the browser DevTools (F12) → Console tab → click "Render in modern English". A CORS error will explicitly say <em>"blocked by CORS policy: No 'Access-Control-Allow-Origin' header"</em> — different from a generic network error or 4xx response. If you see THAT exact message, the fix is at your endpoint, not this site.
+      </p>
+    </section>
   </div>
 </template>

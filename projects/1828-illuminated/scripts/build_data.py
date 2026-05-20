@@ -172,12 +172,48 @@ def main():
     print(f"  Wrote tier-words.json ({len(word_records)} words)")
 
     # --- Write definitions-1828.json (full 1828 entries for every tier word) ---
+    # ALSO include manual-additions words (last night's bug: 'obtain' had a
+    # tier entry but no defs, because manual-additions only modified the tier
+    # list, not the def lookup). Plus a small auto-stem fallback so 'obtaining'
+    # inherits 'obtain', 'suffereth' inherits 'suffer', etc.
+    STEM_SUFFIXES = ['eth', 'edst', 'est', 'ing', 'ed', 's']
+
+    def stem_lookup(word: str) -> list[dict] | None:
+        if word in webster_by_word:
+            return webster_by_word[word]
+        for suf in STEM_SUFFIXES:
+            if word.endswith(suf) and len(word) > len(suf) + 2:
+                stem = word[: -len(suf)]
+                if stem in webster_by_word:
+                    return webster_by_word[stem]
+                if suf in ('ing', 'ed') and len(stem) >= 3:
+                    stem2 = stem[:-1]  # doubled consonant case
+                    if stem2 in webster_by_word:
+                        return webster_by_word[stem2]
+                if suf == 'eth':
+                    stem3 = stem + 'e'
+                    if stem3 in webster_by_word:
+                        return webster_by_word[stem3]
+        return None
+
     defs_1828 = {}
     missing = []
-    for r in word_records:
-        word = r["word"]
-        if word in webster_by_word:
-            defs_1828[word] = webster_by_word[word]
+    # Words to look up: auto tier + manually-added words
+    all_lookup_words = [r["word"] for r in word_records]
+    try:
+        manual = json.loads(
+            (PROJECT / "frontend/src/data/manual-additions.json").read_text(encoding="utf-8")
+        )
+        for entry in manual.get("additions", []):
+            if entry["word"] not in all_lookup_words:
+                all_lookup_words.append(entry["word"])
+    except FileNotFoundError:
+        pass
+
+    for word in all_lookup_words:
+        entries = stem_lookup(word)
+        if entries:
+            defs_1828[word] = entries
         else:
             missing.append(word)
     print(f"  1828 definitions: {len(defs_1828):,} present, {len(missing)} missing")
@@ -191,8 +227,17 @@ def main():
     print(f"  Wrote definitions-1828.json")
 
     # --- Word list for the fetcher (just the words it needs to grab modern defs for) ---
-    # Limit to non-D tiers (A++ + A+ + B + C) for the first fetch run.
-    fetch_words = [r["word"] for r in word_records if r["tier"] != "D"]
+    # Limit to non-D tiers (A++ + A+ + B + C) plus the manual-additions list.
+    fetch_words: list[str] = [r["word"] for r in word_records if r["tier"] != "D"]
+    try:
+        manual = json.loads(
+            (PROJECT / "frontend/src/data/manual-additions.json").read_text(encoding="utf-8")
+        )
+        for entry in manual.get("additions", []):
+            if entry["word"] not in fetch_words:
+                fetch_words.append(entry["word"])
+    except FileNotFoundError:
+        pass
     (PROJECT / "scripts" / "fetch-wordlist.txt").write_text(
         "\n".join(fetch_words) + "\n", encoding="utf-8",
     )

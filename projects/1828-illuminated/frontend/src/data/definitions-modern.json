@@ -2,7 +2,7 @@
   "generated_at": "2026-05-20",
   "source": "https://api.dictionaryapi.dev/api/v2/entries/en (Free Dictionary API)",
   "stats": {
-    "found": 683,
+    "found": 689,
     "not_found_404": 20,
     "errors": 0
   },
@@ -20921,6 +20921,107 @@
             "A product; the quantity of something produced.",
             "The current return as a percentage of the price of a stock or bond.",
             "Profit earned from an investment; return on investment."
+          ]
+        }
+      ]
+    },
+    "obtain": {
+      "entries": [
+        {
+          "pos": "verb",
+          "definitions": [
+            "To get hold of; to gain possession of, to procure; to acquire, in any way.",
+            "To secure (that) a specific objective or state of affairs be reached.",
+            "To prevail, be victorious; to succeed.",
+            "To hold; to keep, possess or occupy.",
+            "To exist or be the case; to hold true, be in force."
+          ]
+        }
+      ]
+    },
+    "obtaining": {
+      "entries": [
+        {
+          "pos": "verb",
+          "definitions": [
+            "To get hold of; to gain possession of, to procure; to acquire, in any way.",
+            "To secure (that) a specific objective or state of affairs be reached.",
+            "To prevail, be victorious; to succeed.",
+            "To hold; to keep, possess or occupy.",
+            "To exist or be the case; to hold true, be in force."
+          ]
+        }
+      ]
+    },
+    "pacify": {
+      "entries": [
+        {
+          "pos": "verb",
+          "definitions": [
+            "To bring peace to (a place or situation), by ending war, fighting, violence, anger or agitation.",
+            "To appease (someone)."
+          ]
+        }
+      ]
+    },
+    "lull": {
+      "entries": [
+        {
+          "pos": "noun",
+          "definitions": [
+            "A period of rest or soothing.",
+            "A period of reduced activity; a respite",
+            "A period without waves or wind.",
+            "An extended pause between sets of waves."
+          ]
+        },
+        {
+          "pos": "verb",
+          "definitions": [
+            "To cause to rest by soothing influences; to compose; to calm",
+            "To become gradually calm; to subside; to cease or abate."
+          ]
+        }
+      ]
+    },
+    "cleave": {
+      "entries": [
+        {
+          "pos": "noun",
+          "definitions": [
+            "Flat, smooth surface produced by cleavage, or any similar surface produced by similar techniques, as in glass."
+          ]
+        },
+        {
+          "pos": "verb",
+          "definitions": [
+            "To split or sever something with, or as if with, a sharp instrument.",
+            "To break a single crystal (such as a gemstone or semiconductor wafer) along one of its more symmetrical crystallographic planes (often by impact), forming facets on the resulting pieces.",
+            "To make or accomplish by or as if by cutting.",
+            "To split (a complex molecule) into simpler molecules.",
+            "To split.",
+            "Of a crystal, to split along a natural plane of division."
+          ]
+        },
+        {
+          "pos": "verb",
+          "definitions": [
+            "To cling, adhere or stick fast to something; used with to or unto."
+          ]
+        }
+      ]
+    },
+    "endure": {
+      "entries": [
+        {
+          "pos": "verb",
+          "definitions": [
+            "To continue or carry on, despite obstacles or hardships; to persist.",
+            "To tolerate or put up with something unpleasant.",
+            "To last.",
+            "To remain firm, as under trial or suffering; to suffer patiently or without yielding; to bear up under adversity; to hold out.",
+            "To suffer patiently.",
+            "To indurate."
           ]
         }
       ]

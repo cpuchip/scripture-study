@@ -701,3 +701,9 @@ wrath
 wring
 wrong
 yield
+obtain
+obtaining
+pacify
+lull
+cleave
+endure

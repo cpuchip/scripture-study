@@ -4,34 +4,18 @@
   "missing_words": [
     "pharmakeia",
     "at-one-ment",
-    "blended",
-    "captives",
-    "clothed",
-    "compelled",
-    "consecrates",
     "conspiring",
-    "contains",
     "dakah",
     "deceived",
-    "declares",
-    "destroyed",
     "dispensing",
-    "elected",
-    "entices",
     "fathercraft",
     "footnote-chasing",
     "grammatica",
     "mothercraft",
-    "prisoners",
-    "reveals",
     "shabar",
     "sorceries",
     "spirit-led",
     "stretches",
-    "sustaining",
-    "tables",
-    "tests",
-    "understands",
     "verbal-only"
   ],
   "definitions": {
@@ -2635,6 +2619,33 @@
         ]
       }
     ],
+    "blended": [
+      {
+        "pos": "v.",
+        "definitions": [
+          "To mix or mingle together; esp. to mingle, combine, or associate so that the separate things mixed, or the line of demarcation, can not be distinguished. Hence: To confuse; to confound. Blending the grand, the beautiful, the gay. Percival.",
+          "To pollute by mixture or association; to spoil or corrupt; to blot; to stain. [Obs.] Spenser."
+        ]
+      },
+      {
+        "pos": "v.",
+        "definitions": [
+          "To mingle; to mix; to unite intimately; to pass or shade insensibly into each other, as colors. There is a tone of solemn and sacred feeling that blends with our conviviality. Irving."
+        ]
+      },
+      {
+        "pos": "n.",
+        "definitions": [
+          "A thorough mixture of one thing with another, as color, tint, etc., into another, so that it cannot be known where one ends or the other begins."
+        ]
+      },
+      {
+        "pos": "v.",
+        "definitions": [
+          "To make blind, literally or figuratively; to dazzle; to deceive. [Obs.] Chaucer."
+        ]
+      }
+    ],
     "blood": [
       {
         "pos": "n.",
@@ -3198,6 +3209,29 @@
         ]
       }
     ],
+    "captives": [
+      {
+        "pos": "n.",
+        "definitions": [
+          "A prisoner taken by force or stratagem, esp., by an enemy, in war; one kept in bondage or in the power of another. Then, when I am thy captive, talk of chains. Milton.",
+          "One charmed or subdued by beaty, excellence, or affection; one who is captivated."
+        ]
+      },
+      {
+        "pos": "a.",
+        "definitions": [
+          "Made prisoner, especially in war; held in bondage or in confinement. A poor, miserable, captive thrall. Milton.",
+          "Subdued by love; charmed; captivated. Even in so short a space, my wonan's heart Grossly grew captive to his honey words. Shak.",
+          "Of or pertaining to bondage or confinement; serving to confine; as, captive chains; captive hours."
+        ]
+      },
+      {
+        "pos": "v.",
+        "definitions": [
+          "To take prisoner; to capture. Their inhabitans slaughtered and captived. Burke."
+        ]
+      }
+    ],
     "carefully": [
       {
         "pos": "adv.",
@@ -3629,6 +3663,16 @@
         ]
       }
     ],
+    "clothed": [
+      {
+        "pos": "n.",
+        "definitions": [
+          "A fabric made of fibrous material (or sometimes of wire, as in wire cloth); commonly, a woven fabric of cotton, woolen, or linen, adapted to be made into garments; specifically, woolen fabrics, as distinguished from all others.",
+          "The dress; raiment. [Obs.] See Clothes. I'll ne'er distust my God for cloth and bread. Quarles.",
+          "The distinctive dress of any profession, especially of the clergy; hence, the clerical profession. Appeals were made to the priesthood. Would they tamely permit so gross an insult to be offered to their cloth Macaulay. The cloth, the clergy, are constituted for administering and for giving the best possible effect to . . . every axiom. I. Taylor. Body cloth. See under Body.  -- Cloth of gold, a fabric woven wholly or partially of threads of gold.  -- Cloth measure, the measure of length and surface by which cloth is measured and sold. For this object the standard yard is usually divided into quarters and nails.  -- Cloth paper, a coarse kind of paper used in pressing and finishing woolen cloth.  -- Cloth shearer, one who shears cloth and frees it from superfluous nap."
+        ]
+      }
+    ],
     "collect": [
       {
         "pos": "v.",
@@ -3832,6 +3876,24 @@
           "To reach round; to circumvent; to get within one's power; to obtain; to accomplish. If I can chek my erring love, I will: If not, to compass her I'll use my skill. Shak. How can you to compass your designs Denham.",
           "To curve; to bend into a circular form. [Obs. except in carpentry and shipbuilding.] Shak.",
           "To purpose; to intend; to imagine; to plot. Compassing and imagining the death of the king are synonymous terms; compassing signifying the purpose or design of the mind or will, and not, as in common speech, the carrying such design to effect. Blackstone."
+        ]
+      }
+    ],
+    "compelled": [
+      {
+        "pos": "v.",
+        "definitions": [
+          "To drive or urge with force, or irresistibly; to force; to constrain; to oblige; to necessitate, either by physical or moral force. Wolsey . . . compelled the people to pay up the whole subsidy at once. Hallam. And they compel one Simon . . . to bear his cross. Mark xv. 21.",
+          "To take by force or violence; to seize; to exact; to extort. [R.] Commissions, which compel from each The sixth part of his substance. Shak.",
+          "To force to yield; to overpower; to subjugate. Easy sleep their weary limbs compelled. Dryden. I compel all creatures to my will. Tennyson.",
+          "To gather or unite in a crowd or company. [A Latinism] \"In one troop compelled.\" Dryden.",
+          "To call forth; to summon. [Obs.] Chapman. She had this knight from far compelled. Spenser."
+        ]
+      },
+      {
+        "pos": "v.",
+        "definitions": [
+          "To make one yield or submit. \"If she can not entreat, I can not compel.\" Shak."
         ]
       }
     ],
@@ -4040,6 +4102,23 @@
         ]
       }
     ],
+    "consecrates": [
+      {
+        "pos": "a.",
+        "definitions": [
+          "Consecrated; devoted; dedicated; sacred. They were assembled in that consecrate place. Bacon."
+        ]
+      },
+      {
+        "pos": "v.",
+        "definitions": [
+          "To make, or declare to be, sacred; to appropriate to sacred uses; to set apart, dedicate, or devote, to the service or worship of God; as, to consecrate a church; to give (one's self) unreservedly, as to the service of God. One day in the week is . . . consecrated to a holy rest. Sharp.",
+          "To set apart to a sacred office; as, to consecrate a bishop. Thou shalt consecrate Aaron and his sons. Ex. xxix. 9.",
+          "To canonize; to exalt to the rank of a saint; to enroll among the gods, as a Roman emperor.",
+          "To render venerable or revered; to hallow; to dignify; as, rules or principles consecrated by time. Burke."
+        ]
+      }
+    ],
     "consecration": [
       {
         "pos": "n.",
@@ -4110,6 +4189,22 @@
       }
     ],
     "contain": [
+      {
+        "pos": "v.",
+        "definitions": [
+          "To hold within fixed limits; to comprise; to include; to inclose; to hold. Behold, heaven and the heaven of heavens can not contain thee; how much less this house! 2 Chron. vi. 18. When that this body did contain a spirit. Shak. What thy stores contain bring forth. Milton.",
+          "To have capacity for; to be able to hold; to hold; to be equivalent to; as, a bushel contains four pecks.",
+          "To put constraint upon; to restrain; to confine; to keep within bounds. [Obs., exept as used reflexively.] The king's person contains the unruly people from evil occasions. Spenser. Fear not, my lord: we can contain ourselves. Shak."
+        ]
+      },
+      {
+        "pos": "v.",
+        "definitions": [
+          "To restrain desire; to live in continence or chastity. But if they can not contain, let them marry. 1 Cor. vii. 9."
+        ]
+      }
+    ],
+    "contains": [
       {
         "pos": "v.",
         "definitions": [
@@ -4825,6 +4920,24 @@
         ]
       }
     ],
+    "declares": [
+      {
+        "pos": "v.",
+        "definitions": [
+          "To make clear; to free from obscurity. [Obs.] \"To declare this a little.\" Boyle.",
+          "To make known by language; to communicate or manifest explicitly and plainly in any way; to exhibit; to publish; to proclaim; to announce. This day I have begot whom I declare My only Son. Milton. The heavens declare the glory of God. Ps. xix. 1.",
+          "To make declaration of; to assert; to affirm; to set forth; to avow; as, he declares the story to be false. I the Lord . . . declare things that are right. Isa. xlv. 19.",
+          "To make full statement of, as goods, etc., for the purpose of paying taxes, duties, etc. To declare off, to recede from an agreement, undertaking, contract, etc.; to renounce.  -- To declare one's self, to avow one's opinion; to show openly what one thinks, or which side he espouses."
+        ]
+      },
+      {
+        "pos": "v.",
+        "definitions": [
+          "To make a declaration, or an open and explicit avowal; to proclaim one's self; -- often with for or against; as, victory declares against the allies. Like fawning courtiers, for success they wait, And then come smiling, and declare for fate. Dryden.",
+          "To state the plaintiff's cause of action at law in a legal form; as, the plaintiff declares in trespass."
+        ]
+      }
+    ],
     "decline": [
       {
         "pos": "v.",
@@ -4988,6 +5101,16 @@
           "A step or remove downward in any scale of gradation; a degree in the scale of genealogy; a generation. No man living is a thousand descents removed from Adam himself. Hooker.",
           "Lowest place; extreme downward place. [R.] And from the extremest upward of thy head, To the descent and dust below thy foot. Shak.",
           "A passing from a higher to a lower tone."
+        ]
+      }
+    ],
+    "destroyed": [
+      {
+        "pos": "v.",
+        "definitions": [
+          "To unbuild; to pull or tear down; to separate virulently into its constituent parts; to break up the structure and organic existence of; to demolish. But ye shall destroy their altars, break their images, and cut down their groves. Ex. xxxiv. 13.",
+          "To ruin; to bring to naught; to put an end to; to annihilate; to consume. I will utterly pluck up and destroy that nation. Jer. xii. 17.",
+          "To put an end to the existence, prosperity, or beauty of; to kill. If him by force he can destroy, or, worse, By some false guile pervert. Milton."
         ]
       }
     ],
@@ -5607,6 +5730,31 @@
         ]
       }
     ],
+    "elected": [
+      {
+        "pos": "a.",
+        "definitions": [
+          "Chosen; taken by preference from among two or more. \"Colors quaint elect.\" Spenser.",
+          "Chosen as the object of mercy or divine favor; set apart to eternal life. \"The elect angels.\" 1 Tim. v. 21.",
+          "Chosen to an office, but not yet actually inducted into it; as, bishop elect; governor or mayor elect."
+        ]
+      },
+      {
+        "pos": "n.",
+        "definitions": [
+          "One chosen or set apart. Behold my servant, whom I uphold; mine elect, in whom my soul delighteth. Is. xlii. 1.",
+          "Those who are chosen for salvation. Shall not God avenge his won elect Luke xviii. 7."
+        ]
+      },
+      {
+        "pos": "v.",
+        "definitions": [
+          "To pick out; to select; to choose. The deputy elected by the Lord. Shak.",
+          "To select or take for an office; to select by vote; as, to elect a representative, a president, or a governor.",
+          "To designate, choose, or select, as an object of mercy or favor."
+        ]
+      }
+    ],
     "embrace": [
       {
         "pos": "v.",
@@ -5677,6 +5825,14 @@
       }
     ],
     "entice": [
+      {
+        "pos": "v.",
+        "definitions": [
+          "To draw on, by exciting hope or desire; to allure; to attract; as, the bait enticed the fishes. Often in a bad sense: To lead astray; to induce to evil; to tempt; as, the sirens enticed them to listen. Roses blushing as they blow, And enticing men to pull. Beau. & Fl. My son, if sinners entice thee, consent thou not. Prov. i. 10. Go, and thine erring brother gain, Entice him home to be forgiven. Keble."
+        ]
+      }
+    ],
+    "entices": [
       {
         "pos": "v.",
         "definitions": [
@@ -11295,6 +11451,15 @@
         ]
       }
     ],
+    "prisoners": [
+      {
+        "pos": "n.",
+        "definitions": [
+          "One who is confined in a prison. Piers Plowman.",
+          "A person under arrest, or in custody, whether in prison or not; a person held in involuntary restraint; a captive; as, a prisoner at the bar of a court. Bouvier. Prisoner of Hope thou art, -- look up and sing. Keble. Prisoner's base. See Base, n., 24."
+        ]
+      }
+    ],
     "private": [
       {
         "pos": "a.",
@@ -12367,6 +12532,22 @@
           "Especially, the rising again from the dead; the resumption of life by the dead; as, the resurrection of Jesus Christ; the general resurrection of all the dead at the Day of Judgment. Nor after resurrection shall he stay Longer on earth. Milton.",
           "State of being risen from the dead; future state. In the resurrection they neither marry nor are given in marriage. Matt. xxii. 30.",
           "The cause or exemplar of a rising from the dead. I am the resurrection, and the life. John xi. 25. Cross of the resurrection, a slender cross with a pennant floating from the junction of the bars.  -- Resurrection plant (Bot.), a name given to several species of Selaginella (as S. convoluta and S. lepidophylla), flowerless plants which, when dry, close up so as to resemble a bird's nest, but revive and expand again when moistened. The name is sometimes also given to the rose of Jericho. See under Rose."
+        ]
+      }
+    ],
+    "reveals": [
+      {
+        "pos": "v.",
+        "definitions": [
+          "To make known (that which has been concealed or kept secret); to unveil; to disclose; to show. Light was the wound, the prince's care unknown, She might not, would not, yet reveal her own. Waller.",
+          "Specifically, to communicate (that which could not be known or discovered without divine or supernatural instruction or agency)."
+        ]
+      },
+      {
+        "pos": "n.",
+        "definitions": [
+          "A revealing; a disclosure. [Obs.]",
+          "The side of an opening for a window, doorway, or the like, between the door frame or window frame and the outer surface of the wall; or, where the opening is not filled with a door, etc., the whole thickness of the wall; the jamb. [Written also revel.]"
         ]
       }
     ],
@@ -15076,6 +15257,27 @@
         ]
       }
     ],
+    "sustaining": [
+      {
+        "pos": "v.",
+        "definitions": [
+          "To keep from falling; to bear; to uphold; to support; as, a foundation sustains the superstructure; a beast sustains a load; a rope sustains a weight. Every pillar the temple to sustain. Chaucer.",
+          "Hence, to keep from sinking, as in despondence, or the like; to support. No comfortable expectations of another life to sustain him under the evils in this world. Tillotson.",
+          "To maintain; to keep alive; to support; to subsist; to nourish; as, provisions to sustain an army.",
+          "To aid, comfort, or relieve; to vindicate. Shak. His sons, who seek the tyrant to sustain. Dryden.",
+          "To endure without failing or yielding; to bear up under; as, to sustain defeat and disappointment.",
+          "To suffer; to bear; to undergo. Shall Turnus, then, such endless toil sustain Dryden. You shall sustain more new disgraces. Shak.",
+          "To allow the prosecution of; to admit as valid; to sanction; to continue; not to dismiss or abate; as, the court sustained the action or suit.",
+          "To prove; to establish by evidence; to corroborate or confirm; to be conclusive of; as, to sustain a charge, an accusation, or a proposition."
+        ]
+      },
+      {
+        "pos": "n.",
+        "definitions": [
+          "One who, or that which, upholds or sustains; a sustainer. [Obs.] I waked again, for my sustain was the Lord. Milton."
+        ]
+      }
+    ],
     "swear": [
       {
         "pos": "v.",
@@ -15092,6 +15294,27 @@
           "To put to an oath; to cause to take an oath; to administer an oath to; -- ofetn followed by in or into; as, to swear witnesses; to swear a jury; to swear in an officer; he was sworn into office.",
           "To declare or charge upon oath; as, he swore treason against his friend. Johnson.",
           "To appeal to by an oath. Now, by Apollo, king, Thou swear'st thy gods in vain. Shak. To swear the peace against one, to make oath that one is under the actual fear of death or bodily harm from the person, in which case the person must find sureties that he will keep the peace."
+        ]
+      }
+    ],
+    "tables": [
+      {
+        "pos": "v.",
+        "definitions": [
+          "To form into a table or catalogue; to tabulate; as, to table fines.",
+          "To delineate, as on a table; to represent, as in a picture. [Obs.] Tabled and pictured in the chambers of meditation. Bacon.",
+          "To supply with food; to feed. [Obs.] Milton.",
+          "To insert, as one piece of timber into another, by alternate scores or projections from the middle, to prevent slipping; to scarf.",
+          "To lay or place on a table, as money. Carlyle.",
+          "In parliamentary usage, to lay on the table; to postpone, by a formal vote, the consideration of (a bill, motion, or the like) till called for, or indefinitely.",
+          "To enter upon the docket; as, to table charges against some one.",
+          "To make board hems in the skirts and bottoms of (sails) in order to strengthen them in the part attached to the boltrope."
+        ]
+      },
+      {
+        "pos": "v.",
+        "definitions": [
+          "To live at the table of another; to board; to eat. [Obs.] \"He . . . was driven from the society of men to table with the beasts.\" South."
         ]
       }
     ],
@@ -15290,6 +15513,40 @@
           "The tenth part of annual produce, income, increase, or the like; a tithe. Shak.",
           "The interval between any tone and the tone represented on the tenth degree of the staff above it, as between one of the scale and three of the octave above; the octave of the third.",
           "A temporary aid issuing out of personal property, and granted to the king by Parliament; formerly, the real tenth part of all the movables belonging to the subject."
+        ]
+      }
+    ],
+    "tests": [
+      {
+        "pos": "n.",
+        "definitions": [
+          "A cupel or cupelling hearth in which precious metals are melted for trial and refinement. Our ingots, tests, and many mo. Chaucer.",
+          "Examination or trial by the cupel; hence, any critical examination or decisive trial; as, to put a man's assertions to a test. \"Bring me to the test.\" Shak.",
+          "Means of trial; as, absence is a test of love. Each test every light her muse will bear. Dryden.",
+          "That with which anything is compared for proof of its genuineness; a touchstone; a standard. Life, force, and beauty must to all impart, At once the source, and end, and test of art. Pope.",
+          "Discriminative characteristic; standard of judgment; ground of admission or exclusion. Our test excludes your tribe from benefit. Dryden.",
+          "Judgment; distinction; discrimination. Who would excel, when few can make a test Betwixt indifferent writing and the best Dryden.",
+          "A reaction employed to recognize or distinguish any particular substance or constituent of a compound, as the production of some characteristic precipitate; also, the reagent employed to produce such reaction; thus, the ordinary test for sulphuric acid is the production of a white insoluble precipitate of barium sulphate by means of some soluble barium salt. Test act (Eng. Law), an act of the English Parliament prescribing a form of oath and declaration against transubstantiation, which all officers, civil and military, were formerly obliged to take within six months after their admission to office. They were obliged also to receive the sacrament according to the usage of the Church of England. Blackstone.  -- Test object (Optics), an object which tests the power or quality of a microscope or telescope, by requiring a certain degree of excellence in the instrument to determine its existence or its peculiar texture or markings.  -- Test paper. (a) (Chem.) Paper prepared for use in testing for certain substances by being saturated with a reagent which changes color in some specific way when acted upon by those substances; thus, litmus paper is turned red by acids, and blue by alkalies, turmeric paper is turned brown by alkalies, etc. (b) (Law) An instrument admitted as a standard or comparison of handwriting in those jurisdictions in which comparison of hands is permitted as a mode of proving handwriting.  -- Test tube. (Chem.) (a) A simple tube of thin glass, closed at one end, for heating solutions and for performing ordinary reactions. (b) A graduated tube."
+        ]
+      },
+      {
+        "pos": "v.",
+        "definitions": [
+          "To refine, as gold or silver, in a test, or cupel; to subject to cupellation.",
+          "To put to the proof; to prove the truth, genuineness, or quality of by experiment, or by some principle or standard; to try; as, to test the soundness of a principle; to test the validity of an argument. Experience is the surest standard by which to test the real tendency of the existing constitution. Washington.",
+          "To examine or try, as by the use of some reagent; as, to test a solution by litmus paper."
+        ]
+      },
+      {
+        "pos": "n.",
+        "definitions": [
+          "A witness. [Obs.] Prelates and great lords of England, who were for the more surety tests of that deed. Ld. Berners."
+        ]
+      },
+      {
+        "pos": "v.",
+        "definitions": [
+          "To make a testament, or will. [Obs.]"
         ]
       }
     ],
@@ -15845,6 +16102,25 @@
         "pos": "a.",
         "definitions": [
           "Lower in position, intensity, rank, or degree; subject; subordinate; -- generally in composition with a noun, and written with or without the hyphen; as, an undercurrent; undertone; underdose; under-garment; underofficer; undersheriff. Under covert (Zo\u00f6l.), one of the feathers situated beneath the bases of the quills in the wings and tail of a bird. See Illust. under Bird."
+        ]
+      }
+    ],
+    "understands": [
+      {
+        "pos": "v.",
+        "definitions": [
+          "To have just and adequate ideas of; to apprehended the meaning or intention of; to have knowledge of; to comprehend; to know; as, to understand a problem in Euclid; to understand a proposition or a declaration; the court understands the advocate or his argument; to understand the sacred oracles; to understand a nod or a wink. Speaketh [i. e., speak thou] so plain at this time, I you pray, That we may understande what ye say. Chaucer. I understand not what you mean by this. Shak. Understood not all was but a show. Milton. A tongue not understanded of the people. Bk. of Com. Prayer.",
+          "To be apprised, or have information, of; to learn; to be informed of; to hear; as, I understand that Congress has passed the bill.",
+          "To recognize or hold as being or signifying; to suppose to mean; to interpret; to explain. The most learned interpreters understood the words of sin, and not of Abel. Locke.",
+          "To mean without expressing; to imply tacitly; to take for granted; to assume. War, then, war, Open or understood, must be resolved. Milton.",
+          "To stand under; to support. [Jocose & R.] Shak. To give one to understand, to cause one to know.  -- To make one's self understood, to make one's meaning clear."
+        ]
+      },
+      {
+        "pos": "v.",
+        "definitions": [
+          "To have the use of the intellectual faculties; to be an intelligent being. Imparadised in you, in whom alone I understand, and grow, and see. Donne.",
+          "To be informed; to have or receive knowledge. I came to Jerusalem, and understood of the evil that Eliashib did for Tobiah. Neh. xiii. 7."
         ]
       }
     ],
@@ -18981,6 +19257,107 @@
         "pos": "v.",
         "definitions": [
           "To coat with zinc; to galvanize."
+        ]
+      }
+    ],
+    "obtain": [
+      {
+        "pos": "v.",
+        "definitions": [
+          "To hold; to keep; to possess. [Obs.] His mother, then, is mortal, but his Sire He who obtains the monarchy of heaven. Milton.",
+          "To get hold of by effort; to gain possession of; to procure; to acquire, in any way. Some pray for riches; riches they obtain. Dryden. By guileful fair words peace may be obtained. Shak. It may be that I may obtain children by her. Gen. xvi. 2."
+        ]
+      },
+      {
+        "pos": "v.",
+        "definitions": [
+          "To become held; to gain or have a firm footing; to be recognized or established; to subsist; to become prevalent or general; to prevail; as, the custom obtains of going to the seashore in summer. Sobriety hath by use obtained to signify temperance in drinking. Jer. Taylor. The Theodosian code, several hundred years after Justinian's time, did obtain in the western parts of Europe. Baker.",
+          "To prevail; to succeed. [R.] Evelyn. So run that ye may obtain. 1 Cor. ix. 24. There is due from the judge to the advocate, some commendation, where causes are fair pleaded; especially towards the side which obtaineth not. Bacon."
+        ]
+      }
+    ],
+    "obtaining": [
+      {
+        "pos": "v.",
+        "definitions": [
+          "To hold; to keep; to possess. [Obs.] His mother, then, is mortal, but his Sire He who obtains the monarchy of heaven. Milton.",
+          "To get hold of by effort; to gain possession of; to procure; to acquire, in any way. Some pray for riches; riches they obtain. Dryden. By guileful fair words peace may be obtained. Shak. It may be that I may obtain children by her. Gen. xvi. 2."
+        ]
+      },
+      {
+        "pos": "v.",
+        "definitions": [
+          "To become held; to gain or have a firm footing; to be recognized or established; to subsist; to become prevalent or general; to prevail; as, the custom obtains of going to the seashore in summer. Sobriety hath by use obtained to signify temperance in drinking. Jer. Taylor. The Theodosian code, several hundred years after Justinian's time, did obtain in the western parts of Europe. Baker.",
+          "To prevail; to succeed. [R.] Evelyn. So run that ye may obtain. 1 Cor. ix. 24. There is due from the judge to the advocate, some commendation, where causes are fair pleaded; especially towards the side which obtaineth not. Bacon."
+        ]
+      }
+    ],
+    "pacify": [
+      {
+        "pos": "v.",
+        "definitions": [
+          "To make to be at peace; to appease; to calm; to still; to quiet; to allay the agitation, excitement, or resentment of; to tranquillize; as, to pacify a man when angry; to pacify pride, appetite, or importunity. \"Pray ye, pacify yourself.\" Shak."
+        ]
+      }
+    ],
+    "lull": [
+      {
+        "pos": "v.",
+        "definitions": [
+          "To cause to rest by soothing influences; to compose; to calm; to soothe; to quiet. \" To lull him soft asleep.\" Spenser. Such sweet compulsion doth in music lie, To lull the daughters of necessity. Milton."
+        ]
+      },
+      {
+        "pos": "v.",
+        "definitions": [
+          "To become gradually calm; to subside; to cease or abate for a time; as, the storm lulls."
+        ]
+      },
+      {
+        "pos": "n.",
+        "definitions": [
+          "The power or quality of soothing; that which soothes; a lullaby. [R.] Young.",
+          "A temporary cessation of storm or confusion."
+        ]
+      }
+    ],
+    "cleave": [
+      {
+        "pos": "v.",
+        "definitions": [
+          "To adhere closely; to stick; to hold fast; to cling. My bones cleave to my skin. Ps. cii. 5. The diseases of Egypt . . . shall cleave unto thee. Deut. xxviii. 60. Sophistry cleaves close to and protects Sin's rotten trunk, concealing its defects. Cowper.",
+          "To unite or be united closely in interest or affection; to adhere with strong attachment. Therefore shall a man leave his father and his mother, and shall cleave unto his wife. Gen. ii. 24. Cleave unto the Lord your God. Josh. xxiii. 8.",
+          "To fit; to be adapted; to assimilate. [Poetic.] New honors come upon him, Like our strange garments, cleave not to their mold But with the aid of use. Shak."
+        ]
+      },
+      {
+        "pos": "v.",
+        "definitions": [
+          "To part or divide by force; to split or rive; to cut. O Hamlet, thou hast cleft my heart in twain. Shak.",
+          "To pert or open naturally; to divide. Every beast that parteth the hoof, and cleaveth the cleft into two claws. Deut. xiv. 6."
+        ]
+      },
+      {
+        "pos": "v.",
+        "definitions": [
+          "To part; to open; to crack; to separate; as parts of bodies; as, the ground cleaves by frost. The Mount of Olives shall cleave in the midst. Zech. xiv. 4."
+        ]
+      }
+    ],
+    "endure": [
+      {
+        "pos": "v.",
+        "definitions": [
+          "To continue in the same state without perishing; to last; to remain. Their verdure still endure. Shak. He shall hold it [his house] fast, but it shall not endure. Job viii. 15.",
+          "To remain firm, as under trial or suffering; to suffer patiently or without yielding; to bear up under adversity; to hold out. Can thine heart endure, or can thine hands be strong in the days that I shall deal with thee Ezek. xxii. 14."
+        ]
+      },
+      {
+        "pos": "v.",
+        "definitions": [
+          "To remain firm under; to sustain; to undergo; to support without breaking or yielding; as, metals endure a certain degree of heat without melting; to endure wind and weather. Both were of shining steel, and wrought so pure, As might the strokes of two such arms endure. Dryden.",
+          "To bear with patience; to suffer without opposition or without sinking under the pressure or affliction; to bear up under; to put up with; to tolerate. I will no longer endure it. Shak. Therefore I endure all things for the elect's sake. 2 Tim. ii. 10. How can I endure to see the evil that shall come unto my people Esther viii. 6.",
+          "To harden; to toughen; to make hardy. [Obs.] Manly limbs endured with little ease. Spenser."
         ]
       }
     ]
