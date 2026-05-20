@@ -1,13 +1,17 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted, computed } from 'vue'
-import { useRouter } from 'vue-router'
-import { api, type DashboardResp } from '@/api'
+import { useRouter, RouterLink } from 'vue-router'
+import { api, scheduledApi, type DashboardResp, type ScheduledRunRow } from '@/api'
 
 const router = useRouter()
 
 const data = ref<DashboardResp | null>(null)
 const error = ref<string>('')
 const loading = ref(false)
+
+// PE-C.3 — last 7 scheduled runs
+const scheduledRuns = ref<ScheduledRunRow[]>([])
+const scheduledRunsError = ref('')
 
 async function load() {
   loading.value = true
@@ -18,6 +22,15 @@ async function load() {
     error.value = String(e)
   } finally {
     loading.value = false
+  }
+  // Scheduled-runs is independent of dashboard health and tolerated to
+  // fail without flagging the overall dashboard error.
+  try {
+    const r = await scheduledApi.recentRuns(7)
+    scheduledRuns.value = r.items
+    scheduledRunsError.value = ''
+  } catch (e) {
+    scheduledRunsError.value = String(e)
   }
 }
 
@@ -201,6 +214,62 @@ const errorCount = computed(() => data.value?.recent_errors?.length ?? 0)
           </div>
         </li>
       </ul>
+    </section>
+
+    <!-- PE-C.3: Last 7 scheduled runs -->
+    <section
+      class="rounded-md border border-zinc-800 bg-zinc-900/50 overflow-hidden"
+    >
+      <div class="px-4 py-3 border-b border-zinc-800 flex items-center gap-2">
+        <h3 class="text-sm font-semibold">Last 7 scheduled runs</h3>
+        <RouterLink
+          to="/scheduled"
+          class="ml-auto text-xs text-zinc-400 hover:text-zinc-200"
+        >manage schedules →</RouterLink>
+      </div>
+      <div v-if="scheduledRunsError" class="px-4 py-3 text-xs text-red-400">{{ scheduledRunsError }}</div>
+      <div
+        v-else-if="scheduledRuns.length === 0"
+        class="px-4 py-3 text-xs text-zinc-500"
+      >No scheduled runs yet. <RouterLink to="/scheduled" class="text-zinc-300 hover:text-zinc-100 underline">Add a schedule</RouterLink> or wait for <code class="font-mono">ai-news-7am</code> to fire.</div>
+      <table v-else class="w-full text-sm">
+        <thead class="text-zinc-500 text-xs uppercase tracking-wide">
+          <tr>
+            <th class="text-left px-4 py-2 font-medium">Schedule</th>
+            <th class="text-left px-4 py-2 font-medium">Pipeline</th>
+            <th class="text-left px-4 py-2 font-medium">Stage</th>
+            <th class="text-left px-4 py-2 font-medium">Status</th>
+            <th class="text-right px-4 py-2 font-medium">When</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            v-for="r in scheduledRuns"
+            :key="r.work_item_id"
+            class="border-t border-zinc-800/50 hover:bg-zinc-900 cursor-pointer"
+            @click="router.push(`/work-items/${r.work_item_id}`)"
+          >
+            <td class="px-4 py-2 font-mono text-xs text-zinc-100">{{ r.schedule_slug || r.slug }}</td>
+            <td class="px-4 py-2 text-zinc-300">{{ r.pipeline_family }}</td>
+            <td class="px-4 py-2 text-zinc-300">{{ r.current_stage || '—' }}</td>
+            <td class="px-4 py-2">
+              <span
+                class="inline-block px-2 py-0.5 rounded text-xs"
+                :class="{
+                  'bg-emerald-900/40 text-emerald-300': r.status === 'completed',
+                  'bg-blue-900/40 text-blue-300': r.status === 'in_progress',
+                  'bg-zinc-800 text-zinc-300': r.status === 'pending',
+                  'bg-amber-900/40 text-amber-300': r.status === 'awaiting_review',
+                  'bg-red-900/40 text-red-300': r.status === 'failed' || r.status === 'quarantined',
+                }"
+              >{{ r.status }}</span>
+            </td>
+            <td class="px-4 py-2 text-right text-zinc-500 text-xs">
+              {{ fmtRelative(r.completed_at || r.created_at) }}
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </section>
 
     <div
