@@ -10,10 +10,11 @@ import { RouterLink, RouterView } from 'vue-router'
           <span class="text-xl font-serif font-semibold tracking-tight">1828 Illuminated</span>
           <span class="text-xs text-stone-500 hidden sm:inline">— scripture in its Restoration-era language frame</span>
         </RouterLink>
-        <nav class="flex gap-5 text-sm">
+        <nav class="flex gap-5 text-sm items-baseline">
           <RouterLink to="/word" class="text-stone-700 hover:text-stone-900" active-class="text-amber-700 font-medium">Word Search</RouterLink>
           <RouterLink to="/verse" class="text-stone-700 hover:text-stone-900" active-class="text-amber-700 font-medium">Verse Explorer</RouterLink>
           <RouterLink to="/about" class="text-stone-700 hover:text-stone-900" active-class="text-amber-700 font-medium">About</RouterLink>
+          <RouterLink to="/settings" class="text-stone-500 hover:text-stone-900 text-xs" active-class="text-amber-700 font-medium" title="LLM endpoint settings">⚙</RouterLink>
         </nav>
       </div>
     </header>

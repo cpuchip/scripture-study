@@ -1,9 +1,11 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+import { ref, computed, watch } from 'vue'
+import { RouterLink } from 'vue-router'
 import HighlightedText from '@/components/HighlightedText.vue'
 import WordCard from '@/components/WordCard.vue'
-import ScripturePanel from '@/components/ScripturePanel.vue'
 import { selectedWord, selectWord, useWordData, tokenize } from '@/composables/useWordData'
+import { useLLMRender } from '@/composables/useLLMRender'
+import { isConfigured } from '@/composables/useLLMSettings'
 import demoData from '@/data/demo-verses.json'
 
 const data = useWordData()
@@ -39,6 +41,25 @@ const wordsInText = computed(() => {
 })
 
 const samplePaste = `Yea, blessed are they whose feet stand upon the land of Zion, who have obeyed my gospel; for they shall receive for their reward the good things of the earth, and it shall bring forth in its strength.`
+
+// LLM-render — stretch goal #1. Gated behind user's LLM settings.
+const { state: renderState, render: renderModern, reset: resetRender } = useLLMRender()
+const llmConfigured = computed(() => isConfigured())
+
+function onRenderClick() {
+  if (activeText.value) {
+    renderModern(activeText.value)
+  }
+}
+function onVerseChange() {
+  resetRender()
+}
+
+// Reset rendered output any time the source text changes (mode switch, new
+// demo selection, paste edits) so we don't leave stale renders visible.
+watch(activeText, () => {
+  resetRender()
+})
 </script>
 
 <template>
@@ -68,6 +89,7 @@ const samplePaste = `Yea, blessed are they whose feet stand upon the land of Zio
         <div v-if="mode === 'demo'">
           <select
             v-model="selectedVerseId"
+            @change="onVerseChange"
             class="px-3 py-2 rounded-lg border border-stone-300 bg-white text-sm mb-4 w-full max-w-md"
           >
             <option v-for="v in demoVerses" :key="v.id" :value="v.id">{{ v.ref }}</option>
@@ -122,6 +144,43 @@ const samplePaste = `Yea, blessed are they whose feet stand upon the land of Zio
               <span class="font-serif">{{ w.word }}</span>
               <span class="text-xs text-stone-500 ml-1.5">{{ w.tier }}</span>
             </button>
+          </div>
+        </section>
+
+        <!-- LLM-render: stretch goal #1 -->
+        <section v-if="activeText" class="mt-6 border-t border-stone-300 pt-6">
+          <div class="flex items-center justify-between gap-3 mb-3">
+            <h3 class="text-sm uppercase tracking-wider text-stone-500 font-sans">Render in modern English</h3>
+            <RouterLink v-if="!llmConfigured" to="/settings" class="text-xs text-amber-700 hover:underline">
+              Configure LLM endpoint ⚙ ↗
+            </RouterLink>
+          </div>
+          <p class="text-xs text-stone-500 mb-3">
+            Asks your configured LLM to render the passage in modern English while preserving each tier word's 1828 sense. Original words marked in <code class="bg-stone-100 px-1 rounded">[brackets]</code> for transparency. Token costs land on your account.
+          </p>
+          <button
+            class="px-4 py-2 rounded-lg text-sm font-medium transition"
+            :class="llmConfigured && !renderState.loading
+              ? 'bg-amber-600 text-white hover:bg-amber-700'
+              : 'bg-stone-200 text-stone-500 cursor-not-allowed'"
+            :disabled="!llmConfigured || renderState.loading"
+            @click="onRenderClick"
+          >
+            <span v-if="renderState.loading">Rendering…</span>
+            <span v-else-if="renderState.result">Render again</span>
+            <span v-else>Render in modern English</span>
+          </button>
+
+          <div v-if="renderState.error" class="mt-3 def-card p-4 text-sm text-red-700 bg-red-50 border-red-200">
+            <strong>Error:</strong> {{ renderState.error }}
+          </div>
+
+          <div v-if="renderState.result" class="mt-4 def-card p-5 bg-amber-50/30 border-amber-300">
+            <div class="text-xs text-stone-500 mb-2 flex justify-between">
+              <span>Rendered ({{ Math.round(renderState.result.durationMs) }}ms)</span>
+              <button @click="resetRender" class="text-stone-500 hover:text-stone-900">Clear ✕</button>
+            </div>
+            <div class="font-serif text-lg leading-relaxed text-stone-900 whitespace-pre-wrap">{{ renderState.result.modernized }}</div>
           </div>
         </section>
       </div>
