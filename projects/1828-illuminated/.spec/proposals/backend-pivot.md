@@ -53,13 +53,22 @@ That MCP server's README says explicitly: *"2013 LDS edition text ensuring consi
 
 `bcbooks/scriptures-json` upstream does not include a license file in the data directory (only a repository LICENSE). Their position is implicit, not declared.
 
-**This must be ratified before we ship anything that bundles their text.** Three options:
+**This must be ratified before we ship anything that bundles their text.** Three options were considered:
 
 - **D-BE-COPYRIGHT (option A) — accept bcbooks as-is.** Treat the bcbooks corpus as community-resourced. Cite their repo as the source. Risk: if the LDS Church's intellectual property department disagrees, we have a takedown event.
 - **D-BE-COPYRIGHT (option B) — strip to unambiguously-PD layer.** Start from a known-PD source for each volume: 1769 Cambridge KJV for OT/NT (PD), 1830 first edition Book of Mormon (PD), 1835 first edition D&C (PD but verse numbering differs from modern editions), 1851 Pearl of Great Price (PD with differences). Cross-reference modern verse numbering for the rendering layer. More work; copyright-clean.
-- **D-BE-COPYRIGHT (option C) — keep iframe for canon, render only for user-pasted text.** Backend serves dictionary + LLM proxy + search-against-pasted-text. Scripture canon stays an iframe (or external link). Loses one of the six wins but keeps the copyright posture clean. **Default fallback if A and B both fail.**
+- **D-BE-COPYRIGHT (option C) — keep iframe for canon, render only for user-pasted text.** Backend serves dictionary + LLM proxy + search-against-pasted-text. Scripture canon stays an iframe (or external link). Loses one of the six wins but keeps the copyright posture clean.
 
-This is the first decision Michael ratifies before any other proposal in this set is buildable. Defaulting silently to A would betray the `respect-the-canon` intent value.
+**RATIFIED 2026-05-20 — option D (hybrid of A + C):**
+
+Use bcbooks 2013-edition verse text as the corpus, **but on ingest strip footnotes, chapter headings, study-aid apparatus, and italicization** so we keep only the verse text and modern numbering. The verse text underneath is PD; modern numbering + chapter/section segmentation enables easy cross-reference with study work, with current scripture-mcp tooling, and with `gospel-library/` paths. The most copyright-encumbered surface (headings, footnotes) does not enter the DB. Posture: home / personal-study educational fair use, with bcbooks cited as source.
+
+**Every rendered scripture surface MUST also provide a "break out to tabbed iframe" affordance** that opens the same passage at churchofjesuschrist.org. This is the `cpuchip.net/ScripturePanel.vue` pattern. The local-render is the highlight-friendly study lens; the iframe is the canonical source for anyone who wants headers / footnotes / study apparatus.
+
+Implementation implications for the corpus ingest path (see `scripture-corpus.md`):
+- The ingest function MUST strip everything that isn't verse text proper. Whatever footnote markers (`[a]`, `*`, superscript letters), bracketed publisher additions, or section-heading text bcbooks ships gets dropped pre-INSERT.
+- The `scripture_corpus_meta` row records the strip rules applied + the bcbooks source SHA, so a future audit can verify what we kept and what we dropped.
+- Frontend: every rendered verse / chapter shows a small `↗` button that opens the church URL in a tabbed iframe (the pattern already lives at `projects/cpuchip.net/src/components/ScripturePanel.vue`).
 
 ## IV. Architecture — three containers under one compose file
 
@@ -210,7 +219,7 @@ After this pivot ratifies and ships, these specific lines need rewriting (not no
 
 | # | Decision | Default | Stakes |
 |---|---|---|---|
-| **D-BE-COPYRIGHT** | bcbooks as-is / strip-to-PD / iframe-only-for-canon | **must answer first; no default** | If wrong, takedown risk or scope creep |
+| **D-BE-COPYRIGHT** | bcbooks as-is / strip-to-PD / iframe-only-for-canon / **hybrid** | **RATIFIED 2026-05-20 — option D hybrid** (bcbooks verse text, strip footnotes + headings on ingest, always provide tabbed-iframe breakout to churchofjesuschrist.org) | Settled |
 | **D-BE-1** | Go backend vs Node | Go | Go; matches workspace pattern (becoming, stewards-ui, scriptures-mcp) |
 | **D-BE-2** | Postgres 17-alpine vs 16-alpine vs 18 | 17-alpine | Matches becoming-app; supported through 2029 |
 | **D-BE-3** | Same docker-compose project as Dokploy / separate | Same | Single deploy unit, single rollback |
@@ -220,7 +229,7 @@ After this pivot ratifies and ships, these specific lines need rewriting (not no
 | **D-BE-7** | DB backup strategy | `pg_dump` nightly to a workspace-local path + Dokploy volume snapshot | Modern-def cache is the only non-reproducible data; weekly is probably fine |
 | **D-BE-8** | Frontend keeps the seed JSON files in `frontend/src/data/` after cutover | Yes (as canonical seed) | Source of truth for rebuilds; not bundled into runtime |
 | **D-BE-THM** | Thummim sync: postgres_fdw vs nightly snapshot vs HTTP endpoint exposed by stewards-ui | Nightly snapshot | Decouples the deploys; 14 entries today don't change minute-to-minute |
-| **D-BE-AUTH** | `/api/llm/render` open to anonymous traffic? Token-gated? Per-IP rate-limit? | Open with per-IP rate-limit (deferred to phase 2) | Could become a free LLM proxy if not careful |
+| **D-BE-AUTH** | `/api/llm/render` open to anonymous traffic? Token-gated? Per-IP rate-limit? | **RATIFIED 2026-05-20:** Session-token-required (per D-LP-2 BYOK flow) + per-IP rate-limit 10/min and 1000/day. **Rate-limit responses MUST be clearly attributed to the 1828 service**, not the upstream provider — body shape `{ "error": "rate_limited_by_1828", "limit_type": "per_ip_minute"\|"per_ip_day", "retry_after_seconds": N, "message": "1828.ibeco.me throttled this request because <reason>. Your provider may still allow more — this is our cap, not theirs." }`. When streaming arrives in phase 2, upstream provider rate-limit errors get passed through unchanged so the reader can distinguish "us" vs "their provider." | Settled |
 | **D-BE-CORS-FOR-PASTE** | If a power user wants to call `/api/scripture/search` from another site, allow it? | No (same-origin only at v1) | Permissive CORS can come later if requested |
 
 Eleven decisions plus the prerequisite copyright question. Ratify D-BE-COPYRIGHT first; the rest can be batched.

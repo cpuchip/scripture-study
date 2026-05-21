@@ -23,47 +23,80 @@ values:
     source: ".spec/proposals/1828-illuminated-scriptures.md §IV"
 
   respect-the-canon:
-    description: "Scripture text is not bundled — copyright. Iframe to churchofjesuschrist.org or accept user-provided text. We surface MEANING, not the verses themselves."
-    source: "projects/cpuchip.net/CLAUDE.md (the published convention)"
+    description: >
+      Scripture text shown locally is verse-text only — footnotes, chapter headings,
+      and study-aid apparatus are stripped on ingest from the bcbooks/scriptures-json
+      2013-edition source. Every rendered surface ALSO provides a tabbed-iframe
+      breakout to churchofjesuschrist.org so the canonical apparatus is one click
+      away. Posture: home / personal-study fair use of public-domain verse text.
+    source: "projects/1828-illuminated/.spec/proposals/backend-pivot.md §III (D-BE-COPYRIGHT ratified 2026-05-20, option D hybrid)"
 
   study-cross-reference:
     description: "When a word is one our substrate has already lensed (truth.md for 'intelligence', priesthood-oath-and-covenant.md for 'obtain', etc.), link to that study from the hover-card. Highest-leverage feature."
     source: "research/gospel/1828/00-FINAL-highlight-candidates.md"
 
 constraints:
-  no-scripture-text-bundled:
-    description: "Per cpuchip.net's convention. Scripture references go to churchofjesuschrist.org via iframe."
+  scripture-text-bundled-stripped:
+    description: >
+      Verse text from bcbooks/scriptures-json 2013-edition is bundled into the
+      backend's Postgres, with footnote markers, chapter/section headings, and
+      study-aid apparatus stripped pre-INSERT. Modern verse numbering is preserved
+      so cross-references work seamlessly. Every rendered surface in the frontend
+      MUST surface a tabbed-iframe breakout to churchofjesuschrist.org for the
+      full apparatus. (Supersedes the prior "no-scripture-text-bundled" constraint;
+      see ratification of D-BE-COPYRIGHT option D.)
     severity: critical
 
-  static-deploy-target:
-    description: "Deploy target 1828.ibeco.me. Multi-stage Docker build → nginx-alpine serving a Vue SPA. No backend in MVP."
+  static-frontend-with-sibling-backend:
+    description: >
+      Frontend stays a static Vue SPA served by nginx (multi-stage Docker, no SSR).
+      Backend is a sibling Go container with its own Postgres container. Three
+      services under one docker-compose.yaml at the project root. No state in the
+      frontend image; all state lives in the named pg-data volume. (Supersedes the
+      prior "no backend in MVP" constraint after D-BE-1..9 ratification.)
     severity: high
 
-  no-mcp-load-on-lm-studio:
-    description: "Per Michael's directive (2026-05-19). Gospel-engine-v2 backend uses local LM Studio; don't over-tax it. 1828 dictionary data is bundled at build time; modern definitions are pre-fetched."
+  llm-render-via-backend-byok:
+    description: >
+      LLM rendering goes through `/api/llm/render` on the 1828 backend. Readers
+      bring their own provider key (OpenAI / OpenRouter / opencode-go / opencode-zen)
+      via a Settings page; backend temp-holds the key in-memory for the session
+      length (24h sliding TTL, in-RAM only — never persisted). LM Studio is
+      reserved for embeddings only (future pgvector phase via Dokploy host tunnel).
+      Gospel-engine-v2's LM Studio pipeline is independent of this and unaffected.
     severity: high
+    source: "projects/1828-illuminated/.spec/proposals/llm-proxy.md §VII (D-LP-1 + D-LP-2 ratified 2026-05-20)"
 
 success_criteria:
-  - "User can search a word and see 1828 + modern definitions side by side"
-  - "User can pick a demo verse (Michael's existing study examples) and see the 1828-lensed words highlighted inline"
+  - "User can search a word and see 1828 + modern definitions side by side — including class-E words outside the curated tier list"
+  - "User can pick a demo verse (real reference like dc/84:38) and see the 1828-lensed words highlighted inline"
   - "User can paste arbitrary verse text and see 1828-tier words highlighted"
-  - "Hover/click on a highlighted word reveals 1828 + modern + study cross-reference"
-  - "Site builds via `docker build` and serves on port 80 (nginx)"
-  - "Static bundle stays small — no LLM dependency for MVP"
+  - "User can search the canon for a phrase and get ranked verse hits with snippet highlighting"
+  - "User can browse the full canon (OT/NT/BoM/D&C/PGP) rendered with 1828 highlights, with one-click breakout to churchofjesuschrist.org"
+  - "Hover/click on a highlighted word reveals 1828 + modern + Thummim + study cross-reference"
+  - "User with their own LLM key can render a verse in modern English via BYOK session flow"
+  - "Site deploys via `docker compose up -d` on Dokploy; rolls back cleanly to the legacy single-Dockerfile via the `Dockerfile.legacy` escape hatch during the 1-cycle soak"
 
 stretch_goals:
   llm-rendering:
-    description: "User-supplied API key/model URL renders verse in modern English with 1828-faithful meanings. Gated; settings page; LM Studio + opencode-go support."
-    priority: low
+    description: "User-supplied API key/model URL renders verse in modern English with 1828-faithful meanings. BYOK session model via backend proxy. OpenAI / OpenRouter / opencode-go / opencode-zen supported."
+    priority: medium
+    notes: "Promoted from low → medium after the BYOK + session-key ratification 2026-05-20. The LLM proxy makes this no longer gated by CORS or key-leak risk."
 
   thummim-dictionary:
     description: "Build a Restoration-era dictionary from gospel works (scriptures + GC talks). Multi-level (elementary, 8th grade, high-school+). Working name 'Thummim 2026 Restoration Dictionary' — Urim & Thummim are 'lights and perfections'."
-    priority: low
-    notes: "Genuinely a substrate-project; pipeline-generated dictionary entries with grade-level filters."
+    priority: medium
+    notes: "Genuinely a substrate-project; pipeline-generated dictionary entries with grade-level filters. First batch (14 verified entries) shipped 2026-05-20."
 
   presentation-mode:
     description: "Tablet-friendly presentation layout. Per Brother Philpot's stated wish."
     priority: low
+    notes: "Shipped 2026-05-20 overnight as the /present route."
+
+  age-graph-traversal:
+    description: "Use Postgres AGE on the substrate to graph-traverse Thummim entries by their definitional cross-references. Click a word in a definition, see all words that reference it."
+    priority: low
+    source: ".spec/proposals/thummim-restoration-dictionary.md §VI.5"
 
 related:
   proposal: "../../.spec/proposals/1828-illuminated-scriptures.md"

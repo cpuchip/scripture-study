@@ -221,7 +221,7 @@ This is the surface most likely to upset an external dependency. Hard requiremen
 | **D-DICT-1** | Ingest full 98k 1828 entries vs only curated | Full | Class-E reach is one of the six wins; partial ingest defeats the point |
 | **D-DICT-2** | Server-side stem fallback only (remove client-side) | Yes | One source of truth; reduces duplication |
 | **D-DICT-3** | Lazy modern-def fetch enabled in production from day one | Yes | The win is real-user-driven corpus growth |
-| **D-DICT-4** | Daily fetch ceiling default | 5000 | Conservative; cheap to raise once observed |
+| **D-DICT-4** | Daily fetch ceiling default | **RATIFIED 2026-05-20:** 5,000/day | Settled |
 | **D-DICT-5** | Surface "this word is not in 1828" vs hide | Surface explicitly | Honest signal; not every word has a Webster entry |
 | **D-DICT-6** | Trigram-search the full 1828 corpus from the search box | Yes | The UX gain is what makes class-E reach visible |
 | **D-DICT-7** | Manual additions (today's `manual-additions.json`) migrate to a `tier_words_manual` table or merge into `tier_words` with a `source` column | Merge with `source` column | Single table; no per-source-of-truth fork |

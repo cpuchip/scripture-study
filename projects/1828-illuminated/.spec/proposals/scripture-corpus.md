@@ -42,6 +42,16 @@ This proposal assumes a public-domain (or community-resourced) corpus is selecte
 
 **Recommendation:** option A if Michael's risk tolerance accepts it (cleanest implementation, fastest delivery). Option C if not (preserves the existing copyright posture cleanly; loses the inline-rendered verse explorer). Option B is the most work for ambiguous gain — the 1830 BoM chapter divisions in particular will confuse readers who paste a modern reference.
 
+**RATIFIED 2026-05-20 — option D (hybrid).** Use bcbooks as the source for the verse text + modern numbering, BUT on ingest the function MUST strip:
+- Footnote markers (e.g. `[a]`, `*`, superscript letters)
+- Chapter / section headings (the publisher-curated paragraph above each chapter)
+- Bracketed publisher additions and study-aid apparatus
+- Italic markers (KJV's added-for-clarity italics) — accepted as flat text per §IV
+
+Verse text + verse number + chapter number + book identity is what survives. Every rendered surface in the frontend MUST also surface a tabbed-iframe breakout to churchofjesuschrist.org (the `projects/cpuchip.net/src/components/ScripturePanel.vue` pattern) so any reader who wants the full apparatus has one-click access to the canonical source.
+
+This decision settles the §II branch: the ingest path follows option D's stripping rules; the corpus ships from bcbooks; the frontend retains the breakout-to-iframe affordance per scripture render.
+
 ## III. Schema (excerpted from backend-pivot.md §V)
 
 ```sql
@@ -216,7 +226,7 @@ The frontend's tokenize logic stays as a fallback for pasted text — that path 
 | # | Decision | Default | Stakes |
 |---|---|---|---|
 | **D-SC-1** | Default for `?highlight` (always on / opt-in) | Opt-in | Avoids paying tokenize cost on API calls that don't need it (e.g. word-study reverse lookups) |
-| **D-SC-2** | Include `text_tsv` `english` config or `simple` for KJV-archaic stemming | `english` | The English stemmer handles -eth and -est poorly; we may want `simple` + our own stem layer. Worth measuring. |
+| **D-SC-2** | Include `text_tsv` `english` config or `simple` for KJV-archaic stemming | **RATIFIED 2026-05-20:** `english` stemmer + custom archaic-suffix expansion layer at search time. The server-side handler mirrors `useWordData.ts`'s `ARCHAIC_SUFFIXES` (-eth, -edst, -est, -ing, -ed, -s) so that `suffereth` queries match `suffer` rows. Implementation: do the suffix-strip before constructing the tsquery, emit an OR-tsquery (`suffer | suffereth`) for fuller recall. Document in the dictionary-backend too — the stem layer is shared with the dictionary's `dict/1828/:word` server-side fallback. | Settled |
 | **D-SC-3** | Embedded zip in backend image vs mounted volume | Embedded | Self-contained image; one-deploy reseeds. Volume mount is needed only if we want hot-swap corpora without rebuild — not a v1 need. |
 | **D-SC-4** | `scripture_corpus_meta` table for source SHA, ingest timestamp, license string | Yes | Cheap; serves audit + the `respect-the-canon` value commitment. |
 | **D-SC-5** | Apocrypha / non-LDS-canon books from KJV | No | bcbooks doesn't ship them; out of scope. |
