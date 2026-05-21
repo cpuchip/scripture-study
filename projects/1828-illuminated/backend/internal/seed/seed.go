@@ -1,24 +1,21 @@
 // Package seed loads the bundled scripture / dictionary / tier-metadata
-// JSON corpora into the i1828 database on first boot. Phase 1 ships an
-// empty RunAll that no-ops; phases 2-3 add the actual ingest paths.
+// JSON corpora into the i1828 database on first boot.
 //
 // All seeders share two properties:
 //
-//   - Idempotent: re-running them against a populated DB is a fast skip,
-//     not a destructive reload. We check whether the target table is empty
-//     (or use ON CONFLICT DO NOTHING) before bulk-inserting.
+//   - Idempotent: re-running them against a populated DB is a fast skip
+//     (or a no-op via ON CONFLICT DO NOTHING), not a destructive reload.
 //   - Safe-mid-migration: if Postgres restarts mid-ingest, the next boot
-//     resumes cleanly. Verses already inserted stay; missing chapters
-//     get backfilled.
+//     resumes cleanly. Already-inserted rows stay; missing rows backfill.
 //
-// Seed data files live under backend/internal/seed/data/. They're copied
-// in by hand (or by a build-time make target) from their canonical
-// sources elsewhere in the workspace:
+// Seed data files live under backend/internal/seed/data/:
 //
-//	scriptures.zip                  ← external_context/scriptures-mcp/internal/scripture/data/
-//	webster1828.json.gz             ← scripts/webster-mcp/data/
-//	tier-words.json                 ← projects/1828-illuminated/frontend/src/data/
-//	definitions-modern.seed.json    ← projects/1828-illuminated/frontend/src/data/definitions-modern.json (renamed)
+//	scriptures.zip                 ← external_context/scriptures-mcp/internal/scripture/data/scriptures.zip
+//	webster1828.json.gz            ← scripts/webster-mcp/data/webster1828.json.gz
+//	tier-words.json                ← projects/1828-illuminated/frontend/src/data/tier-words.json
+//	definitions-modern.json        ← projects/1828-illuminated/frontend/src/data/definitions-modern.json
+//
+// Per-corpus seeders live in sibling files (scriptures.go, dictionary.go).
 package seed
 
 import "context"
@@ -42,10 +39,3 @@ func RunAll(ctx context.Context, pool any) error {
 	}
 	return nil
 }
-
-// Per-corpus seeders are stubs until phases 2-3 fill them in.
-
-func SeedScripture(ctx context.Context, pool any) error    { return nil }
-func SeedWebster1828(ctx context.Context, pool any) error  { return nil }
-func SeedTierWords(ctx context.Context, pool any) error    { return nil }
-func SeedModernDefs(ctx context.Context, pool any) error   { return nil }
