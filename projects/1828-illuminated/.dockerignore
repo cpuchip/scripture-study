@@ -1,13 +1,37 @@
-# Excludes from docker build context
+# Excludes from docker build context.
+# Defense in depth — .env is gitignored but should NEVER be copied into
+# an image even if someone accidentally adds it to a COPY directive.
+
+# Secrets and local config
+.env
+.env.*
+
+# Frontend build artifacts
 **/node_modules
 **/dist
 **/.vite
 **/.cache
 
+# Backend build artifacts
+backend/**/i1828
+backend/**/*.exe
+backend/tmp/
+
 # Workspace artifacts
 .git
+.gitignore
 .spec/scratch
+.spec/journal
 *.log
 
-# Don't ship the build scripts into the image (they run on host, not in container)
+# Don't ship the build/research scripts into the image (they run on host)
 scripts/
+
+# Don't ship the rollback escape-hatch into the new images
+Dockerfile.legacy
+
+# Editor / IDE
+.vscode/
+.idea/
+*.swp
+.DS_Store

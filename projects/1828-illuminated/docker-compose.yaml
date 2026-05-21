@@ -1,0 +1,109 @@
+# 1828-illuminated — three-container deploy
+#
+# Services:
+#   frontend  — nginx serving Vue dist + reverse-proxying /api/* to backend
+#   backend   — Go binary, embeds scripture corpus + 1828 dict + seed data
+#   db        — Postgres 17-alpine, named volume pg-data
+#
+# Local dev:
+#   cp .env.example .env  (and fill POSTGRES_PASSWORD)
+#   docker compose up -d
+#   curl http://localhost:8083/healthz
+#   curl http://localhost:8083/api/healthz
+#
+# Production (Dokploy): set env vars in Dokploy UI; Dokploy's Traefik
+# fronts the frontend service. The 8083 host-port mapping is for local
+# dev only — Dokploy intercepts via the service's exposed port.
+#
+# WARNING: never `docker compose down -v` — that wipes the named DB
+# volume (modern-defs accumulate is the irrecoverable surface).
+
+services:
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile.frontend
+    image: i1828-frontend:latest
+    container_name: i1828-frontend
+    restart: unless-stopped
+    ports:
+      # 8083 on the host to avoid conflict with the legacy static 1828
+      # container running on 8082. Dokploy production reaches the
+      # container by service name; the host port is for local curl.
+      - "8083:80"
+    depends_on:
+      backend:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost/healthz"]
+      interval: 30s
+      timeout: 3s
+      retries: 3
+      start_period: 10s
+
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile.backend
+    image: i1828-backend:latest
+    container_name: i1828-backend
+    restart: unless-stopped
+    # No host port mapping; reached by service name from frontend.
+    expose:
+      - "8080"
+    environment:
+      DATABASE_URL: postgres://i1828:${POSTGRES_PASSWORD}@db:5432/i1828?sslmode=disable
+      LISTEN_ADDR: ":8080"
+      LLM_PROVIDER: ${LLM_PROVIDER:-mock}
+      LLM_BASE_URL: ${LLM_BASE_URL:-}
+      LLM_API_KEY: ${LLM_API_KEY:-}
+      LLM_MODEL: ${LLM_MODEL:-}
+      OPENCODE_GO_API_KEY: ${OPENCODE_GO_API_KEY:-}
+      LLM_PROXY_ENABLED: ${LLM_PROXY_ENABLED:-true}
+      LLM_BYOK_ENABLED: ${LLM_BYOK_ENABLED:-true}
+      LLM_SESSION_TTL_HOURS: ${LLM_SESSION_TTL_HOURS:-24}
+      LLM_SESSION_SLIDING_WINDOW: ${LLM_SESSION_SLIDING_WINDOW:-true}
+      LLM_RATE_PER_IP_PER_MIN: ${LLM_RATE_PER_IP_PER_MIN:-10}
+      LLM_RATE_PER_IP_PER_DAY: ${LLM_RATE_PER_IP_PER_DAY:-1000}
+      LLM_GLOBAL_TOKEN_CAP_PER_DAY: ${LLM_GLOBAL_TOKEN_CAP_PER_DAY:-200000}
+      LLM_MAX_TOKENS_DEFAULT: ${LLM_MAX_TOKENS_DEFAULT:-800}
+      LLM_MAX_TOKENS_HARD: ${LLM_MAX_TOKENS_HARD:-1500}
+      LLM_TEMPERATURE_DEFAULT: ${LLM_TEMPERATURE_DEFAULT:-0.3}
+      LLM_TEMPERATURE_HARD: ${LLM_TEMPERATURE_HARD:-0.7}
+      LLM_TIMEOUT_SECONDS: ${LLM_TIMEOUT_SECONDS:-60}
+      MODERN_FETCH_DAILY_CAP: ${MODERN_FETCH_DAILY_CAP:-5000}
+      THUMMIM_SYNC_ENABLED: ${THUMMIM_SYNC_ENABLED:-false}
+      THUMMIM_SOURCE_URL: ${THUMMIM_SOURCE_URL:-}
+    depends_on:
+      db:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "/i1828", "healthcheck"]
+      interval: 30s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+
+  db:
+    image: postgres:17-alpine
+    container_name: i1828-db
+    restart: unless-stopped
+    # DB stays internal-only — no host port mapping. Other workspace
+    # Postgres containers already bind 5433 and 55433; we don't compete.
+    volumes:
+      - pg-data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: i1828
+      POSTGRES_USER: i1828
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in your .env or Dokploy env}
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U i1828 -d i1828"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+
+volumes:
+  pg-data:
+    driver: local
+    name: i1828-pg-data

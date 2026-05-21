@@ -1,0 +1,47 @@
+# =====================================================================
+# 1828 Illuminated — backend image (Go binary, embeds seed data)
+#
+# Multi-stage build. Stage 1 builds a statically-linked Go binary with
+# all seed data embedded via //go:embed (scripture corpus zip, 1828
+# dictionary gz, tier-words + modern-defs JSON). Stage 2 ships only the
+# binary on distroless/static for a ~200MB final image.
+# =====================================================================
+
+# ---------------------------------------------------------------------
+# Stage 1 — Go build
+# ---------------------------------------------------------------------
+FROM golang:1.23-alpine AS build
+
+# git is needed by go modules when the proxy isn't configured
+RUN apk add --no-cache git
+
+WORKDIR /src
+
+# Layer-cacheable dependency resolution
+COPY backend/go.mod backend/go.sum* ./
+RUN go mod download
+
+# Copy the source tree (including embedded seed data)
+COPY backend/ ./
+
+# Static binary; strip debug info for size
+RUN CGO_ENABLED=0 GOOS=linux go build \
+      -ldflags="-s -w" \
+      -o /out/i1828 \
+      ./cmd/server
+
+# ---------------------------------------------------------------------
+# Stage 2 — distroless runtime
+# ---------------------------------------------------------------------
+FROM gcr.io/distroless/static:nonroot
+
+COPY --from=build /out/i1828 /i1828
+
+EXPOSE 8080
+USER nonroot:nonroot
+
+# Distroless has no shell — use the binary's own healthcheck subcommand.
+HEALTHCHECK --interval=30s --timeout=5s --start-period=20s --retries=5 \
+  CMD ["/i1828", "healthcheck"]
+
+ENTRYPOINT ["/i1828"]

@@ -3,6 +3,7 @@ go 1.26
 use (
 	./experiments/lm-studio/scripts/scoring
 	./external_context/tpg
+	./projects/1828-illuminated/backend
 	./projects/pg-ai-stewards/cmd/fs-read-mcp
 	./projects/pg-ai-stewards/cmd/stewards-cli
 	./projects/pg-ai-stewards/cmd/stewards-mcp

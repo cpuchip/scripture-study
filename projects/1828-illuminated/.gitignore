@@ -4,8 +4,18 @@ frontend/dist/
 frontend/.vite/
 frontend/tsconfig.tsbuildinfo
 
+# Go build outputs
+backend/i1828
+backend/i1828.exe
+backend/tmp/
+
 # Fetcher in-progress log files (not currently used but reserved)
 scripts/fetcher.log
 
 # Tooling
 *.log
+
+# Local env — explicit redundancy with workspace .gitignore .env rule
+.env
+.env.local
+.env.*.local
