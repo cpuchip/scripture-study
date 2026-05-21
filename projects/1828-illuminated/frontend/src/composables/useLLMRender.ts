@@ -182,10 +182,11 @@ export function useLLMRender() {
         return
       }
 
+      const modernized = content.trim()
       state.value = {
         loading: false,
         result: {
-          modernized: content.trim(),
+          modernized,
           promptUsed: json?.promptUsed ?? '',
           durationMs: typeof json?.durationMs === 'number' ? json.durationMs : performance.now() - startMs,
           model: json?.model ?? '',
@@ -194,6 +195,19 @@ export function useLLMRender() {
         },
         error: null,
       }
+
+      // Capture the render as a study-tree node. Cross-domain payoff: this
+      // attaches the modernized passage as a child of whatever was active
+      // (typically the chapter or verse the reader just rendered), and
+      // subsequent word-clicks inside the modernized text branch from here.
+      const { visit } = await import('./useStudyTree')
+      visit({
+        kind: 'render',
+        sourceText: verseText,
+        modernized,
+        model: json?.model ?? 'unknown',
+        provider: json?.provider ?? 'unknown',
+      })
     } catch (e: unknown) {
       const msg = e instanceof Error ? e.message : String(e)
       state.value = {
