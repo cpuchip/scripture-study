@@ -3,10 +3,11 @@
 // vue-router reuses the same component instance when only the param changes
 // (e.g. /word/as → /word/abide), so a plain const captures the initial value
 // and never updates. Fix: derive `word` and `tier` as computed refs.
-import { computed } from 'vue'
+import { computed, watch } from 'vue'
 import { useRoute, RouterLink } from 'vue-router'
 import WordCard from '@/components/WordCard.vue'
 import { useWordData } from '@/composables/useWordData'
+import { visit as studyVisit } from '@/composables/useStudyTree'
 
 const route = useRoute()
 const data = useWordData()
@@ -16,6 +17,18 @@ const word = computed<string>(() => {
   return (raw ?? '').toLowerCase()
 })
 const tier = computed(() => data.findWord(word.value))
+
+// Add to the study tree on every word visit. Idempotency in useStudyTree
+// dedupes if this exact child already exists under the active node — so
+// clicking back-and-forth between two words just toggles which is active,
+// not a runaway tree of duplicates.
+watch(
+  word,
+  (w) => {
+    if (w) studyVisit({ kind: 'word', word: w })
+  },
+  { immediate: true },
+)
 </script>
 
 <template>

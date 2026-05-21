@@ -1,5 +1,12 @@
 <script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
+import { RouterLink, RouterView, useRoute } from 'vue-router'
+import StudyTreePanel from '@/components/StudyTreePanel.vue'
+import { computed } from 'vue'
+
+const route = useRoute()
+// Hide the study tree on /present (fullscreen tablet mode) per the
+// proposal D-ST-10 ratification — Present is for distraction-free reading.
+const showTreePanel = computed(() => route.name !== 'present')
 </script>
 
 <template>
@@ -23,6 +30,10 @@ import { RouterLink, RouterView } from 'vue-router'
     <main class="flex-1">
       <RouterView />
     </main>
+
+    <!-- Study tree — slide-out panel + floating pill toggle. Available on
+         every surface except /present (the fullscreen tablet view). -->
+    <StudyTreePanel v-if="showTreePanel" />
 
     <footer class="border-t border-stone-300 bg-[var(--paper-2)] mt-12">
       <div class="max-w-5xl mx-auto px-6 py-6 text-xs text-stone-600 flex flex-wrap items-baseline justify-between gap-2">

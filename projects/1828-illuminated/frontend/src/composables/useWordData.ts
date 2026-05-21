@@ -303,4 +303,14 @@ export const selectedTier = computed(() => {
 })
 export function selectWord(word: string | null) {
   selectedWord.value = word
+  // Capture as a study-tree node so clicks within any rendered passage
+  // (canon, demo, paste) branch off the currently-active node. The tree's
+  // own idempotency dedupes if the active node is already this word.
+  if (word) {
+    // Lazy import to avoid circular module init — useStudyTree imports nothing
+    // from this file, but bundlers vary.
+    void import('./useStudyTree').then(({ visit }) => {
+      visit({ kind: 'word', word })
+    })
+  }
 }

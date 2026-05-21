@@ -8,6 +8,7 @@ import { selectWord, selectedWord, useWordData, tokenize } from '@/composables/u
 import { useLLMRender } from '@/composables/useLLMRender'
 import { sessionActive, refreshSession } from '@/composables/useLLMSession'
 import { apiUrl } from '@/composables/useApiBase'
+import { visit as studyVisit } from '@/composables/useStudyTree'
 import demoData from '@/data/demo-verses.json'
 import { CANON, buildChurchUrl, type CanonVolume, type CanonBook } from '@/data/canon-books'
 
@@ -110,6 +111,18 @@ async function fetchCanonChapter() {
     canonVerses.value = (json.verses ?? []) as VerseRow[]
     // Push canonical URL so back/forward + refresh + share work.
     syncRouteFromState()
+
+    // Capture in the study tree. Range becomes a chapter node with the
+    // range field set; full-chapter is a chapter node with no range.
+    // Cross-domain: a previous word-card click will be this node's parent,
+    // so the reader's path word→chapter→word is preserved.
+    studyVisit({
+      kind: 'chapter',
+      abbrRef: `${book.abbr}/${canonChapter.value}`,
+      humanRef: canonChapterRef.value,
+      range: canonRange.value.trim() || undefined,
+      verseCount: canonVerses.value.length,
+    })
   } catch (e: unknown) {
     canonChapterError.value = e instanceof Error ? e.message : String(e)
   } finally {
