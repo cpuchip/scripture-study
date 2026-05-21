@@ -1,0 +1,84 @@
+{
+  "_provenance": "Words our existing studies have lensed via Webster 1828 but were missed by the automated P1 extractor (because the citation didn't use the literal phrase 'Webster 1828'). Hand-added 2026-05-20.",
+  "_notes": "Each entry mirrors the tier-words.json schema. studies[] links to the substrate study file that lensed the word.",
+  "additions": [
+    {
+      "word": "obtain",
+      "tier": "A+",
+      "study_tier": "A",
+      "studies": ["study/priesthood-oath-and-covenant.md", "study/priesthood-obtaining-exploration.md"],
+      "study_excerpts": [
+        "To *obtain* implies desire and effort directed toward attainment. Obtaining is different from merely receiving.",
+        "From Webster's definition: obtaining requires effort directed toward attainment. This is not passive."
+      ],
+      "p4_score": 4,
+      "p4_reasons": ["multi-sense; canonical case for the 1828 lens"]
+    },
+    {
+      "word": "obtaining",
+      "tier": "A+",
+      "study_tier": "A",
+      "studies": ["study/priesthood-oath-and-covenant.md"],
+      "study_excerpts": [
+        "For whoso is faithful unto the obtaining these two priesthoods… (D&C 84:33). Webster 1828: 'to gain by effort.'"
+      ],
+      "p4_score": 3,
+      "p4_reasons": ["inflected form of 'obtain'"]
+    },
+    {
+      "word": "pacify",
+      "tier": "B",
+      "study_tier": "B",
+      "studies": ["study/morgan-philpot-revised/00_plan.md"],
+      "study_excerpts": [
+        "1828 pacify: 'to appease... to calm to a state of contentment.' The deception is gentle by design (2 Ne 28:21)."
+      ],
+      "p4_score": 3,
+      "p4_reasons": ["theological context in scripture"]
+    },
+    {
+      "word": "lull",
+      "tier": "B",
+      "study_tier": "B",
+      "studies": ["study/morgan-philpot-revised/00_plan.md"],
+      "study_excerpts": [
+        "1828 lull: 'to soothe to sleep; to compose to rest by sounds.' Cf. 2 Ne 28:21 'pacify and lull them away into carnal security.'"
+      ],
+      "p4_score": 3,
+      "p4_reasons": ["soothing-to-sleep imagery"]
+    },
+    {
+      "word": "cleave",
+      "tier": "B",
+      "study_tier": "B",
+      "studies": ["study/charity.md"],
+      "study_excerpts": [
+        "Webster 1828 cleave: two senses — (1) to adhere, stick fast (Moroni 7:46 'cleave unto charity'); (2) to split, divide. Context decides."
+      ],
+      "p4_score": 5,
+      "p4_reasons": ["true contranym — opposite senses in the same dictionary"]
+    },
+    {
+      "word": "suffer",
+      "tier": "A+",
+      "study_tier": "A",
+      "studies": ["study/charity.md", "study/atonement/how-is-it-done.md"],
+      "study_excerpts": [
+        "Webster 1828 suffer (transitive, not the modern intransitive primary sense): 'to bear; to endure; to allow; to permit.' 'Suffer the little children' = 'permit / let.'"
+      ],
+      "p4_score": 5,
+      "p4_reasons": ["modern primary sense is intransitive 'to feel pain'; 1828 primary is transitive 'to allow/permit'"]
+    },
+    {
+      "word": "endure",
+      "tier": "A+",
+      "study_tier": "B",
+      "studies": ["study/charity.md", "study/broken-heart-and-contrite-spirit.md"],
+      "study_excerpts": [
+        "Webster 1828 endure: 'to bear with patience; to suffer without resistance, or without yielding to the pressure.' Stronger than modern 'to last.'"
+      ],
+      "p4_score": 4,
+      "p4_reasons": ["the 1828 sense is active patience, not passive duration"]
+    }
+  ]
+}
