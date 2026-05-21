@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import { ref, computed, watch } from 'vue'
-import { RouterLink } from 'vue-router'
-import HighlightedText from '@/components/HighlightedText.vue'
+import { ref, computed, watch, onMounted } from 'vue'
+import { RouterLink, useRoute, useRouter } from 'vue-router'
 import WordCard from '@/components/WordCard.vue'
+import HighlightedText from '@/components/HighlightedText.vue'
+import VerseList, { type VerseRow } from '@/components/VerseList.vue'
 import { selectWord, selectedWord, useWordData, tokenize } from '@/composables/useWordData'
 import { useLLMRender } from '@/composables/useLLMRender'
 import { sessionActive, refreshSession } from '@/composables/useLLMSession'
@@ -11,6 +12,8 @@ import demoData from '@/data/demo-verses.json'
 import { CANON, buildChurchUrl, type CanonVolume, type CanonBook } from '@/data/canon-books'
 
 const data = useWordData()
+const route = useRoute()
+const router = useRouter()
 type DemoVerse = (typeof demoData.verses)[number]
 const demoVerses: DemoVerse[] = demoData.verses
 
@@ -19,13 +22,16 @@ const selectedVerseId = ref<string>(demoVerses[0]?.id ?? '')
 const pasteText = ref<string>('')
 
 // ─── Canon-browse mode state ───────────────────────────────────────────
-// Volume → book → chapter. The selectors are populated from CANON
-// (frontend-side; stable + audit-friendly) and the chapter render comes
-// from /api/scripture/chapter/{abbr}/{chapter}.
+// Volume → book → chapter [→ verse range]. Selectors populated from CANON;
+// scripture text comes from /api/scripture/{chapter,:ref} depending on
+// whether a verse range is supplied. All state is mirrored to route.query
+// so back/forward navigation and refresh+share work.
 const canonVolumeId = ref<CanonVolume['id']>('bofm')
 const canonBookAbbr = ref<string>('1-ne')
 const canonChapter = ref<number>(3)
-const canonChapterText = ref<string>('')
+/** Verse range as the reader typed it: "", "36", "36-40". Empty = full chapter. */
+const canonRange = ref<string>('')
+const canonVerses = ref<VerseRow[]>([])
 const canonChapterLoading = ref(false)
 const canonChapterError = ref<string>('')
 const canonChapterRef = ref<string>('')      // human ref returned by backend
@@ -46,8 +52,30 @@ const canonChurchUrl = computed(() => {
   const vol = canonVolume.value
   const book = canonBook.value
   if (!vol || !book) return ''
+  const parsed = parseRange(canonRange.value)
+  if (parsed) {
+    return buildChurchUrl(vol.urlVolume, book.urlPath, canonChapter.value, parsed.start, parsed.end)
+  }
   return buildChurchUrl(vol.urlVolume, book.urlPath, canonChapter.value)
 })
+
+/** Parse the user's range input. Returns null when malformed. */
+function parseRange(raw: string): { start: number; end: number } | null {
+  const trimmed = raw.trim()
+  if (!trimmed) return null
+  const single = trimmed.match(/^(\d+)$/)
+  if (single) {
+    const n = parseInt(single[1]!, 10)
+    return { start: n, end: n }
+  }
+  const range = trimmed.match(/^(\d+)\s*-\s*(\d+)$/)
+  if (range) {
+    const start = parseInt(range[1]!, 10)
+    const end = parseInt(range[2]!, 10)
+    if (start > 0 && end >= start) return { start, end }
+  }
+  return null
+}
 
 async function fetchCanonChapter() {
   const vol = canonVolume.value
@@ -55,25 +83,90 @@ async function fetchCanonChapter() {
   if (!vol || !book) return
   canonChapterLoading.value = true
   canonChapterError.value = ''
-  canonChapterText.value = ''
+  canonVerses.value = []
   try {
-    const url = apiUrl(`/scripture/chapter/${encodeURIComponent(book.abbr)}/${canonChapter.value}`)
+    // Decide endpoint: empty range → /chapter/:ref ; otherwise /:ref with verse spec.
+    const rawRange = canonRange.value.trim()
+    let url: string
+    if (rawRange) {
+      const parsed = parseRange(rawRange)
+      if (!parsed) {
+        canonChapterError.value = `Range "${rawRange}" not recognized. Use "36", "36-40", or leave empty for the whole chapter.`
+        return
+      }
+      const spec = parsed.start === parsed.end ? `${parsed.start}` : `${parsed.start}-${parsed.end}`
+      url = apiUrl(`/scripture/${encodeURIComponent(book.abbr)}/${canonChapter.value}:${spec}?highlight=1`)
+    } else {
+      url = apiUrl(`/scripture/chapter/${encodeURIComponent(book.abbr)}/${canonChapter.value}?highlight=1`)
+    }
     const resp = await fetch(url)
     if (!resp.ok) {
-      canonChapterError.value = `HTTP ${resp.status} — chapter not found.`
+      canonChapterError.value = `HTTP ${resp.status} — passage not found.`
       return
     }
     const json = await resp.json()
     canonChapterRef.value = json.ref ?? `${book.name} ${canonChapter.value}`
     canonChapterAbbrRef.value = json.abbr_ref ?? `${book.abbr}/${canonChapter.value}`
-    // Join verses into one rendered block. Tokenize handles the inline
-    // highlights for tier words — same code path as demo + paste.
-    const verses: Array<{ verse: number; text: string }> = json.verses ?? []
-    canonChapterText.value = verses.map(v => `${v.verse} ${v.text}`).join(' ')
+    canonVerses.value = (json.verses ?? []) as VerseRow[]
+    // Push canonical URL so back/forward + refresh + share work.
+    syncRouteFromState()
   } catch (e: unknown) {
     canonChapterError.value = e instanceof Error ? e.message : String(e)
   } finally {
     canonChapterLoading.value = false
+  }
+}
+
+/** Push current canon-mode state into the URL query. Replace (not push)
+ *  on dropdown changes; the Open-chapter click is the one that creates
+ *  a real history entry via fetchCanonChapter calling this with push=true. */
+function syncRouteFromState(replace: boolean = true) {
+  const q: Record<string, string> = {
+    mode: 'canon',
+    v: canonVolumeId.value,
+    b: canonBookAbbr.value,
+    c: String(canonChapter.value),
+  }
+  if (canonRange.value.trim()) q.r = canonRange.value.trim()
+  const navigate = replace ? router.replace : router.push
+  navigate({ name: 'verse-explorer', query: q }).catch(() => {})
+}
+
+/** Read canon state from route.query on mount + when the URL changes
+ *  (back/forward navigation). Vue reuses the component instance across
+ *  these changes, so a watch is required — same shape as the WordDetail
+ *  reactivity fix from earlier. */
+function syncStateFromRoute() {
+  const q = route.query
+  if (q.mode === 'canon') mode.value = 'canon'
+  const v = typeof q.v === 'string' ? q.v as CanonVolume['id'] : undefined
+  const b = typeof q.b === 'string' ? q.b : undefined
+  const c = typeof q.c === 'string' ? parseInt(q.c, 10) : NaN
+  const r = typeof q.r === 'string' ? q.r : ''
+  if (v && CANON.some(vol => vol.id === v)) canonVolumeId.value = v
+  if (b && canonVolume.value?.books.some(book => book.abbr === b)) canonBookAbbr.value = b
+  if (!isNaN(c) && c >= 1 && c <= canonChapterMax.value) canonChapter.value = c
+  canonRange.value = r
+}
+
+onMounted(() => {
+  syncStateFromRoute()
+  if (mode.value === 'canon') {
+    fetchCanonChapter()
+  }
+})
+watch(() => route.query, syncStateFromRoute)
+
+/** Mode-switch wrapper that keeps the URL in sync. Demo + paste modes
+ *  clear the canon state from the URL so refresh lands the reader where
+ *  they were. Canon mode without a chapter loaded just records the mode
+ *  switch — the next Open-chapter click writes the rest. */
+function setMode(m: 'demo' | 'canon' | 'paste') {
+  mode.value = m
+  if (m === 'canon') {
+    syncRouteFromState(true)
+  } else {
+    router.replace({ name: 'verse-explorer', query: { mode: m } }).catch(() => {})
   }
 }
 
@@ -98,7 +191,7 @@ const selectedVerse = computed<DemoVerse | undefined>(() =>
 
 const activeText = computed(() => {
   if (mode.value === 'demo') return selectedVerse.value?.text ?? ''
-  if (mode.value === 'canon') return canonChapterText.value
+  if (mode.value === 'canon') return canonVerses.value.map(v => v.text).join(' ')
   return pasteText.value
 })
 
@@ -156,17 +249,17 @@ watch(activeText, () => {
       <button
         class="px-4 py-1.5 rounded-full border font-medium transition"
         :class="mode === 'demo' ? 'bg-amber-100 border-amber-400 text-amber-900' : 'bg-white border-stone-300 text-stone-600 hover:border-stone-400'"
-        @click="mode = 'demo'"
+        @click="setMode('demo')"
       >Demo verse</button>
       <button
         class="px-4 py-1.5 rounded-full border font-medium transition"
         :class="mode === 'canon' ? 'bg-amber-100 border-amber-400 text-amber-900' : 'bg-white border-stone-300 text-stone-600 hover:border-stone-400'"
-        @click="mode = 'canon'"
+        @click="setMode('canon')"
       >Browse canon</button>
       <button
         class="px-4 py-1.5 rounded-full border font-medium transition"
         :class="mode === 'paste' ? 'bg-amber-100 border-amber-400 text-amber-900' : 'bg-white border-stone-300 text-stone-600 hover:border-stone-400'"
-        @click="mode = 'paste'"
+        @click="setMode('paste')"
       >Paste your own</button>
     </div>
 
@@ -209,9 +302,10 @@ watch(activeText, () => {
         </div>
 
         <div v-else-if="mode === 'canon'">
-          <!-- Volume / book / chapter selectors. The render comes from
-               /api/scripture/chapter/:abbr/:chapter. -->
-          <div class="grid sm:grid-cols-[1fr_1fr_120px_auto] gap-2 mb-4">
+          <!-- Volume / book / chapter / verse-range selectors. Whole-chapter
+               renders via /api/scripture/chapter/:abbr/:chapter; verse range
+               via /api/scripture/:abbr/:chapter:start[-end]. -->
+          <div class="grid sm:grid-cols-[1.4fr_1.4fr_5rem_7rem_auto] gap-2 mb-4">
             <select
               v-model="canonVolumeId"
               class="px-3 py-2 rounded-lg border border-stone-300 bg-white text-sm"
@@ -233,12 +327,22 @@ watch(activeText, () => {
             >
               <option v-for="c in canonChapterChoices" :key="c" :value="c">{{ c }}</option>
             </select>
+            <input
+              v-model="canonRange"
+              type="text"
+              placeholder="verses"
+              class="px-3 py-2 rounded-lg border border-stone-300 bg-white text-sm placeholder:text-stone-400 font-mono"
+              aria-label="Verse range — empty for whole chapter, '36' for one, '36-40' for a range"
+              :title="`Optional verse range. Examples: leave empty for whole chapter, ${'36'} for one verse, ${'36-40'} for a range.`"
+              @keydown.enter="fetchCanonChapter"
+            />
             <button
               @click="fetchCanonChapter"
               :disabled="canonChapterLoading"
               class="px-4 py-2 rounded-lg text-sm font-medium bg-amber-600 text-white hover:bg-amber-700 transition disabled:bg-stone-300 disabled:cursor-not-allowed"
             >
               <span v-if="canonChapterLoading">Loading…</span>
+              <span v-else-if="canonRange.trim()">Open verses</span>
               <span v-else>Open chapter</span>
             </button>
           </div>
@@ -247,8 +351,8 @@ watch(activeText, () => {
             {{ canonChapterError }}
           </div>
 
-          <div v-if="canonChapterText" class="def-card p-6 space-y-4">
-            <header class="border-b border-stone-200 pb-3 flex items-baseline justify-between gap-3">
+          <div v-if="canonVerses.length" class="def-card p-6 space-y-4">
+            <header class="border-b border-stone-200 pb-3 flex items-baseline justify-between gap-3 flex-wrap">
               <h2 class="font-serif text-xl">{{ canonChapterRef }}</h2>
               <a
                 v-if="canonChurchUrl"
@@ -257,16 +361,16 @@ watch(activeText, () => {
                 rel="noopener"
                 class="text-xs text-amber-700 hover:underline"
                 :title="`Open ${canonChapterRef} at churchofjesuschrist.org for footnotes + study apparatus`"
-              >Full chapter at churchofjesuschrist.org ↗</a>
+              >Full passage at churchofjesuschrist.org ↗</a>
             </header>
-            <HighlightedText :text="canonChapterText" />
+            <VerseList :verses="canonVerses" :abbr-ref="canonChapterAbbrRef.split(':')[0] ?? canonChapterAbbrRef" />
             <p class="text-xs text-stone-500 italic">
               Verse text from the bcbooks 2013 corpus; footnotes, headings, and study apparatus stripped.
-              The "↗" above opens the canonical apparatus on churchofjesuschrist.org.
+              Click any verse number to copy its ref; click any highlighted word for the 1828 + modern definitions.
             </p>
           </div>
           <div v-else-if="!canonChapterLoading && !canonChapterError" class="def-card p-6 text-sm text-stone-500 italic">
-            Pick a volume, book, and chapter, then click <strong>Open chapter</strong>.
+            Pick a volume, book, and chapter — and optionally a verse range — then click <strong>{{ canonRange.trim() ? 'Open verses' : 'Open chapter' }}</strong>.
           </div>
         </div>
 

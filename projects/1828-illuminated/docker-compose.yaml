@@ -87,17 +87,30 @@ services:
       start_period: 30s
 
   db:
-    image: postgres:17-alpine
+    # Bumped from 17-alpine to 18-alpine 2026-05-21. The substrate
+    # (pg-ai-stewards-dev) is already on 18.3; no reason 1828 lags. pg18
+    # ships async I/O improvements (~50% read I/O reduction) that meaningfully
+    # help our read-heavy dictionary lookups + scripture FTS. Seed data is
+    # embedded in the backend image so a fresh container re-ingests cleanly
+    # via the boot-seed path; the only durable loss surface is lazy-fetched
+    # modern_defs accumulated post-seed (small + rebuildable by use).
+    image: postgres:18-alpine
     container_name: i1828-db
     restart: unless-stopped
     # DB stays internal-only — no host port mapping. Other workspace
     # Postgres containers already bind 5433 and 55433; we don't compete.
+    #
+    # pg18 changed the mount convention: PGDATA now lives in a subdirectory
+    # of /var/lib/postgresql, not AS /var/lib/postgresql/data. We mount the
+    # volume at the parent and set PGDATA explicitly to the canonical subdir.
+    # See: https://github.com/docker-library/postgres/issues/37
     volumes:
-      - pg-data:/var/lib/postgresql/data
+      - pg-data:/var/lib/postgresql
     environment:
       POSTGRES_DB: i1828
       POSTGRES_USER: i1828
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in your .env or Dokploy env}
+      PGDATA: /var/lib/postgresql/pgdata
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U i1828 -d i1828"]
       interval: 10s
