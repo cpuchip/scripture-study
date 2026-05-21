@@ -385,10 +385,10 @@ func (s *Service) handleRender(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	prompt := buildRenderPrompt(req.VerseText, req.TierWords)
+	systemPrompt, userPrompt := buildRenderPrompt(req.VerseText, req.TierWords)
 
 	start := time.Now()
-	out, usage, err := s.callUpstream(r.Context(), baseURL, apiKey, model, prompt, req.Options)
+	out, usage, err := s.callUpstream(r.Context(), baseURL, apiKey, model, systemPrompt, userPrompt, req.Options)
 	if err != nil {
 		// Upstream provider errors pass through unchanged with a clear
 		// attribution prefix so the reader can distinguish "us" from
@@ -418,7 +418,10 @@ func (s *Service) handleRender(w http.ResponseWriter, r *http.Request) {
 
 	httpx.WriteJSON(w, http.StatusOK, renderResponse{
 		Modernized: out,
-		PromptUsed: prompt,
+		// PromptUsed echoes the rendered user message back so the
+		// frontend can show "what we sent" for debugging. The system
+		// prompt is the same on every call and not interesting to echo.
+		PromptUsed: userPrompt,
 		Model:      model,
 		Provider:   provider,
 		DurationMs: time.Since(start).Milliseconds(),
@@ -533,22 +536,30 @@ func (s *Service) probeKey(ctx context.Context, baseURL, apiKey string) error {
 	return fmt.Errorf("probe returned %d: %s", resp.StatusCode, strings.TrimSpace(string(body)))
 }
 
-func (s *Service) callUpstream(ctx context.Context, baseURL, apiKey, model, prompt string, opts renderOptions) (string, map[string]int, error) {
+func (s *Service) callUpstream(ctx context.Context, baseURL, apiKey, model, systemPrompt, userPrompt string, opts renderOptions) (string, map[string]int, error) {
 	if model == "" {
 		return "", nil, errors.New("no model configured for session")
 	}
 	if baseURL == "" {
-		// Mock path
-		return mockRender(prompt), map[string]int{
-			"prompt_tokens":     len(prompt) / 4,
+		// Mock path — mock just echoes the user prompt's first line.
+		combined := systemPrompt + "\n\n" + userPrompt
+		return mockRender(userPrompt), map[string]int{
+			"prompt_tokens":     len(combined) / 4,
 			"completion_tokens": 50,
-			"total_tokens":      len(prompt)/4 + 50,
+			"total_tokens":      len(combined)/4 + 50,
 		}, nil
 	}
 
+	// Two-message chat: system carries the "output only" rules so the
+	// model stops leaking reasoning into the user-visible content; user
+	// carries just the passage + flagged-word table. Empirically this
+	// fixes kimi-k2.6's "Let me break this down..." behavior.
 	body := map[string]any{
-		"model":       model,
-		"messages":    []map[string]string{{"role": "user", "content": prompt}},
+		"model": model,
+		"messages": []map[string]string{
+			{"role": "system", "content": systemPrompt},
+			{"role": "user", "content": userPrompt},
+		},
 		"temperature": opts.Temperature,
 		"max_tokens":  opts.MaxTokens,
 	}
@@ -568,13 +579,23 @@ func (s *Service) callUpstream(ctx context.Context, baseURL, apiKey, model, prom
 		raw, _ := io.ReadAll(io.LimitReader(resp.Body, 2048))
 		return "", nil, fmt.Errorf("upstream %d: %s", resp.StatusCode, strings.TrimSpace(string(raw)))
 	}
+	// Usage is parsed into a typed struct (not map[string]int) so that
+	// nested-object fields some providers add — `prompt_tokens_details`,
+	// `completion_tokens_details`, `reasoning_tokens` as an object, etc. —
+	// are tolerated by Go's decoder (unknown struct fields are ignored,
+	// but objects can't decode into int map values). Outer signature
+	// stays map[string]int so callers don't change.
 	var parsed struct {
 		Choices []struct {
 			Message struct {
 				Content string `json:"content"`
 			} `json:"message"`
 		} `json:"choices"`
-		Usage map[string]int `json:"usage"`
+		Usage struct {
+			PromptTokens     int `json:"prompt_tokens"`
+			CompletionTokens int `json:"completion_tokens"`
+			TotalTokens      int `json:"total_tokens"`
+		} `json:"usage"`
 	}
 	if err := json.NewDecoder(resp.Body).Decode(&parsed); err != nil {
 		return "", nil, fmt.Errorf("decode upstream: %w", err)
@@ -582,16 +603,28 @@ func (s *Service) callUpstream(ctx context.Context, baseURL, apiKey, model, prom
 	if len(parsed.Choices) == 0 {
 		return "", nil, errors.New("upstream returned no choices")
 	}
-	return strings.TrimSpace(parsed.Choices[0].Message.Content), parsed.Usage, nil
+	usage := map[string]int{
+		"prompt_tokens":     parsed.Usage.PromptTokens,
+		"completion_tokens": parsed.Usage.CompletionTokens,
+		"total_tokens":      parsed.Usage.TotalTokens,
+	}
+	return strings.TrimSpace(parsed.Choices[0].Message.Content), usage, nil
 }
 
 func mockRender(prompt string) string {
 	return "[mock render] " + strings.TrimSpace(strings.SplitN(prompt, "\n", 2)[0])
 }
 
-// ---- prompt (moved verbatim from useLLMRender.ts §V) --------------
+// ---- prompt -----------------------------------------------------------
+//
+// Returned as (system, user) so the upstream call can send a two-message
+// chat. Splitting instructions out of the user content stops models that
+// "think out loud" (e.g. kimi-k2.6) from leaking their reasoning into the
+// modernized output. Empirically: a single combined user message produced
+// 1500+ tokens of "Let me break this down..." text; the system/user split
+// produces just the modernized passage as instructed.
 
-func buildRenderPrompt(verseText string, tier []tierWordInput) string {
+func buildRenderPrompt(verseText string, tier []tierWordInput) (system, user string) {
 	wordTable := ""
 	for _, t := range tier {
 		// Collapse whitespace and clip to 200 chars (same as the frontend).
@@ -604,26 +637,28 @@ func buildRenderPrompt(verseText string, tier []tierWordInput) string {
 	if wordTable == "" {
 		wordTable = "(no flagged words — render naturally)\n"
 	}
-	return fmt.Sprintf(`You are rendering a scripture passage from KJV / Restoration English into clear modern English while preserving the 1828 Webster meanings of specific words listed below.
 
-**Original passage:**
+	system = `You render scripture passages from KJV / Restoration English into clear modern English, preserving 1828 Webster meanings of words the user flags.
+
+Rules:
+1. Render the passage in clear modern English.
+2. For each flagged word, replace it with a phrase that captures its 1828 sense as defined by the user. Don't substitute the modern dictionary meaning.
+3. Mark each substituted phrase with the original word in square brackets after it, like this: "they tolerated [allowed] their fathers' deeds". This keeps the substitution transparent.
+4. Do not add theological interpretation, application, or commentary. Translate the language only.
+5. Preserve sentence structure where possible.
+6. Output the modernized passage as plain prose. No preamble. No reasoning. No "Let me think..." No explanation of choices. No restating the input. Just the modernized passage.
+7. Cap output at 800 tokens. If the passage is longer, modernize until the cap and end with [...continued].`
+
+	user = fmt.Sprintf(`Modernize this passage, preserving the 1828 meanings of the flagged words.
+
+**Passage:**
 
 %s
 
 **Words to preserve in their 1828 sense:**
 
-%s
-**Instructions:**
-
-1. Render the passage in clear modern English.
-2. For each flagged word, replace it with a phrase that captures its 1828 sense as defined above. Don't substitute the modern dictionary meaning.
-3. Mark each substituted phrase with the original word in square brackets after it, like this: "they tolerated [allowed] their fathers' deeds". This keeps the substitution transparent.
-4. Do not add theological interpretation, application, or commentary. Just translate the language.
-5. Preserve sentence structure where possible.
-
-Reply in 800 tokens or fewer. If the passage is longer, modernize until the cap and end with [...continued].
-
-**Output the modernized passage only. No preamble, no explanation.**`, verseText, wordTable)
+%s`, verseText, wordTable)
+	return system, user
 }
 
 // ---- rate limit + token ledger ------------------------------------

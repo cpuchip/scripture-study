@@ -128,12 +128,16 @@ export const PROVIDER_PRESETS: Record<ProviderID, Partial<LLMSettings>> = {
     model: 'openai/gpt-4o-mini',
   },
   'opencode-go': {
-    baseUrl: '',  // reader provides their own
-    model: 'kimi-k2.6',
+    // Common opencode-go gateway is https://opencode.ai/zen/go/v1.
+    // minimax-m2.7 was empirically the cleanest render-task model on the
+    // opencode-go model list (kimi-k2.6 / glm-5.1 / deepseek-v4-flash all
+    // leak reasoning into content for short instruction-following tasks).
+    baseUrl: 'https://opencode.ai/zen/go/v1',
+    model: 'minimax-m2.7',
   },
   'opencode-zen': {
     baseUrl: '',
-    model: 'kimi-k2.6',
+    model: 'minimax-m2.7',
   },
   'lm-studio': {
     baseUrl: 'http://localhost:1234/v1',
