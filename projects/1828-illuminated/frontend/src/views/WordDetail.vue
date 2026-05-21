@@ -1,13 +1,21 @@
 <script setup lang="ts">
+// Route params are READ ONCE at setup unless wrapped in computed —
+// vue-router reuses the same component instance when only the param changes
+// (e.g. /word/as → /word/abide), so a plain const captures the initial value
+// and never updates. Fix: derive `word` and `tier` as computed refs.
+import { computed } from 'vue'
 import { useRoute, RouterLink } from 'vue-router'
 import WordCard from '@/components/WordCard.vue'
 import { useWordData } from '@/composables/useWordData'
 
 const route = useRoute()
-const rawWord = Array.isArray(route.params.word) ? route.params.word[0] : route.params.word
-const word = (rawWord ?? '').toLowerCase()
 const data = useWordData()
-const tier = data.findWord(word)
+
+const word = computed<string>(() => {
+  const raw = Array.isArray(route.params.word) ? route.params.word[0] : route.params.word
+  return (raw ?? '').toLowerCase()
+})
+const tier = computed(() => data.findWord(word.value))
 </script>
 
 <template>

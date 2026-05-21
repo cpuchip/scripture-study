@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed, onMounted, onBeforeUnmount } from 'vue'
+import { ref, computed, onMounted, onBeforeUnmount, watch } from 'vue'
 import { useRoute, useRouter, RouterLink } from 'vue-router'
 import { tokenize, useWordData } from '@/composables/useWordData'
 import LinkedDefinition from '@/components/LinkedDefinition.vue'
@@ -13,6 +13,9 @@ const router = useRouter()
 const data = useWordData()
 
 // Verse selection via query string ?v=<id>; default to first demo.
+// `watch(route.query.v)` keeps the verse in sync with deep-links and
+// back/forward nav — `onMounted` alone wouldn't catch a route change
+// while staying on /present (vue-router reuses the component instance).
 const verseIdx = ref<number>(0)
 function syncIdxFromRoute() {
   const v = route.query.v as string | undefined
@@ -22,6 +25,7 @@ function syncIdxFromRoute() {
   }
 }
 onMounted(syncIdxFromRoute)
+watch(() => route.query.v, syncIdxFromRoute)
 
 const verse = computed<DemoVerse>(() => (demoVerses[verseIdx.value] ?? demoVerses[0]) as DemoVerse)
 const segments = computed(() => tokenize(verse.value.text))
