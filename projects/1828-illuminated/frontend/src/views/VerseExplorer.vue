@@ -3,18 +3,94 @@ import { ref, computed, watch } from 'vue'
 import { RouterLink } from 'vue-router'
 import HighlightedText from '@/components/HighlightedText.vue'
 import WordCard from '@/components/WordCard.vue'
-import { selectedWord, selectWord, useWordData, tokenize } from '@/composables/useWordData'
+import { selectWord, selectedWord, useWordData, tokenize } from '@/composables/useWordData'
 import { useLLMRender } from '@/composables/useLLMRender'
 import { sessionActive, refreshSession } from '@/composables/useLLMSession'
+import { apiUrl } from '@/composables/useApiBase'
 import demoData from '@/data/demo-verses.json'
+import { CANON, buildChurchUrl, type CanonVolume, type CanonBook } from '@/data/canon-books'
 
 const data = useWordData()
 type DemoVerse = (typeof demoData.verses)[number]
 const demoVerses: DemoVerse[] = demoData.verses
 
-const mode = ref<'demo' | 'paste'>('demo')
+const mode = ref<'demo' | 'canon' | 'paste'>('demo')
 const selectedVerseId = ref<string>(demoVerses[0]?.id ?? '')
 const pasteText = ref<string>('')
+
+// ─── Canon-browse mode state ───────────────────────────────────────────
+// Volume → book → chapter. The selectors are populated from CANON
+// (frontend-side; stable + audit-friendly) and the chapter render comes
+// from /api/scripture/chapter/{abbr}/{chapter}.
+const canonVolumeId = ref<CanonVolume['id']>('bofm')
+const canonBookAbbr = ref<string>('1-ne')
+const canonChapter = ref<number>(3)
+const canonChapterText = ref<string>('')
+const canonChapterLoading = ref(false)
+const canonChapterError = ref<string>('')
+const canonChapterRef = ref<string>('')      // human ref returned by backend
+const canonChapterAbbrRef = ref<string>('')  // abbr ref for the URL
+
+const canonVolume = computed<CanonVolume | undefined>(() =>
+  CANON.find(v => v.id === canonVolumeId.value),
+)
+const canonBook = computed<CanonBook | undefined>(() =>
+  canonVolume.value?.books.find(b => b.abbr === canonBookAbbr.value),
+)
+const canonChapterMax = computed(() => canonBook.value?.chapters ?? 1)
+const canonChapterChoices = computed(() => {
+  const max = canonChapterMax.value
+  return Array.from({ length: max }, (_, i) => i + 1)
+})
+const canonChurchUrl = computed(() => {
+  const vol = canonVolume.value
+  const book = canonBook.value
+  if (!vol || !book) return ''
+  return buildChurchUrl(vol.urlVolume, book.urlPath, canonChapter.value)
+})
+
+async function fetchCanonChapter() {
+  const vol = canonVolume.value
+  const book = canonBook.value
+  if (!vol || !book) return
+  canonChapterLoading.value = true
+  canonChapterError.value = ''
+  canonChapterText.value = ''
+  try {
+    const url = apiUrl(`/scripture/chapter/${encodeURIComponent(book.abbr)}/${canonChapter.value}`)
+    const resp = await fetch(url)
+    if (!resp.ok) {
+      canonChapterError.value = `HTTP ${resp.status} — chapter not found.`
+      return
+    }
+    const json = await resp.json()
+    canonChapterRef.value = json.ref ?? `${book.name} ${canonChapter.value}`
+    canonChapterAbbrRef.value = json.abbr_ref ?? `${book.abbr}/${canonChapter.value}`
+    // Join verses into one rendered block. Tokenize handles the inline
+    // highlights for tier words — same code path as demo + paste.
+    const verses: Array<{ verse: number; text: string }> = json.verses ?? []
+    canonChapterText.value = verses.map(v => `${v.verse} ${v.text}`).join(' ')
+  } catch (e: unknown) {
+    canonChapterError.value = e instanceof Error ? e.message : String(e)
+  } finally {
+    canonChapterLoading.value = false
+  }
+}
+
+// When the volume changes, default to its first book.
+watch(canonVolumeId, () => {
+  const firstBook = canonVolume.value?.books[0]
+  if (firstBook) {
+    canonBookAbbr.value = firstBook.abbr
+    canonChapter.value = 1
+  }
+})
+// When the book changes, clamp chapter to the book's range.
+watch(canonBookAbbr, () => {
+  if (canonChapter.value > canonChapterMax.value) {
+    canonChapter.value = 1
+  }
+})
 
 const selectedVerse = computed<DemoVerse | undefined>(() =>
   demoVerses.find(v => v.id === selectedVerseId.value)
@@ -22,6 +98,7 @@ const selectedVerse = computed<DemoVerse | undefined>(() =>
 
 const activeText = computed(() => {
   if (mode.value === 'demo') return selectedVerse.value?.text ?? ''
+  if (mode.value === 'canon') return canonChapterText.value
   return pasteText.value
 })
 
@@ -75,12 +152,17 @@ watch(activeText, () => {
     </header>
 
     <!-- Mode switcher -->
-    <div class="flex gap-3 mb-6 text-sm">
+    <div class="flex gap-3 mb-6 text-sm flex-wrap">
       <button
         class="px-4 py-1.5 rounded-full border font-medium transition"
         :class="mode === 'demo' ? 'bg-amber-100 border-amber-400 text-amber-900' : 'bg-white border-stone-300 text-stone-600 hover:border-stone-400'"
         @click="mode = 'demo'"
       >Demo verse</button>
+      <button
+        class="px-4 py-1.5 rounded-full border font-medium transition"
+        :class="mode === 'canon' ? 'bg-amber-100 border-amber-400 text-amber-900' : 'bg-white border-stone-300 text-stone-600 hover:border-stone-400'"
+        @click="mode = 'canon'"
+      >Browse canon</button>
       <button
         class="px-4 py-1.5 rounded-full border font-medium transition"
         :class="mode === 'paste' ? 'bg-amber-100 border-amber-400 text-amber-900' : 'bg-white border-stone-300 text-stone-600 hover:border-stone-400'"
@@ -123,6 +205,68 @@ watch(activeText, () => {
                 >{{ selectedVerse.study_link.replace(/^[./]+/, '') }} <span>↗</span></a>
               </div>
             </footer>
+          </div>
+        </div>
+
+        <div v-else-if="mode === 'canon'">
+          <!-- Volume / book / chapter selectors. The render comes from
+               /api/scripture/chapter/:abbr/:chapter. -->
+          <div class="grid sm:grid-cols-[1fr_1fr_120px_auto] gap-2 mb-4">
+            <select
+              v-model="canonVolumeId"
+              class="px-3 py-2 rounded-lg border border-stone-300 bg-white text-sm"
+              aria-label="Volume"
+            >
+              <option v-for="v in CANON" :key="v.id" :value="v.id">{{ v.label }}</option>
+            </select>
+            <select
+              v-model="canonBookAbbr"
+              class="px-3 py-2 rounded-lg border border-stone-300 bg-white text-sm"
+              aria-label="Book"
+            >
+              <option v-for="b in canonVolume?.books ?? []" :key="b.abbr" :value="b.abbr">{{ b.name }}</option>
+            </select>
+            <select
+              v-model.number="canonChapter"
+              class="px-3 py-2 rounded-lg border border-stone-300 bg-white text-sm"
+              aria-label="Chapter"
+            >
+              <option v-for="c in canonChapterChoices" :key="c" :value="c">{{ c }}</option>
+            </select>
+            <button
+              @click="fetchCanonChapter"
+              :disabled="canonChapterLoading"
+              class="px-4 py-2 rounded-lg text-sm font-medium bg-amber-600 text-white hover:bg-amber-700 transition disabled:bg-stone-300 disabled:cursor-not-allowed"
+            >
+              <span v-if="canonChapterLoading">Loading…</span>
+              <span v-else>Open chapter</span>
+            </button>
+          </div>
+
+          <div v-if="canonChapterError" class="def-card p-4 mb-4 text-sm text-red-700 bg-red-50 border-red-200">
+            {{ canonChapterError }}
+          </div>
+
+          <div v-if="canonChapterText" class="def-card p-6 space-y-4">
+            <header class="border-b border-stone-200 pb-3 flex items-baseline justify-between gap-3">
+              <h2 class="font-serif text-xl">{{ canonChapterRef }}</h2>
+              <a
+                v-if="canonChurchUrl"
+                :href="canonChurchUrl"
+                target="_blank"
+                rel="noopener"
+                class="text-xs text-amber-700 hover:underline"
+                :title="`Open ${canonChapterRef} at churchofjesuschrist.org for footnotes + study apparatus`"
+              >Full chapter at churchofjesuschrist.org ↗</a>
+            </header>
+            <HighlightedText :text="canonChapterText" />
+            <p class="text-xs text-stone-500 italic">
+              Verse text from the bcbooks 2013 corpus; footnotes, headings, and study apparatus stripped.
+              The "↗" above opens the canonical apparatus on churchofjesuschrist.org.
+            </p>
+          </div>
+          <div v-else-if="!canonChapterLoading && !canonChapterError" class="def-card p-6 text-sm text-stone-500 italic">
+            Pick a volume, book, and chapter, then click <strong>Open chapter</strong>.
           </div>
         </div>
 
