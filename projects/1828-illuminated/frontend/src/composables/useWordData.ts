@@ -1,18 +1,28 @@
-// Centralized data composable. The JSON bundles are imported statically so
-// they're code-split per route by Vite.
+// Centralized word-data composable. Backend cutover (phase 5):
+//
+//   - tier-words.json + manual-additions.json stay statically imported.
+//     They're small (~342KB combined) and drive:
+//       (1) highlight tier display + tokenize() inline highlighting
+//       (2) the WordSearch primary list ("Words we've curated")
+//       (3) tier badges + study cross-refs on WordCard
+//
+//   - 1828 and modern definitions now come from the i1828 backend
+//     (`/api/dict/1828/:word`, `/api/dict/modern/:word`). Lookups are
+//     async; a small in-memory LRU avoids repeated round-trips per session.
+//
+//   - Server-side stem fallback (D-DICT-2): the backend's /api/dict/1828
+//     handler does its own archaic-suffix stripping and returns
+//     `stem_matched` in the response. The client no longer duplicates that
+//     logic — we still keep a small tier-side stemMatch for tokenize()'s
+//     highlight pass (tier matching is in-memory and synchronous), but
+//     definition lookup hands off to the server.
+
 import { computed, ref } from 'vue'
 
 import tierWords from '../data/tier-words.json'
-import defs1828 from '../data/definitions-1828.json'
-// definitions-modern.json may not exist yet during early dev (pre-fetch).
-// Use a try/import-fallback pattern via dynamic require — but in Vite, a
-// missing static import errors. Solution: ship an empty stub at build time
-// and let fetch_modern_defs.py overwrite it. See scripts/build_data.py.
-import defsModern from '../data/definitions-modern.json'
-// Hand-curated additions for words our P1 extractor missed (because the
-// original study used "Webster's definition" without the literal "Webster 1828"
-// phrase). Merged into the tier map at boot. See manual-additions.json header.
 import manualAdditions from '../data/manual-additions.json'
+
+import { apiUrl } from './useApiBase'
 
 export type Tier = 'A++' | 'A+' | 'B' | 'C' | 'D'
 
@@ -28,7 +38,35 @@ export interface TierWord {
 
 export interface Def1828Entry { pos: string; definitions: string[] }
 export interface ModernEntry { pos: string; definitions: string[] }
-export interface ModernRecord { entries?: ModernEntry[]; error?: string }
+
+/** Result of /api/dict/1828/{word}. `found:false` is a 200-with-no-entry. */
+export interface Def1828Response {
+  word: string
+  entries: Def1828Entry[]
+  found: boolean
+  stem_matched: string | null
+}
+
+/** Result of /api/dict/modern/{word}. `found:false` distinguishes
+ *  "cached 404" (Free Dictionary returned no entry) from "looking up". */
+export interface ModernResponse {
+  word: string
+  entries?: ModernEntry[]
+  source: 'cache' | 'fetched' | 'none' | 'rate_limited'
+  found: boolean
+  error?: string | null
+}
+
+/** Result of /api/dict/search?q=… — both lists for class-E reach UX. */
+export interface DictSearchHit {
+  word: string
+  tier?: string
+}
+export interface DictSearchResponse {
+  query: string
+  tier_results: DictSearchHit[]
+  all_1828_results: DictSearchHit[]
+}
 
 const autoTierWords: TierWord[] = (tierWords as any).words
 const manualTierWords: TierWord[] = (manualAdditions as any).additions ?? []
@@ -51,11 +89,11 @@ const tierCounts: Record<Tier, number> = (() => {
   return counts as Record<Tier, number>
 })()
 
-// Inflection / archaic suffix stripping for KJV-style verbs (suffereth, endureth,
-// obtaining, anointed, etc.). Tries the full word first; if no hit, tries
-// progressively-stripped suffixes. Returns the matched canonical word or null.
+// Tier-side stem matcher for tokenize()'s highlight pass. Keeps tokenize
+// synchronous so HighlightedText renders without await. Definition lookup
+// (1828/modern) is async + server-stem-fallback (the source of truth).
 const ARCHAIC_SUFFIXES = ['eth', 'edst', 'est', 'ing', 'ed', 's']
-function stemMatch(raw: string): { canonical: string; tw: TierWord } | null {
+function tierStemMatch(raw: string): { canonical: string; tw: TierWord } | null {
   const direct = tierMap.get(raw)
   if (direct) return { canonical: raw, tw: direct }
   for (const suf of ARCHAIC_SUFFIXES) {
@@ -80,8 +118,39 @@ function stemMatch(raw: string): { canonical: string; tw: TierWord } | null {
   return null
 }
 
-const def1828Map: Record<string, Def1828Entry[]> = (defs1828 as any).definitions ?? {}
-const defModernMap: Record<string, ModernRecord | null> = (defsModern as any).definitions ?? {}
+// ─── Per-session LRU caches for backend lookups ────────────────────────
+//
+// 1828 entries are nearly immutable; modern entries can flip from
+// "not yet fetched" to "fetched" within a session, but once cached they're
+// stable. A 200-entry cap keeps memory bounded.
+
+const CACHE_CAP = 200
+
+function lruGet<V>(cache: Map<string, V>, key: string): V | undefined {
+  const v = cache.get(key)
+  if (v !== undefined) {
+    // Refresh recency: re-insert.
+    cache.delete(key)
+    cache.set(key, v)
+  }
+  return v
+}
+
+function lruSet<V>(cache: Map<string, V>, key: string, value: V) {
+  if (cache.has(key)) cache.delete(key)
+  cache.set(key, value)
+  while (cache.size > CACHE_CAP) {
+    // Evict oldest.
+    const firstKey = cache.keys().next().value
+    if (firstKey === undefined) break
+    cache.delete(firstKey)
+  }
+}
+
+const cache1828 = new Map<string, Def1828Response>()
+const cacheModern = new Map<string, ModernResponse>()
+
+// ─── Public API ───────────────────────────────────────────────────────
 
 export function useWordData() {
   return {
@@ -90,22 +159,84 @@ export function useWordData() {
     findWord(word: string): TierWord | undefined {
       return tierMap.get(word.toLowerCase())
     },
-    get1828(word: string): Def1828Entry[] {
-      return def1828Map[word.toLowerCase()] ?? []
+
+    /**
+     * Async 1828 lookup. Returns the backend's `Def1828Response` shape so
+     * callers can render `stem_matched` ("Showing entry for `obtain`").
+     * Network errors return `{found:false}` with a synthetic error string —
+     * callers should not throw on a missing word; they should render the
+     * "no entry" state.
+     */
+    async get1828(word: string): Promise<Def1828Response> {
+      const w = word.toLowerCase()
+      const cached = lruGet(cache1828, w)
+      if (cached) return cached
+      try {
+        const resp = await fetch(apiUrl(`/dict/1828/${encodeURIComponent(w)}`))
+        if (!resp.ok) {
+          return { word: w, entries: [], found: false, stem_matched: null }
+        }
+        const json = (await resp.json()) as Def1828Response
+        lruSet(cache1828, w, json)
+        return json
+      } catch {
+        return { word: w, entries: [], found: false, stem_matched: null }
+      }
     },
-    getModern(word: string): ModernRecord | null {
-      const v = defModernMap[word.toLowerCase()]
-      return v ?? null
+
+    /**
+     * Async modern lookup. The backend handles lazy fetch + write-back
+     * against the Free Dictionary API at 1 req/sec global.
+     */
+    async getModern(word: string): Promise<ModernResponse> {
+      const w = word.toLowerCase()
+      const cached = lruGet(cacheModern, w)
+      if (cached) return cached
+      try {
+        const resp = await fetch(apiUrl(`/dict/modern/${encodeURIComponent(w)}`))
+        if (!resp.ok) {
+          return { word: w, source: 'none', found: false, error: `HTTP ${resp.status}` }
+        }
+        const json = (await resp.json()) as ModernResponse
+        lruSet(cacheModern, w, json)
+        return json
+      } catch (e: unknown) {
+        const msg = e instanceof Error ? e.message : String(e)
+        return { word: w, source: 'none', found: false, error: msg }
+      }
     },
-    hasModern(word: string): boolean {
-      return defModernMap[word.toLowerCase()] != null
+
+    /**
+     * Class-E reach search: returns tier matches AND all-1828-corpus
+     * matches in one round-trip. The frontend renders them as separate
+     * sections so the headline backend win ("any word in the 1828 is
+     * reachable") is visible at the UX layer.
+     */
+    async searchDict(query: string, limit = 40): Promise<DictSearchResponse> {
+      const q = query.trim().toLowerCase()
+      const empty: DictSearchResponse = { query: q, tier_results: [], all_1828_results: [] }
+      if (!q) return empty
+      try {
+        const resp = await fetch(apiUrl(`/dict/search?q=${encodeURIComponent(q)}&limit=${limit}`))
+        if (!resp.ok) return empty
+        return (await resp.json()) as DictSearchResponse
+      } catch {
+        return empty
+      }
     },
+
     /** Return all tier words sorted by tier (A++ first), then alphabetical. */
     allByTier(): TierWord[] {
       const order: Record<Tier, number> = { 'A++': 0, 'A+': 1, B: 2, C: 3, D: 4 }
       return [...tierWordList].sort((a, b) => order[a.tier] - order[b.tier] || a.word.localeCompare(b.word))
     },
-    /** Fuzzy-ish prefix match for the search box. */
+
+    /**
+     * Synchronous prefix match against the tier list — drives the
+     * primary "Words we've curated" section in WordSearch.vue. The
+     * class-E reach (all 98k 1828 headwords) is surfaced separately via
+     * `searchDict()` above.
+     */
     searchPrefix(query: string, limit = 40): TierWord[] {
       const q = query.trim().toLowerCase()
       if (!q) return []
@@ -127,9 +258,10 @@ export function useWordData() {
 
 // ─── Verse tokenization + highlighting ─────────────────────────────────────
 //
-// Given a chunk of text (a pasted verse, a demo verse), tokenize into
-// words and return a list of {text, word?, tier?} segments so a Vue
-// template can render them with v-for + highlight class.
+// Given a chunk of text, tokenize into segments so a Vue template can render
+// it with v-for + highlight class. Stays synchronous — tier matching is in
+// memory; the dictionary round-trip happens later when the user clicks a
+// highlighted word.
 
 export interface TextSegment {
   text: string
@@ -149,7 +281,7 @@ export function tokenize(text: string): TextSegment[] {
     }
     const raw = m[0]
     const norm = raw.toLowerCase().replace(/[''-]+$/, '').replace(/^[''-]+/, '')
-    const match = stemMatch(norm)
+    const match = tierStemMatch(norm)
     if (match) {
       // Use the canonical form for the word card so we don't pop different
       // cards for "suffer" vs "suffereth" vs "suffered".

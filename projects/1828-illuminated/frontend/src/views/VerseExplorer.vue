@@ -5,7 +5,7 @@ import HighlightedText from '@/components/HighlightedText.vue'
 import WordCard from '@/components/WordCard.vue'
 import { selectedWord, selectWord, useWordData, tokenize } from '@/composables/useWordData'
 import { useLLMRender } from '@/composables/useLLMRender'
-import { isConfigured } from '@/composables/useLLMSettings'
+import { sessionActive, refreshSession } from '@/composables/useLLMSession'
 import demoData from '@/data/demo-verses.json'
 
 const data = useWordData()
@@ -42,9 +42,14 @@ const wordsInText = computed(() => {
 
 const samplePaste = `Yea, blessed are they whose feet stand upon the land of Zion, who have obeyed my gospel; for they shall receive for their reward the good things of the earth, and it shall bring forth in its strength.`
 
-// LLM-render — stretch goal #1. Gated behind user's LLM settings.
+// LLM-render — stretch goal #1. Gated behind an active BYOK session.
 const { state: renderState, render: renderModern, reset: resetRender } = useLLMRender()
-const llmConfigured = computed(() => isConfigured())
+const llmConfigured = computed(() => sessionActive.value)
+
+// Confirm the local session_id mirror against the server when this view
+// mounts — catches the case where the backend's janitor evicted the
+// session while the tab was idle.
+refreshSession().catch(() => { /* network errors leave the mirror as-is */ })
 
 function onRenderClick() {
   if (activeText.value) {
@@ -160,7 +165,7 @@ watch(activeText, () => {
           <div class="flex items-center justify-between gap-3 mb-3">
             <h3 class="text-sm uppercase tracking-wider text-stone-500 font-sans">Render in modern English</h3>
             <RouterLink v-if="!llmConfigured" to="/settings" class="text-xs text-amber-700 hover:underline">
-              Configure LLM endpoint ⚙ ↗
+              Start a BYOK session ⚙ ↗
             </RouterLink>
           </div>
           <p class="text-xs text-stone-500 mb-3">
@@ -180,7 +185,27 @@ watch(activeText, () => {
           </button>
 
           <div v-if="renderState.error" class="mt-3 def-card p-4 text-sm text-red-700 bg-red-50 border-red-200">
-            <strong>Error:</strong> {{ renderState.error }}
+            <div class="flex items-baseline gap-2">
+              <strong>
+                <template v-if="renderState.error.kind === 'reauth'">Session expired</template>
+                <template v-else-if="renderState.error.kind === 'rate_limited_by_1828'">Throttled by 1828.ibeco.me</template>
+                <template v-else-if="renderState.error.kind === 'upstream_provider_error'">Provider error</template>
+                <template v-else-if="renderState.error.kind === 'feature_disabled'">Render disabled</template>
+                <template v-else>Error</template>
+              </strong>
+              <span v-if="renderState.error.kind === 'rate_limited_by_1828'" class="text-xs text-red-500 italic">
+                (this is our cap, not your provider's)
+              </span>
+            </div>
+            <div class="mt-1">{{ renderState.error.message }}</div>
+            <div v-if="renderState.error.retryAfterSeconds" class="text-xs mt-1 text-red-600">
+              Retry after ~{{ renderState.error.retryAfterSeconds }}s.
+            </div>
+            <RouterLink
+              v-if="renderState.error.kind === 'reauth'"
+              to="/settings"
+              class="inline-block mt-2 text-xs text-amber-700 hover:underline"
+            >Re-authenticate in Settings ↗</RouterLink>
           </div>
 
           <div v-if="renderState.result" class="mt-4 def-card p-5 bg-amber-50/30 border-amber-300">

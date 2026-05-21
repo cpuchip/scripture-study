@@ -1,25 +1,49 @@
-// LLM-render — given a verse + the tier-words present in it, ask the user's
-// configured OpenAI-compatible endpoint to render the verse in modern English
-// while preserving each tier word's 1828 sense. Output is a string with
-// inline [original-word] markers so the substitution is transparent.
+// LLM render — given a verse + the tier words present in it, ask the
+// backend's /api/llm/render to render the verse in modern English while
+// preserving each tier word's 1828 sense.
 //
-// The request happens directly from the user's browser to their endpoint
-// — the 1828.ibeco.me site never sees the request or the API key.
+// Phase-5 cutover: the browser no longer talks directly to the provider.
+// Instead it POSTs to the i1828 backend, which holds the reader's BYOK
+// session key in-memory and round-trips to the provider server-side.
+// This solves LM Studio CORS for readers, keeps reader keys out of the
+// 1828.ibeco.me bundle entirely, and lets us attribute throttling
+// honestly (rate_limited_by_1828 vs upstream_provider_error).
 
 import { ref } from 'vue'
-import { llmSettings, isConfigured } from './useLLMSettings'
-import { useWordData, tokenize } from './useWordData'
+
+import { apiUrl } from './useApiBase'
+import { llmSettings } from './useLLMSettings'
+import { refreshSession, sessionActive } from './useLLMSession'
+import { tokenize, useWordData } from './useWordData'
 
 export interface RenderResult {
   modernized: string
   promptUsed: string
   durationMs: number
+  model: string
+  provider: string
+  usage: Record<string, number>
+}
+
+export type RenderErrorKind =
+  | 'reauth'                  // 401 — session expired/missing
+  | 'rate_limited_by_1828'    // 429 — our cap, not the provider's
+  | 'upstream_provider_error' // 502 — provider returned an error (passed through)
+  | 'feature_disabled'        // 503 — proxy off
+  | 'network'                 // fetch failed before we got a response
+  | 'unknown'
+
+export interface RenderError {
+  kind: RenderErrorKind
+  message: string
+  /** Set on 429 — seconds to wait before retrying. */
+  retryAfterSeconds?: number
 }
 
 export interface RenderState {
   loading: boolean
   result: RenderResult | null
-  error: string | null
+  error: RenderError | null
 }
 
 export function useLLMRender() {
@@ -27,84 +51,156 @@ export function useLLMRender() {
   const data = useWordData()
 
   async function render(verseText: string): Promise<void> {
-    if (!isConfigured()) {
-      state.value = { loading: false, result: null, error: 'Settings not configured. Open /settings to add your API endpoint.' }
-      return
-    }
     state.value = { loading: true, result: null, error: null }
 
-    // Collect tier words present in the verse + their 1828 first-sense
+    // Collect tier words present in the verse + their 1828 first-sense.
+    // We hit the backend's 1828 endpoint per-unique-tier-word; the LRU
+    // cache in useWordData makes repeat verses cheap. The prompt build
+    // itself happens server-side now — we only need to send the verse
+    // text + the {word, sense} pairs.
     const present = new Map<string, string>()
+    const uniqueTierWords: string[] = []
     for (const seg of tokenize(verseText)) {
       if (seg.word && !present.has(seg.word)) {
-        const defs = data.get1828(seg.word)
-        const firstSense = defs[0]?.definitions[0] ?? ''
-        if (firstSense) present.set(seg.word, firstSense)
+        present.set(seg.word, '')
+        uniqueTierWords.push(seg.word)
       }
     }
+    if (uniqueTierWords.length > 0) {
+      const results = await Promise.all(uniqueTierWords.map(w => data.get1828(w)))
+      uniqueTierWords.forEach((w, i) => {
+        const r = results[i]
+        const firstSense = r?.entries[0]?.definitions[0] ?? ''
+        if (firstSense) present.set(w, firstSense)
+        else present.delete(w)
+      })
+    }
 
-    const wordTable = Array.from(present.entries())
-      .map(([w, def]) => `- **${w}**: ${def.replace(/\s+/g, ' ').slice(0, 200)}`)
-      .join('\n')
-
-    const userPrompt = `You are rendering a scripture passage from KJV / Restoration English into clear modern English while preserving the 1828 Webster meanings of specific words listed below.
-
-**Original passage:**
-
-${verseText}
-
-**Words to preserve in their 1828 sense:**
-
-${wordTable || '(no flagged words — render naturally)'}
-
-**Instructions:**
-
-1. Render the passage in clear modern English.
-2. For each flagged word, replace it with a phrase that captures its 1828 sense as defined above. Don't substitute the modern dictionary meaning.
-3. Mark each substituted phrase with the original word in square brackets after it, like this: "they tolerated [allowed] their fathers' deeds". This keeps the substitution transparent.
-4. Do not add theological interpretation, application, or commentary. Just translate the language.
-5. Preserve sentence structure where possible.
-
-**Output the modernized passage only. No preamble, no explanation.**`
+    const tierWords = Array.from(present.entries()).map(([word, sense]) => ({ word, sense }))
 
     const startMs = performance.now()
     try {
-      const url = llmSettings.baseUrl.replace(/\/$/, '') + '/chat/completions'
-      const body = {
-        model: llmSettings.model || undefined,
-        messages: [{ role: 'user', content: userPrompt }],
-        temperature: llmSettings.temperature,
-        max_tokens: llmSettings.maxTokens,
-      }
-      const headers: Record<string, string> = { 'Content-Type': 'application/json' }
-      if (llmSettings.apiKey?.trim()) {
-        headers['Authorization'] = `Bearer ${llmSettings.apiKey.trim()}`
-      }
-      const resp = await fetch(url, {
+      const resp = await fetch(apiUrl('/llm/render'), {
         method: 'POST',
-        headers,
-        body: JSON.stringify(body),
+        credentials: 'include',  // carry the i1828_session cookie
+        headers: {
+          'Content-Type': 'application/json',
+          // Bearer mirror — defensive against ad-blockers that strip cookies.
+          ...(llmSettings.session_id ? { Authorization: `Bearer ${llmSettings.session_id}` } : {}),
+        },
+        body: JSON.stringify({
+          verseText,
+          tierWords,
+          options: {
+            maxTokens: llmSettings.maxTokens,
+            temperature: llmSettings.temperature,
+            stream: false,
+          },
+        }),
       })
+
+      if (resp.status === 401) {
+        // Local mirror was stale or the server janitor evicted the
+        // session — sync with the server and surface a clear re-auth state.
+        await refreshSession()
+        state.value = {
+          loading: false,
+          result: null,
+          error: {
+            kind: 'reauth',
+            message: 'Session expired or missing. Re-authenticate in Settings to render.',
+          },
+        }
+        return
+      }
+
+      if (resp.status === 429) {
+        const json = await resp.json().catch(() => ({} as any))
+        const retry = Number(json?.retry_after_seconds) || undefined
+        state.value = {
+          loading: false,
+          result: null,
+          error: {
+            kind: 'rate_limited_by_1828',
+            // Honor D-BE-AUTH attribution: this is OUR throttle, not the
+            // provider's. The body the backend returns already says so,
+            // but we lift the message to the UI verbatim.
+            message: (json?.message as string) || 'Throttled by 1828.ibeco.me (not your provider).',
+            retryAfterSeconds: retry,
+          },
+        }
+        return
+      }
+
+      if (resp.status === 502) {
+        const json = await resp.json().catch(() => ({} as any))
+        state.value = {
+          loading: false,
+          result: null,
+          error: {
+            kind: 'upstream_provider_error',
+            message: (json?.upstream_message as string) || (json?.message as string) || 'Upstream provider returned an error.',
+          },
+        }
+        return
+      }
+
+      if (resp.status === 503) {
+        const json = await resp.json().catch(() => ({} as any))
+        state.value = {
+          loading: false,
+          result: null,
+          error: {
+            kind: 'feature_disabled',
+            message: (json?.message as string) || 'LLM render is disabled on this deploy.',
+          },
+        }
+        return
+      }
+
       if (!resp.ok) {
         const text = await resp.text().catch(() => '')
-        throw new Error(`HTTP ${resp.status} ${resp.statusText} — ${text.slice(0, 200)}`)
+        state.value = {
+          loading: false,
+          result: null,
+          error: {
+            kind: 'unknown',
+            message: `HTTP ${resp.status} ${resp.statusText} — ${text.slice(0, 200)}`,
+          },
+        }
+        return
       }
+
       const json = await resp.json()
-      const content: string = json?.choices?.[0]?.message?.content ?? ''
-      if (!content) throw new Error('Empty response from model')
+      const content: string = json?.modernized ?? ''
+      if (!content) {
+        state.value = {
+          loading: false,
+          result: null,
+          error: { kind: 'unknown', message: 'Empty response from backend' },
+        }
+        return
+      }
 
       state.value = {
         loading: false,
         result: {
           modernized: content.trim(),
-          promptUsed: userPrompt,
-          durationMs: performance.now() - startMs,
+          promptUsed: json?.promptUsed ?? '',
+          durationMs: typeof json?.durationMs === 'number' ? json.durationMs : performance.now() - startMs,
+          model: json?.model ?? '',
+          provider: json?.provider ?? '',
+          usage: json?.usage ?? {},
         },
         error: null,
       }
     } catch (e: unknown) {
       const msg = e instanceof Error ? e.message : String(e)
-      state.value = { loading: false, result: null, error: msg }
+      state.value = {
+        loading: false,
+        result: null,
+        error: { kind: 'network', message: msg },
+      }
     }
   }
 
@@ -112,5 +208,5 @@ ${wordTable || '(no flagged words — render naturally)'}
     state.value = { loading: false, result: null, error: null }
   }
 
-  return { state, render, reset }
+  return { state, render, reset, sessionActive }
 }

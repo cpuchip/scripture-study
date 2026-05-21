@@ -1,7 +1,12 @@
 <script setup lang="ts">
 import { ref, computed, onMounted, onBeforeUnmount, watch } from 'vue'
 import { useRoute, useRouter, RouterLink } from 'vue-router'
-import { tokenize, useWordData } from '@/composables/useWordData'
+import {
+  tokenize,
+  useWordData,
+  type Def1828Entry,
+  type ModernEntry,
+} from '@/composables/useWordData'
 import LinkedDefinition from '@/components/LinkedDefinition.vue'
 import demoData from '@/data/demo-verses.json'
 
@@ -30,11 +35,29 @@ watch(() => route.query.v, syncIdxFromRoute)
 const verse = computed<DemoVerse>(() => (demoVerses[verseIdx.value] ?? demoVerses[0]) as DemoVerse)
 const segments = computed(() => tokenize(verse.value.text))
 
-// Selected word — opens a fullscreen overlay card
+// Selected word — opens a fullscreen overlay card. 1828 + modern come from
+// the backend now (async); tier metadata stays synchronous (tier-words.json).
 const selected = ref<string | null>(null)
-const selected1828 = computed(() => selected.value ? data.get1828(selected.value) : [])
-const selectedModern = computed(() => selected.value ? data.getModern(selected.value) : null)
+const selected1828 = ref<Def1828Entry[]>([])
+const selectedStemMatched = ref<string | null>(null)
+const selectedModern = ref<ModernEntry[]>([])
+const selectedModernNoEntry = ref(false)
 const selectedTier = computed(() => selected.value ? data.findWord(selected.value) : undefined)
+
+watch(selected, async (w) => {
+  if (!w) {
+    selected1828.value = []
+    selectedStemMatched.value = null
+    selectedModern.value = []
+    selectedModernNoEntry.value = false
+    return
+  }
+  const [r1828, rModern] = await Promise.all([data.get1828(w), data.getModern(w)])
+  selected1828.value = r1828.entries
+  selectedStemMatched.value = r1828.stem_matched
+  selectedModern.value = rModern.entries ?? []
+  selectedModernNoEntry.value = !rModern.found && rModern.source === 'none'
+})
 
 function openWord(word: string) { selected.value = word }
 function closeWord() { selected.value = null }
@@ -128,7 +151,12 @@ onBeforeUnmount(() => window.removeEventListener('keydown', onKey))
         </header>
 
         <section v-if="selected1828.length">
-          <h3 class="text-sm uppercase tracking-wider text-stone-500 mb-3 font-sans">Webster 1828</h3>
+          <h3 class="text-sm uppercase tracking-wider text-stone-500 mb-3 font-sans">
+            Webster 1828
+            <span v-if="selectedStemMatched" class="ml-2 text-xs normal-case text-stone-500 italic">
+              (showing entry for <code class="bg-stone-100 px-1 rounded">{{ selectedStemMatched }}</code>)
+            </span>
+          </h3>
           <div v-for="(entry, idx) in selected1828" :key="idx" class="mb-4 last:mb-0">
             <div class="text-sm italic text-stone-500 mb-1.5">{{ entry.pos }}</div>
             <ol class="list-decimal list-outside ml-6 text-base md:text-lg leading-relaxed text-stone-800 space-y-2">
@@ -139,9 +167,9 @@ onBeforeUnmount(() => window.removeEventListener('keydown', onKey))
           </div>
         </section>
 
-        <section v-if="selectedModern?.entries?.length">
+        <section v-if="selectedModern.length">
           <h3 class="text-sm uppercase tracking-wider text-stone-500 mb-3 font-sans">Modern</h3>
-          <div v-for="(entry, idx) in selectedModern.entries" :key="idx" class="mb-4 last:mb-0">
+          <div v-for="(entry, idx) in selectedModern" :key="idx" class="mb-4 last:mb-0">
             <div class="text-sm italic text-stone-500 mb-1.5">{{ entry.pos }}</div>
             <ol class="list-decimal list-outside ml-6 text-base md:text-lg leading-relaxed text-stone-800 space-y-2">
               <li v-for="(def, di) in entry.definitions.slice(0, 4)" :key="di">
@@ -150,7 +178,7 @@ onBeforeUnmount(() => window.removeEventListener('keydown', onKey))
             </ol>
           </div>
         </section>
-        <section v-else-if="selectedModern === null" class="text-sm text-stone-500 italic">
+        <section v-else-if="selectedModernNoEntry" class="text-sm text-stone-500 italic">
           No modern dictionary entry — the word is sufficiently archaic that mainstream modern dictionaries don't cover it.
         </section>
 
