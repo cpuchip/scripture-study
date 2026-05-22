@@ -73,6 +73,7 @@ external_context/
 /teaching/
 /projects/space-center/
 /projects/cpuchip.net/
+/projects/marsfield.org/
 /projects/storygames
 
 # (.env coverage moved up to the "Local secrets" block above)
