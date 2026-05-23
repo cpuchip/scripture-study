@@ -6,13 +6,20 @@ argument-hint: "[status | deploy | logs | version]"
 
 # Dokploy Deployment Management
 
-Self-hosted Dokploy instance at `https://dokploy.hmslogs.com`. Our own API calls — no third-party MCP needed.
+Self-hosted Dokploy instance at `https://server.ibeco.me`. Our own API calls — no third-party MCP needed.
+
+> **Panel URL changed 2026-05-22:** previously `dokploy.hmslogs.com` (now 502).
+> The `DOKPLOY_API_KEY` Windows env var did NOT survive the migration —
+> generate a fresh key from server.ibeco.me → Profile → API Keys, then
+> `setx DOKPLOY_API_KEY "<new-key>"`. The Known Application IDs below may
+> also have changed; verify with a `project.all` call after the key is
+> refreshed and update this skill if any drifted.
 
 ## Configuration
 
 The API key is stored as a **Windows user environment variable**: `DOKPLOY_API_KEY`.
 
-The Dokploy panel URL is `https://dokploy.hmslogs.com`.
+The Dokploy panel URL is `https://server.ibeco.me`.
 
 ## Authentication
 
@@ -21,7 +28,7 @@ Use the `PowerShell` tool to load the key from the Windows user environment, the
 # Load from Windows user env (survives terminal restarts)
 $env:DOKPLOY_API_KEY = [System.Environment]::GetEnvironmentVariable("DOKPLOY_API_KEY", "User")
 # Make API calls
-curl -sk -H "x-api-key: $env:DOKPLOY_API_KEY" "https://dokploy.hmslogs.com/api/<endpoint>"
+curl -sk -H "x-api-key: $env:DOKPLOY_API_KEY" "https://server.ibeco.me/api/<endpoint>"
 ```
 
 If `$env:DOKPLOY_API_KEY` is already set in the current session, skip the registry read.
