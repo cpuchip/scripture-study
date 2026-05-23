@@ -400,6 +400,12 @@ extension_sql_file!(
     requires = ["create_batch_g3_quarantine_fires_atonement"],
 );
 
+extension_sql_file!(
+    "../am1-pending-file-writes-notify.sql",
+    name = "create_am1_pending_file_writes_notify",
+    requires = ["create_batch_g4_1_pending_file_writes"],
+);
+
 // ---------------------------------------------------------------------------
 // Diagnostic SQL functions
 // ---------------------------------------------------------------------------

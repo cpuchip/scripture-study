@@ -80,6 +80,11 @@ COPY external_context/tpg/go.mod                           ./external_context/tp
 COPY external_context/tpg/go.sum                           ./external_context/tpg/go.sum
 COPY experiments/lm-studio/scripts/scoring/go.mod          ./experiments/lm-studio/scripts/scoring/go.mod
 COPY experiments/lm-studio/scripts/scoring/go.sum          ./experiments/lm-studio/scripts/scoring/go.sum
+# 1828-illuminated backend was added to go.work 2026-05-20. Stub its
+# go.mod/go.sum so the bridge build can satisfy the workspace manifest
+# even though the bridge doesn't link against this module.
+COPY projects/1828-illuminated/backend/go.mod              ./projects/1828-illuminated/backend/go.mod
+COPY projects/1828-illuminated/backend/go.sum              ./projects/1828-illuminated/backend/go.sum
 
 ENV CGO_ENABLED=0 GOOS=linux GOARCH=amd64
 

@@ -104,6 +104,14 @@ func runBridgeRun(args []string) error {
 	log.Printf("bridge run: spawned %d worker(s); call-timeout=%ds",
 		*workers, *callTimeoutSecs)
 
+	// am1 (2026-05-22): Autonomous materializer. Drains
+	// stewards.pending_file_writes via stewards-cli on NOTIFY + 60s
+	// poll. Lives in its own goroutine with its own pgxConn so the
+	// mcp_proxy LISTEN below isn't blocked. Disabled via env if
+	// STEWARDS_MATERIALIZE_DISABLED=1. See
+	// .spec/proposals/autonomous-materializer.md.
+	go runMaterializer(rootCtx, pool)
+
 	// LISTEN on a dedicated pgx connection. Acquire from the pool's
 	// underlying conn pool but pin it (Hijack) for the duration so
 	// pgx's pool doesn't recycle it under us.

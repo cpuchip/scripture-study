@@ -82,20 +82,25 @@ services:
       BECOMING_TOKEN: "${BECOMING_TOKEN:-}"
     extra_hosts:
       - "host.docker.internal:host-gateway"
-    # Read-only mount of the repo root at /workspace so fs-read-mcp
-    # can serve scoped journal/proposal/mind/docs reads to the research
-    # agent. The sandbox enforces path scope at the MCP tool layer;
-    # mounting the whole repo read-only here is the simplest path —
-    # adding new fs-read scopes later only requires updating the
-    # mcp_servers row, not the docker-compose file.
+    # /workspace mount: READ-WRITE as of 2026-05-22 (was :ro). The
+    # autonomous materializer goroutine (am1 — see
+    # .spec/proposals/autonomous-materializer.md) drains
+    # stewards.pending_file_writes by exec'ing `stewards-cli
+    # materialize-writes --repo-root /workspace`. That step needs rw.
     #
-    # Additionally, workspace yt/ is mounted READ-WRITE at /opt/yt/yt
-    # (substrate-yt-transcripts batch, 2026-05-19). yt-mcp inside the
-    # bridge writes downloaded transcripts here; the workspace yt/
-    # directory IS the local cache, immediately visible to host tooling
-    # and git. Per D-YTT1 ratification.
+    # Real safety boundaries (not the mount flag):
+    #   - stewards-cli validates target_path against repo-root (no ".."
+    #     escape, no absolute paths)
+    #   - pending_file_writes.write_mode CHECK restricts to {create,append}
+    #   - fs-read-mcp's sandbox enforces read-path scope at the MCP tool
+    #     layer regardless of underlying mount
+    #
+    # Workspace yt/ is ALSO mounted READ-WRITE at /opt/yt/yt
+    # (substrate-yt-transcripts, 2026-05-19, D-YTT1) — yt-mcp downloads
+    # transcripts there; that path IS the local cache visible to host
+    # tooling + git.
     volumes:
-      - ../../..:/workspace:ro
+      - ../../..:/workspace:rw
       - ../../../yt:/opt/yt/yt:rw
     restart: unless-stopped
     # ENTRYPOINT is `stewards-mcp bridge run` (set in bridge.Dockerfile).
