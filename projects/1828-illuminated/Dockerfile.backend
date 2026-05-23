@@ -10,7 +10,14 @@
 # ---------------------------------------------------------------------
 # Stage 1 — Go build
 # ---------------------------------------------------------------------
-FROM golang:1.23-alpine AS build
+# Bumped 1.23 → 1.25 on 2026-05-23 because Go 1.23's compiler segfaults
+# on this codebase (cmd/compile/internal/noder/writer.go splitNamed nil
+# deref via types2.TypeList.list). Known 1.23 bug class around generics;
+# the workspace's scripts/becoming/Dockerfile is already on 1.25. The
+# backend's go.mod still says `go 1.23` as its minimum-required version;
+# Go 1.25 toolchain happily builds it. See projects/1828-illuminated/
+# .spec/error.log for the full crash trace.
+FROM golang:1.25-alpine AS build
 
 # git is needed by go modules when the proxy isn't configured
 RUN apk add --no-cache git
