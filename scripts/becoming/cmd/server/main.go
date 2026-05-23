@@ -38,7 +38,11 @@ func main() {
 
 	addr := flag.String("addr", envOrDefault("BECOMING_PORT", ":8080"), "listen address")
 	dbPath := flag.String("db", envOrDefault("BECOMING_DB", ""), "PostgreSQL connection string (postgres://...)")
-	scriptures := flag.String("scriptures", envOrDefault("BECOMING_SCRIPTURES", "../../gospel-library/eng/scriptures"), "path to scriptures directory")
+	// BECOMING_SCRIPTURES / --scriptures removed 2026-05-23. Scripture lookup
+	// now goes through gospel-engine-v2 (engine.ibeco.me) via engineClient,
+	// configured below from ENGINE_URL + ENGINE_SERVICE_TOKEN. The bundled
+	// /scriptures directory in the Docker image was dropped in the same
+	// commit. See scripts/becoming/.spec/proposals/scripture-via-engine.md.
 	dev := flag.Bool("dev", false, "development mode (CORS allow-all, skip auth)")
 	tlsCert := flag.String("tls-cert", envOrDefault("TLS_CERT", ""), "TLS certificate file (enables HTTPS)")
 	tlsKey := flag.String("tls-key", envOrDefault("TLS_KEY", ""), "TLS private key file")
@@ -202,8 +206,11 @@ func main() {
 			r.Mount("/api/push", notify.Router(database, notifScheduler))
 		}
 
-		// All existing API routes
-		r.Mount("/api", api.Router(database, *scriptures, brainHub))
+		// All existing API routes. engineClient handles scripture lookup
+		// against gospel-engine-v2 (.spec/proposals/scripture-via-engine.md);
+		// when unconfigured, the lookup endpoint returns 503 cleanly while
+		// books + search keep working.
+		r.Mount("/api", api.Router(database, engineClient, brainHub))
 	})
 
 	// Serve embedded frontend (SPA routing: serve index.html for unknown paths)

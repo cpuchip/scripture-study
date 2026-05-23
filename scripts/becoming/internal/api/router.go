@@ -3,6 +3,7 @@ package api
 
 import (
 	"encoding/json"
+	"errors"
 	"fmt"
 	"io"
 	"net/http"
@@ -12,6 +13,7 @@ import (
 
 	"github.com/cpuchip/scripture-study/scripts/becoming/internal/auth"
 	"github.com/cpuchip/scripture-study/scripts/becoming/internal/db"
+	"github.com/cpuchip/scripture-study/scripts/becoming/internal/engine"
 	"github.com/cpuchip/scripture-study/scripts/becoming/internal/scripture"
 	"github.com/go-chi/chi/v5"
 )
@@ -23,9 +25,14 @@ type TaskNotifier interface {
 }
 
 // Router creates the API router with all routes.
+//
+// engineClient may be nil (or unconfigured); the scripture-lookup endpoint
+// then returns 503 "unavailable" while books + search keep working. See
+// scripts/becoming/.spec/proposals/scripture-via-engine.md.
+//
 // taskNotifier is optional — if non-nil, task status changes will be
 // relayed to the brain agent.
-func Router(database *db.DB, scripturesRoot string, taskNotifier ...TaskNotifier) chi.Router {
+func Router(database *db.DB, engineClient *engine.Client, taskNotifier ...TaskNotifier) chi.Router {
 	r := chi.NewRouter()
 
 	var notifier TaskNotifier
@@ -82,9 +89,13 @@ func Router(database *db.DB, scripturesRoot string, taskNotifier ...TaskNotifier
 		r.Post("/study/seed", studySeed(database))
 	})
 
-	// Scripture lookup
+	// Scripture lookup. Lookup now calls engine.ibeco.me at runtime
+	// (per .spec/proposals/scripture-via-engine.md) so the bundled
+	// 20MB scripture tree is gone from the Docker image. Books +
+	// search continue to work even if engine is unreachable —
+	// they're backed by metadata-only data in internal/scripture.
 	r.Route("/scriptures", func(r chi.Router) {
-		r.Get("/lookup", lookupScripture(scripturesRoot))
+		r.Get("/lookup", lookupScripture(engineClient))
 		r.Get("/books", listScriptureBooks())
 		r.Get("/search", searchScriptureBooks())
 	})
@@ -1789,7 +1800,17 @@ func writeError(w http.ResponseWriter, status int, msg string) {
 
 // --- Scriptures ---
 
-func lookupScripture(root string) http.HandlerFunc {
+// lookupScripture now delegates to gospel-engine-v2 via the engine client
+// (see scripts/becoming/.spec/proposals/scripture-via-engine.md). Soft-
+// dependency semantics:
+//
+//   - engine reachable + verse found    → 200 with LookupResult (cached)
+//   - engine reachable + ref invalid     → 404 with parser error
+//   - engine reachable + verse not found → 404 with "not found"
+//   - engine UNREACHABLE / 5xx / auth    → 503 with {available:false,error:"..."}
+//     UI patterns this body to display "Scripture lookup temporarily
+//     unavailable" without breaking the rest of the page.
+func lookupScripture(engineClient *engine.Client) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		ref := r.URL.Query().Get("ref")
 		if ref == "" {
@@ -1797,8 +1818,15 @@ func lookupScripture(root string) http.HandlerFunc {
 			return
 		}
 
-		result, err := scripture.Lookup(root, ref)
+		result, err := engineClient.Lookup(r.Context(), ref)
 		if err != nil {
+			if errors.Is(err, engine.ErrUnavailable) {
+				writeJSON(w, http.StatusServiceUnavailable, map[string]any{
+					"available": false,
+					"error":     "scripture lookup temporarily unavailable",
+				})
+				return
+			}
 			writeError(w, http.StatusNotFound, err.Error())
 			return
 		}

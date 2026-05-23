@@ -28,8 +28,12 @@ services:
       GOOGLE_CLIENT_SECRET: ${GOOGLE_CLIENT_SECRET:-}
       GOOGLE_REDIRECT_URL: ${GOOGLE_REDIRECT_URL:-}
 
-      # Scriptures for memorization lookup (baked into image at /scriptures)
-      BECOMING_SCRIPTURES: /scriptures
+      # Scripture lookup — gospel-engine-v2 at runtime (no bundled tree).
+      # See scripts/becoming/.spec/proposals/scripture-via-engine.md.
+      # ENGINE_SERVICE_TOKEN required for /api/scriptures/lookup; without
+      # it the endpoint returns 503 cleanly while books + search still work.
+      ENGINE_URL: ${ENGINE_URL:-https://engine.ibeco.me}
+      ENGINE_SERVICE_TOKEN: ${ENGINE_SERVICE_TOKEN:-}
 
       # TLS (optional — typically handled by Dokploy's Traefik/nginx reverse proxy)
       # TLS_CERT: ""
