@@ -79,6 +79,14 @@ When ghostwriting Michael speaking about AI collaboration:
 6. **The polish gradient.** Chat messages are unselfconscious (*Naw, rapeditive, breavity, kansas bords*). A script is allowed to be tighter — but the *attitude* underneath should still be plain, not performer.
 7. **Self-audit:** would Michael, reading this paragraph, say "that's not how I actually work"? If yes, rewrite.
 
+## Opus tics on the cut list
+
+Phrasings the model defaults to that Michael has flagged as not-his-voice:
+
+- **"This series walks them"** / **"This study walks X"** / **"X walks Y"** — flagged 2026-05-23 during Episode 2 Phase 2. Meta-narration framing at section boundaries that points forward when the section's argument is already closed. Cut, or replace with a concrete next-action statement (e.g. *"Episode 3 takes the first one"*).
+
+When in doubt, the test is: does this phrase belong to the speaker, or to the model defaulting to a familiar shape? If the latter, rewrite.
+
 ## What lives elsewhere
 
 - AI presentation voice cut list (em-dashes, "let that land," "It's not X — it's Y"): [`study/yt/voice-analysis-ai-vs-michael.md`](../../../study/yt/voice-analysis-ai-vs-michael.md)
