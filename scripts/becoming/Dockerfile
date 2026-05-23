@@ -9,7 +9,7 @@ RUN npm run build
 
 # Stage 2: Download scriptures for memorization lookup
 # Uses the gospel-library downloader to fetch standard works (~20MB)
-FROM golang:1.25-alpine AS scriptures
+FROM golang:1.26-alpine AS scriptures
 RUN apk add --no-cache git
 WORKDIR /dl
 COPY scripts/gospel-library/go.mod scripts/gospel-library/go.sum ./
@@ -27,7 +27,7 @@ RUN git rev-parse --short HEAD > /commit_hash && \
     git log -1 --format=%s > /commit_msg
 
 # Stage 4: Build Go binary
-FROM golang:1.25-alpine AS backend
+FROM golang:1.26-alpine AS backend
 WORKDIR /app
 COPY scripts/becoming/go.mod scripts/becoming/go.sum ./
 RUN go mod download

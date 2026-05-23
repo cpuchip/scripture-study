@@ -10,14 +10,18 @@
 # ---------------------------------------------------------------------
 # Stage 1 — Go build
 # ---------------------------------------------------------------------
-# Bumped 1.23 → 1.25 on 2026-05-23 because Go 1.23's compiler segfaults
-# on this codebase (cmd/compile/internal/noder/writer.go splitNamed nil
-# deref via types2.TypeList.list). Known 1.23 bug class around generics;
-# the workspace's scripts/becoming/Dockerfile is already on 1.25. The
-# backend's go.mod still says `go 1.23` as its minimum-required version;
-# Go 1.25 toolchain happily builds it. See projects/1828-illuminated/
-# .spec/error.log for the full crash trace.
-FROM golang:1.25-alpine AS build
+# Go toolchain pin history:
+#   - 1.23 (original): segfaulted in splitNamed/TypeList.list (writer.go:2983)
+#     on this codebase's generic-heavy code. See .spec/error.log.
+#   - 1.25-alpine (floating, 2026-05-23 morning): hit a 1.25.x regression
+#     'interface conversion: ir.Node is *ir.BranchStmt, not *ir.AssignListStmt'
+#     compiling runtime/atomic/types.go itself. Image SHA
+#     8d22e29d960bc50cd025d93d5b7c7d220b1ee9aa7a239b3c8f55a57e987e8d45 is
+#     bad. See .spec/error-1828.2.log (and parallel becoming crash in
+#     .spec/error-becoming.log — same toolchain shape).
+#   - 1.26-alpine (current): matches the local Go (1.26.1) Michael builds
+#     against; satisfies becoming's `go 1.25.6` go.mod minimum.
+FROM golang:1.26-alpine AS build
 
 # git is needed by go modules when the proxy isn't configured
 RUN apk add --no-cache git

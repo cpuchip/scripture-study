@@ -23,7 +23,13 @@ RUN npm install --no-audit --no-fund
 WORKDIR /app
 COPY frontend/ ./frontend/
 
-# Build the static bundle
+# Build the static bundle.
+#
+# NODE_OPTIONS bumps the heap because Dokploy hit an exit-code-139
+# segfault here (.spec/error-1828.2.log) on the default ~1.5GB cap —
+# vue-tsc -b's type-instantiation pass on the Vue 3 + dict types runs
+# hot on memory. Local builds had plenty of headroom and never saw it.
+ENV NODE_OPTIONS="--max-old-space-size=4096"
 WORKDIR /app/frontend
 RUN npm run build
 
