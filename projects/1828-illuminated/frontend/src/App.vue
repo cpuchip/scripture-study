@@ -2,7 +2,12 @@
 import { RouterLink, RouterView, useRoute } from 'vue-router'
 import StudyTreePanel from '@/components/StudyTreePanel.vue'
 import { panelOpen, panelPinned } from '@/composables/useStudyTree'
+import { clickMode } from '@/composables/useClickMode'
 import { computed } from 'vue'
+
+function toggleClickMode() {
+  clickMode.value = clickMode.value === 'definition' ? 'scripture' : 'definition'
+}
 
 const route = useRoute()
 // Hide the study tree on /present (fullscreen tablet mode) per the
@@ -38,6 +43,21 @@ const containerMax = computed(() =>
           <RouterLink to="/verse" class="text-stone-700 hover:text-stone-900" active-class="text-amber-700 font-medium">Verse Explorer</RouterLink>
           <RouterLink to="/dictionary" class="text-stone-700 hover:text-stone-900" active-class="text-amber-700 font-medium">Dictionary <span class="text-xs text-amber-700">·preview</span></RouterLink>
           <RouterLink to="/about" class="text-stone-700 hover:text-stone-900" active-class="text-amber-700 font-medium">About</RouterLink>
+          <!-- Click-mode toggle: clicking words goes to definitions (default)
+               or to scripture occurrences. Persists per browser. -->
+          <button
+            @click="toggleClickMode"
+            class="inline-flex items-baseline gap-1 px-2 py-0.5 rounded border text-xs transition"
+            :class="clickMode === 'scripture'
+              ? 'border-sky-400 bg-sky-50 text-sky-800 hover:bg-sky-100'
+              : 'border-stone-300 text-stone-600 hover:border-stone-400'"
+            :title="clickMode === 'definition'
+              ? 'Click mode: definition (showing 1828 + modern). Press to switch to scripture mode (word click finds occurrences).'
+              : 'Click mode: scripture (word click finds occurrences). Press to switch back to definition mode.'"
+          >
+            <span>{{ clickMode === 'scripture' ? '📖' : '📚' }}</span>
+            <span class="hidden sm:inline">{{ clickMode === 'scripture' ? 'scripture' : 'definition' }}</span>
+          </button>
           <RouterLink to="/settings" class="text-stone-500 hover:text-stone-900 text-xs" active-class="text-amber-700 font-medium" title="LLM endpoint settings">⚙</RouterLink>
         </nav>
       </div>

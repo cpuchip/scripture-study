@@ -9,13 +9,19 @@
 // you stay in context; LinkedDefinition for definitions where you
 // want to follow a chain.
 import { computed } from 'vue'
-import { tokenize } from '@/composables/useWordData'
+import { tokenize, clickMode } from '@/composables/useWordData'
 
 const props = defineProps<{
   text: string
 }>()
 
 const segments = computed(() => tokenize(props.text))
+
+// Click mode controls routing: definition (default) → /word/X (1828 entry);
+// scripture → /word-study/X (occurrences across the canon).
+function linkFor(word: string): string {
+  return clickMode.value === 'scripture' ? `/word-study/${word}` : `/word/${word}`
+}
 </script>
 
 <template>
@@ -23,9 +29,11 @@ const segments = computed(() => tokenize(props.text))
     <template v-for="(seg, i) in segments" :key="i">
       <RouterLink
         v-if="seg.word"
-        :to="`/word/${seg.word}`"
+        :to="linkFor(seg.word)"
         :class="['def-link', seg.tier === 'E' ? 'def-link-e' : '']"
-        :title="`See ${seg.word} (Tier ${seg.tier})`"
+        :title="clickMode === 'scripture'
+          ? `Find ${seg.word} in scripture (Tier ${seg.tier})`
+          : `See ${seg.word} (Tier ${seg.tier})`"
       >{{ seg.text }}</RouterLink>
       <template v-else>{{ seg.text }}</template>
     </template>

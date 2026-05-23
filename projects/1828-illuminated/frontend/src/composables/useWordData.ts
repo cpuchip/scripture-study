@@ -370,6 +370,11 @@ export function tokenize(text: string): TextSegment[] {
   return segs
 }
 
+// Click mode (definition vs scripture) lives in its own tiny composable
+// so App.vue's eager bundle doesn't pull all of useWordData's data layer.
+// Re-export for ergonomic imports from places that already use this file.
+export { clickMode, type ClickMode } from './useClickMode'
+
 // Reactive "currently selected word" — shared so any component can hover/click to update.
 export const selectedWord = ref<string | null>(null)
 export const selectedTier = computed(() => {
