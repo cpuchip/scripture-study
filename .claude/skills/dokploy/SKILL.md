@@ -15,7 +15,7 @@ the wrong instance).
 
 | Instance | URL | Env var holding API key | Hosts |
 |---|---|---|---|
-| **NOCIX VPS** (cloud) | `https://server.ibeco.me` | `DOKPLOY_NOICX_API_KEY` (note: literally `NOICX`, not `NOCIX`) | ibeco.me + sub-domains, cpuchip.net, marsfield.org, 1828 (Compose) |
+| **NOCIX VPS** (cloud) | `https://server.ibeco.me` | `DOKPLOY_NOCIX_API_KEY` | ibeco.me + sub-domains, cpuchip.net, marsfield.org, 1828 (Compose) |
 | **Home NAS** | `https://dokploy.hmslogs.com` | `DOKPLOY_API_KEY` | hmslogs.com + home-network apps (tinyfarm.store etc.) |
 
 The home NAS instance can be flaky / 502 when the home network is
@@ -28,8 +28,8 @@ API keys live in Windows user environment variables (survive terminal
 restarts; safer than `.env` files).
 
 ```powershell
-# NOCIX VPS (server.ibeco.me)
-$env:DOKPLOY_NOICX_API_KEY = [System.Environment]::GetEnvironmentVariable("DOKPLOY_NOICX_API_KEY", "User")
+# NOCIX VPS (server.ibeco.me) — the primary instance
+$env:DOKPLOY_NOCIX_API_KEY = [System.Environment]::GetEnvironmentVariable("DOKPLOY_NOCIX_API_KEY", "User")
 
 # Home NAS (dokploy.hmslogs.com)
 $env:DOKPLOY_API_KEY       = [System.Environment]::GetEnvironmentVariable("DOKPLOY_API_KEY", "User")
@@ -38,13 +38,19 @@ $env:DOKPLOY_API_KEY       = [System.Environment]::GetEnvironmentVariable("DOKPL
 If the env var is already set in the current session, skip the
 registry read.
 
+> **Note 2026-05-23:** the NOCIX key was previously named
+> `DOKPLOY_NOICX_API_KEY` (with the typo `NOICX`). Michael renamed
+> it; `DOKPLOY_NOCIX_API_KEY` is now the canonical name. The old
+> `NOICX` variable is still set during the transition but should not
+> be relied on going forward.
+
 ## Authentication
 
 Use the `x-api-key` header against the matching instance:
 
 ```powershell
 # NOCIX
-curl -sk -H "x-api-key: $env:DOKPLOY_NOICX_API_KEY" "https://server.ibeco.me/api/<endpoint>"
+curl -sk -H "x-api-key: $env:DOKPLOY_NOCIX_API_KEY" "https://server.ibeco.me/api/<endpoint>"
 
 # Home NAS
 curl -sk -H "x-api-key: $env:DOKPLOY_API_KEY"       "https://dokploy.hmslogs.com/api/<endpoint>"
@@ -165,7 +171,7 @@ Same as deploy but rebuilds without pulling new code.
 ### Refreshing the Known IDs table after a UI-side change
 The table above can drift. When in doubt, re-fetch:
 ```powershell
-curl -sk -H "x-api-key: $env:DOKPLOY_NOICX_API_KEY" "https://server.ibeco.me/api/project.all" > $env:TEMP\proj.json
+curl -sk -H "x-api-key: $env:DOKPLOY_NOCIX_API_KEY" "https://server.ibeco.me/api/project.all" > $env:TEMP\proj.json
 # inspect with python/jq — pull projectId, applicationId, composeId, name, domain.host
 ```
 Then update this skill if anything changed.
@@ -175,7 +181,7 @@ Then update this skill if anything changed.
 - **Never display raw `project.all` output** — it contains database
   passwords, OAuth secrets, and session keys for ALL projects. Extract
   only the fields you need (names, statuses, IDs).
-- **Load keys from Windows env** — never hardcode. `NOICX_API_KEY` and
+- **Load keys from Windows env** — never hardcode. `NOCIX_API_KEY` and
   `API_KEY` are different keys with different scopes; don't mix them.
 - **Ask before deploying** — `application.deploy` / `application.redeploy`
   / `compose.deploy` / `compose.redeploy` are destructive operations.
