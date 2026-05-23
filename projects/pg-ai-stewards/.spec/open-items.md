@@ -261,6 +261,28 @@ These are deliberate "v2" paths the sub-specs flagged for revisit after the subs
 ### 6.2 stewards-ui sidebar grouping (see 4.2)
 - Already covered above.
 
+### 6.3 am1 (autonomous materializer) carry-forwards
+- **Source:** `.spec/journal/2026-05-22-substrate-autonomous-materializer.md` + proposal `projects/pg-ai-stewards/.spec/proposals/autonomous-materializer.md`
+- **Status:** core feature SHIPPED 2026-05-22 (commit `767386a`). Three open items remain.
+
+**6.3.1 `go.work` membership as build-context dependency — watchman rule**
+- **Effort:** small (≤30 min) for the watchman rule; medium if it grows into CI
+- **Risk:** latent. Two latent breakages in twelve hours both surfaced from the same shape — modules added to `go.work` without auditing every Docker build's COPY list. Morning's go.sum sweep (`be823c1`) and evening's bridge.Dockerfile fix (folded into `767386a`) were the same lesson twice.
+- **Fix:** add a watchman rule: "if `go.work` changes in a PR, verify every `Dockerfile*` that COPYs it still resolves." Could be a shell check in `.github/workflows/` or a stewards-bgworker tick that diffs the `use (...)` list against documented Docker contexts.
+- **Recommendation:** do this before the next module joins `go.work` — that's the natural trigger that will surface a third instance otherwise.
+
+**6.3.2 Pre-commit hook revisit after one-week soak**
+- **Effort:** small (≤15 min)
+- **Risk:** dead-code drift if we never revisit. The `scripts/git-hooks/pre-commit` materializer call (`materialize_writes` function) is now belt-and-suspenders alongside the bridge's autonomous goroutine. After one week of bridge soak without incident, the hook can become "skip if bridge has logged a recent drain within the last N minutes."
+- **Trigger:** 2026-05-29 (one week from `767386a`)
+- **Fix:** add a check in the hook that queries `SELECT max(materialized_at) FROM stewards.pending_file_writes WHERE materialized_by NOT LIKE 'error:%'` and skips its own drain if the value is < 5 minutes old.
+
+**6.3.3 Real-time UI updates for materialized files (NOTIFY → SSE bridge)**
+- **Effort:** medium (1 session) — part of stewards-ui evolution proposal ③ territory
+- **Risk:** UX drift, not data correctness. Without it, the stewards-ui dashboard doesn't update when the substrate autonomously materializes a file — readers have to refresh.
+- **Shape:** the same `stewards_pending_file_write` NOTIFY channel that the materializer LISTENs on could feed an SSE endpoint in stewards-ui. Each NOTIFY → push a `materialized` event to subscribed clients. Dashboard's "scheduled-runs card" gains a real-time "new file landed" indicator.
+- **Recommendation:** roll into council ③ (`stewards-ui-evolution`) when that one walks. Don't build standalone.
+
 ---
 
 ## VII. Recommended next batches
