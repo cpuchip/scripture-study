@@ -12,6 +12,8 @@ Sub-questions:
 ## Catalyst
 Morgan Philpot post (May 2026): cites 3 Ne 6:18 as type of US/Utah today; references upcoming May 31 "teaching" event; couples this to the Church's *Celebrating Freedom and Agency* statement ("Heavenly Father gave us moral agency… He wanted us to choose Him freely, to choose light, truth, and goodness WITHOUT COMPULSION… Jesus Christ makes us free"); closes with the sharp question — *what was the atonement for?*
 
+> **Provenance note (2026-05-23 republish):** The Church document Philpot referenced uses the URL slug `celebrating-freedom-and-agency` ([direct link](https://www.churchofjesuschrist.org/study/manual/celebrating-freedom-and-agency/01?lang=eng)), but its displayed title is **"Celebrating the Founding of the United States and the U.S. Constitution"** — the 5th-Sunday materials for May 31, 2026 that Philpot's post pointed to. The verbatim at the source is *"He wanted us to choose Him freely, to choose light, truth, and goodness without compulsion."* The study body's earlier paraphrase — *"We rejoice in God's plan, which provides for people to know God of their own choice, without compulsion"* — was citation drift (paraphrase rendered with quote marks). Corrected in republish to use the verbatim quote and the actual displayed title.
+
 ## Outline (draft)
 1. The verse and its setting (3 Ne 6:4–18, what was being taught, the collapse in 3 Ne 7)
 2. The logic of "taught therefore accountable" across scripture
