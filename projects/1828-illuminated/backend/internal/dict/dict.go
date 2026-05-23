@@ -60,6 +60,7 @@ func (s *Service) Register(mux *http.ServeMux) {
 	mux.HandleFunc("GET /api/dict/modern/{word}", s.handleModern)
 	mux.HandleFunc("GET /api/dict/tier/{word}", s.handleTier)
 	mux.HandleFunc("GET /api/dict/search", s.handleSearch)
+	mux.HandleFunc("GET /api/dict/headwords", s.handleHeadwords)
 }
 
 // ---- response shapes -----------------------------------------------
@@ -277,6 +278,45 @@ func (s *Service) handleSearch(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	httpx.WriteJSON(w, http.StatusOK, resp)
+}
+
+// handleHeadwords streams the full 1828 headword list as a JSON string array.
+//
+// Used by the frontend tokenizer so it can recognize class-E words inside
+// definition bodies and mark them clickable (without a per-token round-trip).
+// ~98,828 words × ~7 chars avg = ~700KB raw, ~150KB gzipped — fetched once
+// per session and cached in a reactive Set. Aggressive Cache-Control so it
+// truly is once-per-session-or-day.
+func (s *Service) handleHeadwords(w http.ResponseWriter, r *http.Request) {
+	rows, err := s.pool.Query(r.Context(),
+		`SELECT word FROM webster_1828 ORDER BY word`)
+	if err != nil {
+		httpx.WriteError(w, http.StatusInternalServerError, "db_error", err.Error())
+		return
+	}
+	defer rows.Close()
+
+	words := make([]string, 0, 100_000)
+	for rows.Next() {
+		var word string
+		if err := rows.Scan(&word); err != nil {
+			httpx.WriteError(w, http.StatusInternalServerError, "scan_error", err.Error())
+			return
+		}
+		words = append(words, word)
+	}
+	if err := rows.Err(); err != nil {
+		httpx.WriteError(w, http.StatusInternalServerError, "rows_error", err.Error())
+		return
+	}
+
+	// Long cache — the 1828 corpus is immutable in practice (rebuilds happen
+	// rarely + go through a backend redeploy which invalidates by URL/build).
+	w.Header().Set("Cache-Control", "public, max-age=86400")
+	httpx.WriteJSON(w, http.StatusOK, map[string]any{
+		"count": len(words),
+		"words": words,
+	})
 }
 
 // ---- queries -------------------------------------------------------

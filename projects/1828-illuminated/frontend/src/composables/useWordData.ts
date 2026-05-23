@@ -24,7 +24,13 @@ import manualAdditions from '../data/manual-additions.json'
 
 import { apiUrl } from './useApiBase'
 
-export type Tier = 'A++' | 'A+' | 'B' | 'C' | 'D'
+/** Tier values:
+ *  - A++ / A+ / B / C / D: explicitly curated tiers from research/gospel/1828/
+ *  - E: synthetic — any 1828 headword that's NOT in the curated tier list.
+ *    Class-E words don't appear in tier-words.json; tokenize() assigns them
+ *    on-the-fly when the lazy-loaded headwords Set knows the word.
+ */
+export type Tier = 'A++' | 'A+' | 'B' | 'C' | 'D' | 'E'
 
 export interface TierWord {
   word: string
@@ -82,12 +88,47 @@ for (const m of manualTierWords) {
   tierMap.set(m.word, m)
 }
 
-// Recompute tier counts after merge
+// Recompute tier counts after merge. E count populates async once the
+// headwords Set arrives — see `headwordCount` below.
 const tierCounts: Record<Tier, number> = (() => {
-  const counts: Record<string, number> = { 'A++': 0, 'A+': 0, B: 0, C: 0, D: 0 }
+  const counts: Record<string, number> = { 'A++': 0, 'A+': 0, B: 0, C: 0, D: 0, E: 0 }
   for (const w of tierWordList) counts[w.tier] = (counts[w.tier] ?? 0) + 1
   return counts as Record<Tier, number>
 })()
+
+// ─── Class-E headwords ─────────────────────────────────────────────────
+//
+// Lazy-loaded Set of every 1828 headword. Used by tokenize() so the
+// definition body's inline links extend BEYOND the curated tier list —
+// any word the 1828 has an entry for becomes clickable. Without this,
+// reading "spell" shows the curated words underlined but not e.g.
+// "spelk" or "helmsman" which are class-E words.
+//
+// One round-trip per session, cached aggressively by the backend
+// (Cache-Control: public, max-age=86400). The Set is reactive so any
+// component using tokenize() re-renders when the data arrives.
+
+const headwordsSet = ref<Set<string>>(new Set())
+const headwordsLoaded = ref(false)
+let _headwordsLoadStarted = false
+
+function ensureHeadwordsLoaded(): void {
+  if (_headwordsLoadStarted) return
+  _headwordsLoadStarted = true
+  fetch(apiUrl('/dict/headwords'))
+    .then(r => r.ok ? r.json() : Promise.reject(new Error(`HTTP ${r.status}`)))
+    .then((d: { words?: string[] }) => {
+      const s = new Set<string>(d.words ?? [])
+      headwordsSet.value = s
+      tierCounts.E = Math.max(0, s.size - tierMap.size)
+      headwordsLoaded.value = true
+    })
+    .catch(() => {
+      // Backend may be down or endpoint missing — degrade silently to
+      // tier-only highlighting. Components stay functional.
+      headwordsLoaded.value = false
+    })
+}
 
 // Tier-side stem matcher for tokenize()'s highlight pass. Keeps tokenize
 // synchronous so HighlightedText renders without await. Definition lookup
@@ -227,7 +268,7 @@ export function useWordData() {
 
     /** Return all tier words sorted by tier (A++ first), then alphabetical. */
     allByTier(): TierWord[] {
-      const order: Record<Tier, number> = { 'A++': 0, 'A+': 1, B: 2, C: 3, D: 4 }
+      const order: Record<Tier, number> = { 'A++': 0, 'A+': 1, B: 2, C: 3, D: 4, E: 5 }
       return [...tierWordList].sort((a, b) => order[a.tier] - order[b.tier] || a.word.localeCompare(b.word))
     },
 
@@ -272,7 +313,13 @@ export interface TextSegment {
 const wordRe = /[A-Za-z][A-Za-z'-]+/g
 
 export function tokenize(text: string): TextSegment[] {
+  // Make sure the headwords Set is being fetched — class-E recognition
+  // depends on it. Side-effecting from inside tokenize() is fine because
+  // ensureHeadwordsLoaded() is idempotent (gated by _headwordsLoadStarted).
+  ensureHeadwordsLoaded()
+
   const segs: TextSegment[] = []
+  const headwords = headwordsSet.value
   let lastIdx = 0
   for (const m of text.matchAll(wordRe)) {
     const idx = m.index!
@@ -281,14 +328,42 @@ export function tokenize(text: string): TextSegment[] {
     }
     const raw = m[0]
     const norm = raw.toLowerCase().replace(/[''-]+$/, '').replace(/^[''-]+/, '')
-    const match = tierStemMatch(norm)
-    if (match) {
-      // Use the canonical form for the word card so we don't pop different
-      // cards for "suffer" vs "suffereth" vs "suffered".
-      segs.push({ text: raw, word: match.canonical, tier: match.tw.tier })
-    } else {
-      segs.push({ text: raw })
+
+    // 1. Curated tier match (synchronous; includes stem fallback).
+    const tierMatch = tierStemMatch(norm)
+    if (tierMatch) {
+      segs.push({ text: raw, word: tierMatch.canonical, tier: tierMatch.tw.tier })
+      lastIdx = idx + raw.length
+      continue
     }
+
+    // 2. Class-E: any 1828 headword that's not in our tier list. The
+    //    headwords Set is async; before it loads, class-E words fall
+    //    through to plain-text segments (graceful degradation). Once
+    //    loaded, the next re-render lights them up.
+    if (headwords.size > 0) {
+      if (headwords.has(norm)) {
+        segs.push({ text: raw, word: norm, tier: 'E' })
+        lastIdx = idx + raw.length
+        continue
+      }
+      // Try archaic-suffix stripping for class-E too (suffereth, obtaineth, etc.)
+      for (const suf of ARCHAIC_SUFFIXES) {
+        if (norm.length > suf.length + 2 && norm.endsWith(suf)) {
+          const stem = norm.slice(0, -suf.length)
+          if (headwords.has(stem)) {
+            segs.push({ text: raw, word: stem, tier: 'E' })
+            lastIdx = idx + raw.length
+            // Sentinel — break out of the suffix loop and to the next match.
+            break
+          }
+        }
+      }
+      if (lastIdx === idx + raw.length) continue
+    }
+
+    // 3. Plain text.
+    segs.push({ text: raw })
     lastIdx = idx + raw.length
   }
   if (lastIdx < text.length) segs.push({ text: text.slice(lastIdx) })

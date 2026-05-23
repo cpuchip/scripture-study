@@ -9,20 +9,26 @@ const route = useRoute()
 // proposal D-ST-10 ratification — Present is for distraction-free reading.
 const showTreePanel = computed(() => route.name !== 'present')
 
-// When the tree is PINNED and OPEN, reserve space on the right so main
-// content doesn't slide under it. Tailwind 24rem matches the panel's
-// sm:w-96 width. Unpinned mode overlays — no reflow needed.
-const contentReflow = computed(() =>
-  showTreePanel.value && panelOpen.value && panelPinned.value
-    ? 'sm:pr-96'
-    : '',
+// When pinned + open, the panel renders INLINE as the second column of
+// the page layout (not as a viewport-pinned overlay). The whole layout
+// widens via max-w-7xl so the content stays at a comfortable reading
+// width AND the panel sits beside it inside the same centered container —
+// no cream-zone gap between viewport edge and content. The header + footer
+// widen in lockstep so the visual frame stays aligned.
+const isInlinePin = computed(
+  () => showTreePanel.value && panelOpen.value && panelPinned.value,
+)
+const containerMax = computed(() =>
+  isInlinePin.value ? 'max-w-7xl' : 'max-w-5xl',
 )
 </script>
 
 <template>
-  <div :class="['min-h-screen flex flex-col transition-[padding] duration-200', contentReflow]">
+  <div class="min-h-screen flex flex-col">
     <header class="border-b border-stone-300 bg-[var(--paper-2)]">
-      <div class="max-w-5xl mx-auto px-6 py-4 flex items-baseline justify-between">
+      <div
+        :class="[containerMax, 'mx-auto px-6 py-4 flex items-baseline justify-between transition-[max-width] duration-200']"
+      >
         <RouterLink to="/" class="flex items-baseline gap-2 group">
           <span class="text-xl font-serif font-semibold tracking-tight">1828 Illuminated</span>
           <span class="text-xs text-stone-500 hidden sm:inline">— scripture in its Restoration-era language frame</span>
@@ -38,15 +44,36 @@ const contentReflow = computed(() =>
     </header>
 
     <main class="flex-1">
-      <RouterView />
+      <div
+        :class="[containerMax, 'mx-auto px-6 transition-[max-width] duration-200']"
+      >
+        <div :class="isInlinePin ? 'flex gap-6 items-start' : ''">
+          <div :class="isInlinePin ? 'flex-1 min-w-0' : ''">
+            <RouterView />
+          </div>
+          <!-- When pinned, the tree mounts HERE as the second column.
+               StudyTreePanel disables its <Teleport> in pinned mode so
+               it renders in-flow instead of overlaying. -->
+          <aside
+            v-if="isInlinePin"
+            class="w-80 shrink-0 hidden lg:block"
+          >
+            <StudyTreePanel inline />
+          </aside>
+        </div>
+      </div>
     </main>
 
-    <!-- Study tree — slide-out panel + floating pill toggle. Available on
-         every surface except /present (the fullscreen tablet view). -->
-    <StudyTreePanel v-if="showTreePanel" />
+    <!-- Drawer mode (un-pinned overlay) — the panel renders Teleport'd to
+         body with fixed positioning. Mounted unconditionally so the
+         floating "Study tree" pill toggle is available on every surface
+         except /present, where showTreePanel is false. -->
+    <StudyTreePanel v-if="showTreePanel && !isInlinePin" />
 
     <footer class="border-t border-stone-300 bg-[var(--paper-2)] mt-12">
-      <div class="max-w-5xl mx-auto px-6 py-6 text-xs text-stone-600 flex flex-wrap items-baseline justify-between gap-2">
+      <div
+        :class="[containerMax, 'mx-auto px-6 py-6 text-xs text-stone-600 flex flex-wrap items-baseline justify-between gap-2 transition-[max-width] duration-200']"
+      >
         <div>
           1828 Illuminated · scripture text via
           <a href="https://www.churchofjesuschrist.org/study/scriptures" class="underline hover:text-stone-900" target="_blank" rel="noopener">churchofjesuschrist.org</a>

@@ -24,7 +24,7 @@ const segments = computed(() => tokenize(props.text))
       <RouterLink
         v-if="seg.word"
         :to="`/word/${seg.word}`"
-        class="def-link"
+        :class="['def-link', seg.tier === 'E' ? 'def-link-e' : '']"
         :title="`See ${seg.word} (Tier ${seg.tier})`"
       >{{ seg.text }}</RouterLink>
       <template v-else>{{ seg.text }}</template>
@@ -44,5 +44,17 @@ const segments = computed(() => tokenize(props.text))
 .def-link:hover {
   background-color: var(--amber-soft);
   color: var(--ink);
+}
+/* Class-E words: any 1828 headword not in the curated tier list.
+ * Lighter dotted underline (stone-300, not amber) so the page doesn't
+ * vibrate when every other word lights up. Hover still warms to amber
+ * so the affordance stays discoverable. */
+.def-link-e {
+  border-bottom-color: rgb(214 211 209);
+  border-bottom-style: dotted;
+}
+.def-link-e:hover {
+  border-bottom-color: var(--amber);
+  background-color: var(--amber-soft);
 }
 </style>

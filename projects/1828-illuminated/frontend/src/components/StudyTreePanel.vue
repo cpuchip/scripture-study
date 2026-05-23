@@ -15,6 +15,12 @@ import {
 } from '@/composables/useStudyTree'
 import TreeBranch from './TreeBranch.vue'
 
+// `inline=true` when mounted as the second column of the page layout
+// (pinned mode). `inline=false`/omitted when mounted as a viewport-fixed
+// overlay drawer (unpinned mode). The styling + Teleport behavior switch
+// on this prop.
+const props = defineProps<{ inline?: boolean }>()
+
 const router = useRouter()
 const {
   roots,
@@ -103,26 +109,31 @@ function onClearClick() {
 </script>
 
 <template>
-  <Teleport to="body">
-    <!-- Backdrop (only when un-pinned overlay mode; pinned mode doesn't dim) -->
+  <Teleport to="body" :disabled="!!props.inline">
+    <!-- Backdrop (only when overlay mode AND on mobile; pinned/inline doesn't dim) -->
     <div
-      v-if="panelOpen && !panelPinned"
+      v-if="panelOpen && !panelPinned && !props.inline"
       class="fixed inset-0 bg-black/20 z-30 lg:hidden"
       @click="panelOpen = false"
     />
 
-    <!-- The panel. Two modes:
-         - UN-PINNED (default): full-height slide-out from the right, overlays content,
-           closes the moment the reader clicks anywhere else.
-         - PINNED: anchors to the right column below the header (top-16 = 4rem ≈ header
-           height), so settings/nav remain reachable + the panel stays open while
-           the reader walks the tree across views. Body gets a right-padding via
-           App.vue so main content reflows. -->
+    <!-- The panel. Three render modes:
+         - INLINE (props.inline=true): mounted by App.vue as the second column of
+           the centered layout when pinned. Teleport disabled. Sticky-positioned
+           so it scrolls with the page but stays visible. No translate animation.
+         - OVERLAY DRAWER (default, panelOpen=true): Teleport'd to body, full-height
+           slide-out from the right edge of the viewport, z-40.
+         - HIDDEN: panelOpen=false → slid off-screen via translate-x-full. -->
     <aside
       :class="[
-        'fixed right-0 w-full sm:w-96 bg-[var(--paper)] border-l border-stone-300 shadow-2xl flex flex-col transition-transform duration-200 ease-out',
-        panelPinned ? 'top-16 h-[calc(100vh-4rem)] z-20' : 'top-0 h-full z-40',
-        panelOpen ? 'translate-x-0' : 'translate-x-full',
+        'bg-[var(--paper)] border border-stone-300 flex flex-col',
+        props.inline
+          ? 'rounded-lg shadow-sm sticky top-6 max-h-[calc(100vh-3rem)] w-full'
+          : [
+              'fixed right-0 w-full sm:w-96 shadow-2xl transition-transform duration-200 ease-out border-l',
+              'top-0 h-full z-40',
+              panelOpen ? 'translate-x-0' : 'translate-x-full',
+            ],
       ]"
       aria-label="Study tree panel"
     >

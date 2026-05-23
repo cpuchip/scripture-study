@@ -6,7 +6,11 @@ import WordCard from '@/components/WordCard.vue'
 
 const data = useWordData()
 const query = ref('')
-const selectedTiers = ref<Set<string>>(new Set(['A++', 'A+', 'B', 'C']))
+// All tiers ON by default — readers expect to find what they're looking
+// for without first realizing they need to toggle filters. D + E were
+// off-by-default historically; that hid the headline class-E reach feature
+// from new readers.
+const selectedTiers = ref<Set<string>>(new Set(['A++', 'A+', 'B', 'C', 'D', 'E']))
 
 // Tier-list matches (synchronous, drives the curated section).
 const matches = computed(() => {
@@ -76,13 +80,14 @@ function toggleTier(t: string) {
       <div class="flex flex-wrap gap-2 items-center text-sm">
         <span class="text-stone-500 mr-2">Tiers:</span>
         <button
-          v-for="t in ['A++','A+','B','C','D']"
+          v-for="t in ['A++','A+','B','C','D','E']"
           :key="t"
           @click="toggleTier(t)"
           class="px-3 py-1 rounded-full border text-xs font-medium transition"
           :class="selectedTiers.has(t)
             ? 'bg-amber-100 border-amber-400 text-amber-900'
             : 'bg-white border-stone-300 text-stone-500 hover:border-stone-400'"
+          :title="t === 'E' ? 'Class-E: any 1828 headword not in our curated tier list' : ''"
         >
           {{ t }}
           <span class="ml-1 text-stone-400">{{ data.tierCounts[t as keyof typeof data.tierCounts] }}</span>
@@ -135,8 +140,9 @@ function toggleTier(t: string) {
 
     <!-- Class-E reach: every 1828 headword. Shows as soon as the reader types
          a single letter — was previously gated at length >= 2 which hid the
-         feature behind discovery friction. -->
-    <section v-if="query.trim().length >= 1" class="mt-10 border-t border-stone-200 pt-8">
+         feature behind discovery friction. Section is also gated on the E
+         tier toggle so readers who want curated-only can hide it. -->
+    <section v-if="query.trim().length >= 1 && selectedTiers.has('E')" class="mt-10 border-t border-stone-200 pt-8">
       <h2 class="text-xs uppercase tracking-wider text-stone-500 mb-1 font-sans flex items-baseline gap-2 flex-wrap">
         <span>Full 1828 corpus matching "{{ query.trim() }}"</span>
         <span v-if="otherMatches.length" class="text-stone-400 normal-case">— {{ otherMatches.length }}{{ otherMatches.length === 60 ? '+' : '' }} headword{{ otherMatches.length === 1 ? '' : 's' }}</span>
