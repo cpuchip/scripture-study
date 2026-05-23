@@ -10,6 +10,7 @@ import { useRouter } from 'vue-router'
 import {
   useStudyTree,
   exportTreeMarkdown,
+  panelPinned,
   type StudyNode,
 } from '@/composables/useStudyTree'
 import TreeBranch from './TreeBranch.vue'
@@ -25,6 +26,10 @@ const {
   nodeCount,
   panelOpen,
 } = useStudyTree()
+
+function togglePin() {
+  panelPinned.value = !panelPinned.value
+}
 
 const confirmClear = ref(false)
 const copiedHint = ref(false)
@@ -99,17 +104,24 @@ function onClearClick() {
 
 <template>
   <Teleport to="body">
-    <!-- Backdrop (mobile: tap to close) -->
+    <!-- Backdrop (only when un-pinned overlay mode; pinned mode doesn't dim) -->
     <div
-      v-if="panelOpen"
+      v-if="panelOpen && !panelPinned"
       class="fixed inset-0 bg-black/20 z-30 lg:hidden"
       @click="panelOpen = false"
     />
 
-    <!-- Slide-out drawer -->
+    <!-- The panel. Two modes:
+         - UN-PINNED (default): full-height slide-out from the right, overlays content,
+           closes the moment the reader clicks anywhere else.
+         - PINNED: anchors to the right column below the header (top-16 = 4rem ≈ header
+           height), so settings/nav remain reachable + the panel stays open while
+           the reader walks the tree across views. Body gets a right-padding via
+           App.vue so main content reflows. -->
     <aside
       :class="[
-        'fixed top-0 right-0 h-full w-full sm:w-96 bg-[var(--paper)] border-l border-stone-300 shadow-2xl z-40 transition-transform duration-200 ease-out flex flex-col',
+        'fixed right-0 w-full sm:w-96 bg-[var(--paper)] border-l border-stone-300 shadow-2xl flex flex-col transition-transform duration-200 ease-out',
+        panelPinned ? 'top-16 h-[calc(100vh-4rem)] z-20' : 'top-0 h-full z-40',
         panelOpen ? 'translate-x-0' : 'translate-x-full',
       ]"
       aria-label="Study tree panel"
@@ -119,11 +131,22 @@ function onClearClick() {
           <h2 class="font-serif text-lg">Study tree</h2>
           <p class="text-xs text-stone-500">{{ nodeCount }} node{{ nodeCount === 1 ? '' : 's' }}</p>
         </div>
-        <button
-          @click="panelOpen = false"
-          class="text-stone-400 hover:text-stone-900 text-2xl leading-none"
-          aria-label="Close study tree panel"
-        >×</button>
+        <div class="flex items-center gap-1">
+          <button
+            @click="togglePin"
+            :class="[
+              'text-stone-400 hover:text-stone-900 text-base leading-none px-1.5 py-1 rounded transition',
+              panelPinned ? 'bg-amber-100 text-amber-800 hover:bg-amber-200' : 'hover:bg-stone-100',
+            ]"
+            :title="panelPinned ? 'Unpin (close to a drawer that overlays content)' : 'Pin (anchor below header so it stays put + nav stays reachable)'"
+            :aria-label="panelPinned ? 'Unpin study tree panel' : 'Pin study tree panel'"
+          >📌</button>
+          <button
+            @click="panelOpen = false"
+            class="text-stone-400 hover:text-stone-900 text-2xl leading-none px-1"
+            aria-label="Close study tree panel"
+          >×</button>
+        </div>
       </header>
 
       <!-- Tree body -->

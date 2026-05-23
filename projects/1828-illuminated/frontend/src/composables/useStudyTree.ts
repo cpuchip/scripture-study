@@ -54,6 +54,18 @@ const activeNodeId = ref<string | null>(null)
  *  from one component is visible everywhere. */
 export const panelOpen = ref(false)
 
+/** When pinned, the panel anchors to the right column under the header
+ *  (rather than overlaying as a slide-out drawer). Main content reflows
+ *  to make room. Persisted to localStorage so the reader's preference
+ *  survives reload. */
+const PIN_KEY = 'study-tree-pinned-v1'
+export const panelPinned = ref<boolean>(
+  typeof localStorage !== 'undefined' && localStorage.getItem(PIN_KEY) === '1',
+)
+watch(panelPinned, (v) => {
+  try { localStorage.setItem(PIN_KEY, v ? '1' : '0') } catch { /* storage off */ }
+})
+
 // ─── ID generator (small, no crypto.randomUUID dependency for SSR-safety) ─
 
 let _idCounter = 0

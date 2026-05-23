@@ -1,16 +1,26 @@
 <script setup lang="ts">
 import { RouterLink, RouterView, useRoute } from 'vue-router'
 import StudyTreePanel from '@/components/StudyTreePanel.vue'
+import { panelOpen, panelPinned } from '@/composables/useStudyTree'
 import { computed } from 'vue'
 
 const route = useRoute()
 // Hide the study tree on /present (fullscreen tablet mode) per the
 // proposal D-ST-10 ratification — Present is for distraction-free reading.
 const showTreePanel = computed(() => route.name !== 'present')
+
+// When the tree is PINNED and OPEN, reserve space on the right so main
+// content doesn't slide under it. Tailwind 24rem matches the panel's
+// sm:w-96 width. Unpinned mode overlays — no reflow needed.
+const contentReflow = computed(() =>
+  showTreePanel.value && panelOpen.value && panelPinned.value
+    ? 'sm:pr-96'
+    : '',
+)
 </script>
 
 <template>
-  <div class="min-h-screen flex flex-col">
+  <div :class="['min-h-screen flex flex-col transition-[padding] duration-200', contentReflow]">
     <header class="border-b border-stone-300 bg-[var(--paper-2)]">
       <div class="max-w-5xl mx-auto px-6 py-4 flex items-baseline justify-between">
         <RouterLink to="/" class="flex items-baseline gap-2 group">

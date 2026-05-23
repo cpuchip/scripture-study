@@ -25,13 +25,16 @@ let lastQueryRequested = ''
 watch(query, async (q) => {
   const trimmed = q.trim().toLowerCase()
   lastQueryRequested = trimmed
-  if (trimmed.length < 2) {
+  if (trimmed.length < 1) {
     otherMatches.value = []
     return
   }
   otherLoading.value = true
   try {
-    const resp = await data.searchDict(trimmed, 40)
+    // 60 hits — gives "starts with a" room to surface a meaningful slice
+    // without flooding. Increased from 40 to handle single-letter prefixes
+    // that match thousands of 1828 entries.
+    const resp = await data.searchDict(trimmed, 60)
     // Discard stale results if the query has moved on while the fetch was in flight.
     if (lastQueryRequested !== trimmed) return
     // Filter out anything already in the tier section to avoid duplicating
@@ -56,7 +59,10 @@ function toggleTier(t: string) {
   <div class="max-w-5xl mx-auto px-6 py-10">
     <header class="mb-8">
       <h1 class="text-3xl font-serif mb-2">Word search</h1>
-      <p class="text-stone-600">Look up any tier word — 1828 and modern definitions side by side, plus the studies that lensed it. Class-E words (not tier-curated but present in the 1828) show below the curated list.</p>
+      <p class="text-stone-600">
+        Type any word — the full <strong>{{ '98,828' }}-headword 1828 corpus</strong> is searchable here, not just our curated tier list.
+        Try <code class="bg-stone-100 px-1.5 py-0.5 rounded text-sm">gainsay</code>, <code class="bg-stone-100 px-1.5 py-0.5 rounded text-sm">peradventure</code>, or <code class="bg-stone-100 px-1.5 py-0.5 rounded text-sm">wist</code> — they're not in our tier list but the 1828 still has them.
+      </p>
     </header>
 
     <div class="mb-8 space-y-4">
@@ -127,13 +133,16 @@ function toggleTier(t: string) {
       </div>
     </section>
 
-    <!-- Class-E reach: every 1828 headword. Only shown when a query is active. -->
-    <section v-if="query.trim().length >= 2" class="mt-10 border-t border-stone-200 pt-8">
-      <h2 class="text-xs uppercase tracking-wider text-stone-500 mb-1 font-sans">
-        Other 1828 words matching "{{ query.trim() }}"
+    <!-- Class-E reach: every 1828 headword. Shows as soon as the reader types
+         a single letter — was previously gated at length >= 2 which hid the
+         feature behind discovery friction. -->
+    <section v-if="query.trim().length >= 1" class="mt-10 border-t border-stone-200 pt-8">
+      <h2 class="text-xs uppercase tracking-wider text-stone-500 mb-1 font-sans flex items-baseline gap-2 flex-wrap">
+        <span>Full 1828 corpus matching "{{ query.trim() }}"</span>
+        <span v-if="otherMatches.length" class="text-stone-400 normal-case">— {{ otherMatches.length }}{{ otherMatches.length === 60 ? '+' : '' }} headword{{ otherMatches.length === 1 ? '' : 's' }}</span>
       </h2>
       <p class="text-xs text-stone-500 mb-4 italic">
-        Not tier-curated — but the 1828 still has an entry. Class-E reach: any of the 98,828 headwords on file.
+        Class-E reach — any of the 98,828 1828 headwords, not just our 859 tier-curated ones.
       </p>
 
       <div v-if="otherLoading" class="text-sm text-stone-400 italic">Searching the 1828 corpus…</div>
@@ -150,6 +159,9 @@ function toggleTier(t: string) {
         >
           <span class="font-serif">{{ w.word }}</span>
         </RouterLink>
+        <div v-if="otherMatches.length === 60" class="text-xs text-stone-500 italic w-full mt-2">
+          Showing the first 60. Type a longer prefix to narrow.
+        </div>
       </div>
     </section>
   </div>
