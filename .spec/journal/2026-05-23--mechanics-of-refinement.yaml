@@ -1,0 +1,68 @@
+watchman: skip
+date: "2026-05-23"
+session_id: "mechanics-of-refinement"
+duration_estimate: "~1 hour, resumed session"
+
+intent: >
+  Michael picked the topic: "The Mechanics of Refinement."
+  The goal was to investigate the binding question: "If light and truth are refined matter,
+  how does the Atonement physically refine a person to hold a higher degree of glory?
+  What are the mechanics of this transformation under the laws of D&C 93?"
+  I resumed this session from a context compaction, completed source gathering, ran a critical
+  analysis, and drafted the final study.
+
+discoveries:
+  - title: "Spirit-matter contains structural attributes"
+    detail: >
+      D&C 131:7-8 establishes that all spirit is matter. Russell M. Nelson's 1998 talk
+      "We Are Children of God" clarifies that spiritual attributes—such as integrity,
+      compassion, and love—are developed in the spirit while it is housed in the body.
+      This means these virtues are structural properties of the spirit-matter itself.
+  - title: "Abiding glory is a capacity governed by law"
+    detail: >
+      Under D&C 88:21-34, quickening is the infusion of glory. The capacity to sustain
+      this glory is governed entirely by law ("cannot abide the law... cannot abide the glory").
+      Dross (sin and the desire to sin) degrades the structural integrity of the spirit-matter,
+      reducing its capability to conduct the celestial voltage.
+  - title: "Experiential descent is a literal necessity"
+    detail: >
+      Christ's descent below all things (D&C 88:6, 122:7-8) was necessary to obtain experiential,
+      flesh-based comprehension (Alma 7:11-13). This visceral knowledge acts as the conducting
+      medium for the Atonement's refining energy, allowing Christ to connect with and reorganize
+      the elements at their lowest states.
+  - title: "Atoning refinement as physical separation of dross"
+    detail: >
+      The Atonement operates as a refiner's fire (3 Nephi 24:2-3) rather than a mere forensic or
+      courtroom transaction. Through David A. Bednar's dual cleansing and sanctifying framework,
+      the Atonement purges the dross (desire to sin) and changes our nature, restructuring the
+      spirit-matter via the Holy Ghost so that it can safely abide the celestial law.
+
+surprises:
+  - title: "Windows PowerShell UTF-16LE redirection friction"
+    detail: >
+      While querying the stdio-based MCP servers using our custom Python script, redirecting output
+      via `>` on Windows PowerShell 5.1 defaulted to UTF-16LE, causing UnicodeDecodeErrors when
+      reading file content. Resolved by explicitly converting the search results to UTF-8 using a
+      PowerShell command.
+
+relationship:
+  - title: "Deep, focused scripture study continuation"
+    detail: >
+      The user resumed our session and focused our effort on this study. By following the phased
+      study workflow systematically, we maintained the rigorous "read before quoting" commitment and
+      the voice guidelines, ensuring the final output is deep, direct, and warm.
+
+carry_forward:
+  - title: "Covenant obedience and repentance as resistance training"
+    detail: >
+      Apply the study's conclusion: treating daily repentance and covenant keeping not as a list
+      of deposits in a heavenly account, but as literal resistance training that structures our
+      spirit-matter to receive more light and truth from day to day.
+    priority: high
+
+questions:
+  - title: "How does resurrection permanently seal the capacity of the spirit-matter?"
+    detail: >
+      If resurrected bodies are quickened by the glory they are able to abide (D&C 88:28), does
+      resurrection permanently lock the structural capacity of the spirit's fine matter, or is
+      there a path of continued progression of substance hereafter?

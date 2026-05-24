@@ -16,9 +16,9 @@ Intelligence → Spirit → Element → Glorified Matter. A continuous spectrum,
 *Source: [truth.md](../../study/truth.md), [truth-atonement.md](../../study/truth-atonement.md), [04_observations.md](../../docs/04_observations.md)*
 
 ### Atonement as Refinement
-Not just legal transaction — a physics of transformation. Christ descended below all things to comprehend the entire spectrum. His light is the energy that purifies. Degrees of glory = the law (light) you've been refined to hold. Subsumes penal substitution without contradicting it.
+Not just a legal transaction — a physics of transformation. Spirit is fine matter (D&C 131:7) that develops structural attributes (like love and integrity) while housed in the body. The Atonement operates as a refiner's fire (3 Nephi 24:2-3) via the Holy Ghost (a personage of spirit dwelling in us) to purge the dross of sin and change our nature. Our capacity to contain the quickening power of celestial glory is governed by our alignment with celestial law (D&C 88:21-34). Christ's descent below all things (D&C 88:6, 122:7-8) gave Him the flesh-based comprehension (Alma 7:11-13) necessary to connect with and reorganize our fine matter.
 
-*Source: [truth-atonement.md](../../study/truth-atonement.md)*
+*Source: [truth-atonement.md](../../study/truth-atonement.md), [mechanics-of-refinement.md](../../study/mechanics-of-refinement.md)*
 
 ### Prophetic Theologizing Has a Lineage
 Modern apostolic teaching on the Atonement's mechanics isn't independent — it's a tradition. Talmage (1915) introduced the Father's anguish and the withdrawal. Maxwell (1981-2003) built systematic architecture around the Comprehension Principle via D&C 88:6 (confirmed by BYU citation data — 58 citations). Holland (2009) synthesized everything into "None Were with Him." Oaks (2015) explicitly credited Maxwell. Tracing lineages reveals how doctrine develops through Spirit-guided exploration across generations, not sudden revelation. The apostles were building on each other consciously.
