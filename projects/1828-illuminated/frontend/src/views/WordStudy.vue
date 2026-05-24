@@ -9,8 +9,10 @@
 import { computed, ref, watch } from 'vue'
 import { useRoute, RouterLink } from 'vue-router'
 import VerseList, { type VerseRow } from '@/components/VerseList.vue'
+import WordCard from '@/components/WordCard.vue'
 import { apiUrl } from '@/composables/useApiBase'
 import { visit as studyVisit } from '@/composables/useStudyTree'
+import { selectWord, selectedWord } from '@/composables/useWordData'
 
 const route = useRoute()
 const word = computed<string>(() => {
@@ -83,7 +85,7 @@ function versesAsRows(verses: Array<{ verse: number; text: string }>): VerseRow[
 </script>
 
 <template>
-  <div class="max-w-3xl mx-auto px-6 py-10">
+  <div class="max-w-6xl mx-auto px-6 py-10">
     <div class="flex items-baseline justify-between gap-2 flex-wrap mb-6">
       <RouterLink to="/word" class="text-sm text-stone-500 hover:text-stone-900">← Back to word search</RouterLink>
       <div class="text-xs text-stone-500 italic">
@@ -92,54 +94,75 @@ function versesAsRows(verses: Array<{ verse: number; text: string }>): VerseRow[
       </div>
     </div>
 
-    <header class="mb-6">
-      <h1 class="text-3xl font-serif">{{ word }}</h1>
-      <p class="text-stone-600 text-sm mt-1">
-        <span v-if="data?.found">
-          {{ data?.occurrences.length ?? 0 }}
-          occurrence{{ (data?.occurrences.length ?? 0) === 1 ? '' : 's' }}
-          across the canon
-          <span v-if="data?.tier" class="ml-2 px-2 py-0.5 rounded-full bg-stone-100 text-stone-700 text-xs">Tier {{ data.tier }}</span>
-        </span>
-        <span v-else-if="!loading && !error" class="italic text-stone-500">
-          No canonical occurrences for "{{ word }}".
-        </span>
-      </p>
-    </header>
+    <div class="grid lg:grid-cols-[1fr_360px] gap-8">
+      <!-- Left: Occurrences -->
+      <div>
+        <header class="mb-6">
+          <h1 class="text-3xl font-serif">
+            <RouterLink :to="`/word/${word}`" title="Click to see 1828 definition" class="hover:text-amber-700">{{ word }}</RouterLink>
+          </h1>
+          <p class="text-stone-600 text-sm mt-1">
+            <span v-if="data?.found">
+              {{ data?.occurrences.length ?? 0 }}
+              occurrence{{ (data?.occurrences.length ?? 0) === 1 ? '' : 's' }}
+              across the canon
+              <span v-if="data?.tier" class="ml-2 px-2 py-0.5 rounded-full bg-stone-100 text-stone-700 text-xs">Tier {{ data.tier }}</span>
+            </span>
+            <span v-else-if="!loading && !error" class="italic text-stone-500">
+              No canonical occurrences for "{{ word }}".
+            </span>
+          </p>
+        </header>
 
-    <div v-if="loading" class="text-stone-500 italic">Loading occurrences…</div>
+        <div v-if="loading" class="text-stone-500 italic">Loading occurrences…</div>
 
-    <div v-if="error" class="def-card p-4 text-sm text-red-700 bg-red-50 border-red-200">
-      {{ error }}
-    </div>
+        <div v-if="error" class="def-card p-4 text-sm text-red-700 bg-red-50 border-red-200">
+          {{ error }}
+        </div>
 
-    <div v-if="!loading && data?.found" class="space-y-8">
-      <section v-for="[book, verses] in grouped" :key="book" class="def-card p-5">
-        <h2 class="text-sm uppercase tracking-wider text-stone-500 font-sans mb-3">
-          {{ book }} <span class="text-stone-400 normal-case">({{ verses.length }})</span>
-        </h2>
-        <VerseList :verses="versesAsRows(verses)" :abbr-ref="book" />
-      </section>
-    </div>
+        <div v-if="!loading && data?.found" class="space-y-8">
+          <section v-for="[book, verses] in grouped" :key="book" class="def-card p-5">
+            <h2 class="text-sm uppercase tracking-wider text-stone-500 font-sans mb-3">
+              {{ book }} <span class="text-stone-400 normal-case">({{ verses.length }})</span>
+            </h2>
+            <VerseList :verses="versesAsRows(verses)" :abbr-ref="book" />
+          </section>
+        </div>
 
-    <div
-      v-if="!loading && data?.study_cross_refs?.length"
-      class="mt-10 def-card p-5"
-    >
-      <h2 class="text-sm uppercase tracking-wider text-stone-500 font-sans mb-3">
-        Lensed in our studies
-      </h2>
-      <ul class="space-y-2 text-sm">
-        <li v-for="x in data.study_cross_refs" :key="x.study">
-          <a
-            :href="`https://github.com/cpuchip/scripture-study/blob/main/${x.study.replace(/^[./]+/, '')}`"
-            target="_blank"
-            rel="noopener"
-            class="text-amber-700 hover:underline font-mono"
-          >{{ x.study.replace(/^[./]+/, '') }} ↗</a>
-          <blockquote v-if="x.excerpt" class="mt-1 text-stone-600 italic border-l-2 border-stone-200 pl-3">{{ x.excerpt }}</blockquote>
-        </li>
-      </ul>
+        <div
+          v-if="!loading && data?.study_cross_refs?.length"
+          class="mt-10 def-card p-5"
+        >
+          <h2 class="text-sm uppercase tracking-wider text-stone-500 font-sans mb-3">
+            Lensed in our studies
+          </h2>
+          <ul class="space-y-2 text-sm">
+            <li v-for="x in data.study_cross_refs" :key="x.study">
+              <a
+                :href="`https://github.com/cpuchip/scripture-study/blob/main/${x.study.replace(/^[./]+/, '')}`"
+                target="_blank"
+                rel="noopener"
+                class="text-amber-700 hover:underline font-mono"
+              >{{ x.study.replace(/^[./]+/, '') }} ↗</a>
+              <blockquote v-if="x.excerpt" class="mt-1 text-stone-600 italic border-l-2 border-stone-200 pl-3">{{ x.excerpt }}</blockquote>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Right: selected word card -->
+      <aside id="selected-word-card" class="lg:sticky lg:top-6 self-start">
+        <div v-if="selectedWord">
+          <WordCard :word="selectedWord" compact />
+          <button
+            class="mt-3 text-sm text-stone-500 hover:text-stone-900"
+            @click="selectWord(null)"
+          >Close ↓</button>
+        </div>
+        <div v-else class="def-card p-6 text-sm text-stone-500 italic">
+          Shift+click any highlighted word in a verse to see its definition here.
+        </div>
+      </aside>
     </div>
   </div>
 </template>

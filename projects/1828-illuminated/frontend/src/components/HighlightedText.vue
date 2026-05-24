@@ -10,9 +10,13 @@ const props = defineProps<{
 const router = useRouter()
 const segments = computed(() => tokenize(props.text))
 
-function onWordClick(word: string) {
-  if (clickMode.value === 'scripture') {
-    // Scripture mode — route to the WordStudy view for occurrences.
+function onWordClick(word: string, event: MouseEvent | KeyboardEvent) {
+  const toggleAction = event.shiftKey || event.ctrlKey || event.altKey || event.metaKey
+  const action = toggleAction
+    ? (clickMode.value === 'scripture' ? 'definition' : 'scripture')
+    : clickMode.value
+
+  if (action === 'scripture') {
     router.push({ name: 'word-study', params: { word } })
     return
   }
@@ -50,12 +54,12 @@ function onWordClick(word: string) {
           seg.tier === 'E' ? 'highlight-tier-E' : '',
         ]"
         :title="clickMode === 'scripture'
-          ? `Tier ${seg.tier} — click to find ${seg.word} in scripture`
-          : `Tier ${seg.tier} — click for definition`"
+          ? `Tier ${seg.tier} — click to find ${seg.word} in scripture (Shift+click for definition)`
+          : `Tier ${seg.tier} — click for definition (Shift+click to find ${seg.word} in scripture)`"
         role="button"
         tabindex="0"
-        @click="onWordClick(seg.word)"
-        @keydown.enter="onWordClick(seg.word)"
+        @click="onWordClick(seg.word, $event)"
+        @keydown.enter="onWordClick(seg.word, $event)"
       >{{ seg.text }}</span>
       <template v-else>{{ seg.text }}</template>
     </template>

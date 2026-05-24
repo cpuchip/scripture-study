@@ -17,7 +17,7 @@
 //     highlight pass (tier matching is in-memory and synchronous), but
 //     definition lookup hands off to the server.
 
-import { computed, ref } from 'vue'
+import { computed, ref, reactive } from 'vue'
 
 import tierWords from '../data/tier-words.json'
 import manualAdditions from '../data/manual-additions.json'
@@ -88,13 +88,14 @@ for (const m of manualTierWords) {
   tierMap.set(m.word, m)
 }
 
-// Recompute tier counts after merge. E count populates async once the
-// headwords Set arrives — see `headwordCount` below.
-const tierCounts: Record<Tier, number> = (() => {
-  const counts: Record<string, number> = { 'A++': 0, 'A+': 0, B: 0, C: 0, D: 0, E: 0 }
-  for (const w of tierWordList) counts[w.tier] = (counts[w.tier] ?? 0) + 1
-  return counts as Record<Tier, number>
-})()
+const tierCounts = reactive<Record<Tier, number>>({
+  'A++': 0, 'A+': 0, B: 0, C: 0, D: 0, E: 0
+})
+for (const w of tierWordList) {
+  if (w.tier in tierCounts) {
+    tierCounts[w.tier]++
+  }
+}
 
 // ─── Class-E headwords ─────────────────────────────────────────────────
 //

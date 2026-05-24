@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue'
-import { RouterLink } from 'vue-router'
+import { RouterLink, useRoute } from 'vue-router'
 import {
   useWordData,
   type Def1828Entry,
@@ -55,6 +55,17 @@ watch(
   { immediate: true },
 )
 
+const route = useRoute()
+const isDefinitionView = computed(() => {
+  return route.name === 'word-detail' && route.params.word?.toString().toLowerCase() === props.word.toLowerCase()
+})
+const cardTitleLink = computed(() => {
+  return isDefinitionView.value ? `/word-study/${props.word}` : `/word/${props.word}`
+})
+const cardTitleTooltip = computed(() => {
+  return isDefinitionView.value ? 'Click to see scripture occurrences for this word' : 'Click to see 1828 definition'
+})
+
 // Studies live in the workspace repo at github.com/cpuchip/scripture-study.
 // Link out so readers can read the original lensing context.
 function studyHref(path: string): string {
@@ -66,7 +77,7 @@ function studyHref(path: string): string {
   <article class="def-card p-5 space-y-4">
     <header class="flex items-baseline justify-between gap-3 border-b border-stone-200 pb-3">
       <h2 class="text-2xl font-serif">
-        <RouterLink :to="`/word/${word}`" class="hover:text-amber-700">{{ word }}</RouterLink>
+        <RouterLink :to="cardTitleLink" :title="cardTitleTooltip" class="hover:text-amber-700">{{ word }}</RouterLink>
       </h2>
       <div v-if="tier" class="text-xs text-stone-500 flex items-baseline gap-3">
         <span class="px-2 py-0.5 rounded-full text-stone-700 bg-stone-100 border border-stone-200">
