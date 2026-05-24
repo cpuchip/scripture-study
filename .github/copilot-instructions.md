@@ -127,10 +127,15 @@ This project uses a **structured memory architecture** at `.mind/`. Memory is cr
 3. read_file .mind/identity.md               # Who we are (always)
 4. read_file .mind/preferences.yaml          # Personal context (always)
 5. read_file .mind/active.md                 # Current state — what's in flight (always)
-6. session-journal read --recent 3            # Recent episodes
-7. session-journal carry --priority high      # Unresolved threads
-8. Council moment — scan for connections, tensions, blind spots (see above)
-9. (mode-specific: load .mind/decisions.md or .mind/principles.md when relevant)
+6. session-journal read --recent 3            # Recent workspace episodes
+7. Subproject journals — glob projects/*/.spec/journal/ and read 1–2 recent
+   entries from any match (cpuchip.net, marsfield.org, 1828-illuminated each
+   keep their own). Workspace memory READS these at session start rather than
+   asking subproject agents to bubble them up. Ratified 2026-05-23 — see
+   .mind/principles.md → "Read Subproject Journals, Don't Bubble Them."
+8. session-journal carry --priority high      # Unresolved threads
+9. Council moment — scan for connections, tensions, blind spots (see above)
+10. (mode-specific: load .mind/decisions.md or .mind/principles.md when relevant)
 ```
 
 ### Session End — REQUIRED (do this before yielding to the user at session close)

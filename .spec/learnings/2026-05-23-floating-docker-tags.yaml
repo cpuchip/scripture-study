@@ -1,0 +1,46 @@
+date: 2026-05-23
+category: infrastructure
+severity: medium
+title: Floating Docker Tags on Critical Build Paths
+
+description: >
+  In a single week, the floating `golang:1.25-alpine` tag drifted to two broken
+  patch releases — first a `splitNamed` compiler segfault, then an `ir.Node is
+  *ir.BranchStmt` regression. The drift broke both the 1828-illuminated backend
+  build and the becoming Docker build, because both Dockerfiles pinned only the
+  minor version. The Adjacent Surface Audit on May 23 caught the cross-project
+  shape — same week, two different repos, identical root cause.
+
+failure_modes:
+  - type: floating_tag
+    detail: >
+      Dockerfiles used `golang:1.25-alpine` (minor only). Any patch published
+      upstream is silently adopted on next pull. Two broken patches landed
+      within one week. Builds that succeeded yesterday failed today.
+  - type: cross_project_blast_radius
+    detail: >
+      The same floating tag appeared in multiple Dockerfiles across multiple
+      projects. A single upstream regression broke both simultaneously, which
+      is the worst case for diagnosability — the natural reaction is to assume
+      a local change caused it.
+  - type: no_pin_discipline
+    detail: >
+      No policy distinguished "experimental sandbox builds" from "critical
+      build path Dockerfiles." All build images used floating tags by default.
+
+root_cause: >
+  The Dockerfile language permits floating tags and offers no warning. Without
+  an explicit pin discipline at the project level, every Dockerfile inherits
+  the upstream's patch release cadence — including the upstream's bugs.
+
+learning: >
+  On critical build paths (production Dockerfiles, CI build images, anything
+  whose breakage stops a deploy), pin to a fully-qualified version. Bumping
+  is a deliberate decision, not a silent inheritance. Sandbox and exploratory
+  Dockerfiles can stay floating — that distinction needs to be explicit.
+
+applied:
+  - "1828 backend Dockerfile bumped 1.23 → 1.25 → 1.26 with explicit patch in commit message"
+  - "becoming Dockerfile bumped to match same Go version"
+  - "Adjacent Surface Audit pattern proven across two-repo same-week drift"
+  - "Pin-discipline policy to be drafted as part of next cycle's infrastructure work"

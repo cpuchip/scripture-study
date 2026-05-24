@@ -1,0 +1,115 @@
+date: 2026-05-23
+kind: sabbath
+title: The Arc That Said Yes to Everything
+cycle: 2026-05-13 to 2026-05-23 (~11 days)
+agent: sabbath
+record: .spec/sabbath/2026-05-23-the-arc-that-said-yes-to-everything.md
+
+opening_felt_sense:
+  named_first: overwhelmed
+  named_with_exclamations: [cpuchip.net brought back to life, marsfield.org up and running]
+  named_as_cost: lost in Facebook crap re Marshfield data center on Rifle Range Road
+  external_pressure: tokenpocalypse (Copilot session-pricing -> AI credits)
+  forward_seed: A2A/MCP/per-repo-steward ecosystem (Slack chat-with-repos) — NOT committed inside Sabbath
+  why_named: Moses 1:39 — learning how AI relates to the gospel, and how the gospel relates to AI
+
+inventory_summary:
+  substrate:
+    - ES emergency-stop arc fully closed (ES.1/3/4/5/6/3.s5)
+    - Council ① CLOSED in one day (PE-A/B/C/final smoke)
+    - YT-T batch (yt-dlp + yt_transcripts schema + Philpot rerun at $0.46)
+    - THM.1 (thummim_entries + thummim-define pipeline)
+    - Daily-digest auto-firing daily
+    - am1 autonomous materializer — closes autonomous-up-to-disk gap
+    - Bridge stall recovered same-day, 3 substrate-shape items named (1 now closed by am1)
+    - science-news-weekly scheduled pipeline seeded
+  1828_illuminated:
+    - Born from nothing 2026-05-19, MVP shipped same day
+    - Phases 1-5 all shipped 2026-05-20 (one day)
+    - LLM proxy bugfix bundle 2026-05-21
+    - Phase 5.5 polish 2026-05-21 (pg18 + canon UX + branching study tree)
+    - Phase 7 LIVE at https://1828.ibeco.me on 2026-05-22
+    - UX round shipped 2026-05-23 (pinnable tree + class-E in defs + click-mode toggle)
+  cpuchip_net:
+    - Revival arc shipped 2026-05-17 onward (own repo, agent stewardship)
+    - 8 subproject journal entries
+    - Two studies republished (give-away-all-my-sins, atonement)
+  marsfield_org:
+    - Scaffolded + LIVE same day 2026-05-22
+    - Four content categories: blog, learning, science-news, research
+  becoming:
+    - Engine cutover 2026-05-23 (~20MB image reduction, soft-dep posture)
+  studies_ws6:
+    - last-supper-four-cups, continuity, what-abides, what-was-the-atonement-for, gift-of-Aaron
+    - Two Morgan Philpot YT-gospel evaluations (substrate-produced)
+  teaching_ws7:
+    - Episode 1 published
+    - script-refinement skill born
+    - voice-michael skill born
+  skills:
+    - script-refinement (2026-05-21)
+    - voice-michael (2026-05-21, updated 2026-05-23)
+    - dokploy rewrites (2026-05-22, three commits)
+  infrastructure:
+    - 14-module go.sum sweep (commit be823c1)
+    - Dokploy panel migration to server.ibeco.me
+    - Dual-instance Dokploy model corrected
+
+commit_count_workspace: ~173 since 2026-05-13
+rollback_count: 0
+
+reflections_substantive:
+  - witness_moses_139: claimed out loud, work traces back
+  - spec_was_capacity_shaped_not_intent_shaped: no top-level eleven-day spec
+  - sin_facebook_marshfield_data_center: named by Michael, not assigned by agent
+  - counsel_held_at_micro_scale_skipped_at_cycle_scale: council moments fired for substrate batches, not for whether to add marsfield.org
+  - atonement_three_failure_files_written:
+      - floating Docker tags
+      - go.work build-context dependency
+      - subproject memory bubble gap
+  - review_substrate_yes_personal_infra_still_no: March 22 monitoring learning has now aged 8 weeks
+  - rest_mosiah_4_27_alarm: opening word was overwhelmed, substrate saved capacity gets immediately re-filled
+  - sufficiency_tokenpocalypse_agrees_with_body: external pressure says less-but-better same voice as internal strength meter
+  - memory_teaching_arc_invisible_from_workspace: 8 entries in subproject, 0 in workspace
+  - joy_named_with_exclamation: cpuchip.net + marsfield.org — creative, named, aesthetic, end-to-end
+  - zion_more_unified_but_capacity_now_shapes_agenda: original tool-driving-agenda problem evolved to capacity-driving-yes
+
+declaration: It was good.
+declaration_incomplete:
+  - no top-level cycle spec
+  - infrastructure monitoring still absent across 5 machines
+  - bridge silent-stall has no alert
+  - teaching-arc memory lives only in subproject
+  - Facebook attention cost not counted
+  - overwhelm named first
+
+carry_forward_candidates:
+  - top_level_spec_for_next_cycle
+  - infrastructure_monitoring (8 weeks old)
+  - substrate_bridge_silent_stall_alert
+  - subproject_memory_bubble_principle
+  - 1828_phase_6_thummim_cache_sync
+  - 1828_ux_1_2_punch
+  - a2a_mcp_per_repo_steward_ecosystem (SEED — not committed)
+
+set_down:
+  - scripts/brain as active workstream (Michael's words: abandoned in favor of substrate)
+  - Marshfield data center as Facebook scroll-form-of-attention
+  - maximalist A2A/MCP vision as thing-to-start-now (kept as seed)
+  - yes-by-default on adjacent work (council moment now required)
+
+mosiah_4_27_check:
+  named: carry-forward has six items, opening was overwhelmed
+  recommendation: choose one binding question for next cycle (probably Episode 2 + supporting studies; or infrastructure monitoring)
+  decision: deferred to Michael
+
+learnings_written:
+  - .spec/learnings/2026-05-23-floating-docker-tags.yaml
+  - .spec/learnings/2026-05-23-go-work-build-context.yaml
+  - .spec/learnings/2026-05-23-subproject-memory-bubble.yaml
+
+principle_proposed_not_ratified: >
+  Subproject memory must bubble. When a project under projects/* has its own
+  .spec/journal/, the cycle-level memory of that project must also produce a
+  workspace-level journal entry — one per substantive work cycle, not one per
+  commit. The subproject keeps detail; the workspace gets the headline.

@@ -1,0 +1,57 @@
+date: 2026-05-23
+category: infrastructure
+severity: medium
+title: go.work Membership Is a Build-Context Dependency
+
+description: >
+  Two latent breakages shipped this cycle from the same root cause. (1) The
+  1828 backend's `go.mod` was added to `go.work` on 2026-05-20 but never to
+  `bridge.Dockerfile`'s COPY list; the breakage was hidden until the bridge
+  build was actually attempted on 2026-05-22. (2) Commit `3ba0aef` (May 16)
+  refreshed dependencies across 14 Go modules but landed only the `h1:`
+  package-content hashes, omitting the matching `/go.mod h1:` lines; local
+  builds tolerated this with a warm module cache, but Docker's `-mod=readonly`
+  refused. Latent for five days, surfaced when Dokploy's cache evicted.
+
+failure_modes:
+  - type: implicit_build_context
+    detail: >
+      `go.work` is a workspace-level construct that the Go toolchain reads,
+      but Docker has no awareness of it. A Dockerfile that COPYs only some
+      of the modules listed in `go.work` will build fine locally (where the
+      workspace is fully present) and fail in Docker (where it is partial).
+  - type: hash_split_silent_pass
+    detail: >
+      `go mod tidy` writes two hashes per dependency: `h1:` (package content)
+      and `/go.mod h1:` (go.mod content). A partial write that contains only
+      `h1:` passes local builds because the warm cache has the go.mod hash
+      from a prior tidy. Docker rebuilds with `-mod=readonly` refuse.
+  - type: cache_masked_latency
+    detail: >
+      Both failures were latent for days before surfacing. The local cache
+      and the Dokploy cache both hide the bug. Cache eviction is the trigger,
+      not the bug itself.
+
+root_cause: >
+  `go.work` membership and `go.sum` completeness are both build-context
+  dependencies that Docker does not validate. Local builds and warm caches
+  both tolerate partial states. The shape is general: a configuration change
+  that the local environment forgives but Docker enforces is latent until
+  Docker's cache evicts.
+
+learning: >
+  Three patterns:
+  1. When `go.work` is edited, every Dockerfile that builds a member module
+     must be audited for COPY-list completeness. The Adjacent Surface Audit
+     applies at the build-context level, not just the code level.
+  2. `go mod verify` belongs in a pre-push hook so partial-hash states are
+     caught at the developer's machine, not Dokploy's.
+  3. Docker-cache-hidden latency is a general failure shape. Whenever a
+     change "would only matter if the cache were cold," treat that as a
+     bug waiting for cache eviction, not as a benign optimization.
+
+applied:
+  - "go.sum sweep across 14 modules in commit be823c1 — 163 insertions, 0 deletions, 0 go.mod changes"
+  - "Dokploy deploy verified green post-fix"
+  - "bridge.Dockerfile COPY list audited inline during am1 ship"
+  - "Pre-push hook with `go mod verify` named as next-cycle infrastructure task"

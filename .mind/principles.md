@@ -249,4 +249,9 @@ Michael's intentional choice: agents should NOT run autonomously forever. They w
 ### Cost Unit Is Premium Requests
 GitHub Copilot operates on premium requests (1500/month), not raw tokens. Track requests as the natural budget unit. Token-level visibility is nice-to-have but requests are the constraint. Requests don't roll over — unused capacity is wasted money.
 
+### Read Subproject Journals, Don't Bubble Them
+When subprojects under `projects/*` keep their own `.spec/journal/`, workspace memory READS from all of them at session start rather than requiring each subproject agent to also write to the workspace journal. Single source of truth (local to each project), no "did the agent remember to bubble?" failure mode, subproject autonomy preserved. Session-start checklist globs `projects/*/.spec/journal/` after the workspace journal read. Ratified 2026-05-23 in response to the teaching-arc gap: cpuchip.net had eight journal entries spanning the Episode-1 ship and three study republishes; workspace `.spec/journal/` had zero about that arc because the bubble-up step was missing and the agent never remembered to do it. Pull-based, not push-based — workspace memory comes looking; subprojects just keep doing local stewardship.
+
+*Source: [2026-05-23 Sabbath](../.spec/sabbath/2026-05-23-the-arc-that-said-yes-to-everything.md), Michael's ratification 2026-05-23*
+
 *Source: Michael's feedback (Mar 19), current 56% utilization with 1/3 month remaining*

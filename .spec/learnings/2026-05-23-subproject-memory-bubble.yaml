@@ -1,0 +1,62 @@
+date: 2026-05-23
+category: process
+severity: high
+title: Subproject Session Journals Do Not Surface in the Workspace
+
+description: >
+  The cpuchip.net teaching arc shipped 8 substantive journal entries between
+  2026-05-17 and 2026-05-22 — all in `projects/cpuchip.net/.spec/journal/`.
+  Zero workspace journal entries in `.spec/journal/` reference the teaching
+  arc. From the workspace's view, the arc partially exists (two skills + a
+  priority-#2 line in active.md) and partially does not (no cycle-level
+  memory, no harvest narrative). Future-Michael opening the workspace
+  `active.md` will arrive as a stranger to the most spiritually load-bearing
+  workstream of this cycle.
+
+failure_modes:
+  - type: divided_memory
+    detail: >
+      Subproject agents write detailed session journals inside the subproject
+      tree. They do not produce a parallel workspace-level entry. The
+      workspace's session-journal MCP/CLI surfaces only workspace entries,
+      so a `session-journal read --recent` from the workspace sees a
+      teaching-arc-shaped hole.
+  - type: invisible_harvest
+    detail: >
+      The harvest of this cycle — Episode 1 of the teaching arc, two
+      republished studies, two reusable skills (`script-refinement` and
+      `voice-michael`), and the proof that the workflow works — is the
+      visible fruit of the Moses 1:39 framing. From the workspace, it is
+      the least visible workstream because its memory is filed elsewhere.
+  - type: structural_not_personal
+    detail: >
+      This is not a missed journal entry. The subproject's own memory is
+      thorough. The gap is that no architecture in the agent system
+      requires the subproject to also write at workspace level. The next
+      subproject (marsfield.org, 1828-illuminated) will exhibit the same
+      pattern unless the rule changes.
+
+root_cause: >
+  Agent session-end discipline is scoped to "the cwd I am running in." A
+  subproject agent updates the subproject's `.mind/active.md` and writes to
+  `projects/<name>/.spec/journal/`, then ends the session. There is no
+  current rule that says "if you produced cycle-level work here, also write
+  a one-paragraph workspace journal entry that names the cycle."
+
+learning: >
+  Subproject memory must bubble. When a project under `projects/*` has its
+  own `.spec/journal/`, the *cycle-level* memory of that project must also
+  produce a workspace-level journal entry — one per substantive work cycle,
+  not one per commit. The subproject keeps its detail; the workspace gets
+  the headline. Without this, the workspace's `active.md` cannot see the
+  harvest of subproject work.
+
+  Open question for next cycle's council: does this go in
+  `.mind/principles.md` as a written rule? Or does it go in the agent
+  definitions' session-end checklist? Probably both. Drafting deferred
+  pending Michael's ratification.
+
+applied:
+  - "Gap named in 2026-05-23 sabbath record"
+  - "Principle drafted but not committed to .mind/principles.md (awaits Michael)"
+  - "Teaching arc backfill deliberately NOT performed — Michael decides whether to fix the agent or backfill manually"
