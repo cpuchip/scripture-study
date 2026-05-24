@@ -18,13 +18,43 @@ type Entry struct {
 	SessionID        string       `yaml:"session_id"`
 	DurationEstimate string       `yaml:"duration_estimate,omitempty"`
 	Intent           string       `yaml:"intent"`
-	Discoveries      []Discovery  `yaml:"discoveries,omitempty"`
-	Surprises        []string     `yaml:"surprises,omitempty"`
-	Relationship     []Quality    `yaml:"relationship,omitempty"`
-	CarryForward     []CarryItem  `yaml:"carry_forward,omitempty"`
-	Questions        []string     `yaml:"questions,omitempty"`
+	Discoveries      DiscoveryList    `yaml:"discoveries,omitempty"`
+	Surprises        SurpriseList     `yaml:"surprises,omitempty"`
+	Relationship     RelationshipList `yaml:"relationship,omitempty"`
+	CarryForward     []CarryItem      `yaml:"carry_forward,omitempty"`
+	Questions        QuestionList     `yaml:"questions,omitempty"`
 	Tags             []string     `yaml:"tags,omitempty"`
 	Retroactive      *Retroactive `yaml:"retroactive,omitempty"`
+}
+
+// DiscoveryList represents a list of Discovery items, supporting custom YAML unmarshaling.
+type DiscoveryList []Discovery
+
+// UnmarshalYAML implements custom unmarshaling for DiscoveryList.
+func (dl *DiscoveryList) UnmarshalYAML(value *yaml.Node) error {
+	if value.Kind == yaml.SequenceNode {
+		var list []Discovery
+		for _, itemNode := range value.Content {
+			var d Discovery
+			if err := itemNode.Decode(&d); err != nil {
+				// Handle legacy string items inside list
+				if itemNode.Kind == yaml.ScalarNode {
+					var s string
+					if err := itemNode.Decode(&s); err != nil {
+						return err
+					}
+					d.Detail = s
+				} else {
+					return err
+				}
+			}
+			list = append(list, d)
+		}
+		*dl = list
+		return nil
+	}
+
+	return fmt.Errorf("cannot unmarshal discovery list at line %d", value.Line)
 }
 
 // Discovery is something we learned or uncovered together.
@@ -33,10 +63,169 @@ type Discovery struct {
 	Detail string `yaml:"detail"`
 }
 
+// UnmarshalYAML implements custom unmarshaling to support legacy string items.
+func (d *Discovery) UnmarshalYAML(value *yaml.Node) error {
+	if value.Kind == yaml.ScalarNode {
+		var s string
+		if err := value.Decode(&s); err != nil {
+			return err
+		}
+		d.Detail = s
+		return nil
+	}
+
+	type alias Discovery
+	var a alias
+	if err := value.Decode(&a); err != nil {
+		return err
+	}
+	*d = Discovery(a)
+	return nil
+}
+
+// SurpriseList represents a list of surprises, supporting custom YAML unmarshaling.
+type SurpriseList []string
+
+// UnmarshalYAML implements custom unmarshaling for SurpriseList.
+func (sl *SurpriseList) UnmarshalYAML(value *yaml.Node) error {
+	if value.Kind == yaml.SequenceNode {
+		var list []string
+		for _, itemNode := range value.Content {
+			if itemNode.Kind == yaml.ScalarNode {
+				var s string
+				if err := itemNode.Decode(&s); err != nil {
+					return err
+				}
+				list = append(list, s)
+			} else if itemNode.Kind == yaml.MappingNode {
+				// Handle mapping in surprise, merge title and detail
+				var m map[string]string
+				if err := itemNode.Decode(&m); err == nil {
+					if title, ok := m["title"]; ok {
+						detail := m["detail"]
+						list = append(list, fmt.Sprintf("%s: %s", title, detail))
+					}
+				}
+			}
+		}
+		*sl = list
+		return nil
+	}
+	return fmt.Errorf("cannot unmarshal surprise list at line %d", value.Line)
+}
+
+// QuestionList represents a list of questions, supporting custom YAML unmarshaling.
+type QuestionList []string
+
+// UnmarshalYAML implements custom unmarshaling for QuestionList.
+func (ql *QuestionList) UnmarshalYAML(value *yaml.Node) error {
+	if value.Kind == yaml.SequenceNode {
+		var list []string
+		for _, itemNode := range value.Content {
+			if itemNode.Kind == yaml.ScalarNode {
+				var s string
+				if err := itemNode.Decode(&s); err != nil {
+					return err
+				}
+				list = append(list, s)
+			} else if itemNode.Kind == yaml.MappingNode {
+				// Handle mapping in questions, merge title and detail
+				var m map[string]string
+				if err := itemNode.Decode(&m); err == nil {
+					if title, ok := m["title"]; ok {
+						detail := m["detail"]
+						list = append(list, fmt.Sprintf("%s: %s", title, detail))
+					}
+				}
+			}
+		}
+		*ql = list
+		return nil
+	}
+	return fmt.Errorf("cannot unmarshal question list at line %d", value.Line)
+}
+
+// RelationshipList represents a list of Quality items, supporting custom YAML unmarshaling.
+type RelationshipList []Quality
+
+// UnmarshalYAML implements custom unmarshaling for RelationshipList to support legacy map formats.
+func (rl *RelationshipList) UnmarshalYAML(value *yaml.Node) error {
+	if value.Kind == yaml.SequenceNode {
+		var list []Quality
+		for _, itemNode := range value.Content {
+			var q Quality
+			if err := itemNode.Decode(&q); err != nil {
+				// Handle legacy string items inside list
+				if itemNode.Kind == yaml.ScalarNode {
+					var s string
+					if err := itemNode.Decode(&s); err != nil {
+						return err
+					}
+					q.Detail = s
+				} else {
+					return err
+				}
+			}
+			list = append(list, q)
+		}
+		*rl = list
+		return nil
+	}
+
+	if value.Kind == yaml.MappingNode {
+		var list []Quality
+		var m map[string]string
+		if err := value.Decode(&m); err != nil {
+			// Try decoding key-value interface if strings aren't guaranteed
+			var m2 map[string]interface{}
+			if err := value.Decode(&m2); err != nil {
+				return err
+			}
+			for k, v := range m2 {
+				list = append(list, Quality{
+					Name:   k,
+					Detail: fmt.Sprintf("%v", v),
+				})
+			}
+		} else {
+			for k, v := range m {
+				list = append(list, Quality{
+					Name:   k,
+					Detail: v,
+				})
+			}
+		}
+		*rl = list
+		return nil
+	}
+
+	return fmt.Errorf("cannot unmarshal relationship list at line %d", value.Line)
+}
+
 // Quality captures a relational dynamic from the session.
 type Quality struct {
 	Name   string `yaml:"quality"`
 	Detail string `yaml:"detail"`
+}
+
+// UnmarshalYAML implements custom unmarshaling to support legacy string items.
+func (q *Quality) UnmarshalYAML(value *yaml.Node) error {
+	if value.Kind == yaml.ScalarNode {
+		var s string
+		if err := value.Decode(&s); err != nil {
+			return err
+		}
+		q.Detail = s
+		return nil
+	}
+
+	type alias Quality
+	var a alias
+	if err := value.Decode(&a); err != nil {
+		return err
+	}
+	*q = Quality(a)
+	return nil
 }
 
 // CarryItem is a lesson, priority, or unresolved thread to bring forward.
@@ -46,6 +235,27 @@ type CarryItem struct {
 	Resolved     bool   `yaml:"resolved,omitempty"`
 	ResolvedDate string `yaml:"resolved_date,omitempty"`
 	ResolvedNote string `yaml:"resolved_note,omitempty"`
+}
+
+// UnmarshalYAML implements custom unmarshaling to support legacy string items in arrays.
+func (c *CarryItem) UnmarshalYAML(value *yaml.Node) error {
+	if value.Kind == yaml.ScalarNode {
+		var s string
+		if err := value.Decode(&s); err != nil {
+			return err
+		}
+		c.Note = s
+		c.Priority = "medium" // default legacy priority
+		return nil
+	}
+
+	type alias CarryItem
+	var a alias
+	if err := value.Decode(&a); err != nil {
+		return err
+	}
+	*c = CarryItem(a)
+	return nil
 }
 
 // Retroactive holds provenance info for entries reconstructed from chat history.
