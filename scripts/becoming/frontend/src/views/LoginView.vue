@@ -33,7 +33,11 @@ async function handleSubmit() {
   try {
     await login(email.value, password.value)
     const redirect = (route.query.redirect as string) || '/today'
-    router.replace(redirect)
+    if (redirect.startsWith('http://') || redirect.startsWith('https://')) {
+      window.location.href = redirect
+    } else {
+      router.replace(redirect)
+    }
   } catch (e: any) {
     error.value = e.message || 'Login failed'
   } finally {
@@ -42,7 +46,8 @@ async function handleSubmit() {
 }
 
 function googleSignIn() {
-  window.location.href = '/auth/google/login'
+  const redirect = (route.query.redirect as string) || ''
+  window.location.href = `/auth/google/login?redirect=${encodeURIComponent(redirect)}`
 }
 </script>
 

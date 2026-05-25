@@ -72,11 +72,13 @@ func main() {
 
 	// Auth handlers
 	oauthConfig := auth.OAuthConfigFromEnv()
+	cookieDomain := os.Getenv("COOKIE_DOMAIN")
 	authHandlers := &auth.Handlers{
-		DB:      database,
-		DevMode: *dev,
-		Secure:  !*dev || useTLS, // Secure cookies in production or with TLS
-		OAuth:   oauthConfig,
+		DB:           database,
+		DevMode:      *dev,
+		Secure:       !*dev || useTLS, // Secure cookies in production or with TLS
+		CookieDomain: cookieDomain,
+		OAuth:        oauthConfig,
 	}
 	if oauthConfig != nil {
 		log.Printf("Google OAuth enabled (redirect: %s)", oauthConfig.RedirectURL)

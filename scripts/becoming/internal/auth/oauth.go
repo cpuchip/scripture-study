@@ -42,13 +42,18 @@ func OAuthConfigFromEnv() *OAuthConfig {
 	}
 }
 
-// stateStore holds CSRF state tokens with expiry.
+type stateData struct {
+	expiry      time.Time
+	redirectURL string
+}
+
+// stateStore holds CSRF state tokens with expiry and redirect URLs.
 var stateStore = struct {
 	sync.Mutex
-	tokens map[string]time.Time
-}{tokens: make(map[string]time.Time)}
+	states map[string]stateData
+}{states: make(map[string]stateData)}
 
-func generateState() (string, error) {
+func generateState(redirectURL string) (string, error) {
 	b := make([]byte, 16)
 	if _, err := rand.Read(b); err != nil {
 		return "", err
@@ -60,26 +65,32 @@ func generateState() (string, error) {
 
 	// Clean expired states
 	now := time.Now()
-	for k, exp := range stateStore.tokens {
-		if now.After(exp) {
-			delete(stateStore.tokens, k)
+	for k, data := range stateStore.states {
+		if now.After(data.expiry) {
+			delete(stateStore.states, k)
 		}
 	}
 
-	stateStore.tokens[state] = now.Add(5 * time.Minute)
+	stateStore.states[state] = stateData{
+		expiry:      now.Add(5 * time.Minute),
+		redirectURL: redirectURL,
+	}
 	return state, nil
 }
 
-func validateState(state string) bool {
+func validateState(state string) (string, bool) {
 	stateStore.Lock()
 	defer stateStore.Unlock()
 
-	exp, ok := stateStore.tokens[state]
+	data, ok := stateStore.states[state]
 	if !ok {
-		return false
+		return "", false
 	}
-	delete(stateStore.tokens, state)
-	return time.Now().Before(exp)
+	delete(stateStore.states, state)
+	if time.Now().After(data.expiry) {
+		return "", false
+	}
+	return data.redirectURL, true
 }
 
 // GoogleLogin handles GET /auth/google/login — redirects to Google's consent screen.
@@ -89,7 +100,8 @@ func (h *Handlers) GoogleLogin(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	state, err := generateState()
+	redirectURL := r.URL.Query().Get("redirect")
+	state, err := generateState(redirectURL)
 	if err != nil {
 		http.Error(w, "internal error", http.StatusInternalServerError)
 		return
@@ -117,7 +129,8 @@ func (h *Handlers) GoogleCallback(w http.ResponseWriter, r *http.Request) {
 
 	// Validate state
 	state := r.URL.Query().Get("state")
-	if !validateState(state) {
+	redirectURL, ok := validateState(state)
+	if !ok {
 		http.Error(w, "invalid or expired state", http.StatusBadRequest)
 		return
 	}
@@ -172,7 +185,10 @@ func (h *Handlers) GoogleCallback(w http.ResponseWriter, r *http.Request) {
 	h.setSessionCookie(w, session.ID)
 
 	// Redirect to the app
-	http.Redirect(w, r, "/today", http.StatusFound)
+	if redirectURL == "" {
+		redirectURL = "/today"
+	}
+	http.Redirect(w, r, redirectURL, http.StatusFound)
 }
 
 // --- Google API helpers ---

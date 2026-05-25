@@ -30,7 +30,8 @@ onMounted(async () => {
 })
 
 function googleSignUp() {
-  window.location.href = '/auth/google/login'
+  const redirect = (route.query.redirect as string) || ''
+  window.location.href = `/auth/google/login?redirect=${encodeURIComponent(redirect)}`
 }
 
 async function handleSubmit() {
@@ -50,7 +51,11 @@ async function handleSubmit() {
     await register(email.value, password.value, name.value || undefined)
     // Redirect to the page they came from (e.g. shared study link) or home
     const redirect = (route.query.redirect as string) || '/'
-    router.replace(redirect)
+    if (redirect.startsWith('http://') || redirect.startsWith('https://')) {
+      window.location.href = redirect
+    } else {
+      router.replace(redirect)
+    }
   } catch (e: any) {
     error.value = e.message || 'Registration failed'
   } finally {

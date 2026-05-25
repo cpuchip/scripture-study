@@ -15,10 +15,11 @@ import (
 
 // Handlers holds auth-related HTTP handlers.
 type Handlers struct {
-	DB      *db.DB
-	DevMode bool
-	Secure  bool         // true = set Secure flag on cookies (HTTPS)
-	OAuth   *OAuthConfig // nil = Google sign-in disabled
+	DB           *db.DB
+	DevMode      bool
+	Secure       bool         // true = set Secure flag on cookies (HTTPS)
+	CookieDomain string       // Domain to set on the cookie (e.g. ".ibeco.me")
+	OAuth        *OAuthConfig // nil = Google sign-in disabled
 }
 
 // --- Registration & Login ---
@@ -536,7 +537,7 @@ func (h *Handlers) ExportData(w http.ResponseWriter, r *http.Request) {
 // --- Helpers ---
 
 func (h *Handlers) setSessionCookie(w http.ResponseWriter, token string) {
-	http.SetCookie(w, &http.Cookie{
+	cookie := &http.Cookie{
 		Name:     "becoming_session",
 		Value:    token,
 		Path:     "/",
@@ -544,11 +545,15 @@ func (h *Handlers) setSessionCookie(w http.ResponseWriter, token string) {
 		Secure:   h.Secure,
 		SameSite: http.SameSiteLaxMode,
 		MaxAge:   30 * 24 * 60 * 60, // 30 days
-	})
+	}
+	if h.CookieDomain != "" {
+		cookie.Domain = h.CookieDomain
+	}
+	http.SetCookie(w, cookie)
 }
 
 func (h *Handlers) clearSessionCookie(w http.ResponseWriter) {
-	http.SetCookie(w, &http.Cookie{
+	cookie := &http.Cookie{
 		Name:     "becoming_session",
 		Value:    "",
 		Path:     "/",
@@ -556,7 +561,11 @@ func (h *Handlers) clearSessionCookie(w http.ResponseWriter) {
 		Secure:   h.Secure,
 		SameSite: http.SameSiteLaxMode,
 		MaxAge:   -1,
-	})
+	}
+	if h.CookieDomain != "" {
+		cookie.Domain = h.CookieDomain
+	}
+	http.SetCookie(w, cookie)
 }
 
 func writeJSON(w http.ResponseWriter, status int, v any) {

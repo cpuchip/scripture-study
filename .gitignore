@@ -80,3 +80,7 @@ external_context/
 
 # opencode mcp // need to move mcp to global config before this can be removed
 opencode.json
+
+# temp files
+/tmp/
+/temp/

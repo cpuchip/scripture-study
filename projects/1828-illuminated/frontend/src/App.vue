@@ -26,6 +26,11 @@ const isInlinePin = computed(
 const containerMax = computed(() =>
   isInlinePin.value ? 'max-w-7xl' : 'max-w-5xl',
 )
+
+const signInUrl = computed(() => {
+  const currentUrl = typeof window !== 'undefined' ? window.location.href : 'https://1828.ibeco.me/'
+  return `https://ibeco.me/login?redirect=${encodeURIComponent(currentUrl)}`
+})
 </script>
 
 <template>
@@ -60,7 +65,7 @@ const containerMax = computed(() =>
           </button>
           <RouterLink to="/settings" class="text-stone-500 hover:text-stone-900 text-xs" active-class="text-amber-700 font-medium" title="LLM endpoint settings">⚙</RouterLink>
           <span v-if="session.authenticated" class="text-xs text-stone-500 font-serif border-l pl-3 border-stone-300" title="Signed in to cloud account">👤 {{ session.user?.name || session.user?.email }}</span>
-          <a v-else href="https://ibeco.me/login" target="_blank" class="text-xs text-stone-500 hover:text-amber-700 transition border-l pl-3 border-stone-300">Sign In</a>
+          <a v-else :href="signInUrl" class="text-xs text-stone-500 hover:text-amber-700 transition border-l pl-3 border-stone-300">Sign In</a>
         </nav>
       </div>
     </header>
