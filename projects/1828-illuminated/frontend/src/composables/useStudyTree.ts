@@ -182,6 +182,17 @@ export async function checkSession() {
   }
 }
 
+export async function logout() {
+  try {
+    const resp = await fetch(apiUrl('/auth/logout'), { method: 'POST' })
+    if (resp.ok) {
+      session.value = { authenticated: false }
+    }
+  } catch (e) {
+    console.error('Logout failed:', e)
+  }
+}
+
 export async function saveTreeToCloud(title: string, id?: string) {
   if (!session.value.authenticated) return null
   
@@ -391,6 +402,7 @@ export function useStudyTree() {
     panelOpen,
     session,
     checkSession,
+    logout,
     saveTreeToCloud,
     loadTreeFromCloud,
     fetchCloudTrees,

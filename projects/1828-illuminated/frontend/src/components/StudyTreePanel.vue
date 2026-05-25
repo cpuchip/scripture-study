@@ -5,7 +5,7 @@
 // fixed-position overlay). Toggles open/closed via the panelOpen ref
 // in useStudyTree. Recursion handled via TreeBranch.vue (recursive SFC).
 
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import { useRouter } from 'vue-router'
 import {
   useStudyTree,
@@ -14,6 +14,11 @@ import {
   type StudyNode,
 } from '@/composables/useStudyTree'
 import TreeBranch from './TreeBranch.vue'
+
+const signInUrl = computed(() => {
+  const currentUrl = typeof window !== 'undefined' ? window.location.href : 'https://1828.ibeco.me/'
+  return `https://ibeco.me/login?redirect=${encodeURIComponent(currentUrl)}`
+})
 
 // `inline=true` when mounted as the second column of the page layout
 // (pinned mode). `inline=false`/omitted when mounted as a viewport-fixed
@@ -257,7 +262,7 @@ async function handleLoadTree(treeId: string) {
           </div>
         </div>
         <div v-else class="text-stone-500 italic text-center py-1">
-          <a href="https://ibeco.me/login" target="_blank" class="underline text-amber-700 font-medium">Sign in with Becoming</a> to sync your trees.
+          <a :href="signInUrl" class="underline text-amber-700 font-medium">Sign in with Becoming</a> to sync your trees.
         </div>
       </div>
 

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { RouterLink, RouterView, useRoute } from 'vue-router'
 import StudyTreePanel from '@/components/StudyTreePanel.vue'
-import { panelOpen, panelPinned, session } from '@/composables/useStudyTree'
+import { panelOpen, panelPinned, session, logout } from '@/composables/useStudyTree'
 import { clickMode } from '@/composables/useClickMode'
 import { computed } from 'vue'
 
@@ -64,7 +64,10 @@ const signInUrl = computed(() => {
             <span class="hidden sm:inline">{{ clickMode === 'scripture' ? 'scripture' : 'definition' }}</span>
           </button>
           <RouterLink to="/settings" class="text-stone-500 hover:text-stone-900 text-xs" active-class="text-amber-700 font-medium" title="LLM endpoint settings">⚙</RouterLink>
-          <span v-if="session.authenticated" class="text-xs text-stone-500 font-serif border-l pl-3 border-stone-300" title="Signed in to cloud account">👤 {{ session.user?.name || session.user?.email }}</span>
+          <div v-if="session.authenticated" class="text-xs text-stone-500 border-l pl-3 border-stone-300 flex items-baseline gap-2">
+            <span class="font-serif" title="Signed in to cloud account">👤 {{ session.user?.name || session.user?.email }}</span>
+            <button @click="logout" class="text-stone-400 hover:text-red-700 hover:underline transition font-sans text-[10px] bg-transparent border-0 p-0 cursor-pointer">Sign Out</button>
+          </div>
           <a v-else :href="signInUrl" class="text-xs text-stone-500 hover:text-amber-700 transition border-l pl-3 border-stone-300">Sign In</a>
         </nav>
       </div>

@@ -114,6 +114,30 @@ func runServer() error {
 		})
 	})
 
+	mux.HandleFunc("POST /api/auth/logout", func(w http.ResponseWriter, r *http.Request) {
+		cookieDomain := os.Getenv("COOKIE_DOMAIN")
+		if cookieDomain == "" {
+			cookieDomain = ".ibeco.me"
+		}
+		http.SetCookie(w, &http.Cookie{
+			Name:     "becoming_session",
+			Value:    "",
+			Path:     "/",
+			Domain:   cookieDomain,
+			HttpOnly: true,
+			MaxAge:   -1,
+		})
+		// Also clear on host-local
+		http.SetCookie(w, &http.Cookie{
+			Name:     "becoming_session",
+			Value:    "",
+			Path:     "/",
+			HttpOnly: true,
+			MaxAge:   -1,
+		})
+		httpx.WriteJSON(w, http.StatusOK, map[string]any{"authenticated": false})
+	})
+
 	// Phase 2 — scripture.
 	scriptureSvc := scripture.New(pool)
 	scriptureSvc.Register(mux)
