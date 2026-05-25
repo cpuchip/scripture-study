@@ -1,0 +1,67 @@
+date: 2026-05-25
+session: softening-what-i-cannot-soften
+type: study
+workstream: WS6
+
+summary: |
+  Graduated the Send Me / Todd YT mapping insight into a full standalone phased study.
+  Binding question: how does a person receive a softened heart when scripture says they
+  cannot soften their own, and what is the human's actual part in that exchange?
+
+  Central reframe: Alma 12:10's agency-bearing clause is "will not harden," not "will
+  soften." The whole spiritual life is structured around an asymmetry — humans bring,
+  yield, or stop; the Lord visits, softens, sprinkles, gives a new heart. Ezek 36:25-26
+  is the cleanest demonstration (eight verbs, all the Lord's). Job 23:16 names what the
+  softening feels like from inside: "God maketh my heart soft, and the Almighty
+  troubleth me" — softening and troubling are the same act.
+
+  Simultaneous-trade discovery: Alma 22:18's conjunction is "AND," not "then." The king
+  asks for the revelation in the same breath as the giving-away. This collapses the
+  interior bargain that says "I cannot ask until I am clean enough." Brother of Jared
+  parallel: brought the stones, received the parted veil; the trade is not denominated
+  in equal currency.
+
+  Graduated case: Helaman 3:35's "stronger and stronger, firmer and firmer" sits
+  alongside Lamoni's father's flash-moment. Binary AND accumulating. Both are real,
+  both are the Lord's response to a heart that has stopped resisting.
+
+  Application landed on the morning-hour test. Two independent witnesses in the same
+  week (Sabbath agent 2026-05-23 + Todd interview mapping) pointed at the
+  Marshfield-Facebook-scroll as a hardening pathway. Morning hour is the only window
+  where bowing down is still cheap.
+
+discoveries:
+  - The hardening/softening asymmetry holds across nine passages in five books over
+    1500 years of canon. The pattern is not stated as a list in any one place but
+    emerges robustly from synthesis.
+  - "And" not "then" in Alma 22:18 was the unlock for the simultaneous-trade section.
+    The give-away-all-my-sins study (2026-04-20) had named the trade but not the
+    simultaneity.
+  - Posture-check disruption: thought the agency was binary (yield or not). Alma 12:10's
+    graduated "lesser portion / greater portion" language complicated that into a
+    real-time channel-state question.
+
+surprises:
+  - Job 23:16 isn't in any of the active.md priorities or recent studies, but it sits
+    at the exact center of the softening/troubling identification. Came in via gospel_search
+    semantic mode on the binding question — exactly the discovery-tool use that
+    copilot-instructions.md prescribes.
+
+workflow_note: |
+  Phased workflow held even under one-shot pressure. Scratch file populated first with
+  all 10 verified passages; gap+critical-analysis written before draft per the hard
+  precondition; ring check passed, posture check passed with an actual disruption to
+  the initial assumption (Alma 12:10 graduated language). Voice audit caught two
+  "and then" sequencer uses; fixed inline.
+
+carry_forward:
+  - The study extends the give-away-all-my-sins arc. May be worth a third study eventually
+    on the brother-of-Jared's veil mechanics — the "trade not in equal currency" pattern
+    is bigger than the two studies have surfaced.
+  - Morning-hour discipline is a real becoming-side commitment, not just a study close.
+    Track it.
+
+files_changed:
+  - study/softening-what-i-cannot-soften.md (new, ~3500 words)
+  - study/.scratch/softening-what-i-cannot-soften.md (provenance, kept)
+  - study/yt/V40tBshkMnE-send-me-covenants.md (unchanged per user instruction)
