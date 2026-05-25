@@ -16,6 +16,7 @@ type config struct {
 
 	// Phase 3
 	ModernFetchDailyCap int
+	BecomingURL         string
 
 	// Phase 4 — server-side default (optional; BYOK is the primary path)
 	LLMProxyEnabled bool
@@ -39,6 +40,9 @@ type config struct {
 	LLMTimeout            time.Duration
 
 	OpencodeGoAPIKey string
+
+	GospelEngineURL   string
+	GospelEngineToken string
 }
 
 func loadConfig() (*config, error) {
@@ -46,6 +50,7 @@ func loadConfig() (*config, error) {
 		ListenAddr:              envOrDefault("LISTEN_ADDR", ":8080"),
 		DatabaseURL:             os.Getenv("DATABASE_URL"),
 		ModernFetchDailyCap:     envInt("MODERN_FETCH_DAILY_CAP", 5000),
+		BecomingURL:             envOrDefault("BECOMING_URL", "https://ibeco.me"),
 		LLMProxyEnabled:         envBool("LLM_PROXY_ENABLED", true),
 		LLMBYOKEnabled:          envBool("LLM_BYOK_ENABLED", true),
 		LLMProvider:             envOrDefault("LLM_PROVIDER", "mock"),
@@ -63,6 +68,8 @@ func loadConfig() (*config, error) {
 		LLMTemperatureHard:      envFloat("LLM_TEMPERATURE_HARD", 0.7),
 		LLMTimeout:              time.Duration(envInt("LLM_TIMEOUT_SECONDS", 60)) * time.Second,
 		OpencodeGoAPIKey:        os.Getenv("OPENCODE_GO_API_KEY"),
+		GospelEngineURL:         envOrDefault("GOSPEL_ENGINE_URL", "https://engine.ibeco.me"),
+		GospelEngineToken:       os.Getenv("GOSPEL_ENGINE_TOKEN"),
 	}
 
 	if cfg.DatabaseURL == "" {

@@ -8,6 +8,7 @@ import { useRoute, RouterLink } from 'vue-router'
 import WordCard from '@/components/WordCard.vue'
 import { useWordData } from '@/composables/useWordData'
 import { visit as studyVisit } from '@/composables/useStudyTree'
+import StudyBreadcrumbs from '@/components/StudyBreadcrumbs.vue'
 
 const route = useRoute()
 const data = useWordData()
@@ -33,6 +34,7 @@ watch(
 
 <template>
   <div class="max-w-3xl mx-auto px-6 py-10">
+    <StudyBreadcrumbs />
     <RouterLink to="/word" class="text-sm text-stone-500 hover:text-stone-900">← Back to word search</RouterLink>
     <div class="mt-6">
       <WordCard :word="word" />

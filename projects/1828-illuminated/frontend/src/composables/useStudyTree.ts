@@ -16,6 +16,7 @@
 // captures the boundary-crossing path that makes the tool a real study aid.
 
 import { reactive, ref, computed, watch, type ComputedRef } from 'vue'
+import { apiUrl } from './useApiBase'
 
 // ─── Types ────────────────────────────────────────────────────────────
 
@@ -159,12 +160,99 @@ function scheduleSave(): void {
   }, 250)
 }
 
+export interface UserSession {
+  authenticated: boolean
+  user?: {
+    id: number
+    email: string
+    name: string
+  }
+}
+
+export const session = ref<UserSession>({ authenticated: false })
+
+export async function checkSession() {
+  try {
+    const resp = await fetch(apiUrl('/auth/session'))
+    if (resp.ok) {
+      session.value = await resp.json()
+    }
+  } catch (e) {
+    console.error('Session check failed:', e)
+  }
+}
+
+export async function saveTreeToCloud(title: string, id?: string) {
+  if (!session.value.authenticated) return null
+  
+  const payload = {
+    id,
+    title,
+    tree_data: {
+      nodes: Array.from(nodes.values()),
+      activeNodeId: activeNodeId.value
+    }
+  }
+
+  try {
+    const resp = await fetch(apiUrl('/study-tree'), {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    })
+    if (resp.ok) {
+      return await resp.json()
+    }
+  } catch (e) {
+    console.error('Save tree to cloud failed:', e)
+  }
+  return null
+}
+
+export async function loadTreeFromCloud(treeId: string) {
+  if (!session.value.authenticated) return false
+  try {
+    const resp = await fetch(apiUrl(`/study-tree/${treeId}`))
+    if (resp.ok) {
+      const data = await resp.json()
+      
+      const rawTree = typeof data.tree_data === 'string' ? JSON.parse(data.tree_data) : data.tree_data
+      
+      nodes.clear()
+      if (Array.isArray(rawTree.nodes)) {
+        for (const n of rawTree.nodes) {
+          nodes.set(n.id, n)
+        }
+      }
+      activeNodeId.value = rawTree.activeNodeId || null
+      return true
+    }
+  } catch (e) {
+    console.error('Load tree from cloud failed:', e)
+  }
+  return false
+}
+
+export async function fetchCloudTrees() {
+  if (!session.value.authenticated) return []
+  try {
+    const resp = await fetch(apiUrl('/study-tree'))
+    if (resp.ok) {
+      return await resp.json()
+    }
+  } catch (e) {
+    console.error('Fetch cloud trees failed:', e)
+  }
+  return []
+}
+
 // One-time boot.
 let _loaded = false
 function ensureLoaded(): void {
   if (_loaded) return
   _loaded = true
   loadFromStorage()
+  checkSession()
 }
 
 // Auto-save on any mutation.
@@ -301,6 +389,11 @@ export function useStudyTree() {
     activePath,
     nodeCount,
     panelOpen,
+    session,
+    checkSession,
+    saveTreeToCloud,
+    loadTreeFromCloud,
+    fetchCloudTrees,
   }
 }
 

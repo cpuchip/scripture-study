@@ -24,12 +24,15 @@ import (
 
 	"github.com/jackc/pgx/v5/pgxpool"
 
+	"github.com/stuffleberry/i1828/backend/internal/auth"
 	"github.com/stuffleberry/i1828/backend/internal/dict"
 	"github.com/stuffleberry/i1828/backend/internal/httpx"
 	"github.com/stuffleberry/i1828/backend/internal/llmproxy"
+	"github.com/stuffleberry/i1828/backend/internal/mcp"
 	"github.com/stuffleberry/i1828/backend/internal/migrate"
 	"github.com/stuffleberry/i1828/backend/internal/scripture"
 	"github.com/stuffleberry/i1828/backend/internal/seed"
+	"github.com/stuffleberry/i1828/backend/internal/studytree"
 )
 
 func main() {
@@ -95,6 +98,22 @@ func runServer() error {
 		httpx.WriteText(w, http.StatusOK, "ok\n")
 	})
 
+	// Auth service
+	authSvc := auth.New(pool, cfg.BecomingURL)
+
+	// Wire user session endpoint
+	mux.HandleFunc("GET /api/auth/session", func(w http.ResponseWriter, r *http.Request) {
+		user := auth.GetUser(r.Context())
+		if user == nil {
+			httpx.WriteJSON(w, http.StatusOK, map[string]any{"authenticated": false})
+			return
+		}
+		httpx.WriteJSON(w, http.StatusOK, map[string]any{
+			"authenticated": true,
+			"user":          user,
+		})
+	})
+
 	// Phase 2 — scripture.
 	scriptureSvc := scripture.New(pool)
 	scriptureSvc.Register(mux)
@@ -102,6 +121,14 @@ func runServer() error {
 	// Phase 3 — dictionary.
 	dictSvc := dict.New(pool, cfg.ModernFetchDailyCap)
 	dictSvc.Register(mux)
+
+	// Study Tree
+	studytreeSvc := studytree.New(pool)
+	studytreeSvc.Register(mux, authSvc)
+
+	// MCP Proxy
+	mcpSvc := mcp.New(cfg.GospelEngineURL, cfg.GospelEngineToken)
+	mcpSvc.Register(mux)
 
 	// Phase 4 — LLM proxy + BYOK sessions.
 	llmSvc := llmproxy.New(llmproxy.Config{
@@ -128,7 +155,7 @@ func runServer() error {
 
 	srv := &http.Server{
 		Addr:              cfg.ListenAddr,
-		Handler:           httpx.LoggingMiddleware(mux),
+		Handler:           httpx.LoggingMiddleware(authSvc.Middleware(mux)),
 		ReadHeaderTimeout: 10 * time.Second,
 		WriteTimeout:      90 * time.Second, // > LLM_TIMEOUT_SECONDS so proxy responses fit
 		IdleTimeout:       120 * time.Second,

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { RouterLink, RouterView, useRoute } from 'vue-router'
 import StudyTreePanel from '@/components/StudyTreePanel.vue'
-import { panelOpen, panelPinned } from '@/composables/useStudyTree'
+import { panelOpen, panelPinned, session } from '@/composables/useStudyTree'
 import { clickMode } from '@/composables/useClickMode'
 import { computed } from 'vue'
 
@@ -59,6 +59,8 @@ const containerMax = computed(() =>
             <span class="hidden sm:inline">{{ clickMode === 'scripture' ? 'scripture' : 'definition' }}</span>
           </button>
           <RouterLink to="/settings" class="text-stone-500 hover:text-stone-900 text-xs" active-class="text-amber-700 font-medium" title="LLM endpoint settings">⚙</RouterLink>
+          <span v-if="session.authenticated" class="text-xs text-stone-500 font-serif border-l pl-3 border-stone-300" title="Signed in to cloud account">👤 {{ session.user?.name || session.user?.email }}</span>
+          <a v-else href="https://ibeco.me/login" target="_blank" class="text-xs text-stone-500 hover:text-amber-700 transition border-l pl-3 border-stone-300">Sign In</a>
         </nav>
       </div>
     </header>

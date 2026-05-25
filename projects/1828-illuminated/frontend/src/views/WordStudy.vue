@@ -13,6 +13,7 @@ import WordCard from '@/components/WordCard.vue'
 import { apiUrl } from '@/composables/useApiBase'
 import { visit as studyVisit } from '@/composables/useStudyTree'
 import { selectWord, selectedWord } from '@/composables/useWordData'
+import StudyBreadcrumbs from '@/components/StudyBreadcrumbs.vue'
 
 const route = useRoute()
 const word = computed<string>(() => {
@@ -86,6 +87,7 @@ function versesAsRows(verses: Array<{ verse: number; text: string }>): VerseRow[
 
 <template>
   <div class="max-w-6xl mx-auto px-6 py-10">
+    <StudyBreadcrumbs />
     <div class="flex items-baseline justify-between gap-2 flex-wrap mb-6">
       <RouterLink to="/word" class="text-sm text-stone-500 hover:text-stone-900">← Back to word search</RouterLink>
       <div class="text-xs text-stone-500 italic">

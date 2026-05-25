@@ -11,6 +11,7 @@ import { apiUrl } from '@/composables/useApiBase'
 import { visit as studyVisit } from '@/composables/useStudyTree'
 import demoData from '@/data/demo-verses.json'
 import { CANON, buildChurchUrl, type CanonVolume, type CanonBook } from '@/data/canon-books'
+import StudyBreadcrumbs from '@/components/StudyBreadcrumbs.vue'
 
 const data = useWordData()
 const route = useRoute()
@@ -123,6 +124,8 @@ async function fetchCanonChapter() {
       range: canonRange.value.trim() || undefined,
       verseCount: canonVerses.value.length,
     })
+    // Fetch BYU citations for the loaded passage
+    await fetchCitations()
   } catch (e: unknown) {
     canonChapterError.value = e instanceof Error ? e.message : String(e)
   } finally {
@@ -248,10 +251,53 @@ function onVerseChange() {
 watch(activeText, () => {
   resetRender()
 })
+
+// BYU Citations
+const citations = ref<any[]>([])
+const citationsLoading = ref(false)
+
+async function fetchCitations() {
+  if (mode.value !== 'canon') {
+    citations.value = []
+    return
+  }
+  citationsLoading.value = true
+  try {
+    const r = canonRange.value.trim()
+    const q = new URLSearchParams({
+      b: canonBookAbbr.value,
+      c: String(canonChapter.value),
+    })
+    if (r) q.set('r', r)
+    const resp = await fetch(apiUrl('/mcp/citations?' + q.toString()))
+    if (resp.ok) {
+      const json = await resp.json()
+      citations.value = json.citations ?? []
+    } else {
+      citations.value = []
+    }
+  } catch (e) {
+    console.error('Failed to fetch citations:', e)
+    citations.value = []
+  } finally {
+    citationsLoading.value = false
+  }
+}
+
+watch([canonBookAbbr, canonChapter, canonRange], () => {
+  citations.value = []
+})
+
+function getByuUrl(c: { talk_id: string; ref_id: string }) {
+  const talkHex = parseInt(c.talk_id, 10).toString(16)
+  const refHex = parseInt(c.ref_id, 10).toString(16)
+  return `https://scriptures.byu.edu/#::t${talkHex}$${refHex}`
+}
 </script>
 
 <template>
   <div class="max-w-6xl mx-auto px-6 py-10">
+    <StudyBreadcrumbs />
     <header class="mb-8">
       <h1 class="text-3xl font-serif mb-2">Verse explorer</h1>
       <p class="text-stone-600">Highlighted words are in our tier list. Click any to see the 1828 + modern definitions and how our studies have lensed it.</p>
@@ -377,10 +423,28 @@ watch(activeText, () => {
               >Full passage at churchofjesuschrist.org ↗</a>
             </header>
             <VerseList :verses="canonVerses" :abbr-ref="canonChapterAbbrRef.split(':')[0] ?? canonChapterAbbrRef" />
-            <p class="text-xs text-stone-500 italic">
-              Verse text from the bcbooks 2013 corpus; footnotes, headings, and study apparatus stripped.
-              Click any verse number to copy its ref; click any highlighted word for the 1828 + modern definitions.
-            </p>
+            <footer class="text-xs text-stone-500 border-t border-stone-200 pt-3 space-y-1.5">
+              <div class="flex flex-wrap items-baseline gap-3">
+                <RouterLink
+                  :to="{
+                    name: 'present',
+                    query: {
+                      mode: 'canon',
+                      v: canonVolumeId,
+                      b: canonBookAbbr,
+                      c: canonChapter,
+                      r: canonRange.trim() || undefined
+                    }
+                  }"
+                  class="px-2.5 py-1 rounded border border-stone-400 text-stone-700 hover:bg-amber-50 hover:border-amber-500 transition no-underline font-medium"
+                >📖 Present this passage (fullscreen)</RouterLink>
+                <a v-if="canonChurchUrl" :href="canonChurchUrl" target="_blank" rel="noopener" class="underline text-amber-700">Full passage at churchofjesuschrist.org ↗</a>
+              </div>
+              <div>
+                Verse text from the bcbooks 2013 corpus; footnotes, headings, and study apparatus stripped.
+                Click any verse number to copy its ref; click any highlighted word for the 1828 + modern definitions.
+              </div>
+            </footer>
           </div>
           <div v-else-if="!canonChapterLoading && !canonChapterError" class="def-card p-6 text-sm text-stone-500 italic">
             Pick a volume, book, and chapter — and optionally a verse range — then click <strong>{{ canonRange.trim() ? 'Open verses' : 'Open chapter' }}</strong>.
@@ -399,8 +463,20 @@ watch(activeText, () => {
             class="mt-3 text-sm text-amber-700 hover:underline"
             @click="pasteText = samplePaste"
           >Use the sample text</button>
-          <div v-if="pasteText" class="def-card p-6 mt-4">
+          <div v-if="pasteText" class="def-card p-6 mt-4 space-y-4">
             <HighlightedText :text="pasteText" />
+            <footer class="text-xs text-stone-500 border-t border-stone-200 pt-3">
+              <RouterLink
+                :to="{
+                  name: 'present',
+                  query: {
+                    mode: 'paste',
+                    text: pasteText
+                  }
+                }"
+                class="px-2.5 py-1 rounded border border-stone-400 text-stone-700 hover:bg-amber-50 hover:border-amber-500 transition no-underline font-medium inline-block"
+              >📖 Present this text (fullscreen)</RouterLink>
+            </footer>
           </div>
         </div>
 
@@ -479,17 +555,57 @@ watch(activeText, () => {
         </section>
       </div>
 
-      <!-- Right: selected word card -->
-      <aside id="selected-word-card" class="lg:sticky lg:top-6 self-start">
-        <div v-if="selectedWord">
+      <!-- Right: selected word card + citations panel -->
+      <aside id="selected-word-card" class="lg:sticky lg:top-6 self-start space-y-6">
+        <!-- Selected Word Details -->
+        <div v-if="selectedWord" class="def-card p-6 bg-white border border-stone-200 rounded-xl shadow-sm">
           <WordCard :word="selectedWord" compact />
           <button
             class="mt-3 text-sm text-stone-500 hover:text-stone-900"
             @click="selectWord(null)"
           >Close ↓</button>
         </div>
-        <div v-else class="def-card p-6 text-sm text-stone-500 italic">
+        <div v-else class="def-card p-6 text-sm text-stone-500 italic bg-white border border-stone-200 rounded-xl shadow-sm">
           Click a highlighted word in the verse to see its 1828 and modern definitions here.
+        </div>
+
+        <!-- BYU Citations panel -->
+        <div v-if="mode === 'canon' && (citations.length || citationsLoading)" class="def-card p-6 bg-white border border-stone-200 rounded-xl shadow-sm">
+          <h3 class="font-serif text-lg mb-3 flex items-center justify-between text-stone-900">
+            <span>BYU Citation Index</span>
+            <span v-if="citationsLoading" class="text-xs font-sans text-stone-400 animate-pulse">Loading...</span>
+            <span v-else class="text-xs font-sans bg-amber-100 text-amber-800 px-2 py-0.5 rounded-full">{{ citations.length }}</span>
+          </h3>
+          <p class="text-xs text-stone-500 mb-4">
+            General Conference talks citing this passage:
+          </p>
+
+          <div v-if="citationsLoading" class="space-y-3">
+            <div class="h-12 bg-stone-100 animate-pulse rounded-lg"></div>
+            <div class="h-12 bg-stone-100 animate-pulse rounded-lg"></div>
+            <div class="h-12 bg-stone-100 animate-pulse rounded-lg"></div>
+          </div>
+          <div v-else class="max-h-[350px] overflow-y-auto space-y-3 pr-1">
+            <div
+              v-for="c in citations"
+              :key="c.talk_id + '-' + c.ref_id"
+              class="text-xs border-b border-stone-100 pb-2.5 last:border-0 last:pb-0"
+            >
+              <div class="font-medium text-stone-900 leading-snug mb-1">{{ c.title }}</div>
+              <div class="text-stone-600 flex justify-between gap-2 flex-wrap items-baseline">
+                <span class="font-medium text-stone-700">{{ c.speaker }}</span>
+                <a
+                  :href="getByuUrl(c)"
+                  target="_blank"
+                  rel="noopener"
+                  class="text-amber-700 hover:text-amber-900 hover:underline shrink-0 font-mono text-[10px]"
+                >{{ c.reference }} ↗</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div v-else-if="mode === 'canon' && !citationsLoading && !citations.length" class="def-card p-6 text-sm text-stone-500 italic bg-white border border-stone-200 rounded-xl shadow-sm">
+          No BYU General Conference citations found for this passage.
         </div>
       </aside>
     </div>

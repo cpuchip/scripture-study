@@ -31,6 +31,10 @@ const {
   clearAll,
   nodeCount,
   panelOpen,
+  session,
+  saveTreeToCloud,
+  fetchCloudTrees,
+  loadTreeFromCloud,
 } = useStudyTree()
 
 function togglePin() {
@@ -106,6 +110,48 @@ function onClearClick() {
   clearAll()
   confirmClear.value = false
 }
+
+const saveTitle = ref('')
+const cloudTrees = ref<any[]>([])
+const showSaveModal = ref(false)
+const showLoadList = ref(false)
+const cloudSaveSuccess = ref(false)
+
+function openSaveModal() {
+  saveTitle.value = 'My Study Path - ' + new Date().toLocaleDateString()
+  showSaveModal.value = true
+}
+
+async function handleCloudSave() {
+  if (!saveTitle.value.trim()) return
+  const result = await saveTreeToCloud(saveTitle.value)
+  if (result) {
+    cloudSaveSuccess.value = true
+    setTimeout(() => {
+      cloudSaveSuccess.value = false
+      showSaveModal.value = false
+    }, 1500)
+    await refreshCloudTrees()
+  }
+}
+
+async function refreshCloudTrees() {
+  cloudTrees.value = await fetchCloudTrees()
+}
+
+async function toggleLoadList() {
+  showLoadList.value = !showLoadList.value
+  if (showLoadList.value) {
+    await refreshCloudTrees()
+  }
+}
+
+async function handleLoadTree(treeId: string) {
+  const success = await loadTreeFromCloud(treeId)
+  if (success) {
+    showLoadList.value = false
+  }
+}
 </script>
 
 <template>
@@ -179,6 +225,42 @@ function onClearClick() {
         </ul>
       </div>
 
+      <!-- Cloud Sync Section -->
+      <div class="px-4 py-2.5 border-t border-stone-200 bg-amber-50/10 text-xs">
+        <div v-if="session.authenticated" class="flex flex-col gap-2">
+          <div class="flex items-center justify-between">
+            <span class="text-stone-500 font-mono">Cloud Account</span>
+            <button @click="toggleLoadList" class="text-amber-700 hover:text-amber-900 font-medium select-none">
+              {{ showLoadList ? 'Hide Cloud' : 'Load Tree ▾' }}
+            </button>
+          </div>
+          <button
+            @click="openSaveModal"
+            class="w-full px-3 py-1.5 bg-amber-700/80 text-white rounded text-center hover:bg-amber-800 transition font-medium"
+            :disabled="!nodeCount"
+          >
+            Save Tree to Cloud
+          </button>
+          
+          <!-- Cloud Trees list -->
+          <div v-if="showLoadList" class="mt-2 border-t border-stone-200 pt-2 space-y-1 max-h-32 overflow-y-auto">
+            <div v-if="!cloudTrees.length" class="text-stone-400 italic py-1 text-center">No saved trees on cloud.</div>
+            <button
+              v-for="tree in cloudTrees"
+              :key="tree.id"
+              @click="handleLoadTree(tree.id)"
+              class="w-full text-left px-2 py-1 rounded hover:bg-amber-100/50 flex justify-between text-stone-700 truncate"
+            >
+              <span class="font-serif truncate mr-2">{{ tree.title }}</span>
+              <span class="text-[10px] text-stone-400 shrink-0">{{ new Date(tree.updated_at).toLocaleDateString() }}</span>
+            </button>
+          </div>
+        </div>
+        <div v-else class="text-stone-500 italic text-center py-1">
+          <a href="https://ibeco.me/login" target="_blank" class="underline text-amber-700 font-medium">Sign in with Becoming</a> to sync your trees.
+        </div>
+      </div>
+
       <!-- Footer actions -->
       <footer class="px-4 py-3 border-t border-stone-300 flex items-center justify-between gap-2 text-xs">
         <button
@@ -187,14 +269,14 @@ function onClearClick() {
           :disabled="!nodeCount"
           :class="!nodeCount ? 'opacity-40 cursor-not-allowed' : ''"
         >
-          <span v-if="copiedHint" class="text-amber-700">✓ copied as markdown</span>
+          <span v-if="copiedHint" class="text-amber-700 font-semibold">✓ copied as markdown</span>
           <span v-else>Export ↻</span>
         </button>
         <button
           @click="onClearClick"
           class="px-3 py-1.5 rounded border transition"
           :class="confirmClear
-            ? 'border-red-400 bg-red-50 text-red-700'
+            ? 'border-red-400 bg-red-50 text-red-700 font-medium'
             : 'border-stone-300 text-stone-500 hover:border-stone-400'"
           :disabled="!nodeCount"
         >
@@ -203,6 +285,32 @@ function onClearClick() {
         </button>
       </footer>
     </aside>
+
+    <!-- Save Modal overlay -->
+    <div v-if="showSaveModal" class="fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4" @click.self="showSaveModal = false">
+      <div class="bg-white rounded-lg p-6 max-w-sm w-full border border-stone-300 shadow-xl space-y-4">
+        <h3 class="font-serif text-lg font-bold text-stone-850">Save Study Tree</h3>
+        <p class="text-xs text-stone-500">Give your study tree a name to sync it to your cloud account.</p>
+        <input
+          v-model="saveTitle"
+          type="text"
+          class="w-full px-3 py-2 border border-stone-300 rounded text-sm focus:outline-none focus:border-amber-500 font-serif"
+          placeholder="Study tree title"
+          @keydown.enter="handleCloudSave"
+        />
+        <div class="flex justify-end gap-2 text-xs">
+          <button @click="showSaveModal = false" class="px-3 py-1.5 border rounded hover:bg-stone-50">Cancel</button>
+          <button
+            @click="handleCloudSave"
+            class="px-3 py-1.5 bg-amber-700 text-white rounded hover:bg-amber-800 transition"
+            :disabled="!saveTitle.trim()"
+          >
+            <span v-if="cloudSaveSuccess">Saved!</span>
+            <span v-else>Save</span>
+          </button>
+        </div>
+      </div>
+    </div>
 
     <!-- Floating toggle pill (visible when panel is closed) -->
     <button
