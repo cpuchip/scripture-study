@@ -290,8 +290,7 @@ watch([canonBookAbbr, canonChapter, canonRange], () => {
 
 function getByuUrl(c: { talk_id: string; ref_id: string }) {
   const talkHex = parseInt(c.talk_id, 10).toString(16)
-  const refHex = parseInt(c.ref_id, 10).toString(16)
-  return `https://scriptures.byu.edu/#::t${talkHex}$${refHex}`
+  return `https://scriptures.byu.edu/#:t${talkHex}$${c.ref_id}:`
 }
 </script>
 
