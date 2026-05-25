@@ -1,6 +1,6 @@
 ---
 description: 'General YouTube digestion — AI, relationships, skills, any topic worth studying'
-tools: [vscode, execute, read, agent, 'becoming/*', 'search/*', 'yt/*', 'playwright/*', edit, search, web, todo]
+tools: [vscode, execute, read, agent, edit, search, web, 'becoming/*', 'byu-citations/*', 'exa-search/*', 'gospel-engine-v2/*', 'search/*', 'webster/*', 'yt/*', 'playwright/*', browser, todo]
 handoffs:
   - label: Study a Topic Deeper
     agent: study
