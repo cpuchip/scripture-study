@@ -1,0 +1,35 @@
+date: 2026-05-26
+session: footnote-compilation-and-qr-codes
+type: execution
+workstream: WS7
+
+summary: |
+  Implemented a robust local footnote and vector QR code compiler for the book project.
+  Added a recursive-safe inline markdown parser and footnote extraction/mapping engine to scripts/build.py.
+  Enabled automated dependency checks in build.py: it checks for the 'qrcode' library locally, attempts installation via pip if missing, and generates clean vector .svg QR codes locally using SvgImage without Pillow dependencies.
+  Updated EPUB packaging to scan for locally generated SVGs, declare them in content.opf, and pack them under OEBPS/images/qr/.
+  Corrected a pre-existing build script bug where non-gospel-library external links remained as raw markdown rather than compiling to HTML anchors.
+  Added elegant typesetting rules to src/style.css for footnotes, references, back-arrows, and QR codes.
+  Revised src/chapters/00_preface.md to insert a detailed paragraph linking Tom Bilyeu's Impact Theory video (featuring Stability AI founder Emad Mostaque) to the book's core themes:
+    - AI as "infinite grads" shifting the bottleneck to human correctness (Chapter 1 / 7).
+    - Neural networks acting as "knowledge filters" compressing noise to isolate truth (D&C 93, Chapter 8).
+    - Cicero multi-agent checking reflecting divine creation patterns (Abraham 4, Chapter 4).
+  Linked the video in a compiled footnote using the new local QR code compiler ([qr](https://youtu.be/Se91Pn3xxSs)).
+
+discoveries:
+  - Markdown Link Preemption: In our custom parser, convert_gospel_links was matching [qr](url) as a standard markdown link and converting it to an anchor before the QR replacer ran. Restricting the regex to ignore text == "qr" resolved the preemption and allowed proper compilation.
+  - Link Compilation Defect: The original script's gospel-library link converter returned match.group(0) for any external URLs, effectively leaving all external markdown links uncompiled in the final HTML. Updating it to compile standard links properly resolved this issue.
+
+surprises:
+  - SvgImage does not require Pillow: We can generate valid, high-resolution SVG vector files from the python qrcode library without installing the massive PIL library, which keeps the environment extremely lightweight.
+
+workflow_note: |
+  Followed Planning Mode. Drafted the implementation plan for local QR codes, obtained explicit approval, and checked off tasks as they were implemented and verified. Tested both HTML, PDF, and EPUB compilations, confirming complete ZIP file structure compliance.
+
+carry_forward:
+  - Proceed with drafting content for Chapter 5 and beyond.
+
+files_changed:
+  - projects/scripture-book/scripts/build.py
+  - projects/scripture-book/src/style.css
+  - projects/scripture-book/src/chapters/00_preface.md
