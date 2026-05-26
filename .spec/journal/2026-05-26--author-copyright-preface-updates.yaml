@@ -1,0 +1,34 @@
+date: 2026-05-26
+session: author-copyright-preface-updates
+type: execution
+workstream: WS7
+
+summary: |
+  Applied updates to the book's metadata, frontmatter, and preface to correct authorship and contact details, and enrich the historical backstory.
+  Updated the author's name to "Michael Stufflebeam" across config files (book.yaml, scripts/build.py default, and frontmatter.md).
+  Revised the copyright page in 00_frontmatter.md to be a consecrated distribution page, allowing free copying, printing, and transmission of the book (including entire PDF copies) because the principles belong to God.
+  Updated the contact email to stuffleberryco@gmail.com and removed outdated links.
+  Significantly expanded the preface backstory in 00_preface.md to include:
+    - Stable Diffusion image generation (Oct 2022) and Nvidia 4090 GPU upgrade (Feb 2023).
+    - The failed YouTube Shorts AI stories/poetry project with a friend.
+    - The August 2023 dream followed by Stability AI founder Emad Mostaque's Danny Jones Podcast catalyst.
+    - The crucible of testing and implementing AI engineering principles against complex enterprise projects spanning hundreds of microservices.
+
+discoveries:
+  - Edge Headless PDF Generation: Running Edge headless print-to-pdf via Start-Process with -Wait works reliably on Windows, whereas calling it directly asynchronously was failing due to early termination of the agent execution process.
+
+surprises:
+  - None.
+
+workflow_note: |
+  Completed all requirements as planned. Tested compilation using scripts/build.py and verified PDF generation to dist/manuscript.pdf, confirming that file metadata and contents reflect the corrected author and consecration license.
+
+carry_forward:
+  - Continue review of the manuscript.pdf.
+  - Draft remaining chapters of the book.
+
+files_changed:
+  - projects/scripture-book/book.yaml
+  - projects/scripture-book/scripts/build.py
+  - projects/scripture-book/src/chapters/00_frontmatter.md
+  - projects/scripture-book/src/chapters/00_preface.md
