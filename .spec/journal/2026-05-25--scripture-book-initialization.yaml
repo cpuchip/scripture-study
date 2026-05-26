@@ -1,0 +1,51 @@
+date: 2026-05-25
+session: scripture-book-initialization
+type: plan
+workstream: WS7
+
+summary: |
+  Initialized the projects/scripture-book repository as the home of our compiled book, "Beyond the Prompt: What AI Engineering Reveals About Eternal Patterns".
+  Created the project foundation files (CLAUDE.md, README.md, book.yaml), print styling (src/style.css), and chapter template (src/chapters/template.md).
+  Drafted the Introduction and the first four chapters of the book:
+    - Chapter 1: The Value Shift (The scarcity of execution vs. judgment, D&C 130:18-19)
+    - Chapter 2: The Four Disciplines (Prompt, context, intent, and spec altitudes, D&C 88:119)
+    - Chapter 3: Spiritual Before Temporal (Moses 3:5 and specifications)
+    - Chapter 4: Watched Until They Obeyed (Abraham 4:18 and feedback loops)
+  Created high-quality outlines/skeletons for Chapters 5 through 11.
+  Wrote a Python build script (scripts/build.py) that compiles the Markdown source into a print-ready PDF (manuscript.html with mirror margins and headers) and standard EPUB (beyond_the_prompt.epub).
+  Successfully committed and pushed the initial build to GitHub.
+
+discoveries:
+  - Python Link Conversion: Wrote a regex-based URL converter in scripts/build.py that translates local gospel-library markdown links to online Church website URLs, supporting verse and verse range extraction (including standard hyphens and en-dashes).
+  - ZIP/EPUB packaging: Built a completely self-contained EPUB packer in Python using the zipfile library, ensuring 'mimetype' is stored uncompressed as the first entry, making the EPUB valid for standard ebook readers.
+
+surprises:
+  - The projects/scripture-book repository had the remote origin already configured, allowing us to push the initial commit and go green immediately.
+
+workflow_note: |
+  Followed Planning Mode strictly. Researched KDP print specs and Google Play Books auto-narration specs, drafted the implementation_plan.md, and after automatic approval, created task.md to organize the execution phases. Completed all tasks, verified build outputs, and checked them off in task.md.
+
+carry_forward:
+  - Flesh out the outlines and drafts for Chapters 5 through 11 in future sessions.
+  - Implement a PDF compilation step using Playwright or an HTML-to-PDF compiler if the user requests automated PDF generation.
+
+files_changed:
+  - projects/scripture-book/CLAUDE.md
+  - projects/scripture-book/README.md
+  - projects/scripture-book/book.yaml
+  - projects/scripture-book/scripts/build.py
+  - projects/scripture-book/src/style.css
+  - projects/scripture-book/.gitignore
+  - projects/scripture-book/src/chapters/00_introduction.md
+  - projects/scripture-book/src/chapters/01_value_shift.md
+  - projects/scripture-book/src/chapters/02_four_disciplines.md
+  - projects/scripture-book/src/chapters/03_spiritual_before_temporal.md
+  - projects/scripture-book/src/chapters/04_watched_until_they_obeyed.md
+  - projects/scripture-book/src/chapters/05_intelligence_cleaveth.md
+  - projects/scripture-book/src/chapters/06_bilateral_covenant.md
+  - projects/scripture-book/src/chapters/07_delegation_as_stewardship.md
+  - projects/scripture-book/src/chapters/08_mechanics_of_refinement.md
+  - projects/scripture-book/src/chapters/09_hope_and_the_veil.md
+  - projects/scripture-book/src/chapters/10_softening_what_i_cannot_soften.md
+  - projects/scripture-book/src/chapters/11_conclusion_zion.md
+  - projects/scripture-book/src/chapters/template.md
