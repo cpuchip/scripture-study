@@ -1,0 +1,34 @@
+date: 2026-05-27
+session: scripture-audit-and-inline-qr-codes
+type: execution
+workstream: WS7
+
+summary: |
+  Completed the execution of the scripture quote audit and updated the layout of QR codes to float inline.
+  - Done comprehensive audit of all scriptures across all drafted chapters. Found and corrected D&C 29:31 to D&C 29:32 in Chapter 3.
+  - Rephrased the Emad Mostaque podcast paragraph in the Preface to depict gradual "line upon line" understanding rather than immediate recognition, and migrated the footnote link directly inline as an inline QR code.
+  - Restored fabricated scripture quotes in 07_delegation_as_stewardship.md (D&C 104:11-12) and 08_mechanics_of_refinement.md (D&C 131:7-8) to the literal scripture text.
+  - Corrected Alma 12:10 `be` to `is` in 10_softening_what_i_cannot_soften.md and D&C 88:66 to start with an ellipsis in 00_chapter_0_intelligence_truth.md.
+  - Updated src/style.css to float the `.qr-code` class to the right inside paragraph blocks with suitable margin wrap.
+  - Verified compilation of manuscript.html, manuscript.pdf, and beyond_the_prompt.epub.
+  - Created provenance files in the scratch directory for the remaining chapters: Chapter 8, Chapter 9, Chapter 10, and Chapter 11.
+  - Audited and updated existing provenance files for Preface, Chapter 3, and Chapter 7 to align with the correct scriptural quotes.
+
+discoveries:
+  - D&C 29:32 vs 29:31: Found a citation drift in Chapter 3 where the quote "First spiritual, secondly temporal..." was referenced as D&C 29:31 instead of D&C 29:32.
+  - Float Mechanics in PDF: Setting `.qr-code` to `float: right` wraps paragraph text cleanly around the code, making efficient use of white space and preventing large blank gaps at chapter endings.
+
+surprises:
+  - Local Scripture Accuracy: Our scriptural text correctness was excellent overall across the existing files, with only the D&C 29:31/32 reference and the previously known fabricated quotes showing errors.
+
+carry_forward:
+  - Start drafting final content for Chapter 8, 9, 10, and 11 based on their respective outlines now that the provenance and framework are fully aligned and correct.
+
+files_changed:
+  - projects/scripture-book/src/chapters/00_preface.md
+  - projects/scripture-book/src/chapters/00_chapter_0_intelligence_truth.md
+  - projects/scripture-book/src/chapters/03_spiritual_before_temporal.md
+  - projects/scripture-book/src/chapters/07_delegation_as_stewardship.md
+  - projects/scripture-book/src/chapters/08_mechanics_of_refinement.md
+  - projects/scripture-book/src/chapters/10_softening_what_i_cannot_soften.md
+  - projects/scripture-book/src/style.css
