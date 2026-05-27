@@ -1,0 +1,38 @@
+date: 2026-05-27
+session: typst-docker-pipeline
+type: execution
+workstream: WS7
+
+summary: |
+  Migrated the book compilation pipeline from WeasyPrint to Typst and containerized the system using Docker.
+  - Pruned unnecessary inline scripture QR codes, leaving only anchor passage blockquotes, Webster's 1828 definitions, and external references.
+  - Created a Typst template (template.typ) with mirrored page margins (inside 0.8in, outside 1.2in), context-aware alternating headers, and dynamic footer page numbering on the outside.
+  - Implemented build_typst.py to convert markdown chapters to Typst formatting, generate stable SVG QR codes locally, and output book.typ.
+  - Created a multi-stage Dockerfile that runs the Python build generator, compiles with Typst, and exports outputs back to a mounted host directory.
+  - Added a GitHub Actions workflow to automatically compile and release PDF and EPUB artifacts on commit to main.
+  - Cleaned up font compile warnings by defining unified body and heading font variables at the top of template.typ and providing Libertinus Serif as a robust Docker-compatible fallback font.
+
+discoveries:
+  - Typst Margins and Placements: Typst's page context lets us dynamically query the current page number and set offsets (`dx-val`) to direct elements (such as QR codes) to the outside margins automatically on odd/even pages.
+  - Font Fallbacks: Typst generates warnings for missing fonts on headless systems. Specifying fallback chains including Libertinus Serif (which is standard in the official docker image) ensures clean, warning-free builds.
+
+surprises:
+  - Typst's compilation speed is incredibly fast, rendering the entire book PDF in less than 0.5 seconds inside the Docker build pipeline.
+
+carry_forward:
+  - Proceed with content drafting and validation.
+
+files_changed:
+  - projects/scripture-book/.github/workflows/publish-book.yml
+  - projects/scripture-book/Dockerfile
+  - projects/scripture-book/scripts/build_typst.py
+  - projects/scripture-book/src/template.typ
+  - projects/scripture-book/src/chapters/00_chapter_0_intelligence_truth.md
+  - projects/scripture-book/src/chapters/00_preface.md
+  - projects/scripture-book/src/chapters/01_value_shift.md
+  - projects/scripture-book/src/chapters/02_four_disciplines.md
+  - projects/scripture-book/src/chapters/03_spiritual_before_temporal.md
+  - projects/scripture-book/src/chapters/04_watched_until_they_obeyed.md
+  - projects/scripture-book/src/chapters/05_intelligence_cleaveth.md
+  - projects/scripture-book/src/chapters/06_bilateral_covenant.md
+  - projects/scripture-book/src/chapters/07_delegation_as_stewardship.md
