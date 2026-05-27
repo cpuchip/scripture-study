@@ -4,13 +4,13 @@ type: execution
 workstream: WS7
 
 summary: |
-  Extended QR code generation to cover all major scripture citations and external links throughout the book.
+  Extended QR code generation to cover all scripture citations and external links throughout the book.
   - Implemented relative path resolution inside build.py: relative gospel-library paths (e.g. `[qr](../../gospel-library/...md?verse=18)`) are automatically converted into absolute online LDS.org study URLs before QR code compilation.
   - Added [qr](...) tags adjacent to citations across the entire manuscript:
-    - Preface: D&C 123:12
-    - Chapter 0: D&C 93:29-30, Webster's 1828 "spirit" link, D&C 131:7-8, D&C 84:44-45, D&C 88:66, D&C 88:40.
+    - Preface: Abraham 5:2, D&C 123:12
+    - Chapter 0: D&C 93:29-30, Webster's 1828 "spirit" link, D&C 131:7-8, D&C 84:44-45, D&C 88:66, D&C 88:40, John 6:63, D&C 131:7, D&C 93:28, D&C 84:54, D&C 93:24, D&C 84:33, Abraham 3, D&C 88:42, D&C 93:30.
     - Chapter 1: D&C 130:18-19, Webster's 1828 "intelligence" link, D&C 93:36, Parable of the Talents (Matthew 25), Value Shift Framework, Milan Jovanović's post, Abraham 4:18.
-    - Chapter 2: D&C 88:119.
+    - Chapter 2: D&C 88:119 (Anchor & inline).
     - Chapter 3: Moses 3:5, D&C 29:32.
     - Chapter 4: Abraham 4:18, Abraham 4, Abraham 5:2, 2 Peter 1:4, D&C 93:30.
     - Chapter 5: D&C 88:40, D&C 88:32.
@@ -20,13 +20,16 @@ summary: |
     - Chapter 9: Ether 12:19.
     - Chapter 10: Alma 12:10.
     - Chapter 11: Moses 7:18.
-  - Compiled and verified the manuscript HTML, EPUB, and PDF outputs, confirming all 30+ vector SVG QR codes were generated, linked, and packaged correctly.
+  - Updated Webster 1828 dictionary URLs to reference `https://1828.ibeco.me/word/spirit` and `/word/intelligence` instead of `word-study`, resolving the scripture search fallback issue.
+  - Placed inline QR codes after punctuation to remove unnecessary white space gaps before commas and parentheses.
+  - Compiled and verified the manuscript HTML, EPUB, and PDF outputs, confirming all 40+ vector SVG QR codes were generated, linked, and packaged correctly.
 
 discoveries:
   - Relative Path Mapping: By adding relative path parsing into the build pipeline, the markdown remains clean and portable, allowing the compiler to resolve relative local database files to correct live production URLs dynamically.
+  - Punctuation Ordering: Putting `[qr]` tags *after* punctuation (like `spirit, [qr]`) prevents floating layouts from leaving empty spaces before punctuation in the inline text flow.
 
 surprises:
-  - Page media capacity: Adding over 30 vector SVG QR codes expanded the printed PDF size by ~116KB, but the right-aligned floating margins wrap perfectly inside paragraphs, preventing pagination overflow or layout breaks.
+  - Page media capacity: Adding over 40 vector SVG QR codes expanded the printed PDF size by ~146KB, but the right-aligned floating margins wrap perfectly inside paragraphs, preventing pagination overflow or layout breaks.
 
 carry_forward:
   - We can now begin writing the full text drafts for Chapters 8 through 11.
