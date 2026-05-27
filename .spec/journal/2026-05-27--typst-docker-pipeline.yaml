@@ -11,6 +11,7 @@ summary: |
   - Created a multi-stage Dockerfile that runs the Python build generator, compiles with Typst, and exports outputs back to a mounted host directory.
   - Added a GitHub Actions workflow to automatically compile and release PDF and EPUB artifacts on commit to main.
   - Cleaned up font compile warnings by defining unified body and heading font variables at the top of template.typ and providing Libertinus Serif as a robust Docker-compatible fallback font.
+  - Refined build_typst.py to extract margin-qr calls from the end of blockquotes (near the citation line) and prepended them to the quote body, ensuring that QR code boxes align vertically with the top first line of the quote.
 
 discoveries:
   - Typst Margins and Placements: Typst's page context lets us dynamically query the current page number and set offsets (`dx-val`) to direct elements (such as QR codes) to the outside margins automatically on odd/even pages.
