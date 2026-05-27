@@ -9,7 +9,7 @@
       <div class="flex items-center gap-4">
         <router-link to="/privacy" class="text-sm text-gray-500 hover:text-gray-700">Privacy</router-link>
         <router-link to="/terms" class="text-sm text-gray-500 hover:text-gray-700">Terms</router-link>
-        <router-link to="/login" class="text-sm font-medium text-orange-600 hover:text-orange-700">Sign In</router-link>
+        <router-link :to="loginTo" class="text-sm font-medium text-orange-600 hover:text-orange-700">Sign In</router-link>
       </div>
     </header>
 
@@ -25,13 +25,13 @@
       </p>
       <div class="flex items-center justify-center gap-4">
         <router-link
-          to="/register"
+          :to="registerTo"
           class="px-6 py-3 bg-orange-600 text-white rounded-lg font-semibold hover:bg-orange-700 transition-colors"
         >
           Get Started Free
         </router-link>
         <router-link
-          to="/login"
+          :to="loginTo"
           class="px-6 py-3 border border-gray-300 text-gray-700 rounded-lg font-semibold hover:border-gray-400 transition-colors"
         >
           Sign In
@@ -102,10 +102,19 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
+import { useRoute } from 'vue-router'
+
+const route = useRoute()
 
 const siteName = computed(() => {
   const host = window.location.hostname
   if (host.includes('webeco')) return 'We Become'
   return 'I Become'
 })
+
+// Forward any ?redirect= the auth guard put on the landing URL into the
+// login/register links so the user lands on the page they originally
+// asked for instead of /today.
+const loginTo = computed(() => ({ path: '/login', query: route.query }))
+const registerTo = computed(() => ({ path: '/register', query: route.query }))
 </script>

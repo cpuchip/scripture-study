@@ -3,6 +3,7 @@ import { ref, onMounted } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import { useAuth } from '../composables/useAuth'
 import { authApi } from '../api'
+import { isAllowedRedirect } from '../utils/redirect'
 
 const router = useRouter()
 const route = useRoute()
@@ -32,7 +33,8 @@ async function handleSubmit() {
   submitting.value = true
   try {
     await login(email.value, password.value)
-    const redirect = (route.query.redirect as string) || '/today'
+    const raw = (route.query.redirect as string) || ''
+    const redirect = isAllowedRedirect(raw) ? raw : '/today'
     if (redirect.startsWith('http://') || redirect.startsWith('https://')) {
       window.location.href = redirect
     } else {

@@ -3,6 +3,7 @@ import { ref, onMounted } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import { useAuth } from '../composables/useAuth'
 import { authApi } from '../api'
+import { isAllowedRedirect } from '../utils/redirect'
 
 const router = useRouter()
 const route = useRoute()
@@ -50,7 +51,8 @@ async function handleSubmit() {
   try {
     await register(email.value, password.value, name.value || undefined)
     // Redirect to the page they came from (e.g. shared study link) or home
-    const redirect = (route.query.redirect as string) || '/'
+    const raw = (route.query.redirect as string) || ''
+    const redirect = isAllowedRedirect(raw) ? raw : '/'
     if (redirect.startsWith('http://') || redirect.startsWith('https://')) {
       window.location.href = redirect
     } else {

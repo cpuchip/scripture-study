@@ -537,6 +537,22 @@ func (h *Handlers) ExportData(w http.ResponseWriter, r *http.Request) {
 // --- Helpers ---
 
 func (h *Handlers) setSessionCookie(w http.ResponseWriter, token string) {
+	// When CookieDomain is set, also expire any legacy host-only cookie from the
+	// pre-CookieDomain era. A host-only and a Domain-scoped cookie with the same
+	// name are two different cookies per RFC 6265; without this eviction the
+	// browser sends both, r.Cookie returns the first (stale) one, and the user
+	// loops through login forever.
+	if h.CookieDomain != "" {
+		http.SetCookie(w, &http.Cookie{
+			Name:     "becoming_session",
+			Value:    "",
+			Path:     "/",
+			HttpOnly: true,
+			Secure:   h.Secure,
+			SameSite: http.SameSiteLaxMode,
+			MaxAge:   -1,
+		})
+	}
 	cookie := &http.Cookie{
 		Name:     "becoming_session",
 		Value:    token,
@@ -566,6 +582,18 @@ func (h *Handlers) clearSessionCookie(w http.ResponseWriter) {
 		cookie.Domain = h.CookieDomain
 	}
 	http.SetCookie(w, cookie)
+	// Also expire any legacy host-only cookie (see setSessionCookie).
+	if h.CookieDomain != "" {
+		http.SetCookie(w, &http.Cookie{
+			Name:     "becoming_session",
+			Value:    "",
+			Path:     "/",
+			HttpOnly: true,
+			Secure:   h.Secure,
+			SameSite: http.SameSiteLaxMode,
+			MaxAge:   -1,
+		})
+	}
 }
 
 func writeJSON(w http.ResponseWriter, status int, v any) {

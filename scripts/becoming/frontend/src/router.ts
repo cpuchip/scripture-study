@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import DailyView from './views/DailyView.vue'
 import { useAuth } from './composables/useAuth'
+import { isAllowedRedirect } from './utils/redirect'
 
 export const router = createRouter({
   history: createWebHistory(),
@@ -84,8 +85,18 @@ router.beforeEach(async (to) => {
 
   // Allow public routes
   if (to.meta.public) {
-    // If already authenticated, redirect away from login/register/landing
+    // If already authenticated, redirect away from login/register/landing.
+    // Honor ?redirect= so an authed user clicking "Sign In" on 1828 bounces
+    // back to 1828 instead of stranding on /today.
     if (isAuthenticated.value && (to.name === 'login' || to.name === 'register' || to.name === 'landing')) {
+      const raw = typeof to.query.redirect === 'string' ? to.query.redirect : ''
+      if (raw && isAllowedRedirect(raw)) {
+        if (raw.startsWith('http://') || raw.startsWith('https://')) {
+          window.location.href = raw
+          return false
+        }
+        return { path: raw }
+      }
       return { path: '/today' }
     }
     return

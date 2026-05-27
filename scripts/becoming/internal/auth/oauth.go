@@ -184,11 +184,37 @@ func (h *Handlers) GoogleCallback(w http.ResponseWriter, r *http.Request) {
 
 	h.setSessionCookie(w, session.ID)
 
-	// Redirect to the app
-	if redirectURL == "" {
+	// Redirect to the app. Anything not on our allowlist falls back to /today
+	// so a crafted ?redirect=https://evil.com/phish can't ride the post-login
+	// trust into an attacker-controlled page.
+	if !isAllowedRedirect(redirectURL) {
 		redirectURL = "/today"
 	}
 	http.Redirect(w, r, redirectURL, http.StatusFound)
+}
+
+// isAllowedRedirect returns true for safe post-login redirect targets:
+//   - relative paths starting with "/" (but not "//", which is protocol-relative)
+//   - absolute http(s) URLs whose host is exactly ibeco.me or a subdomain
+//
+// Empty strings and everything else return false; callers should fall back to
+// a safe default like /today.
+func isAllowedRedirect(target string) bool {
+	if target == "" {
+		return false
+	}
+	if strings.HasPrefix(target, "/") && !strings.HasPrefix(target, "//") {
+		return true
+	}
+	u, err := url.Parse(target)
+	if err != nil || u.Host == "" {
+		return false
+	}
+	if u.Scheme != "https" && u.Scheme != "http" {
+		return false
+	}
+	host := u.Hostname()
+	return host == "ibeco.me" || strings.HasSuffix(host, ".ibeco.me")
 }
 
 // --- Google API helpers ---
