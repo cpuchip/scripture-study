@@ -74,7 +74,8 @@ external_context/
 /projects/space-center/
 /projects/cpuchip.net/
 /projects/marsfield.org/
-/projects/storygames
+/projects/storygames/
+/projects/ai-chattermax/
 
 # (.env coverage moved up to the "Local secrets" block above)
 
