@@ -85,6 +85,27 @@ These weren't ratification-level questions; I exercised judgment within the cove
 - **Batch shape: J.8 and J.9 as separate commits.** Per CLAUDE.md C-F discipline: "Don't batch multiple sub-steps into one commit."
 - **Smoke cleanup style.** Two smokes (J.8 #2 and #3) used overrides for opus-4.7 and haiku-4.5 which aren't on opencode_go — these would have failed at the bridge. Cancelled the work_items mid-stream. Cost impact: ~$0.05 from J.8 smoke #1 (real models, ran to completion to verify fallback chain end-to-end), negligible for #2/#3 (cancelled before any bridge spend), small for J.9 smoke #2 (3 chats, cancelled mid-claim, may have ~$0.05).
 
+## Addendum — same-day MCP wrapper + UI view (M + U batches, commits 0c1926c + 2fe9b33)
+
+After J.8 + J.9 committed, Michael asked to close the two carry-forwards I'd named ("MCP server signature update" + "Stewards-UI brainstorm form"). Four AskUserQuestion ratifications:
+1. Scope = both this session
+2. MCP shape = single `start_brainstorm` tool mirroring SQL signature
+3. UI placement = new dedicated `/brainstorm` route (not in-NewWork)
+4. UI default lenses = originals pre-checked + 8 J.9 lenses under "More lenses"
+
+Discovery during M.3 (bridge rebuild): the bridge entrypoint runs `stewards-cli migrate --repo-root /workspace` which tracks 176 SQL files via a ledger and applied my 6 J.8/J.9 files automatically on rebuild. The "J-series lib.rs/Dockerfile foldback debt" claim above (and in the J.8 + J.9 commit messages) was based on incomplete investigation — there IS a working migration path for fresh rebuilds via `stewards-cli`. Correction logged; original section preserved below for the record but with this caveat.
+
+Stewardship sweep during U.5: `docker compose build ui` failed with `cannot load module ../../projects/1828-illuminated/backend listed in go.work file`. Same shape as bridge.Dockerfile's 2026-05-22 fix that didn't sweep ui.Dockerfile. Fixed inline (2 COPY lines) per the boundary test.
+
+Smoke results:
+- M: clean Go build; symbols present in stewards-mcp.exe; bridge restarted clean. End-to-end stdio smoke didn't complete cleanly (PowerShell concatenated-JSON-RPC framing issue, not a tool issue) — full verification on Michael's next Claude Code MCP refresh.
+- U: clean Docker build after the go.work fix; lens endpoint returned all 12 with originals correctly tagged; start endpoint validated binding_question; Vue SPA served on /brainstorm.
+
+Both carry-forwards CLOSED. Brainstorm now reachable from three surfaces:
+- Direct SQL: `SELECT stewards.start_brainstorm(...)` (lived live since J.8/J.9)
+- Claude Code MCP: `start_brainstorm` tool
+- Stewards-UI: http://127.0.0.1:8080/brainstorm
+
 ## Carry-forward (NOT done in J.8 / J.9)
 
 **J-series lib.rs + Dockerfile registration sweep.** Discovered during J.8: NO j-series SQL files (j1-j7 from the J.4 ratification, now also j8 and j9) are registered in `extension/src/lib.rs`'s `extension_sql_file!` chain or in the Dockerfile's COPY list. The entire J batch is live-only. A `docker compose down -v` (which CLAUDE.md §8 says we don't do) would lose everything since the J batch landed. The substrate convention (never down -v, treat live state as canonical) means this is debt, not breakage — but the foldback debt is real. Separate batch needed: register j1-j9 in lib.rs + Dockerfile so fresh rebuilds inherit them. Scope NOT crept here.
