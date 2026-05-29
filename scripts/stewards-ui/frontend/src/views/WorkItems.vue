@@ -273,6 +273,12 @@ function fmtRelative(s?: string) {
                   'bg-zinc-800/40 text-zinc-500': w.status === 'cancelled',
                 }"
               >{{ w.status }}</span>
+              <!-- J.12: budget/cap failures get a distinct amber badge -->
+              <span
+                v-if="w.error_category === 'provider_budget' || w.error_category === 'spend_cap_reached'"
+                class="ml-1 inline-block px-2 py-0.5 rounded text-xs bg-amber-900/40 text-amber-300"
+                :title="w.error_category === 'spend_cap_reached' ? 'Refused: provider spend cap reached' : 'Provider budget / quota exhausted — refill needed'"
+              >💸 budget</span>
             </td>
             <td class="px-4 py-2 text-right tabular-nums text-zinc-400">
               {{ w.tokens_in.toLocaleString() }} / {{ w.tokens_out.toLocaleString() }}

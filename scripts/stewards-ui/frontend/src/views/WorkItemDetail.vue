@@ -466,6 +466,30 @@ function actionTone(action: string): string {
   if (action === 'defer_breaker_open') return 'text-yellow-300'
   return 'text-zinc-300'
 }
+
+// J.12 — human label + hint for a classified error category. Returns null
+// for 'none'/'other'/unknown so the banner only shows for actionable kinds.
+function errorCategoryInfo(cat?: string): { label: string; hint: string; budget: boolean } | null {
+  switch (cat) {
+    case 'spend_cap_reached':
+      return { label: '💸 Spend cap reached', budget: true,
+        hint: "The substrate refused this dispatch — the provider hit its enforced spend cap. Top up + reset: SELECT stewards.provider_cap_refill('<provider>');" }
+    case 'provider_budget':
+      return { label: '💸 Provider budget / quota exhausted', budget: true,
+        hint: 'The provider rejected the call for quota/billing/balance (e.g. a Gemini prepaid key out of credit). Refill the provider balance, then retry.' }
+    case 'rate_limited':
+      return { label: '⏳ Rate limited', budget: false,
+        hint: 'Transient rate limit — usually retryable shortly.' }
+    case 'auth':
+      return { label: '🔑 Auth / key problem', budget: false,
+        hint: 'Bad or missing API key, or permission denied for this provider.' }
+    case 'timeout':
+      return { label: '⌛ Timed out', budget: false,
+        hint: 'The request exceeded its timeout.' }
+    default:
+      return null
+  }
+}
 </script>
 
 <template>
@@ -493,11 +517,32 @@ function actionTone(action: string): string {
         </div>
       </header>
 
+      <!-- J.12 — classified failure banner (budget/cap stands out) -->
+      <section
+        v-if="errorCategoryInfo(wi.error_category)"
+        :class="[
+          'rounded-md border p-4 text-sm mb-3',
+          errorCategoryInfo(wi.error_category)!.budget
+            ? 'border-amber-600/60 bg-amber-950/30'
+            : 'border-orange-800/50 bg-orange-950/20'
+        ]"
+      >
+        <div
+          :class="[
+            'font-semibold mb-1',
+            errorCategoryInfo(wi.error_category)!.budget ? 'text-amber-300' : 'text-orange-300'
+          ]"
+        >{{ errorCategoryInfo(wi.error_category)!.label }}</div>
+        <div class="text-zinc-300">{{ errorCategoryInfo(wi.error_category)!.hint }}</div>
+      </section>
+
       <section
         v-if="wi.error"
         class="rounded-md border border-red-900/40 bg-red-950/20 p-4 text-sm"
       >
-        <div class="text-xs uppercase tracking-wide text-red-400 mb-1">Error</div>
+        <div class="text-xs uppercase tracking-wide text-red-400 mb-1">
+          Error<span v-if="wi.error_category && wi.error_category !== 'none' && wi.error_category !== 'other'" class="ml-2 normal-case text-red-300/70">[{{ wi.error_category }}]</span>
+        </div>
         <pre class="whitespace-pre-wrap text-red-300 font-mono text-xs">{{ wi.error }}</pre>
       </section>
 

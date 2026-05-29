@@ -901,6 +901,9 @@ export type WorkItemRow = {
   origin?: string
   project_association?: string
   parent_work_item_id?: string
+  // J.12 — classified failure category (spend_cap_reached | provider_budget
+  // | rate_limited | auth | timeout | other | none)
+  error_category?: string
 }
 
 export type WorkItemsListResp = {

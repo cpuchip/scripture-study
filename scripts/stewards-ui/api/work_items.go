@@ -46,6 +46,10 @@ type workItemRow struct {
 	Origin              string     `json:"origin,omitempty"`
 	ProjectAssociation  string     `json:"project_association,omitempty"`
 	ParentWorkItemID    string     `json:"parent_work_item_id,omitempty"`
+	// J.12 — classified error category (spend_cap_reached | provider_budget
+	// | rate_limited | auth | timeout | other | none). Lets the UI flag a
+	// budget/cap failure distinctly from a generic one.
+	ErrorCategory       string     `json:"error_category,omitempty"`
 }
 
 type workItemsListResp struct {
@@ -113,7 +117,8 @@ func (d *Deps) workItemsListHandler(w http.ResponseWriter, r *http.Request) {
 		        created_at, updated_at, completed_at,
 		        coalesce(origin, 'human'),
 		        coalesce(project_association, ''),
-		        coalesce(parent_work_item_id::text, '')
+		        coalesce(parent_work_item_id::text, ''),
+		        stewards.classify_error(error)
 		   FROM stewards.work_items`+where+
 			` ORDER BY updated_at DESC NULLS LAST LIMIT $`+itoa(len(args)),
 		args...,
@@ -128,7 +133,8 @@ func (d *Deps) workItemsListHandler(w http.ResponseWriter, r *http.Request) {
 		if err := rows.Scan(&w.ID, &w.Slug, &w.Pipeline, &w.CurrentStage, &w.Status,
 			&w.Actor, &w.TokensIn, &w.TokensOut, &w.TokenBudget,
 			&w.CreatedAt, &w.UpdatedAt, &w.CompletedAt,
-			&w.Origin, &w.ProjectAssociation, &w.ParentWorkItemID); err == nil {
+			&w.Origin, &w.ProjectAssociation, &w.ParentWorkItemID,
+			&w.ErrorCategory); err == nil {
 			resp.Items = append(resp.Items, w)
 		}
 	}
@@ -219,7 +225,8 @@ func (d *Deps) workItemsGetHandler(w http.ResponseWriter, r *http.Request) {
 		        coalesce(p.file_destination_template, ''),
 		        coalesce(wi.origin, 'human'),
 		        coalesce(wi.project_association, ''),
-		        coalesce(wi.parent_work_item_id::text, '')
+		        coalesce(wi.parent_work_item_id::text, ''),
+		        stewards.classify_error(wi.error)
 		   FROM stewards.work_items wi
 		   LEFT JOIN stewards.pipelines p ON p.family = wi.pipeline_family
 		  WHERE wi.`+whereSQL,
@@ -236,7 +243,8 @@ func (d *Deps) workItemsGetHandler(w http.ResponseWriter, r *http.Request) {
 		&wd.Maturity, &wd.DestinationMaturity, &wd.RevisionCount,
 		&wd.Scenarios, &wd.Spec,
 		&wd.FileDestination, &wd.FileEnqueuedAt, &wd.PipelineFileTemplate,
-		&wd.Origin, &wd.ProjectAssociation, &wd.ParentWorkItemID)
+		&wd.Origin, &wd.ProjectAssociation, &wd.ParentWorkItemID,
+		&wd.ErrorCategory)
 	if err != nil {
 		writeErr(w, http.StatusNotFound, err.Error())
 		return
