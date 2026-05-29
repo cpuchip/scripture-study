@@ -13,7 +13,7 @@
 //     /work-items/<parent_id>
 import { ref, computed, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
-import { api, type BrainstormLensRow, type ProjectRow } from '@/api'
+import { api, type BrainstormLensRow, type ProjectRow, type ModelRow } from '@/api'
 
 const router = useRouter()
 
@@ -39,6 +39,11 @@ const submitError = ref('')
 
 // Projects (for project_association picker)
 const projects = ref<ProjectRow[]>([])
+
+// Models catalog — feeds the per-lens model override <datalist> so the
+// user gets autocomplete against known models without losing free-text
+// fallback for new ones not yet in model_pricing.
+const models = ref<ModelRow[]>([])
 
 const originalLenses = computed(() => lenses.value.filter(l => l.is_original))
 const newLenses = computed(() => lenses.value.filter(l => !l.is_original))
@@ -77,6 +82,16 @@ async function loadProjects() {
   } catch (e) {
     // Non-fatal — project picker just won't populate.
     console.warn('projects load failed:', e)
+  }
+}
+
+async function loadModels() {
+  try {
+    const r = await api.modelsList()
+    models.value = r.items
+  } catch (e) {
+    // Non-fatal — datalist just won't suggest; free-text input still works.
+    console.warn('models load failed:', e)
   }
 }
 
@@ -142,7 +157,7 @@ function uncheckAll() {
 }
 
 onMounted(async () => {
-  await Promise.all([loadLenses(), loadProjects()])
+  await Promise.all([loadLenses(), loadProjects(), loadModels()])
 })
 </script>
 
@@ -249,6 +264,7 @@ onMounted(async () => {
                 :placeholder="lens.suggested_model || lens.default_model || 'model override'"
                 class="model-input"
                 :disabled="!selectedLenses[lens.short_name]"
+                list="model-suggestions"
               />
               <p class="lens-desc">{{ lens.description }}</p>
             </div>
@@ -287,6 +303,13 @@ onMounted(async () => {
           </div>
         </div>
       </div>
+
+      <!-- Shared datalist for all per-lens model override inputs. -->
+      <datalist id="model-suggestions">
+        <option v-for="m in models" :key="m.provider + ':' + m.model" :value="m.model">
+          {{ m.provider }}{{ m.is_provider_default ? ' (default)' : '' }}
+        </option>
+      </datalist>
 
       <!-- Submit -->
       <div v-if="submitError" class="error">{{ submitError }}</div>

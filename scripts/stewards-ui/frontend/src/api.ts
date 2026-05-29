@@ -456,6 +456,9 @@ export const api = {
     return r.json()
   },
 
+  // Models catalog (UI 2026-05-29 — backs Brainstorm datalist + /models view).
+  modelsList: () => getJSON<ModelsListResp>('/api/models'),
+
   // Brainstorm (J.8 + J.9, MCP wrapper 0c1926c, UI batch 2026-05-29).
   brainstormLenses: () => getJSON<BrainstormLensesResp>('/api/brainstorm/lenses'),
   brainstormStart: async (req: BrainstormStartReq): Promise<BrainstormStartResp> => {
@@ -471,6 +474,22 @@ export const api = {
     }
     return r.json()
   },
+}
+
+export type ModelRow = {
+  provider: string
+  model: string
+  input_micro_per_mtok: number
+  output_micro_per_mtok: number
+  cache_write_micro_per_mtok?: number
+  cache_read_micro_per_mtok?: number
+  is_provider_default: boolean
+  notes?: string
+}
+
+export type ModelsListResp = {
+  items: ModelRow[]
+  total: number
 }
 
 export type BrainstormLensRow = {
