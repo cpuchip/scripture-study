@@ -455,6 +455,65 @@ export const api = {
     }
     return r.json()
   },
+
+  // Brainstorm (J.8 + J.9, MCP wrapper 0c1926c, UI batch 2026-05-29).
+  brainstormLenses: () => getJSON<BrainstormLensesResp>('/api/brainstorm/lenses'),
+  brainstormStart: async (req: BrainstormStartReq): Promise<BrainstormStartResp> => {
+    const r = await fetch('/api/brainstorm/start', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(req),
+    })
+    if (!r.ok) {
+      let msg = `HTTP ${r.status}`
+      try { const b = await r.json(); if (b.error) msg = b.error } catch {}
+      throw new Error(msg)
+    }
+    return r.json()
+  },
+}
+
+export type BrainstormLensRow = {
+  short_name: string
+  pipeline_family: string
+  description: string
+  default_model?: string
+  suggested_model?: string
+  default_provider?: string
+  suggested_provider?: string
+  is_original: boolean
+}
+
+export type BrainstormLensesResp = {
+  items: BrainstormLensRow[]
+  total: number
+}
+
+export type BrainstormStartReq = {
+  binding_question: string
+  destination?: string
+  slug?: string
+  lenses?: string[]
+  models?: Record<string, string>
+  project_association?: string
+  actor?: string
+  cost_cap_per_lens_micro?: number
+}
+
+export type BrainstormChildRow = {
+  id: string
+  slug: string
+  pipeline_family: string
+  model_override?: string
+}
+
+export type BrainstormStartResp = {
+  parent_id: string
+  slug: string
+  destination: string
+  lenses: string[]
+  children: BrainstormChildRow[]
+  aggregator_id?: string
 }
 
 export type WorkItemCreateReq = {

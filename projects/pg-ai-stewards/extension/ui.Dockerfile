@@ -92,6 +92,12 @@ COPY external_context/tpg/go.mod                           ./external_context/tp
 COPY external_context/tpg/go.sum                           ./external_context/tpg/go.sum
 COPY experiments/lm-studio/scripts/scoring/go.mod          ./experiments/lm-studio/scripts/scoring/go.mod
 COPY experiments/lm-studio/scripts/scoring/go.sum          ./experiments/lm-studio/scripts/scoring/go.sum
+# 1828-illuminated backend was added to go.work 2026-05-20. Stub its
+# go.mod/go.sum so the ui build can satisfy the workspace manifest
+# even though stewards-ui doesn't link against this module. Same fix
+# bridge.Dockerfile got 2026-05-22; ui.Dockerfile missed the sweep.
+COPY projects/1828-illuminated/backend/go.mod              ./projects/1828-illuminated/backend/go.mod
+COPY projects/1828-illuminated/backend/go.sum              ./projects/1828-illuminated/backend/go.sum
 
 # Replace the stub dist with the freshly-built one from stage 1.
 COPY --from=frontend /frontend/dist ./scripts/stewards-ui/frontend/dist

@@ -23,6 +23,7 @@ const Councils = () => import('./views/Councils.vue')
 const CouncilDetail = () => import('./views/CouncilDetail.vue')
 const Projects = () => import('./views/Projects.vue')
 const Scheduled = () => import('./views/Scheduled.vue')
+const Brainstorm = () => import('./views/Brainstorm.vue')
 
 const routes: RouteRecordRaw[] = [
   { path: '/',           name: 'dashboard',  component: Dashboard },
@@ -45,6 +46,7 @@ const routes: RouteRecordRaw[] = [
   { path: '/councils/:id', name: 'council-detail', component: CouncilDetail, meta: { title: 'Council' }, props: true },
   { path: '/projects',   name: 'projects',   component: Projects, meta: { title: 'Projects' } },
   { path: '/scheduled',  name: 'scheduled',  component: Scheduled, meta: { title: 'Scheduled' } },
+  { path: '/brainstorm', name: 'brainstorm', component: Brainstorm, meta: { title: 'Brainstorm' } },
 ]
 
 export default createRouter({
