@@ -2,12 +2,17 @@
 
 A reading map for the substrate, written from the SELECT-statement
 perspective. Goal: 15 minutes to "I know where things live and what
-to query." Not a phase plan ([phases.md](../phases.md)). Not a
-proposal ([proposal.md](../proposal.md)). Just the runtime shape.
+to query." Not a phase plan ([../phases.md](../phases.md)). Not a
+proposal ([../docs/history/](history/)). Just the runtime shape.
 
-State of the world as of 2026-05-06: extension `pg_ai_stewards` 0.2.0,
-running on PG18 with `vector` 0.8.2 + `age` 1.7.0. **23 tables, 3
-views, 67 functions, 7 graph vertex labels.**
+State of the world as of 2026-05-29: extension `pg_ai_stewards` 0.2.0,
+running on PG18 with `vector` 0.8.2 + `age` 1.7.0. **65 tables, 10
+views, 263 functions, 8 graph vertex labels** — 31 pipelines, 48 active
+agents. (Grown from 23 tables / 67 functions on 2026-05-06 through
+Batches G–L, the ES emergency-stop arc, Council ① pipelines-expansion,
+and J.8–J.12: brainstorm model generalization + lens library,
+Gemini/opencode model pricing, enforced provider spend caps, and
+error classification.)
 
 ## Cluster shot
 

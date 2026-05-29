@@ -1,0 +1,38 @@
+# --- secrets ---
+extension/.env
+*.env
+!*.env.example
+
+# --- Rust / pgrx (extension/) ---
+extension/target/
+**/target/
+*.so
+*.dylib
+*.dll
+
+# --- Go binaries / sidecars ---
+bin/*.exe
+bin/*.exe~
+*.test
+*.out
+coverage.*
+
+# --- Go workspace (regenerated for standalone build; see
+#     .spec/proposals/standalone-extraction.md) ---
+go.work
+go.work.sum
+
+# --- Node / stewards-ui frontend ---
+**/node_modules/
+**/dist/
+*.tsbuildinfo
+
+# --- logs / scratch runtime ---
+*.log
+.claude/cache/
+
+# --- OS / editor ---
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
