@@ -11,13 +11,14 @@ purpose: >
 
 # pg-ai-stewards open items
 
-## 0. Active proposal queue (refreshed 2026-05-19/20 — council ① + YT-T both CLOSED)
+## 0. Active proposal queue (refreshed 2026-05-29 — J.8 + J.9 brainstorm-finish CLOSED)
 
-Two batches CLOSED today: council ① (substrate-pipelines-expansion) and
-the YT-T wedge (substrate-yt-transcripts). YT-T was a post-council-①
-addition triggered by PE-final's yt-gospel-evaluate refusal — it now
-ships yt-dlp in the bridge + native substrate yt_transcripts table.
-Next: ② substrate-scheduled-workflows.
+Brainstorm-finish (J.8 model generalization + J.9 lens library 4→12)
+landed today as a sub-week stewards push inside the substrate Sabbath
+thread. Council ② substrate-scheduled-workflows is still next-up.
+
+Three batches now CLOSED in May: council ① (substrate-pipelines-expansion),
+YT-T (substrate-yt-transcripts), and J.8 + J.9 (brainstorm-finish).
 
 | # | Proposal | Scope | Status |
 |---|---|---|---|
@@ -38,6 +39,17 @@ load-bearing for it, not polish.
 watchman pass/day, ~5 docs, inside budget, zero pass errors. §X.3 now has its
 longitudinal data; cadence holds steady. Soak still RUNNING.
 
+**Named follow-up — J-series foldback debt (surfaced 2026-05-29 during J.8):**
+NO j-series SQL files (j1-j7 plus the just-shipped j8a/b/c + j9a/b/c) are
+registered in `extension/src/lib.rs`'s `extension_sql_file!` chain or in the
+Dockerfile COPY list. The entire J batch is live-only. A `docker compose down -v`
+(which CLAUDE.md §8 explicitly says we don't do) would lose all of fanout +
+brainstorm + the new lens library. Per substrate convention (never down -v,
+live state is canonical), this is debt not breakage — but it's real foldback
+debt that should be a named batch before any rebuild that wipes pg state.
+Sub-spec NOT yet drafted; scope estimate: small (3-5 files in lib.rs additions
++ Dockerfile COPY block extension).
+
 Master rule: **start a build session from one of those proposals, not from this document.** This document is the index.
 
 ### Shipped / closed (no longer in the queue)
@@ -48,7 +60,7 @@ Master rule: **start a build session from one of those proposals, not from this 
 | [`substrate-batch-l-1-1-context-engine-v2-1.md`](proposals/substrate-batch-l-1-1-context-engine-v2-1.md) | **closed 2026-05-14** — Context Engine v2.1; the Judges pattern. |
 | [`substrate-batch-l-context-engine-v2.md`](proposals/substrate-batch-l-context-engine-v2.md) | **shipped 2026-05-14** — Context Engine v2 (graduated rendering + provider-aware + engram search + 6 wrappers + depth cap). |
 | [`substrate-batch-k-engram-context.md`](proposals/substrate-batch-k-engram-context.md) | **shipped 2026-05-14** — engram-based context compaction (K.1–K.9). |
-| [`substrate-batch-j-fanout-brainstorm.md`](proposals/substrate-batch-j-fanout-brainstorm.md) | **shipped 2026-05-13** — fan-out + brainstorm + work-item hierarchy UI (J.1–J.5). |
+| [`substrate-batch-j-fanout-brainstorm.md`](proposals/substrate-batch-j-fanout-brainstorm.md) | **shipped 2026-05-13** — fan-out + brainstorm + work-item hierarchy UI (J.1–J.5). **J.8 + J.9 brainstorm-finish closed 2026-05-29** — `start_brainstorm()` gains `p_models jsonb` (per-lens model override) + `p_lenses text[]` (subset selection), `work_item_dispatch_stage` gets 4-layer fallback chain (input → stages → pipeline_default → catalog_default), lens library 4 → 12 (added Mind Mapping, Brainwriting, Starbursting/5W1H, Disney, Storyboarding, TRIZ, Forced Analogy, Worst Possible Idea). Backward compat exact for existing callers. Commits 7753424 (J.8) + 23ce243 (J.9). Journal: [`2026-05-29-substrate-j8-j9-brainstorm-finish.md`](../journal/2026-05-29-substrate-j8-j9-brainstorm-finish.md). |
 | [`substrate-batch-i-agent-write-back.md`](proposals/substrate-batch-i-agent-write-back.md) | **shipped 2026-05-12** — agent-proposal pipeline + HTTP endpoint + UI filter. |
 | [`substrate-completion-batch-g.md`](proposals/substrate-completion-batch-g.md) | **shipped 2026-05-11** (8 commits) — substrate lands in real files: `file_path` nullable, retry-pulls-lessons, quarantine-fires-atonement, `pending_file_writes` + `stewards-cli materialize-writes` + pre-commit hook. Journal: `2026-05-11-substrate-batch-g-shipped.md`. Micro-carry: `failure_count_limit` quarantine doesn't fire atonement (only cost-cap quarantine does). |
 
