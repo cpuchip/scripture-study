@@ -39,6 +39,22 @@ load-bearing for it, not polish.
 watchman pass/day, ~5 docs, inside budget, zero pass errors. §X.3 now has its
 longitudinal data; cadence holds steady. Soak still RUNNING.
 
+**Named follow-up — Gemini cost-tracking gap (surfaced 2026-05-29 during J.10):**
+Gemini dispatches work (real content) but record no cost_event, so Gemini
+work_items show $0. The bgworker records cost only when usage tokens > 0
+(`bgworker.rs:845`, reading `usage.prompt_tokens`/`completion_tokens` at
+`1864-1871`); Gemini omits the usage block on **streamed** responses unless
+`stream_options.include_usage=true` is sent. The opencode gateway includes
+usage in-stream (DeepSeek tracked fine); Gemini's streamed calls don't.
+`model_pricing` is already correct (compute_cost gemini-2.5-flash 1M/500k =
+$1.55). Fix: send `stream_options.include_usage=true` on streamed dispatch,
+or non-stream direct providers. bgworker change + pg rebuild — small batch.
+Secondary: gemini would need its own `cost_buckets` rows for budget
+enforcement (current buckets are opencode_go-only; gemini is a per-use key).
+Also: deepseek-v4-pro, mimo-v2-pro/2.5-pro/omni, hy3-preview dispatch but are
+unpriced (no published opencode rate as of 2026-05-29) — add rows when rates
+publish.
+
 **Named follow-up — J-series foldback debt (surfaced 2026-05-29 during J.8):**
 NO j-series SQL files (j1-j7 plus the just-shipped j8a/b/c + j9a/b/c) are
 registered in `extension/src/lib.rs`'s `extension_sql_file!` chain or in the
