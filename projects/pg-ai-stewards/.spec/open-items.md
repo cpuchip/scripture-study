@@ -48,10 +48,11 @@ streamed responses carry usage and record cost_events. Verified live.
 `work_item_dispatch_stage` refuses an enforced provider's dispatch once
 spend-since-refill >= cap. google_gemini seeded at $18, enforced, opt-in
 (opencode untouched). Refill: `SELECT stewards.provider_cap_refill('google_gemini'[, <new_cap_micro>])`.
-Remaining polish: (a) a gemini lens hitting the cap RAISEs inside
-spawn_children → caught by the trigger handler (0 children spawned, logged)
-rather than surfaced cleanly; a pre-flight cap check in `start_brainstorm`
-would fix the brainstorm-path UX. (b) bucket caps (`bucket_limit_micro`)
+Remaining polish: (a) ~~a gemini lens hitting the cap RAISEs inside
+spawn_children → caught by the trigger handler~~ **DONE 2026-05-29 (J.12,
+0f535a4): start_brainstorm pre-flight RAISEs cleanly before spawn; plus
+classify_error() + error_category in the work_items API/UI (amber budget
+banner + 💸 list badge).** (b) bucket caps (`bucket_limit_micro`)
 remain informational-only for ALL providers — not enforced; separate concern.
 (c) deepseek-v4-pro, mimo-v2-pro/2.5-pro/omni, hy3-preview still unpriced
 (no published opencode rate) — add rows when rates publish.
