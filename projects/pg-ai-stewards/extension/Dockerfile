@@ -93,7 +93,8 @@ COPY 2-6a-workstreams.sql 2-6b-todos.sql 2-6c-phases-context.sql \
      6a-studies-file-path-nullable.sql \
      6b-steward-retry-lessons.sql \
      6c-quarantine-fires-atonement.sql \
-     6d-pending-file-writes.sql ./
+     6d-pending-file-writes.sql \
+     am1-pending-file-writes-notify.sql ./
 
 # `cargo pgrx package` produces ./target/release/pg_ai_stewards-pg18/
 # with the directory tree rooted at /, containing the .so, .control,

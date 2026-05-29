@@ -1768,6 +1768,17 @@ fn chat(provider_name: &str, payload: &serde_json::Value) -> Result<WorkOutcome,
                 m.remove("tools");
             }
             m.insert("stream".to_string(), serde_json::Value::Bool(true));
+            // J.11: request usage on the stream. Direct OpenAI-compat
+            // providers (Gemini) OMIT the usage block on streamed
+            // responses unless stream_options.include_usage is set, which
+            // left Gemini cost untracked (no cost_event -> no cap). The
+            // opencode gateway includes usage in-stream regardless, so
+            // this is a no-op there. parse_chat_sse already captures the
+            // usage-only tail chunk (it tolerates choices-less chunks).
+            m.insert(
+                "stream_options".to_string(),
+                serde_json::json!({ "include_usage": true }),
+            );
         }
         b
     };
