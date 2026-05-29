@@ -10,6 +10,12 @@ The canonical project instructions are shared with Copilot. Read them first, the
 
 This file is loaded automatically by Claude Code on session start. Everything above (via the `@`-import) applies equally to Claude Code and Copilot. The notes in this section override or extend the shared instructions when the two harnesses diverge.
 
+### Model & effort (Claude Code on Opus 4.8)
+
+Claude Code runs **Claude Opus 4.8** (`claude-opus-4-8`) as of 2026-05-29. 4.8 builds on 4.7; the shared file's Foresight & Adjacent Surfaces tuning was written for 4.7 and applies to 4.8 unchanged.
+
+**Effort is the main dial.** 4.8 is more effort-sensitive than any prior Opus, and the levels were recalibrated (`xhigh` = substantially more thinking than 4.7's `xhigh`; `medium` somewhat more, `high` somewhat less). Default is `high`. Michael's standing default is **`xhigh`** (set via `/model`), right for the dev / substrate / agentic work that dominates recent sessions. For a pure prose or study session, `high` is often better — it avoids overthinking a paragraph and keeps latency down. This is a per-session dial Michael owns: don't assume a level, and if a study session feels over-deliberated, that's the signal to suggest dropping to `high`.
+
 ### Tool naming differs from Copilot
 
 The shared instructions list MCP tools using Copilot's deferred-tool naming (`mcp_gospel-engine_gospel_search`, `mcp_webster_webster_define`, etc.). **In Claude Code, use the standard MCP naming convention:** `mcp__<server>__<tool>`.

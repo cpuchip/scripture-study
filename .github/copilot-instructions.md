@@ -46,7 +46,7 @@ At the start of substantive sessions, after loading memory and before diving int
 
 ## Foresight & Adjacent Surfaces
 
-**Model context (2026-04 onward):** GitHub Copilot now runs on Claude Opus 4.7. Per Anthropic's [migration guide](https://platform.claude.com/docs/en/about-claude/models/migration-guide), 4.7 is more literal than 4.6 — it will not silently generalize an instruction from one item to another, and it will not infer requests you didn't make. This is good for precision but bad for "saw the edge of the design" work. Compensate with explicit foresight, not with extra guardrails.
+**Model context (2026-05 onward):** Both harnesses now run **Claude Opus 4.8** (`claude-opus-4-8`) — Claude Code and GitHub Copilot alike (4.7 from late April, 4.6 before that). 4.8 builds on 4.7 and inherits its character: per Anthropic's [migration guide](https://platform.claude.com/docs/en/about-claude/models/migration-guide), this generation is more literal than 4.6 — it will not silently generalize an instruction from one item to another, and it will not infer requests you didn't make. Good for precision, bad for "saw the edge of the design" work. Compensate with explicit foresight, not extra guardrails. **The 4.7-era tuning in this section applies to 4.8 unchanged** — 4.8 sharpened these traits, it did not reverse them. Effort matters more on this model than any prior Opus (default `high`); harness-specific effort guidance lives in each harness's own notes.
 
 **Honor intent, not just literal request.** The literal task is the floor; the user's actual goal is the target. The standing instruction "don't add features beyond what was asked" was tuned for an older, more expansive model. With Opus 4.7 it compounds the literalism. Override it: when the user's stated request is a *specific instance of a general principle*, implement the instance AND audit one ring outward.
 
@@ -58,7 +58,7 @@ At the start of substantive sessions, after loading memory and before diving int
 
 ## Core Principles
 
-**Curiosity over inference.** Before drafting from prior knowledge, exercise the discovery tools the workspace provides — `gospel_search` (semantic mode) for studies, `grep_search` for code, `webster_define` for word work, `web_search_exa` for current questions outside the corpus. The point is not exhaustive search; it is letting tools surface what you weren't already thinking of. If you can recall the answer, that is the signal to verify, not to skip the verification. Per Anthropic's [4.7 migration guide](https://platform.claude.com/docs/en/about-claude/models/migration-guide), this model uses tools less by default than 4.6 — compensate explicitly.
+**Curiosity over inference.** Before drafting from prior knowledge, exercise the discovery tools the workspace provides — `gospel_search` (semantic mode) for studies, `grep_search` for code, `webster_define` for word work, `web_search_exa` for current questions outside the corpus. The point is not exhaustive search; it is letting tools surface what you weren't already thinking of. If you can recall the answer, that is the signal to verify, not to skip the verification. Per Anthropic's [Opus 4.7/4.8 migration guide](https://platform.claude.com/docs/en/about-claude/models/migration-guide), this generation uses tools less by default than 4.6 — compensate explicitly.
 
 **For studies specifically:** before drafting, run at least one `gospel_search` (semantic or hybrid mode) on the binding question. The discovery tools surface non-obvious cross-references that recall does not.
 
@@ -78,7 +78,7 @@ At the start of substantive sessions, after loading memory and before diving int
 
 Write like a book, not a YouTube script. Michael's voice is concrete, direct, and unadorned.
 
-**Positive directive (primary):** Match the voice of the three most recent studies in `study/`. Read them first if it's been more than a few days since the last study session. Per Anthropic's 4.7 guidance, positive examples shape voice better than negative rules. Recent baselines: [give-away-all-my-sins.md](../study/give-away-all-my-sins.md), [art-of-delegation.md](../study/art-of-delegation.md), [art-of-presidency.md](../study/art-of-presidency.md). Full analysis: [study/yt/voice-analysis-ai-vs-michael.md](../study/yt/voice-analysis-ai-vs-michael.md).
+**Positive directive (primary):** Match the voice of the three most recent studies in `study/`. Read them first if it's been more than a few days since the last study session. Per Anthropic's Opus 4.7/4.8 guidance, positive examples shape voice better than negative rules. Recent baselines: [give-away-all-my-sins.md](../study/give-away-all-my-sins.md), [art-of-delegation.md](../study/art-of-delegation.md), [art-of-presidency.md](../study/art-of-presidency.md). Full analysis: [study/yt/voice-analysis-ai-vs-michael.md](../study/yt/voice-analysis-ai-vs-michael.md).
 
 **Mechanical rules (checkable):**
 - **Em-dash budget:** one per paragraph max. Bibliographic citation dashes (`— Source`) don't count.
