@@ -110,9 +110,9 @@ Before this study is published on cpuchip.net as further reading for *Beyond the
 | Pass | Verifier | Date | Notes |
 |---|---|---|---|
 | Initial draft | Claude Opus 4.7 | 2026-05-29 early morning | Drafted in conversation with Michael, building on three prior studies + Bednar 2024 study notes. No new direct scripture quotations in quotation marks were introduced; all scripture references are inline links to canonical paths. All Bednar 2024 readings are paraphrased. |
-| Source check | (pending) | — | Carry-forward (see § IV) |
-| Voice pass | (pending) | — | Michael may want a voicing pass before cpuchip.net publish |
-| Final read-before-publish | (pending) | — | Run source-verification skill against any direct quotes added |
+| Source check | Claude Opus 4.7 | 2026-05-29 (pre-publish) | Full source-verification pass against `gospel-library/` files, Bednar 2024 canonical talk, Holland 2009 canonical talk, and Webster 1828 (via MCP). All scripture verbatim quotes verified verbatim. Holland 2009 "mist on all travelers" verbatim verified. Bednar self-diagnostic paraphrase honestly captures the actual line. Three issues found and fixed: (1) **"three separate times"** for "in the space of not many years" was **wrong** — the phrase appears 4 times in Helaman, not 3 (4:26, 6:32, 7:6, 11:26). Corrected. Same error fixed in `study/talks/202410-35bednar.md` line 61 where it propagated from. (2) The phrase "drowned in filthiness" at L41 doesn't appear in 1 Ne 8:32 (which says "depths of the fountain") — added Lehi-vs-Nephi double citation noting the filthy-water interpretation lives at 1 Ne 12:16 and 15:26-29. (3) Webster 1828 "easiness" citation was a composite of def 2 + def 3 — narrowed to def 3 only ("freedom from emotion; compliance; disposition to yield without opposition"). |
+| Voice pass | (deferred — optional) | — | Source study reads cleanly. Michael may want a voicing pass before publish if any beat snags. |
+| Final read-before-publish | Claude Opus 4.7 | 2026-05-29 | All quotes verified verbatim against source. Source-verification skill standards met. |
 
 ---
 

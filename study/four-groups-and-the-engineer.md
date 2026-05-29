@@ -38,7 +38,7 @@ Lehi's vision describes four distinct relationships to the rod ([1 Nephi 8:21-33
 
 **Group 4 — was in the building from the start, mocking.** They never approached the rod. They never started the path. Their relationship to the chain is not failure of grip; it is refusal of the path itself. And their work is to mock those who *did* arrive — the fruit-eaters specifically, not the seekers.
 
-A fifth movement in the vision — those who drowned in filthiness or wandered in strange roads ([1 Nephi 8:32](../gospel-library/eng/scriptures/bofm/1-ne/8.md)) — is a sub-failure of Group 1. The four-group taxonomy is the useful simplification.
+A fifth movement in the vision — those who drowned in filthiness or wandered in strange roads ([1 Nephi 8:32](../gospel-library/eng/scriptures/bofm/1-ne/8.md); Lehi describes them drowning in "the depths of the fountain," and Nephi later interprets that water as filthy at [1 Nephi 12:16](../gospel-library/eng/scriptures/bofm/1-ne/12.md) and [15:26-29](../gospel-library/eng/scriptures/bofm/1-ne/15.md)) — is a sub-failure of Group 1, the wanderers who happen to get caught in the filthy waters rather than simply lost in the mist. The four-group taxonomy is the useful simplification for what follows.
 
 ---
 
@@ -74,7 +74,7 @@ Fourth, boasting in own strength. "Because of this their great wickedness, and t
 
 Fifth, the Spirit withdraws. "The Spirit of the Lord began to withdraw from the Nephites, because of the wickedness and the hardness of their hearts" ([Helaman 6:35](../gospel-library/eng/scriptures/bofm/hel/6.md)).
 
-Mormon uses the phrase *in the space of not many years* three separate times across the Helaman narrative ([Helaman 4:26](../gospel-library/eng/scriptures/bofm/hel/4.md); [6:32](../gospel-library/eng/scriptures/bofm/hel/6.md); [7:6](../gospel-library/eng/scriptures/bofm/hel/7.md)). The collapse is not gradual. It is generational at worst. Possibly faster. A people who knew the gospel, had prophets among them, and had seen miracles dropped the rod in less time than they had spent gripping it.
+Mormon uses the phrase *in the space of not many years* four separate times across the Helaman narrative ([Helaman 4:26](../gospel-library/eng/scriptures/bofm/hel/4.md); [6:32](../gospel-library/eng/scriptures/bofm/hel/6.md); [7:6](../gospel-library/eng/scriptures/bofm/hel/7.md); [11:26](../gospel-library/eng/scriptures/bofm/hel/11.md)). The collapse is not gradual. It is generational at worst. Possibly faster. A people who knew the gospel, had prophets among them, and had seen miracles dropped the rod in less time than they had spent gripping it.
 
 ---
 
@@ -104,7 +104,7 @@ Against the Nephite collapse, the Lamanites in Helaman provide a stunning contra
 
 Two phrases name the Lamanite virtue.
 
-The first is *easiness and willingness to believe.* "The Lord began to pour out his Spirit upon the Lamanites, because of their easiness and willingness to believe in his words" ([Helaman 6:36](../gospel-library/eng/scriptures/bofm/hel/6.md)). Easiness (Webster 1828: freedom from difficulty, compliance, disposition to yield without opposition) is the inverse of pride. No hardened resistance. No insistence on understanding everything first. No requirement for signs. Just willingness to walk under the discipline because the discipline has been given.
+The first is *easiness and willingness to believe.* "The Lord began to pour out his Spirit upon the Lamanites, because of their easiness and willingness to believe in his words" ([Helaman 6:36](../gospel-library/eng/scriptures/bofm/hel/6.md)). Easiness (Webster 1828, definition 3: "freedom from emotion; compliance; disposition to yield without opposition") is the inverse of pride. No hardened resistance. No insistence on understanding everything first. No requirement for signs. Just willingness to walk under the discipline because the discipline has been given.
 
 The second is *walking circumspectly before God* ([Helaman 15:5](../gospel-library/eng/scriptures/bofm/hel/15.md)). Circumspectly (Webster 1828: cautiously, warily). They watched their step. They did not assume they were safe. They walked carefully, as people who knew what they could lose.
 
