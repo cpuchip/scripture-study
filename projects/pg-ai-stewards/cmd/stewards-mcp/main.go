@@ -107,6 +107,7 @@ func main() {
 	registerConsultSubagentTools(srv, pool)
 	registerHeavyweightTools(srv, pool)
 	registerBrainstormTools(srv, pool)
+	registerModelTools(srv, pool)
 
 	log.Printf("server starting on stdio (mcp protocol)")
 	if err := srv.Run(ctx, &mcp.StdioTransport{}); err != nil {
