@@ -100,6 +100,18 @@ plumbing, not code rewrites. The coupling points:
   already framed gospel-engine-v2 as "one example use." Further neutralizing of
   `.spec/` history is the E.5 decision above.
 
+## Positioning (read before writing the public pitch)
+
+The competitive landscape scan
+[../research/2026-05-29-competitive-landscape.md](../research/2026-05-29-competitive-landscape.md)
+is the input for how to position the public repo. Short version: lead with the
+**governance** layer (maturity gates, trust ladder, enforced spend caps,
+reflective primitives) — no peer has it; pgclaw is the closest architectural
+twin but governance-light, NeuronDB is the closest feature peer but proprietary,
+and pgai (the in-DB-execution player) is archived + removing in-DB LLM calls.
+Frame as "the opinionated reference for *governed* in-DB agents"; present the
+faith framing as honest origin, not a dependency.
+
 ## Provenance
 
 Surfaced during the 2026-05-29 public-OSS docs pass, when `docker compose build`
