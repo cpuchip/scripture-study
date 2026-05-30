@@ -398,7 +398,7 @@ VALUES
     ('opencode_go', 'kimi-k2.6',          950000,  4000000,    NULL,  160000,
      'Cache write rate not exposed by provider'),
     ('opencode_go', 'glm-5.1',           1400000,  4400000,    NULL,  260000,
-     'Reasoning model (backend frank/GLM-5.1). Non-streaming works with ample max_tokens; STREAMING returns empty content via the gateway (2026-05-29). Substrate dispatch streams (stream:true), so it comes back empty. Avoid for substrate lenses until gateway streaming is fixed.'),
+     'Reasoning model (backend frank/GLM-5.1). Streams content fine via the substrate (auto-probe verified 2026-05-29). Give adequate per-call max_tokens for substantive prompts so reasoning does not exhaust the budget before content.'),
     ('opencode_go', 'minimax-m2.7',       300000,  1200000,  375000,   60000, ''),
     ('opencode_go', 'qwen3.6-plus',       500000,  3000000,  625000,   50000, ''),
     -- Anthropic via OpenCode Zen (used only via human-mediated escalation queue)

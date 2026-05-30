@@ -23,12 +23,14 @@ SELECT 'CASE 1 usable' AS test,
 SELECT 'CASE 1 sub-rows (want 0)' AS test, count(*) AS n
   FROM stewards.model_substitutions WHERE work_queue_id = :wq_usable;
 
--- ---- Case 2: unusable model (glm-5) -> substitute + log ----
+-- ---- Case 2: unusable model (qwen3.7-max) -> substitute + log ----
+-- (glm-5 was the original example here, but the M.4 auto-probe later proved
+-- glm-5 streams fine; qwen3.7-max is the verified-unusable opencode model.)
 INSERT INTO stewards.work_items
     (pipeline_family, current_stage, status, input, model_override, intent_id, actor)
 VALUES
     ('brainstorm-disney', 'lens', 'pending',
-     '{"binding_question":"m2 smoke: does substitution work?","user_input":"m2 smoke sub"}'::jsonb, 'glm-5',
+     '{"binding_question":"m2 smoke: does substitution work?","user_input":"m2 smoke sub"}'::jsonb, 'qwen3.7-max',
      (SELECT id FROM stewards.intents LIMIT 1), 'm2-smoke')
 RETURNING id AS wi_sub \gset
 SELECT stewards.work_item_dispatch_stage(:'wi_sub') AS wq_sub \gset

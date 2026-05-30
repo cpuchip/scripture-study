@@ -125,19 +125,27 @@ COMMENT ON VIEW stewards.model_catalog IS
 -- ---------------------------------------------------------------------
 -- 5. Seed — tonight's hand-verified results (2026-05-29 gateway probe).
 -- ---------------------------------------------------------------------
--- usable=false set: diagnosed unusable via the substrate's dispatch path.
--- usable=true set: models with direct evidence they ran/streamed this run.
--- Everything else stays unrowed (defaults usable) until the M.4 auto-probe.
+-- Corrected 2026-05-29 by the M.4 auto-probe (see commit history): my initial
+-- hand-diagnosis marked glm-5/glm-5.1 unusable on the strength of a shell-grep
+-- streaming test that returned 0 content chars. The substrate's real SSE parser
+-- (parse_chat_sse) extracts GLM's content fine — an auto-probe with a
+-- substantive prompt returned 385 chars, finish=stop. So GLM streams fine; the
+-- brainstorm-run emptiness was a per-lens budget/transient issue, NOT a
+-- streaming incompatibility. The only verified-unusable opencode model is
+-- qwen3.7-max (the substrate's streaming dispatch gets HTTP 401; a direct curl
+-- also reports "not supported for format oa-compat"). Everything unrowed
+-- defaults usable until the M.4 auto-probe verifies it.
 INSERT INTO stewards.model_capability
     (provider, model, usable, supports_streaming, last_probed_at, probe_detail, probed_via)
 VALUES
-    -- --- unusable (diagnosed) ---
+    -- --- unusable (verified via the real dispatch path) ---
     ('opencode_go', 'qwen3.7-max', false, false, now(),
-     'Gateway rejects: "Model qwen3.7-max is not supported for format oa-compat" (both streaming and non-streaming). Cannot dispatch on the OpenAI-compat endpoint.', 'seed'),
-    ('opencode_go', 'glm-5', false, false, now(),
-     'Backend frank/GLM-5.1 (reasoning model). Non-streaming returns content; STREAMING (the substrate''s path) returns 0 content chars, no finish_reason, no usage.', 'seed'),
-    ('opencode_go', 'glm-5.1', false, false, now(),
-     'Backend frank/GLM-5.1 (reasoning model). Non-streaming returns content; STREAMING (the substrate''s path) returns 0 content chars, no finish_reason, no usage.', 'seed'),
+     'Unusable via substrate: dispatch returns HTTP 401 whose body is "Model qwen3.7-max is not supported for format oa-compat" — the gateway rejects this model on the OpenAI-compat endpoint and expresses it as a 401. Consistent across probes.', 'seed'),
+    -- --- usable (verified streaming via the substrate path) ---
+    ('opencode_go', 'glm-5', true, true, now(),
+     'Backend frank/GLM-5.1 (reasoning model). Streams content fine via the substrate (auto-probe: 385 chars, finish=stop). Give adequate per-call max_tokens for substantive prompts so reasoning does not exhaust the budget.', 'seed'),
+    ('opencode_go', 'glm-5.1', true, true, now(),
+     'Backend frank/GLM-5.1 (reasoning model). Streams content fine via the substrate (auto-probe verified). Give adequate per-call max_tokens for substantive prompts.', 'seed'),
     -- --- usable (direct evidence on the 2026-05-29 v2 brainstorm run) ---
     ('opencode_go', 'kimi-k2.6',         true, true, now(), 'Substrate main chain; streams reliably.', 'seed'),
     ('opencode_go', 'kimi-k2.5',         true, true, now(), 'Re-fired empties successfully on the v2 run.', 'seed'),
@@ -155,11 +163,12 @@ SET usable             = EXCLUDED.usable,
 
 -- =====================================================================
 -- Acceptance (verify before commit):
---   1. model_usable('opencode_go','glm-5')        = false
+--   1. model_usable('opencode_go','glm-5')        = true   (streams fine)
 --   2. model_usable('opencode_go','qwen3.7-max')  = false
 --   3. model_usable('opencode_go','kimi-k2.6')    = true
 --   4. model_usable('opencode_go','never-heard')  = true   (unknown defaults usable)
 --   5. first_usable_model('opencode_go') returns a cheap usable model
---      (a free one: deepseek-v4-flash or mimo-v2.5), never glm-5/qwen3.7-max.
---   6. SELECT count(*) FROM stewards.model_catalog WHERE NOT usable; = 3
+--      (a free one: deepseek-v4-flash or mimo-v2.5), never qwen3.7-max.
+--   6. SELECT count(*) FROM stewards.model_catalog WHERE NOT usable; = 1
+--      (qwen3.7-max only)
 -- =====================================================================

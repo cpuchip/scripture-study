@@ -312,10 +312,12 @@ COMMENT ON FUNCTION stewards.work_item_dispatch_stage(uuid, text, boolean) IS
 --   1. Usable path unchanged: dispatch a work_item resolving to kimi-k2.6
 --      enqueues a chat with requested_model=kimi-k2.6 and NO
 --      _capability_substitution marker; no model_substitutions row.
---   2. Substitution: a work_item with model_override='glm-5' enqueues a
+--   2. Substitution: a work_item with model_override='qwen3.7-max' enqueues a
 --      chat with requested_model = a usable model (catalog default
 --      kimi-k2.6, since it is usable), payload carries the marker, and one
---      model_substitutions row exists with from=glm-5, reason LIKE 'capability:%'.
+--      model_substitutions row exists with from=qwen3.7-max, reason LIKE
+--      'capability:%'. (glm-5 was the original example; the M.4 auto-probe
+--      later proved glm-5 streams fine, so qwen3.7-max is the live example.)
 --   3. No usable substitute: temporarily mark every opencode_go model
 --      unusable -> dispatch RAISEs the "no usable substitute" error.
 --      (Don't leave the DB in that state.)
