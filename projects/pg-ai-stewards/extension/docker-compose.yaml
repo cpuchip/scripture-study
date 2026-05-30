@@ -35,6 +35,15 @@ services:
       # cues.json + metadata.json via pg_read_file. Bridge has the same
       # path mounted rw for writes; pg only reads.
       - ../../../yt:/opt/yt/yt:ro
+      # R.2 (substrate-multimodel-document-redline, 2026-05-30): READ-ONLY
+      # mount of the repo root so stewards.read_workspace_doc() can inject a
+      # document into a redline panel via pg_read_file — server-side, so the
+      # panel models never need fs access (that was the original failure mode:
+      # fs-read allow-list + fs_search budget-burn). RO is the real boundary;
+      # read_workspace_doc additionally restricts to .md/.txt docs and refuses
+      # secrets/.env/traversal so a crafted call can't exfiltrate a secret into
+      # an external model's prompt. Mirrors the bridge's /workspace mount, ro.
+      - ../../..:/workspace:ro
     healthcheck:
       # Bridge depends_on this; pg_isready is the standard probe.
       test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-stewards} -d ${POSTGRES_DB:-stewards}"]
