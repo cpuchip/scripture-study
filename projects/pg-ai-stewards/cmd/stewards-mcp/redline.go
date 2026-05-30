@@ -31,6 +31,15 @@ func registerRedlineTools(srv *mcp.Server, pool *pgxpool.Pool) {
 			"work_item_show, then condense the reports yourself. Use for diverse concrete edits across a manuscript/" +
 			"spec/doc — NOT abstract critique (use start_brainstorm for that).",
 	}, makePanelRedline(pool))
+
+	mcp.AddTool(srv, &mcp.Tool{
+		Name: "panel_redline_condense",
+		Description: "Optional: merge a completed panel_redline's N reports into ONE ranked, deduplicated proposal " +
+			"menu via a chosen model (tools-off). Preserves every touches-quote/doctrine flag and notes per-edit " +
+			"consensus (k of N panelists). Use AFTER the panel children finish (work_item_show shows them verified) " +
+			"if you'd rather the substrate merge them than do it yourself. Returns the condense child id; read its " +
+			"final assistant message for the menu.",
+	}, makePanelRedlineCondense(pool))
 }
 
 type PanelRedlineInput struct {
@@ -140,5 +149,59 @@ func makePanelRedline(pool *pgxpool.Pool) func(
 			len(out.Children), maxTokens)
 
 		return nil, out, nil
+	}
+}
+
+// ---------------------------------------------------------------------
+// panel_redline_condense — optional substrate-side ranked merge (R.5)
+// ---------------------------------------------------------------------
+
+type PanelRedlineCondenseInput struct {
+	ParentID      string `json:"parent_id" jsonschema:"the parent work_item id returned by panel_redline"`
+	CondenseModel string `json:"condense_model" jsonschema:"the model to merge the reports (e.g. gemini-2.5-flash, kimi-k2.6)"`
+	MaxTokens     int    `json:"max_tokens,omitempty" jsonschema:"output ceiling for the merge (default 32000)"`
+	CostCapMicro  int64  `json:"cost_cap_micro,omitempty" jsonschema:"override cost cap in micro-dollars (default: auto-scaled)"`
+}
+
+type PanelRedlineCondenseOutput struct {
+	CondenseChildID string `json:"condense_child_id"`
+	Notes           string `json:"notes,omitempty"`
+}
+
+func makePanelRedlineCondense(pool *pgxpool.Pool) func(
+	ctx context.Context, req *mcp.CallToolRequest, in PanelRedlineCondenseInput,
+) (*mcp.CallToolResult, PanelRedlineCondenseOutput, error) {
+	return func(
+		ctx context.Context, req *mcp.CallToolRequest, in PanelRedlineCondenseInput,
+	) (*mcp.CallToolResult, PanelRedlineCondenseOutput, error) {
+		if strings.TrimSpace(in.ParentID) == "" {
+			return toolError("panel_redline_condense: 'parent_id' is required"), PanelRedlineCondenseOutput{}, nil
+		}
+		if strings.TrimSpace(in.CondenseModel) == "" {
+			return toolError("panel_redline_condense: 'condense_model' is required"), PanelRedlineCondenseOutput{}, nil
+		}
+		maxTokens := in.MaxTokens
+		if maxTokens <= 0 {
+			maxTokens = 32000
+		}
+		var costCapArg any
+		if in.CostCapMicro > 0 {
+			costCapArg = in.CostCapMicro
+		}
+
+		var childID string
+		err := pool.QueryRow(ctx,
+			`SELECT stewards.panel_redline_condense($1::uuid, $2, $3, $4)::text`,
+			in.ParentID, in.CondenseModel, maxTokens, costCapArg,
+		).Scan(&childID)
+		if err != nil {
+			return toolError("panel_redline_condense: failed: %v", err), PanelRedlineCondenseOutput{}, nil
+		}
+
+		return nil, PanelRedlineCondenseOutput{
+			CondenseChildID: childID,
+			Notes: fmt.Sprintf("Condense dispatched via %s. Read the final assistant message on work_item %s "+
+				"for the ranked merged menu (preserves every touches-quote/doctrine flag).", in.CondenseModel, childID),
+		}, nil
 	}
 }
