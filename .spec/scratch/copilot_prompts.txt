@@ -1,0 +1,512 @@
+
+
+######## COPILOT: C:\Users\cpuch\.copilot\session-state\441d095f-d123-4e50-a22d-e458856f5413\events.jsonl ########
+
+---
+Execute the following specced brain entry:
+
+**Title:** I'm seriously looking at what it would take to do a science 
+**Category:** ideas
+**Content:** I'm seriously looking at what it would take to do a science center here in marshfield missouri.
+we're thinking of calling it Mars-field planetarium (though the planetarium will come later)... like Marshfield but the h fell off or something fun like that. I want a multi year plan that actually is doable with a cash flow approarch, I only have a like 1000 dollars to start with, but could cash flow a hundred dollars or two a month to build this. I know it's not much. But I was thinking about the science center part, we went to the st. louis science center and it was fun. I think we could replicate a lot of those exhibits with little cost, and some creativity and elbo grease. For the bridge simmulator side, I already have several 2 in 1 windows 11 class laptops that can run empty epsilon or the like. I can buy cheap 15.6" to 24" touch screen monitors to make consoles out of, and I already have a waveshare 4.3" esp32-s3 device (see other entry on it) and a 10" esp32-p4 by elecrow ( https://www.amazon.com/dp/B0GCJVLP7B ) that we could build into consoles, and they are cheap enough that we could buy one a month for some time to build the props and wall displays. I have a bambu lab X1 carbon 3d printer too that we can use.
+
+What I am looking for as deliverables on this entry is
+1. a multi year plan for building up the science center, with a focus on cash flow and affordability
+2. a list of potential exhibits and activities that could be created with low cost and creativity that we can start building right away
+3. A plan for the bridge simulator, including what software to use, or maybe roll our own, and how to build the consoles and displays on a budget.
+4. A marketing and outreach plan to attract visitors and build a community around the science center.
+5. Potential partnerships with local schools, organizations, or businesses to support the science center and its mission, here in marshfield missouri.
+6. any programs that marshfield city or the state of missouri has that we could tap into for funding, support, or collaboration.
+7. A plan for sustainability and growth, including how to reinvest any profits back into the science center and how to scale up operations over time.
+8. how we could get the rights to use star trek and star wars IP for the bridge simulator, or if we should just create our own original IP for it.
+9. A timeline to get to opening up with a simple science center for the first year of operations, including key milestones and goals to achieve.
+10. possible locations in marshfield for the science center, including potential spaces to rent or buy, and the pros and cons of each option.
+11. any business license and permits we would need to operate a science center in marshfield, and how to go about obtaining them. basically a plan to get the legal and regulatory stuff sorted out so we can operate without any issues.
+
+this is a fact finding and research task, so I want you to do the research and come up with a plan based on your findings. I want you to be creative and think outside the box, but also be realistic about what can be achieved with the resources we have. I want you to provide a detailed plan that we can follow to make this science center a reality.
+
+
+---
+**Project:** Space Center
+**Description:** This is for my space center project. A Planetarium, science museum, and space ship bridge simulator. Plans, programs, projects, builds, research, development... etc.
+**Project directory:** projects/space-center
+All project files (scratch, proposals, docs) should be created within this directory.
+This is an external project with its own git repository.
+
+**Related entries in this project:**
+- [complete/complete] LCARS Vue3 Theme — Clock & RPN Calculator
+- [raw] Plan bridge simulator in small steps
+- [raw/your_turn] Star Trek UI with Pretext
+- [planned/dismissed] Build Physical Display Dashboard
+---
+
+## Scenarios (Acceptance Criteria)
+
+- A multi-year phased plan document exists in projects/space-center/docs/ that defines at least 3 growth phases with specific capital requirements, visitor targets, and milestone deliverables for each phase
+- A prioritized exhibit list exists with at least 10 exhibits categorized into cost tiers (under $50, $50-150, $150+), each with estimated build cost, required materials, and educational objective
+- A Missouri-specific funding and business formation checklist exists covering 501(c)(3) filing steps, applicable state/federal grants (USDA, NAP Tax Credits), and registration requirements (SAM.gov, Chamber of Commerce)
+- A bridge simulator MVP specification exists that defines the minimum station count, required hardware (referencing owned equipment like laptops and ESP32 displays), software stack (Empty Epsilon), and estimated build cost to reach a bookable experience
+- A location and space requirements document exists outlining minimum square footage per phase, zoning considerations for Marshfield, and at least 2 candidate venue types (e.g., storefront, community space) with estimated monthly costs
+- A revenue model document exists with pricing tiers for at least 3 revenue streams (simulator sessions, field trips, events), projected visitor counts, and a break-even analysis showing when earned revenue covers monthly operating costs
+- A first-year action plan exists as a month-by-month timeline covering nonprofit formation, first exhibit builds, community demo events, and school district outreach with specific named contacts or organizations in the Marshfield area
+
+Your implementation must satisfy ALL of these scenarios. They will be verified by the human after you finish.
+
+## Research & Plan
+
+The research and plan are in: `projects\space-center\.spec\scratch\im-seriously-looking-at-what-it-would-take-to-do-a-science\main.md`
+Read this file first to understand the plan before implementing.
+
+## Instructions
+
+1. Read the scratch file above to understand the research and plan
+2. Implement the plan — create files, write code, update configs as needed
+3. Verify each scenario is satisfied by your implementation
+4. Report what was done and any notes for the verification step
+
+
+######## COPILOT: C:\Users\cpuch\.copilot\session-state\bbc64bf4-d368-4425-9337-7fc9782894a9\events.jsonl ########
+
+---
+Research the following captured thought:
+
+**Title:** I'm seriously looking at what it would take to do a science 
+**Category:** ideas
+**Content:** I'm seriously looking at what it would take to do a science center here in marshfield missouri.
+we're thinking of calling it Mars-field planetarium (though the planetarium will come later)... like Marshfield but the h fell off or something fun like that. I want a multi year plan that actually is doable with a cash flow approarch, I only have a like 1000 dollars to start with, but could cash flow a hundred dollars or two a month to build this. I know it's not much. But I was thinking about the science center part, we went to the st. louis science center and it was fun. I think we could replicate a lot of those exhibits with little cost, and some creativity and elbo grease. For the bridge simmulator side, I already have several 2 in 1 windows 11 class laptops that can run empty epsilon or the like. I can buy cheap 15.6" to 24" touch screen monitors to make consoles out of, and I already have a waveshare 4.3" esp32-s3 device (see other entry on it) and a 10" esp32-p4 by elecrow ( https://www.amazon.com/dp/B0GCJVLP7B ) that we could build into consoles, and they are cheap enough that we could buy one a month for some time to build the props and wall displays. I have a bambu lab X1 carbon 3d printer too that we can use.
+
+What I am looking for as deliverables on this entry is
+1. a multi year plan for building up the science center, with a focus on cash flow and affordability
+2. a list of potential exhibits and activities that could be created with low cost and creativity that we can start building right away
+3. A plan for the bridge simulator, including what software to use, or maybe roll our own, and how to build the consoles and displays on a budget.
+4. A marketing and outreach plan to attract visitors and build a community around the science center.
+5. Potential partnerships with local schools, organizations, or businesses to support the science center and its mission, here in marshfield missouri.
+6. any programs that marshfield city or the state of missouri has that we could tap into for funding, support, or collaboration.
+7. A plan for sustainability and growth, including how to reinvest any profits back into the science center and how to scale up operations over time.
+8. how we could get the rights to use star trek and star wars IP for the bridge simulator, or if we should just create our own original IP for it.
+9. A timeline to get to opening up with a simple science center for the first year of operations, including key milestones and goals to achieve.
+10. possible locations in marshfield for the science center, including potential spaces to rent or buy, and the pros and cons of each option.
+11. any business license and permits we would need to operate a science center in marshfield, and how to go about obtaining them. basically a plan to get the legal and regulatory stuff sorted out so we can operate without any issues.
+
+this is a fact finding and research task, so I want you to do the research and come up with a plan based on your findings. I want you to be creative and think outside the box, but also be realistic about what can be achieved with the resources we have. I want you to provide a detailed plan that we can follow to make this science center a reality.
+
+
+---
+**Project:** Space Center
+**Description:** This is for my space center project. A Planetarium, science museum, and space ship bridge simulator. Plans, programs, projects, builds, research, development... etc.
+**Project directory:** projects/space-center
+All project files (scratch, proposals, docs) should be created within this directory.
+This is an external project with its own git repository.
+
+**Related entries in this project:**
+- [complete/complete] LCARS Vue3 Theme — Clock & RPN Calculator
+- [raw] Plan bridge simulator in small steps
+- [raw/your_turn] Star Trek UI with Pretext
+- [planned/dismissed] Build Physical Display Dashboard
+---
+
+Write your findings to this file: `C:\Users\cpuch\Documents\code\stuffleberry\scripture-study\projects\space-center\.spec\scratch\im-seriously-looking-at-what-it-would-take-to-do-a-science\main.md`
+
+IMPORTANT: Create this file with a skeleton FIRST (all 5 headings), then fill in sections as you find information. Do not wait until the end to write.
+
+Use this structure:
+1. **What This Is About** — 1-2 sentence summary
+2. **What Already Exists** — search workspace for related studies, proposals, brain entries
+3. **External Context** — web search for articles, tools, prior art
+4. **Open Questions** — what needs human input before this can move forward
+5. **Raw Sources** — links to everything referenced
+
+
+######## COPILOT: C:\Users\cpuch\.copilot\session-state\35353c9a-0f98-4aa9-a08b-5f59456f2626\events.jsonl ########
+
+---
+Study the phrase 'The Only Begotten of the Father' across the standard works. Write the study to study/only-begotten.md, following your phased study workflow. Use your scratch file, Webster 1828, cross-references, and the tools available to you.
+
+---
+The backup study was actually a failed first attemp at using github copilot SDK to do remote studies through our brain.exe app. unfortunately it didn't carry any skills, or agent modes, we fixed that and the study was run twice, this was the second, and you happened to discover the older studies that I did a backup of to pair. I have since removed the old study since our new framework/workspace really produces much better studies.
+
+
+
+I wanted to address a feeling I have. I have felt that I am a son of god. a spirit son. I think there is a distinction of physical son and spirit son.
+
+
+
+we have done studies on the plan of salvation and creation, and truth.md and intelligence.
+
+
+
+organized intelligence -> spirit body -> physical body.
+
+
+
+I think all of us being spirit children of God doesn't deminish Jesus Christ being the literal physical son (only begotten) of the father.
+
+
+
+I have felt that we have 2 natural sets of parents, God the Father and Heavenly mother, clothed our intelligences in spirit bodies. then our physical father and mother gave us physical bodies.
+
+
+
+We gain a 3rd parent set with Jesus christ, and his bride the church, when we enter into covenant with him. We then are adopted and become Son and daughters unto Christ (God). I wonder if some of the references that we used don't distinguish between God the Father, and God the Son. and so this is more confusing then we need to. I've alwas read Romans 8:16-17 as we are all children of God the father (spirit) and joint heir with christ allowing us to return to our father if we partake in the covenants he offers.
+
+
+
+is there really no reference of Jesus Christ saying Our father? not even the lords prayer?
+
+
+
+is there evidence for this belief? or am I missing something from the scriptures and modern prophets?
+
+
+
+do a second study on the topic ./study/only-begotten-deeper.md
+ <reminder>
+IMPORTANT: this context may or may not be relevant to your tasks. You should not respond to this context unless it is highly relevant to your task
+</reminder>
+<attachments>
+<attachment id="cpuchip/brain">
+Information about one of the current repositories. You can use this information when you need to calculate diffs or compare changes with the default branch:
+Repository name: brain
+Owner: cpuchip
+Current branch: main
+Default branch: main
+</attachment>
+<attachment id="cpuchip/private-brain">
+Information about one of the current repositories. You can use this information when you need to calculate diffs or compare changes with the default branch:
+Repository name: private-brain
+Owner: cpuchip
+Current branch: main
+Default branch: main
+</attachment>
+<attachment id="cpuchip/scripture-study">
+Information about one of the current repositories. You can use this information when you need to calculate diffs or compare changes with the default branch:
+Repository name: scripture-study
+Owner: cpuchip
+Current branch: main
+Default branch: main
+</attachment>
+
+</attachments>
+<userRequest>
+The backup study was actually a failed first attemp at using github copilot SDK to do remote studies through our brain.exe app. unfortunately it didn't carry any skills, or agent modes, we fixed that and the study was run twice, this was the second, and you happened to discover the older studies that I did a backup of to pair. I have since removed the old study since our new framework/workspace really produces much better studies.
+
+
+
+I wanted to address a feeling I have. I have felt that I am a son of god. a spirit son. I think there is a distinction of physical son and spirit son.
+
+
+
+we have done studies on the plan of salvation and creation, and truth.md and intelligence.
+
+
+
+organized intelligence -> spirit body -> physical body.
+
+
+
+I think all of us being spirit children of God doesn't deminish Jesus Christ being the literal physical son (only begotten) of the father.
+
+
+
+I have felt that we have 2 natural sets of parents, God the Father and Heavenly mother, clothed our intelligences in spirit bodies. then our physical father and mother gave us physical bodies.
+
+
+
+We gain a 3rd parent set with Jesus christ, and his bride the church, when we enter into covenant with him. We then are adopted and become Son and daughters unto Christ (God). I wonder if some of the references that we used don't distinguish between God the Father, and God the Son. and so this is more confusing then we need to. I've alwas read Romans 8:16-17 as we are all children of God the father (spirit) and joint heir with christ allowing us to return to our father if we partake in the covenants he offers.
+
+
+
+is there really no reference of Jesus Christ saying Our father? not even the lords prayer?
+
+
+
+is there evidence for this belief? or am I missing something from the scriptures and modern prophets?
+
+
+
+do a second study on the topic ./study/only-begotten-deeper.md
+</userRequest>
+
+
+######## COPILOT: C:\Users\cpuch\.copilot\session-state\10e6e352-174a-4224-989d-fce6e5f2dc0d\events.jsonl ########
+
+---
+Study the phrase 'The Only Begotten of the Father' across the standard works. Write the study to study/only-begotten.md, following your phased study workflow. Use your scratch file, Webster 1828, cross-references, and the tools available to you.
+
+---
+Now load in the first study and reflect. are there any things we aught to change in the first study based on this new view of parentage and Christ's role in it?
+
+
+
+I worry that the first study was a little harsh on our standing as God's children.
+
+
+
+it's okay to push back with a critical eye "the ben test" here.
+ <reminder>
+IMPORTANT: this context may or may not be relevant to your tasks. You should not respond to this context unless it is highly relevant to your task
+</reminder>
+<attachments>
+<attachment id="cpuchip/brain">
+Information about one of the current repositories. You can use this information when you need to calculate diffs or compare changes with the default branch:
+Repository name: brain
+Owner: cpuchip
+Current branch: main
+Default branch: main
+</attachment>
+<attachment id="cpuchip/private-brain">
+Information about one of the current repositories. You can use this information when you need to calculate diffs or compare changes with the default branch:
+Repository name: private-brain
+Owner: cpuchip
+Current branch: main
+Default branch: main
+</attachment>
+<attachment id="cpuchip/scripture-study">
+Information about one of the current repositories. You can use this information when you need to calculate diffs or compare changes with the default branch:
+Repository name: scripture-study
+Owner: cpuchip
+Current branch: main
+Default branch: main
+</attachment>
+
+</attachments>
+<userRequest>
+Now load in the first study and reflect. are there any things we aught to change in the first study based on this new view of parentage and Christ's role in it?
+
+
+
+I worry that the first study was a little harsh on our standing as God's children.
+
+
+
+it's okay to push back with a critical eye "the ben test" here.
+</userRequest>
+
+---
+lets make the edit, I like the new framing, and putting it in regards to the  firtborn perspective in view and our relationship to both Father, and son who makes it possible.
+ <reminder>
+IMPORTANT: this context may or may not be relevant to your tasks. You should not respond to this context unless it is highly relevant to your task
+</reminder>
+<attachments>
+<attachment id="cpuchip/brain">
+Information about one of the current repositories. You can use this information when you need to calculate diffs or compare changes with the default branch:
+Repository name: brain
+Owner: cpuchip
+Current branch: main
+Default branch: main
+</attachment>
+<attachment id="cpuchip/private-brain">
+Information about one of the current repositories. You can use this information when you need to calculate diffs or compare changes with the default branch:
+Repository name: private-brain
+Owner: cpuchip
+Current branch: main
+Default branch: main
+</attachment>
+<attachment id="cpuchip/scripture-study">
+Information about one of the current repositories. You can use this information when you need to calculate diffs or compare changes with the default branch:
+Repository name: scripture-study
+Owner: cpuchip
+Current branch: main
+Default branch: main
+</attachment>
+
+</attachments>
+<userRequest>
+lets make the edit, I like the new framing, and putting it in regards to the  firtborn perspective in view and our relationship to both Father, and son who makes it possible.
+</userRequest>
+
+---
+Okay I like that change, but for some reason I was thinking that was in the first study. Was there anything then in the first study that we should revise based on this second study?
+ <reminder>
+IMPORTANT: this context may or may not be relevant to your tasks. You should not respond to this context unless it is highly relevant to your task
+</reminder>
+<attachments>
+<attachment id="cpuchip/brain">
+Information about one of the current repositories. You can use this information when you need to calculate diffs or compare changes with the default branch:
+Repository name: brain
+Owner: cpuchip
+Current branch: main
+Default branch: main
+</attachment>
+<attachment id="cpuchip/private-brain">
+Information about one of the current repositories. You can use this information when you need to calculate diffs or compare changes with the default branch:
+Repository name: private-brain
+Owner: cpuchip
+Current branch: main
+Default branch: main
+</attachment>
+<attachment id="cpuchip/scripture-study">
+Information about one of the current repositories. You can use this information when you need to calculate diffs or compare changes with the default branch:
+Repository name: scripture-study
+Owner: cpuchip
+Current branch: main
+Default branch: main
+</attachment>
+
+</attachments>
+<userRequest>
+Okay I like that change, but for some reason I was thinking that was in the first study. Was there anything then in the first study that we should revise based on this second study?
+</userRequest>
+
+
+######## COPILOT: C:\Users\cpuch\.copilot\session-state\fd234af4-18d1-44c5-9702-a2f4a8200342\events.jsonl ########
+
+---
+Execute the following specced brain entry:
+
+**Title:** Pull down all of the images and blog posts from the archive.
+**Category:** ideas
+**Content:** Pull down all of the images and blog posts from the archive.org snapshot of cpuchip.net from the wayback machine. put together my blog using vue3, use a similar UI for it with categories, but it doesn't have to be exact. though maybe make it more sci-fi esk like lcars.
+
+I don't want place holders but I do want to continue my blog and have easy places for things that we've defined in the readme like presentations and scripture studies, and work that I'm doing with AI. so help me keep the site organized.
+
+
+---
+**Project:** cpuchip.net
+**Description:** My personal blog! where I post pages, blog or journal entries, things I'm thinking about, projects I'm working on, studies I've done with AI and scriptures, presentations I want to have an official home for, everything cpuchip (my nickname)
+**Project directory:** projects/cpuchip.net
+All project files (scratch, proposals, docs) should be created within this directory.
+This is an external project with its own git repository.
+---
+
+## Scenarios (Acceptance Criteria)
+
+- All ~30 identified WordPress blog posts (unique ?p= IDs: 3, 12, 14, 29, 31, 39, 48, 62, 64, 68, 75, 79, 84, 95, 100, 104, 110, 123, 125, 132, 138, 141, 148, 153, 155, 161, 169, 172, 177, 203) exist as individual Markdown files under content/ with non-empty body text
+- Every recovered Markdown file contains valid YAML frontmatter with at least title, date (YYYY-MM-DD matching the original publish date), and category fields
+- All images referenced in the original posts are downloaded and stored locally under public/ (or a designated assets directory), and the Markdown files reference these local paths instead of the original wp-content/uploads URLs
+- No raw WordPress HTML boilerplate (wp-content class attributes, WordPress shortcodes, theme markup) remains in any recovered Markdown file — content is clean Markdown
+- A recovery manifest or log exists listing every archived post URL processed, its status (recovered, missing, skipped), and the resulting local file path, so completeness can be audited
+- Running a script or build step against the content/ directory produces zero errors — all Markdown files parse without frontmatter syntax errors and all local image references resolve to files that exist on disk
+
+Your implementation must satisfy ALL of these scenarios. They will be verified by the human after you finish.
+
+## Research & Plan
+
+The research and plan are in: `projects\cpuchip.net\.spec\scratch\pull-down-all-of-the-images-and-blog-posts-from-the-archive\main.md`
+Read this file first to understand the plan before implementing.
+
+## Instructions
+
+1. Read the scratch file above to understand the research and plan
+2. Implement the plan — create files, write code, update configs as needed
+3. Verify each scenario is satisfied by your implementation
+4. Report what was done and any notes for the verification step
+
+
+######## COPILOT: C:\Users\cpuch\.copilot\session-state\c8b502ef-86f7-47f4-b26f-a1f191295dea\events.jsonl ########
+
+---
+Execute the following specced brain entry:
+
+**Title:** I'm seriously looking at what it would take to do a science 
+**Category:** ideas
+**Content:** I'm seriously looking at what it would take to do a science center here in marshfield missouri.
+we're thinking of calling it Mars-field planetarium (though the planetarium will come later)... like Marshfield but the h fell off or something fun like that. I want a multi year plan that actually is doable with a cash flow approarch, I only have a like 1000 dollars to start with, but could cash flow a hundred dollars or two a month to build this. I know it's not much. But I was thinking about the science center part, we went to the st. louis science center and it was fun. I think we could replicate a lot of those exhibits with little cost, and some creativity and elbo grease. For the bridge simmulator side, I already have several 2 in 1 windows 11 class laptops that can run empty epsilon or the like. I can buy cheap 15.6" to 24" touch screen monitors to make consoles out of, and I already have a waveshare 4.3" esp32-s3 device (see other entry on it) and a 10" esp32-p4 by elecrow ( https://www.amazon.com/dp/B0GCJVLP7B ) that we could build into consoles, and they are cheap enough that we could buy one a month for some time to build the props and wall displays. I have a bambu lab X1 carbon 3d printer too that we can use.
+
+What I am looking for as deliverables on this entry is
+1. a multi year plan for building up the science center, with a focus on cash flow and affordability
+2. a list of potential exhibits and activities that could be created with low cost and creativity that we can start building right away
+3. A plan for the bridge simulator, including what software to use, or maybe roll our own, and how to build the consoles and displays on a budget.
+4. A marketing and outreach plan to attract visitors and build a community around the science center.
+5. Potential partnerships with local schools, organizations, or businesses to support the science center and its mission, here in marshfield missouri.
+6. any programs that marshfield city or the state of missouri has that we could tap into for funding, support, or collaboration.
+7. A plan for sustainability and growth, including how to reinvest any profits back into the science center and how to scale up operations over time.
+8. how we could get the rights to use star trek and star wars IP for the bridge simulator, or if we should just create our own original IP for it.
+9. A timeline to get to opening up with a simple science center for the first year of operations, including key milestones and goals to achieve.
+10. possible locations in marshfield for the science center, including potential spaces to rent or buy, and the pros and cons of each option.
+11. any business license and permits we would need to operate a science center in marshfield, and how to go about obtaining them. basically a plan to get the legal and regulatory stuff sorted out so we can operate without any issues.
+
+this is a fact finding and research task, so I want you to do the research and come up with a plan based on your findings. I want you to be creative and think outside the box, but also be realistic about what can be achieved with the resources we have. I want you to provide a detailed plan that we can follow to make this science center a reality.
+
+
+---
+**Project:** Space Center
+**Description:** This is for my space center project. A Planetarium, science museum, and space ship bridge simulator. Plans, programs, projects, builds, research, development... etc.
+**Project directory:** projects/space-center
+All project files (scratch, proposals, docs) should be created within this directory.
+This is an external project with its own git repository.
+
+**Related entries in this project:**
+- [complete/complete] LCARS Vue3 Theme — Clock & RPN Calculator
+- [raw] Plan bridge simulator in small steps
+- [raw/your_turn] Star Trek UI with Pretext
+- [planned/dismissed] Build Physical Display Dashboard
+---
+
+## Scenarios (Acceptance Criteria)
+
+- A multi-year phased plan document exists in projects/space-center/docs/ that maps phases to approximate capital requirements starting from $1,000 with $100-200/month cash flow
+- A DIY exhibit catalog document exists listing at least 10 buildable exhibits with per-exhibit cost estimates, materials, and educational objectives
+- A Missouri-specific funding research document exists identifying at least 3 concrete grant or tax credit programs (e.g., USDA Community Facilities, RBDG, NAP Tax Credits) with eligibility notes
+- A business formation checklist document exists covering 501(c)(3) filing, SAM.gov registration, Missouri business licensing, and estimated costs for each step
+- A location options summary exists evaluating at least 2 Marshfield venue strategies (e.g., pop-up vs. storefront) with approximate square footage and monthly cost ranges
+- A bridge simulator MVP spec exists defining minimum station count, hardware needed from existing inventory, and software stack (Empty Epsilon + supporting services)
+
+Your implementation must satisfy ALL of these scenarios. They will be verified by the human after you finish.
+
+## Research & Plan
+
+The research and plan are in: `projects\space-center\.spec\scratch\im-seriously-looking-at-what-it-would-take-to-do-a-science\main.md`
+Read this file first to understand the plan before implementing.
+
+## Instructions
+
+1. Read the scratch file above to understand the research and plan
+2. Implement the plan — create files, write code, update configs as needed
+3. Verify each scenario is satisfied by your implementation
+4. Report what was done and any notes for the verification step
+
+
+######## COPILOT: C:\Users\cpuch\.copilot\session-state\0dd39846-ed24-4762-b6c8-5e06de167586\events.jsonl ########
+
+---
+You are doing a deep scripture study. Use the gospel_search and gospel_get tools to look up relevant scriptures. Study topic: 'The Only Begotten of the Father'. How is Jesus Christ the Only Begotten Son of the Father? How are we also children of God? Look up Romans 8:16-17, 1 Nephi 11 (Nephi's vision of the condescension of God), John 3:16, D&C 93:21-23, and any other relevant passages. Search for 'only begotten' across the scriptures. Write the results as a structured study with sections for each key insight and scripture references. Focus on: (1) what 'only begotten' means — is Jesus the physical son of God in the flesh? (2) how we are spirit children of God, (3) the condescension of God and what it means, (4) Romans 8 joint-heirs with Christ. Write your study to the file study/only-begotten.md in the workspace.
+
+
+######## COPILOT: C:\Users\cpuch\.copilot\session-state\1c606850-7f17-474a-8082-391d8b59ebda\events.jsonl ########
+
+---
+Execute the following specced brain entry:
+
+**Title:** LCARS Vue3 Theme — Clock & RPN Calculator
+**Category:** projects
+**Content:** Star Trek LCARS-style Vue3 theme for Space Center apps. Build a reusable Vue3 component library with LCARS-inspired styling (the orange/blue/purple curved panel aesthetic from TNG-era Star Trek). Two demo apps to prove it out: (1) A clock/chronometer display with stardate, (2) An RPN calculator modeled after the HP-32SII with a 4-layer stack, standard math, trig functions, exponents, and basic RPL-style programming to string commands together. Keep it focused, just the essentials.
+
+**Tags:** lcars, space-center, vue3
+
+
+---
+**Project:** Space Center
+**Description:** This is for my space center project. A Planetarium, science museum, and space ship bridge simulator. Plans, programs, projects, builds, research, development... etc.
+**Project directory:** projects/space-center
+All project files (scratch, proposals, docs) should be created within this directory.
+This is an external project with its own git repository.
+
+**Related entries in this project:**
+- [raw] Plan bridge simulator in small steps
+- [raw/your_turn] Star Trek UI with Pretext
+- [planned/dismissed] Build Physical Display Dashboard
+---
+
+## Scenarios (Acceptance Criteria)
+
+- npm run dev shows LCARS-styled page with buttons and panels
+- Clock app displays local time, UTC, and stardate updating every second
+- RPN: 5 ENTER 3 + shows 8 in X register
+- RPN: ENTER pushes stack, T register drops when full
+- Calculator persists programs in localStorage across reloads
+- All components render with LCARS styling without additional CSS setup
+
+Your implementation must satisfy ALL of these scenarios. They will be verified by the human after you finish.
+
+## Research & Plan
+
+The research and plan are in: `projects\space-center\.spec\scratch\lcars-vue3-theme-clock-rpn-calculator\main.md`
+Read this file first to understand the plan before implementing.
+
+## Instructions
+
+1. Read the scratch file above to understand the research and plan
+2. Implement the plan — create files, write code, update configs as needed
+3. Verify each scenario is satisfied by your implementation
+4. Report what was done and any notes for the verification step
