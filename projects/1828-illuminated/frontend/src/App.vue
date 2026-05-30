@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { RouterLink, RouterView, useRoute } from 'vue-router'
 import StudyTreePanel from '@/components/StudyTreePanel.vue'
+import SearchBar from '@/components/SearchBar.vue'
 import { panelOpen, panelPinned, session, logout } from '@/composables/useStudyTree'
 import { clickMode } from '@/composables/useClickMode'
 import { computed } from 'vue'
@@ -13,6 +14,8 @@ const route = useRoute()
 // Hide the study tree on /present (fullscreen tablet mode) per the
 // proposal D-ST-10 ratification — Present is for distraction-free reading.
 const showTreePanel = computed(() => route.name !== 'present')
+// Same for the always-visible search: present mode is distraction-free.
+const showSearch = computed(() => route.name !== 'present')
 
 // When pinned + open, the panel renders INLINE as the second column of
 // the page layout (not as a viewport-pinned overlay). The whole layout
@@ -37,13 +40,18 @@ const signInUrl = computed(() => {
   <div class="min-h-screen flex flex-col">
     <header class="border-b border-stone-300 bg-[var(--paper-2)]">
       <div
-        :class="[containerMax, 'mx-auto px-6 py-4 flex items-baseline justify-between transition-[max-width] duration-200']"
+        :class="[containerMax, 'mx-auto px-6 py-4 flex items-center gap-4 justify-between transition-[max-width] duration-200']"
       >
-        <RouterLink to="/" class="flex items-baseline gap-2 group">
+        <RouterLink to="/" class="flex items-baseline gap-2 group shrink-0">
           <span class="text-xl font-serif font-semibold tracking-tight">1828 Illuminated</span>
-          <span class="text-xs text-stone-500 hidden sm:inline">— scripture in its Restoration-era language frame</span>
+          <span class="text-xs text-stone-500 hidden lg:inline">— scripture in its Restoration-era language frame</span>
         </RouterLink>
-        <nav class="flex gap-5 text-sm items-baseline">
+        <!-- Always-visible unified search (UX 1-2 punch). Hidden on /present
+             and below sm; mobile readers use the Word Search view. -->
+        <div v-if="showSearch" class="hidden sm:block flex-1 max-w-xs">
+          <SearchBar />
+        </div>
+        <nav class="flex gap-5 text-sm items-baseline shrink-0">
           <RouterLink to="/word" class="text-stone-700 hover:text-stone-900" active-class="text-amber-700 font-medium">Word Search</RouterLink>
           <RouterLink to="/verse" class="text-stone-700 hover:text-stone-900" active-class="text-amber-700 font-medium">Verse Explorer</RouterLink>
           <RouterLink to="/dictionary" class="text-stone-700 hover:text-stone-900" active-class="text-amber-700 font-medium">Dictionary <span class="text-xs text-amber-700">·preview</span></RouterLink>

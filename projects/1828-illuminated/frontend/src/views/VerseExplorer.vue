@@ -38,6 +38,7 @@ const canonChapterLoading = ref(false)
 const canonChapterError = ref<string>('')
 const canonChapterRef = ref<string>('')      // human ref returned by backend
 const canonChapterAbbrRef = ref<string>('')  // abbr ref for the URL
+const loadedKey = ref<string>('')            // book/chap/range actually loaded; loop-guard for the query watch
 
 const canonVolume = computed<CanonVolume | undefined>(() =>
   CANON.find(v => v.id === canonVolumeId.value),
@@ -110,6 +111,7 @@ async function fetchCanonChapter() {
     canonChapterRef.value = json.ref ?? `${book.name} ${canonChapter.value}`
     canonChapterAbbrRef.value = json.abbr_ref ?? `${book.abbr}/${canonChapter.value}`
     canonVerses.value = (json.verses ?? []) as VerseRow[]
+    loadedKey.value = `${book.abbr}/${canonChapter.value}/${canonRange.value.trim()}`
     // Push canonical URL so back/forward + refresh + share work.
     syncRouteFromState()
 
@@ -171,7 +173,17 @@ onMounted(() => {
     fetchCanonChapter()
   }
 })
-watch(() => route.query, syncStateFromRoute)
+// Re-fetch on URL change — not just state-sync. This serves the header's
+// always-visible search (a ref search while already on /verse) AND fixes
+// back/forward between chapters, which previously updated the selectors but
+// never reloaded the passage. loadedKey guards the loop with
+// fetchCanonChapter's own syncRouteFromState (router.replace).
+watch(() => route.query, () => {
+  syncStateFromRoute()
+  if (mode.value !== 'canon') return
+  const want = `${canonBookAbbr.value}/${canonChapter.value}/${canonRange.value.trim()}`
+  if (want !== loadedKey.value) fetchCanonChapter()
+})
 
 /** Mode-switch wrapper that keeps the URL in sync. Demo + paste modes
  *  clear the canon state from the URL so refresh lands the reader where
