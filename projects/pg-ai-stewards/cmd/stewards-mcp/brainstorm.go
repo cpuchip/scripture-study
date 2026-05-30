@@ -52,7 +52,13 @@ type StartBrainstormInput struct {
 	BindingQuestion       string          `json:"binding_question" jsonschema:"the question the brainstorm should answer (required, 1-3 sentences)"`
 	Destination           string          `json:"destination,omitempty" jsonschema:"path the aggregator index materializes to (defaults to study/.scratch/brainstorm-{slug}.md)"`
 	Lenses                []string        `json:"lenses,omitempty" jsonschema:"subset of lens short names: scamper, six-hats, crazy8s, reverse, mind-mapping, brainwriting, starbursting, disney, storyboarding, triz, forced-analogy, worst-idea. Default = first 4 (today's behavior)."`
-	Models                json.RawMessage `json:"models,omitempty" jsonschema:"per-lens model overrides as a JSON object keyed by short lens name. Values: model string ('opus-4.7') or {model, provider} object. Omitted lenses use the J.8.a fallback chain."`
+	// map[string]any (not json.RawMessage) so the generated JSON schema is a
+	// free-form OBJECT. json.RawMessage is []byte, which the MCP SDK reflects
+	// as an array-of-int schema — that made every per-lens override fail
+	// client-side with InputValidationError (the 2026-05-29 brainstorm-run bug).
+	// Each value may be a model string ("opus-4.7") OR a {model, provider}
+	// object; `any` accepts both and round-trips on re-marshal.
+	Models                map[string]any `json:"models,omitempty" jsonschema:"per-lens model overrides, an object keyed by short lens name. Each value is either a model string (\"opus-4.7\") or a {\"model\":..., \"provider\":...} object. Omitted lenses use the J.8.a fallback chain."`
 	ProjectAssociation    string          `json:"project_association,omitempty" jsonschema:"optional project slug for tagging"`
 	Slug                  string          `json:"slug,omitempty" jsonschema:"optional parent work_item slug (defaults to brainstorm-YYYYMMDD-HHMMSS)"`
 	Actor                 string          `json:"actor,omitempty" jsonschema:"actor recorded on the work_item (default 'michael')"`
@@ -141,20 +147,18 @@ func makeStartBrainstorm(pool *pgxpool.Pool) func(
 		}
 
 		// Default models — pass NULL so the SQL fallback chain handles
-		// every layer. If caller supplied models, pass the raw JSON.
+		// every layer. If caller supplied models, marshal the map to a JSON
+		// string for the p_models jsonb param. We don't validate keys against
+		// lens names — the SQL function silently ignores unknown keys
+		// (forward-compat for future lens expansions); the MCP layer does the same.
 		var modelsArg any
 		if len(in.Models) > 0 {
-			// Sanity-validate that it's actually JSON. Don't try to
-			// validate keys against lens names — that would couple us to
-			// the SQL function's lens list. The SQL function silently
-			// ignores unknown keys (forward-compat for future J.10+ lens
-			// expansions); the MCP layer should do the same.
-			var probe any
-			if err := json.Unmarshal(in.Models, &probe); err != nil {
-				return toolError("start_brainstorm: 'models' is not valid JSON: %v", err),
+			b, err := json.Marshal(in.Models)
+			if err != nil {
+				return toolError("start_brainstorm: could not encode 'models': %v", err),
 					StartBrainstormOutput{}, nil
 			}
-			modelsArg = string(in.Models)
+			modelsArg = string(b)
 		}
 
 		// Default cost cap — pass nil so SQL default (200000 = $0.20) wins.
