@@ -1755,26 +1755,37 @@ fn chat(provider_name: &str, payload: &serde_json::Value) -> Result<WorkOutcome,
         .get("tools_disabled")
         .and_then(|v| v.as_bool())
         .unwrap_or(false);
+    // AN.2: which gateway API shape this model needs — stamped onto the
+    // payload by the work_queue BEFORE INSERT trigger from
+    // model_capability.api_format. 'anthropic' models (qwen3.7-max,
+    // minimax-m2.7) use /messages with x-api-key; default 'openai' is the
+    // existing /chat/completions path.
+    let api_format = payload
+        .get("api_format")
+        .and_then(|v| v.as_str())
+        .unwrap_or("openai");
+    let is_anthropic = api_format == "anthropic";
     // ES.6: always clone the body — strip tools if disabled, and set
     // stream:true. A non-streaming request sends no bytes during
     // generation, so a proxy in front of OpenCode Zen kills the idle
     // connection at ~125s (HTTP 500). Streaming keeps tokens flowing —
     // the connection never idles. Empirically confirmed 2026-05-15:
     // non-streaming 500 at 125.2s, streaming 200 at 185.8s.
-    let body_owned = {
+    // ES.6: stream:true keeps the connection alive (a non-streaming request
+    // idles and a proxy kills it ~125s). J.11: stream_options.include_usage
+    // so streamed usage records cost (Gemini omits it otherwise; opencode
+    // includes it regardless). AN.2: anthropic-format models take a different
+    // body shape (system extracted, max_tokens required) — see
+    // anthropic_body_from_openai — and a different endpoint (/messages).
+    let body_owned = if is_anthropic {
+        anthropic_body_from_openai(body_orig)
+    } else {
         let mut b = body_orig.clone();
         if let serde_json::Value::Object(ref mut m) = b {
             if tools_disabled {
                 m.remove("tools");
             }
             m.insert("stream".to_string(), serde_json::Value::Bool(true));
-            // J.11: request usage on the stream. Direct OpenAI-compat
-            // providers (Gemini) OMIT the usage block on streamed
-            // responses unless stream_options.include_usage is set, which
-            // left Gemini cost untracked (no cost_event -> no cap). The
-            // opencode gateway includes usage in-stream regardless, so
-            // this is a no-op there. parse_chat_sse already captures the
-            // usage-only tail chunk (it tolerates choices-less chunks).
             m.insert(
                 "stream_options".to_string(),
                 serde_json::json!({ "include_usage": true }),
@@ -1784,10 +1795,11 @@ fn chat(provider_name: &str, payload: &serde_json::Value) -> Result<WorkOutcome,
     };
     let body: &serde_json::Value = &body_owned;
 
-    let url = format!(
-        "{}/chat/completions",
-        provider.base_url.trim_end_matches('/')
-    );
+    let url = if is_anthropic {
+        format!("{}/messages", provider.base_url.trim_end_matches('/'))
+    } else {
+        format!("{}/chat/completions", provider.base_url.trim_end_matches('/'))
+    };
 
     // Chat timeout. 120s was the original (matched embeddings) but
     // reasoning models on big inputs blow past that — the proposal
@@ -1808,7 +1820,14 @@ fn chat(provider_name: &str, payload: &serde_json::Value) -> Result<WorkOutcome,
 
     let mut req = client.post(&url).json(body);
     if let Some(key) = &provider.api_key {
-        req = req.bearer_auth(key);
+        if is_anthropic {
+            // Anthropic format auths via x-api-key + a version header, not Bearer.
+            req = req
+                .header("x-api-key", key.as_str())
+                .header("anthropic-version", "2023-06-01");
+        } else {
+            req = req.bearer_auth(key);
+        }
     }
 
     let resp = req
@@ -1824,8 +1843,11 @@ fn chat(provider_name: &str, payload: &serde_json::Value) -> Result<WorkOutcome,
     // stream and reassemble it into the standard non-streaming response
     // shape, so every downstream extraction below — and the SQL apply
     // handlers that re-parse result.response — are unchanged.
-    let parsed: serde_json::Value = parse_chat_sse(resp)
-        .map_err(|e| format!("decode chat SSE stream: {}", e))?;
+    let parsed: serde_json::Value = if is_anthropic {
+        parse_anthropic_sse(resp).map_err(|e| format!("decode anthropic SSE stream: {}", e))?
+    } else {
+        parse_chat_sse(resp).map_err(|e| format!("decode chat SSE stream: {}", e))?
+    };
 
     // Standard OpenAI shape: { choices: [{ message: { role, content,
     // tool_calls? }, finish_reason }], usage: { prompt_tokens,
@@ -2103,5 +2125,213 @@ fn parse_chat_sse(resp: reqwest::blocking::Response) -> Result<serde_json::Value
     if let Some(u) = usage {
         resp_obj["usage"] = u;
     }
+    Ok(resp_obj)
+}
+
+/// AN.2: translate an OpenAI chat body into an Anthropic /messages body.
+///   - system message(s) are pulled out into the top-level `system` field
+///     (Anthropic does not allow system in the messages array)
+///   - max_tokens is REQUIRED by Anthropic -> default 4096 if absent
+///   - stream:true (ES.6); tools are stripped (v1 — Anthropic tool-format
+///     translation is a documented follow-up)
+fn anthropic_body_from_openai(body_orig: &serde_json::Value) -> serde_json::Value {
+    let model = body_orig.get("model").and_then(|v| v.as_str()).unwrap_or("");
+    let max_tokens = body_orig
+        .get("max_tokens")
+        .and_then(|v| v.as_i64())
+        .unwrap_or(4096);
+
+    let mut system = String::new();
+    let mut messages: Vec<serde_json::Value> = Vec::new();
+    if let Some(arr) = body_orig.get("messages").and_then(|v| v.as_array()) {
+        for m in arr {
+            let role = m.get("role").and_then(|v| v.as_str()).unwrap_or("");
+            let content = m
+                .get("content")
+                .cloned()
+                .unwrap_or_else(|| serde_json::Value::String(String::new()));
+            if role == "system" {
+                if let Some(s) = content.as_str() {
+                    if !system.is_empty() {
+                        system.push_str("\n\n");
+                    }
+                    system.push_str(s);
+                }
+            } else {
+                messages.push(serde_json::json!({ "role": role, "content": content }));
+            }
+        }
+    }
+
+    let mut out = serde_json::json!({
+        "model": model,
+        "max_tokens": max_tokens,
+        "messages": messages,
+        "stream": true,
+    });
+    if !system.is_empty() {
+        out["system"] = serde_json::Value::String(system);
+    }
+    if let Some(temp) = body_orig.get("temperature") {
+        out["temperature"] = temp.clone();
+    }
+    out
+}
+
+/// AN.2: parse opencode's Anthropic-format (/messages) SSE stream and
+/// reassemble it into the SAME OpenAI non-streaming shape parse_chat_sse
+/// produces, so all downstream extraction in chat() is unchanged.
+///   text blocks      -> message.content
+///   thinking blocks  -> message.reasoning_content
+///   stop_reason      -> finish_reason (end_turn/stop_sequence->stop,
+///                       max_tokens->length, tool_use->tool_calls)
+///   input_tokens     -> usage.prompt_tokens
+///   output_tokens    -> usage.completion_tokens
+fn parse_anthropic_sse(resp: reqwest::blocking::Response) -> Result<serde_json::Value, String> {
+    use std::io::BufRead;
+
+    let reader = std::io::BufReader::new(resp);
+    let mut content = String::new();
+    let mut reasoning = String::new();
+    let mut model: Option<String> = None;
+    let mut stop_reason: Option<String> = None;
+    let mut input_tokens: Option<i64> = None;
+    let mut output_tokens: Option<i64> = None;
+    let mut cache_creation: Option<i64> = None;
+    let mut cache_read: Option<i64> = None;
+
+    for line in reader.lines() {
+        let line = line.map_err(|e| format!("sse read: {}", e))?;
+        let line = line.trim_end();
+        if line.is_empty() {
+            continue;
+        }
+        // Only `data:` lines carry JSON; `event:` / comments are ignored.
+        let data = match line.strip_prefix("data:") {
+            Some(d) => d.trim(),
+            None => continue,
+        };
+        let chunk: serde_json::Value = match serde_json::from_str(data) {
+            Ok(v) => v,
+            Err(_) => continue,
+        };
+        match chunk.get("type").and_then(|v| v.as_str()) {
+            Some("error") => {
+                return Err(format!(
+                    "anthropic sse error: {}",
+                    chunk.get("error").unwrap_or(&chunk)
+                ));
+            }
+            Some("message_start") => {
+                if let Some(msg) = chunk.get("message") {
+                    if model.is_none() {
+                        if let Some(m) = msg.get("model").and_then(|v| v.as_str()) {
+                            model = Some(m.to_string());
+                        }
+                    }
+                    if let Some(u) = msg.get("usage") {
+                        input_tokens = u
+                            .get("input_tokens")
+                            .and_then(|v| v.as_i64())
+                            .or(input_tokens);
+                        cache_creation = u
+                            .get("cache_creation_input_tokens")
+                            .and_then(|v| v.as_i64())
+                            .or(cache_creation);
+                        cache_read = u
+                            .get("cache_read_input_tokens")
+                            .and_then(|v| v.as_i64())
+                            .or(cache_read);
+                    }
+                }
+            }
+            Some("content_block_delta") => {
+                if let Some(d) = chunk.get("delta") {
+                    match d.get("type").and_then(|v| v.as_str()) {
+                        Some("text_delta") => {
+                            if let Some(t) = d.get("text").and_then(|v| v.as_str()) {
+                                content.push_str(t);
+                            }
+                        }
+                        Some("thinking_delta") => {
+                            if let Some(t) = d.get("thinking").and_then(|v| v.as_str()) {
+                                reasoning.push_str(t);
+                            }
+                        }
+                        _ => {}
+                    }
+                }
+            }
+            Some("message_delta") => {
+                if let Some(sr) = chunk
+                    .get("delta")
+                    .and_then(|d| d.get("stop_reason"))
+                    .and_then(|v| v.as_str())
+                {
+                    stop_reason = Some(sr.to_string());
+                }
+                if let Some(u) = chunk.get("usage") {
+                    output_tokens = u
+                        .get("output_tokens")
+                        .and_then(|v| v.as_i64())
+                        .or(output_tokens);
+                }
+            }
+            _ => {} // ping, content_block_start/stop, message_stop
+        }
+    }
+
+    let finish_reason = stop_reason.as_deref().map(|sr| {
+        match sr {
+            "end_turn" | "stop_sequence" => "stop",
+            "max_tokens" => "length",
+            "tool_use" => "tool_calls",
+            other => other,
+        }
+        .to_string()
+    });
+
+    let mut message = serde_json::Map::new();
+    message.insert(
+        "role".to_string(),
+        serde_json::Value::String("assistant".to_string()),
+    );
+    message.insert("content".to_string(), serde_json::Value::String(content));
+    if !reasoning.is_empty() {
+        message.insert(
+            "reasoning_content".to_string(),
+            serde_json::Value::String(reasoning),
+        );
+    }
+
+    let mut usage = serde_json::Map::new();
+    if let Some(i) = input_tokens {
+        usage.insert("prompt_tokens".to_string(), serde_json::json!(i));
+    }
+    if let Some(o) = output_tokens {
+        usage.insert("completion_tokens".to_string(), serde_json::json!(o));
+    }
+    if let Some(c) = cache_creation {
+        usage.insert(
+            "cache_creation_input_tokens".to_string(),
+            serde_json::json!(c),
+        );
+    }
+    if let Some(c) = cache_read {
+        usage.insert("cache_read_input_tokens".to_string(), serde_json::json!(c));
+    }
+
+    let mut resp_obj = serde_json::json!({
+        "object": "chat.completion",
+        "choices": [ {
+            "index": 0,
+            "message": serde_json::Value::Object(message),
+            "finish_reason": finish_reason,
+        } ],
+    });
+    if let Some(m) = model {
+        resp_obj["model"] = serde_json::Value::String(m);
+    }
+    resp_obj["usage"] = serde_json::Value::Object(usage);
     Ok(resp_obj)
 }

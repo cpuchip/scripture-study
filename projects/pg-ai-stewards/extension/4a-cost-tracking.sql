@@ -399,7 +399,8 @@ VALUES
      'Cache write rate not exposed by provider'),
     ('opencode_go', 'glm-5.1',           1400000,  4400000,    NULL,  260000,
      'Reasoning model (backend frank/GLM-5.1). Streams content fine via the substrate (auto-probe verified 2026-05-29). Give adequate per-call max_tokens for substantive prompts so reasoning does not exhaust the budget before content.'),
-    ('opencode_go', 'minimax-m2.7',       300000,  1200000,  375000,   60000, ''),
+    ('opencode_go', 'minimax-m2.7',       300000,  1200000,  375000,   60000,
+     'Anthropic-FORMAT model (api_format=anthropic). Usable via the substrate AN.2 /messages dispatch path (2026-05-30).'),
     ('opencode_go', 'qwen3.6-plus',       500000,  3000000,  625000,   50000, ''),
     -- Anthropic via OpenCode Zen (used only via human-mediated escalation queue)
     ('opencode_go', 'claude-opus-4-7',   5000000, 25000000, 6250000,  500000, ''),
