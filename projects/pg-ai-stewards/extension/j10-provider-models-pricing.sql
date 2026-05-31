@@ -57,10 +57,9 @@ VALUES
      '2026-05-29 00:00:00+00', 'standard tier'),
     ('google_gemini', 'gemini-2.5-flash-lite',    100000,   400000, NULL, NULL,
      '2026-05-29 00:00:00+00', 'standard tier'),
-    ('google_gemini', 'gemini-2.0-flash',         100000,   400000, NULL, NULL,
-     '2026-05-29 00:00:00+00', 'token-based standard tier'),
-    ('google_gemini', 'gemini-2.0-flash-lite',     75000,   300000, NULL, NULL,
-     '2026-05-29 00:00:00+00', 'token-based standard tier'),
+    -- gemini-2.0-flash + gemini-2.0-flash-lite PRUNED 2026-05-31: the M.5
+    -- auto-probe caught both returning HTTP 404 (those model IDs are not served
+    -- at the gemini OpenAI-compat endpoint). Re-add with correct IDs if needed.
 
     -- -----------------------------------------------------------------
     -- opencode_go — additional chat models (cache_read exposed; cache_write NULL)

@@ -401,13 +401,12 @@ VALUES
      'Reasoning model (backend frank/GLM-5.1). Streams content fine via the substrate (auto-probe verified 2026-05-29). Give adequate per-call max_tokens for substantive prompts so reasoning does not exhaust the budget before content.'),
     ('opencode_go', 'minimax-m2.7',       300000,  1200000,  375000,   60000,
      'Anthropic-FORMAT model (api_format=anthropic). Usable via the substrate AN.2 /messages dispatch path (2026-05-30).'),
-    ('opencode_go', 'qwen3.6-plus',       500000,  3000000,  625000,   50000, ''),
-    -- Anthropic via OpenCode Zen (used only via human-mediated escalation queue)
-    ('opencode_go', 'claude-opus-4-7',   5000000, 25000000, 6250000,  500000, ''),
-    ('opencode_go', 'claude-opus-4-6',   5000000, 25000000, 6250000,  500000, ''),
-    ('opencode_go', 'claude-opus-4-5',   5000000, 25000000, 6250000,  500000, ''),
-    ('opencode_go', 'claude-sonnet-4-6', 3000000, 15000000, 3750000,  300000, ''),
-    ('opencode_go', 'claude-haiku-4-5',  1000000,  5000000, 1250000,  100000, '')
+    ('opencode_go', 'qwen3.6-plus',       500000,  3000000,  625000,   50000, '')
+    -- claude-* (opus-4.5/4.6/4.7, sonnet-4.6, haiku-4.5) PRUNED 2026-05-31:
+    -- opencode removed them from the zen/go gateway ("Model ... is not supported"
+    -- on both /chat/completions and /messages). They were seeded as
+    -- human-mediated-escalation targets; nothing dispatches them by name. Re-add
+    -- if opencode restores them.
 ON CONFLICT (provider, model, effective_at) DO UPDATE
 SET input_micro_per_mtok       = EXCLUDED.input_micro_per_mtok,
     output_micro_per_mtok      = EXCLUDED.output_micro_per_mtok,
