@@ -77,7 +77,16 @@ VALUES
     ('opencode_go', 'minimax-m2.5',          300000,  1200000,        NULL,  60000,
      '2026-05-29 00:00:00+00', ''),
     ('opencode_go', 'mimo-v2.5',                   0,        0,        NULL,      0,
-     '2026-05-29 00:00:00+00', 'FREE per opencode zen')
+     '2026-05-29 00:00:00+00', 'FREE per opencode zen'),
+    -- 2026-05-31: 3 more go-tier models confirmed usable (probed). Per-token
+    -- rates unpublished by opencode (flat-rate go subscription), tracked at 0.
+    -- hy3-preview is listed but returns HTTP 403 (not in this subscription tier) — omitted.
+    ('opencode_go', 'deepseek-v4-pro',             0,        0,        NULL,      0,
+     '2026-05-31 00:00:00+00', 'go subscription; per-token rate unpublished. Probed usable 2026-05-31.'),
+    ('opencode_go', 'mimo-v2.5-pro',               0,        0,        NULL,      0,
+     '2026-05-31 00:00:00+00', 'go subscription; per-token rate unpublished. Probed usable 2026-05-31.'),
+    ('opencode_go', 'mimo-v2-omni',                0,        0,        NULL,      0,
+     '2026-05-31 00:00:00+00', 'go subscription; per-token rate unpublished. Probed usable 2026-05-31.')
 ON CONFLICT (provider, model, effective_at) DO UPDATE
 SET input_micro_per_mtok       = EXCLUDED.input_micro_per_mtok,
     output_micro_per_mtok      = EXCLUDED.output_micro_per_mtok,
