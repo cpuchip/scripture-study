@@ -68,7 +68,7 @@ VALUES
     ('opencode_go', 'deepseek-v4-flash',          0,        0,        NULL,      0,
      '2026-05-29 00:00:00+00', 'FREE (limited-time per opencode zen; confirm when GA)'),
     ('opencode_go', 'qwen3.7-max',          2500000,  7500000,        NULL, 500000,
-     '2026-05-29 00:00:00+00', 'UNUSABLE via substrate (2026-05-29): dispatch returns HTTP 401 whose body is ''Model qwen3.7-max is not supported for format oa-compat'' — the gateway rejects this model on the OpenAI-compat endpoint and expresses it as a 401.'),
+     '2026-05-29 00:00:00+00', 'UNUSABLE via substrate today: per opencode docs this is an Anthropic-FORMAT model (needs POST /zen/go/v1/messages). The substrate dispatches OpenAI-compat (/chat/completions) -> gateway returns HTTP 401 ''not supported for format oa-compat''. Enabling it requires Anthropic /messages dispatch in the bgworker (would also unlock minimax-m2.7). Confirmed 2026-05-30.'),
     ('opencode_go', 'qwen3.5-plus',          200000,  1200000,        NULL,  20000,
      '2026-05-29 00:00:00+00', ''),
     ('opencode_go', 'glm-5',                1000000,  3200000,        NULL, 200000,
