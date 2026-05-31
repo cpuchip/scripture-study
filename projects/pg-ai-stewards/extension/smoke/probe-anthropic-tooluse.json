@@ -1,0 +1,19 @@
+{
+  "model": "qwen3.7-max",
+  "max_tokens": 300,
+  "stream": true,
+  "tools": [
+    {
+      "name": "get_weather",
+      "description": "Get the current weather for a city.",
+      "input_schema": {
+        "type": "object",
+        "properties": { "city": { "type": "string", "description": "City name" } },
+        "required": ["city"]
+      }
+    }
+  ],
+  "messages": [
+    { "role": "user", "content": "What is the weather in Paris right now? Use the get_weather tool to find out." }
+  ]
+}

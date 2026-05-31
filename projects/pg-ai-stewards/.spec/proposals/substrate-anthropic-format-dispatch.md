@@ -37,5 +37,26 @@ The substrate's chat-completion extraction (`bgworker.rs` ~1840–1942) reads an
 - LM Studio chat models appear in `model_catalog` at $0.
 
 ## Follow-ups (not v1)
-- Anthropic tool-format translation (tool schema + tool_use/tool_result loop) for tool-using pipelines on Anthropic models.
+- ~~Anthropic tool-format translation~~ → **v2 below.**
 - Drive `api_format` from a probe (the auto-probe could detect format), rather than a seeded value.
+
+---
+
+# v2 — Anthropic tool-use loops (batch AT, ratified-by-delegation 2026-05-31)
+
+**Goal (Michael):** "enable anthropic/api-style models tool-using loops, so we have the ability to use all models at all parts of pg-ai-stewards." Build + test + commit + push under the standing stewardship grant; no decision needed.
+
+**Why it's decision-free:** the substrate's tool loop is provider-agnostic — `chat()` parse → `assistant_tool_calls` (OpenAI shape) + `finish_reason=="tool_calls"` → `tool_dispatch_enqueue` → bridge executes the tools → `role='tool'` messages with `tool_call_id` → continuation re-call. None of that cares about the gateway format. v1 already proved the normalize-at-parse approach. v2 just extends the SAME two boundary functions to carry tools. No SQL, no schema, no env, no loop changes.
+
+**Confirmed shapes (live 2026-05-31):** Anthropic tool-use SSE: `content_block_start{content_block:{type:"tool_use", id, name}}` → `content_block_delta{delta:{type:"input_json_delta", partial_json}}` (fragments assemble to the input JSON) → `content_block_stop` → `message_delta{stop_reason:"tool_use"}`.
+
+- **AT.1 — `anthropic_body_from_openai` (inbound translation), no longer strips tools:**
+  - tool defs: OpenAI `{type:function, function:{name, description, parameters}}` → Anthropic `{name, description, input_schema:parameters}`; stripped only when `tools_disabled`.
+  - assistant turns with `tool_calls` → Anthropic `assistant` with `content:[{type:text,…}?, {type:tool_use, id, name, input:<parsed arguments>}…]`.
+  - `role:tool` results → grouped into a single `user` message `content:[{type:tool_result, tool_use_id, content}…]` (consecutive tool messages merge; Anthropic requires tool_results in a user turn).
+  - thinking blocks are NOT re-sent on continuation (opencode emits empty signatures; tool-loop doesn't need them — revisit if a continuation rejects).
+- **AT.2 — `parse_anthropic_sse` (outbound), accumulate tool_use:** track content blocks by index; `tool_use` start captures id+name; `input_json_delta` fragments accumulate into the arguments string; emit OpenAI `tool_calls:[{id, type:function, function:{name, arguments}}]`. `stop_reason:tool_use → finish_reason:tool_calls` (already mapped).
+- **AT.3** rebuild pg; **test** a real tool loop: dispatch a tool-using pipeline (`subagent-url-summary`, which has `fetch_url`) with `model_override=qwen3.7-max` — qwen3.7-max should emit a `fetch_url` tool_use, the bridge executes it, the result flows back, and qwen3.7-max produces the summary. Regression: an OpenAI-format tool loop (kimi) still works.
+- **AT.4** memory + commit + **push** (explicit grant).
+
+**Acceptance:** qwen3.7-max completes a multi-round tool-using pipeline (calls a real tool, consumes the result, finishes); OpenAI tool loops unchanged. Result: every model — OpenAI-format and Anthropic-format — is usable at every part of the substrate, tools and all.
