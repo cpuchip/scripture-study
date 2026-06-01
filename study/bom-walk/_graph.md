@@ -52,6 +52,11 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - doctrine: `purpose-of-the-record` (persuade to Christ) · `curation-by-worth` · `please-God-not-world`
 - object: `small-plates` (distinct from Lehi's record)
 
+### from 1 Nephi 7
+- person: `ishmael` + household (daughters/sons → wives of Lehi's sons)
+- doctrine: `deliverance-by-faith` (burst bands) · `remembrance-vs-forgetting` · `frank-forgiveness` · `spirit-ceaseth-to-strive`
+- pattern: `laman-lemuel-cycle` (template)
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -95,3 +100,11 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `doctrine:purpose-of-the-record` —[stated]→ 1 Ne 6:4 · —[bookend]→ Moro 10:32 · —[parallel]→ John 20:31
 - `doctrine:curation-by-worth` —[stated]→ 1 Ne 6:3-6 · —[inherited]→ Mormon/Moroni (W of M 1:4)
 - `object:small-plates` —[distinct-from]→ Lehi's record / large plates (6:1)
+
+### from 1 Nephi 7
+- `pattern:laman-lemuel-cycle` —[template-set]→ 1 Ne 7 · —[recurs]→ 1 Ne 16, 17, 18 · —[prefigures]→ Nephite pride-cycle
+- `doctrine:remembrance` —[unbelief=forgetting]→ 7:10-12 · —[root]→ 2:24
+- `doctrine:soften-the-heart` —[intercessory]→ 7:5, 19
+- `doctrine:deliverance-by-faith` —[bursts-bands]→ 7:17 · —[recurs]→ Alma 14:28; 3 Ne 28:20; Judg 14:6
+- `doctrine:frank-forgiveness` —[Nephi]→ 7:21 · —[parallel]→ Luke 7:42
+- `event:jeremiah-imprisoned` —[confirms]→ brass-plates Jeremiah (5:13; Jer 37:15)
