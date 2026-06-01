@@ -79,3 +79,9 @@ And underneath it: Nephi is shown that his entire people will be wiped out, and 
 The thing I won't let myself round off: in the same vision where the Spirit moves on Columbus and the colonists and delivers them from their "mother" nation, the angel says "the wrath of God is upon the seed of thy brethren" — the people already on the land, "scattered before the Gentiles and smitten." Nephi's heaven's-eye view of the founding of America puts the blessing and the dispossession in adjacent sentences. The book will not let you have the providence without the cost; most retellings keep only the first half.
 
 And the cleanest statement of what the Book of Mormon thinks it is for: not to replace the Bible but to "establish the truth of the first" and restore the "plain and precious things" taken out in transmission. Two records, one Shepherd. A humbler self-claim than I expected — confirm, restore, point to Christ.
+
+## 1 Nephi 14 — few, scattered, and armed (2026-06-01)
+
+The image I am keeping: the whore has dominion over all the earth, all nations; the church of the Lamb is "few," its dominions "small" — and the saints, scattered everywhere, are "armed with righteousness and with the power of God." Not armed with numbers. Not armed with weapons. Armed with righteousness. If you are in a church that will always be outnumbered, that verse is the whole strategy: holiness is the defense, and being few was never the disqualifier.
+
+And the quiet marvel: Nephi sees the end of the world and is told not to write it, because that job belongs to John — who is six hundred years away and does not exist yet. Two men shown the same vision, and heaven assigns the writing to one of them. The canon was coordinated across centuries. Nephi's silence about Revelation is obedience, not a gap.
