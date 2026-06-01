@@ -33,3 +33,9 @@ The text does not let Nephi off easily, and it doesn't pretend he was eager: "I 
 The detail I'll carry: the chapter ends with Zoram, not with Laban's body. A man dies and a man is set free in the same chapter, and the freed one gets grafted in and lasts a thousand years. The Book of Mormon's first death is answered, immediately, by an adoption.
 
 (The hard ethical question I handed to a separate study so I could keep walking — it deserves more room than a chapter note can give it.)
+
+## 1 Nephi 5 — the dreamer's vindication, and a mother's own witness (2026-06-01)
+
+Two things land. First, Sariah. She breaks the same way Laman and Lemuel do — calls Lehi a visionary man, says they are going to die out here — but she breaks *toward* God, not away. When the sons come home she does not just stop complaining; she gets her own "I know of a surety." The difference between her murmur and theirs was never the circumstance. It was whether the heart would let the evidence in.
+
+Second, Lehi takes the word they used to wound him — "visionary" — and wears it: if I were not a visionary man we would all be dead in Jerusalem right now. And the footnote quietly points to Joseph's brothers calling him "this dreamer." Lehi is a dreamer like that Joseph — and the genealogy he reads that same chapter says he literally descends from him. The insult and the inheritance turn out to be the same word.
