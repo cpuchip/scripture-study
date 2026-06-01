@@ -181,3 +181,9 @@ The second is hard, and I am choosing not to be glib about it. 2 Nephi 5:21 — 
 Small thing, big thing. Nephi asked his brother Jacob to read the people Isaiah — and Jacob opens by naming the method Nephi taught: "they may be likened unto you, for ye are of the house of Israel." The likening is not just Nephi's habit; it is being handed to the next teacher on purpose. You pass down *how* to read, not only what to read.
 
 And a line I almost skated past: the scattered Jews, hated and driven for centuries, are "not suffered to perish, because of the prayers of the faithful." A whole people's survival credited to other people's prayers. Intercession doing quiet structural work across history.
+
+## 2 Nephi 7 — God didn't divorce you (2026-06-01)
+
+The variant earns its keep again. The KJV opens Isaiah 50 with "where is the bill of your mother's divorcement" — already implying there is not one. The Book of Mormon makes it a direct, tender question first: "Have I put thee away, or have I cast thee off forever?" And the answer is no. You were not divorced; "ye sold yourselves." The estrangement was self-inflicted, and it is not final. To a people who had just been broken off from Israel, that is the first thing they needed to hear.
+
+And the image at the end I cannot shake: people who "kindle fire... walk in the light of your fire and in the sparks which ye have kindled... shall lie down in sorrow." Self-made light. You can manufacture your own illumination — your own certainty, your own religion-shaped confidence — and walk by it for a while, but sparks you struck yourself burn out, and you lie down in the dark. Walk in His light or in your own; only one of them lasts the night.

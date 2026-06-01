@@ -172,6 +172,12 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - doctrine: `liken-method-passed-Nephi→Jacob` · `jews-preserved-by-prayers-of-faithful` (6:11) · `gentile-condition` (repent + fight not Zion + don't join abominable church)
 - isaiah: `49:22-26` quoted+expounded (held thread from 1 Ne 21)
 
+### from 2 Nephi 7 (Isaiah 50)
+- isaiah: `50` (third Servant Song)
+- doctrine: `God-did-not-cast-Israel-off` (self-inflicted separation) · `servant-passion` (back to smiters, spitting) · `set-face-like-a-flint` · `vindicated-by-God`
+- image: `kindle-your-own-fire` (self-made light → lie down in sorrow, 7:11)
+- variant: `not-cast-off-forever` (7:1 BoM prepend vs KJV Isa 50:1 — VERIFIED)
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -393,3 +399,10 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `doctrine:christology` —[Holy One of Israel crucified]→ 6:9 (1 Ne 19:9-10)
 - `doctrine:gentile-condition` —[repent + fight not Zion + don't join abominable church]→ 6:12 (1 Ne 14:10)
 - `isaiah:49:22-26` —[quoted+expounded by Jacob]→ 6:6-7, 16-18 · —[BoM rendering]→ "Mighty God shall deliver his covenant people" (6:17)
+
+### from 2 Nephi 7 (Isaiah 50)
+- `variant:not-cast-off-forever` —[BoM prepends 7:1 vs KJV Isa 50:1, verified]→ accusation → mercy
+- `servant-song:3` —[passion: back to smiters, spitting]→ 7:6 (Matt 27; 1 Ne 19:9) · —[face like a flint]→ 7:7 (Luke 9:51)
+- `doctrine:vindicated-by-God` —[accusers wax old as a garment]→ 7:8-9 (Rom 8:33-34)
+- `image:kindle-your-own-fire` —[self-made light → sorrow]→ 7:11
+- `doctrine:christology` —[Servant = Holy One of Israel]→ 7:6 (cf 6:9)
