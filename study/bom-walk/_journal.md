@@ -125,3 +125,9 @@ Doing the first Isaiah chapter under the full protocol, and the thing that makes
 And the verified variant earns its reputation: the KJV says "the waters of Judah"; the Book of Mormon adds "or out of the waters of baptism." One phrase, and Israel stops being a bloodline and becomes a covenant — you are of Israel by the water you have gone under, not the name you were born with.
 
 Two lines to keep: "I have chosen thee in the furnace of affliction" — the fire is not rejection, it is selection. And God's own grief: "O that thou hadst hearkened to my commandments — then had thy peace been as a river." The saddest "if only" in scripture is God's.
+
+## 1 Nephi 21 — graven on the palms (2026-06-01)
+
+Nephi's sequencing finally lands as pastoral care, not just exegesis. He has just told his family their entire civilization will be destroyed (ch 12). Then he reads them Isaiah 48 — Israel's nominal failure. And *now*, when they could despair, he reads Isaiah 49 — and the Book of Mormon's added opening aims it straight at them: "all ye that are broken off... scattered abroad." He is handing a doomed remnant the one chapter that says the scattered come home.
+
+And the verse at the center: Zion says "the Lord hath forsaken me, and my Lord hath forgotten me," and God answers with the most maternal line in scripture — "can a woman forget her sucking child? ... yea, they may forget, yet will I not forget thee" — then, "I have graven thee upon the palms of my hands." Read it after chapter 19, where the God of Israel is the one crucified, and the engraving is not a tattoo. It is the nail-prints. God cannot forget you without looking past His own scars. That is the answer He gives to "you've forgotten me."
