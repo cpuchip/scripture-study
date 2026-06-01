@@ -153,3 +153,9 @@ The depth goes to a separate study, but the thing I want in my own words: Lehi d
 And the line that reorders everything I was taught to feel about Eden: "Adam fell that men might be; and men are, that they might have joy." The Fall was not the catastrophe that ruined the plan — it *was* the plan's door. Unfallen, Adam and Eve had no children, no joy, no good, because they had no misery and no sin to set them against. Innocence with no stakes. The fall down was the only way up.
 
 Last, the most honest sentence about evil I know: the devil "seeketh that all men might be miserable like unto himself." Misery wants company. That is not a side effect of his rebellion; it is the whole agenda.
+
+## 2 Nephi 3 — the dreamer's prophecy of a dreamer (2026-06-01)
+
+The Joseph thread I have been tracking since chapter 3 finally shows its hand, and it is bigger than typology. Lehi descends from Joseph of Egypt — and Joseph of Egypt, it turns out, "truly saw our day" and prophesied a "choice seer" out of his own loins, whose name would be his own (Joseph) and his father's (Joseph). The pattern was not just literary; an ancient dreamer in Egypt named a latter-day one, and the family died to bring the plates that preserved the prophecy. Type all the way down into a person.
+
+And the image for the book itself: a voice "from the dust." The buried record crying repentance to the descendants of the people who buried it — "according to the simpleness of their words." Not a thunderclap. A whisper out of the ground, plain enough that the simpleness is the point. Joseph's record and Judah's record growing together until the false doctrines cannot stand between them.
