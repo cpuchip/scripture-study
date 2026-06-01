@@ -28,6 +28,13 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - type/symbol: `lehi-as-abraham` (altar + tent) · `river→righteousness` · `valley→steadfast`
 - event: `departure-into-wilderness` · `nephi-call-blessing`
 
+### from 1 Nephi 3
+- person: `laban` · `the-angel`
+- object: `brass-plates` (record of the Jews + genealogy)
+- place: `cavity-of-a-rock`
+- doctrine: `prepare-a-way` · `scripture-preservation` · `reason-from-God-vs-obstacle`
+- type/symbol: `nephi-as-joseph` (younger ruler, smitten by elders)
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -43,3 +50,10 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `doctrine:soften-the-heart` —[instance]→ 1 Ne 2:16 · —[links-to-study]→ softening-what-i-cannot-soften
 - `person:nephi` —[made]→ ruler-and-teacher (2:22)
 - `doctrine:lamanite-curse` —[purpose]→ remembrance (2:24)
+
+### from 1 Nephi 3
+- `doctrine:prepare-a-way` —[source-text]→ 1 Ne 3:7 · —[restated]→ 1 Ne 17:3 · —[root]→ Gen 18:14 · Philip 4:13
+- `person:nephi` —[type]→ Joseph of Egypt (Gen 41:43; smitten by elders, raised to rule)
+- `object:brass-plates` —[purpose]→ preserve language + prophets' words (3:19-20) · —[contrast]→ Omni 1:17 (Zarahemla lost both)
+- `person:laman-lemuel` —[unchanged-by]→ angelic ministry (3:31): conversion ≠ evidence
+- `person:laban` —[lust→downfall]→ 1 Ne 4 (delivered into their hands)
