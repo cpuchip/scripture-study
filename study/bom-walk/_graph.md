@@ -35,6 +35,14 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - doctrine: `prepare-a-way` · `scripture-preservation` · `reason-from-God-vs-obstacle`
 - type/symbol: `nephi-as-joseph` (younger ruler, smitten by elders)
 
+### from 1 Nephi 4
+- person: `zoram` (servant → freed → joins; Zoramite line)
+- object: `labans-sword` (gold hilt, precious steel) · `labans-garments`
+- doctrine: `one-for-many` (4:13) · `obedience-before-sight` · `spirit-constraint`
+- type/symbol: `nephi-as-abraham` (4:6, not knowing) · `nephi-as-david` (4:18, own sword) · `laban-as-pharaoh`
+- event: `slaying-of-laban` · `plates-obtained` · `zoram-oath`
+- study: `1ne4_slaying-of-laban` (spin-off, in progress)
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -57,3 +65,12 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `object:brass-plates` —[purpose]→ preserve language + prophets' words (3:19-20) · —[contrast]→ Omni 1:17 (Zarahemla lost both)
 - `person:laman-lemuel` —[unchanged-by]→ angelic ministry (3:31): conversion ≠ evidence
 - `person:laban` —[lust→downfall]→ 1 Ne 4 (delivered into their hands)
+
+### from 1 Nephi 4
+- `event:slaying-of-laban` —[deep-dive]→ studies/1ne4_slaying-of-laban.md
+- `doctrine:one-for-many` —[stated]→ 1 Ne 4:13 · —[parallel]→ John 11:50 (Caiaphas) · —[points-to]→ Christ
+- `event:slaying-of-laban` —[type]→ David & Goliath (own sword, 1 Sam 17:51)
+- `person:nephi` —[type]→ Abraham (Heb 11:8) + David (4:18) + Joseph (ch 3)
+- `doctrine:prosperity-covenant` —[remembered-as-hinge]→ 1 Ne 4:14 (cites 2:20)
+- `person:zoram` —[freed→joins]→ covenant family · —[line]→ Zoramites (Jacob 1:13; 4 Ne 1:36)
+- `type:exodus` —[Laban=Pharaoh]→ 1 Ne 4:2-3

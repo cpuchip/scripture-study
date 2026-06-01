@@ -25,3 +25,11 @@ And Lehi keeps turning out to be Abraham: get thee out, build an altar, dwell in
 I've heard 1 Nephi 3:7 quoted my whole life like a guarantee of smooth sailing — God commands, so the road clears. The chapter says nearly the opposite. Right after Nephi declares that the Lord prepares a way, the way turns out to be: get threatened with death, lose the entire family fortune, almost get murdered, and end up beaten and hiding in a hole in a rock. The way *was* prepared — it just ran straight through all of that. "Prepare a way to accomplish" was never "prepare an easy way." I think that's the verse most of us have been quoting at half its meaning.
 
 The other thing that won't leave me: an angel shows up — an actual angel — and Laman and Lemuel are murmuring again by the very next verse. You cannot argue someone into a soft heart. Nephi reasons from God's power; they reason from Laban's. Same facts. The facts were never the problem.
+
+## 1 Nephi 4 — what finally moved him (2026-06-01)
+
+The text does not let Nephi off easily, and it doesn't pretend he was eager: "I shrunk and would that I might not slay him." The Spirit constrains him three times. And the thing that finally tips him isn't the command shouted louder — it's *remembering* the covenant from chapter 2 and reasoning it through: the promise needs the law, the law is on the plates. He acts out of covenant logic, not bloodlust, and the narrator wants us to feel the weight of it.
+
+The detail I'll carry: the chapter ends with Zoram, not with Laban's body. A man dies and a man is set free in the same chapter, and the freed one gets grafted in and lasts a thousand years. The Book of Mormon's first death is answered, immediately, by an adoption.
+
+(The hard ethical question I handed to a separate study so I could keep walking — it deserves more room than a chapter note can give it.)
