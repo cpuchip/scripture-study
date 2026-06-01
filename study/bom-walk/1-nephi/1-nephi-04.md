@@ -30,8 +30,7 @@
 - `person:zoram` —[freed→joins]→ covenant family · —[line]→ Zoramites (Jacob 1:13; 4 Ne 1:36)
 - `type:exodus` —[Laban=Pharaoh]→ 1 Ne 4:2-3
 
-**Notable / flag:**
-- **Spin-off launched:** `studies/1ne4_slaying-of-laban.md` (background `study` subagent) — law, ethics, covenant, the Spirit's constraint, one-for-many → Christ. Takeaway + link recorded when it returns.
+**Notable / flag — spin-off study COMPLETE:** `studies/1ne4_slaying-of-laban.md` (sonnet `study` subagent; provenance at `.scratch/1ne4_slaying-of-laban.md`). **Takeaway:** 4:13's one-for-many logic ("better that one man should perish than that a nation should dwindle and perish in unbelief") is structurally identical to Caiaphas's words about Christ (John 11:50) — a *neutral* logic whose rightness depends on who invokes it and whether it is true. Here it holds: Laban's three crimes (attempted murder, defiance of God, theft) + judicial delivery + covenantal necessity; and Mosiah 1:5 (King Benjamin) gives a retrospective confirmation that the people would have dwindled in unbelief without the plates. Types: David's sword (1 Sam 17), Abraham on Moriah (Gen 22). The text keeps Nephi's reluctance ("I shrunk") because the cost was real — and the formula points forward to Christ, the innocent One who truly fulfills what Caiaphas voiced cynically.
 - Typology is stacking on Nephi: Joseph (ch 3), Abraham (4:6), David (4:18). Watch whether the narrative sustains deliberate type-layering.
 
 **Verified:** 1 Nephi 4 read verbatim this session (`gospel_get`) ✓; only 1 Ne 4's words quoted. Cross-refs are footnote pointers (Heb 11:8, 1 Sam 17:51, John 11:50, 1 Ne 2:20, Zoramite refs). The ethical study is delegated to the spin-off subagent under the same verification discipline.
