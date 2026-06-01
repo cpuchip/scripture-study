@@ -141,18 +141,24 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - person: `lehi` (dying) · `zoram` (deathbed blessing)
 - image: `arms-of-his-love` (1:15) · `awake-arise-from-the-dust` (1:13-23)
 - doctrine: `land-of-liberty` (conditional) · `prophets-sharpness-is-the-word` (not anger, 1:24-27) · `conditional-birthright`
-- study: `2ne1_prosperity-covenant` (spin-off, in progress)
+- study: `2ne1_prosperity-covenant` (spin-off, COMPLETE — two asymmetric halves fused at 1:20; Ether 2 proves NOT ethnic; Hel 12:2 prosperity→forgetting; self-implicating)
 
 ### from 2 Nephi 2
 - person: `jacob` (firstborn in wilderness) · `lucifer`/devil · `adam` & `eve` · `the-great-Mediator`
 - doctrine: `opposition-in-all-things` · `fall-was-forward` (felix culpa) · `agency` (free to choose; act vs be-acted-upon) · `atonement-answers-justice` · `devil-seeks-shared-misery` · `afflictions-consecrated`
-- study: `2ne2_fall-agency-opposition` (spin-off, in progress)
+- study: `2ne2_fall-agency-opposition` (spin-off, COMPLETE — opposition is metaphysical not just semantic; Fall necessary for agents-who-act; Atonement restores freedom-with-knowledge not innocence; "transgression" not rebellion)
 
 ### from 2 Nephi 3
 - person: `joseph` (last-born) · `joseph-of-egypt` · `the-choice-seer` (= Joseph Smith, son of Joseph) · `moses+spokesman`
 - doctrine: `two-records-grow-together` (BoM + Bible) · `out-of-weakness-made-strong` · `moses-pattern` (word + spokesman)
 - image: `cry-from-the-dust` (3:19-20; Isa 29:4)
 - thread: `joseph-typology` RESOLVES (type → named latter-day Joseph)
+
+### from 2 Nephi 4
+- person: `sam` (parity with Nephi) · grandchildren of L&L · `nephi` (the psalmist)
+- devotion: `psalm-of-nephi` (4:15-35)
+- doctrine: `trust-not-arm-of-flesh` · `ask-liberally` (James 1:5) · `curse-answered-on-parents` · `shake-at-the-appearance-of-sin`
+- event: `lehi-death`
 
 ## Edges
 
@@ -351,3 +357,12 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `doctrine:out-of-weakness-made-strong` —[faith not eloquence]→ 3:13,21 (Ether 12:27; 1 Ne 19:6)
 - `image:cry-from-the-dust` —[buried record's voice]→ 3:19-20 (Isa 29:4)
 - `pattern:moses+spokesman` —[seer not eloquent, given a mouthpiece]→ 3:9-18 (Ex 4:16)
+
+### from 2 Nephi 4
+- `psalm-of-nephi` —[wretched-man + "nevertheless I trust"]→ 4:17-19 (Rom 7:24)
+- `psalm-of-nephi` —[even Nephi battles anger/despair; the wrestle is normal]→ 4:26-29
+- `psalm-of-nephi` —[the will commands the feelings: "Awake, my soul... rejoice"]→ 4:28-30 (Ps 42:11)
+- `psalm-of-nephi` —[shake at the appearance of sin]→ 4:31 (inverse of "past feeling" 1 Ne 17:45)
+- `doctrine:trust-not-arm-of-flesh` —[4:34]→ Jer 17:5 · `doctrine:ask-liberally` —[4:35]→ James 1:5 (→ JS-H)
+- `doctrine:curse-answered-on-parents` —[Lehi shields grandchildren]→ 4:6 (D&C 68:25)
+- `event:lehi-death` —[4:12]→ L&L anger resumes (sets up ch 5 division)
