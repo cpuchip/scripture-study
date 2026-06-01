@@ -78,6 +78,12 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - symbol: `fountain-of-living-waters` · `high-mountain`(revelation-place)
 - study: `1ne11_condescension-of-god` (spin-off, in progress)
 
+### from 1 Nephi 12
+- person: `twelve-nephite-disciples` · `nephi-seed` vs `brethren-seed`
+- doctrine: `pride-destroys` · `garments-white-in-blood` · `dwindle-in-unbelief` · `judgment-hierarchy`
+- tension: `dark-loathsome-language` (12:23; flag for study w/ 2 Ne 5)
+- event: `nephite-history-foreseen`
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -158,3 +164,10 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `doctrine:condescension-of-God` —[Father:birth]→ 11:16-21 · —[Son:ministry+cross]→ 11:26-33 · —[study]→ 1ne11_condescension-of-god
 - `symbol:rod-of-iron` —[=word→tree]→ 11:25 (resolves 8:19,24)
 - `symbol:great-spacious-building` —[=pride, fights apostles, falls]→ 11:35-36 (resolves 8:26)
+
+### from 1 Nephi 12
+- `pattern:pride-cycle` —[destroys-Nephites]→ 12:19 (building of 12:18 = their end) · —[template]→ 1 Ne 7 · —[end]→ Morm 6
+- `event:nephite-history-foreseen` —[Christ]→ 3 Ne 11 · —[4-gen-peace]→ 4 Ne 1 · —[destruction]→ Morm 6
+- `symbol:river/mist/building/gulf` —[interpreted]→ 12:16-18 (hell/temptation/pride/justice+Messiah; Luke 16:26) — completes 1 Ne 8
+- `doctrine:garments-white-in-blood` —[12:10-11]→ Rev 7:14; Alma 5:21
+- `tension:dark-loathsome-language` —[12:22-23]→ cf 2 Ne 5:20-25 (flag for study)
