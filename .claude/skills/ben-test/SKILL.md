@@ -11,6 +11,8 @@ March 19, 2026. Michael's coworker Ben said: "Your AI is very complimentary. Per
 
 That observation led to an honest self-assessment of our 11-step creation cycle. We scored ~33% practice rate. We had been telling Squad what they could learn from principles we hadn't implemented ourselves. The Ben Test exists to prevent that pattern.
 
+**Permission to use his name (granted 2026-06-01).** Ben has given explicit permission to keep calling it the Ben Test. This resolves the standing consent flag — whether to pseudonymize "Ben" in published work, e.g. *Beyond the Prompt* Part 1 (Practice 8) — his real name may be used.
+
 ## When to Use
 
 - Before claiming "we do X well" in any document
