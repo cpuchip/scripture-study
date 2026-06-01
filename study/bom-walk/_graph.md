@@ -131,6 +131,10 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - doctrine: `light-to-the-gentiles` · `God-will-not-forget` · `gathering-of-scattered-Israel` · `prisoners-freed` (redemption of dead)
 - variant: `broken-off-preamble` (21:1, BoM prepends vs KJV Isa 49:1 — VERIFIED)
 
+### from 1 Nephi 22 (closes 1 Nephi)
+- person: `the-mighty-Gentile-nation` · `prophet-like-Moses` (= Christ) · `satan`
+- doctrine: `prophecy-temporal-AND-spiritual` · `wicked-self-destruct` (pit-digger) · `same-fire` (consume/preserve) · `satan-bound-by-righteousness` · `kingdom-of-devil = motive (gain/power/popularity/lust)` · `one-fold-one-shepherd`
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -292,3 +296,13 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `doctrine:light-to-the-gentiles` —[Servant's mission overflows Israel]→ 21:6 (Luke 2:32)
 - `doctrine:prisoners-freed` —[go forth / sit in darkness]→ 21:9 (D&C 138)
 - `doctrine:gathering` —[Gentiles nurse Israel; kings nursing fathers]→ 21:18-23 (1 Ne 22; D&C 133)
+
+### from 1 Nephi 22 (closes 1 Nephi)
+- `doctrine:prophecy-both-temporal-and-spiritual` —[Nephi refuses binary]→ 22:1-3
+- `event:nephi-expounds-isaiah` —[worked likening: scatter→Gentiles-nurse→marvelous-work→gather]→ 22:6-12
+- `doctrine:wicked-self-destruct` —[church-of-devil wars on itself; pit-digger]→ 22:13-14 (14:3; Rev 17:16)
+- `doctrine:same-fire` —[consume the wicked / preserve the righteous]→ 22:15-19 (Mal 4:1; cf 14:7)
+- `doctrine:satan-bound-by-righteousness` —[no power over righteous hearts]→ 22:26 (Rev 20:2; D&C 43:31; Jacob 5:76)
+- `doctrine:prophet-like-Moses` —[= the Holy One of Israel]→ 22:20-21 (Deut 18; Acts 3:22)
+- `person:kingdom-of-the-devil` —[defined-by-motive]→ 22:23 (restates 14:10)
+- `book:1-nephi` —[CLOSES on]→ repent + endure to the end (22:28-31; fulfills 6:4)
