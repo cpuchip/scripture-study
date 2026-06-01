@@ -67,6 +67,11 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - object: `large-plates` (kings/wars) — vs `small-plates` (ministry); both "plates of Nephi"
 - doctrine: `prepare-a-way-across-time` · `obedience-without-reason` · `divine-foreknowledge`
 
+### from 1 Nephi 10
+- person: `the-messiah`/`lamb-of-god` · `the-forerunner` (John the Baptist) · `the-gentiles`
+- doctrine: `seek-and-find` (gift to all) · `God-unchanging`/`one-eternal-round` · `the-fall`+reliance · `scattering-and-gathering`
+- symbol: `olive-tree`
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -132,3 +137,11 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `doctrine:prepare-a-way` —[scale=millennia]→ 9:5-6 · —[fulfilled]→ D&C 10:38-40 (lost 116 pages) · —[partner]→ 3:7
 - `object:small-plates` —[vs]→ `large-plates` (kings/wars, 9:4) · —[both]→ "plates of Nephi" (9:2)
 - `doctrine:obedience-without-reason` —[9:5]→ grounded in 9:6 (God knows all); cf 4:6
+
+### from 1 Nephi 10
+- `doctrine:seek-and-find` —[gift-to-ALL]→ 10:17-19 · —[drives]→ 1 Ne 11-14 · —[contrast]→ 15:8-9 (L&L did not ask) · —[root]→ Matt 7:7
+- `prophecy:messiah` —[named/dated]→ 10:4-10 (600 yrs; Lamb of God) · —[fulfilled]→ 3 Ne 1:1; John 1:29
+- `doctrine:God-unchanging` —[one-eternal-round]→ 10:18-19 (Heb 13:8) — basis of continuing revelation
+- `doctrine:prepare-a-way` —[soteriological, 3rd deepening]→ 10:18 (3:7 → 9:6 → 10:18)
+- `symbol:olive-tree` —[scatter/gather]→ 10:12-14 · —[allegory]→ Jacob 5 · —[family-branch]→ Gen 49:22
+- `doctrine:the-fall` —[+reliance-on-Christ]→ 10:6 (→ 2 Ne 2)
