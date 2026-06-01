@@ -125,6 +125,12 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - doctrine: `covenant-Israel` (waters of baptism) · `furnace-of-affliction-as-refining` · `mercy-for-His-names-sake` · `divine-lament` (O that thou hadst hearkened) · `flee-babylon` · `no-peace-to-the-wicked`
 - variant: `waters-of-baptism` (20:1, BoM adds vs KJV Isa 48:1 — VERIFIED)
 
+### from 1 Nephi 21 (Isaiah 49)
+- person: `the-servant` (Israel/Messiah dual) · `zion` (doubts) · `the-prisoners`
+- image: `graven-on-the-palms` (21:16, nail-wounds) · `woman-forget-her-child` (21:15)
+- doctrine: `light-to-the-gentiles` · `God-will-not-forget` · `gathering-of-scattered-Israel` · `prisoners-freed` (redemption of dead)
+- variant: `broken-off-preamble` (21:1, BoM prepends vs KJV Isa 49:1 — VERIFIED)
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -277,3 +283,12 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `doctrine:divine-lament` —[O that thou hadst hearkened → peace as a river]→ 20:18 · —[inverse]→ 20:22 (no peace to the wicked)
 - `doctrine:christology` —[first-and-last/Creator/Redeemer = Jehovah]→ 20:12-17 (cf 19:7-10; Rev 1:17)
 - `doctrine:flee-babylon` —[2nd-exodus + latter-day]→ 20:20 (D&C 133; Rev 18:4)
+
+### from 1 Nephi 21 (Isaiah 49)
+- `isaiah:49` —[likened → hope for the broken-off]→ 1 Ne 21 (19:24) · —[expounded]→ 2 Ne 6-10 (Jacob)
+- `variant:broken-off-preamble` —[BoM prepends 21:1 vs KJV Isa 49:1, verified]→ aims chapter at the scattered remnant
+- `image:graven-on-the-palms` —[God will not forget]→ 21:16 (Zech 13:6; nail-wounds; cf 19:7-10)
+- `image:woman-forget-her-child` —[divine love exceeds a mother's]→ 21:15 (Isa 66:13)
+- `doctrine:light-to-the-gentiles` —[Servant's mission overflows Israel]→ 21:6 (Luke 2:32)
+- `doctrine:prisoners-freed` —[go forth / sit in darkness]→ 21:9 (D&C 138)
+- `doctrine:gathering` —[Gentiles nurse Israel; kings nursing fathers]→ 21:18-23 (1 Ne 22; D&C 133)
