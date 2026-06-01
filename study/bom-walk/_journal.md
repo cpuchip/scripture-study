@@ -61,3 +61,9 @@ Nephi is told to keep a second record and flatly admits he has no idea why — "
 The turn in this chapter is so quiet you can miss it: Lehi finishes recounting his vision, and Nephi's response is not "I believe my father." It is "I was desirous *also* that I might see, and hear, and know of these things." He wants the vision firsthand. And instead of that being presumptuous, the text says it is the whole point — the Holy Ghost is "the gift of God unto all those who diligently seek him." The prophet's son is invited to see what the prophet saw, on the same terms as anyone: seek diligently.
 
 That reframes Laman and Lemuel for me. Five chapters from now Nephi will ask them, *have ye inquired of the Lord?* — and they will say no. The difference between the brothers was never access. It was who bothered to ask. Nephi heard his father and went looking; they heard their father and argued about it.
+
+## 1 Nephi 11 — the answer is a baby (2026-06-01)
+
+The thing that stopped me: the angel never defines the tree. Nephi asks what it means, and instead of an answer he gets shown a young woman in Nazareth, then the same woman holding a newborn — "Behold the Lamb of God." And *then* the angel asks again, "knowest thou the meaning of the tree?" Now Nephi can answer: the love of God. The interpretation came through an incarnation. You do not get told what God's love is; you get shown God becoming a baby, and that *is* the love.
+
+That reframes the whole tree-of-life dream from chapter 8. The fruit "most sweet, most white, most desirable" — it is Christ. The rod you cling to through the mist is the word that leads to him. The path goes to a person. The most famous symbol-vision in the book turns out to be, underneath, just: come to Jesus.

@@ -72,6 +72,12 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - doctrine: `seek-and-find` (gift to all) · `God-unchanging`/`one-eternal-round` · `the-fall`+reliance · `scattering-and-gathering`
 - symbol: `olive-tree`
 
+### from 1 Nephi 11
+- person: `the-spirit-of-the-lord` · `the-angel` · `the-virgin`(Mary) · `lamb-of-god`/`son-of-eternal-father` · `twelve-apostles`
+- doctrine: `condescension-of-God` (Father birth + Son cross) · `belief-before-sight` · `incarnation-as-love-of-God`
+- symbol: `fountain-of-living-waters` · `high-mountain`(revelation-place)
+- study: `1ne11_condescension-of-god` (spin-off, in progress)
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -145,3 +151,10 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `doctrine:prepare-a-way` —[soteriological, 3rd deepening]→ 10:18 (3:7 → 9:6 → 10:18)
 - `symbol:olive-tree` —[scatter/gather]→ 10:12-14 · —[allegory]→ Jacob 5 · —[family-branch]→ Gen 49:22
 - `doctrine:the-fall` —[+reliance-on-Christ]→ 10:6 (→ 2 Ne 2)
+
+### from 1 Nephi 11
+- `event:nephi-vision` —[granted-by]→ desire+belief (11:1-7; fulfills 10:17-19) · —[contrast]→ 15:8-9
+- `symbol:tree-of-life` —[=love-of-God]→ 11:22 (Rom 5:5) · —[shown-as]→ incarnation (11:18-21) · —[interprets]→ 1 Ne 8
+- `doctrine:condescension-of-God` —[Father:birth]→ 11:16-21 · —[Son:ministry+cross]→ 11:26-33 · —[study]→ 1ne11_condescension-of-god
+- `symbol:rod-of-iron` —[=word→tree]→ 11:25 (resolves 8:19,24)
+- `symbol:great-spacious-building` —[=pride, fights apostles, falls]→ 11:35-36 (resolves 8:26)
