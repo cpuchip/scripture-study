@@ -148,6 +148,12 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - doctrine: `opposition-in-all-things` · `fall-was-forward` (felix culpa) · `agency` (free to choose; act vs be-acted-upon) · `atonement-answers-justice` · `devil-seeks-shared-misery` · `afflictions-consecrated`
 - study: `2ne2_fall-agency-opposition` (spin-off, in progress)
 
+### from 2 Nephi 3
+- person: `joseph` (last-born) · `joseph-of-egypt` · `the-choice-seer` (= Joseph Smith, son of Joseph) · `moses+spokesman`
+- doctrine: `two-records-grow-together` (BoM + Bible) · `out-of-weakness-made-strong` · `moses-pattern` (word + spokesman)
+- image: `cry-from-the-dust` (3:19-20; Isa 29:4)
+- thread: `joseph-typology` RESOLVES (type → named latter-day Joseph)
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -337,3 +343,11 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `doctrine:atonement-answers-justice` —[broken heart + contrite spirit]→ 2:6-10 (Alma 42)
 - `person:lucifer` —[seeks shared misery]→ 2:17-18, 27 (D&C 10:22)
 - `links-to-study` → `agency`, `creation` (our corpus)
+
+### from 2 Nephi 3
+- `thread:joseph-typology` —[RESOLVES: type → named latter-day Joseph]→ 2 Ne 3:6-15 (from chs 3,5; JST Gen 50)
+- `prophecy:choice-seer` —[Joseph Smith, son of Joseph]→ 3:6-15 (D&C 18:8; 3 Ne 21:11)
+- `doctrine:two-records-grow-together` —[Joseph's BoM + Judah's Bible]→ 3:12 (Ezek 37:15-20; 1 Ne 13:41)
+- `doctrine:out-of-weakness-made-strong` —[faith not eloquence]→ 3:13,21 (Ether 12:27; 1 Ne 19:6)
+- `image:cry-from-the-dust` —[buried record's voice]→ 3:19-20 (Isa 29:4)
+- `pattern:moses+spokesman` —[seer not eloquent, given a mouthpiece]→ 3:9-18 (Ex 4:16)
