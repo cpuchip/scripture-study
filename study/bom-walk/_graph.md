@@ -43,6 +43,11 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - event: `slaying-of-laban` · `plates-obtained` · `zoram-oath`
 - study: `1ne4_slaying-of-laban` (spin-off, in progress)
 
+### from 1 Nephi 5
+- person: `sariah` (complaint → own witness) · `joseph-of-egypt` · `jeremiah`
+- doctrine: `preservation` (seed/record/word) · `independent-witness` · `brass-plates-canon`
+- type/symbol: `lehi-as-joseph-dreamer` (Gen 37:19)
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -74,3 +79,10 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `doctrine:prosperity-covenant` —[remembered-as-hinge]→ 1 Ne 4:14 (cites 2:20)
 - `person:zoram` —[freed→joins]→ covenant family · —[line]→ Zoramites (Jacob 1:13; 4 Ne 1:36)
 - `type:exodus` —[Laban=Pharaoh]→ 1 Ne 4:2-3
+
+### from 1 Nephi 5
+- `person:sariah` —[arc]→ complaint (5:2) → "surety" (5:8); contrast `person:laman-lemuel`
+- `person:lehi` —[type]→ Joseph the dreamer (Gen 37:19) · —[lineage]→ Joseph of Egypt (5:14) → Gen 49:22 / 2 Ne 3
+- `object:brass-plates` —[contains]→ Torah + Jewish record + prophets + Jeremiah + genealogy (5:11-14) · —[fuller-than]→ surviving OT
+- `doctrine:preservation` —[motif]→ Joseph→family→plates-never-perish→commandments-to-children (5:14-21)
+- `object:brass-plates` —[destiny]→ all nations + never perish (5:18-19; Alma 37:4)
