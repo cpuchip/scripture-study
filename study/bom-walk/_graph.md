@@ -103,6 +103,12 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - place: `shazer` · `nahom` (Heb naham = mourning; Ishmael buried)
 - doctrine: `guilty-take-truth-hard` · `guidance-by-faith` · `small-means→great-things` · `honoring-the-faltering-leader`
 
+### from 1 Nephi 17
+- place: `bountiful` · `irreantum` (the sea)
+- object: `the-ship`
+- doctrine: `argue-faith-from-history` (Exodus) · `esteemeth-all-flesh-in-one`/conditional-land · `past-feeling` (deadened conscience) · `look-and-live`/easiness-as-stumbling-block · `refuse-worship-point-to-God`
+- detail: `women-endure-without-murmuring` (17:2)
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -222,3 +228,11 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `pattern:laman-lemuel-cycle` —[recurs: broken bow, even Lehi murmurs, Laman plots murder]→ 16:18-39
 - `person:laman` —[accusation=self-portrait]→ 16:38 (sees ambition, not revelation)
 - `place:nahom` —[Heb naham=mourning]→ 16:34
+
+### from 1 Nephi 17
+- `event:ship-command` —[Nephi-argues-from]→ the Exodus (17:23-43, 50-51); reason from God's power to the task (cf 1 Ne 4)
+- `doctrine:conditional-land` —[esteemeth-all-flesh-in-one]→ 17:35 (righteousness not lineage; Acts 10:34; 2 Ne 26:33); self-implicating (1 Ne 12)
+- `doctrine:past-feeling` —[17:45]→ still small voice → thunder (Eph 4:19; deadened conscience)
+- `doctrine:look-and-live` —[easiness-as-stumbling-block]→ 17:41 (Num 21; John 3:14; Alma 33/37)
+- `person:nephi` —[refuses-worship]→ 17:55 (points to God + honor father; cf 16:23-24) · —[filled-with-power]→ 17:48
+- `doctrine:prepare-a-way` —[recurs 4th+]→ 17:3 (3:7→9:6→10:18→17:3)
