@@ -73,6 +73,16 @@ For 2 Ne 12–24 (Isa 2–14), 1 Ne 20–21 (Isa 48–49), 3 Ne 22 (Isa 54), Jac
 
    Anchor to the prophet's stated method — Nephi's likening (1 Ne 19:23; the interpretive keys in 2 Ne 25), Christ's command to search Isaiah (3 Ne 23:1). Verify and quote these when reached; here they are pointers, not quotations.
 
+## Deep-dive spin-off (when a chapter wants a full study)
+
+Some chapters surface something that deserves more than a chapter note — a cross-cutting doctrine, a striking pattern, a question worth a real study. Michael's directive (2026-06-01): **don't chew my own cycles on it mid-walk.** Instead:
+
+- **Small enough to fold in:** keep it in the chapter note, or extend it there.
+- **Worth a full study:** spin it off to a subagent — `Agent(subagent_type="study", model="opus"|"sonnet")` — with instructions to run the full study-workflow and **write the finished study to `study/bom-walk/studies/{ch-tag}_{study-subject}.md`** (e.g. `1ne8_tree-of-life-vision.md`, `2ne2_opposition-in-all-things.md`). Sonnet for moderate dives; opus for the hard/deep ones.
+- After the subagent returns, **read its study, record the takeaway + link in the chapter note and `_graph.md`, then move on.** The deep work lives in its own file and its own context; the walk stays continuous.
+- `ch-tag` = originating chapter, compact (`1ne8`, `2ne2`, `alma32`, `3ne11`). `study-subject` = kebab slug.
+- These spun-off studies are still **bin-1/2 drafts-for-Michael** (verified, exploratory) until he ratifies — same frame as the walk. They are subagent (sonnet/opus) cost, not substrate cost.
+
 ## Resume after compaction (ammon)
 
 A 239-chapter run *will* cross context resets. On resume — do not restart:
