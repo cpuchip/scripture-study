@@ -2,6 +2,7 @@
 
 **STATUS:** setup complete — awaiting Michael's go + goal-tool. **Not started.**
 **NEXT CHAPTER:** 1 Nephi 1
+**DEPTH (ratified 2026-06-01):** mini-study per chapter (study-grade engagement, note-grade finish). Isaiah/long-OT quotations get full exegesis + Nephite framing + the four likening questions (see `_workflow.md`).
 **Started:** —
 **Last updated:** 2026-06-01
 
