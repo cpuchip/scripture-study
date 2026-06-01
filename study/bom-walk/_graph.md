@@ -90,6 +90,10 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - doctrine: `apostasy-as-subtraction` (plain&precious removed) · `BoM-mission` (establish Bible + restore plainness) · `two-churches-only`
 - event: `gentile-settling-of-promised-land`
 
+### from 1 Nephi 14
+- person: `church-of-the-lamb`/`the-saints` · `the-whore`/`mother-of-abominations` · `john-revelator`
+- doctrine: `two-churches-only` (allegiance not creed) · `armed-with-righteousness` · `marvelous-work-cuts-both-ways` · `gentile-adoption-by-hearkening` · `canon-curated-across-prophets`
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -184,3 +188,11 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `person:church-of-the-devil` —[defined-by]→ desire + praise of world (13:6-9) · —[only-two-churches]→ 14:10 · —[root]→ Rev 17
 - `event:gentile-settling` —[providence]→ 13:12-13 · —[+tragedy]→ 13:14 (brethren's seed smitten)
 - `tension:complexion-language` —[13:15]→ cf 12:23; 2 Ne 5:21
+
+### from 1 Nephi 14
+- `person:church-of-the-devil` —[two-churches-only]→ 14:10 (allegiance, not denomination) · —[whore-on-waters]→ Rev 17
+- `doctrine:armed-with-righteousness` —[few but armed]→ 14:12-14 (Matt 7:14; D&C 38) — strength ≠ numbers
+- `doctrine:marvelous-work` —[cuts-both-ways]→ 14:7 (Isa 29:14)
+- `person:john-revelator` —[ordained-to-write-the-end]→ 14:21-27 · —[Nephi-forbidden]→ 14:25,28 (canon curated across prophets)
+- `doctrine:gentile-adoption` —[by-hearkening]→ 14:1-2 (Gal 3:29; olive tree 10:12-14)
+- `event:nephi-vision` —[closes]→ 14:28-30
