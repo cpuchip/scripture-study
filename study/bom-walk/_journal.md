@@ -187,3 +187,13 @@ And a line I almost skated past: the scattered Jews, hated and driven for centur
 The variant earns its keep again. The KJV opens Isaiah 50 with "where is the bill of your mother's divorcement" — already implying there is not one. The Book of Mormon makes it a direct, tender question first: "Have I put thee away, or have I cast thee off forever?" And the answer is no. You were not divorced; "ye sold yourselves." The estrangement was self-inflicted, and it is not final. To a people who had just been broken off from Israel, that is the first thing they needed to hear.
 
 And the image at the end I cannot shake: people who "kindle fire... walk in the light of your fire and in the sparks which ye have kindled... shall lie down in sorrow." Self-made light. You can manufacture your own illumination — your own certainty, your own religion-shaped confidence — and walk by it for a while, but sparks you struck yourself burn out, and you lie down in the dark. Walk in His light or in your own; only one of them lasts the night.
+
+## 2 Nephi 8 — who is actually asleep (2026-06-01)
+
+The thing that stopped me in Isaiah 51 is the direction of the word *awake*. The chapter opens with the people crying up at heaven: "Awake, awake! Put on strength, O arm of the Lord... as in the ancient days." Do again what you did at the Exodus. Wake up and act. And I have prayed exactly that prayer — *Lord, rouse yourself, do something about this.*
+
+Then God answers, and the answer is a quiet correction: "I am he that comforteth you." The arm was never asleep. "Who art thou, that thou shouldst be afraid of man... and forgettest the Lord thy maker, that hath stretched forth the heavens?" You were frightened of a mortal and forgot the One who made the sky. And then he hands the command straight back: "Awake, awake, stand up, O Jerusalem." "Awake, awake, put on thy strength, O Zion." The imperative I aimed at God comes back addressed to me.
+
+That is the whole reversal in one chapter. We tell God to wake up. He tells us he has been awake the entire time, and we are the ones who fell asleep under the cup. "Put on thy strength" is not a request we make of him; it is a command he makes of us. The waking is ours to do.
+
+And one quieter thing I want to keep: the comfort to the small. "Look unto Abraham... for I called him alone, and blessed him." A whole nation out of one couple. Jacob is preaching to a colony that could fit in a few tents, and the first word is *you are not too few.* God has built more out of less.

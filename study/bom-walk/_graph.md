@@ -178,6 +178,12 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - image: `kindle-your-own-fire` (self-made light → lie down in sorrow, 7:11)
 - variant: `not-cast-off-forever` (7:1 BoM prepend vs KJV Isa 50:1 — VERIFIED)
 
+### from 2 Nephi 8 (Isaiah 51 + 52:1-2)
+- isaiah: `51` + `52:1-2` ("Awake, awake")
+- image: `three-awakes` (8:9 people→God's arm; 8:17,24 God→Zion — the imperative reverses) · `cup-of-trembling` (transferred, 8:22-23)
+- doctrine: `arm-of-the-Lord-never-slept` · `awake-O-Zion` (D&C 113:7-10) · `salvation-permanent-vs-perishing-creation`
+- variant: `it→he` (8:9-10 arm personalized — VERIFIED) · `two-things→two-sons` (8:19-20 + "save these two" → two witnesses — VERIFIED)
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -406,3 +412,12 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `doctrine:vindicated-by-God` —[accusers wax old as a garment]→ 7:8-9 (Rom 8:33-34)
 - `image:kindle-your-own-fire` —[self-made light → sorrow]→ 7:11
 - `doctrine:christology` —[Servant = Holy One of Israel]→ 7:6 (cf 6:9)
+
+### from 2 Nephi 8 (Isaiah 51 + 52:1-2)
+- `image:three-awakes` —[direction reverses]→ 8:9 (people→arm) vs 8:17,24 (God→Zion); the sleeper is us
+- `doctrine:arm-never-slept` —["I am he"]→ 8:12 (you feared man, forgot your maker)
+- `variant:it→he` —[arm = a person, Christology in a pronoun]→ 8:9-10
+- `variant:two-things→two-sons` —[+ "save these two", verified]→ 8:19-20 (→ two witnesses, Rev 11:3)
+- `image:cup-of-trembling` —[taken from afflicted → given to afflicters]→ 8:22-23 (cf Christ drinks the dregs, D&C 19:18)
+- `doctrine:awake-O-Zion` —[put on strength + loose the bands]→ 8:24-25 (D&C 113:7-10)
+- `seq:servant→arm` —[ch7 Servant struck = ch8 Arm summoned]→ one person (Holy One of Israel)
