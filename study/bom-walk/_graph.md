@@ -57,6 +57,12 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - doctrine: `deliverance-by-faith` (burst bands) · `remembrance-vs-forgetting` · `frank-forgiveness` · `spirit-ceaseth-to-strive`
 - pattern: `laman-lemuel-cycle` (template)
 
+### from 1 Nephi 8
+- symbol: `tree-of-life` · `fruit` · `rod-of-iron` · `strait-narrow-path` · `mist-of-darkness` · `great-spacious-building` · `river-of-water` · `dark-dreary-waste`
+- person: `white-robed-guide`
+- pattern: `four-groups` (responses to the fruit)
+- event: `tree-of-life-dream`
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -108,3 +114,12 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `doctrine:deliverance-by-faith` —[bursts-bands]→ 7:17 · —[recurs]→ Alma 14:28; 3 Ne 28:20; Judg 14:6
 - `doctrine:frank-forgiveness` —[Nephi]→ 7:21 · —[parallel]→ Luke 7:42
 - `event:jeremiah-imprisoned` —[confirms]→ brass-plates Jeremiah (5:13; Jer 37:15)
+
+### from 1 Nephi 8
+- `symbol:tree-of-life` —[interpreted]→ 11:21-22 (love of God/Christ) · —[root]→ Gen 2:9; Rev 22:2 · —[answers]→ Gen 3:6
+- `symbol:rod-of-iron` —[=word-of-God]→ 11:25; 15:23-24 · —[verb: clinging]→ 8:24,30
+- `symbol:mist-of-darkness` —[=temptation]→ 12:17 (Matt 13:19)
+- `symbol:great-spacious-building` —[=pride, foundationless]→ 11:36; 12:18 (Eph 2:2)
+- `pattern:four-groups` —[dream-source]→ 8 · —[studies]→ iron-rod-anchor-and-the-four-groups, four-groups-and-the-engineer
+- `doctrine:tender-mercies` —[inside-dream]→ 8:8 (cf 1:20)
+- `event:tree-of-life-dream` —[framed-by]→ Lehi's fear for his sons (8:3-4, 35-37)

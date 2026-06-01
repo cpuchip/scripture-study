@@ -45,3 +45,9 @@ Second, Lehi takes the word they used to wound him — "visionary" — and wears
 Nephi's whole rebuke to his brothers is one word, repeated: *forgotten.* You saw an angel — forgotten. God delivered you from Laban — forgotten. He diagnoses their unbelief not as a shortage of evidence but as amnesia; they cannot hold a miracle for a week. That reframes the Book of Mormon's endless "remember" for me — remembering isn't sentiment, it's the whole spiritual discipline, and forgetting is simply how faith dies.
 
 And then, after they tie him up to leave him for the animals, he "frankly forgave them all" — freely, no terms — and immediately tells them to go ask God's forgiveness too. The miracle everyone remembers from this chapter is the bands bursting. The harder miracle is the speed of the pardon.
+
+## 1 Nephi 8 — a father's dream (2026-06-01)
+
+What I keep missing when I think about the tree of life, and caught this time: it is a dad's dream about his kids. Lehi opens it telling us he rejoices over two sons and fears for two, and he ends it pleading with the two "with all the feeling of a tender parent." The iron rod and the spacious building are real — but the ache under the whole vision is a father watching half his children refuse the fruit he is holding out to them.
+
+And the frightening group isn't the ones lost in the mist. It is the ones who reached the tree, tasted the fruit, and *then let go* — not because temptation pulled them back, but because people in a building pointed and laughed. They had it in their mouths. Shame did what darkness couldn't.
