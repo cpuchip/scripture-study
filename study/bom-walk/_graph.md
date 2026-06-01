@@ -135,6 +135,14 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - person: `the-mighty-Gentile-nation` · `prophet-like-Moses` (= Christ) · `satan`
 - doctrine: `prophecy-temporal-AND-spiritual` · `wicked-self-destruct` (pit-digger) · `same-fire` (consume/preserve) · `satan-bound-by-righteousness` · `kingdom-of-devil = motive (gain/power/popularity/lust)` · `one-fold-one-shepherd`
 
+## — 2 NEPHI —
+
+### from 2 Nephi 1
+- person: `lehi` (dying) · `zoram` (deathbed blessing)
+- image: `arms-of-his-love` (1:15) · `awake-arise-from-the-dust` (1:13-23)
+- doctrine: `land-of-liberty` (conditional) · `prophets-sharpness-is-the-word` (not anger, 1:24-27) · `conditional-birthright`
+- study: `2ne1_prosperity-covenant` (spin-off, in progress)
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -306,3 +314,13 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `doctrine:prophet-like-Moses` —[= the Holy One of Israel]→ 22:20-21 (Deut 18; Acts 3:22)
 - `person:kingdom-of-the-devil` —[defined-by-motive]→ 22:23 (restates 14:10)
 - `book:1-nephi` —[CLOSES on]→ repent + endure to the end (22:28-31; fulfills 6:4)
+
+## — 2 NEPHI —
+
+### from 2 Nephi 1
+- `doctrine:prosperity-covenant` —[Lehi's deathbed restatement]→ 2 Ne 1:20 (cf 1 Ne 2:20) · —[study]→ 2ne1_prosperity-covenant
+- `image:arms-of-his-love` —[Lehi's redemption testimony]→ 1:15 (Alma 5:33; 3 Ne 9:14)
+- `doctrine:prophets-sharpness-is-the-word` —[not anger]→ 1:24-27 (cf 1 Ne 16:2, 38; D&C 121:43)
+- `image:awake-arise-from-the-dust` —[repentance]→ 1:13-23 (Isa 52:1-2)
+- `doctrine:land-of-liberty` —[conditional]→ 1:7 (Alma 46:10; Ether 2)
+- `person:nephi` —[birthright on hearkening]→ 1:28-29 (2:22; Gen 49:3-4) · `person:zoram` —[blessed]→ 1:30-32
