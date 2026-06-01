@@ -1,6 +1,6 @@
 # Book of Mormon Walkthrough — Knowledge-Graph Build (Plan)
 
-**Status:** scoped, authorized "100% you" — a standing multi-session effort, run incrementally.
+**Status:** rigor built (`study/bom-walk/` scaffold + `_workflow.md`), awaiting Michael's go + goal-tool. Intended as a **one-go continuous run** (goal tool + ammon carry it to completion across compactions), one chapter at a time.
 **Origin:** Michael, 2026-06-01 — "have you (or other agents) walk through the book of mormon start to finish, and record your own thoughts and connections as you digest each new section. and see what notable things pop as you use the tools we've developed to make those connections, building a wiki/knowledge graph that we can pull from. that can be 100% you too since it's working on something I need but the instructions are clear."
 **Author:** Claude Code (Opus 4.8). Durable so it survives compaction.
 
@@ -17,9 +17,9 @@ A start-to-finish digestion of the Book of Mormon where the agent records **its 
 
 ## Where it lives
 
-- **`study/bom-walk/`** — git-tracked markdown, one note per section, wikilinked. The pullable wiki.
-- **Graph index** `study/bom-walk/_graph.md` — the node/edge registry (or a structured frontmatter convention per note that an index can be regenerated from).
-- Optional: mirror high-signal nodes into the `becoming` brain (`brain_create`, tagged) for cross-study recall surfaces.
+- **`study/bom-walk/`** — git-tracked markdown, one note per chapter, in book subfolders. The pullable wiki. Scaffold built 2026-06-01: `README.md`, `_workflow.md` (per-chapter rigor), `_progress.md` (tracker + NEXT pointer = the ammon resume anchor), `_journal.md` (Opus's standout reflections), `_graph.md` (node/edge index).
+- **Graph** `study/bom-walk/_graph.md` — markdown node/edge registry, grown per chapter. (Not persisted into the substrate corpus — markdown is git-tracked, reviewable, and pullable; pg-ai-stewards is used to *discover* connections, not to *store* the graph.)
+- **`brain_*` is dead — not used.** The substrate study tools replace it.
 
 ## Per-section note format
 
@@ -43,12 +43,13 @@ A start-to-finish digestion of the Book of Mormon where the agent records **its 
 
 ## Tools (the point — let them surface what recall wouldn't)
 
-- `gospel_get` / `Read` — section text with footnotes.
-- `gospel_search` (semantic + hybrid) — non-obvious cross-refs on each section's binding ideas.
-- `study_search` / `study_similar` — connect BoM sections to our 198 existing studies.
+- `gospel_get` — chapter text *with footnotes* (verified live: returns the full footnote cross-ref chains).
+- `gospel_search` (semantic + hybrid) — non-obvious scripture cross-refs on each chapter's binding idea.
+- `study_search` / `study_similar` (pg-ai-stewards) — connect BoM chapters to our 198 existing studies. **Retrieval only — DB queries, no opus, no cost** (verified live).
 - `webster_define` — word work where it earns it.
-- `byu_citations` — how the Brethren have used a passage.
-- `brain_*` — optional cross-study recall mirror.
+- `byu_citations` — how the Brethren have used a passage (use sparingly).
+
+**Cost rule:** the substrate is a *connection index*, never a per-chapter generator. No `panel_redline` / `start_brainstorm` / `spawn_subagent` / `deep_research` in the loop — that would burn the $18 zen budget (≈ one study workflow). The thinking is Claude Code's, where tokens are plentiful.
 
 ## Cadence
 
