@@ -94,6 +94,10 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - person: `church-of-the-lamb`/`the-saints` · `the-whore`/`mother-of-abominations` · `john-revelator`
 - doctrine: `two-churches-only` (allegiance not creed) · `armed-with-righteousness` · `marvelous-work-cuts-both-ways` · `gentile-adoption-by-hearkening` · `canon-curated-across-prophets`
 
+### from 1 Nephi 15
+- doctrine: `ask-in-faith`/`seek-and-find-payoff` · `no-unclean-thing`→hell-necessary · `final-state` (dwell or cast out) · `fruit=greatest-gift`
+- detail: `lehi-beheld-not-the-filthiness` (attention is selective)
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -196,3 +200,12 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `person:john-revelator` —[ordained-to-write-the-end]→ 14:21-27 · —[Nephi-forbidden]→ 14:25,28 (canon curated across prophets)
 - `doctrine:gentile-adoption` —[by-hearkening]→ 14:1-2 (Gal 3:29; olive tree 10:12-14)
 - `event:nephi-vision` —[closes]→ 14:28-30
+
+### from 1 Nephi 15
+- `doctrine:seek-and-find` —[PAYOFF]→ 15:8-11 ("have ye inquired?"; ask in faith+believing+diligence; James 1:5) — capstone of 10:17-19 + 11
+- `detail:lehi-beheld-not-filthiness` —[15:27]→ attention selective (fruit-focused vs filth-aware)
+- `doctrine:no-unclean-thing` —[kingdom-not-filthy→hell-necessary]→ 15:33-35 (cf 10:21)
+- `symbol:olive-tree` —[graft-back via Gentiles]→ 15:12-18 (Jacob 5; Gen 12:3; title page)
+- `symbol:rod-of-iron` —[hold-fast→darts can't overpower]→ 15:24 (Eph 6:16)
+- `symbol:tree-of-life` —[fruit=greatest gift]→ 15:36 (D&C 14:7; = love of God 11:22)
+- `person:nephi` —[grief-at-foreseen-fall]→ 15:4-5 (cf 12:19-23)
