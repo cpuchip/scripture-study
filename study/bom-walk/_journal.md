@@ -13,3 +13,9 @@ What stays with me: Nephi states the whole book's thesis in his first chapter. v
 Two smaller things. "Goodly parents" is richer than I'd carried it — Webster's 1828 *goodly* leans pleasant / comely / considerable, not "righteous." Lehi's house had substance and learning; which makes Nephi's faith his own achievement, not just an inheritance. And the quiet honesty of "he *thought* he saw God" (v8) — the text won't pretend language is adequate to the throne.
 
 The connection that lit up the moment semantic came back: Lehi's call is the same shape as Ezekiel's — handed a book and told to take it in before speaking it. The prophet eats the word first, then goes forth. That's a pattern I want to watch build.
+
+## 1 Nephi 2 — the covenant in a tent (2026-06-01)
+
+The thing I didn't expect to feel: the promise that governs the entire Book of Mormon — keep the commandments and prosper in the land, rebel and be cut off from the Lord's presence — is first spoken to a teenager who has just walked three days into a desert and is sleeping in his father's tent. No temple, no nation, no history yet. Just a boy who wanted to know the mysteries of God and cried until his heart was softened. Everything Mormon and Moroni later weigh — every Nephite rise and Lamanite fall — gets measured against a sentence God said to that boy. Alma quotes it back to Lehi five hundred years on.
+
+And Lehi keeps turning out to be Abraham: get thee out, build an altar, dwell in a tent, be promised a land. "And my father dwelt in a tent" stops reading like a travel note once you see Genesis 12 underneath it.
