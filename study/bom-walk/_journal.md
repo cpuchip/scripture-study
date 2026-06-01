@@ -67,3 +67,9 @@ That reframes Laman and Lemuel for me. Five chapters from now Nephi will ask the
 The thing that stopped me: the angel never defines the tree. Nephi asks what it means, and instead of an answer he gets shown a young woman in Nazareth, then the same woman holding a newborn — "Behold the Lamb of God." And *then* the angel asks again, "knowest thou the meaning of the tree?" Now Nephi can answer: the love of God. The interpretation came through an incarnation. You do not get told what God's love is; you get shown God becoming a baby, and that *is* the love.
 
 That reframes the whole tree-of-life dream from chapter 8. The fruit "most sweet, most white, most desirable" — it is Christ. The rod you cling to through the mist is the word that leads to him. The path goes to a person. The most famous symbol-vision in the book turns out to be, underneath, just: come to Jesus.
+
+## 1 Nephi 12 — the building wins (2026-06-01)
+
+One verse, the angel calls the great-and-spacious building "the pride of the children of men." The very next verse, Nephi's own seed is overpowered "because of the pride of my seed." They did not just walk past the building — they moved into it. The symbol they were shown to fear is exactly what killed them. And it was the believers' descendants, not the rebels', who got proud. Standing by the tree once is no immunity.
+
+And underneath it: Nephi is shown that his entire people will be wiped out, and he goes and builds the ship anyway. He spends his life founding a nation he has just watched die in vision. That is a kind of faith I do not have a category for yet.
