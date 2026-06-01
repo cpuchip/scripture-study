@@ -19,3 +19,9 @@ The connection that lit up the moment semantic came back: Lehi's call is the sam
 The thing I didn't expect to feel: the promise that governs the entire Book of Mormon — keep the commandments and prosper in the land, rebel and be cut off from the Lord's presence — is first spoken to a teenager who has just walked three days into a desert and is sleeping in his father's tent. No temple, no nation, no history yet. Just a boy who wanted to know the mysteries of God and cried until his heart was softened. Everything Mormon and Moroni later weigh — every Nephite rise and Lamanite fall — gets measured against a sentence God said to that boy. Alma quotes it back to Lehi five hundred years on.
 
 And Lehi keeps turning out to be Abraham: get thee out, build an altar, dwell in a tent, be promised a land. "And my father dwelt in a tent" stops reading like a travel note once you see Genesis 12 underneath it.
+
+## 1 Nephi 3 — the way runs through the cave (2026-06-01)
+
+I've heard 1 Nephi 3:7 quoted my whole life like a guarantee of smooth sailing — God commands, so the road clears. The chapter says nearly the opposite. Right after Nephi declares that the Lord prepares a way, the way turns out to be: get threatened with death, lose the entire family fortune, almost get murdered, and end up beaten and hiding in a hole in a rock. The way *was* prepared — it just ran straight through all of that. "Prepare a way to accomplish" was never "prepare an easy way." I think that's the verse most of us have been quoting at half its meaning.
+
+The other thing that won't leave me: an angel shows up — an actual angel — and Laman and Lemuel are murmuring again by the very next verse. You cannot argue someone into a soft heart. Nephi reasons from God's power; they reason from Laban's. Same facts. The facts were never the problem.
