@@ -2,10 +2,14 @@
 
 Adapted from the `study-workflow` skill into a per-chapter loop. **Reload this at each book boundary and after any compaction** to stay anchored over the long run.
 
-## What this walk is (and isn't)
+## What this walk is (calibrated 2026-06-01: heavier / mini-study depth)
 
-- **IS:** a start-to-finish digestion of the Book of Mormon, one chapter at a time — recording my own thoughts and connections, using the tools to surface links, building a knowledge graph we can pull from.
-- **ISN'T:** 239 finished studies. Each chapter gets *genuine digestion* — read, follow the key footnotes, think it out, connect, note — not the full six-phase study apparatus. The unit of rigor is the chapter note, not a publishable study. A study goes deep on one binding question; this walk goes *wide and continuous*, and the depth lives in the connections and the honest thinking.
+Michael chose **mini-study depth per chapter** — richer over faster. So:
+
+- **IS:** a start-to-finish walk where *each chapter gets a small study* — footnote chains followed across all volumes, real cross-referencing (`gospel_search` + our corpus), load-bearing word work, the critical-analysis discipline (strongest claims, counter-readings, named tensions), and a substantial analytical note. Plus the connection graph and the standout journal.
+- **The one trim vs. a full study:** I don't run the full publish apparatus every chapter — no per-chapter voice-audit polish, no forced Becoming section, no finished-study ratification. The chapter note is a *mini-study + provenance*, not a publishable polished study. **Depth of engagement = study-grade; level of finish = note-grade.**
+- Still **bin-1/2** (gather / draft-for-Michael) — exploratory, mine, quotes verified — never published doctrine without his ratification.
+- **One-go intent:** the goal tool + ammon carry it to completion across many compactions. It is a long run by design; `_progress.md` is the thread that survives the resets.
 
 ## Honesty frame (non-negotiable)
 
@@ -23,17 +27,19 @@ Adapted from the `study-workflow` skill into a per-chapter loop. **Reload this a
 
 1. **READ** — `gospel_get "{Book} {N}"`. Read the full chapter, its heading, and the footnotes.
 2. **FOLLOW** — trace the footnote chains that *add, clarify, or reframe* (deep-reading). Note the ones that matter; don't chase all of them.
-3. **THINK** — study it out. My own digestion: what strikes me, the tensions, the questions, how it connects to what came before in the walk. This is the heart of it — do it *before* moving to the next chapter.
-4. **CONNECT** —
-   - `gospel_search` (semantic or hybrid) on the chapter's binding idea → non-obvious scripture cross-refs.
-   - `study_search` / `study_similar` → links into our existing 198 studies.
+3. **THINK (study it out — mini-study depth).** Genuinely work the chapter: what it says, what strikes me, the tensions, the counter-readings, the questions. Run the critical-analysis lens — strongest claims against the text, weakest links, missing voices, speculation vs. doctrine. Name tensions rather than resolving them. This is the heart; do it fully *before* moving on.
+4. **CONNECT (cross-volume).**
+   - `gospel_search` (semantic or hybrid) on the chapter's binding idea → non-obvious cross-refs across all five standard works.
+   - Follow the footnote chains that *reframe* — into OT/NT/D&C/PGP, not just the nearby verses.
+   - `study_search` / `study_similar` → links into our existing 198 studies (name the slug + why it connects).
    - `webster_define` on load-bearing words where the 1828 sense differs from modern.
+   - `byu_citations` sparingly, where how the Brethren have used a verse changes the reading.
 5. **VERIFY** — quotes verbatim against the text read; any count or claim traced to a tool call this session.
 6. **WRITE** —
    - the chapter note → `study/bom-walk/{book}/{book}-{NN}.md` (format below). This note is *also* the scratch provenance.
    - extend `_graph.md` with new nodes/edges.
    - append to `_journal.md` **only if something genuinely stood out** (not forced every chapter).
-7. **TRACK** — update `_progress.md` (mark done, advance the NEXT pointer). Commit per book (or every ~5 chapters) so any step walks back cleanly.
+7. **TRACK** — update `_progress.md` (mark done, advance the NEXT pointer). Commit per chapter or every 2–3 (the notes are heavier now) so any step walks back cleanly.
 8. **RELOAD** — at each book boundary, re-read this file + `_progress.md` to re-anchor the loop and resist drift.
 
 ## The chapter note format
@@ -53,6 +59,19 @@ Adapted from the `study-workflow` skill into a per-chapter loop. **Reload this a
 **Notable / flag:** anything that "pops" worth Michael's eye
 **Verified:** quotes checked against the chapter ✓
 ```
+
+## Prophetic-quotation protocol (Isaiah blocks & long OT quotations)
+
+For 2 Ne 12–24 (Isa 2–14), 1 Ne 20–21 (Isa 48–49), 3 Ne 22 (Isa 54), Jacob's Isaiah in 2 Ne 6–8, Abinadi on Isa 53 (Mosiah 14), and similar: **full exegesis AND Nephite framing.** Two layers, every such chapter:
+
+1. **The text itself** — full prophetic-text depth: what Isaiah means, dual / latter-day fulfillment, Hebrew sense where it earns it, and the **Book-of-Mormon-vs-KJV textual variants** (the BoM Isaiah differs from the KJV in instructive places — note them).
+2. **Why it's here — Michael's four questions, answered explicitly:**
+   - Why did *this* writer (Nephi / Jacob / Abinadi / Christ) include *this* passage *here*?
+   - Was it for us — the last-dispensation readers Nephi says he wrote for?
+   - How does it apply to us today?
+   - How do we read it *better* through the prophet's own framing?
+
+   Anchor to the prophet's stated method — Nephi's likening (1 Ne 19:23; the interpretive keys in 2 Ne 25), Christ's command to search Isaiah (3 Ne 23:1). Verify and quote these when reached; here they are pointers, not quotations.
 
 ## Resume after compaction (ammon)
 
