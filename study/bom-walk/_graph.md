@@ -143,6 +143,11 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - doctrine: `land-of-liberty` (conditional) · `prophets-sharpness-is-the-word` (not anger, 1:24-27) · `conditional-birthright`
 - study: `2ne1_prosperity-covenant` (spin-off, in progress)
 
+### from 2 Nephi 2
+- person: `jacob` (firstborn in wilderness) · `lucifer`/devil · `adam` & `eve` · `the-great-Mediator`
+- doctrine: `opposition-in-all-things` · `fall-was-forward` (felix culpa) · `agency` (free to choose; act vs be-acted-upon) · `atonement-answers-justice` · `devil-seeks-shared-misery` · `afflictions-consecrated`
+- study: `2ne2_fall-agency-opposition` (spin-off, in progress)
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -324,3 +329,11 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `image:awake-arise-from-the-dust` —[repentance]→ 1:13-23 (Isa 52:1-2)
 - `doctrine:land-of-liberty` —[conditional]→ 1:7 (Alma 46:10; Ether 2)
 - `person:nephi` —[birthright on hearkening]→ 1:28-29 (2:22; Gen 49:3-4) · `person:zoram` —[blessed]→ 1:30-32
+
+### from 2 Nephi 2
+- `doctrine:opposition-in-all-things` —[argument from structure of reality]→ 2:11-13 · —[study]→ 2ne2_fall-agency-opposition
+- `doctrine:fall-was-forward` —[Adam fell that men might be / joy]→ 2:22-25 (Moses 5:10-11)
+- `doctrine:agency` —[free to choose; enticement both ways; act vs be-acted-upon]→ 2:14-16, 26-27 (D&C 93:30)
+- `doctrine:atonement-answers-justice` —[broken heart + contrite spirit]→ 2:6-10 (Alma 42)
+- `person:lucifer` —[seeks shared misery]→ 2:17-18, 27 (D&C 10:22)
+- `links-to-study` → `agency`, `creation` (our corpus)
