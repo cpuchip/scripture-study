@@ -105,3 +105,9 @@ Two lines stopped me. First: the brothers heard God "in a still small voice, but
 Second: the people bitten by the fiery serpents only had to *look* at the brass serpent to live — "and because of the simpleness of the way, or the easiness of it, there were many who perished." They died because the cure was too easy to take seriously. That is the gospel's oldest scandal: grace offends by being free. We will trust a hard remedy and refuse a simple one, and the looking was always Christ.
 
 And Nephi, at the height of his power — untouchable, able to shock them — refuses their worship and tells them to honor their father instead. The most powerful he ever looks, he spends pointing away from himself.
+
+## 1 Nephi 18 — when the compass stops (2026-06-01)
+
+The detail that does all the work: the moment they bind Nephi and start partying, "the compass did cease to work." The guidance does not fail randomly — it goes dark exactly when they tie up the faithful one and forget who brought them. On a boat in the open ocean, that is not a metaphor you can wave off. Cut the faith and you lose the heading.
+
+And the hardest line: nothing softened Laman and Lemuel — not Nephi's wife crying, not the children, not their own elderly parents lying on sickbeds about to die of grief — "there was nothing save it were the power of God, which threatened them with destruction, could soften their hearts." Back in chapter 7 a sister's pleading was enough. Not anymore. Hearts can harden past the reach of love, until only the edge of the grave gets through — and even that only for a while. Meanwhile Nephi, tied up with swollen wrists in a sinking ship, "did praise him all the day long." The brothers murmured when the sailing was smooth; Nephi worshipped when he was bound. Circumstance was never what set either of them.

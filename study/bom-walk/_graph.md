@@ -109,6 +109,12 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - doctrine: `argue-faith-from-history` (Exodus) · `esteemeth-all-flesh-in-one`/conditional-land · `past-feeling` (deadened conscience) · `look-and-live`/easiness-as-stumbling-block · `refuse-worship-point-to-God`
 - detail: `women-endure-without-murmuring` (17:2)
 
+### from 1 Nephi 18
+- person: `jacob` + `joseph` (born in wilderness) · `nephi-wife`
+- object: `the-ship` (not after the manner of men) · `compass` (stops when Nephi bound)
+- place: `promised-land` (arrival)
+- doctrine: `prosperity-breeds-forgetting` · `praise-in-affliction` · `hardest-hearts-soften-only-at-destruction`
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -236,3 +242,12 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `doctrine:look-and-live` —[easiness-as-stumbling-block]→ 17:41 (Num 21; John 3:14; Alma 33/37)
 - `person:nephi` —[refuses-worship]→ 17:55 (points to God + honor father; cf 16:23-24) · —[filled-with-power]→ 17:48
 - `doctrine:prepare-a-way` —[recurs 4th+]→ 17:3 (3:7→9:6→10:18→17:3)
+
+### from 1 Nephi 18
+- `object:compass` —[stops-when-faithful-one-bound]→ 18:12 (enacts 16:28-29 guidance-by-faith)
+- `pattern:laman-lemuel-cycle` —[at-sea, most dramatic]→ 18:9-21 (revelry→bind→storm→repent→calm)
+- `doctrine:forgetting` —[ease-breeds-it]→ 18:9 (prosperity danger)
+- `doctrine:soften-the-heart` —[hardest-case: only destruction]→ 18:19-20 (wife/children/dying parents fail; cf 7:5,19)
+- `person:nephi` —[praise-while-bound]→ 18:16 (inverse of murmur-in-ease)
+- `person:lehi+sariah` —[nearly-die-of-children's-rebellion]→ 18:17-18
+- `event:storm-stilled` —[by-prayer]→ 18:21 (Jonah 1; Matt 8:24-26)
