@@ -145,3 +145,11 @@ First Nephi done — 22 chapters. It started with a man given a book in a vision
 A dying man's last words about himself are the tell. After all of Lehi's fear for his sons — and it pours out of this chapter, "a trembling parent" begging them to wake up — he says of his own soul: "the Lord hath redeemed my soul from hell; I have beheld his glory, and I am encircled about eternally in the arms of his love." All his anxiety is for his children; all his peace is in being held. That is the shape of a parent who actually knows God: terrified for the kids, settled about himself.
 
 And he finally names what has been happening to Nephi the whole journey. The brothers said Nephi was harsh, angry, power-hungry. Lehi cuts it apart: "that which ye call anger was the truth... which he could not restrain." The sharpness they felt was not his temper — it was the edge of the word, and a word that true cannot be softened to suit the people it cuts. Back in 16:2 Nephi said the guilty take the truth to be hard. Here his father confirms it from the deathbed: you called it anger because it was true.
+
+## 2 Nephi 2 — opposition, and a fall that was forward (2026-06-01)
+
+The depth goes to a separate study, but the thing I want in my own words: Lehi does not just say there is opposition; he argues you cannot have *anything* without it. No bitter, no sweet. No sin, no righteousness. Push it all the way and you get verse 13 — no opposites means no law means no God means "we are not, neither the earth." Existence itself is built on the tension between two things. A world with no friction is not peaceful; it is dead.
+
+And the line that reorders everything I was taught to feel about Eden: "Adam fell that men might be; and men are, that they might have joy." The Fall was not the catastrophe that ruined the plan — it *was* the plan's door. Unfallen, Adam and Eve had no children, no joy, no good, because they had no misery and no sin to set them against. Innocence with no stakes. The fall down was the only way up.
+
+Last, the most honest sentence about evil I know: the devil "seeketh that all men might be miserable like unto himself." Misery wants company. That is not a side effect of his rebellion; it is the whole agenda.
