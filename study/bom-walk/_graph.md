@@ -63,6 +63,10 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - pattern: `four-groups` (responses to the fruit)
 - event: `tree-of-life-dream`
 
+### from 1 Nephi 9
+- object: `large-plates` (kings/wars) — vs `small-plates` (ministry); both "plates of Nephi"
+- doctrine: `prepare-a-way-across-time` · `obedience-without-reason` · `divine-foreknowledge`
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -123,3 +127,8 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `pattern:four-groups` —[dream-source]→ 8 · —[studies]→ iron-rod-anchor-and-the-four-groups, four-groups-and-the-engineer
 - `doctrine:tender-mercies` —[inside-dream]→ 8:8 (cf 1:20)
 - `event:tree-of-life-dream` —[framed-by]→ Lehi's fear for his sons (8:3-4, 35-37)
+
+### from 1 Nephi 9
+- `doctrine:prepare-a-way` —[scale=millennia]→ 9:5-6 · —[fulfilled]→ D&C 10:38-40 (lost 116 pages) · —[partner]→ 3:7
+- `object:small-plates` —[vs]→ `large-plates` (kings/wars, 9:4) · —[both]→ "plates of Nephi" (9:2)
+- `doctrine:obedience-without-reason` —[9:5]→ grounded in 9:6 (God knows all); cf 4:6

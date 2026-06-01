@@ -51,3 +51,7 @@ And then, after they tie him up to leave him for the animals, he "frankly forgav
 What I keep missing when I think about the tree of life, and caught this time: it is a dad's dream about his kids. Lehi opens it telling us he rejoices over two sons and fears for two, and he ends it pleading with the two "with all the feeling of a tender parent." The iron rod and the spacious building are real — but the ache under the whole vision is a father watching half his children refuse the fruit he is holding out to them.
 
 And the frightening group isn't the ones lost in the mist. It is the ones who reached the tree, tasted the fruit, and *then let go* — not because temptation pulled them back, but because people in a building pointed and laughed. They had it in their mouths. Shame did what darkness couldn't.
+
+## 1 Nephi 9 — obeying a command you can't explain (2026-06-01)
+
+Nephi is told to keep a second record and flatly admits he has no idea why — "a wise purpose in him, which purpose I know not." He does it anyway. And the answer does not come for 2,400 years: those small plates are exactly what filled the hole when the 116 pages were lost in 1828. A man engraving metal in a tent in the desert, obeying a command with no visible reason, was the contingency plan for a crisis in upstate New York two and a half millennia later. That is what 3:7 actually means at full scale — the way is being prepared on a timeline none of us can see the edges of.
