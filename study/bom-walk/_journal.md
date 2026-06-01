@@ -55,3 +55,9 @@ And the frightening group isn't the ones lost in the mist. It is the ones who re
 ## 1 Nephi 9 — obeying a command you can't explain (2026-06-01)
 
 Nephi is told to keep a second record and flatly admits he has no idea why — "a wise purpose in him, which purpose I know not." He does it anyway. And the answer does not come for 2,400 years: those small plates are exactly what filled the hole when the 116 pages were lost in 1828. A man engraving metal in a tent in the desert, obeying a command with no visible reason, was the contingency plan for a crisis in upstate New York two and a half millennia later. That is what 3:7 actually means at full scale — the way is being prepared on a timeline none of us can see the edges of.
+
+## 1 Nephi 10 — wanting it for yourself (2026-06-01)
+
+The turn in this chapter is so quiet you can miss it: Lehi finishes recounting his vision, and Nephi's response is not "I believe my father." It is "I was desirous *also* that I might see, and hear, and know of these things." He wants the vision firsthand. And instead of that being presumptuous, the text says it is the whole point — the Holy Ghost is "the gift of God unto all those who diligently seek him." The prophet's son is invited to see what the prophet saw, on the same terms as anyone: seek diligently.
+
+That reframes Laman and Lemuel for me. Five chapters from now Nephi will ask them, *have ye inquired of the Lord?* — and they will say no. The difference between the brothers was never access. It was who bothered to ask. Nephi heard his father and went looking; they heard their father and argued about it.
