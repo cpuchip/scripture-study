@@ -160,6 +160,13 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - doctrine: `trust-not-arm-of-flesh` · `ask-liberally` (James 1:5) · `curse-answered-on-parents` · `shake-at-the-appearance-of-sin`
 - event: `lehi-death`
 
+### from 2 Nephi 5
+- people: `people-of-nephi` (Nephites) vs `lamanites`
+- place: `land-of-nephi` · `nephite-temple` (after Solomon's manner)
+- doctrine: `division-by-belief-not-bloodline` · `anti-kingship` (Nephi refuses crown) · `manner-of-happiness` (5:27)
+- tension: `complexion-language` (5:21 — FLAGGED for with-Michael study, NOT autonomous)
+- object: `small-plates` (begun by commandment, 5:28-33)
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -366,3 +373,11 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `doctrine:trust-not-arm-of-flesh` —[4:34]→ Jer 17:5 · `doctrine:ask-liberally` —[4:35]→ James 1:5 (→ JS-H)
 - `doctrine:curse-answered-on-parents` —[Lehi shields grandchildren]→ 4:6 (D&C 68:25)
 - `event:lehi-death` —[4:12]→ L&L anger resumes (sets up ch 5 division)
+
+### from 2 Nephi 5
+- `event:nephite-lamanite-division` —[over ruler + belief]→ 5:1-9 (not bloodline but response to revelation)
+- `event:nephite-temple` —[after Solomon's manner]→ 5:16 (1 Kgs 6)
+- `person:nephi` —[refuses kingship]→ 5:18-19 (→ Mosiah 29)
+- `phrase:manner-of-happiness` —[5:27]→ Nephite golden age (Alma 50:23)
+- `tension:complexion-language` —[hard verse]→ 5:20-25: curse=cut-off (v20); mark serves separation; reversible (3 Ne 2:15); corrected by 2 Ne 26:33 (verified); + 2013 essay. FLAGGED with-Michael (not autonomous)
+- `object:small-plates` —[begun by commandment]→ 5:28-33 (1 Ne 9; D&C 10:38-40)

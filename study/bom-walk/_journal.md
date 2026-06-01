@@ -167,3 +167,11 @@ The Psalm of Nephi undoes a thing I assume about spiritual giants. This is the m
 And then he does the thing I keep forgetting I am allowed to do: he *tells* his own soul to rise. "Awake, my soul! No longer droop in sin. Rejoice, O my heart." He does not wait to feel better. He commands the feeling. Joy is an act before it is a mood. Even his anger at his brothers — "Why am I angry because of mine enemy?" — he interrogates and sets down.
 
 The prayer I want to steal: "wilt thou make me that I may shake at the appearance of sin." Not "make me sinless" — make me sensitive. The exact opposite of the "past feeling" he diagnosed in Laman back in 1 Nephi 17. He wants a conscience that flinches. And it closes on the verse that would one day send a boy into a grove: "God will give liberally to him that asketh." The seek-and-find he preached to his brothers, now sung in the first person, out of grief into trust.
+
+## 2 Nephi 5 — the manner of happiness, and the verse I won't rush (2026-06-01)
+
+Two things sit side by side in this chapter and I want to honor both.
+
+The first is gentle: "we lived after the manner of happiness." Not "we were happy" — a *manner* of happiness, a way of living. Industry, the law kept, a temple raised in a new world, families gathered, the Lord with them. Happiness as something built, not something that landed.
+
+The second is hard, and I am choosing not to be glib about it. 2 Nephi 5:21 — the "skin of blackness" — is a verse that has been used to wound, and I will not pretend it reads easily. What I can say honestly is what the text itself separates: the curse is being "cut off from the presence of the Lord" (v20), tied to hearts hardened "like unto a flint"; the mark is described as serving a separation; and it is reversible — the same book will say flatly that God "denieth none... black and white, bond and free... all are alike unto God" (26:33). The 2013 Race and the Priesthood essay disavows the old theories that read dark skin as divine disfavor. But how to hold the verse is not mine to settle alone in a walk note. I flagged it for Michael and the Spirit. Some passages you read slowly, with someone, and do not resolve by yourself.
