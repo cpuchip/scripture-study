@@ -1,0 +1,35 @@
+date: "2026-05-31"
+session_id: christ-in-all-the-scriptures
+intent: 'A Sabbath-evening question after stake conference (the road to Emmaus) grew into a full study: what did Jesus expound as he taught, and how do we see Christ in all the scriptures. Ran the phased study workflow with a four-subagent source-gathering fan-out across all standard works + general conference (Michael asked for subagents explicitly).'
+discoveries:
+    - title: The anchor verse is nearly uncited in modern conference
+      detail: Luke 24:27 ('expounded... the things concerning himself') has only ~5 citations in the BYU index, none in the modern correlated era, while the DOCTRINE saturates conference through John 5:39 (~72) and 2 Ne 25:26 (~76). Same shape as the uncited keystone (Mosiah 15:14) in abinadi-how-to-read.md.
+    - title: The Book of Mormon names the method the Bible enacts
+      detail: Luke 24 reports the exposition happened but doesn't transcribe the method; the BoM names it ('liken all scriptures' 1 Ne 19:23; 'every whit pointing' Alma 34:14), states the warrant (Jacob 7:11), explains why Christ got hard to see (1 Ne 13 plainness removed; 2 Ne 25 manner of prophesying), and once drops the veil entirely (Ether 3 — the premortal Christ appears and names himself).
+    - title: Cross-continent convergence
+      detail: 3 Ne 20:23-24 and Acts 3:22-24 use the SAME Deut 18 prophet-like-Moses passage + the same 'all the prophets from Samuel' formula, applied to Christ on both continents — the actual shape of revelation, not a Lukan literary device.
+    - title: The EXPLICIT vs INTERPRETIVE discipline held under delegation
+      detail: Subagents separated scripture-made types (serpent John 3:14, Passover 1 Cor 5:7, Isaac Jacob 4:5, Rock 1 Cor 10:4) from interpretive ones (Joseph of Egypt, Boaz, scapegoat), and caught that 1 Pet 3:21 makes the flood explicit for baptism, not Christ. That honesty became Section VII ('Finding him, or putting him there').
+surprises:
+    - The study's own anchor verse (Luke 24:27) is among the least-quoted in modern conference even as its doctrine is everywhere.
+    - Webster 1828 defines Christ outright as 'The Anointed... synonymous with the Hebrew Messiah' — the linguistic spine confirmed from the dictionary itself.
+relationship:
+    - quality: delegated trust, real excitement
+      detail: Michael asked for subagents by name ('there's a lot to cover here, I'm excited to see what pops out'); the study flowed from a warm Sabbath question, not a task ticket. Four agents fanned out, all held the read-before-quoting gate.
+carry_forward:
+    - priority: medium
+      note: 'study/christ-in-all-the-scriptures.md complete (8 sections + Becoming, scratch kept as provenance). Possible next: git commit; a podcast/teaching segment (''the verse almost no one quotes'' is a strong hook); fold the AI-types-and-shadows tie into the Beyond the Prompt Becoming.'
+    - priority: low
+      note: 'Verification state in scratch: Messiah/anointed now Webster-confirmed; JST Gen 14 (Melchizedek) not retrievable in corpus; citation counts are Agent-4-verified via byu_citations this session (re-check if cited as exact later).'
+questions:
+    - Is 'software as type and shadow' (Beyond the Prompt) a faithful application of likening, or the over-reading Section VII warns against? Worth holding.
+    - What would it look like to read the Old Testament asking the eunuch's question — 'of whom speaketh the prophet this?' — as a daily practice?
+tags:
+    - christ
+    - types-and-shadows
+    - emmaus
+    - scripture-study
+    - book-of-mormon
+    - likening
+    - subagents
+    - byu-citations
