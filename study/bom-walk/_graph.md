@@ -98,6 +98,11 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - doctrine: `ask-in-faith`/`seek-and-find-payoff` · `no-unclean-thing`→hell-necessary · `final-state` (dwell or cast out) · `fruit=greatest-gift`
 - detail: `lehi-beheld-not-the-filthiness` (attention is selective)
 
+### from 1 Nephi 16
+- object: `liahona` (brass ball, two spindles, faith-powered writing)
+- place: `shazer` · `nahom` (Heb naham = mourning; Ishmael buried)
+- doctrine: `guilty-take-truth-hard` · `guidance-by-faith` · `small-means→great-things` · `honoring-the-faltering-leader`
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -209,3 +214,11 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `symbol:rod-of-iron` —[hold-fast→darts can't overpower]→ 15:24 (Eph 6:16)
 - `symbol:tree-of-life` —[fruit=greatest gift]→ 15:36 (D&C 14:7; = love of God 11:22)
 - `person:nephi` —[grief-at-foreseen-fall]→ 15:4-5 (cf 12:19-23)
+
+### from 1 Nephi 16
+- `object:liahona` —[works-by-faith]→ 16:28-29 · —[named/typologized]→ Alma 37 (word of Christ) · —[succeeds]→ pillar of fire (Ex 13:21)
+- `doctrine:guilty-take-truth-hard` —[16:2]→ Acts 7:54; Hel 13:24-27
+- `person:nephi` —[hands-role-back]→ asks murmuring Lehi to inquire (16:23-24): restores, doesn't usurp
+- `pattern:laman-lemuel-cycle` —[recurs: broken bow, even Lehi murmurs, Laman plots murder]→ 16:18-39
+- `person:laman` —[accusation=self-portrait]→ 16:38 (sees ambition, not revelation)
+- `place:nahom` —[Heb naham=mourning]→ 16:34
