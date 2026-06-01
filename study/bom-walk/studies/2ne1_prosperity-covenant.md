@@ -50,7 +50,7 @@ The formula shows up from Lehi to Alma to Helaman to the final pages of the war 
 
 ## III. The Jaredite Parallel
 
-Ether 2 changes the register. The Jaredites are older than Lehi's family by two millennia. They have no connection to the house of Israel. They are not Israelites; they have no Mosaic covenant; they carry no lineage claim. And yet the Lord delivers them to the same land on the same terms:
+Ether 2 changes the register. The Jaredites predate Lehi's family by many centuries. They have no connection to the house of Israel. They are not Israelites; they have no Mosaic covenant; they carry no lineage claim. And yet the Lord delivers them to the same land on the same terms:
 
 > "Whatsoever nation shall possess it shall serve God, or they shall be swept off when the fulness of his wrath shall come upon them." ([Ether 2:9](../../../gospel-library/eng/scriptures/bofm/ether/2.md))
 
@@ -70,7 +70,7 @@ The Jaredite narrative then enacts the covenant perfectly. They flourish. They p
 
 Webster 1828 gives "prosper" a crucial first sense: "to favor; to render successful." The subject is the Lord, not the recipient. To prosper is to be *made* successful by divine favor — an active grant, not a passive condition. This matters because it means prosperity is not self-generated. The prosperous person is the one whom God has chosen to render successful.
 
-But then comes the trap, and Helaman 12 names it with surgical precision:
+But then comes the trap, and Helaman 12 names it precisely:
 
 > "Yea, and we may see at the very time when he doth prosper his people, yea, in the increase of their fields, their flocks and their herds, and in gold, and in silver... doing all things for the welfare and happiness of his people; yea, then is the time that they do harden their hearts, and do forget the Lord their God, and do trample under their feet the Holy One — yea, and this because of their ease, and their exceedingly great prosperity." ([Helaman 12:2](../../../gospel-library/eng/scriptures/bofm/hel/12.md))
 
@@ -106,9 +106,9 @@ The covenant is not a gift to a people. It is a standing condition for any peopl
 
 This is the anti-triumphalist core of the whole theology. If Lehi's family had been wicked, they would have been swept off like the Canaanites. If the Canaanites had been righteous, Lehi's family would not have displaced them. Righteousness is the only qualifying condition, and it applies to every people equally.
 
-The Jaredites confirm it. Two thousand years before Nephi, the Jaredites held the same land on the same terms — "whatsoever nation" — and when they fulfilled iniquity, they were swept off to the last person. Ether 9:20's cross-reference to fn-15d traces back to "choice above all other lands" appearing in Ether 2:15, the same phrase used for the Nephites' land in 1 Nephi 2:20. The land is the constant. The covenanted people change as their righteousness changes.
+The Jaredites confirm it. Before Nephi, the Jaredites held the same land on the same terms — "whatsoever nation" — and when they fulfilled iniquity, they were swept off to the last person. The land is the constant. The covenanted people change as their righteousness changes.
 
-The Canaanites in Genesis 15:16 (cross-referenced at Ether 2:9) are the type for all of this: God told Abraham he could not give the land yet, "for the iniquity of the Amorites is not yet full." The Lord is patient; ripening takes time. But when it is complete, the covenant's judgment falls. The Jaredites, the Nephites, and the population that preceded them in the land all go the same way when they ripen in iniquity. The Canaanites were not uniquely wicked; they were uniquely ripe.
+The Canaanites in Genesis 15:16 (cross-referenced at Ether 2:9) are the type for all of this: God told Abraham he could not give the land yet, because the iniquity of the Amorites was not yet full. The Lord is patient; ripening takes time. But when it is complete, the covenant's judgment falls. The Jaredites, the Nephites, and the population that preceded them in the land all go the same way when they ripen in iniquity. The Canaanites were not uniquely wicked; they were uniquely ripe.
 
 This theology is not triumphalist. It is self-implicating. Every people who reads these pages reads their own potential sentence.
 
@@ -118,7 +118,7 @@ This theology is not triumphalist. It is self-implicating. Every people who read
 
 The covenant is a *national and communal* covenant tied to a *specific land*. This is not primarily a promise to individuals about their personal financial trajectories. It does not promise that a righteous person will be materially comfortable, or that an unrighteous person will be poor. The unit of the covenant is a people in a place.
 
-What can be said about individuals under the covenant? Alma 50:22 says faithful individuals "were delivered at all times" even when the national covenant was collapsing around them. This is personal deliverance from communal destruction — not prosperity, but preservation. The righteous righteous can live inside a collapsing covenant community and still receive God's care. But they do not escape the communal consequences; they are delivered through them, not around them.
+What can be said about individuals under the covenant? Alma 50:22 says faithful individuals "were delivered at all times" even when the national covenant was collapsing around them. This is personal deliverance from communal destruction — not prosperity, but preservation. The righteous can live inside a collapsing covenant community and still receive God's care. But they do not escape the communal consequences; they are delivered through them, not around them.
 
 What can be said about modern nations? Moroni answers this directly in Ether 2:11 — addressing "ye Gentiles" — the inhabitants of this land in whatever age reads the record. The covenant's terms apply to them. The decrees are "everlasting" (Ether 2:10). They are not limited to Nephite or Jaredite history; they are constitutional for this land.
 
@@ -136,4 +136,4 @@ The question for a prosperous person, in a prosperous nation, in a time of relat
 
 The posture that survives prosperity is not prosperity itself — it is the posture of Helaman 3:35's community, who "wax stronger and stronger in their humility" by deliberately returning to dependence: fasting, praying, yielding. Not because they are poor, but because they choose not to be comfortable in the way that forgets.
 
-There is something to sit with in Benjamin's two-sided formulation: "blessed in all things, both temporal and spiritual; and if they hold out faithful to the end they are received into heaven, that thereby they may dwell with God in a state of never-ending happiness" (Mosiah 2:41). The covenant points beyond land tenure. It points toward presence — permanent, uninterrupted, the opposite of being cut off. That is what it has been about all along.
+Benjamin's two-sided formulation deserves the last word: "blessed in all things, both temporal and spiritual; and if they hold out faithful to the end they are received into heaven, that thereby they may dwell with God in a state of never-ending happiness" (Mosiah 2:41). The covenant points beyond land tenure. It points toward presence — permanent, uninterrupted, the opposite of being cut off. That is what it has been about all along.
