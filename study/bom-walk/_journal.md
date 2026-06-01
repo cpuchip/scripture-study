@@ -39,3 +39,9 @@ The detail I'll carry: the chapter ends with Zoram, not with Laban's body. A man
 Two things land. First, Sariah. She breaks the same way Laman and Lemuel do — calls Lehi a visionary man, says they are going to die out here — but she breaks *toward* God, not away. When the sons come home she does not just stop complaining; she gets her own "I know of a surety." The difference between her murmur and theirs was never the circumstance. It was whether the heart would let the evidence in.
 
 Second, Lehi takes the word they used to wound him — "visionary" — and wears it: if I were not a visionary man we would all be dead in Jerusalem right now. And the footnote quietly points to Joseph's brothers calling him "this dreamer." Lehi is a dreamer like that Joseph — and the genealogy he reads that same chapter says he literally descends from him. The insult and the inheritance turn out to be the same word.
+
+## 1 Nephi 7 — forgetting, and frank forgiveness (2026-06-01)
+
+Nephi's whole rebuke to his brothers is one word, repeated: *forgotten.* You saw an angel — forgotten. God delivered you from Laban — forgotten. He diagnoses their unbelief not as a shortage of evidence but as amnesia; they cannot hold a miracle for a week. That reframes the Book of Mormon's endless "remember" for me — remembering isn't sentiment, it's the whole spiritual discipline, and forgetting is simply how faith dies.
+
+And then, after they tie him up to leave him for the animals, he "frankly forgave them all" — freely, no terms — and immediately tells them to go ask God's forgiveness too. The miracle everyone remembers from this chapter is the bands bursting. The harder miracle is the speed of the pardon.
