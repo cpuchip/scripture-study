@@ -1,16 +1,16 @@
 # Book of Mormon Walk — Progress
 
-**STATUS:** setup complete — awaiting Michael's go + goal-tool. **Not started.**
-**NEXT CHAPTER:** 1 Nephi 1
+**STATUS:** walking. Semantic search confirmed live (engine.ibeco.me).
+**NEXT CHAPTER:** 1 Nephi 2
 **DEPTH (ratified 2026-06-01):** mini-study per chapter (study-grade engagement, note-grade finish). Isaiah/long-OT quotations get full exegesis + Nephite framing + the four likening questions (see `_workflow.md`).
-**Started:** —
+**Started:** 2026-06-01
 **Last updated:** 2026-06-01
 
 > On resume (post-compaction): read this file → go to **NEXT CHAPTER** → read `_workflow.md` → continue. **Do not restart.**
 
 | Book | Chapters | Done through | Notes |
 |------|---------:|:------------:|-------|
-| 1 Nephi | 22 | — | |
+| 1 Nephi | 22 | **1** | |
 | 2 Nephi | 33 | — | includes Isaiah blocks (2 Ne 12–24 = Isa 2–14) |
 | Jacob | 7 | — | |
 | Enos | 1 | — | |
@@ -26,7 +26,7 @@
 | Ether | 15 | — | Jaredite record |
 | Moroni | 10 | — | |
 
-**Total: 239 chapters. Done: 0.**
+**Total: 239 chapters. Done: 1.**
 
 ## Book folder names (created lazily as reached)
 `1-nephi · 2-nephi · jacob · enos · jarom · omni · words-of-mormon · mosiah · alma · helaman · 3-nephi · 4-nephi · mormon · ether · moroni`
