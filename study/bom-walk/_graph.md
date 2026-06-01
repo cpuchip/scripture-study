@@ -41,12 +41,16 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - doctrine: `one-for-many` (4:13) · `obedience-before-sight` · `spirit-constraint`
 - type/symbol: `nephi-as-abraham` (4:6, not knowing) · `nephi-as-david` (4:18, own sword) · `laban-as-pharaoh`
 - event: `slaying-of-laban` · `plates-obtained` · `zoram-oath`
-- study: `1ne4_slaying-of-laban` (spin-off, in progress)
+- study: `1ne4_slaying-of-laban` (spin-off, COMPLETE — one-for-many = Caiaphas-mirror, neutral logic; Mosiah 1:5 confirms)
 
 ### from 1 Nephi 5
 - person: `sariah` (complaint → own witness) · `joseph-of-egypt` · `jeremiah`
 - doctrine: `preservation` (seed/record/word) · `independent-witness` · `brass-plates-canon`
 - type/symbol: `lehi-as-joseph-dreamer` (Gen 37:19)
+
+### from 1 Nephi 6
+- doctrine: `purpose-of-the-record` (persuade to Christ) · `curation-by-worth` · `please-God-not-world`
+- object: `small-plates` (distinct from Lehi's record)
 
 ## Edges
 
@@ -86,3 +90,8 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `object:brass-plates` —[contains]→ Torah + Jewish record + prophets + Jeremiah + genealogy (5:11-14) · —[fuller-than]→ surviving OT
 - `doctrine:preservation` —[motif]→ Joseph→family→plates-never-perish→commandments-to-children (5:14-21)
 - `object:brass-plates` —[destiny]→ all nations + never perish (5:18-19; Alma 37:4)
+
+### from 1 Nephi 6
+- `doctrine:purpose-of-the-record` —[stated]→ 1 Ne 6:4 · —[bookend]→ Moro 10:32 · —[parallel]→ John 20:31
+- `doctrine:curation-by-worth` —[stated]→ 1 Ne 6:3-6 · —[inherited]→ Mormon/Moroni (W of M 1:4)
+- `object:small-plates` —[distinct-from]→ Lehi's record / large plates (6:1)
