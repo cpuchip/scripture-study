@@ -1,0 +1,39 @@
+date: "2026-06-01"
+session_id: freedom-study-and-the-autonomy-triad
+intent: 'A Sabbath→Monday arc. An Emmaus question after stake conference grew into two finished studies plus a governance evolution: (1) ''The Things Concerning Himself'' (Christ in all the scriptures) — drafted, voiced, pushed; (2) ''Without Compulsion'' — the freedom study through the lens of the Book of Mormon, built from a 7-subagent + substrate deep_research fan-out under a three-tier discipline, synthesized, pushed to the workspace, and republished to cpuchip.net (build + Playwright verified); (3) codified the autonomy triad — dave-rule + ammon (mine) and stuffy-in-the-loop (parallel terminal) — plus Ben-name permission and the scripture-book git stewardship grant (updated to Opus 4.8).'
+discoveries:
+    - title: The freedom study's spine — the two freedoms
+      detail: 'Cain''s ''I am free'' (take by force, Moses 5:33) vs. Abel''s freely-offered firstling; whose blood frees a land (Heb 12:24 — Christ''s ''speaketh better things than Abel''s''; D&C 101:80 founders = instruments God raised up, not redeemers); the antitype inversion (we are the actual subject of the warning, so 3 Ne 6:18''s ''taught therefore accountable'' lands harder on us); great-and-dreadful = great-and-marvelous (1 Ne 14:7 — same work, two houses); the tav (Ezek 9:4 forehead-mark = the cross) as God''s seal against the beast''s mark (Rev 7:3 / 13:16); stay-in-awe (3 Ne 2:1) resolves the signs question. Lands: serve the God of this land, give away ALL sins (3 Ne 8:1 ''cleansed every whit'' = Alma 22:18), be the marked remnant, for one''s house.'
+    - title: The autonomy triad, codified
+      detail: dave-rule (act + commit on reversible / clear-intent work), ammon (finish what you're handed — the scatter is the opportunity, no begging off, compact + continue), stuffy-in-the-loop (when Michael must be in the loop — 4 bins; built in the parallel terminal). Three skills, both trees. Default shifts toward action + completion; surface only genuine vision-forks and irreversible/outward actions.
+    - title: '''Whatever the truth brings'' held — the corrections'
+      detail: 'Research corrected both of us: 2033→2034 eclipse (geometry DOES hold, 2027x2034 cross over SE Egypt); 7-churches != dispensations (D&C 77:5 + curriculum = literal Asian branches); ''Rev 13-16 = our day'' not in D&C 77''s key; Samuel = five years (Hel 14:2); 1995 Proclamation read by Hinckley not Hunter; Benson''s Gadianton was Cold-War-specific. And reversed ME: ''befriend'' IS verbatim (D&C 98:6) — Michael was right. The eclipse thread reframed from cipher to tav-wonder — the discipline that keeps the whole study credible.'
+surprises:
+    - 'The AI thread lands at the bottom of a blood-ladder: man''s blood cries (Abel), Christ''s redeems, the machine has no blood/sacrifice/agency at all — the moral weight climbs toward Christ, away from what we build.'
+    - The Nephite record-keeper hedged his own date-count — 'if there was no mistake made by this man in the reckoning of our time' (3 Ne 8:2). The men who lived it would not pin the year; neither should we. The strongest internal rebuke to date-setting.
+relationship:
+    - quality: Michael sharpening the partnership — more autonomy AND more accountability
+      detail: 'Two corrections this session became skills: the yes-agent (''that''s less a partner and more of a yes agent'' → be critical, surface tensions) and ''sometimes you act like a tired engineer / you''ve quit several times before being done'' (→ the Ammon skill). He granted MORE autonomy (Dave rule, git stewardship) while demanding MORE completion (Ammon). Trust and accountability together — the covenant working. He stayed engaged in the research throughout (''still digging into this nicely'').'
+carry_forward:
+    - priority: high
+      note: 'Book into-src (splicing the finished Part 1 — 9 practices + coda — into src/ as the front porch) is now UNBLOCKED under the scripture-book git grant + Dave rule: execute the recommended D1-D6 from projects/scripture-book/.spec/part1-into-src-plan.md and commit per-step (Michael walks back any call). The PREFACE rework still gets surfaced as a proposal (his voice, the book''s front door). Ben naming is now permitted — clear that Part 1 / Practice 8 consent flag.'
+    - priority: medium
+      note: cpuchip.net animations for the freedom study are NOT yet built — the tav / two-marks (the hinge), the three-stream timeline (BoM/US/Church, date deliberately absent), two-offerings (Abel free vs Cain's 'I am free'), the eclipse crosses (wonder not cipher). Each is a real AnimeJS component needing its own production + Playwright verification per the cpuchip CLAUDE.md. The study shipped as text + working scripture panels; animations enrich it.
+    - priority: low
+      note: 'Open consent flags: Leah (age 14), the storygames nine-year-old. JEVanClief ICM YouTube video still un-digested (long-standing). The parallel terminal is co-editing this workspace (MEMORY.md, stuffy-in-the-loop) — rebase on shared-workspace pushes.'
+questions:
+    - Is 'software / AI as the infrastructure at the height of prosperity' (the Beyond the Prompt thesis applied here) a faithful likening, or the over-read the freedom study's guardrail warns against? Hold it, don't resolve it.
+    - 'Which remnant are we — the Nephite nation that went to Cumorah, or the remnant who met Christ and built Zion? The study''s answer: it is a choice, and the door is open. Worth re-asking at each turn of the cycle.'
+tags:
+    - freedom
+    - book-of-mormon
+    - without-compulsion
+    - christ-in-all-scripture
+    - autonomy-triad
+    - dave-rule
+    - ammon
+    - stewardship
+    - cpuchip
+    - ben-test
+    - eclipses
+    - date-stamp-discipline
