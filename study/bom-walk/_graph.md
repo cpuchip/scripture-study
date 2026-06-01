@@ -115,6 +115,11 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - place: `promised-land` (arrival)
 - doctrine: `prosperity-breeds-forgetting` · `praise-in-affliction` · `hardest-hearts-soften-only-at-destruction`
 
+### from 1 Nephi 19
+- person: `zenock` · `neum` · `zenos` (lost prophets, brass plates)
+- doctrine: `liken-all-scriptures` (reading-key, 19:23) · `christology: God-of-Israel = crucified Jehovah` · `two-visitations` (voice vs tempest) · `prophet-weak-in-writing`
+- phrase: `god-of-nature-suffers` (Zenos, 19:12)
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -251,3 +256,11 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `person:nephi` —[praise-while-bound]→ 18:16 (inverse of murmur-in-ease)
 - `person:lehi+sariah` —[nearly-die-of-children's-rebellion]→ 18:17-18
 - `event:storm-stilled` —[by-prayer]→ 18:21 (Jonah 1; Matt 8:24-26)
+
+### from 1 Nephi 19
+- `doctrine:liken-all-scriptures` —[reading-key]→ 19:23-24 (profit+learning; liken to yourselves) — Isaiah-protocol anchor for 20-21 + 2 Nephi
+- `doctrine:christology` —[God-of-Israel = crucified Jehovah]→ 19:7-10 (yieldeth himself; condescension cf 1 Ne 11; Isa 50:6)
+- `person:zenos/zenock/neum` —[lost-prophets, Christ's death]→ 19:10 (brass-plates payoff ch 5) · —[Zenos→]→ Jacob 5
+- `phrase:god-of-nature-suffers` —[Zenos]→ 19:12 (3 Ne 8)
+- `doctrine:two-visitations` —[voice vs tempest]→ 19:11 (3 Ne 9-11; cf 14:7)
+- `person:nephi` —[admits-may-err]→ 19:6 (Ether 12:23) · —[wearied-by-vision]→ 19:20
