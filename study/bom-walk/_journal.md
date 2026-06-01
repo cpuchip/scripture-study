@@ -97,3 +97,11 @@ And a detail I had never noticed: Nephi says Lehi "beheld not the filthiness of 
 The moment I keep turning over: the family is starving, the bows are broken, and even Lehi — the prophet, the one who saw the tree — murmurs against God. Nephi is the seer; he could just inquire himself and bypass his faltering father. Instead he carves a new bow and asks Lehi, "Whither shall I go to obtain food?" He hands the question back to the man who is wobbling. And Lehi inquires, gets chastened, repents, and is restored to his office. Nephi lifts his father by giving him his job back instead of stepping into it. That is a leadership I have never seen named this clearly — you can be the designated ruler and still refuse to usurp the one who is failing; you can hold someone up by handing them the role rather than the rebuke.
 
 And the Liahona only works by faith. It is not a GPS. The pointers move "according to the faith and diligence and heed which we did give unto them." When they coasted, it went dark. Guidance you have to keep believing in to keep receiving.
+
+## 1 Nephi 17 — past feeling, and the easiness that kills (2026-06-01)
+
+Two lines stopped me. First: the brothers heard God "in a still small voice, but ye were past feeling, that ye could not feel his words; wherefore, he has spoken unto you like unto the voice of thunder." Sin does not make God go quiet — it makes *you* go numb, so He has to shout where He would have whispered. The thunder is not extra attention; it is the only volume a deadened heart can still pick up. And the frightening next step is obvious: keep numbing, and the thunder stops landing too.
+
+Second: the people bitten by the fiery serpents only had to *look* at the brass serpent to live — "and because of the simpleness of the way, or the easiness of it, there were many who perished." They died because the cure was too easy to take seriously. That is the gospel's oldest scandal: grace offends by being free. We will trust a hard remedy and refuse a simple one, and the looking was always Christ.
+
+And Nephi, at the height of his power — untouchable, able to shock them — refuses their worship and tells them to honor their father instead. The most powerful he ever looks, he spends pointing away from himself.
