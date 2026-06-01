@@ -85,3 +85,9 @@ And the cleanest statement of what the Book of Mormon thinks it is for: not to r
 The image I am keeping: the whore has dominion over all the earth, all nations; the church of the Lamb is "few," its dominions "small" — and the saints, scattered everywhere, are "armed with righteousness and with the power of God." Not armed with numbers. Not armed with weapons. Armed with righteousness. If you are in a church that will always be outnumbered, that verse is the whole strategy: holiness is the defense, and being few was never the disqualifier.
 
 And the quiet marvel: Nephi sees the end of the world and is told not to write it, because that job belongs to John — who is six hundred years away and does not exist yet. Two men shown the same vision, and heaven assigns the writing to one of them. The canon was coordinated across centuries. Nephi's silence about Revelation is obedience, not a gap.
+
+## 1 Nephi 15 — they didn't ask (2026-06-01)
+
+Five chapters I have been waiting for this, and it is sharper than I expected. Nephi asks his brothers point-blank: "Have ye inquired of the Lord?" And they say: "We have not; for the Lord maketh no such thing known unto us." Two failures stacked in one breath — they never asked, and they had already decided He does not answer. A closed loop: assume no revelation, so don't ask, so get none, so "see?" The reason Nephi could see what they couldn't was never a better mind or a special call. It was that he asked believing he would be answered, and they did not ask at all.
+
+And a detail I had never noticed: Nephi says Lehi "beheld not the filthiness of the water" — his father was so caught up in the fruit he did not even see the river beside it was filthy. You become aware of whatever you turn toward. Face the tree and the sewage beside it goes unnoticed; face the building and you obsess over the gulf. Attention is the whole game.
