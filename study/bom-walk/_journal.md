@@ -117,3 +117,11 @@ And the hardest line: nothing softened Laman and Lemuel — not Nephi's wife cry
 Here is the verse that tells you how to read the whole rest of the book: "I did liken all scriptures unto us, that it might be for our profit and learning." Nephi does not hand his brothers Isaiah as ancient Judean history; he hands it as a mirror — liken it to yourselves. That is the key for everything coming: the Isaiah chapters are not a detour, they are meant to be read with your own name in them.
 
 And the Christology stopped me cold. The one who gets scourged and spit on and crucified is, Nephi says flatly, "the very God of Israel" — the God of Abraham, Isaac, and Jacob. The God who made the covenants is the God who hangs on the cross. Zenos's four words for it: "the God of nature suffers." The Creator dies and the rocks tear. And He "suffereth it" — voluntarily, "because of his loving kindness." It is the condescension from chapter 11 again: God comes all the way down, down to the spitting.
+
+## 1 Nephi 20 — Isaiah 48, with my name in it (2026-06-01)
+
+Doing the first Isaiah chapter under the full protocol, and the thing that makes Nephi's whole method click: this chapter *is* his family. Isaiah 48 is about a covenant people who are Israel in name but "swear not in truth," who get "chosen in the furnace of affliction," who are told to "flee Babylon." That is the Lehites exactly — a broken-off remnant, refined in a wilderness, fleeing a Jerusalem falling to Babylon. No wonder he likens it; he is not reaching, he is reading his own situation off the page.
+
+And the verified variant earns its reputation: the KJV says "the waters of Judah"; the Book of Mormon adds "or out of the waters of baptism." One phrase, and Israel stops being a bloodline and becomes a covenant — you are of Israel by the water you have gone under, not the name you were born with.
+
+Two lines to keep: "I have chosen thee in the furnace of affliction" — the fire is not rejection, it is selection. And God's own grief: "O that thou hadst hearkened to my commandments — then had thy peace been as a river." The saddest "if only" in scripture is God's.

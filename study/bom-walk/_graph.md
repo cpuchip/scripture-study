@@ -120,6 +120,11 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - doctrine: `liken-all-scriptures` (reading-key, 19:23) · `christology: God-of-Israel = crucified Jehovah` · `two-visitations` (voice vs tempest) · `prophet-weak-in-writing`
 - phrase: `god-of-nature-suffers` (Zenos, 19:12)
 
+### from 1 Nephi 20 (Isaiah 48)
+- place: `babylon`/`chaldeans`
+- doctrine: `covenant-Israel` (waters of baptism) · `furnace-of-affliction-as-refining` · `mercy-for-His-names-sake` · `divine-lament` (O that thou hadst hearkened) · `flee-babylon` · `no-peace-to-the-wicked`
+- variant: `waters-of-baptism` (20:1, BoM adds vs KJV Isa 48:1 — VERIFIED)
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -264,3 +269,11 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `phrase:god-of-nature-suffers` —[Zenos]→ 19:12 (3 Ne 8)
 - `doctrine:two-visitations` —[voice vs tempest]→ 19:11 (3 Ne 9-11; cf 14:7)
 - `person:nephi` —[admits-may-err]→ 19:6 (Ether 12:23) · —[wearied-by-vision]→ 19:20
+
+### from 1 Nephi 20 (Isaiah 48)
+- `isaiah:48` —[likened-by-Nephi]→ 1 Ne 20 (his remnant = nominal-Israel-refined-and-called-out; 19:24)
+- `variant:waters-of-baptism` —[BoM adds, 20:1 vs KJV Isa 48:1, verified]→ Israel by covenant not bloodline
+- `doctrine:furnace-of-affliction` —[chosen-in, not rejected]→ 20:10 (Mal 3:3)
+- `doctrine:divine-lament` —[O that thou hadst hearkened → peace as a river]→ 20:18 · —[inverse]→ 20:22 (no peace to the wicked)
+- `doctrine:christology` —[first-and-last/Creator/Redeemer = Jehovah]→ 20:12-17 (cf 19:7-10; Rev 1:17)
+- `doctrine:flee-babylon` —[2nd-exodus + latter-day]→ 20:20 (D&C 133; Rev 18:4)
