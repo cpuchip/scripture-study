@@ -73,3 +73,9 @@ That reframes the whole tree-of-life dream from chapter 8. The fruit "most sweet
 One verse, the angel calls the great-and-spacious building "the pride of the children of men." The very next verse, Nephi's own seed is overpowered "because of the pride of my seed." They did not just walk past the building — they moved into it. The symbol they were shown to fear is exactly what killed them. And it was the believers' descendants, not the rebels', who got proud. Standing by the tree once is no immunity.
 
 And underneath it: Nephi is shown that his entire people will be wiped out, and he goes and builds the ship anyway. He spends his life founding a nation he has just watched die in vision. That is a kind of faith I do not have a category for yet.
+
+## 1 Nephi 13 — providence and tragedy in one breath (2026-06-01)
+
+The thing I won't let myself round off: in the same vision where the Spirit moves on Columbus and the colonists and delivers them from their "mother" nation, the angel says "the wrath of God is upon the seed of thy brethren" — the people already on the land, "scattered before the Gentiles and smitten." Nephi's heaven's-eye view of the founding of America puts the blessing and the dispossession in adjacent sentences. The book will not let you have the providence without the cost; most retellings keep only the first half.
+
+And the cleanest statement of what the Book of Mormon thinks it is for: not to replace the Bible but to "establish the truth of the first" and restore the "plain and precious things" taken out in transmission. Two records, one Shepherd. A humbler self-claim than I expected — confirm, restore, point to Christ.

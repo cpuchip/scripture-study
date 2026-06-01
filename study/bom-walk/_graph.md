@@ -76,13 +76,19 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - person: `the-spirit-of-the-lord` · `the-angel` · `the-virgin`(Mary) · `lamb-of-god`/`son-of-eternal-father` · `twelve-apostles`
 - doctrine: `condescension-of-God` (Father birth + Son cross) · `belief-before-sight` · `incarnation-as-love-of-God`
 - symbol: `fountain-of-living-waters` · `high-mountain`(revelation-place)
-- study: `1ne11_condescension-of-god` (spin-off, in progress)
+- study: `1ne11_condescension-of-god` (spin-off, COMPLETE — condescension + tree = one question; pride goes up & mocks, love goes down & becomes the fruit)
 
 ### from 1 Nephi 12
 - person: `twelve-nephite-disciples` · `nephi-seed` vs `brethren-seed`
 - doctrine: `pride-destroys` · `garments-white-in-blood` · `dwindle-in-unbelief` · `judgment-hierarchy`
 - tension: `dark-loathsome-language` (12:23; flag for study w/ 2 Ne 5)
 - event: `nephite-history-foreseen`
+
+### from 1 Nephi 13
+- person: `great-abominable-church`/`church-of-the-devil` · `columbus`(man-wrought-upon) · `colonist-gentiles`
+- object: `bible` (book of the Lamb) · `book-of-mormon` (last records)
+- doctrine: `apostasy-as-subtraction` (plain&precious removed) · `BoM-mission` (establish Bible + restore plainness) · `two-churches-only`
+- event: `gentile-settling-of-promised-land`
 
 ## Edges
 
@@ -171,3 +177,10 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `symbol:river/mist/building/gulf` —[interpreted]→ 12:16-18 (hell/temptation/pride/justice+Messiah; Luke 16:26) — completes 1 Ne 8
 - `doctrine:garments-white-in-blood` —[12:10-11]→ Rev 7:14; Alma 5:21
 - `tension:dark-loathsome-language` —[12:22-23]→ cf 2 Ne 5:20-25 (flag for study)
+
+### from 1 Nephi 13
+- `object:bible` —[plain&precious-removed]→ 13:26-29 (apostasy = subtraction, post-apostles) · —[established-by]→ `object:book-of-mormon`
+- `object:book-of-mormon` —[mission]→ restore plainness + confirm Bible + "all must come unto him" (13:40) · —[two-in-one]→ Ezek 37 (one Shepherd, 13:41)
+- `person:church-of-the-devil` —[defined-by]→ desire + praise of world (13:6-9) · —[only-two-churches]→ 14:10 · —[root]→ Rev 17
+- `event:gentile-settling` —[providence]→ 13:12-13 · —[+tragedy]→ 13:14 (brethren's seed smitten)
+- `tension:complexion-language` —[13:15]→ cf 12:23; 2 Ne 5:21
