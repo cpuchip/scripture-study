@@ -175,3 +175,9 @@ Two things sit side by side in this chapter and I want to honor both.
 The first is gentle: "we lived after the manner of happiness." Not "we were happy" — a *manner* of happiness, a way of living. Industry, the law kept, a temple raised in a new world, families gathered, the Lord with them. Happiness as something built, not something that landed.
 
 The second is hard, and I am choosing not to be glib about it. 2 Nephi 5:21 — the "skin of blackness" — is a verse that has been used to wound, and I will not pretend it reads easily. What I can say honestly is what the text itself separates: the curse is being "cut off from the presence of the Lord" (v20), tied to hearts hardened "like unto a flint"; the mark is described as serving a separation; and it is reversible — the same book will say flatly that God "denieth none... black and white, bond and free... all are alike unto God" (26:33). The 2013 Race and the Priesthood essay disavows the old theories that read dark skin as divine disfavor. But how to hold the verse is not mine to settle alone in a walk note. I flagged it for Michael and the Spirit. Some passages you read slowly, with someone, and do not resolve by yourself.
+
+## 2 Nephi 6 — the method handed down (2026-06-01)
+
+Small thing, big thing. Nephi asked his brother Jacob to read the people Isaiah — and Jacob opens by naming the method Nephi taught: "they may be likened unto you, for ye are of the house of Israel." The likening is not just Nephi's habit; it is being handed to the next teacher on purpose. You pass down *how* to read, not only what to read.
+
+And a line I almost skated past: the scattered Jews, hated and driven for centuries, are "not suffered to perish, because of the prayers of the faithful." A whole people's survival credited to other people's prayers. Intercession doing quiet structural work across history.

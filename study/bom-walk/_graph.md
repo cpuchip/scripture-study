@@ -167,6 +167,11 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - tension: `complexion-language` (5:21 — FLAGGED for with-Michael study, NOT autonomous)
 - object: `small-plates` (begun by commandment, 5:28-33)
 
+### from 2 Nephi 6 (Jacob's sermon begins)
+- person: `jacob` (preacher, holy order) — civic (Nephi) vs priestly (Jacob)
+- doctrine: `liken-method-passed-Nephi→Jacob` · `jews-preserved-by-prayers-of-faithful` (6:11) · `gentile-condition` (repent + fight not Zion + don't join abominable church)
+- isaiah: `49:22-26` quoted+expounded (held thread from 1 Ne 21)
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -381,3 +386,10 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `phrase:manner-of-happiness` —[5:27]→ Nephite golden age (Alma 50:23)
 - `tension:complexion-language` —[hard verse]→ 5:20-25: curse=cut-off (v20); mark serves separation; reversible (3 Ne 2:15); corrected by 2 Ne 26:33 (verified); + 2013 essay. FLAGGED with-Michael (not autonomous)
 - `object:small-plates` —[begun by commandment]→ 5:28-33 (1 Ne 9; D&C 10:38-40)
+
+### from 2 Nephi 6
+- `doctrine:liken-all-scriptures` —[passed Nephi → Jacob]→ 6:4-5 (Nephi commissions; method inherited)
+- `doctrine:jews-preserved-by-prayers-of-the-faithful` —[6:11]→ intercession across history (cf 1 Ne 7)
+- `doctrine:christology` —[Holy One of Israel crucified]→ 6:9 (1 Ne 19:9-10)
+- `doctrine:gentile-condition` —[repent + fight not Zion + don't join abominable church]→ 6:12 (1 Ne 14:10)
+- `isaiah:49:22-26` —[quoted+expounded by Jacob]→ 6:6-7, 16-18 · —[BoM rendering]→ "Mighty God shall deliver his covenant people" (6:17)
