@@ -212,6 +212,11 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - image: `leadership-flight` (qualification = "thou hast clothing"; even he refuses, 13:6-7) · `finery-as-spoil` (daughters of Zion = visible wealth from ground faces, 13:16-24)
 - variant: `let-not-this-ruin-come` (v6 +"not...come": prevent not manage — VERIFIED) · `cannot-hide-it` (v9: involuntary exposure vs KJV brazen — VERIFIED)
 
+### from 2 Nephi 14 (Isaiah 4)
+- isaiah: `4` (cleansing of Zion, millennial day) — NEAR-IDENTICAL to KJV (selective variants confirmed)
+- image: `the-same-fire` (spirit of burning purges v4 = flaming fire defends v5) · `pillar-democratized` (Exodus cloud/fire over EVERY dwelling, v5)
+- doctrine: `judgment-front-half-of-redemption` (judged daughters 13:16-24 = washed daughters 14:4) · `branch-of-the-Lord` (Christ + remnant, v2) · `written-among-the-living` (book of life, v3)
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -503,3 +508,10 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `variant:let-not-this-ruin-come` —[BoM v6 adds "not...come", verified]→ prevent ruin not manage it
 - `variant:cannot-hide-it` —[BoM v9 involuntary exposure vs KJV brazen, verified]→ sin written on the face
 - `doctrine:Christ-prosecutor-of-the-poor` —[the Judge = the Redeemer who felt every ground face]→ 13:13 (11:2; 9:21)
+
+### from 2 Nephi 14 (Isaiah 4)
+- `image:the-same-fire` —[spirit of burning purges (v4) = flaming fire defends (v5)]→ 14:4-5 (1 Ne 22:15-17; Mal 3:2)
+- `doctrine:judgment-front-half-of-redemption` —[judged daughters 13:16-24 = washed daughters 14:4]→ 14:4
+- `image:pillar-democratized` —[Exodus cloud/fire over ONE tabernacle → over EVERY dwelling]→ 14:5 (Ex 13:21) — the home a holy place
+- `doctrine:branch-of-the-Lord` —[Christ + remnant, same word]→ 14:2 (Jer 23:5; 2 Ne 3:5)
+- `meta:near-identical-chapter` —[Isaiah 4 matches KJV; minor variants only]→ shows BoM's Isaiah variants are selective not blanket

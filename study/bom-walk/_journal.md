@@ -237,3 +237,9 @@ And the charge that brings God to his feet as prosecutor — "the Lord standeth 
 The deep study I handed off surfaced the thing I had half-felt and not named. The last of the ten woes is not annihilation: "wo unto all those who die in their sins; for they shall **return to God, and behold his face, and remain in their sins**" (v38). The monster never needed to hold anyone forever. The horror Jacob ends on is standing in front of the One who could have changed you — seeing his face, with perfect knowledge of what you chose — and still being exactly what you made yourself. They held themselves.
 
 And the sermon is a ring. It opens (v1) and closes (v53) on "the covenants of the Lord," and somewhere in the middle the gate finally gets its name: after fifty verses repeating the title across the cosmic argument and the woes, the invitation lands — "come unto the Holy One of Israel" (v51). The keeper of the gate who employs no servant (v41) is the same One the whole sermon has been naming. The door is not anonymous.
+
+## 2 Nephi 14 — the same fire (2026-06-01)
+
+Two short verses sitting next to each other did something I want to keep. "The spirit of burning" purges the filth of Zion (v4), and then "a flaming fire by night" defends Zion (v5). Same fire. The thing that burns away what is filthy is the thing that then becomes your covering light. I have wanted judgment-fire and glory-fire to be two different fires — one for the wicked, one for me. Isaiah will not separate them. The fire that purges is the fire that shelters, and you do not get the second without the first.
+
+And the pillar moved. In the Exodus the cloud and fire stood over the one tabernacle. Here it is "upon every dwelling-place of mount Zion." Every home gets its own pillar. The presence stops being a place you travel to and becomes a covering over where you live.
