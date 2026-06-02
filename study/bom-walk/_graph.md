@@ -616,6 +616,10 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - person: `Alma-the-younger` (restrained by the Spirit; gives the answer to suffering; delivered) · `Amulek` (begs to save the burning) · `the-burning-believers+children` (martyrs received in glory) · `Zeezrom` (harrowed up; confesses; cast out) · `the-chief-judge+Nehor-establishment` (mock, smite, then crushed)
 - doctrine: `why-God-permits-the-innocent-to-suffer` (vv10-11 — glory / full accountability / blood as witness; **the BoM's hardest confrontation**) · `the-Spirit-constrains-the-prophets-power` (vv10-11) · `protection-lasts-only-as-long-as-the-work` (v13) · event: `Zeezrom-harrowed-up-pains-of-hell-as-guilt` (vv6-7) · theme: `Christic-silence-and-the-cross-echoes` (vv17-24) · `sign-seeking-mockery-refused` (v24) · event: `deliverance-after-the-full-measure` (vv24-29 — prison rent, establishment crushed) · theme: `scriptures-burned-but-the-word-survives` (v8)
 
+### from Alma 15 (Zeezrom healed — the Ammonihah arc resolves)
+- person: `Zeezrom` (guilt-fevered → healed by faith → baptized → preacher; the complete conversion) · `Alma-the-younger` (heals Zeezrom; shelters Amulek) · `Amulek` (forsook all — wealth, friends, father, kindred) · `the-cast-out-believers` (at Sidom) · `the-people-of-Ammonihah` (hardened; ascribe God's power to the devil)
+- doctrine: `guilt-as-a-burning-fever-pains-of-hell-bodily` (vv3-5) · `healed-by-faith-body-and-soul-together` (vv6-11) · event: `complete-conversion-bribing-lawyer-to-preacher` (vv11-12) · theme: `hardened-collective-refuses-what-the-individual-receives` (v15 — anti-Salem) · `cost-of-discipleship-forsaking-all` (v16 — Amulek) · `bear-the-burden-of-the-brother-who-paid-the-cost` (v18)
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -1564,3 +1568,11 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `theme:sign-seeking-mockery-refused` —["if ye have the power... deliver yourselves, and then we will believe"; the prophets will not stage a miracle on a mocker's dare]→ 14:24 (Matt 12:39; Luke 23:35-39; Alma 30:43-52)
 - `event:deliverance-after-the-full-measure` —[the power comes only "when the last had spoken" — every tormentor's guilt full; the prison rent, the whole Nehor establishment crushed, the two unhurt; the withheld power (8:31) finally shown]→ 14:24-29 (Acts 12:6-10; 16:26; Hel 5:21-50; Alma 14:11)
 - `theme:scriptures-burned-but-the-word-survives` —[the records "which contained the holy scriptures" burned with the believers; copies burn, the word does not]→ 14:8 (Jer 36:21-28)
+
+### from Alma 15
+- `doctrine:guilt-as-a-burning-fever-pains-of-hell-bodily` —[Zeezrom's sin "did harrow up his mind... scorched with a burning heat"; unresolved guilt (esp. over harming others) sickens the body; the pains of hell (14:6) made literal]→ 15:3-5 (Alma 14:6; 36:12-16; Ps 32:3-4; 38:3-8)
+- `doctrine:healed-by-faith-body-and-soul-together` —[the fever caused by guilt is cured by "faith which is in Christ"; the redemption that cleanses the conscience heals the flesh it scorched; salvation and healing one act]→ 15:6-11 (Mark 9:23; 2:1-12; Acts 3:1-8; Alma 7:11-13)
+- `event:complete-conversion-bribing-lawyer-to-preacher` —[Zeezrom: bribe → tremble → inquire → harrowed guilt + confession → fever → healed → baptized → "began to preach"; the chief accuser becomes a herald]→ 15:11-12 (Alma 11-14; Mosiah 27; Acts 9) — no one too far gone
+- `theme:hardened-collective-refuses-what-the-individual-receives` —[Zeezrom turns from the depths; Ammonihah "ascribing all the power... to the devil" (Matt 12:24, the Beelzebub move); the anti-Salem]→ 15:15 (Matt 12:24-32; Alma 13:18; 16:9-11) — the difference is the hardening (12:10-11)
+- `theme:cost-of-discipleship-forsaking-all` —[Amulek "forsaken all his gold, silver... rejected by once-friends and by his father and his kindred"; the reluctant convert paid everything once he stopped refusing]→ 15:16 (Luke 14:33; 18:28-30; Matt 19:29; Alma 10:4)
+- `theme:bear-the-burden-of-the-brother-who-paid-the-cost` —[Alma takes the bereft Amulek "to his own house... strengthened him in the Lord"; the baptismal covenant (Mosiah 18:8) lived between the missionaries]→ 15:18 (Mosiah 18:8-9; Gal 6:2; 2 Tim 1:16)
