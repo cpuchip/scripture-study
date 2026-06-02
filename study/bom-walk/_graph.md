@@ -809,6 +809,10 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - person: `Captain-Moroni` (accusatory letter — right doctrine + heart, wrong judgment) · `Pahoran` (accused of "thoughtless stupor"/treason — falsely)
 - doctrine: `the-righteous-slain-are-not-lost-and-not-proof-of-their-wickedness` (vv12-13) · `death-of-the-righteous-condemns-the-negligent-not-the-dead` (vv10-13) · `cleanse-the-inward-vessel-first` (vv23-24) · `internal-corruption-defeats-before-the-enemy-does` (vv15-16) · `fear-God-not-power-seek-to-pull-power-down` (vv28, 36) · theme: `right-doctrine-pure-heart-wrong-judgment-of-a-person` (vv7, 18, 33)
 
+### from Alma 61 (Pahoran's gracious reply)
+- person: `Pahoran` (falsely accused, driven out by rebels; responds with grace) · `Captain-Moroni` (the accuser whose harsh letter still carried a true word) · `the-king-men-rebels` (overthrew Zarahemla, allied with Lamanites)
+- doctrine: `receive-false-accusation-by-blessing-the-heart-behind-it` (v9) · `a-flawed-message-can-still-carry-a-true-word` (vv19-20) · `liberty-subordinated-to-obedience-to-God` (vv12-13) · theme: `the-assume-the-best-instinct-vindicated` (vv3-8 — Helaman right, Moroni wrong) · `take-the-truth-let-the-tone-go` (vv9, 19-20) · `conflict-that-deepens-the-friendship` (vv9, 21)
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -2120,3 +2124,11 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `doctrine:cleanse-the-inward-vessel-first` —["the inward vessel shall be cleansed first, and then shall the outer vessel be cleansed also"; the corruption at the head must be fixed before the outward war can be won — inside before outside]→ 60:23-24 (Matt 23:25-26; Alma 60:15; Ps 51:6)
 - `doctrine:fear-God-not-power-seek-to-pull-power-down` —["I seek not for power, but to pull it down... it is my God whom I fear"; the rare man who threatens force only to destroy power-seeking, not to seize power — the inversion of unrighteous dominion; incorruptible even in error]→ 60:28, 36 (D&C 121:39; Acts 5:29; Alma 48:17)
 - `theme:right-doctrine-pure-heart-wrong-judgment-of-a-person` —[Moroni is right about the doctrine, the king-men, his motives, and even claims revelation — yet his judgment of Pahoran ("thoughtless stupor," "traitors," threatening to march) is false; being right + pure doesn't guarantee you're right about the person]→ 60:7, 18, 33 (Prov 18:13; 16:32; Alma 61:9; John 7:24)
+
+### from Alma 61
+- `doctrine:receive-false-accusation-by-blessing-the-heart-behind-it` —[falsely called a traitor + threatened with insurrection, Pahoran answers "it mattereth not; I am not angry, but do rejoice in the greatness of your heart"; he skips his own vindicated innocence and celebrates the accuser's good heart — charity not easily provoked]→ 61:9 (1 Cor 13:4-7; Prov 15:1; 1 Pet 2:23; Matt 5:11-12)
+- `theme:the-assume-the-best-instinct-vindicated` —[Pahoran had been "driven out" by rebels who "withheld our provisions"; Helaman's charitable "maybe they're in trouble too" (58:35) was kinder AND more accurate than Moroni's "thoughtless stupor... traitors"]→ 61:3-8 (Alma 58:35; 1 Cor 13:7; Prov 18:13)
+- `doctrine:a-flawed-message-can-still-carry-a-true-word` —["I was somewhat worried... whether it should be just... to go against our brethren. But ye have said... the Lord hath commanded"; the letter wrong about the person was right about the principle, and resolved Pahoran's real doubt]→ 61:19-20 (Rom 8:28; Num 22:28-31; Phil 1:18)
+- `theme:take-the-truth-let-the-tone-go` —[Pahoran reads Moroni's harsh letter as counsel not insult — taking the true word and letting the wounding tone go; the difference between offense and benefit is in the reader's charity]→ 61:9, 19-20 (Prov 9:8-9; 27:6; D&C 121:43)
+- `doctrine:liberty-subordinated-to-obedience-to-God` —["we would subject ourselves to the yoke of bondage if it were requisite with the justice of God... But behold he doth not command us... but that we should put our trust in him"; freedom is not the highest value — obedience to God is, and God commands resistance here]→ 61:12-13 (Acts 5:29; Mosiah 7:21; Matt 6:33)
+- `theme:conflict-that-deepens-the-friendship` —[sharp reproof (Moroni) + gracious reception (Pahoran, "my beloved brother") → united again in the same cause; D&C 121:43 lived — reproving with sharpness, then an increase of love, here supplied by the one wrongly reproved]→ 61:9, 21 (D&C 121:43; Prov 27:17; Eccl 4:9-12)
