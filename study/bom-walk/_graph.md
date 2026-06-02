@@ -753,6 +753,10 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - person: `Amalickiah` (the flatterer; cunning + flattering words; bids for kingship) · `Captain-Moroni` (rends coat into title of liberty; prays before proclaiming) · object: `the-title-of-liberty` ("our God, our religion, and freedom, and our peace, our wives, and our children")
 - doctrine: `the-inner-threat-of-flattery-and-ambition` (vv4-10) · `the-self-maledictory-covenant-of-liberty` (vv19-22) · `conditional-protection-destroyed-only-by-our-transgressions` (v18) · theme: `how-quick-to-forget-after-deliverance` (vv7-8) · `prayer-before-the-banner` (v13) · `the-Joseph-remnant-typology-refuses-to-flatter` (vv23-27) · `the-hard-edge-of-wartime-liberty` (v35) · event: `Christians-named` (vv14-15)
 
+### from Alma 47 (Amalickiah's treachery — "come down from the mount")
+- person: `Amalickiah` (master of treachery; flattery→command→betrayal→poison→murder→throne) · `Lehonti` (lured off the mount, poisoned by degrees) · `the-Lamanite-king` (trusts the token of peace, stabbed)
+- theme: `come-down-from-the-mount` (vv7-13 — lured off secure ground) · `poison-by-degrees` (v18) · `treachery-weaponizes-trust` (vv10-35) · `accuse-the-innocent-of-your-own-crime` (vv24-30) · `Amalickiah-as-anti-Moroni` (secrecy/fraud vs transparency/prayer) · doctrine: `apostate-worse-strange-to-relate` (v36)
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -1963,3 +1967,11 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `theme:the-Joseph-remnant-typology-refuses-to-flatter` —[the rent coat of Joseph → rent garments → Moroni's rent coat; "a remnant of the seed of Joseph... preserved by the hand of God" — but "even it shall be ourselves if we do not stand fast"]→ 46:23-27 (Gen 37:31-36; 2 Ne 3:5; Jacob 5:43-45; Ether 13:6-7)
 - `event:Christians-named` —[the true believers "took upon them, gladly, the name of Christ, or Christians as they were called"; the name given by outsiders, worn gladly by the faithful]→ 46:14-15 (Acts 11:26; Mosiah 5:7-12; Alma 48:10)
 - `theme:the-hard-edge-of-wartime-liberty` —[the Amalickiahites who "would not enter into a covenant to support the cause of freedom... he caused to be put to death"; wartime sedition law with Amalickiah fleeing to raise the Lamanites — the record doesn't present its heroes as flawless]→ 46:35 (Mosiah 29:32; Alma 51:19-20; 62:9-10)
+
+### from Alma 47
+- `theme:come-down-from-the-mount` —[Lehonti safe "upon the top of the mount"; Amalickiah cannot reach him, so he sends four times "desiring him to come down... and bring his guards"; the fourth descent is his death — the adversary lures you off secure ground by small guarded compromises]→ 47:7-13 (Neh 6:2-3; Matt 4:5-7; Prov 4:14-15)
+- `theme:poison-by-degrees` —[Amalickiah "caused that one of his servants should administer poison by degrees to Lehonti, that he died"; gradual hidden destruction, fatal before noticed — how corruption works on a soul that left its ground]→ 47:18 (Alma 54:7; 2 Pet 2:1-3; Song 2:15)
+- `theme:treachery-weaponizes-trust` —[the king's command, Lehonti's deal, the token of peace, the pursuers' grief, the queen's witnesses — every trust converted into the means of destruction; ambition without conscience harvests trust rather than breaking it openly]→ 47:10-35 (2 Sam 13:3-14; Ps 41:9; Luke 22:48)
+- `theme:accuse-the-innocent-of-your-own-crime` —[Amalickiah stabs the king, then "pretended to be wroth," blames the king's servants, sends the loyal to pursue the innocent; the murderer becomes the chief mourner and avenger]→ 47:24-30 (Gen 37:31-33; 1 Kgs 21:8-13; Prov 6:16-19)
+- `doctrine:apostate-worse-strange-to-relate` —["instructed in the same knowledge of the Lord, nevertheless, it is strange to relate... they became more wild, wicked and ferocious than the Lamanites"; the rejected light becomes its own fuel; the most dangerous enemy is a Nephite who left]→ 47:36 (Alma 24:30; Heb 10:26; 2 Pet 2:20-21; Matt 12:43-45)
+- `theme:Amalickiah-as-anti-Moroni` —[Amalickiah works by secret embassy, poison, lying servants; Moroni rends his coat in public + prays before he acts; treachery vs transparency, the two faces of leadership in the war record]→ 47:10, 34 (Alma 46:11-13; John 3:20-21; Prov 10:9)
