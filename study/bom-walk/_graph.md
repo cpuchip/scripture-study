@@ -745,6 +745,10 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - person: `Captain-Moroni` (conditional-protection doctrine; keeps his word; repeated mercy) · `Zerahemnah` (credits armor not God; refuses then accepts the oath; scalped)
 - doctrine: `conditional-protection-faithful-or-fall` (v4) · theme: `two-readings-of-the-same-victory` (vv3 vs 9 — providence vs armor) · `Moronis-word-binds-him` (vv10-11) · `mercy-with-a-limit-spare-the-person-not-the-threat` (vv6, 11) · `repeated-mercy-stop-the-killing-when-the-enemy-yields` (v20) · event: `end-of-Almas-record` (v24)
 
+### from Alma 45 (Alma's prophecy + departure — Helaman's record begins)
+- person: `Alma-the-younger` (final prophecy, blessing, translation-like departure) · `Helaman` (reaffirms belief; receives records; takes up ministry)
+- prophecy: `Nephite-extinction-400-years` (vv10-14) · event: `Almas-translation-like-departure` (vv18-19 — "even as Moses") · doctrine: `the-conditional-land-covenant` (v16) · theme: `the-prophecy-sealed-until-fulfilled` (v9) · `the-pride-cycle-reignites-the-moment-deliverance-passes` (vv1, 23-24) · `Mormon-lives-the-fulfillment-he-records` (vv10-14)
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -1939,3 +1943,10 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `theme:Moronis-word-binds-him` —[Moroni returns the weapons but then "I cannot recall the words which I have spoken... ye shall not depart except ye depart with an oath"; his own prior word binds him even to his constraint]→ 44:10-11 (Num 30:2; Matt 5:33-37; Eccl 5:4-5; Josh 9:18-20)
 - `theme:mercy-with-a-limit-spare-the-person-not-the-threat` —[life freely offered for an oath, but no release without it — an enemy freed without a covenant will "come again to war"; mercy spares the person without pretending the threat isn't real]→ 44:6, 11 (Alma 43:54; Deut 20:10-12; Luke 14:31-32)
 - `theme:repeated-mercy-stop-the-killing-when-the-enemy-yields` —[the sword goes up + comes down three times the moment the threat relents (43:54; 44:17, 20); "the work of death should cease again"; a war for peace keeps offering the off-ramp]→ 44:20 (Alma 43:54; Prov 24:17; Matt 5:7; Rom 12:18)
+
+### from Alma 45
+- `prophecy:Nephite-extinction-400-years` —["four hundred years from the time that Jesus Christ shall manifest himself... shall dwindle in unbelief... even until the people of Nephi shall become extinct... because they shall sin against so great light and knowledge"; the 24:30 principle at civilizational scale; Mormon records his own people's obituary]→ 45:10-14 (1 Ne 12:10-15; Hel 13:9; Morm 8:6; Alma 24:30)
+- `event:Almas-translation-like-departure` —["he departed... and was never heard of more... taken up by the Spirit, or buried by the hand of the Lord, even as Moses"; the converted persecutor leaves the stage as Moses did]→ 45:18-19 (Deut 34:5-6; 2 Kgs 2:16; Mosiah 27:8-10)
+- `doctrine:the-conditional-land-covenant` —["Cursed shall be the land... unto destruction, which do wickedly, when they are fully ripe... for the Lord cannot look upon sin with the least degree of allowance"; a standing condition re-triggered by each generation]→ 45:16 (2 Ne 1:7; Ether 2:8-12; D&C 1:31)
+- `theme:the-prophecy-sealed-until-fulfilled` —["what I prophesy unto thee ye shall not make known... even until the prophecy is fulfilled; therefore write the words"; some truths sealed to be vindicated later, not proclaimed now]→ 45:9 (Dan 12:4, 9; Isa 29:11; Ether 4:5-7)
+- `theme:the-pride-cycle-reignites-the-moment-deliverance-passes` —[v1 "exceedingly rejoiced... fast much and pray much" → v24 "grew proud, being lifted up... because of their exceedingly great riches"; gratitude curdles into pride within one chapter; the Nephites survive the armies but not their own success]→ 45:1, 23-24 (Hel 12:1-3; 4 Ne 1:24-26; Deut 8:11-14; Alma 46:1-7)
