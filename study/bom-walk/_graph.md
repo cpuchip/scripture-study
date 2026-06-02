@@ -293,6 +293,12 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - variant: `lands-of-promise-added` (v2 — fits restoration tilt) · `remnant/raiment` (v19) · `bring/break` (v25); Lucifer passage shared w/ KJV
 - META: `isaiah-block-complete` (arc: mountain rises → all pride falls to its Luciferian root → Zion for the poor)
 
+### from 2 Nephi 25 (Nephi's plainness — block synthesis)
+- person: `nephi` (the plain prophet, "I have seen his day") · `jesus-christ` (NAMED + dated v19) · `the-Jews` (reject→crucify→scattered→restored on belief)
+- doctrine: `plainness-as-method` (chosen vs "manner of the Jews", v1-8) · `Christ-named-and-dated` (Jesus Christ, Son of God, 600 yrs, v19) · `no-other-name` (v20; Acts 4:12) · `grace-after-all-we-can-do` (v23 — effort turns toward grace, grace saves) · `we-talk-of-Christ` (v26 — plainness distilled) · `law-kept-but-dead` (obey the type, watch the antitype, v24-27)
+- synthesis: `isaiah-block` (Nephi supplies the plain interpreter for chs 12-24)
+- FLAG: 25:23 grace/works = strongest remaining 2 Ne spin-off candidate
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -679,3 +685,12 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `image:zion-for-the-poor` —[block's last word; the ground poor (13:14) now trust in Zion]→ 24:32 (bookends 12:2)
 - `variant:lands-of-promise-added` —[BoM v2 adds restoration clause, verified]→ fits the mercy/restoration tilt
 - `META:isaiah-block-complete` —[chs 12-24 = Isaiah 2-14 walked; mountain rises → pride falls to Lucifer's root → Zion for the poor]→ synthesis in ch 25
+
+### from 2 Nephi 25 (Nephi's plainness)
+- `doctrine:plainness-as-method` —[chosen against the "manner of the Jews"; plain key to dense Isaiah]→ 25:1-8 (2 Ne 31:3; 33:5)
+- `prophecy:Christ-named-and-dated` —[Jesus Christ, Son of God, in 600 years]→ 25:19 (1 Ne 10:4; Matt 1:21)
+- `doctrine:no-other-name` —[only Jesus Christ saves]→ 25:20 (Acts 4:12; Mosiah 3:17)
+- `doctrine:grace-after-all-we-can-do` —[reconcile/labor turns toward grace; grace saves]→ 25:23 (10:24; Eph 2:8-9) — neither alone
+- `doctrine:we-talk-of-Christ` —[plainness distilled: point to the source for remission]→ 25:26 (1 Ne 6:4; 11:4)
+- `doctrine:law-kept-but-dead` —[obey the type while watching for the antitype]→ 25:24-27 (Gal 3:24-25; Rom 7:4)
+- `synthesis:isaiah-block` —[Nephi supplies the plain interpreter]→ 25 (the hard words get their key)
