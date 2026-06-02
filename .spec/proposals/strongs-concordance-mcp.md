@@ -1,8 +1,8 @@
 # Proposal — Strong's Concordance MCP (Hebrew/Greek word-work for the Bible walks)
 
-**Status:** PLAN-ONLY, deferred. Build *before* the Old Testament walk, not during it.
+**Status:** ✅ RATIFIED + BUILDING (2026-06-02). **Source of truth is now the repo** — `projects/strongs-concordance-mcp/` (`github.com/cpuchip/strongs-concordance-mcp`), see its `README.md` + `docs/data-formats.md`. **P0–P2 shipped** (dual-lexicon pipeline + `strongs_define`/`strongs_search`, 19,570 entries, smoke-verified). **Remaining: P3** (`strongs_for_verse` via validated kaiserlik tagging) **+ P4** (register in `.mcp.json` + `stewards.mcp_servers`). Ratified options: dual lexicon (Strong's 1890 + STEPBible) · `for_verse` in v1 via validated KJV tagging · full build grant ([[feedback_strongs_mcp_stewardship]]). This proposal is kept as the origin record; do not duplicate the repo's spec here.
 **Raised:** 2026-06-02, at the close of the Book of Mormon walk, while scoping the canon-walk series (PoGP → D&C → OT → NT). See `study/bom-walk/_workflow.md` → "the canon-walk series."
-**Architectural twin:** `scripts/webster-mcp` (Go MCP server + bundled public-domain `data/`). Build pattern: the `mcp-server-go` skill.
+**Architectural twin:** `scripts/webster-mcp` (Go MCP server + bundled public-domain `data/`). Build pattern: the `mcp-server-go` skill. **Verified:** one stdio binary serves both Claude Code (`.mcp.json`) and pg-ai-stewards (`stewards.mcp_servers` connector, proxied by the bridge) — same as webster, no new substrate schema.
 
 ## The need (in one sentence)
 
