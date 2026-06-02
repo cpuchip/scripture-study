@@ -219,3 +219,9 @@ Nephi is about to copy thirteen chapters of Isaiah by hand onto metal plates, an
 And the reason is not that Isaiah is authoritative. It is that "he verily saw my Redeemer, even as I have seen him." Three men who saw the same face, corroborating each other across centuries — Isaiah, Nephi, Jacob. Nephi reads Isaiah not as a student citing an authority but as a witness who recognizes another witness. That is a different posture toward scripture than the one I usually bring.
 
 The line I want to keep is v4: "all things which have been given of God from the beginning of the world, unto man, are the typifying of him." The law of Moses is not the alternative to grace I half-carry it as. It is a finger pointing. Everything is. He hands you the decoder ring before he gives you the cipher.
+
+## 2 Nephi 12 — the work of your own hands (2026-06-01)
+
+Two things from the first Isaiah chapter. The idolatry verse landed differently than it ever has: "they worship the work of their own hands, that which their own fingers have made." I have always read that as ancient — carved statues, golden calves, somebody else's primitive mistake. But it is not about the material. It is about bowing to your own output. In a workshop full of things my own fingers made, that verse is not a museum piece; it is a mirror. The thing you built, treated as the thing you serve.
+
+And the variant in v9 stopped me cold enough to check it twice. The King James says the men bow down — to idols — therefore don't forgive them. The Book of Mormon inserts "not": they bow *not* down, the great man humbles himself *not*. Same consonants, opposite meaning, and the Book of Mormon's reading is the sharper one. The sin is not worshiping the wrong thing; it is refusing to bend at all. High and low, neither will bow. That is the exact pride the whole Day of the Lord exists to level — and the mountain that rises while everything proud falls is the answer to it.

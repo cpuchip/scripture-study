@@ -199,6 +199,13 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - doctrine: `my-soul-delighteth` (study as appetite, ×5: vv2,4,5,5,6) · `three-saw-the-Redeemer` (Isaiah+Nephi+Jacob; law of witnesses) · `all-things-typify-Christ` (the master key, 11:4) · `law-of-Moses-as-type` · `ontological-dependency` (no Christ → we are not, 11:7)
 - seq: `preface→isaiah-block` (decoder ring before the cipher; aim = rejoice, 11:8 → chs 12-24)
 
+### from 2 Nephi 12 (Isaiah 2) — Isaiah block begins
+- isaiah: `2` (latter-day temple + Day of the Lord)
+- image: `two-elevations` (mountain rises / all pride brought low — "the Lord alone exalted")
+- prophecy: `latter-day-temple-+-gathering` (12:2-3) · `swords-into-plowshares` (millennial peace, 12:4)
+- doctrine: `idolatry-as-self-worship` (work of their own hands, 12:8) · `cease-from-man` (breath in his nostrils, 12:22) · `the-Lord-alone-exalted` (Christological)
+- variant: `added-confession` (v5 +Isa 53:6 — VERIFIED) · `not-reversal` (v9 +"not"×2: refused humility — VERIFIED) · `both-ships` (v16 LXX+MT — VERIFIED) · `O-Lord-address` (v6)
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -466,3 +473,14 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `doctrine:ontological-dependency` —[no Christ → no God → no creation → we are not]→ 11:7 (inverse of Lehi's 2 Ne 2:13)
 - `doctrine:law-of-Moses-as-type` —[given to typify Christ]→ 11:4 (2 Ne 5:10; Alma 34:14)
 - `seq:preface→isaiah-block` —[decoder ring before the cipher; aim = rejoice]→ 11:8 → chs 12-24 (Isaiah 2-14)
+
+### from 2 Nephi 12 (Isaiah 2)
+- `image:two-elevations` —[one mountain rises / all pride brought low]→ 12:2 vs 12:11-17 ("the Lord alone exalted")
+- `prophecy:latter-day-temple-+-gathering` —[in the last days, all nations flow up]→ 12:2-3 (Micah 4:1; D&C 133:13)
+- `prophecy:swords-into-plowshares` —[millennial peace]→ 12:4 (Micah 4:3; D&C 45:66-69)
+- `doctrine:idolatry-as-self-worship` —[worship the work of their own hands]→ 12:8 (Ps 115:4-8) — live in a building age
+- `doctrine:cease-from-man` —[breath in his nostrils]→ 12:22 (Ps 146:3; Jer 17:5; 2 Ne 4:34)
+- `variant:added-confession` —[BoM v5 adds "gone astray", imports Isa 53:6, verified]→ likening built into the invitation
+- `variant:not-reversal` —[BoM v9 inserts "not"×2: refused humility, verified]→ sin relocated from misdirected worship
+- `variant:both-ships` —[BoM v16 = LXX + MT, verified]→ brass-plate predates the textual split
+- `doctrine:the-Lord-alone-exalted` —[= the Redeemer Nephi saw, 11:2]→ 12:11,17 (Christological per 11:4)
