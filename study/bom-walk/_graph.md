@@ -683,6 +683,10 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - person: `Korihor` (anti-Christ; full secular-materialist creed; struck dumb; "I always knew"; trodden down) · `Alma-the-younger` (refutes by argument first, sign last; discerns willful unbelief) · `Giddonah` (high priest at Gideon)
 - doctrine: `no-law-against-belief-punish-crimes-not-faith` (vv7-11) · `all-things-denote-there-is-a-God` (v44 — design argument) · `argument-before-sign-reason-first` (vv37-47) · `unbelief-as-chosen-lie-believed-through-success` (vv42, 52-53) · theme: `the-complete-anti-Christ-creed` (vv13-18) · `accusation-by-projection-priestcraft` (vv27-35) · `the-devil-abandons-his-children` (v60)
 
+### from Alma 31 (the Rameumptom — false worship)
+- person: `the-Zoramites-Zoram` (dissenters; Rameumptom worship; deny Christ; elect-by-pride) · `Alma-the-younger` (heartbroken; prays for strength + the lost) · place: `Rameumptom` (the high one-man stand)
+- theme: `false-worship-as-inversion-of-true` (vv12-23) · `the-two-prayers-self-vs-others` (vv16-18 vs 30-35) · doctrine: `election-by-pride-vs-mercy` (vv16-18, 24-25) · `the-word-more-powerful-than-the-sword` (v5) · `affliction-swallowed-in-the-joy-of-Christ` (vv36-38)
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -1764,3 +1768,10 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `doctrine:argument-before-sign-reason-first` —[Alma engages the evidence ("thou hast had signs enough") and gives the sign only when Korihor demands it + danger is clear; "better that thy soul should be lost than... bringing many souls down to destruction"]→ 30:37-47 (Matt 12:39; John 6:30; D&C 46:9; Jacob 7:13-21)
 - `doctrine:unbelief-as-chosen-lie-believed-through-success` —["I know that thou believest, but thou art possessed with a lying spirit" → "I always knew that there was a God... pleasing unto the carnal mind... until... I verily believed that they were true"; success laundered the lie into conviction]→ 30:42, 52-53 (2 Cor 11:14; Jacob 7:14; 2 Ne 28:5-9)
 - `theme:the-devil-abandons-his-children` —[Korihor begging house to house, then "run upon and trodden down"; "the devil will not support his children at the last day, but doth speedily drag them down to hell"; paid by the master you serve]→ 30:56-60 (Alma 3:27; 5:41-42; D&C 29:45; Jacob 7:20)
+
+### from Alma 31
+- `theme:false-worship-as-inversion-of-true` —[fixed memorized prayer, one-man high stand, "a chosen and a holy people," elect/damned decree, "no Christ"/"a spirit forever," home and silent till next week; a perfect negative image of the gospel]→ 31:12-23 (Matt 6:5-7; Luke 18:11; Isa 29:13; James 1:22)
+- `doctrine:election-by-pride-vs-mercy` —["thou hast elected us that we shall be saved, whilst all around us are elected to be cast... down to hell"; double-predestination as the rich man's self-justification — wealth proof of election, poverty proof of damnation]→ 31:16-18, 24-25 (Luke 18:9-14; Alma 32:2-5; Jacob 2:13-21)
+- `theme:the-two-prayers-self-vs-others` —[the Rameumptom prays against the outsider; Alma prays for the people who pray against him — "their souls are precious, and many of them are our brethren"; true worship told from false by which way the prayer points]→ 31:16-18 vs 31:30-35 (Matt 5:44; Luke 23:34; Alma 26:26)
+- `doctrine:the-word-more-powerful-than-the-sword` —["the preaching of the word had... more powerful effect upon the minds of the people than the sword"; a missionary answer to a military threat]→ 31:5 (Alma 26:26; Hel 5:50-52; Heb 4:12)
+- `doctrine:affliction-swallowed-in-the-joy-of-Christ` —[they "suffer no manner of afflictions, save it were swallowed up in the joy of Christ... because he prayed in faith"; absorbed not removed]→ 31:36-38 (Mosiah 24:13-15; Matt 5:10-12; Alma 33:23)
