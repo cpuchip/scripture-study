@@ -211,3 +211,11 @@ Second, the line I keep returning to: "the keeper of the gate is the Holy One of
 What I want to keep: Jacob read three chapters of Isaiah for one sentence. "We are not cast off." All the exegesis — the suffering Servant, the awake-O-Zion, the cup of trembling — comes down to a pastor lifting the chins of discouraged people: lay aside your sins, do not hang down your heads. The variant I found back in 7:1 — God asking "have I cast thee off forever?" — gets its answer not in a footnote but in 10:20, applied to faces in front of him. The study was for the altar call all along. That reframes what I think study is *for*.
 
 And the order in v24 I keep tripping over: reconcile yourselves, *and then* it is only through grace that ye are saved. I want it to be one or the other — either I do it or he does it. Jacob will not let me have it that clean. The turning is mine; the saving is his. It is the gate again (9:41): you walk up, he lets you through. You cannot save yourself, and you cannot skip the walk.
+
+## 2 Nephi 11 — delight, not duty (2026-06-01)
+
+Nephi is about to copy thirteen chapters of Isaiah by hand onto metal plates, and he prefaces it by saying "my soul delighteth" five times. That stopped me. The thing I treat as a discipline — *read your scriptures* — he treats as appetite. He wants to give Isaiah to his children the way you want to give someone the best thing you own.
+
+And the reason is not that Isaiah is authoritative. It is that "he verily saw my Redeemer, even as I have seen him." Three men who saw the same face, corroborating each other across centuries — Isaiah, Nephi, Jacob. Nephi reads Isaiah not as a student citing an authority but as a witness who recognizes another witness. That is a different posture toward scripture than the one I usually bring.
+
+The line I want to keep is v4: "all things which have been given of God from the beginning of the world, unto man, are the typifying of him." The law of Moses is not the alternative to grace I half-carry it as. It is a finger pointing. Everything is. He hands you the decoder ring before he gives you the cipher.

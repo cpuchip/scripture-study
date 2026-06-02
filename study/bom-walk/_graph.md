@@ -195,6 +195,10 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - doctrine: `name-Christ-by-angel` (~559 BC) · `crucifixion-at-Jerusalem` (privilege+priestcraft NOT race) · `land-of-liberty-no-king-but-Christ` · `two-churches-by-allegiance` (10:16) · `gentile-adoption` (10:18) · `we-are-not-cast-off` (10:20, answers 7:1 variant) · `reconcile-then-grace` (10:24)
 - reading: `isles-plural→other-branches` (Jacob reasons from grammar, 10:21)
 
+### from 2 Nephi 11 (Nephi's preface to the Isaiah block)
+- doctrine: `my-soul-delighteth` (study as appetite, ×5: vv2,4,5,5,6) · `three-saw-the-Redeemer` (Isaiah+Nephi+Jacob; law of witnesses) · `all-things-typify-Christ` (the master key, 11:4) · `law-of-Moses-as-type` · `ontological-dependency` (no Christ → we are not, 11:7)
+- seq: `preface→isaiah-block` (decoder ring before the cipher; aim = rejoice, 11:8 → chs 12-24)
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -454,3 +458,11 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `doctrine:two-churches-by-allegiance` —[fight Zion = whore; not-for-me = against me]→ 10:16 (1 Ne 14:10; Matt 12:30)
 - `doctrine:gentile-adoption` —[afflict → soften → numbered with Israel]→ 10:18 (Gal 3:29)
 - `reading:isles-plural→other-branches` —[reasons from grammar]→ 10:21 (likening method 6:5)
+
+### from 2 Nephi 11 (Nephi's preface to the Isaiah block)
+- `doctrine:my-soul-delighteth` —[study as appetite, ×5]→ 11:2-6 (2 Ne 4:15; 25:5)
+- `doctrine:three-saw-the-Redeemer` —[law of witnesses, not authority]→ 11:2-3 (Deut 19:15; D&C 5:11)
+- `doctrine:all-things-typify-Christ` —[master key for Isaiah block + law of Moses]→ 11:4 (Mosiah 13:30-31; Moses 6:63)
+- `doctrine:ontological-dependency` —[no Christ → no God → no creation → we are not]→ 11:7 (inverse of Lehi's 2 Ne 2:13)
+- `doctrine:law-of-Moses-as-type` —[given to typify Christ]→ 11:4 (2 Ne 5:10; Alma 34:14)
+- `seq:preface→isaiah-block` —[decoder ring before the cipher; aim = rejoice]→ 11:8 → chs 12-24 (Isaiah 2-14)
