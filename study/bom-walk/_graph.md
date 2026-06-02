@@ -446,6 +446,10 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - person: `king-Benjamin` (asks, names, seals the covenant) · `the-people` (changed, covenanting, begotten, named) · `Christ`/`Lord-God-Omnipotent` (the head, begetter, Master, sealer) · `the-master`+`the-servant` (v13 figure) · `the-stranger` (the unserved master's would-be servant)
 - doctrine: `mighty-change-disposition-reoriented` (v2 — "no more disposition to do evil"; the change is its own witness) · `spiritually-begotten-children-of-Christ` (v7 — born of him; Christ becomes their father) · `take-upon-you-the-name-of-Christ` (v8 — no other name/head) · `name-written-retained-or-blotted-out` (vv11-12 — kept in the heart by covenant; lost only by transgression) · `know-the-master-by-serving-him` (v13 — inverse of "I never knew you") · `steadfast-and-immovable-sealed-his` (v15) · thread: `retain-what-is-given` (binds ch 4+5)
 
+### from Mosiah 6 (the covenant recorded / servant-king passed on)
+- person: `king-Benjamin` (records names, consecrates Mosiah, dies) · `the-people` (covenanted, named, dismissed) · `Mosiah` (son, consecrated king, servant-king like his father) · `the-appointed-priests` (teachers / rememberers-keepers)
+- practice: `covenant-recorded` (vv1-2 — heart-change institutionalized into a roster; the name in the heart also written down) · `teachers-stir-up-remembrance` (v3 — even the changed need teachers to keep the oath remembered; the retain-thread built into the institution) · `servant-king-tills-own-earth` (vv6-7 — Mosiah reproduces Benjamin's labor; righteous govt a transmissible pattern) · event: `Benjamin-hands-off-and-dies` (a generation closes; chs 2-6 one man's farewell)
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -1045,3 +1049,9 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `doctrine:know-the-master-by-serving-him` —[can't bear a name whose master you've never served; inverse of "I never knew you"]→ 5:13 (Matt 7:21-23; John 10:14; Mosiah 26:24-27)
 - `doctrine:steadfast-and-immovable-sealed-his` —[abounding in good works → Christ seals you his; election made sure]→ 5:15 (1 Cor 15:58; 2 Pet 1:10; D&C 88:4)
 - `thread:retain-what-is-given` —[the sermon's spine: a remission retained (4) + a name retained (5); grace initiates, discipleship keeps]→ 5:12 ↔ 4:12,26
+
+### from Mosiah 6
+- `practice:covenant-recorded` —[heart-change institutionalized into a roster; the name in the heart also written on a record]→ 6:1-2 (D&C 128:8; Mal 3:16; Mosiah 5:12)
+- `practice:teachers-stir-up-remembrance` —[even the changed need appointed teachers to keep them remembering the oath; remembrance is a maintained state]→ 6:3 (Mosiah 29:42; Moroni 6:4) — the retain-thread built into the institution
+- `pattern:servant-king-tills-own-earth` —[Mosiah reproduces Benjamin's labor-with-own-hands exactly; righteous government is a transmissible pattern]→ 6:6-7 (Mosiah 2:12-14; 2 Cor 11:9; Acts 20:34)
+- `event:Benjamin-hands-off-and-dies` —[a generation closes; chs 2-6 are one man's farewell]→ 6:4-5 (Mosiah 1:10; 2:30)
