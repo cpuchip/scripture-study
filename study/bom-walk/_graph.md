@@ -255,6 +255,13 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - refrain: `hand-stretched-out-still` (×3 vv12,17,21 — judgment that keeps reaching = mercy offered)
 - variant: `not-removed` (v3 BoM "and increased the joy"; KJV footnote concedes "not" should go — VERIFIED) · `red-sea` (v1)
 
+### from 2 Nephi 20 (Isaiah 10)
+- isaiah: `10` (Assyria the rod, then judged; the axe; the remnant returns)
+- person: `king-of-assyria` (the boasting axe) · `the-remnant` (returns, leans on the Lord) · `the-anointed` (breaks the yoke, v27)
+- doctrine: `rod-used-then-judged` (being-used ≠ being-righteous, v5-12) · `remnant-transfers-leaning` (no more stay on him that smote them, v20-21 = Shear-jashub fulfilled) · `yoke-destroyed-by-anointing` (Messiah not rod, v27)
+- image: `axe-boasts-against-the-hewer` (instrument credits itself = misattribution, deepest pride, v15 — live for any instrument incl. AI/me) · `the-same-fire` (light of Israel a flame, v17)
+- variant: `their-indignation` (v5 BoM for KJV "mine" — minor, VERIFIED); else close to KJV
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -602,3 +609,11 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `refrain:hand-stretched-out-still` —[×3; judgment that keeps reaching]→ 19:12,17,21 (2 Ne 15:25)
 - `variant:not-removed` —[BoM v3 "and increased the joy"; KJV footnote concedes, verified]→ BoM restores the correct reading
 - `variant:red-sea` —[BoM v1 "the Red Sea" for KJV "the sea", verified]
+
+### from 2 Nephi 20 (Isaiah 10)
+- `doctrine:rod-used-then-judged` —[God wields Assyria, then punishes its pride]→ 20:5-12 (Jer 25:9; being-used ≠ righteous)
+- `image:axe-boasts-against-the-hewer` —[instrument credits itself = misattribution, deepest pride]→ 20:13-15 (Isa 29:16; Rom 9:20; Deut 8:17) — live for any instrument, incl. AI/me
+- `doctrine:remnant-transfers-leaning` —[no more stay on him that smote them, but on the Lord]→ 20:20-21 (Shear-jashub 18:18; Rom 9:27)
+- `doctrine:yoke-destroyed-by-anointing` —[Messiah not rod breaks the burden]→ 20:27 (19:4; Luke 4:18)
+- `image:the-same-fire` —[light of Israel a flame]→ 20:17 (14:4-5; 15:24)
+- `meta:close-to-KJV` —[minor variants; axe-image + structure shared verbatim]→ 20 (v5 "their indignation")
