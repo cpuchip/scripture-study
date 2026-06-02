@@ -777,6 +777,10 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - person: `Ammoron` (Amalickiah's brother; inherits throne + war) · `Captain-Moroni` (the decoy; mercy in the trap; wounded) · `Teancum` (the bait force) · `Lehi-captain` (the fresh pincer) · `Jacob-Zoramite` (fights to the death; killed)
 - theme: `organized-evil-outlives-its-leader` (vv3-4) · `dont-fight-on-the-enemys-terms` (vv5, 17) · `the-decoy-and-the-pincer` (vv21-31 — ambush of Ai) · `mercy-maximizes-surrenders-not-kills` (vv37-40) · `the-dissenters-ferocity-destroys-him` (vv33-40)
 
+### from Alma 53 (the stripling warriors rise)
+- person: `the-people-of-Ammon` (covenant-keepers; want to break the oath out of love, restrained) · `Helaman` (restrains the fathers; leads the 2000 sons) · `the-two-thousand-stripling-warriors` (sons not under the oath; faithfulness their defining trait) · `Captain-Moroni-Lehi` (prisoner-wall)
+- doctrine: `keeping-the-covenant-while-watching-others-bleed-for-it` (vv13-15) · `faithfulness-true-in-whatsoever-entrusted-is-the-defining-trait` (vv20-21) · theme: `the-next-generation-takes-up-what-the-parents-could-not` (vv16-18) · `internal-dissension-costs-ground-again` (vv8-9) · `the-captives-build-their-own-prison-wall` (vv4-5)
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -2031,3 +2035,10 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `theme:the-decoy-and-the-pincer` —[Moroni can't get Jacob "out upon fair grounds," so Teancum baits a pursuit, the hidden army takes the emptied Mulek, fresh forces catch the wearied pursuers in a pincer; the ambush of Ai — Nephites think while the enemy reacts]→ 52:21-31 (Josh 8:3-22; Alma 43:30; Judg 7:16-22)
 - `theme:mercy-maximizes-surrenders-not-kills` —["If ye will bring forth your weapons of war... we will forbear shedding your blood"; "the number of prisoners... exceeded more than the number of those who had been slain"; a war for protection maximizes surrenders]→ 52:37-40 (Alma 43:54; 44:20; Deut 20:10-12)
 - `theme:the-dissenters-ferocity-destroys-him` —[Jacob the Zoramite, "having an unconquerable spirit," fights to the death and is killed, while the native Lamanites surrender and live; the apostate's hardness destroys him, the one who relents is spared]→ 52:33-40 (Alma 24:30; 47:36; Matt 16:25)
+
+### from Alma 53
+- `doctrine:keeping-the-covenant-while-watching-others-bleed-for-it` —[the people of Ammon, "moved with compassion," want to take up arms for the Nephites dying for them, but Helaman stops them "lest... they should lose their souls"; "compelled to behold their brethren wade through their afflictions" — the hardest faithfulness; the impulse to break came from love and was still refused]→ 53:13-15 (Alma 24:17-19; Num 30:2; Eccl 5:4-5)
+- `theme:the-next-generation-takes-up-what-the-parents-could-not` —[the sons "had not entered into a covenant," so two thousand covenant to fight "unto the laying down of their lives"; the oath bound the fathers, not the children — the pacifists' covenant produced sons willing to die for liberty]→ 53:16-18 (Alma 27:23-24; 56:47-48; Judg 2:7-10; John 15:13)
+- `doctrine:faithfulness-true-in-whatsoever-entrusted-is-the-defining-trait` —["valiant for courage... but this was not all—they were true at all times in whatsoever thing they were entrusted... for they had been taught to keep the commandments"; the most formidable force defined by reliability, taught at home — not prowess]→ 53:20-21 (Alma 18:10; 56:47-48; Luke 16:10; 2 Tim 2:2)
+- `theme:internal-dissension-costs-ground-again` —["because of iniquity amongst themselves... dissensions and intrigue among themselves they were placed in the most dangerous circumstances"; even after victory, division immediately costs ground]→ 53:8-9 (Josh 7:4-5; Alma 51:9; 31:8)
+- `theme:the-captives-build-their-own-prison-wall` —[the Lamanite prisoners "encircle the city of Bountiful... within a wall which they had caused them to build with their own hands"; the work of the captured strengthens the structure that holds them]→ 53:4-5 (Alma 55:25-26; Ex 1:11-14)
