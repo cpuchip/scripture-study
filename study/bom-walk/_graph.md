@@ -184,6 +184,12 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - doctrine: `arm-of-the-Lord-never-slept` · `awake-O-Zion` (D&C 113:7-10) · `salvation-permanent-vs-perishing-creation`
 - variant: `it→he` (8:9-10 arm personalized — VERIFIED) · `two-things→two-sons` (8:19-20 + "save these two" → two witnesses — VERIFIED)
 
+### from 2 Nephi 9 (Jacob's Atonement sermon)
+- person: `holy-one-of-israel` (Creator + sufferer + gatekeeper) · `the-devil` (would make us "like unto him")
+- image: `awful-monster` (death + hell = death of body + death of spirit, 9:10) · `keeper-of-the-gate-no-servant` (9:41)
+- doctrine: `infinite-atonement` (reasoned 9:6-7) · `spirit-becomes-like-the-devil` (9:8-9) · `two-fold-deliverance` (grave+hell 9:11-13) · `Christ-suffers-every-individual-pain` (9:21) · `learning-good-IF-hearken` (9:28-29) · `carnal-vs-spiritual-mind` (9:39)
+- study: `2ne9_atonement-monster-and-gate` (spin-off — IN PROGRESS, Sonnet subagent)
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -421,3 +427,14 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `image:cup-of-trembling` —[taken from afflicted → given to afflicters]→ 8:22-23 (cf Christ drinks the dregs, D&C 19:18)
 - `doctrine:awake-O-Zion` —[put on strength + loose the bands]→ 8:24-25 (D&C 113:7-10)
 - `seq:servant→arm` —[ch7 Servant struck = ch8 Arm summoned]→ one person (Holy One of Israel)
+
+### from 2 Nephi 9 (Jacob's Atonement sermon)
+- `doctrine:infinite-atonement` —[reasoned: scope of rescue = scope of fall]→ 9:6-7 (Alma 34:9-14)
+- `image:awful-monster` —[two-headed: death of body + death of spirit]→ 9:10 (1 Cor 15:54-55; Hosea 13:14)
+- `doctrine:spirit-becomes-like-the-devil` —[the fall's deepest stake]→ 9:8-9 (Alma 40:13; 2 Ne 2:17)
+- `doctrine:two-fold-deliverance` —[grave delivers body, hell delivers spirit]→ 9:11-13
+- `doctrine:Christ-suffers-every-individual-pain` —[family of Adam, itemized]→ 9:21 (Alma 7:11-13; Mosiah 3:7)
+- `doctrine:learning-good-IF-hearken` —[sin = self-sufficiency before God, not knowledge]→ 9:28-29 (1 Cor 1:19-21)
+- `doctrine:carnal-vs-spiritual-mind` —[death vs life eternal]→ 9:39 (Rom 8:6)
+- `image:keeper-of-the-gate-no-servant` —[Christ in person, no proxy]→ 9:41 (2 Ne 31:9; John 10:7-9)
+- `seq:cosmos→woes→gate` —[universal rescue ≠ cancelled accountability]→ 9:6-41
