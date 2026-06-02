@@ -511,6 +511,10 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - person: `king-Noah` (cowardly; abandons families; burned — prophecy fulfilled) · `Gideon` (nearly slays Noah; later peace-broker) · `the-Lamanite-army` (invaders; charmed by the women) · `the-loyal-men` (stayed to perish with families) · `the-cowardly-men` (fled, then burned the king) · `Limhi` (the just son; throne into bondage) · `Noah's-priests` (flee → the Amulonites)
 - theme: `king-concerned-for-self-not-people` (vv7-11 — anti-servant-king exposed in crisis) · prophecy: `Noah-burned-fulfilled-to-the-letter` (v20 — 12:3+13:10+17:18 converge) · `loyalty-that-would-perish-with-is-rewarded` (vv12-14) · `just-son-of-a-wicked-father` (vv16-17 — inverse of Noah) · structure: `embedded-record-frame-closed` (vv15,26-28 — back-fill caught up to ch 7) · thread: `wicked-priests-flee-and-propagate` (v21 → ch 20, Alma 25)
 
+### from Mosiah 20 (the innocent pay for the guilty / Gideon's peace)
+- person: `Noah's-fugitive-priests` (abandon families, abduct 24 daughters) · `the-Lamanite-daughters-of-Shemlon` (abducted) · `the-Lamanites` (blame the innocent → war → compassion) · `the-people-of-Limhi` (innocent; fight "like dragons") · `Limhi` (spares the king, investigates justly) · `the-wounded-Lamanite-king` (spared; pleads unarmed for Limhi's people) · `Gideon` (captain; solves the mystery; reads the prophecy; brokers peace)
+- theme: `wickedness-compounds-abandonment-to-abduction` (vv3-5) · `innocent-bear-the-guilty's-sin` (vv6-16) · `just-response-investigate-not-retaliate` (vv14-16 — contrast Noah) · person: `Gideon-wise-counselor-and-prophecy-reader` (vv17-21 — reads bondage as Abinadi fulfilled) · theme: `better-bondage-than-death-stop-the-bloodshed` (v22) · `unarmed-peace-disarms-the-armed` (vv24-26 — flash-forward to Alma 24) · `fight-for-wives-and-children-like-dragons` (v11)
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -1237,3 +1241,12 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `theme:just-son-of-a-wicked-father` —[Limhi knew his father's iniquities + loved him + was "a just man"; the inverse of Noah; righteousness runs by choice, not blood]→ 19:16-17 (Mosiah 11:1; Ezek 18:14-20; 2 Kgs 22:1-2)
 - `structure:embedded-record-frame-closed` —[the half-tribute + guards = exactly Limhi's bondage in ch 7; the back-fill (9-19) has caught up to its frame; the dramatic irony complete]→ 19:15,26-28 (Mosiah 7:15,22; 9:10; 11:21)
 - `thread:wicked-priests-flee-and-propagate` —[Noah's priests escape the fire → kidnap the Lamanite daughters (ch 20) → the Amulonites burn believers (Alma 25); Abinadi's "thy seed" set in motion]→ 19:21 (Mosiah 20:3-5; Alma 25:4-12; 17:15)
+
+### from Mosiah 20
+- `theme:wickedness-compounds-abandonment-to-abduction` —[the priests forsook their own families, then stole others'; sin unrepented escalates; done from "secret places"]→ 20:3-5 (Mosiah 19:11,21; Judg 21:20-23)
+- `theme:innocent-bear-the-guilty's-sin` —[Limhi's people nearly destroyed for the priests' crime while the guilty hide safely; sin's spillover onto the innocent]→ 20:6-16 (Mosiah 27:13; Ezek 18:20; Deut 24:16)
+- `theme:just-response-investigate-not-retaliate` —[Limhi spares the captured king and vows to search out the actual guilty; contrast Noah]→ 20:14-16 (Prov 18:13; 1 Sam 24:10-12; Mosiah 19:8)
+- `person:Gideon-wise-counselor-and-prophecy-reader` —[solves the mystery (the priests), de-escalates, and reads the bondage as Abinadi's prophecy fulfilled "because we would not hearken"]→ 20:17-21 (Mosiah 12:1-8; 17:15; Alma 1:8)
+- `theme:better-bondage-than-death-stop-the-bloodshed` —[Gideon's counsel: keep the oath, accept tribute, survive; a time to fight and a time to bend]→ 20:22 (Mosiah 7:15; 21:13; Eccl 3:8)
+- `theme:unarmed-peace-disarms-the-armed` —[truth + disarmament + the king's intercession ends the war; "when they saw... without arms, they had compassion"]→ 20:24-26 (Alma 24:18-25; Matt 5:9; Rom 12:18) — flash-forward to the Anti-Nephi-Lehies
+- `theme:fight-for-wives-and-children-like-dragons` —[the outnumbered defenders' strength is what they protect]→ 20:11 (Mosiah 19:12; Alma 43:45; 46:12)
