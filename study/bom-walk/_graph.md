@@ -600,6 +600,10 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - person: `Amulek` (reluctant convert; "I knew, yet I would not know"; second witness; of Manasseh's line) · `the-lawyers-of-Ammonihah` (cunning, gain-seeking) · `Zeezrom` (foremost accuser → ch 11) · `the-righteous-remnant` (prayers shield the city)
 - theme: `I-knew-yet-I-would-not-know` (vv4-10 — willful deafness of the comfortable) · `second-witness-raised-from-within` (vv8-12 — Deut 17:6) · doctrine: `prayers-of-the-righteous-shield-the-wicked-city` (vv22-23 — Sodom; cast them out → judgment falls, ch14→16) · `in-favor-of-your-law-to-your-condemnation` (v26) · theme: `corrupt-institutions-the-foundation-of-destruction` (vv27,32 — Nehor's priestcraft in legal form) · prophecy: `Mosiahs-warning-fulfilled-voice-chooses-iniquity` (v19) · `Lehi-of-Manasseh-son-of-Joseph` (v3 — only explicit tribe statement)
 
+### from Alma 11 (the bribe, the resurrection — Zeezrom trembles)
+- person: `Amulek` (exposes the bribe; teaches the resurrection) · `Zeezrom` (bribes, traps, then begins to tremble) · `the-lawyers-of-Ammonihah` (manufacture conflict for fees) · `Christ` (the very Eternal Father; saves from sin) · object: `the-Nephite-coinage` · `the-six-onties` (the bribe)
+- doctrine: `saved-FROM-sin-not-IN-it` (vv34-37 — no unclean thing inherits; refutes Nehor) · theme: `the-bribe-exposes-the-briber` (vv22-25 — loves lucre more than the God he knows is real) · `lawyers-manufacture-conflict-for-fees` (v20) · doctrine: `Son-is-the-very-Eternal-Father-condescension` (vv38-40) · `universal-resurrection-conditional-salvation` (v41 — Mosiah 16:5) · `resurrection-perfect-universal-permanent-with-recollection` (vv42-45 — bright recollection of guilt) · event: `Zeezrom-begins-to-tremble` (v46 — conversion begins)
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -1504,3 +1508,12 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `theme:corrupt-institutions-the-foundation-of-destruction` —[lawyers "to get gain" = Nehor's priestcraft in legal form; "the foundation of the destruction... laid by the unrighteousness of your lawyers and judges"]→ 10:14-15,27,31-32 (Alma 1:3-5; Luke 11:46-52; Isa 1:23; 3 Ne 6:11)
 - `prophecy:Mosiahs-warning-fulfilled-voice-chooses-iniquity` —[Amulek cites Mosiah 29:27: when "the voice of this people should choose iniquity... ripe for destruction"; Ammonihah is that failure localized]→ 10:19 (Mosiah 29:26-27; Alma 2:3; Hel 5:2)
 - `theme:Lehi-of-Manasseh-son-of-Joseph` —[the only explicit statement of Lehi's tribe: Manasseh, through Joseph sold into Egypt]→ 10:3 (1 Ne 5:14; Gen 41:51; 49:22-26)
+
+### from Alma 11
+- `doctrine:saved-FROM-sin-not-IN-it` —[Christ "shall not" save people in their sins; salvation = inheriting the kingdom; "no unclean thing can inherit"; cleansed not excused; refutes Nehor's universal salvation]→ 11:34-37 (Hel 5:10; 1 Ne 15:33; Alma 7:21; 1 Cor 6:9; Alma 1:4) — the Atonement makes the unclean clean, not the kingdom unclean
+- `theme:the-bribe-exposes-the-briber` —[Zeezrom would pay to make Amulek deny a God Zeezrom KNOWS is real — "thou lovest that lucre more than him"; the offer a trap never meant to be paid; "the righteous yieldeth to no such temptations"]→ 11:22-25 (Acts 8:18-23; Luke 16:13; Titus 1:11) — paying to have the truth denied proves you believe it
+- `theme:lawyers-manufacture-conflict-for-fees` —[paid per suit, "for the sole purpose to get gain... they did stir up the people to riotings" to multiply disputes; a profession profiting from the strife it exists to resolve]→ 11:20 (Alma 10:27,31-32; Luke 11:46; Prov 28:8)
+- `doctrine:Son-is-the-very-Eternal-Father-condescension` —[Amulek meets the trap by affirming plainly: "Yea, he is the very Eternal Father of heaven and of earth"; the Abinadi/Benjamin Christology holds under hostile cross-examination]→ 11:38-40 (Mosiah 15:1-5; 3:8; Isa 9:6; Ether 3:14)
+- `doctrine:universal-resurrection-conditional-salvation` —[bands of death loosed for ALL; but beyond that "the wicked remain as though there had been no redemption made"]→ 11:41 (Mosiah 16:5; Alma 42:23; 2 Ne 9:7-13)
+- `doctrine:resurrection-perfect-universal-permanent-with-recollection` —[spirit+body reunited "in its perfect form," not a hair lost; all rise; "die no more"; "a bright recollection of all our guilt" carried into the resurrection]→ 11:42-45 (Alma 40:23; 2 Ne 9:13-14; Mosiah 3:25; 1 Cor 15:42-54)
+- `event:Zeezrom-begins-to-tremble` —[the corrupt lawyer who came to trap "began to tremble"; the knowing of God overpowering the loving of lucre; the great conversion begins]→ 11:46 (Alma 12:1-7; 15:3-12; Acts 24:25)
