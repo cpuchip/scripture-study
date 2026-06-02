@@ -463,6 +463,11 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - object: `the-24-gold-plates` (= the Jaredite record → Ether) · `the-breastplates` · `the-rusted-swords` · `the-interpreters` (Urim and Thummim)
 - doctrine: `seer-greater-than-prophet` (vv15-17 — revelator + prophet + seer; gift just short of God's power) · `God-provides-the-means-of-revelation` (vv13,18-19) · `interpreters-guarded-by-commandment` (v13 — commanded or perish) · `wisdom-refused-not-unavailable` (v20 — Lady Wisdom they won't be ruled by; the root beneath ch 7's bondage) · image: `wild-flock-fleeing-the-shepherd` (v21) · textual: `24-plates-origin-of-Ether` (vv8-12 — sought to know "the cause of their destruction")
 
+### from Mosiah 9 (the Record of Zeniff begins — zeal without wisdom)
+- person: `Zeniff` (good but over-zealous founder; first-person narrator; buries the dead) · `the-austere-blood-thirsty-ruler` (first expedition) · `Zeniff's-people` (build, prosper, warred upon) · `king-Laman` (the patient deceiver) · `the-Lamanites` (lazy, idolatrous, glut on others' labor)
+- place: `land-of-Nephi/Lehi-Nephi` · `Shilom` · `the-wilderness` · `place-where-first-army-was-slain`
+- theme: `zeal-without-wisdom` (vv1-3 — self-named "over-zealous"; the negative case of Mosiah 4:27) · `patient-predator-bondage-as-parasitism` (vv10-12 — Laman's bait; the lazy glut on others' labor) · `slow-to-remember-awakened-by-affliction` (vv3,17) · doctrine: `in-the-strength-of-the-Lord` (vv16-18 — 3,043 to 279) · pattern: `leader-shares-labor-and-grief` (v19 — Zeniff buries the dead)
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -1085,3 +1090,10 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `textual:24-plates-origin-of-Ether` —[the Jaredite record surfaces here; Mosiah will translate (28), Moroni abridge; sought to know "the cause of their destruction"]→ 8:8-12 (Mosiah 28:11-17; Ether 1:1-2; Omni 1:20-22) — a warning record for a people about to repeat it
 - `doctrine:wisdom-refused-not-unavailable` —[the tragedy is not hidden knowledge but men who "will not seek wisdom"; Lady Wisdom they won't be ruled by]→ 8:20 (Prov 9:1-6; Matt 11:19) — the root beneath ch 7's bondage
 - `image:wild-flock-fleeing-the-shepherd` —[willful scattering into the jaws of the beasts]→ 8:21 (Isa 53:6; Ezek 34:5; John 10:11-16; Alma 5:37)
+
+### from Mosiah 9
+- `theme:zeal-without-wisdom` —[Zeniff's virtue and flaw are one impulse to excess: love of the inheritance overrode prudence; he ran faster than wisdom → bondage]→ 9:1-3 (Mosiah 4:27; Rom 10:2; Prov 19:2) — the negative case of the pacing covenant
+- `theme:patient-predator-bondage-as-parasitism` —[Laman's "covenant" was bait; 12 years' welcome to root them, then enslave; the lazy glut on others' labor]→ 9:10-12 (Ex 1:9-14; 2 Cor 11:14; Mosiah 11:6)
+- `theme:slow-to-remember-awakened-by-affliction` —[forget in prosperity, remember under attack; affliction the alarm clock of memory]→ 9:3,17 (Hel 12:3; Deut 8:11-18; Mosiah 6:3) — Benjamin's "stir up remembrance" from the other side
+- `doctrine:in-the-strength-of-the-Lord` —[victory to those who cry and fight in his might, not the better-armed; 3,043 to 279]→ 9:16-18 (1 Sam 17:45; Alma 2:28; Ex 2:23-24)
+- `pattern:leader-shares-labor-and-grief` —[Zeniff buries the dead with his own hands; the servant-king even in a flawed founder]→ 9:19 (Mosiah 2:14; 6:7) — character does not cancel consequence
