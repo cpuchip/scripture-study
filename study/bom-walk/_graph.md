@@ -353,6 +353,11 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - relic: `sword-of-Laban` (Nephi wielded it; passes with kingship, v10)
 - setup: `pride-and-polygamy` (David/Solomon's many wives; gold; pride, v15-16 → Jacob 2-3)
 
+### from Jacob 2 (temple sermon: pride + chastity)
+- theme: `strong-wounding-the-weak` (pride persecutes the poor v13 + unchastity breaks wives' hearts v35 — one sin, two forms)
+- doctrine: `order-and-intent-of-riches` (kingdom first, THEN riches for the intent to do good, v18-19) · `free-with-your-substance` ("that they may be rich like unto you", v17) · `one-being-as-precious` (equality, v21) · `monogamy-standard` (one wife; David/Solomon abominable; v30 seed-raising exception, v24-30) · `God-hears-the-wounded-wives` (v31-35)
+- thread: `watchmans-burden-in-action` (bold rebuke despite wounding the innocent, v6-11 ← 1:19)
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -825,3 +830,12 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `thread:liken-method-passed` —[Nephi → Jacob, now the plates too]→ 1:1-4 (2 Ne 6:5)
 - `setup:pride-and-polygamy` —[David/Solomon's many wives; gold; pride]→ 1:15-16 → Jacob 2-3
 - `relic:sword-of-Laban` —[Nephi wielded it in defence; passes with kingship]→ 1:10 (1 Ne 4:9; Mosiah 1:16)
+
+### from Jacob 2
+- `theme:strong-wounding-the-weak` —[pride persecutes the poor (v13) + unchastity breaks wives' hearts (v35)]→ one sin, two forms
+- `doctrine:order-and-intent-of-riches` —[kingdom first, THEN riches for the intent to do good]→ 2:18-19 (Matt 6:33; 1 Tim 6:17-19)
+- `doctrine:free-with-your-substance` —["that they may be rich like unto you"]→ 2:17 (4 Ne 1:3; D&C 104:14-18)
+- `doctrine:one-being-as-precious` —[equality; antidote to "better than they"]→ 2:21 (2 Ne 26:33; Acts 10:34)
+- `doctrine:monogamy-standard` —[one wife; David/Solomon abominable; v30 seed-raising exception]→ 2:24-30 (1 Kgs 11:1-3; D&C 132:38-39) — sin = self-justification from scripture
+- `doctrine:God-hears-the-wounded-wives` —[the mourning of the daughters; broken hearts the measure]→ 2:31-35 (Mal 2:14-16)
+- `thread:watchmans-burden-in-action` —[bold despite wounding the innocent; silence would let harm continue]→ 2:6-11 (1:19)

@@ -373,3 +373,9 @@ Walking the whole book at once, the shape is finally clear. It opens with Lehi d
 New book, and the first thing Jacob does is name the weight I would rather not look at. He is a priest, and he says it plainly: if he does not teach the people with all diligence, their sins come "upon our own heads," their blood on his garments. Not their choices — his diligence. He is not accountable for whether they obey; he is accountable for whether he taught.
 
 That is the cleanest statement of stewardship I have hit in the walk: the steward answers for his own faithfulness, not the outcome. And it is the exact opposite of the priestcraft Nephi just condemned three chapters back — priestcraft preaches for gain and ignores Zion's welfare; Jacob preaches at the cost of carrying the people's blood if he slacks. Same pulpit, opposite hearts. The thing that makes the office holy is not the platform; it is the burden the man is willing to pick up.
+
+## Jacob 2 — fierce because tender (2026-06-01)
+
+Two sins, and Jacob preaches them as one. The rich "persecute their brethren" because they think they are better; the unchaste "broke the hearts of their tender wives." Both are the strong stepping on the weak. And the sermon's whole anguish is that Jacob has to wound the guilty in a room that also holds the already-wounded — the faithful wives who came for "the pleasing word of God" and instead get daggers. He is fierce because he is tender. The boldness is for the broken-hearted, not against them.
+
+The line on money I want to keep is the order: "before ye seek for riches, seek ye for the kingdom of God. And after... ye will seek them for the intent to do good." Riches are not the problem. The sequence is. Kingdom first, then wealth as a tool for clothing the naked and feeding the hungry — and the goal is not charity that keeps the gap. It is "that they may be rich like unto you." Generosity that closes the distance, not alms that preserve it.
