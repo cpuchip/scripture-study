@@ -635,6 +635,10 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - person: `Ammon` (perceives the king's thoughts; teaches creation→redemption; faithful servant of v10) · `Lamoni` (believes; cries for mercy; falls as if dead)
 - theme: `faithful-in-the-ordinary-errand` (v10 — the Ammon-anchor verse) · `wise-yet-harmless-holy-guile` (vv22-23) · `correcting-the-grievance-history-at-the-source` (vv36-38) · doctrine: `start-where-the-hearer-is` (vv24-28 — "Great Spirit"→"This is God") · `power-according-to-faith-and-desire` (vv34-35) · event: `Lamoni-falls-as-if-dead` (vv40-43)
 
+### from Alma 19 (the queen's faith + Abish — first Lamanite church)
+- person: `the-queen-of-Ishmael` (quiet faith "to me he doth not stink"; greatest faith of all the Nephites; testifies of Jesus) · `Abish` (Lamanite servant, secretly converted years prior by her father's vision; gathers the crowd) · `Lamoni` (rises: "I have seen my Redeemer"; rebukes contention, teaches)
+- theme: `the-outsider-out-believes-the-covenant-people` (v10 — grievance inverted) · `the-hidden-disciple-spent-at-the-right-moment` (vv16-29 — Abish) · doctrine: `faith-on-testimony-alone` (vv9-10) · `conversion-as-light-dispelling-darkness` (v6 — inverse of chains of hell) · `his-arm-extended-to-all` (v36 — 5:21 answer) · event: `Lamoni-rises-having-seen-the-Redeemer` (vv12-13) · `Sebus-avenger-falls-dead` (vv22-23 — promise to Mosiah fulfilled)
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -1614,3 +1618,12 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `theme:correcting-the-grievance-history-at-the-source` —[Ammon retells the Lamanites' own origin truthfully, "concerning the rebellions of Laman and Lemuel"; the false tradition (Mosiah 10) dissolved by laying the true record open, not by counter-accusation]→ 18:36-38 (Mosiah 10:12-17; 1 Ne 9:2; 2 Ne 1:2)
 - `doctrine:power-according-to-faith-and-desire` —["a portion of that Spirit dwelleth in me, which giveth me knowledge, and also power according to my faith and desires which are in God"; how a man, not a Great Spirit, wields God's power]→ 18:34-35 (Moroni 7:33; Ether 3:15; Mosiah 7:27)
 - `event:Lamoni-falls-as-if-dead` —[believes → "O Lord, have mercy... upon me, and my people" → falls as if dead two days; sets the pattern his father repeats]→ 18:40-43 (Alma 19:1; 22:18; Acts 9:4)
+
+### from Alma 19
+- `theme:the-outsider-out-believes-the-covenant-people` —[the Lamanite queen's "to me he doth not stink" + belief on testimony alone draws "there has not been such great faith among all the people of the Nephites"; the grievance inverted by a Nephite prince]→ 19:5-10 (Luke 7:9; Matt 8:10; Alma 17:9)
+- `doctrine:faith-on-testimony-alone` —["I have had no witness save thy word... nevertheless I believe"; faith without one's own sign, called the greatest he'd seen]→ 19:9-10 (John 20:29; Ether 12:6)
+- `theme:the-hidden-disciple-spent-at-the-right-moment` —[Abish, secretly converted years before by her father's vision, "never having made it known," stays standing, gathers the crowd, and breaks the contention by taking the queen's hand]→ 19:16-29 (JS-H 1:74; Alma 22:22)
+- `doctrine:conversion-as-light-dispelling-darkness` —["the dark veil of unbelief... cast away... the light of everlasting life was lit up in his soul, the cloud of darkness having been dispelled"; the exact inverse of the chains of hell]→ 19:6 (2 Cor 4:4; Alma 12:9-11; Alma 5:7)
+- `event:Lamoni-rises-having-seen-the-Redeemer` —["I have seen my Redeemer; and he shall come forth, and be born of a woman"; the Lazarus-frame king prophesies Christ's birth]→ 19:12-13 (John 11:25-26; 1 Ne 11:18; Alma 7:10)
+- `event:Sebus-avenger-falls-dead` —[the brother of a slain man draws to kill the prostrate Ammon and falls dead; "I will spare him... according to thy faith" fulfilled]→ 19:22-23 (Mosiah 28:7; Alma 17:35)
+- `doctrine:his-arm-extended-to-all` —[the Lamanites receive the Spirit in full; "his arm is extended to all people who will repent and believe on his name"; the curse was never a barrier to the Spirit]→ 19:36 (2 Ne 26:33; Alma 5:33; 3 Ne 18:25) — 5:21-answer datapoint
