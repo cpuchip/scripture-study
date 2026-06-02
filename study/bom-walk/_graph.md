@@ -563,6 +563,11 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - person: `Alma-the-younger` (chief judge + high priest; first capital judgment) · `Nehor` (priestcraft's introducer; anti-Christ; slays Gideon; executed) · `Gideon` (aged deliverer, murdered for withstanding priestcraft) · `the-church-members` (persecuted; some proud, some steadfast) · `the-non-members` (persecutors)
 - theme: `priestcraft-the-first-internal-threat` (vv3-12 — paid+popular clergy + universal-salvation-without-accountability; anti-Christ template Sherem→Nehor→Korihor) · doctrine: `law-punishes-acts-not-belief` (vv12,17-18 — religious liberty + rule of law; tested again Korihor 30) · `universal-salvation-without-accountability-is-false` (v4) · `true-order-vs-priestcraft` (vv26-27 — laboring equal priesthood vs paid elevated) · `prosperity-without-the-heart-set-on-riches` (vv29-31 — Jacob 2 distinction) · event: `Gideon-slain-by-the-first-priestcraft` (vv7-9)
 
+### from Alma 2 (Amlici — the voice of the people tested)
+- person: `Amlici` (Nehor-follower; rejected by the voice, made king by his faction, slain by Alma) · `the-Amlicites` (the faction; ally with Lamanites; mark themselves ch 3) · `Alma-the-younger` (chief judge/governor/warrior) · `the-Lamanites` (allied) · `the-spies` (Zeram, Amnor, Manti, Limher)
+- place: `hill-Amnihu` · `river-Sidon` · `valley-of-Gideon` · `land-of-Minon` · `wilderness-Hermounts`
+- doctrine: `voice-of-the-people-works-but-not-self-enforcing` (vv3-10) · theme: `heresy-becomes-insurrection` (v1 — Nehor→Amlici) · `dissent-allies-with-the-enemy` (vv24-25) · `warrior-prophet-asks-only-to-serve` (vv16,30) · doctrine: `strengthened-by-the-Lord-after-prayer` (vv18,28,31) · theme: `cost-of-one-mans-pride` (v19 — ~19,000 slain)
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -1387,3 +1392,11 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `doctrine:true-order-vs-priestcraft` —[true priests labor + return to work, "no better than the hearer," all equal "according to his strength," give to the poor; priestcraft is paid, elevated, taking]→ 1:26-27 (Mosiah 18:24-26; 27:3-5; 4:27; Acts 20:33) — ministry as giving not getting
 - `doctrine:prosperity-without-the-heart-set-on-riches` —[the church grows rich but "did not set their hearts upon riches; liberal to all... no respect to persons"; proof = no naked/hungry sent away; Jacob 2's distinction]→ 1:29-31 (Jacob 2:17-19; Mosiah 4:16-26; D&C 42:30)
 - `event:Gideon-slain-by-the-first-priestcraft` —[the aged deliverer of Limhi's people murdered for withstanding Nehor "with the words of God"; his blood makes the crime capital]→ 1:7-9 (Mosiah 22:3-9; Alma 6:7) — error preached is free; error enforced is death
+
+### from Alma 2
+- `doctrine:voice-of-the-people-works-but-not-self-enforcing` —[the majority rightly rejects Amlici (confirming 29:26), but his faction defies the verdict and makes him king by force; a ballot defeats a demagogue, not his army]→ 2:3-10 (Mosiah 29:25-27; Hel 1:1-13)
+- `theme:heresy-becomes-insurrection` —[Amlici is "after the order of" Nehor; priestcraft (ch 1) flows into the kingship-bid (ch 2); same pride-seeking-dominion in two forms; ~19,000 dead trace to Nehor's gospel]→ 2:1 (Alma 1:2-15; 46:1-10) — bad doctrine left to grow ends in mass graves
+- `theme:dissent-allies-with-the-enemy` —[the Amlicites, unable to win at home, join the Lamanites; apostasy enlists the foe; the war worsens]→ 2:24-25 (Alma 60:32; 43:13; 47-48) — Amlicites become Lamanites (ch 3)
+- `theme:warrior-prophet-asks-only-to-serve` —[Alma fights Amlici but prays to be "an instrument... to save and preserve this people," not for himself; the inverse of Amlici who sought power OVER them]→ 2:16,29-31 (Alma 4:18-20; Mosiah 23:6-13)
+- `doctrine:strengthened-by-the-Lord-after-prayer` —[vastly outnumbered ("sands of the sea"), the Nephites prevail only "strengthened by the hand of the Lord" after praying mightily]→ 2:18,28,31 (Mosiah 9:17; Alma 43:48; 1 Sam 17:45; Deut 31:6)
+- `theme:cost-of-one-mans-pride` —[12,532 Amlicites + 6,562 Nephites slain in a day; dissent that began as flattering doctrine ends in a field of corpses]→ 2:19 (Alma 3:1-2; 28:2-3)
