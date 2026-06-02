@@ -726,6 +726,10 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - person: `Alma-the-younger` (revelation-vs-opinion honesty) · `Corianton` (worried about the resurrection)
 - doctrine: `the-space-and-the-intermediate-state` (vv11-14 — paradise/rest, outer darkness/fearful-looking-for) · `the-resurrection-restores-the-perfect-frame` (v23 — not a hair lost) · `resurrection-certain-the-floor-under-repentance` (vv4-21) · `universal-resurrection-divergent-destinies` (vv25-26) · theme: `prophetic-intellectual-honesty-revelation-vs-opinion` (vv5, 20) · `resurrection-makes-mortality-matter-forever` (vv21, 26)
 
+### from Alma 41 (the restoration — "wickedness never was happiness")
+- person: `Corianton` (wrested "restoration" into self-justifying universalism) · `Alma-the-younger`
+- doctrine: `wickedness-never-was-happiness` (vv10-11 — contradictory natures) · `restoration-is-reciprocity-not-reset` (vv12-13) · `you-are-restored-to-the-self-your-desires-built` (vv3-7) · `what-you-send-out-returns` (vv14-15) · theme: `bad-theology-cleared-the-way-for-bad-behavior` (vv1, 9) · `the-doctrine-condemns-the-unrepentant-and-saves-the-repentant` (v15)
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -1888,3 +1892,11 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `theme:prophetic-intellectual-honesty-revelation-vs-opinion` —["whether... one time, or a second... it mattereth not; for God knoweth"; "I do not say... I give it as my opinion"; a prophet flags the line between revealed and inferred — honesty makes the certainty more trustworthy]→ 40:5, 20-21 (D&C 9:8-9; 1 Cor 7:25; Jacob 4:13)
 - `doctrine:resurrection-certain-the-floor-under-repentance` —[answering the doubt that death is the end (Korihor); "there is a time appointed that all shall rise... be reunited, both soul and body, and be brought to stand before God, and be judged"; re-laying the floor that makes repentance make sense]→ 40:4-21 (Alma 30:18; John 5:28-29; Alma 11:41-45)
 - `theme:resurrection-makes-mortality-matter-forever` —["the righteous shall shine forth in the kingdom of God" vs the wicked "drink the dregs of a bitter cup"; all rise in a perfect frame but to divergent destinies, "judged according to their works"; the resurrection makes the stakes of now eternal]→ 40:25-26 (Dan 12:3; Matt 13:43; 1 Cor 6:9-10; Alma 41:3-5)
+
+### from Alma 41
+- `doctrine:wickedness-never-was-happiness` —["wickedness never was happiness" — not "won't be" but never WAS; the carnal state is "contrary to the nature of happiness"; sin and happiness are contradictory categories — the route can't reach the goal]→ 41:10-11 (Ps 32:10; Isa 57:21; Hel 13:38; Mosiah 3:19) — four-word demolition of the lie that sin is a shortcut to joy
+- `doctrine:restoration-is-reciprocity-not-reset` —["the meaning of the word restoration is to bring back again evil for evil... good for that which is good... merciful for that which is merciful"; the same kind returned, not a thing placed opposite its nature — restored to yourself, not reset to happiness]→ 41:12-13 (Rev 22:12; Dan 12:10; Gal 6:7)
+- `doctrine:you-are-restored-to-the-self-your-desires-built` —["raised to happiness according to his desires of happiness... the other to evil according to his desires of evil"; "they are their own judges"; judgment reveals the self you chose, God ratifying it]→ 41:3-7 (2 Ne 2:26-27; Alma 29:4-5; Hel 14:30-31)
+- `doctrine:what-you-send-out-returns` —["see that you are merciful... and ye shall have mercy restored unto you again... that which ye do send out shall return unto you again"; the sowing/reaping law made universal — restoration is a tool, not just a verdict]→ 41:14-15 (Gal 6:7; Matt 5:7; 7:1-2; Prov 19:17; Eccl 11:1)
+- `theme:bad-theology-cleared-the-way-for-bad-behavior` —["some have wrested the scriptures, and have gone far astray"; "do not risk one more offense... upon those points of doctrine, which ye have hitherto risked to commit sin"; Corianton rationalized THEN sinned — belief corrected before behavior could be]→ 41:1, 9 (2 Pet 3:16; Alma 39:2; 2 Ne 28:8)
+- `theme:the-doctrine-condemns-the-unrepentant-and-saves-the-repentant` —["the word restoration more fully condemneth the sinner, and justifieth him not at all" — yet the same law saves the moment he turns and sends out mercy/justice/good; you get yourself back, so change the self you build]→ 41:15 (Alma 41:6; 42:22-24; Ezek 18:21-22)
