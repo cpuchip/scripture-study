@@ -730,6 +730,10 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - person: `Corianton` (wrested "restoration" into self-justifying universalism) · `Alma-the-younger`
 - doctrine: `wickedness-never-was-happiness` (vv10-11 — contradictory natures) · `restoration-is-reciprocity-not-reset` (vv12-13) · `you-are-restored-to-the-self-your-desires-built` (vv3-7) · `what-you-send-out-returns` (vv14-15) · theme: `bad-theology-cleared-the-way-for-bad-behavior` (vv1, 9) · `the-doctrine-condemns-the-unrepentant-and-saves-the-repentant` (v15)
 
+### from Alma 42 (justice & mercy — the Corianton block climax)
+- person: `Corianton` (denied God's justice to excuse his sin) · `Alma-the-younger`
+- doctrine: `the-expulsion-was-mercy-it-created-the-space-to-repent` (vv2-7) · `law-punishment-repentance-chain` (vv16-22) · `God-himself-pays-justice-so-mercy-can-act` (v15) · `mercy-cannot-rob-justice` (vv23-25) · `two-kinds-of-trouble-destructive-vs-redemptive` (v29) · theme: `attacking-Gods-justice-to-excuse-oneself` (vv1, 30) · `repentance-is-the-start-of-the-real-ministry` (v31)
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -1900,3 +1904,12 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `doctrine:what-you-send-out-returns` —["see that you are merciful... and ye shall have mercy restored unto you again... that which ye do send out shall return unto you again"; the sowing/reaping law made universal — restoration is a tool, not just a verdict]→ 41:14-15 (Gal 6:7; Matt 5:7; 7:1-2; Prov 19:17; Eccl 11:1)
 - `theme:bad-theology-cleared-the-way-for-bad-behavior` —["some have wrested the scriptures, and have gone far astray"; "do not risk one more offense... upon those points of doctrine, which ye have hitherto risked to commit sin"; Corianton rationalized THEN sinned — belief corrected before behavior could be]→ 41:1, 9 (2 Pet 3:16; Alma 39:2; 2 Ne 28:8)
 - `theme:the-doctrine-condemns-the-unrepentant-and-saves-the-repentant` —["the word restoration more fully condemneth the sinner, and justifieth him not at all" — yet the same law saves the moment he turns and sends out mercy/justice/good; you get yourself back, so change the self you build]→ 41:15 (Alma 41:6; 42:22-24; Ezek 18:21-22)
+
+### from Alma 42
+- `doctrine:the-expulsion-was-mercy-it-created-the-space-to-repent` —[the cherubim + flaming sword kept Adam from the tree of life "lest he should... live forever... having no space for repentance"; the cutting-off created "a probationary time" — death itself is mercy, keeping the fall from becoming permanent]→ 42:2-7 (Gen 3:22-24; 2 Ne 2:21; Moses 4:31; Alma 12:23-24)
+- `doctrine:law-punishment-repentance-chain` —["How could a man repent except he should sin? How could he sin if there was no law? How could there be a law save there was a punishment?"; remove the penalty and there's no law, no sin, no repentance — the thing Corianton wants gone is what makes mercy possible]→ 42:16-22 (Rom 4:15; 5:13; 2 Ne 2:13; 9:25-26; Gal 3:13)
+- `doctrine:God-himself-pays-justice-so-mercy-can-act` —["God himself atoneth for the sins of the world... to appease the demands of justice, that God might be a perfect, just God, and a merciful God also"; he doesn't waive the penalty, he pays it — the cross makes God able to forgive AND remain just]→ 42:15 (Alma 34:15-16; 2 Ne 9:10; Mosiah 16:8; Isa 53:5-6)
+- `doctrine:mercy-cannot-rob-justice` —["justice exerciseth all his demands, and also mercy claimeth all which is her own... do ye suppose that mercy can rob justice? Nay; not one whit. If so, God would cease to be God"; both fully satisfied by the atonement; mercy is the fruit of a price paid]→ 42:23-25 (Alma 34:15-16; 2 Ne 2:13; Mosiah 15:27; Rom 3:26)
+- `theme:attacking-Gods-justice-to-excuse-oneself` —["ye do try to suppose that it is injustice that the sinner should be consigned to a state of misery"; "do not endeavor to excuse yourself... by denying the justice of God"; the doctrinal objection was scaffolding under the sin]→ 42:1, 30 (Rom 3:5; 2 Ne 26:7; 28:8; Mal 2:17)
+- `doctrine:two-kinds-of-trouble-destructive-vs-redemptive` —["let these things trouble you no more, and only let your sins trouble you, with that trouble which shall bring you down unto repentance"; redirect from destructive worry (avoidance) to godly sorrow]→ 42:29 (2 Cor 7:10; Mormon 2:13; Alma 36:17-19)
+- `theme:repentance-is-the-start-of-the-real-ministry` —["go thy way, declare the word with truth and soberness, that thou mayest bring souls unto repentance"; the vocation Alma found after his own conversion (36:24) handed to the son who strayed]→ 42:31 (Alma 36:24; Luke 22:32; John 21:15-17; D&C 11:15)
