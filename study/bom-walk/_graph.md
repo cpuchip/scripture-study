@@ -817,6 +817,10 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - person: `Captain-Moroni` (retakes the cities; retires in peace to Moronihah) · `Pahoran` (restored to the judgment-seat) · `Teancum` (kills Ammoron in a final solo raid, slain — "a true friend to liberty") · `Helaman` (rebuilds the church; dies in the 35th year)
 - doctrine: `the-same-affliction-hardens-some-and-softens-others` (v41 — suffering a catalyst, not a cause) · `remembering-is-the-antidote-to-the-pride-cycle` (vv49-50 — prosperity without pride because they remembered) · `the-prayers-of-the-righteous-spare-the-many` (v40) · theme: `righteous-anger-unbridled-carries-a-cost` (vv35-37 — Teancum dies on anger's errand) · `the-great-captain-exits-in-peace-not-glory` (v43) · `the-grievance-cure-still-working` (vv27-29 — prisoners become free people of Ammon)
 
+### from Alma 63 (close of the book of Alma — continuity, not climax)
+- person: `Shiblon` (the steady, just son; receives the records, confers on Helaman) · `Corianton` (the restored son; sails north carrying provisions — laboring, not given the records) · `Helaman (son of Helaman)` (receives the records — chain into the book of Helaman) · `Captain-Moroni` (dies, one verse) · `Hagoth` ("an exceedingly curious man"; ships north) · `Moronihah` (defeats the Lamanite incursion)
+- doctrine: `the-sacred-record-passes-through-chosen-faithful-hands` (vv1-2, 11-17 — generation to generation, Alma 37 fulfilled) · theme: `the-restored-son-serves-the-steady-son-keeps` (vv2, 10) · `the-great-are-remembered-by-deeds-not-death-notices` (v3 — Moroni's one-line death) · `a-record-honest-about-the-limits-of-its-knowledge` (v8 — "whither she did go we know not")
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -2143,3 +2147,11 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `doctrine:the-prayers-of-the-righteous-spare-the-many` —["for the righteous' sake, yea, because of the prayers of the righteous, they were spared"; the faithful few hold up the roof over everyone, including the hardened — the salt of the earth]→ 62:40 (Gen 18:23-32; Matt 5:13; Mosiah 27:14; James 5:16)
 - `theme:righteous-anger-unbridled-carries-a-cost` —[Teancum, "exceedingly angry with Ammoron," goes alone "in his anger" to kill him and succeeds, but the king wakes his servants and they slay Teancum; the man of fierce anger dies on anger's errand — even righteous anger, unbridled, costs]→ 62:35-37 (Alma 38:12; 51:34; Eph 4:26; Prov 16:32)
 - `theme:the-great-captain-exits-in-peace-not-glory` —[Moroni "yielded up the command of his armies into the hands of his son... and he retired to his own house that he might spend the remainder of his days in peace"; the greatest captain exits not in triumph but in rest — fitting the man who never delighted in war and only ever wanted to save his people]→ 62:43 (Alma 48:11-16; 2 Tim 4:7; Luke 2:29)
+
+### from Alma 63
+- `doctrine:the-sacred-record-passes-through-chosen-faithful-hands` —[Shiblon "a just man... did observe to do good continually" receives the records, then confers them on Helaman before death; the book closes "the account of Alma, and Helaman his son, and also Shiblon" — three generations, the trust handed on as Alma charged in 37]→ 63:1-2, 11-17 (Alma 37:1-12; 2 Tim 2:2; Deut 6:6-7)
+- `theme:the-restored-son-serves-the-steady-son-keeps` —[the records go to steady Shiblon (Alma 38), while restored Corianton (Alma 39-42) "had gone forth to the land northward... to carry forth provisions" — laboring honestly though not given the sacred trust; repentance real, stewardship to proven steadiness, both loved]→ 63:2, 10 (Alma 38:2-3; 42; Luke 15:11-32)
+- `theme:the-great-are-remembered-by-deeds-not-death-notices` —[Moroni, of whom "the very powers of hell would have been shaken" (48:17), dies in one line "Moroni died also"; the footnote sends to "43-63 for his great contributions" — the deeds are the monument, the eulogy was given mid-life]→ 63:3 (Alma 48:17; 2 Tim 4:7)
+- `theme:a-record-honest-about-the-limits-of-its-knowledge` —[Hagoth's ships sail north and "were never heard of more. And we suppose that they were drowned... and whither she did go we know not"; the record admits where its knowledge stops rather than inventing an ending — honesty over false omniscience]→ 63:5-8 (Alma 22:31-32; Hel 3:3-12)
+
+## — END OF ALMA (63 chapters) · BOOK OF HELAMAN BEGINS —
