@@ -557,6 +557,12 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - person: `king-Mosiah` (dissolves the monarchy; gives the kingdom away; dies) · `the-sons-of-Mosiah` (declined the throne) · `the-people` (relinquish the king; cast their voices) · `Alma-the-younger` (first chief judge + high priest) · `Alma-the-elder` (founder; dies) · `king-Noah` (the case study)
 - doctrine: `design-government-for-the-worst-case` (vv12-16 — "because all men are not just"; the Noah arc's payoff) · theme: `one-wicked-king-and-the-irremovable-tyrant` (vv17-23) · doctrine: `voice-of-the-people-and-its-caveat` (vv25-27 — only as safe as the people are righteous) · `accountability-shifted-from-king-to-people` (vv30-34) · structure: `checks-and-balances` (vv28-29) · theme: `king-who-surrenders-power-is-loved-more` (v40 — servant-king culminated) · event: `reign-of-judges-begins-book-ends` (vv42-47 — 509 yrs from Lehi)
 
+## — ALMA (the reign of judges; longest book, 63 ch) —
+
+### from Alma 1 (Nehor + priestcraft — the new order's first test)
+- person: `Alma-the-younger` (chief judge + high priest; first capital judgment) · `Nehor` (priestcraft's introducer; anti-Christ; slays Gideon; executed) · `Gideon` (aged deliverer, murdered for withstanding priestcraft) · `the-church-members` (persecuted; some proud, some steadfast) · `the-non-members` (persecutors)
+- theme: `priestcraft-the-first-internal-threat` (vv3-12 — paid+popular clergy + universal-salvation-without-accountability; anti-Christ template Sherem→Nehor→Korihor) · doctrine: `law-punishes-acts-not-belief` (vv12,17-18 — religious liberty + rule of law; tested again Korihor 30) · `universal-salvation-without-accountability-is-false` (v4) · `true-order-vs-priestcraft` (vv26-27 — laboring equal priesthood vs paid elevated) · `prosperity-without-the-heart-set-on-riches` (vv29-31 — Jacob 2 distinction) · event: `Gideon-slain-by-the-first-priestcraft` (vv7-9)
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -1373,3 +1379,11 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `structure:checks-and-balances` —[lower judges judged by higher, higher judges judged by a panel of lower by the voice of the people; self-correction without bloodshed]→ 29:28-29 (Ex 18:13-26; Deut 17:8-9)
 - `theme:king-who-surrenders-power-is-loved-more` —[Mosiah dissolves his own dynasty for the people's good; loved "beyond measure," not a tyrant seeking gain; servant-king culminated — the negative of Noah]→ 29:40 (Mosiah 2:12-14; 6:7; Matt 20:25-28)
 - `event:reign-of-judges-begins-book-ends` —[Alma the younger = first chief judge + high priest (civil + religious, distinct, one man); kings end; Mosiah + Alma die; 509 years from Lehi; Mosiah closes]→ 29:42-47 (Alma 1:1; 2:16)
+
+### from Alma 1
+- `theme:priestcraft-the-first-internal-threat` —[the reign of judges' first crisis is a preacher, not an army: paid+popular clergy + universal-salvation-without-accountability; "would prove their entire destruction"]→ 1:3-12 (2 Ne 26:29; Jacob 7:2; Alma 30; Mosiah 11:5) — error that enriches + flatters dissolves the self-governance the new order needs
+- `doctrine:law-punishes-acts-not-belief` —[Nehor executed for MURDER + enforcing priestcraft by the sword, NOT false doctrine; "the law could have no power on any man for his belief"; religious liberty + rule of law]→ 1:12,17-18 (Alma 30:7-11; AoF 1:11; D&C 134:4) — believe anything, but you may not murder
+- `doctrine:universal-salvation-without-accountability-is-false` —[Nehor's "all men shall have eternal life... need not fear nor tremble" removes the moral stakes]→ 1:4 (Alma 30:17; 2 Ne 28:7-9; Morm 8:31)
+- `doctrine:true-order-vs-priestcraft` —[true priests labor + return to work, "no better than the hearer," all equal "according to his strength," give to the poor; priestcraft is paid, elevated, taking]→ 1:26-27 (Mosiah 18:24-26; 27:3-5; 4:27; Acts 20:33) — ministry as giving not getting
+- `doctrine:prosperity-without-the-heart-set-on-riches` —[the church grows rich but "did not set their hearts upon riches; liberal to all... no respect to persons"; proof = no naked/hungry sent away; Jacob 2's distinction]→ 1:29-31 (Jacob 2:17-19; Mosiah 4:16-26; D&C 42:30)
+- `event:Gideon-slain-by-the-first-priestcraft` —[the aged deliverer of Limhi's people murdered for withstanding Nehor "with the words of God"; his blood makes the crime capital]→ 1:7-9 (Mosiah 22:3-9; Alma 6:7) — error preached is free; error enforced is death
