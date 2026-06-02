@@ -334,6 +334,11 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - doctrine: `gate-and-path` (baptism = gate/entry; endure to the end = path, v17-20) · `is-all-done-Nay` (entering ≠ arriving, v19 — cure for 28/29 complacency) · `Christ-the-baptized-example` (sinless one baptized to fulfil all righteousness, a fortiori, v5-9) · `rely-wholly-on-his-merits` (press-forward is grace-powered, v19) · `endurance-triad` (faith/hope/charity = path's fuel, v20) · `this-is-the-way` (exclusive, no other name, v21)
 - CONVERGENCE: `feast-on-the-word = hold-the-rod` (1 Ne 8:24 rod named: "feasting upon the word of Christ", v20) · `the-gate` (= 9:41 Holy One no servant + 1 Ne 8 strait gate) — the tree-of-life dream + doctrine of Christ = same map
 
+### from 2 Nephi 32 (doctrine of Christ continued)
+- doctrine: `two-guides-for-the-path` (the word TELLS v3 + the Spirit SHOWS v5 "all things what ye should do") · `prayerlessness-is-the-tell` (evil spirit teaches a man NOT to pray, v8) · `ask-and-knock` (or perish in the dark, v4) · `pray-always-consecrate-performance` (pray first, v9)
+- thread: `feast=hold-the-rod` (v3 — confirms 31:20 = 1 Ne 8:24)
+- lament: `refused-plainness` (Spirit stops Nephi's utterance; people won't search plainness, v7 — "we have enough" felt by the teacher)
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -779,3 +784,10 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `doctrine:rely-wholly-on-his-merits` —[press-forward is grace-powered]→ 31:19 (25:23; Moroni 6:4)
 - `doctrine:endurance-triad` —[faith + perfect brightness of hope + love = path's fuel]→ 31:20 (Moroni 7:41-48)
 - `doctrine:this-is-the-way` —[exclusive: no other way nor name]→ 31:21 (Acts 4:12; John 14:6)
+
+### from 2 Nephi 32
+- `doctrine:two-guides-for-the-path` —[the word tells (v3) + the Spirit shows (v5) "all things what ye should do"]→ 32:3,5 (John 16:13; Moroni 10:5)
+- `thread:feast=hold-the-rod` —[feast on the words of Christ = the rod]→ 32:3 (31:20; 1 Ne 8:24)
+- `lament:refused-plainness` —[Spirit stops his utterance; they won't search what is plainly given]→ 32:7 (25:4; cost of "we have enough" felt by the teacher)
+- `doctrine:prayerlessness-is-the-tell` —[the evil spirit teaches a man he must NOT pray]→ 32:8 (Alma 34:39) — the reluctance is the signal
+- `doctrine:pray-always-consecrate-performance` —[pray first, that God consecrate the act]→ 32:9 (Alma 34:27; Col 3:17)
