@@ -548,6 +548,11 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - person: `king-Mosiah` (forbids persecution, commands equality) · `Alma-the-younger` (wicked persecutor → born of God → witness) · `the-four-sons-of-Mosiah` (Ammon, Aaron, Omner, Himni — co-converted, future Lamanite missionaries) · `the-angel` (interrupter) · `Alma-the-elder` (the praying father)
 - doctrine: `Damascus-road-conversion-of-Alma` (vv11-16 — BoM's Paul; "why persecutest thou?") · `a-fathers-prayers-answered-agency-preserved` (v14,16) · `church-overthrown-only-by-its-own-transgression` (v13) · `born-again-universal-and-necessary` (vv24-26 — new-birth thread clearest) · theme: `before-and-after-of-redemption-snatched` (vv28-29 — abyss→light) · doctrine: `every-knee-bow-every-tongue-confess` (v31) · theme: `persecutors-become-publishers-of-peace` (vv35-37 — Isa 52:7/Abinadi 15 fulfilled; Abinadi arc closes)
 
+### from Mosiah 28 (the mission launches / Jaredite translation / records to Alma)
+- person: `the-four-sons-of-Mosiah` (beg to preach; vilest sinners → missionaries; refuse the throne) · `king-Mosiah` (inquires; translates Jaredite plates; confers records) · `the-Lamanites` (people of the grievance, target) · `Alma-the-younger` (receives records + interpreters) · `the-destroyed-Jaredites` (record translated)
+- object: `the-24-gold-plates` (→ Ether) · `the-two-interpreter-stones` (Urim and Thummim) · `the-brass-plates+plates-of-Nephi`
+- event: `mission-to-heal-the-grievance-launches` (vv1-2 — convince of fathers' iniquity, cure the hatred; **mos10 spin-off cure begins**) · doctrine: `could-not-bear-that-any-soul-perish` (v3 — worth of souls) · theme: `vilest-sinners-become-most-zealous-missionaries` (v4) · doctrine: `leadership-by-inquiry-and-deliverance-promise` (vv6-7 — governs Alma 17-26) · textual: `Jaredite-plates-translated-origin-of-Ether` (vv11-19) · `seer-doctrine-confirmed` (v16) · structure: `no-heir-and-records-to-the-prophetic-line` (vv10,20 — forces reign of judges)
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -1346,3 +1351,12 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `theme:before-and-after-of-redemption-snatched` —[abyss → marvelous light, eternal torment → pained no more, burning → snatched; the felt reality of redemption, all passive (done TO him)]→ 27:28-29 (Alma 36:6-24; Isa 38:17; 1 Pet 2:9; Jude 1:23)
 - `doctrine:every-knee-bow-every-tongue-confess` —[all will confess he is God at the judgment, even those who lived without God]→ 27:31 (Philip 2:9-11; Mosiah 16:1; D&C 88:104)
 - `theme:persecutors-become-publishers-of-peace` —[the wreckers become rebuilders "repairing all the injuries"; "how blessed... they did publish peace" = Isaiah 52:7 / Abinadi 15:14-18 FULFILLED in these converts → the Lamanite mission]→ 27:35-37 (Mosiah 15:14-18; Isa 52:7; Alma 17-26) — the Abinadi arc closes its loop
+
+### from Mosiah 28
+- `event:mission-to-heal-the-grievance-launches` —[the sons go to "convince them of the iniquity of their fathers" + "cure them of their hatred" — going-to the people of the inherited lie to re-teach the true story; the grievance healing begins]→ 28:1-2 (Mosiah 10:12-17; Jacob 7:24; Hel 15:7; Alma 17-26) — **mos10 spin-off: the cure begins here**
+- `doctrine:could-not-bear-that-any-soul-perish` —[missionary zeal at root is the inability to bear a soul lost; worth of souls; grown from 25:11's anguish]→ 28:3 (Mosiah 25:11; D&C 18:10-16; Moses 7:41; Matt 18:14)
+- `theme:vilest-sinners-become-most-zealous-missionaries` —[the spared "vilest of sinners" can't bear that anyone else perish; forgiven much → love much; the snatched pull others out]→ 28:4 (Mosiah 27:8-10; Alma 26:17; Luke 7:47; 1 Tim 1:13)
+- `doctrine:leadership-by-inquiry-and-deliverance-promise` —[Mosiah inquires before sending his sons; the Lord's fourfold promise governs all of Alma 17-26]→ 28:6-7 (Mosiah 26:13; Alma 17:35; 19:22)
+- `textual:Jaredite-plates-translated-origin-of-Ether` —[Mosiah translates the 24 plates with the interpreters; creation → great tower → Jaredite destruction; Moroni abridges as Ether; record-as-warning]→ 28:11-19 (Mosiah 8:8-13; Ether 1:1-5; Gen 11:6-9; JS-H 1:35)
+- `doctrine:seer-doctrine-confirmed` —[whosoever has the interpreters "is called seer, after the manner of old times"; ch 8's definition realized]→ 28:16 (Mosiah 8:13-18; Ex 28:30; Abr 3:1)
+- `structure:no-heir-and-records-to-the-prophetic-line` —[no son will take the throne (mission over crown) → forces the reign-of-judges question (ch 29); records pass to Alma the convert, not a royal heir]→ 28:10,20 (Mosiah 29:1-3; 23:7; Alma 37:1-12)
