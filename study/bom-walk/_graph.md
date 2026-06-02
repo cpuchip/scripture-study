@@ -524,6 +524,13 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - place: `the-back/secret-pass` · `Shilom` · `Zarahemla`
 - structure: `deliverance-by-stratagem-completes-the-pair` (vv2-11 — vs Alma's miracle ch24) · theme: `bondage's-own-instrument-becomes-the-escape` (vv7,10 — tribute-wine + drunk guards) · person: `Gideon-the-deliverer-completes-his-arc` (vv3-9 — "profitable servant") · textual: `records-gathered-to-the-seer` (v14 — Zeniff record + 24 plates → ch28 → Ether) · principle: `voice-of-the-people-in-seed` (v1 → ch29) · `Zeniff-record-ends` (9-22 complete)
 
+## — ALMA'S PEOPLE (chs 23-24) —
+
+### from Mosiah 23 (Alma refuses the crown / the righteous in bondage)
+- person: `Alma` (refuses the crown; repentant former priest; high priest/founder) · `Alma's-people` (righteous, industrious, in bondage as trial) · `the-Lamanite-army` (hearts softened) · `Amulon` (Noah's priest; made king over Alma) · `the-Lamanite-daughter-wives` (plead for the priests) · `the-Lamanite-king` (breaks the promise; enthrones Amulon)
+- place: `land/city-of-Helam` · `Amulon`
+- doctrine: `esteem-not-one-flesh-above-another` (v7 — anti-monarchy; Mosiah enacts ch29) · theme: `refuse-power-knowing-its-corruption-firsthand` (vv9-11 — "caught in a snare") · doctrine: `two-bondages-two-liberties-stand-fast` (vv12-14 — Gal 5:1) · `the-Lord-chastens-the-righteous` (vv21-24 — trial not punishment; counterpoint to Limhi) · theme: `surrender-in-faith-not-rebellion` (vv27-29) · `love-thy-neighbor-as-the-social-order` (v15) · `the-wicked-set-to-rule-the-righteous` (vv37-39)
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -1276,3 +1283,12 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `textual:records-gathered-to-the-seer` —[Mosiah receives the Zeniff record (9-22) AND the 24 Jaredite plates; both converge in the one with the gift to translate → ch 28 → Ether]→ 22:14 (Mosiah 8:9; 28:11-19; Ether 1:1-2)
 - `principle:voice-of-the-people-in-seed` —[even the escape is decided by gathering "the voice of the people"; the principle Mosiah institutionalizes in ch 29; righteous leadership consults]→ 22:1 (Mosiah 29:25-29; 7:9)
 - `structure:Zeniff-record-ends` —[chs 9-22 close; the back-fill complete; the main narrative (Alma's people 23-24, reunification 25) resumes]→ 22:13-14 (Mosiah 9:1; 25:1-7)
+
+### from Mosiah 23
+- `doctrine:esteem-not-one-flesh-above-another` —[Alma refuses the crown: kingship institutionalizes the lie that one flesh outranks another; just-king ideal vs unjust-king risk (Noah the proof)]→ 23:7-8 (Mosiah 29:12-23; 1 Sam 8:5-18; Matt 23:8-12) — the doctrine Mosiah enacts in ch 29
+- `theme:refuse-power-knowing-its-corruption-firsthand` —[Alma "caught in a snare" as Noah's priest; refuses the crown as one who felt power deform him; does not glory]→ 23:9-11 (Mosiah 17:2; 18:1; Alma 36:6; 1 Tim 1:13)
+- `doctrine:two-bondages-two-liberties-stand-fast` —[freed from Noah (political) AND the bands of iniquity (spiritual); stand fast in liberty (Gal 5:1); guard against tyrant + false teacher]→ 23:12-14 (Gal 5:1; 2 Ne 28:19; Isa 58:6)
+- `doctrine:the-Lord-chastens-the-righteous` —[Alma's GOOD people in bondage as TRIAL of patience + faith, not consequence; the counterpoint to Limhi's bondage-as-judgment; same affliction, opposite meaning by the heart]→ 23:21-24 (Heb 12:6-11; D&C 122:7; Job 23:10; Mosiah 24:14) — affliction is not proof of sin
+- `theme:surrender-in-faith-not-rebellion` —[Alma's already-humble people deliver themselves up trusting God; contrast Limhi's 3 failed rebellions]→ 23:27-29 (Mosiah 24:13-21; 21:6-14; Ex 14:13)
+- `theme:love-thy-neighbor-as-the-social-order` —[every man love his neighbor as himself → no contention; the baptismal covenant (18:8) as the society's constitution]→ 23:15 (Mosiah 18:21; Lev 19:18; 4 Ne 1:15)
+- `theme:the-wicked-set-to-rule-the-righteous` —[Amulon (Noah's priest) made king over Alma (righteous founder); the promise broken; bondage to the wickedness fled — the trial at its cruelest]→ 23:37-39 (Mosiah 24:8-11; Alma 25:4; Eccl 4:1)
