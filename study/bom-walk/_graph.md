@@ -544,6 +544,10 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - person: `the-rising-generation` (unbelievers; uninheriting the faith) · `the-dissenters` (flatterers eroding the church) · `the-sinning-church-members` · `Alma` (high priest; troubled; inquires; given eternal life) · `king-Mosiah` (gave Alma authority; refuses to judge the church) · `the-Lord` (reveals forgiveness + discipline)
 - theme: `founding-experience-uninheritable` (vv1-4 — generational unbelief; faith not transmitted) · `leader-inquires-rather-than-presumes` (vv9-19 — blessed FOR asking) · doctrine: `faith-in-the-words-alone` (vv15-16 — Alma believed Abinadi with no sign) · `forgiveness-without-a-ceiling` (v30 — "as often as"; **doctrinal heart**) · `forgive-or-be-condemned` (v31 — D&C 64:10) · `hear-my-voice-or-would-not-be-redeemed` (vv21-28 — "I never knew you") · practice: `church-discipline-aimed-at-repentance` (vv32-36 — names blotted out, door held open) · doctrine: `covenant-of-eternal-life-to-Alma` (v20 — BoM's first)
 
+### from Mosiah 27 (Alma the younger born of God — the Damascus road)
+- person: `king-Mosiah` (forbids persecution, commands equality) · `Alma-the-younger` (wicked persecutor → born of God → witness) · `the-four-sons-of-Mosiah` (Ammon, Aaron, Omner, Himni — co-converted, future Lamanite missionaries) · `the-angel` (interrupter) · `Alma-the-elder` (the praying father)
+- doctrine: `Damascus-road-conversion-of-Alma` (vv11-16 — BoM's Paul; "why persecutest thou?") · `a-fathers-prayers-answered-agency-preserved` (v14,16) · `church-overthrown-only-by-its-own-transgression` (v13) · `born-again-universal-and-necessary` (vv24-26 — new-birth thread clearest) · theme: `before-and-after-of-redemption-snatched` (vv28-29 — abyss→light) · doctrine: `every-knee-bow-every-tongue-confess` (v31) · theme: `persecutors-become-publishers-of-peace` (vv35-37 — Isa 52:7/Abinadi 15 fulfilled; Abinadi arc closes)
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -1333,3 +1337,12 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `doctrine:hear-my-voice-or-would-not-be-redeemed` —[the sheep are those who HEAR; the lost "would not be redeemed" and are told "I never knew you"; knowing God = hearing his voice; the loss is self-authored]→ 26:21-28 (John 10:14-27; Matt 7:21-23; Mosiah 16:12)
 - `practice:church-discipline-aimed-at-repentance` —[the unrepentant "not numbered... names blotted out," but redemptive — door open "as often as they repent"; written down so judgment is by revealed principle not whim]→ 26:32-36 (Ex 32:33; Moroni 6:7; D&C 20:80)
 - `doctrine:covenant-of-eternal-life-to-Alma` —[the BoM's first explicit promise of eternal life to a named individual; comes after humble inquiry, not a miracle]→ 26:20 (2 Pet 1:10; Hel 10:4-7; D&C 131:5)
+
+### from Mosiah 27
+- `event:Damascus-road-conversion-of-Alma` —[the chief persecutor stopped by an angel mid-attack, asked "why persecutest thou the church?", struck down, converted; the BoM's Paul — chief enemy → chief witness]→ 27:11-16 (Acts 9:1-9; 22:6-11; Alma 8:15)
+- `doctrine:a-fathers-prayers-answered-agency-preserved` —[the angel comes because Alma the elder "prayed with much faith concerning thee"; the conversion answers faithful prayer — yet the son must still choose]→ 27:14,16 (Mosiah 28:4-6; Alma 36:17; James 5:16; Enos 1:9) — prayer opens the door; the other walks through
+- `doctrine:church-overthrown-only-by-its-own-transgression` —[the church cannot be destroyed from outside; only its members' sin can overthrow it; the persecutor is never the real danger]→ 27:13 (Mosiah 26:32; D&C 1:14; Hosea 13:9)
+- `doctrine:born-again-universal-and-necessary` —[ALL mankind must be born again, "changed from their carnal and fallen state"; not just the notoriously wicked; "in nowise inherit" without it]→ 27:24-26 (John 3:3-5; 2 Cor 5:17; Mosiah 5:7; 15:10-13; Alma 5:14) — the new-birth thread at its clearest
+- `theme:before-and-after-of-redemption-snatched` —[abyss → marvelous light, eternal torment → pained no more, burning → snatched; the felt reality of redemption, all passive (done TO him)]→ 27:28-29 (Alma 36:6-24; Isa 38:17; 1 Pet 2:9; Jude 1:23)
+- `doctrine:every-knee-bow-every-tongue-confess` —[all will confess he is God at the judgment, even those who lived without God]→ 27:31 (Philip 2:9-11; Mosiah 16:1; D&C 88:104)
+- `theme:persecutors-become-publishers-of-peace` —[the wreckers become rebuilders "repairing all the injuries"; "how blessed... they did publish peace" = Isaiah 52:7 / Abinadi 15:14-18 FULFILLED in these converts → the Lamanite mission]→ 27:35-37 (Mosiah 15:14-18; Isa 52:7; Alma 17-26) — the Abinadi arc closes its loop
