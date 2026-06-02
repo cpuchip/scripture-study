@@ -553,6 +553,10 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - object: `the-24-gold-plates` (→ Ether) · `the-two-interpreter-stones` (Urim and Thummim) · `the-brass-plates+plates-of-Nephi`
 - event: `mission-to-heal-the-grievance-launches` (vv1-2 — convince of fathers' iniquity, cure the hatred; **mos10 spin-off cure begins**) · doctrine: `could-not-bear-that-any-soul-perish` (v3 — worth of souls) · theme: `vilest-sinners-become-most-zealous-missionaries` (v4) · doctrine: `leadership-by-inquiry-and-deliverance-promise` (vv6-7 — governs Alma 17-26) · textual: `Jaredite-plates-translated-origin-of-Ether` (vv11-19) · `seer-doctrine-confirmed` (v16) · structure: `no-heir-and-records-to-the-prophetic-line` (vv10,20 — forces reign of judges)
 
+### from Mosiah 29 (the abolition of kings — book of Mosiah CLOSES)
+- person: `king-Mosiah` (dissolves the monarchy; gives the kingdom away; dies) · `the-sons-of-Mosiah` (declined the throne) · `the-people` (relinquish the king; cast their voices) · `Alma-the-younger` (first chief judge + high priest) · `Alma-the-elder` (founder; dies) · `king-Noah` (the case study)
+- doctrine: `design-government-for-the-worst-case` (vv12-16 — "because all men are not just"; the Noah arc's payoff) · theme: `one-wicked-king-and-the-irremovable-tyrant` (vv17-23) · doctrine: `voice-of-the-people-and-its-caveat` (vv25-27 — only as safe as the people are righteous) · `accountability-shifted-from-king-to-people` (vv30-34) · structure: `checks-and-balances` (vv28-29) · theme: `king-who-surrenders-power-is-loved-more` (v40 — servant-king culminated) · event: `reign-of-judges-begins-book-ends` (vv42-47 — 509 yrs from Lehi)
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -1360,3 +1364,12 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `textual:Jaredite-plates-translated-origin-of-Ether` —[Mosiah translates the 24 plates with the interpreters; creation → great tower → Jaredite destruction; Moroni abridges as Ether; record-as-warning]→ 28:11-19 (Mosiah 8:8-13; Ether 1:1-5; Gen 11:6-9; JS-H 1:35)
 - `doctrine:seer-doctrine-confirmed` —[whosoever has the interpreters "is called seer, after the manner of old times"; ch 8's definition realized]→ 28:16 (Mosiah 8:13-18; Ex 28:30; Abr 3:1)
 - `structure:no-heir-and-records-to-the-prophetic-line` —[no son will take the throne (mission over crown) → forces the reign-of-judges question (ch 29); records pass to Alma the convert, not a royal heir]→ 28:10,20 (Mosiah 29:1-3; 23:7; Alma 37:1-12)
+
+### from Mosiah 29
+- `doctrine:design-government-for-the-worst-case` —[the just king is best IF guaranteed (Benjamin), but "because all men are not just" you cannot risk a king; build for the wicked ruler you might get]→ 29:12-16 (Mosiah 23:7-8; 1 Sam 8:4-22; D&C 121:39) — the Noah arc's payoff: never again, by design
+- `theme:one-wicked-king-and-the-irremovable-tyrant` —[one wicked king = vast destruction, "cannot be dethroned save... the shedding of much blood"; remember Noah]→ 29:17-23 (Mosiah 11; 1 Kgs 12:1-16; Prov 29:2)
+- `doctrine:voice-of-the-people-and-its-caveat` —[govern by common consent (majority tends right, minority is the danger) — BUT only as safe as the people are righteous: "if the voice of the people doth choose iniquity, then... the judgments of God"]→ 29:25-27 (Alma 2:3; Hel 5:2; 3 Ne 7:1-7; D&C 26:2) — the reform rests on virtue, not structure
+- `doctrine:accountability-shifted-from-king-to-people` —[under a king the people's sins are answered on the king's head; under judges "answered upon their own heads," every man bearing his part]→ 29:30-34 (AoF 1:2; 2 Ne 9:7; Ezek 18:20)
+- `structure:checks-and-balances` —[lower judges judged by higher, higher judges judged by a panel of lower by the voice of the people; self-correction without bloodshed]→ 29:28-29 (Ex 18:13-26; Deut 17:8-9)
+- `theme:king-who-surrenders-power-is-loved-more` —[Mosiah dissolves his own dynasty for the people's good; loved "beyond measure," not a tyrant seeking gain; servant-king culminated — the negative of Noah]→ 29:40 (Mosiah 2:12-14; 6:7; Matt 20:25-28)
+- `event:reign-of-judges-begins-book-ends` —[Alma the younger = first chief judge + high priest (civil + religious, distinct, one man); kings end; Mosiah + Alma die; 509 years from Lehi; Mosiah closes]→ 29:42-47 (Alma 1:1; 2:16)
