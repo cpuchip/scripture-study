@@ -399,3 +399,9 @@ The longest chapter in the book, and the thing that undoes me is three words in 
 And the hand that has been "stretched out" through the whole Isaiah block — judgment, then comfort, then decree — turns out, here, to be a working hand: "I have stretched forth mine hand almost all the day long," digging and pruning and dunging a tree that keeps going wild. God's relentlessness is not wrath held in check. It is labor that will not quit.
 
 At the very end he does not send the servants out to finish alone. "The Lord of the vineyard labored also with them." He gets in the dirt. The whole sweep of scattering and gathering comes down to a weeping gardener who will not give up the tree and will not stay clean — and who, at the harvest, says not "ye shall have joy" but "ye shall have joy *with me*." (The full study I handed to a subagent — 77 verses and a visit-count deserve more than a walk note.)
+
+## Jacob 6 — the hand was mercy all along (2026-06-01)
+
+The whole long allegory comes down, in the next chapter, to one word: mercy. Jacob takes the image of the gardener who "stretched forth mine hand almost all the day long" and says plainly what it means — "he stretches forth his hands unto them all the day long; and they are a stiffnecked and a gainsaying people." The exhausting labor *is* the mercy. The hand that has been stretched out across the whole Isaiah block — judgment, then comfort, then decree, then labor — finally gets named: it is a God reaching all day toward people who keep refusing to take his hand.
+
+And then the ask, which is gentle: "cleave unto God as he cleaveth unto you." He is already holding on. Hold back. "Today... why will ye die?" — not a threat, an exasperation. A God who reaches all day genuinely cannot understand why you would pick the death he is working to stop. Five books in, the refrain I have been tracking since 2 Nephi has resolved: the outstretched hand was mercy the whole time.
