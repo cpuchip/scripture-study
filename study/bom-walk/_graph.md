@@ -801,6 +801,10 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - person: `Helaman` (receives peace; refuses to murmur when abandoned) · `Gid-Teomner` (the ambush that takes Manti) · `the-stripling-warriors` (stand fast; none slain)
 - doctrine: `God-speaks-peace-to-the-soul-before-the-deliverance` (vv10-11) · `peace-and-faith-are-the-strengthening-not-a-consolation-prize` (vv11-12) · theme: `refuse-to-murmur-when-your-own-side-fails-you` (vv34-37) · `Helaman-vs-Moroni-two-responses-to-neglect` (vv35-37 vs ch 60) · `wisdom-adapts-against-a-learning-enemy` (vv1, 13-28) · `preservation-was-the-sign-daily-faithfulness-the-substance` (vv39-40)
 
+### from Alma 59 (Nephihah falls — Moroni's anger kindles)
+- person: `Captain-Moroni` (rejoices, then doubts, then angry at the government) · `Pahoran` (assumed indifferent — wrongly) · `Helaman` (the foil)
+- event: `the-fall-of-Nephihah` (vv5-10) · doctrine: `prevention-is-cheaper-than-recovery` (v9) · theme: `even-Moroni-doubts` (vv11-12) · `doubt-curdling-into-anger-at-the-wrong-target` (v13) · `judging-a-matter-before-hearing-it` (v13)
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -2099,3 +2103,9 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `theme:Helaman-vs-Moroni-two-responses-to-neglect` —[same neglect (denied support), opposite responses: Helaman refuses to murmur + trusts God (58:35-37); Moroni writes a furious accusatory letter (ch 60); Mormon places them side by side, and ch 61 vindicates the assume-the-best instinct]→ 58:35-37 (Alma 60:6-11; 61:1-9; Matt 7:1-2)
 - `theme:wisdom-adapts-against-a-learning-enemy` —["they remembered that which we had hitherto done; therefore we could not decoy them"; the old trick won't work twice, so Helaman invents a new stratagem — and takes Manti "without the shedding of blood"]→ 58:1, 13-28 (Josh 8:13; Alma 52:21; Eccl 1:9)
 - `theme:preservation-was-the-sign-daily-faithfulness-the-substance` —["not one soul has been slain. But... they stand fast in that liberty wherewith God has made them free; and they are strict to remember the Lord their God from day to day"; the miracle was the sign, daily faithfulness the substance]→ 58:39-40 (Alma 57:26-27; Gal 5:1; 1 Cor 16:13)
+
+### from Alma 59
+- `theme:even-Moroni-doubts` —["Moroni... began to doubt, because of the wickedness of the people, whether they should not fall"; the man Mormon praised above all others wavers under repeated loss — the faithful doubt too; permission, not disqualification]→ 59:11-12 (Matt 11:2-3; 1 Kgs 19:4; Ps 73:2-3)
+- `doctrine:prevention-is-cheaper-than-recovery` —["it was easier to keep the city... than to retake it"; the city could have been held cheaply if help had come — "someone will handle it" is how the holdable thing is lost]→ 59:9-10 (Prov 22:3; Luke 14:28-32; Alma 50:1-6)
+- `theme:doubt-curdling-into-anger-at-the-wrong-target` —["Moroni was angry with the government, because of their indifference"; he infers indifference from the missing help — but Pahoran wasn't indifferent, he'd been driven from his seat by rebels; righteous anger aimed wrong, judging before hearing]→ 59:13 (Alma 61:3-9; Prov 18:13; Prov 16:32)
+- `theme:Helaman-vs-Moroni-two-responses-to-neglect` —[Helaman, equally abandoned, "did not desire to murmur" and trusted God (58:35-37); Moroni grows "angry with the government" and assumes indifference (59:13); Mormon places them side by side]→ 59:13 (Alma 58:34-37; 60:1-11; 61:9; Matt 7:1-2)
