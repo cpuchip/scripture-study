@@ -679,6 +679,10 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - person: `Alma-the-younger` (the soliloquy; holy-ambition-corrected)
 - doctrine: `wanting-more-than-your-allotment-is-sin` (vv3-6 — Mosiah 4:27 from inside) · `God-grants-according-to-desire` (vv4-5) · `God-teaches-every-nation-in-its-own-tongue` (v8 — 5:21-adjacent) · theme: `scale-ambition-to-one-soul-through-your-calling` (vv6-9) · `joy-fuller-in-others-success` (vv14-16)
 
+### from Alma 30 (Korihor the anti-Christ)
+- person: `Korihor` (anti-Christ; full secular-materialist creed; struck dumb; "I always knew"; trodden down) · `Alma-the-younger` (refutes by argument first, sign last; discerns willful unbelief) · `Giddonah` (high priest at Gideon)
+- doctrine: `no-law-against-belief-punish-crimes-not-faith` (vv7-11) · `all-things-denote-there-is-a-God` (v44 — design argument) · `argument-before-sign-reason-first` (vv37-47) · `unbelief-as-chosen-lie-believed-through-success` (vv42, 52-53) · theme: `the-complete-anti-Christ-creed` (vv13-18) · `accusation-by-projection-priestcraft` (vv27-35) · `the-devil-abandons-his-children` (v60)
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -1751,3 +1755,12 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `doctrine:God-teaches-every-nation-in-its-own-tongue` —["the Lord doth grant unto all nations, of their own nation and tongue, to teach his word... all that he seeth fit"; the distributed work — you are not the only instrument; relief not defeat]→ 29:8 (2 Ne 29:12; 3 Ne 26:8; D&C 90:11; Acts 2:6) — 5:21-adjacent
 - `theme:scale-ambition-to-one-soul-through-your-calling` —["why should I desire more than to perform the work to which I have been called?... this is my glory, that perhaps I may be an instrument... to bring some soul to repentance"; "some soul" replaces "every people"]→ 29:6-9 (Alma 26:12; D&C 18:15-16; Luke 15:7)
 - `theme:joy-fuller-in-others-success` —["I do not joy in my own success alone, but my joy is more full because of the success of my brethren... my soul is carried away, even to the separation of it from the body"; the corrected ambition rejoices hardest in what others did]→ 29:14-16 (Alma 27:17; Philip 1:18; 3 John 1:4)
+
+### from Alma 30
+- `doctrine:no-law-against-belief-punish-crimes-not-faith` —["there was no law against a man's belief... a man was punished only for the crimes which he had done; therefore all men were on equal grounds"; the God-ordained order refuses to criminalize unbelief — compelled belief is no belief]→ 30:7-11 (Alma 1:17; Josh 24:15; D&C 134:4; A of F 1:11)
+- `theme:the-complete-anti-Christ-creed` —[no prophecy, "ye cannot know of things which ye do not see," faith as "a frenzied mind," "every man conquered according to his strength... whatsoever a man did was no crime," "when a man was dead, that was the end"; the full secular-materialist package]→ 30:13-18 (2 Ne 28:5-9; Jacob 7:7; Morm 8:31; Alma 1:4)
+- `theme:accusation-by-projection-priestcraft` —[Korihor charges the true priests with Nehor's actual crime ("glut yourselves with the labors of their hands"); refuted: "I have never received so much as even one senine for my labor"]→ 30:27-35 (Alma 1:4, 16; Mosiah 18:24; Acts 20:34; 1 Thes 2:9)
+- `doctrine:all-things-denote-there-is-a-God` —["what evidence have ye that there is no God... ye have none, save it be your word only"; "all things denote there is a God... the planets which move in their regular form do witness"; design argument + burden of proof on the denier]→ 30:40-44 (Ps 14:1; Job 12:7-10; Moses 6:63; Hel 12:11-15; Rom 1:20)
+- `doctrine:argument-before-sign-reason-first` —[Alma engages the evidence ("thou hast had signs enough") and gives the sign only when Korihor demands it + danger is clear; "better that thy soul should be lost than... bringing many souls down to destruction"]→ 30:37-47 (Matt 12:39; John 6:30; D&C 46:9; Jacob 7:13-21)
+- `doctrine:unbelief-as-chosen-lie-believed-through-success` —["I know that thou believest, but thou art possessed with a lying spirit" → "I always knew that there was a God... pleasing unto the carnal mind... until... I verily believed that they were true"; success laundered the lie into conviction]→ 30:42, 52-53 (2 Cor 11:14; Jacob 7:14; 2 Ne 28:5-9)
+- `theme:the-devil-abandons-his-children` —[Korihor begging house to house, then "run upon and trodden down"; "the devil will not support his children at the last day, but doth speedily drag them down to hell"; paid by the master you serve]→ 30:56-60 (Alma 3:27; 5:41-42; D&C 29:45; Jacob 7:20)
