@@ -734,6 +734,13 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - person: `Corianton` (denied God's justice to excuse his sin) · `Alma-the-younger`
 - doctrine: `the-expulsion-was-mercy-it-created-the-space-to-repent` (vv2-7) · `law-punishment-repentance-chain` (vv16-22) · `God-himself-pays-justice-so-mercy-can-act` (v15) · `mercy-cannot-rob-justice` (vv23-25) · `two-kinds-of-trouble-destructive-vs-redemptive` (v29) · theme: `attacking-Gods-justice-to-excuse-oneself` (vv1, 30) · `repentance-is-the-start-of-the-real-ministry` (v31)
 
+## — THE WAR CHAPTERS (43-62) —
+*Captain Moroni; the title of liberty (46); Moroni's character (48); the Amalickiah/Ammoron wars; Helaman's stripling warriors (53, 56-58); the Moroni-Pahoran epistles (60-61). The gospel under siege — liberty, covenant, and faith tested by war.*
+
+### from Alma 43 (Captain Moroni — the better cause)
+- person: `Captain-Moroni` (chief captain at 25; armor, revelation, stratagem, mercy) · `Zerahemnah` (Lamanite commander; apostate captains preserve hatred) · `Lehi-captain` (encircling army at Sidon) · `Alma-the-younger` (consulted for strategy)
+- doctrine: `the-better-cause-defensive-not-conquest` (vv45-47) · `the-law-of-war-bear-the-offense-then-defend` (vv46-47 — D&C 98) · theme: `Moroni-prepares-armor-as-a-moral-act` (vv18-21, 37-38) · `revelation-and-strategy-together` (vv23-24, 30) · `mercy-in-victory-stop-when-the-threat-is-contained` (v54) · `dissenters-drive-the-war` (vv6-8)
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -1913,3 +1920,11 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `theme:attacking-Gods-justice-to-excuse-oneself` —["ye do try to suppose that it is injustice that the sinner should be consigned to a state of misery"; "do not endeavor to excuse yourself... by denying the justice of God"; the doctrinal objection was scaffolding under the sin]→ 42:1, 30 (Rom 3:5; 2 Ne 26:7; 28:8; Mal 2:17)
 - `doctrine:two-kinds-of-trouble-destructive-vs-redemptive` —["let these things trouble you no more, and only let your sins trouble you, with that trouble which shall bring you down unto repentance"; redirect from destructive worry (avoidance) to godly sorrow]→ 42:29 (2 Cor 7:10; Mormon 2:13; Alma 36:17-19)
 - `theme:repentance-is-the-start-of-the-real-ministry` —["go thy way, declare the word with truth and soberness, that thou mayest bring souls unto repentance"; the vocation Alma found after his own conversion (36:24) handed to the son who strayed]→ 42:31 (Alma 36:24; Luke 22:32; John 21:15-17; D&C 11:15)
+
+### from Alma 43
+- `doctrine:the-better-cause-defensive-not-conquest` —["not fighting for monarchy nor power but... for their homes and their liberties, their wives and their children... their rites of worship and their church"; the cause makes the fighting righteous — defense, never conquest]→ 43:45-47 (D&C 98:23-48; Alma 48:14-16; Matt 5:39)
+- `doctrine:the-law-of-war-bear-the-offense-then-defend` —["Inasmuch as ye are not guilty of the first offense, neither the second, ye shall not suffer yourselves to be slain... Ye shall defend your families even unto bloodshed"; bloodshed licensed only to the non-aggressor who has borne the provocation]→ 43:46-47 (D&C 98:23-36; 3 Ne 3:20-21; Morm 3:10-11)
+- `theme:Moroni-prepares-armor-as-a-moral-act` —[breastplates/shields vs. the "naked" Lamanites; armor terrifies the larger army + saves lives ("now and then a man fell among the Nephites" vs. Lamanite death "almost at every stroke"); foresight is moral]→ 43:18-21, 37-38 (Alma 49:24; Eph 6:11-17; Prov 22:3)
+- `theme:revelation-and-strategy-together` —[Moroni inquires of the Lord through Alma where to defend, AND "thought it no sin that he should defend them by stratagem"; divine guidance + lawful cunning, neither despised]→ 43:23-24, 30 (Judg 7:16-25; 2 Kgs 6:8-18; Josh 8:13)
+- `theme:mercy-in-victory-stop-when-the-threat-is-contained` —[with the Lamanites surrounded and "struck with terror," Moroni "commanded his men that they should stop shedding their blood"; a war for protection sheathes the sword the instant protection is achieved]→ 43:54 (Alma 44:1-2; Deut 20:10-12; Prov 24:17)
+- `theme:dissenters-drive-the-war` —[Zerahemnah appoints Amalekite/Zoramite apostates as chief captains "that he might preserve their hatred"; the dissenters "more wicked and murderous" than the native Lamanites — the 24:30 principle in arms]→ 43:6-8 (Alma 24:30; 47:36; 21:3-4)
