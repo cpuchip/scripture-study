@@ -663,6 +663,10 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - person: `seed-of-Amulon` (burn believers, then hunted + slain — Abinadi's prophecy fulfilled) · `the-new-Lamanite-converts` (join Anti-Nephi-Lehies, bury weapons, keep the law as type)
 - doctrine: `prophecy-fulfilled-as-a-pattern-across-generations` (vv9-12 — Abinadi Mosiah 13) · `law-of-moses-as-type-not-salvation` (vv15-16) · theme: `sin-and-its-judgment-both-have-descendants` (vv4-9) · `the-cure-spreads-through-the-war` (vv13-14) · `counterfeit-forms-vs-forms-that-point-to-Christ` (vv15-16 vs 21:6)
 
+### from Alma 26 (Ammon's psalm — the arc's doxology)
+- person: `Ammon` (the psalm; "I am nothing... in his strength I can do all things") · `Aaron` (the peer rebuke on boasting)
+- doctrine: `boast-in-God-not-self-strength-through-nothing` (vv11-12 — BoM Philip 4:13) · `chains-of-hell-loosed` (vv14-15 — Alma 12 reversed) · `only-the-penitent-knows` (vv21-22) · `God-mindful-of-every-people` (vv36-37 — 5:21 datapoint) · theme: `the-sword-vs-the-saving` (vv24-26) · `Lamanite-love-exceeds-Nephite-love` (vv33-34) · event: `Ammon-almost-turned-back` (v27)
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -1703,3 +1707,12 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `doctrine:law-of-moses-as-type-not-salvation` —["they did not suppose that salvation came by the law of Moses; but the law of Moses did serve to strengthen their faith in Christ"; the converts grasp the forms-as-type the Nehorites never did]→ 25:15-16 (Gal 3:24; 2 Ne 11:4; Jacob 4:5; Mosiah 13:27-33)
 - `theme:the-cure-spreads-through-the-war` —[the defeated Lamanites come home, join the people of God, "bury their weapons of war, according as their brethren had"; every wave of violence yields more converts]→ 25:13-14 (Alma 24:26; 23:6; 17:9)
 - `theme:counterfeit-forms-vs-forms-that-point-to-Christ` —[the Amalekites kept synagogues/worship as an end (21:6); the converts keep the law knowing it is "a type of his coming"; same ritual, opposite direction]→ 25:15-16 (Alma 21:6; 2 Ne 25:24-27)
+
+### from Alma 26
+- `doctrine:boast-in-God-not-self-strength-through-nothing` —[Aaron: "thy joy doth carry thee away unto boasting"; Ammon: "I know that I am nothing; as to my strength I am weak; therefore... I will boast of my God, for in his strength I can do all things"; the "all things" available only from zero]→ 26:10-12 (Philip 4:13; 2 Cor 12:9-10; Jer 9:24; 1 Ne 17:3)
+- `doctrine:chains-of-hell-loosed` —["he has loosed our brethren from the chains of hell"; the Alma 12 binding reversed; two encirclements — "everlasting darkness" vs "the matchless bounty of his love"]→ 26:13-15 (Alma 12:11; 5:7-9, 26; 2 Ne 1:13)
+- `doctrine:only-the-penitent-knows` —["what natural man... knoweth these things? none... save it be the penitent"; repentance is the organ by which the mysteries become visible; Amalekites couldn't, Lamanites could]→ 26:21-22 (1 Cor 2:11-14; Alma 12:9-11; Jacob 4:8)
+- `theme:the-sword-vs-the-saving` —[the Nephites mocked ("destroy them... lest they overrun us"); Ammon: "not with the intent to destroy our brethren, but... that perhaps we might save some few"; the sword never converted a Lamanite, the saving converted thousands]→ 26:23-26 (Alma 24:26; Matt 5:44; Mosiah 28:1-3)
+- `theme:Lamanite-love-exceeds-Nephite-love` —["has there been so great love in all the land? Nay... even among the Nephites... they would take up arms... but how many of these have laid down their lives"; the despised people out-love the covenant people]→ 26:33-34 (Alma 19:10; 24:21-22; John 15:13)
+- `doctrine:God-mindful-of-every-people` —["God is mindful of every people... he numbereth his people, and his bowels of mercy are over all the earth"; the Lamanites a lost branch of the olive tree, remembered all along]→ 26:36-37 (2 Ne 26:33; Jonah 4:11; Acts 10:35; Jacob 5:25) — 5:21-study datapoint
+- `event:Ammon-almost-turned-back` —["when our hearts were depressed, and we were about to turn back, the Lord comforted us... bear with patience thine afflictions, and I will give unto you success"]→ 26:27 (Alma 17:10-11; 1 Ne 17:3; D&C 6:36)
