@@ -604,6 +604,10 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - person: `Amulek` (exposes the bribe; teaches the resurrection) · `Zeezrom` (bribes, traps, then begins to tremble) · `the-lawyers-of-Ammonihah` (manufacture conflict for fees) · `Christ` (the very Eternal Father; saves from sin) · object: `the-Nephite-coinage` · `the-six-onties` (the bribe)
 - doctrine: `saved-FROM-sin-not-IN-it` (vv34-37 — no unclean thing inherits; refutes Nehor) · theme: `the-bribe-exposes-the-briber` (vv22-25 — loves lucre more than the God he knows is real) · `lawyers-manufacture-conflict-for-fees` (v20) · doctrine: `Son-is-the-very-Eternal-Father-condescension` (vv38-40) · `universal-resurrection-conditional-salvation` (v41 — Mosiah 16:5) · `resurrection-perfect-universal-permanent-with-recollection` (vv42-45 — bright recollection of guilt) · event: `Zeezrom-begins-to-tremble` (v46 — conversion begins)
 
+### from Alma 12 (chains of hell + flaming sword of mercy)  [spin-off RUNNING: alma12-13]
+- person: `Alma-the-younger` (expounds beyond Amulek) · `Zeezrom` (trembling → diligent inquiry; softening spiral) · `Antionah` (chief ruler, asks of the flaming sword) · `Adam` (the Fall) · `the-devil` (the chains, captivity)
+- doctrine: `chains-of-hell-self-tightening-spiral` (vv9-11 — portion of word by heed; harden→know nothing→captive; no neutral) · `flaming-sword-was-mercy-death-as-probation` (vv21-27) · `probationary-state-time-to-prepare-to-meet-God` (vv24,27) · `harden-not-your-hearts-enter-into-my-rest` (vv33-37 — the hinge → ch 13) · `plan-of-redemption-laid-before-the-Fall` (vv25,30,33) · event: `Zeezroms-softening-in-real-time` (vv1-8) · doctrine: `judged-by-thoughts-words-and-works` (v14)
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -1517,3 +1521,12 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `doctrine:universal-resurrection-conditional-salvation` —[bands of death loosed for ALL; but beyond that "the wicked remain as though there had been no redemption made"]→ 11:41 (Mosiah 16:5; Alma 42:23; 2 Ne 9:7-13)
 - `doctrine:resurrection-perfect-universal-permanent-with-recollection` —[spirit+body reunited "in its perfect form," not a hair lost; all rise; "die no more"; "a bright recollection of all our guilt" carried into the resurrection]→ 11:42-45 (Alma 40:23; 2 Ne 9:13-14; Mosiah 3:25; 1 Cor 15:42-54)
 - `event:Zeezrom-begins-to-tremble` —[the corrupt lawyer who came to trap "began to tremble"; the knowing of God overpowering the loving of lucre; the great conversion begins]→ 11:46 (Alma 12:1-7; 15:3-12; Acts 24:25)
+
+### from Alma 12
+- `doctrine:chains-of-hell-self-tightening-spiral` —[knowledge by "heed and diligence"; harden → lesser portion → "know nothing" → captive by the devil = chains of hell; soften → greater portion → "know in full"; self-forged, no neutral]→ 12:9-11 (2 Ne 28:27-30; Matt 13:12; 25:29; D&C 50:24; John 8:34) — **spin-off: alma12-13**
+- `doctrine:flaming-sword-was-mercy-death-as-probation` —[barring the tree of life preserved the "space... in which he might repent"; without death the fallen state would be eternal; the apparent curse is the gift of probation]→ 12:21-27 (Gen 3:22-24; 2 Ne 2:15-21; Alma 42:2-5; Moses 4:31) — mortality is the chance, not the catastrophe
+- `doctrine:probationary-state-time-to-prepare-to-meet-God` —["this life became a probationary state; a time to prepare to meet God"; death + the time to repent are the plan's mercy]→ 12:24,27 (Alma 34:32-35; 42:4-13; Heb 9:27; 2 Ne 2:21)
+- `doctrine:harden-not-your-hearts-enter-into-my-rest` —[the hinge: repent + harden not → mercy through the Only Begotten → "enter into my rest"; the same verb governs the portion of light AND the rest]→ 12:33-37 (Alma 13:6-29; Heb 3:7-4:11; Ps 95:8-11; D&C 84:24) — runs into the priesthood discourse (ch 13)
+- `doctrine:plan-of-redemption-laid-before-the-Fall` —[the redemption "laid from the foundation of the world," prepared before the problem; a designed economy, not an improvised rescue]→ 12:25,30,33 (Mosiah 4:6; 15:19; Alma 42:8; Moses 6:62; 1 Pet 1:20)
+- `event:Zeezroms-softening-in-real-time` —[the corrupt lawyer trembling "under a consciousness of his guilt" turns the right way — "began to inquire diligently... that he might know more"; the reverse spiral enacted in the man hearing it]→ 12:1-8 (Alma 11:46; 15:3-12)
+- `doctrine:judged-by-thoughts-words-and-works` —[the whole person condemns or clears; the guilty wish the mountains would hide them from God's presence]→ 12:14 (Matt 12:36; Mosiah 4:30; Rev 6:16; Hosea 10:8)
