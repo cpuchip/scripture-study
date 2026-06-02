@@ -624,6 +624,13 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - person: `Zoram-chief-captain` (consults Alma, recovers all captives; sons Lehi + Aha — NOT the 1 Ne Zoram) · `Alma-the-younger` (inquires of the Lord; gives the battle geography) · `the-Lamanite-armies` (strike Ammonihah before defense can muster)
 - event: `Ammonihah-destroyed-in-one-day` (vv9-11 — fulfilling the scoff of 9:4) · place: `Desolation-of-Nehors` (v11 — land named for the *profession* that killed it) · theme: `seek-the-prophet-vs-harden-against-him` (vv5-9, the diptych) · doctrine: `Spirit-poured-out-to-prepare-hearts` (vv16-17 — inverse of the chains of hell) · prophecy: `Christ-will-appear-after-his-resurrection` (v20)
 
+## — SONS OF MOSIAH / LAMANITE MISSION (17-27) —
+*The grievance-tradition CURE in action (the disease was diagnosed in mos10). Ammon → Lamoni → the queen + household; Aaron → the over-king; the Anti-Nephi-Lehies + buried weapons. Deep study: `studies/alma17-26_lamanite-conversion-and-the-grievance-cure.md` (in progress).*
+
+### from Alma 17 (Ammon at the waters of Sebus — the prince made servant)
+- person: `Ammon` (son of Mosiah; refuses Lamoni's daughter, chooses to be a servant; the Sebus deliverance) · `Lamoni` (king of Ishmael, descendant of Ishmael) · `the-sons-of-Mosiah` (refused the kingdom; 14-yr mission; scriptures + fasting → spirit of prophecy)
+- theme: `the-tradition-is-the-target-not-the-people` (v9 — grievance-cure thesis) · `patience-and-example-as-conversion-method` (v11) · `preparation-precedes-power` (vv2-3) · event: `Ammon-chooses-to-be-a-servant` (v25 — power-inversion) · `waters-of-Sebus` (vv26-39 — well-deliverance type-scene) · doctrine: `miracle-in-service-of-relationship-in-service-of-belief` (v29)
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -1587,3 +1594,11 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `theme:seek-the-prophet-vs-harden-against-him` —[Zoram consults Alma and recovers every captive ("not one soul... lost"); Ammonihah hardened against the same prophet and perished]→ 16:5-9 (Alma 9:1-6; 2 Kgs 6:8-12)
 - `doctrine:Spirit-poured-out-to-prepare-hearts` —[the inverse of the chains of hell (12:9-11): God softens the soil *before* the word, that hearts "might not be hardened... but receive the word with joy, and as a branch be grafted into the true vine"]→ 16:16-17 (Acts 16:14; Jacob 5:24; Alma 12:9-11; Mosiah 18:27)
 - `prophecy:Christ-will-appear-after-his-resurrection` —[the 3 Nephi visit preached as settled hope in the peace years]→ 16:20 (Alma 7:8; 2 Ne 26:9; 3 Ne 11:8)
+
+### from Alma 17
+- `theme:the-tradition-is-the-target-not-the-people` —[the mission prays to dislodge "the baseness of the traditions of their fathers, which were not correct" — the grievance narrative, not the blood]→ 17:9 (Alma 3:11; Mosiah 10:12-17) — cure to the mos10 disease
+- `theme:patience-and-example-as-conversion-method` —[the Lord commands not argument but "patient in long-suffering and afflictions... show forth good examples unto them in me"]→ 17:11 (Alma 20:29; 26:27)
+- `theme:preparation-precedes-power` —[scriptures searched diligently + much prayer and fasting → "therefore they had the spirit of prophecy... taught with power and authority of God"]→ 17:2-3 (Jacob 7:23; D&C 84:85; D&C 11:21)
+- `event:Ammon-chooses-to-be-a-servant` —[offered the king's daughter, the Nephite prince answers "Nay, but I will be thy servant"; inverts the power-relation the grievance was built on]→ 17:24-25 (Alma 21:19; Matt 20:26-28; Mark 10:43-45)
+- `doctrine:miracle-in-service-of-relationship-in-service-of-belief` —[Ammon's heart "swollen with joy" at the scattered flocks: the rescue is to "win the hearts... that I may lead them to believe in my words"; the defense is a sermon's prologue]→ 17:29 (2 Kgs 5:8; Alma 18)
+- `event:waters-of-Sebus` —[the well-deliverance type-scene; the stranger proves himself at the water and is brought into the household; restraint inside power — "slew none save... their leader," smote off arms]→ 17:26-39 (Ex 2:17; Mosiah 28:7; Alma 19:22-23)
