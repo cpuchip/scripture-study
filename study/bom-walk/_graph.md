@@ -643,6 +643,10 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - person: `Lamonis-father-the-over-king` (recites the grievance; draws on his son + Ammon; spared, seeded) · `Ammon` (pleads for the king's soul; refuses the bribe; asks nothing for self) · `Lamoni` (refuses to enforce the grievance) · `Aaron-Muloki-Ammah` (imprisoned at Middoni; patient in suffering)
 - theme: `the-grievance-at-full-volume` (vv10-13 — Mosiah 10 by its highest exponent) · `the-son-refuses-to-enforce-the-grievance` (v15) · `selfless-terms-disarm-the-grievance` (vv24-26) · `king-turns-sword-on-his-own-son` (vv14-16 — Saul/Jonathan) · `faithfulness-measured-by-the-field-endured-not-the-fruit` (vv29-30 — Aaron vs Ammon) · doctrine: `plead-for-the-aggressors-soul-not-just-the-victims-life` (vv17-18) · event: `over-king-spared-and-seeded` (vv26-27)
 
+### from Alma 21 (Aaron's harder field — the Amalekite/Amulonite Nehorites)
+- person: `Aaron` (preaches the atonement into counterfeit-religious room; mocked; imprisoned; eventually fruitful) · `the-Amalekites-Amulonites` (Nehorite apostate-dissenters; "still harder") · `Muloki-Ammah` (Aaron's companions) · `Lamoni` (refuses Ammon's servanthood; decrees religious freedom)
+- theme: `apostates-are-the-hardest-ground` (v3) · `denying-prophecy-to-immunize-the-present` (v8) · `preach-the-atonement-plainly-regardless-of-reception` (vv9-10) · `Spirit-led-mission-go-where-admitted` (vv16-17) · doctrine: `counterfeit-religion-removes-the-need-to-repent` (v6 — Nehor's "God saves all men") · event: `Lamoni-decrees-religious-freedom` (vv19-22)
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -1640,3 +1644,11 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `event:over-king-spared-and-seeded` —[grants Lamoni's kingdom "from this time and forever," "I will govern him no more," and becomes "desirous to learn"; the ch 22 conversion planted]→ 20:26-27 (Alma 22:1-18)
 - `theme:king-turns-sword-on-his-own-son` —[the over-king draws on Lamoni for siding with the prophets; the Saul-and-Jonathan figure, bent toward mercy]→ 20:14-16 (1 Sam 20:27-33; Alma 18:9)
 - `theme:faithfulness-measured-by-the-field-endured-not-the-fruit` —[Aaron freed "naked... skins worn... bound with strong cords," among "a more hardened and stiffnecked people," yet "patient in all their sufferings"; Ammon's court vs Aaron's dungeon, same gospel]→ 20:29-30 (Alma 17:11; 26:29; 2 Cor 11:23-27)
+
+### from Alma 21
+- `theme:apostates-are-the-hardest-ground` —["the Lamanites of themselves were sufficiently hardened, but the Amalekites and the Amulonites were still harder; therefore they did cause the Lamanites that they should harden"; dissenters harder than natives, and they spread the hardening]→ 21:2-4 (Mosiah 23:31-24:1; Alma 24:30; 47:36)
+- `doctrine:counterfeit-religion-removes-the-need-to-repent` —["we have built sanctuaries... we do assemble... We do believe that God will save all men"; Nehor's universalism as anti-repentance technology; a faith engineered to affirm them as they are]→ 21:6 (Alma 1:4; 15:15; 2 Ne 28:8) — hardest soil is counterfeit faith, not irreligion
+- `theme:denying-prophecy-to-immunize-the-present` —["We do not believe in these foolish traditions... neither do we believe that... our fathers did know concerning... that which is to come"; cut the cord to revelation so the future can't indict you]→ 21:8 (Jacob 7:2; Alma 30:13-16; 2 Pet 3:3-4)
+- `theme:preach-the-atonement-plainly-regardless-of-reception` —[Aaron opens the scriptures: "no redemption for mankind save it were through the death and sufferings of Christ, and the atonement of his blood"; preached into a room that mocked]→ 21:9-10 (Mosiah 3:17; Alma 22:14; 1 Cor 1:23)
+- `theme:Spirit-led-mission-go-where-admitted` —["they went forth whithersoever they were led by the Spirit... preaching in every synagogue where they could be admitted"; the Pauline pattern; the hard field yields after the prison]→ 21:16-17 (Acts 16:6; Alma 17:9; D&C 18:44)
+- `event:Lamoni-decrees-religious-freedom` —[the convert-king refuses Ammon's servanthood (relationship transfigured) and legislates "the liberty of worshiping the Lord their God according to their desires"; the gospel that freed his soul becomes law freeing his people's worship]→ 21:19-22 (Alma 17:25; A of F 1:11; D&C 134:1-4)
