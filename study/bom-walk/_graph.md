@@ -458,6 +458,11 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - doctrine: `bondage-as-covenant-in-reverse` (vv20,25,29 — sin → bondage; God withholds succor) · `sow-filthiness-reap-the-whirlwind` (vv30-31) · `exodus-as-grammar-of-hope` (v19) · `turn-plus-effectual-struggle-on-Gods-timetable` (vv18,33) · `Christ-the-God-come-down-in-flesh` (v27 — Abinadi's Christology previewed; image of God) · event: `prophet-slain-for-testifying-of-Christ` (vv26-28)
 - structure: `embedded-record-read-end-first` (Mormon splices the colony's story in; Limhi in chains seen BEFORE Zeniff's optimism → dramatic irony over 9-22)
 
+### from Mosiah 8 (a seer is greater than a prophet / the 24 plates)
+- person: `Ammon` (rehearses history + Benjamin's words; expounds seership) · `king-Limhi` (questioner; rejoices then laments) · `the-43-man-search-party` (diligent but lost; found the ruins) · `king-Mosiah` (the seer who can translate) · `the-destroyed-people` (Jaredites, "numerous as the hosts of Israel")
+- object: `the-24-gold-plates` (= the Jaredite record → Ether) · `the-breastplates` · `the-rusted-swords` · `the-interpreters` (Urim and Thummim)
+- doctrine: `seer-greater-than-prophet` (vv15-17 — revelator + prophet + seer; gift just short of God's power) · `God-provides-the-means-of-revelation` (vv13,18-19) · `interpreters-guarded-by-commandment` (v13 — commanded or perish) · `wisdom-refused-not-unavailable` (v20 — Lady Wisdom they won't be ruled by; the root beneath ch 7's bondage) · image: `wild-flock-fleeing-the-shepherd` (v21) · textual: `24-plates-origin-of-Ether` (vv8-12 — sought to know "the cause of their destruction")
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -1072,3 +1077,11 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `doctrine:turn-plus-effectual-struggle-on-Gods-timetable` —[deliverance conditional (turn) + cooperative (struggle) + on God's will/pleasure]→ 7:18,33 (Deut 30:1-10; Lam 5:21; Mosiah 22) — foreshadows escape by stratagem
 - `doctrine:Christ-the-God-come-down-in-flesh` —[Abinadi's Christology previewed: God the Father of all takes the image of man; man made in God's image]→ 7:27 (Mosiah 13:34; 15:1-7; Gen 1:26; Ether 3:14-17)
 - `event:prophet-slain-for-testifying-of-Christ` —[the unnamed prophet = Abinadi; killed for the doctrine of the condescension; proximate cause of the wrath]→ 7:26-28 (Mosiah 17:13-20; Matt 23:37; Hel 13:24)
+
+### from Mosiah 8
+- `doctrine:seer-greater-than-prophet` —[a revelator + prophet also; the highest mortal gift, one rung below the power of God; makes known what otherwise could not be known]→ 8:15-17 (1 Sam 9:9; D&C 21:1; Moses 6:35-38)
+- `doctrine:God-provides-the-means-of-revelation` —[interpreters "prepared"; revelation has appointed instruments + channels, not just hope]→ 8:13,18-19 (Ex 28:30; Ether 3:4-6; Abr 3:1-4)
+- `doctrine:interpreters-guarded-by-commandment` —[look only if commanded, lest he perish; revelation's instruments are a stewardship, not a toy]→ 8:13 (D&C 121:26-31)
+- `textual:24-plates-origin-of-Ether` —[the Jaredite record surfaces here; Mosiah will translate (28), Moroni abridge; sought to know "the cause of their destruction"]→ 8:8-12 (Mosiah 28:11-17; Ether 1:1-2; Omni 1:20-22) — a warning record for a people about to repeat it
+- `doctrine:wisdom-refused-not-unavailable` —[the tragedy is not hidden knowledge but men who "will not seek wisdom"; Lady Wisdom they won't be ruled by]→ 8:20 (Prov 9:1-6; Matt 11:19) — the root beneath ch 7's bondage
+- `image:wild-flock-fleeing-the-shepherd` —[willful scattering into the jaws of the beasts]→ 8:21 (Isa 53:6; Ezek 34:5; John 10:11-16; Alma 5:37)
