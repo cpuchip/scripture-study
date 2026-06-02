@@ -761,6 +761,10 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - person: `Captain-Moroni` (fullest character portrait — greatness of character not capacity) · `Amalickiah` (power by fraud, the foil) · `Helaman-the-preachers` ("no less serviceable")
 - theme: `greatness-is-character-not-capacity` (v7) · `the-general-and-the-preacher-are-equals` (vv18-19) · `the-reluctant-warrior-grieves-the-unprepared-dead` (vv23-24) · `competence-in-service-of-love-not-the-reverse` (vv11-13) · doctrine: `if-all-men-were-like-Moroni-hell-would-be-shaken` (v17) · `the-Nephite-war-faith-defense-never-offense` (vv14-16)
 
+### from Alma 49 (fortified cities tested — preparation pays off)
+- person: `Captain-Moroni` (fortifies the weak city most; anticipates enemy's logic) · `Amalickiah` (curses God + Moroni for the faithfulness that beat him) · `Lehi-captain` (commands Noah; feared) · `Corianton` (restored, now preaching)
+- theme: `preparation-defeats-numbers-and-is-how-God-works` (vv2-23) · `anticipate-the-enemys-logic-fortify-the-weak-point-most` (vv14-15) · `two-responses-to-one-deliverance` (vv27-28) · `Amalickiah-hates-God-because-faithfulness-works` (v27) · event: `Corianton-restored-among-the-preachers` (v30)
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -1987,3 +1991,10 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `theme:the-general-and-the-preacher-are-equals` —["Helaman and his brethren were no less serviceable unto the people than was Moroni"; saving souls by the word and saving lives by the shield are the same order of service]→ 48:18-19 (Alma 28:8; 1 Cor 12:4-7; D&C 4:2)
 - `theme:the-reluctant-warrior-grieves-the-unprepared-dead` —[the Nephites "sorry to be the means of sending so many of their brethren... unprepared to meet their God" — yet "could not suffer" their families to be massacred; fight without ever loving it, grieving the souls you take]→ 48:23-24 (Alma 28:11-12; Ezek 33:11; D&C 42:45; Luke 19:41)
 - `theme:competence-in-service-of-love-not-the-reverse` —[Moroni's strength, understanding, labor all aimed at "the welfare and safety of his people"; the competence serves the love, not the love the competence; a great general who does not love war]→ 48:11-13 (Matt 20:25-28; John 15:13; Alma 43:45)
+
+### from Alma 49
+- `theme:preparation-defeats-numbers-and-is-how-God-works` —[the Lamanites bring superior numbers AND new armor, but Moroni's ridges/entrance/ditch nullify both: "more than a thousand of the Lamanites were slain; while... there was not a single soul of the Nephites which was slain"; preparation is the form providence takes]→ 49:2-23 (Alma 48:8-9; Prov 21:31; 2 Chr 32:5)
+- `theme:anticipate-the-enemys-logic-fortify-the-weak-point-most` —["he had supposed that they would be frightened at... Ammonihah; and as the city of Noah had hitherto been the weakest part... they would march thither"; Moroni fortified the soft target most — the enemy probes the "weakest part"]→ 49:14-15 (Alma 48:9; Matt 26:41; 1 Pet 5:8)
+- `theme:two-responses-to-one-deliverance` —[Amalickiah "did curse God, and also Moroni... because Moroni had kept the commandments of God"; the Nephites "did thank the Lord their God"; same event, gratitude in one heart, blasphemy in the other]→ 49:27-28 (Alma 44:3, 9; Ex 8:15; John 11:45-48)
+- `theme:Amalickiah-hates-God-because-faithfulness-works` —[he curses God for the very thing that should have converted him — the Nephites won because Moroni was faithful; a heart running from the obvious would rather curse God than admit he was in it]→ 49:27 (Acts 23:12; Rev 16:9-11; Mosiah 3:12)
+- `event:Corianton-restored-among-the-preachers` —[the prosperity came by the word "declared by Helaman, and Shiblon, and Corianton, and Ammon"; the son who strayed (ch 39) now preaches beside his faithful brothers — repentance was the beginning of his ministry, not the end]→ 49:30 (Alma 39:1-11; 42:31; Luke 15:22-24; 22:32)
