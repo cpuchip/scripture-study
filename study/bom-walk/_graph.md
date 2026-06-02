@@ -710,6 +710,10 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - person: `Alma-the-younger` (conversion paradigm; persecutor→preacher) · `Helaman` (the son receiving the charge)
 - structure: `chiasmus-centered-on-the-cry` (vv1-30, pivot vv17-18) · doctrine: `pains-of-hell-are-memory-in-Gods-presence` (vv13-16) · `a-different-memory-is-the-rescue` (v17) · `the-cry-stripped-to-the-name-and-mercy` (v18) · `joy-exactly-as-deep-as-the-pain` (vv20-21) · `conversion-becomes-vocation` (v24) · `reproducible-conversion-tasted-eye-to-eye` (v26) · event: `longing-replaces-the-wish-to-be-banished` (vv15, 22)
 
+### from Alma 37 (to Helaman cont. — records, small means, the Liahona)
+- person: `Alma-the-younger` · `Helaman` (entrusted with records + interpreters) · object: `the-sacred-records-Liahona-24-plates`
+- doctrine: `by-small-and-simple-things` (vv6-7) · `scriptures-preserve-memory-and-convert` (vv8-9) · `teach-the-fruit-of-evil-not-the-recipe` (vv21-32) · `counsel-with-the-Lord-in-all-thy-doings` (vv35-37) · `the-Liahona-as-type-of-the-word` (vv38-46) · theme: `the-failure-is-despising-the-easy-way` (vv41, 46)
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -1842,3 +1846,11 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `event:longing-replaces-the-wish-to-be-banished` —[v15 wished to "become extinct... that I might not be brought to stand in the presence of my God"; v22 "my soul did long to be there"; the cry reversed the deepest direction of desire]→ 36:15, 22 (1 Ne 1:8; Isa 6:1-3; Rev 22:4)
 - `doctrine:conversion-becomes-vocation` —["from that time even until now, I have labored without ceasing... that I might bring them to taste of the exceeding joy of which I did taste"; the joy is the engine of the life, not a private possession]→ 36:24-26 (Alma 29:9; Luke 22:32; 1 Pet 2:3)
 - `doctrine:reproducible-conversion-tasted-eye-to-eye` —["many have been born of God, and have tasted as I have tasted, and have seen eye to eye as I have seen"; the seed experiment (32) confirmed from the far side — conversion is verifiable, not a one-off]→ 36:26 (Alma 32:28; Ps 34:8; 1 Pet 2:3)
+
+### from Alma 37
+- `doctrine:by-small-and-simple-things` —["by small and simple things are great things brought to pass... by very small means the Lord doth confound the wise and bringeth about the salvation of many souls"; the great work hides in the unimpressive instrument]→ 37:6-7 (1 Cor 1:27; 2:14; D&C 64:33; 2 Kgs 5:13)
+- `doctrine:scriptures-preserve-memory-and-convert` —[the records "enlarged the memory of this people... convinced many"; "were it not for these things... Ammon... could not have convinced so many thousands of the Lamanites"; the whole grievance-cure rode on the plates]→ 37:8-9 (Alma 18:36; 22:12; Mosiah 1:3-5; Omni 1:17)
+- `doctrine:teach-the-fruit-of-evil-not-the-recipe` —[keep the Jaredites' secret oaths "from this people... lest... they should fall into darkness also"; teach "their wickedness and their murders" so they "abhor" it, never the method]→ 37:21-32 (Hel 6:25-26; Ether 8:18-26; 2 Ne 4:31) — expose consequences, withhold the manual
+- `doctrine:counsel-with-the-Lord-in-all-thy-doings` —["let all thy doings be unto the Lord... let the affections of thy heart be placed upon the Lord"; "Counsel with the Lord in all thy doings, and he will direct thee for good"; night-surrender + morning-thanks]→ 37:35-37 (Prov 3:5-6; Ps 37:5; D&C 6:36; Eccl 12:1)
+- `doctrine:the-Liahona-as-type-of-the-word` —[the compass "did work for them according to their faith"; "it is as easy to give heed to the word of Christ... as it was for our fathers to give heed to this compass... if we will look we may live forever"]→ 37:38-46 (1 Ne 16:10, 28-29; 18:12; 2 Ne 5:12; Ps 119:105)
+- `theme:the-failure-is-despising-the-easy-way` —["they were slothful... because those miracles were worked by small means... and then those marvelous works ceased"; "do not let us be slothful because of the easiness of the way"; the serpent/seed/Liahona — the failure is to despise the simple means for being simple]→ 37:41-46 (1 Ne 17:41; Alma 33:19-22; Matt 11:30; Luke 6:46-49)
