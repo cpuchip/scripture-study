@@ -247,6 +247,14 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - doctrine: `two-fears` (fear of men displaced by fear of God, v12-13) · `stone-sanctuary-and-stumbling` (same stone, response decides = Christ, v14) · `to-the-law-and-to-the-testimony` (discernment standard, v20) · `seek-God-not-peeping-wizards` (v19) · `Immanuel-God-with-us` (v10)
 - variant: `hear-from-the-dead` (v19 BoM clarifies KJV's cryptic phrase — VERIFIED)
 
+### from 2 Nephi 19 (Isaiah 9) — the bright center
+- isaiah: `9` (great light + "unto us a child is born" + the five names)
+- prophecy: `great-light-in-darkness` (v2, fulfilled Matt 4:14-16) · `child-is-born-five-names` (Wonderful/Counselor/Mighty God/Everlasting Father/Prince of Peace, v6)
+- image: `government-on-his-shoulder` (yoke lifted from them = rule he takes up, v4,6)
+- doctrine: `kingdom-by-Gods-zeal` (not human hewn stones, v7) · `Everlasting-Father` (child who is also Father, Mosiah 15) · `five-names-answer-the-crises` (each name replies to a fear of the block)
+- refrain: `hand-stretched-out-still` (×3 vv12,17,21 — judgment that keeps reaching = mercy offered)
+- variant: `not-removed` (v3 BoM "and increased the joy"; KJV footnote concedes "not" should go — VERIFIED) · `red-sea` (v1)
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -584,3 +592,13 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `doctrine:seek-God-not-peeping-wizards` —[hidden knowledge from illegitimate sources]→ 18:19 (Lev 20:6; 1 Sam 28)
 - `image:children-as-signs` —[names = walking prophecies]→ 18:18 (likening made flesh)
 - `variant:hear-from-the-dead` —[BoM v19 clarifies KJV's cryptic "for the living to the dead", verified]→ opaque → clear
+
+### from 2 Nephi 19 (Isaiah 9)
+- `prophecy:great-light-in-darkness` —[shadow of death sees light]→ 19:2 (Matt 4:14-16; John 8:12)
+- `doctrine:five-names-answer-the-crises` —[each name replies to a fear the block raised]→ 19:6 (13:12; 17:4; 18:7,12)
+- `image:government-on-his-shoulder` —[yoke lifted from them = rule he takes up]→ 19:4,6 (same shoulder → the cross)
+- `doctrine:kingdom-by-Gods-zeal` —[not human hewn stones]→ 19:7,10 (Luke 1:32-33)
+- `doctrine:Everlasting-Father` —[the child who is also the Father]→ 19:6 (Mosiah 15:1-4)
+- `refrain:hand-stretched-out-still` —[×3; judgment that keeps reaching]→ 19:12,17,21 (2 Ne 15:25)
+- `variant:not-removed` —[BoM v3 "and increased the joy"; KJV footnote concedes, verified]→ BoM restores the correct reading
+- `variant:red-sea` —[BoM v1 "the Red Sea" for KJV "the sea", verified]
