@@ -482,6 +482,10 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - text: `the-harder-prophecy` (detailed doom, fulfilled chs 19,21) · `Isaiah-52:7-10` (the deferred test → ch 15) · `the-Decalogue` (begun)
 - theme: `prisoner-tries-the-court` (vv19,25-27) · structure: `deferred-answer-Isaiah-52` (vv20-24 → 15:14-18; why 13-15 is one argument) · `ye-know-that-I-speak-the-truth` (v30 — suppression not ignorance) · `false-prosperity-gospel` (v15) · `teachers-who-neither-keep-nor-teach` (vv28-37) · doctrine: `law-cannot-save-by-itself` (vv31-33 → 13:27-32) · `record-as-witness-against-abomination` (v8)
 
+### from Mosiah 13 (the shield + the law that cannot save)  [spin-off RUNNING: mos13-16_abinadi-christology]
+- person: `Abinadi` (shielded, shining-faced; names his death a type) · `king-Noah` (failed kill-order) · `the-wicked-priests` (cannot touch him) · `Moses` (shining-face precedent; prophet of the Messiah) · `all-the-prophets` (unified witness)
+- doctrine: `messenger-shielded-until-the-message-is-out` (vv3-9 — protection instrumental + bounded; Dan 3 courage) · `martyrdom-as-type-and-shadow` (v10) · `salvation-not-by-the-law-alone` (vv27-28 — only the Atonement "God himself shall make"; **the discourse thesis**) · `law-as-remembrance-for-the-stiffnecked` (vv29-30 — pedagogy not redemption; "slow to remember" = 9:3,6:3) · `law-as-types-of-things-to-come` (vv31-32) · `all-prophets-testify-of-the-condescending-suffering-God` (vv33-35 — track for Isaiah 53)
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -1142,3 +1146,11 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `theme:teachers-who-neither-keep-nor-teach` —[claim to teach the law of Moses but break the first commandments and never taught them]→ 12:28-37 (John 3:10; Mal 2:7-8; Matt 23:13)
 - `doctrine:law-cannot-save-by-itself` —[salvation does not come by the law of Moses alone; it points to Christ]→ 12:31-33 (Mosiah 3:15; 13:27-32; Gal 3:21-24; 2 Ne 25:23)
 - `theme:record-as-witness-against-abomination` —[preserved "to discover the abominations... to other nations"; the warning function inside the doom]→ 12:8 (Morm 8:14-41; 2 Ne 26:10-11)
+
+### from Mosiah 13
+- `doctrine:messenger-shielded-until-the-message-is-out` —[divine protection instrumental + bounded: God guards the word's delivery, not the man's life; "then it matters not whither I go"]→ 13:3-9 (1 Ne 17:48; John 7:30; Dan 3:16-18)
+- `doctrine:martyrdom-as-type-and-shadow` —[Abinadi reads his own coming death as a pattern; righteous man killed by a corrupt court for testifying of Christ = figure of Christ]→ 13:10 (Mosiah 17:13-20; Alma 25:11-12; Heb 11:35)
+- `doctrine:salvation-not-by-the-law-alone` —[the law cannot save even if kept; only the Atonement "God himself shall make"; the law provisional ("as yet"/"no more expedient")]→ 13:27-28 (2 Ne 25:23; Gal 2:16; Heb 10:1; 3 Ne 15:4) — **the thesis of the Abinadi discourse**
+- `doctrine:law-as-remembrance-for-the-stiffnecked` —[a strict law of performances given to a people "slow to remember"; pedagogy, not redemption]→ 13:29-30 (2 Ne 25:24; Gal 3:24; Mosiah 9:3; 6:3)
+- `doctrine:law-as-types-of-things-to-come` —[every ordinance a finger pointing forward to Christ; the keepers who never saw what it pointed at]→ 13:31-32 (2 Ne 11:4; Mosiah 16:14; Alma 25:15; Heb 10:1)
+- `doctrine:all-prophets-testify-of-the-condescending-suffering-God` —["God himself should come down... take upon him the form of man... oppressed and afflicted"; the track laid for Isaiah 53]→ 13:33-35 (Mosiah 7:27; 15:1; Isa 53; Alma 7:10; 1 Ne 11:13-33)
