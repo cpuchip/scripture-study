@@ -531,6 +531,11 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - place: `land/city-of-Helam` · `Amulon`
 - doctrine: `esteem-not-one-flesh-above-another` (v7 — anti-monarchy; Mosiah enacts ch29) · theme: `refuse-power-knowing-its-corruption-firsthand` (vv9-11 — "caught in a snare") · doctrine: `two-bondages-two-liberties-stand-fast` (vv12-14 — Gal 5:1) · `the-Lord-chastens-the-righteous` (vv21-24 — trial not punishment; counterpoint to Limhi) · theme: `surrender-in-faith-not-rebellion` (vv27-29) · `love-thy-neighbor-as-the-social-order` (v15) · `the-wicked-set-to-rule-the-righteous` (vv37-39)
 
+### from Mosiah 24 (the burdens made light / miraculous deliverance)
+- person: `Amulon` (persecutor; forbids prayer; wicked priest as task-master) · `Alma-and-his-people` (enslaved, burdens made light, delivered) · `king-Laman` · `the-Lamanite-task-masters` (put to sleep) · `king-Mosiah` (receives them)
+- place: `land-of-Amulon` · `valley-of-Alma` · `Zarahemla`
+- doctrine: `burdens-made-light-the-bearer-strengthened` (vv14-15 — **deepest BoM answer to affliction of the faithful**) · `God-visits-his-people-IN-their-afflictions` (v14 — answers ch23 chastening) · `the-prayer-of-the-heart` (vv11-12 — forbidden voice / poured-out heart) · structure: `deliverance-pair-completed-Alma-by-miracle` (vv16-21 — vs Limhi's stratagem) · theme: `faith-and-patience-draw-the-deliverance` (vv15-17) · `skill-without-God-makes-cleverer-wickedness` (vv4-7) · `gratitude-named-into-the-land` (vv20-22)
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -1292,3 +1297,12 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `theme:surrender-in-faith-not-rebellion` —[Alma's already-humble people deliver themselves up trusting God; contrast Limhi's 3 failed rebellions]→ 23:27-29 (Mosiah 24:13-21; 21:6-14; Ex 14:13)
 - `theme:love-thy-neighbor-as-the-social-order` —[every man love his neighbor as himself → no contention; the baptismal covenant (18:8) as the society's constitution]→ 23:15 (Mosiah 18:21; Lev 19:18; 4 Ne 1:15)
 - `theme:the-wicked-set-to-rule-the-righteous` —[Amulon (Noah's priest) made king over Alma (righteous founder); the promise broken; bondage to the wickedness fled — the trial at its cruelest]→ 23:37-39 (Mosiah 24:8-11; Alma 25:4; Eccl 4:1)
+
+### from Mosiah 24
+- `doctrine:burdens-made-light-the-bearer-strengthened` —[God does NOT remove the burden first; He strengthens them to bear it "with ease... even while you are in bondage"; same weight made light by changing the bearer]→ 24:14-15 (Matt 11:28-30; Isa 46:3-4; 2 Cor 12:9; Alma 33:23) — **the deepest BoM answer to the affliction of the faithful**
+- `doctrine:God-visits-his-people-IN-their-afflictions` —[present in the suffering before the rescue; the answer to ch 23's chastening — chastened AND visited, the same God's two hands]→ 24:14 (Ex 3:7-9; Mosiah 23:21; D&C 122:7; Ps 23:4)
+- `doctrine:the-prayer-of-the-heart` —[vocal prayer forbidden on pain of death; they "pour out their hearts" silently and God "knows the thoughts of their hearts"; prayer cannot be outlawed because it is interior]→ 24:11-12 (Dan 6:7-10; 1 Sam 1:13; Ps 139:1-4; Matt 6:6) — forbidden silent cry → free vocal praise (v22)
+- `structure:deliverance-pair-completed-Alma-by-miracle` —[Alma's already-humble people delivered by sheer miracle (deep sleep), no effort but obedience; vs Limhi's stratagem (ch 22); manner reveals the heart]→ 24:16-21 (Mosiah 22:2-11; 21:15; 1 Sam 26:12)
+- `theme:faith-and-patience-draw-the-deliverance` —[cheerful patient bearing of the eased burden → "so great was their faith and patience" → "on the morrow I will deliver you"; submission as the faith that draws the rescue]→ 24:15-17 (Rom 5:3-5; James 1:3-4; Ex 3:12)
+- `theme:skill-without-God-makes-cleverer-wickedness` —[the Amulonites teach the Lamanites language, literacy, trade, worldly wisdom — but not God; a literate prosperous godless people delights more in wickedness]→ 24:4-7 (Omni 1:18; 2 Ne 9:28-29; 4 Ne 1:43-46)
+- `theme:gratitude-named-into-the-land` —[the valley of Alma named for the deliverer; total thanksgiving, even the children who could speak; free praise inverts the forbidden cry]→ 24:20-22 (Mosiah 18:30; Ex 15:1-21; Ps 107:1)
