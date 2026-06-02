@@ -773,6 +773,10 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - person: `the-king-men` (high-birth faction seeking monarchy; seditious in defeat) · `the-freemen-Pahoran` (free government by the voice of the people) · `Captain-Moroni` (crushes internal sedition) · `Amalickiah` (dies by Teancum's javelin asleep) · `Teancum` (the night raid)
 - theme: `sedition-born-from-factional-spite` (v13) · `internal-division-opens-the-door-to-conquest` (vv22-27) · `the-nations-own-fortifications-turned-against-it` (v27) · `the-hard-edge-of-wartime-sedition-law` (vv15-21) · `the-pit-digger-falls-into-his-own-pit` (vv9-10, 33-37)
 
+### from Alma 52 (Ammoron + Mulek retaken by decoy)
+- person: `Ammoron` (Amalickiah's brother; inherits throne + war) · `Captain-Moroni` (the decoy; mercy in the trap; wounded) · `Teancum` (the bait force) · `Lehi-captain` (the fresh pincer) · `Jacob-Zoramite` (fights to the death; killed)
+- theme: `organized-evil-outlives-its-leader` (vv3-4) · `dont-fight-on-the-enemys-terms` (vv5, 17) · `the-decoy-and-the-pincer` (vv21-31 — ambush of Ai) · `mercy-maximizes-surrenders-not-kills` (vv37-40) · `the-dissenters-ferocity-destroys-him` (vv33-40)
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -2020,3 +2024,10 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `theme:the-nations-own-fortifications-turned-against-it` —[the captured cities were "strongly fortified after the manner of the fortifications of Moroni; all of which afforded strongholds for the Lamanites"; the defenses built to protect now shelter the invader, because division stripped the defenders]→ 51:27 (Alma 48:8; Ps 127:1; Hag 1:6)
 - `theme:the-hard-edge-of-wartime-sedition-law` —[Moroni given power to "compel those dissenters to defend their country or to put them to death"; 4,000 hewn down, leaders jailed "no time for their trials"; martial law in an existential invasion — the record lets the hard thing stand]→ 51:15-21 (Alma 46:35; 62:9-10; D&C 134:1-5)
 - `theme:the-pit-digger-falls-into-his-own-pit` —[Amalickiah swore the "rash" oath to "drink the blood of Moroni" but never reaches him; Teancum "put a javelin to his heart" in his sleep — the man who rose by poison and the mid-handshake stab dies asleep, silently; he dies as he killed]→ 51:9-10, 33-37 (Eccl 10:8; Prov 26:27; Alma 47:18, 24; Matt 26:52)
+
+### from Alma 52
+- `theme:organized-evil-outlives-its-leader` —[Amalickiah dead, but "Ammoron, the brother of king Amalickiah, was appointed to reign in his stead" and prosecutes the same war; cutting off the head rarely ends the body — institutional evil outlasts its founder]→ 52:3-4 (Alma 48:1-6; 54:5; Judg 8:33-9:6)
+- `theme:dont-fight-on-the-enemys-terms` —[twice the commanders refuse to assault the forts ("impossible... while they were in their fortifications; therefore he abandoned his designs"); wait, prepare, decoy instead — the harder courage is to NOT attack when attacking is heroic and futile]→ 52:5, 17 (Eccl 7:8; Prov 21:31; Luke 14:31-32)
+- `theme:the-decoy-and-the-pincer` —[Moroni can't get Jacob "out upon fair grounds," so Teancum baits a pursuit, the hidden army takes the emptied Mulek, fresh forces catch the wearied pursuers in a pincer; the ambush of Ai — Nephites think while the enemy reacts]→ 52:21-31 (Josh 8:3-22; Alma 43:30; Judg 7:16-22)
+- `theme:mercy-maximizes-surrenders-not-kills` —["If ye will bring forth your weapons of war... we will forbear shedding your blood"; "the number of prisoners... exceeded more than the number of those who had been slain"; a war for protection maximizes surrenders]→ 52:37-40 (Alma 43:54; 44:20; Deut 20:10-12)
+- `theme:the-dissenters-ferocity-destroys-him` —[Jacob the Zoramite, "having an unconquerable spirit," fights to the death and is killed, while the native Lamanites surrender and live; the apostate's hardness destroys him, the one who relents is spared]→ 52:33-40 (Alma 24:30; 47:36; Matt 16:25)
