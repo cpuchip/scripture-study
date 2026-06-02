@@ -404,6 +404,16 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - image: `prick-their-hearts` (the disturbing word keeps them from destruction, v12 — inverse of "all is well")
 - meta: `thinning-record` ("what could I write more?", v2 — small plates shortening toward Omni; faithful contentment, watch the line)
 
+## — OMNI — (1-chapter book, 5 writers, COMPLETE — small plates END)
+
+### from Omni 1
+- person: `omni`+`amaron`+`chemish`+`abinadom` (the four thinning keepers) · `amaleki` (recovering last keeper, no seed) · `mosiah-I` (flees to Zarahemla; seer) · `people-of-zarahemla`/`mulekites` (recordless, denied their Creator) · `coriantumr` (last Jaredite) · `king-benjamin` (receives the plates)
+- meta: `record-dwindles-then-flares` (5 keepers thin to Abinadom's "no revelation" v11, then Amaleki recovers it)
+- proof: `recordless-people-lose-God` (Mulekites: no records → corrupted language + denied Creator, v17 — vindicates the whole record-keeping)
+- doctrine: `offer-your-whole-souls` (the complete offering, v26) · `good-comes-from-the-Lord` (discernment criterion, v25) · `prosperity-covenant-negative` (NOT keep → NOT prosper, v6)
+- foreshadow: `jaredites` (Coriantumr + large stone + "from the tower", v20-22 → Ether)
+- transition: small plates CLOSE; handed to king Benjamin → Mormon's abridgment (W of M, Mosiah)
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -945,3 +955,12 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `doctrine:mercy-not-as-yet` —[God has not yet swept them off; the "not yet" is patience]→ Jarom 1:3 (Jacob 6:4; 2 Pet 3:9)
 - `image:prick-their-hearts` —[the word that disturbs keeps them from destruction]→ Jarom 1:12 (Enos 1:23; Acts 2:37)
 - `meta:thinning-record` —[Jarom writes less; small plates shorten toward Omni]→ Jarom 1:2,14
+
+## — OMNI (edges) —
+- `meta:record-dwindles-then-flares` —[5 keepers thin to "no revelation" (v11), then Amaleki recovers it]→ Omni 1:1-26 (Jarom 1:2) — one faithful voice > four thin ones
+- `proof:recordless-people-lose-God` —[Mulekites: no records → corrupted language + denied Creator]→ Omni 1:14-17 (Mosiah 1:3-5) — vindicates the record-keeping chain
+- `doctrine:offer-your-whole-souls` —[the complete offering: the self, fulfilling the law's type]→ Omni 1:26 (3 Ne 9:20; Rom 12:1)
+- `doctrine:good-comes-from-the-Lord` —[the discernment criterion]→ Omni 1:25 (Moroni 7:12-17; James 1:17)
+- `doctrine:prosperity-covenant-negative` —[NOT keep → NOT prosper; wicked destroyed]→ Omni 1:5-6 (Jarom 1:9; 1 Ne 2:21)
+- `foreshadow:jaredites` —[Coriantumr + large stone + "from the tower"]→ Omni 1:20-22 (Ether 1; Mosiah 8)
+- `transition:small-plates-close` —[Nephi's spiritual record ends; handed to Benjamin → Mormon's abridgment]→ Omni 1:25,30

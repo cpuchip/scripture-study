@@ -1,7 +1,7 @@
 # Book of Mormon Walk — Progress
 
 **STATUS:** walking. Semantic search confirmed live (engine.ibeco.me).
-**NEXT CHAPTER:** Omni 1
+**NEXT CHAPTER:** Words of Mormon 1
 **DEPTH (ratified 2026-06-01):** mini-study per chapter (study-grade engagement, note-grade finish). Isaiah/long-OT quotations get full exegesis + Nephite framing + the four likening questions (see `_workflow.md`).
 **Started:** 2026-06-01
 **Last updated:** 2026-06-01
@@ -15,8 +15,8 @@
 | Jacob | 7 | **7 ✓ DONE** | Sherem (anti-Christ template); ch 5 spin-off IN PROGRESS |
 | Enos | 1 | **1 ✓ DONE** | the wrestle; prayer widens to enemies + the record covenant |
 | Jarom | 1 | **1 ✓ DONE** | "believe... as though he already was"; thinning record |
-| Omni | 1 | — | NEXT; 5 writers; Zarahemla + Mosiah found; small plates end |
-| Words of Mormon | 1 | — | |
+| Omni | 1 | **1 ✓ DONE** | 5 writers; record dwindles then flares; Zarahemla; small plates END |
+| Words of Mormon | 1 | — | NEXT; Mormon's bridge into his abridgment |
 | Mosiah | 29 | — | |
 | Alma | 63 | — | longest book |
 | Helaman | 16 | — | |
@@ -26,7 +26,7 @@
 | Ether | 15 | — | Jaredite record |
 | Moroni | 10 | — | |
 
-**Total: 239 chapters. Done: 64.** · 1 Nephi (22) + **2 Nephi (33)** + **Jacob (7)** + **Enos (1)** + **Jarom (1)** COMPLETE; Omni next. · Spin-offs: **6 done** (1ne4, 1ne11, 2ne1, 2ne2, 2ne9, jacob5). · Isaiah block (12-24) COMPLETE. · Spin-off studies: **5 done** (`1ne4`, `1ne11`, `2ne1_prosperity-covenant`, `2ne2_fall-agency-opposition`, `2ne9_atonement-monster-and-gate`). · **OPEN for Michael:** 2 Ne 5:21 complexion/curse language — flagged, not autonomously resolved. (Walk surfaced THREE in-text datapoints for the with-Michael study: **26:33** "all are alike unto God, black and white"; **30:6** the documented white→pure edition change + "scales of darkness" = sight not skin; **Jacob 3:5-9** the cursed Lamanites are "more righteous," reviling-by-skin forbidden, filthiness inherited "because of their fathers.")
+**Total: 239 chapters. Done: 65.** · 1 Ne (22) + **2 Ne (33)** + **Jacob (7)** + **Enos (1)** + **Jarom (1)** + **Omni (1)** COMPLETE; W of M next. SMALL PLATES DONE. · Spin-offs: **6 done**. · Isaiah block (12-24) COMPLETE. · Spin-off studies: **5 done** (`1ne4`, `1ne11`, `2ne1_prosperity-covenant`, `2ne2_fall-agency-opposition`, `2ne9_atonement-monster-and-gate`). · **OPEN for Michael:** 2 Ne 5:21 complexion/curse language — flagged, not autonomously resolved. (Walk surfaced THREE in-text datapoints for the with-Michael study: **26:33** "all are alike unto God, black and white"; **30:6** the documented white→pure edition change + "scales of darkness" = sight not skin; **Jacob 3:5-9** the cursed Lamanites are "more righteous," reviling-by-skin forbidden, filthiness inherited "because of their fathers.")
 
 ## Book folder names (created lazily as reached)
 `1-nephi · 2-nephi · jacob · enos · jarom · omni · words-of-mormon · mosiah · alma · helaman · 3-nephi · 4-nephi · mormon · ether · moroni`
