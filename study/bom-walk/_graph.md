@@ -268,6 +268,14 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - doctrine: `peace-by-knowledge` (they shall not hurt FOR earth full of knowledge, v9 — Millennium as epistemological state; D&C 130:18) · `judge-not-by-appearance` (v3-4) · `stem-rod-root-of-Jesse` (D&C 113) · `second-gathering` (v11) · `ephraim-and-judah-reconciled` (two sticks, v13)
 - meta: `glory-chapters-near-identical` (Isa 9+11 ~verbatim; variants cluster in judgment chapters — BoM reworks warnings not glory)
 
+### from 2 Nephi 22 (Isaiah 12) — doxology sealing Isaiah 2-12
+- isaiah: `12` (the song of the redeemed)
+- resolution: `anger-turned-away` (v1 — resolves the "his anger is not turned away" refrain of 15/19/20)
+- echo: `song-of-Moses` (v2 "Jehovah my strength and song" = Ex 15:2; second-Exodus sings the first's)
+- image: `wells-of-salvation` (joy as repeated drawing, v3)
+- doctrine: `Holy-One-in-the-midst` (block ends at presence, v6 — Immanuel home)
+- meta: near-identical to KJV (v2 verb form only) — confirms glory-chapters-faithful pattern
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -631,3 +639,9 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `prophecy:second-gathering` —[the Lord's hand a second time; the ensign]→ 21:11-12 (JS-H 1:40; D&C 113; 2 Ne 29:1)
 - `doctrine:ephraim-and-judah-reconciled` —[the two sticks healed]→ 21:13 (Ezek 37:15-22; 2 Ne 3) — the BoM enacts it
 - `meta:glory-chapters-near-identical` —[Isa 9+11 ~verbatim; variants cluster in judgment chapters]→ BoM restores the warnings, not the glory
+
+### from 2 Nephi 22 (Isaiah 12)
+- `resolution:anger-turned-away` —[the refrain finally resolves; reaching hand arrives at comfort]→ 22:1 (15:25; 19:12,17,21; 20:4)
+- `echo:song-of-Moses` —[Jehovah my strength and song = Ex 15:2]→ 22:2 (second-Exodus sings the first's song; cf 21:16)
+- `image:wells-of-salvation` —[joy as repeated drawing; well does not run dry]→ 22:3 (John 4:14; 2 Ne 9:50)
+- `doctrine:Holy-One-in-the-midst` —[temple-on-the-mountain → God-among-the-people]→ 22:6 (17:14 Immanuel; Rev 21:3)
