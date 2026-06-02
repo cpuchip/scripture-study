@@ -714,6 +714,10 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - person: `Alma-the-younger` · `Helaman` (entrusted with records + interpreters) · object: `the-sacred-records-Liahona-24-plates`
 - doctrine: `by-small-and-simple-things` (vv6-7) · `scriptures-preserve-memory-and-convert` (vv8-9) · `teach-the-fruit-of-evil-not-the-recipe` (vv21-32) · `counsel-with-the-Lord-in-all-thy-doings` (vv35-37) · `the-Liahona-as-type-of-the-word` (vv38-46) · theme: `the-failure-is-despising-the-easy-way` (vv41, 46)
 
+### from Alma 38 (to Shiblon — the steady son)
+- person: `Shiblon` (steady, faithful; suffered among the Zoramites; receives approval) · `Alma-the-younger`
+- doctrine: `bridle-passions-that-ye-may-be-filled-with-love` (v12 — restraint as precondition for love) · `no-other-way-but-Christ` (v9) · `conversion-is-pain-until-the-cry-then-peace` (vv6-8) · theme: `three-sons-three-different-words` (vv2-3) · `inoculate-the-faithful-son-against-pride` (vv11-14 — publican vs Rameumptom)
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -1854,3 +1858,10 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `doctrine:counsel-with-the-Lord-in-all-thy-doings` —["let all thy doings be unto the Lord... let the affections of thy heart be placed upon the Lord"; "Counsel with the Lord in all thy doings, and he will direct thee for good"; night-surrender + morning-thanks]→ 37:35-37 (Prov 3:5-6; Ps 37:5; D&C 6:36; Eccl 12:1)
 - `doctrine:the-Liahona-as-type-of-the-word` —[the compass "did work for them according to their faith"; "it is as easy to give heed to the word of Christ... as it was for our fathers to give heed to this compass... if we will look we may live forever"]→ 37:38-46 (1 Ne 16:10, 28-29; 18:12; 2 Ne 5:12; Ps 119:105)
 - `theme:the-failure-is-despising-the-easy-way` —["they were slothful... because those miracles were worked by small means... and then those marvelous works ceased"; "do not let us be slothful because of the easiness of the way"; the serpent/seed/Liahona — the failure is to despise the simple means for being simple]→ 37:41-46 (1 Ne 17:41; Alma 33:19-22; Matt 11:30; Luke 6:46-49)
+
+### from Alma 38
+- `doctrine:bridle-passions-that-ye-may-be-filled-with-love` —["see that ye bridle all your passions, that ye may be filled with love"; the bridle harnesses, doesn't kill — unbridled passion crowds love out; self-mastery is the precondition for the highest feeling]→ 38:12 (James 3:2-3; Gal 5:22-23; D&C 121:41-42)
+- `theme:three-sons-three-different-words` —[warm approving charge to steady Shiblon vs. records-trust to Helaman vs. grieved correction to Corianton; love that pays attention doesn't say the same thing to every child (35:16 "separately")]→ 38:2-3 (Alma 35:16; 36-37; 39-42; Eph 6:4)
+- `doctrine:no-other-way-but-Christ` —["there is no other way or means whereby man can be saved, only in and through Christ... he is the life and the light of the world"; Alma's failed flight from God is his proof]→ 38:9 (Alma 21:9; John 14:6; 2 Ne 31:21; Mosiah 3:17)
+- `doctrine:conversion-is-pain-until-the-cry-then-peace` —["never, until I did cry out unto the Lord Jesus Christ for mercy, did I receive a remission... I did cry unto him and I did find peace to my soul"; the Alma 36 chiasmus told plain]→ 38:6-8 (Alma 36:17-20; Mosiah 4:1-3; Enos 1:4-8)
+- `theme:inoculate-the-faithful-son-against-pride` —["Do not say: O God, I thank thee that we are better than our brethren; but rather... O Lord, forgive my unworthiness... acknowledge your unworthiness before God at all times"; the most faithful son warned against pride — it grows best in good soil]→ 38:11-14 (Alma 31:16; Luke 18:9-14; 1 Cor 10:12)
