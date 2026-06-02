@@ -414,6 +414,14 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - foreshadow: `jaredites` (Coriantumr + large stone + "from the tower", v20-22 → Ether)
 - transition: small plates CLOSE; handed to king Benjamin → Mormon's abridgment (W of M, Mosiah)
 
+## — WORDS OF MORMON — (bridge, COMPLETE)
+
+### from Words of Mormon 1
+- person: `mormon` (abridger, in the ruins) · `moroni` (surviving son) · `king-benjamin` (holy king, whole-soul laborer)
+- doctrine: `for-a-wise-purpose-I-know-not` (v7 — CLOSES the 1 Ne 9:5-6 loop; answered by D&C 10:38-45 lost 116 pages; obedience-in-the-dark vindicated 1828) · `obedience-without-seeing-why` (v7) · `records-are-the-judgment-standard` (v11) · `whole-soul-labor` (Benjamin, v18)
+- image: `abridger-in-the-ruins` (labors over his dying nation for a future profit he won't see, v1-2,8)
+- transition: THE SEAM (small plates → Mormon's abridgment of large plates, Mosiah onward); editor steps out — it's providence, not method
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -964,3 +972,11 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `doctrine:prosperity-covenant-negative` —[NOT keep → NOT prosper; wicked destroyed]→ Omni 1:5-6 (Jarom 1:9; 1 Ne 2:21)
 - `foreshadow:jaredites` —[Coriantumr + large stone + "from the tower"]→ Omni 1:20-22 (Ether 1; Mosiah 8)
 - `transition:small-plates-close` —[Nephi's spiritual record ends; handed to Benjamin → Mormon's abridgment]→ Omni 1:25,30
+
+## — WORDS OF MORMON (edges) —
+- `doctrine:for-a-wise-purpose-I-know-not` —[Mormon includes small plates by a whisper he can't account for]→ W of M 1:7 · —[CLOSES loop]→ 1 Ne 9:5-6 · —[answered by]→ D&C 10:38-45 (lost 116 pages) — vindicated 1828
+- `doctrine:obedience-without-seeing-why` —[the Lord knoweth all; he worketh in me]→ W of M 1:7 (1 Ne 4:6; Moses 5:6; Prov 3:5-6)
+- `image:abridger-in-the-ruins` —[labors over his dying nation for a future he won't see]→ W of M 1:1-2,8 (Enos 1:13; Morm 6-8)
+- `doctrine:records-are-the-judgment-standard` —[great things, out of which they shall be judged]→ W of M 1:11 (2 Ne 29:11; Rev 20:12)
+- `doctrine:whole-soul-labor` —[Benjamin labors with the faculty of his whole soul]→ W of M 1:18 (Omni 1:26)
+- `transition:seam` —[the stitch joining small plates → Mormon's abridgment (Mosiah onward)]→ W of M (providence, not editorial method)
