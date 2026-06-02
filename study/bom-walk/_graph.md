@@ -576,6 +576,10 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - person: `Alma-the-younger` (lays down the judgment-seat to preach; keeps high priesthood) · `Nephihah` (wise elder made chief judge by the voice of the people) · `the-proud-church-members` (riches, costly apparel, scorn) · `the-humble-remnant` (impart to the poor, retain a remission) · `the-unbelievers` (stumbled by the church's hypocrisy)
 - theme: `church-out-prides-the-world-stops-the-gospel` (vv9-11 — hypocrisy as stumbling-block) · `split-community-closed-hands-vs-open-hands` (vv12-14) · doctrine: `retaining-a-remission-by-imparting-to-the-poor` (v14 — Benjamin's phrase) · event: `Alma-trades-the-gavel-for-pure-testimony` (vv15-20 — the great pivot) · doctrine: `pure-testimony-the-remedy-for-pride` (v19 — word over law; sets up the great sermons) · theme: `pride-cycle-affliction-to-pride` (vv3,6)
 
+### from Alma 5 (the searching-questions sermon)  [spin-off RUNNING: alma5_searching-questions]
+- person: `Alma-the-younger` (bears pure testimony by questions; knows "of myself") · `the-church-at-Zarahemla` (proud, examined) · `Alma-the-elder`+`the-fathers` (the mighty change, founding deliverance) · `the-good-shepherd`(Christ)+`the-devil` (two shepherds) · `the-poor` (turned away by the proud)
+- method: `testimony-as-a-mirror-of-questions` (vv14-31 — pure testimony in purest form) · doctrine: `can-ye-feel-so-now-the-change-re-verified` (v26 — faith a pulse not a deposit) · `image-of-God-in-the-countenance` (vv14,19 — counterpoint to Alma 3 mark) · `two-shepherds-two-folds-no-third` (vv37-42) · `arms-of-mercy-extended-invitation-at-the-center` (vv33-34,62) · `knowing-of-myself-by-the-Spirit` (vv45-48 — answer to Mosiah 26 unbelief) · `command-to-the-church-invitation-to-the-world` (v62)
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -1423,3 +1427,12 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `event:Alma-trades-the-gavel-for-pure-testimony` —[the chief judge/governor lays down the judgment-seat to confine himself "wholly to... the testimony of the word"; the most powerful man gives up the worldly office for the necessary spiritual work]→ 4:15-20 (Mosiah 29:40; Alma 7:1; Matt 20:25-28) — the great pivot
 - `doctrine:pure-testimony-the-remedy-for-pride` —[pride can't be legislated away; "no way... save it were in bearing down in pure testimony"; the word does what the law cannot]→ 4:19 (Alma 5:1; 31:5; Heb 4:12; Jacob 2:8) — sets up the great sermons (5, 7, 12-13, 32-34)
 - `theme:pride-cycle-affliction-to-pride` —[affliction humbles → remembrance; peace + prosperity → pride; pride → the next affliction; a disease of the heart no government cures]→ 4:3,6 (Hel 12:1-6; Deut 8:11-18; 4 Ne 1:24)
+
+### from Alma 5
+- `method:testimony-as-a-mirror-of-questions` —[Alma doesn't accuse the proud; he asks ~40 questions whether they could stand before God now; you can argue a declaration, not a question to your own conscience; the Spirit convicts, not the preacher]→ 5:14-31 (Alma 4:19; Heb 4:12; 2 Cor 13:5) — **spin-off: alma5_searching-questions**
+- `doctrine:can-ye-feel-so-now-the-change-re-verified` —[the mighty change is not a past transaction to remember but a present state to verify; faith is a pulse, not a deposit]→ 5:26 (Mosiah 4:12,26; Alma 4:14; Rev 2:4)
+- `doctrine:image-of-God-in-the-countenance` —[the new birth shows on the face; "received his image in your countenances"; the inverse of Alma 3's mark of rebellion]→ 5:14,19 (Mosiah 5:2; Moses 6:65; 2 Cor 3:18) — what a soul becomes is written on its face
+- `doctrine:two-shepherds-two-folds-no-third` —[good shepherd calls "in his own name, the name of Christ"; refuse his voice and "the devil is your shepherd"; you follow the voice whose works you bring forth; membership is not the question]→ 5:37-42 (John 10:11-27; Mosiah 5:8; Alma 3:26-27)
+- `doctrine:arms-of-mercy-extended-invitation-at-the-center` —[for all the woes, the center is invitation: "the arms of mercy are extended... Come unto me and partake of the fruit of the tree of life"; Alma wounds to heal]→ 5:33-34,62 (Mosiah 16:12; 1 Ne 8:10; Matt 11:28; Alma 32:40)
+- `doctrine:knowing-of-myself-by-the-Spirit` —[Alma's witness is personal revelation, not inheritance or office: "fasted and prayed many days that I might know these things of myself"; the pattern he presses on them]→ 5:45-48 (Mosiah 26:13; Moroni 10:4-5; John 7:17) — answer to the rising-generation unbelief (Mosiah 26)
+- `doctrine:command-to-the-church-invitation-to-the-world` —[higher accountability for the covenant people ("command"); open door for the rest ("invitation"); much given, much required]→ 5:62 (Mosiah 26:32; Luke 12:48; 2 Cor 6:17)
