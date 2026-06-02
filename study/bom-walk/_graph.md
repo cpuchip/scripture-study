@@ -805,6 +805,10 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - person: `Captain-Moroni` (rejoices, then doubts, then angry at the government) · `Pahoran` (assumed indifferent — wrongly) · `Helaman` (the foil)
 - event: `the-fall-of-Nephihah` (vv5-10) · doctrine: `prevention-is-cheaper-than-recovery` (v9) · theme: `even-Moroni-doubts` (vv11-12) · `doubt-curdling-into-anger-at-the-wrong-target` (v13) · `judging-a-matter-before-hearing-it` (v13)
 
+### from Alma 60 (Moroni's furious epistle)
+- person: `Captain-Moroni` (accusatory letter — right doctrine + heart, wrong judgment) · `Pahoran` (accused of "thoughtless stupor"/treason — falsely)
+- doctrine: `the-righteous-slain-are-not-lost-and-not-proof-of-their-wickedness` (vv12-13) · `death-of-the-righteous-condemns-the-negligent-not-the-dead` (vv10-13) · `cleanse-the-inward-vessel-first` (vv23-24) · `internal-corruption-defeats-before-the-enemy-does` (vv15-16) · `fear-God-not-power-seek-to-pull-power-down` (vv28, 36) · theme: `right-doctrine-pure-heart-wrong-judgment-of-a-person` (vv7, 18, 33)
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -2109,3 +2113,10 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `doctrine:prevention-is-cheaper-than-recovery` —["it was easier to keep the city... than to retake it"; the city could have been held cheaply if help had come — "someone will handle it" is how the holdable thing is lost]→ 59:9-10 (Prov 22:3; Luke 14:28-32; Alma 50:1-6)
 - `theme:doubt-curdling-into-anger-at-the-wrong-target` —["Moroni was angry with the government, because of their indifference"; he infers indifference from the missing help — but Pahoran wasn't indifferent, he'd been driven from his seat by rebels; righteous anger aimed wrong, judging before hearing]→ 59:13 (Alma 61:3-9; Prov 18:13; Prov 16:32)
 - `theme:Helaman-vs-Moroni-two-responses-to-neglect` —[Helaman, equally abandoned, "did not desire to murmur" and trusted God (58:35-37); Moroni grows "angry with the government" and assumes indifference (59:13); Mormon places them side by side]→ 59:13 (Alma 58:34-37; 60:1-11; 61:9; Matt 7:1-2)
+
+### from Alma 60
+- `doctrine:the-righteous-slain-are-not-lost-and-not-proof-of-their-wickedness` —["Do ye suppose that... so many... have been killed... because of their wickedness? ye have supposed in vain... the Lord suffereth the righteous to be slain that his justice... may come upon the wicked... they do enter into the rest of the Lord"; death is not God's verdict against the faithful]→ 60:12-13 (Luke 13:1-5; Job 1-2; D&C 42:46; Rev 14:13)
+- `doctrine:death-of-the-righteous-condemns-the-negligent-not-the-dead` —["the blood of thousands shall come upon your heads for vengeance... it is to your condemnation"; when the righteous die through others' neglect, the guilt is on the living who failed them, not on the dead at rest]→ 60:10-13 (Ezek 33:6-8; Gen 4:10; Matt 18:6)
+- `doctrine:cleanse-the-inward-vessel-first` —["the inward vessel shall be cleansed first, and then shall the outer vessel be cleansed also"; the corruption at the head must be fixed before the outward war can be won — inside before outside]→ 60:23-24 (Matt 23:25-26; Alma 60:15; Ps 51:6)
+- `doctrine:fear-God-not-power-seek-to-pull-power-down` —["I seek not for power, but to pull it down... it is my God whom I fear"; the rare man who threatens force only to destroy power-seeking, not to seize power — the inversion of unrighteous dominion; incorruptible even in error]→ 60:28, 36 (D&C 121:39; Acts 5:29; Alma 48:17)
+- `theme:right-doctrine-pure-heart-wrong-judgment-of-a-person` —[Moroni is right about the doctrine, the king-men, his motives, and even claims revelation — yet his judgment of Pahoran ("thoughtless stupor," "traitors," threatening to march) is false; being right + pure doesn't guarantee you're right about the person]→ 60:7, 18, 33 (Prov 18:13; 16:32; Alma 61:9; John 7:24)
