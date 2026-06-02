@@ -667,6 +667,10 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - person: `Ammon` (the psalm; "I am nothing... in his strength I can do all things") · `Aaron` (the peer rebuke on boasting)
 - doctrine: `boast-in-God-not-self-strength-through-nothing` (vv11-12 — BoM Philip 4:13) · `chains-of-hell-loosed` (vv14-15 — Alma 12 reversed) · `only-the-penitent-knows` (vv21-22) · `God-mindful-of-every-people` (vv36-37 — 5:21 datapoint) · theme: `the-sword-vs-the-saving` (vv24-26) · `Lamanite-love-exceeds-Nephite-love` (vv33-34) · event: `Ammon-almost-turned-back` (v27)
 
+### from Alma 27 (the people of Ammon — arc close, chapters 17-27)
+- person: `the-people-of-Ammon` (formerly Anti-Nephi-Lehies; migrate to Jershon; "firm... even unto the end") · `Ammon` (joy exhausts his strength) · `the-king-Anti-Nephi-Lehi` (offers his people as slaves in restitution; refused) · `the-Nephites-voice-of-the-people` (receive former enemies; bear the sword for them)
+- theme: `protect-the-pacifist-without-arming-him` (vv5-12) · `the-armed-bear-the-sword-for-the-unarmed-by-conscience` (vv22-24 — seeds the stripling warriors) · `firm-in-the-faith-even-unto-the-end` (v27) · doctrine: `you-cannot-repay-murder-only-be-received` (vv6-9) · `joy-proportional-to-repentance` (vv17-18) · `resurrection-empties-death-of-terror` (v28) · event: `new-name-the-people-of-Ammon` (v26)
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -1716,3 +1720,12 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `theme:Lamanite-love-exceeds-Nephite-love` —["has there been so great love in all the land? Nay... even among the Nephites... they would take up arms... but how many of these have laid down their lives"; the despised people out-love the covenant people]→ 26:33-34 (Alma 19:10; 24:21-22; John 15:13)
 - `doctrine:God-mindful-of-every-people` —["God is mindful of every people... he numbereth his people, and his bowels of mercy are over all the earth"; the Lamanites a lost branch of the olive tree, remembered all along]→ 26:36-37 (2 Ne 26:33; Jonah 4:11; Acts 10:35; Jacob 5:25) — 5:21-study datapoint
 - `event:Ammon-almost-turned-back` —["when our hearts were depressed, and we were about to turn back, the Lord comforted us... bear with patience thine afflictions, and I will give unto you success"]→ 26:27 (Alma 17:10-11; 1 Ne 17:3; D&C 6:36)
+
+### from Alma 27
+- `theme:protect-the-pacifist-without-arming-him` —[facing a second slaughter, Ammon doesn't arm them (breaking their covenant) but removes them to a refuge; "Get this people out of this land, that they perish not"]→ 27:3-12 (Alma 24:17-19; Matt 10:23; D&C 98:32-38)
+- `doctrine:you-cannot-repay-murder-only-be-received` —[the king offers his people as slaves "until we repair... the many murders"; Ammon refuses (no slaves), "rely upon the mercies of our brethren"; repentance can't square the account, only throw itself on mercy]→ 27:6-9 (Mosiah 29:32; Luke 7:42; Eph 2:8-9)
+- `theme:the-armed-bear-the-sword-for-the-unarmed-by-conscience` —[the Nephites vote to give Jershon and "set our armies between" the people of Ammon and danger, so the pacifists never break their vow; the armed bleed so the unarmed can keep conscience]→ 27:21-24 (Alma 43:11-13; 53:11-17; 56:47)
+- `doctrine:joy-proportional-to-repentance` —[Ammon "swallowed up in the joy of his God, even to the exhausting of his strength... fell again to the earth"; only his joy exceeded his strength; "joy which none receiveth save it be the truly penitent"; the most-forgiven feels it hardest]→ 27:17-18 (Alma 26:21; 18:42; Luke 7:47)
+- `doctrine:resurrection-empties-death-of-terror` —["they never did look upon death with any degree of terror, for their hope and views of Christ and the resurrection; therefore, death was swallowed up to them by the victory of Christ"; why they could lie down and die]→ 27:28 (1 Cor 15:54-57; Mosiah 16:7-8; Alma 24:22)
+- `event:new-name-the-people-of-Ammon` —[named for the missionary who brought them; the identity reconstruction (Anti-Nephi-Lehi → people of Ammon) completed — named, finally, for the love that found them]→ 27:26 (Alma 23:17; Mosiah 1:11-12; 5:7-12)
+- `theme:firm-in-the-faith-even-unto-the-end` —["perfectly honest and upright in all things... firm in the faith of Christ, even unto the end"; the never-fall-away of 23:6 confirmed as settled fact]→ 27:27 (Alma 23:6; Hel 15:8; 3 Ne 6:14)
