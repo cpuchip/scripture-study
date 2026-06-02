@@ -339,6 +339,12 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - thread: `feast=hold-the-rod` (v3 — confirms 31:20 = 1 Ne 8:24)
 - lament: `refused-plainness` (Spirit stops Nephi's utterance; people won't search plainness, v7 — "we have enough" felt by the teacher)
 
+### from 2 Nephi 33 (Nephi's farewell — closes 2 Nephi)
+- doctrine: `carried-unto-not-into-the-heart` (Spirit brings truth to the door; hardened heart gives it no place, v1-2) · `book-Christ-interlock` (believe Christ → believe the words, v10) · `doctrine-of-Christ-recapped` (reconciled→gate→path→endure, v9)
+- image: `nephi's-tears` (eyes water my pillow by night, v3) · `face-to-face-at-the-bar` (writer + reader meet at judgment, v11,15) · `voice-from-the-dust` (Nephi's farewell, v13)
+- creed: `three-glories` (plainness → truth → my Jesus who redeemed my soul, v6)
+- SYNTHESIS: **2 NEPHI COMPLETE** — doctrine of Christ rendered plain: "we talk of Christ" (25:26) → "I glory in my Jesus" (33:6); opens Lehi-dying-"opposition in all things" → closes Nephi-dying-"I glory in my Jesus"
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -791,3 +797,12 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `lament:refused-plainness` —[Spirit stops his utterance; they won't search what is plainly given]→ 32:7 (25:4; cost of "we have enough" felt by the teacher)
 - `doctrine:prayerlessness-is-the-tell` —[the evil spirit teaches a man he must NOT pray]→ 32:8 (Alma 34:39) — the reluctance is the signal
 - `doctrine:pray-always-consecrate-performance` —[pray first, that God consecrate the act]→ 32:9 (Alma 34:27; Col 3:17)
+
+### from 2 Nephi 33 (Nephi's farewell)
+- `doctrine:carried-unto-not-into-the-heart` —[Spirit brings truth to the door; hearer gives it place]→ 33:1-2 (agency in a preposition)
+- `creed:three-glories` —[plainness → truth → my Jesus who redeemed my soul]→ 33:6
+- `doctrine:book-Christ-interlock` —[believe Christ → believe the words, for they are his]→ 33:10 (25:26)
+- `image:nephi's-tears` —[eyes water my pillow by night for his people]→ 33:3 (26:7)
+- `image:face-to-face-at-the-bar` —[writer + reader meet at judgment; the sealed witness]→ 33:11,15 (Moroni 10:34; Ether 5:6)
+- `image:voice-from-the-dust` —[Nephi's farewell = the book's self-image]→ 33:13 (Isa 29:4; 26:16; 27:13)
+- `synthesis:2-nephi-complete` —["we talk of Christ" (25:26) → "I glory in my Jesus" (33:6)]→ book closes
