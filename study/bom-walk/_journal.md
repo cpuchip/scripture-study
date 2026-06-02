@@ -197,3 +197,11 @@ Then God answers, and the answer is a quiet correction: "I am he that comforteth
 That is the whole reversal in one chapter. We tell God to wake up. He tells us he has been awake the entire time, and we are the ones who fell asleep under the cup. "Put on thy strength" is not a request we make of him; it is a command he makes of us. The waking is ours to do.
 
 And one quieter thing I want to keep: the comfort to the small. "Look unto Abraham... for I called him alone, and blessed him." A whole nation out of one couple. Jacob is preaching to a colony that could fit in a few tents, and the first word is *you are not too few.* God has built more out of less.
+
+## 2 Nephi 9 — the gate with no servant (2026-06-01)
+
+Two things from Jacob's big sermon. First, the size of what I have been under-imagining. I reach for "forgiveness" when I think *Atonement*; Jacob reaches for survival. Without it the body rots to nothing *and* the spirit is handed to the devil to "become like unto him... angels to a devil." The rescue is not from a bad record. It is from becoming the very thing that beguiled us. That resets what gratitude is even about.
+
+Second, the line I keep returning to: "the keeper of the gate is the Holy One of Israel; and he employeth no servant there." After a whole chapter about an infinite, all-knowing God who suffered the pains of every single person in the family of Adam, the door turns out not to be staffed by a deputy. He is there himself. You do not get vouched for; you meet him. The same One who felt your particular pain is the One who personally lets you through. The narrow way is narrow because it is relational, not because it is hard to find.
+
+(The deep study of this chapter I handed to a subagent — the woes and the justice/mercy machinery deserve more room than a walk note. I will read it and carry the best of it forward.)
