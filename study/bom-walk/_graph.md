@@ -639,6 +639,10 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - person: `the-queen-of-Ishmael` (quiet faith "to me he doth not stink"; greatest faith of all the Nephites; testifies of Jesus) · `Abish` (Lamanite servant, secretly converted years prior by her father's vision; gathers the crowd) · `Lamoni` (rises: "I have seen my Redeemer"; rebukes contention, teaches)
 - theme: `the-outsider-out-believes-the-covenant-people` (v10 — grievance inverted) · `the-hidden-disciple-spent-at-the-right-moment` (vv16-29 — Abish) · doctrine: `faith-on-testimony-alone` (vv9-10) · `conversion-as-light-dispelling-darkness` (v6 — inverse of chains of hell) · `his-arm-extended-to-all` (v36 — 5:21 answer) · event: `Lamoni-rises-having-seen-the-Redeemer` (vv12-13) · `Sebus-avenger-falls-dead` (vv22-23 — promise to Mosiah fulfilled)
 
+### from Alma 20 (the road to Middoni — the over-king disarmed)
+- person: `Lamonis-father-the-over-king` (recites the grievance; draws on his son + Ammon; spared, seeded) · `Ammon` (pleads for the king's soul; refuses the bribe; asks nothing for self) · `Lamoni` (refuses to enforce the grievance) · `Aaron-Muloki-Ammah` (imprisoned at Middoni; patient in suffering)
+- theme: `the-grievance-at-full-volume` (vv10-13 — Mosiah 10 by its highest exponent) · `the-son-refuses-to-enforce-the-grievance` (v15) · `selfless-terms-disarm-the-grievance` (vv24-26) · `king-turns-sword-on-his-own-son` (vv14-16 — Saul/Jonathan) · `faithfulness-measured-by-the-field-endured-not-the-fruit` (vv29-30 — Aaron vs Ammon) · doctrine: `plead-for-the-aggressors-soul-not-just-the-victims-life` (vv17-18) · event: `over-king-spared-and-seeded` (vv26-27)
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -1627,3 +1631,12 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `event:Lamoni-rises-having-seen-the-Redeemer` —["I have seen my Redeemer; and he shall come forth, and be born of a woman"; the Lazarus-frame king prophesies Christ's birth]→ 19:12-13 (John 11:25-26; 1 Ne 11:18; Alma 7:10)
 - `event:Sebus-avenger-falls-dead` —[the brother of a slain man draws to kill the prostrate Ammon and falls dead; "I will spare him... according to thy faith" fulfilled]→ 19:22-23 (Mosiah 28:7; Alma 17:35)
 - `doctrine:his-arm-extended-to-all` —[the Lamanites receive the Spirit in full; "his arm is extended to all people who will repent and believe on his name"; the curse was never a barrier to the Spirit]→ 19:36 (2 Ne 26:33; Alma 5:33; 3 Ne 18:25) — 5:21-answer datapoint
+
+### from Alma 20
+- `theme:the-grievance-at-full-volume` —[the over-king recites Mosiah 10 nearly verbatim: "he robbed our fathers... that they again may rob us of our property"; the disease at its highest, most powerful voice]→ 20:10-13 (Mosiah 10:12-17; Alma 17:14)
+- `theme:the-son-refuses-to-enforce-the-grievance` —["I will not slay Ammon... I know that they are just men and holy prophets of the true God"; multi-generational hatred ends when the next generation won't carry it]→ 20:15 (Mosiah 5:7; Mal 4:6; 1 Sam 20:32)
+- `doctrine:plead-for-the-aggressors-soul-not-just-the-victims-life` —["better that he should fall than thee, for he has repented... but if thou shouldst fall... in thine anger, thy soul could not be saved"; concern for the murderer's salvation over the victim's life]→ 20:17-18 (Gen 4:10; Luke 23:34; D&C 42:18)
+- `theme:selfless-terms-disarm-the-grievance` —[Ammon, sword at the king's throat and offered half the kingdom, asks only his brethren's freedom + Lamoni's crown; "the great love he had for his son... astonished exceedingly"; the story cannot survive the man]→ 20:23-26 (Esther 5:3; Mark 6:23; John 15:13)
+- `event:over-king-spared-and-seeded` —[grants Lamoni's kingdom "from this time and forever," "I will govern him no more," and becomes "desirous to learn"; the ch 22 conversion planted]→ 20:26-27 (Alma 22:1-18)
+- `theme:king-turns-sword-on-his-own-son` —[the over-king draws on Lamoni for siding with the prophets; the Saul-and-Jonathan figure, bent toward mercy]→ 20:14-16 (1 Sam 20:27-33; Alma 18:9)
+- `theme:faithfulness-measured-by-the-field-endured-not-the-fruit` —[Aaron freed "naked... skins worn... bound with strong cords," among "a more hardened and stiffnecked people," yet "patient in all their sufferings"; Ammon's court vs Aaron's dungeon, same gospel]→ 20:29-30 (Alma 17:11; 26:29; 2 Cor 11:23-27)
