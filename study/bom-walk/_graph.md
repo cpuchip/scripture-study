@@ -217,6 +217,15 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - image: `the-same-fire` (spirit of burning purges v4 = flaming fire defends v5) · `pillar-democratized` (Exodus cloud/fire over EVERY dwelling, v5)
 - doctrine: `judgment-front-half-of-redemption` (judged daughters 13:16-24 = washed daughters 14:4) · `branch-of-the-Lord` (Christ + remnant, v2) · `written-among-the-living` (book of life, v3)
 
+### from 2 Nephi 15 (Isaiah 5)
+- isaiah: `5` (Song of the Vineyard + six woes + the ensign)
+- parable: `vineyard-given-everything` (what more could I have done? — fault in the vine, vv1-4)
+- wordplay: `justice→oppression` (mishpat/mispach, tsedaqah/tse'aqah — v7)
+- series: `six-woes` (land-grab v8 / drink v11 / deliberate-sin v18 / moral-inversion v20 / self-wise v21 / corrupt-justice v22-23)
+- refrain: `hand-stretched-out-still` (v25 — judgment that keeps its hand extended; → Isa 9-10)
+- prophecy: `ensign-to-the-nations` (gathering reverses the waste, v26)
+- variant: `bom-shorter` (v8 omits "lay field to field"; v29 omits "roaring like a lion" — VERIFIED; variants run both ways)
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -515,3 +524,14 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `image:pillar-democratized` —[Exodus cloud/fire over ONE tabernacle → over EVERY dwelling]→ 14:5 (Ex 13:21) — the home a holy place
 - `doctrine:branch-of-the-Lord` —[Christ + remnant, same word]→ 14:2 (Jer 23:5; 2 Ne 3:5)
 - `meta:near-identical-chapter` —[Isaiah 4 matches KJV; minor variants only]→ shows BoM's Isaiah variants are selective not blanket
+
+### from 2 Nephi 15 (Isaiah 5)
+- `parable:vineyard-given-everything` —[what more could I have done? fault in the vine]→ 15:1-4 (Matt 21:33-44; Jacob 5)
+- `wordplay:justice→oppression` —[near-homophone corruption]→ 15:7 (Amos 5:24)
+- `series:six-woes` —[land-grab/drink/deliberate-sin/moral-inversion/self-wise/corrupt-justice]→ 15:8-23 (cf 10 woes 9:27-38)
+- `doctrine:call-evil-good` —[moral inversion]→ 15:20 (Moroni 7:14-18; D&C 64:16)
+- `doctrine:wise-in-own-eyes` —[self-conceit]→ 15:21 (9:28-29; 28:15)
+- `image:the-same-fire` —[devours the stubble]→ 15:24 (1 Ne 22:15; cf 14:4-5)
+- `refrain:hand-stretched-out-still` —[judgment keeps its hand extended]→ 15:25 (→ 2 Ne 19-20)
+- `prophecy:ensign-to-the-nations` —[gathering reverses the waste]→ 15:26 (Isa 11:12; 2 Ne 29:2; D&C 115:5)
+- `variant:bom-shorter` —[v8 + v29 omit clauses, verified]→ BoM variants run both directions, not only expansion

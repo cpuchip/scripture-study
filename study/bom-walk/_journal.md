@@ -243,3 +243,9 @@ And the sermon is a ring. It opens (v1) and closes (v53) on "the covenants of th
 Two short verses sitting next to each other did something I want to keep. "The spirit of burning" purges the filth of Zion (v4), and then "a flaming fire by night" defends Zion (v5). Same fire. The thing that burns away what is filthy is the thing that then becomes your covering light. I have wanted judgment-fire and glory-fire to be two different fires — one for the wicked, one for me. Isaiah will not separate them. The fire that purges is the fire that shelters, and you do not get the second without the first.
 
 And the pillar moved. In the Exodus the cloud and fire stood over the one tabernacle. Here it is "upon every dwelling-place of mount Zion." Every home gets its own pillar. The presence stops being a place you travel to and becomes a covering over where you live.
+
+## 2 Nephi 15 — what more could I have done? (2026-06-01)
+
+The question I cannot get past is v4: "What could have been done more to my vineyard that I have not done in it?" That is not anger; it is grief. God lists everything he did — cleared the stones, planted the choicest vine, built the tower and the press — and then asks the room to judge between him and the vineyard. The husbandry was perfect. The grapes came up wild anyway. I want to locate the failure somewhere in the conditions — the soil, the circumstances, the era — and the song will not let me. The keeper did everything. The fruit is on the vine.
+
+And v7 is the whole indictment folded into a pun I had never noticed: he looked for justice (*mishpat*) and got bloodshed (*mispach*); looked for righteousness (*tsedaqah*) and heard an outcry (*tse'aqah*). The wild grape is not the opposite of the good one. It is the near-rhyme — corruption that almost passes for the real thing. That is the scarier failure: not obvious evil, but justice that sounds almost like justice.
