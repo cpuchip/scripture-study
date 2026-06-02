@@ -299,3 +299,11 @@ Something clicked across the whole Isaiah block tonight, and chapter 13 made it 
 The King James says God called his mighty ones "for mine anger." The Book of Mormon says "mine anger is *not* upon them that rejoice in my highness." The King James says "every one that is *found*" is thrust through; the Book of Mormon says "every one that is *proud*." And the chapter ends, in the Book of Mormon only, with "I will be merciful unto my people." Three changes, one tilt. The Restoration text takes the Day of the Lord and makes it more merciful to the faithful and more precisely aimed at the proud.
 
 That is not noise in the transmission. That is a hand on the text, softening the wrath toward the people who rejoice in God, and tightening its aim on the arrogant. I went into this block expecting variants to be curiosities. They turn out to have a theology.
+
+## 2 Nephi 24 — the block ends where pride begins (2026-06-01)
+
+Thirteen chapters of the proud being brought low, and finally Isaiah names the first proud one: "How art thou fallen from heaven, O Lucifer, son of the morning." And there are his five sentences, each starting *I will* — I will ascend, I will exalt my throne, I will be like the Most High. Five times the self reaching for God's own seat. That is the whole disease in five lines. And the verdict is one line: "Yet thou shalt be brought down to hell." He reached up; he fell down.
+
+Which is exactly backwards from the One I watched go *down* in First Nephi 11 — God descending into a manger and onto a cross, and being lifted. Pride goes up and falls. Love goes down and is raised. The two directions are the whole story.
+
+And the block does not end on the pit. It ends on Zion founded, and "the poor of his people shall trust in it." The poor whose faces got ground back in chapter 13 are the ones standing safe at the end. The mountain rose (chapter 12), all the proud heights came down, and the lowly got the refuge. That is the shape of the entire Isaiah block — and I would not have seen the bookend if I had not walked it whole, the mountain rising at the start and the poor trusting at the end.

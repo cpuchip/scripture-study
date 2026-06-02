@@ -284,6 +284,15 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - variant: `mercy-inserted` (v3 "anger NOT upon them that rejoice in my highness" — VERIFIED) · `target-is-pride` (v15 "proud" for KJV "found" — VERIFIED) · `mercy-coda` (v22 BoM adds "merciful unto my people" — VERIFIED) · v8 omission
 - META-FINDING: `judgment-variants-tilt-to-mercy` (the cluster all pulls one way — BoM's reworking of Isaiah's warnings is theological: more merciful to the faithful, more precisely aimed at pride)
 
+### from 2 Nephi 24 (Isaiah 14) — LAST chapter of the Isaiah block (12-24 = Isa 2-14 COMPLETE)
+- isaiah: `14` (fall of king of Babylon → fall of Lucifer)
+- person: `lucifer`/`son-of-the-morning` (pride's root) · `the-poor` (trust in founded Zion, v32)
+- doctrine: `five-I-wills` (anatomy of pride: self grasps God's throne, v13-14; Moses 4; D&C 76:25-29) · `up-is-down-inversion` (Lucifer ascends→pit; Christ descends→exalted, v15) · `mercy-on-Jacob`/restoration (v1-3)
+- refrain: `hand-stretched-out` (third mode: sovereign irreversible purpose, v26-27 — anger→comfort→decree)
+- image: `zion-for-the-poor` (block's last word, v32 — ground poor of ch13 now trust in Zion; bookends 12:2)
+- variant: `lands-of-promise-added` (v2 — fits restoration tilt) · `remnant/raiment` (v19) · `bring/break` (v25); Lucifer passage shared w/ KJV
+- META: `isaiah-block-complete` (arc: mountain rises → all pride falls to its Luciferian root → Zion for the poor)
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -662,3 +671,11 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `variant:target-is-pride` —[BoM v15 "every one that is PROUD" for KJV "found", verified]→ judgment aimed, not indiscriminate
 - `variant:mercy-coda` —[BoM v22 adds "merciful unto my people", verified]→ judgment chapter ends on mercy
 - `META:judgment-variants-tilt-to-mercy` —[the cluster all pulls one way: insert mercy + sharpen to pride]→ BoM's reworking is theological, not random
+
+### from 2 Nephi 24 (Isaiah 14)
+- `doctrine:five-I-wills` —[anatomy of pride: self as subject, God's throne as object]→ 24:13-14 (Moses 4:1-4; D&C 76:25-29)
+- `doctrine:up-is-down-inversion` —[Lucifer ascends→pit; Christ descends→exalted]→ 24:15 (Luke 14:11; inverse of 1 Ne 11 condescension)
+- `refrain:hand-stretched-out` —[third mode: sovereign irreversible purpose]→ 24:26-27 (anger 15:25 → comfort 22:1 → decree)
+- `image:zion-for-the-poor` —[block's last word; the ground poor (13:14) now trust in Zion]→ 24:32 (bookends 12:2)
+- `variant:lands-of-promise-added` —[BoM v2 adds restoration clause, verified]→ fits the mercy/restoration tilt
+- `META:isaiah-block-complete` —[chs 12-24 = Isaiah 2-14 walked; mountain rises → pride falls to Lucifer's root → Zion for the poor]→ synthesis in ch 25
