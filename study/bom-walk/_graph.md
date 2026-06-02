@@ -765,6 +765,10 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - person: `Captain-Moroni` (fortifies the weak city most; anticipates enemy's logic) · `Amalickiah` (curses God + Moroni for the faithfulness that beat him) · `Lehi-captain` (commands Noah; feared) · `Corianton` (restored, now preaching)
 - theme: `preparation-defeats-numbers-and-is-how-God-works` (vv2-23) · `anticipate-the-enemys-logic-fortify-the-weak-point-most` (vv14-15) · `two-responses-to-one-deliverance` (vv27-28) · `Amalickiah-hates-God-because-faithfulness-works` (v27) · event: `Corianton-restored-among-the-preachers` (v30)
 
+### from Alma 50 (expansion, prosperity, Morianton)
+- person: `Captain-Moroni` (fortifies all cities; happiest-time era) · `Morianton` ("man of much passion"; undone by beating a maidservant) · `the-maidservant` (abused, exposes the plan, saves the nation) · `Teancum` (introduced; slays Morianton) · `Pahoran-Nephihah` (righteous chief judges)
+- doctrine: `the-Lehi-covenant-verified-as-historical-law` (vv19-22) · theme: `the-happiest-time-was-readiness-plus-faithfulness` (v23) · `private-cruelty-betrays-the-public-scheme` (vv30-31) · `the-overlooked-person-is-the-hinge` (v31) · reference: `the-oath-of-good-governance` (vv37-40)
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -1998,3 +2002,10 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `theme:two-responses-to-one-deliverance` —[Amalickiah "did curse God, and also Moroni... because Moroni had kept the commandments of God"; the Nephites "did thank the Lord their God"; same event, gratitude in one heart, blasphemy in the other]→ 49:27-28 (Alma 44:3, 9; Ex 8:15; John 11:45-48)
 - `theme:Amalickiah-hates-God-because-faithfulness-works` —[he curses God for the very thing that should have converted him — the Nephites won because Moroni was faithful; a heart running from the obvious would rather curse God than admit he was in it]→ 49:27 (Acts 23:12; Rev 16:9-11; Mosiah 3:12)
 - `event:Corianton-restored-among-the-preachers` —[the prosperity came by the word "declared by Helaman, and Shiblon, and Corianton, and Ammon"; the son who strayed (ch 39) now preaches beside his faithful brothers — repentance was the beginning of his ministry, not the end]→ 49:30 (Alma 39:1-11; 42:31; Luke 15:22-24; 22:32)
+
+### from Alma 50
+- `doctrine:the-Lehi-covenant-verified-as-historical-law` —["we see how merciful and just are all the dealings of the Lord... their quarrelings and their contentions... brought upon them their wars... and those who were faithful... were delivered at all times"; the wars track righteousness — the war record's thesis]→ 50:19-22 (2 Ne 1:20; Alma 9:13; 37:13; 41:10)
+- `theme:the-happiest-time-was-readiness-plus-faithfulness` —["there never was a happier time among the people of Nephi, since the days of Nephi, than in the days of Moroni"; the happiest era was war-readiness AND righteousness — flourishing is preparation + faithfulness, not absence of threat]→ 50:23 (2 Ne 5:27; Mosiah 2:41; 4 Ne 1:16; Prov 21:31)
+- `theme:private-cruelty-betrays-the-public-scheme` —[Morianton's plan "would lead to the overthrow of their liberty," but "being a man of much passion... he fell upon her and beat her much," and she exposed everything; unbridled passion leaks — can't govern yourself in private, undone in public]→ 50:30-31 (Alma 38:12; 47:18; Luke 12:2-3; Num 32:23)
+- `theme:the-overlooked-person-is-the-hinge` —[an abused maidservant, the most powerless person in the tyrant's household, becomes the hinge on which the nation's liberty turns; God's deliverance through the discounted (cf. Abish)]→ 50:31 (Alma 19:16-29; Esther 4:14; 1 Cor 1:27-28)
+- `reference:the-oath-of-good-governance` —[Pahoran takes the seat "with an oath... to judge righteously, and to keep the peace and the freedom of the people, and to grant unto them their sacred privileges to worship the Lord their God... and to bring the wicked to justice"]→ 50:37-40 (Mosiah 29:25-29; Alma 4:16-17; D&C 134:1-5)
