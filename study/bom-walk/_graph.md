@@ -388,6 +388,14 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - image: `deceiver-becomes-witness` (Sherem confesses the three he denied, v17-19) · `wanderers-mourned-out-our-days` ("adieu" = à Dieu, v26-27)
 - SYNTHESIS: **JACOB COMPLETE** — plainness against deception (glory in plainness → lose it by looking beyond the mark → Sherem weaponizes eloquence → witness + mercy answer); opens watchman's burden → closes "adieu, to God"
 
+## — ENOS — (1-chapter book, COMPLETE)
+
+### from Enos 1
+- person: `enos` (son of Jacob; wrestler, intercessor) · the Redeemer (face seen "with pleasure")
+- doctrine: `forgiveness-widens-the-prayer` (self → Nephites → Lamanites/enemies → the record, v4-16 — the widening IS the conversion) · `pray-for-the-enemy-record-for-them` (BoM preservation answers Enos's intercession, v11-16) · `faith-in-Christ-never-seen` (made whole centuries before, v8)
+- image: `the-wrestle` (all day + night; answer comes during the labor, v2-4,10) · `death-as-rest-with-the-Redeemer` (see his face WITH PLEASURE, v27 — pleasing side of Jacob 6:13 bar)
+- thread: `record-preservation-covenant` (Enos joins the chain, v13-18)
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -910,3 +918,11 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `image:deceiver-becomes-witness` —[Sherem confesses the three he denied: Christ, Holy Ghost, angels]→ 7:17-19
 - `image:wanderers-mourned-out-our-days` —[the exile's grief; "adieu" = to God]→ 7:26-27 (Heb 11:13; Ps 39:12)
 - `synthesis:jacob-complete` —[plainness against deception]→ book closes (watchman's burden → "adieu, to God")
+
+## — ENOS (edges) —
+- `doctrine:forgiveness-widens-the-prayer` —[self → Nephites → enemies → the record; the widening IS the conversion]→ Enos 1:4-16 (Alma 36:24; Mosiah 28:3)
+- `doctrine:pray-for-the-enemy-record-for-them` —[intercede for the Lamanites who'd destroy you; the BoM answers it]→ Enos 1:11-16 (Matt 5:44; 2 Ne 3:15; title page)
+- `doctrine:faith-in-Christ-never-seen` —[made whole centuries before the Incarnation]→ Enos 1:8 (Jacob 4:4; John 20:29; Heb 11:1)
+- `image:the-wrestle` —[all day + night; the prayer that won't let go; answer comes during the labor]→ Enos 1:2-4,10 (Gen 32:24; Luke 18:1-8)
+- `image:death-as-rest-with-the-Redeemer` —[see his face WITH PLEASURE]→ Enos 1:27 (Jacob 6:13; Moroni 10:34)
+- `thread:record-preservation-covenant` —[Enos joins the chain preserving the plates]→ Enos 1:13-18 (2 Ne 3:15; W of M 1:6-11)
