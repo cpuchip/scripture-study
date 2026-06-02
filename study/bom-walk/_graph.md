@@ -188,7 +188,7 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - person: `holy-one-of-israel` (Creator + sufferer + gatekeeper) · `the-devil` (would make us "like unto him")
 - image: `awful-monster` (death + hell = death of body + death of spirit, 9:10) · `keeper-of-the-gate-no-servant` (9:41)
 - doctrine: `infinite-atonement` (reasoned 9:6-7) · `spirit-becomes-like-the-devil` (9:8-9) · `two-fold-deliverance` (grave+hell 9:11-13) · `Christ-suffers-every-individual-pain` (9:21) · `learning-good-IF-hearken` (9:28-29) · `carnal-vs-spiritual-mind` (9:39)
-- study: `2ne9_atonement-monster-and-gate` (spin-off — IN PROGRESS, Sonnet subagent)
+- study: `2ne9_atonement-monster-and-gate` (spin-off DONE — 10 woes vv27-38; ring v1/v53 "covenants"; gate NAMED v51 "Holy One of Israel"; final woe = exposure not fire v38)
 
 ### from 2 Nephi 10 (Jacob's sermon concludes)
 - person: `the-angel` (names Christ, 10:3) · `the-Gentiles` (afflict → softened → numbered with Israel) · `our-brethren-on-other-isles` (10:21)
@@ -205,6 +205,12 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - prophecy: `latter-day-temple-+-gathering` (12:2-3) · `swords-into-plowshares` (millennial peace, 12:4)
 - doctrine: `idolatry-as-self-worship` (work of their own hands, 12:8) · `cease-from-man` (breath in his nostrils, 12:22) · `the-Lord-alone-exalted` (Christological)
 - variant: `added-confession` (v5 +Isa 53:6 — VERIFIED) · `not-reversal` (v9 +"not"×2: refused humility — VERIFIED) · `both-ships` (v16 LXX+MT — VERIFIED) · `O-Lord-address` (v6)
+
+### from 2 Nephi 13 (Isaiah 3)
+- isaiah: `3` (judgment on Judah's leaders + daughters of Zion)
+- doctrine: `judgment-by-withdrawal` (God takes away the competent, 13:1-7) · `eat-the-fruit-of-your-doings` (13:10-11) · `grind-the-faces-of-the-poor` (the central charge, 13:14-15)
+- image: `leadership-flight` (qualification = "thou hast clothing"; even he refuses, 13:6-7) · `finery-as-spoil` (daughters of Zion = visible wealth from ground faces, 13:16-24)
+- variant: `let-not-this-ruin-come` (v6 +"not...come": prevent not manage — VERIFIED) · `cannot-hide-it` (v9: involuntary exposure vs KJV brazen — VERIFIED)
 
 ## Edges
 
@@ -454,6 +460,9 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `doctrine:carnal-vs-spiritual-mind` —[death vs life eternal]→ 9:39 (Rom 8:6)
 - `image:keeper-of-the-gate-no-servant` —[Christ in person, no proxy]→ 9:41 (2 Ne 31:9; John 10:7-9)
 - `seq:cosmos→woes→gate` —[universal rescue ≠ cancelled accountability]→ 9:6-41
+- `structure:ring` —[opens v1 / closes v53 on "the covenants of the Lord"]→ monster→woes→gate sits between (spin-off)
+- `doctrine:gate-gets-its-name` —[after 50 vv of the title, the invitation lands]→ 9:51 "come unto the Holy One of Israel" (Isa 55) — the gate (v41) is not anonymous
+- `doctrine:final-woe-is-exposure` —[not fire: behold his face, remain in sins]→ 9:38 (they held themselves; spin-off's key finding)
 
 ### from 2 Nephi 10 (Jacob's sermon concludes)
 - `seq:isaiah-arc→altar-call` —[whole point of chs 7-8]→ 10:20 ("we are not cast off" answers the 7:1 variant)
@@ -484,3 +493,13 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `variant:not-reversal` —[BoM v9 inserts "not"×2: refused humility, verified]→ sin relocated from misdirected worship
 - `variant:both-ships` —[BoM v16 = LXX + MT, verified]→ brass-plate predates the textual split
 - `doctrine:the-Lord-alone-exalted` —[= the Redeemer Nephi saw, 11:2]→ 12:11,17 (Christological per 11:4)
+
+### from 2 Nephi 13 (Isaiah 3)
+- `doctrine:judgment-by-withdrawal` —[God takes away the competent; chaos by absence]→ 13:1-7 (Lev 26:26)
+- `image:leadership-flight` —[qualification shrinks to "thou hast clothing"; even he refuses]→ 13:6-7
+- `doctrine:eat-the-fruit-of-your-doings` —[the either/or]→ 13:10-11 (Gal 6:7; Alma 41:10)
+- `doctrine:grind-the-faces-of-the-poor` —[the central charge; the Lord pleads]→ 13:14-15 (Amos 2:6-7; 2 Ne 28:13) — likened to the last days
+- `image:finery-as-spoil` —[daughters of Zion = visible wealth from v15's ground faces]→ 13:16-24 (Jacob 2:13)
+- `variant:let-not-this-ruin-come` —[BoM v6 adds "not...come", verified]→ prevent ruin not manage it
+- `variant:cannot-hide-it` —[BoM v9 involuntary exposure vs KJV brazen, verified]→ sin written on the face
+- `doctrine:Christ-prosecutor-of-the-poor` —[the Judge = the Redeemer who felt every ground face]→ 13:13 (11:2; 9:21)

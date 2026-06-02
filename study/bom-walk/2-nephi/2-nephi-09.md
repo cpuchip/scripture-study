@@ -1,6 +1,6 @@
 # 2 Nephi 9 — "That Awful Monster, Death and Hell"
 
-*(Jacob's Atonement sermon — the doctrinal heart of his discourse. Mini-study; **deep spin-off in progress** → `studies/2ne9_atonement-monster-and-gate.md`.)*
+*(Jacob's Atonement sermon — the doctrinal heart of his discourse. Mini-study; **deep spin-off COMPLETE** → `studies/2ne9_atonement-monster-and-gate.md` + `.scratch/2ne9_atonement-monster-and-gate.md`.)*
 
 **Binding idea:** Jacob frames the Atonement as escape from a two-headed monster (death of the body + death of the spirit) — so why does he pivot from cosmic rescue straight into personal woes and a gate with no servant at it?
 
@@ -38,6 +38,12 @@
 - `image:keeper-of-the-gate-no-servant` —[Christ in person, no proxy]→ 9:41 (2 Ne 31:9; John 10:7-9)
 - `seq:cosmos→woes→gate` —[universal rescue does not cancel personal accountability]→ 9:6-41 (grace this large makes the woes urgent, not idle)
 
-**Notable / flag:** **Spin-off IN PROGRESS** — a full deep study (Sonnet subagent, background) → `studies/2ne9_atonement-monster-and-gate.md` (+ scratch). The standout lines: the **two-headed monster** (v10), spirits "become like unto him" (v9 — the fall's deepest stake), and "**he employeth no servant there**" (v41 — the personal gate after the cosmic sermon). Wo-count deferred to the spin-off (counted from the text, not asserted from memory). Next: 2 Ne 10 (Jacob's sermon concludes — the land of promise, the two gatherings).
+**Notable / flag:** **Spin-off COMPLETE** → `studies/2ne9_atonement-monster-and-gate.md` (+ scratch). Its verified findings, folded back:
+- *Wo-count = **10*** (vv 27, 30, 31, 32, 33, 34, 35, 36, 37, 38 — counted from the text; v28 "O that cunning plan" is an exclamation, not a "wo unto").
+- *The sermon is a **ring**:* it opens (v1) and closes (v53) on "the covenants of the Lord" — the whole monster→woes→gate argument sits between two identical covenant declarations.
+- *The gate gets its **name** (v51):* after fifty verses repeating "the Holy One of Israel," Jacob's Isaiah-55 invitation lands — "come unto the Holy One of Israel." The keeper of the gate who employs no servant (v41) is the One the sermon has been naming all along. The door is not anonymous.
+- *The final woe is **exposure, not fire** (v38):* "wo unto all those who die in their sins; for they shall return to God, and behold his face, and remain in their sins." The horror is not annihilation but meeting the One who could have changed you, with full knowledge of what you chose, and remaining unchanged. The monster never had to hold them; they held themselves.
+
+The standout lines remain: the **two-headed monster** (v10), spirits "become like unto him" (v9 — the fall's deepest stake, and the spin-off's named structural center), and "**he employeth no servant there**" (v41). Next: 2 Ne 10 (Jacob's sermon concludes — the land of promise, the two gatherings).
 
 **Verified:** 2 Nephi 9:6-10, 20-21, 28-29, 39-41 read verbatim this session (`gospel_get`) ✓ — every quoted line above is from those retrieved ranges. Verses summarized but not quoted (vv1-5, 11-19, 22-27, 30-38, 42-54) are paraphrased in indirect speech, not quoted. The wo-series is described, not enumerated, pending the spin-off's verbatim count. Cross-refs are footnote/thematic pointers, to be verified in the spin-off where quoted.

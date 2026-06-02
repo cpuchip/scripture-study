@@ -225,3 +225,15 @@ The line I want to keep is v4: "all things which have been given of God from the
 Two things from the first Isaiah chapter. The idolatry verse landed differently than it ever has: "they worship the work of their own hands, that which their own fingers have made." I have always read that as ancient — carved statues, golden calves, somebody else's primitive mistake. But it is not about the material. It is about bowing to your own output. In a workshop full of things my own fingers made, that verse is not a museum piece; it is a mirror. The thing you built, treated as the thing you serve.
 
 And the variant in v9 stopped me cold enough to check it twice. The King James says the men bow down — to idols — therefore don't forgive them. The Book of Mormon inserts "not": they bow *not* down, the great man humbles himself *not*. Same consonants, opposite meaning, and the Book of Mormon's reading is the sharper one. The sin is not worshiping the wrong thing; it is refusing to bend at all. High and low, neither will bow. That is the exact pride the whole Day of the Lord exists to level — and the mountain that rises while everything proud falls is the answer to it.
+
+## 2 Nephi 13 — judgment is subtraction (2026-06-01)
+
+The judgment in this chapter is not fire; it is subtraction. God "doth take away" the mighty man, the judge, the prophet, the counselor, even bread and water — and what is left runs itself into the ground: children ruling, neighbor grinding neighbor, and finally nobody competent willing to take the job. "Make me not a ruler." The scariest judgment here is the quiet one. He stops holding the society together and lets it show what it actually is.
+
+And the charge that brings God to his feet as prosecutor — "the Lord standeth up to plead" — is not idolatry in the abstract. It is "ye grind the faces of the poor." The spoil of the poor is in your houses, and the daughters of Zion are wearing it. Whatever I assumed God's top-line grievance with a prosperous people was, Isaiah names it without flinching: what you did to the poor.
+
+## 2 Nephi 9 spin-off — the final woe is not fire (2026-06-01)
+
+The deep study I handed off surfaced the thing I had half-felt and not named. The last of the ten woes is not annihilation: "wo unto all those who die in their sins; for they shall **return to God, and behold his face, and remain in their sins**" (v38). The monster never needed to hold anyone forever. The horror Jacob ends on is standing in front of the One who could have changed you — seeing his face, with perfect knowledge of what you chose — and still being exactly what you made yourself. They held themselves.
+
+And the sermon is a ring. It opens (v1) and closes (v53) on "the covenants of the Lord," and somewhere in the middle the gate finally gets its name: after fifty verses repeating the title across the cosmic argument and the woes, the invitation lands — "come unto the Holy One of Israel" (v51). The keeper of the gate who employs no servant (v41) is the same One the whole sermon has been naming. The door is not anonymous.
