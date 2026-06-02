@@ -429,6 +429,11 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - doctrine: `record-prevents-dwindling` (without it, even our fathers would have dwindled like the Lamanites, v5 — Omni's Mulekite lesson stated outright) · `search-diligently-to-profit` (having ≠ enough; the profit is in searching, v7) · `name-not-blotted-out-except-by-transgression` (covenant identity, v11-13 → Mosiah 5) · `conditional-preservation` (transgress → preserving power withdrawn, v13)
 - relics: `four-of-the-kingdom` (brass plates + plates of Nephi + sword of Laban + Liahona = word/defense/guidance, v16) · `liahona-heed-and-diligence` (v16-17)
 
+### from Mosiah 2 (Benjamin's sermon: service + indebtedness)
+- person: `king-benjamin` (servant-king, watchman, "no better... of the dust")
+- doctrine: `service-of-others-is-service-of-God` (v17 — debt discharged sideways) · `cannot-get-ahead-of-Gods-giving` (created + lends breath + blesses immediately = unprofitable servants, v20-25) · `death-of-boasting` ("of what have ye to boast?", v24 — positive cure for the boasting-axe thread) · `servant-king` (labored with own hands, no taxes, v11-14) · `blessed-state-of-the-obedient` (v41)
+- thread: `watchmans-burden` (rid my garments of your blood, v27-28 ← Jacob 1:19)
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -994,3 +999,11 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `relics:four-of-the-kingdom` —[plates + plates + sword + Liahona = word, defense, guidance]→ Mosiah 1:16 (2 Ne 5:12-14; W of M 1:13)
 - `doctrine:liahona-heed-and-diligence` —[guidance responsive to obedience; unfaithful driven back]→ Mosiah 1:16-17 (1 Ne 16:28-29; Alma 37:38-46)
 - `doctrine:name-not-blotted-out-except-by-transgression` —[covenant identity is a gift, forfeitable only by choosing]→ Mosiah 1:11-13 (Mosiah 5:8-12; Rev 3:5)
+
+### from Mosiah 2
+- `doctrine:service-of-others-is-service-of-God` —[the God you can't repay is served by the neighbor you can]→ 2:17-18 (Matt 25:40; Mosiah 18:8)
+- `doctrine:cannot-get-ahead-of-Gods-giving` —[created + lends breath + blesses immediately = perpetual debt]→ 2:20-25 (Luke 17:10; 2 Ne 25:23) — unprofitable servants
+- `doctrine:death-of-boasting` —["of what have ye to boast?"; even the breath to serve is borrowed]→ 2:24-26 (1 Cor 1:29; 2 Ne 20:15) — positive cure for the boasting-axe thread
+- `doctrine:servant-king` —[king labors with his own hands, "no better... of the dust"]→ 2:11-14,26 (Luke 22:25-27; John 13:14)
+- `thread:watchmans-burden` —[rid my garments of your blood; teach then be found blameless]→ 2:27-28 (Jacob 1:19; Ezek 33)
+- `doctrine:blessed-state-of-the-obedient` —[blessed in all things, temporal and spiritual]→ 2:41 (Ps 1:1-3; Mosiah 2:22)
