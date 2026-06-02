@@ -821,6 +821,12 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - person: `Shiblon` (the steady, just son; receives the records, confers on Helaman) · `Corianton` (the restored son; sails north carrying provisions — laboring, not given the records) · `Helaman (son of Helaman)` (receives the records — chain into the book of Helaman) · `Captain-Moroni` (dies, one verse) · `Hagoth` ("an exceedingly curious man"; ships north) · `Moronihah` (defeats the Lamanite incursion)
 - doctrine: `the-sacred-record-passes-through-chosen-faithful-hands` (vv1-2, 11-17 — generation to generation, Alma 37 fulfilled) · theme: `the-restored-son-serves-the-steady-son-keeps` (vv2, 10) · `the-great-are-remembered-by-deeds-not-death-notices` (v3 — Moroni's one-line death) · `a-record-honest-about-the-limits-of-its-knowledge` (v8 — "whither she did go we know not")
 
+## — THE BOOK OF HELAMAN (great reversal: righteous Lamanites / wicked Nephites; rise of the Gadianton robbers) —
+
+### from Helaman 1 (peace collapses inward; the secret combination is born)
+- person: `Pahoran-the-second` (chief judge, murdered on the judgment-seat) · `Paanchi` (seditious brother, executed) · `Pacumeni` (third brother, chief judge, slain against the wall) · `Kishkumen` (the assassin, founder-figure of the secret band) · `Coriantumr` (Nephite dissenter, takes Zarahemla, overextends and is slain) · `Tubaloth` (son of Ammoron) · `Moronihah`/`Lehi` (cut Coriantumr off, retake Zarahemla)
+- doctrine: `the-secret-combination-is-the-anti-covenant` (1:11 — oath sworn in God's name to conceal murder) · theme: `the-deadliest-threat-is-internal-not-external` (1:1-18) · `complacency-leaves-the-center-undefended` (1:18, 26) · `audacity-without-depth-of-position-destroys-itself` (1:22-32) · `the-great-reversal-righteous-Lamanites-wicked-Nephites` (book heading)
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -2155,3 +2161,9 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `theme:a-record-honest-about-the-limits-of-its-knowledge` —[Hagoth's ships sail north and "were never heard of more. And we suppose that they were drowned... and whither she did go we know not"; the record admits where its knowledge stops rather than inventing an ending — honesty over false omniscience]→ 63:5-8 (Alma 22:31-32; Hel 3:3-12)
 
 ## — END OF ALMA (63 chapters) · BOOK OF HELAMAN BEGINS —
+
+### from Helaman 1
+- `doctrine:the-secret-combination-is-the-anti-covenant` —[the assassins "all entered into a covenant, yea, swearing by their everlasting Maker, that they would tell no man that Kishkumen had murdered Pahoran"; the sacred form — a solemn oath in God's name — hijacked to sanctify and conceal murder; the dark mirror of every holy covenant, "most abominable above all"]→ 1:11-12 (Ether 8:13-25; Hel 6:21-30; Ether 8:18)
+- `theme:the-deadliest-threat-is-internal-not-external` —[the war over, Pahoran dead, his sons "contend for the judgment-seat" and split the people into "three divisions"; external enemy beaten by blood, internal enemy ambition walks in the moment the strong hand is gone — the Nephites begin to die of themselves]→ 1:1-9 (Matt 12:25; Alma 51:5-21; Mosiah 29:7)
+- `theme:complacency-leaves-the-center-undefended` —[because of "so much contention" they "had not kept sufficient guards... for they had supposed that the Lamanites durst not come into the heart of their lands"; the danger always assumed to be "out there" walks into the undefended interior]→ 1:18, 26-27 (Alma 48:7-9; 1 Cor 10:12; Mark 13:35-37)
+- `theme:audacity-without-depth-of-position-destroys-itself` —[Coriantumr's bold central thrust takes Zarahemla, but "supposing that their greatest strength was in the center," he plunges deeper until he "had plunged the Lamanites into the midst of the Nephites" — surrounded, cut off, slain; speed without security is self-destruction]→ 1:22-32 (Prov 16:18; Alma 48:7-9; Luke 14:31)
