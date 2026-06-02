@@ -655,6 +655,10 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - person: `the-converted-over-king` (proclaims protection; goal "all brethren") · `the-Anti-Nephi-Lehies` (new name; never fall away) · `the-Amalekites-Amulonites` (converted "save only one"; apostate-hard)
 - doctrine: `conversion-that-lays-down-the-weapon-never-falls-away` (vv6-7) · `the-curse-lifted-as-enmity-and-idleness-reversed` (v18 — 5:21 datapoint) · theme: `the-grievance-dissolved-into-all-brethren` (v3) · `apostates-dont-convert-natives-do` (v14) · event: `new-name-Anti-Nephi-Lehies` (vv16-17)
 
+### from Alma 24 (the weapons buried deep — the cure's deepest proof)
+- person: `king-Anti-Nephi-Lehi-elder` (the burial speech; sword-logic; dies before the attack) · `the-Anti-Nephi-Lehies` (bury weapons; 1,005 martyred unresisting) · `the-attacking-Nehorites` (many convert mid-slaughter; unconverted = Nehorite apostates)
+- doctrine: `bury-the-weapons-lest-the-cleansing-not-hold` (vv12-13) · `martyrdom-is-net-positive` (vv26-27) · `apostasy-from-light-is-worse-than-never-knowing` (v30 — capstone) · theme: `covenant-as-threefold-reversal-of-the-grievance` (v18) · `buried-weapons-covenant-echoes-forward` (vv17-19 → Hel 15) · event: `unresisting-martyrdom-converts-the-killers` (vv21-25)
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -1676,3 +1680,15 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `theme:apostates-dont-convert-natives-do` —["the Amalekites were not converted, save only one; neither were any of the Amulonites," while thousands of born-Lamanites convert and never fall away; the apostate-Nehorite harder than the native]→ 23:14 (Alma 21:3; Mosiah 23:31-39; 24:30)
 - `event:new-name-Anti-Nephi-Lehies` —[the converts take a name "that they might be distinguished," "no more called Lamanites"; renouncing the grievance-identity Laman's name carried, aligning toward Nephi and Lehi the faithful founders]→ 23:16-17 (Jacob 1:13; Alma 24:1; Mosiah 5:7-8)
 - `doctrine:the-curse-lifted-as-enmity-and-idleness-reversed` —["industrious... friendly with the Nephites... the curse of God did no more follow them"; three markers all behavioral/relational, not physical; the chapter's own footnote ties it to 2 Ne 30:6 (curse taken away → "pure")]→ 23:18 (2 Ne 5:24; 30:6; 1 Ne 2:23; 3 Ne 2:15) — 5:21-study datapoint: curse = enmity/idleness, removed on conversion
+
+### from Alma 24
+- `doctrine:bury-the-weapons-lest-the-cleansing-not-hold` —[forgiven of murder, they fear "if we should stain our swords again they can no more be washed bright through the blood of the Son"; absolute pacifism from people who know what their hands did]→ 24:12-13 (D&C 42:18; Heb 10:26; Rev 1:5)
+- `theme:covenant-as-threefold-reversal-of-the-grievance` —["rather than shed the blood of their brethren they would give up their own lives; and rather than take away from a brother they would give unto him; and rather than spend their days in idleness they would labor"; every grievance-vice inverted]→ 24:18 (Alma 17:14; 23:18; Mosiah 10:12-17)
+- `event:unresisting-martyrdom-converts-the-killers` —[they prostrate and "praised God even in the very act of perishing"; the attackers, "stung for the murders," throw down their weapons and convert; you cannot keep killing people who lie down and praise God]→ 24:21-25 (Matt 5:39; Luke 23:34; Acts 7:60)
+- `doctrine:martyrdom-is-net-positive` —["the people of God were joined that day by more than the number who had been slain"; 1,005 dead, "more than a thousand brought to the knowledge of the truth"; the buried sword converted more than the drawn sword ever did]→ 24:26-27 (Isa 57:1; Rev 14:13; John 12:24)
+- `doctrine:apostasy-from-light-is-worse-than-never-knowing` —["after a people have been once enlightened... and then have fallen away... they become more hardened... worse than though they had never known"; killers are Nehorite apostates, converts are native Lamanites]→ 24:28-30 (Heb 10:26; 2 Pet 2:20-21; Matt 12:45; Alma 47:36)
+- `theme:buried-weapons-covenant-echoes-forward` —[the oath binding the fathers; remembered in Helaman's day as the mark of true conversion; the sons not under it become the stripling warriors]→ 24:17-19 (Hel 15:7-9; Alma 53:11; 56:47)
+
+### fold-back: studies/alma17-26_lamanite-conversion-and-the-grievance-cure.md (Sonnet spin-off, all 6 load-bearing quotes verified vs own fetch)
+- `study:alma17-26-grievance-cure` —[thesis: the four-century grievance tradition broke because the missionaries did four things it had no defense for — went as SERVANTS not conquerors (inverting the power-relation it was built on), told the TRUE story incl. Laman/Lemuel's rebellions (not counter-accusation), REFRAMED the wound via creation-fall-redemption (making Nephite-vs-Lamanite secondary), and the converts REFUSED THE SWORD (24) so the tradition could no longer call them bloodthirsty]→ Alma 17-26 (builds on studies/mos10 grievance diagnosis)
+- `study:alma17-26-grievance-cure` —[load-bearing verified quotes]→ 17:11 (patient/long-suffering) · 19:9 (faith on testimony alone) · 22:13 (creation→redemption reframe) · 22:18 (give away all my sins) · 24:18 (rather give up own lives) · 24:25 (killers stung, throw down weapons)
