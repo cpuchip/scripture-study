@@ -785,6 +785,10 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - person: `Captain-Moroni` (letter grounded in God/justice/repentance + honest anger) · `Ammoron` (letter grounded in grievance/revenge/agnostic evasion)
 - theme: `two-foundations-conscience-vs-grievance` (whole ch) · `agnosticism-as-moral-evasion` (vv21-22) · `the-tell-of-half-belief` (v22) · `grievance-mutated-into-a-political-claim` (vv17, 24) · `the-borrowed-grievance` (vv23-24 — Zoramite wearing Lamanite grievance) · `honest-anger-vs-cold-dismissal` (vv13, 22)
 
+### from Alma 55 (Gid taken without blood)
+- person: `Captain-Moroni` (bloodless victory; refuses to kill the helpless) · `Laman-Nephite-scout` (executes the wine stratagem) · `Ammoron` (knows his cause unjust, fights anyway)
+- doctrine: `refusing-to-kill-the-helpless-even-when-you-could` (vv18-19 — David/sleeping-Saul) · theme: `the-stratagem-that-serves-mercy` (vv4-24) · `the-enemys-own-appetite-is-the-weapon` (vv10-14) · `angriest-at-the-knowingly-false` (v1) · `remember-God-and-dont-fall-for-your-own-trick` (vv30-32)
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -2054,3 +2058,10 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `theme:grievance-mutated-into-a-political-claim` —["your fathers did wrong their brethren... rob them of their right to the government when it rightly belonged unto them"; the Mosiah-10 grievance refined into a constitutional claim to rule]→ 54:17, 24 (Mosiah 10:12-17; 2 Ne 5:3; 2 Sam 15:2-6)
 - `theme:the-borrowed-grievance` —[Ammoron, "a descendant of Zoram," calls himself "a bold Lamanite" avenging Lamanite wrongs; a Nephite dissenter of Zoramite stock wears Lamanite grievance as a costume — grievance ideologies outlive the injury and get adopted by whoever finds them useful]→ 54:23-24 (1 Ne 4:35; Jacob 1:13; Alma 47:35-36)
 - `theme:honest-anger-vs-cold-dismissal` —[Moroni names his state ("I am in my anger") while grounding the cause in defense; Ammoron's "these things matter not" is the colder thing; transparent fierceness vs studied detachment]→ 54:13, 22 (Eph 4:26; Ps 4:4; Matt 5:37)
+
+### from Alma 55
+- `doctrine:refusing-to-kill-the-helpless-even-when-you-could` —["the Nephites could have slain them. But... this was not the desire of Moroni; he did not delight in murder or bloodshed... he would not fall upon the Lamanites and destroy them in their drunkenness"; slaughtering the defenseless "would bring upon him injustice" — winning isn't worth becoming unjust]→ 55:18-19 (1 Sam 26:7-12; Alma 48:16; Matt 5:44-45; Rom 12:21)
+- `theme:the-stratagem-that-serves-mercy` —[Moroni takes Gid by the wine trick + silently arming the prisoners; the cleverness designed to AVOID bloodshed, not enable it — the city taken without a death]→ 55:4-24 (Alma 43:30; Josh 8:3-22; Prov 24:6)
+- `theme:the-enemys-own-appetite-is-the-weapon` —["let us keep of our wine till we go against the Nephites... this saying only made them more desirous to drink"; the guards' undisciplined craving is the weapon — Moroni only offers and lets their weakness do the rest]→ 55:10-14 (Prov 20:1; 23:31-32; Mosiah 22:6-11)
+- `theme:angriest-at-the-knowingly-false` —["he knew that Ammoron had a perfect knowledge of his fraud... that it was not a just cause"; Moroni enraged not by an honest enemy but by one who knows he's wrong and fights anyway — the knowingly false, not the deceived]→ 55:1 (Alma 54:17-24; John 9:41; James 4:17)
+- `theme:remember-God-and-dont-fall-for-your-own-trick` —[the Lamanites try the wine trick back, but "the Nephites were not slow to remember the Lord their God... they would not partake... save they had first given to some of the Lamanite prisoners"; vigilance + remembering God travel together]→ 55:30-32 (Hosea 5:15; Alma 62:49-51; 1 Pet 5:8)
