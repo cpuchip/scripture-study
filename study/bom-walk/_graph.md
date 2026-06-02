@@ -345,6 +345,14 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - creed: `three-glories` (plainness → truth → my Jesus who redeemed my soul, v6)
 - SYNTHESIS: **2 NEPHI COMPLETE** — doctrine of Christ rendered plain: "we talk of Christ" (25:26) → "I glory in my Jesus" (33:6); opens Lehi-dying-"opposition in all things" → closes Nephi-dying-"I glory in my Jesus"
 
+## — JACOB —
+
+### from Jacob 1
+- person: `jacob` (priest, record-keeper, watchman) · `joseph` (fellow priest) · `nephi` (dies; name retained as throne-title) · `the-anointed-kings` ("second Nephi") · `the-seven-tribes`
+- doctrine: `watchmans-burden` (answer the people's sins on our own heads if we don't teach with diligence, v19 — inverse of priestcraft) · `small-plates-curation` (only most precious, for Christ's sake, v2-4) · `discipleship-includes-the-shame` (view his death, suffer his cross, v8) · `division-by-allegiance` (Lamanite = seeks to destroy; Nephite = friendly to Nephi, v14)
+- relic: `sword-of-Laban` (Nephi wielded it; passes with kingship, v10)
+- setup: `pride-and-polygamy` (David/Solomon's many wives; gold; pride, v15-16 → Jacob 2-3)
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -806,3 +814,14 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `image:face-to-face-at-the-bar` —[writer + reader meet at judgment; the sealed witness]→ 33:11,15 (Moroni 10:34; Ether 5:6)
 - `image:voice-from-the-dust` —[Nephi's farewell = the book's self-image]→ 33:13 (Isa 29:4; 26:16; 27:13)
 - `synthesis:2-nephi-complete` —["we talk of Christ" (25:26) → "I glory in my Jesus" (33:6)]→ book closes
+
+## — JACOB (edges) —
+
+### from Jacob 1
+- `doctrine:watchmans-burden` —[answer the people's sins on our own heads if we don't teach with diligence]→ 1:19 (Ezek 33:1-9; 34:10) — inverse of priestcraft (26:29)
+- `doctrine:small-plates-curation` —[only the most precious, for Christ's sake]→ 1:2-4 (1 Ne 6:4-6)
+- `doctrine:discipleship-includes-the-shame` —[believe AND suffer his cross, bear the shame]→ 1:8 (Luke 14:27; Heb 12:2)
+- `doctrine:division-by-allegiance` —[Lamanite = seeks to destroy; Nephite = friendly to Nephi]→ 1:13-14 (2 Ne 5:1-9; 26:33; 30:2)
+- `thread:liken-method-passed` —[Nephi → Jacob, now the plates too]→ 1:1-4 (2 Ne 6:5)
+- `setup:pride-and-polygamy` —[David/Solomon's many wives; gold; pride]→ 1:15-16 → Jacob 2-3
+- `relic:sword-of-Laban` —[Nephi wielded it in defence; passes with kingship]→ 1:10 (1 Ne 4:9; Mosiah 1:16)
