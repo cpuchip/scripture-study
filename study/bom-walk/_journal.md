@@ -285,3 +285,9 @@ The saw does not sharpen itself, or lift itself, or decide where to cut. I am an
 The line I will carry from the peaceable kingdom is one small word: *for*. The wolf lies with the lamb, the lion eats straw, the child plays where the snake lives — and the reason is not a fence or a muzzle. "They shall not hurt nor destroy in all my holy mountain, *for* the earth shall be full of the knowledge of the Lord, as the waters cover the sea." Peace is not enforced restraint. It is the overflow of knowing. When God fills everything the way water fills the sea, there is nothing left to hurt with.
 
 That is this project's own epigraph read all the way to its end — "whatever principle of intelligence we attain unto in this life, it will rise with us" — carried out until violence simply has no room left to stand in. The cure for the predator is not a stronger cage. It is knowledge. Which means the studying itself is not private enrichment; it is a small participation in the thing that finally ends the hurting.
+
+## 2 Nephi 22 — the hand finally arrives (2026-06-01)
+
+Short song, and it lands the whole block. For three chapters the refrain kept tolling — "his anger is not turned away, but his hand is stretched out still." I had read that hand as raised to strike, and it was. But here is the resolution I did not see until it sat on the same page: "though thou wast angry with me, thine anger *is* turned away, and thou comfortedst me." The hand that stayed stretched out through all the judgment was not a fist held up. It was a reach that had not arrived yet. The same hand that struck is the one that finally comforts. Judgment that keeps its hand out turns out to be mercy that has not yet landed.
+
+And the redeemed do not sing a new song. They sing Moses' song at the sea — "the Lord Jehovah is my strength and my song." Every deliverance rhymes with the first one. The second Exodus borrows the music of the first.
