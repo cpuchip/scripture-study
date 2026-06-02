@@ -434,6 +434,10 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - doctrine: `service-of-others-is-service-of-God` (v17 — debt discharged sideways) · `cannot-get-ahead-of-Gods-giving` (created + lends breath + blesses immediately = unprofitable servants, v20-25) · `death-of-boasting` ("of what have ye to boast?", v24 — positive cure for the boasting-axe thread) · `servant-king` (labored with own hands, no taxes, v11-14) · `blessed-state-of-the-obedient` (v41)
 - thread: `watchmans-burden` (rid my garments of your blood, v27-28 ← Jacob 1:19)
 
+### from Mosiah 3 (the angel's Christology + the natural man)
+- person: `the-angel` · `Lord-Omnipotent`/`Jesus-Christ` (Son + Father + Creator) · `Mary` (named) · `the-natural-man` (enemy → saint → child) · `little-children` (saved)
+- doctrine: `natural-man-yields-becomes-a-child` (v19 — surrender not achievement; saint THROUGH the Atonement; the walk's yield/give-away thread) · `blood-from-every-pore` (Gethsemane ~124 BC, v7) · `Christ-named-Son-and-Father-Mary` (fullest pre-Christian naming, v8 — condescension Christology) · `no-other-name` (v17) · `justice-calibrated-to-knowledge` (ignorant covered, knowing rebel not, v11-12) · `little-children-saved` (v16) · `law-insufficient-without-atonement` (v15)
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -1007,3 +1011,12 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `doctrine:servant-king` —[king labors with his own hands, "no better... of the dust"]→ 2:11-14,26 (Luke 22:25-27; John 13:14)
 - `thread:watchmans-burden` —[rid my garments of your blood; teach then be found blameless]→ 2:27-28 (Jacob 1:19; Ezek 33)
 - `doctrine:blessed-state-of-the-obedient` —[blessed in all things, temporal and spiritual]→ 2:41 (Ps 1:1-3; Mosiah 2:22)
+
+### from Mosiah 3
+- `doctrine:natural-man-yields-becomes-a-child` —[yield to the Spirit, put off, become a saint THROUGH the Atonement, become as a child]→ 3:19 (1 Cor 2:14; Matt 18:3; Alma 5:14) — surrender not achievement
+- `doctrine:blood-from-every-pore` —[the Atonement's anguish felt in the body]→ 3:7 (Luke 22:44; D&C 19:16-19; Alma 7:11)
+- `doctrine:Christ-named-Son-and-Father-Mary` —[fullest pre-Christian naming; condescension Christology]→ 3:8 (Mosiah 15:1-5; Alma 7:10; 1 Ne 11:18)
+- `doctrine:no-other-name` —[salvation only in Christ the Lord Omnipotent]→ 3:17 (Acts 4:12; 2 Ne 25:20; 31:21)
+- `doctrine:justice-calibrated-to-knowledge` —[ignorant sin covered; knowing rebellion not]→ 3:11-12 (2 Ne 9:25-26; Luke 12:47-48)
+- `doctrine:little-children-saved` —[the blood of Christ atoneth for their sins]→ 3:16 (Moroni 8:8-12; D&C 137:10)
+- `doctrine:law-insufficient-without-atonement` —[the law availeth nothing except through his blood]→ 3:15 (Heb 10:1; Mosiah 13:28-32)
