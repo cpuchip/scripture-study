@@ -83,6 +83,16 @@ Some chapters surface something that deserves more than a chapter note — a cro
 - `ch-tag` = originating chapter, compact (`1ne8`, `2ne2`, `alma32`, `3ne11`). `study-subject` = kebab slug.
 - These spun-off studies are still **bin-1/2 drafts-for-Michael** (verified, exploratory) until he ratifies — same frame as the walk. They are subagent (sonnet/opus) cost, not substrate cost.
 
+## Unattended-run resilience — subagent overload (learned 2026-06-02, the BoM walk)
+
+A long unattended run *will* hit transient API failures — most often **HTTP 529 "Overloaded,"** which strikes the heavy background subagent spawns first while the foreground conversation (already warm, harness-retried) keeps going. On the BoM walk this hit at **Alma 34 (~03:47)** and was logged as "spin-off deferred (API overload)" — but spin-offs were then **never re-probed for the remaining ~6.5 hours**, so Alma 36 (the chiasmus), Alma 39–42 (Corianton), and Ether 12 got inline treatment instead of the deep studies they'd have earned. Three rules so the next walk does better:
+
+1. **Degrade gracefully — never stall the main goal.** When a subagent spawn fails (529 / overload / rate-limit), do not block the walk waiting on it. Fall back to a fuller **inline** treatment of that chapter and keep advancing. Finishing the canon is the load-bearing goal; spin-offs are an enhancement. *(This half worked on the BoM walk — keep it.)*
+2. **Re-probe the degraded capability on a cadence.** 529s are transient (minutes to ~an hour). After deferring a spin-off on overload, retry a spawn at the next spin-off-worthy chapter, or every ~10 chapters — and resume spinning off the moment one succeeds. Do **not** stay degraded for the rest of the run after a single bad window. *(This was the miss.)*
+3. **Make degradation LOUD, not buried.** Log the event where a waking human sees it at a glance — a line at the top of `_progress.md` (e.g. `DEGRADED 03:47 — subagent spawns 529'ing, carrying inline, will re-probe`), not only in a commit message. The human shouldn't have to infer from the outside that the spin-off avenue went dark.
+
+(pg-ai-stewards already embodies this pattern — `classify_error` + auto-probe + provider fallback + spend caps. A raw Claude Code run has none of it natively, so it lives here as workflow discipline.)
+
 ## Resume after compaction (ammon)
 
 A 239-chapter run *will* cross context resets. On resume — do not restart:
@@ -91,3 +101,13 @@ A 239-chapter run *will* cross context resets. On resume — do not restart:
 2. Read this `_workflow.md` → re-anchor the loop.
 3. Skim the last 1–2 chapter notes + the tail of `_graph.md` → recover the thread.
 4. Continue from NEXT. "Remember all my commandments to execute them" (Alma 18:10).
+
+## This is a template — the canon-walk series (roadmap 2026-06-02)
+
+The BoM walk is the **first of a planned series**, and this `bom-walk/` scaffold (`_workflow.md`, `_progress.md`, `_graph.md`, `_journal.md`, per-book note folders) is the **reusable template**. To start the next one: copy the scaffold to `study/{canon}-walk/`, reset `_progress.md` to the new book list + counts, carry the honesty/cost/resilience frames unchanged, and run the same per-unit loop.
+
+- **Next (~week of 2026-06-08): Pearl of Great Price** — Moses, Abraham, Joseph Smith–Matthew, Joseph Smith–History, the Articles of Faith. Small (5 books), but the Moses/Abraham creation + council material is dense and will reward the spin-off avenue heavily.
+- **Then (~the week after): Doctrine & Covenants** — 138 sections + Official Declarations 1–2. Long, but **section-per-loop** maps cleanly onto chapter-per-loop. Heavy cross-referencing into Church history; `byu_citations` earns its keep here.
+- **Then (maybe): Old Testament**, then **New Testament** — the big experiment, by far the largest (OT alone ~929 chapters).
+  - **Tooling flagged BEFORE the Bible walks:** build a **Strong's-concordance MCP** so Hebrew/Greek word-work on the KJV is as rich as `webster-mcp` makes the 1828 English. Strong's Concordance (1890) is public-domain; it keys every KJV word to a Hebrew (`H####`) / Greek (`G####`) lemma + gloss. Specced as a deferred, plan-only build — see [`.spec/proposals/strongs-concordance-mcp.md`](../../.spec/proposals/strongs-concordance-mcp.md). **Build it before the OT walk, not during it.**
+  - Scale note: the OT/NT will need real thought on *depth-per-chapter vs. throughput* — mini-study depth × ~1,189 Bible chapters is a different order of magnitude than 239. Decide the calibration (and likely lean harder on spin-offs + the concordance) at that walk's planning, not now.
