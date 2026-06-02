@@ -769,6 +769,10 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - person: `Captain-Moroni` (fortifies all cities; happiest-time era) · `Morianton` ("man of much passion"; undone by beating a maidservant) · `the-maidservant` (abused, exposes the plan, saves the nation) · `Teancum` (introduced; slays Morianton) · `Pahoran-Nephihah` (righteous chief judges)
 - doctrine: `the-Lehi-covenant-verified-as-historical-law` (vv19-22) · theme: `the-happiest-time-was-readiness-plus-faithfulness` (v23) · `private-cruelty-betrays-the-public-scheme` (vv30-31) · `the-overlooked-person-is-the-hinge` (v31) · reference: `the-oath-of-good-governance` (vv37-40)
 
+### from Alma 51 (king-men + Amalickiah's death)
+- person: `the-king-men` (high-birth faction seeking monarchy; seditious in defeat) · `the-freemen-Pahoran` (free government by the voice of the people) · `Captain-Moroni` (crushes internal sedition) · `Amalickiah` (dies by Teancum's javelin asleep) · `Teancum` (the night raid)
+- theme: `sedition-born-from-factional-spite` (v13) · `internal-division-opens-the-door-to-conquest` (vv22-27) · `the-nations-own-fortifications-turned-against-it` (v27) · `the-hard-edge-of-wartime-sedition-law` (vv15-21) · `the-pit-digger-falls-into-his-own-pit` (vv9-10, 33-37)
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -2009,3 +2013,10 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `theme:private-cruelty-betrays-the-public-scheme` —[Morianton's plan "would lead to the overthrow of their liberty," but "being a man of much passion... he fell upon her and beat her much," and she exposed everything; unbridled passion leaks — can't govern yourself in private, undone in public]→ 50:30-31 (Alma 38:12; 47:18; Luke 12:2-3; Num 32:23)
 - `theme:the-overlooked-person-is-the-hinge` —[an abused maidservant, the most powerless person in the tyrant's household, becomes the hinge on which the nation's liberty turns; God's deliverance through the discounted (cf. Abish)]→ 50:31 (Alma 19:16-29; Esther 4:14; 1 Cor 1:27-28)
 - `reference:the-oath-of-good-governance` —[Pahoran takes the seat "with an oath... to judge righteously, and to keep the peace and the freedom of the people, and to grant unto them their sacred privileges to worship the Lord their God... and to bring the wicked to justice"]→ 50:37-40 (Mosiah 29:25-29; Alma 4:16-17; D&C 134:1-5)
+
+### from Alma 51
+- `theme:sedition-born-from-factional-spite` —[the king-men, having lost "by the voice of the people," are "glad in their hearts" the Lamanites are coming and "would not take up arms... so wroth with the chief judge"; hatred of opponents exceeding love of country — preferring the catastrophe that vindicates the grievance to the cooperation that wins]→ 51:7-13 (Mosiah 29:25-32; 3 Ne 6:30; Judg 12:1-6)
+- `theme:internal-division-opens-the-door-to-conquest` —[while Moroni must put down the king-men, Amalickiah captures a string of cities; "this had been hitherto a cause of all their destruction"; the enemy within enabled the enemy without]→ 51:9-27 (Matt 12:25; 1 Kgs 16:21; Alma 51:16)
+- `theme:the-nations-own-fortifications-turned-against-it` —[the captured cities were "strongly fortified after the manner of the fortifications of Moroni; all of which afforded strongholds for the Lamanites"; the defenses built to protect now shelter the invader, because division stripped the defenders]→ 51:27 (Alma 48:8; Ps 127:1; Hag 1:6)
+- `theme:the-hard-edge-of-wartime-sedition-law` —[Moroni given power to "compel those dissenters to defend their country or to put them to death"; 4,000 hewn down, leaders jailed "no time for their trials"; martial law in an existential invasion — the record lets the hard thing stand]→ 51:15-21 (Alma 46:35; 62:9-10; D&C 134:1-5)
+- `theme:the-pit-digger-falls-into-his-own-pit` —[Amalickiah swore the "rash" oath to "drink the blood of Moroni" but never reaches him; Teancum "put a javelin to his heart" in his sleep — the man who rose by poison and the mid-handshake stab dies asleep, silently; he dies as he killed]→ 51:9-10, 33-37 (Eccl 10:8; Prov 26:27; Alma 47:18, 24; Matt 26:52)
