@@ -396,6 +396,14 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - image: `the-wrestle` (all day + night; answer comes during the labor, v2-4,10) · `death-as-rest-with-the-Redeemer` (see his face WITH PLEASURE, v27 — pleasing side of Jacob 6:13 bar)
 - thread: `record-preservation-covenant` (Enos joins the chain, v13-18)
 
+## — JAROM — (1-chapter book, COMPLETE)
+
+### from Jarom 1
+- person: `jarom` (son of Enos, brief writer) · the Nephite kings/prophets/teachers
+- doctrine: `believe-as-though-he-already-was` (forward faith collapses time; Nephites' Christian posture, v11) · `law-kept-with-its-intent` (pointing to Christ, v11) · `prosperity-covenant-fulfilled` (v9) · `mercy-not-as-yet` (God hasn't swept them off, v3)
+- image: `prick-their-hearts` (the disturbing word keeps them from destruction, v12 — inverse of "all is well")
+- meta: `thinning-record` ("what could I write more?", v2 — small plates shortening toward Omni; faithful contentment, watch the line)
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -929,3 +937,11 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `image:the-wrestle` —[all day + night; the prayer that won't let go; answer comes during the labor]→ Enos 1:2-4,10 (Gen 32:24; Luke 18:1-8)
 - `image:death-as-rest-with-the-Redeemer` —[see his face WITH PLEASURE]→ Enos 1:27 (Jacob 6:13; Moroni 10:34)
 - `thread:record-preservation-covenant` —[Enos joins the chain preserving the plates]→ Enos 1:13-18 (2 Ne 3:15; W of M 1:6-11)
+
+## — JAROM (edges) —
+- `doctrine:believe-as-though-he-already-was` —[forward faith treats the future Christ as present]→ Jarom 1:11 (Enos 1:8; Jacob 4:4; 2 Ne 25:24)
+- `doctrine:law-kept-with-its-intent` —[law taught as pointing to Christ, not ritual for itself]→ Jarom 1:11 (Jacob 4:5; 2 Ne 11:4; Gal 3:24)
+- `doctrine:prosperity-covenant-fulfilled` —[keep commandments → prosper]→ Jarom 1:9 (1 Ne 2:20; Mosiah 2:22)
+- `doctrine:mercy-not-as-yet` —[God has not yet swept them off; the "not yet" is patience]→ Jarom 1:3 (Jacob 6:4; 2 Pet 3:9)
+- `image:prick-their-hearts` —[the word that disturbs keeps them from destruction]→ Jarom 1:12 (Enos 1:23; Acts 2:37)
+- `meta:thinning-record` —[Jarom writes less; small plates shorten toward Omni]→ Jarom 1:2,14
