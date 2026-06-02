@@ -376,6 +376,11 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - study: `jacob5_allegory-of-the-olive-tree` (spin-off — IN PROGRESS, Sonnet subagent; visit-count + dispensational reading)
 - answer: resolves Jacob 4:17 (the rejected stone grafts back in the last labor)
 
+### from Jacob 6 (application of the allegory)
+- doctrine: `outstretched-hand-is-mercy` (the allegory's laboring hand 5:47 named: mercy to a gainsaying people, v4 — refrain resolves; Isa 65:2/Rom 10:21) · `cleave-as-he-cleaves` (he's already cleaving; answer it, v5) · `today-harden-not` ("why will ye die?", v6) · `strait-gate-restated` (enter + continue, v11 = 2 Ne 31)
+- warning: `mock-the-plan-of-redemption` (deny→quench→mock, v7-8)
+- image: `pleasing-bar-dreadful-bar` (same bar: pleasing to righteous, dread to wicked, v13 — judgment by response; cf 18:14 stone)
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -881,3 +886,11 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `doctrine:labor-WITH-me-joy-WITH-me` —[God digs alongside the few; joy shared not given]→ 5:71-75 (John 15:11; the Immanuel "with")
 - `answer:rejected-stone-grafts-back` —[Jacob 4:17 resolved]→ 5:60-75
 - `mystery:who-corrupted-the-vineyard` —[diligence perfect; source left standing]→ 5:47 (cf 2 Ne 15:4)
+
+### from Jacob 6
+- `doctrine:outstretched-hand-is-mercy` —[the laboring hand (5:47) named: mercy to a gainsaying people]→ 6:4 (Isa 65:2; Rom 10:21) — the whole refrain resolves to mercy
+- `doctrine:cleave-as-he-cleaves` —[he is already cleaving; answer it in the light of the day]→ 6:5 (Deut 10:20; Hel 4:25)
+- `doctrine:today-harden-not` —[non-deferrable decision; "why will ye die?"]→ 6:6 (Ps 95:7-8; Heb 3:7-15; Ezek 18:31)
+- `warning:mock-the-plan-of-redemption` —[deny → quench → mock: evil fruit of a nourished vine]→ 6:7-8 (Heb 6:4-6)
+- `doctrine:strait-gate-restated` —[enter + continue in the narrow way]→ 6:11 (2 Ne 31:17-20; 9:41)
+- `image:pleasing-bar-dreadful-bar` —[same bar: pleasing to the righteous, dread to the wicked]→ 6:13 (Moroni 10:34; 2 Ne 18:14)
