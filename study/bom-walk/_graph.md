@@ -442,6 +442,10 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - person: `king-Benjamin` · `the-people` (fallen, begging, remitted) · `the-beggar` (mirror of the giver) · `the-poor-who-cannot-give` (guiltless by intent) · `God` (the Being all depend on)
 - doctrine: `are-we-not-all-beggars` (v19 — charity grounded in the giver's own beggary before God; the beggar is you at God's door) · `retain-a-remission-by-extending-it` (vv12,26 — kept day to day by humility + imparting to the poor; mercy kept by mercy extended; grace a current not a deposit) · `run-not-faster-than-strength` (v27 — wisdom and order, diligent yet paced; **the workspace covenant pacing verse**) · `the-poors-willingness-counts` (vv24-25 — "I would give if I had" → guiltless; disposition weighed not amount) · `belief-that-does` (v10) · `substance-belongs-to-God` (v22)
 
+### from Mosiah 5 (the mighty change / the name written in the heart)
+- person: `king-Benjamin` (asks, names, seals the covenant) · `the-people` (changed, covenanting, begotten, named) · `Christ`/`Lord-God-Omnipotent` (the head, begetter, Master, sealer) · `the-master`+`the-servant` (v13 figure) · `the-stranger` (the unserved master's would-be servant)
+- doctrine: `mighty-change-disposition-reoriented` (v2 — "no more disposition to do evil"; the change is its own witness) · `spiritually-begotten-children-of-Christ` (v7 — born of him; Christ becomes their father) · `take-upon-you-the-name-of-Christ` (v8 — no other name/head) · `name-written-retained-or-blotted-out` (vv11-12 — kept in the heart by covenant; lost only by transgression) · `know-the-master-by-serving-him` (v13 — inverse of "I never knew you") · `steadfast-and-immovable-sealed-his` (v15) · thread: `retain-what-is-given` (binds ch 4+5)
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -1032,3 +1036,12 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `doctrine:the-poors-willingness-counts` —["I would give if I had" → guiltless; disposition weighed not amount]→ 4:24-25 (Mark 12:42-44; 2 Cor 8:12)
 - `doctrine:belief-that-does` —[if ye believe, see that ye DO them]→ 4:10 (James 2:17; Matt 7:24)
 - `doctrine:substance-belongs-to-God` —[what you'd withhold is not yours but God's]→ 4:22 (Mosiah 2:25; Ps 24:1)
+
+### from Mosiah 5
+- `doctrine:mighty-change-disposition-reoriented` —[not just forgiven: "no more disposition to do evil"; the desire itself replaced; the change is its own witness]→ 5:2 (Alma 5:14; Ezek 36:26; Mosiah 3:19)
+- `doctrine:spiritually-begotten-children-of-Christ` —[the covenant makes Christ their father; born of him]→ 5:7 (Mosiah 15:10-13; John 1:12-13; Moses 6:68)
+- `doctrine:take-upon-you-the-name-of-Christ` —[no other name/head; the name as covenant identity]→ 5:8 (Mosiah 1:11; Gal 3:27; D&C 20:77; 3 Ne 27:5-7)
+- `doctrine:name-written-retained-or-blotted-out` —[kept in the heart by covenant living; lost only by transgression]→ 5:11-12 (Rev 3:5; D&C 18:25) — parallels "retain a remission" (4:12,26)
+- `doctrine:know-the-master-by-serving-him` —[can't bear a name whose master you've never served; inverse of "I never knew you"]→ 5:13 (Matt 7:21-23; John 10:14; Mosiah 26:24-27)
+- `doctrine:steadfast-and-immovable-sealed-his` —[abounding in good works → Christ seals you his; election made sure]→ 5:15 (1 Cor 15:58; 2 Pet 1:10; D&C 88:4)
+- `thread:retain-what-is-given` —[the sermon's spine: a remission retained (4) + a name retained (5); grace initiates, discipleship keeps]→ 5:12 ↔ 4:12,26
