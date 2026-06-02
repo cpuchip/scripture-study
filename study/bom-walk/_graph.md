@@ -438,6 +438,10 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - person: `the-angel` · `Lord-Omnipotent`/`Jesus-Christ` (Son + Father + Creator) · `Mary` (named) · `the-natural-man` (enemy → saint → child) · `little-children` (saved)
 - doctrine: `natural-man-yields-becomes-a-child` (v19 — surrender not achievement; saint THROUGH the Atonement; the walk's yield/give-away thread) · `blood-from-every-pore` (Gethsemane ~124 BC, v7) · `Christ-named-Son-and-Father-Mary` (fullest pre-Christian naming, v8 — condescension Christology) · `no-other-name` (v17) · `justice-calibrated-to-knowledge` (ignorant covered, knowing rebel not, v11-12) · `little-children-saved` (v16) · `law-insufficient-without-atonement` (v15)
 
+### from Mosiah 4 (are we not all beggars / retaining a remission)
+- person: `king-Benjamin` · `the-people` (fallen, begging, remitted) · `the-beggar` (mirror of the giver) · `the-poor-who-cannot-give` (guiltless by intent) · `God` (the Being all depend on)
+- doctrine: `are-we-not-all-beggars` (v19 — charity grounded in the giver's own beggary before God; the beggar is you at God's door) · `retain-a-remission-by-extending-it` (vv12,26 — kept day to day by humility + imparting to the poor; mercy kept by mercy extended; grace a current not a deposit) · `run-not-faster-than-strength` (v27 — wisdom and order, diligent yet paced; **the workspace covenant pacing verse**) · `the-poors-willingness-counts` (vv24-25 — "I would give if I had" → guiltless; disposition weighed not amount) · `belief-that-does` (v10) · `substance-belongs-to-God` (v22)
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -1020,3 +1024,11 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `doctrine:justice-calibrated-to-knowledge` —[ignorant sin covered; knowing rebellion not]→ 3:11-12 (2 Ne 9:25-26; Luke 12:47-48)
 - `doctrine:little-children-saved` —[the blood of Christ atoneth for their sins]→ 3:16 (Moroni 8:8-12; D&C 137:10)
 - `doctrine:law-insufficient-without-atonement` —[the law availeth nothing except through his blood]→ 3:15 (Heb 10:1; Mosiah 13:28-32)
+
+### from Mosiah 4
+- `doctrine:are-we-not-all-beggars` —[you just begged God and received free; you depend on him for all → no standing to despise the beggar, who is you at God's door]→ 4:19-22 (Mosiah 2:20-25; 1 Cor 4:7; Matt 25:40)
+- `doctrine:retain-a-remission-by-extending-it` —[kept day to day by humility + imparting to the poor; mercy kept by mercy extended; grace a current not a deposit]→ 4:11-12,26 (Alma 5:26; 2 Ne 31:19)
+- `doctrine:run-not-faster-than-strength` —[wisdom and order; diligent yet paced — placed right after the sweeping charge to give]→ 4:27 (D&C 10:4; Alma 37:35) — **THE workspace covenant pacing verse**
+- `doctrine:the-poors-willingness-counts` —["I would give if I had" → guiltless; disposition weighed not amount]→ 4:24-25 (Mark 12:42-44; 2 Cor 8:12)
+- `doctrine:belief-that-does` —[if ye believe, see that ye DO them]→ 4:10 (James 2:17; Matt 7:24)
+- `doctrine:substance-belongs-to-God` —[what you'd withhold is not yours but God's]→ 4:22 (Mosiah 2:25; Ps 24:1)
