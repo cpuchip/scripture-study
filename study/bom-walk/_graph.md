@@ -671,6 +671,10 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - person: `the-people-of-Ammon` (formerly Anti-Nephi-Lehies; migrate to Jershon; "firm... even unto the end") · `Ammon` (joy exhausts his strength) · `the-king-Anti-Nephi-Lehi` (offers his people as slaves in restitution; refused) · `the-Nephites-voice-of-the-people` (receive former enemies; bear the sword for them)
 - theme: `protect-the-pacifist-without-arming-him` (vv5-12) · `the-armed-bear-the-sword-for-the-unarmed-by-conscience` (vv22-24 — seeds the stripling warriors) · `firm-in-the-faith-even-unto-the-end` (v27) · doctrine: `you-cannot-repay-murder-only-be-received` (vv6-9) · `joy-proportional-to-repentance` (vv17-18) · `resurrection-empties-death-of-terror` (v28) · event: `new-name-the-people-of-Ammon` (v26)
 
+### from Alma 28 (the cost counted — the two mournings)
+- event: `the-tremendous-battle` (vv1-3 — greatest since Lehi; tens of thousands slain)
+- theme: `Mormon-lingers-on-the-cost` (vv4-6 — the cry of widows) · `sorrow-and-joy-held-together` (v14) · `the-call-to-labor-in-the-vineyard` (v14) · doctrine: `the-two-mournings-fear-vs-hope` (vv11-12) · `inequality-is-self-made-not-God-imposed` (v13 — 5:21 thread)
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -1729,3 +1733,10 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `doctrine:resurrection-empties-death-of-terror` —["they never did look upon death with any degree of terror, for their hope and views of Christ and the resurrection; therefore, death was swallowed up to them by the victory of Christ"; why they could lie down and die]→ 27:28 (1 Cor 15:54-57; Mosiah 16:7-8; Alma 24:22)
 - `event:new-name-the-people-of-Ammon` —[named for the missionary who brought them; the identity reconstruction (Anti-Nephi-Lehi → people of Ammon) completed — named, finally, for the love that found them]→ 27:26 (Alma 23:17; Mosiah 1:11-12; 5:7-12)
 - `theme:firm-in-the-faith-even-unto-the-end` —["perfectly honest and upright in all things... firm in the faith of Christ, even unto the end"; the never-fall-away of 23:6 confirmed as settled fact]→ 27:27 (Alma 23:6; Hel 15:8; 3 Ne 6:14)
+
+### from Alma 28
+- `doctrine:the-two-mournings-fear-vs-hope` —[same death: some mourn "because they have reason to fear... a state of endless wo," others "rejoice and exult in the hope... raised to dwell at the right hand of God"; the variable is whether the gospel reached the dead]→ 28:11-12 (Alma 11:41; D&C 42:45; 1 Thes 4:13)
+- `theme:Mormon-lingers-on-the-cost` —["the cry of widows mourning for their husbands... fathers mourning for their sons"; the protection pledge of ch 27 paid in Nephite blood; the record won't rush past grief]→ 28:4-6 (Alma 27:23; Matt 5:4; Gen 50:10)
+- `doctrine:inequality-is-self-made-not-God-imposed` —["how great the inequality of man is because of sin and transgression, and the power of the devil... cunning plans"; eternal outcomes diverge by agency + the snare, not divine favoritism (cf. God esteems all flesh in one)]→ 28:13 (1 Ne 17:35; 2 Ne 9:28; Alma 3:19) — 5:21-study thread: self-authored, not God-imposed
+- `theme:sorrow-and-joy-held-together` —["the great reason of sorrow, and also of rejoicing — sorrow because of death... and joy because of the light of Christ unto life"; both carried, neither cancels]→ 28:14 (Eccl 3:4; John 16:20-22; 2 Cor 6:10)
+- `theme:the-call-to-labor-in-the-vineyard` —["the great call of diligence of men to labor in the vineyards of the Lord"; conversion is the labor of changing which mourning a family will one day do]→ 28:14 (Jacob 5:61-72; D&C 4:4; Alma 26:5)
