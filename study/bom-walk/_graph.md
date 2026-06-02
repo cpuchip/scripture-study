@@ -757,6 +757,10 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - person: `Amalickiah` (master of treachery; flattery→command→betrayal→poison→murder→throne) · `Lehonti` (lured off the mount, poisoned by degrees) · `the-Lamanite-king` (trusts the token of peace, stabbed)
 - theme: `come-down-from-the-mount` (vv7-13 — lured off secure ground) · `poison-by-degrees` (v18) · `treachery-weaponizes-trust` (vv10-35) · `accuse-the-innocent-of-your-own-crime` (vv24-30) · `Amalickiah-as-anti-Moroni` (secrecy/fraud vs transparency/prayer) · doctrine: `apostate-worse-strange-to-relate` (v36)
 
+### from Alma 48 (the portrait of Moroni)
+- person: `Captain-Moroni` (fullest character portrait — greatness of character not capacity) · `Amalickiah` (power by fraud, the foil) · `Helaman-the-preachers` ("no less serviceable")
+- theme: `greatness-is-character-not-capacity` (v7) · `the-general-and-the-preacher-are-equals` (vv18-19) · `the-reluctant-warrior-grieves-the-unprepared-dead` (vv23-24) · `competence-in-service-of-love-not-the-reverse` (vv11-13) · doctrine: `if-all-men-were-like-Moroni-hell-would-be-shaken` (v17) · `the-Nephite-war-faith-defense-never-offense` (vv14-16)
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -1975,3 +1979,11 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `theme:accuse-the-innocent-of-your-own-crime` —[Amalickiah stabs the king, then "pretended to be wroth," blames the king's servants, sends the loyal to pursue the innocent; the murderer becomes the chief mourner and avenger]→ 47:24-30 (Gen 37:31-33; 1 Kgs 21:8-13; Prov 6:16-19)
 - `doctrine:apostate-worse-strange-to-relate` —["instructed in the same knowledge of the Lord, nevertheless, it is strange to relate... they became more wild, wicked and ferocious than the Lamanites"; the rejected light becomes its own fuel; the most dangerous enemy is a Nephite who left]→ 47:36 (Alma 24:30; Heb 10:26; 2 Pet 2:20-21; Matt 12:43-45)
 - `theme:Amalickiah-as-anti-Moroni` —[Amalickiah works by secret embassy, poison, lying servants; Moroni rends his coat in public + prays before he acts; treachery vs transparency, the two faces of leadership in the war record]→ 47:10, 34 (Alma 46:11-13; John 3:20-21; Prov 10:9)
+
+### from Alma 48
+- `theme:greatness-is-character-not-capacity` —["while Amalickiah had... been obtaining power by fraud and deceit, Moroni, on the other hand, had been preparing the minds of the people to be faithful"; same capacity, opposite direction — the will's object, not the talent, separates them]→ 48:7 (Alma 47:4; D&C 121:39-40; Luke 16:10)
+- `doctrine:if-all-men-were-like-Moroni-hell-would-be-shaken` —["if all men had been... like unto Moroni... the very powers of hell would have been shaken forever; yea, the devil would never have power over the hearts of the children of men"; not skill but character — a world of Moronis gives the devil nowhere to land]→ 48:17 (1 Ne 22:26; 3 Ne 6:15; D&C 35:24; Moroni 1:1) — Mormon names his son after this man
+- `doctrine:the-Nephite-war-faith-defense-never-offense` —["never to give an offense... never to raise the sword except it were against an enemy, except it were to preserve their lives"; "his heart did glory... not in the shedding of blood but in doing good, in preserving his people"]→ 48:14-16 (D&C 98:16, 23-33; Alma 43:46-47; 3 Ne 3:21)
+- `theme:the-general-and-the-preacher-are-equals` —["Helaman and his brethren were no less serviceable unto the people than was Moroni"; saving souls by the word and saving lives by the shield are the same order of service]→ 48:18-19 (Alma 28:8; 1 Cor 12:4-7; D&C 4:2)
+- `theme:the-reluctant-warrior-grieves-the-unprepared-dead` —[the Nephites "sorry to be the means of sending so many of their brethren... unprepared to meet their God" — yet "could not suffer" their families to be massacred; fight without ever loving it, grieving the souls you take]→ 48:23-24 (Alma 28:11-12; Ezek 33:11; D&C 42:45; Luke 19:41)
+- `theme:competence-in-service-of-love-not-the-reverse` —[Moroni's strength, understanding, labor all aimed at "the welfare and safety of his people"; the competence serves the love, not the love the competence; a great general who does not love war]→ 48:11-13 (Matt 20:25-28; John 15:13; Alma 43:45)
