@@ -588,6 +588,10 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - person: `Alma-the-younger` (preaching to Gideon; models revelatory honesty) · `the-Gideon-church` (humble, faithful — counterpoint to Zarahemla) · `Christ` (born of Mary; empathic + substitutionary Savior) · `Mary` (the virgin, named)
 - doctrine: `empathic-atonement-suffers-to-know-how-to-succor` (vv11-13 — **completes the Abinadi thread**; the gospel's deepest comfort) · theme: `revelatory-honesty-I-do-not-know` (v8) · doctrine: `born-of-Mary-in-the-land-of-Jerusalem` (v10) · theme: `pure-testimony-adapts-to-the-people` (vv1-6,17-19 — joy for Gideon vs woe for Zarahemla) · doctrine: `God-unchangeable-one-eternal-round` (v20) · `filthy-remains-filthy-unclean-cannot-enter` (v21) · theme: `faith-hope-charity-and-the-disciples-attributes` (vv23-24)
 
+### from Alma 8 (rejected at Ammonihah / sent back / meets Amulek)
+- person: `Alma-the-younger` (rejected, sorrowing, sent back, obeys speedily) · `the-people-of-Ammonihah` (Nehor stronghold; reject both his offices; conspire against liberty) · `the-angel` (same one from Mosiah 27 — conversion + recommission) · `Amulek` (the prepared host; fed Alma; companion) · place: `Melek` · `Ammonihah`
+- theme: `go-back-the-hardest-obedience` (vv13-18 — return to the rejecting city) · `same-angel-conversion-to-recommission` (v15) · `the-prepared-host-divine-appointment-at-a-meal` (vv19-22 — Amulek's own vision) · `hardened-heart-dismisses-every-authority` (vv11-12,17 — religious + civil) · `power-withheld-for-Gods-timing` (v31 — sets up ch 14) · practice: `wrestling-with-God-in-mighty-prayer` (v10)
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -1466,3 +1470,11 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `doctrine:God-unchangeable-one-eternal-round` —[no crooked paths, no shadow of turning, "one eternal round"; the ground of trust AND the reason filthiness cannot enter; the constancy cuts both ways]→ 7:20-21 (James 1:17; D&C 3:2; Morm 9:9; Mal 3:6)
 - `doctrine:filthy-remains-filthy-unclean-cannot-enter` —[no unclean thing received into the kingdom; "he who is filthy shall remain in his filthiness"; mercy lifts out of the filth but doesn't redefine the kingdom to admit it]→ 7:21 (1 Ne 15:33; 2 Ne 9:16; Rev 22:11; Mosiah 2:37)
 - `theme:faith-hope-charity-and-the-disciples-attributes` —[the new-birth life: humble, gentle, patient, temperate, thankful; "faith, hope, and charity, and then ye will always abound in good works"; fruits, not entry-fees]→ 7:23-24 (1 Cor 13:13; Moroni 7:33-48; Gal 5:22)
+
+### from Alma 8
+- `theme:go-back-the-hardest-obedience` —[Alma cast out, sorrowing, "about to set my back forever"; the angel commands him to RETURN to the city that humiliated him, and he "returned speedily"; obedience that goes back on God's word alone]→ 8:13-18 (Jonah 3:1-3; Jer 1:17; Matt 10:14 reversed)
+- `theme:same-angel-conversion-to-recommission` —[the angel of Mosiah 27 ("I am he that delivered it unto you") who converted Alma now strengthens + re-sends him; one life, one noticed faithfulness, bracketed by the same voice]→ 8:15 (Mosiah 27:11-16; Alma 36:6-11)
+- `theme:the-prepared-host-divine-appointment-at-a-meal` —[Amulek already had his own vision; the great mission begins with a hungry stranger asking for food; God's largest works turn on small obediences]→ 8:19-22 (Alma 10:7-10; 1 Kgs 17:8-16; Acts 10)
+- `theme:hardened-heart-dismisses-every-authority` —[Ammonihah rejects Alma on religious AND civil grounds at once; rejection of the prophet = conspiracy against liberty]→ 8:11-12,17 (Alma 9:6; Mosiah 11:27; Alma 10:27)
+- `theme:power-withheld-for-Gods-timing` —[Alma + Amulek could not be imprisoned or slain, yet did NOT use the power, letting themselves be bound "that the Lord might show forth his power in them"]→ 8:31 (Alma 14:10-13,25-29; Matt 26:53; John 18:36) — sets up the prison + watched martyrdom (ch 14)
+- `practice:wrestling-with-God-in-mighty-prayer` —[Alma's response to a hardened city is not argument but intercession]→ 8:10 (Enos 1:2-12; Alma 17:5; 3 Ne 27:1)
