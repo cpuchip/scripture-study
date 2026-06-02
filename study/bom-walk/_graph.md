@@ -631,6 +631,10 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - person: `Ammon` (son of Mosiah; refuses Lamoni's daughter, chooses to be a servant; the Sebus deliverance) · `Lamoni` (king of Ishmael, descendant of Ishmael) · `the-sons-of-Mosiah` (refused the kingdom; 14-yr mission; scriptures + fasting → spirit of prophecy)
 - theme: `the-tradition-is-the-target-not-the-people` (v9 — grievance-cure thesis) · `patience-and-example-as-conversion-method` (v11) · `preparation-precedes-power` (vv2-3) · event: `Ammon-chooses-to-be-a-servant` (v25 — power-inversion) · `waters-of-Sebus` (vv26-39 — well-deliverance type-scene) · doctrine: `miracle-in-service-of-relationship-in-service-of-belief` (v29)
 
+### from Alma 18 (Believest thou that there is a God? — Lamoni converted)
+- person: `Ammon` (perceives the king's thoughts; teaches creation→redemption; faithful servant of v10) · `Lamoni` (believes; cries for mercy; falls as if dead)
+- theme: `faithful-in-the-ordinary-errand` (v10 — the Ammon-anchor verse) · `wise-yet-harmless-holy-guile` (vv22-23) · `correcting-the-grievance-history-at-the-source` (vv36-38) · doctrine: `start-where-the-hearer-is` (vv24-28 — "Great Spirit"→"This is God") · `power-according-to-faith-and-desire` (vv34-35) · event: `Lamoni-falls-as-if-dead` (vv40-43)
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -1602,3 +1606,11 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `event:Ammon-chooses-to-be-a-servant` —[offered the king's daughter, the Nephite prince answers "Nay, but I will be thy servant"; inverts the power-relation the grievance was built on]→ 17:24-25 (Alma 21:19; Matt 20:26-28; Mark 10:43-45)
 - `doctrine:miracle-in-service-of-relationship-in-service-of-belief` —[Ammon's heart "swollen with joy" at the scattered flocks: the rescue is to "win the hearts... that I may lead them to believe in my words"; the defense is a sermon's prologue]→ 17:29 (2 Kgs 5:8; Alma 18)
 - `event:waters-of-Sebus` —[the well-deliverance type-scene; the stranger proves himself at the water and is brought into the household; restraint inside power — "slew none save... their leader," smote off arms]→ 17:26-39 (Ex 2:17; Mosiah 28:7; Alma 19:22-23)
+
+### from Alma 18
+- `theme:faithful-in-the-ordinary-errand` —[the king is cracked open not by the Sebus miracle but by Ammon tending the horses: "he doth remember all my commandments to execute them"; the ordinary task done fully earns the hearing]→ 18:10 (Alma 17:25; Luke 16:10; Matt 25:21) — anchor of the finish-what-you're-handed principle
+- `doctrine:start-where-the-hearer-is` —["Believest thou that there is a God?" — "I do not know what that meaneth" → "Believest thou that there is a Great Spirit?" — "Yea" → "This is God"; the true God named as the thing the hearer already dimly held]→ 18:24-28 (Acts 17:23; 1 Cor 9:22)
+- `theme:wise-yet-harmless-holy-guile` —["Ammon being wise, yet harmless"; secures "I will believe all thy words" before risking the content — "thus he was caught with guile"]→ 18:22-23 (Matt 10:16; Gen 41:39)
+- `theme:correcting-the-grievance-history-at-the-source` —[Ammon retells the Lamanites' own origin truthfully, "concerning the rebellions of Laman and Lemuel"; the false tradition (Mosiah 10) dissolved by laying the true record open, not by counter-accusation]→ 18:36-38 (Mosiah 10:12-17; 1 Ne 9:2; 2 Ne 1:2)
+- `doctrine:power-according-to-faith-and-desire` —["a portion of that Spirit dwelleth in me, which giveth me knowledge, and also power according to my faith and desires which are in God"; how a man, not a Great Spirit, wields God's power]→ 18:34-35 (Moroni 7:33; Ether 3:15; Mosiah 7:27)
+- `event:Lamoni-falls-as-if-dead` —[believes → "O Lord, have mercy... upon me, and my people" → falls as if dead two days; sets the pattern his father repeats]→ 18:40-43 (Alma 19:1; 22:18; Acts 9:4)
