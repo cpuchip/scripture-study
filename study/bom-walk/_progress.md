@@ -1,7 +1,7 @@
 # Book of Mormon Walk — Progress
 
 **STATUS:** walking. Semantic search confirmed live (engine.ibeco.me).
-**NEXT CHAPTER:** Alma 9
+**NEXT CHAPTER:** Alma 10
 **DEPTH (ratified 2026-06-01):** mini-study per chapter (study-grade engagement, note-grade finish). Isaiah/long-OT quotations get full exegesis + Nephite framing + the four likening questions (see `_workflow.md`).
 **Started:** 2026-06-01
 **Last updated:** 2026-06-01
@@ -18,7 +18,7 @@
 | Omni | 1 | **1 ✓ DONE** | 5 writers; record dwindles then flares; Zarahemla; small plates END |
 | Words of Mormon | 1 | **1 ✓ DONE** | Mormon's bridge; "for a wise purpose" closes the 1 Ne 9 loop |
 | Mosiah | 29 | **29 ✓ DONE** | kings abolished → reign of judges; Abinadi 13-16 + grievance-tradition spin-offs folded in; whole Noah arc = anti-monarchy case study |
-| Alma | 63 | **8** | 1-8 done; Ammonihah mission begun (Alma+Amulek); ch 9-14 = the discourse + martyrdom (12-13 spin-off candidate). Spin-offs ahead: 12-13, 17-26, 32-34, 36, 39-42 |
+| Alma | 63 | **9** | 1-9 done; Ammonihah discourse underway (9-14); ch 10 = Amulek's witness; 12-13 spin-off candidate. Spin-offs ahead: 12-13, 17-26, 32-34, 36, 39-42 |
 | Helaman | 16 | — | |
 | 3 Nephi | 30 | — | Christ's ministry to the Nephites |
 | 4 Nephi | 1 | — | |
@@ -26,7 +26,7 @@
 | Ether | 15 | — | Jaredite record |
 | Moroni | 10 | — | |
 
-**Total: 239 chapters. Done: 103.** · Small plates + bridge COMPLETE (66 ch); **MOSIAH COMPLETE (29/29)**; **Alma underway (8/63)**. · Spin-offs: **9 done** (5 small-plates/2ne/jacob + mos10 grievance + mos13-16 abinadi + alma5 searching-questions). · Isaiah-variant meta-finding: 2 Ne judgment-blocks tilt to mercy; Mosiah 14 (Isa 53) variants broaden the atonement — both God-ward. · Isaiah block (2 Ne 12-24) COMPLETE. · Spin-off studies: **8 done** (`1ne4`, `1ne11`, `2ne1_prosperity-covenant`, `2ne2_fall-agency-opposition`, `2ne9_atonement-monster-and-gate`, `jacob5_allegory-of-the-olive-tree`, `mos10_lamanite-grievance-tradition`, `mos13-16_abinadi-christology`). · **OPEN for Michael:** 2 Ne 5:21 complexion/curse language — flagged, not autonomously resolved. Walk surfaced datapoints for the with-Michael study: **2 Ne 26:33** "all are alike unto God, black and white"; **2 Ne 30:6** the documented white→pure edition change + "scales of darkness" = sight not skin; **Jacob 3:5-9** the cursed Lamanites are "more righteous," reviling-by-skin forbidden, filthiness inherited "because of their fathers"; **+ ALMA 3** (big one): the Amlicites (Nephites by descent) **marked *themselves*** (3:4,13) → mark tracks chosen allegiance/belief, not blood (3:11); chapter's own thesis **"every man that is cursed bringeth upon himself his own condemnation"** (3:19 — curse self-authored); mark's purpose = quarantine the destroying *tradition* not the blood (3:8); curse conditional/removable on repentance (3:14). NOT reconciled: literal "skins were dark" (3:6) vs the belief-allegiance framing — that stays for Michael.
+**Total: 239 chapters. Done: 104.** · Small plates + bridge COMPLETE (66 ch); **MOSIAH COMPLETE (29/29)**; **Alma underway (9/63)**. · Spin-offs: **9 done** (5 small-plates/2ne/jacob + mos10 grievance + mos13-16 abinadi + alma5 searching-questions). · Isaiah-variant meta-finding: 2 Ne judgment-blocks tilt to mercy; Mosiah 14 (Isa 53) variants broaden the atonement — both God-ward. · Isaiah block (2 Ne 12-24) COMPLETE. · Spin-off studies: **8 done** (`1ne4`, `1ne11`, `2ne1_prosperity-covenant`, `2ne2_fall-agency-opposition`, `2ne9_atonement-monster-and-gate`, `jacob5_allegory-of-the-olive-tree`, `mos10_lamanite-grievance-tradition`, `mos13-16_abinadi-christology`). · **OPEN for Michael:** 2 Ne 5:21 complexion/curse language — flagged, not autonomously resolved. Walk surfaced datapoints for the with-Michael study: **2 Ne 26:33** "all are alike unto God, black and white"; **2 Ne 30:6** the documented white→pure edition change + "scales of darkness" = sight not skin; **Jacob 3:5-9** the cursed Lamanites are "more righteous," reviling-by-skin forbidden, filthiness inherited "because of their fathers"; **+ ALMA 3** (big one): the Amlicites (Nephites by descent) **marked *themselves*** (3:4,13) → mark tracks chosen allegiance/belief, not blood (3:11); chapter's own thesis **"every man that is cursed bringeth upon himself his own condemnation"** (3:19 — curse self-authored); mark's purpose = quarantine the destroying *tradition* not the blood (3:8); curse conditional/removable on repentance (3:14). NOT reconciled: literal "skins were dark" (3:6) vs the belief-allegiance framing — that stays for Michael.
 
 ## Book folder names (created lazily as reached)
 `1-nephi · 2-nephi · jacob · enos · jarom · omni · words-of-mormon · mosiah · alma · helaman · 3-nephi · 4-nephi · mormon · ether · moroni`
