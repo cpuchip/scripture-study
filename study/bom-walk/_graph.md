@@ -608,6 +608,10 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - person: `Alma-the-younger` (expounds beyond Amulek) · `Zeezrom` (trembling → diligent inquiry; softening spiral) · `Antionah` (chief ruler, asks of the flaming sword) · `Adam` (the Fall) · `the-devil` (the chains, captivity)
 - doctrine: `chains-of-hell-self-tightening-spiral` (vv9-11 — portion of word by heed; harden→know nothing→captive; no neutral) · `flaming-sword-was-mercy-death-as-probation` (vv21-27) · `probationary-state-time-to-prepare-to-meet-God` (vv24,27) · `harden-not-your-hearts-enter-into-my-rest` (vv33-37 — the hinge → ch 13) · `plan-of-redemption-laid-before-the-Fall` (vv25,30,33) · event: `Zeezroms-softening-in-real-time` (vv1-8) · doctrine: `judged-by-thoughts-words-and-works` (v14)
 
+### from Alma 13 (the holy order / foreordination / the rest)  [spin-off RUNNING: alma12-13]
+- person: `Alma-the-younger` (pleading preacher) · `the-high-priests-of-the-holy-order` (called on foreknown faith; sanctified) · `Melchizedek` (prince of peace; converted wicked Salem) · `Abraham` (paid tithes) · `the-angels` (declaring glad tidings)
+- doctrine: `foreordination-on-foreknown-faith-not-election` (vv3-5 — same starting standing; agency-grounded) · `sanctified-abhor-sin-new-heart-completed` (vv11-12) · theme: `Melchizedek-converted-a-wicked-city-the-model` (vv17-19 — Ammonihah will refuse) · doctrine: `enter-into-the-rest-the-goal-of-the-order` (vv6,12,13,16,29) · structure: `12-13-discourse-bookended-chains-to-rest` (13:30 ↔ 12:11) · doctrine: `faith-hope-charity-the-path-into-the-rest` (v29) · theme: `prophet-pleads-with-anxiety-even-unto-pain` (vv25,27)
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -1530,3 +1534,12 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `doctrine:plan-of-redemption-laid-before-the-Fall` —[the redemption "laid from the foundation of the world," prepared before the problem; a designed economy, not an improvised rescue]→ 12:25,30,33 (Mosiah 4:6; 15:19; Alma 42:8; Moses 6:62; 1 Pet 1:20)
 - `event:Zeezroms-softening-in-real-time` —[the corrupt lawyer trembling "under a consciousness of his guilt" turns the right way — "began to inquire diligently... that he might know more"; the reverse spiral enacted in the man hearing it]→ 12:1-8 (Alma 11:46; 15:3-12)
 - `doctrine:judged-by-thoughts-words-and-works` —[the whole person condemns or clears; the guilty wish the mountains would hide them from God's presence]→ 12:14 (Matt 12:36; Mosiah 4:30; Rev 6:16; Hosea 10:8)
+
+### from Alma 13
+- `doctrine:foreordination-on-foreknown-faith-not-election` —[called "from the foundation of the world according to the foreknowledge of God, on account of their exceeding faith... in the first place left to choose"; "same standing with their brethren"; fore-ordination grounded in agency, not predestination]→ 13:3-5 (Alma 12:30; Abr 3:22-23; D&C 138:55; Jer 1:5; Eph 1:4) — **spin-off: alma12-13**
+- `doctrine:sanctified-abhor-sin-new-heart-completed` —[the fully sanctified "could not look upon sin save it were with abhorrence"; not just forgiven but the appetites remade; the mighty-change thread's terminus]→ 13:11-12 (Mosiah 5:2; Alma 5:21; 19:33; Moses 6:59) — clean desire, not just a clean record
+- `theme:Melchizedek-converted-a-wicked-city-the-model` —[Salem "had waxed strong in iniquity... all gone astray," yet Melchizedek's mighty faith brought them to repent + peace; the greatest high priest succeeding at Alma's task; the model Ammonihah will refuse]→ 13:17-19 (Gen 14:18-20; Heb 7:1-4; D&C 84:14; Alma 16) — a wicked city CAN repent
+- `doctrine:enter-into-the-rest-the-goal-of-the-order` —[priesthood, ordinances ("type of his order"), sanctification, faith-hope-charity — all FOR entering "the rest of the Lord"; the discourse's destination]→ 13:6,12,13,16,29 (Alma 12:34-37; Heb 3:7-4:11; D&C 84:24)
+- `structure:12-13-discourse-bookended-chains-to-rest` —[ch 12 opens with the chains of hell (12:11), ch 13 closes pleading against them (13:30); the whole framed between harden-into-the-chains or soften-into-the-rest; the structure is the message]→ 13:30 (Alma 12:11,16; 2 Ne 28:19)
+- `doctrine:faith-hope-charity-the-path-into-the-rest` —[faith on the Lord + hope of eternal life + the love of God in the heart → lifted up + enter the rest]→ 13:29 (Alma 7:24; 1 Cor 13:13; Moroni 7:33-48)
+- `theme:prophet-pleads-with-anxiety-even-unto-pain` —[Alma's raw close: "with great anxiety even unto pain... procrastinate not"; "would to God it might be in my day... let it be sooner or later, in it I will rejoice" — bold hope, submitted timing]→ 13:25,27 (Mosiah 28:3; 25:11; Alma 7:8)
