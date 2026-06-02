@@ -620,6 +620,10 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - person: `Zeezrom` (guilt-fevered → healed by faith → baptized → preacher; the complete conversion) · `Alma-the-younger` (heals Zeezrom; shelters Amulek) · `Amulek` (forsook all — wealth, friends, father, kindred) · `the-cast-out-believers` (at Sidom) · `the-people-of-Ammonihah` (hardened; ascribe God's power to the devil)
 - doctrine: `guilt-as-a-burning-fever-pains-of-hell-bodily` (vv3-5) · `healed-by-faith-body-and-soul-together` (vv6-11) · event: `complete-conversion-bribing-lawyer-to-preacher` (vv11-12) · theme: `hardened-collective-refuses-what-the-individual-receives` (v15 — anti-Salem) · `cost-of-discipleship-forsaking-all` (v16 — Amulek) · `bear-the-burden-of-the-brother-who-paid-the-cost` (v18)
 
+### from Alma 16 (Desolation of Nehors — the city destroyed in one day)
+- person: `Zoram-chief-captain` (consults Alma, recovers all captives; sons Lehi + Aha — NOT the 1 Ne Zoram) · `Alma-the-younger` (inquires of the Lord; gives the battle geography) · `the-Lamanite-armies` (strike Ammonihah before defense can muster)
+- event: `Ammonihah-destroyed-in-one-day` (vv9-11 — fulfilling the scoff of 9:4) · place: `Desolation-of-Nehors` (v11 — land named for the *profession* that killed it) · theme: `seek-the-prophet-vs-harden-against-him` (vv5-9, the diptych) · doctrine: `Spirit-poured-out-to-prepare-hearts` (vv16-17 — inverse of the chains of hell) · prophecy: `Christ-will-appear-after-his-resurrection` (v20)
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -1576,3 +1580,10 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `theme:hardened-collective-refuses-what-the-individual-receives` —[Zeezrom turns from the depths; Ammonihah "ascribing all the power... to the devil" (Matt 12:24, the Beelzebub move); the anti-Salem]→ 15:15 (Matt 12:24-32; Alma 13:18; 16:9-11) — the difference is the hardening (12:10-11)
 - `theme:cost-of-discipleship-forsaking-all` —[Amulek "forsaken all his gold, silver... rejected by once-friends and by his father and his kindred"; the reluctant convert paid everything once he stopped refusing]→ 15:16 (Luke 14:33; 18:28-30; Matt 19:29; Alma 10:4)
 - `theme:bear-the-burden-of-the-brother-who-paid-the-cost` —[Alma takes the bereft Amulek "to his own house... strengthened him in the Lord"; the baptismal covenant (Mosiah 18:8) lived between the missionaries]→ 15:18 (Mosiah 18:8-9; Gal 6:2; 2 Tim 1:16)
+
+### from Alma 16
+- `event:Ammonihah-destroyed-in-one-day` —[the scoff of 9:4 fulfilled in its own unit; the city "which they said God could not destroy" left desolate in one day; "every living soul" reckons 14:11]→ 16:9-11 (Alma 9:4; 14:8-11; Jer 19:7)
+- `place:Desolation-of-Nehors` —[the land renamed for the *profession* that killed it; Mormon tracks Nehorism as the through-line of Nephite apostasy — a city died of a doctrine]→ 16:11 (Alma 1:15; 2:1; 24:28)
+- `theme:seek-the-prophet-vs-harden-against-him` —[Zoram consults Alma and recovers every captive ("not one soul... lost"); Ammonihah hardened against the same prophet and perished]→ 16:5-9 (Alma 9:1-6; 2 Kgs 6:8-12)
+- `doctrine:Spirit-poured-out-to-prepare-hearts` —[the inverse of the chains of hell (12:9-11): God softens the soil *before* the word, that hearts "might not be hardened... but receive the word with joy, and as a branch be grafted into the true vine"]→ 16:16-17 (Acts 16:14; Jacob 5:24; Alma 12:9-11; Mosiah 18:27)
+- `prophecy:Christ-will-appear-after-his-resurrection` —[the 3 Nephi visit preached as settled hope in the peace years]→ 16:20 (Alma 7:8; 2 Ne 26:9; 3 Ne 11:8)
