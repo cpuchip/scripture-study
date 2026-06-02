@@ -797,6 +797,10 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - person: `Helaman` (counts the wounded) · `the-two-thousand-and-sixty-stripling-warriors` (exact obedience; all wounded, none slain) · `Gid` (prisoner-guard; reports the rebellion)
 - doctrine: `obedience-with-exactness-as-the-form-of-faith` (v21) · `faith-preserves-through-the-wounds-not-from-them` (vv25-26) · `preservation-is-a-particular-sign-not-a-universal-rule` (vv26, 36) · theme: `minds-firm-trust-continually` (v27) · `the-honest-horror-of-even-a-righteous-war` (vv14, 32-33 — surrendered prisoners slain in rebellion)
 
+### from Alma 58 (siege of Manti — peace to the soul; refuse to murmur)
+- person: `Helaman` (receives peace; refuses to murmur when abandoned) · `Gid-Teomner` (the ambush that takes Manti) · `the-stripling-warriors` (stand fast; none slain)
+- doctrine: `God-speaks-peace-to-the-soul-before-the-deliverance` (vv10-11) · `peace-and-faith-are-the-strengthening-not-a-consolation-prize` (vv11-12) · theme: `refuse-to-murmur-when-your-own-side-fails-you` (vv34-37) · `Helaman-vs-Moroni-two-responses-to-neglect` (vv35-37 vs ch 60) · `wisdom-adapts-against-a-learning-enemy` (vv1, 13-28) · `preservation-was-the-sign-daily-faithfulness-the-substance` (vv39-40)
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -2087,3 +2091,11 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `doctrine:preservation-is-a-particular-sign-not-a-universal-rule` —[spared "while there was a thousand of our brethren who were slain"; the thousand were no less faithful — "entered into the rest of their God"; the unscathed 2000 are a sign, not a promise to all]→ 57:26, 36 (Alma 28:11-12; Heb 11:32-40; D&C 42:46)
 - `theme:minds-firm-trust-continually` —["they are young, and their minds are firm, and they do put their trust in God continually"; a permanent orientation produced by the mothers' teaching, not a one-time act]→ 57:27 (Jacob 3:2; Alma 58:40; Prov 3:5-6)
 - `theme:the-honest-horror-of-even-a-righteous-war` —["we did slay upwards of two thousand of them after they had surrendered"; the prisoners "run upon our swords" in rebellion; surrendered prisoners slain — forced by their armed revolt + the army's lack of capacity, reported plainly without applause]→ 57:14, 32-33 (Alma 51:19; 2 Sam 11:14-17; Eccl 9:11)
+
+### from Alma 58
+- `doctrine:God-speaks-peace-to-the-soul-before-the-deliverance` —[the abandoned, starving army prays, and "the Lord... did speak peace to our souls, and did grant unto us great faith, and did cause us that we should hope for our deliverance in him"; the inner gifts come BEFORE the external rescue — and they ARE the answer]→ 58:10-11 (D&C 6:22-23; Philip 4:6-7; John 14:27; Ex 14:13-14)
+- `doctrine:peace-and-faith-are-the-strengthening-not-a-consolation-prize` —["we did take courage with our small force... fixed with a determination to conquer"; God answered the prayer for deliverance by first delivering them from despair, so they could go win it]→ 58:11-12 (Ps 27:1; Isa 41:10; Alma 57:26)
+- `theme:refuse-to-murmur-when-your-own-side-fails-you` —[abandoned by the government with no explanation, Helaman considers the charitable cause first ("if so, we do not desire to murmur") and lands on "it mattereth not—we trust God"; assume the best, refuse the murmur, anchor in God not the institution]→ 58:34-37 (Num 14:27-29; Philip 2:14; 1 Cor 13:7)
+- `theme:Helaman-vs-Moroni-two-responses-to-neglect` —[same neglect (denied support), opposite responses: Helaman refuses to murmur + trusts God (58:35-37); Moroni writes a furious accusatory letter (ch 60); Mormon places them side by side, and ch 61 vindicates the assume-the-best instinct]→ 58:35-37 (Alma 60:6-11; 61:1-9; Matt 7:1-2)
+- `theme:wisdom-adapts-against-a-learning-enemy` —["they remembered that which we had hitherto done; therefore we could not decoy them"; the old trick won't work twice, so Helaman invents a new stratagem — and takes Manti "without the shedding of blood"]→ 58:1, 13-28 (Josh 8:13; Alma 52:21; Eccl 1:9)
+- `theme:preservation-was-the-sign-daily-faithfulness-the-substance` —["not one soul has been slain. But... they stand fast in that liberty wherewith God has made them free; and they are strict to remember the Lord their God from day to day"; the miracle was the sign, daily faithfulness the substance]→ 58:39-40 (Alma 57:26-27; Gal 5:1; 1 Cor 16:13)
