@@ -651,6 +651,12 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - person: `Lamonis-father-the-over-king` (prepared by Ammon's love; converted; decrees religious freedom kingdom-wide) · `Aaron` (reproducible conversion template; raises the king; converts the household)
 - doctrine: `give-away-not-give-up-and-not-then` (v18 — Michael's study verse) · `atonement-creed-could-not-merit-of-himself` (v14) · theme: `the-conversion-method-is-reproducible` (vv7-23 — Aaron = Ammon's play) · `the-seed-of-love-works-in-the-dark` (v3) · `rich-young-ruler-rewritten` (v15) · event: `over-king-and-whole-household-converted` (vv22-27) · reference: `land-division-narrow-neck` (vv27-34 — Mormon's geography)
 
+### from Alma 23 (Anti-Nephi-Lehies — never fall away, curse lifted)
+- person: `the-converted-over-king` (proclaims protection; goal "all brethren") · `the-Anti-Nephi-Lehies` (new name; never fall away) · `the-Amalekites-Amulonites` (converted "save only one"; apostate-hard)
+- doctrine: `conversion-that-lays-down-the-weapon-never-falls-away` (vv6-7) · `the-curse-lifted-as-enmity-and-idleness-reversed` (v18 — 5:21 datapoint) · theme: `the-grievance-dissolved-into-all-brethren` (v3) · `apostates-dont-convert-natives-do` (v14) · event: `new-name-Anti-Nephi-Lehies` (vv16-17)
+
+## Edges
+
 ### from 1 Nephi 1
 - `type:pillar-of-fire` —[cross-ref/type]→ Ex 13:21 (Israel's deliverance)
 - `event:lehi-call-vision` —[type-scene]→ Isa 6 · Ezek 2–3 · Rev 10 · Moses 1 · JS–H 1
@@ -1663,3 +1669,10 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `doctrine:atonement-creed-could-not-merit-of-himself` —["since man had fallen he could not merit anything of himself; but the sufferings and death of Christ atone... the sting of death should be swallowed up in the hopes of glory"; grace + resurrection in two breaths]→ 22:14 (Eph 2:8-9; 1 Cor 15:55; 2 Ne 9:8-9; Alma 34:9)
 - `event:over-king-and-whole-household-converted` —[raised by Aaron ("Stand"), the king ministers, "his whole household were converted," then decrees religious freedom kingdom-wide]→ 22:22-27 (Alma 19:29-30; 21:21-22; 23:1-4)
 - `reference:land-division-narrow-neck` —[Mormon orients the reader: Nephite/Lamanite division, the narrow strip + "small neck of land," Bountiful/Desolation; Desolation = the Jaredite death-land]→ 22:27-34 (Mosiah 8:7-12; 28:17-19; Ether 6-7; Alma 50:34)
+
+### from Alma 23
+- `doctrine:conversion-that-lays-down-the-weapon-never-falls-away` —["as many... as were converted unto the Lord, never did fall away" — bound directly to "they did lay down the weapons of their rebellion"; belief that buries the sword can't reverse, belief that keeps it stays reversible]→ 23:6-7 (Alma 24:17-19; 27:27; Luke 9:62)
+- `theme:the-grievance-dissolved-into-all-brethren` —[the king who recited the grievance now legislates "that they might be convinced that they were all brethren" — the exact negation of "sons of a liar"]→ 23:3 (Alma 20:10-13; Mosiah 10:12-17; 28:2)
+- `theme:apostates-dont-convert-natives-do` —["the Amalekites were not converted, save only one; neither were any of the Amulonites," while thousands of born-Lamanites convert and never fall away; the apostate-Nehorite harder than the native]→ 23:14 (Alma 21:3; Mosiah 23:31-39; 24:30)
+- `event:new-name-Anti-Nephi-Lehies` —[the converts take a name "that they might be distinguished," "no more called Lamanites"; renouncing the grievance-identity Laman's name carried, aligning toward Nephi and Lehi the faithful founders]→ 23:16-17 (Jacob 1:13; Alma 24:1; Mosiah 5:7-8)
+- `doctrine:the-curse-lifted-as-enmity-and-idleness-reversed` —["industrious... friendly with the Nephites... the curse of God did no more follow them"; three markers all behavioral/relational, not physical; the chapter's own footnote ties it to 2 Ne 30:6 (curse taken away → "pure")]→ 23:18 (2 Ne 5:24; 30:6; 1 Ne 2:23; 3 Ne 2:15) — 5:21-study datapoint: curse = enmity/idleness, removed on conversion
