@@ -276,6 +276,14 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - doctrine: `Holy-One-in-the-midst` (block ends at presence, v6 — Immanuel home)
 - meta: near-identical to KJV (v2 verb form only) — confirms glory-chapters-faithful pattern
 
+### from 2 Nephi 23 (Isaiah 13) — richest variant cluster in the block
+- isaiah: `13` (burden of Babylon = type of the world; Day of the Lord)
+- type: `babylon-is-the-world` (D&C 133:14; Rev 17-18)
+- prophecy: `day-of-the-Lord-cosmic-signs` (sun/moon/stars darkened, v10 — Matt 24:29)
+- doctrine: `worth-of-souls` (a man more precious than fine gold, v12)
+- variant: `mercy-inserted` (v3 "anger NOT upon them that rejoice in my highness" — VERIFIED) · `target-is-pride` (v15 "proud" for KJV "found" — VERIFIED) · `mercy-coda` (v22 BoM adds "merciful unto my people" — VERIFIED) · v8 omission
+- META-FINDING: `judgment-variants-tilt-to-mercy` (the cluster all pulls one way — BoM's reworking of Isaiah's warnings is theological: more merciful to the faithful, more precisely aimed at pride)
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -645,3 +653,12 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `echo:song-of-Moses` —[Jehovah my strength and song = Ex 15:2]→ 22:2 (second-Exodus sings the first's song; cf 21:16)
 - `image:wells-of-salvation` —[joy as repeated drawing; well does not run dry]→ 22:3 (John 4:14; 2 Ne 9:50)
 - `doctrine:Holy-One-in-the-midst` —[temple-on-the-mountain → God-among-the-people]→ 22:6 (17:14 Immanuel; Rev 21:3)
+
+### from 2 Nephi 23 (Isaiah 13)
+- `type:babylon-is-the-world` —[historic Babylon → the whole wicked world's fall]→ 23:1,19 (D&C 133:14; Rev 17-18)
+- `prophecy:day-of-the-Lord-cosmic-signs` —[sun/moon/stars darkened]→ 23:10 (Matt 24:29; Joel 2:10)
+- `doctrine:worth-of-souls` —[a man more precious than fine gold]→ 23:12 (D&C 18:10)
+- `variant:mercy-inserted` —[BoM v3 "anger NOT upon them that rejoice in my highness", verified]→ exemption in the muster
+- `variant:target-is-pride` —[BoM v15 "every one that is PROUD" for KJV "found", verified]→ judgment aimed, not indiscriminate
+- `variant:mercy-coda` —[BoM v22 adds "merciful unto my people", verified]→ judgment chapter ends on mercy
+- `META:judgment-variants-tilt-to-mercy` —[the cluster all pulls one way: insert mercy + sharpen to pride]→ BoM's reworking is theological, not random
