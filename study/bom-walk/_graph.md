@@ -596,6 +596,10 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - person: `Alma-the-younger` (bold warning witness) · `the-people-of-Ammonihah` (hardened; "who is God?") · `the-Lamanites` (less culpable by tradition; promised converts; instrument of judgment) · `Amulek` (the second witness, about to stand)
 - doctrine: `light-sinned-against-is-the-measure-of-guilt` (vv15-24 — favored = more accountable; to whom much given) · `Lamanites-partial-exculpation-by-tradition` (v16 — **proof-text for mos10 spin-off**) · prophecy: `Lamanite-conversion-the-grievance-cure-decreed` (v17 — ground of the sons of Mosiah's mission) · theme: `who-is-God-Pharaoh-defiance-and-the-two-witnesses` (vv2,6 — Deut 17:6 → Amulek) · `dramatic-irony-destroyed-in-one-day` (v4 → ch 16) · doctrine: `prosperity-covenant-applied-two-edged` (vv13-18) · theme: `love-under-the-woe` (v30)
 
+### from Alma 10 (Amulek the second witness / the city's shield)
+- person: `Amulek` (reluctant convert; "I knew, yet I would not know"; second witness; of Manasseh's line) · `the-lawyers-of-Ammonihah` (cunning, gain-seeking) · `Zeezrom` (foremost accuser → ch 11) · `the-righteous-remnant` (prayers shield the city)
+- theme: `I-knew-yet-I-would-not-know` (vv4-10 — willful deafness of the comfortable) · `second-witness-raised-from-within` (vv8-12 — Deut 17:6) · doctrine: `prayers-of-the-righteous-shield-the-wicked-city` (vv22-23 — Sodom; cast them out → judgment falls, ch14→16) · `in-favor-of-your-law-to-your-condemnation` (v26) · theme: `corrupt-institutions-the-foundation-of-destruction` (vv27,32 — Nehor's priestcraft in legal form) · prophecy: `Mosiahs-warning-fulfilled-voice-chooses-iniquity` (v19) · `Lehi-of-Manasseh-son-of-Joseph` (v3 — only explicit tribe statement)
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -1491,3 +1495,12 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `theme:dramatic-irony-destroyed-in-one-day` —[Ammonihah scoffs at the exact prophecy that fulfills — "destroyed in one day" (ch 16); the scoff names the doom]→ 9:4 (Alma 16:9-11; 25:2) — "Desolation of Nehors"
 - `doctrine:prosperity-covenant-applied-two-edged` —[keep → prosper; don't → cut off; Lamanites already cut off (v14), Nephites will be too (v18); the favored not exempt; the despised Lamanites the instrument of judgment]→ 9:13-18 (2 Ne 1:20; Mosiah 1:7; Alma 37:13)
 - `theme:love-under-the-woe` —[after the harshest rebuke, "ye are my brethren, and ye ought to be beloved"; severity is the alarm of love, not contempt]→ 9:30 (Alma 5:1-9; 1 Jn 4:11; Heb 12:6)
+
+### from Alma 10
+- `theme:I-knew-yet-I-would-not-know` —[Amulek the comfortable/respected/prosperous man avoided God by refusal, not ignorance: "called many times... I knew... yet I would not know"; reached only by an angel + hungry prophet at his door]→ 10:4-10 (Alma 5:37; John 9:41; Matt 23:37) — reluctant convert → bold witness
+- `theme:second-witness-raised-from-within` —[Ammonihah rejected "the testimony of one man"; God answers with Amulek, a local of standing, "more than one witness" (Deut 17:6) — raised from inside the city]→ 10:8-12 (Deut 17:6; 19:15; Alma 9:2)
+- `doctrine:prayers-of-the-righteous-shield-the-wicked-city` —[the wicked city held up, unknowing, by the righteous minority's prayers; "if ye cast out the righteous... will not the Lord stay his hand"; Sodom's ten; Ammonihah casts them out (14) → destroyed (16)]→ 10:22-23 (Gen 18:23-32; 1 Sam 7:9; James 5:16) — the despised righteous are the shield
+- `doctrine:in-favor-of-your-law-to-your-condemnation` —[Amulek upholds the law; their corruption of it condemns them; not anti-law but anti-corruption-of-law]→ 10:26 (John 5:45-47; Rom 7:12; Matt 5:17)
+- `theme:corrupt-institutions-the-foundation-of-destruction` —[lawyers "to get gain" = Nehor's priestcraft in legal form; "the foundation of the destruction... laid by the unrighteousness of your lawyers and judges"]→ 10:14-15,27,31-32 (Alma 1:3-5; Luke 11:46-52; Isa 1:23; 3 Ne 6:11)
+- `prophecy:Mosiahs-warning-fulfilled-voice-chooses-iniquity` —[Amulek cites Mosiah 29:27: when "the voice of this people should choose iniquity... ripe for destruction"; Ammonihah is that failure localized]→ 10:19 (Mosiah 29:26-27; Alma 2:3; Hel 5:2)
+- `theme:Lehi-of-Manasseh-son-of-Joseph` —[the only explicit statement of Lehi's tribe: Manasseh, through Joseph sold into Egypt]→ 10:3 (1 Ne 5:14; Gen 41:51; 49:22-26)
