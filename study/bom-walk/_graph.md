@@ -580,6 +580,10 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - person: `Alma-the-younger` (bears pure testimony by questions; knows "of myself") · `the-church-at-Zarahemla` (proud, examined) · `Alma-the-elder`+`the-fathers` (the mighty change, founding deliverance) · `the-good-shepherd`(Christ)+`the-devil` (two shepherds) · `the-poor` (turned away by the proud)
 - method: `testimony-as-a-mirror-of-questions` (vv14-31 — pure testimony in purest form) · doctrine: `can-ye-feel-so-now-the-change-re-verified` (v26 — faith a pulse not a deposit) · `image-of-God-in-the-countenance` (vv14,19 — counterpoint to Alma 3 mark) · `two-shepherds-two-folds-no-third` (vv37-42) · `arms-of-mercy-extended-invitation-at-the-center` (vv33-34,62) · `knowing-of-myself-by-the-Spirit` (vv45-48 — answer to Mosiah 26 unbelief) · `command-to-the-church-invitation-to-the-world` (v62)
 
+### from Alma 6 (after the word, the order — admin bridge)
+- person: `Alma-the-younger` (ordains, regulates, departs to Gideon) · `the-repentant` (received) · `the-unrepentant-prideful` (blotted out) · `the-unconverted` (prayed + fasted for)
+- practice: `word-first-then-order` (vv1-4) · `church-cleansed-by-response-to-the-sermon` (vv2-3) · doctrine: `word-liberal-to-all-anti-priestcraft` (v5) · practice: `fasting-and-prayer-for-the-unconverted` (v6) · `ordination-by-laying-on-of-hands-the-order-of-God` (vv1,7-8 — answers ch1 priestcraft in Gideon's valley)
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -1436,3 +1440,10 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `doctrine:arms-of-mercy-extended-invitation-at-the-center` —[for all the woes, the center is invitation: "the arms of mercy are extended... Come unto me and partake of the fruit of the tree of life"; Alma wounds to heal]→ 5:33-34,62 (Mosiah 16:12; 1 Ne 8:10; Matt 11:28; Alma 32:40)
 - `doctrine:knowing-of-myself-by-the-Spirit` —[Alma's witness is personal revelation, not inheritance or office: "fasted and prayed many days that I might know these things of myself"; the pattern he presses on them]→ 5:45-48 (Mosiah 26:13; Moroni 10:4-5; John 7:17) — answer to the rising-generation unbelief (Mosiah 26)
 - `doctrine:command-to-the-church-invitation-to-the-world` —[higher accountability for the covenant people ("command"); open door for the rest ("invitation"); much given, much required]→ 5:62 (Mosiah 26:32; Luke 12:48; 2 Cor 6:17)
+
+### from Alma 6
+- `practice:word-first-then-order` —[Alma bears pure testimony (ch 5) to reach the heart, THEN sets the church in order; testimony convicts the heart, order regulates the body — both needed]→ 6:1-4 (Alma 5; Mosiah 18:17-22; 1 Cor 14:40)
+- `practice:church-cleansed-by-response-to-the-sermon` —[the dividing follows the people's own response: the repentant received, the prideful "blotted out"; discipline registers a choice]→ 6:2-3 (Mosiah 26:32-36; Alma 5:57-58; Ex 32:33)
+- `doctrine:word-liberal-to-all-anti-priestcraft` —["none were deprived of the privilege of assembling to hear the word"; freely available, not a withheld commodity]→ 6:5 (2 Ne 26:25-28; Alma 1:30; Isa 55:1)
+- `practice:fasting-and-prayer-for-the-unconverted` —[the church turns outward, fasting + praying "for the welfare of the souls of those who knew not God"; missionary-anguish as a standing practice]→ 6:6 (Mosiah 25:11; 28:3; Alma 31:34-35)
+- `practice:ordination-by-laying-on-of-hands-the-order-of-God` —[proper authority conferred not seized; the opposite of Nehor's self-appointed priestcraft; re-established in Gideon's valley where Nehor drew blood]→ 6:1,7-8 (Alma 13:1-9; AoF 1:5; Acts 6:6)
