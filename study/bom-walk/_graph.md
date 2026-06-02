@@ -312,6 +312,12 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - image: `made-thing-denies-its-maker` (potter/clay, v27 — axe-boast at its root; cf 20:15)
 - NOTE: expansion of Isa 29, NOT a verbatim block — no per-verse KJV variant comparison (vv6-23 unique to BoM)
 
+### from 2 Nephi 28 (last-days deceptions)
+- person: `contending-churches` (built not unto the Lord) · `false-teachers` (learning without the Spirit) · `the-devil` (rage/lull/deny) · `the-comfortable` ("all is well") · `the-humble-few` (still led to err) · `the-robbed-poor`
+- doctrine: `devils-three-strategies` (rage v20 / carnal-security-"all is well" v21 / denial-"no hell" v22 — lullaby deadliest) · `little-sin-gospel` (cheap grace, v8) · `line-upon-line` (open revelation; "enough" forfeits, v30) · `trust-not-arm-of-flesh` (v31)
+- warning: `all-is-well-in-zion` (complacency among the faithful, v21,24) · `humble-can-be-led-to-err` (precepts of men, v14)
+- thread: `rob-the-poor-fine-sanctuaries` (v13 — grind-the-poor sharpest: 13:15 → 26:20 → here) · `arm-lengthened-out` (v32 — Isaiah "hand stretched out" as lengthened mercy)
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -722,3 +728,12 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `image:made-thing-denies-its-maker` —[shall the work say he made me not?]→ 27:27 (Isa 29:16; Rom 9:20) — axe-boast at its root (cf 20:15)
 - `doctrine:lip-religion` —[draw near with mouth, hearts far off, precepts of men]→ 27:25 (Isa 29:13; JS-H 1:19; Matt 15:8)
 - `doctrine:faith-gated-miracles` —[work not save according to their faith]→ 27:23 (Moroni 7:37; Ether 12:12)
+
+### from 2 Nephi 28
+- `doctrine:devils-three-strategies` —[rage / carnal-security-"all is well" / denial-"no hell"]→ 28:20-22 (D&C 10:20-27) — the lullaby ("carefully down to hell") deadliest
+- `warning:all-is-well-in-zion` —[complacency among the faithful is the sharper target]→ 28:21,24-25 (Amos 6:1; Jacob 3:11)
+- `thread:rob-the-poor-fine-sanctuaries` —[grind-the-poor sharpest form]→ 28:13 (13:14-15; 26:20; Morm 8:37)
+- `doctrine:little-sin-gospel` —[cheap grace: a little sin, a few stripes, saved at last]→ 28:8 (Alma 30:17; Mal 2:17)
+- `doctrine:line-upon-line` —[open revelation; receptive gain, "we have enough" forfeits]→ 28:30 (Isa 28:10; Alma 12:9-11; Matt 13:12)
+- `warning:humble-can-be-led-to-err` —[sincerity is not immunity; precepts of men]→ 28:14 (cure: v30-31)
+- `doctrine:trust-not-arm-of-flesh` —[cursed who maketh flesh his arm]→ 28:31 (Jer 17:5; 2 Ne 4:34)

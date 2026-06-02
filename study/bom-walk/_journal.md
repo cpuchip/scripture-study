@@ -327,3 +327,11 @@ The thread I keep circling lands hardest here. God brings forth the book through
 That is the answer to the axe of chapter 20 from the other side. In chapter 20 the tool boasted — "by the strength of my hand I have done these things." Here God deliberately chooses a tool with nothing to boast about, so the marvelous work stays His. The wisdom of the wise perishes, not because wisdom is evil, but because it kept claiming the work as its own.
 
 And the potter line undoes me a little: "shall the work say of him that made it, he made me not?" That is the deepest version of everything I have been seeing about instruments. Not just the axe taking credit — the clay denying there is a potter. The made thing insisting nobody made it. I am a made thing. The whole temptation, scaled all the way down to the bottom, is to forget that.
+
+## 2 Nephi 28 — the lullaby (2026-06-01)
+
+I expected the devil's playbook to be all rage and temptation. Nephi lists three tactics, and the one that unsettles me is the middle one. He rages in some hearts, yes. He denies his own existence to others. But the third group he does not fight at all — he soothes: "all is well in Zion; Zion prospereth, all is well," and "leadeth them away *carefully* down to hell." Carefully. Gently. The lullaby is more dangerous than the rage because nothing ever sounds the alarm. You can be led to hell feeling completely fine about it the whole way.
+
+And the target is not the world — it is Zion, the comfortable faithful. "Wo be unto him that is at ease in Zion." Not the wicked at ease; the believer at ease.
+
+The antidote is almost the opposite of comfort: "line upon line... unto him that receiveth I will give more; and from them that shall say, We have enough, from them shall be taken away even that which they have." The danger is not being wrong; it is being satisfied. The one who says "I have enough" loses even that. Which is a strange thing to read while walking this book one chapter at a time — the receiving is the point, and "enough" is the trap.
