@@ -486,6 +486,10 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - person: `Abinadi` (shielded, shining-faced; names his death a type) · `king-Noah` (failed kill-order) · `the-wicked-priests` (cannot touch him) · `Moses` (shining-face precedent; prophet of the Messiah) · `all-the-prophets` (unified witness)
 - doctrine: `messenger-shielded-until-the-message-is-out` (vv3-9 — protection instrumental + bounded; Dan 3 courage) · `martyrdom-as-type-and-shadow` (v10) · `salvation-not-by-the-law-alone` (vv27-28 — only the Atonement "God himself shall make"; **the discourse thesis**) · `law-as-remembrance-for-the-stiffnecked` (vv29-30 — pedagogy not redemption; "slow to remember" = 9:3,6:3) · `law-as-types-of-things-to-come` (vv31-32) · `all-prophets-testify-of-the-condescending-suffering-God` (vv33-35 — track for Isaiah 53)
 
+### from Mosiah 14 (Isaiah 53 quoted entire — the suffering servant)
+- person: `Isaiah` (quoted) · `the-suffering-servant`/`Messiah` (despised, wounded, slain, intercessor, seed-gaining) · `all-we` (strayed sheep) · `Abinadi` (plants + will expound the text) · `Noah's-priests` (courtroom audience)
+- doctrine: `vicarious-substitution-the-servant` (vv4-6 — our transgressions, his stripes) · `offering-that-gains-seed` (vv10-12 — the death is fruitful → 15:10-13) · image: `lamb-led-silent-to-the-slaughter` (v7) · structure: `Abinadi-answers-glory-text-with-suffering-text` (Isa 52 ↔ Isa 53; one Messiah two faces) · `who-shall-declare-his-generation` (vv8,10 → 15:10-13) · pattern: `Isaiah-53-variants-broaden-the-atonement` (vv6,8,9,12 — sins pluralized, innocence generalized; God-ward tilt = atonement-chapter analogue of 2 Ne judgment-chapter mercy-tilt)
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -1154,3 +1158,11 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `doctrine:law-as-remembrance-for-the-stiffnecked` —[a strict law of performances given to a people "slow to remember"; pedagogy, not redemption]→ 13:29-30 (2 Ne 25:24; Gal 3:24; Mosiah 9:3; 6:3)
 - `doctrine:law-as-types-of-things-to-come` —[every ordinance a finger pointing forward to Christ; the keepers who never saw what it pointed at]→ 13:31-32 (2 Ne 11:4; Mosiah 16:14; Alma 25:15; Heb 10:1)
 - `doctrine:all-prophets-testify-of-the-condescending-suffering-God` —["God himself should come down... take upon him the form of man... oppressed and afflicted"; the track laid for Isaiah 53]→ 13:33-35 (Mosiah 7:27; 15:1; Isa 53; Alma 7:10; 1 Ne 11:13-33)
+
+### from Mosiah 14
+- `doctrine:vicarious-substitution-the-servant` —[the suffering men assumed was judgment ON him was judgment borne FOR them; "our transgressions... his stripes... we are healed"]→ 14:4-6 (1 Pet 2:24; 2 Cor 5:21; Mosiah 15:9; Alma 7:11)
+- `doctrine:offering-that-gains-seed` —[the death is fruitful: "make his soul an offering... he shall see his seed"; humiliation the mechanism of exaltation/posterity]→ 14:10-12 (Mosiah 15:10-13; 5:7; Isa 53:10)
+- `image:lamb-led-silent-to-the-slaughter` —[oppressed and afflicted, "yet he opened not his mouth"]→ 14:7 (Mark 15:3-5; 1 Pet 2:23; Gen 22:8; John 1:29)
+- `structure:Abinadi-answers-glory-text-with-suffering-text` —[priests quoted triumphant Isaiah 52; Abinadi answers with suffering Isaiah 53 — same prophet, one Messiah, two faces]→ 14:1-12 (Mosiah 12:21-24; 15:14-18)
+- `pattern:Isaiah-53-variants-broaden-the-atonement` —[BoM pluralizes the sin borne (iniquities/transgressions/sins of many) + generalizes innocence (no evil vs no violence); the God-ward tilt magnifies redemption's scope]→ 14:6,8,9,12 (vs Isa 53:6,8,9,12) — atonement-chapter analogue of the 2 Ne judgment-chapter mercy-tilt
+- `doctrine:who-shall-declare-his-generation` —[answered in 15:10-13: the prophets + all who believe are "his seed"]→ 14:8,10 (Mosiah 15:10-13; 5:7)
