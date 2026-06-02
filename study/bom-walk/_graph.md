@@ -519,6 +519,11 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - person: `Limhi's-people` (smitten, thrice defeated, humbled, eased) · `the-widows` (mourning; cared for) · `the-Lamanites` (oppressors whose hearts God softens) · `Ammon-and-brethren` (arrive, imprisoned, joyful, decline to baptize) · `king-Limhi` (covenants; cares for widows) · `the-lost-search-party` (found Jaredite ruins + ore record)
 - doctrine: `God's-slow-yes-burden-eased-before-removed` (v15 — heard/eased/not-yet-delivered; **pastoral heart of Mosiah**) · prophecy: `slow-to-hear-fulfilled` (vv3-4,15 → 11:24, 12:2,5) · theme: `self-deliverance-exhausted-before-humility` (vv6-14 — 3 rebellions then the dust) · structure: `deliverance-pair-stratagem-vs-miracle` (Limhi ch22 vs Alma ch24) · practice: `widow-care-under-bondage` (v17 — 4:26 in chains) · `embedded-frame-rejoined` (vv22-28 — ch7 from inside) · doctrine: `covenant-made-but-baptism-waits-for-authority` (vv33-35 — Ammon won't improvise)
 
+### from Mosiah 22 (the escape by stratagem — Zeniff record ends)
+- person: `Ammon` (leads the escape) · `king-Limhi` (consults the people, hearkens to Gideon) · `Gideon` (devises the escape — the deliverer) · `the-people-of-Limhi` (escape by night with flocks + records) · `the-drunken-Lamanite-guards` · `king-Mosiah` (receives the people + both records)
+- place: `the-back/secret-pass` · `Shilom` · `Zarahemla`
+- structure: `deliverance-by-stratagem-completes-the-pair` (vv2-11 — vs Alma's miracle ch24) · theme: `bondage's-own-instrument-becomes-the-escape` (vv7,10 — tribute-wine + drunk guards) · person: `Gideon-the-deliverer-completes-his-arc` (vv3-9 — "profitable servant") · textual: `records-gathered-to-the-seer` (v14 — Zeniff record + 24 plates → ch28 → Ether) · principle: `voice-of-the-people-in-seed` (v1 → ch29) · `Zeniff-record-ends` (9-22 complete)
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -1263,3 +1268,11 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `practice:widow-care-under-bondage` —[every man imparts to the widows + children even while oppressed; Benjamin's 4:26 lived in chains]→ 21:17 (Mosiah 4:16-26; 18:27; James 1:27)
 - `structure:embedded-frame-rejoined` —[Ammon's arrival = ch 7 retold from inside; the back-fill (9-21) circles back to the frame's present; the two ends meet]→ 21:22-28 (Mosiah 7:6-15; 8:9)
 - `doctrine:covenant-made-but-baptism-waits-for-authority` —[Limhi's people covenant now; Ammon will NOT baptize without authority ("unworthy servant"); do it right over do it now]→ 21:32-35 (Mosiah 18:13; 25:17-18; D&C 20:73)
+
+### from Mosiah 22
+- `structure:deliverance-by-stratagem-completes-the-pair` —[Limhi's humbled-the-hard-way people escape by wit + effort (drunk guards, back pass); Alma's already-humble people by straight miracle (24); God meets each where their heart is]→ 22:2-11 (Mosiah 21:5,15; 24:19-25; 7:18)
+- `theme:bondage's-own-instrument-becomes-the-escape` —[the tribute-wine of their servitude + the guards' drunkenness (the oppressor's vice) open the back door; the mechanism of bondage turned against it]→ 22:7,10 (Alma 55:8-17; Prov 20:1; Judg 7)
+- `person:Gideon-the-deliverer-completes-his-arc` —[sword on Noah (19) → peace-broker (20) → prophecy-reader (20) → deliverer (22); strength yoked to wisdom, at the people's service; "profitable servant"]→ 22:3-9 (Mosiah 2:21; 19:4; 20:17; Alma 1:8)
+- `textual:records-gathered-to-the-seer` —[Mosiah receives the Zeniff record (9-22) AND the 24 Jaredite plates; both converge in the one with the gift to translate → ch 28 → Ether]→ 22:14 (Mosiah 8:9; 28:11-19; Ether 1:1-2)
+- `principle:voice-of-the-people-in-seed` —[even the escape is decided by gathering "the voice of the people"; the principle Mosiah institutionalizes in ch 29; righteous leadership consults]→ 22:1 (Mosiah 29:25-29; 7:9)
+- `structure:Zeniff-record-ends` —[chs 9-22 close; the back-fill complete; the main narrative (Alma's people 23-24, reunification 25) resumes]→ 22:13-14 (Mosiah 9:1; 25:1-7)
