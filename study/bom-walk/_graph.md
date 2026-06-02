@@ -659,6 +659,10 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - person: `king-Anti-Nephi-Lehi-elder` (the burial speech; sword-logic; dies before the attack) · `the-Anti-Nephi-Lehies` (bury weapons; 1,005 martyred unresisting) · `the-attacking-Nehorites` (many convert mid-slaughter; unconverted = Nehorite apostates)
 - doctrine: `bury-the-weapons-lest-the-cleansing-not-hold` (vv12-13) · `martyrdom-is-net-positive` (vv26-27) · `apostasy-from-light-is-worse-than-never-knowing` (v30 — capstone) · theme: `covenant-as-threefold-reversal-of-the-grievance` (v18) · `buried-weapons-covenant-echoes-forward` (vv17-19 → Hel 15) · event: `unresisting-martyrdom-converts-the-killers` (vv21-25)
 
+### from Alma 25 (Abinadi's fire fulfilled — the law read as type)
+- person: `seed-of-Amulon` (burn believers, then hunted + slain — Abinadi's prophecy fulfilled) · `the-new-Lamanite-converts` (join Anti-Nephi-Lehies, bury weapons, keep the law as type)
+- doctrine: `prophecy-fulfilled-as-a-pattern-across-generations` (vv9-12 — Abinadi Mosiah 13) · `law-of-moses-as-type-not-salvation` (vv15-16) · theme: `sin-and-its-judgment-both-have-descendants` (vv4-9) · `the-cure-spreads-through-the-war` (vv13-14) · `counterfeit-forms-vs-forms-that-point-to-Christ` (vv15-16 vs 21:6)
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -1692,3 +1696,10 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 ### fold-back: studies/alma17-26_lamanite-conversion-and-the-grievance-cure.md (Sonnet spin-off, all 6 load-bearing quotes verified vs own fetch)
 - `study:alma17-26-grievance-cure` —[thesis: the four-century grievance tradition broke because the missionaries did four things it had no defense for — went as SERVANTS not conquerors (inverting the power-relation it was built on), told the TRUE story incl. Laman/Lemuel's rebellions (not counter-accusation), REFRAMED the wound via creation-fall-redemption (making Nephite-vs-Lamanite secondary), and the converts REFUSED THE SWORD (24) so the tradition could no longer call them bloodthirsty]→ Alma 17-26 (builds on studies/mos10 grievance diagnosis)
 - `study:alma17-26-grievance-cure` —[load-bearing verified quotes]→ 17:11 (patient/long-suffering) · 19:9 (faith on testimony alone) · 22:13 (creation→redemption reframe) · 22:18 (give away all my sins) · 24:18 (rather give up own lives) · 24:25 (killers stung, throw down weapons)
+
+### from Alma 25
+- `doctrine:prophecy-fulfilled-as-a-pattern-across-generations` —[Abinadi's "what ye shall do unto me shall be a type of things to come" — his death by fire prefigured the priests' seed burning believers, then "scattered... as a sheep having no shepherd"; ran true ~60 years later]→ 25:9-12 (Mosiah 13:10; 17:15-20; Matt 9:36)
+- `theme:sin-and-its-judgment-both-have-descendants` —[the seed of the men who burned Abinadi burn believers in turn, then are hunted and slain; the violence the priests introduced propagated down their line and consumed them]→ 25:4-9 (Mosiah 23:35; Ex 20:5; Alma 24:30)
+- `doctrine:law-of-moses-as-type-not-salvation` —["they did not suppose that salvation came by the law of Moses; but the law of Moses did serve to strengthen their faith in Christ"; the converts grasp the forms-as-type the Nehorites never did]→ 25:15-16 (Gal 3:24; 2 Ne 11:4; Jacob 4:5; Mosiah 13:27-33)
+- `theme:the-cure-spreads-through-the-war` —[the defeated Lamanites come home, join the people of God, "bury their weapons of war, according as their brethren had"; every wave of violence yields more converts]→ 25:13-14 (Alma 24:26; 23:6; 17:9)
+- `theme:counterfeit-forms-vs-forms-that-point-to-Christ` —[the Amalekites kept synagogues/worship as an end (21:6); the converts keep the law knowing it is "a type of his coming"; same ritual, opposite direction]→ 25:15-16 (Alma 21:6; 2 Ne 25:24-27)
