@@ -364,6 +364,10 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - image: `awake-from-the-slumber-of-death` (arouse, shake yourselves, v11)
 - FLAG (bin-4): `skin-curse-language` v5-9 — Jacob USES it AND empties it (dark = more righteous; reviling forbidden; filthiness inherited not personal; white-skinned the more filthy before God) → **THIRD in-text datapoint for the 5:21 with-Michael study** (with 26:33 + 30:6); NOT autonomously resolved
 
+### from Jacob 4 (law points to Christ; look beyond the mark)
+- doctrine: `looking-beyond-the-mark` (blindness from disdaining plainness, seeking the obscure, v14 — negative of the plainness thread) · `truth-is-things-as-they-really-are` (v13 → D&C 93:24) · `power-by-grace-weakness-shown` (command trees by grace, "that we may know", v7 — positive form of axe/made-thing) · `take-counsel-from-his-hand` (don't counsel God, v10) · `law-points-to-Christ` (Abraham-Isaac = similitude, v5) · `reconcile-through-the-atonement` (v11)
+- image: `rejected-cornerstone` (the Stone they reject = only sure foundation, v15-17 — cliffhanger → Jacob 5)
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -852,3 +856,11 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `doctrine:revile-not-for-the-skin` —[command against skin-based contempt; remember your own filthiness]→ 3:9 (Matt 7:3-5; 2 Ne 26:33)
 - `doctrine:comfort-to-the-wounded` —[feast on his love; balm after the daggers]→ 3:1-2 (Jacob 2:9; 2 Ne 32:8)
 - `image:awake-from-the-slumber-of-death` —[arouse, shake yourselves]→ 3:11 (2 Ne 1:13; 8:9; Eph 5:14)
+
+### from Jacob 4
+- `doctrine:looking-beyond-the-mark` —[blindness from disdaining plainness; God removes the plainness they despised]→ 4:14 (2 Ne 25:1-2; Matt 13:13-15) — negative of the plainness thread
+- `doctrine:truth-is-things-as-they-really-are` —[the Spirit speaks reality, present + future]→ 4:13 (D&C 93:24; John 17:17)
+- `doctrine:power-by-grace-weakness-shown` —[command trees/waves "by his grace... that we may know"]→ 4:7 (Ether 12:27) — positive form of axe/made-thing (20:15; 27:27)
+- `doctrine:take-counsel-from-his-hand` —[don't counsel the Lord; receive, don't improve]→ 4:10 (Prov 3:5-7; 2 Ne 9:28)
+- `doctrine:law-points-to-Christ` —[Abraham-Isaac = similitude of Father + Only Begotten]→ 4:5 (Gen 22; John 3:16; Gal 3:24)
+- `image:rejected-cornerstone` —[the Stone they reject is the only sure foundation]→ 4:15-17 (Ps 118:22; Isa 28:16; Hel 5:12) → Jacob 5
