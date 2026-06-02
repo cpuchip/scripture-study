@@ -373,7 +373,7 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - parable: `olive-tree-scatter-and-gather` (Israel's whole history as one gardener's seasons; Rom 11)
 - image: `the-vinedresser-wept` (Isaiah 5:4's question now with tears, v41) · `hand-stretched-out-all-the-day-long` (v47 — the LABORING hand: 3rd/warmest sense of the refrain)
 - doctrine: `it-grieveth-me-to-lose-this-tree` (×5: vv7,11,13,46,47) · `labor-WITH-me-joy-WITH-me` (God digs alongside; joy shared, vv71-75)
-- study: `jacob5_allegory-of-the-olive-tree` (spin-off — IN PROGRESS, Sonnet subagent; visit-count + dispensational reading)
+- study: `jacob5_allegory-of-the-olive-tree` (spin-off DONE — **FOUR visits** = scattering/meridian/apostasy/restoration [D&C 43:28 "last time"]; **the root never corrupts** v36 "roots are good"; apostasy = overgrowth v48 "taking strength unto themselves"; "grieveth me" sustained ×7)
 - answer: resolves Jacob 4:17 (the rejected stone grafts back in the last labor)
 
 ### from Jacob 6 (application of the allegory)
@@ -901,6 +901,9 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `doctrine:labor-WITH-me-joy-WITH-me` —[God digs alongside the few; joy shared not given]→ 5:71-75 (John 15:11; the Immanuel "with")
 - `answer:rejected-stone-grafts-back` —[Jacob 4:17 resolved]→ 5:60-75
 - `mystery:who-corrupted-the-vineyard` —[diligence perfect; source left standing]→ 5:47 (cf 2 Ne 15:4)
+- `structure:four-visits` —[scattering(4-14)/meridian(15-28)/apostasy(29-49)/restoration(50-76)]→ dispensational; D&C 43:28 "last time" (spin-off)
+- `doctrine:the-root-never-corrupts` —["I know that the roots are good" = the Abrahamic covenant; every graft reconnects branch to root]→ 5:36 (spin-off)
+- `doctrine:apostasy-is-overgrowth` —[branches grew faster than the root, "taking strength unto themselves"]→ 5:48 (spin-off) — not rebellion but self-sourced strength
 
 ### from Jacob 6
 - `doctrine:outstretched-hand-is-mercy` —[the laboring hand (5:47) named: mercy to a gainsaying people]→ 6:4 (Isa 65:2; Rom 10:21) — the whole refrain resolves to mercy
