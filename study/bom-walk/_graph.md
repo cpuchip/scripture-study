@@ -381,6 +381,13 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - warning: `mock-the-plan-of-redemption` (deny→quench→mock, v7-8)
 - image: `pleasing-bar-dreadful-bar` (same bar: pleasing to righteous, dread to wicked, v13 — judgment by response; cf 18:14 stone)
 
+### from Jacob 7 (Sherem — closes Jacob)
+- person: `sherem` (first named anti-Christ; learned, flattering, sign-seeker; deathbed confessor) · `enos` (receives the plates)
+- template: `anti-christ` (learned + flatter + deny Christ + "no man knows the future" + demand a sign — pattern Korihor/Nehor follow)
+- doctrine: `witness-outlasts-rhetoric` ("I could not be shaken" — seen angels + heard the Lord, v4-5) · `sign-refused-then-given` (won't tempt God; submits "thy will be done", v14) · `lied-unto-God` (denial of KNOWN truth = the fearful sin, v19) · `scriptures-testify-of-Christ` (v11)
+- image: `deceiver-becomes-witness` (Sherem confesses the three he denied, v17-19) · `wanderers-mourned-out-our-days` ("adieu" = à Dieu, v26-27)
+- SYNTHESIS: **JACOB COMPLETE** — plainness against deception (glory in plainness → lose it by looking beyond the mark → Sherem weaponizes eloquence → witness + mercy answer); opens watchman's burden → closes "adieu, to God"
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -894,3 +901,12 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `warning:mock-the-plan-of-redemption` —[deny → quench → mock: evil fruit of a nourished vine]→ 6:7-8 (Heb 6:4-6)
 - `doctrine:strait-gate-restated` —[enter + continue in the narrow way]→ 6:11 (2 Ne 31:17-20; 9:41)
 - `image:pleasing-bar-dreadful-bar` —[same bar: pleasing to the righteous, dread to the wicked]→ 6:13 (Moroni 10:34; 2 Ne 18:14)
+
+### from Jacob 7 (Sherem)
+- `doctrine:witness-outlasts-rhetoric` —[Sherem's eloquence breaks on a man who has seen angels + heard the Lord]→ 7:4-5 (Alma 36:22; Acts 26)
+- `template:anti-christ` —[learned + flatter + deny Christ + "no man knows the future" + demand a sign]→ 7:2-13 (Alma 30 Korihor; Alma 1 Nehor)
+- `doctrine:sign-refused-then-given` —[won't tempt God for a sign to dishonest denial; "thy will be done"]→ 7:14-15 (Matt 4:7; Alma 30:43-60)
+- `doctrine:lied-unto-God` —[the sin is denial of KNOWN truth, not honest doubt]→ 7:19 (Acts 5:3-4; Heb 10:26)
+- `image:deceiver-becomes-witness` —[Sherem confesses the three he denied: Christ, Holy Ghost, angels]→ 7:17-19
+- `image:wanderers-mourned-out-our-days` —[the exile's grief; "adieu" = to God]→ 7:26-27 (Heb 11:13; Ps 39:12)
+- `synthesis:jacob-complete` —[plainness against deception]→ book closes (watchman's burden → "adieu, to God")
