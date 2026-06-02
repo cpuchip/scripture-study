@@ -1445,6 +1445,12 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `doctrine:knowing-of-myself-by-the-Spirit` —[Alma's witness is personal revelation, not inheritance or office: "fasted and prayed many days that I might know these things of myself"; the pattern he presses on them]→ 5:45-48 (Mosiah 26:13; Moroni 10:4-5; John 7:17) — answer to the rising-generation unbelief (Mosiah 26)
 - `doctrine:command-to-the-church-invitation-to-the-world` —[higher accountability for the covenant people ("command"); open door for the rest ("invitation"); much given, much required]→ 5:62 (Mosiah 26:32; Luke 12:48; 2 Cor 6:17)
 
+#### ↳ alma5 spin-off folded back (verified) — cross-chapter links
+- `link:43-searching-questions` —[the sermon is built of 43 distinct questions (densest vv14-31); pure testimony executed almost entirely as interrogation of the conscience]→ Alma 5 whole (Alma 4:19 mandate)
+- `link:three-generation-conversion-chain` —[Abinadi → Alma the elder (5:11-12) → the fathers → Alma the younger himself (Mosiah 27:24-28); in ch 5 Alma re-asks his congregation his OWN conversion question]→ 5:11-14 ↔ Mosiah 13-16 ↔ Mosiah 27:24-28 ↔ Mosiah 5:2 ("mighty change," exact phrase)
+- `link:image-in-countenance-restores-Gen-1-image` —[the new birth restores the divine image the Fall obscured; Webster cites Gen 1:27 under *image*; held as interpretive inference]→ 5:14,19 (Gen 1:26-27; 2 Cor 3:18; Moses 6:65)
+- `link:sermon-bracketed-by-mercy` —[opens with memorial questions (vv6-9), closes with the invitation (v62); the scouring questions framed by the open door]→ 5:6-9 ↔ 5:33-34,62
+
 ### from Alma 6
 - `practice:word-first-then-order` —[Alma bears pure testimony (ch 5) to reach the heart, THEN sets the church in order; testimony convicts the heart, order regulates the body — both needed]→ 6:1-4 (Alma 5; Mosiah 18:17-22; 1 Cor 14:40)
 - `practice:church-cleansed-by-response-to-the-sermon` —[the dividing follows the people's own response: the repentant received, the prideful "blotted out"; discipline registers a choice]→ 6:2-3 (Mosiah 26:32-36; Alma 5:57-58; Ex 32:33)
