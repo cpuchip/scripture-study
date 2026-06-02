@@ -330,6 +330,10 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - textual: `white→pure` (v6 — 1830 "white" → Joseph's 1840 "pure", restored 1981 — **bears on the 5:21 flag**: trajectory toward purity/righteousness not pigment)
 - event: Nephi ends his prophesying (v18)
 
+### from 2 Nephi 31 (the doctrine of Christ — keystone)
+- doctrine: `gate-and-path` (baptism = gate/entry; endure to the end = path, v17-20) · `is-all-done-Nay` (entering ≠ arriving, v19 — cure for 28/29 complacency) · `Christ-the-baptized-example` (sinless one baptized to fulfil all righteousness, a fortiori, v5-9) · `rely-wholly-on-his-merits` (press-forward is grace-powered, v19) · `endurance-triad` (faith/hope/charity = path's fuel, v20) · `this-is-the-way` (exclusive, no other name, v21)
+- CONVERGENCE: `feast-on-the-word = hold-the-rod` (1 Ne 8:24 rod named: "feasting upon the word of Christ", v20) · `the-gate` (= 9:41 Holy One no servant + 1 Ne 8 strait gate) — the tree-of-life dream + doctrine of Christ = same map
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -765,3 +769,13 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `doctrine:peace-by-knowledge` —[Isaiah 11 re-quoted as the climax]→ 30:15 (2 Ne 21:9; D&C 130:18)
 - `doctrine:total-revelation` —[nothing secret/sealed but shall be loosed]→ 30:16-17 (Luke 12:2; Ether 4:7)
 - `doctrine:Satan-bound` —[no power over hearts, for a long time]→ 30:18 (Rev 20:2; 1 Ne 22:26)
+
+### from 2 Nephi 31 (doctrine of Christ)
+- `doctrine:gate-and-path` —[baptism = gate (entry); endure to the end = path]→ 31:17-20 — gate is the trailhead
+- `thread:the-gate` —[= 9:41 (Holy One, no servant) + the strait gate of 1 Ne 8]→ 31:17 (gate-thread converges)
+- `thread:feast-on-the-word=hold-the-rod` —[Lehi's rod named: "feasting upon the word of Christ"]→ 31:20 (1 Ne 8:24; 15:23-24)
+- `doctrine:is-all-done-Nay` —[entering ≠ arriving; against once-entered complacency]→ 31:19 (cure for 28:25, 29:10)
+- `doctrine:Christ-the-baptized-example` —[sinless one baptized, a fortiori]→ 31:5-9 (Matt 3:15) — "do what ye have seen me do"
+- `doctrine:rely-wholly-on-his-merits` —[press-forward is grace-powered]→ 31:19 (25:23; Moroni 6:4)
+- `doctrine:endurance-triad` —[faith + perfect brightness of hope + love = path's fuel]→ 31:20 (Moroni 7:41-48)
+- `doctrine:this-is-the-way` —[exclusive: no other way nor name]→ 31:21 (Acts 4:12; John 14:6)

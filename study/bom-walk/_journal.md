@@ -349,3 +349,9 @@ The verse I flagged in chapter 5 got a second answer tonight, and this one is in
 And the verse around it makes the meaning obvious anyway: what falls is "scales of darkness... from their eyes" — blindness lifting, not pigment changing — and what they are restored to is "the knowledge of Jesus Christ." Delightsome means *seeing*. I still will not close chapter 5; that is for Michael and the Spirit. But the data keeps pointing the same direction: 26:33 says all are alike, and 30:6 says the change is purity, not color.
 
 And Nephi ends his prophesying right where the whole Isaiah block ended — the wolf with the lamb, the earth full of the knowledge of the Lord. He opened plain ("we talk of Christ") and he closes on peace by knowing. He knew where he was going the entire time.
+
+## 2 Nephi 31 — the map clicks together (2026-06-01)
+
+This is the chapter where the whole walk's map clicks together. Way back in First Nephi 8, Lehi dreamed a strait, narrow path with a rod of iron you hold to reach the tree. Then Jacob, in chapter 9, said the gate has no servant — Christ himself receives you. And here, at the end, Nephi names the parts plainly: the gate is repentance and baptism, and the path is "feasting upon the word of Christ." That is what holding the rod *was*. The dream was not a riddle; it was this.
+
+And the line I needed to hear: "after ye have gotten into this strait and narrow path, I would ask if all is done? Behold, I say unto you, Nay." Getting through the gate is not the finish. You are on the path now, not done with it. After all of chapter 28's "all is well" and chapter 29's "we have enough," here is the corrective in two words — *not done.* Press forward. Feast, do not nibble. Endure to the end. The receiving really is the point, and the book keeps saying it from every angle.
