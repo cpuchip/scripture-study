@@ -507,6 +507,10 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - place: `Mormon` (fountain of pure water, thicket/forest, borders of the land)
 - covenant: `baptism-bear-one-anothers-burdens` (vv8-10 — mostly horizontal; the community IS the covenant; **most-quoted BoM covenant**) · theme: `church-founded-by-a-repentant-insider` (v1) · `church-born-in-hiding-and-hunted` (vv4-5,30-34) · `anti-Noah-church-order` (vv19-27 — self-supporting priests, no priestcraft) · doctrine: `baptism-covenant-witness-Spirit-poured-out` (vv10-14) · practice: `consecration-in-seed-proportional-giving` (vv27-29) · theme: `hearts-knit-one-faith-one-baptism` (v21) · `worship-criminalized-as-sedition` (v33)
 
+### from Mosiah 19 (Noah's fall — prophecy comes due)
+- person: `king-Noah` (cowardly; abandons families; burned — prophecy fulfilled) · `Gideon` (nearly slays Noah; later peace-broker) · `the-Lamanite-army` (invaders; charmed by the women) · `the-loyal-men` (stayed to perish with families) · `the-cowardly-men` (fled, then burned the king) · `Limhi` (the just son; throne into bondage) · `Noah's-priests` (flee → the Amulonites)
+- theme: `king-concerned-for-self-not-people` (vv7-11 — anti-servant-king exposed in crisis) · prophecy: `Noah-burned-fulfilled-to-the-letter` (v20 — 12:3+13:10+17:18 converge) · `loyalty-that-would-perish-with-is-rewarded` (vv12-14) · `just-son-of-a-wicked-father` (vv16-17 — inverse of Noah) · structure: `embedded-record-frame-closed` (vv15,26-28 — back-fill caught up to ch 7) · thread: `wicked-priests-flee-and-propagate` (v21 → ch 20, Alma 25)
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -1225,3 +1229,11 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `practice:consecration-in-seed-proportional-giving` —[impart according to what one has; more from more, to him that had not should be given; free-will; the economic form of bearing burdens]→ 18:27-29 (Mosiah 4:16-26; 4 Ne 1:3; Acts 4:32-35; D&C 42:30)
 - `theme:hearts-knit-one-faith-one-baptism` —[no contention; look forward with one eye, hearts knit in unity and love; the relational fruit of the covenant]→ 18:21 (Eph 4:3-6; 1 Sam 18:1; John 17:21; 4 Ne 1:15)
 - `theme:worship-criminalized-as-sedition` —[Noah reads the gathering as "rebellion"; the church's first corporate act is flight from a state that outlaws it]→ 18:33-34 (Mosiah 17:12; Luke 23:2; Acts 17:6) — the charge that burned Abinadi, now against Alma
+
+### from Mosiah 19
+- `theme:king-concerned-for-self-not-people` —[Noah invokes "my people" to save himself, then commands the men to abandon wives and children; the anti-servant-king exposed in crisis]→ 19:7-11 (Mosiah 2:12-14; John 10:11-13; Ezek 34:2-6) — crisis exposes character
+- `prophecy:Noah-burned-fulfilled-to-the-letter` —[the king who burned the prophet "with faggots" is himself made to suffer death by fire; 12:3+13:10+17:18 converge; burned by the men he betrayed]→ 19:20 (Mosiah 12:3; 17:13-18; Alma 25:9; Gal 6:7)
+- `theme:loyalty-that-would-perish-with-is-rewarded` —[the men who "had rather stay and perish with them" vs Noah's command to flee; their willingness to die together saves them all]→ 19:12-14 (1 Sam 30:18-19; John 15:13)
+- `theme:just-son-of-a-wicked-father` —[Limhi knew his father's iniquities + loved him + was "a just man"; the inverse of Noah; righteousness runs by choice, not blood]→ 19:16-17 (Mosiah 11:1; Ezek 18:14-20; 2 Kgs 22:1-2)
+- `structure:embedded-record-frame-closed` —[the half-tribute + guards = exactly Limhi's bondage in ch 7; the back-fill (9-19) has caught up to its frame; the dramatic irony complete]→ 19:15,26-28 (Mosiah 7:15,22; 9:10; 11:21)
+- `thread:wicked-priests-flee-and-propagate` —[Noah's priests escape the fire → kidnap the Lamanite daughters (ch 20) → the Amulonites burn believers (Alma 25); Abinadi's "thy seed" set in motion]→ 19:21 (Mosiah 20:3-5; Alma 25:4-12; 17:15)
