@@ -691,6 +691,10 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - person: `Alma-the-younger` (faith sermon; reads the poor's affliction as preparation) · `the-poor-cast-out` (barred for apparel; humbled, ready)
 - doctrine: `faith-is-hope-in-unseen-things-which-are-true` (v21) · `the-entry-bar-is-only-desire` (v27) · `the-seed-experiment` (vv28-35 — discernible light) · `experimental-knowledge-of-that-thing-not-all` (v34) · `faith-must-be-nourished-or-it-withers` (vv37-41) · `compelled-vs-voluntary-humility` (vv13-16) · theme: `worship-not-confined-to-building-or-week` (vv10-11) · `the-word-comes-through-the-overlooked` (v23 — men, women, children)
 
+### from Alma 33 (Zenos, worship everywhere, the brazen serpent)
+- person: `Zenos` (lost prophet; worship-everywhere prayer; mercy "because of thy Son") · `Zenock` (lost prophet; testified of the Son; stoned) · `Moses-brazen-serpent` (the type raised in the wilderness)
+- doctrine: `worship-is-bound-to-no-place` (vv3-11) · `every-mercy-is-because-of-the-Son` (v11) · `the-scandal-of-the-simple-look` (vv19-21) · `the-seed-is-the-word-of-Christ` (vv22-23) · theme: `burdens-made-light-through-the-joy-of-the-Son` (v23)
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -1789,3 +1793,10 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `theme:worship-not-confined-to-building-or-week` —["do ye suppose that ye cannot worship God save it be in your synagogues only?... that ye must not worship God only once in a week?"; the Rameumptom cage broken in two questions]→ 32:10-11 (Alma 31:13-23; 33:3-11; John 4:21-24)
 - `doctrine:compelled-vs-voluntary-humility` —["compelled to be humble blessed are ye... but blessed are they who humble themselves without being compelled"; affliction is humility's teacher of last resort; the wise choose it first]→ 32:13-16 (Matt 5:3-5; Ether 12:27; Hel 12:3)
 - `theme:the-word-comes-through-the-overlooked` —[God imparts his word "by angels unto men, yea, not only men but women also... little children... confound the wise and the learned"; faith bypasses the elect's hierarchy]→ 32:23 (Matt 11:25; Luke 10:21; 1 Cor 1:27; 3 Ne 26:14-16)
+
+### from Alma 33
+- `doctrine:worship-is-bound-to-no-place` —[Zenos heard "in the wilderness... in my field... in my house... in my closet... in the midst of thy congregations... when I have been cast out"; God is not in the building — the Rameumptom cage refuted by the scripture the Zoramites claim to revere]→ 33:3-11 (Matt 6:5-6; John 4:21-24; Alma 32:10-11)
+- `doctrine:every-mercy-is-because-of-the-Son` —["it is because of thy Son that thou hast been thus merciful... thou hast turned thy judgments away from me, because of thy Son"; a pre-Christian prophet grounds all answered prayer in the Atonement]→ 33:11-16 (Jacob 4:4; Mosiah 3:13; 1 Ne 19:10; Alma 34:7)
+- `doctrine:the-scandal-of-the-simple-look` —[the brazen serpent "that whosoever would look upon it might live," yet "many were so hardened that they would not look, therefore they perished... because they did not believe that it would heal them"; the proud refuse the cure because it is too easy]→ 33:19-21 (Num 21:9; John 3:14; 1 Ne 17:41; 2 Ne 25:20; Hel 8:14)
+- `doctrine:the-seed-is-the-word-of-Christ` —["begin to believe in the Son of God, that he will come to redeem his people, and that he shall suffer and die to atone for their sins; and that he shall rise again"; the ch 32 seed named specifically — the atoning, dying, rising Christ]→ 33:22-23 (Alma 32:28; 34:8-16; 2 Ne 25:26)
+- `theme:burdens-made-light-through-the-joy-of-the-Son` —["may God grant unto you that your burdens may be light, through the joy of his Son... even all this can ye do if ye will"; the Mosiah 24 promise offered to the cast-out poor, on agency]→ 33:23 (Mosiah 24:13-15; Alma 31:38; Matt 11:28-30)
