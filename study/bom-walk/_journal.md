@@ -335,3 +335,9 @@ I expected the devil's playbook to be all rage and temptation. Nephi lists three
 And the target is not the world — it is Zion, the comfortable faithful. "Wo be unto him that is at ease in Zion." Not the wicked at ease; the believer at ease.
 
 The antidote is almost the opposite of comfort: "line upon line... unto him that receiveth I will give more; and from them that shall say, We have enough, from them shall be taken away even that which they have." The danger is not being wrong; it is being satisfied. The one who says "I have enough" loses even that. Which is a strange thing to read while walking this book one chapter at a time — the receiving is the point, and "enough" is the trap.
+
+## 2 Nephi 29 — the reason there can be more (2026-06-01)
+
+The argument here is cleaner than I had remembered. The objection — "we have a Bible, there cannot be any more" — does not get a proof-text in reply. It gets a question about God's character: "I am the same yesterday, today, and forever... because I have spoken one word, ye need not suppose that I cannot speak another; for my work is not yet finished." A closed canon is not a claim about the book; it is a claim about God — that he used to talk and then stopped. And that God would not be the same one. The sameness of God is the very thing that keeps him speaking. I find that quietly bracing: the reason there can be more is that he has not changed.
+
+And the rebuke landed hard. The Gentiles love the Bible and hate the Jews who gave it. Treasure the gift, despise the giver. "What thank they the Jews for the Bible which they receive from them?" Gratitude for scripture ought to make you love its source — not its source's enemies.
