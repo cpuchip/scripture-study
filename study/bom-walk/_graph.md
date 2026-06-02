@@ -450,6 +450,14 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - person: `king-Benjamin` (records names, consecrates Mosiah, dies) · `the-people` (covenanted, named, dismissed) · `Mosiah` (son, consecrated king, servant-king like his father) · `the-appointed-priests` (teachers / rememberers-keepers)
 - practice: `covenant-recorded` (vv1-2 — heart-change institutionalized into a roster; the name in the heart also written down) · `teachers-stir-up-remembrance` (v3 — even the changed need teachers to keep the oath remembered; the retain-thread built into the institution) · `servant-king-tills-own-earth` (vv6-7 — Mosiah reproduces Benjamin's labor; righteous govt a transmissible pattern) · event: `Benjamin-hands-off-and-dies` (a generation closes; chs 2-6 one man's farewell)
 
+## — ZENIFF RECORD (the embedded back-fill, Mosiah 7-22) —
+
+### from Mosiah 7 (the lost colony found / bondage as covenant-in-reverse)
+- person: `king-Mosiah` (sends the expedition) · `Ammon` (descendant of Zarahemla, leader of the 16) + `Amaleki`/`Helem`/`Hem` · `king-Limhi` (son of Noah, son of Zeniff; in bondage) · `the-people-of-Limhi` (taxed, mourning) · `the-Lamanites` (oppressors) · `Zeniff` (over-zealous founder, deceived) · `king-Laman` (the deceiver) · `the-unnamed-slain-prophet` (= Abinadi, v26 → 17:20)
+- place: `Zarahemla` · `land/city-of-Lehi-Nephi` · `Shilom` · `hill-north-of-Shilom` · `temple-of-Limhi`
+- doctrine: `bondage-as-covenant-in-reverse` (vv20,25,29 — sin → bondage; God withholds succor) · `sow-filthiness-reap-the-whirlwind` (vv30-31) · `exodus-as-grammar-of-hope` (v19) · `turn-plus-effectual-struggle-on-Gods-timetable` (vv18,33) · `Christ-the-God-come-down-in-flesh` (v27 — Abinadi's Christology previewed; image of God) · event: `prophet-slain-for-testifying-of-Christ` (vv26-28)
+- structure: `embedded-record-read-end-first` (Mormon splices the colony's story in; Limhi in chains seen BEFORE Zeniff's optimism → dramatic irony over 9-22)
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -1055,3 +1063,12 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `practice:teachers-stir-up-remembrance` —[even the changed need appointed teachers to keep them remembering the oath; remembrance is a maintained state]→ 6:3 (Mosiah 29:42; Moroni 6:4) — the retain-thread built into the institution
 - `pattern:servant-king-tills-own-earth` —[Mosiah reproduces Benjamin's labor-with-own-hands exactly; righteous government is a transmissible pattern]→ 6:6-7 (Mosiah 2:12-14; 2 Cor 11:9; Acts 20:34)
 - `event:Benjamin-hands-off-and-dies` —[a generation closes; chs 2-6 are one man's farewell]→ 6:4-5 (Mosiah 1:10; 2:30)
+
+### from Mosiah 7
+- `structure:embedded-record-read-end-first` —[Mormon splices the colony's whole story in; we see Limhi in chains BEFORE Zeniff's optimism → dramatic irony over chs 9-22]→ 7:9,21 (Mosiah 8-22)
+- `doctrine:bondage-as-covenant-in-reverse` —[not God's failure: "because of our iniquities... he has brought us into bondage"; God withholds succor in the day of transgression]→ 7:20,25,29 (2 Ne 1:20; Deut 28:15; Judg 2:14) — the prosperity covenant run backward
+- `doctrine:sow-filthiness-reap-the-whirlwind` —[sin ripens into its own harvest; agricultural + inexorable]→ 7:30-31 (Hosea 8:7; Gal 6:7; Mosiah 12:6)
+- `doctrine:exodus-as-grammar-of-hope` —[deliverance grounded in precedent: the God of Egypt + the God who brought our fathers from Jerusalem will deliver again]→ 7:19-20 (Ex 14:21; 1 Ne 17:23-31; D&C 136:21)
+- `doctrine:turn-plus-effectual-struggle-on-Gods-timetable` —[deliverance conditional (turn) + cooperative (struggle) + on God's will/pleasure]→ 7:18,33 (Deut 30:1-10; Lam 5:21; Mosiah 22) — foreshadows escape by stratagem
+- `doctrine:Christ-the-God-come-down-in-flesh` —[Abinadi's Christology previewed: God the Father of all takes the image of man; man made in God's image]→ 7:27 (Mosiah 13:34; 15:1-7; Gen 1:26; Ether 3:14-17)
+- `event:prophet-slain-for-testifying-of-Christ` —[the unnamed prophet = Abinadi; killed for the doctrine of the condescension; proximate cause of the wrath]→ 7:26-28 (Mosiah 17:13-20; Matt 23:37; Hel 13:24)
