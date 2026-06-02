@@ -718,6 +718,10 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - person: `Shiblon` (steady, faithful; suffered among the Zoramites; receives approval) · `Alma-the-younger`
 - doctrine: `bridle-passions-that-ye-may-be-filled-with-love` (v12 — restraint as precondition for love) · `no-other-way-but-Christ` (v9) · `conversion-is-pain-until-the-cry-then-peace` (vv6-8) · theme: `three-sons-three-different-words` (vv2-3) · `inoculate-the-faithful-son-against-pride` (vv11-14 — publican vs Rameumptom)
 
+### from Alma 39 (to Corianton — the grieved father confronts)
+- person: `Corianton` (strayed — boasted, forsook ministry, went after Isabel) · `Alma-the-younger` (rebuke framed by love) · `Isabel` (the harlot at Siron)
+- doctrine: `the-sin-started-in-pride-not-appetite` (v2) · `sexual-sin-ranks-third-because-of-the-power-it-misuses` (vv5-6) · `the-representatives-sin-costs-others-their-belief` (v11) · `repentance-includes-restitution-and-counsel` (vv10-13) · theme: `harrowing-the-soul-for-its-good` (vv7-8) · `rebuild-the-belief-under-the-behavior` (vv15-19 → 40-42)
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -1865,3 +1869,11 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `doctrine:no-other-way-but-Christ` —["there is no other way or means whereby man can be saved, only in and through Christ... he is the life and the light of the world"; Alma's failed flight from God is his proof]→ 38:9 (Alma 21:9; John 14:6; 2 Ne 31:21; Mosiah 3:17)
 - `doctrine:conversion-is-pain-until-the-cry-then-peace` —["never, until I did cry out unto the Lord Jesus Christ for mercy, did I receive a remission... I did cry unto him and I did find peace to my soul"; the Alma 36 chiasmus told plain]→ 38:6-8 (Alma 36:17-20; Mosiah 4:1-3; Enos 1:4-8)
 - `theme:inoculate-the-faithful-son-against-pride` —["Do not say: O God, I thank thee that we are better than our brethren; but rather... O Lord, forgive my unworthiness... acknowledge your unworthiness before God at all times"; the most faithful son warned against pride — it grows best in good soil]→ 38:11-14 (Alma 31:16; Luke 18:9-14; 1 Cor 10:12)
+
+### from Alma 39
+- `doctrine:the-sin-started-in-pride-not-appetite` —["thou didst go on unto boasting in thy strength and thy wisdom" precedes "forsake the ministry... after the harlot Isabel"; the exact warning Shiblon heeded (38:11); pride cleared the ground]→ 39:2-3 (Alma 38:11; Prov 16:18; 1 Cor 10:12)
+- `doctrine:sexual-sin-ranks-third-because-of-the-power-it-misuses` —["most abominable above all sins save it be the shedding of innocent blood or denying the Holy Ghost"; the three gravest sins misuse life/light at the source — procreation is the power humans share most directly with God]→ 39:5-6 (D&C 64:10; Moroni 8:28; Gen 1:28)
+- `doctrine:the-representatives-sin-costs-others-their-belief` —["how great iniquity ye brought upon the Zoramites; for when they saw your conduct they would not believe in my words"; the missionary's private sin has a body count of unbelief]→ 39:11 (2 Sam 12:14; Rom 2:21-24; 1 Cor 9:14; Matt 18:6)
+- `theme:harrowing-the-soul-for-its-good` —["I would not dwell upon your crimes, to harrow up your soul, if it were not for your good"; the man harrowed three days himself knows the pain is the door to the cry; love that says the hard true thing]→ 39:7-8 (Alma 36:12-21; 2 Cor 7:8-10; Heb 12:6; Prov 27:6)
+- `doctrine:repentance-includes-restitution-and-counsel` —["return unto them, and acknowledge your faults"; "counsel with your elder brothers... ye stand in need to be nourished by your brothers"; the proud son sent to submit to the brothers he outshone]→ 39:10-13 (Mosiah 27:35; Ezek 33:15; James 5:16; Prov 11:14)
+- `theme:rebuild-the-belief-under-the-behavior` —[Corianton "marvels" at the doctrine; Alma discerns the sin had roots in doubt and answers it (40-42); a son falls when the framework that would hold him stops seeming real; rebuke + doctrine = one act of reclamation]→ 39:15-19 (Alma 40-42; Alma 29:8; Jacob 4:4-6)
