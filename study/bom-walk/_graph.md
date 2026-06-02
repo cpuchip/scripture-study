@@ -781,6 +781,10 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - person: `the-people-of-Ammon` (covenant-keepers; want to break the oath out of love, restrained) · `Helaman` (restrains the fathers; leads the 2000 sons) · `the-two-thousand-stripling-warriors` (sons not under the oath; faithfulness their defining trait) · `Captain-Moroni-Lehi` (prisoner-wall)
 - doctrine: `keeping-the-covenant-while-watching-others-bleed-for-it` (vv13-15) · `faithfulness-true-in-whatsoever-entrusted-is-the-defining-trait` (vv20-21) · theme: `the-next-generation-takes-up-what-the-parents-could-not` (vv16-18) · `internal-dissension-costs-ground-again` (vv8-9) · `the-captives-build-their-own-prison-wall` (vv4-5)
 
+### from Alma 54 (Moroni-Ammoron letters)
+- person: `Captain-Moroni` (letter grounded in God/justice/repentance + honest anger) · `Ammoron` (letter grounded in grievance/revenge/agnostic evasion)
+- theme: `two-foundations-conscience-vs-grievance` (whole ch) · `agnosticism-as-moral-evasion` (vv21-22) · `the-tell-of-half-belief` (v22) · `grievance-mutated-into-a-political-claim` (vv17, 24) · `the-borrowed-grievance` (vv23-24 — Zoramite wearing Lamanite grievance) · `honest-anger-vs-cold-dismissal` (vv13, 22)
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -2042,3 +2046,11 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `doctrine:faithfulness-true-in-whatsoever-entrusted-is-the-defining-trait` —["valiant for courage... but this was not all—they were true at all times in whatsoever thing they were entrusted... for they had been taught to keep the commandments"; the most formidable force defined by reliability, taught at home — not prowess]→ 53:20-21 (Alma 18:10; 56:47-48; Luke 16:10; 2 Tim 2:2)
 - `theme:internal-dissension-costs-ground-again` —["because of iniquity amongst themselves... dissensions and intrigue among themselves they were placed in the most dangerous circumstances"; even after victory, division immediately costs ground]→ 53:8-9 (Josh 7:4-5; Alma 51:9; 31:8)
 - `theme:the-captives-build-their-own-prison-wall` —[the Lamanite prisoners "encircle the city of Bountiful... within a wall which they had caused them to build with their own hands"; the work of the captured strengthens the structure that holds them]→ 53:4-5 (Alma 55:25-26; Ex 1:11-14)
+
+### from Alma 54
+- `theme:two-foundations-conscience-vs-grievance` —[Moroni appeals to God, justice, repentance, defensible cause; Ammoron to grievance, revenge, the claim to rule; the war rests on incompatible foundations, not a negotiable dispute]→ 54:5-24 (Alma 43:46-47; Mosiah 10:12-17; Matt 7:24-27)
+- `theme:agnosticism-as-moral-evasion` —["concerning that God... we know not such a being; neither do ye... but behold these things matter not"; not Korihor's flat denial but agnosticism deployed to render God irrelevant — an irrelevant God makes no demands]→ 54:21-22 (Alma 30:48; Ps 14:1; 2 Pet 3:3-5; Rom 1:21)
+- `theme:the-tell-of-half-belief` —["if it so be that there is a devil and a hell, will he not send you there to dwell with my brother"; he scoffs at hell and uses it as an insult in the same breath — you don't taunt with a place you're sure doesn't exist]→ 54:22 (Acts 26:28; Mark 5:7; James 2:19)
+- `theme:grievance-mutated-into-a-political-claim` —["your fathers did wrong their brethren... rob them of their right to the government when it rightly belonged unto them"; the Mosiah-10 grievance refined into a constitutional claim to rule]→ 54:17, 24 (Mosiah 10:12-17; 2 Ne 5:3; 2 Sam 15:2-6)
+- `theme:the-borrowed-grievance` —[Ammoron, "a descendant of Zoram," calls himself "a bold Lamanite" avenging Lamanite wrongs; a Nephite dissenter of Zoramite stock wears Lamanite grievance as a costume — grievance ideologies outlive the injury and get adopted by whoever finds them useful]→ 54:23-24 (1 Ne 4:35; Jacob 1:13; Alma 47:35-36)
+- `theme:honest-anger-vs-cold-dismissal` —[Moroni names his state ("I am in my anger") while grounding the cause in defense; Ammoron's "these things matter not" is the colder thing; transparent fierceness vs studied detachment]→ 54:13, 22 (Eph 4:26; Ps 4:4; Matt 5:37)
