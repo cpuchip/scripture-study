@@ -422,6 +422,13 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - image: `abridger-in-the-ruins` (labors over his dying nation for a future profit he won't see, v1-2,8)
 - transition: THE SEAM (small plates → Mormon's abridgment of large plates, Mosiah onward); editor steps out — it's providence, not method
 
+## — MOSIAH — (Mormon's abridgment begins)
+
+### from Mosiah 1
+- person: `king-benjamin` (teaching father) · his sons (Mosiah, Helorum, Helaman) · `mosiah-II` (new king + record-keeper)
+- doctrine: `record-prevents-dwindling` (without it, even our fathers would have dwindled like the Lamanites, v5 — Omni's Mulekite lesson stated outright) · `search-diligently-to-profit` (having ≠ enough; the profit is in searching, v7) · `name-not-blotted-out-except-by-transgression` (covenant identity, v11-13 → Mosiah 5) · `conditional-preservation` (transgress → preserving power withdrawn, v13)
+- relics: `four-of-the-kingdom` (brass plates + plates of Nephi + sword of Laban + Liahona = word/defense/guidance, v16) · `liahona-heed-and-diligence` (v16-17)
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -980,3 +987,10 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `doctrine:records-are-the-judgment-standard` —[great things, out of which they shall be judged]→ W of M 1:11 (2 Ne 29:11; Rev 20:12)
 - `doctrine:whole-soul-labor` —[Benjamin labors with the faculty of his whole soul]→ W of M 1:18 (Omni 1:26)
 - `transition:seam` —[the stitch joining small plates → Mormon's abridgment (Mosiah onward)]→ W of M (providence, not editorial method)
+
+## — MOSIAH (edges) —
+- `doctrine:record-prevents-dwindling` —[without the preserved/searched record, even our fathers would have dwindled like the Lamanites]→ Mosiah 1:3-5 (Omni 1:14-17; Alma 37:8-9)
+- `doctrine:search-diligently-to-profit` —[having the record is not enough; profit is in the searching]→ Mosiah 1:7 (2 Ne 32:3; John 5:39)
+- `relics:four-of-the-kingdom` —[plates + plates + sword + Liahona = word, defense, guidance]→ Mosiah 1:16 (2 Ne 5:12-14; W of M 1:13)
+- `doctrine:liahona-heed-and-diligence` —[guidance responsive to obedience; unfaithful driven back]→ Mosiah 1:16-17 (1 Ne 16:28-29; Alma 37:38-46)
+- `doctrine:name-not-blotted-out-except-by-transgression` —[covenant identity is a gift, forfeitable only by choosing]→ Mosiah 1:11-13 (Mosiah 5:8-12; Rev 3:5)
