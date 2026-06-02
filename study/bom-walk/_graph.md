@@ -703,6 +703,13 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - person: `the-Zoramite-leaders` (angry the word destroyed their craft; secret purge) · `the-people-of-Ammon` (former refugees now shelter cast-out Zoramites) · `the-new-Zoramite-converts` (expelled; take up arms — not under the Ammonite oath) · `Alma-the-younger` (grieved; pivots to his sons)
 - theme: `the-word-destroys-craft` (vv3-6) · `the-sheltered-become-shelterers` (vv8-9) · `pacifism-was-a-covenant-not-a-blanket-rule` (vv13-14) · `offended-by-the-strictness-of-the-word` (v15) · `pivot-from-public-mission-to-private-stewardship` (v16 — opens 36-42)
 
+## — ALMA'S COUNSEL TO HIS SONS (36-42) —
+*Each charge given "separately" (35:16): Helaman (36-37), Shiblon (38), Corianton (39-42). The book's most personal block — fatherhood after the wide field hardened.*
+
+### from Alma 36 (to Helaman — the conversion told whole, chiastic)
+- person: `Alma-the-younger` (conversion paradigm; persecutor→preacher) · `Helaman` (the son receiving the charge)
+- structure: `chiasmus-centered-on-the-cry` (vv1-30, pivot vv17-18) · doctrine: `pains-of-hell-are-memory-in-Gods-presence` (vv13-16) · `a-different-memory-is-the-rescue` (v17) · `the-cry-stripped-to-the-name-and-mercy` (v18) · `joy-exactly-as-deep-as-the-pain` (vv20-21) · `conversion-becomes-vocation` (v24) · `reproducible-conversion-tasted-eye-to-eye` (v26) · event: `longing-replaces-the-wish-to-be-banished` (vv15, 22)
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -1825,3 +1832,13 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `theme:pacifism-was-a-covenant-not-a-blanket-rule` —[the people of Ammon (under the buried-weapons oath) give place to the Nephite armies; the new Zoramite converts (not under it) "have taken up arms to defend themselves, and their wives, and children"]→ 35:13-14 (Alma 24:17-19; 27:23-24; 43:45-47; 48:14)
 - `theme:offended-by-the-strictness-of-the-word` —["the hearts of the people began to wax hard, and... began to be offended because of the strictness of the word"; the gospel that destroyed Zoramite craft also scandalizes Nephite comfort]→ 35:15 (John 6:60-66; Matt 13:21; 1 Ne 16:2; 2 Ne 9:40)
 - `theme:pivot-from-public-mission-to-private-stewardship` —[grieved that the wide field is hardening, Alma "caused that his sons should be gathered together, that he might give unto them every one his charge, separately"; when you cannot soften a people, tend the few entrusted to you]→ 35:16 (Alma 36-42; Deut 6:6-7; D&C 68:25; 93:40-44)
+
+### from Alma 36
+- `structure:chiasmus-centered-on-the-cry` —[the chapter is a large chiasm — prosper/captivity/trials/born-of-God/destroy-the-church/racked... PIVOT (cry to Jesus vv17-18) ...joy/throne-vision/born-again/delivered/captivity/prosper; the bottom of the soul and its turning are the same moment, placed at the center not the end]→ 36:1-30 (Hebrew poetic form; Mosiah 5:10-12)
+- `doctrine:pains-of-hell-are-memory-in-Gods-presence` —["harrowed up by the memory of my sins... the very thought of coming into the presence of my God did rack my soul with inexpressible horror"; wished to "become extinct both soul and body" rather than be judged; hell = the unendurable clarity of your own record in perfect light]→ 36:13-16 (Alma 12:14; Rev 6:16; D&C 19:11-18; 2 Ne 9:14)
+- `doctrine:a-different-memory-is-the-rescue` —["I remembered also to have heard my father prophesy... concerning... Jesus Christ... to atone"; memory was the torment, a different memory the rescue; the word a parent planted surfaces when the child is drowning]→ 36:17 (Enos 1:3; 1 Ne 10:17-19; 2 Cor 7:10; Prov 22:6)
+- `doctrine:the-cry-stripped-to-the-name-and-mercy` —["O Jesus, thou Son of God, have mercy on me, who am in the gall of bitterness, and am encircled about by the everlasting chains of death"; no bargain, no amends — just the name of Christ and a plea for mercy; the publican's prayer]→ 36:18 (Luke 18:13; Matt 15:22; Mosiah 4:2; Alma 12:11)
+- `doctrine:joy-exactly-as-deep-as-the-pain` —["nothing so exquisite and bitter as were my pains... nothing so exquisite and sweet as was my joy"; the joy is the precise measure of the sorrow; the harrowing was the excavation that made room for it]→ 36:19-22 (Alma 27:17; 2 Cor 7:10; Ps 30:5; John 16:20-22)
+- `event:longing-replaces-the-wish-to-be-banished` —[v15 wished to "become extinct... that I might not be brought to stand in the presence of my God"; v22 "my soul did long to be there"; the cry reversed the deepest direction of desire]→ 36:15, 22 (1 Ne 1:8; Isa 6:1-3; Rev 22:4)
+- `doctrine:conversion-becomes-vocation` —["from that time even until now, I have labored without ceasing... that I might bring them to taste of the exceeding joy of which I did taste"; the joy is the engine of the life, not a private possession]→ 36:24-26 (Alma 29:9; Luke 22:32; 1 Pet 2:3)
+- `doctrine:reproducible-conversion-tasted-eye-to-eye` —["many have been born of God, and have tasted as I have tasted, and have seen eye to eye as I have seen"; the seed experiment (32) confirmed from the far side — conversion is verifiable, not a one-off]→ 36:26 (Alma 32:28; Ps 34:8; 1 Pet 2:3)
