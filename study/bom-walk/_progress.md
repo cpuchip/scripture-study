@@ -1,7 +1,7 @@
 # Book of Mormon Walk — Progress
 
 **STATUS:** walking. Semantic search confirmed live (engine.ibeco.me).
-**NEXT CHAPTER:** 2 Nephi 30
+**NEXT CHAPTER:** 2 Nephi 31
 **DEPTH (ratified 2026-06-01):** mini-study per chapter (study-grade engagement, note-grade finish). Isaiah/long-OT quotations get full exegesis + Nephite framing + the four likening questions (see `_workflow.md`).
 **Started:** 2026-06-01
 **Last updated:** 2026-06-01
@@ -11,7 +11,7 @@
 | Book | Chapters | Done through | Notes |
 |------|---------:|:------------:|-------|
 | 1 Nephi | 22 | **22 ✓ DONE** | spin-offs: ch 4 + ch 11 |
-| 2 Nephi | 33 | **29** | 25-33 = Nephi's plainness (no KJV fetch); 26:33 answers 5:21; 25:23 grace + 28 devil's-strategies = spin-off candidates |
+| 2 Nephi | 33 | **30** | 25-33 = Nephi's plainness; 26:33 + 30:6 (white→pure) both answer 5:21; 25:23 grace + 28 devil's-strategies = spin-off candidates |
 | Jacob | 7 | — | |
 | Enos | 1 | — | |
 | Jarom | 1 | — | |
@@ -26,7 +26,7 @@
 | Ether | 15 | — | Jaredite record |
 | Moroni | 10 | — | |
 
-**Total: 239 chapters. Done: 51.** · 1 Nephi COMPLETE (22/22); 2 Nephi 29/33. · Isaiah block (12-24) COMPLETE. · Spin-off studies: **5 done** (`1ne4`, `1ne11`, `2ne1_prosperity-covenant`, `2ne2_fall-agency-opposition`, `2ne9_atonement-monster-and-gate`). · **OPEN for Michael:** 2 Ne 5:21 complexion/curse language — flagged, not autonomously resolved.
+**Total: 239 chapters. Done: 52.** · 1 Nephi COMPLETE (22/22); 2 Nephi 30/33. · Isaiah block (12-24) COMPLETE. · Spin-off studies: **5 done** (`1ne4`, `1ne11`, `2ne1_prosperity-covenant`, `2ne2_fall-agency-opposition`, `2ne9_atonement-monster-and-gate`). · **OPEN for Michael:** 2 Ne 5:21 complexion/curse language — flagged, not autonomously resolved. (Walk surfaced TWO in-text answers for the with-Michael study: **26:33** "all are alike unto God, black and white"; **30:6** the documented white→pure edition change + "scales of darkness" = sight not skin.)
 
 ## Book folder names (created lazily as reached)
 `1-nephi · 2-nephi · jacob · enos · jarom · omni · words-of-mormon · mosiah · alma · helaman · 3-nephi · 4-nephi · mormon · ether · moroni`

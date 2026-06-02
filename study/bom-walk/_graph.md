@@ -324,6 +324,12 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - rebuke: `ingratitude-to-the-jews` (treasure the Bible, hate its givers, v4-5 — scriptural rebuke of anti-Semitism)
 - image: `word-gathered-in-one` (two sticks / all records run together, v14; Ezek 37:17)
 
+### from 2 Nephi 30 (covenant fulfilled + millennial peace)
+- doctrine: `covenant-by-repentance-not-race` (Gentiles who repent ARE covenant; Jews who won't are cast off, v2) · `peace-by-knowledge` (Isa 11 re-quoted, v15) · `total-revelation` (nothing sealed but shall be loosed, v16-17) · `Satan-bound` (v18)
+- image: `scales-of-darkness-fall` (recovery of sight, not skin, v6; Acts 9:18)
+- textual: `white→pure` (v6 — 1830 "white" → Joseph's 1840 "pure", restored 1981 — **bears on the 5:21 flag**: trajectory toward purity/righteousness not pigment)
+- event: Nephi ends his prophesying (v18)
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -751,3 +757,11 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `rebuke:ingratitude-to-the-jews` —[treasure the Bible, hate its givers]→ 29:4-5 (Rom 3:1-2; 11:18)
 - `doctrine:judged-out-of-the-books` —[the records are the judgment standard]→ 29:11 (2 Ne 25:22; Rev 20:12)
 - `image:word-gathered-in-one` —[the two sticks / all records run together]→ 29:14 (Ezek 37:17; 1 Ne 13:41)
+
+### from 2 Nephi 30
+- `doctrine:covenant-by-repentance-not-race` —[Gentiles who repent are covenant; Jews who won't are cast off]→ 30:1-2 (Gal 3:29; 2 Ne 26:33; 1 Ne 17:35)
+- `textual:white→pure` —[1830 "white" → Joseph's 1840 "pure", restored 1981]→ 30:6 · —[bears on]→ `tension:complexion-language` 5:21 (text's trajectory = purity not pigment; with 26:33)
+- `image:scales-of-darkness-fall` —[recovery of sight/knowledge, not skin]→ 30:6 (Acts 9:18; 3 Ne 2:15; 2 Ne 9:9)
+- `doctrine:peace-by-knowledge` —[Isaiah 11 re-quoted as the climax]→ 30:15 (2 Ne 21:9; D&C 130:18)
+- `doctrine:total-revelation` —[nothing secret/sealed but shall be loosed]→ 30:16-17 (Luke 12:2; Ether 4:7)
+- `doctrine:Satan-bound` —[no power over hearts, for a long time]→ 30:18 (Rev 20:2; 1 Ne 22:26)

@@ -341,3 +341,11 @@ The antidote is almost the opposite of comfort: "line upon line... unto him that
 The argument here is cleaner than I had remembered. The objection — "we have a Bible, there cannot be any more" — does not get a proof-text in reply. It gets a question about God's character: "I am the same yesterday, today, and forever... because I have spoken one word, ye need not suppose that I cannot speak another; for my work is not yet finished." A closed canon is not a claim about the book; it is a claim about God — that he used to talk and then stopped. And that God would not be the same one. The sameness of God is the very thing that keeps him speaking. I find that quietly bracing: the reason there can be more is that he has not changed.
 
 And the rebuke landed hard. The Gentiles love the Bible and hate the Jews who gave it. Treasure the gift, despise the giver. "What thank they the Jews for the Bible which they receive from them?" Gratitude for scripture ought to make you love its source — not its source's enemies.
+
+## 2 Nephi 30 — the word that changed from white to pure (2026-06-01)
+
+The verse I flagged in chapter 5 got a second answer tonight, and this one is in the text's own history. Chapter 30 says the restored remnant will become "a pure and a delightsome people." But the 1830 edition said "white." Joseph Smith changed it to "pure" in 1840. The Prophet himself moved the word away from the skin and toward the soul.
+
+And the verse around it makes the meaning obvious anyway: what falls is "scales of darkness... from their eyes" — blindness lifting, not pigment changing — and what they are restored to is "the knowledge of Jesus Christ." Delightsome means *seeing*. I still will not close chapter 5; that is for Michael and the Spirit. But the data keeps pointing the same direction: 26:33 says all are alike, and 30:6 says the change is purity, not color.
+
+And Nephi ends his prophesying right where the whole Isaiah block ended — the wolf with the lamb, the earth full of the knowledge of the Lord. He opened plain ("we talk of Christ") and he closes on peace by knowing. He knew where he was going the entire time.
