@@ -305,6 +305,13 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - image: `voice-from-the-dust` (the BoM as a buried people's whisper, v15-16; Isa 29:4)
 - thread: `grind-the-face-of-the-poor` (Isaiah-block carryover, v20 ← 13:15)
 
+### from 2 Nephi 27 (sealed book — Nephi's expansion of Isaiah 29)
+- person: `the-unlearned-man` (Joseph Smith) · `the-learned-man` (Anthon, by fulfillment) · `three-witnesses`
+- prophecy: `sealed-book-coming-forth` (BoM prophesies its own emergence, v6-23; Anthon fulfillment JS-H 1:64-65)
+- doctrine: `marvelous-work-through-the-unlearned` ("I am able to do mine own work", v20,26 — God picks the instrument that can't boast) · `lip-religion` (precepts of men, v25; JS-H 1:19) · `faith-gated-miracles` (v23)
+- image: `made-thing-denies-its-maker` (potter/clay, v27 — axe-boast at its root; cf 20:15)
+- NOTE: expansion of Isa 29, NOT a verbatim block — no per-verse KJV variant comparison (vv6-23 unique to BoM)
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -708,3 +715,10 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `doctrine:inclusivity-grounded-in-atonement` —[loveth the world, lays down his life to draw all]→ 26:24 (John 3:16; 12:32)
 - `image:voice-from-the-dust` —[the BoM as a buried people's whisper]→ 26:15-16 (Isa 29:4; 2 Ne 3:19)
 - `doctrine:Spirit-will-not-always-strive` —[then speedy destruction]→ 26:11 (Gen 6:3; 1 Ne 7:14)
+
+### from 2 Nephi 27 (sealed book)
+- `prophecy:sealed-book-coming-forth` —[the BoM prophesies its own emergence]→ 27:6-23 (Isa 29:11-12; JS-H 1:64-65 Anthon fulfillment)
+- `doctrine:marvelous-work-through-the-unlearned` —["I am able to do mine own work"; wisdom of the wise perishes]→ 27:20,26 (Isa 29:14; 1 Cor 1:19-27) — God picks the instrument that can't boast
+- `image:made-thing-denies-its-maker` —[shall the work say he made me not?]→ 27:27 (Isa 29:16; Rom 9:20) — axe-boast at its root (cf 20:15)
+- `doctrine:lip-religion` —[draw near with mouth, hearts far off, precepts of men]→ 27:25 (Isa 29:13; JS-H 1:19; Matt 15:8)
+- `doctrine:faith-gated-miracles` —[work not save according to their faith]→ 27:23 (Moroni 7:37; Ether 12:12)
