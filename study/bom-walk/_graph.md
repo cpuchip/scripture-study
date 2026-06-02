@@ -722,6 +722,10 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - person: `Corianton` (strayed — boasted, forsook ministry, went after Isabel) · `Alma-the-younger` (rebuke framed by love) · `Isabel` (the harlot at Siron)
 - doctrine: `the-sin-started-in-pride-not-appetite` (v2) · `sexual-sin-ranks-third-because-of-the-power-it-misuses` (vv5-6) · `the-representatives-sin-costs-others-their-belief` (v11) · `repentance-includes-restitution-and-counsel` (vv10-13) · theme: `harrowing-the-soul-for-its-good` (vv7-8) · `rebuild-the-belief-under-the-behavior` (vv15-19 → 40-42)
 
+### from Alma 40 (the resurrection — answer to the worried son)
+- person: `Alma-the-younger` (revelation-vs-opinion honesty) · `Corianton` (worried about the resurrection)
+- doctrine: `the-space-and-the-intermediate-state` (vv11-14 — paradise/rest, outer darkness/fearful-looking-for) · `the-resurrection-restores-the-perfect-frame` (v23 — not a hair lost) · `resurrection-certain-the-floor-under-repentance` (vv4-21) · `universal-resurrection-divergent-destinies` (vv25-26) · theme: `prophetic-intellectual-honesty-revelation-vs-opinion` (vv5, 20) · `resurrection-makes-mortality-matter-forever` (vv21, 26)
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -1877,3 +1881,10 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `theme:harrowing-the-soul-for-its-good` —["I would not dwell upon your crimes, to harrow up your soul, if it were not for your good"; the man harrowed three days himself knows the pain is the door to the cry; love that says the hard true thing]→ 39:7-8 (Alma 36:12-21; 2 Cor 7:8-10; Heb 12:6; Prov 27:6)
 - `doctrine:repentance-includes-restitution-and-counsel` —["return unto them, and acknowledge your faults"; "counsel with your elder brothers... ye stand in need to be nourished by your brothers"; the proud son sent to submit to the brothers he outshone]→ 39:10-13 (Mosiah 27:35; Ezek 33:15; James 5:16; Prov 11:14)
 - `theme:rebuild-the-belief-under-the-behavior` —[Corianton "marvels" at the doctrine; Alma discerns the sin had roots in doubt and answers it (40-42); a son falls when the framework that would hold him stops seeming real; rebuke + doctrine = one act of reclamation]→ 39:15-19 (Alma 40-42; Alma 29:8; Jacob 4:4-6)
+
+### from Alma 40
+- `doctrine:the-space-and-the-intermediate-state` —[at death spirits "taken home to that God who gave them life"; righteous to "paradise, a state of rest... peace," wicked to "outer darkness... awful, fearful looking for the fiery indignation"; both wait until the resurrection]→ 40:11-14 (Eccl 12:7; Luke 16:19-26; D&C 138; Alma 34:34)
+- `doctrine:the-resurrection-restores-the-perfect-frame` —["every limb and joint shall be restored... even a hair of the head shall not be lost; but all things shall be restored to their proper and perfect frame"; the body redeemed not discarded — spirit + body reunited, glorified together]→ 40:23 (1 Cor 15:42-54; 2 Ne 9:13; Alma 11:43-45; Philip 3:21)
+- `theme:prophetic-intellectual-honesty-revelation-vs-opinion` —["whether... one time, or a second... it mattereth not; for God knoweth"; "I do not say... I give it as my opinion"; a prophet flags the line between revealed and inferred — honesty makes the certainty more trustworthy]→ 40:5, 20-21 (D&C 9:8-9; 1 Cor 7:25; Jacob 4:13)
+- `doctrine:resurrection-certain-the-floor-under-repentance` —[answering the doubt that death is the end (Korihor); "there is a time appointed that all shall rise... be reunited, both soul and body, and be brought to stand before God, and be judged"; re-laying the floor that makes repentance make sense]→ 40:4-21 (Alma 30:18; John 5:28-29; Alma 11:41-45)
+- `theme:resurrection-makes-mortality-matter-forever` —["the righteous shall shine forth in the kingdom of God" vs the wicked "drink the dregs of a bitter cup"; all rise in a perfect frame but to divergent destinies, "judged according to their works"; the resurrection makes the stakes of now eternal]→ 40:25-26 (Dan 12:3; Matt 13:43; 1 Cor 6:9-10; Alma 41:3-5)
