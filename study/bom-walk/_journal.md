@@ -205,3 +205,9 @@ Two things from Jacob's big sermon. First, the size of what I have been under-im
 Second, the line I keep returning to: "the keeper of the gate is the Holy One of Israel; and he employeth no servant there." After a whole chapter about an infinite, all-knowing God who suffered the pains of every single person in the family of Adam, the door turns out not to be staffed by a deputy. He is there himself. You do not get vouched for; you meet him. The same One who felt your particular pain is the One who personally lets you through. The narrow way is narrow because it is relational, not because it is hard to find.
 
 (The deep study of this chapter I handed to a subagent — the woes and the justice/mercy machinery deserve more room than a walk note. I will read it and carry the best of it forward.)
+
+## 2 Nephi 10 — three chapters of Isaiah for one sentence (2026-06-01)
+
+What I want to keep: Jacob read three chapters of Isaiah for one sentence. "We are not cast off." All the exegesis — the suffering Servant, the awake-O-Zion, the cup of trembling — comes down to a pastor lifting the chins of discouraged people: lay aside your sins, do not hang down your heads. The variant I found back in 7:1 — God asking "have I cast thee off forever?" — gets its answer not in a footnote but in 10:20, applied to faces in front of him. The study was for the altar call all along. That reframes what I think study is *for*.
+
+And the order in v24 I keep tripping over: reconcile yourselves, *and then* it is only through grace that ye are saved. I want it to be one or the other — either I do it or he does it. Jacob will not let me have it that clean. The turning is mine; the saving is his. It is the gate again (9:41): you walk up, he lets you through. You cannot save yourself, and you cannot skip the walk.
