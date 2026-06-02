@@ -647,7 +647,9 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - person: `Aaron` (preaches the atonement into counterfeit-religious room; mocked; imprisoned; eventually fruitful) · `the-Amalekites-Amulonites` (Nehorite apostate-dissenters; "still harder") · `Muloki-Ammah` (Aaron's companions) · `Lamoni` (refuses Ammon's servanthood; decrees religious freedom)
 - theme: `apostates-are-the-hardest-ground` (v3) · `denying-prophecy-to-immunize-the-present` (v8) · `preach-the-atonement-plainly-regardless-of-reception` (vv9-10) · `Spirit-led-mission-go-where-admitted` (vv16-17) · doctrine: `counterfeit-religion-removes-the-need-to-repent` (v6 — Nehor's "God saves all men") · event: `Lamoni-decrees-religious-freedom` (vv19-22)
 
-## Edges
+### from Alma 22 (Aaron + the over-king — "give away all my sins")
+- person: `Lamonis-father-the-over-king` (prepared by Ammon's love; converted; decrees religious freedom kingdom-wide) · `Aaron` (reproducible conversion template; raises the king; converts the household)
+- doctrine: `give-away-not-give-up-and-not-then` (v18 — Michael's study verse) · `atonement-creed-could-not-merit-of-himself` (v14) · theme: `the-conversion-method-is-reproducible` (vv7-23 — Aaron = Ammon's play) · `the-seed-of-love-works-in-the-dark` (v3) · `rich-young-ruler-rewritten` (v15) · event: `over-king-and-whole-household-converted` (vv22-27) · reference: `land-division-narrow-neck` (vv27-34 — Mormon's geography)
 
 ### from 1 Nephi 1
 - `type:pillar-of-fire` —[cross-ref/type]→ Ex 13:21 (Israel's deliverance)
@@ -1652,3 +1654,12 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `theme:preach-the-atonement-plainly-regardless-of-reception` —[Aaron opens the scriptures: "no redemption for mankind save it were through the death and sufferings of Christ, and the atonement of his blood"; preached into a room that mocked]→ 21:9-10 (Mosiah 3:17; Alma 22:14; 1 Cor 1:23)
 - `theme:Spirit-led-mission-go-where-admitted` —["they went forth whithersoever they were led by the Spirit... preaching in every synagogue where they could be admitted"; the Pauline pattern; the hard field yields after the prison]→ 21:16-17 (Acts 16:6; Alma 17:9; D&C 18:44)
 - `event:Lamoni-decrees-religious-freedom` —[the convert-king refuses Ammon's servanthood (relationship transfigured) and legislates "the liberty of worshiping the Lord their God according to their desires"; the gospel that freed his soul becomes law freeing his people's worship]→ 21:19-22 (Alma 17:25; A of F 1:11; D&C 134:1-4)
+
+### from Alma 22
+- `doctrine:give-away-not-give-up-and-not-then` —["I will give away all my sins to know thee, and that I may be raised"; "give away" (discard) not "give up" (surrender); the conjunction is and-not-then — repentance and revelation one motion, not a bargain; struck down instantly]→ 22:18 (study:give-away-all-my-sins; Matt 13:46; Alma 5:14)
+- `theme:the-conversion-method-is-reproducible` —[Aaron repeats Ammon's exact play on a second king: Great Spirit → God → creation → fall → plan of redemption → struck down → raised → household converted; the method is the plan taught from where the hearer stands]→ 22:7-23 (Alma 18:24-39; Acts 2:37)
+- `theme:the-seed-of-love-works-in-the-dark` —[the king "troubled in mind because of the generosity and the greatness of the words of thy brother Ammon" before Aaron spoke; the ch 20 selfless love had already turned the soil]→ 22:3 (Alma 20:26; 1 Cor 3:6)
+- `theme:rich-young-ruler-rewritten` —["I will give up all that I possess, yea, I will forsake my kingdom"; the king volunteers the kingdom the rich young ruler couldn't part with]→ 22:15 (Matt 19:16-22; 13:44-46; Luke 18:28-30)
+- `doctrine:atonement-creed-could-not-merit-of-himself` —["since man had fallen he could not merit anything of himself; but the sufferings and death of Christ atone... the sting of death should be swallowed up in the hopes of glory"; grace + resurrection in two breaths]→ 22:14 (Eph 2:8-9; 1 Cor 15:55; 2 Ne 9:8-9; Alma 34:9)
+- `event:over-king-and-whole-household-converted` —[raised by Aaron ("Stand"), the king ministers, "his whole household were converted," then decrees religious freedom kingdom-wide]→ 22:22-27 (Alma 19:29-30; 21:21-22; 23:1-4)
+- `reference:land-division-narrow-neck` —[Mormon orients the reader: Nephite/Lamanite division, the narrow strip + "small neck of land," Bountiful/Desolation; Desolation = the Jaredite death-land]→ 22:27-34 (Mosiah 8:7-12; 28:17-19; Ether 6-7; Alma 50:34)
