@@ -307,3 +307,9 @@ Thirteen chapters of the proud being brought low, and finally Isaiah names the f
 Which is exactly backwards from the One I watched go *down* in First Nephi 11 — God descending into a manger and onto a cross, and being lifted. Pride goes up and falls. Love goes down and is raised. The two directions are the whole story.
 
 And the block does not end on the pit. It ends on Zion founded, and "the poor of his people shall trust in it." The poor whose faces got ground back in chapter 13 are the ones standing safe at the end. The mountain rose (chapter 12), all the proud heights came down, and the lowly got the refuge. That is the shape of the entire Isaiah block — and I would not have seen the bookend if I had not walked it whole, the mountain rising at the start and the poor trusting at the end.
+
+## 2 Nephi 25 — plainness is a kindness (2026-06-01)
+
+After all that Isaiah, Nephi does the kindest thing a teacher can do: he gets plain. "My soul delighteth in plainness unto my people, that they may learn." Thirteen chapters of dense prophecy, and then he turns and says, in effect, *here is what it all means* — and it is a name. Jesus Christ, the Son of God, coming in six hundred years. The whole point of the hard words was a plain person.
+
+And the line I will carry is v26: "we talk of Christ, we rejoice in Christ, we preach of Christ, we prophesy of Christ... that our children may know to what source they may look for a remission of their sins." That is not a doctrine. It is a household's daily speech. The plainness is not dumbing-down; it is making sure the children know where to look. Nephi quoted the hardest prophet in the canon and then made sure no one would get lost in him — the dense block gets its plain interpreter in the very next chapter. That is what a good teacher does with hard material: not skip it, but stand beside it and point.
