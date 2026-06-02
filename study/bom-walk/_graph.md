@@ -675,6 +675,10 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - event: `the-tremendous-battle` (vv1-3 — greatest since Lehi; tens of thousands slain)
 - theme: `Mormon-lingers-on-the-cost` (vv4-6 — the cry of widows) · `sorrow-and-joy-held-together` (v14) · `the-call-to-labor-in-the-vineyard` (v14) · doctrine: `the-two-mournings-fear-vs-hope` (vv11-12) · `inequality-is-self-made-not-God-imposed` (v13 — 5:21 thread)
 
+### from Alma 29 (O that I were an angel — ambition corrected to contentment)
+- person: `Alma-the-younger` (the soliloquy; holy-ambition-corrected)
+- doctrine: `wanting-more-than-your-allotment-is-sin` (vv3-6 — Mosiah 4:27 from inside) · `God-grants-according-to-desire` (vv4-5) · `God-teaches-every-nation-in-its-own-tongue` (v8 — 5:21-adjacent) · theme: `scale-ambition-to-one-soul-through-your-calling` (vv6-9) · `joy-fuller-in-others-success` (vv14-16)
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -1740,3 +1744,10 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `doctrine:inequality-is-self-made-not-God-imposed` —["how great the inequality of man is because of sin and transgression, and the power of the devil... cunning plans"; eternal outcomes diverge by agency + the snare, not divine favoritism (cf. God esteems all flesh in one)]→ 28:13 (1 Ne 17:35; 2 Ne 9:28; Alma 3:19) — 5:21-study thread: self-authored, not God-imposed
 - `theme:sorrow-and-joy-held-together` —["the great reason of sorrow, and also of rejoicing — sorrow because of death... and joy because of the light of Christ unto life"; both carried, neither cancels]→ 28:14 (Eccl 3:4; John 16:20-22; 2 Cor 6:10)
 - `theme:the-call-to-labor-in-the-vineyard` —["the great call of diligence of men to labor in the vineyards of the Lord"; conversion is the labor of changing which mourning a family will one day do]→ 28:14 (Jacob 5:61-72; D&C 4:4; Alma 26:5)
+
+### from Alma 29
+- `doctrine:wanting-more-than-your-allotment-is-sin` —["O that I were an angel... cry repentance unto every people!" → "I am a man, and do sin in my wish; for I ought to be content with the things which the Lord hath allotted unto me"; even holy ambition becomes sin when it refuses the bounds of stewardship]→ 29:1-6 (Mosiah 4:27; D&C 107:99; 1 Cor 12:14-18) — the pacing covenant from the inside
+- `doctrine:God-grants-according-to-desire` —["he granteth unto men according to their desire... according to their wills, whether they be unto salvation or unto destruction"; judgment as God ratifying the desire a life cultivated; why angelic compulsion would be wrong — it overrides agency]→ 29:4-5 (2 Ne 2:27; Ps 37:4; Alma 41:5)
+- `doctrine:God-teaches-every-nation-in-its-own-tongue` —["the Lord doth grant unto all nations, of their own nation and tongue, to teach his word... all that he seeth fit"; the distributed work — you are not the only instrument; relief not defeat]→ 29:8 (2 Ne 29:12; 3 Ne 26:8; D&C 90:11; Acts 2:6) — 5:21-adjacent
+- `theme:scale-ambition-to-one-soul-through-your-calling` —["why should I desire more than to perform the work to which I have been called?... this is my glory, that perhaps I may be an instrument... to bring some soul to repentance"; "some soul" replaces "every people"]→ 29:6-9 (Alma 26:12; D&C 18:15-16; Luke 15:7)
+- `theme:joy-fuller-in-others-success` —["I do not joy in my own success alone, but my joy is more full because of the success of my brethren... my soul is carried away, even to the separation of it from the body"; the corrected ambition rejoices hardest in what others did]→ 29:14-16 (Alma 27:17; Philip 1:18; 3 John 1:4)
