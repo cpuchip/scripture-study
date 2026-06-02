@@ -190,6 +190,11 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - doctrine: `infinite-atonement` (reasoned 9:6-7) · `spirit-becomes-like-the-devil` (9:8-9) · `two-fold-deliverance` (grave+hell 9:11-13) · `Christ-suffers-every-individual-pain` (9:21) · `learning-good-IF-hearken` (9:28-29) · `carnal-vs-spiritual-mind` (9:39)
 - study: `2ne9_atonement-monster-and-gate` (spin-off — IN PROGRESS, Sonnet subagent)
 
+### from 2 Nephi 10 (Jacob's sermon concludes)
+- person: `the-angel` (names Christ, 10:3) · `the-Gentiles` (afflict → softened → numbered with Israel) · `our-brethren-on-other-isles` (10:21)
+- doctrine: `name-Christ-by-angel` (~559 BC) · `crucifixion-at-Jerusalem` (privilege+priestcraft NOT race) · `land-of-liberty-no-king-but-Christ` · `two-churches-by-allegiance` (10:16) · `gentile-adoption` (10:18) · `we-are-not-cast-off` (10:20, answers 7:1 variant) · `reconcile-then-grace` (10:24)
+- reading: `isles-plural→other-branches` (Jacob reasons from grammar, 10:21)
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -438,3 +443,14 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `doctrine:carnal-vs-spiritual-mind` —[death vs life eternal]→ 9:39 (Rom 8:6)
 - `image:keeper-of-the-gate-no-servant` —[Christ in person, no proxy]→ 9:41 (2 Ne 31:9; John 10:7-9)
 - `seq:cosmos→woes→gate` —[universal rescue ≠ cancelled accountability]→ 9:6-41
+
+### from 2 Nephi 10 (Jacob's sermon concludes)
+- `seq:isaiah-arc→altar-call` —[whole point of chs 7-8]→ 10:20 ("we are not cast off" answers the 7:1 variant)
+- `doctrine:reconcile-then-grace` —[turning is ours, saving is his]→ 10:24-25 (2 Ne 25:23; gate 9:41)
+- `doctrine:agency` —[pastoral payoff: free to act]→ 10:23 (2 Ne 2:27)
+- `prophecy:name-Christ-by-angel` —[~559 BC]→ 10:3 (Mosiah 3:8)
+- `doctrine:crucifixion-at-Jerusalem` —[privilege + priestcraft, NOT race]→ 10:3-5
+- `doctrine:land-of-liberty-no-king-but-Christ` —[10:11-14]→ 2 Ne 1:7; Ether 2:12
+- `doctrine:two-churches-by-allegiance` —[fight Zion = whore; not-for-me = against me]→ 10:16 (1 Ne 14:10; Matt 12:30)
+- `doctrine:gentile-adoption` —[afflict → soften → numbered with Israel]→ 10:18 (Gal 3:29)
+- `reading:isles-plural→other-branches` —[reasons from grammar]→ 10:21 (likening method 6:5)

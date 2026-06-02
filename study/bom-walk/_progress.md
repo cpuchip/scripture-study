@@ -1,7 +1,7 @@
 # Book of Mormon Walk — Progress
 
 **STATUS:** walking. Semantic search confirmed live (engine.ibeco.me).
-**NEXT CHAPTER:** 2 Nephi 10
+**NEXT CHAPTER:** 2 Nephi 11
 **DEPTH (ratified 2026-06-01):** mini-study per chapter (study-grade engagement, note-grade finish). Isaiah/long-OT quotations get full exegesis + Nephite framing + the four likening questions (see `_workflow.md`).
 **Started:** 2026-06-01
 **Last updated:** 2026-06-01
@@ -11,7 +11,7 @@
 | Book | Chapters | Done through | Notes |
 |------|---------:|:------------:|-------|
 | 1 Nephi | 22 | **22 ✓ DONE** | spin-offs: ch 4 + ch 11 |
-| 2 Nephi | 33 | **9** | Jacob's sermon; 9 spin-off IN PROGRESS (Sonnet subagent); 10 concludes; 5:21 FLAGGED |
+| 2 Nephi | 33 | **10** | Jacob's sermon done; 9 spin-off IN PROGRESS; 11-24 = Nephi's big Isaiah block ahead; 5:21 FLAGGED |
 | Jacob | 7 | — | |
 | Enos | 1 | — | |
 | Jarom | 1 | — | |
@@ -26,7 +26,7 @@
 | Ether | 15 | — | Jaredite record |
 | Moroni | 10 | — | |
 
-**Total: 239 chapters. Done: 31.** · 1 Nephi COMPLETE (22/22); 2 Nephi 9/33. · Spin-off studies: **4 done** (`1ne4`, `1ne11`, `2ne1_prosperity-covenant`, `2ne2_fall-agency-opposition`). · **OPEN for Michael:** 2 Ne 5:21 complexion/curse language — flagged, not autonomously resolved.
+**Total: 239 chapters. Done: 32.** · 1 Nephi COMPLETE (22/22); 2 Nephi 10/33. · Spin-off studies: **4 done** (`1ne4`, `1ne11`, `2ne1_prosperity-covenant`, `2ne2_fall-agency-opposition`). · **OPEN for Michael:** 2 Ne 5:21 complexion/curse language — flagged, not autonomously resolved.
 
 ## Book folder names (created lazily as reached)
 `1-nephi · 2-nephi · jacob · enos · jarom · omni · words-of-mormon · mosiah · alma · helaman · 3-nephi · 4-nephi · mormon · ether · moroni`
