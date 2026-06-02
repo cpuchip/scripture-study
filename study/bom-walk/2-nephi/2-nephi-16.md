@@ -1,0 +1,49 @@
+# 2 Nephi 16 — Isaiah 6: "Here Am I; Send Me" — The Coal Before the Call
+
+*(Isaiah block — Isaiah 6. Full protocol: exegesis + variants + likening. The vision Nephi anchored his witness on, 11:2. Compare Isaiah 6.)*
+
+**Binding idea:** This is the chapter Nephi pointed to — "he verily saw my Redeemer, even as I have seen him" (11:2). What does Isaiah's call teach about the order of cleansing and commission, and what does the Book of Mormon do to the hard "hardening" verse?
+
+**Read:** "In the year that king Uzziah died, I saw also the Lord sitting upon a throne, high and lifted up, and his train filled the temple" (v1). The seraphim, six wings each, cry "Holy, holy, holy, is the Lord of Hosts; the whole earth is full of his glory" (vv2-3); the posts move and the house fills with smoke (v4). Isaiah's response: "Wo is unto me! for I am undone; because I am a man of unclean lips... for mine eyes have seen the King, the Lord of Hosts" (v5). Then a seraph takes "a live coal... from off the altar" and lays it on his mouth: "thine iniquity is taken away, and thy sin purged" (vv6-7). *Then* the call: "Whom shall I send, and who will go for us? Then I said: Here am I; send me" (v8). The commission: "Go and tell this people — Hear ye indeed, **but they understood not**; and see ye indeed, **but they perceived not**. Make the heart of this people fat, and make their ears heavy, and shut their eyes — lest they see... and be converted and be healed" (vv9-10). "Lord, how long?" — "Until the cities be wasted without inhabitant... and the land be utterly desolate" (v11), "a great forsaking in the midst of the land" (v12). "But yet there shall be a tenth, and they shall return... so the holy seed shall be the substance thereof" (v13).
+
+**Exegesis:**
+- *The coal comes before the call (vv6-8).* The order is the point. Isaiah sees the King and is undone — "I am a man of unclean lips." He cannot volunteer in that state. Only after the seraph lays the live coal on his mouth and declares "thy sin purged" does the Lord ask "whom shall I send?" and Isaiah answer "Here am I; send me." The cleansing is not the reward for service; it is the precondition of it. You are made clean, *then* sent — not sent because you were qualified. The most famous volunteer line in scripture is spoken by a man who has just been forgiven, not by a man who was ready.
+- *"Whom shall I send, and who will go for us?" (v8).* The plural "us" is the divine council (cf Gen 1:26, "let us make man"). And the answer "Here am I; send me" is the same answer Christ gave in the premortal council (Abr 3:27). Isaiah's mortal call echoes the council in heaven — the disciple's "send me" rhymes with the Son's.
+- *Isaiah saw the Redeemer (v1, v5).* This is the verse Nephi built his whole Isaiah-warrant on. John 12:41 says explicitly that Isaiah "saw his glory, and spake of him" — i.e., the King on the throne is *Christ*. So the Trisagion ("Holy, holy, holy") is sung to the Redeemer, and Nephi's claim in 11:2 — "he verily saw my Redeemer, even as I have seen him" — points straight here. Three throne-witnesses (Isaiah, Nephi, Jacob) saw the same King.
+- *The hardening commission (vv9-10).* The hard verse: Isaiah is sent to a people who "hear... but understood not," and told to "make the heart of this people fat... lest they... be converted and be healed." Read at face value it sounds like God commissioning incomprehension so people *cannot* repent. The standard readings: (1) it is *judicial* hardening — preaching truth to the willfully deaf confirms a deafness they already chose; (2) the preaching's *effect*, stated as if it were its purpose (a Hebrew idiom); (3) commission-shock — Isaiah is told plainly that his ministry will largely be rejected, so he is not crushed when it is. The Book of Mormon's wording tilts decisively toward the first two (see the variant below).
+
+**The Book of Mormon variants (verified by direct comparison this session):**
+- *v9 — result, not command (the significant one).* KJV Isaiah 6:9: "Hear ye indeed, but **understand not**; and see ye indeed, but **perceive not**" — imperatives, God *commanding* them not to understand. The Book of Mormon reads: "Hear ye indeed, **but they understood not**; and see ye indeed, **but they perceived not**" — past-tense *report* of what happened. The hardening becomes a description of the people's response to true preaching, not a divine command to be obtuse. This is exactly the resolution the theological crux needs, and it is built into the text Nephi copied. The BoM does not have God ordering blindness; it has God foretelling that the preaching will land on the already-unwilling.
+- *v2, v6 — "seraphim" for KJV "seraphims."* The Book of Mormon uses the proper plural; KJV's "seraphims" is a double plural (Hebrew *-im* is already plural). A small correction toward the Hebrew.
+- *v13 — "they shall return" for KJV "it shall return."* The BoM personalizes the surviving remnant as people ("they") rather than the stump/tenth ("it"). The holy seed is a *they* who come back.
+
+**Nephite framing — likening (four questions):**
+- *Why did Nephi include Isaiah 6?* Because it is his proof-text. In 11:2 he justified the entire Isaiah block by saying Isaiah "verily saw my Redeemer, even as I have seen him" — and this is the vision he means. Nephi places his own throne/Redeemer vision (1 Ne 11) beside Isaiah's; the warrant for the block is two eyewitnesses of the same King.
+- *Was it for us, last-dispensation readers?* "Here am I; send me" (v8) is the disciple's answer in every dispensation — the missionary call of D&C 4, and behind it the premortal "send me" of Abraham 3:27. And the remnant "holy seed" (v13) is the not-cast-off hope: even in utter desolation, a tenth, a stump that still holds living seed.
+- *How does it apply to us?* The order — coal, then call — is the pattern of any call to serve: you are cleansed first, sent second. "Send me" is not the boast of the qualified; it is the response of the forgiven. And the hearing-without-understanding (v9) is the live danger of the seed on the path (Matt 13:14-15, where Jesus quotes this verse).
+- *How do we read it better through Nephi's framing?* "All things typify Christ" (11:4) plus John 12:41 makes the throne explicit: the One Isaiah saw, before whom the seraphim cover their faces, is the Redeemer. So Isaiah's "mine eyes have seen the King" (v5) and Nephi's "I have seen him" (11:2) are the same sight. Read through Nephi, Isaiah 6 is not an Old Testament theophany of a distant God — it is a sighting of Christ.
+
+**Connections:**
+- *Isaiah saw the Lord (= Christ):* vv1, 5 → John 12:41; 2 Ne 11:2-3; D&C 137:3.
+- *Holy, holy, holy / the throne:* vv2-3 → Ezek 1; Rev 4:8 (the same seraphic cry).
+- *The coal / cleansing of the lips:* vv6-7 → Jer 1:9; Isa 1:18; the cleansing-before-call pattern.
+- *"Here am I; send me":* v8 → Abr 3:27 (Christ in the council); D&C 4:1-3; Ex 3-4 (Moses, the reluctant inverse).
+- *Hear but understand not (the hardening):* vv9-10 → Matt 13:14-15; John 12:40; Acts 28:26-27; Rom 11:8; Jacob 4:14 (looking beyond the mark).
+- *A tenth / the holy seed remnant:* v13 → Ezra 9:2; Isa 4:2-3; 2 Ne 14:3; Rom 11:5.
+
+**Entities:** people — Isaiah (called), the Lord on the throne (= Christ, per John 12:41 + 11:2), the seraphim, "this people" (who hear but understand not), the tenth / holy seed · doctrine — the prophetic-call pattern, cleansing-before-commission, "Here am I; send me," the divine council ("us"), the hardening (result not command in BoM), the remnant stump · variants — v9 result-not-imperative, v2/6 "seraphim," v13 "they shall return" · event — Isaiah's throne-vision and call (~750 BC).
+
+**Edges:**
+- `doctrine:Isaiah-saw-the-Redeemer` —[Nephi's proof-text for the block]→ 16:1,5 (John 12:41; 2 Ne 11:2-3) — the throne is Christ's
+- `pattern:prophetic-call` —[vision → undone → coal → send me → hard commission → remnant]→ 16:1-13
+- `doctrine:cleansing-before-commission` —[coal (vv6-7) precedes "send me" (v8)]→ forgiven, then sent (not qualified, then sent)
+- `phrase:here-am-I-send-me` —[the disciple's answer]→ 16:8 (Abr 3:27 — Christ in the council; D&C 4)
+- `doctrine:divine-council` —["who will go for us"]→ 16:8 (Gen 1:26)
+- `crux:hardening` —[hear but understand not]→ 16:9-10 (Matt 13:14-15) — judicial/result, not command
+- `variant:result-not-imperative` —[BoM v9 "they understood not" (report) vs KJV "understand not" (command), verified]→ resolves the hardening crux in the text itself
+- `variant:seraphim` —[BoM corrects KJV "seraphims" double-plural toward the Hebrew]→ 16:2,6
+- `doctrine:remnant-holy-seed` —[a tenth, a stump with living seed]→ 16:13 (2 Ne 14:3; Rom 11:5)
+
+**Notable / flag:** Isaiah block, full protocol — a major chapter. The exegetical key is **the coal before the call** (cleansing precedes commission, vv6-8) and the fact that **this is the vision Nephi anchored the whole block on** (11:2 + John 12:41 = the throne is Christ's). The standout variant is **v9** — the Book of Mormon reads the hardening as a *report of the people's response* ("they understood not") where the KJV reads it as a *command* ("understand not"); the BoM text itself softens the hardest theological crux in the chapter. Next: 2 Ne 17 = Isaiah 7 (the Immanuel prophecy — "a virgin shall conceive"; Ahaz and the two smoking firebrands).
+
+**Verified:** 2 Nephi 16 AND Isaiah 6 read verbatim this session (`gospel_get`, both full chapters) ✓ — every quoted line is from those retrievals. The three variants (v9 result-not-imperative, v2/6 seraphim, v13 "they shall return") confirmed by direct side-by-side comparison. The John 12:41 identification (Isaiah saw Christ) is per the chapter footnote (1b-1c) and 2 Ne 11:2; quoted only as reference, to be verified verbatim if cited directly. Cross-refs are footnote/thematic pointers.

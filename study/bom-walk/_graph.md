@@ -226,6 +226,13 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - prophecy: `ensign-to-the-nations` (gathering reverses the waste, v26)
 - variant: `bom-shorter` (v8 omits "lay field to field"; v29 omits "roaring like a lion" — VERIFIED; variants run both ways)
 
+### from 2 Nephi 16 (Isaiah 6) — Nephi's proof-text (11:2)
+- isaiah: `6` (throne-vision + call)
+- person: `the-Lord-on-the-throne` (= Christ, John 12:41 + 11:2) · `seraphim` · `this-people` (hear but understand not) · `the-tenth`/`holy-seed`
+- doctrine: `Isaiah-saw-the-Redeemer` (the block's warrant) · `cleansing-before-commission` (coal vv6-7 → "send me" v8) · `here-am-I-send-me` (Abr 3:27) · `divine-council` ("for us") · `remnant-holy-seed` (v13)
+- crux: `hardening` (hear but understand not, vv9-10 — judicial/result)
+- variant: `result-not-imperative` (v9 BoM "they understood not" vs KJV "understand not" — VERIFIED, resolves the crux) · `seraphim-not-seraphims` (v2/6 toward Hebrew) · `they-shall-return` (v13)
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -535,3 +542,13 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `refrain:hand-stretched-out-still` —[judgment keeps its hand extended]→ 15:25 (→ 2 Ne 19-20)
 - `prophecy:ensign-to-the-nations` —[gathering reverses the waste]→ 15:26 (Isa 11:12; 2 Ne 29:2; D&C 115:5)
 - `variant:bom-shorter` —[v8 + v29 omit clauses, verified]→ BoM variants run both directions, not only expansion
+
+### from 2 Nephi 16 (Isaiah 6)
+- `doctrine:Isaiah-saw-the-Redeemer` —[Nephi's proof-text for the block]→ 16:1,5 (John 12:41; 11:2-3) — the throne is Christ's
+- `pattern:prophetic-call` —[vision → undone → coal → send me → hard commission → remnant]→ 16:1-13
+- `doctrine:cleansing-before-commission` —[coal (vv6-7) precedes "send me" (v8)]→ forgiven then sent, not qualified then sent
+- `phrase:here-am-I-send-me` —[the disciple's answer]→ 16:8 (Abr 3:27 — Christ in the council; D&C 4)
+- `crux:hardening` —[hear but understand not]→ 16:9-10 (Matt 13:14-15) — judicial/result not command
+- `variant:result-not-imperative` —[BoM v9 "they understood not" (report) vs KJV "understand not" (command), verified]→ resolves the hardening crux in the text
+- `variant:seraphim` —[BoM corrects KJV "seraphims" double-plural]→ 16:2,6
+- `doctrine:remnant-holy-seed` —[a tenth, a stump with living seed]→ 16:13 (2 Ne 14:3; Rom 11:5)
