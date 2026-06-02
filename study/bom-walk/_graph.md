@@ -472,6 +472,11 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - person: `Zeniff` (closes his record; even-handed narrator; confers the kingdom) · `king-Laman` (died) · `the-new-Lamanite-king` (Laman's son) · `the-Lamanites` (wild, grievance-bound) · `Nephi`+`Laman-&-Lemuel` (originating generation, recalled) · `Noah` (the unnamed son who receives the kingdom)
 - theme: `grievance-real-events-false-reading` (vv12-16 — facts true, interpretation false; **spin-off: mos10_lamanite-grievance-tradition**) · `understood-not-the-dealings-of-the-Lord` (v14 — God's favor on faithfulness read as injustice) · `hatred-taught-to-children-becomes-eternal` (v17) · doctrine: `strength-of-the-Lord-vs-arm-of-flesh` (vv10-11) · practice: `hear-the-enemys-case-fairly` (vv12-16) · event: `good-father-confers-kingdom-on-Noah` (v22 — the hinge into ch 7's bondage)
 
+### from Mosiah 11 (king Noah the anti-Benjamin / Abinadi's first prophecy)
+- person: `king-Noah` (anti-Benjamin; riotous, wine-bibbing, heart on riches) · `the-new-wicked-priests` (gold seats, flattery, lies) · `Noah's-people` (taxed, flattered into idolatry, prideful, bloodthirsty) · `Abinadi` (first appearance — prophet of conditional bondage) · `the-Lamanites` (raiders)
+- place: `the-palace+throne` · `the-ornamented-temple` · `the-gold-high-priest-seats+breastwork` · `the-high-tower` · `Shemlon`
+- theme: `Noah-the-anti-Benjamin` (vv1-6 — wicked vs righteous monarchy, paired on purpose → seed of abolishing kings ch 29) · image: `gold-seats-and-breastwork-for-lies` (v11 — where Alma will be converted ch 12) · `flattery-the-engine-of-corruption` (v7) · `prides-boast-becoming-the-enemy` (v19 ↔ 10:11) · doctrine: `conditional-bondage-except-they-repent` (vv20-25 — chosen not fated; "slow to hear" fulfilled ch 21) · `who-is-the-Lord-Pharaoh-echo` (v27) · `prophet-reframed-as-troublemaker` (v28)
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -1109,3 +1114,12 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `doctrine:strength-of-the-Lord-vs-arm-of-flesh` —[both armies strong; one borrows from God, one trusts its own arm; borrowed strength wins]→ 10:10-11 (Mosiah 9:17; 2 Ne 4:34; Jacob 7:24; D&C 1:19)
 - `practice:hear-the-enemys-case-fairly` —[Zeniff lays out the Lamanite grievance in their own terms before refuting it]→ 10:12-16
 - `event:good-father-confers-kingdom-on-Noah` —[Zeniff's flawed-but-good last act hands the kingdom to the record's villain; the hinge into the bondage of ch 7]→ 10:22 (Mosiah 11:1; contrast 6:6-7)
+
+### from Mosiah 11
+- `theme:Noah-the-anti-Benjamin` —[point-for-point inverse of the righteous king: no tax→one-fifth tax; own hands→people support his vice; true word→gold seats of lies; the case study that abolishes kings in ch 29]→ 11:1-6 (Mosiah 2:14; 6:6-7; 29:16-23)
+- `image:gold-seats-and-breastwork-for-lies` —[comfort engineered for the propagation of falsehood; the very seats where Alma will be converted in ch 12]→ 11:11 (Mosiah 12:17; Matt 23:2-7; Ezek 13:8)
+- `theme:flattery-the-engine-of-corruption` —[the people eased into idolatry by flattering words, not forced; the Sherem/Nehor/Korihor engine]→ 11:7 (Jacob 7:2-4; Alma 1:3; 30:53; 2 Ne 28:22)
+- `theme:prides-boast-becoming-the-enemy` —["their fifty against thousands"; the exact error condemned in the Lamanites (10:11); delight in blood]→ 11:19 (Mosiah 10:11; D&C 3:4; Morm 4:11)
+- `doctrine:conditional-bondage-except-they-repent` —[bondage is the chosen consequence, not a doom; the oracle is exact — God "slow to hear" fulfilled in ch 21]→ 11:20-25 (Mosiah 7:29-33; 21:15; Ex 20:5)
+- `theme:who-is-the-Lord-Pharaoh-echo` —[Noah answers "thus saith the Lord" with Pharaoh's "who is the Lord?"; broken by the God he dismissed]→ 11:27 (Ex 5:2; Mosiah 12:13)
+- `theme:prophet-reframed-as-troublemaker` —[the one who names the sin blamed for the division the sin caused]→ 11:28 (1 Kgs 18:17; Alma 9:6; Acts 17:6)
