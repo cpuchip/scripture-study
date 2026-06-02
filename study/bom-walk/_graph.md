@@ -584,6 +584,10 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - person: `Alma-the-younger` (ordains, regulates, departs to Gideon) · `the-repentant` (received) · `the-unrepentant-prideful` (blotted out) · `the-unconverted` (prayed + fasted for)
 - practice: `word-first-then-order` (vv1-4) · `church-cleansed-by-response-to-the-sermon` (vv2-3) · doctrine: `word-liberal-to-all-anti-priestcraft` (v5) · practice: `fasting-and-prayer-for-the-unconverted` (v6) · `ordination-by-laying-on-of-hands-the-order-of-God` (vv1,7-8 — answers ch1 priestcraft in Gideon's valley)
 
+### from Alma 7 (the Gideon sermon — the empathic atonement)
+- person: `Alma-the-younger` (preaching to Gideon; models revelatory honesty) · `the-Gideon-church` (humble, faithful — counterpoint to Zarahemla) · `Christ` (born of Mary; empathic + substitutionary Savior) · `Mary` (the virgin, named)
+- doctrine: `empathic-atonement-suffers-to-know-how-to-succor` (vv11-13 — **completes the Abinadi thread**; the gospel's deepest comfort) · theme: `revelatory-honesty-I-do-not-know` (v8) · doctrine: `born-of-Mary-in-the-land-of-Jerusalem` (v10) · theme: `pure-testimony-adapts-to-the-people` (vv1-6,17-19 — joy for Gideon vs woe for Zarahemla) · doctrine: `God-unchangeable-one-eternal-round` (v20) · `filthy-remains-filthy-unclean-cannot-enter` (v21) · theme: `faith-hope-charity-and-the-disciples-attributes` (vv23-24)
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -1447,3 +1451,12 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `doctrine:word-liberal-to-all-anti-priestcraft` —["none were deprived of the privilege of assembling to hear the word"; freely available, not a withheld commodity]→ 6:5 (2 Ne 26:25-28; Alma 1:30; Isa 55:1)
 - `practice:fasting-and-prayer-for-the-unconverted` —[the church turns outward, fasting + praying "for the welfare of the souls of those who knew not God"; missionary-anguish as a standing practice]→ 6:6 (Mosiah 25:11; 28:3; Alma 31:34-35)
 - `practice:ordination-by-laying-on-of-hands-the-order-of-God` —[proper authority conferred not seized; the opposite of Nehor's self-appointed priestcraft; re-established in Gideon's valley where Nehor drew blood]→ 6:1,7-8 (Alma 13:1-9; AoF 1:5; Acts 6:6)
+
+### from Alma 7
+- `doctrine:empathic-atonement-suffers-to-know-how-to-succor` —[Christ takes our pains/infirmities not only to pay but "that he may know according to the flesh how to succor"; the omniscient Spirit "knoweth all things," yet the Son enters the suffering to know it from inside; bowels filled with mercy "according to the flesh"]→ 7:11-13 (Mosiah 14:3-5; 15:1-9; Heb 2:18; 4:15; D&C 122:8) — **completes the Abinadi thread (mos13-16): substitution + empathy**; the deepest comfort in the gospel
+- `theme:revelatory-honesty-I-do-not-know` —[Alma marks the boundary of his knowledge: won't claim what "the Spirit hath not said... as to this thing I do not know"; bold on the confirmed, silent on the rest; his caution proves correct]→ 7:8 (Alma 40:8; 1 Ne 11:17; D&C 76:114)
+- `doctrine:born-of-Mary-in-the-land-of-Jerusalem` —[a century before Bethlehem: the mother named, virgin conception, the place clarified as the LAND (region) of Jerusalem; consistent Nephite Christology]→ 7:10 (Mosiah 3:8; 1 Ne 11:13-21; Isa 7:14; Luke 1:27)
+- `theme:pure-testimony-adapts-to-the-people` —[the prophet who flayed proud Zarahemla with questions (ch 5) comes to humble Gideon with joy + affirmation; woe to the proud, comfort to the faithful]→ 7:1-6,17-19 (Alma 5; Mosiah 28:8)
+- `doctrine:God-unchangeable-one-eternal-round` —[no crooked paths, no shadow of turning, "one eternal round"; the ground of trust AND the reason filthiness cannot enter; the constancy cuts both ways]→ 7:20-21 (James 1:17; D&C 3:2; Morm 9:9; Mal 3:6)
+- `doctrine:filthy-remains-filthy-unclean-cannot-enter` —[no unclean thing received into the kingdom; "he who is filthy shall remain in his filthiness"; mercy lifts out of the filth but doesn't redefine the kingdom to admit it]→ 7:21 (1 Ne 15:33; 2 Ne 9:16; Rev 22:11; Mosiah 2:37)
+- `theme:faith-hope-charity-and-the-disciples-attributes` —[the new-birth life: humble, gentle, patient, temperate, thankful; "faith, hope, and charity, and then ye will always abound in good works"; fruits, not entry-fees]→ 7:23-24 (1 Cor 13:13; Moroni 7:33-48; Gal 5:22)
