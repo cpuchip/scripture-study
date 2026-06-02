@@ -468,6 +468,10 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - place: `land-of-Nephi/Lehi-Nephi` · `Shilom` · `the-wilderness` · `place-where-first-army-was-slain`
 - theme: `zeal-without-wisdom` (vv1-3 — self-named "over-zealous"; the negative case of Mosiah 4:27) · `patient-predator-bondage-as-parasitism` (vv10-12 — Laman's bait; the lazy glut on others' labor) · `slow-to-remember-awakened-by-affliction` (vv3,17) · doctrine: `in-the-strength-of-the-Lord` (vv16-18 — 3,043 to 279) · pattern: `leader-shares-labor-and-grief` (v19 — Zeniff buries the dead)
 
+### from Mosiah 10 (the eternal hatred / grievance tradition)
+- person: `Zeniff` (closes his record; even-handed narrator; confers the kingdom) · `king-Laman` (died) · `the-new-Lamanite-king` (Laman's son) · `the-Lamanites` (wild, grievance-bound) · `Nephi`+`Laman-&-Lemuel` (originating generation, recalled) · `Noah` (the unnamed son who receives the kingdom)
+- theme: `grievance-real-events-false-reading` (vv12-16 — facts true, interpretation false; **spin-off: mos10_lamanite-grievance-tradition**) · `understood-not-the-dealings-of-the-Lord` (v14 — God's favor on faithfulness read as injustice) · `hatred-taught-to-children-becomes-eternal` (v17) · doctrine: `strength-of-the-Lord-vs-arm-of-flesh` (vv10-11) · practice: `hear-the-enemys-case-fairly` (vv12-16) · event: `good-father-confers-kingdom-on-Noah` (v22 — the hinge into ch 7's bondage)
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -1097,3 +1101,11 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `theme:slow-to-remember-awakened-by-affliction` —[forget in prosperity, remember under attack; affliction the alarm clock of memory]→ 9:3,17 (Hel 12:3; Deut 8:11-18; Mosiah 6:3) — Benjamin's "stir up remembrance" from the other side
 - `doctrine:in-the-strength-of-the-Lord` —[victory to those who cry and fight in his might, not the better-armed; 3,043 to 279]→ 9:16-18 (1 Sam 17:45; Alma 2:28; Ex 2:23-24)
 - `pattern:leader-shares-labor-and-grief` —[Zeniff buries the dead with his own hands; the servant-king even in a flawed founder]→ 9:19 (Mosiah 2:14; 6:7) — character does not cancel consequence
+
+### from Mosiah 10
+- `theme:grievance-real-events-false-reading` —[facts largely true (driven out, leadership + records taken); the LIE is the interpretation — favor-for-faithfulness recast as usurpation/robbery]→ 10:12-16 (2 Ne 5:1-12; 1 Ne 3-4; Alma 3:8) — **spin-off: mos10_lamanite-grievance-tradition**
+- `theme:understood-not-the-dealings-of-the-Lord` —[the root: God's favor toward the faithful read as injustice toward self; resentment of the blessing of obedience]→ 10:14 (1 Ne 15:8-11; 2 Ne 1:24-27)
+- `theme:hatred-taught-to-children-becomes-eternal` —[grievance transmitted as curriculum → identity → "eternal hatred"; the healing must be as deliberate (Alma 17-24)]→ 10:17 (Alma 23:7; 24:7-19; 26:23-25)
+- `doctrine:strength-of-the-Lord-vs-arm-of-flesh` —[both armies strong; one borrows from God, one trusts its own arm; borrowed strength wins]→ 10:10-11 (Mosiah 9:17; 2 Ne 4:34; Jacob 7:24; D&C 1:19)
+- `practice:hear-the-enemys-case-fairly` —[Zeniff lays out the Lamanite grievance in their own terms before refuting it]→ 10:12-16
+- `event:good-father-confers-kingdom-on-Noah` —[Zeniff's flawed-but-good last act hands the kingdom to the record's villain; the hinge into the bondage of ch 7]→ 10:22 (Mosiah 11:1; contrast 6:6-7)
