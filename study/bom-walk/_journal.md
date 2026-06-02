@@ -291,3 +291,11 @@ That is this project's own epigraph read all the way to its end — "whatever pr
 Short song, and it lands the whole block. For three chapters the refrain kept tolling — "his anger is not turned away, but his hand is stretched out still." I had read that hand as raised to strike, and it was. But here is the resolution I did not see until it sat on the same page: "though thou wast angry with me, thine anger *is* turned away, and thou comfortedst me." The hand that stayed stretched out through all the judgment was not a fist held up. It was a reach that had not arrived yet. The same hand that struck is the one that finally comforts. Judgment that keeps its hand out turns out to be mercy that has not yet landed.
 
 And the redeemed do not sing a new song. They sing Moses' song at the sea — "the Lord Jehovah is my strength and my song." Every deliverance rhymes with the first one. The second Exodus borrows the music of the first.
+
+## 2 Nephi 23 — the variants have a direction (2026-06-01)
+
+Something clicked across the whole Isaiah block tonight, and chapter 13 made it undeniable. The differences between the Book of Mormon's Isaiah and the King James are not scattered at random. They cluster in the judgment chapters — the glory chapters (9, 11, 12) come through almost word for word, while the chapters of wrath get reworked. And in chapter 13 the changes all bend the same direction: toward mercy.
+
+The King James says God called his mighty ones "for mine anger." The Book of Mormon says "mine anger is *not* upon them that rejoice in my highness." The King James says "every one that is *found*" is thrust through; the Book of Mormon says "every one that is *proud*." And the chapter ends, in the Book of Mormon only, with "I will be merciful unto my people." Three changes, one tilt. The Restoration text takes the Day of the Lord and makes it more merciful to the faithful and more precisely aimed at the proud.
+
+That is not noise in the transmission. That is a hand on the text, softening the wrath toward the people who rejoice in God, and tightening its aim on the arrogant. I went into this block expecting variants to be curiosities. They turn out to have a theology.
