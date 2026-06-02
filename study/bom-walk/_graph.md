@@ -793,6 +793,10 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - person: `Helaman` (writes epistle; leads + protects the 2000 "sons") · `the-two-thousand-stripling-warriors` (fearless faith; none slain) · `the-mothers-of-Ammon` (taught "if ye doubt not, God will deliver") · `Antipus` (commander; falls, "happy")
 - doctrine: `faith-taught-by-believing-mothers` (v47) · `believing-on-the-words-of-a-trusted-witness` (v48 — "we do not doubt our mothers knew it") · theme: `courage-that-is-a-function-of-faith-not-bravado` (vv45-47) · `reluctance-even-in-the-young-warriors` (v46) · event: `not-one-of-the-two-thousand-slain` (vv55-56)
 
+### from Alma 57 (campaign continues — exactness + the deepened miracle)
+- person: `Helaman` (counts the wounded) · `the-two-thousand-and-sixty-stripling-warriors` (exact obedience; all wounded, none slain) · `Gid` (prisoner-guard; reports the rebellion)
+- doctrine: `obedience-with-exactness-as-the-form-of-faith` (v21) · `faith-preserves-through-the-wounds-not-from-them` (vv25-26) · `preservation-is-a-particular-sign-not-a-universal-rule` (vv26, 36) · theme: `minds-firm-trust-continually` (v27) · `the-honest-horror-of-even-a-righteous-war` (vv14, 32-33 — surrendered prisoners slain in rebellion)
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -2076,3 +2080,10 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `theme:courage-that-is-a-function-of-faith-not-bravado` —["never had I seen so great courage... our God is with us, and he will not suffer that we should fall"; fearlessness resting on trust in God's deliverance, not their own arms]→ 56:45-47 (Matt 17:20; Mark 9:23; Ps 27:1; Alma 57:26)
 - `theme:reluctance-even-in-the-young-warriors` —["we would not slay our brethren if they would let us alone"; even the untested boys keep the family-not-enemy frame — fighting only because Antipus's army would be destroyed otherwise]→ 56:46 (Alma 48:23; 24:18; Matt 5:9)
 - `event:not-one-of-the-two-thousand-slain` —["there had not one soul of them fallen to the earth... they had fought as if with the strength of God; never were men known to have fought with such miraculous strength"; the empty casualty list is the divine signature on a faith taught and trusted]→ 56:55-56 (Alma 57:25; 58:39; Ex 14:13-14; 2 Chr 20:17)
+
+### from Alma 57
+- `doctrine:obedience-with-exactness-as-the-form-of-faith` —["they did obey and observe to perform every word of command with exactness; yea, and even according to their faith it was done unto them"; exactness is the outward form of inward trust — faith freed them from the fear that makes people cut corners]→ 57:21 (Matt 9:29; Mark 9:23; Alma 53:20; 18:10)
+- `doctrine:faith-preserves-through-the-wounds-not-from-them` —[this time "not one soul among them who had not received many wounds," 200 faint from blood loss, yet "not one soul... did perish"; faith carried them through the slaughter alive — through the fire, not around it]→ 57:25-26 (Dan 3:25-27; Ps 23:4; Isa 43:2) — truer + harder than "the faithful don't get hurt"
+- `doctrine:preservation-is-a-particular-sign-not-a-universal-rule` —[spared "while there was a thousand of our brethren who were slain"; the thousand were no less faithful — "entered into the rest of their God"; the unscathed 2000 are a sign, not a promise to all]→ 57:26, 36 (Alma 28:11-12; Heb 11:32-40; D&C 42:46)
+- `theme:minds-firm-trust-continually` —["they are young, and their minds are firm, and they do put their trust in God continually"; a permanent orientation produced by the mothers' teaching, not a one-time act]→ 57:27 (Jacob 3:2; Alma 58:40; Prov 3:5-6)
+- `theme:the-honest-horror-of-even-a-righteous-war` —["we did slay upwards of two thousand of them after they had surrendered"; the prisoners "run upon our swords" in rebellion; surrendered prisoners slain — forced by their armed revolt + the army's lack of capacity, reported plainly without applause]→ 57:14, 32-33 (Alma 51:19; 2 Sam 11:14-17; Eccl 9:11)
