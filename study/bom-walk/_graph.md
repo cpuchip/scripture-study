@@ -358,6 +358,12 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - doctrine: `order-and-intent-of-riches` (kingdom first, THEN riches for the intent to do good, v18-19) · `free-with-your-substance` ("that they may be rich like unto you", v17) · `one-being-as-precious` (equality, v21) · `monogamy-standard` (one wife; David/Solomon abominable; v30 seed-raising exception, v24-30) · `God-hears-the-wounded-wives` (v31-35)
 - thread: `watchmans-burden-in-action` (bold rebuke despite wounding the innocent, v6-11 ← 1:19)
 
+### from Jacob 3 (comfort + the Lamanites "more righteous")
+- reversal: `despised-are-the-standard` (the hated Lamanites "more righteous" — measure = family fidelity, v5-7)
+- doctrine: `comfort-to-the-wounded` (feast on his love, balm after the daggers, v1-2) · `revile-not-for-the-skin` (v9) · `filthiness-is-inherited-circumstance` (came because of their fathers, v7,9)
+- image: `awake-from-the-slumber-of-death` (arouse, shake yourselves, v11)
+- FLAG (bin-4): `skin-curse-language` v5-9 — Jacob USES it AND empties it (dark = more righteous; reviling forbidden; filthiness inherited not personal; white-skinned the more filthy before God) → **THIRD in-text datapoint for the 5:21 with-Michael study** (with 26:33 + 30:6); NOT autonomously resolved
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -839,3 +845,10 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `doctrine:monogamy-standard` —[one wife; David/Solomon abominable; v30 seed-raising exception]→ 2:24-30 (1 Kgs 11:1-3; D&C 132:38-39) — sin = self-justification from scripture
 - `doctrine:God-hears-the-wounded-wives` —[the mourning of the daughters; broken hearts the measure]→ 2:31-35 (Mal 2:14-16)
 - `thread:watchmans-burden-in-action` —[bold despite wounding the innocent; silence would let harm continue]→ 2:6-11 (1:19)
+
+### from Jacob 3
+- `reversal:despised-are-the-standard` —[the hated Lamanites "more righteous"; measure = family fidelity]→ 3:5-7 (1 Ne 17:35; Alma 17-26)
+- `flag:skin-curse-language` —[Jacob uses it AND empties it: dark = righteous, reviling forbidden, filthiness inherited]→ 3:5-9 · —[third datapoint]→ `tension:complexion-language` 5:21 (with 26:33, 30:6); NOT resolved
+- `doctrine:revile-not-for-the-skin` —[command against skin-based contempt; remember your own filthiness]→ 3:9 (Matt 7:3-5; 2 Ne 26:33)
+- `doctrine:comfort-to-the-wounded` —[feast on his love; balm after the daggers]→ 3:1-2 (Jacob 2:9; 2 Ne 32:8)
+- `image:awake-from-the-slumber-of-death` —[arouse, shake yourselves]→ 3:11 (2 Ne 1:13; 8:9; Eph 5:14)
