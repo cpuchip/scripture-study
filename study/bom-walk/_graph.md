@@ -687,6 +687,10 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - person: `the-Zoramites-Zoram` (dissenters; Rameumptom worship; deny Christ; elect-by-pride) · `Alma-the-younger` (heartbroken; prays for strength + the lost) · place: `Rameumptom` (the high one-man stand)
 - theme: `false-worship-as-inversion-of-true` (vv12-23) · `the-two-prayers-self-vs-others` (vv16-18 vs 30-35) · doctrine: `election-by-pride-vs-mercy` (vv16-18, 24-25) · `the-word-more-powerful-than-the-sword` (v5) · `affliction-swallowed-in-the-joy-of-Christ` (vv36-38)
 
+### from Alma 32 (the seed — faith as experiment)
+- person: `Alma-the-younger` (faith sermon; reads the poor's affliction as preparation) · `the-poor-cast-out` (barred for apparel; humbled, ready)
+- doctrine: `faith-is-hope-in-unseen-things-which-are-true` (v21) · `the-entry-bar-is-only-desire` (v27) · `the-seed-experiment` (vv28-35 — discernible light) · `experimental-knowledge-of-that-thing-not-all` (v34) · `faith-must-be-nourished-or-it-withers` (vv37-41) · `compelled-vs-voluntary-humility` (vv13-16) · theme: `worship-not-confined-to-building-or-week` (vv10-11) · `the-word-comes-through-the-overlooked` (v23 — men, women, children)
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -1775,3 +1779,13 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `theme:the-two-prayers-self-vs-others` —[the Rameumptom prays against the outsider; Alma prays for the people who pray against him — "their souls are precious, and many of them are our brethren"; true worship told from false by which way the prayer points]→ 31:16-18 vs 31:30-35 (Matt 5:44; Luke 23:34; Alma 26:26)
 - `doctrine:the-word-more-powerful-than-the-sword` —["the preaching of the word had... more powerful effect upon the minds of the people than the sword"; a missionary answer to a military threat]→ 31:5 (Alma 26:26; Hel 5:50-52; Heb 4:12)
 - `doctrine:affliction-swallowed-in-the-joy-of-Christ` —[they "suffer no manner of afflictions, save it were swallowed up in the joy of Christ... because he prayed in faith"; absorbed not removed]→ 31:36-38 (Mosiah 24:13-15; Matt 5:10-12; Alma 33:23)
+
+### from Alma 32
+- `doctrine:faith-is-hope-in-unseen-things-which-are-true` —["faith is not to have a perfect knowledge of things... if ye have faith ye hope for things which are not seen, which are true"; the object matters — hope aimed at unseen *realities*, not credulity about anything invisible]→ 32:21 (Heb 11:1; Ether 12:6; John 20:29)
+- `doctrine:the-entry-bar-is-only-desire` —["even if ye can no more than desire to believe, let this desire work in you, even until ye believe"; faith democratized — accessible to the poor, requiring only a desire + willingness to experiment]→ 32:27 (Mark 9:24; Alma 22:15; Matt 5:6)
+- `doctrine:the-seed-experiment` —[plant the word; if good it "will begin to swell within your breasts... enlarge my soul... enlighten my understanding"; "is not this real? Yea, because it is light... discernible"; inward evidence answers Korihor's empiricism]→ 32:28-35 (Matt 13:3-8; Luke 8:11; Alma 30:43-48)
+- `doctrine:experimental-knowledge-of-that-thing-not-all` —["your knowledge is perfect in that thing, and your faith is dormant"; the experiment yields real knowledge of the tested thing, faith remains for the rest]→ 32:34-36 (Ether 3:19; Alma 32:21)
+- `doctrine:faith-must-be-nourished-or-it-withers` —[neglected, the tree withers — "not because the seed was not good... but because your ground is barren, and ye will not nourish the tree"; a failed faith is usually untended ground, not a false word]→ 32:37-41 (Matt 13:5-6, 20-21; Col 1:6; 1 Ne 8:10-18)
+- `theme:worship-not-confined-to-building-or-week` —["do ye suppose that ye cannot worship God save it be in your synagogues only?... that ye must not worship God only once in a week?"; the Rameumptom cage broken in two questions]→ 32:10-11 (Alma 31:13-23; 33:3-11; John 4:21-24)
+- `doctrine:compelled-vs-voluntary-humility` —["compelled to be humble blessed are ye... but blessed are they who humble themselves without being compelled"; affliction is humility's teacher of last resort; the wise choose it first]→ 32:13-16 (Matt 5:3-5; Ether 12:27; Hel 12:3)
+- `theme:the-word-comes-through-the-overlooked` —[God imparts his word "by angels unto men, yea, not only men but women also... little children... confound the wise and the learned"; faith bypasses the elect's hierarchy]→ 32:23 (Matt 11:25; Luke 10:21; 1 Cor 1:27; 3 Ne 26:14-16)
