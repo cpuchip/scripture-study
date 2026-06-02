@@ -515,6 +515,10 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - person: `Noah's-fugitive-priests` (abandon families, abduct 24 daughters) · `the-Lamanite-daughters-of-Shemlon` (abducted) · `the-Lamanites` (blame the innocent → war → compassion) · `the-people-of-Limhi` (innocent; fight "like dragons") · `Limhi` (spares the king, investigates justly) · `the-wounded-Lamanite-king` (spared; pleads unarmed for Limhi's people) · `Gideon` (captain; solves the mystery; reads the prophecy; brokers peace)
 - theme: `wickedness-compounds-abandonment-to-abduction` (vv3-5) · `innocent-bear-the-guilty's-sin` (vv6-16) · `just-response-investigate-not-retaliate` (vv14-16 — contrast Noah) · person: `Gideon-wise-counselor-and-prophecy-reader` (vv17-21 — reads bondage as Abinadi fulfilled) · theme: `better-bondage-than-death-stop-the-bloodshed` (v22) · `unarmed-peace-disarms-the-armed` (vv24-26 — flash-forward to Alma 24) · `fight-for-wives-and-children-like-dragons` (v11)
 
+### from Mosiah 21 (slow to hear, but hearing — the burden eased)
+- person: `Limhi's-people` (smitten, thrice defeated, humbled, eased) · `the-widows` (mourning; cared for) · `the-Lamanites` (oppressors whose hearts God softens) · `Ammon-and-brethren` (arrive, imprisoned, joyful, decline to baptize) · `king-Limhi` (covenants; cares for widows) · `the-lost-search-party` (found Jaredite ruins + ore record)
+- doctrine: `God's-slow-yes-burden-eased-before-removed` (v15 — heard/eased/not-yet-delivered; **pastoral heart of Mosiah**) · prophecy: `slow-to-hear-fulfilled` (vv3-4,15 → 11:24, 12:2,5) · theme: `self-deliverance-exhausted-before-humility` (vv6-14 — 3 rebellions then the dust) · structure: `deliverance-pair-stratagem-vs-miracle` (Limhi ch22 vs Alma ch24) · practice: `widow-care-under-bondage` (v17 — 4:26 in chains) · `embedded-frame-rejoined` (vv22-28 — ch7 from inside) · doctrine: `covenant-made-but-baptism-waits-for-authority` (vv33-35 — Ammon won't improvise)
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -1250,3 +1254,12 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `theme:better-bondage-than-death-stop-the-bloodshed` —[Gideon's counsel: keep the oath, accept tribute, survive; a time to fight and a time to bend]→ 20:22 (Mosiah 7:15; 21:13; Eccl 3:8)
 - `theme:unarmed-peace-disarms-the-armed` —[truth + disarmament + the king's intercession ends the war; "when they saw... without arms, they had compassion"]→ 20:24-26 (Alma 24:18-25; Matt 5:9; Rom 12:18) — flash-forward to the Anti-Nephi-Lehies
 - `theme:fight-for-wives-and-children-like-dragons` —[the outnumbered defenders' strength is what they protect]→ 20:11 (Mosiah 19:12; Alma 43:45; 46:12)
+
+### from Mosiah 21
+- `doctrine:God's-slow-yes-burden-eased-before-removed` —[slow to hear (consequence) / nevertheless heard (mercy persists) / burdens eased (partial relief) / not yet delivered; God answers WITHIN the bondage before answering the bondage]→ 21:15 (Mosiah 11:24; Ex 3:7-9; D&C 101:7-9) — **the pastoral heart of Mosiah**: not always out, but always with
+- `prophecy:slow-to-hear-fulfilled` —[Abinadi's 11:24 lands: "slow to hear their cry because of their iniquities"; smitten on cheeks, burdens, driven like a dumb ass (12:2,5)]→ 21:3-4,15 (Mosiah 11:24; 12:2,5)
+- `theme:self-deliverance-exhausted-before-humility` —[three failed rebellions by the arm of flesh, THEN humbled "even to the dust"; deliverance begins where self-deliverance ends]→ 21:6-14 (Mosiah 9:17; Hel 12:3; 29:20)
+- `structure:deliverance-pair-stratagem-vs-miracle` —[Limhi's people humbled the hard way → eased + escape by stratagem (ch 22); Alma's already humble → swift miracle + burdens lightened (24); calibrated to the heart]→ 21:5,15 (Mosiah 22; 24:14-25)
+- `practice:widow-care-under-bondage` —[every man imparts to the widows + children even while oppressed; Benjamin's 4:26 lived in chains]→ 21:17 (Mosiah 4:16-26; 18:27; James 1:27)
+- `structure:embedded-frame-rejoined` —[Ammon's arrival = ch 7 retold from inside; the back-fill (9-21) circles back to the frame's present; the two ends meet]→ 21:22-28 (Mosiah 7:6-15; 8:9)
+- `doctrine:covenant-made-but-baptism-waits-for-authority` —[Limhi's people covenant now; Ammon will NOT baptize without authority ("unworthy servant"); do it right over do it now]→ 21:32-35 (Mosiah 18:13; 25:17-18; D&C 20:73)
