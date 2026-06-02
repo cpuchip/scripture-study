@@ -592,6 +592,10 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - person: `Alma-the-younger` (rejected, sorrowing, sent back, obeys speedily) · `the-people-of-Ammonihah` (Nehor stronghold; reject both his offices; conspire against liberty) · `the-angel` (same one from Mosiah 27 — conversion + recommission) · `Amulek` (the prepared host; fed Alma; companion) · place: `Melek` · `Ammonihah`
 - theme: `go-back-the-hardest-obedience` (vv13-18 — return to the rejecting city) · `same-angel-conversion-to-recommission` (v15) · `the-prepared-host-divine-appointment-at-a-meal` (vv19-22 — Amulek's own vision) · `hardened-heart-dismisses-every-authority` (vv11-12,17 — religious + civil) · `power-withheld-for-Gods-timing` (v31 — sets up ch 14) · practice: `wrestling-with-God-in-mighty-prayer` (v10)
 
+### from Alma 9 (the warning sermon — light is the measure)
+- person: `Alma-the-younger` (bold warning witness) · `the-people-of-Ammonihah` (hardened; "who is God?") · `the-Lamanites` (less culpable by tradition; promised converts; instrument of judgment) · `Amulek` (the second witness, about to stand)
+- doctrine: `light-sinned-against-is-the-measure-of-guilt` (vv15-24 — favored = more accountable; to whom much given) · `Lamanites-partial-exculpation-by-tradition` (v16 — **proof-text for mos10 spin-off**) · prophecy: `Lamanite-conversion-the-grievance-cure-decreed` (v17 — ground of the sons of Mosiah's mission) · theme: `who-is-God-Pharaoh-defiance-and-the-two-witnesses` (vv2,6 — Deut 17:6 → Amulek) · `dramatic-irony-destroyed-in-one-day` (v4 → ch 16) · doctrine: `prosperity-covenant-applied-two-edged` (vv13-18) · theme: `love-under-the-woe` (v30)
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -1478,3 +1482,12 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `theme:hardened-heart-dismisses-every-authority` —[Ammonihah rejects Alma on religious AND civil grounds at once; rejection of the prophet = conspiracy against liberty]→ 8:11-12,17 (Alma 9:6; Mosiah 11:27; Alma 10:27)
 - `theme:power-withheld-for-Gods-timing` —[Alma + Amulek could not be imprisoned or slain, yet did NOT use the power, letting themselves be bound "that the Lord might show forth his power in them"]→ 8:31 (Alma 14:10-13,25-29; Matt 26:53; John 18:36) — sets up the prison + watched martyrdom (ch 14)
 - `practice:wrestling-with-God-in-mighty-prayer` —[Alma's response to a hardened city is not argument but intercession]→ 8:10 (Enos 1:2-12; Alma 17:5; 3 Ne 27:1)
+
+### from Alma 9
+- `doctrine:light-sinned-against-is-the-measure-of-guilt` —[the favored Nephites MORE accountable, not less; "more tolerable for the Lamanites... than for you" because they sin against "so much light"; privilege a bill not a shield]→ 9:15-24 (Luke 12:47-48; Matt 11:22-24; John 15:22; D&C 82:3)
+- `doctrine:Lamanites-partial-exculpation-by-tradition` —[inherited false tradition keeps them in "ignorance," mitigating culpability; "therefore the Lord will be merciful"; the less-enlightened nearer mercy than the enlightened rebel]→ 9:16 (Mosiah 10:12-17; Alma 3:8; 42:21) — **mos10 grievance-tradition spin-off's partial-exculpation, here as proof-text**
+- `prophecy:Lamanite-conversion-the-grievance-cure-decreed` —["they will be brought to believe... and to know of the incorrectness of the traditions of their fathers; and many of them will be saved"; the cure prophesied as certain]→ 9:17 (Mosiah 28:1-2; Alma 17:15; Hel 15:4-7) — the ground of the sons of Mosiah's mission
+- `theme:who-is-God-Pharaoh-defiance-and-the-two-witnesses` —[rejects "the testimony of one man," asks "who is God?"; the two-witness law (Deut 17:6) answers it — God sends Amulek as the second]→ 9:2,6 (Ex 5:2; Mosiah 11:27; Deut 17:6; Alma 10)
+- `theme:dramatic-irony-destroyed-in-one-day` —[Ammonihah scoffs at the exact prophecy that fulfills — "destroyed in one day" (ch 16); the scoff names the doom]→ 9:4 (Alma 16:9-11; 25:2) — "Desolation of Nehors"
+- `doctrine:prosperity-covenant-applied-two-edged` —[keep → prosper; don't → cut off; Lamanites already cut off (v14), Nephites will be too (v18); the favored not exempt; the despised Lamanites the instrument of judgment]→ 9:13-18 (2 Ne 1:20; Mosiah 1:7; Alma 37:13)
+- `theme:love-under-the-woe` —[after the harshest rebuke, "ye are my brethren, and ye ought to be beloved"; severity is the alarm of love, not contempt]→ 9:30 (Alma 5:1-9; 1 Jn 4:11; Heb 12:6)
