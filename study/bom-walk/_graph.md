@@ -233,6 +233,14 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - crux: `hardening` (hear but understand not, vv9-10 — judicial/result)
 - variant: `result-not-imperative` (v9 BoM "they understood not" vs KJV "understand not" — VERIFIED, resolves the crux) · `seraphim-not-seraphims` (v2/6 toward Hebrew) · `they-shall-return` (v13)
 
+### from 2 Nephi 17 (Isaiah 7) — near-identical to KJV
+- isaiah: `7` (Syro-Ephraimite crisis + Immanuel sign)
+- person: `ahaz` (faithless king) · `rezin`+`pekah` (the two firebrands) · `shear-jashub` ("a remnant shall return") · `immanuel` (child = Christ) · `king-of-assyria` (hired razor)
+- image: `two-smoking-firebrands` (fear inflates the threat, v4)
+- wordplay: `believe=be-established` (aman, v9 — faith IS the security)
+- doctrine: `false-piety-refusal` (Ahaz declines commanded sign, v11-12) · `immanuel-virgin-birth` (sign given anyway, v14) · `dual-fulfillment` (near child + virgin-born Christ)
+- meta: `virgin-shared-with-KJV` (almah/parthenos translation tradition, NOT a BoM variant)
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -552,3 +560,12 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `variant:result-not-imperative` —[BoM v9 "they understood not" (report) vs KJV "understand not" (command), verified]→ resolves the hardening crux in the text
 - `variant:seraphim` —[BoM corrects KJV "seraphims" double-plural]→ 16:2,6
 - `doctrine:remnant-holy-seed` —[a tenth, a stump with living seed]→ 16:13 (2 Ne 14:3; Rom 11:5)
+
+### from 2 Nephi 17 (Isaiah 7)
+- `image:two-smoking-firebrands` —[fear inflates; the kings are nearly ash]→ 17:4
+- `wordplay:believe=be-established` —[aman: faith IS the security]→ 17:9 (2 Chr 20:20; Heb 11:6)
+- `doctrine:false-piety-refusal` —[Ahaz declines the commanded sign, masks a choice for Assyria]→ 17:11-12
+- `prophecy:immanuel-virgin-birth` —[the sign given anyway; God-with-us]→ 17:14 (Matt 1:23; 1 Ne 11:13-21) — typifies Christ per 11:4
+- `doctrine:dual-fulfillment` —[near child sign + virgin-born Christ]→ 17:14-16 (both true)
+- `meta:virgin-shared-with-KJV` —[almah/parthenos translation tradition; not a BoM variant]→ 17:14
+- `doctrine:hired-razor-backfires` —[trusting Assyria over God]→ 17:17-20 (2 Chr 28:20-21)
