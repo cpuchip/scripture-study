@@ -262,6 +262,12 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - image: `axe-boasts-against-the-hewer` (instrument credits itself = misattribution, deepest pride, v15 — live for any instrument incl. AI/me) · `the-same-fire` (light of Israel a flame, v17)
 - variant: `their-indignation` (v5 BoM for KJV "mine" — minor, VERIFIED); else close to KJV
 
+### from 2 Nephi 21 (Isaiah 11) — Restoration keystone (D&C 113; JS-H 1:40)
+- isaiah: `11` (stem of Jesse + peaceable kingdom + second gathering)
+- person: `stem-of-Jesse` (Christ) · `rod`+`root` (latter-day servants, D&C 113) · `the-recovered-remnant` · `ephraim`+`judah` (reconciled)
+- doctrine: `peace-by-knowledge` (they shall not hurt FOR earth full of knowledge, v9 — Millennium as epistemological state; D&C 130:18) · `judge-not-by-appearance` (v3-4) · `stem-rod-root-of-Jesse` (D&C 113) · `second-gathering` (v11) · `ephraim-and-judah-reconciled` (two sticks, v13)
+- meta: `glory-chapters-near-identical` (Isa 9+11 ~verbatim; variants cluster in judgment chapters — BoM reworks warnings not glory)
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -617,3 +623,11 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `doctrine:yoke-destroyed-by-anointing` —[Messiah not rod breaks the burden]→ 20:27 (19:4; Luke 4:18)
 - `image:the-same-fire` —[light of Israel a flame]→ 20:17 (14:4-5; 15:24)
 - `meta:close-to-KJV` —[minor variants; axe-image + structure shared verbatim]→ 20 (v5 "their indignation")
+
+### from 2 Nephi 21 (Isaiah 11)
+- `doctrine:peace-by-knowledge` —[they shall not hurt FOR the earth is full of knowledge]→ 21:9 (Hab 2:14; D&C 130:18 = project epigraph) — Millennium as epistemological state
+- `doctrine:judge-not-by-appearance` —[not sight of eyes nor hearing of ears, but righteousness]→ 21:3-4 (John 7:24; 1 Sam 16:7)
+- `doctrine:stem-rod-root-of-Jesse` —[Christ + latter-day servants]→ 21:1,10 (D&C 113:1-6) — Restoration keystone
+- `prophecy:second-gathering` —[the Lord's hand a second time; the ensign]→ 21:11-12 (JS-H 1:40; D&C 113; 2 Ne 29:1)
+- `doctrine:ephraim-and-judah-reconciled` —[the two sticks healed]→ 21:13 (Ezek 37:15-22; 2 Ne 3) — the BoM enacts it
+- `meta:glory-chapters-near-identical` —[Isa 9+11 ~verbatim; variants cluster in judgment chapters]→ BoM restores the warnings, not the glory
