@@ -572,6 +572,10 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - person: `the-Amlicites` (Nephites by descent; mark themselves; cursed by rebellion) · `the-Lamanites` (inherited mark from Laman & Lemuel) · `the-Nephites` (defined by belief in the true records, not blood) · `Alma` (wounded; sends the army)
 - doctrine: `every-man-that-is-cursed-brings-it-on-himself` (v19 — chapter's thesis; **bin-4 datapoint for 2 Ne 5:21 study**) · theme: `the-mark-is-self-imposed-and-allegiance-based` (vv4,11,13 — Nephites who chose rebellion took the mark; belief not blood) · `mark-to-quarantine-the-destroying-tradition` (v8 — ties to grievance study) · doctrine: `curse-conditional-removable-on-repentance` (v14 → 2 Ne 30:6) · `wages-of-the-spirit-one-obeys` (vv26-27)
 
+### from Alma 4 (the pride cycle / Alma trades the gavel for pure testimony)
+- person: `Alma-the-younger` (lays down the judgment-seat to preach; keeps high priesthood) · `Nephihah` (wise elder made chief judge by the voice of the people) · `the-proud-church-members` (riches, costly apparel, scorn) · `the-humble-remnant` (impart to the poor, retain a remission) · `the-unbelievers` (stumbled by the church's hypocrisy)
+- theme: `church-out-prides-the-world-stops-the-gospel` (vv9-11 — hypocrisy as stumbling-block) · `split-community-closed-hands-vs-open-hands` (vv12-14) · doctrine: `retaining-a-remission-by-imparting-to-the-poor` (v14 — Benjamin's phrase) · event: `Alma-trades-the-gavel-for-pure-testimony` (vv15-20 — the great pivot) · doctrine: `pure-testimony-the-remedy-for-pride` (v19 — word over law; sets up the great sermons) · theme: `pride-cycle-affliction-to-pride` (vv3,6)
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -1411,3 +1415,11 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `theme:mark-to-quarantine-the-destroying-tradition` —[the mark's stated purpose: preserve the people from "incorrect traditions which would prove their destruction"; about the false tradition, not the blood]→ 3:8 (Mosiah 10:12-17; 1:5; Alma 9:16) — ties to the grievance-tradition spin-off
 - `doctrine:curse-conditional-removable-on-repentance` —[the separation stands "except they repent... and turn to me that I may have mercy"; not fated, lifts on repentance]→ 3:14 (2 Ne 30:6; Alma 23:18; 3 Ne 2:14-16)
 - `doctrine:wages-of-the-spirit-one-obeys` —[reap rewards by works, "according to the spirit which they listed to obey"; every man paid by the master he chooses]→ 3:26-27 (Rom 6:16; Mosiah 2:32-33; Alma 5:41) — the eternal form of self-authorship
+
+### from Alma 4
+- `theme:church-out-prides-the-world-stops-the-gospel` —[the church's pride "exceed[s]" the world's; its hypocrisy a "stumbling-block" so "the church began to fail in its progress"; the proud example preaches against the gospel]→ 4:9-11 (Hel 4:11-12; Rom 2:24; Matt 5:13-16) — nothing stops growth like the members' pride
+- `theme:split-community-closed-hands-vs-open-hands` —[the proud "turn their backs upon the needy"; the humble "impart their substance to the poor"; the dividing line within the covenant people is generosity]→ 4:12-14 (Jacob 2:17-19; Mosiah 4:16-26; Alma 1:27)
+- `doctrine:retaining-a-remission-by-imparting-to-the-poor` —[the faithful keep the remission by succoring the needy; Benjamin's exact phrase]→ 4:14 (Mosiah 4:12,26; Alma 5:26; D&C 20:31)
+- `event:Alma-trades-the-gavel-for-pure-testimony` —[the chief judge/governor lays down the judgment-seat to confine himself "wholly to... the testimony of the word"; the most powerful man gives up the worldly office for the necessary spiritual work]→ 4:15-20 (Mosiah 29:40; Alma 7:1; Matt 20:25-28) — the great pivot
+- `doctrine:pure-testimony-the-remedy-for-pride` —[pride can't be legislated away; "no way... save it were in bearing down in pure testimony"; the word does what the law cannot]→ 4:19 (Alma 5:1; 31:5; Heb 4:12; Jacob 2:8) — sets up the great sermons (5, 7, 12-13, 32-34)
+- `theme:pride-cycle-affliction-to-pride` —[affliction humbles → remembrance; peace + prosperity → pride; pride → the next affliction; a disease of the heart no government cures]→ 4:3,6 (Hel 12:1-6; Deut 8:11-18; 4 Ne 1:24)
