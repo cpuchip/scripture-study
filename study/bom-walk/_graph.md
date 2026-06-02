@@ -490,6 +490,10 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - person: `Isaiah` (quoted) · `the-suffering-servant`/`Messiah` (despised, wounded, slain, intercessor, seed-gaining) · `all-we` (strayed sheep) · `Abinadi` (plants + will expound the text) · `Noah's-priests` (courtroom audience)
 - doctrine: `vicarious-substitution-the-servant` (vv4-6 — our transgressions, his stripes) · `offering-that-gains-seed` (vv10-12 — the death is fruitful → 15:10-13) · image: `lamb-led-silent-to-the-slaughter` (v7) · structure: `Abinadi-answers-glory-text-with-suffering-text` (Isa 52 ↔ Isa 53; one Messiah two faces) · `who-shall-declare-his-generation` (vv8,10 → 15:10-13) · pattern: `Isaiah-53-variants-broaden-the-atonement` (vv6,8,9,12 — sins pluralized, innocence generalized; God-ward tilt = atonement-chapter analogue of 2 Ne judgment-chapter mercy-tilt)
 
+### from Mosiah 15 (the doctrinal peak — Father and Son, the seed, the trap closed)
+- person: `Abinadi` (expositor) · `Christ`/`God-himself` (Father AND Son, Mediator, founder of peace, seed-gaining Redeemer) · `the-seed` (prophets + all who believe) · `the-watchmen` (Isa 52) · `the-willful-knowing-rebels` (excluded) · `little-children`+`the-ignorant-dead` (included)
+- doctrine: `Christ-Father-and-Son-condescension` (vv1-7 — Son by flesh, Father by conception + as Creator; one God by the will of the Son swallowed up in the Father; **discourse peak**) · `Mediator-betwixt-man-and-justice` (vv8-9 — mercy pays justice) · `atonement-makes-a-family-his-seed` (vv10-13 — Isa 53:10 answered; new-birth thread → 5:7) · structure: `Isaiah-52-trap-closed` (vv14-18,29-31 — the Lord is the beautiful-feet bringer; finishes the half-quoted passage) · `without-redemption-all-perish` (v19) · `first-resurrection-wide-reach` (vv20-25 — ignorant dead + little children) · `mercy-wide-justice-exact-willful-rebel-excluded` (vv26-27 — 3:11-12 calibration)
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -1166,3 +1170,12 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `structure:Abinadi-answers-glory-text-with-suffering-text` —[priests quoted triumphant Isaiah 52; Abinadi answers with suffering Isaiah 53 — same prophet, one Messiah, two faces]→ 14:1-12 (Mosiah 12:21-24; 15:14-18)
 - `pattern:Isaiah-53-variants-broaden-the-atonement` —[BoM pluralizes the sin borne (iniquities/transgressions/sins of many) + generalizes innocence (no evil vs no violence); the God-ward tilt magnifies redemption's scope]→ 14:6,8,9,12 (vs Isa 53:6,8,9,12) — atonement-chapter analogue of the 2 Ne judgment-chapter mercy-tilt
 - `doctrine:who-shall-declare-his-generation` —[answered in 15:10-13: the prophets + all who believe are "his seed"]→ 14:8,10 (Mosiah 15:10-13; 5:7)
+
+### from Mosiah 15
+- `doctrine:Christ-Father-and-Son-condescension` —[God himself comes down; Son by the flesh, Father by divine conception + as Creator; one God by the will of the Son swallowed up in the Father]→ 15:1-7 (Mosiah 3:8; 7:27; Alma 11:38-39; Ether 3:14; Luke 22:42) — **the discourse's doctrinal peak**
+- `doctrine:Mediator-betwixt-man-and-justice` —[Christ takes their iniquity, stands betwixt them and justice, satisfies its demands; mercy pays justice, not defeats it]→ 15:8-9 (Alma 42:13-25; 34:15-16; 2 Ne 2:9; 1 Tim 2:5)
+- `doctrine:atonement-makes-a-family-his-seed` —[Isaiah's "he shall see his seed" answered: all who believe + the prophets are his seed/heirs; the offering produces children]→ 15:10-13 (Isa 53:10; Mosiah 5:7; 27:25; Rom 8:16) — new-birth thread anchored in the suffering servant
+- `structure:Isaiah-52-trap-closed` —[the beautiful-feet bringers are the prophets (past/present/future) AND ultimately the Lord, "the founder of peace"; Abinadi finishes the passage the priest left half-quoted]→ 15:14-18,29-31 (Mosiah 12:21-24; Isa 52:7-10) — the deferred answer resolved
+- `doctrine:without-redemption-all-perish` —[the universal necessity; prepared from the foundation of the world]→ 15:19 (2 Ne 9:7; Mosiah 4:6)
+- `doctrine:first-resurrection-wide-reach` —[prophets + all who believed + the ignorant dead + little children; the redemption's sweep]→ 15:20-25 (Alma 40:16-21; 2 Ne 9:26; D&C 137:7-10; Moroni 8:8)
+- `doctrine:mercy-wide-justice-exact-willful-rebel-excluded` —[the knowing willful rebel has no part; God "cannot deny justice when it has its claim"; the 3:11-12 calibration]→ 15:26-27 (Mosiah 3:11-12; Alma 42:25; 2 Ne 9:25)
