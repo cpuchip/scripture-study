@@ -502,6 +502,11 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - person: `Abinadi` (refuses to recant; burned; seals his testimony) · `Alma` (the ONE convert; pleads, flees, writes the words in hiding — the survival chain) · `king-Noah` (offers the recantation deal; fears but yields) · `the-wicked-priests` (reframe doctrine as sedition) · `Noah's/priests'-seed` (future fire-persecutors, Alma 25) · `the-Ammonihah-believers` (future fire-martyrs)
 - theme: `one-convert-preserves-everything` (vv2-4 — only Alma believed → the church; Abinadi's seed vs Noah's seed) · `recantation-refused-words-are-true` (vv8-10) · `doctrine-reframed-as-sedition` (vv11-12 — "he reviled the king"; truth punished as treason, the maneuver that killed Christ) · doctrine: `martyrdom-seals-the-testimony` (vv10,20 — Heb 9:16-17) · prophecy: `dying-curse-fulfilled-to-the-letter` (vv15-18 → Alma 25, Mosiah 19) · type: `martyr-prophet-as-type-of-Christ` (13:10 completed)
 
+### from Mosiah 18 (the Waters of Mormon — the church founded)
+- person: `Alma` (repentant priest of Noah → founder; teaches, baptizes, ordains, leads the flight) · `Helam` (first baptized) · `the-believers` (204 baptized → 450 fleeing; the church of Christ) · `the-ordained-priests` (one per fifty; self-supporting) · `king-Noah` (criminalizes the church)
+- place: `Mormon` (fountain of pure water, thicket/forest, borders of the land)
+- covenant: `baptism-bear-one-anothers-burdens` (vv8-10 — mostly horizontal; the community IS the covenant; **most-quoted BoM covenant**) · theme: `church-founded-by-a-repentant-insider` (v1) · `church-born-in-hiding-and-hunted` (vv4-5,30-34) · `anti-Noah-church-order` (vv19-27 — self-supporting priests, no priestcraft) · doctrine: `baptism-covenant-witness-Spirit-poured-out` (vv10-14) · practice: `consecration-in-seed-proportional-giving` (vv27-29) · theme: `hearts-knit-one-faith-one-baptism` (v21) · `worship-criminalized-as-sedition` (v33)
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -1210,3 +1215,13 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `doctrine:martyrdom-seals-the-testimony` —[the death authenticates rather than refutes; "sealed the truth of his words by his death"; a testament in force after the testator dies]→ 17:10,20 (Heb 9:16-17; D&C 135:3-7; Rev 12:11)
 - `prophecy:dying-curse-fulfilled-to-the-letter` —[Noah's seed will burn believers (Alma 25); Noah himself dies by fire (ch 19); the wild flock scattered (8:21) — every clause lands]→ 17:15-18 (Alma 25:4-12; Mosiah 19:20; 13:10)
 - `type:martyr-prophet-as-type-of-Christ` —[the 13:10 "type and shadow" completed: righteous man, corrupt court, scourged, killed for truth, soul committed to God]→ 17:13-20 (Mosiah 13:10; Acts 7:59; Luke 23:46; John 12:24)
+
+### from Mosiah 18
+- `covenant:baptism-bear-one-anothers-burdens` —[the defining baptismal covenant is mostly horizontal: bear burdens (light by sharing), mourn with mourners/comfort, stand as witnesses; the community IS the covenant]→ 18:8-10 (Gal 6:2; Rom 12:15; Mosiah 4:16-26; 2:17) — **the most-quoted covenant in the BoM**
+- `theme:church-founded-by-a-repentant-insider` —[Alma was a priest of Noah; "repented of his sins and iniquities" first; the church is built by the repentant, not the pure]→ 18:1 (Mosiah 23:9; Alma 36:6-24; 1 Tim 1:13-16)
+- `theme:church-born-in-hiding-and-hunted` —[teaching privately, baptizing at a concealed water, discovered and forced to flee; yet the hunted birthplace becomes the beloved, sung-forever memory]→ 18:4-5,30-34 (Isa 52:7; Mosiah 15:15) — "how beautiful... they shall sing to his praise forever"
+- `theme:anti-Noah-church-order` —[every choice inverts the apostate model: self-supporting priests (not tax-funded luxury), teach repentance (not flattery), share substance (not extract it)]→ 18:19-27 (Mosiah 11:3-11; 2:14; Acts 20:33-35; Alma 1:26)
+- `doctrine:baptism-covenant-witness-Spirit-poured-out` —[baptized in the name of the Lord as witness of the covenant to serve + keep commandments; promise = the Spirit poured out more abundantly]→ 18:10-14 (2 Ne 31:13-17; D&C 20:37; Acts 2:38)
+- `practice:consecration-in-seed-proportional-giving` —[impart according to what one has; more from more, to him that had not should be given; free-will; the economic form of bearing burdens]→ 18:27-29 (Mosiah 4:16-26; 4 Ne 1:3; Acts 4:32-35; D&C 42:30)
+- `theme:hearts-knit-one-faith-one-baptism` —[no contention; look forward with one eye, hearts knit in unity and love; the relational fruit of the covenant]→ 18:21 (Eph 4:3-6; 1 Sam 18:1; John 17:21; 4 Ne 1:15)
+- `theme:worship-criminalized-as-sedition` —[Noah reads the gathering as "rebellion"; the church's first corporate act is flight from a state that outlaws it]→ 18:33-34 (Mosiah 17:12; Luke 23:2; Acts 17:6) — the charge that burned Abinadi, now against Alma
