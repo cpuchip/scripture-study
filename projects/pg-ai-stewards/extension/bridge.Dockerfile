@@ -42,6 +42,11 @@ COPY scripts/yt-mcp/            ./scripts/yt-mcp/
 COPY scripts/search-mcp/        ./scripts/search-mcp/
 COPY scripts/gospel-engine-v2/  ./scripts/gospel-engine-v2/
 
+# strongs-concordance-mcp — standalone module (NOT in go.work), built with
+# GOWORK=off like gospel-engine-v2. Lexicon + KJV data is embedded in the
+# binary (embed.go), so no data-file COPY is needed at runtime.
+COPY projects/strongs-concordance-mcp/ ./projects/strongs-concordance-mcp/
+
 # becoming/ is large; bring only what the cmd/mcp build needs.
 COPY scripts/becoming/go.mod         ./scripts/becoming/go.mod
 COPY scripts/becoming/go.sum         ./scripts/becoming/go.sum
@@ -123,6 +128,11 @@ RUN cd scripts/becoming \
 RUN cd scripts/gospel-engine-v2 \
     && GOWORK=off go build -trimpath -ldflags="-s -w" -o /out/gospel-mcp ./cmd/gospel-mcp
 
+# strongs-concordance-mcp is NOT in go.work (standalone module with its own
+# manifests, like gospel-engine-v2). Build outside workspace mode.
+RUN cd projects/strongs-concordance-mcp \
+    && GOWORK=off go build -trimpath -ldflags="-s -w" -o /out/strongs-mcp ./cmd/strongs-mcp
+
 # ---------------------------------------------------------------------
 # Stage 2 — runtime. Slim alpine + binaries + data files.
 # ---------------------------------------------------------------------
@@ -150,6 +160,7 @@ COPY --from=builder /out/yt-mcp         /usr/local/bin/yt-mcp
 COPY --from=builder /out/search-mcp     /usr/local/bin/search-mcp
 COPY --from=builder /out/becoming-mcp   /usr/local/bin/becoming-mcp
 COPY --from=builder /out/gospel-mcp     /usr/local/bin/gospel-mcp
+COPY --from=builder /out/strongs-mcp    /usr/local/bin/strongs-mcp
 COPY --from=builder /out/fs-read-mcp    /usr/local/bin/fs-read-mcp
 COPY --from=builder /out/stewards-cli   /usr/local/bin/stewards-cli
 
