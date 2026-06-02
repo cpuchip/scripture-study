@@ -741,6 +741,10 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - person: `Captain-Moroni` (chief captain at 25; armor, revelation, stratagem, mercy) · `Zerahemnah` (Lamanite commander; apostate captains preserve hatred) · `Lehi-captain` (encircling army at Sidon) · `Alma-the-younger` (consulted for strategy)
 - doctrine: `the-better-cause-defensive-not-conquest` (vv45-47) · `the-law-of-war-bear-the-offense-then-defend` (vv46-47 — D&C 98) · theme: `Moroni-prepares-armor-as-a-moral-act` (vv18-21, 37-38) · `revelation-and-strategy-together` (vv23-24, 30) · `mercy-in-victory-stop-when-the-threat-is-contained` (v54) · `dissenters-drive-the-war` (vv6-8)
 
+### from Alma 44 (Zerahemnah surrenders — conditional protection)
+- person: `Captain-Moroni` (conditional-protection doctrine; keeps his word; repeated mercy) · `Zerahemnah` (credits armor not God; refuses then accepts the oath; scalped)
+- doctrine: `conditional-protection-faithful-or-fall` (v4) · theme: `two-readings-of-the-same-victory` (vv3 vs 9 — providence vs armor) · `Moronis-word-binds-him` (vv10-11) · `mercy-with-a-limit-spare-the-person-not-the-threat` (vv6, 11) · `repeated-mercy-stop-the-killing-when-the-enemy-yields` (v20) · event: `end-of-Almas-record` (v24)
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -1928,3 +1932,10 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `theme:revelation-and-strategy-together` —[Moroni inquires of the Lord through Alma where to defend, AND "thought it no sin that he should defend them by stratagem"; divine guidance + lawful cunning, neither despised]→ 43:23-24, 30 (Judg 7:16-25; 2 Kgs 6:8-18; Josh 8:13)
 - `theme:mercy-in-victory-stop-when-the-threat-is-contained` —[with the Lamanites surrounded and "struck with terror," Moroni "commanded his men that they should stop shedding their blood"; a war for protection sheathes the sword the instant protection is achieved]→ 43:54 (Alma 44:1-2; Deut 20:10-12; Prov 24:17)
 - `theme:dissenters-drive-the-war` —[Zerahemnah appoints Amalekite/Zoramite apostates as chief captains "that he might preserve their hatred"; the dissenters "more wicked and murderous" than the native Lamanites — the 24:30 principle in arms]→ 43:6-8 (Alma 24:30; 47:36; 21:3-4)
+
+### from Alma 44
+- `doctrine:conditional-protection-faithful-or-fall` —["God will support, and keep, and preserve us, so long as we are faithful unto him... never will the Lord suffer that we shall be destroyed except we should fall into transgression and deny our faith"; the war is a barometer of national righteousness, not firepower]→ 44:3-4 (1 Ne 2:20-21; Alma 9:13; 2 Ne 1:20; Mosiah 1:7)
+- `theme:two-readings-of-the-same-victory` —[Moroni: "the Lord is with us"; Zerahemnah: "it is your cunning... your breastplates and your shields that have preserved you"; the unbeliever stops at the visible cause and refuses the Author; the difference is in the eyes, not the evidence]→ 44:3, 9 (Alma 30:44; 18:35; 1 Cor 2:14; John 12:28-29)
+- `theme:Moronis-word-binds-him` —[Moroni returns the weapons but then "I cannot recall the words which I have spoken... ye shall not depart except ye depart with an oath"; his own prior word binds him even to his constraint]→ 44:10-11 (Num 30:2; Matt 5:33-37; Eccl 5:4-5; Josh 9:18-20)
+- `theme:mercy-with-a-limit-spare-the-person-not-the-threat` —[life freely offered for an oath, but no release without it — an enemy freed without a covenant will "come again to war"; mercy spares the person without pretending the threat isn't real]→ 44:6, 11 (Alma 43:54; Deut 20:10-12; Luke 14:31-32)
+- `theme:repeated-mercy-stop-the-killing-when-the-enemy-yields` —[the sword goes up + comes down three times the moment the threat relents (43:54; 44:17, 20); "the work of death should cease again"; a war for peace keeps offering the off-ramp]→ 44:20 (Alma 43:54; Prov 24:17; Matt 5:7; Rom 12:18)
