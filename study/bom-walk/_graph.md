@@ -494,6 +494,10 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - person: `Abinadi` (expositor) · `Christ`/`God-himself` (Father AND Son, Mediator, founder of peace, seed-gaining Redeemer) · `the-seed` (prophets + all who believe) · `the-watchmen` (Isa 52) · `the-willful-knowing-rebels` (excluded) · `little-children`+`the-ignorant-dead` (included)
 - doctrine: `Christ-Father-and-Son-condescension` (vv1-7 — Son by flesh, Father by conception + as Creator; one God by the will of the Son swallowed up in the Father; **discourse peak**) · `Mediator-betwixt-man-and-justice` (vv8-9 — mercy pays justice) · `atonement-makes-a-family-his-seed` (vv10-13 — Isa 53:10 answered; new-birth thread → 5:7) · structure: `Isaiah-52-trap-closed` (vv14-18,29-31 — the Lord is the beautiful-feet bringer; finishes the half-quoted passage) · `without-redemption-all-perish` (v19) · `first-resurrection-wide-reach` (vv20-25 — ignorant dead + little children) · `mercy-wide-justice-exact-willful-rebel-excluded` (vv26-27 — 3:11-12 calibration)
 
+### from Mosiah 16 (Abinadi's close — the arms of mercy extended)
+- person: `Abinadi` (closes the discourse; commissions his killers) · `Christ` (redemption, light and life, the very Eternal Father) · `the-old-serpent` (cause of the Fall) · `all-mankind` (lost, redeemed) · `the-wicked/carnal-man` (refuses the extended arms) · `Noah's-priests` (commissioned; Alma listening)
+- doctrine: `redemption-universal-in-reach-conditional-in-benefit` (vv4-5 — "as though there was no redemption made"; **chapter pivot**) · theme: `arms-of-mercy-extended-and-they-would-not` (v12 — damnation self-authored against outstretched mercy) · `all-confess-his-judgments-are-just` (v1) · `carnal-sensual-devilish-the-fall` (v3) · `resurrection-swallows-the-sting-of-death` (vv7-10) · `bar-of-God-judgment-by-works-two-resurrections` (vv10-11) · commission: `teach-the-law-as-shadow-teach-Christ` (vv14-15 — dies handing them the work; Alma listening)
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -1179,3 +1183,11 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `doctrine:without-redemption-all-perish` —[the universal necessity; prepared from the foundation of the world]→ 15:19 (2 Ne 9:7; Mosiah 4:6)
 - `doctrine:first-resurrection-wide-reach` —[prophets + all who believed + the ignorant dead + little children; the redemption's sweep]→ 15:20-25 (Alma 40:16-21; 2 Ne 9:26; D&C 137:7-10; Moroni 8:8)
 - `doctrine:mercy-wide-justice-exact-willful-rebel-excluded` —[the knowing willful rebel has no part; God "cannot deny justice when it has its claim"; the 3:11-12 calibration]→ 15:26-27 (Mosiah 3:11-12; Alma 42:25; 2 Ne 9:25)
+
+### from Mosiah 16
+- `doctrine:redemption-universal-in-reach-conditional-in-benefit` —[Christ redeems ALL from the Fall (all rise); but the one who persists in carnal nature lives "as though there was no redemption made" — a paid debt refused]→ 16:4-5 (2 Ne 9:7; Alma 12:22; 42:6-14; 1 Cor 15:22)
+- `theme:arms-of-mercy-extended-and-they-would-not` —[damnation self-authored against an outstretched mercy; not God withholding but man refusing; warned/commanded "yet they would not" ×3]→ 16:12 (Matt 23:37; Jacob 6:4-5; Alma 5:33; 3 Ne 9:14)
+- `doctrine:all-confess-his-judgments-are-just` —[even the condemned finally agree; no grievance God cannot answer]→ 16:1 (Mosiah 27:31; Philip 2:10-11; D&C 88:104)
+- `doctrine:carnal-sensual-devilish-the-fall` —[the serpent loosed it on all mankind; the fallen state Christ redeems from]→ 16:3 (Mosiah 3:19; Alma 42:10; Moses 5:13; Gal 5:19)
+- `doctrine:resurrection-swallows-the-sting-of-death` —[grave no victory, sting swallowed up in Christ; this mortal puts on immortality]→ 16:7-10 (1 Cor 15:54-57; Mosiah 15:8; Alma 40:2)
+- `commission:teach-the-law-as-shadow-teach-Christ` —[Abinadi's final charge to his killers: the law is a shadow (13:31); teach redemption through Christ "the very Eternal Father" (15:4)]→ 16:14-15 (Mosiah 13:31; 3:8; Col 2:17) — he dies handing them the work; Alma is listening
