@@ -568,6 +568,10 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - place: `hill-Amnihu` · `river-Sidon` · `valley-of-Gideon` · `land-of-Minon` · `wilderness-Hermounts`
 - doctrine: `voice-of-the-people-works-but-not-self-enforcing` (vv3-10) · theme: `heresy-becomes-insurrection` (v1 — Nehor→Amlici) · `dissent-allies-with-the-enemy` (vv24-25) · `warrior-prophet-asks-only-to-serve` (vv16,30) · doctrine: `strengthened-by-the-Lord-after-prayer` (vv18,28,31) · theme: `cost-of-one-mans-pride` (v19 — ~19,000 slain)
 
+### from Alma 3 (the Amlicite mark — the curse self-authored) [BIN-4: logged for Michael, not resolved]
+- person: `the-Amlicites` (Nephites by descent; mark themselves; cursed by rebellion) · `the-Lamanites` (inherited mark from Laman & Lemuel) · `the-Nephites` (defined by belief in the true records, not blood) · `Alma` (wounded; sends the army)
+- doctrine: `every-man-that-is-cursed-brings-it-on-himself` (v19 — chapter's thesis; **bin-4 datapoint for 2 Ne 5:21 study**) · theme: `the-mark-is-self-imposed-and-allegiance-based` (vv4,11,13 — Nephites who chose rebellion took the mark; belief not blood) · `mark-to-quarantine-the-destroying-tradition` (v8 — ties to grievance study) · doctrine: `curse-conditional-removable-on-repentance` (v14 → 2 Ne 30:6) · `wages-of-the-spirit-one-obeys` (vv26-27)
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -1400,3 +1404,10 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `theme:warrior-prophet-asks-only-to-serve` —[Alma fights Amlici but prays to be "an instrument... to save and preserve this people," not for himself; the inverse of Amlici who sought power OVER them]→ 2:16,29-31 (Alma 4:18-20; Mosiah 23:6-13)
 - `doctrine:strengthened-by-the-Lord-after-prayer` —[vastly outnumbered ("sands of the sea"), the Nephites prevail only "strengthened by the hand of the Lord" after praying mightily]→ 2:18,28,31 (Mosiah 9:17; Alma 43:48; 1 Sam 17:45; Deut 31:6)
 - `theme:cost-of-one-mans-pride` —[12,532 Amlicites + 6,562 Nephites slain in a day; dissent that began as flattering doctrine ends in a field of corpses]→ 2:19 (Alma 3:1-2; 28:2-3)
+
+### from Alma 3  [BIN-4: 2 Ne 5:21 family — logged for Michael, not resolved]
+- `doctrine:every-man-that-is-cursed-brings-it-on-himself` —[the chapter's explicit thesis: the Amlicites "brought upon themselves the curse"; a curse is self-authored consequence of rebellion, not arbitrary divine branding]→ 3:18-19 (2 Ne 5:21-25; Mosiah 16:12; Hel 14:30)
+- `theme:the-mark-is-self-imposed-and-allegiance-based` —[the Amlicites (Nephites by descent) "marked themselves"; the line is belief/chosen-tradition (v11), not blood; a Nephite who rebels takes the mark]→ 3:4,11,13 (Mosiah 25:12; Jacob 1:13-14; Alma 2:11)
+- `theme:mark-to-quarantine-the-destroying-tradition` —[the mark's stated purpose: preserve the people from "incorrect traditions which would prove their destruction"; about the false tradition, not the blood]→ 3:8 (Mosiah 10:12-17; 1:5; Alma 9:16) — ties to the grievance-tradition spin-off
+- `doctrine:curse-conditional-removable-on-repentance` —[the separation stands "except they repent... and turn to me that I may have mercy"; not fated, lifts on repentance]→ 3:14 (2 Ne 30:6; Alma 23:18; 3 Ne 2:14-16)
+- `doctrine:wages-of-the-spirit-one-obeys` —[reap rewards by works, "according to the spirit which they listed to obey"; every man paid by the master he chooses]→ 3:26-27 (Rom 6:16; Mosiah 2:32-33; Alma 5:41) — the eternal form of self-authorship
