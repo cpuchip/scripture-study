@@ -299,6 +299,12 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - synthesis: `isaiah-block` (Nephi supplies the plain interpreter for chs 12-24)
 - FLAG: 25:23 grace/works = strongest remaining 2 Ne spin-off candidate
 
+### from 2 Nephi 26 (Nephite destruction + last days + priestcraft + inclusivity)
+- person: `the-risen-Christ` (ministers to Nephites) · `last-days-Gentiles` (pride, priestcraft, grind the poor) · `all-mankind` (black/white, bond/free, male/female — none forbidden)
+- doctrine: `all-are-alike-unto-God` (26:33 — **answers 2 Ne 5:21, same author**) · `priestcraft-defined` (self as light + gain + praise, not Zion's welfare, v29) · `labor-for-Zion-not-money` (v31) · `inclusivity-grounded-in-atonement` (loveth the world, draws all, v24) · `Spirit-will-not-always-strive` (v11)
+- image: `voice-from-the-dust` (the BoM as a buried people's whisper, v15-16; Isa 29:4)
+- thread: `grind-the-face-of-the-poor` (Isaiah-block carryover, v20 ← 13:15)
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -694,3 +700,11 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `doctrine:we-talk-of-Christ` —[plainness distilled: point to the source for remission]→ 25:26 (1 Ne 6:4; 11:4)
 - `doctrine:law-kept-but-dead` —[obey the type while watching for the antitype]→ 25:24-27 (Gal 3:24-25; Rom 7:4)
 - `synthesis:isaiah-block` —[Nephi supplies the plain interpreter]→ 25 (the hard words get their key)
+
+### from 2 Nephi 26
+- `doctrine:all-are-alike-unto-God` —[denieth none: black/white, bond/free, male/female, Jew/Gentile]→ 26:33 (Acts 10:34; Gal 3:28) · —[ANSWERS]→ `tension:complexion-language` 5:21 (same author, 21 chs later — strengthens the with-Michael flag)
+- `doctrine:priestcraft-defined` —[set self up as the light, for gain + praise, not Zion's welfare]→ 26:29 (Alma 1:12; D&C 121:34-37) — Ben Test in Nephi's words
+- `doctrine:labor-for-Zion-not-money` —[if they labor for money they shall perish]→ 26:31 (Jacob 2:18; John 10:12-13)
+- `doctrine:inclusivity-grounded-in-atonement` —[loveth the world, lays down his life to draw all]→ 26:24 (John 3:16; 12:32)
+- `image:voice-from-the-dust` —[the BoM as a buried people's whisper]→ 26:15-16 (Isa 29:4; 2 Ne 3:19)
+- `doctrine:Spirit-will-not-always-strive` —[then speedy destruction]→ 26:11 (Gen 6:3; 1 Ne 7:14)
