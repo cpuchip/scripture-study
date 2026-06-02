@@ -241,6 +241,12 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - doctrine: `false-piety-refusal` (Ahaz declines commanded sign, v11-12) · `immanuel-virgin-birth` (sign given anyway, v14) · `dual-fulfillment` (near child + virgin-born Christ)
 - meta: `virgin-shared-with-KJV` (almah/parthenos translation tradition, NOT a BoM variant)
 
+### from 2 Nephi 18 (Isaiah 8)
+- isaiah: `8` (Maher-shalal-hash-baz + the flood + the stone + "to the law and to the testimony")
+- image: `two-waters` (soft Shiloah refused → the river/Assyria flood, v6-8) · `children-as-signs` (names = walking prophecies, v18)
+- doctrine: `two-fears` (fear of men displaced by fear of God, v12-13) · `stone-sanctuary-and-stumbling` (same stone, response decides = Christ, v14) · `to-the-law-and-to-the-testimony` (discernment standard, v20) · `seek-God-not-peeping-wizards` (v19) · `Immanuel-God-with-us` (v10)
+- variant: `hear-from-the-dead` (v19 BoM clarifies KJV's cryptic phrase — VERIFIED)
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -569,3 +575,12 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `doctrine:dual-fulfillment` —[near child sign + virgin-born Christ]→ 17:14-16 (both true)
 - `meta:virgin-shared-with-KJV` —[almah/parthenos translation tradition; not a BoM variant]→ 17:14
 - `doctrine:hired-razor-backfires` —[trusting Assyria over God]→ 17:17-20 (2 Chr 28:20-21)
+
+### from 2 Nephi 18 (Isaiah 8)
+- `image:two-waters` —[refuse soft Shiloah → get the flood you preferred]→ 18:6-8 (Jer 2:13)
+- `doctrine:two-fears` —[fear of men displaced by fear of God]→ 18:12-13 (1 Pet 3:14-15; Matt 10:28)
+- `doctrine:stone-sanctuary-and-stumbling` —[same stone, opposite effects by response = Christ]→ 18:14-15 (Rom 9:33; 1 Pet 2:8; Luke 2:34)
+- `doctrine:to-the-law-and-to-the-testimony` —[test every voice; no accord = no light]→ 18:20 (2 Tim 3:16; Moroni 10:27-29; D&C 1:38)
+- `doctrine:seek-God-not-peeping-wizards` —[hidden knowledge from illegitimate sources]→ 18:19 (Lev 20:6; 1 Sam 28)
+- `image:children-as-signs` —[names = walking prophecies]→ 18:18 (likening made flesh)
+- `variant:hear-from-the-dead` —[BoM v19 clarifies KJV's cryptic "for the living to the dead", verified]→ opaque → clear
