@@ -749,6 +749,10 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - person: `Alma-the-younger` (final prophecy, blessing, translation-like departure) · `Helaman` (reaffirms belief; receives records; takes up ministry)
 - prophecy: `Nephite-extinction-400-years` (vv10-14) · event: `Almas-translation-like-departure` (vv18-19 — "even as Moses") · doctrine: `the-conditional-land-covenant` (v16) · theme: `the-prophecy-sealed-until-fulfilled` (v9) · `the-pride-cycle-reignites-the-moment-deliverance-passes` (vv1, 23-24) · `Mormon-lives-the-fulfillment-he-records` (vv10-14)
 
+### from Alma 46 (the title of liberty)
+- person: `Amalickiah` (the flatterer; cunning + flattering words; bids for kingship) · `Captain-Moroni` (rends coat into title of liberty; prays before proclaiming) · object: `the-title-of-liberty` ("our God, our religion, and freedom, and our peace, our wives, and our children")
+- doctrine: `the-inner-threat-of-flattery-and-ambition` (vv4-10) · `the-self-maledictory-covenant-of-liberty` (vv19-22) · `conditional-protection-destroyed-only-by-our-transgressions` (v18) · theme: `how-quick-to-forget-after-deliverance` (vv7-8) · `prayer-before-the-banner` (v13) · `the-Joseph-remnant-typology-refuses-to-flatter` (vv23-27) · `the-hard-edge-of-wartime-liberty` (v35) · event: `Christians-named` (vv14-15)
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -1950,3 +1954,12 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `doctrine:the-conditional-land-covenant` —["Cursed shall be the land... unto destruction, which do wickedly, when they are fully ripe... for the Lord cannot look upon sin with the least degree of allowance"; a standing condition re-triggered by each generation]→ 45:16 (2 Ne 1:7; Ether 2:8-12; D&C 1:31)
 - `theme:the-prophecy-sealed-until-fulfilled` —["what I prophesy unto thee ye shall not make known... even until the prophecy is fulfilled; therefore write the words"; some truths sealed to be vindicated later, not proclaimed now]→ 45:9 (Dan 12:4, 9; Isa 29:11; Ether 4:5-7)
 - `theme:the-pride-cycle-reignites-the-moment-deliverance-passes` —[v1 "exceedingly rejoiced... fast much and pray much" → v24 "grew proud, being lifted up... because of their exceedingly great riches"; gratitude curdles into pride within one chapter; the Nephites survive the armies but not their own success]→ 45:1, 23-24 (Hel 12:1-3; 4 Ne 1:24-26; Deut 8:11-14; Alma 46:1-7)
+
+### from Alma 46
+- `doctrine:the-inner-threat-of-flattery-and-ambition` —[Amalickiah, "cunning device and many flattering words," wins the power-seeking lower judges by promising rulership; "the great wickedness one very wicked man can cause"; the internal demagogue more dangerous than the external army]→ 46:4-10 (Prov 29:5; Mosiah 29:17-18; Hel 2:4-5; 2 Sam 15:1-6)
+- `theme:how-quick-to-forget-after-deliverance` —["thus we see how quick the children of men do forget the Lord their God, yea, how quick to do iniquity"; the forgetting follows the deliverance almost instantly]→ 46:7-8 (Hel 12:1-5; Deut 8:11-14; 4 Ne 1:24; Judg 2:10-12)
+- `theme:prayer-before-the-banner` —[Moroni rends the coat, dons armor, names the title — then "bowed himself to the earth, and prayed mightily" BEFORE waving it; the cause consecrated in prayer before proclaimed in public]→ 46:12-13 (Alma 43:23; 1 Sam 7:9; 2 Chr 20:5-12)
+- `doctrine:the-self-maledictory-covenant-of-liberty` —[the people rend their garments "as a covenant" — "the Lord should rend them even as they had rent their garments" if they transgress; enacting on a symbol what they invite on themselves; liberty bound to accountability, not unconditional]→ 46:19-22 (Gen 15:9-18; Jer 34:18-20; Alma 44:4)
+- `theme:the-Joseph-remnant-typology-refuses-to-flatter` —[the rent coat of Joseph → rent garments → Moroni's rent coat; "a remnant of the seed of Joseph... preserved by the hand of God" — but "even it shall be ourselves if we do not stand fast"]→ 46:23-27 (Gen 37:31-36; 2 Ne 3:5; Jacob 5:43-45; Ether 13:6-7)
+- `event:Christians-named` —[the true believers "took upon them, gladly, the name of Christ, or Christians as they were called"; the name given by outsiders, worn gladly by the faithful]→ 46:14-15 (Acts 11:26; Mosiah 5:7-12; Alma 48:10)
+- `theme:the-hard-edge-of-wartime-liberty` —[the Amalickiahites who "would not enter into a covenant to support the cause of freedom... he caused to be put to death"; wartime sedition law with Amalickiah fleeing to raise the Lamanites — the record doesn't present its heroes as flawless]→ 46:35 (Mosiah 29:32; Alma 51:19-20; 62:9-10)
