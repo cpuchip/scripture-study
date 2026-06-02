@@ -789,6 +789,10 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - person: `Captain-Moroni` (bloodless victory; refuses to kill the helpless) · `Laman-Nephite-scout` (executes the wine stratagem) · `Ammoron` (knows his cause unjust, fights anyway)
 - doctrine: `refusing-to-kill-the-helpless-even-when-you-could` (vv18-19 — David/sleeping-Saul) · theme: `the-stratagem-that-serves-mercy` (vv4-24) · `the-enemys-own-appetite-is-the-weapon` (vv10-14) · `angriest-at-the-knowingly-false` (v1) · `remember-God-and-dont-fall-for-your-own-trick` (vv30-32)
 
+### from Alma 56 (Helaman's epistle — the stripling warriors fight)
+- person: `Helaman` (writes epistle; leads + protects the 2000 "sons") · `the-two-thousand-stripling-warriors` (fearless faith; none slain) · `the-mothers-of-Ammon` (taught "if ye doubt not, God will deliver") · `Antipus` (commander; falls, "happy")
+- doctrine: `faith-taught-by-believing-mothers` (v47) · `believing-on-the-words-of-a-trusted-witness` (v48 — "we do not doubt our mothers knew it") · theme: `courage-that-is-a-function-of-faith-not-bravado` (vv45-47) · `reluctance-even-in-the-young-warriors` (v46) · event: `not-one-of-the-two-thousand-slain` (vv55-56)
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -2065,3 +2069,10 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `theme:the-enemys-own-appetite-is-the-weapon` —["let us keep of our wine till we go against the Nephites... this saying only made them more desirous to drink"; the guards' undisciplined craving is the weapon — Moroni only offers and lets their weakness do the rest]→ 55:10-14 (Prov 20:1; 23:31-32; Mosiah 22:6-11)
 - `theme:angriest-at-the-knowingly-false` —["he knew that Ammoron had a perfect knowledge of his fraud... that it was not a just cause"; Moroni enraged not by an honest enemy but by one who knows he's wrong and fights anyway — the knowingly false, not the deceived]→ 55:1 (Alma 54:17-24; John 9:41; James 4:17)
 - `theme:remember-God-and-dont-fall-for-your-own-trick` —[the Lamanites try the wine trick back, but "the Nephites were not slow to remember the Lord their God... they would not partake... save they had first given to some of the Lamanite prisoners"; vigilance + remembering God travel together]→ 55:30-32 (Hosea 5:15; Alma 62:49-51; 1 Pet 5:8)
+
+### from Alma 56
+- `doctrine:faith-taught-by-believing-mothers` —["they had been taught by their mothers, that if they did not doubt, God would deliver them"; the most formidable faith in the war record cultivated in childhood by believing women — mothers (people of Ammon) who taught what they had themselves staked everything on]→ 56:47 (Alma 23:6-7; 2 Tim 1:5; 3:14-15; Prov 22:6; Deut 6:6-7)
+- `doctrine:believing-on-the-words-of-a-trusted-witness` —["we do not doubt our mothers knew it"; not independent knowledge but confidence in their mothers' knowledge — faith resting on a trustworthy loving witness is real enough to march into battle on; the D&C 46:14 gift]→ 56:48 (D&C 46:14; John 4:39-42; 1 John 1:1-3)
+- `theme:courage-that-is-a-function-of-faith-not-bravado` —["never had I seen so great courage... our God is with us, and he will not suffer that we should fall"; fearlessness resting on trust in God's deliverance, not their own arms]→ 56:45-47 (Matt 17:20; Mark 9:23; Ps 27:1; Alma 57:26)
+- `theme:reluctance-even-in-the-young-warriors` —["we would not slay our brethren if they would let us alone"; even the untested boys keep the family-not-enemy frame — fighting only because Antipus's army would be destroyed otherwise]→ 56:46 (Alma 48:23; 24:18; Matt 5:9)
+- `event:not-one-of-the-two-thousand-slain` —["there had not one soul of them fallen to the earth... they had fought as if with the strength of God; never were men known to have fought with such miraculous strength"; the empty casualty list is the divine signature on a faith taught and trusted]→ 56:55-56 (Alma 57:25; 58:39; Ex 14:13-14; 2 Chr 20:17)
