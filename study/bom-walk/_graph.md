@@ -699,6 +699,10 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - person: `Amulek` (atonement sermon; personal testimony; hypocrisy rebuke)
 - doctrine: `the-atonement-must-be-infinite` (vv9-14) · `mercy-satisfies-justice-encircles-in-safety` (vv15-16 — seed of Alma 42) · `the-law-every-whit-points-to-the-sacrifice` (vv13-14) · `prayer-without-mercy-to-the-needy-is-hypocrisy` (vv28-29 — "dross" reversed) · `this-life-is-the-time-to-prepare` (vv31-33) · `the-spirit-you-die-with-persists` (vv34-35) · theme: `prayer-everywhere-over-everything-continually` (vv17-27) · `dont-let-the-casting-out-make-you-like-them` (vv40-41)
 
+### from Alma 35 (Zoramite block close — refugees become refuge; pivot to the sons)
+- person: `the-Zoramite-leaders` (angry the word destroyed their craft; secret purge) · `the-people-of-Ammon` (former refugees now shelter cast-out Zoramites) · `the-new-Zoramite-converts` (expelled; take up arms — not under the Ammonite oath) · `Alma-the-younger` (grieved; pivots to his sons)
+- theme: `the-word-destroys-craft` (vv3-6) · `the-sheltered-become-shelterers` (vv8-9) · `pacifism-was-a-covenant-not-a-blanket-rule` (vv13-14) · `offended-by-the-strictness-of-the-word` (v15) · `pivot-from-public-mission-to-private-stewardship` (v16 — opens 36-42)
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -1814,3 +1818,10 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `doctrine:this-life-is-the-time-to-prepare` —["this life is the time for men to prepare to meet God... do not procrastinate the day of your repentance... then cometh the night of darkness wherein there can be no labor"]→ 34:31-33 (2 Cor 6:2; John 9:4; Eccl 9:10; Hel 13:38; D&C 45:2)
 - `doctrine:the-spirit-you-die-with-persists` —["that same spirit which doth possess your bodies at the time that ye go out of this life... will have power to possess your body in that eternal world"; no deathbed reset — the character built here carries across]→ 34:34-35 (Mosiah 3:19; Rom 6:16; 2 Ne 28:19-23; Alma 40:14)
 - `theme:dont-let-the-casting-out-make-you-like-them` —["do not revile against those who do cast you out because of your exceeding poverty, lest ye become sinners like unto them"; the oppressed warned not to let oppression turn their hearts bitter]→ 34:40-41 (Matt 5:44; Rom 12:21; Alma 24:17-19)
+
+### from Alma 35
+- `theme:the-word-destroys-craft` —["they were angry because of the word, for it did destroy their craft"; the leaders threatened in their priestcraft revenue, not their theology; a secret loyalty-poll and purge follow]→ 35:3-6 (Acts 19:23-27; Alma 1:16; 30:27-31)
+- `theme:the-sheltered-become-shelterers` —[the people of Ammon, themselves once refugees given Jershon (ch 27), now "receive all the poor of the Zoramites... nourish them... clothe them... give unto them lands"; mercy received becomes mercy extended]→ 35:8-9 (Alma 27:21-26; Mosiah 4:26; 34:28; Matt 10:8)
+- `theme:pacifism-was-a-covenant-not-a-blanket-rule` —[the people of Ammon (under the buried-weapons oath) give place to the Nephite armies; the new Zoramite converts (not under it) "have taken up arms to defend themselves, and their wives, and children"]→ 35:13-14 (Alma 24:17-19; 27:23-24; 43:45-47; 48:14)
+- `theme:offended-by-the-strictness-of-the-word` —["the hearts of the people began to wax hard, and... began to be offended because of the strictness of the word"; the gospel that destroyed Zoramite craft also scandalizes Nephite comfort]→ 35:15 (John 6:60-66; Matt 13:21; 1 Ne 16:2; 2 Ne 9:40)
+- `theme:pivot-from-public-mission-to-private-stewardship` —[grieved that the wide field is hardening, Alma "caused that his sons should be gathered together, that he might give unto them every one his charge, separately"; when you cannot soften a people, tend the few entrusted to you]→ 35:16 (Alma 36-42; Deut 6:6-7; D&C 68:25; 93:40-44)
