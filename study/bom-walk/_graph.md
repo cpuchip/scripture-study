@@ -536,6 +536,10 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - place: `land-of-Amulon` · `valley-of-Alma` · `Zarahemla`
 - doctrine: `burdens-made-light-the-bearer-strengthened` (vv14-15 — **deepest BoM answer to affliction of the faithful**) · `God-visits-his-people-IN-their-afflictions` (v14 — answers ch23 chastening) · `the-prayer-of-the-heart` (vv11-12 — forbidden voice / poured-out heart) · structure: `deliverance-pair-completed-Alma-by-miracle` (vv16-21 — vs Limhi's stratagem) · theme: `faith-and-patience-draw-the-deliverance` (vv15-17) · `skill-without-God-makes-cleverer-wickedness` (vv4-7) · `gratitude-named-into-the-land` (vv20-22)
 
+### from Mosiah 25 (the reunification — one people from many)
+- person: `king-Mosiah` (gathers, reads the records, authorizes Alma) · `the-Nephites+Mulekites` (merged) · `Limhi's+Alma's-people` (baptized) · `the-children-of-Amulon` (reject fathers' name, take Nephi's) · `Alma` (preaches, baptizes, organizes seven churches) · `the-Lamanites` (the outnumbering majority; objects of anguish)
+- theme: `one-people-from-many-the-covenant-minority` (vv1-13) · `records-read-form-a-people` (vv5-11 — purpose of record-keeping realized) · `anguish-for-the-souls-of-the-lost` (v11 — seed of the missionary effort) · `identity-by-choice-not-blood` (v12 — inverse of inherited grievance 10:17) · doctrine: `baptism-that-waited-for-authority` (vv17-18 — ch21 patience rewarded) · structure: `many-churches-one-church` (vv19-24) · `king-and-prophet-distinguished` (vv14,19 — opposite of Noah; prepares reign of judges)
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -1306,3 +1310,12 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `theme:faith-and-patience-draw-the-deliverance` —[cheerful patient bearing of the eased burden → "so great was their faith and patience" → "on the morrow I will deliver you"; submission as the faith that draws the rescue]→ 24:15-17 (Rom 5:3-5; James 1:3-4; Ex 3:12)
 - `theme:skill-without-God-makes-cleverer-wickedness` —[the Amulonites teach the Lamanites language, literacy, trade, worldly wisdom — but not God; a literate prosperous godless people delights more in wickedness]→ 24:4-7 (Omni 1:18; 2 Ne 9:28-29; 4 Ne 1:43-46)
 - `theme:gratitude-named-into-the-land` —[the valley of Alma named for the deliverer; total thanksgiving, even the children who could speak; free praise inverts the forbidden cry]→ 24:20-22 (Mosiah 18:30; Ex 15:1-21; Ps 107:1)
+
+### from Mosiah 25
+- `theme:one-people-from-many-the-covenant-minority` —[five streams (Nephite, Mulekite, Limhi's, Alma's, repentant Amulonite children) made one "people of God"; yet always outnumbered — security in God, not numbers]→ 25:1-13 (Omni 1:13-19; Hel 6:10; 3 Ne 2:14)
+- `theme:records-read-form-a-people` —[Mosiah reads the records aloud; the people moved through wonder/joy/grief/thanks/anguish; scripture read together makes a community]→ 25:5-11 (Mosiah 1:3-7; Neh 8:1-12; Deut 31:11-13)
+- `theme:anguish-for-the-souls-of-the-lost` —[pain for the Lamanites' "sinful and polluted state"; seed of the great missionary effort (ch 27-28)]→ 25:11 (Mosiah 28:3; Alma 13:27; D&C 18:10-15)
+- `theme:identity-by-choice-not-blood` —[the children of Amulon refuse their fathers' name and TAKE the name of Nephi; the exact inverse of the inherited "eternal hatred" (10:17); the lie taught in from fathers, broken by the children's choice]→ 25:12 (Mosiah 5:8; 10:17; Ezek 18:14-20)
+- `doctrine:baptism-that-waited-for-authority` —[Limhi's people, unbaptizable in ch 21 for lack of authority, baptized now by Alma "after the manner of the waters of Mormon"; patience rewarded]→ 25:17-18 (Mosiah 21:33-35; 18:8-17; D&C 20:73)
+- `structure:many-churches-one-church` —[seven churches, too many for one assembly, yet "all one church" — unified by one doctrine (repentance + faith), not one location]→ 25:19-24 (Mosiah 18:17; 4 Ne 1:1; Eph 4:4-6; 1 Cor 1:10)
+- `structure:king-and-prophet-distinguished` —[Mosiah authorizes Alma to organize the church but does not lead it; civil + religious authority kept distinct; the opposite of Noah; prepares the reign of judges]→ 25:14,19 (Mosiah 26:8-12; 29:11; contrast 11:5)
