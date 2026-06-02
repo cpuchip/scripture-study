@@ -318,6 +318,12 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - warning: `all-is-well-in-zion` (complacency among the faithful, v21,24) · `humble-can-be-led-to-err` (precepts of men, v14)
 - thread: `rob-the-poor-fine-sanctuaries` (v13 — grind-the-poor sharpest: 13:15 → 26:20 → here) · `arm-lengthened-out` (v32 — Isaiah "hand stretched out" as lengthened mercy)
 
+### from 2 Nephi 29 ("A Bible! A Bible!" — open canon)
+- person: `the-closed-canon-Gentiles` (ingrate) · `the-Jews` (Bible's source, hated yet not forgotten) · `all-nations` (all writing scripture)
+- doctrine: `open-canon-from-Gods-sameness` (closed canon requires a God who quit; "the same yesterday today forever, my work not finished", v9) · `God-speaks-to-all-nations` ("more nations than one", v7,11-12) · `two-witnesses-not-competition` (BoM corroborates the Bible, v8) · `judged-out-of-the-books` (v11)
+- rebuke: `ingratitude-to-the-jews` (treasure the Bible, hate its givers, v4-5 — scriptural rebuke of anti-Semitism)
+- image: `word-gathered-in-one` (two sticks / all records run together, v14; Ezek 37:17)
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -737,3 +743,11 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `doctrine:line-upon-line` —[open revelation; receptive gain, "we have enough" forfeits]→ 28:30 (Isa 28:10; Alma 12:9-11; Matt 13:12)
 - `warning:humble-can-be-led-to-err` —[sincerity is not immunity; precepts of men]→ 28:14 (cure: v30-31)
 - `doctrine:trust-not-arm-of-flesh` —[cursed who maketh flesh his arm]→ 28:31 (Jer 17:5; 2 Ne 4:34)
+
+### from 2 Nephi 29 ("A Bible! A Bible!")
+- `doctrine:open-canon-from-Gods-sameness` —[closed canon requires a God who quit; "the same... my work not finished"]→ 29:9 (Heb 13:8; Mal 3:6) — constancy = engine of revelation
+- `doctrine:God-speaks-to-all-nations` —["more nations than one"; all men write]→ 29:7,11-12 (Acts 10:34; Alma 29:8)
+- `doctrine:two-witnesses-not-competition` —[BoM corroborates, not replaces, the Bible]→ 29:8 (Deut 19:15; Ezek 37:15-20)
+- `rebuke:ingratitude-to-the-jews` —[treasure the Bible, hate its givers]→ 29:4-5 (Rom 3:1-2; 11:18)
+- `doctrine:judged-out-of-the-books` —[the records are the judgment standard]→ 29:11 (2 Ne 25:22; Rev 20:12)
+- `image:word-gathered-in-one` —[the two sticks / all records run together]→ 29:14 (Ezek 37:17; 1 Ne 13:41)
