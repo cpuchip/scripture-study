@@ -477,6 +477,11 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - place: `the-palace+throne` · `the-ornamented-temple` · `the-gold-high-priest-seats+breastwork` · `the-high-tower` · `Shemlon`
 - theme: `Noah-the-anti-Benjamin` (vv1-6 — wicked vs righteous monarchy, paired on purpose → seed of abolishing kings ch 29) · image: `gold-seats-and-breastwork-for-lies` (v11 — where Alma will be converted ch 12) · `flattery-the-engine-of-corruption` (v7) · `prides-boast-becoming-the-enemy` (v19 ↔ 10:11) · doctrine: `conditional-bondage-except-they-repent` (vv20-25 — chosen not fated; "slow to hear" fulfilled ch 21) · `who-is-the-Lord-Pharaoh-echo` (v27) · `prophet-reframed-as-troublemaker` (v28)
 
+### from Mosiah 12 (Abinadi on trial — the prisoner tries the court)
+- person: `Abinadi` (returns in disguise; the prisoner who tries the court) · `king-Noah` (judge; death by fire now prophesied) · `the-wicked-priests` (cross-examiners; false-prosperity preachers; neither keep nor teach) · `the-Isaiah-quoting-priest` (trap-setter) · `the-people` (accusers)
+- text: `the-harder-prophecy` (detailed doom, fulfilled chs 19,21) · `Isaiah-52:7-10` (the deferred test → ch 15) · `the-Decalogue` (begun)
+- theme: `prisoner-tries-the-court` (vv19,25-27) · structure: `deferred-answer-Isaiah-52` (vv20-24 → 15:14-18; why 13-15 is one argument) · `ye-know-that-I-speak-the-truth` (v30 — suppression not ignorance) · `false-prosperity-gospel` (v15) · `teachers-who-neither-keep-nor-teach` (vv28-37) · doctrine: `law-cannot-save-by-itself` (vv31-33 → 13:27-32) · `record-as-witness-against-abomination` (v8)
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -1123,3 +1128,12 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `doctrine:conditional-bondage-except-they-repent` —[bondage is the chosen consequence, not a doom; the oracle is exact — God "slow to hear" fulfilled in ch 21]→ 11:20-25 (Mosiah 7:29-33; 21:15; Ex 20:5)
 - `theme:who-is-the-Lord-Pharaoh-echo` —[Noah answers "thus saith the Lord" with Pharaoh's "who is the Lord?"; broken by the God he dismissed]→ 11:27 (Ex 5:2; Mosiah 12:13)
 - `theme:prophet-reframed-as-troublemaker` —[the one who names the sin blamed for the division the sin caused]→ 11:28 (1 Kgs 18:17; Alma 9:6; Acts 17:6)
+
+### from Mosiah 12
+- `pattern:prisoner-tries-the-court` —[the accused confounds the cross-examiners; turns the Isaiah trap into an indictment of the priests; judged becomes judge]→ 12:19,25-27 (John 8:6; Matt 22:15-46)
+- `structure:deferred-answer-Isaiah-52` —[refuses the trap; builds law→Christ foundation (13-15); resolves "how beautiful are the feet" on his own terms in 15:14-18]→ 12:20-24 (Isa 52:7-10; Mosiah 15:14-18)
+- `theme:ye-know-that-I-speak-the-truth` —[the priests' wickedness is suppression, not ignorance; the difference from the prophet is will, not knowledge]→ 12:30 (Mosiah 3:12; John 9:41; Rom 1:18)
+- `theme:false-prosperity-gospel` —[present prosperity read as divine approval, unhooked from righteousness; "all is well in Zion"]→ 12:15 (2 Ne 28:21-25; Hel 13:26) — their proof of favor is the evidence of their guilt
+- `theme:teachers-who-neither-keep-nor-teach` —[claim to teach the law of Moses but break the first commandments and never taught them]→ 12:28-37 (John 3:10; Mal 2:7-8; Matt 23:13)
+- `doctrine:law-cannot-save-by-itself` —[salvation does not come by the law of Moses alone; it points to Christ]→ 12:31-33 (Mosiah 3:15; 13:27-32; Gal 3:21-24; 2 Ne 25:23)
+- `theme:record-as-witness-against-abomination` —[preserved "to discover the abominations... to other nations"; the warning function inside the doom]→ 12:8 (Morm 8:14-41; 2 Ne 26:10-11)
