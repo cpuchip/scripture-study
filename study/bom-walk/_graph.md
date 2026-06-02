@@ -368,6 +368,14 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - doctrine: `looking-beyond-the-mark` (blindness from disdaining plainness, seeking the obscure, v14 — negative of the plainness thread) · `truth-is-things-as-they-really-are` (v13 → D&C 93:24) · `power-by-grace-weakness-shown` (command trees by grace, "that we may know", v7 — positive form of axe/made-thing) · `take-counsel-from-his-hand` (don't counsel God, v10) · `law-points-to-Christ` (Abraham-Isaac = similitude, v5) · `reconcile-through-the-atonement` (v11)
 - image: `rejected-cornerstone` (the Stone they reject = only sure foundation, v15-17 — cliffhanger → Jacob 5)
 
+### from Jacob 5 (Zenos's allegory of the olive tree)
+- person: `zenos` (quoted prophet) · `lord-of-the-vineyard` (the weeping, laboring God) · `the-servants` (prophets/laborers, few) · `natural-branches` (scattered Israel) · `wild-branches` (Gentiles)
+- parable: `olive-tree-scatter-and-gather` (Israel's whole history as one gardener's seasons; Rom 11)
+- image: `the-vinedresser-wept` (Isaiah 5:4's question now with tears, v41) · `hand-stretched-out-all-the-day-long` (v47 — the LABORING hand: 3rd/warmest sense of the refrain)
+- doctrine: `it-grieveth-me-to-lose-this-tree` (×5: vv7,11,13,46,47) · `labor-WITH-me-joy-WITH-me` (God digs alongside; joy shared, vv71-75)
+- study: `jacob5_allegory-of-the-olive-tree` (spin-off — IN PROGRESS, Sonnet subagent; visit-count + dispensational reading)
+- answer: resolves Jacob 4:17 (the rejected stone grafts back in the last labor)
+
 ## Edges
 
 ### from 1 Nephi 1
@@ -864,3 +872,12 @@ The connection index, grown one chapter at a time. Pull from this to trace threa
 - `doctrine:take-counsel-from-his-hand` —[don't counsel the Lord; receive, don't improve]→ 4:10 (Prov 3:5-7; 2 Ne 9:28)
 - `doctrine:law-points-to-Christ` —[Abraham-Isaac = similitude of Father + Only Begotten]→ 4:5 (Gen 22; John 3:16; Gal 3:24)
 - `image:rejected-cornerstone` —[the Stone they reject is the only sure foundation]→ 4:15-17 (Ps 118:22; Isa 28:16; Hel 5:12) → Jacob 5
+
+### from Jacob 5
+- `parable:olive-tree-scatter-and-gather` —[Israel's whole history as one gardener's seasons]→ Jacob 5 (Rom 11:16-24; 1 Ne 10:12-14)
+- `image:the-vinedresser-wept` —[Isaiah 5:4's question, now with tears]→ 5:41 (2 Ne 15:4 + Moses 7:28; Luke 19:41)
+- `refrain:hand-stretched-out-all-the-day-long` —[3rd/warmest sense: the LABORING hand]→ 5:47 (2 Ne 15:25; 19:12; 28:32)
+- `doctrine:it-grieveth-me-to-lose-this-tree` —[×5; the gardener's heartbreak]→ 5:7,11,13,46,47
+- `doctrine:labor-WITH-me-joy-WITH-me` —[God digs alongside the few; joy shared not given]→ 5:71-75 (John 15:11; the Immanuel "with")
+- `answer:rejected-stone-grafts-back` —[Jacob 4:17 resolved]→ 5:60-75
+- `mystery:who-corrupted-the-vineyard` —[diligence perfect; source left standing]→ 5:47 (cf 2 Ne 15:4)
