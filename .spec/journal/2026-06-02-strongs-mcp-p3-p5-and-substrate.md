@@ -100,3 +100,29 @@ without begging off (Ammon). The one genuine stop — the stale P4 substrate pla
 — was the right place to surface (Michael had asked to be looped on integration
 decisions), and he said go. The rest was stewardship: drive it, verify each
 step via the real path, report, don't ask permission for the obviously-ratified.
+
+## Follow-ons (same session)
+
+**webster + byu-citations enabled in the substrate** (Michael: "add webster and
+byu to substrate, hold off on becoming"). This resolves the carry-forward above
+(they *were* absent from the registry). Found all three (webster/byu/becoming)
+were seeded `enabled=false` in `stewards.mcp_servers` — the "operator flips on
+when ready" pattern — with their binaries already in the bridge image and grants
+already present (`3e2-5`). So the light path: an enable migration
+(`webster-byu1-enable.sql`, pre-applied via the ledger) + `refresh-tools`, no
+Dockerfile/rebuild/restart needed (the daemon reads `enabled` per-dispatch via
+`loadOneServer`). Now live: webster (5 tools) + byu-citations (3 tools) in
+`compose_tools('study')`. becoming stays off — its brain/practice tools mutate
+personal data, which the read-only-substrate discipline (`3e2-5`) keeps
+operator-controlled. Commit `ab57e32`.
+
+**`strongs-analysis` skill shipped** (twin of `webster-analysis`). Asked whether
+to port the new autonomy skills (dave-rule/stuffy-in-the-loop/ammon) into the
+substrate; declined — they govern the agent↔Michael delegation loop, which the
+substrate embodies *structurally* (gates/trust ladder/quarantine), so a
+dispatched agent has no "surface to Michael" lever to act on (ben-test was
+already imported). The high-value alternative was the skill that capitalizes on
+today's tools: teaches agents to trace KJV words to Hebrew/Greek via
+`strongs_for_verse`/`strongs_define`. Written to both trees, imported into
+`stewards.skills` (allow-by-default → study/lesson/talk see it), verified present
+in `compose_system_prompt('study')`. Commit `b9a85ee`.
