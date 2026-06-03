@@ -79,6 +79,14 @@ func registerCoderTools(srv *mcp.Server, mgr *sandbox.Manager) {
 			"(gopls for Go, tsc for TS/JS, pyright for Python — detected by extension). " +
 			"`clean=true` means no diagnostics. Faster feedback than a full build for catching errors mid-edit.",
 	}, makeLsp(mgr))
+
+	mcp.AddTool(srv, &mcp.Tool{
+		Name: "coder_deploy",
+		Description: "Deploy a built artifact: run run_command as a background service in the sandbox " +
+			"(the sandbox IS its docker sidecar), wait, then healthcheck http://localhost:<port><health_path>. " +
+			"Returns healthy + the healthcheck result + the service log tail. The actual deploy step is gated " +
+			"by the always-escalate Hinge in the code-deploy pipeline — a human ratifies before this runs.",
+	}, makeDeploy(mgr))
 }
 
 // resolvePath joins a user path onto /work, refusing escapes above it.
@@ -398,6 +406,61 @@ func makeLsp(mgr *sandbox.Manager) func(context.Context, *mcp.CallToolRequest, l
 		// Each checker exits 0 with no diagnostics; non-zero (or output) means issues.
 		clean := res.ExitCode == 0 && strings.TrimSpace(res.Output) == ""
 		return nil, lspOutput{Path: full, Checker: checker, Clean: clean, Diagnostics: res.Output}, nil
+	}
+}
+
+type deployInput struct {
+	Sandbox     string `json:"sandbox"      jsonschema:"Sandbox id"`
+	RunCommand  string `json:"run_command"  jsonschema:"Command to start the service, run from /work (e.g. 'go run .' or './app' or 'node server.js')"`
+	Port        int    `json:"port"         jsonschema:"TCP port the service listens on"`
+	HealthPath  string `json:"health_path,omitempty"  jsonschema:"HTTP path to healthcheck (default /)"`
+	WaitSeconds int    `json:"wait_seconds,omitempty" jsonschema:"Seconds to wait for startup before healthcheck (default 3)"`
+}
+type deployOutput struct {
+	Healthy      bool   `json:"healthy"`
+	Pid          string `json:"pid,omitempty"`
+	HealthOutput string `json:"health_output"`
+	Log          string `json:"log,omitempty"`
+}
+
+func makeDeploy(mgr *sandbox.Manager) func(context.Context, *mcp.CallToolRequest, deployInput) (*mcp.CallToolResult, deployOutput, error) {
+	return func(ctx context.Context, _ *mcp.CallToolRequest, in deployInput) (*mcp.CallToolResult, deployOutput, error) {
+		if strings.TrimSpace(in.Sandbox) == "" || strings.TrimSpace(in.RunCommand) == "" {
+			return errResult("sandbox and run_command are required"), deployOutput{}, nil
+		}
+		if in.Port <= 0 {
+			return errResult("port is required (the TCP port the service listens on)"), deployOutput{}, nil
+		}
+		hp := in.HealthPath
+		if hp == "" {
+			hp = "/"
+		}
+		wait := in.WaitSeconds
+		if wait <= 0 {
+			wait = 3
+		}
+		// Start the service detached (setsid + redirected stdio) so it survives
+		// the exec and keeps running in the sandbox container.
+		start := fmt.Sprintf("cd %s && setsid bash -lc %s >/tmp/deploy.log 2>&1 </dev/null & PID=$!; sleep %d; echo $PID",
+			workRoot, shQuote(in.RunCommand), wait)
+		startRes, err := mgr.Exec(ctx, in.Sandbox, start)
+		if err != nil {
+			return errResult("%v", err), deployOutput{}, nil
+		}
+		pid := strings.TrimSpace(startRes.Output)
+		// Healthcheck: curl exit 0 = healthy.
+		health, err := mgr.Exec(ctx, in.Sandbox,
+			fmt.Sprintf("curl -fsS -m 5 http://localhost:%d%s", in.Port, hp))
+		if err != nil {
+			return errResult("%v", err), deployOutput{}, nil
+		}
+		logRes, _ := mgr.Exec(ctx, in.Sandbox, "tail -n 20 /tmp/deploy.log")
+		return nil, deployOutput{
+			Healthy:      health.ExitCode == 0,
+			Pid:          pid,
+			HealthOutput: health.Output,
+			Log:          logRes.Output,
+		}, nil
 	}
 }
 
