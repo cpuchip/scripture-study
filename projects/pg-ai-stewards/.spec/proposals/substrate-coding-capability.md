@@ -1,6 +1,6 @@
 # Proposal — Substrate Coding Capability (write · build · test · deploy)
 
-**Status:** DRAFT — three core decisions ratified 2026-06-03 (AskUserQuestion); remaining decisions (D-CC4…) open for a decisions walk before the build.
+**Status:** ✅ RATIFIED 2026-06-03 — all decisions walked (D-CC1–D-CC8 + trust posture, two AskUserQuestion batches). Build-ready; CC.1 is the first step. Not yet built.
 **Raised:** 2026-06-03. Michael: *"how can we get pg-ai-stewards to be able to program? … make it so that pg-ai-stewards can write code, and even deploy it in its own docker sidecars."*
 **Research basis:** opencode (`external_context/opencode`) + the 2026 AI-agent-sandbox literature (Docker Sandboxes, E2B, Daytona, gVisor, Firecracker; Northflank / amux / Zylos guides). Governance frame: [`docs/delegation-pattern-skills-and-gates.md`](../../../docs/delegation-pattern-skills-and-gates.md).
 
@@ -23,8 +23,14 @@ The substrate is already containerized and governance-first, and it has the thin
 ## 3. Ratified decisions (2026-06-03)
 
 - **D-CC1 — Native coder tools (not orchestrate-opencode).** A new `coder` MCP server the substrate's own agent loop drives (like `git-mcp`/`fs-read-mcp`), so every action is substrate-visible and gate-able. We reimplement what opencode solved, but keep full control of the MCP + gate model.
-- **D-CC2 — Hardened container + git worktree, switchable network.** Per-task ephemeral Docker container on an isolated worktree, `--cap-drop=ALL`, non-root, resource-limited. **Network is per-task switchable, default ON** (the agent must pull `go mod` / npm / pip / crates), **with an offline mode** when we want it. Allowlisted egress (a package-registry proxy) is the hardening target, not a v1 blocker. (gVisor / microVM is the v2 isolation upgrade — see §8 risk.)
-- **D-CC3 — Deploy-to-sidecar is in v1**, behind the always-escalate Hinge: the agent prepares + can dry-run the deploy in an ephemeral sidecar, but a human ratifies the actual deploy.
+- **D-CC2 — Hardened container + git worktree, switchable network.** Per-task ephemeral Docker container on an isolated worktree, `--cap-drop=ALL`, non-root, resource-limited. **Network is per-task switchable, default ON** (the agent must pull `go mod` / npm / pip), **with an offline mode** when we want it. (Medium-safe posture ratified — shared host kernel accepted; gVisor is not a prerequisite. See the trust-posture entry below + §8.)
+- **D-CC3 — Deploy is in v1**, behind the always-escalate Hinge: the agent prepares + can dry-run the deploy in an ephemeral sidecar, but a human ratifies the actual deploy. (Scope of v1 deploy = local sidecar; see D-CC6.)
+- **D-CC4 — v1 `coder-runtime` languages: Go + Node/TypeScript + Python** (+ each language's LSP server). Covers tools/programs (Go), websites (Node/TS/Vue), and scripting/data/glue (Python) — nearly everything Michael writes.
+- **D-CC5 — egress open, default-on, switchable offline.** No allowlist-proxy required for v1 (medium-safe posture); per-task offline mode available. Allowlist-proxy is a later knob, not a prerequisite.
+- **D-CC6 — deploy is BOTH, phased.** **v1 = substrate-local ephemeral sidecar** (build → run → healthcheck → report). **v2 = Hinge-gated Dokploy deploy** of real sites/services — which requires substantial extra work: the substrate gets its **OWN scoped Dokploy access** (separate project namespace / scoped token / sub-account) so its deploys cannot touch or disturb the existing apps (ibeco / cpuchip / marsfield / 1828 / tinyfarm / hmslogs). That isolation is a v2 design problem in its own right (see §9).
+- **D-CC7 — the build→test loop runs free; trust-gates only at the PR (`reviewed`) rung.** The loop is ground-truth-checked (build + test), so it iterates to green autonomously regardless of trust; the trust level only decides whether the finished PR auto-advances or surfaces. Deploy always escalates (the Hinge), trust notwithstanding.
+- **D-CC8 — sandbox-manager lives in `coder-mcp`, keyed by work_item id** (provision worktree + container on entering `implemented`; tear down on terminal state). Simplest, reversible; extractable to a dedicated service later.
+- **Trust posture (ratified).** This is *our own code, for our own purposes — medium-safe.* Sharing the host kernel (hardened container, no gVisor/microVM) is accepted. gVisor/microVM is **not** a v1/v2 prerequisite; it becomes relevant only if the substrate ever does **remote coding / agent-work-through-tunnels (SSH or similar) — a noted future seed** — or runs less-trusted / multi-tenant code.
 
 ## 4. The critical safety constraint (non-negotiable)
 
@@ -76,8 +82,10 @@ A code-tuned ladder (per-pipeline `maturity_ladder`, D-H2 already supports this)
 - **reviewed** — gate-eval (quality) + commit to the agent branch + open a PR via existing `git-mcp`.
 - **deployed** — **always-escalate rung (the Hinge).** Agent prepares the deploy (builds the artifact/image, can dry-run it in a throwaway sidecar with a healthcheck), then the work_item transitions to `awaiting_review`; a human ratifies before the real deploy fires. Never auto-finalized regardless of trust level.
 
-### 5.5 Deploy-to-sidecar (D-CC3)
-The built artifact runs in its own ephemeral Docker sidecar (build image → run container → healthcheck → expose/report). v1 target is the substrate's own dev surface (e.g., spin a service the agent wrote, prove it serves, report the URL/logs) — not production. Production deploy paths (Dokploy, etc.) stay behind the Hinge with scoped, short-lived, broker-injected credentials (never in the sandbox image, never host env).
+### 5.5 Deploy (D-CC3, D-CC6) — phased
+**v1 — substrate-local sidecar.** The built artifact runs in its own ephemeral Docker sidecar on the substrate host (build image → run container → healthcheck → expose/report). Proves "it runs" with no external blast radius. Behind the Hinge (the agent prepares + dry-runs; a human ratifies).
+
+**v2 — Hinge-gated Dokploy deploy.** Deploy real sites/services to Dokploy (the cpuchip / marsfield / 1828 pattern). This needs its own design pass: the substrate gets **scoped Dokploy access** — a separate project namespace and a scoped token (or sub-account) — so its deploys are walled off from the existing apps and cannot redeploy, edit, or break them. Credentials are short-lived and broker-injected for the deploy step only (never in the sandbox image, never host env). Each deploy is a fresh Hinge confirmation; approvals are never cached.
 
 ## 6. Defense-in-depth (the safety contract)
 
@@ -91,27 +99,29 @@ Layered, per the 2026 consensus:
 
 ## 7. Phased build plan (C–F cadence — smoke before each commit)
 
-- **CC.1** — `coder-runtime` image + sandbox-manager (worktree + ephemeral container, network toggle) + bridge docker-socket access. Smoke: provision/exec/teardown a sandbox.
+- **CC.1** — `coder-runtime` image (Go + Node/TS + Python + LSP servers, D-CC4) + sandbox-manager in coder-mcp (worktree + ephemeral container, network toggle, D-CC8) + bridge docker-socket access. Smoke: provision/exec/teardown a sandbox.
 - **CC.2** — `coder` MCP server (the tool surface), wired to the active work_item's sandbox; registered in `mcp_servers` + granted to `dev`/`coder`.
-- **CC.3** — `code-write` pipeline + maturity ladder + **the build/test verify gate** (ground-truth revise loop). Smoke: a trivial task iterated to green autonomously.
+- **CC.3** — `code-write` pipeline + maturity ladder + **the build/test verify gate** (ground-truth revise loop; free to iterate per D-CC7). Smoke: a trivial task iterated to green autonomously.
 - **CC.4** — LSP integration (diagnostics in the loop).
-- **CC.5** — deploy-to-sidecar + the always-escalate Hinge rung (implements the audit's proposed rung). Smoke: agent builds + dry-runs a service; deploy waits for human ratify.
-- **CC.6** — hardening: egress allowlist proxy, secret broker, resource caps; gVisor runtime evaluation (v2 isolation).
+- **CC.5** — **v1 deploy: local sidecar** + the always-escalate Hinge rung + trust-gate at the PR rung (D-CC7) (implements the audit's proposed always-escalate rung). Smoke: agent builds + runs a service in a sidecar, healthchecks it; deploy waits for human ratify.
+- **CC.6** — hardening: secret broker, resource caps; (egress allowlist proxy + gVisor are *optional* later knobs, not required by the medium-safe posture).
+- **CC.7 (v2)** — **Dokploy deploy** (D-CC6): the scoped-access design (separate namespace + scoped token, walled off from existing apps) + the deploy path, Hinge-gated. Its own ratification pass before build.
 
 ## 8. Risks + honest caveats
 
-- **Running LLM-generated code is the highest-stakes capability the substrate will have.** The hardened-container tier (D-CC2) shares the host kernel — the research calls this "trusted-ish, not bulletproof"; a kernel CVE escapes. Mitigated for v1 by: single-dev-box, the agent working on *our own* repos (not arbitrary untrusted code), worktree confinement, and ephemeral teardown. **gVisor (`--runtime=runsc`) is the v2 hardening** and should land before this ever runs less-trusted or multi-tenant work.
+- **Trust posture — ratified medium-safe (2026-06-03).** This builds our own tools/programs/websites for our own purposes, so the hardened-container tier (shared host kernel) is accepted: a kernel CVE could escape, but the threat model is *our code, not arbitrary adversarial code.* Worktree confinement + ephemeral teardown + the §4 live-repo rule remain the real boundaries. **gVisor/microVM is explicitly NOT a prerequisite** — it re-enters the picture only if we add **remote coding / agent-work-through-tunnels (SSH or similar — a future seed Michael flagged)** or run less-trusted / multi-tenant code.
 - **Docker socket on the bridge** widens the bridge's blast radius (socket access ≈ host root). Acceptable for a single-operator dev box; a dedicated sandbox-spawner service or rootless/sysbox is the hardening.
 - **Cost.** Build/test loops burn tokens (iterate-to-green) and CPU. The existing per-work-item cost cap + the trust ladder bound it; set a coding-specific cap.
 - **The merge boundary.** Even with sandbox isolation, merging the agent's branch brings its code into the live repo. Review before merge (the Hinge) is the real control — the sandbox protects the *build host*, not the *decision to trust the code*.
 
-## 9. Open decisions (for the next walk — not yet ratified)
+## 9. Remaining design work (deferred to CC.7 / v2 — not blocking v1)
 
-- **D-CC4** — which language toolchains in v1's `coder-runtime` (Go-only first? Go + Node? + Python/Rust)? Smaller image = faster + smaller attack surface.
-- **D-CC5** — egress: open default-on vs. allowlist-proxy from day one (go proxy / npm / pypi / crates only).
-- **D-CC6** — how deploy targets are declared (a `deploy_spec` on the work_item? a per-project deploy recipe?), and what v1's deploy surface is (substrate-local sidecar only, or a path to Dokploy behind the Hinge).
-- **D-CC7** — does the build/test loop gate on the trust ladder (trainee surfaces every advance) or run free once green? Likely: free to iterate, trust-gated only at `reviewed`.
-- **D-CC8** — sandbox-manager home: inside the bridge, inside coder-mcp, or a dedicated service.
+All v1 decisions (D-CC1–D-CC8 + trust posture) are ratified. What's left is the v2 Dokploy pass and a couple of mechanisms that v1 can stub:
+
+- **Dokploy scoped-access design (CC.7 / v2)** — the real work behind D-CC6: how the substrate gets its own walled-off Dokploy footprint (separate project namespace + scoped token, or a sub-account) so its deploys cannot reach the existing apps, plus the deploy path itself and how a deploy is declared (a `deploy_spec` on the work_item? a per-project recipe?). Gets its own ratification pass before CC.7 is built.
+- **Deploy-target declaration** — even for v1's local sidecar, how the agent says "run this artifact as a service on port X with healthcheck Y" (likely a small `deploy_spec` jsonb on the work_item). Settle at CC.5.
+- **Egress allowlist proxy** — optional later hardening (registry-only egress) if the open-default-on posture ever feels too loose. Not required.
+- **Future seed — remote coding / agent-work-through-tunnels** (SSH or similar). Michael flagged this 2026-06-03. If/when it lands, revisit the isolation tier (gVisor/microVM) and the network/secret posture — remote/less-trusted work changes the threat model.
 
 ---
 
