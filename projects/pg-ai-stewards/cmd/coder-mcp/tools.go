@@ -1,0 +1,355 @@
+// MCP tool surface for coder-mcp (substrate-coding-capability CC.2). Each tool
+// operates on a named sandbox (the work_item id; the bridge dispatch carries no
+// implicit context, so the sandbox id is an explicit argument — the code-write
+// pipeline keys it to the work_item). Tools modeled on opencode's surface
+// (write/edit/apply_patch/read/glob/grep/shell), plus sandbox lifecycle.
+//
+// File paths are resolved relative to /work (the project root in the sandbox);
+// absolute paths are allowed but ".." escape above /work is refused.
+package main
+
+import (
+	"context"
+	"fmt"
+	"path"
+	"strings"
+
+	"github.com/modelcontextprotocol/go-sdk/mcp"
+
+	"github.com/cpuchip/scripture-study/projects/pg-ai-stewards/cmd/coder-mcp/sandbox"
+)
+
+const workRoot = "/work"
+
+func registerCoderTools(srv *mcp.Server, mgr *sandbox.Manager) {
+	mcp.AddTool(srv, &mcp.Tool{
+		Name: "coder_sandbox_start",
+		Description: "Start an isolated, hardened sandbox container for a work_item " +
+			"(Go + Node/TS + Python + LSP). Idempotent — replaces any existing sandbox " +
+			"of the same id. Network is on by default (for go mod / npm / pip); set " +
+			"offline=true to cut egress. Call coder_sandbox_stop when done.",
+	}, makeSandboxStart(mgr))
+
+	mcp.AddTool(srv, &mcp.Tool{
+		Name:        "coder_sandbox_stop",
+		Description: "Stop and remove a work_item's sandbox (discards its filesystem).",
+	}, makeSandboxStop(mgr))
+
+	mcp.AddTool(srv, &mcp.Tool{
+		Name:        "coder_write",
+		Description: "Write a file in the sandbox (creates parent dirs, overwrites if present). Path is relative to /work.",
+	}, makeWrite(mgr))
+
+	mcp.AddTool(srv, &mcp.Tool{
+		Name:        "coder_read",
+		Description: "Read a file from the sandbox. Path is relative to /work.",
+	}, makeRead(mgr))
+
+	mcp.AddTool(srv, &mcp.Tool{
+		Name: "coder_edit",
+		Description: "Replace an exact string in a sandbox file. old_string must appear " +
+			"exactly once (unless replace_all=true). Path is relative to /work.",
+	}, makeEdit(mgr))
+
+	mcp.AddTool(srv, &mcp.Tool{
+		Name:        "coder_apply_patch",
+		Description: "Apply a unified diff to the sandbox working tree via `git apply` (run from /work).",
+	}, makeApplyPatch(mgr))
+
+	mcp.AddTool(srv, &mcp.Tool{
+		Name: "coder_shell",
+		Description: "Run a shell command in the sandbox (login bash, cwd /work) — build, test, run, " +
+			"install packages. Returns combined output + exit code. This is the ground-truth gate: " +
+			"`go build`, `go test`, `npm test`, etc.",
+	}, makeShell(mgr))
+
+	mcp.AddTool(srv, &mcp.Tool{
+		Name:        "coder_glob",
+		Description: "List files in the sandbox matching a glob (e.g. **/*.go), relative to /work.",
+	}, makeGlob(mgr))
+
+	mcp.AddTool(srv, &mcp.Tool{
+		Name:        "coder_grep",
+		Description: "Search file contents in the sandbox (grep -rn). Optional path scopes the search (relative to /work).",
+	}, makeGrep(mgr))
+}
+
+// resolvePath joins a user path onto /work, refusing escapes above it.
+func resolvePath(p string) (string, error) {
+	if p == "" {
+		return "", fmt.Errorf("path is required")
+	}
+	var full string
+	if path.IsAbs(p) {
+		full = path.Clean(p)
+	} else {
+		full = path.Clean(path.Join(workRoot, p))
+	}
+	if full != workRoot && !strings.HasPrefix(full, workRoot+"/") {
+		return "", fmt.Errorf("path %q escapes the sandbox work root", p)
+	}
+	return full, nil
+}
+
+func errResult(format string, a ...any) *mcp.CallToolResult {
+	return &mcp.CallToolResult{
+		IsError: true,
+		Content: []mcp.Content{&mcp.TextContent{Text: fmt.Sprintf(format, a...)}},
+	}
+}
+
+// --- sandbox lifecycle ---
+
+type startInput struct {
+	Sandbox string `json:"sandbox" jsonschema:"Sandbox id (the work_item id)"`
+	Offline bool   `json:"offline,omitempty" jsonschema:"Cut network egress (default false = on, for package pulls)"`
+}
+type startOutput struct {
+	Sandbox string `json:"sandbox"`
+	Network string `json:"network"`
+}
+
+func makeSandboxStart(mgr *sandbox.Manager) func(context.Context, *mcp.CallToolRequest, startInput) (*mcp.CallToolResult, startOutput, error) {
+	return func(ctx context.Context, _ *mcp.CallToolRequest, in startInput) (*mcp.CallToolResult, startOutput, error) {
+		if strings.TrimSpace(in.Sandbox) == "" {
+			return errResult("sandbox is required"), startOutput{}, nil
+		}
+		net := sandbox.NetOn
+		if in.Offline {
+			net = sandbox.NetOff
+		}
+		if err := mgr.Provision(ctx, in.Sandbox, net); err != nil {
+			return errResult("%v", err), startOutput{}, nil
+		}
+		return nil, startOutput{Sandbox: in.Sandbox, Network: string(net)}, nil
+	}
+}
+
+type stopInput struct {
+	Sandbox string `json:"sandbox" jsonschema:"Sandbox id (the work_item id)"`
+}
+type stopOutput struct {
+	Stopped string `json:"stopped"`
+}
+
+func makeSandboxStop(mgr *sandbox.Manager) func(context.Context, *mcp.CallToolRequest, stopInput) (*mcp.CallToolResult, stopOutput, error) {
+	return func(ctx context.Context, _ *mcp.CallToolRequest, in stopInput) (*mcp.CallToolResult, stopOutput, error) {
+		if err := mgr.Teardown(ctx, in.Sandbox); err != nil {
+			return errResult("%v", err), stopOutput{}, nil
+		}
+		return nil, stopOutput{Stopped: in.Sandbox}, nil
+	}
+}
+
+// --- file ops ---
+
+type writeInput struct {
+	Sandbox string `json:"sandbox" jsonschema:"Sandbox id"`
+	Path    string `json:"path"    jsonschema:"File path relative to /work"`
+	Content string `json:"content" jsonschema:"File content"`
+}
+type writeOutput struct {
+	Path  string `json:"path"`
+	Bytes int    `json:"bytes"`
+}
+
+func makeWrite(mgr *sandbox.Manager) func(context.Context, *mcp.CallToolRequest, writeInput) (*mcp.CallToolResult, writeOutput, error) {
+	return func(ctx context.Context, _ *mcp.CallToolRequest, in writeInput) (*mcp.CallToolResult, writeOutput, error) {
+		full, err := resolvePath(in.Path)
+		if err != nil {
+			return errResult("%v", err), writeOutput{}, nil
+		}
+		if err := mgr.WriteFile(ctx, in.Sandbox, full, in.Content); err != nil {
+			return errResult("%v", err), writeOutput{}, nil
+		}
+		return nil, writeOutput{Path: full, Bytes: len(in.Content)}, nil
+	}
+}
+
+type readInput struct {
+	Sandbox string `json:"sandbox" jsonschema:"Sandbox id"`
+	Path    string `json:"path"    jsonschema:"File path relative to /work"`
+}
+type readOutput struct {
+	Path    string `json:"path"`
+	Content string `json:"content"`
+}
+
+func makeRead(mgr *sandbox.Manager) func(context.Context, *mcp.CallToolRequest, readInput) (*mcp.CallToolResult, readOutput, error) {
+	return func(ctx context.Context, _ *mcp.CallToolRequest, in readInput) (*mcp.CallToolResult, readOutput, error) {
+		full, err := resolvePath(in.Path)
+		if err != nil {
+			return errResult("%v", err), readOutput{}, nil
+		}
+		content, err := mgr.ReadFile(ctx, in.Sandbox, full)
+		if err != nil {
+			return errResult("%v", err), readOutput{}, nil
+		}
+		return nil, readOutput{Path: full, Content: content}, nil
+	}
+}
+
+type editInput struct {
+	Sandbox    string `json:"sandbox"     jsonschema:"Sandbox id"`
+	Path       string `json:"path"        jsonschema:"File path relative to /work"`
+	OldString  string `json:"old_string"  jsonschema:"Exact text to replace"`
+	NewString  string `json:"new_string"  jsonschema:"Replacement text"`
+	ReplaceAll bool   `json:"replace_all,omitempty" jsonschema:"Replace all occurrences (default false = require exactly one)"`
+}
+type editOutput struct {
+	Path        string `json:"path"`
+	Replacements int   `json:"replacements"`
+}
+
+func makeEdit(mgr *sandbox.Manager) func(context.Context, *mcp.CallToolRequest, editInput) (*mcp.CallToolResult, editOutput, error) {
+	return func(ctx context.Context, _ *mcp.CallToolRequest, in editInput) (*mcp.CallToolResult, editOutput, error) {
+		full, err := resolvePath(in.Path)
+		if err != nil {
+			return errResult("%v", err), editOutput{}, nil
+		}
+		if in.OldString == "" {
+			return errResult("old_string is required"), editOutput{}, nil
+		}
+		content, err := mgr.ReadFile(ctx, in.Sandbox, full)
+		if err != nil {
+			return errResult("%v", err), editOutput{}, nil
+		}
+		n := strings.Count(content, in.OldString)
+		if n == 0 {
+			return errResult("old_string not found in %s", full), editOutput{}, nil
+		}
+		if n > 1 && !in.ReplaceAll {
+			return errResult("old_string appears %d times in %s; set replace_all=true or make it unique", n, full), editOutput{}, nil
+		}
+		var updated string
+		if in.ReplaceAll {
+			updated = strings.ReplaceAll(content, in.OldString, in.NewString)
+		} else {
+			updated = strings.Replace(content, in.OldString, in.NewString, 1)
+			n = 1
+		}
+		if err := mgr.WriteFile(ctx, in.Sandbox, full, updated); err != nil {
+			return errResult("%v", err), editOutput{}, nil
+		}
+		return nil, editOutput{Path: full, Replacements: n}, nil
+	}
+}
+
+type patchInput struct {
+	Sandbox string `json:"sandbox" jsonschema:"Sandbox id"`
+	Diff    string `json:"diff"    jsonschema:"Unified diff to apply with git apply, from /work"`
+}
+type patchOutput struct {
+	Applied bool   `json:"applied"`
+	Output  string `json:"output,omitempty"`
+}
+
+func makeApplyPatch(mgr *sandbox.Manager) func(context.Context, *mcp.CallToolRequest, patchInput) (*mcp.CallToolResult, patchOutput, error) {
+	return func(ctx context.Context, _ *mcp.CallToolRequest, in patchInput) (*mcp.CallToolResult, patchOutput, error) {
+		if strings.TrimSpace(in.Diff) == "" {
+			return errResult("diff is required"), patchOutput{}, nil
+		}
+		const patchPath = "/tmp/coder-mcp.patch"
+		if err := mgr.WriteFile(ctx, in.Sandbox, patchPath, in.Diff); err != nil {
+			return errResult("%v", err), patchOutput{}, nil
+		}
+		res, err := mgr.Exec(ctx, in.Sandbox, "cd "+workRoot+" && git apply "+patchPath)
+		if err != nil {
+			return errResult("%v", err), patchOutput{}, nil
+		}
+		if res.ExitCode != 0 {
+			return errResult("git apply failed (exit %d):\n%s", res.ExitCode, res.Output), patchOutput{}, nil
+		}
+		return nil, patchOutput{Applied: true, Output: res.Output}, nil
+	}
+}
+
+// --- shell + search ---
+
+type shellInput struct {
+	Sandbox string `json:"sandbox" jsonschema:"Sandbox id"`
+	Command string `json:"command" jsonschema:"Shell command (login bash, cwd /work)"`
+}
+type shellOutput struct {
+	Output   string `json:"output"`
+	ExitCode int    `json:"exit_code"`
+}
+
+func makeShell(mgr *sandbox.Manager) func(context.Context, *mcp.CallToolRequest, shellInput) (*mcp.CallToolResult, shellOutput, error) {
+	return func(ctx context.Context, _ *mcp.CallToolRequest, in shellInput) (*mcp.CallToolResult, shellOutput, error) {
+		if strings.TrimSpace(in.Command) == "" {
+			return errResult("command is required"), shellOutput{}, nil
+		}
+		res, err := mgr.Exec(ctx, in.Sandbox, in.Command)
+		if err != nil {
+			return errResult("%v", err), shellOutput{}, nil
+		}
+		// A non-zero exit is a normal result (the agent inspects it), not a tool error.
+		return nil, shellOutput{Output: res.Output, ExitCode: res.ExitCode}, nil
+	}
+}
+
+type globInput struct {
+	Sandbox string `json:"sandbox" jsonschema:"Sandbox id"`
+	Pattern string `json:"pattern" jsonschema:"Glob pattern (globstar enabled), relative to /work"`
+}
+type globOutput struct {
+	Matches []string `json:"matches"`
+}
+
+func makeGlob(mgr *sandbox.Manager) func(context.Context, *mcp.CallToolRequest, globInput) (*mcp.CallToolResult, globOutput, error) {
+	return func(ctx context.Context, _ *mcp.CallToolRequest, in globInput) (*mcp.CallToolResult, globOutput, error) {
+		if strings.TrimSpace(in.Pattern) == "" {
+			return errResult("pattern is required"), globOutput{}, nil
+		}
+		// globstar + nullglob so **/*.go works and no-match yields nothing.
+		cmd := "cd " + workRoot + " && shopt -s globstar nullglob && printf '%s\\n' " + in.Pattern
+		res, err := mgr.Exec(ctx, in.Sandbox, cmd)
+		if err != nil {
+			return errResult("%v", err), globOutput{}, nil
+		}
+		var matches []string
+		for _, line := range strings.Split(strings.TrimSpace(res.Output), "\n") {
+			if line != "" {
+				matches = append(matches, line)
+			}
+		}
+		return nil, globOutput{Matches: matches}, nil
+	}
+}
+
+type grepInput struct {
+	Sandbox string `json:"sandbox" jsonschema:"Sandbox id"`
+	Pattern string `json:"pattern" jsonschema:"Search pattern (extended regex)"`
+	Path    string `json:"path,omitempty" jsonschema:"Optional path to scope the search (relative to /work; default whole tree)"`
+}
+type grepOutput struct {
+	Output string `json:"output"`
+}
+
+func makeGrep(mgr *sandbox.Manager) func(context.Context, *mcp.CallToolRequest, grepInput) (*mcp.CallToolResult, grepOutput, error) {
+	return func(ctx context.Context, _ *mcp.CallToolRequest, in grepInput) (*mcp.CallToolResult, grepOutput, error) {
+		if strings.TrimSpace(in.Pattern) == "" {
+			return errResult("pattern is required"), grepOutput{}, nil
+		}
+		target := "."
+		if in.Path != "" {
+			full, err := resolvePath(in.Path)
+			if err != nil {
+				return errResult("%v", err), grepOutput{}, nil
+			}
+			target = full
+		}
+		// grep returns exit 1 when no matches — not an error for us.
+		res, err := mgr.Exec(ctx, in.Sandbox, fmt.Sprintf("cd %s && grep -rnE -- %s %s || true", workRoot, shQuote(in.Pattern), shQuote(target)))
+		if err != nil {
+			return errResult("%v", err), grepOutput{}, nil
+		}
+		return nil, grepOutput{Output: res.Output}, nil
+	}
+}
+
+// shQuote single-quotes a string for safe inclusion in a shell command.
+func shQuote(s string) string {
+	return "'" + strings.ReplaceAll(s, "'", `'\''`) + "'"
+}

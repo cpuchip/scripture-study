@@ -136,6 +136,37 @@ func (m *Manager) Exec(ctx context.Context, wi, command string) (ExecResult, err
 	return res, nil
 }
 
+// WriteFile writes content to an absolute path inside wi's sandbox, creating
+// parent directories. Uses stdin so content needs no shell escaping.
+func (m *Manager) WriteFile(ctx context.Context, wi, path, content string) error {
+	cmd := exec.CommandContext(ctx, "docker", "exec", "-i", containerName(wi),
+		"sh", "-c", `mkdir -p "$(dirname "$0")" && cat > "$0"`, path)
+	cmd.Stdin = strings.NewReader(content)
+	var buf bytes.Buffer
+	cmd.Stdout = &buf
+	cmd.Stderr = &buf
+	if err := cmd.Run(); err != nil {
+		return fmt.Errorf("write %s: %w\n%s", path, err, buf.String())
+	}
+	return nil
+}
+
+// ReadFile reads an absolute path from wi's sandbox (argv form — no shell, so
+// the path needs no quoting).
+func (m *Manager) ReadFile(ctx context.Context, wi, path string) (string, error) {
+	cmd := exec.CommandContext(ctx, "docker", "exec", containerName(wi), "cat", "--", path)
+	var out, errBuf bytes.Buffer
+	cmd.Stdout = &out
+	cmd.Stderr = &errBuf
+	if err := cmd.Run(); err != nil {
+		if _, ok := err.(*exec.ExitError); ok {
+			return "", fmt.Errorf("read %s: %s", path, strings.TrimSpace(errBuf.String()))
+		}
+		return "", fmt.Errorf("read %s: %w", path, err)
+	}
+	return out.String(), nil
+}
+
 // Exists reports whether wi's sandbox container is present.
 func (m *Manager) Exists(ctx context.Context, wi string) (bool, error) {
 	out, err := docker(ctx, "ps", "-aq", "--filter", "name=^"+containerName(wi)+"$")

@@ -1,7 +1,10 @@
 // coder-mcp is the substrate's coding capability (substrate-coding-capability
-// proposal). CC.1 seeds it with the sandbox-manager + a -smoke mode; CC.2
-// grows the MCP tool surface (write/edit/apply_patch/read/glob/grep/shell/lsp)
-// onto the same module.
+// proposal). It runs as a stdio MCP server (CC.2) exposing the sandbox + coding
+// tool surface; the sandbox-manager (CC.1) spawns hardened coder-runtime
+// containers against the host docker daemon.
+//
+// Critical discipline (.github/skills/mcp-server-go): all logging to stderr;
+// stdout is reserved for JSON-RPC.
 package main
 
 import (
@@ -10,29 +13,47 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"os/signal"
+	"syscall"
 	"time"
+
+	"github.com/modelcontextprotocol/go-sdk/mcp"
 
 	"github.com/cpuchip/scripture-study/projects/pg-ai-stewards/cmd/coder-mcp/sandbox"
 )
+
+const version = "0.2.0"
 
 func main() {
 	smoke := flag.Bool("smoke", false, "Provision a sandbox, print toolchain versions, tear down, and exit (CC.1 smoke).")
 	flag.Parse()
 
 	log.SetOutput(os.Stderr)
+	log.SetPrefix("coder-mcp: ")
+	log.SetFlags(log.LstdFlags | log.Lmicroseconds)
 
 	if *smoke {
 		if err := runSmoke(); err != nil {
-			log.Fatalf("coder-mcp smoke FAILED: %v", err)
+			log.Fatalf("smoke FAILED: %v", err)
 		}
 		return
 	}
 
-	// CC.2 will start the MCP server here.
-	log.Println("coder-mcp: CC.1 stub (sandbox-manager only). Run with -smoke to test the sandbox.")
+	ctx, stop := signal.NotifyContext(context.Background(), os.Interrupt, syscall.SIGTERM)
+	defer stop()
+
+	mgr := sandbox.New()
+	srv := mcp.NewServer(&mcp.Implementation{Name: "coder-mcp", Version: version}, nil)
+	registerCoderTools(srv, mgr)
+
+	log.Printf("server starting on stdio (mcp protocol); runtime image=%s", mgr.Image)
+	if err := srv.Run(ctx, &mcp.StdioTransport{}); err != nil {
+		log.Fatalf("server.Run: %v", err)
+	}
+	log.Printf("server stopped cleanly")
 }
 
-// runSmoke proves CC.1 end to end: provision → exec toolchain checks → teardown.
+// runSmoke proves the sandbox end to end: provision → exec toolchain checks → teardown.
 func runSmoke() error {
 	ctx, cancel := context.WithTimeout(context.Background(), 2*time.Minute)
 	defer cancel()
