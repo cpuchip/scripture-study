@@ -1,6 +1,6 @@
 # Proposal — Substrate Coding Capability (write · build · test · deploy)
 
-**Status:** ✅ RATIFIED 2026-06-03 — all decisions walked (D-CC1–D-CC8 + trust posture, two AskUserQuestion batches). Build-ready; CC.1 is the first step. Not yet built.
+**Status:** ✅ **v1 COMPLETE 2026-06-03 (CC.1–CC.6 shipped + verified).** The substrate writes, builds, tests, diagnoses, and deploys code in isolated sandboxes — autonomously where there's ground truth (build/test green), with a human at the always-escalate Hinge for deploy. Commits `ee1760a`→`3297b5a`; migrations cc2–cc6; `coder` MCP = 13 tools. Proven end-to-end (CC.3: agent wrote+tested Go, verified by hand; CC.5: built+deployed+healthchecked a web server). All D-CC1–D-CC8 + trust posture ratified (two AskUserQuestion batches). **Deferred v2:** CC.3.1 (deterministic gate, "both paths usable") + CC.7 (Dokploy w/ scoped access). Build log + lessons in the 2026-06-03 coding-capability journals.
 **Raised:** 2026-06-03. Michael: *"how can we get pg-ai-stewards to be able to program? … make it so that pg-ai-stewards can write code, and even deploy it in its own docker sidecars."*
 **Research basis:** opencode (`external_context/opencode`) + the 2026 AI-agent-sandbox literature (Docker Sandboxes, E2B, Daytona, gVisor, Firecracker; Northflank / amux / Zylos guides). Governance frame: [`docs/delegation-pattern-skills-and-gates.md`](../../../docs/delegation-pattern-skills-and-gates.md).
 
