@@ -23,6 +23,7 @@ import (
 	"os"
 	"os/exec"
 	"strings"
+	"time"
 )
 
 // Network controls the sandbox's egress. Default is On (D-CC5: open,
@@ -183,4 +184,61 @@ func (m *Manager) Teardown(ctx context.Context, wi string) error {
 		return fmt.Errorf("teardown %s: %w\n%s", wi, err, out)
 	}
 	return nil
+}
+
+// SandboxInfo describes a coder sandbox container.
+type SandboxInfo struct {
+	Name     string    `json:"name"`
+	WorkItem string    `json:"work_item,omitempty"`
+	Created  time.Time `json:"created"`
+	AgeMin   int       `json:"age_minutes"`
+}
+
+// ListSandboxes lists all coder sandboxes (label stewards.coder=1) with age.
+func (m *Manager) ListSandboxes(ctx context.Context) ([]SandboxInfo, error) {
+	out, err := docker(ctx, "ps", "-a", "--filter", "label=stewards.coder=1",
+		"--format", "{{.Names}}\t{{.CreatedAt}}\t{{.Label \"stewards.work_item\"}}")
+	if err != nil {
+		return nil, fmt.Errorf("list sandboxes: %w\n%s", err, out)
+	}
+	var infos []SandboxInfo
+	for _, line := range strings.Split(strings.TrimSpace(out), "\n") {
+		if line == "" {
+			continue
+		}
+		parts := strings.SplitN(line, "\t", 3)
+		info := SandboxInfo{Name: parts[0]}
+		if len(parts) == 3 {
+			info.WorkItem = parts[2]
+		}
+		// docker's CreatedAt format, e.g. "2026-06-03 22:20:01 +0000 UTC".
+		if len(parts) >= 2 {
+			if t, perr := time.Parse("2006-01-02 15:04:05 -0700 MST", parts[1]); perr == nil {
+				info.Created = t
+				info.AgeMin = int(time.Since(t).Minutes())
+			}
+		}
+		infos = append(infos, info)
+	}
+	return infos, nil
+}
+
+// ReapSandboxes force-removes sandboxes older than maxAge (the reaper for
+// leaked/abandoned sandboxes). Returns the names removed.
+func (m *Manager) ReapSandboxes(ctx context.Context, maxAge time.Duration) ([]string, error) {
+	infos, err := m.ListSandboxes(ctx)
+	if err != nil {
+		return nil, err
+	}
+	var removed []string
+	for _, info := range infos {
+		if info.Created.IsZero() || time.Since(info.Created) <= maxAge {
+			continue
+		}
+		if out, derr := docker(ctx, "rm", "-f", info.Name); derr == nil ||
+			strings.Contains(out, "No such container") {
+			removed = append(removed, info.Name)
+		}
+	}
+	return removed, nil
 }

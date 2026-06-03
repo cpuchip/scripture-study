@@ -46,6 +46,15 @@ func main() {
 	srv := mcp.NewServer(&mcp.Implementation{Name: "coder-mcp", Version: version}, nil)
 	registerCoderTools(srv, mgr)
 
+	// CC.6: best-effort reap of stale sandboxes (>2h) on startup. The bridge
+	// spawns coder-mcp periodically, so this sweeps leaked/abandoned sandboxes
+	// without a long-lived daemon. In-use sandboxes (<2h) are untouched.
+	if removed, rerr := mgr.ReapSandboxes(ctx, 2*time.Hour); rerr != nil {
+		log.Printf("startup reap: %v", rerr)
+	} else if len(removed) > 0 {
+		log.Printf("startup reap: removed %d stale sandbox(es): %v", len(removed), removed)
+	}
+
 	log.Printf("server starting on stdio (mcp protocol); runtime image=%s", mgr.Image)
 	if err := srv.Run(ctx, &mcp.StdioTransport{}); err != nil {
 		log.Fatalf("server.Run: %v", err)

@@ -13,6 +13,7 @@ import (
 	"fmt"
 	"path"
 	"strings"
+	"time"
 
 	"github.com/modelcontextprotocol/go-sdk/mcp"
 
@@ -87,6 +88,16 @@ func registerCoderTools(srv *mcp.Server, mgr *sandbox.Manager) {
 			"Returns healthy + the healthcheck result + the service log tail. The actual deploy step is gated " +
 			"by the always-escalate Hinge in the code-deploy pipeline — a human ratifies before this runs.",
 	}, makeDeploy(mgr))
+
+	mcp.AddTool(srv, &mcp.Tool{
+		Name:        "coder_sandbox_list",
+		Description: "List all coder sandboxes (name, work_item, age in minutes) — visibility into what's running.",
+	}, makeSandboxList(mgr))
+
+	mcp.AddTool(srv, &mcp.Tool{
+		Name:        "coder_sandbox_reap",
+		Description: "Remove coder sandboxes older than max_age_minutes (default 120) — the reaper for leaked/abandoned sandboxes. Returns the names removed.",
+	}, makeSandboxReap(mgr))
 }
 
 // resolvePath joins a user path onto /work, refusing escapes above it.
@@ -461,6 +472,43 @@ func makeDeploy(mgr *sandbox.Manager) func(context.Context, *mcp.CallToolRequest
 			HealthOutput: health.Output,
 			Log:          logRes.Output,
 		}, nil
+	}
+}
+
+// --- sandbox visibility + reaper (CC.6) ---
+
+type listSbOutput struct {
+	Sandboxes []sandbox.SandboxInfo `json:"sandboxes"`
+}
+
+func makeSandboxList(mgr *sandbox.Manager) func(context.Context, *mcp.CallToolRequest, struct{}) (*mcp.CallToolResult, listSbOutput, error) {
+	return func(ctx context.Context, _ *mcp.CallToolRequest, _ struct{}) (*mcp.CallToolResult, listSbOutput, error) {
+		infos, err := mgr.ListSandboxes(ctx)
+		if err != nil {
+			return errResult("%v", err), listSbOutput{}, nil
+		}
+		return nil, listSbOutput{Sandboxes: infos}, nil
+	}
+}
+
+type reapInput struct {
+	MaxAgeMinutes int `json:"max_age_minutes,omitempty" jsonschema:"Remove sandboxes older than this many minutes (0/omitted = default 120; negative = flush ALL)"`
+}
+type reapOutput struct {
+	Removed []string `json:"removed"`
+}
+
+func makeSandboxReap(mgr *sandbox.Manager) func(context.Context, *mcp.CallToolRequest, reapInput) (*mcp.CallToolResult, reapOutput, error) {
+	return func(ctx context.Context, _ *mcp.CallToolRequest, in reapInput) (*mcp.CallToolResult, reapOutput, error) {
+		age := in.MaxAgeMinutes
+		if age == 0 { // 0/omitted = default; negative = flush all
+			age = 120
+		}
+		removed, err := mgr.ReapSandboxes(ctx, time.Duration(age)*time.Minute)
+		if err != nil {
+			return errResult("%v", err), reapOutput{}, nil
+		}
+		return nil, reapOutput{Removed: removed}, nil
 	}
 }
 
