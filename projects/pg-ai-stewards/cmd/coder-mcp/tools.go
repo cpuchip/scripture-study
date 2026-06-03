@@ -114,6 +114,13 @@ func makeSandboxStart(mgr *sandbox.Manager) func(context.Context, *mcp.CallToolR
 		if strings.TrimSpace(in.Sandbox) == "" {
 			return errResult("sandbox is required"), startOutput{}, nil
 		}
+		// Reuse an existing sandbox rather than wiping it — the revise loop
+		// (verify-fail → re-implement) must keep the in-progress work.
+		if exists, err := mgr.Exists(ctx, in.Sandbox); err != nil {
+			return errResult("%v", err), startOutput{}, nil
+		} else if exists {
+			return nil, startOutput{Sandbox: in.Sandbox, Network: "reused"}, nil
+		}
 		net := sandbox.NetOn
 		if in.Offline {
 			net = sandbox.NetOff
