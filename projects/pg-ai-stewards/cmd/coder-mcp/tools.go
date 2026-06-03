@@ -72,6 +72,13 @@ func registerCoderTools(srv *mcp.Server, mgr *sandbox.Manager) {
 		Name:        "coder_grep",
 		Description: "Search file contents in the sandbox (grep -rn). Optional path scopes the search (relative to /work).",
 	}, makeGrep(mgr))
+
+	mcp.AddTool(srv, &mcp.Tool{
+		Name: "coder_lsp",
+		Description: "Get type/compile diagnostics for a file using the language's checker " +
+			"(gopls for Go, tsc for TS/JS, pyright for Python — detected by extension). " +
+			"`clean=true` means no diagnostics. Faster feedback than a full build for catching errors mid-edit.",
+	}, makeLsp(mgr))
 }
 
 // resolvePath joins a user path onto /work, refusing escapes above it.
@@ -353,6 +360,44 @@ func makeGrep(mgr *sandbox.Manager) func(context.Context, *mcp.CallToolRequest, 
 			return errResult("%v", err), grepOutput{}, nil
 		}
 		return nil, grepOutput{Output: res.Output}, nil
+	}
+}
+
+type lspInput struct {
+	Sandbox string `json:"sandbox" jsonschema:"Sandbox id"`
+	Path    string `json:"path"    jsonschema:"File to check, relative to /work"`
+}
+type lspOutput struct {
+	Path        string `json:"path"`
+	Checker     string `json:"checker"`
+	Clean       bool   `json:"clean"`
+	Diagnostics string `json:"diagnostics"`
+}
+
+func makeLsp(mgr *sandbox.Manager) func(context.Context, *mcp.CallToolRequest, lspInput) (*mcp.CallToolResult, lspOutput, error) {
+	return func(ctx context.Context, _ *mcp.CallToolRequest, in lspInput) (*mcp.CallToolResult, lspOutput, error) {
+		full, err := resolvePath(in.Path)
+		if err != nil {
+			return errResult("%v", err), lspOutput{}, nil
+		}
+		var checker, cmd string
+		switch path.Ext(full) {
+		case ".go":
+			checker, cmd = "gopls", "cd "+workRoot+" && gopls check "+shQuote(full)
+		case ".ts", ".tsx", ".js", ".jsx":
+			checker, cmd = "tsc", "cd "+workRoot+" && tsc --noEmit --skipLibCheck "+shQuote(full)
+		case ".py":
+			checker, cmd = "pyright", "cd "+workRoot+" && pyright "+shQuote(full)
+		default:
+			return errResult("no diagnostics checker for %q (supported: .go, .ts/.tsx/.js/.jsx, .py)", path.Ext(full)), lspOutput{}, nil
+		}
+		res, err := mgr.Exec(ctx, in.Sandbox, cmd)
+		if err != nil {
+			return errResult("%v", err), lspOutput{}, nil
+		}
+		// Each checker exits 0 with no diagnostics; non-zero (or output) means issues.
+		clean := res.ExitCode == 0 && strings.TrimSpace(res.Output) == ""
+		return nil, lspOutput{Path: full, Checker: checker, Clean: clean, Diagnostics: res.Output}, nil
 	}
 }
 
