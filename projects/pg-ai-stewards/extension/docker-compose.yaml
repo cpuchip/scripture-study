@@ -111,6 +111,12 @@ services:
     volumes:
       - ../../..:/workspace:rw
       - ../../../yt:/opt/yt/yt:rw
+      # coder-mcp's sandbox-manager (substrate-coding-capability CC.1) shells
+      # `docker` against the HOST daemon via this socket to spawn coder-runtime
+      # sandbox containers as siblings. Trusted-tool isolation tier (D-CC2,
+      # medium-safe). Sandboxes are hardened (cap-drop, non-root, limits) +
+      # ephemeral; the coder never touches the live /workspace mount above.
+      - /var/run/docker.sock:/var/run/docker.sock
     restart: unless-stopped
     # ENTRYPOINT is `stewards-mcp bridge run` (set in bridge.Dockerfile).
     # Override with `command:` here if workers/tick need tuning.

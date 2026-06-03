@@ -32,6 +32,9 @@ COPY projects/pg-ai-stewards/cmd/fs-read-mcp/  ./projects/pg-ai-stewards/cmd/fs-
 # stewards-cli copied fully (not just go.mod stub) so the migrate
 # command can be built into the bridge image and run from the entrypoint.
 COPY projects/pg-ai-stewards/cmd/stewards-cli/ ./projects/pg-ai-stewards/cmd/stewards-cli/
+# coder-mcp — the substrate's coding capability (sandbox-manager + MCP tools).
+# Spawns coder-runtime sandbox containers against the host docker daemon.
+COPY projects/pg-ai-stewards/cmd/coder-mcp/  ./projects/pg-ai-stewards/cmd/coder-mcp/
 
 # Spawn targets
 COPY scripts/fetch-md-mcp/      ./scripts/fetch-md-mcp/
@@ -106,6 +109,10 @@ RUN cd projects/pg-ai-stewards/cmd/fs-read-mcp \
 RUN cd projects/pg-ai-stewards/cmd/stewards-cli \
     && go build -trimpath -ldflags="-s -w" -o /out/stewards-cli .
 
+# coder-mcp — sandbox-manager + (CC.2+) the coding MCP tool surface.
+RUN cd projects/pg-ai-stewards/cmd/coder-mcp \
+    && go build -trimpath -ldflags="-s -w" -o /out/coder-mcp .
+
 # Spawn targets in workspace
 RUN cd scripts/fetch-md-mcp \
     && go build -trimpath -ldflags="-s -w" -o /out/fetch-md-mcp .
@@ -147,7 +154,9 @@ FROM alpine:3.20
 # yt-dlp via pip instead — `--break-system-packages` accepts Alpine's
 # externally-managed warning since this is a single-purpose container
 # image not a shared Python environment.
-RUN apk add --no-cache ca-certificates tzdata git github-cli chromium python3 py3-pip ffmpeg curl \
+# docker-cli: coder-mcp's sandbox-manager shells `docker` against the host
+# daemon (socket mounted in docker-compose) to spawn coder-runtime sandboxes.
+RUN apk add --no-cache ca-certificates tzdata git github-cli chromium python3 py3-pip ffmpeg curl docker-cli \
     && pip install --no-cache-dir --break-system-packages --upgrade yt-dlp
 
 # Binaries
@@ -161,6 +170,7 @@ COPY --from=builder /out/search-mcp     /usr/local/bin/search-mcp
 COPY --from=builder /out/becoming-mcp   /usr/local/bin/becoming-mcp
 COPY --from=builder /out/gospel-mcp     /usr/local/bin/gospel-mcp
 COPY --from=builder /out/strongs-mcp    /usr/local/bin/strongs-mcp
+COPY --from=builder /out/coder-mcp      /usr/local/bin/coder-mcp
 COPY --from=builder /out/fs-read-mcp    /usr/local/bin/fs-read-mcp
 COPY --from=builder /out/stewards-cli   /usr/local/bin/stewards-cli
 
