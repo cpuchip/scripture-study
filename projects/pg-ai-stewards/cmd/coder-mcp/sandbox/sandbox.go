@@ -211,6 +211,15 @@ func (m *Manager) Commit(ctx context.Context, wi, message, branch string) (sha, 
 	if out, e := gitC(ctx, dir, "add", "-A"); e != nil {
 		return "", "", fmt.Errorf("add: %w\n%s", e, out)
 	}
+	// Build-artifact hygiene: `git add -A` sweeps in compiled binaries a build
+	// step left in the tree (e.g. `go build` writes an executable named after the
+	// module — `chatroom` — which a stock Go .gitignore does not catch). Unstage
+	// them so they never reach the PR. Source/text/scripts and non-executable
+	// binary assets (images, fixtures) are untouched.
+	if stripped := stripBuildArtifacts(ctx, dir); len(stripped) > 0 {
+		fmt.Fprintf(os.Stderr, "coder_commit: kept build artifact(s) out of the commit (compiled binaries are not committed): %s\n",
+			strings.Join(stripped, ", "))
+	}
 	msg := message + "\n\nCo-Authored-By: pg-ai-stewards-coder <coder@cpuchip.net>\n"
 	if out, e := gitC(ctx, dir, "-c", "user.name=pg-ai-stewards coder",
 		"-c", "user.email=coder@cpuchip.net", "commit", "-m", msg); e != nil {
@@ -218,6 +227,36 @@ func (m *Manager) Commit(ctx context.Context, wi, message, branch string) (sha, 
 	}
 	out, _ := gitC(ctx, dir, "rev-parse", "HEAD")
 	return strings.TrimSpace(out), branch, nil
+}
+
+// stripBuildArtifacts unstages compiled-binary build outputs that `git add -A`
+// swept in. It targets the precise signature — a file git sees as BINARY whose
+// index mode is 100755 (the executable bit) — which is what `go build` (and
+// other compilers) produce, while source, text, scripts, and non-executable
+// binary assets (images/fixtures, mode 100644) are left staged. Returns the
+// paths it unstaged so the caller can log them (the guard is never silent).
+func stripBuildArtifacts(ctx context.Context, dir string) []string {
+	numstat, err := gitC(ctx, dir, "diff", "--cached", "--numstat")
+	if err != nil {
+		return nil
+	}
+	var stripped []string
+	for _, line := range strings.Split(strings.TrimSpace(numstat), "\n") {
+		// Binary files render as "-\t-\t<path>" (added/deleted line counts are "-").
+		fields := strings.SplitN(line, "\t", 3)
+		if len(fields) != 3 || fields[0] != "-" || fields[1] != "-" {
+			continue
+		}
+		path := fields[2]
+		mode, e := gitC(ctx, dir, "ls-files", "--stage", "--", path)
+		if e != nil || !strings.HasPrefix(strings.TrimSpace(mode), "100755") {
+			continue // not an executable binary — leave it staged (asset, not artifact)
+		}
+		if _, e := gitC(ctx, dir, "reset", "-q", "--", path); e == nil {
+			stripped = append(stripped, path)
+		}
+	}
+	return stripped
 }
 
 // Push pushes branch to origin. The GitHub token (coder-mcp's env) is supplied
