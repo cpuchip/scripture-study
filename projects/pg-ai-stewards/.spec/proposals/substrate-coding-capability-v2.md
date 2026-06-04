@@ -44,7 +44,16 @@ A whole app is many work_items, not one. v2 wires the existing fan-out / work-it
 
 ## Model
 
-kimi-k2.6 nailed known patterns (the WebSocket hub) but app code with no canonical template (the classifier gate, the persona handshake) is the real test. v2 should default `code-pr` to a **stronger opencode_go coding model** (per-stage via `stage_models`), tunable per task.
+kimi-k2.6 nailed known patterns (the WebSocket hub) but app code with no canonical template (the classifier gate, the persona handshake) is the real test. Per-stage tunable via `stage_models`.
+
+**Shipped default: kimi-k2.6 across all `code-pr` stages, with `implement` as the per-task escalation point** (2026-06-03, after web research + Michael's hands-on read). The reframe that drove the choice: `implement` is not single-shot codegen — it's an *autonomous terminal loop* (clone → write → build/test → read output → fix → iterate, many tool calls). So the decisive axis is **Terminal-Bench / agentic stability**, not single-shot SWE-Bench Verified. On that axis kimi-k2.6 is the documented leader among the affordable open models (Terminal-Bench 2.0 66.7%, SWE-Bench Pro 58.6%, a 4,000+ tool-call / 13-hour autonomous session; every source names it "the right answer for autonomous long-running agents" / "single-repo code-write-debug loops"). It is also non-reasoning (no budget-burn risk in a long loop) and the cheapest. Michael's standing read: k2.6 ≈ frontier-close, rated over deepseek-v4-pro — the benchmarks agree.
+
+**Escalation map (per-task override on `implement`):**
+- **Front-end / Vue / UI items** (ai-chattermax roster + moderation UI) → **glm-5.1**. Its real edge over k2.6 is concentrated in front-end/UI generation (Code Arena top-tier on agentic web dev) and whole-repo scaffolding (NL2Repo, beats Opus/GPT); it shows *no measurable edge on non-UI/algorithmic* work. (It is a reasoning model → slower + token-burn; give it adequate per-call max_tokens.)
+- **"Scaffold a new module from a spec" items** → **glm-5.1** (NL2Repo strength).
+- **Hard novel logic where k2.6 stalls** → **qwen3.7-max** — the agentic-benchmark leader among Chinese models (Terminal-Bench 2.0 69.7%, SWE-Bench Pro 60.6%, a 35-hour / 1,158-tool-call demo) but reasoning + priciest + brand-new (no hands-on feel yet); watch the reasoning budget.
+- **deepseek-v4-pro: dropped as an escalation** — SWE-Bench Pro 55.4% sits *below* the k2.6 default; it is not an upgrade for this loop.
+- **minimax-m3** (released 2026-06-01): strong on MCP Atlas (74.2% — tool-connected MCP execution, the axis closest to our MCP-driven substrate) + 1M context, but **not yet in the substrate model registry** (we carry minimax-m2.5/m2.7). Worth adding + auto-probing before considering it for a stage.
 
 ## Monitoring discipline (Michael's explicit ask)
 
