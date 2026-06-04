@@ -53,7 +53,7 @@ kimi-k2.6 nailed known patterns (the WebSocket hub) but app code with no canonic
 - **"Scaffold a new module from a spec" items** → **glm-5.1** (NL2Repo strength).
 - **Hard novel logic where k2.6 stalls** → **qwen3.7-max** — the agentic-benchmark leader among Chinese models (Terminal-Bench 2.0 69.7%, SWE-Bench Pro 60.6%, a 35-hour / 1,158-tool-call demo) but reasoning + priciest + brand-new (no hands-on feel yet); watch the reasoning budget.
 - **deepseek-v4-pro: dropped as an escalation** — SWE-Bench Pro 55.4% sits *below* the k2.6 default; it is not an upgrade for this loop.
-- **minimax-m3** (released 2026-06-01): strong on MCP Atlas (74.2% — tool-connected MCP execution, the axis closest to our MCP-driven substrate) + 1M context, but **not yet in the substrate model registry** (we carry minimax-m2.5/m2.7). Worth adding + auto-probing before considering it for a stage.
+- **minimax-m3** (released 2026-06-01): **REGISTERED + verified end-to-end 2026-06-03 (cv4).** opencode_go serves it (openai-format, reasoning model — emits `<think>`, which the substrate separates cleanly; no leak into the deliverable); 1M context; strong on MCP Atlas (74.2% — tool-connected MCP execution, closest to our MCP-driven substrate). A full code-pr run on m3 (all stages, `model_override`, max_tokens 64k) produced a genuinely high-quality `/healthz` PR — a proper `ClientCount()` accessor, 3 convention-matched stdlib tests, a thorough PR body — but ran **~3–4× slower than kimi-k2.6** (reasoning overhead: ~5.5 min vs ~100s). **Use it as the big-context / deep-reasoning escalation** (large-repo items, novel logic worth the wait), not the loop default. Caveat surfaced by the run → the artifact-hygiene gap below.
 
 ## Monitoring discipline (Michael's explicit ask)
 
@@ -71,6 +71,7 @@ ai-chattermax is the stress test. The orchestrating agent **watches each child w
 
 - The merge boundary is the real trust gate — sandbox isolation protects the build host, not the decision to trust the code. Review PRs (the Hinge).
 - A fine-grained PAT in the bridge env is still a standing credential; the GitHub App (auto-rotated short-lived tokens) is the hardening path if/when the threat model grows (remote/multi-tenant).
+- **Build-artifact hygiene (found 2026-06-03 in the m3 test; fix before the real ai-chattermax build — task #99).** `coder_commit` does `git add -A`, so any build artifact left in the worktree lands in the PR. The m3 run ran `go build` (which writes the `chatroom` binary into the main-package dir) → a **9MB binary committed alongside the source**. Not model-specific (kimi dodged it only because its tasks used `go test`). Fix options, in order of generality: (a) **plan/implement build command discipline** — prefer `go build ./...` (compiles all packages, writes nothing) over `go build .`/`go build` (writes the binary); (b) **`coder_commit` artifact hygiene** — skip obvious build outputs / respect a default ignore set; (c) **per-repo `.gitignore`** — works but extensionless binaries (named after the module, e.g. `chatroom`) aren't caught by a generic Go `.gitignore`, so it must name them. Likely (a)+(b) together; (c) per repo as backup.
 
 ## v3 (future) — the substrate's own GitHub identity
 
