@@ -117,6 +117,12 @@ services:
       # medium-safe). Sandboxes are hardened (cap-drop, non-root, limits) +
       # ephemeral; the coder never touches the live /workspace mount above.
       - /var/run/docker.sock:/var/run/docker.sock
+      # coder-v2 (CV2.1): shared worktree volume. git ops (clone/push/PR) run
+      # HERE in the bridge (token in env, never in the sandbox) against
+      # /worktrees/<wi>; the sandbox mounts the same volume (subpath <wi>) at
+      # /work so the agent edits the same tree. Fixed volume name so the
+      # bridge's compose mount + the sandbox's `docker run -v` match.
+      - coder-worktrees:/worktrees
     restart: unless-stopped
     # ENTRYPOINT is `stewards-mcp bridge run` (set in bridge.Dockerfile).
     # Override with `command:` here if workers/tick need tuning.
@@ -147,3 +153,5 @@ services:
 
 volumes:
   pgdata:
+  coder-worktrees:
+    name: coder-worktrees   # fixed name: bridge (compose) + sandbox (docker run -v) share it

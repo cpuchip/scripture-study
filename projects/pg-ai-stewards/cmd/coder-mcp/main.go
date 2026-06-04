@@ -71,7 +71,7 @@ func runSmoke() error {
 	const wi = "smoke"
 
 	fmt.Printf("coder-mcp smoke: provisioning sandbox (image=%s, network=on)…\n", m.Image)
-	if err := m.Provision(ctx, wi, sandbox.NetOn); err != nil {
+	if err := m.Provision(ctx, wi, sandbox.NetOn, false); err != nil {
 		return err
 	}
 	defer func() {

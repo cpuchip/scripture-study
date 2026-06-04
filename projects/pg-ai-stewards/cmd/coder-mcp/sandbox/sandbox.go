@@ -87,8 +87,11 @@ func docker(ctx context.Context, args ...string) (string, error) {
 }
 
 // Provision starts an idle sandbox container for wi. Idempotent-ish: it tears
-// down any pre-existing container of the same name first.
-func (m *Manager) Provision(ctx context.Context, wi string, net Network) error {
+// down any pre-existing container of the same name first. When worktree is
+// true, the shared coder-worktrees volume (subpath wi) is mounted at /work —
+// so the coder tools operate on a repo the bridge cloned there (CV2.1). The
+// caller must CloneRepo first (the subpath must exist).
+func (m *Manager) Provision(ctx context.Context, wi string, net Network, worktree bool) error {
 	_ = m.Teardown(ctx, wi) // clear any leftover; ignore "not found"
 	args := []string{
 		"run", "-d", "--name", containerName(wi),
@@ -101,12 +104,66 @@ func (m *Manager) Provision(ctx context.Context, wi string, net Network) error {
 		"--label=stewards.coder=1",
 		"--label=stewards.work_item=" + sanitize(wi),
 	}
+	if worktree {
+		args = append(args, "--mount",
+			fmt.Sprintf("type=volume,source=%s,target=/work,volume-subpath=%s", worktreeVol, sanitize(wi)))
+	}
 	if net == NetOff {
 		args = append(args, "--network=none")
 	}
 	args = append(args, m.Image, "sleep", "infinity")
 	if out, err := docker(ctx, args...); err != nil {
 		return fmt.Errorf("provision %s: %w\n%s", wi, err, out)
+	}
+	return nil
+}
+
+// --- coder-v2: repo worktrees (CV2.1) ---
+
+const (
+	worktreeVol  = "coder-worktrees" // shared volume; bridge + sandbox both mount it
+	worktreeRoot = "/worktrees"      // the bridge's mount point of worktreeVol
+)
+
+// repoAllowed reports whether repo matches CODER_REPO_ALLOWLIST (comma-separated
+// substrings; default: ai-chattermax only). The tool-layer guard from D-CV2.2 —
+// even with a token, the coder only touches whitelisted repos.
+func repoAllowed(repo string) bool {
+	list := os.Getenv("CODER_REPO_ALLOWLIST")
+	if list == "" {
+		list = "github.com/cpuchip/ai-chattermax"
+	}
+	for _, pat := range strings.Split(list, ",") {
+		if pat = strings.TrimSpace(pat); pat != "" && strings.Contains(repo, pat) {
+			return true
+		}
+	}
+	return false
+}
+
+// CloneRepo clones an allow-listed repo into the per-work_item worktree
+// (/worktrees/<wi> on the shared volume) and chowns it to the sandbox's coder
+// uid (1000). Runs in the bridge — the GitHub token (CV2.2) lives here, never
+// in the sandbox.
+func (m *Manager) CloneRepo(ctx context.Context, wi, repo, branch string) error {
+	if !repoAllowed(repo) {
+		return fmt.Errorf("repo %q not in the coder allow-list (CODER_REPO_ALLOWLIST)", repo)
+	}
+	dir := worktreeRoot + "/" + sanitize(wi)
+	_ = exec.CommandContext(ctx, "rm", "-rf", dir).Run() // fresh clone
+	args := []string{"clone", "--depth", "50"}
+	if branch != "" {
+		args = append(args, "--branch", branch)
+	}
+	args = append(args, repo, dir)
+	cmd := exec.CommandContext(ctx, "git", args...)
+	var buf bytes.Buffer
+	cmd.Stdout, cmd.Stderr = &buf, &buf
+	if err := cmd.Run(); err != nil {
+		return fmt.Errorf("clone %s: %w\n%s", repo, err, buf.String())
+	}
+	if out, err := exec.CommandContext(ctx, "chown", "-R", "1000:1000", dir).CombinedOutput(); err != nil {
+		return fmt.Errorf("chown worktree %s: %w\n%s", dir, err, out)
 	}
 	return nil
 }

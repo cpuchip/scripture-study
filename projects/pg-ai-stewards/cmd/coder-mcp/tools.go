@@ -129,10 +129,13 @@ func errResult(format string, a ...any) *mcp.CallToolResult {
 type startInput struct {
 	Sandbox string `json:"sandbox" jsonschema:"Sandbox id (the work_item id)"`
 	Offline bool   `json:"offline,omitempty" jsonschema:"Cut network egress (default false = on, for package pulls)"`
+	Repo    string `json:"repo,omitempty" jsonschema:"Optional git repo URL to clone into the sandbox (repo-mode, CV2.1). Must be allow-listed. The repo lands at /work."`
+	Branch  string `json:"branch,omitempty" jsonschema:"Optional branch to clone (repo-mode)"`
 }
 type startOutput struct {
 	Sandbox string `json:"sandbox"`
 	Network string `json:"network"`
+	Repo    string `json:"repo,omitempty"`
 }
 
 func makeSandboxStart(mgr *sandbox.Manager) func(context.Context, *mcp.CallToolRequest, startInput) (*mcp.CallToolResult, startOutput, error) {
@@ -151,7 +154,19 @@ func makeSandboxStart(mgr *sandbox.Manager) func(context.Context, *mcp.CallToolR
 		if in.Offline {
 			net = sandbox.NetOff
 		}
-		if err := mgr.Provision(ctx, in.Sandbox, net); err != nil {
+		// Repo-mode (CV2.1): the bridge clones the allow-listed repo into the
+		// shared worktree first (token never in the sandbox), then the sandbox
+		// mounts that worktree at /work.
+		if strings.TrimSpace(in.Repo) != "" {
+			if err := mgr.CloneRepo(ctx, in.Sandbox, in.Repo, in.Branch); err != nil {
+				return errResult("%v", err), startOutput{}, nil
+			}
+			if err := mgr.Provision(ctx, in.Sandbox, net, true); err != nil {
+				return errResult("%v", err), startOutput{}, nil
+			}
+			return nil, startOutput{Sandbox: in.Sandbox, Network: string(net), Repo: in.Repo}, nil
+		}
+		if err := mgr.Provision(ctx, in.Sandbox, net, false); err != nil {
 			return errResult("%v", err), startOutput{}, nil
 		}
 		return nil, startOutput{Sandbox: in.Sandbox, Network: string(net)}, nil
