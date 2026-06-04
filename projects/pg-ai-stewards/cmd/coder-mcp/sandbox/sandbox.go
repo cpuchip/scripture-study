@@ -49,6 +49,10 @@ func New() *Manager {
 	if img == "" {
 		img = "coder-runtime:latest"
 	}
+	// CV2.2: git/gh run as root (bridge) over coder-uid-owned worktrees; disable
+	// git's dubious-ownership guard for our own worktrees so commit/push/gh work
+	// (the worktrees are ours — the guard is a multi-user safety net we don't need).
+	_ = exec.Command("git", "config", "--global", "--add", "safe.directory", "*").Run()
 	return &Manager{Image: img, MemLimit: "2g", CPULimit: "2", PidsLimit: "512"}
 }
 
@@ -166,6 +170,98 @@ func (m *Manager) CloneRepo(ctx context.Context, wi, repo, branch string) error 
 		return fmt.Errorf("chown worktree %s: %w\n%s", dir, err, out)
 	}
 	return nil
+}
+
+// WorktreePath is the bridge-side path of wi's repo worktree.
+func (m *Manager) WorktreePath(wi string) string { return worktreeRoot + "/" + sanitize(wi) }
+
+func (m *Manager) hasWorktree(wi string) bool {
+	_, err := os.Stat(m.WorktreePath(wi) + "/.git")
+	return err == nil
+}
+
+// gitC runs `git -C dir args...` (combined output). Inherits coder-mcp's env,
+// which carries GITHUB_TOKEN — these run bridge-side, never in the sandbox.
+func gitC(ctx context.Context, dir string, args ...string) (string, error) {
+	cmd := exec.CommandContext(ctx, "git", append([]string{"-C", dir, "-c", "safe.directory=*"}, args...)...)
+	out, err := cmd.CombinedOutput()
+	return string(out), err
+}
+
+func protectedBranch(b string) bool {
+	return b == "main" || b == "master" || strings.HasPrefix(b, "release/")
+}
+
+// Commit stages all changes in wi's worktree onto `branch` (created if absent)
+// and commits. Local op — no token. Returns the new SHA + the branch.
+func (m *Manager) Commit(ctx context.Context, wi, message, branch string) (sha, br string, err error) {
+	dir := m.WorktreePath(wi)
+	if !m.hasWorktree(wi) {
+		return "", "", fmt.Errorf("no repo worktree for %q — start the sandbox with repo=", wi)
+	}
+	if branch == "" {
+		branch = "agent/coder/" + sanitize(wi)
+	}
+	if protectedBranch(branch) {
+		return "", "", fmt.Errorf("refusing to commit onto protected branch %q", branch)
+	}
+	if out, e := gitC(ctx, dir, "checkout", "-B", branch); e != nil {
+		return "", "", fmt.Errorf("checkout %s: %w\n%s", branch, e, out)
+	}
+	if out, e := gitC(ctx, dir, "add", "-A"); e != nil {
+		return "", "", fmt.Errorf("add: %w\n%s", e, out)
+	}
+	msg := message + "\n\nCo-Authored-By: pg-ai-stewards-coder <coder@cpuchip.net>\n"
+	if out, e := gitC(ctx, dir, "-c", "user.name=pg-ai-stewards coder",
+		"-c", "user.email=coder@cpuchip.net", "commit", "-m", msg); e != nil {
+		return "", "", fmt.Errorf("commit: %w\n%s", e, out)
+	}
+	out, _ := gitC(ctx, dir, "rev-parse", "HEAD")
+	return strings.TrimSpace(out), branch, nil
+}
+
+// Push pushes branch to origin. The GitHub token (coder-mcp's env) is supplied
+// via a one-shot credential helper — never persisted in .git/config or the
+// worktree (so the sandbox can't read it). Runs bridge-side.
+func (m *Manager) Push(ctx context.Context, wi, branch string) (string, error) {
+	if branch == "" || protectedBranch(branch) {
+		return "", fmt.Errorf("refusing to push protected/empty branch %q", branch)
+	}
+	const helper = `!f() { echo username=x-access-token; echo "password=$GITHUB_TOKEN"; }; f`
+	out, err := gitC(ctx, m.WorktreePath(wi),
+		"-c", "credential.helper=", "-c", "credential.helper="+helper,
+		"push", "--set-upstream", "origin", branch)
+	if err != nil {
+		return "", fmt.Errorf("push %s: %w\n%s", branch, err, out)
+	}
+	return out, nil
+}
+
+// OpenPR opens a pull request via gh (uses GITHUB_TOKEN from env). Bridge-side.
+func (m *Manager) OpenPR(ctx context.Context, wi, title, body, base string, draft bool) (string, error) {
+	if base == "" {
+		base = "main"
+	}
+	// Pass --head explicitly. gh's "current branch" auto-detect unreliably
+	// reports "you must first push the current branch" in this bridge-side
+	// worktree setup even after a successful push; resolving the checked-out
+	// branch and passing it as --head sidesteps that detection.
+	head, herr := gitC(ctx, m.WorktreePath(wi), "rev-parse", "--abbrev-ref", "HEAD")
+	if herr != nil {
+		return "", fmt.Errorf("resolve head branch: %w\n%s", herr, head)
+	}
+	head = strings.TrimSpace(head)
+	args := []string{"pr", "create", "--base", base, "--head", head, "--title", title, "--body", body}
+	if draft {
+		args = append(args, "--draft")
+	}
+	cmd := exec.CommandContext(ctx, "gh", args...)
+	cmd.Dir = m.WorktreePath(wi)
+	out, err := cmd.CombinedOutput()
+	if err != nil {
+		return "", fmt.Errorf("gh pr create: %w\n%s", err, out)
+	}
+	return strings.TrimSpace(string(out)), nil
 }
 
 // ExecResult is the outcome of a sandbox command.

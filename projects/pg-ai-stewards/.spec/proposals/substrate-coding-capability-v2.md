@@ -62,3 +62,7 @@ ai-chattermax is the stress test. The orchestrating agent **watches each child w
 
 - The merge boundary is the real trust gate — sandbox isolation protects the build host, not the decision to trust the code. Review PRs (the Hinge).
 - A fine-grained PAT in the bridge env is still a standing credential; the GitHub App (auto-rotated short-lived tokens) is the hardening path if/when the threat model grows (remote/multi-tenant).
+
+## v3 (future) — the substrate's own GitHub identity
+
+Michael 2026-06-04: give pg-ai-stewards **its own GitHub account** (a bot/machine-user, or a GitHub App identity) so it manages **its own repos** rather than borrowing Michael's PAT. This is the clean endgame — commits + PRs show as the substrate, not Michael; the substrate owns the repos it works on; and the "his-account blast radius" concern disappears entirely (the token can only touch the bot's own repos). v2 (a fine-grained PAT scoped to allow-listed repos in Michael's account) is the stepping stone; v3 is the separation. Likely a dedicated machine-user account + a fine-grained PAT (or a GitHub App installed only on the bot's repos), with Michael added as a collaborator where he wants visibility/merge rights.

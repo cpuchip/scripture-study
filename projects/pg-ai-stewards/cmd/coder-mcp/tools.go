@@ -98,6 +98,24 @@ func registerCoderTools(srv *mcp.Server, mgr *sandbox.Manager) {
 		Name:        "coder_sandbox_reap",
 		Description: "Remove coder sandboxes older than max_age_minutes (default 120) — the reaper for leaked/abandoned sandboxes. Returns the names removed.",
 	}, makeSandboxReap(mgr))
+
+	mcp.AddTool(srv, &mcp.Tool{
+		Name: "coder_commit",
+		Description: "Stage all changes in the sandbox's repo worktree onto a branch (created if absent) and commit. " +
+			"Local op — no token. Returns the SHA + branch. Repo-mode sandboxes only (start with repo=).",
+	}, makeCommit(mgr))
+
+	mcp.AddTool(srv, &mcp.Tool{
+		Name: "coder_push",
+		Description: "Push the branch to origin. Runs bridge-side with the GitHub token (never in the sandbox); " +
+			"refuses protected branches (main/master/release/*).",
+	}, makePush(mgr))
+
+	mcp.AddTool(srv, &mcp.Tool{
+		Name: "coder_open_pr",
+		Description: "Open a pull request (gh) for the pushed branch — base defaults to main. Returns the PR URL. " +
+			"Bridge-side, token from env. The human reviews + merges (the Hinge).",
+	}, makeOpenPR(mgr))
 }
 
 // resolvePath joins a user path onto /work, refusing escapes above it.
@@ -524,6 +542,73 @@ func makeSandboxReap(mgr *sandbox.Manager) func(context.Context, *mcp.CallToolRe
 			return errResult("%v", err), reapOutput{}, nil
 		}
 		return nil, reapOutput{Removed: removed}, nil
+	}
+}
+
+// --- git: commit (local) / push / open PR (bridge-side, token never in sandbox) ---
+
+type commitInput struct {
+	Sandbox string `json:"sandbox" jsonschema:"Sandbox id (repo-mode)"`
+	Message string `json:"message" jsonschema:"Commit message"`
+	Branch  string `json:"branch,omitempty" jsonschema:"Branch to commit onto (default agent/coder/<sandbox>; protected branches refused)"`
+}
+type commitOutput struct {
+	Sha    string `json:"sha"`
+	Branch string `json:"branch"`
+}
+
+func makeCommit(mgr *sandbox.Manager) func(context.Context, *mcp.CallToolRequest, commitInput) (*mcp.CallToolResult, commitOutput, error) {
+	return func(ctx context.Context, _ *mcp.CallToolRequest, in commitInput) (*mcp.CallToolResult, commitOutput, error) {
+		if strings.TrimSpace(in.Message) == "" {
+			return errResult("message is required"), commitOutput{}, nil
+		}
+		sha, br, err := mgr.Commit(ctx, in.Sandbox, in.Message, in.Branch)
+		if err != nil {
+			return errResult("%v", err), commitOutput{}, nil
+		}
+		return nil, commitOutput{Sha: sha, Branch: br}, nil
+	}
+}
+
+type pushInput struct {
+	Sandbox string `json:"sandbox" jsonschema:"Sandbox id (repo-mode)"`
+	Branch  string `json:"branch"  jsonschema:"Branch to push (protected branches refused)"`
+}
+type pushOutput struct {
+	Output string `json:"output"`
+}
+
+func makePush(mgr *sandbox.Manager) func(context.Context, *mcp.CallToolRequest, pushInput) (*mcp.CallToolResult, pushOutput, error) {
+	return func(ctx context.Context, _ *mcp.CallToolRequest, in pushInput) (*mcp.CallToolResult, pushOutput, error) {
+		out, err := mgr.Push(ctx, in.Sandbox, in.Branch)
+		if err != nil {
+			return errResult("%v", err), pushOutput{}, nil
+		}
+		return nil, pushOutput{Output: out}, nil
+	}
+}
+
+type prInput struct {
+	Sandbox string `json:"sandbox" jsonschema:"Sandbox id (repo-mode)"`
+	Title   string `json:"title"   jsonschema:"PR title"`
+	Body    string `json:"body"    jsonschema:"PR body (markdown)"`
+	Base    string `json:"base,omitempty"  jsonschema:"Base branch (default main)"`
+	Draft   bool   `json:"draft,omitempty" jsonschema:"Open as a draft PR"`
+}
+type prOutput struct {
+	URL string `json:"url"`
+}
+
+func makeOpenPR(mgr *sandbox.Manager) func(context.Context, *mcp.CallToolRequest, prInput) (*mcp.CallToolResult, prOutput, error) {
+	return func(ctx context.Context, _ *mcp.CallToolRequest, in prInput) (*mcp.CallToolResult, prOutput, error) {
+		if strings.TrimSpace(in.Title) == "" {
+			return errResult("title is required"), prOutput{}, nil
+		}
+		url, err := mgr.OpenPR(ctx, in.Sandbox, in.Title, in.Body, in.Base, in.Draft)
+		if err != nil {
+			return errResult("%v", err), prOutput{}, nil
+		}
+		return nil, prOutput{URL: url}, nil
 	}
 }
 
