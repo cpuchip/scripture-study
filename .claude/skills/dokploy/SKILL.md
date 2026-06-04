@@ -72,6 +72,7 @@ auth problem.
 | `ibeco.me` | `V5WLEhO8bZxHpVqL7PHTL` | `engine` | `Qo8QSTWShNeqGsPrtw90T` | Application | engine.ibeco.me |
 | `ibeco.me` | `V5WLEhO8bZxHpVqL7PHTL` | `web` | `Uu_-qX0ZPdotJ0mQGwn-j` | Application | ibeco.me (becoming-app) |
 | `ibeco.me` | `V5WLEhO8bZxHpVqL7PHTL` | `i1828` | `5pWsGxF5yMtOJUACHJyMB` | **Compose** | 1828.ibeco.me |
+| `ai-chattermax` | `nGX4hGUUzV0vAJPOYBk4f` | `chattermax` | `B-ER3-TrXHlDr4iCHDOvj` | **Compose** | chat.ibeco.me:8080 (github cpuchip/ai-chattermax, ./docker-compose.yml, domainId `CLLbog6XrdUt8ia6T5LBl`) — created 2026-06-04 |
 
 Project `ibeco.me` also carries 2 project-level Postgres services
 (IDs `4xQXSslPNlZl6N1fxv7Zq` + `m6Cfc7WPhAl1eV9Qv25Tf`). The `i1828`
@@ -121,8 +122,8 @@ Same shape but for Compose services. `composeStatus` instead of
 
 ### List deployments
 ```
-GET /api/deployment.all?applicationId=<id>
-GET /api/deployment.all?composeId=<id>
+GET /api/deployment.all?applicationId=<id>           # Application type
+GET /api/deployment.allByCompose?composeId=<id>      # Compose type — NOT deployment.all (that 400s wanting applicationId)
 ```
 Returns deployments newest-first. Key fields per deployment:
 - `deploymentId` — unique ID
@@ -150,8 +151,12 @@ Same as deploy but rebuilds without pulling new code.
 ## Common Workflows
 
 ### Quick status check (1828.ibeco.me)
-1. `GET /api/deployment.all?composeId=5pWsGxF5yMtOJUACHJyMB` — latest deployments
+1. `GET /api/deployment.allByCompose?composeId=5pWsGxF5yMtOJUACHJyMB` — latest deployments
 2. `curl -sk https://1828.ibeco.me/api/healthz` — live health probe
+
+### Quick status check (chat.ibeco.me / ai-chattermax)
+1. `GET /api/deployment.allByCompose?composeId=B-ER3-TrXHlDr4iCHDOvj` — latest deployments
+2. `curl -s https://chat.ibeco.me/healthz` — live health probe (`{"status":"ok"}`)
 
 ### Quick status check (ibeco.me / becoming)
 1. `GET /api/deployment.all?applicationId=Uu_-qX0ZPdotJ0mQGwn-j` — latest deployments
@@ -175,6 +180,31 @@ curl -sk -H "x-api-key: $env:DOKPLOY_NOCIX_API_KEY" "https://server.ibeco.me/api
 # inspect with python/jq — pull projectId, applicationId, composeId, name, domain.host
 ```
 Then update this skill if anything changed.
+
+### Creating a new Compose app from scratch (verified 2026-06-04, ai-chattermax)
+Each step's required fields were found by POSTing `{}` and reading the Zod error.
+```
+1. POST /api/project.create   {name, description?}
+   -> creates the project + an auto "production" environment.
+   The response is lean; re-fetch project.all and read
+   environments[].environmentId for the next step.
+2. POST /api/compose.create   {name, environmentId, composeType:"docker-compose"}
+   -> composeId. appName is auto-generated.
+3. POST /api/compose.update   {composeId, sourceType:"github", githubId, owner,
+                                repository, branch, composePath:"./docker-compose.yml",
+                                triggerType:"push"}
+   -> wires the git source + auto-deploy-on-push. Reuse an existing compose's
+   githubId (the GitHub App install covers all repos under that owner).
+4. POST /api/domain.create    {host, composeId, serviceName:"<compose service name>",
+                                domainType:"compose", port:<container port>,
+                                https:true, certificateType:"letsencrypt", path:"/"}
+   -> chat.ibeco.me etc. (domain.all is 404; list per-parent via
+   domain.byComposeId?composeId=). *.ibeco.me wildcard DNS already resolves
+   sub-domains to the NOCIX VPS, so only the Dokploy-side domain is needed.
+5. POST /api/compose.deploy   {composeId}
+   -> builds + goes live. Poll compose.one.composeStatus (idle->done) and curl
+   the live /healthz; first deploy issues the Let's Encrypt cert (a few seconds).
+```
 
 ## Security Notes
 
