@@ -175,7 +175,7 @@ func (m *Manager) CloneRepo(ctx context.Context, wi, repo, branch string) error 
 // WorktreePath is the bridge-side path of wi's repo worktree.
 func (m *Manager) WorktreePath(wi string) string { return worktreeRoot + "/" + sanitize(wi) }
 
-func (m *Manager) hasWorktree(wi string) bool {
+func (m *Manager) HasWorktree(wi string) bool {
 	_, err := os.Stat(m.WorktreePath(wi) + "/.git")
 	return err == nil
 }
@@ -196,7 +196,7 @@ func protectedBranch(b string) bool {
 // and commits. Local op — no token. Returns the new SHA + the branch.
 func (m *Manager) Commit(ctx context.Context, wi, message, branch string) (sha, br string, err error) {
 	dir := m.WorktreePath(wi)
-	if !m.hasWorktree(wi) {
+	if !m.HasWorktree(wi) {
 		return "", "", fmt.Errorf("no repo worktree for %q — start the sandbox with repo=", wi)
 	}
 	if branch == "" {

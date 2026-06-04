@@ -184,7 +184,13 @@ func makeSandboxStart(mgr *sandbox.Manager) func(context.Context, *mcp.CallToolR
 			}
 			return nil, startOutput{Sandbox: in.Sandbox, Network: string(net), Repo: in.Repo}, nil
 		}
-		if err := mgr.Provision(ctx, in.Sandbox, net, false); err != nil {
+		// No repo passed. If a worktree already exists for this sandbox (e.g. an
+		// earlier clone stage cloned it, then the container was reaped or the
+		// bridge restarted mid-pipeline), re-mount it so implement/verify/pr keep
+		// operating on the cloned repo — never silently fall back to an ephemeral
+		// /work that drops the clone. A fresh sandbox with no worktree stays
+		// ephemeral (v1 code-write behavior).
+		if err := mgr.Provision(ctx, in.Sandbox, net, mgr.HasWorktree(in.Sandbox)); err != nil {
 			return errResult("%v", err), startOutput{}, nil
 		}
 		return nil, startOutput{Sandbox: in.Sandbox, Network: string(net)}, nil
