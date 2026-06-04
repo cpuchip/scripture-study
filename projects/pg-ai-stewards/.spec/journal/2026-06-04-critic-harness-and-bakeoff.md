@@ -30,7 +30,7 @@ Differentiation (human read):
 - **m3 (minimax-m3)** — 22 min / 1.3M tok. Best docs + defensive copy + careful contracts, BUT holds the lock through Send (a slow client stalls the room) and 3-4× the cost. The care/1M-context pick, not the default.
 - **glm-5.1** — 13 min / 953k / 1532 LOC (most). Over-engineered (channel-actor **+** a mutex) with a **latent data race**: `Run()` writes `h.rooms` without the mutex while `Rooms()` reads under `mu.RLock()`. The tests don't exercise that path, so build + vet + `-race` + the critic all passed it. Verbosity ≠ quality.
 
-**Meta-finding worth keeping:** glm's race cleared every automated gate; a human read caught it. So the critic **raises the floor** (no more silent dropped requirements / vacuous tests) but the **human-merge Hinge stays the ceiling** for subtle concurrency soundness. The critic is a backstop, not a guarantee.
+**Meta-finding worth keeping:** glm's race cleared every automated gate; the **full-context shepherd (the orchestrating Opus holding the whole arc) caught it** — not a human, not any single gate. So narrow gates **raise the floor**; a **full-context reviewer raises the ceiling** — the axis is full-context-vigilance vs. narrow-gate, *not* human-vs-AI. The human stays the **Hinge** (merge authority / owns the consequence), not the sole defect-catcher. The critic is a backstop, not a guarantee. (Michael's correction 2026-06-04 — see memory `feedback_full_context_shepherd_is_the_ceiling`.)
 
 ## Carry-forward
 
