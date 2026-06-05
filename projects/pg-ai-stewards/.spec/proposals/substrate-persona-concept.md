@@ -1,96 +1,83 @@
-# Substrate proposal — Persona Concept (ai-chattermax item #6)
+# Substrate proposal — Persona Concept (ai-chattermax #6), as a Go SIDECAR
 
-**Status:** RATIFIED (Michael, 2026-06-04) — build-ready. The substrate-side half of the ai-chattermax split (the coder builds the website; I build this).
-**Parent design:** `projects/ai-chattermax/.spec/proposals/chat-server-design.md` (Q2 ratified the substrate owns personas natively; Q5 the sub-token principle; Q4 self-pace-within-ceiling).
-**Boundary:** this is item #6 — schema + handshake + sub-token minting + seed two personas. The turn loop (observe→decide→post) is item #7, separate.
+**Status:** RATIFIED + re-architected (Michael, 2026-06-04). Build lane: mine.
+**Parent design:** `projects/ai-chattermax/.spec/proposals/chat-server-design.md`.
+**Supersedes** the in-extension draft (p6-1 reverted). The substrate core stays **general** — no persona/chat/JWT code in the pgrx extension.
 
 ---
 
-## Binding question
+## The architecture call (revises ratified Q2)
 
-What does pg-ai-stewards need so that a substrate-hosted persona can **authenticate into an ai-chattermax room and appear in the roster** — with its credential never in model context, its identity owned substrate-side — without yet building the turn loop?
+Persona identity + credential minting + room handshake + turn-loop orchestration do **not** belong in the core substrate extension — that would couple a general-purpose substrate to one app most installs never run. They live in an **optional Go sidecar, `cmd/persona-host`**, exactly like the coder lives in `cmd/coder-mcp` (heavy/app-specific logic in a Go sidecar; only thin orchestration in extension SQL).
 
-## The four ratified decisions (2026-06-04)
+- **Substrate core (unchanged, general):** offers *cognition per turn* via its existing dispatch (`consult_subagent` / a work_item). It never knows "persona," "room," or "JWT."
+- **`cmd/persona-host` sidecar (Go, optional):** the persona registry, EdDSA keypair + JWT minting, the room handshake, and (in #7) the turn loop. A general `pg-ai-stewards` install simply doesn't run this binary.
+- **ai-chattermax (the room):** verifies persona tokens with the host's public key.
 
-1. **Runtime: long-lived process + work_item per turn.** When a persona joins a room, the substrate runs a persistent (bgworker-managed) WebSocket client that holds room state and self-paces; each *spoken* turn (item #7) dispatches a `work_item` for the LLM call — reusing the dispatch/cost/model machinery. **#6 must make the schema support this; #6 does not build the loop.**
-2. **Token: signed token + room verifies with the substrate's public key.** The substrate signs a short-TTL persona token (EdDSA/Ed25519 JWT); ai-chattermax verifies the signature locally with the substrate's **public** key — no per-connect callback. Revocation via short TTL + refresh (+ an optional revocation list later). The **private signing key never enters model context** (same class as the coder's GitHub token).
-3. **Model/tools: inherit from agent_family, per-persona override.** A persona defaults to its backing `agent_family`'s model + tools, with optional per-persona overrides (DM-assistant → stronger model + lore-lookup; NPC → cheap).
-4. **Scope: schema + handshake + sub-token + seed the two D&D personas, NO turn loop.** Delivers a persona that can authenticate and show up; posting is #7.
+**One host serves MANY personas** (Michael, 2026-06-04) — not one process per persona. One parent credential, one signing key, N persona sub-tokens. The DM-assistant and NPC-ally are two registry rows in one `cmd/persona-host` process; a third persona is a row, not a deployment.
 
-## Schema
+"pg-ai-stewards **hosts** personas" (Q2's spirit) still holds — the sidecar is a pg-ai-stewards-side service. What changed: **sidecar, not core extension.** Bonus: EdDSA+JWT in Go is stdlib (`crypto/ed25519` + `golang-jwt`), so this needs **no pgrx Rust crate and no extension rebuild.**
+
+## State — `persona_host` schema (sidecar-managed)
+
+Personas live in their **own `persona_host` schema** in the substrate's Postgres (Michael's choice), created + migrated **by the sidecar** (not the extension's migration set), so a core install never sees it.
 
 ```sql
--- A persona: substrate-owned identity backed by an agent_family.
-CREATE TABLE IF NOT EXISTS stewards.personas (
-  id            uuid PRIMARY KEY DEFAULT gen_random_uuid(),
-  slug          text UNIQUE NOT NULL,          -- 'dm-assistant', 'npc-ally'
-  display_name  text NOT NULL,                 -- room-facing name
-  avatar_url    text,                          -- room-facing avatar (optional)
-  agent_family  text NOT NULL,                 -- backing agent definition
-  persona_prompt text,                         -- system-prompt overlay on the family prompt
-  model_override text,                         -- NULL = inherit family model; else pin
-  tools_override jsonb,                        -- NULL = inherit family tools; else subset/superset
-  pacing        jsonb NOT NULL DEFAULT '{}',   -- self-pace cfg: min_seconds_between_turns, quiet_period_budget…
-  status        text NOT NULL DEFAULT 'active',-- active | disabled
-  created_at    timestamptz NOT NULL DEFAULT now(),
-  updated_at    timestamptz NOT NULL DEFAULT now()
-);
+CREATE SCHEMA IF NOT EXISTS persona_host;
 
--- Persona ↔ room membership (one persona may join many rooms).
-CREATE TABLE IF NOT EXISTS stewards.persona_rooms (
-  persona_id   uuid NOT NULL REFERENCES stewards.personas(id) ON DELETE CASCADE,
-  room_id      text NOT NULL,                  -- ai-chattermax room identifier
-  joined_at    timestamptz NOT NULL DEFAULT now(),
-  last_turn_at timestamptz,
-  PRIMARY KEY (persona_id, room_id)
+CREATE TABLE IF NOT EXISTS persona_host.personas (
+    id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+    slug text UNIQUE NOT NULL, display_name text NOT NULL, avatar_url text,
+    agent_family text NOT NULL,            -- backing substrate agent (resolved at dispatch)
+    persona_prompt text,
+    model_override text, tools_override jsonb,   -- NULL = inherit agent_family
+    pacing jsonb NOT NULL DEFAULT '{}'::jsonb,
+    status text NOT NULL DEFAULT 'active',
+    created_at timestamptz NOT NULL DEFAULT now(), updated_at timestamptz NOT NULL DEFAULT now()
 );
-
--- Issuance audit (signed tokens are stateless to verify; this is for audit/revocation).
-CREATE TABLE IF NOT EXISTS stewards.persona_token_issuance (
-  jti         uuid PRIMARY KEY DEFAULT gen_random_uuid(),
-  persona_id  uuid NOT NULL REFERENCES stewards.personas(id),
-  room_id     text NOT NULL,
-  issued_at   timestamptz NOT NULL DEFAULT now(),
-  expires_at  timestamptz NOT NULL,
-  revoked_at  timestamptz
+CREATE TABLE IF NOT EXISTS persona_host.persona_rooms (
+    persona_id uuid NOT NULL REFERENCES persona_host.personas(id) ON DELETE CASCADE,
+    room_id text NOT NULL, joined_at timestamptz NOT NULL DEFAULT now(), last_turn_at timestamptz,
+    PRIMARY KEY (persona_id, room_id)
+);
+CREATE TABLE IF NOT EXISTS persona_host.token_issuance (
+    jti uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+    persona_id uuid NOT NULL REFERENCES persona_host.personas(id),
+    room_id text NOT NULL, issued_at timestamptz NOT NULL DEFAULT now(),
+    expires_at timestamptz NOT NULL, revoked_at timestamptz
+);
+CREATE TABLE IF NOT EXISTS persona_host.signing_key (   -- one row; private key never logged/exported
+    id int PRIMARY KEY DEFAULT 1 CHECK (id = 1),
+    private_key_pem text NOT NULL, public_key_pem text NOT NULL, created_at timestamptz NOT NULL DEFAULT now()
 );
 ```
 
-The **signing keypair** lives in a substrate secret store (a config row or the existing secrets mechanism), generated once. The **private key is never rendered into any dispatch prompt** — minting is a SQL/Rust path the bgworker calls; the persona's LLM context never sees the key or the raw token.
+## The token contract (ai-chattermax verifies this — unchanged)
 
-## The token contract (the interface AX3's room consumes)
+- **Format:** JWT, `alg: EdDSA` (Ed25519). **Claims:** `iss="pg-ai-stewards"`, `sub=<persona_id>`, `slug`, `name`, `avatar`, `room`, `iat`, `exp` (~15 min), `jti`.
+- **Room-side verify:** EdDSA signature against the host's published public key (`STEWARDS_PERSONA_PUBKEY`), check `exp`/`iss`/`room`. No callback.
+- The **private key never leaves the sidecar** (stored in `persona_host.signing_key`, never logged, never in any model context — same class as the coder's GitHub token).
 
-This is the seam between the two halves of the split — the coder's room (AX3) must implement the verify side, so the contract is fixed here:
+## Build sub-steps (`cmd/persona-host`, gated commits, smoke each)
 
-- **Format:** JWT, `alg: EdDSA` (Ed25519).
-- **Claims:** `iss="pg-ai-stewards"`, `sub=<persona_id>`, `slug`, `name`, `avatar`, `room=<room_id>`, `iat`, `exp` (TTL ~15 min), `jti`.
-- **Verification (room side):** verify the EdDSA signature with the substrate's published public key (room config/env, e.g. `STEWARDS_PERSONA_PUBKEY`); check `exp`, `iss`, and that `room` matches the joined room. No callback to the substrate.
-- **Refresh:** the persona-runtime re-mints before `exp` (handled in the runtime, #7-adjacent — for #6 the mint + a single valid token is enough).
+- **PS.1 — sidecar skeleton + `persona_host` schema migration.** A Go `cmd/persona-host` (HTTP + MCP-or-CLI surface), embedded SQL migration that creates the schema on boot, DB conn to the substrate Postgres.
+- **PS.2 — signing key.** Generate the Ed25519 keypair on first boot if absent, persist to `persona_host.signing_key`; a `GET /pubkey` (or env export) so ai-chattermax can be configured.
+- **PS.3 — `MintToken(personaSlug, roomID, ttl)`.** Go `golang-jwt` EdDSA sign; record `token_issuance`. Private key never logged.
+- **PS.4 — persona registry + seed.** CRUD over `persona_host.personas`; seed `dm-assistant` + `npc-ally` referencing existing agent_families.
+- **PS.5 — handshake/join.** `JoinRoom(persona, room)` → mint + upsert `persona_rooms`; document the connection contract for ai-chattermax (verify side).
+- **PS.6 — smoke + security check.** Mint for `dm-assistant`; verify against the exported pubkey (inverse-hypothesis: a wrong-key signature must FAIL); grep to confirm the private key + raw token never hit logs.
 
-## Build sub-steps (C–F cadence, gated commits, smoke before each)
+## Convergence (#7, #12)
+After #6 the sidecar can mint + a persona can authenticate into a room and appear. **#7** adds the long-lived turn loop: per (persona, room) connection, self-pace within the room ceiling, and on each turn **dispatch to the substrate** (`consult_subagent`/work_item) for the message — cost-tracked, context-engine'd, model/tools per the persona. **#12** seeds the D&D session.
 
-- **P6.1 — schema.** The three tables above (idempotent SQL migration; live-apply via `docker cp + psql -f`).
-- **P6.2 — signing key infra.** Generate/store the Ed25519 keypair substrate-side; a `persona_signing_pubkey()` export function (so the pubkey can be handed to ai-chattermax config). Private key never leaves SQL/Rust.
-- **P6.3 — `mint_persona_token(persona_slug, room_id, ttl)`.** Builds the JWT, signs with the private key, records `persona_token_issuance`. Returns the compact token. (Rust pg_extern — needs the bump-extension hook; EdDSA via a Rust crate.)
-- **P6.4 — seed the two D&D personas.** `dm-assistant` and `npc-ally` rows referencing existing agent_families (model overrides per taste; tools per the D&D MVP).
-- **P6.5 — handshake surface.** `persona_join(persona_slug, room_id)` → mints a token + upserts `persona_rooms`. Document the connection contract (above) for AX3.
-- **P6.6 — smoke + the security check.** Mint a token for `dm-assistant` in a test room; verify it validates against the exported pubkey with a standalone EdDSA check; **confirm the private key and the raw token never appear in any dispatch prompt** (grep the dispatch path). Inverse-hypothesis: a token signed with a wrong key must FAIL verification.
-
-## Convergence with the coder's half (#7, #12)
-
-After #6: the coder's room (AX3) can verify persona tokens and show personas in the roster. **#7** (the turn loop) wires the long-lived persona-runtime: hold the WS connection, self-pace within the room ceiling, and on each turn dispatch a `pipeline_family='persona_turn'` work_item (room context → message), cost-tracked, model/tools per the persona. **#12** seeds the actual D&D session. Those are separate ratified work-items.
-
-## Open items pinned at work-time
-
-- EdDSA Rust crate choice (e.g. `ed25519-dalek` / `jsonwebtoken` with EdDSA) + key storage location (config table vs. existing secret mechanism).
-- `pacing` jsonb exact keys (defer detail to #7, but reserve the field now).
-- `tools_override` shape (subset of agent_family tools vs. full re-spec) — lean: an allow-list of tool names, NULL = inherit.
-- Revocation list: TTL-only for MVP; add a check against `revoked_at` only if needed.
+## Open (pin at work-time)
+- Sidecar surface: HTTP API vs an MCP server vs CLI (lean HTTP for ai-chattermax + a thin admin CLI).
+- DB creds for the sidecar (a scoped role for `persona_host`, not the superuser).
+- Where `cmd/persona-host` deploys (its own container next to the substrate; ai-chattermax verifies via the pubkey env).
 
 ---
 
-## Cycle framing (for the book audit)
+## Cycle framing (book)
+**Stewardship (Step 3) made literal for non-human agents, and kept at the right layer.** A persona is a scoped, credentialed identity minted from a parent authority, acting only as itself — and the *machinery* for that lives in an optional sidecar, not bolted onto the general tool. The architecture decision is itself the lesson: delegation means giving each concern its own stewardship boundary; app-specific power doesn't get to colonize the shared substrate. Feeds Part Two ch. 07 (delegation as stewardship).
 
-This is **Step 3 (Stewardship) made literal for non-human agents**: a persona is a scoped, credentialed identity minted from a parent authority, able to act only as itself, in its rooms, with a credential it never sees in full. The "sub-token minted from one parent key, never in model context" is the delegation pattern (the coder's GitHub token) generalized — *the steward holds the keys; the agent is handed only what its role requires.* Feeds the delegation chapter (Part Two ch. 07).
-
-*Ratified + spec written 2026-06-04. My build lane (AX2). The coder builds the room that consumes this contract (AX3).*
+*Re-architected 2026-06-04. Build: `cmd/persona-host` (me).*
