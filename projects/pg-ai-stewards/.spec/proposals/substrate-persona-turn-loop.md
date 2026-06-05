@@ -1,6 +1,6 @@
 # Substrate proposal — Persona Turn Loop (ai-chattermax #7)
 
-**Status:** v1 trigger scope **RATIFIED** (Michael, 2026-06-04) — triggers **#1 Reactive + #2 Addressed** ship in v1; **#3/#4/#5 recorded for v2+**. Cognition model ratified. One v1 build decision still open (runaway scope — see below).
+**Status:** v1 **FULLY RATIFIED** (Michael, 2026-06-04) — triggers **#1 Reactive + #2 Addressed**, cognition = persistent session per (persona,room), runaway scope = **humans-only reactions**. **#3/#4/#5 + persona↔persona deferred to v2+.** Build-ready.
 **Parent:** `substrate-persona-concept.md` (#6, BUILT — `cmd/persona-host`). Build lane: mine.
 **Principle (Michael):** ship the simplest trigger set, get quick real results, let the rest earn their way in from what we learn.
 
@@ -35,12 +35,9 @@ A per-persona **pacing profile** (response delay, talkativeness, quiet-period be
 - **#2 Addressed** = parse `@slug` / `@display-name` in the body → strong trigger. **#1 Reactive** = any other message → judgment.
 - v1 e2e test: run ai-chattermax + persona-host locally, join `dm-assistant` to a room, post as a human, watch it respond in character and appear attributed (AX3-2). Then point at `chat.ibeco.me`.
 
-## ★ Open for v1 build (the one decision left to ratify)
+## Runaway scope — RATIFIED: humans-only (v1)
 
-**Persona↔persona reactions / runaway scope.** The D&D magic is two personas reacting to each other AND the human — but two AIs can ping-pong and burn budget ("token runaway" is the design's own Q3/Q5 fear). v1 options:
-- **(a)** Personas react to humans AND each other, with the room ceiling + a minimum per-persona cooldown as the backstop. (Most alive; needs the cooldown to be safe.)
-- **(b)** v1 personas react to **humans only** (ignore other personas); persona↔persona reactions wait for v2 with proper arbitration. (Safest; less lively, but proves the loop with zero runaway risk.)
-- **(c)** React to each other but cap a persona↔persona exchange to **N back-and-forths** without a human turn, then go quiet until a human speaks. (Middle — lively but bounded.)
+**v1 personas react to HUMAN messages only** (Michael, 2026-06-04) — they ignore other personas' messages entirely. Zero ping-pong/runaway risk, simplest code (no exchange counting), fastest to a working test. The D&D magic of personas riffing off **each other** is a clean **v2** add with proper arbitration. So v1 trigger logic: incoming message → if sender is a persona, ignore; if a human, judge (#1) — and an @mention by a human (#2) is a strong "consider."
 
 ## v2+ (recorded, deferred — design later)
 
