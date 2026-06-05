@@ -88,6 +88,18 @@ func main() {
 	}
 	log.Printf("default personas seeded")
 
+	// #7: dial any configured personas into their rooms and run the turn loop.
+	// CHATTERMAX_WS_BASE=ws://host:port + PERSONA_AUTOJOIN="slug@room,slug@room".
+	if wsBase := os.Getenv("CHATTERMAX_WS_BASE"); wsBase != "" {
+		spec := os.Getenv("PERSONA_AUTOJOIN")
+		if err := StartAutojoin(ctx, store, NewCognition(store), wsBase, spec); err != nil {
+			log.Fatalf("autojoin: %v", err)
+		}
+		if spec != "" {
+			log.Printf("persona autojoin started (base=%s, personas=%s)", wsBase, spec)
+		}
+	}
+
 	srv := NewServer(store, key, NewMinter(store, key))
 	httpSrv := &http.Server{Addr: *addr, Handler: srv.Handler()}
 	go func() {

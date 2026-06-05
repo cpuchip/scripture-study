@@ -18,6 +18,13 @@ type Persona struct {
 	DisplayName string
 	AvatarURL   string
 	AgentFamily string
+	// Prompt is the persona's character brief — injected into the turn's
+	// binding question so the substrate's generic persona-turn pipeline speaks
+	// as THIS persona (#7). Empty for an un-charactered persona.
+	Prompt string
+	// ModelOverride pins a model for this persona's turns; "" inherits the
+	// persona-turn pipeline default. Carried now, honored at dispatch in v2.
+	ModelOverride string
 }
 
 //go:embed schema.sql
@@ -105,15 +112,18 @@ func (s *Store) selectSigningKey(ctx context.Context) (privPEM, pubPEM string, e
 func (s *Store) UpsertPersona(ctx context.Context, p Persona) (string, error) {
 	var id string
 	err := s.pool.QueryRow(ctx, `
-		INSERT INTO persona_host.personas (slug, display_name, avatar_url, agent_family)
-		VALUES ($1, $2, $3, $4)
+		INSERT INTO persona_host.personas (slug, display_name, avatar_url, agent_family, persona_prompt, model_override)
+		VALUES ($1, $2, $3, $4, $5, $6)
 		ON CONFLICT (slug) DO UPDATE SET
-			display_name = EXCLUDED.display_name,
-			avatar_url   = EXCLUDED.avatar_url,
-			agent_family = EXCLUDED.agent_family,
-			updated_at   = now()
+			display_name   = EXCLUDED.display_name,
+			avatar_url     = EXCLUDED.avatar_url,
+			agent_family   = EXCLUDED.agent_family,
+			persona_prompt = EXCLUDED.persona_prompt,
+			model_override = EXCLUDED.model_override,
+			updated_at     = now()
 		RETURNING id`,
-		p.Slug, p.DisplayName, nullIfEmpty(p.AvatarURL), p.AgentFamily).Scan(&id)
+		p.Slug, p.DisplayName, nullIfEmpty(p.AvatarURL), p.AgentFamily,
+		nullIfEmpty(p.Prompt), nullIfEmpty(p.ModelOverride)).Scan(&id)
 	if err != nil {
 		return "", fmt.Errorf("upsert persona %q: %w", p.Slug, err)
 	}
@@ -123,24 +133,24 @@ func (s *Store) UpsertPersona(ctx context.Context, p Persona) (string, error) {
 // PersonaBySlug loads a persona by its slug. Returns pgx.ErrNoRows if absent.
 func (s *Store) PersonaBySlug(ctx context.Context, slug string) (*Persona, error) {
 	var p Persona
-	var avatar *string
+	var avatar, prompt, modelOverride *string
 	err := s.pool.QueryRow(ctx, `
-		SELECT id, slug, display_name, avatar_url, agent_family
+		SELECT id, slug, display_name, avatar_url, agent_family, persona_prompt, model_override
 		FROM persona_host.personas WHERE slug = $1`, slug).
-		Scan(&p.ID, &p.Slug, &p.DisplayName, &avatar, &p.AgentFamily)
+		Scan(&p.ID, &p.Slug, &p.DisplayName, &avatar, &p.AgentFamily, &prompt, &modelOverride)
 	if err != nil {
 		return nil, err
 	}
-	if avatar != nil {
-		p.AvatarURL = *avatar
-	}
+	derefInto(&p.AvatarURL, avatar)
+	derefInto(&p.Prompt, prompt)
+	derefInto(&p.ModelOverride, modelOverride)
 	return &p, nil
 }
 
 // ListPersonas returns active personas, slug-ordered.
 func (s *Store) ListPersonas(ctx context.Context) ([]Persona, error) {
 	rows, err := s.pool.Query(ctx, `
-		SELECT id, slug, display_name, avatar_url, agent_family
+		SELECT id, slug, display_name, avatar_url, agent_family, persona_prompt, model_override
 		FROM persona_host.personas
 		WHERE status = 'active'
 		ORDER BY slug`)
@@ -151,13 +161,13 @@ func (s *Store) ListPersonas(ctx context.Context) ([]Persona, error) {
 	var out []Persona
 	for rows.Next() {
 		var p Persona
-		var avatar *string
-		if err := rows.Scan(&p.ID, &p.Slug, &p.DisplayName, &avatar, &p.AgentFamily); err != nil {
+		var avatar, prompt, modelOverride *string
+		if err := rows.Scan(&p.ID, &p.Slug, &p.DisplayName, &avatar, &p.AgentFamily, &prompt, &modelOverride); err != nil {
 			return nil, err
 		}
-		if avatar != nil {
-			p.AvatarURL = *avatar
-		}
+		derefInto(&p.AvatarURL, avatar)
+		derefInto(&p.Prompt, prompt)
+		derefInto(&p.ModelOverride, modelOverride)
 		out = append(out, p)
 	}
 	return out, rows.Err()
@@ -204,6 +214,14 @@ func nullIfEmpty(s string) *string {
 		return nil
 	}
 	return &s
+}
+
+// derefInto copies a nullable text column into dst when present, leaving dst
+// untouched (its zero value) on SQL NULL.
+func derefInto(dst *string, src *string) {
+	if src != nil {
+		*dst = *src
+	}
 }
 
 // tableNames returns the persona_host tables present, sorted — used by the smoke
