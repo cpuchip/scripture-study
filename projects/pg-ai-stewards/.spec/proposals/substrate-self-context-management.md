@@ -78,6 +78,24 @@ The agent can't manage what it can't measure. The signal is the trigger; the lev
 
 Keep the existing automatic engram compaction as the **floor**: it still fires at a hard pressure threshold regardless of agent action, so the context never overflows and the agent is never *forced* to manage. The agent's levers are the **ceiling** — smarter-than-default folding the automatic pass can't know to do. `pinned` messages are exempt from the automatic pass. This is the safety property: if the agent does nothing, behavior is exactly today's.
 
+## Prior art & validation (web search, 2026-06-04)
+
+This design is not speculative — it sits squarely on a validated lineage. Searched the field; three findings sharpen the build.
+
+**1. Anthropic already shipped the primitives — but mostly *automatic*, not *agent-driven*.** The Claude Developer Platform offers three first-party context tools ([context-management](https://www.anthropic.com/news/context-management), [cookbook](https://platform.claude.com/cookbook/tool-use-context-engineering-context-engineering-tools)):
+
+| Primitive | Operation | Trigger | Our analogue |
+|---|---|---|---|
+| **Compaction** (`compact_20260112`) | whole-transcript summary, restart | server, token threshold | our automatic floor (Batch K/L) |
+| **Tool-result clearing** (`clear_tool_uses_20250919`) | *sub-transcript* — drop old re-fetchable tool payloads, keep the call record + placeholder | server, token threshold | **we have no equivalent — see implication below** |
+| **Memory tool** (`memory_20250818`) | model writes/reads files outside the window | **the model (tool call)** | engram store / brain |
+
+The eval numbers justify the track: memory + context-editing **+39%** on agentic search; context-editing alone **+29%**; a 100-turn web-search run cut tokens **84%**. The gap our proposal fills is exactly the column that reads "server, token threshold": Anthropic's compaction/clearing fire *automatically* — the only *agent-decided* lever they ship is the memory tool. **Our `context_compress/mute/pin` with addressable handles is the agent-driven curation layer they don't expose.** That's the bet, and it's a real gap, not a reinvention.
+
+**2. MemGPT/Letta is the academic root — and validates two of our specifics.** [MemGPT (2023)](https://arxiv.org/abs/2310.08560) framed "LLM as an OS" with virtual context paging, and its mechanism includes a **memory-pressure warning at 70% / 100%** that prompts the model to evict — i.e. our §5 pressure signal is a named, tested pattern, not a hunch. [Letta's memory blocks](https://www.letta.com/blog/memory-blocks) are addressable, size-capped, and either agent-editable **or developer-locked `read_only`** — and that read-only block *is* Michael's circuit breaker (§4): a slot the model structurally cannot toggle. The API's `exclude_tools` (never-clear list) is the same primitive at the platform layer. **Our lock + pin are both validated prior art.**
+
+**3. Implication — split the cheap lever from the expensive one.** The search surfaced a distinction our spec collapses: **tool-result clearing (sub-transcript, surgical, safe — drop a re-fetchable file-read payload, keep the record) is a different and *cheaper* operation than message compaction (whole-transcript, lossy).** On a `code-pr` run the bloat is dominated by exactly this — large file reads and verify dumps the agent already processed. So add a fourth lever, `context_clear_tool_result(handle)`, that drops a stale tool *result* while keeping the `tool_use` record (the agent can always re-read the file). It's the safest, highest-yield reclaim and should arguably be the *default automatic* behavior of the floor, with the agent lever for the cases the threshold misses. (New Open Q9.)
+
 ## Where it plugs in
 
 | Piece | Layer | Rebuild? |
@@ -113,6 +131,7 @@ This deepens three steps of the cycle and is worth a note in the blueprint audit
 6. **Enablement** — per-pipeline/stage opt-in (like the critic) or always-on above a context-length threshold?
 7. **Pin lifetime** — does an agent's pin survive across pipeline stages, or reset per stage (each stage a fresh context)?
 8. **Does the lock apply to `pin` too,** or only to the fold/mute/expand toggles? (Pinning is arguably not thrash-prone; leaning lock-exempt for pin.)
+9. **Tool-result clearing as a distinct lever** (from Prior Art #3) — add `context_clear_tool_result(handle)` separate from `context_compress`, and make stale-tool-result clearing the *automatic floor's* default (cheapest, safest reclaim, keeps the call record)? Leaning yes — this is the highest-yield, lowest-risk piece and Anthropic ships it server-side as `clear_tool_uses_20250919`.
 
 ---
 
