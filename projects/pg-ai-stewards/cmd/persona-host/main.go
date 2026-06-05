@@ -100,6 +100,18 @@ func main() {
 		}
 	}
 
+	// Platform gateway path (ai-chattermax platform): CHATTERMAX_GATEWAY +
+	// CHATTERMAX_PERSONAS="localSlug=key@roomId,...".
+	if gw := os.Getenv("CHATTERMAX_GATEWAY"); gw != "" {
+		spec := os.Getenv("CHATTERMAX_PERSONAS")
+		if err := StartGatewayPersonas(ctx, store, NewCognition(store), gw, spec); err != nil {
+			log.Fatalf("gateway personas: %v", err)
+		}
+		if spec != "" {
+			log.Printf("gateway personas started (base=%s)", gw)
+		}
+	}
+
 	srv := NewServer(store, key, NewMinter(store, key))
 	httpSrv := &http.Server{Addr: *addr, Handler: srv.Handler()}
 	go func() {
