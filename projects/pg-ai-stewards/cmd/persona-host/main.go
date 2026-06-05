@@ -133,6 +133,45 @@ func runSmoke(dsn string) error {
 	}
 	fmt.Printf("persona-host smoke: signing key stable + parseable (ed25519, fingerprint=%s)\n", k1.Fingerprint())
 
+	// PS.3: mint a real DB-backed token and verify it round-trips; an
+	// independent key must NOT verify it (inverse hypothesis).
+	pid, err := store.UpsertPersona(ctx, Persona{Slug: "smoke-persona", DisplayName: "Smoke Persona", AgentFamily: "study"})
+	if err != nil {
+		return fmt.Errorf("upsert smoke persona: %w", err)
+	}
+	p, err := store.PersonaBySlug(ctx, "smoke-persona")
+	if err != nil {
+		return fmt.Errorf("load smoke persona: %w", err)
+	}
+	if p.ID != pid {
+		return fmt.Errorf("persona id mismatch: upsert=%s select=%s", pid, p.ID)
+	}
+	tok, err := NewMinter(store, k1).MintToken(ctx, p, "smoke-room", 0)
+	if err != nil {
+		return fmt.Errorf("mint token: %w", err)
+	}
+	claims, err := VerifyToken(tok, k1.Pub)
+	if err != nil {
+		return fmt.Errorf("verify minted token: %w", err)
+	}
+	if claims.Subject != p.ID || claims.Room != "smoke-room" || claims.ID == "" {
+		return fmt.Errorf("unexpected claims: sub=%s room=%s jti=%s", claims.Subject, claims.Room, claims.ID)
+	}
+	// Inverse hypothesis: an independent key must NOT verify this token.
+	_, otherPubPEM, gerr := generateKeyPEM()
+	if gerr != nil {
+		return fmt.Errorf("generate inverse key: %w", gerr)
+	}
+	otherPub, perr := parsePublicPEM(otherPubPEM)
+	if perr != nil {
+		return fmt.Errorf("parse inverse key: %w", perr)
+	}
+	if _, verr := VerifyToken(tok, otherPub); verr == nil {
+		return errors.New("a token verified against the WRONG key — signature check is broken")
+	}
+	// Never print tok itself — only the safe claim summary.
+	fmt.Printf("persona-host smoke: minted+verified token (sub=%s room=%s jti=%s); wrong-key correctly rejected\n", claims.Subject, claims.Room, claims.ID)
+
 	fmt.Println("persona-host smoke: PASS")
 	return nil
 }

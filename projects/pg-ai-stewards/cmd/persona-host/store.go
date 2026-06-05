@@ -5,10 +5,20 @@ import (
 	_ "embed"
 	"errors"
 	"fmt"
+	"time"
 
 	"github.com/jackc/pgx/v5"
 	"github.com/jackc/pgx/v5/pgxpool"
 )
+
+// Persona is a registered chat identity the sidecar can mint tokens for.
+type Persona struct {
+	ID          string // uuid
+	Slug        string
+	DisplayName string
+	AvatarURL   string
+	AgentFamily string
+}
 
 //go:embed schema.sql
 var schemaSQL string
@@ -89,6 +99,63 @@ func (s *Store) selectSigningKey(ctx context.Context) (privPEM, pubPEM string, e
 		`SELECT private_key_pem, public_key_pem FROM persona_host.signing_key WHERE id = 1`).
 		Scan(&privPEM, &pubPEM)
 	return privPEM, pubPEM, err
+}
+
+// UpsertPersona inserts or updates a persona by slug, returning its id.
+func (s *Store) UpsertPersona(ctx context.Context, p Persona) (string, error) {
+	var id string
+	err := s.pool.QueryRow(ctx, `
+		INSERT INTO persona_host.personas (slug, display_name, avatar_url, agent_family)
+		VALUES ($1, $2, $3, $4)
+		ON CONFLICT (slug) DO UPDATE SET
+			display_name = EXCLUDED.display_name,
+			avatar_url   = EXCLUDED.avatar_url,
+			agent_family = EXCLUDED.agent_family,
+			updated_at   = now()
+		RETURNING id`,
+		p.Slug, p.DisplayName, nullIfEmpty(p.AvatarURL), p.AgentFamily).Scan(&id)
+	if err != nil {
+		return "", fmt.Errorf("upsert persona %q: %w", p.Slug, err)
+	}
+	return id, nil
+}
+
+// PersonaBySlug loads a persona by its slug. Returns pgx.ErrNoRows if absent.
+func (s *Store) PersonaBySlug(ctx context.Context, slug string) (*Persona, error) {
+	var p Persona
+	var avatar *string
+	err := s.pool.QueryRow(ctx, `
+		SELECT id, slug, display_name, avatar_url, agent_family
+		FROM persona_host.personas WHERE slug = $1`, slug).
+		Scan(&p.ID, &p.Slug, &p.DisplayName, &avatar, &p.AgentFamily)
+	if err != nil {
+		return nil, err
+	}
+	if avatar != nil {
+		p.AvatarURL = *avatar
+	}
+	return &p, nil
+}
+
+// RecordIssuance inserts a token_issuance row (the DB mints the jti) and returns
+// it. The token itself is never stored — only its scope + lifetime.
+func (s *Store) RecordIssuance(ctx context.Context, personaID, roomID string, expiresAt time.Time) (string, error) {
+	var jti string
+	err := s.pool.QueryRow(ctx, `
+		INSERT INTO persona_host.token_issuance (persona_id, room_id, expires_at)
+		VALUES ($1, $2, $3) RETURNING jti`,
+		personaID, roomID, expiresAt).Scan(&jti)
+	if err != nil {
+		return "", fmt.Errorf("record issuance: %w", err)
+	}
+	return jti, nil
+}
+
+func nullIfEmpty(s string) *string {
+	if s == "" {
+		return nil
+	}
+	return &s
 }
 
 // tableNames returns the persona_host tables present, sorted — used by the smoke
