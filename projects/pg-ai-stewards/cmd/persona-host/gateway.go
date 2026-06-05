@@ -208,7 +208,7 @@ func (gc *GatewayConn) takeTurn(ctx context.Context, channel string, cs *channel
 		}
 		bq := buildTurnZeroFraming(gc.persona, label, cs.recent, trigger, addressed)
 		var sess string
-		sess, answer, err = gc.cog.SpawnTurn(ctx, gc.persona.Slug+"-"+short(channel), bq)
+		sess, answer, err = gc.cog.SpawnTurn(ctx, gc.persona.Pipeline, gc.persona.Slug+"-"+short(channel), bq)
 		if err != nil {
 			return err
 		}

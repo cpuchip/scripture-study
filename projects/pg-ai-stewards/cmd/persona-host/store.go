@@ -25,6 +25,10 @@ type Persona struct {
 	// ModelOverride pins a model for this persona's turns; "" inherits the
 	// persona-turn pipeline default. Carried now, honored at dispatch in v2.
 	ModelOverride string
+	// Pipeline is the substrate pipeline that drives this persona's turns —
+	// 'persona-turn' (default, kimi/opencode_go), 'persona-turn-lmstudio',
+	// 'persona-turn-gemini', or a tool-using variant. Determines model+tools.
+	Pipeline string
 }
 
 //go:embed schema.sql
@@ -112,18 +116,19 @@ func (s *Store) selectSigningKey(ctx context.Context) (privPEM, pubPEM string, e
 func (s *Store) UpsertPersona(ctx context.Context, p Persona) (string, error) {
 	var id string
 	err := s.pool.QueryRow(ctx, `
-		INSERT INTO persona_host.personas (slug, display_name, avatar_url, agent_family, persona_prompt, model_override)
-		VALUES ($1, $2, $3, $4, $5, $6)
+		INSERT INTO persona_host.personas (slug, display_name, avatar_url, agent_family, persona_prompt, model_override, pipeline)
+		VALUES ($1, $2, $3, $4, $5, $6, COALESCE($7, 'persona-turn'))
 		ON CONFLICT (slug) DO UPDATE SET
 			display_name   = EXCLUDED.display_name,
 			avatar_url     = EXCLUDED.avatar_url,
 			agent_family   = EXCLUDED.agent_family,
 			persona_prompt = EXCLUDED.persona_prompt,
 			model_override = EXCLUDED.model_override,
+			pipeline       = EXCLUDED.pipeline,
 			updated_at     = now()
 		RETURNING id`,
 		p.Slug, p.DisplayName, nullIfEmpty(p.AvatarURL), p.AgentFamily,
-		nullIfEmpty(p.Prompt), nullIfEmpty(p.ModelOverride)).Scan(&id)
+		nullIfEmpty(p.Prompt), nullIfEmpty(p.ModelOverride), nullIfEmpty(p.Pipeline)).Scan(&id)
 	if err != nil {
 		return "", fmt.Errorf("upsert persona %q: %w", p.Slug, err)
 	}
@@ -135,9 +140,9 @@ func (s *Store) PersonaBySlug(ctx context.Context, slug string) (*Persona, error
 	var p Persona
 	var avatar, prompt, modelOverride *string
 	err := s.pool.QueryRow(ctx, `
-		SELECT id, slug, display_name, avatar_url, agent_family, persona_prompt, model_override
+		SELECT id, slug, display_name, avatar_url, agent_family, persona_prompt, model_override, COALESCE(pipeline,'persona-turn')
 		FROM persona_host.personas WHERE slug = $1`, slug).
-		Scan(&p.ID, &p.Slug, &p.DisplayName, &avatar, &p.AgentFamily, &prompt, &modelOverride)
+		Scan(&p.ID, &p.Slug, &p.DisplayName, &avatar, &p.AgentFamily, &prompt, &modelOverride, &p.Pipeline)
 	if err != nil {
 		return nil, err
 	}
@@ -150,7 +155,7 @@ func (s *Store) PersonaBySlug(ctx context.Context, slug string) (*Persona, error
 // ListPersonas returns active personas, slug-ordered.
 func (s *Store) ListPersonas(ctx context.Context) ([]Persona, error) {
 	rows, err := s.pool.Query(ctx, `
-		SELECT id, slug, display_name, avatar_url, agent_family, persona_prompt, model_override
+		SELECT id, slug, display_name, avatar_url, agent_family, persona_prompt, model_override, COALESCE(pipeline,'persona-turn')
 		FROM persona_host.personas
 		WHERE status = 'active'
 		ORDER BY slug`)
@@ -162,7 +167,7 @@ func (s *Store) ListPersonas(ctx context.Context) ([]Persona, error) {
 	for rows.Next() {
 		var p Persona
 		var avatar, prompt, modelOverride *string
-		if err := rows.Scan(&p.ID, &p.Slug, &p.DisplayName, &avatar, &p.AgentFamily, &prompt, &modelOverride); err != nil {
+		if err := rows.Scan(&p.ID, &p.Slug, &p.DisplayName, &avatar, &p.AgentFamily, &prompt, &modelOverride, &p.Pipeline); err != nil {
 			return nil, err
 		}
 		derefInto(&p.AvatarURL, avatar)

@@ -57,16 +57,19 @@ func NewCognition(s *Store) *Cognition { return &Cognition{pool: s.pool} }
 // bindingQuestion carries the persona's character + room context + the trigger
 // message. Returns the persisted session id (for later ConsultTurn calls) and
 // the reply text (which may be SilenceToken).
-func (c *Cognition) SpawnTurn(ctx context.Context, slug, bindingQuestion string) (sessionID, answer string, err error) {
+func (c *Cognition) SpawnTurn(ctx context.Context, pipeline, slug, bindingQuestion string) (sessionID, answer string, err error) {
+	if pipeline == "" {
+		pipeline = "persona-turn"
+	}
 	// Per-attempt nonce so a re-established session (e.g. after a transient
 	// empty completion) never collides on work_items.slug.
 	uniqueSlug := fmt.Sprintf("%s-%d", slug, time.Now().UnixNano()%1_000_000_000)
 	var childID string
 	if err = c.pool.QueryRow(ctx,
-		`SELECT stewards.spawn_subagent_create('persona-turn', $1, NULL, $2, NULL, $3, 'persona')::text`,
-		bindingQuestion, personaCostCapMicro, spawnSlug(uniqueSlug),
+		`SELECT stewards.spawn_subagent_create($1, $2, NULL, $3, NULL, $4, 'persona')::text`,
+		pipeline, bindingQuestion, personaCostCapMicro, spawnSlug(uniqueSlug),
 	).Scan(&childID); err != nil {
-		return "", "", fmt.Errorf("spawn persona-turn: %w", err)
+		return "", "", fmt.Errorf("spawn %s: %w", pipeline, err)
 	}
 
 	deadline := time.Now().Add(spawnMaxWait)

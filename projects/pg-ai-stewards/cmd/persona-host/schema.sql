@@ -19,9 +19,14 @@ CREATE TABLE IF NOT EXISTS persona_host.personas (
     tools_override jsonb,
     pacing        jsonb NOT NULL DEFAULT '{}'::jsonb,
     status        text NOT NULL DEFAULT 'active',
+    -- which substrate pipeline drives this persona's turns (model + tools):
+    -- persona-turn (default, kimi), persona-turn-lmstudio, persona-turn-gemini, …
+    pipeline      text NOT NULL DEFAULT 'persona-turn',
     created_at    timestamptz NOT NULL DEFAULT now(),
     updated_at    timestamptz NOT NULL DEFAULT now()
 );
+-- Existing deployments: add the column if the table predates it.
+ALTER TABLE persona_host.personas ADD COLUMN IF NOT EXISTS pipeline text NOT NULL DEFAULT 'persona-turn';
 
 -- Which rooms a persona has joined (handshake state, PS.5).
 CREATE TABLE IF NOT EXISTS persona_host.persona_rooms (

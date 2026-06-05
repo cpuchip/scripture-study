@@ -167,7 +167,7 @@ func (rc *RoomConn) takeTurn(ctx context.Context, trigger wireMessage) error {
 	if rc.sessionID == "" {
 		bq := buildTurnZeroFraming(rc.persona, rc.room, rc.recent, trigger, addressed)
 		var sess string
-		sess, answer, err = rc.cog.SpawnTurn(ctx, rc.persona.Slug+"-"+rc.room, bq)
+		sess, answer, err = rc.cog.SpawnTurn(ctx, rc.persona.Pipeline, rc.persona.Slug+"-"+rc.room, bq)
 		if err != nil {
 			return err
 		}
