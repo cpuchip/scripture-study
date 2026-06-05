@@ -156,10 +156,39 @@ prompt *persists*). Instead:
   always recoverable.
 - Gated behind a per-agent **`allow_self_base_prompt` flag, OFF by default.**
 
-### 7.4 Build split (Mosiah 4:27 — don't run faster than strength)
+### 7.4 Working tags — batch context by task (Michael, 2026-06-05)
+
+Folding messages one handle at a time (§3) is fine for a stray item, but the real
+unit of work is a **task**: an agent grinds on a todo across many turns + tool calls,
+then moves on — and wants to sweep *all* of that out of context in one move. Tags
+make a whole task's footprint a single addressable thing.
+
+- **`context_set_tag(tag)`** — sets the agent's **working tag**. From then on, every
+  new message + tool call the agent produces is stamped with `tag` (a
+  `context_tags text[]` column on the message), until the agent sets a different tag
+  or calls `context_clear_tag()` (untagged work resumes). One active working tag at a
+  time; the current tag is echoed in the §5 pressure line.
+- **Batch levers (operate on every message bearing the tag, in one call):**
+  `context_fold_tag(tag)` / `context_mute_tag(tag)` / `context_expand_tag(tag)` /
+  `context_pin_tag(tag)`.
+- **The flow:** `set_tag("todo-3")` → do the work (everything auto-stamped) →
+  finish → `mute_tag("todo-3")` reclaims the whole task's tokens at once →
+  `set_tag("todo-4")` and start fresh. If todo-3 reopens, `expand_tag("todo-3")`
+  brings it all back (mute is a recoverable tombstone, §1).
+- **Interactions:** a tag batch op is **one** circuit-breaker event (§4) — it locks
+  the tagged set together for the cooldown, not each message separately, so a deliberate
+  task-sweep isn't penalized as thrash. `pin_tag` protects a whole task (e.g. the spec +
+  acceptance criteria for the item in flight) from the automatic floor (§6). Tags are
+  orthogonal to per-message state, so a single message can be both individually pinned
+  and part of a folded tag (pin wins — it's the stronger, voluntary signal).
+- **Auto-tagging is the key ergonomic:** the agent sets the tag *once* and keeps
+  working; it does NOT have to tag each message. That's what makes "fold the last task
+  away" a single cheap call instead of N.
+
+### 7.5 Build split (Mosiah 4:27 — don't run faster than strength)
 
 - **CT2 core (build first):** §§1–6 + §7.1 durable self-notes + §7.2 the self-notes
-  block. Safe, additive, high-value.
+  block + §7.4 working tags. Safe, additive, high-value.
 - **Separate, later, ratify-gated:** §7.3 base-prompt propose/ratify. Its own design +
   ratification pass; not bundled into CT2's first build.
 
