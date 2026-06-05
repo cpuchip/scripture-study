@@ -28,9 +28,12 @@ func TestMintAndVerifyRoundTrip(t *testing.T) {
 	m := &Minter{rec: fakeRec{jti: "test-jti-123"}, key: key, now: time.Now}
 	p := samplePersona()
 
-	tok, err := m.MintToken(context.Background(), p, "tavern", 15*time.Minute)
+	tok, exp, err := m.MintToken(context.Background(), p, "tavern", 15*time.Minute)
 	if err != nil {
 		t.Fatalf("mint: %v", err)
+	}
+	if exp.Before(time.Now()) {
+		t.Fatalf("expiry %v is already past", exp)
 	}
 
 	claims, err := VerifyToken(tok, key.Pub)
@@ -58,7 +61,7 @@ func TestVerifyRejectsWrongKey(t *testing.T) {
 	attacker := testKey(t)
 	m := &Minter{rec: fakeRec{jti: "j"}, key: signer, now: time.Now}
 
-	tok, err := m.MintToken(context.Background(), samplePersona(), "tavern", time.Minute)
+	tok, _, err := m.MintToken(context.Background(), samplePersona(), "tavern", time.Minute)
 	if err != nil {
 		t.Fatalf("mint: %v", err)
 	}
@@ -74,7 +77,7 @@ func TestVerifyRejectsExpired(t *testing.T) {
 	past := func() time.Time { return time.Now().Add(-time.Hour) }
 	m := &Minter{rec: fakeRec{jti: "j"}, key: key, now: past}
 
-	tok, err := m.MintToken(context.Background(), samplePersona(), "tavern", time.Minute)
+	tok, _, err := m.MintToken(context.Background(), samplePersona(), "tavern", time.Minute)
 	if err != nil {
 		t.Fatalf("mint: %v", err)
 	}

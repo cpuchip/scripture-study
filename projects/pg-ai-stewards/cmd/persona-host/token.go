@@ -44,19 +44,20 @@ func NewMinter(rec issuanceRecorder, key *KeyMaterial) *Minter {
 	return &Minter{rec: rec, key: key, now: time.Now}
 }
 
-// MintToken issues a short-lived EdDSA JWT for (persona, room). It records the
-// issuance (jti + scope + expiry) FIRST, then signs. The private key is used
-// only to sign — never logged, never returned.
-func (m *Minter) MintToken(ctx context.Context, p *Persona, room string, ttl time.Duration) (string, error) {
+// MintToken issues a short-lived EdDSA JWT for (persona, room), returning the
+// token and its expiry. It records the issuance (jti + scope + expiry) FIRST,
+// then signs. The private key is used only to sign — never logged, never
+// returned.
+func (m *Minter) MintToken(ctx context.Context, p *Persona, room string, ttl time.Duration) (token string, exp time.Time, err error) {
 	if ttl <= 0 {
 		ttl = DefaultTokenTTL
 	}
 	now := m.now()
-	exp := now.Add(ttl)
+	exp = now.Add(ttl)
 
 	jti, err := m.rec.RecordIssuance(ctx, p.ID, room, exp)
 	if err != nil {
-		return "", fmt.Errorf("record issuance: %w", err)
+		return "", time.Time{}, fmt.Errorf("record issuance: %w", err)
 	}
 
 	claims := PersonaClaims{
@@ -74,9 +75,9 @@ func (m *Minter) MintToken(ctx context.Context, p *Persona, room string, ttl tim
 	}
 	signed, err := jwt.NewWithClaims(jwt.SigningMethodEdDSA, claims).SignedString(m.key.Priv)
 	if err != nil {
-		return "", fmt.Errorf("sign token: %w", err)
+		return "", time.Time{}, fmt.Errorf("sign token: %w", err)
 	}
-	return signed, nil
+	return signed, exp, nil
 }
 
 // VerifyToken parses + verifies a persona token against an Ed25519 public key.

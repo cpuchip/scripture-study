@@ -177,6 +177,28 @@ func (s *Store) RecordIssuance(ctx context.Context, personaID, roomID string, ex
 	return jti, nil
 }
 
+// UpsertPersonaRoom records that a persona has joined a room (idempotent — a
+// re-join preserves the original joined_at).
+func (s *Store) UpsertPersonaRoom(ctx context.Context, personaID, roomID string) error {
+	if _, err := s.pool.Exec(ctx, `
+		INSERT INTO persona_host.persona_rooms (persona_id, room_id)
+		VALUES ($1, $2)
+		ON CONFLICT (persona_id, room_id) DO NOTHING`, personaID, roomID); err != nil {
+		return fmt.Errorf("upsert persona_room: %w", err)
+	}
+	return nil
+}
+
+// HasPersonaRoom reports whether a persona has joined a room (smoke assertion).
+func (s *Store) HasPersonaRoom(ctx context.Context, personaID, roomID string) (bool, error) {
+	var exists bool
+	err := s.pool.QueryRow(ctx, `
+		SELECT EXISTS (
+			SELECT 1 FROM persona_host.persona_rooms
+			WHERE persona_id = $1 AND room_id = $2)`, personaID, roomID).Scan(&exists)
+	return exists, err
+}
+
 func nullIfEmpty(s string) *string {
 	if s == "" {
 		return nil

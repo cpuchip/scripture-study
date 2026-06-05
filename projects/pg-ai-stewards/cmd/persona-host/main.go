@@ -77,7 +77,7 @@ func main() {
 	}
 	log.Printf("default personas seeded")
 
-	srv := NewServer(store, key)
+	srv := NewServer(store, key, NewMinter(store, key))
 	httpSrv := &http.Server{Addr: *addr, Handler: srv.Handler()}
 	go func() {
 		log.Printf("persona-host %s listening on %s", version, *addr)
@@ -151,7 +151,7 @@ func runSmoke(dsn string) error {
 	if p.ID != pid {
 		return fmt.Errorf("persona id mismatch: upsert=%s select=%s", pid, p.ID)
 	}
-	tok, err := NewMinter(store, k1).MintToken(ctx, p, "smoke-room", 0)
+	tok, _, err := NewMinter(store, k1).MintToken(ctx, p, "smoke-room", 0)
 	if err != nil {
 		return fmt.Errorf("mint token: %w", err)
 	}
@@ -195,6 +195,29 @@ func runSmoke(dsn string) error {
 		}
 	}
 	fmt.Printf("persona-host smoke: personas registered: dm-assistant(%s), npc-ally(%s)\n", have["dm-assistant"], have["npc-ally"])
+
+	// PS.5: room handshake — JoinRoom mints a verifiable token AND records
+	// persona_rooms membership.
+	joinSrv := NewServer(store, k1, NewMinter(store, k1))
+	res, err := joinSrv.JoinRoom(ctx, "dm-assistant", "tavern-smoke")
+	if err != nil {
+		return fmt.Errorf("join room: %w", err)
+	}
+	jc, err := VerifyToken(res.Token, k1.Pub)
+	if err != nil {
+		return fmt.Errorf("join token verify: %w", err)
+	}
+	if jc.Room != "tavern-smoke" || jc.Slug != "dm-assistant" {
+		return fmt.Errorf("join claims mismatch: room=%s slug=%s", jc.Room, jc.Slug)
+	}
+	joined, err := store.HasPersonaRoom(ctx, jc.Subject, "tavern-smoke")
+	if err != nil {
+		return fmt.Errorf("check membership: %w", err)
+	}
+	if !joined {
+		return errors.New("persona_rooms row missing after join")
+	}
+	fmt.Printf("persona-host smoke: dm-assistant joined tavern-smoke (token verified, membership recorded)\n")
 
 	fmt.Println("persona-host smoke: PASS")
 	return nil

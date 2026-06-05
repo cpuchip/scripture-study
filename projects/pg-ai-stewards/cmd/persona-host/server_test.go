@@ -10,6 +10,7 @@ import (
 	"net/http/httptest"
 	"strings"
 	"testing"
+	"time"
 )
 
 // fakePersonaStore stubs the read surface so handlers test without a DB.
@@ -27,6 +28,8 @@ func (f fakePersonaStore) PersonaBySlug(_ context.Context, slug string) (*Person
 	}
 	return nil, errors.New("persona not found")
 }
+
+func (f fakePersonaStore) UpsertPersonaRoom(_ context.Context, _, _ string) error { return nil }
 
 // testKey builds an in-memory KeyMaterial without touching the DB — it exercises
 // the same marshal/parse path the DB-backed key uses.
@@ -48,7 +51,7 @@ func testKey(t *testing.T) *KeyMaterial {
 }
 
 func TestHealthz(t *testing.T) {
-	srv := NewServer(nil, testKey(t))
+	srv := NewServer(nil, testKey(t), nil)
 	rr := httptest.NewRecorder()
 	srv.Handler().ServeHTTP(rr, httptest.NewRequest(http.MethodGet, "/healthz", nil))
 	if rr.Code != http.StatusOK {
@@ -60,7 +63,7 @@ func TestHealthz(t *testing.T) {
 // ai-chattermax needs: a PEM that parses back to the signing public key.
 func TestPubkeyServesParseablePublicKey(t *testing.T) {
 	key := testKey(t)
-	srv := NewServer(nil, key)
+	srv := NewServer(nil, key, nil)
 	rr := httptest.NewRecorder()
 	srv.Handler().ServeHTTP(rr, httptest.NewRequest(http.MethodGet, "/pubkey", nil))
 	if rr.Code != http.StatusOK {
@@ -80,7 +83,7 @@ func TestPersonasList(t *testing.T) {
 		{Slug: "dm-assistant", DisplayName: "DM Assistant", AgentFamily: "fiction"},
 		{Slug: "npc-ally", DisplayName: "NPC Ally", AgentFamily: "fiction"},
 	}}
-	srv := NewServer(store, testKey(t))
+	srv := NewServer(store, testKey(t), nil)
 	rr := httptest.NewRecorder()
 	srv.Handler().ServeHTTP(rr, httptest.NewRequest(http.MethodGet, "/personas", nil))
 	if rr.Code != http.StatusOK {
@@ -95,10 +98,55 @@ func TestPersonasList(t *testing.T) {
 	}
 }
 
+func TestJoinRoomMintsVerifiableToken(t *testing.T) {
+	key := testKey(t)
+	store := fakePersonaStore{personas: []Persona{
+		{ID: "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa", Slug: "dm-assistant", DisplayName: "DM Assistant", AgentFamily: "fiction"},
+	}}
+	minter := &Minter{rec: fakeRec{jti: "join-jti"}, key: key, now: time.Now}
+	srv := NewServer(store, key, minter)
+
+	body, _ := json.Marshal(JoinRequest{Slug: "dm-assistant", Room: "tavern"})
+	rr := httptest.NewRecorder()
+	srv.Handler().ServeHTTP(rr, httptest.NewRequest(http.MethodPost, "/join", strings.NewReader(string(body))))
+	if rr.Code != http.StatusOK {
+		t.Fatalf("status = %d, want 200 (body=%s)", rr.Code, rr.Body.String())
+	}
+
+	var res JoinResult
+	if err := json.Unmarshal(rr.Body.Bytes(), &res); err != nil {
+		t.Fatalf("decode: %v", err)
+	}
+	if res.Room != "tavern" || res.Persona.Slug != "dm-assistant" {
+		t.Fatalf("unexpected join result: %+v", res)
+	}
+	// The minted token in the response must verify against the host's key, with
+	// the room the join requested — exactly ai-chattermax's check.
+	claims, err := VerifyToken(res.Token, key.Pub)
+	if err != nil {
+		t.Fatalf("join token does not verify: %v", err)
+	}
+	if claims.Room != "tavern" || claims.Slug != "dm-assistant" || claims.Subject != store.personas[0].ID {
+		t.Fatalf("unexpected claims: %+v", claims)
+	}
+}
+
+func TestJoinRoomUnknownPersona404(t *testing.T) {
+	key := testKey(t)
+	store := fakePersonaStore{personas: nil}
+	srv := NewServer(store, key, &Minter{rec: fakeRec{jti: "x"}, key: key, now: time.Now})
+	body, _ := json.Marshal(JoinRequest{Slug: "ghost", Room: "tavern"})
+	rr := httptest.NewRecorder()
+	srv.Handler().ServeHTTP(rr, httptest.NewRequest(http.MethodPost, "/join", strings.NewReader(string(body))))
+	if rr.Code != http.StatusNotFound {
+		t.Fatalf("status = %d, want 404", rr.Code)
+	}
+}
+
 // TestPubkeyNeverLeaksPrivateKey is a guardrail: the /pubkey response must not
 // contain any private-key material.
 func TestPubkeyNeverLeaksPrivateKey(t *testing.T) {
-	srv := NewServer(nil, testKey(t))
+	srv := NewServer(nil, testKey(t), nil)
 	rr := httptest.NewRecorder()
 	srv.Handler().ServeHTTP(rr, httptest.NewRequest(http.MethodGet, "/pubkey", nil))
 	body := rr.Body.String()
