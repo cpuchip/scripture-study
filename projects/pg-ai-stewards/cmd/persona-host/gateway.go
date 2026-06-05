@@ -130,7 +130,9 @@ func (gc *GatewayConn) readPump(ctx context.Context) {
 	}
 }
 
-// refreshRooms fetches the persona's granted rooms and subscribes to any new ones.
+// refreshRooms fetches the persona's granted rooms AND its DM threads, and
+// subscribes to any new ones. A persona reacts in DMs exactly as in rooms
+// (humans-only), so once subscribed the existing turn loop handles them.
 func (gc *GatewayConn) refreshRooms(ctx context.Context) {
 	rooms, err := gc.fetchRooms(ctx)
 	if err != nil {
@@ -138,14 +140,28 @@ func (gc *GatewayConn) refreshRooms(ctx context.Context) {
 		return
 	}
 	for _, r := range rooms {
-		if gc.channels[r.ID] == nil {
-			gc.channels[r.ID] = &channelState{label: r.Name}
-			if err := gc.sendRaw(map[string]any{"type": "subscribe", "channels": []string{r.ID}}); err != nil {
-				return
-			}
-			log.Printf("[%s] joined room %s (%s)", gc.persona.Slug, r.Name, r.ID)
-		}
+		gc.subscribeNew(r.ID, r.Name)
 	}
+	dms, err := gc.fetchDMs(ctx)
+	if err != nil {
+		log.Printf("[%s] fetch dms: %v", gc.persona.Slug, err)
+		return
+	}
+	for _, d := range dms {
+		gc.subscribeNew(d.ID, "DM:"+d.OtherName)
+	}
+}
+
+// subscribeNew subscribes to a channel (room or DM) if not already joined.
+func (gc *GatewayConn) subscribeNew(id, label string) {
+	if gc.channels[id] != nil {
+		return
+	}
+	gc.channels[id] = &channelState{label: label}
+	if err := gc.sendRaw(map[string]any{"type": "subscribe", "channels": []string{id}}); err != nil {
+		return
+	}
+	log.Printf("[%s] joined %s (%s)", gc.persona.Slug, label, id)
 }
 
 type personaRoom struct {
@@ -173,6 +189,34 @@ func (gc *GatewayConn) fetchRooms(ctx context.Context) ([]personaRoom, error) {
 		return nil, err
 	}
 	return out.Rooms, nil
+}
+
+type personaDM struct {
+	ID        string `json:"id"`
+	OtherName string `json:"otherName"`
+}
+
+// fetchDMs returns the persona's DM threads (GET /api/persona/dms, persona-key auth).
+func (gc *GatewayConn) fetchDMs(ctx context.Context) ([]personaDM, error) {
+	req, err := http.NewRequestWithContext(ctx, http.MethodGet, gc.apiBase+"/api/persona/dms?key="+gc.key, nil)
+	if err != nil {
+		return nil, err
+	}
+	resp, err := gc.httpc.Do(req)
+	if err != nil {
+		return nil, err
+	}
+	defer resp.Body.Close()
+	if resp.StatusCode != http.StatusOK {
+		return nil, fmt.Errorf("dms api returned %d", resp.StatusCode)
+	}
+	var out struct {
+		DMs []personaDM `json:"dms"`
+	}
+	if err := json.NewDecoder(resp.Body).Decode(&out); err != nil {
+		return nil, err
+	}
+	return out.DMs, nil
 }
 
 func (gc *GatewayConn) handle(ctx context.Context, f gwOutbound) {
