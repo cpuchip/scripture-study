@@ -27,6 +27,20 @@ var defaultPersonas = []Persona{
 			"players say and do. You have opinions and loyalties but you defer to the players' choices; " +
 			"you are an ally, not the protagonist.",
 	},
+	{
+		// AXR5: the Library "Computer" — a TOOL-USING persona. Its turns run the
+		// persona-turn-tools pipeline (librarian agent), so it can search the
+		// gospel corpus + studies + word entries and answer with real citations.
+		// Configure CHATTERMAX_PERSONAS="chip-assistant=<key>" and grant it a
+		// library channel to bring it online.
+		Slug:        "chip-assistant",
+		DisplayName: "Computer",
+		AgentFamily: "librarian",
+		Pipeline:    "persona-turn-tools",
+		Prompt: "You are \"Computer\", the ship's library reference system — calm, precise, a touch of " +
+			"LCARS formality. You help the crew find scriptures, talks, studies, and word meanings, " +
+			"always citing the real source you looked up.",
+	},
 }
 
 // SeedDefaultPersonas upserts the built-in personas. Idempotent: re-running
