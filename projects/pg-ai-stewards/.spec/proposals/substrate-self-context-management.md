@@ -1,6 +1,27 @@
 # Substrate proposal — Self-Context-Management (agent-governed context window)
 
-**Status:** SPEC ONLY — ratified to *spec now, build after the ai-chattermax MVP* (Michael, 2026-06-04).
+**Status:** BUILD-READY — Michael chose CT2 as the next build (2026-06-05, after the platform + multi-room shipped). Decisions adopted below; phased plan defined.
+
+## Decisions adopted (2026-06-05) — the 9 open questions resolved to the spec's proposed defaults
+1. **N (lock cooldown)** = 3 turns.
+2. **Handle** = short stable hash, `substr(md5(message_id::text),1,4)` → `[ctx:7a3f]` (stable across turns; same derivation in SQL + the Rust render).
+3. **Mute** = tombstone (recoverable, never deleted) — the Atonement/forward-recovery shape.
+4. **Pressure signal** = inform + light thresholds (the §5 example wording).
+5. **Compress source** = reuse the existing engram (graduated L2); no new summarizer.
+6. **Enablement** = per-pipeline/stage opt-in, off by default (like the critic). For chat personas, enable the `context-tools` group on `persona-turn` even though its other tools are disabled (context-tools is a distinct always-allowable group when enabled).
+7. **Pin lifetime** = per-stage (each stage starts with a fresh context).
+8. **Lock** applies to fold/mute/expand/clear; **pin/unpin are lock-exempt** (not thrash-prone).
+9. **Tool-result clearing** = YES — add `context_clear_tool_result(handle)` as a distinct lever, and make stale-tool-result-clearing the automatic floor's default (cheapest, safest reclaim; keeps the call record). Anthropic ships this server-side (`clear_tool_uses_20250919`).
+
+## Phased build plan (substrate C–F cadence)
+- **CT2.1 — SQL state model** (live-apply, no restart, doesn't touch live personas): `stewards.messages` gains `context_state` + `locked_until_turn`; the `context_*` SQL functions (set-state + the lock); a `context_pressure(session_id)` helper; the handle derivation. Smoke: toggle a message's state in SQL, confirm the lock sets.
+- **CT2.2 — Rust render path** (bgworker/dispatch rebuild → substrate restart; pause soak, expect a brief Starlet-cognition blip as persona-host reconnects): `compose_messages` honors the states, emits `[ctx:handle]` prefixes, **strips locked handles**, and appends the pressure line.
+- **CT2.3 — context-tools MCP group** wired to the dispatch tool surface + `tool_defs`; enabled per-stage (incl. `persona-turn`). Lock enforcement on toggle.
+- **CT2.4 — A/B verify** (don't assume): one long judgment-heavy dispatch with context-tools vs. automatic-only; measure tokens/cost/quality + thrash (toggle count, lock-hits) + whether mute ever dropped something needed.
+
+**Note on pace (2026-06-05):** CT2's first *verifiable* increment is CT2.1+CT2.2 together (the SQL state model is inert without the Rust render that reads it), and CT2.2 restarts the live substrate that Starlet's cognition rides on. So it's a cohesive substrate batch best run with focus, not crammed at the tail of the session that already shipped the whole platform + multi-room. CT2.1 (SQL) is safe to start anytime.
+
+**Original status:** SPEC ONLY — ratified to *spec now, build after the ai-chattermax MVP* (Michael, 2026-06-04).
 **Author:** Claude Opus 4.8 (Claude Code), from Michael's driving-around idea + circuit-breaker refinement.
 **Track:** substrate capability (sibling of the coder + critic harness), not on the ai-chattermax critical path.
 **Builds on:** Batch K/L context engine (engram extraction, graduated rendering, `expand_message`, `re_extract_engrams`, `mark_engram_important`, `search_engrams`). Most of the *compression* already exists; this proposal adds *agent control*, a *pressure signal*, and an *anti-thrash circuit breaker*.
