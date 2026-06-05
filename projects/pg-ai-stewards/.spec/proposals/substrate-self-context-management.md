@@ -1,6 +1,6 @@
 # Substrate proposal — Self-Context-Management (agent-governed context window)
 
-**Status:** BUILD-READY — Michael chose CT2 as the next build (2026-06-05, after the platform + multi-room shipped). Decisions adopted below; phased plan defined.
+**Status:** BUILD-READY (core §§1–6) — Michael chose CT2 as the next build (2026-06-05, after the platform + multi-room shipped). Decisions adopted below; phased plan defined. **§7 (2026-06-05 expansion) folds in Michael's two new asks — durable model-authored self-notes + a self-editable system prompt — and is DESIGN-ONLY, awaiting his ratification.**
 
 ## Decisions adopted (2026-06-05) — the 9 open questions resolved to the spec's proposed defaults
 1. **N (lock cooldown)** = 3 turns.
@@ -98,6 +98,72 @@ The agent can't manage what it can't measure. The signal is the trigger; the lev
 ### 6. Hybrid — automatic floor + agent ceiling
 
 Keep the existing automatic engram compaction as the **floor**: it still fires at a hard pressure threshold regardless of agent action, so the context never overflows and the agent is never *forced* to manage. The agent's levers are the **ceiling** — smarter-than-default folding the automatic pass can't know to do. `pinned` messages are exempt from the automatic pass. This is the safety property: if the agent does nothing, behavior is exactly today's.
+
+## 7. Self-authored DURABLE memory + self-system-prompt (2026-06-05 expansion — Michael) — FOR RATIFICATION
+
+Sections 1–6 govern the **current** window (fold/mute/pin existing messages). Michael
+added two capabilities that go further: the agent should be able to (a) write
+**durable** things into its own context that *survive* compaction and session
+boundaries, and (b) shape its own **system prompt**. He flagged (b) as "dangerous but
+could be super powerful." The key design move is that (a) and the *safe* part of (b)
+are the **same mechanism**, and the dangerous part of (b) is split off behind a gate.
+
+### 7.1 Durable self-notes — model writes AND removes (the Hermes loop)
+
+A new persistent store `agent_self_notes` (keyed by scope): notes the agent authors
+for its **future self**, rendered into `compose_system_prompt` every turn as a
+"YOUR DURABLE NOTES" block — so they outlive both automatic compaction and the
+session that wrote them.
+
+- **Tools:** `remember(note, scope)` → add · `forget(handle)` → remove · notes
+  surface in the prompt block with `[note:xxxx]` handles (same handle scheme as §2).
+- **scope:** `session` (this run) · `persona`/`agent_family` (this character) ·
+  `global` (the steward). Default `persona`.
+- **Removable by the model — not append-only.** Michael's refinement: a model may
+  park a fact to survive an imminent compaction and later *clear* it once it's been
+  integrated elsewhere. So the agent has full add/remove over its OWN notes. This is
+  the self-curating-memory loop behind self-learning agents like **Hermes** — the
+  model maintains its own working knowledge, pruning as it goes.
+- **Safety (it's the "safer area"):** these are the agent's own notes, never a
+  guardrail. Bounded by a token budget + a count cap; every note is an inspectable,
+  human-prunable DB row; the §4 circuit-breaker cooldown applies to add/remove so it
+  can't thrash. Builds directly on the existing engram/`mark_engram_important`
+  machinery (Batch K/L) rather than a new subsystem.
+
+### 7.2 The system prompt, split in two
+
+The agent prompt becomes **base + self-notes**:
+
+- **Immutable base** — the guardrails (posture, the SILENCE gate, read-before-quoting,
+  tool framing). The model can **never** write here.
+- **Self-notes block** — §7.1, rendered as part of the prompt. So "the model edits its
+  own system prompt" is *realized* by curating this appended block. ~80% of the upside
+  (a self-tuning posture — "I tend to over-explain; be terser") at near-zero risk,
+  because the base — and its safety rules — is untouchable.
+
+### 7.3 Editing the BASE prompt — propose → ratify (the gated, dangerous path)
+
+Direct self-edit of the base prompt is **not** allowed. The danger is specific:
+drift/runaway (loosens itself each cycle), safety erosion (drops the SILENCE gate or
+the quoting discipline), and a **sticky jailbreak** (a user message that rewrites the
+prompt *persists*). Instead:
+
+- The agent emits a **proposed diff** to its base prompt (a `propose_prompt_change`
+  tool) — it never takes effect directly.
+- A **critic agent + the human ratify** before it applies (D&C 88:122 council; the
+  human is the **Hinge** — the [[full-context-shepherd-is-the-ceiling]] lesson).
+- Every change is a **versioned, revertible** `agent_prompt_history` row; the base is
+  always recoverable.
+- Gated behind a per-agent **`allow_self_base_prompt` flag, OFF by default.**
+
+### 7.4 Build split (Mosiah 4:27 — don't run faster than strength)
+
+- **CT2 core (build first):** §§1–6 + §7.1 durable self-notes + §7.2 the self-notes
+  block. Safe, additive, high-value.
+- **Separate, later, ratify-gated:** §7.3 base-prompt propose/ratify. Its own design +
+  ratification pass; not bundled into CT2's first build.
+
+*(All of §7 is design-only, awaiting Michael's ratification — nothing here is built.)*
 
 ## Prior art & validation (web search, 2026-06-04)
 
