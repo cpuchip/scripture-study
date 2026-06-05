@@ -1,6 +1,6 @@
 # Substrate proposal — Persona Concept (ai-chattermax #6), as a Go SIDECAR
 
-**Status:** RATIFIED + re-architected (Michael, 2026-06-04). Build lane: mine.
+**Status:** ✅ BUILT + verified (2026-06-04). PS.1–PS.6 all shipped in `cmd/persona-host` (commits `fd13f56`→`f529242`, not pushed). Live e2e + log-leak verified. **#6 complete; next is #7 (turn loop), out of scope here.** *(Was: RATIFIED + re-architected, Michael 2026-06-04. Build lane: mine.)*
 **Parent design:** `projects/ai-chattermax/.spec/proposals/chat-server-design.md`.
 **Supersedes** the in-extension draft (p6-1 reverted). The substrate core stays **general** — no persona/chat/JWT code in the pgrx extension.
 
@@ -80,4 +80,4 @@ After #6 the sidecar can mint + a persona can authenticate into a room and appea
 ## Cycle framing (book)
 **Stewardship (Step 3) made literal for non-human agents, and kept at the right layer.** A persona is a scoped, credentialed identity minted from a parent authority, acting only as itself — and the *machinery* for that lives in an optional sidecar, not bolted onto the general tool. The architecture decision is itself the lesson: delegation means giving each concern its own stewardship boundary; app-specific power doesn't get to colonize the shared substrate. Feeds Part Two ch. 07 (delegation as stewardship).
 
-*Re-architected 2026-06-04. Build: `cmd/persona-host` (me).*
+*Re-architected 2026-06-04. Build: `cmd/persona-host` (me). ✅ BUILT 2026-06-04 — PS.1–PS.6 shipped + live-verified (commits `fd13f56`→`f529242`). Journal: `.spec/journal/2026-06-04-persona-host-ps1-ps6.md`.*
