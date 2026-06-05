@@ -27,15 +27,26 @@ const version = "0.1.0"
 
 func main() {
 	var (
-		smoke = flag.Bool("smoke", false, "Boot, apply the persona_host migration, verify the tables, and exit (PS.1 smoke).")
-		dsn   = flag.String("dsn", "", "Postgres DSN (overrides STEWARDS_DSN).")
-		addr  = flag.String("addr", ":8090", "HTTP listen address (used from PS.2 onward).")
+		smoke       = flag.Bool("smoke", false, "Boot, apply the persona_host migration, verify the tables, and exit (PS.1 smoke).")
+		dsn         = flag.String("dsn", "", "Postgres DSN (overrides STEWARDS_DSN).")
+		addr        = flag.String("addr", ":8090", "HTTP listen address.")
+		verifyToken = flag.String("verify-token", "", "Verify a token against -pubkey-file and exit (ops/debug; no DB).")
+		pubkeyFile  = flag.String("pubkey-file", "", "PEM file with the Ed25519 public key (for -verify-token).")
 	)
 	flag.Parse()
 
 	log.SetOutput(os.Stderr)
 	log.SetPrefix("persona-host: ")
 	log.SetFlags(log.LstdFlags | log.Lmicroseconds)
+
+	// Ops/debug: verify a token against a published pubkey — no DB needed. This
+	// is exactly ai-chattermax's verify path, runnable from the CLI.
+	if *verifyToken != "" {
+		if err := runVerify(*verifyToken, *pubkeyFile); err != nil {
+			log.Fatalf("verify FAILED: %v", err)
+		}
+		return
+	}
 
 	if *dsn == "" {
 		*dsn = os.Getenv("STEWARDS_DSN")
@@ -138,18 +149,17 @@ func runSmoke(dsn string) error {
 	}
 	fmt.Printf("persona-host smoke: signing key stable + parseable (ed25519, fingerprint=%s)\n", k1.Fingerprint())
 
-	// PS.3: mint a real DB-backed token and verify it round-trips; an
-	// independent key must NOT verify it (inverse hypothesis).
-	pid, err := store.UpsertPersona(ctx, Persona{Slug: "smoke-persona", DisplayName: "Smoke Persona", AgentFamily: "study"})
-	if err != nil {
-		return fmt.Errorf("upsert smoke persona: %w", err)
+	// Seed personas first — a registered persona is a prerequisite for minting,
+	// and the smoke mints for a real seeded one (never pollutes the roster).
+	if err := SeedDefaultPersonas(ctx, store); err != nil {
+		return fmt.Errorf("seed personas: %w", err)
 	}
-	p, err := store.PersonaBySlug(ctx, "smoke-persona")
+
+	// PS.3: mint a real DB-backed token for a seeded persona and verify it
+	// round-trips; an independent key must NOT verify it (inverse hypothesis).
+	p, err := store.PersonaBySlug(ctx, "dm-assistant")
 	if err != nil {
-		return fmt.Errorf("load smoke persona: %w", err)
-	}
-	if p.ID != pid {
-		return fmt.Errorf("persona id mismatch: upsert=%s select=%s", pid, p.ID)
+		return fmt.Errorf("load dm-assistant: %w", err)
 	}
 	tok, _, err := NewMinter(store, k1).MintToken(ctx, p, "smoke-room", 0)
 	if err != nil {
@@ -177,10 +187,7 @@ func runSmoke(dsn string) error {
 	// Never print tok itself — only the safe claim summary.
 	fmt.Printf("persona-host smoke: minted+verified token (sub=%s room=%s jti=%s); wrong-key correctly rejected\n", claims.Subject, claims.Room, claims.ID)
 
-	// PS.4: seed the default personas and confirm they're registered.
-	if err := SeedDefaultPersonas(ctx, store); err != nil {
-		return fmt.Errorf("seed personas: %w", err)
-	}
+	// PS.4: confirm the seeded personas are registered.
 	personas, err := store.ListPersonas(ctx)
 	if err != nil {
 		return fmt.Errorf("list personas: %w", err)
@@ -220,6 +227,29 @@ func runSmoke(dsn string) error {
 	fmt.Printf("persona-host smoke: dm-assistant joined tavern-smoke (token verified, membership recorded)\n")
 
 	fmt.Println("persona-host smoke: PASS")
+	return nil
+}
+
+// runVerify parses a published Ed25519 pubkey PEM and verifies a token against
+// it — the same check ai-chattermax runs, with no DB or private key involved.
+func runVerify(token, pubkeyFile string) error {
+	if pubkeyFile == "" {
+		return fmt.Errorf("-pubkey-file is required with -verify-token")
+	}
+	pemBytes, err := os.ReadFile(pubkeyFile)
+	if err != nil {
+		return fmt.Errorf("read pubkey file: %w", err)
+	}
+	pub, err := parsePublicPEM(string(pemBytes))
+	if err != nil {
+		return fmt.Errorf("parse pubkey: %w", err)
+	}
+	claims, err := VerifyToken(token, pub)
+	if err != nil {
+		return err
+	}
+	fmt.Printf("VERIFIED: iss=%s sub=%s slug=%s room=%s exp=%v\n",
+		claims.Issuer, claims.Subject, claims.Slug, claims.Room, claims.ExpiresAt)
 	return nil
 }
 

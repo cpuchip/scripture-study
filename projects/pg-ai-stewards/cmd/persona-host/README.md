@@ -79,7 +79,12 @@ the parser, and the `room` claim must match the room being joined.
 - **PS.3** ✅ `MintToken` (EdDSA JWT) + issuance recording
 - **PS.4** ✅ persona registry + seed `dm-assistant` / `npc-ally`
 - **PS.5** ✅ `/join` handshake (mint + `persona_rooms`) + this contract
-- **PS.6** — security check (wrong-key reject, no key/token in logs) + live curl
+- **PS.6** ✅ security gate: `-verify-token` ops mode; live end-to-end HTTP
+  (healthz → pubkey → personas → join → verify against the *fetched* pubkey);
+  tampered token rejected; logs carry no private key / raw token / PEM markers
+
+**#6 (AX2) is complete** — identity, minting, registry, and handshake all work
+end-to-end. Next is **#7** (the turn loop), not part of #6.
 
 ## Not yet (converge later)
 
