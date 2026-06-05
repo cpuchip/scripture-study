@@ -1,13 +1,32 @@
 package main
 
 import (
+	"context"
 	"crypto/ed25519"
 	"crypto/rand"
+	"encoding/json"
+	"errors"
 	"net/http"
 	"net/http/httptest"
 	"strings"
 	"testing"
 )
+
+// fakePersonaStore stubs the read surface so handlers test without a DB.
+type fakePersonaStore struct{ personas []Persona }
+
+func (f fakePersonaStore) ListPersonas(_ context.Context) ([]Persona, error) {
+	return f.personas, nil
+}
+
+func (f fakePersonaStore) PersonaBySlug(_ context.Context, slug string) (*Persona, error) {
+	for i := range f.personas {
+		if f.personas[i].Slug == slug {
+			return &f.personas[i], nil
+		}
+	}
+	return nil, errors.New("persona not found")
+}
 
 // testKey builds an in-memory KeyMaterial without touching the DB — it exercises
 // the same marshal/parse path the DB-backed key uses.
@@ -53,6 +72,26 @@ func TestPubkeyServesParseablePublicKey(t *testing.T) {
 	}
 	if !pub.Equal(key.Pub) {
 		t.Fatal("served /pubkey does not match the signing public key")
+	}
+}
+
+func TestPersonasList(t *testing.T) {
+	store := fakePersonaStore{personas: []Persona{
+		{Slug: "dm-assistant", DisplayName: "DM Assistant", AgentFamily: "fiction"},
+		{Slug: "npc-ally", DisplayName: "NPC Ally", AgentFamily: "fiction"},
+	}}
+	srv := NewServer(store, testKey(t))
+	rr := httptest.NewRecorder()
+	srv.Handler().ServeHTTP(rr, httptest.NewRequest(http.MethodGet, "/personas", nil))
+	if rr.Code != http.StatusOK {
+		t.Fatalf("status = %d, want 200", rr.Code)
+	}
+	var got []personaView
+	if err := json.Unmarshal(rr.Body.Bytes(), &got); err != nil {
+		t.Fatalf("decode: %v", err)
+	}
+	if len(got) != 2 || got[0].Slug != "dm-assistant" || got[1].Slug != "npc-ally" {
+		t.Fatalf("unexpected roster: %+v", got)
 	}
 }
 

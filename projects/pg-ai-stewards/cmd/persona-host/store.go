@@ -137,6 +137,32 @@ func (s *Store) PersonaBySlug(ctx context.Context, slug string) (*Persona, error
 	return &p, nil
 }
 
+// ListPersonas returns active personas, slug-ordered.
+func (s *Store) ListPersonas(ctx context.Context) ([]Persona, error) {
+	rows, err := s.pool.Query(ctx, `
+		SELECT id, slug, display_name, avatar_url, agent_family
+		FROM persona_host.personas
+		WHERE status = 'active'
+		ORDER BY slug`)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+	var out []Persona
+	for rows.Next() {
+		var p Persona
+		var avatar *string
+		if err := rows.Scan(&p.ID, &p.Slug, &p.DisplayName, &avatar, &p.AgentFamily); err != nil {
+			return nil, err
+		}
+		if avatar != nil {
+			p.AvatarURL = *avatar
+		}
+		out = append(out, p)
+	}
+	return out, rows.Err()
+}
+
 // RecordIssuance inserts a token_issuance row (the DB mints the jti) and returns
 // it. The token itself is never stored — only its scope + lifetime.
 func (s *Store) RecordIssuance(ctx context.Context, personaID, roomID string, expiresAt time.Time) (string, error) {

@@ -72,6 +72,11 @@ func main() {
 	// Log the public fingerprint only — never the private key.
 	log.Printf("signing key ready (ed25519, fingerprint=%s)", key.Fingerprint())
 
+	if err := SeedDefaultPersonas(ctx, store); err != nil {
+		log.Fatalf("seed personas: %v", err)
+	}
+	log.Printf("default personas seeded")
+
 	srv := NewServer(store, key)
 	httpSrv := &http.Server{Addr: *addr, Handler: srv.Handler()}
 	go func() {
@@ -171,6 +176,25 @@ func runSmoke(dsn string) error {
 	}
 	// Never print tok itself — only the safe claim summary.
 	fmt.Printf("persona-host smoke: minted+verified token (sub=%s room=%s jti=%s); wrong-key correctly rejected\n", claims.Subject, claims.Room, claims.ID)
+
+	// PS.4: seed the default personas and confirm they're registered.
+	if err := SeedDefaultPersonas(ctx, store); err != nil {
+		return fmt.Errorf("seed personas: %w", err)
+	}
+	personas, err := store.ListPersonas(ctx)
+	if err != nil {
+		return fmt.Errorf("list personas: %w", err)
+	}
+	have := make(map[string]string, len(personas))
+	for _, pr := range personas {
+		have[pr.Slug] = pr.AgentFamily
+	}
+	for _, want := range []string{"dm-assistant", "npc-ally"} {
+		if _, ok := have[want]; !ok {
+			return fmt.Errorf("seeded persona %q missing from registry", want)
+		}
+	}
+	fmt.Printf("persona-host smoke: personas registered: dm-assistant(%s), npc-ally(%s)\n", have["dm-assistant"], have["npc-ally"])
 
 	fmt.Println("persona-host smoke: PASS")
 	return nil
