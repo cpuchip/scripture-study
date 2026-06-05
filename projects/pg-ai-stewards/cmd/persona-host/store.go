@@ -6,6 +6,7 @@ import (
 	"errors"
 	"fmt"
 
+	"github.com/jackc/pgx/v5"
 	"github.com/jackc/pgx/v5/pgxpool"
 )
 
@@ -55,6 +56,39 @@ func (s *Store) Migrate(ctx context.Context) error {
 		return fmt.Errorf("apply persona_host schema: %w", err)
 	}
 	return nil
+}
+
+// EnsureSigningKey returns the singleton signing keypair PEMs, generating and
+// persisting a new keypair (via gen) if none exists. Race-safe under concurrent
+// first-boot: the INSERT is ON CONFLICT DO NOTHING on the id=1 primary key and we
+// re-SELECT, so every caller converges on the same stored key. The private PEM
+// transits this function but is never logged.
+func (s *Store) EnsureSigningKey(ctx context.Context, gen func() (privPEM, pubPEM string, err error)) (privPEM, pubPEM string, err error) {
+	privPEM, pubPEM, err = s.selectSigningKey(ctx)
+	if err == nil {
+		return privPEM, pubPEM, nil
+	}
+	if !errors.Is(err, pgx.ErrNoRows) {
+		return "", "", err
+	}
+	np, pub, gerr := gen()
+	if gerr != nil {
+		return "", "", gerr
+	}
+	if _, err = s.pool.Exec(ctx,
+		`INSERT INTO persona_host.signing_key (id, private_key_pem, public_key_pem)
+		 VALUES (1, $1, $2) ON CONFLICT (id) DO NOTHING`, np, pub); err != nil {
+		return "", "", fmt.Errorf("insert signing key: %w", err)
+	}
+	// Re-select: our row, or the race winner's.
+	return s.selectSigningKey(ctx)
+}
+
+func (s *Store) selectSigningKey(ctx context.Context) (privPEM, pubPEM string, err error) {
+	err = s.pool.QueryRow(ctx,
+		`SELECT private_key_pem, public_key_pem FROM persona_host.signing_key WHERE id = 1`).
+		Scan(&privPEM, &pubPEM)
+	return privPEM, pubPEM, err
 }
 
 // tableNames returns the persona_host tables present, sorted — used by the smoke

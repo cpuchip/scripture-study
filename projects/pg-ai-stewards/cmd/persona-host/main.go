@@ -12,9 +12,11 @@ package main
 
 import (
 	"context"
+	"errors"
 	"flag"
 	"fmt"
 	"log"
+	"net/http"
 	"os"
 	"os/signal"
 	"syscall"
@@ -63,10 +65,26 @@ func main() {
 	}
 	log.Printf("persona_host schema ready")
 
-	// The HTTP surface (pubkey, join) lands in PS.2+. For PS.1 the process
-	// proves the boot+migrate path and holds until signaled.
-	log.Printf("persona-host %s up (addr=%s reserved for PS.2+); awaiting signal", version, *addr)
+	key, err := LoadOrCreateKey(ctx, store)
+	if err != nil {
+		log.Fatalf("signing key: %v", err)
+	}
+	// Log the public fingerprint only — never the private key.
+	log.Printf("signing key ready (ed25519, fingerprint=%s)", key.Fingerprint())
+
+	srv := NewServer(store, key)
+	httpSrv := &http.Server{Addr: *addr, Handler: srv.Handler()}
+	go func() {
+		log.Printf("persona-host %s listening on %s", version, *addr)
+		if err := httpSrv.ListenAndServe(); err != nil && !errors.Is(err, http.ErrServerClosed) {
+			log.Fatalf("http server: %v", err)
+		}
+	}()
+
 	<-ctx.Done()
+	shutdownCtx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
+	defer cancel()
+	_ = httpSrv.Shutdown(shutdownCtx)
 	log.Printf("persona-host stopped cleanly")
 }
 
@@ -97,6 +115,24 @@ func runSmoke(dsn string) error {
 	if !sameStringSet(tables, want) {
 		return fmt.Errorf("table mismatch: want %v, got %v", want, tables)
 	}
+
+	// PS.2: signing key generates once and persists (idempotent across calls).
+	k1, err := LoadOrCreateKey(ctx, store)
+	if err != nil {
+		return fmt.Errorf("load/create signing key: %w", err)
+	}
+	k2, err := LoadOrCreateKey(ctx, store)
+	if err != nil {
+		return fmt.Errorf("reload signing key: %w", err)
+	}
+	if !k1.Pub.Equal(k2.Pub) {
+		return errors.New("signing key not stable across calls — it regenerated instead of persisting")
+	}
+	if _, perr := parsePublicPEM(k1.PublicPEM); perr != nil {
+		return fmt.Errorf("published pubkey unparseable: %w", perr)
+	}
+	fmt.Printf("persona-host smoke: signing key stable + parseable (ed25519, fingerprint=%s)\n", k1.Fingerprint())
+
 	fmt.Println("persona-host smoke: PASS")
 	return nil
 }
