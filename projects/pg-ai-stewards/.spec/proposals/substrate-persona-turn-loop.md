@@ -1,6 +1,10 @@
 # Substrate proposal — Persona Turn Loop (ai-chattermax #7)
 
-**Status:** v1 **FULLY RATIFIED** (Michael, 2026-06-04) — triggers **#1 Reactive + #2 Addressed**, cognition = persistent session per (persona,room), runaway scope = **humans-only reactions**. **#3/#4/#5 + persona↔persona deferred to v2+.** Build-ready.
+**Status:** v1 **BUILT + LIVE-PROVEN** (2026-06-04) — triggers **#1 Reactive + #2 Addressed**, cognition = persistent session per (persona,room), runaway scope = **humans-only reactions**. **#3/#4/#5 + persona↔persona deferred to v2+.**
+
+**Build:** substrate side = `extension/r7-persona-turn.sql` (persona agent + persona-turn pipeline + auto-verify trigger). Host side = `cmd/persona-host/{dispatch,turnloop,autojoin}.go` (Cognition.SpawnTurn/ConsultTurn over the pgxpool; RoomConn WS client; env autojoin). e2e proven: ai-chattermax + persona-host + a human client against the live substrate — `dm-assistant` replied in character, attributed (AX3-2), roster `Kind=persona`. Replay-on-join validated (the human msg landed pre-connect; the room replayed it; the persona answered). Cost ~$0.014/turn.
+
+**v1 simplifications carried to v2 (none reverse a ratified decision):** character rides in the binding question, not a per-persona system message; `model_override` stored but not yet honored at dispatch (the pipeline default kimi-k2.6 is used); humans-only enforced by persona-name matching (an envelope `kind` field would be robust). Every-human-message = one LLM turn (bounded by the room's 10/min ceiling + SILENCE judgment); batching consecutive messages is a v2 cost lever.
 **Parent:** `substrate-persona-concept.md` (#6, BUILT — `cmd/persona-host`). Build lane: mine.
 **Principle (Michael):** ship the simplest trigger set, get quick real results, let the rest earn their way in from what we learn.
 
