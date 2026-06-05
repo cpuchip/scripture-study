@@ -1,0 +1,44 @@
+date: "2026-06-04"
+session_id: persona-host-ax3-2-7design
+intent: 'Shepherd pg-ai-stewards + ai-chattermax forward: build AX2 (the persona concept #6) the no-pollution way, then — at Michael''s steer — fix the chat protocol (#2) and design the persona turn loop (#7).'
+discoveries:
+    - title: Anthropic already shipped most of our CT2 context-tools — but automatic, not agent-driven
+      detail: 'Michael''s ''I wish you had a context-mgmt tool — worth a web search?'' led to a real find: Anthropic ships compaction, tool-result clearing, and a memory tool; MemGPT/Letta are the research root (memory-pressure warnings, read_only blocks). The gap our spec fills is the AGENT-driven, addressable layer (compress/mute/pin) they don''t expose. Folded into substrate-self-context-management.md.'
+    - title: persona-host as a Go sidecar keeps the substrate general
+      detail: 'Built cmd/persona-host (PS.1-PS.6): persona_host schema, ed25519/EdDSA JWT mint, /pubkey + /personas + /join handshake, dm-assistant/npc-ally seeded on the real ''fiction'' family. Parallel to cmd/coder-mcp — no pgrx crate, no extension pollution. Live e2e + log-leak verified.'
+    - title: The chat protocol was the gap between 'UI shell' and working chat
+      detail: 'AX3-2: the room broadcast raw bytes to everyone including the sender (sender=''unknown'' + self-echo dup). Fixed server-side with a JSON envelope broadcast except-sender + replay-on-join. The frontend already fit. Shipped live to chat.ibeco.me.'
+    - title: 'The substrate''s own dispatch primitives are the #7 cognition path'
+      detail: 'spawn_subagent = SELECT stewards.spawn_subagent_create + poll work_items; consult_subagent re-asks a live session. persona-host already holds a pgxpool, so it can drive turns in SQL — no new MCP. Ratified: persistent session per (persona,room).'
+surprises:
+    - We spent the session speccing context-tools FOR the substrate's agents while I, the agent writing the spec, have none of them myself — only a memory dir and the /compact sledgehammer. Michael named the irony.
+    - '#7''s visible payoff secretly depended on #2: a persona''s great message is invisible if the room can''t attribute it. The order #7-then-#2 became #2-first once we saw it.'
+    - 'Michael''s own enter-key mis-hit (''what''s #7?'') — my # notation (ai-chattermax build-item numbers) read like a 4th option.'
+relationship:
+    - quality: reflective + trusting
+      detail: Michael noticed I reach for 'good checkpoint' partly under context pressure, not just principle — and I owned it rather than dressing it up. He steers with intent ('do the simplest as v1, see what we need') and lets me own the code + the protocol contract.
+    - quality: collaborative design
+      detail: 'The #7 aliveness turn-model is explicitly his to shape (''the most interesting part, I don''t have answers yet''). I organized his scatter into a 5-trigger taxonomy + gate; he ratified v1 (reactive + addressed, humans-only) and deferred the rest. Decisions-upfront cadence held.'
+carry_forward:
+    - priority: high
+      note: 'BUILD #7 v1 (persona-host turn loop): WS client + persistent session per (persona,room), react to HUMAN messages only (judgment) + @mentions, post as kind=agent speaking the AX3-2 envelope. Spec is build-ready at projects/pg-ai-stewards/.spec/proposals/substrate-persona-turn-loop.md. Ideally with Michael watching — first live ''a persona talks'' moment, spends opencode budget, pause the soak.'
+    - priority: high
+      note: '5-min check before #7 build: is consult_subagent callable straight from persona-host''s pgxpool (SQL) or does the re-ask need a Go/MCP path? Determines the dispatch wiring.'
+    - priority: medium
+      note: '#7 v2+: the aliveness layer — #3 timed-delay/pacing profile (shy vs quick), #4 ambient cron (''thinking out loud'' in quiet rooms), #5 pipeline-state hooks, persona<->persona reactions with real pileup arbitration.'
+    - priority: medium
+      note: 'Hardening (deferred): presence should tag personas as agents not Human; the room should verify the persona JWT on WS connect (persona-host /pubkey is ready). persona-host deploy container + a scoped persona_host DB role.'
+    - priority: medium
+      note: CT2 (self-context-management) build still deferred until after the ai-chattermax MVP; spec sharpened this session with the prior-art + the cheap tool-result-clearing lever (Open Q9).
+    - priority: low
+      note: Workspace-root commits this session are NOT pushed (Michael's preference); ai-chattermax pushes ARE deployed (freely-granted). 8 root commits (1aba0d9..03ba252) await his push.
+questions:
+    - How should pileup-avoidance arbitrate when 4 agents all want to speak (the v2 question)?
+    - 'Where does the #4 ambient cron live, and what does a persona pull from when it ''thinks out loud'' in a quiet room?'
+    - Does a persona's pacing profile (delay, talkativeness) belong in the persona_host.personas.pacing jsonb, or computed by the turn loop?
+tags:
+    - persona-host
+    - ai-chattermax
+    - pg-ai-stewards
+    - context-management
+    - substrate
