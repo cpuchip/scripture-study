@@ -151,6 +151,29 @@ services:
       - "127.0.0.1:8080:8080"
     restart: unless-stopped
 
+  persona-host:
+    # Optional persona SIDECAR (cmd/persona-host). Keeps a persona "always on"
+    # in an ai-chattermax room: drives turns via the substrate (pg:5432) and
+    # connects OUT to the platform gateway (wss://chat.ibeco.me). Restarts with
+    # the substrate. Inert unless CHATTERMAX_GATEWAY + CHATTERMAX_PERSONAS are
+    # set in .env (the persona key is a secret — .env is gitignored).
+    build:
+      context: ../../..
+      dockerfile: projects/pg-ai-stewards/extension/persona-host.Dockerfile
+    image: pg-ai-stewards-persona-host:latest
+    container_name: pg-ai-stewards-persona-host
+    depends_on:
+      pg:
+        condition: service_healthy
+    env_file:
+      - path: .env
+        required: false
+    environment:
+      STEWARDS_DSN: "postgres://${POSTGRES_USER:-stewards}:${POSTGRES_PASSWORD:-stewards}@pg:5432/${POSTGRES_DB:-stewards}?sslmode=disable"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    restart: unless-stopped
+
 volumes:
   pgdata:
   coder-worktrees:
