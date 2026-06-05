@@ -6,6 +6,7 @@ use (
 	./projects/1828-illuminated/backend
 	./projects/pg-ai-stewards/cmd/coder-mcp
 	./projects/pg-ai-stewards/cmd/fs-read-mcp
+	./projects/pg-ai-stewards/cmd/persona-host
 	./projects/pg-ai-stewards/cmd/stewards-cli
 	./projects/pg-ai-stewards/cmd/stewards-mcp
 	./scripts/becoming
