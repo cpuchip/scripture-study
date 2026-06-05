@@ -15,6 +15,7 @@ import (
 	"log"
 	"strings"
 	"sync"
+	"time"
 
 	"github.com/gorilla/websocket"
 )
@@ -83,6 +84,23 @@ func (gc *GatewayConn) Run(ctx context.Context) error {
 	if err := gc.sendRaw(map[string]any{"type": "subscribe", "channels": []string{gc.roomID}}); err != nil {
 		return err
 	}
+	// Re-subscribe periodically so a grant made AFTER connect takes effect
+	// without a restart — the gateway silently drops an ungranted subscribe, so
+	// the first attempt is a no-op until the persona is granted to the room.
+	go func() {
+		t := time.NewTicker(12 * time.Second)
+		defer t.Stop()
+		for {
+			select {
+			case <-ctx.Done():
+				return
+			case <-t.C:
+				if err := gc.sendRaw(map[string]any{"type": "subscribe", "channels": []string{gc.roomID}}); err != nil {
+					return
+				}
+			}
+		}
+	}()
 	go gc.worker(ctx)
 
 	for {
