@@ -64,6 +64,24 @@ Living list of next-actions so nothing gets lost between sessions. Sorted by
   ≈ 2 days of weekly Max budget. The same class of task run through the substrate
   costs a fraction of Claude budget. **Migrate that work to the substrate.**
 
+## Seeds / ideas (not yet decided)
+
+- **Agentic tools / model-cascade in pg-ai-stewards** (2026-06-06, Michael). The big
+  model orchestrates; some "tools" are themselves cheap-model agentic calls that do the
+  heavy lifting and return curated results (like WebFetch/`summarize_url` already do for
+  web). Mirror of [[claude-worker-dispatch]] — that escalates UP to Claude; this delegates
+  DOWN to cheap models. Together = the full stewardship tree (cheap ← Claude ← Michael).
+  **Discriminator (= the gospel line "delegate execution, not discernment"):** agentic-wrap
+  a subtask ONLY if it's language/judgment, large vs. its instruction, with cheap
+  deterministic verification (tests/compile/exact-match). Don't wrap mechanical/exact ops
+  (raw grep, precise edits) — loses determinism, often a token wash. First candidate:
+  read-only `research_codebase` (deepseek-v4-flash explores + curates). Edits later, gated
+  on ground-truth. Built on existing `spawn_subagent`/`consult_subagent`. A/B the savings
+  (only real on large subtasks). **Spec written 2026-06-06:**
+  `projects/pg-ai-stewards/.spec/proposals/agentic-tools-model-cascade.md` — flagship
+  = the **ai-chattermax code/repo-reader persona** (its repo tools become cheap-model
+  agentic calls: `research_codebase` via deepseek-flash). Awaiting ratification.
+
 ## Done recently (trim periodically)
 
 - 2026-06-06 — gospel-engine `web_url` (#4) confirmed fully released + live on
