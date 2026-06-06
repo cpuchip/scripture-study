@@ -33,7 +33,9 @@ Living list of next-actions so nothing gets lost between sessions. Sorted by
 - **★ FOCUS — stewards cockpit CLI (Option A)** — spec complete:
   `projects/pg-ai-stewards/.spec/proposals/stewards-cockpit-cli.md`. A `stewards` Go CLI
   (pgxpool to the substrate, like persona-host) so Michael drives the substrate himself:
-  `board / do / council / ratify / watch / review / cost` — where **ratify = input Hinge**
+  `project / board / do / council / ratify / watch / review / cost` — `project` selects a
+  sticky **active-project** context (like a kubectl context) that scopes the work-item
+  verbs; **ratify = input Hinge**
   (approve a plan to build) and **review = output Hinge** (approve finished work);
   **council** = pre-ratify critical-analysis pass (surfaces tensions; the human decides).
   Closes the #1 gap (useful-to-agent-not-to-Michael).
