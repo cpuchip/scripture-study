@@ -20,6 +20,16 @@ Living list of next-actions so nothing gets lost between sessions. Sorted by
   Held because the build restarts the live substrate Starlet + the Computer ride
   on. **Action: Michael reads → ratifies → I build.**
 
+- **claude-worker dispatch** — spec complete:
+  `projects/pg-ai-stewards/.spec/proposals/claude-worker-dispatch.md`. Hand more
+  autonomous work to Claude (+ gpt-5.5/gemini) as **CLI workers** dispatched from the
+  substrate, so it draws the new **`claude -p` Agent-SDK credit pool** (separate from
+  interactive; ~$200/mo on Max-20x, live 2026-06-15) instead of wasting it. Dumb host
+  poller → `claude -p` on demand (zero idle tokens); bins-1/2-only unattended; spend
+  guard. Also maps the **sub-with-API connector** options (opencode_go + Atlas/GLM/
+  Ollama) for substrate redundancy + capacity. **Action: Michael reads → ratifies →
+  build P1 after Sunday reset.** Build is cheap (host poller = non-Claude code).
+
 ## I can do now (no ratification, low Claude-token cost)
 
 - **Delete-message endpoint** (ai-chattermax) — closes the "demo message lingers
