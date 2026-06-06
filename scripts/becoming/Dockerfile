@@ -40,9 +40,13 @@ COPY --from=frontend /app/frontend/dist ./cmd/server/dist/
 COPY --from=gitinfo /commit_hash /commit_msg /tmp/
 ARG VERSION=dev
 ARG RELEASE_NOTES=""
+# NOTES is sanitized (tr -d '\047\042' strips ' and ") before it reaches ldflags:
+# an apostrophe in the commit subject (e.g. "Michael's") would close the
+# -X 'main.ReleaseNotes=…' grouping that Go's quoted.Split relies on, handing the
+# linker garbage flags and failing the build (it dumps `usage: link …`, exit 1).
 RUN COMMIT=$(cat /tmp/commit_hash) && \
     MSG=$(cat /tmp/commit_msg) && \
-    NOTES="${RELEASE_NOTES:-$MSG}" && \
+    NOTES=$(printf '%s' "${RELEASE_NOTES:-$MSG}" | tr -d '\047\042') && \
     CGO_ENABLED=0 GOOS=linux go build \
     -ldflags="-s -w -X main.Version=${VERSION} -X main.CommitHash=${COMMIT} -X 'main.ReleaseNotes=${NOTES}'" \
     -o /server ./cmd/server/
