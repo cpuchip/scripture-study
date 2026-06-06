@@ -33,7 +33,10 @@ Living list of next-actions so nothing gets lost between sessions. Sorted by
 - **★ FOCUS — stewards cockpit CLI (Option A)** — spec complete:
   `projects/pg-ai-stewards/.spec/proposals/stewards-cockpit-cli.md`. A `stewards` Go CLI
   (pgxpool to the substrate, like persona-host) so Michael drives the substrate himself:
-  `do / watch / review / cost / board`. Closes the #1 gap (useful-to-agent-not-to-Michael).
+  `board / do / council / ratify / watch / review / cost` — where **ratify = input Hinge**
+  (approve a plan to build) and **review = output Hinge** (approve finished work);
+  **council** = pre-ratify critical-analysis pass (surfaces tensions; the human decides).
+  Closes the #1 gap (useful-to-agent-not-to-Michael).
   Includes the **project board** (work_items gain `project` + `planning_state`;
   `carry-over.md` becomes a generated view) and the **token dashboard by project × model**
   (shared backend for the CLI `cost` verb + a stewards-ui panel — Michael's add). P1 =

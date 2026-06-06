@@ -44,13 +44,19 @@ front-end over what's there.** (Read paths are pure SQL; dispatch reuses
 |---|---|---|
 | `stewards board` / `ls` | the project board — all work items by project + planning state (§4) | work_items + new planning dims |
 | `stewards do "<binding question>" [--repo --pipeline]` | create + dispatch a work item | `work_item_*` dispatch |
+| `stewards council <item>` | convene a critical-analysis pass on a plan/spec — cheap models + a critic surface tensions, connections, blind spots *before* you ratify (the Abraham 4:26 council moment, automated) | `consult_subagent` / `panel_redline` / critic |
+| `stewards ratify <item>` | the **input Hinge** — approve a spec to build (`planning_state` spec→ratified), making it eligible for async execution | work_items planning_state |
 | `stewards watch [id]` | live tail of a pipeline / item (stages, status, cost) | work_item status + cost |
-| `stewards review` | the **Hinge queue** — escalations / PRs awaiting approval; approve / reject | `work_item_escalation_*` |
+| `stewards review [id]` | the **output Hinge** — escalations / finished PRs awaiting approval; approve / reject (building→done) | `work_item_escalation_*` |
 | `stewards cost [--by project\|model\|day]` | token + $ spend dashboard (§5) | cost tables |
 | `stewards personas` / `chat <persona>` | list + talk to a persona | persona pipelines |
 | `stewards brain <query>` | search the brain | brain tables |
 
-Lean daily set: **do / watch / review / cost / board.** (Open Q1.)
+**Two Hinges, two ends.** `ratify` is the *input* Hinge — a plan approved to build.
+`review` is the *output* Hinge — finished work approved as good. `council` is the
+deliberation that *informs* ratify (it surfaces; the human decides — Webster 1828
+"counsel": interchange of opinions, mutual advising). Daily set: **board / do / council /
+ratify / watch / review / cost.**
 
 ## 4. Project board (the "keep track of everything" ask)
 
