@@ -79,6 +79,20 @@ Project `ibeco.me` also carries 2 project-level Postgres services
 compose runs its OWN internal Postgres inside its compose file —
 separate from those project-level DBs.
 
+**Build sources (which repo each app auto-deploys from, `triggerType:"push"`):**
+
+| Service | Repo it builds from | Build path |
+|---|---|---|
+| `web` (becoming/ibeco.me) | **workspace-root monorepo** `github.com/cpuchip/scripture-study` (main) | `scripts/becoming/` |
+| `engine` (engine.ibeco.me) | its own repo `github.com/cpuchip/gospel-engine` | repo root |
+| `chattermax` (chat.ibeco.me) | `github.com/cpuchip/ai-chattermax` | `./docker-compose.yml` |
+| `cpuchip.net` / `Marsfield.org` | their own repos | repo root |
+
+⚠ **A workspace-ROOT push = an ibeco.me PRODUCTION rebuild** (the `web` app
+deploys from the monorepo). "Commit to root, don't push" (Michael pushes) is a
+deploy boundary, not just preference. gospel-engine's URL is authoritative in
+`.mcp.json` → `GOSPEL_ENGINE_URL=https://engine.ibeco.me` (NOT study.ibeco.me).
+
 ### Home NAS (dokploy.hmslogs.com) — stale; verify before trusting
 
 The table below predates the NOCIX migration and is unverified against
@@ -168,10 +182,25 @@ Same as deploy but rebuilds without pulling new code.
 3. Confirm the commit hash in `/version` (or the equivalent for the app) matches the pushed commit
 
 ### Investigating a failed deploy
-1. Get deployment list, find the `error` entry
-2. Check `errorMessage` field
-3. The `logPath` field shows where logs are on the server (not directly accessible via API in current version)
-4. Look at the Dockerfile and recent changes for clues
+1. **`status=error` does NOT mean the site is down.** A failed rebuild leaves the
+   prior good container serving — confirm with a live curl (`curl -s https://<domain>/...`)
+   before treating it as an outage. The `error` is the latest *build attempt*, not the
+   running app. (2026-06-05: ibeco.me showed `error` while still serving + auth working.)
+2. Get the deployment list, find the `error` entry. **`errorMessage` is usually EMPTY**
+   even on a real failure — don't conclude "transient" from an empty error field.
+3. Read the actual build log — that's where the cause is. Dokploy UI → the app →
+   Deployments → the failed one → Logs. (`logPath` points at the server-side file but
+   isn't API-readable; have Michael paste it if you can't reach it.)
+4. Look at the Dockerfile + the triggering commit for clues.
+
+**Known build gotcha — commit subject in ldflags (fixed `2b98b4c`, 2026-06-05).**
+The becoming Dockerfile baked the commit SUBJECT into the binary via
+`-ldflags "… -X 'main.ReleaseNotes=$MSG'"`. A `'` or `"` in the subject (e.g.
+"Michael's expansion") closes the single-quote grouping Go's `quoted.Split` relies
+on → the linker gets stray flags and aborts with `usage: link [options] main.o`
+(exit 1, fails ~13s in). Because `web` builds from the root monorepo, ANY root commit
+message with a quote could trip it. Fixed by sanitizing (`tr -d '\047\042'`). **If a Go
+build fails with a linker usage dump, suspect the ldflags value, not the Go code.**
 
 ### Refreshing the Known IDs table after a UI-side change
 The table above can drift. When in doubt, re-fetch:
