@@ -30,6 +30,16 @@ Living list of next-actions so nothing gets lost between sessions. Sorted by
   Ollama) for substrate redundancy + capacity. **Action: Michael reads → ratifies →
   build P1 after Sunday reset.** Build is cheap (host poller = non-Claude code).
 
+- **★ FOCUS — stewards cockpit CLI (Option A)** — spec complete:
+  `projects/pg-ai-stewards/.spec/proposals/stewards-cockpit-cli.md`. A `stewards` Go CLI
+  (pgxpool to the substrate, like persona-host) so Michael drives the substrate himself:
+  `do / watch / review / cost / board`. Closes the #1 gap (useful-to-agent-not-to-Michael).
+  Includes the **project board** (work_items gain `project` + `planning_state`;
+  `carry-over.md` becomes a generated view) and the **token dashboard by project × model**
+  (shared backend for the CLI `cost` verb + a stewards-ui panel — Michael's add). P1 =
+  read-only (board/watch/cost). **Action: Michael confirms verbs + planning-state ladder →
+  ratify → build.** Chosen focus among the 3 cockpit shapes (CLI now, stewards-ui next, ai-chattermax-as-cockpit later).
+
 ## I can do now (no ratification, low Claude-token cost)
 
 - **Delete-message endpoint** (ai-chattermax) — closes the "demo message lingers
@@ -81,6 +91,17 @@ Living list of next-actions so nothing gets lost between sessions. Sorted by
   `projects/pg-ai-stewards/.spec/proposals/agentic-tools-model-cascade.md` — flagship
   = the **ai-chattermax code/repo-reader persona** (its repo tools become cheap-model
   agentic calls: `research_codebase` via deepseek-flash). Awaiting ratification.
+
+- **Harness-leveling experiment for cheap/local models** (2026-06-06, Michael). Can
+  curated instructions + context (memory/intent/examples/tight specs/critic/ground-truth)
+  level up free local models (qwen3.6-27b, gemma-12b via LM Studio — 100M tokens/day,
+  $0 to Michael) toward usable autonomy? Hypothesis: harness **externalizes direction** so
+  weak models infer less → converts them from "needs micromanagement" to "competent
+  EXECUTOR of well-specified, verifiable tasks." It will NOT grant unspecified-direction
+  inference (that stays with Claude). Test rig = the substrate (it already injects harness
+  per agent_family): A/B bare-prompt vs full-harness on a bounded task, measure quality
+  delta. Gospel/book frame: the harness is how you raise up the less-capable (teach +
+  context + verify) — the substrate as a school. Pairs with [[agentic-tools-model-cascade]].
 
 ## Done recently (trim periodically)
 
