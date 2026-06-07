@@ -78,11 +78,27 @@ independent, bounded jobs. Zero new code. ← **P1.**
 timer / the `/loop` skill / a terminal script. Each tick it polls pg-ai-stewards
 (`work_item_list`), claims an item, works it **in-session**, and pushes the result back.
 **Warm + continuous** — accumulated context + memory; it "takes better account of you in
-the brain," reasons across tasks, feels like a persistent collaborator. **Cost caveat
-(important): a normal interactive session draws the INTERACTIVE pool, NOT the Agent-SDK
-pool** — so it competes with together-time, not the dedicated $200. Also serial (one task
-at a time) and needs compaction discipline (context rot over a long life). Buildable
-*today* on `/loop` + the `work_item_*` MCP tools, no new code — but spend it knowingly.
+the brain," reasons across tasks, feels like a persistent collaborator. Buildable *today*
+on `/loop` + the `work_item_*` MCP tools, no new code.
+
+**Economics — the surprise upside (Michael, 2026-06-07): the interactive pool is the
+*generous* one.** B draws the interactive pool, not the Agent-SDK pool — but the
+interactive subscription is wildly generous vs the metered agent pool: Michael has
+consumed **$1000+/week of API-equivalent tokens** interactively (and pg-ai-stewards burned
+**~2.2B Opus-4.7 tokens ≈ $1600 in 3 days**). The Agent-SDK pool is a hard **$200/mo at
+API rates** — relatively *few* Opus tokens. So for sheer Claude *volume*, **B is the most
+bang-for-buck by far** (~20×). The catch: it competes with together-time, is serial, and
+needs compaction discipline (context rot over a long life).
+
+**Discipline — use it for what we planned; don't abuse it (Michael's guardrail).** Because
+B runs on the plan *designed for interactive use*, the reverse-dispatcher must work a
+**human-curated, council-and-ratified queue** — it dispatches the things *we planned
+together in interactive chat* (or ratified on the cockpit board), at a sane cadence. It
+**never self-generates its own work** and is **not a 24/7 automation farm** (that is what
+A and the substrate are for — billed and designed for it). This keeps B inside the
+interactive plan's intent and protects the account from looking like automation abuse.
+Boundary: *planned-by-Michael work* = legitimate interactive continuation; *unbounded /
+auto-generated automation* = move it to A (`claude -p`) or the substrate.
 
 **C. Agent SDK (programmatic).** A library (`@anthropic-ai/claude-agent-sdk` /
 `claude-agent-sdk`) where *an application* drives the same engine: structured tool-use
