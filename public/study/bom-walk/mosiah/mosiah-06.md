@@ -1,0 +1,32 @@
+# Mosiah 6 — The Covenant Recorded, the Servant-King Pattern Passed On
+
+*(Short administrative close of Benjamin's reign — names recorded, priests appointed, Mosiah crowned, Benjamin dies. 7 verses; note-grade.)*
+
+**Binding idea:** After the heart-change of ch 5, Benjamin does something institutional: he writes down the names. Why does a covenant of the heart need a roster — and what passes from Benjamin to Mosiah when the reign changes hands?
+
+**Read:** Benjamin "thought it was expedient... that he should take the names of all those who had entered into a covenant" (v1); "**there was not one soul, except it were little children, but who had entered into the covenant and had taken upon them the name of Christ**" (v2). He consecrated his son Mosiah king, gave him the charges, "and also had **appointed priests to teach the people**... and **to stir them up in remembrance of the oath** which they had made," then dismissed the multitude to their houses (v3). Mosiah began to reign at thirty — "about four hundred and seventy-six years from the time that Lehi left Jerusalem" (v4). Benjamin "lived three years and he died" (v5). Mosiah "did walk in the ways of the Lord" (v6); "**he also, himself, did till the earth, that thereby he might not become burdensome to his people**," doing "according to that which his father had done in all things"; "and there was no contention among all his people for the space of three years" (v7).
+
+**Thoughts:**
+- *The covenant recorded — heart-change institutionalized (vv1-2).* The name was "written... in your hearts" (5:12); now Benjamin writes it on a record too. The inward transformation is given an outward roster — "not one soul, except little children" left off. This is the institutional follow-through the heart-change requires: a covenant of the heart is still recorded, counted, made accountable (the cross-ref is D&C 128:8 — what is recorded on earth is recorded in heaven). Conversion is personal *and* enrolled. The Spirit's mighty change does not bypass the order of the kingdom; it gets written down.
+- *Priests to "stir them up in remembrance" (v3).* The most telling detail: even a people whose disposition has been changed to "do good continually" (5:2) need teachers appointed "to stir them up in remembrance of the oath." The mighty change does not maintain itself on its own momentum. Remembrance is a *kept* state, requiring ongoing teaching — the same retain-logic that ran through chs 4-5 (retain a remission, retain the name) now built into the institution: appoint people whose job is to keep the people remembering. Even the converted forget; the kingdom is structured against that forgetting.
+- *The servant-king pattern passes intact (vv6-7).* Mosiah "did walk in the ways of the Lord" and tilled his own earth "that thereby he might not become burdensome to his people... according to that which his father had done in all things." Benjamin's defining act (2:14 — "I have labored with mine own hands that I might serve you") is reproduced exactly by his son. Righteous government is not a personality; it is a transmissible *pattern* — the king who works so as not to tax those he leads. The transition is therefore peaceful ("no contention... for the space of three years"): when the pattern passes intact, the people are not destabilized by the change of hands.
+- *A generation closes (vv4-5).* The chronology marks it: 476 years from Lehi's departure (~600 BC → ~124 BC), and Benjamin dead within three years. The great sermon is also a *farewell* — Benjamin gathered the people once, gave them everything, named them, recorded them, handed off the kingdom, and died. The whole of chs 2-6 is one man's closing act.
+
+**Connections:**
+- *Names recorded / covenant enrolled:* vv1-2 → D&C 128:8; Mosiah 5:12; Ex 32:32-33; Rev 20:12; Mal 3:16 (book of remembrance).
+- *Priests to teach + stir up remembrance:* v3 → Mosiah 5:5; 29:42; Alma 4:7; Moroni 6:4 ("nourished by the good word of God").
+- *Servant-king tills his own earth / not burdensome:* v7 → Mosiah 2:12-14; 2 Cor 11:9; 1 Thes 2:9; Acts 20:34.
+- *Walk in the ways of the Lord:* v6 → Deut 8:6; 2 Kgs 22:2; D&C 11:18.
+- *No contention:* v7 → 4 Ne 1:13-18; Mosiah 1:1.
+
+**Entities:** people — king Benjamin (records names, consecrates, dies), the people (covenanted, named, dismissed), little children (the only exception), Mosiah (son, consecrated king, servant-king like his father), the appointed priests (teachers, rememberers-keepers) · doctrine/practice — the covenant recorded (roster of the named), priests appointed to teach + stir up remembrance, the servant-king who tills his own earth, walking in the ways of the Lord · event — Benjamin records the names, consecrates Mosiah, dismisses the multitude, dies; Mosiah reigns ~124 BC, 476 years after Lehi left Jerusalem.
+
+**Edges:**
+- `practice:covenant-recorded` —[heart-change institutionalized into a roster; the name in the heart also written on a record]→ 6:1-2 (D&C 128:8; Mal 3:16; Mosiah 5:12)
+- `practice:teachers-stir-up-remembrance` —[even the changed need appointed teachers to keep them remembering the oath; remembrance is a maintained state]→ 6:3 (Mosiah 29:42; Moroni 6:4) — the retain-thread built into the institution
+- `pattern:servant-king-tills-own-earth` —[Mosiah reproduces Benjamin's labor-with-own-hands exactly; righteous government is a transmissible pattern]→ 6:6-7 (Mosiah 2:12-14; 2 Cor 11:9; Acts 20:34)
+- `event:Benjamin-hands-off-and-dies` —[a generation closes; chs 2-6 are one man's farewell]→ 6:4-5 (Mosiah 1:10; 2:30)
+
+**Notable / flag:** No spin-off. A short hinge chapter, but it carries two real points: **the covenant is recorded** — the heart-change of ch 5 is institutionalized into a roster (the name "written in your hearts" also written down, D&C 128:8), and **priests are appointed "to stir them up in remembrance"** — even a transformed people need ongoing teaching to *retain* the covenant (the chs 4-5 retain-thread built into the kingdom's structure). And **the servant-king pattern passes intact** from Benjamin to Mosiah — the king who tills his own earth "that he might not become burdensome" (2:14 reproduced in 6:7) — so the transition is peaceful. Next: Mosiah 7 (the narrative shifts — Ammon's expedition to find the people of Zeniff in the land of Lehi-Nephi; king Limhi; the back-fill of the Zeniff record begins).
+
+**Verified:** Mosiah 6 read verbatim this session (`gospel_get`, full chapter) ✓ — every quoted line is from that retrieval. Cross-refs are footnote/thematic pointers.

@@ -1,0 +1,49 @@
+# 2 Nephi 23 — Isaiah 13: The Burden of Babylon — and the Variants That Insert Mercy
+
+*(Isaiah block — Isaiah 13, the burden of Babylon = a type of the world. Full protocol: exegesis + variants + likening. Compare Isaiah 13.)*
+
+**Binding idea:** Babylon is the type of the whole wicked world, and its fall is the Day of the Lord. Why does the Book of Mormon's text of this judgment chapter consistently insert *mercy* and *precision* the KJV lacks?
+
+**Read:** "The burden of Babylon, which Isaiah the son of Amoz did see" (v1). The Lord musters an army — "I have commanded my sanctified ones, I have also called my mighty ones, **for mine anger is not upon them that rejoice in my highness**" (v3); "the Lord of Hosts mustereth the hosts of the battle... to destroy the whole land" (vv4-5). "Howl ye, for the day of the Lord is at hand... every man's heart shall melt" (vv6-7); "the day of the Lord cometh, cruel both with wrath and fierce anger... and he shall destroy the sinners thereof out of it" (v9). "**The stars of heaven and the constellations thereof shall not give their light; the sun shall be darkened**" (v10). "I will punish the world for evil, and the wicked for their iniquity; I will cause the arrogancy of the proud to cease" (v11). "**I will make a man more precious than fine gold**" (v12). "Every one that is **proud** shall be thrust through" (v15). "Babylon, the glory of kingdoms... shall be **as when God overthrew Sodom and Gomorrah**" (v19); "it shall never be inhabited... wild beasts of the desert shall lie there" (vv20-21). And the close: "her time is near to come, and her day shall not be prolonged. **For I will destroy her speedily; yea, for I will be merciful unto my people, but the wicked shall perish**" (v22).
+
+**Exegesis:**
+- *Babylon = the world (the type).* The chapter header and footnote name it: "the historic destruction of wicked Babylon... is made typical of the ultimate destruction of the whole wicked world" (cf D&C 133:14, "go ye out from among the nations, even from Babylon"). Historically the oracle is fulfilled by the Medes (v17; Babylon fell 539 BC). But the cosmic-sign language — sun, moon, and stars darkened (v10) — lifts it past any single empire to the eschatological Day of the Lord (Jesus quotes v10 of his return, Matt 24:29). Babylon is every world-system that exalts itself against God; its fall is certain, total, and final ("never be inhabited," v20).
+- *A man more precious than gold (v12).* In the depopulated aftermath, "I will make a man more precious than fine gold." The horror of the slaughter, yes — survivors so few a person becomes rarer than the golden wedge of Ophir. But the footnote files it under "the worth of souls": when almost everything is stripped away, the value of a single human being is finally seen for what it always was. Judgment clarifies worth.
+- *The cosmic signs (v10).* The darkened sun and moon and stars are the standard furniture of the Day of the Lord (Joel 2:10; Ezek 32:7; Rev 6:12-13), and the Savior applies them to his Second Coming. The fall of Babylon-the-world is dressed in the imagery of the cosmos itself coming undone.
+
+**The Book of Mormon variants (verified by direct comparison this session) — the richest cluster since chapter 12, and all tilting one way:**
+- *v3 — mercy inserted.* KJV Isaiah 13:3: "I have also called my mighty ones **for mine anger**, even them that rejoice in my highness." The Book of Mormon: "I have also called my mighty ones, **for mine anger is not upon them** that rejoice in my highness." The KJV reads the mighty ones as agents *of* the anger; the Book of Mormon inserts an exemption — God's anger is *not upon* those who rejoice in His highness. A mercy clause built into the muster for war.
+- *v15 — the target sharpened.* KJV: "Every one that is **found** shall be thrust through." Book of Mormon: "Every one that is **proud** shall be thrust through." The KJV's judgment falls on anyone caught; the Book of Mormon aims it precisely at pride — consistent with the chapter's own theme ("the arrogancy of the proud," v11). The Day of the Lord is not indiscriminate; it targets the proud.
+- *v22 — a mercy-and-judgment coda the KJV lacks.* The KJV ends the chapter: "her days shall not be prolonged." The Book of Mormon adds an entire closing line: "For I will destroy her speedily; **yea, for I will be merciful unto my people**, but the wicked shall perish." The judgment chapter ends on mercy to the faithful.
+- *v8 — an omission.* The Book of Mormon drops the KJV's "they shall be in pain as a woman that travaileth."
+- **The pattern is now unmistakable and coherent:** the variants cluster in the judgment chapters (as predicted), and in this one they all pull the same direction — they *insert mercy* (v3, v22) and *sharpen the target to pride* (v15). The Restoration text makes the Day of the Lord more merciful to those who rejoice in God and more precisely aimed at the proud. The reworking is not random; it is theological.
+
+**Nephite framing — likening (four questions):**
+- *Why did Nephi include Isaiah 13?* Babylon is the type of the world-system that opposes God, and Nephi's own prophecies name a last-days "great and abominable church" / Babylon to be fled (1 Ne 13-14; 22:23). Isaiah 13 is the doom-oracle of that system — and in Nephi's text it comes with the mercy clause his people need.
+- *Was it for us, last-dispensation readers?* D&C 133:14 makes Babylon the latter-day world to "go ye out from," and the cosmic signs (v10) are Second-Coming signs (Matt 24:29). The chapter header reads it as "a type of the destruction at the Second Coming." The fall of Babylon is our future, not just ancient history.
+- *How does it apply to us?* The variants reframe the terror. The Day of the Lord is not indiscriminate ("every one that is *proud*," not merely "found"), and "mine anger is *not upon* them that rejoice in my highness." The instruction is clear: flee Babylon, rejoice in God's greatness, and you are not the target. "I will be merciful unto my people."
+- *How do we read it better through Nephi's framing?* The BoM-only coda — "I will be merciful unto my people, but the wicked shall perish" (v22) — is the same not-cast-off mercy Nephi keeps surfacing (10:20; 22:1), now set against the world's fall. And Babylon-the-world vs the-people-God-spares is the two-churches frame (1 Ne 14:10) in Isaiah's mouth: only two sides, and the Day of the Lord sorts them.
+
+**Connections:**
+- *Burden of Babylon / Babylon = the world:* vv1, 19 → Isa 14; Jer 50-51; Rev 17-18; D&C 133:14.
+- *Day of the Lord / cosmic signs:* vv6, 10 → Joel 2:10, 31; Ezek 32:7; Matt 24:29; Rev 6:12-13; Mal 4:1.
+- *Anger not on them that rejoice (variant):* v3 → D&C 38:30 (if ye are prepared ye shall not fear); Zeph 2:3; Mal 3:17-18.
+- *A man more precious than gold:* v12 → Isa 4:1; D&C 18:10 (the worth of souls is great).
+- *Every one that is proud thrust through (variant):* v15 → v11; Mal 4:1; 1 Ne 22:15; D&C 64:24.
+- *Merciful unto my people (variant coda):* v22 → 2 Ne 10:20; 22:1; 30:10; D&C 133:52.
+- *As when God overthrew Sodom:* v19 → Gen 19:24-25; 2 Ne 13:9; Jer 50:40.
+
+**Entities:** people — Isaiah (the burden), Babylon (= the world, the proud), the sanctified/mighty ones (exempt from the anger), "my people" (spared), the Medes (the agent) · doctrine — Babylon as the world's type, the Day of the Lord, cosmic signs, a man more precious than gold (worth of souls), the judgment aimed at pride, mercy to those who rejoice in God's highness · variants — v3 mercy inserted, v15 "proud" for "found," v22 mercy coda added, v8 omission (the richest, most coherent cluster in the block) · event — the burden/fall of Babylon.
+
+**Edges:**
+- `type:babylon-is-the-world` —[historic Babylon → the whole wicked world's fall]→ 23:1,19 (D&C 133:14; Rev 17-18)
+- `prophecy:day-of-the-Lord-cosmic-signs` —[sun, moon, stars darkened]→ 23:10 (Matt 24:29; Joel 2:10) — Second Coming
+- `doctrine:worth-of-souls` —[a man more precious than fine gold]→ 23:12 (D&C 18:10) — judgment clarifies worth
+- `variant:mercy-inserted` —[BoM v3 "mine anger is NOT upon them that rejoice in my highness", verified]→ exemption built into the muster for war
+- `variant:target-is-pride` —[BoM v15 "every one that is PROUD" for KJV "found", verified]→ the Day of the Lord aimed precisely, not indiscriminate
+- `variant:mercy-coda` —[BoM v22 adds "I will be merciful unto my people", verified]→ judgment chapter ends on mercy
+- `meta:judgment-variants-tilt-to-mercy` —[the cluster all pulls one way: insert mercy + sharpen to pride]→ the BoM's reworking is theological, not random
+
+**Notable / flag:** Isaiah block, full protocol. **The richest, most coherent variant cluster in the block** — and it confirms and deepens the meta-pattern: the variants live in the judgment chapters AND, here, they all tilt one direction. **v3** ("mine anger is *not upon* them that rejoice in my highness"), **v15** ("every one that is *proud*" for KJV "found"), and the **v22 coda** ("I will be merciful unto my people") together make the Book of Mormon's Day of the Lord *more merciful to the faithful and more precisely aimed at pride* than the KJV's. The Restoration text is not randomly reworking Isaiah's warnings — it is bending them toward mercy. Babylon = the world (D&C 133:14). Next: 2 Ne 24 = Isaiah 14 (the fall of the king of Babylon → the fall of Lucifer: "How art thou fallen from heaven, O Lucifer"; the last Isaiah chapter of the block).
+
+**Verified:** 2 Nephi 23 AND Isaiah 13 read verbatim this session (`gospel_get`, both full chapters) ✓ — every quoted line is from those retrievals. All four variants (v3 mercy-inserted, v15 "proud"/"found," v22 mercy-coda, v8 omission) confirmed by direct side-by-side comparison. Babylon-as-world type is per the chapter header + footnote 1c (D&C 133:14). Cross-refs are footnote/thematic pointers.
