@@ -140,6 +140,68 @@ the whole stewardship tree.
    discipline, specs, and delegation beat model power; the stewardship pattern is that
    discipline, named and practiced.* This research is the evidence.
 
+## §7 — Peer-system comparison: Dave's workflow framework
+
+A second, independent practitioner — **Dave** (the same Dave the `dave-rule` is named for;
+his engineering philosophy already shaped how we work) — built a structured human-AI
+**workflow framework** (`external_context/workflow`): ~17 procedures + skills + agents,
+optimizing purely for engineering quality with no gospel frame. The striking finding is
+**independent convergence** on our hardest-won lessons — strong external evidence the
+pattern is real, not our projection. (This is the landscape's "discipline beats model
+power" thesis with a second witness.)
+
+**Same thing, reached independently:**
+- Work-item chain `Plan → PlanReview → Implement → CodeReview → Test → Document → Reflect →
+  Complete` = our creation cycle + the substrate `code-pr` pipeline.
+- *Agent Task Suitability* (his `DESIGN.md`): cold-start analytical subagents produce
+  "structurally correct but factually invented" reviews → prefer inline review by the
+  context-holder. = [[feedback_full_context_shepherd_is_the_ceiling]], from the other side.
+- **Invariant traceability** (his `Plan.md`): every invariant must trace to a work-item
+  statement (bad example: an invented concurrency constraint). = our anti-confabulation /
+  cite-count rule applied to plans — he forbids invented *constraints* as we forbid invented
+  *quotes*.
+- PlanReview = our critic stage: external gate, tiered findings, **revise-3-then-escalate**
+  (our revise-cap → Hinge), "uncertain defaults to Blocking when no human" (always-escalate-
+  on-discernment), "Reviewer fixes minor issues directly" (our `exercise_stewardship`).
+- Reflect → recommendations targeting specific docs, human ratifies = our Sabbath/Atonement.
+  Debug skill = Agans + inverse-hypothesis + "stop the bleeding" (ES). "NEVER narrate
+  yourself" = our no-meta-narration rule.
+
+**How we differ (structural):**
+1. **Definition vs runtime.** His is "meta-instructions — a guide, not a product": static
+   markdown an actor *follows*. Ours is that PLUS a live executable substrate that *runs* the
+   cycle (bgworkers, un-skippable gates, cost-tracking, auto-dispatch). He has the score; we
+   have the score + an orchestra. His risk: instruction-drift. Ours: runtime complexity,
+   single-user.
+2. **Actor-agnostic vs covenantal.** He abstracts *who* (Reviewer/Author → human/AI/auto);
+   review is a gate. We make the covenant load-bearing; the Hinge encodes who holds
+   *discernment*. His telos: high-quality code. Ours: transformation — which answers "why
+   keep the discipline when it's slow," and his frame doesn't.
+3. **He's more production-mature where we're thin:** Investigate + evidence skills
+   (Groundcover/Logs/Metrics), ODD/SRE debugging, versioning ("one ticket, one patch"), a
+   SideQuest lightweight lane, Dispatch (context-packaging).
+
+**Critical (honest):**
+- **The tension he exposes in us:** his `DESIGN.md` warns *don't dispatch analytical review
+  to cold-start subagents* — but our substrate *does* (cv6). We mitigate by grounding the
+  critic in the real diff + acceptance_criteria (cv11 caught real issues with citations) +
+  the shepherd, engineering *around* his caution rather than heeding it → **audit which
+  bgworker gate-evals are grounded-in-artifact vs cold-start role-pattern.**
+- **Shared blind spot:** both front-load planning hard ("correct on the *first attempt*").
+  Field data says even great specs fail >20% on long tasks. Both bet on the spec; both
+  mitigate with Reflect/Atonement; both are single-practitioner systems (elegant, unproven
+  at scale).
+
+**Steal list** (seeded to `.spec/carry-over.md`):
+1. Explicit **"AI Freedom"** section in specs — name what's intentionally unconstrained.
+2. **Invariant-traceability** rule in the critical-analysis gate.
+3. A named **SideQuest** lightweight lane (we have the bins, not the lane).
+4. His debug skill's **ODD/SRE depth** folded into our debug agent.
+5. **"File-first, avoid double-dipping"** — don't explain in chat what belongs in the doc.
+
+Reciprocal: what *he* could take from *us* — the executable runtime, cost-tracking, and the
+telos that sustains the discipline when it's inconvenient.
+
 ## Open questions for Michael
 1. Cockpit shape — CLI-first (A), UI-first (B), or chat-first (C)? (Lean: A then B.)
 2. What are the 4–6 verbs you'd actually use daily? (do / watch / review / cost / personas / brain?)

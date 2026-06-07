@@ -108,6 +108,17 @@ Living list of next-actions so nothing gets lost between sessions. Sorted by
   delta. Gospel/book frame: the harness is how you raise up the less-capable (teach +
   context + verify) — the substrate as a school. Pairs with [[agentic-tools-model-cascade]].
 
+- **Steal-list from Dave's workflow framework** (2026-06-06; see
+  `docs/ai-utilization-landscape-2026.md` §7 — Dave = the `dave-rule` Dave;
+  `external_context/workflow`). Independent-convergence peer system; borrow: (1) explicit
+  **"AI Freedom"** spec section (name what's intentionally unconstrained — we over-specify);
+  (2) **invariant-traceability** rule in the critical-analysis gate (each constraint traces
+  to a requirement — anti-invented-constraint, twin of the cite-count rule); (3) a named
+  **SideQuest** lightweight lane (we have the bins, not the lane); (4) fold **ODD/SRE depth**
+  into our debug agent; (5) **"file-first / avoid double-dipping"** discipline. Plus an
+  **audit**: which substrate bgworker gate-evals are grounded-in-artifact vs cold-start
+  role-pattern (Dave's "agent task suitability" caution on our dispatched critic, cv6).
+
 ## Done recently (trim periodically)
 
 - 2026-06-06 — **md-mcp** (markdown planning tools): Michael forked happydave/md-mcp to
