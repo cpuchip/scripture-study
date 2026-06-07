@@ -110,6 +110,12 @@ Living list of next-actions so nothing gets lost between sessions. Sorted by
 
 ## Done recently (trim periodically)
 
+- 2026-06-06 — **md-mcp** (markdown planning tools): Michael forked happydave/md-mcp to
+  `projects/md-mcp`; built the MCP **server wiring** (the repo was library-only — no
+  main.go) via the official go-sdk + added 3 tools (`md-section-append`,
+  `md-section-move`, `md-frontmatter-set`). go test/vet green + live stdio smoke (13
+  tools, append + frontmatter persist). Registered in `.mcp.json` (**restart to load the
+  tools**). Upstream PR → [happydave/md-mcp#1](https://github.com/happydave/md-mcp/pull/1). ✅
 - 2026-06-06 — gospel-engine `web_url` (#4) confirmed fully released + live on
   engine.ibeco.me (c8f3c79 on origin/main). ✅
 - 2026-06-06 — ibeco.me deploy break fixed: an apostrophe in a root commit
