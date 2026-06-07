@@ -1,7 +1,7 @@
 ---
 title: claude-worker dispatch — premium models as CLI workers + the model-access map
 date: 2026-06-06
-status: DESIGN-ONLY — awaiting Michael's ratification (build after Sunday budget reset)
+status: DESIGN-ONLY — awaiting Michael's ratification. Engine lean (2026-06-07): `claude -p` (model A) to start; see §3a.
 binding_question: >
   How do we hand more autonomous work to Claude (and other premium models)
   without burning Michael's interactive budget — and how does pg-ai-stewards
@@ -61,6 +61,51 @@ pg-ai-stewards (Docker)                host (Windows, Michael's logged-in Claude
   pool is only touched when real work exists. (Avoids the BoM-walk "idle burn" trap.)
 - Reuses the existing `work_item_*` machinery — no substrate schema change needed for
   a v1, just an assignee/label convention (`assignee = claude-code`).
+
+## 3a. Execution engine — three models (`claude -p` · long-lived session · Agent SDK)
+
+The harness can be driven three ways. They differ on *who drives*, *which budget*, and
+*warm vs cold*. **Michael leans (A) `claude -p` to start.**
+
+**A. `claude -p` per task** *(the §3 architecture; the lean for P1).* The host poller
+shells out a fresh headless run per work item. Full harness auto-loads (CLAUDE.md,
+skills, `.mcp.json`, memory, subagents); **stateless/cold each task** (no cross-task
+continuity); **draws the Agent-SDK credit pool** (the dedicated ~$200). Best for
+independent, bounded jobs. Zero new code. ← **P1.**
+
+**B. Long-lived interactive session — Michael's "node in the brain."** A *normal*
+(non-`-p`) `claude` session living at the workspace root or a subproject, kept awake by a
+timer / the `/loop` skill / a terminal script. Each tick it polls pg-ai-stewards
+(`work_item_list`), claims an item, works it **in-session**, and pushes the result back.
+**Warm + continuous** — accumulated context + memory; it "takes better account of you in
+the brain," reasons across tasks, feels like a persistent collaborator. **Cost caveat
+(important): a normal interactive session draws the INTERACTIVE pool, NOT the Agent-SDK
+pool** — so it competes with together-time, not the dedicated $200. Also serial (one task
+at a time) and needs compaction discipline (context rot over a long life). Buildable
+*today* on `/loop` + the `work_item_*` MCP tools, no new code — but spend it knowingly.
+
+**C. Agent SDK (programmatic).** A library (`@anthropic-ai/claude-agent-sdk` /
+`claude-agent-sdk`) where *an application* drives the same engine: structured tool-use
+events, session capture/resume/fork, in-process hooks, error handling, dynamic context.
+For the **production control plane** — when pg-ai-stewards needs to (1) capture structured
+tool-events for the cockpit's `cost`/`watch`, (2) enforce bin-1/2 guardrails *in code*
+(intercept tool calls, not just trust the prompt), (3) manage per-work-item session
+lifecycle. **Auth trap:** the SDK defaults to `ANTHROPIC_API_KEY` (Platform pay-per-token);
+to draw the Agent-SDK pool it must be **plan-authed**, or you're back to the $1,800
+overage. This is Anthropic's own end-of-path (*explore in Code → prototype → extract
+prompts → embed in the SDK*).
+
+**Billing summary:** A → Agent-SDK pool. **B → interactive pool** (the surprise). C →
+Agent-SDK pool *if plan-authed*, else Platform API. And the Agent-SDK credit is
+**per-user, not pooled** — a capacity ceiling if parallel workers ever run off one account.
+
+**Design principle — engine-agnostic contract.** Keep the dispatcher contract
+`{work_item, repo, binding_question} → {result | PR}` independent of the engine, so it
+swaps under us. **Start A (`claude -p`).** Keep **B** as the warm-continuity option for
+work that benefits from a persistent in-the-brain collaborator (spending its interactive
+cost knowingly). Reserve **C** for the control plane once the cockpit needs structured
+observability + programmatic guardrails. (Refs: [Augment — Code vs Agent SDK](https://www.augmentcode.com/tools/claude-code-vs-claude-agent-sdk),
+[Agent SDK overview](https://platform.claude.com/docs/en/agent-sdk/overview).)
 
 ## 4. Work-item contract
 
@@ -156,8 +201,9 @@ $20** is the open-weights/GPU-time option if we want a different cost model for 
 
 ## 10. Open questions for Michael
 
-1. Pull-loop (long-lived `/loop` session, warm context, idle token cost) vs
-   push (host poller fires `claude -p` per item, zero idle cost)? **Lean: push.**
+1. Execution engine (§3a): **(A) `claude -p` push** vs **(B) long-lived interactive
+   `/loop` session** (warm, but interactive-pool) vs **(C) Agent SDK** (control plane).
+   **Decided lean (Michael, 2026-06-07): A to start; B as the warm option; C later.**
 2. Which second sub-with-API connector to add first (Atlas / GLM / Ollama)?
 3. Upgrade to Max-20x **before or after** P1 proves the loop? (Lean: prove with the
    current plan's pool first, then upgrade once the loop demonstrably uses it.)
@@ -165,6 +211,9 @@ $20** is the open-weights/GPU-time option if we want a different cost model for 
 
 ## Sources
 - Anthropic Agent SDK billing — https://support.claude.com/en/articles/15036540-use-the-claude-agent-sdk-with-your-claude-plan
+- Claude Code vs Agent SDK (when to use each) — https://www.augmentcode.com/tools/claude-code-vs-claude-agent-sdk
+- Agent SDK overview (capabilities, auth) — https://platform.claude.com/docs/en/agent-sdk/overview
+- claude -p headless mode — https://www.mindstudio.ai/blog/claude-code-headless-mode-autonomous-agents
 - June 15 change explainer — https://codersera.com/blog/anthropic-june-2026-billing-change-claude-code/
 - `claude -p` $1,800 overage — https://github.com/anthropics/claude-code/issues/37686
 - Codex with ChatGPT plan — https://help.openai.com/en/articles/11369540-using-codex-with-your-chatgpt-plan
