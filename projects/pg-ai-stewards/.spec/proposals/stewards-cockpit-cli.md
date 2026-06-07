@@ -66,19 +66,31 @@ watch / review / cost.**
 
 ## 4. Project board (the "keep track of everything" ask)
 
-Michael wants pg-ai-stewards to be **a larger project board** that tracks everything
-we're working on *and its planning state*. Today `.spec/carry-over.md` is that board,
-maintained by hand. Elevate it into the substrate:
+**Most of the substrate side already exists** (verified 2026-06-06):
+- `stewards.projects` (migration `i1`) is a real, **AI-free** entity:
+  `slug, name, description, root_directory, archived, created/updated_at`. (Backfilled
+  today with `space-center`, `pg-ai-stewards`; operator adds/renames freely. The
+  `root_directory` column is the hook for a deferred "Projects B" = full workspace.)
+- `work_items.project_association` already links every item to a project (soft ref).
 
-- Add two dimensions to work items: **`project`** (ai-chattermax, pg-ai-stewards,
-  scripture-book, book, study, …) and **`planning_state`** (`idea → spec → ratified →
-  building → blocked → done`).
-- `stewards board` renders it (group by project, filter by state). `carry-over.md`
-  becomes a **generated view**, not hand-maintained — single source of truth in the DB.
-- Claude (and the cockpit) read/write it through the same work_item surface, so the
-  backlog, the dispatch queue, and the planning board are *one* system.
+So **project tracking without AI behind it already works.** A work item is
+**AI-optional, not AI-required**: it can sit in an early state with *no model ever
+touching it* — AI engages only when you `do`/dispatch it. The same table is therefore
+both the **plain tracker** (un-dispatched items) and the **work queue** (dispatched
+items): one board, AI opt-in per item.
 
-This is what turns "a pile of specs" into a board Michael can actually steer from.
+The only genuinely-new piece for a full planning board:
+- Add **`planning_state`** to work items (`idea → spec → ratified → building → blocked →
+  done`); optionally promote `project_association` to a real FK to `stewards.projects`.
+- `stewards project` / `board` scope + render it; `carry-over.md` becomes a **generated
+  view**, not hand-maintained — single source of truth in the DB.
+- Backlog, dispatch queue, and planning board become *one* system.
+
+**Design fork (Open Q5):** is an un-dispatched work_item a good-enough "card" for pure
+tracking, or do we want a lighter `tracked_items` table for notes/todos that should
+never carry the work_item machinery (binding_question, pipeline, cost)? **Lean:
+un-dispatched work_item is enough** — its early states already mean "tracked, no AI
+yet," and an item can graduate to AI work in place without a second system to reconcile.
 
 ## 5. Token dashboard by project + model (Michael's add)
 
@@ -122,6 +134,8 @@ The cockpit is what makes steps 2–3 his, not mine. Without it, he can only dri
    API (cleaner boundary, more work)? (Lean: direct pgxpool for P1, like persona-host.)
 4. Should `stewards do` be able to target a **Claude** work item (agent-SDK pool) from
    day one, or substrate-only first?
+5. Tracking items: un-dispatched `work_item` as the "card" (lean — one system) vs a
+   separate lightweight `tracked_items` table for pure notes/todos? (§4.)
 
 ## 9. Relation to other specs
 - [[claude-worker-dispatch]] — the cockpit's `do --assignee claude` kicks the agent pool.
