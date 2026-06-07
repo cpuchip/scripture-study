@@ -60,16 +60,28 @@ well they "become an example for this nation."
 
 ## Missed the mark — calibration, not contradiction
 
-- **Tier confidence is uneven.** His JS-quote rigor (Class 3) sits beside a confident "the
-  Garden of Eden was on American soil… right in… the center of the United States"
-  [(11:29)](https://www.youtube.com/watch?v=Tjk7hXBrbgM&t=689) presented as something he can
-  "make a pretty convincing argument" for. The Adam-ondi-Ahman → Missouri tradition is a
-  faithful one, but it is *tradition*, not doctrine — and our study's whole method was to keep
-  **established fact / faithful interpretation / speculation** visibly distinct. Same with the
-  founders "ordained high priests" / "Washington… ordained a high priest"
-  [(20:00)](https://www.youtube.com/watch?v=AOqqcwJZ4Xw&t=1200): a real Woodruff-temple account
-  with genuine sourcing complexity, presented as flat fact. Not *wrong* — but a devotional
-  register that doesn't tier its claims, where ours did.
+- **Tier confidence is uneven — though I had to correct my own first pass here.** His
+  JS-quote rigor (Class 3) sits beside a confident "the Garden of Eden was on American soil…
+  right in… the center of the United States" [(11:29)](https://www.youtube.com/watch?v=Tjk7hXBrbgM&t=689),
+  offered as something he can "make a pretty convincing argument" for. The Adam-ondi-Ahman →
+  Missouri tradition is faithful, but it is *tradition*, not doctrine — and our study's method
+  kept **established fact / faithful interpretation / speculation** visibly distinct. **But**
+  the Wilford Woodruff–St. George account (the founders appeared asking why their temple work
+  was undone; it was then performed, [02, 17:38](https://www.youtube.com/watch?v=AOqqcwJZ4Xw&t=1058))
+  is **not** mere tradition — it is documented Church history. The Church's own
+  [Ensign Q&A "Has the temple work for the founding fathers… been done?"](../../gospel-library/eng/ensign/1991/10/i-have-a-question/has-the-temple-work-for-the-founding-fathers-of-the-united-states-been-done.md)
+  (Oct. 1991) quotes Woodruff's journal directly: 19–21 Aug 1877 he was baptized for 100,
+  "including the signers of the Declaration of Independence… Gen. Washington and… all the
+  presidents," and "proxy **ordinations** and endowments for the men… were performed and
+  recorded" — so even "Washington ordained a high priest" is the actual proxy ordinance, not
+  folklore. The visitation itself is from Woodruff's 16 Sept 1877 public address ("They
+  waited on me for two days and two nights"). The founders' *foreordination* is taught by
+  Elder McConkie (Apr. 1974) and their *inspiration* by Brigham Young (via Paul H. Dunn,
+  Oct. 1975). I first flagged this as "tradition presented as fact" — that was me ruling
+  before checking our own manuals, exactly the ungrounded judgment the Study-It-Out gate
+  forbids, in the *skeptical* direction. The one precision worth keeping: Woodruff was
+  **President of the St. George Temple** (an Apostle) in 1877, not yet Church President (he
+  became President in 1889) — a small status detail the video and the common retelling blur.
 - **The Declaration-is-inspired step is a likening worn as a citation.** D&C 98:5 affirms
   "that law of the land which is constitutional… belongs to all mankind" — it never names the
   Declaration. His "this would suggest… yes the Lord inspired the Declaration of Independence"
