@@ -62,7 +62,7 @@ birth to a free country capable of bringing forth the restoration." [9:12]
 **Sources (verbatim, abbreviated):** Orson F. Whitney 1928 ("the Lord needs such men on the
 outside of his church"); Wilford Woodruff St. George temple account ("we laid the foundation
 of the government you now enjoy"); Ezra Taft Benson (founders' temple work done; "Washington…
-ordained a high priest" ⚠); Orson Hyde ("this same angel \[Moroni] presides over the destinies
+ordained a high priest" ✅ proxy ordinations documented — see below); Orson Hyde ("this same angel \[Moroni] presides over the destinies
 of America… was in the camp of Washington"); Isaac Potts / Valley Forge prayer account; Reagan
 folklore story — **explicitly flagged by the speaker: "I know it's folklore… didn't actually
 happen."** [42:01] ✅ (good disclosure)
@@ -124,6 +124,29 @@ Saints are going to save the Constitution." [39:21]
   opportunity; he leaned on Faulkner + consecration instead). 98:33–38 ("renounce war…
   standard of peace… ensample unto all people") ✅ — the D&C parallel to Class 2's Alma 43–44
   conflict rules (another missed cite).
+
+## Historical-claim verification — the Woodruff St. George account (corrected)
+
+My first pass flagged the Woodruff "founding fathers appeared" account as "⚠ tradition
+presented as fact." **That was an ungrounded skeptical ruling — I corrected it after Michael
+pushed and I checked our own corpus.** The account is **documented Church history**, definitively
+in the Church's own [Ensign "I Have a Question," Oct. 1991](../../../gospel-library/eng/ensign/1991/10/i-have-a-question/has-the-temple-work-for-the-founding-fathers-of-the-united-states-been-done.md),
+quoting Wilford Woodruff's journal:
+- Woodruff in Aug. 1877 was "**a member of the Quorum of the Twelve and president of the St.
+  George Temple**" — i.e., an Apostle + temple president, **not yet Church President** (he
+  became President in 1889). The video and the common retelling blur this; ✅ the precise status.
+- 19–21 Aug 1877: baptized for 100, "including the signers of the Declaration of Independence";
+  also "Gen. Washington and… all the presidents… except Buchanan, Van Buren, and Grant" (since
+  done). Lucy Bigelow Young baptized for Martha Washington + 70 eminent women. ✅
+- "Proxy **ordinations** and endowments for the men, and endowments for the women, were
+  performed and recorded" ✅ — so "Washington ordained a high priest" is the **actual proxy
+  ordinance**, not folklore.
+- The **visitation**: Woodruff's public address, 16 Sept 1877 — "They waited on me for two days
+  and two nights." ✅
+- Supporting doctrine in-corpus: founders **foreordained** (McConkie, *God Foreordains His
+  Prophets*, Apr. 1974) and **inspired** (Brigham Young, JD 7:14, via Paul H. Dunn, Oct. 1975).
+- Lesson for the gate: the Study-It-Out discipline cuts both ways — *unverified skepticism* is
+  as ungrounded as unverified credulity. Check the manuals before you rule, in either direction.
 
 ## Comparison findings (feed the evaluation)
 

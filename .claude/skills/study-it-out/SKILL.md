@@ -32,6 +32,10 @@ Before you render — or dispatch — any analytical verdict (review, critique, 
 
 If you can't point at the line, you didn't study it out — you guessed. The burn is counterfeit when the study was skipped.
 
+## It cuts both ways
+
+Unverified **skepticism** is as ungrounded as unverified **credulity**. Flagging a claim as "tradition," "unsupported," or "presented as fact" *without checking the source* is the same failure as asserting it without reading — you've rendered a verdict from your prior, not the artifact. Verify before you rule, in *either* direction. (Learned live, 2026-06-07: a yt-gospel eval flagged the Wilford Woodruff St. George founders account as "⚠ tradition"; the user pushed; the Church's own 1991 Ensign Q&A and Woodruff's journal documented it plainly. The skeptical ruling was the ungrounded one.)
+
 ## Relation
 - Extends `source-verification` (read-before-quoting) from quotes to judgments.
 - The substrate build of this discipline is the **Study-It-Out Gate** (`projects/pg-ai-stewards/.spec/proposals/study-it-out-gate.md`).
