@@ -1,0 +1,37 @@
+# Moroni 2 — the power to give the Holy Ghost: delegated authority, in Christ's name, after mighty prayer
+
+**Binding idea:** Moroni preserves the actual words Christ spoke to the Twelve, "as he laid his hands upon them" (2:1): "Ye shall call on the Father in my name, in mighty prayer; and after ye have done this ye shall have power that to him upon whom ye shall lay your hands, ye shall give the Holy Ghost; and in my name shall ye give it, for thus do mine apostles" (2:2). This was spoken "at the time of his first appearing; and the multitude heard it not, but the disciples heard it; and on as many as they laid their hands, fell the Holy Ghost" (2:3).
+
+**Read:** Moroni 2 (full, verbatim via gospel_get). 3 verses. The conferral of the power to give the Holy Ghost.
+
+## Thoughts
+
+Moroni now begins the short, practical chapters (2-6) that preserve exactly how Christ established His church — the ordinances and the order, recorded so that the church could be built *rightly*. This first one fills in what 3 Nephi referenced but did not fully record: the words Christ spoke when He gave the Twelve power to confer the gift of the Holy Ghost. And the few verses carry a precise theology of priesthood authority. First, the power is *real and delegated* — "ye shall have power that to him upon whom ye shall lay your hands, ye shall give the Holy Ghost." This is not metaphor or symbol; Christ confers actual authority on chosen men to bestow the Holy Ghost by the laying on of hands, and the verse confirms it worked: "on as many as they laid their hands, fell the Holy Ghost" (2:3). Second, the authority is *not their own* — "in my name shall ye give it." The power flows from Christ; the men are conduits, exercising His authority in His name, not generating it themselves. Third, and most striking, the power is *conditioned on prayer*: "Ye shall call on the Father in my name, in mighty prayer; and *after ye have done this* ye shall have power." The authority to act in God's name does not operate automatically or mechanically; it is preceded by "mighty prayer," the men calling on the Father before they exercise the gift. Delegated power is real, but it is drawn down by petition, not switched on by office. Even the ordained must pray mightily to wield what Christ has given. And the closing phrase grounds it in the universal pattern: "for thus do mine apostles" — what the Nephite Twelve do, the Jerusalem apostles do; the order of the church is one across the world. The detail that "the multitude heard it not, but the disciples heard it" marks this as the private commissioning of the leadership — some instruction is for the whole body, and some is the specific charge to those who will administer the ordinances. Moroni, building the record so the church can be rebuilt, preserves both.
+
+## Connections
+
+- **3 Ne 18:36-37; Acts 8:14-17; Acts 19:6; D&C 33:15** — the power to confer the Holy Ghost by the laying on of hands; the apostolic order (2:1-3).
+- **Gen 4:26; Ether 4:15; 3 Ne 19:9-15** — "call on the Father in my name, in mighty prayer" before exercising the gift; the prayer that precedes the power (2:2).
+- **Matt 10:1; John 20:22-23; D&C 107:8** — delegated authority in Christ's name; "thus do mine apostles"; the one order of the church (2:2).
+
+## Entities
+
+- **person:Jesus Christ** — confers on the Twelve the power to give the Holy Ghost, in His name.
+- **person:the twelve Nephite disciples** — given the delegated authority by the laying on of hands.
+- **doctrine:the-power-to-give-the-Holy-Ghost-is-real-and-delegated-but-exercised-in-Christs-name** — 2:2-3, actual authority, not metaphor; the power is Christ's, the men conduits.
+- **doctrine:delegated-authority-is-drawn-down-by-mighty-prayer-not-switched-on-by-office** — 2:2, "after ye have done this ye shall have power"; even the ordained must pray to wield the gift.
+- **doctrine:Moroni-preserves-the-ordinance-pattern-so-the-church-can-be-built-rightly** — 2:1-3, the short practical chapters recording how Christ established His church.
+
+## Edges (for graph)
+
+- `doctrine:the-power-to-give-the-Holy-Ghost-is-real-and-delegated-but-exercised-in-Christs-name` —["ye shall have power that to him upon whom ye shall lay your hands, ye shall give the Holy Ghost; and in my name shall ye give it, for thus do mine apostles... on as many as they laid their hands, fell the Holy Ghost"; the power is REAL and DELEGATED — not metaphor or symbol, actual authority conferred on chosen men to bestow the Holy Ghost by the laying on of hands, confirmed to work; but the authority is NOT THEIR OWN — "in my name shall ye give it"; the power flows from Christ, the men are conduits exercising His authority not generating it; "thus do mine apostles" grounds it in the universal pattern — what the Nephite Twelve do the Jerusalem apostles do, the order of the church one across the world]→ 2:1-3 (3 Ne 18:36-37; Acts 8:14-17; Acts 19:6; Matt 10:1)
+- `doctrine:delegated-authority-is-drawn-down-by-mighty-prayer-not-switched-on-by-office` —["Ye shall call on the Father in my name, in mighty prayer; and AFTER YE HAVE DONE THIS ye shall have power"; the authority to act in God's name doesn't operate automatically or mechanically — it is preceded by "mighty prayer," the men calling on the Father before they exercise the gift; delegated power is real but drawn down by petition, not switched on by office; even the ordained must pray mightily to wield what Christ has given]→ 2:2 (Gen 4:26; Ether 4:15; 3 Ne 19:9-15; D&C 42:14)
+- `doctrine:Moroni-preserves-the-ordinance-pattern-so-the-church-can-be-built-rightly` —[Moroni begins the short practical chapters (2-6) preserving exactly how Christ established His church — the ordinances and the order, recorded so the church could be built RIGHTLY; this first fills in what 3 Nephi referenced but didn't fully record (the words conferring the power to give the Holy Ghost); the detail "the multitude heard it not, but the disciples heard it" marks the private commissioning of the leadership — some instruction for the whole body, some the specific charge to those who administer the ordinances; the record built so the church can be rebuilt]→ 2:1-3 (3 Ne 11:21-22; 3 Ne 18:36-37; D&C 20:38-60; Eph 4:11-14)
+
+## Notable
+
+Yes — the conferral of the power to give the Holy Ghost. **The power to give the Holy Ghost is real and delegated, but exercised in Christ's name** (2:1-3, actual authority, not metaphor; the men conduits of Christ's power); **delegated authority is drawn down by mighty prayer, not switched on by office** (2:2, "after ye have done this ye shall have power"); and **Moroni preserves the ordinance pattern so the church can be built rightly** (2:1-3, the short practical chapters recording how Christ established His church).
+
+## Verified
+
+All quotations checked against `gospel_get` Moroni 2 this session: "The words of Christ, which he spake unto his disciples, the twelve whom he had chosen, as he laid his hands upon them" (v1); "Ye shall call on the Father in my name, in mighty prayer; and after ye have done this ye shall have power that to him upon whom ye shall lay your hands, ye shall give the Holy Ghost; and in my name shall ye give it, for thus do mine apostles" (v2); "Now Christ spake these words unto them at the time of his first appearing; and the multitude heard it not, but the disciples heard it; and on as many as they laid their hands, fell the Holy Ghost" (v3). Cross-refs (3 Ne 18:36-37, Acts 8:14-17, Acts 19:6, Matt 10:1, Gen 4:26) confirmed via footnotes.

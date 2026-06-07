@@ -1,0 +1,57 @@
+# Alma 31 — the Rameumptom: false worship as the inversion of true
+
+**Binding idea:** The Zoramite apostasy is true religion turned inside out at every joint. They pray a single memorized prayer, once a week, from a high stand that admits one man at a time — thanking God that they are "elected" and "a chosen and a holy people" while "all around us are elected to be cast... down to hell," and that "there shall be no Christ" (31:16-18). Then they go home and never speak of God until the next week (31:23). Against this, Alma does not argue first — he *prays*: a lament over their pride and a petition for "strength, that I may bear with mine infirmities" and for love, because "their souls are precious, and many of them are our brethren" (31:30-35). Two prayers stand in the chapter — one up high and self-praising, one broken and for others — and the whole sermon of chapters 32-34 grows out of the second.
+
+**Read:** Alma 31 (full, verbatim via gospel_get). Sets up the Zoramite mission (31-35) and the counsel-to-the-sons chapters (36-42); the team includes Alma's sons Shiblon and Corianton.
+
+## Thoughts
+
+Alma chooses the word over the sword, and Mormon makes the reasoning explicit: "the preaching of the word had a great tendency to lead the people to do that which was just — yea, it had had more powerful effect upon the minds of the people than the sword" (v5). This is the same conviction Ammon voiced (26:26) — the sword never converted anyone; the word does. So when the Zoramites threaten to defect to the Lamanites, Alma's response to a military problem is a missionary one. That's a deliberate Nephite wisdom the book keeps teaching: the durable fix for apostasy is preaching, not force.
+
+The Rameumptom is the chapter's dark centerpiece, and it's worth seeing how precisely it inverts true worship point by point. The prayer is *fixed* — "every man did go forth and offer up these same prayers," the "selfsame prayer" (vv20, 22) — where true prayer is living and particular (Matt 6:7, "use not vain repetitions"). It is *performed from a height*, one man elevated above all, "high above the head" (v13), where Christ's instruction is to pray in the closet (Matt 6:5-6). It is *self-congratulatory* — "we thank thee... that we are a chosen and a holy people" — which is the Pharisee's prayer verbatim (Luke 18:11, "I thank thee that I am not as other men"). It is *exclusionary by predestination* — "thou hast elected us that we shall be saved, whilst all around us are elected to be cast by thy wrath down to hell" (v17), a double-predestination that flatters the in-group and damns everyone else by decree. It is *anti-Christ* — "there shall be no Christ" (v16) — and anti-incarnation, insisting God "wast a spirit... and... wilt be a spirit forever," foreclosing the very thing the Atonement requires, God taking flesh. And it is *compartmentalized* — they go home and never speak of God again until the next week (v23, the hearers-not-doers of James 1:22). Set every feature against the gospel and you get a perfect negative image: God is far, fixed, flattering, exclusive, fleshless, and weekly. Isaiah named it centuries before — "this people draw near me with their mouth... but have removed their heart far from me" (Isa 29:13, the chapter's footnote at v27).
+
+And underneath the theology is the tell: "their hearts were set upon gold, and upon silver, and upon all manner of fine goods... lifted up unto great boasting, in their pride" (vv24-25). The election-doctrine isn't an abstract error; it's the spiritual self-justification of the rich. If God elected us and damned them, then our wealth is proof of our election and their poverty is proof of their damnation — which is exactly why, the next chapter reveals, they cast the poor out of the synagogues "because of the coarseness of their apparel." The Rameumptom is the prayer of a prosperity-cult that has theologized its own contempt for the poor. That's a sobering thing to recognize, because the impulse it dignifies — God blesses me because I deserve it, and the struggling deserve their struggle — is alive in every age, including mine.
+
+What moves me most is Alma's response, because it's not what I'd expect. He's grieved, he laments ("O, how long, O Lord, wilt thou suffer that thy servants shall dwell here below... to behold such gross wickedness," v26) — but then the prayer turns, and it turns *inward and toward love*, not outward in condemnation. "Wilt thou give me strength, that I may bear with mine infirmities. For I am infirm" (v30). He prays for his own capacity to endure, naming himself weak. Then for his fellow laborers, by name. And then the line that reframes the whole mission: "their souls are precious, and many of them are our brethren; therefore, give unto us, O Lord, power and wisdom that we may bring these, our brethren, again unto thee" (v35). The people who just prayed that he and his kind were damned — Alma calls them "precious" and "our brethren" and asks for power to save them. The Rameumptom prays *against* the outsider; Alma prays *for* the people who pray against him. That contrast is the chapter's heart: you can tell true worship from false by which direction the prayer points — at my own election, or at the precious soul of the one who hates me.
+
+The chapter ends with the answer to that kind of prayer. Alma claps his hands on his companions and "they were filled with the Holy Spirit" (v36); they go out taking "no thought for themselves" (v37, Matt 6:25); and the Lord gives them strength so "they should suffer no manner of afflictions, save it were swallowed up in the joy of Christ" (v38). The affliction isn't removed — it's swallowed up, the same word Mosiah used of Alma-the-elder's people whose burdens were made light. And Mormon's footnote on *why* is one line: "because he prayed in faith." The broken prayer for others, prayed in faith, is answered with joy that absorbs the suffering. The high prayer for self gets nothing but the applause of the stand.
+
+## Connections
+
+- **Matt 6:5-7** — pray in the closet, not to be seen; "use not vain repetitions"; the Rameumptom is the exact violation (vv13-14, 20).
+- **Luke 18:9-14** — the Pharisee's "I thank thee that I am not as other men"; the Rameumptom prayer (vv16-17, footnote).
+- **Isa 29:13** — "draw near me with their mouth... but have removed their heart far from me" (v27).
+- **James 1:22** — hearers not doers; "never speaking of their God again" until the next week (v23).
+- **Alma 32:1-5** — the poor cast out "because of the coarseness of their apparel"; the prosperity-contempt the Rameumptom theologizes.
+- **Alma 26:26** — the word more powerful than the sword; Alma's choice (v5).
+- **Alma 38:13-14** — Alma warns Shiblon against the Zoramite "I thank thee that we are better than our brethren" prayer (v16, footnote → Alma 38:14).
+- **Mosiah 24:13-15** — afflictions eased/swallowed; "swallowed up in the joy of Christ" (v38) echoes Alma-the-elder's deliverance.
+- **Matt 6:25-34** — "take no thought"; the missionaries' trust (v37).
+- **Alma 31:6-7; 36-42** — the team (Shiblon, Corianton, Amulek, Zeezrom) sets up the counsel-to-the-sons chapters.
+
+## Entities
+
+- **person:the Zoramites / Zoram** — dissenters; the Rameumptom worship; deny Christ; elect-by-pride.
+- **person:Alma the younger** — heartbroken; prays for strength and for the lost; the missionary choice.
+- **place:Rameumptom ("the holy stand")** — the high one-man stand of the fixed prayer.
+- **theme:false-worship-as-inversion-of-true** — 31:12-23, fixed/high/self-praising/exclusive/fleshless/weekly.
+- **doctrine:election-by-pride-vs-mercy** — 31:16-18, double-predestination flattering the rich.
+- **theme:the-two-prayers-self-vs-others** — 31:16-18 vs 31:30-35; which direction the prayer points.
+- **doctrine:the-word-more-powerful-than-the-sword** — 31:5, the missionary answer to a military threat.
+- **doctrine:affliction-swallowed-in-the-joy-of-Christ** — 31:38, answered "because he prayed in faith."
+
+## Edges (for graph)
+
+- `theme:false-worship-as-inversion-of-true` —[fixed memorized prayer (vs. living), one-man high stand (vs. closet), "we are a chosen and a holy people" (vs. repentance), elect/damned decree (vs. mercy), "no Christ"/"a spirit forever" (vs. incarnation), home and silent till next week (vs. continual); a perfect negative of the gospel]→ 31:12-23 (Matt 6:5-7; Luke 18:11; Isa 29:13; James 1:22)
+- `doctrine:election-by-pride-vs-mercy` —["thou hast elected us that we shall be saved, whilst all around us are elected to be cast... down to hell"; double-predestination as the rich man's self-justification — wealth as proof of election, poverty as proof of damnation]→ 31:16-18, 24-25 (Luke 18:9-14; Alma 32:2-5; Jacob 2:13-21)
+- `theme:the-two-prayers-self-vs-others` —[the Rameumptom prays against the outsider ("we thank thee... others shall perish"); Alma prays for the people who pray against him — "their souls are precious, and many of them are our brethren"; true worship is told from false by which way the prayer points]→ 31:16-18 vs 31:30-35 (Matt 5:44; Luke 23:34; Alma 26:26)
+- `doctrine:the-word-more-powerful-than-the-sword` —["the preaching of the word had... more powerful effect upon the minds of the people than the sword"; a missionary answer to a military threat]→ 31:5 (Alma 26:26; Hel 5:50-52; Heb 4:12)
+- `doctrine:affliction-swallowed-in-the-joy-of-Christ` —[they "suffer no manner of afflictions, save it were swallowed up in the joy of Christ... because he prayed in faith"; the affliction absorbed, not removed; the broken prayer for others answered]→ 31:36-38 (Mosiah 24:13-15; Matt 5:10-12; Alma 33:23) — the high prayer for self gets only the stand's applause
+
+## Notable
+
+Yes — the Rameumptom is the Book of Mormon's definitive catalog of false worship (the inversion of every gospel feature), and the two-prayers contrast (self-congratulation vs. intercession for one's enemies) is a sharp diagnostic. Sets up the faith/prayer/atonement sermon (32-34, spin-off running) and the counsel-to-the-sons chapters.
+
+## Verified
+
+All quotations checked against `gospel_get` Alma 31 this session: "the preaching of the word had... more powerful effect upon the minds of the people than the sword" (v5); "thou wast a spirit, and that thou art a spirit, and that thou wilt be a spirit forever" (v15); "thou hast elected us to be thy holy children... there shall be no Christ" (v16); "thou hast elected us that we shall be saved, whilst all around us are elected to be cast by thy wrath down to hell" (v17); "we are a chosen and a holy people" (v18); "the selfsame prayer" (v22); "never speaking of their God again until they had assembled themselves together again" (v23); "their hearts were set upon gold, and upon silver" (v24); "they cry unto thee with their mouths, while they are puffed up... with the vain things of the world" (v27); "wilt thou give me strength, that I may bear with mine infirmities. For I am infirm" (v30); "their souls are precious, and many of them are our brethren; therefore, give unto us, O Lord, power and wisdom that we may bring these, our brethren, again unto thee" (v35); "they were filled with the Holy Spirit" (v36); "they should suffer no manner of afflictions, save it were swallowed up in the joy of Christ... because he prayed in faith" (v38). Cross-refs (Matt 6:5-7, Luke 18:11, Isa 29:13, James 1:22, Alma 38:14) confirmed via footnotes.
