@@ -1,6 +1,6 @@
 # Substrate proposal — Self-Context-Management (agent-governed context window)
 
-**Status:** BUILD-READY (core §§1–6) — Michael chose CT2 as the next build (2026-06-05, after the platform + multi-room shipped). Decisions adopted below; phased plan defined. **§7 (2026-06-05 expansion) folds in Michael's two new asks — durable model-authored self-notes + a self-editable system prompt — and is DESIGN-ONLY, awaiting his ratification.**
+**Status:** **CT2.1 SHIPPED 2026-06-08** (core §§1–6 SQL state model — `extension/ct2-1-context-state-model.sql`, commit 1606675; live-applied + smoke-verified). **CT2.2 (Rust render) is the next step but DEFERRED** — it restarts the live substrate (Starlet/Computer ride on it), so it's Michael's call to run (a focused session). CT2.3/CT2.4 follow. Originally: Michael chose CT2 as the next build (2026-06-05). Decisions adopted below; phased plan defined. **§7 (2026-06-05 expansion) — durable model-authored self-notes + a self-editable system prompt — is DESIGN-ONLY, UNRATIFIED, NOT built.**
 
 ## Decisions adopted (2026-06-05) — the 9 open questions resolved to the spec's proposed defaults
 1. **N (lock cooldown)** = 3 turns.
