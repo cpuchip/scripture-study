@@ -172,6 +172,11 @@ func (rc *RoomConn) takeTurn(ctx context.Context, trigger wireMessage) error {
 			return err
 		}
 		rc.sessionID = sess
+		// CT2 §7c: record persona + room facets for this new session so the
+		// persona's durable self-notes scope correctly ({persona}/{room}).
+		if ferr := rc.cog.SetSessionFacets(ctx, sess, rc.persona.Slug, rc.room); ferr != nil {
+			log.Printf("[%s@%s] set_session_facets: %v", rc.persona.Slug, rc.room, ferr)
+		}
 	} else {
 		answer, err = rc.cog.ConsultTurn(ctx, rc.sessionID, buildConsultFraming(trigger, addressed))
 		if err != nil {

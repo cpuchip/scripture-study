@@ -103,6 +103,16 @@ func (c *Cognition) SpawnTurn(ctx context.Context, pipeline, slug, bindingQuesti
 	}
 }
 
+// SetSessionFacets records this session's persona + room into the substrate
+// (CT2 §7c) so dispatch_facets can scope durable self-notes to {persona:…} /
+// {room:…}. Best-effort: a failure here never blocks a turn — the facet is an
+// enhancement, not load-bearing for cognition.
+func (c *Cognition) SetSessionFacets(ctx context.Context, sessionID, persona, room string) error {
+	_, err := c.pool.Exec(ctx,
+		`SELECT stewards.set_session_facets($1, $2, $3)`, sessionID, persona, room)
+	return err
+}
+
 // ConsultTurn re-asks an established session with a new message and returns the
 // reply (which may be SilenceToken). The session already holds the persona's
 // character + prior turns, so the question is just the new message.
