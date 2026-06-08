@@ -250,7 +250,7 @@ pub(crate) fn tool_dispatch(payload: &serde_json::Value) -> Result<WorkOutcome, 
     let mut resolved: Vec<(String, String, String)> = Vec::new();
     let mut pending: Vec<(String, String, i64)> = Vec::new();
     for (tc_id, name, args, target) in prepped.into_iter() {
-        match exec_one_tool(&name, &args, &target) {
+        match exec_one_tool(&name, &args, &target, &session_id) {
             Ok(ToolReply::Sync(content)) => {
                 resolved.push((tc_id, name, content));
             }
@@ -298,12 +298,13 @@ fn exec_one_tool(
     name: &str,
     args: &serde_json::Value,
     target: &serde_json::Value,
+    session_id: &str,
 ) -> Result<ToolReply, String> {
     let kind = target.get("kind")
         .and_then(|v| v.as_str())
         .ok_or_else(|| "tool execute_target.kind missing".to_string())?;
     match kind {
-        "sql_fn"    => exec_sql_fn_tool(target, args).map(ToolReply::Sync),
+        "sql_fn"    => exec_sql_fn_tool(target, args, session_id).map(ToolReply::Sync),
         "http"      => exec_http_tool(target, args).map(ToolReply::Sync),
         "mcp_proxy" => exec_mcp_proxy_tool(target, args),
         "missing"   => Err(format!("tool '{}' is not registered or inactive", name)),
@@ -368,6 +369,7 @@ fn exec_mcp_proxy_tool(
 fn exec_sql_fn_tool(
     target: &serde_json::Value,
     args: &serde_json::Value,
+    session_id: &str,
 ) -> Result<String, String> {
     let schema = target.get("schema")
         .and_then(|v| v.as_str())
@@ -391,7 +393,17 @@ fn exec_sql_fn_tool(
     // wrap it in Rc so multiple PgTryBuilder retries (if any) could
     // share it. We currently only call it once, so a fresh build per
     // entry is fine — just don't try to .clone() it later.
-    let args_value = args.clone();
+    //
+    // CT2.3: inject the dispatch session_id so session-scoped sql_fn tools
+    // (the context-management levers) can resolve [ctx:handle] → message_id
+    // within the agent's own session. Existing sql_fn tools ignore the extra
+    // key (they read their named args), so this is backward-compatible. Only
+    // injected when args is an object and the key is absent.
+    let mut args_value = args.clone();
+    if let Some(obj) = args_value.as_object_mut() {
+        obj.entry("_session_id".to_string())
+            .or_insert_with(|| serde_json::Value::String(session_id.to_string()));
+    }
 
     // Pre-flight: does the function exist with a jsonb signature?
     // PG ereports on missing function would otherwise reach the
