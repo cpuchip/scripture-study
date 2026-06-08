@@ -1,7 +1,7 @@
 ---
 title: stewards cockpit — a human CLI for pg-ai-stewards (Option A)
 date: 2026-06-06
-status: DESIGN-ONLY — awaiting Michael's ratification (focus item, per 2026-06-06)
+status: RATIFIED 2026-06-07 — P1 build-ready (CT2 read still pending separately)
 binding_question: >
   How does Michael drive the substrate directly — dispatch work, watch it run, approve
   at the Hinge, see cost — without going through Claude, becoming the manager-of-agents
@@ -136,6 +136,8 @@ The cockpit is what makes steps 2–3 his, not mine. Without it, he can only dri
    day one, or substrate-only first?
 5. Tracking items: un-dispatched `work_item` as the "card" (lean — one system) vs a
    separate lightweight `tracked_items` table for pure notes/todos? (§4.)
+
+**Ratified 2026-06-07.** Q1 verbs = `project / board / do / council / ratify / watch / review / cost`. Q2 planning-state ladder = `idea → spec → ratified → building → blocked → done`. Q3 connection = **direct pgxpool** for P1. Q5 cards = **un-dispatched work_item** (one table — no separate `tracked_items`). → **P1 is build-ready: read-only `project / board / watch / cost`.**
 
 ## 9. Relation to other specs
 - [[claude-worker-dispatch]] — the cockpit's `do --assignee claude` kicks the agent pool.

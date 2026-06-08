@@ -1,7 +1,7 @@
 ---
 title: Agentic tools / model cascade — cheap-model sub-tools the orchestrator delegates to
 date: 2026-06-06
-status: DESIGN-ONLY — awaiting Michael's ratification
+status: RATIFIED 2026-06-07 — code-persona flagship: repo=ai-chattermax, read-only research_codebase first
 flagship: the ai-chattermax code / repo-reader persona
 binding_question: >
   Can pg-ai-stewards let an orchestrating model treat *other, cheaper models* as
@@ -186,6 +186,8 @@ code persona = agentic repo tools.)
    engineering persona (gated)? (Lean: read-only first, prove value, then gate writes.)
 4. Sync (`consult_subagent`, blocks the turn) vs async for `research_codebase` in a
    chat turn? (Lean: sync with a tight timeout — a chat turn needs the answer inline.)
+
+**Ratified 2026-06-07.** Q1 flagship repo = **ai-chattermax**. Q3 scope = **read-only first** (`research_codebase` cites file:line; no edits/PRs until it earns it). → build **P1**: a `researcher-flash` agent_family (deepseek-v4-flash + read-only repo tools) + the `research_codebase` MCP tool → wire a **read-only code persona** in ai-chattermax.
 
 ## 12. Relation to other specs
 

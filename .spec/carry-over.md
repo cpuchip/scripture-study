@@ -1,10 +1,37 @@
 # Carry-over backlog — ai-chattermax + pg-ai-stewards
 
 Living list of next-actions so nothing gets lost between sessions. Sorted by
-**what it needs from Michael**, which is the useful axis. Last updated 2026-06-06.
+**what it needs from Michael**, which is the useful axis. Last updated 2026-06-07.
 
 > Companion to `.mind/active.md` (narrative state) — this file is the flat
 > checklist. When an item ships, move it to "Done recently" then trim.
+
+## ★ RATIFIED — build queue (build through the week)
+
+Ratified 2026-06-07 (9pm Sunday, budget reset). Michael chose **"ratify the
+backlog, then I build"** — these execute async through the week; time-with-Claude
+stays for planning/council/ratify. Order: cockpit P1 → code persona P1.
+
+- **① stewards cockpit P1 — read-only Go CLI** (was ★ FOCUS).
+  Spec: `projects/pg-ai-stewards/.spec/proposals/stewards-cockpit-cli.md` →
+  **RATIFIED**. Ratified decisions: verbs = `project / board / do / council /
+  ratify / watch / review / cost`; planning-state ladder =
+  `idea → spec → ratified → building → blocked → done`; connection = **direct
+  pgxpool** (port 55433, like persona-host); cards = **un-dispatched work_item**
+  (one table, no separate `tracked_items`). **Build P1 = read-only
+  `project / board / watch / cost`** (pure SQL reads, zero risk). Then P2 adds
+  `planning_state` + project dims (and `carry-over.md` becomes a generated view).
+  New code lives at `projects/pg-ai-stewards/cmd/stewards/` (Go, pgxpool).
+
+- **② code persona P1 — `research_codebase` agentic tool + read-only ai-chattermax persona.**
+  Spec: `projects/pg-ai-stewards/.spec/proposals/agentic-tools-model-cascade.md` →
+  **RATIFIED**. Ratified decisions: flagship repo = **ai-chattermax**; scope =
+  **read-only first** (`research_codebase` returns findings + `file:line`
+  citations; no edits/PRs until it earns it). Build P1 = a `researcher-flash`
+  agent_family (deepseek-v4-flash + read-only repo tools: grep/glob/read) + the
+  `research_codebase` MCP tool (a `consult_subagent` preset + return contract);
+  smoke it on a real ai-chattermax question. P2 = wire it into a read-only code
+  persona pipeline in ai-chattermax, live-test in a room.
 
 ## Needs Michael's decision first (hard gate)
 
@@ -26,24 +53,13 @@ Living list of next-actions so nothing gets lost between sessions. Sorted by
   substrate, so it draws the new **`claude -p` Agent-SDK credit pool** (separate from
   interactive; ~$200/mo on Max-20x, live 2026-06-15) instead of wasting it. Dumb host
   poller → `claude -p` on demand (zero idle tokens); bins-1/2-only unattended; spend
-  guard. Also maps the **sub-with-API connector** options (opencode_go + Atlas/GLM/
-  Ollama) for substrate redundancy + capacity. **Action: Michael reads → ratifies →
-  build P1 after Sunday reset.** Build is cheap (host poller = non-Claude code).
-
-- **★ FOCUS — stewards cockpit CLI (Option A)** — spec complete:
-  `projects/pg-ai-stewards/.spec/proposals/stewards-cockpit-cli.md`. A `stewards` Go CLI
-  (pgxpool to the substrate, like persona-host) so Michael drives the substrate himself:
-  `project / board / do / council / ratify / watch / review / cost` — `project` selects a
-  sticky **active-project** context (like a kubectl context) that scopes the work-item
-  verbs; **ratify = input Hinge**
-  (approve a plan to build) and **review = output Hinge** (approve finished work);
-  **council** = pre-ratify critical-analysis pass (surfaces tensions; the human decides).
-  Closes the #1 gap (useful-to-agent-not-to-Michael).
-  Includes the **project board** (work_items gain `project` + `planning_state`;
-  `carry-over.md` becomes a generated view) and the **token dashboard by project × model**
-  (shared backend for the CLI `cost` verb + a stewards-ui panel — Michael's add). P1 =
-  read-only (board/watch/cost). **Action: Michael confirms verbs + planning-state ladder →
-  ratify → build.** Chosen focus among the 3 cockpit shapes (CLI now, stewards-ui next, ai-chattermax-as-cockpit later).
+  guard. **Engine decided 2026-06-07: Model A = `claude -p` to start** (Michael's lean);
+  Model B = the reverse-dispatcher (a long-lived *normal* interactive session draws the
+  generous interactive pool — most bang for the buck, but reserved for councilled queues,
+  never an automation farm). **Still pending:** (a) the **second connector** for substrate
+  redundancy/capacity — opencode_go is live; choose Atlas / GLM / Ollama; (b) the agent-SDK
+  pool itself doesn't exist until **2026-06-15**, so Model-A async can't spend it before
+  then. Build (host poller = non-Claude code) is cheap and can start any time.
 
 ## I can do now (no ratification, low Claude-token cost)
 
@@ -56,11 +72,11 @@ Living list of next-actions so nothing gets lost between sessions. Sorted by
 
 ## Design pass with Michael (~5 min), then I build
 
-- **Engineering / repo-reader persona** — a chat persona backed by a real repo
-  (ai-chattermax / pg-ai-stewards) that reads its own codebase and answers code
-  questions. Needs a NEW tool-scoped substrate pipeline (kept coder/repo tools
-  OUT of the librarian on purpose). Decide: which tools, which repos, read-only
-  vs propose-changes. The "next app."
+- **Engineering / repo-reader persona** — **RATIFIED 2026-06-07** as code persona
+  (build-queue item ②): repo = **ai-chattermax**, **read-only first**, backed by the
+  agentic `research_codebase` tool (not raw coder tools in the persona). P2 of item ②
+  wires the pipeline + live-tests it in a room. A propose-changes engineering persona
+  stays a later, gated step (drafts a PR, never merges — the Hinge).
 - **D&D MVP** — the original target: DM-assistant + NPCs + in/out-of-character
   side channels (sub-personas). The sub-persona model is a new surface.
 - **Moderation (#11)** — policy + tools. Rate-ceiling restore (above) is the
@@ -81,21 +97,18 @@ Living list of next-actions so nothing gets lost between sessions. Sorted by
 
 ## Seeds / ideas (not yet decided)
 
-- **Agentic tools / model-cascade in pg-ai-stewards** (2026-06-06, Michael). The big
+- **Agentic tools / model-cascade in pg-ai-stewards** — **RATIFIED 2026-06-07, now in
+  the build queue above (item ②).** (Kept here for the discriminator note.) The big
   model orchestrates; some "tools" are themselves cheap-model agentic calls that do the
   heavy lifting and return curated results (like WebFetch/`summarize_url` already do for
   web). Mirror of [[claude-worker-dispatch]] — that escalates UP to Claude; this delegates
-  DOWN to cheap models. Together = the full stewardship tree (cheap ← Claude ← Michael).
-  **Discriminator (= the gospel line "delegate execution, not discernment"):** agentic-wrap
-  a subtask ONLY if it's language/judgment, large vs. its instruction, with cheap
-  deterministic verification (tests/compile/exact-match). Don't wrap mechanical/exact ops
-  (raw grep, precise edits) — loses determinism, often a token wash. First candidate:
-  read-only `research_codebase` (deepseek-v4-flash explores + curates). Edits later, gated
-  on ground-truth. Built on existing `spawn_subagent`/`consult_subagent`. A/B the savings
-  (only real on large subtasks). **Spec written 2026-06-06:**
-  `projects/pg-ai-stewards/.spec/proposals/agentic-tools-model-cascade.md` — flagship
-  = the **ai-chattermax code/repo-reader persona** (its repo tools become cheap-model
-  agentic calls: `research_codebase` via deepseek-flash). Awaiting ratification.
+  DOWN to cheap models. **Discriminator (= the gospel line "delegate execution, not
+  discernment"):** agentic-wrap a subtask ONLY if it's language/judgment, large vs. its
+  instruction, with cheap deterministic verification (tests/compile/exact-match). Don't
+  wrap mechanical/exact ops (raw grep, precise edits) — loses determinism, often a token
+  wash. Open Qs still live: cheap model tier (deepseek-v4-flash vs a stronger flash); sync
+  vs async for a chat turn (lean: sync, tight timeout); whether read-only graduates to a
+  gated PR-proposing persona later.
 
 - **Harness-leveling experiment for cheap/local models** (2026-06-06, Michael). Can
   curated instructions + context (memory/intent/examples/tight specs/critic/ground-truth)
