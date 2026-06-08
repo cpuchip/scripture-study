@@ -1,6 +1,6 @@
 # Substrate proposal — Self-Context-Management (agent-governed context window)
 
-**Status:** **CT2 CORE (§§1–6) COMPLETE 2026-06-08** — CT2.1 + CT2.2 + CT2.3 all shipped + verified (commits 1606675, d985b1c, 0fc6f32). The full self-management loop works: an agent calls `context_compress(handle)` → the dispatcher injects `_session_id` (the one Rust change, `exec_sql_fn_tool`) → the wrapper resolves handle→message → the lever sets the state → `compose_messages` honors it next turn (handles, lock-strip, pinned/compressed/muted, pressure line). Gated per-family by `agents.context_tools_enabled` (default off). Rebuild+restart clean. **Remaining: CT2.4** = the A/B (does it earn its keep on long runs — task #136). **§7 (durable self-notes + self-editable base prompt + working tags) is DESIGN-ONLY, UNRATIFIED, NOT built.** — Original detail below:
+**Status:** **CT2 CORE (§§1–6) COMPLETE 2026-06-08** — CT2.1 + CT2.2 + CT2.3 all shipped + verified (commits 1606675, d985b1c, 0fc6f32). The full self-management loop works: an agent calls `context_compress(handle)` → the dispatcher injects `_session_id` (the one Rust change, `exec_sql_fn_tool`) → the wrapper resolves handle→message → the lever sets the state → `compose_messages` honors it next turn (handles, lock-strip, pinned/compressed/muted, pressure line). Gated per-family by `agents.context_tools_enabled` (default off). Rebuild+restart clean. **Remaining: CT2.4** = the A/B (does it earn its keep on long runs — task #136). **§7 RATIFIED 2026-06-08** — see §7.6 for the as-ratified design: a **faceted-audience self-notes** model (selectors persona/kind/room/pipeline/global matched against per-dispatch facets — generalizes session/persona/global so it covers ALL substrate work, not just personas) + the §7.2 prompt split + §7.4 working tags = the **core build**; §7.3 self-editable base prompt is **greenlit but gated** for its own later pass. NOT built yet. — Original detail below:
 
 **(superseded) CT2.1 + CT2.2 SHIPPED 2026-06-08** (commits 1606675, d985b1c). CT2.1 = SQL state model (`ct2-1-context-state-model.sql`). CT2.2 = the render honors it (`ct2-2-context-render.sql`) — handles, lock-strip (§4), pinned/compressed/muted, the §5 pressure line. **CT2.2 turned out to be PURE SQL, not Rust** — `compose_messages`/`compose_system_prompt` are plpgsql, so a `CREATE OR REPLACE` takes effect with no rebuild/restart; the "Rust rebuild" note in the plug-in table below was wrong about the RENDER layer. Built on the **l13** base (not k2 — a before/after md5 caught + reverted a regression where the k2 base would have dropped k6/k7/k8/k9/l1/l13 evolution); tools-off render is byte-identical, smoke-verified. **CT2.3 (expose the levers as agent-callable tools) IS the Rust+restart step** — `exec_sql_fn_tool` (tools.rs) calls `SELECT fn($1)` with only model args, no session, so the levers can't resolve `[ctx:handle]`→message_id; plan = inject `_session_id` into the sql_fn args (backward-compatible) + handle-resolution wrappers + tool_defs(sql_fn) + grants + rebuild/restart (Michael cleared restarts; ledger reconciled clean). Then CT2.4 (A/B). **§7 (durable self-notes + self-editable system prompt) is DESIGN-ONLY, UNRATIFIED, NOT built.**
 
@@ -194,7 +194,55 @@ make a whole task's footprint a single addressable thing.
 - **Separate, later, ratify-gated:** §7.3 base-prompt propose/ratify. Its own design +
   ratification pass; not bundled into CT2's first build.
 
-*(All of §7 is design-only, awaiting Michael's ratification — nothing here is built.)*
+### 7.6 ★ RATIFIED design (2026-06-08) — supersedes the §7.1 scope sketch
+
+Walked with Michael 2026-06-08. Decisions:
+
+**Build scope:** all of §7 (incl. §7.3, gated). **Notes cap:** generous — ~40 notes /
+~4,000 tokens rendered per dispatch (count + token cap, hard-enforced). **Default
+audience:** the authoring persona. **§7.3:** greenlit as a gated design (build later).
+
+**The big change — a faceted audience model replaces session/persona/global.** The
+original §7.1 scope enum doesn't generalize (Michael: it "gets messy" once you also
+want per-room and per-work-type notes). So a note is targeted by **audience
+selectors** matched against each **dispatch's facets** — one match rule instead of N
+tiers, and it works for ALL pg-ai-stewards work, not just chat personas.
+
+- **`agent_self_notes`** row: `note`, `handle` ([note:xxxx], §2 scheme), `audience`
+  jsonb (selectors), `tags` text[] (free-form), `created_by`, timestamps.
+- **audience selectors** (dimension→value, AND-combinable): `persona`, `kind`,
+  `room`, `pipeline` (work-type), `global:true`, `session`. Default `{persona:<self>}`.
+- **dispatch facets** — computed in `compose_system_prompt`: `session_id`,
+  `agent_family`, `kind`, `pipeline` always; `persona`, `room` when a chat persona
+  (threaded from persona-host). A new dimension later = a new facet key, **no schema
+  change, no new tier.**
+- **render rule:** a note renders into a dispatch's "YOUR DURABLE NOTES" block iff
+  every one of its selectors matches that dispatch's facet (`global:true` always
+  renders; a selector whose facet is absent on this dispatch → no match).
+- **kind** is a new field on the agent/persona (`roleplay` / `code` / `librarian` /
+  `general`, extensible) — drives the `kind` facet. A `{kind:code}` note is the
+  shared per-kind pool Michael picked (any code persona writes it, all code personas
+  read it; roleplay personas never see it).
+- **tags** = labels for search/curation only; they do **not** gate delivery (a
+  dispatch has no "purpose" facet), so `purpose:code-style` is organization, not routing.
+- **Tools:** `remember(note, audience, tags)` / `forget(handle)`. Removable by the
+  model (the Hermes self-curation loop). §4 cooldown applies to add/remove (anti-thrash).
+  Human-prunable DB rows. Builds on the engram/`mark_engram_important` machinery.
+
+**§7.2 prompt split** (build with core): immutable base + the rendered self-notes block.
+
+**§7.4 working tags** (build with core): `context_set_tag` + batch `*_tag` levers, as in
+§7.4 above. (Distinct from §7.6 `tags`: working tags address *current-window messages*
+for batch fold/mute; self-note `tags` are durable-note labels.)
+
+**§7.3 self-editable BASE prompt** — **greenlit, gated, separate later build pass:**
+`propose_prompt_change` → critic + human ratify → versioned/revertible
+`agent_prompt_history`; `allow_self_base_prompt` flag OFF by default.
+
+**Build order (Mosiah 4:27):** ① core = §7.1 faceted self-notes + caps + the `kind`
+field + dispatch-facet computation + §7.2 split + §7.4 working tags. ② §7.3, its own pass.
+
+*(§7 RATIFIED 2026-06-08. The core is build-ready; §7.3 is design-ratified for a later pass.)*
 
 ## Prior art & validation (web search, 2026-06-04)
 
