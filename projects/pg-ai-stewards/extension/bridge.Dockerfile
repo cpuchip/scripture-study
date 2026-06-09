@@ -35,6 +35,12 @@ COPY projects/pg-ai-stewards/cmd/stewards-cli/ ./projects/pg-ai-stewards/cmd/ste
 # coder-mcp — the substrate's coding capability (sandbox-manager + MCP tools).
 # Spawns coder-runtime sandbox containers against the host docker daemon.
 COPY projects/pg-ai-stewards/cmd/coder-mcp/  ./projects/pg-ai-stewards/cmd/coder-mcp/
+# persona-host — NOT built in this image, but go.work (copied above) lists it,
+# so any GOWORK-mode build (e.g. stewards-mcp below) fails to resolve the
+# workspace without its go.mod present. Copy the module so go.work is whole.
+# (Bug found 2026-06-09: persona-host joined go.work but this COPY list lagged,
+# so --no-cache bridge builds broke on `cannot load module ../persona-host`.)
+COPY projects/pg-ai-stewards/cmd/persona-host/ ./projects/pg-ai-stewards/cmd/persona-host/
 
 # Spawn targets
 COPY scripts/fetch-md-mcp/      ./scripts/fetch-md-mcp/
