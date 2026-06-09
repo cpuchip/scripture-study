@@ -143,3 +143,23 @@ The skill description and checklist were updated to apply to ALL document types,
 
 **New bias pattern added: Memory Confabulation (#8)**
 Documented in [biases.md](biases.md) with three sub-patterns: wording drift, phantom attribution, and fabricated composites. Includes detection heuristic: "If you wrote a direct quote without having called `read_file` on its source during this session, the quote is suspect."
+
+---
+
+### June 9, 2026
+
+**webster-mcp serves Webster 1913 text under the 1828 label (Behavior / Data integrity — Critical)**
+Found during the scripture-book v4 honesty audit (first Fable 5 session). `webster_define` ("Look up a word in the Webster 1828 dictionary") returned, for *spirit*, an entry containing citations impossible in 1828: **U.S. Dispensatory** (first published 1833), **N. P. Willis** (1830s travel writer), Keble, and "stannic chloride." The definitions match **Webster's 1913 Revised Unabridged** verbatim (e.g. "an intelligence conceived of apart from any physical organization or embodiment"). Verified against webstersdictionary1828.com: the genuine 1828 *spirit* and *intelligence* entries contain none of the quoted 1913 phrasing (1828 *intelligence* is "1. Understanding; skill … 4. A spiritual being; as a created intelligence").
+
+**Impact:**
+- *Beyond the Prompt* Ch 0 + Ch 1 quoted 1913 text as "Webster 1828" (v4 findings F-19/F-20; fixes drafted — the genuine 1828 entries actually serve both arguments better).
+- The 2026-05-29 book fact-check declared "Webster spirit/intelligence exact" — it verified against this tool, i.e. **verified via the wrong path** (the glm-streaming lesson recurring: a verification tool can itself be the wrong source).
+- Likely affected: **1828.ibeco.me / 1828-illuminated** (853-word tier list + site content), the **morm-8 three-glories study** (published on cpuchip.net, leaned on "1828" entries for fine/gain/glory/pollute/apparel), the webster-analysis skill, and any past study quoting `webster_define` output as 1828.
+
+**Action items:**
+1. Audit `scripts/webster-mcp`'s data source — where did the "1828" dataset come from? (1913/GCIDE is the common free "Webster" dataset; easy to mislabel.)
+2. Until fixed: treat `webster_define` output as *unverified for edition*; check any "1828" claim against webstersdictionary1828.com before publishing.
+3. Re-audit published Webster-dependent studies (three-glories first — it's live on cpuchip.net).
+4. Consider adding the genuine 1828 dataset and exposing both editions honestly (the 1913 data is still useful — under its own name).
+
+**Priority:** High — same class as quote fabrication: a mislabeled source makes honest text dishonest silently.
