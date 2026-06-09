@@ -280,6 +280,29 @@ The council A/B taught us to measure, not assume (m3-on-plan looked good, cost 2
 
 **A/B:** one long, judgment-heavy dispatch (a full multi-stage `code-pr`, or a deep study) run **with** context-tools enabled vs. **automatic-only**. Measure: total tokens, cost, end-to-end quality, and — specifically — whether the agent *thrashed* (toggle count, lock-hits) and whether muting ever dropped something it later needed. Hypothesis: marginal on short runs, real on long ones. If it's marginal everywhere, it stays a per-stage opt-in, not a default.
 
+### CT2.4 — concrete experiment design (2026-06-09; task #136; awaiting spend nod)
+
+- **Workload:** the bacteriopolis-class brainstorm — already the K/L stress
+  benchmark with priced baselines ($0.33–$0.51/run), long, tool-heavy, and
+  its output is comparable across runs. (Alternate: a code-pr task; pricier
+  but verification is objective — build/tests.)
+- **Setup:** clone the agent family (`X` → `X-ct2`, identical prompt/model)
+  with `context_tools_enabled=true` on the clone only. Same binding question.
+  2 runs per arm (4 total) for minimal variance cover.
+- **Metrics (all queryable, no instrumentation needed):**
+  `work_items.cost_micro_dollars`; cumulative `messages.tokens_in` per turn
+  (the context-size curve); pressure-line events; lever calls actually made
+  (work_queue sql_fn dispatches: context_*/remember/forget); breaker
+  lock-hits (thrash); engram extraction count.
+- **Quality judge:** Michael reads the two outputs blind (labels hidden);
+  optionally a redline panel as a second reader.
+- **Decision rule:** tools earn default-on if cost ≤ control AND quality ≥
+  control. If lever-usage = 0, the verdict is "model ignores the levers" —
+  iterate the §5 pressure-line nudge before concluding anything.
+- **Cost:** ~$1.40–$2.20 total. Not run during the 2026-06-09 lunch block —
+  the ratified scope covered CT2 *implementation*; this experiment's spend
+  is its own small nod.
+
 ## Creation-cycle framing (for the book audit)
 
 This deepens three steps of the cycle and is worth a note in the blueprint audit:
