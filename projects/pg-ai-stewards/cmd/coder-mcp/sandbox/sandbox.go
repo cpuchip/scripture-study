@@ -129,10 +129,24 @@ const (
 	worktreeRoot = "/worktrees"      // the bridge's mount point of worktreeVol
 )
 
-// repoAllowed reports whether repo matches CODER_REPO_ALLOWLIST (comma-separated
-// substrings; default: ai-chattermax only). The tool-layer guard from D-CV2.2 —
-// even with a token, the coder only touches whitelisted repos.
+// repoAllowed reports whether repo is clonable: it must match
+// CODER_REPO_ALLOWLIST (comma-separated substrings; default: ai-chattermax
+// only) AND must NOT match CODER_REPO_DENYLIST. The tool-layer guard from
+// D-CV2.2 — even with a token, the coder only touches whitelisted repos.
+//
+// DENY BEATS ALLOW (2026-06-09): the bridge clones with a GITHUB_TOKEN that
+// can reach PRIVATE repos too, so a broad allow substring like
+// "github.com/cpuchip/" would otherwise expose private repos. The denylist
+// hard-excludes them (e.g. private-study, the job search) regardless of the
+// allow pattern, and future private repos just get added there.
 func repoAllowed(repo string) bool {
+	if deny := os.Getenv("CODER_REPO_DENYLIST"); deny != "" {
+		for _, pat := range strings.Split(deny, ",") {
+			if pat = strings.TrimSpace(pat); pat != "" && strings.Contains(repo, pat) {
+				return false
+			}
+		}
+	}
 	list := os.Getenv("CODER_REPO_ALLOWLIST")
 	if list == "" {
 		list = "github.com/cpuchip/ai-chattermax"

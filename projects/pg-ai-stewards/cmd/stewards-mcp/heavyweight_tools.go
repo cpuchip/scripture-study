@@ -19,6 +19,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"os"
 	"strings"
 
 	"github.com/jackc/pgx/v5/pgxpool"
@@ -115,6 +116,14 @@ func registerHeavyweightTools(srv *mcp.Server, pool *pgxpool.Pool) {
 			"'how does X work / where is Y handled' questions where curated, cited synthesis is worth the delegation. " +
 			"Repo must be on the coder allow-list.",
 	}, makeResearchCodebase(pool))
+
+	// R14 — codewright self-awareness: what repos can I research?
+	mcp.AddTool(srv, &mcp.Tool{
+		Name: "list_repos",
+		Description: "List the repositories you are allowed to research with research_codebase " +
+			"(the allow/deny patterns the coder sandbox enforces). Call this when asked 'what can you look at?' " +
+			"or before researching, so you only promise repos you can actually reach.",
+	}, makeListRepos())
 
 	// L.1.1.12 — corpus access for the judge surface.
 	mcp.AddTool(srv, &mcp.Tool{
@@ -609,5 +618,51 @@ func makeResearchCodebase(pool *pgxpool.Pool) func(
 			BindingQuestion: binding,
 			CostCapMicro:    costCap,
 		})
+	}
+}
+
+// ---------------------------------------------------------------------
+// list_repos — R14: codewright's self-awareness of its research scope.
+// ---------------------------------------------------------------------
+// Reads the SAME env the coder sandbox enforces against (CODER_REPO_ALLOWLIST
+// / CODER_REPO_DENYLIST), so what the persona reports == what it can actually
+// clone. No args. Lets codewright answer "what can you look at?" honestly.
+
+type ListReposInput struct{}
+
+type ListReposOutput struct {
+	AllowPatterns []string `json:"allow_patterns"`
+	DenyPatterns  []string `json:"deny_patterns"`
+	Note          string   `json:"note"`
+}
+
+func splitEnvList(v string) []string {
+	var out []string
+	for _, p := range strings.Split(v, ",") {
+		if p = strings.TrimSpace(p); p != "" {
+			out = append(out, p)
+		}
+	}
+	return out
+}
+
+func makeListRepos() func(
+	ctx context.Context, req *mcp.CallToolRequest, in ListReposInput,
+) (*mcp.CallToolResult, ListReposOutput, error) {
+	return func(
+		ctx context.Context, req *mcp.CallToolRequest, in ListReposInput,
+	) (*mcp.CallToolResult, ListReposOutput, error) {
+		allow := os.Getenv("CODER_REPO_ALLOWLIST")
+		if allow == "" {
+			allow = "github.com/cpuchip/ai-chattermax" // mirrors sandbox.repoAllowed default
+		}
+		out := ListReposOutput{
+			AllowPatterns: splitEnvList(allow),
+			DenyPatterns:  splitEnvList(os.Getenv("CODER_REPO_DENYLIST")),
+			Note: "research_codebase may clone any repo URL matching an allow pattern (substring) " +
+				"and NOT matching a deny pattern. Pass a full clone URL or owner/name to research_codebase. " +
+				"If a repo isn't covered, say so plainly rather than guessing.",
+		}
+		return nil, out, nil
 	}
 }
