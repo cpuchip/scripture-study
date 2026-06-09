@@ -22,7 +22,16 @@ BEGIN
       FROM stewards.intents WHERE slug = 'scripture-study';
 
     IF v_default_intent_id IS NULL THEN
-        RAISE EXCEPTION '5d4 backfill: no scripture-study intent found. Run seed_intents_from_yaml first.';
+        -- Fresh-database path (DR fix 2026-06-09): on a virgin database there
+        -- are no intents yet (seed_intents_from_yaml is a runtime op) and no
+        -- work_items to backfill — the backfill is only meaningful on a live
+        -- DB that predates Phase C. The original RAISE EXCEPTION here made
+        -- CREATE EXTENSION itself fail on every fresh database once this file
+        -- joined the bundled chain (found by the verify-suite harness).
+        -- Ledger sha re-recorded same day, not re-applied (live already has
+        -- the intent). Takes effect in the bundle at the next pg image build.
+        RAISE NOTICE '5d4 backfill: no scripture-study intent seeded; skipping backfill (fresh database)';
+        RETURN;
     END IF;
 
     UPDATE stewards.work_items
