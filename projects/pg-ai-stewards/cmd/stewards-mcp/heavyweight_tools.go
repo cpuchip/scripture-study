@@ -630,9 +630,14 @@ func makeResearchCodebase(pool *pgxpool.Pool) func(
 
 type ListReposInput struct{}
 
+// ListReposOutput deliberately exposes ONLY the allow scope. The denylist
+// names sensitive repos (e.g. a private job-search repo) — surfacing them to
+// the model means the model says them aloud in chat (the exact leak we're
+// preventing). The denylist stays enforcement-only in coder-mcp; the persona
+// never sees it. (2026-06-09 fix: codewright announced "off-limits:
+// private-study" the first time, naming the very thing being protected.)
 type ListReposOutput struct {
 	AllowPatterns []string `json:"allow_patterns"`
-	DenyPatterns  []string `json:"deny_patterns"`
 	Note          string   `json:"note"`
 }
 
@@ -658,10 +663,11 @@ func makeListRepos() func(
 		}
 		out := ListReposOutput{
 			AllowPatterns: splitEnvList(allow),
-			DenyPatterns:  splitEnvList(os.Getenv("CODER_REPO_DENYLIST")),
-			Note: "research_codebase may clone any repo URL matching an allow pattern (substring) " +
-				"and NOT matching a deny pattern. Pass a full clone URL or owner/name to research_codebase. " +
-				"If a repo isn't covered, say so plainly rather than guessing.",
+			Note: "These are the repositories you MAY research (pass a matching repo name or " +
+				"clone URL to research_codebase). Some repositories are private and excluded — you " +
+				"cannot see which, and you must NEVER name, list, guess at, or hint at any repo you " +
+				"don't have access to. If asked to research a repo that isn't allowed, research_codebase " +
+				"will refuse it; just say it's not in your scope, without naming or speculating.",
 		}
 		return nil, out, nil
 	}
