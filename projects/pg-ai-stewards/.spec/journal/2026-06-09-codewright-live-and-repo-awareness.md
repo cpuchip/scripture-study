@@ -66,6 +66,24 @@ Michael's A→B→C vision:
   across THREE billing pools (Anthropic credits, opencode sub, Gemini). Its own ratified
   project + security pass.
 
+## ★ Follow-up fix (same session): the denylist LEAKED its own names
+
+Michael, re-testing: "I don't want to leak what it doesn't have access to into chat.
+did it actually say it doesn't have access to private-study?" — **Yes it did.** The
+first list_repos returned `deny_patterns`, and codewright announced "off-limits anything
+matching private-study" in the room — naming the private job-search repo. **The
+protection leaked the protected thing.** A real lesson: a denylist's *contents* are
+sensitive metadata; never surface them to the model whose whole job is to talk.
+
+Two-layer fix (a671a37, r15): (1) list_repos no longer returns deny_patterns — the model
+can't see the denylist, so it can't say it (deny_patterns gone from the binary,
+verified). The denylist stays enforcement-only in coder-mcp. (2) r15 re-prompts
+codewright: never name/list/guess at any repo it can't access; decline a denied repo
+without confirming it exists. **Inverse-hypothesis verified:** the exact question that
+leaked now answers "any public repo under github.com/cpuchip/" with zero private names
+(leak-check CLEAN). **Principle: enforcement and disclosure are different surfaces — a
+deny rule protects access, but its *names* must not reach a model that speaks.**
+
 ## Commits / state
 Root `b92e805` (Layer A: sandbox.go denylist + heavyweight_tools list_repos + r14 +
 roadmap spec) UNPUSHED. persona_host row + `.env` edit are live/local (gitignored).
