@@ -303,6 +303,46 @@ The council A/B taught us to measure, not assume (m3-on-plan looked good, cost 2
   the ratified scope covered CT2 *implementation*; this experiment's spend
   is its own small nod.
 
+### CT2.4 — RUN 1 result (2026-06-09; the informative null)
+
+Ran one control/treatment pair on the bacteriopolis binding. Setup:
+`research-ct2` agent (= `research` + `context_tools_enabled=true` + explicit
+allows for the 5 context tools + remember/forget) on a cloned
+`research-write-ct2` pipeline; control = stock `research-write`.
+
+| arm | cost | context-lever calls | other tool calls |
+|---|---|---|---|
+| control (tools off) | $0.371 | n/a | normal research toolset |
+| treatment (tools on) | ~$0.33 | **0** | fetch_url ×12, fs_read ×6, study/web search, … |
+
+**Finding: `context_tools_enabled` alone is INERT.** The treatment agent ran
+a long, tool-heavy session and never once called a context lever
+(compress/mute/pin/expand/remember/forget) despite having them. The small
+cost delta is noise at n=1, not lever-driven (0 levers fired). Two compounding
+causes: (a) the `research` agent prompt says nothing about managing its own
+context, so the model has no reason to reach for unfamiliar tools; (b) the
+multi-stage research-write pipeline resets context per stage, so it likely
+never crossed the §5 pressure threshold that would surface the nudge.
+
+**This is a verdict about activation, not value.** It does NOT show the levers
+are worthless — it shows the *flag is necessary but not sufficient*. Before
+CT2 can earn default-on, RUN 2 must remove the activation gap, one of:
+1. **Prompt scaffolding** — add a short "manage your context with
+   context_*/remember as it fills" block to the treatment agent's prompt, so
+   the model knows the levers exist and when to use them.
+2. **A single-accumulating-session workload** — research_codebase reading a
+   large repo, or a long code-pr implement stage — where one model session
+   genuinely fills past the §5 pressure line (the multi-stage pipeline dilutes
+   the pressure the levers are meant to relieve).
+3. **Verify the §5 pressure line actually fires + is heeded** — instrument
+   whether the nudge ever rendered; if it never fired, that's the bug to fix
+   first.
+
+Recommendation: CT2 stays a per-agent opt-in (as built — gated, off by
+default). Do NOT promote to default-on. RUN 2 (with prompt scaffolding, ~$1)
+is the next step whenever Michael wants the activation question settled.
+(Artifacts: work_items `ct2ab-control-1` / `ct2ab-treatment-1`.)
+
 ## Creation-cycle framing (for the book audit)
 
 This deepens three steps of the cycle and is worth a note in the blueprint audit:
