@@ -19,6 +19,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"strings"
 
 	"github.com/jackc/pgx/v5/pgxpool"
 	"github.com/modelcontextprotocol/go-sdk/mcp"
@@ -104,6 +105,16 @@ func registerHeavyweightTools(srv *mcp.Server, pool *pgxpool.Pool) {
 			"current focus. The old engrams are archived in engrams._history; a fresh extraction runs with " +
 			"the new binding. Cost-capped at $0.10 per re-extraction by default.",
 	}, makeReExtractEngrams(pool))
+
+	// R10 / P1.5 — the code-research agentic tool (code persona P1).
+	mcp.AddTool(srv, &mcp.Tool{
+		Name: "research_codebase",
+		Description: "Explore a code repository (read-only) and return curated findings + file:line citations. " +
+			"Delegates to a cheap sub-agent that greps/reads in a repo-mounted sandbox (no write/exec/git). " +
+			"EXPENSIVE agentic search — for an exact string match use grep; use this for " +
+			"'how does X work / where is Y handled' questions where curated, cited synthesis is worth the delegation. " +
+			"Repo must be on the coder allow-list.",
+	}, makeResearchCodebase(pool))
 
 	// L.1.1.12 — corpus access for the judge surface.
 	mcp.AddTool(srv, &mcp.Tool{
@@ -532,5 +543,71 @@ func makeReadCorpusParents(pool *pgxpool.Pool) func(
 			HasMore: hasMore,
 		}
 		return nil, out, nil
+	}
+}
+
+// ---------------------------------------------------------------------
+// research_codebase — R10 / P1.5 wrapper (code persona P1)
+// ---------------------------------------------------------------------
+
+type ResearchCodebaseInput struct {
+	Repo         string `json:"repo" jsonschema:"repository to research: full clone URL, owner/name, or bare name (bare resolves to github.com/cpuchip/<name>); must be on the coder allow-list"`
+	Question     string `json:"question" jsonschema:"the code question to answer (e.g. 'how does the gateway authenticate a persona?')"`
+	CostCapMicro int64  `json:"cost_cap_micro,omitempty" jsonschema:"max micro-dollars (default 500000=$0.50)"`
+}
+
+// normalizeRepoURL expands shorthand repo references to the full clone URL
+// the sandbox allow-list expects. The R10 smoke proved the failure mode: a
+// bare name is rejected at coder_sandbox_start and the cheap researcher then
+// fumbles instead of recovering — so the wrapper, not the sub-agent, owns
+// normalization. Full URLs pass through verbatim.
+func normalizeRepoURL(repo string) string {
+	r := strings.TrimSpace(repo)
+	if r == "" {
+		return r
+	}
+	if strings.HasPrefix(r, "http://") || strings.HasPrefix(r, "https://") {
+		return r
+	}
+	r = strings.TrimSuffix(r, ".git")
+	if strings.Contains(r, "/") {
+		return "https://github.com/" + r
+	}
+	return "https://github.com/cpuchip/" + r
+}
+
+func makeResearchCodebase(pool *pgxpool.Pool) func(
+	ctx context.Context, req *mcp.CallToolRequest, in ResearchCodebaseInput,
+) (*mcp.CallToolResult, SpawnSubagentOutput, error) {
+	return func(
+		ctx context.Context, req *mcp.CallToolRequest, in ResearchCodebaseInput,
+	) (*mcp.CallToolResult, SpawnSubagentOutput, error) {
+		if in.Repo == "" {
+			return toolError("research_codebase: 'repo' is required"), SpawnSubagentOutput{}, nil
+		}
+		if in.Question == "" {
+			return toolError("research_codebase: 'question' is required"), SpawnSubagentOutput{}, nil
+		}
+
+		repoURL := normalizeRepoURL(in.Repo)
+		binding := fmt.Sprintf(
+			"REPOSITORY: %s\n\nQUESTION: %s\n\n"+
+				"Research the repository read-only per your method (coder_sandbox_start with the exact "+
+				"REPOSITORY URL above, grep/glob to locate, read the precise regions, stop the sandbox) "+
+				"and answer in your required markdown format "+
+				"(Summary / Findings / Citations / Confidence / Caveats).",
+			repoURL, in.Question,
+		)
+
+		costCap := in.CostCapMicro
+		if costCap == 0 {
+			costCap = 500_000 // $0.50 — R10 smoke measured ~$0.19/run
+		}
+
+		return makeSpawnSubagent(pool)(ctx, req, SpawnSubagentInput{
+			PipelineFamily:  "subagent-research-codebase",
+			BindingQuestion: binding,
+			CostCapMicro:    costCap,
+		})
 	}
 }
