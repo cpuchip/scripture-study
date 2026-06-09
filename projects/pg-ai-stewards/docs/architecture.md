@@ -5,14 +5,18 @@ perspective. Goal: 15 minutes to "I know where things live and what
 to query." Not a phase plan ([../phases.md](../phases.md)). Not a
 proposal ([../docs/history/](history/)). Just the runtime shape.
 
-State of the world as of 2026-05-29: extension `pg_ai_stewards` 0.2.0,
-running on PG18 with `vector` 0.8.2 + `age` 1.7.0. **65 tables, 10
-views, 263 functions, 8 graph vertex labels** — 31 pipelines, 48 active
-agents. (Grown from 23 tables / 67 functions on 2026-05-06 through
+State of the world as of 2026-06-09: extension `pg_ai_stewards` 0.2.0,
+running on PG18 with `vector` 0.8.2 + `age` 1.7.0. **70 tables, 11
+views, 322 functions, 8 graph vertex labels** — 43 pipelines, 51 agent
+families. (Grown from 23 tables / 67 functions on 2026-05-06 through
 Batches G–L, the ES emergency-stop arc, Council ① pipelines-expansion,
-and J.8–J.12: brainstorm model generalization + lens library,
-Gemini/opencode model pricing, enforced provider spend caps, and
-error classification.)
+J.8–J.12, the coder v1/v2 arc, personas R7–R10, and CT2 §§1–7.)
+
+Schema changes are tracked in `stewards.schema_migrations` (sha-checked
+ledger; `stewards-cli migrate`). A scratch-container regression suite —
+`extension/scripts/run-verify-suite.ps1` — replays the whole migration
+corpus in historical order (`extension/migration-order.txt`) and diffs
+the result against live; run it after any batch of SQL work.
 
 ## Cluster shot
 
@@ -27,10 +31,12 @@ postgres cluster
 
 One database, one schema, one graph. Everything joinable in one tx.
 
-## Six neighborhoods
+## Twelve neighborhoods
 
-The 23 tables fall into six clusters by purpose. Knowing which
-neighborhood you're in is enough to find anything.
+The 70 tables fall into twelve clusters by purpose. Knowing which
+neighborhood you're in is enough to find anything. (Neighborhoods 1–7
+below are the founding clusters, documented in detail; 8–12 are the
+2026-05/06 growth, documented as compact maps.)
 
 ### 1. Work queue (the heartbeat)
 
@@ -367,6 +373,84 @@ Functions: `create_todo` / `complete_todo` / `list_todos` /
 The graph carries the structural edges (`HAS_PROPOSAL`, `HAS_PHASE`,
 `HAS_TODO`); these tables hold the lifecycle state.
 
+### 8. Work items & pipelines (the orchestration layer)
+
+The unit of delegated work. A `work_item` runs a `pipeline` (a jsonb
+`stages[]` array: each stage names a model, provider, agent_family,
+input_template, and auto_advance). Children spawn via
+`spawn_subagent_create` / re-ask via `consult_subagent_dispatch`.
+
+| Table | What |
+|-------|------|
+| `work_items` | The card: pipeline_family, current_stage, status, maturity ladder (raw→verified), cost, session_ids[], parent linkage, intent_id. |
+| `pipelines` | Stage templates (43 families: study-write, code-pr, redline*, brainstorm-*, persona-turn, subagent-*, prompt-critic, …). |
+| `stage_models`, `model_substitutions` | Per-stage model resolution + steward substitutions. |
+| `gate_decisions`, `gate_overrides`, `gate_prompts` | Maturity-gate evaluations (tools-off JSON chats) + human overrides. |
+| `verify_results`, `pipeline_stage_maturity` | Verification artifacts per stage. |
+| `councils`, `council_members`, `resolutions` | Phase F multi-agent council (propose/critique/synthesize). |
+| `scheduled_pipelines`, `pipeline_breakers` | Cron-style dispatch + per-pipeline circuit breakers. |
+| `judge_templates` | L.1.1 judge-surface prompts (oversized-content triage). |
+
+One-shot pipelines (redline*, brainstorm-*, persona-%, subagent-%)
+auto-verify on completion via `on_one_shot_pipeline_completed` (R11) —
+without that, a spawn poll waits 20 min for a maturity that never comes.
+
+### 9. Cost & model governance
+
+| Table | What |
+|-------|------|
+| `cost_events`, `cost_buckets` | Every chat's tokens×pricing; 5h/daily/weekly/monthly rollups vs caps. |
+| `model_pricing`, `provider_spend_caps`, `provider_rules` | Canonical per-model rates; enforced provider budgets; provider quirk rules. |
+| `model_capability`, `model_escalation`, `retry_guidance_text` | Which models can do what; steward escalation ladder on failure. |
+| `steward_actions` | The Phase 4d steward's audit trail (retry / quarantine / escalate). |
+| `trust_scores`, `trust_thresholds`, `trust_transitions` | Phase E trust ladder per agent family. |
+| `kind_circuit_breaker` | ES.1: pause a work_queue kind after repeated crash-reaps. |
+
+Note the cap semantics: a work_item's `cost_cap_micro` is enforced by
+the steward at quarantine time, not as a hard mid-run ceiling — a run
+that completes can exceed its cap (observed 2026-06-09: $0.84 on a
+$0.50 cap).
+
+### 10. Context engine (Batches K/L + CT2)
+
+How long sessions stay coherent. Oversized tool results are extracted
+into engrams (or indexed as mini-corpora with a judge surface); CT2
+gives the agent addressable levers over its own context.
+
+| Table | What |
+|-------|------|
+| `engram_embeddings`, `messages_raw_overflow` | Engram vectors; full raw bodies parked out of the hot path. |
+| `messages.context_state` + `context_tags[]` | CT2.1/§7.4: per-message fold/mute/pin state + working-tag stamps. |
+| `session_facets` | §7c: persona/room facets persona-host writes per session. |
+| `agent_self_notes` | §7: durable faceted self-notes (remember/forget; `facets @> audience`). |
+| `prompt_change_proposals`, `agent_prompt_history` | §7.3: propose → critic → HUMAN ratify; versioned prompt ledger (prompt_revert). |
+
+All agent-facing levers are double-gated (`context_tools_enabled`, and
+for §7.3 also `allow_self_base_prompt`) and OFF by default; with the
+gates off, compose output is byte-identical (the §6 property — verify
+with a hash, not by eye).
+
+### 11. Sidecars & the external-tool bridge
+
+| Piece | What |
+|-------|------|
+| `mcp_servers`, `mcp_tool_cache` | Registry of external MCP servers the bridge spawns; the tool catalog (`stewards-mcp bridge refresh-tools` — grant ≠ catalog). |
+| `work_queue kind='mcp_proxy'` | The bridge's partition of the queue (bgworker skips it). |
+| `pending_file_writes` | am1 materializer: validated repo writes drained by the bridge. |
+| `suspect_sources`, `suspect_source_approvals` | Source quarantine + human approval. |
+| coder sandboxes | CC/CV2: hardened sibling containers via docker.sock; git ops run in the bridge (token never in sandbox). |
+| `cmd/persona-host` | Chat personas in ai-chattermax rooms (own `persona_host` schema; cognition via spawn/consult). |
+
+### 12. Governance & the ledger
+
+| Table | What |
+|-------|------|
+| `intents`, `covenants` | Phase C: intent.yaml + covenant as first-class state (work_items require an intent). |
+| `lessons` | Phase D atonement: failure → learning records. |
+| `projects` | Cockpit project board (`stewards` CLI). |
+| `schema_migrations` | The sha-checked migration ledger. Drift (file edited after record) blocks bridge startup — re-record deliberately, never blind-`git pull`. |
+| `thummim_entries`, `yt_transcripts`, `yt_transcript_segments` | Thummim dictionary; YT-T transcript ingestion. |
+
 ## How a chat actually flows
 
 End-to-end sequence for `stewards-cli watchman pass-now --limit 1`,
@@ -523,6 +607,7 @@ specific function path; none rely on the agent's good behavior.
 | Why the design choices | [proposal.md](../proposal.md) |
 | AGE quirks and workarounds | [AGE-QUIRKS.md](AGE-QUIRKS.md) |
 | The Rust dispatch loop | [extension/src/lib.rs](../extension/src/lib.rs) — start at `stewards_dispatcher_main`, follow `process_one_pending` and `dispatch` |
-| Per-phase SQL migrations | `extension/2-6a-*.sql` through `2-7b3-*.sql` (chronological, each layered on the prior) |
+| Per-phase SQL migrations | `extension/*.sql` — 220+ files. **Apply order is historical, not lexical:** `extension/migration-order.txt` (generated from git first-add dates) is the truth; `stewards-cli migrate`'s lexical order is wrong for same-object redefinitions (compose_messages spans ct2-*/k*/l*) |
+| Regression-test the SQL corpus | `extension/scripts/run-verify-suite.ps1` — scratch container, historical replay, parity diff vs live, verify-file triage |
 | The CLI surface | `cmd/stewards-cli/main.go` (top of file lists every subcommand) |
 | Verification queries | `extension/verify-*.sql` (one per sub-phase, illustrates expected behavior) |
