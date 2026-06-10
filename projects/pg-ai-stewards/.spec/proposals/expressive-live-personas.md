@@ -40,15 +40,36 @@ wanted:  room msg → persona-host → dispatch that can room_say() mid-turn:
   `room_say` everything it wants the room to see. Decide at build: dual-path (auto-post
   final + optional mid-turn says) is the gentlest migration.
 
-## Real-time reaction (#3) — two levels
+## Real-time reaction (#3) — the "pivot mid-turn" idea (Michael)
 
-1. **`check_room()` tool (pragmatic, fits the pattern):** the model pulls "what's new
-   in the room since my turn started" mid-turn and reacts. Gets you "personas take
-   turns while messages stream in" (D&D initiative) with no turn-loop rewrite.
-2. **True mid-turn injection (the only real arch change):** interrupt a running
-   dispatch to splice in a newly-arrived message. Hard (the dispatch is a fixed
-   message array) and probably unnecessary — level 1 covers the use case. Flagged, not
-   recommended for v1.
+Michael's framing: while a model is mid-turn, newly-arrived room messages get added to
+its context so it can pivot. The key realization: **a turn is already a LOOP of rounds**
+— model emits tool calls → bgworker runs them → appends results → re-dispatches the model
+with the updated message array → repeat until it stops. So there's a natural injection
+point at every **round boundary** (not true token-level interruption, which we don't
+need — the model re-evaluates each round anyway).
+
+Three levels, cheapest first:
+
+1. **`check_room()` tool (pull, no core change):** the model calls it to see "what's new
+   since my turn started" and reacts. Fits the room_say pattern exactly; zero dispatch-
+   loop change. Good for "let me check the table before I act."
+2. **★ Auto-inject at the round boundary (push — the real "pivot"):** when the bgworker
+   assembles the next round's messages, it also appends any room messages that arrived
+   since the last round (as user turns). The model literally sees "[alice]: wait, I
+   attack instead" mid-thought and pivots on its next round. This is a bounded change to
+   the chat/tool_dispatch loop's message assembly — moderate, touches the core loop, but
+   NOT a rewrite (the loop already rebuilds the array each round). **This is the D&D
+   magic** — everyone rolls initiative, messages land while the model is working, and it
+   weaves them in.
+3. **True token-level interruption:** abort the in-flight LLM call to splice a message.
+   Not needed; the round boundary is fine-grained enough. Don't build.
+
+**So #3 is feasible and bounded:** level 2 is "the model pivots mid-turn," and it's a
+contained change to the dispatch loop's per-round message build — the most invasive of
+the expressive features (it touches the core loop, unlike room_say which is host-side),
+but far from an arch rewrite. Recommend: room_say + check_room (level 1) first; level 2
+when D&D wants true live-reaction.
 
 ## Why this is the D&D layer
 

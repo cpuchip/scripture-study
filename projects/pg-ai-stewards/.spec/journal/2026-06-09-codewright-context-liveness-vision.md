@@ -53,6 +53,37 @@ here is inert-foundation-first (CT2.1), then the live readers — followed it.
 3. **#6 roster mood UI** (frontend) — humans set mood; pairs with #1 above.
 4. **#5/#7 deploy:** push ai-chattermax `e7f4b92` when ready (deploys chat.ibeco.me).
 
+## Addendum — Michael said "do the rest": room_say LIVE + CT2 RUN 2 ran
+
+Michael green-lit the live-infra step + asked to actually run the kimi CT2 test.
+
+**room_say went live (r16 foundation → r17 grant + drainer):**
+- Drainer built (`outbox.go` + gateway.go drain ticker), persona-host rebuilt +
+  recreated (all personas reconnected clean), r17 granted room_say to codewright /
+  persona / librarian + re-prompted (codewright heads-up before slow research; persona
+  mood/beats for D&D). **Proven model-side:** a codewright turn called
+  `room_say(body:"digging into ai-chattermax persona key minting/storage", mood:"🔍")`
+  FIRST, then research_codebase, then its cited answer — outbox row written with the 🔍.
+  The drainer only posts for channel-mapped sessions (a real room turn), so the final
+  gateway-post is what shows live when someone asks codewright in Engineering.
+- ★ Routing: room_say keys on _session_id; the host owns session→channel
+  (GatewayConn.channels[ch].sessionID); claim via UPDATE…RETURNING + SKIP LOCKED (no
+  double-post); 1s drain tick in the worker goroutine (lock-free).
+
+**CT2.4 RUN 2 ran (kimi, scaffolded, long accumulating session) — the real finding:**
+- **Scaffolding flips RUN 1's null:** treatment (codewright-ct2) CALLED `context_mute`
+  where RUN 1 used levers 0×. A strong model, told the levers exist, reaches for them.
+- **But ADDRESSING is the blocker:** it muted `handle:"subagent-20260610-…"` (the
+  subagent id) instead of a `[ctx:xxxx]` message handle → errored, nothing saved. The
+  next CT2 lever is the handle UX (render [ctx:] on live messages, or a forgiving
+  reference like mute-last-tool-result), then RUN 3. Recorded in CT2 spec §CT2.4 RUN 2.
+
+**Mid-turn pivot (#3, Michael's "add incoming chats to context mid-turn"):** spec'd in
+expressive-live-personas — feasible + bounded. A turn is already a LOOP of rounds; inject
+new room messages at the **round boundary** (level 2 = the real pivot, a contained
+bgworker dispatch-loop change), or a `check_room()` pull tool (level 1, no core change).
+True token-level interruption = not needed. The D&D magic = level 2.
+
 ## Commits (root UNPUSHED unless noted)
 `aa22874` (CT2 apparatus + expressive spec) · `ef81988` (room_say foundation) · plus
 the spec/journal updates this entry rides with. ai-chattermax `e7f4b92` (frontend,
