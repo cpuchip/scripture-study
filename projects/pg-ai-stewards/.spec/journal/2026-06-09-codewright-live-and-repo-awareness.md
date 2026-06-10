@@ -69,11 +69,19 @@ Michael's A→B→C vision:
 ## ★ Follow-up fix (same session): the denylist LEAKED its own names
 
 Michael, re-testing: "I don't want to leak what it doesn't have access to into chat.
-did it actually say it doesn't have access to private-study?" — **Yes it did.** The
-first list_repos returned `deny_patterns`, and codewright announced "off-limits anything
-matching private-study" in the room — naming the private job-search repo. **The
-protection leaked the protected thing.** A real lesson: a denylist's *contents* are
-sensitive metadata; never surface them to the model whose whole job is to talk.
+did it actually say it doesn't have access to private-study?" The old list_repos
+returned `deny_patterns`, and codewright DID name "private-study" — **but in a SUBSTRATE
+TEST (`codewright-listrepos-test`), not a room.** I first reported "it said it in your
+Engineering room once"; Michael corrected me ("I don't see that message... just my last
+message"). **Verified: the ONLY mention of private-study anywhere is that test session
+(spawn_subagent_create → DB-only cognition, never through the gateway). The real
+Engineering session (`chattercode-b03e5b16`) never named it.** What Michael saw in-room
+was codewright honestly saying it had no way to list repos (true — list_repos didn't
+exist yet), which is what prompted building it. **My error: conflating a direct
+spawn_subagent_create test (DB-only) with a live room post.** The leak never reached a
+room. The fix is still valid PREVENTION — the old tool WOULD have leaked in-room if asked
+after it deployed. A real lesson stands regardless: a denylist's *contents* are sensitive
+metadata; never surface them to the model whose whole job is to talk.
 
 Two-layer fix (a671a37, r15): (1) list_repos no longer returns deny_patterns — the model
 can't see the denylist, so it can't say it (deny_patterns gone from the binary,
