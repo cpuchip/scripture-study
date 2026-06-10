@@ -209,6 +209,32 @@ func TestAsyncTurn_EyesFollowTheWork(t *testing.T) {
 	}
 }
 
+// respond_policy "mentioned" (REM-3): unaddressed messages start NO turn (no
+// dispatch, no typing, no eyes); addressed ones run normally.
+func TestRespondPolicy_MentionedGatesTurns(t *testing.T) {
+	ctx := context.Background()
+	cog := &fakeCog{dur: 50 * time.Millisecond, sessionAfter: -1, session: "wi--p--turn", answer: "yes?"}
+	gc, _, _ := newTestConn(cog)
+	gc.respondPolicy = "mentioned"
+	cs := &channelState{sessionID: "wi--p--turn"}
+	gc.channels["eng"] = cs
+
+	gc.maybeStartTurn(ctx, "eng", cs, wireMessage{ID: "m1", Sender: "human", Body: "talking amongst ourselves"})
+	if cs.busy || cs.eyedID != "" {
+		t.Fatal("unaddressed message must not start a turn under policy=mentioned")
+	}
+	gc.maybeStartTurn(ctx, "eng", cs, wireMessage{ID: "m2", Sender: "human", Body: "@tester what do you think?"})
+	if !cs.busy {
+		t.Fatal("addressed message must start a turn under policy=mentioned")
+	}
+	pump(gc, ctx, 300*time.Millisecond)
+	cog.mu.Lock()
+	defer cog.mu.Unlock()
+	if cog.consults != 1 {
+		t.Fatalf("want exactly 1 consult (the addressed one), got %d", cog.consults)
+	}
+}
+
 // A human message arriving mid-turn is coalesced into one follow-up turn.
 func TestAsyncTurn_MidTurnMessageCoalesced(t *testing.T) {
 	ctx := context.Background()

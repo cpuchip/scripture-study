@@ -115,6 +115,10 @@ type GatewayConn struct {
 	generation  uint64          // bumped per connection; guards stale turn results
 	turnResults chan turnResult // turn goroutines → the worker loop
 	selfName    string          // platform display name (from the ready frame)
+	// respondPolicy (REM-3): all | mentioned | judgment — refreshed on the rooms
+	// poll. "mentioned" skips the turn entirely (no dispatch cost) unless the
+	// message names the persona; "judgment" licenses unaddressed chiming-in.
+	respondPolicy string
 }
 
 // emit posts a message to a channel — overridable in tests via emitFn.
@@ -298,10 +302,19 @@ func (gc *GatewayConn) fetchRooms(ctx context.Context) ([]personaRoom, error) {
 		return nil, fmt.Errorf("rooms api returned %d", resp.StatusCode)
 	}
 	var out struct {
+		Persona struct {
+			RespondPolicy string `json:"respondPolicy"`
+		} `json:"persona"`
 		Rooms []personaRoom `json:"rooms"`
 	}
 	if err := json.NewDecoder(resp.Body).Decode(&out); err != nil {
 		return nil, err
+	}
+	// respond_policy rides the rooms poll, so a Settings change applies within
+	// one refresh interval — no host restart.
+	if p := out.Persona.RespondPolicy; p != "" && p != gc.respondPolicy {
+		gc.respondPolicy = p
+		log.Printf("[%s] respond_policy: %s", gc.persona.Slug, p)
 	}
 	return out.Rooms, nil
 }
@@ -367,6 +380,13 @@ func (gc *GatewayConn) handle(ctx context.Context, f gwOutbound) {
 // Runs in the worker goroutine, so it owns cs and prepares all turn inputs as
 // plain values — the goroutine never touches gc.channels.
 func (gc *GatewayConn) maybeStartTurn(ctx context.Context, channel string, cs *channelState, trigger wireMessage) {
+	addressed := isAddressed(trigger.Body, gc.persona.Slug, gc.persona.DisplayName, gc.selfName)
+	// respond_policy "mentioned": unaddressed messages cost nothing — no turn,
+	// no typing, no eyes. They're already note()'d into recent, so the persona
+	// still sees them as context when it IS addressed.
+	if gc.respondPolicy == "mentioned" && !addressed {
+		return
+	}
 	if cs.busy {
 		t := trigger
 		cs.pending = &t // coalesce: keep the latest; intervening msgs are in recent
@@ -382,7 +402,6 @@ func (gc *GatewayConn) maybeStartTurn(ctx context.Context, channel string, cs *c
 		cs.eyedID = trigger.ID
 	}
 
-	addressed := isAddressed(trigger.Body, gc.persona.Slug, gc.persona.DisplayName, gc.selfName)
 	sessionID := cs.sessionID
 	pipeline := gc.persona.Pipeline
 	slug := gc.persona.Slug + "-" + short(channel)
@@ -397,6 +416,9 @@ func (gc *GatewayConn) maybeStartTurn(ctx context.Context, channel string, cs *c
 		bq = buildTurnZeroFraming(gc.persona, label, cs.recent, trigger, addressed, gc.selfName)
 	} else {
 		bq = buildConsultFraming(trigger, addressed)
+	}
+	if gc.respondPolicy == "judgment" && !addressed {
+		bq += "\n(You weren't addressed directly — feel free to chime in if you have something genuinely worth adding; otherwise SILENCE.)"
 	}
 
 	go gc.runTurn(ctx, gen, channel, sessionID, pipeline, slug, bq)
