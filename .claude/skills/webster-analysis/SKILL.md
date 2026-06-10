@@ -12,33 +12,43 @@ Noah Webster published his *American Dictionary of the English Language* in 1828
 
 When a scripture uses a word like "intelligence," "virtue," "charity," or "glory," the 1828 definition often reveals meaning that modern usage has shifted away from.
 
+## Two editions — know which one you're quoting
+
+The webster server carries **two dictionaries** under truthful names:
+
+- **Webster 1828** (`webster_define`) — the genuine 1828 American Dictionary, the Restoration-era authority. This is the edition for scripture word-work.
+- **Webster 1913** (`webster1913_define`) — Webster's Revised Unabridged, 85 years later. Useful for tracking how a meaning drifted across the 19th century, NOT a witness of Restoration-era usage.
+
+History note: before 2026-06-09 the tool served 1913 text labeled "1828" (see `.spec/proposals/webster-1828-data-integrity.md`). Any study quoting "Webster 1828" from before that date needs re-verification. **Verify the edition of a source, not just the quote.**
+
 ## When to Use It
 
 - **Restoration-era vocabulary:** Words in the Book of Mormon, D&C, and Pearl of Great Price
 - **Biblical King James language:** The KJV was translated in 1611, but Webster 1828 captures meanings closer to how early Saints read those words
-- **Words that have narrowed:** "Virtue" (1828: power, efficacy, strength) vs. modern (moral excellence only)
-- **Words that have shifted:** "Intelligence" (1828: understanding, the faculty of understanding) vs. modern (mental capacity, IQ)
+- **Words that have narrowed:** "Virtue" (1828: strength, acting power, efficacy) vs. modern (moral excellence only)
+- **Words that have shifted:** "Intelligence" (1828: understanding; skill; also "a spiritual being") vs. modern (mental capacity, IQ)
 - **Words Joseph Smith emphasized:** Often when a prophet repeats a word, it carries specific weight
+- **Semantic drift studies:** Use `define` to see 1828 → 1913 → modern in one call — how a word moved over two centuries
 
 ## How to Use It
 
 ### Step 1: Look Up the Word
-Use the `mcp__webster__webster_define` tool (or `mcp__webster__define` for modern comparison side-by-side):
+Use the `mcp__webster__webster_define` tool (or `mcp__webster__define` for the full 1828 → 1913 → modern comparison):
 ```
 mcp__webster__webster_define("intelligence")
 ```
 
 ### Step 2: Compare Historical vs. Modern
-Note what's different. Is the 1828 meaning broader? Narrower? Entirely different?
+Note what's different. Is the 1828 meaning broader? Narrower? Entirely different? Did the 1913 already lose it?
 
 ### Step 3: Read It Back Into Scripture
 Re-read the scripture with the 1828 meaning in mind. Does the passage open up?
 
-**Example:**
-- D&C 93:36 — "The glory of God is intelligence"
-- Webster 1828: INTELLIGENCE — "Understanding; skill. The act of understanding."
+**Example (verified against the genuine 1828, 2026-06-09):**
+- D&C 93:29 — "Intelligence, or the light of truth, was not created or made"
+- Webster 1828: INTELLIGENCE, sense 1 — "Understanding; skill."; sense 4 — "A spiritual being; as a created intelligence. It is believed that the universe is peopled with innumerable superior intelligences."
 - Modern: Mental capacity, cognitive ability, IQ
-- **Insight:** God's glory isn't about being smart — it's about *understanding*. The deepest kind of knowing.
+- **Insight:** In 1828, an "intelligence" could be a *being*, not just a faculty. Joseph Smith's readers heard "intelligences" (Abraham 3:22) as a known category of existence — the word itself carried the doctrine.
 
 ### Step 4: Check Cross-References
 Use the `webster_define` result as a lens to search for other scriptures that use the same word. Does the 1828 meaning illuminate those passages too?
@@ -47,10 +57,10 @@ Use the `webster_define` result as a lens to search for other scriptures that us
 
 | Pattern | Example |
 |---------|---------|
-| **Broader than modern** | "Virtue" = power, not just moral purity (Luke 8:46 — "virtue had gone out of me") |
-| **More concrete than modern** | "Charity" = benevolence, pure love (not just giving money) |
-| **Theological precision** | "Atonement" = reconciliation, at-one-ment (the act of making two parties one) |
-| **Surprising connections** | "Intelligence" and "light" and "truth" all defined in terms of each other |
+| **Broader than modern** | "Virtue" = strength, acting power (Luke 8:46 — "virtue had gone out of me") |
+| **More concrete than modern** | "Charity" = "that disposition of heart which inclines men to think favorably of their fellow men, and to do them good" |
+| **Theological precision** | "Spirit" sense 5 = "the intelligent, immaterial and immortal part of human beings" |
+| **A being, not just a quality** | "Intelligence" sense 4 = "A spiritual being; as a created intelligence" |
 
 ## Integration with Studies
 

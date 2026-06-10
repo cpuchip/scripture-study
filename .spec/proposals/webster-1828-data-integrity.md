@@ -1,10 +1,55 @@
 # Webster "1828" Data Integrity — Investigation & Remediation Brief
 
-**Status: OPEN — awaiting a dedicated session.** Created 2026-06-09 by Claude Fable 5
+**Status: FORENSICS COMPLETE (steps 1–2 verified 2026-06-09, dedicated session) —
+remediation steps 3–6 awaiting ratification.** Created 2026-06-09 by Claude Fable 5
 during the scripture-book v4 honesty walk. Michael: *"I kinda feel lied to with the
 source of the dictionary I got from git. It's something I want to resolve, and I'll
 probably go through all of my published works (study / cpuchip.net / book) to fix
 issues there."* This file is the self-sufficient handoff for that session.
+
+---
+
+## FORENSICS VERDICT (2026-06-09 dedicated session)
+
+**1. The "1828" label was OURS, not upstream's.** ssvivian/WebstersDictionary's README
+says only "Webster's Unabridged English Dictionary, provided by the Gutenberg Project"
+— no year, file named `dictionary.json`. Our commit `46c0092` (2026-02-04) renamed it
+`webster1828.json.gz` and wrote "1828" into the README and tool descriptions. The
+original plan doc (`scripts/plans/04_tool-improvements.md` at that commit) noted the
+source as "MIT License, Project Gutenberg source" and even listed
+webstersdictionary1828.com as "Online reference for verification" — the verification
+was planned and never executed. Nobody lied upstream; we assumed the edition because
+the *goal* was 1828.
+
+**2. The data is uniformly Webster 1913, confirmed on 10 words.** Anachronism probes:
+the tool defines **telephone** (1876), **phonograph** (1877), **bacterium** (1838).
+Text comparisons vs webstersdictionary1828.com: *spirit*, *intelligence* (from the
+original audit), *charity*, *glory*, *virtue*, *suffer* — all 1913 text (the tool's
+*suffer* quotes **Tennyson**, published 1855; *virtue* quotes De Quincey and Keble).
+Zero 1828 matches. Note for the three-glories study audit: genuine 1828 *glory* has
+12 senses beginning "Brightness; luster; splendor" — substantially different from the
+1913 entry the study drew on.
+
+**3. Replacement source FOUND and VERIFIED: `github.com/kayson-argyle/websters_1828`.**
+SQLite DB (113,595 sense-rows) + raw text + Python parsing pipeline + 3,785 KJV
+archaic-term lemma mappings. Provenance: the Ellen G. White Estate Archives' full-text
+preservation of the actual 1828 (archive.org), built explicitly for KJV/LDS Standard
+Works study. Passed the same standard: 5/5 anachronisms absent (telephone, phonograph,
+bacterium, dinosaur, railroad), 6/6 sampled words match webstersdictionary1828.com
+(charity, glory, virtue, suffer, spirit, intelligence). The two book-critical senses
+are present verbatim: *spirit* 5 "intelligent, immaterial and immortal part of **human
+beings**", 6 "An immaterial intelligent substance"; *intelligence* 4 "A spiritual
+being; as a created intelligence."
+  - **Caveats:** no declared license (underlying 1828 text is public domain; ask or
+    re-parse from their raw text); OCR artifacts (junk headword rows like `- fall`,
+    a doubled phrase in *charity* sense 1, `vur'�tu` encoding glitch, scripture refs
+    with 1→7 OCR errors e.g. "7 Corinthians 8:1", "7 Peter 3:19"); headwords are
+    lowercase; one row per sense (pos only on the first row of an entry).
+  - **Rejected alternatives:** DataWar/1828-dictionary (README says its 1828 "came
+    from Gutenberg" — Gutenberg has no 1828; same failure shape as ours);
+    kljensen/websters (stardict conversion, provenance undocumented);
+    CrossCrusaders/Websters1828API (no data provenance documented).
+  - Eval clone at `%TEMP%\websters_1828_eval`.
 
 ---
 
@@ -56,24 +101,40 @@ the wrong source.
 | `.github/skills/webster-analysis/` + `.claude/` twin | Skill teaches the tool as 1828. | |
 | becoming app / ibeco.me | Check whether any surface quotes "1828" definitions. | |
 
-## The remediation plan (proposed — ratify order with Michael)
+## The remediation plan (steps 1–2 DONE — ratify 3–6 order with Michael)
 
-1. **Forensics first.** In `scripts/webster-mcp`: inspect `data/webster1828.json.gz`
-   provenance (our git history for the data commit, the README claims), then check
-   ssvivian/WebstersDictionary's own README — establish *who* introduced "1828."
-   Sample ~10 diverse words from the data against webstersdictionary1828.com to
-   confirm it's uniformly 1913 (not a mixed set).
-2. **Get the genuine 1828.** Known sources to evaluate: webstersdictionary1828.com
-   (site, scrape-unfriendly?), the `1828-dictionary` datasets floating on GitHub
-   (verify *those* the same way — sample against the site before trusting), or the
-   original facsimile text. **Whatever source we adopt, verify it with the same
-   anachronism + spot-check method before shipping it.**
-3. **Fix webster-mcp honestly:** serve BOTH editions under truthful names —
-   `webster_define` → genuine 1828; the current data stays available as 1913 (it's
-   still useful — KJV-era it is not, but it's a fine general historical dictionary).
-   Update tool descriptions, README, and the webster-analysis skill (both trees).
-4. **Rebuild 1828-illuminated** on the genuine data (tier list + pre-fetched defs) and
-   redeploy 1828.ibeco.me.
+1. ~~**Forensics first.**~~ **DONE 2026-06-09** — see Forensics Verdict above. We
+   introduced the label; data is uniformly 1913 (10/10 words).
+2. ~~**Get the genuine 1828.**~~ **DONE 2026-06-09** — kayson-argyle/websters_1828
+   verified against webstersdictionary1828.com (see verdict §3 for caveats: license
+   undeclared, OCR artifacts). Decision pending: use their SQLite as-is, re-parse
+   their raw text with our own cleaning, or both.
+3. ~~**Fix webster-mcp honestly.**~~ **DONE 2026-06-09 (ratified: re-parse + keep
+   both editions).** New converter `scripts/webster-mcp/tools/convert_1828.py`
+   (uses the kayson-argyle pipeline from a local clone — not vendored, their
+   scripts are unlicensed; our cleaning on top: 248 junk headwords rejected,
+   414 "7 Corinthians"-style 1→7 OCR ref fixes, U+FFFD strip, charity-dup fix)
+   → `data/webster1828.json.gz` = genuine 1828 (63,280 words); old data renamed
+   `data/webster1913.json.gz` (98,828 words). Server v2.0.0: `webster_define` →
+   genuine 1828; NEW `webster1913_define`; `define` → 1828+1913+modern 3-way;
+   search tools take `edition` param. Verified over real MCP stdio: spirit =
+   genuine text, telephone absent from 1828 / present in 1913. README rewritten
+   with full provenance + history note; webster-analysis skill updated both trees.
+   **Known parse gaps (for the audit walk): 27 of 853 tier words lack entries —
+   mostly coinages/proper nouns, but NAUGHTY, PESTILENCE, ALLEGE, HATH, HOSEN,
+   BEFORETIME, SORCERIES, ZINC are real OCR dropouts (neighbors present);
+   hand-add from webstersdictionary1828.com during the audit.**
+   ⚠ This session's MCP connection still runs the old binary — reconnect to pick up v2.
+4. **Rebuild 1828-illuminated** on the genuine data — **CODE DONE 2026-06-09,
+   deploy rides Michael's root push** (i1828 Dokploy compose builds from
+   cpuchip/scripture-study main, autoDeploy on). Backend seed data swapped to
+   genuine 1828; **fixed the skip-if-populated seeder landmine** (new
+   `seed_fingerprints` table, migration 006: SeedWebster1828 now sha256-compares
+   the embedded corpus and TRUNCATE+re-ingests on change — without this, prod
+   Postgres would have kept serving 1913 rows forever). build_data.py re-run
+   (832/853 tier words have genuine defs). Verified against a scratch Postgres:
+   boot→migrate→seed 63,280 words, /api/dict/1828/spirit serves genuine senses,
+   prod-state simulation (rows + no fingerprint) triggers re-ingest.
 5. **Audit the published works** (Michael wants to walk this together):
    - grep cpuchip.net `content/studies/*` + workspace `study/` for `1828|Webster`;
    - re-verify every quoted definition against genuine 1828;

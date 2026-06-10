@@ -1,0 +1,678 @@
+Webster 1828 conversion report
+source: C:\Users\cpuch\AppData\Local\Temp\websters_1828_eval
+output: C:\Users\cpuch\Documents\code\stuffleberry\scripture-study\scripts\webster-mcp\data\webster1828_genuine.json.gz
+unique words: 63280
+entries (word+pos blocks): 73124
+senses: 113264
+rejected junk headwords: 248
+scripture-ref fixes (7 -> 1): 414
+targeted text fixes applied: 1
+
+--- rejected headwords ---
+(:);
+*- VENT
+- FALL
+- FORM
+- FULL
+- HIT
+- INADEQUACY
+- INTENT
+- LIGHT
+- LOFTINESS
+- MATTER
+- NORTHING
+- OPERATE
+- OSTENTATIOUS
+- OVERCHARGE
+- PRE-EMINENCE
+- PUT
+- RANGE
+- STARVE
+- STREAK
+- STROKE
+- SUBJECTION
+- WARD
+- WARRANT
+- WAY
+--A
+--I
+--I 7
+-;”
+ADDER’S-GRASS
+ADDER’S-TONGUE
+ADDER’S-WORT
+ALEXANDER’S FOOT
+ALMS-CHEST;
+ALMUCANTAR’S STAFF
+ANTHONY ’S FIRE
+BACKWOR\
+BEAR’S EAR
+BEAR’S EAR SANICLE
+BEAR’S FOOT
+BEAR’S WORT
+BEAR’S-BREECH
+BIRD’S-EYE
+BLINDMAN’S BALL
+BLINDMAN’S BUFF
+BLOW2ZY
+BOOKWOR\
+BULL’S-EYE
+BUTCHER’S-BROOM
+CABBAGE-WOR\
+CAT’S-EYE
+CAT’S-FOOT
+CAT’S-HEAD
+CAT’S-PAW
+CHARLES’S-WAIN
+CHRIST’S-THORN
+COLT’S-FOOT
+COLT’S-TOOTH
+COW’S-LIP
+COW’S-LUNGWORT
+CO”
+CRANE’S-BILL
+CROW’S-BILL
+CROW’S-FEET
+CROW’S-FOOT
+DAME’S-VIOLET
+DEATH’S-DOOR
+DEATH’S-MAN
+DEEP 3T
+DOG’S-BANE
+DOG’S-EAR
+DOG’S-MEAT
+DOG’S-RUE
+DOVE’S-FOOT
+DRAGON’S-BLOOD
+DRAGON’S-HEAD
+DRAGON’S-WATER
+DRAGON’S-WORT
+DUCK’S-FOOT
+DUCK’S-MEAT
+EARTHWOR\
+ELEPHANT’S-FOOT
+EMB‘ARGO
+EMB‘ARK
+EMB’ARK
+EM’ASCULATE
+ENH’ANCE
+EYEBEA\
+FEEBLE:
+FIELD:
+FOOL;:
+FOOL’S-PARSLEY
+FRIAR’S-COWL
+FRIAR’S-LANTERN
+FULLER’S-EARTH
+FULLER’S-THISTLE
+FULLER’S-WEED
+GL’ANCE
+GL’ASS
+GOAT’S-BEARD
+GOAT’S-RUE
+GOAT’S-STONES
+GOAT’S-THORN
+GOD’S-PENNY
+GR‘AFT
+GR’AFT
+GR’ANT
+GR’ASP
+GR’ASS
+GR’‘AFT
+GR’‘ASP
+H]
+HANDF'’AST
+HARE’S-EAR
+HARE’S-LETTUCE
+HEART’S-BLOOD
+HEART’S-EASE
+HERE‘AFTER
+HE’ARKEN
+HOG’S-BEANS
+HOG’S-FENNEL
+HOG’S-MUSHROOMS
+HOUND’S TONGUE
+HUGUENOTIS\IM
+H‘AFT
+H’AFT
+H’ALF-PENNY
+H’ARD
+H’ARPING
+H’ASP
+IAM’BUS
+INCRAS’SATED
+INC’ARN
+INC’ARNADINE
+INC’ARNATIVE
+IN’WARDS
+I’M
+JACOB’S-LADDER
+JACOB’S-STAFF
+JESUITS’-BARK
+JOB’S-TEARS
+J°ANT
+J’ANT
+KING’S BENCH
+KING’S-EVIL
+KING’S-SPEAR
+L]
+LADY’S BED-STRAW
+LADY’S BOWER
+LADY’S COMB
+LADY’S CUSHION
+LADY’S FINGER
+LADY’S MANTLE
+LADY’S SEAL
+LADY’S SLIPPER
+LADY’S SMOCK
+LADY’S TRACES
+LARK’S-HEEL
+LEOPARD’S-BANE
+LIBBARD’S-BANE
+LION’S FOOT
+LION’S LEAF
+LION’S TAIL
+MILLER’S-THUMB
+MISCH’ARGE
+MISC’AST
+MONEY’S-WORTH
+MONK’S HEAD
+MONK’S HOOD
+MONK’S RHUBARB
+MONTH’S-MIND
+M‘ASTER
+M‘ASTERLY
+M’ARLINE
+NC’ARN
+NEW-YEAR’S GIFT
+OUT’WARDS
+PALMER-WOR\
+PAL’AVER
+PARAPEG\I
+PEDERER®O
+PIETY:
+PL‘ASTER
+PL’ASTER
+POPE’S-EYE
+PRINCES’-FETHER
+PR’ANCING
+P’ASTIME
+P’ATH
+RAD’ICATED
+RAGMAN’S-ROLL
+RAVEN’S DUCK
+REPOSSESS:
+RUB’-STONE
+RU’BRICAL
+SAINT JOHN’S BREAD
+SAINT JOHN’S WORT
+SAINT PETER’S WORT
+SAINT’S BELL
+SAMSON’S-POST
+SAN’DERS
+SCORPION’S TAIL
+SCORPION’S-THORN
+SEA-BREA\
+SERPENT’S-TONGUE
+SHEEP’S-EYE
+SHEEP’S-HEAD
+SHEPHERD’S NEEDLE
+SHEPHERD’S POUCH
+SHEPHERD’S PURSE
+SHEPHERD’S ROD
+SHEPHERD’S STAFF
+SLOW-WOR\
+SOLOMON’S LEAF
+SOLOMON’S SEAL
+STONE’S-CAST
+STONE’S-MICKLE
+STONE’S-THROW
+STORK’S-BILL
+SURCH’ARGE
+SWALLOW’S-TAIL
+SWINE’S-CRESS
+TIGER’S-FOOT
+TO’WARDS
+TRANSP’ASS
+TURK’S-CAP
+TURK’S-HEAD
+TURK’S-TURBAN
+T’
+UMBIL’'ICAL
+UMBIL’ICAL
+VENUS’S COMB
+VENUS’S LOOKING-GLASS
+VENUS’S NAVELWORT
+VIPER’S BUGLOSS
+VIPER’S GRASS
+VIRGIN’S BOWER
+WAR\
+WEATHER:SBIT
+WOLF’S-BANE
+WOLF’S-CLAW
+WOLF’S-MILK
+WOLF’S-PEACH
+WOOD-WOR\
+— FAIR-HAND
+— IDONEOUS
+“A
+“I
+
+--- scripture-ref fixes ---
+7 Kings -> 1 Kings
+7 Timothy -> 1 Timothy
+7 Corinthians -> 1 Corinthians
+7 Corinthians -> 1 Corinthians
+7 Timothy -> 1 Timothy
+7 Kings -> 1 Kings
+7 Corinthians -> 1 Corinthians
+7 John -> 1 John
+7 Kings -> 1 Kings
+7 Corinthians -> 1 Corinthians
+7 John -> 1 John
+7 Kings -> 1 Kings
+7 Samuel -> 1 Samuel
+7 John -> 1 John
+7 John -> 1 John
+7 Samuel -> 1 Samuel
+7 Samuel -> 1 Samuel
+7 Peter -> 1 Peter
+7 Samuel -> 1 Samuel
+7 Thessalonians -> 1 Thessalonians
+7 Samuel -> 1 Samuel
+7 John -> 1 John
+7 Kings -> 1 Kings
+7 Corinthians -> 1 Corinthians
+7 Timothy -> 1 Timothy
+7 Samuel -> 1 Samuel
+7 Corinthians -> 1 Corinthians
+7 Peter -> 1 Peter
+7 Samuel -> 1 Samuel
+7 Samuel -> 1 Samuel
+7 Corinthians -> 1 Corinthians
+7 Corinthians -> 1 Corinthians
+7 Samuel -> 1 Samuel
+7 Peter -> 1 Peter
+7 Samuel -> 1 Samuel
+7 Timothy -> 1 Timothy
+7 Kings -> 1 Kings
+7 Corinthians -> 1 Corinthians
+7 Thessalonians -> 1 Thessalonians
+7 Corinthians -> 1 Corinthians
+7 Samuel -> 1 Samuel
+7 Kings -> 1 Kings
+7 Samuel -> 1 Samuel
+7 Timothy -> 1 Timothy
+7 Samuel -> 1 Samuel
+7 Corinthians -> 1 Corinthians
+7 Peter -> 1 Peter
+7 Thessalonians -> 1 Thessalonians
+7 Kings -> 1 Kings
+7 Chronicles -> 1 Chronicles
+7 Samuel -> 1 Samuel
+7 John -> 1 John
+7 Corinthians -> 1 Corinthians
+7 Peter -> 1 Peter
+7 Kings -> 1 Kings
+7 John -> 1 John
+7 Peter -> 1 Peter
+7 Chronicles -> 1 Chronicles
+7 Samuel -> 1 Samuel
+7 Corinthians -> 1 Corinthians
+7 Samuel -> 1 Samuel
+7 Corinthians -> 1 Corinthians
+7 Corinthians -> 1 Corinthians
+7 Corinthians -> 1 Corinthians
+7 Corinthians -> 1 Corinthians
+7 John -> 1 John
+7 Kings -> 1 Kings
+7 Timothy -> 1 Timothy
+7 Corinthians -> 1 Corinthians
+7 Corinthians -> 1 Corinthians
+7 Peter -> 1 Peter
+7 Kings -> 1 Kings
+7 Chronicles -> 1 Chronicles
+7 Kings -> 1 Kings
+7 Timothy -> 1 Timothy
+7 Timothy -> 1 Timothy
+7 Samuel -> 1 Samuel
+7 Timothy -> 1 Timothy
+7 Samuel -> 1 Samuel
+7 Corinthians -> 1 Corinthians
+7 Corinthians -> 1 Corinthians
+7 Chronicles -> 1 Chronicles
+7 Chronicles -> 1 Chronicles
+7 Peter -> 1 Peter
+7 Corinthians -> 1 Corinthians
+7 Samuel -> 1 Samuel
+7 Corinthians -> 1 Corinthians
+7 Timothy -> 1 Timothy
+7 Samuel -> 1 Samuel
+7 Kings -> 1 Kings
+7 Corinthians -> 1 Corinthians
+7 Kings -> 1 Kings
+7 Samuel -> 1 Samuel
+7 Corinthians -> 1 Corinthians
+7 Kings -> 1 Kings
+7 Corinthians -> 1 Corinthians
+7 John -> 1 John
+7 John -> 1 John
+7 Chronicles -> 1 Chronicles
+7 Corinthians -> 1 Corinthians
+7 Timothy -> 1 Timothy
+7 Timothy -> 1 Timothy
+7 Samuel -> 1 Samuel
+7 Corinthians -> 1 Corinthians
+7 Samuel -> 1 Samuel
+7 Peter -> 1 Peter
+7 Corinthians -> 1 Corinthians
+7 Samuel -> 1 Samuel
+7 Corinthians -> 1 Corinthians
+7 Peter -> 1 Peter
+7 Samuel -> 1 Samuel
+7 Samuel -> 1 Samuel
+7 Corinthians -> 1 Corinthians
+7 Samuel -> 1 Samuel
+7 Corinthians -> 1 Corinthians
+7 Kings -> 1 Kings
+7 Samuel -> 1 Samuel
+7 John -> 1 John
+7 Timothy -> 1 Timothy
+7 Samuel -> 1 Samuel
+7 Samuel -> 1 Samuel
+7 Corinthians -> 1 Corinthians
+7 Thessalonians -> 1 Thessalonians
+7 Kings -> 1 Kings
+7 Timothy -> 1 Timothy
+7 Samuel -> 1 Samuel
+7 Peter -> 1 Peter
+7 Samuel -> 1 Samuel
+7 Peter -> 1 Peter
+7 Timothy -> 1 Timothy
+7 Kings -> 1 Kings
+7 Corinthians -> 1 Corinthians
+7 Corinthians -> 1 Corinthians
+7 Timothy -> 1 Timothy
+7 Peter -> 1 Peter
+7 Kings -> 1 Kings
+7 Corinthians -> 1 Corinthians
+7 Chronicles -> 1 Chronicles
+7 Kings -> 1 Kings
+7 Samuel -> 1 Samuel
+7 John -> 1 John
+7 Thessalonians -> 1 Thessalonians
+7 John -> 1 John
+7 Samuel -> 1 Samuel
+7 Timothy -> 1 Timothy
+7 Corinthians -> 1 Corinthians
+7 Corinthians -> 1 Corinthians
+7 Peter -> 1 Peter
+7 Samuel -> 1 Samuel
+7 Chronicles -> 1 Chronicles
+7 Kings -> 1 Kings
+7 Timothy -> 1 Timothy
+7 Corinthians -> 1 Corinthians
+7 Corinthians -> 1 Corinthians
+7 Corinthians -> 1 Corinthians
+7 Corinthians -> 1 Corinthians
+7 Thessalonians -> 1 Thessalonians
+7 Timothy -> 1 Timothy
+7 Kings -> 1 Kings
+7 Samuel -> 1 Samuel
+7 Corinthians -> 1 Corinthians
+7 Corinthians -> 1 Corinthians
+7 Timothy -> 1 Timothy
+7 Timothy -> 1 Timothy
+7 Samuel -> 1 Samuel
+7 Samuel -> 1 Samuel
+7 Peter -> 1 Peter
+7 Chronicles -> 1 Chronicles
+7 Chronicles -> 1 Chronicles
+7 Thessalonians -> 1 Thessalonians
+7 Samuel -> 1 Samuel
+7 Timothy -> 1 Timothy
+7 Corinthians -> 1 Corinthians
+7 Kings -> 1 Kings
+7 Kings -> 1 Kings
+7 Samuel -> 1 Samuel
+7 Samuel -> 1 Samuel
+7 Samuel -> 1 Samuel
+7 Kings -> 1 Kings
+7 John -> 1 John
+7 Kings -> 1 Kings
+7 Peter -> 1 Peter
+7 Kings -> 1 Kings
+7 Samuel -> 1 Samuel
+7 Timothy -> 1 Timothy
+7 Samuel -> 1 Samuel
+7 Kings -> 1 Kings
+7 Samuel -> 1 Samuel
+7 Samuel -> 1 Samuel
+7 Peter -> 1 Peter
+7 Kings -> 1 Kings
+7 Peter -> 1 Peter
+7 Samuel -> 1 Samuel
+7 Timothy -> 1 Timothy
+7 Corinthians -> 1 Corinthians
+7 Peter -> 1 Peter
+7 John -> 1 John
+7 Timothy -> 1 Timothy
+7 Corinthians -> 1 Corinthians
+7 Thessalonians -> 1 Thessalonians
+7 Kings -> 1 Kings
+7 Corinthians -> 1 Corinthians
+7 Thessalonians -> 1 Thessalonians
+7 Corinthians -> 1 Corinthians
+7 Corinthians -> 1 Corinthians
+7 Corinthians -> 1 Corinthians
+7 Samuel -> 1 Samuel
+7 Samuel -> 1 Samuel
+7 Thessalonians -> 1 Thessalonians
+7 Timothy -> 1 Timothy
+7 Kings -> 1 Kings
+7 Timothy -> 1 Timothy
+7 Kings -> 1 Kings
+7 Samuel -> 1 Samuel
+7 Samuel -> 1 Samuel
+7 Corinthians -> 1 Corinthians
+7 Kings -> 1 Kings
+7 Kings -> 1 Kings
+7 John -> 1 John
+7 John -> 1 John
+7 Corinthians -> 1 Corinthians
+7 Timothy -> 1 Timothy
+7 Kings -> 1 Kings
+7 John -> 1 John
+7 Samuel -> 1 Samuel
+7 Samuel -> 1 Samuel
+7 Thessalonians -> 1 Thessalonians
+7 Peter -> 1 Peter
+7 Corinthians -> 1 Corinthians
+7 Kings -> 1 Kings
+7 John -> 1 John
+7 Corinthians -> 1 Corinthians
+7 Chronicles -> 1 Chronicles
+7 Corinthians -> 1 Corinthians
+7 Samuel -> 1 Samuel
+7 Samuel -> 1 Samuel
+7 Samuel -> 1 Samuel
+7 Corinthians -> 1 Corinthians
+7 Corinthians -> 1 Corinthians
+7 Kings -> 1 Kings
+7 Timothy -> 1 Timothy
+7 Samuel -> 1 Samuel
+7 Chronicles -> 1 Chronicles
+7 Samuel -> 1 Samuel
+7 Corinthians -> 1 Corinthians
+7 Samuel -> 1 Samuel
+7 Samuel -> 1 Samuel
+7 Samuel -> 1 Samuel
+7 Timothy -> 1 Timothy
+7 Timothy -> 1 Timothy
+7 Corinthians -> 1 Corinthians
+7 Samuel -> 1 Samuel
+7 Samuel -> 1 Samuel
+7 Samuel -> 1 Samuel
+7 Kings -> 1 Kings
+7 Kings -> 1 Kings
+7 Kings -> 1 Kings
+7 Kings -> 1 Kings
+7 Timothy -> 1 Timothy
+7 Chronicles -> 1 Chronicles
+7 Corinthians -> 1 Corinthians
+7 Peter -> 1 Peter
+7 Timothy -> 1 Timothy
+7 Samuel -> 1 Samuel
+7 Kings -> 1 Kings
+7 Kings -> 1 Kings
+7 Peter -> 1 Peter
+7 Chronicles -> 1 Chronicles
+7 Peter -> 1 Peter
+7 Samuel -> 1 Samuel
+7 Samuel -> 1 Samuel
+7 Thessalonians -> 1 Thessalonians
+7 John -> 1 John
+7 Corinthians -> 1 Corinthians
+7 Timothy -> 1 Timothy
+7 Samuel -> 1 Samuel
+7 Kings -> 1 Kings
+7 John -> 1 John
+7 Corinthians -> 1 Corinthians
+7 Corinthians -> 1 Corinthians
+7 Corinthians -> 1 Corinthians
+7 Samuel -> 1 Samuel
+7 Chronicles -> 1 Chronicles
+7 Kings -> 1 Kings
+7 Timothy -> 1 Timothy
+7 Corinthians -> 1 Corinthians
+7 Timothy -> 1 Timothy
+7 Kings -> 1 Kings
+7 Thessalonians -> 1 Thessalonians
+7 Peter -> 1 Peter
+7 Corinthians -> 1 Corinthians
+7 Peter -> 1 Peter
+7 Kings -> 1 Kings
+7 Samuel -> 1 Samuel
+7 Corinthians -> 1 Corinthians
+7 Kings -> 1 Kings
+7 Samuel -> 1 Samuel
+7 Kings -> 1 Kings
+7 Thessalonians -> 1 Thessalonians
+7 Samuel -> 1 Samuel
+7 Kings -> 1 Kings
+7 Timothy -> 1 Timothy
+7 Chronicles -> 1 Chronicles
+7 Samuel -> 1 Samuel
+7 Samuel -> 1 Samuel
+7 Samuel -> 1 Samuel
+7 Samuel -> 1 Samuel
+7 Peter -> 1 Peter
+7 Kings -> 1 Kings
+7 Peter -> 1 Peter
+7 Samuel -> 1 Samuel
+7 Kings -> 1 Kings
+7 Kings -> 1 Kings
+7 Timothy -> 1 Timothy
+7 Thessalonians -> 1 Thessalonians
+7 Corinthians -> 1 Corinthians
+7 Samuel -> 1 Samuel
+7 Kings -> 1 Kings
+7 Timothy -> 1 Timothy
+7 Timothy -> 1 Timothy
+7 Corinthians -> 1 Corinthians
+7 Timothy -> 1 Timothy
+7 Kings -> 1 Kings
+7 Samuel -> 1 Samuel
+7 Kings -> 1 Kings
+7 Samuel -> 1 Samuel
+7 Timothy -> 1 Timothy
+7 Kings -> 1 Kings
+7 Corinthians -> 1 Corinthians
+7 Corinthians -> 1 Corinthians
+7 John -> 1 John
+7 Peter -> 1 Peter
+7 Samuel -> 1 Samuel
+7 Thessalonians -> 1 Thessalonians
+7 Kings -> 1 Kings
+7 Samuel -> 1 Samuel
+7 Samuel -> 1 Samuel
+7 Thessalonians -> 1 Thessalonians
+7 Samuel -> 1 Samuel
+7 Corinthians -> 1 Corinthians
+7 Peter -> 1 Peter
+7 Peter -> 1 Peter
+7 Corinthians -> 1 Corinthians
+7 Peter -> 1 Peter
+7 Samuel -> 1 Samuel
+7 Kings -> 1 Kings
+7 Peter -> 1 Peter
+7 Peter -> 1 Peter
+7 Corinthians -> 1 Corinthians
+7 Corinthians -> 1 Corinthians
+7 Samuel -> 1 Samuel
+7 John -> 1 John
+7 Corinthians -> 1 Corinthians
+7 Corinthians -> 1 Corinthians
+7 Chronicles -> 1 Chronicles
+7 Peter -> 1 Peter
+7 Thessalonians -> 1 Thessalonians
+7 Samuel -> 1 Samuel
+7 Corinthians -> 1 Corinthians
+7 Samuel -> 1 Samuel
+7 Samuel -> 1 Samuel
+7 Corinthians -> 1 Corinthians
+7 Corinthians -> 1 Corinthians
+7 Corinthians -> 1 Corinthians
+7 Timothy -> 1 Timothy
+7 Corinthians -> 1 Corinthians
+7 Kings -> 1 Kings
+7 Corinthians -> 1 Corinthians
+7 Corinthians -> 1 Corinthians
+7 Timothy -> 1 Timothy
+7 Kings -> 1 Kings
+7 Corinthians -> 1 Corinthians
+7 Samuel -> 1 Samuel
+7 Kings -> 1 Kings
+7 Kings -> 1 Kings
+7 Timothy -> 1 Timothy
+7 Samuel -> 1 Samuel
+7 Corinthians -> 1 Corinthians
+7 Corinthians -> 1 Corinthians
+7 Corinthians -> 1 Corinthians
+7 John -> 1 John
+7 Corinthians -> 1 Corinthians
+7 Peter -> 1 Peter
+7 Peter -> 1 Peter
+7 Kings -> 1 Kings
+7 Peter -> 1 Peter
+7 Samuel -> 1 Samuel
+7 Corinthians -> 1 Corinthians
+7 Kings -> 1 Kings
+7 Samuel -> 1 Samuel
+7 Corinthians -> 1 Corinthians
+7 Peter -> 1 Peter
+7 Samuel -> 1 Samuel
+7 Kings -> 1 Kings
+7 Kings -> 1 Kings
+7 Corinthians -> 1 Corinthians
+7 John -> 1 John
+7 John -> 1 John
+7 Samuel -> 1 Samuel
+7 Peter -> 1 Peter
+7 Timothy -> 1 Timothy
+7 Samuel -> 1 Samuel
+7 Thessalonians -> 1 Thessalonians
+7 Corinthians -> 1 Corinthians
+7 Kings -> 1 Kings
+7 Samuel -> 1 Samuel
+7 Timothy -> 1 Timothy
+7 Corinthians -> 1 Corinthians
+7 Corinthians -> 1 Corinthians
+7 Peter -> 1 Peter
+7 John -> 1 John
+7 Corinthians -> 1 Corinthians
+7 Kings -> 1 Kings
+7 Kings -> 1 Kings
+
+--- targeted fixes ---
+1x: inclines men to think favorably of their fellow men to think favorably of their 

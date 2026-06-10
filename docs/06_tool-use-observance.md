@@ -163,3 +163,20 @@ Found during the scripture-book v4 honesty audit (first Fable 5 session). `webst
 4. Consider adding the genuine 1828 dataset and exposing both editions honestly (the 1913 data is still useful — under its own name).
 
 **Priority:** High — same class as quote fabrication: a mislabeled source makes honest text dishonest silently.
+
+**RESOLVED 2026-06-09 (same-day dedicated session)** — full record in
+[`.spec/proposals/webster-1828-data-integrity.md`](../.spec/proposals/webster-1828-data-integrity.md).
+Forensics: **the mislabel was ours** — ssvivian/WebstersDictionary honestly says
+"Webster's Unabridged … Gutenberg Project" (no year); our 2026-02-04 commit named the
+file `webster1828.json.gz`, and our own plan doc listed webstersdictionary1828.com as
+the verification reference *and never ran the check*. Data confirmed uniformly 1913 on
+10 words (it defines *telephone*, 1876; quotes Tennyson, 1855). Fix shipped: genuine
+1828 re-parsed from the Ellen G. White Estate text (via kayson-argyle/websters_1828,
+verified by the same anachronism + text-comparison standard), webster-mcp v2 now serves
+**both editions truthfully** (`webster_define` = real 1828; new `webster1913_define`;
+`define` = 1828→1913→modern), and 1828-illuminated's backend got the genuine corpus plus
+a `seed_fingerprints` re-ingest mechanism (its seeder would otherwise have kept the 1913
+rows in prod forever). Deploy + the published-works audit (step 5) remain: deploy rides
+Michael's root push; the audit is a separate session with him. **The durable lesson:
+verify the *edition* of a source, not just the quote — and a verification tool can
+itself be the wrong source.**
