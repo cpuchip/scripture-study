@@ -161,6 +161,54 @@ func TestAsyncTurn_StaleGenerationDiscarded(t *testing.T) {
 	}
 }
 
+// Eyes (REM-2): 👀 lands on the trigger message at turn start, comes off when
+// the turn finishes, and hops to the coalesced follow-up's message.
+func TestAsyncTurn_EyesFollowTheWork(t *testing.T) {
+	ctx := context.Background()
+	cog := &fakeCog{dur: 100 * time.Millisecond, sessionAfter: -1, session: "wi--e--turn", answer: "ok"}
+	gc, _, _ := newTestConn(cog)
+
+	var rmu sync.Mutex
+	type rx struct{ msgID, op string }
+	var reactions []rx
+	gc.rawFn = func(v any) error {
+		m, ok := v.(map[string]any)
+		if !ok || m["type"] != "reaction" {
+			return nil // ignore typing pulses
+		}
+		rmu.Lock()
+		reactions = append(reactions, rx{m["messageId"].(string), m["op"].(string)})
+		rmu.Unlock()
+		return nil
+	}
+
+	cs := &channelState{sessionID: "wi--e--turn"}
+	gc.channels["eng"] = cs
+
+	gc.maybeStartTurn(ctx, "eng", cs, wireMessage{ID: "msg-1", Sender: "human", Body: "first"})
+	if cs.eyedID != "msg-1" {
+		t.Fatalf("eyes should be on msg-1, got %q", cs.eyedID)
+	}
+	// Arrives mid-turn → pending; eyes must hop to it when the follow-up fires.
+	gc.maybeStartTurn(ctx, "eng", cs, wireMessage{ID: "msg-2", Sender: "human", Body: "second"})
+	pump(gc, ctx, 400*time.Millisecond)
+
+	rmu.Lock()
+	defer rmu.Unlock()
+	want := []rx{{"msg-1", "add"}, {"msg-1", "remove"}, {"msg-2", "add"}, {"msg-2", "remove"}}
+	if len(reactions) != len(want) {
+		t.Fatalf("want %d reaction frames %v, got %d: %v", len(want), want, len(reactions), reactions)
+	}
+	for i, w := range want {
+		if reactions[i] != w {
+			t.Fatalf("frame %d = %v, want %v (all: %v)", i, reactions[i], w, reactions)
+		}
+	}
+	if cs.eyedID != "" {
+		t.Fatalf("eyes should be cleared after the turns, got %q", cs.eyedID)
+	}
+}
+
 // A human message arriving mid-turn is coalesced into one follow-up turn.
 func TestAsyncTurn_MidTurnMessageCoalesced(t *testing.T) {
 	ctx := context.Background()

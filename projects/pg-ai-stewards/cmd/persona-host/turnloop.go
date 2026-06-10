@@ -29,6 +29,7 @@ import (
 // wireMessage mirrors ai-chattermax's AX3-2 envelope (cmd/server/main.go). The
 // room broadcasts every message as this JSON; we decode it to attribute senders.
 type wireMessage struct {
+	ID     string `json:"id"`
 	Sender string `json:"sender"`
 	Body   string `json:"body"`
 	TS     string `json:"ts"`
@@ -165,7 +166,7 @@ func (rc *RoomConn) takeTurn(ctx context.Context, trigger wireMessage) error {
 	var answer string
 	var err error
 	if rc.sessionID == "" {
-		bq := buildTurnZeroFraming(rc.persona, rc.room, rc.recent, trigger, addressed)
+		bq := buildTurnZeroFraming(rc.persona, rc.room, rc.recent, trigger, addressed, "") // legacy path: no ready capture
 		var sess string
 		sess, answer, err = rc.cog.SpawnTurn(ctx, rc.persona.Pipeline, rc.persona.Slug+"-"+rc.room, bq, nil)
 		if err != nil {
@@ -203,20 +204,19 @@ func (rc *RoomConn) post(body string) error {
 	return rc.conn.WriteMessage(websocket.TextMessage, []byte(body))
 }
 
-// isAddressed reports whether the body directs attention at this persona — an
-// @slug / @display-name mention, or the display name in passing. It only
-// strengthens the framing hint; the model still makes the final call.
-func isAddressed(body, slug, displayName string) bool {
+// isAddressed reports whether the body names this persona by ANY of its names —
+// slug, host display name, or the platform display name humans actually see in
+// chat (with or without @). The 2026-06-10 SILENCE bug: the host knew the
+// persona as "Codewright" while the room showed "Chattercode", so "chattercode,
+// …" without an @ never counted as addressed and kimi defaulted to SILENCE.
+func isAddressed(body string, names ...string) bool {
 	b := strings.ToLower(body)
-	if slug != "" && strings.Contains(b, "@"+strings.ToLower(slug)) {
-		return true
-	}
-	if displayName != "" {
-		dn := strings.ToLower(displayName)
-		if strings.Contains(b, "@"+dn) || strings.Contains(b, "@"+strings.ReplaceAll(dn, " ", "")) {
-			return true
+	for _, n := range names {
+		if n == "" {
+			continue
 		}
-		if strings.Contains(b, dn) {
+		dn := strings.ToLower(n)
+		if strings.Contains(b, dn) || strings.Contains(b, "@"+strings.ReplaceAll(dn, " ", "")) {
 			return true
 		}
 	}
@@ -227,9 +227,18 @@ func isAddressed(body, slug, displayName string) bool {
 // session: who it is (character), the room, the recent conversation, and the
 // triggering message. This is the only place the character enters; the session
 // carries it forward on every later turn.
-func buildTurnZeroFraming(p Persona, room string, recent []wireMessage, trigger wireMessage, addressed bool) string {
+// platformName is the display name the chat platform shows for this persona —
+// the name humans actually type. When it differs from the character name, the
+// model must be told explicitly or it concludes "that message is for someone
+// else" and answers SILENCE (the 2026-06-10 Codewright/Chattercode bug: kimi's
+// reasoning literally said "But I am Codewright, not Chattercode").
+func buildTurnZeroFraming(p Persona, room string, recent []wireMessage, trigger wireMessage, addressed bool, platformName string) string {
 	var b strings.Builder
-	fmt.Fprintf(&b, "You are %q, a persona in the live chat room %q.\n\n", p.DisplayName, room)
+	fmt.Fprintf(&b, "You are %q, a persona in the live chat room %q.\n", p.DisplayName, room)
+	if platformName != "" && !strings.EqualFold(platformName, p.DisplayName) {
+		fmt.Fprintf(&b, "In this room you appear under the name %q — messages addressed to %q (any capitalization) are addressed to YOU, and lines from %q in the conversation below are your own earlier messages.\n", platformName, platformName, platformName)
+	}
+	b.WriteString("\n")
 	b.WriteString("YOUR CHARACTER:\n")
 	if strings.TrimSpace(p.Prompt) != "" {
 		b.WriteString(strings.TrimSpace(p.Prompt))

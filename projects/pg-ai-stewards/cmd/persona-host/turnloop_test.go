@@ -41,6 +41,19 @@ func TestIsAddressed(t *testing.T) {
 			t.Errorf("isAddressed(%q) = %v, want %v", c.body, got, c.want)
 		}
 	}
+
+	// The 2026-06-10 SILENCE bug: the room shows a platform name ("Chattercode")
+	// that differs from both the slug and the host display name ("Codewright").
+	// Plain slug and platform-name addressing must both count.
+	if !isAddressed("chattercode, which file defines key validation?", "chattercode", "Codewright", "") {
+		t.Error("plain slug (no @) must count as addressed")
+	}
+	if !isAddressed("hey Chattercode can you check this", "chattercode", "Codewright", "Chattercode") {
+		t.Error("platform display name must count as addressed")
+	}
+	if isAddressed("I attack the goblin", "chattercode", "Codewright", "Chattercode") {
+		t.Error("unrelated message must not be addressed")
+	}
 }
 
 func TestShouldConsider(t *testing.T) {
@@ -72,7 +85,7 @@ func TestBuildTurnZeroFraming(t *testing.T) {
 		{Sender: "alice", Body: "just me"},
 	}
 	trigger := wireMessage{Sender: "michael", Body: "DM Assistant, set the scene"}
-	out := buildTurnZeroFraming(p, "tavern", recent, trigger, true)
+	out := buildTurnZeroFraming(p, "tavern", recent, trigger, true, "DM Assistant")
 
 	for _, want := range []string{
 		`"DM Assistant"`, "tavern", "warm theatrical DM",
@@ -83,11 +96,32 @@ func TestBuildTurnZeroFraming(t *testing.T) {
 			t.Errorf("turn-zero framing missing %q\n---\n%s", want, out)
 		}
 	}
+	// Matching platform name: no identity-bridge line needed.
+	if strings.Contains(out, "you appear under the name") {
+		t.Errorf("matching names should not emit the identity bridge:\n%s", out)
+	}
+}
+
+// The Codewright/Chattercode split: when the platform shows a different name
+// than the character, the framing must bridge the identity explicitly.
+func TestBuildTurnZeroFraming_PlatformNameBridge(t *testing.T) {
+	p := Persona{Slug: "chattercode", DisplayName: "Codewright", Prompt: "You are Codewright."}
+	trigger := wireMessage{Sender: "tester", Body: "chattercode, where is the migration runner?"}
+	out := buildTurnZeroFraming(p, "Engineering", nil, trigger, true, "Chattercode")
+	for _, want := range []string{
+		`you appear under the name "Chattercode"`,
+		`messages addressed to "Chattercode"`,
+		"your own earlier messages",
+	} {
+		if !strings.Contains(out, want) {
+			t.Errorf("identity bridge missing %q\n---\n%s", want, out)
+		}
+	}
 }
 
 func TestBuildTurnZeroFraming_NoPromptFallback(t *testing.T) {
 	p := Persona{Slug: "ghost", DisplayName: "Ghost"} // no Prompt
-	out := buildTurnZeroFraming(p, "void", nil, wireMessage{Sender: "x", Body: "boo"}, false)
+	out := buildTurnZeroFraming(p, "void", nil, wireMessage{Sender: "x", Body: "boo"}, false, "")
 	if !strings.Contains(out, "You are Ghost.") {
 		t.Errorf("expected character fallback, got:\n%s", out)
 	}

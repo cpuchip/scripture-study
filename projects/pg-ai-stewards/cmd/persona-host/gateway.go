@@ -26,15 +26,22 @@ type gwOutbound struct {
 	Type    string `json:"type"`
 	Channel string `json:"channel"`
 	Message struct {
+		ID         string `json:"id"`
 		Sender     string `json:"sender"`
 		SenderKind string `json:"senderKind"`
 		Body       string `json:"body"`
 	} `json:"message"`
 	Messages []struct {
+		ID         string `json:"id"`
 		Sender     string `json:"sender"`
 		SenderKind string `json:"senderKind"`
 		Body       string `json:"body"`
 	} `json:"messages"`
+	// On "ready" frames: who the platform says we are. The platform display
+	// name is the name humans actually type in chat — addressing must match it.
+	Session struct {
+		Name string `json:"name"`
+	} `json:"session"`
 }
 
 // channelState is one room's accumulating conversation, owned by the worker.
@@ -49,6 +56,11 @@ type channelState struct {
 	// coalesced follow-up turn fires when the current finishes.
 	busy    bool
 	pending *wireMessage
+	// eyedID = the message currently carrying this persona's 👀 reaction (the
+	// turn's trigger). Added at turn start, removed when the turn finishes — so
+	// the room sees WHICH question the persona is working, not just that it's
+	// busy (typing covers that). Hops naturally on a coalesced follow-up.
+	eyedID string
 }
 
 // turnResult is what a turn goroutine reports back to the worker loop (which is
@@ -93,12 +105,16 @@ type GatewayConn struct {
 	// emitFn, when set, intercepts room posts (tests). Default = the real
 	// websocket send (gc.emit).
 	emitFn func(channel, body string) error
+	// rawFn, when set, intercepts ALL raw frames — typing pulses, reactions
+	// (tests). Default = the real websocket send.
+	rawFn func(v any) error
 
 	// Worker-owned (single goroutine) — no locks needed.
 	channels    map[string]*channelState
 	frames      chan gwOutbound
 	generation  uint64          // bumped per connection; guards stale turn results
 	turnResults chan turnResult // turn goroutines → the worker loop
+	selfName    string          // platform display name (from the ready frame)
 }
 
 // emit posts a message to a channel — overridable in tests via emitFn.
@@ -319,6 +335,12 @@ func (gc *GatewayConn) fetchDMs(ctx context.Context) ([]personaDM, error) {
 }
 
 func (gc *GatewayConn) handle(ctx context.Context, f gwOutbound) {
+	if f.Type == "ready" {
+		if f.Session.Name != "" {
+			gc.selfName = f.Session.Name
+		}
+		return
+	}
 	cs := gc.channels[f.Channel]
 	if cs == nil {
 		cs = &channelState{}
@@ -330,7 +352,7 @@ func (gc *GatewayConn) handle(ctx context.Context, f gwOutbound) {
 			gc.note(cs, wireMessage{Sender: m.Sender, Body: m.Body})
 		}
 	case "message":
-		wm := wireMessage{Sender: f.Message.Sender, Body: f.Message.Body}
+		wm := wireMessage{ID: f.Message.ID, Sender: f.Message.Sender, Body: f.Message.Body}
 		gc.note(cs, wm)
 		if f.Message.SenderKind == "human" && strings.TrimSpace(wm.Body) != "" {
 			gc.maybeStartTurn(ctx, f.Channel, cs, wm)
@@ -353,8 +375,14 @@ func (gc *GatewayConn) maybeStartTurn(ctx context.Context, channel string, cs *c
 	cs.busy = true
 	// Show "typing…" immediately, not on the next 3s tick.
 	_ = gc.sendRaw(map[string]any{"type": "typing", "channel": channel})
+	// 👀 on the message we're working — message-scoped, where typing is
+	// channel-scoped. Removed in applyTurnResult when the turn finishes.
+	if trigger.ID != "" {
+		_ = gc.sendRaw(map[string]any{"type": "reaction", "channel": channel, "messageId": trigger.ID, "emoji": "👀", "op": "add"})
+		cs.eyedID = trigger.ID
+	}
 
-	addressed := isAddressed(trigger.Body, gc.persona.Slug, gc.persona.DisplayName)
+	addressed := isAddressed(trigger.Body, gc.persona.Slug, gc.persona.DisplayName, gc.selfName)
 	sessionID := cs.sessionID
 	pipeline := gc.persona.Pipeline
 	slug := gc.persona.Slug + "-" + short(channel)
@@ -366,7 +394,7 @@ func (gc *GatewayConn) maybeStartTurn(ctx context.Context, channel string, cs *c
 		if label == "" {
 			label = "the chat room"
 		}
-		bq = buildTurnZeroFraming(gc.persona, label, cs.recent, trigger, addressed)
+		bq = buildTurnZeroFraming(gc.persona, label, cs.recent, trigger, addressed, gc.selfName)
 	} else {
 		bq = buildConsultFraming(trigger, addressed)
 	}
@@ -435,6 +463,12 @@ func (gc *GatewayConn) applyTurnResult(ctx context.Context, tr turnResult) {
 				gc.note(cs, wireMessage{Sender: gc.persona.DisplayName, Body: tr.answer})
 			}
 		}
+		// Take the 👀 off the trigger message — the turn is over whether it
+		// answered, stayed silent, or errored.
+		if cs.eyedID != "" {
+			_ = gc.sendRaw(map[string]any{"type": "reaction", "channel": tr.channel, "messageId": cs.eyedID, "emoji": "👀", "op": "remove"})
+			cs.eyedID = ""
+		}
 		// Channel free; fire one coalesced follow-up if a message arrived mid-turn.
 		cs.busy = false
 		if cs.pending != nil {
@@ -485,7 +519,8 @@ func (gc *GatewayConn) drainOutbox(ctx context.Context) {
 			continue // session no longer mapped to a live channel
 		}
 		body := m.Body
-		if m.Mood != "" {
+		// Prefix the mood emoji unless the model already led with it ("🔍 🔍 …").
+		if m.Mood != "" && !strings.HasPrefix(strings.TrimSpace(body), m.Mood) {
 			body = m.Mood + " " + body
 		}
 		if err := gc.emit(chID, body); err != nil {
@@ -507,6 +542,9 @@ func (gc *GatewayConn) note(cs *channelState, wm wireMessage) {
 }
 
 func (gc *GatewayConn) sendRaw(v any) error {
+	if gc.rawFn != nil {
+		return gc.rawFn(v) // test seam — capture frames without a socket
+	}
 	if gc.conn == nil {
 		return nil // no live connection (or a test) — nothing to send
 	}
