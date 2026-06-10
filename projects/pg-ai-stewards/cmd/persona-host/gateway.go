@@ -70,23 +70,43 @@ const (
 	kindDone                          // the turn finished (answer or err)
 )
 
+// cognition is the slice of *Cognition the gateway uses — an interface so the
+// async turn loop can be unit-tested with a fake (no substrate, no socket).
+type cognition interface {
+	SpawnTurn(ctx context.Context, pipeline, slug, bindingQuestion string, onSession func(string)) (sessionID, answer string, err error)
+	ConsultTurn(ctx context.Context, sessionID, question string) (answer string, err error)
+	ClaimOutboxForSessions(ctx context.Context, sessionIDs []string) ([]OutboxRow, error)
+}
+
 // GatewayConn drives one persona across all the rooms its key grants.
 type GatewayConn struct {
 	persona Persona
 	key     string
 	wsBase  string
 	apiBase string
-	cog     *Cognition
+	cog     cognition
 
 	conn    *websocket.Conn
 	writeMu sync.Mutex
 	httpc   *http.Client
+
+	// emitFn, when set, intercepts room posts (tests). Default = the real
+	// websocket send (gc.emit).
+	emitFn func(channel, body string) error
 
 	// Worker-owned (single goroutine) — no locks needed.
 	channels    map[string]*channelState
 	frames      chan gwOutbound
 	generation  uint64          // bumped per connection; guards stale turn results
 	turnResults chan turnResult // turn goroutines → the worker loop
+}
+
+// emit posts a message to a channel — overridable in tests via emitFn.
+func (gc *GatewayConn) emit(channel, body string) error {
+	if gc.emitFn != nil {
+		return gc.emitFn(channel, body)
+	}
+	return gc.sendRaw(map[string]any{"type": "message", "channel": channel, "body": body})
 }
 
 const roomRefreshInterval = 30 * time.Second
@@ -392,7 +412,7 @@ func (gc *GatewayConn) applyTurnResult(ctx context.Context, tr turnResult) {
 		} else if !IsSilence(tr.answer) {
 			// Flush any pending room_say beats FIRST so "🔍 …" precedes the answer.
 			gc.drainOutbox(ctx)
-			if err := gc.sendRaw(map[string]any{"type": "message", "channel": tr.channel, "body": tr.answer}); err != nil {
+			if err := gc.emit(tr.channel, tr.answer); err != nil {
 				if ctx.Err() == nil {
 					log.Printf("[%s] post reply in %s: %v", gc.persona.Slug, tr.channel, err)
 				}
@@ -441,7 +461,7 @@ func (gc *GatewayConn) drainOutbox(ctx context.Context) {
 		if m.Mood != "" {
 			body = m.Mood + " " + body
 		}
-		if err := gc.sendRaw(map[string]any{"type": "message", "channel": chID, "body": body}); err != nil {
+		if err := gc.emit(chID, body); err != nil {
 			log.Printf("[%s] post room_say: %v", gc.persona.Slug, err)
 			continue
 		}
