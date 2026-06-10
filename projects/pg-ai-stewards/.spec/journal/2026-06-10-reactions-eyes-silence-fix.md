@@ -132,6 +132,51 @@ test account can wire DM/Party personas itself; Michael as server owner still
 manages them) · gh authenticated as cpuchip (dnd-tools repo pre-authorized).
 NEXT: DH-2 cast → DH-3 dnd-tools scaffold (both ratified, fresh-session-sized).
 
+## Addendum 4 — initiative, inline commands, the Starlet arc, r18/r19 (evening)
+
+Michael played. Everything after this point came from live field reports:
+
+- **D8 initiative** (asked → ratified 4/4 → shipped → proven in hours,
+  `170cb3e`): /initiative + /init family, server-rolled d20+mod, one active
+  round per room, orange turn-order strip with current-turn highlight,
+  subscribe backfill, log-of-record messages. Live: full flow in 200ms.
+- **Inline commands** (`938a919`): Michael's Holodeck-3 report — Starlet wrote
+  "/init +2" MID-SENTENCE (no-op) then invented "fourteen plus two makes
+  sixteen." /roll + /init +N now execute mid-message, expanded in place (≤3,
+  prose-safe, adv word-boundary). Starlet's prompt upgraded live (lounge voice
+  + table mechanics + NEVER invent dice); dm-assistant/npc-ally seeds got the
+  same block. Proven: "I lunge! 🎲 `1d20+5` → [6]+5=**11** right at it".
+- **[comment] flavor + strip controls** (`bb7d7e2`): any command takes a
+  trailing [comment] → " — *flavor*" (block AND inline); Next ▸ / ✕ End buttons
+  on the strip for starter+admins (send the same gated /init commands). Proven:
+  "= **8** — *smashing the door*".
+- **Starlet went mute → r18:** her turn "completed" with finish_reason=length —
+  kimi spent ALL 1200 max_tokens REASONING (4817 chars), content EMPTY; host
+  surfaced "produced no assistant reply" (fault tolerance did its job). The
+  qwen-thinking-budget gotcha, now on Fireworks. persona-turn/-lmstudio/-gemini
+  → 3000, verified: back in character in 14s ("Watch the hemline, darling").
+  Trigger chain worth remembering: my deploy dropped her connection → channel
+  reset → richer turn-zero → reasoning overflow.
+- **r19 (Michael):** all six persona-turn pipelines → 16k. "Replies stay small
+  by prompt; thinking room + summarize headroom." Cost caps still bound it.
+  Both migrations live + sha-ledgered + in migration-order.txt.
+- **She PLAYED:** before the mute, Starlet ran a real combat round — spotlight
+  attacks in character, reacting to Michael's rolls, her inline /init landing
+  her at 22 on the strip. The table works.
+
+**Session declaration:** it was good. One day: REM arc (reactions/eyes/
+mentions/mood/policies) + identity fix + dnd-holodeck spec'd-and-ratified +
+Phase 1 + D8 + inline + comments + two budget migrations — every piece
+live-verified on prod, every regression caught by a field report and closed
+same-hour.
+
+**Set down this session:** coalesced-consult duplicate (watch item, spec'd) ·
+3×👀-under-policy-all noise (Michael's dropdown when ready) · per-pair hop
+budgets summing (acceptable v1) · CT2 RUN 3 + qwen arm (queued).
+
+**Next session: DH-2 (cast system) — Michael kicks it off.** Then DH-3
+(dnd-tools repo, gh ready + pre-authorized), DH-4 (holodeck flow).
+
 ## Carry-forward
 - **REM-3 Mentions** (alerts + respond_policy routing + human mood UI) — next PR,
   ratified, not started.
