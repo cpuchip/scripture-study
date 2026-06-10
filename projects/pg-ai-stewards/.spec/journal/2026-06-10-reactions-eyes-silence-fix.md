@@ -114,6 +114,24 @@ Michael's #5 is dormant schema, not new architecture. Tasks #147–#150.
   mentioned/judgment); per-persona hop budgets sum across a pair (3+3);
   coalesced consult after an answered turn-zero may re-answer.
 
+## Addendum 3 — D8 initiative: asked, spec'd, ratified, SHIPPED, PROVEN (hours)
+
+Michael (after /roll worked): "we'll need a command for a DM to call for
+rolling initiative, and automatically setup a 'turn order' panel… that the DM
+can control." Spec'd as D8 + ratified 4/4 (sticky strip · starter+admins+
+personas control · chattermax-owned state · D8→DH-2→DH-3 order), built, and
+proven live the same afternoon (`170cb3e`): 0005 migration (one-active-per-room
+partial unique; entries unique per name, re-roll replaces; current tracked by
+entry id), /initiative + /init command family (server rolls d20+mod), full
+panel-state broadcast per action + log-of-record messages + subscribe backfill,
+orange LCARS turn-order strip. Live: start→join→add→next→end in 200ms, sort
+correct, wrap-bumps-round covered by integration test.
+
+Facts est. for "what do you need from me": persona creation = member-only (the
+test account can wire DM/Party personas itself; Michael as server owner still
+manages them) · gh authenticated as cpuchip (dnd-tools repo pre-authorized).
+NEXT: DH-2 cast → DH-3 dnd-tools scaffold (both ratified, fresh-session-sized).
+
 ## Carry-forward
 - **REM-3 Mentions** (alerts + respond_policy routing + human mood UI) — next PR,
   ratified, not started.
