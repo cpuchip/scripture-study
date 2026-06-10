@@ -18,10 +18,11 @@ import (
 
 // OutboxRow is one mid-turn message a persona emitted.
 type OutboxRow struct {
-	ID        int64
-	SessionID string
-	Body      string
-	Mood      string // optional emoji; "" if none
+	ID         int64
+	SessionID  string
+	Body       string
+	Mood       string // optional emoji; "" if none
+	SubPersona string // optional cast member speaking this line (DH-2); "" = the persona itself
 }
 
 // ClaimOutboxForSessions atomically claims (marks posted) the unposted outbox
@@ -42,7 +43,7 @@ func (c *Cognition) ClaimOutboxForSessions(ctx context.Context, sessionIDs []str
 		      FOR UPDATE SKIP LOCKED
 		  ) pick
 		 WHERE o.id = pick.id
-		 RETURNING o.id, o.session_id, o.body, COALESCE(o.mood, '')`,
+		 RETURNING o.id, o.session_id, o.body, COALESCE(o.mood, ''), COALESCE(o.sub_persona, '')`,
 		sessionIDs)
 	if err != nil {
 		return nil, err
@@ -51,7 +52,7 @@ func (c *Cognition) ClaimOutboxForSessions(ctx context.Context, sessionIDs []str
 	var out []OutboxRow
 	for rows.Next() {
 		var r OutboxRow
-		if err := rows.Scan(&r.ID, &r.SessionID, &r.Body, &r.Mood); err != nil {
+		if err := rows.Scan(&r.ID, &r.SessionID, &r.Body, &r.Mood, &r.SubPersona); err != nil {
 			return nil, err
 		}
 		out = append(out, r)

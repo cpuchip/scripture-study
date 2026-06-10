@@ -226,3 +226,4 @@ ct2-7c-persona-room-facets.sql
 ct2-7d-working-tags.sql
 r18-persona-turn-budget.sql
 r19-persona-turn-16k.sql
+r20-room-say-as.sql

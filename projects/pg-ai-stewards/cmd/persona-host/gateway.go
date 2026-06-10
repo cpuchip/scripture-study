@@ -138,6 +138,18 @@ func (gc *GatewayConn) emit(channel, body string) error {
 	return gc.sendRaw(map[string]any{"type": "message", "channel": channel, "body": body})
 }
 
+// emitAs posts a message spoken by a named cast member (DH-2): the platform
+// attributes the line to subPersona, auto-creating the character on first use.
+func (gc *GatewayConn) emitAs(channel, subPersona, body string) error {
+	if subPersona == "" {
+		return gc.emit(channel, body)
+	}
+	if gc.emitFn != nil {
+		return gc.emitFn(channel, "["+subPersona+"] "+body) // test seam: visible attribution
+	}
+	return gc.sendRaw(map[string]any{"type": "message", "channel": channel, "body": body, "subPersona": subPersona})
+}
+
 const roomRefreshInterval = 30 * time.Second
 
 // room_say beats should feel near-real-time ("hang on…" before a slow tool),
@@ -572,13 +584,17 @@ func (gc *GatewayConn) drainOutbox(ctx context.Context) {
 		if m.Mood != "" && !strings.HasPrefix(strings.TrimSpace(body), m.Mood) {
 			body = m.Mood + " " + body
 		}
-		if err := gc.emit(chID, body); err != nil {
+		if err := gc.emitAs(chID, m.SubPersona, body); err != nil {
 			log.Printf("[%s] post room_say: %v", gc.persona.Slug, err)
 			continue
 		}
 		// Record our own mid-turn post so the persona doesn't re-react to it.
+		sender := gc.persona.DisplayName
+		if m.SubPersona != "" {
+			sender = m.SubPersona
+		}
 		if cs := gc.channels[chID]; cs != nil {
-			gc.note(cs, wireMessage{Sender: gc.persona.DisplayName, Body: body})
+			gc.note(cs, wireMessage{Sender: sender, Body: body})
 		}
 	}
 }

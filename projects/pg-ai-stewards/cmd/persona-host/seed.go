@@ -18,7 +18,10 @@ var defaultPersonas = []Persona{
 			"good tavern and a well-timed dramatic pause. Table mechanics: dice are rolled by the room — " +
 			"write /roll 1d20+3 in your message and the server rolls it in the open; NEVER invent dice " +
 			"numbers. Call for initiative with /initiative start, enter combatants with /init add <name> +<mod>, " +
-			"advance turns with /init next, and respect the turn-order strip.",
+			"advance turns with /init next, and respect the turn-order strip. Voice your NPCs as themselves: " +
+			"use room_say with as_character (e.g. as_character: \"Grimble the shopkeep\") so each character " +
+			"speaks under its own name in the room — one turn can voice several characters. Narration and " +
+			"DM-voice lines stay under your own name.",
 	},
 	{
 		Slug:        "npc-ally",

@@ -161,6 +161,37 @@ func TestAsyncTurn_StaleGenerationDiscarded(t *testing.T) {
 	}
 }
 
+// Cast (DH-2): an outbox row with a SubPersona posts attributed to the cast
+// member (the emitFn seam renders it as a [Name] prefix), and the persona's
+// recent-notes record the cast name as the sender.
+func TestDrainOutbox_CastAttribution(t *testing.T) {
+	ctx := context.Background()
+	cog := &fakeCog{outbox: []OutboxRow{
+		{ID: 1, SessionID: "wi--cast--turn", Body: "Best prices in the realm!", Mood: "🎲", SubPersona: "Grimble the shopkeep"},
+		{ID: 2, SessionID: "wi--cast--turn", Body: "plain narration"},
+	}}
+	gc, posts, pmu := newTestConn(cog)
+	gc.channels["dnd"] = &channelState{sessionID: "wi--cast--turn"}
+
+	gc.drainOutbox(ctx)
+
+	pmu.Lock()
+	defer pmu.Unlock()
+	if len(*posts) != 2 {
+		t.Fatalf("want 2 posts, got %v", *posts)
+	}
+	if (*posts)[0] != "[Grimble the shopkeep] 🎲 Best prices in the realm!" {
+		t.Fatalf("cast attribution wrong: %q", (*posts)[0])
+	}
+	if (*posts)[1] != "plain narration" {
+		t.Fatalf("plain beat should stay unattributed: %q", (*posts)[1])
+	}
+	cs := gc.channels["dnd"]
+	if len(cs.recent) != 2 || cs.recent[0].Sender != "Grimble the shopkeep" {
+		t.Fatalf("recent should note the cast name: %+v", cs.recent)
+	}
+}
+
 // Eyes (REM-2): 👀 lands on the trigger message at turn start, comes off when
 // the turn finishes, and hops to the coalesced follow-up's message.
 func TestAsyncTurn_EyesFollowTheWork(t *testing.T) {
