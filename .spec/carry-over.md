@@ -72,6 +72,19 @@ stays for planning/council/ratify. Order: cockpit P1 → code persona P1.
 
 ## Design pass with Michael (~5 min), then I build
 
+- **Webster 1828 published-works audit walk** (2026-06-09, from the data-integrity
+  remediation — `.spec/proposals/webster-1828-data-integrity.md`). Michael wants to
+  walk ALL published works together re-verifying every "Webster 1828" quote against
+  the now-genuine data (and the 1913 kept side-by-side for the drift view):
+  cpuchip.net studies (**three-glories first** — genuine 1828 *glory* = 12 senses
+  "Brightness; luster; splendor", substantially different from the 1913 it quoted),
+  workspace `study/`, the book's F-19/20/21 (ride the v4 chat walk). **Riding along:
+  hand-add the ~27 tier words missing from the genuine corpus** — mostly coinages/
+  proper nouns, but NAUGHTY, PESTILENCE, ALLEGE, HATH, HOSEN, BEFORETIME, SORCERIES,
+  ZINC are upstream OCR dropouts; transcribe from webstersdictionary1828.com (the
+  authority) into manual-additions / the dictionary data, then upstream to
+  kayson-argyle (+ ask about a license).
+
 - **Engineering / repo-reader persona** — **RATIFIED 2026-06-07** as code persona
   (build-queue item ②): repo = **ai-chattermax**, **read-only first**, backed by the
   agentic `research_codebase` tool (not raw coder tools in the persona). P2 of item ②
