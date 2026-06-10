@@ -67,6 +67,10 @@ const roomRefreshInterval = 30 * time.Second
 // so drain often. The query is a cheap partial-index scan over unposted rows.
 const roomSayDrainInterval = 1 * time.Second
 
+// frameBufferSize bounds the inbound gateway-frame channel. Recreated per
+// connection in Run (see the reconnect-panic fix).
+const frameBufferSize = 128
+
 // NewGatewayConn builds a multi-room connection for a persona.
 func NewGatewayConn(p Persona, key, wsBase string, cog *Cognition) *GatewayConn {
 	api := strings.Replace(strings.Replace(wsBase, "wss://", "https://", 1), "ws://", "http://", 1)
@@ -75,7 +79,7 @@ func NewGatewayConn(p Persona, key, wsBase string, cog *Cognition) *GatewayConn 
 		apiBase: strings.TrimRight(api, "/"), cog: cog,
 		httpc:    &http.Client{Timeout: 10 * time.Second},
 		channels: map[string]*channelState{},
-		frames:   make(chan gwOutbound, 128),
+		frames:   make(chan gwOutbound, frameBufferSize),
 	}
 }
 
@@ -88,6 +92,14 @@ func (gc *GatewayConn) Run(ctx context.Context) error {
 	gc.conn = conn
 	defer conn.Close()
 	log.Printf("[%s] gateway connected", gc.persona.Slug)
+
+	// Fresh per-connection frame channel. readPump closes gc.frames on
+	// disconnect, so a reconnect MUST NOT reuse the closed one — doing so
+	// double-closes it (panic), which crash-loops the whole host on every
+	// chat.ibeco.me redeploy (the connection drops → reconnect → panic).
+	// `defer close(gc.frames)` captures this channel value, so an old readPump
+	// closes the old channel while the new connection uses this fresh one.
+	gc.frames = make(chan gwOutbound, frameBufferSize)
 
 	go func() { <-ctx.Done(); _ = conn.Close() }()
 	go gc.readPump(ctx)
