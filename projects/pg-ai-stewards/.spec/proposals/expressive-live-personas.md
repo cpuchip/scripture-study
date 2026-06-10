@@ -147,6 +147,43 @@ Result: room_say posts within ~1s of the model calling it ("🔍 let me check" �
 the answer), on turn-zero AND consults. Scope: persona-host gateway.go + dispatch.go
 (an `onSession` callback on SpawnTurn). Moderate, concurrency-careful, fresh-eyes build.
 
+## ★ Typing indicator — "Codewright is typing…" between turns (Michael, 2026-06-10)
+
+The gap: even with room_say, there's silence from the human's message until the first
+beat (~10s) and between beats. A "who's responding" indicator fills that so the room
+knows something's happening. **The async turn loop just made this possible** — the loop
+is now free during a turn, so the host can emit periodic signals while the model works
+(it couldn't before — the loop was blocked).
+
+**The protocol already exists.** The gateway defines a `typing` frame both directions
+(client→server `{type:"typing",channel}`, server→server-broadcast `{type:"typing",
+channel,who}`) — it's just never wired for personas, and the frontend doesn't render it
+yet. So this is two small pieces, **zero model/cognition impact** (purely host + UI
+around the turn):
+
+1. **persona-host:** a `typing` ticker in the Run select loop (sibling to the drain
+   ticker). Every ~3s, for each channel with `cs.busy` (a turn in flight), send a
+   `typing` frame for that channel. The frame is refreshed because typing indicators
+   auto-expire client-side after a few seconds; when the answer posts, a real message
+   arrives and the indicator naturally clears. Stops when `cs.busy` goes false.
+2. **frontend (ai-chattermax):** render the `typing` frame the gateway already
+   broadcasts — a subtle "Codewright is typing…" line below the transcript (multiple →
+   "Codewright and Starlet are typing…"). The store currently parses-and-ignores it.
+
+**How it composes with room_say:** they're complementary, not redundant. The typing
+indicator is the *automatic* "something's happening" pulse (fills the silence); room_say
+is the persona's *intentional* narration ("🔍 let me check…"). Typing covers the
+pre-first-beat gap; beats give the specifics. Together: human posts → "Codewright is
+typing…" (instant) → "🔍 let me check…" (~10s) → answer (~50s), with the typing pulse
+throughout.
+
+**v1.5 (optional later):** make the label activity-aware — reflect the latest room_say
+mood ("Codewright is researching… 🔍") instead of a generic "typing." Nice, not needed
+for v1; the beats already carry the specifics.
+
+**Model-safety:** none. The persona never sees the typing frames; they're host→room
+metadata around the cognition. The model keeps working exactly as it does now.
+
 ## Not an arch change — the one-liner
 
 Personas talking-as-they-work, showing mood, and reacting live is **a new tool
