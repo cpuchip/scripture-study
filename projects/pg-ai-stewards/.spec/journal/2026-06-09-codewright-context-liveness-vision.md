@@ -84,6 +84,38 @@ new room messages at the **round boundary** (level 2 = the real pivot, a contain
 bgworker dispatch-loop change), or a `check_room()` pull tool (level 1, no core change).
 True token-level interruption = not needed. The D&D magic = level 2.
 
+## Addendum 2 — Ammon night: async turn loop BUILT + race-clean proven
+
+Michael (4am, tired): "you're underselling your programming skills… dave-rule +
+stuffy-in-the-loop, no one's using the system tonight, prove it works, report in the
+morning." Took the handoff.
+
+**Built the async turn loop (`eb76247` + `cb2772d`):** the room_say-late fix.
+- `handle()` → `maybeStartTurn`: a turn runs in its OWN goroutine (`runTurn`, cognition
+  only) and reports back over a `turnResults` channel. The select loop keeps draining
+  room_say + serving other channels — never blocked.
+- The loop stays SOLE owner of `gc.channels` (`applyTurnResult` in the loop goroutine) —
+  **no mutexes**; the single-goroutine invariant preserved.
+- `SpawnTurn` gained an `onSession` callback (fires the moment the child session
+  appears) → `cs.sessionID` set early → drainer routes beats on turn-zero too.
+- Ordering: `applyTurnResult` drains the outbox BEFORE the answer → beats precede it.
+- Per-channel serialize (`cs.busy`) + one coalesced follow-up (`cs.pending`).
+- Reconnect-safe: per-connection `generation` guard discards stale results (the bug we
+  fixed earlier this session makes that path real).
+
+**Proven (`go test -race`, all green):** maybeStartTurn returns immediately though
+cognition blocks; session known mid-turn; **the "🔍" beat posts BEFORE the answer**;
+stale-generation result discarded; mid-turn message coalesced to exactly one follow-up.
+Testable seams added: a `cognition` interface + an `emit` override (fake in tests, no
+substrate/socket). Persona-host rebuilt + recreated — clean reconnect, 0 panics.
+
+**Live e2e through chat.ibeco.me BLOCKED for me:** wrote a WS test client (register on
+ibeco.me → `/api/auth/login` exchanges becoming_session for chattermax_session → gateway)
+— it connected, but a fresh signup gets its OWN personal server, so it can't access
+Michael's Engineering room (the membership gate). So the final live sighting is Michael's
+as a member: ask codewright in Engineering, the "🔍 …" beat now lands ~1s in, the answer
+~50s later. (Auth flow + membership gate documented here for the next test.)
+
 ## Commits (root UNPUSHED unless noted)
 `aa22874` (CT2 apparatus + expressive spec) · `ef81988` (room_say foundation) · plus
 the spec/journal updates this entry rides with. ai-chattermax `e7f4b92` (frontend,
