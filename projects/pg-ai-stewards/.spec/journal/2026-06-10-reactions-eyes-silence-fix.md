@@ -82,6 +82,38 @@ Michael: "yeah rename codewright to chattercode / and lets cook REM-3!"
 - Integration suite extended (notifications/policy/mood round trips +
   MentionedUserIDs ambiguity/self-mention/no-@ cases) — all green vs scratch DB.
 
+## Addendum 2 — dnd-holodeck spec'd + ratified + Phase 1 SHIPPED (same day)
+
+Michael pushed the root (ibeco.me redeployed clean, b84b137 in ~30s), then laid
+out the full D&D vision: slash commands + autocomplete, player tools/character
+builder, D&D Beyond eval, world-building, DM-with-sub-personas, a Party persona
+managing agent PCs, and the holodeck program flow (prep room → cook campaign →
+"program ready" alert → play → archive/resume, concurrent holodecks).
+
+**Spec'd** (`ai-chattermax/.spec/proposals/dnd-holodeck.md`) **+ ratified, 4/4
+as recommended:** unified server dice · sub-persona cast with display/cognition
+DECOUPLING (facet ↔ promoted-session per NPC; the "adaptable as we play"
+principle made structural) · dnd-tools greenlit (public Go MCP twin; SRD 5.2 is
+irrevocably CC-BY-4.0; Open5e for reference data; **D&D Beyond has NO public
+API** — verified, not a foundation) · Phase 1 build now. Key discovery: the
+platform's `sub_personas` table existed since 0001 ("v2 UI; schema now") —
+Michael's #5 is dormant schema, not new architecture. Tasks #147–#150.
+
+**Phase 1 BUILT + PROVEN LIVE same session:**
+- chattermax (`39a4208`+`d2a1df3`, deployed): `/roll` server-side for every
+  sender + `/me` + `/mood`, command registry, composer autocomplete (`/` and
+  `@` — REM-3 usability finished). Caught pre-live: sender saw raw `/roll`
+  (optimistic UI vs transformed body) → commands echo authoritatively.
+  Live: `🎲 rolled 2d6+3 → [3, 5] +3 = 11`; bad spec errors to sender only.
+- persona-host (root, unpushed): persona→persona triggers (isAddressed +
+  never-self + hop budget 3, human resets). **Live chain in 10-forward:**
+  human → Chattercode relays "@Computer — what's the Topical Guide?" →
+  Computer's turn fires off the persona message, gospel_search, cited answer.
+  The DM→PC handoff primitive works.
+- Watch: 3×👀 on one message under policy `all` (live argument for
+  mentioned/judgment); per-persona hop budgets sum across a pair (3+3);
+  coalesced consult after an answered turn-zero may re-answer.
+
 ## Carry-forward
 - **REM-3 Mentions** (alerts + respond_policy routing + human mood UI) — next PR,
   ratified, not started.
