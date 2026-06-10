@@ -4,7 +4,9 @@ import (
 	"bytes"
 	"compress/gzip"
 	"context"
+	"crypto/sha256"
 	_ "embed"
+	"encoding/hex"
 	"encoding/json"
 	"fmt"
 	"io"
@@ -39,8 +41,11 @@ type webster1828Entry struct {
 	Definitions []string `json:"definitions"`
 }
 
-// SeedWebster1828 ingests the full ~98k 1828 corpus (D-DICT-1).
-// Idempotent: skips if webster_1828 already has rows. Uses CopyFrom
+// SeedWebster1828 ingests the genuine 1828 corpus (D-DICT-1).
+// Idempotent via fingerprint: skips only when webster_1828 has rows AND the
+// stored sha256 of the embedded corpus matches. When the bundled data
+// changes (e.g. the 2026-06-09 swap from the mislabeled 1913 corpus to the
+// genuine 1828), the table is truncated and re-ingested. Uses CopyFrom
 // after grouping entries by lowercased headword.
 func SeedWebster1828(ctx context.Context, pool any) error {
 	p, ok := pool.(*pgxpool.Pool)
@@ -48,13 +53,25 @@ func SeedWebster1828(ctx context.Context, pool any) error {
 		return fmt.Errorf("SeedWebster1828: expected *pgxpool.Pool, got %T", pool)
 	}
 
+	sum := sha256.Sum256(webster1828Gz)
+	fingerprint := hex.EncodeToString(sum[:])
+
 	var existing int
 	if err := p.QueryRow(ctx, `SELECT COUNT(*) FROM webster_1828`).Scan(&existing); err != nil {
 		return fmt.Errorf("count webster_1828: %w", err)
 	}
 	if existing > 0 {
-		log.Printf("[seed] webster_1828: skip (already %d entries)", existing)
-		return nil
+		var stored string
+		err := p.QueryRow(ctx,
+			`SELECT sha256 FROM seed_fingerprints WHERE corpus = 'webster_1828'`).Scan(&stored)
+		if err == nil && stored == fingerprint {
+			log.Printf("[seed] webster_1828: skip (already %d entries, fingerprint match)", existing)
+			return nil
+		}
+		log.Printf("[seed] webster_1828: embedded corpus changed (rows=%d, stored=%.12q) — re-ingesting", existing, stored)
+		if _, err := p.Exec(ctx, `TRUNCATE webster_1828`); err != nil {
+			return fmt.Errorf("truncate webster_1828: %w", err)
+		}
 	}
 
 	start := time.Now()
@@ -114,6 +131,15 @@ func SeedWebster1828(ctx context.Context, pool any) error {
 	if err != nil {
 		return fmt.Errorf("copy webster_1828: %w", err)
 	}
+
+	if _, err := p.Exec(ctx, `
+		INSERT INTO seed_fingerprints (corpus, sha256, updated_at)
+		VALUES ('webster_1828', $1, now())
+		ON CONFLICT (corpus) DO UPDATE SET sha256 = EXCLUDED.sha256, updated_at = now()
+	`, fingerprint); err != nil {
+		return fmt.Errorf("record webster_1828 fingerprint: %w", err)
+	}
+
 	log.Printf("[seed] webster_1828: inserted %d distinct headwords in %s", n, time.Since(start))
 	return nil
 }
