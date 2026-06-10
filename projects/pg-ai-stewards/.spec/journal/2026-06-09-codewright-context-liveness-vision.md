@@ -116,6 +116,30 @@ Michael's Engineering room (the membership gate). So the final live sighting is 
 as a member: ask codewright in Engineering, the "🔍 …" beat now lands ~1s in, the answer
 ~50s later. (Auth flow + membership gate documented here for the next test.)
 
+## Addendum 3 — typing indicator BUILT + PROVEN LIVE (Michael asleep, CDT 11:48pm)
+
+Michael (heading to bed): "anything you can do while I sleep?" + raised a typing
+indicator earlier. Built it — the async loop had just made it possible.
+
+- **persona-host:** typing pulse — immediate `{type:typing,channel}` on turn start + a
+  3s refresh ticker for busy channels (sibling to the drain ticker). `sendRaw` made
+  nil-safe. The gateway already stamps the persona name + broadcasts; auto-expires
+  client-side.
+- **frontend (ai-chattermax `f9d9dd2`, PUSHED → chat.ibeco.me deploy):** renders the
+  typing frame the store had ignored — "X is typing…" line under the composer, animated
+  dots, 1s tick for reactive ~6s expiry, clears on a real message. Bundled the #5/#7
+  deploy (Shift-Enter + sticky server) into the same push.
+- **PROVEN LIVE** (member test account `claude-codetest@ibeco.me`, saved gitignored at
+  `.spec/scratch/test-credentials.env`): posted to Engineering → "Chattercode is
+  typing…" at **1.2s**, pulsing the whole **~52s** turn, the "🔍" room_say beat at 21s,
+  the cited answer at 52s (`envelope.go:53-57` — correct). One exchange proved the whole
+  liveness stack: typing + room_say + async loop + research_codebase.
+- The frontend deploy is also the **production test of the reconnect fix** (it drops the
+  persona connections → reconnect must be clean, not crash-loop).
+
+Wrote a reusable WS verify-client (login→`/api/auth/login` exchange→gateway, typing+msg
+timestamps) then removed it (its .exe lingered Windows-locked; gitignored, harmless).
+
 ## Commits (root UNPUSHED unless noted)
 `aa22874` (CT2 apparatus + expressive spec) · `ef81988` (room_say foundation) · plus
 the spec/journal updates this entry rides with. ai-chattermax `e7f4b92` (frontend,

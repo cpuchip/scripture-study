@@ -147,7 +147,17 @@ Result: room_say posts within ~1s of the model calling it ("🔍 let me check" �
 the answer), on turn-zero AND consults. Scope: persona-host gateway.go + dispatch.go
 (an `onSession` callback on SpawnTurn). Moderate, concurrency-careful, fresh-eyes build.
 
-## ★ Typing indicator — "Codewright is typing…" between turns (Michael, 2026-06-10)
+## ★ Typing indicator — SHIPPED + PROVEN LIVE (2026-06-10)
+
+Built overnight: persona-host typing pulse (immediate on turn start + 3s refresh for
+busy channels) + frontend render ("X is typing…" under the composer, animated dots,
+reactive expiry, clears on a real message). The gateway already broadcast the frame;
+the store had ignored it. **Proven live via the member test account** → Engineering:
+"Chattercode is typing…" at 1.2s, pulsing the whole ~52s turn, the "🔍" beat at 21s,
+the cited answer at 52s. Commits: persona-host `<root>` + ai-chattermax `f9d9dd2`.
+Design (as built) below.
+
+## Typing indicator — "Codewright is typing…" between turns (Michael, 2026-06-10)
 
 The gap: even with room_say, there's silence from the human's message until the first
 beat (~10s) and between beats. A "who's responding" indicator fills that so the room
