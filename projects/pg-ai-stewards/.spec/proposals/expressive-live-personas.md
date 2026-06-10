@@ -111,6 +111,42 @@ when D&D wants true live-reaction.
   (overlaps the people-mood frontend ask).
 - **v3 (only if proven needed):** true mid-turn injection. Likely never.
 
+## ★ v1.1 PLAN — the async turn loop (fixes "room_say posts late")
+
+**The bug (diagnosed 2026-06-10, live):** a room_say beat created at 03:04:31 was posted
+at 03:05:22 — 51s late, coincident with the final answer. Root cause: `handle()` calls
+`takeTurn()` **synchronously inside the Run select loop**, and takeTurn blocks on
+SpawnTurn/ConsultTurn for the whole ~51s turn. So the select loop is FROZEN during a
+turn — the `<-drain.C` tick that posts room_say can't fire until the turn returns.
+Compounding: on turn-zero, `cs.sessionID` isn't set until SpawnTurn returns, so even an
+unblocked drainer couldn't route the message. (Same family as the Spin filler: a sync
+step starving an async update.)
+
+**The fix — run the turn OFF the loop, preserve single-goroutine ownership of
+`gc.channels` via a results channel (no mutexes):**
+
+1. `handle()` on a human message spawns a **turn goroutine** that does ONLY the cognition
+   (SpawnTurn/ConsultTurn). It never touches `gc.channels`.
+2. The goroutine reports back over a new `turnResults chan turnResult` that the Run
+   select loop reads (a new `case`). The **loop stays the sole owner of `gc.channels`** —
+   it applies results: set `cs.sessionID`, post the answer, `note()` it. No locks; the
+   existing single-goroutine invariant is preserved, not fought.
+3. **Early session id:** the goroutine sends `turnResult{kind:session, sessionID}` as soon
+   as `spawn_subagent_create` returns the child id (session = `wi--<short>--turn`,
+   derivable immediately) — BEFORE polling to completion. The loop sets `cs.sessionID`
+   right away → the drainer can route room_say from the first beat.
+4. **Per-channel serialization:** one turn at a time per channel (`cs.busy`). A human
+   message arriving mid-turn is `note()`d (so it's in context) and a single follow-up
+   turn fires when the current finishes if a human message went unanswered. The loop
+   stays free for OTHER channels + the drainer throughout.
+5. **Reconnect safety:** a per-connection generation counter; turn results whose
+   generation != current are discarded (cs was reset on reconnect — the bug we just
+   fixed makes this path real).
+
+Result: room_say posts within ~1s of the model calling it ("🔍 let me check" → ~50s →
+the answer), on turn-zero AND consults. Scope: persona-host gateway.go + dispatch.go
+(an `onSession` callback on SpawnTurn). Moderate, concurrency-careful, fresh-eyes build.
+
 ## Not an arch change — the one-liner
 
 Personas talking-as-they-work, showing mood, and reacting live is **a new tool

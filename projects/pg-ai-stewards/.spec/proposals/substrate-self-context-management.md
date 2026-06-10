@@ -379,6 +379,34 @@ the levers are reachable (scaffolding) but not yet *usable* (addressing). Fix th
 handle UX, then RUN 3. (Artifacts: `wi--473c913a--turn` treatment / `wi--4edf8ca0--turn`
 control; `codewright-ct2` family.)
 
+### ★ CT2.5 PLAN — sub-agent id as a natural auto-tag (the addressing fix)
+
+**Michael's insight (2026-06-10):** the model muted by the *sub-agent id* it saw in the
+result (`context_mute(handle:"subagent-20260610-…")`) — that's its NATURAL reference, so
+make that id a real handle instead of forcing a `[ctx:xxxx]`. "Accept an id for a
+sub-agent call as a natural auto tag."
+
+**The fix — two small pieces:**
+1. **Auto-tag the sub-agent tool result.** When the bgworker inserts the `role='tool'`
+   message for a sub-agent call (spawn_subagent / research_codebase / deep_research /
+   the L.6 wrappers), stamp it with the sub-agent slug/id as a `context_tags[]` entry
+   (the §7.4 column already exists). Free — one array write at insert.
+2. **Resolve a sub-agent id in the lever wrappers.** `context_mute`/`pin`/`expand`/
+   `compress` already resolve a `[ctx:xxxx]` handle → message. Extend resolution: if the
+   passed handle matches a `context_tags` entry (a sub-agent id), resolve it → that
+   tagged message(s). So `context_mute("subagent-20260610-…")` — the model's exact
+   instinct — just works and mutes the bulky digest.
+
+**Why it's right:** the model already KNOWS the sub-agent id (it's in the tool-result
+header it just read), so this needs no new vocabulary, no `[ctx:]`-handle-on-live-messages
+rendering, no forgiving-NLP parser. It makes the lever speak the model's existing
+language. (A broader "mute last_tool_result / by ordinal" is a possible later add, but
+the sub-agent-id tag covers the exact observed failure.)
+
+**Scope:** the bgworker tool-message insert path (auto-tag) + the SQL lever wrappers
+(resolve a context_tag). Then re-run codewright-ct2 (RUN 3) and confirm the mute lands +
+trims context. Small, SQL + one Rust insert tweak (or a SQL trigger on the tool insert).
+
 ## Creation-cycle framing (for the book audit)
 
 This deepens three steps of the cycle and is worth a note in the blueprint audit:
