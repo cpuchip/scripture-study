@@ -61,7 +61,16 @@ type channelState struct {
 	// the room sees WHICH question the persona is working, not just that it's
 	// busy (typing covers that). Hops naturally on a coalesced follow-up.
 	eyedID string
+	// hops counts consecutive persona-triggered turns (DH-1/D1). Each
+	// persona→persona turn spends one; any human message resets it. At
+	// personaHopBudget the chain stops and the table waits for a human —
+	// the ping-pong guard.
+	hops int
 }
+
+// personaHopBudget bounds persona→persona turn chains per channel (DM narrates
+// → PC reacts → DM resolves = 3 hops, then it's the humans' table again).
+const personaHopBudget = 3
 
 // turnResult is what a turn goroutine reports back to the worker loop (which is
 // the sole owner of gc.channels). Carrying `gen` lets the loop discard results
@@ -367,7 +376,25 @@ func (gc *GatewayConn) handle(ctx context.Context, f gwOutbound) {
 	case "message":
 		wm := wireMessage{ID: f.Message.ID, Sender: f.Message.Sender, Body: f.Message.Body}
 		gc.note(cs, wm)
-		if f.Message.SenderKind == "human" && strings.TrimSpace(wm.Body) != "" {
+		switch {
+		case f.Message.SenderKind == "human":
+			cs.hops = 0 // a human at the table resets the persona-chain budget
+			if strings.TrimSpace(wm.Body) != "" {
+				gc.maybeStartTurn(ctx, f.Channel, cs, wm)
+			}
+		case f.Message.SenderKind == "persona" && wm.Sender != gc.selfName && wm.Sender != gc.persona.DisplayName:
+			// Persona→persona (DH-1/D1): another persona's message starts a
+			// turn ONLY when it names us, and only within the hop budget —
+			// that's what lets the DM hand off to a PC ("@party-bard, your
+			// move") without two models ping-ponging forever.
+			if !isAddressed(wm.Body, gc.persona.Slug, gc.persona.DisplayName, gc.selfName) {
+				return
+			}
+			if cs.hops >= personaHopBudget {
+				log.Printf("[%s] hop budget reached in %s — waiting for a human", gc.persona.Slug, f.Channel)
+				return
+			}
+			cs.hops++
 			gc.maybeStartTurn(ctx, f.Channel, cs, wm)
 		}
 	}

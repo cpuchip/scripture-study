@@ -209,6 +209,63 @@ func TestAsyncTurn_EyesFollowTheWork(t *testing.T) {
 	}
 }
 
+// Persona↔persona triggers (DH-1/D1): another persona's message starts a turn
+// only when it names us; the hop budget caps the chain; a human message resets.
+func TestPersonaTrigger_MentionGateAndHopBudget(t *testing.T) {
+	ctx := context.Background()
+	cog := &fakeCog{dur: 10 * time.Millisecond, sessionAfter: -1, session: "wi--pp--turn", answer: "noted"}
+	gc, _, _ := newTestConn(cog)
+	cs := &channelState{sessionID: "wi--pp--turn"}
+	gc.channels["dnd"] = cs
+
+	frame := func(kind, sender, body string) gwOutbound {
+		var f gwOutbound
+		f.Type = "message"
+		f.Channel = "dnd"
+		f.Message.ID = "m"
+		f.Message.Sender = sender
+		f.Message.SenderKind = kind
+		f.Message.Body = body
+		return f
+	}
+
+	// Unaddressed persona message: no turn.
+	gc.handle(ctx, frame("persona", "DM Assistant", "the tavern hums with chatter"))
+	if cs.busy || cs.hops != 0 {
+		t.Fatalf("unaddressed persona message must not trigger (busy=%v hops=%d)", cs.busy, cs.hops)
+	}
+	// Addressed persona messages: turns fire, spending hops, up to the budget.
+	for i := 1; i <= personaHopBudget; i++ {
+		gc.handle(ctx, frame("persona", "DM Assistant", "@tester your move"))
+		pump(gc, ctx, 80*time.Millisecond) // let the turn finish so busy frees
+		if cs.hops != i {
+			t.Fatalf("hop %d: hops=%d", i, cs.hops)
+		}
+	}
+	gc.handle(ctx, frame("persona", "DM Assistant", "@tester again"))
+	if cs.busy {
+		t.Fatal("turn past the hop budget must not start")
+	}
+	cog.mu.Lock()
+	consults := cog.consults
+	cog.mu.Unlock()
+	if consults != personaHopBudget {
+		t.Fatalf("want %d consults, got %d", personaHopBudget, consults)
+	}
+	// A human message resets the budget and triggers normally.
+	gc.handle(ctx, frame("human", "michael", "tester, what do you see?"))
+	if cs.hops != 0 || !cs.busy {
+		t.Fatalf("human message should reset hops (=%d) and start a turn (busy=%v)", cs.hops, cs.busy)
+	}
+	pump(gc, ctx, 80*time.Millisecond)
+	// Our own messages (platform name) never trigger us.
+	gc.selfName = "Tester Prime"
+	gc.handle(ctx, frame("persona", "Tester Prime", "@tester echo of myself"))
+	if cs.busy {
+		t.Fatal("a persona must not trigger on its own messages")
+	}
+}
+
 // respond_policy "mentioned" (REM-3): unaddressed messages start NO turn (no
 // dispatch, no typing, no eyes); addressed ones run normally.
 func TestRespondPolicy_MentionedGatesTurns(t *testing.T) {
