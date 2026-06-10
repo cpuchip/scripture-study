@@ -75,15 +75,20 @@ stays for planning/council/ratify. Order: cockpit P1 → code persona P1.
 - **Webster 1828 published-works audit walk** (2026-06-09, from the data-integrity
   remediation — `.spec/proposals/webster-1828-data-integrity.md`). Michael wants to
   walk ALL published works together re-verifying every "Webster 1828" quote against
-  the now-genuine data (and the 1913 kept side-by-side for the drift view):
-  cpuchip.net studies (**three-glories first** — genuine 1828 *glory* = 12 senses
-  "Brightness; luster; splendor", substantially different from the 1913 it quoted),
-  workspace `study/`, the book's F-19/20/21 (ride the v4 chat walk). **Riding along:
-  hand-add the ~27 tier words missing from the genuine corpus** — mostly coinages/
-  proper nouns, but NAUGHTY, PESTILENCE, ALLEGE, HATH, HOSEN, BEFORETIME, SORCERIES,
-  ZINC are upstream OCR dropouts; transcribe from webstersdictionary1828.com (the
-  authority) into manual-additions / the dictionary data, then upstream to
-  kayson-argyle (+ ask about a license).
+  the now-genuine data (and the 1913 kept side-by-side for the drift view).
+  **✅ three-glories DONE 2026-06-09** (same-night walk: every quote was 1913, every
+  argument survived, three upgraded — Isaiah 63:1 apparel bridge, Phil 3:7 gain,
+  1 Cor 15:40 terrestrial + JST telestial; correction note published; cpuchip.net
+  `b58bc73` pushed). **Remaining:** other cpuchip.net studies (abinadi? morm-8
+  voice-from-the-dust — check for Webster quotes), workspace `study/` (months of
+  webster-analysis usage), the book's F-19/20/21 (ride the v4 chat walk).
+  **Riding along: hand-add the ~27 tier words missing from the genuine corpus** —
+  mostly coinages/proper nouns, but NAUGHTY, PESTILENCE, ALLEGE, HATH, HOSEN,
+  BEFORETIME, SORCERIES, ZINC are upstream OCR dropouts; transcribe from
+  webstersdictionary1828.com (the authority) into manual-additions / the dictionary
+  data, then upstream to kayson-argyle (+ ask about a license). **Also batch:
+  verse-number 1↔7 OCR errors in the data** (apparel cites "Isaiah 63:7", authority
+  says 63:1 — the 7→1 fix only covered book-number prefixes).
 
 - **Engineering / repo-reader persona** — **RATIFIED 2026-06-07** as code persona
   (build-queue item ②): repo = **ai-chattermax**, **read-only first**, backed by the

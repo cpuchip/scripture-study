@@ -197,3 +197,54 @@ language, not only in me.
 ## Voice reminders
 Em-dash ≤1/para; therefore/but not and-then; no filler/cut-list; no
 meta-narration; no closing refrain. Match recent study voice.
+
+---
+
+## 2026-06-09 EDITION AUDIT (post-publication correction)
+
+The Webster quotes in this study (as first written) came from the workspace
+webster_define tool, which — discovered 2026-06-09 — served **Webster 1913
+Revised Unabridged text under an "1828" label** (see
+`.spec/proposals/webster-1828-data-integrity.md`). Every Webster quotation was
+re-verified against the genuine 1828 (kayson-argyle EGW-Estate data, with
+webstersdictionary1828.com as the authority) and the study + cpuchip.net page +
+GloryLens component were corrected.
+
+Verdicts (all arguments SURVIVED; several strengthened):
+- celestial: "pertaining to the spiritual heaven; heavenly; divine" was 1913 →
+  genuine "Heavenly; belonging or relating to heaven… conveys the idea of
+  superior excellence, delight, purity."
+- terrestrial: "earthly; sublunary; mundane" was 1913 → genuine sense 3
+  "Pertaining to the world, or to the present state; sublunary"; genuine sense 1
+  cites "bodies terrestrial. 1 Corinthians 15:40" (upgrade). sublunary =
+  "literally, beneath the moon" survives exactly.
+- telestial absent: re-verified TRUE against genuine 1828. Added: JST 1 Cor
+  15:40 inserts "and bodies telestial" into the very verse Webster cites.
+- fine: 1913's "first/second definition" framing was wrong for 1828 (genuine
+  sense 1 = "Small; thin; slender") → genuine poles are senses 5 ("Clear; pure;
+  free from feculence or foreign matter; as fine gold or silver") + 6
+  ("Refined") vs 16 ("Showy; splendid; elegant") + closing line "expresses
+  whatever is excellent, showy or magnificent."
+- apparel: the albs/ecclesiastical-vestments sense was 1913-ONLY — the old
+  bridge claim was FALSE for 1828. Genuine bridge is stronger: Webster's own
+  example is "Glorious in apparel. Isaiah 63:1" (the Messiah; D&C 133:46
+  echoes it) + "religion appears in the natural apparel of simplicity."
+  (Local data shows "Isaiah 63:7" — OCR 1→7 error in the VERSE number;
+  authority says 63:1. Logged for the data-cleanup batch.)
+- gain: "the lust of gain" + "Godliness with contentment is great gain"
+  (1 Tim 6:6) were 1913 → genuine noun = "Profit; interest; something obtained
+  as an advantage" / "Unlawful advantage. 2 Corinthians 12:17" + the entry
+  quotes "But what things were gain to me, those I counted loss for Christ."
+  (Philippians 3:7). Matthew 16:26 survives (genuine verb sense 2).
+- glory: "the presence of the Divine Being… celestial honor; heaven" was 1913 →
+  genuine ladder: 1 "Brightness; luster; splendor" (w/ 2 Peter 1:17
+  transfiguration) … 5 "Honor; praise; fame; renown; celebrity" … 6 "The
+  felicity of heaven prepared for the children of God; celestial bliss" …
+  7 "In scripture, the divine presence" … 11 "Pride; boastfulness; arrogance;
+  as vain glory."
+- pollute: 1913-style compression → genuine sense 1 "…among the Jews, to make
+  unclean or impure, in a legal or ceremonial sense, so as to disqualify a
+  person for sacred services, or to render things unfit for sacred uses."
+
+Scriptures read this session for the correction: Isaiah 63:1; D&C 133:46;
+1 Corinthians 15:40-41 (+ JST footnote 40a); Philippians 3:7.
