@@ -38,6 +38,32 @@ Auto-created, attributed, narration under the DM's own name. Starlet (policy
 @-addressed. The decoupling principle held: the room saw characters, the
 cognition was one kimi turn making three room_say calls.
 
+## Addendum — Michael's first table session: four findings, four fixes (same night)
+
+He played; the cast system met reality. Findings decoded from the transcript:
+(1) Starlet (policy `all`) hijacked Grimble — minted HER OWN "Grimble the
+shopkeep" (cast names were persona-scoped) and the customer got two Grimbles;
+(2) her duplicate message = the coalesce-repeat watch item, live again;
+(3) no way to @ a cast member; (4) "Grimble I need herring" couldn't wake the
+DM (not his name).
+
+**Fixes (chattermax `dc0e088` deployed + host rebuilt):** 0007 room-unique
+cast names (dedupe keeps oldest claim → the DM's Grimble survived, Starlet's
+deleted at boot); cast-name addressing (host parses cast frames via selfID
+from ready, matches full + first names with stop-word guard, own-cast lines
+never self-trigger) + cast in the @ popup; consult framing "never repeat
+yourself"; **Starlet → Party** (Michael: "she was really only a test") — host
+persona `party` (PCs as cast via as_character, dice honesty), platform persona
+test-account-owned, policy `judgment`, pg-starlet removed from the host env.
+
+**Proven live:** "Grimble, I'll take those two pickled herring" → DM 👀 at
+0.1s (first-name routing!) → "Grimble the shopkeep: 😏 Six coppers? You're a
+scholar and a saint" at 11.4s → Party eyed + correctly silent. First attempt
+hit a Fireworks stream truncation (reasoning present, content/finish null,
+4m47s) — host posted nothing, fault-tolerant; watch: substrate
+retry-on-empty-stream. Typing stays persona-level (can't know the speaker
+before the line lands) — explained, accepted.
+
 ## Carry-forward
 - **Party persona** — same machinery; waits on dnd-tools sheets (DH-3).
 - **Promotion to own-session** (villain with private memory) — when a campaign
