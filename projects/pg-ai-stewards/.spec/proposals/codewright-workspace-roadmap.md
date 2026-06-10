@@ -38,11 +38,50 @@ commit/push/open_pr against a repo-mounted worktree, and `code-pr` runs the full
 clone→plan→implement→verify→pr cascade. **B is mostly wiring codewright to that, plus
 making the workspace persistent.**
 
+### ★ Measured latency (2026-06-09, live Engineering turn on ai-chattermax)
+
+Where a research_codebase turn's ~47s actually goes (timestamps from
+`chattercode-b03e5b16` / `subagent-20260609-231537`):
+
+| step | time |
+|---|---|
+| 🐳 sandbox_start = **fire up Docker container + clone the repo** | **1.4s** |
+| glob (list *.go) | 0.5s |
+| grep (auth patterns) | 1.0s |
+| read × 3 (full files) | 0.3–0.5s each |
+| sandbox_stop | 0.8s |
+| **all container + clone + search + read** | **~5–6s** |
+| model (kimi) reasoning between calls + 11.9s final synthesis | **~40s** |
+| **total** | **~47s** (a second live call was 67s — all model variance) |
+
+**The headline: for a SMALL single repo, the container+clone is ~1.4s — ~3% of the
+cycle. ~85–90% is the model thinking.** So the latency lever for small/single-repo Q&A
+is **a faster model** (the v2 `model_override` we already designed), NOT a container
+redesign. Conversational turns (no research) are 1–10s.
+
+**BUT (Michael, 2026-06-09) the clone term is not constant — it scales, and that's
+where the persistent container earns its keep:**
+- **Repo size.** ai-chattermax is small (~1.4s shallow clone). A large repo / monorepo
+  is 10s–60s+ to clone. As repo size grows, "clone every question" goes from negligible
+  to dominant — and a warm clone (`git pull` deltas only) wins big.
+- **Multi-repo working sets.** A question spanning a few repos = N clones per turn
+  today. A persistent container holds N repos warm → one-time cost, then near-instant.
+  Payoff ≈ (repo size × repo count × question frequency).
+- **Statefulness.** Build artifacts, language-server indexes, accumulated edits — none
+  survive an ephemeral sandbox; all persist in a warm one. This is B/C's real prize,
+  separate from latency.
+
+**Net:** persistent container ≠ "faster" for the small-single-repo case (model is the
+lever there); it = "faster + stateful" for **large repos, multi-repo sessions, and any
+work that accumulates** (build/test/index/edit). So the decision rule is a function of
+the working set, not a flat yes/no.
+
 Design points to settle at ratification:
-- **Persistent vs ephemeral.** Today each call clones fresh (~2 min). A persistent
-  per-codewright sandbox keeps repos warm (clone once, `git pull` to update) — near-
-  instant follow-ups + accumulated state. Cost: lifecycle (when to pull/prune, disk),
-  and a standing container is an attack surface even when idle.
+- **Persistent vs ephemeral.** Today each call clones fresh (small repo ≈ 1.4s clone +
+  ~45s model; large/multi-repo clone dominates). A persistent per-codewright sandbox
+  keeps repos warm (clone once, `git pull` to update) — wins as repo size / count grow,
+  and is the only way to keep accumulated state. Cost: lifecycle (when to pull/prune,
+  disk), and a standing container is an attack surface even when idle.
 - **★ The security inversion (the real gate).** Ephemeral + read-only + allow-listed
   is tight. A *persistent, writable* container driven by **kimi (a weaker model than
   the orchestrating Opus/Fable) reading untrusted repo content** is the prompt-
