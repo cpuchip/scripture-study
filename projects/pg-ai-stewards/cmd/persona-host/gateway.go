@@ -119,6 +119,12 @@ const roomSayDrainInterval = 1 * time.Second
 // connection in Run (see the reconnect-panic fix).
 const frameBufferSize = 128
 
+// roomTypingInterval refreshes the "Codewright is typing…" indicator while a
+// turn is in flight. Typing indicators auto-expire client-side after a few
+// seconds, so we re-send periodically; this is only possible because the async
+// turn loop keeps the worker loop free during a turn.
+const roomTypingInterval = 3 * time.Second
+
 // turnResultsBuffer bounds the turn-goroutine → loop channel. In-flight turns
 // are capped by the number of channels (one turn per channel at a time), so
 // this is generous; it also absorbs results from a just-reconnected old
@@ -174,6 +180,11 @@ func (gc *GatewayConn) Run(ctx context.Context) error {
 	drain := time.NewTicker(roomSayDrainInterval)
 	defer drain.Stop()
 
+	// "X is typing…" while a turn runs — refreshed because it auto-expires
+	// client-side. Possible only now that the loop is free during a turn.
+	typing := time.NewTicker(roomTypingInterval)
+	defer typing.Stop()
+
 	for {
 		select {
 		case <-ctx.Done():
@@ -182,6 +193,8 @@ func (gc *GatewayConn) Run(ctx context.Context) error {
 			gc.refreshRooms(ctx)
 		case <-drain.C:
 			gc.drainOutbox(ctx)
+		case <-typing.C:
+			gc.pulseTyping()
 		case tr := <-gc.turnResults:
 			gc.applyTurnResult(ctx, tr)
 		case f, ok := <-gc.frames:
@@ -338,6 +351,8 @@ func (gc *GatewayConn) maybeStartTurn(ctx context.Context, channel string, cs *c
 		return
 	}
 	cs.busy = true
+	// Show "typing…" immediately, not on the next 3s tick.
+	_ = gc.sendRaw(map[string]any{"type": "typing", "channel": channel})
 
 	addressed := isAddressed(trigger.Body, gc.persona.Slug, gc.persona.DisplayName)
 	sessionID := cs.sessionID
@@ -430,6 +445,18 @@ func (gc *GatewayConn) applyTurnResult(ctx context.Context, tr turnResult) {
 	}
 }
 
+// pulseTyping sends a "typing" frame for every channel with a turn in flight,
+// so the room shows "<persona> is typing…" between the human's message and the
+// reply. The gateway stamps the persona's name + broadcasts to others; it
+// auto-expires client-side, hence the periodic refresh. Worker-goroutine only.
+func (gc *GatewayConn) pulseTyping() {
+	for chID, cs := range gc.channels {
+		if cs.busy {
+			_ = gc.sendRaw(map[string]any{"type": "typing", "channel": chID})
+		}
+	}
+}
+
 // drainOutbox posts this persona's pending room_say messages. It maps each
 // claimed row's session back to the channel currently holding that session and
 // posts there (with the optional mood emoji prefixed). Runs in the worker
@@ -480,6 +507,9 @@ func (gc *GatewayConn) note(cs *channelState, wm wireMessage) {
 }
 
 func (gc *GatewayConn) sendRaw(v any) error {
+	if gc.conn == nil {
+		return nil // no live connection (or a test) — nothing to send
+	}
 	b, err := json.Marshal(v)
 	if err != nil {
 		return err
