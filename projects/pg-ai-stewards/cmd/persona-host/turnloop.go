@@ -267,7 +267,7 @@ func buildConsultFraming(trigger wireMessage, addressed bool) string {
 	if addressed {
 		b.WriteString("(You were directly addressed.)\n")
 	}
-	b.WriteString("\nReply in character, or reply with exactly SILENCE if nothing is called for from you.")
+	b.WriteString("\nReply in character, or reply with exactly SILENCE if nothing is called for from you. If your previous message already answered this, reply SILENCE — never repeat yourself.")
 	return b.String()
 }
 

@@ -40,8 +40,15 @@ type gwOutbound struct {
 	// On "ready" frames: who the platform says we are. The platform display
 	// name is the name humans actually type in chat — addressing must match it.
 	Session struct {
+		ID   string `json:"id"`
 		Name string `json:"name"`
 	} `json:"session"`
+	// On "cast" frames (DH-2): the room's cast members. We keep OUR OWN cast
+	// names per channel so "@Grimble" addresses the persona voicing Grimble.
+	Cast []struct {
+		PersonaID   string `json:"personaId"`
+		DisplayName string `json:"displayName"`
+	} `json:"cast"`
 }
 
 // channelState is one room's accumulating conversation, owned by the worker.
@@ -56,6 +63,9 @@ type channelState struct {
 	// coalesced follow-up turn fires when the current finishes.
 	busy    bool
 	pending *wireMessage
+	// castNames = OUR cast members in this channel (from "cast" frames).
+	// Addressing one of them addresses us (DH-2).
+	castNames []string
 	// eyedID = the message currently carrying this persona's 👀 reaction (the
 	// turn's trigger). Added at turn start, removed when the turn finishes — so
 	// the room sees WHICH question the persona is working, not just that it's
@@ -124,6 +134,7 @@ type GatewayConn struct {
 	generation  uint64          // bumped per connection; guards stale turn results
 	turnResults chan turnResult // turn goroutines → the worker loop
 	selfName    string          // platform display name (from the ready frame)
+	selfID      string          // platform persona id (from the ready frame)
 	// respondPolicy (REM-3): all | mentioned | judgment — refreshed on the rooms
 	// poll. "mentioned" skips the turn entirely (no dispatch cost) unless the
 	// message names the persona; "judgment" licenses unaddressed chiming-in.
@@ -373,6 +384,9 @@ func (gc *GatewayConn) handle(ctx context.Context, f gwOutbound) {
 		if f.Session.Name != "" {
 			gc.selfName = f.Session.Name
 		}
+		if f.Session.ID != "" {
+			gc.selfID = f.Session.ID
+		}
 		return
 	}
 	cs := gc.channels[f.Channel]
@@ -381,6 +395,15 @@ func (gc *GatewayConn) handle(ctx context.Context, f gwOutbound) {
 		gc.channels[f.Channel] = cs
 	}
 	switch f.Type {
+	case "cast":
+		// Track OUR cast members in this channel: addressing one of them
+		// (DH-2: "@Grimble, how much?") addresses us.
+		cs.castNames = cs.castNames[:0]
+		for _, m := range f.Cast {
+			if m.PersonaID == gc.selfID {
+				cs.castNames = append(cs.castNames, m.DisplayName)
+			}
+		}
 	case "history":
 		for _, m := range f.Messages {
 			gc.note(cs, wireMessage{Sender: m.Sender, Body: m.Body})
@@ -394,12 +417,13 @@ func (gc *GatewayConn) handle(ctx context.Context, f gwOutbound) {
 			if strings.TrimSpace(wm.Body) != "" {
 				gc.maybeStartTurn(ctx, f.Channel, cs, wm)
 			}
-		case f.Message.SenderKind == "persona" && wm.Sender != gc.selfName && wm.Sender != gc.persona.DisplayName:
+		case f.Message.SenderKind == "persona" && wm.Sender != gc.selfName && wm.Sender != gc.persona.DisplayName && !isOwnCast(cs, wm.Sender):
 			// Persona→persona (DH-1/D1): another persona's message starts a
 			// turn ONLY when it names us, and only within the hop budget —
 			// that's what lets the DM hand off to a PC ("@party-bard, your
-			// move") without two models ping-ponging forever.
-			if !isAddressed(wm.Body, gc.persona.Slug, gc.persona.DisplayName, gc.selfName) {
+			// move") without two models ping-ponging forever. Our own cast
+			// members' lines never trigger us (we spoke them).
+			if !isAddressed(wm.Body, gc.addressNames(cs)...) {
 				return
 			}
 			if cs.hops >= personaHopBudget {
@@ -418,8 +442,54 @@ func (gc *GatewayConn) handle(ctx context.Context, f gwOutbound) {
 // held as `pending` and a single coalesced follow-up fires when it finishes.
 // Runs in the worker goroutine, so it owns cs and prepares all turn inputs as
 // plain values — the goroutine never touches gc.channels.
+// addressNames is every name that counts as "us" for addressing: slug, host
+// display name, platform display name, and our cast members in this channel.
+// Cast members also answer to their FIRST name — people say "Grimble, how
+// much?", not "Grimble the shopkeep, how much?".
+func (gc *GatewayConn) addressNames(cs *channelState) []string {
+	names := []string{gc.persona.Slug, gc.persona.DisplayName, gc.selfName}
+	for _, cn := range cs.castNames {
+		names = append(names, cn)
+		if first := castFirstName(cn); first != "" && !strings.EqualFold(first, cn) {
+			names = append(names, first)
+		}
+	}
+	return names
+}
+
+// castFirstName extracts a usable first name from a cast display name —
+// "Vex, guard captain" → "Vex". Short or article-like first words ("The
+// Magistrate") return "" rather than matching half the dictionary.
+func castFirstName(name string) string {
+	fields := strings.Fields(name)
+	if len(fields) == 0 {
+		return ""
+	}
+	first := strings.TrimFunc(fields[0], func(r rune) bool {
+		return !('a' <= r && r <= 'z' || 'A' <= r && r <= 'Z' || '0' <= r && r <= '9')
+	})
+	switch strings.ToLower(first) {
+	case "", "the", "a", "an", "sir", "old", "mr", "mrs", "ms", "dr", "lady", "lord", "captain":
+		return ""
+	}
+	if len(first) < 3 {
+		return ""
+	}
+	return first
+}
+
+// isOwnCast reports whether a sender name is one of OUR cast members here.
+func isOwnCast(cs *channelState, sender string) bool {
+	for _, n := range cs.castNames {
+		if strings.EqualFold(n, sender) {
+			return true
+		}
+	}
+	return false
+}
+
 func (gc *GatewayConn) maybeStartTurn(ctx context.Context, channel string, cs *channelState, trigger wireMessage) {
-	addressed := isAddressed(trigger.Body, gc.persona.Slug, gc.persona.DisplayName, gc.selfName)
+	addressed := isAddressed(trigger.Body, gc.addressNames(cs)...)
 	// respond_policy "mentioned": unaddressed messages cost nothing — no turn,
 	// no typing, no eyes. They're already note()'d into recent, so the persona
 	// still sees them as context when it IS addressed.

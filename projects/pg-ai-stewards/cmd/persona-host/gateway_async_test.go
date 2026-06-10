@@ -161,6 +161,58 @@ func TestAsyncTurn_StaleGenerationDiscarded(t *testing.T) {
 	}
 }
 
+// Cast addressing (DH-2): naming one of OUR cast members addresses us; our own
+// cast members' lines never trigger us.
+func TestCastAddressing(t *testing.T) {
+	ctx := context.Background()
+	cog := &fakeCog{dur: 10 * time.Millisecond, sessionAfter: -1, session: "wi--ca--turn", answer: "three coppers"}
+	gc, _, _ := newTestConn(cog)
+	gc.respondPolicy = "mentioned"
+	gc.selfID = "p-dm"
+	cs := &channelState{sessionID: "wi--ca--turn"}
+	gc.channels["dnd"] = cs
+
+	// Cast frame: Grimble is ours, Lady Vex belongs to another persona.
+	var cf gwOutbound
+	cf.Type = "cast"
+	cf.Channel = "dnd"
+	cf.Cast = []struct {
+		PersonaID   string `json:"personaId"`
+		DisplayName string `json:"displayName"`
+	}{{"p-dm", "Grimble the shopkeep"}, {"p-other", "Lady Vex"}}
+	gc.handle(ctx, cf)
+	if len(cs.castNames) != 1 || cs.castNames[0] != "Grimble the shopkeep" {
+		t.Fatalf("castNames = %v", cs.castNames)
+	}
+
+	mkMsg := func(kind, sender, body string) gwOutbound {
+		var f gwOutbound
+		f.Type = "message"
+		f.Channel = "dnd"
+		f.Message.ID = "m"
+		f.Message.Sender = sender
+		f.Message.SenderKind = kind
+		f.Message.Body = body
+		return f
+	}
+	// Under policy=mentioned, "Grimble ..." wakes us (our cast member's name).
+	gc.handle(ctx, mkMsg("human", "michael", "Grimble I need some pickled herring! how much?"))
+	if !cs.busy {
+		t.Fatal("naming our cast member must address us")
+	}
+	pump(gc, ctx, 100*time.Millisecond)
+	// "Lady Vex ..." does not (someone else's character).
+	gc.handle(ctx, mkMsg("human", "michael", "Lady Vex, arrest him!"))
+	if cs.busy {
+		t.Fatal("someone else's cast member must not address us")
+	}
+	// Our own cast member's line never triggers us.
+	gc.handle(ctx, mkMsg("persona", "Grimble the shopkeep", "tester, want herring?"))
+	if cs.busy {
+		t.Fatal("our own cast lines must not trigger us")
+	}
+}
+
 // Cast (DH-2): an outbox row with a SubPersona posts attributed to the cast
 // member (the emitFn seam renders it as a [Name] prefix), and the persona's
 // recent-notes record the cast name as the sender.
