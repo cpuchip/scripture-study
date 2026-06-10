@@ -63,6 +63,10 @@ type GatewayConn struct {
 
 const roomRefreshInterval = 30 * time.Second
 
+// room_say beats should feel near-real-time ("hang on…" before a slow tool),
+// so drain often. The query is a cheap partial-index scan over unposted rows.
+const roomSayDrainInterval = 1 * time.Second
+
 // NewGatewayConn builds a multi-room connection for a persona.
 func NewGatewayConn(p Persona, key, wsBase string, cog *Cognition) *GatewayConn {
 	api := strings.Replace(strings.Replace(wsBase, "wss://", "https://", 1), "ws://", "http://", 1)
@@ -92,12 +96,20 @@ func (gc *GatewayConn) Run(ctx context.Context) error {
 	defer refresh.Stop()
 	gc.refreshRooms(ctx) // subscribe to current grants immediately
 
+	// room_say delivery: drain mid-turn messages this persona emitted and post
+	// them to the right channel. Runs in THIS worker goroutine so it can read
+	// gc.channels lock-free, same as refresh.
+	drain := time.NewTicker(roomSayDrainInterval)
+	defer drain.Stop()
+
 	for {
 		select {
 		case <-ctx.Done():
 			return nil
 		case <-refresh.C:
 			gc.refreshRooms(ctx)
+		case <-drain.C:
+			gc.drainOutbox(ctx)
 		case f, ok := <-gc.frames:
 			if !ok {
 				if ctx.Err() != nil {
@@ -271,6 +283,48 @@ func (gc *GatewayConn) takeTurn(ctx context.Context, channel string, cs *channel
 	}
 	gc.note(cs, wireMessage{Sender: gc.persona.DisplayName, Body: answer})
 	return nil
+}
+
+// drainOutbox posts this persona's pending room_say messages. It maps each
+// claimed row's session back to the channel currently holding that session and
+// posts there (with the optional mood emoji prefixed). Runs in the worker
+// goroutine, so reading gc.channels is lock-free.
+func (gc *GatewayConn) drainOutbox(ctx context.Context) {
+	// session_id → channel for this connection's live channels.
+	sessToChan := make(map[string]string, len(gc.channels))
+	sessions := make([]string, 0, len(gc.channels))
+	for chID, cs := range gc.channels {
+		if cs.sessionID != "" {
+			sessToChan[cs.sessionID] = chID
+			sessions = append(sessions, cs.sessionID)
+		}
+	}
+	if len(sessions) == 0 {
+		return
+	}
+	msgs, err := gc.cog.ClaimOutboxForSessions(ctx, sessions)
+	if err != nil {
+		log.Printf("[%s] drain outbox: %v", gc.persona.Slug, err)
+		return
+	}
+	for _, m := range msgs {
+		chID := sessToChan[m.SessionID]
+		if chID == "" {
+			continue // session no longer mapped to a live channel
+		}
+		body := m.Body
+		if m.Mood != "" {
+			body = m.Mood + " " + body
+		}
+		if err := gc.sendRaw(map[string]any{"type": "message", "channel": chID, "body": body}); err != nil {
+			log.Printf("[%s] post room_say: %v", gc.persona.Slug, err)
+			continue
+		}
+		// Record our own mid-turn post so the persona doesn't re-react to it.
+		if cs := gc.channels[chID]; cs != nil {
+			gc.note(cs, wireMessage{Sender: gc.persona.DisplayName, Body: body})
+		}
+	}
 }
 
 func (gc *GatewayConn) note(cs *channelState, wm wireMessage) {

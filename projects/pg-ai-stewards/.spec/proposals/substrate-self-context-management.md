@@ -343,6 +343,42 @@ default). Do NOT promote to default-on. RUN 2 (with prompt scaffolding, ~$1)
 is the next step whenever Michael wants the activation question settled.
 (Artifacts: work_items `ct2ab-control-1` / `ct2ab-treatment-1`.)
 
+### CT2.4 — RUN 2 result (2026-06-09): scaffolding works; ADDRESSING is the blocker
+
+RUN 2 fixed RUN 1's gap: a long-lived ACCUMULATING session (a codewright chat
+persona answering 6 research_codebase questions in one session) + an explicit
+scaffolding prompt ("after you deliver a cited answer, `context_mute` the bulky
+result; `pin` reusable facts; `remember` durable ones"). Treatment =
+`codewright-ct2` (kimi-k2.6 + context tools + scaffolding); control = live
+`codewright` (no tools). Both kimi — Michael's point that kimi (~1T) isn't a
+small model and may not NEED the levers, but it's worth seeing if a strong model
+USES them when told it can.
+
+**Two-layer finding:**
+1. **Scaffolding flips the switch RUN 1 couldn't.** Treatment called a context
+   lever (`context_mute`) — where RUN 1's unscaffolded arm called them ZERO
+   times. So RUN 1's null was the prompt gap, not a model incapacity. A strong
+   model, told the levers exist and when to use them, reaches for them.
+2. **★ But it can't ADDRESS them — the handle UX is the real blocker.** The
+   model called `context_mute(handle:"subagent-20260610-023003-067")` — it
+   passed the *subagent's id* instead of a `[ctx:xxxx]` message handle, so the
+   tool errored ("no message with handle …") and nothing got muted (context
+   stayed ~7,380 tok, same as control). It *wanted* to drop the old research
+   result but had no valid way to name it.
+
+**So the next CT2 lever is addressing, not activation.** Options:
+- **Render `[ctx:xxxx]` handles on LIVE messages too** (today they surface mainly
+  for folded/compressed/pinned state), so the model can see and pass a real
+  handle for the bulky result it wants to mute.
+- **A forgiving reference scheme:** `context_mute(last_tool_result)` / by ordinal
+  / by a short description — so the model doesn't have to copy an exact handle.
+- Re-run after the addressing fix to see if the mute actually lands and trims context.
+
+Verdict unchanged for now (opt-in/off-default), but the path forward is concrete:
+the levers are reachable (scaffolding) but not yet *usable* (addressing). Fix the
+handle UX, then RUN 3. (Artifacts: `wi--473c913a--turn` treatment / `wi--4edf8ca0--turn`
+control; `codewright-ct2` family.)
+
 ## Creation-cycle framing (for the book audit)
 
 This deepens three steps of the cycle and is worth a note in the blueprint audit:
