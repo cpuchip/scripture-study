@@ -67,6 +67,20 @@ wanted:  room msg → persona-host → dispatch that can room_say() mid-turn:
 - Mood/multi-message adds tokens to the persona's job — fine for kimi-tier, watch it
   for small models (qwen3.6-27b) where the budget is tighter.
 
+## Build progress
+
+- **✅ v1 foundation SHIPPED (r16, 2026-06-09, INERT):** `persona_outbox` table +
+  `room_say(body, mood?)` tool, registered but granted to no agent. Smoke-verified.
+  ★ Routing simplified: room_say keys on `_session_id` only — the persona-host already
+  owns the session→channel map (`GatewayConn.channels[ch].sessionID`), so the drainer
+  matches session→channel; no session_facets / channel-id in SQL. Live host untouched.
+- **⏳ v1 NEXT (the live-host step):** persona-host drainer goroutine — poll
+  `persona_outbox WHERE posted_at IS NULL`, for each row find the channel whose
+  `sessionID` matches, `sendRaw({type:"message", channel, body})`, stamp `posted_at`.
+  Then grant `room_say` to codewright/personas + re-prompt to narrate + mood. Rebuild
+  persona-host (touches the live chat.ibeco.me personas — do with care, it reconnects
+  clean). Grant + drainer must land together (inert until both).
+
 ## Build split (recommendation)
 
 - **v1 (substrate + host):** `room_say(text, mood?)` tool + `persona_outbox` table +
