@@ -1,12 +1,15 @@
 // Package dictionary provides types and functions for dictionary lookups.
 package dictionary
 
-// WebsterEntry represents a single entry in the Webster 1828 dictionary.
+// WebsterEntry represents a single entry in a Webster dictionary edition
+// (the genuine 1828 American Dictionary or the 1913 Revised Unabridged).
 type WebsterEntry struct {
 	Word        string   `json:"word"`
 	POS         string   `json:"pos"`
 	Synonyms    string   `json:"synonyms,omitempty"`
 	Definitions []string `json:"definitions"`
+	Etymology   string   `json:"etymology,omitempty"`
+	Notes       []string `json:"notes,omitempty"`
 }
 
 // ModernEntry represents a response from the Free Dictionary API.
@@ -41,10 +44,11 @@ type ModernDefinition struct {
 	Antonyms   []string `json:"antonyms,omitempty"`
 }
 
-// CombinedResult holds definitions from both dictionaries.
+// CombinedResult holds definitions from all dictionaries.
 type CombinedResult struct {
-	Word    string        `json:"word"`
-	Webster *WebsterEntry `json:"webster,omitempty"`
-	Modern  []ModernEntry `json:"modern,omitempty"`
-	Error   string        `json:"error,omitempty"`
+	Word        string        `json:"word"`
+	Webster     *WebsterEntry `json:"webster,omitempty"`
+	Webster1913 *WebsterEntry `json:"webster1913,omitempty"`
+	Modern      []ModernEntry `json:"modern,omitempty"`
+	Error       string        `json:"error,omitempty"`
 }

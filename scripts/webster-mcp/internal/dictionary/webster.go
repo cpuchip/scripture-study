@@ -162,15 +162,27 @@ func FormatEntry(entry *WebsterEntry) string {
 	}
 
 	var sb strings.Builder
-	sb.WriteString(fmt.Sprintf("**%s** (%s)\n", entry.Word, entry.POS))
+	if entry.POS != "" {
+		sb.WriteString(fmt.Sprintf("**%s** (%s)\n", entry.Word, entry.POS))
+	} else {
+		sb.WriteString(fmt.Sprintf("**%s**\n", entry.Word))
+	}
 
 	if entry.Synonyms != "" {
 		sb.WriteString(fmt.Sprintf("*Synonyms:* %s\n", entry.Synonyms))
 	}
 
+	if entry.Etymology != "" {
+		sb.WriteString(fmt.Sprintf("*Etymology:* %s\n", entry.Etymology))
+	}
+
 	sb.WriteString("\n**Definitions:**\n")
 	for i, def := range entry.Definitions {
 		sb.WriteString(fmt.Sprintf("%d. %s\n", i+1, def))
+	}
+
+	for _, note := range entry.Notes {
+		sb.WriteString(fmt.Sprintf("_%s_\n", note))
 	}
 
 	return sb.String()

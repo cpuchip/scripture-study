@@ -1,68 +1,63 @@
 # Webster MCP Server
 
-An MCP (Model Context Protocol) server that provides access to the **Webster 1828 Dictionary** and the **Free Dictionary API** for modern definitions.
+An MCP (Model Context Protocol) server that provides access to **Noah Webster's 1828 American Dictionary**, **Webster's Revised Unabridged Dictionary (1913)**, and the **Free Dictionary API** for modern definitions.
 
 ## Purpose
 
-This server is particularly useful for scripture study, as the Webster 1828 dictionary was compiled during the same era as the King James Bible and early Latter-day Saint scriptures, providing insight into the original meanings of words.
+This server is particularly useful for scripture study. The Webster 1828 dictionary was compiled in the same era as the King James Bible's language tradition and the early Latter-day Saint scriptures, providing insight into the original meanings of words.
 
-The dual-dictionary approach allows comparing historical and modern definitions side-by-side, revealing how word meanings have shifted over time.
+The three-dictionary approach allows comparing definitions across time — 1828 → 1913 → today — revealing how word meanings have shifted.
 
-## Features
+## Data Provenance (read this — it matters)
 
-- **98,000+ word definitions** from Noah Webster's 1828 American Dictionary
-- **Modern definitions** via the Free Dictionary API
-- **Combined lookup** showing both historical and contemporary meanings
-- **Search by word pattern** - find words containing a query
-- **Search within definitions** - find words whose definitions mention a topic
+**Webster 1828** (`data/webster1828.json.gz`, 63,280 words): Noah Webster's *American Dictionary of the English Language* (1828, public domain). Text chain: the [Ellen G. White Estate Archives full-text preservation](https://archive.org/details/noah-websters-1828-dictionary-ellen-g-white-estate) → [kayson-argyle/websters_1828](https://github.com/kayson-argyle/websters_1828) (raw text + parsing pipeline, built for KJV/LDS Standard Works study — thank you!) → our converter `tools/convert_1828.py` (grouping, OCR cleanup, scripture-ref fixes). Verified against [webstersdictionary1828.com](https://webstersdictionary1828.com) by anachronism probes and word-by-word text comparison.
+
+**Webster 1913** (`data/webster1913.json.gz`, 98,828 words): *Webster's Revised Unabridged Dictionary* (1913), via Project Gutenberg → [ssvivian/WebstersDictionary](https://github.com/ssvivian/WebstersDictionary) (MIT). A fine general historical dictionary — but it is **not** the 1828.
+
+> **History note (2026-06-09):** from 2026-02-04 to 2026-06-09 this server served the 1913 text *labeled as 1828*. The ssvivian data never claimed to be 1828 — we assumed the edition without verifying it (the 1913 defines "telephone"; the tell was always there). The incident, forensics, and remediation are documented in `.spec/proposals/webster-1828-data-integrity.md`. The durable lesson: **verify the edition of a source, not just the quote.**
 
 ## Tools
 
 ### `define` (Recommended)
-Look up a word in both dictionaries. Returns historical and modern definitions side by side.
+Look up a word in Webster 1828, Webster 1913, AND the modern dictionary. Three points in time, side by side.
 
 ```json
-{
-  "word": "charity"
-}
+{ "word": "charity" }
 ```
 
 ### `webster_define`
-Look up a word in the Webster 1828 dictionary only.
+Look up a word in the genuine Webster 1828 dictionary only.
 
 ```json
-{
-  "word": "charity"
-}
+{ "word": "charity" }
+```
+
+### `webster1913_define`
+Look up a word in Webster's Revised Unabridged (1913) only.
+
+```json
+{ "word": "telephone" }
 ```
 
 ### `modern_define`
 Look up a word in the modern dictionary (Free Dictionary API).
 
 ```json
-{
-  "word": "charity"
-}
+{ "word": "charity" }
 ```
 
 ### `webster_search`
-Search for words by pattern (prefix, contains).
+Search for words by pattern (prefix, contains). Optional `edition`: `"1828"` (default) or `"1913"`.
 
 ```json
-{
-  "query": "char",
-  "max_results": 20
-}
+{ "query": "char", "max_results": 20, "edition": "1828" }
 ```
 
 ### `webster_search_definitions`
-Find words whose definitions contain specific text.
+Find words whose definitions contain specific text. Optional `edition`: `"1828"` (default) or `"1913"`.
 
 ```json
-{
-  "query": "love",
-  "max_results": 10
-}
+{ "query": "love", "max_results": 10 }
 ```
 
 ## Installation
@@ -74,42 +69,35 @@ cd scripts/webster-mcp
 go build -o webster-mcp.exe ./cmd/webster-mcp
 ```
 
-### Download dictionary data
+### Dictionary data
 
-The Webster 1828 dictionary is included as a gzip-compressed file: `data/webster1828.json.gz` (~8 MB).
+Both dictionaries ship as gzip-compressed JSON in `data/`:
 
-The server automatically decompresses the file on load. Both `.json` and `.json.gz` files are supported.
+- `webster1828.json.gz` (~4.6 MB) — genuine 1828
+- `webster1913.json.gz` (~8 MB) — 1913 Revised Unabridged
 
-Source: https://github.com/ssvivian/WebstersDictionary (MIT License)
+The server decompresses on load. The 1913 file is auto-discovered as a sibling of the 1828 file; point `-dict1913` somewhere else to override.
+
+### Regenerating the 1828 data
+
+```bash
+git clone https://github.com/kayson-argyle/websters_1828 <clone-dir>
+# PYTHONUTF8=1 matters on Windows: upstream scripts open files without an encoding
+PYTHONUTF8=1 python tools/convert_1828.py --src <clone-dir> --out data/webster1828.json.gz --report report.txt
+```
+
+The converter rejects OCR-junk headwords, strips U+FFFD characters, fixes invalid numbered-book scripture references ("7 Corinthians" → "1 Corinthians" — a pervasive 1→7 OCR error, 414 instances), and logs every change to the report.
 
 ## Usage
 
-### VS Code Configuration
-
-Add to your `.vscode/mcp.json`:
+### MCP registration (`.mcp.json`)
 
 ```json
 {
   "servers": {
     "webster": {
       "command": "c:/path/to/webster-mcp.exe",
-      "args": ["-dict", "c:/path/to/webster1828.json.gz"]
-    }
-  }
-}
-```
-
-Or use environment variable:
-
-```json
-{
-  "servers": {
-    "webster": {
-      "command": "c:/path/to/webster-mcp.exe",
-      "env": {
-        "WEBSTER_DICT_PATH": "c:/path/to/webster1828.json.gz"
-      }
-      }
+      "args": ["-dict", "c:/path/to/data/webster1828.json.gz"]
     }
   }
 }
@@ -118,46 +106,26 @@ Or use environment variable:
 ### Command Line
 
 ```bash
-# Show dictionary statistics
+# Show dictionary statistics (both editions)
 ./webster-mcp.exe -stats
 
 # Start MCP server (stdio)
 ./webster-mcp.exe
 
-# Specify custom dictionary path
-./webster-mcp.exe -dict /path/to/webster1828.json
+# Specify dictionary paths explicitly
+./webster-mcp.exe -dict data/webster1828.json.gz -dict1913 data/webster1913.json.gz
 ```
 
 ## Example Output
 
-Looking up "charity":
+Looking up "charity" with `webster_define`:
 
 ```markdown
-# Definitions for: charity
-
-## Webster 1828 Dictionary
-_Historical definitions from Noah Webster's 1828 dictionary, reflecting the language of scripture._
-
-**CHARITY** (n.)
-*Synonyms:* Love; benevolence; good will; affection; tenderness; beneficence; liberality; almsgiving.
+**CHARITY** (noun)
 
 **Definitions:**
-1. Love; universal benevolence; good will.
-2. Liberality in judging of men and their actions; a disposition which inclines men to put the best construction on the words and actions of others.
-3. Liberality to the poor and the suffering...
-...
-
----
-
-## Modern Dictionary
-_Contemporary definitions from the Free Dictionary API._
-
-**charity** /ˈtʃærɪti/
-
-**noun**
-1. Provision of help or relief to the poor; almsgiving.
-2. Something given to help the needy; alms.
-3. An institution, organization, or fund established to help the needy.
+1. In a general sense, love, benevolence, good will; that disposition of heart which inclines men to think favorably of their fellow men, and to do them good. In a theological sense, it includes supreme love to God, and universal good will to men. 1 Corinthians 8:1; Colossians 3:14; 1 Timothy 1:5.
+2. In a more particular sense, love, kindness, affection, tenderness, springing from natural relations; as the charities of father, son and brother.
 ...
 ```
 
@@ -174,8 +142,11 @@ Words that have changed meaning since 1828:
 | **conversation** | Conduct, behavior | Verbal exchange |
 | **prevent** | Go before, precede | Stop from happening |
 
+Use `define` to see the full 1828 → 1913 → modern drift for any word.
+
 ## License
 
 - Code: MIT License
-- Webster 1828 Dictionary content: Project Gutenberg License
+- Webster 1828 content: public domain (1828 text; see provenance above)
+- Webster 1913 content: Project Gutenberg License
 - Modern definitions: Free Dictionary API (Creative Commons)

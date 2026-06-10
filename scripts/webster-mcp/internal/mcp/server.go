@@ -13,30 +13,41 @@ import (
 
 // Server wraps the MCP server and dictionary services.
 type Server struct {
-	mcpServer  *server.MCPServer
-	webster    *dictionary.Webster
-	modernDict *dictionary.ModernDict
+	mcpServer   *server.MCPServer
+	webster     *dictionary.Webster // genuine 1828 American Dictionary
+	webster1913 *dictionary.Webster // 1913 Revised Unabridged (optional)
+	modernDict  *dictionary.ModernDict
 }
 
 // New creates a new MCP server with dictionary tools.
-func New(websterPath string) (*Server, error) {
-	// Load Webster 1828 dictionary
+// webster1828Path is required; webster1913Path may be empty (1913 tools
+// then report the edition as unavailable).
+func New(webster1828Path, webster1913Path string) (*Server, error) {
 	webster := dictionary.NewWebster()
-	if err := webster.LoadFromFile(websterPath); err != nil {
-		return nil, fmt.Errorf("failed to load Webster dictionary: %w", err)
+	if err := webster.LoadFromFile(webster1828Path); err != nil {
+		return nil, fmt.Errorf("failed to load Webster 1828 dictionary: %w", err)
+	}
+
+	var webster1913 *dictionary.Webster
+	if webster1913Path != "" {
+		webster1913 = dictionary.NewWebster()
+		if err := webster1913.LoadFromFile(webster1913Path); err != nil {
+			return nil, fmt.Errorf("failed to load Webster 1913 dictionary: %w", err)
+		}
 	}
 
 	// Create MCP server
 	mcpServer := server.NewMCPServer(
 		"webster-mcp",
-		"1.0.0",
+		"2.0.0",
 		server.WithToolCapabilities(true),
 	)
 
 	s := &Server{
-		mcpServer:  mcpServer,
-		webster:    webster,
-		modernDict: dictionary.NewModernDict(),
+		mcpServer:   mcpServer,
+		webster:     webster,
+		webster1913: webster1913,
+		modernDict:  dictionary.NewModernDict(),
 	}
 
 	// Register tools
@@ -45,18 +56,46 @@ func New(websterPath string) (*Server, error) {
 	return s, nil
 }
 
+// editionDict returns the dictionary for an edition string ("1828" default,
+// "1913"), or an error message when that edition is not loaded.
+func (s *Server) editionDict(edition string) (*dictionary.Webster, string) {
+	switch edition {
+	case "", "1828":
+		return s.webster, ""
+	case "1913":
+		if s.webster1913 == nil {
+			return nil, "Webster 1913 dictionary is not loaded (start the server with -dict1913)."
+		}
+		return s.webster1913, ""
+	default:
+		return nil, fmt.Sprintf("Unknown edition '%s' (use \"1828\" or \"1913\").", edition)
+	}
+}
+
 // registerTools registers all dictionary tools with the MCP server.
 func (s *Server) registerTools() {
 	// Webster 1828 definition lookup
 	s.mcpServer.AddTool(
 		mcp.NewTool("webster_define",
-			mcp.WithDescription("Look up a word in the Webster 1828 dictionary. This dictionary is particularly useful for understanding the language used in the King James Bible and early Latter-day Saint scriptures, as it was compiled during the same era."),
+			mcp.WithDescription("Look up a word in Noah Webster's 1828 American Dictionary of the English Language (genuine 1828 text, sourced from the Ellen G. White Estate's full-text preservation). Particularly useful for understanding the language of the King James Bible and early Latter-day Saint scriptures, compiled in the same era."),
 			mcp.WithString("word",
 				mcp.Required(),
 				mcp.Description("The word to look up"),
 			),
 		),
 		s.handleWebsterDefine,
+	)
+
+	// Webster 1913 definition lookup
+	s.mcpServer.AddTool(
+		mcp.NewTool("webster1913_define",
+			mcp.WithDescription("Look up a word in Webster's Revised Unabridged Dictionary (1913, via Project Gutenberg). A fine general historical dictionary, 85 years after the 1828 — useful for seeing how meanings shifted across the 19th century. NOT the 1828: for KJV/Restoration-era word study use webster_define."),
+			mcp.WithString("word",
+				mcp.Required(),
+				mcp.Description("The word to look up"),
+			),
+		),
+		s.handleWebster1913Define,
 	)
 
 	// Modern definition lookup
@@ -74,7 +113,7 @@ func (s *Server) registerTools() {
 	// Combined definition lookup
 	s.mcpServer.AddTool(
 		mcp.NewTool("define",
-			mcp.WithDescription("Look up a word in both the Webster 1828 dictionary AND the modern dictionary. Returns both historical and contemporary definitions side by side. This is the recommended tool for scripture study as it shows how word meanings may have shifted over time."),
+			mcp.WithDescription("Look up a word across Webster 1828, Webster 1913, AND the modern dictionary — three points in time, side by side. This is the recommended tool for scripture study: it shows how a word's meaning shifted from the Restoration era through the 19th century to today."),
 			mcp.WithString("word",
 				mcp.Required(),
 				mcp.Description("The word to look up"),
@@ -86,13 +125,16 @@ func (s *Server) registerTools() {
 	// Search words
 	s.mcpServer.AddTool(
 		mcp.NewTool("webster_search",
-			mcp.WithDescription("Search for words in the Webster 1828 dictionary by word pattern. Returns words that match or contain the query."),
+			mcp.WithDescription("Search for words in a Webster dictionary by word pattern. Returns words that match or contain the query. Searches the genuine 1828 by default."),
 			mcp.WithString("query",
 				mcp.Required(),
 				mcp.Description("The search query (word or partial word)"),
 			),
 			mcp.WithNumber("max_results",
 				mcp.Description("Maximum number of results to return (default: 20)"),
+			),
+			mcp.WithString("edition",
+				mcp.Description("Dictionary edition: \"1828\" (default) or \"1913\""),
 			),
 		),
 		s.handleWebsterSearch,
@@ -101,13 +143,16 @@ func (s *Server) registerTools() {
 	// Search definitions
 	s.mcpServer.AddTool(
 		mcp.NewTool("webster_search_definitions",
-			mcp.WithDescription("Search within definitions in the Webster 1828 dictionary. Finds words whose definitions contain the query text."),
+			mcp.WithDescription("Search within definitions in a Webster dictionary. Finds words whose definitions contain the query text. Searches the genuine 1828 by default."),
 			mcp.WithString("query",
 				mcp.Required(),
 				mcp.Description("The text to search for within definitions"),
 			),
 			mcp.WithNumber("max_results",
 				mcp.Description("Maximum number of results to return (default: 10)"),
+			),
+			mcp.WithString("edition",
+				mcp.Description("Dictionary edition: \"1828\" (default) or \"1913\""),
 			),
 		),
 		s.handleWebsterSearchDefinitions,
@@ -124,6 +169,27 @@ func (s *Server) handleWebsterDefine(ctx context.Context, request mcp.CallToolRe
 	entries := s.webster.Lookup(word)
 	if entries == nil {
 		return mcp.NewToolResultText(fmt.Sprintf("Word '%s' not found in Webster 1828 dictionary.", word)), nil
+	}
+
+	formatted := dictionary.FormatEntries(entries)
+	return mcp.NewToolResultText(formatted), nil
+}
+
+// handleWebster1913Define handles the webster1913_define tool.
+func (s *Server) handleWebster1913Define(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	word, err := request.RequireString("word")
+	if err != nil {
+		return mcp.NewToolResultError("word parameter is required"), nil
+	}
+
+	dict, errMsg := s.editionDict("1913")
+	if dict == nil {
+		return mcp.NewToolResultText(errMsg), nil
+	}
+
+	entries := dict.Lookup(word)
+	if entries == nil {
+		return mcp.NewToolResultText(fmt.Sprintf("Word '%s' not found in Webster 1913 dictionary.", word)), nil
 	}
 
 	formatted := dictionary.FormatEntries(entries)
@@ -157,45 +223,40 @@ func (s *Server) handleDefine(ctx context.Context, request mcp.CallToolRequest) 
 		return mcp.NewToolResultError("word parameter is required"), nil
 	}
 
-	result := dictionary.CombinedResult{
-		Word: word,
-	}
-
-	// Get Webster 1828 definition
-	websterEntries := s.webster.Lookup(word)
-	if len(websterEntries) > 0 {
-		result.Webster = &websterEntries[0]
-	}
-
 	// Get modern definition
-	modernEntries, err := s.modernDict.Lookup(word)
-	if err != nil {
-		// Don't fail entirely, just note the error
-		result.Error = fmt.Sprintf("Modern dictionary error: %v", err)
-	} else {
-		result.Modern = modernEntries
-	}
+	modernEntries, modernErr := s.modernDict.Lookup(word)
 
 	// Format combined result
-	var sb string
-	sb = fmt.Sprintf("# Definitions for: %s\n\n", word)
+	sb := fmt.Sprintf("# Definitions for: %s\n\n", word)
 
 	sb += "## Webster 1828 Dictionary\n"
-	sb += "_Historical definitions from Noah Webster's 1828 dictionary, reflecting the language of scripture._\n\n"
-	if result.Webster != nil {
-		sb += dictionary.FormatEntry(result.Webster)
+	sb += "_Noah Webster's 1828 American Dictionary — the language of the KJV and Restoration era._\n\n"
+	if entries := s.webster.Lookup(word); len(entries) > 0 {
+		sb += dictionary.FormatEntries(entries)
 	} else {
 		sb += fmt.Sprintf("_Word '%s' not found in Webster 1828._\n", word)
 	}
 
 	sb += "\n---\n\n"
 
+	sb += "## Webster 1913 Dictionary\n"
+	sb += "_Webster's Revised Unabridged (1913) — 85 years later, for tracking semantic drift._\n\n"
+	if s.webster1913 == nil {
+		sb += "_Webster 1913 dictionary not loaded._\n"
+	} else if entries := s.webster1913.Lookup(word); len(entries) > 0 {
+		sb += dictionary.FormatEntries(entries)
+	} else {
+		sb += fmt.Sprintf("_Word '%s' not found in Webster 1913._\n", word)
+	}
+
+	sb += "\n---\n\n"
+
 	sb += "## Modern Dictionary\n"
 	sb += "_Contemporary definitions from the Free Dictionary API._\n\n"
-	if len(result.Modern) > 0 {
-		sb += dictionary.FormatModernEntries(result.Modern)
-	} else if result.Error != "" {
-		sb += fmt.Sprintf("_Error: %s_\n", result.Error)
+	if len(modernEntries) > 0 {
+		sb += dictionary.FormatModernEntries(modernEntries)
+	} else if modernErr != nil {
+		sb += fmt.Sprintf("_Error: Modern dictionary error: %v_\n", modernErr)
 	} else {
 		sb += fmt.Sprintf("_Word '%s' not found in modern dictionary._\n", word)
 	}
@@ -215,7 +276,13 @@ func (s *Server) handleWebsterSearch(ctx context.Context, request mcp.CallToolRe
 		maxResults = int(mr)
 	}
 
-	words := s.webster.Search(query, maxResults)
+	edition, _ := request.GetArguments()["edition"].(string)
+	dict, errMsg := s.editionDict(edition)
+	if dict == nil {
+		return mcp.NewToolResultText(errMsg), nil
+	}
+
+	words := dict.Search(query, maxResults)
 	if len(words) == 0 {
 		return mcp.NewToolResultText(fmt.Sprintf("No words found matching '%s'.", query)), nil
 	}
@@ -240,7 +307,13 @@ func (s *Server) handleWebsterSearchDefinitions(ctx context.Context, request mcp
 		maxResults = int(mr)
 	}
 
-	entries := s.webster.SearchDefinitions(query, maxResults)
+	edition, _ := request.GetArguments()["edition"].(string)
+	dict, errMsg := s.editionDict(edition)
+	if dict == nil {
+		return mcp.NewToolResultText(errMsg), nil
+	}
+
+	entries := dict.SearchDefinitions(query, maxResults)
 	if len(entries) == 0 {
 		return mcp.NewToolResultText(fmt.Sprintf("No definitions found containing '%s'.", query)), nil
 	}
@@ -257,11 +330,15 @@ func (s *Server) handleWebsterSearchDefinitions(ctx context.Context, request mcp
 	return mcp.NewToolResultText(resultText), nil
 }
 
-// WebsterStats returns statistics about the loaded dictionary.
+// WebsterStats returns statistics about the loaded dictionaries.
 func (s *Server) WebsterStats() map[string]interface{} {
-	return map[string]interface{}{
-		"word_count": s.webster.EntryCount(),
+	stats := map[string]interface{}{
+		"word_count_1828": s.webster.EntryCount(),
 	}
+	if s.webster1913 != nil {
+		stats["word_count_1913"] = s.webster1913.EntryCount()
+	}
+	return stats
 }
 
 // Serve starts the MCP server.
