@@ -55,6 +55,33 @@ Also fixed the "🔍 🔍" mood double-prefix.
   `result->choices` — my first reads showed "empty content" and nearly sent me
   down a wrong path.
 
+## Addendum — rename done + REM-3 SHIPPED + PROVEN (same morning)
+
+Michael: "yeah rename codewright to chattercode / and lets cook REM-3!"
+
+- **Rename:** persona_host.personas display_name + prompt → Chattercode (live
+  UPDATE; the row is the source of truth — the Go seed never contained it, r13
+  only made the substrate agent family). Identity bridge now no-ops.
+- **REM-3 (ai-chattermax `81ab15b`, deployed):** 0004 migration (notifications,
+  personas.respond_policy CHECK all|mentioned|judgment, users.mood) · mention
+  parse on persist (@token vs server members: display name / spaces-stripped /
+  unique-first-word; sender excluded) · notification row + live frame via new
+  `hub.sendToUser` · REST list/read · frontend bell + unread badge + AlertsView
+  + roster mood picker + Settings "Responds to" dropdown · mood as a gateway
+  frame (persist + hub-locked roster update + announce).
+- **Host (root, unpushed):** respond_policy gate — `mentioned` skips the turn
+  entirely for unaddressed messages (no dispatch/typing/eyes; still note()'d as
+  context); `judgment` appends a chime-in license line. Policy rides the rooms
+  poll (30s) — Settings changes apply without restart. Race-clean test.
+- **PROVEN LIVE:** mood loop (set → broadcast 100ms → clear) · mention loop in
+  one exchange (chattercode echoed "@ClaudeCodetest" at 9.1s → live
+  notification frame at 9.2s → REST resolved → mark-read 204 — persona-authored
+  mentions notify, the D&D case). respond_policy live flip awaits Michael's
+  owner-only dropdown; the gate is unit-proven + plumbing verified
+  (`respond_policy: all` logged from prod).
+- Integration suite extended (notifications/policy/mood round trips +
+  MentionedUserIDs ambiguity/self-mention/no-@ cases) — all green vs scratch DB.
+
 ## Carry-forward
 - **REM-3 Mentions** (alerts + respond_policy routing + human mood UI) — next PR,
   ratified, not started.
