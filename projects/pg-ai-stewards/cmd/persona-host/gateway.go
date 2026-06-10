@@ -42,7 +42,33 @@ type channelState struct {
 	sessionID string
 	recent    []wireMessage
 	label     string
+	// Async turn loop: a turn runs in its own goroutine so the select loop
+	// keeps draining room_say + handling other channels. `busy` = a turn is in
+	// flight for this channel (one at a time, so a persona doesn't talk over
+	// itself). `pending` = the latest human message that arrived mid-turn; one
+	// coalesced follow-up turn fires when the current finishes.
+	busy    bool
+	pending *wireMessage
 }
+
+// turnResult is what a turn goroutine reports back to the worker loop (which is
+// the sole owner of gc.channels). Carrying `gen` lets the loop discard results
+// from a connection that has since reconnected (the channels map was reset).
+type turnResult struct {
+	gen       uint64
+	channel   string
+	kind      turnResultKind
+	sessionID string // for kindSession (early) and kindDone (the turn's session)
+	answer    string // for kindDone
+	err       error  // for kindDone
+}
+
+type turnResultKind int
+
+const (
+	kindSession turnResultKind = iota // the session id became known (mid-turn)
+	kindDone                          // the turn finished (answer or err)
+)
 
 // GatewayConn drives one persona across all the rooms its key grants.
 type GatewayConn struct {
@@ -57,8 +83,10 @@ type GatewayConn struct {
 	httpc   *http.Client
 
 	// Worker-owned (single goroutine) — no locks needed.
-	channels map[string]*channelState
-	frames   chan gwOutbound
+	channels    map[string]*channelState
+	frames      chan gwOutbound
+	generation  uint64          // bumped per connection; guards stale turn results
+	turnResults chan turnResult // turn goroutines → the worker loop
 }
 
 const roomRefreshInterval = 30 * time.Second
@@ -71,15 +99,22 @@ const roomSayDrainInterval = 1 * time.Second
 // connection in Run (see the reconnect-panic fix).
 const frameBufferSize = 128
 
+// turnResultsBuffer bounds the turn-goroutine → loop channel. In-flight turns
+// are capped by the number of channels (one turn per channel at a time), so
+// this is generous; it also absorbs results from a just-reconnected old
+// generation without blocking those goroutines.
+const turnResultsBuffer = 64
+
 // NewGatewayConn builds a multi-room connection for a persona.
 func NewGatewayConn(p Persona, key, wsBase string, cog *Cognition) *GatewayConn {
 	api := strings.Replace(strings.Replace(wsBase, "wss://", "https://", 1), "ws://", "http://", 1)
 	return &GatewayConn{
 		persona: p, key: key, wsBase: strings.TrimRight(wsBase, "/"),
 		apiBase: strings.TrimRight(api, "/"), cog: cog,
-		httpc:    &http.Client{Timeout: 10 * time.Second},
-		channels: map[string]*channelState{},
-		frames:   make(chan gwOutbound, frameBufferSize),
+		httpc:       &http.Client{Timeout: 10 * time.Second},
+		channels:    map[string]*channelState{},
+		frames:      make(chan gwOutbound, frameBufferSize),
+		turnResults: make(chan turnResult, turnResultsBuffer),
 	}
 }
 
@@ -100,6 +135,11 @@ func (gc *GatewayConn) Run(ctx context.Context) error {
 	// `defer close(gc.frames)` captures this channel value, so an old readPump
 	// closes the old channel while the new connection uses this fresh one.
 	gc.frames = make(chan gwOutbound, frameBufferSize)
+
+	// New connection generation. Turn goroutines started under this generation
+	// tag their results with it; results from an older generation (a turn still
+	// finishing after a reconnect reset gc.channels) are discarded by the loop.
+	gc.generation++
 
 	go func() { <-ctx.Done(); _ = conn.Close() }()
 	go gc.readPump(ctx)
@@ -122,6 +162,8 @@ func (gc *GatewayConn) Run(ctx context.Context) error {
 			gc.refreshRooms(ctx)
 		case <-drain.C:
 			gc.drainOutbox(ctx)
+		case tr := <-gc.turnResults:
+			gc.applyTurnResult(ctx, tr)
 		case f, ok := <-gc.frames:
 			if !ok {
 				if ctx.Err() != nil {
@@ -258,43 +300,114 @@ func (gc *GatewayConn) handle(ctx context.Context, f gwOutbound) {
 		wm := wireMessage{Sender: f.Message.Sender, Body: f.Message.Body}
 		gc.note(cs, wm)
 		if f.Message.SenderKind == "human" && strings.TrimSpace(wm.Body) != "" {
-			if err := gc.takeTurn(ctx, f.Channel, cs, wm); err != nil && ctx.Err() == nil {
-				log.Printf("[%s] turn error in %s: %v", gc.persona.Slug, f.Channel, err)
-			}
+			gc.maybeStartTurn(ctx, f.Channel, cs, wm)
 		}
 	}
 }
 
-func (gc *GatewayConn) takeTurn(ctx context.Context, channel string, cs *channelState, trigger wireMessage) error {
+// maybeStartTurn kicks off a turn in its own goroutine so the worker loop keeps
+// running (draining room_say, serving other channels) while the model works.
+// One turn at a time per channel: if a turn is already running, the trigger is
+// held as `pending` and a single coalesced follow-up fires when it finishes.
+// Runs in the worker goroutine, so it owns cs and prepares all turn inputs as
+// plain values — the goroutine never touches gc.channels.
+func (gc *GatewayConn) maybeStartTurn(ctx context.Context, channel string, cs *channelState, trigger wireMessage) {
+	if cs.busy {
+		t := trigger
+		cs.pending = &t // coalesce: keep the latest; intervening msgs are in recent
+		return
+	}
+	cs.busy = true
+
 	addressed := isAddressed(trigger.Body, gc.persona.Slug, gc.persona.DisplayName)
-	var answer string
-	var err error
-	if cs.sessionID == "" {
+	sessionID := cs.sessionID
+	pipeline := gc.persona.Pipeline
+	slug := gc.persona.Slug + "-" + short(channel)
+	gen := gc.generation
+
+	var bq string
+	if sessionID == "" {
 		label := cs.label
 		if label == "" {
 			label = "the chat room"
 		}
-		bq := buildTurnZeroFraming(gc.persona, label, cs.recent, trigger, addressed)
-		var sess string
-		sess, answer, err = gc.cog.SpawnTurn(ctx, gc.persona.Pipeline, gc.persona.Slug+"-"+short(channel), bq)
-		if err != nil {
-			return err
-		}
-		cs.sessionID = sess
+		bq = buildTurnZeroFraming(gc.persona, label, cs.recent, trigger, addressed)
 	} else {
-		answer, err = gc.cog.ConsultTurn(ctx, cs.sessionID, buildConsultFraming(trigger, addressed))
-		if err != nil {
-			return err
+		bq = buildConsultFraming(trigger, addressed)
+	}
+
+	go gc.runTurn(ctx, gen, channel, sessionID, pipeline, slug, bq)
+}
+
+// runTurn does ONLY the cognition (off the worker loop) and reports back over
+// gc.turnResults. It never touches gc.channels. For turn-zero it reports the
+// session id early (via SpawnTurn's onSession callback) so the loop can route
+// room_say beats while the model is still working.
+func (gc *GatewayConn) runTurn(ctx context.Context, gen uint64, channel, sessionID, pipeline, slug, framing string) {
+	send := func(tr turnResult) {
+		select {
+		case gc.turnResults <- tr:
+		case <-ctx.Done():
 		}
 	}
-	if IsSilence(answer) {
-		return nil
+	var answer string
+	var err error
+	if sessionID == "" {
+		sessionID, answer, err = gc.cog.SpawnTurn(ctx, pipeline, slug, framing, func(sid string) {
+			send(turnResult{gen: gen, channel: channel, kind: kindSession, sessionID: sid})
+		})
+	} else {
+		answer, err = gc.cog.ConsultTurn(ctx, sessionID, framing)
 	}
-	if err := gc.sendRaw(map[string]any{"type": "message", "channel": channel, "body": answer}); err != nil {
-		return fmt.Errorf("post reply: %w", err)
+	send(turnResult{gen: gen, channel: channel, kind: kindDone, sessionID: sessionID, answer: answer, err: err})
+}
+
+// applyTurnResult runs in the worker loop (sole owner of gc.channels) and
+// applies a turn goroutine's report: set the session early, or post the answer
+// (after flushing any room_say beats so they precede it), free the channel, and
+// fire a coalesced follow-up if a message arrived mid-turn. Results from an old
+// connection generation are discarded.
+func (gc *GatewayConn) applyTurnResult(ctx context.Context, tr turnResult) {
+	if tr.gen != gc.generation {
+		return // stale: the connection reconnected and reset its channels
 	}
-	gc.note(cs, wireMessage{Sender: gc.persona.DisplayName, Body: answer})
-	return nil
+	cs := gc.channels[tr.channel]
+	if cs == nil {
+		return
+	}
+
+	switch tr.kind {
+	case kindSession:
+		if cs.sessionID == "" {
+			cs.sessionID = tr.sessionID // early — the drainer can now route beats
+		}
+	case kindDone:
+		if tr.sessionID != "" {
+			cs.sessionID = tr.sessionID
+		}
+		if tr.err != nil {
+			if ctx.Err() == nil {
+				log.Printf("[%s] turn error in %s: %v", gc.persona.Slug, tr.channel, tr.err)
+			}
+		} else if !IsSilence(tr.answer) {
+			// Flush any pending room_say beats FIRST so "🔍 …" precedes the answer.
+			gc.drainOutbox(ctx)
+			if err := gc.sendRaw(map[string]any{"type": "message", "channel": tr.channel, "body": tr.answer}); err != nil {
+				if ctx.Err() == nil {
+					log.Printf("[%s] post reply in %s: %v", gc.persona.Slug, tr.channel, err)
+				}
+			} else {
+				gc.note(cs, wireMessage{Sender: gc.persona.DisplayName, Body: tr.answer})
+			}
+		}
+		// Channel free; fire one coalesced follow-up if a message arrived mid-turn.
+		cs.busy = false
+		if cs.pending != nil {
+			next := *cs.pending
+			cs.pending = nil
+			gc.maybeStartTurn(ctx, tr.channel, cs, next)
+		}
+	}
 }
 
 // drainOutbox posts this persona's pending room_say messages. It maps each

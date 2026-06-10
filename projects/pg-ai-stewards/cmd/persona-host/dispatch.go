@@ -7,7 +7,7 @@
 //
 //   - Turn zero (first time a persona considers a room): spawn_subagent_create
 //     on the 'persona-turn' pipeline → poll work_items to terminal → the reply
-//     + the persisted session id.
+//   - the persisted session id.
 //   - Turn N: consult_subagent_dispatch re-asks that SAME session → poll
 //     work_queue to done → the reply. The session accumulates the room
 //     conversation (the K/L context engine compacts it).
@@ -35,11 +35,11 @@ const SilenceToken = "SILENCE"
 // these mirror the substrate's own spawn/consult handlers but with a tighter
 // cost cap (chat replies are ~1200 tokens — turn zero measured ~$0.014).
 const (
-	personaCostCapMicro    int64 = 100_000 // $0.10 ceiling per turn-zero spawn
-	spawnPollInterval            = 3 * time.Second
-	spawnMaxWait                 = 5 * time.Minute
-	consultPollInterval          = 2 * time.Second
-	consultMaxWait               = 5 * time.Minute
+	personaCostCapMicro int64 = 100_000 // $0.10 ceiling per turn-zero spawn
+	spawnPollInterval         = 3 * time.Second
+	spawnMaxWait              = 5 * time.Minute
+	consultPollInterval       = 2 * time.Second
+	consultMaxWait            = 5 * time.Minute
 )
 
 // Cognition drives persona turns against the substrate over the shared pool.
@@ -57,7 +57,12 @@ func NewCognition(s *Store) *Cognition { return &Cognition{pool: s.pool} }
 // bindingQuestion carries the persona's character + room context + the trigger
 // message. Returns the persisted session id (for later ConsultTurn calls) and
 // the reply text (which may be SilenceToken).
-func (c *Cognition) SpawnTurn(ctx context.Context, pipeline, slug, bindingQuestion string) (sessionID, answer string, err error) {
+//
+// onSession (optional) fires ONCE, as soon as the child's session id first
+// appears (well before the turn completes). The async turn loop uses it to set
+// the channel's session id early so the room_say drainer can route mid-turn
+// beats while the model is still working.
+func (c *Cognition) SpawnTurn(ctx context.Context, pipeline, slug, bindingQuestion string, onSession func(string)) (sessionID, answer string, err error) {
 	if pipeline == "" {
 		pipeline = "persona-turn"
 	}
@@ -73,6 +78,7 @@ func (c *Cognition) SpawnTurn(ctx context.Context, pipeline, slug, bindingQuesti
 	}
 
 	deadline := time.Now().Add(spawnMaxWait)
+	sessionReported := false
 	for {
 		var status, maturity string
 		var lastSession *string
@@ -81,6 +87,15 @@ func (c *Cognition) SpawnTurn(ctx context.Context, pipeline, slug, bindingQuesti
 			   FROM stewards.work_items WHERE id = $1::uuid`, childID,
 		).Scan(&status, &maturity, &lastSession); err != nil {
 			return "", "", fmt.Errorf("poll persona-turn %s: %w", childID, err)
+		}
+
+		// Report the session the moment it exists (before completion) so the
+		// caller can route room_say beats during the turn.
+		if !sessionReported && lastSession != nil && *lastSession != "" {
+			sessionReported = true
+			if onSession != nil {
+				onSession(*lastSession)
+			}
 		}
 
 		switch {
