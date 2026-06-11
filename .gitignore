@@ -85,3 +85,4 @@ opencode.json
 # temp files
 /tmp/
 /temp/
+__pycache__/
