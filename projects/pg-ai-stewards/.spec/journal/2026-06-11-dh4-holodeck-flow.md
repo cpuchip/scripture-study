@@ -79,6 +79,27 @@ command, dice in the open), archive/resume (program frames + log + rotation).
 Four arcs in ~one day: REM → DH-1 → DH-2 → DH-3 → DH-4, every layer deployed
 and live-verified.
 
+## Addendum — room gating: the binding is the switch (same night)
+
+Michael: "does every room have the dnd machinery? should rooms have on/off
+settings?" Honest answer: half-gated — the binding already gated *function*,
+but autocomplete advertised the commands everywhere and /archive//resume
+leaked program frames into any room. Ratified: no separate feature flag —
+**the campaign binding IS the switch**, surfaced three ways: `/dnd enable
+[name]` (bare form auto-names a campaign after the room) / `/dnd disable`;
+`/campaign [bind|unbind]`; a Settings "D&D Campaign" row. Autocomplete shows
+the sheet-command family only in bound rooms (registry grew a `group` field —
+the D3 registry design absorbing its first metadata without breaking
+anything); 🎲 campaign chip in the room header; archive/resume refuse unbound
+rooms; a `program: state` frame refreshes clients on bind/unbind.
+
+dnd-tools 0.2.1 (`cf461ab`): POST /api/campaigns + PUT /api/rooms/{id}/campaign
+(bind-creating-if-needed / unbind). chattermax `eca5e76`. Both deployed,
+freshness proven by version markers (the stale-build discipline). **Live gate
+proof at 0.2s on the test account's own server:** enable → 🎲 bound →
+/check functional (needs-a-sheet error) → 🗺 → disable → 🚪 → /check refused.
+Generic /roll + /init stay global on purpose — dice belong to every room.
+
 ## Carry-forward (Michael's table)
 - **/archive + /resume live-proof** — needs a room admin; the gate correctly
   refuses members. Natural first use: the end of campaign session #1.
