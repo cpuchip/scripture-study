@@ -49,6 +49,9 @@ type gwOutbound struct {
 		PersonaID   string `json:"personaId"`
 		DisplayName string `json:"displayName"`
 	} `json:"cast"`
+	// On "program" frames (DH-4): archive | resume — the holodeck session
+	// boundary. Archive = write the campaign log, then rotate the session.
+	Op string `json:"op"`
 }
 
 // channelState is one room's accumulating conversation, owned by the worker.
@@ -79,6 +82,9 @@ type channelState struct {
 	// personaHopBudget the chain stops and the table waits for a human —
 	// the ping-pong guard.
 	hops int
+	// archiving (DH-4): a /archive landed — when the in-flight (log-writing)
+	// turn finishes, the session rotates instead of firing a follow-up.
+	archiving bool
 }
 
 // personaHopBudget bounds persona→persona turn chains per channel (DM narrates
@@ -417,6 +423,8 @@ func (gc *GatewayConn) handle(ctx context.Context, f gwOutbound) {
 		for _, m := range f.Messages {
 			gc.note(cs, wireMessage{Sender: m.Sender, Body: m.Body})
 		}
+	case "program":
+		gc.handleProgram(ctx, f.Channel, cs, f.Op)
 	case "message":
 		wm := wireMessage{ID: f.Message.ID, Sender: f.Message.Sender, Body: f.Message.Body}
 		gc.note(cs, wm)
@@ -682,14 +690,63 @@ func (gc *GatewayConn) applyTurnResult(ctx context.Context, tr turnResult) {
 			_ = gc.sendRaw(map[string]any{"type": "reaction", "channel": tr.channel, "messageId": cs.eyedID, "emoji": "👀", "op": "remove"})
 			cs.eyedID = ""
 		}
-		// Channel free; fire one coalesced follow-up if a message arrived mid-turn.
+		// Archive boundary (DH-4): the just-finished turn wrote the campaign
+		// log — rotate the session instead of firing a follow-up. Character
+		// sessions stay: a promoted mind is room-agnostic and durable.
 		cs.busy = false
+		if cs.archiving {
+			gc.rotateChannel(tr.channel, cs)
+			return
+		}
+		// Channel free; fire one coalesced follow-up if a message arrived mid-turn.
 		if cs.pending != nil {
 			next := *cs.pending
 			cs.pending = nil
 			gc.maybeStartTurn(ctx, tr.channel, cs, next)
 		}
 	}
+}
+
+// handleProgram reacts to /archive + /resume (DH-4). Archive gives a
+// tool-using persona one closing turn to write the session into the campaign
+// log (dnd_campaign_log), then rotates the persona's session — the context
+// cost reset and the /resume seed. Resume needs no host action: the next
+// trigger starts a fresh session whose turn-zero framing carries the room's
+// "Program resumed" context, and the gamemaster agent reads the campaign log.
+func (gc *GatewayConn) handleProgram(ctx context.Context, channel string, cs *channelState, op string) {
+	switch op {
+	case "resume":
+		cs.hops = 0
+	case "archive":
+		if cs.sessionID == "" {
+			gc.rotateChannel(channel, cs)
+			return
+		}
+		if cs.busy {
+			// A turn is in flight; rotate when it finishes (skip the log turn —
+			// rare, and the next archive can catch up).
+			cs.archiving = true
+			return
+		}
+		cs.archiving = true
+		cs.busy = true
+		question := "The table is ARCHIVING this session (the program is closing). " +
+			"If you keep campaign state in dnd-tools: write a session recap NOW with dnd_campaign_log " +
+			"(a few sentences a player would enjoy re-reading before next time), and bring any changed " +
+			"sheets or lore up to date. Then reply with ONE short in-character closing line — or SILENCE."
+		go gc.runTurn(ctx, gc.generation, channel, cs.sessionID, gc.persona.Pipeline, gc.persona.Slug, question, "", "")
+	}
+}
+
+// rotateChannel closes a session boundary: the persona's next turn starts a
+// fresh substrate session. Promoted character sessions persist by design.
+func (gc *GatewayConn) rotateChannel(channel string, cs *channelState) {
+	log.Printf("[%s] program archived in %s — session rotated (was %s)", gc.persona.Slug, channel, cs.sessionID)
+	cs.sessionID = ""
+	cs.pending = nil
+	cs.hops = 0
+	cs.archiving = false
+	cs.busy = false
 }
 
 // pulseTyping sends a "typing" frame for every channel with a turn in flight,

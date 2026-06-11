@@ -25,6 +25,7 @@ import (
 	"fmt"
 	"os"
 	"os/exec"
+	"regexp"
 	"strings"
 	"time"
 
@@ -54,6 +55,16 @@ func resolveSecret(value string) string {
 		}
 	}
 	return value
+}
+
+// envPlaceholderRe matches $env:NAME / $$env:NAME anywhere in a string.
+var envPlaceholderRe = regexp.MustCompile(`\${1,2}env:[A-Za-z_][A-Za-z0-9_]*`)
+
+// resolveSecretsInString expands EMBEDDED $env: placeholders (resolveSecret
+// handles whole-value ones) — used for http transport URLs that carry a key
+// as a query parameter. Unresolvable placeholders pass through visibly.
+func resolveSecretsInString(s string) string {
+	return envPlaceholderRe.ReplaceAllStringFunc(s, resolveSecret)
 }
 
 // mcpServerRow mirrors the relevant columns from stewards.mcp_servers.
@@ -261,7 +272,11 @@ func buildClientTransport(srv mcpServerRow) (mcp.Transport, error) {
 		// http transport do today — exa-search uses ?token= in URL),
 		// extend this branch to wrap http.DefaultTransport. Keep it
 		// minimal until we hit a server that needs it.
-		return &mcp.StreamableClientTransport{Endpoint: *srv.URL}, nil
+		//
+		// Embedded $env: placeholders ARE resolved (DH-4: the dnd row's
+		// `?key=$env:DND_API_KEY`) so the secret lives in the bridge env,
+		// not the DB row.
+		return &mcp.StreamableClientTransport{Endpoint: resolveSecretsInString(*srv.URL)}, nil
 
 	default:
 		return nil, fmt.Errorf("unknown transport: %s", srv.Transport)

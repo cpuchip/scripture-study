@@ -228,3 +228,4 @@ r18-persona-turn-budget.sql
 r19-persona-turn-16k.sql
 r20-room-say-as.sql
 dnd1-mcp-seed.sql
+dnd2-mcp-http.sql
