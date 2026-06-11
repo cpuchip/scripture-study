@@ -216,11 +216,41 @@ func isAddressed(body string, names ...string) bool {
 			continue
 		}
 		dn := strings.ToLower(n)
-		if strings.Contains(b, dn) || strings.Contains(b, "@"+strings.ReplaceAll(dn, " ", "")) {
+		if containsWord(b, dn) || containsWord(b, "@"+strings.ReplaceAll(dn, " ", "")) {
 			return true
 		}
 	}
 	return false
+}
+
+// containsWord reports whether sub occurs in s on word boundaries — "vex"
+// must NOT match inside "vexa" (the 2026-06-10 Vex/Vexa false wake: the DM
+// answered a question meant for the Party because its cast member "Vex"
+// substring-matched "Vexa Nightbloom"). Both strings arrive lowercased.
+func containsWord(s, sub string) bool {
+	if sub == "" {
+		return false
+	}
+	for i := 0; ; {
+		j := strings.Index(s[i:], sub)
+		if j < 0 {
+			return false
+		}
+		start := i + j
+		end := start + len(sub)
+		beforeOK := start == 0 || !isWordByte(s[start-1])
+		afterOK := end == len(s) || !isWordByte(s[end])
+		if beforeOK && afterOK {
+			return true
+		}
+		i = start + 1
+	}
+}
+
+// isWordByte treats ASCII letters/digits/underscore as word characters;
+// punctuation, spaces, and multi-byte UTF-8 act as boundaries.
+func isWordByte(c byte) bool {
+	return c >= 'a' && c <= 'z' || c >= 'A' && c <= 'Z' || c >= '0' && c <= '9' || c == '_'
 }
 
 // buildTurnZeroFraming composes the binding question that establishes a persona's
@@ -272,6 +302,7 @@ func buildCharacterFraming(ch Character, ownerName, room string, recent []wireMe
 	}
 	b.WriteString("\nSpeak ONLY as " + ch.Name + ", first person, in character — short lines (1-4 sentences). ")
 	b.WriteString("Dice are rolled by the room: write /roll 1d20+3 (or /init +2) in your message and the server rolls in the open; NEVER invent dice results. Respect the turn-order strip.")
+	b.WriteString(" If you have dnd-tools, your sheet is the truth: read it with dnd_char_get (name: \"" + ch.Name + "\"), get a check's modifier with dnd_char_check and post its suggested /roll, and record damage/loot with dnd_char_update.")
 	b.WriteString("\n\nRECENT ROOM CONVERSATION:\n")
 	b.WriteString(formatRecent(recent, trigger))
 	b.WriteString("\n\nA new message just arrived:\n")

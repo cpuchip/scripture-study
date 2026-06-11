@@ -56,6 +56,11 @@ COPY scripts/gospel-engine-v2/  ./scripts/gospel-engine-v2/
 # binary (embed.go), so no data-file COPY is needed at runtime.
 COPY projects/strongs-concordance-mcp/ ./projects/strongs-concordance-mcp/
 
+# dnd-tools — standalone module (NOT in go.work), strongs' twin (DH-3).
+# Campaign/character state lives in SQLite on the rw /workspace mount at
+# runtime (DND_DB env in the mcp_servers seed), so nothing else to COPY.
+COPY projects/dnd-tools/ ./projects/dnd-tools/
+
 # becoming/ is large; bring only what the cmd/mcp build needs.
 COPY scripts/becoming/go.mod         ./scripts/becoming/go.mod
 COPY scripts/becoming/go.sum         ./scripts/becoming/go.sum
@@ -146,6 +151,10 @@ RUN cd scripts/gospel-engine-v2 \
 RUN cd projects/strongs-concordance-mcp \
     && GOWORK=off go build -trimpath -ldflags="-s -w" -o /out/strongs-mcp ./cmd/strongs-mcp
 
+# dnd-tools — same standalone-module pattern (pure-Go SQLite, CGO off).
+RUN cd projects/dnd-tools \
+    && GOWORK=off go build -trimpath -ldflags="-s -w" -o /out/dnd-mcp ./cmd/dnd-mcp
+
 # ---------------------------------------------------------------------
 # Stage 2 — runtime. Slim alpine + binaries + data files.
 # ---------------------------------------------------------------------
@@ -176,6 +185,7 @@ COPY --from=builder /out/search-mcp     /usr/local/bin/search-mcp
 COPY --from=builder /out/becoming-mcp   /usr/local/bin/becoming-mcp
 COPY --from=builder /out/gospel-mcp     /usr/local/bin/gospel-mcp
 COPY --from=builder /out/strongs-mcp    /usr/local/bin/strongs-mcp
+COPY --from=builder /out/dnd-mcp        /usr/local/bin/dnd-mcp
 COPY --from=builder /out/coder-mcp      /usr/local/bin/coder-mcp
 COPY --from=builder /out/fs-read-mcp    /usr/local/bin/fs-read-mcp
 COPY --from=builder /out/stewards-cli   /usr/local/bin/stewards-cli

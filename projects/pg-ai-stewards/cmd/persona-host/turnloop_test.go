@@ -54,6 +54,18 @@ func TestIsAddressed(t *testing.T) {
 	if isAddressed("I attack the goblin", "chattercode", "Codewright", "Chattercode") {
 		t.Error("unrelated message must not be addressed")
 	}
+
+	// The 2026-06-10 Vex/Vexa false wake: a cast member "Vex" must not match
+	// inside the unrelated name "Vexa Nightbloom" — word boundaries only.
+	if isAddressed("@Party Vexa Nightbloom wants to slip past the sentry", "vex", "Vex") {
+		t.Error("\"Vex\" must not match inside \"Vexa\"")
+	}
+	if !isAddressed("Vex, block the door!", "vex", "Vex") {
+		t.Error("\"Vex,\" with punctuation boundary must match")
+	}
+	if !isAddressed("what does Vex think?", "vex", "Vex") {
+		t.Error("\"Vex\" followed by space must match")
+	}
 }
 
 func TestShouldConsider(t *testing.T) {

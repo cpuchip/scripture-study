@@ -119,19 +119,20 @@ func (s *Store) selectSigningKey(ctx context.Context) (privPEM, pubPEM string, e
 func (s *Store) UpsertPersona(ctx context.Context, p Persona) (string, error) {
 	var id string
 	err := s.pool.QueryRow(ctx, `
-		INSERT INTO persona_host.personas (slug, display_name, avatar_url, agent_family, persona_prompt, model_override, pipeline)
-		VALUES ($1, $2, $3, $4, $5, $6, COALESCE($7, 'persona-turn'))
+		INSERT INTO persona_host.personas (slug, display_name, avatar_url, agent_family, persona_prompt, model_override, pipeline, default_promote)
+		VALUES ($1, $2, $3, $4, $5, $6, COALESCE($7, 'persona-turn'), $8)
 		ON CONFLICT (slug) DO UPDATE SET
-			display_name   = EXCLUDED.display_name,
-			avatar_url     = EXCLUDED.avatar_url,
-			agent_family   = EXCLUDED.agent_family,
-			persona_prompt = EXCLUDED.persona_prompt,
-			model_override = EXCLUDED.model_override,
-			pipeline       = EXCLUDED.pipeline,
-			updated_at     = now()
+			display_name    = EXCLUDED.display_name,
+			avatar_url      = EXCLUDED.avatar_url,
+			agent_family    = EXCLUDED.agent_family,
+			persona_prompt  = EXCLUDED.persona_prompt,
+			model_override  = EXCLUDED.model_override,
+			pipeline        = EXCLUDED.pipeline,
+			default_promote = EXCLUDED.default_promote,
+			updated_at      = now()
 		RETURNING id`,
 		p.Slug, p.DisplayName, nullIfEmpty(p.AvatarURL), p.AgentFamily,
-		nullIfEmpty(p.Prompt), nullIfEmpty(p.ModelOverride), nullIfEmpty(p.Pipeline)).Scan(&id)
+		nullIfEmpty(p.Prompt), nullIfEmpty(p.ModelOverride), nullIfEmpty(p.Pipeline), p.DefaultPromote).Scan(&id)
 	if err != nil {
 		return "", fmt.Errorf("upsert persona %q: %w", p.Slug, err)
 	}
