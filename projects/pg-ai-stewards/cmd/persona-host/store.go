@@ -29,6 +29,9 @@ type Persona struct {
 	// 'persona-turn' (default, kimi/opencode_go), 'persona-turn-lmstudio',
 	// 'persona-turn-gemini', or a tool-using variant. Determines model+tools.
 	Pipeline string
+	// DefaultPromote: new cast members get their own substrate session (DH-2
+	// promotion). True for the Party (PCs are their own minds).
+	DefaultPromote bool
 }
 
 //go:embed schema.sql
@@ -140,9 +143,9 @@ func (s *Store) PersonaBySlug(ctx context.Context, slug string) (*Persona, error
 	var p Persona
 	var avatar, prompt, modelOverride *string
 	err := s.pool.QueryRow(ctx, `
-		SELECT id, slug, display_name, avatar_url, agent_family, persona_prompt, model_override, COALESCE(pipeline,'persona-turn')
+		SELECT id, slug, display_name, avatar_url, agent_family, persona_prompt, model_override, COALESCE(pipeline,'persona-turn'), COALESCE(default_promote,false)
 		FROM persona_host.personas WHERE slug = $1`, slug).
-		Scan(&p.ID, &p.Slug, &p.DisplayName, &avatar, &p.AgentFamily, &prompt, &modelOverride, &p.Pipeline)
+		Scan(&p.ID, &p.Slug, &p.DisplayName, &avatar, &p.AgentFamily, &prompt, &modelOverride, &p.Pipeline, &p.DefaultPromote)
 	if err != nil {
 		return nil, err
 	}

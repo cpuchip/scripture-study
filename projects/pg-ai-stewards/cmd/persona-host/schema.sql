@@ -28,6 +28,30 @@ CREATE TABLE IF NOT EXISTS persona_host.personas (
 -- Existing deployments: add the column if the table predates it.
 ALTER TABLE persona_host.personas ADD COLUMN IF NOT EXISTS pipeline text NOT NULL DEFAULT 'persona-turn';
 
+-- DH-2 promotion: whether this persona's NEW cast members get their own
+-- substrate session by default (true for the Party — every PC is its own
+-- mind; false for the DM — scene NPCs stay facets unless promoted).
+ALTER TABLE persona_host.personas ADD COLUMN IF NOT EXISTS default_promote boolean NOT NULL DEFAULT false;
+
+-- DH-2 promotion: a persona's named characters. A PROMOTED character has its
+-- own substrate session — own memory, own LLM loop — room-agnostic (the mind
+-- belongs to the character, not the room); display stays a platform
+-- sub-persona. model_override is stored now, applied when per-character model
+-- routing lands. The owning persona's connection still posts the lines.
+CREATE TABLE IF NOT EXISTS persona_host.characters (
+    id             uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+    persona_slug   text NOT NULL,
+    name           text NOT NULL,
+    session_id     text,
+    model_override text,
+    prompt         text,
+    promoted       boolean NOT NULL DEFAULT false,
+    created_at     timestamptz NOT NULL DEFAULT now(),
+    updated_at     timestamptz NOT NULL DEFAULT now()
+);
+CREATE UNIQUE INDEX IF NOT EXISTS ux_characters_owner_name
+    ON persona_host.characters (persona_slug, lower(name));
+
 -- Which rooms a persona has joined (handshake state, PS.5).
 CREATE TABLE IF NOT EXISTS persona_host.persona_rooms (
     persona_id   uuid NOT NULL REFERENCES persona_host.personas(id) ON DELETE CASCADE,

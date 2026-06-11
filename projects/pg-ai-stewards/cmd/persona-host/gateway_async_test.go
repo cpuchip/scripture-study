@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"strings"
 	"sync"
 	"testing"
 	"time"
@@ -20,6 +21,36 @@ type fakeCog struct {
 	claimed  bool
 	spawns   int
 	consults int
+
+	// Promotion (DH-2): characters EnsureCharacter hands back.
+	promote       bool
+	chars         map[string]Character
+	savedSessions map[string]string // character id → saved session
+}
+
+func (f *fakeCog) EnsureCharacter(_ context.Context, slug, name string, promote bool) (Character, error) {
+	f.mu.Lock()
+	defer f.mu.Unlock()
+	if f.chars == nil {
+		f.chars = map[string]Character{}
+	}
+	key := strings.ToLower(name)
+	ch, ok := f.chars[key]
+	if !ok {
+		ch = Character{ID: "c-" + key, PersonaSlug: slug, Name: name, Promoted: promote || f.promote}
+		f.chars[key] = ch
+	}
+	return ch, nil
+}
+
+func (f *fakeCog) SaveCharacterSession(_ context.Context, id, sessionID string) error {
+	f.mu.Lock()
+	defer f.mu.Unlock()
+	if f.savedSessions == nil {
+		f.savedSessions = map[string]string{}
+	}
+	f.savedSessions[id] = sessionID
+	return nil
 }
 
 func (f *fakeCog) SpawnTurn(ctx context.Context, pipeline, slug, bq string, onSession func(string)) (string, string, error) {
@@ -158,6 +189,77 @@ func TestAsyncTurn_StaleGenerationDiscarded(t *testing.T) {
 	defer pmu.Unlock()
 	if len(*posts) != 0 {
 		t.Fatalf("stale-generation result must not post, got %v", *posts)
+	}
+}
+
+// Promotion (DH-2): addressing a promoted character runs the turn on the
+// CHARACTER's own session — the spawn is persisted as the character's mind,
+// the answer posts attributed to the character, and the character's room_say
+// beats attribute to it too.
+func TestPromotedCharacterTurn(t *testing.T) {
+	ctx := context.Background()
+	cog := &fakeCog{
+		dur: 30 * time.Millisecond, sessionAfter: 5 * time.Millisecond,
+		session: "wi--thorin--turn", answer: "I raise my axe.",
+		promote: true,
+		outbox:  []OutboxRow{{ID: 1, SessionID: "wi--thorin--turn", Body: "tightens his grip"}},
+	}
+	gc, posts, pmu := newTestConn(cog)
+	gc.persona.DefaultPromote = true
+	gc.selfID = "p-party"
+	cs := &channelState{sessionID: "wi--party-room--turn", label: "Holodeck-3"}
+	gc.channels["dnd"] = cs
+
+	var cf gwOutbound
+	cf.Type = "cast"
+	cf.Channel = "dnd"
+	cf.Cast = []struct {
+		PersonaID   string `json:"personaId"`
+		DisplayName string `json:"displayName"`
+	}{{"p-party", "Thorin Oakenshield"}}
+	gc.handle(ctx, cf)
+
+	var mf gwOutbound
+	mf.Type = "message"
+	mf.Channel = "dnd"
+	mf.Message.ID = "m1"
+	mf.Message.Sender = "michael"
+	mf.Message.SenderKind = "human"
+	mf.Message.Body = "Thorin, the goblin lunges at you — what do you do?"
+	gc.handle(ctx, mf)
+	if !cs.busy {
+		t.Fatal("promoted-character trigger should start a turn")
+	}
+	pump(gc, ctx, 300*time.Millisecond)
+
+	// The character's session was persisted and registered for the drainer.
+	cog.mu.Lock()
+	saved := cog.savedSessions["c-thorin oakenshield"]
+	spawns := cog.spawns
+	cog.mu.Unlock()
+	if saved != "wi--thorin--turn" {
+		t.Fatalf("character session not saved: %q", saved)
+	}
+	if spawns != 1 {
+		t.Fatalf("want a SPAWN on the character's own session, got %d spawns", spawns)
+	}
+	if cs.charSessions["wi--thorin--turn"] != "Thorin Oakenshield" {
+		t.Fatalf("charSessions = %v", cs.charSessions)
+	}
+	// The owner's room session is untouched.
+	if cs.sessionID != "wi--party-room--turn" {
+		t.Fatalf("owner session clobbered: %q", cs.sessionID)
+	}
+	pmu.Lock()
+	defer pmu.Unlock()
+	if len(*posts) != 2 {
+		t.Fatalf("want beat + answer, got %v", *posts)
+	}
+	if (*posts)[0] != "[Thorin Oakenshield] tightens his grip" {
+		t.Fatalf("character beat attribution wrong: %q", (*posts)[0])
+	}
+	if (*posts)[1] != "[Thorin Oakenshield] I raise my axe." {
+		t.Fatalf("character answer attribution wrong: %q", (*posts)[1])
 	}
 }
 

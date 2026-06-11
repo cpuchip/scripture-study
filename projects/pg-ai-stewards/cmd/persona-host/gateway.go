@@ -66,6 +66,9 @@ type channelState struct {
 	// castNames = OUR cast members in this channel (from "cast" frames).
 	// Addressing one of them addresses us (DH-2).
 	castNames []string
+	// charSessions maps a promoted character's session → its name, for the
+	// drainer (route + attribute its room_say beats) and answer attribution.
+	charSessions map[string]string
 	// eyedID = the message currently carrying this persona's 👀 reaction (the
 	// turn's trigger). Added at turn start, removed when the turn finishes — so
 	// the room sees WHICH question the persona is working, not just that it's
@@ -92,6 +95,10 @@ type turnResult struct {
 	sessionID string // for kindSession (early) and kindDone (the turn's session)
 	answer    string // for kindDone
 	err       error  // for kindDone
+	// Promoted-character turns (DH-2): `as` attributes the answer to the
+	// character; charID persists the character's session on first spawn.
+	as     string
+	charID string
 }
 
 type turnResultKind int
@@ -107,6 +114,8 @@ type cognition interface {
 	SpawnTurn(ctx context.Context, pipeline, slug, bindingQuestion string, onSession func(string)) (sessionID, answer string, err error)
 	ConsultTurn(ctx context.Context, sessionID, question string) (answer string, err error)
 	ClaimOutboxForSessions(ctx context.Context, sessionIDs []string) ([]OutboxRow, error)
+	EnsureCharacter(ctx context.Context, personaSlug, name string, promote bool) (Character, error)
+	SaveCharacterSession(ctx context.Context, id, sessionID string) error
 }
 
 // GatewayConn drives one persona across all the rooms its key grants.
@@ -488,6 +497,21 @@ func isOwnCast(cs *channelState, sender string) bool {
 	return false
 }
 
+// matchCast returns the canonical cast-member name a body addresses ("" if
+// none) — full name or first name, same variants addressing uses.
+func matchCast(cs *channelState, body string) string {
+	for _, cn := range cs.castNames {
+		names := []string{cn}
+		if first := castFirstName(cn); first != "" {
+			names = append(names, first)
+		}
+		if isAddressed(body, names...) {
+			return cn
+		}
+	}
+	return ""
+}
+
 func (gc *GatewayConn) maybeStartTurn(ctx context.Context, channel string, cs *channelState, trigger wireMessage) {
 	addressed := isAddressed(trigger.Body, gc.addressNames(cs)...)
 	// respond_policy "mentioned": unaddressed messages cost nothing — no turn,
@@ -511,10 +535,36 @@ func (gc *GatewayConn) maybeStartTurn(ctx context.Context, channel string, cs *c
 		cs.eyedID = trigger.ID
 	}
 
-	sessionID := cs.sessionID
-	pipeline := gc.persona.Pipeline
-	slug := gc.persona.Slug + "-" + short(channel)
 	gen := gc.generation
+	pipeline := gc.persona.Pipeline
+
+	// Promotion routing (DH-2): a message addressed to one of our PROMOTED
+	// characters runs on THAT character's own session — its own mind — and the
+	// answer posts under the character's name. Facet characters fall through
+	// to the owner's turn (one mind, many voices).
+	if castName := matchCast(cs, trigger.Body); castName != "" {
+		ch, err := gc.cog.EnsureCharacter(ctx, gc.persona.Slug, castName, gc.persona.DefaultPromote)
+		if err != nil {
+			log.Printf("[%s] ensure character %q: %v", gc.persona.Slug, castName, err)
+		} else if ch.Promoted {
+			label := cs.label
+			if label == "" {
+				label = "the chat room"
+			}
+			var bq string
+			if ch.SessionID == "" {
+				bq = buildCharacterFraming(ch, gc.persona.DisplayName, label, cs.recent, trigger)
+			} else {
+				bq = buildConsultFraming(trigger, true)
+			}
+			slug := gc.persona.Slug + "-" + short(channel) + "-" + short(strings.ToLower(strings.ReplaceAll(ch.Name, " ", "")))
+			go gc.runTurn(ctx, gen, channel, ch.SessionID, pipeline, slug, bq, ch.Name, ch.ID)
+			return
+		}
+	}
+
+	sessionID := cs.sessionID
+	slug := gc.persona.Slug + "-" + short(channel)
 
 	var bq string
 	if sessionID == "" {
@@ -530,14 +580,16 @@ func (gc *GatewayConn) maybeStartTurn(ctx context.Context, channel string, cs *c
 		bq += "\n(You weren't addressed directly — feel free to chime in if you have something genuinely worth adding; otherwise SILENCE.)"
 	}
 
-	go gc.runTurn(ctx, gen, channel, sessionID, pipeline, slug, bq)
+	go gc.runTurn(ctx, gen, channel, sessionID, pipeline, slug, bq, "", "")
 }
 
 // runTurn does ONLY the cognition (off the worker loop) and reports back over
 // gc.turnResults. It never touches gc.channels. For turn-zero it reports the
 // session id early (via SpawnTurn's onSession callback) so the loop can route
-// room_say beats while the model is still working.
-func (gc *GatewayConn) runTurn(ctx context.Context, gen uint64, channel, sessionID, pipeline, slug, framing string) {
+// room_say beats while the model is still working. asName/charID are set for
+// promoted-character turns (DH-2): the answer is attributed to the character
+// and the spawned session is persisted as the character's own mind.
+func (gc *GatewayConn) runTurn(ctx context.Context, gen uint64, channel, sessionID, pipeline, slug, framing, asName, charID string) {
 	send := func(tr turnResult) {
 		select {
 		case gc.turnResults <- tr:
@@ -548,12 +600,20 @@ func (gc *GatewayConn) runTurn(ctx context.Context, gen uint64, channel, session
 	var err error
 	if sessionID == "" {
 		sessionID, answer, err = gc.cog.SpawnTurn(ctx, pipeline, slug, framing, func(sid string) {
-			send(turnResult{gen: gen, channel: channel, kind: kindSession, sessionID: sid})
+			send(turnResult{gen: gen, channel: channel, kind: kindSession, sessionID: sid, as: asName, charID: charID})
 		})
 	} else {
 		answer, err = gc.cog.ConsultTurn(ctx, sessionID, framing)
 	}
-	send(turnResult{gen: gen, channel: channel, kind: kindDone, sessionID: sessionID, answer: answer, err: err})
+	// Truncated-stream retry (2026-06-10: a Fireworks stream died mid-turn —
+	// reasoning arrived, content never did, and the turn "completed" empty).
+	// An EMPTY answer with no error is never legitimate (silence is the
+	// explicit token SILENCE), so re-ask once on the now-known session.
+	if err == nil && strings.TrimSpace(answer) == "" && sessionID != "" {
+		log.Printf("[%s] empty answer in %s (truncated stream?) — retrying once", gc.persona.Slug, channel)
+		answer, err = gc.cog.ConsultTurn(ctx, sessionID, "(Your previous reply was lost in transmission and never reached the room — please send it again, briefly. If you truly have nothing to say, reply with exactly SILENCE.)")
+	}
+	send(turnResult{gen: gen, channel: channel, kind: kindDone, sessionID: sessionID, answer: answer, err: err, as: asName, charID: charID})
 }
 
 // applyTurnResult runs in the worker loop (sole owner of gc.channels) and
@@ -572,11 +632,29 @@ func (gc *GatewayConn) applyTurnResult(ctx context.Context, tr turnResult) {
 
 	switch tr.kind {
 	case kindSession:
+		if tr.charID != "" {
+			// A promoted character's own session (DH-2): register it for the
+			// drainer (its beats post as the character) and persist it — the
+			// character's mind is durable and room-agnostic.
+			if cs.charSessions == nil {
+				cs.charSessions = map[string]string{}
+			}
+			cs.charSessions[tr.sessionID] = tr.as
+			if err := gc.cog.SaveCharacterSession(ctx, tr.charID, tr.sessionID); err != nil {
+				log.Printf("[%s] save character session (%s): %v", gc.persona.Slug, tr.as, err)
+			}
+			return
+		}
 		if cs.sessionID == "" {
 			cs.sessionID = tr.sessionID // early — the drainer can now route beats
 		}
 	case kindDone:
-		if tr.sessionID != "" {
+		if tr.charID != "" && tr.sessionID != "" {
+			if cs.charSessions == nil {
+				cs.charSessions = map[string]string{}
+			}
+			cs.charSessions[tr.sessionID] = tr.as
+		} else if tr.sessionID != "" {
 			cs.sessionID = tr.sessionID
 		}
 		if tr.err != nil {
@@ -586,12 +664,16 @@ func (gc *GatewayConn) applyTurnResult(ctx context.Context, tr turnResult) {
 		} else if !IsSilence(tr.answer) {
 			// Flush any pending room_say beats FIRST so "🔍 …" precedes the answer.
 			gc.drainOutbox(ctx)
-			if err := gc.emit(tr.channel, tr.answer); err != nil {
+			if err := gc.emitAs(tr.channel, tr.as, tr.answer); err != nil {
 				if ctx.Err() == nil {
 					log.Printf("[%s] post reply in %s: %v", gc.persona.Slug, tr.channel, err)
 				}
 			} else {
-				gc.note(cs, wireMessage{Sender: gc.persona.DisplayName, Body: tr.answer})
+				sender := gc.persona.DisplayName
+				if tr.as != "" {
+					sender = tr.as
+				}
+				gc.note(cs, wireMessage{Sender: sender, Body: tr.answer})
 			}
 		}
 		// Take the 👀 off the trigger message — the turn is over whether it
@@ -627,13 +709,21 @@ func (gc *GatewayConn) pulseTyping() {
 // posts there (with the optional mood emoji prefixed). Runs in the worker
 // goroutine, so reading gc.channels is lock-free.
 func (gc *GatewayConn) drainOutbox(ctx context.Context) {
-	// session_id → channel for this connection's live channels.
+	// session_id → channel for this connection's live channels — the persona's
+	// room sessions AND its promoted characters' sessions (their beats post
+	// attributed to the character).
 	sessToChan := make(map[string]string, len(gc.channels))
+	sessChar := make(map[string]string)
 	sessions := make([]string, 0, len(gc.channels))
 	for chID, cs := range gc.channels {
 		if cs.sessionID != "" {
 			sessToChan[cs.sessionID] = chID
 			sessions = append(sessions, cs.sessionID)
+		}
+		for sid, name := range cs.charSessions {
+			sessToChan[sid] = chID
+			sessChar[sid] = name
+			sessions = append(sessions, sid)
 		}
 	}
 	if len(sessions) == 0 {
@@ -654,14 +744,20 @@ func (gc *GatewayConn) drainOutbox(ctx context.Context) {
 		if m.Mood != "" && !strings.HasPrefix(strings.TrimSpace(body), m.Mood) {
 			body = m.Mood + " " + body
 		}
-		if err := gc.emitAs(chID, m.SubPersona, body); err != nil {
+		// Attribution: an explicit as_character wins; otherwise a beat from a
+		// promoted character's own session speaks as that character.
+		as := m.SubPersona
+		if as == "" {
+			as = sessChar[m.SessionID]
+		}
+		if err := gc.emitAs(chID, as, body); err != nil {
 			log.Printf("[%s] post room_say: %v", gc.persona.Slug, err)
 			continue
 		}
 		// Record our own mid-turn post so the persona doesn't re-react to it.
 		sender := gc.persona.DisplayName
-		if m.SubPersona != "" {
-			sender = m.SubPersona
+		if as != "" {
+			sender = as
 		}
 		if cs := gc.channels[chID]; cs != nil {
 			gc.note(cs, wireMessage{Sender: sender, Body: body})

@@ -258,6 +258,28 @@ func buildTurnZeroFraming(p Persona, room string, recent []wireMessage, trigger 
 	return b.String()
 }
 
+// buildCharacterFraming is the turn-zero for a PROMOTED character's own
+// session (DH-2): the character IS the identity — own memory, own voice. The
+// owning persona manages it but this mind speaks only as itself.
+func buildCharacterFraming(ch Character, ownerName, room string, recent []wireMessage, trigger wireMessage) string {
+	var b strings.Builder
+	fmt.Fprintf(&b, "You ARE %s — a character at the table in the live chat room %q, managed by %s.\n\n", ch.Name, room, ownerName)
+	b.WriteString("YOUR CHARACTER:\n")
+	if strings.TrimSpace(ch.Prompt) != "" {
+		b.WriteString(strings.TrimSpace(ch.Prompt))
+	} else {
+		fmt.Fprintf(&b, "You are %s. Establish a consistent voice and personality from how the table has described you so far, and stay true to it.", ch.Name)
+	}
+	b.WriteString("\nSpeak ONLY as " + ch.Name + ", first person, in character — short lines (1-4 sentences). ")
+	b.WriteString("Dice are rolled by the room: write /roll 1d20+3 (or /init +2) in your message and the server rolls in the open; NEVER invent dice results. Respect the turn-order strip.")
+	b.WriteString("\n\nRECENT ROOM CONVERSATION:\n")
+	b.WriteString(formatRecent(recent, trigger))
+	b.WriteString("\n\nA new message just arrived:\n")
+	fmt.Fprintf(&b, "%s: %s\n(You were addressed.)\n", trigger.Sender, trigger.Body)
+	b.WriteString("\nReply as " + ch.Name + ", or reply with exactly SILENCE if nothing is called for.")
+	return b.String()
+}
+
 // buildConsultFraming composes the short re-ask for an established session — the
 // session already holds the persona's character and prior turns.
 func buildConsultFraming(trigger wireMessage, addressed bool) string {
