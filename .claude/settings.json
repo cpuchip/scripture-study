@@ -15,7 +15,18 @@
         "hooks": [
           {
             "type": "command",
-            "command": "cat <<'JSONEOF'\n{\"hookSpecificOutput\":{\"hookEventName\":\"SessionStart\",\"additionalContext\":\"Re-read intent.yaml, .spec/covenant.yaml, .mind/identity.md, .mind/active.md, and .mind/principles.md (if it exists) NOW before responding. Your grounding in these shapes everything that follows in this session. Use the Read tool, do not work from memory.\"}}\nJSONEOF",
+            "command": "python3 \"${CLAUDE_PROJECT_DIR:-.}/.claude/hooks/lane_start.py\"",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "SessionEnd": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"${CLAUDE_PROJECT_DIR:-.}/.claude/hooks/lane_end.py\"",
             "timeout": 10
           }
         ]
@@ -23,10 +34,20 @@
     ],
     "PostToolUse": [
       {
+        "matcher": "Bash|PowerShell",
         "hooks": [
           {
             "type": "command",
-            "command": "mkdir -p .claude/cache 2>/dev/null; n=$(cat .claude/cache/last-ground.txt 2>/dev/null || echo 0); n=$((n+1)); if [ \"$n\" -gt 50 ]; then echo 0 > .claude/cache/last-ground.txt; printf '{\"hookSpecificOutput\":{\"hookEventName\":\"PostToolUse\",\"additionalContext\":\"Re-grounding check: 50+ tool uses since last refresh. Re-read .mind/active.md, .spec/covenant.yaml, and intent.yaml before continuing. Are your current actions still aligned with the intent? If you have drifted, course-correct now.\"}}'; else echo $n > .claude/cache/last-ground.txt; fi",
+            "command": "python3 \"${CLAUDE_PROJECT_DIR:-.}/.claude/hooks/lane_bg.py\"",
+            "timeout": 10
+          }
+        ]
+      },
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "mkdir -p .claude/cache 2>/dev/null; n=$(cat .claude/cache/last-ground.txt 2>/dev/null || echo 0); n=$((n+1)); if [ \"$n\" -gt 50 ]; then echo 0 > .claude/cache/last-ground.txt; printf '{\"hookSpecificOutput\":{\"hookEventName\":\"PostToolUse\",\"additionalContext\":\"Re-grounding check: 50+ tool uses since last refresh. Re-read .mind/active.md (the in-flight board), .spec/covenant.yaml, and intent.yaml before continuing; also glance at your session lane + inbox (.mind/sessions/). Are your current actions still aligned with the intent? If you have drifted, course-correct now.\"}}'; else echo $n > .claude/cache/last-ground.txt; fi",
             "timeout": 10
           }
         ]
@@ -53,6 +74,15 @@
       }
     ],
     "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"${CLAUDE_PROJECT_DIR:-.}/.claude/hooks/lane_prompt.py\"",
+            "timeout": 10
+          }
+        ]
+      },
       {
         "hooks": [
           {

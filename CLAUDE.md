@@ -57,6 +57,24 @@ Copilot has a chat dropdown of custom agents (`.github/agents/*.agent.md`). Clau
 
 When a translated agent does not yet exist for a workflow, fall back to following the shared principles in `.github/copilot-instructions.md` and the source agent file directly.
 
+### Session lanes (multi-terminal coordination, 2026-06-11)
+
+Michael runs several Claude Code sessions in parallel, topic-based. The
+protocol lives at `.mind/sessions/README.md` — read it once. The short form:
+
+- **Claim your lane** (`.mind/sessions/<topic>.md`). The SessionStart hook does
+  this automatically from the session title; if a hook says "no lane claims
+  session_id X", create the lane yourself with that id and your topic name.
+- **Write only your own lane; read everyone's.** Check the lanes before
+  killing/restarting long-lived processes you didn't start. Background shell
+  launches are logged to your lane automatically.
+- **Signal siblings** by appending to `.mind/sessions/inbox/<lane>.md`. Delivery
+  is pull: they're nudged on next engagement; the statusline shows 📬. After
+  acting on your own inbox, clear it.
+- **`.mind/active.md` is a lean in-flight board** — closed arcs go to
+  `.spec/journal/` (the record) and lines get deleted from the board. The old
+  87K-token banner ledger is archived at `.mind/archive/`.
+
 ### Skills
 
 `.claude/skills/*` and `.github/skills/*` are **independent copies — not symlinks.** They are kept as real files on purpose: Claude Code and Copilot have diverging needs, and a skill is allowed to drift between the two trees as those needs pull on it. A shared skill starts identical in both and may diverge over time; some skills live in only one tree (`council-moment`, `intent-check`, `pgrx-extension-bump`, `sabbath-close` are Claude-Code-only; `playwright-cli` differs deliberately between the two).
