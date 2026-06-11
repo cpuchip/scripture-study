@@ -796,6 +796,22 @@ func (gc *GatewayConn) drainOutbox(ctx context.Context) {
 		if chID == "" {
 			continue // session no longer mapped to a live channel
 		}
+		// room_react (R21): a reaction row lands its emoji on the turn's
+		// trigger message — the one wearing this persona's 👀. No eyed
+		// message (turn already closed) → drop quietly; a late reaction on
+		// the wrong message would be worse than none.
+		if m.ReactEmoji != "" {
+			cs := gc.channels[chID]
+			if cs == nil || cs.eyedID == "" {
+				log.Printf("[%s] room_react %s dropped (no eyed message in %s)", gc.persona.Slug, m.ReactEmoji, chID)
+				continue
+			}
+			if err := gc.sendRaw(map[string]any{"type": "reaction", "channel": chID,
+				"messageId": cs.eyedID, "emoji": m.ReactEmoji, "op": "add"}); err != nil {
+				log.Printf("[%s] post room_react: %v", gc.persona.Slug, err)
+			}
+			continue
+		}
 		body := m.Body
 		// Prefix the mood emoji unless the model already led with it ("🔍 🔍 …").
 		if m.Mood != "" && !strings.HasPrefix(strings.TrimSpace(body), m.Mood) {

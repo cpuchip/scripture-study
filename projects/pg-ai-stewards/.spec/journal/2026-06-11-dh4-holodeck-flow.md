@@ -138,3 +138,25 @@ and that's the right order to stop in.
 
 Principles banked: "The Binding Is the Switch" + "The Published Artifact Is
 Itself a Test" (.mind/principles.md).
+
+## Addendum — two treats after the close (Michael's ask, same sitting)
+
+Michael reopened with three questions + two carry-forward requests. Built:
+(1) **bare `/init` pulls DEX from the sheet** — joins under the CHARACTER's
+name ("Vexa Nightbloom rolls initiative (DEX, from the sheet): [17] +3 =
+**20**", live); the DM persona also proved persona-run commands by ending a
+stale round on request. (2) **`room_react(emoji)`** (r21): rides the
+persona_outbox like room_say; the host lands it on the turn's 👀-eyed message;
+chattermax needed zero changes. **The find:** first bait → SILENCE, no tool
+call — the prompts framed silence as "do nothing," so reacting died with the
+reply. r21b taught "a reaction is NOT a message: react and STILL reply
+SILENCE" → next bait: **Party dropped 🎲 in 4.1s and said nothing.** Lesson
+for the model-behavior file: a tool that rides alongside an existing protocol
+token (SILENCE) needs the prompt to explicitly decouple them.
+
+Also answered: character sheets via DM-ing the DM/Party WORK TODAY (DM turns
+run the same tool pipeline; name the campaign since DMs aren't room-bound);
+the panel-chat builder is parked as DH-5 "the character forge"; the spawn
+model param is a contained substrate change reserved for its own session.
+Gotcha re-learned: ad-hoc psql heredocs mangle UTF-8 (emoji/em-dashes) on
+Windows — prompt surgery goes through FILES piped to psql, never heredocs.

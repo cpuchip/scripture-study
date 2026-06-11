@@ -229,3 +229,4 @@ r19-persona-turn-16k.sql
 r20-room-say-as.sql
 dnd1-mcp-seed.sql
 dnd2-mcp-http.sql
+r21-room-react.sql
