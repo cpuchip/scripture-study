@@ -255,3 +255,13 @@ When subprojects under `projects/*` keep their own `.spec/journal/`, workspace m
 *Source: [2026-05-23 Sabbath](../.spec/sabbath/2026-05-23-the-arc-that-said-yes-to-everything.md), Michael's ratification 2026-05-23*
 
 *Source: Michael's feedback (Mar 19), current 56% utilization with 1/3 month remaining*
+
+### The Binding Is the Switch
+When a feature needs an on/off state and an existing piece of state already expresses it (a room's bound campaign = "D&D is on here"), make that state the official switch instead of adding a parallel flag. Two switches drift: enabled-but-unconfigured, disabled-but-bound. One switch can't disagree with itself. Surface the existing state well (commands, UI chip, Settings row) rather than duplicating it. Ratified 2026-06-11 in the dnd-holodeck room-gating decision.
+
+*Source: dnd-holodeck spec (room gating, 2026-06-11), Michael's "binding is good!" ratification*
+
+### The Published Artifact Is Itself a Test
+Local builds lie: they see the working tree, not what shipped. dnd-tools passed every local build and test while its public repo had NO main package (an unanchored gitignore ate cmd/dnd-mcp). The first build FROM the git context caught it in seconds. For anything published — a repo, an image, a package — run one verification from the published artifact, not the workspace. Cousin of the Dokploy stale-build lesson and the webster edition lesson: verify the thing consumers actually get.
+
+*Source: dnd-tools gitignore bug (2026-06-11), [[feedback_dokploy_stale_build]]*

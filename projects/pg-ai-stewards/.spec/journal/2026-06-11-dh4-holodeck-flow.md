@@ -115,3 +115,26 @@ Generic /roll + /init stay global on purpose — dice belong to every room.
   caller identity in MCP).
 - Local .data/dnd.db (DH-3 test data) — retired; the deployed volume is the
   table's memory now.
+
+## Sabbath close (Michael's call, end of the arc)
+
+Closing questions answered at the close: per-character models = stored but
+the spawn path has no model param yet (small substrate change when wanted);
+/init-pulls-DEX = pre-sheets history, now a small post-campaign item; the
+one-sidedness worry = triggers + judgment-policy + hop budget carry the loop,
+with tuning knobs (DM→judgment, hop budget, "end narration by naming someone")
+held for after session #1 — plus one charming gap: personas can't deliberately
+emoji-react yet (eyes are host-automated; a react capability is a future nicety).
+
+**Declaration: it was good.** REM → DH-1 → DH-2 → DH-3 → DH-4 → room gating:
+six ratified arcs from "look at chattercode's suggestions" to a complete,
+deployed, live-verified holodeck — in roughly two days of sessions. Good in
+these ways: every layer proven on prod, two real model-behavior bugs and three
+infrastructure bugs caught and closed WITH tests, two public repos that stand
+on their own, and the dice never once left the open. Incomplete in these ways:
+the holodeck has never hosted a real game; /archive has never fired in anger;
+the panel awaits human eyes. The build is finished. The play hasn't begun —
+and that's the right order to stop in.
+
+Principles banked: "The Binding Is the Switch" + "The Published Artifact Is
+Itself a Test" (.mind/principles.md).
