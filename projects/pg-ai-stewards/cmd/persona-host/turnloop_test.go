@@ -22,6 +22,41 @@ func TestIsSilence(t *testing.T) {
 	}
 }
 
+func TestMentionsAnother(t *testing.T) {
+	// Callie's names after the 2026-06-11 rename (slug, display, platform).
+	mine := []string{"callie", "Callie", "Callie"}
+	cases := []struct {
+		body string
+		want bool
+	}{
+		// The 2026-06-11 incident: a sheet request explicitly @-addressed to the
+		// DM — Callie (judgment policy) must treat it as the DM's spotlight.
+		{"@DMAssistant can you create me a night elf character for me to use? make him a monk", true},
+		{"@DM-Assistant set the scene", true},  // dashed mention form
+		{"@ClaudeCodetest look at this", true}, // humans get spotlights too
+		{"@Callie make me a sheet", false},     // it's ours — not another's
+		{"I attack the goblin", false},         // no mentions at all
+		{"@everyone roll initiative", false},   // broadcast is nobody's spotlight
+		{"@all gather round", false},           // broadcast alias
+		{"mail me at dm@example.com", false},   // emails are not mentions
+	}
+	for _, c := range cases {
+		if got := mentionsAnother(c.body, mine); got != c.want {
+			t.Errorf("mentionsAnother(%q) = %v, want %v", c.body, got, c.want)
+		}
+	}
+	// "@callie and also @DMAssistant" names another persona AND us. The helper
+	// reports the foreign mention, but the maybeStartTurn gate never reaches it
+	// when we're addressed — assert both halves so the contract stays visible.
+	both := "@callie and also @DMAssistant"
+	if !mentionsAnother(both, mine) {
+		t.Errorf("mentionsAnother(%q) should see the foreign mention", both)
+	}
+	if !isAddressed(both, mine...) {
+		t.Errorf("isAddressed(%q) must be true — the gate yields to addressing first", both)
+	}
+}
+
 func TestIsAddressed(t *testing.T) {
 	const slug, name = "dm-assistant", "DM Assistant"
 	cases := []struct {

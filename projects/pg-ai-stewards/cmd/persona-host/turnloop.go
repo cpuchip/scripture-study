@@ -19,6 +19,7 @@ import (
 	"fmt"
 	"log"
 	"net/url"
+	"regexp"
 	"strings"
 	"sync"
 	"time"
@@ -217,6 +218,33 @@ func isAddressed(body string, names ...string) bool {
 		}
 		dn := strings.ToLower(n)
 		if containsWord(b, dn) || containsWord(b, "@"+strings.ReplaceAll(dn, " ", "")) {
+			return true
+		}
+	}
+	return false
+}
+
+// mentionTokenRe finds @mention tokens: an @ at a word boundary (so emails
+// like a@b.com don't count) followed by a name token.
+var mentionTokenRe = regexp.MustCompile(`(?:^|[^A-Za-z0-9_])@([A-Za-z0-9_][A-Za-z0-9_-]*)`)
+
+// mentionsAnother reports whether body @-mentions an entity that is NOT one of
+// ours — "@DMAssistant make me a sheet" is the DM's spotlight, not Callie's.
+// Broadcast mentions (@everyone/@all/@here) are nobody's spotlight. myNames are
+// compared lowercased with spaces stripped, matching isAddressed's @-form.
+func mentionsAnother(body string, myNames []string) bool {
+	mine := make(map[string]bool, len(myNames))
+	for _, n := range myNames {
+		if n != "" {
+			mine[strings.ReplaceAll(strings.ToLower(n), " ", "")] = true
+		}
+	}
+	for _, m := range mentionTokenRe.FindAllStringSubmatch(body, -1) {
+		tok := strings.ToLower(m[1])
+		if tok == "everyone" || tok == "all" || tok == "here" {
+			continue
+		}
+		if !mine[tok] {
 			return true
 		}
 	}

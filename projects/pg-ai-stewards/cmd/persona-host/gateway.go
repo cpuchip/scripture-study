@@ -14,6 +14,7 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"strconv"
 	"strings"
 	"sync"
 	"time"
@@ -213,6 +214,12 @@ func NewGatewayConn(p Persona, key, wsBase string, cog *Cognition) *GatewayConn 
 
 // Run dials the gateway and serves all granted rooms until ctx ends.
 func (gc *GatewayConn) Run(ctx context.Context) error {
+	// Identity sync BEFORE dialing: the registry is the source of truth for a
+	// persona's name; pushing it first means the ready frame (selfName) and all
+	// message attribution already carry the current name. Host↔platform name
+	// drift makes a persona deaf to its own addressing (the Codewright/
+	// Chattercode silence bug) — best-effort, but loud on failure.
+	gc.syncDisplayName(ctx)
 	conn, _, err := websocket.DefaultDialer.DialContext(ctx, gc.wsBase+"/gateway?key="+gc.key, nil)
 	if err != nil {
 		return fmt.Errorf("dial gateway (%s): %w", gc.persona.Slug, err)
@@ -333,6 +340,27 @@ func (gc *GatewayConn) subscribeNew(id, label string) {
 type personaRoom struct {
 	ID   string `json:"id"`
 	Name string `json:"name"`
+}
+
+// syncDisplayName asserts this persona's registry name on the platform
+// (PATCH /api/persona/profile, persona-key auth). Idempotent: the platform
+// no-ops when the names already match.
+func (gc *GatewayConn) syncDisplayName(ctx context.Context) {
+	body := strings.NewReader(`{"displayName":` + strconv.Quote(gc.persona.DisplayName) + `}`)
+	req, err := http.NewRequestWithContext(ctx, http.MethodPatch, gc.apiBase+"/api/persona/profile?key="+gc.key, body)
+	if err != nil {
+		return
+	}
+	req.Header.Set("Content-Type", "application/json")
+	resp, err := gc.httpc.Do(req)
+	if err != nil {
+		log.Printf("[%s] name sync: %v", gc.persona.Slug, err)
+		return
+	}
+	defer resp.Body.Close()
+	if resp.StatusCode != http.StatusOK {
+		log.Printf("[%s] name sync: platform returned %d (display name may be stale)", gc.persona.Slug, resp.StatusCode)
+	}
 }
 
 func (gc *GatewayConn) fetchRooms(ctx context.Context) ([]personaRoom, error) {
@@ -528,6 +556,14 @@ func (gc *GatewayConn) maybeStartTurn(ctx context.Context, channel string, cs *c
 	if gc.respondPolicy == "mentioned" && !addressed {
 		return
 	}
+	// Deference (2026-06-11): a message that @-calls a DIFFERENT entity is that
+	// entity's spotlight — a judgment persona skips the turn entirely (no
+	// dispatch, no typing), even in its specialty. Born from Party answering a
+	// character-sheet request explicitly @-addressed to the DM. "mentioned"
+	// already requires being named; "all" is an explicit choice to hear everything.
+	if gc.respondPolicy == "judgment" && !addressed && mentionsAnother(trigger.Body, gc.addressNames(cs)) {
+		return
+	}
 	if cs.busy {
 		t := trigger
 		cs.pending = &t // coalesce: keep the latest; intervening msgs are in recent
@@ -585,7 +621,7 @@ func (gc *GatewayConn) maybeStartTurn(ctx context.Context, channel string, cs *c
 		bq = buildConsultFraming(trigger, addressed)
 	}
 	if gc.respondPolicy == "judgment" && !addressed {
-		bq += "\n(You weren't addressed directly — feel free to chime in if you have something genuinely worth adding; otherwise SILENCE.)"
+		bq += "\n(You weren't addressed directly — feel free to chime in if you have something genuinely worth adding; otherwise SILENCE. If the message calls on someone else by name, it's their spotlight: SILENCE even when it's your specialty.)"
 	}
 
 	go gc.runTurn(ctx, gen, channel, sessionID, pipeline, slug, bq, "", "")
