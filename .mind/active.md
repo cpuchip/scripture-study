@@ -25,6 +25,9 @@
 **Webster 1828 remediation — tail**
 - Published-works audit walk WITH Michael (legs 2+; leg 1 three-glories done + republished) · ~27 OCR-dropout tier words to hand-add. Spec: `.spec/proposals/webster-1828-data-integrity.md`; carry-over: `projects/1828-illuminated/.spec/carry-over.md`.
 
+**Beyond the Prompt (book)**
+- v4 honesty+voicing CHAT WALK in progress with Michael (batches 1–4 + identity items applied; remaining: 4 ground-truth figures, council-verb + Ch 4 title-tense questions, F-37 EPUB list-rendering fix, final rebuild + QR-collision check). State: `projects/scripture-book/.draft/20260609-v4-walk-findings.md` · lane: `book-v4-walk`.
+
 **Studies / series**
 - Canon-walk series: **PoGP walk next** (BoM walk complete; scaffold reusable; Strong's MCP live for the Bible walks). Seed: 1 Ne 14 + Rev 1 + Ether 4 as one vision.
 
