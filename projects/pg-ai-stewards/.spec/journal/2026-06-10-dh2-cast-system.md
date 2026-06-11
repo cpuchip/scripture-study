@@ -64,6 +64,41 @@ hit a Fireworks stream truncation (reasoning present, content/finish null,
 retry-on-empty-stream. Typing stays persona-level (can't know the speaker
 before the line lands) — explained, accepted.
 
+## Addendum 2 — PROMOTION: characters with their own minds (DH-2 COMPLETE)
+
+Michael: "do we want to shift the arch and have sub personas powered by their
+own llm loops?" → answer: it's not a shift, it's the mode the decoupling
+principle was built for. Ratified 4/4 same hour: owner default + override
+(party auto-promotes, DM facets) · per-character model stored, applied later ·
+SRD 5.2 for dnd-tools sheets · ONE room-agnostic session per character (the
+mind belongs to the character, not the room).
+
+**Built (host, root commit):** `persona_host.characters` + `default_promote`;
+EnsureCharacter (auto-create at routing, owner default); routing in
+maybeStartTurn — a promoted character's trigger runs THE CHARACTER's session
+(turn-zero "You ARE {name}", dice honesty, prompt column for future sheets);
+runTurn carries as/charID; applyTurnResult registers + persists char sessions,
+answers post via emitAs; drainer claims + attributes character sessions;
+**truncated-stream retry** (empty answer + nil error → one re-ask — closes
+tonight's Fireworks mid-stream death). Race-clean e2e test.
+
+**PROVEN LIVE (Holodeck-3):** Party introduced Thorin Oakenshield via
+as_character beat → "Thorin, a goblin lunges at you" coalesced behind Party's
+turn, then spawned `wi--75c59377--turn` ("You ARE Thorin Oakenshield…") →
+**"I draw my axe and bring it down on the foul creature. /roll 1d20+5"** —
+his own mind, first person, dice-honest on his first breath (the inline
+expansion rolled it in the open). characters row: party/Thorin/promoted=t/
+session saved. Eyes hopped correctly across the coalesce.
+
+**Session declaration:** it was good — DH-2 ratified-to-complete in one day,
+every layer live-verified, and the day's two model-behavior bugs (SILENCE
+identity, reasoning starvation) plus a provider flake all closed with tests.
+
+**Set down:** per-character model routing (field stored; needs spawn model
+param) · cast-typing labels (can't know the speaker pre-arrival) · parallel
+character turns per channel (one-at-a-time kept v1) · coalesce-repeat guard is
+prompt-level only.
+
 ## Carry-forward
 - **Party persona** — same machinery; waits on dnd-tools sheets (DH-3).
 - **Promotion to own-session** (villain with private memory) — when a campaign
