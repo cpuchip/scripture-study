@@ -147,6 +147,15 @@ world", twice); Schmitt closing quote drift ("He is"→"Jesus is"); Uchtdorf
 "research note" was him QUOTING the NIV First-Century Study Bible →
 via-attribution made explicit.
 
+### study/faith-01a.md (2026-01-29) — 4 micro-fixes
+FULL tier; first Lectures-on-Faith source. All 5 lecture quotes verified
+against books/lecture-on-faith/01_lecture_1.md (paragraph anchors 9/10/15/
+16/24 all real); ~25 scripture quotes/fragments verified. Fixes: **Heb 11:6
+"impossible to please God" → "please him"** (the classic him→God drift inside
+quotes); Heb 11:8 missing "he"; Lecture 1:16 dropped comma restored; Moses
+7:13 gloss "enemies fled" → mountains fled v13, enemies fled v14 (ref → 13-14).
+Greek table (hypostasis/elegchos/elpis) presented as lexicon paraphrase ✓.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
