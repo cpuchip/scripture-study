@@ -32,7 +32,7 @@ Already done out-of-band: `study/morm-8-three-glories-reading.md` (2026-06-09).
 - [x] 2026-02-01 `study/covenants.md` **FULL** — 5 micro-fixes; the control case (quotes the same Johnson talk EXACTLY that ten-virgins invented from)
 - [x] 2026-02-02 `study/ai-responsible-use.md` **FULL** — 1 pronoun fix across 16+ quotes (You and I→We drift); all sources local + read
 - [x] 2026-02-02 `study/ai-responsible-use-reflections.md` **FULL** — 4 micro-fixes (Nelson internal ellipsis; Gospel-Topics via-attribution; Craig "Perhaps"; instructions wording)
-- [ ] 2026-02-02 `study/mazzaroth.md` **FULL**
+- [x] 2026-02-02 `study/mazzaroth.md` **FULL** — 2 fixes + gift (ESA: 9° cluster ON the Apr 6 dedication day); 12 blocks exact; Hebrew verified via strongs
 - [ ] 2026-02-03 `study/agency.md` **FULL**
 - [ ] 2026-02-03 `study/mazzaroth-01.md` **FULL**
 - [ ] 2026-02-03 `study/mazzaroth-02.md` **FULL**

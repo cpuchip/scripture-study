@@ -308,6 +308,21 @@ via-attribution noted; Craig "Perhaps" hedge restored; copilot-
 instructions self-quote updated to the living file's wording ("Respect
 and work within").
 
+### study/mazzaroth.md (2026-02-02) — 2 fixes + 1 verification GIFT
+FULL tier. All 12 scripture blocks EXACT (Job 38:31-33, Gen 1:14, Ps
+19:1-6, D&C 88:42-47, Abr 3, D&C 45:39-42+56, Matt 24:29-30, Joel
+2:30-31, Hel 14:3-6, 3 Ne 1:19-21, Matt 2:1-2, Rev 12:1-3 — every
+ellipsis honest). All four Hebrew claims verified via strongs-mcp
+(Mazzaroth H4216, 'ôth H226, mô'êd H4150, tequphah H8622; 2 Kgs 23:5
+KJV "planets" = H4208 mazzālāh "constellation" — the study's claim
+precisely right). Bullinger/Seiss attribution accurate. The May-2000
+astronomy verified against NASA APOD ("within about 26 degrees" — the
+study's number exact). Fixes: Abr quote covers vv. 1-3 not 1-4; the
+alignment section upgraded with a verification GIFT — **per the ESA
+release, Mars/Jupiter/Saturn first clustered within 9° on April 6, 2000,
+the dedication day itself** (the study had hedged "peaked a month after";
+the tighter cluster formed the very day). Sources now linked (APOD + ESA).
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
