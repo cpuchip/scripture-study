@@ -1311,6 +1311,13 @@ image-in-countenances, clever-things, pushing-shoving, Shepherds-not-
 sheepherders, machismo, gentled-self, boils, save-one's-face,
 speak-up-without-speaking-down). D&C 121:41 exact.
 
+### study/yt/UjzeDUBMaUA-problem-with-mormon-youtube.md (2026-02-24) — 2 Webster 1913 (words 76-77)
+T1. MEEK and CONTENTION were 1913 — requoted with gifts: genuine MEEK
+sense 2 carries Matt 11:29 + 5:5; genuine CONTENTION sense 2 cites
+Titus 3:9 ("avoid ... contentions") and the eagerness/zeal sense is
+genuine sense 4 (the study had called it "archaic"). Transcript quotes
+verbatim at timestamp; 1 Thes 5:21 + D&C 130:18 exact.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
