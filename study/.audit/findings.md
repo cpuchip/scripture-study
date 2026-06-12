@@ -132,6 +132,21 @@ child-at-prayer quote ended mid-sentence without ellipsis (source continues
 (verbatim ✓) sat under the Oct-2024 talk's section → explicit Apr-2025
 attribution added.
 
+### study/way-truth-life.md (2026-01-29) — 8 fixes (4 confabulated talk TITLES)
+FULL tier. ~35 scripture quotes/fragments ALL verbatim (John 14/10/11/17/18,
+Heb 9/10, Matt 27:51, Ps 16/25, Ex 33:13, Acts 24:14, D&C 93, Abr 4:26);
+the study's John 14:2 footnote observation (D&C 98:18 + TG Telestial Glory)
+verified TRUE in the local file. Kearon "ripped wide open" + Bednar gather
+quotes EXACT. **★ Four talk titles were confabulated** (links pointed at the
+right files, titles invented): "Truth Shows Us the Way"→The Eye of Faith ·
+"Jesus Christ, Our Savior and Redeemer"→The Answer Is Jesus · "How Do I Know
+If I Really Know?"→That They Might Know Thee · "Mercy in the House of the
+Lord"→The Plan of Mercy. All four attributed QUOTES/claims verified present
+in the real talks. Also: 3 Ne 9:14→9:18 mis-cite ("light and the life of the
+world", twice); Schmitt closing quote drift ("He is"→"Jesus is"); Uchtdorf
+"research note" was him QUOTING the NIV First-Century Study Bible →
+via-attribution made explicit.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
