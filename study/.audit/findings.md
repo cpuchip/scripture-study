@@ -495,6 +495,23 @@ fixes: the "3 Ne 8:8-10" quote was a composite of vv. 11-12 + v. 8
 + Ether 13:5/9 ends completed. Rev 14:17-18, John 2:1, Mosiah 12:25-26,
 D&C 87:8 EXACT.
 
+### study/yt/morganphilpot/part2_marp.md (2026-02-08) — 6 fixes (SAMPLE escalated; 2 factual errors in our summary layer)
+SAMPLE→deeper per the escalation rule. **Two factual errors in OUR
+slide-summary layer (not Philpot reportage)**: the Hunter bullet glossed
+"not of covenant birth" as "born outside Utah" (FALSE — Lee and Benson
+were Idaho-born; the real fact, verified in the July-1994 Ensign profile:
+nonmember father, baptized at twelve) → corrected with source; the
+Palmyra slide claimed April 6, 2000 was BOTH 1 Nisan AND "the 7th day of
+Passover" — mutually exclusive (Passover begins 15 Nisan; its 7th day in
+2000 was April 26) → correction note added, planetary line re-grounded
+in the ESA 9° figure. Also: "Trump — 'build back better'" sic-noted
+(Biden's slogan); Hunter quote sourced + ellipsis ("First, I invite all
+members…"); 3 Ne 2:1 completed; Isa 9:10 colon restored. VERIFIED EXACT:
+D&C 91:1-5 (honest double elision), Rev 18:10-11, 3 Ne 2:3/8, 3 Ne
+3:20-21, Hinckley Gadianton (re-verified), Ps 19 + Gen 1:14 (verified
+earlier today). 2 Esdras 11 quote is KJV-Apocrypha (no local copy —
+externally sourced, consistent with its slide).
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
