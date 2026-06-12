@@ -1151,6 +1151,20 @@ scripture renderings verbatim: the full Alma 13:1-8 walk, D&C 107:3-4,
 84:19-24/33-45, 88:34-44, 93:12-36, Heb 7:3/16/21, the one-eternal-
 round triple (Alma 7:20, D&C 3:2, 1 Ne 10:19), D&C 77:11.
 
+### study/priestcraft-beguile.md (2026-02-19) — 4 Webster 1913 (words 41-44); the loop SURVIVES in genuine
+T1+FULL, post-boundary. CUNNING, GUILE, BEGUILE, WILE were 1913
+(SUBTLE's main text was genuine; only its synonym tail was 1913).
+The closed semantic loop — the study's whole thesis — HOLDS in the
+genuine 1828, rerouted: WILE's noun stops at "sly, insidious artifice"
+but its VERB is "To deceive; to beguile," closing the circle. Genuine
+gifts everywhere: GUILE's own citation is John 1:47 (Nathanael is in
+the dictionary); WILE's own citation is Eph 6:11 (wiles of the devil);
+BEGUILE's is Gen 3:13; CUNNING's commentary is the study's diagnostic
+verbatim ("artifice ... rather than open, candid, or direct means").
+All ~20 scriptures verbatim (the no-guile chain John 1:47/Ps 32:2/D&C
+41:11/124:20/1 Pet 2/Rev 14:5, D&C 10:12/23/25, Alma 18:22-23 "caught
+with guile," Ether 8:22).
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)

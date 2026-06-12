@@ -12,12 +12,14 @@ Webster's 1828 dictionary — the dictionary of the Restoration — reveals some
 
 | Word | Webster 1828 | Points To |
 |------|-------------|-----------|
-| **SUBTLE** | "Sly in design; artful; **cunning**; insinuating" | → cunning, crafty |
-| **CUNNING** | "**Crafty**; sly; artful; designed; deceitful" | → crafty |
-| **CRAFT** | "Cunning, art, or skill, in a bad sense… artifice; **guile**" | → guile |
-| **GUILE** | "**Craft**; deceitful cunning; artifice; duplicity; **wile**" | → craft, wile |
-| **BEGUILE** | "To delude **by guile**, artifice, or **craft**" | → guile, craft |
-| **WILE** | "A sly, insidious artifice; a **beguilement**" | → beguile |
+| **SUBTLE** | "Sly in design; artful; **cunning**; insinuating" | → cunning |
+| **CUNNING** | "Artful; shrewd; sly; **crafty**; astute; designing" | → crafty |
+| **CRAFT** | "Cunning, art or skill, in a bad sense… artifice; **guile**" | → cunning, guile |
+| **GUILE** | "**Craft**; **cunning**; artifice; duplicity; deceit" | → craft, cunning |
+| **BEGUILE** | "To delude; to deceive; to impose on by artifice or **craft**" | → craft |
+| **WILE** (v.) | "To deceive; **to beguile**" | → beguile |
+
+*(Table requoted 2026-06-12 — the earlier definitions were the 1913 edition's. The loop holds in the genuine 1828; WILE's noun entry stops at "a sly, insidious artifice," but its verb entry — "To deceive; to beguile" — closes the circle.)*
 
 This is not a list of loosely related synonyms. This is a **closed semantic loop** — each word directs you to the others. They are one concept with six faces.
 
@@ -51,7 +53,7 @@ The Genesis account gives us the frame. Moses fills in *motivation* — and that
 
 Genesis tells us the serpent was "subtil." Moses tells us *who was behind the serpent and why*.
 
-Now apply Webster 1828. The serpent was "subtle" — which Webster defines as "sly in design; artful; **cunning**; insinuating." Synonyms: "**crafty**; cunning; shrewd; sly; wily."
+Now apply Webster 1828. The serpent was "subtle" — which Webster defines as "sly in design; artful; **cunning**; insinuating; applied to persons" — and sense 2: "cunningly devised; as a subtle stratagem."
 
 **The serpent was crafty. He beguiled — deluded by craft. The serpent was the first practitioner of *craft*.**
 
@@ -107,7 +109,7 @@ If the serpent's defining characteristic is **guile**, then Christ's defining ch
 
 ### What "No Guile" Means in Webster 1828
 
-Since guile = craft, "no guile" literally means **no craft**. No cunning. No artifice. No ulterior motive. No hidden agenda. Complete transparency of intent.
+Since guile = craft, "no guile" literally means **no craft**. No cunning. No artifice. No ulterior motive. No hidden agenda. Complete transparency of intent. And the genuine 1828 GUILE entry cites its own scriptural anchor — John 1:47 itself: "Behold an Israelite indeed, in whom is no guile." Nathanael is in the dictionary.
 
 When Jesus looked at Nathanael and said "in whom is no guile" — He was saying: *Here is a man with no craft in him. What you see is what there is. He has no subtlety, no hidden design.*
 
@@ -221,7 +223,7 @@ In [D&C 10](../gospel-library/eng/scriptures/dc-testament/dc/10.md), the Lord us
 
 > "he saith unto them: **Deceive** and lie in wait to catch… this is no harm. And thus he **flattereth** them" (v. 25)
 
-Webster 1828: **CUNNING** — "crafty; sly; artful; designed; deceitful."
+Webster 1828: **CUNNING** — "artful; shrewd; sly; crafty; astute; designing." And Webster's commentary on the word is the diagnostic itself: "cunning implies the use of artifice to accomplish the purpose, rather than open, candid, or direct means."
 
 Cunning = crafty = guile. Same word. Same spirit. Applied here to a very specific, deliberate plan to undermine the work of God through people who would "alter the words" of revelation. The method? Flattery: "this is no harm."
 
@@ -231,9 +233,9 @@ Cunning = crafty = guile. Same word. Same spirit. Applied here to a very specifi
 
 > "Put on the whole armour of God, that ye may be able to stand against the **wiles** of the devil" — [Ephesians 6:11](../gospel-library/eng/scriptures/nt/eph/6.md)
 
-Webster 1828: **WILE** — "A trick or stratagem practiced for ensnaring or deception; a sly, insidious artifice; a **beguilement**; an allurement."
+Webster 1828: **WILE** — "A trick or stratagem practiced for ensnaring or deception; a sly, insidious artifice." And the entry's own citation is this very verse: "That ye may be able to stand against the wiles of the devil. Ephesians 6:11." The verb form closes the loop: to wile is "to deceive; **to beguile**."
 
-A wile is a *beguilement*. The armor of God is armor against *beguiling*. Every piece of the armor Paul describes — truth, righteousness, the gospel of peace, faith, salvation, the word of God — is a defense against the specific qualities of the serpent's craft.
+A wile is a *beguiling*. The armor of God is armor against *beguiling*. Every piece of the armor Paul describes — truth, righteousness, the gospel of peace, faith, salvation, the word of God — is a defense against the specific qualities of the serpent's craft.
 
 And notice: the solution is not cleverness or counter-craft. It's armor. You don't out-guile the guileful. You put on truth, righteousness, faith. You become guileless, and that *is* the defense.
 
