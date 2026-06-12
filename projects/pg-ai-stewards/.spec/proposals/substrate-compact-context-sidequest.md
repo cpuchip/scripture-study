@@ -1,8 +1,16 @@
 # compact_context — the commissioned-curation side quest
 
-**Status:** SEED — Michael's sketch, 2026-06-12. NOT ratified. Do not build.
-Michael: "lets not act on the research yet, im not sure how best to
-incorporate it." This file exists so the shape isn't lost.
+**Status:** RATIFIED TO BUILD — 2026-06-12 evening council (same day as
+the seed). Michael lifted the hold: "I think compact_context is a good
+one to do, and might as well pull that one in." Builds as a P1-adjacent
+leg in **OSS core** (it is core context machinery), exercised on the
+side-by-side stack. The parked council questions below get settled in a
+quick ratification batch when the leg starts. The OTHER research-derived
+items (trailing-reminder, broader 2026 adoption) remain held — "the rest
+need experiments and more research."
+
+*(Original seed status: Michael's sketch, 2026-06-12 — "lets not act on
+the research yet." This file existed so the shape wasn't lost.)*
 
 **Binding question:** when an agent's own context grows past usefulness,
 can it commission a reviewable side quest to curate that context — judge
