@@ -412,7 +412,7 @@ Verbal-only — no original slide
 
 **February 8, 1835** — Joseph Smith received revelation to call the Twelve Apostles.
 
-Of the original twelve, **four were drawn away** — the "third part of the stars" in the reading. *(Precision note: only three never returned — Marsh, listed below, was rebaptized in 1857, and Luke Johnson also returned. "Permanently" overstates the case the list itself undercuts.)*
+Of the original twelve, **four were drawn away and never returned** — the "third part of the stars" in the reading. *(Precision note, amended 2026-06-12: the four who never returned are Lyman Johnson, McLellin, Boynton, and William Smith. The original slide listed Marsh as the fourth — but Marsh was rebaptized in 1857 (and Luke Johnson also returned); William Smith, also of the original Twelve, never did. The 4-of-12 = one-third math holds with the corrected roster.)*
 
 - Lyman Johnson — Apostatized, Excommunicated
 - William E. McLellin — Apostatized, Excommunicated
