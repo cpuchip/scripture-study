@@ -904,6 +904,17 @@ manual-table cells carried unmarked compressions (Ch 5/11/14/16). The
 a non-breaking space ("Russell M."); italics on *it* broke a
 literal grep again (Ch 1 promise — found verbatim).
 
+### study/talks/Coming-Closer-to-Jesus-Christ.md + _transcript.md (2026-02-15) — both CLEAN
+SAMPLE ×2 (study + its transcript). Every sampled Oaks quote (~17,
+including the mantle passage, two-methods, Evans, Kimball
+teachableness, "five humble ones," the stake-president story, and the
+full Mosiah 4:9 blockquote) is verbatim against the local transcript;
+the transcript header carries proper provenance (speeches.byu.edu, Feb
+10 2026). Mosiah 27:31 "live without God in the world" and D&C
+45:56-57's three-part wise-virgin description both check against
+source. Set-apart date (2025-10-14) internally consistent across the
+prophets-oaks companion. Zero fixes.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)

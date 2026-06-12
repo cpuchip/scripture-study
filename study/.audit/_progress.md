@@ -82,8 +82,8 @@ Already done out-of-band: `study/morm-8-three-glories-reading.md` (2026-06-09).
 - [x] 2026-02-14 `study/language-of-adam.md` **FULL** — CLEAN (~45 quotes verbatim incl. Uchtdorf "German" + both footnote chains; 1 table-fragment word restored)
 - [x] 2026-02-14 `study/yt/farrell-pickering/README.md` **T2** — 1 fix (D&C 121:33 glossed with Isaiah's refrain; corrected, no propagation); epigraph + links + Trump clip verified
 - [x] 2026-02-15 `study/cfm/20260215-prophets-nelson.md` **SAMPLE→FULL** — 10 fixes (1 order-reversal, 1 omitted sentence, 1 inserted word, 2 brackets, 4 table compressions, 1 ellipsis); 44-talk count verified EXACT; ~50 quotes checked
-- [ ] 2026-02-15 `study/talks/Coming-Closer-to-Jesus-Christ.md` **SAMPLE**
-- [ ] 2026-02-15 `study/talks/Coming-Closer-to-Jesus-Christ_transcript.md` **SAMPLE**
+- [x] 2026-02-15 `study/talks/Coming-Closer-to-Jesus-Christ.md` **SAMPLE** — CLEAN (~17 Oaks quotes verbatim vs transcript; Mosiah 27:31 + D&C 45:56-57 check)
+- [x] 2026-02-15 `study/talks/Coming-Closer-to-Jesus-Christ_transcript.md` **SAMPLE** — CLEAN (provenance header proper; internal scripture blockquotes match sources)
 - [ ] 2026-02-15 `study/cfm/20260215-prophets-noah-parallel.md` **SAMPLE**
 - [ ] 2026-02-15 `study/yt/farrell-pickering/05_millennial_hope.md` **SAMPLE**
 - [ ] 2026-02-15 `study/yt/farrell-pickering/01_daniels_numbers.md` **SAMPLE**

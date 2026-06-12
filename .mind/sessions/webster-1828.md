@@ -3,7 +3,7 @@ lane: webster-1828
 session_id: afac9c41-1980-4bea-8bc5-a101b39a8557
 status: active
 started: 2026-06-09T21:30:00
-last_active: 2026-06-12T14:31:45
+last_active: 2026-06-12T15:38:52
 ---
 
 ## Working on
@@ -34,6 +34,20 @@ last_active: 2026-06-12T14:31:45
   July-2025 footer dates ×4 git-corrected; garbled Oaks quote requoted;
   Nelson greatest-manifestations sourced (Oct 2022). NEXT: #51
   01_foundation.md, then study_plans, 09, original/.
+- UPDATE 3: 70/469 done, all PUSHED (ibeco 200 each push). Files 51-70:
+  ★ confabulation propagation class found+contained (helaman-why Benson
+  splice → helaman-ten-virgins re-quote; corpus fingerprint sweep clean);
+  ★ EQ-lesson-vs-full-study controlled pair (atoning-love clean, EQ
+  confabulated Wells bio — Michael's unread-generated hypothesis fits);
+  ★ 1913-as-1828 words now FIFTEEN (+ ABIB HARVEST CIRCUMSPECTLY POTTAGE
+  TEMPEST ATONE SANCTIFY GRACE PERFECT); ATONE's genuine entry IS the
+  at-one thesis ("At one; together"); GRACE genuine = "free unmerited";
+  Nelson "but Jesus Christ did it" tail confabulated (truth-modern-
+  prophets) — requoted w/ correction note; prophets-nelson 44-talk count
+  verified EXACT; genealogy file: 5 fixes (D&C 107 list, Ps 90:10≠120yr,
+  Lamech alive at Adam-ondi-Ahman); language-of-adam CLEAN at ~45 quotes.
+  Zero ARGUMENT-class queued. NEXT: #71 talks/Coming-Closer SAMPLE,
+  then transcript, prophets-noah-parallel, farrell-pickering 05/01.
 - ✅ OCR repair SHIPPED + live-verified (1336c8ce); walk plan RATIFIED
   (.spec/proposals/study-correctness-walk.md)
 
