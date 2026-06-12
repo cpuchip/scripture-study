@@ -119,7 +119,7 @@ Already done out-of-band: `study/morm-8-three-glories-reading.md` (2026-06-09).
 - [x] 2026-02-24 `study/yt/tV0_KEMIy7o-meekly-drenched-in-destiny.md` **SAMPLE** — CLEAN (11 Maxwell quotes verbatim at timestamp)
 - [x] 2026-02-24 `study/yt/UjzeDUBMaUA-problem-with-mormon-youtube.md` **T1** — MEEK + CONTENTION 1913 (words 76-77; Titus 3:9 gift); transcript quotes verbatim
 - [x] 2026-03-01 `study/consumption-decreed.md` **T2+FULL** — 4 Webster 1913 (words 78-81; genuine DECREE = "predetermined purpose of God"); scripture chain verbatim
-- [ ] 2026-03-02 `study/consumption-decreed-modern-warning.md` **T2+FULL**
+- [x] 2026-03-02 `study/consumption-decreed-modern-warning.md` **T2+FULL** — CLEAN (~16 quotes across 12 talks verbatim; quoted-withins already attributed correctly)
 - [ ] 2026-03-02 `study/zion-blueprint.md` **FULL**
 - [ ] 2026-03-02 `study/translated-beings.md` **T1+FULL**
 - [ ] 2026-03-02 `study/endtimes-servant.md` **T1+FULL**

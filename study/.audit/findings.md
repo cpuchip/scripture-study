@@ -1328,6 +1328,15 @@ consume." Scripture all verbatim: the consumption-decreed chain (Isa
 10:22-23, 28:22, 2 Ne 20:22, D&C 87:6, Jer 30:11/46:28, Zeph 1:2, Rom
 9:27-28, Dan 9:27); the 2 Ne 20:23 footnote → Dan 9:27 claim exact.
 
+### study/consumption-decreed-modern-warning.md (2026-03-02) — CLEAN
+T2+FULL, post-boundary, no Webster quotes. ~16 talk quotes across 12
+talks (Benson 1975, Romney 1977, McConkie 1980/1982, Maxwell 1982,
+McMullin 2002, Oaks 2004, Hinckley 2005, Christofferson 2008, Nelson
+2020/2021) — ALL verbatim with correct attributions, including the
+Hinckley-via-McMullin quoted-within (already attributed right) and
+Romney's D&C 5:19 and 1:35-36 quotations. The Maxwell 141-wars figure
+is his own stated count, quoted exactly. Zero fixes.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
