@@ -850,6 +850,22 @@ theme — its Part 7 Sodom treatment). All ~24 scripture quotes verbatim
 11:7); all three footnote claims (17a strive, 24c manifest, 27c
 walked→TG) check against the actual Moses 8 footnotes.
 
+### study/cfm/20260215-genealogy.md (2026-02-14) — 5 fixes (D&C 107 list gaps + Ps 90:10 + Seth attribution)
+SAMPLE escalated to FULL (LoF 2:52 word-order miss). Fixes: (1) LoF
+2:52 requoted "brother of Abraham" (study had transposed to "Abraham's
+brother"); (2) the D&C 107 ordination list said "Cainan ... by Adam"
+(v45 names no ordainer) and omitted Mahalaleel-496 and Jared-200, the
+two rows that actually justify the study's "Adam personally ordained
+six"; (3) v57 "was written" → "were all written"; (4) Lamech was ~53 at
+Adam-ondi-Ahman (LoF ¶38: 56 when Adam died), not "not yet born"; (5)
+Ps 90:10 says "threescore years and ten," not 120 — the citation
+pairing rewritten honestly. Verified-true: ALL arithmetic (LoF ¶37-42
+ages; both lifespan tables — every Gen 11 sum checks); Kimball 1974 +
+Packer 1987 verbatim; Gong "for a wise purpose" real (his fn 12); Gen
+5:1b footnote → TG Priesthood-History-of as claimed; Moses 6, D&C 84,
+Abr 1 all verbatim. Seth saying re-attributed: Moses 6:2 = Adam's
+words; Eve's are Gen 4:25.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)

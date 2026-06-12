@@ -39,7 +39,7 @@ Adam could have personally taught Methuselah, and Methuselah personally taught N
 
 Then Joseph does it again with [Genesis 11](../../gospel-library/eng/scriptures/ot/gen/11.md), the post-flood genealogy from Noah to Abraham:
 
-> "It appears from this account, that Nahor, Abraham's brother, Terah, Nahor, Serug, Reu, Peleg, Eber, Salah, Arphaxed, Shem, and Noah, all lived on the earth at the same time."
+> "It appears from this account, that Nahor, brother of Abraham, Terah, Nahor, Serug, Reu, Peleg, Eber, Salah, Arphaxed, Shem, and Noah, all lived on the earth at the same time."
 > — [Lectures on Faith 2:52](../../books/lecture-on-faith/02_lecture_2.md)
 
 Noah died only 2 years before Abraham was born (using one chronology). Shem — Noah's son who was *on the ark* — was still alive when Abraham was 150 years old. The witness of the Flood was not ancient history to Abraham. It was living memory.
@@ -93,7 +93,9 @@ This is confirmed by modern revelation. [D&C 107:40–57](../../gospel-library/e
 
 - Seth: ordained at 69 by Adam ([D&C 107:42](../../gospel-library/eng/scriptures/dc-testament/dc/107.md))
 - Enos: ordained at 134 by Adam ([v. 44](../../gospel-library/eng/scriptures/dc-testament/dc/107.md))
-- Cainan: ordained at 87 by Adam ([v. 45](../../gospel-library/eng/scriptures/dc-testament/dc/107.md))
+- Cainan: ordained at 87 — the verse names no ordainer, though he had met Adam in his journeying ([v. 45](../../gospel-library/eng/scriptures/dc-testament/dc/107.md))
+- Mahalaleel: ordained at 496 by Adam ([v. 46](../../gospel-library/eng/scriptures/dc-testament/dc/107.md))
+- Jared: ordained at 200 by Adam ([v. 47](../../gospel-library/eng/scriptures/dc-testament/dc/107.md))
 - Enoch: ordained at 25 by Adam ([v. 48](../../gospel-library/eng/scriptures/dc-testament/dc/107.md))
 - Methuselah: ordained at 100 by Adam ([v. 50](../../gospel-library/eng/scriptures/dc-testament/dc/107.md))
 - Lamech: ordained at 32 by Seth ([v. 51](../../gospel-library/eng/scriptures/dc-testament/dc/107.md))
@@ -176,7 +178,7 @@ The genealogies also record a measurable change in the human condition.
 | Terah | 205 |
 | Abraham | 175 |
 
-Pre-flood, lifespans cluster around 900 years. Post-flood, they drop by nearly half in the first generation (Shem: 600), then halve again within a few generations (Peleg: 239), and continue declining until Abraham's lifetime of 175 years — and by Moses's day, the span is 120 years ([Moses 8:17](../../gospel-library/eng/scriptures/pgp/moses/8.md); [Psalm 90:10](../../gospel-library/eng/scriptures/ot/ps/90.md)).
+Pre-flood, lifespans cluster around 900 years. Post-flood, they drop by nearly half in the first generation (Shem: 600), then halve again within a few generations (Peleg: 239), and continue declining until Abraham's lifetime of 175 years. Moses 8:17 speaks of man's days as "an hundred and twenty years" ([Moses 8:17](../../gospel-library/eng/scriptures/pgp/moses/8.md)), and by the Psalmist's reckoning the span settles at "threescore years and ten" ([Psalm 90:10](../../gospel-library/eng/scriptures/ot/ps/90.md)).
 
 The genealogies are the only biblical source for this data. Without them, we'd have no record of the dramatic change in human lifespan after the Flood.
 
@@ -192,7 +194,7 @@ Hebrew names carry meaning, and several names in the genealogies are explicitly 
 
 - **Adam** — The footnote on [Genesis 5:2](../../gospel-library/eng/scriptures/ot/gen/5.md) notes: "In Hebrew *adam* is also a common noun, meaning man, or mankind." The name of the first man is the name of all humanity.
 
-- **Seth** — Hebrew: *appointed, established*. Eve named him saying "God hath appointed me another seed, instead of Abel, whom Cain slew" ([Moses 6:2](../../gospel-library/eng/scriptures/pgp/moses/6.md)). He is the replacement — the covenant line reestablished after Abel's murder.
+- **Seth** — Hebrew: *appointed, established*. In Moses 6:2 it is Adam who says "God hath appointed me another seed, instead of Abel, whom Cain slew" ([Moses 6:2](../../gospel-library/eng/scriptures/pgp/moses/6.md)); in [Genesis 4:25](../../gospel-library/eng/scriptures/ot/gen/4.md) the same words are Eve's. He is the replacement — the covenant line reestablished after Abel's murder.
 
 When read with their meanings, the genealogies become narratives of prophecy and providence.
 
@@ -219,9 +221,9 @@ D&C 107 doesn't just trace priesthood ordinations — it describes a **gathering
 > "Three years previous to the death of Adam, he called Seth, Enos, Cainan, Mahalaleel, Jared, Enoch, and Methuselah, who were all high priests, with the residue of his posterity who were righteous, into the valley of **Adam-ondi-Ahman**, and there bestowed upon them his last blessing. And the **Lord appeared** unto them, and they rose up and blessed Adam, and called him Michael, the prince, the archangel."
 > — [D&C 107:53–54](../../gospel-library/eng/scriptures/dc-testament/dc/107.md)
 
-Every name on the Genesis 5 genealogy (except Lamech and Noah, who weren't yet born) was present at this gathering. They were all alive at the same time, all high priests, and the Lord Himself appeared to them.
+Every name on the Genesis 5 genealogy except Lamech and Noah appears at this gathering — Lamech (then about 53, by the lecture's arithmetic) is not named among those called, and Noah was not yet born. Those gathered were all alive at the same time, all high priests, and the Lord Himself appeared to them.
 
-Adam then "predicted whatsoever should befall his posterity unto the latest generation" ([v. 56](../../gospel-library/eng/scriptures/dc-testament/dc/107.md)). And all of it "was written in the book of Enoch, and are to be testified of in due time" ([v. 57](../../gospel-library/eng/scriptures/dc-testament/dc/107.md)).
+Adam then "predicted whatsoever should befall his posterity unto the latest generation" ([v. 56](../../gospel-library/eng/scriptures/dc-testament/dc/107.md)). And these things "were all written in the book of Enoch, and are to be testified of in due time" ([v. 57](../../gospel-library/eng/scriptures/dc-testament/dc/107.md)).
 
 The genealogy of Genesis 5 is, in effect, the **attendance roster** for Adam-ondi-Ahman.
 

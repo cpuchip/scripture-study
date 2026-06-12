@@ -78,7 +78,7 @@ Already done out-of-band: `study/morm-8-three-glories-reading.md` (2026-06-09).
 - [x] 2026-02-10 `study/truth-modern-prophets.md` **FULL** — 1 fix (Nelson "but Jesus Christ did it" tail = confabulated, requoted w/ correction note; 2 ellipsis restores; ~50 quotes across 18 talks verbatim)
 - [x] 2026-02-13 `study/know-god.md` **FULL** — 1 fix (Lecture Third ¶21 splice requoted to continuous source; ~33 scriptures + 5 of 6 LoF quotes verbatim; typo)
 - [x] 2026-02-14 `study/cfm/20260215-noah-found-grace.md` **T1→FULL** — 3 fixes (GRACE + PERFECT 1913 words 14-15 requoted w/ "free unmerited" gift; Maxwell quote real but re-sourced to CFM manual; ~24 scriptures + 3 footnote claims verbatim)
-- [ ] 2026-02-14 `study/cfm/20260215-genealogy.md` **SAMPLE**
+- [x] 2026-02-14 `study/cfm/20260215-genealogy.md` **SAMPLE→FULL** — 5 fixes (LoF 2:52 transposition; D&C 107 list: Cainan ordainer unstated, Mahalaleel+Jared rows added; v57 wording; Lamech alive at Adam-ondi-Ahman; Ps 90:10 ≠ 120 yrs); all arithmetic + talks verified
 - [ ] 2026-02-14 `study/language-of-adam.md` **FULL**
 - [ ] 2026-02-14 `study/yt/farrell-pickering/README.md` **T2**
 - [ ] 2026-02-15 `study/cfm/20260215-prophets-nelson.md` **SAMPLE**
