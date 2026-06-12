@@ -1419,6 +1419,22 @@ five short sentences into one rewritten sentence inside quotation
 marks — requoted verbatim with note. Footer date corrected Feb 7 →
 Feb 8, 2026 (per the page). Matt 11:28 verbatim.
 
+### study/atonement/how-is-it-done.md (2026-03-11) — 2 Webster 1913 (words 88-89); SUCCOR genuine
+T1+post-boundary. INFINITE was 1913 sense 2 ("without limit in
+power, capacity, knowledge, or excellence…" → genuine "without
+limits; unbounded; boundless; not circumscribed," whose first
+illustration is God's own duration and omnipresence); COMPREHEND
+was 1913 senses 1+3 ("to contain; to embrace; to include" / "to
+grasp with the understanding" → genuine "to contain; to include;
+to comprise" + "to understand; to conceive; that is, to take, hold
+or contain in the mind"); the line-99 gloss vocabulary realigned.
+Gift: genuine COMPREHEND's example is Job 37:5 — "God doeth great
+things, which we cannot comprehend." SUCCOR held genuine (one
+Oxford comma removed). ~35 scripture renderings verbatim (Alma 7,
+D&C 19:16-19, Luke 22:41-44, Mosiah 3/5/15, Alma 5/34, 2 Ne 4/9,
+Enos 1, Isa 53, 3 Ne 17, Moro 10:32-33, John 1, D&C 88:6, Matt
+27:46); 3 Holland None-Were-with-Him quotes exact.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)

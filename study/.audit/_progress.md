@@ -128,7 +128,7 @@ Already done out-of-band: `study/morm-8-three-glories-reading.md` (2026-06-09).
 - [x] 2026-03-04 `study/divine-love.md` **T1+FULL** — ESTEEM 1913 (word 87) + FAVOR fusion requoted; all scriptures + Nelson/Oaks quotes verbatim
 - [x] 2026-03-05 `study/yt/philpot-abinadi-references.md` **SAMPLE** — Mosiah 12:25 + 17:8 person-swaps requoted; "Utah," caption splice fixed; 5 transcript quotes verbatim
 - [x] 2026-03-05 `study/ai/fatigue.md` **SAMPLE** — "real skill" quote was 5 sentences compressed into 1, requoted; date Feb 7→8; 7 other article quotes + Matt 11:28 verbatim
-- [ ] 2026-03-11 `study/atonement/how-is-it-done.md` **T1**
+- [x] 2026-03-11 `study/atonement/how-is-it-done.md` **T1** — INFINITE + COMPREHEND 1913 (words 88-89); SUCCOR genuine; ~35 scriptures + 3 Holland quotes verbatim
 - [ ] 2026-03-11 `study/atonement/nevertheless.md` **T1**
 - [ ] 2026-03-11 `study/ai/relavent.md` **SAMPLE**
 - [ ] 2026-03-11 `study/ai/multi-agent-ideas.md` **SAMPLE**
