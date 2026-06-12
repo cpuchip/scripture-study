@@ -62,12 +62,14 @@ The words aren't *about* spirit and life. They *are* spirit. They *are* life. Th
 The modern ear hears "enjoy" as something light — *enjoy your meal, enjoy the show*. Webster 1828 hears it differently:
 
 > **ENJOY** (v.)
-> 1. To take pleasure or satisfaction in the possession or experience of.
-> 2. **To have, possess, and use with satisfaction; to occupy or have the benefit of**, as a good or profitable thing, or as something desirable. *"That the children of Israel may enjoy every man the inheritance of his fathers."* — Num. 36:8. *"To enjoy the pleasures of sin for a season."* — Heb. 11:25.
+> 1. To feel or perceive with pleasure; to take pleasure or satisfaction in the possession or experience of.
+> 3. **To have, possess and use with satisfaction; to have, hold or occupy**, as a good or profitable thing, or as something desirable. *"That the children of Israel may enjoy every man the inheritance of his fathers."* — Num. 36:8. *"The land shall enjoy her sabbaths."* — Lev. 26:34.
 
-Definition 2 is the one that matters here. "Enjoy" in 1828 doesn't just mean *take pleasure in*. It means **to have, possess, and use**. There is ownership in this word. Occupation. Active benefit.
+*(Requoted 2026-06-12 — the earlier definitions here were the 1913 edition's, including its Hebrews 11:25 citation. The genuine 1828 cites Numbers 36:8 and Leviticus 26:34.)*
 
-And the scriptural example Webster chose is striking: Hebrews 11:25 — Moses choosing *not* to enjoy the pleasures of sin for a season, "choosing rather to suffer affliction with the people of God." The word "enjoy" there carries the full weight of *having and possessing* something. Moses could have *had* the pleasures of Egypt. He chose differently.
+Definition 3 is the one that matters here. "Enjoy" in 1828 doesn't just mean *take pleasure in*. It means **to have, possess and use — to hold**. There is ownership in this word. Occupation. Active benefit.
+
+And the scriptural examples Webster chose are striking: Numbers 36:8 — that the children of Israel may "enjoy every man the inheritance of his fathers" — and Leviticus 26:34, "the land shall enjoy her sabbaths." To enjoy is to come into an inheritance and actually hold it. The words of eternal life are an inheritance of exactly that kind — not admired from a distance, but possessed.
 
 So when Moses 6:59 says we may "enjoy the words of eternal life in this world," the 1828 meaning says: you may **have them, possess them, use them, and take satisfaction in them**. These words are not distant. They are not just promises about the future. They are something you can *hold* now.
 
@@ -122,7 +124,7 @@ Verse 59 states the promise. Verse 60 explains *how*. Verse 61 explains *what yo
 
 ## What This Means for Study
 
-If "enjoy" means to *have, possess, and use with satisfaction*, then scripture study isn't just learning — it's ownership. We don't study the words of eternal life to extract information. We study them to *possess* them. To carry them. To have them abide in us, the way Moses 6:61 describes.
+If "enjoy" means to *have, possess and use with satisfaction*, then scripture study isn't just learning — it's ownership. We don't study the words of eternal life to extract information. We study them to *possess* them. To carry them. To have them abide in us, the way Moses 6:61 describes.
 
 Nephi's model from 2 Nephi 4:15 shows the process:
 - **Delight** — your soul responds to them with pleasure
@@ -147,5 +149,5 @@ And Moses 6:59 shows the scope:
 - [D&C 84:43-45](../gospel-library/eng/scriptures/dc-testament/dc/84.md) — "The word of the Lord is truth, and whatsoever is truth is light"
 - [D&C 93:36](../gospel-library/eng/scriptures/dc-testament/dc/93.md) — "The glory of God is intelligence, or, in other words, light and truth"
 - [John 1:1-4](../gospel-library/eng/scriptures/nt/john/1.md) — "In the beginning was the Word... In him was life"
-- [Hebrews 4:12](../gospel-library/eng/scriptures/nt/heb/4.md) — "The word of God is quick, and powerful, and sharper than any two-edged sword"
+- [Hebrews 4:12](../gospel-library/eng/scriptures/nt/heb/4.md) — "The word of God is quick, and powerful, and sharper than any twoedged sword"
 - [Jeremiah 15:16](../gospel-library/eng/scriptures/ot/jer/15.md) — "Thy words were found, and I did eat them; and thy word was unto me the joy and rejoicing of mine heart"
