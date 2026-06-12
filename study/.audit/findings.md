@@ -10,7 +10,16 @@ scroll out of sight.
 
 ---
 
-## 2026-06-12 lap 1 (webster-1828 lane, interactive)
+## 2026-06-12 lap 1 (webster-1828 lane, interactive with Michael)
+
+**LAP SUMMARY: 10/469 walked + truth.md out of order. ~180 quotes verified.
+Findings: 2 CLEAN files; the rest mechanical fixes — 1 quote drift, 1
+misattribution (Clayton→Jackson), 2 constructed quotes, 1 CONFABULATED
+conference quote (Christofferson "Born Again"), 1 verse mis-cite (Alma
+5:28/37), 2 attribution-context fixes, 1 broken link, assorted nits. Zero
+ARGUMENT-class items queued — every fix was mechanical. Pattern: scripture
+quotes are ~99% faithful; the error mass lives in TALK quotes and
+attributions. Resume at way-truth-life.md (#11).**
 
 ### study/creation.md (2026-01-21) — CLEAN, 0 edits
 FULL tier. 10 direct quotes verified verbatim against source files (Moses 3:5,
