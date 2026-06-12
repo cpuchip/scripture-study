@@ -659,6 +659,14 @@ disintegration-of-the-family framing that the Family Proclamation
 walk's pattern in this cluster: Philpot's Hebrew fails, his Webster
 mostly holds.
 
+### study/yt/morganphilpot/05_ezekiels_eagle.md (2026-02-08) — CLEAN
+SAMPLE. All sampled quotes EXACT: Bible Dictionary "Canaan" (the
+merchant gloss with its three refs), D&C 124 header (Commerce →
+Nauvoo), both Hinckley Oct-2001 quotes (fat/lean kine; fragility), the
+Woodruff "let all the temples go out of our hands" — which is CANONICAL
+(OD1's appended excerpts) — and D&C 101:80. No Webster claims of its
+own; no footer-date defect.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)

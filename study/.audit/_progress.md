@@ -59,7 +59,7 @@ Already done out-of-band: `study/morm-8-three-glories-reading.md` (2026-06-09).
 - [x] 2026-02-08 `study/yt/morganphilpot/08_harbinger_and_hinge.md` **T2** — CLEAN (all sampled quotes exact)
 - [x] 2026-02-08 `study/yt/morganphilpot/07_type_and_sign.md` **T1** — 6 fixes (SORCERY 1913 ×4; Hinckley drift; constructed 3 Ne 6 fragment)
 - [x] 2026-02-08 `study/yt/morganphilpot/06_esdras_and_appointed_times.md` **T1** — clean + 2 verifications woven (broken=bankrupt HOLDS; Hunter calamities-foretold coinage HOLDS)
-- [ ] 2026-02-08 `study/yt/morganphilpot/05_ezekiels_eagle.md` **SAMPLE**
+- [x] 2026-02-08 `study/yt/morganphilpot/05_ezekiels_eagle.md` **SAMPLE** — CLEAN (all sampled quotes exact; Woodruff excerpts are canonical OD1)
 - [ ] 2026-02-08 `study/yt/Zq1IEXTXmsw-testimony-meetings.md` **SAMPLE**
 - [ ] 2026-02-08 `study/yt/morganphilpot/03_apocalyptic_vision.md` **T1**
 - [ ] 2026-02-08 `study/yt/morganphilpot/02_signs_and_warnings.md` **T1**
