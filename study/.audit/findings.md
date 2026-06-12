@@ -866,6 +866,17 @@ Packer 1987 verbatim; Gong "for a wise purpose" real (his fn 12); Gen
 Abr 1 all verbatim. Seth saying re-attributed: Moses 6:2 = Adam's
 words; Eve's are Gen 4:25.
 
+### study/language-of-adam.md (2026-02-14) — CLEAN (1 fragment word)
+FULL. ~45 quotes across Moses 5-7, D&C 78/95/116, Abraham 3, Ether 1-3,
+Gen 2/11, Zeph 3:9, Prov 15:4/18:21, Mormon 9:32-33, 3 Ne 11 — ALL
+verbatim. Both footnote-chain claims verified against the actual files
+(95:17 fn-17b → 78:20; 78:20 fn-20a → 95:17/107:53/116). The Uchtdorf
+"German" quote (Apr 2013) is word-for-word exact, "strong suspicions"
+included. Ether 3:24 "I have confounded" past-tense reading rests on an
+accurately quoted verse. Only fix: a table fragment dropped a word
+("fire and with the Holy Ghost," 3 Ne 11:35). Source-open throughout —
+the strongest clean file at this density yet.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
