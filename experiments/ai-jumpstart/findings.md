@@ -168,6 +168,34 @@ on the smallest model in the matrix.
 **Matrix status:** A/B/C/D turn-1 ✓, B turn-2 ✓, B session-2 ✓, E turns 1-2 ✓ (cold).
 Still open: flash turn-2 (agy headless continuation undocumented), cross-model
 session-2 (e.g., OPUS reads SONNET's memory — the model-swap test), GPT-class arm.
+
+## NIGHT LAP 3 — 2026-06-12 (haiku + the Gemini-variant attempt)
+
+**Arm F — Haiku, cold, seed-only: ✅ PASSED turn 1.** Name question, five sharpeners,
+no premature design, and a genuinely good probe: "when you say 'nothing fancy,' what
+does done look like?" The seed's floor holds at the smallest Claude tier. (Fresh-folder
+methodology confirmed: every arm gets an untouched copy of the kit; no model sees
+another's leavings; the cold room is archived as a unit when the campaign closes.)
+
+**Arms G/H/I — gemini-3.1-flash-lite / 3.1-pro-preview / 3-flash-preview: ✗ INVALID.**
+agy silently ignored `--model` — all three replies state "I am running Gemini 3.5
+Flash," and the flag leaked into the model's context (one reply muses about "a specific
+command or context related to --model"). agy is pinned to its brain model; no
+GEMINI/GOOGLE API key on this machine and no standalone gemini CLI. The three runs'
+sloppy seed-following is CONFOUNDED — discarded, not scored. To test these models
+properly: install Google's gemini CLI (and auth) or provide an API key for an
+inline-AGENTS.md turn-1 harness.
+
+## Tomorrow's queue (with Michael)
+
+- **kimi-k2.6** — via opencode (his call: "would probably need opencode").
+- **Local models via LM Studio's OpenAI-compatible endpoint** (inline-AGENTS.md turn-1
+  harness): **gemma-4-31B**, **qwen3.6-27b** (memory: it ALWAYS reasons — give ≥2000
+  max_tokens, answer arrives in `content`, thinking in `reasoning_content`),
+  **nemotron** (non-thinking, per the Spin voice notes).
+- **The Gemini 3.1/3 variants** — once a CLI or key path exists.
+- **Cross-model session-2** (Opus reads Sonnet's memory — the model-swap proof) +
+  flash turn-2.
 ## Next experiments (queued)
 
 - Gemini turn 2 (answers → file setup fidelity) once agy continuation is worked out.
