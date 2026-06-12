@@ -786,6 +786,11 @@ where helaman-ten-virgins's "corresponds to our day" fragment came from
 — the propagation chain ran constructed-sentence → quoted-as-Benson →
 re-quoted downstream.** Hel 5:12, Hel 12:1-2, 3 Ne 2:1-2 all EXACT.
 
+### study/yt/morganphilpot/original/timeline.md (2026-02-09) — auditor's preface added
+SAMPLE, primary-source capture of Philpot's 130-row xlsx timeline.
+Documented-not-endorsed preface added pointing to the evaluations'
+unfalsifiability assessment. Content left as captured.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)

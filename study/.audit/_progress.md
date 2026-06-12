@@ -73,7 +73,7 @@ Already done out-of-band: `study/morm-8-three-glories-reading.md` (2026-06-09).
 - [x] 2026-02-09 `study/yt/morganphilpot/original/slides.md` **T2** — auditor preface added (primary-source capture)
 - [x] 2026-02-09 `study/helaman-ten-virgins.md` **FULL** — 3 fixes (★ propagated Johnson confabulations requoted; Benson fragment corrected)
 - [x] 2026-02-09 `study/helaman-why.md` **FULL** — 1 fix (Benson splice; the propagation SOURCE of the corresponds-to-our-day fragment)
-- [ ] 2026-02-09 `study/yt/morganphilpot/original/timeline.md` **SAMPLE**
+- [x] 2026-02-09 `study/yt/morganphilpot/original/timeline.md` **SAMPLE** — auditor preface added (primary-source capture)
 - [ ] 2026-02-10 `study/truth-atonement.md` **T1+FULL**
 - [ ] 2026-02-10 `study/truth-modern-prophets.md` **FULL**
 - [ ] 2026-02-13 `study/know-god.md` **FULL**
