@@ -422,6 +422,22 @@ journey"). One micro-fix: Asay element-4 quote completed to sentence end
 ("…and reconfirmed by personal revelation through the power of the Holy
 Ghost").
 
+### study/end-times.md (2026-02-05) — 7 fixes (2 constructed era-quotes; 6 directory links)
+FULL tier. The era-quote section mostly held: McConkie 1982 ("The Seven
+Christs") EXACT (completed "and ungodly"); Petersen 1972 EXACT with
+speaker/title verified; Oaks 2004 "Four matters are indisputable" claim
+verified verbatim; Dyer 1971 + Romney 1981 + Stapley 1975 + Golden 2021
+descriptors all matched real talks. Two constructions: **Maxwell Apr
+1988 "both premature expectations and smug complacency" exists nowhere**
+→ his real line requoted ("prematurely expected the Second Coming…we
+are in the same danger"); Christofferson 2019 paraphrase-in-quotes →
+his real sentence. Nelson Oct-2024 frame fixed ("When Jesus Christ
+returns" — the study had put "At His Second Coming" inside the quote);
+**"watch and pray always" was not D&C 61:38** → the verse's real words.
+Notable-talks table linked to DIRECTORIES → all six rows now link the
+actual talk files with real titles. D&C 45:26-35 fragment list, JS-M
+1:12/37/40/48, D&C 133:11 all EXACT.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)

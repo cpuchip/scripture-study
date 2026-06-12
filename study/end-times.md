@@ -84,21 +84,21 @@ This dual-fulfillment prophecy applied to Jerusalem's destruction (AD 70) and wi
 
 ### Early Decades (1971-1980): Foundation Period
 Strong emphasis on Second Coming themes, setting doctrinal foundation:
-- **Elder Bruce R. McConkie** (Oct 1982): "The second coming of the Son of Man will be a day of vengeance and burning and sorrow for the wicked."
-- **Elder Mark E. Petersen** (Oct 1972): "The scriptures indicate that in the latter days, shortly before the second coming of the Savior, the signs of the times would be given."
+- **Elder Bruce R. McConkie** (Oct 1982, ["The Seven Christs"](../gospel-library/eng/general-conference/1982/10/the-seven-christs.md)): "The second coming of the Son of Man will be a day of vengeance and burning and sorrow for the wicked and ungodly."
+- **Elder Mark E. Petersen** (Oct 1972, ["Another Prophet Now Has Come!"](../gospel-library/eng/general-conference/1972/10/another-prophet-now-has-come.md)): "The scriptures indicate that in the latter days, shortly before the second coming of the Savior, the signs of the times would be given."
 - **President Marion G. Romney** (Apr 1981): Listed restoration, Zion, and gathering of Israel as fulfilled signs.
 - **Elder Alvin R. Dyer** (Apr 1971): Taught we live in "the fulness of times," all gospel keys converging before Christ's Second Coming.
 
 ### Middle Decades (1980-2000): Emphasis on Preparation
 Focus shifted toward practical preparation and avoiding fear:
-- **Elder Neal A. Maxwell** (Apr 1988): Warned against "both premature expectations and smug complacency" — stay spiritually alert without fear.
+- **Elder Neal A. Maxwell** (Apr 1988, ["For I Will Lead You Along"](../gospel-library/eng/general-conference/1988/04/for-i-will-lead-you-along.md)): "Some believers have, by focusing on a few prophecies while neglecting others, prematurely expected the Second Coming. Today, while we are obviously closer to that great moment, we are in the same danger." — stay spiritually alert without fear.
 - **Elder Dallin H. Oaks** (Apr 2004): Landmark talk listing four indisputable truths about the Second Coming.
 
 ### Recent Era (2004-Present): Intensifying Urgency
 Notable increase in Second Coming references from senior leaders:
-- **Elder D. Todd Christofferson** (Apr 2019): Urged Church to prepare by "building Zion, gathering Israel, and redeeming ancestors."
+- **Elder D. Todd Christofferson** (Apr 2019, ["Preparing for the Lord's Return"](../gospel-library/eng/general-conference/2019/04/44christofferson.md)): "We can prepare ourselves as a people; we can gather the Lord's covenant people; and we can help redeem the promise of salvation 'made to the fathers,' our ancestors."
 - **Elder Christoffel Golden** (Oct 2021): Called for spiritual preparation, warning against deception.
-- **President Russell M. Nelson** (Oct 2024): Direct witness — "At His Second Coming, 'the glory of the Lord shall be revealed, and all flesh shall see it together.'"
+- **President Russell M. Nelson** (Oct 2024, ["The Lord Jesus Christ Will Come Again"](../gospel-library/eng/general-conference/2024/10/57nelson.md)): "When Jesus Christ returns, 'the glory of the Lord shall be revealed, and all flesh shall see it together.'"
 
 ### Pattern Analysis
 The data suggests:
@@ -146,7 +146,7 @@ The Doctrine and Covenants adds signs unique to the last dispensation:
 ### "Stand in Holy Places" (D&C 45:32)
 The consistent prophetic message across decades:
 1. **Temple worship** — "disciples shall stand in holy places"
-2. **Keep covenants** — "watch and pray always" ([D&C 61:38](../gospel-library/eng/scriptures/dc-testament/dc/61.md))
+2. **Keep covenants** — "be watchful and be sober, looking forth for the coming of the Son of Man" ([D&C 61:38](../gospel-library/eng/scriptures/dc-testament/dc/61.md))
 3. **Treasure up the word** — "whoso treasureth up my word, shall not be deceived" ([JS-M 1:37](../gospel-library/eng/scriptures/pgp/js-m/1.md))
 4. **Gather with the Saints** — temporal and spiritual gathering
 5. **Watch without fear** — "be not troubled" ([D&C 45:35](../gospel-library/eng/scriptures/dc-testament/dc/45.md))
@@ -186,12 +186,12 @@ The five wise virgins had oil (the Holy Ghost, personal conversion) that couldn'
 
 | Talk | Speaker | Key Theme |
 |------|---------|-----------|
-| [April 2004](../gospel-library/eng/general-conference/2004/04/) | Elder Dallin H. Oaks | Four indisputable truths about Second Coming |
-| [October 2024](../gospel-library/eng/general-conference/2024/10/) | President Russell M. Nelson | "The glory of the Lord shall be revealed" |
-| [April 1988](../gospel-library/eng/general-conference/1988/04/) | Elder Neal A. Maxwell | Balance between urgency and complacency |
-| [April 2019](../gospel-library/eng/general-conference/2019/04/) | Elder D. Todd Christofferson | Building Zion to hasten the return |
-| [October 1975](../gospel-library/eng/general-conference/1975/10/) | Elder Delbert L. Stapley | Signs preceding Christ's coming |
-| [October 1972](../gospel-library/eng/general-conference/1972/10/) | Elder Mark E. Petersen | Signs of the times |
+| [Preparation for the Second Coming](../gospel-library/eng/general-conference/2004/04/preparation-for-the-second-coming.md) (Apr 2004) | Elder Dallin H. Oaks | "Four matters are indisputable to Latter-day Saints" |
+| [The Lord Jesus Christ Will Come Again](../gospel-library/eng/general-conference/2024/10/57nelson.md) (Oct 2024) | President Russell M. Nelson | "The glory of the Lord shall be revealed" |
+| [For I Will Lead You Along](../gospel-library/eng/general-conference/1988/04/for-i-will-lead-you-along.md) (Apr 1988) | Elder Neal A. Maxwell | The danger of prematurely expecting the Second Coming |
+| [Preparing for the Lord's Return](../gospel-library/eng/general-conference/2019/04/44christofferson.md) (Apr 2019) | Elder D. Todd Christofferson | Building Zion to prepare for the return |
+| [To Make a People Prepared for the Lord](../gospel-library/eng/general-conference/1975/10/to-make-a-people-prepared-for-the-lord.md) (Oct 1975) | Elder Delbert L. Stapley | A people prepared for Christ's coming |
+| [Another Prophet Now Has Come!](../gospel-library/eng/general-conference/1972/10/another-prophet-now-has-come.md) (Oct 1972) | Elder Mark E. Petersen | Signs of the times |
 
 ---
 

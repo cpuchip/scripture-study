@@ -39,7 +39,7 @@ Already done out-of-band: `study/morm-8-three-glories-reading.md` (2026-06-09).
 - [x] 2026-02-04 `study/charity.md` **T2+FULL** — Webster claims SURVIVED repaired 1828; 2 genuine-1828 gifts woven; 1 micro-fix (D&C 121:45 "also")
 - [x] 2026-02-04 `study/priesthood-oath-and-covenant.md` **T2+FULL** — ★ all 5 Webster quotes were 1913-as-1828 (requoted + edition note; OBTAIN gift woven) + 7 scripture fixes
 - [x] 2026-02-05 `study/priesthood-obtaining-exploration.md` **T2+FULL** — OBTAIN/RECEIVE + both synonym notes were 1913-as-1828 (requoted); all 6 talks exact; 1 micro-fix
-- [ ] 2026-02-05 `study/end-times.md` **FULL**
+- [x] 2026-02-05 `study/end-times.md` **FULL** — 7 fixes (Maxwell + Christofferson constructed quotes requoted; D&C 61:38 mis-quote; 6 directory links → talk files)
 - [ ] 2026-02-05 `study/gadianton-robbers.md` **FULL**
 - [ ] 2026-02-06 `study/enoch.md` **T1+FULL**
 - [ ] 2026-02-06 `study/enoch-charity.md` **T1+FULL**
