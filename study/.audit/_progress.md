@@ -121,7 +121,7 @@ Already done out-of-band: `study/morm-8-three-glories-reading.md` (2026-06-09).
 - [x] 2026-03-01 `study/consumption-decreed.md` **T2+FULL** — 4 Webster 1913 (words 78-81; genuine DECREE = "predetermined purpose of God"); scripture chain verbatim
 - [x] 2026-03-02 `study/consumption-decreed-modern-warning.md` **T2+FULL** — CLEAN (~16 quotes across 12 talks verbatim; quoted-withins already attributed correctly)
 - [x] 2026-03-02 `study/zion-blueprint.md` **FULL** — 1 fix (★ Pearce quote-continuation confabulated; requoted w/ note); shanah verified via Strong's; rest verbatim
-- [ ] 2026-03-02 `study/translated-beings.md` **T1+FULL**
+- [x] 2026-03-02 `study/translated-beings.md` **T1+FULL** — TRANSLATE + TRANSFIGURE 1913 (words 82-83; genuine cites Heb 11:5 Enoch + Matt 17:2); QUICKEN genuine; all scripture verbatim
 - [ ] 2026-03-02 `study/endtimes-servant.md` **T1+FULL**
 - [ ] 2026-03-02 `study/endtimes-servant-footless.md` **FULL**
 - [ ] 2026-03-03 `study/abinadi-how-to-read.md` **T1+FULL**

@@ -1350,6 +1350,16 @@ Everything else verbatim: Moses 7:18/21/63/68, 4 Ne 1:2-3/15-17, 3 Ne
 shanah year-as-repetition claim verified via Strong's (H8141 ← H8138
 "do again, repeat").
 
+### study/translated-beings.md (2026-03-02) — 2 Webster 1913 (words 82-83); the genuine citations ARE the topic
+T1+FULL, post-boundary. TRANSLATE and TRANSFIGURE were 1913; QUICKEN
+genuine (fourth confirmation). The genuine entries cite the study's
+own subject matter: TRANSLATE's citation is Heb 11:5 ("By faith Enoch
+was translated, that he should not see death") and TRANSFIGURE's is
+Matt 17:2 (the Transfiguration). All scripture verbatim: 3 Ne
+28:8/10/37-39, Heb 11:5, D&C 63:20-21 (the earth's transfiguration),
+D&C 88:15-16/28, 1 Cor 15:51-52, JS-H 1:32, Moses 7:62-63; McConkie
+Apr-1980 New-Jerusalem quote exact.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
