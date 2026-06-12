@@ -122,7 +122,7 @@ The hermeneutic engine for all of this is [1 Nephi 19:23](../../../gospel-librar
 
 ### Word Studies
 
-**Liken** (Webster 1828): "To allege, or think, to be like; to represent as like; to compare." This captures an important nuance: likening is *comparison*, not *identification*. When Nephi says "I did liken all scriptures unto us" ([1 Nephi 19:23](../../../gospel-library/eng/scriptures/bofm/1-ne/19.md)), he's drawing parallels, not claiming that Isaiah's words were *about* the Nephites in their primary sense. The 1828 definition supports reading "liken" as a tool for application, not as a decoder ring for hidden timelines.
+**Liken** (Webster 1828): "To compare; to represent as resembling or similar." *(Requoted 2026-06-12 — an earlier draft's "To allege, or think, to be like…" was the 1913 edition's wording; the argument is unchanged.)* This captures an important nuance: likening is *comparison*, not *identification*. When Nephi says "I did liken all scriptures unto us" ([1 Nephi 19:23](../../../gospel-library/eng/scriptures/bofm/1-ne/19.md)), he's drawing parallels, not claiming that Isaiah's words were *about* the Nephites in their primary sense. The 1828 definition supports reading "liken" as a tool for application, not as a decoder ring for hidden timelines.
 
 **Wrath** (Webster 1828): "Violent anger; vehement exasperation; indignation... The effects of anger. God's wrath in Scripture is his holy and just indignation against sin." The D&C 88 wrath sequence and the "winepress of the wrath of God" ([Revelation 14:19](../../../gospel-library/eng/scriptures/nt/rev/14.md)) carry this full weight: not petulance, but holy indignation against unrepentant evil.
 
@@ -221,7 +221,7 @@ These are among the most sober passages in all scripture, and Philpot is right t
 
 > "At that day when the Gentiles shall sin against my gospel, and shall reject the fulness of my gospel, and shall be lifted up in the pride of their hearts above all nations... I will bring the fulness of my gospel from among them" — [3 Nephi 16:10](../../../gospel-library/eng/scriptures/bofm/3-ne/16.md)
 
-> "Then shall ye, who are a remnant of the house of Jacob, go forth among them; and ye shall be in the midst of them who shall be many; and ye shall be among them as a lion among the beasts of the forest, as a young lion among the flocks of sheep" — [3 Nephi 16:13](../../../gospel-library/eng/scriptures/bofm/3-ne/16.md), [3 Nephi 20:16](../../../gospel-library/eng/scriptures/bofm/3-ne/20.md), [3 Nephi 21:12](../../../gospel-library/eng/scriptures/bofm/3-ne/21.md)
+> "Then shall ye, who are a remnant of the house of Jacob, go forth among them; and ye shall be in the midst of them who shall be many; and ye shall be among them as a lion among the beasts of the forest, and as a young lion among the flocks of sheep" — [3 Nephi 20:16](../../../gospel-library/eng/scriptures/bofm/3-ne/20.md) (parallels: [3 Nephi 21:12](../../../gospel-library/eng/scriptures/bofm/3-ne/21.md); [16:15](../../../gospel-library/eng/scriptures/bofm/3-ne/16.md) — the earlier 16:13 cite was the repent-and-be-numbered verse, not the lion verse)
 
 The "lion among sheep" image is repeated across all three chapters — Christ said it at least three times in a single address. This is emphasis, not redundancy. And Jacob added his own corroboration:
 
@@ -249,7 +249,7 @@ President Nelson's "front-row seats" and "nothing shall be withheld" references 
 
 Philpot's entire approach rests on [1 Nephi 19:23](../../../gospel-library/eng/scriptures/bofm/1-ne/19.md): "I did liken all scriptures unto us, that it might be for our profit and learning." This becomes his license to treat narratives (Woman at the Well, Walk to Emmaus) as prophetic types encoding timeline information.
 
-The Webster 1828 definition of "liken" is instructive: "To allege, or think, to be like; to represent as like; **to compare**." Likening is *comparison for application*, not decryption of hidden meaning. When Nephi likened Isaiah to the Nephites, he was drawing parallels between Israel's covenant situation and his own people's covenant situation — the *same pattern* applied to a new context. He was not extracting numerical codes or hidden calendrical markers from Isaiah's narratives.
+The Webster 1828 definition of "liken" is instructive: "To compare; **to represent as resembling or similar**." Likening is *comparison for application*, not decryption of hidden meaning. When Nephi likened Isaiah to the Nephites, he was drawing parallels between Israel's covenant situation and his own people's covenant situation — the *same pattern* applied to a new context. He was not extracting numerical codes or hidden calendrical markers from Isaiah's narratives.
 
 Philpot respects the hermeneutic when he applies the Gentile warnings (3 Nephi 16/20/21) to modern circumstances — that's genuine likening: the *same covenant dynamic* (Gentiles receive gospel → reject it → face consequences) operating in our day. He *stretches* the hermeneutic when he treats John 4:40 ("he abode there two days") as an encoded timeline. The narrative of the Woman at the Well is a story about Jesus ministering to Samaritans, not a prophetic riddle.
 
