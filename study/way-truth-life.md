@@ -132,7 +132,7 @@ The endowment enacts this journey: we learn THE WAY (the plan, the covenants), w
 
 > "I am the door: by me if any man enter in, he shall be saved, and shall go in and out, and find pasture." — [John 10:9](../gospel-library/eng/scriptures/nt/john/10.md)
 
-Elder Uchtdorf's research note: "The image of a path or way in the Hebrew Bible often stood for keeping the commandments or teachings of God... Paul and the first Christians also called themselves 'follower[s] of the Way'" — [Daily Restoration](../gospel-library/eng/general-conference/2021/10/41uchtdorf.md) (footnote 1)
+Elder Uchtdorf's footnote quotes the NIV First-Century Study Bible: "The image of a path or way in the Hebrew Bible often stood for keeping the commandments or teachings of God... Paul and the first Christians also called themselves 'follower[s] of the Way'" — [Daily Restoration](../gospel-library/eng/general-conference/2021/10/41uchtdorf.md) (footnote 1)
 
 Christ as "the way" means:
 - **He is the example** we follow (see footnote 6a in John 14)
@@ -182,7 +182,7 @@ Without Christ, there is no resurrection, no eternal life, no continuation of co
 **Scriptures:**
 - [John 5:26](../gospel-library/eng/scriptures/nt/john/5.md) — "the Father hath life in himself; so hath he given to the Son to have life in himself"
 - [John 6:51](../gospel-library/eng/scriptures/nt/john/6.md) — "I am the living bread... if any man eat of this bread, he shall live for ever"
-- [3 Nephi 9:14](../gospel-library/eng/scriptures/bofm/3-ne/9.md) — "I am the light and the life of the world"
+- [3 Nephi 9:18](../gospel-library/eng/scriptures/bofm/3-ne/9.md) — "I am the light and the life of the world"
 
 ---
 
@@ -257,7 +257,7 @@ Christ's seven "I Am" statements in John may also build progressively:
 - [John 1:4](../gospel-library/eng/scriptures/nt/john/1.md) — "In him was life"
 - [John 5:26](../gospel-library/eng/scriptures/nt/john/5.md) — "the Son to have life in himself"
 - [John 17:3](../gospel-library/eng/scriptures/nt/john/17.md) — "this is life eternal"
-- [3 Nephi 9:14](../gospel-library/eng/scriptures/bofm/3-ne/9.md) — "I am the light and the life"
+- [3 Nephi 9:18](../gospel-library/eng/scriptures/bofm/3-ne/9.md) — "I am the light and the life"
 
 ### Temple/Veil Connection
 - [Hebrews 9:1-12](../gospel-library/eng/scriptures/nt/heb/9.md) — Tabernacle as shadow of Christ
@@ -281,12 +281,12 @@ Christ's seven "I Am" statements in John may also build progressively:
 
 ### On "The Way, The Truth, and The Life"
 - [Daily Restoration](../gospel-library/eng/general-conference/2021/10/41uchtdorf.md) — Elder Uchtdorf on "the Way" as the path of discipleship (excellent footnote research)
-- [Jesus Christ, Our Savior and Redeemer](../gospel-library/eng/general-conference/2022/10/52olsen.md) — "the way, the truth, and the life" as answer to how we come to the Father
-- [Truth Shows Us the Way](../gospel-library/eng/general-conference/2019/04/25andersen.md) — Elder Andersen: "Truth shows us the way to eternal life"
+- [The Answer Is Jesus](../gospel-library/eng/general-conference/2022/10/52olsen.md) — Elder Olsen: "the way, the truth, and the life" as the answer to how we come to the Father
+- [The Eye of Faith](../gospel-library/eng/general-conference/2019/04/25andersen.md) — Elder Andersen: "Truth shows us the way to eternal life, and it comes only through our Savior, Jesus Christ. There is no other way."
 
 ### On Temple/Veil
 - [God's Intent](../gospel-library/eng/general-conference/2024/04/45kearon.md) — Elder Kearon on the veil being "ripped wide open"
-- [Mercy in the House of the Lord](../gospel-library/eng/general-conference/2025/04/33rasband.md) — Elder Rasband on the mercy seat in the tabernacle
+- [The Plan of Mercy](../gospel-library/eng/general-conference/2025/04/33rasband.md) — Elder Rasband on the mercy seat in the tabernacle
 
 ### On Christ as Our Access
 - [Gather Together in One](../gospel-library/eng/general-conference/2018/10/gather-together-in-one-all-things-in-christ.md) — Elder Bednar: gathering truth is "centered in and focused upon the Lord Jesus Christ because He is 'the way, the truth, and the life'"
@@ -323,7 +323,7 @@ The temple endowment is the living enactment of John 14:6. We begin in a fallen 
 
 Most profoundly, Jesus doesn't simply *show* these things—He IS them. The veil we pass through is His flesh ([Hebrews 10:20](../gospel-library/eng/scriptures/nt/heb/10.md)). There is no alternative path, no other source of truth, no other source of life. To come to the Father, we must come through Him.
 
-> "He is **the Way**, the Truth, and the Life—no one can return to the Father except by Him. Jesus is the only way!" — [How Do I Know If I Really Know?](../gospel-library/eng/general-conference/2022/10/53schmitt.md)
+> "Jesus is the Way, the Truth, and the Life—no one can return to the Father except by Him. Jesus is the only way!" — [That They Might Know Thee](../gospel-library/eng/general-conference/2022/10/53schmitt.md), Elder Schmitt
 
 ---
 
