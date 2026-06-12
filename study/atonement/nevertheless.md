@@ -1,6 +1,6 @@
 # Nevertheless
 
-*Not the less; notwithstanding; in spite of that.* — Webster 1828
+*Not the less; notwithstanding.* — Webster 1828
 
 ---
 
@@ -18,11 +18,15 @@ We don't use this word much anymore. Modern English has "but" and "however" and 
 
 "But" introduces contrast. "Nevertheless" introduces *survival.* Something endures despite what should have destroyed it.
 
-Webster's 1828 dictionary defines it simply: *"Not the less; notwithstanding; in spite of that; yet."* And then he does something remarkable — he illustrates it with [Hebrews 12:11](../../gospel-library/eng/scriptures/nt/heb/12.md):
+Webster's 1828 dictionary defines it: *"Not the less; notwithstanding; that is, in opposition to any thing, or without regarding it."* His illustration is plain as dirt: "It rained, nevertheless, we proceeded on our journey." The obstacle was real. The journey continued anyway — in opposition to the rain, without being prevented.
+
+*(Requoted 2026-06-12 — the earlier wording, "in spite of that; yet," was the 1913 edition's, and it was the 1913 editors, not Noah Webster, who illustrated the word with Hebrews 12:11. Noah's own illustration is the rain.)*
+
+Those later editors of Webster's dictionary reached for [Hebrews 12:11](../../gospel-library/eng/scriptures/nt/heb/12.md) to illustrate the same word:
 
 > "No chastening for the present seemeth to be joyous, but grievous: nevertheless afterward it yieldeth the peaceable fruit of righteousness."
 
-Present grief → *nevertheless* → future fruit. Webster, in 1828, reached for this word and landed in the middle of the Atonement. Because that's where this word lives.
+Present grief → *nevertheless* → future fruit. That's where this word lives.
 
 ---
 
@@ -144,7 +148,7 @@ Alma, who had been "caught in a snare" and done abominable things, testifies:
 
 > "I myself was caught in a snare, and did many things which were abominable in the sight of the Lord, which caused me sore repentance; Nevertheless, after much tribulation, the Lord did hear my cries, and did answer my prayers, and has made me an instrument in his hands... Nevertheless, in this I do not glory, for I am unworthy to glory of myself." — [Mosiah 23:9-11](../../gospel-library/eng/scriptures/bofm/mosiah/23.md)
 
-Three neverthelessses in three verses: sin → *nevertheless* → God heard → instrument → *nevertheless* → no personal glory. The word keeps Alma honest in *both* directions — neither trapped in his past nor puffed up by his present. "Nevertheless" doesn't just rescue. It calibrates.
+Two neverthelessses in three verses: sin → *nevertheless* → God heard → instrument → *nevertheless* → no personal glory. The word keeps Alma honest in *both* directions — neither trapped in his past nor puffed up by his present. "Nevertheless" doesn't just rescue. It calibrates.
 
 ### Hebrews 12:11
 
