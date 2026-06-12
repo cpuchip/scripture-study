@@ -791,6 +791,20 @@ SAMPLE, primary-source capture of Philpot's 130-row xlsx timeline.
 Documented-not-endorsed preface added pointing to the evaluations'
 unfalsifiability assessment. Content left as captured.
 
+### study/truth-atonement.md (2026-02-10) — 3 Webster requotes (ATONE + SANCTIFY = 1913-as-1828 words 12 and 13)
+T1+FULL. ATONE was the 1913 entry → requoted to genuine 1828, and the
+genuine entry is a gift: as an adverb ATONE is literally "**At one;
+together**," etymology "[at and one.]" — the study's whole at-one-ment
+wordplay turns out to be Webster's own first line. SANCTIFY also 1913 →
+genuine senses 1+5, which add John 17:17 ("Sanctify them through thy
+truth; thy word is truth") — a truth-study quoting SANCTIFY and the
+genuine 1828 entry hands it the truth verse. REDEEM requoted to genuine
+sense 1 ("by paying an equivalent") + sense 10 exact. QUICKEN holds
+genuine. All ~25 cited scripture renderings verbatim: D&C 88:6/14/
+18-19/25-26/28/29/67/68, 2 Ne 9:7, D&C 93:9/10/12-13/20/33, 76:41/69,
+Moroni 10:32-33, Mosiah 3:17/19, Moses 6:59-63. Arguments intact or
+strengthened by every requote.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)

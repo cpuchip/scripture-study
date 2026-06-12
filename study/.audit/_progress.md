@@ -74,7 +74,7 @@ Already done out-of-band: `study/morm-8-three-glories-reading.md` (2026-06-09).
 - [x] 2026-02-09 `study/helaman-ten-virgins.md` **FULL** — 3 fixes (★ propagated Johnson confabulations requoted; Benson fragment corrected)
 - [x] 2026-02-09 `study/helaman-why.md` **FULL** — 1 fix (Benson splice; the propagation SOURCE of the corresponds-to-our-day fragment)
 - [x] 2026-02-09 `study/yt/morganphilpot/original/timeline.md` **SAMPLE** — auditor preface added (primary-source capture)
-- [ ] 2026-02-10 `study/truth-atonement.md` **T1+FULL**
+- [x] 2026-02-10 `study/truth-atonement.md` **T1+FULL** — 3 requotes (ATONE "At one; together" + SANCTIFY w/ John 17:17 = 1913 words 12-13; REDEEM sense 1); ~25 scriptures verbatim
 - [ ] 2026-02-10 `study/truth-modern-prophets.md` **FULL**
 - [ ] 2026-02-13 `study/know-god.md` **FULL**
 - [ ] 2026-02-14 `study/cfm/20260215-noah-found-grace.md` **T1**
