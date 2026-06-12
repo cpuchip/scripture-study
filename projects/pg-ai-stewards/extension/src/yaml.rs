@@ -153,8 +153,15 @@ pub fn parse_yaml_intent(yaml: &str) -> pgrx::JsonB {
 ///     "recovery": <text>,
 ///     "council_moment": <text>,
 ///     "teaching_extension": {...} | null,
+///     "extensions": { "<section>": {...}, ... },   // catch-all, may be {}
 ///     "ratified_by": "both"
 ///   }
+///
+/// PR.1 (2026-06-12): any top-level section NOT in the known set is
+/// carried through generically under "extensions" (YAML → JSON as-is).
+/// Anti-silent-drop guard: the ratified `presiding:` extension was
+/// dropped by this parser's fixed shape — the covenant must be able to
+/// grow new sections without a parser change.
 #[pg_extern]
 pub fn parse_yaml_covenant(yaml: &str) -> pgrx::JsonB {
     let parsed: serde_yaml::Value = match serde_yaml::from_str(yaml) {
@@ -199,6 +206,41 @@ pub fn parse_yaml_covenant(yaml: &str) -> pgrx::JsonB {
         })
     });
 
+    // PR.1 — generic catch-all for unknown top-level sections. The known
+    // set is exactly what the fixed-shape extraction above consumes (plus
+    // `purpose`, which is intentionally not stored). Everything else maps
+    // YAML → JSON verbatim under "extensions" so a future covenant
+    // evolution cannot be silently dropped between ratification and the
+    // substrate's active row.
+    const KNOWN_SECTIONS: [&str; 6] = [
+        "purpose",
+        "human_commits_to",
+        "agent_commits_to",
+        "when_broken",
+        "council_moment",
+        "teaching",
+    ];
+    let mut extensions = serde_json::Map::new();
+    if let Some(map) = parsed.as_mapping() {
+        for (k, v) in map.iter() {
+            let Some(key) = k.as_str() else { continue };
+            if KNOWN_SECTIONS.contains(&key) {
+                continue;
+            }
+            match serde_json::to_value(v) {
+                Ok(j) => {
+                    extensions.insert(key.to_string(), j);
+                }
+                Err(e) => {
+                    pgrx::log!(
+                        "stewards: parse_yaml_covenant: extension section '{}' not JSON-convertible: {}",
+                        key, e
+                    );
+                }
+            }
+        }
+    }
+
     pgrx::JsonB(serde_json::json!({
         "scope": "global",
         "human_commits_to": human,
@@ -207,6 +249,7 @@ pub fn parse_yaml_covenant(yaml: &str) -> pgrx::JsonB {
         "recovery": recovery,
         "council_moment": council_moment,
         "teaching_extension": teaching_extension,
+        "extensions": extensions,
         "ratified_by": "both",
     }))
 }

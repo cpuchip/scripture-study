@@ -230,3 +230,4 @@ r20-room-say-as.sql
 dnd1-mcp-seed.sql
 dnd2-mcp-http.sql
 r21-room-react.sql
+pr1-covenant-extensions.sql
