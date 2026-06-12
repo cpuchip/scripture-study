@@ -1500,6 +1500,19 @@ Maxwell 1981 ×2 / 1985 ×3 / 1989 ×2 / 2001 ×2 / 2003, Holland 1999
 1985 ×3. Parenthetical see-also citation markers omitted from
 quotes throughout — accepted (footnote-class).
 
+### study/yt/voice-analysis-ai-vs-michael.md (2026-03-13) — typo-polish requotes restored; video claim verified by download
+T2. All 16 self-citations verified — every quoted tic exists in
+the named study. Michael's blog quotes verified against
+projects/cpuchip.net/content/: two had been silently polished
+("single highhandedly"→"single-handedly", "neighbored"→"neighbor")
+— restored to the originals with a note, since the unpolished
+voice is this document's whole point. The Loyal Moses video
+transcript was not on disk — downloaded to yt/loyal-moses/
+3lPk4SLiwuM/ and verified: "Now, let that land for a second" is
+real (0:47, study said 0:48 — fixed), and the video opens with
+"Here's the moment that stopped me cold," a second tic the audit
+didn't note. All other blog quotes verbatim.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)

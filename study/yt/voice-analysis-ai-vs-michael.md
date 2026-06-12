@@ -6,7 +6,7 @@
 
 ## What Prompted This
 
-Michael watched an AI-generated video ("A Calculator Just Banned the Entire State of California" by Loyal Moses) and noticed the same verbal tics he'd been hearing in our study documents. The video's transcript uses "Now, let that land for a second" at 0:48 — a phrase that also appears in our own podcast notes. The concern: our study output reads like a YouTube script or presentation notes, not like a book or a serious essay.
+Michael watched an AI-generated video ("A Calculator Just Banned the Entire State of California" by Loyal Moses) and noticed the same verbal tics he'd been hearing in our study documents. The video's transcript uses "Now, let that land for a second" at 0:47 — a phrase that also appears in our own podcast notes. (It opens with "Here's the moment that stopped me cold" at 0:00 — two of the tics below inside one 57-second video. Transcript archived at `yt/loyal-moses/3lPk4SLiwuM/`.) The concern: our study output reads like a YouTube script or presentation notes, not like a book or a serious essay.
 
 He's right. And this analysis is an honest audit of the problem.
 
@@ -51,15 +51,17 @@ From the cpuchip.net blog (Wayback Machine, 2012–2014), here's what Michael so
 
 **1. Concrete and matter-of-fact.** Michael leads with what happened, not how to feel about it.
 
-> "So today I borrowed a ladder from our neighbor and set to work replacing the pads on our evaporative cooler. It seemed that the pads were several years old, the base of the cooler had a lot of filth in it."
+> "So today I borrowed a ladder from our neighbored and set to work replacing the pads on our evaporative cooler. It seemed that the pads were several years old, the base of the cooler had a lot of filth in it."
 
 No "let that sink in." No "here's the thing." Just: this is what I did. This is what I found. Keep reading if you're interested.
 
 **2. Enthusiasm is direct and unadorned.**
 
-> "That was single-handedly the best one hour I've spent at OpenWest."
+> "That was single highhandedly the best one hour I've spent at OpenWest."
 > "cake walk."
 > "It was super useful!"
+
+*(Requoted 2026-06-12 — restored Michael's original "single highhandedly" above and "neighbored" in the previous section; the earlier rendering had silently polished the typos, which rather misses the point of this document.)*
 
 When Michael is excited, he says "that was the best" or "super useful" or just "cake walk." He doesn't build a runway with "And here's why this matters..." He just says it landed.
 
