@@ -17,7 +17,13 @@ last_active: 2026-06-12T15:52:35
   189 core + 5 SPLIT migrations, 193-entry core manifest, bundle = build
   artifact (never checked in). **Build GREEN + virgin CREATE EXTENSION proven**
   (scratch container, 0 workspace seeds leaked) → OSS pushed through journal.
-  NEXT P1: Go daemon re-homing, runner-consumes-manifest, compose, seed pack.
+  **COUNCIL (same evening, all ratified):** ct2 RETIRED live · ledger
+  leave-and-map · seed pack one-lineage (jumpstart kit canonical) ·
+  **doc_*** (study_* tools → doc_*, studies → docs, scripture_anchor →
+  values_anchor) · **cutover = FRESH REBUILD** (no shims; selective import;
+  live volume archived; rename map at workspace parity/rename-map.tsv).
+  NEXT P1: Go daemon re-homing → doc_* rename leg → runner-consumes-manifest
+  → compose → seed pack (kit-derived) → runtime replay proof.
   (3) Private manifest REPAIRED (root `e5ccc0c3`): 9 live-applied migrations
   (r11-r17, ct2-5, ct2-7e) restored from ledger order; found the runner is
   LEXICAL + manifest-blind (replayed scratch-ct2-run2 into live 06-10 —
