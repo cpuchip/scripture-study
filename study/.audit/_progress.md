@@ -116,7 +116,7 @@ Already done out-of-band: `study/morm-8-three-glories-reading.md` (2026-06-09).
 - [x] 2026-02-20 `study/gifts.md` **T1+FULL** — 3 Webster 1913 (words 65-67); all 64 blockquotes verbatim; Cannon quote correctly elided here
 - [x] 2026-02-20 `study/priesthood-and-gifts.md` **T1+FULL** — ORDINANCE genuine; 3 Webster 1913 (words 68-70, ORDAIN's laying-on-of-hands was 1913-only); Lee/McConkie named; Oaks Keys quote de-paraphrased; rest verbatim
 - [x] 2026-02-23 `study/plan-of-salvation/father-and-son.md` **T1** — all 5 Webster 1913 (words 71-75; genuine examples ARE the thesis: "father of spirits," "author of the Universe," "the father designs his son"); scriptures verbatim
-- [ ] 2026-02-24 `study/yt/tV0_KEMIy7o-meekly-drenched-in-destiny.md` **SAMPLE**
+- [x] 2026-02-24 `study/yt/tV0_KEMIy7o-meekly-drenched-in-destiny.md` **SAMPLE** — CLEAN (11 Maxwell quotes verbatim at timestamp)
 - [ ] 2026-02-24 `study/yt/UjzeDUBMaUA-problem-with-mormon-youtube.md` **T1**
 - [ ] 2026-03-01 `study/consumption-decreed.md` **T2+FULL**
 - [ ] 2026-03-02 `study/consumption-decreed-modern-warning.md` **T2+FULL**

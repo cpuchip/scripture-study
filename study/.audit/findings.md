@@ -1304,6 +1304,13 @@ consequence of his relation to the Father." The 1916 Exposition
 epigraph verbatim (teachings-joseph-f-smith ch 40); Moses 1:6/25/33
 fragments exact.
 
+### study/yt/tV0_KEMIy7o-meekly-drenched-in-destiny.md (2026-02-24) — CLEAN
+SAMPLE. Eleven Maxwell quotes sampled against the local BYU-speeches
+transcript at their cited timestamps — all verbatim (turf/resurrection,
+image-in-countenances, clever-things, pushing-shoving, Shepherds-not-
+sheepherders, machismo, gentled-self, boils, save-one's-face,
+speak-up-without-speaking-down). D&C 121:41 exact.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
