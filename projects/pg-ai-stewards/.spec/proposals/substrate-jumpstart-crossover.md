@@ -1,10 +1,13 @@
 # ai-jumpstart × pg-ai-stewards — the crossover reflection
 
-**Status:** REFLECTION — Michael, 2026-06-12: "I'm not sure we should do
-anything now, but I think reflecting how it might be tested, or worked
-into pg-ai-stewards is a good first step." Nothing here is ratified to
-build. Grounded in `projects/ai-jumpstart/` (v0.2.1) and
-`experiments/ai-jumpstart/findings.md` (runs 1–3, ablation, night laps).
+**Status:** PLANNED — Michael, 2026-06-12 (later same day): "this is
+good. lets plan to do it, but I dont want to do it yet." Crossover 1
+(the test lab) is ratified-to-plan as **task #30**; build waits until
+OSS-P1 is underway (Michael's sequencing). Includes the book-lane
+handoff: the kimi/qwen jumpstart rounds route through this machinery.
+Grounded in `projects/ai-jumpstart/` (v0.2.1) and
+`experiments/ai-jumpstart/findings.md` (runs 1–3, ablation, night laps —
+now FIVE passing models).
 
 ## The relationship: same DNA, two altitudes
 
