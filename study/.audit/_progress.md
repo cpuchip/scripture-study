@@ -56,7 +56,7 @@ Already done out-of-band: `study/morm-8-three-glories-reading.md` (2026-06-09).
 - [x] 2026-02-08 `study/yt/morganphilpot/appendix_marp.md` **T1** — 5 fixes (SORCERY 1913-as-1828; 3 Ne 10:14 inverting elision; Palmyra triple-date; Nelson quote sourced to Oct 2022)
 - [x] 2026-02-08 `study/yt/morganphilpot/transcript_review_plan.md` **T2** — 3 fixes (chemlah cascade #6; both footer dates)
 - [x] 2026-02-08 `study/yt/morganphilpot/04_revelation_12.md` **T1** — 2 fixes (garbled Oaks quote requoted; Hales citation flagged) + part1 apostle-roster amendment
-- [ ] 2026-02-08 `study/yt/morganphilpot/08_harbinger_and_hinge.md` **T2**
+- [x] 2026-02-08 `study/yt/morganphilpot/08_harbinger_and_hinge.md` **T2** — CLEAN (all sampled quotes exact)
 - [ ] 2026-02-08 `study/yt/morganphilpot/07_type_and_sign.md` **T1**
 - [ ] 2026-02-08 `study/yt/morganphilpot/06_esdras_and_appointed_times.md` **T1**
 - [ ] 2026-02-08 `study/yt/morganphilpot/05_ezekiels_eagle.md` **SAMPLE**

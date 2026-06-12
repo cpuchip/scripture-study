@@ -627,6 +627,14 @@ correct never-returned four — my part1_marp precision note ("only three
 never returned") was wrong; amended: the slide's error was naming Marsh
 as the fourth, and the one-third math holds with the right roster.
 
+### study/yt/morganphilpot/08_harbinger_and_hinge.md (2026-02-08) — CLEAN
+T2. All sampled quotes EXACT (Deut 34:3, Judg 1:16, John 12:13, Rev 7:9,
+Isa 9:11, D&C 77:6/7/12 with honest elisions, D&C 112:25-26, D&C 87:8);
+its storm/tempest line is a pointer to the already-corrected Phase-7
+material; no Webster claims of its own; no footer-date defect. The
+transcript-review addendum (Palmyra/Jericho = zero verbal presence) is
+the file doing the walk's kind of work on itself.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
