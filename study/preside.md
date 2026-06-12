@@ -49,7 +49,7 @@ There is even a portrait of presiding-without-the-right. Pharaoh, "a righteous m
 
 ## III. The Gate
 
-Now the video. At the 47-minute mark, the host of Send Me builds the picture that started this study:
+Now the video. At [the 47-minute mark](https://youtu.be/V40tBshkMnE?t=2845), the host of Send Me builds the picture that started this study:
 
 The king, he says, is on the wall, enlarging the border of the kingdom, standing on the gate — "he's presiding." And then the definition: "you stand on the border between chaos and order. Right? You're the [bulwark]."
 
