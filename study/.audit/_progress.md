@@ -17,9 +17,9 @@ Already done out-of-band: `study/morm-8-three-glories-reading.md` (2026-06-09).
 - [x] 2026-01-23 `study/word.md` **FULL** — CLEAN, 0 edits
 - [x] 2026-01-25 `study/heavenly_mother.md` **FULL** — 4 fixes (misattribution: Clayton→Jackson; constructed Holland quote; proclamation link; Luke 1:28 fragments)
 - [x] 2026-01-26 `study/talks/202510-24brown.md` **SAMPLE** — 2 fixes (Nelson-via-Brown attribution)
-- [ ] 2026-01-27 `study/teaching-in-the-saviors-way/01_teaching-youth.md` **SAMPLE**
-- [ ] 2026-01-27 `study/teaching-in-the-saviors-way/00_overview.md` **SAMPLE**
-- [ ] 2026-01-27 `study/cfm/20260126-teach-these-things-freely.md` **SAMPLE**
+- [x] 2026-01-27 `study/teaching-in-the-saviors-way/01_teaching-youth.md` **SAMPLE** — 1 precision fix
+- [x] 2026-01-27 `study/teaching-in-the-saviors-way/00_overview.md` **SAMPLE** — CLEAN
+- [x] 2026-01-27 `study/cfm/20260126-teach-these-things-freely.md` **SAMPLE** — 3 fixes (confabulated Christofferson quote)
 - [ ] 2026-01-28 `study/receive.md` **FULL**
 - [ ] 2026-01-29 `study/way-truth-life.md` **FULL**
 - [ ] 2026-01-29 `study/faith-01a.md` **FULL**

@@ -91,6 +91,25 @@ wisely") is genuinely his ✓. Count claims spot-checked ("Quotes Nelson 3
 times" ≈ defensible). Talk file/title/Nelson cross-ref (57nelson.md =
 "Confidence in the Presence of God") + manual path all exist ✓.
 
+### study/teaching-in-the-saviors-way/01_teaching-youth.md + 00_overview.md (2026-01-27) — 1 precision fix
+SAMPLE tier. All 5 manual quotes verbatim (13-suggestions file, lines 83/89);
+Moses 6:63 + Luke 22:32 exact; overview's truncated trust-quote is an honest
+fragment. Fix: "Mormon entrusted with records at age 10" → "given charge
+concerning" (Ammaron's commission at ~10; custody at 24, Morm 1:2-4). docs/
+general-conference-examples.md link resolves ✓.
+
+### study/cfm/20260126-teach-these-things-freely.md (2026-01-27) — 3 fixes incl. a confabulated quote
+SAMPLE tier (sampled deep — doctrinal centerpiece). Moses 6:59-60 centerpiece
+EXACT; 6:64-66/68, 1 Jn 5:6-8, Moses 3:7, Moses 6:57 (Man of Holiness) all
+verified. **★ CONFABULATED QUOTE fixed: the Christofferson "Born Again" block
+("The Savior offers to all who will have faith… no other name, nor way, nor
+means") does not exist in the talk** — replaced with his real sentence from
+the talk's note 1 ("The Spirit brings the atoning grace of Christ… making us
+spotless and holy before God"), same doctrine, verified text. Also fixed: a
+constructed Moses 6:59 fragment ("The blood of Christ... sanctifieth from all
+sin" — wording not in the verse) → the verse's actual words; 1 Jn 5:8
+"spirit"→"Spirit" (KJV capital). Bednar + manual links resolve ✓.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
