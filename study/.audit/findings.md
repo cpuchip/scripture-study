@@ -1410,6 +1410,15 @@ caption normalization (incl. "King Noah was a Monger guilty of
 whoredoms," faithful to the caption's own garble). Mormon 8:35 and
 Mosiah 16:5 verbatim.
 
+### study/ai/fatigue.md (2026-03-05) — 1 compressed quote requoted; date corrected
+SAMPLE. All 8 Khare article quotes checked against the live page
+(siddhantkhare.com): 7 verbatim including "AI removed the governor"
+(which the study's own prose also echoes — innocent, the article
+really says it). The "real skill of the AI era" quote compressed
+five short sentences into one rewritten sentence inside quotation
+marks — requoted verbatim with note. Footer date corrected Feb 7 →
+Feb 8, 2026 (per the page). Matt 11:28 verbatim.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
