@@ -96,7 +96,7 @@ Already done out-of-band: `study/morm-8-three-glories-reading.md` (2026-06-09).
 - [x] 2026-02-17 `study/podcast/enjoy-what-enjoy-really-means.md` **T1** — CLEAN (ENJOY fragment aligned to genuine 1828)
 - [x] 2026-02-17 `study/podcast/enjoy-the-warning-we-missed.md` **T1** — quotes verbatim (verified at #81); link paths fixed
 - [x] 2026-02-17 `study/podcast/enjoy-here-is-the-millennium.md` **SAMPLE** — quotes verbatim; BY ellipsis + link paths fixed (18 links across trio)
-- [ ] 2026-02-17 `study/truth-enjoy.md` **T1+FULL**
+- [x] 2026-02-17 `study/truth-enjoy.md` **T1+FULL** — 3 fixes (D&C 88:49 text mis-cited as John 1:5; ENJOY propagation closed; Bednar "constitute"); ~40 renderings verbatim
 - [ ] 2026-02-19 `study/plan-of-salvation/notes-02-mortality.md` **T1**
 - [ ] 2026-02-19 `study/plan-of-salvation/00_plan.md` **T1**
 - [ ] 2026-02-19 `study/serpent-and-dragon.md` **T2+FULL**

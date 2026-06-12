@@ -1045,6 +1045,18 @@ study/gospel-library) — 18 links corrected to ../../; the BY
 Millennium quote's dropped manual-ellipsis had propagated into 003 —
 restored.
 
+### study/truth-enjoy.md (2026-02-17) — 3 fixes (mis-citation + ENJOY propagation + Bednar wording)
+T1+FULL. ★ "the light shineth in darkness, and the darkness
+comprehendeth it not" was cited to John 1:5 — but John 1:5 reads
+"comprehended" (past); the study's exact text is D&C 88:49. Citation
+corrected with a compare-note. The propagated 1913-ENJOY comma aligned
+to genuine + "hold or occupy" added (closes the ENJOY propagation
+chain: #80 study → #82 podcast → here). Bednar "Ordinances are" →
+his actual "constitute authorized channels." Everything else verbatim
+— ~40 renderings, nearly all re-verified earlier this session (D&C
+88:11/32/66, 93:8-9, 131:7 newly checked, all exact). The enjoy-as-
+anti-enjoy reading of D&C 88:32 rests on an exactly-quoted verse.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
