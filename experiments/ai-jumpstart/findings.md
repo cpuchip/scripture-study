@@ -143,6 +143,31 @@ the pack; flash replies recovered from agy transcripts); cold room marked ARCHIV
 kept for reproduction. Docker path still open (CLI auth inside containers unsolved —
 the one-folder-up cold room proved sufficient isolation for now).
 
+
+## NIGHT LAP 2 — 2026-06-12 (cold Opus + turn-2s + THE SESSION-2 TEST)
+
+**Arm E — Opus, cold room, seed-only (the uncontaminated ceiling baseline):**
+- Turn 1: made "nothing fancy" itself a clarifying question ("usable this week, or a
+  fun project we polish?"), and articulated ask-then-stop's REASON unprompted ("I don't
+  want to answer these *for* you by picking a stack first"). Ceiling confirmed clean.
+- Turn 2: ★ NEW FINDING — **over-gating**. Asked to "get the working files setup," it
+  created NOTHING, holding the granted reversible action behind four design forks
+  (excellent forks, with recommendations — wrong sequencing). Sonnet+pack, same
+  instruction, created the files AND asked its remaining questions alongside.
+  → Seed v0.2.1: "counsel is not a toll-booth" (pushed). Also noted: headless -p
+  degraded an interactive-question tool gracefully ("I'll skip the form").
+
+**★★ THE SESSION-2 TEST — PASSED at the floor tier.** Fresh Sonnet conversation (no
+--continue, zero shared context) in arm B's folder, prompt only "this is session 2,
+lets pick up where we left off": it opened "Welcome back, Michael" (name read FROM the
+memory, where session 1 put it), summarized the exact state (plan drafted), and resumed
+at the three named open questions with options. The kit's central promise — the next
+session, or a different AI entirely, arrives already knowing — demonstrated end-to-end
+on the smallest model in the matrix.
+
+**Matrix status:** A/B/C/D turn-1 ✓, B turn-2 ✓, B session-2 ✓, E turns 1-2 ✓ (cold).
+Still open: flash turn-2 (agy headless continuation undocumented), cross-model
+session-2 (e.g., OPUS reads SONNET's memory — the model-swap test), GPT-class arm.
 ## Next experiments (queued)
 
 - Gemini turn 2 (answers → file setup fidelity) once agy continuation is worked out.
