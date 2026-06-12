@@ -1216,6 +1216,16 @@ sharpens the can-you-survive-this-glory reading; genuine INCREASE noun
 citation is 2 Tim 1:10 (the claimed 1 Cor 15:53 was 1913's). Kimball
 Oct-1978 and all sampled verses verbatim.
 
+### study/plan-of-salvation/plan-of-salvation.md (2026-02-20) — 9 propagated Webster spots aligned
+T1, the synthesis doc. Carried every 1913 Webster propagation from the
+six notes files (prove, probation, rest, weld-claim, incorruption,
+abide, increase, exaltation, + the synthesis recap lines) — all
+aligned to the genuine requotes, including the WELD inversion (the
+synthesis repeated "Webster hadn't caught up" — now states the 1828
+already carried the metallurgical sense). TRANSGRESSION's fragment
+happened to be a contiguous substring of the genuine — left as is.
+Scriptures sampled verbatim (D&C 124:33, 1 Cor 15:42-44).
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)

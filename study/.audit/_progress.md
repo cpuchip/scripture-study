@@ -110,7 +110,7 @@ Already done out-of-band: `study/morm-8-three-glories-reading.md` (2026-06-09).
 - [x] 2026-02-20 `study/plan-of-salvation/notes-04-vicarious-work.md` **T1** — ★ WELD claim inverted (1828 HAS the metallurgical sense); 5 Webster 1913 (words 50-53); scriptures verbatim
 - [x] 2026-02-20 `study/plan-of-salvation/notes-05-resurrection-judgment.md` **T1** — 5 Webster 1913 (words 54-58; genuine INCORRUPTION = the study's own conclusion, citing 1 Cor 15:42); scriptures verbatim
 - [x] 2026-02-20 `study/plan-of-salvation/notes-06-kingdoms.md` **T1** — 6 Webster 1913 (words 59-64); 1913-only moon-mansion speculation withdrawn; Kimball + verses verbatim
-- [ ] 2026-02-20 `study/plan-of-salvation/plan-of-salvation.md` **T1**
+- [x] 2026-02-20 `study/plan-of-salvation/plan-of-salvation.md` **T1** — 9 propagated 1913-Webster spots aligned (incl. WELD inversion); scriptures verbatim
 - [ ] 2026-02-20 `study/plan-of-salvation/eternity-paused.md` **T1**
 - [ ] 2026-02-20 `study/miracles-references.md` **FULL**
 - [ ] 2026-02-20 `study/gifts.md` **T1+FULL**
