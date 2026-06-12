@@ -79,7 +79,7 @@ No ambiguity. Stem = Christ.
 **The Rod:**
 > "What is the rod spoken of in the first verse of the 11th chapter of Isaiah, that should come of the Stem of Jesse? Behold, thus saith the Lord: It is a servant in the hands of Christ, who is partly a descendant of Jesse as well as of Ephraim, or of the house of Joseph, on whom there is laid much power." ([D&C 113:3-4](../gospel-library/eng/scriptures/dc-testament/dc/113.md))
 
-Not Christ. A *servant in the hands of Christ*. Mixed lineage — Jesse (Judah/David) AND Ephraim/Joseph. "Much power" laid on him. Webster 1828 defines "rod" as, among others, "a kind of scepter, or badge of office; hence, figuratively, power; authority." The rod is an authority figure.
+Not Christ. A *servant in the hands of Christ*. Mixed lineage — Jesse (Judah/David) AND Ephraim/Joseph. "Much power" laid on him. Webster 1828 defines "rod" as, among others, "a kind of scepter" (sense 4) and "power; authority," citing Psalm 125:3 (sense 11) — and its first sense is "the shoot or long twig of any woody plant; a branch," the rod-as-branch of Isaiah 11 inside the entry itself. *(Requoted 2026-06-12 — the earlier fused wording was the 1913 edition's.)* The rod is an authority figure.
 
 **The Root of Jesse:**
 > "What is the root of Jesse spoken of in the 10th verse of the 11th chapter? Behold, thus saith the Lord, it is a descendant of Jesse, as well as of Joseph, unto whom rightly belongs the priesthood, and the keys of the kingdom, for an ensign, and for the gathering of my people in the last days." ([D&C 113:5-6](../gospel-library/eng/scriptures/dc-testament/dc/113.md))
@@ -180,7 +180,7 @@ Both readings are textually defensible. The footnotes favor the second (linking 
 
 > "Wherefore, Joseph truly saw our day. And he obtained a promise of the Lord, that out of the fruit of his loins the Lord God would raise up a righteous branch unto the house of Israel; not the Messiah, but a branch which was to be broken off." ([2 Nephi 3:5](../gospel-library/eng/scriptures/bofm/2-ne/3.md))
 
-**"Not the Messiah, but a branch."** Webster 1828 defines "branch" (def. 5) as "a line of family descent, in distinction from some other line or lines from the same stock; any descendant in such a line." This figure is a descendant, an offshoot — explicitly not the main stock (Christ).
+**"Not the Messiah, but a branch."** Webster 1828 defines "branch" (sense 4) as "any individual of a family descending in a collateral line; any descendant from a common parent or stock." *(Requoted 2026-06-12 — the earlier wording and numbering were the 1913 edition's.)* This figure is a descendant, an offshoot — explicitly not the main stock (Christ).
 
 > "A choice seer will I raise up out of the fruit of thy loins... unto him will I give commandment that he shall do a work for the fruit of thy loins, his brethren, which shall be of great worth unto them, even to the bringing of them to the knowledge of the covenants." (v. 7)
 
