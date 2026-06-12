@@ -48,6 +48,20 @@ last_active: 2026-06-12T15:38:52
   Lamech alive at Adam-ondi-Ahman); language-of-adam CLEAN at ~45 quotes.
   Zero ARGUMENT-class queued. NEXT: #71 talks/Coming-Closer SAMPLE,
   then transcript, prophets-noah-parallel, farrell-pickering 05/01.
+- UPDATE 4: 89/469, all PUSHED. ★ FEB-19 BOUNDARY VERDICT (files 86-89):
+  scripture discipline TOOK (two files, ~70 quotes, one word off) but
+  Webster did NOT — 11 of 11 post-boundary Webster defs were 1913
+  (words 17-27; dictionary corrupt until June repair, study date is no
+  shield). _workflow.md amended: post-boundary = Webster verify-ALL,
+  scripture sample. Other 80s finds: Nelson Introductory-Remarks quote
+  confabulated (#73); prophets-oaks quoted-within misattributions
+  (Monson/Scott/member/Nelson) + count 21→23; sharatsah = invented
+  Hebrew (#81); ENJOY 1913 chain closed across 4 carriers; podcast trio
+  had 18 broken link paths; D&C 88:49 mis-cited as John 1:5. Gifts:
+  ATONE "At one; together", GRACE "free unmerited", NOBLE "ready to
+  receive truth" (Bereans), genuine FOREORDAIN includes "predestinate"
+  (the distinction is Alma 13's). NEXT: #90 farrell-pickering/thoughts,
+  then priestcraft block (Feb-19), plan-of-salvation notes 03-06.
 - ✅ OCR repair SHIPPED + live-verified (1336c8ce); walk plan RATIFIED
   (.spec/proposals/study-correctness-walk.md)
 

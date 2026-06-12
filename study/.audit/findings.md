@@ -1106,6 +1106,10 @@ reworded v55 — requoted faithfully with correct citations; sources
 list credited "Elder Jörg Klebingat via Bangerter" — the talk is by
 Elder Steven R. Bangerter alone.
 
+### study/farrell-pickering/thoughts.md (2026-02-19) — CLEAN
+SAMPLE. Template file; "Judge not unrighteously" (JST Matt 7:2) and
+"judge righteous judgment" (John 7:24) both genuine; links resolve.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
