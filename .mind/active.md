@@ -29,7 +29,7 @@
 
 **Beyond the Prompt (book)**
 - **ai-jumpstart** (NEW 2026-06-12, public: github.com/cpuchip/ai-jumpstart, `projects/ai-jumpstart/`) — the book's companion kit: point any AI at AGENTS.md and the practices install themselves. v0.1.1 after 2 cold-model experiments (Sonnet+Gemini, both passed the ask-before-build gate; findings: `experiments/ai-jumpstart/findings.md`). PENDING Michael: the book's appendix/QR to the kit; more model runs queued.
-- ★ v4 audit COMPLETE 2026-06-11 (~35 gated edits; EPUB list-rendering fixed; 0 QR collisions). ONLY OPEN: G-2/G-3 — "fourteen questions" + "eight-milestone roadmap" await Michael's VS Code chat archive (~10GB copying; target `OneDrive\…\Stuffleberry\simple-games` workspaceStorage); ⚠ verify-or-hedge before publish. Then: Michael's voice read → pass 3 → KDP. Journal: `projects/scripture-book/.spec/journal/2026-06-11--v4-chat-walk-complete.yaml` · lane: `book-v4-walk`.
+- ★ v4 audit FULLY CLOSED 2026-06-12 — every claim verified or deliberately Michael's (G-2 ten-questions session + G-3 the verbatim Oct-5 "overwhelmed" line recovered from the old-machine archives). Small gates for Michael: P6 seven-vs-eight games · optional P2 Oct-5 counsel enrichment · voice-corpora commit call. Then: his voice read → pass 3 → KDP. Journals: `projects/scripture-book/.spec/journal/2026-06-11--v4-chat-walk-complete.yaml` + `.spec/journal/2026-06-12--night-archive-dig-voice-profile.md` · lane: `book-v4-walk`.
 
 **Studies / series**
 - Canon-walk series: **PoGP walk next** (BoM walk complete; scaffold reusable; Strong's MCP live for the Bible walks). Seed: 1 Ne 14 + Rev 1 + Ether 4 as one vision.
