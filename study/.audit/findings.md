@@ -21,6 +21,17 @@ Abr 4 verse text. Nits (no edits): Moses 1:39 + D&C 88:40 drop sentence-opening
 "For behold,"/"For" without brackets; "Abr 5:2-3" cites two verses, quotes only
 v2. All links resolve. No Webster content.
 
+### study/intelligence.md (2026-01-22) — 1 REQUOTE fixed
+FULL tier. 23 direct quotes verified (D&C 93:13/24/28/29/30/33-36, D&C
+88:6-13/25/40/42-43, Abr 3:19/21/22, D&C 130:8-10/18, D&C 132:19-20, Ps 82:6,
+Moses 4:28). **REQUOTE fixed: Abr 4:18** — '"And they watched … ordered; until
+they obeyed"' → '"And the Gods watched … ordered until they obeyed"' (subject
+drift + inserted semicolon inside quotation marks). BD-verified: Urim and
+Thummim = "Lights and Perfections" (the study's "or Lights and Truths"
+alternative is unattributed but presented as alternative — left). Moses
+4:28/Gen 3:22 dual-cite: quote matches Genesis exactly (Moses lacks the comma)
+— dual citation covers it. All links resolve. No Webster content.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)

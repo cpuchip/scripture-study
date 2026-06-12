@@ -13,7 +13,7 @@ under "needs Michael" — do NOT rewrite arguments solo.
 Already done out-of-band: `study/morm-8-three-glories-reading.md` (2026-06-09).
 
 - [x] 2026-01-21 `study/creation.md` **FULL** — CLEAN, 0 edits
-- [ ] 2026-01-22 `study/intelligence.md` **FULL**
+- [x] 2026-01-22 `study/intelligence.md` **FULL** — 1 REQUOTE fixed (Abr 4:18)
 - [ ] 2026-01-23 `study/word.md` **FULL**
 - [ ] 2026-01-25 `study/heavenly_mother.md` **FULL**
 - [ ] 2026-01-26 `study/talks/202510-24brown.md` **SAMPLE**
