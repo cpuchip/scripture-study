@@ -1017,6 +1017,18 @@ enjoy → 2 Ne 4:15, 59f words → John 6:68, exactly as stated.
 PROPAGATION: 1913-ENJOY phrasing also in podcast ×2 + truth-enjoy.md
 (all queued; fix at each).
 
+### study/enjoy-the-words-of-eternal-life-reflection.md (2026-02-17) — 1 confabulated Hebrew word + 1 ellipsis
+T1+FULL. ★ "The Hebrew concept behind diligence is *sharatsah*" —
+sharatsah is NOT a Strong's lexeme (search returns nothing), and the
+premise is wrong: D&C 84 is English revelation with no Hebrew behind
+it. Replaced with genuine Webster 1828 DILIGENT ("steady in
+application to business; constant in effort") + correction note. The
+BY Millennium quote dropped the manual's own ellipsis (restored). All
+else verbatim: BY ch 43/45 (groat, Zion-to-redeem, here-is-the-
+Millennium), Christofferson Apr-2019, Jones hinge quote + accidental-
+conversion + sweat/bleed, D&C 84:33/43-47/54-57 complete, Moses
+7:16/62/63/69, 4 Ne 1:12/15-17. Jones fn-10 = Moses 6:58 as claimed.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)

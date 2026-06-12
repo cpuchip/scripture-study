@@ -92,7 +92,7 @@ Already done out-of-band: `study/morm-8-three-glories-reading.md` (2026-06-09).
 - [x] 2026-02-15 `study/yt/farrell-pickering/02_temple_mount.md` **SAMPLE** — CLEAN (1 article fix Heb 9:11)
 - [x] 2026-02-15 `study/yt/farrell-pickering/03_prayer_on_temple_mount.md` **SAMPLE** — CLEAN (all renderings + transcript quotes verbatim)
 - [x] 2026-02-16 `study/enjoy-the-words-of-eternal-life.md` **T1+FULL** — ENJOY 1913 word 16 requoted (genuine "hold or occupy" + Num 36:8/Lev 26:34; Heb 11:25 was 1913-only); all scriptures + footnote trail verbatim; propagation noted (podcast ×2, truth-enjoy)
-- [ ] 2026-02-17 `study/enjoy-the-words-of-eternal-life-reflection.md` **T1+FULL**
+- [x] 2026-02-17 `study/enjoy-the-words-of-eternal-life-reflection.md` **T1+FULL** — 2 fixes (★ "sharatsah" = confabulated Hebrew, replaced w/ genuine Webster DILIGENT + note; BY ellipsis); all quotes verbatim
 - [ ] 2026-02-17 `study/podcast/enjoy-what-enjoy-really-means.md` **T1**
 - [ ] 2026-02-17 `study/podcast/enjoy-the-warning-we-missed.md` **T1**
 - [ ] 2026-02-17 `study/podcast/enjoy-here-is-the-millennium.md` **SAMPLE**
