@@ -1075,6 +1075,12 @@ in Webster's own words) and cites Amos 4:12; CONSECRATE's genuine verb
 beats the 1913 adjective; PROBATION's "being qualified" carries the
 same proving+qualifying duality.
 
+### study/plan-of-salvation/00_plan.md (2026-02-19) — CLEAN
+T1 planning doc. PMG "All that is unfair about life..." verbatim
+(lesson 2, line 358); the Oaks become-quote verified at #64; Alma
+34:34 fragment at #86. All 16 linked files (6 phase notes + synthesis
++ becoming companion + 8 studies) resolve.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)

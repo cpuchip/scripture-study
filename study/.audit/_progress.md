@@ -98,7 +98,7 @@ Already done out-of-band: `study/morm-8-three-glories-reading.md` (2026-06-09).
 - [x] 2026-02-17 `study/podcast/enjoy-here-is-the-millennium.md` **SAMPLE** — quotes verbatim; BY ellipsis + link paths fixed (18 links across trio)
 - [x] 2026-02-17 `study/truth-enjoy.md` **T1+FULL** — 3 fixes (D&C 88:49 text mis-cited as John 1:5; ENJOY propagation closed; Bednar "constitute"); ~40 renderings verbatim
 - [x] 2026-02-19 `study/plan-of-salvation/notes-02-mortality.md` **T1** — ★ boundary verdict: ALL scripture+talks verbatim, ALL 6 Webster 1913 (words 17-22, requoted w/ gifts: ENTICE both-directions, PREPARE holiness-of-heart)
-- [ ] 2026-02-19 `study/plan-of-salvation/00_plan.md` **T1**
+- [x] 2026-02-19 `study/plan-of-salvation/00_plan.md` **T1** — CLEAN (PMG quote verbatim; all 16 links resolve)
 - [ ] 2026-02-19 `study/serpent-and-dragon.md` **T2+FULL**
 - [ ] 2026-02-19 `study/plan-of-salvation/notes-01-premortal.md` **T1**
 - [ ] 2026-02-19 `study/farrell-pickering/thoughts.md` **SAMPLE**
