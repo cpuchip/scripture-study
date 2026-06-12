@@ -9,9 +9,12 @@ last_active: 2026-06-12T00:00:00
 ## Working on
 - **pg-ai-stewards OSS extraction** (continues the `pg-ai-stewards-oss` lane —
   same session, retitled): spec RATIFIED, Apache-2.0 FINAL (`3c43d4e`).
-  **"Anatomy of a Turn" SHIPPED (`0e8c3c9`)** + order-research update
-  (serial-position section; covenant first AND last). Next: P1 extraction
-  (task #151), side-by-side compose (`stewards-oss-*`, 55434/8081/8091).
+  **"Anatomy of a Turn" SHIPPED (`0e8c3c9`)** + order-research update +
+  2026 regrounding (`1a604af`). **Cutover gate AMENDED (`8662448`,
+  ratified 06-12): FULL PARITY before the cut** — coder-mcp + UI become
+  pre-cutover (P2 before cut), 20 mismatches + ledger wart now on the
+  cutover critical path. Next: P1 extraction (task #151), side-by-side
+  compose (`stewards-oss-*`, 55434/8081/8091).
 - **PR.1 SHIPPED + live-verified 2026-06-12** (inbox assignment, Michael's
   "best of your judgement" grant): covenants.extensions catch-all +
   presiding render + Watch echo; reseed through the real path; smoke
