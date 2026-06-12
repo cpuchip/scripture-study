@@ -708,6 +708,17 @@ T2 plan. Webster references are methodology pointers only (no quoted
 definitions). Sole fix: the impossible-July-2025 footer dates (5th
 instance of the class in this cluster) → git-corrected.
 
+### study/yt/morganphilpot/09_culmination.md (2026-02-08) — 5 fixes (TEMPEST quote = 9th 1913 instance; hemlah ×2; date)
+T1, the cluster's last phase evaluation. The deep-reading table's
+TEMPEST quote ("a sudden and violent storm… usually attended by a heavy
+rain, with lightning and thunder") was not the 1828 entry's wording, and
+STORM's "definition 4" numbering was the 1913 artifact → both table rows
++ the In-Line analysis corrected to the genuine senses (the softened
+both-registers form, consistent with part3/verbal_only #1). Two hemlah
+framings → correction pointers (8th and 9th cascade sites). The
+"Added 2025-07-26" review-note date → git-corrected. Alma 32:10-11,
+D&C 49:7, Hel 14:30, D&C 87:8 EXACT.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
