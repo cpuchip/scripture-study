@@ -1462,6 +1462,12 @@ across the source's "he said" frame), Matsuoka and Thompson/Reddit
 verbatim. The internal fatigue.md cross-quote matches its table
 wording.
 
+### study/ai/multi-agent-ideas.md (2026-03-11) — 2 stale proposal links fixed
+SAMPLE. The second-brain-architecture proposal moved to
+.spec/proposals/deferred/ after this was written — both references
+updated. D&C 88:119, Luke 14:28, Mosiah 4:27 all verbatim; the
+work-with-ai guide links resolve.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
