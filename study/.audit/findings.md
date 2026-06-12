@@ -585,6 +585,24 @@ moves the standing to the beast — "he stood upon the sand of the sea");
 the Luke 4:6 / Dan 7 footnote-chain claims match the markers. No date
 footer to confabulate. The file the rest of the cluster should have been.
 
+### study/yt/morganphilpot/appendix_marp.md (2026-02-08) — 5 fixes (1913 SORCERY; meaning-inverting elision; triple-incompatible date table)
+T1. Webster checks: WIZARD, ENCHANTER, PHARMACOLOGY genuine 1828 EXACT;
+**SORCERY was 1913-as-1828** ("or supposed assistance") → requoted.
+**3 Ne 10:14's elision INVERTED the verse's meaning** (dropping "see and
+behold if" turned a rhetorical they-ARE-fulfilling into a flat are-NOT)
+→ restored with note. The Palmyra slide stacked THREE mutually
+incompatible date claims (1 Nisan + 7th-day-of-Passover + day-Christ-
+died) → corrected (same class as part2's). The uncited "greatest
+manifestations" Nelson quote hunted down: REAL and EXACT — **Oct 2022
+"Overcome the World and Find Rest"** (local grep had missed it through
+italics markup; Exa located it, local file confirmed verbatim) → sourced.
+The "hinge point" row re-sourced (Rome via Church News Mar-2019;
+bicentennial via Eyring Apr-2020). The 8-row Nelson warning timeline
+otherwise verified VERBATIM against local talks (Apr/Oct 2018, Apr 2019
+"Time is running out", Oct 2020 very-elect, Apr 2021 commotion, Oct 2021
+unprecedented, Apr 2022 momentum). 1 Ne 14, 2 Ne 6, JS-M 1:32-33, D&C
+88/121 fragments spot-checked sound.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
