@@ -166,7 +166,7 @@ This study follows the **Video Evaluation workflow**:
 
 **Content:**
 - D&C 84:98-102 — "Zion Redeemed" (AI-generated song from scripture)
-- "If you believe the King of Kings is in charge, it's not that scary"
+- "If you actually believe the King of Kings is in charge, it's not that scary"
 - Shakespeare's Julius Caesar: "a coward dies a thousand deaths"
 - D&C 88 — "quickened and caught up"
 - Denver airport final panel: tree of life, Adam-ondi-Ahman scenario
