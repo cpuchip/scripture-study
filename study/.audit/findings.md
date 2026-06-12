@@ -1129,6 +1129,17 @@ and-honey labeled 28) — rebuilt verbatim as 24-27. Everything else
 3 Ne 21/30, D&C 33:4, 2 Ne 10:5, Mosiah 18, McConkie ×3, the 29a-e
 footnote chain) verbatim.
 
+### study/order-of-god-modern-lens.md (2026-02-19) — 1 attribution fix
+FULL, post-boundary, no Webster. ~30 talk quotes across 8 talks
+(McConkie 1974/1977/1982, Eyring 2008/2017, Nelson 2019, Oaks 2014,
+Renlund 2023) — ALL verbatim including the full 1982 doctrine sequence
+and the Alma 13:11-12 quotation-within-1977. One fix: the "endowed
+with the same power" quote is M. RUSSELL BALLARD's (Oaks's fn 16), not
+Oaks's own — re-attributed. The Kimball silent-partners quote IS in
+Oaks 2014 verbatim (italics-broke-grep gotcha, third occurrence this
+walk). Post-boundary talk-quote discipline matches the scripture
+pattern: written with sources open.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
