@@ -933,6 +933,17 @@ path cell ellipsis. Verified-true: "four divine helps" is the talk's
 own count ("don't hold me to my number of *four*"); Moses 8 fragments
 all verbatim; manual Ch-13 "Every sincere seeker" exact.
 
+### study/yt/farrell-pickering/05_millennial_hope.md (2026-02-15) — 1 word restored (×3 instances)
+SAMPLE. D&C 84:96-102 (the Zion song, all four blockquotes), 88:91/
+96-98 all verbatim. Transcript quotes verified at timestamp: quickened-
+and-caught-up, coward-dies-a-thousand-deaths + "Get over it. Be a
+hero. Live.", most-exciting-times, Father-just-as-worried, Grok
+"absolutely has to be a god mathematically," the Hyde Q&A
+white-covered-book and rods claims (2:00:42-2:02:13, "Horson Pike"
+transcript garble noted). One fix: the King-of-Kings quote dropped
+"actually" ("if you actually believe...") — restored in 05 (×2) and
+the README (propagated).
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
