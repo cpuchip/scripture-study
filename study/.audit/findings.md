@@ -1513,6 +1513,11 @@ real (0:47, study said 0:48 — fixed), and the video opens with
 "Here's the moment that stopped me cold," a second tic the audit
 didn't note. All other blog quotes verbatim.
 
+### study/yt/title-of-liberty/README.md (2026-03-14) — CLEAN
+SAMPLE. Index README, no quotes. The becoming/title-of-liberty
+move-link resolves; evaluation.md exists and carries the claimed
+7/10; transcript files present.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)

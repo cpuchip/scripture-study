@@ -135,7 +135,7 @@ Already done out-of-band: `study/morm-8-three-glories-reading.md` (2026-06-09).
 - [x] 2026-03-12 `study/atonement/nevertheless-prophets.md` **SAMPLE** — Cavalcante was 1 Ne 4:6-7 not 1:1 (cluster 4→3, corrected); 14 talk quotes + scriptures verbatim
 - [x] 2026-03-12 `study/atonement/how-is-it-done-prophets.md` **SAMPLE** — voice count 13→9 fixed; "33 times since Brigham Young" verified EXACT; 18 talk quotes verbatim
 - [x] 2026-03-13 `study/yt/voice-analysis-ai-vs-michael.md` **T2** — restored Michael's original typos in 2 blog quotes; 0:48→0:47; video transcript downloaded + claim verified; 16 self-citations all real
-- [ ] 2026-03-14 `study/yt/title-of-liberty/README.md` **SAMPLE**
+- [x] 2026-03-14 `study/yt/title-of-liberty/README.md` **SAMPLE** — CLEAN (links resolve, 7/10 claim matches)
 - [ ] 2026-03-14 `study/yt/title-of-liberty/transcript.md` **SAMPLE**
 - [ ] 2026-03-14 `study/yt/title-of-liberty/evaluation.md` **SAMPLE**
 - [ ] 2026-03-15 `study/yt/title-of-liberty/guidance.md` **SAMPLE**
