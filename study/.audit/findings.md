@@ -1374,6 +1374,13 @@ songs corpus (Isa 42/49/50/52/53, Jer 23:5-6, Ezek 34/37, 2 Ne 3, D&C
 85:7/86:8-11/103:16-21, D&C 130:18) — all verbatim; two punctuation
 marks restored in Isa 53:5/10.
 
+### study/abinadi-how-to-read.md (2026-03-03) — 1 Webster 1913 (word 86); SEED + EXPOUND held near-genuine
+T1+FULL, post-boundary. DECLARE was 1913 ("to make clear" → genuine
+"to clear; to free from obscurity; to make plain"); SEED and EXPOUND
+matched genuine modulo a word each (aligned). All ~28 scripture
+renderings verbatim across Mosiah 11-18, Alma 36:17, 3 Ne 23, Luke
+24 — the entire Abinadi narrative chain checked clean.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)

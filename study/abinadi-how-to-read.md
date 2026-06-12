@@ -141,13 +141,13 @@ Father and Son simultaneously, one and distinct. One by nature (both God), disti
 
 > "And now I say unto you, who shall declare his generation? Behold, I say unto you, that when his soul has been made an offering for sin he shall see his seed. And now what say ye? And who shall be his seed?" ([Mosiah 15:10](../gospel-library/eng/scriptures/bofm/mosiah/15.md))
 
-This is the hinge of the entire argument. Isaiah 53:8 asks "who shall declare his generation?" and Isaiah 53:10 says "he shall see his seed." In Webster's 1828 dictionary, "declare" means "to make clear; to free from obscurity." Abinadi is asking: *who will make clear the meaning of his offspring?* And then he answers his own question. He **declares** it — he makes it clear.
+This is the hinge of the entire argument. Isaiah 53:8 asks "who shall declare his generation?" and Isaiah 53:10 says "he shall see his seed." In Webster's 1828 dictionary, "declare" means "to clear; to free from obscurity; to make plain" *(requoted 2026-06-12 — the earlier wording was the 1913 edition's)*. Abinadi is asking: *who will make plain the meaning of his offspring?* And then he answers his own question. He **declares** it — he makes it clear.
 
 ### The Seed Redefined
 
 > "Whosoever has heard the words of the prophets, yea, all the holy prophets who have prophesied concerning the coming of the Lord — I say unto you, that all those who have hearkened unto their words, and believed that the Lord would redeem his people, and have looked forward to that day for a remission of their sins, I say unto you, that these are his seed, or they are the heirs of the kingdom of God." ([Mosiah 15:11](../gospel-library/eng/scriptures/bofm/mosiah/15.md))
 
-Christ's "seed" = those who hear the prophets AND believe AND look forward for remission. Three conditions. Not biological descent. Not national identity. Covenantal belonging through faith. Webster's 1828 defines "seed" both as "progeny/offspring" and as "that from which anything springs; first principle; original." Abinadi redefines seed from genealogy to origin — Christ's seed are anyone in whom his Atonement takes root and grows.
+Christ's "seed" = those who hear the prophets AND believe AND look forward for remission. Three conditions. Not biological descent. Not national identity. Covenantal belonging through faith. Webster's 1828 defines "seed" both as "progeny; offspring; children; descendants; as the seed of Abraham" and as "that from which any thing springs; first principle; original." Abinadi redefines seed from genealogy to origin — Christ's seed are anyone in whom his Atonement takes root and grows.
 
 The logic is beautifully circular:
 
@@ -285,7 +285,7 @@ Search. Not read — **search**. Diligently. And what does the searching look li
 
 > "When Jesus had expounded all the scriptures in one, which they had written, he commanded them that they should teach the things which he had expounded unto them." ([3 Nephi 23:14](../gospel-library/eng/scriptures/bofm/3-ne/23.md))
 
-"Expounded all the scriptures **in one**." Webster's 1828 defines "expound" as "to lay open the meaning of; to clear of obscurity." Christ reads ALL the scriptures as a unified whole pointing to himself. This is exactly Abinadi's method — "even all the prophets who have prophesied ever since the world began — have they not spoken more or less concerning these things?" ([Mosiah 13:33](../gospel-library/eng/scriptures/bofm/mosiah/13.md)). Christ unifies; the priests fragment.
+"Expounded all the scriptures **in one**." Webster's 1828 defines "expound" as "to explain; to lay open the meaning; to clear of obscurity; to interpret." Christ reads ALL the scriptures as a unified whole pointing to himself. This is exactly Abinadi's method — "even all the prophets who have prophesied ever since the world began — have they not spoken more or less concerning these things?" ([Mosiah 13:33](../gospel-library/eng/scriptures/bofm/mosiah/13.md)). Christ unifies; the priests fragment.
 
 On the Emmaus road in Luke, the same method appears:
 
