@@ -635,6 +635,19 @@ material; no Webster claims of its own; no footer-date defect. The
 transcript-review addendum (Palmyra/Jericho = zero verbal presence) is
 the file doing the walk's kind of work on itself.
 
+### study/yt/morganphilpot/07_type_and_sign.md (2026-02-08) — 6 fixes (SORCERY 1913-as-1828 ×4; Hinckley wording drift; constructed 3 Ne 6 fragment)
+T1. **The SORCERY 1913 wording appeared FOUR times** (incl. one instance
+extended with more 1913-only text, "the power exercised over others by
+the aid of evil spirits") → all requoted to the genuine 1828 ("the power
+of commanding evil spirits"). The Hinckley Gadianton quote had drifted
+in THIS file only ("to wrest the land from the hands of the righteous"
+— not in the talk; the file's two siblings carry it correctly) → real
+wording restored. The 3 Ne "6:2" fragment was constructed ("And the
+people began again to have peace in the land") → v4's real words + cite
+6:4, 12. VERIFIED EXACT: D&C 38:39, 3 Ne 6:12, Isa 8:20, 3 Ne 4:30,
+Bednar "In the Space of Not Many Years" (title + the
+not-primarily-historical quote), Strong's 5331 claim sound.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
