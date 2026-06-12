@@ -877,6 +877,16 @@ accurately quoted verse. Only fix: a table fragment dropped a word
 ("fire and with the Holy Ghost," 3 Ne 11:35). Source-open throughout —
 the strongest clean file at this density yet.
 
+### study/yt/farrell-pickering/README.md (2026-02-14) — 1 fix (D&C 121:33 gloss)
+T2. The evaluation-focus line glossed D&C 121:33 as "God's arm is
+stretched out still" — that refrain is Isaiah's (5:25 etc.); 121:33 is
+the puny-arm/Missouri-river verse. Gloss corrected to the actual text;
+grep confirmed the error never propagated to the five phase files.
+Verified: 1 Thes 5:21 epigraph verbatim; D&C 49:7 gloss exact; all 5
+phase links + transcript path resolve; the Trump "philosophers /
+we're-not-going-to-let-that-happen" clip is verbatim in the transcript
+at 1:31:13-18.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)

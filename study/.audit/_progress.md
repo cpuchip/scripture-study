@@ -80,7 +80,7 @@ Already done out-of-band: `study/morm-8-three-glories-reading.md` (2026-06-09).
 - [x] 2026-02-14 `study/cfm/20260215-noah-found-grace.md` **T1→FULL** — 3 fixes (GRACE + PERFECT 1913 words 14-15 requoted w/ "free unmerited" gift; Maxwell quote real but re-sourced to CFM manual; ~24 scriptures + 3 footnote claims verbatim)
 - [x] 2026-02-14 `study/cfm/20260215-genealogy.md` **SAMPLE→FULL** — 5 fixes (LoF 2:52 transposition; D&C 107 list: Cainan ordainer unstated, Mahalaleel+Jared rows added; v57 wording; Lamech alive at Adam-ondi-Ahman; Ps 90:10 ≠ 120 yrs); all arithmetic + talks verified
 - [x] 2026-02-14 `study/language-of-adam.md` **FULL** — CLEAN (~45 quotes verbatim incl. Uchtdorf "German" + both footnote chains; 1 table-fragment word restored)
-- [ ] 2026-02-14 `study/yt/farrell-pickering/README.md` **T2**
+- [x] 2026-02-14 `study/yt/farrell-pickering/README.md` **T2** — 1 fix (D&C 121:33 glossed with Isaiah's refrain; corrected, no propagation); epigraph + links + Trump clip verified
 - [ ] 2026-02-15 `study/cfm/20260215-prophets-nelson.md` **SAMPLE**
 - [ ] 2026-02-15 `study/talks/Coming-Closer-to-Jesus-Christ.md` **SAMPLE**
 - [ ] 2026-02-15 `study/talks/Coming-Closer-to-Jesus-Christ_transcript.md` **SAMPLE**
