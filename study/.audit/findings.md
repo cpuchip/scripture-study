@@ -944,6 +944,16 @@ transcript garble noted). One fix: the King-of-Kings quote dropped
 "actually" ("if you actually believe...") — restored in 05 (×2) and
 the README (propagated).
 
+### study/yt/farrell-pickering/01_daniels_numbers.md (2026-02-15) — CLEAN (1 punctuation)
+SAMPLE. All scripture renderings verbatim: Dan 8:13-14/19/23-25 + the
+chapter heading quoted exactly, Isa 56:7-8, D&C 76:75, D&C 91:1-6
+(elisions marked), 3 Ne 2:1, JS-M 1:37/40, Dan 12:4/8-9, Lev 23:2.
+Transcript quotes all verified at timestamp: "numbers are solid,"
+"rock solid," "3 or 4 years," "total feral conjecture," BoM-as-main-
+model, "pretty strong last time," betrayal ("headto head" transcript
+artifact normalized fairly). One fix: Mark 11:17 KJV ends "house of
+prayer?" not ":".
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
