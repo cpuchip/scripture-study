@@ -333,6 +333,21 @@ honest elisions (D&C 93:29-31, Moses 7:32-33, Moses 4:3, 2 Ne 2:11/14/
 46:12/41:13, Gen 13:13). Sole fix: Moroni 10:34 quote completed to the
 sentence end ("…the Eternal Judge of both quick and dead").
 
+### study/mazzaroth-01.md (2026-02-03) — 8 micro-fixes across ~30 quotes
+FULL tier, reference-collection file. ~25 scripture fragments verified
+(Isa 40:26, Ps 8/19/97/147, Job 9:7-9 + 38:4-7, Amos 5:8, Abr 3:6/13,
+Gen 15:5/37:9-10, Ex 32:13, Jer 31:35/33:22, D&C 132:30, Moses 1:33-35/
+3:1, Neh 9:6, Deut 4:19, 1 Cor 15:41, Luke 21:25, Joel 2:10, D&C 88:87,
+Isa 34:4); all 5 talk quotes EXACT with titles real (Tai, Sitati, Eyring,
+Oaks paraphrase, Hirst). Fixes: **D&C 76:81 → 76:98** (the telestial-
+glory-is-one wording is v98, not v81); **Joel 2:10 "shall be darkened" →
+"shall be dark"** (the "darkened" wording is Joel 3:15's); D&C 121:31
+unmarked mid-quote elision → ellipsis; 4 mid-sentence quote-ends
+completed to their real sentence ends (Jer 33:22, Deut 4:19, D&C 88:87
+fig-tree, Isa 34:4 falling-fig); **TG Astronomy list corrected — the
+study claimed it includes Facsimile 2 (it doesn't)** → rebuilt from the
+actual TG entry.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
