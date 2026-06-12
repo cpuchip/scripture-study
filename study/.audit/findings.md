@@ -1292,6 +1292,18 @@ verbatim. Everything else exact: Nelson Ministering ×4 (the name-but-
 no-blessing story word-for-word), Freeman ×2, Bowen Emily account,
 D&C 132:47/84:85/107:18/1:24,38, James 5:14-15, 3 Ne 17:9.
 
+### study/plan-of-salvation/father-and-son.md (2026-02-23) — all 5 Webster 1913 (words 71-75); the genuine entries ARE the thesis
+T1, post-boundary. FATHER, AUTHOR, DESIGN, INVESTITURE, SON all 1913 —
+and the genuine entries hand this study its argument more directly
+than any file yet: genuine FATHER's own examples are "God is the
+father of spirits" and "God as creator is the father of all men";
+genuine AUTHOR's example is "God is the author of the Universe";
+genuine DESIGN's illustration is "The father designs his son for the
+profession..."; genuine SON's Christ-sense says He is the Son "in
+consequence of his relation to the Father." The 1916 Exposition
+epigraph verbatim (teachings-joseph-f-smith ch 40); Moses 1:6/25/33
+fragments exact.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
