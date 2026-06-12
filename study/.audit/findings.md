@@ -1468,6 +1468,24 @@ SAMPLE. The second-brain-architecture proposal moved to
 updated. D&C 88:119, Luke 14:28, Mosiah 4:27 all verbatim; the
 work-with-ai guide links resolve.
 
+### study/atonement/nevertheless-prophets.md (2026-03-12) — Cavalcante mislisted in the 1 Ne 1:1 cluster; 14 talk quotes verbatim
+SAMPLE + hot-zone. Cavalcante (Oct 2024) never cites 1 Ne 1:1 —
+his Nephi "nevertheless" is 1 Ne 4:6-7 ("led by the Spirit …
+Nevertheless [you] went forth"); cluster corrected to three
+(Stevenson/Villanueva/Zeballos verified citing it) with a dated
+note moving Cavalcante to his actual verse. Everything else exact:
+Holland 1989 (winepress + "one thing only never faileth"), 2009
+(supreme-sacrifice nevertheless + lonely-path), 2021 (refuge with
+brackets + "own version of the cry"); Eyring 2025 proving-moments
++ 2021 still-small-voice; Nelson 2021 D&C 78 + "is, indeed
+leading"; Stevenson 2020; Hales 2024 ×2 (study drops the talk's
+bracketed "[in my life]" editorial insert — accepted); Marriott
+2015; Montoya 2022; Maxwell 2001 ("[stand alone]" bracket faithful
+to antecedent); Eddy 2022. D&C-19 cluster verified (Aidukaitis/
+Waddell/Kim/Soares all reference D&C 19). Scriptures verbatim
+(2 Ne 2:2, 1 Ne 1:1, Matt 26:39, D&C 78:17-18 incl. the talk's
+marked ellipsis).
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
