@@ -738,6 +738,16 @@ Helm", Eyring 1996 "Witnesses for God", Ballard Apr-2023 "Remember What
 Matters Most" — title real); 2 Ne 25:26 exact; video quotes are
 timestamped reportage.
 
+### study/atoning-love-andersen.md (2026-02-08) — CLEAN (the control twin of the Wells confabulation)
+FULL. All 11 blockquotes EXACT against the Andersen talk (read in full
+today for #18): the Wells story is CORRECT here (wife, plane crash,
+self-blame over inspection/training); the Oaks quote carries an explicit
+"quoted in the talk" via-attribution; "Let these things trouble you no
+more" correctly sourced to Alma 42:29; the Mosiah 21 quote mirrors the
+talk's own elided rendering. **Same talk as eq/20260208 (#18, the
+confabulated-biography file) — the pair is the day's cleanest controlled
+experiment: read-the-talk = clean, recall-the-talk = invented.**
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
