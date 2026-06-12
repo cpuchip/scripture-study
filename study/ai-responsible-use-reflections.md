@@ -104,7 +104,7 @@ From Elder Bednar:
 > "Truth is knowledge of things as they really are. Artificial intelligence cannot simulate, imitate, or replace the influence of the Holy Ghost in our lives."
 
 Our approach acknowledges this clearly. The [copilot-instructions.md](../.github/copilot-instructions.md) includes:
-> "The user approaches this with faith in Jesus Christ and the Restoration. Respect that framework."
+> "The user approaches this with faith in Jesus Christ and the Restoration. Respect and work within that framework."
 
 AI cannot provide revelation. It helps gather context for study *with* the Spirit.
 
@@ -198,10 +198,10 @@ Only the Spirit speaks of things as they *really* are. AI speaks of things as th
 | Talk | Key Insight |
 |------|-------------|
 | [Elder Bednar, Oct 2025 - "They Are Their Own Judges"](../gospel-library/eng/general-conference/2025/10/51bednar.md) | Moral agency is "ability to choose and act for ourselves in ways that are good, honest, virtuous" |
-| [President Nelson, Oct 2021 - "Make Time for the Lord"](../gospel-library/eng/general-conference/2021/10/59nelson.md) | "The Spirit speaketh of things as they really are"—foundation for seeing clearly |
+| [President Nelson, Oct 2021 - "Make Time for the Lord"](../gospel-library/eng/general-conference/2021/10/59nelson.md) | "Never underestimate the profound truth that 'the Spirit speaketh … of things as they *really* are'" |
 | [Elder Cook, Apr 2024 - "Be One with Christ"](../gospel-library/eng/general-conference/2024/04/27cook.md) | "Without moral agency, we could not learn, progress, or choose to be one with Christ" |
-| [Elder Cook, Oct 2021 - "Personal Peace in Challenging Times"](../gospel-library/eng/general-conference/2021/10/46cook.md) | "Agency is the ability and privilege God gives us to choose and to act for ourselves" |
-| [Sister Craig, Oct 2020 - "Eyes to See"](../gospel-library/eng/general-conference/2020/10/14craig.md) | "The most important things for us to see clearly are who God is and who we really are" |
+| [Elder Cook, Oct 2021 - "Personal Peace in Challenging Times"](../gospel-library/eng/general-conference/2021/10/46cook.md) | Quoting the Gospel Topics article: "Agency is the ability and privilege God gives us to choose and to act for ourselves" |
+| [Sister Craig, Oct 2020 - "Eyes to See"](../gospel-library/eng/general-conference/2020/10/14craig.md) | "Perhaps the most important things for us to see clearly are who God is and who we really are" |
 | [Elder Brown, Oct 2025 - "The Eternal Gift of Testimony"](../gospel-library/eng/general-conference/2025/10/24brown.md) | "Agency Is the Gift to Choose and Act for Ourselves... It is also the responsibility to choose well" |
 
 ---
