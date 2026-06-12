@@ -2,6 +2,12 @@
 # Source: git first-add order (intra-commit lexical). The schema_migrations
 # backfill lost pre-ledger ordering; this manifest is the recoverable truth.
 # A fresh-DB bootstrap MUST use this order, not lexical (see compose_messages).
+# 2026-06-12 repair (OSS-P1 classification pass): nine entries applied live
+# 2026-06-09..10 (r11-r17, ct2-5, ct2-7e) were never appended; restored here
+# in schema_migrations applied_at order. scratch-ct2-run2-codewright.sql is
+# deliberately NOT listed (experiment apparatus) but WAS replayed into live
+# by the bridge's lexical directory scan — disposition pending the
+# migrate-manifest design call.
 inverse-test.sql
 verify-loop.sql
 verify-1-6-1-reaper-check.sql
@@ -224,6 +230,15 @@ ct2-7a2-wire-self-notes.sql
 ct2-7b-self-notes-tools.sql
 ct2-7c-persona-room-facets.sql
 ct2-7d-working-tags.sql
+r11-subagent-auto-verify.sql
+ct2-7e-self-prompt-proposals.sql
+r12-research-codebase-activate.sql
+r13-code-persona.sql
+r14-codewright-repo-awareness.sql
+r15-codewright-no-deny-leak.sql
+r16-room-say-foundation.sql
+r17-room-say-grant.sql
+ct2-5-subagent-autotag.sql
 r18-persona-turn-budget.sql
 r19-persona-turn-16k.sql
 r20-room-say-as.sql
