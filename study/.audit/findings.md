@@ -1029,6 +1029,12 @@ Millennium), Christofferson Apr-2019, Jones hinge quote + accidental-
 conversion + sweat/bleed, D&C 84:33/43-47/54-57 complete, Moses
 7:16/62/63/69, 4 Ne 1:12/15-17. Jones fn-10 = Moses 6:58 as claimed.
 
+### study/podcast/enjoy-what-enjoy-really-means.md (2026-02-17) — CLEAN (ENJOY fragment aligned)
+T1. The propagated ENJOY fragment was short enough to differ from
+genuine 1828 only by the Oxford comma — aligned to "To have, possess
+and use with satisfaction" + the genuine "hold or occupy" tail added.
+All scripture renderings (2 Ne 4:15, John 6:63/66/68) verified at #80.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
