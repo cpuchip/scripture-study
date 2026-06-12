@@ -1090,6 +1090,22 @@ Genesis 3:15's "and between thy seed" (Moses drops the second "and") —
 a one-word cross-text blend. The post-boundary scripture pattern
 holds: two files, ~70 scripture quotes, one word off.
 
+### study/plan-of-salvation/notes-01-premortal.md (2026-02-19) — all 5 Webster 1913 (words 23-27) + D&C 138 composite + Klebingat mix-up
+T1, post-boundary. Same pattern as #86: ALL scripture verbatim (Abr 3,
+Alma 13:3-5, Job 38, Jer 1:5, Eph 1:4, Heb 12, Jude 1:6, D&C 29:36,
+Moses 4), all five Maxwell quotes verbatim, both Bednar YouTube quotes
+verbatim against the LOCAL transcript at the cited timestamps — but
+ALL FIVE Webster definitions (INTELLIGENCE, PROVE, ESTATE, NOBLE,
+FOREORDAIN) were 1913 (words 23-27). Requoted with gifts: NOBLE's
+genuine sense 8 = "ready to receive truth" (Acts 17:11, the Bereans);
+genuine FOREORDAIN *includes* "to predestinate" — so the
+foreordination/predestination distinction is revealed (Alma 13), not
+lexical, which sharpens the study's own argument. Other fixes: the
+D&C 138 composite quote spanned vv 38/41/55 but was cited 53/55 and
+reworded v55 — requoted faithfully with correct citations; sources
+list credited "Elder Jörg Klebingat via Bangerter" — the talk is by
+Elder Steven R. Bangerter alone.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
