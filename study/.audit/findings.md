@@ -887,6 +887,23 @@ phase links + transcript path resolve; the Trump "philosophers /
 we're-not-going-to-let-that-happen" clip is verbatim in the transcript
 at 1:31:13-18.
 
+### study/cfm/20260215-prophets-nelson.md (2026-02-15) — 10 fixes, all elision/wording class; the 44-count VERIFIED
+SAMPLE escalated to FULL (~50 quotes across 20 talks + 13 manual
+chapters, every one checked). No invented quotes — the file's "every
+quote has been read from the source file" claim largely holds. Fixes:
+Apr-2024 "Nothing!" silently omitted a middle sentence (ellipsis
+restored); Apr-2019 "Time is running out" was order-REVERSED around the
+ellipsis (source: "please do it now. Time is running out."); Apr-2023
+contention quote compressed "those who have...are not of Him but" to
+"Those with...are"; "I promise [you] that decreased fear" inserted a
+word; two Nelson brackets restored ("whole [soul]", "[seek]"); four
+manual-table cells carried unmarked compressions (Ch 5/11/14/16). The
+"44 general conference addresses" count is EXACT: 43 authored files
+2018-2025 (the 2024/04 26nelson is Brother Michael T. Nelson, excluded)
++ the bicentennial proclamation = 44. Gotchas logged: author lines use
+a non-breaking space ("Russell M."); italics on *it* broke a
+literal grep again (Ch 1 promise — found verbatim).
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)

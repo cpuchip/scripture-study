@@ -46,13 +46,13 @@ This single warning — delivered in his first conference as prophet — may be 
 
 > "Contention violates everything the Savior stood for and taught." — [Preaching the Gospel of Peace, April 2022](../../gospel-library/eng/general-conference/2022/04/11nelson.md)
 
-> "**Contention *is* evil!** … Those with 'the spirit of contention' are 'of the devil, who is the father of contention.'" — [Peacemakers Needed, April 2023](../../gospel-library/eng/general-conference/2023/04/47nelson.md)
+> "**Contention *is* evil!** … Those who have 'the spirit of contention' are not of Him but are 'of the devil, who is the father of contention.'" — [Peacemakers Needed, April 2023](../../gospel-library/eng/general-conference/2023/04/47nelson.md)
 
 > "The present hostility in public dialogue and on social media is alarming. **Hateful words are deadly weapons.**" — [Confidence in the Presence of God, April 2025](../../gospel-library/eng/general-conference/2025/04/57nelson.md)
 
 ### Time Is Running Out
 
-> "**Time is running out.** … Do the spiritual work to find out for yourselves, and please do it now." — ["Come, Follow Me", April 2019](../../gospel-library/eng/general-conference/2019/04/46nelson.md)
+> "Do the spiritual work to find out for yourselves, and please do it now. **Time is running out.**" — ["Come, Follow Me", April 2019](../../gospel-library/eng/general-conference/2019/04/46nelson.md)
 
 > "I do know that **the Lord is prompting me to urge us to get ready for that 'great and dreadful day.'**" — [Confidence in the Presence of God, April 2025](../../gospel-library/eng/general-conference/2025/04/57nelson.md)
 
@@ -92,7 +92,7 @@ Of all his invitations, this one became the crescendo of his ministry:
 
 > "I promise that increased time in the temple will bless your life in **ways nothing else can**." — [Focus on the Temple, October 2022](../../gospel-library/eng/general-conference/2022/10/58nelson.md)
 
-> "**Nothing will help you *more* to hold fast to the iron rod than worshipping in the temple as regularly as your circumstances permit. Nothing will protect you *more* as you encounter the world's mists of darkness. Nothing will soothe your spirit *more* during times of pain. Nothing will open the heavens *more*. Nothing!**" — [Rejoice in the Gift of Priesthood Keys, April 2024](../../gospel-library/eng/general-conference/2024/04/57nelson.md)
+> "**Nothing will help you *more* to hold fast to the iron rod than worshipping in the temple as regularly as your circumstances permit. Nothing will protect you *more* as you encounter the world's mists of darkness. … Nothing will soothe your spirit *more* during times of pain. Nothing will open the heavens *more*. Nothing!**" — [Rejoice in the Gift of Priesthood Keys, April 2024](../../gospel-library/eng/general-conference/2024/04/57nelson.md)
 
 ### 4. Let God Prevail
 
@@ -128,7 +128,7 @@ Of all his invitations, this one became the crescendo of his ministry:
 
 > "I call upon you to talk of Christ, testify of Christ, have faith in Christ, and rejoice in Christ!" — [The Lord Jesus Christ Will Come Again, October 2024](../../gospel-library/eng/general-conference/2024/10/57nelson.md)
 
-> "Come unto Christ and 'offer your whole soul' to Him. **This is the secret to a life of joy!**" — [The Lord Jesus Christ Will Come Again, October 2024](../../gospel-library/eng/general-conference/2024/10/57nelson.md)
+> "Come unto Christ and 'offer your whole [soul]' to Him. **This is the secret to a life of joy!**" — [The Lord Jesus Christ Will Come Again, October 2024](../../gospel-library/eng/general-conference/2024/10/57nelson.md)
 
 ---
 
@@ -146,7 +146,7 @@ Noah promised that those who believed and repented would "receive the Holy Ghost
 
 ### Personal Revelation and Opened Heavens
 
-> "If thou shalt seek, thou shalt receive revelation upon revelation, knowledge upon knowledge, that thou mayest know the mysteries and peaceable things—that which bringeth joy, that which bringeth life eternal." — [Revelation for the Church, April 2018](../../gospel-library/eng/general-conference/2018/04/revelation-for-the-church-revelation-for-our-lives.md) (D&C 42:61)
+> "If thou shalt [seek], thou shalt receive revelation upon revelation, knowledge upon knowledge, that thou mayest know the mysteries and peaceable things—that which bringeth joy, that which bringeth life eternal." — [Revelation for the Church, April 2018](../../gospel-library/eng/general-conference/2018/04/revelation-for-the-church-revelation-for-our-lives.md) (D&C 42:61, as President Nelson adapted it)
 
 > "I promise that the heavens will open for you. The Lord will bless you with increased inspiration and revelation." — [Sisters' Participation in the Gathering of Israel, October 2018](../../gospel-library/eng/general-conference/2018/10/sisters-participation-in-the-gathering-of-israel.md)
 
@@ -154,7 +154,7 @@ Noah promised that those who believed and repented would "receive the Holy Ghost
 
 ### Peace Amid Turbulence
 
-> "I promise you that **decreased fear and increased faith** will follow." — [Go Forward in Faith, April 2020](../../gospel-library/eng/general-conference/2020/04/57nelson.md)
+> "I promise that **decreased fear and increased faith** will follow." — [Go Forward in Faith, April 2020](../../gospel-library/eng/general-conference/2020/04/57nelson.md)
 
 > "I promise that as you do, you will be showered with blessings, including **greater courage, increased personal revelation, sweeter harmony in your homes, and joy even amid uncertainty.**" — [A New Normal, October 2020](../../gospel-library/eng/general-conference/2020/10/58nelson.md)
 
@@ -200,14 +200,14 @@ The manual reveals that President Nelson didn't discover these themes when he be
 |----------------|-----------------|--------------|
 | **[Ch. 1: Plan of Happiness](../../gospel-library/eng/manual/teachings-of-presidents-of-the-church-russell-m-nelson/01-heavenly-fathers-plan-of-happiness.md)** | "Take the long view — an eternal view. Put Jesus Christ first." | "The very things that will make your *mortal* life the best it can be are exactly the *same* things that will make your life throughout all *eternity* the best it can be!" |
 | **[Ch. 4: Faith](../../gospel-library/eng/manual/teachings-of-presidents-of-the-church-russell-m-nelson/04-faith-in-jesus-christ.md)** | "What would you do if you had *more* faith? Think about it. Write about it. Then *receive more* faith by doing something that *requires more* faith." | "Faith *always* increases our access to godly power. … In coming days, we will see the *greatest* manifestations of the Savior's power that the world has *ever* seen." |
-| **[Ch. 5: Repentance](../../gospel-library/eng/manual/teachings-of-presidents-of-the-church-russell-m-nelson/05-repentance.md)** | "Do not fear or delay repenting. Please do it now. Time is running out." | "Nothing is more liberating, more ennobling, or more crucial to our individual progression than is a regular, daily focus on repentance." |
+| **[Ch. 5: Repentance](../../gospel-library/eng/manual/teachings-of-presidents-of-the-church-russell-m-nelson/05-repentance.md)** | "Do not fear or delay repenting. … Please do it now. Time is running out." | "Nothing is more liberating, more ennobling, or more crucial to our individual progression than is a regular, daily focus on repentance." |
 | **[Ch. 8: Abrahamic Covenant](../../gospel-library/eng/manual/teachings-of-presidents-of-the-church-russell-m-nelson/08-the-abrahamic-covenant.md)** | "You can lay claim to *all* the blessings of the Abrahamic covenant." | "Celestial marriage is the covenant of exaltation." |
 | **[Ch. 9: Gathering of Israel](../../gospel-library/eng/manual/teachings-of-presidents-of-the-church-russell-m-nelson/09-the-gathering-of-israel.md)** | "Disengage from a constant reliance on social media. … Read daily from the Book of Mormon." | "You and I are living to see, and will continue to see, Israel gathered with great power." |
 | **[Ch. 10: Covenant Relationship](../../gospel-library/eng/manual/teachings-of-presidents-of-the-church-russell-m-nelson/10-a-covenant-relationship-with-god.md)** | "Keep on the covenant path. … Come back if you have stepped off." | "Once we make a covenant with God, we leave neutral ground forever. … He will never tire in His efforts to help us." (*Hesed* — חֶסֶד) |
-| **[Ch. 11: Divine Law](../../gospel-library/eng/manual/teachings-of-presidents-of-the-church-russell-m-nelson/11-divine-law-and-absolute-truth.md)** | "Seek truth by learning the laws of God." | "As you keep God's commandments, you will become increasingly free." |
+| **[Ch. 11: Divine Law](../../gospel-library/eng/manual/teachings-of-presidents-of-the-church-russell-m-nelson/11-divine-law-and-absolute-truth.md)** | "Seek truth by learning the laws of God." | "As you keep God's commandments, as you live by His laws, you will become increasingly free." |
 | **[Ch. 13: Holy Temple](../../gospel-library/eng/manual/teachings-of-presidents-of-the-church-russell-m-nelson/13-the-holy-temple.md)** | "Make an appointment regularly with the Lord — to be in His holy house." | "Nothing will help you *more* to hold fast to the iron rod. … Nothing will protect you *more*. … Nothing!" |
-| **[Ch. 14: Revelation](../../gospel-library/eng/manual/teachings-of-presidents-of-the-church-russell-m-nelson/14-revelation-for-our-lives.md)** | "Stretch beyond your current spiritual ability to receive personal revelation." | "If you will do the spiritual work, you will have *all* the direction you will ever need in your life." |
-| **[Ch. 16: Spiritual Momentum](../../gospel-library/eng/manual/teachings-of-presidents-of-the-church-russell-m-nelson/16-spiritual-strength-and-momentum.md)** | "Take charge of your own testimony. Work for it. Nurture it. Feed it truth." | "I bless you in your quest to overcome this world. … Because Jesus Christ overcame this world, you can too." |
+| **[Ch. 14: Revelation](../../gospel-library/eng/manual/teachings-of-presidents-of-the-church-russell-m-nelson/14-revelation-for-our-lives.md)** | "Stretch beyond your current spiritual ability to receive personal revelation." | "If you will sincerely and persistently do the spiritual work …, you will have *all* the direction you will ever need in your life." |
+| **[Ch. 16: Spiritual Momentum](../../gospel-library/eng/manual/teachings-of-presidents-of-the-church-russell-m-nelson/16-spiritual-strength-and-momentum.md)** | "Take charge of your own testimony of Jesus Christ and His gospel. Work for it. Nurture it so that it will grow. Feed it truth." | "I bless you in your quest to overcome this world. … Because Jesus Christ overcame this world, you can too." |
 | **[Ch. 18: Joy and Hope](../../gospel-library/eng/manual/teachings-of-presidents-of-the-church-russell-m-nelson/18-joy-and-hope-through-jesus-christ.md)** | "Look to the Lord, and He will fill your heart with hope." | "Joy comes from and because of Him. … For Latter-day Saints, Jesus Christ *is* joy!" |
 | **[Ch. 21: Prophets](../../gospel-library/eng/manual/teachings-of-presidents-of-the-church-russell-m-nelson/21-prophets.md)** | "Heed the words of prophets. Ask for your own witness about what the prophet has proclaimed." | "I promise that you will be blessed with additional power to deal with temptation, struggles, and weakness." |
 
