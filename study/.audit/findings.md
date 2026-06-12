@@ -164,6 +164,18 @@ faith he must needs have hope" is Moroni 7:42, not 10:20** (the 10:20 network
 ref for the faith-hope-charity triad stays — that one is right); James 2:18
 "shew" KJV spellings restored (study had modernized inside quotes).
 
+### study/intelligence-01.md (2026-01-30) — CLEAN (zero findings)
+FULL tier. First fully-clean file of the walk. All 5 block quotes verbatim
+(Moses 3:5 with honest ellipsis over "of which I have spoken"; D&C 93:29/30/33;
+Moses 6:62 with honest ellipsis over "unto all men"); quoted phrases
+"intelligence cleaveth unto intelligence" (D&C 88:40) and "grace for grace"
+(D&C 93:12) exact; Lecture 1 anchors #9/#13 real and carry the claimed
+content (¶9 "principle of action", ¶13 "not only the principle of action,
+but of power, also"); Abraham 4 "Let us" plural-language claim verified
+(4 occurrences). **Taxonomy note: this file cites ZERO conference talks —
+scripture + Lectures on Faith only — and the walk's error mass lives in talk
+metadata. Clean by avoiding the source type that confabulates.**
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
