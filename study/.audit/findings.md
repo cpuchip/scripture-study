@@ -51,6 +51,17 @@ answering the study's own section title. Sense-number claims corrected (light
 Scripture side: ~30 quotes verified, all verbatim except Job 32:8 punctuation
 (fixed ";"→":"). All links resolve. Correction note appended.
 
+### study/word.md (2026-01-23) — CLEAN, 0 edits
+FULL tier. ~45 direct quotes verified verbatim (John 1, D&C 93:8-10, Rev 19,
+Moses 1/2/4/5, Ps 33/119, Heb 1/4/11, 2 Pet 3:5, D&C 29:30/33:1/84:44/132:12,
+1 Pet 1:23, Luke 8:11, Alma 32/44, Isa 55:11, Matt 5/12/24, James 1/3, six
+Proverbs, Eph 4/6, Hag 1:12, Jacob 4:6). Two dual-citation notes (no edits,
+consistent with intelligence.md's Moses/Genesis treatment): the "Matt 24:35 /
+Mark 13:31 / Luke 21:33" quote uses Mark/Luke's colon (Matthew has a comma);
+the "Matt 5:22 / 3 Ne 12:22" quote is 3 Nephi's text (no "without a cause").
+Logos meanings + "Raca [empty-headed]" presented as paraphrase/bracketed gloss
+✓. All links resolve. No Webster quotes (tier consistent).
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
