@@ -33,6 +33,14 @@ last_active: 2026-06-12T15:52:35
   persona-host, fs-read-mcp, stewards cockpit) → ONE module
   github.com/cpuchip/pg-ai-stewards; go.work knot dead; build+vet+smoke
   green. Local builds need GOWORK=off (nested clone; strangers unaffected).
+  **★ STEWARDSHIP GRANT (Michael, 2026-06-12 night, recorded in
+  extraction-plan §Stewardship grant):** full P1-P2 build + migration under
+  agent stewardship (act/act+report). Hinge list (still his): ① the CUT
+  itself (live stack stop + persona moves) ② coder-mcp public-ship nod
+  after hardening review ③ 30-sec data-import confirmation at cut
+  (default: corpus/covenant/intent/yt import, histories archive).
+  compact_context defaults = his sketch (between-turn, judge-pattern,
+  cheap compactor). OSS persona keys: self-service attempt, ping if gated.
   NEXT P1 (fresh session): the AUTHORING leg — consolidated subsystem chain
   with doc_* + AGE-out + values_anchor designed in (~15-25 files, headers
   credit sources, rename-map.tsv) → runner-consumes-manifest → compose →
