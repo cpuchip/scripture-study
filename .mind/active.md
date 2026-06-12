@@ -1,5 +1,7 @@
 # Active Context — the in-flight board
 
+> **2026-06-11 (evening) — ★ pg-ai-stewards GOES PUBLIC: extraction ratified, repo seeded.** Michael's executive ask: `github.com/cpuchip/pg-ai-stewards` created (PUBLIC) → `projects/pg-ai-stewards-oss/` (private substrate stays at `projects/pg-ai-stewards/`). Spec ratified (`extraction-plan.md`, pushed `25355f2`): **v0.1 = core + persona-host** · clean-room fresh history · cutover after virgin `docker compose up` · **license = source-available, individuals free / companies pay** (BUSL-1.1 w/ MIT change-date recommended vs PolyForm Small Business — Michael picks; repo all-rights-reserved meanwhile; commercial model ⇒ CLA needed). **Deliverable #1 = "Anatomy of a Turn"** — rebuilds the lost mental model, becomes the OSS arch page + the cpuchip.net/projects/pg-ai-stewards animation storyboard (Remotion, per munder-difflin's landing-remotion). munder-difflin cloned to `external_context/` (STUDY not replicate — its HIVE patterns converge with our session-lanes/substrate). P4 = playground machine under stewardship; P5 = the AI-office vision (agents-for-people via MCP into chattermax rooms). Gotcha: `gh repo create --clone` init'd a stray .git INSIDE the existing workspace substrate dir (name collision) — caught + removed, zero commits lost. Task #151. Lane: `.mind/sessions/pg-ai-stewards-oss.md`.
+
 > **Board discipline (ratified 2026-06-11):** this file holds ONLY what is
 > genuinely in flight. The full record lives in `.spec/journal/` (and
 > subproject journals); the old banner ledger is preserved verbatim at
