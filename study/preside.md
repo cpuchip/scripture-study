@@ -132,6 +132,8 @@ The architectural edge is a concrete list. Things this study found that covenant
 
 5. **A `when_presiding_is_broken` note.** The Luke 12:45 failure has a signature — the steward stops feeling watched, then starts beating. The covenant's existing recovery pattern (name it, adjust, continue) applies, but the trigger deserves naming: any time force was used where persuasion was available, that is a covenant breach even if the outcome was good.
 
+*Ratification note (June 12, 2026): counseled the same day and adopted into [covenant.yaml](../.spec/covenant.yaml) as the presiding extension — with two council amendments: emergency force is lawful when the field itself is at risk but must be accounted in the same session, and watching is uniform and full (Michael's call: trust-ladder-calibrated depth waits until either space has an exercised trust ladder).*
+
 The host's warning — form without power — applies to this very list. Five new clauses in a YAML file change nothing by existing. The covenant text is the prescription tier. What makes presiding real is the same thing in the workspace as in the quorum as on the wall: the daily, sessional act of actually sitting before the work, actually reading it, actually watching until it obeys — held up by whatever unity of heart the watcher brought to the gate that morning. The garrison is not the wall. The garrison is the soldiers in it.
 
 ---
