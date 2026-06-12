@@ -1165,6 +1165,18 @@ All ~20 scriptures verbatim (the no-guile chain John 1:47/Ps 32:2/D&C
 41:11/124:20/1 Pet 2/Rev 14:5, D&C 10:12/23/25, Alma 18:22-23 "caught
 with guile," Ether 8:22).
 
+### study/plan-of-salvation/notes-03-spirit-world.md (2026-02-19) — 5 of 6 Webster 1913 (words 45-49)
+T1, post-boundary. PARADISE, REST, DELIVERANCE, CAPTIVE, BONDAGE were
+1913; QUICKEN genuine (it keeps holding — second confirmation).
+Genuine gifts: DELIVERANCE's own citation is Luke 4:18 "to preach
+deliverance to the captives" — the spirit-world mission inside the
+entry; BONDAGE's genuine sense 3 ("In scripture, spiritual subjection
+to sin... Heb 2:15") is the study's two-kinds-of-bondage distinction;
+genuine REST cites Matt 11:29 ("a state of reconciliation to God");
+genuine PARADISE sense 3 cites Luke 23:43 exactly as the study
+claimed. Scriptures sampled all verbatim (Alma 40:11-14, D&C
+138:15/18-19/50).
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)

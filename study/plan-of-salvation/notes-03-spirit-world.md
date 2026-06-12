@@ -33,9 +33,9 @@ Alma then describes two states:
 > "The spirits of those who are righteous are received into a state of happiness, which is called paradise, a state of rest, a state of peace, where they shall rest from all their troubles and from all care, and sorrow."
 > — [Alma 40:12](../../gospel-library/eng/scriptures/bofm/alma/40.md)
 
-**Webster 1828 — "paradise"**: *"The abode of sanctified souls after death ... A place of bliss; a region of supreme felicity or delight."* Webster directly references Luke 23:43 — Jesus's promise to the thief on the cross: "To day shalt thou be with me in paradise."
+**Webster 1828 — "paradise"**: *"Heaven, the blissful seat of sanctified souls after death"* and *"a place of bliss; a region of supreme felicity or delight."* Webster's own citation for that first sense is Luke 23:43 — Jesus's promise to the thief on the cross: "To day shalt thou be with me in paradise." *(Requoted 2026-06-12 — the earlier "abode" text was the 1913 edition's.)*
 
-**Webster 1828 — "rest"**: In its verb form, *"to cease from action, motion, work, or performance of any kind; to be free from that which harasses or disturbs; be quiet or still; be undisturbed."* Rest from "all their troubles and from all care, and sorrow." Not cessation of existence — cessation of suffering.
+**Webster 1828 — "rest"**: In its verb form, *"to cease from action or motion of any kind; to stop"*; *"to cease from labor, work or performance"*; *"to be quiet or still; to be undisturbed."* And the noun's second sense cites Matthew 11:29: "a state free from motion or disturbance; a state of reconciliation to God. Learn of me ... and ye shall find rest to your souls." *(Requoted 2026-06-12 — the earlier fused sentence was the 1913 edition's.)* Rest from "all their troubles and from all care, and sorrow." Not cessation of existence — cessation of suffering.
 
 Four descriptors pile on each other: happiness, rest, peace, freedom from trouble, care, and sorrow. Whatever paradise is, it is the opposite of mortality's burdens. For someone who is sick and suffering — this is the promise. The pain *stops*.
 
@@ -93,14 +93,14 @@ These are people who lived faithful lives, suffered for their faith, and died wi
 > "They were filled with joy and gladness, and were rejoicing together because the day of their deliverance was at hand."
 > — [D&C 138:15](../../gospel-library/eng/scriptures/dc-testament/dc/138.md)
 
-**Webster 1828 — "deliverance"**: *"The act of delivering or freeing from restraint, captivity, peril, and the like; rescue."* Even the righteous need *deliverance*. Even paradise is not the final state.
+**Webster 1828 — "deliverance"**: *"Release from captivity, slavery, oppression, or any restraint."* And the genuine entry's own citation is the spirit-world mission itself — Luke 4:18: "He hath sent me to heal the broken-hearted, to preach deliverance to the captives." *(Requoted 2026-06-12 — the earlier text was the 1913 edition's.)* Even the righteous need *deliverance*. Even paradise is not the final state.
 
 **Christ's arrival — declaring liberty:**
 
 > "The Son of God appeared, declaring liberty to the captives who had been faithful; And there he preached to them the everlasting gospel, the doctrine of the resurrection and the redemption of mankind from the fall, and from individual sins on conditions of repentance."
 > — [D&C 138:18-19](../../gospel-library/eng/scriptures/dc-testament/dc/138.md)
 
-**Webster 1828 — "captive"**: *"A prisoner taken by force or stratagem, esp., by an enemy, in war; one kept in bondage or in the power of another."* Even the righteous are "captives" — prisoners of death. Christ declares *liberty* to them.
+**Webster 1828 — "captive"**: *"A prisoner taken by force or stratagem in war, by an enemy."* *(Requoted 2026-06-12 — the earlier text was the 1913 edition's.)* Even the righteous are "captives" — prisoners of death. Christ declares *liberty* to them.
 
 **The critical revelation — He did NOT go to the wicked personally:**
 
@@ -134,7 +134,7 @@ Eve is called "glorious" and appears alongside Adam as a co-leader. Her "faithfu
 > "For the dead had looked upon the long absence of their spirits from their bodies as a bondage."
 > — [D&C 138:50](../../gospel-library/eng/scriptures/dc-testament/dc/138.md)
 
-**Webster 1828 — "bondage"**: *"The state of being bound; condition of being under restraint; restraint of personal liberty by compulsion; involuntary servitude."*
+**Webster 1828 — "bondage"**: *"Slavery or involuntary servitude; captivity; imprisonment; restraint of a person's liberty by compulsion."* And the genuine entry's third sense is the study's own distinction: *"In scripture, spiritual subjection to sin and corrupt passions ... servile fear. Hebrews 2:15."* *(Requoted 2026-06-12 — the earlier text was the 1913 edition's; the genuine sense 3 names the two kinds of bondage itself.)*
 
 This is remarkable. Even the righteous in paradise — those in a state of rest and peace — consider *disembodiment itself* a bondage. The separation of spirit from body is experienced as *restraint*. This connects directly to D&C 93:33-34 from Phase 2: "spirit and element, inseparably connected, receive a fulness of joy; and when separated, man cannot receive a fulness of joy." The spirit world, even at its best, is *incomplete*. The body is not a prison the soul escapes at death — the body is part of what makes fulness possible. Its absence is felt as lack.
 
@@ -327,9 +327,10 @@ For the friends who are sick — what does the gospel *actually promise*?
 - [Sister Reyna I. Aburto, "The Grave Has No Victory," April 2021](../../gospel-library/eng/general-conference/2021/04/42aburto.md) — full talk — personal witness of comfort in death
 
 ### Webster 1828 Definitions
-- **paradise**: "The abode of sanctified souls after death … A place of bliss; a region of supreme felicity or delight"
-- **bondage**: "The state of being bound; condition of being under restraint; restraint of personal liberty by compulsion; involuntary servitude"
-- **captive**: "A prisoner taken by force or stratagem, esp., by an enemy, in war; one kept in bondage or in the power of another"
-- **rest**: "To cease from action, motion, work, or performance of any kind; to be free from that which harasses or disturbs"
-- **deliverance**: "The act of delivering or freeing from restraint, captivity, peril, and the like; rescue"
+*(Five of six requoted 2026-06-12 — the earlier texts were the 1913 edition's; QUICKEN was genuine.)*
+- **paradise**: "Heaven, the blissful seat of sanctified souls after death" (citing Luke 23:43) / "A place of bliss; a region of supreme felicity or delight"
+- **bondage**: "Slavery or involuntary servitude; captivity; imprisonment; restraint of a person's liberty by compulsion" / "In scripture, spiritual subjection to sin and corrupt passions" (Heb 2:15)
+- **captive**: "A prisoner taken by force or stratagem in war, by an enemy"
+- **rest**: "To cease from action or motion of any kind" / "To be quiet or still; to be undisturbed" / noun: "a state of reconciliation to God" (Matt 11:29)
+- **deliverance**: "Release from captivity, slavery, oppression, or any restraint" (citing Luke 4:18, "to preach deliverance to the captives")
 - **quicken**: "To make alive; to vivify; to revive or resuscitate, as from death or an inanimate state"
