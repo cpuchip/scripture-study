@@ -1204,6 +1204,18 @@ was restored whole") to "revive; resuscitate; bring back to life";
 RESURRECTION cites 1 Pet 1:3. The 1913 "resumption of vigor" riff
 reworked onto genuine "revival." Alma 40:6/18/23, 41:13 verbatim.
 
+### study/plan-of-salvation/notes-06-kingdoms.md (2026-02-20) — 6 Webster 1913 (words 59-64) + a 1913-only moon sense withdrawn
+T1, post-boundary. MANSION, ABIDE, INCREASE, IMMORTALITY, EXALTATION
+1913; SALVATION genuine except one word. ★ The "more than
+coincidental" lunar-mansion speculation was built on a 1913-ONLY sense
+(the genuine 1828 has no moon meaning) — withdrawn with note. Genuine
+gifts: MANSION's own citation is John 14:2 itself; ABIDE's transitive
+"to endure or sustain — to abide the indignation of the Lord"
+sharpens the can-you-survive-this-glory reading; genuine INCREASE noun
+= "Progeny; issue; offspring" + "Generation"; IMMORTALITY's genuine
+citation is 2 Tim 1:10 (the claimed 1 Cor 15:53 was 1913's). Kimball
+Oct-1978 and all sampled verses verbatim.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
