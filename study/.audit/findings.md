@@ -512,6 +512,18 @@ D&C 91:1-5 (honest double elision), Rev 18:10-11, 3 Ne 2:3/8, 3 Ne
 earlier today). 2 Esdras 11 quote is KJV-Apocrypha (no local copy —
 externally sourced, consistent with its slide).
 
+### study/yt/morganphilpot/part1_marp.md (2026-02-08) — 2 fixes
+SAMPLE. The four JST Revelation 12 quotes (1/3/7/14) all EXACT against
+the local JST appendix; D&C 135:1/7 honest elisions; D&C 45:37-38, JS-H
+1:14, D&C 20:1, 3 Ne 1:9 verified. The file already carries good
+in-line caveats (the 42-month math note, the slide-16 reckoning caveat,
+the Musk-not-named note). Fixes: "four PERMANENTLY left" contradicted
+its own list (Marsh rebaptized 1857; Luke Johnson also returned — only
+three never came back) → precision note; 3 Ne 1:9 completed to verse
+end ("which had been given by Samuel the prophet"). Nelson/Oaks Jewish-
+calendar claims are reportage of Philpot, dates plausible (Passover
+weekend 2018 ✓ checked against the 2018 solemn assembly date).
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
