@@ -667,6 +667,17 @@ Woodruff "let all the temples go out of our hands" — which is CANONICAL
 (OD1's appended excerpts) — and D&C 101:80. No Webster claims of its
 own; no footer-date defect.
 
+### study/yt/morganphilpot/03_apocalyptic_vision.md (2026-02-08) — 1 fix (MYSTERY = 5th 1913-as-1828 word)
+T1. **MYSTERY's tail was 1913 wording** ("something which has not been
+or can not be explained") → requoted with genuine senses 1-3 — and the
+genuine entry strengthens the study's own argument (sense 2 "not
+revealed to man", sense 3 "beyond human comprehension UNTIL EXPLAINED"
+— exactly the mystery-as-pending-revelation reading the study built).
+All ten scripture blockquotes EXACT with honest elisions (3 Ne 21:4,
+1 Ne 14:25/27, Deut 30:1-3, Ether 2:10/12, Mosiah 29:25-32, Col 1:26,
+D&C 98:5, 101:80). Running 1913-as-1828 tally: OATH, COVENANT, OBTAIN,
+RECEIVE, MAGNIFY, SORCERY, MYSTERY across 4 files.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)

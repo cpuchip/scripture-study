@@ -106,7 +106,7 @@ Two calendar connections anchor the Restoration to the Israelite feast cycle: Mo
 
 ### Word Study
 
-**Mystery** (Webster 1828): "A profound secret; something wholly unknown, or something kept cautiously concealed, and therefore exciting curiosity or wonder; something which has not been or can not be explained." In scripture, the word consistently refers to something God *has known* but *has not yet revealed* to mortals — not a puzzle to decode, but a truth to be disclosed by revelation. Colossians 1:26 uses precisely this sense: "the mystery which hath been hid from ages and from generations, but now is made manifest to his saints."
+**Mystery** (Webster 1828): "A profound secret; something wholly unknown or something kept cautiously concealed, and therefore exciting curiosity or wonder" (sense 1); "in religion, any thing in the character or attributes of God, or in the economy of divine providence, **which is not revealed to man**" (sense 2); "that which is beyond human comprehension **until explained**" (sense 3). *(Requoted 2026-06-12 — an earlier draft's tail, "something which has not been or can not be explained," was the 1913 edition's; the genuine senses 2–3 say the study's point better.)* In scripture, the word consistently refers to something God *has known* but *has not yet revealed* to mortals — not a puzzle to decode, but a truth to be disclosed by revelation. Colossians 1:26 uses precisely this sense: "the mystery which hath been hid from ages and from generations, but now is made manifest to his saints."
 
 ### Jewish Calendar Verification
 
