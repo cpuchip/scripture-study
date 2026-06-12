@@ -1452,6 +1452,16 @@ July-1830 dating, D&C 75:8 + McLellin, D&C 98:41-42, Ps 73:22-24,
 Mosiah 23:9-11/21-22, Prov 19:21, Heb 12:11; Luke 22/D&C 19/Alma
 7:13/2 Ne 4/Alma 5:7 shared-verified with how-is-it-done).
 
+### study/ai/relavent.md (2026-03-11) — 4 broken links fixed; quotes clean
+SAMPLE. LINK class: three `../gospel-library/` paths one level
+short from study/ai/ (fixed to `../../`) + `ai-responsible-use.md`
+linked without `../` (the file lives at study/). D&C 130:18 +
+58:27 verbatim. Web quotes sampled 3 of 7 against live pages:
+EclipseSource ("I used to love my job…" — same words, study joins
+across the source's "he said" frame), Matsuoka and Thompson/Reddit
+verbatim. The internal fatigue.md cross-quote matches its table
+wording.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)

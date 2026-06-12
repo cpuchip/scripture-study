@@ -142,22 +142,22 @@ I've been answering those questions for 18 years. AI can't take that away. But I
 
 I can't write in this project without ending here.
 
-> "Whatever principle of intelligence we attain unto in this life, it will rise with us in the resurrection." — [D&C 130:18](../gospel-library/eng/scriptures/dc-testament/dc/130.md)
+> "Whatever principle of intelligence we attain unto in this life, it will rise with us in the resurrection." — [D&C 130:18](../../gospel-library/eng/scriptures/dc-testament/dc/130.md)
 
 The intelligence isn't the code. It never was. The intelligence is the *judgment* — the discernment, the design instinct, the ability to see what matters and act on it. That's what rises with me. AI doesn't have a resurrection. I do.
 
-> "Men should be anxiously engaged in a good cause, and do many things of their own free will, and bring to pass much righteousness." — [D&C 58:27](../gospel-library/eng/scriptures/dc-testament/dc/58.md)
+> "Men should be anxiously engaged in a good cause, and do many things of their own free will, and bring to pass much righteousness." — [D&C 58:27](../../gospel-library/eng/scriptures/dc-testament/dc/58.md)
 
 "Of their own free will." Agency. The thing I keep coming back to. AI has no agency. It doesn't choose to build. It doesn't care about the outcome. I do. That caring — that directional intent applied to craft — is irreplaceable. Not because the market says so, but because God designed it that way.
 
-From Elder Bednar's framework (see the [responsible use study](ai-responsible-use.md)):
+From Elder Bednar's framework (see the [responsible use study](../ai-responsible-use.md)):
 
 - **Does this enlarge or restrict my capacity to live, love, and serve?** If AI is enlarging my capacity — letting me study deeper, build tools that help my family, create things that matter — then it's serving God's purposes. If it's making me feel small and useless, I'm measuring by the wrong standard.
 - **Does this invite or impede the Holy Ghost?** The work itself answers this. The nevertheless study invited the Spirit. The MCP servers serve real study. The iBecome app serves real growth. The *work* is evidence.
 
 ### The Parable of the Talents
 
-The master didn't give everyone the same amount. He gave according to their capacity. And the judgment wasn't "did you produce the most?" It was "did you *use* what you were given?" ([Matthew 25:14-30](../gospel-library/eng/scriptures/nt/matt/25.md))
+The master didn't give everyone the same amount. He gave according to their capacity. And the judgment wasn't "did you produce the most?" It was "did you *use* what you were given?" ([Matthew 25:14-30](../../gospel-library/eng/scriptures/nt/matt/25.md))
 
 Eighteen years of engineering is a talent. Agency is a talent. The ability to partner with AI — to *direct* intelligence rather than just execute — is a talent. The question isn't "am I still relevant?" The question is "am I using what I've been given?"
 

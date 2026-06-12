@@ -130,7 +130,7 @@ Already done out-of-band: `study/morm-8-three-glories-reading.md` (2026-06-09).
 - [x] 2026-03-05 `study/ai/fatigue.md` **SAMPLE** — "real skill" quote was 5 sentences compressed into 1, requoted; date Feb 7→8; 7 other article quotes + Matt 11:28 verbatim
 - [x] 2026-03-11 `study/atonement/how-is-it-done.md` **T1** — INFINITE + COMPREHEND 1913 (words 88-89); SUCCOR genuine; ~35 scriptures + 3 Holland quotes verbatim
 - [x] 2026-03-11 `study/atonement/nevertheless.md` **T1** — NEVERTHELESS 1913 (word 90); Heb-12:11 illustration re-attributed to 1913 editors (1828's is the rain); Mosiah 23 count 3→2; ~20 scriptures verbatim
-- [ ] 2026-03-11 `study/ai/relavent.md` **SAMPLE**
+- [x] 2026-03-11 `study/ai/relavent.md` **SAMPLE** — 4 broken relative links fixed; D&C quotes + 3 sampled web quotes verbatim
 - [ ] 2026-03-11 `study/ai/multi-agent-ideas.md` **SAMPLE**
 - [ ] 2026-03-12 `study/atonement/nevertheless-prophets.md` **SAMPLE**
 - [ ] 2026-03-12 `study/atonement/how-is-it-done-prophets.md` **SAMPLE**
