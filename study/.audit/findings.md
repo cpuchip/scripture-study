@@ -610,6 +610,23 @@ hemlah (salt)" assertion → chemlah correction cascaded (6th file);
 both footer dates were the impossible-July-2025 class → git-corrected
 to 2026-02-08.
 
+### study/yt/morganphilpot/04_revelation_12.md (2026-02-08) — 2 fixes + 1 amendment to my own earlier fix
+T1, the cluster's model evaluation — and it mostly held: JST Rev 12:5
+days→YEARS claim verified verbatim; D&C 112:30, Packer "The Twelve"
+(2008), D&C 135:7, Dan 2:44, Lev 25 reading all EXACT; its
+self-interpreting-text critique of the jubilee math is the file's own
+verified deep-read. Fixes: **the Oaks date-setting "quote" was garbled
+construction** ("the Lord is not going to come and the prophets have
+not set a date…" — in no talk; his 2004 talk doesn't contain "date" at
+all) → requoted with his real sentence ("powerless to alter the fact…
+unable to know its exact time") + link; the Hales-2013 "honeymoon"
+citation annotated unverifiable (no conference talk carries it —
+Philpot's secondary source). **Walk self-correction:** this file's
+apostle roster (Lyman Johnson, McLellin, Boynton, WILLIAM SMITH) is the
+correct never-returned four — my part1_marp precision note ("only three
+never returned") was wrong; amended: the slide's error was naming Marsh
+as the fourth, and the one-third math holds with the right roster.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
