@@ -1395,6 +1395,21 @@ Mosiah 4:11, Luke 15:17/18/20/31, John 15:10, D&C 95:1/12, Moses
 (Liahona 2003/02, 3 quotes) and Oaks "Love and Law" (2009/10, 4
 quotes incl. the returned woman's "[was]" bracket) all exact.
 
+### study/yt/philpot-abinadi-references.md (2026-03-05) — 2 scripture person-swaps + 1 caption splice fixed
+SAMPLE. Mosiah 12:25 epigraph swapped "And now Abinadi said unto
+them" → "He said unto them" inside the quotes (re-trimmed to start
+at "Are you priests"); Mosiah 17:8 rendered "He has said … and for
+this thou shalt be put to death" for the source's "thou hast said …
+and now, for this cause thou shalt be put to death" (requoted
+verbatim). Caption splice: "Utah, King Noah's new organization…"
+fabricated a vocative — in the stream "Utah" ends the prior clause
+("guess who is informing our policy right here in the state of
+Utah"); requoted the full sentence. Five transcript quotes sampled
+against yt/morganphilpot/transcripts/*.txt — all verbatim modulo
+caption normalization (incl. "King Noah was a Monger guilty of
+whoredoms," faithful to the caption's own garble). Mormon 8:35 and
+Mosiah 16:5 verbatim.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
