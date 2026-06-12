@@ -109,7 +109,7 @@ This is the most difficult moment to evaluate. We do not dismiss personal spirit
 
 1. **2 Chronicles 3:1** — "Then Solomon began to build the house of the Lord at Jerusalem in mount Moriah, where the Lord appeared unto David his father, in the place that David had prepared in the threshingfloor of Ornan the Jebusite." This verse *explicitly* connects Moriah, Solomon's temple, and the threshing floor. Pickering references all three separately but could have anchored the argument here.
 
-2. **Hebrews 9:1-12** — The tabernacle/temple as a *type* of heavenly realities. The New Testament's perspective is that the physical temple was always pointing to something greater. Obsessing over the *exact location* of the Holy of Holies misses the point that Christ entered "the greater and more perfect tabernacle, not made with hands" (Heb 9:11). The location matters less than the atonement it pointed to.
+2. **Hebrews 9:1-12** — The tabernacle/temple as a *type* of heavenly realities. The New Testament's perspective is that the physical temple was always pointing to something greater. Obsessing over the *exact location* of the Holy of Holies misses the point that Christ entered "a greater and more perfect tabernacle, not made with hands" (Heb 9:11). The location matters less than the atonement it pointed to.
 
 3. **The atonement happened right there.** Pickering is standing in Gethsemane, the actual site of the actual atonement, and his primary interest is *which rock the Holy of Holies was over*. The type is standing next to the antitype, and he's examining the type with rods. This is the wrong priority.
 
