@@ -1532,6 +1532,22 @@ Q3 ratified answer ("leave a README that points"; the README's
 file table never listed it). Year typo "March 2025"→2026 fixed in
 the living copy.
 
+### study/tower-of-babel.md (2026-03-15) — CONFOUND 1913 (word 91, double gift); 26 broken links
+T1+FULL. CONFOUND was 1913 sense 1 verbatim ("to mingle and blend,
+so that different elements can not be distinguished; to confuse" →
+genuine "to mingle and blend different things, so that their forms
+or natures cannot be distinguished…"). DOUBLE GIFT: the genuine
+entry's sense 2 is illustrated with Genesis 11:7 itself ("Let us
+go down, and there confound their language") and sense 6 cites
+Acts 2:6 — the study's own anchor verse AND its closing Pentecost
+cross-reference, both already inside Noah's entry. LINK class: all
+26 scripture links lacked the `../` prefix (resolved to
+study/gospel-library) — fixed. One prose typo ("cultural
+remembered" → "cultures that remembered"). All ~22 scripture
+renderings verbatim (Moses 6:5/6/57, Moses 7:13/16/18, Gen 10
+×5, Gen 11 ×4, Ether 1:33-37, Omni 1:17, Zeph 3:9, D&C 90:11,
+Acts 2:6, Alma 29:8, BD Babylon).
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)

@@ -72,6 +72,22 @@ last_active: 2026-06-12T15:38:52
   near-perfect. Lap-5 summary in findings.md. NEXT: #101
   miracles-references.md FULL, then gifts.md + priesthood-and-gifts
   (T1+FULL), father-and-son (Feb-23).
+- UPDATE 6: 127/469, all pushed (ibeco 200 each push). Files 114-127:
+  Webster count at 90 (ESTEEM, INFINITE, COMPREHEND, NEVERTHELESS).
+  ★ Best find: nevertheless.md built its centerpiece observation
+  ("Webster, in 1828, reached for Heb 12:11") on the 1913 EDITORS —
+  genuine 1828 illustrates with "It rained, nevertheless, we proceeded
+  on our journey"; re-attributed with note. ★ Counted-number class:
+  "Matt 27:46 cited 33 times since Brigham Young" verified EXACT (BYU
+  index); "13 voices" was 9 (fixed); Mosiah 23 "three neverthelessses"
+  was 2 (fixed); Cavalcante mislisted in 1 Ne 1:1 cluster (his is 1 Ne
+  4:6-7). ★ voice-analysis: restored Michael's original typos ("single
+  highhandedly", "neighbored") that the doc had silently polished —
+  the unpolished voice was its whole point; Loyal Moses transcript
+  downloaded + 0:47 claim verified. Stale guidance.md duplicate
+  removed (living copy in becoming/). ai/ files: 5 broken links fixed,
+  Khare quote was 5 sentences compressed to 1 (requoted vs live page).
+  NEXT: #128 tower-of-babel.md T1+FULL.
 - ✅ OCR repair SHIPPED + live-verified (1336c8ce); walk plan RATIFIED
   (.spec/proposals/study-correctness-walk.md)
 

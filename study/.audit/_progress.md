@@ -139,7 +139,7 @@ Already done out-of-band: `study/morm-8-three-glories-reading.md` (2026-06-09).
 - [x] 2026-03-14 `study/yt/title-of-liberty/transcript.md` **SAMPLE** — primary-source capture, untouched
 - [x] 2026-03-14 `study/yt/title-of-liberty/evaluation.md` **SAMPLE** — 2 transcript micro-requotes; 10 scriptures verbatim
 - [x] 2026-03-15 `study/yt/title-of-liberty/guidance.md` **SAMPLE** — stale pre-move duplicate REMOVED (living copy: becoming/title-of-liberty/, year typo fixed there)
-- [ ] 2026-03-15 `study/tower-of-babel.md` **T1+FULL**
+- [x] 2026-03-15 `study/tower-of-babel.md` **T1+FULL** — CONFOUND 1913 (word 91; genuine cites Gen 11:7 AND Acts 2:6); 26 links fixed; ~22 scriptures verbatim
 - [ ] 2026-03-15 `study/language-of-adam-speculative.md` **T1+FULL**
 - [ ] 2026-03-15 `study/yt/tDS2olk8Jx0-ma-dramatic-pause.md` **T1**
 - [ ] 2026-03-15 `study/stories/the-words-of-abinadi.md` **SAMPLE**
