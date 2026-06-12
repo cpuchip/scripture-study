@@ -1226,6 +1226,19 @@ already carried the metallurgical sense). TRANSGRESSION's fragment
 happened to be a contiguous substring of the genuine — left as is.
 Scriptures sampled verbatim (D&C 124:33, 1 Cor 15:42-44).
 
+### study/plan-of-salvation/eternity-paused.md (2026-02-20) — 2 Webster 1913 (AGONY, CUP); SHRINK/TREMBLE/SUBMIT genuine
+T1, post-boundary. The Gethsemane word-study held up better than any
+other Webster section so far: SHRINK, TREMBLE, SUBMIT genuine (comma
+fixes only). AGONY and CUP were 1913 — but both genuine entries carry
+the SAME anchors: genuine AGONY names "the pangs of death, and the
+sufferings of our Savior in the garden of Gethsemane" citing Luke
+22:44 (the English-bends-around-Gethsemane claim survives), and
+genuine CUP's scriptural sense cites Matt 26:39 itself ("let this cup
+pass from me"). The 1913-only "allotted ... portion" gloss replaced
+with genuine "sufferings and afflictions; that which is to be
+received or endured." D&C 19:18, Mosiah 15:7, Matt 26:39, Luke 22:44
+all verbatim.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
