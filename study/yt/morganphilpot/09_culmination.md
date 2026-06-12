@@ -115,8 +115,8 @@ Phase 9 is the culmination of the entire presentation, weaving together three fi
 | Alma 32:2–16 | ✅ | v.2: "cast out of the synagogues because of the coarseness of their apparel"; v.6: "afflictions had truly humbled them"; v.12: "it is well that ye are cast out"; v.13: "compelled to be humble" |
 | Nelson, Oct 2024 | ✅ | "Now is the time for you and for me to prepare for the Second Coming"; "today I call upon you to rededicate your lives to Jesus Christ" |
 | Bednar, Oct 2024 | ✅ | "All these iniquities did come unto them in the space of not many years" (Helaman 6:32); pride cycle; Book of Mormon written for our day |
-| Webster 1828: "storm" | ✅ | Definition 4: "A violent assault on a fortified place" — distinct from natural weather |
-| Webster 1828: "tempest" | ✅ | "A sudden and violent storm... usually attended by a heavy rain, with lightning and thunder" — natural phenomenon |
+| Webster 1828: "storm" | ✅ | Sense 2: "A violent assault on a fortified place"; sense 3: "violent civil or political commotion" *(corrected 2026-06-12 — the earlier "definition 4" numbering and wording were the 1913 edition's)* |
+| Webster 1828: "tempest" | ✅ | Sense 1: "An extensive current of wind, rushing with great velocity and violence … may or may not be attended with rain, snow or hail"; sense 2 allows "a popular or political tempest" *(corrected 2026-06-12 — the earlier quoted wording was not the 1828 entry's)* |
 
 ---
 
@@ -138,9 +138,9 @@ The chapter heading even adds: "Compare [2 Nephi 23](../../../gospel-library/eng
 
 **Mormon's Storm/Tempest Distinction Is Real and Significant**
 
-Philpot observes that [3 Nephi 8:5–6](../../../gospel-library/eng/scriptures/bofm/3-ne/8.md) uses both "storm" and "tempest" separately: "there arose a great storm" (v.5) and "there was also a great and terrible tempest" (v.6). He then cites the Webster 1828 definitions, which confirm a distinction: *storm* can mean "a violent assault on a fortified place" (definition 4 — a political/military meaning), while *tempest* is specifically a natural weather phenomenon ("a sudden and violent storm... usually attended by a heavy rain, with lightning and thunder").
+Philpot observes that [3 Nephi 8:5–6](../../../gospel-library/eng/scriptures/bofm/3-ne/8.md) uses both "storm" and "tempest" separately: "there arose a great storm" (v.5) and "there was also a great and terrible tempest" (v.6). The genuine 1828 entries support a *softened* version of his distinction: *storm* carries "a violent assault on a fortified place" (sense 2) and "violent civil or political commotion; sedition; insurrection" (sense 3) alongside its primary wind sense, while *tempest* is primarily "an extensive current of wind, rushing with great velocity and violence" — though Webster also allows "a popular or political tempest; the tempest of war," and notes the two words are used as synonyms. *(Corrected 2026-06-12: the earlier draft's quoted definitions and "definition 4" numbering were the 1913 edition's.)*
 
-The observation is linguistically valid. Mormon, through Joseph Smith's translation, uses two English words that the 1828 dictionary distinguishes. Whether Mormon intended us to read a political *and* natural catastrophe in tandem is interpretive, but the vocabulary choice is real, and the Webster 1828 definitions do support distinct meanings. The approach of examining scripture vocabulary through the dictionary of Joseph Smith's era is methodologically sound — it's the same approach we use throughout these studies.
+The observation is linguistically valid in its softened form. Mormon, through Joseph Smith's translation, uses two English words in sequence, and the 1828 vocabulary genuinely spans both political and natural registers — though both words carry both registers, so the tidy storm=political / tempest=natural assignment doesn't hold. The approach of examining scripture vocabulary through the dictionary of Joseph Smith's era is methodologically sound — it's the same approach we use throughout these studies, and it is exactly how this correction was made.
 
 **Nelson's Final Talk Carries Genuinely Unprecedented Urgency**
 
@@ -346,7 +346,7 @@ All scriptures, conference talks, and dictionary definitions cited in this evalu
 
 ## Transcript Review Notes
 
-*Added 2025-07-26 — Pass 10 of the systematic transcript review*
+*Added 2026-02-09–11 — Pass 10 of the systematic transcript review (git-verified; an earlier note claimed 2025-07-26)*
 
 ### Overall Assessment
 
@@ -380,7 +380,7 @@ However, the **"Two Great Lights" section that gives this phase its title is ent
 
 > **Cross-reference update (2026-02-11):** All 10 items below have been subsequently evaluated in **[verbal_only_evaluation.md](verbal_only_evaluation.md)** — see individual item numbers noted in parentheses.
 
-1. **Zarahemla / Hemlah / Dead Sea etymology** (~57:54) → [verbal_only #2](verbal_only_evaluation.md): "It's called the Salt Lake. It's never called the Dead Sea. In Hebrew, it is the sea of Heala... Zahhemlah. What does the Lord do to Zarahemla? Burns it. What's the modern Zarahemla?" Points to Salt Lake City as a type of Zarahemla. Creative Hebrew word study parallel to the slide-only Kokaubeam work.
+1. **Zarahemla / Hemlah / Dead Sea etymology** (~57:54) → [verbal_only #2](verbal_only_evaluation.md): "It's called the Salt Lake. It's never called the Dead Sea. In Hebrew, it is the sea of Heala... Zahhemlah. What does the Lord do to Zarahemla? Burns it. What's the modern Zarahemla?" Points to Salt Lake City as a type of Zarahemla. (Correction 2026-06-12: the etymology is false Hebrew — chemlah H2551 = compassion, not salt = melach H4417; see verbal_only_evaluation.md #2.)
 
 2. **Oaks' first talk analysis** (~22:00–24:00) → [verbal_only #14](verbal_only_evaluation.md): No temples announced; doubled down on family proclamation ("old school Mormonism"); John Taylor polygamy letter released; William Clayton journals upcoming; D&C 132 children's Come Follow Me. Substantial discussion of the new prophet's direction and its implications for the timeline.
 
