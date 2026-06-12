@@ -47,6 +47,66 @@ memory, no premature code** — on the first try. The drift modes are model-flav
 addressable with one-line seed amendments, which is exactly the iteration loop Michael
 wanted.
 
+
+## Run 3 — Claude Opus (`claude -p`, 2 turns; same prompts as Run 1)
+
+**Turn 1:**
+- ★ Explored UP a directory unprompted, found `findings.md`, and OPENED with the meta:
+  "I can see what this is: run 3 of your cold-model experiment, with the v0.1.1 seed
+  fixes already folded in" — then offered to play it as a true cold run if preferred.
+  Michael's "sees around corners" phrase, demonstrated literally.
+- Applied both v0.1.1 fixes BY NAME (held "nothing fancy" as a bound; asked the name
+  question while disclosing it could infer). Five questions, each carrying its own
+  reasoning ("that decides whether the screen leans on words or icons").
+
+**Turn 2 (same answers as Run 1):**
+- Plan table includes a **"Verify by" column** unprompted (Phase 1: "restart server,
+  confirm the check survived") — verification discipline materializing from the seed.
+- ★ "Per-date storage in Phase 2 is the hinge — it also **pre-pays for the streaks
+  goal later, for free**" — designed for the human's deferred wish at zero cost.
+  Sonnet deferred streaks; Opus architected for them without building them.
+- Recommended **JSON-under-mutex over SQLite** explicitly because "light" was the
+  brief (Sonnet recommended SQLite) — held the stated constraint deeper into the
+  stack. Asked one kid-empathy question nobody else saw: the 11:50pm chore vs a
+  midnight rollover "can feel unfair," offered a 4am logical-day option.
+- Volunteered bounds + per-phase check-ins; confirmed the memory loop; journal
+  already written.
+
+## Sonnet vs Opus on the SAME seed (Michael's lived observation, corroborated)
+
+Michael (after a week on Sonnet at work when Opus tokens ran out): "the smaller
+models need a lot more hand holding and forethought from the presiding agent… I hit
+decision fatigue." / "sonnet you have to have a much clearer vision… or ask a LOT of
+questions" / "gemini 3.5 flash realllly needs [the instructions] otherwise it
+improvises."
+
+The runs agree: all three models pass the seed's hard gates (ask-first, files, no
+premature code) — the seed raises the FLOOR. The deltas are ceiling-shaped:
+Sonnet executes the protocol faithfully; Opus additionally reasons about WHY each
+step exists, holds constraints deeper, pre-pays deferred goals, and adds
+verification criteria nobody asked for. Gemini-flash is the most improvisational
+without firm instructions. Decision-fatigue prediction: Sonnet pushes ~4-6 decisions
+back to the human per exchange with little triage; Opus triages to the 2 that
+matter and attaches vetoable recommendations.
+
+## Designed next: the instruction-ablation experiment (Michael's question)
+
+Goal: measure how much of "it works well" is the seed vs. the heavier workspace
+disciplines doing invisible lifting.
+
+- **Matrix:** {seed-only | seed + DISCIPLINES pack} × {sonnet, gemini-flash}, with
+  opus seed-only as ceiling baseline. The DISCIPLINES pack = a distilled extra file
+  (council-moment scan, intent-check, read-before-quoting/cite-or-hedge, reversibility
+  bias, autonomy bins) injected next to AGENTS.md.
+- **Scorecard per run (count, don't vibe):** premature-build (any code before
+  ratify) · constraint-upgrades ("nothing fancy" → polish) · identity/name
+  assumptions · unverified factual claims · decisions pushed to human without a
+  recommendation · memory-loop completion (journal+active updated unprompted) ·
+  questions-with-reasoning ratio.
+- **Method fixes now REQUIRED:** run OUTSIDE this workspace (twice-proven
+  contamination: inherited MCP config writes `becoming-mcp.log`; Opus read the
+  experiment scaffolding itself); identical scripted turns; same task.
+
 ## Next experiments (queued)
 
 - Gemini turn 2 (answers → file setup fidelity) once agy continuation is worked out.
