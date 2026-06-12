@@ -3,10 +3,25 @@ lane: pg-ai-stewards
 session_id: 7ea7faa4-688a-451a-ac68-b7ea662d4b81
 status: active
 started: 2026-06-11T22:00:16
-last_active: 2026-06-12T00:00:00
+last_active: 2026-06-12T15:52:35
 ---
 
 ## Working on
+- **★ P1 EXTRACTION UNDERWAY (kicked off 2026-06-12, Michael's "Lets kick off P1!"):**
+  (1) `github.com/cpuchip/pg-ai-stewards-workspace` (PRIVATE) created at
+  `projects/pg-ai-stewards-workspace/` — skeleton + covenant/intent overlay
+  copies + 241-file classification (`overlays/classification.tsv`: 191 core /
+  17 core-p2 / 27+1 overlay / 5 mixed / 1 scratch) + 33-entry overlay manifest
+  + all overlay migrations populated. (2) OSS extension layer extracted
+  (`3d8229d`): src/*.rs audited, lib.rs chain reworked (4 seed embeds removed),
+  189 core + 5 SPLIT migrations, 193-entry core manifest, bundle = build
+  artifact (never checked in). **Build GREEN + virgin CREATE EXTENSION proven**
+  (scratch container, 0 workspace seeds leaked) → OSS pushed through journal.
+  NEXT P1: Go daemon re-homing, runner-consumes-manifest, compose, seed pack.
+  (3) Private manifest REPAIRED (root `e5ccc0c3`): 9 live-applied migrations
+  (r11-r17, ct2-5, ct2-7e) restored from ledger order; found the runner is
+  LEXICAL + manifest-blind (replayed scratch-ct2-run2 into live 06-10 —
+  codewright-ct2 rows; disposition = Michael's call).
 - **pg-ai-stewards OSS extraction** (continues the `pg-ai-stewards-oss` lane —
   same session, retitled): spec RATIFIED, Apache-2.0 FINAL (`3c43d4e`).
   **"Anatomy of a Turn" SHIPPED (`0e8c3c9`)** + order-research update +
