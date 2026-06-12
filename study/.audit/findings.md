@@ -348,6 +348,28 @@ fig-tree, Isa 34:4 falling-fig); **TG Astronomy list corrected — the
 study claimed it includes Facsimile 2 (it doesn't)** → rebuilt from the
 actual TG entry.
 
+### study/mazzaroth-02.md (2026-02-03) — 8 fixes (incl. mis-sourced composite + wrong speaker + invented narrative quote)
+FULL tier, ~35 quotes. The big three: **the "D&C 45:40-42" block was
+actually JS—Matthew 1:36+1:33** (sign-of-Son-of-Man + darkened-sun wording
+— neither sentence is in D&C 45) → requoted as JS—M 1:33, 36; **"Spiritual
+Eclipse" is Elder Gary E. Stevenson, not Uchtdorf** (quote itself exact;
+Uchtdorf's "Bearers of Heavenly Light" attribution was right) → split
+attribution; **the Salt-Lake-Temple Big Dipper quote was an invented
+dramatization** ("'See here,' he said…" — exists nowhere in the 1993
+Liahona article) → replaced with the article's real sentence (its inner
+quote "the lost may find themselves by the priesthood" is genuine). Also:
+Abr "3:6,9" composite — first half is v7 not v6, second half ("This is in
+the order of Kolob") constructed, phrase exists nowhere in the PGP →
+requoted vv. 7+9; D&C 5:14 constructed opener ("And after this day of
+testimony") → verse's real words; 1 Ne 1:9 "he also saw"→"he saw"; Isa
+24:23 "Then shall the moon"→"Then the moon shall" + completed; Mark 13:25
+completed. VERIFIED EXACT: ~28 fragments (Ps 81/104/74/139/150, Isa 66:23,
+Jer 31:35-36, Col 2:16-17, Matt 2:7, Rev 2:28/22:16, Josh 10:12-13, Hab
+3:11, Gen 1:5-16, Dan 12:3, Joel 3:15, Acts 2:20, Song 6:10, D&C 109:73/
+105:31, 1 Thes 5:5, Rom 13:12, Zech 14:7, Ex 13:21, Neh 9:12, Luke
+2:13-14, 2 Pet 3:8) + Christofferson Worship ✓ + Nelson hie-to-Kolob fn ✓
++ TJS ch 44 moonstones EXACT.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)

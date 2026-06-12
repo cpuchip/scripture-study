@@ -35,7 +35,7 @@ Already done out-of-band: `study/morm-8-three-glories-reading.md` (2026-06-09).
 - [x] 2026-02-02 `study/mazzaroth.md` **FULL** — 2 fixes + gift (ESA: 9° cluster ON the Apr 6 dedication day); 12 blocks exact; Hebrew verified via strongs
 - [x] 2026-02-03 `study/agency.md` **FULL** — 1 micro-fix (Moroni 10:34 sentence completed); ~25 quotes exact incl. all Bednar 2025
 - [x] 2026-02-03 `study/mazzaroth-01.md` **FULL** — 8 micro-fixes (76:81→98 mis-cite; Joel "dark"; TG Facsimile-2 claim false; 4 sentence-ends)
-- [ ] 2026-02-03 `study/mazzaroth-02.md` **FULL**
+- [x] 2026-02-03 `study/mazzaroth-02.md` **FULL** — 8 fixes (JS-M mis-sourced as D&C 45; Stevenson not Uchtdorf; invented Big Dipper dramatization; Abr composite)
 - [ ] 2026-02-04 `study/charity.md` **T2+FULL**
 - [ ] 2026-02-04 `study/priesthood-oath-and-covenant.md` **T2+FULL**
 - [ ] 2026-02-05 `study/priesthood-obtaining-exploration.md` **T2+FULL**
