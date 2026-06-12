@@ -1057,6 +1057,24 @@ his actual "constitute authorized channels." Everything else verbatim
 88:11/32/66, 93:8-9, 131:7 newly checked, all exact). The enjoy-as-
 anti-enjoy reading of D&C 88:32 rests on an exactly-quoted verse.
 
+### study/plan-of-salvation/notes-02-mortality.md (2026-02-19) — ★ FIRST POST-BOUNDARY FILE: all 6 Webster = 1913 (words 17-22), ALL scripture verbatim
+T1. The Feb-19 boundary verdict in one file: every scripture rendering
+(2 Ne 2 ×8, Alma 12/34/42 ×8, Moses 5/6 ×7, Mosiah 3:19, D&C 29/93)
+and both talk quotes (Bednar Oct-2020, Oaks gravity Apr-2025) are
+VERBATIM — the read-before-quoting discipline took. But ALL SIX
+Webster definitions (PROBATION, OPPOSITION, CONSECRATE, ENTICE,
+PREPARE, TRANSGRESSION) were the 1913 edition's — the dictionary
+itself was corrupt until the 2026-06-09 repair, so study-date is no
+shield for Webster quotes. All requoted with notes. The genuine
+entries strengthen every argument: ENTICE's own structure runs
+bad-sense/good-sense (Lehi's "enticed by the one or the other");
+PREPARE's genuine illustration is "holiness of heart is necessary to
+prepare men for the enjoyment of happiness with holy beings" (Amulek
+in Webster's own words) and cites Amos 4:12; CONSECRATE's genuine verb
+("set apart, dedicate, or devote, to the service and worship of God")
+beats the 1913 adjective; PROBATION's "being qualified" carries the
+same proving+qualifying duality.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
