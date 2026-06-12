@@ -165,7 +165,7 @@ If the language of Adam is significant, the *pattern* of Adam's teaching is even
 | **The Fall** | "Adam fell, we are" (6:48) | "Our father Adam taught these things" (7:1) | "I have drunk out of that bitter cup" (11:11) |
 | **Repentance** | "Repent of all thy transgressions" (6:52) | "Turn ye, and get ye upon the mount" (7:2) | "Ye must repent" (11:37–38) |
 | **Baptism** | "Be baptized in water" (6:52) | "I should baptize in the name of the Father, and of the Son" (7:11) | "On this wise shall ye baptize" (11:23–26) |
-| **Holy Ghost** | "Ye shall receive the gift of the Holy Ghost" (6:52) | "The Holy Ghost fell on many" (7:27) | "Fire and the Holy Ghost" (11:35) |
+| **Holy Ghost** | "Ye shall receive the gift of the Holy Ghost" (6:52) | "The Holy Ghost fell on many" (7:27) | "Fire and with the Holy Ghost" (11:35) |
 | **Commission** | "Teach these things freely" (6:58) | Called upon all people to repent (7:12) | "Go forth unto this people, and declare" (11:41) |
 
 The pattern is not approximate — it is **precise**. God identifies Himself. The Fall is acknowledged. Repentance, baptism, and the Holy Ghost follow in that order. Then comes the charge to teach others. Moses 5:58–59 states it explicitly:
