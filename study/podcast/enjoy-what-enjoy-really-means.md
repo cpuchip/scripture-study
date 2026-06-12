@@ -39,7 +39,7 @@
 
 - The footnote on "enjoy" doesn't send you to the Topical Guide. It sends you to one man: Nephi.
 
-**Read aloud — [2 Nephi 4:15](../gospel-library/eng/scriptures/bofm/2-ne/4.md):**
+**Read aloud — [2 Nephi 4:15](../../gospel-library/eng/scriptures/bofm/2-ne/4.md):**
 > "For my soul delighteth in the scriptures, and my heart pondereth them, and writeth them for the learning and the profit of my children."
 
 - *That's* what enjoying the words of eternal life looks like. Delight. Pondering. Writing.
@@ -49,7 +49,7 @@
 
 - The other footnote sends you to John 6:68 — Peter's declaration
 
-**Read aloud — [John 6:68](../gospel-library/eng/scriptures/nt/john/6.md):**
+**Read aloud — [John 6:68](../../gospel-library/eng/scriptures/nt/john/6.md):**
 > "Lord, to whom shall we go? Thou hast the words of eternal life."
 
 - This comes right after the Bread of Life discourse — Jesus said things so hard that "many of his disciples went back, and walked no more with him." He turns to the Twelve: "Will ye also go away?"
@@ -57,7 +57,7 @@
 - He'd recognized something. The words themselves carried life in them. Not the miracles — thousands saw those and walked away. The *words*.
 - And five verses earlier, Jesus had explained why:
 
-**Read aloud — [John 6:63](../gospel-library/eng/scriptures/nt/john/6.md):**
+**Read aloud — [John 6:63](../../gospel-library/eng/scriptures/nt/john/6.md):**
 > "The words that I speak unto you, they are spirit, and they are life."
 
 - *(Let that land)* Not *about* spirit. Not *about* life. They **are** spirit. They **are** life.
@@ -73,6 +73,6 @@
 ## If You Want to Go Deeper
 
 - [Enjoy the Words of Eternal Life — Full Study](../enjoy-the-words-of-eternal-life.md)
-- [Moses 6:58–62](../gospel-library/eng/scriptures/pgp/moses/6.md)
-- [John 6:60–69](../gospel-library/eng/scriptures/nt/john/6.md)
-- [2 Nephi 4:15–21](../gospel-library/eng/scriptures/bofm/2-ne/4.md)
+- [Moses 6:58–62](../../gospel-library/eng/scriptures/pgp/moses/6.md)
+- [John 6:60–69](../../gospel-library/eng/scriptures/nt/john/6.md)
+- [2 Nephi 4:15–21](../../gospel-library/eng/scriptures/bofm/2-ne/4.md)

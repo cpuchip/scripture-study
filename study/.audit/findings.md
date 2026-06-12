@@ -1035,6 +1035,16 @@ genuine 1828 only by the Oxford comma — aligned to "To have, possess
 and use with satisfaction" + the genuine "hold or occupy" tail added.
 All scripture renderings (2 Ne 4:15, John 6:63/66/68) verified at #80.
 
+### study/podcast/enjoy-the-warning-we-missed.md + enjoy-here-is-the-millennium.md (2026-02-17) — link-path fix ×18 across the trio
+T1 + SAMPLE. Quotes all verified upstream (#81): D&C 84:43-45/54-57
+verbatim ("eleven verses later" count checks, 43→54), BY groat/Zion/
+Millennium quotes, Moses 7:16/18/63, 4 Ne 1:12/15-17. Fixes: ALL
+gospel-library links in the three podcast files were one directory
+short (../gospel-library from study/podcast/ → nonexistent
+study/gospel-library) — 18 links corrected to ../../; the BY
+Millennium quote's dropped manual-ellipsis had propagated into 003 —
+restored.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
