@@ -1,6 +1,6 @@
 # Title of Liberty — Guidance & Open Questions
 
-*Questions that need answers before the program can move forward. These emerged during initial design (March 2025) and from real family conversation.*
+*Questions that need answers before the program can move forward. These emerged during initial design (March 2026) and from real family conversation.*
 
 *Answers recorded March 17, 2026.*
 

@@ -1518,6 +1518,20 @@ SAMPLE. Index README, no quotes. The becoming/title-of-liberty
 move-link resolves; evaluation.md exists and carries the claimed
 7/10; transcript files present.
 
+### study/yt/title-of-liberty/{transcript,evaluation,guidance} (2026-03-14/15) — 2 micro-requotes; stale guidance duplicate removed
+SAMPLE ×3. transcript.md = primary-source caption capture,
+documented-not-endorsed, untouched. evaluation.md: all 10
+scripture quotes verbatim (D&C 84:54-55, Alma 46/48/53/56, Abr
+1:2); two transcript micro-requotes — Hannah's "to kind of make
+you work through it" (study had dropped "kind of") and "THE direct
+bloodline … throne of David" (study had "a"). guidance.md here was
+a STALE pre-move snapshot of becoming/title-of-liberty/guidance.md
+(the living copy has Q7-Q9 advanced to "Addressed in v2"; its
+relative links only resolve from the new home) — removed per the
+Q3 ratified answer ("leave a README that points"; the README's
+file table never listed it). Year typo "March 2025"→2026 fixed in
+the living copy.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)

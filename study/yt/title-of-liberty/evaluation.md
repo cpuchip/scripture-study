@@ -55,7 +55,7 @@ Hannah's reading of the parable of the nobleman and the olive trees ([D&C 101:43
 **6. Book of Mormon parallels to our day**
 The "For Our Day" model — reading the Book of Mormon as a chronological parallel to the signs of the times — is an approach Elder Bednar has implicitly endorsed by repeatedly teaching that the Book of Mormon was written for *our* situation, not merely as ancient history. The video is careful (at Hannah's insistence) to avoid pinning specific dates, which is wise:
 
-> "Prophecy is always about themes, ideas, periods... The Lord does that to make you work through it." — [Hannah, ~1:46:00](https://www.youtube.com/watch?v=pZljklzcdEI&t=6360)
+> "Prophecy is always about themes, ideas, periods... The Lord does that to kind of make you work through it." — [Hannah, ~1:46:00](https://www.youtube.com/watch?v=pZljklzcdEI&t=6360)
 
 This is more responsible than date-matching approaches.
 
@@ -67,7 +67,7 @@ This is more responsible than date-matching approaches.
 The Council of Fifty history is real and documented. However, the video presents this without adequate nuance about the difference between *eschatological* symbolism and *temporal* political claims. The Council of Fifty minutes (published by the Church) show a more complex picture than "he was crowned king" implies. This is an area where documentary evidence exists but interpretation varies widely. The video doesn't fabricate, but it leans hard.
 
 **2. Joseph Smith's bloodline as "successor to the throne of David"**
-Hannah states Joseph Smith was "not just Ephraim, he was also Judah" and "a direct bloodline rightful successor to the throne of David." While patriarchal blessings do speak of mixed lineage, the specific claim about Davidic succession through blood is speculative historical reconstruction, not established doctrine. Brigham Young made statements about Joseph's lineage, but these are historical records, not canonized revelation. The video presents this at the same confidence level as scripture. That's a category error.
+Hannah states Joseph Smith was "not just Ephraim, he was also Judah" and "the direct bloodline rightful successor to the throne of David." While patriarchal blessings do speak of mixed lineage, the specific claim about Davidic succession through blood is speculative historical reconstruction, not established doctrine. Brigham Young made statements about Joseph's lineage, but these are historical records, not canonized revelation. The video presents this at the same confidence level as scripture. That's a category error.
 
 **3. Resurrected Joseph Smith directing last-days events in person**
 The video references Brigham Young statements about Joseph and Hyrum personally (resurrected) laying out inheritances in Jackson County. While this is a real Brigham Young quote, it's one leader's speculation/prophecy, not canonized scripture. Hannah does appropriately warn against "crazy tangents" and emphasizes proper keys, which is good. But the overall framing gives these ideas more weight than they can bear.
