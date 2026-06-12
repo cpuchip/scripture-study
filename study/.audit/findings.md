@@ -731,6 +731,13 @@ The space-of-not-many-years series verified across all four Helaman
 verses (4:26, 6:32, 7:6, 11:26 — exact); all three Benson keystone-talk
 quotes exact (1 comma restored); Bednar talk title + phrase confirmed.
 
+### study/yt/Zq1IEXTXmsw-testimony-meetings.md (2026-02-08) — CLEAN
+SAMPLE. All four attributed talk quotes EXACT against their files
+(Hinckley 1982 "The Priesthood of Aaron", Ballard 2015 "God Is at the
+Helm", Eyring 1996 "Witnesses for God", Ballard Apr-2023 "Remember What
+Matters Most" — title real); 2 Ne 25:26 exact; video quotes are
+timestamped reportage.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)

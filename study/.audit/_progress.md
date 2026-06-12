@@ -60,7 +60,7 @@ Already done out-of-band: `study/morm-8-three-glories-reading.md` (2026-06-09).
 - [x] 2026-02-08 `study/yt/morganphilpot/07_type_and_sign.md` **T1** — 6 fixes (SORCERY 1913 ×4; Hinckley drift; constructed 3 Ne 6 fragment)
 - [x] 2026-02-08 `study/yt/morganphilpot/06_esdras_and_appointed_times.md` **T1** — clean + 2 verifications woven (broken=bankrupt HOLDS; Hunter calamities-foretold coinage HOLDS)
 - [x] 2026-02-08 `study/yt/morganphilpot/05_ezekiels_eagle.md` **SAMPLE** — CLEAN (all sampled quotes exact; Woodruff excerpts are canonical OD1)
-- [ ] 2026-02-08 `study/yt/Zq1IEXTXmsw-testimony-meetings.md` **SAMPLE**
+- [x] 2026-02-08 `study/yt/Zq1IEXTXmsw-testimony-meetings.md` **SAMPLE** — CLEAN (all 4 talk quotes + 2 Ne 25:26 exact)
 - [x] 2026-02-08 `study/yt/morganphilpot/03_apocalyptic_vision.md` **T1** — 1 fix (MYSTERY tail was 1913; genuine senses woven); 10 scripture quotes exact
 - [x] 2026-02-08 `study/yt/morganphilpot/02_signs_and_warnings.md` **T1** — 3 fixes (LIKEN 1913 ×2; lion-verse cite 16:13→20:16); WRATH genuine
 - [x] 2026-02-08 `study/yt/morganphilpot/01_foundation.md` **T1** — 2 fixes (ABIB + HARVEST 1913→genuine, both gifts woven: harvest=end-of-the-world is Webster's own sense 5)
