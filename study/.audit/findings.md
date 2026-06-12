@@ -1081,6 +1081,15 @@ T1 planning doc. PMG "All that is unfair about life..." verbatim
 34:34 fragment at #86. All 16 linked files (6 phase notes + synthesis
 + becoming companion + 8 studies) resolve.
 
+### study/serpent-and-dragon.md (2026-02-19) — CLEAN (1 word)
+T2+FULL, post-boundary. ~45 renderings across Gen/Ex/Num/Lev/2 Kgs/
+Isa/Ps/Ezek/John/Matt/2 Cor/Eph/Rev 12-13-20/Moses 4/2 Ne/Ether/Hel/
+Alma + the Asay 1978 quote — ALL verbatim. No Webster quotes in the
+body (only listed as consulted). One fix: the Moses 4:21 quote carried
+Genesis 3:15's "and between thy seed" (Moses drops the second "and") —
+a one-word cross-text blend. The post-boundary scripture pattern
+holds: two files, ~70 scripture quotes, one word off.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
