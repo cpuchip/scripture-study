@@ -10,6 +10,28 @@ scroll out of sight.
 
 ---
 
+## 2026-06-12/13 lap 5 (webster-1828 lane, autonomous; files 63-100)
+
+**LAP SUMMARY: 100/469 reached. Files 63-100 (38 files, ~600 quotes).
+THE BOUNDARY VERDICT: post-Feb-19 scripture+talk quotes are near-perfect
+(written sources-open; typical file = 0-1 word off), but Webster was
+corrupt regardless of date — 48 more 1913-as-1828 words found (running
+total ~64), incl. FOUR words not in the 1828 at all (GODHOOD, STATECRAFT,
+the lunar MANSION sense, the SUBTLE synonym tail) and ONE inverted claim
+(WELD — the 1828 HAS the metallurgical sense). Workflow amended:
+post-boundary = Webster verify-ALL, scripture sample. Confabulations
+found: Nelson "but Jesus Christ did it" (#64), Nelson Introductory-
+Remarks blessing (#73), "sharatsah" fake Hebrew (#81). Quoted-within
+misattributions: Monson/Scott/member/Nelson-in-Oaks (#77), Ballard-in-
+Oaks (#92). Counts verified: Nelson 44 EXACT, Oaks 21→23. Gift of the
+lap: the genuine 1828's own citations keep being the studies' anchors —
+GUILE cites John 1:47 (Nathanael), AGONY cites Luke 22:44 (Gethsemane),
+CUP cites Matt 26:39, DELIVERANCE cites Luke 4:18, INCORRUPTION cites
+1 Cor 15:42, MANSION cites John 14:2. Zero ARGUMENT-class queued.
+Resume at miracles-references.md (#101).**
+
+---
+
 ## 2026-06-12 lap 1 (webster-1828 lane, interactive with Michael)
 
 **LAP SUMMARY: 10/469 walked + truth.md out of order. ~180 quotes verified.

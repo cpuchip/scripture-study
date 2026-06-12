@@ -62,6 +62,16 @@ last_active: 2026-06-12T15:38:52
   receive truth" (Bereans), genuine FOREORDAIN includes "predestinate"
   (the distinction is Alma 13's). NEXT: #90 farrell-pickering/thoughts,
   then priestcraft block (Feb-19), plan-of-salvation notes 03-06.
+- UPDATE 5: ★ 100/469 MILESTONE, all pushed. Files 90-100: the
+  plan-of-salvation cluster — Webster carnage continues (words 28-64;
+  priestcraft's whole -hood/-craft table was 1913; GODHOOD/STATECRAFT/
+  lunar-MANSION not in 1828 at all; WELD claim INVERTED — the 1828 has
+  the metallurgical sense). Genuine entries keep handing studies their
+  own anchors (GUILE→John 1:47, AGONY→Luke 22:44, CUP→Matt 26:39,
+  DELIVERANCE→Luke 4:18). Scripture/talk discipline post-boundary is
+  near-perfect. Lap-5 summary in findings.md. NEXT: #101
+  miracles-references.md FULL, then gifts.md + priesthood-and-gifts
+  (T1+FULL), father-and-son (Feb-23).
 - ✅ OCR repair SHIPPED + live-verified (1336c8ce); walk plan RATIFIED
   (.spec/proposals/study-correctness-walk.md)
 
