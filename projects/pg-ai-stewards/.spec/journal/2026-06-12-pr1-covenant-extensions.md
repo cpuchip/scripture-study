@@ -91,12 +91,19 @@ gate dispatches.
 
 - **Walls-vs-compulsion audit** of substrate mechanisms (preside study §V)
   — named follow-on, not started.
-- **Trailing-reminder idea:** echo currently ends compose_system_prompt;
-  compose_messages appends pressure line + self-notes after it. A
-  reminder near the true end of long message lists (the Claude Code
-  system-reminder pattern) would be the stronger recency lever — needs a
-  provider-quirks pass (anthropic body conversion extracts system
-  messages), so proposal-first.
+- **Trailing-reminder idea — PRIORITY RAISED by the 2026 regrounding
+  (Michael's challenge, same day):** the 2025–26 literature says frontier
+  models attenuated classic absolute-position LiM, BUT (a) U-shape
+  persists ≤~50% of window and past that **primacy fades** while
+  distance-to-end bias takes over (*Positional Biases Shift…*; CALIOPE,
+  EACL Findings 2026; architectural-prior theory arXiv 2602.16837), and
+  (b) context rot + "instruction weight loss" in long agent loops is the
+  current consensus (Chroma + 2026 replications), and (c) long context
+  silently shortens reasoning/self-verification ~2× on current-gen models
+  (arXiv 2604.01161, Apr 2026). So in long sessions the end-of-MESSAGES
+  slot matters more than end-of-system-prompt. Echo near the true tail =
+  the robust lever. Still proposal-first (anthropic body conversion
+  extracts system messages; provider-quirks pass needed).
 - Verify-suite full run recommended after this schema change (bridge
   replay was green, but the suite's function-def parity diff is the
   deeper check; 20 pre-existing unclassified mismatches still open).
