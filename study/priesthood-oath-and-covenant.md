@@ -59,28 +59,30 @@ This is extraordinary: God binds Himself by oath. If we keep our part, He is oat
 
 Understanding these terms as Joseph Smith would have understood them illuminates the meaning of D&C 84.
 
-### OATH
-> "A solemn affirmation or declaration, made with a **reverent appeal to God** for the truth of what is affirmed."
+*(Edition note, 2026-06-12: these definitions are now quoted from the genuine 1828 text. An earlier draft quoted the 1913 edition under the 1828 label — the senses are parallel and every argument survives, but the wording below is now Noah Webster's own.)*
 
-An oath is not merely a promise—it is a promise with God as witness and guarantor. When God Himself makes an oath, He stakes His divine honor on fulfillment.
+### OATH
+> "A solemn affirmation or declaration, made with an **appeal to God** for the truth of what is affirmed. The appeal to God in an oath, implies that the person imprecates his vengeance and renounces his favor if the declaration is false."
+
+An oath is not merely a promise—it is a promise with God as witness and guarantor, staking everything on fulfillment. When God Himself makes an oath, He stakes His own divine honor.
 
 ### COVENANT
-> "A **mutual agreement** of two or more persons or parties... The **promises of God** as revealed in the Scriptures, **conditioned on certain terms** on the part of man, as obedience, repentance, faith, etc."
+> "A **mutual consent or agreement** of two or more persons, to do or to forbear some act or thing" (sense 1). In theology: "The covenant of grace, is that by which **God engages to bestow salvation on man, upon the condition that man shall believe in Christ** and yield obedience to the terms of the gospel" (sense 3).
 
 A covenant is binding when both parties fulfill their terms. God's part is guaranteed by His oath.
 
 ### OBTAIN
-> "To **get hold of by effort**; to gain possession of; to procure; to acquire, in any way."
+> "To get; to gain; to procure; in a general sense, to gain possession of a thing... this word usually **implies exertion to get possession, and in this it differs from receive**, which may or may not imply exertion... **We obtain by seeking; we often receive without seeking.**"
 
-Key insight: To *obtain* implies **desire** and **effort directed toward attainment**. Obtaining is different from merely receiving.
+Webster himself draws the very distinction this study turns on: obtaining implies **effort directed toward attainment**. Obtaining is different from merely receiving.
 
 ### RECEIVE
-> "To **take, as something that is offered**, given, committed, sent, paid, or the like; to accept."
+> "To **take, as a thing offered or sent; to accept**."
 
 To *receive* means accepting what is offered. Combined with "obtain," we see the full picture: we must actively seek (obtain) and then humbly accept (receive) both priesthoods.
 
 ### MAGNIFY
-> "To **increase the importance of**; to cause to be held in greater esteem or respect; to make greater... To **praise highly**; to extol."
+> "To **make great or greater**... To make great in representation; **to extol; to exalt** in description or praise... To extol; to exalt; to elevate; **to raise in estimation**."
 
 To magnify a calling is to increase its influence, make it matter more, and bring glory to God through it.
 
@@ -161,9 +163,9 @@ The word "magnify" appears throughout scripture in connection with priesthood se
 
 ### Related Passages
 
-> "And again, verily I say unto you, the duty of a president over the office of a high priest is to preside over the whole church, and to be like unto Moses — Behold, here is wisdom; yea, to be a seer, a revelator, a translator, and a prophet, having all the gifts of God which he bestows upon the head of the church." — [D&C 107:91-92](../gospel-library/eng/scriptures/dc-testament/dc/107.md)
+> "And again, the duty of the President of the office of the High Priesthood is to preside over the whole church, and to be like unto Moses—Behold, here is wisdom; yea, to be a seer, a revelator, a translator, and a prophet, having all the gifts of God which he bestows upon the head of the church." — [D&C 107:91-92](../gospel-library/eng/scriptures/dc-testament/dc/107.md)
 
-> "**Magnify thine office**; and after thou hast sowed thy fields and secured them, go speedily unto the church which is in Colesville" — [D&C 24:9](../gospel-library/eng/scriptures/dc-testament/dc/24.md)
+> "**Magnify thine office**; and after thou hast sowed thy fields and secured them, go speedily unto the church which is in Colesville" — [D&C 24:3](../gospel-library/eng/scriptures/dc-testament/dc/24.md) (v. 9 repeats the charge: "thou shalt have wherewith to magnify thine office")
 
 To magnify means:
 - To make **larger** — expand the influence of your calling
@@ -181,11 +183,11 @@ To magnify means:
 >
 > **43.** And to **confirm** the church by the laying on of the hands, and the giving of the Holy Ghost;
 >
-> **44.** And to take the lead of all meetings... when there is **no high priest** present;
+> **44.** And to take the lead of all meetings.
 >
-> **45-46.** The elder or priest functions in the **absence of high priests**...
+> **45.** The elders are to conduct the meetings as they are **led by the Holy Ghost**, according to the commandments and revelations of God.
 
-— [D&C 20:42-46](../gospel-library/eng/scriptures/dc-testament/dc/20.md)
+— [D&C 20:42-45](../gospel-library/eng/scriptures/dc-testament/dc/20.md) (priests take the lead "when there is no elder present" — [v. 49](../gospel-library/eng/scriptures/dc-testament/dc/20.md))
 
 ### The Elder's Place in the Priesthood
 
@@ -265,7 +267,7 @@ This ties directly to God's covenant with Abraham:
 
 The priesthood is named after Melchizedek because of his greatness:
 
-> "Why the first is called the Melchizedek Priesthood is because **Melchizedek was such a great high priest**. Before his day it was called *the Holy Priesthood, after the Order of the Son of God*. But out of respect or reverence to the name of the Supreme Being, to avoid the too frequent repetition of his name, they, the church, in ancient days, called that priesthood after Melchizedek" — [D&C 107:2-4](../gospel-library/eng/scriptures/dc-testament/dc/107.md)
+> "Why the first is called the Melchizedek Priesthood is because **Melchizedek was such a great high priest**. Before his day it was called *the Holy Priesthood, after the Order of the Son of God*. But out of respect or reverence to the name of the Supreme Being, to avoid the too frequent repetition of his name, they, the church, in ancient days, called that priesthood after Melchizedek, or the Melchizedek Priesthood." — [D&C 107:2-4](../gospel-library/eng/scriptures/dc-testament/dc/107.md)
 
 ### What Made Melchizedek Great?
 
@@ -273,7 +275,7 @@ Alma provides the best portrait:
 
 > "Now this Melchizedek was **a king over the land of Salem**; and his people had waxed strong in **iniquity and abomination**; yea, they had all gone astray; they were full of all manner of wickedness;
 >
-> "But Melchizedek having exercised **mighty faith**, and received the office of the high priesthood according to the holy order of God, **did preach repentance unto his people**. And behold, **they did repent**; and Melchizedek **did establish peace** in the land in his days; therefore he was called **the prince of peace**, for he was the king of Salem" — [Alma 13:17-18](../gospel-library/eng/scriptures/bofm/alma/13.md)
+> "But Melchizedek having exercised **mighty faith**, and received the office of the high priesthood according to the holy order of God, **did preach repentance unto his people**. And behold, **they did repent**; and Melchizedek **did establish peace** in the land in his days; therefore he was called **the prince of peace**, for he was the king of Salem; and he did reign under his father." — [Alma 13:17-18](../gospel-library/eng/scriptures/bofm/alma/13.md)
 
 ### Lessons from Melchizedek:
 1. He started with a **wicked people** — the situation was bad
@@ -382,11 +384,11 @@ For the rest of us, the covenant includes constant **repentance** and renewal.
 
 ### Sealing Power
 
-> "And it shall come to pass, that **whatsoever ye shall seal on earth shall be sealed in heaven**; and whatsoever ye shall loose on earth shall be loosed in heaven" — [Helaman 10:7](../gospel-library/eng/scriptures/bofm/hel/10.md)
+> "Behold, I give unto you power, that **whatsoever ye shall seal on earth shall be sealed in heaven**; and whatsoever ye shall loose on earth shall be loosed in heaven; and thus shall ye have power among this people." — [Helaman 10:7](../gospel-library/eng/scriptures/bofm/hel/10.md)
 
 ### The Signs That Follow Believers
 
-> "And these **signs shall follow them that believe**: In my name they shall do many wonderful works; In my name they shall cast out devils; In my name they shall **heal the sick**; In my name they shall **open the eyes of the blind**, and unstop the ears of the deaf" — [D&C 84:65-66](../gospel-library/eng/scriptures/dc-testament/dc/84.md)
+> "And these **signs shall follow them that believe**: In my name they shall do many wonderful works; In my name they shall cast out devils; In my name they shall **heal the sick**; In my name they shall **open the eyes of the blind**, and unstop the ears of the deaf" — [D&C 84:65-69](../gospel-library/eng/scriptures/dc-testament/dc/84.md)
 
 ---
 
