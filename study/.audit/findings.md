@@ -559,6 +559,22 @@ praise of the salt etymology → corrected, "accuracy is uneven"); the
 July-2025 footer dates (third instance of the impossible-date class in
 this cluster) → git-verified 2026-02-08.
 
+### study/yt/morganphilpot/verbal_only_evaluation.md (2026-02-08) — the correction's home: item #2 re-rated, item #1's false "accurately cited" fixed
+T1, the 33-item evaluation. **Item #2 (Zarahemla)**: the old assessment
+treated "hemlah/melach" as ONE root and rated it "compelling" — Strong's
+correction applied in full (chemlah H2551 = compassion ≠ melach H4417 =
+salt; "seed of compassion" is the scholarly gloss; the salt derivation
+requires a word Zarahemla doesn't contain) → re-rated ⚡→❌ with
+transparent note; summary-table row + distribution (14/12 → 13/13) +
+Overall-Assessment praise all updated. **Item #1 (storm/tempest)**: the
+assessment claimed "the Webster 1828 definitions are accurately cited"
+— they weren't (invented "definition 4" wording; tempest's own political
+sense missed) → corrected against the genuine entries, In-Line kept in
+softened both-registers form. Footer dates were the impossible-July-2025
+class → git-corrected. The rest of the document's deep-read work (the
+3 Ne 3 footnote analysis, Rev 12 self-interpreting case, D&C 21/1:38
+chains) spot-checked sound — its remediation pass had read its sources.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)

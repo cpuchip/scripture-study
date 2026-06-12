@@ -26,11 +26,11 @@ These items demonstrate Philpot's genuine scriptural literacy, historical resear
 
 ### 1. Storm vs. Tempest — Webster 1828 Distinction (Phase 7, Part III ~33:00)
 
-**Claim:** Mormon uses both "storm" and "tempest" in [3 Nephi 8:5–6](../../gospel-library/eng/scriptures/bofm/3-ne/8.md) deliberately. In Webster's 1828, "storm" includes "a political incursion or a violent assault upon a fortified place" (definition 4), while "tempest" emphasizes sudden, extreme natural violence. Mormon may be signaling both a political disruption AND a natural catastrophe.
+**Claim:** Mormon uses both "storm" and "tempest" in [3 Nephi 8:5–6](../../gospel-library/eng/scriptures/bofm/3-ne/8.md) deliberately. In Webster's 1828, "storm" carries military/political senses alongside the natural one, while "tempest" emphasizes natural violence. Mormon may be signaling both a political disruption AND a natural catastrophe.
 
-**Assessment: In Line.** The Webster 1828 definitions are accurately cited. 3 Nephi 8:5 reads: "there arose a great storm, such an one as never had been known in all the land." Verse 6: "And there was also a great and terrible tempest." Mormon *does* use both words in sequence, and the distinction is real in Joseph Smith's contemporary dictionary. Whether Mormon intended both senses is interpretive, but the observation is textually grounded and linguistically sound. This is the kind of word study the Webster 1828 dictionary was made for.
+**Assessment: In Line in substance — citation details corrected (2026-06-12, against the genuine 1828).** STORM's actual senses: 1 "a violent wind; a tempest"; 2 "a violent assault on a fortified place"; 3 "violent civil or political commotion; sedition; insurrection." (The earlier draft quoted "a political incursion or a violent assault upon a fortified place" as "definition 4" — that wording and numbering are not Webster's.) TEMPEST is primarily "an extensive current of wind, rushing with great velocity and violence," but Webster also allows "a popular or political tempest; the tempest of war" — so the split is not clean: both words carry both registers, and Webster notes the words are used as synonyms. 3 Nephi 8:5–6 does use both in sequence. The both-registers observation survives in softened form; the tidy storm=political/tempest=natural assignment does not.
 
-**Rating:** ✅ In Line
+**Rating:** ✅ In Line (softened — both registers present in both words)
 
 ---
 
@@ -38,9 +38,9 @@ These items demonstrate Philpot's genuine scriptural literacy, historical resear
 
 **Claim:** Hebrew *melach* (מֶלַח) means "salt." The Dead Sea in Hebrew is *yam ha-melach* (the Salt Sea). "Zarahemla" may contain the root *hemlah/melach*. The Lord burned Zarahemla ([3 Nephi 9:3](../../gospel-library/eng/scriptures/bofm/3-ne/9.md): "that great city Zarahemla have I burned with fire"), and the "modern Zarahemla" would be Salt Lake City.
 
-**Assessment: Nuanced.** The Hebrew is approximately correct — *yam ha-melach* does mean "Salt Sea," and *melach* does mean "salt." The connection of Zarahemla to *melach/hemlah* is speculative (Book of Mormon etymologies are unverifiable since the original language is unknown), but the phonetic resemblance is provocative. The Lord does burn Zarahemla in [3 Nephi 9:3](../../gospel-library/eng/scriptures/bofm/3-ne/9.md) — that's directly confirmed. The modern application (Salt Lake City) is Philpot's interpretive leap. The etymology is unverifiable but the observation is creative and worth pondering.
+**Assessment: CORRECTED 2026-06-12 (Strong's verification).** The earlier assessment treated "*hemlah/melach*" as one root. They are not: *melach* (מֶלַח, H4417) means salt — *yam ha-melach* is indeed the Salt Sea — but *chemlah* (חֶמְלָה, H2551) means **compassion, pity** (a different root entirely: מלח vs. חמל). The phonetic element actually present in "Zarahemla" is *-hemla*, which points to *chemlah* — hence the common scholarly gloss "seed of compassion" (*zera* + *chemlah*). The salt derivation requires the word Zarahemla does not contain. Joshua 15:62's "City of Salt" is *Ir ham-Melach*, not *-chemlah*. The Lord does burn Zarahemla in [3 Nephi 9:3](../../gospel-library/eng/scriptures/bofm/3-ne/9.md) — that's directly confirmed — but the Salt-Lake-City application fails at the etymology step, not merely the application step.
 
-**Rating:** ⚡ Nuanced — compelling etymology, unverifiable application
+**Rating:** ❌ Out of Line — the etymology is false Hebrew *(originally rated ⚡ Nuanced "compelling etymology"; corrected against Strong's H2551/H4417)*
 
 ---
 
@@ -392,7 +392,7 @@ What Philpot misses: (a) the no-temple-announcements section was written *after*
 | # | Item | Phase | Rating | Tier |
 |:--:|------|:-----:|:------:|:----:|
 | 1 | Storm vs. tempest (Webster 1828) | 7 | ✅ In Line | Compelling |
-| 2 | Zarahemla / hemlah / salt etymology | 9 | ⚡ Nuanced | Compelling |
+| 2 | Zarahemla / hemlah / salt etymology | 9 | ❌ Out of Line *(corrected 2026-06-12)* | ~~Compelling~~ |
 | 3 | 3 Nephi 2:8 reckoning change | 7 | ⚡ Nuanced | Compelling |
 | 4 | 1907 Church Declaration | 5v | ✅ In Line | Compelling |
 | 5 | First month, fourth day / creation week | 9 | ⚡ Nuanced | Compelling |
@@ -430,9 +430,11 @@ What Philpot misses: (a) the no-temple-announcements section was written *after*
 | Rating | Count | % |
 |--------|:-----:|:--:|
 | ✅ In Line | 4 | 12% |
-| ⚡ Nuanced | 14 | 42% |
-| ❌ Out of Line | 12 | 36% |
+| ⚡ Nuanced | 13 | 39% |
+| ❌ Out of Line | 13 | 39% |
 | Minor/Mixed | 3 | 9% |
+
+*(Distribution updated 2026-06-12: item #2 moved Nuanced → Out of Line after Strong's verification.)*
 
 ---
 
@@ -470,7 +472,7 @@ Sources read from `gospel-library/` with footnotes during remediation pass:
 
 The verbal-only layer of Philpot's presentation is a *parallel presentation within the presentation* — audience-responsive, story-driven, and frequently more engaging than the slides. Its quality follows the same pattern identified across the entire series: **Philpot's textual observation is usually sound; his application consistently overreaches.**
 
-**The Compelling tier (items 1–8)** demonstrates genuine scriptural fluency and historical research. The storm/tempest Webster 1828 distinction is excellent word study. The Zarahemla etymology is creative. The Edmunds-Tucker history is accurate. The 1907 declaration analysis reveals a document most Latter-day Saints have never read.
+**The Compelling tier (items 1–8)** demonstrates genuine scriptural fluency and historical research. The storm/tempest Webster 1828 distinction is real word study (in softened form — see item 1's correction). The Edmunds-Tucker history is accurate. The 1907 declaration analysis reveals a document most Latter-day Saints have never read. *(The Zarahemla etymology, originally praised here, was corrected 2026-06-12 — it is false Hebrew; see item 2.)*
 
 **The Problematic tier (items 16–26)** reveals the cost of the overreach. Predicting political assassinations from BoM typology is irresponsible. Calling BYU a "temple of Baal" undermines the prophet who oversees it. Setting specific dates (2029, 2033) contradicts [D&C 49:7](../../gospel-library/eng/scriptures/dc-testament/dc/49.md). Using temple ceremony details as decode-keys inverts the relationship between ordinance and covenant-maker. And unverified factual claims (Bolton/Comey indictments, Archduke Ferdinand) erode the trust Philpot earns with his genuine research.
 
@@ -478,7 +480,7 @@ The **persistent standard** remains: [D&C 49:7](../../gospel-library/eng/scriptu
 
 ---
 
-*Evaluation written: 2025-07-26*
-*Deep-reading remediation: 2025-07-27*
+*Evaluation written: 2026-02-08 (git-verified; earlier footers claimed July 2025)*
+*Strong's correction pass: 2026-06-12 (study-correctness walk)*
 *Based on: 3 transcripts, 10-pass review findings, Phase 1–9 evaluations*
 *Footnote sources: 20 chapters read from gospel-library with full footnote apparatus*
