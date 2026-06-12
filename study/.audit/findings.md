@@ -678,6 +678,18 @@ All ten scripture blockquotes EXACT with honest elisions (3 Ne 21:4,
 D&C 98:5, 101:80). Running 1913-as-1828 tally: OATH, COVENANT, OBTAIN,
 RECEIVE, MAGNIFY, SORCERY, MYSTERY across 4 files.
 
+### study/yt/morganphilpot/02_signs_and_warnings.md (2026-02-08) — 3 fixes (LIKEN = 6th 1913-as-1828 word; lion cite)
+T1. **LIKEN was 1913 wording** ×2 ("To allege, or think, to be like…")
+→ genuine 1828 ("To compare; to represent as resembling or similar") —
+the comparison-not-identification argument unchanged. WRATH verified
+GENUINE (all three senses exact, honest elision). The lion-among-beasts
+quote was cited to "16:13, 20:16, 21:12" — the text is 20:16 verbatim
+(with its "and"); 16:13 is the repent-verse → cite corrected (parallels
+21:12, 16:15). 1 Ne 14:10, 3 Ne 16:10, 21:14, D&C 121:26-32, D&C 130:18
+all EXACT. Tally: 6 Webster words 1913-as-1828 across 5 cluster files;
+WRATH + walk-with-God + broken=bankrupt + PHARMACOLOGY/WIZARD/ENCHANTER
+genuine.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
