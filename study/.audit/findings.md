@@ -822,6 +822,18 @@ Verified-true gifts: Packer's 55-times count is his own compressed
 comparison (he says "atone in form and tense"); Faust's "absolute
 knowledge that God lives" is the survivor's words, line-verified.
 
+### study/know-god.md (2026-02-13) — 1 splice requote + 1 typo
+FULL. ~33 scripture quotes (Moses 1+7, John 14/16/17, D&C 19/76/93/121/
+130/132, Ps 103, 1 Jn 5, 2 Pet 1, Moro 10:5) ALL verbatim, including
+the full Moses 7 weeping-God sequence. Six Lectures on Faith quotes:
+five verbatim; Lecture Third ¶21 was a splice — "Without the idea that
+he is a God who changes not... doubt would take the place of faith"
+stitched the paragraph's first-sentence phrase onto its second; the
+source's own continuous clause ("For without the idea of
+unchangeableness in the character of the Deity...") restored. Lecture 4
+attributes table matches the lecture's own scripture citations row for
+row. Typo fixed ("lightof Christ"). Source-open file.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)

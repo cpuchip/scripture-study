@@ -76,7 +76,7 @@ Already done out-of-band: `study/morm-8-three-glories-reading.md` (2026-06-09).
 - [x] 2026-02-09 `study/yt/morganphilpot/original/timeline.md` **SAMPLE** — auditor preface added (primary-source capture)
 - [x] 2026-02-10 `study/truth-atonement.md` **T1+FULL** — 3 requotes (ATONE "At one; together" + SANCTIFY w/ John 17:17 = 1913 words 12-13; REDEEM sense 1); ~25 scriptures verbatim
 - [x] 2026-02-10 `study/truth-modern-prophets.md` **FULL** — 1 fix (Nelson "but Jesus Christ did it" tail = confabulated, requoted w/ correction note; 2 ellipsis restores; ~50 quotes across 18 talks verbatim)
-- [ ] 2026-02-13 `study/know-god.md` **FULL**
+- [x] 2026-02-13 `study/know-god.md` **FULL** — 1 fix (Lecture Third ¶21 splice requoted to continuous source; ~33 scriptures + 5 of 6 LoF quotes verbatim; typo)
 - [ ] 2026-02-14 `study/cfm/20260215-noah-found-grace.md` **T1**
 - [ ] 2026-02-14 `study/cfm/20260215-genealogy.md` **SAMPLE**
 - [ ] 2026-02-14 `study/language-of-adam.md` **FULL**
