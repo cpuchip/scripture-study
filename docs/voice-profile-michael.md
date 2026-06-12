@@ -30,8 +30,13 @@ band (520 messages) plus the live 2026-06 sessions. Extraction scripts:
 
 1. **`lets` without the apostrophe** — 691 vs 25 `let's` in the 2025 corpus (96%);
    158 vs 2 in the May 2026 corpus. The single most reliable Michael-marker.
-2. **Zero em-dashes.** 0 in 101K words. Michael connects with commas, parentheses, and
-   new lines — never `—`. (The AI's favorite glyph is his never-glyph.)
+2. **Zero em-dashes.** 0 in 101K words. Michael's correction (2026-06-12): the cause is
+   partly mechanical — "we don't have any em dash on our keyboard… Just an en dash -
+   so… thats what we use" (Word may upconvert `--`). His actual connectives, confirmed
+   by both his testimony and the data: **hyphen/en-dash, colons, ellipses (`...`), and
+   parentheses** — "u use : and ... and () a lot." So the gauge marker stands but
+   sharpens: an em-dash *as a composed glyph doing rhetorical work* is the model's
+   hand; a bare `-` mid-sentence is his.
 3. **"Okay" as a pivot-opener** — 181 messages open with "Okay" (often "Okay so", "Okay
    I've been…"). It marks a turn: new topic, verdict arriving, or rolling up sleeves.
 4. **Numbered decision lists answering AI questions** — terse rulings, one per number,
