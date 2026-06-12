@@ -19,6 +19,10 @@ last_active: 2026-06-12T00:00:00
   `projects/pg-ai-stewards/.spec/journal/2026-06-12-pr1-covenant-extensions.md`.
   Carry-forwards there: walls-vs-compulsion audit (§V), trailing-reminder
   proposal, verify-suite full run, ledger naming wart.
+- **compact_context SEED captured** (Michael's sketch, 2026-06-12 — HOLD,
+  no build until council): commissioned-curation side quest; seed at
+  `projects/pg-ai-stewards/.spec/proposals/substrate-compact-context-sidequest.md`
+  with parked council questions. 2026 research also on hold per Michael.
 
 ## Claims
 - NONE live. (PR.1 window CLOSED 2026-06-12: pg+bridge rebuilt/restarted,
