@@ -748,6 +748,12 @@ talk's own elided rendering. **Same talk as eq/20260208 (#18, the
 confabulated-biography file) — the pair is the day's cleanest controlled
 experiment: read-the-talk = clean, recall-the-talk = invented.**
 
+### study/yt/BH7RydKyIR0-hastening-false-narratives.md (2026-02-08) — CLEAN
+SAMPLE. Rasband "Right Before Our Eyes" title real; Nelson's
+right-before-our-eyes line EXACT (honest elision); Isa 29:14 + D&C 68:6
+exact; epigraphs verified; video quotes are timestamped reportage; the
+primary source is an external Church News article (correctly labeled).
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
