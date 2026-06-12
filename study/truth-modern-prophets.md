@@ -101,12 +101,14 @@ The [Atonement study](./truth-atonement.md) emphasized that Christ is not an add
 
 ### President Russell M. Nelson — "Drawing the Power of Jesus Christ into Our Lives" (April 2017)
 
-> "There is no amorphous entity called 'the Atonement' upon which we may call for succor, healing, forgiveness, or power. Jesus Christ is the source. Sacred terms such as *Atonement* and *Resurrection* describe what the Savior did... but Jesus Christ did it."
+> "There is no amorphous entity called 'the Atonement' upon which we may call for succor, healing, forgiveness, or power. Jesus Christ is the source. Sacred terms such as *Atonement* and *Resurrection* describe what the Savior did, according to the Father's plan, so that we may live with hope in this life and gain eternal life in the world to come. The Savior's atoning sacrifice — the central act of all human history — is best understood and appreciated when we expressly and clearly connect it to Him."
 > — [President Nelson, "Drawing the Power of Jesus Christ into Our Lives," April 2017](../gospel-library/eng/general-conference/2017/04/drawing-the-power-of-jesus-christ-into-our-lives.md)
+
+*Correction (2026-06-12): an earlier version of this study ended the quote with "...describe what the Savior did... but Jesus Christ did it" — that final clause is not in the talk. President Nelson's actual continuation, restored above, carries the same point in his own words.*
 
 And more sharply:
 
-> "It is doctrinally incomplete to speak of the Lord's atoning sacrifice by shortcut phrases such as 'the Atonement' or 'the enabling power of the Atonement'... These expressions present a real risk of misdirecting faith by treating the event as if it had living existence and capabilities independent of our Heavenly Father and His Son."
+> "It is doctrinally incomplete to speak of the Lord's atoning sacrifice by shortcut phrases, such as 'the Atonement' or 'the enabling power of the Atonement'... These expressions present a real risk of misdirecting faith by treating the *event* as if *it* had living existence and capabilities independent of our Heavenly Father and His Son, Jesus Christ."
 
 This is a prophetic correction with deep doctrinal precision. The [Atonement study](./truth-atonement.md) asks "How does a fallen being traverse the spectrum upward?" The answer is not a mechanism — it is a *Person*. Christ *is* the light of truth (D&C 88:6-7). He *is* the law by which all things are governed (D&C 88:13). He didn't merely create a program called "the Atonement" — He *descended below all things* and *comprehended all things* so that He could be *in all and through all things* (D&C 88:6).
 
@@ -195,7 +197,7 @@ The fourth category is crucial. Most doctrinal discussions focus on the first tw
 
 He then quoted George Q. Cannon:
 
-> "No man ought to say, 'Oh, I cannot help this; it is my nature.' He is not justified in it, for the reason that God has promised to give gifts that will eradicate [our weaknesses]."
+> "No man ought to say, 'Oh, I cannot help this; it is my nature.' He is not justified in it, for the reason that God has promised to ... give gifts that will eradicate [our weaknesses]."
 
 This directly counters the despair that the [Atonement study](./truth-atonement.md) addresses — the feeling that the law condemns without providing a way forward. The enabling power is the way forward. It's not merely pardon for past failure; it's actual *power to change one's nature*.
 
@@ -362,7 +364,7 @@ He described the three kingdoms with doctrinal exactness:
 
 - **Celestial:** "received of his fulness, and of his glory... they are gods, even the sons [and daughters] of God"
 - **Terrestrial:** "honorable men of the earth, who were blinded by the craftiness of men" but "not valiant in the testimony of Jesus"
-- **Telestial:** "he who cannot abide a terrestrial glory"
+- **Telestial:** "he who cannot abide ... a terrestrial glory"
 
 And quoted President Nelson:
 

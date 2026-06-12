@@ -805,6 +805,23 @@ genuine. All ~25 cited scripture renderings verbatim: D&C 88:6/14/
 Moroni 10:32-33, Mosiah 3:17/19, Moses 6:59-63. Arguments intact or
 strengthened by every requote.
 
+### study/truth-modern-prophets.md (2026-02-11) — 1 confabulated quote-tail + 2 dropped ellipses
+FULL. 18 conference talks quoted (Burton 1981 → Oaks 2023); every quote
+checked against the local talk file. ~50 quotes verbatim — this study
+was clearly written with sources open. The one real find: the Nelson
+Apr-2017 quote ended "...describe what the Savior did... but Jesus
+Christ did it" — that clause is in NO part of the talk (paraphrase
+wearing quote marks). Requoted with his real continuation ("according
+to the Father's plan... best understood and appreciated when we
+expressly and clearly connect it to Him"), correction note added. Two
+dropped-ellipsis restores: Cannon-via-Callister ("promised to ... give
+gifts") and Oaks-2023 telestial ("cannot abide ... a terrestrial
+glory") — both sources mark elisions the study had silently closed.
+Also restored Nelson's "*event*/*it*" italics + ", Jesus Christ" tail.
+Verified-true gifts: Packer's 55-times count is his own compressed
+comparison (he says "atone in form and tense"); Faust's "absolute
+knowledge that God lives" is the survivor's words, line-verified.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
