@@ -954,6 +954,14 @@ model, "pretty strong last time," betrayal ("headto head" transcript
 artifact normalized fairly). One fix: Mark 11:17 KJV ends "house of
 prayer?" not ":".
 
+### study/yt/farrell-pickering/04_false_peace.md (2026-02-15) — CLEAN
+SAMPLE. Dan 9:27, Isa 9:8-13, Rev 6:1-2, Ether 2:12, D&C 87:1-8, 3 Ne
+16:10/13, 1 Thes 5:3, 2 Ne 28:31, Isa 45:1, D&C 121:33 (rendered
+correctly here — the README's gloss was the outlier) all verbatim with
+marked elisions. Hebrew higbir and LXX-toxon notes accurate; Trump
+clip verified at #69; Visions-of-Glory/Pontius/Tanguma biographical
+claims standard. Zero fixes.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
