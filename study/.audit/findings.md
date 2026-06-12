@@ -776,6 +776,16 @@ testimony-alone, Pearson, Hel 15:7-8, 3 Ne 2:1-2 (cite already right),
 confabulated quote, once written, gets quoted BY LATER STUDIES as if
 verified — the error compounds via internal reuse.
 
+### study/helaman-why.md (2026-02-09) — 1 fix (Benson splice — and the propagation SOURCE found)
+FULL. The Benson framework quote spliced two verified keystone-talk
+sentences with a constructed third ("By analogy, the book of Helaman
+corresponds to our day" — in no Benson talk, corpus-wide grep) → quote
+ended at his real words, the analogy re-owned as the study's framing,
+correction note + his real 1987 parallels line added. **This splice is
+where helaman-ten-virgins's "corresponds to our day" fragment came from
+— the propagation chain ran constructed-sentence → quoted-as-Benson →
+re-quoted downstream.** Hel 5:12, Hel 12:1-2, 3 Ne 2:1-2 all EXACT.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
