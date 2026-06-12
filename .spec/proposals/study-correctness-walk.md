@@ -1,8 +1,17 @@
 # Study Correctness Walk — every study, in order, against the fixed dictionary
 
-**Status: PROPOSED — ratify with Michael.** Drafted 2026-06-12 (webster-1828 lane).
-Companion to [`webster-1828-data-integrity.md`](webster-1828-data-integrity.md);
-leg 1 (three-glories) already walked 2026-06-09 and is the template.
+**Status: RATIFIED 2026-06-12 (AskUserQuestion).** Michael's decisions:
+**T3 = FULL direct-quote verification on all 90 top-level studies** (not just
+the 33 Webster ones; sample + links elsewhere) · **chronological order** ·
+**gated autonomy** (mechanical fixes act-and-report; ARGUMENT-class findings
+queue for sessions with Michael; overnight laps allowed under
+unattended-resilience rules) · **bom-walk = the 12 Webster files** full
+treatment, the other 227 link-validation only.
+
+Working dir: `study/.audit/` (progress + findings + workflow). Drafted
+2026-06-12 (webster-1828 lane). Companion to
+[`webster-1828-data-integrity.md`](webster-1828-data-integrity.md); leg 1
+(three-glories) already walked 2026-06-09 and is the template.
 
 **Binding question:** does each study say what its sources actually say — now
 that we know four months of "Webster 1828" quotes were really Webster 1913?
