@@ -4,6 +4,9 @@
 
 Source: https://docs.google.com/presentation/d/1d4gvEe_pUqQnvfNayYhgvdw0vz5P_Ylo/
 
+> **Auditor's note (study-correctness walk, 2026-06-12):** This file is a primary-source capture of Morgan Philpot's slide deck — its claims are documented as presented, not endorsed. Several were later found wrong (the Zarahemla/hemlah "salt" etymology — chemlah H2551 = compassion; the 42-month Civil War count; the 1 Nisan / 7th-day-of-Passover / day-Christ-died date stack — mutually incompatible; the Webster definitions cited from the 1913 edition under an 1828 label). See the phase evaluations and verbal_only_evaluation.md in the parent directory for the assessments and corrections.
+
+
 ---
 
 ## Slide 2
