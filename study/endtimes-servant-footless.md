@@ -65,9 +65,9 @@ Without footnotes, this passage holds at least three readings open simultaneousl
 
 > "Behold, my servant shall deal prudently, he shall be exalted and extolled, and be very high." ([Isaiah 52:13](../gospel-library/eng/scriptures/ot/isa/52.md))
 
-> "He was wounded for our transgressions, he was bruised for our iniquities; the chastisement of our peace was upon him; and with his stripes we are healed." ([Isaiah 53:5](../gospel-library/eng/scriptures/ot/isa/53.md))
+> "He was wounded for our transgressions, he was bruised for our iniquities: the chastisement of our peace was upon him; and with his stripes we are healed." ([Isaiah 53:5](../gospel-library/eng/scriptures/ot/isa/53.md))
 
-> "Yet it pleased the Lord to bruise him...when thou shalt make his soul an offering for sin he shall see his seed" ([Isaiah 53:10](../gospel-library/eng/scriptures/ot/isa/53.md))
+> "Yet it pleased the Lord to bruise him ... when thou shalt make his soul an offering for sin, he shall see his seed" ([Isaiah 53:10](../gospel-library/eng/scriptures/ot/isa/53.md))
 
 > "By his knowledge shall my righteous servant justify many; for he shall bear their iniquities." ([Isaiah 53:11](../gospel-library/eng/scriptures/ot/isa/53.md))
 
