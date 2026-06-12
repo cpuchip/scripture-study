@@ -22,8 +22,21 @@ last_active: 2026-06-12T15:52:35
   **doc_*** (study_* tools → doc_*, studies → docs, scripture_anchor →
   values_anchor) · **cutover = FRESH REBUILD** (no shims; selective import;
   live volume archived; rename map at workspace parity/rename-map.tsv).
-  NEXT P1: Go daemon re-homing → doc_* rename leg → runner-consumes-manifest
-  → compose → seed pack (kit-derived) → runtime replay proof.
+  **EVENING COUNCIL (all Michael-ratified):** doc_* · fresh-rebuild cutover ·
+  six rebuild lessons (early mismatch classification, verify→tests/, _kind
+  enum, stewards.config, CI day-one, backup+offsite WAL tiers) ·
+  compact_context PULLED IN (hold lifted) · **drop AGE** (relational edges;
+  N-depth + BUILDS_ON lineage; fast-at-scale + tenancy conditions; prior art
+  verified incl. gospel-engine itself) · **consolidated authored chain**
+  ("dave wins"). All in extraction-plan.md.
+  **DAEMON LEG SHIPPED (`3561cec`):** five binaries (bridge, stewards-cli,
+  persona-host, fs-read-mcp, stewards cockpit) → ONE module
+  github.com/cpuchip/pg-ai-stewards; go.work knot dead; build+vet+smoke
+  green. Local builds need GOWORK=off (nested clone; strangers unaffected).
+  NEXT P1 (fresh session): the AUTHORING leg — consolidated subsystem chain
+  with doc_* + AGE-out + values_anchor designed in (~15-25 files, headers
+  credit sources, rename-map.tsv) → runner-consumes-manifest → compose →
+  kit-derived seed pack → compact_context leg → replay proof.
   (3) Private manifest REPAIRED (root `e5ccc0c3`): 9 live-applied migrations
   (r11-r17, ct2-5, ct2-7e) restored from ledger order; found the runner is
   LEXICAL + manifest-blind (replayed scratch-ct2-run2 into live 06-10 —
