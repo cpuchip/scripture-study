@@ -438,6 +438,18 @@ Notable-talks table linked to DIRECTORIES → all six rows now link the
 actual talk files with real titles. D&C 45:26-35 fragment list, JS-M
 1:12/37/40/48, D&C 133:11 all EXACT.
 
+### study/gadianton-robbers.md (2026-02-05) — 2 micro-fixes across ~47 quotes
+FULL tier, the walk's largest quote inventory: ~35 scripture quotes
+(Moses 5, Ether 8/9/14, Hel 2/6/8, 3 Ne 3/4, Rev 12/13/17, Dan 7, 1 Ne
+14:13, D&C 38/42/88, Mormon 8:27, 2 Ne 9:9/26:22, Alma 37:32-33) and 12
+talk quotes across EIGHT talks (Benson keystone composite — both
+sentences his own words; Benson 1972 "conspiracy fact" + 1979 decree;
+Tanner 1973; Oaks "headwaters of wickedness" ×2; Hinckley Oct-2001 ×4 +
+Apr-2004) — ALL EXACT. Sole fixes: Ether 8:23 em-dash mid-sentence cut →
+ellipsis; Hinckley mastermind quote completed ("…among the sons and
+daughters of God"). A Feb-5 file with every source plainly open — the
+strongest large-N positive data point yet.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
