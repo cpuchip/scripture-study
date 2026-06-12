@@ -79,6 +79,18 @@ Acts 17:29, Luke 1:38. NOTE (unverified-locally, standard history, low risk):
 the 1909 First Presidency counselor names (Winder, Lund) — no local source
 names them; left as-is. Mary-as-type section already carefully hedged ✓.
 
+### study/talks/202510-24brown.md (2026-01-26) — 2 attribution fixes
+SAMPLE tier. Samples verified exact: the Jamaica/Palmyra passage (down to
+"Four Grove Road… 6:00 a.m. on a Wednesday"), the closing "I choose to
+believe" block, the John Taylor join (honest two-paragraph ellipsis).
+**Fixed: "Take charge of your testimony. Work for it. Own it…" is President
+Nelson quoted BY Brown** ("I plead with you to take charge…," Choices for
+Eternity 2022, fn 25) — two table rows presented it as Brown's own words.
+Brown's own invitation ("Take charge of your testimony; use your agency
+wisely") is genuinely his ✓. Count claims spot-checked ("Quotes Nelson 3
+times" ≈ defensible). Talk file/title/Nelson cross-ref (57nelson.md =
+"Confidence in the Presence of God") + manual path all exist ✓.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
