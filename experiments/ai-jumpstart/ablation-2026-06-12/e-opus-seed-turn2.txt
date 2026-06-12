@@ -1,0 +1,8 @@
+No problem — I'll skip the form and just lay the four forks out plainly. You can reply "go with your picks" or override any of them:
+
+1. **Persistence** → I recommend a **single JSON file** (zero dependencies, easy to back up by hand). Alternative: SQLite (sturdier, but more than this needs).
+2. **Parent access** → I recommend an **open `/parent` page on your home LAN** (simplest; a PIN is easy to bolt on later). Alternative: a simple PIN gate now.
+3. **Weekly chores** → I recommend **tying each weekly chore to a weekday** (e.g. "trash — Monday"; it just shows up that day). Alternative: "anytime that week."
+4. **Day boundary** → I recommend **calendar midnight** defines a new day. Alternative: a configurable reset hour (e.g. 4am).
+
+My honest take: all four recommendations point the same direction — smallest thing that's genuinely usable this week, with the costlier options being easy to add later if a real need shows up. If you're good with the four picks and the phased plan above, say the word and I'll start **Phase 1 (the walking skeleton)** — a Go server you can reach from one of the kids' devices — and report back before going further.

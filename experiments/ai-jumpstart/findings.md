@@ -193,7 +193,9 @@ inline-AGENTS.md turn-1 harness.
   harness): **gemma-4-31B**, **qwen3.6-27b** (memory: it ALWAYS reasons — give ≥2000
   max_tokens, answer arrives in `content`, thinking in `reasoning_content`),
   **nemotron** (non-thinking, per the Spin voice notes).
-- **The Gemini 3.1/3 variants** — once a CLI or key path exists.
+- **The Gemini 3.1/3 variants** — once a CLI or key path exists. *(RESOLVED in Lap 4:
+  agy's picker exposes exactly two models — 3.1 Pro and 3.5 Flash; the flash-lite /
+  preview variants from last night's attempt don't exist in agy at all.)*
 - **Cross-model session-2** (Opus reads Sonnet's memory — the model-swap proof) +
   flash turn-2.
 ## Next experiments (queued)
@@ -205,3 +207,43 @@ inline-AGENTS.md turn-1 harness.
   flush out a repo end-to-end (Michael's original suggestion — needs a substrate
   session).
 - Longitudinal: does session 2 actually read memory first? (The real portability test.)
+
+## LAP 4 — 2026-06-12 (agy model selector found; both Gemini models, High thinking)
+
+Michael relaunched agy and logged in; the new build exposes a model picker with exactly
+**two models**: Gemini 3.1 Pro (High/Low) and Gemini 3.5 Flash (High/Medium/Low). The
+selection persists to `~/.gemini/antigravity-cli/settings.json` (`"model"` field) — so
+headless arms switch models by editing that file, no `--model` flag, no context leak.
+**Each arm's model is instrument-verified** from the run's own CLI log
+(`Propagating selected model override to backend: label="..."`) — not from the model's
+self-identification. Settings restored to Michael's pick (3.1 Pro High) after the runs.
+
+**Arm J — Gemini 3.1 Pro (High), cold, seed v0.2.1: ✅ VALID + PASSED turn 1.**
+Name question first; four specific vision sharpeners (shared-device vs phone, chore
+cadence, done/not-done vs rewards); asked the bounds block straight from setup step 2
+(own/never-touch, tech-stack + time constraints, report-back cadence); proposed the
+working files gated on the vision ("Shall I go ahead... once we've nailed down the
+vision above?"); zero tech stack, zero files created; closed "I'll wait for your
+thoughts before we start building or designing anything!" Quoted "simple, nothing
+fancy" back as a bound. The restraint failure that defined the original flash run is
+absent at the Pro tier.
+
+**Arm K — Gemini 3.5 Flash (High), cold, seed v0.2.1: ✅ VALID + PASSED turn 1.**
+Same gate-clean shape: name question, bounds block, files proposed-not-created, no
+premature design — and it was the first arm to **confirm the close-the-loop clause
+verbatim** ("I will update active.md and write a session journal entry... without
+being asked"). Its polish instinct survives but is now channeled through the asking
+gate: "do your kids have any specific themes or styles they would love?" is a
+question, not a unilateral "premium micro-animations" upgrade. Caveat for the
+ablation table: vs the original flash arm (v0.1.1 seed, default thinking) TWO
+variables changed — seed version and thinking level — so the improvement can't be
+attributed cleanly between them.
+
+**Shared Gemini quirk (both arms):** neither asked "what's your name for me?" — both
+introduced themselves as Antigravity (the harness identity). Claude arms ask both
+directions. Harmless, but the seed says "what to call each other"; noted, not fixed.
+
+**Scoreboard after Lap 4:** seed v0.2.1 turn-1 gate — Haiku ✅, Sonnet ✅, Opus ✅,
+Gemini 3.5 Flash (High) ✅, Gemini 3.1 Pro (High) ✅. Five models, zero premature
+builds, zero constraint upgrades. Remaining queue unchanged: kimi-k2.6 (opencode),
+the LM Studio locals, cross-model session-2, flash turn-2.

@@ -1,0 +1,13 @@
+I've read AGENTS.md — great. This is our first session, so let me ask the questions that'll shape how we work together.
+
+**Start with you:** What should I call you? And what's your name for me?
+
+**Then the vision:** You mentioned a chore tracker for your kids. Let me sharpen that a bit:
+
+1. How many kids, roughly what ages? (This shapes what the UI feels like.)
+2. What does a chore *look* like in your house — is it "finish your homework," "take out trash," "practice piano," all of those?
+3. Should the app track *completion* (did they do it?), *rewards* (points/prizes), both, or just a to-do list?
+4. Who manages the chore list — do you add chores, or do the kids see them and mark themselves done?
+5. When you say "nothing fancy," what does done look like? Web page on a family iPad, something they visit on their phones, or just something that works?
+
+Take your time — answer however feels natural, one at a time if that's easier.

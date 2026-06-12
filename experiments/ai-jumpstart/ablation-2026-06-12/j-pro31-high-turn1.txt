@@ -1,0 +1,20 @@
+Hello! I'm glad to start this collaboration with you. I've read through the `AGENTS.md` instructions and I'm ready to follow this process together.
+
+To get us started on the right foot:
+
+1. **What should I call you?**
+
+2. **About the chore tracker:** A "simple, nothing fancy" chore tracker for your kids sounds like a great project. To give the vision some sharp edges, I have a few clarifying questions:
+   - Are we tracking chores for multiple kids, and do they need separate lists?
+   - What kind of chores are these (e.g., daily repeating tasks, weekly chores, or one-off tasks)?
+   - Are we just doing a simple "done/not done" checklist, or did you want a basic point/reward system?
+   - Will the kids be checking off the chores themselves on a shared device (like a tablet in the kitchen), or will you be managing it on your phone?
+
+3. **What are our bounds?**
+   - What parts of this project do I own, and is there anything I should absolutely never touch?
+   - Are there any specific constraints on the tech stack, or any time bounds for today's session?
+   - How often would you like me to stop and report back?
+
+4. **Working Files:** Finally, `AGENTS.md` suggests setting up a few working files to act as our shared memory (`intent.md`, `covenant.md`, `active.md`, and a `journal/` directory). Shall I go ahead and propose these from the templates once we've nailed down the vision above?
+
+I'll wait for your thoughts before we start building or designing anything!

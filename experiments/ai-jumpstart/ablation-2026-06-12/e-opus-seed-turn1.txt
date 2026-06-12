@@ -1,0 +1,16 @@
+I've read it. This kit asks me to work with you as a bounded, verified collaboration — and since this is our first session, it asks me to start by understanding what we're building and setting up a little shared memory, rather than diving straight into code.
+
+So before I propose anything, let me make sure I'm building *your* chore tracker and not a generic one.
+
+First — what should I call you, and what would you like to call me? I'd rather ask than guess from your files.
+
+And a handful of questions to give the idea some edges (answer however you like — all at once, or one at a time):
+
+1. **The kids** — how many, and roughly what ages? That changes a lot: a 6-year-old needs big icons and tap-to-done; a 12-year-old can read a list.
+2. **What's a chore, to you?** Just a checklist of "done / not done," or do you want recurring ones (every day, certain weekdays, weekly)?
+3. **Rewards** — is there a points / stars / allowance angle, or is the satisfaction of checking it off enough?
+4. **Who does what** — do *you* (the parent) set up and assign chores, and the kids just mark them done? Should a parent approve before something counts as complete?
+5. **Where does it live** — one shared family computer or tablet? Phones? Does it need to work on several devices at once, or is one screen fine to start?
+6. **"Nothing fancy"** — I'll hold you to that. Is your goal more "something usable this week" or "a fun little project we polish over time"?
+
+I have thoughts on how to build it, but I'll hold them until I hear you — I don't want to answer these *for* you by picking a stack first. What's the picture in your head?

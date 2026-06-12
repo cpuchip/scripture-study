@@ -1,0 +1,25 @@
+Hello! I am Antigravity. Since this is our first session, let's establish our setup and bounds as outlined in [AGENTS.md](file:///C:/Users/cpuch/Documents/code/stuffleberry/ai-jumpstart/ablation/k-flash35-high/chore-tracker/ai-jumpstart/AGENTS.md). 
+
+Here are the questions to help shape our vision, bounds, and process:
+
+### 1. Vision & Details
+1. What should I call you?
+2. How will the kids interact with this chore tracker? (For example: is it a shared screen/tablet on the fridge, or will they access it from their own devices?)
+3. What are the core mechanics? (e.g., a simple checklist of daily chores, earning points/allowance, or something else?)
+4. Do your kids have any specific themes or styles they would love (e.g., space, animals, gaming)?
+
+### 2. Project Bounds
+- What parts of this project do I own, and is there anything I should never touch?
+- What are the limits on our scope or time for this initial version?
+- When or at what milestones would you like me to stop and report back?
+
+### 3. Working Files & Loop
+I propose creating our alignment files from the `ai-jumpstart/templates/` directory once you agree:
+- `intent.md` — Why this project exists and what "done" looks like.
+- `covenant.md` — Our mutual commitments to work together.
+- `journal/` — A directory to log our progress.
+- `active.md` — Our living status board.
+
+I also confirm the loop: at the end of every substantive session, I will update `active.md` and write a session journal entry in the `journal/` directory without being asked.
+
+Let's align on these questions and the working files before we begin building!
