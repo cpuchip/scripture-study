@@ -214,6 +214,28 @@ quoted "before the foundation of the world" (not in the cited verses) →
 v7's real words. Mosiah 3:17, Ex 4:10, Jer 1:6, D&C 93:24/33/36, Ether
 12:27, 2 Cor 12:9, John 14:26, Christofferson "Born Again" all EXACT.
 
+### study/ten-virgins-parable.md (2026-02-01) — ★★ 6 confabulated Johnson quotes + confabulated Nelson quote/counsel (walk's biggest find)
+FULL tier; 9 talks cited, all 9 titles REAL. The split is surgical: **every
+talk read from file was quoted EXACTLY** — Bednar 2012 ×4 (incl. his
+bracketed 2 Ne 28:30), Renlund ×3, Rasband ×2, Wright ×3, Pearson ×3, Oaks
+×1, Bednar 2025 paraphrase — and **both presidency talks recalled from
+memory were INVENTED**: all SIX Johnson "Spiritually Whole in Him" quotes
+confabulated ("Testimony is the flame. Conversion is the fuel.", the
+"Every time we… we add oil" litany, the central-question block — re-quoted
+in the Summary with full attribution — none in the talk), plus "announced
+a new sculpture" (it was *recently placed*; she referenced it); Nelson Oct
+2024 quote invented ("I am calling upon you… no time to waste") + a
+3-bullet counsel list he never gave. **Smoking gun: Johnson's fn 10
+contains the exact Bednar quotes the study used — the gather read her
+FOOTNOTES and invented her body text.** Repairs: all 6 Johnson blocks
+requoted from the real talk (her JST "Ye know me not" reading is a genuine
+upgrade — the study's section now carries it); flame/fuel replaced with
+Bednar's real essence line; Nelson requoted (real urgency line + temple
+promise + "To whom or to what will I give my life?"); practical-actions
+table re-sourced to verified counsel (Johnson/Renlund/Rasband/Wright);
+covenant-path echo in summary aligned. Matt 25:1-13 (all 13 verses), D&C
+33:17, D&C 45:56-57, Luke 12:35/22:32, Mosiah 5:2 all EXACT.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
