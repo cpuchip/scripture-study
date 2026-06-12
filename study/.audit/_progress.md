@@ -125,7 +125,7 @@ Already done out-of-band: `study/morm-8-three-glories-reading.md` (2026-06-09).
 - [x] 2026-03-02 `study/endtimes-servant.md` **T1+FULL** — ROD + BRANCH 1913 (words 84-85); ~18 scriptures verbatim incl. full D&C 113 Q&A
 - [x] 2026-03-02 `study/endtimes-servant-footless.md` **FULL** — CLEAN (~20 renderings verbatim; 2 punctuation)
 - [x] 2026-03-03 `study/abinadi-how-to-read.md` **T1+FULL** — DECLARE 1913 (word 86); SEED/EXPOUND near-genuine aligned; ~28 scriptures verbatim
-- [ ] 2026-03-04 `study/divine-love.md` **T1+FULL**
+- [x] 2026-03-04 `study/divine-love.md` **T1+FULL** — ESTEEM 1913 (word 87) + FAVOR fusion requoted; all scriptures + Nelson/Oaks quotes verbatim
 - [ ] 2026-03-05 `study/yt/philpot-abinadi-references.md` **SAMPLE**
 - [ ] 2026-03-05 `study/ai/fatigue.md` **SAMPLE**
 - [ ] 2026-03-11 `study/atonement/how-is-it-done.md` **T1**

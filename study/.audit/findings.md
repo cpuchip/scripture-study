@@ -1381,6 +1381,20 @@ matched genuine modulo a word each (aligned). All ~28 scripture
 renderings verbatim across Mosiah 11-18, Alma 36:17, 3 Ne 23, Luke
 24 — the entire Abinadi narrative chain checked clean.
 
+### study/divine-love.md (2026-03-04) — 1 Webster 1913 (word 87) + 1 near-genuine fusion; everything else verbatim
+T1+FULL, post-boundary. ESTEEM was 1913 ("to set a high value on;
+to regard with reverence" → genuine "to set a value on" + "to prize;
+to set a high value on"); FAVOR was a near-genuine fusion — requoted
+to genuine sense 1 ("kind regard; kindness; countenance; propitious
+aspect; friendly disposition") + sense 2 ("support … disposition to
+aid, befriend, support, promote"). Gift: the genuine FAVOR verb
+cites Psalm 102:13 — "the time to favor [Zion]." All scripture
+renderings verbatim (1 Ne 17:35/40, Rom 8:35/38-39, Prov 8:17,
+Mosiah 4:11, Luke 15:17/18/20/31, John 15:10, D&C 95:1/12, Moses
+7:28/37, Moroni 7:47/48, 1 Jn 4:8/10/16/19); Nelson "Divine Love"
+(Liahona 2003/02, 3 quotes) and Oaks "Love and Law" (2009/10, 4
+quotes incl. the returned woman's "[was]" bracket) all exact.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
