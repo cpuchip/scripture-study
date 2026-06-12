@@ -20,7 +20,7 @@ Already done out-of-band: `study/morm-8-three-glories-reading.md` (2026-06-09).
 - [x] 2026-01-27 `study/teaching-in-the-saviors-way/01_teaching-youth.md` **SAMPLE** — 1 precision fix
 - [x] 2026-01-27 `study/teaching-in-the-saviors-way/00_overview.md` **SAMPLE** — CLEAN
 - [x] 2026-01-27 `study/cfm/20260126-teach-these-things-freely.md` **SAMPLE** — 3 fixes (confabulated Christofferson quote)
-- [ ] 2026-01-28 `study/receive.md` **FULL**
+- [x] 2026-01-28 `study/receive.md` **FULL** — 3 fixes (Alma 5:28/37 mis-cite; Holland ellipsis; Kearon attribution)
 - [ ] 2026-01-29 `study/way-truth-life.md` **FULL**
 - [ ] 2026-01-29 `study/faith-01a.md` **FULL**
 - [ ] 2026-01-29 `study/faith-01.md` **FULL**

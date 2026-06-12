@@ -110,6 +110,19 @@ constructed Moses 6:59 fragment ("The blood of Christ... sanctifieth from all
 sin" — wording not in the verse) → the verse's actual words; 1 Jn 5:8
 "spirit"→"Spirit" (KJV capital). Bednar + manual links resolve ✓.
 
+### study/receive.md (2026-01-28) — 3 fixes
+FULL tier. ~20 scripture quotes all verbatim (D&C 88:32-33, John 1:11-12,
+3 Ne 9:14/17/20/22, Mosiah 3:15/19, James 1:6-8/17/21, Rev 3:20, Moro
+10:30/32); all four Kearon/Holland talk quotes verified EXACT against the
+2024-25 talk files (incl. British "recognising" and the talk's own "[a
+people]" bracket in the Ammon quote — the study was faithful to both).
+Fixes: **Alma 5:28 cited for a v.37 phrase** ("puffed up in the vain things
+of the world") → replaced with 5:28's actual words + v.37 noted; Holland
+child-at-prayer quote ended mid-sentence without ellipsis (source continues
+"but for others later on…") → ellipsis added; the Kearon "deserving" quote
+(verbatim ✓) sat under the Oct-2024 talk's section → explicit Apr-2025
+attribution added.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)

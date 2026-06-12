@@ -108,7 +108,7 @@ And [Mosiah 3:19](../gospel-library/eng/scriptures/bofm/mosiah/3.md) expands thi
 
 In [As a Little Child](../gospel-library/eng/general-conference/2025/04/13holland.md) (April 2025), President Holland asks:
 
-> "Is there anything sweeter, more pure, or more humble than a child at prayer? It is as if heaven is in the room. God and Christ are so real."
+> "Is there anything sweeter, more pure, or more humble than a child at prayer? It is as if heaven is in the room. God and Christ are so real …"
 
 Children receive naturally because they haven't yet learned to block the gift.
 
@@ -165,7 +165,7 @@ When we truly receive, joy overflows.
 
 ## The Irony of "Deserving"
 
-Elder Kearon addresses those who feel unworthy to receive:
+Elder Kearon addresses those who feel unworthy to receive (back in [Receive His Gift](../gospel-library/eng/general-conference/2025/04/55kearon.md), April 2025):
 
 > "You may be wondering, 'What do I have to *do* to receive this gift from God?' Well, actually, nothing. It is a gift from the Giver. It is simply a fact. Just let it in... Do not block the receiving of this gift with thoughts that you are somehow undeserving. **The reality is none of us is 'deserving'—all the Father's gifts are received only through the merits, mercy, and grace of the Holy Messiah.**"
 
@@ -185,7 +185,7 @@ Elder Kearon addresses those who feel unworthy to receive:
 
 ### Pride
 
-[Alma 5:28](../gospel-library/eng/scriptures/bofm/alma/5.md): "puffed up in the vain things of the world"
+[Alma 5:28](../gospel-library/eng/scriptures/bofm/alma/5.md): "Behold, are ye stripped of pride? I say unto you, if ye are not ye are not prepared to meet God." (And v. 37: "puffed up in the vain things of the world.")
 
 ### Double-mindedness
 
