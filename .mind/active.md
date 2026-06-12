@@ -28,6 +28,7 @@
 - Published-works audit walk WITH Michael (legs 2+; leg 1 three-glories done + republished) · ~27 OCR-dropout tier words to hand-add. Spec: `.spec/proposals/webster-1828-data-integrity.md`; carry-over: `projects/1828-illuminated/.spec/carry-over.md`.
 
 **Beyond the Prompt (book)**
+- **ai-jumpstart** (NEW 2026-06-12, public: github.com/cpuchip/ai-jumpstart, `projects/ai-jumpstart/`) — the book's companion kit: point any AI at AGENTS.md and the practices install themselves. v0.1.1 after 2 cold-model experiments (Sonnet+Gemini, both passed the ask-before-build gate; findings: `experiments/ai-jumpstart/findings.md`). PENDING Michael: the book's appendix/QR to the kit; more model runs queued.
 - ★ v4 audit COMPLETE 2026-06-11 (~35 gated edits; EPUB list-rendering fixed; 0 QR collisions). ONLY OPEN: G-2/G-3 — "fourteen questions" + "eight-milestone roadmap" await Michael's VS Code chat archive (~10GB copying; target `OneDrive\…\Stuffleberry\simple-games` workspaceStorage); ⚠ verify-or-hedge before publish. Then: Michael's voice read → pass 3 → KDP. Journal: `projects/scripture-book/.spec/journal/2026-06-11--v4-chat-walk-complete.yaml` · lane: `book-v4-walk`.
 
 **Studies / series**
