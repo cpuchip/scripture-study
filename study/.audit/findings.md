@@ -834,6 +834,22 @@ unchangeableness in the character of the Deity...") restored. Lecture 4
 attributes table matches the lecture's own scripture citations row for
 row. Typo fixed ("lightof Christ"). Source-open file.
 
+### study/cfm/20260215-noah-found-grace.md (2026-02-14) — 2 Webster requotes (GRACE + PERFECT = words 14-15) + Maxwell attribution fix
+T1 escalated to FULL (both Webster samples failed). GRACE and PERFECT
+were the 1913 edition's text ("exercise of love, kindness, mercy" /
+"Brought to consummation") → requoted to genuine 1828. The genuine
+GRACE is the gift of the file: sense 2 "the **free unmerited** love and
+favor of God" is the study's own "grace is not earned" point in
+Webster's words; genuine PERFECT ("Finished; complete; consummate")
+fits the tamim = whole reading exactly. The Maxwell "agency-destroying
+point" quote is REAL and verbatim — but it lives in CFM Manual Lesson 7
+(quoting We Will Prove Them Herewith [1982], 58), not in agency.md as
+the study implied; attribution corrected (agency.md does carry the
+theme — its Part 7 Sodom treatment). All ~24 scripture quotes verbatim
+(Moses 8, JST Gen 9:21-23, Hel 6:28, JS-M 1:37-51, Ether 1:34-35, Heb
+11:7); all three footnote claims (17a strive, 24c manifest, 27c
+walked→TG) check against the actual Moses 8 footnotes.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
