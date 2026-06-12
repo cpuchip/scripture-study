@@ -14,7 +14,7 @@
 ## Open threads
 
 **Workspace / cross-cutting**
-- **Root PUSHED 2026-06-12 (`e74e6e90`, 12 commits — Michael's explicit ask, so he can read the preside study before council):** carried the study + lanes + Callie + OSS/book/jumpstart docs. ibeco.me prod rebuild triggered — verification watch running (general-workspase lane). New commits accumulate unpushed as usual; Michael pushes root.
+- **Root PUSHED 2026-06-12 (`e74e6e90`, 12 commits — Michael's explicit ask, so he can read the preside study before council):** carried the study + lanes + Callie + OSS/book/jumpstart docs. ibeco.me VERIFIED through the rebuild window (200 throughout, no blips; no becoming/ changes in the stack). New commits accumulate unpushed as usual; Michael pushes root.
 - **Session lanes are NEW (2026-06-11):** every open session should claim its lane in `.mind/sessions/` on next reground (the UserPromptSubmit hook will prompt you with your session_id). Statusline now shows `⟨lane⟩ … 📬 N`.
 
 **D&D holodeck (chat.ibeco.me) — machinery complete, table items remain**
