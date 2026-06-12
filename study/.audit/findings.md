@@ -575,6 +575,16 @@ class → git-corrected. The rest of the document's deep-read work (the
 3 Ne 3 footnote analysis, Rev 12 self-interpreting case, D&C 21/1:38
 chains) spot-checked sound — its remediation pass had read its sources.
 
+### study/yt/morganphilpot/05a_revelation_13.md (2026-02-08) — CLEAN (zero fixes)
+SAMPLE. The cluster's most rigorous file: its own deep-reading pass had
+already corrected the 42-month math (27, not 42), the Ferdinand
+confusion, and the presidents count. Sampled claims all verify: Rev
+13:10 EXACT; D&C 87:1 EXACT; the JST Rev 13:1 claim is precisely right
+(fn 1a: the JST adds "in the likeness of the kingdoms of the earth" AND
+moves the standing to the beast — "he stood upon the sand of the sea");
+the Luke 4:6 / Dan 7 footnote-chain claims match the markers. No date
+footer to confabulate. The file the rest of the cluster should have been.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
