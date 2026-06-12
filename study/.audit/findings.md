@@ -648,6 +648,17 @@ people began again to have peace in the land") → v4's real words + cite
 Bednar "In the Space of Not Many Years" (title + the
 not-primarily-historical quote), Strong's 5331 claim sound.
 
+### study/yt/morganphilpot/06_esdras_and_appointed_times.md (2026-02-08) — 2 verifications WOVEN (both Philpot claims TRUE)
+T1. No defects found in the sampled content — instead two deferred
+claims verified and written in: **"broken" = "bankrupt" in genuine 1828
+HOLDS** ("Parted by violence; rent asunder; infirm; made bankrupt");
+and **the Hunter "calamities foretold" coinage HOLDS** — his Oct-1994
+"Exceeding Great and Precious Promises" carries both the phrase and the
+disintegration-of-the-family framing that the Family Proclamation
+(Sept 1995) echoes near-verbatim with "ancient and modern" added. The
+walk's pattern in this cluster: Philpot's Hebrew fails, his Webster
+mostly holds.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
