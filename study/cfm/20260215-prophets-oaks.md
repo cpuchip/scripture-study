@@ -4,7 +4,7 @@
 
 > "How is our living prophet like Noah? … What is he warning us about? And what is he inviting us to do?" — *Come, Follow Me* Manual
 
-The following is drawn from **21 substantive general conference addresses** by President Oaks from April 2018 through October 2025, along with his [first address as prophet — "Coming Closer to Jesus Christ" (BYU Devotional, February 10, 2026)](../talks/Coming-Closer-to-Jesus-Christ_transcript.md). During the conferences covered here, President Oaks served as First Counselor in the First Presidency (2018–April 2025), then as President of the Quorum of the Twelve Apostles presiding over the October 2025 conference following President Nelson's passing on September 27, 2025. He was ordained and set apart as President of the Church on October 14, 2025. Every quote has been read from the source file.
+The following is drawn from **23 substantive general conference addresses** by President Oaks from April 2018 through October 2025 (25 authored items, less two brief session introductions), along with his [first address as prophet — "Coming Closer to Jesus Christ" (BYU Devotional, February 10, 2026)](../talks/Coming-Closer-to-Jesus-Christ_transcript.md). During the conferences covered here, President Oaks served as First Counselor in the First Presidency (2018–April 2025), then as President of the Quorum of the Twelve Apostles presiding over the October 2025 conference following President Nelson's passing on September 27, 2025. He was ordained and set apart as President of the Church on October 14, 2025. Every quote has been read from the source file.
 
 ---
 
@@ -22,7 +22,7 @@ Where President Nelson sounds the alarm about spiritual survival and the adversa
 
 ### Unreliable Sources of Truth
 
-> "We should not consider secular prominence or authority as qualified sources of truth. … One who is learned or celebrated in one subject is not qualified as an authority in another." — [Truth and the Plan, October 2018](../../gospel-library/eng/general-conference/2018/10/truth-and-the-plan.md)
+> "We should not consider secular prominence or authority as qualified sources of truth. … Expertise in one field should not be taken as expertise on truth in other subjects." — [Truth and the Plan, October 2018](../../gospel-library/eng/general-conference/2018/10/truth-and-the-plan.md)
 
 > "Not all of this information is true. We need to be cautious as we seek truth and choose sources for that search." — [Truth and the Plan, October 2018](../../gospel-library/eng/general-conference/2018/10/truth-and-the-plan.md)
 
@@ -30,13 +30,13 @@ Where President Nelson sounds the alarm about spiritual survival and the adversa
 
 ### Satan's Specific Methods
 
-> "Satan seeks to destroy God's work. His prime methods are to **discredit the Savior** and His divine authority, to **erase the effects of the Atonement**, to **discourage repentance**, to **counterfeit revelation**, and to **contradict individual accountability**. He also seeks to **confuse gender**, to **distort marriage**, and to **discourage childbearing**." — [Truth and the Plan, October 2018](../../gospel-library/eng/general-conference/2018/10/truth-and-the-plan.md)
+> "[Satan] seeks to destroy God's work. His prime methods are to **discredit the Savior** and His divine authority, to **erase the effects of the Atonement of Jesus Christ**, to **discourage repentance**, to **counterfeit revelation**, and to **contradict individual accountability**. He also seeks to **confuse gender**, to **distort marriage**, and to **discourage childbearing**." — [Truth and the Plan, October 2018](../../gospel-library/eng/general-conference/2018/10/truth-and-the-plan.md)
 
 ### Contention as Satan's Tool
 
 > "He that hath the spirit of contention is not of me, but is of the devil, who is the father of contention." — [Love Your Enemies, October 2020](../../gospel-library/eng/general-conference/2020/10/17oaks.md) (3 Nephi 11:29)
 
-> "**Anger is Satan's tool.** No one can *make* us angry. It is our choice." — [Love Your Enemies, October 2020](../../gospel-library/eng/general-conference/2020/10/17oaks.md)
+> Anger is "Satan's tool," for "to be angry is to yield to the influence of Satan. **No one can *make* us angry. It is our choice.**" — President Thomas S. Monson, quoted by Oaks in [Love Your Enemies, October 2020](../../gospel-library/eng/general-conference/2020/10/17oaks.md)
 
 > "This is a time of many harsh and hurtful words in public communications and sometimes even in our families. Sharp differences on issues of public policy often result in actions of hostility—even hatred." — [Following Christ, October 2024](../../gospel-library/eng/general-conference/2024/10/18oaks.md)
 
@@ -74,15 +74,15 @@ President Oaks returns to the plan of salvation more than any other theme. He se
 
 ### 2. Love God *and* Your Neighbor — Keep Both Commandments
 
-> "Our zeal to keep the second great commandment must not cause us to forget the first, to love God with all our heart, soul, and mind." — [Two Great Commandments, October 2019](../../gospel-library/eng/general-conference/2019/10/35oaks.md)
+> "Our zeal to keep this second commandment must not cause us to forget the first, to love God with all our heart, soul, and mind." — [Two Great Commandments, October 2019](../../gospel-library/eng/general-conference/2019/10/35oaks.md)
 
-> "Walk a fine line between law and love—keeping the commandments and walking the covenant path, while loving our neighbors along the way." — [Two Great Commandments, October 2019](../../gospel-library/eng/general-conference/2019/10/35oaks.md)
+> "We walk a fine line between law and love—keeping the commandments and walking the covenant path, while loving our neighbors along the way." — [Two Great Commandments, October 2019](../../gospel-library/eng/general-conference/2019/10/35oaks.md)
 
 ### 3. Repent — Now, Not Later
 
 > "True repentance is not an event. It is a never-ending privilege. It is *fundamental* to progression and having peace of mind, comfort, and joy." — [Cleansed by Repentance, April 2019](../../gospel-library/eng/general-conference/2019/04/51oaks.md)
 
-> "We must not 'procrastinate the day of our repentance' until death." — [Cleansed by Repentance, April 2019](../../gospel-library/eng/general-conference/2019/04/51oaks.md) (Alma 34:33–34)
+> "We must not 'procrastinate the day of [our] repentance' until death." — [Cleansed by Repentance, April 2019](../../gospel-library/eng/general-conference/2019/04/51oaks.md) (Alma 34:33–34)
 
 ### 4. Ask "Where Will This Lead?"
 
@@ -98,7 +98,7 @@ President Oaks's signature question — a filter for every decision:
 
 > "We must forgo the anger and hatred with which political choices are debated or denounced." — [Love Your Enemies, October 2020](../../gospel-library/eng/general-conference/2020/10/17oaks.md)
 
-> "Contention is a choice. Peacemaking is a choice. You have your agency to choose." — [Following Christ, October 2024](../../gospel-library/eng/general-conference/2024/10/18oaks.md)
+> "Contention is a choice. Peacemaking is a choice. You have your agency to choose contention or reconciliation." — President Nelson, quoted by Oaks in [Following Christ, October 2024](../../gospel-library/eng/general-conference/2024/10/18oaks.md)
 
 ### 6. Use the Four Divine Helps
 
@@ -119,15 +119,15 @@ In his April 2025 conference address — delivered while still serving as First 
 
 ### 8. Attend Church — Don't Give Up on Gathering
 
-> "I go to church each week with the intent of being **active, not passive**, and making a positive difference in people's lives." — [The Need for a Church, October 2021](../../gospel-library/eng/general-conference/2021/10/18oaks.md)
+> "I go to church each week with the intent of being **active, not passive**, and making a positive difference in people's lives." — a member's words, quoted approvingly by Oaks in [The Need for a Church, October 2021](../../gospel-library/eng/general-conference/2021/10/18oaks.md)
 
 > "Personal disappointments should never keep us from the doctrine of Christ, who taught us to serve, not to be served." — [The Need for a Church, October 2021](../../gospel-library/eng/general-conference/2021/10/18oaks.md)
 
 ### 9. Strengthen Families — The Center of Everything
 
-> "Parents and grandparents must be the master teachers. Their most effective teaching is by example." — [The Family-Centered Gospel of Jesus Christ, October 2025](../../gospel-library/eng/general-conference/2025/10/58oaks.md)
+> "Parents, single or married—and others, like grandparents, who fill that role for children—are the master teachers. Their most effective teaching is by example." — [The Family-Centered Gospel of Jesus Christ, October 2025](../../gospel-library/eng/general-conference/2025/10/58oaks.md)
 
-> "Pray together as families: kneeling night and morning to offer thanks for blessings and to pray over common concerns." — [The Family-Centered Gospel, October 2025](../../gospel-library/eng/general-conference/2025/10/58oaks.md)
+> "Great blessings come to families if they pray together, kneeling night and morning to offer thanks for blessings and to pray over common concerns." — [The Family-Centered Gospel, October 2025](../../gospel-library/eng/general-conference/2025/10/58oaks.md)
 
 > "What those children really want for dinner is **time with you.**" — [The Family-Centered Gospel, October 2025](../../gospel-library/eng/general-conference/2025/10/58oaks.md)
 
@@ -145,7 +145,7 @@ In his April 2025 conference address — delivered while still serving as First 
 
 President Oaks repeatedly teaches that God's love is *so* vast that nearly all His children inherit glory:
 
-> "**All the children of God will finally wind up in a kingdom of glory.**" — [Divine Love in the Father's Plan, April 2022](../../gospel-library/eng/general-conference/2022/04/51oaks.md)
+> "**All the children of God** — with exceptions too limited to consider here — **will finally wind up in a kingdom of glory.**" — [Divine Love in the Father's Plan, April 2022](../../gospel-library/eng/general-conference/2022/04/51oaks.md)
 
 > "God's love is so great that, except for the few who deliberately become sons of perdition, He has provided a **destiny of glory** for all of His children." — [The Great Plan, April 2020](../../gospel-library/eng/general-conference/2020/04/51oaks.md)
 
@@ -153,7 +153,7 @@ President Oaks repeatedly teaches that God's love is *so* vast that nearly all H
 
 ### Forgiveness and Cleansing
 
-> "The most serious sins can be forgiven in mortality because of our Savior's atoning sacrifice." — [Cleansed by Repentance, April 2019](../../gospel-library/eng/general-conference/2019/04/51oaks.md)
+> "I have witnessed that these same serious sins can be forgiven in mortality because of our Savior's atoning sacrifice for the sins of 'all those who have a broken heart and a contrite spirit.'" — [Cleansed by Repentance, April 2019](../../gospel-library/eng/general-conference/2019/04/51oaks.md) (said of sins man's law would punish with life imprisonment)
 
 > "When we repent, we have the Lord's assurance that our sins, including our acts and desires, will be cleansed and our merciful final judge will 'remember them no more.'" — [Cleansed by Repentance, April 2019](../../gospel-library/eng/general-conference/2019/04/51oaks.md) (D&C 58:42)
 
@@ -161,7 +161,7 @@ President Oaks repeatedly teaches that God's love is *so* vast that nearly all H
 
 > "Fear thou not; for I am with thee: … I will strengthen thee; yea, I will help thee." — [What Has Our Savior Done for Us?, April 2021](../../gospel-library/eng/general-conference/2021/04/35oaks.md) (Isaiah 41:10)
 
-> "It was intended that life be a challenge, **not so that you would fail, but that you might succeed through overcoming.**" — [Be of Good Cheer, October 2020](../../gospel-library/eng/general-conference/2020/10/36oaks.md)
+> "It was intended that life be a challenge, **not so that you would fail, but that you might succeed through overcoming.**" — Elder Richard G. Scott, quoted by Oaks in [Be of Good Cheer, October 2020](../../gospel-library/eng/general-conference/2020/10/36oaks.md)
 
 ### The Lord Fights Our Battles
 
@@ -173,7 +173,7 @@ President Oaks repeatedly teaches that God's love is *so* vast that nearly all H
 
 ### Eternal Family
 
-> "Temple ordinances enable us to return as eternal families to the presence of our Heavenly Father." — [The Family-Centered Gospel, October 2025](../../gospel-library/eng/general-conference/2025/10/58oaks.md)
+> "The ordinances received there enable us to return as eternal families to the presence of our Heavenly Father." — [The Family-Centered Gospel, October 2025](../../gospel-library/eng/general-conference/2025/10/58oaks.md) (speaking of the temple)
 
 > "Heavenly Father's plan assures this possibility for everyone." — [The Family-Centered Gospel, October 2025](../../gospel-library/eng/general-conference/2025/10/58oaks.md)
 
