@@ -36,7 +36,7 @@ Understanding this hierarchy helps us know what is unchanging vs. what can adapt
 - God is our Heavenly Father ([Moses 1:4](../gospel-library/eng/scriptures/pgp/moses/1.md))
 - Jesus Christ is the Son of God and our Redeemer ([3 Nephi 11:10-11](../gospel-library/eng/scriptures/bofm/3-ne/11.md))
 - The Atonement of Jesus Christ makes repentance and resurrection possible ([Alma 34:8-9](../gospel-library/eng/scriptures/bofm/alma/34.md))
-- The family is ordained of God ([The Family: A Proclamation to the World](../gospel-library/eng/scriptures/the-family-a-proclamation-to-the-world/the-family-a-proclamation-to-the-world.md))
+- The family is ordained of God ([The Family: A Proclamation to the World](../gospel-library/eng/ensign/1995/11/the-family-a-proclamation-to-the-world.md))
 - We are spirit children of Heavenly Parents ([Romans 8:16-17](../gospel-library/eng/scriptures/nt/rom/8.md))
 - Resurrection is universal ([1 Corinthians 15:22](../gospel-library/eng/scriptures/nt/1-cor/15.md))
 
@@ -99,8 +99,8 @@ The clearest statement of pure doctrine comes from the Savior Himself:
 >
 > And whoso believeth not in me, and is not baptized, shall be damned. ...
 >
-> And whoso shall declare more or less than this, and establish it for my doctrine, the same cometh of evil."
-> — [3 Nephi 11:32-35, 40](../gospel-library/eng/scriptures/bofm/3-ne/11.md)
+> And whoso shall declare more or less than this, and establish it for my doctrine, the same cometh of evil …"
+> — [3 Nephi 11:32-34, 40](../gospel-library/eng/scriptures/bofm/3-ne/11.md)
 
 The doctrine of Christ is simple:
 1. **Faith** in Jesus Christ

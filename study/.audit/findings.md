@@ -176,6 +176,22 @@ but of power, also"); Abraham 4 "Let us" plural-language claim verified
 scripture + Lectures on Faith only — and the walk's error mass lives in talk
 metadata. Clean by avoiding the source type that confabulates.**
 
+### study/doctrines-principles-programs.md (2026-01-31) — 3 micro-fixes
+FULL tier. The most talk-quote-dense file yet, and the attributions held:
+all four talk titles REAL (The Doctrine of Christ, Trial of Your Faith,
+Little Children, Deep Roots — first talk-heavy file with zero confabulated
+titles); Christofferson ×2 + Andersen + Packer quotes verified EXACT; the
+study's two-layer attribution chain for both Joseph Smith quotes verified
+ALL THE WAY DOWN (fundamental-principles → Teachings ch. 3 AND quoted in
+Christofferson ✓; prophet-acting-as-such → the talk's own fn 5 = History of
+the Church 5:265 ✓, brackets preserved); TSW "Doctrine is eternal truth" +
+"Carefully consider" + closing "simple, basic truths" all exact (the latter
+two are the same TSW paragraph; the phrase also genuinely in Wirthlin).
+Fixes: 3 Ne 11 block ended mid-sentence at "cometh of evil" without
+ellipsis → added; **citation 32-35 → 32-34, 40** (v35 was entirely inside
+the elision, never quoted); proclamation link pointed at nonexistent
+scriptures/ path → ensign/1995/11/ (same wrong path heavenly_mother.md had).
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
