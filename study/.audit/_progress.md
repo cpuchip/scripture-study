@@ -37,7 +37,7 @@ Already done out-of-band: `study/morm-8-three-glories-reading.md` (2026-06-09).
 - [x] 2026-02-03 `study/mazzaroth-01.md` **FULL** — 8 micro-fixes (76:81→98 mis-cite; Joel "dark"; TG Facsimile-2 claim false; 4 sentence-ends)
 - [x] 2026-02-03 `study/mazzaroth-02.md` **FULL** — 8 fixes (JS-M mis-sourced as D&C 45; Stevenson not Uchtdorf; invented Big Dipper dramatization; Abr composite)
 - [x] 2026-02-04 `study/charity.md` **T2+FULL** — Webster claims SURVIVED repaired 1828; 2 genuine-1828 gifts woven; 1 micro-fix (D&C 121:45 "also")
-- [ ] 2026-02-04 `study/priesthood-oath-and-covenant.md` **T2+FULL**
+- [x] 2026-02-04 `study/priesthood-oath-and-covenant.md` **T2+FULL** — ★ all 5 Webster quotes were 1913-as-1828 (requoted + edition note; OBTAIN gift woven) + 7 scripture fixes
 - [ ] 2026-02-05 `study/priesthood-obtaining-exploration.md` **T2+FULL**
 - [ ] 2026-02-05 `study/end-times.md` **FULL**
 - [ ] 2026-02-05 `study/gadianton-robbers.md` **FULL**

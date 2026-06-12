@@ -384,6 +384,30 @@ EXACT (1 Cor 13:3 honest ellipsis; Moro 7:45-48, 2 Ne 26:30, Moro
 of God" title real; becoming/charity.md link resolves. One micro-fix:
 D&C 121:45 fragment restored "also" ("Let thy bowels also be full…").
 
+### study/priesthood-oath-and-covenant.md (2026-02-04) — ★ ALL FIVE Webster quotes were 1913-as-1828 + 7 scripture fixes
+T2+FULL. **The file the remediation was built for**: every Webster
+definition (OATH "reverent appeal", COVENANT "promises of God…conditioned
+on certain terms", OBTAIN "get hold of by effort", RECEIVE "as something
+that is offered", MAGNIFY "increase the importance of") was the 1913
+edition under an 1828 label — the same defect class as three-glories,
+now found in a Feb-4 study, the very day webster-mcp shipped. All five
+requoted from genuine 1828 + edition note added. The arguments SURVIVE,
+and genuine-1828 OBTAIN is a massive gift: Webster himself states the
+study's thesis — "this word usually implies exertion…it differs from
+receive…**We obtain by seeking; we often receive without seeking.**"
+Scripture fixes: D&C 20:44 had invented "when there is no high priest
+present" (real v44 ends at "all meetings"; the no-elder-present clause is
+v49, about priests) → requoted vv. 44-45 + v49 note; **"Magnify thine
+office…Colesville" is D&C 24:3 not 24:9**; D&C 107:91 wording restored
+("the President of the office of the High Priesthood"); Hel 10:7 opener
+was invented ("And it shall come to pass, that") → "Behold, I give unto
+you power, that"; D&C 84:65-66 → 65-69 (quote spans 5 verses); Alma 13:18
++ D&C 107:4 sentence-ends completed. VERIFIED EXACT: D&C 84:14-17/19-22/
+33-41, 121:34-37/41-46, 42:44, 35:9, Abr 2:10-11 (honest ellipsis), Alma
+13:17-18, all 6 talk titles + Asay (incl. his Romney inner quote + the
+four-element list verbatim), Nelson 2011, Cook 2019, Beck 2006 (incl. her
+Benson quote).
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
