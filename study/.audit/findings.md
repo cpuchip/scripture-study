@@ -719,6 +719,18 @@ framings → correction pointers (8th and 9th cascade sites). The
 "Added 2025-07-26" review-note date → git-corrected. Alma 32:10-11,
 D&C 49:7, Hel 14:30, D&C 87:8 EXACT.
 
+### study/talks/202410-35bednar.md (2026-02-08) — 5 fixes (CIRCUMSPECTLY + POTTAGE = 10th/11th 1913 instances; STEADFAST tail)
+T1 talk analysis. Webster: **CIRCUMSPECTLY "cautiously; warily" was
+1913** → genuine is a GIFT ("Cautiously; with watchfulness every way;
+with attention to guard against surprise or danger" — woven into the
+watched-their-step argument); **POTTAGE's "thick soup" definition was
+1913** → genuine "Broth; soup" + POTAGE's fuller entry; STEADFAST was
+near-genuine (drop 1913's "unswerving"; Webster's own 1 Pet 5:9 example
+added); EASINESS HOLDS (senses 1-2 genuine, tightened to exact wording).
+The space-of-not-many-years series verified across all four Helaman
+verses (4:26, 6:32, 7:6, 11:26 — exact); all three Benson keystone-talk
+quotes exact (1 comma restored); Bednar talk title + phrase confirmed.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
