@@ -1110,6 +1110,25 @@ Elder Steven R. Bangerter alone.
 SAMPLE. Template file; "Judge not unrighteously" (JST Matt 7:2) and
 "judge righteous judgment" (John 7:24) both genuine; links resolve.
 
+### study/priestcraft.md (2026-02-19) — Webster table wholesale 1913 (words 28-37) + 2 not-in-1828 words + verse-number rebuild
+T1+FULL, post-boundary. The whole -hood/-craft word study was built on
+1913 text: PRIESTCRAFT, PRIESTHOOD, FATHERHOOD, BROTHERHOOD, MANHOOD,
+FALSEHOOD, NEIGHBORHOOD, WITCHCRAFT, KINGCRAFT, HANDICRAFT (words
+28-37) — and GODHOOD and STATECRAFT are not in the 1828 AT ALL (the
+study's own absent-words observation, extended). The 1913 "HOOD —
+State; condition" suffix gloss has no genuine standalone entry; the
+section now rests on the genuine compound entries, which all open
+"The state of..." anyway. Genuine gifts: PRIESTCRAFT names "selfish
+and ambitious priests"; KINGCRAFT is "usually in a bad sense"; CRAFT's
+genuine Mark 14:1 citation in full is "The CHIEF PRIESTS and scribes
+sought how they might take him by craft" — priestcraft inside the
+dictionary's own example. Scripture: the 2 Ne 26:24-28 block had REAL
+text under WRONG verse numbers (v24's salvation line labeled 25, milk-
+and-honey labeled 28) — rebuilt verbatim as 24-27. Everything else
+(~35 renderings: Alma 1, D&C 121:34-39, Ezek 22/34, Acts 8, Morm 8,
+3 Ne 21/30, D&C 33:4, 2 Ne 10:5, Mosiah 18, McConkie ×3, the 29a-e
+footnote chain) verbatim.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)

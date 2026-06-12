@@ -102,7 +102,7 @@ Already done out-of-band: `study/morm-8-three-glories-reading.md` (2026-06-09).
 - [x] 2026-02-19 `study/serpent-and-dragon.md` **T2+FULL** — CLEAN (1 word: Moses 4:21 carried Gen 3:15's "and"; ~45 renderings + Asay verbatim)
 - [x] 2026-02-19 `study/plan-of-salvation/notes-01-premortal.md` **T1** — 7 fixes (all 5 Webster 1913 = words 23-27 w/ Berean + predestinate gifts; D&C 138 composite re-cited 38/41/55; Klebingat→Bangerter); scriptures + Maxwell + Bednar-yt all verbatim
 - [x] 2026-02-19 `study/farrell-pickering/thoughts.md` **SAMPLE** — CLEAN (JST Matt 7:2 + John 7:24 genuine; links ok)
-- [ ] 2026-02-19 `study/priestcraft.md` **T1+FULL**
+- [x] 2026-02-19 `study/priestcraft.md` **T1+FULL** — Webster table wholesale 1913 (words 28-37; GODHOOD+STATECRAFT not in 1828); 2 Ne 26 block verse-numbers rebuilt; ~35 scriptures + McConkie verbatim; CRAFT's Mark 14:1 chief-priests gift
 - [ ] 2026-02-19 `study/order-of-god-modern-lens.md` **FULL**
 - [ ] 2026-02-19 `study/order-of-god.md` **T1+FULL**
 - [ ] 2026-02-19 `study/priestcraft-beguile.md` **T1+FULL**
