@@ -28,7 +28,7 @@
 
 - Brigham Young was talking about the Second Coming — whether the world would burn up in a year or a thousand years — and he said something I can't stop thinking about:
 
-**Read aloud — from [Teachings of Brigham Young, Chapter 45](../gospel-library/eng/manual/teachings-brigham-young/chapter-45.md):**
+**Read aloud — from [Teachings of Brigham Young, Chapter 45](../../gospel-library/eng/manual/teachings-brigham-young/chapter-45.md):**
 > "Whether the world is going to be burned up within a year, or within a thousand years, does not matter a groat to you and me. We have the words of eternal life, we have the privilege of obtaining glory, immortality, and eternal lives, now will you obtain these blessings?"
 
 - *(Pause)* "Now will you obtain these blessings?" Not *later*. Not *eventually*. Now.
@@ -38,7 +38,7 @@
 - And then he says this — and this is the one that stops me:
 
 **Read aloud — same chapter:**
-> "If the people will not serve the Devil another moment whilst they live, if this congregation is possessed of that spirit and resolution, here in this house is the Millennium. Let the inhabitants of this city be possessed of that spirit, let the people of the territory be possessed of that spirit, and here is the Millennium. Let the whole people be possessed of that spirit and here is the Millennium, and so will it spread over all the world."
+> "If the people will not serve the Devil another moment whilst they live, if this congregation is possessed of that spirit and resolution, here in this house is the Millennium. Let the inhabitants of this city be possessed of that spirit, let the people of the territory be possessed of that spirit, and here is the Millennium. Let the whole people … be possessed of that spirit and here is the Millennium, and so will it spread over all the world."
 
 - The Millennium isn't just a future event. It's a *condition*. It starts in a single room and spreads outward. It begins wherever people actually live the words of eternal life — not just hear them, but *live* them.
 
@@ -46,12 +46,12 @@
 
 - This isn't just Brigham Young being dramatic. Every Zion in scripture follows the same pattern.
 
-**Enoch's Zion — read aloud [Moses 7:18](../gospel-library/eng/scriptures/pgp/moses/7.md):**
+**Enoch's Zion — read aloud [Moses 7:18](../../gospel-library/eng/scriptures/pgp/moses/7.md):**
 > "And the Lord called his people Zion, because they were of one heart and one mind, and dwelt in righteousness; and there was no poor among them."
 
 - One heart. One mind. No poor. And how did they get there? "The Lord came and dwelt with his people, and they dwelt in righteousness." They internalized the words of eternal life until God Himself lived among them.
 
-**The Nephites after Christ — [4 Nephi 1:15–17](../gospel-library/eng/scriptures/bofm/4-ne/1.md):**
+**The Nephites after Christ — [4 Nephi 1:15–17](../../gospel-library/eng/scriptures/bofm/4-ne/1.md):**
 > "There was no contention in the land, because of the love of God which did dwell in the hearts of the people."
 
 - *(Let that phrase land: "the love of God which did dwell in the hearts of the people.")*
@@ -62,7 +62,7 @@
 
 - And here's where it's all going. The Lord promises Enoch that in the last days, He'll gather a people again. A New Jerusalem. And then —
 
-**Read aloud — [Moses 7:63](../gospel-library/eng/scriptures/pgp/moses/7.md):** *(read this one slowly — it's the emotional peak)*
+**Read aloud — [Moses 7:63](../../gospel-library/eng/scriptures/pgp/moses/7.md):** *(read this one slowly — it's the emotional peak)*
 > "Then shalt thou and all thy city meet them there, and we will receive them into our bosom, and they shall see us; and we will fall upon their necks, and they shall fall upon our necks, and we will kiss each other."
 
 - *(Pause)* Enoch's ancient Zion — the city that walked with God so closely that He took them home — falling on the necks of the latter-day Zion and weeping with joy. That's the destination. That's what it's all building toward.
@@ -83,7 +83,7 @@ Whether the world is going to burn up within a year or a thousand years doesn't 
 
 - [Enjoy the Words of Eternal Life — Study](../enjoy-the-words-of-eternal-life.md)
 - [Enjoy the Words of Eternal Life — Reflection](../enjoy-the-words-of-eternal-life-reflection.md)
-- [Moses 7](../gospel-library/eng/scriptures/pgp/moses/7.md) — Enoch's full vision
-- [4 Nephi 1](../gospel-library/eng/scriptures/bofm/4-ne/1.md) — The Nephite Zion
-- [D. Todd Christofferson, "Preparing for the Lord's Return," April 2019](../gospel-library/eng/general-conference/2019/04/44christofferson.md)
-- [Brigham Young, Chapter 45: The Last Days](../gospel-library/eng/manual/teachings-brigham-young/chapter-45.md)
+- [Moses 7](../../gospel-library/eng/scriptures/pgp/moses/7.md) — Enoch's full vision
+- [4 Nephi 1](../../gospel-library/eng/scriptures/bofm/4-ne/1.md) — The Nephite Zion
+- [D. Todd Christofferson, "Preparing for the Lord's Return," April 2019](../../gospel-library/eng/general-conference/2019/04/44christofferson.md)
+- [Brigham Young, Chapter 45: The Last Days](../../gospel-library/eng/manual/teachings-brigham-young/chapter-45.md)

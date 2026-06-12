@@ -26,7 +26,7 @@
 
 ### The chain
 
-**Read aloud — [D&C 84:43–45](../gospel-library/eng/scriptures/dc-testament/dc/84.md):**
+**Read aloud — [D&C 84:43–45](../../gospel-library/eng/scriptures/dc-testament/dc/84.md):**
 > "I now give unto you a commandment to beware concerning yourselves, to give diligent heed to the words of eternal life. For you shall live by every word that proceedeth forth from the mouth of God. For the word of the Lord is truth, and whatsoever is truth is light, and whatsoever is light is Spirit, even the Spirit of Jesus Christ."
 
 - *(Pause. Let them hear it.)*
@@ -39,7 +39,7 @@
 
 - So that's the invitation. Now here's the warning — same section, eleven verses later:
 
-**Read aloud — [D&C 84:54–57](../gospel-library/eng/scriptures/dc-testament/dc/84.md):** *(read this one slowly)*
+**Read aloud — [D&C 84:54–57](../../gospel-library/eng/scriptures/dc-testament/dc/84.md):** *(read this one slowly)*
 > "And your minds in times past have been darkened because of unbelief, and because you have treated lightly the things you have received — which vanity and unbelief have brought the whole church under condemnation. And this condemnation resteth upon the children of Zion, even all. And they shall remain under this condemnation until they repent and remember the new covenant, even the Book of Mormon and the former commandments which I have given them, not only to say, but to do according to that which I have written."
 
 - Notice who's under condemnation. Not the world. Not the skeptics. The *children of Zion*. The covenant people.
@@ -67,5 +67,5 @@ Because the remedy isn't complicated. It's just honest. Remember the covenant. O
 ## If You Want to Go Deeper
 
 - [Enjoy the Words of Eternal Life — Reflection](../enjoy-the-words-of-eternal-life-reflection.md)
-- [D&C 84:43–58](../gospel-library/eng/scriptures/dc-testament/dc/84.md)
-- [Moses 6:59](../gospel-library/eng/scriptures/pgp/moses/6.md)
+- [D&C 84:43–58](../../gospel-library/eng/scriptures/dc-testament/dc/84.md)
+- [Moses 6:59](../../gospel-library/eng/scriptures/pgp/moses/6.md)
