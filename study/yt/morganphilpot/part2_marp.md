@@ -168,13 +168,13 @@ Original slide ~218
 
 ## Howard W. Hunter = Samuel the Lamanite
 
-- First prophet not of "covenant birth" (born outside Utah)
-- Served **nine months** as prophet
-- Coined the phrase "**calamities foretold**"
-- Hinckley placed Hunter's exact quote in the **Family Proclamation**
+- Not of "covenant birth" — born to a nonmember father in Boise, Idaho; baptized at twelve, when he "prevailed upon his father" (Ensign, July 1994). *(Correction note: the "born outside Utah" gloss was wrong — Presidents Lee and Benson were also Idaho-born; the claim is about his father's membership, not geography.)*
+- Served **nine months** as prophet (June 1994 – March 1995)
+- "**Calamities foretold**" — the phrase appears in the Family Proclamation ("the calamities foretold by ancient and modern prophets")
+- Hinckley placed Hunter's invitation in churchwide circulation
 
-> "I invite all members of the Church to live with ever more attention to the life and example of the Lord Jesus Christ."
-> — Howard W. Hunter
+> "First, I invite all members of the Church to live with ever more attention to the life and example of the Lord Jesus Christ …"
+> — Howard W. Hunter, ["Exceeding Great and Precious Promises," October 1994](../../../gospel-library/eng/general-conference/1994/10/exceeding-great-and-precious-promises.md)
 
 <!--
 Original slide ~224
@@ -187,9 +187,9 @@ Original slide ~224
 
 **April 5–6, 2000** — Palmyra Temple Dedication
 
-- Thursday, April 6, 2000 = 1 Nisan 5760 (first day of Hebrew year)
-- Also the 7th day of Passover — when tradition says God parted the Red Sea
-- Planetary alignment visible from Palmyra at sunset April 5
+- Thursday, April 6, 2000 = 1 Nisan 5760 (first day of the Hebrew religious year)
+- *(Correction note: the original slide also claimed April 6 was "the 7th day of Passover" — impossible alongside 1 Nisan; Passover begins 15 Nisan, and its 7th day is 21 Nisan, which fell on April 26, 2000. The Red-Sea-parting tradition does attach to the 7th day of Passover, but not to this date.)*
+- Planetary gathering: Mars, Jupiter, and Saturn within a 9° circle on April 6 (ESA), visible in the April evening sky
 
 The Hebrew Mazzaroth (zodiac) and the planetary positions on this date form part of the "signs in the heavens."
 
@@ -231,7 +231,7 @@ Original slides 202–206
 
 ## Year 95 / Year 2004 — The People Forget
 
-> "The people began to **forget** those signs and wonders which they had heard, and began to be less and less astonished at a sign or a wonder from heaven, insomuch that they began to be **hard in their hearts**, and blind in their minds." — 3 Nephi 2:1
+> "The people began to **forget** those signs and wonders which they had heard, and began to be less and less astonished at a sign or a wonder from heaven, insomuch that they began to be **hard in their hearts**, and blind in their minds, and began to disbelieve all which they had heard and seen" — 3 Nephi 2:1
 
 > "Satan did go about, leading away the hearts of the people, tempting them and causing them that they should do great wickedness in the land." — 3 Nephi 2:3
 
@@ -281,7 +281,7 @@ Verbal path differs from slide path — documented in transcript review
 
 ## Isaiah 9–10: The Harbinger Pattern
 
-> "The bricks are fallen down, but we will build with hewn stones; the sycomores are cut down, but we will change them into cedars." — Isaiah 9:10
+> "The bricks are fallen down, but we will build with hewn stones: the sycomores are cut down, but we will change them into cedars." — Isaiah 9:10
 
 **Tom Daschle**, September 12, 2001 — quoted Isaiah 9:10 on the Senate floor as a defiant pledge to rebuild.
 
@@ -289,7 +289,7 @@ The pattern continues:
 - **Sycamore tree** at Ground Zero literally destroyed
 - **Washington's oath** at the inauguration site
 - **Obama** — "rebuild"
-- **Trump** — "build back better"
+- "Build back better" *(sic — the slogan belongs to Biden's 2020 campaign, not Trump)*
 
 <!--
 Original slides 269+ (Phase 8 content delivered in Phase 7 verbal range)
