@@ -10,7 +10,7 @@
 
 The phrase "Walk with me" is one of the most intimate invitations in all of scripture. It is God Himself — Jehovah — speaking to a young, frightened, self-doubting man named Enoch. It is the same invitation He extends to each of us.
 
-The 1828 Webster's Dictionary defines **"to walk with God"** as: *"to live in obedience to his commands, and have communion with him."* Not just obedience — *communion*. A shared life. A relationship.
+The 1828 Webster's Dictionary defines **"to walk with God"** as: *"to live in obedience to his commands, and have communion with him."* Not just obedience — *communion*. A shared life. A relationship. (And Webster's own scripture citation for the phrase is Genesis 5:24 — Enoch's verse. The dictionary itself points here.)
 
 This year's Come, Follow Me lesson for this scripture notes: *"Surely there's a story behind that verse!"* — referring to the tantalizing one-liner in [Genesis 5:24](../gospel-library/eng/scriptures/ot/gen/5.md): *"And Enoch walked with God: and he was not; for God took him."* The book of Moses gives us that story — and it is magnificent.
 
@@ -267,7 +267,7 @@ The millennium is not merely a calendar event. It is a *condition*:
 
 > "For the space of a thousand years the **earth shall rest.**" — [Moses 7:64](../gospel-library/eng/scriptures/pgp/moses/7.md)
 
-> "And the Lord shall be in their midst, and his glory shall be upon them, and he will be their king and their lawgiver." — [D&C 45:59](../gospel-library/eng/scriptures/dc-testament/dc/45.md)
+> "For the Lord shall be in their midst, and his glory shall be upon them, and he will be their king and their lawgiver." — [D&C 45:59](../gospel-library/eng/scriptures/dc-testament/dc/45.md)
 
 You enter the millennium by letting the Lord be in your midst *now*. By inviting Him to be the king and lawgiver of your home. By being one heart and one mind with your family. By caring for the poor among you. By refusing to contend.
 
