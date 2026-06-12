@@ -476,6 +476,25 @@ recalls, Christensen "Adam, the first prophet", Eyring Sisters-in-Zion
 nice; we must be one" was constructed** (not in Come to Zion) → his real
 line "Forgiveness of one another is essential to this unity."
 
+### study/yt/morganphilpot/part3_marp.md (2026-02-08) — 6 fixes (★ false Hebrew etymology endorsed; Webster split over-clean)
+T2, first morganphilpot file. **★ The Zarahemla word study our file
+called "compelling" is FALSE Hebrew**: חֶמְלָה (chemlah, H2551) =
+compassion/pity (the scholarly Zarahemla gloss is "seed of compassion");
+salt is מֶלַח (melach, H4417), a different root — Joshua's "City of
+Salt" is Ir ham-MELACH. The salt→Salt-Lake-City chain fails at step one.
+Verification note added to the slide + the evaluation pointer corrected
+(verbal_only_evaluation.md #2 itself is T1, walked later). **The
+Storm/Tempest 1828 claim was over-clean**: genuine STORM does carry
+"violent civil or political commotion" (sense 3) + military assault
+(sense 2), but TEMPEST also allows "a popular or political tempest; the
+tempest of war" — both words cross registers; slide softened to match
+the real entries (the both-registers conclusion survives). Scripture
+fixes: the "3 Ne 8:8-10" quote was a composite of vv. 11-12 + v. 8
+(and "the GREAT city Zarahemla" is 9:3's phrasing) → split + recited;
+3 Ne 17:25 lead-in was constructed → verse's real words; 3 Ne 8:5 tail
++ Ether 13:5/9 ends completed. Rev 14:17-18, John 2:1, Mosiah 12:25-26,
+D&C 87:8 EXACT.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
