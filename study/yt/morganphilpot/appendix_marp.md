@@ -78,7 +78,9 @@ Two churches. One small but armed with power. One vast but destined for wrath.
 
 ## The Power of the Lamb — Nelson
 
-> "In coming days, we will see the greatest manifestations of the Savior's power that the world has ever seen."
+> "In coming days, we will see the *greatest* manifestations of the Savior's power that the world has *ever* seen."
+
+— Russell M. Nelson, ["Overcome the World and Find Rest," October 2022](../../../gospel-library/eng/general-conference/2022/10/47nelson.md) *(source added 2026-06-12; the slide carried no citation)*
 
 <!-- Original slide 45 -->
 
@@ -101,7 +103,7 @@ Two churches. One small but armed with power. One vast but destined for wrath.
 | Apr. 2018 | "It will not be possible to survive spiritually without… the Holy Ghost" |
 | Oct. 2018 | "Together we can do all that our Heavenly Father needs us to do to prepare the world for the Second Coming" |
 | Apr. 2019 | "Do the spiritual work to find out for yourselves, and please do it now. Time is running out" |
-| Apr. 2019 | Rome Temple = "a hinge point in the history of the Church" |
+| Mar./Oct. 2019 | "A hinge point in the history of the Church" — said of the Rome Temple (Church News, Mar. 2019) and of the April 2020 bicentennial conference (quoted by Pres. Eyring, Apr. 2020) |
 | Oct. 2020 | "Men's hearts [would fail] them… even the very elect would be at risk" |
 | Apr. 2021 | "Commotion in the world will continue to increase" |
 | Oct. 2021 | SLC Temple: "Unprecedented times call for unprecedented measures" |
@@ -159,7 +161,7 @@ Jacob's warning to the Nephites *about* the Gentiles — and by extension, *to* 
 
 > "Behold, that great city Zarahemla have I burned with fire" — 3 Nephi 9:3
 
-> "Whoso readeth, let him understand… all these deaths and destructions… are not unto the fulfilling of the prophecies" — 3 Nephi 10:14
+> "Whoso readeth, let him understand … see and behold if all these deaths and destructions … are not unto the fulfilling of the prophecies" — 3 Nephi 10:14 *(elision corrected 2026-06-12: dropping "see and behold if" inverted the verse's rhetorical point — they ARE the fulfilling)*
 
 Mormon's editorial: **"Who is Mormon talking to?"** — The reader. Us.
 
@@ -405,7 +407,7 @@ The 1896 Utah Constitution required:
 | φαρμακείᾳ | pharmakeia | "the use of medicine, drugs or spells" |
 | — | Strong's 5331 | "drug-related sorcery, like the practice of magical-arts" |
 
-**Webster 1828:** SORCERY = "Magic; enchantment; witchcraft; divination by the assistance or supposed assistance of evil spirits"
+**Webster 1828:** SORCERY = "Magic; enchantment; witchcraft; divination by the assistance of evil spirits, or the power of commanding evil spirits" *(requoted 2026-06-12 — the earlier "or supposed assistance" wording was the 1913 edition's)*
 
 **Webster 1828:** PHARMACOLOGY = "The science or knowledge of drugs, or the art of preparing medicines"
 
@@ -488,12 +490,12 @@ The Palmyra Temple sitting at the site of the Restoration mirrors Jericho sittin
 
 | Fact | Significance |
 |------|-------------|
-| April 6, 2000 | 1st day of 1st month (1 Nisan) |
-| 7th day of Passover | Tradition: Red Sea parted on 7th day |
-| Also: Day Christ died | Mark 15:33–34 |
+| April 6, 2000 | 1st day of 1st month (1 Nisan 5760) |
 | 170 years from Church organization | — |
 | 180 years from First Vision | — |
 | First temple dedication broadcast worldwide | 1.5 million members participated |
+
+*(Correction note, 2026-06-12: the original slide also claimed April 6 was "the 7th day of Passover" and "the day Christ died" — both incompatible with 1 Nisan. Passover's 7th day is 21 Nisan (April 26 in 2000), and the crucifixion is dated to Passover (14–15 Nisan), not 1 Nisan. The three claims cannot all attach to one date.)*
 
 > "I regard this temple as perhaps the most significant, in one respect, in the entire Church." — President Hinckley
 
