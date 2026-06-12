@@ -32,6 +32,7 @@
 - ★ v4 audit FULLY CLOSED 2026-06-12 — every claim verified or deliberately Michael's (G-2 ten-questions session + G-3 the verbatim Oct-5 "overwhelmed" line recovered from the old-machine archives). Small gates for Michael: P6 seven-vs-eight games · optional P2 Oct-5 counsel enrichment · voice-corpora commit call. Then: his voice read → pass 3 → KDP. Journals: `projects/scripture-book/.spec/journal/2026-06-11--v4-chat-walk-complete.yaml` + `.spec/journal/2026-06-12--night-archive-dig-voice-profile.md` · lane: `book-v4-walk`.
 
 **Studies / series**
+- **Preside study SHIPPED 2026-06-12** (`study/preside.md` — the garrison word; 4th in the presidency arc): ★ **five covenant.yaml amendment proposals await Michael's ratification** (§VIII: preside_under_121 · watch_what_you_order · keep_the_watch_whole · dominion-in-council · when_presiding_is_broken). Bonus: art-of-presidency's Webster "preside" quote audit-VERIFIED against genuine 1828 (survives, strengthened — "as inspector" + PRESIDIAL garrison sibling). Journal: `.spec/journal/2026-06-12-preside-study.md`.
 - Canon-walk series: **PoGP walk next** (BoM walk complete; scaffold reusable; Strong's MCP live for the Bible walks). Seed: 1 Ne 14 + Rev 1 + Ether 4 as one vision.
 
 **Claude Code tooling**
