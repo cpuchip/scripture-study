@@ -94,9 +94,11 @@ Philpot's explicit disclaimer: *"Everything I do is not intended to convince you
 
 ### Word Studies
 
-**Abib** (Webster 1828): "The first month of the Jewish ecclesiastical year, corresponding nearly to our April. After the Babylonish captivity this month was called Nisan." Philpot's slide 9 adds the Hebrew meaning of "green" or "newly ripened ears of grain" — consistent with the agricultural framing and confirmed by [Leviticus 2:14](../../../gospel-library/eng/scriptures/ot/lev/2.md) references to "green ears."
+*(Edition note, 2026-06-12: both definitions below are now quoted from the genuine 1828 text; the earlier draft carried the 1913 edition's wording. The genuine entries are stronger for the argument.)*
 
-**Harvest** (Webster 1828): "The gathering of a crop of any kind; the ingathering of the crops; also, the season of gathering grain and fruits, late summer or early autumn. Seedtime and harvest... shall not cease. Gen viii. 22." The definition emphasizes harvest as both the *act* and the *season* — supporting the idea that God's appointed feasts were tied to agricultural seasons with prophetic significance.
+**Abib** (Webster 1828): "The first month of the Jewish ecclesiastical year, called also Nisan. It begins at the spring equinox, and answers to the latter part of March and beginning of April. Its name is derived from the full growth of wheat in Egypt." Webster's own etymology note adds: "[Heb. swelling, protuberant. To produce the first or early fruit; a full grown ear of corn.]" — which is exactly the "green / newly ripened ears" meaning Philpot's slide 9 claims, confirmed by [Leviticus 2:14](../../../gospel-library/eng/scriptures/ot/lev/2.md)'s "green ears."
+
+**Harvest** (Webster 1828): "The season of reaping and gathering in corn or other crops" (sense 1) — and sense 5 is the remarkable one: "In Scripture, harvest signifies figuratively the proper season for business … Also, **a people whose sins have ripened them for judgment. Joel 3:13. Also, the end of the world. Matthew 13:39.**" Webster's own 1828 entry already maps harvest → ripeness for judgment → the end of the world — the very typological chain Philpot builds, sitting in the dictionary the whole time.
 
 ---
 

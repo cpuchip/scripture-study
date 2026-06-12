@@ -690,6 +690,19 @@ all EXACT. Tally: 6 Webster words 1913-as-1828 across 5 cluster files;
 WRATH + walk-with-God + broken=bankrupt + PHARMACOLOGY/WIZARD/ENCHANTER
 genuine.
 
+### study/yt/morganphilpot/01_foundation.md (2026-02-08) — 2 fixes + 2 GIFTS (ABIB + HARVEST = 7th and 8th 1913-as-1828 words)
+T1. Both Webster quotes were 1913 wording → requoted from genuine 1828
+with edition note — and both genuine entries are STRONGER: ABIB's
+etymology note ("To produce the first or early fruit; a full grown ear
+of corn") confirms the slide's green-ears claim from inside the
+dictionary; HARVEST's sense 5 already contains Philpot's whole
+typological chain — "a people whose sins have ripened them for
+judgment. Joel 3:13. Also, the end of the world. Matthew 13:39."
+Epigraphs (1 Thes 5:21, D&C 130:18) exact; remaining blockquotes are
+timestamped Philpot transcript reportage. The cluster's Webster final
+score: 8 of 12 checked words were 1913-as-1828; every requote left the
+argument intact or stronger.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
