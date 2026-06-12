@@ -214,7 +214,7 @@ This is the "thus may *all* become my sons" of Moses 6:68, expanded. The order o
 Elder Oaks pressed this point even more directly in ["The Keys and Authority of the Priesthood"](../gospel-library/eng/general-conference/2014/04/the-keys-and-authority-of-the-priesthood.md):
 
 > "When men and women go to the temple, they are both endowed with the same power, which is priesthood power. ... Access to the power and the blessings of the priesthood is available to all of God's children."
-> — [Elder Dallin H. Oaks, April 2014](../gospel-library/eng/general-conference/2014/04/the-keys-and-authority-of-the-priesthood.md)
+> — Elder M. Russell Ballard, quoted by Oaks in [The Keys and Authority of the Priesthood, April 2014](../gospel-library/eng/general-conference/2014/04/the-keys-and-authority-of-the-priesthood.md)
 
 And:
 
