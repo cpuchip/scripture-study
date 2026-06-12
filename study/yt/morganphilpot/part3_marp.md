@@ -156,15 +156,15 @@ Evaluation: See verbal_only_evaluation.md #19-20 (Out of Line — contradicts D&
 
 ## Storm vs. Tempest — Webster 1828
 
-> "In the thirty and fourth year, in the first month, on the fourth day of the month, there arose a great **storm**, such an one as never had been known" — 3 Nephi 8:5
+> "In the thirty and fourth year, in the first month, on the fourth day of the month, there arose a great **storm**, such an one as never had been known in all the land" — 3 Nephi 8:5
 
 > "The thunderings, and the lightnings, and the **storm**, and the **tempest**, and the quakings of the earth" — 3 Nephi 8:19
 
-Mormon uses *both* words deliberately:
-- **Storm** (1828) = political/military upheaval
-- **Tempest** (1828) = natural catastrophe
+Mormon uses *both* words deliberately. The genuine 1828 entries are richer than a clean split:
+- **Storm** (1828): "a violent wind; a tempest" — but also sense 2, "a violent assault on a fortified place," and sense 3, "violent civil or political commotion; sedition; insurrection"
+- **Tempest** (1828): primarily "an extensive current of wind, rushing with great velocity and violence" — though Webster also allows "a popular or political tempest; the tempest of war"
 
-The destruction of 3 Nephi 8 includes both political AND natural components.
+Both words carry both registers in 1828 (Webster notes "gale is also used as synonymous with storm, and storm with tempest"). The claim survives in softened form: the vocabulary of 3 Nephi 8 covers political AND natural catastrophe.
 
 <!--
 Verbal-only — no original slide
@@ -292,9 +292,9 @@ Verbal-only — no original slide
 
 ## New Jerusalem — Ether 13
 
-> "Behold, Ether saw the days of Christ, and he spake concerning a **New Jerusalem** upon this land. And he spake also concerning the house of Israel, and the **Jerusalem from whence Lehi should come** — after it should be destroyed it should be built up again, a holy city" — Ether 13:4–5
+> "Behold, Ether saw the days of Christ, and he spake concerning a **New Jerusalem** upon this land. And he spake also concerning the house of Israel, and the **Jerusalem from whence Lehi should come** — after it should be destroyed it should be built up again, a holy city unto the Lord …" — Ether 13:4–5
 
-> "There shall be a **new heaven and a new earth**; and they shall be like unto the old save the old have passed away" — Ether 13:9
+> "There shall be a **new heaven and a new earth**; and they shall be like unto the old save the old have passed away, and all things have become new" — Ether 13:9
 
 The seed of Joseph Smith — the remnant that will build the New Jerusalem.
 
@@ -344,7 +344,7 @@ Verbal-only — no original slide (Q&A)
 
 ## 2,500 at Bountiful
 
-> "And it came to pass that there were about **two thousand and five hundred souls**" — 3 Nephi 17:25
+> "and they were in number about **two thousand and five hundred souls**; and they did consist of men, women, and children" — 3 Nephi 17:25
 
 2,500 = half of 5,000 = half of 10 virgins (in a proportional reading).
 
@@ -359,18 +359,18 @@ Verbal-only — no original slide (Q&A)
 
 ## Zarahemla = Salt Lake City?
 
-> "And it came to pass… that there was a great and terrible destruction in the land southward. But behold, there was a more great and terrible destruction in the land northward… the great city **Zarahemla** did take fire." — 3 Nephi 8:8–10
+> "And there was a great and terrible destruction in the land southward. But behold, there was a more great and terrible destruction in the land northward …" — 3 Nephi 8:11–12
 
-**Zarahemla** — from Hebrew **hemlah** (חֶמְלָה) = salt.
+> "And the city of **Zarahemla** did take fire." — 3 Nephi 8:8
 
-The Dead Sea is called the "Salt Sea." Zarahemla = "city of salt."
+Philpot's word study: **Zarahemla** — from Hebrew **hemlah** (חֶמְלָה) = salt; the Dead Sea is the "Salt Sea"; Zarahemla = "city of salt"; **"What's the modern Zarahemla?"** → Salt Lake City.
 
-**"What's the modern Zarahemla?"** → Salt Lake City.
+**Verification note (Strong's, 2026-06-12):** the etymology fails at the first step. חֶמְלָה (*chemlâh*, H2551) means **compassion, pity** — the common scholarly gloss of Zarahemla is "seed of compassion" (*zera* + *chemlah*). Salt is מֶלַח (*melach*, H4417), a different root; the biblical "City of Salt" (Joshua 15:62) is *Ir ham-Melach*, not *-chemlah*. The Salt Lake City application has no Hebrew footing.
 
 <!--
 Verbal-only — no original slide (Q&A)
-~57:54. Creative Hebrew word study — parallel to the slide-only Kokaubeam work, but this one is verbal.
-Evaluation: See verbal_only_evaluation.md #2 (Nuanced — compelling etymology, unverifiable application).
+~57:54. Verbal Hebrew word study — parallel to the slide-only Kokaubeam work.
+Evaluation: See verbal_only_evaluation.md #2 — CORRECTED 2026-06-12: the etymology is wrong (chemlah = compassion, not salt; salt = melach), not merely "unverifiable in application."
 -->
 
 ---
