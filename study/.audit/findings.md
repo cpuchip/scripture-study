@@ -464,6 +464,18 @@ quote, Bednar 2023, Pearce 1997, Christofferson 2008, Freeman 2023, Stone
 link resolves. Sole fix: D&C 45:59 "And"→"For". A file written WITH its
 sources — and the richest study walked so far.
 
+### study/enoch-charity.md (2026-02-06) — 1 fix across ~45 quotes
+T1+FULL, companion to enoch.md. Webster walk-with-God quote (repeated
+here) GENUINE ✓. ~35 scripture quotes EXACT (D&C 4:5-6, Moroni 7:4/41/
+42/44/45/47/48, Moroni 10:20-22, Ether 12:6/28/30/32, 2 Ne 31:20, Moses
+5:10/6:15-36/7:13/18/21/28/32-33/41/63, Mosiah 8:15-18, D&C 105:3/107:
+49/56/121:45-46, 4 Ne 1:15, Heb 11:5-6); all talk quotes EXACT (Uchtdorf
+hope ×2, Romney, Christofferson incl. the Maxwell summer-cottage line he
+recalls, Christensen "Adam, the first prophet", Eyring Sisters-in-Zion
+×3). Sole fix: the Christofferson table cell **"It is not enough to be
+nice; we must be one" was constructed** (not in Come to Zion) → his real
+line "Forgiveness of one another is essential to this unity."
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)

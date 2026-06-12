@@ -42,7 +42,7 @@ Already done out-of-band: `study/morm-8-three-glories-reading.md` (2026-06-09).
 - [x] 2026-02-05 `study/end-times.md` **FULL** — 7 fixes (Maxwell + Christofferson constructed quotes requoted; D&C 61:38 mis-quote; 6 directory links → talk files)
 - [x] 2026-02-05 `study/gadianton-robbers.md` **FULL** — 2 micro-fixes across ~47 quotes (largest inventory yet; all 8 talks exact)
 - [x] 2026-02-06 `study/enoch.md` **T1+FULL** — Webster quote GENUINE 1828 exact (+ Gen 5:24 gift woven); 1 micro-fix; all 8 talks + ~30 scriptures exact
-- [ ] 2026-02-06 `study/enoch-charity.md` **T1+FULL**
+- [x] 2026-02-06 `study/enoch-charity.md` **T1+FULL** — 1 fix (constructed Christofferson nice/one quote → real line); ~45 quotes exact; Webster genuine
 - [ ] 2026-02-08 `study/yt/morganphilpot/part3_marp.md` **T2**
 - [ ] 2026-02-08 `study/yt/morganphilpot/part2_marp.md` **SAMPLE**
 - [ ] 2026-02-08 `study/yt/morganphilpot/part1_marp.md` **SAMPLE**

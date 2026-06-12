@@ -17,6 +17,13 @@ last_active: 2026-06-12T11:46:01
   added to _workflow.md. Zero ARGUMENT-class queued. NEXT: charity.md
   (#26) — FIRST T2+FULL Webster file (webster_define requotes vs repaired
   dictionary). Watch Feb 19 / Mar 2 tool-boundary inflection.
+- UPDATE: 31/469 done. Webster tier proven: charity survived; BOTH
+  priesthood files were 1913-as-1828 (all 7 quotes incl. synonym notes)
+  → requoted + edition notes + OBTAIN gift ("We obtain by seeking; we
+  often receive without seeking"); enoch.md T1 GENUINE + gift (Webster's
+  walk-with-God citation IS Gen 5:24). end-times: 2 constructed era
+  quotes (Maxwell, Christofferson) + D&C 61:38 mis-quote. gadianton: 2
+  micro-fixes across ~47 quotes. NEXT: enoch-charity.md (#32, T1+FULL).
 - ✅ OCR repair SHIPPED + live-verified (1336c8ce); walk plan RATIFIED
   (.spec/proposals/study-correctness-walk.md)
 
