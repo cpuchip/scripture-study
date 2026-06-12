@@ -14,7 +14,9 @@ last_active: 2026-06-12T00:00:00
   ratified 06-12): FULL PARITY before the cut** — coder-mcp + UI become
   pre-cutover (P2 before cut), 20 mismatches + ledger wart now on the
   cutover critical path. Next: P1 extraction (task #151), side-by-side
-  compose (`stewards-oss-*`, 55434/8081/8091).
+  compose (`stewards-oss-*`, 55434/8081/8091). Overlay design ratified
+  (`0e01a04`): private repo pg-ai-stewards-workspace, created at P1
+  kickoff. jumpstart-crossover reflection seeded (`48864a47`, no build).
 - **PR.1 SHIPPED + live-verified 2026-06-12** (inbox assignment, Michael's
   "best of your judgement" grant): covenants.extensions catch-all +
   presiding render + Watch echo; reseed through the real path; smoke
