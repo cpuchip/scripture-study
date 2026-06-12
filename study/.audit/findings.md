@@ -983,6 +983,14 @@ Verified-true: stop-paddling, self-inflicted-blindness, JFS day-by-day,
 unprepared list, garments do-not-take-a-day-off, D&C 121:7-8 + Isa
 41:10 renderings, the whole Feb-2026 section against the transcript.
 
+### study/yt/farrell-pickering/02_temple_mount.md (2026-02-15) — CLEAN (1 article)
+SAMPLE. Gen 22:2, 2 Sam 24:18-25, John 2:19-21, Ezek 44:1-2, D&C
+8:2/6-7/11, 2 Chr 3:1 (×2), all verbatim with marked elisions. The
+Book-of-Commandments "rod of nature"→"gift of Aaron" revision claim is
+documented history; Kaufman-1983 and Josephus citations standard. One
+fix: Heb 9:11 "a greater and more perfect tabernacle" (study had
+"the").
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
