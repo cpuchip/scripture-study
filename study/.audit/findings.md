@@ -762,6 +762,20 @@ to each pointing readers to the corrections (chemlah, 42-month count,
 the incompatible date stack, 1913-as-1828 Webster citations) in the
 parent directory's evaluations.
 
+### study/helaman-ten-virgins.md (2026-02-09) — 3 fixes (★ the Johnson confabulations PROPAGATED here)
+FULL. **Two of the invented Johnson quotes from ten-virgins-parable
+(#17) had propagated into this file** — the "all ten virgins chose the
+covenant path" block and the central-question block — both requoted from
+her real talk with dated notes (real virgins line; real whole-in-Him
+question; Bednar's real essence line carries the testimony/conversion
+distinction). Also: Benson "corresponds to our day" was not his phrase →
+his real "reveals many parallels to our own day" ("The Savior's Visit
+to America," Apr 1987) + link. VERIFIED EXACT: D&C 45:57, Bednar
+testimony-alone, Pearson, Hel 15:7-8, 3 Ne 2:1-2 (cite already right),
+3 Ne 9:13/10:12/11:29/37/39-40, D&C 33:13/16/17. Propagation lesson: a
+confabulated quote, once written, gets quoted BY LATER STUDIES as if
+verified — the error compounds via internal reuse.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)

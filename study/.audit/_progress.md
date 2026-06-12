@@ -71,7 +71,7 @@ Already done out-of-band: `study/morm-8-three-glories-reading.md` (2026-06-09).
 - [x] 2026-02-09 `study/truth.md` **T1+FULL** — 7 requotes + 5 upgrades, walked WITH Michael (out of order, 2026-06-12)
 - [x] 2026-02-09 `study/yt/morganphilpot/original/slides_marp.md` **T2** — auditor preface added (primary-source capture)
 - [x] 2026-02-09 `study/yt/morganphilpot/original/slides.md` **T2** — auditor preface added (primary-source capture)
-- [ ] 2026-02-09 `study/helaman-ten-virgins.md` **FULL**
+- [x] 2026-02-09 `study/helaman-ten-virgins.md` **FULL** — 3 fixes (★ propagated Johnson confabulations requoted; Benson fragment corrected)
 - [ ] 2026-02-09 `study/helaman-why.md` **FULL**
 - [ ] 2026-02-09 `study/yt/morganphilpot/original/timeline.md` **SAMPLE**
 - [ ] 2026-02-10 `study/truth-atonement.md` **T1+FULL**
