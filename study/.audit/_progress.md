@@ -118,7 +118,7 @@ Already done out-of-band: `study/morm-8-three-glories-reading.md` (2026-06-09).
 - [x] 2026-02-23 `study/plan-of-salvation/father-and-son.md` **T1** — all 5 Webster 1913 (words 71-75; genuine examples ARE the thesis: "father of spirits," "author of the Universe," "the father designs his son"); scriptures verbatim
 - [x] 2026-02-24 `study/yt/tV0_KEMIy7o-meekly-drenched-in-destiny.md` **SAMPLE** — CLEAN (11 Maxwell quotes verbatim at timestamp)
 - [x] 2026-02-24 `study/yt/UjzeDUBMaUA-problem-with-mormon-youtube.md` **T1** — MEEK + CONTENTION 1913 (words 76-77; Titus 3:9 gift); transcript quotes verbatim
-- [ ] 2026-03-01 `study/consumption-decreed.md` **T2+FULL**
+- [x] 2026-03-01 `study/consumption-decreed.md` **T2+FULL** — 4 Webster 1913 (words 78-81; genuine DECREE = "predetermined purpose of God"); scripture chain verbatim
 - [ ] 2026-03-02 `study/consumption-decreed-modern-warning.md` **T2+FULL**
 - [ ] 2026-03-02 `study/zion-blueprint.md` **FULL**
 - [ ] 2026-03-02 `study/translated-beings.md` **T1+FULL**

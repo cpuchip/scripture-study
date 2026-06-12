@@ -1318,6 +1318,16 @@ Titus 3:9 ("avoid ... contentions") and the eagerness/zeal sense is
 genuine sense 4 (the study had called it "archaic"). Transcript quotes
 verbatim at timestamp; 1 Thes 5:21 + D&C 130:18 exact.
 
+### study/consumption-decreed.md (2026-03-01) — 4 Webster 1913 (words 78-81)
+T2+FULL, post-boundary. CONSUMPTION, CONSUME, DECREE, CONSUMMATION all
+1913 — requoted with gifts: genuine DECREE sense 6 is "In theology,
+predetermined purpose of God"; genuine CONSUMMATION sense 2 is "the
+end of the world" (the Dan 9:27 reading in the entry); genuine
+CONSUME's citation is Ps 37:20 "the wicked shall perish — they shall
+consume." Scripture all verbatim: the consumption-decreed chain (Isa
+10:22-23, 28:22, 2 Ne 20:22, D&C 87:6, Jer 30:11/46:28, Zeph 1:2, Rom
+9:27-28, Dan 9:27); the 2 Ne 20:23 footnote → Dan 9:27 claim exact.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)

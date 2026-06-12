@@ -93,11 +93,11 @@ So "the consumption decreed" is literally: **the determined completion. The fini
 
 Noah Webster, writing just two years before the Church was organized, defines it precisely:
 
-> **CONSUMPTION** (n.) — "The act or process of consuming by use, waste, etc.; **decay; destruction.**"
-> — Webster 1828
+> **CONSUMPTION** (n.) — "The act of consuming; waste; **destruction** by burning, eating, **devouring**, scattering, dissipation, **slow decay**, or by passing away, as time."
+> — Webster 1828 *(requoted 2026-06-12 — the earlier text was the 1913 edition's; the genuine chain is fuller)*
 
 And **CONSUME**:
-> "To **destroy**, as by decomposition, dissipation, waste, or fire; to use up; to expend; to waste; to burn up; to eat up; to **devour.**"
+> "To **destroy**, by separating the parts of a thing, by decomposition, as by fire, or eating, **devouring**" ... "to **destroy**; to bring to utter ruin; to exterminate." And the intransitive entry's own citation: "The wicked shall perish — they shall consume. Psalm 37:20."
 
 The 1828 meaning captures three dimensions:
 1. **Destruction** — burning, devouring
@@ -107,10 +107,12 @@ The 1828 meaning captures three dimensions:
 That third meaning is haunting. Consumption as a disease that eats you from the inside. Nations wasting away from internal decay — not conquered from without, but consumed from within.
 
 And **DECREE**:
-> "An order from one having authority, deciding what is to be done... a determination by one having power, deciding what is to be done or to take place; **edict, law; authoritative rule.**"
+> "In general, an order, **edict or law** made by a superior as a rule to govern inferiors." And the genuine theological sense says it outright: "In theology, **predetermined purpose of God**; the purpose or determination of an immutable Being."
 
 And **CONSUMMATION** (the form used in Daniel 9:27):
-> "**Completion; perfection; termination; end** (as of the world or of life)."
+> "**Completion; end; perfection** of a word, process or scheme" — and sense 2: "The end or completion of the present system of things; **the end of the world**."
+
+*(Both requoted 2026-06-12 — the earlier texts were the 1913 edition's. The genuine DECREE carries the theology in its own sense 6, and genuine CONSUMMATION's sense 2 is the Daniel 9:27 reading itself.)*
 
 Completion. Perfection. End. The consumption decreed is the **decreed completion** — the divinely authorized finishing of something.
 
