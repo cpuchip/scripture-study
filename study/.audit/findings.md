@@ -524,6 +524,14 @@ end ("which had been given by Samuel the prophet"). Nelson/Oaks Jewish-
 calendar claims are reportage of Philpot, dates plausible (Passover
 weekend 2018 ✓ checked against the 2018 solemn assembly date).
 
+### study/yt/morganphilpot/marp_reformation_plan.md (2026-02-08) — 1 fix (confabulated date)
+T2. Organizational plan, no quotes of its own; the two Webster pointers
+(storm/tempest, Zarahemla) now resolve to corrected content in part3.
+Sole fix: footer claimed "Plan created: 2025-07-26" — impossible (the
+presentation it plans around references Nelson's Sept-2025 passing and
+Oaks' Oct-2025 first talk); git shows the file born 2026-02-08 →
+corrected with note. The date-confabulation class, now in a footer.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
