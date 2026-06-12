@@ -1000,6 +1000,23 @@ the-earth, rods-confirmed-it-all, I-truly-believe. Wyatt bio standard.
 Zero fixes — the farrell-pickering cluster closes with 5 of 6 files
 clean or near-clean; the README's 121:33 gloss was the only real error.
 
+### study/enjoy-the-words-of-eternal-life.md (2026-02-15) — ENJOY = 1913-as-1828 word 16
+T1+FULL. The Webster ENJOY quote was the 1913 edition verbatim
+(numbering, "occupy or have the benefit of," and the Hebrews 11:25
+citation that the genuine 1828 entry does NOT carry — the Moses-
+chose-differently paragraph was built on the wrong edition's example).
+Requoted to genuine senses 1+3 ("to have, hold or occupy") with the
+genuine citations Num 36:8 + Lev 26:34 — and the genuine entry
+STRENGTHENS the study: "hold or occupy" is the ownership argument in
+Webster's own words, and the sabbath/inheritance examples fit the
+words-as-inheritance reading. The argument survives intact. All
+scripture verbatim: Moses 6:59-62 (full), 2 Ne 4:15/16/21, John
+6:63/66/68, D&C 93:36, Heb 4:12 (twoedged fixed), Jer 15:16, Heb
+11:25. The footnote-trail claims verified against moses/6.md: 59e
+enjoy → 2 Ne 4:15, 59f words → John 6:68, exactly as stated.
+PROPAGATION: 1913-ENJOY phrasing also in podcast ×2 + truth-enjoy.md
+(all queued; fix at each).
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
