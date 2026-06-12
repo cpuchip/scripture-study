@@ -991,6 +991,15 @@ documented history; Kaufman-1983 and Josephus citations standard. One
 fix: Heb 9:11 "a greater and more perfect tabernacle" (study had
 "the").
 
+### study/yt/farrell-pickering/03_prayer_on_temple_mount.md (2026-02-15) — CLEAN
+SAMPLE. Num 19:2-9, Ex 29:38-42, 3 Ne 20:29-31, Mal 3:1+3, Heb 10:14,
+Dan 8/Isa 56 (re-verified earlier) all verbatim with marked elisions.
+Transcript quotes verified at timestamp: the 2,300-start (49:51),
+"didn't make up these numbers / Daniel did" (1:00:09-14), cancer-of-
+the-earth, rods-confirmed-it-all, I-truly-believe. Wyatt bio standard.
+Zero fixes — the farrell-pickering cluster closes with 5 of 6 files
+clean or near-clean; the README's 121:33 gloss was the only real error.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)

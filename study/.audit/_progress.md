@@ -90,7 +90,7 @@ Already done out-of-band: `study/morm-8-three-glories-reading.md` (2026-06-09).
 - [x] 2026-02-15 `study/yt/farrell-pickering/04_false_peace.md` **SAMPLE** — CLEAN (all renderings verbatim; 121:33 correct here)
 - [x] 2026-02-15 `study/cfm/20260215-prophets-oaks.md` **SAMPLE** — 13 fixes (Monson/Scott/member/Nelson quoted-within attributions; paraphrase-in-quotes ×3; count 21→23; propagations from #73 fixed)
 - [x] 2026-02-15 `study/yt/farrell-pickering/02_temple_mount.md` **SAMPLE** — CLEAN (1 article fix Heb 9:11)
-- [ ] 2026-02-15 `study/yt/farrell-pickering/03_prayer_on_temple_mount.md` **SAMPLE**
+- [x] 2026-02-15 `study/yt/farrell-pickering/03_prayer_on_temple_mount.md` **SAMPLE** — CLEAN (all renderings + transcript quotes verbatim)
 - [ ] 2026-02-16 `study/enjoy-the-words-of-eternal-life.md` **T1+FULL**
 - [ ] 2026-02-17 `study/enjoy-the-words-of-eternal-life-reflection.md` **T1+FULL**
 - [ ] 2026-02-17 `study/podcast/enjoy-what-enjoy-really-means.md` **T1**
