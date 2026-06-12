@@ -1435,6 +1435,23 @@ D&C 19:16-19, Luke 22:41-44, Mosiah 3/5/15, Alma 5/34, 2 Ne 4/9,
 Enos 1, Isa 53, 3 Ne 17, Moro 10:32-33, John 1, D&C 88:6, Matt
 27:46); 3 Holland None-Were-with-Him quotes exact.
 
+### study/atonement/nevertheless.md (2026-03-11) — NEVERTHELESS 1913 (word 90) + a misattributed "remarkable" observation; one miscount
+T1+post-boundary. The definition quoted twice ("in spite of that;
+yet") was 1913 — and the study's centerpiece observation ("Webster,
+in 1828, reached for this word and landed in the middle of the
+Atonement" via Heb 12:11) belongs to the 1913 EDITORS: genuine 1828
+illustrates with "It rained, nevertheless, we proceeded on our
+journey." Requoted with note; the Heb 12:11 illustration
+re-attributed to the later editors; the rain illustration now
+carries the 1828 paragraph (it still serves the thesis — obstacle
+real, journey continues). Miscount fixed: Mosiah 23:9-11 has TWO
+neverthelessses, not three (the study's own arrow chain showed
+two). All ~20 scripture renderings verbatim (Ps 89:30-34, Ps
+106:8/43-45, Judg 2:16, Ezek 20 cites, Jer 5:18, D&C 24:1-2 +
+July-1830 dating, D&C 75:8 + McLellin, D&C 98:41-42, Ps 73:22-24,
+Mosiah 23:9-11/21-22, Prov 19:21, Heb 12:11; Luke 22/D&C 19/Alma
+7:13/2 Ne 4/Alma 5:7 shared-verified with how-is-it-done).
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
