@@ -1140,6 +1140,17 @@ Oaks 2014 verbatim (italics-broke-grep gotcha, third occurrence this
 walk). Post-boundary talk-quote discipline matches the scripture
 pattern: written with sources open.
 
+### study/order-of-god.md (2026-02-19) — 3 Webster 1913 (words 38-40), scripture ALL verbatim
+T1+FULL, post-boundary. ORDER (all four senses), ORDAIN, SANCTIFY were
+1913 — requoted with major gifts: genuine ORDAIN sense 1 is "to
+establish in a particular office or ORDER" (the word is inside
+Webster's definition); genuine ORDER sense 9's own example is "the
+order of priests" and its tail defines "In orders" = "ordained to the
+work of the gospel ministry"; SANCTIFY gets John 17:17 again. All ~28
+scripture renderings verbatim: the full Alma 13:1-8 walk, D&C 107:3-4,
+84:19-24/33-45, 88:34-44, 93:12-36, Heb 7:3/16/21, the one-eternal-
+round triple (Alma 7:20, D&C 3:2, 1 Ne 10:19), D&C 77:11.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)

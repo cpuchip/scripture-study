@@ -104,7 +104,7 @@ Already done out-of-band: `study/morm-8-three-glories-reading.md` (2026-06-09).
 - [x] 2026-02-19 `study/farrell-pickering/thoughts.md` **SAMPLE** — CLEAN (JST Matt 7:2 + John 7:24 genuine; links ok)
 - [x] 2026-02-19 `study/priestcraft.md` **T1+FULL** — Webster table wholesale 1913 (words 28-37; GODHOOD+STATECRAFT not in 1828); 2 Ne 26 block verse-numbers rebuilt; ~35 scriptures + McConkie verbatim; CRAFT's Mark 14:1 chief-priests gift
 - [x] 2026-02-19 `study/order-of-god-modern-lens.md` **FULL** — 1 fix (Ballard-via-Oaks attribution); ~30 talk quotes across 8 talks verbatim
-- [ ] 2026-02-19 `study/order-of-god.md` **T1+FULL**
+- [x] 2026-02-19 `study/order-of-god.md` **T1+FULL** — 3 Webster 1913 (words 38-40; ORDAIN's genuine sense contains "order"); ~28 scriptures verbatim
 - [ ] 2026-02-19 `study/priestcraft-beguile.md` **T1+FULL**
 - [ ] 2026-02-20 `study/plan-of-salvation/notes-03-spirit-world.md` **T1**
 - [ ] 2026-02-20 `study/plan-of-salvation/notes-04-vicarious-work.md` **T1**
