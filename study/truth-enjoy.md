@@ -112,7 +112,7 @@ The [enjoy study](./enjoy-the-words-of-eternal-life.md) centered on Moses 6:59 a
 > That ye might be sanctified from all sin, and **enjoy the words of eternal life in this world**, and eternal life in the world to come, even immortal glory.
 > — [Moses 6:59](../gospel-library/eng/scriptures/pgp/moses/6.md)
 
-Webster 1828 revealed that "enjoy" means not just pleasure but **possession**: "to have, possess, and use with satisfaction." The words of eternal life are something you can *own*. They are yours to hold, carry, and live from.
+Webster 1828 revealed that "enjoy" means not just pleasure but **possession**: "to have, possess and use with satisfaction; to have, hold or occupy." The words of eternal life are something you can *own*. They are yours to hold, carry, and live from.
 
 ### The Truth-Atonement Study Found the Mechanism
 
@@ -208,7 +208,7 @@ The [enjoy reflection](./enjoy-the-words-of-eternal-life-reflection.md) traced t
 > And your minds in times past have been **darkened** because of unbelief, and because you have **treated lightly** the things you have received.
 > — [D&C 84:54](../gospel-library/eng/scriptures/dc-testament/dc/84.md)
 
-The [truth study](./truth.md) established the asymmetry of light and darkness: "the light shineth in darkness, and the darkness comprehendeth it not" ([John 1:5](../gospel-library/eng/scriptures/nt/john/1.md)). Darkness cannot perceive light. It cannot even recognize what it's missing. This is a structural impossibility — comprehension requires light, and darkness is the absence of it.
+The [truth study](./truth.md) established the asymmetry of light and darkness: "the light shineth in darkness, and the darkness comprehendeth it not" ([D&C 88:49](../gospel-library/eng/scriptures/dc-testament/dc/88.md); compare [John 1:5](../gospel-library/eng/scriptures/nt/john/1.md), "comprehended"). Darkness cannot perceive light. It cannot even recognize what it's missing. This is a structural impossibility — comprehension requires light, and darkness is the absence of it.
 
 Now place that asymmetry alongside D&C 84:54. When the children of Zion treat the words of eternal life lightly — when they have them but don't *enjoy* them — their minds darken. And as their minds darken, they lose the capacity to perceive the value of what they're neglecting. The light withdraws ([D&C 93:37](../gospel-library/eng/scriptures/dc-testament/dc/93.md): "Light and truth forsake that evil one"), and what remains is a darkness that *cannot even comprehend what it lost*.
 
@@ -301,7 +301,7 @@ D&C 84 doesn't just describe the word → truth → light → Spirit chain. It a
 
 The power of godliness is manifest in the ordinances. The ordinances are administered through the priesthood. The priesthood holds the key of the knowledge of God. And later in the same section: the word is truth is light is Spirit.
 
-The words of eternal life carry power because they are *priesthood-authorized channels* through which the power of godliness flows. This is what Elder Bednar taught: "In the ordinances thereof, the power of godliness is manifest... Ordinances are authorized channels through which the blessings and powers of heaven can flow into our individual lives." The words of eternal life, received in faith through the ordained channels, transmit the actual power of God into the receiver.
+The words of eternal life carry power because they are *priesthood-authorized channels* through which the power of godliness flows. This is what Elder Bednar taught: "In the ordinances thereof, the power of godliness is manifest." The ordinances, he said, "constitute authorized channels through which the blessings and powers of heaven can flow into our individual lives." The words of eternal life, received in faith through the ordained channels, transmit the actual power of God into the receiver.
 
 This is not bureaucratic structure. This is the mechanics of light transmission. The priesthood holds the "key" — which in the [truth study's](./truth.md) framework means it governs the *law* under which truth and light can be transmitted to mortal beings. Without the key, the power is not manifest. With it, the words carry the fulness.
 
