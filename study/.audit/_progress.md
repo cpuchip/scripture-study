@@ -108,7 +108,7 @@ Already done out-of-band: `study/morm-8-three-glories-reading.md` (2026-06-09).
 - [x] 2026-02-19 `study/priestcraft-beguile.md` **T1+FULL** — 4 Webster 1913 (words 41-44); loop survives via genuine WILE verb; Nathanael IS in genuine GUILE; ~20 scriptures verbatim
 - [x] 2026-02-20 `study/plan-of-salvation/notes-03-spirit-world.md` **T1** — 5 of 6 Webster 1913 (words 45-49; QUICKEN genuine again); gifts: Luke 4:18 in DELIVERANCE, Heb 2:15 bondage; scriptures verbatim
 - [x] 2026-02-20 `study/plan-of-salvation/notes-04-vicarious-work.md` **T1** — ★ WELD claim inverted (1828 HAS the metallurgical sense); 5 Webster 1913 (words 50-53); scriptures verbatim
-- [ ] 2026-02-20 `study/plan-of-salvation/notes-05-resurrection-judgment.md` **T1**
+- [x] 2026-02-20 `study/plan-of-salvation/notes-05-resurrection-judgment.md` **T1** — 5 Webster 1913 (words 54-58; genuine INCORRUPTION = the study's own conclusion, citing 1 Cor 15:42); scriptures verbatim
 - [ ] 2026-02-20 `study/plan-of-salvation/notes-06-kingdoms.md` **T1**
 - [ ] 2026-02-20 `study/plan-of-salvation/plan-of-salvation.md` **T1**
 - [ ] 2026-02-20 `study/plan-of-salvation/eternity-paused.md` **T1**

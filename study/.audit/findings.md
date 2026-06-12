@@ -1192,6 +1192,18 @@ of the sinner... in lieu of"); genuine TURN's v.i. 16 is "To change a
 course of life; to repent" (Ezek 33:11). Scriptures sampled verbatim
 (D&C 128:8/18/22, 1 Cor 15:29, Mal 4:5-6, D&C 137:7-10).
 
+### study/plan-of-salvation/notes-05-resurrection-judgment.md (2026-02-20) — 5 Webster 1913 (words 54-58)
+T1, post-boundary. RESURRECTION, INCORRUPTION, GLORY, JUDGMENT,
+RESTORE were 1913; QUICKEN genuine (third confirmation). The genuine
+entries hand the study its own arguments: INCORRUPTION = "incapacity
+of being corrupted" (the study's conclusion verbatim) citing 1 Cor
+15:42 itself; JUDGMENT's scripture sense = "the spirit of wisdom and
+prudence, enabling a person to discern right and wrong" (the
+discernment thesis); RESTORE runs from healing (Matt 12:13 "his hand
+was restored whole") to "revive; resuscitate; bring back to life";
+RESURRECTION cites 1 Pet 1:3. The 1913 "resumption of vigor" riff
+reworked onto genuine "revival." Alma 40:6/18/23, 41:13 verbatim.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
