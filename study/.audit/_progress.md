@@ -123,7 +123,7 @@ Already done out-of-band: `study/morm-8-three-glories-reading.md` (2026-06-09).
 - [x] 2026-03-02 `study/zion-blueprint.md` **FULL** — 1 fix (★ Pearce quote-continuation confabulated; requoted w/ note); shanah verified via Strong's; rest verbatim
 - [x] 2026-03-02 `study/translated-beings.md` **T1+FULL** — TRANSLATE + TRANSFIGURE 1913 (words 82-83; genuine cites Heb 11:5 Enoch + Matt 17:2); QUICKEN genuine; all scripture verbatim
 - [x] 2026-03-02 `study/endtimes-servant.md` **T1+FULL** — ROD + BRANCH 1913 (words 84-85); ~18 scriptures verbatim incl. full D&C 113 Q&A
-- [ ] 2026-03-02 `study/endtimes-servant-footless.md` **FULL**
+- [x] 2026-03-02 `study/endtimes-servant-footless.md` **FULL** — CLEAN (~20 renderings verbatim; 2 punctuation)
 - [ ] 2026-03-03 `study/abinadi-how-to-read.md` **T1+FULL**
 - [ ] 2026-03-04 `study/divine-love.md` **T1+FULL**
 - [ ] 2026-03-05 `study/yt/philpot-abinadi-references.md` **SAMPLE**

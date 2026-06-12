@@ -1368,6 +1368,12 @@ Rev 19:15." All ~18 scripture renderings verbatim: D&C 113:1-6 (the
 servant Q&A), 85:7, 86:8-10, 103:16, 2 Ne 3:5/7, 3 Ne 20:43/21:10-11,
 Isa 42/49/52/53, Jer 23:5, Ezek 34:23/37:24-25, Mosiah 15:15.
 
+### study/endtimes-servant-footless.md (2026-03-02) — CLEAN (2 punctuation)
+FULL, post-boundary, no Webster. ~20 renderings across the servant-
+songs corpus (Isa 42/49/50/52/53, Jer 23:5-6, Ezek 34/37, 2 Ne 3, D&C
+85:7/86:8-11/103:16-21, D&C 130:18) — all verbatim; two punctuation
+marks restored in Isa 53:5/10.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
