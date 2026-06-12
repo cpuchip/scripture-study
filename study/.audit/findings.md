@@ -408,6 +408,20 @@ you power, that"; D&C 84:65-66 → 65-69 (quote spans 5 verses); Alma 13:18
 four-element list verbatim), Nelson 2011, Cook 2019, Beck 2006 (incl. her
 Benson quote).
 
+### study/priesthood-obtaining-exploration.md (2026-02-05) — Webster 1913-as-1828 again (OBTAIN + RECEIVE + both synonym notes) + 1 micro-fix
+T2+FULL, companion to #27. Both Webster quotes AND both "key distinction"
+synonym notes were 1913 text (the obtain/acquire and receive/accept
+synonym discussions are 1913-only) → requoted from genuine 1828 with
+edition note; the study's OBTAIN-vs-RECEIVE pattern survives and
+sharpens ("We obtain by seeking; we often receive without seeking" +
+the genuine acquire contrast "as genus from species"). All SIX talks'
+quotes verified EXACT against files (Asay 4 elements incl. element-1
+ellipsis honest, Eyring ×2, Nelson 2011 long passage, Cook 2019, Beck
+×4 incl. "third-party observers" + "great equalizer", Perkins "glorious
+journey"). One micro-fix: Asay element-4 quote completed to sentence end
+("…and reconfirmed by personal revelation through the power of the Holy
+Ghost").
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
