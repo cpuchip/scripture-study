@@ -26,7 +26,7 @@ Already done out-of-band: `study/morm-8-three-glories-reading.md` (2026-06-09).
 - [x] 2026-01-29 `study/faith-01.md` **FULL** — 2 fixes (Moro 7:42 mis-cite; shew spellings)
 - [x] 2026-01-30 `study/intelligence-01.md` **FULL** — CLEAN, zero findings (no talks cited)
 - [x] 2026-01-31 `study/doctrines-principles-programs.md` **FULL** — 3 micro-fixes (3 Ne 11 ellipsis + 32-34 cite; proclamation link); all 4 talk titles REAL
-- [ ] 2026-01-31 `study/moses-6-gospel-to-adam.md` **FULL**
+- [x] 2026-01-31 `study/moses-6-gospel-to-adam.md` **FULL** — 10 fixes (constructed Lecture quote → real 2:33; confabulated 2 Ne 33:1 quote; crossed none-other/no-other pair)
 - [ ] 2026-02-01 `study/ten-virgins-parable.md` **FULL**
 - [ ] 2026-02-01 `study/eq/20260208-atoning-love-of-christ.md` **SAMPLE**
 - [ ] 2026-02-01 `study/covenants.md` **FULL**

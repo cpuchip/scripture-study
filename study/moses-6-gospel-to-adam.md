@@ -10,7 +10,7 @@
 Moses 6 is one of the most doctrinally rich chapters in all of scripture. Through Joseph Smith's inspired translation, we learn what Genesis barely hints at: that the fulness of the gospel—faith in Jesus Christ, repentance, baptism, and the gift of the Holy Ghost—was taught to Adam and passed down through the patriarchs.
 
 This chapter directly connects to our ongoing studies:
-- **Faith:** [faith-01a.md](faith-01a.md) — Lecture 1 claims "faith was taught unto the children of men" from the beginning. Moses 6:23 confirms it.
+- **Faith:** [faith-01a.md](faith-01a.md) — Lecture 2 traces faith in God from Adam down through the testimony of the fathers. Moses 6:23 says it directly: "faith was taught unto the children of men."
 - **Intelligence:** [intelligence-01.md](intelligence-01.md) — The light, truth, and intelligence themes from D&C 93 find their practical application here in the Comforter's description (v. 61).
 
 ---
@@ -19,10 +19,10 @@ This chapter directly connects to our ongoing studies:
 
 ### The Lecture 1 Connection
 
-Lecture on Faith 1:13 makes this bold claim:
+Lecture on Faith 2 makes this bold claim about the earliest generations:
 
-> "We here observe that God is the object of faith… and this was taught from the beginning."
-> — [Lecture 1:13](../books/lecture-on-faith/01_lecture_1.md#13)
+> "From this we can see that the whole human family, in the early age of their existence, in all their different branches, had this knowledge disseminated among them; so that the existence of God became an object of faith, in the early age of the world. And the evidences which these men had of the existence of a God, was the testimony of their fathers in the first instance."
+> — [Lecture 2:33](../books/lecture-on-faith/02_lecture_2.md#33)
 
 Moses 6:23 confirms it:
 
@@ -54,13 +54,13 @@ When the Lord called Enoch, his response echoed Moses, Jeremiah, and Nephi:
 Compare:
 - Moses: "I am slow of speech, and of a slow tongue" ([Exodus 4:10](../gospel-library/eng/scriptures/ot/ex/4.md))
 - Jeremiah: "I cannot speak: for I am a child" ([Jeremiah 1:6](../gospel-library/eng/scriptures/ot/jer/1.md))
-- Nephi: "I am a man, and am weak" ([2 Nephi 33:1](../gospel-library/eng/scriptures/bofm/2-ne/33.md))
+- Nephi: "neither am I mighty in writing, like unto speaking" ([2 Nephi 33:1](../gospel-library/eng/scriptures/bofm/2-ne/33.md))
 
 ### The Lord's Response: Faith + Presence = Power
 
 The Lord's answer to Enoch contains one of the most powerful promises in scripture:
 
-> "Go forth and do as I have commanded thee, and no man shall pierce thee. **Open thy mouth, and it shall be filled**, and I will give thee utterance, for all flesh is in my hands."
+> "Go forth and do as I have commanded thee, and no man shall pierce thee. **Open thy mouth, and it shall be filled**, and I will give thee utterance, for all flesh is in my hands …"
 > — [Moses 6:32](../gospel-library/eng/scriptures/pgp/moses/6.md)
 
 Then comes the youth theme for 2026:
@@ -109,9 +109,9 @@ God teaches Adam the complete gospel in [verses 52-62](../gospel-library/eng/scr
 > — [Moses 6:52](../gospel-library/eng/scriptures/pgp/moses/6.md)
 
 This matches the Book of Mormon's emphasis on the name of Christ:
-- "There is none other name given whereby salvation cometh" ([Mosiah 5:8](../gospel-library/eng/scriptures/bofm/mosiah/5.md))
+- "There is no other name given whereby salvation cometh" ([Mosiah 5:8](../gospel-library/eng/scriptures/bofm/mosiah/5.md))
 - "There shall be no other name given nor any other way nor means whereby salvation can come" ([Mosiah 3:17](../gospel-library/eng/scriptures/bofm/mosiah/3.md))
-- "There is no other name given under heaven save it be this Jesus Christ" ([2 Nephi 25:20](../gospel-library/eng/scriptures/bofm/2-ne/25.md))
+- "There is none other name given under heaven save it be this Jesus Christ" ([2 Nephi 25:20](../gospel-library/eng/scriptures/bofm/2-ne/25.md))
 
 ---
 
@@ -183,7 +183,7 @@ This means:
 
 | Theme | Moses 6 | Cross-Reference | Connection |
 |-------|---------|-----------------|------------|
-| Faith from beginning | [6:23](../gospel-library/eng/scriptures/pgp/moses/6.md) | [Lecture 1:13](../books/lecture-on-faith/01_lecture_1.md#13) | Confirms Lecture's claim |
+| Faith from beginning | [6:23](../gospel-library/eng/scriptures/pgp/moses/6.md) | [Lecture 2:33](../books/lecture-on-faith/02_lecture_2.md#33) | Confirms Lecture's claim |
 | Spiritual creation | [6:51](../gospel-library/eng/scriptures/pgp/moses/6.md) | [Moses 3:5](../gospel-library/eng/scriptures/pgp/moses/3.md) | Men created before flesh |
 | Walk with God | [6:34](../gospel-library/eng/scriptures/pgp/moses/6.md) | [Genesis 5:24](../gospel-library/eng/scriptures/ot/gen/5.md) | Enoch's invitation |
 | Born again | [6:59](../gospel-library/eng/scriptures/pgp/moses/6.md) | [John 3:5](../gospel-library/eng/scriptures/nt/john/3.md) | Water and Spirit |
@@ -232,7 +232,7 @@ This means:
 - Why do you think the Lord consistently calls people who feel unqualified?
 
 **Study Helps:**
-- [Elder Bednar's talk "Abide in Me"](../gospel-library/eng/general-conference/2023/04/57bednar.md) explains what it means to "walk with" the Savior
+- [Elder Bednar's talk "Abide in Me, and I in You; Therefore Walk with Me"](../gospel-library/eng/general-conference/2023/04/57bednar.md) explains what it means to "walk with" the Savior
 - The pattern of prophetic inadequacy appears with Moses ([Exodus 4:10-16](../gospel-library/eng/scriptures/ot/ex/4.md)), Jeremiah ([Jeremiah 1:4-10](../gospel-library/eng/scriptures/ot/jer/1.md)), and Moroni ([Ether 12:23-29](../gospel-library/eng/scriptures/bofm/ether/12.md))
 - 2026 Youth Theme: "Walk with Me" comes directly from [Moses 6:34](../gospel-library/eng/scriptures/pgp/moses/6.md)
 
@@ -252,12 +252,12 @@ This week, identify one thing the Lord has asked you to do that feels beyond you
 
 **Discussion Questions:**
 - Why is it significant that Adam received the exact same gospel we have today?
-- What does it mean that the priesthood existed "before the foundation of the world"?
+- What does it mean that the priesthood "was in the beginning" and "shall be in the end of the world also"?
 - How does knowing the gospel is eternal (not just 2,000 years old) change how you view your covenants?
 - Adam asked "Why must men repent and be baptized?" ([v. 53](../gospel-library/eng/scriptures/pgp/moses/6.md)). Have you ever wondered that? What answer do you find in verses 53-62?
 
 **Study Helps:**
-- [Lectures on Faith 1](../books/lecture-on-faith/01_lecture_1.md) claims faith was "taught unto the children of men" from the beginning—Moses 6:23 confirms it
+- [Lectures on Faith 2](../books/lecture-on-faith/02_lecture_2.md#33) traces faith in God from Adam through the testimony of the fathers—and Moses 6:23 says it directly: faith was "taught unto the children of men"
 - [D&C 107:40-54](../gospel-library/eng/scriptures/dc-testament/dc/107.md) gives the priesthood line from Adam through the patriarchs
 - Genesis 5 gives ages; Moses 6 gives **doctrine**. Joseph Smith's translation reveals what was lost.
 

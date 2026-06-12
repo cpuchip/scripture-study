@@ -192,6 +192,28 @@ ellipsis → added; **citation 32-35 → 32-34, 40** (v35 was entirely inside
 the elision, never quoted); proclamation link pointed at nonexistent
 scriptures/ path → ensign/1995/11/ (same wrong path heavenly_mother.md had).
 
+### study/moses-6-gospel-to-adam.md (2026-01-31) — 10 fixes (1 constructed quote, 1 confabulated scripture quote)
+FULL tier, the densest scripture file yet (~12 Moses 6 block quotes + ~15
+fragments — read the whole chapter once, verified all in one pass; vv. 23,
+31, 34, 35, 36, 52, 53, 61, 63, 64, 65, 66, 68 all EXACT, incl. the long
+v61 Comforter and v63 all-things-bear-record quotes). Two real finds:
+**★ the Lecture quote was CONSTRUCTED** ("We here observe that God is the
+object of faith… and this was taught from the beginning" — a fusion of
+Lecture 2:2 + 2:33 wording, anchored to Lecture 1:13, which is the
+action/power paragraph) → replaced with the real Lecture 2:33 quote +
+anchor, 3 attribution sites corrected (overview, Part 1, Doctrine 2 helps,
+network table); **★ "I am a man, and am weak" (2 Ne 33:1) exists NOWHERE
+in scripture** (grep across all standard works: zero hits) → Nephi's real
+words "neither am I mighty in writing, like unto speaking". Also: a CROSSED
+PAIR — Mosiah 5:8 "none other"→"no other" and 2 Ne 25:20 "no other"→"none
+other" (the study swapped the two verses' phrasings); Moses 6:32 block
+ended mid-sentence ("…in my hands" / source continues "and I will do as
+seemeth me good") → ellipsis; Bednar title shortened in quotes → full
+"Abide in Me, and I in You; Therefore Walk with Me"; discussion question
+quoted "before the foundation of the world" (not in the cited verses) →
+v7's real words. Mosiah 3:17, Ex 4:10, Jer 1:6, D&C 93:24/33/36, Ether
+12:27, 2 Cor 12:9, John 14:26, Christofferson "Born Again" all EXACT.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
