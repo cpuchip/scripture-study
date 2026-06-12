@@ -244,7 +244,7 @@ Part III covers the end of Phase 8 and all of Phase 9 in 1:00. The transcript is
 - **Transcript lines read:** Part III full (reusing prior reads; Phase 9 verbal content ~12:00–1:00:00); grep searches across all three transcripts for Kokaubeam, eclipse, chiasmus, Zarahemla, temple ceremony terms
 - **New content found:**
   1. **The "Two Great Lights" section (Key Claims 1–3, 5) is entirely slide-only.** Zero transcript hits for Kokaubeam, kōwḵāḇ, kokob, "great light," "two great," chiasmus, foreshadow, or eclipse across all three transcripts. The evaluation's headline achievement — praised as "the best original research in any phase" — was never verbalized.
-  2. **The Zarahemla/Hemlah/Dead Sea etymology IS verbal but NOT in the evaluation.** At ~57:54 Philpot connects Hebrew *hemlah* (salt) to both the Dead Sea and Zarahemla, then asks "What's the modern Zarahemla?" — pointing to Salt Lake City. Creative Hebrew word study parallel to the slide-only Kokaubeam work, completely uncaptured.
+  2. **The Zarahemla/Hemlah/Dead Sea etymology IS verbal but NOT in the evaluation.** At ~57:54 Philpot connects Hebrew *hemlah* to both the Dead Sea and Zarahemla, then asks "What's the modern Zarahemla?" — pointing to Salt Lake City. *(Correction 2026-06-12: the etymology is false Hebrew — chemlah H2551 = compassion, not salt; salt = melach H4417. Now evaluated and corrected in verbal_only_evaluation.md #2.)*
   3. **10 verbal-only items documented:** Zarahemla etymology, Oaks' first talk analysis (no temples, family proclamation, polygamy papers), 2500=half of 5000/half of 10 virgins, creation week/"first month fourth day"=day 4, temple ceremony changes as prophetic signs, Abinadi/ten commandments/public schools, "third vs. totality" framework, corporate dissolution Q&A, Bountiful as Passover/Sukkot site, "I invite all of you to be crazy with me."
   4. **Phase 9 is second-best-captured phase after Phase 4.** 10 of 15 Key Claims are verbal; evaluation correctly sourced most from transcript timestamps. Out of Line and Missed Opportunities sections are strong. Gap is narrower than Phases 2–3, 5, or 8.
   5. **Title irony:** The evaluation is titled "The Two Great Lights & Culmination" but the "Two Great Lights" section is entirely slide-only. The verbal word study the audience heard (Zarahemla) is not in the evaluation.
@@ -297,7 +297,7 @@ The strongest evaluative work — the doctrinal critiques, missed opportunities,
 
 ---
 
-*Review completed: 2025-07-26*
+*Review completed: 2026-02-08 (git-verified; an earlier footer claimed 2025-07-26)*
 *10 passes, 3 transcripts (~168 KB), 9 evaluations, ~70 verbal-only items documented*
 
 - Each pass should take **1–2 rounds** of conversation
@@ -310,4 +310,4 @@ The strongest evaluative work — the doctrinal critiques, missed opportunities,
 
 ---
 
-*Plan created: 2025-07-25*
+*Plan created: 2026-02-08 (git-verified; an earlier footer claimed 2025-07-25)*

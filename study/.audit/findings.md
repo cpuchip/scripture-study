@@ -603,6 +603,13 @@ otherwise verified VERBATIM against local talks (Apr/Oct 2018, Apr 2019
 unprecedented, Apr 2022 momentum). 1 Ne 14, 2 Ne 6, JS-M 1:32-33, D&C
 88/121 fragments spot-checked sound.
 
+### study/yt/morganphilpot/transcript_review_plan.md (2026-02-08) — 3 fixes
+T2 process document. 1 Thes 5:4 epigraph EXACT; all four linked
+transcript/slide paths resolve. Fixes: the Pass-10 finding's "Hebrew
+hemlah (salt)" assertion → chemlah correction cascaded (6th file);
+both footer dates were the impossible-July-2025 class → git-corrected
+to 2026-02-08.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
