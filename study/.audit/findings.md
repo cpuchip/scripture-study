@@ -263,6 +263,24 @@ verified Bednar Apr 2014 "Bear Up Their Burdens with Ease" + linked
 Hinckley. VERIFIED EXACT: Enos 1:7-8 exchange, both Oaks 2015 quotes,
 Isaiah 61:3, Moroni 10:32-33, "prosper by degrees."
 
+### study/covenants.md (2026-02-01) — 5 micro-fixes (a clean control case)
+FULL tier, talk-and-scripture dense, and almost entirely faithful — **the
+control case that isolates the variable**: this file quotes the SAME
+Johnson Apr 2025 talk that ten-virgins invented six quotes from, and gets
+her EXACT (one trailing elision restored: "…and are healed in every way").
+The difference isn't the era or the talk — it's whether the source was
+OPEN during drafting. Verified EXACT: Pearson, Bednar 2016 "If Ye Had
+Known Me" (the JST 'Ye know me not' quote — the real version of what
+ten-virgins fabricated), Mosiah 18:8-9, D&C 20:77/79, D&C 84:19-21/33/
+35-38/40, D&C 132:19 (honest double elision), General Handbook initiatory
++ garment quotes, churchofjesuschrist.org endowment page (WebFetch — all
+three sentences + five covenant descriptions exact). Fixes: Johnson
+ellipsis; 2 Ne 2:25 comma ("men are, that"); **Mosiah 26:24 descriptor
+quote was confabulated** ("Ye shall know that it is by me that ye are
+led" → real "if they know me they shall come forth…"); 3 Ne 14 note now
+distinguishes JST "Ye never knew me" from the BoM text; Mosiah 3:19
+"Become"→"becometh".
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)

@@ -52,7 +52,7 @@ The foolish virgins weren't strangers because the Bridegroom rejected them. They
 
 President Johnson captured this distinction:
 
-> "We are whole in Jesus Christ when we exercise our agency to follow Him in faith, submit our hearts to Him so He can change them, keep His commandments, and **enter a covenant relationship with Him**, meekly enduring and learning from the challenges of this earthly estate until we return to His presence."
+> "We are whole in Jesus Christ when we exercise our agency to follow Him in faith, submit our hearts to Him so He can change them, keep His commandments, and **enter a covenant relationship with Him**, meekly enduring and learning from the challenges of this earthly estate until we return to His presence and are healed in every way."
 > — [President Camille N. Johnson, April 2025](../gospel-library/eng/general-conference/2025/04/14johnson.md)
 
 ---
@@ -250,7 +250,7 @@ When covenant-keeping feels overwhelming:
 
 ## "Men Are That They Might Have Joy"
 
-You quoted [2 Nephi 2:25](../gospel-library/eng/scriptures/bofm/2-ne/2.md): "Men are that they might have joy."
+You quoted [2 Nephi 2:25](../gospel-library/eng/scriptures/bofm/2-ne/2.md): "men are, that they might have joy."
 
 This is not despite life's hardships—it is *through* them. Lehi says this in the context of explaining the Fall, opposition, and agency.
 
@@ -299,14 +299,14 @@ Those who didn't know Him heard the devastating words: "Ye know me not."
 Taking upon us Christ's name is more than a label—it is *identity*. We become His. This connects powerfully to the ten virgins: the wise virgins *knew* the Bridegroom because they had truly become His people. The foolish virgins had the name nominally but not relationally—"Ye know me not."
 
 ### On Knowing Christ
-- [Mosiah 26:24](../gospel-library/eng/scriptures/bofm/mosiah/26.md) — "Ye shall know that it is by me that ye are led"
-- [3 Nephi 14:21-23](../gospel-library/eng/scriptures/bofm/3-ne/14.md) — "I never knew you" / "Ye never knew me"
+- [Mosiah 26:24](../gospel-library/eng/scriptures/bofm/mosiah/26.md) — "if they know me they shall come forth, and shall have a place eternally at my right hand"
+- [3 Nephi 14:21-23](../gospel-library/eng/scriptures/bofm/3-ne/14.md) — "I never knew you" (the JST of the Matthew parallel reads "Ye never knew me")
 - [D&C 93:1](../gospel-library/eng/scriptures/dc-testament/dc/93.md) — "Every soul who forsaketh his sins... shall see my face and know that I am"
 
 ### On Becoming
 - [Alma 5:14](../gospel-library/eng/scriptures/bofm/alma/5.md) — "Have ye received his image in your countenances?"
 - [Moroni 7:48](../gospel-library/eng/scriptures/bofm/moro/7.md) — "Pray unto the Father... that ye may be filled with this love"
-- [Mosiah 3:19](../gospel-library/eng/scriptures/bofm/mosiah/3.md) — "Become as a child, submissive, meek, humble"
+- [Mosiah 3:19](../gospel-library/eng/scriptures/bofm/mosiah/3.md) — "becometh as a child, submissive, meek, humble"
 
 ---
 

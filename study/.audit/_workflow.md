@@ -35,6 +35,20 @@ every finding class: the three-glories correction (2026-06-09, journal
 6. **Mark `[x]` in `_progress.md` with the finding count, commit both files**
    (+ the fixed study). The commit is the resume point.
 
+## SAMPLE escalation rule (learned 2026-06-12, file #18)
+
+If ANY sampled quote fails, escalate the file to FULL on the spot. The eq/
+atoning-love file failed its first sample (invented closing quote) and FULL
+verification then found a confabulated biography of a living man.
+
+**Risk marker (evidence from files #17-18):** quotes from talks the model
+"knows" only thinly — especially Apr/Oct 2025 conference — are the
+confabulation hot zone. The split is consistent: talks READ from disk get
+quoted exactly; talks RECALLED get invented wholesale (titles right, links
+right, words fabricated). Any file quoting 2024-2025 talks: verify every
+talk quote regardless of tier. Scripture blocks stay near-perfect
+everywhere; talk-quote density × recency is the risk product.
+
 ## Unattended laps (gated autonomy, ratified)
 
 - Bins 1–2 only: verify, requote, links. ARGUMENT class always queues.
