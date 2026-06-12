@@ -156,6 +156,14 @@ quotes); Heb 11:8 missing "he"; Lecture 1:16 dropped comma restored; Moses
 7:13 gloss "enemies fled" → mountains fled v13, enemies fled v14 (ref → 13-14).
 Greek table (hypostasis/elegchos/elpis) presented as lexicon paraphrase ✓.
 
+### study/faith-01.md (2026-01-29) — 2 fixes
+FULL tier (light file). Verified: Moro 10:23, AoF 1:4, D&C 1:21/10:47/103:36,
+Andersen "The Triumph of Hope" (title + both quotes EXACT — one is him
+quoting Heb 11:1, presented as in-talk quote ✓). Fixes: **"if a man have
+faith he must needs have hope" is Moroni 7:42, not 10:20** (the 10:20 network
+ref for the faith-hope-charity triad stays — that one is right); James 2:18
+"shew" KJV spellings restored (study had modernized inside quotes).
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
