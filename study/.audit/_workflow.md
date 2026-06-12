@@ -57,3 +57,20 @@ everywhere; talk-quote density × recency is the risk product.
 - End every lap: commit progress + a one-line lap summary in findings.md.
 - Spending judgment: if a file's findings feel like they need taste (voice,
   doctrine, public correction wording), stop at the queue — that is the line.
+
+## Post-boundary rule (learned 2026-06-12, file #86 — the Feb-19 verdict)
+
+The Feb-19 tool boundary held for SCRIPTURE: the first post-boundary file
+had every scripture and talk quote verbatim. It did NOT hold for Webster:
+all six 1828 definitions in that same file were the 1913 edition's,
+because the webster-mcp dictionary itself served 1913-as-1828 until the
+2026-06-09 repair. Study date is no shield for Webster quotes.
+
+Amended tiering for post-Feb-19 files:
+- **Webster quotes: verify EVERY one, every tier.** They are now the
+  highest-risk class (16 of the first 22 corrupt words were found via
+  full Webster checks).
+- **Scripture: sample normally** per tier; escalate on any failure as
+  usual. The discipline is holding.
+- **2024-25 talk quotes: still verify regardless of tier** (hot-zone rule
+  unchanged).
