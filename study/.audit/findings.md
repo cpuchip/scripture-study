@@ -323,6 +323,16 @@ release, Mars/Jupiter/Saturn first clustered within 9° on April 6, 2000,
 the dedication day itself** (the study had hedged "peaked a month after";
 the tighter cluster formed the very day). Sources now linked (APOD + ESA).
 
+### study/agency.md (2026-02-03) — 1 micro-fix across ~25 quotes
+FULL tier. Another source-open control case: every Bednar Oct-2025 quote
+EXACT (incl. "whatever we want whenever we will" and the things-to-act
+line — correctly attributed to the 2025 talk, which carries it without
+the 2024 devotional's "importantly"); all scripture blocks exact with
+honest elisions (D&C 93:29-31, Moses 7:32-33, Moses 4:3, 2 Ne 2:11/14/
+15/16/27, 2 Ne 10:23, John 8:31-36, D&C 84:49-51, D&C 98:5-8, Alma
+46:12/41:13, Gen 13:13). Sole fix: Moroni 10:34 quote completed to the
+sentence end ("…the Eternal Judge of both quick and dead").
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
