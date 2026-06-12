@@ -1177,6 +1177,21 @@ genuine PARADISE sense 3 cites Luke 23:43 exactly as the study
 claimed. Scriptures sampled all verbatim (Alma 40:11-14, D&C
 138:15/18-19/50).
 
+### study/plan-of-salvation/notes-04-vicarious-work.md (2026-02-20) — ★ WELD inverted-absence claim + 5 Webster 1913
+T1, post-boundary. ★ New error shape: the study claimed the 1828 knew
+"weld" ONLY as "to wield" and that Joseph's "welding link" was ahead
+of the dictionary — but the genuine 1828 HAS the metallurgical sense
+("To unite or hammer into firm union, as two pieces of iron, when
+heated almost to fusion," etymology "[G., to join.]"). The truth is
+better than the claim: the dictionary of Joseph's day already said
+exactly what D&C 128:18 means. Corrected with note. VICARIOUS,
+REDEEM-sense-1, PERFECT, TURN, AGENT were 1913 (words 50-53 + a
+PERFECT re-instance); REDEEM's genuine theological sense carries the
+vicarious doctrine inside it ("by obedience and suffering in the place
+of the sinner... in lieu of"); genuine TURN's v.i. 16 is "To change a
+course of life; to repent" (Ezek 33:11). Scriptures sampled verbatim
+(D&C 128:8/18/22, 1 Cor 15:29, Mal 4:5-6, D&C 137:7-10).
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
