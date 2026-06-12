@@ -54,7 +54,11 @@ seed raises the floor across Sonnet/Gemini/Haiku). Two "generic covenant"
 texts WILL drift apart; there should be one lineage — plausibly: the kit
 is the canonical practice text, and the OSS seed pack derives its
 templates from it (kit is MIT; attribution clean; the book link rides
-along). Decision belongs to the extraction council at P1.
+along). ~~Decision belongs to the extraction council at P1.~~
+**RATIFIED 2026-06-12 (P1 council): one lineage, kit canonical** — the
+OSS seed pack derives from ai-jumpstart; the workspace layers its
+specifics in the overlay ("we can layer on our specifics for our
+workspace as we need").
 
 ## Crossover 3 — the ablation finding maps onto agent variants
 
