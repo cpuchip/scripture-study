@@ -281,6 +281,20 @@ led" → real "if they know me they shall come forth…"); 3 Ne 14 note now
 distinguishes JST "Ye never knew me" from the BoM text; Mosiah 3:19
 "Become"→"becometh".
 
+### study/ai-responsible-use.md (2026-02-02) — 1 fix (a pronoun) across 16+ quotes
+FULL tier. The strongest single data point for the source-open hypothesis:
+~16 Bednar quotes across the 2010 Ensign piece and the Nov 2024 worldwide
+devotional, plus Joseph Smith, Brigham Young 1862, McKay 1966, Nelson 2018
+— ALL EXACT (dam metaphor, ultimate-ironies, both 2009 questions, AI-
+companion algorithm warning, beguiling/think-telestial, spiritually-
+slothful, producing-vs-becoming with italics, the closing blessing with
+its four embedded scripture fragments, McKay's limitless-perils with the
+study's ellipsis honest). Jacob 4:13 epigraph exact; the "Church AI
+guiding principles distributed in 2024" claim verified in the talk's own
+text + fn 49. Sole fix: "**You and I** have a responsibility" had drifted
+to "We have a responsibility." Both source files are LOCAL — the drafting
+session plainly read them.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)

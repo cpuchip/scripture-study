@@ -163,7 +163,7 @@ Based on Elder Bednar's teachings, here's a framework for responsible AI use:
 - **Spiritual shortcuts** — avoiding the growth that comes through struggle
 
 ### The Standard
-> "We have a responsibility to ensure the Holy Ghost can always attest to the truth and authenticity of all we say and share, both in our form and content."
+> "You and I have a responsibility to ensure the Holy Ghost can always attest to the truth and authenticity of all we say and share, both in our form and content."
 
 ---
 
