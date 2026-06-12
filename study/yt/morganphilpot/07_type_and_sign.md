@@ -55,7 +55,7 @@ This phase weaves together three threads:
 
 2. **The year-by-year timeline** — A 130-row spreadsheet ([timeline.md](../../../yt/morganphilpot/timeline.md)) mapping every year from the Reign of Judges (91 BC / 1909) through the new reckoning from Christ's sign (1 AD / 2000) to the great destruction (34 AD / 2033). Key anchor points: Gadianton robbers on mountains ([3 Nephi 1:27](../../../gospel-library/eng/scriptures/bofm/3-ne/1.md) / 2001), people forget signs ([3 Nephi 2:1](../../../gospel-library/eng/scriptures/bofm/3-ne/2.md) / ~2004), Giddianhi's epistle ([3 Nephi 3:1](../../../gospel-library/eng/scriptures/bofm/3-ne/3.md) / ~2016–17), siege ([3 Nephi 4](../../../gospel-library/eng/scriptures/bofm/3-ne/4.md) / COVID 2020), Lachoneus era ([3 Nephi 6](../../../gospel-library/eng/scriptures/bofm/3-ne/6.md) / 2025), and Christ's destruction/appearance (3 Nephi 8–11 / 2033).
 
-3. **Pharmakeia and sorcery** — [Revelation 18:23](../../../gospel-library/eng/scriptures/nt/rev/18.md): "by thy *sorceries* were all nations deceived." The Greek word is φαρμακεία (*pharmakeia*, Strong's 5331), the root of "pharmacy/pharmaceutical." Philpot connects this to [D&C 89:4](../../../gospel-library/eng/scriptures/dc-testament/dc/89.md) — "evils and designs which do and will exist in the hearts of conspiring men in the last days" — and to [Isaiah 8:19](../../../gospel-library/eng/scriptures/ot/isa/8.md) — "wizards that peep, and that mutter" — arguing that the modern pharmaceutical industry is the literal fulfillment of Babylon's "sorceries." The Webster 1828 definition of "sorcery" bridges the historical-linguistic gap: "Divination by the assistance, or supposed assistance, of evil spirits."
+3. **Pharmakeia and sorcery** — [Revelation 18:23](../../../gospel-library/eng/scriptures/nt/rev/18.md): "by thy *sorceries* were all nations deceived." The Greek word is φαρμακεία (*pharmakeia*, Strong's 5331), the root of "pharmacy/pharmaceutical." Philpot connects this to [D&C 89:4](../../../gospel-library/eng/scriptures/dc-testament/dc/89.md) — "evils and designs which do and will exist in the hearts of conspiring men in the last days" — and to [Isaiah 8:19](../../../gospel-library/eng/scriptures/ot/isa/8.md) — "wizards that peep, and that mutter" — arguing that the modern pharmaceutical industry is the literal fulfillment of Babylon's "sorceries." The Webster 1828 definition of "sorcery" bridges the historical-linguistic gap: "divination by the assistance of evil spirits, or the power of commanding evil spirits."
 
 ### Key Claims
 
@@ -79,7 +79,7 @@ This phase weaves together three threads:
 
 **Pharmakeia:**
 15. φαρμακεία (Strong's 5331) = drug/poison-based sorcery, root of "pharmacy" (slides 274–276)
-16. Webster 1828: "SORCERY — Divination by the assistance, or supposed assistance, of evil spirits" (slide 277)
+16. Webster 1828: "SORCERY — divination by the assistance of evil spirits, or the power of commanding evil spirits" (slide 277)
 17. [D&C 89:4](../../../gospel-library/eng/scriptures/dc-testament/dc/89.md) prophetically warns of "conspiring men" in connection with substances (slides 269–270)
 18. [Isaiah 8:19](../../../gospel-library/eng/scriptures/ot/isa/8.md) — "wizards that peep, and that mutter" = modern pharmaceutical advertising ("ask your doctor") (slide 278)
 
@@ -126,7 +126,7 @@ This phase weaves together three threads:
 - [x] [Nelson, "What We Are Learning and Will Never Forget" (Apr 2021)](../../../gospel-library/eng/general-conference/2021/04/36nelson.md) — quotes D&C 88:91 "all things shall be in commotion"
 - [x] [Nelson, "Confidence in the Presence of God" (Apr 2025)](../../../gospel-library/eng/general-conference/2025/04/57nelson.md) — "the Lord is prompting me to urge us to get ready for that 'great and dreadful day'"
 - [x] [Monson, "Principles and Promises" (Oct 2016)](../../../gospel-library/eng/general-conference/2016/10/principles-and-promises.md) — Word of Wisdom physical blessings (D&C 89:18–21), does NOT quote D&C 89:4
-- [x] Webster 1828 "sorcery" — "Divination by the assistance, or supposed assistance, of evil spirits"
+- [x] Webster 1828 "sorcery" — "divination by the assistance of evil spirits, or the power of commanding evil spirits"
 - [x] Timeline spreadsheet ([timeline.md](../../../yt/morganphilpot/timeline.md)) — full 130-row mapping
 - [x] [Mazzaroth studies](../../mazzaroth.md) — independent verification of mōʿăḏîm word study and April/May 2000 alignment (confirmed peak was May 5, not April 6)
 
@@ -140,7 +140,7 @@ This phase weaves together three threads:
 
 This is not Philpot's interpretation — it is a prophet's. In ["The Times in Which We Live"](../../../gospel-library/eng/general-conference/2001/10/the-times-in-which-we-live.md) (October 2001), President Hinckley said:
 
-> "We of this Church know something of such groups. The Book of Mormon speaks of the Gadianton robbers, a vicious, oath-bound, and secret organization bent on evil and destruction. In their day they did all in their power to bring down the Church, to wrest the land from the hands of the righteous... We see the same thing in the present situation."
+> "We of this Church know something of such groups. The Book of Mormon speaks of the Gadianton robbers, a vicious, oath-bound, and secret organization bent on evil and destruction. In their day they did all in their power, by whatever means available, to bring down the Church, to woo the people with sophistry, and to take control of the society. We see the same thing in the present situation."
 
 Philpot's application of the Gadianton robber narrative to modern terrorism has prophetic precedent at the highest level. The text of [3 Nephi 1:27](../../../gospel-library/eng/scriptures/bofm/3-ne/1.md) — "the Gadianton robbers, who dwelt upon the mountains, who did infest the land; for so strong were their *holds* and their *secret places* that the people could not overpower them; therefore they did commit many murders, and did do much slaughter among the people" — is a striking description that Hinckley himself connected to the 9/11 era. The "mountains" and "secret places" imagery resonates with the Afghan cave networks.
 
@@ -148,7 +148,7 @@ Philpot's application of the Gadianton robber narrative to modern terrorism has 
 
 φαρμακεία (*pharmakeia*, Strong's 5331) does mean drug-related sorcery in Koine Greek, and it is the undisputed etymological root of "pharmacy" and "pharmaceutical." [Revelation 18:23](../../../gospel-library/eng/scriptures/nt/rev/18.md) says Babylon's nations were deceived "by thy sorceries" — and the Greek word there is *pharmakeia*. This is standard lexicography, not fringe etymology.
 
-Webster 1828 confirms the bridge: "SORCERY — Divination by the assistance, or supposed assistance, of evil spirits; or the power exercised over others by the aid of evil spirits." The pre-modern understanding of "sorcery" encompassed potion-making and drug-based manipulation — the same semantic range as the Greek.
+Webster 1828 confirms the bridge: "SORCERY — divination by the assistance of evil spirits, or the power of commanding evil spirits." The pre-modern understanding of "sorcery" encompassed potion-making and drug-based manipulation — the same semantic range as the Greek.
 
 The observation that modern pharmaceutical advertising — "ask your doctor if [drug] is right for you" — fits John's image of nations "deceived" by commercialized *pharmakeia* is at minimum a thought-provoking connection.
 
@@ -261,7 +261,7 @@ The Nephites knew their victory was spiritual, not strategic. They "did break fo
 
 The government-robber conflict is resolved by 3 Nephi 5. The *entire* narrative of 3 Nephi 6 is about how prosperity *after* the victory caused spiritual collapse *from within*:
 
-> "And the people began again to have peace in the land... but the people began to be distinguished by ranks, according to their riches and their chances for learning" ([3 Nephi 6:2, 12](../../../gospel-library/eng/scriptures/bofm/3-ne/6.md)).
+> "And they began again to prosper and to wax great … And the people began to be distinguished by ranks, according to their riches and their chances for learning" ([3 Nephi 6:4, 12](../../../gospel-library/eng/scriptures/bofm/3-ne/6.md)).
 
 The church broke up because members became proud and persecuted the righteous among them (v. 13–14). Prophets were murdered *by* the establishment, not by external robbers (v. 21–23). The lesson of 3 Nephi 6 is that the deadliest enemy is internal pride after external victory — precisely the warning Elder Bednar drew from the same text.
 
