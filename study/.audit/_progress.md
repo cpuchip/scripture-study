@@ -48,7 +48,7 @@ Already done out-of-band: `study/morm-8-three-glories-reading.md` (2026-06-09).
 - [x] 2026-02-08 `study/yt/morganphilpot/part1_marp.md` **SAMPLE** — 2 fixes (permanently-left precision; 3 Ne 1:9 completed); JST Rev 12 ×4 exact
 - [x] 2026-02-08 `study/yt/morganphilpot/marp_reformation_plan.md` **T2** — 1 fix (confabulated footer date, git-corrected)
 - [x] 2026-02-08 `study/yt/morganphilpot/findings_summary.md` **T2** — 3 fixes (chemlah endorsements cascaded; confabulated footer date)
-- [ ] 2026-02-08 `study/morgan-philpot-revised/00_plan.md` **T1**
+- [x] 2026-02-08 `study/morgan-philpot-revised/00_plan.md` **T1** — 4 fixes (Zarahemla row struck; 3 Ne 9 splice recited; had→have)
 - [ ] 2026-02-08 `study/yt/morganphilpot/README.md` **SAMPLE**
 - [ ] 2026-02-08 `study/yt/morganphilpot/verbal_only_evaluation.md` **T1**
 - [ ] 2026-02-08 `study/yt/morganphilpot/05a_revelation_13.md` **SAMPLE**

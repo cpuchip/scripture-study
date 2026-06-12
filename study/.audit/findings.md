@@ -541,6 +541,17 @@ the plan file) git-corrected to 2026-02-08. The item-count percentages
 (4/14/12/3 of 33) check out arithmetically. verbal_only_evaluation.md
 (T1) and 05a (SAMPLE) get their own walks ahead.
 
+### study/morgan-philpot-revised/00_plan.md (2026-02-08) — 4 fixes
+T1 plan document. The storm/tempest "Best Of" row already carried the
+correct softened form (political AND natural); the **Zarahemla row
+struck through with the chemlah correction** (a planned Part would have
+been built on false Hebrew — caught before it was ever written). The
+"broken heart" quote was a SPLICE of 3 Ne 9:20 + 9:14 cited as 9:13 →
+recited; Part-6 row range completed; D&C 45:57 "had"→"have" inside
+quotes. D&C 130:18, 38:30, Moroni 8:16, Ezek 17:4 "land of traffick"
+all EXACT. (The plan's deferred "Broken = bankrupt?" item stays
+deferred — correctly framed as verify-later.)
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
