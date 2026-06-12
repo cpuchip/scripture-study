@@ -2,6 +2,8 @@
 
 *Source: Copy of BoM_Modern_Timeline.xlsx — Morgan Philpot*
 
+> **Auditor's note (study-correctness walk, 2026-06-12):** Primary-source capture of Philpot's year-by-year mapping — documented as presented, not endorsed. The phase evaluations assess this timeline as creative but unfalsifiable (any modern event can be matched to any ancient narrative with enough flexibility); see [07_type_and_sign.md](../07_type_and_sign.md) and [findings_summary.md](../findings_summary.md).
+
 | Reign of Judges | New Reckoning | Book of Mormon Event | B.C./A.D. | Modern Year | Modern Event | Notes / Parallel (with Scripture) |
 | --- | --- | --- | --- | --- | --- | --- |
 |  |  |  |  |  |  |  |
