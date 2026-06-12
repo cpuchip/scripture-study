@@ -1278,6 +1278,20 @@ Mark 5/9, Moses 1:13-15). Notably the Cannon-via-Callister quote here
 carries BOTH ellipses correctly — the version I fixed at #64 was the
 careless copy; this one was right all along.
 
+### study/priesthood-and-gifts.md (2026-02-20) — 3 Webster 1913 + Lee/McConkie names + 1 paraphrase-in-quotes
+T1+FULL, post-boundary. ORDINANCE held GENUINE (senses 1+4 verbatim;
+the genuine entry's example is "baptism and the Lord's supper");
+ADMINISTER, BLESS, ORDAIN were 1913 (words 68-70) — and ORDAIN's
+"laying on of hands" phrase was 1913-only (genuine says "customary
+forms and solemnities"); the "already meant" claim reworked. Genuine
+ADMINISTER's own example is the sacrament. The two "Quoted in Oaks"
+quotes now name their speakers (Harold B. Lee's Lord's-errand;
+McConkie's elder-is-a-minister). The Oaks Melchizedek-Keys father-
+presides quote was a paraphrase wearing quote marks — requoted
+verbatim. Everything else exact: Nelson Ministering ×4 (the name-but-
+no-blessing story word-for-word), Freeman ×2, Bowen Emily account,
+D&C 132:47/84:85/107:18/1:24,38, James 5:14-15, 3 Ne 17:9.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)

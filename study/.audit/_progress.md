@@ -114,7 +114,7 @@ Already done out-of-band: `study/morm-8-three-glories-reading.md` (2026-06-09).
 - [x] 2026-02-20 `study/plan-of-salvation/eternity-paused.md` **T1** — AGONY + CUP 1913 (genuine carries the same Gethsemane/cup anchors); SHRINK/TREMBLE/SUBMIT genuine; verses verbatim
 - [x] 2026-02-20 `study/miracles-references.md` **FULL** — CLEAN (~16 fragments + Bowen hot-zone quotes verbatim)
 - [x] 2026-02-20 `study/gifts.md` **T1+FULL** — 3 Webster 1913 (words 65-67); all 64 blockquotes verbatim; Cannon quote correctly elided here
-- [ ] 2026-02-20 `study/priesthood-and-gifts.md` **T1+FULL**
+- [x] 2026-02-20 `study/priesthood-and-gifts.md` **T1+FULL** — ORDINANCE genuine; 3 Webster 1913 (words 68-70, ORDAIN's laying-on-of-hands was 1913-only); Lee/McConkie named; Oaks Keys quote de-paraphrased; rest verbatim
 - [ ] 2026-02-23 `study/plan-of-salvation/father-and-son.md` **T1**
 - [ ] 2026-02-24 `study/yt/tV0_KEMIy7o-meekly-drenched-in-destiny.md` **SAMPLE**
 - [ ] 2026-02-24 `study/yt/UjzeDUBMaUA-problem-with-mormon-youtube.md` **T1**
