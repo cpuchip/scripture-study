@@ -1261,6 +1261,12 @@ with genuine "sufferings and afflictions; that which is to be
 received or endured." D&C 19:18, Mosiah 15:7, Matt 26:39, Luke 22:44
 all verbatim.
 
+### study/miracles-references.md (2026-02-20) — CLEAN
+FULL on a small reference file. All ~16 fragments verbatim (D&C 46:9/
+21, 1 Cor 12:10, Moro 7+10, Mark 5/9/16, Acts 14:9, D&C 42:48); both
+Bowen Apr-2024 hot-zone quotes exact ("the dead shall be raised under
+your hands"; "seek and expect miracles").
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)

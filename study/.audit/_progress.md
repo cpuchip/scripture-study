@@ -112,7 +112,7 @@ Already done out-of-band: `study/morm-8-three-glories-reading.md` (2026-06-09).
 - [x] 2026-02-20 `study/plan-of-salvation/notes-06-kingdoms.md` **T1** — 6 Webster 1913 (words 59-64); 1913-only moon-mansion speculation withdrawn; Kimball + verses verbatim
 - [x] 2026-02-20 `study/plan-of-salvation/plan-of-salvation.md` **T1** — 9 propagated 1913-Webster spots aligned (incl. WELD inversion); scriptures verbatim
 - [x] 2026-02-20 `study/plan-of-salvation/eternity-paused.md` **T1** — AGONY + CUP 1913 (genuine carries the same Gethsemane/cup anchors); SHRINK/TREMBLE/SUBMIT genuine; verses verbatim
-- [ ] 2026-02-20 `study/miracles-references.md` **FULL**
+- [x] 2026-02-20 `study/miracles-references.md` **FULL** — CLEAN (~16 fragments + Bowen hot-zone quotes verbatim)
 - [ ] 2026-02-20 `study/gifts.md` **T1+FULL**
 - [ ] 2026-02-20 `study/priesthood-and-gifts.md` **T1+FULL**
 - [ ] 2026-02-23 `study/plan-of-salvation/father-and-son.md` **T1**
