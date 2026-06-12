@@ -41,10 +41,18 @@ last_active: 2026-06-12T15:52:35
   (default: corpus/covenant/intent/yt import, histories archive).
   compact_context defaults = his sketch (between-turn, judge-pattern,
   cheap compactor). OSS persona keys: self-service attempt, ping if gated.
-  NEXT P1 (fresh session): the AUTHORING leg — consolidated subsystem chain
-  with doc_* + AGE-out + values_anchor designed in (~15-25 files, headers
-  credit sources, rename-map.tsv) → runner-consumes-manifest → compose →
-  kit-derived seed pack → compact_context leg → replay proof.
+  **AUTHORING LEG ACTIVE:** blueprint at
+  `pg-ai-stewards-oss/.spec/proposals/authoring-blueprint.md` (consolidation
+  map, rename rules, batch plan B1-B6, core=100%-bundle decision).
+  **B1a SHIPPED (`3602500`):** 00-config.sql (stewards.config + seeds) +
+  01-graph.sql (nodes/edges + recursive-CTE walks) in the bundle chain;
+  virgin boot + CYCLE-TERMINATION + bidirectional/lineage walks all proven
+  on scratch. rename-map.tsv seeded in workspace repo (parity/).
+  **NEXT = B1b** (fresh context recommended — Rust surgery): re-author
+  2-6a/b/c workstreams ON the graph (02-workstreams.sql), DELETE the AGE
+  init from schema.rs (~line 1456), create_studies→create_docs +
+  create_study_show→create_doc_show renames, drop age from init/00, then
+  build + virgin test WITHOUT age. Then B2-B6 per blueprint.
   (3) Private manifest REPAIRED (root `e5ccc0c3`): 9 live-applied migrations
   (r11-r17, ct2-5, ct2-7e) restored from ledger order; found the runner is
   LEXICAL + manifest-blind (replayed scratch-ct2-run2 into live 06-10 —
