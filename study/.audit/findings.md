@@ -295,6 +295,19 @@ text + fn 49. Sole fix: "**You and I** have a responsibility" had drifted
 to "We have a responsibility." Both source files are LOCAL — the drafting
 session plainly read them.
 
+### study/ai-responsible-use-reflections.md (2026-02-02) — 4 micro-fixes
+FULL tier. 2 Ne 2:13-14 (honest elision), Moses 7:32, D&C 88:40/93:29,
+Jacob 4:13, biases.md self-quote, all repeated Bednar quotes — EXACT. All
+6 talk-table titles real (incl. Brown's "Agency Is the Gift…" being a
+literal section heading ✓, and Bednar-2025's agency definition fragment
+exact in BOTH his 2024 devotional and 2025 talk — they differ only after
+where the fragment ends: "honorable" vs "true"). Fixes: Nelson table
+fragment now carries the talk's own internal ellipsis ("speaketh … of
+things"); Cook Oct-2021 row was the Gospel Topics article quoted by Cook →
+via-attribution noted; Craig "Perhaps" hedge restored; copilot-
+instructions self-quote updated to the living file's wording ("Respect
+and work within").
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)

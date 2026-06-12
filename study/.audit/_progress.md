@@ -31,7 +31,7 @@ Already done out-of-band: `study/morm-8-three-glories-reading.md` (2026-06-09).
 - [x] 2026-02-01 `study/eq/20260208-atoning-love-of-christ.md` **SAMPLE→FULL** — ★★ confabulated Wells biography + invented closing quote + invented restitution-story quote, all repaired from the real talk
 - [x] 2026-02-01 `study/covenants.md` **FULL** — 5 micro-fixes; the control case (quotes the same Johnson talk EXACTLY that ten-virgins invented from)
 - [x] 2026-02-02 `study/ai-responsible-use.md` **FULL** — 1 pronoun fix across 16+ quotes (You and I→We drift); all sources local + read
-- [ ] 2026-02-02 `study/ai-responsible-use-reflections.md` **FULL**
+- [x] 2026-02-02 `study/ai-responsible-use-reflections.md` **FULL** — 4 micro-fixes (Nelson internal ellipsis; Gospel-Topics via-attribution; Craig "Perhaps"; instructions wording)
 - [ ] 2026-02-02 `study/mazzaroth.md` **FULL**
 - [ ] 2026-02-03 `study/agency.md` **FULL**
 - [ ] 2026-02-03 `study/mazzaroth-01.md` **FULL**
