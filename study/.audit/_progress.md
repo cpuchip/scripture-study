@@ -64,7 +64,7 @@ Already done out-of-band: `study/morm-8-three-glories-reading.md` (2026-06-09).
 - [x] 2026-02-08 `study/yt/morganphilpot/03_apocalyptic_vision.md` **T1** — 1 fix (MYSTERY tail was 1913; genuine senses woven); 10 scripture quotes exact
 - [x] 2026-02-08 `study/yt/morganphilpot/02_signs_and_warnings.md` **T1** — 3 fixes (LIKEN 1913 ×2; lion-verse cite 16:13→20:16); WRATH genuine
 - [x] 2026-02-08 `study/yt/morganphilpot/01_foundation.md` **T1** — 2 fixes (ABIB + HARVEST 1913→genuine, both gifts woven: harvest=end-of-the-world is Webster's own sense 5)
-- [ ] 2026-02-08 `study/yt/morganphilpot/study_plans.md` **T2**
+- [x] 2026-02-08 `study/yt/morganphilpot/study_plans.md` **T2** — 1 fix (footer dates)
 - [ ] 2026-02-08 `study/atoning-love-andersen.md` **FULL**
 - [ ] 2026-02-08 `study/yt/BH7RydKyIR0-hastening-false-narratives.md` **SAMPLE**
 - [ ] 2026-02-08 `study/yt/morganphilpot/09_culmination.md` **T1**

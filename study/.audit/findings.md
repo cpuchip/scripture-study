@@ -703,6 +703,11 @@ timestamped Philpot transcript reportage. The cluster's Webster final
 score: 8 of 12 checked words were 1913-as-1828; every requote left the
 argument intact or stronger.
 
+### study/yt/morganphilpot/study_plans.md (2026-02-08) — 1 fix
+T2 plan. Webster references are methodology pointers only (no quoted
+definitions). Sole fix: the impossible-July-2025 footer dates (5th
+instance of the class in this cluster) → git-corrected.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
