@@ -236,6 +236,33 @@ table re-sourced to verified counsel (Johnson/Renlund/Rasband/Wright);
 covenant-path echo in summary aligned. Matt 25:1-13 (all 13 verses), D&C
 33:17, D&C 45:56-57, Luke 12:35/22:32, Mosiah 5:2 all EXACT.
 
+### study/eq/20260208-atoning-love-of-christ.md (2026-02-01) — ★★ confabulated Wells BIOGRAPHY + invented closing quote (SAMPLE→FULL escalation)
+SAMPLE tier escalated to FULL once the first sample failed. Andersen Oct
+2025 "The Atoning Love of Jesus Christ" — same era and same failure mode as
+ten-virgins: **the Elder Wells story was an invented biography of a living
+man** (study: airline pilot, commercial aircraft, engine fire, passengers
+died, investigation cleared him, burden lifted in a temple; REALITY per the
+talk, shared with Wells's permission at age 97: international banker in
+Paraguay 1960, he and wife Meryl piloting two separate planes, hers crashed
+in thick clouds killing her and two friends, he "felt he was guilty of
+neglect," burden lifted ~a year later ON HIS KNEES hearing the Savior's
+voice: "Robert, my atoning sacrifice paid for your sins and your
+mistakes"). Closing quote "The Savior's arms are open always. Trust Him.
+He will not let you down." — NOT in the talk → replaced with his real
+closer. Divorce-restitution story was an invented retelling presented as a
+block quote (monthly payments / "legally owed her nothing" / "extended
+unfaithfulness" — none in the talk) → requoted from the real email. "He
+does so only for those who seek Him…" is OAKS quoted by Andersen →
+via-attribution fixed. Overview fragments + "Four Elements" requoted from
+real text; Mosiah 21 block reassembled wording → real vv. 15-16; Oaks
+challenge list adjusted (anxiety/marriage out; singleness/failures in —
+addiction confirmed in talk); related-talks table: "The Infinite
+Atonement" is Callister's BOOK not an Oct 2011 talk, "His Grace Is
+Sufficient" is Wilcox's BYU devotional not Bednar Apr 2013 → replaced with
+verified Bednar Apr 2014 "Bear Up Their Burdens with Ease" + linked
+Hinckley. VERIFIED EXACT: Enos 1:7-8 exchange, both Oaks 2015 quotes,
+Isaiah 61:3, Moroni 10:32-33, "prosper by degrees."
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)

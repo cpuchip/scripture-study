@@ -7,13 +7,16 @@ last_active: 2026-06-12T11:46:01
 ---
 
 ## Working on
-- STUDY WALK in progress: 13/469 walked (~280 quotes verified). Pattern holds:
-  scripture quotes ~99% faithful; error mass = talk metadata (4 confabulated
-  talk titles in way-truth-life.md, wrong speaker, via-attributions, verse
-  mis-cites Moro 7:42/10:20 + Alma 5:28/37 + 3 Ne 9:14/18). Zero ARGUMENT-class
-  queued. Resume: study/.audit/_progress.md → intelligence-01.md (#14).
-  Autonomous laps ratified (gated). Watch the Feb 19 / Mar 2 tool-boundary
-  finding-rate inflection (journal 2026-06-12-study-walk-lap1).
+- STUDY WALK in progress: 17/469 done, #18 (eq/20260208) mid-commit. ★★ NEW
+  refined pattern (files 14-18): THE PRIMARY TEXT GETS READ, THE SUPPORTING
+  CAST GETS RECALLED — ten-virgins: 6 confabulated Johnson quotes + invented
+  Nelson counsel (file-read talks all EXACT; smoking gun = study used Bednar
+  quotes from Johnson's fn 10); eq/atoning-love: Wells story = confabulated
+  BIOGRAPHY (banker not airline pilot; wife died, not passengers; prayer not
+  temple) + invented closing quote; moses-6: constructed Lecture quote +
+  "I am a man, and am weak" exists NOWHERE. All repaired from real sources.
+  Zero ARGUMENT-class queued. Resume: study/.audit/_progress.md.
+  Watch Feb 19 / Mar 2 tool-boundary inflection (journal 2026-06-12).
 - ✅ OCR repair SHIPPED + live-verified (1336c8ce); walk plan RATIFIED
   (.spec/proposals/study-correctness-walk.md)
 
