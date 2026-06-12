@@ -7,16 +7,16 @@ last_active: 2026-06-12T11:46:01
 ---
 
 ## Working on
-- STUDY WALK in progress: 17/469 done, #18 (eq/20260208) mid-commit. ★★ NEW
-  refined pattern (files 14-18): THE PRIMARY TEXT GETS READ, THE SUPPORTING
-  CAST GETS RECALLED — ten-virgins: 6 confabulated Johnson quotes + invented
-  Nelson counsel (file-read talks all EXACT; smoking gun = study used Bednar
-  quotes from Johnson's fn 10); eq/atoning-love: Wells story = confabulated
-  BIOGRAPHY (banker not airline pilot; wife died, not passengers; prayer not
-  temple) + invented closing quote; moses-6: constructed Lecture quote +
-  "I am a man, and am weak" exists NOWHERE. All repaired from real sources.
-  Zero ARGUMENT-class queued. Resume: study/.audit/_progress.md.
-  Watch Feb 19 / Mar 2 tool-boundary inflection (journal 2026-06-12).
+- STUDY WALK: 25/469 done (lap 2-3 = files 14-25, all committed; journal
+  .spec/journal/2026-06-12-study-walk-lap2-source-open-hypothesis.md).
+  SOURCE-OPEN HYPOTHESIS confirmed: files-read = exact (~1 pronoun/16
+  quotes); files-recalled = wholesale invention (6 Johnson quotes, Nelson
+  counsel, Wells BIOGRAPHY, Big Dipper dramatization, JS-M-as-D&C-45,
+  Stevenson/Uchtdorf swap). covenants.md = the control case (same Johnson
+  talk quoted EXACTLY). SAMPLE-escalation rule + 2024-25-talk risk marker
+  added to _workflow.md. Zero ARGUMENT-class queued. NEXT: charity.md
+  (#26) — FIRST T2+FULL Webster file (webster_define requotes vs repaired
+  dictionary). Watch Feb 19 / Mar 2 tool-boundary inflection.
 - ✅ OCR repair SHIPPED + live-verified (1336c8ce); walk plan RATIFIED
   (.spec/proposals/study-correctness-walk.md)
 

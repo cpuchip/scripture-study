@@ -370,6 +370,20 @@ Jer 31:35-36, Col 2:16-17, Matt 2:7, Rev 2:28/22:16, Josh 10:12-13, Hab
 2:13-14, 2 Pet 3:8) + Christofferson Worship ✓ + Nelson hie-to-Kolob fn ✓
 + TJS ch 44 moonstones EXACT.
 
+### study/charity.md (2026-02-04) — first T2+FULL Webster file: claims SURVIVED + 2 gifts woven
+T2+FULL. **The Webster claims held against the repaired genuine 1828**:
+almsgiving really is sense 3 ("third or fourth" exactly right), love
+really is sense 1, judging-liberality/best-construction really are in the
+entry (sense 6, not a "primary" sense — table headers precised). Woven
+two genuine-1828 gifts: sense 1 in full ("that disposition of heart which
+inclines men to think favorably of their fellow men, and to do them
+good…") and sense 6's closing line — **"The highest exercise of charity,
+is charity towards the uncharitable."** All scripture fragments verified
+EXACT (1 Cor 13:3 honest ellipsis; Moro 7:45-48, 2 Ne 26:30, Moro
+10:20-21, Ether 12:28/34, Alma 7:24); Nelson "Confidence in the Presence
+of God" title real; becoming/charity.md link resolves. One micro-fix:
+D&C 121:45 fragment restored "also" ("Let thy bowels also be full…").
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
