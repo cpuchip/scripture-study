@@ -66,9 +66,9 @@ This is not merely theological—it's psychological and practical. Even the most
 | Scripture | Teaching | Connection |
 |-----------|----------|------------|
 | [Hebrews 11:1](../gospel-library/eng/scriptures/nt/heb/11.md) | "Faith is the substance of things hoped for" | Definition foundation |
-| [Hebrews 11:6](../gospel-library/eng/scriptures/nt/heb/11.md) | "Without faith it is impossible to please God" | Faith required for relationship with God |
+| [Hebrews 11:6](../gospel-library/eng/scriptures/nt/heb/11.md) | "without faith it is impossible to please him" | Faith required for relationship with God |
 | [Hebrews 11:7](../gospel-library/eng/scriptures/nt/heb/11.md) | "By faith Noah... prepared an ark" | Faith produced action despite no visible evidence |
-| [Hebrews 11:8](../gospel-library/eng/scriptures/nt/heb/11.md) | "By faith Abraham... obeyed; and went out, not knowing whither he went" | Faith produces obedience without complete information |
+| [Hebrews 11:8](../gospel-library/eng/scriptures/nt/heb/11.md) | "By faith Abraham... obeyed; and he went out, not knowing whither he went" | Faith produces obedience without complete information |
 | [James 2:17](../gospel-library/eng/scriptures/nt/james/2.md) | "Faith, if it hath not works, is dead" | Faith and action are inseparable |
 | [James 2:22](../gospel-library/eng/scriptures/nt/james/2.md) | "Faith wrought with his works, and by works was faith made perfect" | Faith and works are synergistic |
 | [Alma 32:27](../gospel-library/eng/scriptures/bofm/alma/32.md) | "Exercise a particle of faith, yea, even if ye can no more than desire to believe" | Even desire is a form of faith-action |
@@ -96,7 +96,7 @@ This means:
 
 ### The Stunning Implication
 
-> "Take this principle or attribute (for it is an attribute) from the Deity and he would cease to exist."
+> "Take this principle or attribute, (for it is an attribute) from the Deity and he would cease to exist."
 > — [Lecture 1:16](../books/lecture-on-faith/01_lecture_1.md#16)
 
 Faith is not just something God *uses*—it is an essential attribute of His nature. This is reinforced in the Doctrine and Covenants:
@@ -198,7 +198,7 @@ The Lectures on Faith predate some important Restoration scriptures. Let me conn
 |-----------|----------|------------------------|
 | [Moses 6:23](../gospel-library/eng/scriptures/pgp/moses/6.md) | "Faith was taught unto the children of men" | Faith taught from the beginning |
 | [Moses 6:52](../gospel-library/eng/scriptures/pgp/moses/6.md) | "Believe, and repent... and be baptized" | Faith precedes all other gospel ordinances |
-| [Moses 7:13](../gospel-library/eng/scriptures/pgp/moses/7.md) | "So great was the faith of Enoch" that enemies fled | Faith as power over adversaries |
+| [Moses 7:13-14](../gospel-library/eng/scriptures/pgp/moses/7.md) | "So great was the faith of Enoch" — mountains fled at his word (v. 13), and his people's enemies fled (v. 14) | Faith as power over adversaries |
 
 ---
 
