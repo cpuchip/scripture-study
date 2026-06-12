@@ -552,6 +552,13 @@ quotes. D&C 130:18, 38:30, Moroni 8:16, Ezek 17:4 "land of traffick"
 all EXACT. (The plan's deferred "Broken = bankrupt?" item stays
 deferred — correctly framed as verify-later.)
 
+### study/yt/morganphilpot/README.md (2026-02-08) — 2 fixes
+SAMPLE. 1 Thes 5:21 epigraph EXACT; the cluster's structural claims
+match the walked parts. Fixes: the chemlah cascade (the "genuine depth"
+praise of the salt etymology → corrected, "accuracy is uneven"); the
+July-2025 footer dates (third instance of the impossible-date class in
+this cluster) → git-verified 2026-02-08.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
