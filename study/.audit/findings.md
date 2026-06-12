@@ -450,6 +450,20 @@ ellipsis; Hinckley mastermind quote completed ("…among the sons and
 daughters of God"). A Feb-5 file with every source plainly open — the
 strongest large-N positive data point yet.
 
+### study/enoch.md (2026-02-06) — first T1 file: Webster quote GENUINE + 1 micro-fix + 1 gift
+T1+FULL. **The "to walk with God" definition is genuine 1828, quoted
+EXACTLY** ("to live in obedience to his commands, and have communion with
+him" — WALK v.i. sense 9) — and verification found a gift: Webster's own
+scripture citation for the phrase is Genesis 5:24, Enoch's verse (woven).
+All 8 talk quotes EXACT (Eyring 2017 + the see-him-as-I-see-him inner
+quote, Bednar 2023, Pearce 1997, Christofferson 2008, Freeman 2023, Stone
+2006, Romney 1976, Uchtdorf 2020); ~30 scripture quotes EXACT (Moses
+6:15/31/34/35-36/58, Moses 7:18/21/28/29-31/32-33/41/44/62-64, D&C
+97:21/101:6/105:3-4/107:48-53/45:66-69, 4 Ne 1:15-17, Heb 11:5-6, Gen
+5:24); Lecture 3:2-5 three-things paraphrase faithful; CFM-2026 manual
+link resolves. Sole fix: D&C 45:59 "And"→"For". A file written WITH its
+sources — and the richest study walked so far.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
