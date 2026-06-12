@@ -754,6 +754,14 @@ right-before-our-eyes line EXACT (honest elision); Isa 29:14 + D&C 68:6
 exact; epigraphs verified; video quotes are timestamped reportage; the
 primary source is an external Church News article (correctly labeled).
 
+### study/yt/morganphilpot/original/slides_marp.md + slides.md (2026-02-09) — auditor's prefaces added
+T2, primary-source captures of the 369-slide deck (Google Slides source
+linked). Content is Philpot's, documented as presented — not corrected
+in place (the capture's integrity is its value). Added an auditor's note
+to each pointing readers to the corrections (chemlah, 42-month count,
+the incompatible date stack, 1913-as-1828 Webster citations) in the
+parent directory's evaluations.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)

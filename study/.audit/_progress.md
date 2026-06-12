@@ -69,8 +69,8 @@ Already done out-of-band: `study/morm-8-three-glories-reading.md` (2026-06-09).
 - [x] 2026-02-08 `study/yt/BH7RydKyIR0-hastening-false-narratives.md` **SAMPLE** — CLEAN
 - [x] 2026-02-08 `study/yt/morganphilpot/09_culmination.md` **T1** — 5 fixes (TEMPEST 1913 wording; storm def-4 numbering; hemlah ×2; date)
 - [x] 2026-02-09 `study/truth.md` **T1+FULL** — 7 requotes + 5 upgrades, walked WITH Michael (out of order, 2026-06-12)
-- [ ] 2026-02-09 `study/yt/morganphilpot/original/slides_marp.md` **T2**
-- [ ] 2026-02-09 `study/yt/morganphilpot/original/slides.md` **T2**
+- [x] 2026-02-09 `study/yt/morganphilpot/original/slides_marp.md` **T2** — auditor preface added (primary-source capture)
+- [x] 2026-02-09 `study/yt/morganphilpot/original/slides.md` **T2** — auditor preface added (primary-source capture)
 - [ ] 2026-02-09 `study/helaman-ten-virgins.md` **FULL**
 - [ ] 2026-02-09 `study/helaman-why.md` **FULL**
 - [ ] 2026-02-09 `study/yt/morganphilpot/original/timeline.md` **SAMPLE**
