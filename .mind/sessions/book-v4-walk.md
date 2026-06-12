@@ -3,15 +3,16 @@ lane: book-v4-walk
 session_id: 10b9ac30-08a2-4f54-a7b5-aea2c715a41a
 status: active
 started: 2026-06-09T18:00:00
-last_active: 2026-06-11T21:55:22
+last_active: 2026-06-11T23:55:15
 ---
 
 ## Working on
-- ★ v4 AUDIT COMPLETE (2026-06-11): solo walk + chat walk + F-37 build fix all
-  done, pushed through `8156663`. Only G-2/G-3 open (await Michael's VS Code
-  chat archive — verify "fourteen questions" + "eight milestones" or hedge
-  before publish). Standing by for: the archive landing, Michael's voice read,
-  then pass 3.
+- NIGHT SHIFT COMPLETE (06-12): voice profile built (docs/voice-profile-michael.md
+  + Book Gauge); G-3 verified VERBATIM (the Oct-5 "overwhelmed" message found —
+  every book claim now verified); archaeology written
+  (docs/project-archaeology-2025.md). Morning decisions for Michael in
+  .spec/journal/2026-06-12--night-archive-dig-voice-profile.md (seven-vs-eight
+  games, P2 enrichment, corpora commit, history scrub, root push).
 
 
 ## Claims

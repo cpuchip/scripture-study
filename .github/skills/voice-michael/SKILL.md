@@ -89,6 +89,8 @@ When in doubt, the test is: does this phrase belong to the speaker, or to the mo
 
 ## What lives elsewhere
 
+- **The full linguistic fingerprint + the Book Gauge** (orthography, rhythm, lexicon, AI-tell zero-list, scoring rubric; built 2026-06-11 from ~163K words across 14 months): [`docs/voice-profile-michael.md`](../../../docs/voice-profile-michael.md)
+
 - AI presentation voice cut list (em-dashes, "let that land," "It's not X — it's Y"): [`study/yt/voice-analysis-ai-vs-michael.md`](../../../study/yt/voice-analysis-ai-vs-michael.md)
 - Therefore/But causation: [`.mind/principles.md`](../../../.mind/principles.md) § Writing & Storytelling Craft
 - Source verification (read before quoting): [`../source-verification/SKILL.md`](../source-verification/SKILL.md)
