@@ -1486,6 +1486,20 @@ Waddell/Kim/Soares all reference D&C 19). Scriptures verbatim
 (2 Ne 2:2, 1 Ne 1:1, Matt 26:39, D&C 78:17-18 incl. the talk's
 marked ellipsis).
 
+### study/atonement/how-is-it-done-prophets.md (2026-03-12) — voice count 13→9; 18 talk quotes verbatim; "33 times" verified EXACT
+SAMPLE. The closing claim "13 voices across 30 years" didn't match
+the document — nine voices appear (Talmage, Maxwell, Holland,
+Scott, McConkie, Haight, Bateman, Oaks, Hales), 1981-2015;
+corrected. The opening claim "Matthew 27:46 cited in conference 33
+times since Brigham Young" verified EXACT against the BYU index
+(33 rows, earliest = Brigham Young JD). All sampled quotes
+verbatim: Talmage-via-Haight (brackets + ellipsis faithful),
+Maxwell 1981 ×2 / 1985 ×3 / 1989 ×2 / 2001 ×2 / 2003, Holland 1999
++ 2009 ×4, Scott 2010 ×2, McConkie ×2, Bateman ×2, Oaks 2015
+(study drops nested inner quote marks — words identical), Hales
+1985 ×3. Parenthetical see-also citation markers omitted from
+quotes throughout — accepted (footnote-class).
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)

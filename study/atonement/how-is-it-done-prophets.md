@@ -255,7 +255,7 @@ Holland says the Father was "never closer" during the withdrawal. Hales says the
 
 ## Becoming
 
-This study traces 13 voices across 30 years of conference address — from Talmage's careful hedge to Holland's paradoxical summit. What emerges isn't one apostle's interpretation but a theological *lineage*: a community of witnesses building on each other, refining the same insight, honoring the same epistemic humility.
+This study traces nine voices across more than three decades of conference addresses (1981–2015) — from Talmage's careful hedge to Holland's paradoxical summit. What emerges isn't one apostle's interpretation but a theological *lineage*: a community of witnesses building on each other, refining the same insight, honoring the same epistemic humility.
 
 Maxwell started it. Holland crowned it. Scott validated it. Hales pastored it. Bateman personalized it. Oaks cited it. And behind them all, Talmage's century-old sentence still whispers: "seems to have withdrawn."
 

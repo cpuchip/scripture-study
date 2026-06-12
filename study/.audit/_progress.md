@@ -133,7 +133,7 @@ Already done out-of-band: `study/morm-8-three-glories-reading.md` (2026-06-09).
 - [x] 2026-03-11 `study/ai/relavent.md` **SAMPLE** — 4 broken relative links fixed; D&C quotes + 3 sampled web quotes verbatim
 - [x] 2026-03-11 `study/ai/multi-agent-ideas.md` **SAMPLE** — 2 stale proposal links (moved to deferred/); 3 scriptures verbatim
 - [x] 2026-03-12 `study/atonement/nevertheless-prophets.md` **SAMPLE** — Cavalcante was 1 Ne 4:6-7 not 1:1 (cluster 4→3, corrected); 14 talk quotes + scriptures verbatim
-- [ ] 2026-03-12 `study/atonement/how-is-it-done-prophets.md` **SAMPLE**
+- [x] 2026-03-12 `study/atonement/how-is-it-done-prophets.md` **SAMPLE** — voice count 13→9 fixed; "33 times since Brigham Young" verified EXACT; 18 talk quotes verbatim
 - [ ] 2026-03-13 `study/yt/voice-analysis-ai-vs-michael.md` **T2**
 - [ ] 2026-03-14 `study/yt/title-of-liberty/README.md` **SAMPLE**
 - [ ] 2026-03-14 `study/yt/title-of-liberty/transcript.md` **SAMPLE**
