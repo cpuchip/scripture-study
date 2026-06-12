@@ -84,7 +84,7 @@ Already done out-of-band: `study/morm-8-three-glories-reading.md` (2026-06-09).
 - [x] 2026-02-15 `study/cfm/20260215-prophets-nelson.md` **SAMPLE→FULL** — 10 fixes (1 order-reversal, 1 omitted sentence, 1 inserted word, 2 brackets, 4 table compressions, 1 ellipsis); 44-talk count verified EXACT; ~50 quotes checked
 - [x] 2026-02-15 `study/talks/Coming-Closer-to-Jesus-Christ.md` **SAMPLE** — CLEAN (~17 Oaks quotes verbatim vs transcript; Mosiah 27:31 + D&C 45:56-57 check)
 - [x] 2026-02-15 `study/talks/Coming-Closer-to-Jesus-Christ_transcript.md` **SAMPLE** — CLEAN (provenance header proper; internal scripture blockquotes match sources)
-- [ ] 2026-02-15 `study/cfm/20260215-prophets-noah-parallel.md` **SAMPLE**
+- [x] 2026-02-15 `study/cfm/20260215-prophets-noah-parallel.md` **SAMPLE** — 8 fixes (★ confabulated Nelson Introductory-Remarks quote requoted w/ note; propagated Time-is-running-out reversal; 5 cell compressions; Lee attribution)
 - [ ] 2026-02-15 `study/yt/farrell-pickering/05_millennial_hope.md` **SAMPLE**
 - [ ] 2026-02-15 `study/yt/farrell-pickering/01_daniels_numbers.md` **SAMPLE**
 - [ ] 2026-02-15 `study/yt/farrell-pickering/04_false_peace.md` **SAMPLE**

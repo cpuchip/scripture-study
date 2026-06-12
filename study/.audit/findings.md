@@ -915,6 +915,24 @@ the transcript header carries proper provenance (speeches.byu.edu, Feb
 source. Set-apart date (2025-10-14) internally consistent across the
 prophets-oaks companion. Zero fixes.
 
+### study/cfm/20260215-prophets-noah-parallel.md (2026-02-15) — 1 confabulated quote + 7 elision/attribution fixes
+SAMPLE run wide (~40 quotes; most shared with prophets-nelson #70 and
+Coming-Closer #71, already verified). ★ The Nelson "I know that the
+Lord will bless you as you look to Him for guidance and direction in
+your life" (Introductory Remarks, Apr 2018) is CONFABULATED — the talk
+is a brief priesthood-restructuring announcement; nothing like it in
+the whole Apr-2018 corpus. Requoted with his real closing ("We are
+engaged in the work of Almighty God. Jesus is the Christ!") +
+correction note. The #70 "Time is running out" order-reversal had
+PROPAGATED into this file's warning table — fixed here too, corpus
+sweep clean. Other fixes: home-sanctuary cell spliced two sentences;
+master-teachers and eternal-families cells compressed; "truths of
+eternity shall be opened unto you" de-fused to the talk's actual
+construction; Lee-within-Oaks miracle quote re-attributed; covenant-
+path cell ellipsis. Verified-true: "four divine helps" is the talk's
+own count ("don't hold me to my number of *four*"); Moses 8 fragments
+all verbatim; manual Ch-13 "Every sincere seeker" exact.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
