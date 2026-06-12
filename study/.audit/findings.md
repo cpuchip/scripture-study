@@ -962,6 +962,27 @@ marked elisions. Hebrew higbir and LXX-toxon notes accurate; Trump
 clip verified at #69; Visions-of-Glory/Pontius/Tanguma biographical
 claims standard. Zero fixes.
 
+### study/cfm/20260215-prophets-oaks.md (2026-02-15) — 13 fixes (3 quoted-within attributions + count corrected 21→23)
+SAMPLE run wide (~45 quotes, 16 talks + transcript). No invented
+quotes, but a cluster of quoted-within-a-talk misattributions: the
+"Anger is Satan's tool / No one can make us angry" lines are MONSON's
+(quoted by Oaks); "It was intended that life be a challenge" is
+RICHARD G. SCOTT's; "I go to church each week... active, not passive"
+is an unnamed MEMBER's; "Contention is a choice" is NELSON's (tail
+restored). Paraphrase-inside-quotes fixed: "One who is learned or
+celebrated..." → the talk's real "Expertise in one field..." sentence;
+"Pray together as families:" imperative → the real sentence; serious-
+sins quote de-fused (and its propagated cell in noah-parallel fixed).
+Unmarked elision restored: "with exceptions too limited to consider
+here" (kingdom-of-glory). Wording: "this second commandment," "We walk
+a fine line," "[our]" + "[Satan]" brackets, "of Jesus Christ" after
+Atonement. The #73 master-teachers/eternal-families compressions had
+propagated here — fixed. ★ Count claim corrected: 25 authored items
+Apr-2018→Oct-2025, 23 substantive (two brief introductions), not 21.
+Verified-true: stop-paddling, self-inflicted-blindness, JFS day-by-day,
+unprepared list, garments do-not-take-a-day-off, D&C 121:7-8 + Isa
+41:10 renderings, the whole Feb-2026 section against the transcript.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
