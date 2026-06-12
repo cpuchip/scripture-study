@@ -1,0 +1,28 @@
+Done — the four working files are set up in the project root:
+
+- **`intent.md`** — purpose, a checkable "what done looks like" list, the "light over featureful" values, and the non-goals (with money / approval-queue / streaks / auth fenced off; three of those flagged as *later-phase*, not permanent nos).
+- **`covenant.md`** — both sides' commitments, plus a **Bounds** section I proposed from what you told me.
+- **`active.md`** — the living board, holding the phased plan below.
+- **`journal/2026-06-12-session-1.md`** — session 1 written now, not at the end, since the setup *is* the work this session.
+
+**The plan, in brief** (full version in `active.md`):
+
+| Phase | What | Verify by |
+|---|---|---|
+| 1 — Walking skeleton | Go `net/http` serves one page + tiny JSON API; state to a file; kid picks who they are, taps a chore done, it persists | restart server, confirm the check survived |
+| 2 — Reset + stars | completions stored per-date; daily resets at rollover, weekly weekly, "done for the day"; each done chore = a star, running total | — |
+| 3 — Parent edit | add/rename/remove chores, set daily-vs-weekly, uncheck a kid's mistake | — |
+| 4 — Kid-usable | big tap targets, readable on a tablet so the 9-yr-old can use it; bind to LAN + show the URL | — |
+
+Per-date storage in Phase 2 is the hinge — it also pre-pays for the streaks goal later, for free.
+
+**Two things I want your call on before I write code:**
+
+1. **Storage — JSON file or SQLite?** My recommendation is a single **JSON file** written under a mutex: zero dependencies, genuinely "light," and more than enough for two kids. SQLite is sturdier but pulls in a driver, which cuts against the brief. Your call.
+2. **"Reset each morning" — midnight, or a set hour?** A logical rollover at local midnight is simplest, but a late-night "yes I did brush my teeth" at 11:50pm then rolling over at midnight can feel unfair. Some trackers start the new day at, say, 4am. Either's easy — which feels right for your kids?
+
+And the **bounds** I assumed (please correct any): I own everything inside `chore-tracker/`; I don't touch anything outside it, delete chore data, add a dependency, or expose the server past your LAN without asking; I check in at each phase boundary.
+
+**The loop, confirmed:** at the end of every working session I'll update `active.md` and write a journal entry without being asked — so session 2, or a different model you point at this folder, picks up from the memory instead of from cold. (Session 1's entry is already written.)
+
+Give me the two decisions and a thumbs-up on the bounds, and Phase 1 is a short build.

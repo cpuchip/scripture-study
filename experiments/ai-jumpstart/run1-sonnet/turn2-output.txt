@@ -1,0 +1,19 @@
+Working files are in place:
+
+```
+chore-tracker/
+  intent.md       ← why it exists, what done looks like
+  covenant.md     ← mutual commitments + bounds
+  active.md       ← live board with phase plan + open questions
+  journal/
+    2026-06-12-session-1.md
+```
+
+Before phase 1 starts, I need your answers to those four questions. They're quick:
+
+1. **SQLite okay?** (vs. flat JSON — I recommend SQLite)
+2. **Weekly reset day** — Sunday? Monday?
+3. **Kid views** — own chores only, or can they peek at each other's?
+4. **Points display** — today's stars, all-time total, or both?
+
+Answer those and we're building.

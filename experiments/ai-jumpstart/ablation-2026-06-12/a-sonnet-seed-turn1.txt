@@ -1,0 +1,13 @@
+Great vision to start with — a chore tracker for kids is concrete enough to build and fun enough to actually use. Before I sketch anything, let me ask a few questions to give it real edges:
+
+**What's your name?** (The setup asks me not to assume from files.)
+
+And while you answer that, here are the clarifying questions — answer as many or as few as you like, one at a time is fine:
+
+1. **How many kids?** Are they tracking chores separately (each has their own list), or is it one shared family list?
+2. **What does "done" look like for a chore?** A checkbox they click themselves? Does a parent need to confirm it?
+3. **Any reward system?** Points, stars, allowance tracking — or just the satisfaction of checking things off?
+4. **How do they access it?** Phone browser, desktop, a tablet on the fridge? That shapes how big and tappable things need to be.
+5. **Who manages the chore list?** Just you as a parent, or can kids add their own?
+
+I'll hold off on any tech or design proposals until I hear back.

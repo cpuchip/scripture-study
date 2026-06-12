@@ -107,6 +107,42 @@ disciplines doing invisible lifting.
   contamination: inherited MCP config writes `becoming-mcp.log`; Opus read the
   experiment scaffolding itself); identical scripted turns; same task.
 
+
+## ABLATION RUN — 2026-06-12 (cold room at ../ai-jumpstart, OUTSIDE the workspace)
+
+4 arms, turn-1, identical task ("simple chore tracker... nothing fancy"), v0.1.1 seed.
+Cold room verified clean (no MCP leakage, no scaffolding visible). DISCIPLINES.md =
+the heavier pack (council moment, intent check, cite-or-hedge, reversibility, autonomy
+bins, keep-the-watch-whole, when-you-delegate-you-preside — the last from study/
+preside.md + the covenant's new presiding extension).
+
+| Marker (turn-1) | A sonnet seed | B sonnet+pack | C flash seed | D flash+pack |
+|---|---|---|---|---|
+| Premature build | 0 | 0 | 0 | 0 |
+| Name assumed | no — asked | no — asked | no — asked | no — asked |
+| Pre-design w/ questions | none ("I'll hold off") | none ("Ask, then stop") | none | none |
+| Council moment surfaced | — | ★ YES, unprompted ("your stated constraints are real bounds I'll honor") + gap-scan | — | — |
+| File-placement comprehension | ok | ok | ✗ proposed working files INSIDE the kit folder | ✓ "in your project directory" |
+| Sprawl / branding | normal | tight | 2,207 chars + "I'm Antigravity" intro | 1,192 chars, no branding |
+
+**Findings:**
+1. **The v0.1.1 seed fix, not the pack, is what tamed flash.** Run 2 (v0.1, warm room)
+   had flash pre-designing "premium micro-animations"; arm C (v0.1.1, cold room) had
+   ZERO pre-design. Michael's "flash realllly needs them" hypothesis sharpens to:
+   flash needs the EXPLICIT rule in the seed; once written, it follows it. The seed
+   iteration loop demonstrably works.
+2. **The pack moves smaller models toward larger-model behavior.** Sonnet+pack
+   surfaced forethought BEFORE questions (the council moment) — the very thing Opus
+   does natively; flash+pack fixed a comprehension slip and halved the sprawl.
+3. **Floor/ceiling holds across the matrix:** all arms clear the hard gates (floor =
+   the seed); the deltas are forethought-shaped (ceiling = model + pack).
+
+**Actions:** DISCIPLINES.md graduated into the kit (v0.2, pushed) as the optional
+heavier pack. Ablation artifacts archived at `ablation-2026-06-12/` (sonnet outputs +
+the pack; flash replies recovered from agy transcripts); cold room marked ARCHIVED,
+kept for reproduction. Docker path still open (CLI auth inside containers unsolved —
+the one-folder-up cold room proved sufficient isolation for now).
+
 ## Next experiments (queued)
 
 - Gemini turn 2 (answers → file setup fidelity) once agy continuation is worked out.

@@ -1,0 +1,12 @@
+**Council moment** before diving in: This is a fresh project with no code yet. The working directory is already scoped to `chore-tracker`, which is a good sign. Your stated constraints — "simple," "nothing fancy" — are real bounds I'll honor, not modesty to upgrade past. One thing I'm not seeing yet: who uses this, on what device, and whether state needs to persist between sessions. Those answers will shape the shape of the thing.
+
+---
+
+First session setup — a few questions before we touch any code:
+
+1. What should I call you?
+2. When you say "for my kids" — roughly how many kids, what ages, and are they the ones interacting with the app (marking chores done themselves) or is it more for you to track them?
+3. "Web app" — is this something you'd open on a phone, a shared family tablet, a desktop, or does it not matter?
+4. Does chore state need to survive between sessions (persist to a file or database), or is resetting on page reload fine?
+
+Ask, then stop — I'll wait for your answers before proposing anything.

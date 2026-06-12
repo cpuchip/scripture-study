@@ -1,0 +1,15 @@
+Read — AGENTS.md, plus your `findings.md` and the kit README. I can see what this is: run 3 of your cold-model experiment, with the v0.1.1 seed fixes already folded in (the name-assumption fix from Sonnet, the "ask then stop / don't upgrade *nothing fancy*" fix from Gemini). I'll play it straight and follow the kit.
+
+The vision as I have it: **a simple chore tracker for your kids — nothing fancy.** I'm going to hold "nothing fancy" as a real bound, not modesty to talk you up out of. So before I propose anything, a few questions to give it edges.
+
+First, the one the kit flags: **what should I call you?** I can see from this workspace it's almost certainly Michael — but the kit's right that a name is yours to set, not mine to assume, so I'll ask rather than guess. (And if you'd rather I treat this as a true cold run and you play "a parent," say so and I'll follow that.)
+
+Then the product itself:
+
+1. **The kids** — how many, and roughly what ages? That decides whether the screen leans on words or icons, and whether they run it themselves or you do.
+2. **What counts as a chore** — a fixed list you set (make bed, dishes, homework), or does it vary? And what's the rhythm: the same chores daily, a weekly rotation, one-off things you add as they come up?
+3. **Marking it done** — does the kid tap "done" themselves, or do you check it off? If they mark it, does it need your approval before it counts?
+4. **Reward, or just tracking?** Stars / points / allowance that add up — or is seeing the list go green the whole reward? ("Just tracking" is a perfectly good answer.)
+5. **Where it lives** — one shared tablet on the fridge, each kid on their own device, your phone? (I'll assume it needs to remember things from one day to the next unless you tell me throwaway is fine.)
+
+Answer as many or as few as you like — one at a time is great, that back-and-forth *is* the plan being born. Once the shape is clear I'll come back with the bounds question (what I own, what I never touch, when to stop and check in) and propose the four working files for your okay **before** I write a line of code.

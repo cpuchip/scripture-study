@@ -1,0 +1,23 @@
+Good, I have the protocol. Let me follow it.
+
+You've told me what you're building — a simple chore tracker web app for your kids. That's a solid start. Let me ask a few questions to give it edges before we touch any code:
+
+**1. Who are the kids and how will they interact with it?**
+Ages matter — a 7-year-old and a 14-year-old want very different UIs. Also: do the kids mark their own chores done, or does a parent do it?
+
+**2. What does a chore "cycle" look like?**
+Daily chores that reset each morning? Weekly? A mix? And once a chore is checked off, does it just disappear until tomorrow, or stay visible as done?
+
+**3. Is there a reward or tracking layer?**
+Points, stars, allowance tracking, streaks — or just the raw checklist with no gamification?
+
+**4. Fixed chore list or editable by a parent?**
+Can you (the parent) add/edit/remove chores through the app, or is it okay to just hardcode them for now and edit the code when chores change?
+
+**5. Where does it live?**
+Local only (runs on your machine, kids access it on the home network), or do you want it deployed somewhere so they can hit it from their tablets/phones anywhere?
+
+**6. Any technology preference?**
+Plain HTML/JS, React, Vue, something else — or do you want me to pick what fits the job?
+
+Answer what you know; skip or abbreviate what doesn't matter to you yet. Once the vision has edges I'll restate a plan and we'll agree before writing a line.
