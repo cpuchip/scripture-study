@@ -1,0 +1,17 @@
+{
+  "_comment": "Modern/KJV spellings and forms mapped to the 1828's actual headwords. Used by webster-mcp as a labeled lookup fallback: the tool says 'X is not an 1828 headword; showing Y'. Curated 2026-06-12 during the OCR repair; every target verified present in webster1828.json.gz. Sources: webstersdictionary1828.com cross-reference stubs (e.g. its ALLEGE entry reads '[See Alledge]') and 1828 orthography.",
+  "ALLEGE": "ALLEDGE",
+  "ALLEGES": "ALLEDGE",
+  "ALLEGED": "ALLEDGED",
+  "ZINC": "ZINK",
+  "SORCERIES": "SORCERY",
+  "HOSEN": "HOSE",
+  "ARCHES": "ARCH",
+  "HATH": "HAVE",
+  "DOTH": "DO",
+  "SAITH": "SAY",
+  "STRETCHES": "STRETCH",
+  "NAUGHTY": "NAUGHT",
+  "MUSICK": "MUSIC",
+  "PUDDINGSTONE": "PUDDING-STONE"
+}

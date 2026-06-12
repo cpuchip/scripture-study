@@ -1,0 +1,2180 @@
+{
+ "stats": {
+  "E_valid": 5942,
+  "A": 115,
+  "E_bad": 125,
+  "G": 25,
+  "B": 141,
+  "D": 1
+ },
+ "report": {
+  "A_near_empty": [
+   {
+    "w": "ABLE#1",
+    "text": "a’bl."
+   },
+   {
+    "w": "ACCOMPLISHED#1",
+    "text": "is"
+   },
+   {
+    "w": "ACCOMPT#1",
+    "text": "Obs."
+   },
+   {
+    "w": "ACCOMPTANT#1",
+    "text": "Obs."
+   },
+   {
+    "w": "ACCURSED#1",
+    "text": "or a."
+   },
+   {
+    "w": "ACHE#1",
+    "text": "ake."
+   },
+   {
+    "w": "ADDICE#1",
+    "text": "Obs."
+   },
+   {
+    "w": "ADIEU#1",
+    "text": "Adu’."
+   },
+   {
+    "w": "AFLOAT#1",
+    "text": "or a."
+   },
+   {
+    "w": "AGAPE#1",
+    "text": "or a."
+   },
+   {
+    "w": "AGUE#1",
+    "text": "a’gu,"
+   },
+   {
+    "w": "ALMS#1",
+    "text": "‘amz."
+   },
+   {
+    "w": "ALWAY#1",
+    "text": "A.M."
+   },
+   {
+    "w": "ALWAYS#1",
+    "text": "A.M."
+   },
+   {
+    "w": "ANOTHER#1",
+    "text": "2."
+   },
+   {
+    "w": "APOSTROPHIZE#1",
+    "text": "or t."
+   },
+   {
+    "w": "ARCTIC#1",
+    "text": "2alt"
+   },
+   {
+    "w": "BAC#1",
+    "text": "or K"
+   },
+   {
+    "w": "CAP#1",
+    "text": "VT"
+   },
+   {
+    "w": "CERTIFICATE#1",
+    "text": "or i."
+   },
+   {
+    "w": "COLONIZE#1",
+    "text": "= Hid"
+   },
+   {
+    "w": "CONCERNED#1",
+    "text": "or a."
+   },
+   {
+    "w": "CORNUTED#1",
+    "text": "or a."
+   },
+   {
+    "w": "CROOKED#1",
+    "text": "or a."
+   },
+   {
+    "w": "DAG#1",
+    "text": "Dew."
+   },
+   {
+    "w": "DAUGHTER#1",
+    "text": "n,"
+   },
+   {
+    "w": "DEAL#1",
+    "text": "n,"
+   },
+   {
+    "w": "DEMUR#1",
+    "text": "i/."
+   },
+   {
+    "w": "DESPISE#1",
+    "text": "v.t."
+   },
+   {
+    "w": "DISTEMPERED#1",
+    "text": "or a."
+   },
+   {
+    "w": "DISTRACT#1",
+    "text": "Mad."
+   },
+   {
+    "w": "DISTRAUGHT#1",
+    "text": "Obs."
+   },
+   {
+    "w": "DODGE#1",
+    "text": "doj."
+   },
+   {
+    "w": "DONE#1",
+    "text": "Dun."
+   },
+   {
+    "w": "DUE#1",
+    "text": "Du."
+   },
+   {
+    "w": "DUMB#1",
+    "text": "Dum."
+   },
+   {
+    "w": "EARN#1",
+    "text": "ern."
+   },
+   {
+    "w": "ENTRANSE#1",
+    "text": "or i."
+   },
+   {
+    "w": "EVE#1",
+    "text": "e’vn."
+   },
+   {
+    "w": "EVEN#1",
+    "text": "e’vn."
+   },
+   {
+    "w": "EVIL#1",
+    "text": "e’vl."
+   },
+   {
+    "w": "FLARING#1",
+    "text": "or a."
+   },
+   {
+    "w": "FLOWER#1",
+    "text": "]"
+   },
+   {
+    "w": "FLUTED#1",
+    "text": "or a."
+   },
+   {
+    "w": "FORMER#1",
+    "text": "deg."
+   },
+   {
+    "w": "GNAW#1",
+    "text": "naw."
+   },
+   {
+    "w": "GRIEF#1",
+    "text": "n."
+   },
+   {
+    "w": "GUESS#1",
+    "text": "ges."
+   },
+   {
+    "w": "HEPTAMEREDE#1",
+    "text": "eee!"
+   },
+   {
+    "w": "INCITE#1",
+    "text": "@."
+   },
+   {
+    "w": "INJECT#1",
+    "text": "t@"
+   },
+   {
+    "w": "INNOCENT#1",
+    "text": "a2."
+   },
+   {
+    "w": "INSUPERABLE#1",
+    "text": "a2."
+   },
+   {
+    "w": "INTEMPERATE#1",
+    "text": "a2."
+   },
+   {
+    "w": "INVIOLABLE#1",
+    "text": "a2."
+   },
+   {
+    "w": "IRRADIANCE#1",
+    "text": "]"
+   },
+   {
+    "w": "IRRADIANCY#1",
+    "text": "]"
+   },
+   {
+    "w": "IRRECLAIMABLE#1",
+    "text": "a2."
+   },
+   {
+    "w": "JOB#1",
+    "text": "I"
+   },
+   {
+    "w": "KNAP#1",
+    "text": "nap."
+   },
+   {
+    "w": "KNOCK#1",
+    "text": "nok."
+   },
+   {
+    "w": "KNOW#1",
+    "text": "no."
+   },
+   {
+    "w": "LACERATE#1",
+    "text": "or a."
+   },
+   {
+    "w": "LACERATED#1",
+    "text": "or a."
+   },
+   {
+    "w": "LEAGUE#1",
+    "text": "leg."
+   },
+   {
+    "w": "LIMB#1",
+    "text": "lim."
+   },
+   {
+    "w": "LIVE#1",
+    "text": "liv."
+   },
+   {
+    "w": "LIXIVIAL#1",
+    "text": "T"
+   },
+   {
+    "w": "LIXIVIOUS#1",
+    "text": "T"
+   },
+   {
+    "w": "LOVE#1",
+    "text": "luv."
+   },
+   {
+    "w": "LUXURIOUS#1",
+    "text": "7576/"
+   },
+   {
+    "w": "MAN#1",
+    "text": "men."
+   },
+   {
+    "w": "MODEL#1",
+    "text": "mod’."
+   },
+   {
+    "w": "MODEL#1",
+    "text": "mod’!"
+   },
+   {
+    "w": "MODEST#1",
+    "text": "]"
+   },
+   {
+    "w": "OAKEN#1",
+    "text": "o’kn."
+   },
+   {
+    "w": "OATEN#1",
+    "text": "o’tn."
+   },
+   {
+    "w": "OBDURATE#1",
+    "text": "a2."
+   },
+   {
+    "w": "OBSERVATOR#1",
+    "text": "§ as Z."
+   },
+   {
+    "w": "OBSERVATORY#1",
+    "text": "§ as z."
+   },
+   {
+    "w": "OBSERVER#1",
+    "text": "§ as z."
+   },
+   {
+    "w": "OOZE#1",
+    "text": "o0z."
+   },
+   {
+    "w": "OPEN#1",
+    "text": "o’pn."
+   },
+   {
+    "w": "ORDINARY#1",
+    "text": "2."
+   },
+   {
+    "w": "OVEN#1",
+    "text": "uv’n."
+   },
+   {
+    "w": "OWE#1",
+    "text": "o."
+   },
+   {
+    "w": "PALM#1",
+    "text": "p’am."
+   },
+   {
+    "w": "PLUNGY#1",
+    "text": "Wet."
+   },
+   {
+    "w": "PSALM#1",
+    "text": "s‘am."
+   },
+   {
+    "w": "RIBBED#1",
+    "text": "or a."
+   },
+   {
+    "w": "ROGUE#1",
+    "text": "rog."
+   },
+   {
+    "w": "ROOT#1",
+    "text": "or t."
+   },
+   {
+    "w": "RUBRIC#1",
+    "text": "Red."
+   },
+   {
+    "w": "SALVE#1",
+    "text": "sav."
+   },
+   {
+    "w": "SMILE#1",
+    "text": "n,"
+   },
+   {
+    "w": "SMOOTHLY#1",
+    "text": "adv,"
+   },
+   {
+    "w": "SOLIDLY#1",
+    "text": "adv,"
+   },
+   {
+    "w": "STARRED#1",
+    "text": "or a."
+   },
+   {
+    "w": "STARRING#1",
+    "text": "or a."
+   },
+   {
+    "w": "STITCH#1",
+    "text": "t#."
+   },
+   {
+    "w": "STUBBORN#1",
+    "text": "a2."
+   },
+   {
+    "w": "SUE#1",
+    "text": "su."
+   },
+   {
+    "w": "THOUGH#1",
+    "text": "tho."
+   },
+   {
+    "w": "TRACTABLE#1",
+    "text": "2."
+   },
+   {
+    "w": "TRANSMIT#1",
+    "text": "t@."
+   },
+   {
+    "w": "TURBULENT#1",
+    "text": "a2."
+   },
+   {
+    "w": "TURN#1",
+    "text": "@"
+   },
+   {
+    "w": "UNEASY#1",
+    "text": "§ as z."
+   },
+   {
+    "w": "UNPHILOSOPHIZED#1",
+    "text": "or a."
+   },
+   {
+    "w": "VEX#1",
+    "text": "#."
+   },
+   {
+    "w": "VIEW#1",
+    "text": "vu."
+   },
+   {
+    "w": "WEIGH#1",
+    "text": "wa."
+   },
+   {
+    "w": "WOODEN#1",
+    "text": "2."
+   },
+   {
+    "w": "YEA#1",
+    "text": "Ya."
+   },
+   {
+    "w": "YOU#1",
+    "text": "Yu."
+   }
+  ],
+  "E_bad_refs": [
+   {
+    "w": "ABOVE#2",
+    "ref": "Acis 26:173",
+    "status": "unknown_book",
+    "suggest": []
+   },
+   {
+    "w": "ACCEPT#2",
+    "ref": "Corinthians 8:12",
+    "status": "missing_book_number",
+    "suggest": [
+     "1 Corinthians 8:12",
+     "2 Corinthians 8:12"
+    ]
+   },
+   {
+    "w": "ACCORD#2",
+    "ref": "Acts 1:174",
+    "status": "bad_verse",
+    "suggest": []
+   },
+   {
+    "w": "ADMINISTRATION#4",
+    "ref": "Corinthians 9:12",
+    "status": "missing_book_number",
+    "suggest": [
+     "1 Corinthians 9:12",
+     "2 Corinthians 9:12"
+    ]
+   },
+   {
+    "w": "ALGUM#1",
+    "ref": "Kings 10:11",
+    "status": "missing_book_number",
+    "suggest": [
+     "1 Kings 10:11",
+     "1 Kings 10:17",
+     "2 Kings 10:11",
+     "2 Kings 10:17"
+    ]
+   },
+   {
+    "w": "ALMUG#1",
+    "ref": "Kings 10:11",
+    "status": "missing_book_number",
+    "suggest": [
+     "1 Kings 10:11",
+     "1 Kings 10:17",
+     "2 Kings 10:11",
+     "2 Kings 10:17"
+    ]
+   },
+   {
+    "w": "ALONG#1",
+    "ref": "Samuel 6:12",
+    "status": "missing_book_number",
+    "suggest": [
+     "1 Samuel 6:12",
+     "2 Samuel 6:12"
+    ]
+   },
+   {
+    "w": "ANSWER#1",
+    "ref": "Solomon 5:6",
+    "status": "unknown_book",
+    "suggest": []
+   },
+   {
+    "w": "ARM#3",
+    "ref": "1 Peter 4:171",
+    "status": "bad_verse",
+    "suggest": []
+   },
+   {
+    "w": "ARMOR#2",
+    "ref": "Corinthians 6:7",
+    "status": "missing_book_number",
+    "suggest": [
+     "1 Corinthians 6:1",
+     "1 Corinthians 6:7",
+     "2 Corinthians 6:1",
+     "2 Corinthians 6:7"
+    ]
+   },
+   {
+    "w": "ARROGANCE#1",
+    "ref": "Samuel 2:3",
+    "status": "missing_book_number",
+    "suggest": [
+     "1 Samuel 2:3",
+     "2 Samuel 2:3"
+    ]
+   },
+   {
+    "w": "ASHAMED#2",
+    "ref": "Iah 42:17",
+    "status": "unknown_book",
+    "suggest": []
+   },
+   {
+    "w": "ASIARCH#1",
+    "ref": "Acis 19:31",
+    "status": "unknown_book",
+    "suggest": []
+   },
+   {
+    "w": "AWAY#5",
+    "ref": "Isaiah 1:73",
+    "status": "bad_verse",
+    "suggest": [
+     "Isaiah 1:13",
+     "Isaiah 7:13"
+    ]
+   },
+   {
+    "w": "BANQUET-HOUSE#1",
+    "ref": "Solomon 2:4",
+    "status": "unknown_book",
+    "suggest": []
+   },
+   {
+    "w": "BANQUETING-HOUSE#1",
+    "ref": "Solomon 2:4",
+    "status": "unknown_book",
+    "suggest": []
+   },
+   {
+    "w": "BEAUTY#4",
+    "ref": "Samuel 1:19",
+    "status": "missing_book_number",
+    "suggest": [
+     "1 Samuel 1:19",
+     "2 Samuel 1:19",
+     "2 Samuel 7:19"
+    ]
+   },
+   {
+    "w": "BEGIN#2",
+    "ref": "Genesis 117:6",
+    "status": "bad_chapter",
+    "suggest": []
+   },
+   {
+    "w": "BLASPHEMY#2",
+    "ref": "Wark 2:7",
+    "status": "unknown_book",
+    "suggest": []
+   },
+   {
+    "w": "BULWARK#3",
+    "ref": "Iah 26:1",
+    "status": "unknown_book",
+    "suggest": []
+   },
+   {
+    "w": "CAST#24",
+    "ref": "Exodus 25:172",
+    "status": "bad_verse",
+    "suggest": []
+   },
+   {
+    "w": "CAUSE#4",
+    "ref": "Exodus 9:176",
+    "status": "bad_verse",
+    "suggest": []
+   },
+   {
+    "w": "CLEAN#9",
+    "ref": "Luke 17:47",
+    "status": "bad_verse",
+    "suggest": [
+     "Luke 11:41",
+     "Luke 11:47"
+    ]
+   },
+   {
+    "w": "CLEAR#11",
+    "ref": "Corinthians 7:11",
+    "status": "missing_book_number",
+    "suggest": [
+     "1 Corinthians 1:11",
+     "1 Corinthians 1:17",
+     "1 Corinthians 7:11",
+     "1 Corinthians 7:17"
+    ]
+   },
+   {
+    "w": "COME#6",
+    "ref": "Isaiah 34:27",
+    "status": "bad_verse",
+    "suggest": []
+   },
+   {
+    "w": "COMPLAIN#1",
+    "ref": "Job 7:117",
+    "status": "bad_verse",
+    "suggest": []
+   },
+   {
+    "w": "CONTEND#4",
+    "ref": "Nehemiah 13:117",
+    "status": "bad_verse",
+    "suggest": []
+   },
+   {
+    "w": "CRY#5",
+    "ref": "Iah 15:4",
+    "status": "unknown_book",
+    "suggest": []
+   },
+   {
+    "w": "CURSE#2",
+    "ref": "Romans 12:174",
+    "status": "bad_verse",
+    "suggest": []
+   },
+   {
+    "w": "DARK#1",
+    "ref": "Psalm 88:172",
+    "status": "bad_verse",
+    "suggest": []
+   },
+   {
+    "w": "DEATH#3",
+    "ref": "Ezekiel 28:83",
+    "status": "bad_verse",
+    "suggest": []
+   },
+   {
+    "w": "DEBTOR#2",
+    "ref": "Romans 1:174",
+    "status": "bad_verse",
+    "suggest": []
+   },
+   {
+    "w": "DESIRE#2",
+    "ref": "Psalm 145:179",
+    "status": "bad_verse",
+    "suggest": []
+   },
+   {
+    "w": "DESIRE#4",
+    "ref": "Solomon 7:10",
+    "status": "unknown_book",
+    "suggest": []
+   },
+   {
+    "w": "DEVICE#1",
+    "ref": "Jeremiah 51:117",
+    "status": "bad_verse",
+    "suggest": []
+   },
+   {
+    "w": "DIE#1",
+    "ref": "Exodus 117:5",
+    "status": "bad_chapter",
+    "suggest": []
+   },
+   {
+    "w": "DIE#1",
+    "ref": "Exodus 7:78",
+    "status": "bad_verse",
+    "suggest": [
+     "Exodus 1:18",
+     "Exodus 7:18"
+    ]
+   },
+   {
+    "w": "DISPOSE#7",
+    "ref": "Corinthians 10:27",
+    "status": "missing_book_number",
+    "suggest": [
+     "1 Corinthians 10:21",
+     "1 Corinthians 10:27"
+    ]
+   },
+   {
+    "w": "DOVE#2",
+    "ref": "Solomon 2:14",
+    "status": "unknown_book",
+    "suggest": []
+   },
+   {
+    "w": "DRAW#26",
+    "ref": "Solomon 1:4",
+    "status": "unknown_book",
+    "suggest": []
+   },
+   {
+    "w": "DRAW#39",
+    "ref": "Iah 66:79",
+    "status": "unknown_book",
+    "suggest": []
+   },
+   {
+    "w": "ELECTION#9",
+    "ref": "Romans 17:7",
+    "status": "bad_chapter",
+    "suggest": [
+     "Romans 11:1",
+     "Romans 11:7"
+    ]
+   },
+   {
+    "w": "ENCOUNTER#4",
+    "ref": "Acis 17:78",
+    "status": "unknown_book",
+    "suggest": []
+   },
+   {
+    "w": "EXTINCT#3",
+    "ref": "Job 17:171",
+    "status": "bad_verse",
+    "suggest": []
+   },
+   {
+    "w": "FADE#2",
+    "ref": "Isaiah 71:30",
+    "status": "bad_chapter",
+    "suggest": []
+   },
+   {
+    "w": "FAME#1",
+    "ref": "Genesis 45:176",
+    "status": "bad_verse",
+    "suggest": []
+   },
+   {
+    "w": "FIRE#6",
+    "ref": "Iah 33:14",
+    "status": "unknown_book",
+    "suggest": []
+   },
+   {
+    "w": "FIRST#1",
+    "ref": "1 Timothy 2:713",
+    "status": "bad_verse",
+    "suggest": []
+   },
+   {
+    "w": "FOOL#4",
+    "ref": "Corinthians 4:10",
+    "status": "missing_book_number",
+    "suggest": [
+     "1 Corinthians 4:10",
+     "2 Corinthians 4:10"
+    ]
+   },
+   {
+    "w": "FORNICATION#4",
+    "ref": "Chronicles 21:11",
+    "status": "missing_book_number",
+    "suggest": [
+     "1 Chronicles 21:11",
+     "1 Chronicles 21:17",
+     "1 Chronicles 27:11",
+     "1 Chronicles 27:17"
+    ]
+   },
+   {
+    "w": "GOOD#5",
+    "ref": "Jifus 2:7",
+    "status": "unknown_book",
+    "suggest": []
+   },
+   {
+    "w": "GRACIOUS#5",
+    "ref": "Esdras 8:80",
+    "status": "unknown_book",
+    "suggest": []
+   },
+   {
+    "w": "HAND#24",
+    "ref": "2 Kings 5:178",
+    "status": "bad_verse",
+    "suggest": []
+   },
+   {
+    "w": "HARDEN#5",
+    "ref": "Job 6:170",
+    "status": "bad_verse",
+    "suggest": []
+   },
+   {
+    "w": "HARNESS#3",
+    "ref": "1 Maccabees 4:7",
+    "status": "unknown_book",
+    "suggest": []
+   },
+   {
+    "w": "HEADTIRE#1",
+    "ref": "1 Esdras 3:6",
+    "status": "unknown_book",
+    "suggest": []
+   },
+   {
+    "w": "HELP#1",
+    "ref": "1 Maccabees 8:13",
+    "status": "unknown_book",
+    "suggest": []
+   },
+   {
+    "w": "HIGH#16",
+    "ref": "Iah 10:12",
+    "status": "unknown_book",
+    "suggest": []
+   },
+   {
+    "w": "HINDER#1",
+    "ref": "Luke 117:52",
+    "status": "bad_chapter",
+    "suggest": []
+   },
+   {
+    "w": "HITHERTO#3",
+    "ref": "Job 38:117",
+    "status": "bad_verse",
+    "suggest": []
+   },
+   {
+    "w": "HOLD#15",
+    "ref": "2 Esdras 13:44",
+    "status": "unknown_book",
+    "suggest": []
+   },
+   {
+    "w": "HOLD#24",
+    "ref": "Solomon 3:8",
+    "status": "unknown_book",
+    "suggest": []
+   },
+   {
+    "w": "ILL-FAVORED#1",
+    "ref": "Genesis 417:3",
+    "status": "bad_chapter",
+    "suggest": []
+   },
+   {
+    "w": "INHERIT#1",
+    "ref": "Judges 117:2",
+    "status": "bad_chapter",
+    "suggest": []
+   },
+   {
+    "w": "INSTANTLY#3",
+    "ref": "Acis 26:7",
+    "status": "unknown_book",
+    "suggest": []
+   },
+   {
+    "w": "INVADE#2",
+    "ref": "Esdras 15:16",
+    "status": "unknown_book",
+    "suggest": []
+   },
+   {
+    "w": "IRON#3",
+    "ref": "Job 417:7",
+    "status": "bad_chapter",
+    "suggest": []
+   },
+   {
+    "w": "JOIN#1",
+    "ref": "Iah 5:8",
+    "status": "unknown_book",
+    "suggest": []
+   },
+   {
+    "w": "KINGDOM#5",
+    "ref": "Chronicles 29:11",
+    "status": "missing_book_number",
+    "suggest": [
+     "1 Chronicles 29:11",
+     "1 Chronicles 29:17",
+     "2 Chronicles 29:11",
+     "2 Chronicles 29:17"
+    ]
+   },
+   {
+    "w": "LAY#14",
+    "ref": "Iah 5:8",
+    "status": "unknown_book",
+    "suggest": []
+   },
+   {
+    "w": "LET#6",
+    "ref": "Thessalonians 2:7",
+    "status": "missing_book_number",
+    "suggest": [
+     "1 Thessalonians 2:1",
+     "1 Thessalonians 2:7",
+     "2 Thessalonians 2:1",
+     "2 Thessalonians 2:7"
+    ]
+   },
+   {
+    "w": "LEVIATHAN#1",
+    "ref": "Job 47:7",
+    "status": "bad_chapter",
+    "suggest": [
+     "Job 41:1",
+     "Job 41:7"
+    ]
+   },
+   {
+    "w": "LICK#2",
+    "ref": "Kings 21:19",
+    "status": "missing_book_number",
+    "suggest": [
+     "1 Kings 21:19",
+     "2 Kings 21:19"
+    ]
+   },
+   {
+    "w": "LONG#1",
+    "ref": "Romans 71:11",
+    "status": "bad_chapter",
+    "suggest": [
+     "Romans 11:11",
+     "Romans 11:17"
+    ]
+   },
+   {
+    "w": "LORD#7",
+    "ref": "Thessalonians 3:5",
+    "status": "missing_book_number",
+    "suggest": [
+     "1 Thessalonians 3:5",
+     "2 Thessalonians 3:5"
+    ]
+   },
+   {
+    "w": "LOVE#2",
+    "ref": "John 3:176",
+    "status": "bad_verse",
+    "suggest": []
+   },
+   {
+    "w": "LUCRE#1",
+    "ref": "Jifus 1:7",
+    "status": "unknown_book",
+    "suggest": []
+   },
+   {
+    "w": "MANNER#4",
+    "ref": "1 Samuel 217:5",
+    "status": "bad_chapter",
+    "suggest": []
+   },
+   {
+    "w": "MEAN#4",
+    "ref": "Genesis 217:29",
+    "status": "bad_chapter",
+    "suggest": []
+   },
+   {
+    "w": "MIGHT#4",
+    "ref": "Chronicles 12:8",
+    "status": "missing_book_number",
+    "suggest": [
+     "1 Chronicles 12:8",
+     "2 Chronicles 12:8"
+    ]
+   },
+   {
+    "w": "MOVE#6",
+    "ref": "Psalm 718:7",
+    "status": "bad_chapter",
+    "suggest": [
+     "Psalm 118:1",
+     "Psalm 118:7"
+    ]
+   },
+   {
+    "w": "NAKED#5",
+    "ref": "Job 1:27",
+    "status": "bad_verse",
+    "suggest": [
+     "Job 1:21",
+     "Job 7:21"
+    ]
+   },
+   {
+    "w": "NOTABLE#1",
+    "ref": "2 Maccabees 3:26",
+    "status": "unknown_book",
+    "suggest": []
+   },
+   {
+    "w": "NOURISH#5",
+    "ref": "Timothy 4:6",
+    "status": "missing_book_number",
+    "suggest": [
+     "1 Timothy 4:6",
+     "2 Timothy 4:6"
+    ]
+   },
+   {
+    "w": "PLEASURE#4",
+    "ref": "Iah 46:10",
+    "status": "unknown_book",
+    "suggest": []
+   },
+   {
+    "w": "POISON#2",
+    "ref": "Maccabees 10:13",
+    "status": "unknown_book",
+    "suggest": []
+   },
+   {
+    "w": "POUR#3",
+    "ref": "Ims 62:8",
+    "status": "unknown_book",
+    "suggest": []
+   },
+   {
+    "w": "PRESS#8",
+    "ref": "Esther 8:174",
+    "status": "bad_verse",
+    "suggest": []
+   },
+   {
+    "w": "PROCLAIM#1",
+    "ref": "Iah 61:1",
+    "status": "unknown_book",
+    "suggest": []
+   },
+   {
+    "w": "PROPHESY#2",
+    "ref": "Corinthians 13:9",
+    "status": "missing_book_number",
+    "suggest": [
+     "1 Corinthians 13:9",
+     "2 Corinthians 13:9"
+    ]
+   },
+   {
+    "w": "PURPOSE#1",
+    "ref": "Acts 19:271",
+    "status": "bad_verse",
+    "suggest": []
+   },
+   {
+    "w": "PUT#33",
+    "ref": "Exodus 22:117",
+    "status": "bad_verse",
+    "suggest": []
+   },
+   {
+    "w": "QUIET#3",
+    "ref": "Thessalonians 4:11",
+    "status": "missing_book_number",
+    "suggest": [
+     "1 Thessalonians 4:11",
+     "1 Thessalonians 4:17"
+    ]
+   },
+   {
+    "w": "RAVISH#3",
+    "ref": "Solomon 4:9",
+    "status": "unknown_book",
+    "suggest": []
+   },
+   {
+    "w": "RECOVER#2",
+    "ref": "Kings 5:3",
+    "status": "missing_book_number",
+    "suggest": [
+     "1 Kings 5:3",
+     "2 Kings 5:3"
+    ]
+   },
+   {
+    "w": "REMEMBER#9",
+    "ref": "Chronicles 16:12",
+    "status": "missing_book_number",
+    "suggest": [
+     "1 Chronicles 16:12",
+     "2 Chronicles 16:12"
+    ]
+   },
+   {
+    "w": "RENDER#2",
+    "ref": "Deuteronomy 32:471",
+    "status": "bad_verse",
+    "suggest": []
+   },
+   {
+    "w": "REVILE#1",
+    "ref": "Matthew 5:117",
+    "status": "bad_verse",
+    "suggest": []
+   },
+   {
+    "w": "REVOLT#4",
+    "ref": "Isaiah 317:6",
+    "status": "bad_chapter",
+    "suggest": []
+   },
+   {
+    "w": "REWARD#7",
+    "ref": "Psalm 19:17",
+    "status": "bad_verse",
+    "suggest": [
+     "Psalm 19:11",
+     "Psalm 79:11"
+    ]
+   },
+   {
+    "w": "ROBE#1",
+    "ref": "Samuel 24:4",
+    "status": "missing_book_number",
+    "suggest": [
+     "1 Samuel 24:4",
+     "2 Samuel 24:4"
+    ]
+   },
+   {
+    "w": "SEAL#5",
+    "ref": "Timothy 2:9",
+    "status": "missing_book_number",
+    "suggest": [
+     "1 Timothy 2:9",
+     "2 Timothy 2:9"
+    ]
+   },
+   {
+    "w": "SECRET#1",
+    "ref": "Proverbs 17:173",
+    "status": "bad_verse",
+    "suggest": []
+   },
+   {
+    "w": "SORROWFUL#2",
+    "ref": "1 Samuel 1:175",
+    "status": "bad_verse",
+    "suggest": []
+   },
+   {
+    "w": "SPEND#7",
+    "ref": "Job 217:73",
+    "status": "bad_chapter",
+    "suggest": []
+   },
+   {
+    "w": "SPRINGING#2",
+    "ref": "Ilm 65:70",
+    "status": "unknown_book",
+    "suggest": []
+   },
+   {
+    "w": "STAY#6",
+    "ref": "Psalm 18:78",
+    "status": "bad_verse",
+    "suggest": [
+     "Psalm 18:18",
+     "Psalm 78:18"
+    ]
+   },
+   {
+    "w": "STIR#5",
+    "ref": "Maccabees 15:17",
+    "status": "unknown_book",
+    "suggest": []
+   },
+   {
+    "w": "STREET#3",
+    "ref": "Psalm 144:174",
+    "status": "bad_verse",
+    "suggest": []
+   },
+   {
+    "w": "SURNAME#1",
+    "ref": "Mark 3:176",
+    "status": "bad_verse",
+    "suggest": []
+   },
+   {
+    "w": "TABLE#8",
+    "ref": "Walachi 1:7",
+    "status": "unknown_book",
+    "suggest": []
+   },
+   {
+    "w": "TEMPLE#1",
+    "ref": "Samuel 1:9",
+    "status": "missing_book_number",
+    "suggest": [
+     "1 Samuel 1:9",
+     "1 Samuel 7:9",
+     "2 Samuel 1:9",
+     "2 Samuel 7:9"
+    ]
+   },
+   {
+    "w": "TENDER#1",
+    "ref": "Solomon 2:13",
+    "status": "unknown_book",
+    "suggest": []
+   },
+   {
+    "w": "THINK#4",
+    "ref": "Numbers 24:117",
+    "status": "bad_verse",
+    "suggest": []
+   },
+   {
+    "w": "THIRSTY#3",
+    "ref": "Iah 44:3",
+    "status": "unknown_book",
+    "suggest": []
+   },
+   {
+    "w": "THORN#3",
+    "ref": "Corinthians 12:7",
+    "status": "missing_book_number",
+    "suggest": [
+     "1 Corinthians 12:1",
+     "1 Corinthians 12:7",
+     "2 Corinthians 12:1",
+     "2 Corinthians 12:7"
+    ]
+   },
+   {
+    "w": "TOSS#6",
+    "ref": "Proverbs 217:6",
+    "status": "bad_chapter",
+    "suggest": []
+   },
+   {
+    "w": "TURN#17",
+    "ref": "Psalm 25:176",
+    "status": "bad_verse",
+    "suggest": []
+   },
+   {
+    "w": "UNEQUALLY#2",
+    "ref": "Corinthians 6:14",
+    "status": "missing_book_number",
+    "suggest": [
+     "1 Corinthians 6:14",
+     "2 Corinthians 6:14"
+    ]
+   },
+   {
+    "w": "UNSPEAKABLE#1",
+    "ref": "Corinthians 12:4",
+    "status": "missing_book_number",
+    "suggest": [
+     "1 Corinthians 12:4",
+     "2 Corinthians 12:4"
+    ]
+   },
+   {
+    "w": "VAIN#1",
+    "ref": "Peter 1:18",
+    "status": "missing_book_number",
+    "suggest": [
+     "1 Peter 1:18",
+     "2 Peter 1:18"
+    ]
+   },
+   {
+    "w": "VIEW#1",
+    "ref": "Nehemiah 2:173",
+    "status": "bad_verse",
+    "suggest": []
+   },
+   {
+    "w": "VIOLENCE#3",
+    "ref": "Genesis 6:117",
+    "status": "bad_verse",
+    "suggest": []
+   },
+   {
+    "w": "WEAN#1",
+    "ref": "Genesis 217:8",
+    "status": "bad_chapter",
+    "suggest": []
+   },
+   {
+    "w": "WISE#5",
+    "ref": "Samuel 14:2",
+    "status": "missing_book_number",
+    "suggest": [
+     "1 Samuel 14:2",
+     "2 Samuel 14:2"
+    ]
+   }
+  ],
+  "G_missing_see_ref": [
+   {
+    "w": "ACANTICONE",
+    "target": "PISTACITE"
+   },
+   {
+    "w": "ALGUM",
+    "target": "KINGS"
+   },
+   {
+    "w": "ALMUG",
+    "target": "KINGS"
+   },
+   {
+    "w": "BELGIC",
+    "target": "CLUV"
+   },
+   {
+    "w": "BELOMANCY",
+    "target": "EZEKIE"
+   },
+   {
+    "w": "CARRY",
+    "target": "EPHESIANS"
+   },
+   {
+    "w": "CONGLOMERATE",
+    "target": "PUDDINGSTONE"
+   },
+   {
+    "w": "COUNTRY",
+    "target": "CONTRA-"
+   },
+   {
+    "w": "ENFORCE",
+    "target": "DEF"
+   },
+   {
+    "w": "FLAGRANT",
+    "target": "SAPHO"
+   },
+   {
+    "w": "MOTHER",
+    "target": "IVIUD"
+   },
+   {
+    "w": "PERSECUTE",
+    "target": "ACTS"
+   },
+   {
+    "w": "PICKET",
+    "target": "PIGQUET"
+   },
+   {
+    "w": "PLUMB",
+    "target": "PIUMB-"
+   },
+   {
+    "w": "RATHER",
+    "target": "ACTS"
+   },
+   {
+    "w": "ROBE",
+    "target": "SAMUEL"
+   },
+   {
+    "w": "ROUNDS",
+    "target": "ROUNDNO"
+   },
+   {
+    "w": "SELF",
+    "target": "MATTHEW"
+   },
+   {
+    "w": "SHIBBOLETH",
+    "target": "JUDGES"
+   },
+   {
+    "w": "STAR-CHAMBER",
+    "target": "BLACKSTONE"
+   },
+   {
+    "w": "TRANSFIGURATION",
+    "target": "MATTHEW"
+   },
+   {
+    "w": "TRESPASS",
+    "target": "LUKE"
+   },
+   {
+    "w": "TRUSS",
+    "target": "TROUS"
+   },
+   {
+    "w": "WARD",
+    "target": "BLACKSTONES"
+   },
+   {
+    "w": "WELKIN",
+    "target": "IELK"
+   }
+  ],
+  "B_encoding": [
+   {
+    "w": "ADJOIN#1",
+    "chars": "é",
+    "text": "é To join or unite to; to put to, by placing in contact; to unite, by fastening together with a joint, mortise, or knot."
+   },
+   {
+    "w": "AFFRAP#1",
+    "chars": "é",
+    "text": "té. To strike. Obs."
+   },
+   {
+    "w": "ANTIC#1",
+    "chars": "é",
+    "text": "é. To make antic."
+   },
+   {
+    "w": "APPEARANCE#6",
+    "chars": "£§",
+    "text": "Exhibition of the character; introduction of a person to the public in a particular character, as a person makes his app"
+   },
+   {
+    "w": "APPORTION#1",
+    "chars": "é",
+    "text": "é. To divide and assign in just proportion; to distribute among two or more, a just part or share to each; as, to apport"
+   },
+   {
+    "w": "AREFY#1",
+    "chars": "é",
+    "text": "é. To dry or make dry."
+   },
+   {
+    "w": "ARRET#1",
+    "chars": "é",
+    "text": "é. To assign; to allot. Obs."
+   },
+   {
+    "w": "ASSART#1",
+    "chars": "é",
+    "text": "é. To grub up trees; to commit an assart."
+   },
+   {
+    "w": "AUDIT#1",
+    "chars": "é",
+    "text": "é. To examine and adjust an account or accounts, by proper officers, or by persons legally authorized for the purpose; a"
+   },
+   {
+    "w": "BASTARD#2",
+    "chars": "§",
+    "text": "Spurious;; not genuine; false; supposititious; adulterate. In this sense, it is applied to things which resemble those w"
+   },
+   {
+    "w": "BENIGHT#1",
+    "chars": "é",
+    "text": "é. To involve in darkness; to shroud with the shades of night. The clouds benight the sky."
+   },
+   {
+    "w": "BID#1",
+    "chars": "é",
+    "text": "é@. pret. bid, or bade; pp. bid"
+   },
+   {
+    "w": "BITTS#1",
+    "chars": "é",
+    "text": "é. To put round the bitts; as, to bitt the cable, in order to fasten it or to slacken it out gradually, which is called "
+   },
+   {
+    "w": "BLIGHT#1",
+    "chars": "é",
+    "text": "é To affect with blight; to blast; to prevent growth, and fertility; to frustrate."
+   },
+   {
+    "w": "BLOW#1",
+    "chars": "é",
+    "text": "é. To throw or drive a current of air upon; as, to blow the fire; also, to fan."
+   },
+   {
+    "w": "BRAIL#1",
+    "chars": "é",
+    "text": "é. To brail up, is to haul up into the brails, or to truss up with the brails."
+   },
+   {
+    "w": "BREASTPLATE#2",
+    "chars": "é",
+    "text": "A strap that runs across aé horse’s breast."
+   },
+   {
+    "w": "COMPREHEND#3",
+    "chars": "§",
+    "text": "To imply; to contain or include by implication § or construction. If there be any other commandment, it is briefly compr"
+   },
+   {
+    "w": "CONCLUDE#1",
+    "chars": "£",
+    "text": "To infer, as a consequence; to determine. 1£ The world will conclude I had a guilty conscience. But this verb is really "
+   },
+   {
+    "w": "CONFLICT#4",
+    "chars": "é",
+    "text": "Struggling with difficulties; a striving to oppose, or overcome. The good man has aé perpetual conflict with his evil pr"
+   },
+   {
+    "w": "CONSTRAIN#7",
+    "chars": "é",
+    "text": "To necessitate. Did fate or we the adulterous act constrain?1é"
+   },
+   {
+    "w": "CONTORT#1",
+    "chars": "é",
+    "text": "zé. TO twist together; to writhe."
+   },
+   {
+    "w": "DARN#1",
+    "chars": "é",
+    "text": "é To mend a rent or hole, by imitating the texture of the cloth or stuff with yarn or thread and a needle; to sew togeth"
+   },
+   {
+    "w": "DECAPITATE#1",
+    "chars": "é",
+    "text": "zé. To behead; to cut off the head."
+   },
+   {
+    "w": "DECLARE#3",
+    "chars": "£",
+    "text": "To make known; to show to the eye or to the understanding; to exhibit; to manifest by other means than words.£ The heave"
+   },
+   {
+    "w": "DECRETORY#1",
+    "chars": "§",
+    "text": "Judicial; definitive; established by a decree. The decretory rigors of a condemning § sentence."
+   },
+   {
+    "w": "DIBBLE#1",
+    "chars": "é",
+    "text": "é. To plant with a dibble; or to make holes for planting seeds"
+   },
+   {
+    "w": "DIRTY#1",
+    "chars": "é",
+    "text": "é durty."
+   },
+   {
+    "w": "DISASTER#1",
+    "chars": "é",
+    "text": "é. To blast by the stroke of an unlucky planet; also, to injure; to afflict."
+   },
+   {
+    "w": "DISGARRISON#1",
+    "chars": "é",
+    "text": "é. To deprive of a garrison."
+   },
+   {
+    "w": "DISH#1",
+    "chars": "é",
+    "text": "é. To put in a dish; as, the meat is all dished, and ready for the table."
+   },
+   {
+    "w": "DOUBTFULLY#3",
+    "chars": "§",
+    "text": "Ambiguously; with uncertainty of I§=meaning. Nor did the goddess doubttfully declare."
+   },
+   {
+    "w": "DRUB#1",
+    "chars": "é",
+    "text": "é To beat with a stick; to thrash; to cudgel. The little thief had been soundly drubbed with a cudgel."
+   },
+   {
+    "w": "DWELL#2",
+    "chars": "é",
+    "text": "To abide as a permanent resident, or to inhabit for a time; to live in a place; to have aé é habitation for some time or"
+   },
+   {
+    "w": "EDULCORATE#2",
+    "chars": "é",
+    "text": "To sweeten by adding sugar, syrup.<é"
+   },
+   {
+    "w": "ENNEW#1",
+    "chars": "é",
+    "text": "é. To make new."
+   },
+   {
+    "w": "ENTWIST#1",
+    "chars": "é",
+    "text": "é To twist or wreath round."
+   },
+   {
+    "w": "ETIOLATE#1",
+    "chars": "é",
+    "text": "é. To blanch; to whiten by excluding the sun’s rays."
+   },
+   {
+    "w": "EVILWORKER#1",
+    "chars": "§",
+    "text": "One who does wickedness. Philippians 3:2. §"
+   },
+   {
+    "w": "EVITE#1",
+    "chars": "é",
+    "text": "é. To shun."
+   },
+   {
+    "w": "EXPATRIATE#1",
+    "chars": "é",
+    "text": "é. In a general sense, to banish. To expatriate one’s self, is to quit one’s country, renouncing citizenship and allegia"
+   },
+   {
+    "w": "EXPUGN#1",
+    "chars": "é",
+    "text": "é expu’ne. To conquer; to take by assault."
+   },
+   {
+    "w": "EXTERIOR#2",
+    "chars": "£",
+    "text": "Outward or visible deportment; appearance.£"
+   },
+   {
+    "w": "FIND#1",
+    "chars": "é",
+    "text": "é. pret. and pp. found."
+   },
+   {
+    "w": "FRIEND#1",
+    "chars": "é",
+    "text": "é frend. To favor; to countenance; to befriend; to support or aid."
+   },
+   {
+    "w": "FULLNESS#3",
+    "chars": "£",
+    "text": "Completeness; the state of a thing in which nothing is wanted; perfection. In thy presence is fullness of joy. Psalm 16:"
+   },
+   {
+    "w": "GASIFY#1",
+    "chars": "é",
+    "text": "é To convert into gas or an aeriform fluid by combination with caloric."
+   },
+   {
+    "w": "GOVERNMENT#3",
+    "chars": "§",
+    "text": "The exercise of authority; direction and restraint exercised over the actions of men in communities, societies or states"
+   },
+   {
+    "w": "HABIT#1",
+    "chars": "é",
+    "text": "é. To dress; to clothe; to array. They habited themselves like rural deities."
+   },
+   {
+    "w": "HABITUDE#2",
+    "chars": "é",
+    "text": "Frequent intercourse; familiarity.é To write well, one must have frequent habitudes with the best company.'/ ."
+   },
+   {
+    "w": "HEIR#1",
+    "chars": "é",
+    "text": "é. are. To inherit; to take possession of an estate of inheritance, after the death of the ancestor."
+   },
+   {
+    "w": "HIT#1",
+    "chars": "é",
+    "text": "é. pret. and pp. hit."
+   },
+   {
+    "w": "HOOD-WINK#1",
+    "chars": "é",
+    "text": "é. To blind by covering the eyes. We will blind and hood-wink him."
+   },
+   {
+    "w": "IMMIX#1",
+    "chars": "é",
+    "text": "é To mix; to mingle."
+   },
+   {
+    "w": "IMPACT#1",
+    "chars": "é",
+    "text": "é To drive close; to press or drive firmly together."
+   },
+   {
+    "w": "IMPEARL#1",
+    "chars": "é",
+    "text": "é. imperl’. To form in the resemblance of pearls. --Dew-drops which the sun . Impearls on every leaf, and every flower."
+   },
+   {
+    "w": "INCH#1",
+    "chars": "é",
+    "text": "é. To drive by inches or small degrees."
+   },
+   {
+    "w": "INFRIGIDATE#1",
+    "chars": "é",
+    "text": "zé. To chill; to make cold."
+   },
+   {
+    "w": "INFURIATE#1",
+    "chars": "é",
+    "text": "é To render furious or mad; to enrage."
+   },
+   {
+    "w": "INGRAIN#1",
+    "chars": "é",
+    "text": "é To dye in the grain, or before manufacture."
+   },
+   {
+    "w": "INGREAT#1",
+    "chars": "é",
+    "text": "é To make great."
+   },
+   {
+    "w": "INKNOT#1",
+    "chars": "é",
+    "text": "é innot’. To bind as with a knot."
+   },
+   {
+    "w": "INODIATE#1",
+    "chars": "é",
+    "text": "é To make hateful."
+   },
+   {
+    "w": "INSOMUCH#1",
+    "chars": "é",
+    "text": "So that; to that degree. Simonides was an excellent poet, insomuch that he made his fortune by it.é"
+   },
+   {
+    "w": "INSTYLE#1",
+    "chars": "é",
+    "text": "é. To call; to denominate."
+   },
+   {
+    "w": "INTERTALK#1",
+    "chars": "é",
+    "text": "é. intertauk’. To exchange conversation."
+   },
+   {
+    "w": "INTERTWIST#1",
+    "chars": "é",
+    "text": "é. To twist one with another."
+   },
+   {
+    "w": "INTWIST#1",
+    "chars": "é",
+    "text": "é To twist together; to interweave."
+   },
+   {
+    "w": "INURN#1",
+    "chars": "é",
+    "text": "é. To bury; to inter; to intomb. --The sepulcher . Wherein we saw thee quietly inurned."
+   },
+   {
+    "w": "INUSTION#2",
+    "chars": "é",
+    "text": "A branding; the action of marking by burning.é"
+   },
+   {
+    "w": "IRON#1",
+    "chars": "é",
+    "text": "ét. To smooth with an instrument of iron."
+   },
+   {
+    "w": "KIDNAP#1",
+    "chars": "é",
+    "text": "é. To steal a human being, man, woman or child; or to seize and forcibly carry away any person whatever from his own cou"
+   },
+   {
+    "w": "KNIT#1",
+    "chars": "é",
+    "text": "é. nit. pret. and pp. knit or knitted."
+   },
+   {
+    "w": "LANDED#1",
+    "chars": "é",
+    "text": "Disembarked; set on shore from aé ship or boat. 2.a. Having an estate in land; as a landed gentleman. The house of commo"
+   },
+   {
+    "w": "LIKEN#1",
+    "chars": "é",
+    "text": "é. li’kn. To compare; to represent as resembling or similar. Whosoever heareth these sayings of mine, and doeth them, I "
+   },
+   {
+    "w": "MANUMIT#1",
+    "chars": "é",
+    "text": "é. To release from slavery; to liberate from personal bondage or servitude; to free, as a slave."
+   },
+   {
+    "w": "MARGIN#1",
+    "chars": "é",
+    "text": "é. To furnish with a margin; to border."
+   },
+   {
+    "w": "MERCURIATE#1",
+    "chars": "§",
+    "text": "A combination of the oxyd of mercury with another substance. Mercuric acid, a saturated combination of mercury § and oxy"
+   },
+   {
+    "w": "MINIATE#1",
+    "chars": "é",
+    "text": "é. To paint or tinge with vermillion."
+   },
+   {
+    "w": "MISCAST#1",
+    "chars": "é",
+    "text": "é To cast or reckon erroneously."
+   },
+   {
+    "w": "MISJOIN#1",
+    "chars": "é",
+    "text": "é To join unfitly or improperly."
+   },
+   {
+    "w": "MISPRINT#1",
+    "chars": "é",
+    "text": "ét. To mistake in printing; to print wrong."
+   },
+   {
+    "w": "MISSERVE#1",
+    "chars": "é",
+    "text": "é. misserv’. To serve unfaithfully."
+   },
+   {
+    "w": "MIST#1",
+    "chars": "é",
+    "text": "é. To cloud; to cover with vapor."
+   },
+   {
+    "w": "MISTAKE#1",
+    "chars": "é",
+    "text": "é. To take wrong; to conceive or understand erroneously; to misunderstand or misapprehend. ‘Tis to mistake them costs th"
+   },
+   {
+    "w": "MISTUNE#1",
+    "chars": "é",
+    "text": "é To tune wrong or erroneously; to put out of tune."
+   },
+   {
+    "w": "MIX#1",
+    "chars": "é",
+    "text": "é pret. and pp. mixed or mixt."
+   },
+   {
+    "w": "OBSERVATOR#1",
+    "chars": "§",
+    "text": "§ as Z."
+   },
+   {
+    "w": "OBSERVATORY#1",
+    "chars": "§",
+    "text": "§ as z."
+   },
+   {
+    "w": "OBSERVER#1",
+    "chars": "§",
+    "text": "§ as z."
+   },
+   {
+    "w": "OUT#1",
+    "chars": "§",
+    "text": "To eject; to expel; to deprive by expulsion. The French having been outed of their holds./ . In composition, out signifi"
+   },
+   {
+    "w": "OUTKNAVE#1",
+    "chars": "é",
+    "text": "é outna’ve. To surpass in knavery."
+   },
+   {
+    "w": "OUTWRITE#1",
+    "chars": "é",
+    "text": "é outri’te. To surpass in writing."
+   },
+   {
+    "w": "PACIFICATION#2",
+    "chars": "é",
+    "text": "The act of appeasing or pacifying wrath.é"
+   },
+   {
+    "w": "PARANYMPH#2",
+    "chars": "§",
+    "text": "One who countenances and supports § another."
+   },
+   {
+    "w": "PATH#1",
+    "chars": "é",
+    "text": "é. To make a path by treading; to beat a path, as in snow. To push forward; to cause to go; to make way for."
+   },
+   {
+    "w": "PENURIOUS#2",
+    "chars": "§",
+    "text": "Scanty; affording little; as a penurious’§ spring."
+   },
+   {
+    "w": "PERCEPTIBLY#1",
+    "chars": "§",
+    "text": "In a manner to be perceived. The §= woman decays perceptibly every week."
+   },
+   {
+    "w": "PERENNIAL#4",
+    "chars": "£",
+    "text": "Continuing without intermission; as a fever.£"
+   },
+   {
+    "w": "PERTURBATION#4",
+    "chars": "§",
+    "text": "Disturbance of passions; commotion § of — spirit."
+   },
+   {
+    "w": "PHYSIC#1",
+    "chars": "é",
+    "text": "é To treat with physic; to evacuate the bowels with a cathartic; to purge."
+   },
+   {
+    "w": "PINK#1",
+    "chars": "é",
+    "text": "ét. To work in eyelet-holes; to pierce with small holes."
+   },
+   {
+    "w": "PITY#1",
+    "chars": "é",
+    "text": "é. To feel pain or grief for one in distress; to have sympathy for; to compassionate; to have tender feelings for one, e"
+   },
+   {
+    "w": "POINT#1",
+    "chars": "é",
+    "text": "é To sharpen; to cut, forge, grind or file to an acute end; as, to point a dart or a pin; also, to taper, as a rope."
+   },
+   {
+    "w": "PRIDE#1",
+    "chars": "é",
+    "text": "é With the reciprocal pronoun, to pride one’s self, to indulge pride; to take pride; to value one’s self; to gratify sel"
+   },
+   {
+    "w": "PRONOUNCE#4",
+    "chars": "é",
+    "text": "To speak; to utter, in almost any manner.é"
+   },
+   {
+    "w": "PROPINE#1",
+    "chars": "é",
+    "text": "é To pledge; to drink first and then offer the cup to another."
+   },
+   {
+    "w": "QUARANTINE#1",
+    "chars": "é",
+    "text": "é. To prohibit from intercourse with a city or its inhabitants; to compel to remain at a distance from shore for forty d"
+   },
+   {
+    "w": "QUAY#1",
+    "chars": "é",
+    "text": "é. To furnish with quays."
+   },
+   {
+    "w": "RE-ENACT#1",
+    "chars": "é",
+    "text": "é. To enact again."
+   },
+   {
+    "w": "REAFFIRM#1",
+    "chars": "é",
+    "text": "zé. To affirm a second time."
+   },
+   {
+    "w": "REAPPOINT#1",
+    "chars": "é",
+    "text": "é. To appoint again."
+   },
+   {
+    "w": "REBURY#1",
+    "chars": "é",
+    "text": "é. reber’ry. To inter again."
+   },
+   {
+    "w": "REFRACTED#1",
+    "chars": "é",
+    "text": "Turned from aé direct course, as rays of light. 2.a. In botany, bent back at an acute angle; as a refracted corol."
+   },
+   {
+    "w": "REGURGITATION#2",
+    "chars": "§",
+    "text": "The act of swallowing § again; reabsorption."
+   },
+   {
+    "w": "REIMPRINT#1",
+    "chars": "é",
+    "text": "é. To imprint again."
+   },
+   {
+    "w": "REVOLUTIONARY#2",
+    "chars": "é",
+    "text": "Tending to produce aé revolution; as revolutionary measures."
+   },
+   {
+    "w": "RIGHTEN#1",
+    "chars": "é",
+    "text": "é. To do justice to. Obs."
+   },
+   {
+    "w": "SECRECY#4",
+    "chars": "£",
+    "text": "Fidelity to a secret; the act or habit of keeping secrets. £ For secrecy no lady closer."
+   },
+   {
+    "w": "SKIFF#1",
+    "chars": "é",
+    "text": "é. To pass over in a light boat."
+   },
+   {
+    "w": "SNIFF#1",
+    "chars": "é",
+    "text": "é. To draw in with the breath."
+   },
+   {
+    "w": "STRENGTH#20",
+    "chars": "é",
+    "text": "Support; maintenance of power. What they boded would be a mischief to us, you are providing shall be one of our principa"
+   },
+   {
+    "w": "SURPASSING#1",
+    "chars": "é",
+    "text": "Exceeding; going beyond. 1.a. Excellent in an eminent degree; exceeding others. O thou, that with surpassing glory crown"
+   },
+   {
+    "w": "TABERNACLE#3",
+    "chars": "£",
+    "text": "Among the Jews, a movable building, so contrived as to be taken to pieces with ease and reconstructed, for the convenien"
+   },
+   {
+    "w": "TALENT#1",
+    "chars": "£",
+    "text": "Among the ancients, a weight, and a coin. The true value of the talent cannot well be ascertained, but it is known that "
+   },
+   {
+    "w": "TATTER#1",
+    "chars": "é",
+    "text": "é. To rend or tear into rags."
+   },
+   {
+    "w": "TED#1",
+    "chars": "é",
+    "text": "é A spread; tedu, to distend. Among farmers, to spread; to turn new mowed grass from the swath, and scatter it for dryin"
+   },
+   {
+    "w": "THIRST#1",
+    "chars": "é",
+    "text": "é. To want to drink; as, to thirst blood."
+   },
+   {
+    "w": "TINCT#1",
+    "chars": "é",
+    "text": "é To stain or color; to imbue."
+   },
+   {
+    "w": "TINE#1",
+    "chars": "é",
+    "text": "é To kindle, to set on fire."
+   },
+   {
+    "w": "TOUCHSTONE#3",
+    "chars": "§",
+    "text": "Any test or criterion by which the qualities of a thing are tried; as money, the touchstone of I§common honesty. Irish t"
+   },
+   {
+    "w": "TREASURE#3",
+    "chars": "£",
+    "text": "Something very much valued. Psalm 135:4.£ Ye shall be a peculiar treasure to me. Exodus 19:5."
+   },
+   {
+    "w": "TWITCH#1",
+    "chars": "é",
+    "text": "é To pull with a sudden jerk; to pluck with a short, quick motion; to snatch; as, to twitch one by the sleeve; to twitch"
+   },
+   {
+    "w": "UNDERGO#1",
+    "chars": "§",
+    "text": "To suffer; to endure something burdensome or painful to the body or the mind; as, to undergo toil and fatigue; to underg"
+   },
+   {
+    "w": "UNEASY#1",
+    "chars": "§",
+    "text": "§ as z."
+   },
+   {
+    "w": "UNPOLITE#2",
+    "chars": "é",
+    "text": "Not civil; not courteous; rude.é"
+   },
+   {
+    "w": "UNSLING#1",
+    "chars": "é",
+    "text": "é. In seamen’s language, to take off the slings of a yard, a cask"
+   },
+   {
+    "w": "UNWIT#1",
+    "chars": "é",
+    "text": "é To deprive of understanding."
+   },
+   {
+    "w": "VAUNT#1",
+    "chars": "é",
+    "text": "é To boast of; to make a vain display of. My vanquisher, spoil’d of his vaunted spoil. Charity vaunteth not itself. 1 Co"
+   },
+   {
+    "w": "VERBERATE#1",
+    "chars": "é",
+    "text": "zé. To beat; to strike."
+   },
+   {
+    "w": "ZYGOMATIC#1",
+    "chars": "é",
+    "text": "Pertaining to a bone of the head, called also os jugale, or cheek bone, or to the bony arch under which the temporal mus"
+   }
+  ],
+  "D_junk": [
+   {
+    "w": "PUNCTUATION#1",
+    "text": "ma (,). The ancients were unacquainted with punctuation; they wrote without any distinction of members, period or words."
+   }
+  ]
+ }
+}

@@ -20,12 +20,18 @@ type Server struct {
 }
 
 // New creates a new MCP server with dictionary tools.
-// webster1828Path is required; webster1913Path may be empty (1913 tools
-// then report the edition as unavailable).
-func New(webster1828Path, webster1913Path string) (*Server, error) {
+// webster1828Path is required; webster1913Path and variantsPath may be empty
+// (the 1913 tools then report the edition as unavailable; lookups fall back
+// to stemming only).
+func New(webster1828Path, webster1913Path, variantsPath string) (*Server, error) {
 	webster := dictionary.NewWebster()
 	if err := webster.LoadFromFile(webster1828Path); err != nil {
 		return nil, fmt.Errorf("failed to load Webster 1828 dictionary: %w", err)
+	}
+	if variantsPath != "" {
+		if err := webster.LoadVariants(variantsPath); err != nil {
+			return nil, fmt.Errorf("failed to load variants: %w", err)
+		}
 	}
 
 	var webster1913 *dictionary.Webster
@@ -166,12 +172,18 @@ func (s *Server) handleWebsterDefine(ctx context.Context, request mcp.CallToolRe
 		return mcp.NewToolResultError("word parameter is required"), nil
 	}
 
-	entries := s.webster.Lookup(word)
+	entries, matched, how := s.webster.LookupWithFallback(word)
 	if entries == nil {
-		return mcp.NewToolResultText(fmt.Sprintf("Word '%s' not found in Webster 1828 dictionary.", word)), nil
+		return mcp.NewToolResultText(fmt.Sprintf("Word '%s' not found in Webster 1828 dictionary (no exact, variant-spelling, or stem match).", word)), nil
 	}
 
 	formatted := dictionary.FormatEntries(entries)
+	switch how {
+	case "variant":
+		formatted = fmt.Sprintf("_'%s' is not an 1828 headword; showing **%s**, the 1828 spelling/form._\n\n%s", word, matched, formatted)
+	case "stem":
+		formatted = fmt.Sprintf("_'%s' is not an 1828 headword; showing the root **%s** (stem match)._\n\n%s", word, matched, formatted)
+	}
 	return mcp.NewToolResultText(formatted), nil
 }
 

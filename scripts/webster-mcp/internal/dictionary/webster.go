@@ -10,16 +10,37 @@ import (
 	"strings"
 )
 
-// Webster holds the loaded Webster 1828 dictionary.
+// Webster holds a loaded Webster dictionary edition.
 type Webster struct {
-	entries map[string][]WebsterEntry // Word -> entries (may have multiple POS)
+	entries  map[string][]WebsterEntry // Word -> entries (may have multiple POS)
+	variants map[string]string         // modern/KJV form -> actual headword (optional)
 }
 
 // NewWebster creates a new Webster dictionary instance.
 func NewWebster() *Webster {
 	return &Webster{
-		entries: make(map[string][]WebsterEntry),
+		entries:  make(map[string][]WebsterEntry),
+		variants: make(map[string]string),
 	}
+}
+
+// LoadVariants loads a spelling-variant map (e.g. ALLEGE -> ALLEDGE).
+// Keys starting with "_" are comments.
+func (w *Webster) LoadVariants(path string) error {
+	data, err := os.ReadFile(path)
+	if err != nil {
+		return fmt.Errorf("failed to read variants file: %w", err)
+	}
+	var m map[string]string
+	if err := json.Unmarshal(data, &m); err != nil {
+		return fmt.Errorf("failed to parse variants file: %w", err)
+	}
+	for k, v := range m {
+		if !strings.HasPrefix(k, "_") {
+			w.variants[strings.ToUpper(k)] = strings.ToUpper(v)
+		}
+	}
+	return nil
 }
 
 // LoadFromFile loads the dictionary from a JSON file.
@@ -81,6 +102,37 @@ func (w *Webster) LookupFirst(word string) *WebsterEntry {
 		return nil
 	}
 	return &entries[0]
+}
+
+// archaic/inflection suffixes tried by the stem fallback, longest first.
+var stemSuffixes = []string{"edst", "eth", "est", "ing", "ed", "s"}
+
+// LookupWithFallback finds a word by exact match, then the spelling-variant
+// map (1828 orthography: ALLEGE -> ALLEDGE), then archaic-suffix stemming
+// ("sleepeth" -> SLEEP). Returns the entries, the headword that actually
+// matched, and how: "exact", "variant", or "stem". Nil when nothing matches.
+func (w *Webster) LookupWithFallback(word string) ([]WebsterEntry, string, string) {
+	key := strings.ToUpper(strings.TrimSpace(word))
+	if entries, ok := w.entries[key]; ok {
+		return entries, key, "exact"
+	}
+	if target, ok := w.variants[key]; ok {
+		if entries, ok := w.entries[target]; ok {
+			return entries, target, "variant"
+		}
+	}
+	for _, suf := range stemSuffixes {
+		if !strings.HasSuffix(key, strings.ToUpper(suf)) || len(key) < len(suf)+3 {
+			continue
+		}
+		stem := key[:len(key)-len(suf)]
+		for _, cand := range []string{stem, stem + "E", strings.TrimSuffix(stem, stem[len(stem)-1:])} {
+			if entries, ok := w.entries[cand]; ok {
+				return entries, cand, "stem"
+			}
+		}
+	}
+	return nil, "", ""
 }
 
 // Search searches for words containing the query string.

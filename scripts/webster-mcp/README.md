@@ -26,7 +26,12 @@ Look up a word in Webster 1828, Webster 1913, AND the modern dictionary. Three p
 ```
 
 ### `webster_define`
-Look up a word in the genuine Webster 1828 dictionary only.
+Look up a word in the genuine Webster 1828 dictionary only. Falls back through
+the 1828 spelling-variant map (`allege` → **ALLEDGE**, `zinc` → **ZINK**; see
+`data/variants1828.json`) and archaic-suffix stemming (`sleepeth` → **SLEEP**),
+always labeling a non-exact match — the 1828 genuinely lacks some modern
+headwords (e.g. *naughty*, *pestilence*: absent from three independent
+digitizations).
 
 ```json
 { "word": "charity" }
@@ -87,6 +92,29 @@ PYTHONUTF8=1 python tools/convert_1828.py --src <clone-dir> --out data/webster18
 ```
 
 The converter rejects OCR-junk headwords, strips U+FFFD characters, fixes invalid numbered-book scripture references ("7 Corinthians" → "1 Corinthians" — a pervasive 1→7 OCR error, 414 instances), and logs every change to the report.
+
+### OCR repair tooling (2026-06-12)
+
+The EGW-derived text carries residual OCR damage; three tools in `tools/` find
+and fix it, every change ledgered:
+
+- `scan_1828.py` — detection passes: near-empty senses, encoding artifacts,
+  run-together words, junk fragments, **scripture references validated against
+  the KJV canon** (via strongs-concordance-mcp's verse data), doubled phrases,
+  missing See-reference targets.
+- `repair_1828.py` — mechanical repair: fuzzy book-name fixes ("Wark" → Mark),
+  1↔7 digit-swap candidates **disambiguated by KJV verse-text overlap**
+  ("Corinthians 8:12" → the candidate whose verse text matches the quoted
+  context), junction restoration, fragment handling, plus an overlay of
+  entries re-transcribed from webstersdictionary1828.com where our text was
+  destroyed.
+- `fetch_site_entries.py` — polite (1.2s, identified UA, cached) fetcher for
+  specific webstersdictionary1828.com entries used by the overlay.
+
+Known faithful-but-odd readings are left alone deliberately: where all three
+digitizations agree (e.g. *fine* sense 3 "Thin; keep; smoothly sharp"), the
+text stands until checked against the 1828 facsimile — correcting toward
+modern expectation is how mislabeling happens.
 
 ## Usage
 
