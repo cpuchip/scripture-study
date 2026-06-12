@@ -62,6 +62,23 @@ the "Matt 5:22 / 3 Ne 12:22" quote is 3 Nephi's text (no "without a cause").
 Logos meanings + "Raca [empty-headed]" presented as paraphrase/bracketed gloss
 ✓. All links resolve. No Webster quotes (tier consistent).
 
+### study/heavenly_mother.md (2026-01-25) — 4 fixes (1 misattribution, 1 constructed quote, 1 broken link, 1 fragment)
+FULL tier, sensitive topic. ~20 quotes verified against proclamation, talks,
+manuals, GS/TG. **★ MISATTRIBUTION fixed: "Elder Weatherford T. Clayton" →
+Elder William K. Jackson** ("The Culture of Christ," Oct 2020) — the quote was
+real and verbatim, the speaker name confabulated. **★ Constructed quote fixed:
+"Mothers are... saviors on Mount Zion."** — Holland actually says "you are
+saviors on Mount Zion" addressing mothers; replaced with the real sentence.
+Broken link fixed: Family Proclamation lives at ensign/1995/11/, not
+scriptures/. Luke 1:28 table fragments restored to KJV ("highly favoured,"
+"blessed art thou among women"). Verified verbatim: proclamation ×3, 1909
+First Presidency statement (in scripture-helps manual), Holland tribute + 
+mother-love lines, Romney ×2 (the "[his]" bracket is the talk's own), Oaks,
+Craig, Christofferson (manual), Andersen, GS Spirit, Gen 1:27, Heb 12:9,
+Acts 17:29, Luke 1:38. NOTE (unverified-locally, standard history, low risk):
+the 1909 First Presidency counselor names (Winder, Lund) — no local source
+names them; left as-is. Mary-as-type section already carefully hedged ✓.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)

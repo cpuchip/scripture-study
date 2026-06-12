@@ -16,7 +16,7 @@ The foundational modern statement on heavenly parents comes from "The Family: A 
 
 This proclamation explicitly uses the plural "heavenly parents," indicating both a Father and Mother in Heaven.
 
-**Source:** [The Family: A Proclamation to the World](../gospel-library/eng/scriptures/the-family-a-proclamation-to-the-world/the-family-a-proclamation-to-the-world.md) - Referenced extensively in General Conference including:
+**Source:** [The Family: A Proclamation to the World](../gospel-library/eng/ensign/1995/11/the-family-a-proclamation-to-the-world.md) - Referenced extensively in General Conference including:
 - [Elder Ronald A. Rasband, Oct 2025](../gospel-library/eng/general-conference/2025/10/21rasband.md)
 - [Sister Andrea Muñoz Spannaus, Apr 2024](../gospel-library/eng/general-conference/2024/04/33spannaus.md)
 - [Elder Neil L. Andersen, Apr 2019](../gospel-library/eng/general-conference/2019/04/25andersen.md)
@@ -72,7 +72,7 @@ Multiple General Conference talks explicitly use the phrase "heavenly parents":
 | President Dallin H. Oaks | [Apr 2020](../gospel-library/eng/general-conference/2020/04/51oaks.md) | "As spirits, we desired to achieve the eternal life enjoyed by our heavenly parents." |
 | Elder D. Todd Christofferson | [Scripture Helps OT](../gospel-library/eng/manual/scripture-helps-old-testament/01-moses-1-abraham-3.md) | "Prophets have revealed that we first existed as intelligences and that we were given form, or spirit bodies, by God, thus becoming His spirit children—sons and daughters of heavenly parents." |
 | Sister Michelle Craig | [Oct 2020](../gospel-library/eng/general-conference/2020/10/14craig.md) | "Who we really are—sons and daughters of heavenly parents, with a 'divine nature and eternal destiny.'" |
-| Elder Weatherford T. Clayton | [Oct 2020](../gospel-library/eng/general-conference/2020/10/27jackson.md) | "We are, after all, brothers and sisters, spirit children of our heavenly parents—literally." |
+| Elder William K. Jackson | [Oct 2020](../gospel-library/eng/general-conference/2020/10/27jackson.md) | "We are, after all, brothers and sisters, spirit children of our heavenly parents—literally." |
 | Elder Neil L. Andersen | [Apr 2023](../gospel-library/eng/general-conference/2023/04/45andersen.md) | "Remember, you are a spirit child of Heavenly Father." |
 
 ---
@@ -124,7 +124,7 @@ The question of whether Mary, the mother of Jesus, serves as a type and shadow o
 | Aspect | Mary | Heavenly Mother |
 |--------|------|-----------------|
 | **Motherhood** | Gave physical birth to the Son of God | Gave spirit birth to all God's children |
-| **Divine Selection** | "Highly favored" and "blessed among women" (Luke 1:28) | A divine, exalted being |
+| **Divine Selection** | "Highly favoured" and "blessed art thou among women" (Luke 1:28) | A divine, exalted being |
 | **Partnership** | Worked with Heavenly Father in the divine plan | Partners with Heavenly Father in eternal purposes |
 | **Nurturing** | Nurtured, taught, and raised Jesus | Helped prepare spirits for mortality |
 | **Selfless Love** | "Be it unto me according to thy word" (Luke 1:38) | Divine, selfless love for spirit children |
@@ -221,9 +221,9 @@ President Romney taught that offspring naturally have the potential to become li
 
 ### Motherhood as a Divine Calling
 
-Mothers participate in the same sacred work as Heavenly Mother—bringing spirits into bodies and nurturing them toward eternal life. As Elder Holland said:
+Mothers participate in the same sacred work as Heavenly Mother—bringing spirits into bodies and nurturing them toward eternal life. As Elder Holland told mothers:
 
-> "Mothers are... saviors on Mount Zion."
+> "You are doing better than you think you are. In fact, you are saviors on Mount Zion, and like the Master you follow, your love 'never faileth.'"
 
 ---
 
