@@ -1337,6 +1337,19 @@ Hinckley-via-McMullin quoted-within (already attributed right) and
 Romney's D&C 5:19 and 1:35-36 quotations. The Maxwell 141-wars figure
 is his own stated count, quoted exactly. Zero fixes.
 
+### study/zion-blueprint.md (2026-03-02) — 1 confabulated quote-continuation (Pearce)
+FULL, post-boundary. ★ The Pearce Apr-1997 quote continued with "What
+a critical phrase! Zion will not be brought about by a single,
+miraculous event but by the accumulated acts and desires of the
+members of the community of Saints" — NOT in her talk (the study's own
+commentary fused into her quote). Requoted with her real continuation
+("Just like the pioneers, just like you and me, it must have been a
+*process* of walking forward, step by step") + correction note.
+Everything else verbatim: Moses 7:18/21/63/68, 4 Ne 1:2-3/15-17, 3 Ne
+19:29/26:19, D&C 38:26/105:3, Kimball 1977, Christofferson 2008. The
+shanah year-as-repetition claim verified via Strong's (H8141 ← H8138
+"do again, repeat").
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)

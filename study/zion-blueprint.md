@@ -196,7 +196,9 @@ But 365 is also a number that echoes the cycle of a year. There are 365 days in 
 
 Virginia H. Pearce saw this clearly:
 
-> "The city of Zion was taken up into heaven '**in process of time.**' What a critical phrase! Zion will not be brought about by a single, miraculous event but by the accumulated acts and desires of the members of the community of Saints." — [Virginia H. Pearce, "Keep Walking, and Give Time a Chance," April 1997](../gospel-library/eng/general-conference/1997/04/keep-walking-and-give-time-a-chance.md)
+> "But if we read carefully we see that the city of Zion was taken up into heaven '**in process of time**' (Moses 7:21). Just like the pioneers, just like you and me, it must have been a *process* of walking forward, step by step, over a long period of time." — [Virginia H. Pearce, "Keep Walking, and Give Time a Chance," April 1997](../gospel-library/eng/general-conference/1997/04/keep-walking-and-give-time-a-chance.md)
+
+*(Correction 2026-06-12: an earlier version continued this quote with "What a critical phrase! Zion will not be brought about by a single, miraculous event but by the accumulated acts and desires of the members of the community of Saints" — those sentences are not in her talk. Her real continuation, restored above, makes the same point in her own words.)*
 
 The Hebrew word for "year" is *shanah* (שָׁנָה), which comes from a root meaning "to repeat, to do again." Each year is a *repetition* — another cycle of faithfulness. 365 years of Zion means 365 repetitions of the annual cycle of covenant living. 365 iterations of: plant, grow, harvest, rest, begin again. 365 times around the sun, walking with God.
 
