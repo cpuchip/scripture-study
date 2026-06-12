@@ -532,6 +532,15 @@ presentation it plans around references Nelson's Sept-2025 passing and
 Oaks' Oct-2025 first talk); git shows the file born 2026-02-08 →
 corrected with note. The date-confabulation class, now in a footer.
 
+### study/yt/morganphilpot/findings_summary.md (2026-02-08) — 3 fixes (cascading the chemlah correction)
+T2, our own meta-summary. The two endorsements of the now-disproven
+Zarahemla etymology ("compelling" / "strongest items") corrected with
+dated notes; storm/tempest endorsement softened to match the genuine
+1828 entries; the confabulated 2025-07-26 footer date (same class as
+the plan file) git-corrected to 2026-02-08. The item-count percentages
+(4/14/12/3 of 33) check out arithmetically. verbal_only_evaluation.md
+(T1) and 05a (SAMPLE) get their own walks ahead.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)

@@ -103,7 +103,7 @@ Across all 9 evaluations, a recurring observation emerges: *Philpot's textual an
 
 2. **The transcript review was essential.** Without it, we would have published evaluations of content the audience never heard (Phases 5, 8) and missed content they did (18 Revelation 13 claims, Zarahemla etymology, corporate fiction argument). The review plan paid for itself.
 
-3. **~70 verbal-only items were catalogued and evaluated.** These represented a significant body of claims — some compelling (Zarahemla/hemlah etymology, storm/tempest Webster 1828 distinction), some problematic (Lachoneus 2 assassination prediction, BYU as "temples of Baal"). Phase 5's 18 Revelation 13 claims are evaluated in [05a_revelation_13.md](05a_revelation_13.md); the remaining 33 items are assessed in [verbal_only_evaluation.md](verbal_only_evaluation.md).
+3. **~70 verbal-only items were catalogued and evaluated.** These represented a significant body of claims — some with real substance (the storm/tempest Webster 1828 distinction, in softened form — both words carry both natural and political senses in the genuine 1828), some problematic (Lachoneus 2 assassination prediction, BYU as "temples of Baal"). *(Correction, 2026-06-12: the Zarahemla/hemlah etymology, originally listed here as compelling, is false Hebrew — chemlah (H2551) means compassion, not salt; salt is melach (H4417). See part3_marp.md.)* Phase 5's 18 Revelation 13 claims are evaluated in [05a_revelation_13.md](05a_revelation_13.md); the remaining 33 items are assessed in [verbal_only_evaluation.md](verbal_only_evaluation.md).
 
 4. **The evaluations are study documents, not verdicts.** The "Become" sections prove this — they consistently harvest personal application from the material regardless of whether Philpot's specific claims hold. The evaluations model how to engage with challenging interpretive material faithfully: take what's nourishing, test what's speculative, keep studying.
 
@@ -127,7 +127,7 @@ All three recommended next steps have been completed:
 
 1. ✅ **Phase 5 verbal content evaluated** — [05a_revelation_13.md](05a_revelation_13.md) evaluates the 18 Revelation 13 beast-identification claims the audience actually heard. Findings: 6 In Line, 3 Nuanced, 5 Out of Line, 3 Missed the Mark, 4 Missed Opportunities. The 42-month calculation is mathematically wrong (27 months, not 42). The Archduke Ferdinand claim is historically confused. The beast ≠ devil distinction and D&C 87 integration are genuinely strong.
 
-2. ✅ **Verbal-only items assessed** — [verbal_only_evaluation.md](verbal_only_evaluation.md) evaluates 33 remaining verbal-only items across Phases 2, 4, 6, 7, 8, and 9. Distribution: 4 In Line (12%), 14 Nuanced (42%), 12 Out of Line (36%), 3 Minor (9%). Strongest items: storm/tempest Webster 1828 distinction, Zarahemla etymology, Edmunds-Tucker history, 1907 Declaration analysis. Most problematic items: Lachoneus 2 assassination prediction, BYU as "temples of Baal," 2033 date-setting, polar shift speculation.
+2. ✅ **Verbal-only items assessed** — [verbal_only_evaluation.md](verbal_only_evaluation.md) evaluates 33 remaining verbal-only items across Phases 2, 4, 6, 7, 8, and 9. Distribution: 4 In Line (12%), 14 Nuanced (42%), 12 Out of Line (36%), 3 Minor (9%). Strongest items: Edmunds-Tucker history, 1907 Declaration analysis, and the storm/tempest Webster 1828 distinction (in softened form). *(The Zarahemla etymology, originally rated strong, was removed from this list 2026-06-12 — the Hebrew is wrong; chemlah = compassion, not salt.)* Most problematic items: Lachoneus 2 assassination prediction, BYU as "temples of Baal," 2033 date-setting, polar shift speculation.
 
 3. ✅ **Marp slides reformed** — Four Marp decks ([part1_marp.md](part1_marp.md), [part2_marp.md](part2_marp.md), [part3_marp.md](part3_marp.md), [appendix_marp.md](appendix_marp.md)) restructure the evaluation findings into a presentation format that follows the audience's actual experience. See [marp_reformation_plan.md](marp_reformation_plan.md) for the design rationale.
 
@@ -135,6 +135,6 @@ The same persistent standard emerged across all three follow-up documents: **D&C
 
 ---
 
-*Summary written: 2025-07-26*
-*Updated: 2025-07-26 (all three next steps completed)*
+*Summary written: 2026-02-08 (git-verified; an earlier footer claimed 2025-07-26)*
+*Updated: 2026-06-12 (study-correctness walk — Zarahemla etymology corrected, storm/tempest softened)*
 *Based on: 9 phase evaluations, 10-pass transcript review, 3 transcripts (~168 KB), 369 slides (~130 KB), 2 verbal-content evaluations, 4 Marp decks*
