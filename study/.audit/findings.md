@@ -1267,6 +1267,17 @@ FULL on a small reference file. All ~16 fragments verbatim (D&C 46:9/
 Bowen Apr-2024 hot-zone quotes exact ("the dead shall be raised under
 your hands"; "seek and expect miracles").
 
+### study/gifts.md (2026-02-20) — 3 Webster 1913 (words 65-67), scripture ALL verbatim
+T1+FULL, post-boundary. GIFT, DISCERNMENT, DISCERN were 1913 —
+requoted with gifts: genuine GIFT = "conferred by the author of our
+nature"; genuine DISCERNMENT names the content ("as truth from
+falsehood, virtue from vice; acuteness of judgment"); genuine DISCERN
+intransitive = "to discern between good and evil." All 64 blockquotes
+verbatim (D&C 46 complete, D&C 42:43-52, 1 Cor 12-13, Moroni 7/10,
+Mark 5/9, Moses 1:13-15). Notably the Cannon-via-Callister quote here
+carries BOTH ellipses correctly — the version I fixed at #64 was the
+careless copy; this one was right all along.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
