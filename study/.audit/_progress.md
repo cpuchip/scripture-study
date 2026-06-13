@@ -141,7 +141,7 @@ Already done out-of-band: `study/morm-8-three-glories-reading.md` (2026-06-09).
 - [x] 2026-03-15 `study/yt/title-of-liberty/guidance.md` **SAMPLE** — stale pre-move duplicate REMOVED (living copy: becoming/title-of-liberty/, year typo fixed there)
 - [x] 2026-03-15 `study/tower-of-babel.md` **T1+FULL** — CONFOUND 1913 (word 91; genuine cites Gen 11:7 AND Acts 2:6); 26 links fixed; ~22 scriptures verbatim
 - [x] 2026-03-15 `study/language-of-adam-speculative.md` **T1+FULL** — Sample-of-Pure-Language quote was a 2-answer blend (requoted vs JSP); Anglo-men; provenance corrected; CONFOUND propagation closed
-- [ ] 2026-03-15 `study/yt/tDS2olk8Jx0-ma-dramatic-pause.md` **T1**
+- [x] 2026-03-15 `study/yt/tDS2olk8Jx0-ma-dramatic-pause.md` **T1** — SELAH was 1913 (no 1828 entry exists); 2 dropped "of"s requoted; 21 links fixed; 16 scriptures + Held verbatim
 - [ ] 2026-03-15 `study/stories/the-words-of-abinadi.md` **SAMPLE**
 - [ ] 2026-03-17 `study/eq/20260315-uchtdorf-do-your-part.md` **SAMPLE**
 - [ ] 2026-03-19 `study/yt/LO0Ws-l6brg-4-ai-labs-same-system.md` **SAMPLE**

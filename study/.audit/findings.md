@@ -1566,6 +1566,22 @@ note word-for-word), D&C 95:7/17, Abr 3:13/18, Ether 2:3, Moses
 5:31/7:35, D&C 116:1, D&C 78:20; Kokob=H3556 kôwkâb confirmed via
 Strong's.
 
+### study/yt/tDS2olk8Jx0-ma-dramatic-pause.md (2026-03-15) — SELAH not in 1828 at all (1913 re-attributed); 21 links; 2 dropped "of"s
+T1. The SELAH definition credited to Webster 1828 is the 1913
+entry verbatim — genuine 1828 has NO SELAH entry (the GODHOOD
+class); re-attributed with note, "occuring" kept as the 1913's own
+spelling. The closing Brennan quote dropped "of" twice ("All [of]
+the strength… All [of] the horror" — requoted vs the local
+transcript; the 1:14 village quote and "a child's logic" verified
+exact). LINK class: 19 scripture links lacked `../../` + both
+footer paths wrong (scratch resolved to study/study/, transcript
+to study/yt/) — all fixed. Elder Mathias Held (Apr 2024, hot-zone)
+verbatim modulo accepted start trim. All ~16 scriptures verbatim
+(1 Kgs 19:12, Hel 5:30, 3 Ne 10:1-2/11:3, Rev 8:1, Moses 2:2-3,
+2 Ne 2:11, Ps 46:10, Luke 2:19, Job 38:7, D&C 25:12/8:2/85:6,
+Moro 7:16, Hab 2:20, Eccl 3:7). Selah=71-in-Psalms ✓; raphah =
+H7503 "to slacken / be still" ✓ via Strong's.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
