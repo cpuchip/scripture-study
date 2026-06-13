@@ -390,10 +390,10 @@ Already done out-of-band: `study/morm-8-three-glories-reading.md` (2026-06-09).
 - [x] 2026-06-02 `study/bom-walk/studies/mos13-16_abinadi-christology.md` **LINKS** — CLEAN (deeper synthesis study; draws on Mosiah 13-16 verified this cluster, incl. the Isaiah 53 variant table confirmed against KJV; Father-Son christology read as dual-description-not-dual-being; provenance note accurate)
 - [x] 2026-06-02 `study/bom-walk/mosiah/mosiah-17.md` **LINKS** — CLEAN (the martyrdom; v9 "I will not recall the words… for they are true," v20 "having sealed the truth of his words by his death" EXACT)
 - [x] 2026-06-02 `study/bom-walk/mosiah/mosiah-18.md` **LINKS** — CLEAN (the waters of Mormon; v8 "willing to bear one another's burdens, that they may be light," v30 "how beautiful are they to the eyes of them who there came to the knowledge of their Redeemer" EXACT)
-- [ ] 2026-06-02 `study/bom-walk/mosiah/mosiah-19.md` **LINKS**
-- [ ] 2026-06-02 `study/bom-walk/mosiah/mosiah-20.md` **LINKS**
-- [ ] 2026-06-02 `study/bom-walk/mosiah/mosiah-21.md` **LINKS**
-- [ ] 2026-06-02 `study/bom-walk/mosiah/mosiah-22.md` **LINKS**
+- [x] 2026-06-02 `study/bom-walk/mosiah/mosiah-19.md` **LINKS** — CLEAN (Noah burned; v8 "the king was not so much concerned about his people as he was about his own life," v20 "caused that he should suffer, even unto death by fire" EXACT — Abinadi prophecy fulfilled)
+- [x] 2026-06-02 `study/bom-walk/mosiah/mosiah-20.md` **LINKS** — CLEAN (the innocent pay; v21 "are not the words of Abinadi fulfilled… because we would not hearken unto the words of the Lord" EXACT)
+- [x] 2026-06-02 `study/bom-walk/mosiah/mosiah-21.md` **LINKS** — CLEAN (slow to hear — the pastoral heart; v15 "the Lord was slow to hear their cry… nevertheless the Lord did hear their cries, and began to soften the hearts of the Lamanites… yet the Lord did not see fit to deliver them out of bondage" EXACT)
+- [x] 2026-06-02 `study/bom-walk/mosiah/mosiah-22.md` **LINKS** — CLEAN (escape by stratagem; v7 "pay the last tribute of wine to the Lamanites, and they will be drunken," v14 "Mosiah received them with joy; and he also received their records" EXACT)
 - [ ] 2026-06-02 `study/bom-walk/mosiah/mosiah-23.md` **LINKS**
 - [ ] 2026-06-02 `study/bom-walk/alma/alma-48.md` **LINKS**
 - [ ] 2026-06-02 `study/bom-walk/mosiah/mosiah-25.md` **LINKS**

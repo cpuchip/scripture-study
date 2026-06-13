@@ -3797,6 +3797,26 @@ martyrdom + the waters of Mormon. Verified by direct grep.
   burdens, that they may be light," v30 "how beautiful are they to the eyes
   of them who there came to the knowledge of their Redeemer" — EXACT.
 
+### Mosiah 19-22 (2026-06-13, 371→375) — ALL CLEAN
+
+The Noah-Limhi narrative: the king burned (Abinadi fulfilled), the innocent
+paying for the guilty, the "slow to hear" mercy, and the escape. Verified
+by direct grep.
+
+- **Mosiah 19** (Noah burned): v8 "the king was not so much concerned about
+  his people as he was about his own life," v20 "caused that he should
+  suffer, even unto death by fire" — EXACT.
+- **Mosiah 20** (the innocent pay): v21 "are not the words of Abinadi
+  fulfilled… because we would not hearken unto the words of the Lord" — EXACT.
+- **Mosiah 21** (slow to hear — the pastoral heart of Mosiah): v15 "the Lord
+  was slow to hear their cry… nevertheless the Lord did hear their cries, and
+  began to soften the hearts of the Lamanites… yet the Lord did not see fit
+  to deliver them out of bondage" — EXACT (the eased-burden-before-removed
+  doctrine, character-perfect).
+- **Mosiah 22** (escape by stratagem): v7 "pay the last tribute of wine to the
+  Lamanites, and they will be drunken," v14 "Mosiah received them with joy;
+  and he also received their records" — EXACT.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
