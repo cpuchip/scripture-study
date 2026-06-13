@@ -205,7 +205,7 @@ Already done out-of-band: `study/morm-8-three-glories-reading.md` (2026-06-09).
 - [x] 2026-06-01 `study/bom-walk/studies/README.md` **LINKS** — CLEAN (no links, no quotes)
 - [x] 2026-06-01 `study/bom-walk/README.md` **LINKS** — CLEAN (one link, resolves)
 - [x] 2026-06-01 `study/bom-walk/_graph.md` **T1** — CLEAN (derivative index; no md links; spot-checked variant + label fragments accurate)
-- [ ] 2026-06-01 `study/bom-walk/_journal.md` **T2**
+- [x] 2026-06-01 `study/bom-walk/_journal.md` **T2** — CLEAN (no md links; sampled fragments across the book verbatim; goodly claim accurate)
 - [ ] 2026-06-01 `study/bom-walk/_progress.md` **LINKS**
 - [ ] 2026-06-01 `study/bom-walk/_workflow.md` **T2**
 - [ ] 2026-06-01 `study/bom-walk/1-nephi/1-nephi-01.md` **T1**

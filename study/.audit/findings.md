@@ -2354,6 +2354,25 @@ fragments are verified against their source chapters as the walk
 reaches each chapter note; nothing here is an independent quote
 claim. CLEAN.
 
+### study/bom-walk/_journal.md (2026-06-01) — CLEAN (T2 sample)
+T2. 2,025-line personal narrative thread (Opus's per-chapter
+reflections, "Not doctrine; reflection"), derivative of the
+per-chapter notes. NO markdown links. ~700 double-quote chars are
+short embedded scripture fragments inside the reflections. Sampled
+a spread across the whole book — ALL verbatim against source: 1 Ne
+1:20 "because of their faith…mighty…deliverance," 1 Ne 9:5 "a wise
+purpose in him, which purpose I know not," Moro 7:47 "charity is
+the pure love of Christ, and it endureth forever," Moro 8:7 "I
+inquired of the Lord…by the power of the Holy Ghost," Moro 9:4
+"when I speak the word of God with sharpness…," Moro 10:22 "if ye
+have no hope ye must needs be in despair…," Moro 10:32 "come unto
+Christ, and be perfected in him…" The Webster *goodly* claim ("1828
+leans pleasant / comely / considerable, not 'righteous'") checks
+out against genuine 1828 (def 1 handsome/comely, def 2 pleasant/
+agreeable; "considerable" loosely = def 3 "bulky"; no sense means
+"righteous"). Fragments are cross-verified against source chapters
+as the walk reaches each per-chapter note. CLEAN.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
