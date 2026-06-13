@@ -1,69 +1,45 @@
-# For Michael — the walk is DONE (read on your phone)
+# For Michael — the whole arc is done (read on your phone)
 
-*Left by the webster-1828 session, 2026-06-13. Carried it through the night to
-the finish, as asked.*
+*Left by the webster-1828 session, 2026-06-13. Everything committed + pushed;
+ibeco.me and cpuchip.net green throughout.*
 
-## ★ STUDY-CORRECTNESS WALK COMPLETE — **469 / 469**
+## Everything you asked for is done
 
-Count-verified (0 unchecked, 469 checked in `_progress.md`), all committed, all
-pushed, ibeco.me 200 after every push. The whole corpus is now checked against
-actual sources.
+**① Study-correctness walk — COMPLETE, 469/469** (count-verified). Zero new
+confabulations in the back half; one link fix; the deep Webster studies all
+re-verified GENUINE (remediation proven held, count stays 132). preside.md
+(your ratified covenant's source) verified airtight.
 
-### What the back half found
-- **Zero new REQUOTE/confabulation corrections** in the entire back-half walk —
-  the chapter notes and studies were quote-exact against the gospel-library.
-- **One mechanical LINK fix:** `morm-8-three-glories-reading.md` cited "D&C
-  109:76" but the hyperlink pointed to section **76** instead of **109** —
-  corrected to `dc/109`. (Citation text was already right, so no visible-prose
-  change.)
-- **The deep Webster studies all re-verified GENUINE against the repaired 1828
-  MCP** — preside (`preside`/`PRESIDIAL` garrison), three-glories (8 entries:
-  apparel/fine/gain/glory/celestial/terrestrial/pollute + the verified ABSENCE
-  of telestial), alma12-13 (foreknowledge/Milton). The 2026-06-09 remediation
-  is **proven to have held.** Webster 1913-as-1828 count stays **132**.
-- **preside.md** (the source of your ratified presiding covenant) verified
-  airtight — every scripture quote, both Webster entries, the modern-decay
-  "featured solo performer" line, and Strong's H8104 *shamar* "to keep: obey"
-  all EXACT.
+**② Post-walk asks — all 3 done.** publish.exe ran (public/ regenerated);
+**cpuchip parity 11/11 live** (the fabricated "Todd says" quotes gone, silent
+fixes); scripture-book quote-audit note delivered.
 
-### Queue for you — TWO bin-4 items (verified exact, NOT resolved by me)
-1. **Morm 5:15** — "a dark, a filthy, and a loathsome people… because of their
-   unbelief and idolatry."
-2. **Alma 3:6** — "the skins of the Lamanites were dark… a curse because of
-   their transgression and their rebellion."
-Both verified character-perfect; both flagged for you + the Spirit; the notes
-log the in-text reframings (Alma 3: the Amlicites *marked themselves*, line
-drawn at *belief* not blood, curse removable on repentance) but pronounce
-nothing. They join your standing 2 Ne 5:21 datapoints, alongside the curse-
-*lifted* data (Alma 23:18 etc. — removable enmity/idleness on conversion).
+**③ Carry-forward flags — handled.** alma5 softened to "more than forty"; your
+**2 Ne 5:21 spiritual / aura-of-light reading recorded** as a post-project
+carry-forward (in the chapter note); **OCR confirmed already-resolved** (you were
+right — residuals are documented facsimile-pass items needing page scans we don't
+have).
 
-### One soft-count note (your call)
-The `alma5_searching-questions` study says "Forty-three distinct questions";
-the source has exactly **42 question marks**. The +1 depends on counting
-compound interrogatives (v53 bundles four "can ye/will ye" under one `?`) — a
-defensible methodology, so I left the prose intact and logged it. Tighten to
-"more than forty" if you'd rather match the verifiable floor.
+**④ Scratch audit — the fan-out you wanted to try.** 6 Opus agents, 62 files in
+parallel, **~75 corrections** — mostly the Webster 1913-as-1828 class, plus
+confabulations the walk had missed (D&C 8:11 invented text, Mosiah 18:29
+invented, D&C 107 mis-numbers, fabricated citations *inside* Webster entries,
+3-4 wrong attributions). I presided — reviewed every report, spot-verified the
+high-stakes catches against source. **It even surfaced one error that had
+reached a study file** (alma5 claimed Webster cites Gen 1:27 under *image* —
+genuine = Matt 22:20) — now fixed. The dogfood worked: fan-out shone exactly
+where it should (independent per-file verification), and parallel fresh eyes
+caught what my serial walk didn't.
 
-### Your 3 post-walk asks
-1. ✅ **DONE — `publish.exe -v` ran.** `public/` regenerated, 170 files picked
-   up all the walk's accumulated corrections, committed + pushed (ibeco 200).
-2. ✅ **DONE — cpuchip.net parity pass COMPLETE, 11 of 11, all live.** Silent
-   fixes throughout (your call, confirmed). send-me-covenants (the two fabricated
-   "Todd says" quotes removed) + the other 10: every Webster 1913→1828 requote
-   (give/forsake/repent/possess/know, sacrifice, compel, easiness, circumspectly,
-   declare, presumptuous, hope ×2) re-confirmed GENUINE against the repaired MCP;
-   every scripture/date fix vs source (Alma 22:18, 4 Ne 1:12, Ether 2:25/12:19-20,
-   3 Ne 6:15, Rom 5:5, 2 Cor 13:1, Luke 18:18, McKay-1950, Nelson Apr-2015, the
-   D&C 87/130 date, the confabulated Pearce quote). Two bonus catches: a broken
-   `<S>` tag + a leaked editorial artifact in hope-and-the-grammar-of-pairs.
-   validate + build green each push; cpuchip.net + study routes 200. The
-   workspace originals keep their dated correction notes (audit trail); the
-   public face just reads accurate.
-3. ✅ **DONE — scripture-book note dropped** in `projects/scripture-book/.spec/
-   quote-audit-note-from-walk.md` + pushed (lists the quote-classes to check;
-   did NOT touch the book — its stewardship).
+**⑤ Clean-up — done.** All ~136 inline correction/requote notes removed from the
+study files, and the one "Correction" banner removed from the published cpuchip
+morm-8 study. **Both faces read clean now; `study/.audit/findings.md` + the
+journals are the durable record** — exactly as you wanted. (Left one thing: the
+without-compulsion study's line-86 *methodology* footer, which is the study's own
+voice, not a correction banner — say the word if you want it gone too.)
 
-Full audit trail in `study/.audit/findings.md`. The walk is **complete** and
-**all three post-walk asks are done** — publish regenerated, all 11 cpuchip
-studies corrected and live, scripture-book note delivered. Two bin-4 items
-(Morm 5:15, Alma 3:6) and the alma5 soft-count remain queued for your reading.
+## Two things still in your court (only yours to do)
+- **2 Ne 5:21 / Morm 5:15 / Alma 3:6** — the bin-4 curse-question, parked with
+  your reading for post-project review with the Spirit.
+- Nothing else open. The corpus, the scratch audit trail, the published face,
+  and the workspace are all clean and current.

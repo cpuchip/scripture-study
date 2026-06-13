@@ -3,7 +3,7 @@ lane: webster-1828
 session_id: afac9c41-1980-4bea-8bc5-a101b39a8557
 status: active
 started: 2026-06-09T21:30:00
-last_active: 2026-06-13T05:10:00
+last_active: 2026-06-13T16:30:00
 ---
 
 ## Working on
@@ -303,6 +303,27 @@ last_active: 2026-06-13T05:10:00
   ② cpuchip parity pass IN PROGRESS (11 ⚠️ studies, send-me-covenants first —
   fabricated quotes live); ③ scripture-book quote-audit note dropped in its
   `.spec/` + pushed ✅. Phone note refreshed.
+- UPDATE 16: ★★★ **POST-WALK ARC COMPLETE.** ② **cpuchip parity 11/11 LIVE**
+  (silent fixes: send-me-covenants 2 fabricated "Todd says" quotes removed +
+  the 9 others' Webster/scripture/date requotes, each re-confirmed vs MCP).
+  ③ scripture-book note done. **Carry-forwards:** alma5→"more than forty"; **2 Ne
+  5:21 Michael's spiritual/aura-of-light reading RECORDED** as post-project
+  carry-forward in 2-nephi-05 note; **OCR confirmed already-resolved** (residuals
+  = documented facsimile-pass items, need page scans). ★ **SCRATCH-AUDIT FAN-OUT
+  (dogfood):** 6 Opus subagents, 62 files parallel, **~75 corrections** (mostly
+  Webster 1913→1828 + fabricated-citations-inside-Webster + confab scripture D&C
+  8:11/Mosiah 18:29/D&C 107 + 3-4 attributions). I presided (staged wave 1=2 /
+  wave 2=4, reviewed all reports, spot-verified high-stakes vs source). **Fan-out
+  surfaced 1 STUDY error the walk missed:** alma5 "Webster cites Gen 1:27 under
+  image" (genuine=Matt 22:20) + 1913 countenance — **FIXED** (study + note); other
+  4 surfaced errors scratch-only. Lesson: a study's Webster quotes need the MCP
+  even when scripture checks clean. ★ **NOTE CLEANUP:** removed ~136 inline
+  `*(Requoted/Corrected)*` + `*Correction(…)*` notes across study tree + the 1
+  cpuchip morm-8 banner — **studies + scratch read CLEAN; findings.md + journals
+  = the record** (Michael's call). Scratch provenance banners I'd briefly added
+  also removed. Journals: `.spec/journal/2026-06-13-study-correctness-walk-complete.md`
+  + `…-scratch-fanout-and-note-cleanup.md`. **Open: only the bin-4 curse-question
+  (2 Ne 5:21 / Morm 5:15 / Alma 3:6), parked for Michael + the Spirit.**
 - ✅ OCR repair SHIPPED + live-verified (1336c8ce); walk plan RATIFIED
   (.spec/proposals/study-correctness-walk.md)
 
