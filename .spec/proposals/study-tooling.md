@@ -59,11 +59,14 @@ time; each its own nod.
 
 **scripture-verbatim (the next build):** for each gospel-library ref link, diff the
 adjacent quoted text against the verse (`**N.** text` format, footnote sups
-stripped). The #1 thing the walk did by hand 469×. Hard part = associating a quoted
-string with the right ref; a **proximity heuristic** (quote near its link / quote
-following "verse N") gets most of it, precision-tuned like verify-quotes v1.
-Payoff: turns the next canon walk (PoGP) into a verify-the-flags pass instead of a
-read-everything marathon.
+stripped). The #1 thing the walk did by hand 469×. Two hard parts: (1) associating a
+quoted string with the right ref — a **proximity heuristic** (quote near its link /
+quote following "verse N") gets most of it, precision-tuned like verify-quotes v1;
+(2) **speaking the quote grammar from day one** — partial-phrase quotes and *marked*
+edits (`[brackets]`, `...` ellipses) are legitimate and must NOT flag; only *unmarked*
+deviations are errors. A naive whole-string compare would false-positive on every
+honest free quote. Payoff: turns the next canon walk (PoGP) into a verify-the-flags
+pass instead of a read-everything marathon.
 
 ---
 
@@ -84,9 +87,15 @@ Emits: `> "<verbatim text>" — [<ref>](<canonical relative link>)`
 
 - **scripture** — pull verse(s) verbatim from gospel-library (sups stripped),
   link relative to the target. Ranges ("Alma 5:14-16") in v1; talks v2.
-- **webster** — genuine 1828 def verbatim + attribution. **Open Q (Michael's):**
-  what does a Webster quote link to? (a) attribution-only `— Webster 1828` [rec],
-  (b) `1828.ibeco.me/word/<w>`, (c) webster-mcp source. Default (a), (b) as a flag.
+- **webster** — genuine 1828 def verbatim + attribution. **DECIDED (Michael
+  2026-06-13):** attribution-only `— Webster 1828` in the *source* text (clean,
+  reads well), and **the publish step linkifies** the attribution into a live link
+  straight to the word — `1828.ibeco.me/word/<w>` (ours, preferred; dogfoods
+  1828-illuminated) or `webstersdictionary1828.com` as the alt. Explicit inline
+  link available via a `--link` flag when wanted. Separation of concerns: working
+  text stays clean, the published face gets rich links. (New publish-step
+  enhancement: a Webster-attribution → link transformer; same shape as the
+  scripture-link pass-through.)
 - **promote** — NOT a retype. The scratch block is already verbatim-by-construction,
   so promote = locate the block + **re-base the relative link** for the study's
   depth (the "original ref link pass-through" Michael named). The only thing that
@@ -97,6 +106,46 @@ Emits: `> "<verbatim text>" — [<ref>](<canonical relative link>)`
 core, then an **MCP wrapper** (`gospel_quote` / `webster_quote`) so the agent calls
 it *at write-time during drafting* instead of read-then-retype — closing the
 confabulation surface at the source.
+
+### Block vs free-flow — the quote grammar (Michael 2026-06-13)
+
+v1's blockquote (`> "whole verse" — [ref]`) is verbatim-by-construction the *easy*
+way, because nothing is touched. But studies often **free quote** — weaving the
+words into the sentence, which reads better than a block: *Alma asks whether they
+have "received his image in [their] countenances."* Block is right for set-piece
+passages; inline free-flow is right for argument prose. The quoter must support
+both (the inline forms are **v2/v3**).
+
+Free-flow is harder because the quote gets legitimately *shaped*: **sub-selected**
+(a phrase, not the verse), **bracket-edited** for grammar (`your` → `[their]`),
+**elided** (`...`), **case-spliced** at a sentence start. These are honest
+scholarly moves — but they're also exactly where contamination hides (an *unmarked*
+word-drop, a silent paraphrase-in-quotes). The walk made this judgment by hand 469×
+("unmarked elision → mark it"; "Alma 22:18 dropped an 'and' twice → flag").
+
+The resolution is a **shared quote grammar** the quoter and linter both speak:
+> a quote = verbatim spans + **marked** edits. Brackets `[...]` (insertion/
+> substitution) and ellipses `...` are legitimate; verify the retained spans.
+> Any **unmarked** deviation (dropped/swapped word, paraphrase) = error.
+
+- **Quoter** *produces* well-formed marked quotes → correct + lint-clean by
+  construction. `quote scripture "Alma 5:14" --phrase "received his image in your
+  countenances"` verifies the phrase is verbatim before inlining; `--bracket
+  your=their` emits `[their]` *after* confirming the original word was "your".
+- **Linter** (scripture-verbatim) *enforces* the same grammar → catches hand-written
+  free quotes that broke it (the unmarked drop, the silent swap). So the rule must
+  tokenize into spans + marked-edits, not do a naive whole-string compare.
+
+Maturity ladder, both tools growing the grammar in parallel:
+- **v1** — whole-block quote (trivial grammar: one verbatim span).
+- **v2** — inline *phrase* (sub-selection + verify) with `--inline` output.
+- **v3** — free-flow into prose: bracket/ellipsis/case edits, the tool verifying the
+  **woven result** still carries the verbatim span + correct link before commit.
+  `promote --inline` re-casts a scratch block as woven prose, link re-based.
+
+By v3, write-through-quoter and lint-check are the *same grammar from both ends* —
+the constructor teaches it, the detector enforces it, and the exact judgment the
+walk did by hand is now mechanical.
 
 ---
 
