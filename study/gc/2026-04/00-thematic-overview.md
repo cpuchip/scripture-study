@@ -117,7 +117,7 @@ Oaks' "Alive in Christ" (from Cluster 1) also belongs here for its opening secti
 | [Eternal Marriage Is an Eternal Journey](../../../gospel-library/eng/general-conference/2026/04/55andersen.md) | Andersen | Marriage as character refinement, not just destination |
 | [Come unto Christ—Together](../../../gospel-library/eng/general-conference/2026/04/57wakolo.md) | Wakolo | Part-member families — patience, divine timing, agency |
 
-Cook establishes the priesthood keys. Andersen describes what happens *within* the sealed relationship: marriage refines character, requiring sacrifice, charity, patience. Wakolo addresses the hardest case: families where not everyone is on the covenant path. His stories testify that God honors patient faith, and they land on a refrain worth keeping whole: "Conversion is personal. Timing is individual. Agency is sacred." *(Requoted 2026-06-12 — an earlier version blended his themes into a sentence he didn't say.)*
+Cook establishes the priesthood keys. Andersen describes what happens *within* the sealed relationship: marriage refines character, requiring sacrifice, charity, patience. Wakolo addresses the hardest case: families where not everyone is on the covenant path. His stories testify that God honors patient faith, and they land on a refrain worth keeping whole: "Conversion is personal. Timing is individual. Agency is sacred."
 
 The connection to Cluster 1 is direct: if charity is the nature we're developing (Bednar), marriage is one of the primary crucibles where that development happens (Andersen).
 

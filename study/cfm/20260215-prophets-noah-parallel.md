@@ -26,8 +26,6 @@ From his first conference, President Nelson spoke with the clarity of a man who 
 
 > "We are engaged in the work of Almighty God. Jesus is the Christ! We are His humble servants!" — [Introductory Remarks, April 2018](../../gospel-library/eng/general-conference/2018/04/introductory-remarks.md)
 
-*Correction (2026-06-12): an earlier version of this study quoted "I know that the Lord will bless you as you look to Him for guidance and direction in your life" — that sentence is not in the talk. His actual closing words, restored above, carry the same clarity.*
-
 Over seven years and 44 conference addresses, his message was unwavering: this is Christ's Church, the adversary is escalating, time is short, and the only refuge is the covenant path — exactly what Noah taught.
 
 ### President Oaks (2018–present)

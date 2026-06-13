@@ -144,7 +144,7 @@ This is why His Atonement is infinite: it spans the full range.
 
 ### Atone: To Set at One
 
-**Webster 1828 on "atone":** as an adverb, simply "**At one; together**" — and as a verb, "to reduce to concord; to reconcile, as parties at variance; to appease." *(Requoted 2026-06-12 — the earlier "To set at one" phrasing was the 1913 edition's; the genuine 1828 is better: Webster lists ATONE first as an adverb whose whole definition is "at one; together.")*
+**Webster 1828 on "atone":** as an adverb, simply "**At one; together**" — and as a verb, "to reduce to concord; to reconcile, as parties at variance; to appease."
 
 The original meaning of atone is *at-one-ment* — to make one what was separated. Webster's own etymology bracket says it plainly: "[at and one.]" In the mechanics framework, the Fall separated:
 - Spirit from element (death)
@@ -181,8 +181,6 @@ And the blood in this equation is Christ's: "be cleansed by blood, even the bloo
 **Webster 1828 on "sanctify":**
 1. "In a general sense, to cleanse, purify or make holy" (sense 1)
 2. "To cleanse from corruption; to purify from sin; to make holy by detaching the affections from the world and its defilements, and exalting them to a supreme love to God" (sense 5) — and Webster's own scripture example for that sense is John 17:17: "Sanctify them through thy truth; **thy word is truth**."
-
-*(Requoted 2026-06-12 — the earlier two definitions were the 1913 edition's. The genuine sense 5 hands a truth-series study its own thesis: sanctification runs through truth.)*
 
 The truth study showed the spectrum:
 

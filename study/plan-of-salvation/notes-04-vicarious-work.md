@@ -125,14 +125,14 @@ Joseph quotes this in D&C 128:15,18. Paul knew: the ancient faithful were waitin
 ## Webster 1828 Definitions
 
 ### Vicarious
-**"Acting for another; filling the place of another"** and **"substituted in the place of another; as, a vicarious sacrifice."** *(Requoted 2026-06-12 — the earlier text was the 1913 edition's; the genuine entry keeps the "vicarious sacrifice" example.)*
+**"Acting for another; filling the place of another"** and **"substituted in the place of another; as, a vicarious sacrifice."**
 
 This is the precise doctrine: temple ordinances are *vicarious* — performed by one person standing in the place of another. Joseph's term in D&C 128:8 is "agents" — "whether they themselves have attended to the ordinances in their own propria persona, or by the means of their own agents." The 1828 AGENT, as an adjective, is simply "acting"; as a noun, "a substitute, deputy, or factor; one entrusted with the business of another."
 
 The phrase "vicarious sacrifice" in Webster's examples points directly to Christ: His Atonement is the ultimate vicarious act, and our temple work is a participation in that vicarious pattern.
 
 ### Redeem
-**"To purchase back; to ransom; to liberate or rescue from captivity or bondage, or from any obligation or liability to suffer or to be forfeited, by paying an equivalent."** *(Requoted 2026-06-12 — the earlier text was the 1913 edition's.)*
+**"To purchase back; to ransom; to liberate or rescue from captivity or bondage, or from any obligation or liability to suffer or to be forfeited, by paying an equivalent."**
 
 Also, the genuine theological sense — and it carries the vicarious doctrine inside it: **"To rescue and deliver from the bondage of sin and the penalties of God's violated law, by obedience and suffering in the place of the sinner, or by doing and suffering that which is accepted in lieu of the sinner's obedience."**
 
@@ -141,12 +141,12 @@ This matches the spirit world language perfectly. Phase 3 established two kinds 
 D&C 128:22: "that which would enable us to *redeem* them out of their *prison*; for the *prisoners* shall go free." Every Webster 1828 sense of "redeem" is at work: purchase back, ransom from captivity, deliver from bondage, pay the penalty.
 
 ### Perfect
-**"Finished; complete; consummate; not defective; having all that is requisite to its nature and kind."** *(Requoted 2026-06-12 — the earlier text was the 1913 edition's.)*
+**"Finished; complete; consummate; not defective; having all that is requisite to its nature and kind."**
 
 When Joseph says "they without us cannot be made *perfect*," he means they cannot be brought to *completion*. Their progression has a gap — a missing ordinance, a broken link. And ours has the same gap in reverse. We are not complete without connection to our ancestors. The chain of humanity must be whole.
 
 ### Weld
-*(Corrected 2026-06-12: an earlier version claimed the 1828 dictionary knew "weld" only as "to wield." The genuine 1828 carries the metallurgical sense in full.)* Webster 1828: **"To unite or hammer into firm union, as two pieces of iron, when heated almost to fusion."** The etymology bracket reads simply "[G., to join.]"
+ Webster 1828: **"To unite or hammer into firm union, as two pieces of iron, when heated almost to fusion."** The etymology bracket reads simply "[G., to join.]"
 
 So when Joseph uses "welding link" in D&C 128:18, the dictionary of his day already says exactly what he means: a *firm union* made at near-fusion heat — a *permanent, inseparable joining* of human generations across the veil.
 
@@ -282,7 +282,7 @@ For your friends who are ill, this phase carries a specific kind of comfort:
 - [D&C 137](../../gospel-library/eng/scriptures/dc-testament/dc/137.md) — vision of the celestial kingdom, Alvin, salvation for the dead
 - [D&C 138:30-50](../../gospel-library/eng/scriptures/dc-testament/dc/138.md) — spirit world missionary work (Phase 3 connection)
 
-**Webster 1828 Definitions:** *(requoted 2026-06-12 against the genuine 1828)*
+**Webster 1828 Definitions:**
 - *Vicarious* — "Acting for another; filling the place of another"; "substituted in the place of another; as, a vicarious sacrifice"
 - *Redeem* — "To purchase back; to ransom; to liberate or rescue from captivity or bondage ... by paying an equivalent"; theological sense: "by obedience and suffering in the place of the sinner"
 - *Perfect* — "Finished; complete; consummate; not defective; having all that is requisite to its nature and kind"

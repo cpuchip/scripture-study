@@ -141,7 +141,7 @@ Father and Son simultaneously, one and distinct. One by nature (both God), disti
 
 > "And now I say unto you, who shall declare his generation? Behold, I say unto you, that when his soul has been made an offering for sin he shall see his seed. And now what say ye? And who shall be his seed?" ([Mosiah 15:10](../gospel-library/eng/scriptures/bofm/mosiah/15.md))
 
-This is the hinge of the entire argument. Isaiah 53:8 asks "who shall declare his generation?" and Isaiah 53:10 says "he shall see his seed." In Webster's 1828 dictionary, "declare" means "to clear; to free from obscurity; to make plain" *(requoted 2026-06-12 — the earlier wording was the 1913 edition's)*. Abinadi is asking: *who will make plain the meaning of his offspring?* And then he answers his own question. He **declares** it — he makes it clear.
+This is the hinge of the entire argument. Isaiah 53:8 asks "who shall declare his generation?" and Isaiah 53:10 says "he shall see his seed." In Webster's 1828 dictionary, "declare" means "to clear; to free from obscurity; to make plain". Abinadi is asking: *who will make plain the meaning of his offspring?* And then he answers his own question. He **declares** it — he makes it clear.
 
 ### The Seed Redefined
 

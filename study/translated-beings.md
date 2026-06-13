@@ -19,9 +19,9 @@ This isn't a study about wanting superpowers. The Three Nephites didn't ask for 
 
 ### The Words
 
-**Translate** — Webster 1828, sense 2: *"To remove or convey to heaven, as a human being, without death."* And the genuine entry's own citation is this study's subject: *"By faith Enoch was translated, that he should not see death. Hebrews 11:5."* *(Requoted 2026-06-12 — the earlier wording and numbering were the 1913 edition's.)* The primary definition is about *carrying from one place to another* ("to bear, carry or remove from one place to another") — and that's exactly what happens. The body is carried from one state to another without passing through death.
+**Translate** — Webster 1828, sense 2: *"To remove or convey to heaven, as a human being, without death."* And the genuine entry's own citation is this study's subject: *"By faith Enoch was translated, that he should not see death. Hebrews 11:5."* The primary definition is about *carrying from one place to another* ("to bear, carry or remove from one place to another") — and that's exactly what happens. The body is carried from one state to another without passing through death.
 
-**Transfigure** — Webster 1828: *"To transform; to change the outward form or appearance."* The genuine entry's citation is the Transfiguration itself: *"And was transfigured before them. Matthew 17:2."* *(Requoted 2026-06-12 — the earlier "exalted and glorious" tail was the 1913 edition's.)* This is the word the scriptures use for the *process* — the visible, experiential change.
+**Transfigure** — Webster 1828: *"To transform; to change the outward form or appearance."* The genuine entry's citation is the Transfiguration itself: *"And was transfigured before them. Matthew 17:2."* This is the word the scriptures use for the *process* — the visible, experiential change.
 
 **Quicken** — Webster 1828: *"To make alive; to vivify; to revive or resuscitate, as from death or an inanimate state."* This is the word the Doctrine and Covenants uses for what glory does to a body — it *quickens* it, makes it alive in a way it wasn't before.
 

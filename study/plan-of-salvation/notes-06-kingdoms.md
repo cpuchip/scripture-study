@@ -17,7 +17,7 @@ Before revealing the three kingdoms, Jesus Himself prepared the ground:
 
 > "In my Father's house are many **mansions**: if it were not so, I would have told you. I go to prepare a place for you." — [John 14:2](../../gospel-library/eng/scriptures/nt/john/14.md)
 
-**Webster 1828** defines *mansion* as "any place of residence; a house; a habitation" — and the genuine entry's own citation is this very verse: "In my Father's house are many mansions. John 14:2." Not a grand palace — a *dwelling*. Jesus is telling Thomas: there is a place prepared for you. Many dwelling-places, many resting-points, in the Father's house. *(Requoted 2026-06-12 — the earlier "dwelling place" wording and a claimed lunar secondary sense were the 1913 edition's; the genuine 1828 has no moon sense, so that speculation is withdrawn.)*
+**Webster 1828** defines *mansion* as "any place of residence; a house; a habitation" — and the genuine entry's own citation is this very verse: "In my Father's house are many mansions. John 14:2." Not a grand palace — a *dwelling*. Jesus is telling Thomas: there is a place prepared for you. Many dwelling-places, many resting-points, in the Father's house.
 
 The very next breath is the declaration studied in the [way-truth-life](../way-truth-life.md) document: "I am the way, the truth, and the life: no man cometh unto the Father, but by me" ([John 14:6](../../gospel-library/eng/scriptures/nt/john/14.md)). The mansions exist. Christ is the way into them.
 
@@ -112,7 +112,7 @@ Phase 5 explored how "the glory by which your bodies are quickened" determines y
 
 > "He who is not able to **abide** the law of a celestial kingdom cannot abide a celestial glory." — [D&C 88:22](../../gospel-library/eng/scriptures/dc-testament/dc/88.md)
 
-**Webster 1828** defines *abide*: "to rest, or dwell"; "to continue permanently or in the same state; to be firm and immovable." And the transitive sense: "to endure or sustain — to abide the indignation of the Lord. Jeremiah 10:10." *(Requoted 2026-06-12 — the earlier text was the 1913 edition's; the genuine "endure or sustain" carries the can-you-survive-this-glory reading directly.)* Not merely tolerate — *make your home there*. Can you live in this law? Can you dwell in it comfortably? Can you sustain it? Then that is your kingdom.
+**Webster 1828** defines *abide*: "to rest, or dwell"; "to continue permanently or in the same state; to be firm and immovable." And the transitive sense: "to endure or sustain — to abide the indignation of the Lord. Jeremiah 10:10." Not merely tolerate — *make your home there*. Can you live in this law? Can you dwell in it comfortably? Can you sustain it? Then that is your kingdom.
 
 President Oaks reinforced this: "The kingdom of glory we receive in the Final Judgment is determined by the laws we choose to follow in our mortal journey. Under that loving plan, there are multiple kingdoms—many mansions—so that all of God's children will inherit a kingdom of glory whose laws they can comfortably 'abide'" ([Kingdoms of Glory](../../gospel-library/eng/general-conference/2023/10/17oaks.md), Oct 2023).
 
@@ -157,7 +157,7 @@ Even within the highest glory, there is structure:
 
 > "And if he does not, he cannot obtain it. He may enter into the other, but that is the end of his kingdom; he cannot have an **increase**." — [D&C 131:3–4](../../gospel-library/eng/scriptures/dc-testament/dc/131.md)
 
-**Webster 1828** defines the noun *increase*, sense 4: "Progeny; issue; offspring" — and sense 5, in one word: "Generation." *(Requoted 2026-06-12 — the earlier "production of young" text was the 1913 edition's; the genuine noun says it plainer.)* This isn't just "more blessings" in some vague sense. It means eternal offspring. Eternal family. The continuation of life itself.
+**Webster 1828** defines the noun *increase*, sense 4: "Progeny; issue; offspring" — and sense 5, in one word: "Generation." This isn't just "more blessings" in some vague sense. It means eternal offspring. Eternal family. The continuation of life itself.
 
 Without the marriage covenant, one can enter celestial glory but cannot have *increase*. D&C 132 makes this explicit: those who do not enter the everlasting covenant "remain separately and singly, without exaltation, in their saved condition, to all eternity; and from henceforth are not gods, but are angels of God forever and ever" ([D&C 132:17](../../gospel-library/eng/scriptures/dc-testament/dc/132.md)).
 
@@ -173,7 +173,7 @@ Moses heard the Father's mission statement:
 
 Two words. Two gifts. Not the same thing.
 
-**Webster 1828:** *(requoted 2026-06-12 — the earlier texts were the 1913 edition's, including a 1 Cor 15:53 citation that belongs to the 1913)*
+**Webster 1828:**
 - *Immortality* = "The quality of never ceasing to live or exist; exemption from death and annihilation; life destined to endure without end." The genuine entry quotes Paul too — 2 Timothy 1:10: "Jesus Christ, who hath abolished death, and hath brought life and immortality to light through the gospel."
 - *Salvation* = "Appropriately in theology, the redemption of man from the bondage of sin and liability to eternal death, and the conferring on him everlasting happiness."
 
@@ -199,7 +199,7 @@ This is the most detailed description of exaltation in all scripture:
 
 > "Then shall they be **gods**, because they have no end; therefore shall they be from everlasting to everlasting, because they continue; then shall they be above all, because all things are subject unto them. Then shall they be gods, because they have **all power**, and the angels are subject unto them." — [D&C 132:20](../../gospel-library/eng/scriptures/dc-testament/dc/132.md)
 
-**Webster 1828** defines *exaltation*: "The act of raising high" and "elevation to power, office, rank, dignity or excellence." But note sense 4: "In pharmacy, the refinement or subtilization of bodies or their qualities and virtues, or the increase of their strength." *(Requoted 2026-06-12 — the earlier texts were the 1913 edition's; the genuine carries the same refinement sense.)* Exaltation is not just altitude — it is *refinement*. The perfecting of what something already is.
+**Webster 1828** defines *exaltation*: "The act of raising high" and "elevation to power, office, rank, dignity or excellence." But note sense 4: "In pharmacy, the refinement or subtilization of bodies or their qualities and virtues, or the increase of their strength." Exaltation is not just altitude — it is *refinement*. The perfecting of what something already is.
 
 And then this — the verse that ties the entire study together:
 

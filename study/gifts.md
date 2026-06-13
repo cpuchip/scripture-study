@@ -106,7 +106,7 @@ This is stunning in its simplicity. When you pray *in the Spirit*, your desires 
 
 The word "covet" here is not negative — Paul is using the Greek *zēloute* (be zealous for). He's saying: *pursue* them. And the Lord in D&C 46 says "seek earnestly" — not passively wait.
 
-**Webster 1828 — "gift"**: *"Power; faculty; some quality or endowment conferred by the author of our nature."* *(Requoted 2026-06-12 — the earlier text was the 1913 edition's; "the author of our nature" is the genuine 1828's phrase.)* The word carries both senses throughout: something *given* (you can't manufacture it) but also something you can *seek* and be given.
+**Webster 1828 — "gift"**: *"Power; faculty; some quality or endowment conferred by the author of our nature."* The word carries both senses throughout: something *given* (you can't manufacture it) but also something you can *seek* and be given.
 
 President George Q. Cannon, as quoted by Elder Callister:
 
@@ -233,8 +233,6 @@ Those who lack faith for healing aren't rejected — they're carried. The commun
 **Webster 1828 — "discernment"**: *"The power or faculty of the mind, by which it distinguishes one thing from another, as truth from falsehood, virtue from vice; acuteness of judgment; power of perceiving differences of things or ideas, and their relations and tendencies."*
 
 **Webster 1828 — "discern"**: *"To distinguish; to see the difference between two or more things; to discriminate"* — and intransitively, *"to see or understand the difference; to make distinction; as, to discern between good and evil, truth and falsehood."*
-
-*(Both requoted 2026-06-12 — the earlier texts were the 1913 edition's. The genuine entries name the gift's content themselves: truth from falsehood, virtue from vice, good and evil — and DISCERN's own citations include 2 Samuel 14:17, "to discern good and bad.")*
 
 The historical definition emphasizes *distinguishing between things*. Not vague spiritual feelings — precise differentiation. Seeing what's really there versus what appears to be there.
 

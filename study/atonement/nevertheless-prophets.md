@@ -137,7 +137,7 @@ Aidukaitis does something particularly interesting: he applies it to youth facin
 - [Elder Moisés Villanueva, "Favored of the Lord in All My Days," October 2021](../../gospel-library/eng/general-conference/2021/10/28villanueva.md)
 - [Elder Jorge F. Zeballos, "Building a Life Resistant to the Adversary," October 2022](../../gospel-library/eng/general-conference/2022/10/27zeballos.md)
 
-A fourth speaker, [Elder Aroldo B. Cavalcante, "The Wind Did Never Cease to Blow," October 2024](../../gospel-library/eng/general-conference/2024/10/27cavalcante.md), reaches for a different Nephi "nevertheless" — [1 Nephi 4:6–7](../../gospel-library/eng/scriptures/bofm/1-ne/4.md): "led by the Spirit, not knowing beforehand the things which \[you] should do. Nevertheless \[you] went forth." *(Corrected 2026-06-12 — an earlier version listed this talk under 1 Nephi 1:1.)*
+A fourth speaker, [Elder Aroldo B. Cavalcante, "The Wind Did Never Cease to Blow," October 2024](../../gospel-library/eng/general-conference/2024/10/27cavalcante.md), reaches for a different Nephi "nevertheless" — [1 Nephi 4:6–7](../../gospel-library/eng/scriptures/bofm/1-ne/4.md): "led by the Spirit, not knowing beforehand the things which \[you] should do. Nevertheless \[you] went forth."
 
 Stevenson built his entire COVID-era talk around Nephi's "nevertheless." His argument: "Times of affliction and disappointment do not change the watchful eye of the Lord as He favorably looks upon us, blessing us." The "nevertheless" becomes a doctrinal claim about God's constancy — the afflictions don't change the favor. Not the less.
 

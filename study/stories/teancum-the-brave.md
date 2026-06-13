@@ -62,7 +62,7 @@ The next morning, Moroni marched forth against the Lamanites. He slew them with 
 
 Peace came to the people of Nephi.
 
-Moroni retired to his own house. Pahoran returned to his judgment seat. Helaman took up the ministry again and went forth to declare the word of God with much power. *(Corrected 2026-06-12 — an earlier version called Helaman Teancum's father; scripture records no such relationship.)*
+Moroni retired to his own house. Pahoran returned to his judgment seat. Helaman took up the ministry again and went forth to declare the word of God with much power.
 
 The war that had consumed a generation ended the morning after Teancum died.
 
