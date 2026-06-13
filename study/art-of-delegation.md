@@ -17,9 +17,11 @@ When I ask someone to carry a burden for me, and they willingly agree, something
 
 I asked someone to do something for me. They agreed. And I felt it — relief. Not just organizational relief, not "one less item on the list," but the felt sense that a burden on my mind was taken willfully. The weight didn't disappear. It redistributed. Someone chose to carry part of it, and the choosing changed both of us.
 
-Webster 1828 draws a distinction between *burden* and *load* that the scripture writers seem to already know:
+The 1913 edition of Webster's dictionary draws a distinction between *burden* and *load* that the scripture writers seem to already know:
 
-> "A burden is a weight to be borne; a load is something laid upon us to be carried. Our burdens may be of such a nature that we feel bound to bear them cheerfully or without complaint. They may arise from the nature of our situation; they may be allotments of Providence. ... What is upon us, as a load, we commonly carry with greater reluctance or sense of oppression."
+> "A burden is, in the literal sense, a weight to be borne; a load is something laid upon us to be carried. ... Our burdens may be of such a nature that we feel bound to bear them cheerfully or without complaint. They may arise from the nature of our situation; they may be allotments of Providence. ... What is upon us, as a load, we commonly carry with greater reluctance or sense of oppression."
+
+*(Re-attributed 2026-06-12 — an earlier version credited this synonym note to Webster 1828, whose entry has no such note; the distinction belongs to the later editors. Noah's own 1828 defines burden plainly: "that which is borne or carried" and "that which is borne with labor or difficulty; that which is grievous, wearisome or oppressive.")*
 
 A burden is borne willingly. A load is carried reluctantly. A calling is a burden in the best sense of the word: it arises from our covenant situation, from the allotments of Providence. When someone accepts a delegated responsibility willingly, they are bearing a burden, not hauling a load. And that willing bearing is exactly what the baptismal covenant describes:
 
@@ -45,7 +47,7 @@ Isaiah 53 reads like a delegation document — every verb is burden-transfer:
 
 > "He shall *bear* their iniquities" (v. 11) ([Isaiah 53:4–6, 11](../gospel-library/eng/scriptures/ot/isa/53.md))
 
-Borne. Carried. Wounded *for*. Bruised *for*. Laid *on* him. Bear. Webster 1828 defines "bear" as both "to support or sustain" and "to sustain, or be answerable for, as blame, expense, responsibility" — then cites Isaiah 53:11 as the example. To bear is not just to carry. It is to become answerable. Christ didn't merely transport our sins from one place to another. He became answerable for them.
+Borne. Carried. Wounded *for*. Bruised *for*. Laid *on* him. Bear. Webster 1828 defines "bear" as "to support; to sustain" and "to sustain the effect, or be answerable for; as, to bear the blame" — and its twenty-first sense was written for this chapter: "To remove, or to endure the effects of; and hence to give satisfaction for. He shall bear their iniquities. Isaiah 53:11." The same sense continues: "To bear the infirmities of the weak, to bear one another's burdens, is to be charitable towards their faults, to sympathize with them, and to aid them in distress." *(Requoted 2026-06-12 — the earlier "blame, expense, responsibility" wording was the 1913 edition's; the Isaiah 53:11 example, and the one-another's-burdens gloss, are genuinely Noah's.)* To bear is not just to carry. It is to become answerable — to give satisfaction for. Christ didn't merely transport our sins from one place to another. He became answerable for them.
 
 But Alma adds something Isaiah doesn't make explicit. The Atonement's burden-bearing has a *purpose* beyond substitution:
 
@@ -69,7 +71,7 @@ Jethro's prescription: "Moreover thou shalt provide out of all the people able m
 
 Numbers 11 tells the same story in darker tones. Moses breaks. "I am not able to bear all this people alone, because it is too heavy for me. And if thou deal thus with me, kill me, I pray thee" ([Numbers 11:14–15](../gospel-library/eng/scriptures/ot/num/11.md)). God's response is not "be stronger." It's "share the burden." And the mechanism reveals something: "I will take of the spirit which is upon thee, and will put it upon them; and they shall bear the burden of the people with thee, that thou bear it not thyself alone" ([Numbers 11:17](../gospel-library/eng/scriptures/ot/num/11.md)).
 
-God doesn't just assign helpers. He transfers His Spirit to equip them. Webster 1828: a delegate is "any one sent *and empowered* to act for another." Sent AND empowered. Delegation without empowerment is merely assignment. Numbers 11:17 is empowerment — the Spirit moves from Moses to the seventy, and they prophesy ([Numbers 11:25](../gospel-library/eng/scriptures/ot/num/11.md)).
+God doesn't just assign helpers. He transfers His Spirit to equip them. Webster 1828: a delegate is "a person appointed and sent by another with powers to transact business as his representative." *(Requoted 2026-06-12 — "any one sent and empowered" was the 1913 edition's.)* Appointed, sent, and given powers. Delegation without the powers is merely assignment. Numbers 11:17 is empowerment — the Spirit moves from Moses to the seventy, and they prophesy ([Numbers 11:25](../gospel-library/eng/scriptures/ot/num/11.md)).
 
 The Jethro principle is practical, not theological. I should name that honestly. Exodus 18 doesn't use Atonement vocabulary. It's an organizational intervention from a father-in-law who saw his son-in-law burning out. But the *pattern* rhymes with the Atonement: one person carrying too much, a wise voice saying "share the weight," and the discovery that shared weight serves everyone better than concentrated weight.
 
@@ -83,7 +85,7 @@ Therefore the Church operates on two axes simultaneously. The vertical: Christ b
 
 Most delegation advice focuses on the delegator: how to assign well, how to let go, how to follow up. But the scriptures give equal weight to the receiver.
 
-Christ's yoke-invitation is the clearest example. "Come unto me, all ye that labour and are heavy laden, and I will give you rest. Take my yoke upon you, and learn of me" ([Matthew 11:28–29](../gospel-library/eng/scriptures/nt/matt/11.md)). A yoke joins two animals to pull together. Webster 1828: "Two animals yoked together; a couple; a pair that work together." Christ doesn't say "give me your burden and rest." He says "take my yoke upon you" — enter into shared labor with me. The delegation is bidirectional. He bears our sins, then yokes us to His work. The burden becomes light not because it disappears but because two pull.
+Christ's yoke-invitation is the clearest example. "Come unto me, all ye that labour and are heavy laden, and I will give you rest. Take my yoke upon you, and learn of me" ([Matthew 11:28–29](../gospel-library/eng/scriptures/nt/matt/11.md)). A yoke joins two animals to pull together. Webster 1828: "a couple; a pair; as a yoke of oxen" — and the entry's fifth sense is "Service," illustrated with the Savior's own words: "My yoke is easy. Matthew 11:30." *(Requoted 2026-06-12 — the earlier "pair that work together" wording was the 1913 edition's.)* Christ doesn't say "give me your burden and rest." He says "take my yoke upon you" — enter into shared labor with me. The delegation is bidirectional. He bears our sins, then yokes us to His work. The burden becomes light not because it disappears but because two pull.
 
 "Learn of me" — the purpose of the shared yoke is education. Becoming. Not just load relief.
 

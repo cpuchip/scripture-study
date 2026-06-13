@@ -1701,6 +1701,25 @@ the D&C 26:2 footnote claim verified); talks verbatim (Petersen
 1974 ×2, Oaks 2009, Uchtdorf 2022 ×2 incl. a marked-ellipsis
 bridge, Eyring 2008, Hinckley ×3, Ballard ×3, Handbook 4.3/4.4.3).
 
+### study/art-of-delegation.md (2026-03-31) — 4 Webster items 1913 (words 101-104), with three genuine gifts
+T1+FULL. The BURDEN-vs-LOAD blockquote was the 1913's SYNONYM NOTE
+near-verbatim (genuine 1828 has no such note) — re-attributed, the
+NEVERTHELESS class again. BEAR's quoted definition was 1913
+phrasing, but the gifts are genuinely Noah's: sense 21 "To remove,
+or to endure the effects of; and hence to give satisfaction for.
+He shall bear their iniquities. Isaiah 53:11" PLUS "To bear the
+infirmities of the weak, to bear one another's burdens, is to be
+charitable towards their faults…" — Mosiah 18 language inside the
+1828 entry. DELEGATE ("any one sent and empowered") was 1913 —
+genuine: "appointed and sent by another with powers." YOKE ("two
+animals yoked together… pair that work together") was 1913 —
+genuine sense 5 is "Service. My yoke is easy. Matthew 11:30,"
+the Savior's own words in the entry. All ~30 scriptures verbatim
+(Isa 53:4-6/11, Alma 7:11-12, Ex 18, Num 11, Matt 11:28-29, D&C
+58/84/121, 1 Pet 5, Gal 6:2/5, Mosiah 18); talks verbatim (Lee
+1971, Ballard 2006 ×4 — one accepted trailing trim before "on the
+reports," Edgley 2007, Simpson 1972).
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
