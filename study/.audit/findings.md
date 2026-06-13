@@ -1648,6 +1648,26 @@ Moses 1:6/12. The "Jesus never says 'our Father' in his own
 prayers" claim verified by absence in John 17 ("Holy Father" and
 "O righteous Father" both present, "our Father" zero hits).
 
+### study/stewardship-pattern.md (2026-03-22) — COUNSEL + STEWARD 1913 (words 97-98); ORDAIN propagation inverted a sense order; 2 D&C 107 verse numbers
+T1+FULL. COUNSEL ("interchange of opinions; mutual advising") was
+1913 — genuine: "consultation; interchange of opinions" with Ps
+55:14 "We took sweet counsel together" (requoted both uses).
+STEWARD was 1913 — genuine requoted, plus the gift: genuine sense
+5 = "a minister of Christ … It is required in stewards, that a man
+be found faithful. 1 Cor 4:2." ORDAIN was the 1913 again
+(propagation of an earlier-counted word) and the sentence built on
+it ("before it means to set apart for an office, it means to bring
+order") had the 1828's sense order BACKWARDS — genuine sense 1 IS
+the office sense; reworked. PRESIDE held genuine (study's text is
+sense 3 with "as inspector" trimmed). Verse numbers: the priests-
+quorum quote is D&C 107:87 not :72 (v72 is bishop-as-judge), and
+the elders quote is :89 not :78 (v78 is difficult cases) — both
+requoted/recited. The Mosiah 4:27 cross-reference lives in D&C
+10:4's footnote, not Exodus 18's — locus fixed. Verified verbatim:
+Ex 18 (+ fn-1b JST high-priest claim EXACT), Matt 10, Luke 10, Abr
+4:18/21/26 + 5:4/5/20, Num 11, Mosiah 18/25/26, D&C 107:85-100,
+D&C 82:10/10:4, Hinckley 1990 ×2, Ballard 1994 ×3.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)

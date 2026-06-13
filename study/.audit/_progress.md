@@ -147,7 +147,7 @@ Already done out-of-band: `study/morm-8-three-glories-reading.md` (2026-06-09).
 - [x] 2026-03-19 `study/yt/LO0Ws-l6brg-4-ai-labs-same-system.md` **SAMPLE** — squad link → archive/; 2 micro-requotes; 7 quotes sampled verbatim
 - [x] 2026-03-20 `study/only-begotten.md` **T1+FULL** — ONLY/BEGET/CONDESCENSION/SIMILITUDE all 1913 (words 93-96; genuine adverb entry cites "only-begotten" itself); monogenes 7→9; Moses 1 count fixed; ~40 scriptures verbatim
 - [x] 2026-03-21 `study/only-begotten-deeper.md` **FULL** — CLEAN (~25 quotes verbatim; no-our-Father claim verified by absence)
-- [ ] 2026-03-22 `study/stewardship-pattern.md` **T1+FULL**
+- [x] 2026-03-22 `study/stewardship-pattern.md` **T1+FULL** — COUNSEL + STEWARD 1913 (97-98), ORDAIN propagation (sense order inverted); D&C 107:72→87, 78→89; footnote locus fixed; ~45 quotes verbatim
 - [ ] 2026-03-22 `study/stewardship-pattern-reflections.md` **FULL**
 - [ ] 2026-03-27 `study/art-of-presidency.md` **T1+FULL**
 - [ ] 2026-03-31 `study/art-of-delegation.md` **T1+FULL**
