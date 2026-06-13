@@ -84,7 +84,9 @@ The Atonement covers those who have no law:
 
 The Atonement covers those without law completely. Which means the person *with* the law — "yea, that has all the commandments of God, like unto us" (v. 27) — is in a different situation. Not a less-covered situation, but a more accountable one. The escape route is available. To waste the probationary days knowing it is available is, Jacob says, to be in an "awful state."
 
-"Probation" in Jacob's vocabulary is not a penal term. It is the testing period — the days given to prove character, to become something. Webster's 1828 defines it as "the state of man in the present life, in which he has the opportunity of proving his character, and becoming qualified for a happier state." To waste the probation is to use up the proving time without proving anything.
+"Probation" in Jacob's vocabulary is not a penal term. It is the testing period — the days given to prove character, to become something. Webster's 1828 defines it as "Moral trial; the state of man in the present life, in which he has the opportunity of proving his character and being qualified for a happier state. Probation will end with the present life." To waste the probation is to use up the proving time without proving anything.
+
+*(Requoted 2026-06-12 — the earlier wording ("proving his character, and becoming qualified for a happier state") was the 1913 edition's; the genuine 1828 reads "proving his character and being qualified" and adds "Probation will end with the present life." The point — probation as the proving time — holds either way.)*
 
 The pivot is the word "but": "But wo unto him that has the law given" (v. 27). The cosmic deliverance is real. Therefore the failure to receive it by someone who knows about it is inexcusable. The two halves of the sermon are the same argument.
 
