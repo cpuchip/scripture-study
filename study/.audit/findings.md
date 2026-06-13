@@ -3275,6 +3275,29 @@ LINKS ×3. No markdown links.
   v40 "more or less than this… cometh of evil." The heart of the book,
   verbatim-clean.
 
+### #297-301 `3-nephi 9, 10, 12, 13, 14` — bom-walk LINKS — ALL CLEAN
+- **3 Ne 9** (the voice in the darkness): v13 "that I may heal you,"
+  v15 "I created the heavens and the earth… with the Father from the
+  beginning," v18 "Alpha and Omega," v20 "a broken heart and a contrite
+  spirit… they knew it not" — EXACT. Another is-jesus divinity text.
+- **3 Ne 10** (the hen-lament): v4 "how oft have I gathered you as a
+  hen gathereth her chickens," v5 "and ye would not," v6 "how oft will
+  I gather you… if ye will repent," v10 "mourning was turned into joy"
+  — EXACT.
+- **3 Ne 12-14 (the Sermon at the Temple): ★ all the Matthew variants
+  confirmed by direct comparison.** Ch 12 vs Matt 5: v3 BoM adds "who
+  come unto me," v6 adds "with the Holy Ghost," v13 "I give unto you
+  to be the salt of the earth" (KJV "Ye are"), v48 "even as I, or your
+  Father" (KJV only "your Father") — all four verified against the KJV
+  text. Ch 13 vs Matt 6: ★ the famous "take no thought" is, in the
+  Nephite text, explicitly addressed to "the twelve whom he had
+  chosen" (v25) — the interpretive key, confirmed verbatim; "where
+  your treasure is, there will your heart be" (v21), "seek ye first
+  the kingdom" (v33). Ch 14 vs Matt 7: golden rule "the law and the
+  prophets" (v12), "few there be that find it" (v14), "I never knew
+  you" (v23), the house on the rock (v24-27) — all EXACT. The
+  long-form Sermon notes hold verbatim throughout.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)

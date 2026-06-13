@@ -296,9 +296,9 @@ Already done out-of-band: `study/morm-8-three-glories-reading.md` (2026-06-09).
 - [x] 2026-06-02 `study/bom-walk/3-nephi/3-nephi-8.md` **LINKS** — CLEAN (the destruction; v1 "cleansed every whit," v18 "rent in twain… seams and in cracks," v20 "feel the vapor of darkness," v23 "three days… no light," v25 the too-late lament "our mothers and our fair daughters" all EXACT)
 - [x] 2026-06-02 `study/bom-walk/3-nephi/3-nephi-9.md` **LINKS** — CLEAN (the voice in the darkness; v13 "that I may heal you," v15 "I created the heavens and the earth… with the Father from the beginning," v18 "Alpha and Omega," v20 "a broken heart and a contrite spirit… they knew it not" all EXACT; another is-jesus divinity declaration)
 - [x] 2026-06-02 `study/bom-walk/3-nephi/3-nephi-10.md` **LINKS** — CLEAN (the hen-lament; v4 "how oft have I gathered you as a hen gathereth her chickens," v5 "and ye would not," v6 "how oft will I gather you… if ye will repent," v10 "their mourning was turned into joy" all EXACT)
-- [ ] 2026-06-02 `study/bom-walk/3-nephi/3-nephi-12.md` **LINKS**
-- [ ] 2026-06-02 `study/bom-walk/3-nephi/3-nephi-13.md` **LINKS**
-- [ ] 2026-06-02 `study/bom-walk/3-nephi/3-nephi-14.md` **LINKS**
+- [x] 2026-06-02 `study/bom-walk/3-nephi/3-nephi-12.md` **LINKS** — CLEAN (Sermon pt 1; ★ all 4 Matthew-5 variants confirmed by direct comparison — v3 "+who come unto me," v6 "+with the Holy Ghost," v13 "I give unto you to be" (KJV "Ye are"), v48 "+even as I, or"; v2 "more blessed are they who shall believe in your words" all EXACT)
+- [x] 2026-06-02 `study/bom-walk/3-nephi/3-nephi-13.md` **LINKS** — CLEAN (Sermon pt 2; ★ v25 "take no thought" addressed to "the twelve whom he had chosen" (the Nephite interpretive key) confirmed; v2 "they have their reward," v21 "where your treasure is, there will your heart be," v33 "seek ye first the kingdom" all EXACT)
+- [x] 2026-06-02 `study/bom-walk/3-nephi/3-nephi-14.md` **LINKS** — CLEAN (Sermon close; v12 golden rule "the law and the prophets," v14 "strait is the gate… few there be that find it," v21 "he that doeth the will of my Father," v23 "I never knew you," v24 house on the rock all EXACT)
 - [ ] 2026-06-02 `study/bom-walk/3-nephi/3-nephi-15.md` **LINKS**
 - [ ] 2026-06-02 `study/bom-walk/3-nephi/3-nephi-16.md` **LINKS**
 - [ ] 2026-06-02 `study/bom-walk/helaman/helaman-12.md` **LINKS**
