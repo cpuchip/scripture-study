@@ -3,7 +3,7 @@ lane: webster-1828
 session_id: afac9c41-1980-4bea-8bc5-a101b39a8557
 status: active
 started: 2026-06-09T21:30:00
-last_active: 2026-06-13T03:05:00
+last_active: 2026-06-13T05:10:00
 ---
 
 ## Working on
@@ -284,6 +284,25 @@ last_active: 2026-06-13T03:05:00
   Still ZERO new REQUOTE corrections in any chapter note; Webster holds 132.
   NEXT: Alma 42-46 + 22-24, 31, 5-21 + 2 studies + the non-bom tail (daily-
   digests, freedom, morm-8 readings, preside.md) — **42 files remain**.
+- UPDATE 15: ★★★ **STUDY-CORRECTNESS WALK COMPLETE — 469/469** (count-verified:
+  0 unchecked, 469 checked). Back-half (427→469) finished the rest of Alma (the
+  Ammonihah mission 8-16, the sons-of-Mosiah arc 17-27, the war chapters 42-46,
+  Corianton 39-42), the two Alma studies (alma5 + alma12-13 + alma17-26), and
+  the non-bom tail (daily-digests SAMPLE, freedom/Dunford eval, the two Mormon-8
+  readings, **preside.md**). **Findings:** zero new REQUOTE/confabulation in the
+  back half; **ONE LINK fix** (morm-8-three-glories D&C 109:76 → dc/109 not
+  dc/76). **All deep Webster studies re-verified GENUINE vs the repaired MCP**
+  (preside `preside`/`PRESIDIAL`, three-glories 8 entries + telestial-absence,
+  alma12-13 foreknowledge/Milton) — the 2026-06-09 remediation **proven held**;
+  Webster count stays **132**. preside.md (source of the ratified presiding
+  covenant) verified airtight incl. Strong's H8104 *shamar* "to keep: obey".
+  **TWO bin-4 logged-not-resolved:** Morm 5:15 + Alma 3:6 (both char-perfect,
+  flagged for Michael). **One soft-count note:** alma5-study "43 questions" vs
+  42 question-marks (methodology-dependent, prose intact). **POST-WALK ASKS:**
+  ① publish.exe ran, public/ regenerated (170 files) + committed + pushed ✅;
+  ② cpuchip parity pass IN PROGRESS (11 ⚠️ studies, send-me-covenants first —
+  fabricated quotes live); ③ scripture-book quote-audit note dropped in its
+  `.spec/` + pushed ✅. Phone note refreshed.
 - ✅ OCR repair SHIPPED + live-verified (1336c8ce); walk plan RATIFIED
   (.spec/proposals/study-correctness-walk.md)
 
