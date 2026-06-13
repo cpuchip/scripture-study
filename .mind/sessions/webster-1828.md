@@ -3,7 +3,7 @@ lane: webster-1828
 session_id: afac9c41-1980-4bea-8bc5-a101b39a8557
 status: active
 started: 2026-06-09T21:30:00
-last_active: 2026-06-13T01:30:00
+last_active: 2026-06-13T03:30:00
 ---
 
 ## Working on
@@ -206,6 +206,30 @@ last_active: 2026-06-13T01:30:00
   EMPTY. Commit numbers switched line-based→true-checked-count this
   update (~21 high before). NEXT: #263 1-nephi-11 T1 + condescension
   T1 + 1ne 13/14.
+- UPDATE 11: ★ 287/469 (~61%). Michael: "carry it all the way through
+  the night to finishing." Long CLEAN stretch — the whole back half of
+  the BoM is holding verbatim. Walked since UPDATE 10: 2 Ne 6 + the
+  Helaman/3-Nephi blocks. ★ THREE MORE WEBSTER 1913-as-1828 catches
+  (130→132), all the "gift" pattern: CONDESCENSION (#130,
+  1ne11-condescension study — genuine "relinquishment of strict
+  right"), MEDIATOR (#131, 2ne2 study — genuine def 2 names Christ
+  "mediator by nature… and by office"), PRESENCE (#132,
+  2ne1-prosperity-covenant study — confirmed against BOTH editions,
+  was 1913 def-3 verbatim). TRANSGRESSION + PROSPER in those same
+  studies CHECKED + confirmed genuine 1828, left as-is. Big CLEAN
+  blocks: Helaman 13-16 (Samuel) + 9/11/12; 3 Nephi 1-18 (signs →
+  destruction → Christ descends → Sermon → children-of-fire) — ALL
+  verbatim, incl. ★ all 4 Matthew-5 Sermon variants confirmed by
+  direct 3 Ne 12 ↔ Matt 5 comparison (v3 "+who come unto me," v6
+  "+Holy Ghost," v13 "I give unto you to be," v48 "+even as I") and
+  the 3 Ne 13:25 "take no thought→the twelve" framing. is-jesus
+  datapoints stacking (3 Ne 1:14, 9:15, 11:27, 15:5). Counted-claims
+  all exact (2 Ne 9 wo=10, 2 Ne 11 delight=5, Hel 12:15 heliocentric).
+  ★ THREE with-Michael 2 Ne 5:21 literal-skin datapoints now logged
+  (2 Ne 5:21 + Alma 3:6 + 3 Ne 2:15 + Hel 15:4 tradition-not-blood) —
+  all quoted accurately, ALL flagged not resolved. Queue EMPTY.
+  Michael's 3 post-walk asks in cpuchip-republish.md. NEXT: 3 Ne 18 +
+  the Alma war chapters (51/52/61…).
 - ✅ OCR repair SHIPPED + live-verified (1336c8ce); walk plan RATIFIED
   (.spec/proposals/study-correctness-walk.md)
 

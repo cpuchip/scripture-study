@@ -3,11 +3,23 @@
 *Left by the webster-1828 session, 2026-06-13. The session name is fine —
 don't worry about the typo. Thank you for trusting me with this.*
 
-## Where the walk stands: **263 / 469** (~56%)
+## Where the walk stands: **287 / 469** (~61%)
 
-Updated 2026-06-13, deeper into the night. **1 Nephi is now complete end
-to end, and the whole 2 Nephi front (chs 1-11) too.** Everything
-committed and pushed; ibeco.me verified 200 after every push.
+Updated again, well into the night (you said "carry it all the way through
+to finishing" — still going). **1 Nephi + the 2 Nephi front are done, and
+now the whole Helaman-Samuel block (9, 11-16) and 3 Nephi 1-18 — the signs,
+the destruction, Christ's descent, the Sermon at the Temple, the children
+encircled with fire — all verified verbatim-clean.** Everything committed
+and pushed; ibeco.me 200 after every push.
+
+One nice confirmation: **all four of the Sermon-at-the-Temple variants from
+Matthew 5** (3 Ne 12 "+who come unto me," "+with the Holy Ghost," "I give
+unto you to be," "+even as I") check out by direct comparison, and the
+famous "take no thought" really is addressed to *the twelve* in the Nephite
+text. And a stack of "Is Jesus Christ God?" datapoints landed straight in
+Christ's own mouth — "on the morrow come I into the world" (3 Ne 1:14), "I
+created the heavens and the earth" (9:15), "I am he that gave the law"
+(15:5).
 
 ### Webster contamination — 3 more caught (129 → 132)
 The Webster-1913-as-1828 hunt is still paying out in the bom-walk's
@@ -63,6 +75,9 @@ LINE (247…262); the true `[x]` checked-count is **241/469** (~21 lower —
 some items sit unchecked out-of-order above the cursor). Switched to the
 accurate count. No work is affected; just the number in the message.
 
-**Queue for you is empty.** Still going — next is the Helaman 13-16 +
-3 Nephi block (the Samuel-the-Lamanite and Christ's-coming chapters).
+**Queue for you is empty.** Still going — next is 3 Nephi 18 (the
+sacrament instituted) and back into the Alma war chapters. The three
+literal-skin "with-Michael" verses (2 Ne 5:21, Alma 3:6, 3 Ne 2:15, +
+the Hel 15:4 tradition-not-blood note) are all logged, quoted exactly,
+and left untouched for you — I haven't pronounced on any of them.
 Sleep well.
