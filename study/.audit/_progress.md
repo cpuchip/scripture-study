@@ -245,11 +245,11 @@ Already done out-of-band: `study/morm-8-three-glories-reading.md` (2026-06-09).
 - [x] 2026-06-01 `study/bom-walk/2-nephi/2-nephi-22.md` **LINKS** — CLEAN (Isaiah 12; v2 "has become" trivial variant confirmed)
 - [x] 2026-06-01 `study/bom-walk/2-nephi/2-nephi-23.md` **LINKS** — CLEAN (Isaiah 13; ★ all 4 mercy-tilting variants v3/v8/v15/v22 confirmed by direct comparison)
 - [x] 2026-06-01 `study/is-jesus-christ-god.md` **FULL** — CLEAN (model study; all 26 quotes character-for-character EXACT as its provenance note claims — Ether 3:8/9/14/16/18, Moses 1:3/6/17/25/32-33, John 1:1+3 / 8:58 / 14:6, D&C 19:1/16/18/19 + 130:22, Mosiah 15:1/7, Alma 11:39/44, Isaiah 9:6 + 6:1-3; all 12 gospel-library + 6 internal links resolve; Rev 1:8 Alpha-Omega + 1916 exposition date correct; ★ D&C 19:18 "shrink" here is the same verb anchoring the 1ne4 CONSTRAINED §II rewrite)
-- [ ] 2026-06-01 `study/bom-walk/2-nephi/2-nephi-24.md` **LINKS**
-- [ ] 2026-06-01 `study/bom-walk/2-nephi/2-nephi-25.md` **LINKS**
-- [ ] 2026-06-01 `study/bom-walk/2-nephi/2-nephi-26.md` **LINKS**
-- [ ] 2026-06-01 `study/bom-walk/2-nephi/2-nephi-27.md` **T2**
-- [ ] 2026-06-01 `study/bom-walk/2-nephi/2-nephi-28.md` **LINKS**
+- [x] 2026-06-01 `study/bom-walk/2-nephi/2-nephi-24.md` **LINKS** — CLEAN (Isaiah 14, block's last chapter; ★ all variants confirmed by direct comparison — v2 "lands of promise" added, v12 "Art thou cut down" for KJV "how art thou", v19 "remnant"/"raiment," v25 "bring"/"break"; Lucifer passage + five "I will"s shared with KJV as noted)
+- [x] 2026-06-01 `study/bom-walk/2-nephi/2-nephi-25.md` **LINKS** — CLEAN (Nephi's plainness commentary; cornerstone quotes 25:4/13/19/20/**23**/**26** all character-for-character EXACT, elisions honest; Nephi's own words, no variant protocol)
+- [x] 2026-06-01 `study/bom-walk/2-nephi/2-nephi-26.md` **LINKS** — CLEAN (flagship 26:33 "all are alike unto God, both Jew and Gentile" + priestcraft def v29 + v20/24/25/31 all EXACT; "Race and the Priesthood" 2013 essay correctly dated)
+- [x] 2026-06-01 `study/bom-walk/2-nephi/2-nephi-27.md` **T2** — CLEAN (sealed-book expansion of Isaiah 29; v18/19/20/23/25/26/27 potter-clay all EXACT; expansion-not-transcription textual note correctly handled; Anthon JS-H 1:64-65 named not quoted)
+- [x] 2026-06-01 `study/bom-walk/2-nephi/2-nephi-28.md` **LINKS** — CLEAN ("all is well in Zion" + devil's three strategies; v13/20/21/30/31 all EXACT, incl. "leadeth them away carefully down to hell")
 - [ ] 2026-06-01 `study/bom-walk/2-nephi/2-nephi-30.md` **LINKS**
 - [ ] 2026-06-01 `study/bom-walk/2-nephi/2-nephi-31.md` **LINKS**
 - [ ] 2026-06-01 `study/bom-walk/2-nephi/2-nephi-32.md` **LINKS**

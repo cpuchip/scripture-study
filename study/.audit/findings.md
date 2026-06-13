@@ -2860,6 +2860,43 @@ LINKS ×3. No markdown links.
   First Presidency and Quorum of the Twelve doctrinal exposition"
   date is correct. No corrections.
 
+### #248-252 `2-nephi-24…28` — bom-walk LINKS/T2 — ALL CLEAN
+- **2-nephi-24 (Isaiah 14, the block's last chapter):** all four
+  claimed variants confirmed by direct 2 Ne 24 ↔ Isa 14 comparison —
+  v2 BoM adds "they shall return to their lands of promise"
+  (restoration tilt); v12 BoM "Art thou cut down" for KJV "how art
+  thou cut down"; v19 BoM "remnant" for KJV "raiment"; v25 BoM
+  "bring" for KJV "break". The Lucifer passage (vv12-15) + the five
+  "I will"s are correctly noted as SHARED with the KJV (not a
+  Restoration distinctive). Block now complete: chs 12-24 = Isaiah
+  2-14, the meta-finding "variants cluster in judgment chapters and
+  tilt toward mercy" holds across the whole block.
+- **2-nephi-25 (Nephi's plainness):** the two cornerstone verses are
+  exact — 25:23 "by grace that we are saved, after all we can do" and
+  25:26 "we talk of Christ, we rejoice in Christ…"; plus 25:4
+  (plainness), 25:13 ("healing in his wings"/"I have seen his day"),
+  25:19 (600 years / "Jesus Christ, the Son of God"), 25:20 (no other
+  name). All elisions honest. Nephi's own words → no variant protocol.
+- **2-nephi-26:** flagship 26:33 "he denieth none that come unto him,
+  black and white, bond and free, male and female… all are alike unto
+  God, both Jew and Gentile" EXACT — the book's own answer to the
+  flagged 2 Ne 5:21 (same author, 21 chapters later); priestcraft def
+  (v29) + v20/24/25/31 EXACT; the "2013 Race and the Priesthood essay"
+  date is correct.
+- **2-nephi-27 (T2, sealed-book expansion of Isaiah 29):** v18 "I
+  cannot read it," v19 "I am not learned," v20 "I am able to do mine
+  own work," v23 faith-gated, v25 lip-religion, v26 "marvelous work
+  and a wonder," v27 potter/clay — all EXACT. The note correctly
+  flags this as Nephi's EXPANSION (vv6-23 have no Isa-29 parallel), so
+  the verbatim variant protocol rightly does not apply; Anthon
+  (JS-H 1:64-65) named as reference, not quoted.
+- **2-nephi-28:** v13 "rob the poor because of their fine
+  sanctuaries," v20-21 the devil's lullaby ("leadeth them away
+  carefully down to hell"), v30 "line upon line, precept upon
+  precept," v31 "maketh flesh his arm" — all EXACT.
+- No markdown links in any of these derivative chapter notes (plain
+  -text scripture refs only), so no link-rot to check. Five CLEAN.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
