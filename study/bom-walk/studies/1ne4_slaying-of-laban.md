@@ -22,7 +22,9 @@ This matters. What follows is not a cool-headed execution of a strategy. It is a
 
 The word in verse 10 is careful: "I was constrained by the Spirit that I should kill Laban."
 
-Webster 1828 defines *constrained* as "not free; not voluntary; embarrassed; forced or compelled." The sense is of being pressed into something — a strong urging, not an irresistible override. And the text shows that immediately: Nephi's response to the constraint is refusal. "I said in my heart: Never at any time have I shed the blood of man. And I shrunk and would that I might not slay him" ([1 Ne. 4:10](../../gospel-library/eng/scriptures/bofm/1-ne/4.md)).
+Webster 1828 defines *constrained* as "urged irresistibly or powerfully; compelled; forced; restrained; confined; bound; imprisoned; necessitated." The sense is of being pressed into something — a strong urging, not an irresistible override. And the text shows that immediately: Nephi's response to the constraint is refusal. "I said in my heart: Never at any time have I shed the blood of man. And I shrunk and would that I might not slay him" ([1 Ne. 4:10](../../gospel-library/eng/scriptures/bofm/1-ne/4.md)).
+
+*(Requoted 2026-06-12 — the earlier definition ("not free; not voluntary; embarrassed; forced or compelled") was the 1913 edition's adjective entry; the genuine 1828 participle is quoted above. Note the tension: the genuine 1828 says "urged **irresistibly**… necessitated," which pulls toward compulsion. The "strong urging, not an irresistible override" reading therefore now rests on the narrative — Nephi shrinks, the Spirit speaks twice, Nephi reasons it out and chooses — not on the lexicon. Flagged for Michael in the audit queue, item [1].)*
 
 The Spirit does not compel him. The Spirit speaks to him. Twice ([1 Ne. 4:11–12](../../gospel-library/eng/scriptures/bofm/1-ne/4.md)). He has to decide.
 
@@ -74,7 +76,7 @@ About 400 years later, King Benjamin is speaking to his sons. He says:
 
 Benjamin is standing four centuries downstream of that night in Jerusalem, holding the brass plates, watching what they produced — a people who kept the covenant, kept the law, kept the record — and he says: without these plates, we would have been the Lamanites. The Spirit's prediction was accurate. The covenantal logic held.
 
-Webster 1828 on *dwindle*: "to diminish; to become less; to shrink; to waste or consume away; to become degenerate; to fall away." The citation from Swift: "religious societies, though begun with excellent intentions, are said to have dwindled into factious clubs." The threat is covenantal degeneration — not just population decline, not just ignorance, but a people who began in covenant and fell away from it by degrees. Benjamin saw both trajectories. The Nephites, with the plates, held. The Lamanites, without access to the written record, dwindled. The Spirit's prediction stands four centuries of history behind it.
+Webster 1828 on *dwindle*: "To diminish; to become less; to shrink; to waste or consume away" (definition 1), and then "To degenerate; to sink; to fall away" (definition 2), illustrated by the example "Religious societies may dwindle into factious clubs." *(Requoted 2026-06-12 — the earlier single-definition wording and the "Swift" citation were the 1913 edition's; the genuine 1828 splits the sense in two, and the covenantal-degeneration reading the study leans on is carried by the 1828's own definition 2.)* The threat is covenantal degeneration — not just population decline, not just ignorance, but a people who began in covenant and fell away from it by degrees. Benjamin saw both trajectories. The Nephites, with the plates, held. The Lamanites, without access to the written record, dwindled. The Spirit's prediction stands four centuries of history behind it.
 
 ---
 
