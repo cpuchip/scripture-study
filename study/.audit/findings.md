@@ -4419,6 +4419,57 @@ Verified by direct grep.
   quotes; both well-tiered and self-critical (06-08's "Skeptical takes" flags
   uncorroborated Apple/Siri claims; 06-10 strips unsourced strategic framing).
 
+### preside.md + digests 06-09/06-11 (2026-06-13, 466→469) — ALL CLEAN ★ WALK COMPLETE
+
+The final cluster: the source study of the ratified presiding covenant, and the
+last two secular samples. The walk reaches 469/469.
+
+- **preside.md** (T1+FULL) — CLEAN, **verified airtight**. This is the study
+  behind the 2026-06-12 presiding covenant extension, so it got the deepest
+  final pass. All 8 scripture quotes EXACT (Abraham 4:18 "the Gods watched
+  those things which they had ordered until they obeyed," 4:26 "took counsel
+  among themselves… we will give them dominion," D&C 107:21 "growing out of…
+  those who are ordained," Ezekiel 33:6 "his blood will I require at the
+  watchman's hand," D&C 101:54 "would have seen the enemy while he was yet
+  afar off," D&C 121:46 "without compulsory means it shall flow unto thee
+  forever and ever," Luke 12:45 "begin to beat the menservants and maidens,"
+  Abraham 1:26 "cursed him as pertaining to the Priesthood"). ★ **Webster
+  GENUINE 1828** via the repaired MCP — the load-bearing claims confirmed: `preside`
+  sense 2 "To exercise superintendence; to watch over as inspector. Some o'er
+  the public magazines preside," and the garrison sibling **PRESIDIAL**
+  "[L. praesidium, a garrison; prae and sedeo.] Pertaining to a garrison;
+  having a garrison." The study's own §I audit note (art-of-presidency's "to
+  watch over" survives re-verification; the genuine 1828 *adds* "as inspector"
+  and the garrison family) is itself accurate. The modern-dictionary decay
+  claim ("to be a featured solo performer") confirmed EXACT via modern_define.
+  Strong's EXACT via the strongs MCP: H6822 *tsaphah* "to look out… keep watch,"
+  and H8104 *shamar* — the STEPBible gloss is literally "to keep: obey," exactly
+  as the study quotes (and its range covers both "watchman" and "keep covenant/
+  commands," grounding the study's keeping-watch = keeping-covenant point).
+- **digests 06-09 + 06-11** — CLEAN (SAMPLE). Secular AI-news, no gospel quotes;
+  both self-critical (06-09 strips an unsourced Apple/Gemini rumor; 06-11
+  removes an internal "first network-scale / any merchant" contradiction).
+
+---
+
+## ★ STUDY-CORRECTNESS WALK COMPLETE — 469/469 (2026-06-13)
+
+All 469 study files verified against actual sources. **Tally:** zero new
+REQUOTE/confabulation corrections found in the back-half walk (files were
+clean); **two mechanical LINK fixes** total in this run's tail (the cpuchip
+three-glories D&C 109:76 href; see that entry) — actually one href this session;
+the rest of the corpus was quote-exact. **Webster count holds at 132**
+1913-as-1828 carriers (no new ones; the deep Webster studies — preside,
+three-glories, alma12-13 — all re-verified GENUINE against the repaired MCP, so
+the remediation is proven to have held). **Bin-4 / 2 Ne 5:21-family items
+queued for Michael, never resolved:** Morm 5:15, Alma 3:6 (both verified exact,
+flagged), plus the standing curse-LIFTED datapoints (Alma 23:18, 22:28, 19:36,
+26:37, 29:8 — supporting data that the curse functions as removable enmity/
+idleness, logged not pronounced). **One soft-count note for Michael:** the
+alma5-study's "43 distinct questions" vs the source's 42 question marks
+(methodology-dependent, prose left intact). **Post-walk checklist** (the 3 asks)
+lives in `cpuchip-republish.md` — to run now that 469/469 is reached.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
