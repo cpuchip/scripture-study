@@ -1756,6 +1756,28 @@ keys line, Alma 17:3/22:18; counted claims exact (37 talks on
 disk; Bednar's substitution device real; Hall's 60 names; Wong's
 five remember-remember verses).
 
+### study/give-away-all-my-sins.md (2026-04-20) — FIVE Webster words 1913 (words 105-109); Alma 22:18 dropped an "and" twice
+T1+FULL (voice-baseline study). The entire Webster layer was 1913:
+GIVE (numbered senses; genuine is SHARPER — "to pass or transfer
+the title or property of a thing to another person without an
+equivalent," and the genuine give-away sub-entry reads "to
+ALIENATE the title or property"), FORSAKE ("or withdraw" tell),
+REPENT (spliced — "cease to love and practice sin" was 1913;
+genuine theology sense requoted), POSSESS (genuine sense 1 is
+literally legal title — the king's native currency — and sense 5
+cites Luke 8:36, the legion), KNOW (genuine carries the covenant
+range natively: "To approve… Psalm 7:6," "To choose… Amos 3:2").
+Scripture: BOTH renderings of Alma 22:18 dropped the "and" before
+"that I may be raised" (the analysis section had it right) —
+restored; Luke 18:18 quoted with the king's phrasing ("that I may
+inherit" → "to inherit"). Facts: McKay was NOT President in Oct
+1950 (ordained Apr 1951) — fixed; BYU index verified (31 rows
+today incl. Wu + one dupe — "thirty" holds; Maxwell's six talks
+1989-96 EXACT; Grant 1944 earliest EXACT; full roster checks).
+Singularity claims verified by corpus grep ("make thyself known"
+= alma/22 only; Ruth 3:3 inverse). Talks verbatim: Maxwell 1991,
+Featherstone 1972, Wu 2026 (hot zone), Oaks 2003, Wunderli 2026.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)

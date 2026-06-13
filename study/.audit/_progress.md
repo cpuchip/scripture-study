@@ -154,7 +154,7 @@ Already done out-of-band: `study/morm-8-three-glories-reading.md` (2026-06-09).
 - [x] 2026-04-01 `study/yt/4cuT-LKcmWs-ai-job-skills-self-assessment.md` **SAMPLE** — 6 broken links fixed; Anthropic-standard paraphrase de-quoted; 3.2:1 verified
 - [x] 2026-04-01 `study/yt/4cuT-LKcmWs-industry-practice.md` **SAMPLE** — Ben quote realigned to skill canon; self-quote fixed
 - [x] 2026-04-12 `study/gc/2026-04/00-thematic-overview.md` **SAMPLE** — Oaks "world"→was "life"; Wakolo constructed quote requoted to his real refrain; 37-count exact; rest verbatim
-- [ ] 2026-04-20 `study/give-away-all-my-sins.md` **T1+FULL**
+- [x] 2026-04-20 `study/give-away-all-my-sins.md` **T1+FULL** — GIVE/FORSAKE/REPENT/POSSESS/KNOW all 1913 (words 105-109); Alma 22:18 "and" restored ×2; Luke 18:18 + McKay-1950 fixed; BYU roster + singularity claims verified EXACT
 - [ ] 2026-04-23 `study/zion-in-a-presidency.md` **T1+FULL**
 - [ ] 2026-04-25 `study/hope-and-the-grammar-of-pairs.md` **T1+FULL**
 - [ ] 2026-04-25 `study/tree-of-life-and-the-chain.md` **T1+FULL**
