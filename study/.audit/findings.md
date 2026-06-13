@@ -2086,6 +2086,16 @@ clause boundary), 93:28, 93:33, Heb 6:19, Moroni 7:48 (leading
 "that" trimmed at clause boundary), Deut 19:15. D&C 88:7-13/28/
 67-68 paraphrases fair.
 
+### study/ai-stewardship-north-star.md (2026-05-24) — CLEAN (capture)
+T2+FULL. Transcript capture of a Michael↔Gemini exchange —
+documented-not-endorsed class, content untouched. All scripture
+quotes inside the capture verify exact: Ether 2:19 ("whither
+shall we steer?"), Ether 2:24-25 (marked ellipsis, words exact),
+Moses 6:60 (water/commandment, Spirit/justified, blood/sanctified
+mapping exact). D&C 10:4 + Mosiah 4:27 running-faster paraphrase
+fair; Matt 6:22 + D&C 88:67-68 single-eye paraphrase fair. Links
+all well-formed; sibling-study link resolves.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
