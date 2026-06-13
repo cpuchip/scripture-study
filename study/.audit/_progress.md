@@ -186,7 +186,7 @@ Already done out-of-band: `study/morm-8-three-glories-reading.md` (2026-06-09).
 - [x] 2026-05-24 `study/brother-of-jared-three-problems.md` **FULL** — Ether 2:25 "do"→"prepare for you" requoted; all else verbatim incl. 8 vessels + 344 days EXACT
 - [x] 2026-05-24 `study/refinement-stewardship-and-hope.md` **FULL** — Ether 12:19-20 phantom phrase "because of his relation to the Lord" corrected (in neither verse; entered at draft time); Rom 5:5 linked
 - [x] 2026-05-24 `study/ai-stewardship-north-star.md` **T2+FULL** — CLEAN (Gemini-exchange capture; all scripture quotes inside verify exact)
-- [ ] 2026-05-25 `study/daily-digest/ai-news-7am--2026-05-25-1300.md` **SAMPLE**
+- [x] 2026-05-25 `study/daily-digest/ai-news-7am--2026-05-25-1300.md` **SAMPLE** — machine artifact, untouched; self-inconsistent revision note documented
 - [ ] 2026-05-25 `study/yt/V40tBshkMnE-send-me-covenants.md` **T1**
 - [ ] 2026-05-25 `study/softening-what-i-cannot-soften.md` **FULL**
 - [ ] 2026-05-26 `study/yt/Se91Pn3xxSs-you-have-3-years-left.md` **SAMPLE**

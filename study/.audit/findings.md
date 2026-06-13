@@ -2096,6 +2096,14 @@ mapping exact). D&C 10:4 + Mosiah 4:27 running-faster paraphrase
 fair; Matt 6:22 + D&C 88:67-68 single-eye paraphrase fair. Links
 all well-formed; sibling-study link resolves.
 
+### study/daily-digest/ai-news-7am--2026-05-25-1300.md (2026-05-25) — machine artifact
+SAMPLE. Scheduled-workflow pipeline capture, untouched. One
+self-inconsistency documented (not corrected): the digest's own
+revision note 3 claims the word "Impressive" was removed from the
+skeptical take, but the take still reads "impressive but entirely
+self-reported" — the revision pass described an edit it did not
+fully apply.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
