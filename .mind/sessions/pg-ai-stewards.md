@@ -7,6 +7,24 @@ last_active: 2026-06-13T09:51:34
 ---
 
 ## Working on
+- **★ M2 — fetch-md + git UTILITIES SHIPPED 2026-06-13 (OSS `4a31b03`, pushed;
+  Michael "Lets do M2").** Ported `cmd/fetch-md-mcp` (fetch_url/fetch_urls/
+  extract_links/fetch_url_raw; chromedp js path kept but NO chromium in bridge —
+  static fetch works, js:true degrades, documented) + `cmd/git-mcp` (git_* +
+  gh_pr/issue; agent/* branch namespace, main/master/release/* refused) into the
+  OSS root module (folded, flat package main, `go mod tidy` pulled fetch-md's
+  chromedp/html-to-markdown/readability/tabula tree). Seeded `fetch-md` + `git`
+  mcp_servers in 05-mcp-bridge (deny-by-default grants stay operator; git reads
+  GITHUB_TOKEN at exec). bridge.Dockerfile builds both. Genericized fetch-md UA +
+  git co-author default. Dropped archived `web_search (DuckDuckGo)` from the 13
+  research prompts. **★ KEY DECISION: web search is NOT core** — the virgin-smoke
+  denylists `search` AND `exa-search` as personal (needs an operator API key), so
+  web search is BYO → M3 docs. virgin-smoke now asserts the **5-server generic
+  core** (fs-read/pg-ai-stewards/fetch-md/git + coder). **VERIFIED:** virgin-smoke
+  PASS; `refresh-tools` 5/5 OK (fetch-md 4 tools, git 8 tools live). Gotcha: the
+  scratch `pgdata` volume persisted old seeds → needed `down -v` (scratch oss
+  project only) for a fresh install to see the new servers. **Task #160 DONE.
+  Only M3 (BYO-MCP docs + example web_search_exa overlay) remains in the plan.**
 - **★ M1 — CODER-MCP SHIPPED 2026-06-13 (OSS `321176c`+`7897093`, PUSHED to
   public main after Michael's Hinge ② ship nod).** The inert 20-coder
   surface is now alive. coder-mcp folded into the root module (was own module on
