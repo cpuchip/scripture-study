@@ -157,6 +157,26 @@ last_active: 2026-06-12T15:38:52
   unmarked elision marked. Daily digests 175/179/180 = machine
   artifacts untouched. Queue for Michael STILL EMPTY. NEXT: #181
   four-groups-and-the-engineer.md T1+FULL.
+- UPDATE 9: ★ 212/469 — Webster count 128 (1913-as-1828 words).
+  Files 181-212. ★ THE FREEDOM STUDY SET fully walked (00-frame,
+  07-likening, 99-synthesis, provenance 02/03/04/05/06/08/10/11) —
+  the publication-bound 99-synthesis added COMPEL (#127) + SACRIFICE
+  (#128); ★ caught a PROPAGATED DATE ERROR (D&C 130:14-17 is Apr 2
+  1843/Ramus, NOT "same day as D&C 87" Dec 25 1832/Kirtland) and
+  corrected it across 4 files; provenance facts all verified
+  (16th/17th Amendments vs National Archives; 2027×2034 Egypt
+  eclipse-X vs Wikipedia; Hinckley-read-Proclamation-1995 vs the
+  byline). Other Webster words this stretch: EASINESS(#120)+
+  CIRCUMSPECTLY(#121) in four-groups; CONSTRAINED(#122 — ★ QUEUE
+  ITEM [1], genuine 1828 "urged irresistibly" INVERTS the §II
+  reading)+DWINDLE(#123) in 1ne4-slaying; GOODLY(#124) in 1ne-01;
+  CHRIST(#125)+TYPE(#126) in christ-in-all-the-scriptures (also 2
+  broken links exo/mic). Big clean wins: christ-in-all-the-scriptures
+  ~50 quotes + BYU counts (Luke 24:27=5, John 5:39=72, 2 Ne
+  25:26=76) + McConkie "13 days" ALL exact; the-seventh-time Nelson
+  Oct→Apr 2015 mis-date. bom-walk chapter notes (1ne 01-09 +
+  infra/graph/journal) mostly CLEAN. NEEDS-MICHAEL queue: 1 item
+  (CONSTRAINED §II). NEXT: #213 bom-walk 2-nephi-12 LINKS.
 - ✅ OCR repair SHIPPED + live-verified (1336c8ce); walk plan RATIFIED
   (.spec/proposals/study-correctness-walk.md)
 
