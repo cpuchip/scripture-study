@@ -2373,6 +2373,36 @@ agreeable; "considerable" loosely = def 3 "bulky"; no sense means
 "righteous"). Fragments are cross-verified against source chapters
 as the walk reaches each per-chapter note. CLEAN.
 
+### study/bom-walk/_progress.md + _workflow.md (2026-06-01/02) — CLEAN
+LINKS + T2.
+  • _progress.md (LINKS): status tracker, NO markdown links (passes
+    trivially). Many embedded scripture-fragment labels in the
+    Notes column; spot-checked 4 Ne 1:17 ("no manner of -ites…the
+    children of Christ") and Ether 3:14 ("I am Jesus Christ. I am
+    the Father and the Son") — both accurate. CLEAN.
+  • _workflow.md (T2): process doc. One markdown link
+    (`../../.spec/proposals/strongs-concordance-mcp.md`) — RESOLVES.
+    One scripture quote, Alma 18:10 "remember all my commandments to
+    execute them" — verbatim. CLEAN.
+
+### study/bom-walk/1-nephi/1-nephi-01.md (2026-06-01) — GOODLY 1913-as-1828 (#124)
+T1. No markdown links. ★ GOODLY (word #124) — the note quoted
+Webster 1828 *goodly* as "large, considerable," which is the
+**1913** edition's sense 3 ("Large; considerable; portly"). Genuine
+1828 sense 3 is "bulky; swelling; affectedly turgid." Requoted to
+the genuine 1828 (handsome/comely sense 1, pleasant/agreeable
+sense 2). The note's core point ("goodly is wider than righteous")
+survives on senses 1-2; the "substance and standing / well-situated
+and capable" elaboration rested on the 1913 sense and was removed
+with a visible flag — NOT queued (the core holds; milder than the
+#185 CONSTRAINED inversion). The same 1913 "considerable" gloss
+also appeared (as characterization) in _journal.md's 1 Ne 1 entry
+(#194) → corrected there too for consistency. All scripture
+verbatim: 1 Ne 1:1 ("goodly parents"/"highly favored"/"taught
+somewhat in all the learning"), 1:6 ("pillar of fire…upon a rock"),
+1:8 ("he thought he saw God"), 1:20 thesis, Alma 36:22 (Alma's
+near-verbatim echo, leading-trim clean).
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)

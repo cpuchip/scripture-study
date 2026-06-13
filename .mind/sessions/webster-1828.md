@@ -117,7 +117,12 @@ last_active: 2026-06-12T15:38:52
   "constrained ≠ compelled" lexical claim — definition requoted,
   argument left for Michael with a flag. #182 the-seventh-time:
   Nelson "Sabbath Is a Delight" mis-dated Oct→Apr 2015 (2 places);
-  #184 bom-walk 1ne-06 CLEAN. NEXT: #186. Model SWITCHED Fable 5 → Opus 4.8 at
+  #184 bom-walk 1ne-06 CLEAN. #197 bom-walk 1ne-01 added GOODLY
+  (#124, "large/considerable" = 1913; journal corrected too) →
+  count 124. Files 186-196 (bom-walk chapter notes 02-05 + READMEs
+  + _graph + _journal + _progress + _workflow + digests) mostly
+  CLEAN derivative index/notes — no md links, fragments verbatim.
+  NEXT: #198 christ-in-all-the-scriptures T1+FULL. Model SWITCHED Fable 5 → Opus 4.8 at
   ~#176 (Fable access lost; Michael: "keep up the same rigor").
   Commit trailer now Opus 4.8. ★ HEAVIEST FIND of the run: #176
   yt/V40tBshkMnE-send-me-covenants had TWO fabricated "Todd says"
