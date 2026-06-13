@@ -3,7 +3,7 @@ lane: pg-ai-stewards
 session_id: 7ea7faa4-688a-451a-ac68-b7ea662d4b81
 status: active
 started: 2026-06-11T22:00:16
-last_active: 2026-06-12T21:33:55
+last_active: 2026-06-12T22:39:31
 ---
 
 ## Working on
@@ -127,10 +127,30 @@ last_active: 2026-06-12T21:33:55
   Conflates "defer promotion" with "block completion"; likely wants the
   PERFORM wrapped (mirror on_maturity_verified). Faithful to historical
   authoring, not introduced by B3 (smoke confirmed the abort).
-  **NEXT = B4** (13-research-pipelines..16-subagents, minus h1-0 now done):
-  13 = h1-0(DONE,drop)/h1-2/h1-7b/h2/h3-4/h3-5/h3-followup-3/i4/i6/i7/pe2
-  (enqueue_proposed_work_items — on_maturity_verified's planning branch
-  already calls it, wrapped); 14 = j1-j9c incl j8a-dispatch + j11-dispatch-
+  **B4 IN FLIGHT.** **B4/13 SHIPPED 2026-06-13 (OSS `97f42db`):**
+  research-write (4-stage, h2 final) / planning (5-stage) / agent-proposal /
+  revise-proposal / research-summary seeds + enqueue_proposed_work_items +
+  apply_agent_proposal (i7 final, i6 gate folded) + apply_revision. Virgin
+  smoke fully green; go build+vet green; 13 files retired, manifest 123→110.
+  Deviations: h1-0+h3-1 already consumed (dropped); h-ledger-1 schema_migrations
+  table → **00-config** (bundle births it; empty runtime manifest); on_maturity_verified
+  NOT touched (08 single final; agent-proposal+fanout branches fold into 08 at
+  B4 close — its TRUE final is j7); apply_agent_proposal single i7; dispatch
+  tools_disabled deferred to 19; genericized gospel/personal-project text.
+  **B4/14 SHIPPED 2026-06-13 (OSS `b1a9b01`):** fan-out machinery + 12-lens
+  brainstorm + catalog_default_* helpers + one-shot/child-terminal triggers;
+  on_maturity_verified TRUE final (j7) folded into 08 (late-bound forward
+  refs to 13/14); dispatch-final (j8a 4-layer + j11 cap) DEFERS to 19 (j8a/j11
+  KEPT in manifest); j8b→lens defs; j6 supersedes j2; start_brainstorm
+  scripture-study→config. ★ spawn_children = UNION of j3+j4+j8c — **j8c (last
+  live redefinition) dropped j3 aggregator + j4 per-child file_destination**
+  while adding override propagation; restored here, FLAG for 20-mismatch
+  classification. Virgin smoke green; go build+vet green; manifest 110→97.
+  **NEXT = B4/15** (context-engine: k1-k9/l1-l32/es1-es9/ct2 — the biggest;
+  engrams/rendering/judges/circuit-breakers; may split 15a/b; watch es7
+  judge-gate, es1 cancel-cascade, l6 investigate_study→doc_* renames) + B4/16
+  (k4/l9/es8/es10/r11/ct2-5/ct2-7e). Then B5(17-19)/B6.
+  [archived 14-source detail; see blueprint] j1-j9c incl j8a-dispatch + j11-dispatch-
   gate + j12-brainstorm TRIMMED HALVES (left in place at B2); 15 = k1-k9/
   l1-l32/es1-es9/ct2-1/2/3/7a/7a2/7b/7d (may split 15a/b); 16 = k4/l9/es8/
   es10/r11/ct2-5/ct2-7e. Same loop (sweep lib.rs non-linear requires +
