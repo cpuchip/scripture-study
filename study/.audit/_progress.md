@@ -442,10 +442,10 @@ Already done out-of-band: `study/morm-8-three-glories-reading.md` (2026-06-09).
 - [x] 2026-06-02 `study/bom-walk/alma/alma-35.md` **LINKS** — CLEAN (the word destroys craft; v3 "they were angry because of the word, for it did destroy their craft," v16 "give unto them every one his charge, separately" EXACT — the pivot into the counsel-to-the-sons block)
 - [x] 2026-06-02 `study/bom-walk/alma/alma-36.md` **LINKS** — CLEAN (Alma's conversion to Helaman; v18 "O Jesus, thou Son of God, have mercy on me… encircled about by the everlasting chains of death," v21 "nothing so exquisite and sweet as was my joy" EXACT — the chiasmus centered on the cry)
 - [x] 2026-06-02 `study/bom-walk/alma/alma-37.md` **LINKS** — CLEAN (small and simple things; v6 "by small and simple things are great things brought to pass," v37 "Counsel with the Lord in all thy doings, and he will direct thee for good" EXACT — the Liahona as type of the word)
-- [ ] 2026-06-02 `study/bom-walk/alma/alma-38.md` **LINKS**
-- [ ] 2026-06-02 `study/bom-walk/alma/alma-39.md` **LINKS**
-- [ ] 2026-06-02 `study/bom-walk/alma/alma-40.md` **LINKS**
-- [ ] 2026-06-02 `study/bom-walk/alma/alma-41.md` **LINKS**
+- [x] 2026-06-02 `study/bom-walk/alma/alma-38.md` **LINKS** — CLEAN (the steady son; v12 "bridle all your passions, that ye may be filled with love" EXACT — restraint as the precondition for love, the purpose clause usually missed)
+- [x] 2026-06-02 `study/bom-walk/alma/alma-39.md` **LINKS** — CLEAN (the grieved father; v5 "most abominable above all sins save it be the shedding of innocent blood or denying the Holy Ghost" EXACT — confronting Corianton without abandoning him; sexual sin handled with honesty, not the 5:21/skin family)
+- [x] 2026-06-02 `study/bom-walk/alma/alma-40.md` **LINKS** — CLEAN (the space between; v23 "even a hair of the head shall not be lost; but all things shall be restored to their proper and perfect frame" EXACT — the intermediate state + the perfect-frame resurrection)
+- [x] 2026-06-02 `study/bom-walk/alma/alma-41.md` **LINKS** — CLEAN (restoration as reciprocity; v10 "wickedness never was happiness," v13 "bring back again evil for evil, or carnal for carnal… merciful for that which is merciful" EXACT — restored to the self your desires built)
 - [ ] 2026-06-02 `study/bom-walk/alma/alma-42.md` **LINKS**
 - [ ] 2026-06-02 `study/bom-walk/alma/alma-43.md` **LINKS**
 - [ ] 2026-06-02 `study/bom-walk/alma/alma-44.md` **LINKS**

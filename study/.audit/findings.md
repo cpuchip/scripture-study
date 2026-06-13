@@ -4101,6 +4101,33 @@ simple things). Verified by direct grep.
   and he will direct thee for good" — EXACT (the Liahona as type of the word;
   teach the fruit of evil, withhold the recipe).
 
+### Alma 38-41 (2026-06-13, 423→427) — ALL CLEAN
+
+The charges to Shiblon and Corianton, and the doctrinal block (resurrection,
+restoration) Alma builds to rebuild the belief under his straying son's sin.
+Verified by direct grep.
+
+- **Alma 38** (the steady son): v12 "Use boldness, but not overbearance; and
+  also see that ye bridle all your passions, that ye may be filled with love"
+  — EXACT (the purpose clause — restraint *for* love — is the part usually
+  dropped).
+- **Alma 39** (the grieved father): v5 "most abominable above all sins save it
+  be the shedding of innocent blood or denying the Holy Ghost" — EXACT
+  (confronting Corianton's sin honestly while framing the rebuke as "for your
+  good"; the representative's sin cost the Zoramites their belief, v11). Not a
+  5:21/skin-family item — grave sexual sin handled with the project's honest
+  engagement, no bin-4 flag.
+- **Alma 40** (the space between): v23 "every limb and joint shall be restored…
+  even a hair of the head shall not be lost; but all things shall be restored
+  to their proper and perfect frame" — EXACT (the intermediate state —
+  paradise/outer darkness — and the perfect-frame resurrection; Alma's
+  revelation-vs-opinion honesty modeled at v5, v20).
+- **Alma 41** (restoration as reciprocity): v10 "wickedness never was
+  happiness," v13 "the meaning of the word restoration is to bring back again
+  evil for evil, or carnal for carnal… merciful for that which is merciful" —
+  EXACT (read the tense — *never WAS*; sin and happiness as contradictory
+  natures; you are restored to the self your desires built).
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
