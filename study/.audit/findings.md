@@ -1836,6 +1836,15 @@ Everything else verbatim: 1 Ne 19:23/22:1-2, 2 Ne 6:5/11:2-3/
 Rev 19:10; both verse-count claims EXACT (Isa 29 = 24 verses,
 2 Ne 27 = 35).
 
+### study/stories/teancum-the-brave.md (2026-04-25) — confabulated kinship fixed
+SAMPLE. The story called Helaman "Teancum's father" (twice — prose
++ cross-ref); scripture records no such relationship (corpus grep:
+no father/son language near Teancum anywhere in the BoM). Fixed
+with dated note. Everything else verifies against Alma 51/52/62:
+the cord (62:36), the anger and its cause (62:35), the sorrow
+eulogy (62:37), the 25th/31st-year dating, "every man of Teancum
+did exceed," and the city Teancum near Desolation (Mormon 4:3).
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)

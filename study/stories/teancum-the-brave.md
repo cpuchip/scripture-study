@@ -62,7 +62,7 @@ The next morning, Moroni marched forth against the Lamanites. He slew them with 
 
 Peace came to the people of Nephi.
 
-Moroni retired to his own house. Pahoran returned to his judgment seat. Helaman — Teancum's father — took up the ministry again and went forth to preach the word of God with much power.
+Moroni retired to his own house. Pahoran returned to his judgment seat. Helaman took up the ministry again and went forth to declare the word of God with much power. *(Corrected 2026-06-12 — an earlier version called Helaman Teancum's father; scripture records no such relationship.)*
 
 The war that had consumed a generation ended the morning after Teancum died.
 
@@ -87,4 +87,4 @@ He didn't come back. But the peace he bought came back for everyone else.
 - [Alma 52:1](../../gospel-library/eng/scriptures/bofm/alma/52.md) — The Lamanites discover Amalickiah dead at dawn
 - [Alma 62:35-37](../../gospel-library/eng/scriptures/bofm/alma/62.md) — Teancum slays Ammoron and is slain
 - [Alma 62:38-42](../../gospel-library/eng/scriptures/bofm/alma/62.md) — Peace is restored after Teancum's death
-- [Alma 62:44-45](../../gospel-library/eng/scriptures/bofm/alma/62.md) — Helaman (Teancum's father) returns to the ministry
+- [Alma 62:44-45](../../gospel-library/eng/scriptures/bofm/alma/62.md) — Helaman returns to the ministry
