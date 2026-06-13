@@ -1825,6 +1825,17 @@ Callister quotes verbatim against yt/inspiring/GybaxBERWMk
 transcript; TSW manual links resolve; the teacher-council-
 framework sibling exists.
 
+### study/nephi-reads-isaiah.md (2026-04-25) — LIKEN held GENUINE; one witness-law hybrid fixed
+T1+FULL. LIKEN holds genuine ("To compare; to represent as
+resembling or similar" — and the genuine entry's example is Matt
+7:24, the wise man on the rock). The witness-law quote was the
+same Matt-18:16/2-Cor-13:1 word-order hybrid found in #145 —
+fixed to 2 Cor's exact "shall every word be established."
+Everything else verbatim: 1 Ne 19:23/22:1-2, 2 Ne 6:5/11:2-3/
+11:8/25:4, Isa 29:11-12, 2 Ne 27:12/14, 3 Ne 23:1/6, JS-H 1:40,
+Rev 19:10; both verse-count claims EXACT (Isa 29 = 24 verses,
+2 Ne 27 = 35).
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
