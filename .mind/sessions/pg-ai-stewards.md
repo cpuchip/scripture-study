@@ -3,10 +3,26 @@ lane: pg-ai-stewards
 session_id: 7ea7faa4-688a-451a-ac68-b7ea662d4b81
 status: active
 started: 2026-06-11T22:00:16
-last_active: 2026-06-13T01:56:18
+last_active: 2026-06-13T02:29:24
 ---
 
 ## Working on
+- **B6 tests/ + CI SHIPPED + CI GREEN 2026-06-13 (OSS `8509d26`→`9812d3f`, pushed):**
+  `tests/virgin-smoke.sql` = ASSERT-based virgin-boot regression gate
+  (vector-only / no-pgcrypto / no-AGE; doc_* complete; a representative object per
+  subsystem 00-19 + the 4-layer dispatch FINAL; **no operator/personal seeds incl.
+  no personal MCP** — only fs-read + pg-ai-stewards core daemons; spine e2e with
+  capability-substitution). `.github/workflows/ci.yml` runs it on push/PR
+  (extension build+virgin-smoke + go build/vet) — **full run GREEN 4m54s**, actions
+  on checkout@v6/setup-go@v6 (Node-24, deprecation resolved). README CI badge;
+  `tests/README.md`. **seed_harness genericize VERIFIED** (virgin boot = all-generic
+  agents/intents=0/core-MCP-only); **anatomy doc clean**. .gitattributes already eol=lf.
+  **B6 REMAINING = the cutover-prep leg** (its own focused effort): overlay re-author
+  (workspace, 33 migrations → doc_*/relational/config-keys) + rename-map.tsv finalize
+  (workspace parity/) + **classify the 20 live↔repo mismatches** (verify-suite — needs
+  the live substrate; read-only diff; may surface Hinge-category calls). bgworker
+  `_kind` enum = deferrable Rust-typing refactor. Then the **CUT** (Hinge ①+③) +
+  the **coder wave** 20-coder.sql (Hinge ②).
 - **★ AUTHORING LEG COMPLETE 2026-06-13 — B5 SHIPPED, chain runs 00→19, migration manifest = ZERO migration entries (verify/test harness only).** All 189 historical migrations consolidated into 20 authored subsystem files. B5 commits (all pushed, virgin-smoke green each):
   - **17 (`35d66a6`)** personas — `17-personas.sql`: persona agent + persona-turn pipeline (r7) + lmstudio/gemini example pipelines (r8) + ct2-7c persona/room facets (dispatch_facets/remember/forget FINAL) + persona_outbox + room_say (r16/r20) + room_react (r21). compose_tools('persona')=[room_react,room_say]; **16's on_one_shot persona-% arm auto-verifies a persona-turn (cross-batch proof, on_one_shot NOT re-authored — the B5/17 note honored)**. r18/19 max_tokens→16000 folded; overlay = librarian/codewright/gamemaster room_react grants; persona deny study_*→doc_*.
   - **18 (`9d9a0f4`)** scheduler — `18-scheduler.sql`: cron scheduled_pipelines (pe6 engine + pe7 fire/watchman-tick FINAL). cron parse + e2e dispatch + D-PE4 missed-window all green. ai-news-7am operator seed → overlay.
