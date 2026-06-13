@@ -143,7 +143,7 @@ Already done out-of-band: `study/morm-8-three-glories-reading.md` (2026-06-09).
 - [x] 2026-03-15 `study/language-of-adam-speculative.md` **T1+FULL** — Sample-of-Pure-Language quote was a 2-answer blend (requoted vs JSP); Anglo-men; provenance corrected; CONFOUND propagation closed
 - [x] 2026-03-15 `study/yt/tDS2olk8Jx0-ma-dramatic-pause.md` **T1** — SELAH was 1913 (no 1828 entry exists); 2 dropped "of"s requoted; 21 links fixed; 16 scriptures + Held verbatim
 - [x] 2026-03-15 `study/stories/the-words-of-abinadi.md` **SAMPLE** — "74 years"→"some fifty" (narration-date misread); Alma 36:21→36:20; ~25 quotes verbatim
-- [ ] 2026-03-17 `study/eq/20260315-uchtdorf-do-your-part.md` **SAMPLE**
+- [x] 2026-03-17 `study/eq/20260315-uchtdorf-do-your-part.md` **SAMPLE** — "wasn't wickedness" claim fixed vs Matt 25:26; Uchtdorf hot-zone quotes + gifts list all exact
 - [ ] 2026-03-19 `study/yt/LO0Ws-l6brg-4-ai-labs-same-system.md` **SAMPLE**
 - [ ] 2026-03-20 `study/only-begotten.md` **T1+FULL**
 - [ ] 2026-03-21 `study/only-begotten-deeper.md` **FULL**

@@ -1593,6 +1593,19 @@ quotes sampled verbatim (Mosiah 11/12/13/15/17/18, Alma 36 incl.
 13:9-10, the 18:8-9 covenant, 17:19 five-words check = exactly
 five); "about two hundred and four souls" matches 18:16.
 
+### study/eq/20260315-uchtdorf-do-your-part.md (2026-03-17) — one verse-contradicted claim fixed; hot-zone talk quotes all exact
+SAMPLE + hot-zone (Oct 2025). "The accusation wasn't wickedness,
+it was slothfulness (v. 26)" — but Matt 25:26 reads "Thou wicked
+AND slothful servant"; reworded to keep the insight (inaction was
+the wickedness) without contradicting the verse. Uchtdorf quotes
+verified exact against 16uchtdorf.md: "Remember, it is Jesus
+Christ who already did the superhuman part…", the no-win-scenario
+line, "refined, until that perfect day…", and the 13-item quiet-
+gifts list (same items, same order); Lufthansa/747/simulator/
+chief-pilot all in the talk. Scriptures verbatim (D&C 46:11-12,
+Moro 10:8, Alma 32:38-41, D&C 50:24/84:38/60:2, Alma 37:6, Matt
+25:15/25/26).
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
