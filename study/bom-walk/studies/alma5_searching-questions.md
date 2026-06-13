@@ -36,7 +36,7 @@ The ground the sermon builds on is this: the change is real, it happened, it sus
 
 ## III. The Question-Cascade (5:14-31)
 
-Forty-three distinct questions appear across Alma 5's sixty-two verses. The density is highest in this middle section, and the questions shift in kind: from memorial questions (has the past reached you?) to diagnostic questions (what is your present condition?).
+More than forty distinct questions appear across Alma 5's sixty-two verses (the chapter carries 42 question marks; the count climbs past forty-three once compound interrogatives are split). The density is highest in this middle section, and the questions shift in kind: from memorial questions (has the past reached you?) to diagnostic questions (what is your present condition?).
 
 The pivot is verse 14: "have ye spiritually been born of God? Have ye received his image in your countenances? Have ye experienced this mighty change in your hearts?"
 
