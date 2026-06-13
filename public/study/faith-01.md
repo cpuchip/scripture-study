@@ -31,11 +31,11 @@ Lecture 1 insists that faith is not passive belief. It is the *moving cause* of 
 
 **New Testament confirmation (faith → works)**
 - “Faith without works is dead” ([James 2:17](https://www.churchofjesuschrist.org/study/scriptures/nt/james/2?lang=eng&id=p17#p17))
-- “Show me thy faith without thy works, and I will show thee my faith by my works” ([James 2:18](https://www.churchofjesuschrist.org/study/scriptures/nt/james/2?lang=eng&id=p18#p18))
+- “shew me thy faith without thy works, and I will shew thee my faith by my works” ([James 2:18](https://www.churchofjesuschrist.org/study/scriptures/nt/james/2?lang=eng&id=p18#p18))
 
 **Book of Mormon confirmation**
 - “If ye have faith ye can do all things which are expedient unto me” ([Moroni 10:23](https://www.churchofjesuschrist.org/study/scriptures/bofm/moro/10?lang=eng&id=p23#p23))
-- “If a man have faith he must needs have hope” ([Moroni 10:20](https://www.churchofjesuschrist.org/study/scriptures/bofm/moro/10?lang=eng&id=p20#p20))
+- “if a man have faith he must needs have hope” ([Moroni 7:42](https://www.churchofjesuschrist.org/study/scriptures/bofm/moro/7?lang=eng&id=p42#p42))
 
 ---
 

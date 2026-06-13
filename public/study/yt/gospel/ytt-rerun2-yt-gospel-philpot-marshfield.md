@@ -24,7 +24,7 @@ Below are verbatim transcript excerpts carrying the weight of the argument. Asse
 > — *Assertion*: The etymological link between grammar and grimoire reveals that ordinary education can function as occult indoctrination.
 
 > **"[16:43] Others will he pacify and lull them away into carnal security that they will say all is well in Zion... 2 Thessalonians 2:1, 'And for this cause God shall send them strong delusion, and they shall believe a lie.'"**
-> — *Assertion* (with citation): Modern spiritual sleep is the fulfillment of these passages.
+> — *Assertion* (with citation): Modern spiritual sleep is the fulfillment of these passages. *(Audit note 2026-06-12: the delusion text he quotes is 2 Thessalonians 2:11, not 2:1; the excerpt preserves his citation as spoken.)*
 
 > **"[22:48] Do our kids learn climate science at school? Absolutely. What is that about? Divination of future events based upon what? Man science."**
 > — *Assertion*: Climate science and economics are modern forms of biblical divination.

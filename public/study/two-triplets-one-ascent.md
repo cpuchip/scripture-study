@@ -42,7 +42,7 @@ Ether 12:28 is direct: "...faith, hope and charity bringeth unto me—the founta
 
 Charity itself is finally his, not ours. Moroni names it: "charity is the pure love of Christ" ([Moroni 7:47](https://www.churchofjesuschrist.org/study/scriptures/bofm/moro/7?lang=eng&id=p47#p47)). The next verse names the means: pray "with all the energy of heart, that ye may be filled with this love, **which he hath bestowed**" ([Moroni 7:48](https://www.churchofjesuschrist.org/study/scriptures/bofm/moro/7?lang=eng&id=p48#p48)). The love is bestowed, not manufactured. Praying is the asking; the love itself is a gift. Even the most interior virtue of the first triplet — the one most likely to read as a human achievement — is finally Christ's love bestowed on the true follower.
 
-The second triplet is even more direct. [way-truth-life](way-truth-life.md): "Christ does not merely show the way, teach truth, or give life — He IS all three." After John 14:6, Philip asks to see the Father, and Jesus answers, "...he that hath seen me hath seen the Father" ([John 14:9](https://www.churchofjesuschrist.org/study/scriptures/nt/john/14?lang=eng&id=p9#p9)). The way to the Father is a Person. The truth about the Father is a Person. The life of the Father is a Person. "I am the resurrection, and the life" ([John 11:25](https://www.churchofjesuschrist.org/study/scriptures/nt/john/11?lang=eng&id=p25#p25)).
+The second triplet is even more direct. [way-truth-life](way-truth-life.md) puts it plainly: "Christ fulfills all three roles" — He does not merely show the way, teach truth, or give life. After John 14:6, Philip asks to see the Father, and Jesus answers, "...he that hath seen me hath seen the Father" ([John 14:9](https://www.churchofjesuschrist.org/study/scriptures/nt/john/14?lang=eng&id=p9#p9)). The way to the Father is a Person. The truth about the Father is a Person. The life of the Father is a Person. "I am the resurrection, and the life" ([John 11:25](https://www.churchofjesuschrist.org/study/scriptures/nt/john/11?lang=eng&id=p25#p25)).
 
 The "us-centric versus Christ-centered" framing does not hold. Both end in Christ. The first names the soul's progressive capacity to receive him. The second names him as the reality received.
 
@@ -66,7 +66,7 @@ An honest caveat from [tree-of-life-and-the-chain](tree-of-life-and-the-chain.md
 
 ## Becoming
 
-The practical question is where the eye rests. [hope-and-the-grammar-of-pairs](hope-and-the-grammar-of-pairs.md) warns that "despair is the eye-state where there is no forward orientation." If hope dims, the eye loses direction. If the eye loses direction, charity has nothing to focus on. Keeping hope is the fight to keep the eye single.
+The practical question is where the eye rests. [discernment-and-the-comprehending-eye](discernment-and-the-comprehending-eye.md) warns that "despair is the eye-state where there is no forward orientation." If hope dims, the eye loses direction. If the eye loses direction, charity has nothing to focus on. Keeping hope is the fight to keep the eye single.
 
 The temple acts this out. The veil is not a metaphor for something else; it is the physical enactment. A traveler comes with faith that the covenants are real, hope fixed on what lies past the veil, and charity — however incomplete — as the only garment that fits. The covenants open the way Christ opened. Truth is received in the going. Life is what waits.
 

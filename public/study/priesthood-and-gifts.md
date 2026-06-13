@@ -18,13 +18,13 @@
 
 Before we open the scriptures, let's ground ourselves in what these words meant in the Restoration's living language.
 
-**Webster 1828 — "ordinance"**: *"A rule established by authority; a permanent rule of action. An established rite or ceremony."* An ordinance isn't a suggestion — it's an established rite, a permanent rule of action authorized from above. The word carries both the sense of divine order and of something ceremonially enacted.
+**Webster 1828 — "ordinance"**: *"A rule established by authority; a permanent rule of action"* and *"established rite or ceremony"* — and the genuine entry adds: "In this sense, baptism and the Lord's supper are denominated ordinances." An ordinance isn't a suggestion — it's an established rite, a permanent rule of action authorized from above. The word carries both the sense of divine order and of something ceremonially enacted.
 
-**Webster 1828 — "administer"**: *"To dispense; to serve out; to supply; execute."* When elders "administer" to the sick, they are *dispensing* something — serving it out. The word implies a channel: God's power flows *through* the one who administers, not *from* them.
+**Webster 1828 — "administer"**: *"To dispense, as to administer justice or the sacrament"* — and *"to afford, give or furnish; as, to administer relief, that is, to act as the agent."* *(Requoted 2026-06-12 — the earlier compact list was the 1913 edition's; the genuine entry's own example is the sacrament.)* When elders "administer" to the sick, they are *dispensing* something — acting as the agent. The word implies a channel: God's power flows *through* the one who administers, not *from* them.
 
-**Webster 1828 — "bless"**: This word carries two distinct senses that both matter here: (1) *"To make or pronounce holy; to consecrate"* — a declaration of holiness, and (2) *"To make happy; to confer prosperity or happiness upon; to grant divine favor to"* — a conferral of something real. A priesthood blessing is both a declaration and a conferral, and the question of agency hangs between them.
+**Webster 1828 — "bless"**: This word carries two distinct senses that both matter here: (1) *"To set apart or consecrate to holy purposes; to make and pronounce holy"* — a declaration of holiness, and (2) *"To make happy; to make successful; to prosper in temporal concerns"* — a conferral of something real. And the genuine entry's sense 2 sits between them: *"to pronounce a wish of happiness to one."* *(Requoted 2026-06-12 — the earlier wordings were the 1913 edition's.)* A priesthood blessing is both a declaration and a conferral, and the question of agency hangs between them.
 
-**Webster 1828 — "ordain"**: *"To invest with ministerial or sacerdotal functions; to introduce into the office of the Christian ministry, by the laying on of hands."* Notice: ordination in 1828 already meant what it means now — the laying on of hands for ministry. The word connects ordination directly to function, not just title.
+**Webster 1828 — "ordain"**: *"Properly, to set; to establish in a particular office or order; hence, to invest with a ministerial function or sacerdotal power; to introduce and establish or settle in the pastoral office with the customary forms and solemnities."* *(Requoted 2026-06-12 — the earlier text, including its "laying on of hands" phrase, was the 1913 edition's; the genuine says "customary forms and solemnities.")* The word connects ordination directly to function and office, not just title.
 
 ---
 
@@ -237,12 +237,12 @@ Let's lay out what the scriptures and prophets actually teach about this.
 President Harold B. Lee taught:
 
 > "When one becomes a holder of the priesthood, he becomes an agent of the Lord. He should think of his calling as though he were on the Lord's errand. That is what it means to magnify the priesthood."
-> — Quoted in [President Dallin H. Oaks, "The Powers of the Priesthood," April 2018](https://www.churchofjesuschrist.org/study/general-conference/2018/04/the-powers-of-the-priesthood?lang=eng)
+> — President Harold B. Lee, quoted in [President Dallin H. Oaks, "The Powers of the Priesthood," April 2018](https://www.churchofjesuschrist.org/study/general-conference/2018/04/the-powers-of-the-priesthood?lang=eng)
 
 Elder McConkie was even more direct:
 
 > "An elder is a minister of the Lord Jesus Christ. … He is commissioned to stand in the place and stead of his Master … in ministering to his fellowmen. He is the Lord's agent."
-> — Quoted in [President Dallin H. Oaks, "The Powers of the Priesthood," April 2018](https://www.churchofjesuschrist.org/study/general-conference/2018/04/the-powers-of-the-priesthood?lang=eng)
+> — Elder Bruce R. McConkie, quoted in [President Dallin H. Oaks, "The Powers of the Priesthood," April 2018](https://www.churchofjesuschrist.org/study/general-conference/2018/04/the-powers-of-the-priesthood?lang=eng)
 
 And the Lord Himself:
 
@@ -356,7 +356,7 @@ President Nelson's 2018 priesthood session address was essentially a plea: you *
 
 President Oaks drew a crucial distinction that directly affects how we give blessings:
 
-> "A father who holds the priesthood presides in his family by the authority of the priesthood he holds. He has no need to have the direction or approval of priesthood keys in order to counsel the members of his family, hold family meetings, give priesthood blessings to his wife and children, or give healing blessings to family members or others."
+> "A father presides and exercises the priesthood in his family by the authority of the priesthood he holds. He has no need to have the direction or approval of one holding priesthood keys in order to perform his various family functions. These include counseling the members of his family, holding family meetings, giving priesthood blessings to his wife and children, or giving healing blessings to family members or others."
 > — [President Dallin H. Oaks, "The Melchizedek Priesthood and the Keys," April 2020](https://www.churchofjesuschrist.org/study/general-conference/2020/04/36oaks?lang=eng)
 
 In the Church, priesthood is exercised under keys. In the family, a father exercises priesthood directly. He doesn't need his bishop's permission to bless his child. The authority flows from ordination itself. This is liberating — and it raises the stakes. If you don't need anyone else's approval, the only thing between you and the blessing is your own willingness to speak.
@@ -459,4 +459,4 @@ This study landed somewhere I didn't expect. I came in with a doctrinal question
 - [President Dallin H. Oaks, "The Melchizedek Priesthood and the Keys," April 2020](https://www.churchofjesuschrist.org/study/general-conference/2020/04/36oaks?lang=eng)
 - [President Emily Belle Freeman, "Live Up to Your Privileges," October 2024](https://www.churchofjesuschrist.org/study/general-conference/2024/10/13freeman?lang=eng)
 - [Elder Shayne M. Bowen, "Miracles, Angels, and Priesthood Power," April 2024](https://www.churchofjesuschrist.org/study/general-conference/2024/04/31bowen?lang=eng)
-- Webster 1828: "ordinance," "administer," "bless," "ordain"
+- Webster 1828: "ordinance" (held genuine), "administer," "bless," "ordain" *(latter three requoted 2026-06-12 against the genuine 1828)*

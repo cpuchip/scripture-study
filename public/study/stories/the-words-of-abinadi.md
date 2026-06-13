@@ -141,7 +141,7 @@ Two hundred and four souls. Pure water instead of wine-presses. Small trees inst
 
 ---
 
-Seventy-four years passed.
+Some fifty years passed.
 
 A young man named for his father lay on the ground. He couldn't move. He couldn't speak. For three days and three nights he was "racked, even with the pains of a damned soul" ([Alma 36:16](https://www.churchofjesuschrist.org/study/scriptures/bofm/alma/36?lang=eng&id=p16#p16)).
 
@@ -157,7 +157,7 @@ His father's voice. Teaching what Abinadi taught. About a God who would come dow
 
 "Now, as my mind caught hold upon this thought, I cried within my heart: O Jesus, thou Son of God, have mercy on me." ([Alma 36:18](https://www.churchofjesuschrist.org/study/scriptures/bofm/alma/36?lang=eng&id=p18#p18))
 
-The pain stopped. The joy that replaced it was "as exceeding as was my pain" ([Alma 36:21](https://www.churchofjesuschrist.org/study/scriptures/bofm/alma/36?lang=eng&id=p21#p21)).
+The pain stopped. The joy that replaced it was "as exceeding as was my pain" ([Alma 36:20](https://www.churchofjesuschrist.org/study/scriptures/bofm/alma/36?lang=eng&id=p20#p20)).
 
 ---
 

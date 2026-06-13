@@ -107,7 +107,7 @@ When we use AI well, we're in that creative posture — setting direction, watch
 
 ### Know When to Stop
 
-> "The real skill of the AI era is not prompt engineering. It's knowing when to stop."
+> "Here's what I think the real skill of the AI era is. It's not prompt engineering. It's not knowing which model to use. It's not having the perfect workflow. It's knowing when to stop." *(Requoted 2026-06-12 — the earlier rendering compressed this passage into a single rewritten sentence inside quotation marks.)*
 
 This is the "good enough" principle. The Savior sent the seventy out with almost nothing ([Luke 10:4](https://www.churchofjesuschrist.org/study/scriptures/nt/luke/10?lang=eng&id=p4#p4)) — no purse, no scrip, no shoes. He didn't optimize their kit. He sent them. Good enough. Go.
 
@@ -156,4 +156,4 @@ AI never gets tired. You do. That's not a bug in you — it's a feature. It mean
 
 ---
 
-*Source: [AI Fatigue Is Real and Nobody Talks About It](https://siddhantkhare.com/writing/ai-fatigue-is-real) by Siddhant Khare, February 7, 2026.*
+*Source: [AI Fatigue Is Real and Nobody Talks About It](https://siddhantkhare.com/writing/ai-fatigue-is-real) by Siddhant Khare, February 8, 2026.*

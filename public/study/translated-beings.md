@@ -19,9 +19,9 @@ This isn't a study about wanting superpowers. The Three Nephites didn't ask for 
 
 ### The Words
 
-**Translate** — Webster 1828, definition 3: *"To remove to heaven, as a human being, without subjecting to death."* The primary definition is about *carrying from one place to another* — and that's exactly what happens. The body is carried from one state to another without passing through death.
+**Translate** — Webster 1828, sense 2: *"To remove or convey to heaven, as a human being, without death."* And the genuine entry's own citation is this study's subject: *"By faith Enoch was translated, that he should not see death. Hebrews 11:5."* *(Requoted 2026-06-12 — the earlier wording and numbering were the 1913 edition's.)* The primary definition is about *carrying from one place to another* ("to bear, carry or remove from one place to another") — and that's exactly what happens. The body is carried from one state to another without passing through death.
 
-**Transfigure** — Webster 1828: *"To change the outward form or appearance; to metamorphose; to transform. Especially, to change to something exalted and glorious."* This is the word the scriptures use for the *process* — the visible, experiential change.
+**Transfigure** — Webster 1828: *"To transform; to change the outward form or appearance."* The genuine entry's citation is the Transfiguration itself: *"And was transfigured before them. Matthew 17:2."* *(Requoted 2026-06-12 — the earlier "exalted and glorious" tail was the 1913 edition's.)* This is the word the scriptures use for the *process* — the visible, experiential change.
 
 **Quicken** — Webster 1828: *"To make alive; to vivify; to revive or resuscitate, as from death or an inanimate state."* This is the word the Doctrine and Covenants uses for what glory does to a body — it *quickens* it, makes it alive in a way it wasn't before.
 
@@ -332,7 +332,7 @@ That's the promise at the end of the road. Not just survival — *oneness*. Not 
 ### Conference Talks
 - [Bruce R. McConkie, "The Coming Tests and Trials and Glory," April 1980](https://www.churchofjesuschrist.org/study/general-conference/1980/04/the-coming-tests-and-trials-and-glory?lang=eng)
 
-### Webster 1828
-- **Translate**: "To remove to heaven, as a human being, without subjecting to death"
-- **Transfigure**: "To change the outward form or appearance; to metamorphose; to transform"
-- **Quicken**: "To make alive; to vivify; to revive or resuscitate"
+### Webster 1828 *(Translate + Transfigure requoted 2026-06-12 against the genuine 1828)*
+- **Translate**: "To remove or convey to heaven, as a human being, without death" (citing Heb 11:5, Enoch)
+- **Transfigure**: "To transform; to change the outward form or appearance" (citing Matt 17:2)
+- **Quicken**: "To make alive; to vivify; to revive or resuscitate" (genuine)

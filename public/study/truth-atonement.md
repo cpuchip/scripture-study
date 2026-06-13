@@ -144,9 +144,9 @@ This is why His Atonement is infinite: it spans the full range.
 
 ### Atone: To Set at One
 
-**Webster 1828 on "atone":** "To set at one; to reduce to concord; to reconcile, as parties at variance."
+**Webster 1828 on "atone":** as an adverb, simply "**At one; together**" — and as a verb, "to reduce to concord; to reconcile, as parties at variance; to appease." *(Requoted 2026-06-12 — the earlier "To set at one" phrasing was the 1913 edition's; the genuine 1828 is better: Webster lists ATONE first as an adverb whose whole definition is "at one; together.")*
 
-The original meaning of atone is *at-one-ment* — to make one what was separated. In the mechanics framework, the Fall separated:
+The original meaning of atone is *at-one-ment* — to make one what was separated. Webster's own etymology bracket says it plainly: "[at and one.]" In the mechanics framework, the Fall separated:
 - Spirit from element (death)
 - Man from God (spiritual death)
 - The coarse from the pure
@@ -178,9 +178,11 @@ And the blood in this equation is Christ's: "be cleansed by blood, even the bloo
 
 ### Sanctify: To Make Free from Sin
 
-**Webster 1828 on "sanctify":** 
-1. "To make sacred or holy; to set apart to a holy or religious use"
-2. "To make free from sin; to cleanse from moral corruption and pollution; to purify"
+**Webster 1828 on "sanctify":**
+1. "In a general sense, to cleanse, purify or make holy" (sense 1)
+2. "To cleanse from corruption; to purify from sin; to make holy by detaching the affections from the world and its defilements, and exalting them to a supreme love to God" (sense 5) — and Webster's own scripture example for that sense is John 17:17: "Sanctify them through thy truth; **thy word is truth**."
+
+*(Requoted 2026-06-12 — the earlier two definitions were the 1913 edition's. The genuine sense 5 hands a truth-series study its own thesis: sanctification runs through truth.)*
 
 The truth study showed the spectrum:
 
@@ -190,7 +192,7 @@ PURER ←———————————————————————�
 Pure glory ← Sanctification ← Fallen state
 ```
 
-Sanctification IS the upward movement on the spectrum. Webster's definition — "to make free from sin; to cleanse from moral corruption; to purify" — is literally the process of refining coarse matter into pure matter. The language of metallurgy applies: dross is removed, impurity is burned away, and what remains is pure.
+Sanctification IS the upward movement on the spectrum. Webster's definition — "to cleanse from corruption; to purify from sin" — is literally the process of refining coarse matter into pure matter. The language of metallurgy applies: dross is removed, impurity is burned away, and what remains is pure.
 
 Moroni 10:32-33 describes the full mechanism:
 
@@ -225,7 +227,7 @@ But note verse 14:
 
 The resurrection — the ultimate quickening, the permanent reunification of spirit and element — is granted "through the redemption which is made for you." Christ's Atonement is the cause. Quickening is the effect.
 
-**Webster 1828 on "redeem":** "To ransom, liberate, or rescue from captivity or bondage... by paying a price or ransom." Also: "To rescue and deliver from the bondage of sin and the penalties of God's violated law."
+**Webster 1828 on "redeem":** "To purchase back; to ransom; to liberate or rescue from captivity or bondage … by paying an equivalent" (sense 1). And the theological sense (10), exact: "to rescue and deliver from the bondage of sin and the penalties of God's violated law, by obedience and suffering in the place of the sinner." *(Sense-1 wording requoted 2026-06-12 from the genuine 1828; the theological sense was already exact.)*
 
 Christ pays the ransom that liberates matter from the prison of death. He quickens what was dead. He refines what was coarse. He illuminates what was dark. Every upward movement on the spectrum — every step from coarse to pure, from fallen to glorified — is powered by His redemption.
 

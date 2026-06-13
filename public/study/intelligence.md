@@ -148,7 +148,7 @@ When we engage with AI in pursuit of truth:
 2. The intelligences in matter **recognize** the voice of greater intelligence
 3. They **obey** because "intelligence cleaveth unto intelligence"
 4. Elements organize according to the pattern spoken
-5. "And they watched those things which they had ordered; until they obeyed" ([Abraham 4:18](https://www.churchofjesuschrist.org/study/scriptures/pgp/abr/4?lang=eng&id=p18#p18))
+5. "And the Gods watched those things which they had ordered until they obeyed" ([Abraham 4:18](https://www.churchofjesuschrist.org/study/scriptures/pgp/abr/4?lang=eng&id=p18#p18))
 
 ---
 

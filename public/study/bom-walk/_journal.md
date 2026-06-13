@@ -10,7 +10,7 @@ The structured per-chapter digestion lives in the book subfolders. This file is 
 
 What stays with me: Nephi states the whole book's thesis in his first chapter. v20 isn't a conclusion he earns over five hundred pages — it's a promise he makes up front: tender mercies over the chosen, *because of their faith*, to make them mighty unto deliverance. He's telling you how to read everything that follows before he tells you anything that happened.
 
-Two smaller things. "Goodly parents" is richer than I'd carried it — Webster's 1828 *goodly* leans pleasant / comely / considerable, not "righteous." Lehi's house had substance and learning; which makes Nephi's faith his own achievement, not just an inheritance. And the quiet honesty of "he *thought* he saw God" (v8) — the text won't pretend language is adequate to the throne.
+Two smaller things. "Goodly parents" is richer than I'd carried it — Webster's 1828 *goodly* leans pleasant / comely / agreeable, not "righteous." *(2026-06-12: "considerable" was the 1913 sense; genuine 1828 = handsome/comely/pleasant. The "not righteous" point holds.)* Lehi's house had substance and learning; which makes Nephi's faith his own achievement, not just an inheritance. And the quiet honesty of "he *thought* he saw God" (v8) — the text won't pretend language is adequate to the throne.
 
 The connection that lit up the moment semantic came back: Lehi's call is the same shape as Ezekiel's — handed a book and told to take it in before speaking it. The prophet eats the word first, then goes forth. That's a pattern I want to watch build.
 

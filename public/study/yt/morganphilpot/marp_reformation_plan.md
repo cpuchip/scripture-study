@@ -113,4 +113,4 @@ The original `slides.md` is organized by slide number (1–369). The transcript 
 
 ---
 
-*Plan created: 2025-07-26*
+*Plan created: 2026-02-08 (git-verified; an earlier footer claimed 2025-07-26 — impossible, since the presentation it reorganizes references October 2025 events)*

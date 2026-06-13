@@ -60,9 +60,9 @@
 
 ### Word Study
 
-**Meek** (Webster 1828): "Mild of temper; not easily provoked or irritated; patient under injuries; not vain, or haughty, or resentful; forbearing; submissive."
+**Meek** (Webster 1828): "Mild of temper; soft; gentle; not easily provoked or irritated; yielding; given to forbearance under injuries" — and sense 2: "Appropriately, humble, in an evangelical sense; submissive to the divine will," citing Matthew 11:29 ("I am meek and lowly in heart") and Matthew 5:5. *(Requoted 2026-06-12 — the earlier text was the 1913 edition's.)*
 
-**Contention** (Webster 1828): "A violent effort or struggle to obtain, or to resist, something; contest; strife." One archaic sense is "vehemence of endeavor; eagerness; ardor; zeal" — which explains why defending the faith can *feel* righteous while becoming contentious. The zeal itself is not wrong; the strife it produces is.
+**Contention** (Webster 1828): "Strife; struggle; a violent effort to obtain something, or to resist a person, claim or injury; contest; quarrel" — and sense 2's own citation is Titus 3:9: "Avoid foolish questions, and genealogies, and contentions, and strivings about the law." Sense 4 is the surprise: "Eagerness; zeal; ardor; vehemence of endeavor" — which explains why defending the faith can *feel* righteous while becoming contentious. The zeal itself is not wrong; the strife it produces is. *(Requoted 2026-06-12 — the earlier wordings were the 1913 edition's; the eagerness sense is genuine 1828, sense 4.)*
 
 ---
 

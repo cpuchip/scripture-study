@@ -48,9 +48,11 @@ The reason in Moab is deliverance. *Remember that thou wast a servant in the lan
 
 The two reasons are not in competition. They name the same thing from two angles. The creation reason says: *I built rest into the order of the world.* The Egypt reason says: *I broke the order of the world that did not have rest in it.* Both are reasons for the same commandment because both are descriptions of the same Lord. The God who made the seven-day rhythm is the God who delivered the people from the slavery that violated it.
 
-Elder Nelson named this in a footnote of his October 2015 talk, with a sentence that is sharper than most pulpit footnotes get:
+Elder Nelson named this in a footnote of his April 2015 talk, with a sentence that is sharper than most pulpit footnotes get:
 
 > "People who choose to work seven days a week are essentially in bondage—to work or perhaps to money, but they are slaves nevertheless. A millionaire who works seven days a week is a rich slave." — Nelson, [The Sabbath Is a Delight](https://www.churchofjesuschrist.org/study/general-conference/2015/04/the-sabbath-is-a-delight?lang=eng), footnote 5
+
+*(Corrected 2026-06-12 — "The Sabbath Is a Delight" was given in **April** 2015 general conference, not October; an earlier version dated it October 2015 in two places. Both Nelson quotes are verbatim.)*
 
 Slavery is not always external. The soul can self-impose what Pharaoh imposed. The Sabbath is the practice that refuses the self-imposed version.
 
@@ -62,7 +64,7 @@ Exodus 31 makes a move the fourth commandment does not. It names the Sabbath as 
 
 The Sabbath is *signaled.* It points at something. Keeping it shows something to God. *A sign between me and you.* The Sabbath is covenantal vocabulary, not legal.
 
-The reframe Elder Nelson built his October 2015 talk around is exactly this distinction:
+The reframe Elder Nelson built his April 2015 talk around is exactly this distinction:
 
 > "In my much younger years, I studied the work of others who had compiled lists of things to do and things *not* to do on the Sabbath. It wasn't until later that I learned from the scriptures that my conduct and my attitude on the Sabbath constituted a *sign* between me and my Heavenly Father. With that understanding, I no longer needed lists of dos and don'ts. When I had to make a decision whether or not an activity was appropriate for the Sabbath, I simply asked myself, 'What *sign* do I want to give to God?' That question made my choices about the Sabbath day crystal clear." — Nelson, [The Sabbath Is a Delight](https://www.churchofjesuschrist.org/study/general-conference/2015/04/the-sabbath-is-a-delight?lang=eng)
 
@@ -122,7 +124,7 @@ The promise is the inverse of the bondage. The soul that stops working is given 
 
 The texts on the Sabbath are old, and some of them are severe in ways modern Saints do not enforce. Exodus 31:14-15 specifies the death penalty for Sabbath-breaking. The Mosaic enforcement is not the modern enforcement. The point the severity preserves is the *seriousness* of the day; modern Saints do not execute, but the day is not optional. The severity in the text is a witness that the Sabbath is not a recommendation.
 
-The Sabbath's shape has also changed across dispensations. Jarom 1:5 records the Nephites keeping the Sabbath as part of the Law of Moses. 4 Nephi 1:12 describes the post-Christ society as "continuing in fasting and prayer, and in meeting together oft to pray and to hear the word of the Lord" — without naming "Sabbath" explicitly. The cessation pattern is still there, but it has been refigured into the gathering-and-sacrament shape that D&C 59 makes explicit. The structural function — cessation enabling covenant renewal — holds across the dispensations. The specific form moves from agricultural-rest (Mosaic) to gathering-and-sacrament (Christian-Restoration).
+The Sabbath's shape has also changed across dispensations. Jarom 1:5 records the Nephites keeping the Sabbath as part of the Law of Moses. 4 Nephi 1:12 describes the post-Christ society as "continuing in fasting and prayer, and in meeting together oft both to pray and to hear the word of the Lord" — without naming "Sabbath" explicitly. The cessation pattern is still there, but it has been refigured into the gathering-and-sacrament shape that D&C 59 makes explicit. The structural function — cessation enabling covenant renewal — holds across the dispensations. The specific form moves from agricultural-rest (Mosaic) to gathering-and-sacrament (Christian-Restoration).
 
 A third tension worth naming: the Hebrews 4 "rest that remains" implies that the weekly Sabbath does not exhaust what is meant by rest. The weekly is a foretaste. The destination is the eternal rest of the people of God. This protects the weekly Sabbath from being read as a goal in itself. The soul that keeps the Sabbath is not arriving anywhere by keeping it; the soul is rehearsing the rest that has not yet been entered fully.
 

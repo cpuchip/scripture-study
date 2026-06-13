@@ -33,9 +33,11 @@ Now watch what happens when you lay those three elements across the Helaman narr
 
 President Johnson's observation lands like a hammer:
 
-> "Consider that **all ten virgins chose the covenant path**. All were invited to the wedding feast. All carried lamps. They all went out to meet the bridegroom."
+> "In the parable all ten of the virgins were in the right location, awaiting the bridegroom. Every one of them came with a lamp."
 
-This is the Nephites. All of them. Every person in Helaman 3 through 3 Nephi 7 is a covenant member — part of the people of Nephi, recipients of the law of Moses, heirs to the promises of Lehi and Nephi. They all had lamps. They all went "out to meet the bridegroom."
+*(Requoted 2026-06-12 — an earlier draft carried an invented version of this quote, "all ten virgins chose the covenant path…"; her real words are above. See the corrected [ten-virgins-parable.md](ten-virgins-parable.md).)*
+
+This is the Nephites. All of them. Every person in Helaman 3 through 3 Nephi 7 is a covenant member — part of the people of Nephi, recipients of the law of Moses, heirs to the promises of Lehi and Nephi. They all had lamps. They were all in the right location, awaiting Him.
 
 And the Lamanites who converted? They also chose the covenant path. They also carried lamps. They also went forth.
 
@@ -319,13 +321,14 @@ Elder Pearson said: "Many leave the Savior and their covenants long before they 
 
 That's the book of Helaman. That's the foolish virgins. Still in the wedding party. Still carrying a lamp. Still technically part of the group going forth to meet the bridegroom. But the oil has been draining — through pride, through prosperity, through "less and less astonished," through depending on their own wisdom instead of the Spirit.
 
-President Benson said Helaman "corresponds to our day." If so, then we are the ten virgins right now. All of us. The question Mormon is asking across twenty-seven chapters — and the question President Johnson asked in April 2025 — is the same:
+President Benson said the Nephite record just before the Savior's visit "reveals many parallels to our own day" (["The Savior's Visit to America," April 1987](https://www.churchofjesuschrist.org/study/general-conference/1987/04/the-saviors-visit-to-america?lang=eng)). If so, then we are the ten virgins right now. All of us. The question Mormon is asking across twenty-seven chapters is the one Elder Bednar distilled:
 
-> "The question is not: Do we have a testimony?
->
-> The question is: **Are we converted?**
->
-> Do we *know* the gospel is true? Or do we *know Him* who is the Truth?"
+> "Knowing that the gospel is true is the essence of a testimony. Consistently being true to the gospel is the essence of conversion."
+> — [Elder David A. Bednar, "Converted unto the Lord," October 2012](https://www.churchofjesuschrist.org/study/general-conference/2012/10/converted-unto-the-lord?lang=eng)
+
+And President Johnson's real April 2025 question presses it home: "All will be physically and emotionally healed in the Resurrection. But will you choose *now* to be whole in Him?"
+
+*(Requoted 2026-06-12 — an earlier draft attributed an invented question block to President Johnson; her real words and Bednar's real distillation are above.)*
 
 The Nephites knew the gospel was true. They had lamps. They burned bright after every deliverance, every sign, every prophetic warning.
 

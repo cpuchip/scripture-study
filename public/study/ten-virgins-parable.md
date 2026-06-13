@@ -99,37 +99,44 @@ President Johnson builds on Elder Bednar's framework and adds crucial insights:
 
 #### The Virgins' Identity
 
-> "Consider that **all ten virgins chose the covenant path**. All were invited to the wedding feast. All carried lamps. They all went out to meet the bridegroom. Then they all slumbered and slept... All woke and trimmed their lamps.
+> "In the parable all ten of the virgins were in the right location, awaiting the bridegroom. Every one of them came with a lamp.
 >
-> But only the wise virgins filled their vessels with oil."
+> But when He came, at the unexpected midnight hour, the five foolish did not have sufficient oil for their lamps. They were not described as wicked but rather as foolish. The foolish failed to adequately prepare to keep their lamps burning with the oil of conversion."
 
-**Key observation:** The foolish virgins weren't outsiders—they were covenant members who simply lacked sufficient oil (conversion).
+**Key observation:** The foolish virgins weren't outsiders—all ten were in the right place, awaiting Him, lamps in hand. The difference was sufficient oil (conversion).
 
 #### What Made the Difference
 
-> "The lamp, by one interpretation, represents **testimony**, and the oil in the vessels represents the **oil of conversion**. Testimony is the flame. Conversion is the fuel."
+> "To be whole means to be complete and full. Much like the five wise virgins who had their lamps full with oil when the bridegroom came, we can be whole in Jesus Christ as we fill our lamps with the nourishing oil of conversion to Him. In that way, we are prepared for the symbolic wedding supper, His Second Coming."
 
-She adds a profound layer:
+She cites Elder Bednar's framework directly in her notes; his own summary of the distinction:
 
-> "We can know that the Lord is the Christ. But **do we know Him?** This is the essence of conversion. It is what mattered at the moment the bridegroom appeared at the door."
+> "Knowing that the gospel is true is the essence of a testimony. Consistently being true to the gospel is the essence of conversion."
+> — Elder Bednar, ["Converted unto the Lord"](https://www.churchofjesuschrist.org/study/general-conference/2012/10/converted-unto-the-lord?lang=eng)
 
-#### Why "I Know You Not"
+#### Why "Ye Know Me Not"
 
-The bridegroom's devastating response—"I know you not"—is explained through relationship:
+President Johnson reads the bridegroom's response through the Joseph Smith Translation—where Matthew's "I know you not" becomes "Ye know me not" (JST, Matthew 25:12):
 
-> "The wise virgins didn't just know *about* the bridegroom. **They knew Him.** Their oil represented a deep, personal relationship with the Savior built through covenant keeping, through sacrifice, through coming to know His voice."
+> "And so, in response to their petition to be permitted to enter the wedding supper, the bridegroom responded, 'Ye know me not.'
+>
+> Implying, then, that the five wise virgins *did* know Him. They were whole in Him."
 
-The foolish virgins had testimony (the flame) but lacked the intimate knowledge of Christ that comes through conversion (the oil).
+The foolish virgins carried lamps but lacked the knowledge of Christ that comes through conversion—the JST turns the verdict from His recognition of them to their knowledge of Him.
 
 #### The Sculpture on Temple Square
 
-President Johnson announced a new sculpture:
+President Johnson pointed to a new sculpture (*Five Wise Virgins*, by Ben Hammond):
 
-> "A beautiful new work of art titled *Five Wise Virgins* will soon be placed on Temple Square... As you view this sculpture, may you be reminded of the precious oil of conversion—**oil that cannot be borrowed, oil that is acquired one drop at a time**."
+> "A magnificent sculpture depicting the five wise virgins was recently placed on Temple Square, just outside the doors to the Relief Society Building and in the shadow of the Salt Lake Temple."
+
+And she drew the lesson from what the sculpted women are doing:
+
+> "While the women represented as the five wise virgins are not sharing the oil of their conversion, they are sharing their light as they hold up their lamps, which are full of oil and burning brightly. Significantly they are depicted supporting one another—shoulder to shoulder, an arm around another, making eye contact and beckoning others to come to the light."
 
 #### How We Fill Our Lamps
 
-> "When we make and keep covenants with God—when we bind ourselves to Him—we fill our lamps with the oil of conversion... Every time we partake of the sacrament with real intent, we add oil. Every time we serve with no thought of recognition, we add oil. Every time we forgive when it's hard, we add oil. Every time we study the scriptures and hear His voice, we add oil."
+> "It is a location befitting application of the parable. Because when we make and keep covenants, particularly those available in the house of the Lord, we fill our lamps with the oil of conversion."
 
 ---
 
@@ -137,11 +144,9 @@ President Johnson announced a new sculpture:
 
 President Johnson frames the parable around one penetrating question:
 
-> "The question is not: Do we have a testimony?
->
-> The question is: **Are we converted?**
->
-> Do we *know* the gospel is true? Or do we *know Him* who is the Truth?"
+> "All will be physically and emotionally healed in the Resurrection. But will you choose *now* to be whole in Him?"
+
+Her wholeness question is the conversion question in different clothing: the wise virgins "were whole in Him" because they knew Him—not just about Him.
 
 ---
 
@@ -153,12 +158,13 @@ While October 2025 General Conference did not feature a direct talk on the ten v
 
 In ["The Lord Jesus Christ Will Come Again"](https://www.churchofjesuschrist.org/study/general-conference/2024/10/57nelson?lang=eng), President Nelson sets the urgency:
 
-> "I am calling upon you to prepare for the Second Coming of the Lord Jesus Christ... We need to be ready. The time is now. There is no time to waste."
+> "Brothers and sisters, now is the time for you and for me to prepare for the Second Coming of our Lord and Savior, Jesus the Christ. Now is the time for us to make our discipleship our highest priority."
 
-He gave specific counsel:
-- "Increase your faith in Jesus Christ"
-- "Spend more time in the temple"
-- "Become a true disciple of Jesus Christ"
+His specific counsel was the temple:
+
+> "*Here is my promise to you: Every sincere seeker of Jesus Christ will find Him in the temple.* You will feel His mercy. You will find answers to your most vexing questions."
+
+And the question he called most crucial: "To whom or to what will I give my life?"
 
 ### Elder David A. Bednar (October 2025)
 
@@ -205,16 +211,17 @@ From D&C 45:57, the wise are those who "have taken the Holy Spirit for their gui
 
 ## Filling Our Lamps: Practical Actions
 
-From President Johnson's counsel, oil is added through:
+Drawing the verified counsel from across these talks, oil is added through:
 
-| Action | How It Adds Oil |
-|--------|-----------------|
-| Partaking of the sacrament with real intent | Renews covenants, deepens commitment |
-| Service without recognition | Develops Christlike love |
-| Forgiving when it's hard | Transforms our nature |
-| Scripture study where we hear His voice | Builds personal relationship |
-| Temple worship | Makes and keeps sacred covenants |
-| Receiving and following the Holy Ghost | The defining characteristic of the wise (D&C 45:57) |
+| Action | Source |
+|--------|--------|
+| Making and keeping covenants, particularly in the house of the Lord | President Johnson — "we fill our lamps with the oil of conversion" |
+| Consistent, personal, private acts of devotion | Elder Renlund — they "invite the Holy Ghost to guide us" |
+| Believing and acting on the words of living prophets | Elder Rasband |
+| Hearing and feeling the Holy Ghost, and acting on that guidance | Elder Rasband; the defining mark of the wise (D&C 45:57) |
+| Choices that show we love the Lord and love what He loves | Elder Rasband |
+| Repenting and seeking the healing of the Atonement | Elder Rasband |
+| Daily family discipleship—prayer, scriptures, covenants kept | Sister Wright — "We needed every single drop" |
 
 ---
 
@@ -335,7 +342,7 @@ He connects the parable to "carnal security":
 
 The Parable of the Ten Virgins is about *conversion*, not just *testimony*. The lamp represents our testimony—our knowledge that Jesus is the Christ. The oil represents our conversion—our personal, covenant relationship with Him built through daily discipleship.
 
-All ten virgins were on the covenant path. All had lamps. The difference was the oil—and oil cannot be borrowed at midnight.
+All ten virgins were in the right location, awaiting the bridegroom. All had lamps. The difference was the oil—and oil cannot be borrowed at midnight.
 
 The Lord's own interpretation in D&C 45:57 identifies the wise as those who:
 - Have **received the truth**
@@ -344,7 +351,7 @@ The Lord's own interpretation in D&C 45:57 identifies the wise as those who:
 
 The haunting words "I know you not" come because the foolish virgins knew *about* the bridegroom but did not *know* Him. Conversion creates relationship. And relationship is what matters when He comes.
 
-> "The question is not: Do we have a testimony? The question is: Are we converted? Do we know the gospel is true? Or do we know Him who is the Truth?"
+> "All will be physically and emotionally healed in the Resurrection. But will you choose *now* to be whole in Him?"
 > — President Camille N. Johnson, April 2025
 
 ---

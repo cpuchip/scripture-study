@@ -10,8 +10,8 @@
 
 Elder Andersen speaks to two distinct audiences experiencing different kinds of spiritual pain:
 
-1. **Those seeking forgiveness for their own serious sins** — "agonizing over what you have done and wondering if the Lord will ever forgive you"
-2. **Those wounded by the sins of others** — carrying "heavy burdens caused by the sins or poor choices of others"
+1. **Those seeking forgiveness for very serious sins** — his desire is "to offer hope for those seeking forgiveness for very serious sins"
+2. **Those wounded by the sins of others** — "to offer comfort to those seeking healing from the anguishing wounds caused by the serious sins of others"
 
 His message: **The Savior's Atonement covers both**. It's not just about forgiveness of sin—it's about healing, enabling, and strengthening.
 
@@ -28,20 +28,22 @@ Elder Andersen points to [Enos](https://www.churchofjesuschrist.org/study/script
 
 This is the heart of the matter. It's not our perfect repentance that saves us—it's our faith in Christ that unlocks His power to save.
 
-### Four Elements of Coming to Christ
+### Four Elements of Honesty
 
-1. **Be honest with God** — He already knows; honesty opens the door to His help
-2. **Be honest with yourself** — Stop minimizing or justifying
-3. **Be honest with those you've harmed** — "restore as best you can what has been broken"
-4. **Be honest with priesthood leaders** — Especially for serious sins (violation of the law of chastity, dishonesty, etc.)
+Elder Andersen names four directions of complete honesty: "the determination to be completely honest with your Heavenly Father, with yourself, with those who were harmed, and with your priesthood leader."
+
+1. **Honest with your Heavenly Father** — He "rejoices in your resolve to come unto Him with a broken heart and contrite spirit"
+2. **Honest with yourself** — Stop minimizing or justifying
+3. **Honest with those who were harmed** — which leads to restoring what is broken
+4. **Honest with your priesthood leader** — "acknowledging serious sins to your bishop or branch president, but your full forgiveness comes from the Savior"
 
 ### The Pattern: "Prosper by Degrees"
 
 Elder Andersen references the story of Limhi's people in [Mosiah 21:14–16](https://www.churchofjesuschrist.org/study/scriptures/bofm/mosiah/21?lang=eng&id=p14-p16#p14):
 
-> "The Lord was **slow to hear their cry** because of their iniquities; nevertheless the Lord did hear their cries...  
-> And it came to pass that the Lord did soften the hearts of the Lamanites...  
-> And they began to **prosper by degrees** in the land."
+> "And now the Lord was **slow to hear their cry** because of their iniquities; nevertheless the Lord did hear their cries, and began to soften the hearts of the Lamanites that they began to ease their burdens …
+>
+> And it came to pass that they began to **prosper by degrees** in the land." ([Mosiah 21:15–16](https://www.churchofjesuschrist.org/study/scriptures/bofm/mosiah/21?lang=eng&id=p15-p16#p15))
 
 **Insight:** Divine forgiveness and healing don't always come instantly. Sometimes the Lord's approval comes "by degrees"—gradually, as we demonstrate our faith and commitment. This is merciful, not punitive. It gives us time to:
 - Rebuild broken relationships
@@ -51,11 +53,15 @@ Elder Andersen references the story of Limhi's people in [Mosiah 21:14–16](htt
 
 ### Restoring What Is Broken
 
-One of the most powerful stories in the talk:
+One of the most powerful stories in the talk — an email Elder Andersen received while preparing it, from a man in the process of repenting and returning to the Church, whose branch president had encouraged him to prayerfully consider what more he could do for his former wife and children:
 
-> A man who had divorced his wife after extended unfaithfulness realized his need to restore what was broken. Years after his divorce, he began **sending monthly payments to his former wife** as if the original divorce settlement had never existed—even though legally he owed her nothing.
+> "Initially, I struggled with the idea of further restitution. Since my sins weren't financial, I wondered what a 'generous restitution' truly meant … [but] I soon realized it wasn't just about money. …
+>
+> "My new goal was to move forward with faith. … I simply expressed my desire to help with no strings attached. … I decided to [send my former wife a specific amount] per paycheck, which was a significant portion of my net pay. Just before making the first payment, the Lord [impressed upon my mind that I needed] to pay [twice that amount].
+>
+> "I've learned that restitution isn't just about money. It's about humbly dedicating my life to the Lord."
 
-**Key Question:** What might "restoring what is broken" look like in our own lives? This goes beyond saying "I'm sorry" to tangible acts of restitution.
+**Key Question:** What might "restoring what is broken" look like in our own lives? As Elder Andersen frames it: "Your efforts to restore what you have broken may have nothing to do with money, but as you humbly counsel with the Lord, you may find there is more you can do."
 
 ---
 
@@ -92,13 +98,14 @@ Christ didn't just suffer for sin. He suffered:
 ### What Does This Cover?
 
 President Oaks lists specific challenges the Atonement strengthens us through:
-- Serious illness or injury
+- Sickness and traumatic injuries
 - Death of a loved one
-- Rejection of family or friends
-- Disappointments in marriage
+- Failures in personal responsibilities, family relationships, or occupations
+- Rejection — by peers, or through racial and ethnic prejudice
 - Disabilities
-- Depression and anxiety
-- Addiction
+- Depression
+- Singleness
+- Addiction — "few disabilities are more crippling to our temporal or spiritual lives than addictions"
 
 > "His Atonement empowers Him to **succor us—to give us the strength to bear it all**."
 
@@ -106,18 +113,22 @@ President Oaks lists specific challenges the Atonement strengthens us through:
 
 ## The Story of Elder Robert E. Wells
 
-Elder Andersen shares a story about [Elder Robert E. Wells](https://www.churchofjesuschrist.org/study/manual/teachings-of-living-prophets-student-manual-2016/3-general-authorities?lang=eng), a General Authority Seventy:
+With permission from Elder Robert E. Wells — his "dear friend and emeritus General Authority Seventy … now 97 years old" — Elder Andersen shares an experience from more than 60 years ago:
 
-As an airline pilot years before his Church calling, Elder Wells was flying a commercial aircraft when one engine caught fire. In the emergency, the plane crashed, and some passengers died. Even though the investigation cleared Elder Wells of fault, he carried crushing guilt and sorrow.
+In 1960, living in Paraguay and working as an international banker, 32-year-old Robert Wells and his wife, Meryl, were each piloting one of two planes flying home from Uruguay. In thick clouds they lost visual and radio contact. Robert landed quickly — and learned that his wife's plane had crashed. Neither Meryl nor the two friends flying with her survived. Their children at home were ages seven, five, and two. Robert blamed himself for not having the plane inspected more thoroughly and for not giving his wife better instrument flying instruction.
 
-> "For a full year, try as he might, **he could not let go of the emotional anguish** that accompanied him."
+> "Words will forever be inadequate in expressing the pain that swelled within me, consuming my emotions and numbing my senses. … I found myself experiencing tremendous guilt for feeling I was responsible for the crash."
 
-Then one day in a temple, Elder Wells felt the burden lift. After a year of prayer and faithfulness, peace finally came.
+About a year later, the burden lifted — on his knees:
+
+> "One evening, about one year later, while on my knees in prayer, a miracle occurred. While praying and pleading to my Heavenly Father, I felt as though the Savior came to my side and I heard an audible voice speaking these words to my soul and to my ears: 'Robert, my atoning sacrifice paid for your sins and your mistakes. Your wife forgives you. Your friends forgive you. I will lift your burden. …'
+>
+> "From that moment, the burden of guilt [and despair] was amazingly lifted from me. I had been rescued! … I had been given an unearned gift—the Lord's gift of grace. … I didn't deserve it—I had done nothing to merit it, but He gave it to me nonetheless."
 
 **Lessons:**
-- Even when we are not at fault, we can carry heavy burdens
-- Healing from trauma can take time
-- The Lord's peace eventually comes to those who seek it faithfully
+- Even burdens of guilt we don't objectively deserve are real burdens — and the Atonement reaches them
+- Healing from trauma can take time ("about one year later")
+- Grace is "an unearned gift" — it comes to those who keep pleading
 
 ---
 
@@ -140,8 +151,8 @@ Elder Andersen directly addresses those carrying pain from others' sins:
 - Children of dysfunctional homes
 - Anyone deeply hurt by another's choices
 
-The Savior's Atonement applies here too:
-> "He does so only for those who **seek Him and ask for His help**."
+The Savior's Atonement applies here too. As President Oaks taught (quoted by Elder Andersen in this talk):
+> "Because of His atoning experience in mortality, our Savior is able to comfort, heal, and strengthen all men and women everywhere, but I believe He does so only for those who **seek Him and ask for His help**."
 
 **Key Insight:** We don't need to have sinned to need the Atonement. Christ's suffering included our wounds, our trauma, our grief. We can bring these to Him.
 
@@ -184,10 +195,10 @@ We don't perfect ourselves. We come to Christ, and *His grace* perfects us.
 | Talk | Speaker | Year | Theme |
 |------|---------|------|-------|
 | [Strengthened by the Atonement of Jesus Christ](https://www.churchofjesuschrist.org/study/general-conference/2015/10/strengthened-by-the-atonement-of-jesus-christ?lang=eng) | President Dallin H. Oaks | Oct 2015 | Atonement covers infirmities, not just sin |
-| The Infinite Atonement | Elder Tad R. Callister | Oct 2011 | The scope of Christ's suffering |
-| His Grace Is Sufficient | Elder David A. Bednar | Apr 2013 | Enabling power of the Atonement |
-| The Atonement and the Journey of Mortality | Elder David A. Bednar | Apr 2012 | Atonement as enabling power |
-| Forgiveness | President Gordon B. Hinckley | Oct 2005 | The healing that comes through forgiving |
+| [Bear Up Their Burdens with Ease](https://www.churchofjesuschrist.org/study/general-conference/2014/04/bear-up-their-burdens-with-ease?lang=eng) | Elder David A. Bednar | Apr 2014 | Enabling power of the Atonement |
+| [Forgiveness](https://www.churchofjesuschrist.org/study/general-conference/2005/10/forgiveness?lang=eng) | President Gordon B. Hinckley | Oct 2005 | The healing that comes through forgiving |
+
+*(Book-length treatment: Tad R. Callister, *The Infinite Atonement* — a book, not a conference talk.)*
 
 ---
 
@@ -203,7 +214,7 @@ We don't perfect ourselves. We come to Christ, and *His grace* perfects us.
 
 ### For Those Wounded by Others
 5. How can we apply the Atonement to wounds we didn't cause ourselves?
-6. Elder Wells carried guilt for a year even though he wasn't at fault. Why do we sometimes carry burdens we don't deserve? How does Christ help with these?
+6. Elder Wells carried self-assigned guilt for a year—he "felt he was guilty of neglect." Why do we sometimes carry burdens heavier than the facts assign? How does Christ help with these?
 
 ### Personal Application
 7. What "ashes" in your life would you like the Savior to exchange for "beauty"?
@@ -234,5 +245,5 @@ We don't perfect ourselves. We come to Christ, and *His grace* perfects us.
 
 ---
 
-*"The Savior's arms are open always. Trust Him. He will not let you down."*  
+*"As we believe in Him, follow Him, and trust Him, He will lift us from our sorrows and our sins."*  
 — Elder Neil L. Andersen

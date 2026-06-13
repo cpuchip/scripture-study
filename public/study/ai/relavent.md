@@ -150,7 +150,7 @@ The intelligence isn't the code. It never was. The intelligence is the *judgment
 
 "Of their own free will." Agency. The thing I keep coming back to. AI has no agency. It doesn't choose to build. It doesn't care about the outcome. I do. That caring — that directional intent applied to craft — is irreplaceable. Not because the market says so, but because God designed it that way.
 
-From Elder Bednar's framework (see the [responsible use study](ai-responsible-use.md)):
+From Elder Bednar's framework (see the [responsible use study](../ai-responsible-use.md)):
 
 - **Does this enlarge or restrict my capacity to live, love, and serve?** If AI is enlarging my capacity — letting me study deeper, build tools that help my family, create things that matter — then it's serving God's purposes. If it's making me feel small and useless, I'm measuring by the wrong standard.
 - **Does this invite or impede the Holy Ghost?** The work itself answers this. The nevertheless study invited the Spirit. The MCP servers serve real study. The iBecome app serves real growth. The *work* is evidence.

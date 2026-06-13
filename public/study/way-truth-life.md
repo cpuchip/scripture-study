@@ -132,7 +132,7 @@ The endowment enacts this journey: we learn THE WAY (the plan, the covenants), w
 
 > "I am the door: by me if any man enter in, he shall be saved, and shall go in and out, and find pasture." — [John 10:9](https://www.churchofjesuschrist.org/study/scriptures/nt/john/10?lang=eng&id=p9#p9)
 
-Elder Uchtdorf's research note: "The image of a path or way in the Hebrew Bible often stood for keeping the commandments or teachings of God... Paul and the first Christians also called themselves 'follower[s] of the Way'" — [Daily Restoration](https://www.churchofjesuschrist.org/study/general-conference/2021/10/41uchtdorf?lang=eng) (footnote 1)
+Elder Uchtdorf's footnote quotes the NIV First-Century Study Bible: "The image of a path or way in the Hebrew Bible often stood for keeping the commandments or teachings of God... Paul and the first Christians also called themselves 'follower[s] of the Way'" — [Daily Restoration](https://www.churchofjesuschrist.org/study/general-conference/2021/10/41uchtdorf?lang=eng) (footnote 1)
 
 Christ as "the way" means:
 - **He is the example** we follow (see footnote 6a in John 14)
@@ -182,7 +182,7 @@ Without Christ, there is no resurrection, no eternal life, no continuation of co
 **Scriptures:**
 - [John 5:26](https://www.churchofjesuschrist.org/study/scriptures/nt/john/5?lang=eng&id=p26#p26) — "the Father hath life in himself; so hath he given to the Son to have life in himself"
 - [John 6:51](https://www.churchofjesuschrist.org/study/scriptures/nt/john/6?lang=eng&id=p51#p51) — "I am the living bread... if any man eat of this bread, he shall live for ever"
-- [3 Nephi 9:14](https://www.churchofjesuschrist.org/study/scriptures/bofm/3-ne/9?lang=eng&id=p14#p14) — "I am the light and the life of the world"
+- [3 Nephi 9:18](https://www.churchofjesuschrist.org/study/scriptures/bofm/3-ne/9?lang=eng&id=p18#p18) — "I am the light and the life of the world"
 
 ---
 
@@ -257,7 +257,7 @@ Christ's seven "I Am" statements in John may also build progressively:
 - [John 1:4](https://www.churchofjesuschrist.org/study/scriptures/nt/john/1?lang=eng&id=p4#p4) — "In him was life"
 - [John 5:26](https://www.churchofjesuschrist.org/study/scriptures/nt/john/5?lang=eng&id=p26#p26) — "the Son to have life in himself"
 - [John 17:3](https://www.churchofjesuschrist.org/study/scriptures/nt/john/17?lang=eng&id=p3#p3) — "this is life eternal"
-- [3 Nephi 9:14](https://www.churchofjesuschrist.org/study/scriptures/bofm/3-ne/9?lang=eng&id=p14#p14) — "I am the light and the life"
+- [3 Nephi 9:18](https://www.churchofjesuschrist.org/study/scriptures/bofm/3-ne/9?lang=eng&id=p18#p18) — "I am the light and the life"
 
 ### Temple/Veil Connection
 - [Hebrews 9:1-12](https://www.churchofjesuschrist.org/study/scriptures/nt/heb/9?lang=eng&id=p1-p12#p1) — Tabernacle as shadow of Christ
@@ -281,12 +281,12 @@ Christ's seven "I Am" statements in John may also build progressively:
 
 ### On "The Way, The Truth, and The Life"
 - [Daily Restoration](https://www.churchofjesuschrist.org/study/general-conference/2021/10/41uchtdorf?lang=eng) — Elder Uchtdorf on "the Way" as the path of discipleship (excellent footnote research)
-- [Jesus Christ, Our Savior and Redeemer](https://www.churchofjesuschrist.org/study/general-conference/2022/10/52olsen?lang=eng) — "the way, the truth, and the life" as answer to how we come to the Father
-- [Truth Shows Us the Way](https://www.churchofjesuschrist.org/study/general-conference/2019/04/25andersen?lang=eng) — Elder Andersen: "Truth shows us the way to eternal life"
+- [The Answer Is Jesus](https://www.churchofjesuschrist.org/study/general-conference/2022/10/52olsen?lang=eng) — Elder Olsen: "the way, the truth, and the life" as the answer to how we come to the Father
+- [The Eye of Faith](https://www.churchofjesuschrist.org/study/general-conference/2019/04/25andersen?lang=eng) — Elder Andersen: "Truth shows us the way to eternal life, and it comes only through our Savior, Jesus Christ. There is no other way."
 
 ### On Temple/Veil
 - [God's Intent](https://www.churchofjesuschrist.org/study/general-conference/2024/04/45kearon?lang=eng) — Elder Kearon on the veil being "ripped wide open"
-- [Mercy in the House of the Lord](https://www.churchofjesuschrist.org/study/general-conference/2025/04/33rasband?lang=eng) — Elder Rasband on the mercy seat in the tabernacle
+- [The Plan of Mercy](https://www.churchofjesuschrist.org/study/general-conference/2025/04/33rasband?lang=eng) — Elder Rasband on the mercy seat in the tabernacle
 
 ### On Christ as Our Access
 - [Gather Together in One](https://www.churchofjesuschrist.org/study/general-conference/2018/10/gather-together-in-one-all-things-in-christ?lang=eng) — Elder Bednar: gathering truth is "centered in and focused upon the Lord Jesus Christ because He is 'the way, the truth, and the life'"
@@ -323,7 +323,7 @@ The temple endowment is the living enactment of John 14:6. We begin in a fallen 
 
 Most profoundly, Jesus doesn't simply *show* these things—He IS them. The veil we pass through is His flesh ([Hebrews 10:20](https://www.churchofjesuschrist.org/study/scriptures/nt/heb/10?lang=eng&id=p20#p20)). There is no alternative path, no other source of truth, no other source of life. To come to the Father, we must come through Him.
 
-> "He is **the Way**, the Truth, and the Life—no one can return to the Father except by Him. Jesus is the only way!" — [How Do I Know If I Really Know?](https://www.churchofjesuschrist.org/study/general-conference/2022/10/53schmitt?lang=eng)
+> "Jesus is the Way, the Truth, and the Life—no one can return to the Father except by Him. Jesus is the only way!" — [That They Might Know Thee](https://www.churchofjesuschrist.org/study/general-conference/2022/10/53schmitt?lang=eng), Elder Schmitt
 
 ---
 

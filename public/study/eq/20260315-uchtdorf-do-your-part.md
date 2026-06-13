@@ -22,7 +22,7 @@ He builds the talk around three movements:
 ### The Parable of the Talents — [Matthew 25:14–30](https://www.churchofjesuschrist.org/study/scriptures/nt/matt/25?lang=eng&id=p14-p30#p14)
 The master gives talents "to every man according to his several ability" (v. 15). The two who used theirs doubled them. The one who buried his out of **fear** (v. 25) lost even what he had. Uchtdorf's reading: God gives gifts and expects us to *use and amplify* them. They don't multiply on a shelf.
 
-Worth noting: **the servant who buried his talent didn't do anything wrong — he just didn't do anything.** The accusation wasn't wickedness, it was slothfulness (v. 26). That's the spiritual danger Uchtdorf is pointing at.
+Worth noting: **the servant who buried his talent didn't commit any act of harm — he just didn't do anything.** And the lord's verdict still reads "wicked and slothful" (v. 26): the doing-nothing *was* the wickedness. That's the spiritual danger Uchtdorf is pointing at.
 
 ### Spiritual Gifts — [D&C 46:11–12](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/46?lang=eng&id=p11-p12#p11)
 > "There are many gifts, and to every man is given a gift by the Spirit of God. To some is given one, and to some is given another, that all may be profited thereby."

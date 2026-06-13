@@ -397,5 +397,5 @@ These themes recur across multiple phases. As we study each phase, note evidence
 
 ---
 
-*Plan created: 2025-07-16*
-*Last updated: 2025-07-16*
+*Plan created: 2026-02-08 (git-verified; an earlier footer claimed 2025-07-16)*
+*Last updated: 2026-06-12 (study-correctness walk)*

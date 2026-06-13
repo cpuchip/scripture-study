@@ -66,9 +66,9 @@ This is not merely theological—it's psychological and practical. Even the most
 | Scripture | Teaching | Connection |
 |-----------|----------|------------|
 | [Hebrews 11:1](https://www.churchofjesuschrist.org/study/scriptures/nt/heb/11?lang=eng&id=p1#p1) | "Faith is the substance of things hoped for" | Definition foundation |
-| [Hebrews 11:6](https://www.churchofjesuschrist.org/study/scriptures/nt/heb/11?lang=eng&id=p6#p6) | "Without faith it is impossible to please God" | Faith required for relationship with God |
+| [Hebrews 11:6](https://www.churchofjesuschrist.org/study/scriptures/nt/heb/11?lang=eng&id=p6#p6) | "without faith it is impossible to please him" | Faith required for relationship with God |
 | [Hebrews 11:7](https://www.churchofjesuschrist.org/study/scriptures/nt/heb/11?lang=eng&id=p7#p7) | "By faith Noah... prepared an ark" | Faith produced action despite no visible evidence |
-| [Hebrews 11:8](https://www.churchofjesuschrist.org/study/scriptures/nt/heb/11?lang=eng&id=p8#p8) | "By faith Abraham... obeyed; and went out, not knowing whither he went" | Faith produces obedience without complete information |
+| [Hebrews 11:8](https://www.churchofjesuschrist.org/study/scriptures/nt/heb/11?lang=eng&id=p8#p8) | "By faith Abraham... obeyed; and he went out, not knowing whither he went" | Faith produces obedience without complete information |
 | [James 2:17](https://www.churchofjesuschrist.org/study/scriptures/nt/james/2?lang=eng&id=p17#p17) | "Faith, if it hath not works, is dead" | Faith and action are inseparable |
 | [James 2:22](https://www.churchofjesuschrist.org/study/scriptures/nt/james/2?lang=eng&id=p22#p22) | "Faith wrought with his works, and by works was faith made perfect" | Faith and works are synergistic |
 | [Alma 32:27](https://www.churchofjesuschrist.org/study/scriptures/bofm/alma/32?lang=eng&id=p27#p27) | "Exercise a particle of faith, yea, even if ye can no more than desire to believe" | Even desire is a form of faith-action |
@@ -96,7 +96,7 @@ This means:
 
 ### The Stunning Implication
 
-> "Take this principle or attribute (for it is an attribute) from the Deity and he would cease to exist."
+> "Take this principle or attribute, (for it is an attribute) from the Deity and he would cease to exist."
 > — [Lecture 1:16](https://lecturesonfaith.com/1/#16)
 
 Faith is not just something God *uses*—it is an essential attribute of His nature. This is reinforced in the Doctrine and Covenants:
@@ -198,7 +198,7 @@ The Lectures on Faith predate some important Restoration scriptures. Let me conn
 |-----------|----------|------------------------|
 | [Moses 6:23](https://www.churchofjesuschrist.org/study/scriptures/pgp/moses/6?lang=eng&id=p23#p23) | "Faith was taught unto the children of men" | Faith taught from the beginning |
 | [Moses 6:52](https://www.churchofjesuschrist.org/study/scriptures/pgp/moses/6?lang=eng&id=p52#p52) | "Believe, and repent... and be baptized" | Faith precedes all other gospel ordinances |
-| [Moses 7:13](https://www.churchofjesuschrist.org/study/scriptures/pgp/moses/7?lang=eng&id=p13#p13) | "So great was the faith of Enoch" that enemies fled | Faith as power over adversaries |
+| [Moses 7:13-14](https://www.churchofjesuschrist.org/study/scriptures/pgp/moses/7?lang=eng&id=p13-p14#p13) | "So great was the faith of Enoch" — mountains fled at his word (v. 13), and his people's enemies fled (v. 14) | Faith as power over adversaries |
 
 ---
 

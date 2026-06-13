@@ -71,7 +71,7 @@ Pickering references a YouTube video where someone talks to Grok (Elon Musk's AI
 
 1. **D&C 84:98-102 as devotional climax.** Closing with scripture set to music — the Lord's own words about Zion's redemption — is genuinely moving and spiritually appropriate. After two hours of timelines and speculation, ending with "He stands in the midst of his people" recenters everything.
 
-2. **"If you believe the King of Kings is in charge, it's not that scary."** This is the right answer to end-times anxiety. All the calculations, all the geopolitics, all the speculation — if faith in Christ is real, it produces courage, not fear. Pickering lands this point well.
+2. **"If you actually believe the King of Kings is in charge, it's not that scary."** This is the right answer to end-times anxiety. All the calculations, all the geopolitics, all the speculation — if faith in Christ is real, it produces courage, not fear. Pickering lands this point well.
 
 3. **Mortality with humor.** "A coward dies a thousand deaths, a hero but just one" — "Get over it. Be a hero. Live." The warmth here is genuine. After a heavy presentation on apocalyptic timelines, the human moment of acknowledging mortality with humor and faith is welcome.
 
@@ -132,7 +132,7 @@ After evaluating all five phases, here is my assessment of the whole:
 
 **What truth can I apply?**
 - "He stands in the midst of his people" (D&C 84:101). This is the hope. Not timelines. Not calculations. The living presence of Christ among His covenant people. Center everything here.
-- "If you believe the King of Kings is in charge, it's not that scary." Let this replace anxiety about end-times events.
+- "If you actually believe the King of Kings is in charge, it's not that scary." Let this replace anxiety about end-times events.
 - The Cyrus pattern teaches me to evaluate leaders without idolizing them. God uses whoever He uses. My loyalty is to Christ, not to any political figure.
 
 **What warning should I heed?**

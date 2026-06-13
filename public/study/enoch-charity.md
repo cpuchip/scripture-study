@@ -217,7 +217,7 @@ Elder Christofferson identified three pillars of Zion in his talk "Come to Zion.
 
 | Pillar of Zion | Christofferson's Teaching | Triad Element |
 |----------------|--------------------------|---------------|
-| **Unity** — one heart and one mind | "It is not enough to be *nice*; we must be *one* ... forgiveness is essential" | **Charity** — "envieth not, seeketh not her own, is not easily provoked" |
+| **Unity** — one heart and one mind | "Forgiveness of one another is essential to this unity" | **Charity** — "envieth not, seeketh not her own, is not easily provoked" |
 | **Holiness** — dwelt in righteousness | "Let us once and for all establish our residence in Zion and give up the summer cottage in Babylon" (Maxwell) | **Faith** — believing God enough to abandon the world's ways entirely |
 | **Caring for the poor** — no poor among them | "We cannot wait until Zion comes for these things to happen — Zion will come only as they happen" | **Hope** — the forward-looking conviction that giving now produces Zion later |
 

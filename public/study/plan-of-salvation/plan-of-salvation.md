@@ -52,7 +52,7 @@ A council was held. God presented the plan:
 > "And there stood one among them that was like unto God, and he said unto those who were with him: We will go down, for there is space there, and we will take of these materials, and we will make an earth whereon these may dwell; And we will prove them herewith, to see if they will do all things whatsoever the Lord their God shall command them."
 > — [Abraham 3:24-25](https://www.churchofjesuschrist.org/study/scriptures/pgp/abr/3?lang=eng&id=p24-p25#p24)
 
-Webster 1828 defines **prove** as both "to try by experiment" AND "to gain experience of the good or evil of." The word carries both meanings simultaneously — test *and* school. This matters enormously: the plan wasn't designed as a pass/fail exam. It was designed as an education through experience, with real stakes.
+Webster 1828 defines **prove** as both "to try; to ascertain ... by an experiment, or by a test or standard" AND "to experience; to try by suffering or encountering." The word carries both meanings simultaneously — test *and* school. This matters enormously: the plan wasn't designed as a pass/fail exam. It was designed as an education through experience, with real stakes.
 
 The Father asked, "Whom shall I send?" ([Abraham 3:27](https://www.churchofjesuschrist.org/study/scriptures/pgp/abr/3?lang=eng&id=p27#p27)). Two volunteered. Christ: "Father, thy will be done, and the glory be thine forever" ([Moses 4:2](https://www.churchofjesuschrist.org/study/scriptures/pgp/moses/4?lang=eng&id=p2#p2)) — accepting the Father's plan as given, returning the glory. Satan: "I will redeem all mankind, that one soul shall not be lost, and surely I will do it; wherefore give me thine honor" ([Moses 4:1](https://www.churchofjesuschrist.org/study/scriptures/pgp/moses/4?lang=eng&id=p1#p1)). As Elder Bednar [taught plainly](https://www.youtube.com/watch?v=RZ_bKUuuvbI&t=210): "It is important to recognize that Lucifer did not present his plan. He rebelled against the Father's plan." His rebellion would have destroyed agency — and since D&C 93:30 says without agency "there is no existence," his rescue would have been annihilation.
 
@@ -83,7 +83,7 @@ Webster 1828 defines **transgression** as "the act of passing over or beyond any
 
 ### Stage 5: Mortality — The School That Tests Through Experience
 
-Alma uses the word "probationary" to describe mortality — and Webster 1828 reveals what we've lost: **probation** means not just testing but "the opportunity of proving his character, AND becoming qualified for a happier state." Testing AND qualifying. Alma himself confirms this: "this probationary state became a state for them to prepare; it became a preparatory state" ([Alma 42:10](https://www.churchofjesuschrist.org/study/scriptures/bofm/alma/42?lang=eng&id=p10#p10)).
+Alma uses the word "probationary" to describe mortality — and Webster 1828 reveals what we've lost: **probation** means not just testing but "the opportunity of proving his character AND being qualified for a happier state." Testing AND qualifying. Alma himself confirms this: "this probationary state became a state for them to prepare; it became a preparatory state" ([Alma 42:10](https://www.churchofjesuschrist.org/study/scriptures/bofm/alma/42?lang=eng&id=p10#p10)).
 
 The answer to "Is mortality a test or a school?" is that *the test IS the school*. Learning through experience, with real stakes and real consequences, is the educating mechanism. Elder Bednar put it precisely: "Tests in the school of mortality are a vital element of our eternal progression" ([We Will Prove Them Herewith](https://www.churchofjesuschrist.org/study/general-conference/2020/10/12bednar?lang=eng), October 2020).
 
@@ -105,7 +105,7 @@ Moses 6 captures the pedagogy beautifully: children "taste the bitter, that they
 
 Death is a homecoming: "The spirits of all men, as soon as they are departed from this mortal body ... are taken home to that God who gave them life" ([Alma 40:11](https://www.churchofjesuschrist.org/study/scriptures/bofm/alma/40?lang=eng&id=p11#p11)). Home. Not "sent away." *Home.*
 
-The righteous enter paradise — "a state of happiness, which is called paradise, a state of rest, a state of peace, where they shall rest from all their troubles and from all care, and sorrow" ([Alma 40:12](https://www.churchofjesuschrist.org/study/scriptures/bofm/alma/40?lang=eng&id=p12#p12)). Webster 1828 defines **rest** as "to cease from that which harasses or disturbs; to be quiet or still." For those who are suffering — the pain *stops*.
+The righteous enter paradise — "a state of happiness, which is called paradise, a state of rest, a state of peace, where they shall rest from all their troubles and from all care, and sorrow" ([Alma 40:12](https://www.churchofjesuschrist.org/study/scriptures/bofm/alma/40?lang=eng&id=p12#p12)). Webster 1828 defines **rest** as "to be quiet or still; to be undisturbed." For those who are suffering — the pain *stops*.
 
 But even paradise carries a kind of bondage. "The dead had looked upon the long absence of their spirits from their bodies as a bondage" ([D&C 138:50](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/138?lang=eng&id=p50#p50)). Even the righteous feel the incompleteness of disembodiment, confirming D&C 93:33 — without the body, fulness is impossible.
 
@@ -130,7 +130,7 @@ The spirit world has its missionaries. The earth has its temples. Two halves of 
 
 Neither half works alone. And neither are *we* complete without *them*: "They without us cannot be made perfect — neither can we without our dead be made perfect" ([D&C 128:15](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/128?lang=eng&id=p15#p15)).
 
-This system was "instituted from before the foundation of the world" ([D&C 124:33](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/124?lang=eng&id=p33#p33)). Before anyone fell, God planned how to save those who'd fall without knowing how to get up. Joseph called it a "welding link" ([D&C 128:18](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/128?lang=eng&id=p18#p18)) — Webster 1828 hadn't even caught up with the metallurgical sense yet. Joseph's language was ahead of his dictionary: a weld makes two pieces *become* one material.
+This system was "instituted from before the foundation of the world" ([D&C 124:33](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/124?lang=eng&id=p33#p33)). Before anyone fell, God planned how to save those who'd fall without knowing how to get up. Joseph called it a "welding link" ([D&C 128:18](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/128?lang=eng&id=p18#p18)) — and Webster 1828 already carried the metallurgical sense: "to unite or hammer into firm union, as two pieces of iron, when heated almost to fusion." A weld makes two pieces *become* one material.
 
 And D&C 137 answers the fairness question: God judges "according to the desire of their hearts" ([D&C 137:9](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/137?lang=eng&id=p9#p9)). A person born in ancient China who never heard the name of Christ is not disadvantaged in God's economy.
 
@@ -143,7 +143,7 @@ Resurrection is not just reassembly. It is *redemption*:
 
 The body returns perfected: "Every limb and joint shall be restored to its body; yea, even a hair of the head shall not be lost; but all things shall be restored to their proper and perfect frame" ([Alma 40:23](https://www.churchofjesuschrist.org/study/scriptures/bofm/alma/40?lang=eng&id=p23#p23)). Whatever disease or limitation defines the body now will be gone.
 
-Paul gives us the four contrasts of transformation: sown in corruption, raised in incorruption; sown in dishonour, raised in glory; sown in weakness, raised in power; sown a natural body, raised a spiritual body ([1 Corinthians 15:42-44](https://www.churchofjesuschrist.org/study/scriptures/nt/1-cor/15?lang=eng&id=p42-p44#p42)). Webster 1828 defines **incorruption** as "absence of, or exemption from, corruption" — permanently beyond decay.
+Paul gives us the four contrasts of transformation: sown in corruption, raised in incorruption; sown in dishonour, raised in glory; sown in weakness, raised in power; sown a natural body, raised a spiritual body ([1 Corinthians 15:42-44](https://www.churchofjesuschrist.org/study/scriptures/nt/1-cor/15?lang=eng&id=p42-p44#p42)). Webster 1828 defines **incorruption** as "incapacity of being corrupted" — permanently beyond decay, and the entry's own citation is 1 Corinthians 15:42.
 
 And resurrection is universal: "As in Adam all die, even so in Christ shall all be made alive" ([1 Corinthians 15:22](https://www.churchofjesuschrist.org/study/scriptures/nt/1-cor/15?lang=eng&id=p22#p22)). This is a gift, not a reward. Without it, we would "become subject to that angel who fell from before the presence of the Eternal God, and became the devil, to rise no more" ([2 Nephi 9:8-9](https://www.churchofjesuschrist.org/study/scriptures/bofm/2-ne/9?lang=eng&id=p8-p9#p8)). The stakes of resurrection are far higher than most of us realize.
 
@@ -172,7 +172,7 @@ D&C 76 reveals what no Christian theology since the apostles had seen: the after
 > "He who is not able to abide the law of a celestial kingdom cannot abide a celestial glory."
 > — [D&C 88:22](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/88?lang=eng&id=p22#p22)
 
-Webster 1828 defines **abide** as "to stay; to continue in a place; to have one's abode; to dwell." Not merely tolerate — *make your home there*. You inherit the kingdom you can comfortably, securely live in.
+Webster 1828 defines **abide** as "to rest, or dwell"; "to continue permanently or in the same state; to be firm and immovable"; and transitively, "to endure or sustain." Not merely tolerate — *make your home there*. You inherit the kingdom you can comfortably, securely live in.
 
 The **celestial** glory is the sun: those who received the testimony of Jesus, were baptized, kept the commandments, and were sealed by the Holy Spirit of Promise ([D&C 76:51-53](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/76?lang=eng&id=p51-p53#p51)). "They are gods, even the sons of God" ([D&C 76:58](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/76?lang=eng&id=p58#p58)).
 
@@ -191,7 +191,7 @@ The only exceptions are the sons of perdition — those who stood in the full li
 
 ### Stage 11: Exaltation — Eternal Life
 
-Within the celestial kingdom, there are "three heavens or degrees" ([D&C 131:1](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/131?lang=eng&id=p1#p1)). The highest requires "the new and everlasting covenant of marriage" ([D&C 131:2](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/131?lang=eng&id=p2#p2)). Without it, one "cannot have an increase" ([D&C 131:4](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/131?lang=eng&id=p4#p4)). Webster 1828 defines **increase** as "to multiply by the production of young" — eternal offspring, eternal family, the continuation of life itself.
+Within the celestial kingdom, there are "three heavens or degrees" ([D&C 131:1](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/131?lang=eng&id=p1#p1)). The highest requires "the new and everlasting covenant of marriage" ([D&C 131:2](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/131?lang=eng&id=p2#p2)). Without it, one "cannot have an increase" ([D&C 131:4](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/131?lang=eng&id=p4#p4)). Webster 1828's noun **increase** means "progeny; issue; offspring" — eternal offspring, eternal family, the continuation of life itself.
 
 Moses heard the Father's mission statement: "This is my work and my glory — to bring to pass the **immortality** and **eternal life** of man" ([Moses 1:39](https://www.churchofjesuschrist.org/study/scriptures/pgp/moses/1?lang=eng&id=p39#p39)). Two gifts, not the same thing:
 
@@ -202,7 +202,7 @@ Moses heard the Father's mission statement: "This is my work and my glory — to
 
 President Kimball: "Immortality is to live forever in an assigned kingdom. Eternal life is to gain exaltation in the highest heaven and live in the family unit" ([An Eternal Hope in Christ](https://www.churchofjesuschrist.org/study/general-conference/1978/10/an-eternal-hope-in-christ?lang=eng), October 1978).
 
-And what is exaltation? Webster 1828 defines it as not just elevation but "the refinement or subtilization of a body, or the increasing of its virtue or principal property." Exaltation is not just going higher — it is *refinement*. The perfecting of what something already is. D&C 132:24 calls it "eternal lives" — plural. Not just duration, but generativity. A life that produces life.
+And what is exaltation? Webster 1828 defines it as not just elevation but "the refinement or subtilization of bodies or their qualities and virtues, or the increase of their strength." Exaltation is not just going higher — it is *refinement*. The perfecting of what something already is. D&C 132:24 calls it "eternal lives" — plural. Not just duration, but generativity. A life that produces life.
 
 > "And this is eternal lives — to know the only wise and true God, and Jesus Christ, whom he hath sent."
 > — [D&C 132:24](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/132?lang=eng&id=p24#p24)
@@ -239,8 +239,8 @@ The most persistent discovery across all six phases was this: **mortality is not
 
 The evidence is overwhelming:
 
-- **Webster 1828 "probation"** = "the opportunity of proving his character, AND becoming qualified for a happier state."
-- **Webster 1828 "prove"** = "to try by experiment" + "to gain experience of the good or evil of."
+- **Webster 1828 "probation"** = "the opportunity of proving his character AND being qualified for a happier state."
+- **Webster 1828 "prove"** = "to try ... by an experiment, or by a test or standard" + "to experience; to try by suffering or encountering."
 - **Alma 42:10** = "this probationary state became a state for them to prepare; it became a preparatory state."
 - **Bednar (2020)** = "Tests in the school of mortality" — the word *school* and *tests* coexisting in the same phrase.
 - **Oaks (2025)** = Opposition is like gravity for muscles — the *mechanism* of growth.

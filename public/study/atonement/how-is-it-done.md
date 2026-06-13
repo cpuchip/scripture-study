@@ -50,7 +50,7 @@ Alma, teaching in Gideon, lays out the full inventory:
 
 Count them. Pains. Afflictions. Temptations. Sicknesses. Death. Infirmities. This is not just a moral debt being paid. This is every form of human suffering being absorbed into one life.
 
-And the reason? "That he may know according to the flesh how to *succor* his people according to their infirmities." Webster's 1828 dictionary defines "succor" as *"to run to, or run to support; hence, to help or relieve when in difficulty, want, or distress."* The root meaning is movement — urgent, active movement *toward* the one in distress. He doesn't wait for us to reach Him. He runs to us.
+And the reason? "That he may know according to the flesh how to *succor* his people according to their infirmities." Webster's 1828 dictionary defines "succor" as *"to run to, or run to support; hence, to help or relieve when in difficulty, want or distress."* The root meaning is movement — urgent, active movement *toward* the one in distress. He doesn't wait for us to reach Him. He runs to us.
 
 But He didn't need to run. Alma adds a devastating qualifier: "Now the Spirit knoweth all things; *nevertheless* the Son of God suffereth according to the flesh" ([Alma 7:13](https://www.churchofjesuschrist.org/study/scriptures/bofm/alma/7?lang=eng&id=p13#p13)). He already knew everything. He could have succored us from omniscience alone. He chose to know by experience. Knowledge wasn't enough. He chose immersion.
 
@@ -82,7 +82,7 @@ Then the argument tightens:
 
 Human sacrifice can't cover it. Animal sacrifice pointed toward it. Only infinite covers infinite. "There is not any man that can sacrifice his own blood which will atone for the sins of another... therefore there can be nothing which is short of an infinite atonement which will suffice for the sins of the world" ([Alma 34:11-12](https://www.churchofjesuschrist.org/study/scriptures/bofm/alma/34?lang=eng&id=p11-p12#p11)).
 
-Webster 1828 defines "infinite" as *"without limit in power, capacity, knowledge, or excellence; boundless; immeasurably or inconceivably great."* Not just very large. Inconceivable. The Atonement exceeds our capacity to measure — and it must, because the fall it addresses has no bounds either.
+Webster 1828 defines "infinite" as *"without limits; unbounded; boundless; not circumscribed,"* and its first illustration is God Himself: "God is infinite in duration, having neither beginning nor end of existence. He is also infinite in presence, or omnipresent, and his perfections are infinite." *(Requoted 2026-06-12 — the earlier wording was the 1913 edition's.)* Not just very large. Without limits at all. The Atonement exceeds our capacity to measure — and it must, because the fall it addresses has no bounds either.
 
 Jacob had made the same point: "It must needs be an infinite atonement — save it should be an infinite atonement this corruption could not put on incorruption" ([2 Nephi 9:7](https://www.churchofjesuschrist.org/study/scriptures/bofm/2-ne/9?lang=eng&id=p7#p7)). The infinite nature isn't theological decoration. It's structural necessity. A finite fix can't repair an infinite break.
 
@@ -90,13 +90,13 @@ Jacob had made the same point: "It must needs be an infinite atonement — save 
 
 Here I'm naming a pattern that surfaces again and again across sources — not a single verse but a thread the scriptures weave:
 
-D&C 88:6 says Christ "descended below all things, in that he comprehended all things." Webster 1828 defines "comprehend" as both *"to contain; to embrace; to include"* and *"to take into the mind; to grasp with the understanding."* Both meanings apply. Christ *contains* all experience within Himself — He includes every human moment in His own — and He *understands* it all because He went there. The descent *is* the comprehension.
+D&C 88:6 says Christ "descended below all things, in that he comprehended all things." Webster 1828 defines "comprehend" as both *"to contain; to include; to comprise"* and *"to understand; to conceive; that is, to take, hold or contain in the mind."* *(Requoted 2026-06-12 — the earlier wordings were the 1913 edition's. The genuine entry's own example is Job 37:5: "God doeth great things, which we cannot comprehend.")* Both meanings apply. Christ *contains* all experience within Himself — He includes every human moment in His own — and He *understands* it all because He went there. The descent *is* the comprehension.
 
 Alma 7:12 says the same thing in pastoral language: He suffered "that he may know according to the flesh how to succor his people." Isaiah 53:11 puts it in juridical terms: "by his knowledge shall my righteous servant justify many."
 
 The *how* of the Atonement, as far as the scriptures reveal it, is inseparable from His choosing to *know by experience.* He didn't observe suffering from heaven. He entered it. And that entering gave Him — the Creator of all things — the experiential knowledge to comprehend and contain every sorrow any of His children would ever face.
 
-John 1:5 adds a stunning inversion: "the light shineth in darkness; and the darkness comprehended it not." In Webster's sense, the darkness could not *contain* the light. But D&C 88:6 reverses this: the Light *comprehended* (contained, embraced, grasped) the darkness. What could not hold Him, He held.
+John 1:5 adds a stunning inversion: "the light shineth in darkness; and the darkness comprehended it not." In Webster's sense, the darkness could not *contain* the light. But D&C 88:6 reverses this: the Light *comprehended* (contained, included, held in the mind) the darkness. What could not hold Him, He held.
 
 ### Faith as Conduit
 

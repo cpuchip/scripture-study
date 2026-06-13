@@ -192,7 +192,7 @@ This explains some of the most puzzling passages in scripture:
 
 **Moses 1** — In the opening vision, the voice introducing itself to Moses says: *"I, the Almighty, have chosen thee"* (v. 25) and speaks of creating all things, using language that sounds like the Father. But the Father also says: *"mine Only Begotten … is and shall be the Savior"* (v. 6) and *"by the Son I created them"* (v. 33). The context shifts between the Father speaking directly and the Son speaking by investiture. The key hermeneutic tool is watching for clues — when the speaker says "mine Only Begotten," it is the Father. When the speaker identifies Himself as the one who will come into the world and atone, it is the Son.
 
-The word **investiture** itself illuminates this. Webster 1828 defines it as *"the act or ceremony of investing … a giving possession"* — from *invest*, to clothe, to put upon. The Father *clothed* the Son with His own authority and name. When Christ speaks "as the Father," He is wearing the Father's mantle. He is not pretending to be the Father. He is authorized to carry out the Father's work *in the Father's name*, and when He speaks in that capacity, His words *are* the Father's words.
+The word **investiture** itself illuminates this. Webster 1828 defines it as *"the action of giving possession"* — perfected, the entry says, "by the ceremony of corporal investiture, or open delivery of possession" — from *invest*, to clothe, to put upon. *(Requoted 2026-06-12 — the earlier wording was the 1913 edition's.)* The Father *clothed* the Son with His own authority and name. When Christ speaks "as the Father," He is wearing the Father's mantle. He is not pretending to be the Father. He is authorized to carry out the Father's work *in the Father's name*, and when He speaks in that capacity, His words *are* the Father's words.
 
 ---
 
@@ -218,17 +218,19 @@ Notice that Alma 11:44 — in the same chapter where Amulek calls Christ "the ve
 
 ## Part IV: Webster 1828 — Words That Matter
 
-**FATHER** (1828): "One who has begotten a child" but also "one who, or that which, **gives origin**; an originator; a producer, **author**, or contriver" and "The Supreme Being and Creator; God; in theology, the first person in the Trinity."
+*(All five entries requoted 2026-06-12 — the earlier texts were the 1913 edition's.)*
 
-Two layers. The Father is literally the parent of our spirits. But "father" also means originator and author. When we call Christ "Father" in the creative sense, we're using this secondary meaning — He originated the created world. When we speak of God the Father, we use *both* — He is the literal parent of spirits AND the author/originator of the plan.
+**FATHER** (1828): "He who begets a child" but also sense 6: "He who creates, invents, makes or composes any thing; the **author**, former or contriver; a founder, director or instructor." And the genuine entry's own examples are this study's doctrine: "God as creator is the father of all men. 1 Corinthians 8:6" and "**God is the father of spirits** and of lights."
 
-**AUTHOR** (1828): "The **beginner**, former, or **first mover** of anything; hence, the efficient cause of a thing; **a creator**; an originator." The plan of salvation has an *author* — a first mover, a beginner. That is Elohim. Christ is the Redeemer within that plan, not its author.
+Two layers. The Father is literally the parent of our spirits — Webster's own example. But "father" also means author and contriver. When we call Christ "Father" in the creative sense, we're using this secondary meaning — He originated the created world. When we speak of God the Father, we use *both* — He is the literal parent of spirits AND the author/originator of the plan.
 
-**DESIGN** (1828): "To create or produce, as a work of art; to **form a plan or scheme of**; to form in idea; to **invent**; to project; to **lay out in the mind**." The Father *designed* the plan — formed it in idea, laid it out in mind. Christ *carried out* that design. Conflating these verbs conflates their roles.
+**AUTHOR** (1828): "One who produces, creates, or brings into being; as, **God is the author of the Universe**" — and "the **beginner**, former, or **first mover** of any thing; hence, the efficient cause of a thing." The plan of salvation has an *author* — a first mover, a beginner. That is Elohim. Christ is the Redeemer within that plan, not its author.
 
-**INVESTITURE** (1828): "The act or ceremony of investing … a **giving possession**." From *invest*: to clothe, to put upon. The Father clothed the Son with authority and name. Divine investiture is the Father dressing the Son in His own power to act.
+**DESIGN** (1828): "To plan; to form an outline or representation of any thing"; "to project; **to form in idea, as a scheme**"; noun: "a scheme or plan **in the mind**." And Webster's own illustration could not fit better: "The father designs his son for the profession of the law, or for the ministry." The Father *designed* the plan — formed it in idea, laid it out in mind. Christ *carried out* that design. Conflating these verbs conflates their roles.
 
-**SON** (1828): "A male child; the male issue, or offspring, of a parent" and "Jesus Christ, the Savior; — called the Son of God, and the Son of man." The word inherently implies derivation *from* another. The Son proceeds from the Father — in spirit birth, in authority, in mission. The Son is never the source of Himself.
+**INVESTITURE** (1828): "The action of **giving possession**," perfected "by the ceremony of corporal investiture, or open delivery of possession." From *invest*: to clothe, to put upon. The Father clothed the Son with authority and name. Divine investiture is the Father dressing the Son in His own power to act.
+
+**SON** (1828): "A male child; the male issue of a parent" — and sense 8: "Christ is called the Son of God, as being conceived by the power of the Holy Spirit, or **in consequence of his relation to the Father**." The word inherently implies derivation *from* another — Webster's Christ-sense says it outright. The Son proceeds from the Father — in spirit birth, in authority, in mission. The Son is never the source of Himself.
 
 ---
 
@@ -303,12 +305,12 @@ Christ is not the destination. He is the way *to* the destination. The destinati
 - [The Father and the Son: A Doctrinal Exposition, 1916](https://www.churchofjesuschrist.org/study/manual/teachings-joseph-f-smith/chapter-40?lang=eng) — First Presidency and the Twelve
 - [The Godhead and the Plan of Salvation](https://www.churchofjesuschrist.org/study/general-conference/2017/04/the-godhead-and-the-plan-of-salvation?lang=eng) — Elder Dallin H. Oaks, April 2017
 
-### Webster 1828
-- **Father**: originator, author, begetter — both literal parent and figurative source
-- **Author**: beginner, first mover, efficient cause — the one who starts something
-- **Design**: to form a plan or scheme, to lay out in the mind — to conceive before executing
-- **Investiture**: the act of investing, giving possession — to clothe with authority
-- **Son**: offspring, one who proceeds from another — inherently derived, not self-originating
+### Webster 1828 *(requoted 2026-06-12 against the genuine 1828)*
+- **Father**: author, former, contriver, begetter — "God is the father of spirits" is the entry's own example
+- **Author**: "One who produces, creates, or brings into being; as, God is the author of the Universe"
+- **Design**: to form in idea, as a scheme; a plan in the mind — "The father designs his son" is the entry's own illustration
+- **Investiture**: the action of giving possession — to clothe with authority
+- **Son**: one derived from a parent — Christ is the Son "in consequence of his relation to the Father"
 
 ---
 

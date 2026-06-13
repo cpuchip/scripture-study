@@ -34,8 +34,8 @@ The 7 skills, in the order he presents them (which he says is [the order you int
 
 This project IS a specification system. It operates at four layers:
 
-1. **Values layer** — [intent.yaml](../../../intent.yaml) defines purpose, values, and constraints ranked by severity (critical/high/medium)
-2. **Covenant layer** — [.spec/covenant.yaml](../../../.spec/covenant.yaml) specifies bilateral commitments with rationale (not "be good" but "surface tensions even when the human isn't looking for them, because covenant faithfulness requires it")
+1. **Values layer** — [intent.yaml](../../intent.yaml) defines purpose, values, and constraints ranked by severity (critical/high/medium)
+2. **Covenant layer** — [.spec/covenant.yaml](../../.spec/covenant.yaml) specifies bilateral commitments with rationale (not "be good" but "surface tensions even when the human isn't looking for them, because covenant faithfulness requires it")
 3. **Workflow layer** — 14 agent modes, each with 5-7 phase workflows that specify inputs, outputs, skills to load, and handoff points
 4. **Procedure layer** — 14 skills with quality gates (the source-verification pre-publish checklist has 11 items)
 
@@ -64,7 +64,7 @@ But the deeper eval skill lives in the *disciplines*:
 - **Critical analysis** — a dedicated phase that asks "is this what the text says or what I wanted it to say?"
 - **The reflect skill** — micro-correction capture in-session when something is wrong
 
-The Anthropic standard Nate cites at [9:03](https://www.youtube.com/watch?v=4cuT-LKcmWs&t=543) — "a good eval task is one where multiple engineers reach the same pass/fail" — we hit this. The TITSW calibration experiments showed inter-model agreement improving with better context. Alma 32 `teach_about_christ` went from 1-2 (no context) to 7 (with context), matching the ground truth target of ≥5.
+The Anthropic standard Nate cites at [9:03](https://www.youtube.com/watch?v=4cuT-LKcmWs&t=543) — a good eval task is written when more than one engineer would reach the same pass/fail conclusion — we hit this. The TITSW calibration experiments showed inter-model agreement improving with better context. Alma 32 `teach_about_christ` went from 1-2 (no context) to 7 (with context), matching the ground truth target of ≥5.
 
 **Where the star is missing:** One domain. The eval harness evaluates conference talk teaching quality. It doesn't evaluate customer-facing agent interactions, code quality, or production systems. The skill transfers, but the demonstrated breadth is narrow. And evals are manual — no CI/CD pipeline, no automated regression testing.
 
@@ -99,7 +99,7 @@ This maps directly to work we've done:
 | **Context degradation** | Externalized memory (scratch files survive compaction), session-start context loading, persistent memory architecture |
 | **Specification drift** | Phased workflows with binding question at top of every file, scratch files forcibly remind of spec |
 | **Sycophantic confirmation** | Covenant requirement: "surface tensions rather than building only toward the thesis." biases.md tracks this pattern |
-| **Tool selection errors** | [tool-use-observance.md](../../../docs/06_tool-use-observance.md) — running log with dates, categories, fixes applied. Discovery ≠ deep reading separation |
+| **Tool selection errors** | [tool-use-observance.md](../../docs/06_tool-use-observance.md) — running log with dates, categories, fixes applied. Discovery ≠ deep reading separation |
 | **Cascading failure** | Phase-based workflows with verification at each boundary. If Phase 2 verification fails, Phase 4 doesn't start |
 | **Silent failure** | Source verification: "A near-miss direct quote is a lie that looks like truth." Semantic correctness ≠ functional correctness |
 
@@ -219,7 +219,7 @@ The plan targets the biggest gaps first, leverages what we're already strong at,
 
 **Goal:** Build a real planner → sub-agent system and experience the failure modes firsthand.
 
-**Integration:** This track IS WS1 Phase 3c + the SDK custom agent expansion. It's not a side project — it's the next workstream. Full proposal: [.spec/proposals/brain-phase3c-sdk-agents.md](../../.spec/proposals/brain-phase3c-sdk-agents.md).
+**Integration:** This track IS WS1 Phase 3c + the SDK custom agent expansion. It's not a side project — it's the next workstream. Full proposal: [.spec/proposals/archive/brain-phase3c-sdk-agents.md](../../.spec/proposals/archive/brain-phase3c-sdk-agents.md).
 
 **Key discovery (Apr 2):** The Copilot SDK v0.1.32 already has `CustomAgentConfig` with tool scoping per agent, per-agent MCP servers, and intent-based auto-delegation (`Infer` flag). brain.exe already has the AgentPool, Router, and GovernancePolicy shipped (Phase 3a+3b). The SDK custom agents map directly onto the existing architecture — brain.exe does entry-triggered routing via classification, SDK does intent-triggered delegation for interactive sessions. Both are needed for Level 3.
 

@@ -72,7 +72,7 @@ This passage is one of the most direct addresses to modern readers in all of scr
 
 > "And whatsoever nation shall uphold such **secret combinations**, to get power and gain, until they shall spread over the nation, behold, **they shall be destroyed**; for the Lord will not suffer that the blood of his saints, which shall be shed by them, shall always cry unto him from the ground for vengeance upon them and yet he avenge them not." — [Ether 8:22](https://www.churchofjesuschrist.org/study/scriptures/bofm/ether/8?lang=eng&id=p22#p22)
 
-> "Wherefore, **O ye Gentiles**, it is wisdom in God that these things should be shown unto you, that thereby ye may repent of your sins, and **suffer not that these murderous combinations shall get above you**, which are built up to get power and gain." — [Ether 8:23](https://www.churchofjesuschrist.org/study/scriptures/bofm/ether/8?lang=eng&id=p23#p23)
+> "Wherefore, **O ye Gentiles**, it is wisdom in God that these things should be shown unto you, that thereby ye may repent of your sins, and **suffer not that these murderous combinations shall get above you**, which are built up to get power and gain …" — [Ether 8:23](https://www.churchofjesuschrist.org/study/scriptures/bofm/ether/8?lang=eng&id=p23#p23)
 
 > "Wherefore, the Lord commandeth you, **when ye shall see these things come among you** that ye shall **awake to a sense of your awful situation**, because of this secret combination which shall be among you." — [Ether 8:24](https://www.churchofjesuschrist.org/study/scriptures/bofm/ether/8?lang=eng&id=p24#p24)
 
@@ -245,7 +245,7 @@ In October 2001 General Conference — just weeks after the September 11 attacks
 
 > "We of this Church know something of such groups. **The Book of Mormon speaks of the Gadianton robbers**, a vicious, oath-bound, and secret organization bent on evil and destruction. In their day they did all in their power, by whatever means available, to bring down the Church, to woo the people with sophistry, and to take control of the society. **We see the same thing in the present situation**." — President Gordon B. Hinckley, ["The Times in Which We Live," October 2001](https://www.churchofjesuschrist.org/study/general-conference/2001/10/the-times-in-which-we-live?lang=eng)
 
-> "From the day of Cain to the present, **the adversary has been the great mastermind of the terrible conflicts** that have brought so much suffering. Treachery and terrorism began with him. And they will continue until the Son of God returns to rule and reign with peace and righteousness." — [ibid.](https://www.churchofjesuschrist.org/study/general-conference/2001/10/the-times-in-which-we-live?lang=eng)
+> "From the day of Cain to the present, **the adversary has been the great mastermind of the terrible conflicts** that have brought so much suffering. Treachery and terrorism began with him. And they will continue until the Son of God returns to rule and reign with peace and righteousness among the sons and daughters of God." — [ibid.](https://www.churchofjesuschrist.org/study/general-conference/2001/10/the-times-in-which-we-live?lang=eng)
 
 > "Our safety lies in repentance. Our strength comes of obedience to the commandments of God. ... Are these perilous times? They are. But **there is no need to fear**. We can have peace in our hearts and peace in our homes." — [ibid.](https://www.churchofjesuschrist.org/study/general-conference/2001/10/the-times-in-which-we-live?lang=eng)
 

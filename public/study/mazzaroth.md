@@ -95,7 +95,7 @@ If the Mazzaroth (zodiac constellations) represents the sun's yearly path, then 
 ### [Abraham 3:1-4](https://www.churchofjesuschrist.org/study/scriptures/pgp/abr/3?lang=eng&id=p1-p4#p1) — Kolob and the Governing Stars
 
 > "And I, Abraham, had the Urim and Thummim... And I saw the stars, that they were very great, and that one of them was nearest unto the throne of God; and there were many great ones which were near unto it; And the Lord said unto me: These are the **governing ones**; and the name of the great one is **Kolob**, because it is near unto me, for I am the Lord thy God: I have set this one to **govern all those which belong to the same order** as that upon which thou standest."
-> — [Abraham 3:1-4](https://www.churchofjesuschrist.org/study/scriptures/pgp/abr/3?lang=eng&id=p1-p4#p1)
+> — [Abraham 3:1-3](https://www.churchofjesuschrist.org/study/scriptures/pgp/abr/3?lang=eng&id=p1-p3#p1)
 
 The stars have governing relationships—some are "governing ones" that set the order for others. This suggests a divinely ordered celestial hierarchy.
 
@@ -180,12 +180,12 @@ Whether this describes an actual celestial configuration or uses celestial image
 
 According to NASA and astronomical records:
 
-- **May 5, 2000**: The Sun, Moon, Mercury, Venus, Mars, Jupiter, and Saturn were all within approximately 26° of each other along the ecliptic
-- **May 8-10, 2000**: Jupiter, Mercury, and Saturn each reached conjunction with the Sun
-- Most of these conjunctions were invisible due to proximity to the Sun's glare
-- The planets were moving toward alignment throughout April 2000
+- **April 6, 2000**: Per the [European Space Agency](https://spaceflightnow.com/news/n0005/05planetalignment/index.html), Mars, Jupiter, and Saturn clustered "for the first time" within a **9° circle — on the very day of the dedication** — and regathered in a 5° circle on April 14
+- **May 5, 2000**: The Sun, Moon, Mercury, Venus, Mars, Jupiter, and Saturn were all within approximately 26° of each other ([NASA APOD, May 5, 2000](https://apod.nasa.gov/apod/ap000505.html)) — the closest such gathering since February 1962
+- The grouping tightened through mid-May (19° on May 17, minus the Moon)
+- Most of this was invisible from Earth due to proximity to the Sun's glare
 
-**Note**: The exact planetary alignment peaked about a month *after* the temple dedication (May rather than April 6). However, the planets were already gathering toward alignment during April.
+**Note**: The full seven-body gathering peaked about a month *after* the temple dedication (May 5 rather than April 6). But the three-planet cluster that began the sequence formed on the dedication day itself.
 
 ### A Sign?
 

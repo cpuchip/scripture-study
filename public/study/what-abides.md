@@ -11,9 +11,10 @@ is a stranger answer than he looks.
 
 ## I. The dream is a word — abide
 
-Webster's 1828 gives *abide* as "to stay; to continue in a place; to have one's
-abode; to dwell," and "to remain stable or fixed in some state or condition."
-It is a word about residence.
+Webster's 1828 gives *abide* as "to rest, or dwell," and "to continue
+permanently or in the same state; to be firm and immovable." *(Requoted
+2026-06-12 — the earlier wordings were the 1913 edition's.)* It is a word
+about residence.
 
 Elder David A. Bednar pressed the word further. Quoting Elder Jeffrey R.
 Holland, he taught that to abide is "to stay — but to stay forever... Come
@@ -88,9 +89,11 @@ him.
 ## V. What abides is a record plus someone who abides by it
 
 Webster keeps a sense of *abide* the dream does not usually reach for. Not only
-"to dwell" but "to abide by — to stand to; to adhere; to maintain." The modern
-dictionary keeps the harder edge: to endure without yielding, to bear, even to
-suffer for.
+"to dwell" but the genuine entry's own note: "abide by signifies to adhere to,
+maintain, defend, or stand to, as to abide by a promise, or by a friend; or to
+suffer the consequences." *(Requoted 2026-06-12 — the earlier "to stand to; to
+adhere; to maintain" was the 1913 edition's; Noah's own note already carries
+the harder edge — to suffer the consequences.)*
 
 John states the mechanism plainly. "If that which ye have heard from the
 beginning shall remain in you," he writes, "ye also shall continue in the Son,

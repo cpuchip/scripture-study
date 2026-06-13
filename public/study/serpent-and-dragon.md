@@ -80,7 +80,7 @@ The word "old" in "that old serpent" connects Revelation directly back to Genesi
 
 In this age, the serpent operates through **subtlety** — craft, guile, insinuation. His method is individual, personal, conversational. One tempter, one target, one lie at a time. But even here, God announces the end of the story:
 
-> "I will put enmity between thee and the woman, and between thy seed and her seed; and **he shall bruise thy head**, and thou shalt **bruise his heel**" — [Moses 4:21](https://www.churchofjesuschrist.org/study/scriptures/pgp/moses/4?lang=eng&id=p21#p21)
+> "I will put enmity between thee and the woman, between thy seed and her seed; and **he shall bruise thy head**, and thou shalt **bruise his heel**" — [Moses 4:21](https://www.churchofjesuschrist.org/study/scriptures/pgp/moses/4?lang=eng&id=p21#p21)
 
 The seed of the woman will crush the serpent's head. The serpent can only bruise the heel. This is the first Messianic prophecy — *and it's given to the serpent himself*.
 

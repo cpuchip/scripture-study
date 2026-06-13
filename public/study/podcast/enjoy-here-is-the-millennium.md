@@ -38,7 +38,7 @@
 - And then he says this — and this is the one that stops me:
 
 **Read aloud — same chapter:**
-> "If the people will not serve the Devil another moment whilst they live, if this congregation is possessed of that spirit and resolution, here in this house is the Millennium. Let the inhabitants of this city be possessed of that spirit, let the people of the territory be possessed of that spirit, and here is the Millennium. Let the whole people be possessed of that spirit and here is the Millennium, and so will it spread over all the world."
+> "If the people will not serve the Devil another moment whilst they live, if this congregation is possessed of that spirit and resolution, here in this house is the Millennium. Let the inhabitants of this city be possessed of that spirit, let the people of the territory be possessed of that spirit, and here is the Millennium. Let the whole people … be possessed of that spirit and here is the Millennium, and so will it spread over all the world."
 
 - The Millennium isn't just a future event. It's a *condition*. It starts in a single room and spreads outward. It begins wherever people actually live the words of eternal life — not just hear them, but *live* them.
 
