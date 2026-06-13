@@ -165,7 +165,7 @@ Already done out-of-band: `study/morm-8-three-glories-reading.md` (2026-06-09).
 - [x] 2026-04-30 `study/best-books-and-the-spirit-of-discernment.md` **FULL** — CLEAN (six-witness set + BY ch 27 all verbatim)
 - [x] 2026-04-30 `study/yt/00qzsgy9xr4-halestorm-outcomes-worldviews.md` **SAMPLE** — Moses 4:1 citation; Wilson exchange de-first-personed; Period ellipsis; rest verbatim
 - [x] 2026-05-01 `study/books/physics-and-the-gospel/two-methods-one-truth.md` **T1** — LAW/GLORY/INTELLIGENCE/MATTER 1913 (words 111-114; genuine calls laws "ordinances of heaven", classes light as imponderable matter); TRUTH genuine; OpenStax misattribution fixed
-- [ ] 2026-05-01 `study/broken-heart-and-contrite-spirit.md` **T1+FULL**
+- [x] 2026-05-01 `study/broken-heart-and-contrite-spirit.md` **T1+FULL** — BROKEN/CONTRITE/HUMBLE 1913 (words 115-117; genuine CONTRITE cites Ps 51:17 itself); Ps 51:8 + Alma 34:16 micro-fixes; hot-zone talks exact
 - [ ] 2026-05-01 `study/yt/matt-pocock-ai-workflow.md` **SAMPLE**
 - [ ] 2026-05-04 `study/yt/matt-pocock-ai-workflow-research.md` **SAMPLE**
 - [ ] 2026-05-06 `study/second-coming-preparation.md` **FULL**

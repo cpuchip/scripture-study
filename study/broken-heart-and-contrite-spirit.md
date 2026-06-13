@@ -23,7 +23,7 @@ And the condition is absolute. Lehi taught Jacob: "He offereth himself a sacrifi
 
 We say "broken heart" like we say "heartbroken" — a feeling, a sadness, something that time heals. But the word carries more weight than that.
 
-Webster 1828 gives five senses of "broken" before he reaches the one that matters: "Subdued; humbled; contrite." Then a seventh: "Crushed and ruined as by something that destroys hope; blighted." The Hebrew behind the English is sharper still. In Psalm 51:17, "broken" translates **shabar** — to burst, break in pieces, crush, destroy, tear (Strong's 7665). This is the word used for a reed snapped underfoot, for a pot shattered against stone. It is not a gentle sadness. It is structural collapse.
+Webster 1828's entry for "broken" is spare and physical: "Parted by violence; rent asunder." *(Requoted 2026-06-12 — the earlier "Subdued; humbled; contrite" and "crushed and ruined … blighted" senses were the 1913 edition's.)* The Hebrew behind the English is sharper still. In Psalm 51:17, "broken" translates **shabar** — to burst, break in pieces, crush, destroy, tear (Strong's 7665). This is the word used for a reed snapped underfoot, for a pot shattered against stone. It is not a gentle sadness. It is structural collapse.
 
 But notice what Christ does with the word. In [3 Nephi 9:20](../gospel-library/eng/scriptures/bofm/3-ne/9.md), He pairs the broken heart not with despair but with promise: "whoso cometh unto me with a broken heart and a contrite spirit, him will I baptize with fire and with the Holy Ghost." The breaking is not the end. It is the preparation. A whole pot holds what it was made to hold and nothing more. A shattered pot, remade, can hold living water.
 
@@ -35,9 +35,9 @@ But notice what Christ does with the word. In [3 Nephi 9:20](../gospel-library/e
 
 We do not say "contrite" in 2026 English. The closest we come is "remorseful," which is too small. Remorse is feeling bad about what you did. Contrition is something else.
 
-Webster 1828: "Broken down with grief and penitence; deeply sorrowful for sin because it is displeasing to God; humbly and thoroughly penitent." The grief is not generic. It is sorrow because the sin is displeasing to God. The orientation is Godward.
+Webster 1828: "Literally, worn or bruised. Hence, broken-hearted for sin; deeply affected with grief and sorrow for having offended God; humble; penitent; as a contrite sinner." And the genuine entry's own example is this study's anchor: "A broken and a contrite heart, O God, thou wilt not despise. Psalm 51:17." *(Requoted 2026-06-12 — the earlier wording was the 1913 edition's.)* The grief is not generic. It is sorrow for having offended God. The orientation is Godward.
 
-The Hebrew root is **dakah** — to collapse physically or mentally, to be pressed down until shattered or pulverized (Strong's 1794). This is the same root used in [Psalm 51:8](../gospel-library/eng/scriptures/ot/ps/51.md): "Let the bones which thou hast broken rejoice." The crushing is real. It is felt in the body. And yet the psalmist does not ask to be spared the crushing. He asks that the crushed bones rejoice.
+The Hebrew root is **dakah** — to collapse physically or mentally, to be pressed down until shattered or pulverized (Strong's 1794). This is the same root used in [Psalm 51:8](../gospel-library/eng/scriptures/ot/ps/51.md): "that the bones which thou hast broken may rejoice." The crushing is real. It is felt in the body. And yet the psalmist does not ask to be spared the crushing. He asks that the crushed bones rejoice.
 
 Elder Neil L. Andersen, in October 2025, offered a distinction that helps: "Having a contrite spirit is humbly putting yourself in the hands of God; having a broken heart brings what the Apostle Paul described as 'godly sorrow,' a deep longing of the soul to return to Him whatever the cost." The contrite spirit is the will submitted. The broken heart is the soul grieving. Together they cover the whole person.
 
@@ -47,7 +47,7 @@ But the distinction should not be pressed too hard. Scripture itself swaps the t
 
 ## IV. The Alma 34 Progression — Justice, Mercy, Prayer, Charity
 
-Amulek's sermon in [Alma 34](../gospel-library/eng/scriptures/bofm/alma/34.md) is one of the most carefully constructed progressions in the Book of Mormon. He begins where Alma left off — with justice and mercy. "Mercy can satisfy the demands of justice, and encircle them in the arms of safety" (v16). Then he introduces a phrase that appears nowhere else in scripture: "faith unto repentance" (v15, 16). Not faith and repentance. Faith *unto* repentance — directional, aimed, moving toward.
+Amulek's sermon in [Alma 34](../gospel-library/eng/scriptures/bofm/alma/34.md) is one of the most carefully constructed progressions in the Book of Mormon. He begins where Alma left off — with justice and mercy. "Mercy can satisfy the demands of justice, and encircles them in the arms of safety" (v16). Then he introduces a phrase that appears nowhere else in scripture: "faith unto repentance" (v15, 16). Not faith and repentance. Faith *unto* repentance — directional, aimed, moving toward.
 
 From there he moves to prayer: "cry unto him for mercy... humble yourselves, and continue in prayer... cry unto him in your houses... pour out your souls in your closets" (v18-26). Prayer is not a single event. It is a posture maintained across every domain of life — fields, flocks, houses, closets.
 
@@ -69,7 +69,7 @@ The shift from "my own soul" to "the welfare of my brethren" is the same shift A
 
 Broken heart and contrite spirit do not stand alone. They belong to a family of words that describe the same posture from different angles. Isaiah pairs "contrite and humble spirit" ([Isaiah 57:15](../gospel-library/eng/scriptures/ot/isa/57.md)). The Book of Mormon adds "poor in spirit who come unto me" ([3 Nephi 12:3](../gospel-library/eng/scriptures/bofm/3-ne/12.md)) — Matthew's beatitude with the crucial addition. Christ's blessing is not for poverty of spirit in isolation. It is for poverty of spirit that moves toward Him.
 
-Webster 1828 on humble: "Thinking lowly of one's self... thinking one's self ill-deserving or unworthy, when judged by the demands of God." This is the soil. Humility is the recognition that God's standard reveals our unworthiness. From that soil grows brokenness. From brokenness grows contrition. From contrition grows the capacity to receive.
+Webster 1828 on humble: "Lowly; modest; meek; submissive … In an evangelical sense, having a low opinion of one's self, and a deep sense of unworthiness in the sight of God." *(Requoted 2026-06-12 — the earlier wording was the 1913 edition's.)* This is the soil. Humility is the recognition that God's standard reveals our unworthiness. From that soil grows brokenness. From brokenness grows contrition. From contrition grows the capacity to receive.
 
 [D&C 20:37](../gospel-library/eng/scriptures/dc-testament/dc/20.md) lays out the full sequence: "All those who humble themselves before God, and desire to be baptized, and come forth with broken hearts and contrite spirits... shall be received by baptism into his church." Humility first. Then the brokenness. Then the reception.
 

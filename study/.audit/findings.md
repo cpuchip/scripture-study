@@ -1889,6 +1889,22 @@ Verbatim: Oaks Feb-2026 BYU (hot zone), D&C 88:6-13/36-39, 93:29/
 quotes (incl. the source's own "act a wave" typo, faithfully
 kept).
 
+### study/broken-heart-and-contrite-spirit.md (2026-05-01) — BROKEN/CONTRITE/HUMBLE 1913 (words 115-117)
+T1+FULL. All three Webster quotes were 1913: BROKEN's "Subdued;
+humbled; contrite" + "crushed and ruined … blighted" senses don't
+exist in genuine 1828 (whose entry is spare: "Parted by violence;
+rent asunder"); CONTRITE requoted to genuine — whose own example
+is Psalm 51:17, this study's anchor verse, and whose etymology
+("Literally, worn or bruised") is the dakah argument in Latin;
+HUMBLE requoted to genuine sense 3. Ps 51:8 was paraphrased in
+quotes ("Let the bones … rejoice" → "that the bones … may
+rejoice"); Alma 34:16 "encircle"→"encircles." Hot-zone talks
+verified exact (Andersen Oct 2025; Walker Apr 2026 quoting D&C
+97:8). Strong's H7665/H1794 glosses accurate. All ~25 other
+scripture renderings verbatim (Ps 34:18/51:16-17, 3 Ne 9:14-20/
+12:3, D&C 20:37/59:8/97:8, Moro 6:2, 2 Ne 2:7, Alma 34, Enos 1,
+Isa 57:15, Hel 8:15).
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
