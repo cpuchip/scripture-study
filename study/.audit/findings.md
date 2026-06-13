@@ -2810,6 +2810,29 @@ LINKS ×2. No markdown links.
     axe-image on itself ("a sentence I could wrongly say… incl. AI
     and me"). Both CLEAN.
 
+### study/bom-walk/2-nephi/2-nephi-21 + 22 + 23.md (2026-06-01) — CLEAN (Isaiah-variant chapters)
+LINKS ×3. No markdown links.
+  • 2-nephi-21 (Isaiah 11, Restoration keystone): near-identical to
+    KJV confirmed; v9 "the earth shall be full of the knowledge of
+    the Lord" verbatim (the project's D&C 130:18 epigraph thread).
+    Meta-pattern noted: glory/Messianic chapters (9, 11) come through
+    near-verbatim. D&C 113 / JS-H 1:40 keystone status flagged as
+    footnote.
+  • 2-nephi-22 (Isaiah 12, doxology): single trivial variant v2 "he
+    also HAS become" (KJV "IS become") confirmed; the refrain
+    resolution + Song-of-Moses (Ex 15:2) echo sound.
+  • ★ 2-nephi-23 (Isaiah 13): the richest variant cluster in the
+    block — ALL FOUR confirmed by direct comparison, and they all
+    tilt toward MERCY/precision: v3 BoM "mine anger is NOT UPON them
+    that rejoice in my highness" (KJV "for mine anger, even them" —
+    mercy inserted); v8 BoM omits "in pain as a woman that
+    travaileth"; v15 BoM "every one that is PROUD" (KJV "found" —
+    target sharpened); v22 BoM adds the whole coda "I will be
+    merciful unto my people, but the wicked shall perish." The
+    study's meta-claim (the BoM's reworking of the judgment chapters
+    is theological — bending toward mercy — not random) is genuinely
+    well-evidenced. All three CLEAN.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)

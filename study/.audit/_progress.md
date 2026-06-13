@@ -241,9 +241,9 @@ Already done out-of-band: `study/morm-8-three-glories-reading.md` (2026-06-09).
 - [x] 2026-06-01 `study/bom-walk/2-nephi/2-nephi-18.md` **LINKS** — CLEAN (Isaiah 8; v19 "to hear from the dead" clarification confirmed)
 - [x] 2026-06-01 `study/bom-walk/2-nephi/2-nephi-19.md` **LINKS** — CLEAN (Isaiah 9; ★ v3 "not"-removal verified incl. the KJV footnote concession + cross-ref; Red Sea)
 - [x] 2026-06-01 `study/bom-walk/2-nephi/2-nephi-20.md` **LINKS** — CLEAN (Isaiah 10; v5 "their indignation" + axe-quote confirmed)
-- [ ] 2026-06-01 `study/bom-walk/2-nephi/2-nephi-21.md` **LINKS**
-- [ ] 2026-06-01 `study/bom-walk/2-nephi/2-nephi-22.md` **LINKS**
-- [ ] 2026-06-01 `study/bom-walk/2-nephi/2-nephi-23.md` **LINKS**
+- [x] 2026-06-01 `study/bom-walk/2-nephi/2-nephi-21.md` **LINKS** — CLEAN (Isaiah 11 keystone; near-identical confirmed; v9 knowledge verbatim)
+- [x] 2026-06-01 `study/bom-walk/2-nephi/2-nephi-22.md` **LINKS** — CLEAN (Isaiah 12; v2 "has become" trivial variant confirmed)
+- [x] 2026-06-01 `study/bom-walk/2-nephi/2-nephi-23.md` **LINKS** — CLEAN (Isaiah 13; ★ all 4 mercy-tilting variants v3/v8/v15/v22 confirmed by direct comparison)
 - [ ] 2026-06-01 `study/is-jesus-christ-god.md` **FULL**
 - [ ] 2026-06-01 `study/bom-walk/2-nephi/2-nephi-24.md` **LINKS**
 - [ ] 2026-06-01 `study/bom-walk/2-nephi/2-nephi-25.md` **LINKS**
