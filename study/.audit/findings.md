@@ -1679,6 +1679,28 @@ copilot-instructions exactly; scriptures shared-verified with the
 parent; covenant.yaml + all links resolve. Michael's two recorded
 session quotes accepted as participant record.
 
+### study/art-of-presidency.md (2026-03-27) — CONSENT + CONSECRATION 1913 (★ words 99-100); a constructed Handbook quote
+T1+FULL. CONSENT's "two dimensions" (agree in sentiment / express
+a willingness) were the 1913's senses 1-2 — genuine is richer:
+"to agree in mind and will; to yield to what one has the power,
+the right, or the disposition to withhold" (requoted; the raised
+hand yields what you had the right to withhold). CONSECRATION —
+the 100TH 1913-as-1828 word — "the state of being consecrated;
+dedication" was 1913 verbatim, and the study's "not an act, a
+state" paragraph was built on it; genuine says "act or ceremony…
+of devoting and dedicating," reworked on "declares it to be
+sacred, that is, devoted to God." SUSTAIN's list mixed editions
+("nourish/comfort/vindicate" = 1913 sense 5) — realigned to
+genuine senses. PRESIDE held genuine (as in #136). The Handbook
+quote was constructed: the real sentence is "…but do not neglect
+your own needs and the needs of your family" (ch. 4.0, footnoted
+to Mosiah 4:27 — a gift), not "brings great blessings" (cited to
+30.1, which doesn't contain it). All ~35 scripture quotes verbatim
+(D&C 21/26/28/42/102/104/107/121, Mosiah 4:19/18/29, 1 Sam 8:7 +
+the D&C 26:2 footnote claim verified); talks verbatim (Petersen
+1974 ×2, Oaks 2009, Uchtdorf 2022 ×2 incl. a marked-ellipsis
+bridge, Eyring 2008, Hinckley ×3, Ballard ×3, Handbook 4.3/4.4.3).
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
