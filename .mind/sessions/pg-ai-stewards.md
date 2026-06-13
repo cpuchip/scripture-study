@@ -7,6 +7,28 @@ last_active: 2026-06-13T09:51:34
 ---
 
 ## Working on
+- **★ NEW DIRECTION 2026-06-13 (Michael, eager to USE it) — captured, NOT yet built:**
+  - **Search VERIFIED WORKING in LIVE** (`pg-ai-stewards-dev`): `exa-search` enabled +
+    granted to research/study/research-gospel + **real-path test PASSED** (web_search_exa
+    "Euclidean algorithm" → Wikipedia article, 4779 chars, no error). Keyless = **Exa
+    free/anonymous tier** (no EXA_API_KEY anywhere; that's fine, it works). Old DuckDuckGo
+    `search` also still enabled in live (harmless; archived in OSS). His project is unblocked.
+  - **Both schedules INTACT:** `ai-news-7am` (research-summary, weekdays 13:00 UTC) +
+    `science-news-weekly` (research-write, Mondays 13:00 UTC), enabled, next 2026-06-15 —
+    live AND ported to overlay (pe7/pe8). "They are fun, keep them." → they stay.
+  - **WANT #1 — YT-playlist digester (most actionable):** poll his "AI research" playlist
+    (youtube.com/playlist?list=PLcHf1NPbY2qXi5MkL-BzJb7t4r-m8SIEq) a few times/day → new
+    video → transcript → digest → **actionable "what to learn/do" recs**. = the study-pipeline
+    spec + scheduler(18) + yt_transcripts(live). **Models: kimi-k2.6 doer, qwen3.7-PLUS
+    critic (NOT qwen3.7-max — ~2x cost of k2.6/3.7-plus).** New: kimi-k2.7-coder just dropped.
+  - **WANT #2 — model-API examples (→ M3):** opencode zen (FREE models OOTB) + opencode go +
+    google gemini key + LM Studio local, as easy import/example pipelines; price-tier import
+    for zen/go "as we had them" OR cite source so an AI keeps them current.
+  - **WANT #3 (VISION) — hourly self-improvement loop:** agent picks a subject within a sphere
+    (AI/physics/startups/book-writing), every hour pulls something of its OWN choice, learns,
+    does something interesting, idles. Ref video https://youtu.be/RB8vjn1QPeM . "automate
+    something for itself, may or may not be useful for us." = scheduler + study-pipeline +
+    agent-chosen subject. NORTH-STAR — spec carefully (watch the video first), don't rush.
 - **★ M2 — fetch-md + git UTILITIES SHIPPED 2026-06-13 (OSS `4a31b03`, pushed;
   Michael "Lets do M2").** Ported `cmd/fetch-md-mcp` (fetch_url/fetch_urls/
   extract_links/fetch_url_raw; chromedp js path kept but NO chromium in bridge —
