@@ -1,9 +1,13 @@
 # Study Tooling — the self-validating study loop
 
 *Design arc captured 2026-06-13 (webster-1828 session), from the
-study-correctness walk retrospective. Status: **DESIGN / awaiting build nods.**
+study-correctness walk retrospective. Status: **DESIGN / partial build.**
 Each tool is a new standing capability → council nod before building
-(dominion-in-council). verify-quotes (rule #1) already ratified + shipped.*
+(dominion-in-council). **SHIPPED:** verify-quotes (detector rule #1) + the **quoter
+(constructor), v1–v3 + promote** (`scripts/quoter/`, Michael's "build it out, carry
+through v3" 2026-06-13 — self-validating loop proven: quoter output passes the
+verify-quotes detector, 0 flags). **NEXT:** the scripture-verbatim detector rule
+(reuses the quoter's `resolver.py` + `grammar.py`).*
 
 ## The principle (oracle-first)
 
@@ -151,10 +155,13 @@ walk did by hand is now mechanical.
 
 ## Build order (recommended)
 
-1. **ref→path resolver** (shared spine) — extract/reuse from gospel-engine-v2.
-2. **scripture-verbatim** linter rule (consumes resolver) — highest-value detector.
-3. **quote scripture + webster** CLI (consumes resolver) — the constructor.
-4. **quote promote** (re-basing) — v1.1.
+1. ✅ **ref→path resolver** (shared spine) — `scripts/quoter/resolver.py`, own map
+   (all 5 volumes, alias table), relpath re-basing per target. SHIPPED.
+2. **scripture-verbatim** linter rule (consumes resolver + grammar) — highest-value
+   detector. **NEXT.**
+3. ✅ **quote scripture + webster** CLI (the constructor, v1–v3) — `quote.py` +
+   `sources.py` + `grammar.py`. SHIPPED.
+4. ✅ **quote promote** (re-basing + re-verify against source) — SHIPPED.
 5. **link-validate, citation-depth-2** linter rules — fill the suite.
 6. **MCP wrappers** — once CLIs prove out, put the loop in the agent's hands.
 
