@@ -422,10 +422,10 @@ Already done out-of-band: `study/morm-8-three-glories-reading.md` (2026-06-09).
 - [x] 2026-06-02 `study/bom-walk/mosiah/mosiah-02.md` **LINKS** — CLEAN (Benjamin's sermon — service; v17 "when ye are in the service of your fellow beings ye are only in the service of your God," v21 "yet ye would be unprofitable servants" EXACT)
 - [x] 2026-06-02 `study/bom-walk/mosiah/mosiah-03.md` **LINKS** — CLEAN (the natural man; v7 "blood cometh from every pore," v19 "the natural man is an enemy to God… unless he yields to the enticings of the Holy Spirit… and becometh as a child" EXACT — character-perfect cornerstone)
 - [x] 2026-06-02 `study/bom-walk/mosiah/mosiah-04.md` **LINKS** — CLEAN (are we not all beggars; v19 "are we not all beggars?," v27 "it is not requisite that a man should run faster than he has strength" EXACT — the project's pacing covenant)
-- [ ] 2026-06-02 `study/bom-walk/mosiah/mosiah-05.md` **LINKS**
-- [ ] 2026-06-02 `study/bom-walk/mosiah/mosiah-06.md` **LINKS**
-- [ ] 2026-06-02 `study/bom-walk/mosiah/mosiah-07.md` **LINKS**
-- [ ] 2026-06-02 `study/bom-walk/mosiah/mosiah-08.md` **LINKS**
+- [x] 2026-06-02 `study/bom-walk/mosiah/mosiah-05.md` **LINKS** — CLEAN (the mighty change; v2 "wrought a mighty change in us… no more disposition to do evil, but to do good continually," v7 "this day he hath spiritually begotten you" EXACT)
+- [x] 2026-06-02 `study/bom-walk/mosiah/mosiah-06.md` **LINKS** — CLEAN (the covenant recorded; v7 "he also, himself, did till the earth, that thereby he might not become burdensome to his people" EXACT — servant-king pattern passed on)
+- [x] 2026-06-02 `study/bom-walk/mosiah/mosiah-07.md` **LINKS** — CLEAN (Limhi found; v29 "I will not succor my people in the day of their transgression; but I will hedge up their ways that they prosper not" EXACT — bondage as covenant-in-reverse)
+- [x] 2026-06-02 `study/bom-walk/mosiah/mosiah-08.md` **LINKS** — CLEAN (the seer doctrine; v16 "a seer is a revelator and a prophet also; and a gift which is greater can no man have," v20 "they will not seek wisdom, neither do they desire that she should rule over them" EXACT)
 - [ ] 2026-06-02 `study/bom-walk/jarom/jarom-01.md` **LINKS**
 - [ ] 2026-06-02 `study/bom-walk/alma/alma-02.md` **LINKS**
 - [ ] 2026-06-02 `study/bom-walk/mosiah/mosiah-24.md` **LINKS**

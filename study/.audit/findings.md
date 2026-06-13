@@ -3972,6 +3972,24 @@ doctrine, the natural man, the beggar). Verified by direct grep.
   is not requisite that a man should run faster than he has strength" — EXACT
   (★ the project's own pacing covenant, verified character-exact).
 
+### Mosiah 5-8 (2026-06-13, 403→407) — ALL CLEAN ★ Mosiah book complete
+
+The covenant response + the seer doctrine, completing King Benjamin's
+sermon and the opening of the Limhi frame. **With this cluster all 29
+chapters of Mosiah are verified clean.** Verified by direct grep.
+
+- **Mosiah 5** (the mighty change): v2 "wrought a mighty change in us… no more
+  disposition to do evil, but to do good continually," v7 "this day he hath
+  spiritually begotten you" — EXACT.
+- **Mosiah 6** (the covenant recorded): v7 "he also, himself, did till the
+  earth, that thereby he might not become burdensome to his people" — EXACT.
+- **Mosiah 7** (Limhi found): v29 "I will not succor my people in the day of
+  their transgression; but I will hedge up their ways that they prosper not"
+  — EXACT.
+- **Mosiah 8** (the seer doctrine): v16 "a seer is a revelator and a prophet
+  also; and a gift which is greater can no man have," v20 "they will not seek
+  wisdom, neither do they desire that she should rule over them" — EXACT.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
