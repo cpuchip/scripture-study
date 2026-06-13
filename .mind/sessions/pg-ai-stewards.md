@@ -3,7 +3,7 @@ lane: pg-ai-stewards
 session_id: 7ea7faa4-688a-451a-ac68-b7ea662d4b81
 status: active
 started: 2026-06-11T22:00:16
-last_active: 2026-06-12T18:42:09
+last_active: 2026-06-12T19:28:12
 ---
 
 ## Working on
@@ -67,13 +67,28 @@ last_active: 2026-06-12T18:42:09
   from 04 sources; audit notes in blueprint (parse_gospel_links
   genericization, embed-config at B5, watchman study_id cols at B2,
   l6 wrapper names at B4).
-  **NEXT = B2** (03-watchman..07-steward per blueprint §Batch plan):
-  consolidate 2-7a/3a/2-7b1-b4 → 03-watchman.sql (rename watchman tables'
-  study_id cols → doc_id + rename-map rows), 3c1/3c2/3c2-5/3c3core/
-  3c3-1/3c3-3/3c3-5/i1-i3/h3-1(work_items)/h3-followup-2 → 04-work-items,
-  3e2-1/2/3core/h1-5a/h1-7a → 05-mcp-bridge, cost files → 06, steward →
-  07. Verification loop per batch (build → virgin scratch → assertions →
-  commit). Then B3-B6.
+  **B2 IN FLIGHT (2026-06-12 evening):** 03-watchman SHIPPED (`80c9f4c`):
+  six files → one, verdicts/findings study_id→doc_id (+related_doc_ids,
+  3 index renames, MCP field doc_id), tables born complete,
+  estimate_chat_tokens reads config chars_per_token_default, harvest
+  trigger e2e on scratch. 04-work-items SHIPPED (`d1d74ef`): ten files →
+  one (3c1/3c2/3c2-5/3c3/3c3-1/3c3-3/3c3-5+5e4§1/i1/i2/i5);
+  work_item_promote_to_STUDY→_to_DOC, flag-driven
+  (pipelines.promote_to_doc — overlay must set it on study-write*),
+  last-stage generic, back through import_doc (CITES sync restored);
+  chat_post_internal marker fix + tool_defs budget cols +
+  agent_tool_perms.source born in schema.rs; i3+h3-followup-2
+  REASSIGNED→B3 (08/10 per blueprint); i5 pulled forward; lib.rs had
+  NON-LINEAR requires edges (4b, 5a) — sweep for them on every chain
+  cut. Full lifecycle smoke green on virgin scratch (template render →
+  auto-advance → auto-dispatch → promote w/ graph sync → sabbath gate
+  refusal). Gotcha: virgin work_item_create needs a seeded intent
+  (hardcoded 'scripture-study' fallback — B3 09-intents wires
+  config.default_intent_slug).
+  **NEXT = B2 remainder:** 3e2-1/2/3(core)+h1-5a+h1-7a → 05-mcp-bridge;
+  4a-cost/4a-esc/4g/es11/j10/j11/j12/an4/cv4 → 06-cost;
+  4a-steward/4b/4c/4d/6b → 07-steward. Verification loop per file
+  (build → virgin scratch → assertions → commit). Then B3-B6.
   (3) Private manifest REPAIRED (root `e5ccc0c3`): 9 live-applied migrations
   (r11-r17, ct2-5, ct2-7e) restored from ledger order; found the runner is
   LEXICAL + manifest-blind (replayed scratch-ct2-run2 into live 06-10 —
