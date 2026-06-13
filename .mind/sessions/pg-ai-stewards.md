@@ -7,7 +7,18 @@ last_active: 2026-06-13T09:51:34
 ---
 
 ## Working on
-- **★ NEW DIRECTION 2026-06-13 (Michael, eager to USE it) — captured, NOT yet built:**
+- **★ ROADMAP 2026-06-13 (Michael's 7-item plan). #1 + #2 SHIPPED this turn, then journaled:**
+  - **#1 DONE — exa web search = the OSS default** (`fd08fea`): seeded exa-search keyless
+    free-tier (works OOTB), reversed M2's BYO call; smoke + prompts updated; refresh-tools
+    6/6 incl exa-search [OK]. (Live instance already had it + grants — verified real-path.)
+  - **#2 DONE — model-wiring examples** (`fd08fea`): `docs/wiring-up-models.md` (opencode
+    zen-free/go/gemini/lm-studio env pattern) + `examples/models.sql` (real-price snapshot
+    catalog, free models flagged) + `.env.example` provider block + `examples/README.md`.
+  - **JOURNALED** (`096c7df`): `.spec/journal/2026-06-13-mcp-packaging-coder-and-usable.md`
+    covers the whole session (plan→M0→resolver→harness→study-spec→M1 coder→M2→#1+#2).
+  - **NEXT per Michael: #3 book-digester** → #4 playlist digester → #5 cutover → #6
+    self-improvement loop → #7 fun. Details below.
+- **★ ROADMAP DETAIL (captured, #3+ NOT yet built):**
   - **Search VERIFIED WORKING in LIVE** (`pg-ai-stewards-dev`): `exa-search` enabled +
     granted to research/study/research-gospel + **real-path test PASSED** (web_search_exa
     "Euclidean algorithm" → Wikipedia article, 4779 chars, no error). Keyless = **Exa
