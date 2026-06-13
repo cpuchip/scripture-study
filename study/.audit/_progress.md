@@ -450,11 +450,11 @@ Already done out-of-band: `study/morm-8-three-glories-reading.md` (2026-06-09).
 - [x] 2026-06-02 `study/bom-walk/alma/alma-43.md` **LINKS** — CLEAN (Captain Moroni / defensive war; v45 "not fighting for monarchy nor power but… for their homes and their liberties," v47 "Ye shall defend your families even unto bloodshed" EXACT — the better cause + D&C 98 law of war)
 - [x] 2026-06-02 `study/bom-walk/alma/alma-44.md` **LINKS** — CLEAN (conditional protection; v4 "never will the Lord suffer that we shall be destroyed except we should fall into transgression and deny our faith," v9 "it is your breastplates and your shields that have preserved you" EXACT — two readings of one victory; end of Alma's record)
 - [x] 2026-06-02 `study/bom-walk/alma/alma-45.md` **LINKS** — CLEAN (the sealed prophecy / Moses-like departure; v16 "the Lord cannot look upon sin with the least degree of allowance," v19 "even as Moses" EXACT — the 400-year extinction prophecy; pride cycle reignites in one chapter)
-- [ ] 2026-06-02 `study/bom-walk/alma/alma-46.md` **LINKS**
-- [ ] 2026-06-02 `study/bom-walk/alma/alma-24.md` **LINKS**
-- [ ] 2026-06-02 `study/bom-walk/alma/alma-23.md` **LINKS**
+- [x] 2026-06-02 `study/bom-walk/alma/alma-46.md` **LINKS** — CLEAN (the title of liberty; v12 "In memory of our God, our religion, and freedom, and our peace, our wives, and our children" EXACT — Amalickiah the flatterer; the self-maledictory rent-garment covenant; "Christians" first named)
+- [x] 2026-06-02 `study/bom-walk/alma/alma-24.md` **LINKS** — CLEAN (the buried weapons; v18 "rather than shed the blood of their brethren they would give up their own lives… rather than spend their days in idleness they would labor abundantly," v30 "worse than though they had never known these things" EXACT — unresisting martyrdom converts the killers; apostasy-from-light capstone)
+- [x] 2026-06-02 `study/bom-walk/alma/alma-23.md` **LINKS** — CLEAN (never did fall away; v6 "as many of the Lamanites as believed… never did fall away," v18 "the curse of God did no more follow them" EXACT — 5:21-study datapoint: curse = enmity/idleness reversed on conversion, footnoted to 2 Ne 30:6, logged not resolved)
 - [ ] 2026-06-02 `study/bom-walk/alma/alma-31.md` **LINKS**
-- [ ] 2026-06-02 `study/bom-walk/alma/alma-22.md` **LINKS**
+- [x] 2026-06-02 `study/bom-walk/alma/alma-22.md` **LINKS** — CLEAN (give away all my sins; v18 "I will give away all my sins to know thee, and that I may be raised from the dead" EXACT — the source verse of Michael's give-away-all-my-sins study; give-AWAY not give-up, and-not-then; v28 "more idle part" curse-language as description, 5:21 datapoint)
 - [ ] 2026-06-02 `study/bom-walk/alma/alma-05.md` **T2**
 - [ ] 2026-06-02 `study/bom-walk/alma/alma-06.md` **LINKS**
 - [ ] 2026-06-02 `study/bom-walk/alma/alma-07.md` **LINKS**

@@ -4156,6 +4156,37 @@ under Captain Moroni and Alma departs "even as Moses." Verified by direct grep.
   400-year extinction prophecy Mormon records while living it; the pride cycle
   reigniting within one chapter of deliverance).
 
+### Alma 46, 24, 23, 22 (2026-06-13, 431→435) — ALL CLEAN
+
+The title of liberty, and (out of cursor order) the heart of the grievance-cure
+arc: the buried weapons, "never did fall away," and the over-king's "give away
+all my sins." Verified by direct grep. The curse-*lifted* datapoints (23:18,
+22:28) carry forward to Michael's standing 5:21 study — logged, not resolved.
+
+- **Alma 46** (the title of liberty): v12 "he rent his coat… wrote upon it—In
+  memory of our God, our religion, and freedom, and our peace, our wives, and
+  our children" — EXACT (Amalickiah the flatterer as the inner threat; the
+  self-maledictory rent-garment covenant; "Christians" first named, v15; the
+  hard edge of v35 held honestly).
+- **Alma 24** (the buried weapons): v18 "rather than shed the blood of their
+  brethren they would give up their own lives… rather than spend their days in
+  idleness they would labor abundantly with their hands," v30 "after a people
+  have been once enlightened… worse than though they had never known these
+  things" — EXACT (unresisting martyrdom converts the killers, net-positive;
+  the apostasy-from-light capstone).
+- **Alma 23** (never did fall away): v6 "as many of the Lamanites as believed…
+  never did fall away," v18 "the curse of God did no more follow them" — EXACT
+  (permanence tied to laying down the weapons; the curse explicitly lifted —
+  industrious/friendly/correspondence, all behavioral, footnoted to 2 Ne 30:6.
+  A major 5:21-study datapoint: curse = enmity/idleness reversed on conversion,
+  reframed as condition not permanent mark — logged for Michael, not resolved).
+- **Alma 22** (give away all my sins): v18 "I will give away all my sins to
+  know thee, and that I may be raised from the dead… struck as if he were
+  dead" — EXACT (the source verse of Michael's give-away-all-my-sins study:
+  give-AWAY not give-up, the conjunction *and* not *then* — repentance and
+  revelation one motion; v28 "more idle part of the Lamanites" curse-language
+  as description, 5:21 datapoint).
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
