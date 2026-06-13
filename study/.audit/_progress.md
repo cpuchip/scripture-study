@@ -299,10 +299,10 @@ Already done out-of-band: `study/morm-8-three-glories-reading.md` (2026-06-09).
 - [x] 2026-06-02 `study/bom-walk/3-nephi/3-nephi-12.md` **LINKS** — CLEAN (Sermon pt 1; ★ all 4 Matthew-5 variants confirmed by direct comparison — v3 "+who come unto me," v6 "+with the Holy Ghost," v13 "I give unto you to be" (KJV "Ye are"), v48 "+even as I, or"; v2 "more blessed are they who shall believe in your words" all EXACT)
 - [x] 2026-06-02 `study/bom-walk/3-nephi/3-nephi-13.md` **LINKS** — CLEAN (Sermon pt 2; ★ v25 "take no thought" addressed to "the twelve whom he had chosen" (the Nephite interpretive key) confirmed; v2 "they have their reward," v21 "where your treasure is, there will your heart be," v33 "seek ye first the kingdom" all EXACT)
 - [x] 2026-06-02 `study/bom-walk/3-nephi/3-nephi-14.md` **LINKS** — CLEAN (Sermon close; v12 golden rule "the law and the prophets," v14 "strait is the gate… few there be that find it," v21 "he that doeth the will of my Father," v23 "I never knew you," v24 house on the rock all EXACT)
-- [ ] 2026-06-02 `study/bom-walk/3-nephi/3-nephi-15.md` **LINKS**
-- [ ] 2026-06-02 `study/bom-walk/3-nephi/3-nephi-16.md` **LINKS**
+- [x] 2026-06-02 `study/bom-walk/3-nephi/3-nephi-15.md` **LINKS** — CLEAN (★ "I am he that gave the law… I am the law, and the light. Look unto me" v5/v9 — Christ=Jehovah, ties to is-jesus-christ-god; v17 "other sheep… one fold, and one shepherd," v24 "ye have both heard my voice, and seen me" all EXACT)
+- [x] 2026-06-02 `study/bom-walk/3-nephi/3-nephi-16.md` **LINKS** — CLEAN (record for the Gentiles; v4 "manifested unto the Gentiles… through the fulness of the Gentiles, the remnant of their seed… brought to a knowledge of me," v10 the conditional-fulness warning, v20 Isaiah 52:10 "made bare his holy arm… all the ends of the earth shall see the salvation of God" all EXACT)
 - [ ] 2026-06-02 `study/bom-walk/helaman/helaman-12.md` **LINKS**
-- [ ] 2026-06-02 `study/bom-walk/3-nephi/3-nephi-17.md` **LINKS**
+- [x] 2026-06-02 `study/bom-walk/3-nephi/3-nephi-17.md` **LINKS** — CLEAN (the tenderest chapter; v6 "my bowels are filled with compassion towards you," v17 "no tongue can speak… we heard him pray for us," v21 "he wept… little children, one by one," v24 "encircled about with fire; and the angels did minister unto them" all EXACT)
 - [ ] 2026-06-02 `study/bom-walk/3-nephi/3-nephi-7.md` **LINKS**
 - [ ] 2026-06-02 `study/bom-walk/helaman/helaman-11.md` **LINKS**
 - [ ] 2026-06-02 `study/bom-walk/alma/alma-61.md` **LINKS**

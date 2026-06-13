@@ -3298,6 +3298,27 @@ LINKS ×3. No markdown links.
   you" (v23), the house on the rock (v24-27) — all EXACT. The
   long-form Sermon notes hold verbatim throughout.
 
+### #302-303, 305 `3-nephi 15, 16, 17` — bom-walk LINKS — ALL CLEAN
+- **3 Ne 15** (the law fulfilled / other sheep): ★ v5 "I am he that
+  gave the law, and I am he who covenanted with my people Israel" +
+  v9 "I am the law, and the light. Look unto me" — Christ=Jehovah, the
+  clearest is-jesus-christ-god datapoint, footnoted "Jesus Christ,
+  Jehovah"; v17 "one fold, and one shepherd," v24 "ye have both heard
+  my voice, and seen me" — EXACT.
+- **3 Ne 16** (record for the Gentiles + Isaiah 52:8-10): v4 the Book
+  of Mormon's purpose ("manifested unto the Gentiles… through the
+  fulness of the Gentiles, the remnant of their seed… brought to a
+  knowledge of me"), v10 the conditional-fulness warning (the long
+  pride/priestcraft litany), v20 Isaiah 52:10 "made bare his holy arm…
+  all the ends of the earth shall see the salvation of God" — EXACT.
+- **3 Ne 17** (the tenderest chapter): v6 "my bowels are filled with
+  compassion towards you," v17 the unwritable prayer ("no tongue can
+  speak… we heard him pray for us"), v21 "he wept… their little
+  children, one by one," v24 the children "encircled about with fire;
+  and the angels did minister unto them" — EXACT.
+- The entire 3 Nephi Christ-ministry block (9-10, 12-17) verified clean,
+  ~24 quotes this set, every one verbatim.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
