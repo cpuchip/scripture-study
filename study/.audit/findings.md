@@ -2026,6 +2026,18 @@ SAMPLE ×3. Scheduled-workflow daily digests — machine artifacts of
 record, same class as the PE smoke capture; documented, no fixes
 applicable.
 
+### study/what-was-the-atonement-for.md (2026-05-22) — Hel 16:23 quoted as 3 Ne 6:15; PRESUMPTUOUS 1913 ordering (word 119)
+T2+FULL. The Satan-great-hold quote attributed to 3 Ne 6:15 is
+actually Helaman 16:23's wording — requoted to v15's real text
+with note. PRESUMPTUOUS carried the 1913's sense ordering —
+genuine sense 5 LEADS with "Willful" and its own example is "a
+presumptuous sin" (strengthens the study's vocabulary-chain
+argument). Everything else verbatim: 3 Ne 6:4-30 + 7:1-6, the
+fn-18a footnote claim (Num 15:27 + Mosiah 3:11) EXACT, Num
+15:28-31, Ps 19:13, Mosiah 3:11/16:12, D&C 1:2-4, 2 Ne 2:26-27,
+D&C 88:32/121:17/121:41-42, Abr 3:27, Moses 1:39/4:1-3, JFS
+Teachings ch. 30 exact.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
