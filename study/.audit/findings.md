@@ -2648,6 +2648,20 @@ from forgetting the signs). Otherwise CLEAN — disciplined, the
 antitype guardrail (intended-audience not "final generation") and
 the date-setting discipline both held.
 
+### study/without-compulsion.md (2026-06-01) — CLEAN (outline, superseded)
+FULL (but it's an explicit "Provisional outline / Draft pending" —
+the seed that became freedom/99-synthesis.md, which was verified to
+full depth at #201). Two epigraphs: 3 Nephi 6:18 verbatim; the
+"Celebrating Freedom and Agency" Church web resource ("choose Him
+freely…without compulsion") — secondary source cited with its
+churchofjesuschrist.org URL, not in the local library (same status
+as in the synthesis). All scripture the outline quotes (Moses 5:7/
+29-33/35, Ether 8:25, Heb 12:24, D&C 101:80, 3 Ne 6:4/7-8/12/27-30)
+is verified verbatim in the synthesis. All six links resolve
+(gospel-library heb/12, dc/101, 3-ne/6; sibling studies
+what-was-the-atonement-for, christ-in-all-the-scriptures, agency,
+gadianton-robbers). CLEAN.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
