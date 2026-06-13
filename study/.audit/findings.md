@@ -1815,6 +1815,16 @@ had right, 1 Ne 8:11-12 / 11:21-25, Alma 32:28/41/42, John
 ch. 6 adjacency claim verified (alma/32 ×6 + rom/5 links in the
 chapter).
 
+### study/yt/GybaxBERWMk-callister-teaching-saviors-way.md (2026-04-25) — 3 micro-requotes
+SAMPLE. Hel 11:23 quoted as "they did receive many revelations
+daily" — the verse reads "having many revelations daily" (fixed);
+Alma 31:5 "had A more powerful effect" → "had had more powerful
+effect"; the success quote's first clause normalized a contraction
+("the success is not having covered…" restored). Five other
+Callister quotes verbatim against yt/inspiring/GybaxBERWMk
+transcript; TSW manual links resolve; the teacher-council-
+framework sibling exists.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)

@@ -158,7 +158,7 @@ Already done out-of-band: `study/morm-8-three-glories-reading.md` (2026-06-09).
 - [x] 2026-04-23 `study/zion-in-a-presidency.md` **T1+FULL** — Cook quote had an inserted phrase (removed); ~25 scriptures + Uchtdorf 2025 verbatim
 - [x] 2026-04-25 `study/hope-and-the-grammar-of-pairs.md` **T1+FULL** — HOPE 1913 ×2 (word 110; genuine has the wish-vs-hope note + "hope of Israel is the Messiah"); Rom 5:5 + 2 Cor 13:1 micro-fixes; ~35 quotes verbatim
 - [x] 2026-04-25 `study/tree-of-life-and-the-chain.md` **T1+FULL** — SHED realigned to genuine (entry cites Matt 26:28); Alma 32:27 fragment fixed; rest verbatim
-- [ ] 2026-04-25 `study/yt/GybaxBERWMk-callister-teaching-saviors-way.md` **SAMPLE**
+- [x] 2026-04-25 `study/yt/GybaxBERWMk-callister-teaching-saviors-way.md` **SAMPLE** — Hel 11:23 + Alma 31:5 + success-quote micro-requotes; 5 Callister quotes verbatim
 - [ ] 2026-04-25 `study/nephi-reads-isaiah.md` **T1+FULL**
 - [ ] 2026-04-25 `study/stories/teancum-the-brave.md` **SAMPLE**
 - [ ] 2026-04-30 `study/discernment-and-the-comprehending-eye.md` **FULL**
