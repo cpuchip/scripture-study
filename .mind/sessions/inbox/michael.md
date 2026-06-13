@@ -44,13 +44,25 @@ compound interrogatives (v53 bundles four "can ye/will ye" under one `?`) — a
 defensible methodology, so I left the prose intact and logged it. Tighten to
 "more than forty" if you'd rather match the verifiable floor.
 
-### Your 3 post-walk asks — IN PROGRESS
-1. ✅ **`publish.exe -v` ran** — `public/` regenerated, 170 files picked up all
-   the walk's accumulated corrections, committed + pushed (ibeco 200).
-2. ⏳ **cpuchip.net parity pass** — carrying the 11 ⚠️ corrections into the
-   published copies, **send-me-covenants first** (the two fabricated "Todd
-   says" quotes that are live under your name). Working through it now.
-3. ⏳ **scripture-book agent note** — about to drop it in their `.spec/`.
+### Your 3 post-walk asks
+1. ✅ **DONE — `publish.exe -v` ran.** `public/` regenerated, 170 files picked
+   up all the walk's accumulated corrections, committed + pushed (ibeco 200).
+2. ⏳ **cpuchip.net parity pass — 1 of 11 shipped.** ✅ **send-me-covenants is
+   DONE and live** — both fabricated "Todd says" quotes removed (one was the
+   brother-of-jared study's own §VI prose, one was Ether 6:9 scripture; Todd's
+   genuine parallels — "you can't even soften your own heart" / "your prayer is
+   your platform" — quoted instead), the law-of-Moses quote-blend split, and
+   POSSESS 1913→1828 (re-confirmed vs the MCP). validate + build green, pushed,
+   site 200. I did **silent accurate fixes** on the public face rather than
+   visible "we erred" notes — that public-disclosure style is your call; say the
+   word if you'd rather have visible correction notes. **The other 10 studies
+   are staged** (exact before/after in `findings.md` + `cpuchip-republish.md`) —
+   I deferred rushing 10 more live-site edits this deep in the night (the
+   keep-the-watch-whole call); they're a clean fresh-context pass.
+3. ✅ **DONE — scripture-book note dropped** in `projects/scripture-book/.spec/
+   quote-audit-note-from-walk.md` + pushed (lists the quote-classes to check;
+   did NOT touch the book — its stewardship).
 
-Full audit trail in `study/.audit/findings.md`. The walk is done; finishing the
-three asks.
+Full audit trail in `study/.audit/findings.md`. The walk is **complete**; asks 1
+and 3 done, ask 2's urgent piece (the fabricated quotes) shipped, the rest
+cleanly staged.
