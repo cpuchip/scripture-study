@@ -20,7 +20,13 @@ Two corrections happened *after* many of these files were written:
    date errors, and confabulated attributions.
 
 Those corrections were applied **to the study files**, not back-propagated into
-these scratch files (they're kept as the original record). **Where a scratch
-file conflicts with its study, the STUDY is authoritative.** Every correction is
-logged in [`study/.audit/findings.md`](../.audit/findings.md). Affected scratch
-files carry a dated per-file banner pointing here.
+these scratch files (they're kept as the original record). **At present, where a
+scratch file conflicts with its study, the STUDY is authoritative.** Every
+correction is logged in [`study/.audit/findings.md`](../.audit/findings.md).
+Affected scratch files carry a dated per-file banner pointing here.
+
+**This is a temporary state.** The intended end is to *normalize* the walk's
+corrections **through** the scratch files — bringing them current — at which
+point the scratch (the real audit trail) is authoritative again and these
+correction banners are **removed** (`findings.md` keeps the permanent record of
+what changed). Until that normalization pass runs, the study is the authority.
