@@ -1788,6 +1788,21 @@ else verbatim: Moses 7:16/18, Acts 2:42/46 + 4:32/34, 4 Ne
 Uchtdorf Apr 2025 ×2 (hot zone, exact). No new Webster quotes
 (PRESIDE back-reference already held genuine).
 
+### study/hope-and-the-grammar-of-pairs.md (2026-04-25) — HOPE 1913 (word 110, double gift); 2 micro-requotes
+T1+FULL. Both HOPE quotes were 1913 — genuine sense 1 adds "at
+least a slight expectation… or a belief that it is obtainable" AND
+Noah's own wish-vs-hope discrimination note (the exact line the
+study's prose argues); genuine sense 3 contains "The hope of
+Israel is the Messiah" before the Joel 3:16 example. Rom 5:5
+restored "which is given unto us"; 2 Cor 13:1 word order fixed
+("shall every word be established"). Everything else verbatim:
+BD faith opening, Moroni 7:40-43/48, 1 Tim 1:1, 1 Pet 1:3, Heb
+6:18-19, Ether 12:4/28, Rom 8:24-25, Rev 21:2/17:5/18:4, 1 Cor
+13:13, Moro 10:20/22, 1 Jn 3:2-3, D&C 4:5-6 (ten-attribute list
+EXACT), Matt 6:22/18:16, D&C 88:67-68/93:33-34/5:15, Ether 5:4,
+Deut 19:15, 2 Ne 31:20, LoF 6:4 + 7:9/16 (hinge, prototype,
+purify) all exact against books/lecture-on-faith.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)

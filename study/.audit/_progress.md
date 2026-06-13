@@ -156,7 +156,7 @@ Already done out-of-band: `study/morm-8-three-glories-reading.md` (2026-06-09).
 - [x] 2026-04-12 `study/gc/2026-04/00-thematic-overview.md` **SAMPLE** — Oaks "world"→was "life"; Wakolo constructed quote requoted to his real refrain; 37-count exact; rest verbatim
 - [x] 2026-04-20 `study/give-away-all-my-sins.md` **T1+FULL** — GIVE/FORSAKE/REPENT/POSSESS/KNOW all 1913 (words 105-109); Alma 22:18 "and" restored ×2; Luke 18:18 + McKay-1950 fixed; BYU roster + singularity claims verified EXACT
 - [x] 2026-04-23 `study/zion-in-a-presidency.md` **T1+FULL** — Cook quote had an inserted phrase (removed); ~25 scriptures + Uchtdorf 2025 verbatim
-- [ ] 2026-04-25 `study/hope-and-the-grammar-of-pairs.md` **T1+FULL**
+- [x] 2026-04-25 `study/hope-and-the-grammar-of-pairs.md` **T1+FULL** — HOPE 1913 ×2 (word 110; genuine has the wish-vs-hope note + "hope of Israel is the Messiah"); Rom 5:5 + 2 Cor 13:1 micro-fixes; ~35 quotes verbatim
 - [ ] 2026-04-25 `study/tree-of-life-and-the-chain.md` **T1+FULL**
 - [ ] 2026-04-25 `study/yt/GybaxBERWMk-callister-teaching-saviors-way.md` **SAMPLE**
 - [ ] 2026-04-25 `study/nephi-reads-isaiah.md` **T1+FULL**
