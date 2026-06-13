@@ -105,6 +105,24 @@ last_active: 2026-06-12T15:38:52
   8-verses (footnote markers inside the phrase hid one from grep).
   LIKEN held genuine (#148); discernment-eye CLEAN (#150).
   NEXT: #151 best-books-and-the-spirit-of-discernment.md FULL.
+- UPDATE 8: ★ 180/469 — Webster count still 110 (no NEW 1913 words
+  in files 151-180; POSSESS recurred as a PROPAGATION in the Send Me
+  yt eval, already counted). Model SWITCHED Fable 5 → Opus 4.8 at
+  ~#176 (Fable access lost; Michael: "keep up the same rigor").
+  Commit trailer now Opus 4.8. ★ HEAVIEST FIND of the run: #176
+  yt/V40tBshkMnE-send-me-covenants had TWO fabricated "Todd says"
+  quotes — one was Michael's OWN brother-of-jared §VI prose, one was
+  Ether 6:9 scripture — plus a law-of-Moses BLEND and the POSSESS
+  propagation; the "two witnesses" thesis survives correction on
+  Todd's genuine parallels. Other finds: #172 Ether 2:25 "do"→
+  "prepare for you"; #173 Ether 12:19-20 PHANTOM phrase "because of
+  his relation to the Lord" (in neither verse, entered at draft
+  time). CLEAN: #174 ai-stewardship-north-star (Gemini capture),
+  #177 softening-what-i-cannot-soften (all 17 quotes verbatim).
+  #178 you-have-3-years-left: 5 Mostaque quotes genuine, one
+  unmarked elision marked. Daily digests 175/179/180 = machine
+  artifacts untouched. Queue for Michael STILL EMPTY. NEXT: #181
+  four-groups-and-the-engineer.md T1+FULL.
 - ✅ OCR repair SHIPPED + live-verified (1336c8ce); walk plan RATIFIED
   (.spec/proposals/study-correctness-walk.md)
 
