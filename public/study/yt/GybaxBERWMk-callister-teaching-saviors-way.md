@@ -47,12 +47,12 @@ This is the one Callister calls a "cultural change" the Church is trying to make
 - **Joseph Smith** (a quote Callister had not seen until recently): "Here is another important item — if you proceed to discuss important questions and feel to write them down. Perhaps for neglecting to write those things when God had revealed them, not esteeming them of sufficient worth, the Spirit may withdraw."
 - **Oliver Cowdery in [D&C 6:22-23](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/6?lang=eng&id=p22-p23#p22):** "Cast your mind upon the night that I cried unto your heart… did I not speak peace unto your mind?" Recorded impressions are the witness that survives the doubt.
 
-He ties it back to [Helaman 11:23](https://www.churchofjesuschrist.org/study/scriptures/bofm/hel/11?lang=eng&id=p23#p23): "they did receive many revelations daily." A verse he says he couldn't understand for years now reads obvious — *if you record the impressions, you can receive many in a day.*
+He ties it back to [Helaman 11:23](https://www.churchofjesuschrist.org/study/scriptures/bofm/hel/11?lang=eng&id=p23#p23): "having many revelations daily." A verse he says he couldn't understand for years now reads obvious — *if you record the impressions, you can receive many in a day.*
 
 This single section may be the most useful piece of the video for teacher councils. The "spiritual anchor" framing from Sister Phelps in the room (referencing Elder Renlund's talk on remembering) is worth lifting verbatim into a council.
 
 ### 6. Teach people, not lessons
-> "Success isn't having covered the whole lesson. Success isn't having given a brilliant presentation. Success is — did we have the spirit to change the lives of those in our class to help them become more christ-like?" — [Callister, 9:35](https://www.youtube.com/watch?v=GybaxBERWMk&t=575)
+> "The success is not having covered the whole lesson. Success isn't having given a brilliant presentation. Success is — did we have the spirit to change the lives of those in our class to help them become more christ-like?" — [Callister, 9:35](https://www.youtube.com/watch?v=GybaxBERWMk&t=575)
 
 The major (Beck, from Maxwell Air Force Base) testifies that being called as a Sunday School president in a brand-new ward forced him to teach two consecutive sessions completely differently. "I had no plan to go in that direction but clearly I felt led." Callister punctuates: "We're not teaching a given lesson, we're teaching people, and the lesson is a means."
 
@@ -61,7 +61,7 @@ This is TSW [Love Those You Teach](https://www.churchofjesuschrist.org/study/man
 ### 7. The doctrine itself has converting power
 > "Inherent in the doctrine is a power that changes life — that is inherent in the doctrine itself." — [Callister, 36:00](https://www.youtube.com/watch?v=GybaxBERWMk&t=2160)
 
-Anchored on [Alma 31:5](https://www.churchofjesuschrist.org/study/scriptures/bofm/alma/31?lang=eng&id=p5#p5) ("the word… had a more powerful effect upon the minds of the people than the sword") and Boyd K. Packer's "true doctrine, understood, changes attitudes and behavior more quickly than a study of behavior will improve behavior."
+Anchored on [Alma 31:5](https://www.churchofjesuschrist.org/study/scriptures/bofm/alma/31?lang=eng&id=p5#p5) ("the word… had had more powerful effect upon the minds of the people than the sword") and Boyd K. Packer's "true doctrine, understood, changes attitudes and behavior more quickly than a study of behavior will improve behavior."
 
 The closing missionary anecdote — walking the discouraged elder through 10-12 Restoration doctrines he himself believed, then saying "this church has just ruined you for any other church, you know too much" — is a master illustration of the principle. The doctrine itself, once taken in honestly, does the work.
 

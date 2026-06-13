@@ -139,7 +139,7 @@ What I'm thinking:
 - **Proper CI/CD** — git push triggers builds, tests, deploys
 - **Self-hosted but accessible** — ibeco.me connects from anywhere, brain captures from anywhere
 
-The Garvis proposal (`.spec/proposals/second-brain-architecture.md`) already laid out a phased server plan. The multi-agent layer builds *on top* of that — you need the always-on brain before you can have always-on agents.
+The Garvis proposal (`.spec/proposals/deferred/second-brain-architecture.md`) already laid out a phased server plan. The multi-agent layer builds *on top* of that — you need the always-on brain before you can have always-on agents.
 
 **Priority order:**
 1. Get brain.exe running on a real server (always-on capture + classification)
@@ -237,4 +237,4 @@ Line upon line. Room by room. Not faster than I have strength.
 ---
 
 *Ideas captured: March 11, 2026*
-*Related: [Staying Relevant](relavent.md) · [AI Fatigue](fatigue.md) · [Responsible Use](../ai-responsible-use.md) · [Spec Engineering](../../docs/work-with-ai/guide/04_spec-engineering.md) · [The Complete Cycle](../../docs/work-with-ai/guide/05_complete-cycle.md) · [Second Brain Architecture](../../.spec/proposals/second-brain-architecture.md)*
+*Related: [Staying Relevant](relavent.md) · [AI Fatigue](fatigue.md) · [Responsible Use](../ai-responsible-use.md) · [Spec Engineering](../../docs/work-with-ai/guide/04_spec-engineering.md) · [The Complete Cycle](../../docs/work-with-ai/guide/05_complete-cycle.md) · [Second Brain Architecture](../../.spec/proposals/deferred/second-brain-architecture.md)*

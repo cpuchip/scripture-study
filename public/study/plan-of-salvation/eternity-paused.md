@@ -135,7 +135,7 @@ This verse is the fulcrum of the entire plan. Study every word:
 
 **"Caused myself, even God, the greatest of all"** — He identifies Himself as God. Not a prophet, not an angel. God. The greatest of all intelligences ([Abraham 3:19](https://www.churchofjesuschrist.org/study/scriptures/pgp/abr/3?lang=eng&id=p19#p19)). And this Being *trembled.*
 
-**"To tremble because of pain"** — Webster 1828: *"To shake involuntarily, as with fear, cold, or weakness; to quake; to quiver."* This is involuntary. His body shook. Not metaphorically. Physically. The frame that organized matter into worlds could not hold steady under this weight.
+**"To tremble because of pain"** — Webster 1828: *"To shake involuntarily, as with fear, cold or weakness; to quake; to quiver."* This is involuntary. His body shook. Not metaphorically. Physically. The frame that organized matter into worlds could not hold steady under this weight.
 
 **"And to bleed at every pore"** — Luke's clinical "as it were great drops of blood" is confirmed by the Lord Himself as literal. Every pore. The suffering was so total it expressed itself through everything He was.
 
@@ -240,12 +240,12 @@ Words matter. The scriptures chose these words for a reason.
 | Word | Webster 1828 | In Context |
 |------|-------------|------------|
 | **Shrink** | "To withdraw or retire, as from danger; to decline action from fear; to recoil" | He would have recoiled. The desire to stop was real. ([D&C 19:18](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/19?lang=eng&id=p18#p18)) |
-| **Tremble** | "To shake involuntarily, as with fear, cold, or weakness; to quake" | God quaked. Not metaphorically. ([D&C 19:18](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/19?lang=eng&id=p18#p18)) |
-| **Agony** | "Pain so extreme as to cause writhing or contortions of the body; specifically, the sufferings of Christ in Gethsemane" | The 1828 dictionary itself defines agony by this very event. ([Luke 22:44](https://www.churchofjesuschrist.org/study/scriptures/nt/luke/22?lang=eng&id=p44#p44)) |
-| **Cup** | "That which is to be received or indured; that which is allotted to one; a portion" | His allotted portion. Not punishment — assignment. ([Matthew 26:39](https://www.churchofjesuschrist.org/study/scriptures/nt/matt/26?lang=eng&id=p39#p39)) |
-| **Submit** | "To yield, resign, or surrender to power, will, or authority" | He submitted His will to the Father's. Not elimination of will — *surrender* of will. ([Mosiah 15:7](https://www.churchofjesuschrist.org/study/scriptures/bofm/mosiah/15?lang=eng&id=p7#p7)) |
+| **Tremble** | "To shake involuntarily, as with fear, cold or weakness; to quake" | God quaked. Not metaphorically. ([D&C 19:18](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/19?lang=eng&id=p18#p18)) |
+| **Agony** | "Pain so extreme as to cause writhing or contortions of the body ... appropriately, the pangs of death, and the sufferings of our Savior in the garden of Gethsemane" | The 1828 dictionary itself defines agony by this very event, citing Luke 22:44. ([Luke 22:44](https://www.churchofjesuschrist.org/study/scriptures/nt/luke/22?lang=eng&id=p44#p44)) |
+| **Cup** | "In a scriptural sense, sufferings and afflictions; that which is to be received or endured" | And Webster's own example is this verse: "let this cup pass from me." ([Matthew 26:39](https://www.churchofjesuschrist.org/study/scriptures/nt/matt/26?lang=eng&id=p39#p39)) |
+| **Submit** | "To yield, resign or surrender to the power, will or authority of another" | He submitted His will to the Father's. Not elimination of will — *surrender* of will. ([Mosiah 15:7](https://www.churchofjesuschrist.org/study/scriptures/bofm/mosiah/15?lang=eng&id=p7#p7)) |
 
-Note the Webster 1828 definition of "agony": it specifically references "the sufferings of Christ in the garden of Gethsemane" as its defining example. This is a word that, even in 1828, had no better illustration than this event. The English language itself bends around Gethsemane.
+Note the Webster 1828 definition of "agony": it names "the pangs of death, and the sufferings of our Savior in the garden of Gethsemane" as the word's proper application, citing Luke 22:44. *(Requoted 2026-06-12 — the earlier wording was the 1913 edition's; the genuine entry carries the same anchor.)* This is a word that, even in 1828, had no better illustration than this event. The English language itself bends around Gethsemane.
 
 ---
 

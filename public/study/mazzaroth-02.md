@@ -140,7 +140,7 @@ Parallel accounts:
 
 ### Lehi's Vision
 
-> "And he also saw One descending out of the midst of heaven, and he beheld that his luster was above that of the sun at noon-day. And he also saw twelve others following him, and their **brightness did exceed that of the stars in the firmament**." — [1 Nephi 1:9-10](https://www.churchofjesuschrist.org/study/scriptures/bofm/1-ne/1?lang=eng&id=p9-p10#p9)
+> "And it came to pass that he saw One descending out of the midst of heaven, and he beheld that his luster was above that of the sun at noon-day. And he also saw twelve others following him, and their **brightness did exceed that of the stars in the firmament**." — [1 Nephi 1:9-10](https://www.churchofjesuschrist.org/study/scriptures/bofm/1-ne/1?lang=eng&id=p9-p10#p9)
 
 ---
 
@@ -154,11 +154,11 @@ Beyond those covered in [mazzaroth-01.md](mazzaroth-01.md):
 
 > "The **sun shall be turned into darkness**, and the **moon into blood**, before that great and notable day of the Lord come." — [Acts 2:20](https://www.churchofjesuschrist.org/study/scriptures/nt/acts/2?lang=eng&id=p20#p20)
 
-> "Then shall the moon be confounded, and the **sun ashamed**, when the Lord of hosts shall reign in mount Zion." — [Isaiah 24:23](https://www.churchofjesuschrist.org/study/scriptures/ot/isa/24?lang=eng&id=p23#p23)
+> "Then the moon shall be confounded, and the **sun ashamed**, when the Lord of hosts shall reign in mount Zion, and in Jerusalem, and before his ancients gloriously." — [Isaiah 24:23](https://www.churchofjesuschrist.org/study/scriptures/ot/isa/24?lang=eng&id=p23#p23)
 
-> "And then shall appear the sign of the Son of Man in heaven... For the **sun shall be darkened**, and the **moon shall not give her light**, and the **stars shall fall from heaven**." — [D&C 45:40-42](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/45?lang=eng&id=p40-p42#p40)
+> "And immediately after the tribulation of those days, the **sun shall be darkened**, and the **moon shall not give her light**, and the **stars shall fall from heaven**... then shall appear the sign of the Son of Man in heaven." — [JS—Matthew 1:33, 36](https://www.churchofjesuschrist.org/study/scriptures/pgp/js-m/1?lang=eng&id=p33#p33)
 
-> "But in those days, after that tribulation, the **sun shall be darkened**, and the **moon shall not give her light**, and the **stars of heaven shall fall**." — [Mark 13:24-25](https://www.churchofjesuschrist.org/study/scriptures/nt/mark/13?lang=eng&id=p24-p25#p24)
+> "But in those days, after that tribulation, the **sun shall be darkened**, and the **moon shall not give her light**, and the **stars of heaven shall fall**, and the powers that are in heaven shall be shaken." — [Mark 13:24-25](https://www.churchofjesuschrist.org/study/scriptures/nt/mark/13?lang=eng&id=p24-p25#p24)
 
 ### The Woman Clothed with the Sun
 
@@ -178,7 +178,7 @@ This striking phrase appears multiple times, describing the Church coming forth:
 
 ### Restoration of the Church
 
-> "And after this day of testimony... even the **beginning of the rising up and the coming forth of my church** out of the wilderness—**clear as the moon, and fair as the sun**, and terrible as an army with banners." — [D&C 5:14](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/5?lang=eng&id=p14#p14)
+> "...to receive this same testimony among this generation, in this the **beginning of the rising up and the coming forth of my church** out of the wilderness—**clear as the moon, and fair as the sun**, and terrible as an army with banners." — [D&C 5:14](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/5?lang=eng&id=p14#p14)
 
 ### Kirtland Temple Dedication
 
@@ -204,7 +204,7 @@ This striking phrase appears multiple times, describing the Church coming forth:
 
 > "And thus there shall be the reckoning of the time of **one planet above another**, until thou come nigh unto Kolob... which Kolob is set nigh unto the throne of God, to govern all those planets which belong to the same order as that upon which thou standest." — [Abraham 3:9](https://www.churchofjesuschrist.org/study/scriptures/pgp/abr/3?lang=eng&id=p9#p9)
 
-> "Now the set time of the lesser light is a longer time as to its reckoning than the reckoning of the time of the earth upon which thou standest... This is in **the order of Kolob, for Kolob is after the reckoning of the Lord's time**." — [Abraham 3:6,9](https://www.churchofjesuschrist.org/study/scriptures/pgp/abr/3?lang=eng&id=p6#p6)
+> "Now the set time of the lesser light is a longer time as to its reckoning than the reckoning of the time of the earth upon which thou standest... **which Kolob is after the reckoning of the Lord's time**." — [Abraham 3:7, 9](https://www.churchofjesuschrist.org/study/scriptures/pgp/abr/3?lang=eng&id=p7#p7)
 
 **Insight:** Abraham learned that celestial bodies operate on different time scales, with Kolob representing God's time. This explains 2 Peter 3:8: "one day is with the Lord as a thousand years."
 
@@ -256,9 +256,9 @@ The Nauvoo Temple featured carved moonstones, sunstones, and starstones:
 
 ### Salt Lake Temple Constellations
 
-The Salt Lake Temple features the Big Dipper constellation (Ursa Major) pointing to the North Star on its west towers:
+The Salt Lake Temple features the Big Dipper constellation (Ursa Major) pointing to the North Star on its west facade:
 
-> "See here," he said, pointing to a window on the west center tower... "That's the Big Dipper, or Ursa Major, with the pointers pointing to the North Star. 'The lost may find themselves by the priesthood' was the explanation given by the workmen at the time." — [Every Window, Every Spire Speaks of the Things of God](https://www.churchofjesuschrist.org/study/liahona/1993/11/every-window-every-spire-speaks-of-the-things-of-god?lang=eng)
+> "The west facade of the temple includes stars that represent the seven stars of the northern constellation Ursa Major, also known as the Big Dipper, with the pointers ranging nearly toward the North Star. The symbolic meaning of this motif is that 'the lost may find themselves by the priesthood.'" — [Every Window, Every Spire Speaks of the Things of God](https://www.churchofjesuschrist.org/study/liahona/1993/11/every-window-every-spire-speaks-of-the-things-of-god?lang=eng)
 
 **Insight:** Temple architecture incorporates celestial symbolism, connecting heaven and earth. The priesthood is likened to the North Star—a fixed reference point by which the lost can find their way.
 
@@ -290,9 +290,11 @@ God used celestial imagery to guide Israel:
 
 ### Conference Teaching
 
-President Dieter F. Uchtdorf used the eclipse as a teaching metaphor:
+Two October 2017 talks used the eclipse as a teaching metaphor. Elder Gary E. Stevenson:
 
 > "Friends and family of mine who were in the zone of total eclipse described how light was replaced by darkness, the stars appeared, and birds quit singing." — [Spiritual Eclipse, October 2017](https://www.churchofjesuschrist.org/study/liahona/2017/11/saturday-afternoon-session/spiritual-eclipse?lang=eng)
+
+And President Dieter F. Uchtdorf:
 
 > "He will coerce us to create our own eclipse; he will push us into the darkness of his cavern." — [Bearers of Heavenly Light, October 2017](https://www.churchofjesuschrist.org/study/liahona/2017/11/general-priesthood-session/bearers-of-heavenly-light?lang=eng)
 

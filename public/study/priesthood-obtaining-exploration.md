@@ -24,15 +24,17 @@ What exactly does "obtaining" mean here?
 
 Understanding Joseph Smith's vocabulary provides crucial insight.
 
-### OBTAIN
-> "To **get hold of by effort**; to gain possession of; to procure; to acquire, in any way... **Obtain implies desire for possession, and some effort** directed to the attainment of that which is not immediately within our reach."
+*(Edition note, 2026-06-12: these definitions are now quoted from the genuine 1828 text — an earlier draft quoted the 1913 edition, including its synonym notes, under the 1828 label. The pattern below survives intact; in fact the genuine 1828 states it more plainly.)*
 
-**Key distinction**: "We **obtain** what comes in any way, provided we desire it... we **acquire** what comes to us gradually in the regular exercise of our abilities."
+### OBTAIN
+> "To get; to gain; to procure; in a general sense, to gain possession of a thing... this word usually **implies exertion to get possession**, and in this it differs from receive, which may or may not imply exertion... **We obtain by seeking; we often receive without seeking.**"
+
+**Key distinction (Webster's own)**: "It differs from acquire, as genus from species; **acquire being properly applied only to things permanently possessed**; but obtain is applied both to things of temporary and of permanent possession."
 
 ### RECEIVE
-> "To **take, as something that is offered**, given, committed, sent... to accept."
+> "To **take, as a thing offered or sent; to accept**."
 
-**Key distinction**: "To **receive** describes simply the act of taking. To **accept** denotes the taking with approval, or for the purposes for which a thing is offered."
+**Key distinction**: Webster's OBTAIN entry carries the contrast — receiving "may or may not imply exertion"; "we often receive without seeking."
 
 ### The Pattern
 - **OBTAIN** = Active seeking with effort and desire
@@ -59,7 +61,7 @@ Elder Asay broke down "man's covenant" into four elements:
 > "To give diligent heed to the words of eternal life."
 
 > **4. Live by Every Word of God**
-> "Words of eternal life come from one source: God. They are made available to us through the fountain of the holy scriptures and the fountain of living prophets."
+> "Words of eternal life come from one source: God. They are made available to us through the fountain of the holy scriptures and the fountain of living prophets and reconfirmed by personal revelation through the power of the Holy Ghost."
 
 **Insight**: Ordination is a *prerequisite*, not a *guarantee*. You must faithfully "obtain" the blessings by keeping covenants.
 

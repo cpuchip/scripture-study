@@ -90,7 +90,18 @@ The covenant has two sides, and they are not parallel forms of the same thing. T
 
 **"Prosper in the land"** is temporal, communal, and spatial. It means crops, protection from enemies, freedom from captivity, national coherence. King Benjamin expands it to include "blessed in all things, both temporal and spiritual" (Mosiah 2:41), but the baseline meaning is social and material flourishing. The land itself participates — it is "consecrated" to the righteous (2 Nephi 1:7) and "cursed" against the wicked (1 Nephi 17:35). The land is not neutral terrain; it responds to covenant conditions.
 
-**"Cut off from my presence"** is spiritual, personal, and relational. Webster 1828 defines "presence" in the context of a sovereign as "neighborhood to the person of one of superior or exalted rank" — access to the royal person, with all that implies: protection, attention, care, guidance, the whole of the relationship. To be cut off from the Lord's presence is not geographic removal; it is relational severance. Benjamin's expansion of this side is the most searching in the whole book: the rebel's "immortal soul" awakens "to a lively sense of his own guilt, which doth cause him to shrink from the presence of the Lord, and doth fill his breast with guilt, and pain, and anguish, which is like an unquenchable fire" (Mosiah 2:38). The cutting off is, in part, self-inflicted. The soul that has made itself incompatible with God cannot bear the presence it has rejected.
+**"Cut off from my presence"** is spiritual, personal, and relational. Webster 1828, on the sovereign sense of "presence," gives "Approach face to face or nearness of a great personage" and, plainly, "The person of a superior" (and even "the apartment in which a prince shows himself to his court") — access to the royal person, with all that implies: protection, attention, care, guidance, the whole of the relationship.
+
+> *Correction (2026-06-13, study-correctness walk):* this sentence
+> originally quoted the 1828 as "neighborhood to the person of one of
+> superior or exalted rank." That phrase is verbatim Webster's **1913**
+> (def 3), not the 1828 — confirmed by direct lookup of both editions.
+> Requoted from the genuine 1828 entry ("Approach face to face or
+> nearness of a great personage" / "The person of a superior" / "The
+> apartment in which a prince shows himself to his court"), which
+> carries the same royal-access meaning. The argument is unchanged.
+> (The "prosper" definition in §IV — "to favor; to render successful" —
+> was checked and IS genuine 1828; it stands.) To be cut off from the Lord's presence is not geographic removal; it is relational severance. Benjamin's expansion of this side is the most searching in the whole book: the rebel's "immortal soul" awakens "to a lively sense of his own guilt, which doth cause him to shrink from the presence of the Lord, and doth fill his breast with guilt, and pain, and anguish, which is like an unquenchable fire" (Mosiah 2:38). The cutting off is, in part, self-inflicted. The soul that has made itself incompatible with God cannot bear the presence it has rejected.
 
 The two halves are not always sequential. They operate at different registers simultaneously. A person can be materially prosperous while being spiritually cut off — that is precisely what Helaman 12 describes in the moment of pride. And a person can be in God's presence, spiritually whole, while the national covenant around them collapses. Alma 50:22 holds both realities at once: "those who were faithful in keeping the commandments of the Lord were delivered at all times, whilst thousands of their wicked brethren have been consigned to bondage, or to perish by the sword." Individual covenant faithfulness does not guarantee exemption from communal consequences — but it does guarantee personal deliverance.
 

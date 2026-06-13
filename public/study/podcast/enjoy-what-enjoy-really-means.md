@@ -31,7 +31,7 @@
 
 - We hear "enjoy" and think — light, casual. *Enjoy your weekend.*
 - But in 1828, when this language was being revealed, "enjoy" meant something much heavier
-- Webster 1828: **"To have, possess, and use with satisfaction"**
+- Webster 1828: **"To have, possess and use with satisfaction"** — and the entry goes on: "to have, hold or occupy"
 - There's *ownership* in that word. You don't just feel something. You *hold* it. You *use* it.
 - So "enjoy the words of eternal life" means: **have them, possess them, carry them, use them** — and take deep satisfaction in doing so
 

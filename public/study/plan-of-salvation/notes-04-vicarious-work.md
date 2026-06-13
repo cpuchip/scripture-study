@@ -125,28 +125,30 @@ Joseph quotes this in D&C 128:15,18. Paul knew: the ancient faithful were waitin
 ## Webster 1828 Definitions
 
 ### Vicarious
-**"Acting or suffering for another. Performed or suffered in the place of another; substituted; as, a vicarious sacrifice."**
+**"Acting for another; filling the place of another"** and **"substituted in the place of another; as, a vicarious sacrifice."** *(Requoted 2026-06-12 — the earlier text was the 1913 edition's; the genuine entry keeps the "vicarious sacrifice" example.)*
 
-This is the precise doctrine: temple ordinances are *vicarious* — performed by one person standing in the place of another. Joseph's term in D&C 128:8 is "agents" — "whether they themselves have attended to the ordinances in their own propria persona, or by the means of their own agents." The 1828 definition of **agent** is simply "acting" — one who acts for another by authority.
+This is the precise doctrine: temple ordinances are *vicarious* — performed by one person standing in the place of another. Joseph's term in D&C 128:8 is "agents" — "whether they themselves have attended to the ordinances in their own propria persona, or by the means of their own agents." The 1828 AGENT, as an adjective, is simply "acting"; as a noun, "a substitute, deputy, or factor; one entrusted with the business of another."
 
 The phrase "vicarious sacrifice" in Webster's examples points directly to Christ: His Atonement is the ultimate vicarious act, and our temple work is a participation in that vicarious pattern.
 
 ### Redeem
-**"To ransom, liberate, or rescue from captivity or bondage, or from any obligation or liability to suffer or to be forfeited, by paying a price or ransom."**
+**"To purchase back; to ransom; to liberate or rescue from captivity or bondage, or from any obligation or liability to suffer or to be forfeited, by paying an equivalent."** *(Requoted 2026-06-12 — the earlier text was the 1913 edition's.)*
 
-Also: **"To rescue and deliver from the bondage of sin and the penalties of God's violated law."**
+Also, the genuine theological sense — and it carries the vicarious doctrine inside it: **"To rescue and deliver from the bondage of sin and the penalties of God's violated law, by obedience and suffering in the place of the sinner, or by doing and suffering that which is accepted in lieu of the sinner's obedience."**
 
 This matches the spirit world language perfectly. Phase 3 established two kinds of bondage — disembodiment (all) and unrepented sin (wicked). Redemption addresses both: the Atonement pays the ransom, and vicarious ordinances are the mechanism by which that ransom is applied to those who've died without the gospel.
 
 D&C 128:22: "that which would enable us to *redeem* them out of their *prison*; for the *prisoners* shall go free." Every Webster 1828 sense of "redeem" is at work: purchase back, ransom from captivity, deliver from bondage, pay the penalty.
 
 ### Perfect
-**"Brought to consummation or completeness; completed; not defective nor redundant; having all the properties or qualities requisite to its nature and kind."**
+**"Finished; complete; consummate; not defective; having all that is requisite to its nature and kind."** *(Requoted 2026-06-12 — the earlier text was the 1913 edition's.)*
 
 When Joseph says "they without us cannot be made *perfect*," he means they cannot be brought to *completion*. Their progression has a gap — a missing ordinance, a broken link. And ours has the same gap in reverse. We are not complete without connection to our ancestors. The chain of humanity must be whole.
 
 ### Weld
-In Webster 1828, "weld" means only **"to wield."** The metallurgical meaning — joining metals by heat and pressure — was emerging in Joseph's era but hadn't yet entered the dictionary. When Joseph coins the phrase "welding link" in D&C 128:18, he's using language slightly ahead of its own time to express something the dictionary couldn't yet articulate: a *permanent, inseparable joining* of human generations across the veil.
+*(Corrected 2026-06-12: an earlier version claimed the 1828 dictionary knew "weld" only as "to wield." The genuine 1828 carries the metallurgical sense in full.)* Webster 1828: **"To unite or hammer into firm union, as two pieces of iron, when heated almost to fusion."** The etymology bracket reads simply "[G., to join.]"
+
+So when Joseph uses "welding link" in D&C 128:18, the dictionary of his day already says exactly what he means: a *firm union* made at near-fusion heat — a *permanent, inseparable joining* of human generations across the veil.
 
 This is not a rope that could untie. Not a chain that could break. A *weld* — once fused, the joint *becomes* the material. That's what sealing does: it makes the connection between generations as real and permanent as the metal itself.
 
@@ -280,13 +282,13 @@ For your friends who are ill, this phase carries a specific kind of comfort:
 - [D&C 137](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/137?lang=eng) — vision of the celestial kingdom, Alvin, salvation for the dead
 - [D&C 138:30-50](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/138?lang=eng&id=p30-p50#p30) — spirit world missionary work (Phase 3 connection)
 
-**Webster 1828 Definitions:**
-- *Vicarious* — acting or suffering for another; substituted
-- *Redeem* — ransom, liberate from captivity or bondage by paying a price
-- *Perfect* — brought to consummation or completeness
-- *Weld* — "to wield" (1828); modern: to join inseparably by heat and pressure
-- *Turn* — to give another direction; to alter, convert, transform
-- *Agent* — one who acts for another by authority
+**Webster 1828 Definitions:** *(requoted 2026-06-12 against the genuine 1828)*
+- *Vicarious* — "Acting for another; filling the place of another"; "substituted in the place of another; as, a vicarious sacrifice"
+- *Redeem* — "To purchase back; to ransom; to liberate or rescue from captivity or bondage ... by paying an equivalent"; theological sense: "by obedience and suffering in the place of the sinner"
+- *Perfect* — "Finished; complete; consummate; not defective; having all that is requisite to its nature and kind"
+- *Weld* — "To unite or hammer into firm union, as two pieces of iron, when heated almost to fusion" (the metallurgical sense IS in the 1828)
+- *Turn* — "To change; to transform"; intransitive: "To change a course of life; to repent" (Ezek 33:11)
+- *Agent* — adj. "Acting"; noun: "a substitute, deputy, or factor; one entrusted with the business of another"
 
 **Conference Talks Read:**
 - [Elder D. Todd Christofferson, "The Sealing Power," October 2023](https://www.churchofjesuschrist.org/study/general-conference/2023/10/15christofferson?lang=eng) — sealing power makes salvation universally available

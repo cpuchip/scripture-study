@@ -132,11 +132,12 @@ Aidukaitis does something particularly interesting: he applies it to youth facin
 
 ### The Nephi 1:1 Cluster — "Nevertheless, Having Been Highly Favored"
 
-[1 Nephi 1:1](https://www.churchofjesuschrist.org/study/scriptures/bofm/1-ne/1?lang=eng&id=p1#p1) — "having seen many afflictions in the course of my days, nevertheless, having been highly favored of the Lord in all my days" — appears in at least four conference talks:
+[1 Nephi 1:1](https://www.churchofjesuschrist.org/study/scriptures/bofm/1-ne/1?lang=eng&id=p1#p1) — "having seen many afflictions in the course of my days, nevertheless, having been highly favored of the Lord in all my days" — appears in at least three conference talks:
 - [Elder Gary E. Stevenson, "Highly Favored of the Lord," October 2020](https://www.churchofjesuschrist.org/study/general-conference/2020/10/53stevenson?lang=eng) — builds the entire talk around it
 - [Elder Moisés Villanueva, "Favored of the Lord in All My Days," October 2021](https://www.churchofjesuschrist.org/study/general-conference/2021/10/28villanueva?lang=eng)
 - [Elder Jorge F. Zeballos, "Building a Life Resistant to the Adversary," October 2022](https://www.churchofjesuschrist.org/study/general-conference/2022/10/27zeballos?lang=eng)
-- [Elder Aroldo B. Cavalcante, "The Wind Did Never Cease to Blow," October 2024](https://www.churchofjesuschrist.org/study/general-conference/2024/10/27cavalcante?lang=eng)
+
+A fourth speaker, [Elder Aroldo B. Cavalcante, "The Wind Did Never Cease to Blow," October 2024](https://www.churchofjesuschrist.org/study/general-conference/2024/10/27cavalcante?lang=eng), reaches for a different Nephi "nevertheless" — [1 Nephi 4:6–7](https://www.churchofjesuschrist.org/study/scriptures/bofm/1-ne/4?lang=eng&id=p6-p7#p6): "led by the Spirit, not knowing beforehand the things which \[you] should do. Nevertheless \[you] went forth." *(Corrected 2026-06-12 — an earlier version listed this talk under 1 Nephi 1:1.)*
 
 Stevenson built his entire COVID-era talk around Nephi's "nevertheless." His argument: "Times of affliction and disappointment do not change the watchful eye of the Lord as He favorably looks upon us, blessing us." The "nevertheless" becomes a doctrinal claim about God's constancy — the afflictions don't change the favor. Not the less.
 

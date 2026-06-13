@@ -30,9 +30,9 @@
 - **Self-acting** — truth acts "for itself... otherwise there is no existence" ([D&C 93:30](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/93?lang=eng&id=p30#p30))
 - **Forsakes evil** — "Light and truth forsake that evil one" ([D&C 93:37](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/93?lang=eng&id=p37#p37))
 
-**Webster 1828:** "Conformity to fact or reality; exact accordance with that which is, or has been, or shall be." Also: "Righteousness; true religion."
+**Webster 1828:** "Conformity to fact or reality; exact accordance with that which is, or has been, or shall be." His scriptural senses go further — "The truth of God, is his veracity and faithfulness… Or his revealed will" — until the twelfth sense is a single sentence: "Jesus Christ is called the truth. John 14:6."
 
-**Key Insight:** Notice the near-perfect alignment. Webster says truth is "exact accordance with that which *is*, or *has been*, or *shall be*." D&C 93:24 says truth is "knowledge of things as they *are*, and as they *were*, and as they *are to come*." These were written in the same era. The scriptural definition adds something: truth isn't merely the state of reality — it's the *knowledge* of that state. Truth is **reality comprehended.**
+**Key Insight:** Notice the near-perfect alignment. Webster says truth is "exact accordance with that which *is*, or *has been*, or *shall be*." D&C 93:24 says truth is "knowledge of things as they *are*, and as they *were*, and as they *are to come*." These were written in the same era. The scriptural definition adds something: truth isn't merely the state of reality — it's the *knowledge* of that state. Truth is **reality comprehended.** And the dictionary already points where this study ends up: Webster lists Christ Himself as a definition of truth.
 
 ### Light
 
@@ -53,9 +53,9 @@
 - **Shineth** — it radiates; it's active, not static ([D&C 88:7](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/88?lang=eng&id=p7#p7))
 - **Cleaveth unto light** — "light cleaveth unto light" ([D&C 88:40](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/88?lang=eng&id=p40#p40))
 
-**Webster 1828:** "That agent, force, or action in nature by the operation of which upon the organs of sight, objects are rendered visible or luminous." Also: "Mental or spiritual illumination; enlightenment; knowledge; information." And, strikingly: "**Life; existence.**"
+**Webster 1828:** "That ethereal agent or matter which makes objects perceptible to the sense of seeing" — and he continues: "It is now generally believed that light is a fluid, **or real matter, existing independent of other substances**." Also: "Illumination of mind; instruction; knowledge." And, strikingly, his fourth sense is one word — "**Life.**" — illustrated with a birth: "O, spring to light, auspicious babe, be born!" Deeper in, the entry names its referent outright: "In Scripture, God, the source of knowledge. God is light. 1 John 1:5." And the next sense: "Christ. That was the true light, that lighteth every man that cometh into the world. John 1:9."
 
-**Key Insight:** Webster's 6th definition of light is "Life; existence." That's exactly what D&C 88:13 says — light "giveth life to all things." The 1828 language already associates light with life, and scripture makes it explicit: light IS the animating force. It's not a metaphor for understanding — it IS understanding, AND life, AND law, simultaneously.
+**Key Insight:** Webster's fourth definition of light is simply "Life." That's exactly what D&C 88:13 says — light "giveth life to all things." And his *first* definition already treats light as "matter, existing independent of other substances" — the 1828 dictionary describes light as real, independent matter, the very territory D&C 131:7 claims for spirit. The 1828 language already associates light with life and with matter, and scripture makes it explicit: light IS the animating force. It's not a metaphor for understanding — it IS understanding, AND life, AND law, simultaneously.
 
 ### Spirit
 
@@ -78,9 +78,9 @@
 - **Inseparable connection with element produces fulness** — spirit alone is incomplete ([D&C 93:33-34](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/93?lang=eng&id=p33-p34#p33))
 - **Eternal** — "the elements are eternal" ([D&C 93:33](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/93?lang=eng&id=p33#p33))
 
-**Webster 1828:** "Life, or living substance, considered independently of corporeal existence; an intelligence conceived of apart from any physical organization or embodiment; vital essence, force, or energy, as distinct from matter." Also: "The intelligent, immaterial and immortal part of man."
+**Webster 1828:** "The soul of man; the intelligent, immaterial and immortal part of human beings." And, as its own sense: "An immaterial intelligent substance."
 
-**Key Insight:** Here's where the Restoration *directly overturns* 1828 convention. Webster says spirit is "distinct from matter" and "immaterial." Joseph Smith says "there is no such thing as immaterial matter." Webster reflects the Platonic/Christian dualism of his era: spirit = non-physical. The Restoration collapses that dualism. Spirit IS matter — just purer. This has massive implications.
+**Key Insight:** Here's where the Restoration *directly overturns* 1828 convention. Webster defines spirit as an "**immaterial** intelligent substance" — immateriality is baked into the era's definition of the word itself. Joseph Smith says "there is no such thing as immaterial matter." A head-on collision: the dictionary says immaterial substance; the Restoration says there is no such thing. Webster reflects the Platonic/Christian dualism of his era: spirit = non-physical. The Restoration collapses that dualism. Spirit IS matter — just purer. This has massive implications.
 
 ### Element
 
@@ -96,7 +96,7 @@
 - **Governed by law** — moves "in their times and their seasons" ([D&C 88:42](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/88?lang=eng&id=p42#p42))
 - **Obeys** — "the Gods watched those things which they had ordered until they obeyed" ([Abraham 4:18](https://www.churchofjesuschrist.org/study/scriptures/pgp/abr/4?lang=eng&id=p18#p18))
 
-**Webster 1828:** "One of the simplest or essential parts or principles of which anything consists." Also: "The whole material composing the world."
+**Webster 1828:** "The first or constituent principle or minutest part of any thing." Also: "The matter or substances which compose the world. The elements shall melt with fervent heat. 2 Peter 3:10." — Webster's own example for this sense of *element* is Peter's prophecy of the elements meeting fire.
 
 ### Intelligence
 
@@ -113,9 +113,9 @@
 - **Cleaveth unto intelligence** — like attracts like ([D&C 88:40](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/88?lang=eng&id=p40#p40))
 - **Necessary for existence** — "otherwise there is no existence" ([D&C 93:30](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/93?lang=eng&id=p30#p30))
 
-**Webster 1828:** "The act or state of knowing; the exercise of the understanding." Also: "An intelligent being or spirit."
+**Webster 1828:** "Understanding; skill." Also, as its own sense: "A spiritual being; as a created intelligence. It is believed that the universe is peopled with innumerable superior intelligences."
 
-**Key Insight:** Webster's 6th definition is "An intelligent being or spirit." This maps to Abraham 3:22 — "the intelligences that were organized." Scripture uses "intelligence" both as a substance (light of truth) and as beings (intelligences). Webster already had both usages.
+**Key Insight:** Webster's fourth definition is "A spiritual being; as a created intelligence." This maps directly to Abraham 3:22 — "the intelligences that were organized" — and Webster's example sentence could almost be Abraham's: a universe "peopled with innumerable superior intelligences." Scripture uses "intelligence" both as a substance (light of truth) and as beings (intelligences). Webster already had both usages.
 
 ### Law
 
@@ -131,9 +131,9 @@
 - **Necessary for existence** — "if ye shall say there is no law, ye shall also say there is no sin... And if there is no God we are not, neither the earth" ([2 Nephi 2:13](https://www.churchofjesuschrist.org/study/scriptures/bofm/2-ne/2?lang=eng&id=p13#p13))
 - **Spiritual** — "all things unto me are spiritual, and not at any time have I given unto you a law which was temporal" ([D&C 29:34](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/29?lang=eng&id=p34#p34))
 
-**Webster 1828:** "A rule of being or of conduct, established by an authority able to enforce its will; a controlling regulation; the mode or order according to which an agent or a power acts." In philosophy: "A rule of being, operation, or change, so certain and constant that it is conceived of as imposed by the will of God."
+**Webster 1828:** "A rule, particularly an established or permanent rule, prescribed by the supreme power of a state to its subjects… Law is beneficence acting by rule." And his definition of *physical laws*: "The invariable tendency or determination of any species of matter to a particular form with definite properties, and the determination of a body to certain motions, changes, and relations, which uniformly take place in the same circumstances… These tendencies or determinations, whether called laws or affections of matter, have been established by the Creator, and are, with a peculiar felicity of expression, denominated in Scripture, *ordinances of heaven*."
 
-**Key Insight:** Webster's physics definition says law is "so certain and constant that it is conceived of as imposed by the will of God." That's *exactly* the Restoration framework. Mathematics, the laws of physics — these aren't inventions. They're discoveries of what was always there. $E = mc^2$ was true before Einstein wrote it down. $\pi$ was $\pi$ before anyone calculated it. Truth "was not created or made, neither indeed can be."
+**Key Insight:** Webster's physics definition says the laws of nature "have been established by the Creator" — and that Scripture, "with a peculiar felicity of expression," calls them "ordinances of heaven." The 1828 dictionary refuses to separate physics from God. That's *exactly* the Restoration framework. Mathematics, the laws of physics — these aren't inventions. They're discoveries of what was always there. $E = mc^2$ was true before Einstein wrote it down. $\pi$ was $\pi$ before anyone calculated it. Truth "was not created or made, neither indeed can be."
 
 ### Comprehend
 
@@ -149,12 +149,12 @@
 > "And the light shineth in darkness; and the darkness comprehended it not"
 > — [John 1:5](https://www.churchofjesuschrist.org/study/scriptures/nt/john/1?lang=eng&id=p5#p5)
 
-**Webster 1828:** Three distinct meanings — all relevant:
-1. **To contain; to embrace; to include** — physical encompassing
-2. **To take in or include by construction or implication** — logical inclusion
-3. **To take into the mind; to grasp with the understanding** — mental understanding
+**Webster 1828:** "Literally, to take in; to take with, or together" — then three movements of one verb, all relevant:
+1. **"To contain; to include; to comprise"** — physical encompassing
+2. **"To imply; to contain or include by implication or construction"** — logical inclusion
+3. **"To understand; to conceive; that is, to take, hold or contain in the mind"** — and Webster's example is Job: "God doeth great things, which we cannot comprehend. Job 37:5."
 
-**Key Insight:** "The Gods comprehended the light" carries *all three* Webster meanings. They (1) contained it, (2) included it in their creative work, and (3) understood it. Darkness, by contrast, *cannot do any of these* with light. It cannot contain it (light dispels darkness). It cannot include it (they are opposites). It cannot understand it (understanding requires light: "the same light that quickeneth your understandings" — [D&C 88:11](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/88?lang=eng&id=p11#p11)). Comprehension is not merely intellectual — it is **ontological**. To comprehend light, you must be *made of* light. To be darkness is to be structurally incapable of containing what light is.
+**Key Insight:** "The Gods comprehended the light" carries *all three* Webster meanings. They (1) contained it, (2) included it in their creative work, and (3) understood it. Webster's own gloss makes the deeper point: to understand is "to take, hold or contain in the mind" — in 1828 English, understanding IS containing. Darkness, by contrast, *cannot do any of these* with light. It cannot contain it (light dispels darkness). It cannot include it (they are opposites). It cannot understand it (understanding requires light: "the same light that quickeneth your understandings" — [D&C 88:11](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/88?lang=eng&id=p11#p11)). Comprehension is not merely intellectual — it is **ontological**. To comprehend light, you must be *made of* light. To be darkness is to be structurally incapable of containing what light is.
 
 ---
 
@@ -198,20 +198,20 @@ This also means truth has a kind of *agency*: "to act for itself." Truth isn't p
 
 Let's build this carefully.
 
-**Webster 1828 on spirit:** "Life, or living substance... an intelligence conceived of apart from any physical organization... the intelligent, immaterial and immortal part of man."
+**Webster 1828 on spirit:** "The soul of man; the intelligent, immaterial and immortal part of human beings… An immaterial intelligent substance."
 
-**Webster 1828 on consciousness:** "The state of being conscious; knowledge of one's own existence, condition, sensations, mental operations, acts."
+**Webster 1828 on consciousness:** "The knowledge of sensations and mental operations, or of what passes in one's own mind." And Webster closes the sense with a sentence that could be this study's thesis: "**Consciousness must be an essential attribute of spirit.**"
 
 **Scripture says:**
 1. Spirit is matter, more fine and pure ([D&C 131:7](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/131?lang=eng&id=p7#p7))
 2. Intelligence (light of truth) acts "for itself" and without it "there is no existence" ([D&C 93:30](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/93?lang=eng&id=p30#p30))
 3. Light "quickeneth your understandings" — enables comprehension ([D&C 88:11](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/88?lang=eng&id=p11#p11))
-4. "There is a spirit in man; and the inspiration of the Almighty giveth them understanding" ([Job 32:8](https://www.churchofjesuschrist.org/study/scriptures/ot/job/32?lang=eng&id=p8#p8))
+4. "There is a spirit in man: and the inspiration of the Almighty giveth them understanding" ([Job 32:8](https://www.churchofjesuschrist.org/study/scriptures/ot/job/32?lang=eng&id=p8#p8))
 5. "The spirit and the body are the soul of man" ([D&C 88:15](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/88?lang=eng&id=p15#p15))
 
 So: spirit is the *matter* of awareness — the medium through which intelligence (light of truth) operates and through which understanding (consciousness) is quickened. Spirit is not consciousness itself — it is the **substance** in which consciousness inheres. Like how a brain isn't "thought" but is the physical medium through which thought occurs, spirit is the *refined material medium* through which intelligence acts.
 
-But here's the deeper layer: intelligence "acts for itself" — it has inherent self-direction. Consciousness is "knowledge of one's own existence" (Webster 1828). If intelligence is self-acting and aware of its own sphere, then intelligence *is* the fundamental substrate of consciousness, and spirit *is* the material embodiment of that consciousness.
+But here's the deeper layer: intelligence "acts for itself" — it has inherent self-direction. And Webster observes that "consciousness of our sensation, and consciousness of our existence, seem to be simultaneous" — to be aware at all is to be aware of *being*. If intelligence is self-acting and aware of its own sphere, then intelligence *is* the fundamental substrate of consciousness, and spirit *is* the material embodiment of that consciousness — which is exactly where Webster's own sentence lands: "Consciousness must be an essential attribute of spirit."
 
 **The chain:**
 $$\text{Intelligence (self-acting truth)} \rightarrow \text{clothed in spirit (fine matter)} \rightarrow \text{clothed in element (physical matter)} = \text{soul}$$
@@ -533,3 +533,7 @@ Truth, intelligence, agency, law, and being are not separate things. They are di
 - [Helaman-Ten Virgins](./helaman-ten-virgins.md) — Light withdrawing as oil running out
 - [The Holy Order of God](./order-of-god.md) — The eternal pattern by which intelligence progresses toward fulness
 - [The Holy Order: Modern Prophetic Perspectives](./order-of-god-modern-lens.md) — Conference talks on the order, priesthood power, and covenant
+
+---
+
+*Correction (June 12, 2026): as first written, this study's Webster quotations were unknowingly drawn from Webster's 1913 Revised Unabridged — our dictionary tooling served 1913 text under an "1828" label (the one exception: the truth entry's "Conformity to fact or reality; exact accordance with that which is, or has been, or shall be" was genuine 1828 all along, so the study's central same-era alignment with D&C 93:24 stood on real ground from the start). Every Webster quotation has now been re-verified against the genuine 1828. The corrected entries strengthened the study at five points: Webster's light is "real matter, existing independent of other substances"; his physical laws are "established by the Creator… denominated in Scripture, ordinances of heaven"; his spirit is "an immaterial intelligent substance" (the head-on collision with D&C 131:7); his intelligence includes "a spiritual being; as a created intelligence"; and his consciousness entry ends, "Consciousness must be an essential attribute of spirit." The full incident record lives in the workspace's data-integrity brief.*

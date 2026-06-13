@@ -17,7 +17,7 @@ The four claims:
 1. **Say the quiet part out loud.** Plain bold speech is overdue.
 2. **Apply outcomes to religion.** "The question just isn't is it true, it's what does this produce consistently at scale" ([3:49](https://www.youtube.com/watch?v=00qzsgy9xr4&t=229)).
 3. **Worldview shapes interpretation.** Most debates aren't about facts; they're about the framework people use to interpret facts.
-4. *(Wilson, host endorses)* **Christians should be in charge.** "I want my ideology to dominate. Yes." ([25:00](https://www.youtube.com/watch?v=00qzsgy9xr4&t=1500))
+4. *(Wilson, host endorses)* **Christians should be in charge.** "You want your ideology to dominate." — "Yes." ([25:00](https://www.youtube.com/watch?v=00qzsgy9xr4&t=1500))
 
 ---
 
@@ -53,7 +53,7 @@ The host endorses this without flagging the canonical contradiction. From the Re
 
 Three independent canonical witnesses — Liberty Jail, Joseph's own creed, and the church's declaration on government — establish the same word. *Persuasion only. Conscience inviolate. Force is the rejected plan.* Wilson is operating inside Reformed dominionism, where the political establishment of Christianity is a coherent goal. The Restoration is not Reformed. The Restoration's whole founding narrative is religious refugees from Missouri and Illinois who were expelled at gunpoint *by* a culture that thought it should "dominate." For an LDS commentator to endorse the same political move from the other side of the table, without flagging that the canonical scripture explicitly forbids it, is a serious miss.
 
-The deeper point — and this is the one the video does not name — is that **force-based salvation is Lucifer's plan**. "I will redeem all mankind, that one soul shall not be lost... wherefore give me thine honor" ([Moses 4:3](https://www.churchofjesuschrist.org/study/scriptures/pgp/moses/4?lang=eng&id=p3#p3)). The War in Heaven was, at its root, an argument about whether to compel righteousness. That war's losing side wanted to dominate.
+The deeper point — and this is the one the video does not name — is that **force-based salvation is Lucifer's plan**. "I will redeem all mankind, that one soul shall not be lost... wherefore give me thine honor" ([Moses 4:1](https://www.churchofjesuschrist.org/study/scriptures/pgp/moses/4?lang=eng&id=p1#p1)). The War in Heaven was, at its root, an argument about whether to compel righteousness. That war's losing side wanted to dominate.
 
 **Prosperity as proof of doctrine.** The host's central rhetorical move is: LDS members rank well on family/wellbeing metrics, *therefore* LDS doctrine is "better." The same Book of Mormon the host's argument depends on contains Mormon's editorial frame on this exact move, and it cuts the other way:
 
@@ -61,7 +61,7 @@ The deeper point — and this is the one the video does not name — is that **f
 
 Mormon edited the entire Book of Mormon around the observation that prosperity is exactly when hearts harden. Reading prosperity as proof of righteousness inverts his warning. It is the same theological mistake Job's friends made.
 
-**"It's not even a question. It's better. Period."** ([24:42](https://www.youtube.com/watch?v=00qzsgy9xr4&t=1482)) Bold testimony of the Restoration is one thing — Joseph in his own words, Wilford Woodruff's manifesto, Russell M. Nelson's clarity on the temple. Bold *comparative* claims on sociological metrics are something else. The first is a prophet's warrant. The second is a marketer's warrant. Confusing the two cheapens the first.
+**"It's not even a question. It's better. … Period."** ([24:42](https://www.youtube.com/watch?v=00qzsgy9xr4&t=1482)) Bold testimony of the Restoration is one thing — Joseph in his own words, Wilford Woodruff's manifesto, Russell M. Nelson's clarity on the temple. Bold *comparative* claims on sociological metrics are something else. The first is a prophet's warrant. The second is a marketer's warrant. Confusing the two cheapens the first.
 
 ## Missed the Mark
 

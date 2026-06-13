@@ -2,7 +2,7 @@
 
 A cross-corpus analysis of how Morgan Philpot uses the Abinadi narrative across his YouTube presentations. Searched all 63 transcripts in the playlist. Auto-generated captions garbled "Abinadi" five different ways — **abinadi**, **Benedict**, **Abenadi**, **aadii**, **abadi** — so finding these required broad pattern matching.
 
-> "He said unto them: Are you priests, and pretend to teach this people, and to understand the spirit of prophesying, and yet desire to know of me what these things mean?" — [Mosiah 12:25](https://www.churchofjesuschrist.org/study/scriptures/bofm/mosiah/12?lang=eng&id=p25#p25)
+> "Are you priests, and pretend to teach this people, and to understand the spirit of prophesying, and yet desire to know of me what these things mean?" — [Mosiah 12:25](https://www.churchofjesuschrist.org/study/scriptures/bofm/mosiah/12?lang=eng&id=p25#p25)
 
 ---
 
@@ -14,7 +14,7 @@ Across 10+ presentations, Philpot returns to the same handful of points. His rea
 
 Philpot's signature move. Abinadi was killed because he taught that Christ would literally come down among the children of men, and the priests called it blasphemy. Philpot then turns the question on the audience: *Do we take the scriptures literally?*
 
-**Key scripture:** [Mosiah 17:7-8](https://www.churchofjesuschrist.org/study/scriptures/bofm/mosiah/17?lang=eng&id=p7-p8#p7) — "He has said that God himself should come down among the children of men... and for this thou shalt be put to death."
+**Key scripture:** [Mosiah 17:7-8](https://www.churchofjesuschrist.org/study/scriptures/bofm/mosiah/17?lang=eng&id=p7-p8#p7) — "thou hast said that God himself should come down among the children of men; and now, for this cause thou shalt be put to death"
 
 **Clearest statement:**
 > "The reason Abinadi was burned at the stake is because he said God would literally come down among the people. They said this is blasphemy and they burned him. So do we take the scriptures literally?"
@@ -37,7 +37,7 @@ Philpot reads King Noah's court as a template for modern religious-political cor
 >
 > — [Manti Presentation, 1:20:29](https://www.youtube.com/watch?v=sBiT8AYHUTo&t=4829)
 
-> "Utah, King Noah's new organization with his 12 high priests who meet with their harlots in Davos Switzerland."
+> "Guess who is informing our policy right here in the state of Utah — King Noah's new organization with his 12 high priests who meet with their harlots in Davos Switzerland."
 >
 > — [Provo Presentation, 30:29](https://www.youtube.com/watch?v=_GtrcdavjXY&t=1829)
 

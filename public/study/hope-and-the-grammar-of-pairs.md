@@ -12,13 +12,13 @@ If faith is the principle of action and charity is seeing as Christ sees, then *
 
 ## I. What Hope Actually Means
 
-Webster's 1828 dictionary gives hope two parts: "a desire of some good, accompanied with an expectation of obtaining it." Wishing without expectation is wistfulness. Expectation without desire is prediction. Hope is the fusion. I want it, *and* I expect it.
+Webster's 1828 dictionary gives hope two parts: "a desire of some good, accompanied with at least a slight expectation of obtaining it, or a belief that it is obtainable." And Noah's own entry draws the very line this study needs: "Hope differs from wish and desire in this, that it implies some expectation of obtaining the good desired, or the possibility of possessing it." *(Requoted 2026-06-12 — the earlier wording was the 1913 edition's.)* Wishing without expectation is wistfulness. Expectation without desire is prediction. Hope is the fusion. I want it, *and* I expect it.
 
 That second piece — expectation — is the load-bearing one. The Bible Dictionary's entry on faith opens, "Faith is to hope for things which are not seen, but which are true." Faith and hope are reciprocally defined: faith is the substance of what is hoped for ([Heb. 11:1](https://www.churchofjesuschrist.org/study/scriptures/nt/heb/11?lang=eng)); hope is the orientation of faith toward what is yet unseen ([Alma 32:21](https://www.churchofjesuschrist.org/study/scriptures/bofm/alma/32?lang=eng&id=p21#p21)). Strip away one and the other collapses.
 
 But the BD definition adds a qualifier the modern ear can miss: the things hoped for must be *true*. Gospel hope is not directed at any wished-for thing. It is directed at real things that happen to be unseen. This distinguishes it from wishful thinking and from optimism. Optimism trusts the trend. Hope trusts a Person.
 
-Webster's second sense makes the Person explicit: "One who, or that which, gives hope... The Lord will be the hope of his people" — quoting [Joel 3:16](https://www.churchofjesuschrist.org/study/scriptures/ot/joel/3?lang=eng&id=p16#p16). Paul says it as flatly as Joel: "Christ, which is our hope" ([1 Tim. 1:1](https://www.churchofjesuschrist.org/study/scriptures/nt/1-tim/1?lang=eng)). Hope is not a mood. It is an attachment to a Person who has promised something specific.
+Webster's third sense makes the Person explicit: "That which gives hope; he or that which furnishes ground of expectation, or promises desired good. The hope of Israel is the Messiah. The Lord will be the hope of his people. [Joel 3:16](https://www.churchofjesuschrist.org/study/scriptures/ot/joel/3?lang=eng&id=p16#p16)." *(Requoted 2026-06-12 — the earlier "One who, or that which, gives hope" was the 1913 edition's; the genuine entry names the Messiah itself.)* Paul says it as flatly as Joel: "Christ, which is our hope" ([1 Tim. 1:1](https://www.churchofjesuschrist.org/study/scriptures/nt/1-tim/1?lang=eng)). Hope is not a mood. It is an attachment to a Person who has promised something specific.
 
 Mormon names that something specific in the densest passage on hope in scripture:
 
@@ -38,7 +38,7 @@ Read those two verses against each other and the picture is reciprocal, not line
 
 Paul gives the same dynamic from the opposite direction. Romans 5 traces hope's *production*:
 
-> "Tribulation worketh patience; And patience, experience; and experience, hope: And hope maketh not ashamed; because the love of God is shed abroad in our hearts by the Holy Ghost given unto us." ([Rom. 5:3-5](https://www.churchofjesuschrist.org/study/scriptures/nt/rom/5?lang=eng))
+> "Tribulation worketh patience; And patience, experience; and experience, hope: And hope maketh not ashamed; because the love of God is shed abroad in our hearts by the Holy Ghost which is given unto us." ([Rom. 5:3-5](https://www.churchofjesuschrist.org/study/scriptures/nt/rom/5?lang=eng))
 
 Tribulation is the soil. Patience is the root. Experience is the trunk. Hope is the branch. And love (the Greek behind charity) is the fruit. Hope is the penultimate term, the place where the chain has just enough vertical lift to open into love. Without hope, charity has no platform. With it, the Spirit pours out love as the next thing.
 
@@ -72,7 +72,7 @@ Three texts give the triplet in nearly identical wording:
 - "Faith, hope and charity bringeth unto me—the fountain of all righteousness." ([Ether 12:28](https://www.churchofjesuschrist.org/study/scriptures/bofm/ether/12?lang=eng&id=p28#p28))
 - "Wherefore, there must be faith; and if there must be faith there must also be hope; and if there must be hope there must also be charity." ([Moro. 10:20](https://www.churchofjesuschrist.org/study/scriptures/bofm/moro/10?lang=eng))
 
-Paul, Moroni in his father's words, and Mormon. Three writers, separated by oceans and centuries, each giving the same triplet in the same order. This is itself an example of the witness law that section V will treat: "in the mouth of two or three witnesses every word shall be established" ([2 Cor. 13:1](https://www.churchofjesuschrist.org/study/scriptures/nt/2-cor/13?lang=eng)). The triplet is doctrinally established because it has three witnesses.
+Paul, Moroni in his father's words, and Mormon. Three writers, separated by oceans and centuries, each giving the same triplet in the same order. This is itself an example of the witness law that section V will treat: "In the mouth of two or three witnesses shall every word be established" ([2 Cor. 13:1](https://www.churchofjesuschrist.org/study/scriptures/nt/2-cor/13?lang=eng)). The triplet is doctrinally established because it has three witnesses.
 
 The order matters. Faith-hope-charity is not arbitrary. Faith trusts the unseen Christ. Hope orients the soul toward what He has promised. Charity is what the soul becomes when that orientation has done its work. The triplet is a single transformation viewed at three stages.
 

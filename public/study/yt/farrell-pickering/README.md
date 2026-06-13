@@ -157,7 +157,7 @@ This study follows the **Video Evaluation workflow**:
 - D&C 87 (prophecy on war)
 - D&C 49:7 (no man knoweth the hour)
 
-**Evaluation Focus:** Is the Abraham Accords = Daniel 9:27 covenant identification sound exegesis or newspaper eisegesis? Does the white horse = treaty interpretation hold up in Greek? Is the Cyrus typology helpful or misleading? How does "we're not going to let that happen" sit against D&C 121:33 ("God's arm is stretched out still")?
+**Evaluation Focus:** Is the Abraham Accords = Daniel 9:27 covenant identification sound exegesis or newspaper eisegesis? Does the white horse = treaty interpretation hold up in Greek? Is the Cyrus typology helpful or misleading? How does "we're not going to let that happen" sit against D&C 121:33 ("As well might man stretch forth his puny arm to stop the Missouri river... as to hinder the Almighty")?
 
 ---
 
@@ -166,7 +166,7 @@ This study follows the **Video Evaluation workflow**:
 
 **Content:**
 - D&C 84:98-102 — "Zion Redeemed" (AI-generated song from scripture)
-- "If you believe the King of Kings is in charge, it's not that scary"
+- "If you actually believe the King of Kings is in charge, it's not that scary"
 - Shakespeare's Julius Caesar: "a coward dies a thousand deaths"
 - D&C 88 — "quickened and caught up"
 - Denver airport final panel: tree of life, Adam-ondi-Ahman scenario

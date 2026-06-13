@@ -12,37 +12,37 @@ The English language encodes the difference between priesthood and priestcraft r
 
 ### -Hood: State of Being (Identity)
 
-> **HOOD** — "State; condition." — Webster 1828
-
-The suffix *-hood* denotes **who you are.** It describes identity, nature, a state of being:
+The genuine 1828 has no standalone suffix entry for *-hood* — but it doesn't need one. Every *-hood* word Webster defines opens the same way, and the pattern speaks for itself:
 
 | Word | Webster 1828 Definition |
 |------|------------------------|
-| **Priesthood** | "The office or character of a priest; the priestly function" |
-| **Fatherhood** | "The state of being a father; the character or authority of a father" |
-| **Brotherhood** | "The state of being brothers or a brother" |
-| **Manhood** | "The state of being man as a human being" |
-| **Godhood** | "Divine nature or essence; deity; godhead" |
-| **Falsehood** | "Want of truth or accuracy" — the *state* of being false |
-| **Neighborhood** | "The quality or condition of being a neighbor" |
+| **Priesthood** | "The office or character of a priest" |
+| **Fatherhood** | "The state of being a father, or the character or authority of a father" |
+| **Brotherhood** | "The state or quality of being a brother" |
+| **Manhood** | "The state of one who is a man" |
+| **Falsehood** | "Want of truth or veracity" — the *state* of being false |
+| **Neighborhood** | "State of being near each other" |
 
-Priesthood, then, is not something you *do*. It's something you *are*. A state of being. An identity received, not a skill acquired.
+*(Table requoted 2026-06-12 — the earlier definitions were the 1913 edition's, including a "Godhood" row; GODHOOD is not in the 1828 at all.)*
+
+The suffix *-hood* denotes **who you are.** State. Character. Office. Priesthood, then, is not something you *do*. It's something you *are*. A state of being. An identity received, not a skill acquired.
 
 ### -Craft: Skill, Trade, and Cunning
 
-> **CRAFT** — (def. 2) "Art or skill; dexterity." (def. 4) "Cunning, art, or skill, in a bad sense, or applied to bad purposes; artifice; guile." — Webster 1828
+> **CRAFT** — (def. 1) "Art; ability; dexterity; skill." (def. 2) "Cunning, art or skill, in a bad sense, or applied to bad purposes; artifice; guile; skill or dexterity employed to effect purposes by deceit." — Webster 1828
 
-Webster even quotes scripture for the dark connotation: *"Take him by craft"* — [Mark 14:1](https://www.churchofjesuschrist.org/study/scriptures/nt/mark/14?lang=eng&id=p1#p1).
+And Webster's scriptural citation for that dark sense is itself a portrait of priestcraft: *"The **chief priests** and scribes sought how they might take him by craft, and put him to death."* — [Mark 14:1](https://www.churchofjesuschrist.org/study/scriptures/nt/mark/14?lang=eng&id=p1#p1). The dictionary's own example of craft is priests plotting against Christ.
 
 The suffix *-craft* denotes **what you do** — and often with connotations of manipulation:
 
 | Word | Webster 1828 Definition |
 |------|------------------------|
-| **Priestcraft** | "Fraud or imposition in religious concerns; management by priests to gain wealth and power" |
-| **Witchcraft** | "Practices or art of witches; sorcery" |
-| **Kingcraft** | "The craft of kings; the art of governing as a sovereign" |
-| **Statecraft** | "The art of conducting state affairs" |
-| **Handicraft** | "A trade requiring skill of hand" |
+| **Priestcraft** | "The stratagems and frauds of priests; fraud or imposition in religious concerns; management of selfish and ambitious priests to gain wealth and power, or to impose on the credulity of others" |
+| **Witchcraft** | "The practices of witches; sorcery; enchantments; intercourse with the devil" |
+| **Kingcraft** | "The craft of kings; the act of governing; usually in a bad sense" |
+| **Handicraft** | "Manual occupation; work performed by the hand" |
+
+*(Table requoted 2026-06-12 — the earlier definitions were the 1913 edition's, including a "Statecraft" row; STATECRAFT is not in the 1828. The genuine entries are sharper: PRIESTCRAFT names "selfish and ambitious priests," and even KINGCRAFT is "usually in a bad sense.")*
 
 ### The Pattern
 
@@ -51,7 +51,7 @@ The suffix *-craft* denotes **what you do** — and often with connotations of m
 
 Priesthood is the *sacred state of office*. Priestcraft is the *cunning manipulation of that office for gain*.
 
-Note what's absent from Webster 1828: **mothercraft** and **fathercraft** don't exist in the Restoration-era dictionary. The language itself resists reducing parenting to a technique or trade. Motherhood and fatherhood are states of being — identities — not crafts to be performed. There is something quietly profound in that silence.
+Note what's absent from Webster 1828: **mothercraft** and **fathercraft** don't exist in the Restoration-era dictionary (verified against the genuine 1828 — and neither, it turns out, do *godhood* or *statecraft*). The language itself resists reducing parenting to a technique or trade. Motherhood and fatherhood are states of being — identities — not crafts to be performed. There is something quietly profound in that silence.
 
 ---
 
@@ -71,15 +71,15 @@ This is a three-element test. All three are present:
 
 But look what Nephi does *before* defining priestcraft. In verses 24-28, he describes what God does:
 
-> **24.** He doeth not anything save it be for the benefit of the world; for he loveth the world, even that he layeth down his own life. ...
+> **24.** He doeth not anything save it be for the benefit of the world; for he loveth the world, even that he layeth down his own life that he may draw all men unto him. Wherefore, he commandeth none that they shall not partake of his salvation.
 >
-> **25.** ... he commandeth none that they shall not partake of his salvation. ...
+> **25.** ... Come unto me all ye ends of the earth, buy milk and honey, without money and without price.
 >
-> **27.** ... have I commanded any that they should depart out of the synagogues, or out of the houses of worship? ...
+> **26.** Behold, hath he commanded any that they should depart out of the synagogues, or out of the houses of worship? Behold, I say unto you, Nay.
 >
-> **28.** ... hath he commanded any that they should not partake of his salvation? Behold I say unto you, Nay; but he hath given it free for all men. ... Come unto me all ye ends of the earth, buy milk and honey, without money and without price.
+> **27.** Hath he commanded any that they should not partake of his salvation? Behold I say unto you, Nay; but he hath given it free for all men ...
 
-— [2 Nephi 26:24-28](https://www.churchofjesuschrist.org/study/scriptures/bofm/2-ne/26?lang=eng&id=p24-p28#p24)
+— [2 Nephi 26:24-27](https://www.churchofjesuschrist.org/study/scriptures/bofm/2-ne/26?lang=eng&id=p24-p27#p24)
 
 The structure is devastating: God gives everything **freely, for the benefit of the world**. Then Nephi immediately defines priestcraft as doing the exact opposite — preaching for **gain and praise, not the welfare of Zion.**
 

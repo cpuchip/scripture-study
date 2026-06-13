@@ -16,7 +16,7 @@ Primary: [Suggestions for a Variety of Teaching Settings and Learners](https://w
 
 **Scriptural Examples:**
 - Joseph Smith - 14 years old at the First Vision ([JS-H 1:7](https://www.churchofjesuschrist.org/study/scriptures/pgp/js-h/1?lang=eng&id=p7#p7))
-- Mormon - entrusted with sacred records at age 10 ([Mormon 1:2-4](https://www.churchofjesuschrist.org/study/scriptures/bofm/morm/1?lang=eng&id=p2-p4#p2))
+- Mormon - given charge concerning the sacred records at about age 10 ([Mormon 1:2-4](https://www.churchofjesuschrist.org/study/scriptures/bofm/morm/1?lang=eng&id=p2-p4#p2))
 - Nephi - "I will go and do" as a young man ([1 Nephi 3:7](https://www.churchofjesuschrist.org/study/scriptures/bofm/1-ne/3?lang=eng&id=p7#p7))
 - David - faced Goliath as a youth ([1 Samuel 17](https://www.churchofjesuschrist.org/study/scriptures/ot/1-sam/17?lang=eng))
 - Samuel - called to prophesy as a child ([1 Samuel 3](https://www.churchofjesuschrist.org/study/scriptures/ot/1-sam/3?lang=eng))

@@ -105,7 +105,7 @@ Verbal-only — no original slide
 
 ## Four Days of Arguing
 
-> "But behold, there was a day set apart by the unbelievers, that all those who believed in those traditions should be put to death except the sign should come to pass." — 3 Nephi 1:9
+> "Now it came to pass that there was a day set apart by the unbelievers, that all those who believed in those traditions should be put to death except the sign should come to pass, which had been given by Samuel the prophet." — 3 Nephi 1:9
 
 How many days are we talking about? There have been four days. What is everybody arguing about in the four days before? Whether or not He's coming.
 
@@ -412,7 +412,7 @@ Verbal-only — no original slide
 
 **February 8, 1835** — Joseph Smith received revelation to call the Twelve Apostles.
 
-Of the original twelve, **four permanently left** — the "third part of the stars" drawn away by the dragon's tail.
+Of the original twelve, **four were drawn away and never returned** — the "third part of the stars" in the reading. *(Precision note, amended 2026-06-12: the four who never returned are Lyman Johnson, McLellin, Boynton, and William Smith. The original slide listed Marsh as the fourth — but Marsh was rebaptized in 1857 (and Luke Johnson also returned); William Smith, also of the original Twelve, never did. The 4-of-12 = one-third math holds with the corrected roster.)*
 
 - Lyman Johnson — Apostatized, Excommunicated
 - William E. McLellin — Apostatized, Excommunicated

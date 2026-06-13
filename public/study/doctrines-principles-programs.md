@@ -36,7 +36,7 @@ Understanding this hierarchy helps us know what is unchanging vs. what can adapt
 - God is our Heavenly Father ([Moses 1:4](https://www.churchofjesuschrist.org/study/scriptures/pgp/moses/1?lang=eng&id=p4#p4))
 - Jesus Christ is the Son of God and our Redeemer ([3 Nephi 11:10-11](https://www.churchofjesuschrist.org/study/scriptures/bofm/3-ne/11?lang=eng&id=p10-p11#p10))
 - The Atonement of Jesus Christ makes repentance and resurrection possible ([Alma 34:8-9](https://www.churchofjesuschrist.org/study/scriptures/bofm/alma/34?lang=eng&id=p8-p9#p8))
-- The family is ordained of God ([The Family: A Proclamation to the World](https://www.churchofjesuschrist.org/study/scriptures/the-family-a-proclamation-to-the-world/the-family-a-proclamation-to-the-world?lang=eng))
+- The family is ordained of God ([The Family: A Proclamation to the World](https://www.churchofjesuschrist.org/study/ensign/1995/11/the-family-a-proclamation-to-the-world?lang=eng))
 - We are spirit children of Heavenly Parents ([Romans 8:16-17](https://www.churchofjesuschrist.org/study/scriptures/nt/rom/8?lang=eng&id=p16-p17#p16))
 - Resurrection is universal ([1 Corinthians 15:22](https://www.churchofjesuschrist.org/study/scriptures/nt/1-cor/15?lang=eng&id=p22#p22))
 
@@ -99,8 +99,8 @@ The clearest statement of pure doctrine comes from the Savior Himself:
 >
 > And whoso believeth not in me, and is not baptized, shall be damned. ...
 >
-> And whoso shall declare more or less than this, and establish it for my doctrine, the same cometh of evil."
-> — [3 Nephi 11:32-35, 40](https://www.churchofjesuschrist.org/study/scriptures/bofm/3-ne/11?lang=eng&id=p32-p35#p32)
+> And whoso shall declare more or less than this, and establish it for my doctrine, the same cometh of evil …"
+> — [3 Nephi 11:32-34, 40](https://www.churchofjesuschrist.org/study/scriptures/bofm/3-ne/11?lang=eng&id=p32-p34#p32)
 
 The doctrine of Christ is simple:
 1. **Faith** in Jesus Christ

@@ -117,7 +117,7 @@ Oaks' "Alive in Christ" (from Cluster 1) also belongs here for its opening secti
 | [Eternal Marriage Is an Eternal Journey](https://www.churchofjesuschrist.org/study/general-conference/2026/04/55andersen?lang=eng) | Andersen | Marriage as character refinement, not just destination |
 | [Come unto Christ—Together](https://www.churchofjesuschrist.org/study/general-conference/2026/04/57wakolo?lang=eng) | Wakolo | Part-member families — patience, divine timing, agency |
 
-Cook establishes the priesthood keys. Andersen describes what happens *within* the sealed relationship: marriage refines character, requiring sacrifice, charity, patience. Wakolo addresses the hardest case: families where not everyone is on the covenant path. His four stories testify that "God honors patient faith, respects agency, and fulfills promises in His timing."
+Cook establishes the priesthood keys. Andersen describes what happens *within* the sealed relationship: marriage refines character, requiring sacrifice, charity, patience. Wakolo addresses the hardest case: families where not everyone is on the covenant path. His stories testify that God honors patient faith, and they land on a refrain worth keeping whole: "Conversion is personal. Timing is individual. Agency is sacred." *(Requoted 2026-06-12 — an earlier version blended his themes into a sentence he didn't say.)*
 
 The connection to Cluster 1 is direct: if charity is the nature we're developing (Bednar), marriage is one of the primary crucibles where that development happens (Andersen).
 
@@ -227,7 +227,7 @@ If I had to name it in a sentence: **Christ is the True Vine — abide in Him, b
 
 Every cluster feeds that central claim. The vine requires abiding (Soares, Gong). Abiding produces transformation (Bednar, Christofferson). Transformation looks like loving even enemies (Oaks). The Resurrection guarantees the connection survives death (Uchtdorf, Rasband). The sealing keys make the connection eternal for families (Cook). And God knows every branch on the vine by name (Caussé, Matswagothata).
 
-Oaks' closing remarks distill it: "Jesus Christ is the way to peace in this life and eternal life in the world to come."
+Oaks' closing remarks distill it: "Jesus Christ is the way to peace in this world and eternal life in the world to come."
 
 ---
 

@@ -38,7 +38,7 @@ The second problem was steering. The barges had no helm, rudder, or sails. Yet t
 
 The wind that drove the barges across the ocean was already going forth before the steward boarded. In the mechanics of refinement, this is the atoning grace of Christ's resurrection—the passive, constant pull that quickens the universe and draws the soul home. Under D&C 88:7-13, the light of Christ proceeds from the presence of God to fill the immensity of space, quickening our understandings and governing all things. 
 
-The steward cannot build a rudder to navigate the infinite ocean of eternity. The navigation is the Lord's. The steward's part is to enter the vessel, rest in this established grace, and sing praises. This is the geometry of hope. Because the wind is already blowing toward the promised land, hope is not wishful thinking but a secure anchor. Hope "maketh not ashamed" because the power driving the vessel is the Master's breath.
+The steward cannot build a rudder to navigate the infinite ocean of eternity. The navigation is the Lord's. The steward's part is to enter the vessel, rest in this established grace, and sing praises. This is the geometry of hope. Because the wind is already blowing toward the promised land, hope is not wishful thinking but a secure anchor. Hope "maketh not ashamed" ([Romans 5:5](https://www.churchofjesuschrist.org/study/scriptures/nt/rom/5?lang=eng&id=p5#p5)) because the power driving the vessel is the Master's breath.
 
 ---
 
@@ -60,7 +60,9 @@ The quickening occurs when the Master touches the stones. In D&C 93:28, the soul
 
 The climax of the Jaredite voyage is the tearing of the veil. Moroni records that the brother of Jared:
 
-> "could not be kept from within the veil, because of his relation to the Lord, for so great was his faith in God, that when God put forth his finger he could not hide it from the sight of the brother of Jared, because of his word which he had spoken unto him, which word he had obtained by faith." — [Ether 12:19-20](https://www.churchofjesuschrist.org/study/scriptures/bofm/ether/12?lang=eng&id=p19-p20#p19)
+> "could not be kept from within the veil… for so great was his faith in God, that when God put forth his finger he could not hide it from the sight of the brother of Jared, because of his word which he had spoken unto him, which word he had obtained by faith." — [Ether 12:19-20](https://www.churchofjesuschrist.org/study/scriptures/bofm/ether/12?lang=eng&id=p19-p20#p19)
+
+*(Corrected 2026-06-12 — an earlier version inserted "because of his relation to the Lord," a phrase that appears in neither verse, and joined verses 19 and 20 without a marked ellipsis. Verse 19's "could not be kept from within the veil" describes the many of exceeding faith; verse 20 names the brother of Jared as "one of these.")*
 
 The proposal pattern was the occasion of the seeing, but faith was the cause.
 

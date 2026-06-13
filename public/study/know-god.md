@@ -74,7 +74,7 @@ The Lectures on Faith identify **six attributes of God's character** revealed in
 > "If he did not, in the first instance, believe him to be God... he could not center his faith in him for life and salvation, for fear there should be a greater than he, who would thwart all his plans."
 > — [Lecture Third, ¶19](https://lecturesonfaith.com/3)
 
-> "Without the idea that he is a God who changes not... doubt would take the place of faith. But with the idea that he changes not, faith lays hold upon the excellencies in his character with unshaken confidence."
+> "For without the idea of unchangeableness in the character of the Deity, doubt would take the place of faith. But with the idea that he changes not, faith lays hold upon the excellencies in his character with unshaken confidence."
 > — [Lecture Third, ¶21](https://lecturesonfaith.com/3)
 
 ### His Attributes (Lecture Fourth)
@@ -223,7 +223,7 @@ This is a promise—not just for prophets but for "every soul." The conditions:
 > "The Holy Ghost has not a body of flesh and bones, but is a personage of Spirit. Were it not so, the Holy Ghost could not dwell in us."
 > — [D&C 130:22](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/130?lang=eng&id=p22#p22)
 
-The Holy Ghost is a distinct member of the Godhead—a personage of spirit, separate from lightof Christ.
+The Holy Ghost is a distinct member of the Godhead—a personage of spirit, separate from the Light of Christ.
 
 ### The Mind of the Father and Son
 

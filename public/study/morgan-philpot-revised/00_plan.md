@@ -26,7 +26,7 @@ Morgan Philpot's "Signs of the Times" presentations contain genuinely excellent 
 | mō·w·'ă·ḏîm word study | Genesis 1:14 "seasons" = "appointed times" (same root as Lev 23 feasts) | 06_esdras.md |
 | JST Revelation 12 | Woman = Church; "in the likeness of things on the earth" = heavenly/earthly pattern | 04_revelation_12.md |
 | Storm vs. tempest | Webster 1828 distinction: political upheaval AND natural destruction in 3 Nephi 8 | verbal_only #1 |
-| Zarahemla / hemlah / salt | Hebrew etymology connecting Zarahemla to Dead Sea / Salt Lake | verbal_only #2 |
+| ~~Zarahemla / hemlah / salt~~ | **DROPPED 2026-06-12** — the etymology is false Hebrew (chemlah H2551 = compassion, not salt; salt = melach H4417); see the corrected part3_marp.md | verbal_only #2 |
 | Ezekiel 17 Hebrew | kə·nā·'an = Canaan = "land of traffick" — Bible Dictionary confirms at Ezek 17:4 | 05_ezekiels_eagle.md |
 | 3 Nephi 8:5 creation week | "first month, fourth day" → day 4 of creation = sun created → Christ as light | verbal_only #5 |
 | Come Follow Me election cycle | BoM studied every 4 years alongside US election seasons — by design? | Philpot + Bednar observation |
@@ -99,7 +99,7 @@ Morgan Philpot's "Signs of the Times" presentations contain genuinely excellent 
 - [3 Nephi 17](https://www.churchofjesuschrist.org/study/scriptures/bofm/3-ne/17?lang=eng) — "my bowels are filled with compassion" — the emotional core
 
 **New angles to explore:**
-- **Who survived and why?** 3 Nephi 9:13 — "whoso cometh unto me with a broken heart and a contrite spirit, him will I receive." Not bunkers. Not food storage alone. Broken hearts.
+- **Who survived and why?** 3 Nephi 9:20 — "whoso cometh unto me with a broken heart and a contrite spirit, him will I baptize with fire and with the Holy Ghost" (and v. 14: "whosoever will come, him will I receive"). Not bunkers. Not food storage alone. Broken hearts.
 - **The hen metaphor** (3 Nephi 10:4-6) — trace this through Matthew 23:37, Luke 13:34, D&C 10:65. Christ's *desire* to gather vs. our *willingness* to be gathered.
 - **Webster 1828 on "tempest" and "storm"** — extend the Philpot insight. What other 3 Nephi 8 words shift meaning under 1828 definitions?
 - **3 Nephi 8:5 "first month, fourth day"** — the creation week / Passover connection. Does the text encode liturgical time?
@@ -154,9 +154,9 @@ Morgan Philpot's "Signs of the Times" presentations contain genuinely excellent 
 
 **Key scriptures to deep-read:**
 - [D&C 38:30](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/38?lang=eng&id=p30#p30) — "if ye are prepared ye shall not fear"
-- [3 Nephi 9:13-14](https://www.churchofjesuschrist.org/study/scriptures/bofm/3-ne/9?lang=eng&id=p13-p14#p13) — broken heart and contrite spirit as the offering
+- [3 Nephi 9:13-14, 20](https://www.churchofjesuschrist.org/study/scriptures/bofm/3-ne/9?lang=eng&id=p13-p14#p13) — broken heart and contrite spirit as the offering (the offering language is v. 20)
 - [3 Nephi 22](https://www.churchofjesuschrist.org/study/scriptures/bofm/3-ne/22?lang=eng) — Isaiah 54 quoted by Christ: "thy Maker is thine husband"
-- [D&C 45:56-57](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/45?lang=eng&id=p56-p57#p56) — the wise virgins "had taken the Holy Spirit for their guide"
+- [D&C 45:56-57](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/45?lang=eng&id=p56-p57#p56) — the wise virgins "have taken the Holy Spirit for their guide"
 - [Matthew 25:1-13](https://www.churchofjesuschrist.org/study/scriptures/nt/matt/25?lang=eng&id=p1-p13#p1) — ten virgins (oil = the Holy Spirit you can't borrow)
 - [Alma 34:32-34](https://www.churchofjesuschrist.org/study/scriptures/bofm/alma/34?lang=eng&id=p32-p34#p32) — "this life is the time to prepare to meet God"
 

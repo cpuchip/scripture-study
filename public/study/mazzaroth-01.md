@@ -99,7 +99,7 @@ This document gathers scripture references about celestial bodies—organized th
 > "Thus saith the Lord, which giveth the sun for a light by day, and the **ordinances of the moon and of the stars** for a light by night."
 
 ### [D&C 121:30-31](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/121?lang=eng&id=p30-p31#p30) — Knowledge Yet to Be Revealed
-> "...if there be bounds set to the heavens or to the seas, or to the dry land, or to **the sun, moon, or stars**—All the **times of their revolutions**, all the **appointed days, months, and years**, and all their **glories, laws, and set times**, shall be revealed in the days of the dispensation of the fulness of times."
+> "...if there be bounds set to the heavens or to the seas, or to the dry land, or to **the sun, moon, or stars**—All the **times of their revolutions**, all the **appointed days, months, and years** … and all their **glories, laws, and set times**, shall be revealed in the days of the dispensation of the fulness of times."
 
 **Key insight:** God has promised to reveal astronomical knowledge in the latter days—the "glories, laws, and set times" of celestial bodies.
 
@@ -117,7 +117,7 @@ This document gathers scripture references about celestial bodies—organized th
 > "Abraham and his seed... should continue as innumerable as the stars."
 
 ### [Jeremiah 33:22](https://www.churchofjesuschrist.org/study/scriptures/ot/jer/33?lang=eng&id=p22#p22) — Innumerable
-> "As the **host of heaven cannot be numbered**, neither the sand of the sea measured: so will I multiply the seed of David my servant."
+> "As the **host of heaven cannot be numbered**, neither the sand of the sea measured: so will I multiply the seed of David my servant …"
 
 ---
 
@@ -142,7 +142,7 @@ This document gathers scripture references about celestial bodies—organized th
 > "Thus the heaven and the earth were finished, and **all the host of them**."
 
 ### [Deuteronomy 4:19](https://www.churchofjesuschrist.org/study/scriptures/ot/deut/4?lang=eng&id=p19#p19) — Warning Against Worship
-> "And lest thou lift up thine eyes unto heaven, and when thou seest the sun, and the moon, and the stars, even **all the host of heaven**, shouldest be driven to **worship** them."
+> "And lest thou lift up thine eyes unto heaven, and when thou seest the sun, and the moon, and the stars, even **all the host of heaven**, shouldest be driven to **worship** them, and serve them …"
 
 **Caution:** While the heavens declare God's glory, they are to point us *to* God, not become objects of worship themselves.
 
@@ -153,8 +153,8 @@ This document gathers scripture references about celestial bodies—organized th
 ### [1 Corinthians 15:41](https://www.churchofjesuschrist.org/study/scriptures/nt/1-cor/15?lang=eng&id=p41#p41) — Differing Glories
 > "There is one glory of the **sun**, and another glory of the **moon**, and another glory of the **stars**: for **one star differeth from another star in glory.**"
 
-### [D&C 76:81](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/76?lang=eng&id=p81#p81) — Telestial Glory
-> "And the glory of the **telestial** is one, even as the glory of the **stars** is one."
+### [D&C 76:98](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/76?lang=eng&id=p98#p98) — Telestial Glory
+> "And the glory of the **telestial** is one, even as the glory of the **stars** is one; for as one star differs from another star in glory, even so differs one from another in glory in the telestial world"
 
 ---
 
@@ -164,13 +164,13 @@ This document gathers scripture references about celestial bodies—organized th
 > "And there shall be **signs in the sun, and in the moon, and in the stars**; and upon the earth distress of nations."
 
 ### [Joel 2:10, 31](https://www.churchofjesuschrist.org/study/scriptures/ot/joel/2?lang=eng&id=p10#p10) — Darkened Lights
-> "The **sun and the moon shall be darkened**, and the **stars shall withdraw their shining**... The sun shall be turned into darkness, and the moon into blood, before the great and terrible day of the Lord come."
+> "The **sun and the moon shall be dark**, and the **stars shall withdraw their shining**... The sun shall be turned into darkness, and the moon into blood, before the great and the terrible day of the Lord come."
 
 ### [D&C 88:87](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/88?lang=eng&id=p87#p87) — Stars Exceedingly Angry
-> "For not many days hence and the earth shall tremble and reel to and fro as a drunken man; and the sun shall hide his face, and shall refuse to give light; and the **moon shall be bathed in blood**; and the **stars shall become exceedingly angry**, and shall cast themselves down."
+> "For not many days hence and the earth shall tremble and reel to and fro as a drunken man; and the sun shall hide his face, and shall refuse to give light; and the **moon shall be bathed in blood**; and the **stars shall become exceedingly angry**, and shall cast themselves down as a fig that falleth from off a fig tree."
 
 ### [Isaiah 34:4](https://www.churchofjesuschrist.org/study/scriptures/ot/isa/34?lang=eng&id=p4#p4) — Host of Heaven Dissolved
-> "And all the **host of heaven shall be dissolved**, and the heavens shall be **rolled together as a scroll**: and all their host shall fall down, as the leaf falleth off from the vine."
+> "And all the **host of heaven shall be dissolved**, and the heavens shall be **rolled together as a scroll**: and all their host shall fall down, as the leaf falleth off from the vine, and as a falling fig from the fig tree."
 
 ### [Revelation 12:1](https://www.churchofjesuschrist.org/study/scriptures/nt/rev/12?lang=eng&id=p1#p1) — Woman Clothed with the Sun
 > "And there appeared a great wonder in heaven; a **woman clothed with the sun, and the moon under her feet, and upon her head a crown of twelve stars**."
@@ -206,11 +206,14 @@ Uses 1 Corinthians 15:41 to explain degrees of glory using sun, moon, and stars 
 ## Topical Guide References
 
 The **Topical Guide entry for "Astronomy"** (TG Astronomy) connects:
-- Job 9:9, 38:31-33
-- Psalm 8:3, 147:4
-- Amos 5:8
-- Abraham 3:2-18
-- Facsimile 2
+- Job 9:9; 38:31
+- Psalm 8:3; 147:4
+- Jeremiah 31:35; Joel 2:30
+- Matthew 2:2; 24:29; 1 Corinthians 15:41
+- Helaman 12:15 ("the earth that moveth and not the sun")
+- Moses 1:33; 7:30
+- Abraham 1:31; 3:3-13 (Kolob, Kokaubeam)
+- Amos 5:8 (in the see-also list)
 
 ---
 

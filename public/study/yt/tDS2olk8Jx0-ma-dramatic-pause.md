@@ -74,7 +74,7 @@ Elder Held (April 2024) expanded on this: "Opposites don't exist apart from each
 
 ### Selah — Ma Built into the Psalms
 
-The Psalms contain their own stage direction for the soul: *Selah.* It appears 71 times. Webster 1828 defines it: "A word of doubtful meaning... supposed to signify silence or a pause in the musical performance of the song."
+The Psalms contain their own stage direction for the soul: *Selah.* It appears 71 times. The 1913 Webster's defines it: "A word of doubtful meaning, occuring frequently in the Psalms; by some, supposed to signify silence or a pause in the musical performance of the song." *(Re-attributed 2026-06-12 — the earlier text credited Webster 1828, which has no SELAH entry at all.)*
 
 After declaring trust in God amid destruction, the Psalmist marks: **Selah.** Pause. Let it land.
 
@@ -179,7 +179,7 @@ Brennan's child runs in circles with his fist out. I write studies with every po
 - In prayer: being still. Letting the stillness do its work. "Be still, and know that I am God" isn't a suggestion — it's a method. The knowing comes in the releasing.
 - In our work together: the story agent idea isn't just about content creation. It's about learning a different *posture* toward truth — one that trusts the listener's Spirit enough to leave room.
 
-> "All the strength of the punch comes from the windup. All the horror of the battle comes from the rain." — [Brennan Lee Mulligan, 1:54-2:04](https://www.youtube.com/watch?v=tDS2olk8Jx0&t=114)
+> "All of the strength of the punch comes from the windup. All of the horror of the battle comes from the rain." — [Brennan Lee Mulligan, 1:54-2:04](https://www.youtube.com/watch?v=tDS2olk8Jx0&t=114)
 
 Let the rain fall.
 

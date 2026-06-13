@@ -61,7 +61,7 @@ A 9-phase AI-assisted evaluation of Morgan Philpot's 3-hour presentation "2025 C
 
 - **Scriptural literacy is high.** He reads from JST, Leviticus 25, Daniel 2/7/12, 2 Esdras, Book of Mormon war chapters, and Revelation 12–13 with genuine fluency. These aren't proof-texts yanked out of context — he's working with extended passages.
 - **The harvest framework is his strongest original contribution.** Mapping Leviticus 23 feasts to agricultural seasons to dispensational phases is creative, scripturally grounded, and instructive regardless of whether his specific timeline dates hold up.
-- **Hebrew and Greek word studies add genuine depth.** The Zarahemla/hemlah (salt) etymology, the mō·w·'ă·ḏîm (appointed times) study, and several others show real engagement with the source languages.
+- **Hebrew and Greek word studies add depth — when the Hebrew holds.** The mō·w·'ă·ḏîm (appointed times) study is genuine. *(Correction, 2026-06-12: the Zarahemla/hemlah "salt" etymology, originally praised here, is false Hebrew — chemlah H2551 means compassion; salt is melach H4417. The engagement with source languages is real; the accuracy is uneven.)*
 - **He models a principle worth emulating:** "Everything I do is not intended to convince you I'm right. I probably am. But it's intended to stimulate your mind to think about how to liken the scriptures to us in a very extreme way."
 
 ### Where the Evaluations Push Back
@@ -108,6 +108,5 @@ Morgan Philpot is a constitutional attorney, former Utah state legislator, and m
 
 ---
 
-*Study begun: 2025-07-01*
-*Transcript review completed: 2025-07-26*
+*Study completed: 2026-02-08 (git-verified; earlier footers claimed July 2025 — impossible, since the presentation references October 2025 events)*
 *Phase 1 of 9 evaluations — [Study Plan](study_plans.md) | [Transcript Review](transcript_review_plan.md)*

@@ -84,7 +84,7 @@ When Christ died on the cross, the same three elements testified:
 > 
 > For there are **three that bear record** in heaven, the Father, the Word, and the Holy Ghost: and these three are one.
 > 
-> And there are **three that bear witness** in earth, the **spirit, and the water, and the blood**: and these three agree in one."
+> And there are **three that bear witness** in earth, the **Spirit, and the water, and the blood**: and these three agree in one."
 
 ---
 
@@ -112,11 +112,11 @@ When Christ died on the cross, the same three elements testified:
 - **Sanctified** = made holy, cleansed, set apart
 - Only Christ's blood can purify us from sin
 - This is the *power* that actually transforms us
-- "The blood of Christ... sanctifieth from all sin" ([Moses 6:59](https://www.churchofjesuschrist.org/study/scriptures/pgp/moses/6?lang=eng&id=p59#p59))
+- "cleansed by blood, even the blood of mine Only Begotten; that ye might be sanctified from all sin" ([Moses 6:59](https://www.churchofjesuschrist.org/study/scriptures/pgp/moses/6?lang=eng&id=p59#p59))
 
 Elder D. Todd Christofferson explained:
-> "The Savior offers to all who will have faith and accept it, the gifts of being justified or pardoned before the law and also being sanctified—that is, being made spotless and holy. There is no other name, nor way, nor means whereby such redemption may occur."
-> — [Born Again](https://www.churchofjesuschrist.org/study/general-conference/2008/04/born-again?lang=eng), April 2008
+> "The Spirit brings the atoning grace of Christ, symbolized by His blood, both to justify (or pardon) our sins and to sanctify (or cleanse) us from the effects of sin, making us spotless and holy before God."
+> — [Born Again](https://www.churchofjesuschrist.org/study/general-conference/2008/04/born-again?lang=eng), April 2008 (note 1)
 
 ---
 

@@ -8,13 +8,23 @@
 
 Using the Webster 1828 dictionary alongside modern definitions reveals how dramatically the meaning of "charity" has shifted:
 
-| Webster 1828 (Primary) | Modern (Primary) |
+| Webster 1828 | Modern (Primary) |
 |------------------------|------------------|
-| **Love; universal benevolence; good will** | An organization for helping the needy |
-| Liberality in judging others | Giving money/goods to the poor |
-| Putting the best construction on others' words | Benevolence, kindness |
+| **Love, benevolence, good will** (sense 1) | An organization for helping the needy |
+| Liberality in judging others (sense 6) | Giving money/goods to the poor |
+| Putting the best construction on others' words (sense 6) | Benevolence, kindness |
 
-In 1828, **charity was primarily about love**, with "almsgiving" listed third or fourth. Modern usage has inverted this—"charitable organization" is now the *first* definition most people think of.
+Webster's genuine 1828 first sense:
+
+> "In a general sense, **love, benevolence, good will**; that disposition of heart which inclines men to think favorably of their fellow men, and to do them good. In a theological sense, it includes supreme love to God, and universal good will to men."
+> — Webster 1828, CHARITY, sense 1
+
+And his sixth sense ends with a line worth a study of its own:
+
+> "Candor; liberality in judging of men and their actions; a disposition which inclines men to think and judge favorably, and to put the best construction on words and actions which the case will admit. **The highest exercise of charity, is charity towards the uncharitable.**"
+> — Webster 1828, CHARITY, sense 6
+
+In 1828, **charity was primarily about love**, with almsgiving listed third or fourth (sense 3: "liberality to the poor, consisting in almsgiving"; sense 4: "alms"). Modern usage has inverted this—"charitable organization" is now the *first* definition most people think of.
 
 This explains why Paul's teaching in [1 Corinthians 13:3](https://www.churchofjesuschrist.org/study/scriptures/nt/1-cor/13?lang=eng&id=p3#p3) can seem paradoxical to modern ears:
 
@@ -91,7 +101,7 @@ This isn't about writing checks to organizations (though generosity may flow fro
 ## Cross-References
 
 - [1 Corinthians 13](https://www.churchofjesuschrist.org/study/scriptures/nt/1-cor/13?lang=eng) — Paul's discourse on charity (love)
-- [D&C 121:45](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/121?lang=eng&id=p45#p45) — "Let thy bowels be full of charity towards all men"
+- [D&C 121:45](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/121?lang=eng&id=p45#p45) — "Let thy bowels also be full of charity towards all men"
 - [Confidence in the Presence of God](https://www.churchofjesuschrist.org/study/general-conference/2025/04/57nelson?lang=eng) — President Nelson on charity and virtue
 
 ---

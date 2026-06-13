@@ -92,7 +92,9 @@ And here, Webster 1828 lights up the key word.
 
 ### What Does "Confound" Actually Mean?
 
-**CONFOUND** (Webster 1828): "To mingle and blend, so that different elements can not be distinguished; to confuse."
+**CONFOUND** (Webster 1828): "To mingle and blend different things, so that their forms or natures cannot be distinguished; to mix in a mass or crowd, so that individuals cannot be distinguished."
+
+*(Requoted 2026-06-12 — the earlier wording was the 1913 edition's. The genuine 1828 entry hands this study two gifts: its second sense is illustrated with this very verse, "Let us go down, and there confound their language. Genesis 11:7" — and its sixth sense cites Acts 2:6, the Pentecost reversal this study closes with.)*
 
 The primary meaning isn't "to bewilder" in the modern lightweight sense. It's *to mingle* — to mix different things together until you can't separate them back out. God didn't erase their language. He didn't replace it. He *blended* it. He took one thing and mixed it into many, so thoroughly that the original elements couldn't be recovered.
 
@@ -158,7 +160,7 @@ Placing the Tower of Babel in history is complex and contested, but the traditio
 
 **Writing vs. Speaking** — Marc Van De Mieroop (ANE Today, 2023) makes a fascinating observation: in the 3rd and 2nd millennia BCE, Sumerian served as a universal *written* language even as *spoken* languages diversified. The transition from universal Sumerian literacy to multilingual writing systems mirrors the Babel narrative in an unexpected way — a kind of "confounding" of the written word as well.
 
-None of this "proves" the Babel event in a secular-historical sense. But the ancient Near East around 2200 BC was characterized by linguistic diversity, imperial collapse, population dispersal, and cultural remembered a time of prior unity. The world the biblical authors inhabited remembered Babel — not just as myth, but as explanation for the world they lived in.
+None of this "proves" the Babel event in a secular-historical sense. But the ancient Near East around 2200 BC was characterized by linguistic diversity, imperial collapse, population dispersal, and cultures that remembered a time of prior unity. The world the biblical authors inhabited remembered Babel — not just as myth, but as explanation for the world they lived in.
 
 ---
 

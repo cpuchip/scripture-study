@@ -10,7 +10,10 @@ This study comes from the "Become" section of [Elder Bednar's October 2024 talk 
 
 The framework comes from Elder Bednar, who quoted President Benson:
 
-> "In the Book of Mormon we find a pattern for preparing for the Second Coming. A major portion of the book centers on the few decades just prior to Christ's coming to America. By analogy, the book of Helaman corresponds to our day."
+> "In the Book of Mormon we find a pattern for preparing for the Second Coming. A major portion of the book centers on the few decades just prior to Christ's coming to America."
+> — [President Ezra Taft Benson, "The Book of Mormon—Keystone of Our Religion," October 1986](https://www.churchofjesuschrist.org/study/general-conference/1986/10/the-book-of-mormon-keystone-of-our-religion?lang=eng)
+
+By analogy — the framing is this study's, not a third Benson sentence — the book of Helaman corresponds to our day. *(Corrected 2026-06-12: an earlier draft carried "By analogy, the book of Helaman corresponds to our day" inside the quotation marks; that sentence appears in no Benson talk in the corpus. His real continuation is "By careful study of that time period, we can determine why some were destroyed…", and his April 1987 talk draws the same parallel: the Nephite record before the Savior's visit "reveals many parallels to our own day.")*
 
 The method: read for **patterns, not predictions**. Apply **inward, not outward**. Ask at each chapter: *Why did Mormon, writing for our day, choose to preserve this?*
 
