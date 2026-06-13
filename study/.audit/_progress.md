@@ -406,10 +406,10 @@ Already done out-of-band: `study/morm-8-three-glories-reading.md` (2026-06-09).
 - [x] 2026-06-02 `study/bom-walk/mosiah/mosiah-10.md` **LINKS** — CLEAN (the eternal hatred; v14 "they understood not the dealings of the Lord," v17 "they have taught their children that they should hate them… eternal hatred towards the children of Nephi" EXACT — grievance as taught tradition; the chapter the mos10 study draws from)
 - [x] 2026-06-02 `study/bom-walk/mosiah/mosiah-09.md` **LINKS** — CLEAN (Zeniff's record; v1 "when I saw that which was good among them I was desirous that they should not be destroyed," v3 "I being over-zealous to inherit the land of our fathers… we were slow to remember the Lord our God" EXACT)
 - [x] 2026-06-02 `study/bom-walk/2-nephi/2-nephi-33.md` **LINKS** — CLEAN (Nephi's farewell; v6 "I glory in plainness; I glory in truth; I glory in my Jesus, for he hath redeemed my soul from hell," v10 "if ye shall believe in Christ ye will believe in these words, for they are the words of Christ" EXACT; synthesis note rightly references the 5:21 flagged threads answered by 26:33 + 30:6)
-- [ ] 2026-06-02 `study/bom-walk/jacob/jacob-01.md` **LINKS**
-- [ ] 2026-06-02 `study/bom-walk/jacob/jacob-02.md` **LINKS**
-- [ ] 2026-06-02 `study/bom-walk/jacob/jacob-03.md` **LINKS**
-- [ ] 2026-06-02 `study/bom-walk/jacob/jacob-04.md` **LINKS**
+- [x] 2026-06-02 `study/bom-walk/jacob/jacob-01.md` **LINKS** — CLEAN (the watchman's burden; v19 "answering the sins of the people upon our own heads if we did not teach them the word of God with all diligence" EXACT)
+- [x] 2026-06-02 `study/bom-walk/jacob/jacob-02.md` **LINKS** — CLEAN (riches + chastity; v18 "before ye seek for riches, seek ye for the kingdom of God," v19 "to clothe the naked, and to feed the hungry, and to liberate the captive" EXACT)
+- [x] 2026-06-02 `study/bom-walk/jacob/jacob-03.md` **LINKS** — CLEAN (the despised are more righteous; v5 "the Lamanites your brethren… are more righteous than you," v9 "revile no more against them because of the darkness of their skins… their filthiness came because of their fathers" EXACT. ★ bin-4: carries the 2 Ne 5:21 skin-curse complex — study USES it AND empties it (decouples skin from worth, forbids reviling, filthiness inherited not personal), correctly FLAGS it as a third in-text datapoint for the with-Michael study, does NOT resolve. Standing literal-skin rule honored)
+- [x] 2026-06-02 `study/bom-walk/jacob/jacob-04.md` **LINKS** — CLEAN (looking beyond the mark; v13 "it speaketh of things as they really are, and of things as they really will be," v14 "blindness came by looking beyond the mark… God hath taken away his plainness from them" EXACT)
 - [ ] 2026-06-02 `study/bom-walk/jacob/jacob-05.md` **LINKS**
 - [ ] 2026-06-02 `study/bom-walk/jacob/jacob-06.md` **LINKS**
 - [ ] 2026-06-02 `study/bom-walk/jacob/jacob-07.md` **LINKS**

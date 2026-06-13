@@ -3883,6 +3883,37 @@ Noah) + Nephi's farewell closing 2 Nephi. Verified by direct grep.
   correctly references the 2 Ne 5:21 flagged threads answered in-text by
   26:33 + 30:6 — no new flag.)
 
+### Jacob 1-4 (2026-06-13, 387→391) — ALL CLEAN (second bin-4 flagged)
+
+The book of Jacob opens: the watchman's burden, the riches/chastity temple
+sermon, the despised-are-more-righteous reversal, looking-beyond-the-mark.
+Verified by direct grep.
+
+- **Jacob 1** (the watchman's burden): v19 "answering the sins of the people
+  upon our own heads if we did not teach them the word of God with all
+  diligence" — EXACT.
+- **Jacob 2** (riches + chastity): v18 "before ye seek for riches, seek ye for
+  the kingdom of God," v19 "to clothe the naked, and to feed the hungry, and
+  to liberate the captive" — EXACT.
+- **Jacob 3** (the despised are more righteous): v5 "the Lamanites your
+  brethren… are more righteous than you," v9 "revile no more against them
+  because of the darkness of their skins… their filthiness came because of
+  their fathers" — EXACT. **★ bin-4 #2 (flagged for Michael, NOT resolved):**
+  Jacob 3:5-9 carries the same 2 Ne 5:21 skin-curse complex. The chapter note
+  handles it exactly right — it USES the language AND empties it (the dark-
+  skinned are "more righteous," reviling-by-skin is forbidden, the
+  "filthiness" is inherited "because of their fathers" not personal guilt,
+  the proud light-skinned will be more filthy "before the throne of God"),
+  logs it as a THIRD in-text datapoint for the with-Michael study (alongside
+  26:33 + 30:6), and does NOT pronounce on the curse's nature/origin.
+  Standing literal-skin rule honored. **The queue for Michael now holds TWO
+  bin-4 items — Mormon 5:15 and Jacob 3:5-9 — alongside the standing 2 Ne
+  5:21 / Alma 3:6 / 3 Ne 2:15 / Hel 15:4 datapoints.**
+- **Jacob 4** (looking beyond the mark): v13 "it speaketh of things as they
+  really are, and of things as they really will be," v14 "blindness came by
+  looking beyond the mark… God hath taken away his plainness from them" —
+  EXACT.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
