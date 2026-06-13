@@ -3,7 +3,7 @@ lane: pg-ai-stewards
 session_id: 7ea7faa4-688a-451a-ac68-b7ea662d4b81
 status: active
 started: 2026-06-11T22:00:16
-last_active: 2026-06-12T15:52:35
+last_active: 2026-06-12T18:42:09
 ---
 
 ## Working on
@@ -48,11 +48,32 @@ last_active: 2026-06-12T15:52:35
   01-graph.sql (nodes/edges + recursive-CTE walks) in the bundle chain;
   virgin boot + CYCLE-TERMINATION + bidirectional/lineage walks all proven
   on scratch. rename-map.tsv seeded in workspace repo (parity/).
-  **NEXT = B1b** (fresh context recommended — Rust surgery): re-author
-  2-6a/b/c workstreams ON the graph (02-workstreams.sql), DELETE the AGE
-  init from schema.rs (~line 1456), create_studies→create_docs +
-  create_study_show→create_doc_show renames, drop age from init/00, then
-  build + virgin test WITHOUT age. Then B2-B6 per blueprint.
+  **B1b SHIPPED (`ed0da94` + workspace `22e5ea1`) — B1 COMPLETE, AGE IS
+  OUT OF THE IMAGE:** create_studies→create_docs (6a + h3-1-docs-half
+  ABSORBED into the table: file_path nullable, tags/source_type/
+  project_association; kind default 'doc'); 02-workstreams.sql re-authors
+  2-6a/b/c relational (context_for = ONE recursive CTE; context_for_hop +
+  ensure_studies_graph DELETED; todos parent kinds lowercased
+  workstream|doc|todo, 'Phase' retired); resolver/similarity/doc_show
+  renamed + relational (doc_similar pure SQL); Dockerfile stage-2 AGE
+  build DELETED (runtime = plain pgvector); doc_* swept through ALL chain
+  + replay files AND Go daemons (MCP tools study_search/get/similar/
+  citations→doc_*; doc_history found by virgin assertion sweep);
+  rename-map grew ~27 rows. VERIFIED: virgin CREATE EXTENSION with age
+  NOT AVAILABLE (0 in pg_available_extensions), 0 study% functions,
+  import/citations/declared-edges/todos/phases/context_for walk/doc_show/
+  doc_search/doc_get all smoke green; go build+vet green (GOWORK=off).
+  Blueprint gaps fixed: h3-1 mapped (work_items half → 04), 6a removed
+  from 04 sources; audit notes in blueprint (parse_gospel_links
+  genericization, embed-config at B5, watchman study_id cols at B2,
+  l6 wrapper names at B4).
+  **NEXT = B2** (03-watchman..07-steward per blueprint §Batch plan):
+  consolidate 2-7a/3a/2-7b1-b4 → 03-watchman.sql (rename watchman tables'
+  study_id cols → doc_id + rename-map rows), 3c1/3c2/3c2-5/3c3core/
+  3c3-1/3c3-3/3c3-5/i1-i3/h3-1(work_items)/h3-followup-2 → 04-work-items,
+  3e2-1/2/3core/h1-5a/h1-7a → 05-mcp-bridge, cost files → 06, steward →
+  07. Verification loop per batch (build → virgin scratch → assertions →
+  commit). Then B3-B6.
   (3) Private manifest REPAIRED (root `e5ccc0c3`): 9 live-applied migrations
   (r11-r17, ct2-5, ct2-7e) restored from ledger order; found the runner is
   LEXICAL + manifest-blind (replayed scratch-ct2-run2 into live 06-10 —
