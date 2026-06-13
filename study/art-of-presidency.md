@@ -23,7 +23,7 @@ The phrase appears twice in the Doctrine and Covenants, and both times it bears 
 
 "All things." Not some things. Not the important things. All things. And the mechanism is not democratic — it's spiritual: "by much prayer and faith." The Lord is not establishing a ballot system. He's establishing a spiritual process where the body of the Church participates in His governance through the Spirit.
 
-Webster 1828 defines "consent" in two dimensions: to *agree in sentiment* and to *express a willingness*. Both are operating in D&C 26. When you raise your hand, you're saying two things simultaneously: I concur with this decision, and I'm willing to support it. Agreement of mind plus commitment of will.
+Webster 1828 defines "consent": "to agree in mind and will; to yield to what one has the power, the right, or the disposition to withhold." The noun is "a yielding of the mind or will to that which is proposed." *(Requoted 2026-06-12 — the earlier two dimensions, "agree in sentiment" and "express a willingness," were the 1913 edition's.)* Both halves are operating in D&C 26. When you raise your hand, you're saying two things simultaneously: I agree in mind and will, and I yield support I had the right to withhold. Agreement of mind plus commitment of will.
 
 The context of D&C 28 sharpens this further. The revelation came because Hiram Page was receiving false revelations through a seer stone, and some Church members accepted them. Verse 12 draws the doctrinal line: "neither shall anything be appointed unto any of this church contrary to the church covenants." Common consent isn't courtesy. It's the safeguard. Without it, false authority creeps in unchecked.
 
@@ -33,7 +33,7 @@ Elder Mark E. Petersen, in a 1974 conference talk, made the claim explicit: "The
 
 The scripture itself does not use the word "covenant" for sustaining. But the language of D&C 107:22 is unmistakably covenantal: the First Presidency is to be "upheld by the confidence, faith, and prayer of the church." Three words. Confidence — active trust. Faith — not just belief but spiritual investment. Prayer — ongoing intercession for the person. This is not a checkbox. It's a relationship.
 
-And consider Webster 1828's definition of "sustain": to keep from falling, to keep from sinking in despondence, to maintain and nourish, to aid and comfort, to vindicate. When we sustain a leader, we're committing to all of this. The sustaining vote is a promise of *active, ongoing support* — not a one-time gesture that expires when the hand comes down.
+And consider Webster 1828's definition of "sustain": to bear and uphold; to keep from falling; to keep from sinking in despondence; to maintain and keep alive; to support by aid, to assist or relieve. *(Realigned 2026-06-12 — the earlier list's "nourish," "comfort," and "vindicate" came from the 1913 edition's senses.)* When we sustain a leader, we're committing to all of this. The sustaining vote is a promise of *active, ongoing support* — not a one-time gesture that expires when the hand comes down.
 
 Mosiah understood this. When he argued for judges over kings, his reasoning was not just political but covenantal: "The burden should come upon all the people, that every man might bear his part" ([Mosiah 29:34](../gospel-library/eng/scriptures/bofm/mosiah/29.md)). Governance is not the leader's burden alone. When we sustain someone, we're shouldering our share, not offloading the weight onto them.
 
@@ -57,7 +57,7 @@ President Uchtdorf drew a distinction that matters:
 
 > "To sacrifice means to give something up in favor of something more valuable. … Consecration is different from sacrifice in at least one important way. When we consecrate something, we don't leave it to be consumed upon the altar. Rather, we put it to use in the Lord's service." ([Our Heartfelt All](../gospel-library/eng/general-conference/2022/04/57uchtdorf.md))
 
-A calling involves both. You sacrifice personal time — that time is given up, and it doesn't come back. But you consecrate what you bring to the calling — your energy, your attention, your preparation, your prayers. The sacrifice is what you lose. The consecration is what you redirect. The General Handbook captures both: "Your consecrated service requires a sacrifice of time, but it also brings great blessings to you and those you serve" ([Handbook 30.1](../gospel-library/eng/manual/general-handbook/30-callings-in-the-church.md)).
+A calling involves both. You sacrifice personal time — that time is given up, and it doesn't come back. But you consecrate what you bring to the calling — your energy, your attention, your preparation, your prayers. The sacrifice is what you lose. The consecration is what you redirect. The General Handbook captures the cost and bounds it: "Your consecrated service requires a sacrifice of time, but do not neglect your own needs and the needs of your family" ([Handbook 4.0](../gospel-library/eng/manual/general-handbook/4-leadership-in-the-church-of-jesus-christ.md)), and the sentence's own footnote is Mosiah 4:27, the pacing verse. *(Requoted 2026-06-12 — an earlier version carried a "brings great blessings" continuation the Handbook doesn't have, cited to 30.1.)*
 
 And what is the return? Alma told us:
 
@@ -71,7 +71,7 @@ King Benjamin had already established why this exchange works:
 
 Everything we have belongs to God. The substance. The time. The life. Consecration isn't giving God something extra. It's acknowledging that it was always His. When we consecrate time to a calling, we're returning what was given.
 
-Webster 1828 gives "consecration" as "the state of being consecrated; dedication." Not a one-time act. A state. You don't consecrate your time to a calling at the moment of setting apart and then coast. You remain in a state of consecration — or you don't. The ongoing dedication is the difference between a calling fulfilled and a calling occupied.
+Webster 1828 gives "consecration" as "the act or ceremony of separating from a common to a sacred use, or of devoting and dedicating a person or thing to the service and worship of God." *(Requoted 2026-06-12 — the earlier "state of being consecrated; dedication" was the 1913 edition's, and the paragraph leaned on it.)* The act is momentary; what it creates is not. Webster adds that consecration "declares it to be sacred, that is, devoted to God" — and devoted is what you stay, or stop being. You don't consecrate your time to a calling at the moment of setting apart and then coast. The ongoing devotion is the difference between a calling fulfilled and a calling occupied.
 
 This also scales. In a Sunday School presidency, consecration looks like preparing lessons, training teachers, attending council meetings, praying for students by name. In a bishopric, it means late-night interviews, heavy administrative hours, spiritual burdens carried in private. In the First Presidency, it means a life entirely given over to the Lord's service. The cost increases with the scope. The principle — putting what you have to use in the Lord's service — does not change.
 
