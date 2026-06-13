@@ -2444,6 +2444,23 @@ days before he died" EXACT — died Apr 19, 1985, talk Apr 6
 (family's own account, BYU RSC). Neither Webster fix QUEUED: unlike
 #185 CONSTRAINED, the genuine 1828 SUPPORTS the argument here.
 
+### study/freedom/00-frame.md (2026-05-31) — CLEAN
+T2. Governing document for the freedom study project (charged
+end-times material, carefully guard-railed with a three-tier
+[ESTABLISHED]/[INTERPRETIVE]/[SPECULATIVE] labeling discipline).
+Four scripture quotes all verbatim: Mormon 8:35 ("Jesus Christ
+hath shown you unto me, and I know your doing"), Matt 24:36 ("Of
+that day and hour knoweth no man," trim), D&C 49:7 ("the hour and
+the day no man knoweth"), D&C 87:8 ("stand in holy places, and be
+not moved," "ye" dropped — common rendering). Sibling links resolve
+(christ-in-all-the-scriptures.md, without-compulsion.md); no broken
+gospel-library links. Spot-checked two of the frame's own scriptural
+fact-corrections — both right: Hel 14:2 "five years more cometh"
+(Samuel, not six) and D&C 98:6 "befriending that law" ("befriend"
+verbatim). The amendment/eclipse/history facts are flagged in the
+frame for the topic + provenance files — verified there as the walk
+reaches them. CLEAN.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
