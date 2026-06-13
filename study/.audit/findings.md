@@ -4012,6 +4012,35 @@ trading the judgment-seat for pure testimony. Verified by direct grep.
   reclaim them save it were in bearing down in pure testimony against them" —
   EXACT (Alma steps down from the judgment-seat to preach).
 
+### Alma 25-27, 29 (2026-06-13, 411→415) — ALL CLEAN
+
+The close of the sons-of-Mosiah grievance-cure arc and Alma's great
+soliloquy. Abinadi's fire harvested cross-book, Ammon's psalm, the people of
+Ammon woven into Nephite society, and "O that I were an angel." Verified by
+direct grep.
+
+- **Alma 25** (the law as type): v16 "they did not suppose that salvation came
+  by the law of Moses; but the law of Moses did serve to strengthen their
+  faith in Christ" — EXACT (the converts' right theology vs. the Nehorite
+  counterfeit; the cleanest cross-book prophecy fulfillment — Abinadi's
+  Mosiah 13 type harvested here).
+- **Alma 26** (Ammon's psalm): v12 "I know that I am nothing; as to my strength
+  I am weak; therefore… in his strength I can do all things," v37 "God is
+  mindful of every people, whatsoever land they may be in… his bowels of
+  mercy are over all the earth" — EXACT (the BoM's Philippians 4:13 with the
+  "I am nothing, therefore" condition front-loaded; v37 a universal-care
+  datapoint for the 5:21 file).
+- **Alma 27** (the people of Ammon): v17 "swallowed up in the joy of his God,
+  even to the exhausting of his strength; and he fell again to the earth,"
+  v28 "they never did look upon death with any degree of terror… death was
+  swallowed up to them by the victory of Christ over it" — EXACT (the armed
+  bear the sword for the unarmed-by-conscience; seeds the stripling warriors).
+- **Alma 29** (O that I were an angel): v3 "I am a man, and do sin in my wish;
+  for I ought to be content with the things which the Lord hath allotted unto
+  me," v8 "the Lord doth grant unto all nations, of their own nation and
+  tongue, to teach his word" — EXACT (the Mosiah 4:27 / honor_scope pacing
+  covenant read from the inside; v8 a 5:21-adjacent universal-care datapoint).
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)

@@ -430,10 +430,10 @@ Already done out-of-band: `study/morm-8-three-glories-reading.md` (2026-06-09).
 - [x] 2026-06-02 `study/bom-walk/alma/alma-02.md` **LINKS** — CLEAN (Amlici rejected; v7 "the voice of the people came against Amlici, that he was not made king over the people" EXACT — the Mosiah-29 voice-of-the-people machinery holding under its first stress test)
 - [x] 2026-06-02 `study/bom-walk/mosiah/mosiah-24.md` **LINKS** — CLEAN (burdens made light; v14 "I, the Lord God, do visit my people in their afflictions," v15 "the burdens… were made light… they could bear up their burdens with ease… submit cheerfully and with patience" EXACT — deliverance IN affliction, not from it)
 - [x] 2026-06-02 `study/bom-walk/alma/alma-04.md` **LINKS** — CLEAN (the gavel for the testimony; v19 "seeing no way that he might reclaim them save it were in bearing down in pure testimony against them" EXACT — Alma trades the judgment-seat for the word)
-- [ ] 2026-06-02 `study/bom-walk/alma/alma-25.md` **LINKS**
-- [ ] 2026-06-02 `study/bom-walk/alma/alma-26.md` **LINKS**
-- [ ] 2026-06-02 `study/bom-walk/alma/alma-27.md` **LINKS**
-- [ ] 2026-06-02 `study/bom-walk/alma/alma-29.md` **LINKS**
+- [x] 2026-06-02 `study/bom-walk/alma/alma-25.md` **LINKS** — CLEAN (the law as type; v16 "they did not suppose that salvation came by the law of Moses; but the law of Moses did serve to strengthen their faith in Christ" EXACT — converts grasp the schoolmaster the Nehorites never did)
+- [x] 2026-06-02 `study/bom-walk/alma/alma-26.md` **LINKS** — CLEAN (Ammon's psalm; v12 "I am nothing; as to my strength I am weak… in his strength I can do all things," v37 "God is mindful of every people… his bowels of mercy are over all the earth" EXACT — the BoM's Philip 4:13 + a universal-care datapoint)
+- [x] 2026-06-02 `study/bom-walk/alma/alma-27.md` **LINKS** — CLEAN (the people of Ammon; v17 "swallowed up in the joy of his God, even to the exhausting of his strength," v28 "death was swallowed up to them by the victory of Christ over it" EXACT — the armed bear the sword for the unarmed-by-conscience)
+- [x] 2026-06-02 `study/bom-walk/alma/alma-29.md` **LINKS** — CLEAN (O that I were an angel; v3 "I am a man, and do sin in my wish; for I ought to be content with the things which the Lord hath allotted unto me," v8 "the Lord doth grant unto all nations, of their own nation and tongue, to teach his word" EXACT — the pacing covenant from the inside)
 - [ ] 2026-06-02 `study/bom-walk/alma/alma-30.md` **LINKS**
 - [ ] 2026-06-02 `study/bom-walk/alma/alma-03.md` **LINKS**
 - [ ] 2026-06-02 `study/bom-walk/alma/alma-32.md` **LINKS**
