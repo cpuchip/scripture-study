@@ -2053,6 +2053,12 @@ Revelation, Smith-Sjodahl, Oaks 1987 Ensign, Cannon 2012) carried
 as cited secondary sources; the sprout→rod→Aaron manuscript
 progression matches the JSP record the study links.
 
+### study/mechanics-of-refinement.md (2026-05-23) — CLEAN
+FULL. All quotes verbatim: D&C 93:28-39, 88:6/22/28/34/35/40,
+122:7-8, 131:7, 130:22, Alma 7:11-13, 3 Ne 24:3; talks exact
+(Nelson 1998, Oaks 2000 become, Bednar 2007 clean-hands/pure-heart
+pair, Eyring 2019, Pingree 2023).
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
