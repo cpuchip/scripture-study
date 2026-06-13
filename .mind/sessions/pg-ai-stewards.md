@@ -3,10 +3,29 @@ lane: pg-ai-stewards
 session_id: 7ea7faa4-688a-451a-ac68-b7ea662d4b81
 status: active
 started: 2026-06-11T22:00:16
-last_active: 2026-06-12T22:39:31
+last_active: 2026-06-12T23:27:47
 ---
 
 ## Working on
+- **AUTHORING LEG B4/15a SHIPPED 2026-06-13 (OSS `ad4f675`, pushed):**
+  `15a-context-engrams.sql` = the engram + corpus DATA layer (15 split into
+  15a-data / 15b-surface). Engram schema/extractor (es6 prompt + es7/es6 final
+  fns), provider_rules + budget cascade + render_engrams_under_pressure,
+  engram_embeddings + search, messages_raw_overflow parents + sha helper,
+  map-reduce, injection screen, embed-route/model-sub triggers, kind breaker,
+  5 engram tool_defs. **Authored the post-es9 FINAL state — never
+  build-then-drop:** the leaf-chunk-embed corpus (l14 leaves/l15/l16/l17/es3/es4)
+  was dropped by es9 (ratified ES.3 council); 15a omits it + 3 orphan helpers
+  es9 left in live (split_one_chunk/find_last_break_pos/leaf-contextualizer)
+  → FLAG for 20-mismatch classification. Virgin smoke green; 27 files retired;
+  manifest 97→70; ext dir 86 .sql; secret-scan clean. **NEXT = B4/15b**
+  (`15b-context-surface.sql`, fresh context): compose_messages FINAL=ct2-7a2 +
+  compose_tools FINAL=ct2-7b + judge-brief path (es7) + l6 wrappers w/ FIRST
+  doc_* renames + l7/l8 + l24/l25 + l30/l31/l32 caps + es1 cancel +
+  ct2-1/2/3 + ct2-7a/7a2/7b self-notes + ct2-7d tags. Resolve at 15b:
+  pgcrypto→built-in sha256(); OMIT dead judge_templates(l18)+render_judge_surface(l22).
+  Resume doc = blueprint B4/15b NEXT block. Blueprint `<pending>` hash to fix
+  with the 15b commit = ad4f675.
 - **★ P1 EXTRACTION UNDERWAY (kicked off 2026-06-12, Michael's "Lets kick off P1!"):**
   (1) `github.com/cpuchip/pg-ai-stewards-workspace` (PRIVATE) created at
   `projects/pg-ai-stewards-workspace/` — skeleton + covenant/intent overlay
