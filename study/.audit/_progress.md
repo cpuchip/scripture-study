@@ -168,7 +168,7 @@ Already done out-of-band: `study/morm-8-three-glories-reading.md` (2026-06-09).
 - [x] 2026-05-01 `study/broken-heart-and-contrite-spirit.md` **T1+FULL** — BROKEN/CONTRITE/HUMBLE 1913 (words 115-117; genuine CONTRITE cites Ps 51:17 itself); Ps 51:8 + Alma 34:16 micro-fixes; hot-zone talks exact
 - [x] 2026-05-01 `study/yt/matt-pocock-ai-workflow.md` **SAMPLE** — "faithful over a few things" confabulation removed; Dex Horthy corrected; quotes verbatim
 - [x] 2026-05-04 `study/yt/matt-pocock-ai-workflow-research.md` **SAMPLE** — Dex Horthy propagation fixed; Bswen quote verified live; links resolve
-- [ ] 2026-05-06 `study/second-coming-preparation.md` **FULL**
+- [x] 2026-05-06 `study/second-coming-preparation.md` **FULL** — Oaks question de-flattened; 1 Ne 22:17 "we"→"the righteous"; ~35 talk quotes verbatim across 11 talks
 - [ ] 2026-05-07 `study/two-triplets-one-ascent.md` **FULL**
 - [ ] 2026-05-09 `study/mysteries-of-god-text-vs-spirit.md` **FULL**
 - [ ] 2026-05-10 `study/iron-rod-anchor-and-the-four-groups.md` **FULL**

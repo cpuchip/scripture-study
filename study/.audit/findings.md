@@ -1924,6 +1924,22 @@ token-efficiency, brain-simplification, pg-ai-stewards proposal)
 all resolve; Michael's reaction quote = participant record; the
 file's own Sandcastle-README correction of the kimi review stands.
 
+### study/second-coming-preparation.md (2026-05-06) — 2 voice fixes across ~35 talk quotes
+FULL (11 talks). Oaks's "Are we promisers who do not fulfill and
+believers who do not perform?" is a QUESTION — the study had
+flattened it to "We are…" (fixed). 1 Ne 22:17 reads "the
+righteous need not fear" — the study had Nephi saying "We need
+not fear" (fixed). Everything else verbatim: McConkie 1977
+(three-phase + stake-of-Zion), Benson 1987 (+ "more righteous
+part" = 3 Ne 10:12 ✓), Hinckley 1999 ×3, Golden 2021 (bracketed
+camouflage[s] proper), Oaks 2004 ×6 (arithmetic, 72-hour kit,
+tomorrow question, holy places, game), Nelson 2022 ×4 (incl.
+gathering/able-ready-worthy — italics hid it from first grep),
+Bednar 2022 ×3 (+ JST six-words claim + Reid), Cook-quoting-
+Nelson 2023, Eubank 2017, Christofferson 2026, Nelson 2021 ×6
+(five practices). Scriptures verbatim (D&C 115:6/87:8/49:27-28,
+3 Ne 6:18, 2 Pet 3:3-4, Hel 16 "not reasonable").
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
