@@ -174,8 +174,8 @@ Already done out-of-band: `study/morm-8-three-glories-reading.md` (2026-06-09).
 - [x] 2026-05-10 `study/iron-rod-anchor-and-the-four-groups.md` **FULL** — one micro-requote (1 Ne 15:27); ~60 quotes + 4 footnote claims verified exact
 - [x] 2026-05-17 `study/last-supper-four-cups.md` **T2+FULL** — PASSOVER 1913 tail (word 118); ~45 quotes + 5 footnote claims verified exact
 - [x] 2026-05-18 `study/what-abides.md` **T1+FULL** — ABIDE 1913 propagation requoted ×2; nine-in-seven count exact; rest verbatim
-- [ ] 2026-05-19 `study/yt/gospel/ytt-rerun-yt-gospel-morgan-philpot.md` **SAMPLE**
-- [ ] 2026-05-19 `study/daily-digest/pe-final-research-summary-smoke.md` **SAMPLE**
+- [x] 2026-05-19 `study/yt/gospel/ytt-rerun-yt-gospel-morgan-philpot.md` **SAMPLE** — substrate honest-refusal artifact, quotes nothing by design; untouched
+- [x] 2026-05-19 `study/daily-digest/pe-final-research-summary-smoke.md` **SAMPLE** — PE smoke-test pipeline capture; machine artifact, untouched
 - [ ] 2026-05-19 `study/yt/gospel/ytt-rerun2-yt-gospel-philpot-marshfield.md` **T1**
 - [ ] 2026-05-20 `study/daily-digest/ai-news-7am--2026-05-20-1300.md` **SAMPLE**
 - [ ] 2026-05-21 `study/daily-digest/ai-news-7am--2026-05-21-1300.md` **SAMPLE**

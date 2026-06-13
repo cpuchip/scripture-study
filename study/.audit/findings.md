@@ -2001,6 +2001,15 @@ the consequences." The "nine times in the seven verses of John
 verbatim modulo dropped editorial brackets; D&C 130:7/22/23, 1 Jn
 2:24, Mosiah 17-18 fragments, D&C 130:18 all exact.
 
+### study/yt/gospel/ytt-rerun + study/daily-digest/pe-smoke (2026-05-19) — substrate artifacts, untouched
+SAMPLE ×2. The YTT rerun file is the substrate's honest-refusal
+artifact — it deliberately quotes NOTHING because the transcript
+was unavailable (that refusal is the document's whole point; its
+corpus-level Philpot characterization matches the walked philpot
+cluster). The daily-digest file is a PE-pipeline smoke-test output
+capture. Both are machine artifacts of record —
+documented-not-endorsed, no fixes applicable.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
