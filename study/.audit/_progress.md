@@ -273,8 +273,8 @@ Already done out-of-band: `study/morm-8-three-glories-reading.md` (2026-06-09).
 - [x] 2026-06-01 `study/bom-walk/1-nephi/1-nephi-12.md` **LINKS** — CLEAN (the destruction foreseen; v17 mist=temptations, v18 building=pride + gulf=justice+Messiah, v23 "dark, and loathsome, and a filthy people" (the flagged 5:21-tension language, quoted accurately + tied to "dwindled in unbelief") all EXACT)
 - [x] 2026-06-01 `study/bom-walk/1-nephi/1-nephi-22.md` **LINKS** — CLEAN (★ 1 NEPHI COMPLETE; Nephi expounds Isaiah; v14 pit-digger, v26 "because of the righteousness of his people, Satan has no power," v31 "endure to the end, ye shall be saved at the last day" all EXACT)
 - [x] 2026-06-01 `study/bom-walk/1-nephi/1-nephi-21.md` **LINKS** — CLEAN (Isaiah 49; ★ v1 "broken off… pastors of my people" preamble confirmed by direct comparison; v15 "can a woman forget her sucking child," v16 "graven thee upon the palms of my hands" EXACT)
-- [ ] 2026-06-01 `study/bom-walk/2-nephi/2-nephi-07.md` **LINKS**
-- [ ] 2026-06-01 `study/bom-walk/2-nephi/2-nephi-04.md` **LINKS**
+- [x] 2026-06-01 `study/bom-walk/2-nephi/2-nephi-07.md` **LINKS** — CLEAN (Isaiah 50; ★ v1 "Have I put thee away, or have I cast thee off forever?" prepend confirmed by direct comparison — the comfort 2 Ne 10:20 "we are not cast off" lands on; v6 "gave my back to the smiter," v7 "face like a flint," v11 "kindle fire… lie down in sorrow" EXACT)
+- [x] 2026-06-01 `study/bom-walk/2-nephi/2-nephi-04.md` **LINKS** — CLEAN (Psalm of Nephi; v17 "O wretched man that I am!", v18 "sins which do so easily beset me," v19 "nevertheless, I know in whom I have trusted," v28 "Awake, my soul!", v34 "arm of flesh," v35 "give liberally to him that asketh" all EXACT)
 - [ ] 2026-06-01 `study/bom-walk/studies/2ne2_fall-agency-opposition.md` **T1**
 - [ ] 2026-06-01 `study/bom-walk/2-nephi/2-nephi-05.md` **LINKS**
 - [ ] 2026-06-01 `study/bom-walk/2-nephi/2-nephi-03.md` **LINKS**

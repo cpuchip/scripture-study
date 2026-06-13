@@ -3088,6 +3088,23 @@ LINKS ×3. No markdown links.
 - 1 Nephi (all 22 chapters) verified CLEAN end to end. Four Isaiah-block
   variants (20:1, 21:1) + the vision-symbol interpretations all hold.
 
+### #276-277 `2-nephi-07 + 2-nephi-04` — bom-walk LINKS — BOTH CLEAN
+- **2-nephi-07 (Isaiah 50):** ★ the v1 prepend confirmed by direct
+  2 Ne 7:1 ↔ Isa 50:1 comparison — BoM adds "Yea, for thus saith the
+  Lord: **Have I put thee away, or have I cast thee off forever?**"
+  before the KJV's "Where is the bill of your mother's divorcement"
+  (tilts the chapter from accusation to comfort — and it is exactly
+  the "cast off forever?" that 2 Ne 10:20 "we are not cast off"
+  answers). v6 "I gave my back to the smiter… shame and spitting," v7
+  "set my face like a flint," v11 "kindle fire… ye shall lie down in
+  sorrow" EXACT.
+- **2-nephi-04 (Psalm of Nephi):** v17 "O wretched man that I am!"
+  (Rom 7:24), v18 "the sins which do so easily beset me," v19
+  "nevertheless, I know in whom I have trusted," v28 "Awake, my soul!
+  No longer droop in sin," v34 "I will not put my trust in the arm of
+  flesh," v35 "God will give liberally to him that asketh" (James 1:5)
+  — all EXACT. Both CLEAN.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
