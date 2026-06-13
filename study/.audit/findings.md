@@ -1845,6 +1845,12 @@ the cord (62:36), the anger and its cause (62:35), the sorrow
 eulogy (62:37), the 25th/31st-year dating, "every man of Teancum
 did exceed," and the city Teancum near Desolation (Mormon 4:3).
 
+### study/discernment-and-the-comprehending-eye.md (2026-04-30) — CLEAN
+FULL. No Webster quotes. All ~15 scripture renderings verbatim
+(D&C 93:24-25, 50:24, 88:13/40/67-68, Matt 6:22-23, Ether 12:4/6,
+Moses 6:36, Moro 7:15/45/48, 10:22, Jacob 4:13-14); cross-study
+links resolve.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)

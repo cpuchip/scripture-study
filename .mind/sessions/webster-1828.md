@@ -88,6 +88,23 @@ last_active: 2026-06-12T15:38:52
   removed (living copy in becoming/). ai/ files: 5 broken links fixed,
   Khare quote was 5 sentences compressed to 1 (requoted vs live page).
   NEXT: #128 tower-of-babel.md T1+FULL.
+- UPDATE 7: ★ 150/469 — Webster count at 110 1913-as-1828 words.
+  Files 128-150: ★ CONSECRATION = word 100 (the "state, not act"
+  paragraph was built on the 1913); give-away-all-my-sins had FIVE
+  1913 words (GIVE/FORSAKE/REPENT/POSSESS/KNOW) + Alma 22:18 dropped
+  an "and" twice + McKay-wasn't-President-in-1950 fixed; art-of-
+  delegation: the BURDEN-vs-LOAD blockquote was the 1913's SYNONYM
+  NOTE (NEVERTHELESS class — genuine BEAR cites Isa 53:11 + one-
+  another's-burdens itself, YOKE cites Matt 11:30, ONLY's adverb
+  entry cites "only-begotten"). Confabulation class: Teancum story
+  called Helaman his father (no such kinship in scripture); gc-2026-04
+  Wakolo quote was a constructed blend; Cook quote had an inserted
+  phrase; Oaks closing said "world" not "life". Counted-number class
+  keeps paying: "Matt 27:46 33x since Brigham Young" EXACT; Maxwell's
+  six Alma-22:18 talks EXACT; monogenes 7→9; Moses 1 count = 9-across-
+  8-verses (footnote markers inside the phrase hid one from grep).
+  LIKEN held genuine (#148); discernment-eye CLEAN (#150).
+  NEXT: #151 best-books-and-the-spirit-of-discernment.md FULL.
 - ✅ OCR repair SHIPPED + live-verified (1336c8ce); walk plan RATIFIED
   (.spec/proposals/study-correctness-walk.md)
 
