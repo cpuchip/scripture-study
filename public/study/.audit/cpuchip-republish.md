@@ -19,7 +19,7 @@ pass (did the republish faithfully carry the original, or did it diverge?).
 
 | Published slug (cpuchip) | Workspace original | Walk status | Re-publish? |
 |---|---|---|---|
-| ⚠️ **send-me-covenants** | `study/yt/V40tBshkMnE-send-me-covenants.md` | corrected (#176) | ★★★ **YES — HIGHEST: two fabricated "Todd says" quotes are live on the public site** (one was Michael's own §VI prose, one was Ether 6:9); + law-of-Moses blend + POSSESS 1913→1828 |
+| ✅ **send-me-covenants** | `study/yt/V40tBshkMnE-send-me-covenants.md` | corrected (#176) | ✅ **DONE 2026-06-13 + SHIPPED** (cpuchip commit, validate+build green, pushed → Dokploy; site 200). All 4 fixes carried: both fabricated "Todd says" quotes reassigned (study §VI prose + Ether 6:9 scripture, Todd's genuine parallels quoted), law-of-Moses blend split, POSSESS 1913→1828 (re-confirmed vs MCP). **Silent accurate fix** on the public face — visible-note choice left to Michael (journal: `projects/cpuchip.net/.spec/journal/2026-06-13-parity-pass-send-me-covenants.md`). Live SPA-render verify (Playwright) deferred. |
 | ⚠️ **give-away-all-my-sins** | `study/give-away-all-my-sins.md` | corrected (#143) | YES — 5 Webster 1913 words (GIVE/FORSAKE/REPENT/POSSESS/KNOW); Alma 22:18 dropped "and" ×2; McKay-1950 + Luke 18:18 fixes |
 | ⚠️ **without-compulsion** | = the freedom synthesis (`study/freedom/99-synthesis.md`, titled "Without Compulsion"); cpuchip copy is the full study, not the workspace outline | corrected (#201, #205) | YES — COMPEL (#127) + SACRIFICE (#128) 1913→1828; ★ the D&C 130-vs-87 "same day" date error. **Verify which version cpuchip published before editing.** |
 | ⚠️ **four-groups-and-the-engineer** | `study/four-groups-and-the-engineer.md` | corrected (#181) | YES — EASINESS (#120) + CIRCUMSPECTLY (#121) 1913→1828 |
@@ -69,6 +69,19 @@ When the walk completes (469/469), do these three, in order:
    `projects/cpuchip.net/content/studies/<slug>.md`, rebuild, verify each live
    page (★ send-me-covenants first — fabricated quotes are live). Michael
    confirmed 2026-06-13: "yes update the cpuchip.net studies when you are done."
+
+   **STATUS 2026-06-13: ✅ COMPLETE — 11 of 11 shipped + live.** Michael:
+   "I prefer silent fixes there." All carried silently (workspace originals keep
+   their dated correction notes for the audit trail; the published face reads
+   accurate). Two commits: send-me-covenants (`projects/cpuchip.net/.spec/
+   journal/2026-06-13-parity-pass-send-me-covenants.md`) + the other 10
+   (`…-parity-pass-complete.md`). Every Webster entry re-confirmed GENUINE vs
+   the repaired MCP; every scripture/date vs source. validate + build green;
+   cpuchip.net + study routes 200. **morm-8-three-glories needed no change** —
+   its `<S>` tag already targeted dc/109 v=76 (the walk's link fix was only to
+   the workspace's relative-link form), Webster already genuine. **Bonus catch:**
+   hope-and-the-grammar-of-pairs had a broken `<S>` tag (Matt 18:16 mistagged
+   `nt/matt/6 v=22`) + a leaked editorial artifact, both fixed.
 
 3. **Leave a note for the scripture-book agent** (do NOT edit the book myself —
    its own stewardship). Michael: "we should probably double check on the book
