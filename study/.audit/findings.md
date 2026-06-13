@@ -3629,6 +3629,27 @@ BoM-vs-KJV source comparison, the discipline these chapters demand.
   (the JS-H/D&C 2 expanded rendering correctly noted as NOT appearing here).
   The chapter note's variant analysis is impeccable.
 
+### 3 Nephi 26-29 (2026-06-13, 341→345) — ALL CLEAN
+
+The 3 Nephi close: the lesser-part-to-try-faith doctrine, the name + the
+gospel defined, the three Nephites + translation, and Mormon's address to
+the latter-day reader. Verified by direct grep.
+
+- **3 Ne 26** (the lesser part): v9 "to try their faith… then shall the
+  greater things be made manifest," v16 "babes did open their mouths and
+  utter marvelous things" — EXACT.
+- **3 Ne 27** (the name + the gospel defined): v8 "if it be called in my name
+  then it is my church, if it so be that they are built upon my gospel," v21
+  "this is my gospel," v27 "what manner of men ought ye to be? Verily I say
+  unto you, even as I am" — all EXACT.
+- **3 Ne 28** (three Nephites + translation): v10 "ye shall be even as I am,
+  and I am even as the Father; and the Father and I are one" (is-Jesus-God
+  chain), v37 "since I wrote, I have inquired of the Lord" (Mormon modeling
+  the honest record) — EXACT.
+- **3 Ne 29** (the record is the sign): v6 "wo unto him that shall deny the
+  revelations of the Lord… no longer worketh by revelation, or by prophecy,
+  or by gifts" (cessationism woe), v8 "nor make game of the Jews" — EXACT.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)

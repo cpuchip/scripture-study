@@ -360,10 +360,10 @@ Already done out-of-band: `study/morm-8-three-glories-reading.md` (2026-06-09).
 - [x] 2026-06-02 `study/bom-walk/3-nephi/3-nephi-23.md` **LINKS** — CLEAN (search Isaiah + the record audited; v1 "great are the words of Isaiah," v11 "How be it that ye have not written this thing" EXACT)
 - [x] 2026-06-02 `study/bom-walk/3-nephi/3-nephi-24.md` **LINKS** — CLEAN (Malachi 3; v6 "I am the Lord, I change not," v10 "prove me now herewith," v16 "a book of remembrance" all EXACT; ★ Malachi KJV variant analysis verified — 24:10 "my house" vs KJV "mine house" confirmed)
 - [x] 2026-06-02 `study/bom-walk/3-nephi/3-nephi-25.md` **LINKS** — CLEAN (Malachi 4; ★ the marquee variant 25:2 "Son of Righteousness" vs KJV "Sun of righteousness" CONFIRMED by direct comparison, "calves in the stall" vs KJV "of the stall" confirmed, v6 "turn the heart of the fathers to the children… lest I come and smite the earth with a curse" identical to KJV — all EXACT)
-- [ ] 2026-06-02 `study/bom-walk/3-nephi/3-nephi-26.md` **LINKS**
-- [ ] 2026-06-02 `study/bom-walk/3-nephi/3-nephi-27.md` **LINKS**
-- [ ] 2026-06-02 `study/bom-walk/3-nephi/3-nephi-28.md` **LINKS**
-- [ ] 2026-06-02 `study/bom-walk/3-nephi/3-nephi-29.md` **LINKS**
+- [x] 2026-06-02 `study/bom-walk/3-nephi/3-nephi-26.md` **LINKS** — CLEAN (the lesser part to try faith; v9 "to try their faith… then shall the greater things be made manifest," v16 "babes did open their mouths and utter marvelous things" EXACT)
+- [x] 2026-06-02 `study/bom-walk/3-nephi/3-nephi-27.md` **LINKS** — CLEAN (the name + the gospel defined; v8 "if it be called in my name then it is my church, if it so be that they are built upon my gospel," v21 "this is my gospel," v27 "what manner of men ought ye to be? Verily I say unto you, even as I am" all EXACT)
+- [x] 2026-06-02 `study/bom-walk/3-nephi/3-nephi-28.md` **LINKS** — CLEAN (the three Nephites + translation; v10 "ye shall be even as I am, and I am even as the Father; and the Father and I are one" EXACT — is-Jesus-God chain, v37 "since I wrote, I have inquired of the Lord" EXACT)
+- [x] 2026-06-02 `study/bom-walk/3-nephi/3-nephi-29.md` **LINKS** — CLEAN (the record is the sign; v6 "wo unto him that shall deny the revelations of the Lord… no longer worketh by revelation, or by prophecy, or by gifts," v8 "nor make game of the Jews" EXACT)
 - [ ] 2026-06-02 `study/bom-walk/3-nephi/3-nephi-30.md` **LINKS**
 - [ ] 2026-06-02 `study/bom-walk/4-nephi/4-nephi-1.md` **LINKS**
 - [ ] 2026-06-02 `study/bom-walk/3-nephi/3-nephi-20.md` **LINKS**
