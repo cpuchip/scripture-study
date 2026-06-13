@@ -2776,6 +2776,23 @@ flagged as footnote/2 Ne 11:2 reference, to verify if cited
 directly. This is the chapter Nephi anchored the block on (11:2).
 CLEAN.
 
+### study/bom-walk/2-nephi/2-nephi-17 + 2-nephi-18.md (2026-06-01) — CLEAN (Isaiah-variant chapters)
+LINKS ×2. No markdown links in either.
+  • 2-nephi-17 (Isaiah 7, near-identical): variants confirmed by
+    direct comparison — v14 BoM adds "shall" ("a virgin shall
+    conceive, and SHALL bear a son"); v18 BoM drops "the rivers of."
+    ★ The study's HONEST correction holds: "virgin" is NOT a BoM
+    distinctive — both BoM and KJV read "virgin" at 7:14 (the debate
+    is Hebrew almah / Greek parthenos, a translation matter). v9
+    faith-wordplay quote verbatim. Immanuel/dual-fulfillment +
+    Matt 1:23 flagged as footnote reference.
+  • 2-nephi-18 (Isaiah 8): ★ v19 variant confirmed — BoM "should not
+    a people seek unto their God for the living to HEAR FROM the
+    dead?" clarifies KJV's cryptic "for the living to the dead?";
+    v20 "to the law and to the testimony…no light in them" verbatim;
+    stone-of-stumbling = Christ flagged as footnote (Rom 9/Luke 2/
+    1 Pet 2). Both CLEAN.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)

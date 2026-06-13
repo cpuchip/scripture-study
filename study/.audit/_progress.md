@@ -237,8 +237,8 @@ Already done out-of-band: `study/morm-8-three-glories-reading.md` (2026-06-09).
 - [x] 2026-06-01 `study/bom-walk/2-nephi/2-nephi-14.md` **LINKS** — CLEAN (no md links; near-identical-to-KJV claim confirmed, 3 minor variants v2/v3/v5)
 - [x] 2026-06-01 `study/bom-walk/2-nephi/2-nephi-15.md` **LINKS** — CLEAN (no md links; v8/v29 BoM-shorter variants + six-woes count confirmed)
 - [x] 2026-06-01 `study/bom-walk/2-nephi/2-nephi-16.md` **LINKS** — CLEAN (no md links; v9 result-not-command + seraphim + "they shall return" variants confirmed)
-- [ ] 2026-06-01 `study/bom-walk/2-nephi/2-nephi-17.md` **LINKS**
-- [ ] 2026-06-01 `study/bom-walk/2-nephi/2-nephi-18.md` **LINKS**
+- [x] 2026-06-01 `study/bom-walk/2-nephi/2-nephi-17.md` **LINKS** — CLEAN (Isaiah 7; v14 "shall" + v18 variants confirmed; "virgin" correctly noted as shared with KJV)
+- [x] 2026-06-01 `study/bom-walk/2-nephi/2-nephi-18.md` **LINKS** — CLEAN (Isaiah 8; v19 "to hear from the dead" clarification confirmed)
 - [ ] 2026-06-01 `study/bom-walk/2-nephi/2-nephi-19.md` **LINKS**
 - [ ] 2026-06-01 `study/bom-walk/2-nephi/2-nephi-20.md` **LINKS**
 - [ ] 2026-06-01 `study/bom-walk/2-nephi/2-nephi-21.md` **LINKS**
