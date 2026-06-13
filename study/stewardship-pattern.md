@@ -24,7 +24,7 @@ Meanwhile, on the other side of the desk, the same person delegates to AI agents
 
 The irony isn't that machines are easy and humans are hard. It's that the same person who built bilateral covenants, progressive trust, and council-based collaboration with AI agents hasn't applied those same patterns to his human counselors. The stewardship pattern works in both directions. The question is whether the leader has learned it.
 
-The Lord put the pacing principle right next to the delegation principle. D&C 10:4: "Do not run faster or labor more than you have strength and means provided to enable you to translate; but be diligent unto the end" ([D&C 10:4](../gospel-library/eng/scriptures/dc-testament/dc/10.md)). The Exodus 18 footnotes cross-reference this to [Mosiah 4:27](../gospel-library/eng/scriptures/bofm/mosiah/4.md): "It is not requisite that a man should run faster than he has strength." The stewardship crisis and the pacing crisis are the same crisis. If you're running too fast, you're probably not delegating. If you're not delegating, you will surely run too fast.
+The Lord put the pacing principle right next to the delegation principle. D&C 10:4: "Do not run faster or labor more than you have strength and means provided to enable you to translate; but be diligent unto the end" ([D&C 10:4](../gospel-library/eng/scriptures/dc-testament/dc/10.md)). The footnote on that verse cross-references it to [Mosiah 4:27](../gospel-library/eng/scriptures/bofm/mosiah/4.md): "It is not requisite that a man should run faster than he has strength." The stewardship crisis and the pacing crisis are the same crisis. If you're running too fast, you're probably not delegating. If you're not delegating, you will surely run too fast.
 
 So: how does God delegate? The scriptures give us not one model but several — each adding a dimension the others lack.
 
@@ -75,7 +75,7 @@ Abraham's creation account uses language that none of the other creation account
 
 > "And the Gods took counsel among themselves and said: Let us go down and form man in our image, after our likeness" ([Abr 4:26](../gospel-library/eng/scriptures/pgp/abr/4.md))
 
-Delegation begins with shared deliberation. "Took counsel among themselves" — Webster 1828 defines counsel as "interchange of opinions; mutual advising; consultation." Not one God directing and others executing. An interchange. The Gods planned together before they acted.
+Delegation begins with shared deliberation. "Took counsel among themselves" — Webster 1828 defines counsel as "consultation; interchange of opinions," and illustrates with Psalm 55:14: "We took sweet counsel together." *(Requoted 2026-06-12 — the earlier "mutual advising" wording was the 1913 edition's.)* Not one God directing and others executing. An interchange. The Gods planned together before they acted.
 
 Then the execution pattern:
 
@@ -133,11 +133,11 @@ And at the end: "Alma and his fellow laborers" ([Mosiah 26:38](../gospel-library
 
 D&C 107 formalizes what all the previous patterns demonstrate. The phrase that appears at every quorum level is "sit in council with them":
 
-> "The duty of the president over the office of the Aaronic Priesthood, is to preside over forty-eight priests, and sit in council with them, to teach them the duties of their office" ([D&C 107:72](../gospel-library/eng/scriptures/dc-testament/dc/107.md))
+> "The duty of the president over the Priesthood of Aaron is to preside over forty-eight priests, and sit in council with them, to teach them the duties of their office, as is given in the covenants" ([D&C 107:87](../gospel-library/eng/scriptures/dc-testament/dc/107.md))
 
-> "The duty of the president over the office of elders is to preside over ninety-six elders, and to sit in council with them, and to teach them according to the covenants." ([D&C 107:78](../gospel-library/eng/scriptures/dc-testament/dc/107.md))
+> "The duty of the president over the office of elders is to preside over ninety-six elders, and to sit in council with them, and to teach them according to the covenants." ([D&C 107:89](../gospel-library/eng/scriptures/dc-testament/dc/107.md))
 
-Twelve deacons, twenty-four teachers, forty-eight priests, ninety-six elders — all with a president who "sits in council with them" ([D&C 107:85-89](../gospel-library/eng/scriptures/dc-testament/dc/107.md)). The president doesn't direct from above. He councils from within. Webster's 1828 *counsel* — "interchange of opinions; mutual advising" — not one-directional instruction.
+Twelve deacons, twenty-four teachers, forty-eight priests, ninety-six elders — all with a president who "sits in council with them" ([D&C 107:85-89](../gospel-library/eng/scriptures/dc-testament/dc/107.md)). The president doesn't direct from above. He councils from within. Webster's 1828 *counsel* — "consultation; interchange of opinions" — not one-directional instruction.
 
 The ratios scale with quorum maturity. Deacons get closer supervision (1:12). Elders operate with more independence (1:96). The structure trusts people progressively.
 
@@ -206,9 +206,9 @@ The real question isn't whether machines deserve covenant. It's whether the pers
 
 The pattern is clear enough. The application is uncomfortably specific.
 
-**Webster 1828 defines *steward*:** "A man employed in a large family, or on a large estate, to manage the domestic concerns, supervise other servants, collect the rents or income, keep accounts." A steward manages what belongs to someone else. The Sunday School presidency, the teachers, the curriculum, the classes — none of it is mine. It belongs to the Lord. I'm the steward. And a steward who tries to do everything himself is a steward who has forgotten whose house it is.
+**Webster 1828 defines *steward*:** "A man employed in great families to manage the domestic concerns, superintend the other servants, collect the rents or income, keep the accounts." And the genuine entry's fifth sense was written for this study: "In Scripture and theology, a minister of Christ, whose duty is to dispense the provisions of the gospel, to preach its doctrines and administer its ordinances. It is required in stewards, that a man be found faithful. 1 Corinthians 4:2." *(Requoted 2026-06-12 — the earlier wording was the 1913 edition's.)* A steward manages what belongs to someone else. The Sunday School presidency, the teachers, the curriculum, the classes — none of it is mine. It belongs to the Lord. I'm the steward. And a steward who tries to do everything himself is a steward who has forgotten whose house it is.
 
-**Webster 1828 defines *ordain*:** "To set in order; to arrange according to rule; to regulate." Before it means "to set apart for an office," it means to bring order. The calling isn't just a title. It's a command to organize.
+**Webster 1828 defines *ordain*:** "Properly, to set; to establish in a particular office or order." *(Requoted 2026-06-12 — the earlier "to set in order; to arrange according to rule; to regulate" was the 1913 edition's, and the sentence built on it had the 1828's sense order backwards.)* To ordain is to *set* — to establish a person inside an order. The calling isn't just a title. It places you in something arranged, regulated, kept — and makes you partly responsible for keeping it so.
 
 The concrete steps are small and the pattern already exists:
 
