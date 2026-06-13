@@ -301,12 +301,12 @@ Already done out-of-band: `study/morm-8-three-glories-reading.md` (2026-06-09).
 - [x] 2026-06-02 `study/bom-walk/3-nephi/3-nephi-14.md` **LINKS** — CLEAN (Sermon close; v12 golden rule "the law and the prophets," v14 "strait is the gate… few there be that find it," v21 "he that doeth the will of my Father," v23 "I never knew you," v24 house on the rock all EXACT)
 - [x] 2026-06-02 `study/bom-walk/3-nephi/3-nephi-15.md` **LINKS** — CLEAN (★ "I am he that gave the law… I am the law, and the light. Look unto me" v5/v9 — Christ=Jehovah, ties to is-jesus-christ-god; v17 "other sheep… one fold, and one shepherd," v24 "ye have both heard my voice, and seen me" all EXACT)
 - [x] 2026-06-02 `study/bom-walk/3-nephi/3-nephi-16.md` **LINKS** — CLEAN (record for the Gentiles; v4 "manifested unto the Gentiles… through the fulness of the Gentiles, the remnant of their seed… brought to a knowledge of me," v10 the conditional-fulness warning, v20 Isaiah 52:10 "made bare his holy arm… all the ends of the earth shall see the salvation of God" all EXACT)
-- [ ] 2026-06-02 `study/bom-walk/helaman/helaman-12.md` **LINKS**
+- [x] 2026-06-02 `study/bom-walk/helaman/helaman-12.md` **LINKS** — CLEAN (Mormon's lament; v2 "ease, and their exceedingly great prosperity," v7 "less than the dust of the earth," v8 "the dust… moveth… at the command of our great and everlasting God," v15 "surely it is the earth that moveth and not the sun," v22 "that men might be saved, hath repentance been declared" all EXACT)
 - [x] 2026-06-02 `study/bom-walk/3-nephi/3-nephi-17.md` **LINKS** — CLEAN (the tenderest chapter; v6 "my bowels are filled with compassion towards you," v17 "no tongue can speak… we heard him pray for us," v21 "he wept… little children, one by one," v24 "encircled about with fire; and the angels did minister unto them" all EXACT)
-- [ ] 2026-06-02 `study/bom-walk/3-nephi/3-nephi-7.md` **LINKS**
-- [ ] 2026-06-02 `study/bom-walk/helaman/helaman-11.md` **LINKS**
+- [x] 2026-06-02 `study/bom-walk/3-nephi/3-nephi-7.md` **LINKS** — CLEAN (government collapse; v2 "separate… into tribes… destroy the government," v8 "like the dog to his vomit," v14 "peace in the land; nevertheless… they did stone the prophets" (order without righteousness), v18 "angels did minister unto him daily" all EXACT)
+- [x] 2026-06-02 `study/bom-walk/helaman/helaman-11.md` **LINKS** — CLEAN (the famine-as-mercy; v4 "rather let there be a famine… to stir them up in remembrance," v7 "began to remember the Lord their God," v36 "began again to forget the Lord their God" all EXACT)
 - [ ] 2026-06-02 `study/bom-walk/alma/alma-61.md` **LINKS**
-- [ ] 2026-06-02 `study/bom-walk/helaman/helaman-9.md` **LINKS**
+- [x] 2026-06-02 `study/bom-walk/helaman/helaman-9.md` **LINKS** — CLEAN (the Seantum sign; v16 the conspiracy theory "raise himself to be a great man… and a prophet," v36 "I, Nephi, know nothing… save it were given unto me by the power of God," v41 "he is a god, for except he was a god he could not know of all things" all EXACT)
 - [ ] 2026-06-02 `study/bom-walk/3-nephi/3-nephi-18.md` **LINKS**
 - [ ] 2026-06-02 `study/bom-walk/alma/alma-51.md` **LINKS**
 - [ ] 2026-06-02 `study/bom-walk/alma/alma-52.md` **LINKS**

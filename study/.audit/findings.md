@@ -3319,6 +3319,25 @@ LINKS ×3. No markdown links.
 - The entire 3 Nephi Christ-ministry block (9-10, 12-17) verified clean,
   ~24 quotes this set, every one verbatim.
 
+### #304, 306, 307, 309 `Hel 12, 3-nephi-7, Hel 11, Hel 9` — CLEAN
+- **Hel 12** (Mormon's lament): v2 "ease, and their exceedingly great
+  prosperity," v7 "less than the dust of the earth," v8 "the dust…
+  moveth… at the command of our great and everlasting God," ★ v15 the
+  heliocentric aside "surely it is the earth that moveth and not the
+  sun," v22 "that men might be saved, hath repentance been declared" —
+  all EXACT.
+- **Hel 11** (famine-as-mercy): v4 "rather let there be a famine… to
+  stir them up in remembrance," v7 "began to remember the Lord their
+  God," v36 "began again to forget" — EXACT.
+- **Hel 9** (the Seantum sign): v16 the motivated-unbelief conspiracy
+  ("raise himself to be a great man… and a prophet"), v36 "I, Nephi,
+  know nothing… save it were given unto me by the power of God," v41
+  the crowd's error "he is a god" — EXACT.
+- **3 Ne 7** (tribal collapse): v2 "separate… into tribes… destroy the
+  government," v8 "like the dog to his vomit," v14 order-without-
+  righteousness ("peace in the land; nevertheless… they did stone the
+  prophets"), v18 "angels did minister unto him daily" — EXACT.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
