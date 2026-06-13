@@ -2760,6 +2760,22 @@ still," v26 ensign). The v7 Hebrew wordplay (mishpat/mispach,
 tsedaqah/tse'aqah) is flagged as standard philology, not a fresh
 claim. CLEAN.
 
+### study/bom-walk/2-nephi/2-nephi-16.md (2026-06-01) — CLEAN (Isaiah-variant chapter)
+LINKS. No markdown links. All three variants CONFIRMED by direct
+2 Ne 16 vs Isaiah 6 comparison: ★ v9 (the significant one) — BoM
+"Hear ye indeed, but they understood not; and see ye indeed, but
+they perceived not" (past-tense REPORT) vs KJV "understand not…
+perceive not" (IMPERATIVE command); the BoM text itself resolves
+the hardening crux (description of the people's response, not a
+divine order to be blind); v2 BoM "seraphim" vs KJV "seraphims"
+(corrects the double-plural toward the Hebrew); v13 BoM "they shall
+return" vs KJV "it shall return" (the remnant personalized). Quoted
+lines verbatim (v1 throne, vv6-8 coal-then-"Here am I; send me,"
+v13 holy seed). The John 12:41 "Isaiah saw Christ" identification is
+flagged as footnote/2 Ne 11:2 reference, to verify if cited
+directly. This is the chapter Nephi anchored the block on (11:2).
+CLEAN.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
