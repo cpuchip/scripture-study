@@ -4308,6 +4308,33 @@ conversion. Verified by direct grep.
   [[feedback_ammon]] "finish what you're handed" principle; start where the
   hearer is; the grievance history corrected at the source).
 
+### Alma 19, 20, 21, alma17-26 study (2026-06-13, 451→455) — ALL CLEAN
+
+The Lamoni-house conversion, the over-king and the grievance at full volume,
+Aaron's harder field, and the great grievance-cure synthesis study. Verified by
+direct grep.
+
+- **Alma 19** (to me he doth not stink): v9 "I have had no witness save thy
+  word… nevertheless I believe" — EXACT (the queen out-believes all the
+  Nephites; Abish the hidden disciple; v36 "his arm is extended to all" — a
+  5:21-answer datapoint that the curse was never a barrier to the Spirit).
+- **Alma 20** (the grievance at full volume): v13 "he robbed our fathers; and
+  now his children are also come amongst us… that they again may rob us of our
+  property" — EXACT (Mosiah 10 recited by the over-king himself; selfless
+  love, not the sword, disarms it).
+- **Alma 21** (the religion that removed repentance): v6 "we have built
+  sanctuaries… We do believe that God will save all men" — EXACT (Nehor's
+  universalism as anti-repentance technology; apostates the hardest ground;
+  Lamoni decrees religious freedom).
+- **`alma17-26` grievance-cure study**: a long synthesis whose quotes overlap
+  heavily with chapter notes already grep-verified this session (17:25/29,
+  19:9-10, 20:13, 22:18, 23:6, 24:18). Its distinctive quotes verified EXACT
+  this pass: 22:7 "I know that the Amalekites say that there is a God," 23:3
+  "they were all brethren," 24:7 "the traditions of our wicked fathers," 26:24
+  the Nephite mockers' "Do ye suppose that ye can bring the Lamanites…" — all
+  character-perfect. Its provenance block confirms gospel_get verification and
+  honestly flags that Alma 18 quotes derive from the walk note. CLEAN.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)

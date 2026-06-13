@@ -470,10 +470,10 @@ Already done out-of-band: `study/morm-8-three-glories-reading.md` (2026-06-09).
 - [x] 2026-06-02 `study/bom-walk/alma/alma-16.md` **LINKS** — CLEAN (Desolation of Nehors; v10 "in one day it was left desolate" EXACT — the 9:4 scoff fulfilled in its own unit; the Spirit poured out to prepare hearts, inverse of the chains of hell)
 - [x] 2026-06-02 `study/bom-walk/alma/alma-17.md` **LINKS** — CLEAN (the prince who chose to be a servant; v25 "Nay, but I will be thy servant," v29 "win the hearts of these my fellow-servants, that I may lead them to believe in my words" EXACT — the grievance-tradition cure's method; Sebus)
 - [x] 2026-06-02 `study/bom-walk/alma/alma-18.md` **LINKS** — CLEAN (Believest thou that there is a God?; v10 "even he doth remember all my commandments to execute them," v23 "I will believe all thy words. And thus he was caught with guile" EXACT — the [[feedback_ammon]] anchor verse; start where the hearer is)
-- [ ] 2026-06-02 `study/bom-walk/alma/alma-19.md` **LINKS**
-- [ ] 2026-06-02 `study/bom-walk/alma/alma-20.md` **LINKS**
-- [ ] 2026-06-02 `study/bom-walk/alma/alma-21.md` **LINKS**
-- [ ] 2026-06-02 `study/bom-walk/studies/alma17-26_lamanite-conversion-and-the-grievance-cure.md` **LINKS**
+- [x] 2026-06-02 `study/bom-walk/alma/alma-19.md` **LINKS** — CLEAN (to me he doth not stink; v9 "I have had no witness save thy word… nevertheless I believe" + v10/36 EXACT — the queen out-believes all the Nephites; Abish the hidden disciple; "his arm is extended to all," 5:21 datapoint)
+- [x] 2026-06-02 `study/bom-walk/alma/alma-20.md` **LINKS** — CLEAN (the grievance at full volume; v13 "he robbed our fathers; and now his children are also come amongst us… that they again may rob us of our property" EXACT — Mosiah 10 recited by its highest exponent; selfless love disarms it)
+- [x] 2026-06-02 `study/bom-walk/alma/alma-21.md` **LINKS** — CLEAN (the religion that removed repentance; v6 "we have built sanctuaries… We do believe that God will save all men" EXACT — Nehor's universalism as anti-repentance technology; apostates the hardest ground)
+- [x] 2026-06-02 `study/bom-walk/studies/alma17-26_lamanite-conversion-and-the-grievance-cure.md` **LINKS** — CLEAN (the grievance-cure synthesis; distinctive quotes verified EXACT — 22:7 "I know that the Amalekites say that there is a God," 23:3 "they were all brethren," 24:7 "the traditions of our wicked fathers," 26:24 the Nephite mockers; plus 17:25/29, 19:9-10, 20:13, 22:18, 23:6, 24:18 all confirmed in the chapter notes; Alma 18 quotes acknowledged as deriving from the walk note. Its own provenance block confirms gospel_get verification)
 - [ ] 2026-06-02 `study/bom-walk/studies/alma12-13_redemption-and-priesthood.md` **T1**
 - [ ] 2026-06-03 `study/daily-digest/ai-news-7am--2026-06-03-1300.md` **SAMPLE**
 - [ ] 2026-06-04 `study/daily-digest/ai-news-7am--2026-06-04-1300.md` **SAMPLE**
