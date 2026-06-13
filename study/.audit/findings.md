@@ -3058,6 +3058,36 @@ LINKS ×3. No markdown links.
 - A long clean run of derivative chapter notes; the bom-walk's quote
   discipline holds verbatim. Five CLEAN.
 
+### #272-275 `1-nephi 20/12/22/21` — bom-walk LINKS (1 Nephi closes) — ALL CLEAN
+- **1-nephi-20 (Isaiah 48):** ★ the signature "waters of baptism"
+  variant confirmed by direct 1 Ne 20:1 ↔ Isa 48:1 comparison — BoM
+  "are come forth out of the waters of Judah, **or out of the waters
+  of baptism**" (KJV has only "waters of Judah"); plus the minor v1
+  "**yet they swear not** in truth" for KJV "**but not** in truth."
+  v10 "furnace of affliction," v18 "peace been as a river," v22 "no
+  peace, saith the Lord, unto the wicked" EXACT.
+- **1-nephi-12:** v17 "mists of darkness are the temptations of the
+  devil," v18 "vain imaginations and the pride… the word of the
+  justice of the Eternal God, and the Messiah who is the Lamb of God,"
+  v23 "a dark, and loathsome, and a filthy people, full of idleness" —
+  all EXACT. The note handles the v23 tension language responsibly:
+  quoted accurately, tied to "dwindled in unbelief," flagged (not
+  resolved) for a with-Michael 2 Ne 5 study.
+- **1-nephi-22 (★ 1 NEPHI COMPLETE):** v14 the pit-digger ("fall into
+  the pit which they digged"), v26 the chapter's deepest doctrine —
+  "because of the righteousness of his people, Satan has no power…
+  for he hath no power over the hearts of the people, for they dwell
+  in righteousness," v31 "if ye shall be obedient… and endure to the
+  end, ye shall be saved at the last day" — all EXACT.
+- **1-nephi-21 (Isaiah 49):** ★ the "broken off / pastors of my
+  people" preamble confirmed by direct 1 Ne 21:1 ↔ Isa 49:1
+  comparison (BoM prepends the whole address before "Listen, O isles,
+  unto me"); v15 "can a woman forget her sucking child… yet will I
+  not forget thee," v16 "I have graven thee upon the palms of my
+  hands; thy walls are continually before me" EXACT.
+- 1 Nephi (all 22 chapters) verified CLEAN end to end. Four Isaiah-block
+  variants (20:1, 21:1) + the vision-symbol interpretations all hold.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)

@@ -269,10 +269,10 @@ Already done out-of-band: `study/morm-8-three-glories-reading.md` (2026-06-09).
 - [x] 2026-06-01 `study/bom-walk/1-nephi/1-nephi-17.md` **LINKS** — CLEAN (build a ship; v35 "esteemeth all flesh in one," v41 "the easiness of it… many who perished," v45 "ye were past feeling… voice of thunder," v55 "younger brother… honor thy father" all EXACT)
 - [x] 2026-06-01 `study/bom-walk/1-nephi/1-nephi-18.md` **LINKS** — CLEAN (the voyage; v9 "forget by what power," v16 "praise him all the day long; and I did not murmur," v20 "the power of God… could soften their hearts" all EXACT)
 - [x] 2026-06-01 `study/bom-walk/1-nephi/1-nephi-19.md` **LINKS** — CLEAN (liken all scriptures; v10 Zenock/Neum/Zenos correctly attributed [lifted up/crucified/buried], v12 "The God of nature suffers," v23 "I did liken all scriptures unto us… for our profit and learning" all EXACT)
-- [ ] 2026-06-01 `study/bom-walk/1-nephi/1-nephi-20.md` **LINKS**
-- [ ] 2026-06-01 `study/bom-walk/1-nephi/1-nephi-12.md` **LINKS**
-- [ ] 2026-06-01 `study/bom-walk/1-nephi/1-nephi-22.md` **LINKS**
-- [ ] 2026-06-01 `study/bom-walk/1-nephi/1-nephi-21.md` **LINKS**
+- [x] 2026-06-01 `study/bom-walk/1-nephi/1-nephi-20.md` **LINKS** — CLEAN (Isaiah 48; ★ signature variant v1 "or out of the waters of baptism" + "yet they swear not in truth" (KJV "but not") confirmed by direct comparison; v10 "furnace of affliction," v18 "peace been as a river," v22 "no peace… unto the wicked" EXACT)
+- [x] 2026-06-01 `study/bom-walk/1-nephi/1-nephi-12.md` **LINKS** — CLEAN (the destruction foreseen; v17 mist=temptations, v18 building=pride + gulf=justice+Messiah, v23 "dark, and loathsome, and a filthy people" (the flagged 5:21-tension language, quoted accurately + tied to "dwindled in unbelief") all EXACT)
+- [x] 2026-06-01 `study/bom-walk/1-nephi/1-nephi-22.md` **LINKS** — CLEAN (★ 1 NEPHI COMPLETE; Nephi expounds Isaiah; v14 pit-digger, v26 "because of the righteousness of his people, Satan has no power," v31 "endure to the end, ye shall be saved at the last day" all EXACT)
+- [x] 2026-06-01 `study/bom-walk/1-nephi/1-nephi-21.md` **LINKS** — CLEAN (Isaiah 49; ★ v1 "broken off… pastors of my people" preamble confirmed by direct comparison; v15 "can a woman forget her sucking child," v16 "graven thee upon the palms of my hands" EXACT)
 - [ ] 2026-06-01 `study/bom-walk/2-nephi/2-nephi-07.md` **LINKS**
 - [ ] 2026-06-01 `study/bom-walk/2-nephi/2-nephi-04.md` **LINKS**
 - [ ] 2026-06-01 `study/bom-walk/studies/2ne2_fall-agency-opposition.md` **T1**
