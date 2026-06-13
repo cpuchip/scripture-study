@@ -85,10 +85,28 @@ last_active: 2026-06-12T19:28:12
   refusal). Gotcha: virgin work_item_create needs a seeded intent
   (hardcoded 'scripture-study' fallback — B3 09-intents wires
   config.default_intent_slug).
-  **NEXT = B2 remainder:** 3e2-1/2/3(core)+h1-5a+h1-7a → 05-mcp-bridge;
-  4a-cost/4a-esc/4g/es11/j10/j11/j12/an4/cv4 → 06-cost;
-  4a-steward/4b/4c/4d/6b → 07-steward. Verification loop per file
-  (build → virgin scratch → assertions → commit). Then B3-B6.
+  **B2 COMPLETE (2026-06-13 early am):** 05-mcp-bridge `c4ed606`
+  (3e2-1/2/3 + h1-5a soft-fail final + h1-7a self-surface seeds w/
+  DO NOTHING; waiting_for_tools born in schema.rs work_queue CHECK;
+  fan-out completion e2e on scratch). 06-cost `e49ec38` (machinery
+  only — ALL operator seeds → workspace overlay
+  seed-4a-cost-escalation-models.sql; record_cost_event single 11-arg;
+  cost/escalation cols born in 04; j11-dispatch + j12-brainstorm
+  halves trimmed in place for B4-14). 07-steward `4d7a715` (steward_tick
+  6c-final w/ lessons + atonement-on-quarantine, 6c pulled forward;
+  dispatch born 3-arg in 04; provider fallback de-hardcoded to NULL;
+  4d stage_models seeds → overlay; live-fire tick smoke green). Final
+  sweep: 0 study% fns, 0 study_id cols, AGE absent, Go green. 28
+  historical files dead this batch; manifest 189→155 effective.
+  LESSON: lib.rs requires-graph is NOT linear — sweep every chain cut
+  (4b/5a edges bit once).
+  **NEXT = B3** (08-gates..12-council per blueprint): 08 = 5a/5b/5c/
+  5e4(rest)/h1-6-1/h1-6-2/h1-6-6/l28 + i3-on_maturity_verified-final +
+  h3-followup-2-render_file_destination; 09 = 5d* + pr1
+  (scripture_anchor→values_anchor + config default_intent_slug —
+  kills the hardcoded 'scripture-study' intent fallback); 10 = 5e/5e2/
+  5e3/6d/6e/am1 + i3 (work_items file_enqueued_at born, no
+  materialized_at); 11 = 5f*; 12 = 5g*. Same loop. Then B4-B6.
   (3) Private manifest REPAIRED (root `e5ccc0c3`): 9 live-applied migrations
   (r11-r17, ct2-5, ct2-7e) restored from ledger order; found the runner is
   LEXICAL + manifest-blind (replayed scratch-ct2-run2 into live 06-10 —
