@@ -334,30 +334,34 @@ Remaining gap: Becoming section. All other sections have multiple verified sourc
 
 ## Webster 1828 Definitions
 
-### BEGET (v.)
-"To procreate, as a father or sire; to generate — commonly said of the father." Also: "To produce as an effect; to cause to exist."
+### BEGET (verb transitive — genuine 1828, re-verified via webster MCP 2026-06-13)
+1. "To procreate, as a father or sire; to generate; as, to beget a son."
+2. "To produce, as an effect; to cause to exist; to generate; as, luxury begets vice."
 
 ### BEGOTTEN (adj.)
-Part participle of BEGET. No separate entry — the definition is entirely carried by BEGET.
+Past participle of BEGET. No separate entry — the definition is entirely carried by BEGET.
 
-### ONLY (adj.)
-1. "One alone; single; as, the only man present; his only occupation."
-2. **"Alone in its class; by itself; not associated with others of the same class or kind; as, an only child."**
-3. "Hence, figuratively: Alone, by reason of superiority; preëminent; chief."
+### ONLY (genuine 1828, re-verified via webster MCP 2026-06-13)
+**Adjective:**
+1. "Single; one along; as, John was the only man present." [sic — 1828 reads "one along"]
+2. "This and no other. This is an only child."
+3. "This above all others. He is the only man for music."
 
-Insight: Webster's third definition — "alone, by reason of superiority; preëminent; chief" — is the theological weight of the title. "Only Begotten" doesn't merely mean numerically singular. In 1828 English, "only" could mean *preëminent* — the one who stands above all others in a category. Christ is not just the only one in a category by counting; he is the one who towers above all else. The title declares both uniqueness and supremacy.
+**Adverb:**
+3. "Singly; without more; as only-begotten."
 
-### SIMILITUDE (n.)
-1. "The quality or state of being similar or like; resemblance; likeness; similarity."
-2. "The act of likening, or that which likens, one thing to another; fanciful or imaginative comparison; a simile."
-3. "That which is like or similar; a representation, semblance, or copy."
+Insight (CORRECTED — prior wording was 1913, not 1828): The genuine 1828 adjective senses do NOT carry "preëminent; chief" — that was 1913 text. But genuine 1828 def 3 ("This above all others. He is the only man for music") still gives uniqueness-with-supremacy: not merely one-of-a-set, but the one set above all others in a kind. Stronger still, genuine 1828's *adverb* def 3 cites "only-begotten" by name — "Singly; without more; as only-begotten." Webster's own dictionary points straight at the title. So the theological weight survives the correction: "only" is uniqueness ("This and no other") plus standing-above-all ("This above all others"), and Webster anchors it to the very compound the study examines.
 
-Insight: Moses 5:7 — sacrifice "is a similitude of the sacrifice of the Only Begotten." And Moses 1:6 — Moses is created "in the similitude of mine Only Begotten." Both uses: the physical thing (the sacrifice, Moses himself) is a *designed representation* of the Son. Not casual resemblance — intentional copying. The similitude is God's teaching method.
+### SIMILITUDE (noun — genuine 1828, re-verified via webster MCP 2026-06-13)
+1. "Likeness; resemblance; likeness in nature, qualities of appearance; as similitude of substance. Let us make man in our image, man in our similitude."
+2. "Comparison; simile."
 
-### CONDESCENSION (n.)
-"The act of condescending; voluntary descent from one's rank or dignity in intercourse with an inferior; courtesy toward inferiors."
+Insight: Moses 5:7 — sacrifice "is a similitude of the sacrifice of the Only Begotten." And Moses 1:6 — Moses is created "in the similitude of mine Only Begotten." Webster's genuine 1828 example is itself the creation text — "Let us make man in our image, man in our similitude" — so the dictionary already locates "similitude" inside the making-of-man-after-the-Son theme. Both uses: the physical thing (the sacrifice, Moses himself) is a *designed representation* of the Son. Not casual resemblance — intentional likening. The similitude is God's teaching method.
 
-Insight: Nephi is asked "Knowest thou the condescension of God?" (1 Ne 11:16). The 1828 meaning makes this precise: it is *voluntary* descent from a superior rank to interact with inferiors. The condescension of God is not humiliation; it is a sovereign choice to descend. The Only Begotten condescends — he chooses to come down.
+### CONDESCENSION (noun — genuine 1828, re-verified via webster MCP 2026-06-13)
+"Voluntary descent from rank, dignity or just claims; relinquishment of strict right; submission to inferiors in granting requests or performing acts which strict justice does not require."
+
+Insight: Nephi is asked "Knowest thou the condescension of God?" (1 Ne 11:16). The genuine 1828 makes this precise — and sharper than the old wording: it is *voluntary* descent from rank, AND "relinquishment of strict right," AND "performing acts which strict justice does not require." That is the Atonement in a dictionary line: the One with every right relinquishes it and does for inferiors what justice never required of Him. The condescension of God is not humiliation; it is a sovereign choice to descend. The Only Begotten condescends — he chooses to come down.
 
 ---
 

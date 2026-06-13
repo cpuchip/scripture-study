@@ -272,16 +272,17 @@ vv. 22-29: Gathering continues — if Gentiles repent, they assist in building N
 ## Webster 1828
 
 ### SERVANT (n.)
-"One who serves, or does services, voluntarily or on compulsion; a person who is employed by another for menial offices, or for other labor, and is subject to his command; a person who labors or exerts himself for the benefit of another, his master or employer; a subordinate helper."
+"A person, male or female, that attends another for the purpose of performing menial offices for him, or who is employed by another for such offices or for other labor, and is subject to his command. The word is correlative to master." (def 1) Webster also lists the Scripture sense (def 5): "A person who voluntarily serves another or acts as his minister... So Christ himself is called a servant, Isaiah 42:1."
 
 **Key insight:** The 1828 definition emphasizes subordination ("subject to his command") and labor for another's benefit. This fits perfectly how D&C 113 describes the rod — "a servant in the hands of Christ." The servant is not autonomous; he acts under the Master's direction.
 
 ### ROD (n.)
-1. "A straight and slender stick; a wand"
-2. "An instrument of punishment or correction"
-3. **"A kind of scepter, or badge of office; hence, figuratively, power; authority"**
+1. "The shoot or long twig of any woody plant; a branch, or the stem of a shrub; as a rod of hazle, of birch, of oak or hickory."
+2. "An instrument of punishment or correction; chastisement."
+4. **"A kind of scepter."**
+11. **"Power; authority."** And def 12: **"Rod of iron, the mighty power of Christ. Revelation 19:15; Psalm 2:9."**
 
-**Key insight:** Definition 3 is illuminating for Isaiah 11:1 — "a rod out of the stem of Jesse." A rod as a scepter/badge of authority resonates with D&C 113:3-4 — the rod is "a servant in the hands of Christ...on whom there is laid much power." The rod carries authority.
+**Key insight:** The scepter/power senses (defs 4, 11) are illuminating for Isaiah 11:1 — "a rod out of the stem of Jesse." A rod as a scepter/badge of authority resonates with D&C 113:3-4 — the rod is "a servant in the hands of Christ...on whom there is laid much power." The rod carries authority. (Note: 1828 def 1 is botanical — "the shoot or long twig of any woody plant" — which also fits the stem-of-Jesse imagery directly.)
 
 ### STEM (n.)
 1. "The principal body of a tree, shrub, or plant; the main stock"
@@ -291,13 +292,13 @@ vv. 22-29: Gathering continues — if Gentiles repent, they assist in building N
 **Key insight:** "Stem of Jesse" = the family stock of Jesse, the progenitor line. D&C 113 identifies this as Christ — the main stock of the Davidic line.
 
 ### ROOT (n.)
-[1828 only has the verb form "to turn up the earth with the snout" — the noun "root" as origin/source was understood but the 1828 dictionary entry is incomplete.]
+1828 has a full noun entry. Def 1: "That part of a plant which enters and fixes itself in the earth, and serves to support the plant in an erect position, while by means of its fibrils it imbibes nutriment for the stem, branches and fruit." Def 5: "The original or cause of any thing. The love of money is the root of all evil. 1 Timothy 6:10." Def 6: "The first ancestor. They were the roots out of which sprung two distinct people."
 
-Modern sense: "The primary source; origin." In botanical terms, the root supports and nourishes the plant from below. The "root of Jesse" (Isa 11:10) is distinct from the stem — it's the foundation, the anchor, the source of supply. D&C 113:5-6 identifies the root as a last-days figure with keys and priesthood.
+In botanical terms, the root supports and nourishes the plant from below (def 1). Defs 5-6 give the "origin / first ancestor" sense. The "root of Jesse" (Isa 11:10) is distinct from the stem — it's the foundation, the source of supply, the ancestor. D&C 113:5-6 identifies the root as a last-days figure with keys and priesthood.
 
 ### BRANCH (n.)
-1. "A shoot or secondary stem growing from the main stem"
-5. **"A line of family descent, in distinction from some other line or lines from the same stock; any descendant in such a line."**
+1. "The shoot of a tree or other plant; a limb; a bough shooting from the stem, or from another branch or bough."
+4. **"Any individual of a family descending in a collateral line; any descendant from a common parent or stock."**
 
 **Key insight:** "A Branch shall grow out of his roots" (Isa 11:1) — a descendant growing from the root system. 2 Ne. 3:5 uses "branch" similarly: "a righteous branch...not the Messiah, but a branch which was to be broken off." The Branch is a descendant, an offshoot — explicitly NOT the main stock (stem/Christ).
 

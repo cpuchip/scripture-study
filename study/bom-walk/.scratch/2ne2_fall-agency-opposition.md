@@ -91,15 +91,15 @@ NOTE: Moses 6:55 is a beautiful miniature of the Lehi argument — the bitter is
 
 ### Webster 1828 — read via mcp__webster__define this session ✓
 
-OPPOSITION (n.): "The act of opposing; an attempt to check, restrain, or defeat; resistance." Also: "Repugnance; contrariety of sentiment, interest, or purpose." And the astronomical sense: "the situation of a heavenly body with respect to another when in the part of the heavens directly opposite to it."
+OPPOSITION (n.): genuine 1828 — def 2 "The act of opposing; attempt to check, restrain or defeat." def 4 "Resistance." def 5 "Contrariety; repugnance in principle." And the astronomical sense (def 10): "the situation of two heavenly bodies, when distant from each other 180 degrees." (NOTE: the earlier draft quoted Webster 1913 phrasings — "an attempt to check, restrain, or defeat; resistance" and "the situation of a heavenly body with respect to another when in the part of the heavens directly opposite to it" — corrected to genuine 1828 above.)
 
-OBSERVATION: The astronomical definition is interesting — opposition as two bodies at maximum distance from each other, each defined by the other's position. Lehi's "compound in one" is the collapse of that distance into a single undifferentiated mass.
+OBSERVATION: The astronomical definition is interesting — opposition as two bodies at maximum distance from each other (180 degrees apart), each defined by the other's position. Lehi's "compound in one" is the collapse of that distance into a single undifferentiated mass.
 
-TRANSGRESSION (n.): "The act of transgressing, or of passing over or beyond any law, civil or moral; the violation of a law or known principle of rectitude; breach of command; fault; offense; crime; sin."
+TRANSGRESSION (n.): genuine 1828 — "The act of passing over or beyond any law or rule of moral duty; the violation of a law or known principle of rectitude; breach of command." def 2: "Fault; offense; crime." (NOTE: the earlier draft's "The act of transgressing, or of passing over or beyond any law, civil or moral... fault; offense; crime; sin" is Webster 1913, not 1828 — corrected above. Genuine 1828 does NOT append "sin" to this entry.)
 
 OBSERVATION: Transgression etymologically means "going across" or "stepping over" a boundary. It does not inherently carry the moral weight of willful rebellion. In the Eden account, the consistent scriptural term is "transgression" — which Lehi, Moses, Adam, and Eve all use. The text of 1 John 3:4 says "sin is the transgression of the law" — collapsing them — but the Restoration distinguishes them in the Eden context.
 
-MEDIATOR (n.): "One who mediates; especially, one who interposes between parties at variance for the purpose of reconciling them; hence, an intercessor."
+MEDIATOR (n.): genuine 1828 — "One that interposes between parties at variance for the purpose of reconciling them." (def 2: "By way of eminence, Christ is the mediator, the divine intercessor through whom sinners may be reconciled to an offended God. 1 Timothy 2:5.") (NOTE: the earlier draft's "One who mediates; especially... hence, an intercessor" is Webster 1913, not 1828 — corrected above.)
 
 OBSERVATION: The word "Mediator" appears twice in 2 Ne 2 (vv. 27, 28). In both cases it is the antidote to the devil's trap. Lehi doesn't say "Savior" or "Redeemer" there — he says "Mediator," the one who stands between two parties at variance. The variance is between us-fallen and the law that condemns.
 

@@ -36,7 +36,7 @@ Aaron's pedagogy mirrors what Ammon did with Lamoni earlier (Alma 18:36-39) — 
 Standard verbs: bow, repent, bow (again — repetition is emphatic), call. Aaron does NOT say "give away your sins." He says "repent of all thy sins."
 
 **The king's prayer (Alma 22:18):**
-> "O God, Aaron hath told me that there is a God; and if there is a God, and if thou art God, wilt thou **make thyself known unto me**, and I will **give away all my sins to know thee**, that I may be raised from the dead, and be saved at the last day."
+> "O God, Aaron hath told me that there is a God; and if there is a God, and if thou art God, wilt thou **make thyself known unto me**, and I will **give away all my sins to know thee**, and that I may be raised from the dead, and be saved at the last day."
 
 **The king's verb is his own.** Aaron asked for repentance. The king transferred his own previous verb — the "give up" he had applied to kingdom and possessions in v15 — and applied it to sins. He took the ordinary repentance request and reframed it in the language he already understood: a king's economy of giving.
 
@@ -50,31 +50,31 @@ Both phrases are unique. The king coined them in the moment.
 ### Webster 1828 — the verbs
 
 **GIVE** (v.):
-> "1. To bestow without receiving a return; to confer without compensation; to impart, **as a possession**; to grant, as authority or permission; to yield up or allow.
-> 2. To **yield possession of**; to deliver over, **as property**, in exchange for something..."
+> "2. To bestow; to confer; to pass or transfer the title or property of a thing to another person without an equivalent or compensation.
+> 6. To pass or deliver the property of a thing to another for an equivalent; to pay..."
 >
-> Sub-entry "To give away":
-> "to make over to another; to transfer. *Whatsoever we employ in charitable uses during our lives, is given away from ourselves.* — Atterbury"
+> Sub-entry (under def 24) "To give away":
+> "to alienate the title or property of a thing; to make over to another; to transfer. *Whatsoever we employ in charitable uses, during our lives, is given away from ourselves.*"
 
-The king's chosen verb treats sins **as possessions** that can be transferred. He owns them (in his framing) and can hand them over.
+The king's chosen verb treats sins **as possessions** that can be transferred. He owns them (in his framing) and can hand them over. (Webster's "give" runs from bestowal-without-return to transfer-for-an-equivalent — the king's prayer hovers between gift and exchange.)
 
 **FORSAKE** (v.):
-> "To quit or leave entirely; to desert; to abandon; to depart or withdraw from; to leave; as, false friends and flatterers forsake us in adversity."
+> "To quit or leave entirely; to desert; to abandon; to depart from. Friends and flatterers forsake us in adversity." (def 2)
 
 Forsake is the verb of *leaving* — distance, departure. You and the thing forsaken end up in different places, but the thing still exists.
 
-**REPENT** (v.):
-> "1. To feel pain, sorrow, or regret, for what one has done or omitted to do.
-> 2. To change the mind, or the course of conduct, on account of regret or dissatisfaction.
-> 3. To be sorry for sin as morally evil, and to seek forgiveness; to cease to love and practice sin."
+**REPENT** (v.i.):
+> "1. To feel pain, sorrow or regret for something done or spoken...
+> 3. To change the mind in consequence of the inconvenience or injury done by past conduct...
+> 5. In theology, to sorrow or be pained for sin, as a violation of God's holy law... Except ye repent, ye shall all likewise perish. Luke 13:3."
 
-Repent is internal — *feel*, *change*, *cease to love*. The transformation is in the heart.
+Repent is internal — *feel*, *change of mind*, *sorrow for sin*. The transformation is in the heart.
 
 **POSSESS** (v.):
-> "1. To occupy in person; to hold or actually have in one's own keeping; to have and to hold.
-> 4. **To enter into and influence; to control the will of; to fill; to affect; — said especially of evil spirits, passions, etc.** 'Weakness possesseth me.' — Shak. 'Those which were possessed with devils.' — Matt. iv. 24."
+> "1. To have the just and legal title, ownership or property of a thing; to own; to hold the title of, as the rightful proprietor...
+> 5. **To have power over; as an invisible agent or spirit. Luke 8:36.** Beware what spirit rages in your breast..."
 
-**Major insight:** Webster's POSSESS has two directions. We possess things; things (especially evil) possess us. The king said "I will give up all that I possess" (v15) using direction 1 — he owned a kingdom. But by v18 the language has flipped. To "give away all my sins" means to release what was actually possessing *him*. He thinks he's the giver. The verb structure says he might be the one being released.
+**Major insight:** Webster's POSSESS has two directions. We possess things (def 1); a spirit can have power over us (def 5). The king said "I will give up all that I possess" (v15) using direction 1 — he owned a kingdom. But by v18 the language has flipped. To "give away all my sins" means to release what was actually possessing *him*. He thinks he's the giver. The verb structure says he might be the one being released.
 
 ### The prayer outlives the man — Alma 24
 
@@ -126,10 +126,10 @@ The king of the Lamanites moved from Pharisee-language ("give up all that I poss
 
 The king didn't say "I will give away all my sins to be saved" or "to be forgiven." He said "**to know thee**." Knowing God is the result clause.
 
-Webster 1828 KNOW (v.):
-> "1. To perceive or apprehend clearly and certainly; to understand; to have full information of...
-> 3. To be acquainted with; to be no stranger to; to be more or less familiar with the person, character, etc., of...
-> 5. **To have sexual commerce with. 'And Adam knew Eve his wife.' Gen. iv. 1.**"
+Webster 1828 KNOW (v.t.):
+> "2. To perceive with certainty; to understand clearly; to have a clear and certain perception of truth, fact, or any thing that actually exists...
+> 6. To be no stranger to; to be familiar. This man is well known to us...
+> 7. **In scripture, to have sexual commerce with. Genesis 4:1.**"
 
 Knowing in Hebrew (yada) carries the same range — from intellectual recognition to covenantal intimacy. The king isn't asking for information about God. He's asking for relationship. And he intuits, somehow, that the obstacle to that relationship is what he is currently holding.
 

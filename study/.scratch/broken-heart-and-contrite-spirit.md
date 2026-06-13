@@ -105,11 +105,12 @@
 ### Elder Neil L. Andersen, October 2025
 > "Having a contrite spirit is humbly putting yourself in the hands of God; having a broken heart brings what the Apostle Paul described as 'godly sorrow,' a deep longing of the soul to return to Him whatever the cost."
 > — [gospel-library/eng/general-conference/2025/10/35andersen.md](gospel-library/eng/general-conference/2025/10/35andersen.md)
-> NOTE: Elder Andersen distinguishes the two terms. Contrite spirit = posture of submission (hands of God). Broken heart = emotional reality (godly sorrow, longing). This maps onto Webster: contrite = "humbly and thoroughly penitent"; broken = "subdued; humbled; contrite" but also "crushed and ruined as by something that destroys hope."
+> NOTE: Elder Andersen distinguishes the two terms. Contrite spirit = posture of submission (hands of God). Broken heart = emotional reality (godly sorrow, longing). This maps onto Webster 1828: contrite = "broken-hearted for sin; deeply affected with grief and sorrow for having offended God; humble; penitent"; broken (participle of break) = "parted by violence; rent asunder; infirm." (The vivid "subdued; humbled; contrite / crushed and ruined" glosses are Webster 1913, not 1828 — do not rely on them.)
 
-### Elder Craig A. Cardon, April 2026 (via quote in Walker)
+### Elder Alan R. Walker, April 2026
 > D&C 97:8: "Verily I say unto you, all among them who know their hearts are honest, and are broken, and their spirits contrite, and are willing to observe their covenants by sacrifice—yea, every sacrifice which I, the Lord, shall command—they are accepted of me."
 > — [gospel-library/eng/general-conference/2026/04/48walker.md](gospel-library/eng/general-conference/2026/04/48walker.md)
+> ATTRIBUTION FIX: the talk is by Elder Alan R. Walker (file 48walker.md), not "Craig A. Cardon" — earlier label was wrong. Quoted D&C 97:8 text is exact.
 > NOTE: The Lord does not ask for perfection. He asks for honest and broken hearts, humble spirits, and willingness to sacrifice. The condition of acceptance is posture, not performance.
 
 ---
@@ -117,17 +118,16 @@
 ## Webster 1828 Definitions
 
 ### broken
-> "5. Subdued; humbled; contrite. The sacrifices of God are a broken spirit. Ps. li. 17."
-> "7. Crushed and ruined as by something that destroys hope; blighted."
-> CIRCULARITY: Webster defines broken as "contrite" and contrite as "broken down." The words are etymologically braided — they define each other.
+> (participle passive, of break) "Parted by violence; rent asunder; infirm; made bankrupt."
+> CORRECTION: The earlier numbered senses ("5. Subdued; humbled; contrite..." / "7. Crushed and ruined...") were Webster *1913*, NOT 1828. Genuine 1828 BROKEN is a single short participle entry (above) — it does NOT define broken as "contrite," and it carries no "destroys hope / blighted" sense. The "circularity" observation does not stand on 1828 — drop it. (The contrite→broken-hearted link below runs only one direction in 1828: CONTRITE is defined via "broken-hearted," but BROKEN is not defined via "contrite.")
 
 ### contrite
-> "2. Broken down with grief and penitence; deeply sorrowful for sin because it is displeasing to God; humbly and thoroughly penitent."
-> NOTE: The grief is not generic sadness. It is sorrow "because it is displeasing to God." The orientation is Godward, not self-focused.
+> "Literally, worn or bruised. Hence, broken-hearted for sin; deeply affected with grief and sorrow for having offended God; humble; penitent; as a contrite sinner. A broken and a contrite heart, O God, thou wilt not despise. Psalm 51:17."
+> NOTE: The grief is not generic sadness. It is "grief and sorrow for having offended God." The orientation is Godward, not self-focused. (1828 cites Ps. 51:17 directly in the entry.)
 
 ### humble
-> "2. Thinking lowly of one's self; claiming little for one's self; not proud, arrogant, or assuming; thinking one's self ill-deserving or unworthy, when judged by the demands of God; lowly; weak; modest."
-> NOTE: "When judged by the demands of God" — humility is not social modesty. It is the recognition that God's standard reveals our unworthiness. This is the soil from which brokenness and contrition grow.
+> "Lowly; modest; meek; submissive; opposed to proud, haughty, arrogant or assuming. In an evangelical sense, having a low opinion of one's self, and a deep sense of unworthiness in the sight of God."
+> NOTE: "A deep sense of unworthiness in the sight of God" — humility is not social modesty. It is the recognition that God's standard reveals our unworthiness. This is the soil from which brokenness and contrition grow.
 
 ---
 

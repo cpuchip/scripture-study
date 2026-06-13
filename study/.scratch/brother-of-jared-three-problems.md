@@ -66,7 +66,7 @@ Past tense: "the winds **have gone forth** out of my mouth." The steering was al
 **Pattern 3 — "What will ye that I should do?" (light):**
 
 > "23. And the Lord said unto the brother of Jared: **What will ye that I should do that ye may have light in your vessels?** For behold, **ye cannot have windows**, for they will be dashed in pieces; **neither shall ye take fire with you**, for ye shall not go by the light of fire.
-> … 25. Therefore **what will ye that I should do** that ye may have light when ye are swallowed up in the depths of the sea?"
+> … 25. Therefore **what will ye that I should prepare for you** that ye may have light when ye are swallowed up in the depths of the sea?"
 
 The Lord refuses to prescribe. He also rules out two obvious answers (windows, fire) — narrowing the solution space so the brother of Jared cannot simply default. The question "what will ye that I should do?" is asked twice in three verses. This is the formation pattern: the Lord wants the steward to *bring something forward*.
 

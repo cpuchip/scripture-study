@@ -46,13 +46,15 @@ earlier this session (see morm-8-voice-from-the-dust scratch).
   believed on his name and were baptized" (51); "sealed by the Holy Spirit of
   promise" (53); "the church of the Firstborn" (54); "received of his fulness"
   (56); "they are gods, even the sons of God" (58); "dwell in the presence of
-  God and his Christ forever" (62); glory "of the sun" (70, 96). Webster: "the
-  presence of the Divine Being… celestial honor; heaven."
+  God and his Christ forever" (62); glory "of the sun" (70, 96). Webster (genuine
+  1828): "Heavenly; belonging or relating to heaven… conveys the idea of
+  superior excellence, delight, purity."
 - **Terrestrial** (vv. 71–80, 91): "honorable men of the earth, who were blinded
   by the craftiness of men" (75); "receive of the presence of the Son, but not
   of the fulness of the Father" (77); "not valiant in the testimony of Jesus"
-  (79); glory "of the moon" (78). Webster: "earthly; sublunary; mundane." (note:
-  *sublunary* = below the moon — fits.)
+  (79); glory "of the moon" (78). Webster (genuine 1828): "Pertaining to the
+  world, or to the present state; sublunary." (note: *sublunary* = below the
+  moon — fits.)
 - **Telestial** (vv. 81–112): "received not the gospel of Christ, neither the
   testimony of Jesus" (82); "liars, and sorcerers, and adulterers, and
   whoremongers" (103); "thrust down to hell" (84), redeemed only at the last
@@ -66,34 +68,61 @@ earlier this session (see morm-8-voice-from-the-dust scratch).
 - **The lens-key verse:** v. 61 "let no man **glory** in man, but rather let him
   **glory** in God" — the two glories of "glory," in one verse.
 
-## Webster 1828 — the words carry both altitudes (verified)
+## Webster 1828 — the words carry both altitudes (GENUINE 1828, re-verified via webster MCP 2026-06-13)
 
-- **apparel:** (1) "external clothing; vesture; garments; dress." (2) "a small
-  ornamental piece of embroidery worn on albs and some other **ecclesiastical
-  vestments**." → apparel itself has a sacred-vestment sense in 1828.
-- **fine:** (1) "Finished; brought to perfection; refined; free from impurity;
-  excellent" [celestial] // (2) "Aiming at show or effect; loaded with ornament;
-  overdressed or overdecorated; showy" [telestial]. Quotes "the gain thereof is
-  better than fine gold" (Prov 3:14).
-- **gain (n.):** "what things were gain to me, those I counted loss for Christ"
-  (Phil 3:7); "Godliness with contentment is great gain" (1 Tim 6:6); "What is a
-  man profited if he shall gain the whole world and lose his own soul" (Matt
-  16:26) [celestial] // "The lust of gain" (Tennyson) [telestial].
-- **transfigure:** "to change the outward form; ESPECIALLY to change to
-  something exalted and glorious" (quotes the Mount of Transfiguration, raiment
-  white as light). → Mormon 8:33 "transfigured the holy word of God" = the
-  telestial inversion: changed the form of what was glorious.
-- **glory (n.):** (1) "praise, honor… renown" / (3) "Pride; boastfulness;
-  arrogance" [telestial] // (4) "The presence of the Divine Being… celestial
-  honor; heaven" / (5) "an emanation of light… proceeding from beings of
-  peculiar sanctity" [celestial].
-- **pollute:** "to render ceremonially unclean; to disqualify or **unfit for
-  sacred use**… Neither shall ye pollute the holy things… Num 18:32." → the
-  anti-temple word; opposite of "washed white."
-- **celestial:** "of or pertaining to the spiritual heaven; heavenly; divine;
-  the heavenly Jerusalem."
-- **terrestrial:** "pertaining to the earth; earthly; sublunary; mundane;
-  'Bodies terrestrial' 1 Cor. 15:40."
+> The block below was originally drafted from the mislabeled 1913-as-1828 tool
+> and has now been corrected to the genuine 1828 (each word re-pulled this
+> session). The 2026-06-09 EDITION AUDIT at the foot of this file documents the
+> same corrections — they now agree.
+
+- **apparel:** (1) "Clothing; vesture; garments; dress." (2) "External
+  habiliments or decorations; appearance; as, religion appears in the natural
+  apparel of simplicity. **Glorious in apparel. Isaiah 63:7**." → The genuine
+  1828 bridge is Webster's own scriptural example, "Glorious in apparel"
+  (Isaiah 63:1 in the authoritative text; local data shows the OCR'd "63:7"),
+  applied to the Messiah — not the 1913-only "albs/ecclesiastical-vestments"
+  sense, which was FALSE for 1828.
+- **fine (adj.):** celestial poles = (5) "Clear; pure; free from feculence or
+  foreign matter; as fine gold or silver" + (6) "Refined" // telestial pole =
+  (16) "Showy; splendid; elegant" and the closing line "in general, fine, in
+  popular language, expresses whatever is excellent, **showy or magnificent**."
+  (The genuine 1828 sense 1 is "Small; thin; slender" — not the 1913 "Finished;
+  brought to perfection." No "gain thereof is better than fine gold/Prov 3:14"
+  example exists in the genuine entry.)
+- **gain (n.):** "Profit; interest; something obtained as an advantage. **But
+  what things were gain to me, those I counted loss for Christ. Philippians
+  3:7**" [the celestial counter-valuation] // "Unlawful advantage. 2 Corinthians
+  12:17-18" [the telestial sense]. The verb entry adds "What is a man profited,
+  if he shall gain the whole world, and lose his own soul? **Matthew 16:26**."
+  (The 1 Tim 6:6 "godliness with contentment" and "lust of gain/Tennyson"
+  quotes were 1913 — NOT in genuine 1828.)
+- **transfigure:** "To transform; to change the outward form or appearance.
+  **And was transfigured before them. Matthew 17:2**." → Mormon 8:33
+  "transfigured the holy word of God" = the telestial inversion: changed the
+  form of what was glorious. (The 1913 embellishment "especially to change to
+  something exalted and glorious" is dropped.)
+- **glory (n.):** telestial senses = (5) "Honor; praise; fame; renown;
+  celebrity" + (11) "Pride; boastfulness; arrogance; as vain glory" //
+  celestial senses = (1) "Brightness; luster; splendor" (quoting 2 Peter 1:17,
+  the Transfiguration) + (6) "The felicity of heaven prepared for the children
+  of God; **celestial bliss**" + (7) "In scripture, the divine presence." (The
+  1913 "presence of the Divine Being… celestial honor; heaven" and "emanation
+  of light… beings of peculiar sanctity" wordings are dropped.)
+- **pollute:** (1) "To defile; to make foul or unclean; in a general sense. But
+  appropriately, among the Jews, to make unclean or impure, in a legal or
+  ceremonial sense, **so as to disqualify a person for sacred services, or to
+  render things unfit for sacred uses**. Numbers 18:32." → the anti-temple
+  word; opposite of "washed white." (Genuine 1828 cites the verse numbers; it
+  does not quote "Neither shall ye pollute the holy things.")
+- **celestial:** "Heavenly; belonging or relating to heaven; dwelling in heaven;
+  as celestial spirits; celestial joys. Hence the word conveys the idea of
+  **superior excellence, delight, purity**." (Not the 1913 "spiritual heaven…
+  the heavenly Jerusalem.")
+- **terrestrial:** (1) "Pertaining to the earth; existing on the earth; as
+  terrestrial animals; **bodies terrestrial. 1 Corinthians 15:40**." (3)
+  "Pertaining to the world, or to the present state; **sublunary**." (Genuine
+  1828 keeps the 1 Cor 15:40 citation and "sublunary"; "earthly; mundane" was
+  1913 phrasing.)
 
 ## Mormon 8 words at three altitudes (the core table)
 

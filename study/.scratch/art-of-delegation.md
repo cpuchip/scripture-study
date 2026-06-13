@@ -166,26 +166,28 @@ When I ask someone to carry a burden for me, and they willingly agree, something
 ## Webster 1828
 
 ### Bear
-- **Definition 1:** "To support or sustain; to hold up."
-- **Definition 2:** "To support and remove or carry; to convey."
-- **Definition 8:** "To endure; to tolerate; to undergo; to suffer."
-- **Definition 10:** "To sustain, or be answerable for, as blame, expense, responsibility, etc. 'He shall bear their iniquities.' Is. liii. 11."
-- **Study relevance:** Webster's range covers the full spectrum: physical support (hold up), transport (carry), endurance (suffer), and responsibility (be answerable for). The fact that "bear" means both "carry a load" and "be answerable for" maps to delegation — the delegate both carries the work AND becomes accountable for it. Webster cites Isaiah 53:11 directly.
+- **Definition 2:** "To support; to sustain; as, to bear a weight or burden."
+- **Definition 3:** "To carry; to convey; to support and remove from place to place."
+- **Definition 8:** "To suffer; to undergo; as, to bear punishment."
+- **Definition 17:** "To sustain the effect, or be answerable for; as, to bear the blame." (Sense 21 cites: "He shall bear their iniquities. Isaiah 53:11.")
+- **Study relevance:** Webster's range covers the full spectrum: physical support (sustain a weight), transport (carry), endurance (suffer), and responsibility (be answerable for). The fact that "bear" means both "carry a load" and "be answerable for" maps to delegation — the delegate both carries the work AND becomes accountable for it. Webster cites Isaiah 53:11 directly.
 
 ### Burden
-- **Definition 1:** "That which is borne or carried; a load."
-- **Definition 2:** "That which is borne with labor or difficulty; that which is grievous, wearisome, or oppressive."
-- **Critical synonym distinction:** "A burden is a weight to be borne; a load is something laid upon us to be carried. Our burdens may be of such a nature that we feel bound to bear them cheerfully or without complaint. They may arise from the nature of our situation; they may be allotments of Providence; they may be the consequences of our errors. What is upon us, as a load, we commonly carry with greater reluctance or sense of oppression."
-- **Study relevance:** Burden (borne willingly, Providence-allotted) vs. load (carried reluctantly). A calling is a burden in the best sense — bound to bear it willingly, arising from our covenant situation. This is delegation language. The baptismal covenant uses "burden" precisely.
+- **Definition 2:** "That which is borne or carried; a load."
+- **Definition 3:** "That which is borne with labor or difficulty; that which is grievous, wearisome or oppressive."
+- **NOTE (correction):** The earlier "burden vs. load" synonym essay quoted here was Webster *1913*, not 1828. Genuine 1828 has no such synonymy note for BURDEN — only the two senses above (plus the song-refrain/chorus sense, ship-tonnage sense, etc.). Do not use the burden/load distinction as a 1828 source.
+- **Study relevance:** A burden is "that which is borne or carried" — and especially "that which is borne with labor or difficulty; grievous, wearisome or oppressive." A calling is a burden in exactly this sense: borne with effort. The baptismal covenant uses "burden" precisely.
 
 ### Delegate
-- **Definition 1:** "Any one sent and empowered to act for another; one deputed to represent; a chosen deputy; a representative; a commissioner; a vicar."
-- **Study relevance:** "Sent AND empowered." Not just assigned — empowered. Matches Numbers 11:17 exactly: God transfers His Spirit to the seventy. Delegation without empowerment is merely assignment. Also "vicar" — one who stands in place of another.
+- **Definition (noun) 1:** "A person appointed and sent by another with powers to transact business as his representative; a deputy; a commissioner; a vicar."
+- **Definition (verb) 1:** "To send away; appropriately, to send on an embassy; to send with power to transact business, as a representative." (verb sense 2: "To entrust; to commit; to deliver to another's care and exercise; as, to delegate authority or power to an envoy, representative or judge.")
+- **Study relevance:** Sent *with power to transact business* — not just assigned, but empowered/entrusted. Matches Numbers 11:17 exactly: God transfers His Spirit to the seventy. Delegation without empowerment is merely assignment. Also "vicar" — one who stands in place of another.
 
 ### Yoke
-- **Definition 7:** "That which connects or binds; a chain; a link; a bond connection."
-- **Definition 9:** "Two animals yoked together; a couple; a pair that work together."
-- **Study relevance:** The yoke is fundamentally about JOINING two together. Christ's "Take my yoke upon you" is an invitation to be coupled in work. The burden becomes light because two pull together.
+- **Definition 3:** "A chain; a link; a bond of connection; as the yoke of marriage."
+- **Definition 4:** "A couple; a pair; as a yoke of oxen."
+- **Definition 5:** "Service. My yoke is easy. Matthew 11:30."
+- **Study relevance:** The yoke is fundamentally about JOINING two together (a couple, a pair) and is itself "service" — Webster cites Matthew 11:30 directly. Christ's "Take my yoke upon you" is an invitation to be coupled in work. The burden becomes light because two pull together.
 
 ---
 

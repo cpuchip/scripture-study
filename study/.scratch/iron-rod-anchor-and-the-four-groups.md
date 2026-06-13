@@ -1032,19 +1032,20 @@ The whiteness of the fruit is the whiteness of Christ glorified. The fruit's pur
 
 ### Webster 1828 word work
 
-**love (Webster 1828):**
-1. "A feeling of strong attachment induced by that which delights or commands admiration; preëminent kindness or devotion to another"
-5. "Due gratitude and reverence to God. Keep yourselves in the love of God. Jude 21."
+**love (Webster 1828, noun):**
+1. "An affection of the mind excited by beauty and worth of any kind, or by the qualities of an object which communicate pleasure, sensual or intellectual. It is opposed to hatred."
+4. "Benevolence; good will. God is love. 1 John 4:8, 16."
+The noun def 1 also reads: "The love of God is the first duty of man, and this springs from just views of his attributes or excellencies of character... Esteem and reverence constitute ingredients in this affection, and a fear of offending him is its inseparable effect."
 
-**Observation:** Webster's 1828 sense #5 is striking. "Love of God" had a specifically religious cast: "due gratitude and reverence to God." The Joseph-Smith-era English heard "love of God" as a *response* to God — the proper grateful posture of the creature. But Nephi's vision uses "love of God" differently: it is what God *sheds abroad*, what is *received*. The genitive "of" is ambiguous in English (love-from-God vs love-toward-God). Webster's primary religious sense in 1828 was love-toward-God; Nephi's text reverses the direction and uses it as love-from-God. The vision *enlarges* the era's English. Charity (Mor 7:47) preserves the toward-God meaning; the tree's love is the from-God meaning. Both directions in the same chain.
+**Observation:** Webster's 1828 treatment of "the love of God" (inside noun def 1) has a specifically religious cast — it springs from "just views of his attributes," with "esteem and reverence" as ingredients. The Joseph-Smith-era English heard "love of God" largely as a *response* to God — the proper grateful posture of the creature. But Nephi's vision uses "love of God" differently: it is what God *sheds abroad*, what is *received*. The genitive "of" is ambiguous in English (love-from-God vs love-toward-God). Webster's leading religious sense in 1828 was love-toward-God; Nephi's text reverses the direction and uses it as love-from-God. (Webster def 4 — "God is love. 1 John 4:8" — does already point the other way.) The vision *enlarges* the era's English. Charity (Mor 7:47) preserves the toward-God meaning; the tree's love is the from-God meaning. Both directions in the same chain.
 
 **fountain (Webster 1828):**
-1. "A spring of water issuing from the earth."
-4. "The source from which anything proceeds, or from which anything is supplied continuously; origin; source. Judea, the fountain of the gospel. Fuller. Author of all being, Fountain of light, thyself invisible. Milton."
+1. "A spring, or source of water; properly, a spring or issuing of water from the earth."
+5. "Original; first principle or cause; the source of any thing. Almighty God, the fountain of all goodness."
 
-**Observation:** Webster's sense #4 — "the source from which anything proceeds... origin; source" — quotes Milton: "Author of all being, Fountain of light." So in Joseph Smith's English, "fountain" already carried the sense of *originating source*. When Nephi sees the fountain of living waters and is told the waters represent the love of God, the 1828 reader hears: this is the *source* of the love — the place from which the love proceeds. Christ as the fountain is Christ as origin, not Christ as conduit. This matches Jeremiah 2:13 ("me the fountain") and Ether 12:28 ("the fountain of all righteousness").
+**Observation:** Webster's sense #5 — "Original; first principle or cause; the source of any thing" — gives the example "Almighty God, the fountain of all goodness." So in Joseph Smith's English, "fountain" already carried the sense of *originating source*. When Nephi sees the fountain of living waters and is told the waters represent the love of God, the 1828 reader hears: this is the *source* of the love — the place from which the love proceeds. Christ as the fountain is Christ as origin, not Christ as conduit. This matches Jeremiah 2:13 ("me the fountain") and Ether 12:28 ("the fountain of all righteousness").
 
-**shed (Webster 1828):** Note — Webster 1828 lists only the noun (a shed/hut). The verb sense (to pour, to spill) is in the modern dictionary but the 1828 entry shown here is just the structure-noun. The KJV's "shed abroad" (Rom 5:5) is the verb sense: "to pour; to make flow." That is the sense Nephi gives 1 Ne 11:22 — the love poured out.
+**shed (Webster 1828):** Webster 1828 has the verb SHED, def 2: "To pour out; to effuse; to spill; to suffer to flow out; as, to shed tears; to shed blood... This is my blood of the New Testament, which is shed for many for the remission of sins. Matthew 26:28." (It also lists the structure-noun "a shed/hut" separately.) The KJV's "shed abroad" (Rom 5:5) is this verb sense — to pour out, to make flow. That is the sense Nephi gives 1 Ne 11:22 — the love poured out.
 
 **Connects to:** XVIII (Fruit), XIX (Fountain), XVII (Tree)
 

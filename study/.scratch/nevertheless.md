@@ -37,11 +37,12 @@ What does "nevertheless" actually mean, and why does scripture use it at every h
 
 ## Verified Quotes
 
-### Webster 1828
-**NEVERTHELESS** (adv.) — "Not the less; notwithstanding; in spite of that; yet."
-Example given: "No chastening for the present seemeth to be joyous, but grievous; nevertheless, afterward it yieldeth the peaceable fruit of righteousness. Heb. xii. 11."
+### Webster 1828 (genuine 1828, re-verified via webster MCP 2026-06-13)
+**NEVERTHELESS** (adv.) — "Not the less; notwithstanding; that is, in opposition to any thing, or without regarding it. It rained, nevertheless, we proceeded on our journey; we did not the less proceed on our journey; we proceeded in opposition to the rain, without regarding it, or without being prevented."
 
-Etymology: NEVER + THE + LESS. Literally: "not ever to a lesser degree." The preceding condition subtracts nothing from what follows.
+CORRECTION: the prior draft gave "Not the less; notwithstanding; in spite of that; yet" with a "Heb. xii. 11" chastening example — that was 1913-edition text and a citation NOT present in genuine 1828. Webster 1828 cites no scripture in this entry; its example is the rain sentence above. (Hebrews 12:11 remains a real "nevertheless" verse in the canon — see below — but do NOT attribute it to Webster.)
+
+Etymology: NEVER + THE + LESS. Literally: "not ever to a lesser degree." The preceding condition subtracts nothing from what follows. Webster's own gloss makes this explicit: "we did not the less proceed... we proceeded in opposition to [it], without regarding it."
 
 ### D&C 19:18-19
 "which suffering caused myself, even God, the greatest of all, to tremble because of pain, and to bleed at every pore, and to suffer both body and spirit — and would that I might not drink the bitter cup, and shrink — Nevertheless, glory be to the Father, and I partook and finished my preparations unto the children of men."
@@ -78,7 +79,7 @@ Etymology: NEVER + THE + LESS. Literally: "not ever to a lesser degree." The pre
 
 ### Hebrews 12:11
 "Now no chastening for the present seemeth to be joyous, but grievous: nevertheless afterward it yieldeth the peaceable fruit of righteousness unto them which are exercised thereby."
-- The "nevertheless" of TIME. Present grief → NEVERTHELESS → future fruit. The present doesn't determine the end. Webster chose THIS verse as his example.
+- The "nevertheless" of TIME. Present grief → NEVERTHELESS → future fruit. The present doesn't determine the end. (NB: the earlier claim that Webster used this verse as his 1828 example was wrong — that citation belongs to the 1913 edition, not genuine 1828. The verse stands on its own as a temporal "nevertheless"; don't credit it to Webster.)
 
 ### Mosiah 23:9-11 (Alma speaking)
 "I myself was caught in a snare, and did many things which were abominable in the sight of the Lord, which caused me sore repentance; Nevertheless, after much tribulation, the Lord did hear my cries, and did answer my prayers, and has made me an instrument in his hands... Nevertheless, in this I do not glory, for I am unworthy to glory of myself."
@@ -138,7 +139,7 @@ Etymology: NEVER + THE + LESS. Literally: "not ever to a lesser degree." The pre
 
 4. **The word works in both directions:** It can carry you from good to hard (2 Nephi 4:17 — gratitude → wretchedness) or from hard to good (2 Nephi 4:19 — grief → trust). It doesn't guarantee a happy ending. It guarantees that nothing is lost.
 
-5. **Hebrews 12:11 adds TIME:** "nevertheless afterward." The nevertheless of patience. The present doesn't determine the end.
+5. **Hebrews 12:11 adds TIME:** "nevertheless afterward." The nevertheless of patience. The present doesn't determine the end. (Not a Webster example — see the Webster 1828 correction note above.)
 
 6. **D&C 98:41-42 makes it a command:** We are told to BE the nevertheless for others. Forgive nevertheless. The word becomes an ethic, not just an observation.
 

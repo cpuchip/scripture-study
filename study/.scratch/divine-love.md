@@ -173,22 +173,22 @@ Nelson cites v. 10 as a conditional statement. But the grammar points the other 
 ## Webster 1828 Analysis
 
 ### LOVE (n.)
-"A feeling of strong attachment induced by that which delights or commands admiration; preëminent kindness or devotion to another; affection; tenderness."
-**Def. 5:** "Due gratitude and reverence to God."
+"An affection of the mind excited by beauty and worth of any kind, or by the qualities of an object which communicate pleasure, sensual or intellectual. It is opposed to hatred." (1828 also notes love of God: "Esteem and reverence constitute ingredients in this affection, and a fear of offending him is its inseparable effect.")
+**Def. 4:** "Benevolence; good will. God is love. 1 John 4:8, 16."
 
-**Observation:** Definition 5 is interesting — it frames love toward God as "due gratitude and reverence," suggesting love is a response to what God has already done, not a currency to earn His regard.
+**Observation:** The God-love language in 1828 frames love toward God as carrying "esteem and reverence" as ingredients — suggesting love is a response to His worth, not a currency to earn His regard. (CORRECTION: the earlier quoted "A feeling of strong attachment induced by that which delights or commands admiration..." and "Def. 5: Due gratitude and reverence to God" were Webster *1913*, not 1828 — genuine 1828 sense 5 is "The object beloved." Replaced.)
 
 ### ESTEEM (v.)
-"To set a value on; to appreciate the worth of; to estimate; to value; to reckon."
-"To set a high value on; to prize; to regard with reverence, respect, or friendship."
+"To set a value on, whether high or low; to estimate; to value."
+"To prize; to set a high value on; to regard with reverence, respect or friendship."
 
-**Observation:** When Nephi says God "esteemeth all flesh in one," the Webster meaning is: God sets the same value on all flesh. He prizes all equally. He reckons all at the same worth. This is a declaration of universal equal regard — God doesn't value some people more than others.
+**Observation:** When Nephi says God "esteemeth all flesh in one," the Webster meaning is: God sets a value on all flesh — and "in one" means at one and the same value. He prizes all equally. This is a declaration of universal equal regard — God doesn't value some people more than others. (The 1828 sense 1 even notes value "whether high or low," underscoring that esteem is the act of valuing itself.)
 
 ### FAVOR (n.)
-"Kind regard; propitious aspect; countenance; friendly disposition; kindness; good will."
-Def. 2: "The act of countenancing, or the condition of being countenanced, or regarded propitiously; support; promotion; befriending." Includes the citation: "And Jesus increased in wisdom and stature, and in favor with God and man" (Luke 2:52).
+"Kind regard; kindness; countenance; propitious aspect; friendly disposition." (1828 cites: "God gave Joseph favor and wisdom in the sight of Pharaoh. Acts 7:10.")
+Def. 2: "Support; defense; vindication; or disposition to aid, befriend, support, promote or justify."
 
-**Observation:** Favor in 1828 English is not identical to love. Love is "strong attachment, affection, tenderness." Favor is "kind regard, support, befriending." Favor has an active, directional quality — it's turned toward someone. Love is dispositional; favor is engaged support. This distinction may be key: God can love all equally while FAVORING (actively supporting, befriending) those who choose relationship with Him.
+**Observation:** Favor in 1828 English is not identical to love. Love is "an affection of the mind excited by beauty and worth." Favor is "kind regard... support; defense... disposition to aid, befriend, support, promote." Favor has an active, directional quality — it's turned toward someone. Love is dispositional; favor is engaged support. This distinction may be key: God can love all equally while FAVORING (actively supporting, befriending) those who choose relationship with Him. (CORRECTION: the earlier "The act of countenancing... regarded propitiously" gloss and the Luke 2:52 citation were Webster *1913*, not 1828 — replaced with genuine 1828 senses.)
 
 ---
 

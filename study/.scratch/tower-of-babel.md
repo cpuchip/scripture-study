@@ -123,12 +123,15 @@
 
 ## Webster 1828: CONFOUND
 
-1. **To mingle and blend, so that different elements can not be distinguished; to confuse.**
-2. To mistake for another; to identify falsely.
-3. To throw into confusion or disorder; to perplex; to strike with amazement; to dismay.
-4. To destroy; to ruin; to waste. [Obs.]
+1. **To mingle and blend different things, so that their forms or natures cannot be distinguished; to mix in a mass or crowd, so that individuals cannot be distinguished.**
+2. To throw into disorder. "Let us go down, and there confound their language." Genesis 11:7.
+3. To mix or blend, so as to occasion a mistake of one thing for another.
+4. To perplex; to disturb the apprehension by indistinctness of ideas or words.
+5. To abash; to throw the mind into disorder; to cast down; to make ashamed.
+6. To perplex with terror; to terrify; to dismay; to astonish; to throw into consternation; to stupefy with amazement. "The multitude came together and were confounded." Acts 2:6.
+7. To destroy; to overthrow.
 
-**Key insight:** The primary 1828 meaning is "to mingle and blend so that different elements cannot be distinguished." This isn't just "confuse" in the modern lightweight sense. It's a mixing — taking something that was unified and blending it until the parts can't be separated back out. God didn't delete their language; He *mixed* it. The result: "they may not understand one another's speech" (Gen 11:7).
+**Key insight:** The primary 1828 meaning is "to mingle and blend different things, so that their forms or natures cannot be distinguished; to mix in a mass or crowd, so that individuals cannot be distinguished." This isn't just "confuse" in the modern lightweight sense. It's a mixing — taking something that was unified and blending it until the parts can't be separated back out. (Webster's def. 2 cites Genesis 11:7 directly.) God didn't delete their language; He *mixed* it. The result: "they may not understand one another's speech" (Gen 11:7).
 
 ---
 

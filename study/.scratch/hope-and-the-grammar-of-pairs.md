@@ -21,9 +21,9 @@ VI. Becoming
 
 ### Webster 1828 — HOPE (n.)
 
-> "A desire of some good, accompanied with an expectation of obtaining it, or a belief that it is obtainable; an expectation of something which is thought to be desirable; confidence; pleasing expectancy."
+> "A desire of some good, accompanied with at least a slight expectation of obtaining it, or a belief that it is obtainable. Hope differs from wish and desire in this, that it implies some expectation of obtaining the good desired, or the possibility of possessing it." (def 1)
 
-> "One who, or that which, gives hope, furnishes ground of expectation, or promises desired good. The Lord will be the hope of his people. Joel iii. 16."
+> "That which gives hope; he or that which furnishes ground of expectation, or promises desired good. The hope of Israel is the Messiah. The Lord will be the hope of his people. Joel 3:16." (def 3)
 
 **Observation:** Webster gives hope two components — *desire* + *expectation*. Neither alone is hope. Wishing without expectation is wistfulness. Expectation without desire is prediction. Hope is the fusion: I want it AND I expect it. The second sense is striking: a *person* can be hope ("the Lord will be the hope of his people"). Hope can be embodied. This already pulls toward the Christ-centered definitions in Moroni and Ether.
 

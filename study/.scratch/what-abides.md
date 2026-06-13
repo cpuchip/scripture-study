@@ -156,9 +156,11 @@ source actually read).
 
 ## Webster 1828 — *abide*
 
-- "To stay; to continue in a place; to have one's abode; to dwell; to sojourn."
-- "To remain stable or fixed in some state or condition; to continue; to remain."
-- "To abide by — to stand to; to adhere; to maintain."
+- (intransitive) "To rest, or dwell. Genesis 29:19."
+- (intransitive) "To tarry or stay for a short time. Genesis 24:55."
+- (intransitive) "To continue permanently or in the same state; to be firm and immovable. Psalm 119:90."
+- (intransitive) "To remain, to continue. Acts 27:31; Ecclesiastes 8:15."
+- (transitive) "To endure or sustain. To abide the indignation of the Lord. Jeremiah 10:10"; "To bear or endure; to bear patiently." And: "abide by signifies to adhere to, maintain defend, or stand to, as to abide by a promise, or by a friend; or to suffer the consequences."
 - Modern dictionary keeps the harder edge: "to endure without yielding; to
   withstand"; "to bear patiently; to tolerate"; "to pay for; to atone for; to
   suffer for"; "to endure; to remain; to last."

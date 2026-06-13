@@ -99,9 +99,10 @@ If the Mechanics of Refinement describe the physical restructuring of spirit-mat
 
 ## Webster 1828
 
-### Refine
-- **Definition 1:** "To purify; to clear from dross or recrement; to separate from foreign matter or impurities; as, to refine gold or silver."
-- **Study relevance:** Purification is structural, meaning the separation of foreign matter (dross/sin) from the spirit-matter so it can align with celestial law.
+### Refine (verb transitive — genuine 1828, re-verified via webster MCP 2026-06-13)
+- **Definition 1:** "To purify; in a general sense; applied to liquors, to depurate; to defecate; to clarify; to separate, as liquor, from all extraneous matter. In this sense, the verb is used with propriety, but it is customary to use fine."
+- **Definition 2:** "Applied to metals, to separate the metallic substance from all other matter... to detach the pure metal from all extraneous matter. I will bring the third part through the fire, and will refine them as silver is refined. Zechariah 13:9."
+- **Study relevance:** Purification is structural — the separation of extraneous matter (dross/sin) from the spirit-matter so it can align with celestial law. (CORRECTION: prior draft's "clear from dross or recrement... refine gold or silver" was 1913-style wording; genuine 1828 def 1 is the liquor/depurate sense, and the "refine them as silver" / Zechariah 13:9 text lives at def 2.)
 
 ---
 

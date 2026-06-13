@@ -241,12 +241,12 @@ Tracking "it came to pass" returns through the chapter — to be filled in as ve
 ## Webster 1828
 
 ### "nourish"
-- **Primary (1828):** "To feed and cause to grow; to supply with matter which increases bulk or supplies waste, and promotes health"
-- **Also:** "To cherish; to comfort" (James 5:5 cited)
+- **Primary (1828):** "To feed and cause to grow; to supply a living or organized body, animal or vegetable, with matter which increases its bulk or supplies the waste occasioned by any of its functions; to supply with nutriment."
+- **Also:** "To cherish; to comfort. James 5:5."
 - **Study relevance:** "Nourish" in Jacob 5 is not passive watering. It is active cherishing — feeding, supplying, promoting health. The Lord nourishes the vineyard the way a parent nourishes a child. "Cherish; comfort" amplifies the grief when the nourishment fails to produce.
 
 ### "graft"
-- **1828:** "A small shoot or scion of a tree inserted in another tree, the stock of which is to support and nourish it. The two unite and become one tree, but the graft determines the kind of fruit."
+- **1828:** "A small shoot or cion of a tree, inserted in another tree as the stock which is to support and nourish it. These unite and become one tree, but the graft determines the kind of fruit."
 - **Study relevance:** The graft determines the fruit, not the rootstock. This is why wild branches grafted into tame roots can bring forth tame fruit (Jacob 5:18) — the connection to the root transforms the branch. But also why the reverse fails: wild branches overgrow and overwhelm the root (5:37, 48).
 
 ---

@@ -339,7 +339,7 @@ Source: gospel-library/eng/scriptures/nt/john/1.md (read vv.1-20)
 - "All things were made by him" — the Creator identity. Every atom, every star, every cell — His work. And then He chose to enter the creation as a creature. Mosiah 3:8 and 2 Nephi 9:5 echo this.
 
 **v.4-5** "In him was life; and the life was the light of men. And the light shineth in darkness; and the darkness comprehended it not."
-- "the darkness comprehended it not" — Webster 1828 "comprehend" includes "to contain, to embrace." The darkness could not CONTAIN the light. It could not hold it. D&C 88:6 reverses this: HE comprehended all things by descending below them. The darkness couldn't hold the light; but the Light held the darkness.
+- "the darkness comprehended it not" — Webster 1828 "comprehend" includes "to contain; to include; to comprise." The darkness could not CONTAIN the light. It could not hold it. D&C 88:6 reverses this: HE comprehended all things by descending below them. The darkness couldn't hold the light; but the Light held the darkness.
 
 **v.10-11** "He was in the world, and the world was made by him, and the world knew him not. He came unto his own, and his own received him not."
 - The Creator unrecognized by His creation. The Maker rejected by the made. Mosiah 3:9 says the same: "even after all this they shall consider him a man."
@@ -376,23 +376,23 @@ On the consolation:
 ### Webster 1828 Definitions
 
 **COMPREHEND** (D&C 88:6)
-1828: "To contain; to embrace; to include" AND "To take into the mind; to grasp with the understanding"
+1828: "To contain; to include; to comprise" (def 2) AND "To understand; to conceive; that is, to take, hold or contain in the mind" (def 4)
 - Both meanings apply to D&C 88:6. Christ CONTAINS all things (He includes all experience within Himself) AND He UNDERSTANDS all things (grasps them fully). The descent was both ontological and cognitive.
 
 **SUCCOR** (Alma 7:12)
-1828: "To run to, or run to support; hence, to help or relieve when in difficulty, want, or distress; to assist and deliver from suffering"
+1828: "Literally, to run to, or run to support; hence, to help or relieve when in difficulty, want or distress; to assist and deliver from suffering"
 - "TO RUN TO" — not to wait for someone to come. He RUNS to us. The root meaning is movement toward the distressed. Active, urgent mercy.
 - The quote in the 1828 dictionary is Hebrews 2:18: "He is able to succor them that are tempted." — the same Atonement principle.
 
 **INFINITE** (Alma 34:10, 2 Nephi 9:7)
-1828: "Unlimited or boundless, in time or space... Without limit in power, capacity, knowledge, or excellence; boundless; immeasurably or inconceivably great"
-- "Immeasurably or inconceivably great" — Amulek's point exactly. Not just very large. Inconceivable. The Atonement exceeds human capacity to measure.
-- The Psalm quote in the entry: "Great is our Lord, and of great power; his understanding is infinite." — understanding (comprehension) and infiniteness linked again.
+1828: "Without limits; unbounded; boundless; not circumscribed; applied to time, space and qualities. God is infinite in duration, having neither beginning nor end of existence." (def 1) Def 4: "used loosely and hyperbolically for indefinitely large, immense, of great size or extent."
+- "Boundless... applied to time, space and qualities" — Amulek's point exactly. Not just very large. The Atonement exceeds human capacity to measure.
+- (The 1828 entry's example is "God is infinite in duration... infinite in presence, or omnipresent" — duration and presence, the same scope Amulek presses.)
 
 **REDEEM** (throughout)
-1828: "To purchase back; to regain possession of by payment of a stipulated price" AND "to ransom, liberate, or rescue from captivity or bondage"
+1828: "To purchase back; to ransom; to liberate or rescue from captivity or bondage, or from any obligation or liability to suffer or to be forfeited, by paying an equivalent." (def 1) Def 2: "To repurchase what has been sold; to regain possession of a thing alienated, by repaying the value of it to the possessor."
 - PURCHASE BACK — we were His to begin with. We didn't become His at redemption; we were returned to Him. "Redeem" implies prior ownership.
-- The Galatians quote: "Christ hath redeemed us from the curse of the law, being made a curse for us." — He didn't just pay — He became the very thing that enslaved us.
+- The Galatians quote (def 10, the theological sense): "Christ hath redeemed us from the curse of the law, being made a curse for us. Galatians 3:13." — He didn't just pay — He became the very thing that enslaved us.
 
 ---
 

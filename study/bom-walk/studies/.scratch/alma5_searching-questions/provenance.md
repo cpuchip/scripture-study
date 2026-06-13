@@ -197,9 +197,10 @@
 ## Webster 1828
 
 ### "countenance"
-- **Def. 1:** "Appearance or expression of the face; look; aspect; mien."
-- **Def. 3:** "Approving or encouraging aspect of face; hence, favor, good will, support; aid; encouragement."
-- **Study relevance:** "Have ye received his image in your countenances?" (Alma 5:14) — not merely "do you look like Christ" in a superficial way, but: does his *approval and encouragement* show in your face? Countenance in 1828 carried the sense of *bearing another's favor*. The question is whether God's favor is visibly borne.
+- **Def. 1 (1828):** "Literally, the contents of a body; the outline and extent which constitutes the whole figure or external appearance. Appropriately, the human face; the whole form of the face, or system of features; visage."
+- **Def. 4 (1828):** "Favor; good will; kindness... Hence in scriptural language, the light of God's countenance is his smiles or favorable regards, his favor and grace; and to hide his face or countenance is to manifest his displeasure."
+- **FLAG (corrected):** Earlier scratch quoted "Appearance or expression of the face; look; aspect; mien" (Def. 1) and "Approving or encouraging aspect of face..." (Def. 3) — those are the 1913 edition's wording, not genuine 1828. The favor/good-will sense the study leans on is genuine 1828, but it is Def. 4 (quoted above), not Def. 3.
+- **Study relevance:** "Have ye received his image in your countenances?" (Alma 5:14) — not merely "do you look like Christ" in a superficial way, but: does his *favor* show in your face? Countenance in 1828 carried the sense of *bearing another's favor* (Def. 4 — "the light of God's countenance is his smiles or favorable regards"). The question is whether God's favor is visibly borne.
 
 ### "testimony"
 - **Def. 3:** "Open attestation; profession."
@@ -207,9 +208,10 @@
 - **Study relevance:** "Pure testimony" in Alma 4:19 = open attestation, public attestation, evidence offered as proof. Not performance or persuasion — *evidence*. The questions ARE the testimony because they present evidence to the hearer's own conscience.
 
 ### "image"
-- **Def. 1:** "An imitation, representation, or similitude of any person... a copy; a likeness; an effigy..."
-- **Gen. 1:27 cited in the entry itself:** "And God created man in his own image."
-- **Study relevance:** Webster's dictionary cites Gen. 1:27 under *image*. When Alma asks "have ye received his image in your countenances?" he is invoking the original creation — man was made bearing God's image; the fall obscured it; the new birth restores it. The mighty change = restoration of the image.
+- **Def. 1 (1828):** "A representation or similitude of any person or thing, formed of a material substance; as an image wrought out of stone, wood or wax. Whose is this image and superscription? Matthew 22:20."
+- **Def. 5 (1828):** "Any copy, representation or likeness. The child is the image of its mother."
+- **FLAG (corrected):** Earlier scratch quoted Def. 1 as "An imitation, representation, or similitude... a copy; a likeness; an effigy" — that is the 1913 edition. Earlier scratch also claimed the 1828 entry cites **Gen. 1:27** ("And God created man in his own image"); it does NOT — the genuine 1828 entry's scripture citation under *image* is **Matthew 22:20**. The Gen. 1:27 link is a real biblical fact but it is NOT in Webster's entry, so the study cannot lean on Webster to supply it.
+- **Study relevance:** When Alma asks "have ye received his image in your countenances?" the imago Dei reading (man made bearing God's image; the fall obscured it; the new birth restores it; the mighty change = restoration of the image) is a sound scriptural connection — but it must be grounded in Gen. 1:27 / Moses 2:27 directly, NOT in Webster's *image* entry (which cites Matthew 22:20, not Genesis). Webster's 1828 Def. 1/5 supports only the general sense "representation or likeness of a person."
 
 ---
 
