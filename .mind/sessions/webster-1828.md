@@ -128,7 +128,13 @@ last_active: 2026-06-12T15:38:52
   ot/micah). ~50 scripture quotes ALL verbatim (its character-for-
   character claim held); BYU counts EXACT (Luke 24:27=5, John
   5:39=72, 2 Ne 25:26=76); McConkie "13 days before death" EXACT.
-  NEXT: #199 freedom/00-frame.md T2. Model SWITCHED Fable 5 → Opus 4.8 at
+  #199 freedom/00-frame CLEAN; #200 freedom/07-likening CLEAN
+  (speculative doc, anchors verbatim); #201 freedom/99-synthesis
+  (publication-bound master study) added COMPEL (#127) + SACRIFICE
+  (#128) both 1913-as-1828 → count 128 (genuine 1828 supports the
+  sacrifice-vs-compel contrast, not queued); its ~40 scripture +
+  Oaks/Bednar/JFS quotes ALL verbatim, links resolve. NEXT: #202
+  freedom/provenance/02-blueprint-and-timelines SAMPLE. Model SWITCHED Fable 5 → Opus 4.8 at
   ~#176 (Fable access lost; Michael: "keep up the same rigor").
   Commit trailer now Opus 4.8. ★ HEAVIEST FIND of the run: #176
   yt/V40tBshkMnE-send-me-covenants had TWO fabricated "Todd says"

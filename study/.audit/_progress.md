@@ -212,7 +212,7 @@ Already done out-of-band: `study/morm-8-three-glories-reading.md` (2026-06-09).
 - [x] 2026-06-01 `study/christ-in-all-the-scriptures.md` **T1+FULL** — ★ CHRIST (#125) + TYPE (#126) 1913-as-1828 requoted; 2 broken links fixed (exo/mic); ~50 scripture quotes + 3 conf quotes + all counts VERBATIM/EXACT (Luke 24:27=5, John 5:39=72, 2 Ne 25:26=76, McConkie 13 days)
 - [x] 2026-06-01 `study/freedom/00-frame.md` **T2** — CLEAN (4 scripture quotes verbatim; Hel 14:2/D&C 98:6 corrections right; links resolve)
 - [x] 2026-06-01 `study/freedom/07-likening-the-pattern.md` **T2** — CLEAN (speculative doc, anchors verbatim: Mal 4:1-2, D&C 77:5, the two-marks Rev/Ezek texts; grading discipline sound)
-- [ ] 2026-06-01 `study/freedom/99-synthesis.md` **T2**
+- [x] 2026-06-01 `study/freedom/99-synthesis.md` **T2** — ★ COMPEL (#127) + SACRIFICE (#128) 1913-as-1828 requoted; ~40 scripture + Oaks/Bednar/JFS quotes ALL verbatim (publication-bound master study)
 - [ ] 2026-06-01 `study/freedom/provenance/02-blueprint-and-timelines.md` **SAMPLE**
 - [ ] 2026-06-01 `study/freedom/provenance/03-nephi-john-revelation.md` **SAMPLE**
 - [ ] 2026-06-01 `study/freedom/provenance/04-us-constitutional-history.md` **SAMPLE**

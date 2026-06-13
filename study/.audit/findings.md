@@ -2480,6 +2480,41 @@ No markdown links (scriptural refs are plain text). The grading
 discipline is the doc's strength — it restrains its own date-
 mapping (likening #4) and turns the table into a mirror. CLEAN.
 
+### study/freedom/99-synthesis.md (2026-05-31) — TWO Webster words (publication-bound master study)
+T2 (but verified to FULL depth — it's the cpuchip.net-bound master
+synthesis). Two 1913-as-1828 Webster words requoted (combined note):
+  • ★ COMPEL (word #127) — study's "to take by force or violence;
+    to seize; to exact; to extort" = 1913 def 2. Genuine 1828 def 2:
+    "To force; to take by force, or violence; to seize" (no "exact;
+    extort"). Requoted.
+  • ★ SACRIFICE (word #128) — study's "the offering of anything to
+    God… in the way of religious thanksgiving, atonement, or
+    conciliation" = 1913 (def 1 + def 2 blend). Genuine 1828 noun
+    def 1 ("an offering made to God by killing and burning some
+    animal upon an altar… to make atonement for sin, appease his
+    wrath or conciliate his favor, or to express thankfulness")
+    keeps the same three motives — requoted. Neither QUEUED (genuine
+    1828 supports the sacrifice-vs-compel contrast).
+EVERYTHING ELSE VERBATIM — ~40 scripture quotes all marked-ellipsis
+clean: Ether 2:12 (epigraph) + 2:8-9/11, Moses 5:7/18/19/20/21/29/
+30/31/33/35 (the Cain/Abel spine), Moses 4:3, D&C 121:41, 101:78-80
+(incl. the "redeemed the land by the shedding of blood" hard verse),
+2 Ne 2:27, Heb 12:24 ("better things than that of Abel"), D&C 93:30,
+3 Ne 6:7-8/6:18/9:9/9:13/8:1-2/2:1, Mormon 8:35, 1 Ne 13:13-19
+(13:15 "did prosper and obtain the land", 13:19) + 14:7/21-22
+("concerning the end of the world"), Ether 8:25, D&C 130:15/45:35/
+38:30, Mal 4:1-2/4:5, Rev 13:16-17/7:3/1:8, Ezek 9:4, D&C 87:8,
+Alma 22:18. Prophet/conf quotes VERBATIM: Oaks Apr-2021 51oaks
+("What was God's purpose…doctrine of moral agency"), Bednar Oct-2024
+("boast in our own strength…depend upon our own wisdom"), Joseph F.
+Smith (Teachings ch.30, "must not be forced, there must be no
+coercion…it is their pleasure to do it"). ONLY unverifiable-locally
+quote: the "Celebrating Freedom and Agency" Church web resource
+("choose Him freely…without compulsion") — secondary source cited
+as such, consistent with doctrine. ALL links resolve. The closing
+note's history corrections (16th/17th Amendments 1913, Hinckley not
+Hunter, 2034 eclipse, D&C 77:5) verified in provenance files.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
