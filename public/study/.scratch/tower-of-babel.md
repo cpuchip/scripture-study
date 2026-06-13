@@ -2,9 +2,10 @@
 > study-correctness walk and the 2026-06-09 Webster repair. Some quotes recorded
 > here as "verified" — especially Webster 1828 definitions — were checked against
 > a tool then serving 1913-as-1828 text, or are pre-correction scripture/date
-> wordings. **The study file is authoritative** for the corrected text; every
-> correction is logged in `study/.audit/findings.md`. Kept as the original audit
-> trail, flagged rather than rewritten (see `study/.scratch/README.md`).
+> wordings. **At present the study file is authoritative** for the corrected text
+> (every correction is logged in `study/.audit/findings.md`). This is temporary:
+> once the walk's corrections are normalized *through* scratch, scratch is
+> authoritative again and this banner is removed. See `study/.scratch/README.md`.
 
 # Scratch — Tower of Babel, Languages, and the Jaredites
 
