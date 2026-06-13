@@ -4187,6 +4187,36 @@ all my sins." Verified by direct grep. The curse-*lifted* datapoints (23:18,
   revelation one motion; v28 "more idle part of the Lamanites" curse-language
   as description, 5:21 datapoint).
 
+### Alma 31, 5, 6, 7 (2026-06-13, 435→439) — ALL CLEAN
+
+The Rameumptom, then back to the front of Alma: the great searching-questions
+sermon, the church set in order, and the empathic atonement at Gideon. Verified
+by direct grep (Alma 5 is the heavy T2 file — its spin-off independently
+verified and folded).
+
+- **Alma 31** (the Rameumptom): v35 "their souls are precious, and many of them
+  are our brethren; therefore, give unto us, O Lord, power and wisdom that we
+  may bring these, our brethren, again unto thee" — EXACT (false worship as the
+  point-by-point inversion of true; the two prayers — self-praise from the high
+  stand vs. intercession for one's enemies).
+- **Alma 5** (Can ye feel so now?): v14 "have ye received his image in your
+  countenances? Have ye experienced this mighty change in your hearts?," v26
+  "if ye have felt to sing the song of redeeming love, I would ask, can ye feel
+  so now?" — EXACT (testimony as a mirror made of ~40 questions; the change
+  re-verified in the present; two shepherds, no third; the
+  alma5_searching-questions spin-off's quotes match this retrieval).
+- **Alma 6** (word then order): v3 "the same were rejected, and their names were
+  blotted out, that their names were not numbered among those of the
+  righteous" — EXACT (the church cleansed by the people's own response to the
+  sermon; the word "liberal unto all"; ordination by laying on of hands).
+- **Alma 7** (that he may know how to succor): v8 "as to this thing I do not
+  know; but this much I do know, that the Lord God hath power to do all
+  things," v12 "he will take upon him their infirmities… that he may know
+  according to the flesh how to succor his people according to their
+  infirmities" — EXACT (the empathic atonement — Christ suffers to *know*, not
+  only to pay — completing the Abinadi substitution thread; Alma's
+  revelatory-honesty "I do not know" proven correct).
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)

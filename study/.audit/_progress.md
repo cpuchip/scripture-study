@@ -453,11 +453,11 @@ Already done out-of-band: `study/morm-8-three-glories-reading.md` (2026-06-09).
 - [x] 2026-06-02 `study/bom-walk/alma/alma-46.md` **LINKS** — CLEAN (the title of liberty; v12 "In memory of our God, our religion, and freedom, and our peace, our wives, and our children" EXACT — Amalickiah the flatterer; the self-maledictory rent-garment covenant; "Christians" first named)
 - [x] 2026-06-02 `study/bom-walk/alma/alma-24.md` **LINKS** — CLEAN (the buried weapons; v18 "rather than shed the blood of their brethren they would give up their own lives… rather than spend their days in idleness they would labor abundantly," v30 "worse than though they had never known these things" EXACT — unresisting martyrdom converts the killers; apostasy-from-light capstone)
 - [x] 2026-06-02 `study/bom-walk/alma/alma-23.md` **LINKS** — CLEAN (never did fall away; v6 "as many of the Lamanites as believed… never did fall away," v18 "the curse of God did no more follow them" EXACT — 5:21-study datapoint: curse = enmity/idleness reversed on conversion, footnoted to 2 Ne 30:6, logged not resolved)
-- [ ] 2026-06-02 `study/bom-walk/alma/alma-31.md` **LINKS**
+- [x] 2026-06-02 `study/bom-walk/alma/alma-31.md` **LINKS** — CLEAN (the Rameumptom; v35 "their souls are precious, and many of them are our brethren" EXACT — false worship as inversion of true; the two prayers, self vs. others)
 - [x] 2026-06-02 `study/bom-walk/alma/alma-22.md` **LINKS** — CLEAN (give away all my sins; v18 "I will give away all my sins to know thee, and that I may be raised from the dead" EXACT — the source verse of Michael's give-away-all-my-sins study; give-AWAY not give-up, and-not-then; v28 "more idle part" curse-language as description, 5:21 datapoint)
-- [ ] 2026-06-02 `study/bom-walk/alma/alma-05.md` **T2**
-- [ ] 2026-06-02 `study/bom-walk/alma/alma-06.md` **LINKS**
-- [ ] 2026-06-02 `study/bom-walk/alma/alma-07.md` **LINKS**
+- [x] 2026-06-02 `study/bom-walk/alma/alma-05.md` **T2** — CLEAN (Can ye feel so now?; v14 "have ye received his image in your countenances? Have ye experienced this mighty change in your hearts?," v26 "if ye have felt to sing the song of redeeming love, I would ask, can ye feel so now?" EXACT — testimony as a mirror made of ~40 questions; spin-off alma5_searching-questions verified + folded)
+- [x] 2026-06-02 `study/bom-walk/alma/alma-06.md` **LINKS** — CLEAN (word then order; v3 "the same were rejected, and their names were blotted out, that their names were not numbered among those of the righteous" EXACT — the church cleansed by response to the sermon; word liberal to all)
+- [x] 2026-06-02 `study/bom-walk/alma/alma-07.md` **LINKS** — CLEAN (that he may know how to succor; v8 "as to this thing I do not know; but this much I do know," v12 "he will take upon him their infirmities… that he may know according to the flesh how to succor his people according to their infirmities" EXACT — the empathic atonement, completing the Abinadi thread)
 - [ ] 2026-06-02 `study/bom-walk/alma/alma-08.md` **LINKS**
 - [ ] 2026-06-02 `study/bom-walk/alma/alma-09.md` **LINKS**
 - [ ] 2026-06-02 `study/bom-walk/alma/alma-10.md` **LINKS**
