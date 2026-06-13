@@ -6,8 +6,10 @@ Each tool is a new standing capability → council nod before building
 (dominion-in-council). **SHIPPED:** verify-quotes (detector rule #1) + the **quoter
 (constructor), v1–v3 + promote** (`scripts/quoter/`, Michael's "build it out, carry
 through v3" 2026-06-13 — self-validating loop proven: quoter output passes the
-verify-quotes detector, 0 flags). **NEXT:** the scripture-verbatim detector rule
-(reuses the quoter's `resolver.py` + `grammar.py`).*
+verify-quotes detector, 0 flags) + the **scripture-verbatim detector rule**
+(`scripts/study-lint/`, reuses the quoter's resolver+grammar; precision-tuned 213→35
+on the walked corpus, all 35 genuine near-misses). **NEXT:** link-validate /
+citation-depth-2 rules, then MCP wrappers.*
 
 ## The principle (oracle-first)
 
@@ -157,8 +159,10 @@ walk did by hand is now mechanical.
 
 1. ✅ **ref→path resolver** (shared spine) — `scripts/quoter/resolver.py`, own map
    (all 5 volumes, alias table), relpath re-basing per target. SHIPPED.
-2. **scripture-verbatim** linter rule (consumes resolver + grammar) — highest-value
-   detector. **NEXT.**
+2. ✅ **scripture-verbatim** linter rule (consumes resolver + grammar) —
+   `scripts/study-lint/scripture_verbatim.py`. Precision-tuned 213→35 on the walked
+   corpus (anchor + two-long-runs gate; labels/condensations/scatter excluded), all
+   35 genuine near-misses. SHIPPED.
 3. ✅ **quote scripture + webster** CLI (the constructor, v1–v3) — `quote.py` +
    `sources.py` + `grammar.py`. SHIPPED.
 4. ✅ **quote promote** (re-basing + re-verify against source) — SHIPPED.
