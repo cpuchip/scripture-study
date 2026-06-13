@@ -466,10 +466,10 @@ Already done out-of-band: `study/morm-8-three-glories-reading.md` (2026-06-09).
 - [x] 2026-06-02 `study/bom-walk/alma/alma-13.md` **T1** — CLEAN (the holy order; v3 "called and prepared from the foundation of the world according to the foreknowledge of God, on account of their exceeding faith… in the first place being left to choose good or evil" EXACT — foreordination on foreknown faith, not Calvinist election; Melchizedek; enter the rest)
 - [x] 2026-06-02 `study/bom-walk/studies/alma5_searching-questions.md` **T1** — CLEAN (the searching-questions sermon; Alma 4:19 + 5:6/14/26/37/48 all EXACT; Webster countenance/testimony/image). ★ COUNT NOTE: study says "Forty-three distinct questions" — source has exactly **42 question marks** in the verse text; the +1 hinges on counting compound interrogatives (e.g. v53's four "can ye/will ye" clauses under one `?`) as distinct. Defensible methodology, not a misquote — logged for Michael, prose left intact; the study's own "40+ confirmed" framing holds either way.
 - [x] 2026-06-02 `study/bom-walk/alma/alma-14.md` **LINKS** — CLEAN (the Spirit constraineth me; v11 "The Spirit constraineth me that I must not stretch forth mine hand… the blood of the innocent shall stand as a witness against them," v26 "give us strength according to our faith which is in Christ, even unto deliverance" EXACT — the BoM's hardest verse on innocent suffering, handled at depth)
-- [ ] 2026-06-02 `study/bom-walk/alma/alma-15.md` **LINKS**
-- [ ] 2026-06-02 `study/bom-walk/alma/alma-16.md` **LINKS**
-- [ ] 2026-06-02 `study/bom-walk/alma/alma-17.md` **LINKS**
-- [ ] 2026-06-02 `study/bom-walk/alma/alma-18.md` **LINKS**
+- [x] 2026-06-02 `study/bom-walk/alma/alma-15.md` **LINKS** — CLEAN (Zeezrom healed; v8 "If thou believest in the redemption of Christ thou canst be healed" EXACT — guilt as a burning fever; body and soul healed together; Amulek forsook all)
+- [x] 2026-06-02 `study/bom-walk/alma/alma-16.md` **LINKS** — CLEAN (Desolation of Nehors; v10 "in one day it was left desolate" EXACT — the 9:4 scoff fulfilled in its own unit; the Spirit poured out to prepare hearts, inverse of the chains of hell)
+- [x] 2026-06-02 `study/bom-walk/alma/alma-17.md` **LINKS** — CLEAN (the prince who chose to be a servant; v25 "Nay, but I will be thy servant," v29 "win the hearts of these my fellow-servants, that I may lead them to believe in my words" EXACT — the grievance-tradition cure's method; Sebus)
+- [x] 2026-06-02 `study/bom-walk/alma/alma-18.md` **LINKS** — CLEAN (Believest thou that there is a God?; v10 "even he doth remember all my commandments to execute them," v23 "I will believe all thy words. And thus he was caught with guile" EXACT — the [[feedback_ammon]] anchor verse; start where the hearer is)
 - [ ] 2026-06-02 `study/bom-walk/alma/alma-19.md` **LINKS**
 - [ ] 2026-06-02 `study/bom-walk/alma/alma-20.md` **LINKS**
 - [ ] 2026-06-02 `study/bom-walk/alma/alma-21.md` **LINKS**

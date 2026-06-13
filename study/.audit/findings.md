@@ -4283,6 +4283,31 @@ study, and the hardest verse in Alma. Verified by direct grep.
   direct confrontation with why God permits the innocent to suffer, given
   through tears; the Christic silence; deliverance after the full measure).
 
+### Alma 15-18 (2026-06-13, 447→451) — ALL CLEAN
+
+The Ammonihah arc resolves (Zeezrom healed; the city destroyed in one day),
+then the great Lamanite mission opens with Ammon at Sebus and Lamoni's
+conversion. Verified by direct grep.
+
+- **Alma 15** (Zeezrom healed): v8 "If thou believest in the redemption of
+  Christ thou canst be healed" — EXACT (guilt as a burning fever — the pains of
+  hell made bodily; body and soul healed together; the bribing lawyer becomes a
+  preacher; Amulek forsook all).
+- **Alma 16** (Desolation of Nehors): v10 "in one day it was left desolate" —
+  EXACT (the 9:4 scoff fulfilled in its own unit; the land named for the
+  *profession* that killed it; the Spirit poured out to prepare hearts — the
+  inverse of the chains of hell).
+- **Alma 17** (the prince who chose to be a servant): v25 "Nay, but I will be
+  thy servant," v29 "that I may win the hearts of these my fellow-servants,
+  that I may lead them to believe in my words" — EXACT (the grievance-tradition
+  cure named — the *tradition*, not the people; patience and example as method;
+  the Sebus type-scene).
+- **Alma 18** (Believest thou that there is a God?): v10 "even he doth remember
+  all my commandments to execute them," v23 "Yea, I will believe all thy words.
+  And thus he was caught with guile" — EXACT (v10 is the anchor verse for the
+  [[feedback_ammon]] "finish what you're handed" principle; start where the
+  hearer is; the grievance history corrected at the source).
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
