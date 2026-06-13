@@ -2326,6 +2326,18 @@ each (each note quotes only its own chapter):
     teacher," 2:24 "stir them up in the ways of remembrance" — all
     verbatim.
 
+### study/daily-digest 06-01 + bom-walk READMEs (2026-06-01) — machine artifact + CLEAN
+SAMPLE + LINKS ×2.
+  • daily-digest 06-01: machine artifact, untouched (NVIDIA Cosmos
+    3/Alpamayo + the Opus 4.8/$65B Series H news the pipeline
+    gathered — external, documented not endorsed). No canonical
+    source.
+  • bom-walk/studies/README.md: no markdown links, no quotes —
+    CLEAN.
+  • bom-walk/README.md: one markdown link, `../../.spec/proposals/
+    bom-walkthrough.md` — verified it RESOLVES (file exists). No
+    quotes. CLEAN.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
