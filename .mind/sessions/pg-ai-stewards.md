@@ -26,9 +26,11 @@ last_active: 2026-06-13T09:51:34
   doc_citations_resolved keeps core signature (extension-owned, can't DROP/retype →
   `resolved` carries the verse array); STEWARDS_RESOLVER_URL in .env; manifest+
   classification entries; replay-proven (6 funcs, "Mosiah 18:8-9"→2 verses, 'scripture'
-  kind). **DEFERRED:** verify-harness scripture fixtures (Moroni/gospel_search/
-  gospel-engine-v2 in verify-1-6-1/loop/4a-steward/3e2-2 — reference-only, not shipped)
-  → genericize-or-prune separately. Task #159.
+  kind). **HARNESS CLEANUP DONE (OSS `b6ec106`, pushed):** verify-1-6-1/loop/4a-steward
+  scripture fixtures→water-cycle/web_lookup; verify-3e2-2 mcp_proxy test re-pointed
+  gospel-engine-v2/gospel_search→core fs-read/fs_search; init brain smoke Moroni/charity
+  →water-cycle (category 'study'→'ideas'; full init runs clean, fts=1); bridge.Dockerfile
+  example neutralized. **Extension-wide sweep now scripture-FREE.** Task #159 fully closed.
 - **★ M0 — RUNTIME STACK SHIPPED + VIRGIN BOOT PROVEN 2026-06-13 (OSS `8287967`,
   pushed; Michael: "this probably doesn't need [a loop], push through as normal").**
   The OSS repo had no runtime image/compose — only the extension Dockerfile. Added
