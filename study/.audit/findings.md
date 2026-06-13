@@ -1940,6 +1940,18 @@ Nelson 2023, Eubank 2017, Christofferson 2026, Nelson 2021 ×6
 (five practices). Scriptures verbatim (D&C 115:6/87:8/49:27-28,
 3 Ne 6:18, 2 Pet 3:3-4, Hel 16 "not reasonable").
 
+### study/two-triplets-one-ascent.md (2026-05-07) — 2 internal-quote fixes
+FULL. The "despair is the eye-state" quote was attributed to
+hope-and-the-grammar-of-pairs but lives in discernment-and-the-
+comprehending-eye (re-attributed); the way-truth-life "He IS all
+three" quote was a constructed sentence — its actual line is
+"Christ fulfills all three roles" (requoted). The 2026-05-08 Opus
+revision notes' fixes all held up under re-verification: Rom 5:5
+"which is" present, marked-ellipsis pickups proper. Scriptures
+verbatim (Moro 10:20/22, 7:47-48, Rom 5:3-5, John 14:6/9, 11:25,
+Heb 6:19/10:19-20, D&C 4:5, 88:40/67-68, 93:12-13/24/36, Ether
+12:28, 2 Ne 31:20, LoF 7); other internal-corpus quotes exact.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
