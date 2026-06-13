@@ -52,7 +52,7 @@ The personal project built the eval harness. The professional work proves the ju
   - Systemic detection (caught a structural values-nesting bug across 15 services that would silently apply wrong resource limits in production — verified locally with `helm template` before reporting)
   - Proposed both minimal-unblock and correct-long-term fixes
 
-- **Ben Test** — formalized after a colleague observed "your AI is very complimentary — perhaps too complimentary?" Now a named quality gate with:
+- **Ben Test** — formalized after a colleague observed "Your AI is very complimentary. Perhaps too complimentary?" Now a named quality gate with:
   - 4-level evidence calibration (Practiced → Occasional → Aspirational → Mythical)
   - Plan-to-execution ratio monitoring ("if worse than 2:1, planning may be avoidance")
   - Calibrated language guide to prevent inflated self-assessment
@@ -143,7 +143,7 @@ This is where professional work most significantly upgrades the rating.
 
 ### What Changed the Rating
 
-The self-assessment said ★★★ because "the SECURITY side is absent." In the personal project, that's true. But professionally:
+The self-assessment said ★★★ because the security side was missing from the personal project ("Where we're short: The SECURITY side"). That's true there. But professionally:
 - Trust boundaries are explicitly designed and enforced in production agent configurations
 - The reversibility framework IS being applied to real systems
 - Local-first security architecture IS a production security decision

@@ -152,7 +152,7 @@ Already done out-of-band: `study/morm-8-three-glories-reading.md` (2026-06-09).
 - [x] 2026-03-27 `study/art-of-presidency.md` **T1+FULL** — CONSENT + CONSECRATION 1913 (★ words 99-100); SUSTAIN list realigned; constructed Handbook quote fixed (4.0 not 30.1); ~35 scriptures + 12 talk quotes verbatim
 - [x] 2026-03-31 `study/art-of-delegation.md` **T1+FULL** — BURDEN-note/BEAR/DELEGATE/YOKE 1913 (words 101-104; genuine BEAR cites Isa 53:11 + one-another's-burdens, YOKE cites Matt 11:30); ~30 scriptures + 7 talks verbatim
 - [x] 2026-04-01 `study/yt/4cuT-LKcmWs-ai-job-skills-self-assessment.md` **SAMPLE** — 6 broken links fixed; Anthropic-standard paraphrase de-quoted; 3.2:1 verified
-- [ ] 2026-04-01 `study/yt/4cuT-LKcmWs-industry-practice.md` **SAMPLE**
+- [x] 2026-04-01 `study/yt/4cuT-LKcmWs-industry-practice.md` **SAMPLE** — Ben quote realigned to skill canon; self-quote fixed
 - [ ] 2026-04-12 `study/gc/2026-04/00-thematic-overview.md` **SAMPLE**
 - [ ] 2026-04-20 `study/give-away-all-my-sins.md` **T1+FULL**
 - [ ] 2026-04-23 `study/zion-in-a-presidency.md` **T1+FULL**

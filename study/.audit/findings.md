@@ -1732,6 +1732,16 @@ paraphrase. The 3.2:1 ratio claim matches the transcript (2:57).
 Timestamp-linked paraphrase claims spot-checked clean; internal
 project-stat claims accepted as project record at study date.
 
+### study/yt/4cuT-LKcmWs-industry-practice.md (2026-04-01) — 2 micro-requotes
+SAMPLE. Ben's quote realigned to the ben-test skill's canonical
+record ("Your AI is very complimentary. Perhaps too
+complimentary?" — was an em-dash join); a self-quote of the
+companion ("the SECURITY side is absent") didn't match the
+companion's actual line — requoted to "Where we're short: The
+SECURITY side." Agans rule names (3/5/7) correct; professional-
+practice claims accepted as participant record; companion anchors
+resolve.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
