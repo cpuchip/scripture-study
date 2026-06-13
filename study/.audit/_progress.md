@@ -253,11 +253,11 @@ Already done out-of-band: `study/morm-8-three-glories-reading.md` (2026-06-09).
 - [x] 2026-06-01 `study/bom-walk/2-nephi/2-nephi-30.md` **LINKS** — CLEAN (covenant-by-repentance; v2/6/15 EXACT, current text reads "pure"; ★ the white→pure edition-history fact VERIFIED via web — 1830 "white" → 1840 Joseph Smith "pure" → lost in European-based editions → restored 1981, retained 2013; FAIR/Skousen/UPI-1981/EoM all confirm)
 - [x] 2026-06-01 `study/bom-walk/2-nephi/2-nephi-31.md` **LINKS** — CLEAN (doctrine of Christ keystone; all five anchors v15/17/19/20/21 character-for-character EXACT — "endure to the end," the gate, "is all done? Nay," press-forward triad + "feasting upon the word," "this is the way")
 - [x] 2026-06-01 `study/bom-walk/2-nephi/2-nephi-32.md` **LINKS** — CLEAN (the two guides; v3/5/7/8/9 EXACT — "words of Christ will tell you all things," Nephi's lament "they will not search knowledge," "the evil spirit teacheth him that he must not pray," consecrate-thy-performance)
-- [ ] 2026-06-01 `study/bom-walk/1-nephi/1-nephi-08.md` **LINKS**
-- [ ] 2026-06-01 `study/bom-walk/2-nephi/2-nephi-11.md` **LINKS**
-- [ ] 2026-06-01 `study/bom-walk/2-nephi/2-nephi-10.md` **LINKS**
-- [ ] 2026-06-01 `study/bom-walk/2-nephi/2-nephi-29.md` **LINKS**
-- [ ] 2026-06-01 `study/bom-walk/2-nephi/2-nephi-08.md` **LINKS**
+- [x] 2026-06-01 `study/bom-walk/1-nephi/1-nephi-08.md` **LINKS** — CLEAN (Lehi's dream; all distinctive phrases present — "dark and dreary waste," "desirable to make one happy," "great and spacious building," "feeling of a tender parent"; all 3 linked studies exist)
+- [x] 2026-06-01 `study/bom-walk/2-nephi/2-nephi-11.md` **LINKS** — CLEAN (Nephi's manifesto; ★ "my soul delighteth" count = **5** EXACT (counted-claim verified vv2,4,5,5,6); v3 "by the words of three," v4 "typifying of him," v7 ontological "he is Christ" all EXACT)
+- [x] 2026-06-01 `study/bom-walk/2-nephi/2-nephi-10.md` **LINKS** — CLEAN (Jacob's altar call; v3 "none other nation… would crucify their God," v20 "we are not cast off," v23 "free to act for yourselves," v24 reconcile-then-grace all EXACT)
+- [x] 2026-06-01 `study/bom-walk/2-nephi/2-nephi-29.md` **LINKS** — CLEAN (v3 "A Bible! A Bible!," v8 "testimony of two nations," v9 "I am the same… my work is not yet finished," v11 "out of the books… I will judge" all EXACT)
+- [x] 2026-06-01 `study/bom-walk/2-nephi/2-nephi-08.md` **LINKS** — CLEAN (Isaiah 51; ★ all 3 variants confirmed by direct comparison — v9-10 "it"→"he/he who" (arm personalized), v19 "things"→"sons" + "who shall be sorry for thee," v20 adds "save these two"; D&C 113:7-10 key correct)
 - [ ] 2026-06-01 `study/bom-walk/1-nephi/1-nephi-10.md` **LINKS**
 - [ ] 2026-06-01 `study/bom-walk/2-nephi/2-nephi-09.md` **LINKS**
 - [ ] 2026-06-01 `study/bom-walk/1-nephi/1-nephi-11.md` **T1**

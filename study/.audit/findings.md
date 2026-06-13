@@ -2927,6 +2927,40 @@ LINKS ×3. No markdown links.
   all EXACT.
 - No markdown links in any (plain-text refs). Three CLEAN.
 
+### #256-260 `1-nephi-08 + 2-nephi 11/10/29/08` — bom-walk LINKS — ALL CLEAN
+- **1-nephi-08 (Lehi's dream):** all distinctive dream-phrases present
+  in source ("dark and dreary waste," "desirable to make one happy,"
+  "most sweet, above all that I ever before tasted," "great and
+  spacious building," "with all the feeling of a tender parent"). The
+  three linked studies (tree-of-life-and-the-chain,
+  iron-rod-anchor-and-the-four-groups, four-groups-and-the-engineer)
+  all exist in study/. The note's contribution is framing (the
+  domestic/father lens, the darkness→cry→tree architecture), no new
+  quotes to mis-state.
+- **2-nephi-11 (Nephi's manifesto):** ★ the **counted claim "my soul
+  delighteth ×5"** (vv2,4,5,5,6) is EXACT — grep count = 5. v3 "by
+  the words of three, God hath said, I will establish my word," v4
+  "all things… are the typifying of him," v7 the ontological argument
+  ("there is a God, and he is Christ") all EXACT.
+- **2-nephi-10 (Jacob's altar call):** v3 "there is none other nation
+  on earth that would crucify their God" (the hard verse, flagged for
+  Michael's eye if it surfaces for teaching — Jacob's prophetic
+  self-critique, not ethnic condemnation), v20 "we are not cast off"
+  (lands the 7:1 variant), v23 "free to act for yourselves," v24
+  reconcile-then-grace — all EXACT.
+- **2-nephi-29:** v3 "A Bible! A Bible! We have got a Bible, and there
+  cannot be any more Bible," v8 "the testimony of two nations is a
+  witness unto you that I am God," v9 "I am the same yesterday, today,
+  and forever… for my work is not yet finished," v11 "out of the books
+  … I will judge the world" — all EXACT.
+- **2-nephi-08 (Isaiah 51):** all three variants confirmed by direct
+  2 Ne 8 ↔ Isa 51 comparison — v9 "Art thou not **he**" / v10 "Art thou
+  not **he who**" for KJV "**it**/**it which**" (the arm personalized
+  from force to person); v19 "These two **sons**… who shall be sorry
+  for thee" for KJV "two **things**"; v20 BoM adds "**save these
+  two**". The note's two-witnesses reading (Rev 11:3) and the D&C
+  113:7-10 latter-day key are both sound. Five CLEAN.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
