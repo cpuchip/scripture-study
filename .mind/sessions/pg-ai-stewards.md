@@ -3,10 +3,27 @@ lane: pg-ai-stewards
 session_id: 7ea7faa4-688a-451a-ac68-b7ea662d4b81
 status: active
 started: 2026-06-11T22:00:16
-last_active: 2026-06-13T08:59:16
+last_active: 2026-06-13T09:51:34
 ---
 
 ## Working on
+- **★ MCP PACKAGING PLAN RATIFIED + committed/pushed 2026-06-13 (OSS `f603e34`,
+  `.spec/proposals/mcp-packaging.md`).** Where the workspace MCP servers ship
+  relative to the substrate, decided on Go-module coupling. **No separate
+  `pg-ai-stewards-mcp` repo** (daemon leg already collapsed `cmd/*` into one
+  module; a split regresses it). **T1 substrate-intrinsic** (cmd/): stewards-mcp✓
+  / fs-read-mcp✓ / persona-host✓ shipped; coder-mcp pulled in M1 behind Hinge ②.
+  **T2 generic utilities** (cmd/): ship fetch-md-mcp + git-mcp; **archive
+  search-mcp** (verified = the 2026-02-03 DuckDuckGo server, throttle-unreliable,
+  predates substrate, NOT a custom substrate search) + **re-point core
+  `web_search` tool_def → `web_search_exa`** (remote mcp.exa.ai, operator-keyed,
+  no search binary ships). **T3 domain** (gospel/webster/strongs/byu/becoming/
+  yt/brain/md) stay own repos — "bring your own MCP," referenced not absorbed.
+  **Phased M0** (runtime/bridge Dockerfile + docker-compose.yml — OSS has NONE
+  yet, the prerequisite gap; cross-compiles cmd/*-mcp → /usr/local/bin) → **M1**
+  coder-mcp port + HARDENING REVIEW = Hinge ② → **M2** fetch/git + Exa re-point +
+  archive search → **M3** bring-your-own-MCP docs + example overlay. M1 = the
+  coder-wave Go half (task #158); awaiting Michael's go before executing M0.
 - **★ CODER WAVE — SQL SURFACE SHIPPED 2026-06-13 (OSS `a943a95`, pushed; Michael: "do the SQL surface first").** `20-coder.sql` consolidates cc2-6/cv2-2/cv3-12/r10/r12: a GENERIC clean-room `dev` agent (the workspace's 17K personal dev/debug prompts stay overlay) + the `coder` MCP server (★ **INERT** — points at /usr/local/bin/coder-mcp, not built yet) + code-write / code-pr (7-stage final clone→plan→plan_review→implement→verify→review→pr, taken from the live final per l13) / code-deploy (prepare = always-escalate Hinge) / subagent-research-codebase pipelines + stage_models + maturity + research_codebase (clean, active) + scoped `dev` coder grants + the read-only research-codebase deny-list (study_*→doc_*). Two GRAFTS onto core finals (not pastes): work_item_advance (08 body + cv6 review + cv11 plan_review loop-backs, maturity hook preserved) + work_item_dispatch_stage (19 r3 body + cv7/cv10 review model-immunity). lib.rs: create_coder requires create_models. Virgin smoke FULLY GREEN incl. both grafts e2e (review REVISE→implement / PASSES→pr; deploy prepare→awaiting_review Hinge; dispatch critic uses input.review_model not the override), deploy escalate-gated, research-codebase read-only (8 denies/0 allows), no token value, repos genericized. **CODER REMAINING = Hinge ②: the coder-mcp Go server extraction (cmd/coder-mcp → OSS module + Dockerfile cross-compile to /usr/local/bin/coder-mcp) + the HARDENING REVIEW** (sandbox isolation, bridge-side token, repo allow-list, resource caps) — the public-ship gate, a fresh focused pass. cv4 minimax-m3 → overlay model seeds. Then the **CUT** (Hinge ①+③; live idle → soak can relax).
 - **B6 tests/ + CI SHIPPED + CI GREEN 2026-06-13 (OSS `8509d26`→`9812d3f`, pushed):**
   `tests/virgin-smoke.sql` = ASSERT-based virgin-boot regression gate
