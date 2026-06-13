@@ -16,7 +16,7 @@ Nephi, writing on plates in the wilderness, asked by an angel for the meaning of
 
 The verb is the same. The object is the same. The location is the same. *The love of God / sheddeth abroad / in the hearts.* Joseph Smith translating the plates was steeped in KJV diction, and the parallel may be partly translation echo. But the doctrine the two verses carry is the same doctrine, and reading them against each other opens up something neither says alone.
 
-The 1828 Webster's gives "shed" as "to spill; to suffer to flow out, as a fluid; to pour out." Both verses describe the love of God as something poured. In Paul's verse, the Holy Ghost does the pouring. In Nephi's verse, the love of God pours itself. Different agents, identical motion: love of God moving outward, into hearts.
+The 1828 Webster's gives "shed" as "to pour out; to effuse; to spill; to suffer to flow out; as, to shed tears; to shed blood" — and the entry's own scripture example is the sacrament: "This is my blood of the New Testament, which is shed for many for the remission of sins. Matthew 26:28." *(Requoted 2026-06-12 — the earlier wording reordered the senses with a 1913-style gloss.)* Both verses describe the love of God as something poured. In Paul's verse, the Holy Ghost does the pouring. In Nephi's verse, the love of God pours itself. Different agents, identical motion: love of God moving outward, into hearts.
 
 This study takes that shared phrase as a hinge and asks what swings open if you read the faith-hope-charity chain and the tree-of-life vision as describing the same reality from two angles.
 
@@ -26,7 +26,7 @@ Alma, preaching to the Zoramite poor on the hill Onidah, gave them an experiment
 
 > "We will compare the word unto a seed... if it be a true seed, or a good seed, if ye do not cast it out by your unbelief, that ye will resist the Spirit of the Lord, behold, it will begin to swell within your breasts." — [Alma 32:28](../gospel-library/eng/scriptures/bofm/alma/32.md)
 
-The seed is the word. The soil is the heart. The experiment is whether you give the word room. Faith here is not certainty; faith is *making room* — refusing to cast the seed out before it has grown. Alma calls this "even no more than desire to believe" ([Alma 32:27](../gospel-library/eng/scriptures/bofm/alma/32.md)).
+The seed is the word. The soil is the heart. The experiment is whether you give the word room. Faith here is not certainty; faith is *making room* — refusing to cast the seed out before it has grown. Alma calls this "even if ye can no more than desire to believe" ([Alma 32:27](../gospel-library/eng/scriptures/bofm/alma/32.md)).
 
 Then he traces the growth:
 
