@@ -2254,6 +2254,15 @@ over vv14-15), Heb 4:9-10, Isa 58:13-14 (trailing trim), D&C
 59:9-10/13 (ellipsis over vv11-12), 59:15-16. Title-from-Isa-58:13
 ("call the sabbath a delight") correct.
 
+### study/daily-digest/ai-news-7am--2026-05-29 (2026-05-29) — machine artifact
+SAMPLE. Scheduled-workflow pipeline capture, untouched (the Opus
+4.8 release digest, fittingly — the model this walk switched to at
+#176). The one in-text quote ("around four times less likely…to
+allow flaws in code…to pass unremarked") is attributed inline to
+the Anthropic 4.8 news page the pipeline gathered — external
+content, documented not endorsed. Normal header offset (file 05-29
+→ "May 27–28" coverage). No canonical source to verify.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)

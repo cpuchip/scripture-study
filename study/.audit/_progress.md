@@ -194,7 +194,7 @@ Already done out-of-band: `study/morm-8-three-glories-reading.md` (2026-06-09).
 - [x] 2026-05-27 `study/daily-digest/ai-news-7am--2026-05-27-1300.md` **SAMPLE** — machine artifact, untouched
 - [x] 2026-05-28 `study/four-groups-and-the-engineer.md` **T1+FULL** — ★ EASINESS (#120) + CIRCUMSPECTLY (#121) 1913-as-1828 requoted; "space of not many years" 4× EXACT; Holland + Bednar verified
 - [x] 2026-05-28 `study/the-seventh-time.md` **FULL** — Nelson talk mis-dated Oct→Apr 2015 (2 places); 4 Ne 1:12 "both" restored; both Nelson quotes + all scripture verbatim
-- [ ] 2026-05-29 `study/daily-digest/ai-news-7am--2026-05-29-1300.md` **SAMPLE**
+- [x] 2026-05-29 `study/daily-digest/ai-news-7am--2026-05-29-1300.md` **SAMPLE** — machine artifact, untouched (Opus 4.8 release digest)
 - [ ] 2026-06-01 `study/bom-walk/1-nephi/1-nephi-06.md` **LINKS**
 - [ ] 2026-06-01 `study/bom-walk/studies/1ne4_slaying-of-laban.md` **T1**
 - [ ] 2026-06-01 `study/bom-walk/1-nephi/1-nephi-05.md` **LINKS**
