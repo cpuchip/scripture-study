@@ -2833,6 +2833,33 @@ LINKS ×3. No markdown links.
     is theological — bending toward mercy — not random) is genuinely
     well-evidenced. All three CLEAN.
 
+### #247 `study/is-jesus-christ-god.md` — FULL — CLEAN (model study)
+- The through-line the whole BoM walk fed datapoints toward, and it
+  holds up as a model FULL study: **every one of its 26 quotes is
+  character-for-character EXACT**, exactly as its closing provenance
+  note claims ("verified character-for-character against the local
+  gospel-library source files this session").
+- Verified by direct grep of source: Ether 3:8/9/14/16/18 (the Shelem
+  sighting — "I am Jesus Christ. I am the Father and the Son," the
+  "body of my spirit," and Moroni's frame "that this man might know
+  that he was God"); Moses 1:3/6/17/25/32-33 (the Word-who-creates,
+  marked elisions clean); John 1:1+3, 8:58, 14:6; D&C 19:1/16/18/19,
+  130:22; Mosiah 15:1/7; Alma 11:39/44; Isaiah 9:6 + 6:1-3. All
+  elisions (…) are honest; truncations end on a period, no words
+  altered.
+- ★ D&C 19:18 reads "…and would that I might not drink the bitter
+  cup, and shrink—". That is the SAME "shrink" verb I used to anchor
+  the CONSTRAINED §II rewrite in `1ne4_slaying-of-laban` (Nephi
+  "shrunk" ↔ Christ "shrink"). Independent confirmation the
+  cross-reference is sound, from a different study that quotes the
+  verse straight.
+- All links resolve: 12 gospel-library targets (incl. rev/1 — Rev 1:8
+  does say "Alpha and Omega") + 6 internal study links
+  (father-and-son, christ-in-all-the-scriptures, only-begotten,
+  know-god, 1ne11_condescension, .scratch provenance). The "1916
+  First Presidency and Quorum of the Twelve doctrinal exposition"
+  date is correct. No corrections.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)

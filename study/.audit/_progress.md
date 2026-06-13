@@ -244,7 +244,7 @@ Already done out-of-band: `study/morm-8-three-glories-reading.md` (2026-06-09).
 - [x] 2026-06-01 `study/bom-walk/2-nephi/2-nephi-21.md` **LINKS** — CLEAN (Isaiah 11 keystone; near-identical confirmed; v9 knowledge verbatim)
 - [x] 2026-06-01 `study/bom-walk/2-nephi/2-nephi-22.md` **LINKS** — CLEAN (Isaiah 12; v2 "has become" trivial variant confirmed)
 - [x] 2026-06-01 `study/bom-walk/2-nephi/2-nephi-23.md` **LINKS** — CLEAN (Isaiah 13; ★ all 4 mercy-tilting variants v3/v8/v15/v22 confirmed by direct comparison)
-- [ ] 2026-06-01 `study/is-jesus-christ-god.md` **FULL**
+- [x] 2026-06-01 `study/is-jesus-christ-god.md` **FULL** — CLEAN (model study; all 26 quotes character-for-character EXACT as its provenance note claims — Ether 3:8/9/14/16/18, Moses 1:3/6/17/25/32-33, John 1:1+3 / 8:58 / 14:6, D&C 19:1/16/18/19 + 130:22, Mosiah 15:1/7, Alma 11:39/44, Isaiah 9:6 + 6:1-3; all 12 gospel-library + 6 internal links resolve; Rev 1:8 Alpha-Omega + 1916 exposition date correct; ★ D&C 19:18 "shrink" here is the same verb anchoring the 1ne4 CONSTRAINED §II rewrite)
 - [ ] 2026-06-01 `study/bom-walk/2-nephi/2-nephi-24.md` **LINKS**
 - [ ] 2026-06-01 `study/bom-walk/2-nephi/2-nephi-25.md` **LINKS**
 - [ ] 2026-06-01 `study/bom-walk/2-nephi/2-nephi-26.md` **LINKS**

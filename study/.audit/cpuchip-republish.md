@@ -50,3 +50,31 @@ the published face — visible note vs. silent fix is his call for the public si
 
 *This ledger is updated as the walk reaches the 2 ⏳ pending studies. Drives the
 post-walk cpuchip parity pass.*
+
+---
+
+## POST-WALK ACTION CHECKLIST (Michael's inbox note, 2026-06-13 00:16)
+
+When the walk completes (469/469), do these three, in order:
+
+1. **Run the publisher** — `./scripts/publish/publish.exe -v` from workspace root.
+   It scans `study/` + `lessons/`, converts relative gospel-library links to
+   absolute Church URLs, and writes `public/{study,lessons}/`. This picks up
+   *all* the walk's corrections at once (Michael: "run the ./scripts/publish/cmd
+   go script as well to pick up all the changes"). Verify the corrected files
+   (e.g. the requoted Webster blocks, the freedom date fix) landed in `public/`.
+   Commit the regenerated `public/` output.
+
+2. **cpuchip.net parity pass** — carry the **11 ⚠️ corrections** above into
+   `projects/cpuchip.net/content/studies/<slug>.md`, rebuild, verify each live
+   page (★ send-me-covenants first — fabricated quotes are live). Michael
+   confirmed 2026-06-13: "yes update the cpuchip.net studies when you are done."
+
+3. **Leave a note for the scripture-book agent** (do NOT edit the book myself —
+   its own stewardship). Michael: "we should probably double check on the book
+   quotes too in scripture-book… leave a note for that agent to do it, that way
+   we're not stepping on its stewardship." Drop the note in
+   `projects/scripture-book/.spec/` (or its inbox lane) listing the quote-classes
+   this walk found most often — Webster 1913-as-1828 contamination, confabulated
+   "X says" attributions, dropped/added conjunctions in scripture quotes, and
+   counted-number claims — so its agent can run the same checks on the manuscript.
