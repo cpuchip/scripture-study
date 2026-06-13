@@ -3,7 +3,7 @@ lane: webster-1828
 session_id: afac9c41-1980-4bea-8bc5-a101b39a8557
 status: active
 started: 2026-06-09T21:30:00
-last_active: 2026-06-13T05:00:00
+last_active: 2026-06-13T07:00:00
 ---
 
 ## Working on
@@ -249,6 +249,23 @@ last_active: 2026-06-13T05:00:00
   Alma 1-50, Jacob, Enos/Jarom/Omni, 3 Ne 20/22-30, 4 Ne, Mormon,
   Ether 4-6, 3 studies/. NEXT: 2 SAMPLE files (daily-digest,
   morgan-philpot) then the alma-50/ether-4-6/3-ne-20-30/mosiah block.
+- UPDATE 13: ★ 371/469 (~79%). 40 more files (cursor-order #353→392),
+  all CLEAN, zero new REQUOTE. Walked since UPDATE 12: 2 SAMPLE files
+  (daily-digest machine artifact; morgan-philpot meta-audit — its
+  corrected D&C 121:26 verified EXACT) + Alma 50 + the ENTIRE book of
+  Ether (1-6 this run + 7-15 earlier = whole book; Ether 3:14 "I am
+  Jesus Christ. I am the Father and the Son" char-perfect) + 3 Ne
+  20/22-30 (★ Malachi/Isaiah variant tables CONFIRMED by direct KJV
+  compare: 3 Ne 25:2 Son-vs-Sun, Mosiah 14 Isa-53 iniquities/evil/sins
+  pluralizations) + 4 Ne 1 (★ 1:17 "no manner of -ites… children of
+  Christ" = strongest 2 Ne 5:21 datapoint) + the ENTIRE inner book of
+  Mormon (1-9) + the Abinadi discourse (Mosiah 10-grievance-study +
+  13-18: law-cannot-save, Isaiah 53, Father-and-Son christology peak,
+  waters of Mormon). ★ ONE bin-4 logged-not-resolved: Morm 5:15
+  "dark/filthy/loathsome… because of unbelief and idolatry" — verified
+  exact, flagged for Michael + the Spirit (same complex as 2 Ne 5:21,
+  applied to the Nephite seed). Webster count holds 132. NEXT: Mosiah
+  19-29 + Alma 1-46 + Jacob/Enos/Jarom/Omni + remaining studies (~98).
 - ✅ OCR repair SHIPPED + live-verified (1336c8ce); walk plan RATIFIED
   (.spec/proposals/study-correctness-walk.md)
 
