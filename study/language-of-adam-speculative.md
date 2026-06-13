@@ -8,7 +8,7 @@
 
 ## The Question
 
-If God confounded one language into many at Babel — and Webster 1828 defines "confound" as "to mingle and blend, so that different elements cannot be distinguished" — then the original language wasn't *destroyed*. It was *scattered*. Mingled into every tongue on earth, so thoroughly blended that the original can't be reassembled.
+If God confounded one language into many at Babel — and Webster 1828 defines "confound" as "to mingle and blend different things, so that their forms or natures cannot be distinguished" *(requoted 2026-06-12; the earlier wording was the 1913 edition's)* — then the original language wasn't *destroyed*. It was *scattered*. Mingled into every tongue on earth, so thoroughly blended that the original can't be reassembled.
 
 But what if fragments survived the blending? Not full sentences. Not grammar. Just... echoes. A root here. A sound-meaning pair there. The skeleton beneath every language on earth.
 
@@ -29,14 +29,14 @@ For the full catalog and scriptural context, see [The Language of Adam](language
 
 **Names of God:**
 - **Ahman** — God; "the being which made all things in all its parts" (Sample of Pure Language, ca. 1832; [D&C 78:20](../gospel-library/eng/scriptures/dc-testament/dc/78.md))
-- **Son Ahman** — Christ; "the greatest of all the parts of God excepting Ahman" ([D&C 78:20](../gospel-library/eng/scriptures/dc-testament/dc/78.md); [D&C 95:17](../gospel-library/eng/scriptures/dc-testament/dc/95.md))
+- **Son Ahman** — Christ; "the greatest of all the parts of Awmen which is the Godhead the first born" (Sample of Pure Language; [D&C 78:20](../gospel-library/eng/scriptures/dc-testament/dc/78.md); [D&C 95:17](../gospel-library/eng/scriptures/dc-testament/dc/95.md)) *(Requoted 2026-06-12 — the earlier rendering, "the greatest of all the parts of God excepting Ahman," blended this answer with the document's answer about man, which is where the "save the Son" phrase lives.)*
 - **Alphus** and **Omegus** — Christ; Alpha and Omega equivalents ([D&C 95:17](../gospel-library/eng/scriptures/dc-testament/dc/95.md))
 - **Man of Holiness** — God's name in the language of Adam ([Moses 6:57](../gospel-library/eng/scriptures/pgp/moses/6.md); [Moses 7:35](../gospel-library/eng/scriptures/pgp/moses/7.md))
 - **Man of Counsel** — God's name ([Moses 7:35](../gospel-library/eng/scriptures/pgp/moses/7.md))
 - **Sabaoth** — "the creator of the first day, the beginning and the end" ([D&C 95:7](../gospel-library/eng/scriptures/dc-testament/dc/95.md))
 
 **Astronomical Terms:**
-- **Shinehah** — the sun; **Kokob** — star; **Olea** — the moon; **Kokaubeam** — stars/great lights; **Kolob** — the governing star, nearest to God; **Gnolaum** — eternal ([Abraham 3:13, 18](../gospel-library/eng/scriptures/pgp/abr/3.md))
+- **Shinehah** — the sun; **Kokob** — star; **Olea** — the moon; **Kokaubeam** — stars/great lights; **Kolob** — the governing star, nearest to God; **Gnolaum** — eternal ([Abraham 3:3, 13, 18](../gospel-library/eng/scriptures/pgp/abr/3.md))
 
 **Other:**
 - **Deseret** — honey bee ([Ether 2:3](../gospel-library/eng/scriptures/bofm/ether/2.md))
@@ -45,9 +45,9 @@ For the full catalog and scriptural context, see [The Language of Adam](language
 
 ### The "Sample of Pure Language" (ca. March 1832)
 
-A Q&A document dictated by Joseph Smith, transcribed by John Whitmer. Three manuscript copies exist (Whitmer's original plus two discovered by Brent Metcalfe). The spelling evolved through several stages: *Awmen → Awman → Ah Man → Ahman* (standardized in the 1835 D&C).
+A Q&A document "given by Joseph the Seer." The original is not extant; the earliest surviving copy was inscribed by John Whitmer into Revelation Book 1 (the document notes it was "copied by Br Johnson"). Other early copies exist — an Orson Pratt notebook copy and a Frederick G. Williams copy, both identified by Brent Metcalfe in 2014–15, plus a William W. Phelps copy now listed by the Joseph Smith Papers. The spelling evolved through several stages: *Awmen → Awman → Ah Man → Ahman* (standardized in the 1835 D&C).
 
-The document's most striking feature: Joseph appeared to believe that English itself carried Adamic fragments. "Sons" Ahman. "Anglo-man" for angels — as though *angls* and *man* were recognizable Adamic roots that English had inherited. Whether this is prophetic insight or folk etymology is exactly the kind of question this study is designed to hold without resolving.
+The document's most striking feature: Joseph appeared to believe that English itself carried Adamic fragments. "Sons" Ahman. "Anglo-men" for angels — as though *angls* and *man* were recognizable Adamic roots that English had inherited. Whether this is prophetic insight or folk etymology is exactly the kind of question this study is designed to hold without resolving.
 
 ### The Global Etymologies
 
@@ -106,7 +106,7 @@ In the 1832 "Sample of Pure Language," the root *man* appears everywhere:
 - Ah-**man** (God)
 - Son Ah-**man** (Christ)
 - Sons Ah-**man** (humans)
-- Anglo-**man** (angels)
+- Anglo-**men** (angels)
 
 Joseph appears to have seen *man* as an Adamic root meaning "being" or "intelligent being." This tracks with [Moses 6:57](../gospel-library/eng/scriptures/pgp/moses/6.md): "**Man** of Holiness is his name" — where *man* isn't gendered but categorical. God is a Man. Christ is the Son of Man. We are sons and daughters of a Man.
 
