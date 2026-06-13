@@ -2558,6 +2558,27 @@ majoritarian-restoration counter), honest open questions, and a
 the Justia-syllabi quotes. The "switch in time" phrase correctly
 attributed to journalists, not the Court. CLEAN.
 
+### study/freedom/provenance/05-dc87-and-the-land.md (2026-05-31) — ★ PROPAGATED DATE ERROR (D&C 130 vs 87)
+SAMPLE. All 15 scripture passages verbatim (Ether 2:8-12, 1 Ne
+2:20, 2 Ne 1:7, Matt 24:36, D&C 49:7, 39:21 "the time is at hand…
+but it surely shall come", 45:26/32/35, 38:30, 87:6/8, 101:77-80,
+109:54). But ★ ONE FACTUAL ERROR, and it had PROPAGATED to three
+already-walked files: the file called D&C 130:12-17 "THE KEYSTONE"
+and claimed 130:14-17 (the date-rebuke) was "received in the same
+prayer, Dec 25, 1832 — the very day D&C 87 was given." FALSE per the
+section headings: **D&C 87 = Dec 25, 1832, Kirtland; D&C 130 = April
+2, 1843, Ramus, Illinois** — ~10 years and a different state apart.
+The conflation arose because D&C 130:12-13 revisits the 1832 South
+Carolina prophecy of D&C 87. Corrected in FOUR files (visible dated
+notes): provenance/05 (here), 99-synthesis §VI ("on the very day"
+→ "the same prophet…later"), 07-likening guardrail #1, and
+00-frame's research-wave log. The doctrinal point survives intact —
+the SAME PROPHET given the war-signs (1832) asked for the Second
+Coming date (1843) and was told to stop; that is still real internal
+witness that D&C 87 is not a date-text. Not queued (determinate fix;
+point survives — cf. the #182 Nelson mis-date precedent). NOTE:
+re-walked #199/#200/#201 carry this correction now.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)

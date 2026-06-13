@@ -133,8 +133,15 @@ last_active: 2026-06-12T15:38:52
   (publication-bound master study) added COMPEL (#127) + SACRIFICE
   (#128) both 1913-as-1828 → count 128 (genuine 1828 supports the
   sacrifice-vs-compel contrast, not queued); its ~40 scripture +
-  Oaks/Bednar/JFS quotes ALL verbatim, links resolve. NEXT: #202
-  freedom/provenance/02-blueprint-and-timelines SAMPLE. Model SWITCHED Fable 5 → Opus 4.8 at
+  Oaks/Bednar/JFS quotes ALL verbatim, links resolve. #202-204
+  freedom provenance 02/03/04 CLEAN (04: 16th/17th Amendment dates
+  confirmed vs National Archives). ★ #205 provenance/05 caught a
+  PROPAGATED DATE ERROR: D&C 130:14-17 (date-rebuke) is Apr 2 1843/
+  Ramus, NOT "the same day as D&C 87" (Dec 25 1832/Kirtland) — off
+  by ~a decade; corrected in 4 files (provenance/05 + 99-synthesis +
+  07-likening + 00-frame); point (same prophet, signs given/date
+  withheld) survives, not queued. NEXT: #206 provenance/06 signs/
+  eclipses. Model SWITCHED Fable 5 → Opus 4.8 at
   ~#176 (Fable access lost; Michael: "keep up the same rigor").
   Commit trailer now Opus 4.8. ★ HEAVIEST FIND of the run: #176
   yt/V40tBshkMnE-send-me-covenants had TWO fabricated "Todd says"
