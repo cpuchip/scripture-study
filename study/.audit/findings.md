@@ -1548,6 +1548,24 @@ renderings verbatim (Moses 6:5/6/57, Moses 7:13/16/18, Gen 10
 ×5, Gen 11 ×4, Ether 1:33-37, Omni 1:17, Zeph 3:9, D&C 90:11,
 Acts 2:6, Alma 29:8, BD Babylon).
 
+### study/language-of-adam-speculative.md (2026-03-15) — constructed Sample-of-Pure-Language quote requoted; CONFOUND propagation closed
+T1+FULL. "Son Ahman — 'the greatest of all the parts of God
+excepting Ahman'" was a BLEND of two answers in the 1832 Sample
+document (verified against JSP + RSC transcripts): the Son answer
+reads "the greatest of all the parts of Awmen which is the Godhead
+the first born"; "save/excepting" belongs to the MAN answer.
+Requoted with note. "Anglo-man" → "Anglo-men" (all three early
+copies). Provenance corrected: original not extant ("copied by Br
+Johnson"); Whitmer's Rev-Book-1 copy is earliest surviving; Pratt
++ Williams copies = Metcalfe 2014-15 finds (verified via his own
+write-up); JSP also lists a Phelps copy. CONFOUND 1913 propagation
+from tower-of-babel closed (word 91 carrier #2). Kolob citation
+widened to Abr 3:3. Verified verbatim: "the being which made all
+things in all its parts," the Awmen→Ahman spelling chain (JSP TEXT
+note word-for-word), D&C 95:7/17, Abr 3:13/18, Ether 2:3, Moses
+5:31/7:35, D&C 116:1, D&C 78:20; Kokob=H3556 kôwkâb confirmed via
+Strong's.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
