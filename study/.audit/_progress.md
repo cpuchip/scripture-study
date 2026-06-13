@@ -213,8 +213,8 @@ Already done out-of-band: `study/morm-8-three-glories-reading.md` (2026-06-09).
 - [x] 2026-06-01 `study/freedom/00-frame.md` **T2** — CLEAN (4 scripture quotes verbatim; Hel 14:2/D&C 98:6 corrections right; links resolve)
 - [x] 2026-06-01 `study/freedom/07-likening-the-pattern.md` **T2** — CLEAN (speculative doc, anchors verbatim: Mal 4:1-2, D&C 77:5, the two-marks Rev/Ezek texts; grading discipline sound)
 - [x] 2026-06-01 `study/freedom/99-synthesis.md` **T2** — ★ COMPEL (#127) + SACRIFICE (#128) 1913-as-1828 requoted; ~40 scripture + Oaks/Bednar/JFS quotes ALL verbatim (publication-bound master study)
-- [ ] 2026-06-01 `study/freedom/provenance/02-blueprint-and-timelines.md` **SAMPLE**
-- [ ] 2026-06-01 `study/freedom/provenance/03-nephi-john-revelation.md` **SAMPLE**
+- [x] 2026-06-01 `study/freedom/provenance/02-blueprint-and-timelines.md` **SAMPLE** — CLEAN (research log; scripture verbatim, honest weakest-parallels)
+- [x] 2026-06-01 `study/freedom/provenance/03-nephi-john-revelation.md` **SAMPLE** — CLEAN (research log; scripture verbatim, D&C 77:5 corrections sound)
 - [ ] 2026-06-01 `study/freedom/provenance/04-us-constitutional-history.md` **SAMPLE**
 - [ ] 2026-06-01 `study/freedom/provenance/05-dc87-and-the-land.md` **SAMPLE**
 - [ ] 2026-06-01 `study/freedom/provenance/06-signs-and-eclipses.md` **SAMPLE**

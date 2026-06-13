@@ -2515,6 +2515,30 @@ as such, consistent with doctrine. ALL links resolve. The closing
 note's history corrections (16th/17th Amendments 1913, Hinckley not
 Hunter, 2034 eclipse, D&C 77:5) verified in provenance files.
 
+### study/freedom/provenance/02 + 03 (2026-05-31) — CLEAN (research logs)
+SAMPLE ×2. Disciplined source-audit trails for the freedom study;
+all scripture verbatim, all claims three-tier labeled, honest
+critical-analysis corrections.
+  • provenance/02 (blueprint + timelines): scripture verbatim —
+    Mormon 8:35 (cited as "8:34-35"; quoted text is v35), 2 Ne
+    25:23, 3 Ne 6:12 "ranks"/6:30 "subject unto kings"/7:2 "into
+    tribes", Rev 12:6/12:14 (marked ellipses). Church-history dates
+    sourced to official chronologies (URLs given; standard
+    well-known dates). The "weakest parallels" section is genuinely
+    self-critical — flags the loose "~3 years" gap (collapse AD
+    26-30, destruction+appearance BOTH AD 34), the Rev 12 duration
+    mismatch with Utah, and ★ the "which remnant are we?" fork
+    (Nephite nation→Cumorah vs remnant→Zion). Amendment facts
+    deferred to provenance/04.
+  • provenance/03 (Nephi/John/Revelation): scripture verbatim — 1
+    Ne 14:20/27/28 (John named, "forbidden…write the remainder"),
+    Rev 12:17 "remnant…testimony of Jesus", 13:7, 7:2, D&C 116
+    (Adam-ondi-Ahman), 107:54 "Michael, the prince, the archangel",
+    Dan 7:13-14, D&C 27:11. Two clean NOT-DOCTRINE corrections
+    grounded in D&C 77:5 (verified): 7-churches = literal Asian
+    branches not dispensations; D&C 77's key interprets Rev 1-11 and
+    STOPS (so "Rev 13-16 = our day" is flagged overlay). Both CLEAN.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
