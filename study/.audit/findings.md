@@ -4500,14 +4500,27 @@ ordain — all confirmed) + the bounded diff (39 files, +320/−262).
 - bin-4 / 2 Ne 5:21 family: present in several files (mos10, alma3 in 1ne4,
   alma17-26, 2ne9) — verified for **wording only, doctrine NOT resolved**.
 
-★ **The fan-out surfaced STUDY-level errors the walk MISSED** (need fixing in
-the study files, not just scratch — follow-up): alma5 "Webster cites Gen 1:27
-under *image*" (genuine = Matt 22:20; the imago-Dei-via-Webster claim rests on a
-fabricated citation); and pending checks of broken-heart (Cardon), gc-2026-04
-(Oaks→Christofferson), gift-of-aaron (D&C 8:11), stewardship-pattern (Mosiah
-18:29, D&C 107) against their study files. The Webster scratch-corrections do
-NOT imply study errors (the walk already fixed the studies' Webster quotes; only
-scratch was stale).
+★ **The fan-out surfaced STUDY-level errors the walk MISSED** — checked each
+against its study file (2026-06-13):
+- **alma5 — PROPAGATED, now FIXED** (study + alma-05 chapter note): the study
+  claimed Webster cites Gen 1:27 under *image* (genuine = **Matt 22:20**), AND
+  its *countenance* quote ("approving or encouraging aspect of face") was
+  1913-flavored (genuine 1828: def 1 "the human face… visage" + def 4 "favor;
+  good will; kindness"). Both requoted to genuine 1828; the imago-Dei reading
+  re-grounded in Gen 1:27 directly. Root cause: the walk verified alma5's
+  *scripture* but never ran the Webster MCP on its *image*/*countenance* quotes.
+- **broken-heart, gc-2026-04, gift-of-aaron, stewardship-pattern — SCRATCH-ONLY**
+  (no study fix needed): the broken-heart study already says "Elder **Walker**"
+  (the scratch had the wrong "Cardon"); the other three studies do not carry
+  the confabulations at all (D&C 8:11 / Mosiah 18:29 / D&C 107 mis-numbers /
+  "working one by one" appear only in the scratch working notes, never in the
+  finished studies).
+
+The Webster scratch-corrections do NOT imply study errors — the walk already
+fixed the studies' Webster quotes; only scratch was stale. **Net: the walk's
+*study* verification was sound; the one study-miss (alma5 Webster) is now
+fixed.** A good lesson logged: a study's Webster quotes need the MCP even when
+its scripture checks clean.
 
 ## Walked out-of-band before the walk began
 
