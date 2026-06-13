@@ -401,16 +401,16 @@ One of the most consistent discoveries was that Restoration-era English, capture
 
 | Word | Webster 1828 | What It Reveals |
 |------|-------------|----------------|
-| **Prove** | "To try by experiment" + "to gain experience of" | The test IS the education |
-| **Probation** | "Proving his character AND becoming qualified" | Testing + qualification, not just pass/fail |
+| **Prove** | "To try... by an experiment" + "to experience; to try by suffering or encountering" | The test IS the education |
+| **Probation** | "Proving his character AND being qualified" | Testing + qualification, not just pass/fail |
 | **Estate** | "Settled condition of existence; state" | Not a place but a state of being |
 | **Noble** | "Possessing eminence, dignity; above whatever is low" | Character, not rank |
 | **Consecrate** | "To make sacred" | Suffering made sacred |
 | **Transgression** | "Passing over or beyond any law" | The Fall as passage, not crime |
-| **Entice** | "To draw on, by exciting hope or desire" | Both sides draw — God and Satan both appeal |
-| **Paradise** | "Abode of sanctified souls after death" | A real, blessed place |
+| **Entice** | "To incite or instigate, by exciting hope or desire" | Both sides draw — God and Satan both appeal |
+| **Paradise** | "Heaven, the blissful seat of sanctified souls after death" | A real, blessed place |
 | **Rest** | "To cease from that which harasses or disturbs" | Cessation of suffering, not cessation of existence |
-| **Bondage** | "Restraint of personal liberty by compulsion" | Even disembodiment is restraint |
+| **Bondage** | "Restraint of a person's liberty by compulsion" | Even disembodiment is restraint |
 | **Quicken** | "To make alive; to vivify; to revive" | You can't be quickened unless you first died |
 | **Redeem** | "To ransom, liberate from captivity by paying a price" | Rescue from bondage at a cost |
 | **Weld** | "To wield" (1828); metallurgical: to fuse permanently | Joseph's language ahead of his dictionary |
