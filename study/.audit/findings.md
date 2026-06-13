@@ -2300,6 +2300,32 @@ verbatim). Scholarly Nibley/Welch claim is explicitly flagged as
 paraphrase-not-read (line 41), honest. *perish* listed as read but
 not quoted in body.
 
+### study/bom-walk/1-nephi/1-nephi-05/04/03/02.md (2026-06-01) — CLEAN (cluster)
+LINKS ×4. None of the four chapter notes contains a markdown link
+(all references are plain-text verse citations), so link
+validation is trivially clean. Spot-verified the quoted text in
+each (each note quotes only its own chapter):
+  • 1-nephi-05: Lehi "I know that I am a visionary man…" (5:4,
+    trailing trim), Sariah "Now I know of a surety…" (5:8,
+    multi-part marked ellipsis), "many prophecies…by the mouth of
+    Jeremiah" (5:13), "descendant of Joseph…sold into Egypt" (5:14),
+    "all nations, kindreds, tongues, and people" (5:18), "thus far
+    I and my father had kept the commandments" (5:20) — all verbatim.
+  • 1-nephi-04: re-checks the same verses verified in #185 (4:6/10/
+    11/13), plus 4:3 "destroy Laban, even as the Egyptians…wherefore
+    can ye doubt?" and 4:14 covenant "Inasmuch as thy seed shall
+    keep my commandments…" — exact.
+  • 1-nephi-03: 3:7 ("I will go and do…") EXACT, 3:15 oath (marked
+    ellipsis over "in the wilderness"), 3:19 "the language of our
+    fathers," 3:29 angel (marked ellipses), 3:31 "he can slay
+    fifty."
+  • 1-nephi-02: 2:9 "fountain of all righteousness," 2:10 "firm and
+    steadfast, and immovable," 2:11 "visionary man"/"foolish
+    imaginations," 2:12 "knew not the dealings," 2:16 soften-heart
+    (verified earlier), 2:20-21 covenant, 2:22 "ruler and a
+    teacher," 2:24 "stir them up in the ways of remembrance" — all
+    verbatim.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)

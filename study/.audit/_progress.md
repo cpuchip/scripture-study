@@ -197,10 +197,10 @@ Already done out-of-band: `study/morm-8-three-glories-reading.md` (2026-06-09).
 - [x] 2026-05-29 `study/daily-digest/ai-news-7am--2026-05-29-1300.md` **SAMPLE** — machine artifact, untouched (Opus 4.8 release digest)
 - [x] 2026-06-01 `study/bom-walk/1-nephi/1-nephi-06.md` **LINKS** — CLEAN (no md links; 1 Ne 6 + cross-refs spot-verified verbatim)
 - [x] 2026-06-01 `study/bom-walk/studies/1ne4_slaying-of-laban.md` **T1** — ★ CONSTRAINED (#122, INVERTS §II — QUEUED [1]) + DWINDLE (#123) 1913-as-1828 requoted; all scripture verbatim
-- [ ] 2026-06-01 `study/bom-walk/1-nephi/1-nephi-05.md` **LINKS**
-- [ ] 2026-06-01 `study/bom-walk/1-nephi/1-nephi-04.md` **LINKS**
-- [ ] 2026-06-01 `study/bom-walk/1-nephi/1-nephi-03.md` **LINKS**
-- [ ] 2026-06-01 `study/bom-walk/1-nephi/1-nephi-02.md` **LINKS**
+- [x] 2026-06-01 `study/bom-walk/1-nephi/1-nephi-05.md` **LINKS** — CLEAN (no md links; 1 Ne 5 quotes verbatim)
+- [x] 2026-06-01 `study/bom-walk/1-nephi/1-nephi-04.md` **LINKS** — CLEAN (no md links; 1 Ne 4 quotes verbatim, cf. #185)
+- [x] 2026-06-01 `study/bom-walk/1-nephi/1-nephi-03.md` **LINKS** — CLEAN (no md links; 3:7/15/29 verbatim)
+- [x] 2026-06-01 `study/bom-walk/1-nephi/1-nephi-02.md` **LINKS** — CLEAN (no md links; 2:20-21 covenant + all quotes verbatim)
 - [ ] 2026-06-01 `study/daily-digest/ai-news-7am--2026-06-01-1300.md` **SAMPLE**
 - [ ] 2026-06-01 `study/bom-walk/studies/README.md` **LINKS**
 - [ ] 2026-06-01 `study/bom-walk/README.md` **LINKS**
