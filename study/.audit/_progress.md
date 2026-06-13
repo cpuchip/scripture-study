@@ -414,10 +414,10 @@ Already done out-of-band: `study/morm-8-three-glories-reading.md` (2026-06-09).
 - [x] 2026-06-02 `study/bom-walk/jacob/jacob-06.md` **LINKS** — CLEAN (the application; v4 "he stretches forth his hands unto them all the day long; and they are a stiffnecked and a gainsaying people" EXACT)
 - [x] 2026-06-02 `study/bom-walk/jacob/jacob-07.md` **LINKS** — CLEAN (Sherem; v5 "I truly had seen angels… wherefore, I could not be shaken," v27 "Brethren, adieu" EXACT)
 - [x] 2026-06-02 `study/bom-walk/enos/enos-01.md` **LINKS** — CLEAN (the wrestle; v6 "my guilt was swept away," v27 "the place of my rest, which is with my Redeemer… then shall I see his face with pleasure" EXACT)
-- [ ] 2026-06-02 `study/bom-walk/studies/jacob5_allegory-of-the-olive-tree.md` **T1**
-- [ ] 2026-06-02 `study/bom-walk/alma/alma-01.md` **LINKS**
-- [ ] 2026-06-02 `study/bom-walk/omni/omni-01.md` **LINKS**
-- [ ] 2026-06-02 `study/bom-walk/words-of-mormon/words-of-mormon-01.md` **T2**
+- [x] 2026-06-02 `study/bom-walk/studies/jacob5_allegory-of-the-olive-tree.md` **T1** — CLEAN (deep allegory study; sampled v22 "Counsel me not; I knew that it was a poor spot of ground," v48 "the branches… taking strength unto themselves," v65 "ye shall not clear away the bad thereof all at once," v74 "they became like unto one body; and the fruits were equal" all EXACT; Webster GRAFT def + four-visit structure + provenance note accurate)
+- [x] 2026-06-02 `study/bom-walk/alma/alma-01.md` **LINKS** — CLEAN (Nehor + priestcraft; v12 "the first time that priestcraft has been introduced… it would prove their entire destruction," v17 "the law could have no power on any man for his belief" EXACT)
+- [x] 2026-06-02 `study/bom-walk/omni/omni-01.md` **LINKS** — CLEAN (small plates end; v17 "their language had become corrupted… they denied the being of their Creator," v26 "offer your whole souls as an offering unto him" EXACT)
+- [x] 2026-06-02 `study/bom-walk/words-of-mormon/words-of-mormon-01.md` **T2** — CLEAN (Mormon's bridge; v7 "for a wise purpose… I do not know all things; but the Lord knoweth all things which are to come" EXACT — closes the 1 Ne 9:5-6 loop)
 - [ ] 2026-06-02 `study/bom-walk/mosiah/mosiah-01.md` **LINKS**
 - [ ] 2026-06-02 `study/bom-walk/mosiah/mosiah-02.md` **LINKS**
 - [ ] 2026-06-02 `study/bom-walk/mosiah/mosiah-03.md` **LINKS**

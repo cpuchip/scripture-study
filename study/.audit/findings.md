@@ -3932,6 +3932,27 @@ Verified by direct grep.
   rest, which is with my Redeemer… then shall I see his face with pleasure" —
   EXACT.
 
+### jacob5 study + Alma 1 + Omni + Words of Mormon (2026-06-13, 395→399) — ALL CLEAN
+
+The deep olive-tree allegory study + the opening of Alma (Nehor) + the close
+of the small plates (Omni) + Mormon's bridge. Verified by direct grep.
+
+- **studies/jacob5_allegory-of-the-olive-tree** (T1, deep study): sampled
+  v22 "Counsel me not; I knew that it was a poor spot of ground," v48 "the
+  branches… taking strength unto themselves," v65 "ye shall not clear away
+  the bad thereof all at once," v74 "they became like unto one body; and the
+  fruits were equal" — all EXACT. Four-visit dispensational structure + the
+  Webster GRAFT definition + provenance note accurate. CLEAN.
+- **Alma 1** (Nehor + priestcraft): v12 "the first time that priestcraft has
+  been introduced… it would prove their entire destruction," v17 "the law
+  could have no power on any man for his belief" — EXACT.
+- **Omni** (the small plates end): v17 "their language had become corrupted…
+  they denied the being of their Creator," v26 "offer your whole souls as an
+  offering unto him" — EXACT.
+- **Words of Mormon** (Mormon's bridge): v7 "for a wise purpose… I do not know
+  all things; but the Lord knoweth all things which are to come" — EXACT
+  (closes the 1 Ne 9:5-6 "wise purpose" loop).
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
