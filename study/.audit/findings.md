@@ -1582,6 +1582,17 @@ verbatim modulo accepted start trim. All ~16 scriptures verbatim
 Moro 7:16, Hab 2:20, Eccl 3:7). Selah=71-in-Psalms ✓; raphah =
 H7503 "to slacken / be still" ✓ via Strong's.
 
+### study/stories/the-words-of-abinadi.md (2026-03-15) — "74 years" was the narration date, not the elapsed time; one verse-number fix
+SAMPLE (shares its source chain with abinadi-how-to-read, #113).
+"Seventy-four years passed" misread Alma 36's chapter dating (74
+B.C. = when Alma RETOLD it to Helaman) as elapsed time — Abinadi's
+death ≈148 B.C., the conversion ≈100-92 B.C. (Mosiah 27 heading):
+~50 years. Fixed to "Some fifty years passed." "Joy as exceeding
+as was my pain" is Alma 36:20, not :21 — citation fixed. ~25
+quotes sampled verbatim (Mosiah 11/12/13/15/17/18, Alma 36 incl.
+13:9-10, the 18:8-9 covenant, 17:19 five-words check = exactly
+five); "about two hundred and four souls" matches 18:16.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
