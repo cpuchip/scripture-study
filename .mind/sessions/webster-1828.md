@@ -366,6 +366,23 @@ last_active: 2026-06-13T12:25:57
   `feedback_build_the_oracle_first`. **NEXT (Michael's nod): scripture-verbatim
   detector rule** (reuses the quoter's spine) → fills the study-linter, turns the
   PoGP walk into a verify-the-flags pass.
+- UPDATE 20: ★ **scripture-verbatim DETECTOR SHIPPED** (`e15772a6`,
+  `scripts/study-lint/scripture_verbatim.py`) — Michael: "lets build the next piece!"
+  The linter half; **reuses the quoter's resolver+sources+grammar** (the shared spine
+  paid off — the detector was mostly association + precision tuning). For each
+  scripture link, verify the adjacent quote is verbatim. ★ **Precision arc: 213→35**
+  on the walked corpus. The lesson: my first metric (coverage = order-with-GAPS)
+  scatter-matched common words → 213 FPs (labels, condensations, quotes-of-another-
+  verse). Switched to **longest CONTIGUOUS run** (anchor≥0.85 = boundary edit) +
+  a two-long-runs clause (≥4 tok each, ≥90% = one mid-quote deviation) → 35, **all
+  genuine** (verified ~12 across bands: real elisions "which is"/"through his
+  subtilty", version diffs [Matt wording under 3 Ne link], inserted *not*, splices).
+  pre() strips emphasis + embedded verse-numbers so clean block quotes don't fault.
+  Recall gaps documented (quote>320c from link; wrong-verse=link-validate's job;
+  multi-deviation paraphrase). **The 35 = a content-review list for Michael**
+  (judgment-laden: bracket/ellipsis/leave — surfaced, NOT auto-fixed). Memory:
+  `project_quoter_tool` (folded). NEXT: link-validate / citation-depth-2, then MCP
+  wrappers (council nod). Study-tooling now has BOTH halves: constructor + detector.
 - ✅ OCR repair SHIPPED + live-verified (1336c8ce); walk plan RATIFIED
   (.spec/proposals/study-correctness-walk.md)
 
