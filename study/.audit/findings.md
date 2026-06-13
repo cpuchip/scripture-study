@@ -3405,6 +3405,43 @@ including the doctrinal heavyweights.
   did go we know not," v17 "thus ended the account of Alma, and Helaman his
   son, and also Shiblon, who was his son" — EXACT.
 
+### Helaman 1-8 cluster (2026-06-13, 301→309) — ALL CLEAN
+
+The opening of Helaman — secret combination born, Gadianton named, the
+great reversal, the prosperity-covenant in reverse, the famous "remember,
+remember" prison-fire chapter, Mormon's Satan-theology, the tower lament,
+and the all-the-prophets defense. Verified blocks confirmed by direct grep.
+
+- **Hel 1** (secret combination born): v11 "they all entered into a covenant,
+  yea, swearing by their everlasting Maker, that they would tell no man that
+  Kishkumen had murdered Pahoran" — EXACT (the anti-covenant).
+- **Hel 2** (Gadianton named): v4 "exceedingly expert in many words, and also
+  in his craft, to carry on the secret work of murder and of robbery," v13
+  "this Gadianton did prove the overthrow… almost the entire destruction of
+  the people of Nephi" — EXACT.
+- **Hel 3** (word-of-God + sanctification-by-yielding): v29 "lay hold upon the
+  word of God, which is quick and powerful, which shall divide asunder all
+  the cunning and the snares and the wiles of the devil," v35 "sanctification
+  cometh because of their yielding their hearts unto God" — EXACT.
+- **Hel 4** (prosperity-covenant reversed): v13 "their boastings in their own
+  strength, they were left in their own strength," v24 "the Spirit of the
+  Lord doth not dwell in unholy temples," v26 "in the space of not many
+  years" — all EXACT.
+- **Hel 5** (remember, remember — the prison fire): v12 "it is upon the rock
+  of our Redeemer… a foundation whereon if men build they cannot fall," v30
+  "a still voice of perfect mildness, as if it had been a whisper, and it did
+  pierce even to the very soul" — EXACT, character-perfect.
+- **Hel 6** (reversal complete + Satan-theology): v30 "he is the author of all
+  sin," v36 "the Lord began to pour out his Spirit upon the Lamanites,
+  because of their easiness and willingness to believe in his words" — EXACT.
+- **Hel 7** (the tower lament): v9 "I am consigned that these are my days,"
+  v24 "they are more righteous than you, for they have not sinned against
+  that great knowledge which ye have received" — EXACT.
+- **Hel 8** (all-the-prophets + the murdered judge): v15 "look upon the Son of
+  God with faith, having a contrite spirit, might live," v27 "your judge is
+  murdered, and he lieth in his blood; and he hath been murdered by his
+  brother" — EXACT.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)

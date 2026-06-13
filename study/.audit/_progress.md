@@ -320,14 +320,14 @@ Already done out-of-band: `study/morm-8-three-glories-reading.md` (2026-06-09).
 - [x] 2026-06-02 `study/bom-walk/alma/alma-60.md` **LINKS** — CLEAN (the furious letter; v13 "the Lord suffereth the righteous to be slain… they do enter into the rest of the Lord their God," v23 "the inward vessel shall be cleansed first," v36 "I seek not for power, but to pull it down… for the glory of my God, and the freedom and welfare of my country" all EXACT)
 - [x] 2026-06-02 `study/bom-walk/alma/alma-62.md` **LINKS** — CLEAN (war's end; v41 "many had become hardened… and many were softened because of their afflictions" — same affliction, opposite results, v49 "they were not lifted up in the pride of their eyes; neither were they slow to remember the Lord" EXACT)
 - [x] 2026-06-02 `study/bom-walk/alma/alma-63.md` **LINKS** — CLEAN (book of Alma closes; v8 Hagoth's lost ships "whither she did go we know not," v17 "thus ended the account of Alma, and Helaman his son, and also Shiblon, who was his son" EXACT)
-- [ ] 2026-06-02 `study/bom-walk/helaman/helaman-1.md` **LINKS**
-- [ ] 2026-06-02 `study/bom-walk/helaman/helaman-2.md` **LINKS**
-- [ ] 2026-06-02 `study/bom-walk/helaman/helaman-3.md` **LINKS**
-- [ ] 2026-06-02 `study/bom-walk/helaman/helaman-4.md` **LINKS**
-- [ ] 2026-06-02 `study/bom-walk/helaman/helaman-5.md` **LINKS**
-- [ ] 2026-06-02 `study/bom-walk/helaman/helaman-6.md` **LINKS**
-- [ ] 2026-06-02 `study/bom-walk/helaman/helaman-7.md` **LINKS**
-- [ ] 2026-06-02 `study/bom-walk/helaman/helaman-8.md` **LINKS**
+- [x] 2026-06-02 `study/bom-walk/helaman/helaman-1.md` **LINKS** — CLEAN (secret combination born; v11 "they all entered into a covenant, yea, swearing by their everlasting Maker, that they would tell no man that Kishkumen had murdered Pahoran" EXACT — the anti-covenant)
+- [x] 2026-06-02 `study/bom-walk/helaman/helaman-2.md` **LINKS** — CLEAN (Gadianton named; v4 "exceedingly expert in many words, and also in his craft, to carry on the secret work of murder and of robbery," v13 "this Gadianton did prove the overthrow, yea, almost the entire destruction of the people of Nephi" EXACT)
+- [x] 2026-06-02 `study/bom-walk/helaman/helaman-3.md` **LINKS** — CLEAN (word-of-God + sanctification-by-yielding; v29 "whosoever will may lay hold upon the word of God, which is quick and powerful, which shall divide asunder all the cunning and the snares and the wiles of the devil," v35 "sanctification cometh because of their yielding their hearts unto God" EXACT)
+- [x] 2026-06-02 `study/bom-walk/helaman/helaman-4.md` **LINKS** — CLEAN (prosperity-covenant in reverse; v13 "their boastings in their own strength, they were left in their own strength," v24 "the Spirit of the Lord doth not dwell in unholy temples," v26 "in the space of not many years" all EXACT)
+- [x] 2026-06-02 `study/bom-walk/helaman/helaman-5.md` **LINKS** — CLEAN (remember, remember; v12 "it is upon the rock of our Redeemer… a foundation whereon if men build they cannot fall," v30 "a still voice of perfect mildness, as if it had been a whisper, and it did pierce even to the very soul" EXACT — character-perfect)
+- [x] 2026-06-02 `study/bom-walk/helaman/helaman-6.md` **LINKS** — CLEAN (reversal complete + Satan-theology; v30 "he is the author of all sin," v36 "the Lord began to pour out his Spirit upon the Lamanites, because of their easiness and willingness to believe in his words" EXACT)
+- [x] 2026-06-02 `study/bom-walk/helaman/helaman-7.md` **LINKS** — CLEAN (the tower lament; v9 "I am consigned that these are my days," v24 "they are more righteous than you, for they have not sinned against that great knowledge which ye have received" EXACT)
+- [x] 2026-06-02 `study/bom-walk/helaman/helaman-8.md` **LINKS** — CLEAN (all-the-prophets + the murdered judge; v15 "look upon the Son of God with faith, having a contrite spirit, might live," v27 "your judge is murdered, and he lieth in his blood; and he hath been murdered by his brother" EXACT)
 - [ ] 2026-06-02 `study/bom-walk/helaman/helaman-10.md` **LINKS**
 - [ ] 2026-06-02 `study/bom-walk/3-nephi/3-nephi-19.md` **LINKS**
 - [ ] 2026-06-02 `study/bom-walk/ether/ether-7.md` **LINKS**
