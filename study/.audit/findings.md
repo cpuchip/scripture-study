@@ -2038,6 +2038,21 @@ fn-18a footnote claim (Num 15:27 + Mosiah 3:11) EXACT, Num
 D&C 88:32/121:17/121:41-42, Abr 3:27, Moses 1:39/4:1-3, JFS
 Teachings ch. 30 exact.
 
+### study/gift-of-aaron.md (2026-05-23) — D&C 8:10 "sacred" intrusion + a v9/v11 blend
+FULL. D&C 8:10 quoted as "trifle not with these SACRED things" —
+the verse reads "Trifle not with these things" (the "sacred"
+imported from D&C 6:12); and the v.11 quote was a BLEND of vv. 9
+and 11 — both requoted with note. The striking zero-citations
+claim verified EXACT via the BYU index (D&C 8:6 = 0 hits; 8:11 =
+2, Woodruff + Pratt, both JD 19 = 1870s). The Ex 4:16 footnote
+claim verified EXACT (fn-16b: "A prophet is a spokesman; hence he
+speaks for, or instead of, God"). Everything else verbatim: D&C
+8:6/8, 6:10/12, 9:5, Ex 4:10-31, Num 17:6-10, BD Aaronic
+Priesthood. External quotes (JFS Church History & Modern
+Revelation, Smith-Sjodahl, Oaks 1987 Ensign, Cannon 2012) carried
+as cited secondary sources; the sprout→rod→Aaron manuscript
+progression matches the JSP record the study links.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)

@@ -181,7 +181,7 @@ Already done out-of-band: `study/morm-8-three-glories-reading.md` (2026-06-09).
 - [x] 2026-05-21 `study/daily-digest/ai-news-7am--2026-05-21-1300.md` **SAMPLE** — scheduled-workflow pipeline capture; machine artifact, untouched
 - [x] 2026-05-22 `study/daily-digest/ai-news-7am--2026-05-22-1300.md` **SAMPLE** — scheduled-workflow pipeline capture; machine artifact, untouched
 - [x] 2026-05-22 `study/what-was-the-atonement-for.md` **T2+FULL** — Hel 16:23-as-3 Ne 6:15 requoted; PRESUMPTUOUS 1913 ordering (word 119); fn-18a claim exact; rest verbatim
-- [ ] 2026-05-23 `study/gift-of-aaron.md` **FULL**
+- [x] 2026-05-23 `study/gift-of-aaron.md` **FULL** — 8:10 sacred-intrusion + v9/v11 blend requoted; zero-citations claim EXACT; fn-16b claim exact
 - [ ] 2026-05-23 `study/mechanics-of-refinement.md` **FULL**
 - [ ] 2026-05-24 `study/brother-of-jared-three-problems.md` **FULL**
 - [ ] 2026-05-24 `study/refinement-stewardship-and-hope.md` **FULL**
