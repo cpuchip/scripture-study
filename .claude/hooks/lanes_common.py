@@ -89,6 +89,17 @@ def inbox_count(lane):
     return sum(1 for ln in text.splitlines() if ln.startswith("## "))
 
 
+def reground_counter(session_id):
+    """Path to a session's per-session reground counter (under gitignored cache).
+
+    Keyed by session_id so concurrent sessions don't share one counter. Defined
+    here so the writer (reground.py) and the cleanup (lane_end.py) never disagree
+    on the key. Falls back to a single 'default' bucket when session_id is blank.
+    """
+    sid = re.sub(r"[^A-Za-z0-9-]", "", session_id or "") or "default"
+    return ROOT / ".claude" / "cache" / f"reground-{sid}.txt"
+
+
 def emit(event, context):
     """Print hookSpecificOutput with additionalContext (no-op when empty)."""
     if not context:
