@@ -1915,6 +1915,15 @@ join. Other quotes verified verbatim across both transcripts
 (eager-to-create-an-asset, rate-of-feedback, absolutely-essential,
 shared-design-concept ×3, Memento, day-shift).
 
+### study/yt/matt-pocock-ai-workflow-research.md (2026-05-04) — Dex propagation fixed
+SAMPLE. The "Dex Hardy" caption-garble propagated here — corrected
+to Horthy with the garble noted. The Bswen consolidation quote
+verified verbatim against the live page (incl. the
+tickets-never-connected anecdote); internal links (sabbath-agent,
+token-efficiency, brain-simplification, pg-ai-stewards proposal)
+all resolve; Michael's reaction quote = participant record; the
+file's own Sandcastle-README correction of the kimi review stands.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)

@@ -261,7 +261,7 @@ The agent that pushes TDD into prose work is over-applying. The agent that skips
 
 ### What's already public knowledge
 
-The "use less than 20%" heuristic is from Shane Murphy (he frames it as ≤20% effective, steep decline past 60%). The ~100K smart-zone is Dex Hardy / Pocock. Anthropic's official prompt-caching documentation ([github.com/anthropics/skills](https://github.com/anthropics/skills/blob/main/skills/claude-api/shared/prompt-caching.md)) lays out the prefix-stability discipline in detail. Manus reportedly calls KV-cache hit rate "the single most important metric for a production-stage AI agent" with a 10x price differential on Claude Sonnet (cited in the Zylos 2026-02-24 piece and in agentpatterns.ai).
+The "use less than 20%" heuristic is from Shane Murphy (he frames it as ≤20% effective, steep decline past 60%). The ~100K smart-zone is Dex Horthy (HumanLayer; the captions garble it as 'Hardy') / Pocock. Anthropic's official prompt-caching documentation ([github.com/anthropics/skills](https://github.com/anthropics/skills/blob/main/skills/claude-api/shared/prompt-caching.md)) lays out the prefix-stability discipline in detail. Manus reportedly calls KV-cache hit rate "the single most important metric for a production-stage AI agent" with a 10x price differential on Claude Sonnet (cited in the Zylos 2026-02-24 piece and in agentpatterns.ai).
 
 The 2026 SCM paper ([arxiv 2604.20943](https://arxiv.org/html/2604.20943v1)) is the academic version of memory consolidation for agents.
 
