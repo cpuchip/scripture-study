@@ -6,7 +6,7 @@ scroll out of sight.
 
 ## NEEDS MICHAEL (argument-class queue)
 
-*(empty — nothing queued yet)*
+**[1] `study/bom-walk/studies/1ne4_slaying-of-laban.md` §II "Constrained — Not Commanded" — the lexical leg of the argument was the 1913, and the genuine 1828 pulls the OTHER way.** The study's §II argues that *constrained* (1 Ne 4:10) connotes "a strong urging, not an irresistible override," and cites Webster 1828 as "not free; not voluntary; embarrassed; forced or compelled." That gloss is the **1913** edition's *adjective* entry. The genuine **1828** participle reads: "Urged **irresistibly** or powerfully; compelled; forced; restrained; confined; bound; imprisoned; **necessitated**." So the lexicon actually points toward compulsion, not away from it. I requoted the definition to the genuine 1828 (mechanical) and left your §II interpretation in place with a flag, because revising the argument is yours, not mine. The "not-an-override" reading still has *narrative* support (Nephi shrinks; the Spirit speaks twice; Nephi reasons it out and chooses) — but it no longer has *lexical* support. **Your call:** recast §II to rest on the narrative (and perhaps on the theological "irresistible urging on a free conscience ≠ override of agency" distinction), or drop the lexical claim. Logged 2026-06-12.
 
 ---
 
@@ -2275,6 +2275,30 @@ marked editorial substitution. Cross-refs verbatim: John 20:31
 ("these are written, that ye might believe," trimmed), Gal 1:10
 ("do I seek to please men?…I should not be the servant of Christ,"
 marked ellipsis), Moro 10:32 "come unto Christ."
+
+### study/bom-walk/studies/1ne4_slaying-of-laban.md (2026-06-01) — TWO new Webster words; ★ FIRST queue item
+T1 (bin-1/2 draft). Two 1913-as-1828 Webster words, both requoted:
+  • ★ CONSTRAINED (word #122) — study's "not free; not voluntary;
+    embarrassed; forced or compelled" = 1913 ADJECTIVE entry.
+    Genuine 1828 participle: "Urged irresistibly or powerfully;
+    compelled; forced; restrained; confined; bound; imprisoned;
+    necessitated." This INVERTS the lexical support for §II's
+    "constrained ≠ compelled" reading → QUEUED for Michael (item
+    [1]); definition requoted, argument left for him with a flag.
+  • DWINDLE (word #123) — study's def + "Swift" citation
+    ("religious societies, though begun with excellent intentions,
+    are said to have dwindled into factious clubs") = 1913 verbatim.
+    Genuine 1828 splits it (def 1 diminish/waste; def 2 "To
+    degenerate; to sink; to fall away. Religious societies may
+    dwindle into factious clubs"). Requoted; the study's
+    covenantal-degeneration reading survives on 1828 def 2.
+Everything else verbatim: 1 Ne 3:13/20/31, 4:6/9/10/11/13/15/31/33
+(all leading-trim clean); 1 Sam 17:46 (trim) + 17:51 (paraphrase
+accurate); John 11:49-52 (Caiaphas quote EXACT, both verses);
+Gen 22:8 (trim); Mosiah 1:5 (leading trim, "dwindled in unbelief"
+verbatim). Scholarly Nibley/Welch claim is explicitly flagged as
+paraphrase-not-read (line 41), honest. *perish* listed as read but
+not quoted in body.
 
 ## Walked out-of-band before the walk began
 

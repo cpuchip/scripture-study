@@ -110,7 +110,14 @@ last_active: 2026-06-12T15:38:52
   in the Send Me yt eval, already counted). [Corrected from a stale
   "110" — that was UPDATE 7's number; #151-171 grew it 110→119.]
   Then #181 four-groups-and-the-engineer added EASINESS (#120) +
-  CIRCUMSPECTLY (#121) → count 121. Model SWITCHED Fable 5 → Opus 4.8 at
+  CIRCUMSPECTLY (#121) → 121; #185 1ne4-slaying-of-laban added
+  CONSTRAINED (#122) + DWINDLE (#123) → count 123. ★ FIRST
+  NEEDS-MICHAEL queue item logged: CONSTRAINED's genuine 1828
+  ("urged irresistibly… necessitated") INVERTS that study's §II
+  "constrained ≠ compelled" lexical claim — definition requoted,
+  argument left for Michael with a flag. #182 the-seventh-time:
+  Nelson "Sabbath Is a Delight" mis-dated Oct→Apr 2015 (2 places);
+  #184 bom-walk 1ne-06 CLEAN. NEXT: #186. Model SWITCHED Fable 5 → Opus 4.8 at
   ~#176 (Fable access lost; Michael: "keep up the same rigor").
   Commit trailer now Opus 4.8. ★ HEAVIEST FIND of the run: #176
   yt/V40tBshkMnE-send-me-covenants had TWO fabricated "Todd says"
