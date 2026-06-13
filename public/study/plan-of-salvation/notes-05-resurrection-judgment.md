@@ -31,7 +31,7 @@ Alma 40 lays out the mechanics:
 - **Reuniting, not reassembling**: "The first resurrection ... meaneth the reuniting of the soul with the body" ([Alma 40:18](https://www.churchofjesuschrist.org/study/scriptures/bofm/alma/40?lang=eng&id=p18#p18)). The word is *reuniting* — these belong together. They were separated; they come back together.
 - **Perfect restoration**: "The soul shall be restored to the body, and the body to the soul; yea, and every limb and joint shall be restored to its body; yea, even a hair of the head shall not be lost; but all things shall be restored to their proper and perfect frame" ([Alma 40:23](https://www.churchofjesuschrist.org/study/scriptures/bofm/alma/40?lang=eng&id=p23#p23)).
 
-Webster 1828 defines **RESURRECTION** as "a rising again; chiefly, the revival of the dead of the human race, or their return from the grave, particularly at the general judgment" — and the entry's own citation is 1 Peter 1:3: "By the resurrection of Christ we have assurance of the future resurrection of men." *(Requoted 2026-06-12 — the earlier "resumption of vigor" text was the 1913 edition's.)* Not just coming back — a *revival*, a return.
+Webster 1828 defines **RESURRECTION** as "a rising again; chiefly, the revival of the dead of the human race, or their return from the grave, particularly at the general judgment" — and the entry's own citation is 1 Peter 1:3: "By the resurrection of Christ we have assurance of the future resurrection of men." Not just coming back — a *revival*, a return.
 
 ### The Phase 3 Connection: Disembodiment as Bondage
 
@@ -77,7 +77,7 @@ Paul gives us a stunning four-fold contrast for what resurrection does:
 
 ([1 Corinthians 15:42-44](https://www.churchofjesuschrist.org/study/scriptures/nt/1-cor/15?lang=eng&id=p42-p44#p42))
 
-Webster 1828 defines **INCORRUPTION** as "incapacity of being corrupted" — and the entry's own citation is this very verse: "It is sown in corruption; it is raised in incorruption. 1 Corinthians 15:42." *(Requoted 2026-06-12 — the earlier text was the 1913 edition's.)* Not just "not corrupt" — *incapable of being corrupted.* Permanently beyond decay. The resurrected body doesn't just stop decaying; it becomes incapable of decay — which is the genuine 1828 definition, word for word.
+Webster 1828 defines **INCORRUPTION** as "incapacity of being corrupted" — and the entry's own citation is this very verse: "It is sown in corruption; it is raised in incorruption. 1 Corinthians 15:42." Not just "not corrupt" — *incapable of being corrupted.* Permanently beyond decay. The resurrected body doesn't just stop decaying; it becomes incapable of decay — which is the genuine 1828 definition, word for word.
 
 ### Celestial, Terrestrial, and Telestial Bodies
 
@@ -107,7 +107,7 @@ The resurrection itself is the mechanism:
 
 The *glory* that quickens you determines the *body* you receive. And the glory that quickens you corresponds to the *law* you lived. This is a breathtaking chain: **law → glory → quickening → body → kingdom**.
 
-Webster 1828's scriptural sense of **GLORY** illuminates this: "In scripture, the divine presence" — and sense 6, "the felicity of heaven prepared for the children of God; celestial bliss," citing Psalm 73:24: "Thou shalt guide me with thy counsel, and afterwards receive me to glory." *(Requoted 2026-06-12 — the earlier text was the 1913 edition's.)* Glory isn't just brightness — it's *presence*. The degree of glory you receive corresponds to how much of God's presence you can abide.
+Webster 1828's scriptural sense of **GLORY** illuminates this: "In scripture, the divine presence" — and sense 6, "the felicity of heaven prepared for the children of God; celestial bliss," citing Psalm 73:24: "Thou shalt guide me with thy counsel, and afterwards receive me to glory." Glory isn't just brightness — it's *presence*. The degree of glory you receive corresponds to how much of God's presence you can abide.
 
 ### Even Those Who Refuse
 
@@ -164,7 +164,7 @@ D&C 76 confirms: "All the rest shall be brought forth by the resurrection of the
 
 ### Webster 1828: Judgment as Discernment
 
-**JUDGMENT** in Webster 1828 is first "the act or process of the mind in comparing its ideas, to find their agreement or disagreement, and to ascertain truth." And the genuine scriptural sense states the discernment point outright: "In Scripture, the spirit of wisdom and prudence, enabling a person to discern right and wrong, good and evil." *(Requoted 2026-06-12 — the earlier texts were the 1913 edition's.)* God's judgment isn't arbitrary sentencing — it's perfect discernment. And the genuine final-judgment sense: "The final trial of the human race, when God will decide the fate of every individual, and award sentence according to justice," citing Ecclesiastes 12:14.
+**JUDGMENT** in Webster 1828 is first "the act or process of the mind in comparing its ideas, to find their agreement or disagreement, and to ascertain truth." And the genuine scriptural sense states the discernment point outright: "In Scripture, the spirit of wisdom and prudence, enabling a person to discern right and wrong, good and evil." God's judgment isn't arbitrary sentencing — it's perfect discernment. And the genuine final-judgment sense: "The final trial of the human race, when God will decide the fate of every individual, and award sentence according to justice," citing Ecclesiastes 12:14.
 
 ### The Judgment Scene
 
@@ -198,7 +198,7 @@ The restoration principle explained:
 
 > "The meaning of the word restoration is to bring back again evil for evil, or carnal for carnal, or devilish for devilish—good for that which is good; righteous for that which is righteous; just for that which is just; merciful for that which is merciful." ([Alma 41:13](https://www.churchofjesuschrist.org/study/scriptures/bofm/alma/41?lang=eng&id=p13#p13))
 
-Webster 1828 on **RESTORE**: "To bring back or recover from lapse, degeneracy, declension or ruin to its former state"; "to heal; to cure; to recover from disease — His hand was restored whole like as the other. Matthew 12:13"; "to revive; to resuscitate; to bring back to life." *(Requoted 2026-06-12 — the earlier text was the 1913 edition's; the genuine senses run from healing to resurrection themselves.)* Restoration means you go back to what you actually are. If you've been cultivating mercy, you get mercy back. If you've been cultivating cruelty, you get cruelty back. The universe echoes your character.
+Webster 1828 on **RESTORE**: "To bring back or recover from lapse, degeneracy, declension or ruin to its former state"; "to heal; to cure; to recover from disease — His hand was restored whole like as the other. Matthew 12:13"; "to revive; to resuscitate; to bring back to life." Restoration means you go back to what you actually are. If you've been cultivating mercy, you get mercy back. If you've been cultivating cruelty, you get cruelty back. The universe echoes your character.
 
 And then the jaw-dropping implication: "They are their own judges" ([Alma 41:7](https://www.churchofjesuschrist.org/study/scriptures/bofm/alma/41?lang=eng&id=p7#p7)). Cross-referenced to [2 Nephi 2:26](https://www.churchofjesuschrist.org/study/scriptures/bofm/2-ne/2?lang=eng&id=p26#p26) and [Helaman 14:30](https://www.churchofjesuschrist.org/study/scriptures/bofm/hel/14?lang=eng&id=p30#p30). We literally judge ourselves — not by what we decide, but by what we've become. The judgment is the natural consequence of our becoming.
 

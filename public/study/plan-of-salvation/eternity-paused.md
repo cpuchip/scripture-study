@@ -245,7 +245,7 @@ Words matter. The scriptures chose these words for a reason.
 | **Cup** | "In a scriptural sense, sufferings and afflictions; that which is to be received or endured" | And Webster's own example is this verse: "let this cup pass from me." ([Matthew 26:39](https://www.churchofjesuschrist.org/study/scriptures/nt/matt/26?lang=eng&id=p39#p39)) |
 | **Submit** | "To yield, resign or surrender to the power, will or authority of another" | He submitted His will to the Father's. Not elimination of will — *surrender* of will. ([Mosiah 15:7](https://www.churchofjesuschrist.org/study/scriptures/bofm/mosiah/15?lang=eng&id=p7#p7)) |
 
-Note the Webster 1828 definition of "agony": it names "the pangs of death, and the sufferings of our Savior in the garden of Gethsemane" as the word's proper application, citing Luke 22:44. *(Requoted 2026-06-12 — the earlier wording was the 1913 edition's; the genuine entry carries the same anchor.)* This is a word that, even in 1828, had no better illustration than this event. The English language itself bends around Gethsemane.
+Note the Webster 1828 definition of "agony": it names "the pangs of death, and the sufferings of our Savior in the garden of Gethsemane" as the word's proper application, citing Luke 22:44. This is a word that, even in 1828, had no better illustration than this event. The English language itself bends around Gethsemane.
 
 ---
 

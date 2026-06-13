@@ -82,7 +82,7 @@ Then the argument tightens:
 
 Human sacrifice can't cover it. Animal sacrifice pointed toward it. Only infinite covers infinite. "There is not any man that can sacrifice his own blood which will atone for the sins of another... therefore there can be nothing which is short of an infinite atonement which will suffice for the sins of the world" ([Alma 34:11-12](https://www.churchofjesuschrist.org/study/scriptures/bofm/alma/34?lang=eng&id=p11-p12#p11)).
 
-Webster 1828 defines "infinite" as *"without limits; unbounded; boundless; not circumscribed,"* and its first illustration is God Himself: "God is infinite in duration, having neither beginning nor end of existence. He is also infinite in presence, or omnipresent, and his perfections are infinite." *(Requoted 2026-06-12 — the earlier wording was the 1913 edition's.)* Not just very large. Without limits at all. The Atonement exceeds our capacity to measure — and it must, because the fall it addresses has no bounds either.
+Webster 1828 defines "infinite" as *"without limits; unbounded; boundless; not circumscribed,"* and its first illustration is God Himself: "God is infinite in duration, having neither beginning nor end of existence. He is also infinite in presence, or omnipresent, and his perfections are infinite." Not just very large. Without limits at all. The Atonement exceeds our capacity to measure — and it must, because the fall it addresses has no bounds either.
 
 Jacob had made the same point: "It must needs be an infinite atonement — save it should be an infinite atonement this corruption could not put on incorruption" ([2 Nephi 9:7](https://www.churchofjesuschrist.org/study/scriptures/bofm/2-ne/9?lang=eng&id=p7#p7)). The infinite nature isn't theological decoration. It's structural necessity. A finite fix can't repair an infinite break.
 
@@ -90,7 +90,7 @@ Jacob had made the same point: "It must needs be an infinite atonement — save 
 
 Here I'm naming a pattern that surfaces again and again across sources — not a single verse but a thread the scriptures weave:
 
-D&C 88:6 says Christ "descended below all things, in that he comprehended all things." Webster 1828 defines "comprehend" as both *"to contain; to include; to comprise"* and *"to understand; to conceive; that is, to take, hold or contain in the mind."* *(Requoted 2026-06-12 — the earlier wordings were the 1913 edition's. The genuine entry's own example is Job 37:5: "God doeth great things, which we cannot comprehend.")* Both meanings apply. Christ *contains* all experience within Himself — He includes every human moment in His own — and He *understands* it all because He went there. The descent *is* the comprehension.
+D&C 88:6 says Christ "descended below all things, in that he comprehended all things." Webster 1828 defines "comprehend" as both *"to contain; to include; to comprise"* and *"to understand; to conceive; that is, to take, hold or contain in the mind."* Both meanings apply. Christ *contains* all experience within Himself — He includes every human moment in His own — and He *understands* it all because He went there. The descent *is* the comprehension.
 
 Alma 7:12 says the same thing in pastoral language: He suffered "that he may know according to the flesh how to succor his people." Isaiah 53:11 puts it in juridical terms: "by his knowledge shall my righteous servant justify many."
 

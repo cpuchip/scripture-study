@@ -94,8 +94,6 @@ And here, Webster 1828 lights up the key word.
 
 **CONFOUND** (Webster 1828): "To mingle and blend different things, so that their forms or natures cannot be distinguished; to mix in a mass or crowd, so that individuals cannot be distinguished."
 
-*(Requoted 2026-06-12 — the earlier wording was the 1913 edition's. The genuine 1828 entry hands this study two gifts: its second sense is illustrated with this very verse, "Let us go down, and there confound their language. Genesis 11:7" — and its sixth sense cites Acts 2:6, the Pentecost reversal this study closes with.)*
-
 The primary meaning isn't "to bewilder" in the modern lightweight sense. It's *to mingle* — to mix different things together until you can't separate them back out. God didn't erase their language. He didn't replace it. He *blended* it. He took one thing and mixed it into many, so thoroughly that the original elements couldn't be recovered.
 
 This reframes the entire event. The confounding wasn't destruction — it was fragmentation. The pure, undefiled language of Adam, passed down through Seth through Enoch through Noah, was mixed and scattered. Every human language on earth may carry fragments of it. None has it whole.

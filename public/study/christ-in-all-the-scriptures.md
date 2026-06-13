@@ -33,7 +33,7 @@ The New Testament writers say the same of prophecy itself. Peter writes that the
 
 The word at the center of it all is a title. Webster's 1828 dictionary, compiled in the language of the King James Bible, defines *Christ* as "THE ANOINTED; an appellation given to the Savior of the World, and synonymous with the Hebrew Messiah," and gives the reason in the same entry: "It was a custom of antiquity to consecrate persons to the sacerdotal and regal offices by anointing them with oil." *Christ* and *Messiah* are the same word in two languages, and the word means *anointed*. The whole Old Testament anoints people with oil, consecrating prophets, priests, and kings to stand between God and the people.
 
-*(Requoted 2026-06-12 — the earlier wording ("an appellation given to Jesus, the Savior. It is synonymous…") was the 1913 edition's; the genuine 1828 is quoted here, and it is the better witness — it names the very custom of anointing prophets, priests, and kings that the next sentences describe.)* Every one of those anointings is a small rehearsal for the Anointed One who would be prophet, priest, and king at once. "Jesus Christ" is not a first and last name. It reads "Jesus the Anointed."
+ Every one of those anointings is a small rehearsal for the Anointed One who would be prophet, priest, and king at once. "Jesus Christ" is not a first and last name. It reads "Jesus the Anointed."
 
 ## What he actually pointed to
 
@@ -50,8 +50,6 @@ After Pentecost the apostles do nothing but this. Philip finds the Ethiopian eun
 ## A figure of something to come
 
 Webster's 1828 defines a *type* as "a sign; a symbol; a figure of something to come," and gives as its own example the very figures this study turns on: "Abraham's sacrifice and the paschal lamb, were types of Christ. To this word is opposed antitype. Christ, in this case, is the antitype." The shadow exists to be cast off when the substance arrives — "a shadow of things to come; but the body is of Christ," as Paul will put it. That is why the law of Moses, having pointed forward for centuries, was fulfilled and ceased in Christ.
-
-*(Requoted 2026-06-12 — the earlier wording ("A figure or representation… correlative to antitype" and "A type is no longer a type when the thing typified comes to be actually exhibited") was the 1913 edition's definition 3, not the 1828. The genuine 1828, quoted here, is sharper for the study: its own example names Abraham's sacrifice and the paschal lamb as types of Christ. The "shadow cast off when the substance arrives" point stands on Colossians 2:17 / Hebrews 10:1, cited below.)*
 
 The surest types are the ones a later scripture names outright. The Passover lamb is one: a male "without blemish," its blood marking the doorposts so death would "pass over," with the strict instruction "neither shall ye break a bone thereof" ([Exodus 12:46](https://www.churchofjesuschrist.org/study/scriptures/ot/ex/12?lang=eng&id=p46#p46)). Paul names the antitype flatly: "Christ our passover is sacrificed for us" ([1 Corinthians 5:7](https://www.churchofjesuschrist.org/study/scriptures/nt/1-cor/5?lang=eng&id=p7#p7)), and John records that the soldiers, finding Jesus already dead, broke no bone of his, "that the scripture should be fulfilled, A bone of him shall not be broken" ([John 19:36](https://www.churchofjesuschrist.org/study/scriptures/nt/john/19?lang=eng&id=p36#p36)). A rule about handling a lamb in Egypt turns out to have been a detail of the crucifixion fixed in advance.
 

@@ -114,18 +114,6 @@ And the building's occupants fight specifically against "the twelve apostles of 
 
 **On the Webster 1828 definition.** The genuine 1828 sense is *"Voluntary descent from rank, dignity or just claims; relinquishment of strict right"* — the word is doing real work in Nephi's text. But the modern reader hears "patronizing," which inverts the meaning. Worth naming in any teaching context. The condescension is not condescension in the modern sense.
 
-> *Correction (2026-06-13, study-correctness walk):* §II and §VIII originally
-> gave the 1828 sense as "voluntary descent from one's rank … to interact with
-> an inferior." That phrasing tracked the **1913** Webster ("voluntary descent
-> from one's rank or dignity in intercourse with an inferior"), not the genuine
-> 1828, which reads *"Voluntary descent from rank, dignity or just claims;
-> relinquishment of strict right; submission to inferiors in granting requests
-> or performing acts which strict justice does not require."* Requoted against
-> the repaired 1828 (`webster_define`). The genuine entry is *better* for the
-> thesis — "relinquishment of strict right" is exactly the condescension of
-> God: Christ laying down a divine prerogative that was his to keep. The
-> argument is unchanged; the definition is now the right edition.
-
 **On what is NOT in the text.** I have not read general conference talks on this topic directly this session — searches returned general talks, not condescension-specific ones. The modern prophetic teaching on this passage exists (Elder Holland, Elder McConkie, others have written on it), but I have not verified any of those treatments this session. I will not attribute anything to them here.
 
 ---

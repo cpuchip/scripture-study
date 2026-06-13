@@ -35,7 +35,7 @@ This isn't just a philosophical observation — Lehi says without opposition, th
 
 Two categories of existence: things that act, and things acted upon. Humans are the first kind. And to *act* requires being *enticed* — drawn toward something. Without options, there is no action, only drift.
 
-**Webster 1828 — "entice"**: sense 1 is *"to incite or instigate, by exciting hope or desire; usually in a bad sense; as, to entice one to evil"* — and sense 3 is *"to incite; to allure; in a good sense."* *(Requoted 2026-06-12 — the earlier "draw on... attract" text was the 1913 edition's.)* Webster's own entry runs in both directions, exactly as Lehi says: we are "enticed by the one or the other." This isn't coercion — it's attraction. God doesn't force us to choose good; He *entices* us toward it. Satan entices toward evil. We stand between two attractive forces and choose.
+**Webster 1828 — "entice"**: sense 1 is *"to incite or instigate, by exciting hope or desire; usually in a bad sense; as, to entice one to evil"* — and sense 3 is *"to incite; to allure; in a good sense."* Webster's own entry runs in both directions, exactly as Lehi says: we are "enticed by the one or the other." This isn't coercion — it's attraction. God doesn't force us to choose good; He *entices* us toward it. Satan entices toward evil. We stand between two attractive forces and choose.
 
 **The Fall was necessary — and designed.**
 
@@ -65,7 +65,7 @@ Lehi doesn't begin his theology with an abstraction. He begins with his son Jaco
 > "Thou art my firstborn in the days of my tribulation in the wilderness. And behold, in thy childhood thou hast suffered afflictions and much sorrow, because of the rudeness of thy brethren. Nevertheless, Jacob, my firstborn in the wilderness, thou knowest the greatness of God; and he shall consecrate thine afflictions for thy gain."
 > — [2 Nephi 2:1-2](https://www.churchofjesuschrist.org/study/scriptures/bofm/2-ne/2?lang=eng&id=p1-p2#p1)
 
-**Webster 1828 — "consecrate"**: *"To make or declare to be sacred, by certain ceremonies or rites; to appropriate to sacred uses; to set apart, dedicate, or devote, to the service and worship of God."* *(Requoted 2026-06-12 — the earlier adjective-form text was the 1913 edition's; the genuine verb is stronger.)* God doesn't just *allow* affliction — He *consecrates* it, makes it sacred, sets it apart, devotes it to a purpose. The suffering becomes gain. This is the school metaphor in its most intimate form: the curriculum includes hard things, and those hard things are *holy* when received by faith.
+**Webster 1828 — "consecrate"**: *"To make or declare to be sacred, by certain ceremonies or rites; to appropriate to sacred uses; to set apart, dedicate, or devote, to the service and worship of God."* God doesn't just *allow* affliction — He *consecrates* it, makes it sacred, sets it apart, devotes it to a purpose. The suffering becomes gain. This is the school metaphor in its most intimate form: the curriculum includes hard things, and those hard things are *holy* when received by faith.
 
 ### Alma's Framework: Probation as Preparation
 
@@ -83,7 +83,7 @@ Alma 42 makes this even clearer. Alma explicitly calls the probationary state a 
 
 Probationary = preparatory. The words are interchangeable for Alma. And what are they preparing for? To repent and serve God ([Alma 42:4](https://www.churchofjesuschrist.org/study/scriptures/bofm/alma/42?lang=eng&id=p4#p4)), which is how they qualify for mercy.
 
-**Webster 1828 — "probation"**: *"Moral trial; the state of man in the present life, in which he has the opportunity of proving his character and being qualified for a happier state."* *(Requoted 2026-06-12 — the earlier "becoming qualified" wording was the 1913 edition's; the genuine 1828 says "being qualified," same argument.)*
+**Webster 1828 — "probation"**: *"Moral trial; the state of man in the present life, in which he has the opportunity of proving his character and being qualified for a happier state."*
 
 This is revelatory. Webster's 1828 definition carries *both* meanings — "proving his character" (testing) AND "being qualified" (education/transformation). The word itself, in the language of the Restoration era, was never just about testing. It was about *qualification through trial*. When Alma says "probationary state," his contemporary readers would have heard: a time for proving your character and being qualified for something better.
 
@@ -97,7 +97,7 @@ Amulek adds the urgency dimension:
 > "I beseech of you that ye do not procrastinate the day of your repentance until the end; for after this day of life, which is given us to prepare for eternity, behold, if we do not improve our time while in this life, then cometh the night of darkness wherein there can be no labor performed."
 > — [Alma 34:33](https://www.churchofjesuschrist.org/study/scriptures/bofm/alma/34?lang=eng&id=p33#p33)
 
-**Webster 1828 — "prepare"**: *"In a general sense, to fit, adapt or qualify for a particular purpose, end, use, service or state, by any means whatever."* And Webster's own illustration: *"holiness of heart is necessary to prepare men for the enjoyment of happiness with holy beings."* *(Requoted 2026-06-12 — the earlier compressed text was the 1913 edition's. The genuine entry's example is Amulek's exact doctrine in Webster's own words — and the intransitive entry cites Amos 4:12, "Prepare to meet thy God.")* Again the educational connotation: fit, adapt, qualify. We're not just being tested — we're *becoming qualified* for something.
+**Webster 1828 — "prepare"**: *"In a general sense, to fit, adapt or qualify for a particular purpose, end, use, service or state, by any means whatever."* And Webster's own illustration: *"holiness of heart is necessary to prepare men for the enjoyment of happiness with holy beings."* Again the educational connotation: fit, adapt, qualify. We're not just being tested — we're *becoming qualified* for something.
 
 And then the hard verse:
 
@@ -168,7 +168,7 @@ And then these extraordinary responses:
 
 Adam and Eve look back at the Fall — the thing that brought death, pain, labor, sorrow — and they *thank God for it*. Their eyes are opened. They know good and evil. They have children. They know the joy of redemption. They see the Fall not as catastrophe but as *commencement*.
 
-**Webster 1828 — "transgression"**: *"The act of passing over or beyond any law or rule of moral duty."* *(Requoted 2026-06-12 — the earlier wording was the 1913 edition's.)* The word literally means "to pass beyond." Adam and Eve passed beyond the boundary of the Garden — and in doing so, passed into the realm of growth, experience, and eventual joy.
+**Webster 1828 — "transgression"**: *"The act of passing over or beyond any law or rule of moral duty."* The word literally means "to pass beyond." Adam and Eve passed beyond the boundary of the Garden — and in doing so, passed into the realm of growth, experience, and eventual joy.
 
 Moses 6 then delivers the full gospel to Adam:
 

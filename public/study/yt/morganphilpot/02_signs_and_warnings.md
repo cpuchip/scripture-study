@@ -122,7 +122,7 @@ The hermeneutic engine for all of this is [1 Nephi 19:23](https://www.churchofje
 
 ### Word Studies
 
-**Liken** (Webster 1828): "To compare; to represent as resembling or similar." *(Requoted 2026-06-12 — an earlier draft's "To allege, or think, to be like…" was the 1913 edition's wording; the argument is unchanged.)* This captures an important nuance: likening is *comparison*, not *identification*. When Nephi says "I did liken all scriptures unto us" ([1 Nephi 19:23](https://www.churchofjesuschrist.org/study/scriptures/bofm/1-ne/19?lang=eng&id=p23#p23)), he's drawing parallels, not claiming that Isaiah's words were *about* the Nephites in their primary sense. The 1828 definition supports reading "liken" as a tool for application, not as a decoder ring for hidden timelines.
+**Liken** (Webster 1828): "To compare; to represent as resembling or similar." This captures an important nuance: likening is *comparison*, not *identification*. When Nephi says "I did liken all scriptures unto us" ([1 Nephi 19:23](https://www.churchofjesuschrist.org/study/scriptures/bofm/1-ne/19?lang=eng&id=p23#p23)), he's drawing parallels, not claiming that Isaiah's words were *about* the Nephites in their primary sense. The 1828 definition supports reading "liken" as a tool for application, not as a decoder ring for hidden timelines.
 
 **Wrath** (Webster 1828): "Violent anger; vehement exasperation; indignation... The effects of anger. God's wrath in Scripture is his holy and just indignation against sin." The D&C 88 wrath sequence and the "winepress of the wrath of God" ([Revelation 14:19](https://www.churchofjesuschrist.org/study/scriptures/nt/rev/14?lang=eng&id=p19#p19)) carry this full weight: not petulance, but holy indignation against unrepentant evil.
 
