@@ -24,13 +24,13 @@ The Pearl of Great Price expands this:
 
 ### Webster 1828: "Grace"
 
-Noah Webster (1828) defines **grace** as: *"Favor; good will; kindness; disposition to oblige another."* And in its divine sense: *"Appropriately, the free unmerited love and favor of God, the spring and source of all the benefits men receive from him."* *(Requoted 2026-06-12 — the earlier definitions were the 1913 edition's. The genuine 1828 is stronger here: "free unmerited" is Webster saying what this section says.)*
+Noah Webster (1828) defines **grace** as: *"Favor; good will; kindness; disposition to oblige another."* And in its divine sense: *"Appropriately, the free unmerited love and favor of God, the spring and source of all the benefits men receive from him."*
 
 Grace is not earned. It is *favor bestowed* — "free unmerited," in Webster's own words. Noah didn't earn God's favor through achievement — he *found* it by being oriented toward God. He was "just" (righteous), "perfect" (Hebrew: *complete, whole, having integrity*), and he "walked with God."
 
 ### Webster 1828: "Perfect"
 
-The Hebrew behind "perfect" in Genesis 6:9 is *tāmîm* — meaning **complete, whole, having integrity**. Webster 1828 captures this: *"Finished; complete; consummate; not defective; having all that is requisite to its nature and kind."* *(Requoted 2026-06-12 — the earlier "Brought to consummation" text was the 1913 edition's.)*
+The Hebrew behind "perfect" in Genesis 6:9 is *tāmîm* — meaning **complete, whole, having integrity**. Webster 1828 captures this: *"Finished; complete; consummate; not defective; having all that is requisite to its nature and kind."*
 
 Noah wasn't morally flawless — he was *whole*. His heart wasn't divided. In a world where "every imagination of the thoughts of [men's] heart was only evil continually" ([Genesis 6:5](../../gospel-library/eng/scriptures/ot/gen/6.md)), Noah's heart was wholly oriented toward God.
 

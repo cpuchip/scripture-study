@@ -71,19 +71,13 @@ Webster's *American Dictionary of the English Language*, published 1828, is the 
 
 **LAW** (Webster, 1828, "Physical laws, or laws of nature"): "The invariable tendency or determination of any species of matter to a particular form with definite properties, and the determination of a body to certain motions, changes, and relations, which uniformly take place in the same circumstances, is called a physical law. These tendencies or determinations … have been established by the Creator, and are, with a peculiar felicity of expression, denominated in Scripture, ordinances of heaven."
 
-*(Requoted 2026-06-12 — the earlier "rule of being, operation, or change … imposed by the will of God" was the 1913 edition's sense 7.)*
-
 That is not a metaphor. In 1828, the physics sense of *law* was defined as established by the Creator — and Noah adds that scripture calls these very laws "ordinances of heaven." When the revelation says light "is the law by which all things are governed," Joseph and his contemporaries did not have to translate from spiritual to physical. The word already meant both.
 
 **GLORY** (Webster, 1828, sense 1): "Brightness; luster; splendor." Noah's own gloss reaches for the Transfiguration — 2 Peter 1:17, where, he notes, the latter *glory* "refers to the visible splendor or bright cloud that overshadowed Christ at his transfiguration." Sense 3 adds the painter's term: "The circle of rays surrounding the head of a figure in painting."
 
-*(Requoted 2026-06-12 — the earlier "emanation of light … from beings of peculiar sanctity" was the 1913 edition's.)*
-
 So when D&C 93:36 says "the glory of God is intelligence, or, in other words, light and truth," the word *glory* in 1828 was already a physical term — brightness, luster, the visible splendor on the mount. The verse compresses what the dictionary already linked. Glory ≡ brightness ≡ intelligence ≡ truth. The chain is tight because three of those four were partly synonymous before Joseph wrote.
 
 **INTELLIGENCE** (Webster, 1828, senses 1 and 4): "Understanding; skill." And: "A spiritual being; as a created intelligence. It is believed that the universe is peopled with innumerable superior intelligences."
-
-*(Requoted 2026-06-12 — the earlier wordings were the 1913 edition's. The genuine fourth sense is the gift: Noah's 1828 already records the belief that "the universe is peopled with innumerable superior intelligences.")*
 
 In Joseph's English, *intelligence* could mean either understanding or an actual being. Both at once. So D&C 93:29, in saying "Intelligence, or the light of truth, was not created or made," used a word that already pointed in two directions: knowing as a capacity, and a knower as an entity. The doctrine that intelligences are eternal is *also* the doctrine that the substance of knowing is eternal. Joseph did not have to invent that double meaning. The dictionary supplied it.
 
@@ -94,8 +88,6 @@ D&C 93:24, given five months after Webster's definition was three years in print
 Webster: *was, is, shall be*. Joseph: *were, are, are to come*. Same triple temporal structure, near-identical phrasing. The revelation enters the language already prepared for it.
 
 **MATTER** (Webster, 1828, senses 2 and 3): "Body; substance extended; that which is visible or tangible; as earth, wood, stone, air, vapor." But the genuine entry's third, philosophic sense already strains past that: "the substance of which all bodies are composed; the substratum of sensible qualities, though the parts composing the substratum may not be visible or tangible. … The imponderable substances are destitute of weight, as light, caloric, electricity, and magnetism."
-
-*(Requoted 2026-06-12 — the earlier wording was the 1913 edition's, and it understated Noah's own entry: the 1828 already classed light among the "imponderable" kinds of matter.)*
 
 In common speech, then, 1828 *matter* meant the visible and tangible — but the philosophic sense already admitted imponderable matter, with light first on the list. Joseph's 1843 revelation pushed in the same direction and further: "All spirit is matter, but it is more fine or pure, and can only be discerned by purer eyes." Not a rupture with his era's vocabulary; an extension of its finest sense to the one substance philosophy had walled off — spirit. The verse keeps the word *matter* while removing the perceptibility constraint entirely.
 

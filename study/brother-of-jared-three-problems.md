@@ -58,8 +58,6 @@ The third answer is the one everyone remembers. It is also the one that has been
 
 > "And the Lord said unto the brother of Jared: What will ye that I should do that ye may have light in your vessels? For behold, ye cannot have windows, for they will be dashed in pieces; neither shall ye take fire with you, for ye shall not go by the light of fire… Therefore what will ye that I should prepare for you that ye may have light when ye are swallowed up in the depths of the sea?" — [Ether 2:23, 25](../gospel-library/eng/scriptures/bofm/ether/2.md)
 
-*(Requoted 2026-06-12 — verse 25's second asking says "what will ye that I should prepare for you," not a repeat of verse 23's "do." An earlier version flattened the two askings into one wording; the shift from "do" to "prepare" is the Lord's own word in the verse.)*
-
 The Lord asks the question twice. And He does something with the question that the casual reading skips: He *constrains* it. Before the brother of Jared is invited to propose, the Lord rules out the two obvious wrong answers: windows ("they will be dashed in pieces") and fire ("ye shall not go by the light of fire"). The question is not "anything you can think of." It is "not these, now what?"
 
 That changes the texture of the third pattern. "What will ye that I should do?" is not delegation in the abdicating sense. It is not "figure it out, you're on your own." It is closer to a master craftsman handing a problem to an apprentice with the wrong moves already deleted from the bench. *I have removed the easy answers. Bring me something I have not ruled out.*

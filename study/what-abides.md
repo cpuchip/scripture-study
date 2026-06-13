@@ -91,9 +91,7 @@ him.
 Webster keeps a sense of *abide* the dream does not usually reach for. Not only
 "to dwell" but the genuine entry's own note: "abide by signifies to adhere to,
 maintain, defend, or stand to, as to abide by a promise, or by a friend; or to
-suffer the consequences." *(Requoted 2026-06-12 — the earlier "to stand to; to
-adhere; to maintain" was the 1913 edition's; Noah's own note already carries
-the harder edge — to suffer the consequences.)*
+suffer the consequences."
 
 John states the mechanism plainly. "If that which ye have heard from the
 beginning shall remain in you," he writes, "ye also shall continue in the Son,

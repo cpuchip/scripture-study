@@ -407,7 +407,7 @@ The 1896 Utah Constitution required:
 | φαρμακείᾳ | pharmakeia | "the use of medicine, drugs or spells" |
 | — | Strong's 5331 | "drug-related sorcery, like the practice of magical-arts" |
 
-**Webster 1828:** SORCERY = "Magic; enchantment; witchcraft; divination by the assistance of evil spirits, or the power of commanding evil spirits" *(requoted 2026-06-12 — the earlier "or supposed assistance" wording was the 1913 edition's)*
+**Webster 1828:** SORCERY = "Magic; enchantment; witchcraft; divination by the assistance of evil spirits, or the power of commanding evil spirits"
 
 **Webster 1828:** PHARMACOLOGY = "The science or knowledge of drugs, or the art of preparing medicines"
 

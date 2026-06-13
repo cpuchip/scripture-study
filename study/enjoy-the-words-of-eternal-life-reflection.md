@@ -160,7 +160,7 @@ If the words of eternal life are meant to be enjoyed *in this world* (Moses 6:59
 D&C 84:57 specifies: "not only to say, but to do." Reading the Book of Mormon is not enough. The question is whether you are *living* what you read. Are the words changing how you treat your spouse, your children, your neighbors? Are they making you more patient, more honest, more generous?
 
 ### 2. Give Diligent Heed
-D&C 84:43's word is "diligent." Webster 1828: "steady in application to business; constant in effort or exertion to accomplish what is undertaken" — persistence, carefulness, unwavering attention. *(Corrected 2026-06-12: an earlier version attributed a Hebrew word "sharatsah" to this concept; no such lexeme exists, and D&C 84 is English revelation with no Hebrew behind it.)* This isn't casual morning reading. This is Nephi's model: delight, ponder, write. It's the difference between glancing at scripture and *dwelling* in it.
+D&C 84:43's word is "diligent." Webster 1828: "steady in application to business; constant in effort or exertion to accomplish what is undertaken" — persistence, carefulness, unwavering attention. This isn't casual morning reading. This is Nephi's model: delight, ponder, write. It's the difference between glancing at scripture and *dwelling* in it.
 
 ### 3. Teach Freely
 Moses 6:58 says "teach these things freely unto your children." Joy D. Jones reminds us: conversion doesn't happen accidentally. Have the essential conversations. Don't wait for your children to ask. Create the environment where the words of eternal life are a normal, joyful part of daily life.

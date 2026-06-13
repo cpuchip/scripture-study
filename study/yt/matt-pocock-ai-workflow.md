@@ -131,7 +131,7 @@ Pocock's workflow is unilateral: human plans, AI executes. There's no concept of
 
 ### 2. No Progressive Trust / Stewardship Levels
 
-Pocock doesn't structure agent autonomy dynamically. *(Corrected 2026-06-12 — an earlier version said he mentions "faithful over a few things" in passing; the phrase appears nowhere in either transcript.)* His Sandcastle uses static role assignments. Our stewardship levels (task → feature → domain → architecture) with earned trust is richer and more resilient. An agent that proves reliable with small tasks earns larger scope. One that breaks trust gets narrowed.
+Pocock doesn't structure agent autonomy dynamically. His Sandcastle uses static role assignments. Our stewardship levels (task → feature → domain → architecture) with earned trust is richer and more resilient. An agent that proves reliable with small tasks earns larger scope. One that breaks trust gets narrowed.
 
 ### 3. No Intent Engineering at Scale
 

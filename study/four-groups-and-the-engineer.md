@@ -108,8 +108,6 @@ The first is *easiness and willingness to believe.* "The Lord began to pour out 
 
 The second is *walking circumspectly before God* ([Helaman 15:5](../gospel-library/eng/scriptures/bofm/hel/15.md)). Circumspectly (Webster 1828: "cautiously; with watchfulness every way; with attention to guard against surprise or danger"). They watched their step. They did not assume they were safe. They walked carefully, as people who knew what they could lose.
 
-*(Requoted 2026-06-12 — both Webster glosses above were the 1913 edition's, not the 1828. The 1913 reads easiness as "freedom from emotion; compliance; disposition to yield without opposition" and circumspectly as "cautiously; warily"; the genuine 1828 entries are quoted here. The yielding-without-opposition sense the study leans on is real — it sits in the 1828's definition 2 of *easiness* — and the 1828's *circumspectly* is sharper for the point: "with watchfulness every way.")*
-
 These are not heroic virtues. They are postures of humility under the discipline. The Lamanite who walked circumspectly was not striving for greatness; they were watching their step. The Lamanite who had easiness to believe was not having dramatic spiritual experiences; they were simply not resisting the rod.
 
 For the engineer: the junior engineer who is new to the discipline and has not yet acquired the pride of having mastered it can outpace the senior engineer who learned the discipline first but has hardened. The junior watches their step. They expect to need the spec because they know they do not know what they are doing. They do not assume they have transcended the watching. They walk circumspectly.

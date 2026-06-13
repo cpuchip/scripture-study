@@ -104,8 +104,6 @@ The [Atonement study](./truth-atonement.md) emphasized that Christ is not an add
 > "There is no amorphous entity called 'the Atonement' upon which we may call for succor, healing, forgiveness, or power. Jesus Christ is the source. Sacred terms such as *Atonement* and *Resurrection* describe what the Savior did, according to the Father's plan, so that we may live with hope in this life and gain eternal life in the world to come. The Savior's atoning sacrifice — the central act of all human history — is best understood and appreciated when we expressly and clearly connect it to Him."
 > — [President Nelson, "Drawing the Power of Jesus Christ into Our Lives," April 2017](../gospel-library/eng/general-conference/2017/04/drawing-the-power-of-jesus-christ-into-our-lives.md)
 
-*Correction (2026-06-12): an earlier version of this study ended the quote with "...describe what the Savior did... but Jesus Christ did it" — that final clause is not in the talk. President Nelson's actual continuation, restored above, carries the same point in his own words.*
-
 And more sharply:
 
 > "It is doctrinally incomplete to speak of the Lord's atoning sacrifice by shortcut phrases, such as 'the Atonement' or 'the enabling power of the Atonement'... These expressions present a real risk of misdirecting faith by treating the *event* as if *it* had living existence and capabilities independent of our Heavenly Father and His Son, Jesus Christ."

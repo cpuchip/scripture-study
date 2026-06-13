@@ -35,8 +35,6 @@ President Johnson's observation lands like a hammer:
 
 > "In the parable all ten of the virgins were in the right location, awaiting the bridegroom. Every one of them came with a lamp."
 
-*(Requoted 2026-06-12 — an earlier draft carried an invented version of this quote, "all ten virgins chose the covenant path…"; her real words are above. See the corrected [ten-virgins-parable.md](ten-virgins-parable.md).)*
-
 This is the Nephites. All of them. Every person in Helaman 3 through 3 Nephi 7 is a covenant member — part of the people of Nephi, recipients of the law of Moses, heirs to the promises of Lehi and Nephi. They all had lamps. They were all in the right location, awaiting Him.
 
 And the Lamanites who converted? They also chose the covenant path. They also carried lamps. They also went forth.
@@ -327,8 +325,6 @@ President Benson said the Nephite record just before the Savior's visit "reveals
 > — [Elder David A. Bednar, "Converted unto the Lord," October 2012](../gospel-library/eng/general-conference/2012/10/converted-unto-the-lord.md)
 
 And President Johnson's real April 2025 question presses it home: "All will be physically and emotionally healed in the Resurrection. But will you choose *now* to be whole in Him?"
-
-*(Requoted 2026-06-12 — an earlier draft attributed an invented question block to President Johnson; her real words and Bednar's real distillation are above.)*
 
 The Nephites knew the gospel was true. They had lamps. They burned bright after every deliverance, every sign, every prophetic warning.
 

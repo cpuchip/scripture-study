@@ -65,8 +65,6 @@ The modern ear hears "enjoy" as something light — *enjoy your meal, enjoy the 
 > 1. To feel or perceive with pleasure; to take pleasure or satisfaction in the possession or experience of.
 > 3. **To have, possess and use with satisfaction; to have, hold or occupy**, as a good or profitable thing, or as something desirable. *"That the children of Israel may enjoy every man the inheritance of his fathers."* — Num. 36:8. *"The land shall enjoy her sabbaths."* — Lev. 26:34.
 
-*(Requoted 2026-06-12 — the earlier definitions here were the 1913 edition's, including its Hebrews 11:25 citation. The genuine 1828 cites Numbers 36:8 and Leviticus 26:34.)*
-
 Definition 3 is the one that matters here. "Enjoy" in 1828 doesn't just mean *take pleasure in*. It means **to have, possess and use — to hold**. There is ownership in this word. Occupation. Active benefit.
 
 And the scriptural examples Webster chose are striking: Numbers 36:8 — that the children of Israel may "enjoy every man the inheritance of his fathers" — and Leviticus 26:34, "the land shall enjoy her sabbaths." To enjoy is to come into an inheritance and actually hold it. The words of eternal life are an inheritance of exactly that kind — not admired from a distance, but possessed.

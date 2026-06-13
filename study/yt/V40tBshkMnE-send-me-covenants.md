@@ -44,15 +44,11 @@ Todd doesn't name the three patterns by the brother-of-jared shape, but the arch
 
 The study's Section VI made the point in its own words: "Bringing the Master something He didn't ask for does not, by itself, tear veils. What tore the veil was faith." Todd reaches the same conclusion from the other direction — the breakthrough is never the steward's mechanism but the Lord's, because "you can't even soften your own heart." Same conclusion, independent witness.
 
-*(Corrected 2026-06-12 — an earlier version attributed the "Bringing the Master something He didn't ask for…" sentence to Todd. That sentence is the [brother-of-jared](../brother-of-jared-three-problems.md) study's own Section VI prose; Todd never discusses the veil-tearing in those terms. His genuine parallel is the interior-softening thesis quoted here, which he does say verbatim.)*
-
 ### 3. [refinement-stewardship-and-hope.md](../refinement-stewardship-and-hope.md) — the synthesis confirmed
 
 Todd's covenant-as-entropy-reversal is the same picture as the refinement triplet: spirit-matter restructured under law to abide higher glory. The study said sanctification "is not an abstract forensic transaction. It is a physical reality." Todd says the same: "your physical body is which is a temple as well and your spirit and all of these things come into sanctified unity which gives you power in the priesthood. That's where power in the priesthood directs — your sanctified unity with God and your body."
 
 The triplet (Refinement / Stewardship / Hope) gets reinforced specifically at the hope axis. The refinement study said the steward's part is to "rest in this established grace, and sing praises" because the wind was already blowing — the posture Ether records of the brother of Jared, who "did sing praises unto the Lord… all the day long" ([Ether 6:9](../../gospel-library/eng/scriptures/bofm/ether/6.md)). Todd lands on the same posture from his own angle: the resting/singing life *is* the prayer life — "your prayer is your platform" — from which all daily work flows.
-
-*(Corrected 2026-06-12 — an earlier version attributed the Ether 6:9 singing-praises text to Todd as something he said. It is scripture; Todd never quotes it (he names the brother of Jared once, only in a list of mountain-theophanies). His genuine parallel is "your prayer is your platform," quoted here. The refinement-study phrase was also realigned to its source wording, "rest… and sing.")*
 
 ### 4. [mechanics-of-refinement.md](../mechanics-of-refinement.md) — the physics, restated by a different voice
 
