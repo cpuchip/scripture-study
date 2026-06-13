@@ -3030,6 +3030,34 @@ LINKS ×3. No markdown links.
   of the Lamb was John" — all EXACT.
 - **Webster 1913-as-1828 running count: 129 → 130 (CONDESCENSION).**
 
+### #267-271 `1-nephi 15-19` — bom-walk LINKS (journey arc) — ALL CLEAN
+- **15** (seek-and-find payoff): v8-9 "Have ye inquired of the Lord?"
+  / "We have not; for the Lord maketh no such thing known unto us,"
+  v11 "ask me in faith, believing that ye shall receive, with
+  diligence," v27 "he beheld not the filthiness of the water," v36
+  "the greatest of all the gifts of God" — all EXACT.
+- **16** (Liahona / broken bow): v2 "the guilty taketh the truth to
+  be hard, for it cutteth them to the very center," v10 the brass ball
+  + spindles, v29 "by small means the Lord can bring about great
+  things" — all EXACT. (Nahom etymology correctly attributed to the
+  footnote.)
+- **17** (build a ship): v35 "the Lord esteemeth all flesh in one; he
+  that is righteous is favored of God," v41 "the simpleness of the
+  way, or the easiness of it, there were many who perished," v45 "ye
+  were past feeling… he has spoken unto you like unto the voice of
+  thunder," v55 "I am thy brother… honor thy father and thy mother" —
+  all EXACT.
+- **18** (the voyage): v9 "they did forget by what power they had been
+  brought thither," v16 "I did praise him all the day long; and I did
+  not murmur," v20 "there was nothing save it were the power of God…
+  could soften their hearts" — all EXACT.
+- **19** (liken all scriptures): v10 the three lost prophets attributed
+  exactly right — Zenock=lifted up, Neum=crucified, Zenos=buried; v12
+  "The God of nature suffers"; v23 "I did liken all scriptures unto
+  us, that it might be for our profit and learning" — all EXACT.
+- A long clean run of derivative chapter notes; the bom-walk's quote
+  discipline holds verbatim. Five CLEAN.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)

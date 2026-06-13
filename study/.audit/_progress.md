@@ -264,11 +264,11 @@ Already done out-of-band: `study/morm-8-three-glories-reading.md` (2026-06-09).
 - [x] 2026-06-01 `study/bom-walk/studies/1ne11_condescension-of-god.md` **T1** — REQUOTE (★ Webster **CONDESCENSION = word #130** 1913-as-1828: §II+§VIII gave "voluntary descent from one's rank… interact with an inferior" = the 1913; genuine 1828 = "Voluntary descent from rank, dignity or just claims; relinquishment of strict right; submission to inferiors…" — requoted both + dated note; genuine entry BETTER ("relinquishment of strict right" = Christ laying down a divine prerogative). All ~18 scripture quotes EXACT (1 Ne 11 vv6-35 + Alma 7:12); all 8 links resolve)
 - [x] 2026-06-01 `study/bom-walk/1-nephi/1-nephi-13.md` **LINKS** — CLEAN (the book's mission; v40-41 "establish the truth of the first… one God and one Shepherd," v26 plain-and-precious removed, v15 complexion thread all EXACT)
 - [x] 2026-06-01 `study/bom-walk/1-nephi/1-nephi-14.md` **LINKS** — CLEAN (two churches only; v10 "save two churches only… the whore of all the earth," v14 "armed with righteousness," v27 "the apostle of the Lamb was John" all EXACT)
-- [ ] 2026-06-01 `study/bom-walk/1-nephi/1-nephi-15.md` **LINKS**
-- [ ] 2026-06-01 `study/bom-walk/1-nephi/1-nephi-16.md` **LINKS**
-- [ ] 2026-06-01 `study/bom-walk/1-nephi/1-nephi-17.md` **LINKS**
-- [ ] 2026-06-01 `study/bom-walk/1-nephi/1-nephi-18.md` **LINKS**
-- [ ] 2026-06-01 `study/bom-walk/1-nephi/1-nephi-19.md` **LINKS**
+- [x] 2026-06-01 `study/bom-walk/1-nephi/1-nephi-15.md` **LINKS** — CLEAN (seek-and-find payoff; v8-9 "Have ye inquired of the Lord?", v11 ask-in-faith, v27 "beheld not the filthiness," v36 "greatest of all the gifts of God" all EXACT)
+- [x] 2026-06-01 `study/bom-walk/1-nephi/1-nephi-16.md` **LINKS** — CLEAN (Liahona/broken bow; v2 "the guilty taketh the truth to be hard," v10 the brass ball, v29 "by small means the Lord can bring about great things" all EXACT)
+- [x] 2026-06-01 `study/bom-walk/1-nephi/1-nephi-17.md` **LINKS** — CLEAN (build a ship; v35 "esteemeth all flesh in one," v41 "the easiness of it… many who perished," v45 "ye were past feeling… voice of thunder," v55 "younger brother… honor thy father" all EXACT)
+- [x] 2026-06-01 `study/bom-walk/1-nephi/1-nephi-18.md` **LINKS** — CLEAN (the voyage; v9 "forget by what power," v16 "praise him all the day long; and I did not murmur," v20 "the power of God… could soften their hearts" all EXACT)
+- [x] 2026-06-01 `study/bom-walk/1-nephi/1-nephi-19.md` **LINKS** — CLEAN (liken all scriptures; v10 Zenock/Neum/Zenos correctly attributed [lifted up/crucified/buried], v12 "The God of nature suffers," v23 "I did liken all scriptures unto us… for our profit and learning" all EXACT)
 - [ ] 2026-06-01 `study/bom-walk/1-nephi/1-nephi-20.md` **LINKS**
 - [ ] 2026-06-01 `study/bom-walk/1-nephi/1-nephi-12.md` **LINKS**
 - [ ] 2026-06-01 `study/bom-walk/1-nephi/1-nephi-22.md` **LINKS**
