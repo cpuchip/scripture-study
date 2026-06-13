@@ -250,9 +250,9 @@ Already done out-of-band: `study/morm-8-three-glories-reading.md` (2026-06-09).
 - [x] 2026-06-01 `study/bom-walk/2-nephi/2-nephi-26.md` **LINKS** — CLEAN (flagship 26:33 "all are alike unto God, both Jew and Gentile" + priestcraft def v29 + v20/24/25/31 all EXACT; "Race and the Priesthood" 2013 essay correctly dated)
 - [x] 2026-06-01 `study/bom-walk/2-nephi/2-nephi-27.md` **T2** — CLEAN (sealed-book expansion of Isaiah 29; v18/19/20/23/25/26/27 potter-clay all EXACT; expansion-not-transcription textual note correctly handled; Anthon JS-H 1:64-65 named not quoted)
 - [x] 2026-06-01 `study/bom-walk/2-nephi/2-nephi-28.md` **LINKS** — CLEAN ("all is well in Zion" + devil's three strategies; v13/20/21/30/31 all EXACT, incl. "leadeth them away carefully down to hell")
-- [ ] 2026-06-01 `study/bom-walk/2-nephi/2-nephi-30.md` **LINKS**
-- [ ] 2026-06-01 `study/bom-walk/2-nephi/2-nephi-31.md` **LINKS**
-- [ ] 2026-06-01 `study/bom-walk/2-nephi/2-nephi-32.md` **LINKS**
+- [x] 2026-06-01 `study/bom-walk/2-nephi/2-nephi-30.md` **LINKS** — CLEAN (covenant-by-repentance; v2/6/15 EXACT, current text reads "pure"; ★ the white→pure edition-history fact VERIFIED via web — 1830 "white" → 1840 Joseph Smith "pure" → lost in European-based editions → restored 1981, retained 2013; FAIR/Skousen/UPI-1981/EoM all confirm)
+- [x] 2026-06-01 `study/bom-walk/2-nephi/2-nephi-31.md` **LINKS** — CLEAN (doctrine of Christ keystone; all five anchors v15/17/19/20/21 character-for-character EXACT — "endure to the end," the gate, "is all done? Nay," press-forward triad + "feasting upon the word," "this is the way")
+- [x] 2026-06-01 `study/bom-walk/2-nephi/2-nephi-32.md` **LINKS** — CLEAN (the two guides; v3/5/7/8/9 EXACT — "words of Christ will tell you all things," Nephi's lament "they will not search knowledge," "the evil spirit teacheth him that he must not pray," consecrate-thy-performance)
 - [ ] 2026-06-01 `study/bom-walk/1-nephi/1-nephi-08.md` **LINKS**
 - [ ] 2026-06-01 `study/bom-walk/2-nephi/2-nephi-11.md` **LINKS**
 - [ ] 2026-06-01 `study/bom-walk/2-nephi/2-nephi-10.md` **LINKS**

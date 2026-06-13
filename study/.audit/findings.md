@@ -2897,6 +2897,36 @@ LINKS ×3. No markdown links.
 - No markdown links in any of these derivative chapter notes (plain
   -text scripture refs only), so no link-rot to check. Five CLEAN.
 
+### #253-255 `2-nephi-30…32` — bom-walk LINKS — ALL CLEAN
+- **2-nephi-30:** quotes exact (v2 covenant-by-repentance, v6 "scales
+  of darkness… a pure and a delightsome people," v15 "the earth shall
+  be full of the knowledge of the Lord"). ★ The load-bearing
+  textual-history claim — the **white→pure edition change** — was
+  WEB-VERIFIED (the walk's "verify dates like quotes" standard): 1830
+  1st ed. "white and delightsome" → **1840 Joseph Smith changed it to
+  "pure"** (Royal Skousen: "a conscious one… probably made by Joseph
+  Smith") → the change was lost because the 1879/1920 editions
+  descended from the 1837-based European editions → **restored in the
+  1981 edition**, retained in 2013. FAIR, LDS Living/Book of Mormon
+  Central, the 1981 UPI wire story, and the Encyclopedia of Mormonism
+  all confirm. The note's framing ("Joseph changed white→pure in 1840,
+  restored 1981") is accurate; it correctly belongs in the with-Michael
+  2 Ne 5:21 study alongside 26:33.
+- **2-nephi-31 (doctrine of Christ keystone):** all five anchors EXACT
+  — v15 "He that endureth to the end, the same shall be saved"; v17
+  the gate (repentance + baptism + Holy Ghost); v19 "I would ask if
+  all is done? Behold, I say unto you, Nay… relying wholly upon the
+  merits of him who is mighty to save"; v20 the press-forward triad +
+  "feasting upon the word of Christ"; v21 "this is the way… none other
+  way nor name."
+- **2-nephi-32:** v3 "the words of Christ will tell you all things,"
+  v5 the Spirit "will show unto you all things," v7 Nephi's lament
+  ("the Spirit stoppeth mine utterance… they will not search
+  knowledge… even as plain as word can be"), v8 "the evil spirit…
+  teacheth him that he must not pray," v9 consecrate-thy-performance —
+  all EXACT.
+- No markdown links in any (plain-text refs). Three CLEAN.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
