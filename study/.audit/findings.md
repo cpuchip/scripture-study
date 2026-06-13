@@ -2539,6 +2539,25 @@ critical-analysis corrections.
     branches not dispensations; D&C 77's key interprets Rev 1-11 and
     STOPS (so "Rev 13-16 = our day" is flagged overlay). Both CLEAN.
 
+### study/freedom/provenance/04-us-constitutional-history.md (2026-05-31) — CLEAN
+SAMPLE. Constitutional-history research log (pg-ai-stewards
+deep_research, maturity=verified, self-corrected during review).
+★ Independently confirmed the two load-bearing amendment dates
+against the National Archives THIS session: 16th Amendment "Passed
+by Congress July 2, 1909; Ratified February 3, 1913" (certified Feb
+25, 1913 by Philander C. Knox) and 17th Amendment "Passed by
+Congress May 13, 1912; Ratified April 8, 1913" — both EXACT to the
+file. The 16th Amendment text quote ("lay and collect taxes on
+incomes, from whatever source derived, without apportionment…") is
+verbatim. SCOTUS citations standard and correct (Lochner 198 U.S.
+45 / 1905, Schechter 295 U.S. 495 / 1935, NLRB v. Jones & Laughlin
+301 U.S. 1 / 1937). The file is disciplined: three-tier labeling,
+BOTH interpretive views (Barnett "loss of liberty" vs the
+majoritarian-restoration counter), honest open questions, and a
+"confirm against the opinion bodies before publication" caveat on
+the Justia-syllabi quotes. The "switch in time" phrase correctly
+attributed to journalists, not the Court. CLEAN.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)

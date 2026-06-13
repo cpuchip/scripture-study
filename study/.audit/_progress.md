@@ -215,7 +215,7 @@ Already done out-of-band: `study/morm-8-three-glories-reading.md` (2026-06-09).
 - [x] 2026-06-01 `study/freedom/99-synthesis.md` **T2** — ★ COMPEL (#127) + SACRIFICE (#128) 1913-as-1828 requoted; ~40 scripture + Oaks/Bednar/JFS quotes ALL verbatim (publication-bound master study)
 - [x] 2026-06-01 `study/freedom/provenance/02-blueprint-and-timelines.md` **SAMPLE** — CLEAN (research log; scripture verbatim, honest weakest-parallels)
 - [x] 2026-06-01 `study/freedom/provenance/03-nephi-john-revelation.md` **SAMPLE** — CLEAN (research log; scripture verbatim, D&C 77:5 corrections sound)
-- [ ] 2026-06-01 `study/freedom/provenance/04-us-constitutional-history.md` **SAMPLE**
+- [x] 2026-06-01 `study/freedom/provenance/04-us-constitutional-history.md` **SAMPLE** — CLEAN (16th/17th Amendment dates confirmed vs National Archives this session; SCOTUS cites correct)
 - [ ] 2026-06-01 `study/freedom/provenance/05-dc87-and-the-land.md` **SAMPLE**
 - [ ] 2026-06-01 `study/freedom/provenance/06-signs-and-eclipses.md` **SAMPLE**
 - [ ] 2026-06-01 `study/freedom/provenance/08-destruction-and-sorting.md` **SAMPLE**
