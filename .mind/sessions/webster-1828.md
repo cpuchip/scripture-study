@@ -3,7 +3,7 @@ lane: webster-1828
 session_id: afac9c41-1980-4bea-8bc5-a101b39a8557
 status: active
 started: 2026-06-09T21:30:00
-last_active: 2026-06-12T15:38:52
+last_active: 2026-06-13T01:30:00
 ---
 
 ## Working on
@@ -177,6 +177,35 @@ last_active: 2026-06-12T15:38:52
   Oct→Apr 2015 mis-date. bom-walk chapter notes (1ne 01-09 +
   infra/graph/journal) mostly CLEAN. NEEDS-MICHAEL queue: 1 item
   (CONSTRAINED §II). NEXT: #213 bom-walk 2-nephi-12 LINKS.
+- UPDATE 10: ★ 241/469 (TRUE [x] checked-count; ~51%). Post-compact
+  fresh session (renamed webster-1828; old typo lane folded in).
+  Files since UPDATE 9 (all CLEAN — a strong clean stretch, zero
+  corrections, zero new Webster words; count stays 129):
+  ★ **is-jesus-christ-god.md (FULL)** — model study, all 26 quotes
+  character-for-character EXACT as its provenance note claims
+  (Ether 3 / Moses 1 / John 1,8,14 / D&C 19,130 / Mosiah 15 / Alma
+  11 / Isaiah 9,6); D&C 19:18 "shrink" here = the same verb anchoring
+  the 1ne4 CONSTRAINED §II rewrite (independent confirmation). Then
+  the **2 Nephi remainder + 1 Nephi vision-cluster start**: chs 24
+  (Isaiah 14, last block chapter — variants v2/v12/v19/v25 confirmed),
+  25 (25:23+25:26 cornerstones), 26 (26:33 "all are alike"), 27
+  (sealed-book Isa-29 expansion), 28 ("all is well"), 30, 31 (doctrine
+  of Christ), 32, plus 1ne8 (Lehi's dream), 2ne 11/10/29/08 (Isaiah
+  51 variants it→he / things→sons / +save-these-two), 1ne10, 2ne9.
+  ★ COUNTED-CLAIMS verified EXACT: 2 Ne 11 "my soul delighteth" = 5;
+  2 Ne 9 "wo unto" = 10 (vv 27,30-38). ★ 2 Ne 30 white→pure
+  edition-history (1830 white → 1840 Joseph "pure" → restored 1981)
+  WEB-VERIFIED (FAIR/Skousen/UPI-1981/EoM). The Isaiah block (chs
+  12-24 = Isaiah 2-14) is now COMPLETE — meta-finding holds (variants
+  cluster in judgment chapters, tilt toward mercy).
+  ★ MICHAEL'S INBOX (3 post-walk asks captured in cpuchip-republish.md
+  → POST-WALK CHECKLIST): (1) run ./scripts/publish/publish.exe to
+  regen public/; (2) cpuchip.net parity pass (11 studies, send-me-
+  covenants first); (3) leave a note for the scripture-book agent to
+  check ITS book quotes (don't step on its stewardship). Queue STILL
+  EMPTY. Commit numbers switched line-based→true-checked-count this
+  update (~21 high before). NEXT: #263 1-nephi-11 T1 + condescension
+  T1 + 1ne 13/14.
 - ✅ OCR repair SHIPPED + live-verified (1336c8ce); walk plan RATIFIED
   (.spec/proposals/study-correctness-walk.md)
 
