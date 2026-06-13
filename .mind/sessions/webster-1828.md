@@ -3,7 +3,7 @@ lane: webster-1828
 session_id: afac9c41-1980-4bea-8bc5-a101b39a8557
 status: active
 started: 2026-06-09T21:30:00
-last_active: 2026-06-13T07:00:00
+last_active: 2026-06-13T03:05:00
 ---
 
 ## Working on
@@ -266,6 +266,24 @@ last_active: 2026-06-13T07:00:00
   exact, flagged for Michael + the Spirit (same complex as 2 Ne 5:21,
   applied to the Nephite seed). Webster count holds 132. NEXT: Mosiah
   19-29 + Alma 1-46 + Jacob/Enos/Jarom/Omni + remaining studies (~98).
+- UPDATE 14: **427/469** (371 → 427, **56 more files**, all committed +
+  pushed, ibeco 200 after every push). The whole front of Alma is now
+  verified end-to-end: the rest of Mosiah (24), Jarom, and Alma 2-41 in
+  cursor order — the sons-of-Mosiah grievance-cure arc (25-27, 29), Korihor
+  ("all things denote there is a God," 30), the Zoramite/seed-of-faith block
+  (31-35), Alma's chiastic conversion to Helaman (36) + "by small and simple
+  things" / "counsel with the Lord" (37), the three sons' charges (38-39),
+  and the resurrection/restoration doctrine (40-41, "wickedness never was
+  happiness" char-perfect). ★ SECOND bin-4 logged-not-resolved: **Alma 3:6**
+  "the skins of the Lamanites were dark… a curse because of their transgression
+  and their rebellion" — verified char-perfect; the note logs the in-text
+  reframings (Amlicites — Nephites by descent — "marked themselves," line drawn
+  at *belief* not blood, mark quarantines the *tradition*, curse removable on
+  repentance) and flags the literal-skin question for Michael + the Spirit,
+  pronouncing nothing. Joins the standing 2 Ne 5:21 / Morm 5:15 datapoints.
+  Still ZERO new REQUOTE corrections in any chapter note; Webster holds 132.
+  NEXT: Alma 42-46 + 22-24, 31, 5-21 + 2 studies + the non-bom tail (daily-
+  digests, freedom, morm-8 readings, preside.md) — **42 files remain**.
 - ✅ OCR repair SHIPPED + live-verified (1336c8ce); walk plan RATIFIED
   (.spec/proposals/study-correctness-walk.md)
 
