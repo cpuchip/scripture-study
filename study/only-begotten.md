@@ -6,17 +6,19 @@
 
 ## I. The Title Itself — What Does "Only Begotten" Mean?
 
-The title "Only Begotten" is a translation of the Greek *monogenes* — *mono* (one, alone) + *genos* (kind, race, offspring). It appears seven times in the New Testament, always referring to Christ except one use for Isaac in Hebrews 11:17. The Hebrew background doesn't have a single-word equivalent; the concept is carried through narrative — the son uniquely set apart, uniquely loved, uniquely given.
+The title "Only Begotten" is a translation of the Greek *monogenes* — *mono* (one, alone) + *genos* (kind, race, offspring). It appears nine times in the New Testament — five of Christ ([John 1:14, 18](../gospel-library/eng/scriptures/nt/john/1.md); [3:16, 18](../gospel-library/eng/scriptures/nt/john/3.md); [1 John 4:9](../gospel-library/eng/scriptures/nt/1-jn/4.md)), once of Isaac ([Hebrews 11:17](../gospel-library/eng/scriptures/nt/heb/11.md)), and three times in Luke of an ordinary only child. *(Corrected 2026-06-12 — an earlier version said seven times, always of Christ except Isaac.)* The Hebrew background doesn't have a single-word equivalent; the concept is carried through narrative — the son uniquely set apart, uniquely loved, uniquely given.
 
-Webster's 1828 dictionary gives three definitions for *only*:
+Webster's 1828 dictionary gives three definitions for *only* as an adjective:
 
-> 1. One alone; single.
-> 2. Alone in its class; by itself; not associated with others of the same class or kind.
-> 3. Hence, figuratively: Alone, by reason of superiority; **preëminent; chief.**
+> 1. Single; one along; as, John was the only man present.
+> 2. This and no other. This is an only child.
+> 3. This above all others. He is the only man for music.
 
-The third definition is the one that matters most theologically. In Restoration-era English, "only" didn't merely mean numerically singular — it could mean *preëminent*, standing above all others in a category. The Only Begotten is not just the one and only in a count; he is the one who towers above all others in his class.
+*(Requoted 2026-06-12 — the earlier definitions were the 1913 edition's. Two notes: the "along" in sense 1 is the digitization's, flagged for the facsimile pass; and the genuine 1828 hands this study a gift — Noah's adverb entry illustrates its third sense, "Singly; without more," with the very word: "as only-begotten.")*
 
-*Beget* in 1828: "To procreate, as a father or sire; to generate — commonly said of the father." Also: "To produce as an effect; to cause to exist."
+The third definition is the one that matters most theologically. In Restoration-era English, "only" didn't merely mean numerically singular — it could mean *this above all others*, standing apart in a category. The Only Begotten is not just the one and only in a count; he is the one who stands above all others in his class.
+
+*Beget* in 1828: "To procreate, as a father or sire; to generate; as, to beget a son." Also: "To produce, as an effect; to cause to exist; to generate; as, luxury begets vice." *(Requoted 2026-06-12 — the earlier "commonly said of the father" tail was the 1913 edition's.)*
 
 The title is therefore a claim about origin and relationship, spoken from the Father's side. Not "the one who was born" but "the one I begat" — active voice, the Father's act, a relationship declared from above rather than merely observed from below.
 
@@ -32,13 +34,13 @@ The word "only" in relation to a son appears for the first time in [Genesis 22:2
 
 The word "only" is repeated three times in this chapter — in the command (v.2), when the angel stays Abraham's hand (v.12), and in the Lord's oath of blessing (v.16). The LDS footnote on "only" cross-references it directly to [John 3:16](../gospel-library/eng/scriptures/nt/john/3.md) and [Jacob 4:5](../gospel-library/eng/scriptures/bofm/jacob/4.md). The typology is not read into the text by later interpreters; it is embedded in the cross-reference apparatus of the scriptures themselves.
 
-Isaac carries the wood of the sacrifice on his back (v.6). The footnote on that verse cross-references [John 19:17](../gospel-library/eng/scriptures/nt/john/19.md) — Christ carrying the cross. Abraham tells his servants, "I and the lad will go yonder and worship, and come again to you" (v.5) — he anticipates resurrection even before the ram appears. Hebrews 11:19 says Abraham "accounted that God was able to raise him up, even from the dead; from whence also he received him in a figure."
+Isaac carries the wood of the sacrifice on his back (v.6). The footnote on that verse cross-references [John 19:17](../gospel-library/eng/scriptures/nt/john/19.md) — Christ carrying the cross. Abraham tells his servants, "I and the lad will go yonder and worship, and come again to you" (v.5) — he anticipates resurrection even before the ram appears. Hebrews 11:19 says Abraham was "accounting that God was able to raise him up, even from the dead; from whence also he received him in a figure."
 
 God asks of Abraham exactly what he will later give himself: an only son, uniquely loved, laid on wood.
 
 ### Moses 1 — The Density Center
 
-No chapter in all of scripture uses the title "Only Begotten" more densely than [Moses 1](../gospel-library/eng/scriptures/pgp/moses/1.md). It appears eight times:
+No chapter in all of scripture uses the title "Only Begotten" more densely than [Moses 1](../gospel-library/eng/scriptures/pgp/moses/1.md). It appears nine times across eight verses (twice in v.6):
 
 | Verse | Usage |
 |-------|-------|
@@ -147,7 +149,7 @@ After showing him this, the angel asks again: "Knowest thou the meaning of the t
 
 The sequence is the argument: tree = love = the Son given. The angel doesn't explain this connection; he simply shows the virgin and child, then asks what the tree means. Nephi understands. The tree of life, which Lehi's family had been seeking, is identified with the most desirable thing in the universe — which is the Father giving the Only Begotten.
 
-Webster 1828 on *condescension*: "Voluntary descent from one's rank or dignity in intercourse with an inferior; courtesy toward inferiors." The condescension is not a humiliation — it is a sovereign choice to descend. The Only Begotten comes down willingly.
+Webster 1828 on *condescension*: "Voluntary descent from rank, dignity or just claims; relinquishment of strict right; submission to inferiors in granting requests or performing acts which strict justice does not require." *(Requoted 2026-06-12 — the earlier wording was the 1913 edition's; the genuine entry is stronger here.)* The condescension is not a humiliation — it is a sovereign choice to descend, a relinquishment of strict right. The Only Begotten comes down willingly.
 
 ### Alma 7 — Dual Parentage
 
@@ -163,7 +165,7 @@ Jacob names the Isaac typology directly:
 
 > "And it was accounted unto Abraham in the wilderness to be obedient unto the commands of God in offering up his son Isaac, which is a similitude of God and his Only Begotten Son." ([Jacob 4:5](../gospel-library/eng/scriptures/bofm/jacob/4.md))
 
-Webster 1828 on *similitude*: "That which is like or similar; a representation, semblance, or copy; a facsimile." A similitude is not just a comparison — it is a *designed copy*, a God-constructed representation. Abraham and Isaac did not merely remind later readers of the Father and Son; they were arranged to do so. The binding of Isaac is sacred theater, written in covenant history by the Author who knew what was coming.
+Webster 1828 on *similitude*: "Likeness; resemblance; likeness in nature, qualities of appearance; as similitude of substance" — and the genuine entry's own first example is creation language itself: "Let us make man in our image, man in our similitude." *(Requoted 2026-06-12 — the earlier "representation, semblance, or copy; a facsimile" was the 1913 edition's.)* The likeness Jacob names is not a resemblance noticed after the fact. Abraham and Isaac did not merely remind later readers of the Father and Son; they were arranged to do so. The binding of Isaac is sacred theater, written in covenant history by the Author who knew what was coming.
 
 Jacob follows in v.11: "Be reconciled unto him through the atonement of Christ, his Only Begotten Son, and ye may obtain a resurrection." The path to reconciliation — and to resurrection — runs through the Only Begotten.
 
