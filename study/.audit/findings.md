@@ -1803,6 +1803,18 @@ EXACT), Matt 6:22/18:16, D&C 88:67-68/93:33-34/5:15, Ether 5:4,
 Deut 19:15, 2 Ne 31:20, LoF 6:4 + 7:9/16 (hinge, prototype,
 purify) all exact against books/lecture-on-faith.
 
+### study/tree-of-life-and-the-chain.md (2026-04-25) — SHED realigned; one fragment fix
+T1+FULL. SHED was a reordered blend with a 1913-style "as a fluid"
+gloss — requoted to genuine ("to pour out; to effuse; to spill; to
+suffer to flow out"), whose own example is Matthew 26:28, the
+sacrament blood — a gift for a study whose fruit is Christ. Alma
+32:27 fragment skipped "if ye can" unmarked — restored. All other
+quotes verbatim (Rom 5:1-5 incl. the "which is" this file already
+had right, 1 Ne 8:11-12 / 11:21-25, Alma 32:28/41/42, John
+6:35/4:14, Moro 7:47, 1 Jn 4:8, 1 Cor 13:13); the Preach-My-Gospel
+ch. 6 adjacency claim verified (alma/32 ×6 + rom/5 links in the
+chapter).
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
