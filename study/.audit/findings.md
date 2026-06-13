@@ -3860,6 +3860,29 @@ judges, and Abinadi before the priests. Verified by direct grep.
   be valued even as a garment in a hot furnace," v30 "ye know that I speak
   the truth; and you ought to tremble before God" — EXACT.
 
+### Mosiah 9-11 + 2 Nephi 33 (2026-06-13, 383→387) — ALL CLEAN
+
+The Zeniff/Noah record (Zeniff's zeal, the eternal-hatred grievance, king
+Noah) + Nephi's farewell closing 2 Nephi. Verified by direct grep.
+
+- **Mosiah 11** (king Noah): v11 "rest their bodies and their arms upon while
+  they should speak lying and vain words to his people," v27 "who is the
+  Lord, that shall bring upon my people such great affliction" — EXACT.
+- **Mosiah 10** (the eternal hatred): v14 "they understood not the dealings of
+  the Lord," v17 "they have taught their children that they should hate
+  them… eternal hatred towards the children of Nephi" — EXACT (the chapter
+  the mos10 grievance study draws from; grievance = taught tradition).
+- **Mosiah 9** (Zeniff's record): v1 "when I saw that which was good among
+  them I was desirous that they should not be destroyed," v3 "over-zealous to
+  inherit the land of our fathers… we were slow to remember the Lord our
+  God" — EXACT.
+- **2 Nephi 33** (Nephi's farewell, closing 2 Nephi): v6 "I glory in
+  plainness; I glory in truth; I glory in my Jesus, for he hath redeemed my
+  soul from hell," v10 "if ye shall believe in Christ ye will believe in
+  these words, for they are the words of Christ" — EXACT. (The synthesis note
+  correctly references the 2 Ne 5:21 flagged threads answered in-text by
+  26:33 + 30:6 — no new flag.)
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)

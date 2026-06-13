@@ -402,10 +402,10 @@ Already done out-of-band: `study/morm-8-three-glories-reading.md` (2026-06-09).
 - [x] 2026-06-02 `study/bom-walk/mosiah/mosiah-28.md` **LINKS** — CLEAN (the mission + translation; v3 "they could not bear that any human soul should perish," v4 "they were the very vilest of sinners" EXACT)
 - [x] 2026-06-02 `study/bom-walk/mosiah/mosiah-29.md` **LINKS** — CLEAN (reign of judges; v16 "because all men are not just it is not expedient that ye should have a king," v27 "if the time comes that the voice of the people doth choose iniquity, then is the time that the judgments of God will come upon you" EXACT)
 - [x] 2026-06-02 `study/bom-walk/mosiah/mosiah-12.md` **LINKS** — CLEAN (Abinadi before the priests; v3 "the life of king Noah shall be valued even as a garment in a hot furnace," v30 "ye know that I speak the truth; and you ought to tremble before God" EXACT)
-- [ ] 2026-06-02 `study/bom-walk/mosiah/mosiah-11.md` **LINKS**
-- [ ] 2026-06-02 `study/bom-walk/mosiah/mosiah-10.md` **LINKS**
-- [ ] 2026-06-02 `study/bom-walk/mosiah/mosiah-09.md` **LINKS**
-- [ ] 2026-06-02 `study/bom-walk/2-nephi/2-nephi-33.md` **LINKS**
+- [x] 2026-06-02 `study/bom-walk/mosiah/mosiah-11.md` **LINKS** — CLEAN (king Noah; v11 "rest their bodies and their arms upon while they should speak lying and vain words to his people," v27 "who is the Lord, that shall bring upon my people such great affliction" EXACT)
+- [x] 2026-06-02 `study/bom-walk/mosiah/mosiah-10.md` **LINKS** — CLEAN (the eternal hatred; v14 "they understood not the dealings of the Lord," v17 "they have taught their children that they should hate them… eternal hatred towards the children of Nephi" EXACT — grievance as taught tradition; the chapter the mos10 study draws from)
+- [x] 2026-06-02 `study/bom-walk/mosiah/mosiah-09.md` **LINKS** — CLEAN (Zeniff's record; v1 "when I saw that which was good among them I was desirous that they should not be destroyed," v3 "I being over-zealous to inherit the land of our fathers… we were slow to remember the Lord our God" EXACT)
+- [x] 2026-06-02 `study/bom-walk/2-nephi/2-nephi-33.md` **LINKS** — CLEAN (Nephi's farewell; v6 "I glory in plainness; I glory in truth; I glory in my Jesus, for he hath redeemed my soul from hell," v10 "if ye shall believe in Christ ye will believe in these words, for they are the words of Christ" EXACT; synthesis note rightly references the 5:21 flagged threads answered by 26:33 + 30:6)
 - [ ] 2026-06-02 `study/bom-walk/jacob/jacob-01.md` **LINKS**
 - [ ] 2026-06-02 `study/bom-walk/jacob/jacob-02.md` **LINKS**
 - [ ] 2026-06-02 `study/bom-walk/jacob/jacob-03.md` **LINKS**
