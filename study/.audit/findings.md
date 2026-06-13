@@ -2174,6 +2174,27 @@ Todd/generational-body material is paraphrase (not quoted) and
 matches the #176 transcript. The human/Lord verb table is
 characterization, not quotation. No drift.
 
+### study/yt/Se91Pn3xxSs-you-have-3-years-left.md (2026-05-26) — one unmarked elision
+SAMPLE. yt evaluation of Emad Mostaque/Tom Bilyeu (transcript local
+at yt/tom-bilyeu/Se91Pn3xxSs). All five timestamped Mostaque quotes
+are genuine and substantively verbatim against the transcript with
+marked ellipses: replace-humans/cost-of-creation (5:24, two
+non-contiguous parts, marked); Stable Diffusion (1:12, order
+"filter→way-beyond→intelligence→principles" matches transcript);
+Cicero/eight-language-models (1:26, contiguous); crisis-of-
+confidence/no-anchor (40:00); AI-God/Utopia-or-kill-us-all (1:38,
+ellipsis marks an "AJR"/AGI transcription garble). ONE fix: the
+Stable Diffusion quote had an UNMARKED elision between "[normal
+compression]" and "It's intelligence" (transcript omits "they
+managed there… is it compression or is it something completely
+something different") → ellipsis added. NOT flagged (acceptable):
+the Cicero quote's "..." over-marks a contiguous run rather than
+omitting; Abraham 4:18 carries an added clause-boundary comma
+("ordered, until they obeyed" vs source "ordered until they
+obeyed"). Scripture quotes verbatim: D&C 93:24 ("knowledge of
+things as they are…"), Abraham 4:18 (modulo the comma). Book/
+chapter links resolve.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)

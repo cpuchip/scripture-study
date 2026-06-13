@@ -189,7 +189,7 @@ Already done out-of-band: `study/morm-8-three-glories-reading.md` (2026-06-09).
 - [x] 2026-05-25 `study/daily-digest/ai-news-7am--2026-05-25-1300.md` **SAMPLE** — machine artifact, untouched; self-inconsistent revision note documented
 - [x] 2026-05-25 `study/yt/V40tBshkMnE-send-me-covenants.md` **T1** — ★ 2 fabricated "Todd says" quotes (one was Michael's own §VI prose, one was Ether 6:9) corrected; law-of-Moses blend split; POSSESS 1913→1828 propagation; "quoted twice"→once
 - [x] 2026-05-25 `study/softening-what-i-cannot-soften.md` **FULL** — CLEAN (all 17 scripture quotes verbatim; high-hand Hebrew gloss correct)
-- [ ] 2026-05-26 `study/yt/Se91Pn3xxSs-you-have-3-years-left.md` **SAMPLE**
+- [x] 2026-05-26 `study/yt/Se91Pn3xxSs-you-have-3-years-left.md` **SAMPLE** — 5 Mostaque quotes genuine; one unmarked elision in the Stable Diffusion quote marked
 - [ ] 2026-05-26 `study/daily-digest/ai-news-7am--2026-05-26-1300.md` **SAMPLE**
 - [ ] 2026-05-27 `study/daily-digest/ai-news-7am--2026-05-27-1300.md` **SAMPLE**
 - [ ] 2026-05-28 `study/four-groups-and-the-engineer.md` **T1+FULL**
