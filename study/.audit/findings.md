@@ -2021,6 +2021,11 @@ flagged without altering the as-spoken capture. The doc's own
 analysis (Mosiah 4:14-15, Alma 5, D&C 20 counters) is sound
 against canon.
 
+### study/daily-digest/ai-news 05-20/21/22 (2026-05-20..22) — pipeline captures, untouched
+SAMPLE ×3. Scheduled-workflow daily digests — machine artifacts of
+record, same class as the PE smoke capture; documented, no fixes
+applicable.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)

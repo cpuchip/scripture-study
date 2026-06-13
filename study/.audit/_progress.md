@@ -177,9 +177,9 @@ Already done out-of-band: `study/morm-8-three-glories-reading.md` (2026-06-09).
 - [x] 2026-05-19 `study/yt/gospel/ytt-rerun-yt-gospel-morgan-philpot.md` **SAMPLE** — substrate honest-refusal artifact, quotes nothing by design; untouched
 - [x] 2026-05-19 `study/daily-digest/pe-final-research-summary-smoke.md` **SAMPLE** — PE smoke-test pipeline capture; machine artifact, untouched
 - [x] 2026-05-19 `study/yt/gospel/ytt-rerun2-yt-gospel-philpot-marshfield.md` **T1** — substrate eval; 2 Thess 2:1→2:11 audit note added; D&C 68:25 exact; excerpts preserved as captured
-- [ ] 2026-05-20 `study/daily-digest/ai-news-7am--2026-05-20-1300.md` **SAMPLE**
-- [ ] 2026-05-21 `study/daily-digest/ai-news-7am--2026-05-21-1300.md` **SAMPLE**
-- [ ] 2026-05-22 `study/daily-digest/ai-news-7am--2026-05-22-1300.md` **SAMPLE**
+- [x] 2026-05-20 `study/daily-digest/ai-news-7am--2026-05-20-1300.md` **SAMPLE** — scheduled-workflow pipeline capture; machine artifact, untouched
+- [x] 2026-05-21 `study/daily-digest/ai-news-7am--2026-05-21-1300.md` **SAMPLE** — scheduled-workflow pipeline capture; machine artifact, untouched
+- [x] 2026-05-22 `study/daily-digest/ai-news-7am--2026-05-22-1300.md` **SAMPLE** — scheduled-workflow pipeline capture; machine artifact, untouched
 - [ ] 2026-05-22 `study/what-was-the-atonement-for.md` **T2+FULL**
 - [ ] 2026-05-23 `study/gift-of-aaron.md` **FULL**
 - [ ] 2026-05-23 `study/mechanics-of-refinement.md` **FULL**
