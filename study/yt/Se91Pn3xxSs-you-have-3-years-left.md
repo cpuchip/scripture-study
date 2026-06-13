@@ -33,7 +33,7 @@ This is the exact thesis of [Chapter 1: The Value Shift](../../projects/scriptur
 
 ### 2. Compression to Principles (D&C 93 and Stable Diffusion)
 Mostaque explains that Stable Diffusion operates by compressing a 100-terabyte dataset of images into a 2-gigabyte knowledge filter. This is not simple zip-compression; it is the extraction of principles:
-> "Stable Diffusion... took a hundred thousand gigabytes of images and the output was a two gigabyte file that acts as a filter... It's Way beyond [normal compression]. It's intelligence. It's learning the principles."
+> "Stable Diffusion... took a hundred thousand gigabytes of images and the output was a two gigabyte file that acts as a filter... It's Way beyond [normal compression]... It's intelligence. It's learning the principles."
 > — [Emad, 1:12:00](https://www.youtube.com/watch?v=Se91Pn3xxSs&t=4320)
 
 This maps beautifully to our study of [D&C 93](../../gospel-library/eng/scriptures/dc-testament/dc/93.md) (the metaphysics of refinement and light). Scripturally, "light and truth" are the eternal organizing substances. Truth is "knowledge of things as they are, and as they were, and as they are to come." Refinement is the process of stripping away the "noise" (coarse spirit-matter) to isolate the "pure" principles. AI models are a mathematical mirror of this: they discard the raw noise of the training data and retain only the underlying weights—the mathematical principles of the space.
