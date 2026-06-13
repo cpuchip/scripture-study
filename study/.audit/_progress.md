@@ -222,8 +222,8 @@ Already done out-of-band: `study/morm-8-three-glories-reading.md` (2026-06-09).
 - [x] 2026-06-01 `study/freedom/provenance/10-modern-prophets-proclamation-constitution.md` **SAMPLE** — CLEAN (Hinckley 2001 + Proclamation verbatim; Hunter→Hinckley correction confirmed via the byline)
 - [x] 2026-06-01 `study/freedom/provenance/11-time-keeping-awe-and-the-two-valences.md` **SAMPLE** — scripture verbatim; softened one "EXACT phrase" overstatement (14:7 nouns vs 3 Ne 2:1 adjectives)
 - [x] 2026-06-01 `study/without-compulsion.md` **FULL** — CLEAN (outline superseded by freedom/99-synthesis; epigraph + links verified)
-- [ ] 2026-06-01 `study/bom-walk/1-nephi/1-nephi-07.md` **T2**
-- [ ] 2026-06-01 `study/bom-walk/1-nephi/1-nephi-09.md` **T2**
+- [x] 2026-06-01 `study/bom-walk/1-nephi/1-nephi-07.md` **T2** — CLEAN (no md links; 1 Ne 7 quotes + Luke 7:42 parallel verbatim)
+- [x] 2026-06-01 `study/bom-walk/1-nephi/1-nephi-09.md` **T2** — CLEAN (no md links; 1 Ne 9 + W of M 1:7 verbatim)
 - [ ] 2026-06-01 `study/bom-walk/2-nephi/2-nephi-12.md` **LINKS**
 - [ ] 2026-06-01 `study/bom-walk/studies/2ne9_atonement-monster-and-gate.md` **T1**
 - [ ] 2026-06-01 `study/bom-walk/2-nephi/2-nephi-13.md` **LINKS**

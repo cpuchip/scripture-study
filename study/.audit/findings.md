@@ -2662,6 +2662,29 @@ is verified verbatim in the synthesis. All six links resolve
 what-was-the-atonement-for, christ-in-all-the-scriptures, agency,
 gadianton-robbers). CLEAN.
 
+### study/bom-walk/1-nephi/1-nephi-07.md (2026-06-01) — CLEAN
+T2. No markdown links. 1 Ne 7 quotes verbatim: 7:8 ("so hard in
+your hearts, and so blind in your minds…younger brother…set an
+example," marked ellipsis), 7:14 ("the Spirit of the Lord ceaseth
+soon to strive"/"Jeremiah have they cast into prison"), 7:17
+("according to my faith…burst these bands," marked ellipsis), 7:21
+("did frankly forgive them all"). The Luke 7:42 parallel ("frankly
+forgave them both") is accurate, and the note honestly flags
+"frankly" was read per the parallel, not Webster-verified this
+session. Jer 37:15 / 5:13 cross-corroboration sound. CLEAN.
+
+### study/bom-walk/1-nephi/1-nephi-09.md (2026-06-01) — CLEAN
+T2. No markdown links. 1 Ne 9 quotes verbatim: 9:2 (both records
+"called the plates of Nephi"), 9:3 ("special purpose that there
+should be an account engraven of the ministry"), 9:4 ("the reign
+of the kings, and the wars and contentions"), 9:5 ("a wise purpose
+in him, which purpose I know not") + 9:6 ("the Lord knoweth all
+things from the beginning…he hath all power") — verified earlier
+at #194. W of M 1:7 quote verbatim ("the Lord knoweth all things
+which are to come; wherefore, he worketh in me"). The 116-pages /
+D&C 10:38-40 providence is a footnote pointer (well-attested),
+honestly flagged. CLEAN.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
