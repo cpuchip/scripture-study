@@ -2699,6 +2699,27 @@ Tarshish"; KJV/MT only Tarshish). The v6 "O Lord" address +
 claim ("differences in more than half of the 433 verses") is the
 study aid's own. Careful, sound variant work. CLEAN.
 
+### study/bom-walk/studies/2ne9_atonement-monster-and-gate.md (2026-06-01) — PROBATION (#129); otherwise impeccable
+T1 spin-off. One 1913-as-1828 Webster word: ★ PROBATION (#129) —
+study quoted "proving his character, and becoming qualified for a
+happier state" = 1913 def 2c verbatim. Genuine 1828 def 4: "Moral
+trial; the state of man in the present life, in which he has the
+opportunity of proving his character and being qualified for a
+happier state. Probation will end with the present life." Requoted;
+point survives. EVERYTHING ELSE IMPECCABLE — all ~25 2 Ne 9
+blockquotes verbatim (the death→fall chain 9:6, "infinite atonement"
+9:7, "like unto him" 9:8-9, the "awful monster"/escape 9:10, the
+reversal 9:12-14, "holiness of our God" 9:20-21, the no-law mercy
+9:25-26, the law-possessor woe 9:27, "cunning plan of the evil one"
+9:28, "die in their sins…behold his face, and remain in their sins"
+9:38, carnally/spiritually-minded 9:39, "keeper of the gate…
+employeth no servant there" 9:41-42, the 9:50-51 invitation, the
+9:1/9:53 covenant ring); Isaiah 55:1-2 verbatim (the source of the
+9:50-51 invitation). ★ "ten woes" count CONFIRMED — exactly 10 "wo
+unto" at vv 27,30,31,32,33,34,35,36,37,38. The carnally/Romans 8:6
+Webster claim is ACCURATE (genuine 1828 *carnally* cites Lev 18:20
++ Rom 8:6). Not queued (determinate fix).
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
