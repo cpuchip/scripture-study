@@ -2263,6 +2263,19 @@ the Anthropic 4.8 news page the pipeline gathered — external
 content, documented not endorsed. Normal header offset (file 05-29
 → "May 27–28" coverage). No canonical source to verify.
 
+### study/bom-walk/1-nephi/1-nephi-06.md (2026-06-01) — CLEAN
+LINKS. No markdown links present (all references are plain-text
+verse citations), so link validation is trivially clean. Spot-
+verified the quoted text anyway: 1 Ne 6:1-6 all verbatim
+("descendants of Joseph," "I desire the room," "fulness of mine
+intent…persuade men to come unto the God of Abraham…and be saved,"
+"pleasing unto God"/"unto the world," "not of worth unto the
+children of men"); the v4 "[Christ]" bracket + ellipsis is a
+marked editorial substitution. Cross-refs verbatim: John 20:31
+("these are written, that ye might believe," trimmed), Gal 1:10
+("do I seek to please men?…I should not be the servant of Christ,"
+marked ellipsis), Moro 10:32 "come unto Christ."
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
