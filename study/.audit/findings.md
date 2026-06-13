@@ -3698,6 +3698,24 @@ collapse, Cumorah. Verified by direct grep.
   with open arms to receive you," v22 "he doeth with you according to his
   justice and mercy" — EXACT.
 
+### Mormon 7-9 (2026-06-13, 353→356) — ALL CLEAN (inner book of Mormon done)
+
+Mormon's farewell to the Lamanite remnant + Moroni alone + the great
+anti-cessationism chapter. Verified by direct grep. (With these, the inner
+book of Mormon's chapters 1 + 3-9 are clean; mormon-2 still sits below the
+cursor at #381.)
+
+- **Mormon 7** (Mormon's farewell): v7 "the Father, and the Son, and the Holy
+  Ghost, which are one God" (is-Jesus-God), v10 "it shall be well with you in
+  the day of judgment" — EXACT.
+- **Mormon 8** (Moroni alone): v35 "Jesus Christ hath shown you unto me, and I
+  know your doing," v37 "ye do love money… more than ye love the poor and the
+  needy, the sick and the afflicted" — EXACT.
+- **Mormon 9** (the God of miracles): v9 "God is the same yesterday, today,
+  and forever… no variableness neither shadow of changing," v19 "he changeth
+  not; if so he would cease to be God," v31 "give thanks unto God that he hath
+  made manifest unto you our imperfections" — all EXACT.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)

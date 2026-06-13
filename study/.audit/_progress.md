@@ -372,9 +372,9 @@ Already done out-of-band: `study/morm-8-three-glories-reading.md` (2026-06-09).
 - [x] 2026-06-02 `study/bom-walk/mormon/mormon-4.md` **LINKS** — CLEAN (offensive war collapses; v5 "it is by the wicked that the wicked are punished," v18 "swept off by them even as a dew before the sun" EXACT)
 - [x] 2026-06-02 `study/bom-walk/mormon/mormon-5.md` **LINKS** — CLEAN (leading without hope; v18 "led about by Satan, even as chaff is driven before the wind… without sail or anchor" EXACT. ★ bin-4: v15 "a dark, a filthy, and a loathsome people… because of their unbelief and idolatry" verified EXACT — the study FLAGS it for Michael + the Spirit and does NOT resolve it; standing literal-skin rule honored)
 - [x] 2026-06-02 `study/bom-walk/mormon/mormon-6.md` **LINKS** — CLEAN (Cumorah; v17 "O ye fair ones… rejected that Jesus, who stood with open arms to receive you," v22 "he doeth with you according to his justice and mercy" EXACT)
-- [ ] 2026-06-02 `study/bom-walk/mormon/mormon-7.md` **LINKS**
-- [ ] 2026-06-02 `study/bom-walk/mormon/mormon-8.md` **LINKS**
-- [ ] 2026-06-02 `study/bom-walk/mormon/mormon-9.md` **LINKS**
+- [x] 2026-06-02 `study/bom-walk/mormon/mormon-7.md` **LINKS** — CLEAN (Mormon's farewell; v7 "the Father, and the Son, and the Holy Ghost, which are one God" — is-Jesus-God, v10 "it shall be well with you in the day of judgment" EXACT)
+- [x] 2026-06-02 `study/bom-walk/mormon/mormon-8.md` **LINKS** — CLEAN (Moroni alone; v35 "Jesus Christ hath shown you unto me, and I know your doing," v37 "ye do love money… more than ye love the poor and the needy, the sick and the afflicted" EXACT)
+- [x] 2026-06-02 `study/bom-walk/mormon/mormon-9.md` **LINKS** — CLEAN (the God of miracles; v9 "God is the same yesterday, today, and forever… no variableness neither shadow of changing," v19 "he changeth not; if so he would cease to be God," v31 "give thanks unto God that he hath made manifest unto you our imperfections" all EXACT)
 - [ ] 2026-06-02 `study/bom-walk/ether/ether-1.md` **LINKS**
 - [ ] 2026-06-02 `study/bom-walk/ether/ether-2.md` **LINKS**
 - [ ] 2026-06-02 `study/bom-walk/ether/ether-3.md` **LINKS**
