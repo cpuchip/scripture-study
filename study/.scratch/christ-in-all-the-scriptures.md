@@ -1,12 +1,3 @@
-> **⚠ Provenance correction notice (2026-06-13).** This scratch file predates the
-> study-correctness walk and the 2026-06-09 Webster repair. Some quotes recorded
-> here as "verified" — especially Webster 1828 definitions — were checked against
-> a tool then serving 1913-as-1828 text, or are pre-correction scripture/date
-> wordings. **At present the study file is authoritative** for the corrected text
-> (every correction is logged in `study/.audit/findings.md`). This is temporary:
-> once the walk's corrections are normalized *through* scratch, scratch is
-> authoritative again and this banner is removed. See `study/.scratch/README.md`.
-
 # The Things Concerning Himself — Source Log
 
 *Working document / research provenance. Every quote here was verified via `gospel_get` (scripture) or a read of the talk file (conference) — by the lead this session for the Emmaus anchor, and by four research subagents (2026-05-31) for the rest, each instructed to copy exact text from the tool return and label [EXPLICIT] (a scripture itself names the Christ-connection) vs. [INTERPRETIVE] (traditional reading the text does not state). The lead re-verifies load-bearing quotes at draft.*

@@ -6,27 +6,9 @@ Each study creates a `{topic}.md` file here during Phase 2 (source gathering) an
 
 These files are the workbench AND the audit trail. They're published alongside the studies they support.
 
-## ⚠ Provenance correction notice (2026-06-13)
-
-Because these are an audit trail, they record what was verified **at the time a
-study was built** — including quotes checked against tools later found faulty.
-Two corrections happened *after* many of these files were written:
-
-1. The **2026-06-09 Webster repair** — the dictionary tool had been serving
-   **1913 text under an "1828" label**; ~132 definitions across the corpus were
-   the wrong edition.
-2. The **study-correctness walk (completed 2026-06-13)** — a verse-by-verse
-   re-verification of all 469 study files that also caught scripture requotes,
-   date errors, and confabulated attributions.
-
-Those corrections were applied **to the study files**, not back-propagated into
-these scratch files (they're kept as the original record). **At present, where a
-scratch file conflicts with its study, the STUDY is authoritative.** Every
-correction is logged in [`study/.audit/findings.md`](../.audit/findings.md).
-Affected scratch files carry a dated per-file banner pointing here.
-
-**This is a temporary state.** The intended end is to *normalize* the walk's
-corrections **through** the scratch files — bringing them current — at which
-point the scratch (the real audit trail) is authoritative again and these
-correction banners are **removed** (`findings.md` keeps the permanent record of
-what changed). Until that normalization pass runs, the study is the authority.
+> **Provenance note.** Some scratch files predate the 2026-06-09 Webster repair
+> (1913 text was served under an "1828" label) and the study-correctness walk
+> (completed 2026-06-13), so a quote here may differ from its corrected study.
+> Where they differ, the study file is current and `study/.audit/findings.md`
+> logs every correction. (Banners that briefly flagged this on individual files
+> were removed 2026-06-13 — clean is preferred; findings.md is the record.)
