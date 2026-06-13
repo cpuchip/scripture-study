@@ -2234,6 +2234,26 @@ and tracks Bednar's actual sentence; his Helaman five-step (3:33
 "hearts of the people who professed…", 7:21 vain things, 12:2
 prosperity, 4:13 boasting, 6:35 Spirit withdraws) all check.
 
+### study/the-seventh-time.md (2026-05-28) — Nelson talk mis-dated Oct→Apr 2015; 4 Ne "both" restored
+FULL. Three fixes:
+  • ★ DATE: "The Sabbath Is a Delight" was APRIL 2015 general
+    conference (header + path /2015/04/), not October — study said
+    "October 2015 talk" in TWO places. Both corrected (visible note).
+  • 4 Ne 1:12 dropped "both" ("meeting together oft to pray" vs
+    source "meeting together oft both to pray and to hear") →
+    restored.
+  • (no third — the two dates count as one class.)
+Both Nelson quotes VERBATIM against the talk: footnote 5
+("…essentially in bondage—to work or perhaps to money… A
+millionaire who works seven days a week is a rich slave") and the
+sign-reframe ("In my much younger years… 'What *sign* do I want to
+give to God?'… crystal clear"). All scripture verbatim with marked
+ellipses: Abr 5:2/5:3 (trailing trim), Moses 3:2-3, Ex 20:8-11,
+Deut 5:12-15 (marked ellipsis in v14), Ex 31:13/16-17 (ellipsis
+over vv14-15), Heb 4:9-10, Isa 58:13-14 (trailing trim), D&C
+59:9-10/13 (ellipsis over vv11-12), 59:15-16. Title-from-Isa-58:13
+("call the sabbath a delight") correct.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
