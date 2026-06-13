@@ -3716,6 +3716,25 @@ cursor at #381.)
   not; if so he would cease to be God," v31 "give thanks unto God that he hath
   made manifest unto you our imperfections" — all EXACT.
 
+### Ether 1-3 (2026-06-13, 356→359) — ALL CLEAN (brother-of-Jared block)
+
+The opening of the Jaredite record + the choice-land decree + the brother
+of Jared within the veil. Verified by direct grep — including the
+foundational Christological declaration.
+
+- **Ether 1** (the Jaredite record opens): v43 "because this long time ye
+  have cried unto me" — EXACT.
+- **Ether 2** (the choice-land decree): v8 "should serve him, the true and
+  only God, or they should be swept off," v12 "the God of the land, who is
+  Jesus Christ" (is-Jesus-God), v23 "What will ye that I should do that ye
+  may have light in your vessels?" — all EXACT.
+- **Ether 3** (the brother of Jared within the veil): ★ v14 "I am Jesus
+  Christ. I am the Father and the Son" — character-perfect, the foundational
+  is-Jesus-God premortal self-declaration; v6 "he saw the finger of the
+  Lord… like unto flesh and blood," v18 "that this man might know that he was
+  God," v20 "having this perfect knowledge of God, he could not be kept from
+  within the veil" — all EXACT.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)

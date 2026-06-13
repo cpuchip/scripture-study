@@ -375,9 +375,9 @@ Already done out-of-band: `study/morm-8-three-glories-reading.md` (2026-06-09).
 - [x] 2026-06-02 `study/bom-walk/mormon/mormon-7.md` **LINKS** — CLEAN (Mormon's farewell; v7 "the Father, and the Son, and the Holy Ghost, which are one God" — is-Jesus-God, v10 "it shall be well with you in the day of judgment" EXACT)
 - [x] 2026-06-02 `study/bom-walk/mormon/mormon-8.md` **LINKS** — CLEAN (Moroni alone; v35 "Jesus Christ hath shown you unto me, and I know your doing," v37 "ye do love money… more than ye love the poor and the needy, the sick and the afflicted" EXACT)
 - [x] 2026-06-02 `study/bom-walk/mormon/mormon-9.md` **LINKS** — CLEAN (the God of miracles; v9 "God is the same yesterday, today, and forever… no variableness neither shadow of changing," v19 "he changeth not; if so he would cease to be God," v31 "give thanks unto God that he hath made manifest unto you our imperfections" all EXACT)
-- [ ] 2026-06-02 `study/bom-walk/ether/ether-1.md` **LINKS**
-- [ ] 2026-06-02 `study/bom-walk/ether/ether-2.md` **LINKS**
-- [ ] 2026-06-02 `study/bom-walk/ether/ether-3.md` **LINKS**
+- [x] 2026-06-02 `study/bom-walk/ether/ether-1.md` **LINKS** — CLEAN (the Jaredite record opens; v43 "because this long time ye have cried unto me" EXACT)
+- [x] 2026-06-02 `study/bom-walk/ether/ether-2.md` **LINKS** — CLEAN (the choice-land decree; v8 "should serve him, the true and only God, or they should be swept off," v12 "the God of the land, who is Jesus Christ" — is-Jesus-God, v23 "What will ye that I should do that ye may have light in your vessels?" all EXACT)
+- [x] 2026-06-02 `study/bom-walk/ether/ether-3.md` **LINKS** — CLEAN (the brother of Jared within the veil; ★ v14 "I am Jesus Christ. I am the Father and the Son" character-perfect — foundational is-Jesus-God, v6 "he saw the finger of the Lord… like unto flesh and blood," v18 "that this man might know that he was God," v20 "having this perfect knowledge of God, he could not be kept from within the veil" all EXACT)
 - [ ] 2026-06-02 `study/bom-walk/mormon/mormon-2.md` **LINKS**
 - [ ] 2026-06-02 `study/bom-walk/alma/alma-49.md` **LINKS**
 - [ ] 2026-06-02 `study/bom-walk/alma/alma-28.md` **LINKS**
