@@ -2461,6 +2461,25 @@ verbatim). The amendment/eclipse/history facts are flagged in the
 frame for the topic + provenance files — verified there as the walk
 reaches them. CLEAN.
 
+### study/freedom/07-likening-the-pattern.md (2026-05-31) — CLEAN
+T2. Explicitly a "SPECULATIVE WORKING DOC" — every likening graded
+under the three-tier rule, the speculative mappings flagged as
+"faithful imagination for Michael's Spirit to judge," not asserted
+as doctrine. The job here is to verify the scripture ANCHORS, not
+the mappings. All accurate: Malachi 4:1-2 ("shall burn as an oven"/
+"unto you that fear my name shall the Sun of righteousness arise
+with healing," trim) verbatim; D&C 77:5 ("belonged to the seven
+churches, and were then in the paradise of God") verbatim — and it
+correctly grounds the doc's CORRECTION of the 7-churches-as-
+dispensations reading (the elders are dead first-century, "seven"
+= the whole Church); the "two marks" find's three forehead-mark
+texts cite right (Rev 13:16-17 beast-mark, Rev 7:3 God's seal,
+Ezek 9:4 the tav-mark on "the men that sigh and that cry for all
+the abominations"); 3 Ne 6:18 + Hel 14:2 (verified #199) accurate.
+No markdown links (scriptural refs are plain text). The grading
+discipline is the doc's strength — it restrains its own date-
+mapping (likening #4) and turns the table into a mirror. CLEAN.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
