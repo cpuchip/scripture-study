@@ -4041,6 +4041,41 @@ direct grep.
   tongue, to teach his word" — EXACT (the Mosiah 4:27 / honor_scope pacing
   covenant read from the inside; v8 a 5:21-adjacent universal-care datapoint).
 
+### Alma 30, 3, 32, 33 (2026-06-13, 415→419) — ALL CLEAN ★ one bin-4
+
+Korihor and the design argument; the Amlicite self-marking (bin-4); the seed
+of faith; the brazen serpent. Verified by direct grep, including the
+literal-skin verse character-for-character.
+
+- **Alma 30** (Korihor): v44 "all things denote there is a God… all the planets
+  which move in their regular form do witness that there is a Supreme
+  Creator," v52 "I always knew that there was a God" — EXACT (the fullest
+  anti-Christ creed in scripture and its refutation; unbelief as a chosen lie
+  laundered into conviction by its own success).
+- **Alma 3** ★ **BIN-4 — verified exact, NOT resolved**: v6 "the skins of the
+  Lamanites were dark, according to the mark which was set upon their fathers,
+  which was a curse upon them because of their transgression and their
+  rebellion" — EXACT, character-perfect; v19 "every man that is cursed
+  bringeth upon himself his own condemnation" — EXACT. The chapter note
+  correctly logs the in-text datapoints (the Amlicites — *Nephites by descent*
+  — "marked themselves," v11 draws the line at *belief* not blood, v8 the
+  mark quarantines the destroying *tradition*, v14 the curse is
+  conditional/removable on repentance) AND flags the harder literal-skin
+  question (the relation of v6 to the belief/allegiance framing) for Michael +
+  the Spirit, pronouncing no resolution. This is the standing 2 Ne 5:21 / Alma
+  3:6 datapoint — already in Michael's queue; the walk confirms the quotes are
+  exact and the restraint is honored. **No new queue item; already logged.**
+- **Alma 32** (the seed): v21 "faith is not to have a perfect knowledge of
+  things… if ye have faith ye hope for things which are not seen, which are
+  true," v27 "even if ye can no more than desire to believe, let this desire
+  work in you" — EXACT (the BoM's definitive faith sermon; the seed-experiment
+  with its discernible-light epistemology answering Korihor).
+- **Alma 33** (the simple look): v20 "there were many who were so hardened that
+  they would not look, therefore they perished… they did not believe that it
+  would heal them," v23 "your burdens may be light, through the joy of his
+  Son" — EXACT (Zenos's worship-everywhere prayer + the brazen serpent; the
+  scandal of a cure too simple for pride to accept).
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)

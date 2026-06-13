@@ -434,10 +434,10 @@ Already done out-of-band: `study/morm-8-three-glories-reading.md` (2026-06-09).
 - [x] 2026-06-02 `study/bom-walk/alma/alma-26.md` **LINKS** — CLEAN (Ammon's psalm; v12 "I am nothing; as to my strength I am weak… in his strength I can do all things," v37 "God is mindful of every people… his bowels of mercy are over all the earth" EXACT — the BoM's Philip 4:13 + a universal-care datapoint)
 - [x] 2026-06-02 `study/bom-walk/alma/alma-27.md` **LINKS** — CLEAN (the people of Ammon; v17 "swallowed up in the joy of his God, even to the exhausting of his strength," v28 "death was swallowed up to them by the victory of Christ over it" EXACT — the armed bear the sword for the unarmed-by-conscience)
 - [x] 2026-06-02 `study/bom-walk/alma/alma-29.md` **LINKS** — CLEAN (O that I were an angel; v3 "I am a man, and do sin in my wish; for I ought to be content with the things which the Lord hath allotted unto me," v8 "the Lord doth grant unto all nations, of their own nation and tongue, to teach his word" EXACT — the pacing covenant from the inside)
-- [ ] 2026-06-02 `study/bom-walk/alma/alma-30.md` **LINKS**
-- [ ] 2026-06-02 `study/bom-walk/alma/alma-03.md` **LINKS**
-- [ ] 2026-06-02 `study/bom-walk/alma/alma-32.md` **LINKS**
-- [ ] 2026-06-02 `study/bom-walk/alma/alma-33.md` **LINKS**
+- [x] 2026-06-02 `study/bom-walk/alma/alma-30.md` **LINKS** — CLEAN (Korihor; v44 "all things denote there is a God… all the planets which move in their regular form do witness that there is a Supreme Creator," v52 "I always knew that there was a God" EXACT — the BoM's design argument + unbelief-as-chosen-lie)
+- [x] 2026-06-02 `study/bom-walk/alma/alma-03.md` **LINKS** — CLEAN ★ BIN-4 (curse-mark; v6 "the skins of the Lamanites were dark, according to the mark… a curse upon them because of their transgression and their rebellion" + v19 "every man that is cursed bringeth upon himself his own condemnation" EXACT, character-perfect; note logs datapoints + flags the literal-skin question for Michael + the Spirit, does NOT resolve — standing 2 Ne 5:21 restraint honored)
+- [x] 2026-06-02 `study/bom-walk/alma/alma-32.md` **LINKS** — CLEAN (the seed; v21 "faith is not to have a perfect knowledge of things… which are not seen, which are true," v27 "if ye can no more than desire to believe, let this desire work in you" EXACT — the BoM's definitive faith sermon)
+- [x] 2026-06-02 `study/bom-walk/alma/alma-33.md` **LINKS** — CLEAN (the simple look; v20 "many who were so hardened that they would not look, therefore they perished… they did not believe that it would heal them," v23 "your burdens may be light, through the joy of his Son" EXACT — the brazen serpent / scandal of simplicity)
 - [ ] 2026-06-02 `study/bom-walk/alma/alma-34.md` **LINKS**
 - [ ] 2026-06-02 `study/bom-walk/alma/alma-35.md` **LINKS**
 - [ ] 2026-06-02 `study/bom-walk/alma/alma-36.md` **LINKS**
