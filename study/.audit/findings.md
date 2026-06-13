@@ -2793,6 +2793,23 @@ LINKS ×2. No markdown links in either.
     stone-of-stumbling = Christ flagged as footnote (Rom 9/Luke 2/
     1 Pet 2). Both CLEAN.
 
+### study/bom-walk/2-nephi/2-nephi-19 + 2-nephi-20.md (2026-06-01) — CLEAN (Isaiah-variant chapters)
+LINKS ×2. No markdown links.
+  • 2-nephi-19 (Isaiah 9, the bright center): ★ v3 "not"-removal
+    FULLY verified — BoM "and increased the joy" vs KJV "and NOT
+    increased the joy" (the KJV's "not" contradicts the next clause
+    "they joy before thee"); AND the Isaiah 9:3 KJV footnote 3c reads
+    verbatim "The word *not* should be removed. [2 Ne. 19:3]" — the
+    apparatus itself concedes it and cross-refs the BoM. The cleanest
+    restoration case in the block. v1 "Red Sea" vs KJV "the sea"
+    confirmed. The five throne-names (v6) verified earlier (#194).
+    Matt 4:14-16 fulfillment flagged as footnote.
+  • 2-nephi-20 (Isaiah 10): v5 "their indignation" vs KJV "mine
+    indignation" confirmed; the axe-boasts quote (v15) verbatim;
+    "close to KJV" judgment accurate. The note honestly turns the
+    axe-image on itself ("a sentence I could wrongly say… incl. AI
+    and me"). Both CLEAN.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
