@@ -3,10 +3,15 @@ lane: pg-ai-stewards
 session_id: 7ea7faa4-688a-451a-ac68-b7ea662d4b81
 status: active
 started: 2026-06-11T22:00:16
-last_active: 2026-06-13T01:17:52
+last_active: 2026-06-13T01:56:18
 ---
 
 ## Working on
+- **★ AUTHORING LEG COMPLETE 2026-06-13 — B5 SHIPPED, chain runs 00→19, migration manifest = ZERO migration entries (verify/test harness only).** All 189 historical migrations consolidated into 20 authored subsystem files. B5 commits (all pushed, virgin-smoke green each):
+  - **17 (`35d66a6`)** personas — `17-personas.sql`: persona agent + persona-turn pipeline (r7) + lmstudio/gemini example pipelines (r8) + ct2-7c persona/room facets (dispatch_facets/remember/forget FINAL) + persona_outbox + room_say (r16/r20) + room_react (r21). compose_tools('persona')=[room_react,room_say]; **16's on_one_shot persona-% arm auto-verifies a persona-turn (cross-batch proof, on_one_shot NOT re-authored — the B5/17 note honored)**. r18/19 max_tokens→16000 folded; overlay = librarian/codewright/gamemaster room_react grants; persona deny study_*→doc_*.
+  - **18 (`9d9a0f4`)** scheduler — `18-scheduler.sql`: cron scheduled_pipelines (pe6 engine + pe7 fire/watchman-tick FINAL). cron parse + e2e dispatch + D-PE4 missed-window all green. ai-news-7am operator seed → overlay.
+  - **19 (`addeee8`)** models — `19-models.sql`: model_capability + model_usable + auto-probe (m1/m4/m5/an1) + **work_item_dispatch_stage FINAL** (r3 = J.8.a 4-layer + M.2 capability-substitute + J.11 spend-cap + R.3 max_tokens). Dispatch capability-substitution e2e + max_tokens green. ALL model seeds incl zen1 Claude catalog → overlay; core defaults usable+openai.
+  **NEXT = B6** (tests/ re-author + CI day-one + .gitattributes + rename-map.tsv finalize + overlay re-author against doc_*/relational/config-keys + anatomy-doc update) + classify the 20 live↔repo mismatches (verify-suite) + **B5-tail** (seed_harness genericize + bgworker `_kind` enum — schema.rs/Rust-side, NOT authored-SQL). Then the **CUT** (Hinge ① stop live stack + move personas, ③ data-import confirmation) + the **coder wave** `20-coder.sql` (Hinge ② public-ship nod after hardening review).
 - **AUTHORING LEG B4/16 SHIPPED 2026-06-13 (OSS `4ba752d`, pushed) — B4 COMPLETE; the consolidated chain runs 00→16:**
   `16-subagents.sql` = sub-agent delegation + the §7.3 self-editable base prompt.
   l9 depth-cap(≤2) + k4 spawn_subagent (**'scripture-study' fallback → config
