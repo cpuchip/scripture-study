@@ -7,6 +7,28 @@ last_active: 2026-06-13T09:51:34
 ---
 
 ## Working on
+- **★ GOSPEL-ENGINE RESOLVER GENERALIZED 2026-06-13 — core `4bb80ab` + overlay
+  `90906f7`, both pushed** (Michael: "generalize as much as possible; shouldn't be
+  project/workspace aware but configurable to pull external resources"). The
+  "resolver" was a whole scripture-citation subsystem in `schema.rs` (the file the
+  SQL-file audit missed; unused by core pipelines; overlay already owned the
+  consumption). **CORE:** GospelEngineConfig→ResolverConfig + STEWARDS_RESOLVER_URL
+  ({ref} template)/TOKEN; resolve_ref config-driven (boot log "resolver url=…" not
+  gospel-engine); parse_gospel_links→parse_doc_links (ALL md links, external|doc);
+  normalize_book+parse_reference REMOVED; refresh_doc_refs/doc_citations_resolved
+  generic; provider→'resolver'; example agents/skills + stray comments genericized
+  (scripture-linking→reference-linking, doc_citations kind enum, summarize prompt,
+  01-graph prior-art); verify-2-1/2-2 removed. **★ BEHAVIOR CHANGE flagged: core
+  import_doc now cites ALL links generically.** Both smokes green (genresolver image,
+  tests/virgin-smoke.sql passes); genresolver→pg18 retag (compose default).
+  **OVERLAY:** `scripture-resolver.sql` restores the scripture funcs + import_doc/
+  refresh/doc_citations_resolved overrides (scripture CITES + verse decomposition);
+  doc_citations_resolved keeps core signature (extension-owned, can't DROP/retype →
+  `resolved` carries the verse array); STEWARDS_RESOLVER_URL in .env; manifest+
+  classification entries; replay-proven (6 funcs, "Mosiah 18:8-9"→2 verses, 'scripture'
+  kind). **DEFERRED:** verify-harness scripture fixtures (Moroni/gospel_search/
+  gospel-engine-v2 in verify-1-6-1/loop/4a-steward/3e2-2 — reference-only, not shipped)
+  → genericize-or-prune separately. Task #159.
 - **★ M0 — RUNTIME STACK SHIPPED + VIRGIN BOOT PROVEN 2026-06-13 (OSS `8287967`,
   pushed; Michael: "this probably doesn't need [a loop], push through as normal").**
   The OSS repo had no runtime image/compose — only the extension Dockerfile. Added
