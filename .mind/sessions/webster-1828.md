@@ -3,7 +3,7 @@ lane: webster-1828
 session_id: afac9c41-1980-4bea-8bc5-a101b39a8557
 status: active
 started: 2026-06-09T21:30:00
-last_active: 2026-06-13T16:30:00
+last_active: 2026-06-13T12:25:57
 ---
 
 ## Working on
@@ -324,6 +324,25 @@ last_active: 2026-06-13T16:30:00
   also removed. Journals: `.spec/journal/2026-06-13-study-correctness-walk-complete.md`
   + `…-scratch-fanout-and-note-cleanup.md`. **Open: only the bin-4 curse-question
   (2 Ne 5:21 / Morm 5:15 / Alma 3:6), parked for Michael + the Spirit.**
+- UPDATE 17: ★ **verify-quotes TOOL BUILT** (`scripts/verify-quotes/verify-quotes.py`
+  + README, committed) — Michael's retrospective directive #1. Dual-edition diff
+  (FLAG a quoted Webster def when it matches 1913 better than 1828; the architectural
+  fix — the editions share phrases, so "appears in 1828" was insufficient). Tuned for
+  precision (≥4-word def-quote, strong 1913 ≥0.82). **Status = MANUAL, not a hook** —
+  promote only once it keeps earning weight, per Michael. ★ **It already did on its
+  first corpus run: 7 genuine contaminations the serial walk AND the fan-out both
+  missed** — COUNTENANCE/BONDAGE/PROVE/PROBATION/ENTICE (1913, low 1828) in
+  `plan-of-salvation.md`, `eternity-paused.md`, and the alma5 scratch; the alma5
+  COUNTENANCE was a case the **fan-out reported fixing but only fixed 1 of 2
+  occurrences** (watch-integrity lesson — a deterministic tool catches what spot-checks
+  don't). SHRINK 0.88 / PARADISE 0.86 = high-1828, likely false positives. **The 4
+  harness items from the retrospective also shipped** (b23c36b8: md-tidy CRLF-aware
+  tidy, fan-out skill, source-verification depth-2 citation rule, copilot task-shape
+  triage). Memory: `project_verify_quotes_tool` + `reference_fanout_vs_shepherd`.
+  **OPEN (Michael's call): fix the ~5 real catches** — verify each genuine 1828 via the
+  webster MCP, requote. Surfaced, not auto-launched (non-published workspace studies;
+  deep in a marathon session — recommended, not started). Plus the standing bin-4
+  curse-question (2 Ne 5:21 / Morm 5:15 / Alma 3:6), parked for Michael + the Spirit.
 - ✅ OCR repair SHIPPED + live-verified (1336c8ce); walk plan RATIFIED
   (.spec/proposals/study-correctness-walk.md)
 
