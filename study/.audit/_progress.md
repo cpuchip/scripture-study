@@ -219,7 +219,7 @@ Already done out-of-band: `study/morm-8-three-glories-reading.md` (2026-06-09).
 - [x] 2026-06-01 `study/freedom/provenance/05-dc87-and-the-land.md` **SAMPLE** — ★ PROPAGATED DATE ERROR caught: D&C 130 is 1843/Ramus not "same day as D&C 87" (1832/Kirtland); corrected in 4 files; 15 scripture quotes verbatim
 - [x] 2026-06-01 `study/freedom/provenance/06-signs-and-eclipses.md` **SAMPLE** — CLEAN (scripture verbatim; eclipse facts confirmed vs Wikipedia this session; exemplary caveats)
 - [x] 2026-06-01 `study/freedom/provenance/08-destruction-and-sorting.md` **SAMPLE** — CLEAN (scripture verbatim; sorting + five-years correction confirmed)
-- [ ] 2026-06-01 `study/freedom/provenance/10-modern-prophets-proclamation-constitution.md` **SAMPLE**
+- [x] 2026-06-01 `study/freedom/provenance/10-modern-prophets-proclamation-constitution.md` **SAMPLE** — CLEAN (Hinckley 2001 + Proclamation verbatim; Hunter→Hinckley correction confirmed via the byline)
 - [ ] 2026-06-01 `study/freedom/provenance/11-time-keeping-awe-and-the-two-valences.md` **SAMPLE**
 - [ ] 2026-06-01 `study/without-compulsion.md` **FULL**
 - [ ] 2026-06-01 `study/bom-walk/1-nephi/1-nephi-07.md` **T2**

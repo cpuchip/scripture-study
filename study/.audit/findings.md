@@ -2611,6 +2611,26 @@ darkness." The discipline holds — it explicitly flags that the
 "five years" was a *specifically revealed* interval and applying a
 fixed countdown to our day = date-setting (cross-refs 07 §4). CLEAN.
 
+### study/freedom/provenance/10-modern-prophets-proclamation-constitution.md (2026-05-31) — CLEAN
+SAMPLE. Modern-prophetic-witness research log. Load-bearing items
+all VERBATIM against source this session: Hinckley "The Times in
+Which We Live" (Oct 2001) — the Gadianton paragraph ("We see the
+same thing in the present situation"), "But there is no need to
+fear," "Our safety lies in repentance," "God-inspired national
+safeguard ensuring freedom and liberty"; the 1995 Proclamation
+warning sentence ("the disintegration of the family will bring upon
+individuals, communities, and nations the calamities foretold by
+ancient and modern prophets"). ★ HUNTER→HINCKLEY correction
+CONFIRMED — the Proclamation's own byline (present in the 1995/11
+Ensign original, not just the 2017 reprint) reads "read by President
+Gordon B. Hinckley… at the General Relief Society Meeting held
+September 23, 1995" (Hunter had died March 1995). Scripture
+verbatim: JS-H 1:37-38, D&C 110:16 ("near, even at the doors"), D&C
+98:5/6 ("befriend")/7, Mal 4:5, Ether 8:25, D&C 101:77-80, 109:54.
+Honest flags held: Benson's 1979 Gadianton application is
+Cold-War-specific (handle non-partisanly); pre-1971 Ether-8:24 cites
+index-only. CLEAN.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
