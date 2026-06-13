@@ -4369,6 +4369,36 @@ MCP + the Nelson talk file.
   meaning change — a pure href correction (this study is published on
   cpuchip.net, so the broken nav mattered).
 
+### Freedom set + daily-digest 06-05 (2026-06-13, 459→463) — ALL CLEAN
+
+The Bryce Dunford yt-gospel evaluation (eval + provenance + carry-forward) and
+one more secular sample. Verified by direct grep + the cited Ensign source.
+
+- **freedom/provenance/12-yt-dunford** + **freedom/yt-dunford-constitution-
+  restoration** — CLEAN (SAMPLE). Scripture cross-refs EXACT (D&C 98:5 "that
+  law of the land which is constitutional… belongs to all mankind," 98:10
+  "honest men and wise men should be sought for diligently," 3 Ne 21:4 "set up
+  as a free people by the power of the Father," D&C 101:80 "I established the
+  Constitution of this land, by the hands of wise men whom I raised up unto
+  this very purpose"). ★ The **Woodruff St. George founding-fathers account**
+  verified against the file's own cited source — the Ensign Oct-1991 Q&A "Has
+  the temple work for the founding fathers… been done?" EXISTS in the corpus
+  and confirms every key fact: Woodruff "a member of the Quorum of the Twelve
+  and president of the St. George Temple" (1877, not yet Church President), the
+  signers' baptisms 21 Aug 1877, "proxy ordinations and endowments… performed
+  and recorded," and the 16 Sept 1877 address "They waited on me for two days
+  and two nights." The provenance file's *correction of its own earlier
+  skeptical ruling* (it had flagged this as "tradition presented as fact," then
+  checked the manual and corrected) is honest and well-grounded — a good
+  data-point that the verification discipline cuts both ways. Video transcript
+  timestamps are spot-checkable against the downloaded transcripts per the
+  file's stated grounded-extraction method (SAMPLE depth).
+- **freedom/carry-forward** — CLEAN (SAMPLE). A thread list; the Declaration
+  "unalienable Rights" + D&C 98:5 quotes are correct; minimal quote surface.
+- **daily-digest 06-05** — CLEAN (SAMPLE). Secular AI-news, no gospel quotes;
+  self-critical (removed a likely-fabricated "GPT-5.5/Bedrock" item, flagged
+  the deprecated-Codex naming).
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
