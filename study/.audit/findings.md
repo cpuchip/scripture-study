@@ -3508,15 +3508,27 @@ confirmed by direct grep — including the doctrinal heavyweights.
   Lord had ceased striving with them, and Satan had full power," v34 "it
   mattereth not, if it so be that I am saved in the kingdom of God" — EXACT.
 
-### Moroni 1-10 cluster (2026-06-13, 321→331) — ALL CLEAN ★ BOM-WALK COMPLETE ★
+### Moroni 1-10 cluster (2026-06-13, 321→331) — ALL CLEAN (book of Moroni done)
+
+> **★ CORRECTION (2026-06-13, same session):** the heading and milestone
+> paragraph below originally claimed "BOM-WALK COMPLETE" / "the entire
+> 239-chapter walk is verified clean." **That was wrong** — I read the
+> Moroni chapters as the tail of the cursor and mistook finishing the *book
+> of Moroni* for finishing the *bom-walk*. The walk proceeds in
+> `_progress.md` line order, not canonical order, and ~115 bom-walk chapter
+> notes still sit unchecked below the cursor: **29 Mosiah, 48 Alma (the
+> pre-war chapters 1-50), 7 Jacob, Enos/Jarom/Omni, 10 more 3 Nephi (20,
+> 22-30), 4 Nephi 1, 9 Mormon, Ether 4-6, and 3 studies/.** What IS true:
+> the book of Moroni is clean, and every bom-walk chapter walked *so far*
+> (the cursor-order run #308→352 plus the earlier 1 Ne / 2 Ne / Hel / 3 Ne
+> front) held up with zero REQUOTE corrections. The walk continues into
+> those remaining ~115 chapters. Logging this loud per the covenant's
+> honest-reporting rule — I overclaimed a milestone and am naming it.
 
 The book of Moroni — the last man writing on, the church-order chapters,
 the sacrament prayers (verbatim as used today), Mormon's charity sermon,
 the infant-baptism letter, the depravity letter, and the closing promise +
-farewell. Verified blocks confirmed by direct grep. **With this cluster the
-entire 239-chapter Book-of-Mormon walk (`study/bom-walk/`) is verified
-clean — every chapter note's load-bearing quotes confirmed against the
-gospel-library source.**
+farewell. Verified blocks confirmed by direct grep.
 
 - **Moro 1** (the last man writes on): v3 "I, Moroni, will not deny the
   Christ; wherefore, I wander whithersoever I can for the safety of mine own
@@ -3552,15 +3564,16 @@ gospel-library source.**
   EXACT (the climactic is-Jesus-God datapoint, and the last verse of the
   Book of Mormon).
 
-**★ Milestone:** the bom-walk (1 Nephi 1 → Moroni 10, 239 chapter notes plus
-the standalone studies feeding it) is COMPLETE in the study-correctness
-walk. Across the whole walk the bom-walk held up impeccably — Michael's
+**Book of Moroni complete; bom-walk NOT complete (see correction above).**
+The book of Moroni's 10 chapter notes are verified clean. Across every
+bom-walk chapter walked so far, the notes held up impeccably — Michael's
 per-chapter variant analysis and the chapter-note Verified blocks proved
 accurate on every load-bearing quote sampled; no REQUOTE corrections were
-needed in any bom-walk chapter note (the 3 Webster requotes this session
-were in the deeper bom-walk *studies/*, not the chapter notes). Remaining
-walk items are the non-bom-walk SAMPLE-class files (daily-digest, morgan-
-philpot, etc.) and the 2 ⏳ pending studies.
+needed in any bom-walk *chapter note* (the 3 Webster requotes this session
+were in the deeper bom-walk *studies/*, not the chapter notes). **Remaining:
+~115 bom-walk chapter notes (Mosiah, Alma 1-50, Jacob, Enos, Jarom, Omni,
+3 Ne 20/22-30, 4 Ne, Mormon, Ether 4-6, 3 studies/) + the SAMPLE-class
+files (daily-digest, morgan-philpot) + the 2 ⏳ pending studies.**
 
 ## Walked out-of-band before the walk began
 
