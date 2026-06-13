@@ -2403,6 +2403,47 @@ somewhat in all the learning"), 1:6 ("pillar of fire…upon a rock"),
 1:8 ("he thought he saw God"), 1:20 thesis, Alma 36:22 (Alma's
 near-verbatim echo, leading-trim clean).
 
+### study/christ-in-all-the-scriptures.md (2026-06-01) — TWO Webster words + TWO broken links
+T1+FULL. The heaviest file of the run (~50 scripture quotes, 2
+Webster defs, 3 conference quotes, 4 counted claims). Fixes:
+  • ★ CHRIST (word #125) — defn quoted as "an appellation given
+    to Jesus, the Savior. It is synonymous…" = 1913 verbatim.
+    Genuine 1828: "THE ANOINTED; an appellation given to the Savior
+    of the World, and synonymous with the Hebrew Messiah. It was a
+    custom of antiquity to consecrate persons to the sacerdotal and
+    regal offices by anointing them with oil" — BETTER for the study
+    (names the anointing custom it describes next). Requoted.
+  • ★ TYPE (word #126) — defn ("A figure or representation…
+    correlative to antitype" + "A type is no longer a type when the
+    thing typified comes to be actually exhibited") = 1913 def 3
+    verbatim. Genuine 1828 names "Abraham's sacrifice and the paschal
+    lamb…types of Christ" — the study's own two examples. Requoted;
+    "shadow cast off" point rehomed to Col 2:17/Heb 10:1.
+  • BROKEN LINK: Exodus 12:46 `ot/exo/12.md` → `ot/ex/12.md`.
+  • BROKEN LINK: Micah 5:2 `ot/mic/5.md` → `ot/micah/5.md`.
+  • line 98 "note on this study" corrected (it claimed the Christ
+    defn was "confirmed directly" — it was the 1913).
+EVERYTHING ELSE VERBATIM — the study's character-for-character claim
+holds completely for scripture (~50 quotes, all marked-ellipsis
+clean): Luke 24:27/32/44-45/46, John 5:39/46, 3:14, Num 21:8, Matt
+12:40/22:44/46, Luke 4:21, 3 Ne 23:5/14 + 20:23-24, Acts 3:24/8:35/
+17:2-3/28:23, 1 Cor 15:3-4/5:7/10:4, Exo 12:46, John 19:36, Gen
+22:8/14:18, Ps 110:4, Heb 7:1-3/8:5/10:1, Col 2:17, Moses 5:7/6:63/
+4:21 (correct "he shall bruise" Restoration reading), Isa 7:14/9:6/
+53:5, Micah 5:2, Jacob 7:11/4:5, 2 Ne 11:4/25:1-5/25:26, 1 Ne 19:23/
+13:28-29/13:40, Alma 34:14/33:19/37:43-45, Mosiah 16:14/12:27, Jarom
+1:11, Ether 3:14-16, 1 Pet 1:10-11, Rev 19:10, D&C 20:26/138:41-49,
+Rom 5:14. ★ COUNTED CLAIMS all verified against BYU index: Luke
+24:27 = 5 (EXACT: 2 LeGrand Richards 1960s + 3 nineteenth-century
+JD, none modern-correlated); John 5:39 = 72 ("more than seventy");
+2 Ne 25:26 = 76 ("more than seventy-five") — counts match the index
+totals (the "General Conference" framing is slightly loose; a few
+are JD). Conference quotes VERBATIM: Hales 2006, Oaks 1988 (+ his
+Alma 34:14 reach confirmed), McConkie 1985. ★ McConkie "thirteen
+days before he died" EXACT — died Apr 19, 1985, talk Apr 6
+(family's own account, BYU RSC). Neither Webster fix QUEUED: unlike
+#185 CONSTRAINED, the genuine 1828 SUPPORTS the argument here.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)

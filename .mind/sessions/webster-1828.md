@@ -122,7 +122,13 @@ last_active: 2026-06-12T15:38:52
   count 124. Files 186-196 (bom-walk chapter notes 02-05 + READMEs
   + _graph + _journal + _progress + _workflow + digests) mostly
   CLEAN derivative index/notes — no md links, fragments verbatim.
-  NEXT: #198 christ-in-all-the-scriptures T1+FULL. Model SWITCHED Fable 5 → Opus 4.8 at
+  #198 christ-in-all-the-scriptures (the heaviest file): CHRIST
+  (#125) + TYPE (#126) both 1913-as-1828 (genuine 1828 BETTER, not
+  queued) → count 126; + 2 broken links (ot/exo→ot/ex, ot/mic→
+  ot/micah). ~50 scripture quotes ALL verbatim (its character-for-
+  character claim held); BYU counts EXACT (Luke 24:27=5, John
+  5:39=72, 2 Ne 25:26=76); McConkie "13 days before death" EXACT.
+  NEXT: #199 freedom/00-frame.md T2. Model SWITCHED Fable 5 → Opus 4.8 at
   ~#176 (Fable access lost; Michael: "keep up the same rigor").
   Commit trailer now Opus 4.8. ★ HEAVIEST FIND of the run: #176
   yt/V40tBshkMnE-send-me-covenants had TWO fabricated "Todd says"

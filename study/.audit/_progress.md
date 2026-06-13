@@ -209,7 +209,7 @@ Already done out-of-band: `study/morm-8-three-glories-reading.md` (2026-06-09).
 - [x] 2026-06-01 `study/bom-walk/_progress.md` **LINKS** — CLEAN (no md links; fragments spot-checked accurate)
 - [x] 2026-06-01 `study/bom-walk/_workflow.md` **T2** — CLEAN (one link resolves; Alma 18:10 verbatim)
 - [x] 2026-06-01 `study/bom-walk/1-nephi/1-nephi-01.md` **T1** — ★ GOODLY (#124) 1913-as-1828 requoted (+journal corrected); all scripture verbatim
-- [ ] 2026-06-01 `study/christ-in-all-the-scriptures.md` **T1+FULL**
+- [x] 2026-06-01 `study/christ-in-all-the-scriptures.md` **T1+FULL** — ★ CHRIST (#125) + TYPE (#126) 1913-as-1828 requoted; 2 broken links fixed (exo/mic); ~50 scripture quotes + 3 conf quotes + all counts VERBATIM/EXACT (Luke 24:27=5, John 5:39=72, 2 Ne 25:26=76, McConkie 13 days)
 - [ ] 2026-06-01 `study/freedom/00-frame.md` **T2**
 - [ ] 2026-06-01 `study/freedom/07-likening-the-pattern.md` **T2**
 - [ ] 2026-06-01 `study/freedom/99-synthesis.md` **T2**
