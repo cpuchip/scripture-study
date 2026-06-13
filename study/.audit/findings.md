@@ -2579,6 +2579,24 @@ witness that D&C 87 is not a date-text. Not queued (determinate fix;
 point survives — cf. the #182 Nelson mis-date precedent). NOTE:
 re-walked #199/#200/#201 carry this correction now.
 
+### study/freedom/provenance/06-signs-and-eclipses.md (2026-05-31) — CLEAN
+SAMPLE. The most disciplined file in the freedom set — strong honest
+caveats throughout (any two non-parallel eclipse paths cross
+*somewhere*; a SOLAR eclipse darkens the sun but does NOT turn the
+moon to blood, so the prophesied sun+moon imagery isn't a literal
+match; eclipse-as-sign = folk not doctrine, citing the Church's Sept
+2015 statement). All scripture verbatim: Luke 21:25, Joel 2:30-31,
+Matt 24:29, D&C 45:39 ("looking forth…for the signs"), D&C 88:87,
+Matt 12:39 ("seeketh after a sign"), D&C 63:7-9 ("signs follow those
+that believe"), Ezek 9:4/Rev 7:3/Rev 1:8 (the tav thread, verified
+earlier). ★ Eclipse facts CONFIRMED against Wikipedia this session:
+2027 Aug 2 max totality "60 km SE of Luxor, 6m22s"; the 2027 path
+"crossed by… March 20, 2034, at a location on the southeastern coast
+of Egypt… similar to the… August 2017 and April 2024… over southern
+Illinois" — the "two X" geometry is real, and the file correctly
+carries Michael's 2033→2034 correction (the 2033 Alaska eclipse is
+the red herring). CLEAN.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)

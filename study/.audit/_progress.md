@@ -217,7 +217,7 @@ Already done out-of-band: `study/morm-8-three-glories-reading.md` (2026-06-09).
 - [x] 2026-06-01 `study/freedom/provenance/03-nephi-john-revelation.md` **SAMPLE** — CLEAN (research log; scripture verbatim, D&C 77:5 corrections sound)
 - [x] 2026-06-01 `study/freedom/provenance/04-us-constitutional-history.md` **SAMPLE** — CLEAN (16th/17th Amendment dates confirmed vs National Archives this session; SCOTUS cites correct)
 - [x] 2026-06-01 `study/freedom/provenance/05-dc87-and-the-land.md` **SAMPLE** — ★ PROPAGATED DATE ERROR caught: D&C 130 is 1843/Ramus not "same day as D&C 87" (1832/Kirtland); corrected in 4 files; 15 scripture quotes verbatim
-- [ ] 2026-06-01 `study/freedom/provenance/06-signs-and-eclipses.md` **SAMPLE**
+- [x] 2026-06-01 `study/freedom/provenance/06-signs-and-eclipses.md` **SAMPLE** — CLEAN (scripture verbatim; eclipse facts confirmed vs Wikipedia this session; exemplary caveats)
 - [ ] 2026-06-01 `study/freedom/provenance/08-destruction-and-sorting.md` **SAMPLE**
 - [ ] 2026-06-01 `study/freedom/provenance/10-modern-prophets-proclamation-constitution.md` **SAMPLE**
 - [ ] 2026-06-01 `study/freedom/provenance/11-time-keeping-awe-and-the-two-valences.md` **SAMPLE**
