@@ -4247,6 +4247,42 @@ Zeezrom cross-examination. Verified by direct grep.
   exposes the briber; the Son "the very Eternal Father"; the resurrection;
   Zeezrom begins to tremble).
 
+### Alma 12, 13, alma5-study, 14 (2026-06-13, 443→447) — ALL CLEAN ★ one count note
+
+The redemption/priesthood discourse, the great searching-questions spin-off
+study, and the hardest verse in Alma. Verified by direct grep.
+
+- **Alma 12** (chains of hell / flaming sword): v11 "they are taken captive by
+  the devil… Now this is what is meant by the chains of hell" — EXACT (the
+  self-tightening spiral of hardening; the flaming sword as mercy — death as
+  the gift of probation).
+- **Alma 13** (the holy order): v3 "called and prepared from the foundation of
+  the world according to the foreknowledge of God, on account of their
+  exceeding faith… in the first place being left to choose good or evil" —
+  EXACT (foreordination grounded in foreknown choice, not Calvinist election;
+  Melchizedek as the model; enter into the rest).
+- **`alma5_searching-questions` study**: all quotes verify EXACT — Alma 4:19,
+  5:6/14/26/37/48, Webster countenance/testimony/image (its own provenance
+  block confirms gospel_get + webster). ★ **COUNT NOTE (logged for Michael, not
+  rewritten):** the study states "Forty-three distinct questions appear across
+  Alma 5's sixty-two verses" (the alma-05 chapter note echoes "43 distinct
+  questions counted"). Direct count of the source: **exactly 42 question marks**
+  in the verse text. The +1 is methodology-dependent — "distinct questions" can
+  legitimately differ from "question marks" because compound interrogatives
+  bundle several questions under one `?` (v53 alone: "can ye withstand… can ye
+  lay aside… can ye be puffed up… will ye still persist…?" = four clauses, one
+  mark). So 43 is defensible as an interrogative-clause count and is NOT a
+  misquote; left intact. Recorded here so Michael can tighten to "more than
+  forty" if he prefers the verifiable floor (the study's own "40+ confirmed"
+  framing already holds). The only soft spot in an otherwise pristine, well-
+  provenanced study.
+- **Alma 14** (the Spirit constraineth me): v11 "The Spirit constraineth me
+  that I must not stretch forth mine hand… the blood of the innocent shall
+  stand as a witness against them," v26 "give us strength according to our
+  faith which is in Christ, even unto deliverance" — EXACT (the BoM's most
+  direct confrontation with why God permits the innocent to suffer, given
+  through tears; the Christic silence; deliverance after the full measure).
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
