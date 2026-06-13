@@ -3,7 +3,7 @@ lane: pg-ai-stewards
 session_id: 7ea7faa4-688a-451a-ac68-b7ea662d4b81
 status: active
 started: 2026-06-11T22:00:16
-last_active: 2026-06-13T02:29:24
+last_active: 2026-06-13T03:11:04
 ---
 
 ## Working on
@@ -17,12 +17,19 @@ last_active: 2026-06-13T02:29:24
   on checkout@v6/setup-go@v6 (Node-24, deprecation resolved). README CI badge;
   `tests/README.md`. **seed_harness genericize VERIFIED** (virgin boot = all-generic
   agents/intents=0/core-MCP-only); **anatomy doc clean**. .gitattributes already eol=lf.
-  **B6 REMAINING = the cutover-prep leg** (its own focused effort): overlay re-author
-  (workspace, 33 migrations → doc_*/relational/config-keys) + rename-map.tsv finalize
-  (workspace parity/) + **classify the 20 live↔repo mismatches** (verify-suite — needs
-  the live substrate; read-only diff; may surface Hinge-category calls). bgworker
-  `_kind` enum = deferrable Rust-typing refactor. Then the **CUT** (Hinge ①+③) +
-  the **coder wave** 20-coder.sql (Hinge ②).
+  **B6 cutover-prep DONE this session (workspace `6bdeef9`+`0cb5cd3`):** rename-map
+  finalized through B5; **overlay re-author + OVERLAY-REPLAY PROOF GREEN** (35/35
+  overlays apply on a virgin core — h1-1/h3-2 scripture_anchor→values_anchor, init-01
+  AGE→relational import_workstream, pe7-seed-ai-news-7am filed [the B5/18 orphan];
+  the ~15 other study_*-grep overlays apply clean as-is — 'study-write' is a valid
+  operator pipeline name, not a renamed-object ref; both scheduled pipelines land;
+  harness `parity/overlay-replay.sh`). **B6 REMAINING — the ONE cutover-prep item
+  left: classify the 20 live↔repo mismatches** (verify-suite — needs the LIVE
+  substrate up; read-only function-def diff; feeds the CUT dispositions; my batch
+  flags are the starting set: es10 coverage, r11-supersedes-r7/r8, 15a/15b orphans,
+  work_item_promote_trigger sabbath tension, j8c spawn_children). bgworker `_kind`
+  enum = deferrable Rust refactor. Then the **CUT** (Hinge ①+③; Michael not using
+  live → low-risk, full-parity soak can relax) + the **coder wave** 20-coder.sql (Hinge ②).
 - **★ AUTHORING LEG COMPLETE 2026-06-13 — B5 SHIPPED, chain runs 00→19, migration manifest = ZERO migration entries (verify/test harness only).** All 189 historical migrations consolidated into 20 authored subsystem files. B5 commits (all pushed, virgin-smoke green each):
   - **17 (`35d66a6`)** personas — `17-personas.sql`: persona agent + persona-turn pipeline (r7) + lmstudio/gemini example pipelines (r8) + ct2-7c persona/room facets (dispatch_facets/remember/forget FINAL) + persona_outbox + room_say (r16/r20) + room_react (r21). compose_tools('persona')=[room_react,room_say]; **16's on_one_shot persona-% arm auto-verifies a persona-turn (cross-batch proof, on_one_shot NOT re-authored — the B5/17 note honored)**. r18/19 max_tokens→16000 folded; overlay = librarian/codewright/gamemaster room_react grants; persona deny study_*→doc_*.
   - **18 (`9d9a0f4`)** scheduler — `18-scheduler.sql`: cron scheduled_pipelines (pe6 engine + pe7 fire/watchman-tick FINAL). cron parse + e2e dispatch + D-PE4 missed-window all green. ai-news-7am operator seed → overlay.
