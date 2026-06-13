@@ -29,6 +29,14 @@ last_active: 2026-06-13T09:51:34
     NO intents (seed own) + NO 'research' agent (use stewards-explore). chat-post deferred
     (double-fire: don't run OSS --profile personas with live persona keys). **OSS stack left
     RUNNING — hourly tick will digest Meditations next.**
+    - **★ AUTONOMOUS TICK CONFIRMED (`7ceb658`):** the hourly schedule fired at 22:00 ON ITS
+    OWN + digested Meditations (done 22:08, 11KB) — the #6 self-improvement-loop heartbeat,
+    live, on a human shelf. Self-limits: when the shelf empties, book_next→null→read stage
+    outputs "SHELF EMPTY" + no-ops (no runaway). tao-te-ching queued for 23:00.
+    - **MATERIALIZE WIRED:** book_publish now also enqueues a pending_file_writes row →
+    digests are materialize-capable (DB always; disk when /workspace RW or at cutover →
+    real study/books/). Proven via `stewards-cli materialize-writes` (wrote self-reliance.md
+    8KB + meditations.md 11KB to disk from the queue). OSS /workspace stays RO (safe default).
   - **NEXT per Michael: #4 playlist digester** → #5 cutover → #6 self-improvement loop → #7 fun.
     Details below.
 - **★ ROADMAP DETAIL (captured, #3+ NOT yet built):**
