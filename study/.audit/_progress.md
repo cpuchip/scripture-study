@@ -294,8 +294,8 @@ Already done out-of-band: `study/morm-8-three-glories-reading.md` (2026-06-09).
 - [x] 2026-06-02 `study/bom-walk/3-nephi/3-nephi-5.md` **LINKS** — CLEAN (Mormon names himself; v12 "I am called Mormon," v13 "I am a disciple of Jesus Christ, the Son of God," v18 "a just and a true record," v26 "then shall they know their Redeemer… gathered in from the four quarters" all EXACT)
 - [x] 2026-06-02 `study/bom-walk/3-nephi/3-nephi-11.md` **LINKS** — CLEAN (★ Christ descends — heart of the book; v7 "Behold my Beloved Son… hear ye him," v11 "drunk out of that bitter cup," v14 "feel the prints of the nails… God of Israel," v27 "the Father, and the Son, and the Holy Ghost are one," v29 "the father of contention," v40 "more or less than this… cometh of evil" all EXACT)
 - [x] 2026-06-02 `study/bom-walk/3-nephi/3-nephi-8.md` **LINKS** — CLEAN (the destruction; v1 "cleansed every whit," v18 "rent in twain… seams and in cracks," v20 "feel the vapor of darkness," v23 "three days… no light," v25 the too-late lament "our mothers and our fair daughters" all EXACT)
-- [ ] 2026-06-02 `study/bom-walk/3-nephi/3-nephi-9.md` **LINKS**
-- [ ] 2026-06-02 `study/bom-walk/3-nephi/3-nephi-10.md` **LINKS**
+- [x] 2026-06-02 `study/bom-walk/3-nephi/3-nephi-9.md` **LINKS** — CLEAN (the voice in the darkness; v13 "that I may heal you," v15 "I created the heavens and the earth… with the Father from the beginning," v18 "Alpha and Omega," v20 "a broken heart and a contrite spirit… they knew it not" all EXACT; another is-jesus divinity declaration)
+- [x] 2026-06-02 `study/bom-walk/3-nephi/3-nephi-10.md` **LINKS** — CLEAN (the hen-lament; v4 "how oft have I gathered you as a hen gathereth her chickens," v5 "and ye would not," v6 "how oft will I gather you… if ye will repent," v10 "their mourning was turned into joy" all EXACT)
 - [ ] 2026-06-02 `study/bom-walk/3-nephi/3-nephi-12.md` **LINKS**
 - [ ] 2026-06-02 `study/bom-walk/3-nephi/3-nephi-13.md` **LINKS**
 - [ ] 2026-06-02 `study/bom-walk/3-nephi/3-nephi-14.md` **LINKS**
