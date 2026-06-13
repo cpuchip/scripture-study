@@ -3,7 +3,7 @@ lane: general-workspace
 session_id: c4fef1d0-292c-4ad6-b6c5-76e2af1043c3
 status: active
 started: 2026-06-11T12:00:00
-last_active: 2026-06-13T15:05:00
+last_active: 2026-06-13T15:29:34
 ---
 
 > Note: this lane was previously filed under the typo `general-workspase.md`;
@@ -16,8 +16,10 @@ last_active: 2026-06-13T15:05:00
   Euclidean form, not epistemology. **Euclid = build-the-oracle-first archetype.**
   Book downloaded to `books/Euclid/` (gitignored). Substrate carry: 5 learning
   modes (cite-the-warrant linter + Postulates block lead) — proposal-shaped,
-  dominion_in_council, surface at a substrate council. Also fixed a grounding-hook
-  bug (reground counter wrote cwd-relative → now project-anchored; docs/06).
+  dominion_in_council, surface at a substrate council. Also fixed the reground-
+  counter hook: cwd-relative → project-anchored → **per-session (keyed by
+  session_id)** so 6 concurrent sessions don't share one counter (`reground.py`,
+  `1d26a302`; docs/06; lesson in `project_claude_code_context_plugin`).
 - **Preside study: COMPLETE + COVENANT RATIFIED (2026-06-12)** — study pushed
   (`e74e6e90`), council held, `presiding:` extension live in covenant.yaml
   (emergency-accounting + uniform-watching amendments). Open follow-on:

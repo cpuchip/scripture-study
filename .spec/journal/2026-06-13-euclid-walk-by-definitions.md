@@ -61,6 +61,44 @@ thesis. Voice self-audit caught five over-budget em-dash paragraphs before ship.
 ## Minor
 
 - `/books/` is gitignored → the Euclid copy stays local (like gospel-library).
-- Hook quirk: a grounding hook wrote `.claude/cache/last-ground.txt` into
-  `books/Euclid/` (cwd-relative) when a Bash command cd'd there; removed it,
-  logged in docs/06.
+
+## Continuation — the reground hook, redesigned (per-session)
+
+What started as a one-line "minor" cleanup became a real fix, in three stages
+across the session — and the third stage was Michael's catch, not mine:
+1. **cwd-relative** (original bug) — scattered stray `.claude/cache/` dirs into
+   any directory a shell cd'd into (found one in `books/Euclid/`).
+2. **project-anchored** (`e44025c2`, my first fix) — stopped the scattering, but
+   made it ONE shared counter across all ~6 concurrent sessions.
+3. **per-session, keyed by session_id** (`1d26a302`, the fix) — `reground.py` +
+   a shared `lanes_common.reground_counter`; `lane_end.py` prunes the counter on
+   SessionEnd.
+
+Michael caught #2 immediately: "that file applies to all 6 sessions, so it'll
+fire way more often than it should." Exactly right — a shared counter = ~6x
+firing, in the *wrong* session, plus lost increments from races. Verified with the
+inverse hypothesis: silent 1–49, fires on 50, sessions A/B independent, self-cleans
+on end. Durable lesson (in `project_claude_code_context_plugin`): hook state must
+key to session_id under concurrency, never to a global/cwd file — concurrent
+sessions are the common case here, not the edge.
+
+## What this session was really about
+
+Michael's reflection tied both arcs together: he graduated in physics, never read
+Euclid, but lives by experimental method — hypothesis → experiment → revise →
+discover — and has applied it to the gospel and this workspace for years. That IS
+the study's honest seam, lived: Euclidean in FORM, experimental in EPISTEMOLOGY.
+And he proved it on the spot — ran my "project-anchored" fix against lived
+experience ("but I have six sessions"), found where it broke, and we revised.
+Alma 32 on a grounding hook. The relational shape of the whole session was the
+creation cycle in miniature: propose → watch → reprove → revise → trust. New
+principle added to `.mind/principles.md` ("The Walk by Definitions — Euclidean
+Form, Experimental Verification").
+
+## Carry-forward (next session)
+
+- Substrate learning-mode catalog (5 items; cite-the-warrant linter + Postulates
+  block lead) — proposal-shaped, `dominion_in_council`, surface at a substrate
+  council, NOT build-now. In active.md + brain.
+- Optional for Michael: pull the complete 13-book Heath/Joyce Euclid into
+  `books/Euclid/` if he wants the whole work in-repo (left as README pointers).

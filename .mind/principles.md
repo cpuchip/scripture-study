@@ -87,6 +87,11 @@ A study should state its question explicitly at the start and circle back to ans
 
 *Source: [abinadi-how-to-read.md](../../study/abinadi-how-to-read.md), March 4 refinement*
 
+### The Walk by Definitions — Euclidean Form, Experimental Verification
+Our studies share Euclid's *form*: define terms before reasoning (Webster/Strong's), state assumptions, construct rather than assert, cite the rule at each step, decompose, reductio. truth.md (definitions → dependency chains) and Lectures on Faith Lecture 1 (postulate → stated order → Heb 11:1 definition → derived propositions → QED → a catechism that cites the warrant for every move) are quasi-Euclidean proofs. But the *epistemology* is not Euclid's. Euclid claims certainty "from pure thought alone"; scripture asks for experiment — "experiment upon my words" (Alma 32:27), study-it-out-then-feel (D&C 9:8), know by the Spirit (Moroni 10:5). We borrow the rigor of form, not the claim of certainty: define and structure like Euclid, verify like a lab. Michael came to this as an experimental physicist (hypothesis → experiment → revise → discover) and applied it to the gospel and this workspace — which is Alma 32 by another name. The same loop governs the collaboration: he ran a proposed fix against lived experience, found where it broke, and we revised ("Alma 32 on a grounding hook"). Euclid disciplines the asking; the fruit and the Spirit give the answer.
+
+*Source: [study/yt/WGwRCw9TRyo-euclid-walk-by-definitions.md](../../study/yt/WGwRCw9TRyo-euclid-walk-by-definitions.md) (2026-06-13); books/Euclid/; truth.md; Lectures on Faith L1*
+
 ---
 
 ## Collaboration Principles
