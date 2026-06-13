@@ -2745,6 +2745,21 @@ The note that a chapter CAN be near-identical (making the deliberate
 variants elsewhere — 12:9, 13:6 — stand out) is a sound
 observation. CLEAN.
 
+### study/bom-walk/2-nephi/2-nephi-15.md (2026-06-01) — CLEAN (Isaiah-variant chapter)
+LINKS. No markdown links. Both "BoM shorter here" variants CONFIRMED
+by direct 2 Ne 15 vs Isaiah 5 comparison: v8 (BoM omits "that lay
+field to field," reads "till there CAN be no place" vs KJV "till
+there BE no place"); v29 (BoM omits the first clause "Their roaring
+shall be like a lion"). Useful corrective the study draws — the BoM
+Isaiah variants run BOTH directions (12:16 had MORE, here LESS),
+not uniform expansion. ★ "six woes" count EXACT — 6 "wo unto" at
+vv 8, 11, 18, 20, 21, 22 (study's enumeration matches). Quoted
+lines verbatim (vv1-2 vineyard, v4 "what could have been done
+more," v7, v20 "call evil good," v25 "his hand is stretched out
+still," v26 ensign). The v7 Hebrew wordplay (mishpat/mispach,
+tsedaqah/tse'aqah) is flagged as standard philology, not a fresh
+claim. CLEAN.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)

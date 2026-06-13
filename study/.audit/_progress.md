@@ -235,7 +235,7 @@ Already done out-of-band: `study/morm-8-three-glories-reading.md` (2026-06-09).
 - [x] 2026-06-01 `study/bom-walk/studies/2ne9_atonement-monster-and-gate.md` **T1** — ★ PROBATION (#129) 1913-as-1828 requoted; ~25 blockquotes + Isa 55 verbatim; "ten woes" count CONFIRMED
 - [x] 2026-06-01 `study/bom-walk/2-nephi/2-nephi-13.md` **LINKS** — CLEAN (no md links; Isaiah variants v6/v9 confirmed by direct comparison)
 - [x] 2026-06-01 `study/bom-walk/2-nephi/2-nephi-14.md` **LINKS** — CLEAN (no md links; near-identical-to-KJV claim confirmed, 3 minor variants v2/v3/v5)
-- [ ] 2026-06-01 `study/bom-walk/2-nephi/2-nephi-15.md` **LINKS**
+- [x] 2026-06-01 `study/bom-walk/2-nephi/2-nephi-15.md` **LINKS** — CLEAN (no md links; v8/v29 BoM-shorter variants + six-woes count confirmed)
 - [ ] 2026-06-01 `study/bom-walk/2-nephi/2-nephi-16.md` **LINKS**
 - [ ] 2026-06-01 `study/bom-walk/2-nephi/2-nephi-17.md` **LINKS**
 - [ ] 2026-06-01 `study/bom-walk/2-nephi/2-nephi-18.md` **LINKS**
