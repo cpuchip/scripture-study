@@ -1851,6 +1851,13 @@ FULL. No Webster quotes. All ~15 scripture renderings verbatim
 Moses 6:36, Moro 7:15/45/48, 10:22, Jacob 4:13-14); cross-study
 links resolve.
 
+### study/best-books-and-the-spirit-of-discernment.md (2026-04-30) — CLEAN
+FULL. All quotes verbatim: the six-witness set (D&C 88:78-79/118,
+90:15, 93:53, 109:7/14, 130:18-19, AoF 13 — count matches), 2 Ne
+28:31, D&C 11:12, Gal 5:22-23, 4 Ne 1:3, Hel 12:1-2, and the
+Brigham Young ch. 27 quote (both ellipses properly marked, masking
+real text). Michael's testimony quote = participant record.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)

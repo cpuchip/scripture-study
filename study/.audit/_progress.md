@@ -162,7 +162,7 @@ Already done out-of-band: `study/morm-8-three-glories-reading.md` (2026-06-09).
 - [x] 2026-04-25 `study/nephi-reads-isaiah.md` **T1+FULL** — LIKEN held GENUINE; witness-law hybrid fixed; verse counts exact; rest verbatim
 - [x] 2026-04-25 `study/stories/teancum-the-brave.md` **SAMPLE** — "Helaman = Teancum's father" confabulation fixed (×2); narrative details verify
 - [x] 2026-04-30 `study/discernment-and-the-comprehending-eye.md` **FULL** — CLEAN (~15 scriptures verbatim)
-- [ ] 2026-04-30 `study/best-books-and-the-spirit-of-discernment.md` **FULL**
+- [x] 2026-04-30 `study/best-books-and-the-spirit-of-discernment.md` **FULL** — CLEAN (six-witness set + BY ch 27 all verbatim)
 - [ ] 2026-04-30 `study/yt/00qzsgy9xr4-halestorm-outcomes-worldviews.md` **SAMPLE**
 - [ ] 2026-05-01 `study/books/physics-and-the-gospel/two-methods-one-truth.md` **T1**
 - [ ] 2026-05-01 `study/broken-heart-and-contrite-spirit.md` **T1+FULL**
