@@ -4217,6 +4217,36 @@ verified and folded).
   only to pay — completing the Abinadi substitution thread; Alma's
   revelatory-honesty "I do not know" proven correct).
 
+### Alma 8-11 (2026-06-13, 439→443) — ALL CLEAN
+
+The Ammonihah mission setup: Alma sent back to the city that cast him out, the
+"more tolerable for the Lamanites" sermon, Amulek the second witness, and the
+Zeezrom cross-examination. Verified by direct grep.
+
+- **Alma 8** (go back): v31 "they did not exercise their power until they were
+  bound in bands and cast into prison. Now, this was done that the Lord might
+  show forth his power in them" — EXACT (the hardest obedience — return to the
+  rejecting city; the same Mosiah-27 angel recommissions; the mission begins
+  with a meal to a hungry stranger).
+- **Alma 9** (more tolerable for the Lamanites): v16 "it is because of the
+  traditions of their fathers that caused them to remain in their state of
+  ignorance; therefore the Lord will be merciful unto them" — EXACT (light
+  sinned against is the measure of guilt; the grievance-tradition partial-
+  exculpation proof-text; "destroyed in one day," v4, the dramatic irony of
+  ch 16).
+- **Alma 10** (I knew, yet I would not know): v6 "I knew concerning these
+  things, yet I would not know," v23 "it is by the prayers of the righteous
+  that ye are spared… if ye will cast out the righteous from among you then
+  will not the Lord stay his hand" — EXACT (the second witness raised from
+  within; the prayers of the righteous as the wicked city's unseen shield —
+  Abraham's Sodom).
+- **Alma 11** (not saved IN their sins): v37 "no unclean thing can inherit the
+  kingdom of heaven… ye cannot be saved in your sins," v43 "the spirit and the
+  body shall be reunited again in its perfect form… a bright recollection of
+  all our guilt" — EXACT (the distinction Nehor's heresy denies; the bribe
+  exposes the briber; the Son "the very Eternal Father"; the resurrection;
+  Zeezrom begins to tremble).
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)

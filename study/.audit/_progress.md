@@ -458,10 +458,10 @@ Already done out-of-band: `study/morm-8-three-glories-reading.md` (2026-06-09).
 - [x] 2026-06-02 `study/bom-walk/alma/alma-05.md` **T2** — CLEAN (Can ye feel so now?; v14 "have ye received his image in your countenances? Have ye experienced this mighty change in your hearts?," v26 "if ye have felt to sing the song of redeeming love, I would ask, can ye feel so now?" EXACT — testimony as a mirror made of ~40 questions; spin-off alma5_searching-questions verified + folded)
 - [x] 2026-06-02 `study/bom-walk/alma/alma-06.md` **LINKS** — CLEAN (word then order; v3 "the same were rejected, and their names were blotted out, that their names were not numbered among those of the righteous" EXACT — the church cleansed by response to the sermon; word liberal to all)
 - [x] 2026-06-02 `study/bom-walk/alma/alma-07.md` **LINKS** — CLEAN (that he may know how to succor; v8 "as to this thing I do not know; but this much I do know," v12 "he will take upon him their infirmities… that he may know according to the flesh how to succor his people according to their infirmities" EXACT — the empathic atonement, completing the Abinadi thread)
-- [ ] 2026-06-02 `study/bom-walk/alma/alma-08.md` **LINKS**
-- [ ] 2026-06-02 `study/bom-walk/alma/alma-09.md` **LINKS**
-- [ ] 2026-06-02 `study/bom-walk/alma/alma-10.md` **LINKS**
-- [ ] 2026-06-02 `study/bom-walk/alma/alma-11.md` **LINKS**
+- [x] 2026-06-02 `study/bom-walk/alma/alma-08.md` **LINKS** — CLEAN (go back; v31 "they did not exercise their power until they were bound in bands and cast into prison… that the Lord might show forth his power in them" EXACT — the hardest obedience; the same angel recommissions; Amulek the prepared host)
+- [x] 2026-06-02 `study/bom-walk/alma/alma-09.md` **LINKS** — CLEAN (more tolerable for the Lamanites; v16 "it is because of the traditions of their fathers that caused them to remain in their state of ignorance; therefore the Lord will be merciful unto them" EXACT — light sinned against is the measure; grievance-tradition partial-exculpation proof-text)
+- [x] 2026-06-02 `study/bom-walk/alma/alma-10.md` **LINKS** — CLEAN (I knew, yet I would not know; v6 "I knew concerning these things, yet I would not know," v23 "it is by the prayers of the righteous that ye are spared… if ye will cast out the righteous… will not the Lord stay his hand" EXACT — the second witness; the city's unseen shield)
+- [x] 2026-06-02 `study/bom-walk/alma/alma-11.md` **LINKS** — CLEAN (not saved IN their sins; v37 "no unclean thing can inherit the kingdom of heaven… ye cannot be saved in your sins," v43 "the spirit and the body shall be reunited again in its perfect form… a bright recollection of all our guilt" EXACT — the bribe exposes the briber; the very Eternal Father; the resurrection)
 - [ ] 2026-06-02 `study/bom-walk/alma/alma-12.md` **LINKS**
 - [ ] 2026-06-02 `study/bom-walk/alma/alma-13.md` **T1**
 - [ ] 2026-06-02 `study/bom-walk/studies/alma5_searching-questions.md` **T1**
