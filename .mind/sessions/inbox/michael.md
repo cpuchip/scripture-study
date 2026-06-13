@@ -47,22 +47,23 @@ defensible methodology, so I left the prose intact and logged it. Tighten to
 ### Your 3 post-walk asks
 1. ✅ **DONE — `publish.exe -v` ran.** `public/` regenerated, 170 files picked
    up all the walk's accumulated corrections, committed + pushed (ibeco 200).
-2. ⏳ **cpuchip.net parity pass — 1 of 11 shipped.** ✅ **send-me-covenants is
-   DONE and live** — both fabricated "Todd says" quotes removed (one was the
-   brother-of-jared study's own §VI prose, one was Ether 6:9 scripture; Todd's
-   genuine parallels — "you can't even soften your own heart" / "your prayer is
-   your platform" — quoted instead), the law-of-Moses quote-blend split, and
-   POSSESS 1913→1828 (re-confirmed vs the MCP). validate + build green, pushed,
-   site 200. I did **silent accurate fixes** on the public face rather than
-   visible "we erred" notes — that public-disclosure style is your call; say the
-   word if you'd rather have visible correction notes. **The other 10 studies
-   are staged** (exact before/after in `findings.md` + `cpuchip-republish.md`) —
-   I deferred rushing 10 more live-site edits this deep in the night (the
-   keep-the-watch-whole call); they're a clean fresh-context pass.
+2. ✅ **DONE — cpuchip.net parity pass COMPLETE, 11 of 11, all live.** Silent
+   fixes throughout (your call, confirmed). send-me-covenants (the two fabricated
+   "Todd says" quotes removed) + the other 10: every Webster 1913→1828 requote
+   (give/forsake/repent/possess/know, sacrifice, compel, easiness, circumspectly,
+   declare, presumptuous, hope ×2) re-confirmed GENUINE against the repaired MCP;
+   every scripture/date fix vs source (Alma 22:18, 4 Ne 1:12, Ether 2:25/12:19-20,
+   3 Ne 6:15, Rom 5:5, 2 Cor 13:1, Luke 18:18, McKay-1950, Nelson Apr-2015, the
+   D&C 87/130 date, the confabulated Pearce quote). Two bonus catches: a broken
+   `<S>` tag + a leaked editorial artifact in hope-and-the-grammar-of-pairs.
+   validate + build green each push; cpuchip.net + study routes 200. The
+   workspace originals keep their dated correction notes (audit trail); the
+   public face just reads accurate.
 3. ✅ **DONE — scripture-book note dropped** in `projects/scripture-book/.spec/
    quote-audit-note-from-walk.md` + pushed (lists the quote-classes to check;
    did NOT touch the book — its stewardship).
 
-Full audit trail in `study/.audit/findings.md`. The walk is **complete**; asks 1
-and 3 done, ask 2's urgent piece (the fabricated quotes) shipped, the rest
-cleanly staged.
+Full audit trail in `study/.audit/findings.md`. The walk is **complete** and
+**all three post-walk asks are done** — publish regenerated, all 11 cpuchip
+studies corrected and live, scripture-book note delivered. Two bin-4 items
+(Morm 5:15, Alma 3:6) and the alma5 soft-count remain queued for your reading.

@@ -70,19 +70,18 @@ When the walk completes (469/469), do these three, in order:
    page (★ send-me-covenants first — fabricated quotes are live). Michael
    confirmed 2026-06-13: "yes update the cpuchip.net studies when you are done."
 
-   **STATUS 2026-06-13: 1 of 11 shipped.** ✅ **send-me-covenants DONE + live**
-   (the urgent one — fabricated quotes removed). **10 remaining**, deferred to a
-   fresh-context pass (not rushed at the deep end of the marathon walk session —
-   the keep-the-watch-whole call): give-away-all-my-sins, without-compulsion,
-   four-groups-and-the-engineer, the-seventh-time, what-was-the-atonement-for,
-   hope-and-the-grammar-of-pairs, brother-of-jared-three-problems,
-   refinement-stewardship-and-hope, abinadi-how-to-read, zion-blueprint, **+ the
-   new morm-8-three-glories D&C 109:76 link fix**. Each has exact before/after
-   in `findings.md` + the table above. Per-study cycle proven fast: edit →
-   `npm run validate` → `npm run build` → commit → push (Dokploy) → 200. The
-   visible-note-vs-silent-fix choice for the public face is **Michael's call**
-   (send-me-covenants was done silent-but-accurate; ask if he wants visible
-   correction notes instead).
+   **STATUS 2026-06-13: ✅ COMPLETE — 11 of 11 shipped + live.** Michael:
+   "I prefer silent fixes there." All carried silently (workspace originals keep
+   their dated correction notes for the audit trail; the published face reads
+   accurate). Two commits: send-me-covenants (`projects/cpuchip.net/.spec/
+   journal/2026-06-13-parity-pass-send-me-covenants.md`) + the other 10
+   (`…-parity-pass-complete.md`). Every Webster entry re-confirmed GENUINE vs
+   the repaired MCP; every scripture/date vs source. validate + build green;
+   cpuchip.net + study routes 200. **morm-8-three-glories needed no change** —
+   its `<S>` tag already targeted dc/109 v=76 (the walk's link fix was only to
+   the workspace's relative-link form), Webster already genuine. **Bonus catch:**
+   hope-and-the-grammar-of-pairs had a broken `<S>` tag (Matt 18:16 mistagged
+   `nt/matt/6 v=22`) + a leaked editorial artifact, both fixed.
 
 3. **Leave a note for the scripture-book agent** (do NOT edit the book myself —
    its own stewardship). Michael: "we should probably double check on the book
