@@ -2059,6 +2059,20 @@ FULL. All quotes verbatim: D&C 93:28-39, 88:6/22/28/34/35/40,
 (Nelson 1998, Oaks 2000 become, Bednar 2007 clean-hands/pure-heart
 pair, Eyring 2019, Pingree 2023).
 
+### study/brother-of-jared-three-problems.md (2026-05-24) — Ether 2:25 "do"→"prepare for you"
+FULL. One word-swap requoted: the Ether 2:23,25 blockquote
+rendered verse 25's second asking as "what will ye that I should
+do" — the verse says "what will ye that I should PREPARE FOR YOU."
+The study had flattened the two askings into one wording; the
+"do"→"prepare" shift is the verse's own word (and quietly
+strengthens the study's pattern-3 reading). Everything else
+verbatim: Ether 2:6/17/19/20/21/22/24-25, 3:1 (Shelem/sixteen
+stones), 3:4, 3:6, 3:9, 6:8, 6:9, 12:19-20. Counted claims EXACT:
+eight vessels (Ether 3:1 parenthetical), 344 days (Ether 6:11
+"three hundred and forty and four days"). The "answers a question
+the steward had stopped asking" observation checks out — v22 asks
+only about light; v24 volunteers the steering answer.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
