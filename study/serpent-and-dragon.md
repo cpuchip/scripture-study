@@ -330,7 +330,7 @@ The whole story of scripture, told through the serpent:
 7. **The Type Corrupted** — Israel worships the symbol instead of what it points to; Hezekiah destroys it ([2 Kings 18:4](../gospel-library/eng/scriptures/ot/2-kgs/18.md))
 8. **The Prophets** — Isaiah sees serpent → cockatrice → fiery flying serpent ([Isaiah 14:29](../gospel-library/eng/scriptures/ot/isa/14.md)); leviathan and dragon to be slain ([Isaiah 27:1](../gospel-library/eng/scriptures/ot/isa/27.md))
 9. **Christ** — "As Moses lifted up the serpent... even so must the Son of man be lifted up" ([John 3:14](../gospel-library/eng/scriptures/nt/john/3.md))
-10. **Apostolic Age** — Paul: "as the serpent beguiled Eve, so your minds should be corrupted" ([2 Corinthians 11:3](../gospel-library/eng/scriptures/nt/2-cor/11.md))
+10. **Apostolic Age** — Paul: "as the serpent beguiled Eve … so your minds should be corrupted" ([2 Corinthians 11:3](../gospel-library/eng/scriptures/nt/2-cor/11.md))
 11. **Last Days** — The great red dragon, seven heads, ten horns, open war ([Revelation 12:3](../gospel-library/eng/scriptures/nt/rev/12.md))
 12. **The Millennium** — The dragon bound, "that old serpent" ([Revelation 20:2](../gospel-library/eng/scriptures/nt/rev/20.md))
 13. **The End** — Cast into the lake of fire, forever ([Revelation 20:10](../gospel-library/eng/scriptures/nt/rev/20.md))

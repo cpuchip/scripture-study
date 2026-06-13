@@ -472,7 +472,7 @@ Alma 41:13 — "merciful for that which is merciful; just for that which is just
 
 - **Write down what you'd say.** Pick one friend who is sick or hurting. Before you see them or call them, write down — on paper — what you would actually say if they asked, "What happens when I die?" Not a doctrinal essay. Three or four sentences. The Spirit will refine the words. But start with something real.
 
-- **Practice the restoration principle on yourself.** At the end of each day, ask: "What was restored to me today? What did I send out — patience or irritation, curiosity or indifference, love or distraction — and what came back?" This is Alma's cosmic echo in miniature: "intelligence cleaveth unto intelligence; mercy hath compassion on mercy and claimeth her own" ([D&C 88:40](../../gospel-library/eng/scriptures/dc-testament/dc/88.md)).
+- **Practice the restoration principle on yourself.** At the end of each day, ask: "What was restored to me today? What did I send out — patience or irritation, curiosity or indifference, love or distraction — and what came back?" This is Alma's cosmic echo in miniature: "intelligence cleaveth unto intelligence; … mercy hath compassion on mercy and claimeth her own" ([D&C 88:40](../../gospel-library/eng/scriptures/dc-testament/dc/88.md)).
 
 - **Do one temple session this month with the plan in mind.** Walk through the endowment and consciously notice the architecture: fallen state → covenants → veil → celestial room. You've traced this journey across six phases of study. Now *walk* it. Let the symbols land differently.
 
