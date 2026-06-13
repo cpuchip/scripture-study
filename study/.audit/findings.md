@@ -1639,6 +1639,15 @@ EXACT), Moses 1/2/5/6, John 1/3 + JST additions, Heb 1 (+ TG
 express-image footnote verified), 1 Ne 11, Alma 7:10/12:33/13:9,
 Jacob 4:5/11, D&C 76/93/20:21, Rom 8, BD Son-of-God quote exact.
 
+### study/only-begotten-deeper.md (2026-03-21) — CLEAN
+FULL. No Webster quotes (no 1913 propagation from its parent). All
+~25 quotes verbatim: D&C 93:4/19/21/23/29, Abr 3:22-23, Heb 12:9,
+Mosiah 15:3, Moses 6:68, Ether 3:14, Family Proclamation, Matt
+6:9, John 20:17/14:9, D&C 130:2/22, D&C 132:12/19, Rom 8:14-17/29,
+Moses 1:6/12. The "Jesus never says 'our Father' in his own
+prayers" claim verified by absence in John 17 ("Holy Father" and
+"O righteous Father" both present, "our Father" zero hits).
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
