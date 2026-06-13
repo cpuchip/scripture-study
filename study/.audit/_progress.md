@@ -398,10 +398,10 @@ Already done out-of-band: `study/morm-8-three-glories-reading.md` (2026-06-09).
 - [x] 2026-06-02 `study/bom-walk/alma/alma-48.md` **LINKS** — CLEAN (Moroni's character; v11 "a man of a perfect understanding; yea, a man that did not delight in bloodshed," v17 "if all men had been… like unto Moroni, behold, the very powers of hell would have been shaken forever" EXACT)
 - [x] 2026-06-02 `study/bom-walk/mosiah/mosiah-25.md` **LINKS** — CLEAN (one people from many; v12 "would no longer be called by the names of their fathers, therefore they took upon themselves the name of Nephi" — identity by choice, inverted grievance, v22 "notwithstanding there being many churches they were all one church" EXACT)
 - [x] 2026-06-02 `study/bom-walk/mosiah/mosiah-26.md` **LINKS** — CLEAN (as often as my people repent; v19 "because thou hast inquired of me concerning the transgressor, thou art blessed," v30 "as often as my people repent will I forgive them their trespasses against me" EXACT)
-- [ ] 2026-06-02 `study/bom-walk/mosiah/mosiah-27.md` **LINKS**
-- [ ] 2026-06-02 `study/bom-walk/mosiah/mosiah-28.md` **LINKS**
-- [ ] 2026-06-02 `study/bom-walk/mosiah/mosiah-29.md` **LINKS**
-- [ ] 2026-06-02 `study/bom-walk/mosiah/mosiah-12.md` **LINKS**
+- [x] 2026-06-02 `study/bom-walk/mosiah/mosiah-27.md` **LINKS** — CLEAN (Alma's conversion; v13 "why persecutest thou the church of God… nothing shall overthrow it, save it is the transgression of my people," v25 "must be born again; yea, born of God, changed from their carnal and fallen state" EXACT)
+- [x] 2026-06-02 `study/bom-walk/mosiah/mosiah-28.md` **LINKS** — CLEAN (the mission + translation; v3 "they could not bear that any human soul should perish," v4 "they were the very vilest of sinners" EXACT)
+- [x] 2026-06-02 `study/bom-walk/mosiah/mosiah-29.md` **LINKS** — CLEAN (reign of judges; v16 "because all men are not just it is not expedient that ye should have a king," v27 "if the time comes that the voice of the people doth choose iniquity, then is the time that the judgments of God will come upon you" EXACT)
+- [x] 2026-06-02 `study/bom-walk/mosiah/mosiah-12.md` **LINKS** — CLEAN (Abinadi before the priests; v3 "the life of king Noah shall be valued even as a garment in a hot furnace," v30 "ye know that I speak the truth; and you ought to tremble before God" EXACT)
 - [ ] 2026-06-02 `study/bom-walk/mosiah/mosiah-11.md` **LINKS**
 - [ ] 2026-06-02 `study/bom-walk/mosiah/mosiah-10.md` **LINKS**
 - [ ] 2026-06-02 `study/bom-walk/mosiah/mosiah-09.md` **LINKS**

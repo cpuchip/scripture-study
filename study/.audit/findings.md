@@ -3839,6 +3839,27 @@ the forgiveness revelation. Verified by direct grep.
   often as my people repent will I forgive them their trespasses against me"
   — EXACT.
 
+### Mosiah 27-29 + 12 (2026-06-13, 379→383) — ALL CLEAN
+
+Alma the younger's rebirth, the mission + Jaredite translation, the reign of
+judges, and Abinadi before the priests. Verified by direct grep.
+
+- **Mosiah 27** (Alma's conversion): v13 "why persecutest thou the church of
+  God… nothing shall overthrow it, save it is the transgression of my
+  people," v25 "must be born again; yea, born of God, changed from their
+  carnal and fallen state" — EXACT.
+- **Mosiah 28** (the mission + translation): v3 "they could not bear that any
+  human soul should perish," v4 "they were the very vilest of sinners" —
+  EXACT.
+- **Mosiah 29** (reign of judges): v16 "because all men are not just it is not
+  expedient that ye should have a king," v27 "if the time comes that the
+  voice of the people doth choose iniquity, then is the time that the
+  judgments of God will come upon you" — EXACT (the voice-of-the-people
+  caveat, character-perfect).
+- **Mosiah 12** (Abinadi before the priests): v3 "the life of king Noah shall
+  be valued even as a garment in a hot furnace," v30 "ye know that I speak
+  the truth; and you ought to tremble before God" — EXACT.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
