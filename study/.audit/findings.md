@@ -1858,6 +1858,17 @@ FULL. All quotes verbatim: the six-witness set (D&C 88:78-79/118,
 Brigham Young ch. 27 quote (both ellipses properly marked, masking
 real text). Michael's testimony quote = participant record.
 
+### study/yt/00qzsgy9xr4-halestorm-outcomes-worldviews.md (2026-04-30) — Moses 4:3→4:1; 2 quote fixes
+SAMPLE. The Lucifer-plan quote is Moses 4:1, not 4:3 (citation
+fixed). The binding-question item 4 rendered the host-Wilson
+exchange as a first-person Wilson quote he never said — restored
+to the actual exchange ("You want your ideology to dominate." —
+"Yes."); the "Period." join dropped a sentence unmarked (ellipsis
+added). Verified verbatim: D&C 121:39-41, AoF 11, D&C 134:4, Hel
+12:1-2 with full tail, 3 Ne 11:29-30; transcript quotes
+(consistently-at-scale, leading-the-pack, in-charge-of-basically-
+everything, Substack, monarch) all match.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
