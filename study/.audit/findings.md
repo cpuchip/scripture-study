@@ -2961,6 +2961,34 @@ LINKS ×3. No markdown links.
   two**". The note's two-witnesses reading (Rev 11:3) and the D&C
   113:7-10 latter-day key are both sound. Five CLEAN.
 
+### #261-262 `1-nephi-10 + 2-nephi-09` — bom-walk LINKS — BOTH CLEAN
+- **1-nephi-10 (Lehi names the Messiah):** v4 "six hundred years…
+  even a Messiah, or, in other words, a Savior of the world," v6 "all
+  mankind were in a lost and in a fallen state," v8 "Prepare ye the
+  way of the Lord, and make his paths straight," v17 "the gift of God
+  unto all those who diligently seek him," v19 "the course of the Lord
+  is one eternal round" — all EXACT.
+- **2-nephi-09 (Jacob's atonement masterwork):** ★ the **counted
+  claim "wo-count = 10"** is EXACT — direct count of "wo unto" in the
+  chapter = 10, at precisely the verses the note lists (27, 30, 31,
+  32, 33, 34, 35, 36, 37, 38); v28 "O that cunning plan" correctly
+  excluded as an exclamation, not a woe. v7 "it must needs be an
+  infinite atonement," v10 "that monster, death and hell… the death of
+  the body, and also the death of the spirit," v38 "they shall return
+  to God, and behold his face, and remain in their sins," v41 "the
+  keeper of the gate is the Holy One of Israel; and he employeth no
+  servant there" — all EXACT. (v7's "infinite atonement" is, again,
+  the same phrase anchoring the 1ne4 CONSTRAINED §II rewrite — third
+  independent confirmation this session.) The deep spin-off
+  studies/2ne9_atonement-monster-and-gate was already walked earlier.
+
+> **Progress-count reconciliation (2026-06-13):** the true metric is
+> the `[x]` count in _progress.md, **241/469 at this point**. Earlier
+> commit subjects this session used the file LINE number (247…262),
+> which runs ~21 ahead of the real checked-count because some items sit
+> unchecked out-of-order above the cursor. Commit numbers switch to the
+> accurate checked-count from here.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)

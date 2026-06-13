@@ -258,8 +258,8 @@ Already done out-of-band: `study/morm-8-three-glories-reading.md` (2026-06-09).
 - [x] 2026-06-01 `study/bom-walk/2-nephi/2-nephi-10.md` **LINKS** — CLEAN (Jacob's altar call; v3 "none other nation… would crucify their God," v20 "we are not cast off," v23 "free to act for yourselves," v24 reconcile-then-grace all EXACT)
 - [x] 2026-06-01 `study/bom-walk/2-nephi/2-nephi-29.md` **LINKS** — CLEAN (v3 "A Bible! A Bible!," v8 "testimony of two nations," v9 "I am the same… my work is not yet finished," v11 "out of the books… I will judge" all EXACT)
 - [x] 2026-06-01 `study/bom-walk/2-nephi/2-nephi-08.md` **LINKS** — CLEAN (Isaiah 51; ★ all 3 variants confirmed by direct comparison — v9-10 "it"→"he/he who" (arm personalized), v19 "things"→"sons" + "who shall be sorry for thee," v20 adds "save these two"; D&C 113:7-10 key correct)
-- [ ] 2026-06-01 `study/bom-walk/1-nephi/1-nephi-10.md` **LINKS**
-- [ ] 2026-06-01 `study/bom-walk/2-nephi/2-nephi-09.md` **LINKS**
+- [x] 2026-06-01 `study/bom-walk/1-nephi/1-nephi-10.md` **LINKS** — CLEAN (Lehi names the Messiah; v4 "600 years… a Savior of the world," v6 "lost and… fallen state," v8 "Prepare ye the way," v17 "gift of God unto all those who diligently seek him," v19 "one eternal round" all EXACT)
+- [x] 2026-06-01 `study/bom-walk/2-nephi/2-nephi-09.md` **LINKS** — CLEAN (Jacob's atonement masterwork; ★ **wo-count = 10 EXACT** (vv 27, 30-38, counted from text); v7 "it must needs be an infinite atonement," v10 "awful monster, death and hell," v38 "behold his face, and remain in their sins," v41 "he employeth no servant there" all EXACT; spin-off studies/2ne9 already walked)
 - [ ] 2026-06-01 `study/bom-walk/1-nephi/1-nephi-11.md` **T1**
 - [ ] 2026-06-01 `study/bom-walk/studies/1ne11_condescension-of-god.md` **T1**
 - [ ] 2026-06-01 `study/bom-walk/1-nephi/1-nephi-13.md` **LINKS**
