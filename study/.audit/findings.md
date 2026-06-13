@@ -1720,6 +1720,18 @@ the Savior's own words in the entry. All ~30 scriptures verbatim
 1971, Ballard 2006 ×4 — one accepted trailing trim before "on the
 reports," Edgley 2007, Simpson 1972).
 
+### study/yt/4cuT-LKcmWs-ai-job-skills-self-assessment.md (2026-04-01) — 6 broken links; 1 paraphrase de-quoted
+SAMPLE. Five `../../../` links resolved above the repo root
+(intent.yaml, covenant.yaml, tool-use-observance, scratch,
+transcript) — fixed to `../../`; the phase3c proposal moved to
+archive/ — link updated. The "Anthropic standard" line wore quote
+marks around a compression of the transcript's actual sentence
+("…written when more than one engineer … would come to the same
+conclusion on a pass fail basis") — de-quoted to honest
+paraphrase. The 3.2:1 ratio claim matches the transcript (2:57).
+Timestamp-linked paraphrase claims spot-checked clean; internal
+project-stat claims accepted as project record at study date.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
