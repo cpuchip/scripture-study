@@ -2159,6 +2159,21 @@ the genuine Todd parallels (interior-softening, prayer-as-platform,
 give-away-all-my-sins, the bypassing diagnosis) carry it without
 the two fabricated quotes.
 
+### study/softening-what-i-cannot-soften.md (2026-05-25) — CLEAN
+FULL. Every quoted scripture verbatim against source: Alma
+22:15/16/18, 1 Ne 2:16 (incl. bolded "I did not rebel…"),
+2:18/19, 3 Ne 6:18 (marked ellipsis over "for it had been taught
+unto them"), Alma 12:10, D&C 93:36-37/39 (marked ellipsis over
+v38), D&C 121:41, Mosiah 3:11 (clause-boundary trim), Ezek
+36:25-26 (incl. bolded "from all your filthiness… will I cleanse
+you"), Job 23:16, Ether 3:4 + 3:6 (clause trims), Hel 3:35 (incl.
+italicized "yielding their hearts unto God"). The "high hand
+(*be-yad ramah*)" at Num 15:30-31 is a correct Hebrew gloss on
+KJV "presumptuously," framed as a translation, not a KJV quote.
+Todd/generational-body material is paraphrase (not quoted) and
+matches the #176 transcript. The human/Lord verb table is
+characterization, not quotation. No drift.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
