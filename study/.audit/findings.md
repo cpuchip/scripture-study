@@ -2104,6 +2104,61 @@ skeptical take, but the take still reads "impressive but entirely
 self-reported" — the revision pass described an edit it did not
 fully apply.
 
+### study/yt/V40tBshkMnE-send-me-covenants.md (2026-05-25) — TWO fabricated "Todd says" quotes + blend + propagation
+T1. The heaviest-correction file of the recent run. Eight fixes
+against the verified Send Me transcript (1,992 lines, local at
+yt/send-me/V40tBshkMnE):
+  1. ★ Line 45 FABRICATION: "Todd says the same thing in different
+     words: 'Bringing the Master something He didn't ask for does
+     not, by itself, tear veils. What tore the veil was faith.'" —
+     that sentence is VERBATIM from Michael's OWN
+     brother-of-jared-three-problems.md §VI, not Todd. Todd never
+     discusses the veil-tearing. Re-attributed to the sibling
+     study; grounded the "independent witness" claim on what Todd
+     DID say verbatim ("you can't even soften your own heart").
+  2. ★ Line 51 FABRICATION: "Todd says: 'The brother of Jared did
+     sing praises… all the day long.'" — that is Ether 6:9
+     scripture; Todd never quotes it (he names the brother of
+     Jared once, in a list of mountain-theophanies). Re-attributed
+     to Ether 6:9; Todd's genuine parallel ("your prayer is your
+     platform") substituted.
+  3. Line 41 BLEND: "the law of Moses gives you a pattern and a
+     border and preserves you from dying fast" was a single
+     quoted sentence stitched from two separate utterances → split
+     into two verbatim fragments ("put up a border and a wall and
+     gave them a pattern" / "preserves you from dying fast").
+  4. Line 22 word-swap: "the thing you carry forth" → "the thing
+     that you're carrying forth" (exact).
+  5. Line 35 PROPAGATION (1913→1828): Webster *possess* quoted as
+     the 1913 "to enter into and influence; to control the will of;
+     to fill" — the contamination already fixed in the parent
+     give-away study (#143). Realigned to genuine 1828 sense 5
+     ("to have power over; as an invisible agent or spirit"). Not a
+     new count — propagation of POSSESS (word #108).
+  6/7. Lines 25 + 113: "my brain just exploded" → "my brain
+     exploded" (host says "my brain exploded there").
+  8. Line 17 overcount: "quoted twice" → "quoted" (Alma 22:18
+     give-away line appears ONCE in the transcript; added that
+     Todd misnames the missionary "Ammon" — it was Aaron with
+     Lamoni's father).
+VERIFIED EXACT and untouched: the long "bypassing"/Marshfield quote
+(39:26–40:23, marked ellipsis); "you can't even soften your own
+heart"; "1% your way into a broken heart… either broken or it's
+not"; "bad fruit on a tree… change the freaking tree"; "Birth has
+an event… but it has a gestation"; "if you have a fear in you…
+hard heart"; "record of the generations that came before you…"
+(41:01, marked ellipsis); "sanctified unity which gives you power
+in the priesthood"; 1 Ne 2:16 (Todd's paraphrase, correctly
+attributed); "Testimony is the thing you don't want to stay in";
+Ether 2:19/24-25 (marked ellipsis). Counted claims EXACT: Helaman
+5:49 "about three hundred souls" (study's "300 Lamanites" right);
+host's 19:13 block is explicitly LABELED "His paraphrase" and is
+faithful to 19:00–19:53 (disclosed, left as-is). NOTE for Michael:
+the study's "two witnesses satisfied" thesis survives correction —
+the genuine Todd parallels (interior-softening, prayer-as-platform,
+give-away-all-my-sins, the bypassing diagnosis) carry it without
+the two fabricated quotes.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
