@@ -69,6 +69,13 @@ If you cannot point to a tool call from this session that produced the number, t
 
 **YouTube and transcript quotes:** Download the transcript first (`mcp__yt__yt_download`). Read the relevant section. Copy the actual words. Assign the correct timestamp by reading the transcript timestamps, not by guessing.
 
+**Verify the source's own citations too — to depth 2 (a quote of a quote).** When the thing you quote *itself* embeds a citation, verify that embedded citation against *its* source, then stop. Examples:
+- A Webster 1828 entry you quote cites a verse ("...as a presumptuous sin. Numbers 15:30") — confirm Webster's entry actually carries that citation, with that verse. *This is the class the 2026-06-13 walk missed and the scratch-audit fan-out caught:* fabricated "Webster cites verse X" claims (PRESUMPTUOUS's "Ps 19:13", NEVERTHELESS's "Heb 12:11", the alma5 study's "Webster cites Gen 1:27 under *image*" — genuine = Matt 22:20). A study's Webster quotes need the dictionary MCP **even when its scripture checks clean.**
+- A conference talk you quote itself quotes scripture or another speaker — verify that inner quote/attribution against its own source.
+- A study you cite quotes a third source — verify that the cited study quoted it correctly.
+
+**Stop at depth 2.** Verify what you quote, and the citation inside what you quote; do not chase the citation-inside-the-citation-inside-the-citation. Depth 2 catches the confabulated-attribution class without infinite regress.
+
 ## Phase 3 — Writing (synthesize)
 
 After discovery and deep reading, write the study. Weave real quotes with analysis. Follow the text where it leads.

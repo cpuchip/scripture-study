@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+# md-tidy — normalize markdown whitespace, CRLF-aware.
+#
+# Collapses runs of 3+ newlines (2+ blank lines) down to a single blank line,
+# and strips trailing whitespace — while PRESERVING each file's existing line
+# ending (CRLF or LF). Born 2026-06-13 from the correction-note cleanup, where a
+# naive `s/\n{3,}/\n\n/g` silently no-op'd because the working files were CRLF.
+#
+# Usage:
+#   scripts/md-tidy <file>...
+#   git diff --name-only | scripts/md-tidy          # tidy the changed files
+#
+# Idempotent. Only touches whitespace; never changes prose.
+set -euo pipefail
+
+tidy_one() {
+  perl -0777 -i -pe '
+    my $nl = /\r\n/ ? "\r\n" : "\n";   # detect this file'\''s line ending
+    s/[ \t]+(\r?\n)/$1/g;              # strip trailing whitespace
+    s/(?:\r?\n){3,}/$nl$nl/g;          # collapse 3+ newlines -> one blank line
+  ' "$1"
+}
+
+if [ "$#" -gt 0 ]; then
+  for f in "$@"; do [ -f "$f" ] && tidy_one "$f"; done
+else
+  while IFS= read -r f; do [ -n "${f:-}" ] && [ -f "$f" ] && tidy_one "$f"; done
+fi
