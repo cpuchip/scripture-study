@@ -336,10 +336,10 @@ Already done out-of-band: `study/morm-8-three-glories-reading.md` (2026-06-09).
 - [x] 2026-06-02 `study/bom-walk/ether/ether-9.md` **LINKS** — CLEAN (combination devours its own; v19 "elephants and cureloms and cumoms," v22 Emer "saw the Son of Righteousness… and he died in peace" EXACT — is-Jesus-God Jaredite datapoint)
 - [x] 2026-06-02 `study/bom-walk/ether/ether-10.md` **LINKS** — CLEAN (roll of kings; v7 Riplakish "his fine gold he did cause to be refined in prison," v34 "Com did fight against them much; nevertheless, he did not prevail against them" EXACT)
 - [x] 2026-06-02 `study/bom-walk/ether/ether-11.md` **LINKS** — CLEAN (prophets withdrawn; v13 "the prophets mourned and withdrew from among the people," v22 "they did reject all the words of the prophets, because of their secret society and wicked abominations" EXACT)
-- [ ] 2026-06-02 `study/bom-walk/ether/ether-12.md` **LINKS**
-- [ ] 2026-06-02 `study/bom-walk/ether/ether-13.md` **LINKS**
-- [ ] 2026-06-02 `study/bom-walk/ether/ether-14.md` **LINKS**
-- [ ] 2026-06-02 `study/bom-walk/ether/ether-15.md` **LINKS**
+- [x] 2026-06-02 `study/bom-walk/ether/ether-12.md` **LINKS** — CLEAN (the great faith chapter; v6 "ye receive no witness until after the trial of your faith," v27 "I give unto men weakness that they may be humble… I will make weak things become strong unto them," v39 "I have seen Jesus, and that he hath talked with me face to face" all EXACT — is-Jesus-God datapoint)
+- [x] 2026-06-02 `study/bom-walk/ether/ether-13.md` **LINKS** — CLEAN (New Jerusalem at the ruin; v3 "it was the place of the New Jerusalem, which should come down out of heaven," v13 "he hid himself in the cavity of a rock by day" EXACT)
+- [x] 2026-06-02 `study/bom-walk/ether/ether-14.md` **LINKS** — CLEAN (the all-consuming war; v2 "every man kept the hilt of his sword in his right hand," v25 "their wickedness and abominations had prepared a way for their everlasting destruction" EXACT)
+- [x] 2026-06-02 `study/bom-walk/ether/ether-15.md` **LINKS** — CLEAN (the end; v11 "that same hill where my father Mormon did hide up the records," v19 "the Spirit of the Lord had ceased striving with them, and Satan had full power," v34 "it mattereth not, if it so be that I am saved in the kingdom of God" all EXACT)
 - [ ] 2026-06-02 `study/bom-walk/moroni/moroni-1.md` **LINKS**
 - [ ] 2026-06-02 `study/bom-walk/moroni/moroni-2.md` **LINKS**
 - [ ] 2026-06-02 `study/bom-walk/moroni/moroni-3.md` **LINKS**

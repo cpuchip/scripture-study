@@ -3486,6 +3486,28 @@ direct grep.
   withdrew from among the people," v22 "they did reject all the words of the
   prophets, because of their secret society and wicked abominations" — EXACT.
 
+### Ether 12-15 cluster (2026-06-13, 317→321) — ALL CLEAN (book of Ether complete)
+
+Moroni's great faith chapter, the New Jerusalem at the ruin, the all-
+consuming war, and the annihilation + Ether's peace. Verified blocks
+confirmed by direct grep — including the doctrinal heavyweights.
+
+- **Ether 12** (the great faith chapter): v6 "ye receive no witness until
+  after the trial of your faith," v27 "I give unto men weakness that they may
+  be humble… I will make weak things become strong unto them," v39 "I have
+  seen Jesus, and that he hath talked with me face to face" — all EXACT,
+  character-perfect (another is-Jesus-God face-to-face datapoint).
+- **Ether 13** (New Jerusalem at the ruin): v3 "it was the place of the New
+  Jerusalem, which should come down out of heaven," v13 "he hid himself in
+  the cavity of a rock by day" — EXACT.
+- **Ether 14** (the all-consuming war): v2 "every man kept the hilt of his
+  sword in his right hand," v25 "their wickedness and abominations had
+  prepared a way for their everlasting destruction" — EXACT.
+- **Ether 15** (the end + Ether's peace): v11 "that same hill where my father
+  Mormon did hide up the records" (Ramah=Cumorah), v19 "the Spirit of the
+  Lord had ceased striving with them, and Satan had full power," v34 "it
+  mattereth not, if it so be that I am saved in the kingdom of God" — EXACT.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
