@@ -3,10 +3,35 @@ lane: pg-ai-stewards
 session_id: 7ea7faa4-688a-451a-ac68-b7ea662d4b81
 status: active
 started: 2026-06-11T22:00:16
-last_active: 2026-06-13T02:30:00
+last_active: 2026-06-13T01:17:52
 ---
 
 ## Working on
+- **AUTHORING LEG B4/16 SHIPPED 2026-06-13 (OSS `4ba752d`, pushed) — B4 COMPLETE; the consolidated chain runs 00→16:**
+  `16-subagents.sql` = sub-agent delegation + the §7.3 self-editable base prompt.
+  l9 depth-cap(≤2) + k4 spawn_subagent (**'scripture-study' fallback → config
+  default_intent_slug**) + es8 consult + es10 grant + r11 on_one_shot FINAL + ct2-5
+  autotag/context_resolve_handle FINAL + ct2-7e (self_prompt_on → propose→critic→ratify
+  surface + **compose_tools FINAL**, deferred from 15b). lib.rs: create_subagents
+  requires create_context_surface. 7 files retired; manifest 46→39; ext dir 57 .sql;
+  secret-scan clean; Go unchanged. Virgin smoke FULLY GREEN (pgcrypto absent; no
+  scripture-study hardcode; **depth cap raises@3 / allows≤2**; spawn at root
+  origin=agent_planning/cap=500000; **INERT** — propose hidden non-flagged, shown
+  w/both-flags, context_* gated; **propose happy-path** session→smoke16-sp→proposal
+  pending + prompt-critic work_item; ct2-5 id resolution; es10 22 families minus
+  prompt-critic w/ deny-* intact). **Deviations (act+report):** ① **es10 placed BEFORE
+  ct2-7e** → prompt-critic (tools-disabled) stays tool-free (★FLAG 20-mismatch: core
+  coverage = pipelines-thru-15b, benign superset; live may differ). ② **r11 = on_one_shot
+  FINAL here** (manifest line 42, chronological last, true superset of r7/r8) → ★**B5/17
+  must NOT re-author on_one_shot — r7/r8's versions are DEAD; 17 only authors the persona
+  agent/pipelines/deny-***. ③ context_resolve_handle FINAL = ct2-5 (re-author over 15b's
+  ct2-3, +tags fallback). ④ compose_tools FINAL authored here (self_prompt_on first per
+  LANGUAGE-sql CREATE-time validation; no later redef — grep-confirmed). Blueprint
+  `<pending-16>`→`4ba752d` rides the B5 commit.
+  **NEXT = B5** (17-personas: r7/r8/ct2-7c/r16-r21 · 18-scheduler: pe6/pe7 · 19-models:
+  j8a/j11/m1/m2/m4/m5/r3/an1/zen1 + dispatch-final j8a+j11 + j7-dispatch + seed_harness
+  genericize + bgworker _kind enum), then **B6** (tests/+CI+rename-map finalize+overlay
+  re-author). Leg-close: classify the 20 live↔repo mismatches.
 - **AUTHORING LEG B4/15b SHIPPED 2026-06-13 (OSS `13cb0f5`, pushed):**
   `15b-context-surface.sql` = the context-engine RUNTIME surface.
   compose_messages FINAL (ct2-7a2, self-contained — ct2-2 base folds
