@@ -260,10 +260,10 @@ Already done out-of-band: `study/morm-8-three-glories-reading.md` (2026-06-09).
 - [x] 2026-06-01 `study/bom-walk/2-nephi/2-nephi-08.md` **LINKS** — CLEAN (Isaiah 51; ★ all 3 variants confirmed by direct comparison — v9-10 "it"→"he/he who" (arm personalized), v19 "things"→"sons" + "who shall be sorry for thee," v20 adds "save these two"; D&C 113:7-10 key correct)
 - [x] 2026-06-01 `study/bom-walk/1-nephi/1-nephi-10.md` **LINKS** — CLEAN (Lehi names the Messiah; v4 "600 years… a Savior of the world," v6 "lost and… fallen state," v8 "Prepare ye the way," v17 "gift of God unto all those who diligently seek him," v19 "one eternal round" all EXACT)
 - [x] 2026-06-01 `study/bom-walk/2-nephi/2-nephi-09.md` **LINKS** — CLEAN (Jacob's atonement masterwork; ★ **wo-count = 10 EXACT** (vv 27, 30-38, counted from text); v7 "it must needs be an infinite atonement," v10 "awful monster, death and hell," v38 "behold his face, and remain in their sins," v41 "he employeth no servant there" all EXACT; spin-off studies/2ne9 already walked)
-- [ ] 2026-06-01 `study/bom-walk/1-nephi/1-nephi-11.md` **T1**
-- [ ] 2026-06-01 `study/bom-walk/studies/1ne11_condescension-of-god.md` **T1**
-- [ ] 2026-06-01 `study/bom-walk/1-nephi/1-nephi-13.md` **LINKS**
-- [ ] 2026-06-01 `study/bom-walk/1-nephi/1-nephi-14.md` **LINKS**
+- [x] 2026-06-01 `study/bom-walk/1-nephi/1-nephi-11.md` **T1** — CLEAN (the tree interpreted; v16/17/18/21/22/25/26/36 all EXACT incl. both "condescension of God" prompts; v22 confirms Rom 5:5 "sheddeth itself abroad")
+- [x] 2026-06-01 `study/bom-walk/studies/1ne11_condescension-of-god.md` **T1** — REQUOTE (★ Webster **CONDESCENSION = word #130** 1913-as-1828: §II+§VIII gave "voluntary descent from one's rank… interact with an inferior" = the 1913; genuine 1828 = "Voluntary descent from rank, dignity or just claims; relinquishment of strict right; submission to inferiors…" — requoted both + dated note; genuine entry BETTER ("relinquishment of strict right" = Christ laying down a divine prerogative). All ~18 scripture quotes EXACT (1 Ne 11 vv6-35 + Alma 7:12); all 8 links resolve)
+- [x] 2026-06-01 `study/bom-walk/1-nephi/1-nephi-13.md` **LINKS** — CLEAN (the book's mission; v40-41 "establish the truth of the first… one God and one Shepherd," v26 plain-and-precious removed, v15 complexion thread all EXACT)
+- [x] 2026-06-01 `study/bom-walk/1-nephi/1-nephi-14.md` **LINKS** — CLEAN (two churches only; v10 "save two churches only… the whore of all the earth," v14 "armed with righteousness," v27 "the apostle of the Lamb was John" all EXACT)
 - [ ] 2026-06-01 `study/bom-walk/1-nephi/1-nephi-15.md` **LINKS**
 - [ ] 2026-06-01 `study/bom-walk/1-nephi/1-nephi-16.md` **LINKS**
 - [ ] 2026-06-01 `study/bom-walk/1-nephi/1-nephi-17.md` **LINKS**

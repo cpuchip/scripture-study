@@ -2989,6 +2989,47 @@ LINKS ×3. No markdown links.
 > unchecked out-of-order above the cursor. Commit numbers switch to the
 > accurate checked-count from here.
 
+### #263-266 `1-nephi 11 + condescension study + 1-nephi 13/14`
+- **1-nephi-11 (T1, the tree interpreted): CLEAN.** Both "Knowest thou
+  the condescension of God?" prompts (v16, v26), v17 the honest "I do
+  not know the meaning of all things," v18 "mother of the Son of God,
+  after the manner of the flesh," v21 "Behold the Lamb of God, yea,
+  even the Son of the Eternal Father," v22 "the love of God, which
+  sheddeth itself abroad" (= Rom 5:5, confirmed), v25 rod-of-iron =
+  word of God, v36 "the pride of the world… fell, and the fall
+  thereof was exceedingly great" — all EXACT.
+- **1ne11_condescension-of-god (T1): REQUOTE — Webster word #130.**
+  ★ The study's §II and §VIII gave the 1828 sense of *condescension*
+  as "voluntary descent from one's rank … in order to interact with
+  an inferior." That tracks the **1913** Webster ("voluntary descent
+  from one's rank or dignity in intercourse with an inferior"), NOT
+  the genuine 1828, which reads *"Voluntary descent from rank, dignity
+  or just claims; relinquishment of strict right; submission to
+  inferiors in granting requests or performing acts which strict
+  justice does not require."* Same contamination class as the rest of
+  the walk. Requoted both occurrences against the repaired 1828
+  (`webster_define`) + a visible dated correction note. The genuine
+  entry is the "gift" pattern again — *"relinquishment of strict
+  right"* is a sharper anchor for the condescension of God (Christ
+  laying down a divine prerogative that was his to keep) than the
+  1913's flatter wording. The study's THESIS is untouched and in fact
+  strengthened. Everything else verified: all ~18 scripture quotes
+  EXACT (1 Ne 11 vv 6, 7, 9, 13, 15, 20, 21, 22, 23, 25, 26, 33, 35 +
+  Alma 7:12), all 8 source links resolve.
+- **1-nephi-13 (LINKS): CLEAN.** The book's own mission statement —
+  v40-41 "These last records… shall establish the truth of the first…
+  they both shall be established in one; for there is one God and one
+  Shepherd"; v26 the apostasy-as-subtraction ("many parts which are
+  plain and most precious… have they taken away"); v15 the complexion
+  thread ("white, and exceedingly fair and beautiful," noted toward
+  the 2 Ne 5:21 study) — all EXACT.
+- **1-nephi-14 (LINKS): CLEAN.** v10 "there are save two churches
+  only… she is the whore of all the earth" (the high-misread verse —
+  allegiance, not denomination), v14 "armed with righteousness and
+  with the power of God in great glory," v27 "the name of the apostle
+  of the Lamb was John" — all EXACT.
+- **Webster 1913-as-1828 running count: 129 → 130 (CONDESCENSION).**
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)

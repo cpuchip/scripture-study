@@ -34,7 +34,7 @@ Then the angel asks the question the chapter turns on:
 
 Nephi's answer is one of the most honest in scripture: "I know that he loveth his children; nevertheless, I do not know the meaning of all things" (v. 17). He knows the love but not the full meaning. The angel then shows him rather than tells him.
 
-One note on the word before going further. In 1828, "condescension" meant a voluntary descent from one's rank in order to interact with an inferior — it carried a sense of dignity graciously lowered, not disdain from above. By modern usage the word has flipped nearly negative: it implies a patronizing attitude. The text means the older thing: God choosing to come down. The word in Nephi's mouth is not about God looking down his nose — it is about God choosing, voluntarily, to descend. The condescension is the descent itself.
+One note on the word before going further. Webster's genuine 1828 entry reads: *"Voluntary descent from rank, dignity or just claims; relinquishment of strict right; submission to inferiors in granting requests or performing acts which strict justice does not require."* It carried a sense of dignity graciously lowered, not disdain from above — and that middle clause, *relinquishment of strict right*, is the heart of it: a descent that gives up a claim it was entitled to keep. By modern usage the word has flipped nearly negative — the contemporary dictionary now gives "a patronizing attitude or behavior." The text means the older thing: God choosing to come down. The word in Nephi's mouth is not about God looking down his nose — it is about God choosing, voluntarily, to descend, relinquishing a strict right that was his to keep. The condescension is the descent itself.
 
 ---
 
@@ -112,7 +112,19 @@ And the building's occupants fight specifically against "the twelve apostles of 
 
 **On "two condescensions."** Traditional LDS commentary sometimes speaks of the Father's condescension (giving his Son, having a daughter by Mary) and the Son's condescension (taking on flesh, enduring the Atonement). The text itself uses "the condescension of God" both times without distinguishing Father and Son in that way. The two uses of the word frame two stages of the same movement: first the Incarnation, then the ministry through cross. The text could sustain the two-condescensions reading, but it doesn't require it. I'm flagging the structural observation — two mentions, two sets of scenes — without claiming to know whether the text intends two distinct condescensions or one shown in two stages.
 
-**On the Webster 1828 definition.** The historical sense is "voluntary descent from one's rank" — the word is doing real work in Nephi's text. But the modern reader hears "patronizing," which inverts the meaning. Worth naming in any teaching context. The condescension is not condescension in the modern sense.
+**On the Webster 1828 definition.** The genuine 1828 sense is *"Voluntary descent from rank, dignity or just claims; relinquishment of strict right"* — the word is doing real work in Nephi's text. But the modern reader hears "patronizing," which inverts the meaning. Worth naming in any teaching context. The condescension is not condescension in the modern sense.
+
+> *Correction (2026-06-13, study-correctness walk):* §II and §VIII originally
+> gave the 1828 sense as "voluntary descent from one's rank … to interact with
+> an inferior." That phrasing tracked the **1913** Webster ("voluntary descent
+> from one's rank or dignity in intercourse with an inferior"), not the genuine
+> 1828, which reads *"Voluntary descent from rank, dignity or just claims;
+> relinquishment of strict right; submission to inferiors in granting requests
+> or performing acts which strict justice does not require."* Requoted against
+> the repaired 1828 (`webster_define`). The genuine entry is *better* for the
+> thesis — "relinquishment of strict right" is exactly the condescension of
+> God: Christ laying down a divine prerogative that was his to keep. The
+> argument is unchanged; the definition is now the right edition.
 
 **On what is NOT in the text.** I have not read general conference talks on this topic directly this session — searches returned general talks, not condescension-specific ones. The modern prophetic teaching on this passage exists (Elder Holland, Elder McConkie, others have written on it), but I have not verified any of those treatments this session. I will not attribute anything to them here.
 
