@@ -3817,6 +3817,28 @@ by direct grep.
   Lamanites, and they will be drunken," v14 "Mosiah received them with joy;
   and he also received their records" — EXACT.
 
+### Mosiah 23 + Alma 48 + Mosiah 25-26 (2026-06-13, 375→379) — ALL CLEAN
+
+Alma's people in bondage + Moroni's character portrait + the reunification +
+the forgiveness revelation. Verified by direct grep.
+
+- **Mosiah 23** (esteem not one flesh): v7 "Ye shall not esteem one flesh
+  above another," v21 "the Lord seeth fit to chasten his people; yea, he
+  trieth their patience and their faith" — EXACT (the righteous chastened —
+  trial not punishment).
+- **Alma 48** (Moroni's character): v11 "a man of a perfect understanding;
+  yea, a man that did not delight in bloodshed," v17 "if all men had been…
+  like unto Moroni, behold, the very powers of hell would have been shaken
+  forever" — EXACT.
+- **Mosiah 25** (one people from many): v12 "would no longer be called by the
+  names of their fathers, therefore they took upon themselves the name of
+  Nephi" (identity by choice — the inverted grievance), v22 "notwithstanding
+  there being many churches they were all one church" — EXACT.
+- **Mosiah 26** (as often as my people repent): v19 "because thou hast
+  inquired of me concerning the transgressor, thou art blessed," v30 "as
+  often as my people repent will I forgive them their trespasses against me"
+  — EXACT.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)

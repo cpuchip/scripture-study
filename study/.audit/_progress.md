@@ -394,10 +394,10 @@ Already done out-of-band: `study/morm-8-three-glories-reading.md` (2026-06-09).
 - [x] 2026-06-02 `study/bom-walk/mosiah/mosiah-20.md` **LINKS** — CLEAN (the innocent pay; v21 "are not the words of Abinadi fulfilled… because we would not hearken unto the words of the Lord" EXACT)
 - [x] 2026-06-02 `study/bom-walk/mosiah/mosiah-21.md` **LINKS** — CLEAN (slow to hear — the pastoral heart; v15 "the Lord was slow to hear their cry… nevertheless the Lord did hear their cries, and began to soften the hearts of the Lamanites… yet the Lord did not see fit to deliver them out of bondage" EXACT)
 - [x] 2026-06-02 `study/bom-walk/mosiah/mosiah-22.md` **LINKS** — CLEAN (escape by stratagem; v7 "pay the last tribute of wine to the Lamanites, and they will be drunken," v14 "Mosiah received them with joy; and he also received their records" EXACT)
-- [ ] 2026-06-02 `study/bom-walk/mosiah/mosiah-23.md` **LINKS**
-- [ ] 2026-06-02 `study/bom-walk/alma/alma-48.md` **LINKS**
-- [ ] 2026-06-02 `study/bom-walk/mosiah/mosiah-25.md` **LINKS**
-- [ ] 2026-06-02 `study/bom-walk/mosiah/mosiah-26.md` **LINKS**
+- [x] 2026-06-02 `study/bom-walk/mosiah/mosiah-23.md` **LINKS** — CLEAN (esteem not one flesh; v7 "Ye shall not esteem one flesh above another," v21 "the Lord seeth fit to chasten his people; yea, he trieth their patience and their faith" EXACT — the righteous chastened)
+- [x] 2026-06-02 `study/bom-walk/alma/alma-48.md` **LINKS** — CLEAN (Moroni's character; v11 "a man of a perfect understanding; yea, a man that did not delight in bloodshed," v17 "if all men had been… like unto Moroni, behold, the very powers of hell would have been shaken forever" EXACT)
+- [x] 2026-06-02 `study/bom-walk/mosiah/mosiah-25.md` **LINKS** — CLEAN (one people from many; v12 "would no longer be called by the names of their fathers, therefore they took upon themselves the name of Nephi" — identity by choice, inverted grievance, v22 "notwithstanding there being many churches they were all one church" EXACT)
+- [x] 2026-06-02 `study/bom-walk/mosiah/mosiah-26.md` **LINKS** — CLEAN (as often as my people repent; v19 "because thou hast inquired of me concerning the transgressor, thou art blessed," v30 "as often as my people repent will I forgive them their trespasses against me" EXACT)
 - [ ] 2026-06-02 `study/bom-walk/mosiah/mosiah-27.md` **LINKS**
 - [ ] 2026-06-02 `study/bom-walk/mosiah/mosiah-28.md` **LINKS**
 - [ ] 2026-06-02 `study/bom-walk/mosiah/mosiah-29.md` **LINKS**
