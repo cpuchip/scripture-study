@@ -1,6 +1,6 @@
 # I Will Give Away All My Sins to Know Thee
 
-> *"O God, Aaron hath told me that there is a God; and if there is a God, and if thou art God, wilt thou make thyself known unto me, and I will give away all my sins to know thee, that I may be raised from the dead, and be saved at the last day."*
+> *"O God, Aaron hath told me that there is a God; and if there is a God, and if thou art God, wilt thou make thyself known unto me, and I will give away all my sins to know thee, and that I may be raised from the dead, and be saved at the last day."*
 > — [Alma 22:18](../gospel-library/eng/scriptures/bofm/alma/22.md)
 
 **Catalyst:** Elder Wan-Liang Wu, ["I Will Give Away All My Sins to Know Thee"](../gospel-library/eng/general-conference/2026/04/25wu.md), April 2026 General Conference (Easter conference, immediately following the solemn assembly sustaining President Dallin H. Oaks).
@@ -27,7 +27,7 @@ Aaron's verbs are the standard verbs: bow, repent, bow, call. He repeats *bow do
 
 So why, when the king prostrates himself in v17 and cries mightily in v18, does he not pray Aaron's words back?
 
-> "O God, Aaron hath told me that there is a God; and if there is a God, and if thou art God, wilt thou make thyself known unto me, and **I will give away all my sins to know thee**, that I may be raised from the dead, and be saved at the last day."
+> "O God, Aaron hath told me that there is a God; and if there is a God, and if thou art God, wilt thou make thyself known unto me, and **I will give away all my sins to know thee**, and that I may be raised from the dead, and be saved at the last day."
 
 The verb is his own. He took the language he had used three verses earlier — "give up all that I possess" — and applied it to sins. He was a king. Kings deal in transfers of property. He understood his sins the only way he knew how: as something he held, that could be handed over.
 
@@ -39,21 +39,26 @@ The phrasing is also singular. A keyword search across the standard works for "g
 
 Webster 1828 catches what the king did. *Give* (verb):
 
-> "1. To bestow without receiving a return; to confer without compensation; to impart, **as a possession**; to grant, as authority or permission; to yield up or allow.
-> 2. To **yield possession of**; to deliver over, **as property**, in exchange for something."
+> "To bestow; to confer; to pass or **transfer the title or property** of a thing to another person without an equivalent or compensation."
 
-And the sub-entry under *give*: "To give away — to make over to another; to transfer."
+And the sub-entry under *give*: "To give away, to **alienate the title or property** of a thing; to make over to another; to transfer" — with Noah's own example: "Whatsoever we employ in charitable uses, during our lives, is given away from ourselves."
 
-Compare *forsake*: "To quit or leave entirely; to desert; to abandon; to depart or withdraw from." Forsake is the verb of distance. You and the thing you forsake end up in different places, but the thing keeps existing.
+*(Requoted 2026-06-12 — the earlier numbered definitions were the 1913 edition's; the genuine 1828 is sharper on exactly the point this study needs: giving transfers title.)*
 
-Compare *repent*: "To feel pain, sorrow, or regret… to cease to love and practice sin." Repent is internal — felt sorrow, changed mind, ceased affection.
+Compare *forsake*: "To quit or leave entirely; to desert; to abandon; to depart from." Forsake is the verb of distance. You and the thing you forsake end up in different places, but the thing keeps existing.
+
+Compare *repent*: "To feel pain, sorrow or regret for something done or spoken," and in theology, "to sorrow or be pained for sin, as a violation of God's holy law, a dishonor to his character and government, and the foulest ingratitude to a Being of infinite benevolence." Repent is internal — felt sorrow, changed mind, ceased affection.
+
+*(Both requoted 2026-06-12 — the earlier wordings carried 1913-edition phrases: "or withdraw from," "to cease to love and practice sin.")*
 
 The king's verb is neither of these. He didn't ask to feel sorrow. He didn't ask to leave his sins behind in some other location. He asked to *transfer* them. To make them over to another. To stop owning them.
 
 Webster's entry on *possess* is what makes the king's verb interesting:
 
-> "1. To occupy in person; to hold or actually have in one's own keeping; to have and to hold.
-> 4. To enter into and influence; to control the will of; to fill; to affect; — said especially of evil spirits, passions, etc."
+> "1. To have the just and legal title, ownership or property of a thing; to own; to hold the title of, as the rightful proprietor.
+> 5. To have power over; as an invisible agent or spirit. Luke 8:36."
+
+*(Requoted 2026-06-12 — the earlier senses were the 1913 edition's. The genuine 1828 is better twice over: its first sense is literally about legal title — the king's native currency — and its spirit sense cites Luke 8:36, the man delivered from the legion.)*
 
 We possess things. Things — especially evil ones — possess us. The king said "I will give up all that I possess" using sense one. He owned a kingdom. By verse 18, the language has flipped. To give away all his sins meant releasing what was actually possessing *him*. He thought he was the giver. The grammar suggests he was the one being released.
 
@@ -70,9 +75,11 @@ Most prayers for forgiveness end at forgiveness. *Forgive me. Save me. Have merc
 He didn't pray to be saved by knowing. He prayed to know. The salvation comes after, almost as afterthought: "and that I may be raised from the dead, and be saved at the last day."
 
 Webster on *know* (verb):
-> "1. To perceive or apprehend clearly and certainly; to understand…
-> 3. To be acquainted with; to be no stranger to; to be more or less familiar with the person, character, etc., of…
-> 5. To have sexual commerce with. *And Adam knew Eve his wife.* — Gen. iv. 1."
+> "To perceive with certainty; to understand clearly; to have a clear and certain perception of truth, fact, or any thing that actually exists. …
+> To be no stranger to; to be familiar. …
+> In scripture, to have sexual commerce with. Genesis 4:1."
+
+*(Requoted 2026-06-12 — the earlier numbered senses were the 1913 edition's. The genuine 1828 carries the covenantal range natively: sense 8, "To approve. The Lord knoweth the way of the righteous. Psalm 7:6," and sense 11, "To choose; to favor or take an interest in. Amos 3:2.")*
 
 The Hebrew *yada* carries the same range — from intellectual recognition to covenantal intimacy. The king isn't asking for a theology lecture. He's asking for relationship. The verse [John 17:3](../gospel-library/eng/scriptures/nt/john/17.md), which Wu cites, says it the same way: "And this is life eternal, that they might *know* thee the only true God, and Jesus Christ, whom thou hast sent."
 
@@ -102,13 +109,13 @@ The Pharisee uses the same verb the king used in Alma 22:15 — *give of all tha
 
 The king of the Lamanites moved from Pharisee-language to publican-knowledge in three verses. *I will give up all that I possess* in v15. *I will give away all my sins* in v18. The currency changed.
 
-The rich young ruler in the very next chapter ([Luke 18:18–22](../gospel-library/eng/scriptures/nt/luke/18.md)) asks the king's question almost word for word: "What shall I do that I may inherit eternal life?" Christ tells him: "sell all that thou hast, and distribute unto the poor… and come, follow me." The young ruler refuses. The king did what the young ruler couldn't, but in a different currency. The young ruler couldn't give away his goods. The king gave away his sins — and his people, in time, gave away their goods, their lives, and even their right to defend themselves.
+The rich young ruler in the very next chapter ([Luke 18:18–22](../gospel-library/eng/scriptures/nt/luke/18.md)) asks the king's question almost word for word: "What shall I do to inherit eternal life?" Christ tells him: "sell all that thou hast, and distribute unto the poor… and come, follow me." The young ruler refuses. The king did what the young ruler couldn't, but in a different currency. The young ruler couldn't give away his goods. The king gave away his sins — and his people, in time, gave away their goods, their lives, and even their right to defend themselves.
 
 ---
 
 ## Fifty years of preachers have stopped at this verse
 
-The BYU Scripture Citation Index lists thirty general conference citations of Alma 22:18. The earliest in the dataset is Heber J. Grant in April 1944 (*Testimony and Blessing*); David O. McKay quoted it as President of the Church in October 1950. Ezra Taft Benson returned to it in 1979 and 1983. Then Neal A. Maxwell took it up and held onto it: six talks across eight years (1989, 1991, 1992, 1994, 1995, 1996). Howard W. Hunter cited it in his April 1993 talk on Christ. Dallin H. Oaks cited it in 2011 (*Desire*). Christofferson cited it in 2017. Bednar cited it in 2016. Russell M. Nelson cited it in October 2022 (*Overcome the World and Find Rest*). Rasband cited it in April 2025, Yee in October 2024. Wu in 2026.
+The BYU Scripture Citation Index lists thirty general conference citations of Alma 22:18. The earliest in the dataset is Heber J. Grant in April 1944 (*Testimony and Blessing*); David O. McKay quoted it in October 1950, months before becoming President of the Church. Ezra Taft Benson returned to it in 1979 and 1983. Then Neal A. Maxwell took it up and held onto it: six talks across eight years (1989, 1991, 1992, 1994, 1995, 1996). Howard W. Hunter cited it in his April 1993 talk on Christ. Dallin H. Oaks cited it in 2011 (*Desire*). Christofferson cited it in 2017. Bednar cited it in 2016. Russell M. Nelson cited it in October 2022 (*Overcome the World and Find Rest*). Rasband cited it in April 2025, Yee in October 2024. Wu in 2026.
 
 Two of those uses are worth pausing on.
 
