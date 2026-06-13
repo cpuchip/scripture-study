@@ -2631,6 +2631,23 @@ Honest flags held: Benson's 1979 Gadianton application is
 Cold-War-specific (handle non-partisanly); pre-1971 Ether-8:24 cites
 index-only. CLEAN.
 
+### study/freedom/provenance/11-time-keeping-awe-and-the-two-valences.md (2026-06-01) — minor "exact phrase" softened
+SAMPLE. Michael's five interlocking threads. All scripture
+verbatim: Hel 13:1 "eighty and sixth year," Hel 14:2 "five years
+more cometh," 3 Ne 1:1 "ninety and first year had passed away" (the
+86+5=91 reconciliation holds), 3 Ne 8:1-2 (cleansed-keeper +
+"if…no mistake" date-hedge), Alma 22:18, 3 Ne 2:1, 1 Ne 14:7, Mal
+4:1-2/4:5. ONE fix: line 30 called 1 Ne 14:7's "hardness of their
+hearts and the blindness of their minds" "the EXACT phrase as 3 Ne
+2:1" — but 3 Ne 2:1 is "hard in their hearts, and blind in their
+minds" (adjectives vs nouns); the file's own parenthetical shows
+they differ. Softened to "the same hard-heart/blind-mind imagery…
+near-identical, not word-for-word." The cross-link itself is real
+and strong (the dreadful side of the marvelous work = the hardening
+from forgetting the signs). Otherwise CLEAN — disciplined, the
+antitype guardrail (intended-audience not "final generation") and
+the date-setting discipline both held.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)

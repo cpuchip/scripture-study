@@ -220,7 +220,7 @@ Already done out-of-band: `study/morm-8-three-glories-reading.md` (2026-06-09).
 - [x] 2026-06-01 `study/freedom/provenance/06-signs-and-eclipses.md` **SAMPLE** — CLEAN (scripture verbatim; eclipse facts confirmed vs Wikipedia this session; exemplary caveats)
 - [x] 2026-06-01 `study/freedom/provenance/08-destruction-and-sorting.md` **SAMPLE** — CLEAN (scripture verbatim; sorting + five-years correction confirmed)
 - [x] 2026-06-01 `study/freedom/provenance/10-modern-prophets-proclamation-constitution.md` **SAMPLE** — CLEAN (Hinckley 2001 + Proclamation verbatim; Hunter→Hinckley correction confirmed via the byline)
-- [ ] 2026-06-01 `study/freedom/provenance/11-time-keeping-awe-and-the-two-valences.md` **SAMPLE**
+- [x] 2026-06-01 `study/freedom/provenance/11-time-keeping-awe-and-the-two-valences.md` **SAMPLE** — scripture verbatim; softened one "EXACT phrase" overstatement (14:7 nouns vs 3 Ne 2:1 adjectives)
 - [ ] 2026-06-01 `study/without-compulsion.md` **FULL**
 - [ ] 2026-06-01 `study/bom-walk/1-nephi/1-nephi-07.md` **T2**
 - [ ] 2026-06-01 `study/bom-walk/1-nephi/1-nephi-09.md` **T2**
