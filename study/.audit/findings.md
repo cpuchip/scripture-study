@@ -3914,6 +3914,24 @@ Verified by direct grep.
   looking beyond the mark… God hath taken away his plainness from them" —
   EXACT.
 
+### Jacob 5-7 + Enos (2026-06-13, 391→395) — ALL CLEAN
+
+The olive-tree allegory + its application + Sherem + Enos's wrestle.
+Verified by direct grep.
+
+- **Jacob 5** (the olive-tree allegory): v41 "the Lord of the vineyard wept…
+  What could I have done more for my vineyard?," v47 "I have stretched forth
+  mine hand almost all the day long… Who is it that has corrupted my
+  vineyard?" — EXACT (chapter note quotes only key ranges; the deep
+  jacob5 study at #417 verified separately).
+- **Jacob 6** (the application): v4 "he stretches forth his hands unto them all
+  the day long; and they are a stiffnecked and a gainsaying people" — EXACT.
+- **Jacob 7** (Sherem, closing Jacob): v5 "I truly had seen angels… wherefore,
+  I could not be shaken," v27 "Brethren, adieu" — EXACT.
+- **Enos** (the wrestle): v6 "my guilt was swept away," v27 "the place of my
+  rest, which is with my Redeemer… then shall I see his face with pleasure" —
+  EXACT.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)

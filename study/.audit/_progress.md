@@ -410,10 +410,10 @@ Already done out-of-band: `study/morm-8-three-glories-reading.md` (2026-06-09).
 - [x] 2026-06-02 `study/bom-walk/jacob/jacob-02.md` **LINKS** — CLEAN (riches + chastity; v18 "before ye seek for riches, seek ye for the kingdom of God," v19 "to clothe the naked, and to feed the hungry, and to liberate the captive" EXACT)
 - [x] 2026-06-02 `study/bom-walk/jacob/jacob-03.md` **LINKS** — CLEAN (the despised are more righteous; v5 "the Lamanites your brethren… are more righteous than you," v9 "revile no more against them because of the darkness of their skins… their filthiness came because of their fathers" EXACT. ★ bin-4: carries the 2 Ne 5:21 skin-curse complex — study USES it AND empties it (decouples skin from worth, forbids reviling, filthiness inherited not personal), correctly FLAGS it as a third in-text datapoint for the with-Michael study, does NOT resolve. Standing literal-skin rule honored)
 - [x] 2026-06-02 `study/bom-walk/jacob/jacob-04.md` **LINKS** — CLEAN (looking beyond the mark; v13 "it speaketh of things as they really are, and of things as they really will be," v14 "blindness came by looking beyond the mark… God hath taken away his plainness from them" EXACT)
-- [ ] 2026-06-02 `study/bom-walk/jacob/jacob-05.md` **LINKS**
-- [ ] 2026-06-02 `study/bom-walk/jacob/jacob-06.md` **LINKS**
-- [ ] 2026-06-02 `study/bom-walk/jacob/jacob-07.md` **LINKS**
-- [ ] 2026-06-02 `study/bom-walk/enos/enos-01.md` **LINKS**
+- [x] 2026-06-02 `study/bom-walk/jacob/jacob-05.md` **LINKS** — CLEAN (the olive-tree allegory; v41 "the Lord of the vineyard wept… What could I have done more for my vineyard?," v47 "I have stretched forth mine hand almost all the day long… Who is it that has corrupted my vineyard?" EXACT; quoted ranges only — deep study at #417)
+- [x] 2026-06-02 `study/bom-walk/jacob/jacob-06.md` **LINKS** — CLEAN (the application; v4 "he stretches forth his hands unto them all the day long; and they are a stiffnecked and a gainsaying people" EXACT)
+- [x] 2026-06-02 `study/bom-walk/jacob/jacob-07.md` **LINKS** — CLEAN (Sherem; v5 "I truly had seen angels… wherefore, I could not be shaken," v27 "Brethren, adieu" EXACT)
+- [x] 2026-06-02 `study/bom-walk/enos/enos-01.md` **LINKS** — CLEAN (the wrestle; v6 "my guilt was swept away," v27 "the place of my rest, which is with my Redeemer… then shall I see his face with pleasure" EXACT)
 - [ ] 2026-06-02 `study/bom-walk/studies/jacob5_allegory-of-the-olive-tree.md` **T1**
 - [ ] 2026-06-02 `study/bom-walk/alma/alma-01.md` **LINKS**
 - [ ] 2026-06-02 `study/bom-walk/omni/omni-01.md` **LINKS**
