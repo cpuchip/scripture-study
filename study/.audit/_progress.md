@@ -446,10 +446,10 @@ Already done out-of-band: `study/morm-8-three-glories-reading.md` (2026-06-09).
 - [x] 2026-06-02 `study/bom-walk/alma/alma-39.md` **LINKS** — CLEAN (the grieved father; v5 "most abominable above all sins save it be the shedding of innocent blood or denying the Holy Ghost" EXACT — confronting Corianton without abandoning him; sexual sin handled with honesty, not the 5:21/skin family)
 - [x] 2026-06-02 `study/bom-walk/alma/alma-40.md` **LINKS** — CLEAN (the space between; v23 "even a hair of the head shall not be lost; but all things shall be restored to their proper and perfect frame" EXACT — the intermediate state + the perfect-frame resurrection)
 - [x] 2026-06-02 `study/bom-walk/alma/alma-41.md` **LINKS** — CLEAN (restoration as reciprocity; v10 "wickedness never was happiness," v13 "bring back again evil for evil, or carnal for carnal… merciful for that which is merciful" EXACT — restored to the self your desires built)
-- [ ] 2026-06-02 `study/bom-walk/alma/alma-42.md` **LINKS**
-- [ ] 2026-06-02 `study/bom-walk/alma/alma-43.md` **LINKS**
-- [ ] 2026-06-02 `study/bom-walk/alma/alma-44.md` **LINKS**
-- [ ] 2026-06-02 `study/bom-walk/alma/alma-45.md` **LINKS**
+- [x] 2026-06-02 `study/bom-walk/alma/alma-42.md` **LINKS** — CLEAN (justice and mercy; v15 "God himself atoneth for the sins of the world… that God might be a perfect, just God, and a merciful God also," v25 "do ye suppose that mercy can rob justice? I say unto you, Nay; not one whit" EXACT — the supreme justice/mercy chapter, expulsion-as-mercy)
+- [x] 2026-06-02 `study/bom-walk/alma/alma-43.md` **LINKS** — CLEAN (Captain Moroni / defensive war; v45 "not fighting for monarchy nor power but… for their homes and their liberties," v47 "Ye shall defend your families even unto bloodshed" EXACT — the better cause + D&C 98 law of war)
+- [x] 2026-06-02 `study/bom-walk/alma/alma-44.md` **LINKS** — CLEAN (conditional protection; v4 "never will the Lord suffer that we shall be destroyed except we should fall into transgression and deny our faith," v9 "it is your breastplates and your shields that have preserved you" EXACT — two readings of one victory; end of Alma's record)
+- [x] 2026-06-02 `study/bom-walk/alma/alma-45.md` **LINKS** — CLEAN (the sealed prophecy / Moses-like departure; v16 "the Lord cannot look upon sin with the least degree of allowance," v19 "even as Moses" EXACT — the 400-year extinction prophecy; pride cycle reignites in one chapter)
 - [ ] 2026-06-02 `study/bom-walk/alma/alma-46.md` **LINKS**
 - [ ] 2026-06-02 `study/bom-walk/alma/alma-24.md` **LINKS**
 - [ ] 2026-06-02 `study/bom-walk/alma/alma-23.md` **LINKS**

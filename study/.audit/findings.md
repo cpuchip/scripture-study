@@ -4128,6 +4128,34 @@ Verified by direct grep.
   EXACT (read the tense — *never WAS*; sin and happiness as contradictory
   natures; you are restored to the self your desires built).
 
+### Alma 42-45 (2026-06-13, 427→431) — ALL CLEAN
+
+The Corianton doctrinal climax (justice and mercy), then the war record opens
+under Captain Moroni and Alma departs "even as Moses." Verified by direct grep.
+
+- **Alma 42** (justice and mercy): v15 "God himself atoneth for the sins of the
+  world… to appease the demands of justice, that God might be a perfect, just
+  God, and a merciful God also," v25 "do ye suppose that mercy can rob justice?
+  I say unto you, Nay; not one whit. If so, God would cease to be God" — EXACT
+  (the expulsion-as-mercy, the law-punishment-repentance chain, mercy as the
+  fruit of a price paid).
+- **Alma 43** (Captain Moroni / defensive war): v45 "they were not fighting for
+  monarchy nor power but they were fighting for their homes and their
+  liberties, their wives and their children," v47 "Ye shall defend your
+  families even unto bloodshed" — EXACT (the "better cause" + the D&C 98 law of
+  war: bear the offense, then defend; preparation + revelation + stratagem +
+  mercy).
+- **Alma 44** (conditional protection): v4 "never will the Lord suffer that we
+  shall be destroyed except we should fall into transgression and deny our
+  faith," v9 "it is your breastplates and your shields that have preserved
+  you" — EXACT (Zerahemnah reads the same victory as armor, not providence —
+  Korihor's empiricism in the field; "thus ended the record of Alma").
+- **Alma 45** (the sealed prophecy / Moses-like departure): v16 "the Lord
+  cannot look upon sin with the least degree of allowance," v19 "taken up by
+  the Spirit, or buried by the hand of the Lord, even as Moses" — EXACT (the
+  400-year extinction prophecy Mormon records while living it; the pride cycle
+  reigniting within one chapter of deliverance).
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
