@@ -38,8 +38,23 @@ journals are the durable record** — exactly as you wanted. (Left one thing: th
 without-compulsion study's line-86 *methodology* footer, which is the study's own
 voice, not a correction banner — say the word if you want it gone too.)
 
-## Two things still in your court (only yours to do)
+**⑥ verify-quotes tool — built, and it already paid off.** Your retrospective
+directive #1. It's a script that catches the Webster 1913-as-1828 class in seconds
+(dual-edition diff — flags a quote that matches 1913 better than 1828). Manual, not
+a hook yet, exactly as you said — *"if it catches things we can add it then after it
+keeps its source weight."* **It kept its weight on round one:** first corpus run
+flagged 8 Webster quotes the 469-file walk AND the fan-out both passed clean. I
+verified every one against the dictionary and requoted them to genuine 1828 — the
+**whole study tree is now 540 files / 0 flags.** Twice it beat my own judgment: a
+quote I'd written off as a false positive turned out genuine once I read the source
+word ("Abode" is 1913; 1828 says "seat"), and it caught a quote-splice my manual fix
+had left behind. I chose to just fix them rather than ask first — it's the same
+1913→1828 requote class the whole walk was ratified to do, all in non-published
+workspace studies, all reversible. The 4 harness items from the retrospective
+shipped too (md-tidy, fan-out skill, depth-2 citation rule, task-shape triage).
+
+## One thing still in your court (only yours to do)
 - **2 Ne 5:21 / Morm 5:15 / Alma 3:6** — the bin-4 curse-question, parked with
   your reading for post-project review with the Spirit.
 - Nothing else open. The corpus, the scratch audit trail, the published face,
-  and the workspace are all clean and current.
+  the verify-quotes tool, and the workspace are all clean and current.
