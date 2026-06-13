@@ -3606,6 +3606,29 @@ and the start of the back-cursor bom-walk block.
   the promised land while they were upon the waters," v23 "Surely this thing
   leadeth into captivity" — EXACT.
 
+### 3 Nephi 22-25 (Isaiah 54 + Malachi 3-4) (2026-06-13, 337→341) — ALL CLEAN
+
+The Isaiah/Malachi quotation block in 3 Nephi — verified by direct
+BoM-vs-KJV source comparison, the discipline these chapters demand.
+
+- **3 Ne 22** (= Isaiah 54): v7 "For a small moment have I forsaken thee, but
+  with great mercies will I gather thee," v10 "the mountains shall depart…
+  but my kindness shall not depart from thee" — EXACT.
+- **3 Ne 23** (search Isaiah + Christ audits the record): v1 "great are the
+  words of Isaiah," v11 "How be it that ye have not written this thing" —
+  EXACT.
+- **3 Ne 24** (= Malachi 3): v6 "I am the Lord, I change not," v10 "prove me
+  now herewith," v16 "a book of remembrance" — EXACT. ★ Direct KJV compare
+  confirms the chapter note's variant claims (e.g. 24:10 3Ne "my house" vs
+  KJV "mine house").
+- **3 Ne 25** (= Malachi 4): ★ the marquee variant CONFIRMED by direct
+  comparison — **25:2 3Ne "Son of Righteousness" vs KJV "Sun of
+  righteousness"** (character-perfect both sides); "calves in the stall" vs
+  KJV "of the stall" confirmed; v6 "turn the heart of the fathers to the
+  children… lest I come and smite the earth with a curse" identical to KJV
+  (the JS-H/D&C 2 expanded rendering correctly noted as NOT appearing here).
+  The chapter note's variant analysis is impeccable.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)

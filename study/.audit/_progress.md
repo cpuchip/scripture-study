@@ -356,10 +356,10 @@ Already done out-of-band: `study/morm-8-three-glories-reading.md` (2026-06-09).
 - [x] 2026-06-02 `study/bom-walk/ether/ether-6.md` **LINKS** — CLEAN (the crossing; v8 "the wind did never cease to blow towards the promised land while they were upon the waters," v23 "Surely this thing leadeth into captivity" EXACT)
 - [x] 2026-06-02 `study/bom-walk/ether/ether-5.md` **LINKS** — CLEAN (the three witnesses; v4 "the testimony of three, and this work… the Father, and the Son, and the Holy Ghost bear record," v6 "ye shall know that I have authority when ye shall see me" EXACT)
 - [x] 2026-06-02 `study/bom-walk/ether/ether-4.md` **LINKS** — CLEAN (rend the veil; v12 "I am the Father, I am the light, and the life, and the truth of the world" — is-Jesus-God, v15 "when ye shall rend that veil of unbelief… with a broken heart and a contrite spirit" EXACT)
-- [ ] 2026-06-02 `study/bom-walk/3-nephi/3-nephi-22.md` **LINKS**
-- [ ] 2026-06-02 `study/bom-walk/3-nephi/3-nephi-23.md` **LINKS**
-- [ ] 2026-06-02 `study/bom-walk/3-nephi/3-nephi-24.md` **LINKS**
-- [ ] 2026-06-02 `study/bom-walk/3-nephi/3-nephi-25.md` **LINKS**
+- [x] 2026-06-02 `study/bom-walk/3-nephi/3-nephi-22.md` **LINKS** — CLEAN (Isaiah 54; v7 "For a small moment have I forsaken thee, but with great mercies will I gather thee," v10 "the mountains shall depart… but my kindness shall not depart from thee" EXACT)
+- [x] 2026-06-02 `study/bom-walk/3-nephi/3-nephi-23.md` **LINKS** — CLEAN (search Isaiah + the record audited; v1 "great are the words of Isaiah," v11 "How be it that ye have not written this thing" EXACT)
+- [x] 2026-06-02 `study/bom-walk/3-nephi/3-nephi-24.md` **LINKS** — CLEAN (Malachi 3; v6 "I am the Lord, I change not," v10 "prove me now herewith," v16 "a book of remembrance" all EXACT; ★ Malachi KJV variant analysis verified — 24:10 "my house" vs KJV "mine house" confirmed)
+- [x] 2026-06-02 `study/bom-walk/3-nephi/3-nephi-25.md` **LINKS** — CLEAN (Malachi 4; ★ the marquee variant 25:2 "Son of Righteousness" vs KJV "Sun of righteousness" CONFIRMED by direct comparison, "calves in the stall" vs KJV "of the stall" confirmed, v6 "turn the heart of the fathers to the children… lest I come and smite the earth with a curse" identical to KJV — all EXACT)
 - [ ] 2026-06-02 `study/bom-walk/3-nephi/3-nephi-26.md` **LINKS**
 - [ ] 2026-06-02 `study/bom-walk/3-nephi/3-nephi-27.md` **LINKS**
 - [ ] 2026-06-02 `study/bom-walk/3-nephi/3-nephi-28.md` **LINKS**
