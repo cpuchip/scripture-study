@@ -73,7 +73,7 @@
 #### Alma 5:14
 > "have ye spiritually been born of God? Have ye received his image in your countenances? Have ye experienced this mighty change in your hearts?"
 
-**Observation:** Three questions, each going deeper: (1) born of God? — the event; (2) his image in your countenance? — the visible mark; (3) mighty change in your hearts? — the interior reality. Webster 1828 on *countenance* def. 3: "approving or encouraging aspect of face; hence, favor, good will." To receive *his image* in your countenance = to bear his likeness visibly, to have his favor manifest in your face. This is the New Testament image — 2 Cor. 3:18, "beholding as in a glass the glory of the Lord, are changed into the same image." Alma is asking whether their faces look like Christ.
+**Observation:** Three questions, each going deeper: (1) born of God? — the event; (2) his image in your countenance? — the visible mark; (3) mighty change in your hearts? — the interior reality. Webster 1828 on *countenance* def. 4: "Favor; good will; kindness," with the scriptural gloss that "the light of God's countenance is his smiles or favorable regards, his favor and grace." To receive *his image* in your countenance = to bear his likeness visibly, to have his favor manifest in your face. This is the New Testament image — 2 Cor. 3:18, "beholding as in a glass the glory of the Lord, are changed into the same image." Alma is asking whether their faces look like Christ.
 **Connects to:** Section 2
 
 ---
@@ -244,7 +244,7 @@
 
 ### Needs Qualification
 - **Matthew 3:10 / Luke 3:9 (axe at the root)** — Alma 5:52 says "the Spirit saith: Behold, the ax is laid at the root of the tree." The Baptist parallel is real but Alma attributes it to the Spirit, not John. The connection is genuine but should be framed as shared typology, not direct borrowing.
-- **"Image of God restored by new birth"** — the reading of Alma 5:14 ("his image in your countenances") as restoration of the Gen. 1:27 image-of-God is theologically coherent and supported by Webster's citation of Gen. 1:27 under "image," but the text does not make this explicit. Mark as interpretive inference, confident but not declared.
+- **"Image of God restored by new birth"** — the reading of Alma 5:14 ("his image in your countenances") as restoration of the Gen. 1:27 image-of-God is theologically coherent, but neither the text nor Webster supplies it. Webster's scripture citation under *image* is Matthew 22:20 ("Whose is this image?"), not Gen. 1:27 — see the *image* FLAG above. Mark as interpretive inference, confident but not declared.
 - **The questions as Alma's own lived self-examination** — Alma 5:45-46 says he "fasted and prayed many days" to know these things. The inference that he asked the same questions of himself before asking them of Zarahemla is a reading, not a stated fact. Strong reading, should be framed as such.
 
 ### Acknowledged Gaps
