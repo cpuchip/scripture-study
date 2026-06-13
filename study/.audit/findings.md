@@ -3508,6 +3508,60 @@ confirmed by direct grep — including the doctrinal heavyweights.
   Lord had ceased striving with them, and Satan had full power," v34 "it
   mattereth not, if it so be that I am saved in the kingdom of God" — EXACT.
 
+### Moroni 1-10 cluster (2026-06-13, 321→331) — ALL CLEAN ★ BOM-WALK COMPLETE ★
+
+The book of Moroni — the last man writing on, the church-order chapters,
+the sacrament prayers (verbatim as used today), Mormon's charity sermon,
+the infant-baptism letter, the depravity letter, and the closing promise +
+farewell. Verified blocks confirmed by direct grep. **With this cluster the
+entire 239-chapter Book-of-Mormon walk (`study/bom-walk/`) is verified
+clean — every chapter note's load-bearing quotes confirmed against the
+gospel-library source.**
+
+- **Moro 1** (the last man writes on): v3 "I, Moroni, will not deny the
+  Christ; wherefore, I wander whithersoever I can for the safety of mine own
+  life" — EXACT.
+- **Moro 2** (power to give the Holy Ghost): v2 "after ye have done this ye
+  shall have power… in my name shall ye give it, for thus do mine apostles" —
+  EXACT.
+- **Moro 3** (manner of ordination): v3 "In the name of Jesus Christ I ordain
+  you to be a priest… to preach repentance and remission of sins" — EXACT.
+- **Moro 4** (sacrament prayer on the bread): v3 full prayer "that they may
+  always have his Spirit to be with them" — EXACT (verbatim as used today).
+- **Moro 5** (sacrament prayer on the wine): v2 full prayer "the blood of thy
+  Son, which was shed for them… that they do always remember him" — EXACT
+  (verbatim as used today).
+- **Moro 6** (baptism + church order): v4 "remembered and nourished by the
+  good word of God… relying alone upon the merits of Christ" — EXACT.
+- **Moro 7** (Mormon's charity sermon): v16 "the Spirit of Christ is given to
+  every man… every thing which inviteth to do good… is sent forth by the
+  power and gift of Christ," v47 "charity is the pure love of Christ, and it
+  endureth forever" — EXACT.
+- **Moro 8** (infant baptism): v8 "little children are whole, for they are not
+  capable of committing sin; wherefore the curse of Adam is taken from them
+  in me," v12 "God is a partial God, and also a changeable God, and a
+  respecter to persons" — EXACT.
+- **Moro 9** (the depravity letter): v6 "if we should cease to labor, we
+  should be brought under condemnation," v25 "be faithful in Christ… but may
+  Christ lift thee up" — EXACT.
+- **Moro 10** (the promise + the farewell): v4 "ask with a sincere heart, with
+  real intent, having faith in Christ, he will manifest the truth of it unto
+  you, by the power of the Holy Ghost," v32 "come unto Christ, and be
+  perfected in him… then is his grace sufficient for you," v34 "the pleasing
+  bar of the great Jehovah, the Eternal Judge of both quick and dead" — all
+  EXACT (the climactic is-Jesus-God datapoint, and the last verse of the
+  Book of Mormon).
+
+**★ Milestone:** the bom-walk (1 Nephi 1 → Moroni 10, 239 chapter notes plus
+the standalone studies feeding it) is COMPLETE in the study-correctness
+walk. Across the whole walk the bom-walk held up impeccably — Michael's
+per-chapter variant analysis and the chapter-note Verified blocks proved
+accurate on every load-bearing quote sampled; no REQUOTE corrections were
+needed in any bom-walk chapter note (the 3 Webster requotes this session
+were in the deeper bom-walk *studies/*, not the chapter notes). Remaining
+walk items are the non-bom-walk SAMPLE-class files (daily-digest, morgan-
+philpot, etc.) and the 2 ⏳ pending studies.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)

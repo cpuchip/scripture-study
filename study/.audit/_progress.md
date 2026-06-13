@@ -340,16 +340,16 @@ Already done out-of-band: `study/morm-8-three-glories-reading.md` (2026-06-09).
 - [x] 2026-06-02 `study/bom-walk/ether/ether-13.md` **LINKS** — CLEAN (New Jerusalem at the ruin; v3 "it was the place of the New Jerusalem, which should come down out of heaven," v13 "he hid himself in the cavity of a rock by day" EXACT)
 - [x] 2026-06-02 `study/bom-walk/ether/ether-14.md` **LINKS** — CLEAN (the all-consuming war; v2 "every man kept the hilt of his sword in his right hand," v25 "their wickedness and abominations had prepared a way for their everlasting destruction" EXACT)
 - [x] 2026-06-02 `study/bom-walk/ether/ether-15.md` **LINKS** — CLEAN (the end; v11 "that same hill where my father Mormon did hide up the records," v19 "the Spirit of the Lord had ceased striving with them, and Satan had full power," v34 "it mattereth not, if it so be that I am saved in the kingdom of God" all EXACT)
-- [ ] 2026-06-02 `study/bom-walk/moroni/moroni-1.md` **LINKS**
-- [ ] 2026-06-02 `study/bom-walk/moroni/moroni-2.md` **LINKS**
-- [ ] 2026-06-02 `study/bom-walk/moroni/moroni-3.md` **LINKS**
-- [ ] 2026-06-02 `study/bom-walk/moroni/moroni-4.md` **LINKS**
-- [ ] 2026-06-02 `study/bom-walk/moroni/moroni-5.md` **LINKS**
-- [ ] 2026-06-02 `study/bom-walk/moroni/moroni-6.md` **LINKS**
-- [ ] 2026-06-02 `study/bom-walk/moroni/moroni-7.md` **LINKS**
-- [ ] 2026-06-02 `study/bom-walk/moroni/moroni-8.md` **LINKS**
-- [ ] 2026-06-02 `study/bom-walk/moroni/moroni-9.md` **LINKS**
-- [ ] 2026-06-02 `study/bom-walk/moroni/moroni-10.md` **LINKS**
+- [x] 2026-06-02 `study/bom-walk/moroni/moroni-1.md` **LINKS** — CLEAN (the last man writes on; v3 "I, Moroni, will not deny the Christ; wherefore, I wander whithersoever I can for the safety of mine own life" EXACT)
+- [x] 2026-06-02 `study/bom-walk/moroni/moroni-2.md` **LINKS** — CLEAN (power to give the Holy Ghost; v2 "Ye shall call on the Father in my name, in mighty prayer; and after ye have done this ye shall have power… in my name shall ye give it, for thus do mine apostles" EXACT)
+- [x] 2026-06-02 `study/bom-walk/moroni/moroni-3.md` **LINKS** — CLEAN (manner of ordination; v3 "In the name of Jesus Christ I ordain you to be a priest… to preach repentance and remission of sins through Jesus Christ, by the endurance of faith on his name to the end" EXACT)
+- [x] 2026-06-02 `study/bom-walk/moroni/moroni-4.md` **LINKS** — CLEAN (sacrament prayer on the bread; v3 full prayer "bless and sanctify this bread… that they may always have his Spirit to be with them" EXACT — verbatim as used today)
+- [x] 2026-06-02 `study/bom-walk/moroni/moroni-5.md` **LINKS** — CLEAN (sacrament prayer on the wine; v2 full prayer "in remembrance of the blood of thy Son, which was shed for them… that they do always remember him" EXACT — verbatim as used today)
+- [x] 2026-06-02 `study/bom-walk/moroni/moroni-6.md` **LINKS** — CLEAN (baptism + church order; v4 "remembered and nourished by the good word of God… relying alone upon the merits of Christ, who was the author and the finisher of their faith" EXACT)
+- [x] 2026-06-02 `study/bom-walk/moroni/moroni-7.md` **LINKS** — CLEAN (Mormon's charity sermon; v16 "the Spirit of Christ is given to every man, that he may know good from evil… every thing which inviteth to do good… is sent forth by the power and gift of Christ," v47 "charity is the pure love of Christ, and it endureth forever" EXACT)
+- [x] 2026-06-02 `study/bom-walk/moroni/moroni-8.md` **LINKS** — CLEAN (infant baptism; v8 "little children are whole, for they are not capable of committing sin; wherefore the curse of Adam is taken from them in me," v12 "God is a partial God, and also a changeable God, and a respecter to persons" EXACT)
+- [x] 2026-06-02 `study/bom-walk/moroni/moroni-9.md` **LINKS** — CLEAN (Mormon's second letter; v6 "if we should cease to labor, we should be brought under condemnation," v25 "be faithful in Christ… but may Christ lift thee up" EXACT)
+- [x] 2026-06-02 `study/bom-walk/moroni/moroni-10.md` **LINKS** — CLEAN (the promise + the farewell; v4 "ask with a sincere heart, with real intent, having faith in Christ, he will manifest the truth of it unto you, by the power of the Holy Ghost," v32 "come unto Christ, and be perfected in him… then is his grace sufficient for you," v34 "the pleasing bar of the great Jehovah, the Eternal Judge of both quick and dead" all EXACT — is-Jesus-God climactic datapoint; the bom-walk is COMPLETE)
 - [ ] 2026-06-02 `study/daily-digest/ai-news-7am--2026-06-02-1300.md` **SAMPLE**
 - [ ] 2026-06-02 `study/morgan-philpot/seven-dispensations-and-hannahs-son.md` **SAMPLE**
 - [ ] 2026-06-02 `study/bom-walk/alma/alma-50.md` **LINKS**
