@@ -3779,6 +3779,24 @@ Verified by direct grep + Isaiah 53 KJV variant comparison.
   God; and the Son, because of the flesh," v7 "the will of the Son being
   swallowed up in the will of the Father" — EXACT (is-Jesus-God).
 
+### Mosiah 16 + Abinadi-christology study + 17-18 (2026-06-13, 367→371) — ALL CLEAN
+
+Abinadi's close + the cross-chapter christology synthesis study + the
+martyrdom + the waters of Mormon. Verified by direct grep.
+
+- **Mosiah 16** (Abinadi's close): v12 "the arms of mercy were extended
+  towards them, and they would not," v15 "redemption cometh through Christ
+  the Lord, who is the very Eternal Father" — EXACT.
+- **studies/mos13-16_abinadi-christology** (deeper synthesis study): draws on
+  Mosiah 13-16 (all verified this run), incl. the Isaiah 53 variant table
+  confirmed against KJV; reads the Father-Son passage as dual-DESCRIPTION,
+  not dual-being (two grounds, one person); provenance note accurate. CLEAN.
+- **Mosiah 17** (the martyrdom): v9 "I will not recall the words… for they are
+  true," v20 "having sealed the truth of his words by his death" — EXACT.
+- **Mosiah 18** (the waters of Mormon): v8 "willing to bear one another's
+  burdens, that they may be light," v30 "how beautiful are they to the eyes
+  of them who there came to the knowledge of their Redeemer" — EXACT.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)

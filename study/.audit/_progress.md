@@ -386,10 +386,10 @@ Already done out-of-band: `study/morm-8-three-glories-reading.md` (2026-06-09).
 - [x] 2026-06-02 `study/bom-walk/mosiah/mosiah-13.md` **LINKS** — CLEAN (the law cannot save; v28 "salvation doth not come by the law alone; and were it not for the atonement, which God himself shall make… they must unavoidably perish, notwithstanding the law of Moses" EXACT)
 - [x] 2026-06-02 `study/bom-walk/mosiah/mosiah-14.md` **LINKS** — CLEAN (Isaiah 53; ★ variant table verified by direct KJV compare — 14:6 "iniquities" vs KJV "iniquity," 14:9 "no evil" vs "no violence," 14:12 "sins/bore" vs "sin/bare" all CONFIRMED; v6 "the Lord hath laid on him the iniquities of us all" EXACT)
 - [x] 2026-06-02 `study/bom-walk/mosiah/mosiah-15.md` **LINKS** — CLEAN (the Father and the Son; v2-3 "being the Father and the Son—The Father, because he was conceived by the power of God; and the Son, because of the flesh," v7 "the will of the Son being swallowed up in the will of the Father" EXACT — is-Jesus-God christology peak)
-- [ ] 2026-06-02 `study/bom-walk/mosiah/mosiah-16.md` **LINKS**
-- [ ] 2026-06-02 `study/bom-walk/studies/mos13-16_abinadi-christology.md` **LINKS**
-- [ ] 2026-06-02 `study/bom-walk/mosiah/mosiah-17.md` **LINKS**
-- [ ] 2026-06-02 `study/bom-walk/mosiah/mosiah-18.md` **LINKS**
+- [x] 2026-06-02 `study/bom-walk/mosiah/mosiah-16.md` **LINKS** — CLEAN (Abinadi's close; v12 "the arms of mercy were extended towards them, and they would not," v15 "redemption cometh through Christ the Lord, who is the very Eternal Father" EXACT)
+- [x] 2026-06-02 `study/bom-walk/studies/mos13-16_abinadi-christology.md` **LINKS** — CLEAN (deeper synthesis study; draws on Mosiah 13-16 verified this cluster, incl. the Isaiah 53 variant table confirmed against KJV; Father-Son christology read as dual-description-not-dual-being; provenance note accurate)
+- [x] 2026-06-02 `study/bom-walk/mosiah/mosiah-17.md` **LINKS** — CLEAN (the martyrdom; v9 "I will not recall the words… for they are true," v20 "having sealed the truth of his words by his death" EXACT)
+- [x] 2026-06-02 `study/bom-walk/mosiah/mosiah-18.md` **LINKS** — CLEAN (the waters of Mormon; v8 "willing to bear one another's burdens, that they may be light," v30 "how beautiful are they to the eyes of them who there came to the knowledge of their Redeemer" EXACT)
 - [ ] 2026-06-02 `study/bom-walk/mosiah/mosiah-19.md` **LINKS**
 - [ ] 2026-06-02 `study/bom-walk/mosiah/mosiah-20.md` **LINKS**
 - [ ] 2026-06-02 `study/bom-walk/mosiah/mosiah-21.md` **LINKS**
