@@ -2010,6 +2010,17 @@ cluster). The daily-digest file is a PE-pipeline smoke-test output
 capture. Both are machine artifacts of record —
 documented-not-endorsed, no fixes applicable.
 
+### study/yt/gospel/ytt-rerun2-philpot-marshfield.md (2026-05-19) — audit note added
+T1. Substrate-produced evaluation; the primary transcript lives in
+the substrate's yt_transcripts table, not workspace yt/, so the
+timestamped excerpts are preserved as captured (documented-not-
+endorsed). The evaluation's own verified-text fragments check out
+(D&C 68:25 exact). One audit note added: Philpot's excerpt cites
+"2 Thessalonians 2:1" while quoting the delusion text of 2:11 —
+flagged without altering the as-spoken capture. The doc's own
+analysis (Mosiah 4:14-15, Alma 5, D&C 20 counters) is sound
+against canon.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
