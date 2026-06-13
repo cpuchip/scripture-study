@@ -3,7 +3,7 @@ lane: pg-ai-stewards-oss
 session_id: 7ea7faa4-688a-451a-ac68-b7ea662d4b81
 status: active
 started: 2026-06-09T18:00:00
-last_active: 2026-06-12T11:09:53
+last_active: 2026-06-12T21:41:05
 ---
 
 ## Working on
@@ -18,6 +18,12 @@ last_active: 2026-06-12T11:09:53
   commits unpushed (Michael's push).
 
 ## Claims
+- 2026-06-12T19:52:26 background (Bash): docker build -t stewards-oss-pg:b2 . 2>&1 | tail -4
+- 2026-06-12T19:36:21 background (Bash): cd /c/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/pg-ai-stewards-oss/extension && docker build -t stewards-oss-pg:b2 . 2>&1 | tail -5
+- 2026-06-12T19:07:26 background (Bash): cd "/c/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/pg-ai-stewards-oss/extension" && docker build -t stewards-oss-pg:b1b . 2>&1 | tail -25
+- 2026-06-12T18:27:07 background (Bash): sleep 90 && tail -4 "C:\Users\cpuch\AppData\Local\Temp\claude\C--Users-cpuch-Documents-code-stuffleberry-scripture-study\6c688211-888e-4483-aebd-440bf1c90873\ta
+- 2026-06-12T18:26:26 background (Bash): cd C:/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/pg-ai-stewards-oss/extension && docker build -t stewards-oss-pg:b1a . 2>&1 | tail -3
+- 2026-06-12T16:21:35 background (Bash): cd C:/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/pg-ai-stewards-oss/extension && docker build -t stewards-oss-pg:p1-verify . 2>&1 | tail -
 - 2026-06-12T05:23:57 background (Bash): cd "/c/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/pg-ai-stewards/extension" && docker compose build pg 2>&1 | tail -5 && docker compose bu
 - NONE live. (Earlier native persona-host.exe instances are dead — the
   general-workspase lane owns the containerized host now. Acknowledged.)
