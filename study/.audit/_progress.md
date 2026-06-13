@@ -418,10 +418,10 @@ Already done out-of-band: `study/morm-8-three-glories-reading.md` (2026-06-09).
 - [x] 2026-06-02 `study/bom-walk/alma/alma-01.md` **LINKS** — CLEAN (Nehor + priestcraft; v12 "the first time that priestcraft has been introduced… it would prove their entire destruction," v17 "the law could have no power on any man for his belief" EXACT)
 - [x] 2026-06-02 `study/bom-walk/omni/omni-01.md` **LINKS** — CLEAN (small plates end; v17 "their language had become corrupted… they denied the being of their Creator," v26 "offer your whole souls as an offering unto him" EXACT)
 - [x] 2026-06-02 `study/bom-walk/words-of-mormon/words-of-mormon-01.md` **T2** — CLEAN (Mormon's bridge; v7 "for a wise purpose… I do not know all things; but the Lord knoweth all things which are to come" EXACT — closes the 1 Ne 9:5-6 loop)
-- [ ] 2026-06-02 `study/bom-walk/mosiah/mosiah-01.md` **LINKS**
-- [ ] 2026-06-02 `study/bom-walk/mosiah/mosiah-02.md` **LINKS**
-- [ ] 2026-06-02 `study/bom-walk/mosiah/mosiah-03.md` **LINKS**
-- [ ] 2026-06-02 `study/bom-walk/mosiah/mosiah-04.md` **LINKS**
+- [x] 2026-06-02 `study/bom-walk/mosiah/mosiah-01.md` **LINKS** — CLEAN (the record prevents dwindling; v5 "even our fathers would have dwindled in unbelief, and we should have been like unto our brethren, the Lamanites" EXACT)
+- [x] 2026-06-02 `study/bom-walk/mosiah/mosiah-02.md` **LINKS** — CLEAN (Benjamin's sermon — service; v17 "when ye are in the service of your fellow beings ye are only in the service of your God," v21 "yet ye would be unprofitable servants" EXACT)
+- [x] 2026-06-02 `study/bom-walk/mosiah/mosiah-03.md` **LINKS** — CLEAN (the natural man; v7 "blood cometh from every pore," v19 "the natural man is an enemy to God… unless he yields to the enticings of the Holy Spirit… and becometh as a child" EXACT — character-perfect cornerstone)
+- [x] 2026-06-02 `study/bom-walk/mosiah/mosiah-04.md` **LINKS** — CLEAN (are we not all beggars; v19 "are we not all beggars?," v27 "it is not requisite that a man should run faster than he has strength" EXACT — the project's pacing covenant)
 - [ ] 2026-06-02 `study/bom-walk/mosiah/mosiah-05.md` **LINKS**
 - [ ] 2026-06-02 `study/bom-walk/mosiah/mosiah-06.md` **LINKS**
 - [ ] 2026-06-02 `study/bom-walk/mosiah/mosiah-07.md` **LINKS**

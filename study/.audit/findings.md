@@ -3953,6 +3953,25 @@ of the small plates (Omni) + Mormon's bridge. Verified by direct grep.
   all things; but the Lord knoweth all things which are to come" — EXACT
   (closes the 1 Ne 9:5-6 "wise purpose" loop).
 
+### Mosiah 1-4 (Benjamin's sermon) (2026-06-13, 399→403) — ALL CLEAN
+
+The opening of Mosiah and King Benjamin's temple sermon (the service
+doctrine, the natural man, the beggar). Verified by direct grep.
+
+- **Mosiah 1** (record prevents dwindling): v5 "even our fathers would have
+  dwindled in unbelief, and we should have been like unto our brethren, the
+  Lamanites" — EXACT.
+- **Mosiah 2** (service): v17 "when ye are in the service of your fellow beings
+  ye are only in the service of your God," v21 "yet ye would be unprofitable
+  servants" — EXACT.
+- **Mosiah 3** (the natural man): v7 "blood cometh from every pore," v19 "the
+  natural man is an enemy to God… unless he yields to the enticings of the
+  Holy Spirit… and becometh as a child" — EXACT (the cornerstone verse,
+  character-perfect).
+- **Mosiah 4** (are we not all beggars): v19 "are we not all beggars?," v27 "it
+  is not requisite that a man should run faster than he has strength" — EXACT
+  (★ the project's own pacing covenant, verified character-exact).
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
