@@ -61,8 +61,6 @@ No "let that sink in." No "here's the thing." Just: this is what I did. This is 
 > "cake walk."
 > "It was super useful!"
 
-*(Requoted 2026-06-12 — restored Michael's original "single highhandedly" above and "neighbored" in the previous section; the earlier rendering had silently polished the typos, which rather misses the point of this document.)*
-
 When Michael is excited, he says "that was the best" or "super useful" or just "cake walk." He doesn't build a runway with "And here's why this matters..." He just says it landed.
 
 **3. First person, present tense, show-don't-tell.**

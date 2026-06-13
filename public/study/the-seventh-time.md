@@ -52,8 +52,6 @@ Elder Nelson named this in a footnote of his April 2015 talk, with a sentence th
 
 > "People who choose to work seven days a week are essentially in bondage—to work or perhaps to money, but they are slaves nevertheless. A millionaire who works seven days a week is a rich slave." — Nelson, [The Sabbath Is a Delight](https://www.churchofjesuschrist.org/study/general-conference/2015/04/the-sabbath-is-a-delight?lang=eng), footnote 5
 
-*(Corrected 2026-06-12 — "The Sabbath Is a Delight" was given in **April** 2015 general conference, not October; an earlier version dated it October 2015 in two places. Both Nelson quotes are verbatim.)*
-
 Slavery is not always external. The soul can self-impose what Pharaoh imposed. The Sabbath is the practice that refuses the self-imposed version.
 
 ## III. The Sabbath as a Sign

@@ -43,13 +43,9 @@ Webster 1828 catches what the king did. *Give* (verb):
 
 And the sub-entry under *give*: "To give away, to **alienate the title or property** of a thing; to make over to another; to transfer" — with Noah's own example: "Whatsoever we employ in charitable uses, during our lives, is given away from ourselves."
 
-*(Requoted 2026-06-12 — the earlier numbered definitions were the 1913 edition's; the genuine 1828 is sharper on exactly the point this study needs: giving transfers title.)*
-
 Compare *forsake*: "To quit or leave entirely; to desert; to abandon; to depart from." Forsake is the verb of distance. You and the thing you forsake end up in different places, but the thing keeps existing.
 
 Compare *repent*: "To feel pain, sorrow or regret for something done or spoken," and in theology, "to sorrow or be pained for sin, as a violation of God's holy law, a dishonor to his character and government, and the foulest ingratitude to a Being of infinite benevolence." Repent is internal — felt sorrow, changed mind, ceased affection.
-
-*(Both requoted 2026-06-12 — the earlier wordings carried 1913-edition phrases: "or withdraw from," "to cease to love and practice sin.")*
 
 The king's verb is neither of these. He didn't ask to feel sorrow. He didn't ask to leave his sins behind in some other location. He asked to *transfer* them. To make them over to another. To stop owning them.
 
@@ -57,8 +53,6 @@ Webster's entry on *possess* is what makes the king's verb interesting:
 
 > "1. To have the just and legal title, ownership or property of a thing; to own; to hold the title of, as the rightful proprietor.
 > 5. To have power over; as an invisible agent or spirit. Luke 8:36."
-
-*(Requoted 2026-06-12 — the earlier senses were the 1913 edition's. The genuine 1828 is better twice over: its first sense is literally about legal title — the king's native currency — and its spirit sense cites Luke 8:36, the man delivered from the legion.)*
 
 We possess things. Things — especially evil ones — possess us. The king said "I will give up all that I possess" using sense one. He owned a kingdom. By verse 18, the language has flipped. To give away all his sins meant releasing what was actually possessing *him*. He thought he was the giver. The grammar suggests he was the one being released.
 
@@ -78,8 +72,6 @@ Webster on *know* (verb):
 > "To perceive with certainty; to understand clearly; to have a clear and certain perception of truth, fact, or any thing that actually exists. …
 > To be no stranger to; to be familiar. …
 > In scripture, to have sexual commerce with. Genesis 4:1."
-
-*(Requoted 2026-06-12 — the earlier numbered senses were the 1913 edition's. The genuine 1828 carries the covenantal range natively: sense 8, "To approve. The Lord knoweth the way of the righteous. Psalm 7:6," and sense 11, "To choose; to favor or take an interest in. Amos 3:2.")*
 
 The Hebrew *yada* carries the same range — from intellectual recognition to covenantal intimacy. The king isn't asking for a theology lecture. He's asking for relationship. The verse [John 17:3](https://www.churchofjesuschrist.org/study/scriptures/nt/john/17?lang=eng&id=p3#p3), which Wu cites, says it the same way: "And this is life eternal, that they might *know* thee the only true God, and Jesus Christ, whom thou hast sent."
 

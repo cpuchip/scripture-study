@@ -20,8 +20,6 @@ We don't use this word much anymore. Modern English has "but" and "however" and 
 
 Webster's 1828 dictionary defines it: *"Not the less; notwithstanding; that is, in opposition to any thing, or without regarding it."* His illustration is plain as dirt: "It rained, nevertheless, we proceeded on our journey." The obstacle was real. The journey continued anyway — in opposition to the rain, without being prevented.
 
-*(Requoted 2026-06-12 — the earlier wording, "in spite of that; yet," was the 1913 edition's, and it was the 1913 editors, not Noah Webster, who illustrated the word with Hebrews 12:11. Noah's own illustration is the rain.)*
-
 Those later editors of Webster's dictionary reached for [Hebrews 12:11](https://www.churchofjesuschrist.org/study/scriptures/nt/heb/12?lang=eng&id=p11#p11) to illustrate the same word:
 
 > "No chastening for the present seemeth to be joyous, but grievous: nevertheless afterward it yieldeth the peaceable fruit of righteousness."

@@ -28,7 +28,6 @@ The Lord put the pacing principle right next to the delegation principle. D&C 10
 
 So: how does God delegate? The scriptures give us not one model but several — each adding a dimension the others lack.
 
-
 ## II. Jethro and Moses — "The Thing That Thou Doest Is Not Good" (Exodus 18)
 
 Moses is doing everything himself, from morning to evening. The people stand around him all day waiting for judgment. Then Jethro arrives — Moses' father-in-law, a Midianite priest who, according to the JST, held Melchizedek priesthood authority ([Ex 18:1b](https://www.churchofjesuschrist.org/study/scriptures/ot/ex/18?lang=eng&id=p1#p1); cf. [D&C 84:6-16](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/84?lang=eng&id=p6-p16#p6)). Jethro is an outsider with priesthood authority who sees what Moses can't see from inside the work.
@@ -49,7 +48,6 @@ But Jethro doesn't strip Moses of his prophetic function. Verses 19-20 preserve 
 
 One detail that's easy to miss: Jethro conditions his advice. "If thou shalt do this thing, *and God command thee so*, then thou shalt be able to endure" ([Ex 18:23](https://www.churchofjesuschrist.org/study/scriptures/ot/ex/18?lang=eng&id=p23#p23)). Good counsel still requires divine confirmation. Even the right organizational pattern needs God's endorsement.
 
-
 ## III. Christ and the Twelve — Delegation as Empowerment, Not Offloading
 
 When Christ sends the Twelve, the pattern is different from Jethro's. Jethro reorganized. Christ empowers.
@@ -68,14 +66,13 @@ When Christ sends the Seventy, He adds two more elements. First, partnership: th
 
 Performance-based delegation is fragile. Identity-based delegation is durable. Don't rejoice that the task went well. Rejoice that you belong to God.
 
-
 ## IV. Abraham 4-5 — The Gods Watched Until They Obeyed
 
 Abraham's creation account uses language that none of the other creation accounts use. The Gods *counsel*. They *watch*. They *order* and then verify.
 
 > "And the Gods took counsel among themselves and said: Let us go down and form man in our image, after our likeness" ([Abr 4:26](https://www.churchofjesuschrist.org/study/scriptures/pgp/abr/4?lang=eng&id=p26#p26))
 
-Delegation begins with shared deliberation. "Took counsel among themselves" — Webster 1828 defines counsel as "consultation; interchange of opinions," and illustrates with Psalm 55:14: "We took sweet counsel together." *(Requoted 2026-06-12 — the earlier "mutual advising" wording was the 1913 edition's.)* Not one God directing and others executing. An interchange. The Gods planned together before they acted.
+Delegation begins with shared deliberation. "Took counsel among themselves" — Webster 1828 defines counsel as "consultation; interchange of opinions," and illustrates with Psalm 55:14: "We took sweet counsel together." Not one God directing and others executing. An interchange. The Gods planned together before they acted.
 
 Then the execution pattern:
 
@@ -94,7 +91,6 @@ And then a moment of genuine delegation of creative authority:
 > "And out of the ground the Gods formed every beast of the field, and every fowl of the air, and brought them unto Adam to see what he would call them; and whatsoever Adam called every living creature, that should be the name thereof." ([Abr 5:20](https://www.churchofjesuschrist.org/study/scriptures/pgp/abr/5?lang=eng&id=p20#p20))
 
 The Gods don't name the animals. Adam does. And whatever Adam calls them — that's the name. This isn't task delegation. It's creative authority. Adam's naming sticks. The Gods honor his choices.
-
 
 ## V. Alma's Organization — One Priest to Every Fifty
 
@@ -127,7 +123,6 @@ Then Mosiah 26 gives us the most beautiful escalation chain in scripture. Sinner
 Teachers → priests → Alma → king → back to Alma → God. Every level handles what it can and escalates what exceeds its capacity. Same as Jethro's "every great matter they shall bring unto thee" — but with the added dimension that when human authority reaches its limit, the escalation continues to God Himself, who gives the standard for judgment ([Mosiah 26:29](https://www.churchofjesuschrist.org/study/scriptures/bofm/mosiah/26?lang=eng&id=p29#p29)).
 
 And at the end: "Alma and his fellow laborers" ([Mosiah 26:38](https://www.churchofjesuschrist.org/study/scriptures/bofm/mosiah/26?lang=eng&id=p38#p38)). Not Alma alone. The delegation worked.
-
 
 ## VI. D&C 107 — The Delegation Charter
 
@@ -162,7 +157,6 @@ And Ballard's observation is the diagnostic for when this isn't happening:
 > "Without exception, the bishop took charge of the situation immediately and said, 'Here's the problem, and here's what I think we should do to solve it.' Then he made assignments... This was a good exercise in delegation, I suppose, but it did not even begin to use the experience and wisdom of council members to address the problem." ([Counseling with Our Councils](https://www.churchofjesuschrist.org/study/general-conference/1994/04/counseling-with-our-councils?lang=eng), Apr 1994)
 
 The bishop dictated a solution and distributed tasks. That's delegation as offloading. When he opened the floor and invited the council to counsel together, "the effect was like opening the floodgates of heaven."
-
 
 ## VII. The Pattern Is the Same — The Mechanism Differs
 
@@ -201,14 +195,13 @@ This is where the human and AI dimensions converge and diverge at the same time.
 
 The real question isn't whether machines deserve covenant. It's whether the person delegating has learned to work through relationship rather than control. The Sunday School president who can't delegate to his counselors and the developer who micromanages every AI prompt are failing at the same thing: trusting the pattern enough to let go.
 
-
 ## VIII. Becoming — What This Means for Monday Morning
 
 The pattern is clear enough. The application is uncomfortably specific.
 
-**Webster 1828 defines *steward*:** "A man employed in great families to manage the domestic concerns, superintend the other servants, collect the rents or income, keep the accounts." And the genuine entry's fifth sense was written for this study: "In Scripture and theology, a minister of Christ, whose duty is to dispense the provisions of the gospel, to preach its doctrines and administer its ordinances. It is required in stewards, that a man be found faithful. 1 Corinthians 4:2." *(Requoted 2026-06-12 — the earlier wording was the 1913 edition's.)* A steward manages what belongs to someone else. The Sunday School presidency, the teachers, the curriculum, the classes — none of it is mine. It belongs to the Lord. I'm the steward. And a steward who tries to do everything himself is a steward who has forgotten whose house it is.
+**Webster 1828 defines *steward*:** "A man employed in great families to manage the domestic concerns, superintend the other servants, collect the rents or income, keep the accounts." And the genuine entry's fifth sense was written for this study: "In Scripture and theology, a minister of Christ, whose duty is to dispense the provisions of the gospel, to preach its doctrines and administer its ordinances. It is required in stewards, that a man be found faithful. 1 Corinthians 4:2." A steward manages what belongs to someone else. The Sunday School presidency, the teachers, the curriculum, the classes — none of it is mine. It belongs to the Lord. I'm the steward. And a steward who tries to do everything himself is a steward who has forgotten whose house it is.
 
-**Webster 1828 defines *ordain*:** "Properly, to set; to establish in a particular office or order." *(Requoted 2026-06-12 — the earlier "to set in order; to arrange according to rule; to regulate" was the 1913 edition's, and the sentence built on it had the 1828's sense order backwards.)* To ordain is to *set* — to establish a person inside an order. The calling isn't just a title. It places you in something arranged, regulated, kept — and makes you partly responsible for keeping it so.
+**Webster 1828 defines *ordain*:** "Properly, to set; to establish in a particular office or order." To ordain is to *set* — to establish a person inside an order. The calling isn't just a title. It places you in something arranged, regulated, kept — and makes you partly responsible for keeping it so.
 
 The concrete steps are small and the pattern already exists:
 

@@ -6,7 +6,7 @@
 
 ## I. The Title Itself — What Does "Only Begotten" Mean?
 
-The title "Only Begotten" is a translation of the Greek *monogenes* — *mono* (one, alone) + *genos* (kind, race, offspring). It appears nine times in the New Testament — five of Christ ([John 1:14, 18](https://www.churchofjesuschrist.org/study/scriptures/nt/john/1?lang=eng&id=p14#p14); [3:16, 18](https://www.churchofjesuschrist.org/study/scriptures/nt/john/3?lang=eng); [1 John 4:9](https://www.churchofjesuschrist.org/study/scriptures/nt/1-jn/4?lang=eng&id=p9#p9)), once of Isaac ([Hebrews 11:17](https://www.churchofjesuschrist.org/study/scriptures/nt/heb/11?lang=eng&id=p17#p17)), and three times in Luke of an ordinary only child. *(Corrected 2026-06-12 — an earlier version said seven times, always of Christ except Isaac.)* The Hebrew background doesn't have a single-word equivalent; the concept is carried through narrative — the son uniquely set apart, uniquely loved, uniquely given.
+The title "Only Begotten" is a translation of the Greek *monogenes* — *mono* (one, alone) + *genos* (kind, race, offspring). It appears nine times in the New Testament — five of Christ ([John 1:14, 18](https://www.churchofjesuschrist.org/study/scriptures/nt/john/1?lang=eng&id=p14#p14); [3:16, 18](https://www.churchofjesuschrist.org/study/scriptures/nt/john/3?lang=eng); [1 John 4:9](https://www.churchofjesuschrist.org/study/scriptures/nt/1-jn/4?lang=eng&id=p9#p9)), once of Isaac ([Hebrews 11:17](https://www.churchofjesuschrist.org/study/scriptures/nt/heb/11?lang=eng&id=p17#p17)), and three times in Luke of an ordinary only child. The Hebrew background doesn't have a single-word equivalent; the concept is carried through narrative — the son uniquely set apart, uniquely loved, uniquely given.
 
 Webster's 1828 dictionary gives three definitions for *only* as an adjective:
 
@@ -14,11 +14,9 @@ Webster's 1828 dictionary gives three definitions for *only* as an adjective:
 > 2. This and no other. This is an only child.
 > 3. This above all others. He is the only man for music.
 
-*(Requoted 2026-06-12 — the earlier definitions were the 1913 edition's. Two notes: the "along" in sense 1 is the digitization's, flagged for the facsimile pass; and the genuine 1828 hands this study a gift — Noah's adverb entry illustrates its third sense, "Singly; without more," with the very word: "as only-begotten.")*
-
 The third definition is the one that matters most theologically. In Restoration-era English, "only" didn't merely mean numerically singular — it could mean *this above all others*, standing apart in a category. The Only Begotten is not just the one and only in a count; he is the one who stands above all others in his class.
 
-*Beget* in 1828: "To procreate, as a father or sire; to generate; as, to beget a son." Also: "To produce, as an effect; to cause to exist; to generate; as, luxury begets vice." *(Requoted 2026-06-12 — the earlier "commonly said of the father" tail was the 1913 edition's.)*
+*Beget* in 1828: "To procreate, as a father or sire; to generate; as, to beget a son." Also: "To produce, as an effect; to cause to exist; to generate; as, luxury begets vice."
 
 The title is therefore a claim about origin and relationship, spoken from the Father's side. Not "the one who was born" but "the one I begat" — active voice, the Father's act, a relationship declared from above rather than merely observed from below.
 
@@ -149,7 +147,7 @@ After showing him this, the angel asks again: "Knowest thou the meaning of the t
 
 The sequence is the argument: tree = love = the Son given. The angel doesn't explain this connection; he simply shows the virgin and child, then asks what the tree means. Nephi understands. The tree of life, which Lehi's family had been seeking, is identified with the most desirable thing in the universe — which is the Father giving the Only Begotten.
 
-Webster 1828 on *condescension*: "Voluntary descent from rank, dignity or just claims; relinquishment of strict right; submission to inferiors in granting requests or performing acts which strict justice does not require." *(Requoted 2026-06-12 — the earlier wording was the 1913 edition's; the genuine entry is stronger here.)* The condescension is not a humiliation — it is a sovereign choice to descend, a relinquishment of strict right. The Only Begotten comes down willingly.
+Webster 1828 on *condescension*: "Voluntary descent from rank, dignity or just claims; relinquishment of strict right; submission to inferiors in granting requests or performing acts which strict justice does not require." The condescension is not a humiliation — it is a sovereign choice to descend, a relinquishment of strict right. The Only Begotten comes down willingly.
 
 ### Alma 7 — Dual Parentage
 
@@ -165,7 +163,7 @@ Jacob names the Isaac typology directly:
 
 > "And it was accounted unto Abraham in the wilderness to be obedient unto the commands of God in offering up his son Isaac, which is a similitude of God and his Only Begotten Son." ([Jacob 4:5](https://www.churchofjesuschrist.org/study/scriptures/bofm/jacob/4?lang=eng&id=p5#p5))
 
-Webster 1828 on *similitude*: "Likeness; resemblance; likeness in nature, qualities of appearance; as similitude of substance" — and the genuine entry's own first example is creation language itself: "Let us make man in our image, man in our similitude." *(Requoted 2026-06-12 — the earlier "representation, semblance, or copy; a facsimile" was the 1913 edition's.)* The likeness Jacob names is not a resemblance noticed after the fact. Abraham and Isaac did not merely remind later readers of the Father and Son; they were arranged to do so. The binding of Isaac is sacred theater, written in covenant history by the Author who knew what was coming.
+Webster 1828 on *similitude*: "Likeness; resemblance; likeness in nature, qualities of appearance; as similitude of substance" — and the genuine entry's own first example is creation language itself: "Let us make man in our image, man in our similitude." The likeness Jacob names is not a resemblance noticed after the fact. Abraham and Isaac did not merely remind later readers of the Father and Son; they were arranged to do so. The binding of Isaac is sacred theater, written in covenant history by the Author who knew what was coming.
 
 Jacob follows in v.11: "Be reconciled unto him through the atonement of Christ, his Only Begotten Son, and ye may obtain a resurrection." The path to reconciliation — and to resurrection — runs through the Only Begotten.
 

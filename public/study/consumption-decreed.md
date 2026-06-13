@@ -94,7 +94,7 @@ So "the consumption decreed" is literally: **the determined completion. The fini
 Noah Webster, writing just two years before the Church was organized, defines it precisely:
 
 > **CONSUMPTION** (n.) — "The act of consuming; waste; **destruction** by burning, eating, **devouring**, scattering, dissipation, **slow decay**, or by passing away, as time."
-> — Webster 1828 *(requoted 2026-06-12 — the earlier text was the 1913 edition's; the genuine chain is fuller)*
+> — Webster 1828
 
 And **CONSUME**:
 > "To **destroy**, by separating the parts of a thing, by decomposition, as by fire, or eating, **devouring**" ... "to **destroy**; to bring to utter ruin; to exterminate." And the intransitive entry's own citation: "The wicked shall perish — they shall consume. Psalm 37:20."
@@ -111,8 +111,6 @@ And **DECREE**:
 
 And **CONSUMMATION** (the form used in Daniel 9:27):
 > "**Completion; end; perfection** of a word, process or scheme" — and sense 2: "The end or completion of the present system of things; **the end of the world**."
-
-*(Both requoted 2026-06-12 — the earlier texts were the 1913 edition's. The genuine DECREE carries the theology in its own sense 6, and genuine CONSUMMATION's sense 2 is the Daniel 9:27 reading itself.)*
 
 Completion. Perfection. End. The consumption decreed is the **decreed completion** — the divinely authorized finishing of something.
 

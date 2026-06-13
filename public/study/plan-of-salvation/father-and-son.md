@@ -192,7 +192,7 @@ This explains some of the most puzzling passages in scripture:
 
 **Moses 1** — In the opening vision, the voice introducing itself to Moses says: *"I, the Almighty, have chosen thee"* (v. 25) and speaks of creating all things, using language that sounds like the Father. But the Father also says: *"mine Only Begotten … is and shall be the Savior"* (v. 6) and *"by the Son I created them"* (v. 33). The context shifts between the Father speaking directly and the Son speaking by investiture. The key hermeneutic tool is watching for clues — when the speaker says "mine Only Begotten," it is the Father. When the speaker identifies Himself as the one who will come into the world and atone, it is the Son.
 
-The word **investiture** itself illuminates this. Webster 1828 defines it as *"the action of giving possession"* — perfected, the entry says, "by the ceremony of corporal investiture, or open delivery of possession" — from *invest*, to clothe, to put upon. *(Requoted 2026-06-12 — the earlier wording was the 1913 edition's.)* The Father *clothed* the Son with His own authority and name. When Christ speaks "as the Father," He is wearing the Father's mantle. He is not pretending to be the Father. He is authorized to carry out the Father's work *in the Father's name*, and when He speaks in that capacity, His words *are* the Father's words.
+The word **investiture** itself illuminates this. Webster 1828 defines it as *"the action of giving possession"* — perfected, the entry says, "by the ceremony of corporal investiture, or open delivery of possession" — from *invest*, to clothe, to put upon. The Father *clothed* the Son with His own authority and name. When Christ speaks "as the Father," He is wearing the Father's mantle. He is not pretending to be the Father. He is authorized to carry out the Father's work *in the Father's name*, and when He speaks in that capacity, His words *are* the Father's words.
 
 ---
 
@@ -305,7 +305,7 @@ Christ is not the destination. He is the way *to* the destination. The destinati
 - [The Father and the Son: A Doctrinal Exposition, 1916](https://www.churchofjesuschrist.org/study/manual/teachings-joseph-f-smith/chapter-40?lang=eng) — First Presidency and the Twelve
 - [The Godhead and the Plan of Salvation](https://www.churchofjesuschrist.org/study/general-conference/2017/04/the-godhead-and-the-plan-of-salvation?lang=eng) — Elder Dallin H. Oaks, April 2017
 
-### Webster 1828 *(requoted 2026-06-12 against the genuine 1828)*
+### Webster 1828
 - **Father**: author, former, contriver, begetter — "God is the father of spirits" is the entry's own example
 - **Author**: "One who produces, creates, or brings into being; as, God is the author of the Universe"
 - **Design**: to form in idea, as a scheme; a plan in the mind — "The father designs his son" is the entry's own illustration

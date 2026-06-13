@@ -31,7 +31,7 @@ Not just "the priesthood." Not just "holy priesthood." It is a priesthood *after
 
 ### Webster 1828 on "Order"
 
-The 1828 dictionary offers a cascade of relevant meanings *(requoted 2026-06-12 — the earlier four senses were the 1913 edition's)*:
+The 1828 dictionary offers a cascade of relevant meanings:
 
 1. **"Regular disposition or methodical arrangement of things."** Webster adds: "Order is the life of business. Good order is the foundation of all good things." — The holy order is a *system*, a pattern of how things are arranged.
 2. **"Regularity; settled mode of operation"** — "the order of nature." Order as the opposite of chaos — law operating without disturbance.
@@ -48,8 +48,6 @@ All four meanings are active here simultaneously. The holy order of God is:
 
 > 1. "Properly, to set; to establish in a particular office or order; hence, to invest with a ministerial function or sacerdotal power."
 > 2. "To set apart for an office; to appoint. Jesus ordained twelve that they should be with him. Mark 3:14."
-
-*(Requoted 2026-06-12 — the earlier senses were the 1913 edition's. The genuine first sense is the gift: to ordain is "to establish in a particular office or **order**" — the word order is inside Webster's own definition.)*
 
 To be *ordained* is to be *set in order* — placed into an existing arrangement. You don't create the order when you're ordained. You enter it. The order existed before you and will exist after you. It is "without beginning of days or end of years" ([Alma 13:7](https://www.churchofjesuschrist.org/study/scriptures/bofm/alma/13?lang=eng&id=p7#p7)).
 
@@ -381,8 +379,6 @@ The holy order brings people to the church of the Firstborn — to share in the 
 If the order is the pattern, sanctification is its process. Webster 1828:
 
 > **SANCTIFY:** 2. "To separate, set apart or appoint to a holy, sacred or religious use." 5. "To cleanse from corruption; to purify from sin; to make holy by detaching the affections from the world and its defilements, and exalting them to a supreme love to God. *Sanctify them through thy truth; thy word is truth.* John 17:17."
-
-*(Requoted 2026-06-12 — the earlier senses were the 1913 edition's; the genuine sense 5 carries John 17:17 in the entry itself.)*
 
 Both meanings are operative. To be sanctified is to be both *set apart* and *made pure*. Alma 13:10-12 shows both: those in the order are set apart (called, ordained) AND made pure (garments washed white, sanctified by the Holy Ghost).
 

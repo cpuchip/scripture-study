@@ -33,9 +33,9 @@ Alma then describes two states:
 > "The spirits of those who are righteous are received into a state of happiness, which is called paradise, a state of rest, a state of peace, where they shall rest from all their troubles and from all care, and sorrow."
 > — [Alma 40:12](https://www.churchofjesuschrist.org/study/scriptures/bofm/alma/40?lang=eng&id=p12#p12)
 
-**Webster 1828 — "paradise"**: *"Heaven, the blissful seat of sanctified souls after death"* and *"a place of bliss; a region of supreme felicity or delight."* Webster's own citation for that first sense is Luke 23:43 — Jesus's promise to the thief on the cross: "To day shalt thou be with me in paradise." *(Requoted 2026-06-12 — the earlier "abode" text was the 1913 edition's.)*
+**Webster 1828 — "paradise"**: *"Heaven, the blissful seat of sanctified souls after death"* and *"a place of bliss; a region of supreme felicity or delight."* Webster's own citation for that first sense is Luke 23:43 — Jesus's promise to the thief on the cross: "To day shalt thou be with me in paradise."
 
-**Webster 1828 — "rest"**: In its verb form, *"to cease from action or motion of any kind; to stop"*; *"to cease from labor, work or performance"*; *"to be quiet or still; to be undisturbed."* And the noun's second sense cites Matthew 11:29: "a state free from motion or disturbance; a state of reconciliation to God. Learn of me ... and ye shall find rest to your souls." *(Requoted 2026-06-12 — the earlier fused sentence was the 1913 edition's.)* Rest from "all their troubles and from all care, and sorrow." Not cessation of existence — cessation of suffering.
+**Webster 1828 — "rest"**: In its verb form, *"to cease from action or motion of any kind; to stop"*; *"to cease from labor, work or performance"*; *"to be quiet or still; to be undisturbed."* And the noun's second sense cites Matthew 11:29: "a state free from motion or disturbance; a state of reconciliation to God. Learn of me ... and ye shall find rest to your souls." Rest from "all their troubles and from all care, and sorrow." Not cessation of existence — cessation of suffering.
 
 Four descriptors pile on each other: happiness, rest, peace, freedom from trouble, care, and sorrow. Whatever paradise is, it is the opposite of mortality's burdens. For someone who is sick and suffering — this is the promise. The pain *stops*.
 
@@ -93,14 +93,14 @@ These are people who lived faithful lives, suffered for their faith, and died wi
 > "They were filled with joy and gladness, and were rejoicing together because the day of their deliverance was at hand."
 > — [D&C 138:15](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/138?lang=eng&id=p15#p15)
 
-**Webster 1828 — "deliverance"**: *"Release from captivity, slavery, oppression, or any restraint."* And the genuine entry's own citation is the spirit-world mission itself — Luke 4:18: "He hath sent me to heal the broken-hearted, to preach deliverance to the captives." *(Requoted 2026-06-12 — the earlier text was the 1913 edition's.)* Even the righteous need *deliverance*. Even paradise is not the final state.
+**Webster 1828 — "deliverance"**: *"Release from captivity, slavery, oppression, or any restraint."* And the genuine entry's own citation is the spirit-world mission itself — Luke 4:18: "He hath sent me to heal the broken-hearted, to preach deliverance to the captives." Even the righteous need *deliverance*. Even paradise is not the final state.
 
 **Christ's arrival — declaring liberty:**
 
 > "The Son of God appeared, declaring liberty to the captives who had been faithful; And there he preached to them the everlasting gospel, the doctrine of the resurrection and the redemption of mankind from the fall, and from individual sins on conditions of repentance."
 > — [D&C 138:18-19](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/138?lang=eng&id=p18-p19#p18)
 
-**Webster 1828 — "captive"**: *"A prisoner taken by force or stratagem in war, by an enemy."* *(Requoted 2026-06-12 — the earlier text was the 1913 edition's.)* Even the righteous are "captives" — prisoners of death. Christ declares *liberty* to them.
+**Webster 1828 — "captive"**: *"A prisoner taken by force or stratagem in war, by an enemy."* Even the righteous are "captives" — prisoners of death. Christ declares *liberty* to them.
 
 **The critical revelation — He did NOT go to the wicked personally:**
 
@@ -134,7 +134,7 @@ Eve is called "glorious" and appears alongside Adam as a co-leader. Her "faithfu
 > "For the dead had looked upon the long absence of their spirits from their bodies as a bondage."
 > — [D&C 138:50](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/138?lang=eng&id=p50#p50)
 
-**Webster 1828 — "bondage"**: *"Slavery or involuntary servitude; captivity; imprisonment; restraint of a person's liberty by compulsion."* And the genuine entry's third sense is the study's own distinction: *"In scripture, spiritual subjection to sin and corrupt passions ... servile fear. Hebrews 2:15."* *(Requoted 2026-06-12 — the earlier text was the 1913 edition's; the genuine sense 3 names the two kinds of bondage itself.)*
+**Webster 1828 — "bondage"**: *"Slavery or involuntary servitude; captivity; imprisonment; restraint of a person's liberty by compulsion."* And the genuine entry's third sense is the study's own distinction: *"In scripture, spiritual subjection to sin and corrupt passions ... servile fear. Hebrews 2:15."*
 
 This is remarkable. Even the righteous in paradise — those in a state of rest and peace — consider *disembodiment itself* a bondage. The separation of spirit from body is experienced as *restraint*. This connects directly to D&C 93:33-34 from Phase 2: "spirit and element, inseparably connected, receive a fulness of joy; and when separated, man cannot receive a fulness of joy." The spirit world, even at its best, is *incomplete*. The body is not a prison the soul escapes at death — the body is part of what makes fulness possible. Its absence is felt as lack.
 

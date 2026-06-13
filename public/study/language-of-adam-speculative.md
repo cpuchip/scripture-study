@@ -8,7 +8,7 @@
 
 ## The Question
 
-If God confounded one language into many at Babel — and Webster 1828 defines "confound" as "to mingle and blend different things, so that their forms or natures cannot be distinguished" *(requoted 2026-06-12; the earlier wording was the 1913 edition's)* — then the original language wasn't *destroyed*. It was *scattered*. Mingled into every tongue on earth, so thoroughly blended that the original can't be reassembled.
+If God confounded one language into many at Babel — and Webster 1828 defines "confound" as "to mingle and blend different things, so that their forms or natures cannot be distinguished" — then the original language wasn't *destroyed*. It was *scattered*. Mingled into every tongue on earth, so thoroughly blended that the original can't be reassembled.
 
 But what if fragments survived the blending? Not full sentences. Not grammar. Just... echoes. A root here. A sound-meaning pair there. The skeleton beneath every language on earth.
 
@@ -29,7 +29,7 @@ For the full catalog and scriptural context, see [The Language of Adam](language
 
 **Names of God:**
 - **Ahman** — God; "the being which made all things in all its parts" (Sample of Pure Language, ca. 1832; [D&C 78:20](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/78?lang=eng&id=p20#p20))
-- **Son Ahman** — Christ; "the greatest of all the parts of Awmen which is the Godhead the first born" (Sample of Pure Language; [D&C 78:20](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/78?lang=eng&id=p20#p20); [D&C 95:17](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/95?lang=eng&id=p17#p17)) *(Requoted 2026-06-12 — the earlier rendering, "the greatest of all the parts of God excepting Ahman," blended this answer with the document's answer about man, which is where the "save the Son" phrase lives.)*
+- **Son Ahman** — Christ; "the greatest of all the parts of Awmen which is the Godhead the first born" (Sample of Pure Language; [D&C 78:20](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/78?lang=eng&id=p20#p20); [D&C 95:17](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/95?lang=eng&id=p17#p17))
 - **Alphus** and **Omegus** — Christ; Alpha and Omega equivalents ([D&C 95:17](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/95?lang=eng&id=p17#p17))
 - **Man of Holiness** — God's name in the language of Adam ([Moses 6:57](https://www.churchofjesuschrist.org/study/scriptures/pgp/moses/6?lang=eng&id=p57#p57); [Moses 7:35](https://www.churchofjesuschrist.org/study/scriptures/pgp/moses/7?lang=eng&id=p35#p35))
 - **Man of Counsel** — God's name ([Moses 7:35](https://www.churchofjesuschrist.org/study/scriptures/pgp/moses/7?lang=eng&id=p35#p35))

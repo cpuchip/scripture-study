@@ -36,7 +36,7 @@ D&C 93 adds that agency itself is woven into this uncreated existence:
 
 Agency isn't a gift that was *granted* at some point — it's inherent in intelligence. Without it, there literally "is no existence." This connects directly to our [intelligence study](../intelligence.md), which traced D&C 93's spectrum: intelligence → truth → light → spirit → element, and our [truth study](../truth.md), which framed truth as "knowledge of things as they are, and as they were, and as they are to come" ([D&C 93:24](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/93?lang=eng&id=p24#p24)).
 
-**Webster 1828 — "intelligence"**: *"Understanding; skill"* — and also *"a spiritual being; as a created intelligence."* *(Requoted 2026-06-12 — the earlier text was the 1913 edition's.)* Both senses appear in Abraham 3 and D&C 93 — the word bridges *capacity* and *being*.
+**Webster 1828 — "intelligence"**: *"Understanding; skill"* — and also *"a spiritual being; as a created intelligence."* Both senses appear in Abraham 3 and D&C 93 — the word bridges *capacity* and *being*.
 
 ### Organized Before the World Was
 
@@ -47,7 +47,7 @@ Abraham 3 then moves from intelligence-as-eternal-principle to intelligence-as-o
 
 "Organized" — not "created from nothing." God worked with what already existed. And among them, variation: some were "noble and great." This raises the question — noble *how*? Great *at what*?
 
-**Webster 1828 — "noble"**: *"Great; elevated; dignified; being above every thing that can dishonor reputation."* And sense 8, citing Acts 17:11: *"Ingenuous; candid; of an excellent disposition; ready to receive truth."* *(Requoted 2026-06-12 — the earlier text was the 1913 edition's. The genuine sense 8 is the gift: the Bereans were "more noble" because they received the word readily — noble means ready to receive truth.)* This is character, not rank. These intelligences had distinguished themselves.
+**Webster 1828 — "noble"**: *"Great; elevated; dignified; being above every thing that can dishonor reputation."* And sense 8, citing Acts 17:11: *"Ingenuous; candid; of an excellent disposition; ready to receive truth."* This is character, not rank. These intelligences had distinguished themselves.
 
 D&C 138 gives more texture:
 
@@ -76,9 +76,9 @@ Several things stand out:
 
 3. **Two estates, three outcomes**: Keep the first → "added upon" (receive a body). Keep not the first → lose that privilege. Keep the second → "glory added upon their heads for ever and ever." Simple. Elegant. High stakes.
 
-**Webster 1828 — "prove"**: *"To try; to ascertain some unknown quality or truth by an experiment, or by a test or standard"* — but also sense 5: *"To experience; to try by suffering or encountering; to gain certain knowledge by the operation of something on ourselves, or by some act of our own."* *(Requoted 2026-06-12 — the earlier texts were the 1913 edition's; the genuine senses carry the same duality.)* Both meanings are embedded in Abraham 3:25. This isn't just a pass/fail exam. It's experiential — we learn by living through it. The "school" vs "test" question may be a false dichotomy. It's both: a trial *designed to educate*.
+**Webster 1828 — "prove"**: *"To try; to ascertain some unknown quality or truth by an experiment, or by a test or standard"* — but also sense 5: *"To experience; to try by suffering or encountering; to gain certain knowledge by the operation of something on ourselves, or by some act of our own."* Both meanings are embedded in Abraham 3:25. This isn't just a pass/fail exam. It's experiential — we learn by living through it. The "school" vs "test" question may be a false dichotomy. It's both: a trial *designed to educate*.
 
-**Webster 1828 — "estate"**: *"In a general sense, fixedness; a fixed condition"* and *"condition or circumstances of any person or thing, whether high or low."* *(Requoted 2026-06-12 — the earlier text was the 1913 edition's.)* The "first estate" and "second estate" aren't places — they're *conditions of existence*. Keeping the first estate means being faithful in the premortal condition; keeping the second means being faithful in the mortal condition.
+**Webster 1828 — "estate"**: *"In a general sense, fixedness; a fixed condition"* and *"condition or circumstances of any person or thing, whether high or low."* The "first estate" and "second estate" aren't places — they're *conditions of existence*. Keeping the first estate means being faithful in the premortal condition; keeping the second means being faithful in the mortal condition.
 
 ### "Whom Shall I Send?"
 
@@ -141,7 +141,7 @@ Key phrase: *"in the first place being left to choose."* Foreordination was base
 
 *"In the first place they were on the same standing."* Everyone started equal. The differentiation came from choices, not from some inherent superiority. This is radical — it protects against both Calvinist predestination and any notion of spiritual aristocracy.
 
-**Webster 1828 — "foreordain"**: *"To ordain or appoint before; to preordain; to predestinate; to predetermine."* *(Requoted 2026-06-12 — the earlier trimmed text was the 1913 edition's.)* Notice: the 1828 dictionary treats *foreordain* and *predestinate* as synonyms. The distinction the Restoration draws — foreordination preserving agency, predestination overriding it — is not in the English of Joseph Smith's day at all. It comes from Alma 13 itself: "in the first place being left to choose." The doctrine corrects the dictionary.
+**Webster 1828 — "foreordain"**: *"To ordain or appoint before; to preordain; to predestinate; to predetermine."* Notice: the 1828 dictionary treats *foreordain* and *predestinate* as synonyms. The distinction the Restoration draws — foreordination preserving agency, predestination overriding it — is not in the English of Joseph Smith's day at all. It comes from Alma 13 itself: "in the first place being left to choose." The doctrine corrects the dictionary.
 
 Maxwell captures this tension perfectly:
 

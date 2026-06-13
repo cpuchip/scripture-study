@@ -62,8 +62,6 @@ The climax of the Jaredite voyage is the tearing of the veil. Moroni records tha
 
 > "could not be kept from within the veil… for so great was his faith in God, that when God put forth his finger he could not hide it from the sight of the brother of Jared, because of his word which he had spoken unto him, which word he had obtained by faith." — [Ether 12:19-20](https://www.churchofjesuschrist.org/study/scriptures/bofm/ether/12?lang=eng&id=p19-p20#p19)
 
-*(Corrected 2026-06-12 — an earlier version inserted "because of his relation to the Lord," a phrase that appears in neither verse, and joined verses 19 and 20 without a marked ellipsis. Verse 19's "could not be kept from within the veil" describes the many of exceeding faith; verse 20 names the brother of Jared as "one of these.")*
-
 The proposal pattern was the occasion of the seeing, but faith was the cause.
 
 This sight is the ultimate geometry of hope. Hope is the anchor of the soul that "entereth into that within the veil" ([Hebrews 6:19](https://www.churchofjesuschrist.org/study/scriptures/nt/heb/6?lang=eng&id=p19#p19)). It keeps the gaze fixed on the Prototype (Christ). In Mormon's sermon, hope is the anticipation of seeing Him: 
