@@ -4076,6 +4076,31 @@ literal-skin verse character-for-character.
   Son" — EXACT (Zenos's worship-everywhere prayer + the brazen serpent; the
   scandal of a cure too simple for pride to accept).
 
+### Alma 34-37 (2026-06-13, 419→423) — ALL CLEAN
+
+Amulek's atonement climax, the close of the Zoramite block, and the opening
+of the counsel-to-the-sons chapters (Alma's conversion to Helaman; small and
+simple things). Verified by direct grep.
+
+- **Alma 34** (Amulek): v16 "mercy can satisfy the demands of justice, and
+  encircles them in the arms of safety… he that exercises no faith unto
+  repentance is exposed to the whole law," v32 "this life is the time for men
+  to prepare to meet God" — EXACT (the infinite-atonement necessity argument
+  and the seed of the Alma 42 mercy/justice development).
+- **Alma 35** (the word destroys craft): v3 "they were angry because of the
+  word, for it did destroy their craft," v16 "give unto them every one his
+  charge, separately" — EXACT (the sheltered-become-shelterers people of
+  Ammon; Alma's pivot from public mission to fathering his sons).
+- **Alma 36** (conversion to Helaman): v18 "O Jesus, thou Son of God, have
+  mercy on me, who am in the gall of bitterness, and am encircled about by the
+  everlasting chains of death," v21 "nothing so exquisite and sweet as was my
+  joy" — EXACT (the chiasmus centered on the cry to Christ; pains-of-hell as
+  memory in God's presence).
+- **Alma 37** (small and simple things): v6 "by small and simple things are
+  great things brought to pass," v37 "Counsel with the Lord in all thy doings,
+  and he will direct thee for good" — EXACT (the Liahona as type of the word;
+  teach the fruit of evil, withhold the recipe).
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)

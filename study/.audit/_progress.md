@@ -438,10 +438,10 @@ Already done out-of-band: `study/morm-8-three-glories-reading.md` (2026-06-09).
 - [x] 2026-06-02 `study/bom-walk/alma/alma-03.md` **LINKS** — CLEAN ★ BIN-4 (curse-mark; v6 "the skins of the Lamanites were dark, according to the mark… a curse upon them because of their transgression and their rebellion" + v19 "every man that is cursed bringeth upon himself his own condemnation" EXACT, character-perfect; note logs datapoints + flags the literal-skin question for Michael + the Spirit, does NOT resolve — standing 2 Ne 5:21 restraint honored)
 - [x] 2026-06-02 `study/bom-walk/alma/alma-32.md` **LINKS** — CLEAN (the seed; v21 "faith is not to have a perfect knowledge of things… which are not seen, which are true," v27 "if ye can no more than desire to believe, let this desire work in you" EXACT — the BoM's definitive faith sermon)
 - [x] 2026-06-02 `study/bom-walk/alma/alma-33.md` **LINKS** — CLEAN (the simple look; v20 "many who were so hardened that they would not look, therefore they perished… they did not believe that it would heal them," v23 "your burdens may be light, through the joy of his Son" EXACT — the brazen serpent / scandal of simplicity)
-- [ ] 2026-06-02 `study/bom-walk/alma/alma-34.md` **LINKS**
-- [ ] 2026-06-02 `study/bom-walk/alma/alma-35.md` **LINKS**
-- [ ] 2026-06-02 `study/bom-walk/alma/alma-36.md` **LINKS**
-- [ ] 2026-06-02 `study/bom-walk/alma/alma-37.md` **LINKS**
+- [x] 2026-06-02 `study/bom-walk/alma/alma-34.md` **LINKS** — CLEAN (Amulek; v16 "mercy can satisfy the demands of justice, and encircles them in the arms of safety," v32 "this life is the time for men to prepare to meet God" EXACT — the infinite-atonement / mercy-satisfies-justice climax)
+- [x] 2026-06-02 `study/bom-walk/alma/alma-35.md` **LINKS** — CLEAN (the word destroys craft; v3 "they were angry because of the word, for it did destroy their craft," v16 "give unto them every one his charge, separately" EXACT — the pivot into the counsel-to-the-sons block)
+- [x] 2026-06-02 `study/bom-walk/alma/alma-36.md` **LINKS** — CLEAN (Alma's conversion to Helaman; v18 "O Jesus, thou Son of God, have mercy on me… encircled about by the everlasting chains of death," v21 "nothing so exquisite and sweet as was my joy" EXACT — the chiasmus centered on the cry)
+- [x] 2026-06-02 `study/bom-walk/alma/alma-37.md` **LINKS** — CLEAN (small and simple things; v6 "by small and simple things are great things brought to pass," v37 "Counsel with the Lord in all thy doings, and he will direct thee for good" EXACT — the Liahona as type of the word)
 - [ ] 2026-06-02 `study/bom-walk/alma/alma-38.md` **LINKS**
 - [ ] 2026-06-02 `study/bom-walk/alma/alma-39.md` **LINKS**
 - [ ] 2026-06-02 `study/bom-walk/alma/alma-40.md` **LINKS**
