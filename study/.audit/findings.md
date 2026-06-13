@@ -4399,6 +4399,26 @@ one more secular sample. Verified by direct grep + the cited Ensign source.
   self-critical (removed a likely-fabricated "GPT-5.5/Bedrock" item, flagged
   the deprecated-Codex naming).
 
+### morm-8-voice-from-the-dust + digests 06-08/06-10 (2026-06-13, 463→466) — ALL CLEAN
+
+The companion verse-by-verse Mormon 8 study and two more secular samples.
+Verified by direct grep.
+
+- **morm-8-voice-from-the-dust** (T2+FULL) — CLEAN. The Mormon 8 quotes EXACT
+  (8:1 "Behold I, Moroni, do finish the record of my father, Mormon," 8:22 "the
+  eternal purposes of the Lord shall roll on," 8:35 "Jesus Christ hath shown
+  you unto me, and I know your doing," 8:39 the ignored poor) and the
+  cross-testament chain the study's thesis rests on all EXACT — Isaiah 29:4
+  ("speak out of the ground… whisper out of the dust"), Rev 1:1 ("things which
+  must shortly come to pass"), Ether 4:16 ("my revelations which I have caused
+  to be written by my servant John"), D&C 3:1 ("the works, and the designs, and
+  the purposes of God cannot be frustrated"). The footnote-apparatus reciprocal
+  cross-refs and the 1828-29 translation-window dating are grounded scholarly
+  observations from the Church's own apparatus, not quote claims.
+- **digests 06-08 + 06-10** — CLEAN (SAMPLE). Secular AI-news, no gospel
+  quotes; both well-tiered and self-critical (06-08's "Skeptical takes" flags
+  uncorroborated Apple/Siri claims; 06-10 strips unsourced strategic framing).
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)

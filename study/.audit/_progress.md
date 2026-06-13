@@ -482,9 +482,9 @@ Already done out-of-band: `study/morm-8-three-glories-reading.md` (2026-06-09).
 - [x] 2026-06-07 `study/freedom/carry-forward.md` **SAMPLE** — CLEAN (thread list; Declaration "unalienable Rights" + D&C 98:5 EXACT; minimal quote surface)
 - [x] 2026-06-07 `study/daily-digest/ai-news-7am--2026-06-05-1300.md` **SAMPLE** — CLEAN (secular AI-news; no gospel quotes; self-critical — removed a likely-fabricated "GPT-5.5/Bedrock" item + flagged the deprecated-Codex naming. SAMPLE tier)
 - [x] 2026-06-07 `study/freedom/yt-dunford-constitution-restoration.md` **SAMPLE** — CLEAN (the yt-gospel eval; charitable, well-tiered; same scripture + Woodruff/Ensign sourcing as the provenance file, verified; 3 Ne 21 chapter-heading + fn-4a cross-refs confirmed)
-- [ ] 2026-06-07 `study/morm-8-voice-from-the-dust.md` **T2+FULL**
-- [ ] 2026-06-08 `study/daily-digest/ai-news-7am--2026-06-08-1300.md` **SAMPLE**
-- [ ] 2026-06-10 `study/daily-digest/ai-news-7am--2026-06-10-1300.md` **SAMPLE**
+- [x] 2026-06-07 `study/morm-8-voice-from-the-dust.md` **T2+FULL** — CLEAN (the book that speaks of its own coming forth; Mormon 8:1/22/35/39 EXACT; the cross-testament chain all EXACT — Isaiah 29:4 "speak out of the ground… whisper out of the dust," Rev 1:1 "things which must shortly come to pass," Ether 4:16 "my revelations which I have caused to be written by my servant John," D&C 3:1 "the works, and the designs, and the purposes of God cannot be frustrated." Footnote-apparatus + 1828-29 translation-window dating are grounded scholarly observations, not quote claims)
+- [x] 2026-06-08 `study/daily-digest/ai-news-7am--2026-06-08-1300.md` **SAMPLE** — CLEAN (secular AI-news, no gospel quotes; well-tiered with a robust "Skeptical takes" section flagging uncorroborated Apple/Siri + vendor-only claims. SAMPLE tier)
+- [x] 2026-06-10 `study/daily-digest/ai-news-7am--2026-06-10-1300.md` **SAMPLE** — CLEAN (secular AI-news; self-critical — strips unsourced strategic framing from the Anthropic/Google items; body headed "June 9" = the digest's own dating convention, secular, not a corpus issue. SAMPLE tier)
 - [ ] 2026-06-10 `study/daily-digest/ai-news-7am--2026-06-09-1300.md` **SAMPLE**
 - [ ] 2026-06-11 `study/daily-digest/ai-news-7am--2026-06-11-1300.md` **SAMPLE**
 - [ ] 2026-06-12 `study/preside.md` **T1+FULL**
