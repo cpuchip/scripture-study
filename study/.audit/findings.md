@@ -1990,6 +1990,17 @@ Helps manual ×4 (Oaks-replaced, remember-as-participation,
 Holland-began, Hallel) all exact. The study's own honesty
 framework (text vs tradition vs type) needed no correction.
 
+### study/what-abides.md (2026-05-18) — ABIDE 1913 propagation ×2; rest verbatim
+T1+FULL. Both ABIDE quotes were the 1913's (propagation of the
+earlier-counted word) — requoted to genuine ("to rest, or dwell" /
+"to continue permanently or in the same state; to be firm and
+immovable"); the genuine abide-by note carries an even harder edge
+the study had attributed to "the modern dictionary": "or to suffer
+the consequences." The "nine times in the seven verses of John
+15:4-10" count is EXACT (9). Bednar Apr 2023 (Holland-via-Bednar)
+verbatim modulo dropped editorial brackets; D&C 130:7/22/23, 1 Jn
+2:24, Mosiah 17-18 fragments, D&C 130:18 all exact.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
