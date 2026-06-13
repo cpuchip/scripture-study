@@ -3205,6 +3205,37 @@ LINKS ×3. No markdown links.
   in the 2 Ne spin-offs (MEDIATOR #131, PRESENCE #132); every chapter
   note and every scripture quote otherwise verbatim.
 
+### #285-289 `Helaman 13-16 + 3-nephi-6` — bom-walk LINKS — ALL CLEAN
+- These are the *thorough* bom-walk notes (Helaman/3 Ne got long-form
+  treatment with full "Verified" sections). Sampled ~26 load-bearing
+  quotes across the five chapters; every one EXACT — the quote
+  discipline holds even across the dense multi-paragraph prose.
+- **Hel 13** (Samuel on the wall): v1 reversal, v14 "cast out the
+  righteous… ripe," v21 cursed-riches, v26 "ye are worse than they,"
+  v31 "slippery, that ye cannot hold them," v38 "happiness in doing
+  iniquity… contrary to the nature of that righteousness."
+- **Hel 14** (the dated signs): v3-5 "no darkness… one day and a night
+  and a day… a new star," v16-18 the two deaths (first universal/free,
+  second conditional), v30 "ye are free… he hath made you free."
+- **Hel 15** (chastened-because-loved): v3 "chastened them because he
+  loveth them," ★ **v4** "the Lamanites hath he hated because their
+  deeds have been evil continually, and this because of the iniquity
+  of the tradition of their fathers… salvation hath come unto them
+  through the preaching of the Nephites" — another with-Michael 2 Ne
+  5:21 datapoint (the disfavor tracks *tradition/deeds*, reversed by
+  conversion — not blood). The note flags it correctly and leaves the
+  literal-complexion residue for Michael. v9 buried weapons, v15
+  "mighty works… never would again have dwindled."
+- **Hel 16** (hardening before Christ): v2 "could not hit him," v6
+  "he hath a devil" (the Beelzebub reassign-the-source move), v16
+  "guessed right… cannot come to pass," v20 the clerical-control
+  suspicion "keep us in ignorance."
+- **3 Ne 6** (the republic's fall): v5 "nothing… except they should
+  fall into transgression," v12 "distinguished by ranks, according to
+  their riches and their chances for learning," v14 "great inequality…
+  the church began to be broken up," v18 "wilfully rebel," v30
+  "establish a king… no more be at liberty."
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
