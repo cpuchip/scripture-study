@@ -426,10 +426,10 @@ Already done out-of-band: `study/morm-8-three-glories-reading.md` (2026-06-09).
 - [x] 2026-06-02 `study/bom-walk/mosiah/mosiah-06.md` **LINKS** — CLEAN (the covenant recorded; v7 "he also, himself, did till the earth, that thereby he might not become burdensome to his people" EXACT — servant-king pattern passed on)
 - [x] 2026-06-02 `study/bom-walk/mosiah/mosiah-07.md` **LINKS** — CLEAN (Limhi found; v29 "I will not succor my people in the day of their transgression; but I will hedge up their ways that they prosper not" EXACT — bondage as covenant-in-reverse)
 - [x] 2026-06-02 `study/bom-walk/mosiah/mosiah-08.md` **LINKS** — CLEAN (the seer doctrine; v16 "a seer is a revelator and a prophet also; and a gift which is greater can no man have," v20 "they will not seek wisdom, neither do they desire that she should rule over them" EXACT)
-- [ ] 2026-06-02 `study/bom-walk/jarom/jarom-01.md` **LINKS**
-- [ ] 2026-06-02 `study/bom-walk/alma/alma-02.md` **LINKS**
-- [ ] 2026-06-02 `study/bom-walk/mosiah/mosiah-24.md` **LINKS**
-- [ ] 2026-06-02 `study/bom-walk/alma/alma-04.md` **LINKS**
+- [x] 2026-06-02 `study/bom-walk/jarom/jarom-01.md` **LINKS** — CLEAN (the law's intent; v11 "persuading them to look forward unto the Messiah… believe in him to come as though he already was" EXACT — pre-Christian faith reaching forward)
+- [x] 2026-06-02 `study/bom-walk/alma/alma-02.md` **LINKS** — CLEAN (Amlici rejected; v7 "the voice of the people came against Amlici, that he was not made king over the people" EXACT — the Mosiah-29 voice-of-the-people machinery holding under its first stress test)
+- [x] 2026-06-02 `study/bom-walk/mosiah/mosiah-24.md` **LINKS** — CLEAN (burdens made light; v14 "I, the Lord God, do visit my people in their afflictions," v15 "the burdens… were made light… they could bear up their burdens with ease… submit cheerfully and with patience" EXACT — deliverance IN affliction, not from it)
+- [x] 2026-06-02 `study/bom-walk/alma/alma-04.md` **LINKS** — CLEAN (the gavel for the testimony; v19 "seeing no way that he might reclaim them save it were in bearing down in pure testimony against them" EXACT — Alma trades the judgment-seat for the word)
 - [ ] 2026-06-02 `study/bom-walk/alma/alma-25.md` **LINKS**
 - [ ] 2026-06-02 `study/bom-walk/alma/alma-26.md` **LINKS**
 - [ ] 2026-06-02 `study/bom-walk/alma/alma-27.md` **LINKS**

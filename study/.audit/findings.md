@@ -3990,6 +3990,28 @@ chapters of Mosiah are verified clean.** Verified by direct grep.
   also; and a gift which is greater can no man have," v20 "they will not seek
   wisdom, neither do they desire that she should rule over them" — EXACT.
 
+### Jarom + Alma 2 + Mosiah 24 + Alma 4 (2026-06-13, 407→411) — ALL CLEAN
+
+Four scattered cursor-order notes: the close of the small-plates frame
+(Jarom), the first stress test of the voice-of-the-people, the deliverance-
+in-affliction pair completed (Mosiah 24 answering Mosiah 23), and Alma
+trading the judgment-seat for pure testimony. Verified by direct grep.
+
+- **Jarom 1** (the law's intent): v11 "persuading them to look forward unto the
+  Messiah, and believe in him to come as though he already was" — EXACT (pre-
+  Christian faith reaching forward, the small-plates thesis in one line).
+- **Alma 2** (Amlici rejected): v7 "the voice of the people came against
+  Amlici, that he was not made king over the people" — EXACT (Mosiah 29's
+  voice-of-the-people machinery holding under its first real stress).
+- **Mosiah 24** (burdens made light): v14 "I, the Lord God, do visit my people
+  in their afflictions," v15 "the burdens which were laid upon Alma and his
+  brethren were made light… they could bear up their burdens with ease, and
+  they did submit cheerfully and with patience" — EXACT (deliverance IN
+  affliction, the completion of the Mosiah 23 promise).
+- **Alma 4** (the gavel for the testimony): v19 "seeing no way that he might
+  reclaim them save it were in bearing down in pure testimony against them" —
+  EXACT (Alma steps down from the judgment-seat to preach).
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
