@@ -2195,6 +2195,17 @@ obeyed"). Scripture quotes verbatim: D&C 93:24 ("knowledge of
 things as they are…"), Abraham 4:18 (modulo the comma). Book/
 chapter links resolve.
 
+### study/daily-digest/ai-news-7am--2026-05-26 + 05-27 (2026-05-26/27) — machine artifacts
+SAMPLE ×2. Scheduled-workflow pipeline captures, untouched. Both
+carry the normal 7am-covers-prior-day header offset (05-26 file →
+"May 25" header; 05-27 file → "May 26"). 05-27 has a benign
+cross-digest date wobble (Mythos "same problem OpenAI cracked on
+May 20" vs the 05-26 digest's framing of the same Erdős result) —
+machine-artifact quirk, not corrected. All vendor claims are
+hedged in-text ("reported," "claimed," "self-reported"); external
+links carried as reference only. No quoted scripture or canonical
+source to verify. Documented, not endorsed.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
