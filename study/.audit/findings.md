@@ -3338,6 +3338,50 @@ LINKS ×3. No markdown links.
   righteousness ("peace in the land; nevertheless… they did stone the
   prophets"), v18 "angels did minister unto him daily" — EXACT.
 
+### Alma war chapters + 3 Ne 18 cluster (2026-06-13, 287→297) — ALL CLEAN
+
+The bom-walk chapter notes for the Captain-Moroni / stripling-warriors
+arc and the sacrament chapter. Each carries its own `## Verified` block;
+every block confirmed accurate by direct grep of the gospel-library
+source. No corrections.
+
+- **3 Ne 18** (the sacrament instituted): v7 "it shall be a testimony unto
+  the Father that ye do always remember me. And if ye do always remember me
+  ye shall have my Spirit to be with you," v18 "Satan desireth to have you,
+  that he may sift you as wheat," v24 "Behold I am the light which ye shall
+  hold up" — EXACT.
+- **Alma 51** (king-men + Amalickiah's end): v13 "glad in their hearts…
+  would not take up arms to defend their country," v27 "afforded strongholds
+  for the Lamanites," v34 "put a javelin to his heart… did not awake his
+  servants" — EXACT.
+- **Alma 52** (Ammoron inherits the war): v3 "thus king Ammoron… was
+  appointed to reign in his stead," v40 "the number of prisoners… exceeded
+  more than the number of those who had been slain" — EXACT.
+- **Alma 53** (stripling warriors introduced): v15 "compelled to behold
+  their brethren wade through their afflictions," v20 "true at all times in
+  whatsoever thing they were entrusted" — EXACT.
+- **Alma 54** (the two letters): v13 "I am in my anger… we have only sought
+  to defend ourselves," v21 Ammoron's agnostic evasion "we know not such a
+  being; neither do ye" — EXACT.
+- **Alma 55** (the bloodless taking of Gid — the moral peak): v19 "he did
+  not delight in murder or bloodshed… he would not fall upon the Lamanites
+  and destroy them in their drunkenness" — EXACT (David-and-sleeping-Saul).
+- **Alma 56** (the famous "we do not doubt our mothers knew it"): v47 "they
+  had been taught by their mothers, that if they did not doubt, God would
+  deliver them," v48 "We do not doubt our mothers knew it," v56 "there had
+  not one soul of them fallen to the earth… never were men known to have
+  fought with such miraculous strength" — EXACT, character-perfect.
+- **Alma 57** (exactness + faith-through-wounds): v21 "perform every word of
+  command with exactness; yea, and even according to their faith it was done
+  unto them," v25 "not one soul of them who did perish… neither was there
+  one soul among them who had not received many wounds" — EXACT.
+- **Alma 58** (peace before deliverance): v11 "he did speak peace to our
+  souls, and did grant unto us great faith," v37 "it mattereth not—we trust
+  God will deliver us" — EXACT (the Helaman refuse-to-murmur model).
+- **Alma 61** (Pahoran's reply): v9 "in your epistle you have censured me,
+  but it mattereth not; I am not angry, but do rejoice in the greatness of
+  your heart" — EXACT (one of the most Christlike sentences in scripture).
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)

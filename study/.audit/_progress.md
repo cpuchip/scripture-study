@@ -305,17 +305,17 @@ Already done out-of-band: `study/morm-8-three-glories-reading.md` (2026-06-09).
 - [x] 2026-06-02 `study/bom-walk/3-nephi/3-nephi-17.md` **LINKS** — CLEAN (the tenderest chapter; v6 "my bowels are filled with compassion towards you," v17 "no tongue can speak… we heard him pray for us," v21 "he wept… little children, one by one," v24 "encircled about with fire; and the angels did minister unto them" all EXACT)
 - [x] 2026-06-02 `study/bom-walk/3-nephi/3-nephi-7.md` **LINKS** — CLEAN (government collapse; v2 "separate… into tribes… destroy the government," v8 "like the dog to his vomit," v14 "peace in the land; nevertheless… they did stone the prophets" (order without righteousness), v18 "angels did minister unto him daily" all EXACT)
 - [x] 2026-06-02 `study/bom-walk/helaman/helaman-11.md` **LINKS** — CLEAN (the famine-as-mercy; v4 "rather let there be a famine… to stir them up in remembrance," v7 "began to remember the Lord their God," v36 "began again to forget the Lord their God" all EXACT)
-- [ ] 2026-06-02 `study/bom-walk/alma/alma-61.md` **LINKS**
+- [x] 2026-06-02 `study/bom-walk/alma/alma-61.md` **LINKS** — CLEAN (Pahoran's reply; v9 "in your epistle you have censured me, but it mattereth not; I am not angry, but do rejoice in the greatness of your heart" EXACT — one of the most Christlike sentences in scripture; Verified section accurate)
 - [x] 2026-06-02 `study/bom-walk/helaman/helaman-9.md` **LINKS** — CLEAN (the Seantum sign; v16 the conspiracy theory "raise himself to be a great man… and a prophet," v36 "I, Nephi, know nothing… save it were given unto me by the power of God," v41 "he is a god, for except he was a god he could not know of all things" all EXACT)
-- [ ] 2026-06-02 `study/bom-walk/3-nephi/3-nephi-18.md` **LINKS**
-- [ ] 2026-06-02 `study/bom-walk/alma/alma-51.md` **LINKS**
-- [ ] 2026-06-02 `study/bom-walk/alma/alma-52.md` **LINKS**
-- [ ] 2026-06-02 `study/bom-walk/alma/alma-53.md` **LINKS**
-- [ ] 2026-06-02 `study/bom-walk/alma/alma-54.md` **LINKS**
-- [ ] 2026-06-02 `study/bom-walk/alma/alma-55.md` **LINKS**
-- [ ] 2026-06-02 `study/bom-walk/alma/alma-56.md` **LINKS**
-- [ ] 2026-06-02 `study/bom-walk/alma/alma-57.md` **LINKS**
-- [ ] 2026-06-02 `study/bom-walk/alma/alma-58.md` **LINKS**
+- [x] 2026-06-02 `study/bom-walk/3-nephi/3-nephi-18.md` **LINKS** — CLEAN (sacrament instituted; v7 "it shall be a testimony unto the Father that ye do always remember me. And if ye do always remember me ye shall have my Spirit to be with you," v18 "Satan desireth to have you, that he may sift you as wheat," v24 "Behold I am the light which ye shall hold up" all EXACT)
+- [x] 2026-06-02 `study/bom-walk/alma/alma-51.md` **LINKS** — CLEAN (king-men + Amalickiah's end; v13 "glad in their hearts… would not take up arms to defend their country," v27 "afforded strongholds for the Lamanites," v34 "put a javelin to his heart… did not awake his servants" all EXACT)
+- [x] 2026-06-02 `study/bom-walk/alma/alma-52.md` **LINKS** — CLEAN (Ammoron inherits; v3 "thus king Ammoron, the brother of king Amalickiah, was appointed to reign in his stead," v40 "the number of prisoners who were taken exceeded more than the number of those who had been slain" EXACT)
+- [x] 2026-06-02 `study/bom-walk/alma/alma-53.md` **LINKS** — CLEAN (stripling warriors introduced; v15 "compelled to behold their brethren wade through their afflictions," v20 "true at all times in whatsoever thing they were entrusted" EXACT)
+- [x] 2026-06-02 `study/bom-walk/alma/alma-54.md` **LINKS** — CLEAN (two letters; v13 "I am in my anger… ye have sought to murder us, and we have only sought to defend ourselves," v21 Ammoron's agnostic evasion "we know not such a being; neither do ye" EXACT)
+- [x] 2026-06-02 `study/bom-walk/alma/alma-55.md` **LINKS** — CLEAN (the bloodless taking of Gid; v19 "he did not delight in murder or bloodshed… he would not fall upon the Lamanites and destroy them in their drunkenness" EXACT — the David-and-sleeping-Saul moral peak)
+- [x] 2026-06-02 `study/bom-walk/alma/alma-56.md` **LINKS** — CLEAN (the famous chapter; v47 "they had been taught by their mothers, that if they did not doubt, God would deliver them," v48 "We do not doubt our mothers knew it," v56 "there had not one soul of them fallen to the earth… never were men known to have fought with such miraculous strength" all EXACT)
+- [x] 2026-06-02 `study/bom-walk/alma/alma-57.md` **LINKS** — CLEAN (exactness + faith-through-wounds; v21 "perform every word of command with exactness; yea, and even according to their faith it was done unto them," v25 "not one soul of them who did perish… neither was there one soul among them who had not received many wounds" EXACT)
+- [x] 2026-06-02 `study/bom-walk/alma/alma-58.md` **LINKS** — CLEAN (peace before deliverance; v11 "he did speak peace to our souls, and did grant unto us great faith," v37 "it mattereth not—we trust God will deliver us" EXACT — the Helaman-vs-Moroni refuse-to-murmur setup)
 - [ ] 2026-06-02 `study/bom-walk/alma/alma-59.md` **LINKS**
 - [ ] 2026-06-02 `study/bom-walk/alma/alma-60.md` **LINKS**
 - [ ] 2026-06-02 `study/bom-walk/alma/alma-62.md` **LINKS**
