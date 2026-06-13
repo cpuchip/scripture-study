@@ -350,12 +350,12 @@ Already done out-of-band: `study/morm-8-three-glories-reading.md` (2026-06-09).
 - [x] 2026-06-02 `study/bom-walk/moroni/moroni-8.md` **LINKS** — CLEAN (infant baptism; v8 "little children are whole, for they are not capable of committing sin; wherefore the curse of Adam is taken from them in me," v12 "God is a partial God, and also a changeable God, and a respecter to persons" EXACT)
 - [x] 2026-06-02 `study/bom-walk/moroni/moroni-9.md` **LINKS** — CLEAN (Mormon's second letter; v6 "if we should cease to labor, we should be brought under condemnation," v25 "be faithful in Christ… but may Christ lift thee up" EXACT)
 - [x] 2026-06-02 `study/bom-walk/moroni/moroni-10.md` **LINKS** — CLEAN (the promise + the farewell; v4 "ask with a sincere heart, with real intent, having faith in Christ, he will manifest the truth of it unto you, by the power of the Holy Ghost," v32 "come unto Christ, and be perfected in him… then is his grace sufficient for you," v34 "the pleasing bar of the great Jehovah, the Eternal Judge of both quick and dead" all EXACT — is-Jesus-God climactic datapoint; book of Moroni done — NOTE: bom-walk NOT yet complete, ~115 chapter notes remain below the cursor, see findings.md correction)
-- [ ] 2026-06-02 `study/daily-digest/ai-news-7am--2026-06-02-1300.md` **SAMPLE**
-- [ ] 2026-06-02 `study/morgan-philpot/seven-dispensations-and-hannahs-son.md` **SAMPLE**
-- [ ] 2026-06-02 `study/bom-walk/alma/alma-50.md` **LINKS**
-- [ ] 2026-06-02 `study/bom-walk/ether/ether-6.md` **LINKS**
-- [ ] 2026-06-02 `study/bom-walk/ether/ether-5.md` **LINKS**
-- [ ] 2026-06-02 `study/bom-walk/ether/ether-4.md` **LINKS**
+- [x] 2026-06-02 `study/daily-digest/ai-news-7am--2026-06-02-1300.md` **SAMPLE** — CLEAN (machine artifact; external AI-news links only, NO canonical quotes; marketing phrases cited are attributed + skeptically framed, none asserted as fact — nothing to verify, left untouched)
+- [x] 2026-06-02 `study/morgan-philpot/seven-dispensations-and-hannahs-son.md` **SAMPLE** — CLEAN (a meta-audit of an AI's overstatements; all canonical quotes EXACT: 1 Sam 1:1 genealogy, 1:15 "poured out my soul," 3:1 "the word of the Lord was precious… no open vision," 3:9 "Speak, Lord; for thy servant heareth"; ★ the study's CORRECTED D&C 121:26 rendering verified EXACT — it rightly caught Philpot's preview misquote; Nelson "front-row seats" appropriately flagged-for-verification not asserted)
+- [x] 2026-06-02 `study/bom-walk/alma/alma-50.md` **LINKS** — CLEAN (the happiest time + the maidservant; v23 "there never was a happier time among the people of Nephi, since the days of Nephi, than in the days of Moroni," v30 "Morianton being a man of much passion… he fell upon her and beat her much" EXACT)
+- [x] 2026-06-02 `study/bom-walk/ether/ether-6.md` **LINKS** — CLEAN (the crossing; v8 "the wind did never cease to blow towards the promised land while they were upon the waters," v23 "Surely this thing leadeth into captivity" EXACT)
+- [x] 2026-06-02 `study/bom-walk/ether/ether-5.md` **LINKS** — CLEAN (the three witnesses; v4 "the testimony of three, and this work… the Father, and the Son, and the Holy Ghost bear record," v6 "ye shall know that I have authority when ye shall see me" EXACT)
+- [x] 2026-06-02 `study/bom-walk/ether/ether-4.md` **LINKS** — CLEAN (rend the veil; v12 "I am the Father, I am the light, and the life, and the truth of the world" — is-Jesus-God, v15 "when ye shall rend that veil of unbelief… with a broken heart and a contrite spirit" EXACT)
 - [ ] 2026-06-02 `study/bom-walk/3-nephi/3-nephi-22.md` **LINKS**
 - [ ] 2026-06-02 `study/bom-walk/3-nephi/3-nephi-23.md` **LINKS**
 - [ ] 2026-06-02 `study/bom-walk/3-nephi/3-nephi-24.md` **LINKS**

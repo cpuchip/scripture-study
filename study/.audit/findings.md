@@ -3575,6 +3575,37 @@ were in the deeper bom-walk *studies/*, not the chapter notes). **Remaining:
 3 Ne 20/22-30, 4 Ne, Mormon, Ether 4-6, 3 studies/) + the SAMPLE-class
 files (daily-digest, morgan-philpot) + the 2 ⏳ pending studies.**
 
+### SAMPLE pair + Alma 50 + Ether 4-6 (2026-06-13, 331→337) — ALL CLEAN
+
+Resuming into the out-of-cursor-order remainder. The two SAMPLE-class files
+and the start of the back-cursor bom-walk block.
+
+- **daily-digest/ai-news-7am 06-02** (SAMPLE): machine artifact — external
+  AI-news links only, NO canonical quotes; the marketing phrases it cites
+  ("big bang of physical AI," "oversubscribed by 3x") are attributed +
+  skeptically framed, none asserted as fact. Nothing to verify; left as-is.
+- **morgan-philpot/seven-dispensations-and-hannahs-son** (SAMPLE): a careful
+  meta-audit of an AI's overstatements. All canonical quotes EXACT — 1 Sam
+  1:1 (the genealogy), 1:15 "poured out my soul," 3:1 "the word of the Lord
+  was precious… no open vision," 3:9 "Speak, Lord; for thy servant heareth."
+  ★ The study's CORRECTED D&C 121:26 rendering ("…has not been revealed
+  since the world was until now") verified EXACT against source — it rightly
+  caught Philpot's preview misquote. Nelson "front-row seats" attribution is
+  appropriately flagged-for-verification, not asserted. Model work, no fix.
+- **Alma 50** (the happiest time + the maidservant): v23 "there never was a
+  happier time among the people of Nephi… than in the days of Moroni," v30
+  "Morianton being a man of much passion… he fell upon her and beat her
+  much" — EXACT.
+- **Ether 4** (rend the veil): v12 "I am the Father, I am the light, and the
+  life, and the truth of the world" (is-Jesus-God), v15 "when ye shall rend
+  that veil of unbelief… with a broken heart and a contrite spirit" — EXACT.
+- **Ether 5** (the three witnesses): v4 "the testimony of three, and this
+  work… the Father, and the Son, and the Holy Ghost bear record," v6 "ye
+  shall know that I have authority when ye shall see me" — EXACT.
+- **Ether 6** (the crossing): v8 "the wind did never cease to blow towards
+  the promised land while they were upon the waters," v23 "Surely this thing
+  leadeth into captivity" — EXACT.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
