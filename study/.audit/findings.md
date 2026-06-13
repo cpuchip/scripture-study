@@ -1742,6 +1742,20 @@ SECURITY side." Agans rule names (3/5/7) correct; professional-
 practice claims accepted as participant record; companion anchors
 resolve.
 
+### study/gc/2026-04/00-thematic-overview.md (2026-04-12) — 1 word-swap + 1 constructed quote (hot zone)
+SAMPLE + hot-zone (Apr 2026 conference). Oaks's closing line reads
+"peace in this WORLD" — the study had "life" (one-word swap inside
+quotes, fixed). The Wakolo "quote" ("God honors patient faith,
+respects agency, and fulfills promises in His timing") was a BLEND
+of his themes — no such sentence exists; requoted to his actual
+refrain "Conversion is personal. Timing is individual. Agency is
+sacred." with note. Everything else verbatim: Soares ×2 (marked
+ellipsis legitimate), Gong, Christofferson (+ Bednar-2003-BYU-
+Idaho citation claim verified), Oaks 49 ×3, Eyring funeral, Cook
+keys line, Alma 17:3/22:18; counted claims exact (37 talks on
+disk; Bednar's substitution device real; Hall's 60 names; Wong's
+five remember-remember verses).
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
