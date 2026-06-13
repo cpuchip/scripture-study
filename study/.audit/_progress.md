@@ -172,7 +172,7 @@ Already done out-of-band: `study/morm-8-three-glories-reading.md` (2026-06-09).
 - [x] 2026-05-07 `study/two-triplets-one-ascent.md` **FULL** — despair-quote re-attributed; way-truth-life constructed quote fixed; scriptures verbatim
 - [x] 2026-05-09 `study/mysteries-of-god-text-vs-spirit.md` **FULL** — CLEAN (own revision-note fixes hold; all quotes verbatim)
 - [x] 2026-05-10 `study/iron-rod-anchor-and-the-four-groups.md` **FULL** — one micro-requote (1 Ne 15:27); ~60 quotes + 4 footnote claims verified exact
-- [ ] 2026-05-17 `study/last-supper-four-cups.md` **T2+FULL**
+- [x] 2026-05-17 `study/last-supper-four-cups.md` **T2+FULL** — PASSOVER 1913 tail (word 118); ~45 quotes + 5 footnote claims verified exact
 - [ ] 2026-05-18 `study/what-abides.md` **T1+FULL**
 - [ ] 2026-05-19 `study/yt/gospel/ytt-rerun-yt-gospel-morgan-philpot.md` **SAMPLE**
 - [ ] 2026-05-19 `study/daily-digest/pe-final-research-summary-smoke.md` **SAMPLE**

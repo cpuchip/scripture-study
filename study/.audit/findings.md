@@ -1976,6 +1976,20 @@ every day, every day" twice-in-one-talk claim EXACT;
 #spaciousbuilding real), Corbridge 2008 ×2, Hamilton 2013
 (Bednar-2007 "consistently read and studied and searched" exact).
 
+### study/last-supper-four-cups.md (2026-05-17) — PASSOVER 1913 tail (word 118); rest exemplary
+T2+FULL. Webster PASSOVER sense 2 carried the 1913's "; the
+paschal lamb" tail — genuine ends at "passover" (though Noah's
+sense 1 narrates "the blood of the paschal lamb"); requoted.
+Everything else verbatim across ~45 quotes: the synoptic supper
+verses, Ex 6:6-7 + 12 (8/13/14/22/46) + 24:8, 1 Cor 5:7, Jer
+25:15, Ps 69:21, John 19 (14/28-30/33/36), D&C 19:18-19; FIVE
+footnote claims verified EXACT (Matt 26:28 blood→Ex 24:8; John
+19:36→Ex 12:46; D&C 19:19 finished→John 19:30; Luke 22:42
+remove→D&C 19:18; JST Luke 22:16); McConkie ×3 and the Scripture
+Helps manual ×4 (Oaks-replaced, remember-as-participation,
+Holland-began, Hallel) all exact. The study's own honesty
+framework (text vs tradition vs type) needed no correction.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
