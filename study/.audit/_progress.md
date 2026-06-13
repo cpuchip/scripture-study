@@ -378,10 +378,10 @@ Already done out-of-band: `study/morm-8-three-glories-reading.md` (2026-06-09).
 - [x] 2026-06-02 `study/bom-walk/ether/ether-1.md` **LINKS** — CLEAN (the Jaredite record opens; v43 "because this long time ye have cried unto me" EXACT)
 - [x] 2026-06-02 `study/bom-walk/ether/ether-2.md` **LINKS** — CLEAN (the choice-land decree; v8 "should serve him, the true and only God, or they should be swept off," v12 "the God of the land, who is Jesus Christ" — is-Jesus-God, v23 "What will ye that I should do that ye may have light in your vessels?" all EXACT)
 - [x] 2026-06-02 `study/bom-walk/ether/ether-3.md` **LINKS** — CLEAN (the brother of Jared within the veil; ★ v14 "I am Jesus Christ. I am the Father and the Son" character-perfect — foundational is-Jesus-God, v6 "he saw the finger of the Lord… like unto flesh and blood," v18 "that this man might know that he was God," v20 "having this perfect knowledge of God, he could not be kept from within the veil" all EXACT)
-- [ ] 2026-06-02 `study/bom-walk/mormon/mormon-2.md` **LINKS**
-- [ ] 2026-06-02 `study/bom-walk/alma/alma-49.md` **LINKS**
-- [ ] 2026-06-02 `study/bom-walk/alma/alma-28.md` **LINKS**
-- [ ] 2026-06-02 `study/bom-walk/alma/alma-47.md` **LINKS**
+- [x] 2026-06-02 `study/bom-walk/mormon/mormon-2.md` **LINKS** — CLEAN (sorrowing of the damned; v13 "the sorrowing of the damned, because the Lord would not always suffer them to take happiness in sin," v15 "the day of grace was passed with them" EXACT)
+- [x] 2026-06-02 `study/bom-walk/alma/alma-49.md` **LINKS** — CLEAN (preparation defeats numbers; v23 "not a single soul of the Nephites which was slain," v27 "did curse God, and also Moroni… because Moroni had kept the commandments of God" EXACT)
+- [x] 2026-06-02 `study/bom-walk/alma/alma-28.md` **LINKS** — CLEAN (the two mournings; v12 "they are raised to dwell at the right hand of God, in a state of never-ending happiness," v13 "how great the inequality of man is because of sin and transgression" EXACT)
+- [x] 2026-06-02 `study/bom-walk/alma/alma-47.md` **LINKS** — CLEAN (anatomy of treachery; v12 "come down, and that he would bring his guards with him," v36 "it is strange to relate… more wild, wicked and ferocious than the Lamanites" EXACT)
 - [ ] 2026-06-02 `study/bom-walk/studies/mos10_lamanite-grievance-tradition.md` **LINKS**
 - [ ] 2026-06-02 `study/bom-walk/mosiah/mosiah-13.md` **LINKS**
 - [ ] 2026-06-02 `study/bom-walk/mosiah/mosiah-14.md` **LINKS**

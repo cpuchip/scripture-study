@@ -3735,6 +3735,24 @@ foundational Christological declaration.
   God," v20 "having this perfect knowledge of God, he could not be kept from
   within the veil" — all EXACT.
 
+### Mormon 2 + Alma 49/28/47 (2026-06-13, 359→363) — ALL CLEAN
+
+Closing the back-cursor Mormon/Alma items before the Mosiah block.
+Verified by direct grep.
+
+- **Mormon 2** (sorrowing of the damned): v13 "the sorrowing of the damned,
+  because the Lord would not always suffer them to take happiness in sin,"
+  v15 "the day of grace was passed with them" — EXACT.
+- **Alma 49** (preparation defeats numbers): v23 "not a single soul of the
+  Nephites which was slain," v27 "did curse God, and also Moroni… because
+  Moroni had kept the commandments of God" — EXACT.
+- **Alma 28** (the two mournings): v12 "they are raised to dwell at the right
+  hand of God, in a state of never-ending happiness," v13 "how great the
+  inequality of man is because of sin and transgression" — EXACT.
+- **Alma 47** (anatomy of treachery): v12 "come down, and that he would bring
+  his guards with him," v36 "it is strange to relate… more wild, wicked and
+  ferocious than the Lamanites" — EXACT.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
