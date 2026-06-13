@@ -3192,6 +3192,19 @@ LINKS ×3. No markdown links.
   verbatim), so it stands. Net: one requote.
 - **Webster running count: 131 → 132 (PRESENCE).**
 
+### #284 `2-nephi-06` — bom-walk LINKS — CLEAN
+- Jacob takes up Isaiah (begins the 2 Ne 6-10 sermon). v5 "they may
+  be likened unto you, for ye are of the house of Israel" (the likening
+  method handed Nephi→Jacob), v9 "the Lord God, the Holy One of Israel,
+  should manifest himself unto them in the flesh… they should scourge
+  him and crucify him," v11 "shall not be suffered to perish, because
+  of the prayers of the faithful," v12 the Gentile condition, v17 "the
+  Mighty God shall deliver his covenant people" (the BoM rendering of
+  Isa 49:25, correctly quoted from 2 Ne 6 itself) — all EXACT. CLEAN.
+- **2 Nephi front (chs 1-11) now fully walked.** Two Webster requotes
+  in the 2 Ne spin-offs (MEDIATOR #131, PRESENCE #132); every chapter
+  note and every scripture quote otherwise verbatim.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
