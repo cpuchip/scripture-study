@@ -3131,6 +3131,43 @@ LINKS ×3. No markdown links.
   1828** (verbatim fragment of def 1), so it stands. Net: one requote.
 - **Webster running count: 130 → 131 (MEDIATOR).**
 
+### #279-282 `2-nephi 05/03/02/01` — bom-walk LINKS — ALL CLEAN
+- **2-nephi-05 (★ the hard verse):** every quote EXACT, including the
+  full hard-verse text (v20 "cut off from the presence of the Lord,"
+  v21 "they had become like unto a flint… a skin of blackness… that
+  they might not be enticing unto my people," v22 "save they shall
+  repent"), v6 "those who believed in the warnings and the revelations
+  of God," v16 the Solomon-pattern temple, v27 "we lived after the
+  manner of happiness." The note's handling of 2 Ne 5:21 is exactly
+  right for the walk's mandate: it names the passage, lays out what the
+  text itself distinguishes (curse = cut-off-from-presence; the mark's
+  stated separating purpose; reversibility 3 Ne 2:15; the book's own
+  26:33 correction; the 2013 essay) and then **FLAGS it for a
+  with-Michael study rather than pronouncing**. Verified the quotes;
+  left the argument untouched. The flag is intact and correct.
+- **2-nephi-03 (Joseph prophecies):** v7 "A choice seer will I raise
+  up out of the fruit of thy loins," v12 the two records "grow
+  together, unto the confounding of false doctrines and laying down of
+  contentions, and establishing peace," v15 "his name shall be called
+  after me; and it shall be after the name of his father" — all EXACT.
+- **2-nephi-02 (chapter note):** the thumbnail of the Fall/agency
+  chapter; its quote-fragments are the same 2 Ne 2 verses already
+  verified EXACT in the spin-off study (#278) — v11/v13 opposition
+  chains, v25 "Adam fell that men might be," v26-27 the Mediator.
+  References the spin-off correctly. (Minor: it calls felix culpa "the
+  Restoration's distinctive reading"; the spin-off is more careful to
+  mark felix culpa as an external tradition / authorial gloss — a
+  framing nuance, not a quote error. Left as-is.)
+- **2-nephi-01 (Lehi's farewell):** v13 "awake from… the sleep of
+  hell, and shake off the awful chains," v15 "the Lord hath redeemed
+  my soul from hell… I am encircled about eternally in the arms of his
+  love," v20 the prosperity covenant ("Inasmuch as ye shall keep my
+  commandments ye shall prosper… cut off from my presence"), v26 "his
+  sharpness was the sharpness of the power of the word of God… that
+  which ye call anger was the truth" — all EXACT.
+- Four CLEAN. (2 Ne 1 and 5 reference further spin-offs —
+  2ne1_prosperity-covenant, etc. — which are their own walk items.)
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
