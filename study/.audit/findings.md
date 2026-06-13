@@ -3672,6 +3672,32 @@ opening of the book of Mormon proper. Verified by direct grep.
   their wickedness and unbelief," v16 "my mouth was shut, and I was
   forbidden" — all EXACT.
 
+### Mormon 3-6 (2026-06-13, 349→353) — ALL CLEAN (one bin-4 flag, not resolved)
+
+The fall: the vengeance-oath, the idle witness, the offensive war's
+collapse, Cumorah. Verified by direct grep.
+
+- **Mormon 3** (vengeance-oath + the idle witness): v15 "Vengeance is mine,
+  and I will repay," v21 "Jesus, whom they slew, was the very Christ and the
+  very God" (is-Jesus-God) — EXACT.
+- **Mormon 4** (offensive war collapses): v5 "it is by the wicked that the
+  wicked are punished," v18 "swept off by them even as a dew before the sun"
+  — EXACT.
+- **Mormon 5** (leading without hope): v18 "led about by Satan, even as chaff
+  is driven before the wind… without sail or anchor" — EXACT. **★ bin-4
+  (flagged for Michael, NOT resolved):** v15 "a dark, a filthy, and a
+  loathsome people… because of their unbelief and idolatry" — verified
+  character-exact; the chapter note correctly logs it to the with-Michael
+  2 Ne 5:21 study (cause named as spiritual, applied to the once-delightsome
+  *Nephite* seed falling worse than the Lamanites) and does NOT pronounce on
+  the literal "dark." Standing literal-skin rule honored — quote accurate,
+  left for Michael + the Spirit. **This is the only ARGUMENT/bin-4-class item
+  found in the entire back-cursor run so far; the queue for Michael now holds
+  it alongside the 2 Ne 5:21 / Alma 3:6 / 3 Ne 2:15 / Hel 15:4 datapoints.**
+- **Mormon 6** (Cumorah): v17 "O ye fair ones… rejected that Jesus, who stood
+  with open arms to receive you," v22 "he doeth with you according to his
+  justice and mercy" — EXACT.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)

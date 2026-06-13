@@ -368,10 +368,10 @@ Already done out-of-band: `study/morm-8-three-glories-reading.md` (2026-06-09).
 - [x] 2026-06-02 `study/bom-walk/4-nephi/4-nephi-1.md` **LINKS** — CLEAN (rise + fall of Zion; v16 "there could not be a happier people among all the people who had been created by the hand of God," ★ v17 "neither were there Lamanites, nor any manner of -ites; but they were in one, the children of Christ" — strongest 2 Ne 5:21 datapoint, v24 "wearing of costly apparel" all EXACT)
 - [x] 2026-06-02 `study/bom-walk/3-nephi/3-nephi-20.md` **LINKS** — CLEAN (miraculous sacrament + Isaiah 52; v8 "his soul shall never hunger nor thirst, but shall be filled," v23 "I am he of whom Moses spake," v35 "the Father and I are one" — is-Jesus-God all EXACT)
 - [x] 2026-06-02 `study/bom-walk/mormon/mormon-1.md` **LINKS** — CLEAN (young Mormon; v2 "I perceive that thou art a sober child, and art quick to observe," v14 "there were no gifts from the Lord… because of their wickedness and unbelief," v16 "my mouth was shut, and I was forbidden" all EXACT)
-- [ ] 2026-06-02 `study/bom-walk/mormon/mormon-3.md` **LINKS**
-- [ ] 2026-06-02 `study/bom-walk/mormon/mormon-4.md` **LINKS**
-- [ ] 2026-06-02 `study/bom-walk/mormon/mormon-5.md` **LINKS**
-- [ ] 2026-06-02 `study/bom-walk/mormon/mormon-6.md` **LINKS**
+- [x] 2026-06-02 `study/bom-walk/mormon/mormon-3.md` **LINKS** — CLEAN (vengeance-oath + the idle witness; v15 "Vengeance is mine, and I will repay," v21 "Jesus, whom they slew, was the very Christ and the very God" — is-Jesus-God all EXACT)
+- [x] 2026-06-02 `study/bom-walk/mormon/mormon-4.md` **LINKS** — CLEAN (offensive war collapses; v5 "it is by the wicked that the wicked are punished," v18 "swept off by them even as a dew before the sun" EXACT)
+- [x] 2026-06-02 `study/bom-walk/mormon/mormon-5.md` **LINKS** — CLEAN (leading without hope; v18 "led about by Satan, even as chaff is driven before the wind… without sail or anchor" EXACT. ★ bin-4: v15 "a dark, a filthy, and a loathsome people… because of their unbelief and idolatry" verified EXACT — the study FLAGS it for Michael + the Spirit and does NOT resolve it; standing literal-skin rule honored)
+- [x] 2026-06-02 `study/bom-walk/mormon/mormon-6.md` **LINKS** — CLEAN (Cumorah; v17 "O ye fair ones… rejected that Jesus, who stood with open arms to receive you," v22 "he doeth with you according to his justice and mercy" EXACT)
 - [ ] 2026-06-02 `study/bom-walk/mormon/mormon-7.md` **LINKS**
 - [ ] 2026-06-02 `study/bom-walk/mormon/mormon-8.md` **LINKS**
 - [ ] 2026-06-02 `study/bom-walk/mormon/mormon-9.md` **LINKS**
