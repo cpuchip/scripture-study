@@ -349,6 +349,23 @@ last_active: 2026-06-13T12:25:57
   fix left as "truncated-safe" (watch-integrity, live). Tool earned its source weight
   round one. **Remaining: only the standing bin-4 curse-question (2 Ne 5:21 / Morm
   5:15 / Alma 3:6), parked for Michael + the Spirit.**
+- UPDATE 19: ★ **STUDY-TOOLING ARC — the quoter (constructor) BUILT through v3**
+  (`677b5061`). After capturing the oracle-first principle + the linter catalog +
+  the quoter design (`.spec/proposals/study-tooling.md`), Michael: "build it out,
+  carry through v3 — look at our study docs, that's the feature set." Surveyed real
+  inline-quote forms first, then built `scripts/quoter/`: **resolver** (ref→canonical
+  path + per-target re-based link, own 5-volume map), **sources** (verbatim
+  verse/range + 1828 defs), **grammar** (verbatim spans + marked `[..]`/`...` edits;
+  unmarked drop/swap = error — the walk's hand-judgment, mechanical), **quote.py**
+  CLI (scripture/webster/promote). Ladder: v1 block / v2 inline phrase / v3 free-flow
+  / promote (scratch→study re-based+re-verified). **Constructor REFUSES non-verbatim**
+  (exit 1). ★ **Self-validating loop PROVEN: quoter output → verify-quotes = 0 flags**
+  (lint-clean by construction). resolver+grammar are **shared with the next build, the
+  scripture-verbatim linter rule.** Webster decided: attribution-only in source,
+  publish-step linkifies to 1828.ibeco.me. Memory: `project_quoter_tool` +
+  `feedback_build_the_oracle_first`. **NEXT (Michael's nod): scripture-verbatim
+  detector rule** (reuses the quoter's spine) → fills the study-linter, turns the
+  PoGP walk into a verify-the-flags pass.
 - ✅ OCR repair SHIPPED + live-verified (1336c8ce); walk plan RATIFIED
   (.spec/proposals/study-correctness-walk.md)
 
