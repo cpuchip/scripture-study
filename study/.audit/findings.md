@@ -1869,6 +1869,26 @@ added). Verified verbatim: D&C 121:39-41, AoF 11, D&C 134:4, Hel
 (consistently-at-scale, leading-the-pack, in-charge-of-basically-
 everything, Substack, monarch) all match.
 
+### study/books/physics-and-the-gospel/two-methods-one-truth.md (2026-05-01) — 4 Webster words 1913 (111-114); TRUTH held GENUINE; OpenStax misattribution
+T1. LAW's "rule of being … imposed by the will of God" was the
+1913's sense 7 — genuine 1828's physical-law sense is RICHER:
+established by the Creator and "denominated in Scripture,
+ordinances of heaven." GLORY's "emanation of light … beings of
+peculiar sanctity" was 1913 — genuine sense 1 is "Brightness;
+luster; splendor" with the Transfiguration (2 Pet 1:17) as Noah's
+own gloss. INTELLIGENCE was 1913 — genuine sense 4: "It is
+believed that the universe is peopled with innumerable superior
+intelligences." MATTER was 1913 AND understated Noah: genuine
+sense 3 already classes LIGHT among "imponderable" matter whose
+substratum "may not be visible or tangible" — the 1843 revelation
+reworked as extension, not rupture. TRUTH held GENUINE — the
+was/is/shall-be parallel with D&C 93:24 stands on the real 1828.
+"Maxwell's University Physics" → OpenStax (Maxwell died 1879).
+Verbatim: Oaks Feb-2026 BYU (hot zone), D&C 88:6-13/36-39, 93:29/
+30/36, 130:20-21, 131:7, the olive-leaf heading, both OpenStax
+quotes (incl. the source's own "act a wave" typo, faithfully
+kept).
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
