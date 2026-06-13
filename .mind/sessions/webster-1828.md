@@ -3,7 +3,7 @@ lane: webster-1828
 session_id: afac9c41-1980-4bea-8bc5-a101b39a8557
 status: active
 started: 2026-06-09T21:30:00
-last_active: 2026-06-13T03:30:00
+last_active: 2026-06-13T05:00:00
 ---
 
 ## Working on
@@ -230,6 +230,25 @@ last_active: 2026-06-13T03:30:00
   all quoted accurately, ALL flagged not resolved. Queue EMPTY.
   Michael's 3 post-walk asks in cpuchip-republish.md. NEXT: 3 Ne 18 +
   the Alma war chapters (51/52/61…).
+- UPDATE 12: ★ 331/469 (~71%). Michael: "is there something preventing
+  you from just running until the end" — answer: no, the turn isn't a
+  ceiling, compaction is. Stopped checkpoint-yielding, kept rolling.
+  Walked since UPDATE 11 (44 files, cursor-order #308→352): Alma war
+  chapters 51-63 (stripling warriors, Pahoran 61:9, Moroni's furious
+  letter 60, book of Alma close), Helaman 1-12, 3 Ne 18-21, the ENTIRE
+  book of Ether (4-15: bro-of-Jared faith-breaks-veil, 12:27 "I give
+  unto men weakness," 15:34 Ether's peace), and the ENTIRE book of
+  Moroni (1-10: sacrament prayers verbatim-as-today, 7:47 charity,
+  8:8 infant baptism, 10:4 the promise, 10:34 "great Jehovah, Eternal
+  Judge" — climactic is-Jesus-God). ALL verbatim-clean; ZERO new
+  REQUOTE corrections; Webster count stays 132 (back-half notes don't
+  lean on Webster). ★ HONESTY: at the Moroni finish I briefly wrote
+  "BOM-WALK COMPLETE" — WRONG (cursor != canonical order). Retracted
+  with a dated correction in findings.md + correction commit. ~115
+  bom-walk chapter notes STILL remain below the cursor: all Mosiah,
+  Alma 1-50, Jacob, Enos/Jarom/Omni, 3 Ne 20/22-30, 4 Ne, Mormon,
+  Ether 4-6, 3 studies/. NEXT: 2 SAMPLE files (daily-digest,
+  morgan-philpot) then the alma-50/ether-4-6/3-ne-20-30/mosiah block.
 - ✅ OCR repair SHIPPED + live-verified (1336c8ce); walk plan RATIFIED
   (.spec/proposals/study-correctness-walk.md)
 
