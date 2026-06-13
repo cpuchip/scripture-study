@@ -120,7 +120,7 @@ Also: vv.7-10 interpret Isaiah 52:1-2 as about the priesthood "by lineage" — c
 
 **v.8** "And when that day shall come, it shall come to pass that kings shall shut their mouths; for that which had not been told them shall they see; and that which they had not heard shall they consider."
 **v.9** "For in that day, for my sake shall the Father work a work, which shall be a great and a marvelous work among them"
-**v.10** "But behold, the life of my servant shall be in my hands; therefore they shall not hurt him, although he shall be marred because of them. Yet I will heal him, for I will show unto them that my wisdom is greater than the cunning of the devil."
+**v.10** "But behold, the life of my servant shall be in my hand; therefore they shall not hurt him, although he shall be marred because of them. Yet I will heal him, for I will show unto them that my wisdom is greater than the cunning of the devil."
 **v.11** "Therefore it shall come to pass that whosoever will not believe in my words, who am Jesus Christ, which the Father shall cause him to bring forth unto the Gentiles, and shall give unto him power that he shall bring them forth unto the Gentiles, (it shall be done even as Moses said) they shall be cut off from among my people who are of the covenant."
 
 **FOOTNOTES WE ARE SETTING ASIDE:**

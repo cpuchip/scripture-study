@@ -184,8 +184,9 @@ Key references catalogued: Ps. 113:6, Isa. 50:6, John 1:14, John 3:13, John 6:38
 ### Webster 1828 — "condescension"
 Tool: mcp__webster__define
 
-Historical definition: "voluntary descent from one's rank or dignity in intercourse with an inferior; courtesy toward inferiors."
-Addison: "Such a dignity and condescension as are suitable to a superior nature."
+Genuine 1828 definition: "Voluntary descent from rank, dignity or just claims; relinquishment of strict right; submission to inferiors in granting requests or performing acts which strict justice does not require." (The 1828 entry then illustrates: "Raphael, amidst his tenderness, shows such a dignity and condescension in all his behavior, as are suitable to a superior nature.")
+
+(NOTE: The phrasing "voluntary descent from one's rank or dignity in intercourse with an inferior; courtesy toward inferiors" + the standalone "Addison" attribution belong to Webster's 1913 edition, NOT 1828. Corrected to genuine 1828 above.)
 
 **Critical observation:** The 1828 definition carries social hierarchy — a superior graciously stooping. But Nephi's angel uses it differently. The condescension isn't a posture of courtesy; it's an ontological descent. God actually becomes mortal flesh — not just polite to mortals. The word in 1828 was typically about manner; Nephi's use is about nature. This is worth flagging in the study.
 

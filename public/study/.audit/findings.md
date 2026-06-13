@@ -4470,6 +4470,45 @@ alma5-study's "43 distinct questions" vs the source's 42 question marks
 (methodology-dependent, prose left intact). **Post-walk checklist** (the 3 asks)
 lives in `cpuchip-republish.md` — to run now that 469/469 is reached.
 
+## ★ SCRATCH-AUDIT FAN-OUT — 62 files normalized (2026-06-13)
+
+The scratch/provenance files (the published audit trail) were never updated by
+the walk, so they still held the pre-correction quotes. Michael ratified a
+**multi-agent fan-out** to verify+normalize all of them: 6 Opus subagents, 6
+batches, each verifying every quote against the real source (gospel-library grep
+for scripture, the repaired Webster MCP for definitions, talk files for talk
+quotes), correcting stale ones, flagging the non-locally-verifiable. I presided:
+reviewed every agent report + spot-verified the high-stakes catches against
+source (image→Matt 22:20, D&C 8:11, Mosiah 18:29, D&C 107:87, transgression,
+ordain — all confirmed) + the bounded diff (39 files, +320/−262).
+
+**~75 corrections across 23 of 62 files** (39 files clean). Breakdown:
+- **~62 Webster 1913-as-1828 definition corrections** — the dominant class, the
+  same contamination the walk fixed in the *studies* but never in scratch.
+- **~7 fabricated citations *inside* Webster entries** — a class the walk
+  under-checked: NEVERTHELESS's "Heb 12:11", PRESUMPTUOUS's "Ps 19:13", STILL's
+  "1 Kgs 19:12", FINE's "Prov 3:14", GAIN's "1 Tim 6:6", etc. — none in genuine
+  1828.
+- **Confabulated scripture** (caught, fixed): **D&C 8:11** (gift-of-aaron — the
+  scratch text was wholly invented), **Mosiah 18:29** (stewardship-pattern —
+  invented text), **D&C 107:72/78/79** (stewardship — real text under wrong
+  verse numbers; genuine 87/89/90), Moses 4:1↔4:3, 3 Ne 21:10 hand/hands, Ether
+  3:6 punctuation, Alma 22:18 dropped "and", Rom 5:5 "which is".
+- **Wrong attributions/titles:** broken-heart D&C 97:8 (Cardon→**Walker**),
+  gc-2026-04 "working one by one" (Oaks→**Christofferson**), zion-in-a-presidency
+  Uchtdorf title ("Fit and Belonging"→"By This All Will Know…").
+- bin-4 / 2 Ne 5:21 family: present in several files (mos10, alma3 in 1ne4,
+  alma17-26, 2ne9) — verified for **wording only, doctrine NOT resolved**.
+
+★ **The fan-out surfaced STUDY-level errors the walk MISSED** (need fixing in
+the study files, not just scratch — follow-up): alma5 "Webster cites Gen 1:27
+under *image*" (genuine = Matt 22:20; the imago-Dei-via-Webster claim rests on a
+fabricated citation); and pending checks of broken-heart (Cardon), gc-2026-04
+(Oaks→Christofferson), gift-of-aaron (D&C 8:11), stewardship-pattern (Mosiah
+18:29, D&C 107) against their study files. The Webster scratch-corrections do
+NOT imply study errors (the walk already fixed the studies' Webster quotes; only
+scratch was stale).
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)

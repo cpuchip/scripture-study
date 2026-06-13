@@ -171,9 +171,11 @@ Key cross-references spanning all standard works:
 
 **v26:** "And the priests were not to depend upon the people for their support; but for their labor they were to receive the grace of God, that they might wax strong in the Spirit, having the knowledge of God, that they might teach with power and authority from God."
 
-**v27:** "And again Alma commanded that the people of the church should impart of their substance, every one according to that which he had,; if he have more abundantly he should impart more abundantly; and of him that had but little, but little should be required; and to him that had not should be given."
+**v27:** "And again Alma commanded that the people of the church should impart of their substance, every one according to that which he had; if he have more abundantly he should impart more abundantly; and of him that had but little, but little should be required; and to him that had not should be given."
 
-**v29:** "And after that he had made an end of speaking and preaching to the people of the church, he ordained priests and teachers; every priest and teacher to preach and teach the people, according to the desires and wishes of the people."
+**v29:** "And this he said unto them, having been commanded of God; and they did walk uprightly before God, imparting to one another both temporally and spiritually according to their needs and their wants."
+
+> [VERIFY-WALK FLAG 2026-06-13] The prior text quoted here for v29 ("And after that he had made an end of speaking and preaching… according to the desires and wishes of the people") was a confabulation — those phrases appear nowhere in the Book of Mormon. Corrected above to the genuine Mosiah 18:29. The dependent observation below (v29: priests teach "according to the desires and wishes of the people") rests on the fabricated text and should be reworked or dropped before drafting.
 
 ### D&C 10:4 — The Pacing Commandment
 
@@ -197,15 +199,15 @@ Key cross-references spanning all standard works:
 
 ### D&C 107 — The Delegation Charter
 
-**v72:** "And also the duty of the president over the office of the Aaronic Priesthood, is to preside over forty-eight priests, and sit in council with them, to teach them the duties of their office"
+**v87:** "Also the duty of the president over the Priesthood of Aaron is to preside over forty-eight priests, and sit in council with them, to teach them the duties of their office, as is given in the covenants—"
 
-**v78:** "And also the duty of the president over the office of elders is to preside over ninety-six elders, and to sit in council with them, and to teach them according to the covenants."
+**v89:** "Again, the duty of the president over the office of elders is to preside over ninety-six elders, and to sit in council with them, and to teach them according to the covenants."
 
-**v79:** "This presidency is a distinct one from that of the seventy, and is designed for those who do not travel into all the world."
+**v90:** "This presidency is a distinct one from that of the seventy, and is designed for those who do not travel into all the world."
 
-**v84:** "Through the order of priesthood which God has established, such officers as are needed should be ordained and set apart to their duties, that all things may be done in order."
+> [VERIFY-WALK FLAG 2026-06-13] The above three quotes were previously mislabeled as vv. 72/78/79; corrected to their true verse numbers (87/89/90) and exact wording. The former "v84" entry ("Through the order of priesthood which God has established, such officers as are needed should be ordained and set apart...") is NOT a verbatim verse — genuine v84 reads "Thus, none shall be exempted from the justice and the laws of God, that all things may be done in order and in solemnity before him, according to truth and righteousness." Removed the paraphrase to avoid a quotation that isn't in the text.
 
-**v85-89 (presidency ratios):** Twelve deacons, twenty-four teachers, forty-eight priests, ninety-six elders — all with a president who "sits in council with them."
+**v85-89 (presidency ratios):** Twelve deacons (v85), twenty-four teachers (v86), forty-eight priests (v87), ninety-six elders (v89) — all with a president who "sits in council with them."
 
 **v91:** "And again, the duty of the President of the office of the High Priesthood is to preside over the whole church, and to be like unto Moses—"
 
@@ -245,15 +247,15 @@ Key cross-references spanning all standard works:
 
 ## Webster 1828
 
-**Delegate** (1828): "Any one sent and empowered to act for another; one deputed to represent; a chosen deputy." Modern sense is similar. Key insight: *empowered* to act, not just *assigned* to act. A delegate carries authority, not just tasks.
+**Delegate** (1828, noun): "A person appointed and sent by another with powers to transact business as his representative; a deputy; a commissioner; a vicar." The verb: "To entrust; to commit; to deliver to another's care and exercise; as, to delegate authority or power to an envoy, representative or judge." Key insight: *empowered* to act, not just *assigned* to act. A delegate carries authority, not just tasks.
 
-**Steward** (1828): "A man employed in a large family, or on a large estate, to manage the domestic concerns, supervise other servants, collect the rents or income, keep accounts." A steward manages what belongs to someone else. The steward doesn't own — he manages FOR the owner. In gospel context: the calling, the ward, the quorum — none of it is ours.
+**Steward** (1828): "A man employed in great families to manage the domestic concerns, superintend the other servants, collect the rents or income, keep the accounts." (And in the scriptural sense: "a minister of Christ, whose duty is to dispense the provisions of the gospel... It is required in stewards, that a man be found faithful. 1 Corinthians 4:2.") A steward manages what belongs to someone else. The steward doesn't own — he manages FOR the owner. In gospel context: the calling, the ward, the quorum — none of it is ours.
 
-**Preside** (1828): "To be set, or to sit, in the place of authority... to direct, control, and regulate, as chief officer." ALSO: "To exercise superintendence; to watch over." The second definition connects directly to Abraham 4:18 — "the Gods watched those things which they had ordered until they obeyed." Presiding IS watching. Not doing the work. Watching until it obeys.
+**Preside** (1828): "To be set over for the exercise of authority; to direct, control and govern, as the chief officer." ALSO: "To exercise superintendence; to watch over as inspector." The second definition connects directly to Abraham 4:18 — "the Gods watched those things which they had ordered until they obeyed." Presiding IS watching. Not doing the work. Watching until it obeys.
 
-**Counsel** (1828): "Interchange of opinions; mutual advising; consultation." Also: "Result of consultation; advice; instruction" and "Deliberate purpose; design; intent; scheme; plan." Key: counsel is *interchange* — bilateral, not unilateral. When D&C 107 says the president "sits in council," it means mutual advising, not one-directional instruction. This is what Abraham 4:26 describes: "the Gods took counsel among themselves."
+**Counsel** (1828): "Consultation; interchange of opinions." Also (def. 1): "Advice; opinion, or instruction, given upon request or otherwise, for directing the judgment or conduct of another," and (def. 7, scriptural sense): "purpose; design; will; decree." Key: counsel is *interchange* — bilateral, not unilateral. When D&C 107 says the president "sits in council," it means mutual advising, not one-directional instruction. This is what Abraham 4:26 describes: "the Gods took counsel among themselves."
 
-**Ordain** (1828): "To set in order; to arrange according to rule; to regulate." ALSO: "To set apart for an office; to appoint" and "To invest with ministerial or sacerdotal functions." The first definition is fascinating — ordain means to ORDER, to ARRANGE. Ordination is organization. When Alma "ordained priests" in Mosiah 18, he was setting the church in order.
+**Ordain** (1828): "Properly, to set; to establish in a particular office or order; hence, to invest with a ministerial function or sacerdotal power." ALSO: "To set apart for an office; to appoint. Jesus ordained twelve that they should be with him. Mark 3:14." The root sense is to *set* and *establish in order* — ordination is establishment in an office and order. When Alma "ordained priests" in Mosiah 18, he was setting the church in order.
 
 ## Conference Talks
 

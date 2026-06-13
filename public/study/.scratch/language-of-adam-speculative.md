@@ -122,7 +122,7 @@ Wikipedia (Mama and papa): In linguistics, "mama" and "papa" are considered a sp
 - Japanese: aka (red, but also related to flowing/liquid in compounds)
 - The root appears in virtually every language family on earth
 
-Not directly tied to a revealed Adamic word, but notable as one of the strongest candidates for a "pre-Babel" word. If the confounding was a mingling (Webster: "to blend so that elements cannot be distinguished"), you'd expect the most fundamental words — water, mother, one, two — to resist the mixing the longest.
+Not directly tied to a revealed Adamic word, but notable as one of the strongest candidates for a "pre-Babel" word. If the confounding was a mingling (Webster 1828, CONFOUND def 1, re-verified via webster MCP 2026-06-13: "To mingle and blend different things, so that their forms or natures cannot be distinguished"), you'd expect the most fundamental words — water, mother, one, two — to resist the mixing the longest.
 
 ### Thread 4: Kokob/Kokaubeam ↔ Semitic star words
 - **Adamic:** Kokob = star; Kokaubeam = stars/great lights (Abraham 3:13)

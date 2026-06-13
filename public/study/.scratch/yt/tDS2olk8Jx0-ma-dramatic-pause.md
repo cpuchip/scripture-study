@@ -108,15 +108,17 @@ What is Ma (間), why does dramatic pause create the most powerful emotional res
 **Observation:** The metaphor for the atonement experience is SONG. Not a lecture, not a proof — a song. Something that moves before it informs.
 
 ## Selah — The Psalm's Own Ma
-Webster 1828: "A word of doubtful meaning, occurring frequently in the Psalms; by some, supposed to signify silence or a pause in the musical performance of the song."
+Webster 1913: "A word of doubtful meaning, occurring frequently in the Psalms; by some, supposed to signify silence or a pause in the musical performance of the song." (NOTE: Webster's 1828 dictionary has NO entry for "selah"; this gloss is from the 1913 edition — flag if used in the study.)
 
 The Psalms have Ma built into their very structure. Selah appears 71 times. It's a stage direction for the soul: pause here. Let this land.
 
-## Webster 1828: "Still"
-1. Motionless; at rest; quiet
-2. Uttering no sound; silent
-3. Not disturbed by noise or agitation; quiet; calm
-4. "A still small voice." — 1 Kings xix. 12 (Webster CITES this scripture in the definition!)
+## Webster 1828: "Still" (adjective)
+1. Silent; uttering no sound; applicable to animals or to things. The company or the man is still; the air is still; the sea is still.
+2. Quiet; calm; not disturbed by noise; as a still evening.
+3. Motionless; as, to stand still; to lie or sit still.
+4. Quiet; calm; not agitated; as a still atmosphere.
+
+(NOTE: Genuine 1828 "still" carries NO scripture citation. The "A still small voice." — 1 Kings xix. 12 example belongs to Webster's 1913 edition, sense 4 "soft; gentle; low," not 1828. Do not claim 1828 cites 1 Kings 19:12.)
 
 ## Elder Held, April 2024 — "Opposition in All Things"
 Key insight: "Opposites don't exist apart from each other. They can even complement each other. We would not be able to identify joy unless we had also experienced sorrow at some point."

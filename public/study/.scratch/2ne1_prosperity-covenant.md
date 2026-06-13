@@ -242,9 +242,10 @@ Verified via mcp__webster__define:
 OBSERVATION: The 1828 sense has an active-voice first meaning — to prosper is "to render successful." This is important: the covenant promise is not passively receiving good fortune; it is being *made successful* by divine favor. The subject is the Lord rendering, not the person receiving. The modern sense shifts slightly to the intransitive ("to be prosperous"), but the 1828 sense keeps God as the active agent.
 
 **PRESENCE** (1828):
-1. "The state of being present, or of being within sight or call, or at hand"
-2. "Neighborhood to the person of one of superior or exalted rank"
-3. "The whole of the personal qualities of an individual; person; personality; especially, the person of a sovereign"
+1. "The existence of a person or thing in a certain place; opposed to absence." (also: "The presence of God is not limited to any place.")
+3. "Approach face to face or nearness of a great personage."
+5. "By way of distinction, state of being in view of a superior."
+9. "The person of a superior."
 
 OBSERVATION: "Cut off from my presence" — in 1828, "presence" of a sovereign is not merely "being nearby." It is access to the royal person, with all that entails: protection, favor, jurisdiction, guidance, the whole of the relationship. To be cut off from the Lord's *presence* is to be removed from that relationship entirely — from his notice, his care, his guidance, his protection. This is not just geographic distance; it is relational severance.
 

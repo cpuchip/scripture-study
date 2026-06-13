@@ -51,7 +51,7 @@ The four claims:
 - [Alma 30:7-12](https://www.churchofjesuschrist.org/study/scriptures/bofm/alma/30?lang=eng&id=p7-p12#p7) — Nephite law explicitly protected Korihor's right to disbelieve
 - [3 Ne 11:29-30](https://www.churchofjesuschrist.org/study/scriptures/bofm/3-ne/11?lang=eng&id=p29-p30#p29) — "he that hath the spirit of contention is not of me, but is of the devil"
 - [D&C 38:41](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/38?lang=eng&id=p41#p41) — preach "in mildness and in meekness"
-- [Moses 4:3](https://www.churchofjesuschrist.org/study/scriptures/pgp/moses/4?lang=eng&id=p3#p3) — Lucifer's plan: "I will redeem all mankind, that one soul shall not be lost... wherefore give me thine honor"
+- [Moses 4:1, 3](https://www.churchofjesuschrist.org/study/scriptures/pgp/moses/4?lang=eng&id=p1#p1) — Lucifer's plan: "I will redeem all mankind, that one soul shall not be lost... wherefore give me thine honor" (v.1); "Satan rebelled against me, and sought to destroy the agency of man" (v.3)
 - [John 6:15](https://www.churchofjesuschrist.org/study/scriptures/nt/john/6?lang=eng&id=p15#p15) — Christ refused when the multitude tried to make him king by force
 - [2 Ne 26:33](https://www.churchofjesuschrist.org/study/scriptures/bofm/2-ne/26?lang=eng&id=p33#p33) — all are alike unto God
 

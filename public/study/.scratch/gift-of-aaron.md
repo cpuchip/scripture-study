@@ -37,8 +37,8 @@ For the 1835 *Doctrine and Covenants* the wording was revised again to the curre
 > 7. Behold, there is no other power, save the power of God, that can cause this gift of Aaron to be with you.
 > 8. Therefore, doubt not, for it is the gift of God; and you shall hold it in your hands, and do marvelous works; and no power shall be able to take it away out of your hands, for it is the work of God.
 > 9. And, therefore, whatsoever you shall ask me to tell you by that means, that will I grant unto you, and you shall have knowledge concerning it.
-> 10. Remember that without faith you can do nothing; therefore ask in faith. Trifle not with these sacred things.
-> 11. Ask of me, and you shall receive; knock, and it shall be opened unto you. Whatsoever you shall ask of me to tell you by the Spirit of revelation, you shall have knowledge of, that you may translate and receive knowledge from all those ancient records which have been hid up, that are sacred…"
+> 10. Remember that without faith you can do nothing; therefore ask in faith. Trifle not with these things; do not ask for that which you ought not.
+> 11. Ask that you may know the mysteries of God, and that you may translate and receive knowledge from all those ancient records which have been hid up, that are sacred; and according to your faith shall it be done unto you."
 > — [D&C 8:6-11](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/8?lang=eng&id=p6-p11#p6)
 
 **Textual observations:**
@@ -46,8 +46,8 @@ For the 1835 *Doctrine and Covenants* the wording was revised again to the curre
 - "it has told you many things" — past tense; this gift was already operating in Cowdery's life before the revelation
 - "you shall hold it in your hands" — a physical object is implied in the original; the 1835 revision retains the physicality ("in your hands")
 - "no power shall be able to take it away out of your hands"
-- "whatsoever you shall ask me to tell you by **that means**" — a *medium* of revelation
-- v.11 absorbs the "by that means" promise into "by the Spirit of revelation" — the gift's *function* survives the revision intact
+- "whatsoever you shall ask me to tell you by **that means**" (v.9) — a *medium* of revelation
+- v.11 turns from the gift to its purpose ("Ask that you may know the mysteries of God, and that you may translate...") — the gift's *function* (revelation that enables translation) survives the revision intact
 
 ### Bible Dictionary — "Aaron" (full entry, read this session)
 

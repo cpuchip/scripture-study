@@ -190,11 +190,11 @@ The Psalmist names exactly the Numbers 15:30 category — *presumptuous sins* �
 
 ### Webster 1828 — the vocabulary
 
-**COMPULSION** — *"The act of compelling, or the state of being compelled; the act of driving or urging by force or by physical or moral constraint; subjection to force."*
-The Church's *Celebrating Freedom and Agency* statement uses this word precisely. "Without compulsion" = without subjection to force, including *moral* constraint.
+**COMPULSION** — 1828 def. 1: *"The act of driving or urging by force, physical or moral; force applied; constraint of the will; the application of a force that is irresistible."* def. 2: *"The state of being compelled or urged by violence."*
+The Church's *Celebrating Freedom and Agency* statement uses this word precisely. "Without compulsion" = without that constraint of the will, including *moral* force.
 
-**PRESUMPTUOUS** — Webster 1828 def 3: *"Done with bold design, rash confidence, or in violation of known duty; **willful**. 'Keep back the servant also from presumptuous sins.' Ps. xix. 13."*
-The Hebrew *be-yad ramah* ("with a high hand", Num 15:30) → KJV *presumptuously* → Webster *"in violation of known duty; willful"* → 3 Ne 6:18 *"willfully rebel."* The vocabulary chain holds. Joseph Smith's translation uses the word ("wilfully") that Webster's dictionary defines under the older word ("presumptuous") that the KJV uses for the Mosaic category. Same doctrine, three vocabularies, one chain.
+**PRESUMPTUOUS** — Webster 1828 def. 5: *"Willful; done with bold design, rash confidence or in violation of known duty; as a presumptuous sin."* (Webster's adverb **PRESUMPTUOUSLY**, def. 3, attaches the scriptural example directly: *"Willfully; in bold defiance of conscience or violation of known duty; as, to sin presumptuously. Numbers 15:30."*)
+The Hebrew *be-yad ramah* ("with a high hand", Num 15:30) → KJV *presumptuously* → Webster *"in violation of known duty; willful"* → 3 Ne 6:18 *"willfully rebel."* The vocabulary chain holds — and Webster himself cites Numbers 15:30 under *presumptuously*. Joseph Smith's translation uses the word ("wilfully") that Webster's dictionary defines under the older word ("presumptuous") that the KJV uses for the Mosaic category. Same doctrine, three vocabularies, one chain.
 
 ### BYU Citation Index summary — the cite-counted pattern
 

@@ -116,7 +116,7 @@ Key quotes:
 - The nurse story: A despised, abusive patient falls from bed. The nurse feels "an almost electric current of love from our Heavenly Father to this man. She saw him as a child of God." He dies in her arms saying "I want to go home." — "being brought to see a despised enemy like this as a child of God was one of the great spiritual experiences of her life."
 - "Blessed are the peacemakers: for they shall be called the children of God" (Matt 5:9)
 - Cites Nelson: "choose to be a peacemaker, now and always"
-- "working one by one has always been Jesus's approach to changing society"
+- (NOTE: the line "working one by one has always been Jesus's approach to changing society" is **Christofferson's** in 51christofferson.md — "working one by one has always been Jesus's approach to changing society and establishing His kingdom" — not in Oaks 49. Misfiled here; verify against 51christofferson when used.)
 
 **Observation:** The nurse story is the conference's most vivid illustration of charity in action. It concretizes what Bednar and Christofferson teach abstractly. The "turning outward" Christofferson and Bednar describe — here it is, in a hospital room, holding a dying man.
 

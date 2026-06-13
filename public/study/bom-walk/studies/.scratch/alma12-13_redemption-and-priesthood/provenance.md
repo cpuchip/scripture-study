@@ -179,21 +179,23 @@ How do Alma 12–13 move from the captivity of the devil and the Fall (ch. 12) t
 ## Webster 1828
 
 ### probationary
-- **1828 Def:** "Of or pertaining to probation; serving for trial." ("To consider this life... as a probationary state. Paley.")
+- **1828 Def:** "Serving for trial. All the probationary work of man is ended when death arrives."
 - **Study relevance:** The word in 1828 carried its full legal/trial weight. A probationary state is not just a waiting period — it is a state under active evaluation, where performance determines outcome. Alma 12:24's "time to prepare to meet God" is a trial with stakes.
 
 ### sanctify
-- **1828 Def 1:** "To make sacred or holy; to set apart to a holy or religious use; to consecrate by appropriate rites; to hallow."
-- **1828 Def 2:** "To make free from sin; to cleanse from moral corruption and pollution; to purify."
+- **1828 Def 1:** "In a general sense, to cleanse, purify or make holy."
+- **1828 Def 2:** "To separate, set apart or appoint to a holy, sacred or religious use."
 - **Study relevance:** Both senses operate in Alma 13:11–12. The high priests are sanctified in BOTH meanings — set apart (consecrated to the holy order) AND cleansed from sin (garments washed white through the blood of the Lamb). The two meanings are not in tension; the Alma passage requires both.
 
 ### mystery
-- **1828 Def 2:** "A kind of secret religious celebration, to which none were admitted except those who had been initiated by certain preparatory ceremonies — usually plural; as, the Eleusinian mysteries."
-- **1828 Def 1:** "A profound secret... beyond human comprehension."
-- **Study relevance:** The 1828 definition reveals that "mysteries" in Alma 12:9-10 had a richer semantic range than today's colloquial "strange/unexplained." The Eleusinian sense — initiatory secrets given to the prepared — maps directly onto the Alma 12 structure: the mysteries are given "according to the heed and diligence" given, i.e., based on preparation and worthiness. The priesthood in Alma 13 is the institution that conveys those initiatory mysteries.
+- **1828 Def 1:** "A profound secret; something wholly unknown or something kept cautiously concealed, and therefore exciting curiosity or wonder."
+- **1828 Def 2 (religion):** "In religion, any thing in the character or attributes of God, or in the economy of divine providence, which is not revealed to man."
+- **1828 Def 3:** "That which is beyond human comprehension until explained."
+- **FLAG (corrected):** Earlier scratch quoted an "Eleusinian mysteries / secret religious celebration" definition under 1828 — that is the 1913 edition's wording, NOT genuine 1828. The genuine 1828 entry has no initiatory-mystery sense (its closest non-religious senses are "an enigma," "an ancient dramatic representation," and "a trade or calling"). The study-relevance note below was built on the false Eleusinian reading and should be rewritten: the load-bearing 1828 sense for Alma 12:9-10 is Def 2 (mysteries = things about God not yet revealed to man, given "according to heed and diligence").
+- **Study relevance:** "Mysteries" in Alma 12:9-10 = the 1828 religious sense (Def 2): things in the character of God or his providence not yet revealed to man. The mysteries are given "according to the heed and diligence" given — based on preparation and worthiness. The priesthood in Alma 13 is the institution that conveys those mysteries. (The initiatory/Eleusinian framing from the earlier draft is dropped — it rested on a 1913 definition, not 1828.)
 
 ### foreknowledge
-- **1828 Def:** "Knowledge of a thing before it happens... prescience. If I foreknew, Foreknowledge had no influence on their fault. Milton."
+- **1828 Def:** "Knowledge of a thing before it happens; prescience. If I foreknew, foreknowledge had no influence on their fault." (The line is Milton's, *Paradise Lost*; 1828 gives no inline attribution.)
 - **Study relevance:** The 1828 dictionary quotes Milton making exactly the Restoration point: God's foreknowledge of a choice does not cause the choice, does not "influence their fault." This is the precise distinction Alma 13:3 requires — called "according to the foreknowledge of God, on account of their exceeding faith and good works" — the foreknowledge tracks the choices, not vice versa. Milton was writing within the same Calvinist debate; the Book of Mormon resolves it the same way.
 
 ---

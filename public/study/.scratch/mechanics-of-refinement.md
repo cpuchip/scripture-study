@@ -112,20 +112,23 @@
 
 ## Webster 1828
 
-### REFINE
-- **Definition 1:** "To reduce to a fine, unmixed, or pure state; to free from impurities; to free from dross or alloy; to separate from extraneous matter; to purify... as, to refine gold or silver... I will bring the third part through the fire, and will refine them as silver is refined. Zech. xiii. 9."
-- **Definition 2:** "To purify from what is gross, coarse, vulgar, inelegant, low, and the like; to make elegant or excellent; to polish; as, to refine the manners, the language, the style, the taste, the intellect, or the moral feelings. Love refines The thoughts, and heart enlarges. Milton."
-- **Study relevance:** Refinement is a separation of the pure substance from the dross (extraneous matter). The Atonement operates physically to separate the pure spirit-matter from the "earth-stains" or coarser elements that pollute it. Note Milton's connection between refinement and heart enlargement, mirroring the bowel-filling of Alma 7.
+### REFINE (verb transitive — genuine 1828, re-verified via webster MCP 2026-06-13)
+- **Definition 1:** "To purify; in a general sense; applied to liquors, to depurate; to defecate; to clarify; to separate, as liquor, from all extraneous matter. In this sense, the verb is used with propriety, but it is customary to use fine."
+- **Definition 2:** "Applied to metals, to separate the metallic substance from all other matter, whether another metal or alloy, or any earthy substance; in short, to detach the pure metal from all extraneous matter. I will bring the third part through the fire, and will refine them as silver is refined. Zechariah 13:9."
+- **Definition 6:** "To purify, as the mind or moral principles; to give or implant in the mind a nice perception of truth, justice and propriety... To refine the heart or soul, to cleanse it from all carnal or evil affections and desires and implant in it holy or heavenly affections."
+- **Study relevance:** Refinement is a separation of the pure substance from extraneous matter (dross). The Atonement operates physically to separate the pure spirit-matter from the coarser elements that pollute it. Webster's def 2 quotes the very Zechariah 13:9 refiner's-fire text; def 6 names the moral analogue — refining the soul to "cleanse it from all carnal or evil affections... and implant in it holy or heavenly affections."
 
-### QUICKEN
-- **Definition 1:** "To make alive; to vivify; to revive or resuscitate, as from death or an inanimate state; hence, to excite; to stimulate; to incite."
-- **Definition 1 (Intransitive):** "To come to life; to become alive; to become vivified or enlivened... The heart is the first part that quickens, and the last that dies. Ray."
-- **Study relevance:** Quickening is the infusion of life. The glory by which a body is quickened (D&C 88:28) is the actual vivifying force. The spirit must be prepared to receive this quickening current; if it cannot abide the voltage of the celestial law, the quickening power would destroy it rather than vivify it.
+### QUICKEN (genuine 1828, re-verified via webster MCP 2026-06-13)
+- **Definition 1:** "Primarily, to make alive; to vivify; to revive or resuscitate, as from death or an inanimate state. Romans 4:17."
+- **Definition 2:** "To make alive in a spiritual sense; to communicate a principle of grace to. You hath he quickened, who were dead in trespasses and sins. Ephesians 2:1."
+- **Intransitive 2:** "To become alive. The heart is the first part that quickens, and the last that dies."
+- **Study relevance:** Quickening is the infusion of life — and Webster's def 2 names the spiritual sense directly ("to communicate a principle of grace"). The glory by which a body is quickened (D&C 88:28) is the actual vivifying force. The spirit must be prepared to receive it; if it cannot abide the celestial law, the quickening power would destroy rather than vivify.
 
-### SANCTIFY
-- **Definition 1:** "To make sacred or holy; to set apart to a holy or religious use; to consecrate by appropriate rites..."
-- **Definition 2:** "To make free from sin; to cleanse from moral corruption and pollution; to purify. Sanctify them through thy truth. John xvii. 17."
-- **Study relevance:** Sanctification is the cleansing and purifying of substance. Under the law of refinement, to be sanctified is to have the fine matter of the spirit cleared of moral pollution so that it becomes a tabernacle capable of containing the Holy Spirit without defilement.
+### SANCTIFY (verb transitive — genuine 1828, re-verified via webster MCP 2026-06-13)
+- **Definition 1:** "In a general sense, to cleanse, purify or make holy."
+- **Definition 2:** "To separate, set apart or appoint to a holy, sacred or religious use. God blessed the seventh day and sanctified it. Genesis 2:3."
+- **Definition 5:** "To cleanse from corruption; to purify from sin; to make holy be detaching the affections from the world and its defilements, and exalting them to a supreme love to God. Sanctify them through thy truth; thy word is truth. John 17:17."
+- **Study relevance:** Sanctification is the cleansing and purifying of substance (def 1, def 5). Under the law of refinement, to be sanctified is to have the fine matter of the spirit cleared of moral pollution so that it becomes a tabernacle capable of containing the Holy Spirit without defilement. (Genuine 1828 quotes John 17:17 at def 5.)
 
 
 ---

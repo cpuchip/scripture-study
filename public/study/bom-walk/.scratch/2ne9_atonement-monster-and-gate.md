@@ -265,16 +265,16 @@ Jacob's v. 50 replaces "Ho" with "Come, my brethren, every one that thirsteth" �
 - **Study relevance:** "Behooveth" carries both necessity AND fitness. Jacob is not saying the Atonement is merely appropriate or kind — he is saying it is *required* by the nature of the case. This is the logic engine of vv. 6–9: if it must happen, then it DID happen.
 
 ### "infinite" (v. 7: "an infinite atonement")
-- 1828 def. 1: "Unlimited or boundless, in time or space"
-- 1828 def. 2: "Without limit in power, capacity, knowledge, or excellence; boundless; immeasurably or inconceivably great; perfect"
+- 1828 def. 1: "Without limits; unbounded; boundless; not circumscribed; applied to time, space and qualities."
+- 1828 def. 2: "That will have no end."
 - **Study relevance:** "Infinite" in v. 7 is a precise claim about scope. The atonement must be infinite because the problem (corruption, death, identity-transformation into devil-likeness) is permanent — "endless duration" — without it. A finite atonement could cover some but not all. The infinite atonement must cover every person in every time. Jacob's v. 21 ("every living creature, both men, women, and children, who belong to the family of Adam") is the application.
 
 ### "carnally" (v. 39: "to be carnally-minded is death")
-- 1828: "According to the flesh, to the world, or to human nature; in a manner to gratify animal appetites and lusts; sensually." Webster's own citation: "For to be carnally minded is death; but to be spiritually minded is life and peace. Rom. viii. 6."
-- **Study relevance:** Paul's exact phrase in Romans 8:6 is Webster's own example sentence. Jacob v. 39 is not original — it is a conscious echo of Paul. The 1828 confirms the construction was recognized as Pauline at the time of the translation. This is Jacob at the intersection of two scriptural traditions.
+- 1828: "In a carnal manner; according to the flesh; in a manner to gratify the flesh or sensual desire. Leviticus 18:20; Romans 8:6."
+- **Study relevance:** The 1828 entry cites Romans 8:6 directly — Paul's "to be carnally minded is death; but to be spiritually minded is life and peace." Jacob v. 39 is not original — it is a conscious echo of Paul. The 1828 confirms the construction was recognized as Pauline at the time of the translation. This is Jacob at the intersection of two scriptural traditions.
 
 ### "probation" (v. 27: "wasteth the days of his probation")
-- 1828 def. 2c: "Moral trial; the state of man in the present life, in which he has the opportunity of proving his character, and becoming qualified for a happier state."
+- 1828 def. 4: "Moral trial; the state of man in the present life, in which he has the opportunity of proving his character and being qualified for a happier state. Probation will end with the present life."
 - **Study relevance:** "Probation" is not penal — it is the testing period. The days of probation are the days given to prove character. To waste them is not simply to sin; it is to squander the testing period. v. 27's "awful is his state" describes someone who used up the proving time without proving anything.
 
 ---

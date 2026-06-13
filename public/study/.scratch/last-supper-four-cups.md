@@ -168,15 +168,14 @@
 
 ## Webster 1828
 
-### hyssop
-- **Webster 1828:** "A plant (Hyssopus officinalis). The leaves have an aromatic smell, and a warm, pungent taste."
-- **Modern dictionary (notable):** "A plant used for sprinkling of blood or water in purification rituals and at Passover."
-- **Study relevance:** Webster's 1828 entry is plain botany — but the modern entry explicitly ties hyssop to blood-sprinkling and Passover. Hyssop's scriptural role is the applicator of blood and the agent of purification (Ex 12:22; Lev 14; Ps 51:7 "purge me with hyssop"). When John alone names hyssop at the cross, he reaches for the Passover plant.
+### hyssop (genuine 1828, re-verified via webster MCP 2026-06-13)
+- **Webster 1828:** "A plant or genus of plants, one species of which is cultivated for use. The leaves have an aromatic smell, and a warm pungent taste. Hyssop was much used by the Jews in purification."
+- **Study relevance:** CORRECTION — the prior draft gave a 1913-style entry ("Hyssopus officinalis... plain botany") and claimed only a modern dictionary ties hyssop to purification. Not so: genuine Webster 1828 ITSELF closes the entry with "Hyssop was much used by the Jews in purification." The dictionary already carries the purification sense. Hyssop's scriptural role is the applicator of blood and the agent of purification (Ex 12:22; Lev 14; Ps 51:7 "purge me with hyssop"). When John alone names hyssop at the cross, he reaches for the Passover plant — and Webster's own 1828 line confirms the Jewish-purification association.
 
-### passover
-- **Webster 1828, sense 1:** "A feast of the Jews, instituted to commemorate the sparing of the Hebrews in Egypt, when God, smiting the firstborn of the Egyptians, passed over the houses of the Israelites which were marked with the blood of a lamb."
-- **Webster 1828, sense 2:** "The sacrifice offered at the feast of the passover; the paschal lamb. Ex. xii."
-- **Study relevance:** Webster's sense 2 — "passover" IS the lamb — is exactly Paul's usage in 1 Cor 5:7, "Christ our passover." The word names both the feast and the victim. Christ is the Passover in Webster's second sense.
+### passover (genuine 1828, re-verified via webster MCP 2026-06-13)
+- **Webster 1828, sense 1:** "A feast of the Jews, instituted to commemorate the providential escape of the Hebrews, in Egypt, when God smiting the first-born of the Egyptians, passed over the houses of the Israelites, which were marked with the blood of the paschal lamb."
+- **Webster 1828, sense 2:** "The sacrifice offered at the feast of the passover."
+- **Study relevance:** Webster's sense 2 — "passover" IS the sacrifice offered at the feast — is exactly Paul's usage in 1 Cor 5:7, "Christ our passover." The word names both the feast and the victim. Christ is the Passover in Webster's second sense. (CORRECTION: prior draft's "the sparing of the Hebrews... blood of a lamb" and the "; the paschal lamb. Ex. xii." tag on sense 2 were not genuine 1828 wording — sense 1 reads "providential escape... blood of the paschal lamb"; sense 2 ends at "the feast of the passover.")
 
 ---
 

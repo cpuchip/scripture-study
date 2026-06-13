@@ -117,11 +117,11 @@ OBSERVATION: This is the long-term verification of the Spirit's prediction in 1 
 
 ### Webster 1828 definitions (verified via mcp__webster__define)
 
-**CONSTRAINED** — "Marked by constraint; not free; not voluntary; embarrassed." The older sense of forced or compelled, without freedom. The word in 4:10 ("I was constrained by the Spirit") means Nephi was pressed/compelled — not necessarily that he wanted to, but that the spiritual pressure was present. Note: the text immediately shows his response was *not* compliance — he "shrunk." The constraint was the Spirit's urging, not an irresistible override.
+**CONSTRAINED** — "Urged irresistibly or powerfully; compelled; forced; restrained; confined; bound; imprisoned; necessitated." The older sense of forced or compelled, without freedom. The word in 4:10 ("I was constrained by the Spirit") means Nephi was pressed/compelled — not necessarily that he wanted to, but that the spiritual pressure was present. Note: the text immediately shows his response was *not* compliance — he "shrunk." The constraint was the Spirit's urging, not an irresistible override.
 
-**PERISH** — "To be destroyed; to pass away; to become nothing; to be lost; to die; hence, to wither; to waste away." The word covers both physical death and the withering/wasting sense. "Nation should dwindle and perish in unbelief" — the second perish is not about bodies but about the nation dying as a covenant people.
+**PERISH** — "To die; to lose life in any manner" (sense 1); "To die; to wither and decay; applied to plants" (sense 2); "To be destroyed; to come to nothing" (sense 5). The word covers both physical death and the withering/wasting sense. "Nation should dwindle and perish in unbelief" — the second perish is not about bodies but about the nation dying as a covenant people.
 
-**DWINDLE** — "To diminish; to become less; to shrink; to waste or consume away; to become degenerate; to fall away." The Swift citation: "religious societies, though begun with excellent intentions, are said to have dwindled into factious clubs." Covenant-erosion, not just population decline. The threat in 4:13 is specifically covenantal degeneration.
+**DWINDLE** — "To diminish; to become less; to shrink; to waste or consume away" (sense 1); "To degenerate; to sink; to fall away" (sense 2). The 1828 citation under sense 2: "Religious societies may dwindle into factious clubs." Covenant-erosion, not just population decline. The threat in 4:13 is specifically covenantal degeneration.
 
 ---
 

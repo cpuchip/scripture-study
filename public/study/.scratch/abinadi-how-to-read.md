@@ -212,22 +212,23 @@
 ## Webster 1828
 
 ### declare
-- **Definition 1:** "To make clear; to free from obscurity."
-- **Definition 2:** "To make known by language; to communicate or manifest explicitly and plainly in any way; to exhibit; to publish; to proclaim; to announce."
-- **Study relevance:** "Who shall DECLARE his generation?" (Mosiah 15:10 / Isaiah 53:8). In 1828 English, "declare" means to make clear, to free from obscurity. Abinadi is asking: who will make clear the meaning of his lineage/offspring? And then he answers his own question — he declares it. The act of interpretation IS declaration.
+- **Definition 1:** "To clear; to free from obscurity; to make plain."
+- **Definition 2:** "To make known; to tell explicitly; to manifest or communicate plainly to others by words." (Sense 4: "To publish; to proclaim.")
+- **Study relevance:** "Who shall DECLARE his generation?" (Mosiah 15:10 / Isaiah 53:8). In 1828 English, "declare" means to clear, to free from obscurity, to make plain. Abinadi is asking: who will make clear the meaning of his lineage/offspring? And then he answers his own question — he declares it. The act of interpretation IS declaration.
 
 ### generation
-- **Definition 3:** "That which is generated or brought forth; progeny; offspring."
-- **Definition 5:** "Race; generation; birth."
-- **Study relevance:** "Who shall declare his generation?" has a double meaning: (a) who shall explain his offspring/progeny, and (b) who shall declare his race/people. Abinadi's answer redefines "generation" from biological descent to covenantal belonging — His seed are those who hear and believe the prophets.
+- **Definition 5:** "Genealogy; a series of children or descendants from the same stock. This is the book of the generations of Adam. Genesis 5:1."
+- **Definition 6:** "A family; a race."
+- **Definition 7:** "Progeny; offspring."
+- **Study relevance:** "Who shall declare his generation?" has a double meaning: (a) who shall explain his offspring/progeny (sense 7), and (b) who shall declare his race/lineage (senses 5–6). Abinadi's answer redefines "generation" from biological descent to covenantal belonging — His seed are those who hear and believe the prophets.
 
 ### seed
-- **Definition 4:** "That from which anything springs; first principle; original; source; as, the seeds of virtue."
-- **Definition 6:** "Progeny; offspring; children; descendants."
-- **Study relevance:** Abinadi redefines "seed" from definition 6 (biological offspring) to something closer to definition 4 (that from which anything springs). Christ's seed aren't his biological children — they're anyone who springs from his Atonement, anyone in whom his teaching takes root and grows. The agricultural metaphor is built into the word.
+- **Definition 2:** "That from which any thing springs; first principle; original; as the seeds of virtue or vice."
+- **Definition 4:** "Progeny; offspring; children; descendants; as the seed of Abraham; the seed of David."
+- **Study relevance:** Abinadi redefines "seed" from sense 4 (biological offspring) to something closer to sense 2 (that from which any thing springs). Christ's seed aren't his biological children — they're anyone who springs from his Atonement, anyone in whom his teaching takes root and grows. The agricultural metaphor is built into the word.
 
 ### expound
-- **Definition 2:** "To lay open the meaning of; to explain; to clear of obscurity; to interpret."
+- **Definition 1:** "To explain; to lay open the meaning; to clear of obscurity; to interpret; as, to expound a text of scripture; to expound a law."
 - **Study relevance:** Luke 24:27 says Christ "expounded unto them in all the scriptures the things concerning himself." 3 Nephi 23:14 says Jesus "expounded all the scriptures in one." To expound = to clear of obscurity. This is exactly what Abinadi does with Isaiah 53 — he clears the obscurity by showing Christ in the text. Expounding is the hermeneutic act: making the hidden meaning plain.
 
 ---

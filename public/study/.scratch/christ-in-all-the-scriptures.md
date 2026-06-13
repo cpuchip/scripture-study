@@ -65,7 +65,7 @@ VIII. Becoming
 
 ## IV. The types and shadows (Agent 2, all verified) — and the prophecy/type distinction
 
-**Webster 1828 — type:** "A figure or representation of something to come; a token; a sign; a symbol; — correlative to antitype." With the gift-clause: **"A type is no longer a type when the thing typified comes to be actually exhibited."** (Explains why the law was fulfilled and ceased — 3 Ne 15:4.)
+**Webster 1828 — type:** sense 1 "The mark of something; an emblem; that which represents something else"; sense 2 **"A sign; a symbol; a figure of something to come; as, Abraham's sacrifice and the paschal lamb, were types of Christ. To this word is opposed antitype. Christ, in this case, is the antitype."** (1828 itself names Christ-types in the definition — directly supports the study. NOTE: the earlier quoted "A figure or representation of something to come... A type is no longer a type when the thing typified comes to be actually exhibited" was Webster *1913*, not 1828 — replaced. The type-ceases-at-fulfillment idea is still sound doctrine via 3 Ne 15:4, just not an 1828 quotation.)
 
 THE [EXPLICIT] TYPES (a scripture itself names each):
 1. **Passover lamb** — Ex 12:5,13,46 (without blemish; the blood; "neither shall ye break a bone thereof"). Named: **1 Cor 5:7** "Christ our passover is sacrificed for us"; unbroken bone fulfilled **John 19:36**; **John 1:29** "Behold the Lamb of God." Strongest physical-detail confirmation.

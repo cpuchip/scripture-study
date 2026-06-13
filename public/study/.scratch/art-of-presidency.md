@@ -100,30 +100,31 @@ When I raise my hand to sustain someone — or accept a calling myself — what 
 ## Webster 1828
 
 ### Preside
-- **Definition 1:** "To be set, or to sit, in the place of authority; to occupy the place of president, chairman, moderator, director, etc.; to direct, control, and regulate, as chief officer"
-- **Definition 2:** "To exercise superintendence; to watch over."
-- **Study relevance:** Definition 2 is the one that matters. Presiding = watching over. Abraham 4:18 IS presiding. A president who isn't watching — who isn't aware of what's happening in the stewardships they've assigned — isn't presiding in the Webster sense at all.
+- **Definition 2:** "To be set over for the exercise of authority; to direct, control and govern, as the chief officer."
+- **Definition 3:** "To exercise superintendence; to watch over as inspector."
+- **Study relevance:** Definition 3 is the one that matters. Presiding = watching over. Abraham 4:18 IS presiding. A president who isn't watching — who isn't aware of what's happening in the stewardships they've assigned — isn't presiding in the Webster sense at all.
 
 ### Consent
-- **Definition 1:** "To agree in opinion or sentiment; to be of the same mind; to accord; to concur."
-- **Definition 2:** "To indicate or express a willingness; to yield to guidance, persuasion, or necessity; to give assent or approval; to comply."
-- **Study relevance:** "Common consent" in D&C 26:2 carries both meanings — agreement of opinion AND expression of willingness. You're not just voting yes. You're saying: I concur with this decision, and I'm willing to support it. Both dimensions.
+- **Definition (noun) 1:** "Agreement of the mind to what is proposed or stated by another; accord; hence, a yielding of the mind or will to that which is proposed... We give consent, when we yield that which we have a right to withhold."
+- **Definition (verb) 1:** "Literally, to think with another. Hence, to agree or accord. More generally, to agree in mind and will; to yield to what one has the power, the right, or the disposition to withhold, or refuse to grant."
+- **Study relevance:** "Common consent" in D&C 26:2 carries both dimensions — agreement of mind ("to think with another") AND a yielding of the will (yielding "that which we have a right to withhold"). You're not just voting yes. You're saying: I concur with this decision, and I'm willing to support it.
 
 ### Consecrate
-- **Definition:** "Consecrated; devoted; dedicated; sacred."
-- **Study relevance:** Webster treats it as an adjective — the state of BEING dedicated. Consecration isn't an event but a condition. A calling isn't consecrated at the moment of setting apart — it remains consecrated through ongoing dedication.
+- **Definition (adjective):** "Sacred; consecrated; devoted; dedicated." (verb sense 1: "To make or declare to be sacred, by certain ceremonies or rites; to appropriate to sacred uses; to set apart, dedicate, or devote, to the service and worship of God.")
+- **Study relevance:** Webster carries it as both verb and adjective — the act of setting apart AND the state of BEING dedicated. Consecration isn't only an event but a condition. A calling isn't consecrated only at the moment of setting apart — it remains consecrated through ongoing dedication.
 
 ### Consecration
-- **Definition:** "The act or ceremony of consecrating; the state of being consecrated; dedication."
-- **Study relevance:** "The state of being consecrated." Not a one-time act. A state. You don't consecrate your time to a calling once and then coast. You remain in a state of consecration — or you don't.
+- **Definition 1:** "The act or ceremony of separating from a common to a sacred use, or of devoting and dedicating a person or thing to the service and worship of God, by certain rites or solemnities."
+- **Study relevance:** A devoting and dedicating to sacred use. You don't consecrate your time to a calling once and then coast. The dedication is ongoing — you remain in a state of consecration, or you don't.
 
 ### Sustain
-- **Definition 1:** "To keep from falling; to bear; to uphold; to support"
-- **Definition 2:** "Hence, to keep from sinking, as in despondence, or the like; to support."
-- **Definition 3:** "To maintain; to keep alive; to support; to subsist; to nourish"
-- **Definition 4:** "To aid, comfort, or relieve; to vindicate."
-- **Definition 8:** "To prove; to establish by evidence; to corroborate or confirm"
-- **Study relevance:** When we "sustain" a leader, Webster says we're doing ALL of these: keeping them from falling, keeping them from sinking in despondence, maintaining and nourishing them, aiding and comforting them, vindicating them. The sustaining vote is a commitment to physically and spiritually support the person. It's not a yes/no checkbox — it's a promise of active, ongoing support.
+- **Definition 1:** "To bear; to uphold; to support; as, a foundation sustains the superstructure."
+- **Definition 2:** "To hold; to keep from falling; as, a rope sustains a weight."
+- **Definition 3:** "To support; to keep from sinking in despondence."
+- **Definition 4:** "To maintain; to keep alive; to support; to subsist; as provisions to sustain a family or an army."
+- **Definition 5:** "To support in any condition by aid; to assist or relieve."
+- **Definition 9:** "To maintain as a sufficient ground" (the evidentiary sense: "the evidence is not sufficient to sustain the action").
+- **Study relevance:** When we "sustain" a leader, Webster says we're doing all of these: upholding them, keeping them from falling, keeping them from sinking in despondence, maintaining and subsisting them, assisting and relieving them. The sustaining vote is a commitment to physically and spiritually support the person. It's not a yes/no checkbox — it's a promise of active, ongoing support.
 
 ---
 

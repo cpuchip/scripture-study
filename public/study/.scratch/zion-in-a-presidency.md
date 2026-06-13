@@ -173,7 +173,7 @@
 
 **Observations:** Cook anchors modern Zion language in 4 Nephi specifically. Pairs righteousness AND unity — not unity alone. Notes the 200-year hinge parallel between 4 Nephi and the Restoration.
 
-### Uchtdorf, "Fit and Belonging," April 2025 — `[Uchtdorf (April 2025)](https://www.churchofjesuschrist.org/study/general-conference/2025/04/27uchtdorf?lang=eng)`
+### Uchtdorf, "By This All Will Know That You Are My Disciples," April 2025 — `[Uchtdorf (April 2025)](https://www.churchofjesuschrist.org/study/general-conference/2025/04/27uchtdorf?lang=eng)`
 
 > "The Lord invites us not just to *join* His kingdom but also to be anxiously engaged in *building* it. God envisions a people who are 'of one heart and one mind.' And to be of *one* heart, we must seek *pure* hearts, and that requires a *mighty change of heart*."
 

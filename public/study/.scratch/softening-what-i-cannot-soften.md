@@ -58,7 +58,7 @@ The Send Me interview also pulled the timestamps and quotes that anchor Todd's f
 
 **Ether 3:4** — "therefore touch these stones, O Lord, with thy finger, and prepare them that they may shine forth in darkness; and they shall shine forth unto us in the vessels which we have prepared, that we may have light while we shall cross the sea." [The human proposal of molten stones.]
 
-**Ether 3:6** — "And it came to pass that when the brother of Jared had said these words, behold, the Lord stretched forth his hand and touched the stones one by one with his finger. And the veil was taken from off the eyes of the brother of Jared; and he saw the finger of the Lord, and it was as the finger of a man, like unto flesh and blood..." [The Savior's physical touch.]
+**Ether 3:6** — "And it came to pass that when the brother of Jared had said these words, behold, the Lord stretched forth his hand and touched the stones one by one with his finger. And the veil was taken from off the eyes of the brother of Jared, and he saw the finger of the Lord; and it was as the finger of a man, like unto flesh and blood..." [The Savior's physical touch.]
 
 **Alma 12:10** — "And therefore, he that will harden his heart, the same receiveth the lesser portion of the word; and he that will not harden his heart, to him is given the greater portion of the word, until it is given unto him to know the mysteries of God until he know them in full." [Not-hardening is the locus of human agency.]
 
