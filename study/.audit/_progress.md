@@ -328,10 +328,10 @@ Already done out-of-band: `study/morm-8-three-glories-reading.md` (2026-06-09).
 - [x] 2026-06-02 `study/bom-walk/helaman/helaman-6.md` **LINKS** — CLEAN (reversal complete + Satan-theology; v30 "he is the author of all sin," v36 "the Lord began to pour out his Spirit upon the Lamanites, because of their easiness and willingness to believe in his words" EXACT)
 - [x] 2026-06-02 `study/bom-walk/helaman/helaman-7.md` **LINKS** — CLEAN (the tower lament; v9 "I am consigned that these are my days," v24 "they are more righteous than you, for they have not sinned against that great knowledge which ye have received" EXACT)
 - [x] 2026-06-02 `study/bom-walk/helaman/helaman-8.md` **LINKS** — CLEAN (all-the-prophets + the murdered judge; v15 "look upon the Son of God with faith, having a contrite spirit, might live," v27 "your judge is murdered, and he lieth in his blood; and he hath been murdered by his brother" EXACT)
-- [ ] 2026-06-02 `study/bom-walk/helaman/helaman-10.md` **LINKS**
-- [ ] 2026-06-02 `study/bom-walk/3-nephi/3-nephi-19.md` **LINKS**
-- [ ] 2026-06-02 `study/bom-walk/ether/ether-7.md` **LINKS**
-- [ ] 2026-06-02 `study/bom-walk/3-nephi/3-nephi-21.md` **LINKS**
+- [x] 2026-06-02 `study/bom-walk/helaman/helaman-10.md` **LINKS** — CLEAN (the sealing power; v5 "all things shall be done unto thee according to thy word, for thou shalt not ask that which is contrary to my will," v6 "Behold, thou art Nephi, and I am God" EXACT)
+- [x] 2026-06-02 `study/bom-walk/3-nephi/3-nephi-19.md` **LINKS** — CLEAN (the prayer to Jesus; v18 "they did pray unto Jesus, calling him their Lord and their God," v35 "So great faith have I never seen among all the Jews; wherefore I could not show unto them so great miracles, because of their unbelief" EXACT — is-Jesus-God datapoint)
+- [x] 2026-06-02 `study/bom-walk/ether/ether-7.md` **LINKS** — CLEAN (captivity cycle begins; v5 "took him captive, which brought to pass the saying of the brother of Jared that they would be brought into captivity," v25 "gave power unto the prophets that they should go whithersoever they would" EXACT)
+- [x] 2026-06-02 `study/bom-walk/3-nephi/3-nephi-21.md` **LINKS** — CLEAN (sign of the gathering; v1 "I give unto you a sign, that ye may know the time when these things shall be about to take place," v10 "he shall be marred because of them. Yet I will heal him… my wisdom is greater than the cunning of the devil" EXACT)
 - [ ] 2026-06-02 `study/bom-walk/ether/ether-8.md` **LINKS**
 - [ ] 2026-06-02 `study/bom-walk/ether/ether-9.md` **LINKS**
 - [ ] 2026-06-02 `study/bom-walk/ether/ether-10.md` **LINKS**

@@ -3442,6 +3442,28 @@ and the all-the-prophets defense. Verified blocks confirmed by direct grep.
   murdered, and he lieth in his blood; and he hath been murdered by his
   brother" — EXACT.
 
+### Hel 10 + 3 Ne 19/21 + Ether 7 (2026-06-13, 309→313) — ALL CLEAN
+
+A mixed cluster closing out Helaman and reaching into the 3 Nephi second-
+day prayers, the gathering sign, and the opening of the Jaredite captivity
+cycle. Verified blocks confirmed by direct grep.
+
+- **Hel 10** (the sealing power): v5 "all things shall be done unto thee
+  according to thy word, for thou shalt not ask that which is contrary to my
+  will," v6 "Behold, thou art Nephi, and I am God" — EXACT.
+- **3 Ne 19** (the prayer to Jesus — is-Jesus-God datapoint): v18 "they did
+  pray unto Jesus, calling him their Lord and their God," v35 "So great faith
+  have I never seen among all the Jews; wherefore I could not show unto them
+  so great miracles, because of their unbelief" — EXACT.
+- **3 Ne 21** (the sign of the gathering): v1 "I give unto you a sign, that ye
+  may know the time when these things shall be about to take place," v10 "he
+  shall be marred because of them. Yet I will heal him… my wisdom is greater
+  than the cunning of the devil" — EXACT.
+- **Ether 7** (captivity cycle begins): v5 "took him captive, which brought to
+  pass the saying of the brother of Jared that they would be brought into
+  captivity," v25 "gave power unto the prophets that they should go
+  whithersoever they would" — EXACT.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
