@@ -105,9 +105,12 @@ last_active: 2026-06-12T15:38:52
   8-verses (footnote markers inside the phrase hid one from grep).
   LIKEN held genuine (#148); discernment-eye CLEAN (#150).
   NEXT: #151 best-books-and-the-spirit-of-discernment.md FULL.
-- UPDATE 8: ★ 180/469 — Webster count still 110 (no NEW 1913 words
-  in files 151-180; POSSESS recurred as a PROPAGATION in the Send Me
-  yt eval, already counted). Model SWITCHED Fable 5 → Opus 4.8 at
+- UPDATE 8: ★ 180/469 — Webster count 119 (per the #171 tally; no
+  NEW 1913 words in files 172-180; POSSESS recurred as a PROPAGATION
+  in the Send Me yt eval, already counted). [Corrected from a stale
+  "110" — that was UPDATE 7's number; #151-171 grew it 110→119.]
+  Then #181 four-groups-and-the-engineer added EASINESS (#120) +
+  CIRCUMSPECTLY (#121) → count 121. Model SWITCHED Fable 5 → Opus 4.8 at
   ~#176 (Fable access lost; Michael: "keep up the same rigor").
   Commit trailer now Opus 4.8. ★ HEAVIEST FIND of the run: #176
   yt/V40tBshkMnE-send-me-covenants had TWO fabricated "Todd says"

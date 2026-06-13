@@ -2206,6 +2206,34 @@ hedged in-text ("reported," "claimed," "self-reported"); external
 links carried as reference only. No quoted scripture or canonical
 source to verify. Documented, not endorsed.
 
+### study/four-groups-and-the-engineer.md (2026-05-28) — TWO new 1913-as-1828 Webster words
+T1+FULL. Two Webster glosses were the 1913 edition's, requoted to
+genuine 1828 (combined note):
+  • ★ EASINESS (word #120) — study cited "1828, definition 3:
+    'freedom from emotion; compliance; disposition to yield without
+    opposition'" = 1913 def 3 verbatim. Genuine 1828 def 3 is
+    "Freedom from stiffness, constraint…"; the yield-without-
+    opposition sense is the 1828's def 2 ("a yielding or disposition
+    to yield without opposition or reluctance") — requoted there.
+  • ★ CIRCUMSPECTLY (word #121) — study cited "1828: cautiously,
+    warily"; "warily" is the 1913 word. Genuine 1828: "Cautiously;
+    with watchfulness every way; with attention to guard against
+    surprise or danger" — requoted.
+Everything else verbatim: Matt 6:22 (drops conditional connective
+"therefore" — standard rendering, left), 1 Ne 8:25/30, Hel 4:13/
+6:35/6:36 (leading "And thus we see"/"And" trims), 15:5 "walk
+circumspectly before God." ★ Counted claim EXACT: "in the space
+of not many years" appears in all FOUR cited verses (Hel 4:26,
+6:32, 7:6, 11:26). Talk work verified: Holland 2009 "Safety for
+the Soul" mist quote VERBATIM ("descends on *all* the travelers…");
+Bednar 2024 "In the Space of Not Many Years" genuinely cites 1 Ne
+8:28 (fn 20) in the pride→spiritual-blindness→"fall away into
+forbidden paths" passage, supporting the study's pride reading;
+the self-diagnostic (line 121) is explicitly LABELED paraphrase
+and tracks Bednar's actual sentence; his Helaman five-step (3:33
+"hearts of the people who professed…", 7:21 vain things, 12:2
+prosperity, 4:13 boasting, 6:35 Spirit withdraws) all check.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)

@@ -192,7 +192,7 @@ Already done out-of-band: `study/morm-8-three-glories-reading.md` (2026-06-09).
 - [x] 2026-05-26 `study/yt/Se91Pn3xxSs-you-have-3-years-left.md` **SAMPLE** — 5 Mostaque quotes genuine; one unmarked elision in the Stable Diffusion quote marked
 - [x] 2026-05-26 `study/daily-digest/ai-news-7am--2026-05-26-1300.md` **SAMPLE** — machine artifact, untouched
 - [x] 2026-05-27 `study/daily-digest/ai-news-7am--2026-05-27-1300.md` **SAMPLE** — machine artifact, untouched
-- [ ] 2026-05-28 `study/four-groups-and-the-engineer.md` **T1+FULL**
+- [x] 2026-05-28 `study/four-groups-and-the-engineer.md` **T1+FULL** — ★ EASINESS (#120) + CIRCUMSPECTLY (#121) 1913-as-1828 requoted; "space of not many years" 4× EXACT; Holland + Bednar verified
 - [ ] 2026-05-28 `study/the-seventh-time.md` **FULL**
 - [ ] 2026-05-29 `study/daily-digest/ai-news-7am--2026-05-29-1300.md` **SAMPLE**
 - [ ] 2026-06-01 `study/bom-walk/1-nephi/1-nephi-06.md` **LINKS**
