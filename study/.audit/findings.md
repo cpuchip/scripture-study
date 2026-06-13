@@ -1952,6 +1952,15 @@ verbatim (Moro 10:20/22, 7:47-48, Rom 5:3-5, John 14:6/9, 11:25,
 Heb 6:19/10:19-20, D&C 4:5, 88:40/67-68, 93:12-13/24/36, Ether
 12:28, 2 Ne 31:20, LoF 7); other internal-corpus quotes exact.
 
+### study/mysteries-of-god-text-vs-spirit.md (2026-05-09) — CLEAN
+FULL. The file's own revision-note fixes (D&C 121:36/41
+de-conflation, looking-beyond-the-mark re-attribution, D&C 88:67
+"And") all hold under re-verification. Scriptures verbatim (D&C
+84:19-22, 1 Ne 10:19, Alma 13:3/12, D&C 76:5/7, Moro 10:5, plus
+the shared-verified set); internal-corpus quotes exact
+(ten-virgins Bednar one-drop, gifts ×2, truth-enjoy
+spirit-and-life).
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)

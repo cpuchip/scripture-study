@@ -170,7 +170,7 @@ Already done out-of-band: `study/morm-8-three-glories-reading.md` (2026-06-09).
 - [x] 2026-05-04 `study/yt/matt-pocock-ai-workflow-research.md` **SAMPLE** — Dex Horthy propagation fixed; Bswen quote verified live; links resolve
 - [x] 2026-05-06 `study/second-coming-preparation.md` **FULL** — Oaks question de-flattened; 1 Ne 22:17 "we"→"the righteous"; ~35 talk quotes verbatim across 11 talks
 - [x] 2026-05-07 `study/two-triplets-one-ascent.md` **FULL** — despair-quote re-attributed; way-truth-life constructed quote fixed; scriptures verbatim
-- [ ] 2026-05-09 `study/mysteries-of-god-text-vs-spirit.md` **FULL**
+- [x] 2026-05-09 `study/mysteries-of-god-text-vs-spirit.md` **FULL** — CLEAN (own revision-note fixes hold; all quotes verbatim)
 - [ ] 2026-05-10 `study/iron-rod-anchor-and-the-four-groups.md` **FULL**
 - [ ] 2026-05-17 `study/last-supper-four-cups.md` **T2+FULL**
 - [ ] 2026-05-18 `study/what-abides.md` **T1+FULL**
