@@ -1905,6 +1905,16 @@ scripture renderings verbatim (Ps 34:18/51:16-17, 3 Ne 9:14-20/
 12:3, D&C 20:37/59:8/97:8, Moro 6:2, 2 Ne 2:7, Alma 34, Enos 1,
 Isa 57:15, Hel 8:15).
 
+### study/yt/matt-pocock-ai-workflow.md (2026-05-01) — 1 confabulated attribution; Dex Horthy; 1 micro-requote
+SAMPLE. "Pocock mentions 'faithful over a few things' in passing"
+— the phrase appears in NEITHER transcript (a scripture phrase put
+in his mouth); removed with note. "Dex Hardy (Human Layer)" is the
+caption's garble of Dex Horthy (HumanLayer) — corrected with the
+garble noted. "Code is not cheap" quote restored its "In fact,"
+join. Other quotes verified verbatim across both transcripts
+(eager-to-create-an-asset, rate-of-feedback, absolutely-essential,
+shared-design-concept ×3, Memento, day-shift).
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
