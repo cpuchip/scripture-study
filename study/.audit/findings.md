@@ -3650,6 +3650,28 @@ the latter-day reader. Verified by direct grep.
   revelations of the Lord… no longer worketh by revelation, or by prophecy,
   or by gifts" (cessationism woe), v8 "nor make game of the Jews" — EXACT.
 
+### 3 Ne 30 + 4 Ne 1 + 3 Ne 20 + Mormon 1 (2026-06-13, 345→349) — ALL CLEAN
+
+The 3 Nephi close + the rise/fall of Zion + the back-cursor 3 Ne 20 + the
+opening of the book of Mormon proper. Verified by direct grep.
+
+- **3 Ne 30** (the closing invitation): v2 "Turn, all ye Gentiles… and come
+  unto me, and be baptized in my name… that ye may be numbered with my
+  people who are of the house of Israel" — EXACT.
+- **4 Ne 1** (rise + fall of Zion): v16 "there could not be a happier people
+  among all the people who had been created by the hand of God," ★ v17
+  "neither were there Lamanites, nor any manner of -ites; but they were in
+  one, the children of Christ" (the strongest 2 Ne 5:21 datapoint — the
+  -ites dissolve under conversion, return under apostasy), v24 "wearing of
+  costly apparel" — all EXACT.
+- **3 Ne 20** (miraculous sacrament + Isaiah 52): v8 "his soul shall never
+  hunger nor thirst, but shall be filled," v23 "I am he of whom Moses spake,"
+  v35 "the Father and I are one" (is-Jesus-God) — EXACT.
+- **Mormon 1** (young Mormon): v2 "I perceive that thou art a sober child, and
+  art quick to observe," v14 "there were no gifts from the Lord… because of
+  their wickedness and unbelief," v16 "my mouth was shut, and I was
+  forbidden" — all EXACT.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)

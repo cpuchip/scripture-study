@@ -364,10 +364,10 @@ Already done out-of-band: `study/morm-8-three-glories-reading.md` (2026-06-09).
 - [x] 2026-06-02 `study/bom-walk/3-nephi/3-nephi-27.md` **LINKS** — CLEAN (the name + the gospel defined; v8 "if it be called in my name then it is my church, if it so be that they are built upon my gospel," v21 "this is my gospel," v27 "what manner of men ought ye to be? Verily I say unto you, even as I am" all EXACT)
 - [x] 2026-06-02 `study/bom-walk/3-nephi/3-nephi-28.md` **LINKS** — CLEAN (the three Nephites + translation; v10 "ye shall be even as I am, and I am even as the Father; and the Father and I are one" EXACT — is-Jesus-God chain, v37 "since I wrote, I have inquired of the Lord" EXACT)
 - [x] 2026-06-02 `study/bom-walk/3-nephi/3-nephi-29.md` **LINKS** — CLEAN (the record is the sign; v6 "wo unto him that shall deny the revelations of the Lord… no longer worketh by revelation, or by prophecy, or by gifts," v8 "nor make game of the Jews" EXACT)
-- [ ] 2026-06-02 `study/bom-walk/3-nephi/3-nephi-30.md` **LINKS**
-- [ ] 2026-06-02 `study/bom-walk/4-nephi/4-nephi-1.md` **LINKS**
-- [ ] 2026-06-02 `study/bom-walk/3-nephi/3-nephi-20.md` **LINKS**
-- [ ] 2026-06-02 `study/bom-walk/mormon/mormon-1.md` **LINKS**
+- [x] 2026-06-02 `study/bom-walk/3-nephi/3-nephi-30.md` **LINKS** — CLEAN (the closing invitation; v2 "Turn, all ye Gentiles… and come unto me, and be baptized in my name… that ye may be numbered with my people who are of the house of Israel" EXACT; 3 Nephi book-complete note in file)
+- [x] 2026-06-02 `study/bom-walk/4-nephi/4-nephi-1.md` **LINKS** — CLEAN (rise + fall of Zion; v16 "there could not be a happier people among all the people who had been created by the hand of God," ★ v17 "neither were there Lamanites, nor any manner of -ites; but they were in one, the children of Christ" — strongest 2 Ne 5:21 datapoint, v24 "wearing of costly apparel" all EXACT)
+- [x] 2026-06-02 `study/bom-walk/3-nephi/3-nephi-20.md` **LINKS** — CLEAN (miraculous sacrament + Isaiah 52; v8 "his soul shall never hunger nor thirst, but shall be filled," v23 "I am he of whom Moses spake," v35 "the Father and I are one" — is-Jesus-God all EXACT)
+- [x] 2026-06-02 `study/bom-walk/mormon/mormon-1.md` **LINKS** — CLEAN (young Mormon; v2 "I perceive that thou art a sober child, and art quick to observe," v14 "there were no gifts from the Lord… because of their wickedness and unbelief," v16 "my mouth was shut, and I was forbidden" all EXACT)
 - [ ] 2026-06-02 `study/bom-walk/mormon/mormon-3.md` **LINKS**
 - [ ] 2026-06-02 `study/bom-walk/mormon/mormon-4.md` **LINKS**
 - [ ] 2026-06-02 `study/bom-walk/mormon/mormon-5.md` **LINKS**
