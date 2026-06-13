@@ -2597,6 +2597,20 @@ Illinois" — the "two X" geometry is real, and the file correctly
 carries Michael's 2033→2034 correction (the 2033 Alaska eclipse is
 the red herring). CLEAN.
 
+### study/freedom/provenance/08-destruction-and-sorting.md (2026-05-31) — CLEAN
+SAMPLE. Destruction + two-houses + countdown research log. All
+scripture verbatim: 3 Ne 8-9 destruction details + 9:9 Jacobugath +
+9:13 "all ye that are spared because ye were more righteous…that I
+may heal you" + 9:20 broken heart; the sorting witnesses — D&C
+86:6-7 (wheat/tares), Matt 13:30, Matt 25:32-33 (sheep/goats),
+Mal 4:1-2 (the "healing" word-link to 3 Ne 9:13, both verified);
+3 Ne 6:18 cutoff; the countdown — Hel 14:2 "five years more
+cometh" (the confirmed correction) + 14:3 the sign defined +
+3 Ne 1:15 fulfilled "at the going down of the sun there was no
+darkness." The discipline holds — it explicitly flags that the
+"five years" was a *specifically revealed* interval and applying a
+fixed countdown to our day = date-setting (cross-refs 07 §4). CLEAN.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
