@@ -12,7 +12,7 @@
 
 Matt Pocock is a TypeScript teacher who has spent the last six months building a systematic workflow for AI-assisted coding. His thesis is straightforward: AI doesn't replace software engineering fundamentals — it amplifies them. The people who will thrive are the ones who know what good code looks like and can make the AI produce it.
 
-He rejects the "specs-to-code" movement outright. He tried it. The code got worse each iteration. "Code is not cheap. Bad code is the most expensive it's ever been." This is the same conviction that undergirds our guide's emphasis on specification engineering and stewardship — but Pocock arrives at it through John Ousterhout and The Pragmatic Programmer rather than Abraham 4.
+He rejects the "specs-to-code" movement outright. He tried it. The code got worse each iteration. "Code is not cheap. In fact, bad code is the most expensive it's ever been." This is the same conviction that undergirds our guide's emphasis on specification engineering and stewardship — but Pocock arrives at it through John Ousterhout and The Pragmatic Programmer rather than Abraham 4.
 
 His workflow has six stages:
 
@@ -30,7 +30,7 @@ His workflow has six stages:
 
 Two concepts from the workshop deserve special attention:
 
-**The Smart Zone.** From Dex Hardy (Human Layer): LLMs have a smart zone (~100K tokens, regardless of total context window) and a dumb zone beyond it. Pocock sizes every task to fit in the smart zone. He monitors token count obsessively. He prefers clearing context entirely — the "Memento" approach — over compacting, because compaction produces a degraded, always-the-same summarized state.
+**The Smart Zone.** From Dex Horthy (HumanLayer; the video's captions garble it as "Dex Hardy"): LLMs have a smart zone (~100K tokens, regardless of total context window) and a dumb zone beyond it. Pocock sizes every task to fit in the smart zone. He monitors token count obsessively. He prefers clearing context entirely — the "Memento" approach — over compacting, because compaction produces a degraded, always-the-same summarized state.
 
 **Deep Modules.** From John Ousterhout: modules with simple interfaces hiding complex implementations. AI naturally produces shallow modules (many tiny files with complex interdependencies), which makes the codebase harder for the AI itself to navigate. Deep modules are easier to test, easier to reason about, and allow the human to "design the interface, delegate the implementation" — preserving sanity while moving fast.
 
@@ -131,7 +131,7 @@ Pocock's workflow is unilateral: human plans, AI executes. There's no concept of
 
 ### 2. No Progressive Trust / Stewardship Levels
 
-Pocock mentions "faithful over a few things" in passing but doesn't structure agent autonomy dynamically. His Sandcastle uses static role assignments. Our stewardship levels (task → feature → domain → architecture) with earned trust is richer and more resilient. An agent that proves reliable with small tasks earns larger scope. One that breaks trust gets narrowed.
+Pocock doesn't structure agent autonomy dynamically. *(Corrected 2026-06-12 — an earlier version said he mentions "faithful over a few things" in passing; the phrase appears nowhere in either transcript.)* His Sandcastle uses static role assignments. Our stewardship levels (task → feature → domain → architecture) with earned trust is richer and more resilient. An agent that proves reliable with small tasks earns larger scope. One that breaks trust gets narrowed.
 
 ### 3. No Intent Engineering at Scale
 
