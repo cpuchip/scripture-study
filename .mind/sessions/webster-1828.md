@@ -383,6 +383,24 @@ last_active: 2026-06-13T12:25:57
   (judgment-laden: bracket/ellipsis/leave — surfaced, NOT auto-fixed). Memory:
   `project_quoter_tool` (folded). NEXT: link-validate / citation-depth-2, then MCP
   wrappers (council nod). Study-tooling now has BOTH halves: constructor + detector.
+- UPDATE 21: ★ **link-validate SHIPPED + the 35-triage DONE** (`05bbc3df`).
+  **link-validate** (`scripts/study-lint/link_validate.py`, reuses resolver): BROKEN/
+  DIR/MISMATCH. Corpus: **0 MISMATCH** (walk's label/path work HELD) — the 376 broken
+  are wrong-DEPTH gospel-library links in scratch/nested files (objective, low-stakes,
+  gospel-library not deployed → deferred, Michael's call). **The 35** (Michael: "no
+  capacity to review all; fix the easily-discernible without changing meaning/flow,
+  defer the rest"): FIXED 2 crystal-clear mid-elisions in-place (2 Cor 11:3 "through
+  his subtilty", D&C 88:40 four clauses → `…`); built an **ignore list**
+  (`accepted.tsv` + load_accepted/is_accepted) + **carry-forward record**
+  (`study/.audit/scripture-verbatim-carryforward.md`, 30 items w/ quote+verse) →
+  canonical run (excl .audit/.scratch) **CLEAN, 471 files / 0 flags / exit 0**. 3
+  residual in .scratch (out of scope). **The 30 = acceptable trims/prepends/
+  paraphrases, clear via the quoter in a future pass.** ★ **Session journal written:
+  `.spec/journal/2026-06-13-study-tooling-suite.md`** (the full constructor+detector
+  arc + the precision-journey lesson: contiguity-not-coverage). active.md study-
+  tooling line added. **The study-tooling arc is COMPLETE for this session** — both
+  halves shipped, loop proven; remainder is carry-forward (MCP wrappers need a council
+  nod). Memory: `feedback_build_the_oracle_first`, `project_quoter_tool`.
 - ✅ OCR repair SHIPPED + live-verified (1336c8ce); walk plan RATIFIED
   (.spec/proposals/study-correctness-walk.md)
 
