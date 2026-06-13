@@ -2338,6 +2338,22 @@ SAMPLE + LINKS ×2.
     bom-walkthrough.md` — verified it RESOLVES (file exists). No
     quotes. CLEAN.
 
+### study/bom-walk/_graph.md (2026-06-01) — CLEAN (derivative index)
+T1. 693KB / 3,165-line knowledge-graph index (node ids + edge
+lines + short parenthetical labels), grown one chapter at a time
+from the per-chapter notes. NO markdown links. The ~1,100
+double-quote chars are short scripture-fragment LABELS (e.g.
+"Awake, awake," "unto us a child is born," "to the law and to the
+testimony," "the Lord alone exalted") and the walk's own "VERIFIED"
+Isaiah-variant tags, not prose blockquotes. Spot-checked a
+representative sample against source: the 2 Ne 16:9 variant claim
+("BoM 'they understood not' vs KJV 'understand not'") is CORRECT;
+Isa 9:6 "unto us a child is born" and Isa 2:11 "the Lord alone
+[shall be] exalted" labels accurate. The index is derivative — its
+fragments are verified against their source chapters as the walk
+reaches each chapter note; nothing here is an independent quote
+claim. CLEAN.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
