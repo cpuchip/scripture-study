@@ -10,8 +10,9 @@ Rules are added one at a time, each precision-tuned against the real corpus.
 | rule | catches | status |
 |------|---------|--------|
 | `scripture_verbatim.py` | quoted text next to a scripture link that isn't verbatim in the verse | ✅ built 2026-06-13 |
+| `link_validate.py` | broken / mis-pathed / directory links; scripture label↔path mismatch | ✅ built 2026-06-13 |
 | (verify-quotes) | Webster 1913-as-1828 — lives at `scripts/verify-quotes/` | ✅ shipped |
-| link-validate, citation-depth-2, counted-claim, … | roadmap | — |
+| citation-depth-2, counted-claim, … | roadmap | — |
 
 Same posture as verify-quotes: **run it manually; not a pre-commit hook yet** —
 promote once it keeps earning weight. Exit 0 clean, 1 on any flag.
@@ -60,3 +61,25 @@ link-validate's job); multi-deviation paraphrases (often acceptable shorthand
 anyway). The exact-match `grammar.verify`, the human walk, and the quoter
 (prevention at write time) cover the rest. The two thresholds are single tunable
 lines at the top of the file.
+
+### Accepted-flags ignore list
+
+Flags reviewed and deliberately accepted (an unmarked trim that's fine as prose, a
+deferred carry-forward) go in `scripts/study-lint/accepted.tsv` so they stop
+surfacing. One per line: `relpath <TAB> ref-label <TAB> first ~40 chars of the
+quote`. `#` comments allowed. The carry-forward doc that records *why* lives at
+`study/.audit/scripture-verbatim-carryforward.md`.
+
+## link-validate
+
+```sh
+find study -name '*.md' | grep -vE '.audit|.scratch' | xargs python scripts/study-lint/link_validate.py
+```
+
+Validates every relative `.md` link: `BROKEN` (target missing), `DIR` (points at a
+directory, not a file), `MISMATCH` (a scripture link whose label resolves to a
+different file than the path — the dc/76-labeled-"D&C 109" class). Reuses the
+quoter's `resolver` for the label→file map. Objective — a path is right or wrong —
+so findings are safe to just fix. Note: scratch and deeply-nested working files
+often carry wrong-*depth* gospel-library links copied from a shallower parent;
+exclude `.scratch` for a routine run.

@@ -31,6 +31,27 @@ from difflib import SequenceMatcher
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "quoter"))
 import resolver, sources, grammar
 
+ACCEPTED = os.path.join(os.path.dirname(os.path.abspath(__file__)), "accepted.tsv")
+
+def load_accepted(path=ACCEPTED):
+    """Reviewed-and-accepted flags (an unmarked trim that's fine, or a deferred
+    carry-forward) so they stop surfacing. TSV: relpath <TAB> ref <TAB> quote-prefix.
+    The *why* is recorded in study/.audit/scripture-verbatim-carryforward.md."""
+    acc = []
+    if os.path.exists(path):
+        for line in open(path, encoding="utf-8"):
+            if not line.strip() or line.lstrip().startswith("#"):
+                continue
+            parts = line.rstrip("\n").split("\t")
+            if len(parts) >= 3:
+                acc.append((parts[0].replace("\\", "/").strip(), parts[1].strip(), parts[2].strip()))
+    return acc
+
+def is_accepted(relpath, ref, quote, acc):
+    rp = relpath.replace("\\", "/")
+    return any(a_path == rp and a_ref == ref and quote.startswith(a_pre)
+               for a_path, a_ref, a_pre in acc)
+
 LINK = re.compile(r'\[([^\]]+)\]\(([^)]+?\.md)\)')
 QUOTE = re.compile(r'"([^"]{4,}?)"|“([^”]{4,}?)”')
 WINDOW = 320          # max chars between a quote's end and its link
@@ -116,7 +137,7 @@ def events(text):
     ev.sort()
     return ev
 
-def check_file(path):
+def check_file(path, accepted=()):
     text = open(path, encoding="utf-8").read()
     results = []      # (level, ref_label, msg)
     n_ok = 0
@@ -145,7 +166,7 @@ def check_file(path):
             n_ok += 1
             continue
         cov, blocks, ntok = scores(quote, verse)
-        if is_near_miss(cov, blocks, ntok):
+        if is_near_miss(cov, blocks, ntok) and not is_accepted(path, p["label"], quote, accepted):
             anc = blocks[0] / ntok
             results.append(("FLAG", p["label"],
                             f'near-verbatim (anchor {anc:.2f}, cov {cov:.2f}) — '
@@ -160,10 +181,11 @@ def main(argv):
     if not files:
         print("usage: scripture_verbatim.py <file.md> ...", file=sys.stderr)
         return 2
+    accepted = load_accepted()
     bad = 0
     for path in files:
         try:
-            n_ok, results = check_file(path)
+            n_ok, results = check_file(path, accepted)
         except Exception as e:
             print(f"{path}: ERROR {e}", file=sys.stderr)
             continue
