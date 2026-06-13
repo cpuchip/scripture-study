@@ -1961,6 +1961,21 @@ the shared-verified set); internal-corpus quotes exact
 (ten-virgins Bednar one-drop, gifts ×2, truth-enjoy
 spirit-and-life).
 
+### study/iron-rod-anchor-and-the-four-groups.md (2026-05-10) — one micro-requote across a three-part epic
+FULL. 1 Ne 15:27 was lightly rephrased in quotes ("so much was
+his mind swallowed up…" restored). EVERYTHING else verbatim across
+~60 quotes: 1 Ne 8/11/15, Hel 3:29-30 + 5:12, Heb 4:12/6:4-20/
+10:19-20, Jer 2:13, John 1/4/6/7/14, Moro 7/8:26, Ether 12:4/28/
+32, Rev 1:14, 3 Ne 19:25, Alma 32:42, 2 Ne 31:20; FOUR footnote
+claims verified EXACT (1 Ne 8:23a→Matt 13:19; 1 Ne 11:25e→Gen
+2:9; Moro 8:26d→1 Ne 11:22; Holland-2022 fn-13→1 Ne 8:24,30); JST
+Heb 6:1 ✓. Talks all exact: Maxwell 1994 ×3, Eyring 2022, Faust
+1999 ×3, Uchtdorf 2008 ×3 + 2009 ×2, Holland 2009 ×3 + 2022,
+Benson 1986 ×4, Bednar 2022 ×2, Pearson 2015 (the "every day,
+every day, every day" twice-in-one-talk claim EXACT;
+#spaciousbuilding real), Corbridge 2008 ×2, Hamilton 2013
+(Bednar-2007 "consistently read and studied and searched" exact).
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
