@@ -316,10 +316,10 @@ Already done out-of-band: `study/morm-8-three-glories-reading.md` (2026-06-09).
 - [x] 2026-06-02 `study/bom-walk/alma/alma-56.md` **LINKS** — CLEAN (the famous chapter; v47 "they had been taught by their mothers, that if they did not doubt, God would deliver them," v48 "We do not doubt our mothers knew it," v56 "there had not one soul of them fallen to the earth… never were men known to have fought with such miraculous strength" all EXACT)
 - [x] 2026-06-02 `study/bom-walk/alma/alma-57.md` **LINKS** — CLEAN (exactness + faith-through-wounds; v21 "perform every word of command with exactness; yea, and even according to their faith it was done unto them," v25 "not one soul of them who did perish… neither was there one soul among them who had not received many wounds" EXACT)
 - [x] 2026-06-02 `study/bom-walk/alma/alma-58.md` **LINKS** — CLEAN (peace before deliverance; v11 "he did speak peace to our souls, and did grant unto us great faith," v37 "it mattereth not—we trust God will deliver us" EXACT — the Helaman-vs-Moroni refuse-to-murmur setup)
-- [ ] 2026-06-02 `study/bom-walk/alma/alma-59.md` **LINKS**
-- [ ] 2026-06-02 `study/bom-walk/alma/alma-60.md` **LINKS**
-- [ ] 2026-06-02 `study/bom-walk/alma/alma-62.md` **LINKS**
-- [ ] 2026-06-02 `study/bom-walk/alma/alma-63.md` **LINKS**
+- [x] 2026-06-02 `study/bom-walk/alma/alma-59.md` **LINKS** — CLEAN (even Moroni doubts; v11 "began to doubt, because of the wickedness of the people," v13 "Moroni was angry with the government, because of their indifference concerning the freedom of their country" EXACT)
+- [x] 2026-06-02 `study/bom-walk/alma/alma-60.md` **LINKS** — CLEAN (the furious letter; v13 "the Lord suffereth the righteous to be slain… they do enter into the rest of the Lord their God," v23 "the inward vessel shall be cleansed first," v36 "I seek not for power, but to pull it down… for the glory of my God, and the freedom and welfare of my country" all EXACT)
+- [x] 2026-06-02 `study/bom-walk/alma/alma-62.md` **LINKS** — CLEAN (war's end; v41 "many had become hardened… and many were softened because of their afflictions" — same affliction, opposite results, v49 "they were not lifted up in the pride of their eyes; neither were they slow to remember the Lord" EXACT)
+- [x] 2026-06-02 `study/bom-walk/alma/alma-63.md` **LINKS** — CLEAN (book of Alma closes; v8 Hagoth's lost ships "whither she did go we know not," v17 "thus ended the account of Alma, and Helaman his son, and also Shiblon, who was his son" EXACT)
 - [ ] 2026-06-02 `study/bom-walk/helaman/helaman-1.md` **LINKS**
 - [ ] 2026-06-02 `study/bom-walk/helaman/helaman-2.md` **LINKS**
 - [ ] 2026-06-02 `study/bom-walk/helaman/helaman-3.md` **LINKS**

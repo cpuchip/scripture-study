@@ -3382,6 +3382,29 @@ source. No corrections.
   but it mattereth not; I am not angry, but do rejoice in the greatness of
   your heart" — EXACT (one of the most Christlike sentences in scripture).
 
+### Alma close — 59, 60, 62, 63 (2026-06-13, 297→301) — ALL CLEAN
+
+The Moroni-doubts / Moroni-accuses-Pahoran arc and the war's resolution,
+closing the book of Alma. Verified blocks confirmed by direct grep,
+including the doctrinal heavyweights.
+
+- **Alma 59** (even Moroni doubts): v11 "began to doubt, because of the
+  wickedness of the people," v13 "Moroni was angry with the government,
+  because of their indifference concerning the freedom of their country" —
+  EXACT.
+- **Alma 60** (the furious letter — right doctrine, wrong judgment): v13
+  "the Lord suffereth the righteous to be slain… they do enter into the rest
+  of the Lord their God," v23 "the inward vessel shall be cleansed first,"
+  v36 "I seek not for power, but to pull it down… for the glory of my God,
+  and the freedom and welfare of my country" — all EXACT.
+- **Alma 62** (war's end — the same affliction): v41 "many had become
+  hardened… and many were softened because of their afflictions," v49 "they
+  were not lifted up in the pride of their eyes; neither were they slow to
+  remember the Lord their God" — EXACT.
+- **Alma 63** (the book of Alma closes): v8 Hagoth's lost ships "whither she
+  did go we know not," v17 "thus ended the account of Alma, and Helaman his
+  son, and also Shiblon, who was his son" — EXACT.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
