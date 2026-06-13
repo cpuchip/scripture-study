@@ -10,7 +10,7 @@
 
 **Binding question:** This video argues organizational intelligence unlocks AI capabilities. How does this compare with Squad's architecture and our 11-step creation cycle — and does Nate's "smooth frontier" thesis hold up?
 
-**Context:** Watched as a "YouTube Review Gate" before implementing Phase 2+ of the [Squad adoption proposal](../../.spec/proposals/squad-learnings.md). The Squad investigation ([scratch analysis](../../.spec/scratch/squad-analysis/main.md)) identified convergent patterns across industry. This video provides a third data point — someone outside the builder community naming the same patterns from a strategy perspective.
+**Context:** Watched as a "YouTube Review Gate" before implementing Phase 2+ of the [Squad adoption proposal](../../.spec/proposals/archive/squad-learnings.md). The Squad investigation ([scratch analysis](../../.spec/scratch/squad-analysis/main.md)) identified convergent patterns across industry. This video provides a third data point — someone outside the builder community naming the same patterns from a strategy perspective.
 
 ---
 
@@ -217,7 +217,7 @@ This video was watched as a gate before building more infrastructure. What did i
 > "We have not been talking about the curve that allows us to actually use this tool."
 > — [Nate, 5:24](https://www.youtube.com/watch?v=LO0Ws-l6brg&t=324)
 
-> "Many of the improvements they made came from removing complexity rather than adding to it."
+> "Many of the improvements they made came from removing complexity in the agentic system rather than adding to it."
 > — [Nate, 11:58](https://www.youtube.com/watch?v=LO0Ws-l6brg&t=718)
 
 > "These are not AI specific insights. They're management insights that generalize to autonomous agents as naturally as they generalize to human teams."
@@ -229,7 +229,7 @@ This video was watched as a gate before building more infrastructure. What did i
 > "If you are a team of one and you can manage this kind of multi-agent system, you can be a team of a hundred and you're just you."
 > — [Nate, 18:29](https://www.youtube.com/watch?v=LO0Ws-l6brg&t=1109)
 
-> "The skill that survives this transition isn't 'I can do the work.' It's 'I can sniff check.'"
+> "The skill that survives this transition isn't 'I can do the work,' right? No, it's 'I can sniff check.'"
 > — [Nate, 22:07](https://www.youtube.com/watch?v=LO0Ws-l6brg&t=1327)
 
 ---

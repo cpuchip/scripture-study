@@ -1606,6 +1606,16 @@ chief-pilot all in the talk. Scriptures verbatim (D&C 46:11-12,
 Moro 10:8, Alma 32:38-41, D&C 50:24/84:38/60:2, Alma 37:6, Matt
 25:15/25/26).
 
+### study/yt/LO0Ws-l6brg-4-ai-labs-same-system.md (2026-03-19) — 1 stale link; 2 micro-requotes
+SAMPLE. Squad proposal moved to .spec/proposals/archive/ — link
+fixed. The Key-Timestamps duplicate of the removing-complexity
+quote dropped "in the agentic system" (the In-Line rendering had
+it) — aligned. The sniff-check quote dropped "right? No," —
+restored per transcript. Seven other Nate quotes sampled verbatim
+(jagged-frontier, management-insights, restart-cleanly, serial-
+cognition, team-of-a-hundred); timestamps run ~10s ahead of
+caption marks but link into the right passages.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
