@@ -3464,6 +3464,28 @@ cycle. Verified blocks confirmed by direct grep.
   captivity," v25 "gave power unto the prophets that they should go
   whithersoever they would" — EXACT.
 
+### Ether 8-11 cluster (2026-06-13, 313→317) — ALL CLEAN
+
+The Jaredite decline: secret combinations from Cain + Moroni's direct
+warning to the latter-day Gentiles, the combination devouring its own, the
+roll of kings, and the prophets withdrawn. Verified blocks confirmed by
+direct grep.
+
+- **Ether 8** (secret combinations + the warning to all lands): v19 "the Lord
+  worketh not in secret combinations, neither doth he will that man should
+  shed blood," v24 "awake to a sense of your awful situation," v25 "whoso
+  buildeth it up seeketh to overthrow the freedom of all lands, nations, and
+  countries" — all EXACT.
+- **Ether 9** (the combination devours its own): v19 "elephants and cureloms
+  and cumoms," v22 Emer "saw the Son of Righteousness… and he died in peace"
+  — EXACT (another Jaredite who beheld the premortal Christ).
+- **Ether 10** (the roll of kings): v7 Riplakish "his fine gold he did cause
+  to be refined in prison," v34 "Com did fight against them much;
+  nevertheless, he did not prevail against them" — EXACT.
+- **Ether 11** (the prophets withdrawn): v13 "the prophets mourned and
+  withdrew from among the people," v22 "they did reject all the words of the
+  prophets, because of their secret society and wicked abominations" — EXACT.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
