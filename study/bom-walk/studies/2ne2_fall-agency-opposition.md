@@ -81,7 +81,20 @@ This is why verse 26 is the culmination, not verse 25. After "Adam fell that men
 
 The freedom granted by the Atonement is not a return to Eden. It is something Eden could not have produced. Adam and Eve in the garden acted, but they acted in innocence — without the full moral weight of choice, without knowing what they were not choosing. The post-Atonement freedom in verse 26 is the freedom of beings who *know good from evil*, who are therefore capable of real choice, and who have been redeemed from the death-sentence that would have foreclosed all choosing. This is a harder freedom, a more costly freedom. By the logic of the chapter, it is also the only freedom that can produce the joy verse 25 promises.
 
-Webster 1828 on *mediator*: "One who mediates; especially, one who interposes between parties at variance for the purpose of reconciling them; hence, an intercessor." Lehi uses the word *Mediator* in the chapter's closing verses (vv. 27–28). Not *Redeemer* or *Savior*, but the one who stands between parties at variance. The parties at variance are fallen humanity and the law that condemns them. The Mediator does not abolish the law; he satisfies it, and in satisfying it, opens the door.
+Webster 1828 on *mediator* — definition 1: "One that interposes between parties at variance for the purpose of reconciling them." And definition 2 reaches the exact thing Lehi means: "By way of eminence, Christ is the mediator, the divine intercessor through whom sinners may be reconciled to an offended God... Christ is a mediator by nature, as partaking of both natures divine and human; and mediator by office, as transacting matters between God and man." Lehi uses the word *Mediator* in the chapter's closing verses (vv. 27–28). Not *Redeemer* or *Savior*, but the one who stands between parties at variance. The parties at variance are fallen humanity and the law that condemns them. The Mediator does not abolish the law; he satisfies it, and in satisfying it, opens the door. Webster's "by nature... by office" is the same two-natures logic — the Mediator can transact between God and man precisely because he is both.
+
+> *Correction (2026-06-13, study-correctness walk):* the *mediator*
+> definition originally read "One who mediates; especially, one who
+> interposes between parties at variance for the purpose of reconciling
+> them; hence, an intercessor." That "One who mediates; especially…;
+> hence…" phrasing is Webster's **1913**, not the genuine 1828.
+> Requoted against the repaired 1828 (`webster_define`). The genuine
+> entry is *richer* for the argument — its second definition names
+> Christ as the mediator outright ("the divine intercessor through whom
+> sinners may be reconciled to an offended God… mediator by nature…
+> and mediator by office"). The point is unchanged and deepened.
+> (The *transgression* definition in §V — "passing over or beyond any
+> law" — was checked and IS genuine 1828; it stands.)
 
 ---
 

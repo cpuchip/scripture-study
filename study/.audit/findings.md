@@ -3105,6 +3105,32 @@ LINKS ×3. No markdown links.
   flesh," v35 "God will give liberally to him that asketh" (James 1:5)
   — all EXACT. Both CLEAN.
 
+### #278 `2ne2_fall-agency-opposition` (T1) — REQUOTE (Webster #131)
+- A doctrinally dense spin-off (the Fall / agency / opposition), and
+  every scripture in it is verbatim-accurate: the nine 2 Ne 2 block
+  quotes — v10 (ends on the em-dash, as the study notes), v11 + v13
+  (the full opposition / "if no law" chains), v16, v22-23, ★ v25
+  "Adam fell that men might be; and men are, that they might have joy,"
+  v26-27 (redeemed "to act for themselves and not to be acted upon" /
+  "the great Mediator of all men… he seeketh that all men might be
+  miserable like unto himself") — plus D&C 93:30, D&C 29:39-40, Moses
+  5:10-11, Moses 4:28, Moses 6:56, all EXACT. All 3 cross-study links
+  (agency, truth-atonement, notes-02-mortality) resolve.
+- ★ **One Webster contamination: MEDIATOR (word #131).** §III gave the
+  1828 sense as "One who mediates; especially, one who interposes
+  between parties at variance…; hence, an intercessor" — the "One who
+  mediates; especially…; hence…" construction is Webster's **1913**.
+  The genuine 1828 reads "One that interposes between parties at
+  variance for the purpose of reconciling them," and its def 2 is the
+  gift: "Christ is the mediator, the divine intercessor through whom
+  sinners may be reconciled to an offended God… mediator by nature, as
+  partaking of both natures divine and human; and mediator by office."
+  Requoted + dated note; the two-natures logic deepens the study's
+  point. The other Webster word in the study — **TRANSGRESSION** §V
+  "passing over or beyond any law" — was checked and **IS genuine
+  1828** (verbatim fragment of def 1), so it stands. Net: one requote.
+- **Webster running count: 130 → 131 (MEDIATOR).**
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
