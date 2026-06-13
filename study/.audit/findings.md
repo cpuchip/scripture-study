@@ -2720,6 +2720,31 @@ unto" at vv 27,30,31,32,33,34,35,36,37,38. The carnally/Romans 8:6
 Webster claim is ACCURATE (genuine 1828 *carnally* cites Lev 18:20
 + Rom 8:6). Not queued (determinate fix).
 
+### study/bom-walk/2-nephi/2-nephi-13.md (2026-06-01) — CLEAN (Isaiah-variant chapter)
+LINKS. No markdown links. The two "verified variants" CONFIRMED by
+direct 2 Ne 13 vs Isaiah 3 comparison: v6 (BoM "let NOT this ruin
+COME under thy hand"; KJV "let this ruin BE under thy hand" — the
+plea becomes prevent-not-manage); v9 (BoM "they CANNOT hide it";
+KJV "they hide it NOT" — brazen defiance → involuntary
+self-betrayal). The central charge "Ye beat my people to pieces,
+and grind the faces of the poor" (v15) verbatim; the BoM's "What
+mean ye? Ye beat…" restructure of KJV's question noted honestly in
+the minor-variants line. All quoted lines from 2 Ne 13. CLEAN.
+
+### study/bom-walk/2-nephi/2-nephi-14.md (2026-06-01) — CLEAN (near-identical Isaiah chapter)
+LINKS. No markdown links. The "near-identical to KJV" claim
+CONFIRMED by direct 2 Ne 14 vs Isaiah 4 comparison — exactly the
+three minor variants the study names, none altering sense: v2 (BoM
+trims "shall be"), v3 (BoM plural "they that are left…and remain"
+vs KJV singular "he that is left…he that remaineth"), v5 (BoM adds
+"of Zion": "upon all the glory of Zion shall be a defence"). Quoted
+lines verbatim: v2 "branch of the Lord be beautiful and glorious,"
+v4 "washed away the filth of the daughters of Zion…by the spirit of
+judgment and by the spirit of burning," v5 cloud-and-fire pillar.
+The note that a chapter CAN be near-identical (making the deliberate
+variants elsewhere — 12:9, 13:6 — stand out) is a sound
+observation. CLEAN.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
