@@ -100,13 +100,43 @@ last_active: 2026-06-12T21:33:55
   historical files dead this batch; manifest 189→155 effective.
   LESSON: lib.rs requires-graph is NOT linear — sweep every chain cut
   (4b/5a edges bit once).
-  **NEXT = B3** (08-gates..12-council per blueprint): 08 = 5a/5b/5c/
-  5e4(rest)/h1-6-1/h1-6-2/h1-6-6/l28 + i3-on_maturity_verified-final +
-  h3-followup-2-render_file_destination; 09 = 5d* + pr1
-  (scripture_anchor→values_anchor + config default_intent_slug —
-  kills the hardcoded 'scripture-study' intent fallback); 10 = 5e/5e2/
-  5e3/6d/6e/am1 + i3 (work_items file_enqueued_at born, no
-  materialized_at); 11 = 5f*; 12 = 5g*. Same loop. Then B4-B6.
+  **B3 COMPLETE (2026-06-13, OSS `737443e` + workspace `9a4456d`; root
+  lane NOT pushed):** 08-gates/09-intents-covenants/10-sabbath-atonement/
+  11-trust/12-council authored; virgin scratch smoke FULLY GREEN (AGE
+  absent · 0 study% fns/cols · values_anchor + file_enqueued_at renames
+  clean · 15 tables/9 gate_prompts/5 triggers · gate ladder + trust gate
+  (trainee surface→journeyman advance) + l28 veto + verify-fail + the
+  **08→10 on_maturity_verified materialize path e2e** (sabbath wrapped→
+  NOTICE, enqueue_work_item_file real pwid=1, REVIEW-strip extracted body,
+  pending_file_writes landed) + sabbath gate refusal + bishop_eligible).
+  GOWORK=off go build+vet green. 32 historical files retired; manifest
+  155→123. **Deviations (act+report, in blueprint):** apply_gate_decision
+  authored ONCE in 11 (its trust SELECT needs trust_scores — a plpgsql
+  SELECT-from-later-table is NOT a safe CREATE forward ref; only NEW.<field>
+  + wrapped fn-calls are, per the 04 precedent); maybe_enqueue_atonement +
+  sabbath/atonement dispatch finals → 10; **h1-0 FULLY consumed at B3**
+  (maturity_ladder→08, overrides→10) — drop from B4's 13; 6e SPLIT (lesson
+  producer→10, resolution producer→12 — %ROWTYPE/trigger on a not-yet-born
+  table fails at CREATE); 5d5 gate tools_disabled finals folded into 08;
+  sessions.kind union + gate_prompts CHECK born in schema.rs/08; yaml.rs
+  slug-from-YAML(default "default") + values_anchor.
+  **★ SURFACED TENSION (Michael's call, NOT fixed):**
+  `work_item_promote_trigger` (04, B2) calls work_item_promote_to_doc
+  UNWRAPPED → on a sabbath-enabled pipeline a status→completed transition
+  ABORTS until sabbath_completed_at is set (the gate RAISEs check_violation).
+  Conflates "defer promotion" with "block completion"; likely wants the
+  PERFORM wrapped (mirror on_maturity_verified). Faithful to historical
+  authoring, not introduced by B3 (smoke confirmed the abort).
+  **NEXT = B4** (13-research-pipelines..16-subagents, minus h1-0 now done):
+  13 = h1-0(DONE,drop)/h1-2/h1-7b/h2/h3-4/h3-5/h3-followup-3/i4/i6/i7/pe2
+  (enqueue_proposed_work_items — on_maturity_verified's planning branch
+  already calls it, wrapped); 14 = j1-j9c incl j8a-dispatch + j11-dispatch-
+  gate + j12-brainstorm TRIMMED HALVES (left in place at B2); 15 = k1-k9/
+  l1-l32/es1-es9/ct2-1/2/3/7a/7a2/7b/7d (may split 15a/b); 16 = k4/l9/es8/
+  es10/r11/ct2-5/ct2-7e. Same loop (sweep lib.rs non-linear requires +
+  forward-ref shapes on every cut). Then B5 (17-19 + seed_harness genericize
+  + bgworker _kind enum + embed provider/model→config) + B6 (tests/ + CI +
+  rename-map finalize + overlay re-author).
   (3) Private manifest REPAIRED (root `e5ccc0c3`): 9 live-applied migrations
   (r11-r17, ct2-5, ct2-7e) restored from ledger order; found the runner is
   LEXICAL + manifest-blind (replayed scratch-ct2-run2 into live 06-10 —
