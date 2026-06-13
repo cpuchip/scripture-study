@@ -180,3 +180,25 @@ rows in prod forever). Deploy + the published-works audit (step 5) remain: deplo
 Michael's root push; the audit is a separate session with him. **The durable lesson:
 verify the *edition* of a source, not just the quote — and a verification tool can
 itself be the wrong source.**
+
+---
+
+### June 13, 2026
+
+**Grounding reground-counter hook wrote its state cwd-relative, not project-anchored (Behavior — Claude Code)**
+Found during the Euclid digestion. The PostToolUse "50-tool reground" hook in
+`.claude/settings.json` read/wrote `.claude/cache/last-ground.txt` **relative to the
+shell's current working directory**, while every other hook in the same file uses
+`${CLAUDE_PROJECT_DIR:-.}`. Two consequences when a `Bash`/`PowerShell` command `cd`s
+out of the project root (e.g. into `books/Euclid/` to download a file):
+1. A stray `.claude/cache/` dir is created wherever the shell landed (had to `rm -rf`
+   one out of `books/Euclid/`).
+2. The reground counter **forks per directory** — a fresh per-cwd file restarts at 1
+   and may never reach 50, so the drift-protection reminder under-fires exactly when a
+   session is roaming directories (which is when drift is most likely).
+**Fixed same session:** anchored all four path references to
+`${CLAUDE_PROJECT_DIR:-.}/.claude/cache`, matching the rest of the file. The counter now
+lives in one place project-wide. (Part of the context-statusline / post-compact
+grounding plugin — `project_claude_code_context_plugin`.) Lesson, small: a hook that
+keeps state must anchor that state to the project dir, never to cwd, because tool
+commands legitimately move the shell.

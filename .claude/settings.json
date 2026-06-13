@@ -47,7 +47,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "mkdir -p .claude/cache 2>/dev/null; n=$(cat .claude/cache/last-ground.txt 2>/dev/null || echo 0); n=$((n+1)); if [ \"$n\" -gt 50 ]; then echo 0 > .claude/cache/last-ground.txt; printf '{\"hookSpecificOutput\":{\"hookEventName\":\"PostToolUse\",\"additionalContext\":\"Re-grounding check: 50+ tool uses since last refresh. Re-read .mind/active.md (the in-flight board), .spec/covenant.yaml, and intent.yaml before continuing; also glance at your session lane + inbox (.mind/sessions/). Are your current actions still aligned with the intent? If you have drifted, course-correct now.\"}}'; else echo $n > .claude/cache/last-ground.txt; fi",
+            "command": "mkdir -p ${CLAUDE_PROJECT_DIR:-.}/.claude/cache 2>/dev/null; n=$(cat ${CLAUDE_PROJECT_DIR:-.}/.claude/cache/last-ground.txt 2>/dev/null || echo 0); n=$((n+1)); if [ \"$n\" -gt 50 ]; then echo 0 > ${CLAUDE_PROJECT_DIR:-.}/.claude/cache/last-ground.txt; printf '{\"hookSpecificOutput\":{\"hookEventName\":\"PostToolUse\",\"additionalContext\":\"Re-grounding check: 50+ tool uses since last refresh. Re-read .mind/active.md (the in-flight board), .spec/covenant.yaml, and intent.yaml before continuing; also glance at your session lane + inbox (.mind/sessions/). Are your current actions still aligned with the intent? If you have drifted, course-correct now.\"}}'; else echo $n > ${CLAUDE_PROJECT_DIR:-.}/.claude/cache/last-ground.txt; fi",
             "timeout": 10
           }
         ]
