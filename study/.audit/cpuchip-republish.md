@@ -1,0 +1,52 @@
+# cpuchip.net re-publish ledger — keeping the published studies in the loop
+
+**Why this file exists (Michael's ask, 2026-06-12):** cpuchip.net keeps its
+*own* copies of studies at `projects/cpuchip.net/content/studies/<slug>.md`
+(republished from the workspace originals, with embedded animation components +
+`<S>` scripture tags — NOT symlinks). When the correctness walk fixes a
+workspace `study/<slug>.md`, the published cpuchip.net copy goes stale. This
+ledger tracks which published studies need re-publishing once the walk is done,
+so the corrections actually reach the live site.
+
+**The plan:** after the walk completes (or as a batch sooner if Michael wants),
+do a **cpuchip parity pass** — for each study flagged ⚠️ below, carry the walk's
+correction into `projects/cpuchip.net/content/studies/<slug>.md`, then rebuild +
+verify the live page. The cpuchip copies should also get a light verification
+pass (did the republish faithfully carry the original, or did it diverge?).
+
+**17 studies are published on cpuchip.net.** Status as of 2026-06-12 (walk at
+214/469):
+
+| Published slug (cpuchip) | Workspace original | Walk status | Re-publish? |
+|---|---|---|---|
+| ⚠️ **send-me-covenants** | `study/yt/V40tBshkMnE-send-me-covenants.md` | corrected (#176) | ★★★ **YES — HIGHEST: two fabricated "Todd says" quotes are live on the public site** (one was Michael's own §VI prose, one was Ether 6:9); + law-of-Moses blend + POSSESS 1913→1828 |
+| ⚠️ **give-away-all-my-sins** | `study/give-away-all-my-sins.md` | corrected (#143) | YES — 5 Webster 1913 words (GIVE/FORSAKE/REPENT/POSSESS/KNOW); Alma 22:18 dropped "and" ×2; McKay-1950 + Luke 18:18 fixes |
+| ⚠️ **without-compulsion** | = the freedom synthesis (`study/freedom/99-synthesis.md`, titled "Without Compulsion"); cpuchip copy is the full study, not the workspace outline | corrected (#201, #205) | YES — COMPEL (#127) + SACRIFICE (#128) 1913→1828; ★ the D&C 130-vs-87 "same day" date error. **Verify which version cpuchip published before editing.** |
+| ⚠️ **four-groups-and-the-engineer** | `study/four-groups-and-the-engineer.md` | corrected (#181) | YES — EASINESS (#120) + CIRCUMSPECTLY (#121) 1913→1828 |
+| ⚠️ **the-seventh-time** | `study/the-seventh-time.md` | corrected (#182) | YES — Nelson "Sabbath Is a Delight" mis-dated Oct→**April** 2015 (2 places); 4 Ne 1:12 "both" restored |
+| ⚠️ **what-was-the-atonement-for** | `study/what-was-the-atonement-for.md` | corrected (#169) | YES — Hel 16:23-as-3 Ne 6:15 requoted; PRESUMPTUOUS 1913 ordering |
+| ⚠️ **hope-and-the-grammar-of-pairs** | `study/hope-and-the-grammar-of-pairs.md` | corrected | YES — HOPE 1913 ×2; Rom 5:5 + 2 Cor 13:1 micro-fixes |
+| ⚠️ **brother-of-jared-three-problems** | `study/brother-of-jared-three-problems.md` | corrected (#172) | YES — Ether 2:25 "do"→"prepare for you" requoted |
+| ⚠️ **refinement-stewardship-and-hope** | `study/refinement-stewardship-and-hope.md` | corrected (#173) | YES — Ether 12:19-20 phantom phrase "because of his relation to the Lord" removed; Rom 5:5 linked |
+| ⚠️ **abinadi-how-to-read** | `study/abinadi-how-to-read.md` | corrected | YES — DECLARE 1913 (word 86) |
+| ⚠️ **zion-blueprint** | `study/zion-blueprint.md` | corrected | YES — Pearce quote-continuation confabulation requoted |
+| ✅ ai-stewardship-north-star | `study/ai-stewardship-north-star.md` | CLEAN (#174) | no |
+| ✅ best-books-and-the-spirit-of-discernment | `study/best-books-and-the-spirit-of-discernment.md` | CLEAN | no |
+| ✅ mechanics-of-refinement | `study/mechanics-of-refinement.md` | CLEAN (#171) | no |
+| ✅ softening-what-i-cannot-soften | `study/softening-what-i-cannot-soften.md` | CLEAN (#177) | no |
+| ⏳ morm-8-three-glories-reading | `study/morm-8-three-glories-reading.md` | walked out-of-band (in findings) but not yet marked in _progress | TBD — confirm at its walk slot |
+| ⏳ morm-8-voice-from-the-dust | `study/morm-8-voice-from-the-dust.md` | PENDING in walk | TBD — flag after walked |
+
+**Summary: 11 ⚠️ need re-publish, 4 ✅ clean, 2 ⏳ pending the walk.**
+
+★ The **send-me-covenants** re-publish is the one that matters most — it puts
+*fabricated* quotations on a public website under Michael's name. If Michael
+wants a single early action before the full batch, it's that one.
+
+**The Webster-1913 corrections (most of the ⚠️ list) are the bulk of the work** —
+they're inline-noted requotes; the cpuchip copy needs the same genuine-1828
+text + the dated correction note (or a clean version per Michael's preference for
+the published face — visible note vs. silent fix is his call for the public site).
+
+*This ledger is updated as the walk reaches the 2 ⏳ pending studies. Drives the
+post-walk cpuchip parity pass.*

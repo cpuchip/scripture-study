@@ -10,6 +10,13 @@ mentions checked · SAMPLE = 3-quote sample · LINKS = link validation only.
 All files get link validation. ARGUMENT-class findings go to findings.md
 under "needs Michael" — do NOT rewrite arguments solo.
 
+★ **cpuchip.net published studies:** 17 studies are live on cpuchip.net with
+their OWN copies (`projects/cpuchip.net/content/studies/`). When the walk
+corrects a workspace study, the published copy goes stale. Tracked in
+`study/.audit/cpuchip-republish.md` (11 ⚠️ need re-publish, incl. ★ send-me-
+covenants which has fabricated quotes LIVE). Post-walk: cpuchip parity pass.
+When walking a study that is also published there, update the ledger's status.
+
 Already done out-of-band: `study/morm-8-three-glories-reading.md` (2026-06-09).
 
 - [x] 2026-01-21 `study/creation.md` **FULL** — CLEAN, 0 edits
