@@ -1,3 +1,11 @@
+> **⚠ Provenance correction notice (2026-06-13).** This scratch file predates the
+> study-correctness walk and the 2026-06-09 Webster repair. Some quotes recorded
+> here as "verified" — especially Webster 1828 definitions — were checked against
+> a tool then serving 1913-as-1828 text, or are pre-correction scripture/date
+> wordings. **The study file is authoritative** for the corrected text; every
+> correction is logged in `study/.audit/findings.md`. Kept as the original audit
+> trail, flagged rather than rewritten (see `study/.scratch/README.md`).
+
 # Scratch — Nevertheless Part 2: The Apostolic Witness
 **Status: COMPLETE — Draft written 2026-03-12**
 

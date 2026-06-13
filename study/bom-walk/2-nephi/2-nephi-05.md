@@ -33,3 +33,52 @@
 **Notable / flag — a with-Michael topic, deliberately NOT spun off:** 2 Ne 5:21's "skin of blackness" is among the hardest passages in the book and carries real modern pain. I have named it, laid out what the text itself distinguishes (curse = separation from God; the mark's stated separating purpose; its reversibility), pointed to the book's own universalist correction (26:33, verified) and the Church's 2013 disavowal of skin-as-disfavor theories — and stopped there. This one is for careful study *with Michael and the Spirit*, not an autonomous subagent verdict (the sensitivity puts it past the bin where I should pronounce). Next: 2 Ne 6-10 (Jacob's great sermon — expounds Isaiah 49, the held thread from 1 Ne 21).
 
 **Verified:** 2 Nephi 5 AND 2 Nephi 26:33 read verbatim this session (`gospel_get`); only verified text is quoted. The "Race and the Priesthood" essay is referenced as well-known Church context, not quoted. Other cross-refs are footnote pointers (3 Ne 2:15, Mosiah 29, 1 Kgs 6, D&C 10:38-40).
+
+---
+
+## Michael's reading — recorded 2026-06-13 (CARRY-FORWARD: review when the project is over)
+
+*Captured at Michael's request during the study-correctness-walk close. The full
+curse-and-mark study is bigger than this moment; this preserves his starting
+read so it isn't lost. Not a resolution — a seed for the deferred study.*
+
+**Michael's take (his words, paraphrased):** He has no issue with the verse. For
+*this specific verse* he chooses to read it **spiritually** — by analogy to
+being filled with the Holy Ghost so that you have "no more desire to do evil,
+but to do good continually" ([Mosiah 5:2](../../../gospel-library/eng/scriptures/bofm/mosiah/5.md)).
+Wicked things *look* dark and gross because they are **not full of light**. We
+have a study on light and matter (the D&C 93 / refinement thread). So "a dark
+and loathsome person" may actually carry a **dark aura** — the visible absence
+of light — that makes them un-appealing. He reads the "skin of blackness" in
+that register rather than as pigment.
+
+**Building on Michael's read (my thoughts, offered as council, not verdict):**
+- The textual hook that fits his reading best is the verse's *stated purpose*:
+  the darkness came **"that they might not be enticing unto my people"** (5:21).
+  If the "darkness" is the visible absence of light (an aura/countenance), then
+  *not enticing* follows immediately — a soul not full of light is simply not
+  attractive. Pigment doesn't carry that logic; light-deprivation does.
+- It is the exact **inverse of Alma 5:14**, "have ye received his image in your
+  *countenances*?" The new birth shows as light **on the face**; its absence
+  shows as darkness. The same mechanism — the soul's state visible on the
+  countenance — runs both directions (cf. Moses' shining face, Ex 34; the
+  transfiguration; "image" → Gen 1:26-27).
+- The **strongest in-text support** is **Mormon 5:15**: the identical "dark,
+  filthy, and loathsome" language is applied to the *Nephite* seed for
+  *unbelief and idolatry* — same lineage, presumably same pigment — which
+  forces that vocabulary toward *spiritual state*, not skin color. Alma 3's
+  "they **marked themselves**" and Jacob 3:8's dark-skinned-but-**more
+  righteous** pull the same direction.
+- The **honest tension to keep for the full study:** this reading is clean for
+  2 Ne 5:21 and Mormon 5:15, but the more literal "their **skin** became white"
+  (3 Ne 2:15) and "the **skins** of the Lamanites were dark" (Alma 3:6) still
+  carry a pigment *surface* the aura-reading has to account for (light changing
+  a countenance is one path; edition history — 2 Ne 30:6 "white"→"pure," 1840 —
+  is another input). Reconciling the spiritual reading with those is exactly
+  the work that's been deferred.
+
+**The deferred study's datapoint set** (gathered by the walk, for when we pick
+this up): 2 Ne 5:20-25 · Jacob 3:5-9 · Alma 3:6-19 · 3 Ne 2:15 · Mormon 5:15 ·
+Hel 15:4 — against the counter-witnesses 2 Ne 26:33, 30:6, 4 Ne 1:17, Alma
+23:18, plus the 2013 "Race and the Priesthood" Gospel Topics essay. **Status:
+CARRY-FORWARD, post-project, with Michael + the Spirit.**

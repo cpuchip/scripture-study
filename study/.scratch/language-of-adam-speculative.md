@@ -1,3 +1,11 @@
+> **⚠ Provenance correction notice (2026-06-13).** This scratch file predates the
+> study-correctness walk and the 2026-06-09 Webster repair. Some quotes recorded
+> here as "verified" — especially Webster 1828 definitions — were checked against
+> a tool then serving 1913-as-1828 text, or are pre-correction scripture/date
+> wordings. **The study file is authoritative** for the corrected text; every
+> correction is logged in `study/.audit/findings.md`. Kept as the original audit
+> trail, flagged rather than rewritten (see `study/.scratch/README.md`).
+
 # Scratch — Language of Adam: Speculative Threads
 
 **Binding Question:** Can we thread revealed Adamic words together with what linguistics calls "global etymologies" — words that seem to appear across all human language families? If God confounded (mingled) one language into many, are there fragments of the original still hiding in plain sight?
