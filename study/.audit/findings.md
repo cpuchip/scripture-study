@@ -1616,6 +1616,29 @@ restored per transcript. Seven other Nate quotes sampled verbatim
 cognition, team-of-a-hundred); timestamps run ~10s ahead of
 caption marks but link into the right passages.
 
+### study/only-begotten.md (2026-03-20) — ALL FOUR Webster words 1913 (words 93-96); monogenes count fixed
+T1+FULL. The study's entire Webster layer was 1913: ONLY (adj 1-3
+verbatim 1913; genuine = "Single; one along [digitization]; This
+and no other; This above all others" — the preeminence reading
+SURVIVES via "This above all others," and the genuine ADVERB entry
+illustrates "Singly; without more" with "as only-begotten" — the
+study's own title sitting in Noah's entry); BEGET ("commonly said
+of the father" tail was 1913); CONDESCENSION (1913 verbatim;
+genuine is stronger — "relinquishment of strict right");
+SIMILITUDE ("copy; a facsimile" was 1913 sense 3; genuine's first
+example is "Let us make man in our image, man in our similitude" —
+the study's own Moses 2:26 theme; "designed copy" prose reworked
+to rest on Jacob 4:5). Counts: monogenes appears NINE times in the
+NT (5 of Christ, 1 Isaac, 3 Luke ordinary children — was "seven
+times, always Christ except Isaac"); Moses 1 = nine occurrences
+across eight verses (v6 twice — the first split by inline footnote
+markers, invisible to raw grep). Heb 11:19 participle restored
+("accounting"). Everything else verbatim: Gen 22 (+ fn-2b → John
+3:16/Jacob 4:5 and the v6→John 19:17 footnote claims verified
+EXACT), Moses 1/2/5/6, John 1/3 + JST additions, Heb 1 (+ TG
+express-image footnote verified), 1 Ne 11, Alma 7:10/12:33/13:9,
+Jacob 4:5/11, D&C 76/93/20:21, Rom 8, BD Son-of-God quote exact.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)

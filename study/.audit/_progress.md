@@ -145,7 +145,7 @@ Already done out-of-band: `study/morm-8-three-glories-reading.md` (2026-06-09).
 - [x] 2026-03-15 `study/stories/the-words-of-abinadi.md` **SAMPLE** — "74 years"→"some fifty" (narration-date misread); Alma 36:21→36:20; ~25 quotes verbatim
 - [x] 2026-03-17 `study/eq/20260315-uchtdorf-do-your-part.md` **SAMPLE** — "wasn't wickedness" claim fixed vs Matt 25:26; Uchtdorf hot-zone quotes + gifts list all exact
 - [x] 2026-03-19 `study/yt/LO0Ws-l6brg-4-ai-labs-same-system.md` **SAMPLE** — squad link → archive/; 2 micro-requotes; 7 quotes sampled verbatim
-- [ ] 2026-03-20 `study/only-begotten.md` **T1+FULL**
+- [x] 2026-03-20 `study/only-begotten.md` **T1+FULL** — ONLY/BEGET/CONDESCENSION/SIMILITUDE all 1913 (words 93-96; genuine adverb entry cites "only-begotten" itself); monogenes 7→9; Moses 1 count fixed; ~40 scriptures verbatim
 - [ ] 2026-03-21 `study/only-begotten-deeper.md` **FULL**
 - [ ] 2026-03-22 `study/stewardship-pattern.md` **T1+FULL**
 - [ ] 2026-03-22 `study/stewardship-pattern-reflections.md` **FULL**
