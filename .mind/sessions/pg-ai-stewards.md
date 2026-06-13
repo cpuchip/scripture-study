@@ -7,6 +7,35 @@ last_active: 2026-06-13T09:51:34
 ---
 
 ## Working on
+- **★ M0 — RUNTIME STACK SHIPPED + VIRGIN BOOT PROVEN 2026-06-13 (OSS `8287967`,
+  pushed; Michael: "this probably doesn't need [a loop], push through as normal").**
+  The OSS repo had no runtime image/compose — only the extension Dockerfile. Added
+  `extension/bridge.Dockerfile` + `extension/persona-host.Dockerfile` +
+  `extension/bridge-entrypoint.sh` + root `docker-compose.yaml` + `.env.example`.
+  **Clean-room single-module win:** no go.work, no sibling-stub COPYs, no personal
+  MCP — the bridge image COPYs `go.mod`+`cmd/` and builds 3 binaries (stewards-mcp/
+  fs-read-mcp/stewards-cli) in **~6s** (vs the workspace's multi-min go.work build).
+  persona-host behind compose `--profile personas` (needs ai-chattermax+key; idles
+  without). Core installs via `CREATE EXTENSION` (pg init), so the entrypoint just
+  starts the bridge — no core migrations. Ports offset (pg 55434) for side-by-side.
+  /workspace mounted RO (autonomous materializer opt-in; the boot warning is the
+  safe default, documented in compose). **Virgin boot GREEN** (scratch
+  `pg-ai-stewards-oss` project, live untouched, torn down after): CREATE EXTENSION
+  → pg_ai_stewards 0.2.0 + pgvector; **4 bgworker dispatchers alive** (recovered from
+  the bootstrap-phase "db does not exist" FATALs — transient, matches live); bridge
+  connects + `LISTEN`s on stewards_mcp_proxy; **`bridge refresh-tools` spawns the 2
+  real stdio MCP servers e2e** — fs-read [OK] 3 tools, pg-ai-stewards [OK] **31 tools
+  all doc_*** (no study_* leak), coder [FAIL] = the ONLY failure = expected M1 gap
+  (binary not built). **★ TWO CLEAN-ROOM FINDINGS (Michael's call, NOT acted):**
+  ① **the Rust core still carries a `gospel-engine` resolver subsystem** —
+  `GOSPEL_ENGINE_URL`/`TOKEN` env in `bgworker.rs` (prints `stewards: gospel-engine
+  url=…` every boot) + `GospelEngineConfig`/`GOSPEL_ENGINE_CONFIG` OnceLock in
+  `providers.rs` (Phase 2.2). Personal-domain name in the public core; the src audit
+  missed it. **Design question** (genericize the resolver vs move to overlay), not
+  act-and-report. ② `stewards-cli migrate` hardcodes the workspace path
+  `<repo-root>/projects/pg-ai-stewards/extension` (`migrate.go:54`) — wrong for OSS
+  layout; belongs to the two-tier runner work (M0 doesn't need it — core is
+  CREATE EXTENSION). **M1 NEXT = coder-mcp port + hardening review (Hinge ②).**
 - **★ MCP PACKAGING PLAN RATIFIED + committed/pushed 2026-06-13 (OSS `f603e34`,
   `.spec/proposals/mcp-packaging.md`).** Where the workspace MCP servers ship
   relative to the substrate, decided on Go-module coupling. **No separate
