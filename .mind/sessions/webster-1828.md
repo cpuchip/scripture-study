@@ -339,10 +339,16 @@ last_active: 2026-06-13T12:25:57
   harness items from the retrospective also shipped** (b23c36b8: md-tidy CRLF-aware
   tidy, fan-out skill, source-verification depth-2 citation rule, copilot task-shape
   triage). Memory: `project_verify_quotes_tool` + `reference_fanout_vs_shepherd`.
-  **OPEN (Michael's call): fix the ~5 real catches** — verify each genuine 1828 via the
-  webster MCP, requote. Surfaced, not auto-launched (non-published workspace studies;
-  deep in a marathon session — recommended, not started). Plus the standing bin-4
-  curse-question (2 Ne 5:21 / Morm 5:15 / Alma 3:6), parked for Michael + the Spirit.
+  **CATCHES FIXED (`789750e1`):** chose to act, not park behind a question (dave-rule
+  + ammon — this is the ratified walk fix-class, clear-intent + reversible + non-
+  published). All **8** verified vs the webster MCP + requoted to genuine 1828;
+  inverse-hypothesis green (**full study tree now 540 files / 0 Webster flags**).
+  Two source-over-score refinements: PARADISE ("Abode"=1913 vs 1828 "seat" — moved
+  from my false-positive guess to genuine); the eternity-paused SHRINK *appendix*
+  table — the tool caught the "decline action from fear; to recoil" splice my manual
+  fix left as "truncated-safe" (watch-integrity, live). Tool earned its source weight
+  round one. **Remaining: only the standing bin-4 curse-question (2 Ne 5:21 / Morm
+  5:15 / Alma 3:6), parked for Michael + the Spirit.**
 - ✅ OCR repair SHIPPED + live-verified (1336c8ce); walk plan RATIFIED
   (.spec/proposals/study-correctness-walk.md)
 
