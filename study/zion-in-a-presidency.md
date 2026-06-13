@@ -126,7 +126,7 @@ The first failure is *internal*. Pride. A heart-condition. Everything else casca
 
 Elder Cook in October 2020 named the parallel directly:
 
-> "At this 200-year hinge point in our Church history, let us commit ourselves as members of the Lord's Church to live righteously and be united as never before." — [Cook, October 2020](../gospel-library/eng/general-conference/2020/10/15cook.md)
+> "At this 200-year hinge point in our Church history, let us commit ourselves to live righteously and be united as never before." — [Cook, October 2020](../gospel-library/eng/general-conference/2020/10/15cook.md)
 
 The 200-year hinge in 4 Nephi was the moment the heart-condition shifted. Cook's invitation is to notice that we are at a 200-year hinge of our own and to choose differently. For a presidency, the 4 Nephi diagnostic is precise: watch for pride. Watch for comparison. Watch for one teacher being elevated above another. Watch for "the good class" and "the hard class." Watch for the moment when the goods and substance of the council (the time, the attention, the credit) stop being common. The economic and social symptoms come later. The first symptom is in someone's heart, possibly your own.
 

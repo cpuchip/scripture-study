@@ -1778,6 +1778,16 @@ Singularity claims verified by corpus grep ("make thyself known"
 = alma/22 only; Ruth 3:3 inverse). Talks verbatim: Maxwell 1991,
 Featherstone 1972, Wu 2026 (hot zone), Oaks 2003, Wunderli 2026.
 
+### study/zion-in-a-presidency.md (2026-04-23) — one inserted phrase in the Cook quote
+T1+FULL. Cook Oct 2020 quote carried an inserted "as members of
+the Lord's Church" that isn't in the talk — removed. Everything
+else verbatim: Moses 7:16/18, Acts 2:42/46 + 4:32/34, 4 Ne
+1:15/17/24-26 (the four-step fall sequence exact), D&C 38:26-27
+(twelve-sons parable claim verified), Mosiah 18:25/27/29/35
+("about four hundred and fifty souls" exact), D&C 82:19/105:5,
+Uchtdorf Apr 2025 ×2 (hot zone, exact). No new Webster quotes
+(PRESIDE back-reference already held genuine).
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
