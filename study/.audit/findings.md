@@ -4335,6 +4335,40 @@ direct grep.
   character-perfect. Its provenance block confirms gospel_get verification and
   honestly flags that Alma 18 quotes derive from the walk note. CLEAN.
 
+### alma12-13 study, daily-digests 06-03/04, morm-8-three-glories (2026-06-13, 455→459) — ★ one LINK fix
+
+The redemption/priesthood synthesis, two secular AI-news samples, and the
+Webster-heavy three-glories reading. Verified by direct grep + repaired Webster
+MCP + the Nelson talk file.
+
+- **`alma12-13` study** — CLEAN. Scripture EXACT (12:9-11, 13:3, 13:11, 13:17-18,
+  D&C 84:24 "which rest is the fulness of his glory"). ★ Webster check: the
+  study cites Webster 1828 "foreknowledge" quoting Milton — "If I foreknew,
+  foreknowledge had no influence on their fault." Verified GENUINE 1828 via the
+  repaired MCP (the entry carries exactly that Milton line), correctly
+  attributed. Not 1913 contamination.
+- **daily-digest 06-03 + 06-04** — CLEAN (SAMPLE tier). Secular AI-news digests,
+  no gospel quotes to verify against the corpus. Both carry honest self-critique
+  (06-03 flags "Claude Mythos Preview" as a possible hallucinated model name;
+  06-04 softens three over-claimed headlines and flags first-party-benchmark
+  skepticism). Nothing to requote.
+- **morm-8-three-glories** — ★ **one LINK fix, else CLEAN**. This is a
+  Webster-heavy T1+FULL study carrying a 2026-06-09 contamination-correction
+  note (its quotes had been 1913-as-1828, since re-verified). Independently
+  re-confirmed every Webster 1828 entry against the REPAIRED MCP — **all 8
+  genuine**: apparel ("external habiliments… religion appears in the natural
+  apparel of simplicity / Glorious in apparel"), fine (pure-as-gold ↔ showy),
+  gain (Phil 3:7 + Matt 16:26), glory (brightness → divine presence), celestial,
+  terrestrial (1 Cor 15:40 "bodies terrestrial"), pollute, and the **verified
+  ABSENCE of telestial** from 1828. The contamination-correction holds
+  completely. All scripture EXACT (Morm 8:36/37, 2 Ne 9:14, D&C 76:70, D&C
+  109:76, Isaiah 63:1). All **6 Nelson "Think Celestial!" (Oct 2023) quotes
+  EXACT** against `2023/10/51nelson.md`. ★ **FIX:** the citation "D&C 109:76"
+  was hyperlinked to `dc/76.md` (section 76, the wrong file) → corrected to
+  `dc/109.md`. The visible citation text was already correct, so no prose/
+  meaning change — a pure href correction (this study is published on
+  cpuchip.net, so the broken nav mattered).
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
