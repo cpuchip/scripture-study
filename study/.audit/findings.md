@@ -3753,6 +3753,32 @@ Verified by direct grep.
   his guards with him," v36 "it is strange to relate… more wild, wicked and
   ferocious than the Lamanites" — EXACT.
 
+### Mosiah grievance-study + 13-15 (Abinadi) (2026-06-13, 363→367) — ALL CLEAN
+
+The Mosiah block opens. The Lamanite-grievance deeper study + the Abinadi
+discourse (law-cannot-save, Isaiah 53, the Father-and-Son christology).
+Verified by direct grep + Isaiah 53 KJV variant comparison.
+
+- **studies/mos10_lamanite-grievance-tradition** (deeper study, 2 Ne 5:21
+  thread): Mosiah 10:14 "they understood not the dealings of the Lord," 10:17
+  "they have an eternal hatred towards the children of Nephi" — EXACT. The
+  study reads the grievance as a **taught tradition** (real events + wrong
+  interpretation, transmitted on purpose), healable by the true account — a
+  constructive datapoint for the with-Michael thread (the divide is
+  religious/taught, not racial), NOT an ARGUMENT-class flag.
+- **Mosiah 13** (the law cannot save): v28 "salvation doth not come by the law
+  alone; and were it not for the atonement, which God himself shall make…
+  they must unavoidably perish, notwithstanding the law of Moses" — EXACT.
+- **Mosiah 14** (= Isaiah 53): ★ the chapter note's KJV-variant table verified
+  by direct comparison — 14:6 "iniquities of us all" vs KJV "iniquity," 14:9
+  "no evil" vs KJV "no violence," 14:12 "bore the sins of many" vs KJV "bare
+  the sin of many" — all CONFIRMED (the BoM text broadens the Atonement's
+  scope, exactly as the note's meta-finding claims).
+- **Mosiah 15** (the Father and the Son — christology peak): v2-3 "being the
+  Father and the Son—The Father, because he was conceived by the power of
+  God; and the Son, because of the flesh," v7 "the will of the Son being
+  swallowed up in the will of the Father" — EXACT (is-Jesus-God).
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)

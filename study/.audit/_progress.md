@@ -382,10 +382,10 @@ Already done out-of-band: `study/morm-8-three-glories-reading.md` (2026-06-09).
 - [x] 2026-06-02 `study/bom-walk/alma/alma-49.md` **LINKS** — CLEAN (preparation defeats numbers; v23 "not a single soul of the Nephites which was slain," v27 "did curse God, and also Moroni… because Moroni had kept the commandments of God" EXACT)
 - [x] 2026-06-02 `study/bom-walk/alma/alma-28.md` **LINKS** — CLEAN (the two mournings; v12 "they are raised to dwell at the right hand of God, in a state of never-ending happiness," v13 "how great the inequality of man is because of sin and transgression" EXACT)
 - [x] 2026-06-02 `study/bom-walk/alma/alma-47.md` **LINKS** — CLEAN (anatomy of treachery; v12 "come down, and that he would bring his guards with him," v36 "it is strange to relate… more wild, wicked and ferocious than the Lamanites" EXACT)
-- [ ] 2026-06-02 `study/bom-walk/studies/mos10_lamanite-grievance-tradition.md` **LINKS**
-- [ ] 2026-06-02 `study/bom-walk/mosiah/mosiah-13.md` **LINKS**
-- [ ] 2026-06-02 `study/bom-walk/mosiah/mosiah-14.md` **LINKS**
-- [ ] 2026-06-02 `study/bom-walk/mosiah/mosiah-15.md` **LINKS**
+- [x] 2026-06-02 `study/bom-walk/studies/mos10_lamanite-grievance-tradition.md` **LINKS** — CLEAN (deeper study, 2 Ne 5:21 thread; Mosiah 10:14 "they understood not the dealings of the Lord," 10:17 "they have an eternal hatred towards the children of Nephi" EXACT — grievance = TAUGHT tradition, healable by the true account; constructive datapoint, no flag needed)
+- [x] 2026-06-02 `study/bom-walk/mosiah/mosiah-13.md` **LINKS** — CLEAN (the law cannot save; v28 "salvation doth not come by the law alone; and were it not for the atonement, which God himself shall make… they must unavoidably perish, notwithstanding the law of Moses" EXACT)
+- [x] 2026-06-02 `study/bom-walk/mosiah/mosiah-14.md` **LINKS** — CLEAN (Isaiah 53; ★ variant table verified by direct KJV compare — 14:6 "iniquities" vs KJV "iniquity," 14:9 "no evil" vs "no violence," 14:12 "sins/bore" vs "sin/bare" all CONFIRMED; v6 "the Lord hath laid on him the iniquities of us all" EXACT)
+- [x] 2026-06-02 `study/bom-walk/mosiah/mosiah-15.md` **LINKS** — CLEAN (the Father and the Son; v2-3 "being the Father and the Son—The Father, because he was conceived by the power of God; and the Son, because of the flesh," v7 "the will of the Son being swallowed up in the will of the Father" EXACT — is-Jesus-God christology peak)
 - [ ] 2026-06-02 `study/bom-walk/mosiah/mosiah-16.md` **LINKS**
 - [ ] 2026-06-02 `study/bom-walk/studies/mos13-16_abinadi-christology.md` **LINKS**
 - [ ] 2026-06-02 `study/bom-walk/mosiah/mosiah-17.md` **LINKS**
