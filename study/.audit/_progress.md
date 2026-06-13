@@ -287,13 +287,13 @@ Already done out-of-band: `study/morm-8-three-glories-reading.md` (2026-06-09).
 - [x] 2026-06-02 `study/bom-walk/3-nephi/3-nephi-6.md` **LINKS** — CLEAN (the republic's fall; v5 "nothing… to hinder… except they should fall into transgression," v12 "distinguished by ranks, according to their riches and their chances for learning," v14 "great inequality… the church began to be broken up," v18 "wilfully rebel," v30 "establish a king… no more be at liberty" all EXACT)
 - [x] 2026-06-02 `study/bom-walk/helaman/helaman-15.md` **LINKS** — CLEAN (chastened-because-loved; v3 "chastened them because he loveth them," v4 ★ Lamanite disfavor tracks "the iniquity of the tradition of their fathers"→lifted by "the preaching of the Nephites" (with-Michael 2 Ne 5 datapoint, correctly flagged not resolved), v9 buried weapons, v15 "mighty works… never would again have dwindled" all EXACT)
 - [x] 2026-06-02 `study/bom-walk/helaman/helaman-16.md` **LINKS** — CLEAN (the hardening before Christ; v2 "could not hit him," v6 "he hath a devil" (the Beelzebub move), v16 "guessed right… cannot come to pass," v20 clerical-control "keep us in ignorance" all EXACT)
-- [ ] 2026-06-02 `study/bom-walk/3-nephi/3-nephi-1.md` **LINKS**
-- [ ] 2026-06-02 `study/bom-walk/3-nephi/3-nephi-2.md` **LINKS**
-- [ ] 2026-06-02 `study/bom-walk/3-nephi/3-nephi-3.md` **LINKS**
-- [ ] 2026-06-02 `study/bom-walk/3-nephi/3-nephi-4.md` **LINKS**
-- [ ] 2026-06-02 `study/bom-walk/3-nephi/3-nephi-5.md` **LINKS**
-- [ ] 2026-06-02 `study/bom-walk/3-nephi/3-nephi-11.md` **LINKS**
-- [ ] 2026-06-02 `study/bom-walk/3-nephi/3-nephi-8.md` **LINKS**
+- [x] 2026-06-02 `study/bom-walk/3-nephi/3-nephi-1.md` **LINKS** — CLEAN (signs of Christ's birth fulfilled; v13 "on the morrow come I into the world," v14 "the Father because of me, and of the Son because of my flesh" (ties to is-jesus-christ-god), v15 "no darkness," v20 "every whit, according to the words of the prophets" all EXACT)
+- [x] 2026-06-02 `study/bom-walk/3-nephi/3-nephi-2.md` **LINKS** — CLEAN (the three-stage forgetting; v1 "less and less astonished… hard in their hearts… disbelieve all which they had heard and seen," v15 ★ "their skin became white like unto the Nephites" (with-Michael 2 Ne 5 datapoint — curse lifted on covenant-affiliation, quoted accurately + flagged not resolved), v16 "called Nephites" all EXACT)
+- [x] 2026-06-02 `study/bom-walk/3-nephi/3-nephi-3.md` **LINKS** — CLEAN (Giddianhi's epistle; v9 "the works thereof I know to be good" (the inverted conscience), v11 "received no wrong, save… they had wronged themselves," v21 Gidgiddoni "The Lord forbid… wait till they shall come against us" (defensive-war doctrine) all EXACT)
+- [x] 2026-06-02 `study/bom-walk/3-nephi/3-nephi-4.md` **LINKS** — CLEAN (the robber war won; v3 "could not exist… for the want of food," v10 "did not fear them; but they did fear their God… in the strength of the Lord," v33 "because of their repentance and their humility… delivered" all EXACT)
+- [x] 2026-06-02 `study/bom-walk/3-nephi/3-nephi-5.md` **LINKS** — CLEAN (Mormon names himself; v12 "I am called Mormon," v13 "I am a disciple of Jesus Christ, the Son of God," v18 "a just and a true record," v26 "then shall they know their Redeemer… gathered in from the four quarters" all EXACT)
+- [x] 2026-06-02 `study/bom-walk/3-nephi/3-nephi-11.md` **LINKS** — CLEAN (★ Christ descends — heart of the book; v7 "Behold my Beloved Son… hear ye him," v11 "drunk out of that bitter cup," v14 "feel the prints of the nails… God of Israel," v27 "the Father, and the Son, and the Holy Ghost are one," v29 "the father of contention," v40 "more or less than this… cometh of evil" all EXACT)
+- [x] 2026-06-02 `study/bom-walk/3-nephi/3-nephi-8.md` **LINKS** — CLEAN (the destruction; v1 "cleansed every whit," v18 "rent in twain… seams and in cracks," v20 "feel the vapor of darkness," v23 "three days… no light," v25 the too-late lament "our mothers and our fair daughters" all EXACT)
 - [ ] 2026-06-02 `study/bom-walk/3-nephi/3-nephi-9.md` **LINKS**
 - [ ] 2026-06-02 `study/bom-walk/3-nephi/3-nephi-10.md` **LINKS**
 - [ ] 2026-06-02 `study/bom-walk/3-nephi/3-nephi-12.md` **LINKS**

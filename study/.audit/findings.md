@@ -3236,6 +3236,45 @@ LINKS ×3. No markdown links.
   the church began to be broken up," v18 "wilfully rebel," v30
   "establish a king… no more be at liberty."
 
+### #290-296 `3-nephi 1-5, 8, 11` — bom-walk LINKS — ALL CLEAN
+- The 3 Nephi Christ-block: birth signs (1), forgetting + the war
+  (2-5), the destruction (8), and the descent of the risen Christ (11).
+  Sampled ~36 load-bearing quotes; every one EXACT — the long-form
+  notes hold verbatim throughout.
+- **3 Ne 1** (birth signs fulfilled): v13 "on the morrow come I into
+  the world," ★ v14 "to do the will, both of the Father and of the
+  Son—of the Father because of me, and of the Son because of my flesh"
+  (the Christology that ties straight into the is-jesus-christ-god
+  study), v15 "no darkness," v20 "every whit."
+- **3 Ne 2** (the three-stage forgetting): v1 "less and less
+  astonished… hard in their hearts… disbelieve all which they had
+  heard and seen"; ★ **v15** "their curse was taken from them, and
+  their skin became white like unto the Nephites" — a THIRD literal-skin
+  with-Michael 2 Ne 5 datapoint (alongside 2 Ne 5:21 and Alma 3:6). The
+  note quotes it accurately, observes the trigger is covenant-affiliation
+  ("numbered among… called Nephites"), cites the 2 Ne 30:6 white→pure
+  edition change, and **leaves the literal-skin residue for Michael** —
+  correct handling.
+- **3 Ne 3** (Giddianhi): v9 "the works thereof I know to be good" (the
+  inverted conscience, Isa 5:20), v11 "received no wrong, save… they
+  had wronged themselves," v21 Gidgiddoni's defensive-war doctrine.
+- **3 Ne 4** (war won): v3 "for the want of food," v10 "did not fear
+  them; but they did fear their God… in the strength of the Lord," v33
+  "because of their repentance and their humility… delivered."
+- **3 Ne 5** (Mormon named): v12-13 "I am called Mormon… a disciple of
+  Jesus Christ, the Son of God," v18 "a just and a true record," v26
+  "then shall they know their Redeemer… gathered in from the four
+  quarters."
+- **3 Ne 8** (the destruction): v1 "cleansed every whit," v18 "in seams
+  and in cracks," v20 "feel the vapor of darkness," v23 "three days…
+  no light," v25 the too-late lament.
+- **3 Ne 11** (★ Christ descends): v7 "Behold my Beloved Son… hear ye
+  him," v11 "drunk out of that bitter cup," v14 "feel the prints of
+  the nails… that I am the God of Israel," v27 "the Father, and the
+  Son, and the Holy Ghost are one," v29 "the father of contention,"
+  v40 "more or less than this… cometh of evil." The heart of the book,
+  verbatim-clean.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
