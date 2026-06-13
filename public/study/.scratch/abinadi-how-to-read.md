@@ -1,12 +1,3 @@
-> **⚠ Provenance correction notice (2026-06-13).** This scratch file predates the
-> study-correctness walk and the 2026-06-09 Webster repair. Some quotes recorded
-> here as "verified" — especially Webster 1828 definitions — were checked against
-> a tool then serving 1913-as-1828 text, or are pre-correction scripture/date
-> wordings. **At present the study file is authoritative** for the corrected text
-> (every correction is logged in `study/.audit/findings.md`). This is temporary:
-> once the walk's corrections are normalized *through* scratch, scratch is
-> authoritative again and this banner is removed. See `study/.scratch/README.md`.
-
 # Abinadi — How to Read Scripture — Source Log
 
 *Working document. Kept as research provenance — traces how observations were reached.*
