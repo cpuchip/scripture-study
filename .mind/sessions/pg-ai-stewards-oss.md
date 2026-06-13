@@ -3,7 +3,7 @@ lane: pg-ai-stewards-oss
 session_id: 7ea7faa4-688a-451a-ac68-b7ea662d4b81
 status: active
 started: 2026-06-09T18:00:00
-last_active: 2026-06-12T21:41:05
+last_active: 2026-06-13T11:58:57
 ---
 
 ## Working on
@@ -18,6 +18,18 @@ last_active: 2026-06-12T21:41:05
   commits unpushed (Michael's push).
 
 ## Claims
+- 2026-06-13T12:08:01 background (Bash): cd "C:/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/pg-ai-stewards-oss" && echo "=== coder-runtime image ===" && docker images --format '{{.
+- 2026-06-13T12:06:14 background (Bash): cd "C:/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/pg-ai-stewards-oss" && docker build -f extension/coder-runtime.Dockerfile -t coder-runti
+- 2026-06-13T10:57:04 background (Bash): cd "C:/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/pg-ai-stewards-oss" && docker build -t stewards-oss-pg:genresolver -f extension/Dockerfi
+- 2026-06-13T10:15:52 background (Bash): cd "C:/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/pg-ai-stewards-oss" && docker compose build bridge 2>&1 | tail -40
+- 2026-06-13T08:53:48 background (PowerShell): docker build -t stewards-oss-pg:b6 "C:\Users\cpuch\Documents\code\stuffleberry\scripture-study\projects\pg-ai-stewards-oss\extension" 2>&1 | Select-Object -Last
+- 2026-06-13T01:50:25 background (PowerShell): docker build -t stewards-oss-pg:b5 "C:\Users\cpuch\Documents\code\stuffleberry\scripture-study\projects\pg-ai-stewards-oss\extension" 2>&1 | Select-Object -Last
+- 2026-06-13T01:41:54 background (PowerShell): docker build -t stewards-oss-pg:b5 "C:\Users\cpuch\Documents\code\stuffleberry\scripture-study\projects\pg-ai-stewards-oss\extension" 2>&1 | Select-Object -Last
+- 2026-06-13T01:36:14 background (PowerShell): docker build -t stewards-oss-pg:b5 "C:\Users\cpuch\Documents\code\stuffleberry\scripture-study\projects\pg-ai-stewards-oss\extension" 2>&1 | Select-Object -Last
+- 2026-06-13T01:07:21 background (PowerShell): docker build -t stewards-oss-pg:b4 "C:\Users\cpuch\Documents\code\stuffleberry\scripture-study\projects\pg-ai-stewards-oss\extension" 2>&1 | Select-Object -Last
+- 2026-06-12T23:16:21 background (Bash): docker build -t stewards-oss-pg:b4 /c/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/pg-ai-stewards-oss/extension 2>&1 | tail -20
+- 2026-06-12T22:59:03 background (Bash): docker build -t stewards-oss-pg:b4 /c/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/pg-ai-stewards-oss/extension 2>&1 | tail -40
+- 2026-06-12T22:15:58 background (Bash): docker build -t stewards-oss-pg:b3 . > /tmp/b3-build.log 2>&1; echo "BUILD EXIT: $?"
 - 2026-06-12T19:52:26 background (Bash): docker build -t stewards-oss-pg:b2 . 2>&1 | tail -4
 - 2026-06-12T19:36:21 background (Bash): cd /c/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/pg-ai-stewards-oss/extension && docker build -t stewards-oss-pg:b2 . 2>&1 | tail -5
 - 2026-06-12T19:07:26 background (Bash): cd "/c/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/pg-ai-stewards-oss/extension" && docker build -t stewards-oss-pg:b1b . 2>&1 | tail -25

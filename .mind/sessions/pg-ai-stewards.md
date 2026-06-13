@@ -7,6 +7,25 @@ last_active: 2026-06-13T09:51:34
 ---
 
 ## Working on
+- **★ M1 — CODER-MCP PORTED + HARDENED + VERIFIED 2026-06-13 (OSS `321176c`,
+  COMMITTED LOCAL, NOT PUSHED — Michael "proceed with M1").** The inert 20-coder
+  surface is now alive. coder-mcp folded into the root module (was own module on
+  go-sdk v1.6.0→v1.6.1, builds clean). Files: cmd/coder-mcp/{main,tools}.go +
+  sandbox/sandbox.go (clean-room; **CODER_REPO_ALLOWLIST now DENY-ALL default**,
+  commit author env-configurable); extension/coder-runtime.Dockerfile (hardened
+  sandbox, non-root coder uid 1000); bridge.Dockerfile (+coder-mcp +docker-cli/
+  git/github-cli); **docker-compose.coder.yaml** (OPT-IN override — default `up`
+  stays socket-free); .env.example coder section; **SECURITY.md** (trust model +
+  hardening review = the ship-gate doc). **VERIFIED:** coder-mcp builds+vets;
+  `coder-mcp -smoke` PASS (sandbox spawn w/ cap-drop=ALL/no-new-privs/mem-cpu-pids
+  caps/non-root → Go1.26/Node24/Python3.11+LSPs → write+build → teardown);
+  `bridge refresh-tools` = **3/3 OK, coder [OK] 16 tools** (was [FAIL] in M0).
+  Hardening confirmed: token never in sandbox (bridge-side one-shot cred helper);
+  deny-all allow-list; protected-branch refusal; reaper. **★ HINGE ②: awaiting
+  Michael's ship nod after he reads SECURITY.md — then push.** Residual decisions
+  in SECURITY.md: docker-socket=host-root (dedicated-host posture), egress
+  default-on per build, coder row ships enabled-but-inert-without-socket. cv4
+  minimax-m3 model seed → overlay (carry-forward). Task #158.
 - **★ GOSPEL-ENGINE RESOLVER GENERALIZED 2026-06-13 — core `4bb80ab` + overlay
   `90906f7`, both pushed** (Michael: "generalize as much as possible; shouldn't be
   project/workspace aware but configurable to pull external resources"). The
