@@ -14,15 +14,15 @@ The repeated punch through the whole interview: **the problem isn't testimony, i
 
 The clearest verbs Todd uses for what real repentance looks like:
 
-- *Lamoni's father in [Alma 22:18](../../gospel-library/eng/scriptures/bofm/alma/22.md)*, quoted twice and cited as the model: "I don't know your name, but I'm willing to give all my sins away to know you."
+- *Lamoni's father in [Alma 22:18](../../gospel-library/eng/scriptures/bofm/alma/22.md)*, quoted and cited as the model: "I don't know your name, but I'm willing to give all my sins away to know you." (Todd calls the king "Ammon"; the praying king is Lamoni's father, taught by Aaron — the prayer text is right, the missionary's name is Todd's slip.)
 - Not cataloging behaviors ("I yelled at my kids, I watched too much TV, I could have done 1% better") — that is behavior management dressed as repentance.
 - "You don't 1% your way into a broken heart. It's either broken or it's not."
 - "You can't even soften your own heart" — [1 Nephi 2:16](../../gospel-library/eng/scriptures/bofm/1-ne/2.md). The most striking move in the interview. The softening itself is not the steward's work to do.
 - Pornography (or any besetting sin) is a *fruit*. Change the tree. "If you have a bad fruit on a tree, you don't try to change the fruit."
-- Prayer is the platform: "Your work is the thing you carry forth that you build in your prayer."
+- Prayer is the platform: "Your work is the thing that you're carrying forth that you build in your prayer."
 - The Nephites in Alma 43 fell down to pray *in the middle of battle*. The Lamanites thought they were collapsing in fear. They had practiced.
 
-The host (the one running Send Me) does something quieter but important. He keeps interrupting himself to say "my brain just exploded" or "say that again." He names what most men in the church feel but rarely speak: that we have the *forms* of covenant without the power. That we treat God's power as "a really good thing" pointing us the right direction rather than as actual present power. That presiding has been confused with armor-and-gun readiness when it is downstream of the inner state.
+The host (the one running Send Me) does something quieter but important. He keeps interrupting himself to say "my brain exploded" or "say that again." He names what most men in the church feel but rarely speak: that we have the *forms* of covenant without the power. That we treat God's power as "a really good thing" pointing us the right direction rather than as actual present power. That presiding has been confused with armor-and-gun readiness when it is downstream of the inner state.
 
 ---
 
@@ -32,23 +32,27 @@ The host (the one running Send Me) does something quieter but important. He keep
 
 The video literally cites the king's prayer as the model of real repentance. Todd is making the same move the study made: contrasting *give-up-all-that-I-possess* (Pharisee-grammar, external goods, [Alma 22:15](../../gospel-library/eng/scriptures/bofm/alma/22.md)) with *give-away-all-my-sins* (publican-knowledge, the only thing actually his to give, [Alma 22:18](../../gospel-library/eng/scriptures/bofm/alma/22.md)). Where Todd sharpens the study's reading: he treats the verb shift as not just a verbal observation but a structural diagnosis of *the entire pastoral mistake* most LDS men are making. We catalog. We tally. We try to 1% our way in. The king didn't. He proposed the whole-heart trade in one sentence, and the trade went through.
 
-The study said the cross-wiring (Webster's *possess* — "to enter into and influence; to control the will of; to fill") suggested the king was the one being released. Todd makes the same release explicit: "You can't even soften your own heart." The grammar of release runs in one direction, and it is the Lord's hand on the verb.
+The study said the cross-wiring (Webster's *possess* — "to have power over; as an invisible agent or spirit") suggested the king was the one being released. Todd makes the same release explicit: "You can't even soften your own heart." The grammar of release runs in one direction, and it is the Lord's hand on the verb.
 
 ### 2. [brother-of-jared-three-problems.md](../brother-of-jared-three-problems.md) — the three patterns, re-keyed
 
 Todd doesn't name the three patterns by the brother-of-jared shape, but the architecture is identical:
 
-- **Prescription** ↔ Todd's "celestial" tier. Drill the holes in top and bottom. Laws, walls, ordinances, "the law of Moses gives you a pattern and a border and preserves you from dying fast." Necessary, not saving.
+- **Prescription** ↔ Todd's "celestial" tier. Drill the holes in top and bottom. Laws, walls, ordinances — the law of Moses "put up a border and a wall and gave them a pattern" and "preserves you from dying fast." Necessary, not saving.
 - **"I have already done it"** ↔ Todd's whole theology of justification. The winds were already going forth. *You cannot soften your own heart.* The brother of Jared dropped the steering question on the second prayer because some things are the Lord's to handle — Todd takes this further: even the *interior softening* is the Lord's to handle. You sit, you breathe, you abide, you allow Him to do it. The steward's part is not to manufacture the softening; the steward's part is to *not run away from the room where the softening happens*.
 - **Proposal** ↔ Todd's broken-heart sacrifice. You bring your whole heart, the molten stones, and the Lord touches what only He can touch. He makes them shine. The result is the veil torn ([Ether 3:6](../../gospel-library/eng/scriptures/bofm/ether/3.md)) — what Todd calls calling-and-election-made-sure.
 
-The study's Section VI noted that the proposal pattern is the *occasion* of theophany but faith is the *cause*. Todd says the same thing in different words: "Bringing the Master something He didn't ask for does not, by itself, tear veils. What tore the veil was faith." Same conclusion, independent witness.
+The study's Section VI made the point in its own words: "Bringing the Master something He didn't ask for does not, by itself, tear veils. What tore the veil was faith." Todd reaches the same conclusion from the other direction — the breakthrough is never the steward's mechanism but the Lord's, because "you can't even soften your own heart." Same conclusion, independent witness.
+
+*(Corrected 2026-06-12 — an earlier version attributed the "Bringing the Master something He didn't ask for…" sentence to Todd. That sentence is the [brother-of-jared](../brother-of-jared-three-problems.md) study's own Section VI prose; Todd never discusses the veil-tearing in those terms. His genuine parallel is the interior-softening thesis quoted here, which he does say verbatim.)*
 
 ### 3. [refinement-stewardship-and-hope.md](../refinement-stewardship-and-hope.md) — the synthesis confirmed
 
 Todd's covenant-as-entropy-reversal is the same picture as the refinement triplet: spirit-matter restructured under law to abide higher glory. The study said sanctification "is not an abstract forensic transaction. It is a physical reality." Todd says the same: "your physical body is which is a temple as well and your spirit and all of these things come into sanctified unity which gives you power in the priesthood. That's where power in the priesthood directs — your sanctified unity with God and your body."
 
-The triplet (Refinement / Stewardship / Hope) gets reinforced specifically at the hope axis. The study said the brother of Jared's stewardship "rested in this established grace, and sang praises" because the wind was already blowing. Todd says: "The brother of Jared did sing praises unto the Lord, and he did thank and praise the Lord all the day long." Then he generalizes — the resting/singing posture *is* the prayer life that "builds the platform" from which all daily work flows.
+The triplet (Refinement / Stewardship / Hope) gets reinforced specifically at the hope axis. The refinement study said the steward's part is to "rest in this established grace, and sing praises" because the wind was already blowing — the posture Ether records of the brother of Jared, who "did sing praises unto the Lord… all the day long" ([Ether 6:9](../../gospel-library/eng/scriptures/bofm/ether/6.md)). Todd lands on the same posture from his own angle: the resting/singing life *is* the prayer life — "your prayer is your platform" — from which all daily work flows.
+
+*(Corrected 2026-06-12 — an earlier version attributed the Ether 6:9 singing-praises text to Todd as something he said. It is scripture; Todd never quotes it (he names the brother of Jared once, only in a list of mountain-theophanies). His genuine parallel is "your prayer is your platform," quoted here. The refinement-study phrase was also realigned to its source wording, "rest… and sing.")*
 
 ### 4. [mechanics-of-refinement.md](../mechanics-of-refinement.md) — the physics, restated by a different voice
 
@@ -110,7 +114,7 @@ One smaller note worth flagging: Todd uses "celestial" for the *lowest* tier (tr
 
 ## What the host adds that Todd doesn't
 
-The host of Send Me is doing something specific worth naming. He keeps modeling a posture: be undone in real time, name it out loud, then ask the next question. "My brain just exploded." "Say that again." "My eyes glaze over and the drill will come out of my mouth." This is *not* posturing — it is the posture that lets the conversation land. Todd is preaching; the host is *receiving in public* so the listener has a place to stand.
+The host of Send Me is doing something specific worth naming. He keeps modeling a posture: be undone in real time, name it out loud, then ask the next question. "My brain exploded." "Say that again." "My eyes glaze over and the drill will come out of my mouth." This is *not* posturing — it is the posture that lets the conversation land. Todd is preaching; the host is *receiving in public* so the listener has a place to stand.
 
 The host also names the gap between covenant-as-form and covenant-as-power more plainly than Todd does. His paraphrase, around 19:13: "I look at all this you talk about the covenant and I'm like, well, do we have the personalized relationship? If I speak for the men, I'd say it's very obvious that when that personalized relationship is lacking, there's less priesthood used in the home. There's less ongoing discernment and the use of the power of prayer. We treat God's power and these covenants as though it's like 'this is a really good thing,' but in terms of *is it true power* — no."
 
