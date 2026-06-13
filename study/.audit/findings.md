@@ -3168,6 +3168,30 @@ LINKS ×3. No markdown links.
 - Four CLEAN. (2 Ne 1 and 5 reference further spin-offs —
   2ne1_prosperity-covenant, etc. — which are their own walk items.)
 
+### #283 `2ne1_prosperity-covenant` (T1) — REQUOTE (Webster #132)
+- A 7-section study tracing the prosperity covenant from 1 Ne 2 to
+  Ether 2, and EVERY scripture in it is verbatim-accurate: 1 Ne
+  2:20-21 (the fountainhead's two asymmetric halves), 2 Ne 1:20 + the
+  Zoram blessing 1:31 ("nothing, save it shall be iniquity… shall
+  harm or disturb their prosperity"), Alma 9:13, ★ Ether 2:9 + 2:12
+  ("whatsoever nation shall possess it shall serve God, or… be swept
+  off" / "the God of the land, who is Jesus Christ"), the long Hel
+  12:2 pride-trap quote ("at the very time when he doth prosper his
+  people… because of their ease"), 1 Ne 17:34-35, Mosiah 2:22/38/41,
+  Alma 50:21-23, Hel 3:33/35/36 — all EXACT. All links resolve.
+- ★ **One Webster contamination: PRESENCE (word #132).** §V quoted the
+  1828 as "neighborhood to the person of one of superior or exalted
+  rank." Confirmed by direct lookup of BOTH editions that this is
+  Webster's **1913** def 3 verbatim, not the 1828. The genuine 1828
+  "presence" gives "Approach face to face or nearness of a great
+  personage" (def 3), "The person of a superior" (def 9), and "The
+  apartment in which a prince shows himself to his court" (def 8) —
+  the same royal-access meaning the study draws on. Requoted + dated
+  note. The other Webster word — **PROSPER** §IV "to favor; to render
+  successful" — was checked and **IS genuine 1828** (transitive def 1
+  verbatim), so it stands. Net: one requote.
+- **Webster running count: 131 → 132 (PRESENCE).**
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
