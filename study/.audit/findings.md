@@ -2073,6 +2073,19 @@ eight vessels (Ether 3:1 parenthetical), 344 days (Ether 6:11
 the steward had stopped asking" observation checks out — v22 asks
 only about light; v24 volunteers the steering answer.
 
+### study/refinement-stewardship-and-hope.md (2026-05-24) — Ether 12:19-20 phantom phrase
+FULL. The Ether 12:19-20 blockquote inserted "because of his
+relation to the Lord" — a phrase in NEITHER verse — and joined
+v19 (the many) to v20 (the brother of Jared) without a marked
+ellipsis. Corrected with note; the scratch file's provenance notes
+do NOT contain the phrase, so it entered at draft time, after
+verification. Also linked the bare "maketh not ashamed" to Romans
+5:5. Everything else verbatim: Ether 2:20/23/24-25, 3:1/4 (re-used
+from the parent study, correctly), D&C 88:34 (trailing trim at
+clause boundary), 93:28, 93:33, Heb 6:19, Moroni 7:48 (leading
+"that" trimmed at clause boundary), Deut 19:15. D&C 88:7-13/28/
+67-68 paraphrases fair.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
