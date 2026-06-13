@@ -16,8 +16,21 @@ last_active: 2026-06-13T09:51:34
     catalog, free models flagged) + `.env.example` provider block + `examples/README.md`.
   - **JOURNALED** (`096c7df`): `.spec/journal/2026-06-13-mcp-packaging-coder-and-usable.md`
     covers the whole session (plan→M0→resolver→harness→study-spec→M1 coder→M2→#1+#2).
-  - **NEXT per Michael: #3 book-digester** → #4 playlist digester → #5 cutover → #6
-    self-improvement loop → #7 fun. Details below.
+  - **#3 DONE + RAN — book-digester** (OSS `eacb6c7`, `examples/book-digester.sql`):
+    book_shelf + book_next/book_publish/book_add tools + 4-stage `book-digest` pipeline
+    (read→digest→critique→recommend) + `book-study` intent + hourly schedule + shelf
+    (Self-Reliance→Meditations→Tao Te Ching→Art of War). **PROVEN END-TO-END on the OSS
+    stack with Michael's keys** (he copied his live .env in — NOT the cutover, just lending
+    the dev stack his model keys side-by-side): first run digested Self-Reliance (8KB digest;
+    **the qwen3.7-plus critique stage caught + corrected a real placement error** — null-case
+    working), published study/books/self-reliance.md + a brain entry, advanced the shelf to
+    Meditations. Single-pass v1 (long-book map-reduce = v2). Uses stewards-explore (kimi-k2.6
+    doer / qwen3.7-plus critic). Verify-loop catches: grant source enum=manual; core ships
+    NO intents (seed own) + NO 'research' agent (use stewards-explore). chat-post deferred
+    (double-fire: don't run OSS --profile personas with live persona keys). **OSS stack left
+    RUNNING — hourly tick will digest Meditations next.**
+  - **NEXT per Michael: #4 playlist digester** → #5 cutover → #6 self-improvement loop → #7 fun.
+    Details below.
 - **★ ROADMAP DETAIL (captured, #3+ NOT yet built):**
   - **Search VERIFIED WORKING in LIVE** (`pg-ai-stewards-dev`): `exa-search` enabled +
     granted to research/study/research-gospel + **real-path test PASSED** (web_search_exa
