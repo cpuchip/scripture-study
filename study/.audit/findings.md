@@ -2685,6 +2685,20 @@ which are to come; wherefore, he worketh in me"). The 116-pages /
 D&C 10:38-40 providence is a footnote pointer (well-attested),
 honestly flagged. CLEAN.
 
+### study/bom-walk/2-nephi/2-nephi-12.md (2026-06-01) — CLEAN (Isaiah-variant chapter)
+LINKS. No markdown links. The substance is the BoM-vs-KJV Isaiah 2
+variant analysis — ★ all three "substantive verified variants"
+CONFIRMED by direct 2 Ne 12 vs Isaiah 2 comparison this session:
+v5 (BoM adds "yea, come, for ye have all gone astray, every one to
+his wicked ways"; KJV stops at "light of the Lord"); v9 (BoM
+inserts "not" twice — "boweth NOT down…humbleth himself NOT"; KJV
+has neither); v16 (BoM has BOTH "ships of the sea" AND "ships of
+Tarshish"; KJV/MT only Tarshish). The v6 "O Lord" address +
+"hearken unto soothsayers" variant also holds. All quoted lines
+(vv2-22) are from 2 Ne 12, verbatim. The chapter-intro footnote
+claim ("differences in more than half of the 433 verses") is the
+study aid's own. Careful, sound variant work. CLEAN.
+
 ## Walked out-of-band before the walk began
 
 ### study/morm-8-three-glories-reading.md (2026-06-09)
