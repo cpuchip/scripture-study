@@ -46,6 +46,28 @@
 
 **Egyptological note:** a hypocephalus is a real Egyptian object — a disk of linen or papyrus placed *under the head* of a mummy, meant to surround the deceased with light/heat and divine protection; the figures are conventional (the four-ram-headed creator-god at center, the cow-goddess Ihet, the sons of Horus). Joseph's reading is astronomical/cosmological; the Egyptological function is funerary. Also honest to note: portions of this hypocephalus were **damaged on the original and filled in by the printer** when the woodcut was made (scholars dispute some of the restored figures) — so the published image is partly a reconstruction. The translation-historicity seam, again. By eye, though: it *is* a concentric cosmological-looking disk with a central governing figure and a graded order radiating from it — which is exactly what Abraham 3 describes.
 
+### Figures 8–21 — the reserved panels (the part the Explanation won't explain)
+
+The Explanation does something deliberate that's easy to miss until you ask after the *un*-explained figures (Michael did). Figures 1–7 (and 22–23) are the **pictures** — Kolob, Oliblish, the throne-gods, the sun-cow, the four earth-figures, the stars. Figures **8–21 are almost entirely the panels and bands of hieroglyphic *writing*** ringing those pictures (the side columns 9, 10, 12–15; the lower bands 16, 17; the upper-left blocks 18–21). And those are exactly the ones Joseph **reserves**:
+
+- **Fig. 8:** "Contains writings that cannot be revealed unto the world; but is to be had in the Holy Temple of God."
+- **Fig. 9:** "Ought not to be revealed at the present time."
+- **Fig. 10:** "Also."
+- **Fig. 11:** "Also. If the world can find out these numbers, so let it be. Amen."
+- **Figs. 12–21:** "will be given in the own due time of the Lord."
+
+So the Explanation **reads the iconography and draws the curtain precisely at the written characters** — pictures explained, text reserved.
+
+**The withholding is the point, and it's a pattern, not an anomaly.** Fig. 8 sends the reader to "the Holy Temple of God," and the timing is not incidental: Facsimile 2 was printed in March 1842, weeks before Joseph introduced the Nauvoo endowment (May 1842). The reserved material is *temple* knowledge — had in the temple, not in print. That is the Pearl of Great Price's own recurring habit, which the walk kept hitting: Moses 1:42 ("show them not unto any except them that believe"); Abr 1:31 (the records "preserved in mine own hands"); Ether 4:5–7 (the sealed portion, released only as faith grows); 3 Ne 26:9–11 (the lesser part written to *try* faith before the greater is given). Figures 8–21 put that whole revealed/reserved boundary **inside one image**: 1–7 are the milk you may have now, 8–21 are "the own due time of the Lord." The withholding *teaches* — it tells you the disk is more than its explained parts. It is Article 9 ("He will yet reveal") turned to the reserve side: *this is kept until He does.*
+
+**And the tone is graded, not a uniform seal:** Fig. 8 is firm (temple-only); Fig. 9 is "not *now*"; Fig. 11 is almost playful — *"If the world can find out these numbers, so let it be. Amen."* — a challenge more than a lock, treating the reserved knowledge as discoverable-by-the-worthy rather than absolutely hidden.
+
+**The honest counter-reading (not soft-pedaled).** Egyptologically, figures 8–21 are standard hypocephalus text (Book-of-the-Dead-162-type funerary material). And the original of *this* disk was damaged: when the 1842 woodcut was cut, the missing portions were **filled in by the engraver**, partly with characters borrowed from *other* Joseph Smith papyri (including hieratic text from the Book of Breathings, set in sideways) — the right-side panels and parts of the outer ring are where that fill-in lands. So in the documentary record, some of the "reserved" figures are **reconstruction**, not original to the disk. The skeptical reading writes itself: "cannot be revealed" looks like declining to explain panels that were ordinary funerary writing and partly the printer's patch.
+
+**Where the note lands — calibrated, Michael's + the Spirit's to weigh.** The two readings need not be collapsed. The *principle* the figures enact — reserve the sacred for the temple and for greater faith — is real, pervasive, and divinely patterned across the canon; figures 8–21 are a clean instance of it. *Whether these specific glyphs encode hidden astronomical or temple revelation* is the open question, and the reconstruction problem cuts hard against reading them as a cipher. One can hold both: the reserve is true doctrine; this particular printed Egyptian artifact is a damaged, partly-reconstructed funerary disk. The doctrine doesn't depend on the glyphs carrying it. Same translation-historicity seam as Abraham 1 — sitting right here, in the figures Joseph chose *not* to explain.
+
+*(Verbatim Fig. 8–11 + the Figs. 12–21 line verified via the Church study site this session. The picture-vs-writing observation is first-hand from the image. The 1842/endowment timing and the reconstruction/fill-in are well-established history + the 2014 "Translation and Historicity" essay, stated not quoted. The revealed/reserved reading is my digestion, calibrated.)*
+
 ---
 
 ## Facsimile 3 — the court (Abraham 2–3)
