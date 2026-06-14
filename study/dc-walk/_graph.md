@@ -272,3 +272,11 @@ Edge vocabulary: `cross-ref` · `fulfillment` · `parallel` · `covenant-thread`
 - `reproof:calibrated-to-cure` (30:3-4) —[consequence-fits-the-fault: "left to inquire for yourself"]→ door-not-shut ("until I give… further commandments") · —[=]→ §9 / §23
 - `order:authority-chain-in-companionship` (30:7) —[Peter heeds Oliver; Oliver answers only to Joseph]→ §28 order scaled to two men on the road
 - ✦ **DECADE 21-30 CLOSED:** the Church finds its feet — order of revelation (§28) + common consent (§26) + the great panorama (§27 keys, §29 Creation/agency); the §28→§30 order-cross-check arc; missions launch (Lamanite mission, §28/30/32)
+
+## D&C 31 — govern your house in meekness (Fayette, Sept 1830, Thomas B. Marsh)
+**Nodes:** `★ presiding:govern-your-house-in-meekness` (31:9) · `warning:given-early-at-the-call` (31:9) · `promise:family-faith-comes` (31:2) · `antidote:I-am-with-you` (31:13)
+**Edges:**
+- `★ presiding:govern-your-house-in-meekness` (31:9) —[=]→ D&C 121:41-42 (no compulsion, only persuasion/meekness) — the presiding covenant in the HOME, its MOST PERSONAL form · —[paired]→ "revile not… physician not combatant" (31:9-10)
+- `warning:given-early-at-the-call` (31:9, Marsh's meekness) —[the-fault-line-named-at-the-start]→ §23:1 (Oliver's pride) · —[Marsh's-1838-fall-began-in-a-household-quarrel; returned 1857]→ [bin-4-adjacent biography] · —[grace-outlasts-the-fall]→ 31:2
+- `promise:family-faith-comes` (31:2 "nevertheless… the day cometh that they will believe")→ the `nevertheless` hinge
+- `antidote:I-am-with-you` (31:13) —[cure-for-affliction/fear = Presence]→ §24:8 / §30:11 (Matt 28:20)
