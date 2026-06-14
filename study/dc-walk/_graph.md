@@ -155,3 +155,23 @@ Edge vocabulary: `cross-ref` · `fulfillment` · `parallel` · `covenant-thread`
 - `relics:convergence` (17:1) —[Jaredite+Lehite+Nephite-in-one-view]→ sword of Laban (1 Ne 4) + interpreters (Ether 3) + Liahona (1 Ne 16)
 - `faith:the-prophets-of-old` (17:2) —[=]→ Ether 12; Heb 11 (shared faith, not just shared doctrine)
 - ✦ **§5 promise FULFILLED at §17** — the law-of-witnesses thread (§5→§14→§17) lands; the verification arc §5→§17 closes
+
+## D&C 18 — the worth of souls (Fayette, June 1829; the Twelve foreseen)
+**Nodes:** `★ doctrine:worth-of-souls = the-Atonement's-cost` (18:10-11) · `math:one-soul-is-worth-a-life` (18:13-16) · `salvation:by-taking-the-name-of-Christ` (18:21-25) · `apostleship:by-desire-and-works` (18:27,37-38) · `office:the-Twelve` (18:26-32, pre-organization)
+**Edges:**
+- `★ worth-of-souls = the-Atonement's-cost` (18:10-11) —[you-know-worth-by-the-price]→ "suffered the pain of all men" · —[pairs]→ D&C 19:16-18 (cost shown) · —[=]→ Isa 43:4; Luke 15:7
+- `math:one-soul-is-worth-a-life` (18:13-16) —[the-floor-dignified]→ "save it be one soul… how great shall be your joy" · —[completes]→ §§15-16
+- `salvation:by-taking-the-name-of-Christ` (18:21-25) —[=]→ Acts 4:12; Mosiah 5:8-12 · —[name-at-the-last-day]→ temple/new-name thread [Michael, reserved] · —[look-unto-me]→ D&C 6:36
+- `apostleship:by-desire-and-works` (18:27,37-38) —[desire-as-entry-point reaches the highest office]→ §4 → §18 · —[known-by-fruit]→ Matt 7:16; §11:12
+- `office:the-Twelve` (18:26-32) —[foreseen-pre-organization]→ realized 1835; D&C 107:23
+
+## D&C 19 — "I, God, have suffered these things for all" (Manchester, summer 1829, Martin Harris)
+**Nodes:** `★ mercy:eternal-punishment-is-Gods-punishment` (19:6-12) · `★ Atonement:first-person-Gethsemane` (19:16-19) · `word:exquisite` (19:15) · `doctrine:hell-is-the-withdrawal-of-the-Spirit` (19:20) · `★ structure:the-cost-then-the-farm` (19:16-19 → 26-35) · `response:joy-not-guilt` (19:39)
+**Edges:**
+- `★ eternal-punishment-is-Gods-punishment` (19:6-12) —[Endless/Eternal = God's NAMES]→ Moses 1:3; 7:35 (PoGP) · —[not-infinite-duration → dissolves Calvinist hell-terror]→ words chosen for weight, "to work upon the hearts" · —[hermeneutical-revelation]→ how to read God's own words (cf. 1:24)
+- `★ Atonement:first-person-Gethsemane` (19:16-19) —[only-from-inside]→ vs Luke 22:44 (outside) · —[the-shrinking-left-in]→ "would that I might not… and shrink" · —[pivots-on-NEVERTHELESS]→ 19:19 · —[body-AND-spirit]→ matter-spectrum (the Creator-capacity §14:9 at its redemptive limit)
+- `word:exquisite` (19:15) —[Webster 1828: exquiro "to seek out"]→ sought-out/searchingly + highest-degree/very-sensibly-felt → the pain fully perceived
+- `doctrine:hell-is-the-withdrawal-of-the-Spirit` (19:20) —[you-have-tasted-the-least-degree]→ §3 / §10:2 (mind darkened) · —[to-be-punished = without-Endless]→ "peace IN ME" (19:23)
+- `★ structure:the-cost-then-the-farm` (19:16-19 → 26-35) —[the-juxtaposition-IS-the-sermon]→ after 19:18 the mortgage is unanswerable · —[giving-as-freedom]→ "release thyself from bondage" (19:35)
+- `response:joy-not-guilt` (19:39) —[the-right-reading-of-the-Atonement]→ "canst thou read this without rejoicing?" · —[=]→ §6:20 (arms of love) at Atonement scale
+- ✦ **§18 ↔ §19:** worth of souls NAMED ↔ the cost SHOWN; links truth-atonement + .scratch-how-is-it-done + nevertheless studies
