@@ -500,3 +500,20 @@ Edge vocabulary: `cross-ref` · `fulfillment` · `parallel` · `covenant-thread`
 - `★ repentance:confess + forsake → remember-no-more` (58:42-43) —[two-marks: name-it + leave-it; against-false-repentance]→ Isa 1:18; Jer 31:34 · —[God FORGETS the-forgiven-sin]→ the §19 Atonement's purpose realized
 - `★ presiding:the-judge-is-NOT-a-ruler` (58:20) —[unrighteous-dominion-guard built-into-the-granting-of-authority]→ D&C 121:39-46 · —["let God rule him that judgeth"]· —[paired]→ obey-the-laws-of-the-land (58:21-22, Rom 13 / A of F 12 / §134)
 - `faith-failure:misread-the-revoking` (58:30-33) —[God-conditioned-it; they-disobeyed; revoked; then-blame-God]→ §56:3-4 / §82:10 misread · —[the-passive-servant becomes-the-doubter]
+
+## D&C 59 — thank the Lord in all things, and the fulness of the earth (Jackson County, Aug 7 1831; the Sabbath; Polly Knight's death)
+**Nodes:** `★ gratitude:thank-God-in-all-things / ingratitude-the-chief-offense` (59:7,21) · `★ earth:good — given-for-joy-and-the-senses` (59:16-20) · `Sabbath:joyful-sobriety` (59:9-15) · `worship:the-broken-heart-sacrifice` (59:8) · `comfort:works-follow-the-faithful-at-death` (59:2)
+**Edges:**
+- `★ gratitude:thank-God-in-all-things / ingratitude-the-chief-offense` (59:7,21) —[the-OFFENSE = confess-not-His-hand-in-ALL-things + disobey]→ ingratitude = blindness-to-the-Giver, the-root-sin · —["his hand in ALL things"]→ the §54/§58 tribulation included · —[gratitude = recognition-of-God regardless-of-circumstance]
+- `★ earth:good — given-for-joy-and-the-senses` (59:16-20) —["to please the eye and gladden the heart… for taste and smell, to enliven the soul"]→ NOT just survival but DELIGHT · —[against-asceticism]→ §49 (marriage-ordained); §29 (all things spiritual) · —[the-physical is-GOOD; "with judgment, not to excess" (59:20)] · —[follows-from-gratitude: receive-the-good-as-gifts]
+- `Sabbath:joyful-sobriety` (59:9-15) —[rest + worship + confession + REJOICING ("fasting… in other words, rejoicing")]→ keep-unspotted (James 1:27) · —[glad-NOT-flippant: "not with much laughter, for this is sin"]→ §43:34 (solemnities + cheer)
+- `worship:the-broken-heart-sacrifice` (59:8) —[the-INNER-sacrifice replaces-the-Mosaic]→ 3 Ne 9:20 · —[the §52:15-16 contrite-pattern AS worship]
+- `comfort:works-follow-the-faithful-at-death` (59:2) —[death = rest; "their works shall follow them"]→ Rev 14:13 · —[at-Polly-Knight's-grave: labors crowned-not-ended]→ §51:19
+
+## D&C 60 — bury not the talent (Independence, Aug 8 1831; the elders' return)
+**Nodes:** `★ talent:buried-from-fear-of-man` (60:2) · `★ agency:the-means-left-to-the-steward` (60:5) · `manner:bold-but-uncontentious` (60:7,14-15)
+**Edges:**
+- `★ talent:buried-from-fear-of-man` (60:2) —[§58:29's-passive-servant MADE PERSONAL: "will not open their mouths… hide the talent… because of the fear of man"]→ Matt 25:25 · —[fear-of-man = what-makes-a-steward-bury-the-talent]→ §3:7 / §30:1 · —[the-unused-gift FORFEITED: "taken away, even that which they have" (60:3, Matt 25:29)]→ passivity is SUBTRACTIVE
+- `★ agency:the-means-left-to-the-steward` (60:5) —["as seemeth you good, it mattereth not unto me"]→ §58:26 in-a-concrete-case · —[the-irony: same-elders who-wouldn't-act-on-the-command are-now-given-a-thing-to-decide]→ act-on-the-command AND exercise-the-agency
+- `manner:bold-but-uncontentious` (60:7,14-15) —[open-the-mouth (vs 60:2) but "without wrath… not in haste nor with strife"; testimony-against "in secret, lest thou provoke"]→ §52; §28:11 / §42:88
+- ✦ **DECADE 51-60 CLOSED:** consecration-in-practice (§51) → Zion LOCATED (§57) → the AGENCY doctrine (§58, project-source) → the Sabbath/gratitude/earth-goodness (§59) → the talent buried-from-fear (§60). SIX decades done (1-60); nearly halfway.
