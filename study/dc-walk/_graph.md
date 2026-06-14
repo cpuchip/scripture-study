@@ -242,3 +242,12 @@ Edge vocabulary: `cross-ref` · `fulfillment` · `parallel` · `covenant-thread`
 - `★ armor:Ephesians-6-in-Restoration-voice` (27:15-18) —[=]→ Eph 6:11-17 · —[the-sword = revelation]→ "sword of my Spirit… and my word which I reveal" (§8:2) · —[defensive/standing]→ "able to STAND" · —[pieces=walk's-threads]→ truth/faith/Spirit-word
 - `supper:the-future-messianic-feast` (27:5) —[Christ-drinks-with-all-dispensations-on-the-earth]→ Matt 26:29 · —[sacrament-is-rehearsal]→ §20:75
 - ✦ **the priesthood-line + Malachi-sealing threads CONVERGE here** (every key gathered; Elijah's keys named)
+
+## D&C 28 — the order of revelation (Fayette, Sept 1830; Hiram Page's seerstone)
+**Nodes:** `★ epistemology:order-as-the-discernment-cross-check` (28:2,11) · `★ contrast:Hirams-stone-vs-Olivers-rod` (28:11 ↔ §8) · `★ correction:private-persuasion-not-public-shaming` (28:11) · `order:channel-AND-consent` (28:2,13) · `succession:another-in-his-stead` (28:7)
+**Edges:**
+- `★ order-as-the-discernment-cross-check` (28:2,11) —[answers "is it God or me?" STRUCTURALLY]→ §8:2 / §9:8 (felt-signal necessary-not-sufficient) · —[true-distillation-respects-stewardship-bounds; out-of-order = counterfeit's signature]→ the period-language principle's GUARDRAIL
+- `★ contrast:Hirams-stone-vs-Olivers-rod` (28:11 ↔ §8:6-8) —[same-folk-instrument, opposite-verdict]→ rod CLAIMED (§8) / stone REJECTED (§28) · —[discriminator = order/stewardship, NOT the object]→ same gift in-order=of-God / out-of-order=deception
+- `★ correction:private-persuasion-not-public-shaming` (28:11) —[=]→ Matt 18:15 ("between him and thee alone") · —[Oliver's-role-bounded]→ 28:5-6 · —[presiding]→ D&C 121:41-43
+- `order:channel-AND-consent` (28:2,13) —[one-appointed + the-body-confirms]→ safeguard vs anarchy AND tyranny · —[Hiram-fails-both]→ §26
+- `succession:another-in-his-stead` (28:7) —[the-channel-is-an-office-not-a-cult]→ the order outlasts the man
