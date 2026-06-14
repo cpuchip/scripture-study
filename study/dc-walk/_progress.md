@@ -1,7 +1,7 @@
 # Doctrine & Covenants Walk — Progress
 
-**STATUS:** ◷ IN PROGRESS — 1/140 units (138 sections + OD 1 + OD 2).
-**NEXT:** ▶ **D&C 2** (Moroni's quotation of Malachi — Elijah, the hearts of the fathers).
+**STATUS:** ◷ IN PROGRESS — 2/140 units (138 sections + OD 1 + OD 2).
+**NEXT:** ▶ **D&C 3** (the lost 116 pages — "the works… of men" vs the works of God; Joseph rebuked).
 **DEPTH:** ✓ **depth-scaled-to-section** (Michael's call, 2026-06-14) — doctrinal landmarks (76, 88, 93, 107, 121, 132, 138…) get full mini-study depth; short / situational / administrative sections get tight faithful notes. Historical setting engaged every section. Multi-session walk.
 **Started:** 2026-06-14 · **Commit cadence:** per section (or per 2-3 short ones); **no push** (Michael pushes when he reads).
 
@@ -10,7 +10,7 @@
 ## Decade tracker
 | Sections | Done | Notes |
 |----------|:----:|-------|
-| 1–10 | **1** | **§1 ✓** preface (Nov 1831): universal voice; **★1:24 revelation accommodated "after the manner of their language" = period-language principle's floor**; **★1:38 voice-of-servants=Lord's**; nevertheless (1:31-32); idolatry-as-self (1:16). · still: lost-116-pages (3,10); witnesses (5,17); JS+Oliver (6-9, "study it out" 9:8) |
+| 1–10 | **2** | **§1 ✓** preface (Nov 1831): universal voice; **★1:24 revelation accommodated "after the manner of their language" = period-language principle's floor**; **★1:38 voice-of-servants=Lord's**; nevertheless (1:31-32); idolatry-as-self (1:16). **§2 ✓** Moroni's Malachi (1823): Elijah reveals the **priesthood/sealing power**; "promises made to the fathers" (= Abrahamic covenant, **cross-walk to JS-H 1:38 / Abr 2**); earth "utterly wasted" without sealing = seed of temple/genealogy theology. · still: lost-116-pages (3,10); witnesses (5,17); JS+Oliver (6-9, "study it out" 9:8) |
 | 11–20 | — | Aaronic Priesthood (13); the Whitmers; **the Church organized (20-21)**; sacrament prayers (20); Article on marriage/rebuke |
 | 21–30 | — | revelations around the Church's founding; the gathering begins (29) |
 | 31–40 | — | missions; the law begins to come |
@@ -33,7 +33,7 @@
 - **Priesthood — restoration / oath & covenant / offices / presiding terms (13, 20, 84, 107, 121):** _(none yet)_
 - **Degrees of glory / exaltation / nature of God & man (76, 88, 131, 132, 137-138):** _(none yet)_
 - **Consecration / Zion / the law (42, 51, 57, 82, 104-105):** _(none yet)_
-- **Covenant & sealing / keys (110, 124, 131, 132):** _(none yet)_
+- **Covenant & sealing / keys (110, 124, 131, 132):** **D&C 2** — Elijah reveals the priesthood/sealing power; "the promises made to the fathers" (Abrahamic covenant) planted in the children; earth "utterly wasted" without the seal. The temple/sealing/genealogy taproot. → fulfilled D&C 110:13-16.
 - **Gathering / last days (29, 45, 87, 88, 133):** _(none yet)_
 - **★ Project-source-texts (82:10, 88:119, 121, 130:18-19, 107:99, 9:8):** **D&C 1:24** "given… after the manner of their language, that they might come to understanding" = the scriptural floor of the **Period-Language-Reading principle** (Michael's 2026-06-14 articulation; God accommodates His word to the receiver's frame → reading in that frame recovers it). **D&C 1:38** "by mine own voice or by the voice of my servants, it is the same" = the delegation/stewardship principle (voice-of-servants = the Lord's). **D&C 1:31-32** the nevertheless (holiness↔mercy).
 
