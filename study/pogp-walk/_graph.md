@@ -99,3 +99,14 @@ Edge vocabulary: `cross-ref` · `fulfillment` · `parallel` · `type→antitype`
 ---
 ### ✦ BOOK OF MOSES COMPLETE (8/8) — the spine
 Two who "walked with God": Enoch (taken up, 7:69) + Noah (kept back, 8:27). Between them: spiritual-creation-first (3:5) · agency the issue of the war (3:17↔4:3) · the felix culpa (5:11) · the weeping-not-regretting God (7:28 / 8:25) · the gospel unbroken Adam→Noah · two cross-walk joins to the BoM (secret combinations 5:31; terminal state 8:17) · the recurring JS—H 1:20 forward-link (1:9, 6:31). The foundation of the Restoration, received June 1830–Feb 1831, first.
+
+## Abraham 1 — the covenant begins; Abraham on the altar
+**Nodes:** `covenant:begins-with-desire` (1:2-4) · `priesthood:unbroken-from-Adam` (1:3) · `inversion:Akedah` (1:12-15) · `martyrs:daughters-of-Onitah` (1:11) · `christ:Jehovah-delivers-in-person` (1:16) · ⚠ `priesthood-lineage:Pharaoh/Ham` (1:21-27) · `records:preserved` (1:31, →astronomy) · Facsimile 1 (altar scene, folded in)
+**Edges:**
+- `covenant:begins-with-desire` (1:2 "sought… desiring" ×5) —[reframes-election]→ offer meets hunger · —[posture-pair]→ Moses 5:6 (obey-before-understanding)
+- `priesthood:unbroken-from-Adam` (1:3) —[=]→ Moses 6:7 · —[cross-ref]→ D&C 84:6-17
+- `inversion:Akedah` (1:12-15 Abraham bound) —[frames]→ Gen 22 (Isaac bound) — victim-first, then asked to bind *(my reading, labeled)*
+- `martyrs:daughters-of-Onitah` (1:11) —[cross-ref]→ Dan 3:18 · —[delivered-from vs through]→ Abraham rescued / virgins die (both, unreconciled)
+- `christ:Jehovah-delivers-in-person` (1:16) —[is-Christ-God]→ premortal Christ · —[name+priesthood]→ 1:18
+- **⚠ HARD-FLAG (bin-4, Michael's):** `priesthood-lineage:Pharaoh/Ham` (1:21-27) —[text's-own-distinction]→ Pharaoh "a righteous man… blessed" (limit = office, not worth) —[disavowed-reading]→ 2013 "Race and the Priesthood" essay —[datapoint]→ 2 Ne 5:21 study (spans both walks)
+- `records:preserved` (1:31) —[sets-up]→ Abr 3 (astronomy) + 4-5 (creation)
