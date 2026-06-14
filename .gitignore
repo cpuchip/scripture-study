@@ -76,6 +76,22 @@ external_context/
 /projects/marsfield.org/
 /projects/storygames/
 /projects/ai-chattermax/
+# Nested external GitHub-backed repos — must NOT be tracked by the parent
+# (they were being tracked as bare gitlinks; untracked 2026-06-14). Each is
+# its own public/private repo with its own history. Add new ones here.
+/projects/ai-jumpstart/
+/projects/dnd-tools/
+/projects/md-mcp/
+/projects/pg-ai-stewards-oss/
+/projects/pg-ai-stewards-workspace/
+/projects/scripture-book/
+/projects/spin/
+/projects/spoken-study/
+/projects/strongs-concordance-mcp/
+# Scripture MCP servers being extracted to their own public repos + subdomains
+/projects/webster-mcp/
+/projects/byu-citations/
+/projects/gospel-engine/
 
 # (.env coverage moved up to the "Local secrets" block above)
 
