@@ -143,7 +143,7 @@ This verse is the fulcrum of the entire plan. Study every word:
 
 **"And would that I might not drink the bitter cup"** — This is desire. He *wanted* it to stop. He wanted to not drink it. This is not a report of mild discomfort. This is the honest confession of "God, the greatest of all" saying: *I didn't want to do this.*
 
-**"And shrink"** — Webster 1828: *"To withdraw or retire, as from danger; to decline action from fear; to recoil, as in fear, horror, or distress."* He would have shrunk. He would have recoiled. He would have withdrawn. The desire to not proceed was real. But the verse does not end there. The dash at the end of verse 18 is the most important punctuation in scripture. It is the pause before the choice.
+**"And shrink"** — Webster 1828: *"To withdraw or retire, as from danger; to decline action from fear"* and *"to recoil, as in fear, horror or distress."* He would have shrunk. He would have recoiled. He would have withdrawn. The desire to not proceed was real. But the verse does not end there. The dash at the end of verse 18 is the most important punctuation in scripture. It is the pause before the choice.
 
 And then:
 
@@ -239,7 +239,7 @@ Words matter. The scriptures chose these words for a reason.
 
 | Word | Webster 1828 | In Context |
 |------|-------------|------------|
-| **Shrink** | "To withdraw or retire, as from danger; to decline action from fear; to recoil" | He would have recoiled. The desire to stop was real. ([D&C 19:18](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/19?lang=eng&id=p18#p18)) |
+| **Shrink** | "To withdraw or retire, as from danger; to decline action from fear" + "to recoil, as in fear, horror or distress" | He would have recoiled. The desire to stop was real. ([D&C 19:18](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/19?lang=eng&id=p18#p18)) |
 | **Tremble** | "To shake involuntarily, as with fear, cold or weakness; to quake" | God quaked. Not metaphorically. ([D&C 19:18](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/19?lang=eng&id=p18#p18)) |
 | **Agony** | "Pain so extreme as to cause writhing or contortions of the body ... appropriately, the pangs of death, and the sufferings of our Savior in the garden of Gethsemane" | The 1828 dictionary itself defines agony by this very event, citing Luke 22:44. ([Luke 22:44](https://www.churchofjesuschrist.org/study/scriptures/nt/luke/22?lang=eng&id=p44#p44)) |
 | **Cup** | "In a scriptural sense, sufferings and afflictions; that which is to be received or endured" | And Webster's own example is this verse: "let this cup pass from me." ([Matthew 26:39](https://www.churchofjesuschrist.org/study/scriptures/nt/matt/26?lang=eng&id=p39#p39)) |
