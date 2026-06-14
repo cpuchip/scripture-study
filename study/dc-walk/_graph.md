@@ -263,3 +263,12 @@ Edge vocabulary: `cross-ref` · `fulfillment` · `parallel` · `covenant-thread`
 - `★ children:redeemed-from-the-foundation` (29:46-47) —[Atonement-covers-them-before-they-can-choose; Satan-barred-until-accountability]→ Moroni 8 (BoM walk); D&C 68:25 (age 8) · —[the-§19-mercy-for-children: infant-damnation dissolved]
 - `renewal:nothing-lost` (29:25 "not one hair, neither mote") —[matter-conserved-and-transfigured-not-annihilated]→ §10 nothing-lost at cosmic scale
 - `elect:hear-his-voice` (29:7) —[elect-defined-by-hearing/not-hardening, not-arbitrary-predestination]→ John 10:27
+
+## D&C 30 — fearing man, and not fearing man (Fayette, Sept 1830; the three Whitmer brothers)
+**Nodes:** `★ application:§28-cross-check-applied-personally` (30:2, David) · `★ thread:fear-of-man-bookends` (30:1 ↔ 30:11) · `reproof:calibrated-to-cure` (30:3-4) · `order:authority-chain-in-companionship` (30:7)
+**Edges:**
+- `★ §28-cross-check-applied-personally` (30:2) —[David "persuaded by those whom I have not commanded"]→ §28:11 (Hiram Page, out of order) · —[breached-BOTH-halves]→ didn't-heed-the-appointed + heeded-the-unappointed · —[the-affective-root]→ fear (30:1) + worldliness (30:2) make a heart persuadable by counterfeits (the DEVOTIONAL guard on the period-language principle)
+- `★ thread:fear-of-man-bookends` (30:1 ↔ 30:11) —[David feared man / John "not fearing"]→ §3:7 (Joseph's same sin) · —[cured-by-Presence]→ "I am with you" (Matt 28:20; §24:8) — not courage summoned but with-ness relied on
+- `reproof:calibrated-to-cure` (30:3-4) —[consequence-fits-the-fault: "left to inquire for yourself"]→ door-not-shut ("until I give… further commandments") · —[=]→ §9 / §23
+- `order:authority-chain-in-companionship` (30:7) —[Peter heeds Oliver; Oliver answers only to Joseph]→ §28 order scaled to two men on the road
+- ✦ **DECADE 21-30 CLOSED:** the Church finds its feet — order of revelation (§28) + common consent (§26) + the great panorama (§27 keys, §29 Creation/agency); the §28→§30 order-cross-check arc; missions launch (Lamanite mission, §28/30/32)
