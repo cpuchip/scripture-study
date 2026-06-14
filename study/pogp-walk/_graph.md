@@ -85,3 +85,17 @@ Edge vocabulary: `cross-ref` · `fulfillment` · `parallel` · `type→antitype`
 - `definition:Zion` (7:18) —[cross-ref]→ Acts 4:32; D&C 38:27 · —[links-study]→ zion-blueprint · —[two-streams]→ cfm-noah-found-grace (Moses 7:18 vs Hel 6:28)
 - `christ:King-of-Zion-Rock-of-Heaven` (7:53) + `Lamb-slain-from-foundation` (7:47) → is-Christ-God
 - **⚠ HARD-FLAG (bin-4, Michael's):** `blackness:Canaan/seed-of-Cain` (7:8,22) —[footnoted-by-canon-to]→ 2 Ne 26:33 ("all alike unto God, black and white") —[datapoint]→ with-Michael 2 Ne 5:21 study (BoM-walk thread continues into PoGP)
+
+## Moses 8 — Noah; the Book of Moses closes
+**Nodes:** `reframe:sons-of-God` (8:13, covenant line not angels) · `thread:gospel-unbroken` (Adam→Enoch→Noah, 8:24) · `JST-correction:it-repented-Noah` (8:25) · `pattern:Noah-the-Enoch-who-stays` (8:27) · `doctrine:Spirit-not-always-strive` (8:17) · `type:days-of-Noah` (8:21)
+**Edges:**
+- `reframe:sons-of-God` (8:13) —[demythologizes]→ Gen 6:1-4 · —[title-appropriated-by-apostates]→ 8:21 · —[parallel]→ Moses 1:19 (counterfeit steals the true name)
+- `thread:gospel-unbroken` (8:24 "even as our fathers") —[completes]→ Adam (5:8,6:52) → Enoch (6:32,7:11) → Noah · —[Christ-named-pre-Bethlehem]→ 8:24
+- `JST-correction:it-repented-Noah` (8:25) —[corrects]→ Gen 6:6 (Lord→Noah) · —[guards]→ God's constancy (Moses 7:28 weeps-not-regrets) · —[links-study]→ divine-love
+- `pattern:Noah-the-Enoch-who-stays` (8:27) —[contrast]→ Enoch translated (7:69) · —[remnant]→ Methuselah "not taken" (8:2)
+- `doctrine:Spirit-not-always-strive` (8:17) —[cross-ref]→ 2 Ne 26:11; **Ether 2:15; 15:19 (BoM walk terminal state)**
+- `type:days-of-Noah` (8:21) —[forward-link]→ Matt 24:38; **JS—M 1:41**
+
+---
+### ✦ BOOK OF MOSES COMPLETE (8/8) — the spine
+Two who "walked with God": Enoch (taken up, 7:69) + Noah (kept back, 8:27). Between them: spiritual-creation-first (3:5) · agency the issue of the war (3:17↔4:3) · the felix culpa (5:11) · the weeping-not-regretting God (7:28 / 8:25) · the gospel unbroken Adam→Noah · two cross-walk joins to the BoM (secret combinations 5:31; terminal state 8:17) · the recurring JS—H 1:20 forward-link (1:9, 6:31). The foundation of the Restoration, received June 1830–Feb 1831, first.
