@@ -175,3 +175,22 @@ Edge vocabulary: `cross-ref` · `fulfillment` · `parallel` · `covenant-thread`
 - `★ structure:the-cost-then-the-farm` (19:16-19 → 26-35) —[the-juxtaposition-IS-the-sermon]→ after 19:18 the mortgage is unanswerable · —[giving-as-freedom]→ "release thyself from bondage" (19:35)
 - `response:joy-not-guilt` (19:39) —[the-right-reading-of-the-Atonement]→ "canst thou read this without rejoicing?" · —[=]→ §6:20 (arms of love) at Atonement scale
 - ✦ **§18 ↔ §19:** worth of souls NAMED ↔ the cost SHOWN; links truth-atonement + .scratch-how-is-it-done + nevertheless studies
+
+## D&C 20 — the constitution of the Church (Fayette, April 6 1830; the Articles and Covenants)
+**Nodes:** `★ principle:organize-before-building-enacted` (20:68) · `★ honesty:prophets-relapse-in-the-charter` (20:5) · `creed:ecumenical-then-distinct` (20:17-28) · `★ ordinance:sacrament-covenant` (20:77,79) · `offices:defined-by-duty-not-rank` (20:38-59) · `governance:common-consent` (20:65)
+**Edges:**
+- `★ organize-before-building-enacted` (20:68 "all things in order") —[=]→ D&C 88:119 (principles.md anchor) · —[the-creation-cycle's-Specification-step]→ the Articles and Covenants ARE the spec · —[order=protection]→ uniform ordinances (20:73), fixed doctrine (20:35)
+- `★ honesty:prophets-relapse-in-the-charter` (20:5) —[include_failures, most-public-level]→ covenant.yaml teaching ext · —[the §3/§10 failure named again]→ "entangled again in the vanities" · —[grace-claim]→ 20:32 (fall from grace applies to the first elder)
+- `creed:ecumenical-then-distinct` (20:17-28) —[shared-ground]→ infinite God/creation/Fall/grace · —[Restoration-distinctives]→ corporeal image (20:18 → Ether 3:15), same-gospel-from-the-beginning (20:26), falling-from-grace (20:32) · —[drafting-posture]→ §18:20 (contend against no church)
+- `★ ordinance:sacrament-covenant` (20:77,79) —[weekly-renewal-of]→ §18 name-theology · —[witness / that-we-may-have-His-Spirit]→ §8:2 (indwelling) · —[bilateral]→ D&C 82:10 (covenant.yaml epigraph — administered) · —[=]→ Moroni 4-5 (BoM original)
+- `offices:defined-by-duty-not-rank` (20:38-59) —[teacher = pastoral watchcare]→ 20:53-54 (watch over, by strengthening) = Abr 4:18 · —[overlap-and-assist]→ 20:52,57
+- `governance:common-consent` (20:65) —[no-ordination-without-the-vote]→ D&C 26:2 · —[persuasion-not-compulsion-encoded]→ D&C 121:41
+
+## D&C 21 — receive his word in all patience and faith (Fayette, April 6 1830; the organizing meeting)
+**Nodes:** `★ delegation:prophets-word-as-if-from-mine-own-mouth` (21:5) · `★ posture:in-all-patience-and-faith` (21:5) · `intimacy:the-Lord-saw-his-weeping` (21:7-8) · `principle:authority-received-not-seized` (21:10-11)
+**Edges:**
+- `★ prophets-word-as-if-from-mine-own-mouth` (21:5) —[=]→ D&C 1:38 (voice-of-servants, now the living prophet) · —[project]→ covenant.yaml (intent through a steward) · —[honor-servant = honor-Lord]→ Ex 16:8; Heb 2:1
+- `★ posture:in-all-patience-and-faith` (21:5) —[the-prophet-receives-progressively]→ 21:4; §1:25-28 (line upon line) · —[honest-middle]→ not-infallible (§20:5) / not-just-a-man · —[=covenant-partnership]→ §9:8 flag-when-wrong (a learning steward, not an oracle)
+- `intimacy:the-Lord-saw-his-weeping` (21:7-8) —[grief-named-on-the-day-of-power]→ "his weeping for Zion I have seen" · —[private-knowledge]→ §6:22 · —[Enoch-parallel]→ Moses 7:41 (PoGP)
+- `principle:authority-received-not-seized` (21:10-11) —[mutual-ordination]→ Joseph ordained BY Oliver · —[=]→ §13 "I confer" (no self-ordination, even at the top) · —[common-consent]→ §20:65
+- ✦ **DECADE 11-20 CLOSED:** the Church is *born* — authority (§13) → specification (§20) → the prophet installed (§21); priesthood-line first landing (§13), is-Christ-God landing (§14), the Atonement landmark (§19)
