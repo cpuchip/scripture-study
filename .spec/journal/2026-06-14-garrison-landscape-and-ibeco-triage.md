@@ -62,3 +62,28 @@ baseline before Garrison writes a line.
 - Verify the fail2ban hypothesis: SSH from a different IP, then unban yours.
 - Read the Garrison landscape note when convenient — it sharpens #2/#3/#4/#6 for
   the council. Confirm "pi"/"hermes" are who I think (Zechner's pi, Nous's Hermes).
+
+## Garrison design session (later 2026-06-14 — council with Michael)
+
+He woke, engaged deeply, and we refined the proposal substantially (the spec is the
+record; this is the digest):
+
+- **Go, not Node/TS** — for speed/portability and to escape npm's security surface.
+  Self-extension done the Go way: out-of-process + capability-gated.
+- **Extensions: MCP / JSON-RPC / HTTP / WebSocket + WASM (wazero). NO gRPC** (his
+  hard no — he does it at work), no native `plugin`/.so (Windows-hostile, version-locked).
+- **Self-extension Tiers 0–3**, rule = "build the door in the moment, hang it with
+  consent." Tier 2 (self-built persistent tools) is a new dominion → council.
+  `dominion_in_council` applied to the agent itself.
+- **The SQLite insight (his) collapsed the awkward two-tier.** Embedded SQLite
+  (pure-Go `modernc.org/sqlite`) carries the full presiding ledger for one Garrison +
+  its sub-agents, with NO Docker. So **standalone-on-SQLite is the default AND the
+  go-bag** (not degraded); Postgres is the optional power-up for shared/multi-session.
+  SUPERSEDES the 2026-06-13 "v1 requires pg via Docker" — surfaced as a refinement,
+  not buried.
+- **Garrison is its own isolated harness** (never depends on the substrate); "use
+  pg-ai-stewards as the model-runner harness" is the optional B+C backend mode.
+- **LM Studio + Ollama built in** via one OpenAI-compatible client — no per-runtime
+  plugin, no sprawl.
+
+Still `dominion_in_council` + post-cut. Spec committed, no push.

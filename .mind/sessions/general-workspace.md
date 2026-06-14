@@ -3,13 +3,19 @@ lane: general-workspace
 session_id: c4fef1d0-292c-4ad6-b6c5-76e2af1043c3
 status: active
 started: 2026-06-11T12:00:00
-last_active: 2026-06-14T01:26:02
+last_active: 2026-06-14T01:56:39
 ---
 
 > Note: this lane was previously filed under the typo `general-workspase.md`;
 > consolidated here (the hook-canonical spelling) 2026-06-13, typo file removed.
 
 ## Working on
+- **Garrison design session 2026-06-14 (council w/ Michael):** proposal extended +
+  refined — Go-only, **isolated harness, embedded-SQLite default** (Postgres =
+  optional MCP power-up; supersedes pg-required-v1), LM Studio+Ollama built-in
+  (OpenAI-compatible), extensions MCP/JSON-RPC/HTTP/WS + WASM (NO gRPC, no native
+  plugin), **Self-extension Tiers 0–3 + build-the-door/hang-with-consent gate**.
+  Still `dominion_in_council` / post-cut. Spec current; committed (no push).
 - **Overnight 2026-06-14 (unattended, no big moves):** (1) ibeco/Dokploy triaged —
   box was never down (sshd banner live; hung dokploy-panel + 1828/dnd containers;
   Michael's SSH likely fail2ban'd on his IP); SELF-HEALED by morning except
