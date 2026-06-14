@@ -1,7 +1,7 @@
 # Pearl of Great Price Walk — Progress
 
-**STATUS:** ◷ IN PROGRESS — 2/16 chapters walked.
-**NEXT CHAPTER:** ▶ **Moses 3**
+**STATUS:** ◷ IN PROGRESS — 3/16 chapters walked.
+**NEXT CHAPTER:** ▶ **Moses 4**
 **DEPTH:** mini-study per chapter (study-grade engagement, note-grade finish). Vision-dense chapters (Moses 1, 7; Abr 3) get full treatment; link-don't-duplicate against our existing creation/council corpus.
 **Started:** 2026-06-14
 **Last updated:** 2026-06-14
@@ -12,7 +12,7 @@
 
 | Book | Chapters | Done through | Notes |
 |------|---------:|:------------:|-------|
-| Moses | 8 | **2 ✓** | Selections from the Book of Moses (Gen 1–6 retold + expanded; the visions of Moses & Enoch). ch1 = the vision/prologue: scale→worth (man-is-nothing v10 answered by work-and-glory v39); discernment-by-glory; Satan-as-imposter; Christ-as-Creator (v32-33). ch2 = creation (Gen 1) in the first person ("I, God"); resolves "Let us make man" = Father→Only Begotten (2:26); imago-Christi (2:27). |
+| Moses | 8 | **3 ✓** | Selections from the Book of Moses (Gen 1–6 retold + expanded; the visions of Moses & Enoch). ch1 = vision/prologue: scale→worth (v10↔v39); discernment-by-glory; Satan-as-imposter; Christ-as-Creator (v32-33). ch2 = creation (Gen 1) first-person ("I, God"); resolves "Let us make man" = Father→Only Begotten (2:26); imago-Christi (2:27). ch3 = Eden (Gen 2): the spiritual creation before the natural (3:5,7,9, nephesh = breath-creature, even plants/beasts are "living souls"); **agency embedded in the first command** (3:17 "nevertheless, thou mayest choose for thyself"); Adam names the creatures. |
 | Abraham | 5 | — | The Book of Abraham (+ Facsimiles 1–3 folded into chapters; see `_workflow.md`) |
 | Joseph Smith–Matthew | 1 | — | JS's rendering of Matt 24 / Mark 13 — the Olivet discourse |
 | Joseph Smith–History | 1 | — | the founding-events narrative (First Vision → priesthood restoration) |
@@ -22,7 +22,7 @@
 
 ## Recurring-thread ledger (PoGP's own datapoint lines — see `_workflow.md`)
 - **Christ as Jehovah / Creator / Only Begotten:** **Moses 1:32-33** — "by the word of my power, have I created them, which is mine Only Begotten Son… by the Son I created them" (worlds without number; the Father speaks, the Son creates). · **Moses 2:1** "by mine Only Begotten I created these things" (applied to *this* world); **2:26** the "Let us make man" plural = Father→Only Begotten; **2:27** man created "in the image of mine Only Begotten" (imago-Christi).
-- **Premortal council & the plan (agency, the two estates):** _(none yet — Moses 4 / Abr 3)_
+- **Premortal council & the plan (agency, the two estates):** **Moses 3:5** — all things "created… spiritually, before they were naturally… in heaven created I them" (antemortal existence of all things incl. "all the children of men"); **3:17** agency embedded in the Eden command ("nevertheless, thou mayest choose for thyself, for it is given unto thee" → 2 Ne 2:15-16). The Fall is set up as a genuine choice. _(Council proper: Moses 4 / Abr 3.)_
 - **Abrahamic covenant (seed · land · priesthood · gospel to all nations):** _(none yet — Abr 1-2)_
 - **Apostasy & restoration / plain-and-precious things:** **Moses 1:40-41** — the chapter predicts its own loss ("take many of them from the book") and restoration through a seer "like unto" Moses (→ 2 Ne 3:9, Joseph). The PoGP frames itself as restored text from verse one.
 - **Enoch & Zion:** _(none yet — Moses 7)_

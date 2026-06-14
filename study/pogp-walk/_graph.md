@@ -29,3 +29,12 @@ Edge vocabulary: `cross-ref` · `fulfillment` · `parallel` · `type→antitype`
 - `refrain:creation-is-good` —[cross-ref]→ Moroni 7:12; D&C 59:17-20 · —[anchors]→ matter-spectrum
 - `account:creation-threefold` —[footnoted-verse-by-verse]→ Abr 4 · firmament (2:6) → **Abr fac. 2 fig. 4**
 - `command:be-fruitful-multiply` (2:28) —[carried-to]→ Moses 5:2
+
+## Moses 3 — Eden; the spiritual creation; agency in the command
+**Nodes:** `doctrine:spiritual-creation` (3:5,7,9) · `word:nephesh` (living soul = breath-creature, 3:7,9,19) · `doctrine:agency-in-the-command` (3:17) · `wordplay:adam-from-adamah` (3:7) · `act:adam-names-the-creatures` (3:19-20) · `geography:eden-relocated` (3:13 fn → Missouri)
+**Edges:**
+- `spiritual-creation` (3:5) —[reframes]→ Moses 2 as the *second* (natural) creation · —[cross-ref]→ D&C 29:31-34; Abr 3:23; D&C 77:2 · —[links-study]→ plan-of-salvation-notes-01-premortal; intelligence; truth (matter-spectrum)
+- `word:nephesh` (3:7,9,19) —[=breathing-creature]→ man + trees + beasts all "living souls" · —[Hebrew]→ Gen 1:20-24 (same word for animals)
+- `agency-in-the-command` (3:17 "nevertheless, thou mayest choose") —[=]→ 2 Ne 2:15-16 (Lehi) · —[hinge-word]→ "nevertheless" (cf. Moses 1:20) · —[sets-up]→ Moses 4 (Fall as choice)
+- `christ:only-begotten-present` (3:18) —[continues]→ Moses 2:26
+- `act:adam-names-the-creatures` (3:19-20) —[first-dominion]→ language · —[links-study]→ language-of-adam
