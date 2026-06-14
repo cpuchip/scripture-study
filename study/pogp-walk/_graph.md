@@ -38,3 +38,15 @@ Edge vocabulary: `cross-ref` · `fulfillment` · `parallel` · `type→antitype`
 - `agency-in-the-command` (3:17 "nevertheless, thou mayest choose") —[=]→ 2 Ne 2:15-16 (Lehi) · —[hinge-word]→ "nevertheless" (cf. Moses 1:20) · —[sets-up]→ Moses 4 (Fall as choice)
 - `christ:only-begotten-present` (3:18) —[continues]→ Moses 2:26
 - `act:adam-names-the-creatures` (3:19-20) —[first-dominion]→ language · —[links-study]→ language-of-adam
+
+## Moses 4 — the council, the rebellion, the Fall
+**Nodes:** `council:two-plans` (4:1-2) · `doctrine:war-over-agency` (4:3) · `irony:satan-serves-the-plan` (4:6) · `lie:truth-bent` (4:10-11) · `prophecy:protevangelium` (4:21) · `type:coats-of-skins` (4:27) · `mercy:flaming-sword` (4:31) · `person:Satan/devil/father-of-lies` (4:4) · `person:Eve` (mother of all living, 4:26)
+**Edges:**
+- `council:two-plans` (4:1-2) —[pronoun-contrast]→ Satan's 5 "I"s + "give me thine honor" (→ Isa 14:13) vs. Christ "thy will be done, glory be thine" (→ Luke 22:42, Gethsemane) · —[parallel-account]→ **Abr 3:27-28**
+- `war-over-agency` (4:3) —[MATCHED-PAIR]→ Moses 3:17 (God guards agency ↔ Satan destroys it) · —[cross-ref]→ D&C 29:36-39; 76:25-27
+- `irony:satan-serves-the-plan` (4:6) —[cross-ref]→ 2 Ne 2:22-25 (Adam fell that men might be)
+- `lie:truth-bent` (4:10-11) —[confirmed-true-by]→ 4:28
+- `prophecy:protevangelium` (4:21) —[cross-ref]→ Rom 16:20; Heb 2:14
+- `type:coats-of-skins` (4:27) —[atonement-covering, contrast fig-leaves 4:13]→ Moses 5:5-8
+- `mercy:flaming-sword` (4:31) —[=time-to-repent]→ Alma 42:2-6
+- `christ:thy-will-be-done` (4:2) —[council-side-of]→ Gethsemane nevertheless (Luke 22:42)
