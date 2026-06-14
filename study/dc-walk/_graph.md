@@ -251,3 +251,15 @@ Edge vocabulary: `cross-ref` · `fulfillment` · `parallel` · `covenant-thread`
 - `★ correction:private-persuasion-not-public-shaming` (28:11) —[=]→ Matt 18:15 ("between him and thee alone") · —[Oliver's-role-bounded]→ 28:5-6 · —[presiding]→ D&C 121:41-43
 - `order:channel-AND-consent` (28:2,13) —[one-appointed + the-body-confirms]→ safeguard vs anarchy AND tyranny · —[Hiram-fails-both]→ §26
 - `succession:another-in-his-stead` (28:7) —[the-channel-is-an-office-not-a-cult]→ the order outlasts the man
+
+## D&C 29 — all things are spiritual (Fayette, Sept 1830; Creation/Fall/agency LANDMARK)
+**Nodes:** `★ matter-spectrum:all-things-are-spiritual` (29:34-35) · `★ structure:spiritual→temporal→spiritual-chiasm` (29:31-32) · `★ agency:requires-opposition` (29:39) · `★ rebellion:over-agency` (29:36-37) · `★ death:first=last-both-spiritual` (29:41) · `★ children:redeemed-from-the-foundation` (29:46-47) · `renewal:nothing-lost` (29:25) · `Christ:advocate` (29:5) · `elect:hear-his-voice` (29:7)
+**Edges:**
+- `★ all-things-are-spiritual` (29:34-35) —[the-spiritual/temporal-divide-is-ours-not-God's]→ truth.md / D&C 93/131 (matter = refined spirit) from the law side · —[every-temporal-law-is-spiritual]→ Word of Wisdom etc. change the spirit
+- `★ spiritual→temporal→spiritual-chiasm` (29:31-32) —[creation: spirit→matter / redemption: matter→spirit]→ Moses 3:5 · —[plan-as-narrative]→ spirit descends into matter, returns glorified; §27 "gather in one" = the return
+- `★ agency:requires-opposition` (29:39) —[2-Ne-2-in-the-Lord's-voice: "if they never should have bitter they could not know the sweet"]→ the tempter NECESSARY to agency · —[bounds-the-problem-of-evil]→ cost of a world that can produce gods; = §19 economy
+- `★ rebellion:over-agency` (29:36-37) —[devil-sought-God's-honor; third-part-followed "because of their agency"]→ Moses 4:1-4; Abr 3:27; Rev 12:4 · —[irony]→ rejecting-the-agency-plan was-itself-an-act-of-agency
+- `★ death:first=last-both-spiritual` (29:41) —[the-Fall (separation) = hell ("Depart," 29:28)]→ mortality = the window to escape the first becoming the last
+- `★ children:redeemed-from-the-foundation` (29:46-47) —[Atonement-covers-them-before-they-can-choose; Satan-barred-until-accountability]→ Moroni 8 (BoM walk); D&C 68:25 (age 8) · —[the-§19-mercy-for-children: infant-damnation dissolved]
+- `renewal:nothing-lost` (29:25 "not one hair, neither mote") —[matter-conserved-and-transfigured-not-annihilated]→ §10 nothing-lost at cosmic scale
+- `elect:hear-his-voice` (29:7) —[elect-defined-by-hearing/not-hardening, not-arbitrary-predestination]→ John 10:27
