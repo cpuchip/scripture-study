@@ -517,3 +517,20 @@ Edge vocabulary: `cross-ref` · `fulfillment` · `parallel` · `covenant-thread`
 - `★ agency:the-means-left-to-the-steward` (60:5) —["as seemeth you good, it mattereth not unto me"]→ §58:26 in-a-concrete-case · —[the-irony: same-elders who-wouldn't-act-on-the-command are-now-given-a-thing-to-decide]→ act-on-the-command AND exercise-the-agency
 - `manner:bold-but-uncontentious` (60:7,14-15) —[open-the-mouth (vs 60:2) but "without wrath… not in haste nor with strife"; testimony-against "in secret, lest thou provoke"]→ §52; §28:11 / §42:88
 - ✦ **DECADE 51-60 CLOSED:** consecration-in-practice (§51) → Zion LOCATED (§57) → the AGENCY doctrine (§58, project-source) → the Sabbath/gratitude/earth-goodness (§59) → the talent buried-from-fear (§60). SIX decades done (1-60); nearly halfway.
+
+## D&C 61 — mine anger is turned away (Missouri River, McIlwaine's Bend, Aug 12 1831; the destroyer on the waters)
+**Nodes:** `★ God:anger-is-momentary` (61:20) · `providence:real-danger-but-the-faithful-held` (61:4-6,19) · `★ agency:it-mattereth-not (means-by-judgment)` (61:22) · `gift:command-the-elements — but-bridled-to-the-Spirit` (61:27-28) · `comfort:be-of-good-cheer / not-forsaken` (61:36)
+**Edges:**
+- `★ God:anger-is-momentary` (61:20) —["angry yesterday, but today mine anger is turned away"]→ §3 / §121:43 (reprove-then-love) at-a-DAILY-scale · —[a-small-moment]→ Isa 54:7-8; §121:7 · —[the-anger IS a-form-of-love, turned-away-when-chastening's-done]
+- `providence:real-danger-but-the-faithful-held` (61:4-6,19) —[the-destroyer-rides (danger-NOT-removed, "I revoke not the decree") AND "the faithful shall not perish"]→ §24:8 / §54:10 in-PHYSICAL-peril · —[covenant-preservation, not-a-shield-over-the-reckless]→ "forewarn… lest their faith fail" (61:18)
+- `★ agency:it-mattereth-not (means-by-judgment)` (61:22) —[water-or-land "according to their judgments"]→ §58:26 / §60:5 · —[God-REASONS not-dictates]→ 61:13 (period-language, §1:24/§50:11)
+- `gift:command-the-elements — but-bridled-to-the-Spirit` (61:27-28) —[exercised "as the Spirit commandeth," not-at-will]→ §46 / §50 (power-real-but-NEVER-freelance)
+- `comfort:be-of-good-cheer / not-forsaken` (61:36) —[after-danger-and-anger: presence + good-cheer]→ §50:40-42; §59:15
+
+## D&C 62 — the advocate who knows weakness, testimony recorded in heaven (Missouri River at Chariton, Aug 13 1831)
+**Nodes:** `★ Advocate:knows-weakness, succors-the-tempted` (62:1) · `★ heaven:testimony-recorded, angels-rejoice` (62:3) · `★ agency:it-mattereth-not — by-judgment-and-the-Spirit` (62:5,8) · `comfort:I-am-with-the-faithful-always` (62:9)
+**Edges:**
+- `★ Advocate:knows-weakness, succors-the-tempted` (62:1) —[the-§45:3-Advocate ALSO the-succorer]→ Heb 2:18; Alma 7:11-13 (took-infirmity to-know-HOW-to-succor) · —[pleading (§45) + succoring (§62) = the-same-Christ; the §19 first-person-Atonement makes-Him our-sympathizer]
+- `★ heaven:testimony-recorded, angels-rejoice` (62:3) —[your-witness logged-in-the-book-of-life "for the angels to look upon"]→ §47 (record-keeping) OTHER-END; Mal 3:16 · —[nothing-faithful-is-unwitnessed; angels-REJOICE]→ Luke 15:7,10 · —[for-the-unseen-laborer: you-are-SEEN]
+- `★ agency:it-mattereth-not — by-judgment-and-the-Spirit` (62:5,8) —[3rd-travel-section-running]→ §58:26 / §60:5 / §61:22 (the settled pattern) · —[principle-commanded (faithful), method-the-steward's] · —[+gratitude]→ "thankful heart in all things" (62:7, §59:7)
+- `comfort:I-am-with-the-faithful-always` (62:9) —[presence-on-condition-of-faithfulness]→ Matt 28:20; §24/§61:36
