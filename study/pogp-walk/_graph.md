@@ -73,3 +73,15 @@ Edge vocabulary: `cross-ref` · `fulfillment` · `parallel` · `type→antitype`
 - `gospel-to-Adam` (6:48-68) —[home-study]→ moses-6-gospel-to-adam · —[children-whole 6:54]→ Moroni 8 (BoM walk) · —[felix-culpa]→ 2 Ne 2:25
 - `two-streams` (6:5-6 record/pure-language vs 6:15 secret-works) —[continues]→ Moses 5 · —[secret→]→ Ether 8:23
 - **FORWARD-LINK TALLY → JS—H 1:20:** Moses 1:9 (fell) + Moses 6:31 (hated/slow of speech) — the Book of Moses keeps pre-figuring the First Vision
+
+## Moses 7 — Zion built, and the God who weeps
+**Nodes:** `doctrine:weeping-God` (7:28-37) · `propagation:grief` (God→Enoch→earth→all-creation) · `intercession:could-not-withhold` (7:51) · `image:the-embrace` (7:63) · `name:Man-of-Counsel` (7:35) · `definition:Zion` (7:18) · `christ:King-of-Zion-Rock-of-Heaven` (7:53) · `event:Zion-taken-up` (7:21,69) · ⚠ `hard:blackness-Canaan/seed-of-Cain` (7:8,22)
+**Edges:**
+- `weeping-God` (7:28-37) —[refutes]→ classical impassibility · —[reason]→ love+agency given, refused (7:32-33) · —[power+grief-same-verse]→ 7:36 · —[home-study]→ enoch-charity
+- `propagation:grief` God (7:28) → Enoch (7:41) → earth (7:48) → all creation at the cross (7:56)
+- `intercession:could-not-withhold` (7:51) —[feeling-God=answering-God]→ covenant+oath
+- `image:the-embrace` (7:63 "fall upon their necks… kiss") —[=]→ Luke 15:20 (prodigal's father) · —[same-love-as]→ 7:28 (tears)
+- `name:Man-of-Counsel` (7:35) —[joins]→ Man-of-Holiness (6:57) + Endless/Eternal (1:3)
+- `definition:Zion` (7:18) —[cross-ref]→ Acts 4:32; D&C 38:27 · —[links-study]→ zion-blueprint · —[two-streams]→ cfm-noah-found-grace (Moses 7:18 vs Hel 6:28)
+- `christ:King-of-Zion-Rock-of-Heaven` (7:53) + `Lamb-slain-from-foundation` (7:47) → is-Christ-God
+- **⚠ HARD-FLAG (bin-4, Michael's):** `blackness:Canaan/seed-of-Cain` (7:8,22) —[footnoted-by-canon-to]→ 2 Ne 26:33 ("all alike unto God, black and white") —[datapoint]→ with-Michael 2 Ne 5:21 study (BoM-walk thread continues into PoGP)
