@@ -142,3 +142,15 @@ Two who "walked with God": Enoch (taken up, 7:69) + Noah (kept back, 8:27). Betw
 - `pattern:creation-cycle` (4 + 5:2-3) —[=]→ project 11-step cycle (identity.md "Abraham 4-5 pattern") · —[type-and-shadow]→ human-AI collaboration
 - `seam:the-Gods-and-monotheism` (4:1) —[operational-plurality-of-unified-council]→ Moses 1:6
 - ✦ **THE WALK REACHED ITS OWN NAMESAKE** — Abr 4:18 + 4:26 are the verses behind covenant.yaml's council-moment + presiding watch.
+
+## Abraham 5 — the embodiment; the Book of Abraham closes
+**Nodes:** `★ doctrine:embodiment` (5:7) · `pattern:rest-completes-cycle` (5:2-3) · `detail:Eden-on-Kolob-time` (5:13) · `boundary:book-ends-in-Eden` (5:21) · Facsimile 3 (Abraham teaches Egypt, folded)
+**Edges:**
+- `★ doctrine:embodiment` (5:7 "took his spirit… put it into him") —[closes-arc-from]→ Abr 3:18 (gnolaum) · —[=]→ D&C 93:33 (spirit+element=soul) · —[matter-spectrum]→ intelligence→spirit→element→living-soul · —[links-study]→ truth; intelligence
+- `pattern:rest-completes-cycle` (5:2-3) —[finishes]→ Abr 4 → the Abraham 4-5 pattern WHOLE (counsel→order→watch→obey→rest)
+- `detail:Eden-on-Kolob-time` (5:13) —[paradise-kept-God's-clock]→ Abr 3:4
+- `boundary:book-ends-in-Eden` (5:21) —[incomplete-translation, no Fall]→ opened-on-altar (1:12) → closes-in-paradise
+
+---
+### ✦ BOOK OF ABRAHAM COMPLETE (5/5) — the cosmos & the council
+The matter-spectrum runs the book's length: gnolaum eternal intelligence (3:18) → the council organizing eternal materials (4:1) → the spirit put into dust (5:7). Plus: covenant begins with desire (1:2) · the Akedah inversion (1:12) · adoption-by-gospel = the lineage counterweight (2:10) · astronomy as parable of souls (3:18) · God supreme-within-an-order (3:19) · the council from the top completing Moses 4 (3:24-28) · ★ the project's source text (4:18 watch / 4:26 counsel) · the creation cycle whole (rest, 5:2-3). Two bin-4 flags for Michael: 1:21-27 (priesthood-lineage) + the 2:10 counterweight. **Both big books (Moses + Abraham) walked — 13/16.**
