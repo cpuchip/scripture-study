@@ -110,3 +110,13 @@ Two who "walked with God": Enoch (taken up, 7:69) + Noah (kept back, 8:27). Betw
 - `christ:Jehovah-delivers-in-person` (1:16) —[is-Christ-God]→ premortal Christ · —[name+priesthood]→ 1:18
 - **⚠ HARD-FLAG (bin-4, Michael's):** `priesthood-lineage:Pharaoh/Ham` (1:21-27) —[text's-own-distinction]→ Pharaoh "a righteous man… blessed" (limit = office, not worth) —[disavowed-reading]→ 2013 "Race and the Priesthood" essay —[datapoint]→ 2 Ne 5:21 study (spans both walks)
 - `records:preserved` (1:31) —[sets-up]→ Abr 3 (astronomy) + 4-5 (creation)
+
+## Abraham 2 — the covenant that adopts
+**Nodes:** `covenant:four-fold` (2:9-11) · `covenant:adoption-by-gospel` (2:10) · `covenant:content=gospel/eternal-life` (2:11) · `act:Abraham-Sarai-missionaries` (2:15) · `arc:seeking→finding` (2:12) · `seam:say-she-is-thy-sister` (2:22-25)
+**Edges:**
+- `covenant:adoption-by-gospel` (2:10 "as many as receive… accounted thy seed") —[trans-lineage]→ Gal 3:29; Rom 4:11 · —[★ COUNTERWEIGHT-to]→ Abr 1:27 lineage-flag (covenant by reception, not blood) · —[BoM-walk]→ 2 Ne 5:21 (belief-not-blood, strongest datapoint yet)
+- `covenant:content=gospel/eternal-life` (2:11) —[identifies]→ Abrahamic covenant = plan of salvation
+- `act:Abraham-Sarai-missionaries` (2:15 "souls we had won") —[enacts]→ 2:9 (gospel to all nations) · —[reads]→ Gen 12:5
+- `arc:seeking→finding` (2:12) —[closes]→ Abr 1:2 (sought/desiring) · —[cross-ref]→ Jer 29:13
+- `seam:say-she-is-thy-sister` (2:22-25) —[Lord-instructed, harder-than-Genesis]→ life-preservation + half-truth (Sarai = kin) — *named, not resolved*
+- `condition:when-they-hearken` (2:6) —[covenant-conditional]→ D&C 130:21
