@@ -154,3 +154,14 @@ Two who "walked with God": Enoch (taken up, 7:69) + Noah (kept back, 8:27). Betw
 ---
 ### ✦ BOOK OF ABRAHAM COMPLETE (5/5) — the cosmos & the council
 The matter-spectrum runs the book's length: gnolaum eternal intelligence (3:18) → the council organizing eternal materials (4:1) → the spirit put into dust (5:7). Plus: covenant begins with desire (1:2) · the Akedah inversion (1:12) · adoption-by-gospel = the lineage counterweight (2:10) · astronomy as parable of souls (3:18) · God supreme-within-an-order (3:19) · the council from the top completing Moses 4 (3:24-28) · ★ the project's source text (4:18 watch / 4:26 counsel) · the creation cycle whole (rest, 5:2-3). Two bin-4 flags for Michael: 1:21-27 (priesthood-lineage) + the 2:10 counterweight. **Both big books (Moses + Abraham) walked — 13/16.**
+
+## Joseph Smith–Matthew — the Olivet discourse; the two watch-texts
+**Nodes:** `structure:two-prophecies-untangled` (1:4,21) · `★ antidote:treasure-up-the-word` (1:37) · `discernment:public-coming-vs-secret` (1:25-26) · `reframe:days-of-Noah-as-apathy` (1:41-43) · `★ watch:the-steward` (1:46-51) · `crux:this-generation` (1:34) · `discipline:season-not-date` (1:38-40)
+**Edges:**
+- `structure:two-prophecies-untangled` (1:4,21) —[Jerusalem-as-type-of]→ Second Coming · —[JST-clarifies]→ Matt 24 (KJV blur)
+- `★ antidote:treasure-up-the-word` (1:37) —[defeats]→ deception (false christs 1:6,22) · —[parallel]→ Moses 1 (discernment-by-glory — out-know the counterfeit)
+- `discernment:public-coming-vs-secret` (1:25-26) —[true=light-from-east, universal]→ false=desert/secret-chamber
+- `reframe:days-of-Noah-as-apathy` (1:41-43 "knew not") —[★ LANDS]→ **Moses 8:21** forward-link · —[sin=obliviousness]→ TG Apathy
+- `★ watch:the-steward` (1:46-51 "my lord delayeth… smite his fellow-servants") —[SOURCE-of]→ covenant.yaml presiding `when_broken` (Luke 12:45) · —[★ pairs-with]→ **Abr 4:18** (the Gods watched) = the PoGP's TWO watch-texts (watch what you order / never forget you're watched)
+- `crux:this-generation` (1:34) —[JST-resolves]→ "in which these things shall be shown forth"
+- ✦ **Moses 8:21 forward-link RESOLVED** at JS-M 1:41-43.
