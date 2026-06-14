@@ -354,3 +354,20 @@ Edge vocabulary: `cross-ref` · `fulfillment` · `parallel` · `covenant-thread`
 - `judgment:reserved-to-God` (40:3 "it remaineth with me") —[failure-recorded, sentence-withheld]→ §10:37 / §29:30 · —[don't-presume-the-eternal-verdict]
 - `meta:include_failures-at-scripture-scale` (§39-40) —[two-revelations-on-a-man-who-failed]→ §3 / §20:5 / §30 (the canon refuses a highlight reel) → covenant.yaml teaching ext
 - ✦ **DECADE 31-40 CLOSED:** the gathering to Ohio (§37-38) + Zion as oneness/equality (§38:27) + the endowment's first word (38:32); the early missions (§31-36); the §39-40 sower-enacted pair (include_failures). FOUR decades done (1-40).
+
+## D&C 41 — the disciple is the doer (Kirtland, Feb 4 1831; the first bishop)
+**Nodes:** `★ discipleship:the-doer-not-the-professor` (41:5) · `★ office:first-bishop-chosen-for-guilelessness` (41:11) · `polarity:bless/curse-by-hearing` (41:1)
+**Edges:**
+- `★ discipleship:the-doer-not-the-professor` (41:5) —[=]→ James 1:22; Matt 7:24-27 · —[the-value-is-in-the-doing]→ covenant; §40 (Covel's un-done gladness) · —[bridge-to-§42]→ a law is for DOING
+- `★ office:first-bishop-chosen-for-guilelessness` (41:11) —[the-man-who-handles-Zion's-wealth = "no guile" (Nathanael, John 1:47)]→ character-is-the-security-on-the-consecration-system (§42:31-34) · —[anti-priestcraft]→ §33:4
+- `polarity:bless/curse-by-hearing` (41:1) —[symmetrical, turns-on-hearkening-and-doing]→ §29:7 (elect hear)
+
+## D&C 42 — the Law (Kirtland, Feb 9 & 23 1831; "the law of the Church"; LANDMARK)
+**Nodes:** `★ law-of-consecration:stewardship-under-covenant` (42:30-34) · `★ teaching:if-ye-receive-not-the-Spirit-ye-shall-not-teach` (42:14) · `★ healing:faith-WITHIN-God's-appointment` (42:43-52) · `★ offenses:Matt-18-private-and-proportionate` (42:88-92) · `moral-law:Decalogue-renewed` (42:18-29) · `promise:revelation-upon-revelation / peaceable-things` (42:61)
+**Edges:**
+- `★ law-of-consecration:stewardship-under-covenant` (42:30-34) —[consecrate-all (deed-unbreakable) → steward-your-need → residue-to-the-poor]→ NOT communism (stewardship kept) / NOT capitalism (no accumulation) · —[the §38:27 "be one" economy]→ Moses 7:18 (Enoch "no poor"); Acts 4:32 · —[the-poor-ARE-Christ]→ Matt 25:40 (42:38) · —[=project's-stewardship-pattern writ large]→ received-not-owned, accountable, surplus-serves (covenant.yaml)
+- `★ teaching:if-ye-receive-not-the-Spirit-ye-shall-not-teach` (42:14) —[the-teaching-covenant made LAW]→ obtain-before-declare (§11:21); discovery-not-performance; the Ben Test · —[don't-teach-without-it, forbidden-not-merely-suboptimal]· —[the-Spirit = the-peaceable-one]→ §36:2 (fruit-test)
+- `★ healing:faith-WITHIN-God's-appointment` (42:43-52) —[faith AND appointment, not-a-mechanism]→ "not appointed unto death" (42:48; Alma 12:27; D&C 121:25) · —[against-faith-triumphalism]→ for the appointed, death "shall be sweet" (42:46) · —[humane: herbs+medicine+love]→ 42:43 · —[=§9 faith-and-confirmation]→ result confirmed/withheld by God's will, not compelled
+- `★ offenses:Matt-18-private-and-proportionate` (42:88-92) —[=]→ Matt 18:15-17; §28:11 (Hiram Page) · —[discipline-MATCHED-to-scope: secret→secret (92), open→open (91)]· —[aim = reconciliation/confession NOT exposure; protects the offender's name]→ §121:43 (reprove-then-love)
+- `moral-law:Decalogue-renewed` (42:18-29) —[=]→ Ex 20; Matt 5:21-30 · —[sharpenings]→ lust→denies-the-faith (42:23); fidelity-as-positive-command (42:22)
+- `promise:revelation-upon-revelation / peaceable-things` (42:61) —[line-upon-line as ASCENDING gift]→ §1:25-28 · —[true-revelation = joy/peace]→ §36:2 / §39:6 (the discernment refrain)
