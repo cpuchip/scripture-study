@@ -1,7 +1,7 @@
 # Doctrine & Covenants Walk — Progress
 
-**STATUS:** ◷ IN PROGRESS — 2/140 units (138 sections + OD 1 + OD 2).
-**NEXT:** ▶ **D&C 3** (the lost 116 pages — "the works… of men" vs the works of God; Joseph rebuked).
+**STATUS:** ◷ IN PROGRESS — 3/140 units (138 sections + OD 1 + OD 2).
+**NEXT:** ▶ **D&C 4** (the missionary call — "O ye that embark in the service of God"; Joseph Smith Sr.).
 **DEPTH:** ✓ **depth-scaled-to-section** (Michael's call, 2026-06-14) — doctrinal landmarks (76, 88, 93, 107, 121, 132, 138…) get full mini-study depth; short / situational / administrative sections get tight faithful notes. Historical setting engaged every section. Multi-session walk.
 **Started:** 2026-06-14 · **Commit cadence:** per section (or per 2-3 short ones); **no push** (Michael pushes when he reads).
 
@@ -10,7 +10,7 @@
 ## Decade tracker
 | Sections | Done | Notes |
 |----------|:----:|-------|
-| 1–10 | **2** | **§1 ✓** preface (Nov 1831): universal voice; **★1:24 revelation accommodated "after the manner of their language" = period-language principle's floor**; **★1:38 voice-of-servants=Lord's**; nevertheless (1:31-32); idolatry-as-self (1:16). **§2 ✓** Moroni's Malachi (1823): Elijah reveals the **priesthood/sealing power**; "promises made to the fathers" (= Abrahamic covenant, **cross-walk to JS-H 1:38 / Abr 2**); earth "utterly wasted" without sealing = seed of temple/genealogy theology. · still: lost-116-pages (3,10); witnesses (5,17); JS+Oliver (6-9, "study it out" 9:8) |
+| 1–10 | **2** | **§1 ✓** preface (Nov 1831): universal voice; **★1:24 revelation accommodated "after the manner of their language" = period-language principle's floor**; **★1:38 voice-of-servants=Lord's**; nevertheless (1:31-32); idolatry-as-self (1:16). **§2 ✓** Moroni's Malachi (1823): Elijah reveals the **priesthood/sealing power**; "promises made to the fathers" (= Abrahamic covenant, **cross-walk to JS-H 1:38 / Abr 2**); earth "utterly wasted" without sealing = seed of temple/genealogy theology. **§3 ✓** lost-116-pages (Harmony, July 1828 — earliest revelation): God's work can't be frustrated, only men's (3:1,3); "one eternal round" (3:2); **★ pride warning — gifts don't make safe (3:4)**; fear-of-man = Joseph's sin (3:7); **★ discipline-then-restoration (3:9-10) = first enactment of D&C 121:43** (reprove→increase-of-love, the presiding pattern); the canon rebukes its own prophet (include_failures); "nevertheless my work shall go forth" (3:16). · still: §10 (resolution); witnesses (5,17); JS+Oliver (6-9, "study it out" 9:8) |
 | 11–20 | — | Aaronic Priesthood (13); the Whitmers; **the Church organized (20-21)**; sacrament prayers (20); Article on marriage/rebuke |
 | 21–30 | — | revelations around the Church's founding; the gathering begins (29) |
 | 31–40 | — | missions; the law begins to come |
