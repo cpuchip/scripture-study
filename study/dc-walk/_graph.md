@@ -327,3 +327,30 @@ Edge vocabulary: `cross-ref` · `fulfillment` · `parallel` · `covenant-thread`
 - `gathering:as-garrison-refuge` (37:1 "because of the enemy and for your sakes") —[draw-the-laborers-in-from-the-exposed-field]→ §29:8 · —[the-gathering-IS-the-wall]→ presiding-protection (walls lawful)
 - `★ agency:choose-for-yourself-even-in-obedience` (37:4) —[divine-command + free-choice]→ §26 (common consent); D&C 121:41; §29:39 · —[the-Restoration's-central-physical-act-is-voluntary]
 - `pastoral:strengthen-before-you-leave` (37:2) —[don't-abandon-the-scattered-branch]→ §20:53 (watchcare) in the transition
+
+## D&C 38 — be one, or ye are not mine (Fayette, Jan 2 1831; the conference; LANDMARK)
+**Nodes:** `★ Zion:be-one = economic-equality` (38:24-27) · `★ matter-spectrum:the-eternal-present` (38:2) · `★ endowment:first-word` (38:32) · `★ threat:the-enemy-in-secret-chambers-at-home` (38:13,28-29) · `theocracy:God-as-king/lawgiver/watcher` (38:21-22) · `warning:beware-pride-as-the-Nephites` (38:39)
+**Edges:**
+- `★ Zion:be-one = economic-equality` (38:24-27) —[twelve-sons-parable: robes-vs-rags = injustice]→ NOT mere agreement but equality (38:16,35) · —[belonging-conditioned]→ "if ye are not one ye are NOT MINE" · —[completes-oneness-thread]→ §35:2 (one with God) + §38:27 (one with each other) = ONE fabric · —[Enoch-Zion "no poor among them"]→ Moses 7:18 → consecration (§42, §51)
+- `★ matter-spectrum:the-eternal-present` (38:2) —[all-things-present-before-His-eyes, not-foreknowledge-but-an-eternal-now]→ Moses 1:6; D&C 130:7 · —[grounds-foreknowledge-without-erasing-agency: He SEES present, doesn't CAUSE]· —[omniscience-as-watchful-care]→ "mine eyes are upon you" (38:7)
+- `★ endowment:first-word` (38:32 "endowed with power from on high") —[=]→ Luke 24:49; D&C 110:9 · —[the-gathering's-purpose: law (§42) + endowment]→ reserved temple thread opens [Michael's] · —[§27 keys / §13 sons-of-Levi converge]
+- `★ threat:enemy-in-secret-chambers-at-home` (38:13,28-29) —[secret-combinations turned-on-the-present]→ Ether 8:18-25 (BoM walk) · —[part-of-why-gather: scattered=exposed, gathered+one=fortified]→ §37 garrison
+- `theocracy:God-as-king/lawgiver/watcher` (38:21-22) —[presiding/watching at DIVINE scale]→ Abr 4:18 (top of the chain) · —[kingship-that-FREES]→ "a free people"; opposite of tyranny (§26)
+- `warning:beware-pride-as-the-Nephites` (38:39) —[riches-test]→ 4 Ne / Hel (pride-cycle, BoM walk) · —[equality = the structural guard against wealth-pride-fall]
+
+## D&C 39 — prepared for a greater work (Fayette, Jan 5 1831, James Covel)
+**Nodes:** `affirmation:heart-right-NOW-at-this-time` (39:8) · `★ pattern:fault-named-at-the-call` (39:9) · `offer:prepared-for-a-greater-work` (39:11) · `irony:peace-offered-fear-chosen` (39:6 ↔ 40:2)
+**Edges:**
+- `affirmation:heart-right-NOW` (39:8) —[genuine-but-time-stamped, not-fixed-sainthood]→ qualified-by-history (39:9) · —[a-heart-right-now-may-not-stay-so]→ §40
+- `★ fault-named-at-the-call` (39:9 pride + cares-of-the-world) —[=]→ §23:1 (Oliver) / §31:9 (Marsh) · —[EXACTLY-what-undid-him]→ §40:2 · —[warning ≠ compulsion]→ agency; God's foresight (38:2) doesn't override choice
+- `offer:prepared-for-a-greater-work` (39:11) —[the §35:3-Sidney-offer]→ but §40: Sidney-received / Covel-rejected — same offer, opposite responses
+- `irony:peace-offered-fear-chosen` (39:6 ↔ 40:2) —[peaceable-things (§36:2) traded for fear-of-persecution]→ §30 (fear-of-man)
+
+## D&C 40 — the word received with gladness, then rejected (Fayette, Jan 6 1831; the §39 sequel)
+**Nodes:** `★ parable-of-the-sower:enacted-as-history` (40:2) · `★ covenant:broken` (40:1,3) · `judgment:reserved-to-God` (40:3) · `meta:include_failures-at-scripture-scale` (§39-40)
+**Edges:**
+- `★ parable-of-the-sower:enacted` (40:2) —[narrated-in-Matt-13's-own-terms: gladness + straightway + persecution + cares-of-the-world]→ Matt 13:20-22 · —[the-gladness-is-NOT-the-test]→ joy-without-root collapses
+- `★ covenant:broken` (40:1,3) —[entered-and-broke, not-merely-changed-his-mind]→ D&C 82:10 · —[dissolves-the-promise]→ 39:10
+- `judgment:reserved-to-God` (40:3 "it remaineth with me") —[failure-recorded, sentence-withheld]→ §10:37 / §29:30 · —[don't-presume-the-eternal-verdict]
+- `meta:include_failures-at-scripture-scale` (§39-40) —[two-revelations-on-a-man-who-failed]→ §3 / §20:5 / §30 (the canon refuses a highlight reel) → covenant.yaml teaching ext
+- ✦ **DECADE 31-40 CLOSED:** the gathering to Ohio (§37-38) + Zion as oneness/equality (§38:27) + the endowment's first word (38:32); the early missions (§31-36); the §39-40 sower-enacted pair (include_failures). FOUR decades done (1-40).
