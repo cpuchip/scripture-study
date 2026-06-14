@@ -386,3 +386,13 @@ Edge vocabulary: `cross-ref` · `fulfillment` · `parallel` · `covenant-thread`
 - `assembly:Spirit-poured-out-in-the-gathering` (44:2) —[blessing-specific-to-convening]→ §43:8 / §41:2 (council pattern); §6:32
 - `★ lawful-walls:organize-under-the-laws-of-man` (44:4-5) —[civil-incorporation = a-SHIELD-against-enemies]→ 1 Pet 2:13; D&C 98:5; 134 · —[theocracy (§38:21) + civil-lawfulness]→ the presiding covenant's "walls around the field" (lawful protection)
 - `★ poor:the-condition-of-the-law's-fulfillment` (44:6) —[care-the-poor "that all things may be done according to my law"]→ §42:38 / §38:27 · —[neglecting-them = collapse-of-the-law's-purpose]→ James 1:27
+
+## D&C 45 — the Advocate's prayer, and the place of safety (Kirtland, March 7 1831; LANDMARK; Olivet expanded)
+**Nodes:** `★ Advocate:the-actual-plea` (45:3-5) · `★ discernment:the-wise-virgins = Spirit-guided + undeceived` (45:57) · `★ Zion:the-place-of-safety / only-non-warring-people` (45:66-71) · `wounds:as-identity` (45:51-52) · `pastoral:signs-as-reassurance-not-terror` (45:35) · `JST:translate-the-NT` (45:60-61)
+**Edges:**
+- `★ Advocate:the-actual-plea` (45:3-5) —[Christ-pleads-His-OWN-blood, not-our-merits]→ 1 John 2:1; §29:5 / §32:3 · —[our-standing = Christ's-wounds-presented-for-us]→ "spare these my brethren" · —[§19 first-person-Atonement (the cost) → §45 first-person-Advocacy (pleading the cost)]
+- `★ discernment:the-wise-virgins = Spirit-guided + undeceived` (45:57) —[the-oil = the-Holy-Spirit-as-guide (accumulated, un-borrowable, §33:17)]→ Matt 25:1-13 · —[readiness = Spirit + NOT-deceived]→ §28/§43 (order against deception); §8:2/§9:8/§36:2 · —[the-period-language/Spirit-distillation-discipline IS the oil]
+- `★ Zion:the-place-of-safety / only-non-warring-people` (45:66-71) —[the-gathering-as-refuge at-its-fullest]→ §37 · —[the-§38:27-be-one-people AS the-refuge: oneness = protection]· —[magnet = peace itself; unconquerable-in-peace]→ 45:68,70
+- `wounds:as-identity` (45:51-52) —[recognized-BY-the-marks of-suffering]→ Zech 13:6 · —[the-risen-Christ-keeps-the-wounds-as-His-credential]→ §6:37; §19 (Atonement carried into glory)
+- `pastoral:signs-as-reassurance-not-terror` (45:35) —[the-unraveling = fulfillment, for-the-faithful]→ "be not troubled"; stand-in-holy-places (45:32)
+- `JST:translate-the-NT` (45:60-61) —[the-Bible-re-translation continues]→ §35:20 ("mine own bosom")
