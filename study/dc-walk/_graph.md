@@ -484,3 +484,19 @@ Edge vocabulary: `cross-ref` · `fulfillment` · `parallel` · `covenant-thread`
 - `★ blessing:the-poor-who-are-PURE-IN-HEART` (56:18) —[NOT poverty-as-such, but broken+contrite (Matt 5:3 "poor in spirit")]→ inheritance goes-to-the-HEART not-the-bracket · —[the §52 contrite-pattern applied-to-economics]
 - `revelation:command-and-revoke` (56:3-4) —[a-commandment-can-be-WITHDRAWN when-the-one-commanded-won't-obey]→ §3 / §10:2; §53:6 (dark side) · —[the-loss = "answered upon the heads of the rebellious"]
 - `root:counsel-in-your-own-ways` (56:14) —[un-pardon-because they-run-it-their-own-way]→ §22:4 (seek not to counsel your God); Jacob 4:10 · —[self-will = the-engine under-both-hoarding-and-coveting]
+
+## D&C 57 — the center place (Jackson County, Missouri, July 20 1831; ZION LOCATED)
+**Nodes:** `★ gathering:Zion-LOCATED — the-center-place` (57:2-3) · `honest-commerce:sell-goods-without-fraud` (57:8) · `press:a-founding-institution` (57:11-13)
+**Edges:**
+- `★ gathering:Zion-LOCATED — the-center-place` (57:2-3) —[the-withholding ENDS at a real address (Independence; the temple lot "not far from the courthouse")]→ §48:5 / §25:4 DISCLOSED · —[the-heavenly-city onto-a-courthouse-lot]→ §29:32 (spiritual→temporal) · —[rewards-the-discipline-of-the-withheld]· —[realism: named not-yet-given; = §52:42's "land of your enemies" (lost 1833)]
+- `honest-commerce:sell-goods-without-fraud` (57:8) —[kingdom's-trade held-to-righteousness; profit-serves-the-poor]→ §49:21 / §56 · —[the-marketplace-form-of "be one"]→ §38:27
+- `press:a-founding-institution` (57:11-13) —[Zion's-first-institutions: printer + Spirit-checked-editor]→ §47 / §55 (a-covenant-people = a-publishing-people)
+
+## D&C 58 — anxiously engaged: the power is in them (Jackson County, Aug 1 1831; AGENCY LANDMARK / PROJECT-SOURCE)
+**Nodes:** `★ agency:it-is-not-meet-that-I-should-command-in-all-things` (58:26-28, PROJECT-SOURCE) · `★ order:after-much-tribulation-come-the-blessings` (58:3-4) · `★ repentance:confess + forsake → remember-no-more` (58:42-43) · `★ presiding:the-judge-is-NOT-a-ruler` (58:20) · `faith-failure:misread-the-revoking` (58:30-33)
+**Edges:**
+- `★ agency:it-is-not-meet-that-I-should-command-in-all-things` (58:26-28) —[PROJECT-SOURCE: the autonomy/stewardship root]→ `stuffy-in-the-loop` / `dave-rule` / `ammon` / `exercise_stewardship` · —["anxiously engaged… of their own free will"; "the power is in them, wherein they are agents unto themselves"]→ honor-intent-over-literal-command · —[cuts-BOTH-ways]→ over-commanded = slothful (58:26) AND passive-waiting-to-be-commanded = DAMNED (58:29) · —[the-steward HAS the-agency; the-failure-mode is PASSIVITY]
+- `★ order:after-much-tribulation-come-the-blessings` (58:3-4) —[glory FOLLOWS tribulation]→ §24:8 / §54:10 deepened into a LAW OF SEQUENCE · —[tribulation = the ROAD not a detour]→ §19/§29 (bitter-before-sweet) as a timeline; → §121:7-8
+- `★ repentance:confess + forsake → remember-no-more` (58:42-43) —[two-marks: name-it + leave-it; against-false-repentance]→ Isa 1:18; Jer 31:34 · —[God FORGETS the-forgiven-sin]→ the §19 Atonement's purpose realized
+- `★ presiding:the-judge-is-NOT-a-ruler` (58:20) —[unrighteous-dominion-guard built-into-the-granting-of-authority]→ D&C 121:39-46 · —["let God rule him that judgeth"]· —[paired]→ obey-the-laws-of-the-land (58:21-22, Rom 13 / A of F 12 / §134)
+- `faith-failure:misread-the-revoking` (58:30-33) —[God-conditioned-it; they-disobeyed; revoked; then-blame-God]→ §56:3-4 / §82:10 misread · —[the-passive-servant becomes-the-doubter]
