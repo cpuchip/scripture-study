@@ -438,3 +438,26 @@ Edge vocabulary: `cross-ref` · `fulfillment` · `parallel` · `covenant-thread`
 - `pastoral:little-children-grow-in-grace-fear-not` (50:40-42) —[discernment-ends-in-SECURITY not-anxiety]→ "ye cannot bear all things now… grow in grace"; "I have overcome the world"; "none… shall be lost" · —[a-light-you-grow-INTO, safe-meanwhile]
 - `oneness:the-Father-and-I-are-one` (50:43) —[ye-are-in-me-and-I-in-you]→ §35:2 (John 17) — the destination of the growing light
 - ✦ **DECADE 41-50 CLOSED:** the LAW (§42) + the gathering-as-refuge (§45) + the gifts (§46) + the DISCERNMENT CAPSTONE (§50 — light = the test AND the growth-law, fusing discernment + matter-spectrum). FIVE decades done (1-50).
+
+## D&C 51 — every man equal according to his wants and needs (Thompson, May 20 1831; consecration in practice)
+**Nodes:** `★ consecration:equal-by-need = equity-not-identity` (51:3,9) · `★ deed:protects-both-steward-and-poor` (51:4-5) · `★ withheld:act-upon-this-land-as-for-years` (51:16-17) · `steward:faithful-just-wise → the-joy-of-his-Lord` (51:19)
+**Edges:**
+- `★ consecration:equal-by-need = equity-not-identity` (51:3,9) —["according to his wants and needs"; "receive alike, that ye may be one"]→ §38:27 (be-one = equity); §46 (gift-economy) · —[not-uniformity, not-coercion: by-covenant under-the-guileless-bishop §41:11]
+- `★ deed:protects-both-steward-and-poor` (51:4-5) —[steward-gets-a-legally-secured-deed (his) + the-consecrated-surplus-stays-for-the-poor-if-he-leaves]→ honors private-stewardship AND common-good · —[runs-THROUGH-civil-law]→ §44:4
+- `★ withheld:act-upon-this-land-as-for-years` (51:16-17) —[unknown-duration → live-FULLY-in-the-present, build-as-if-permanent]→ §25:4 / §48:5 applied to TIME · —[the-sojourner-who-builds]→ Jer 29:5-7; §45:13 · —[don't-coast-because-temporary]
+- `steward:faithful-just-wise → the-joy-of-his-Lord` (51:19) —[=]→ Matt 25:21-23 · —[property = a-training-in-stewardship]→ the project's stewardship covenant
+
+## D&C 52 — a pattern, that ye may not be deceived (Kirtland, June 6 1831; the Missouri call)
+**Nodes:** `★ discernment:the-PATTERN` (52:14-19) · `★ fan-out:build-not-on-another's-foundation` (52:33) · `discipleship:the-poor-are-the-mark` (52:40) · `realism:land-of-inheritance = land-of-enemies` (52:42)
+**Edges:**
+- `★ discernment:the-PATTERN` (52:14-19) —[§50's-principle made-a-CHECKABLE-RUBRIC: contrite + meek + edifieth + fruits-of-praise-and-wisdom + obeys-ordinances]→ "know the spirits in all cases under the whole heavens" · —[the-fruit-test (Matt 7:16; Moroni 7) as a 5-point rubric]· —[humility-markers: a true spirit LOWERS; the false aggrandizes]→ completes §28→§43→§45:57→§46→§50→§52
+- `★ fan-out:build-not-on-another's-foundation` (52:33) —[each-laborer-on-his-own-TRACK, no-overlap]→ Rom 15:20 · —[coverage-by-non-overlap]→ the workspace's `fan-out` skill (fresh-ground-per-laborer)
+- `discipleship:the-poor-are-the-mark` (52:40) —[neglect-the-poor → "NOT my disciple"]→ §41:5 / §42:38 / §44:6 (absolute, not-relative)
+- `realism:land-of-inheritance = land-of-enemies` (52:42) —[the-promised-place not-yet-safe; won-through-opposition]→ §38:28 · —["I will hasten the city in its time"]
+
+## D&C 53 — calling and election, beginning with forsaking the world (Kirtland, June 8 1831, Sidney Gilbert)
+**Nodes:** `order:forsake-the-world-FIRST` (53:2) · `withheld:calling-unfolds-with-labor` (53:6) · `endurance:he-only-is-saved-who-endureth` (53:7)
+**Edges:**
+- `order:forsake-the-world-FIRST` (53:2) —[before-the-office: let-go-of-the-world]→ §49:20 · —[handle-the-kingdom's-money only-after-forsaking-its-worldliness]→ §41:11
+- `withheld:calling-unfolds-with-labor` (53:6) —[the-residue "made known… according to your labor"]→ §25:4 on one's OWN calling; line-upon-line §1:25-28
+- `endurance:he-only-is-saved-who-endureth` (53:7) —[not-the-calling-but-the-ENDURING]→ Matt 10:22; §5:22 / §14:7 · —[Gilbert endured to HIS end, d.1834]
