@@ -396,3 +396,26 @@ Edge vocabulary: `cross-ref` · `fulfillment` · `parallel` · `covenant-thread`
 - `wounds:as-identity` (45:51-52) —[recognized-BY-the-marks of-suffering]→ Zech 13:6 · —[the-risen-Christ-keeps-the-wounds-as-His-credential]→ §6:37; §19 (Atonement carried into glory)
 - `pastoral:signs-as-reassurance-not-terror` (45:35) —[the-unraveling = fulfillment, for-the-faithful]→ "be not troubled"; stand-in-holy-places (45:32)
 - `JST:translate-the-NT` (45:60-61) —[the-Bible-re-translation continues]→ §35:20 ("mine own bosom")
+
+## D&C 46 — to every man is given a gift (Kirtland, March 8 1831; the GIFTS / LANDMARK)
+**Nodes:** `★ gifts:universal-gifting = a-gift-economy` (46:11-12) · `★ gifts:the-protection-against-deception` (46:7-8) · `★ prayer:asketh-in-the-Spirit = God's-will` (46:30) · `inclusion:welcome-the-seeker` (46:3-6) · `meeting:Spirit-governs-the-form` (46:2)
+**Edges:**
+- `★ gifts:universal-gifting = a-gift-economy` (46:11-12) —[to-EVERY-man-a-gift, none-has-all (except the head 46:29)]→ interdependence · —[=]→ 1 Cor 12:7; Moroni 10 · —[the §42-consecration-logic on spiritual goods]· —[§38:27 be-one = COMPLEMENTARITY not uniformity]
+- `★ gifts:the-protection-against-deception` (46:7-8) —[three-sources: God/men/devils]→ "seek the best gifts… that ye may not be deceived" · —[the-discernment-gifts]→ operations-whether-of-God (46:16); discerning-of-spirits (46:23); leaders' discern-all (46:27, Abr 4:18 watch) · —[the-discernment-thread's-POSITIVE/gift-form]→ §28/§43 (structural order); §45:57 (stakes); the period-language-discipline as a GIFT to seek
+- `★ prayer:asketh-in-the-Spirit = God's-will` (46:30) —[the-Spirit-shapes-the-question to-God's-will]→ Rom 8:26; D&C 50:29 · —[resolves]→ §9 / §42:14 / §42:48 (healing-if-not-appointed) · —[prayer = wanting-what-God-wants by-the-Spirit, not-bending-God]
+- `inclusion:welcome-the-seeker` (46:3-6) —[don't-cast-out the-earnest, even-non-members; only-exclusion = unrepented-trespass]→ 3 Ne 18:22; §44:6 (open posture)
+- `meeting:Spirit-governs-the-form` (46:2) —[the form serves the Spirit]→ §43:8 / §44:2 (council pattern; gifts manifest in the Spirit-led assembly)
+
+## D&C 47 — keep a regular history (Kirtland, March 8 1831, John Whitmer the historian)
+**Nodes:** `★ memory:history-keeping-as-sacred-infrastructure` (47:1,4) · `obedience:hesitancy-surrendered-through-the-order` (heading) · `biography:the-historian-who-kept-the-record-and-left`
+**Edges:**
+- `★ memory:history-keeping-as-sacred-infrastructure` (47:1,4) —[a-calling, by-REVELATION, written-BY-THE-COMFORTER]→ §21:1 / §69 / §85 · —[the-project's `.mind/` + covenant's update_memory]→ §47 = the scriptural warrant (revelation-people = record-people) · —[Spirit-written = testimony not chronicle]
+- `obedience:hesitancy-surrendered-through-the-order` (heading) —[John "would rather not" → submits-through-Joseph-the-Seer]→ §28 (the order) · —[reluctance-honestly-surrendered = faithfulness]→ §21:5
+- `biography:historian-who-kept-the-record-and-left` —[a-faithful-work outlasts-the-worker's-faithfulness]→ §40/§30 [bin-4-adjacent]
+
+## D&C 48 — share the land, and wait for the place (Kirtland, March 10 1831)
+**Nodes:** `★ consecration:share-the-land-at-the-doorstep` (48:2) · `★ withheld:gather-toward-an-unrevealed-Zion` (48:5) · `order:family-by-family-gathering` (48:6)
+**Edges:**
+- `★ consecration:share-the-land-at-the-doorstep` (48:2) —[the-haves-impart-to-the-landless-arriving-brother]→ §42:30-34; §38:27 · —[Zion-built-first-by-hospitality]→ §44:6
+- `★ withheld:gather-toward-an-unrevealed-Zion` (48:5) —[the-place "not yet to be revealed"]→ §25:4 (discipline of the withheld) applied to the MOST consequential unknown · —[act-on-a-withheld-destination in-faith]· —[revealed-through-the-ORDER]→ §28; §57 (Independence)
+- `order:family-by-family-gathering` (48:6) —[ordered-settlement by-presidency-and-bishop]→ §42/§44 (the be-one people ORGANIZED)
