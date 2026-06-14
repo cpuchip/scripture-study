@@ -280,3 +280,26 @@ Edge vocabulary: `cross-ref` · `fulfillment` · `parallel` · `covenant-thread`
 - `warning:given-early-at-the-call` (31:9, Marsh's meekness) —[the-fault-line-named-at-the-start]→ §23:1 (Oliver's pride) · —[Marsh's-1838-fall-began-in-a-household-quarrel; returned 1857]→ [bin-4-adjacent biography] · —[grace-outlasts-the-fall]→ 31:2
 - `promise:family-faith-comes` (31:2 "nevertheless… the day cometh that they will believe")→ the `nevertheless` hinge
 - `antidote:I-am-with-you` (31:13) —[cure-for-affliction/fear = Presence]→ §24:8 / §30:11 (Matt 28:20)
+
+## D&C 32 — the Lamanite mission party completed (Manchester, Oct 1830; Parley P. Pratt + Ziba Peterson)
+**Nodes:** `★ order:pretend-to-no-other-revelation` (32:4) · `with-ness:I-will-go-in-their-midst` (32:3) · `posture:meek-and-lowly` (32:1)
+**Edges:**
+- `★ order:pretend-to-no-other-revelation` (32:4) —[=]→ D&C 28:2 (the order, on the road) · —[declare-the-WRITTEN-word]→ revelation = the Spirit *unfolding* it (§9 study-and-ask), not adding
+- `with-ness:I-will-go-in-their-midst` (32:3) —[strongest-early-form]→ §24/§30/§31 · —[as-advocate]→ D&C 29:5; 1 John 2:1 (Christ goes WITH them, not sends them to God)
+- `posture:meek-and-lowly` (32:1) —[=]→ Matt 11:29 · —[power-to-declare-rooted-in-lowliness]→ opposite of priestcraft (§33:4)
+
+## D&C 33 — open your mouths and they shall be filled (Fayette, Oct 1830; Ezra Thayre + Northrop Sweet)
+**Nodes:** `★ promise:open-your-mouths-and-be-filled` (33:8,10) · `apostasy:priestcraft-as-the-engine` (33:4) · `urgency:eleventh-hour` (33:3) · `readiness:lamps-and-the-Bridegroom` (33:17-18)
+**Edges:**
+- `★ open-your-mouths-and-be-filled` (33:8,10) —[the-filling-FOLLOWS-the-opening: speak-in-faith, made-ready-in-the-act]→ D&C 24:6; Ex 4:12 · —[spoken-form-of §8:2; the §32:4 guard holds]→ the filling unfolds the WRITTEN word
+- `apostasy:priestcraft-as-the-engine` (33:4) —[religion-for-gain/status]→ 2 Ne 26:29 (BoM walk) · —[counter = meekness]→ §31:9 / §32:1
+- `urgency:eleventh-hour` (33:3) —[the-LAST-dispensation]→ Matt 20:1-16; Jacob 5:71
+- `readiness:lamps-and-the-Bridegroom` (33:17-18) —[oil = Spirit, can't-be-borrowed]→ Matt 25:1-13 · —[§27-supper-from-the-watching-side]
+
+## D&C 34 — believed, and called (Fayette, Nov 4 1830; Orson Pratt, 19)
+**Nodes:** `★ ladder:believed-blessed / called-more-blessed` (34:4-5) · `★ John-3:16-personalized` (34:3) · `refrain:light-which-shineth-in-darkness` (34:2) · `antidote:I-am-with-you-until-I-come` (34:11-12)
+**Edges:**
+- `★ ladder:believed-blessed / called-more-blessed` (34:4-5) —[giving-it-away > keeping-it]→ §15-16/§18 (worth of souls) personalized · —[blessed-believed]→ John 20:29
+- `★ John-3:16-personalized` (34:3) —[universal-made-particular: "wherefore YOU are my son"]→ §25:16 · —[become-sons]→ John 1:12; §11:30 / §25:1 (real transformation, §29)
+- `refrain:light-which-shineth-in-darkness` (34:2) —[the-Oliver-cluster-signature]→ §6:21 / 10:58 / 11:11; John 1:5 · —[source-light]→ §14:9
+- `antidote:I-am-with-you-until-I-come` (34:11-12) —[Presence + a-clock ("I come quickly")]→ §24/§30/§31/§32 · —[the-"quickly"-held-over-Orson's-51-years]
