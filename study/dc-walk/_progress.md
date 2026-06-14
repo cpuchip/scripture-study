@@ -1,8 +1,8 @@
 # Doctrine & Covenants Walk — Progress
 
-**STATUS:** ◷ IN PROGRESS — 0/140 units (138 sections + OD 1 + OD 2).
-**NEXT:** ▶ **D&C 1** (the Lord's preface).
-**DEPTH:** _(set at kickoff — Michael's call: depth-scaled-to-section / full-depth / coverage-light)._ Default: depth scales to the section (landmarks full mini-study, short/situational sections tight). Historical setting engaged every section.
+**STATUS:** ◷ IN PROGRESS — 1/140 units (138 sections + OD 1 + OD 2).
+**NEXT:** ▶ **D&C 2** (Moroni's quotation of Malachi — Elijah, the hearts of the fathers).
+**DEPTH:** ✓ **depth-scaled-to-section** (Michael's call, 2026-06-14) — doctrinal landmarks (76, 88, 93, 107, 121, 132, 138…) get full mini-study depth; short / situational / administrative sections get tight faithful notes. Historical setting engaged every section. Multi-session walk.
 **Started:** 2026-06-14 · **Commit cadence:** per section (or per 2-3 short ones); **no push** (Michael pushes when he reads).
 
 > On resume (post-compaction): read this file → go to **NEXT** → read `_workflow.md` → continue. **Do not restart.**
@@ -10,7 +10,7 @@
 ## Decade tracker
 | Sections | Done | Notes |
 |----------|:----:|-------|
-| 1–10 | — | preface (1); the early Harmony/Fayette revelations; lost-116-pages (3, 10); the witnesses (5, 17); JS+Oliver (6-9, "study it out" 9:8) |
+| 1–10 | **1** | **§1 ✓** preface (Nov 1831): universal voice; **★1:24 revelation accommodated "after the manner of their language" = period-language principle's floor**; **★1:38 voice-of-servants=Lord's**; nevertheless (1:31-32); idolatry-as-self (1:16). · still: lost-116-pages (3,10); witnesses (5,17); JS+Oliver (6-9, "study it out" 9:8) |
 | 11–20 | — | Aaronic Priesthood (13); the Whitmers; **the Church organized (20-21)**; sacrament prayers (20); Article on marriage/rebuke |
 | 21–30 | — | revelations around the Church's founding; the gathering begins (29) |
 | 31–40 | — | missions; the law begins to come |
@@ -35,7 +35,7 @@
 - **Consecration / Zion / the law (42, 51, 57, 82, 104-105):** _(none yet)_
 - **Covenant & sealing / keys (110, 124, 131, 132):** _(none yet)_
 - **Gathering / last days (29, 45, 87, 88, 133):** _(none yet)_
-- **★ Project-source-texts (82:10, 88:119, 121, 130:18-19, 107:99, 9:8):** _(none yet)_
+- **★ Project-source-texts (82:10, 88:119, 121, 130:18-19, 107:99, 9:8):** **D&C 1:24** "given… after the manner of their language, that they might come to understanding" = the scriptural floor of the **Period-Language-Reading principle** (Michael's 2026-06-14 articulation; God accommodates His word to the receiver's frame → reading in that frame recovers it). **D&C 1:38** "by mine own voice or by the voice of my servants, it is the same" = the delegation/stewardship principle (voice-of-servants = the Lord's). **D&C 1:31-32** the nevertheless (holiness↔mercy).
 
 ## Cross-walk joins (D&C ←→ BoM + PoGP walks)
 - **★ OD 2 (1978) ←→ the priesthood-lineage bin-4 thread** (BoM: 2 Ne 5:21, Alma 3 · PoGP: Moses 7:8/22, Abr 1:21-27 · counterweight: Abr 2:10). The thread spanning all three walks lands at OD 2. _(pending)_
