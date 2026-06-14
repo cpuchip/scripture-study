@@ -50,3 +50,15 @@ Edge vocabulary: `cross-ref` · `fulfillment` · `parallel` · `type→antitype`
 - `type:coats-of-skins` (4:27) —[atonement-covering, contrast fig-leaves 4:13]→ Moses 5:5-8
 - `mercy:flaming-sword` (4:31) —[=time-to-repent]→ Alma 42:2-6
 - `christ:thy-will-be-done` (4:2) —[council-side-of]→ Gethsemane nevertheless (Luke 22:42)
+
+## Moses 5 — two streams out of Adam's house
+**Nodes:** `ordinance:sacrifice-as-similitude` (5:7) · `principle:obedience-before-understanding` (5:6) · `doctrine:felix-culpa` (Eve's declaration, 5:10-11) · `thread:gospel-from-the-beginning` (5:58-59) · `thread:secret-combination-origin` (Cain/Master Mahan, 5:29-31) · `lie:sin-is-freedom` (5:33) · `person:Eve` (first theologian of redemption) · `person:Cain/Master-Mahan/Perdition`
+**Edges:**
+- `ordinance:sacrifice-as-similitude` (5:7) —[type→antitype]→ Alma 34:10-15; Only Begotten · —[obedience-before-understanding]→ 5:6 ("I know not, save the Lord commanded me") → truth/Alma-32
+- `doctrine:felix-culpa` (5:10-11) —[=]→ 2 Ne 2:22-25 · —[four-goods]→ seed + knowledge + joy-of-redemption + eternal-life
+- `thread:secret-combination-origin` (5:31 "murder and get gain") —[ROOT-OF]→ **Ether 8:15-19; Hel 6:26-27 (BoM walk)** · —[continued]→ Lamech (5:49-50) · —[fails-via]→ the daughters (5:53)
+- `lie:sin-is-freedom` (5:33 "I am free") —[inverts]→ agency (3:17) + Eve's joy (5:11)
+- `thread:gospel-from-the-beginning` (5:58-59) —[feeds]→ Moses 6:51-68 · —[principle]→ gospel-pattern-is-eternal
+- `principle:accountability-by-light` (5:25) —[cross-ref]→ Hel 7:24; Luke 12:48
+- `thread:mark-on-cain` (5:40) —[cross-ref]→ Alma 3:7-16 (BoM walk 2 Ne 5:21 line)
+- **CROSS-WALK JOIN:** PoGP Moses 5:31 ←→ BoM walk Ether 8 / Helaman 6 (the BoM's secret combinations point back *here*)
