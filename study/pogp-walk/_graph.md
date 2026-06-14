@@ -178,3 +178,19 @@ The matter-spectrum runs the book's length: gnolaum eternal intelligence (3:18) 
 - `priesthood:restored-by-ordination` (1:69 John the Baptist) —[unbroken-line restored]→ Moses 6:7; Abr 1:3 · —[fruit]→ revelation renewed (1:73-74)
 - `fulfillment:prophet-like-Moses` (1:40 Acts 3) —[=]→ **Moses 1:41** ("another like unto thee" = Joseph)
 - ✦✦ **THE JS—H FORWARD-LINK THREAD (held since Moses 1:9) CLOSES.** Echo both ways: Moses prefigures the grove in canon-order; the grove precedes Moses in lived/translation-order.
+
+## Articles of Faith — the PoGP distilled (THE LAST CHAPTER)
+**Nodes:** `creed:the-PoGP-distilled` (Art.1-13) · `★ keystone:Article-9-open-canon` (9) · `arc:Eden-to-paradisiacal-glory` (Art.10) · `★ benediction:seek-the-good` (Art.13) · `paradox:open-creed` (8-9)
+**Edges:**
+- `creed:distilled` —[Art.2=]→ Moses 6:54 · —[Art.3→]→ Moses 5:9 · —[Art.4-5→]→ Moses 5:8/6:52/8:24 + Abr 1:2-4 + JS-H 1:69 · —[Art.8→]→ 1 Ne 13:26 = Moses 1:41 · —[Art.10→]→ Moses 7:62 + Eden
+- `★ keystone:Article-9` (9) —[the-PoGP-IS-its-proof]→ Moses/Abraham/JS-M/JS-H · —[refutes]→ JS-H 1:21 cessationism · —[cross-ref]→ Amos 3:7
+- `arc:Eden-to-paradisiacal-glory` (Art.10) —[closes-walk-arc]→ Moses 2-4 (garden lost) → garden regained
+- `★ benediction:seek-the-good` (Art.13 Philip 4:8) —[rhymes-with]→ Abr 1:2 (covenant began with *desire*) · —[motion]→ God (1) → neighbor (13)
+
+---
+# ✦✦✦ THE PEARL OF GREAT PRICE IS WALKED — 16/16 ✦✦✦
+**The shape:** opens "man is nothing… this is my work and my glory" (Moses 1) → closes "we seek after these things" (Art.13). Nothingness→glory; desire→seeking; garden lost (Moses 4)→garden regained (Art.10).
+**The spine:** Moses = the vision + the gospel-from-Adam. Abraham = the cosmos + the council + the matter-spectrum floor (gnolaum 3:18 → embodiment 5:7). JS-M = the watch. JS-H = the grove (forward-link thread closed, echo both ways). Articles = the distillate + Article 9 (the open canon the book proves).
+**Project source-texts reached as scripture:** Abr 4:18 (`watch_what_you_order`) + 4:26 (`council_moment`/`dominion_in_council`) + JS-M 1:51 (`when_broken`). The partnership read its own foundations.
+**Cross-walk joins (PoGP↔BoM):** Moses 5:31→Ether 8/Hel 6 (secret combinations) · Moses 8:17→Ether 15:19 (Spirit ceased striving).
+**Open for Michael (bin-4, NOT resolved):** Moses 7:8/7:22 + Abr 1:21-27 (lineage) → 2 Ne 26:33 / the with-Michael 2 Ne 5:21 study; counterweight = Abr 2:10 (adoption-by-gospel).
