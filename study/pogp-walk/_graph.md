@@ -62,3 +62,14 @@ Edge vocabulary: `cross-ref` · `fulfillment` · `parallel` · `type→antitype`
 - `principle:accountability-by-light` (5:25) —[cross-ref]→ Hel 7:24; Luke 12:48
 - `thread:mark-on-cain` (5:40) —[cross-ref]→ Alma 3:7-16 (BoM walk 2 Ne 5:21 line)
 - **CROSS-WALK JOIN:** PoGP Moses 5:31 ←→ BoM walk Ether 8 / Helaman 6 (the BoM's secret combinations point back *here*)
+
+## Moses 6 — language of Adam, Enoch's call, the gospel to Adam
+**Nodes:** `name:Man-of-Holiness` (6:57, Father) · `name:Son-of-Man` (6:57, the Son's patronymic) · `doctrine:all-things-bear-record` (6:63) · `pattern:reluctant-prophet` (Enoch, 6:31) · `footnote-chain:clay-on-eyes` (6:35→John 9) · `thread:book-of-remembrance+pure-language` (6:5-6,46) · `gospel-to-Adam` (6:48-68) · `person:Enoch` (the lad, the seer, walked with God) · `person:Seth` (seed instead of Abel)
+**Edges:**
+- `name:Man-of-Holiness` (6:57) —[Father's-name→patronymic]→ `name:Son-of-Man` —[reframes]→ Matt 20:28; John 3:13 (Gospel "Son of Man") · —[cross-ref]→ Moses 7:35
+- `all-things-bear-record` (6:63) —[cross-ref]→ Alma 30:44; D&C 88:47 · —[links-study]→ christ-in-all-the-scriptures · —[loops]→ Moses 3:9 (all things spirit-created)
+- `pattern:reluctant-prophet` (6:31) —[cross-ref]→ Ex 3:11; 4:10; Jer 1:6; **JS—H 1:20** · —[answer]→ "Open thy mouth… filled" (6:32)
+- `footnote-chain:clay-on-eyes` (6:35) —[same-gesture]→ John 9:6
+- `gospel-to-Adam` (6:48-68) —[home-study]→ moses-6-gospel-to-adam · —[children-whole 6:54]→ Moroni 8 (BoM walk) · —[felix-culpa]→ 2 Ne 2:25
+- `two-streams` (6:5-6 record/pure-language vs 6:15 secret-works) —[continues]→ Moses 5 · —[secret→]→ Ether 8:23
+- **FORWARD-LINK TALLY → JS—H 1:20:** Moses 1:9 (fell) + Moses 6:31 (hated/slow of speech) — the Book of Moses keeps pre-figuring the First Vision
