@@ -461,3 +461,26 @@ Edge vocabulary: `cross-ref` · `fulfillment` · `parallel` · `covenant-thread`
 - `order:forsake-the-world-FIRST` (53:2) —[before-the-office: let-go-of-the-world]→ §49:20 · —[handle-the-kingdom's-money only-after-forsaking-its-worldliness]→ §41:11
 - `withheld:calling-unfolds-with-labor` (53:6) —[the-residue "made known… according to your labor"]→ §25:4 on one's OWN calling; line-upon-line §1:25-28
 - `endurance:he-only-is-saved-who-endureth` (53:7) —[not-the-calling-but-the-ENDURING]→ Matt 10:22; §5:22 / §14:7 · —[Gilbert endured to HIS end, d.1834]
+
+## D&C 54 — the broken covenant, and mercy for the keepers (Kirtland, June 10 1831; Newel Knight)
+**Nodes:** `★ covenant:broken → void-and-of-none-effect` (54:4) · `★ mercy:for-the-keeper-displaced-by-another's-breach` (54:6) · `interim:seek-a-living-like-unto-men` (54:9) · `comfort:patient-in-tribulation → rest` (54:10)
+**Edges:**
+- `★ covenant:broken → void-and-of-none-effect` (54:4) —[=]→ D&C 82:10 (no promise); §40 (Covel) · —[bilateral: one-side-breaks → binding-lapses]· —[the-breaker-who-displaces-the-innocent → the-MILLSTONE]→ 54:5 (Matt 18:6)
+- `★ mercy:for-the-keeper-displaced-by-another's-breach` (54:6) —[the-betrayed-party still-blessed, NOT-punished-for-the-disruption]→ justice-tracks-the-HEART-not-the-circumstance · —[displaced-keep-their-standing; breaker-loses-his]
+- `interim:seek-a-living-like-unto-men` (54:9) —[faithful-ordinariness while-the-place-isn't-ready]→ §51:16 in hardship; faith-sustains-THROUGH-the-day-labor
+- `comfort:patient-in-tribulation → rest` (54:10) —[presence WITHIN tribulation not-exemption]→ §24:8 / §45:35 · —[sought-me-early → rest]→ Prov 8:17
+
+## D&C 55 — the printer, and books for children (Kirtland, June 14 1831, W.W. Phelps)
+**Nodes:** `★ kingdom:invests-in-the-press-and-the-young` (55:4) · `ordinance:the-single-eye-conditions-it` (55:1) · `ordinance:the-contrite-receiver` (55:3)
+**Edges:**
+- `★ kingdom:invests-in-the-press-and-the-young` (55:4) —[the-first-printer told-to-write-children's-books "that little children may receive instruction"]→ §47 (the record) → §55 (press + children's books) → §88 (School of the Prophets) · —[a-movement-commissioning-children's-books-before-a-city = the-long-game]
+- `ordinance:the-single-eye-conditions-it` (55:1) —["if you do with an eye single to my glory, you shall have a remission"]→ §4:5 / §27:2 · —[pure-motive conditions-the-grace not-the-act-alone]
+- `ordinance:the-contrite-receiver` (55:3) —[confer-the-Spirit "if they are contrite"]→ §50:19-22; §52:15-16 (authority-confers, contrition-receives)
+
+## D&C 56 — wo to the hoarding rich, and wo to the covetous poor (Kirtland, June 15 1831; Ezra Thayre revoked)
+**Nodes:** `★ greed:the-reciprocal-wo (rich AND poor)` (56:16-17) · `★ blessing:the-poor-who-are-PURE-IN-HEART` (56:18) · `revelation:command-and-revoke` (56:3-4) · `root:counsel-in-your-own-ways` (56:14)
+**Edges:**
+- `★ greed:the-reciprocal-wo (rich AND poor)` (56:16-17) —[rich-sin = HOARDING; poor-sin = COVETING + IDLENESS]→ the SAME sin (the unbroken covetous heart) in two costumes · —[CORRECTS the consecration thread]→ the poor NOT automatically righteous; equality = conversion-of-the-HEART not class-warfare · —[balances §49:20]
+- `★ blessing:the-poor-who-are-PURE-IN-HEART` (56:18) —[NOT poverty-as-such, but broken+contrite (Matt 5:3 "poor in spirit")]→ inheritance goes-to-the-HEART not-the-bracket · —[the §52 contrite-pattern applied-to-economics]
+- `revelation:command-and-revoke` (56:3-4) —[a-commandment-can-be-WITHDRAWN when-the-one-commanded-won't-obey]→ §3 / §10:2; §53:6 (dark side) · —[the-loss = "answered upon the heads of the rebellious"]
+- `root:counsel-in-your-own-ways` (56:14) —[un-pardon-because they-run-it-their-own-way]→ §22:4 (seek not to counsel your God); Jacob 4:10 · —[self-will = the-engine under-both-hoarding-and-coveting]
