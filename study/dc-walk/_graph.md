@@ -371,3 +371,18 @@ Edge vocabulary: `cross-ref` · `fulfillment` · `parallel` · `covenant-thread`
 - `★ offenses:Matt-18-private-and-proportionate` (42:88-92) —[=]→ Matt 18:15-17; §28:11 (Hiram Page) · —[discipline-MATCHED-to-scope: secret→secret (92), open→open (91)]· —[aim = reconciliation/confession NOT exposure; protects the offender's name]→ §121:43 (reprove-then-love)
 - `moral-law:Decalogue-renewed` (42:18-29) —[=]→ Ex 20; Matt 5:21-30 · —[sharpenings]→ lust→denies-the-faith (42:23); fidelity-as-positive-command (42:22)
 - `promise:revelation-upon-revelation / peaceable-things` (42:61) —[line-upon-line as ASCENDING gift]→ §1:25-28 · —[true-revelation = joy/peace]→ §36:2 / §39:6 (the discernment refrain)
+
+## D&C 43 — all the day long, but ye would not (Kirtland, Feb 1831; false revelators recur)
+**Nodes:** `★ order:standing-law-against-deception` (43:5-6) · `★ agency:all-the-day-long-but-ye-would-not` (43:24-25) · `★ teaching:taught-from-on-high → endowed → teach` (43:15-16) · `posture:solemnities-of-eternity` (43:34-35)
+**Edges:**
+- `★ order:standing-law-against-deception` (43:5-6) —[§28 generalized because the problem recurred]→ "that you may not be DECEIVED" · —[a-counterfeit-exposed-by-POSITION not-by-out-arguing]→ deception's defense is order (the §28 guardrail codified)
+- `★ agency:all-the-day-long-but-ye-would-not` (43:24-25) —[God's-persistence TOTAL (every voice, catastrophic→tender) and STILL doesn't compel]→ §29:39; Matt 23:37 · —[the-calling-is-LOVE → the-refusal-WOUNDS-God]· —[the-two-word-monument-to-agency]
+- `★ teaching:taught-from-on-high → endowed → teach` (43:15-16) —[the §42:14-teaching-law given-its-source]→ teach-from-what-heaven-taught-YOU · —[endowment]→ Luke 24:49; §38:32 · —[sanctify→endow→teach]
+- `posture:solemnities-of-eternity` (43:34-35) —[weighty-sobriety, against-levity]→ D&C 88:121 · —[joy-AND-gravity]→ §19:39
+
+## D&C 44 — assemble, organize, care for the poor (Kirtland, late Feb 1831)
+**Nodes:** `assembly:Spirit-poured-out-in-the-gathering` (44:2) · `★ lawful-walls:organize-under-the-laws-of-man` (44:4-5) · `★ poor:the-condition-of-the-law's-fulfillment` (44:6)
+**Edges:**
+- `assembly:Spirit-poured-out-in-the-gathering` (44:2) —[blessing-specific-to-convening]→ §43:8 / §41:2 (council pattern); §6:32
+- `★ lawful-walls:organize-under-the-laws-of-man` (44:4-5) —[civil-incorporation = a-SHIELD-against-enemies]→ 1 Pet 2:13; D&C 98:5; 134 · —[theocracy (§38:21) + civil-lawfulness]→ the presiding covenant's "walls around the field" (lawful protection)
+- `★ poor:the-condition-of-the-law's-fulfillment` (44:6) —[care-the-poor "that all things may be done according to my law"]→ §42:38 / §38:27 · —[neglecting-them = collapse-of-the-law's-purpose]→ James 1:27
