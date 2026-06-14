@@ -232,3 +232,13 @@ Edge vocabulary: `cross-ref` · `fulfillment` · `parallel` · `covenant-thread`
 - `★ law:common-consent` (26:2) —[authority-exercised-by-agreement-not-command]→ neither democracy nor autocracy · —[=]→ Mosiah 29:26; §20:65 · —[presiding]→ D&C 121:41 (governing without compulsory means)
 - `consent:by-prayer-and-faith` (26:2) —[distributed-spiritual-confirmation]→ §9 (study-it-out-then-confirm) scaled to a church
 - `guidance:incremental` (26:1) —[next-step + "then it shall be made known"]→ §25:4 (withheld); §1:25-28 (line upon line)
+
+## D&C 27 — the gathering of the keys + the whole armor of God (Harmony, Aug 1830)
+**Nodes:** `sacrament:remembrance-not-substance` (27:2) · `★ priesthood:the-gathering-of-all-keys` (27:5-13) · `★ sealing:Elijah's-turning-of-hearts-keys` (27:9) · `★ armor:Ephesians-6-in-Restoration-voice` (27:15-18) · `supper:the-future-messianic-feast` (27:5)
+**Edges:**
+- `sacrament:remembrance-not-substance` (27:2) —[eye-single + remembering]→ §4:5 / 88:67 (single eye, matter-spectrum) · —[water-for-wine IS the doctrine: substance adiaphora]→ §20:77 (covenant)
+- `★ priesthood:the-gathering-of-all-keys` (27:5-13) —[every-dispensation's-key-holder]→ Moroni/Elias/John/Elijah/patriarchs/Adam/Peter-James-John · —[the-convergence-of]→ PoGP line (Moses 6:7 / Abr 1:3) → §13 (re-splice) → §27 (gathered) · —[why-Restoration-not-revival]→ "gather together in one all things" (Eph 1:10); §10 wise-purpose redundancy at all-history scale
+- `★ sealing:Elijah's-turning-of-hearts-keys` (27:9) —[=]→ Mal 4:5-6 (= §2; JS—H 1:38) · —[the-Malachi-bracket's-keystone]→ §2 ↔ §13 ↔ 27:9 · —[family-sealed-not-disconnected]→ "whole earth not smitten with a curse" [temple, Michael's]
+- `★ armor:Ephesians-6-in-Restoration-voice` (27:15-18) —[=]→ Eph 6:11-17 · —[the-sword = revelation]→ "sword of my Spirit… and my word which I reveal" (§8:2) · —[defensive/standing]→ "able to STAND" · —[pieces=walk's-threads]→ truth/faith/Spirit-word
+- `supper:the-future-messianic-feast` (27:5) —[Christ-drinks-with-all-dispensations-on-the-earth]→ Matt 26:29 · —[sacrament-is-rehearsal]→ §20:75
+- ✦ **the priesthood-line + Malachi-sealing threads CONVERGE here** (every key gathered; Elijah's keys named)
