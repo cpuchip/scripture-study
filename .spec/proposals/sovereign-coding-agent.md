@@ -3,7 +3,7 @@
 **Date:** 2026-06-13
 **Status:** Proposed — awaiting council (`dominion_in_council`; nothing built until ratified)
 **Origin:** general-workspace session, out of the Euclid digestion and the "can pg-ai-stewards become our own opinionated CLI coding tool?" question.
-**Working name:** *Garrison* — from the preside study (Webster 1828 *praesidium*, the fortified position held when the field is threatened). Naming is an open question; the name is doing real work here, so it leads.
+**Name:** **Garrison** / `garrison-cli` — ratified 2026-06-13. From the preside study (Webster 1828 *praesidium*, the fortified position held when the field is threatened). Michael's gloss: *"the person who drives it presides."* The name scales down the chain of watches — whoever drives a Garrison, human or steward, presides over the field it holds.
 
 ---
 
@@ -16,6 +16,8 @@ What is the **leanest stack that lets Michael keep coding productively on his ow
 In Michael's words: *"if I lose access to claude code and frontier models, and all I am left with is something like qwen3.6-27B then I'd want a lean stack that enables me to code with my local hardware without the fuss of dealing with something I don't have full control over."*
 
 This is not a market play and not a feature race. It is a **go-bag** — a fortified fallback position. The values are resilience, sovereignty, and control: a coding agent Michael fully owns, runs on hardware he owns, against models he runs, that survives the loss of everything rented. He doesn't love how opencode or "pi agents" are put together and hasn't tried hermes, so there is room for an opinionated alternative built on principles already proven here.
+
+Refined in council (2026-06-13): the *pure* go-bag — nothing but a binary and a local model — is the north star, not the v1 target. Michael already runs Docker and LM Studio to develop, so v1 may lean on them, and on Postgres, for power. The invariant that actually matters is **sovereignty, not minimalism**: every prerequisite is something he owns and runs, never something rented. v1 trades minimalism for the presiding-orchestration power of pg-as-the-machine; the minimal survival mode is a later hardening.
 
 ## What already exists (we are not starting from zero)
 
@@ -35,17 +37,19 @@ The earlier sketch of option (b) put "Claude Code / the Agent SDK as the hands."
 
 - **The executor is a lean loop Michael owns** (Go), driving a **local model** (LM Studio / Ollama / llama.cpp). This is the (c) spine: a thin local loop.
 - **The substrate's governance is the engine** — council, verify, compact, work-item, watch — available via MCP and/or vendored in-process. This is the (b) relationship: the substrate *presides*, the lean loop *labors*, mapped onto the presiding covenant (Garrison presides over its own sub-steps under D&C 121; force only at the walls — cost caps, sandboxes, deny-lists).
-- **DB-optional, graceful degradation.** Floor: principles plus local memory files, exactly how this workspace runs with no database. Ceiling: substrate-backed engrams, work-item ledger, cost caps, council records. Better-with, never requires. In pure survival mode Garrison runs with **no Postgres at all**.
+- **Two tiers, not one (Michael's call, 2026-06-13).** Garrison ships in two modes, built in this order:
+  - **v1 — Garrison-full.** Docker + LM Studio + Postgres are accepted prerequisites. Michael already runs Docker and LM Studio to develop, so requiring them for v1 costs nothing and buys a great deal: **pg as the machine** — the presiding ledger, the context engine, and fast context-switching between agent modes and sessions (see "The presiding chain" below). This is the daily driver.
+  - **later — Garrison-minimal.** The Go binary plus a local model, no Postgres. The true survival floor: degraded (no cross-session context tracking, no engram switching), but it runs on nothing but itself. Deferred, not abandoned — the go-bag promise is kept as a later hardening, while v1 chases the power.
 - **Frontier-as-luxury, never as dependency.** When Claude Code or a frontier API *is* available, Garrison may dispatch heavy steps to it as an optional stronger pair of hands. It must never need it.
 
-The single most important commitment: **floor mode needs nothing but the Go binary and a local model.** Everything else is enrichment. That is what makes it a real go-bag rather than a thin client to a server that might also be gone.
+The discipline that survives both tiers: every prerequisite must be something Michael **owns and runs himself** (his Docker, his LM Studio, his Postgres), never something rented that can be revoked. v1 accepts heavier owned prerequisites for power; the minimal mode strips them for resilience. Both stay sovereign.
 
 ## What Garrison is deliberately NOT
 
 - **Not a frontier-feature competitor.** It will not out-edit Claude Code or aider, and trying would be the losing game. The niche is governance, not edit quality.
 - **Not opencode-complexity.** Lean is a hard requirement, not a preference — Michael named the dislike directly.
 - **Not a standalone-agent maximalist rewrite.** Reinventing a full frontier-grade agent loop betrays the substrate's identity (presider, not executor) and drowns in tool-protocol churn. Rejected.
-- **Not DB-required**, and **not a replacement for `stewards-cli`** (a separate thing that may share libraries).
+- **Not frontier-dependent**, and **not a replacement for `stewards-cli`** (a separate thing that may share libraries). v1 *does* require Postgres (via Docker) for its power; the DB-less mode is a later hardening, and even it depends only on things Michael owns.
 
 ## The lean core loop
 
@@ -57,6 +61,25 @@ The single most important commitment: **floor mode needs nothing but the Go bina
 - **Inverse hypothesis** → after a fix: reproduce the failure, apply, confirm gone, remove, confirm it returns. "Tests pass" is not verification.
 - **Gated autonomy** → human-in-the-loop by default; tighten the gate as the model weakens.
 - **Presiding / watch** → Garrison watches its own sub-steps to *intent*, not just to completion.
+
+## The presiding chain (what pg-as-the-machine really buys)
+
+This is the capability that makes Garrison more than a lean local agent, and it is the presiding covenant made operational. The chain of watches becomes a running system:
+
+- **Michael presides over the main agent** — he gives it a stewardship and a binding question. His attention is the top watch (the base covenant's `read_fully` / `review_same_session`).
+- **The main steward presides over the sub-agents it spawns** — when it divides the work it becomes a presider in turn (`preside_under_121`, `watch_what_you_order`). It does not lose sight of the work it ordered; it watches that work to intent.
+- **Postgres is the presiding ledger** — the substrate already has the pieces: the work-item hierarchy (Batch J), the engram context engine and compaction (Batch K/L), dispatch and cost records. Garrison inherits them, so a presiding steward can actually *see the whole field* — every sub-agent's work and context, tracked and durable.
+
+Two things fall out of this that a DB-less local loop cannot do:
+
+1. **Full sub-agent tracking.** Because the work and context live in pg, the presider watches every sub-agent to intent rather than firing and forgetting. This is `watch_what_you_order` given *eyes* — the clause was always an obligation; pg is the infrastructure that makes it keepable.
+2. **Fast context switching between agent modes and sessions.** Because context is durable (engrams + work-items) instead of held in a process, Garrison can suspend, resume, and switch an agent's context without losing it. The substrate's context engine, pointed at local development.
+
+The obligations that ride with the power, named so they are not lost:
+
+- **Tracking must surface, not just record.** Watching that no one watches is not watching. Garrison has to *show* the presider what the sub-agents are doing — a CLI/board surface for the live chain — or the ledger is a tree falling in an empty forest.
+- **Spawning is gated, hardest on weak models.** A 27B model presiding over 27B sub-agents can compound errors. The fan-out discipline applies (shepherd for integration, fan-out for independent verification), and the spawn gate tightens as the model weakens. Orchestration without the oracle and critic gates is a force multiplier for mistakes.
+- **The chain is accountable upward.** When a sub-agent's work goes wrong, the naming goes up the chain to the presider (`when_presiding_is_broken`). pg makes that chain auditable rather than anecdotal.
 
 ## Why governance is load-bearing here, not luxury
 
@@ -77,11 +100,12 @@ A 27B model hallucinates more, plans worse over long horizons, and drifts faster
 ## Phasing (post-parity / post-cut)
 
 - **P0** — this spec + council ratification (`dominion_in_council`).
-- **P1** — the lean local loop MVP: read / plan / edit / verify on the working tree, one local model, no DB. The pure go-bag floor. Dogfood on a small real task.
+- **P1** — the lean local loop MVP (Garrison-full): read / plan / edit / verify on the working tree, one local model via LM Studio, Postgres up via Docker. The presiding ledger comes online here (work-item + context tracking for any sub-agents). Dogfood on a small real task.
 - **P2** — the code oracle suite: a build/test wrapper plus code detectors reusing the `verify-quotes` / study-linter patterns (precision-tuned, oracle-first).
 - **P3** — the council/critic pass (the D&C 88:122 lever).
 - **P4** — substrate-backed enrichment over MCP (engrams, work-item ledger, cost caps); the DB-optional ceiling.
 - **P5** — package and share; ties to `plugin-someday` and ai-jumpstart / *Beyond the Prompt* — Garrison is the tool that practices what the book preaches.
+- **P6 (later) — Garrison-minimal.** Strip to the binary plus a local model, no Postgres: the true survival floor. This is the only phase that has to resolve the vendor-vs-MCP question (open Q #5); v1 simply relies on pg.
 
 ## Relationship to existing assets
 
@@ -93,10 +117,11 @@ A 27B model hallucinates more, plans worse over long horizons, and drifts faster
 2. **How lean is lean** — single Go binary? What is the irreducible core?
 3. **Primary local runtime** — LM Studio vs. Ollama vs. llama.cpp.
 4. **Tool-calling strategy for weak models** — structured output, constrained decoding, ReAct-text, or non-thinking-only for the loop.
-5. **Substrate coupling (the crux of sovereignty)** — does floor mode MCP-call the substrate, or vendor a minimal subset of its logic so Garrison needs *nothing but itself and a local model*? True sovereignty likely means floor mode cannot depend on Postgres at all.
+5. **Substrate coupling (deferred to the minimal mode).** Resolved for v1: Garrison-full relies on Postgres via Docker. The open question is only for Garrison-minimal (P6) — does it MCP-call a running substrate, or vendor a minimal subset of the logic so it needs nothing but itself and a local model? Not a v1 blocker.
+8. **The presiding-chain surface** — how does Garrison *show* the live chain of sub-agents to the presider (CLI board, TUI, a `garrison watch` view)? Tracking that doesn't surface isn't watching.
 6. **Plugin relationship** — is the `plugin-someday` Claude Code plugin simply Garrison's luxury-mode client?
 7. **P1 dogfood target.**
 
 ## Recommendation
 
-Pursue it, as specced: B + C, executor owned-and-local, DB-optional, governance as the safety net, built after the cut. Hold the one commitment above all others — **floor mode runs on nothing but the binary and a local model** — because that is the difference between a sovereignty tool and a thin client to a server that might also be gone.
+Pursue it, as specced: B + C, executor owned-and-local, governance as the safety net, built after the cut. Two tiers — **v1 Garrison-full** (Docker + LM Studio + pg, all owned, for the presiding-orchestration power) and **later Garrison-minimal** (binary + local model, the survival floor). Hold the one discipline that spans both: **every prerequisite is something Michael owns and runs, never something rented that can be revoked.** That is what keeps Garrison sovereign whether it is the daily driver or the last position held.
