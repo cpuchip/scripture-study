@@ -2,7 +2,8 @@
 
 **STATUS:** ✦✦✦ COMPLETE — 16/16 chapters walked (Moses 1 → the Articles of Faith). ✦✦✦
 **NEXT CHAPTER:** ✦✦✦ NONE — THE PEARL OF GREAT PRICE IS WALKED. Moses 8/8 · Abraham 5/5 · JS-Matthew · JS-History · Articles of Faith. ✦✦✦
-**DEPTH:** mini-study per chapter (study-grade engagement, note-grade finish); facsimiles folded in; bin-4 flags surfaced not resolved. **Commit per chapter, no push** — honored throughout.
+**DEPTH:** mini-study per chapter (study-grade engagement, note-grade finish); bin-4 flags surfaced not resolved. **Commit per chapter, no push** — honored throughout.
+**FACSIMILES (2026-06-14, post-completion — Michael caught the gap):** initially only *referenced* from chapter prose; now **downloaded all 3 images + looked first-hand** → dedicated note `abraham/facsimiles.md` (Fac 1 = the altar/Akedah-inversion visible; Fac 2 = Abr 3's astronomy drawn, Kolob center; Fac 3 = the Abr 1:27↔2:10 priesthood reversal). Fac 2/3 Explanations verbatim-verified; Fac 1 paraphrased (page wouldn't yield). Egyptological seam flagged. Images in `.scratch/facsimiles/` (untracked; URLs recorded in the note).
 **Started:** 2026-06-14 · **Completed:** 2026-06-14 (single session, autonomous).
 **DEPTH:** mini-study per chapter (study-grade engagement, note-grade finish). Vision-dense chapters (Moses 1, 7; Abr 3) get full treatment; link-don't-duplicate against our existing creation/council corpus.
 **Started:** 2026-06-14
