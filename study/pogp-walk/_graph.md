@@ -120,3 +120,14 @@ Two who "walked with God": Enoch (taken up, 7:69) + Noah (kept back, 8:27). Betw
 - `arc:seeking→finding` (2:12) —[closes]→ Abr 1:2 (sought/desiring) · —[cross-ref]→ Jer 29:13
 - `seam:say-she-is-thy-sister` (2:22-25) —[Lord-instructed, harder-than-Genesis]→ life-preservation + half-truth (Sarai = kin) — *named, not resolved*
 - `condition:when-they-hearken` (2:6) —[covenant-conditional]→ D&C 130:21
+
+## Abraham 3 — astronomy as parable of souls; the council from the top
+**Nodes:** `method:astronomy-as-parable` (3:16-19) · `cosmology:Kolob-graded-order` (3:2-9, Fac 2) · `doctrine:gnolaum-eternal-intelligence` (3:18) · `theism:God-supreme-not-solitary` (3:19) · `doctrine:foreordination-by-character` (3:22-23) · `council:from-the-top` (3:24-28) · `purpose:mortality-is-proving` (3:25) · `doctrine:two-estates` (3:26)
+**Edges:**
+- `method:astronomy-as-parable` (3:16-19 "as, also") —[graded-stars→graded-intelligences]→ Kolob (nearest throne) :: God ("more intelligent than they all") · —[logical-form]→ truth/Euclid
+- `doctrine:gnolaum-eternal-intelligence` (3:18) —[olam H5769 = vanishing-point]→ no-beginning/no-end · —[cross-ref]→ D&C 93:29 · —[links-study]→ intelligence; truth (matter-spectrum)
+- `theism:God-supreme-not-solitary` (3:19,21) —[parallel]→ Kolob (governing, not only star) · —[matter-spectrum]→ God works within eternal truth/intelligence
+- `doctrine:foreordination-by-character` (3:22-23) —[cross-ref]→ Jer 1:5; D&C 138:55 · —[≠predestination]→ guarded by 3:25-26
+- `council:from-the-top` (3:24-28) —[★ COMPLETES]→ **Moses 4:1-2 (from the bottom)** — same council, two vantages (editors cross-ref 3:27) · —[identical-words]→ both "Here am I, send me"; difference = response to God's choice (Lucifer "angry, kept not his first estate")
+- `purpose:mortality-is-proving` (3:25 "we will prove them") —[two-estates]→ 3:26 · —[mechanism-for]→ Moses 1:39 (the work) · —[cross-ref]→ D&C 98:14
+- `covenant:seed-as-the-stars` (3:14) —[cosmic-restatement]→ Abr 2:9-11; Gen 22:17
