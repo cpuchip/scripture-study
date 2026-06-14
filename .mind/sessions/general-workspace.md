@@ -3,13 +3,21 @@ lane: general-workspace
 session_id: c4fef1d0-292c-4ad6-b6c5-76e2af1043c3
 status: active
 started: 2026-06-11T12:00:00
-last_active: 2026-06-13T20:25:44
+last_active: 2026-06-14T01:26:02
 ---
 
 > Note: this lane was previously filed under the typo `general-workspase.md`;
 > consolidated here (the hook-canonical spelling) 2026-06-13, typo file removed.
 
 ## Working on
+- **Overnight 2026-06-14 (unattended, no big moves):** (1) ibeco/Dokploy triaged —
+  box was never down (sshd banner live; hung dokploy-panel + 1828/dnd containers;
+  Michael's SSH likely fail2ban'd on his IP); SELF-HEALED by morning except
+  `dnd.ibeco.me` 404; did NOT reboot (right call — 3 apps were live). (2) Garrison
+  landscape study written (`.spec/proposals/sovereign-coding-agent-landscape.md`):
+  pi = lean exemplar, goose = MCP cousin minus governance, **Devstral Small 2** =
+  tool-tuned local model answering open-Q#4; governance gap confirmed empty.
+  Journal `2026-06-14-garrison-landscape-and-ibeco-triage.md`. Decides nothing.
 - **Garrison / `garrison-cli` proposal WRITTEN + refined (2026-06-13)** —
   `.spec/proposals/sovereign-coding-agent.md`. Name ratified ("who drives it
   presides"). Two tiers: v1 Garrison-full = Docker+LM Studio+pg (all owned;

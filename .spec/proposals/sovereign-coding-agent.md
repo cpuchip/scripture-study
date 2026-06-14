@@ -113,6 +113,8 @@ A 27B model hallucinates more, plans worse over long horizons, and drifts faster
 
 ## Open questions for council
 
+> Companion research (evidence for #2/#3/#4/#6): [Garrison — Landscape & Design Inputs](./sovereign-coding-agent-landscape.md) (2026-06-14). Headline findings: **pi** proves the four-tool lean core ships; **goose** is the MCP-framework cousin minus the governance; **Devstral Small 2** is the tool-tuned local model that answers the weak-model tool-calling risk; the governance niche is empirically empty.
+
 1. **Name** — Garrison, or something else?
 2. **How lean is lean** — single Go binary? What is the irreducible core?
 3. **Primary local runtime** — LM Studio vs. Ollama vs. llama.cpp.
