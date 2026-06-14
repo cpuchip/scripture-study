@@ -303,3 +303,27 @@ Edge vocabulary: `cross-ref` · `fulfillment` · `parallel` · `covenant-thread`
 - `★ John-3:16-personalized` (34:3) —[universal-made-particular: "wherefore YOU are my son"]→ §25:16 · —[become-sons]→ John 1:12; §11:30 / §25:1 (real transformation, §29)
 - `refrain:light-which-shineth-in-darkness` (34:2) —[the-Oliver-cluster-signature]→ §6:21 / 10:58 / 11:11; John 1:5 · —[source-light]→ §14:9
 - `antidote:I-am-with-you-until-I-come` (34:11-12) —[Presence + a-clock ("I come quickly")]→ §24/§30/§31/§32 · —[the-"quickly"-held-over-Orson's-51-years]
+
+## D&C 35 — the scriptures as they are in mine own bosom (Fayette, Dec 7 1830, Sidney Rigdon; JST scribe)
+**Nodes:** `★ scripture:as-they-are-in-mine-own-bosom` (35:20) · `★ recognition:forerunner-life-reframed` (35:3-4) · `★ method:weak-things-thresh-the-nations` (35:13-14) · `watching:over-the-prophet-himself` (35:19) · `oneness:that-we-may-be-one` (35:2)
+**Edges:**
+- `★ scripture:as-they-are-in-mine-own-bosom` (35:20, the JST) —[recovery-toward-the-divine-source-form]→ the REVERSE of §1:24 (descent into language) · —[period-language-principle: two-directions-on-one-axis]→ read-in-period-language + restore-toward-God's-bosom both seek the word as-God-means-it
+- `★ recognition:forerunner-life-reframed` (35:3-4 "thou knewest it not") —[§6-retrospective-recognition at BIOGRAPHICAL scale]→ Sidney's whole restorationist past = the runway; the Spirit distills a life's meaning backward
+- `★ method:weak-things-thresh-the-nations` (35:13-14) —[instrument-weak + divine-supply: "their arm shall be my arm"]→ 1 Cor 1:27; D&C 1:19,23 · —[the-weakness-is-the-condition-God-prefers]→ glory His; the harness/supply carries the work
+- `watching:over-the-prophet-himself` (35:19) —[even-the-keys-holder-needs-watching]→ Abr 4:18 (watch runs both ways) · —[paired-with-conditional-keys]→ 35:18 ("another will I plant in his stead")
+- `oneness:that-we-may-be-one` (35:2) —[becoming-sons → UNITY-with-God]→ John 17:21; §11:30/§34:3 · —[matter-spectrum-destination]→ §29 → §38 (the horizontal demand "be one")
+
+## D&C 36 — every man who embraces it, sent forth (near Fayette, Dec 9 1830, Edward Partridge)
+**Nodes:** `★ discernment:the-Spirit-teaches-peaceable-things` (36:2) · `★ ministry:the-open-lay-door` (36:7) · `repentance:thorough-break` (36:6) · `temple:suddenly-come-to-my-temple` (36:8)
+**Edges:**
+- `★ discernment:the-Spirit-teaches-peaceable-things` (36:2) —[the-Comforter's-curriculum = PEACE, not-spectacle]→ §6:23 / §19:23 (the peaceable signature) · —[agitation/contention = different-signature]→ the discernment thread
+- `★ ministry:the-open-lay-door` (36:7 "every man… with singleness of heart") —[only-gate = singleness, not-credentials]→ §4:5 (eye single) · —[§35:13-weak-things-institutionalized]→ a lay priesthood vs priestcraft (§33:4)
+- `temple:suddenly-come-to-my-temple` (36:8) —[=]→ Mal 3:1 · —[§27/§35-Elijah/temple-thread]
+
+## D&C 37 — gather to the Ohio (near Fayette, Dec 1830; the FIRST gathering command)
+**Nodes:** `★ gathering:becomes-physical-geographic` (37:3) · `gathering:as-garrison-refuge` (37:1) · `★ agency:choose-for-yourself-even-in-obedience` (37:4) · `pastoral:strengthen-before-you-leave` (37:2)
+**Edges:**
+- `★ gathering:becomes-physical-geographic` (37:3) —[the-§29-promise-gets-boots-and-wagons]→ §29:7-8 / §33:6 (abstract) → §37:3 (relocate) · —[spiritual→temporal logic of §29:32 enacted]→ Zion is a PLACE (→ §38, §57)
+- `gathering:as-garrison-refuge` (37:1 "because of the enemy and for your sakes") —[draw-the-laborers-in-from-the-exposed-field]→ §29:8 · —[the-gathering-IS-the-wall]→ presiding-protection (walls lawful)
+- `★ agency:choose-for-yourself-even-in-obedience` (37:4) —[divine-command + free-choice]→ §26 (common consent); D&C 121:41; §29:39 · —[the-Restoration's-central-physical-act-is-voluntary]
+- `pastoral:strengthen-before-you-leave` (37:2) —[don't-abandon-the-scattered-branch]→ §20:53 (watchcare) in the transition
