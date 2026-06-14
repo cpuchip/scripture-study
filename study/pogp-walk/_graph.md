@@ -19,3 +19,13 @@ Edge vocabulary: `cross-ref` · `fulfillment` · `parallel` · `type→antitype`
 - `name:Endless` (1:3) —[cross-ref]→ D&C 19:10 · —[rhymes]→ 1:38
 - `thread:apostasy-restoration` (1:40-41) —[cross-ref]→ 1 Ne 13:26; 2 Ne 3:9 (seer "like unto" Moses)
 - `vision:overpowered-before-light` (1:9 "fell") —[type-of]→ **JS—H 1:20** (Joseph; live forward link this walk reaches)
+
+## Moses 2 — the creation account (Genesis 1, first-person)
+**Nodes:** `frame:I-God-witness` (2:1ff, first-person creation) · `crux:let-us-make-man` (resolved 2:26) · `doctrine:imago-christi` (2:27) · `refrain:creation-is-good` (2:4-31) · `account:creation-threefold` (Gen 1 / Moses 2 / Abr 4)
+**Edges:**
+- `christ:creator-by-the-Son` (2:1) —[continues]→ Moses 1:32-33 · —[parallel-account]→ Abr 4:1
+- `crux:let-us-make-man` (Gen 1:26) —[resolved-by]→ Moses 2:26 (Father → Only Begotten)
+- `doctrine:imago-christi` (2:27) —[cross-ref]→ Moses 1:6; Ether 3:15-16
+- `refrain:creation-is-good` —[cross-ref]→ Moroni 7:12; D&C 59:17-20 · —[anchors]→ matter-spectrum
+- `account:creation-threefold` —[footnoted-verse-by-verse]→ Abr 4 · firmament (2:6) → **Abr fac. 2 fig. 4**
+- `command:be-fruitful-multiply` (2:28) —[carried-to]→ Moses 5:2
