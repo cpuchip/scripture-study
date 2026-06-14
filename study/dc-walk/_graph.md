@@ -38,3 +38,12 @@ Edge vocabulary: `cross-ref` · `fulfillment` · `parallel` · `covenant-thread`
 - `★ pattern:discipline-then-restoration` (3:9-10) —[FIRST-instance-of]→ **D&C 121:43** (reprove w/ sharpness → increase of love) · —[project]→ presiding covenant
 - `word:nevertheless` (3:16) —[hinge]→ failure → "my work shall go forth"
 - `meta:canon-rebukes-its-prophet` —[=]→ include_failures (covenant) · —[honesty]→ JS-H 1:28
+
+## D&C 4 — desire is the call (Harmony, Feb 1829, to Joseph Smith Sr.)
+**Nodes:** `doctrine:desire-is-the-call` (4:3) · `doctrine:character-qualifies` (4:5-6, the 2 Pet 1 ladder) · `single-eye→light` (4:5) · `command:whole-souled-service` (4:2)
+**Edges:**
+- `desire-is-the-call` (4:3) —[★ entry-point thread]→ Abr 1:2 (covenant begins w/ desire); A of F 13 (seek after these things) — recurring across all 3 walks
+- `character-qualifies` (4:5-6) —[=]→ 2 Pet 1:5-7
+- `single-eye→light` (4:5) —[forward-link]→ **D&C 88:67** → matter-spectrum
+- `whole-souled-service` (4:2) —[=]→ Deut 6:5; Mark 12:30
+- `ask-and-receive` (4:7) —[=]→ Matt 7:7; James 1:5 (experimental epistemology)
