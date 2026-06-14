@@ -131,3 +131,14 @@ Two who "walked with God": Enoch (taken up, 7:69) + Noah (kept back, 8:27). Betw
 - `council:from-the-top` (3:24-28) —[★ COMPLETES]→ **Moses 4:1-2 (from the bottom)** — same council, two vantages (editors cross-ref 3:27) · —[identical-words]→ both "Here am I, send me"; difference = response to God's choice (Lucifer "angry, kept not his first estate")
 - `purpose:mortality-is-proving` (3:25 "we will prove them") —[two-estates]→ 3:26 · —[mechanism-for]→ Moses 1:39 (the work) · —[cross-ref]→ D&C 98:14
 - `covenant:seed-as-the-stars` (3:14) —[cosmic-restatement]→ Abr 2:9-11; Gen 22:17
+
+## Abraham 4 — "the Gods organized"; the project's source text
+**Nodes:** `creation:the-Gods-organized` (4:1) · `refrain:elements-obey` (4:10-31) · `★ pattern:watch-until-obeyed` (4:18) · `★ pattern:counsel-before-dominion` (4:26) · `pattern:creation-cycle` (counsel→order→watch→obey→rest) · `seam:the-Gods-and-monotheism` (4:1)
+**Edges:**
+- `creation:the-Gods-organized` (4:1) —[plural+organize, capstone of Gen 1 / Moses 2]→ no-ex-nihilo · —[gnolaum 3:18 + "these materials" 3:24]→ matter-spectrum (truth/intelligence)
+- `refrain:elements-obey` (4:10-31 "they were obeyed") —[matter-is-responsive]→ D&C 88:36-42
+- `★ pattern:watch-until-obeyed` (4:18) —[SOURCE-TEXT-of]→ covenant.yaml `watch_what_you_order` + `presiding` · order→watch→obey (active, not fire-and-forget)
+- `★ pattern:counsel-before-dominion` (4:26 "took counsel… we will give them dominion") —[SOURCE-TEXT-of]→ covenant.yaml `council_moment` + `dominion_in_council`
+- `pattern:creation-cycle` (4 + 5:2-3) —[=]→ project 11-step cycle (identity.md "Abraham 4-5 pattern") · —[type-and-shadow]→ human-AI collaboration
+- `seam:the-Gods-and-monotheism` (4:1) —[operational-plurality-of-unified-council]→ Moses 1:6
+- ✦ **THE WALK REACHED ITS OWN NAMESAKE** — Abr 4:18 + 4:26 are the verses behind covenant.yaml's council-moment + presiding watch.
