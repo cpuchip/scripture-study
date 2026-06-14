@@ -165,3 +165,16 @@ The matter-spectrum runs the book's length: gnolaum eternal intelligence (3:18) 
 - `★ watch:the-steward` (1:46-51 "my lord delayeth… smite his fellow-servants") —[SOURCE-of]→ covenant.yaml presiding `when_broken` (Luke 12:45) · —[★ pairs-with]→ **Abr 4:18** (the Gods watched) = the PoGP's TWO watch-texts (watch what you order / never forget you're watched)
 - `crux:this-generation` (1:34) —[JST-resolves]→ "in which these things shall be shown forth"
 - ✦ **Moses 8:21 forward-link RESOLVED** at JS-M 1:41-43.
+
+## Joseph Smith–History — the grove (the forward-link thread closes)
+**Nodes:** `★ thread:overpowered-then-light` (1:15-16) · `★ thread:hated-young-prophet` (1:25) · `origin:Restoration-begins-with-a-question` (1:11-13) · `doctrine:embodied-separate-Godhead` (1:17) · `diagnosis:apostasy-as-cessationism` (1:19,21) · `prophecy:promises-to-the-fathers` (1:38-39) · `priesthood:restored-by-ordination` (1:69)
+**Edges:**
+- `★ thread:overpowered-then-light` (1:15-16) —[CLOSES forward-link]→ **Moses 1:9** (footnote pointed here) · —[same-architecture]→ 1 Ne 8 (waste→tree); Moses 1 · —[★ echo-both-ways]→ vision 1820 / translated Moses 1 in 1830 (Joseph translated his own beginning)
+- `★ thread:hated-young-prophet` (1:25) —[CLOSES forward-link]→ **Moses 6:31**
+- `origin:Restoration-begins-with-a-question` (1:11-13 James 1:5) —[=method]→ Moroni 10:4 (BoM capstone); Alma 32; D&C 9:8
+- `doctrine:embodied-separate-Godhead` (1:17 "Hear Him") —[Father-defers-to-Son]→ is-jesus-christ-god
+- `diagnosis:apostasy-as-cessationism` (1:19,21 Isa 29:13 / 2 Tim 3:5) —[refuted-by-event]→ all of JS-H · —[BoM-walk]→ Mormon 9
+- `prophecy:promises-to-the-fathers` (1:38-39 Malachi variant) —[=]→ **Abr 2:9-11** (Abrahamic covenant) + sealing/hearts-turned
+- `priesthood:restored-by-ordination` (1:69 John the Baptist) —[unbroken-line restored]→ Moses 6:7; Abr 1:3 · —[fruit]→ revelation renewed (1:73-74)
+- `fulfillment:prophet-like-Moses` (1:40 Acts 3) —[=]→ **Moses 1:41** ("another like unto thee" = Joseph)
+- ✦✦ **THE JS—H FORWARD-LINK THREAD (held since Moses 1:9) CLOSES.** Echo both ways: Moses prefigures the grove in canon-order; the grove precedes Moses in lived/translation-order.
