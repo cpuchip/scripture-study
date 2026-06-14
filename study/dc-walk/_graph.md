@@ -194,3 +194,41 @@ Edge vocabulary: `cross-ref` · `fulfillment` · `parallel` · `covenant-thread`
 - `intimacy:the-Lord-saw-his-weeping` (21:7-8) —[grief-named-on-the-day-of-power]→ "his weeping for Zion I have seen" · —[private-knowledge]→ §6:22 · —[Enoch-parallel]→ Moses 7:41 (PoGP)
 - `principle:authority-received-not-seized` (21:10-11) —[mutual-ordination]→ Joseph ordained BY Oliver · —[=]→ §13 "I confer" (no self-ordination, even at the top) · —[common-consent]→ §20:65
 - ✦ **DECADE 11-20 CLOSED:** the Church is *born* — authority (§13) → specification (§20) → the prophet installed (§21); priesthood-line first landing (§13), is-Christ-God landing (§14), the Atonement landmark (§19)
+
+## D&C 22 — a new and everlasting covenant (Manchester, April 16 1830; rebaptism)
+**Nodes:** `★ doctrine:authority-not-sincerity` (22:2) · `concept:dead-works` (22:2-3) · `covenant:new-and-everlasting` (22:1) · `posture:seek-not-to-counsel-God` (22:4)
+**Edges:**
+- `★ authority-not-sincerity` (22:2) —[a-hundred-sincere-baptisms-avail-nothing]→ §13 conferral applied to every member · —[claim-about-ordinance-validity, not-a-judgment-on-people]
+- `concept:dead-works` (22:2-3) —[sincere-but-lifeless: form-without-authority]→ Moroni 8:23; Heb 6:1 · —[apostasy-at-ordinance-level]→ §13 repairs
+- `posture:seek-not-to-counsel-God` (22:4) —[=]→ Jacob 4:10 · —[receive-His-terms]→ §9
+
+## D&C 23 — five men, "under no condemnation" (Manchester, April 1830)
+**Nodes:** `★ grace:clean-standing-precedes-the-call` (23:1,3,4,5) · `calibration:fitted-callings` (23:1-7) · `warning:Oliver-pride-named-early` (23:1)
+**Edges:**
+- `★ clean-standing-precedes-the-call` ("under no condemnation") —[serve-FROM-acceptance-not-to-earn-it]→ §6:20 (arms of love)
+- `calibration:fitted-callings` —[five-different-answers-to-one-desire]→ complement to §15-16 (universal worth ↔ bespoke assignment) · —[incl-"not-yet"]→ 23:4 = §11:15
+- `warning:Oliver-pride-named-early` (23:1) —[fault-named-8-yrs-before-the-fall]→ 1838 estrangement [bin-4-adjacent]
+
+## D&C 24 — strength within your calling (Harmony, July 1830; persecution)
+**Nodes:** `★ doctrine:strength-is-calling-bounded` (24:9) · `comfort:afflictions-promised-not-removed` (24:8) · `pattern:double-nevertheless` (24:1-2) · `missionary-law:cursing-as-testimony` (24:15-16)
+**Edges:**
+- `★ strength-is-calling-bounded` (24:9) —[power-supplied-WITH-the-stewardship]→ honor_scope; presiding covenant · —[complement]→ §10:4 (don't run faster than your strength)
+- `comfort:afflictions-promised-not-removed` (24:8) —[presence-not-exemption: "I am with thee"]→ Matt 28:20 · —[forward]→ §121-122 (Liberty Jail)
+- `pattern:double-nevertheless` (24:1-2) —[deliverance-doesn't-excuse-sin + sin-doesn't-cancel-the-call]→ §3 / §121:43
+- `missionary-law:cursing-as-testimony` (24:15-16) —[dust-of-feet = witness left; smiting reserved to God "in mine own due time"]→ force not the elders' to wield (presiding restraint)
+
+## D&C 25 — an elect lady (Harmony, July 1830, Emma Smith)
+**Nodes:** `standing:sons-and-daughters` (25:1) · `★ discipline:trust-the-withheld` (25:4) · `★ doctrine:song-of-the-righteous-is-a-prayer` (25:12) · `calling:gifts-and-marriage-as-one-stewardship` (25:5-14) · `★ universalizing:this-is-my-voice-unto-all` (25:16)
+**Edges:**
+- `standing:sons-and-daughters` (25:1) —[equal-standing-opens-the-womans-revelation]→ John 1:12; elect-lady (2 John 1:1) → Relief Society fulfillment
+- `★ discipline:trust-the-withheld` (25:4) —[the-reserved-knowledge-thread]→ §10:37; PoGP facsimiles figs-8-21; Michael's period-language reflection · —[faith-trusts-what's-withheld]→ meekness vs murmur [flag: temple, Michael's]
+- `★ song-of-the-righteous-is-a-prayer` (25:12) —[singing-IS-prayer, answered-with-blessing]→ Ps 33:3; Eph 5:19 · —[Emma's-stewardship]→ the 1835 hymnal
+- `calling:gifts-and-marriage-as-one-stewardship` (25:5-14) —[comfort + expound + delight]→ refuses the false choice (own calling vs marriage)
+- `★ universalizing:this-is-my-voice-unto-all` (25:16) —[particular-words-declared-universal]→ inverts §15-16 (same-words-by-repetition) · —[personal+universal-collapse]→ D&C 1:38
+
+## D&C 26 — by common consent (Harmony, July 1830)
+**Nodes:** `★ law:common-consent` (26:2) · `consent:by-prayer-and-faith` (26:2) · `guidance:incremental` (26:1)
+**Edges:**
+- `★ law:common-consent` (26:2) —[authority-exercised-by-agreement-not-command]→ neither democracy nor autocracy · —[=]→ Mosiah 29:26; §20:65 · —[presiding]→ D&C 121:41 (governing without compulsory means)
+- `consent:by-prayer-and-faith` (26:2) —[distributed-spiritual-confirmation]→ §9 (study-it-out-then-confirm) scaled to a church
+- `guidance:incremental` (26:1) —[next-step + "then it shall be made known"]→ §25:4 (withheld); §1:25-28 (line upon line)
