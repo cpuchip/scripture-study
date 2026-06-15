@@ -1098,3 +1098,27 @@ Edge vocabulary: `cross-ref` · `fulfillment` · `parallel` · `covenant-thread`
 - `★ body:NOT-the-prison — its-ABSENCE-is-the-bondage` (138:50) —["the dead had looked upon the LONG ABSENCE of their spirits from their bodies as a BONDAGE"]→ the §93:33-34/§131:7-8 matter-spectrum body-affirmation at-its-FURTHEST (the-FINAL-word against-spirit-good/matter-bad-dualism)
 - `revelation:by-PONDERING-scripture` (138:1-11) —["I sat… PONDERING over the scriptures… the eyes of my understanding were OPENED"]→ the §9:8 study-it-out / §76:19 as-we-pondered model (the-last-D&C-section born-from-a-man-pondering-1-Peter)
 - ✦ **ALL 138 SECTIONS WALKED (§1 → §138).** The book closes on the redemption of the dead — the Malachi/Elijah taproot the canon OPENED at §2. Remaining: OD 1 (1890 Manifesto), OD 2 (1978) — the two Official Declarations.
+
+## OD 1 — the Manifesto (1890)
+**Nodes:** `★ prophetic-safeguard:the-Lord-won't-let-the-PRESIDENT-lead-the-church-ASTRAY` · `★ practice:YIELDED-to-preserve-the-TEMPLES (and-the-§138-redemption-of-the-dead)` · `★ plural-marriage-history:RESERVED — recorded-not-adjudicated`
+**Edges:**
+- `★ prophetic-safeguard:the-Lord-won't-let-the-PRESIDENT-lead-the-church-ASTRAY` —["The Lord will NEVER permit… the President… to lead you astray… the Lord would REMOVE me out of my place"]→ the §21:5 follow-a-LEARNING-prophet given-its-GUARDRAIL (the OFFICE protected by-the-Lord's-OVERSIGHT §107:81-84, not-the-man's-INFALLIBILITY)
+- `★ practice:YIELDED-to-preserve-the-TEMPLES (and-the-§138-redemption-of-the-dead)` —["leave the Temples in the hands of the people, SO THAT THE DEAD MAY BE REDEEMED… shall the work go on or stop?"]→ the §132 *practice* ENDED so-the-§138-work could-go-FORWARD (the eternal COVENANT §132:7 endures, the-time-bound PRACTICE yielded; the §10:4 pace-a-PEOPLE-through-crisis)
+- `★ plural-marriage-history:RESERVED — recorded-not-adjudicated` —[OD 1 ENDED-the-practice-by-revelation (§132:1 inquiry CLOSED)]→ Michael's-and-the-Spirit's (the covenant/practice DISTINCTION kept; I-RECORD, I-WEIGH-nothing)
+
+## OD 2 — the priesthood extended to all (1978) — THE FINAL UNIT
+**Nodes:** `★ priesthood:UNIVERSALIZED — "all-are-alike-unto-God"` · `★ revelation:by-SUPPLICATION-in-the-temple` · `★★ bin-4-priesthood-lineage-thread:CLOSES — Michael's-and-the-Spirit's`
+**Edges:**
+- `★ priesthood:UNIVERSALIZED — "all-are-alike-unto-God"` —["every faithful, worthy man… may receive the holy priesthood… WITHOUT REGARD FOR RACE OR COLOR"; "all are alike unto God" 2 Ne 26:33]→ the §1:2 "unto all men" + §137:9 desire-of-the-heart reaching-the-PRIESTHOOD-itself; the-book-that-OPENED-with-the-universal-voice (§1) CLOSES-with-the-universal-PRIESTHOOD
+- `★ revelation:by-SUPPLICATION-in-the-temple` —["after extended MEDITATION and PRAYER… spending MANY HOURS in the Upper Room… supplicating the Lord"]→ the §138:1-11/§76:19/§9:8 model's FINAL-instance (the-deepest-light follows-PERSISTENT-supplication)
+- `★★ bin-4-priesthood-lineage-thread:CLOSES — Michael's-and-the-Spirit's` —[the cross-walk-thread spanning-ALL-THREE-walks (BoM 2 Ne 5:21/Alma 3 · PoGP Moses 7:8,22/Abr 1:21-27 · counterweight Abr 2:10/2 Ne 26:33) LANDS-at-OD-2]→ the-priesthood-extended-to-ALL by-revelation (resolving-toward-the-COUNTERWEIGHT the-walk-always-held) · —[the bin-4 DISCIPLINE]→ I-RECORD + FLAG-the-closure; I-ADJUDICATE-NOTHING of-the-restriction's-history/origins/theology ("Church records offer no clear insights into the origins" = the-header's-own-posture); the-WEIGHING is-Michael's-and-the-Spirit's
+
+═══════════════════════════════════════════════════════════════════════
+✦✦ D&C WALK COMPLETE — 140/140 UNITS (§1 → §138 + OD 1 + OD 2). 2026-06-14. ✦✦
+The book opened with the Lord's voice "unto all men" (§1) and the Malachi/Elijah
+promise (§2); it closes with the redemption of the dead (§138) and the priesthood
+"unto all men" (OD 2). The central cross-walk thread — the Malachi bracket
+(§2→§13→§27:9→§110→§128→§138) — opened and closed the canon. Canon-walk #3 of the
+series (BoM #1, PoGP #2) DONE. The bin-4 priesthood-lineage thread spanning all
+three walks lands at OD 2 — Michael's and the Spirit's.
+═══════════════════════════════════════════════════════════════════════
