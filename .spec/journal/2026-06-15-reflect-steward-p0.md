@@ -1,0 +1,98 @@
+# 2026-06-15 — Reflect-steward P0: dry-run + the fixes that close the loop
+
+Two sessions, same arc. Michael ratified the reflect-steward design, said "go
+build — dry-run report for the morning," then on waking: "proceed with fixing
+and finishing the features." All on the OSS scratch stack; nothing autonomous
+flipped on (his Hinge). Private journal — names the Vivint use-case, so it stays
+out of the public repo; the public substrate-dev story lives in the OSS commit
+messages (`b116ab9`, `dd34715`, `f8ea1bb`).
+
+## The headline: the engine already existed; the work was making it run clean
+
+The substrate's `planning` pipeline IS the reflect-steward loop (context_gather →
+explore → synthesize → propose_work → review_plan), with
+`enqueue_proposed_work_items` landing proposals as parked `agent_planning`
+work-items. So P0 was configuration + bug-fixing, not a new pipeline. Created a
+`vivint` intent (public-only scope in its values) and ran it.
+
+## What the dry-run did + the bugs it surfaced (all now fixed + verified)
+
+The Vivint cold-start cycle proposed a sensible *research plan* — 4
+source-specific research items (BBB/Trustpilot/Reddit/app-store) + 1 synthesis —
+grounded, valid, the review stage passing with a structured verdict. The value
+was in the bugs it surfaced, all now fixed on fresh-container-verified commits:
+
+1. **`research` agent never core-seeded** (`b116ab9`). 13's pipelines + echo-test
+   ran on `agent_family='research'`, but a virgin core seeded no such agent; the
+   digesters had drifted onto an unseeded `stewards-explore`. Unified on one
+   core-seeded, web-capable `research` agent; virgin-smoke OK 3b guards it.
+2. **`yt` MCP broken** — bridge rebuilt `WITH_YT` (7/7 servers OK).
+3. **Finding B — the autonomy blocker** (`dd34715`). The review-verify gate only
+   promotes a review stage to `verified` when its output starts with
+   `REVIEW: passes|revised`; planning's `review_plan` emitted a dead (never-parsed)
+   JSON verdict, so runs stalled at `maturity=planned` and proposals never
+   auto-enqueued. Switched to the `REVIEW:` convention. **Proven:** a fresh cycle
+   reached `verified` and auto-enqueued 3 proposals with no manual call (0 before).
+4. **Context/memory + pool-read grants** (`dd34715`) — `research` got
+   doc_search/get/similar + compact_context + remember/forget/context_* (minus the
+   gated base-prompt editor) so the steward (and big-book/transcript digests)
+   self-manage context.
+5. **Finding A** (`f8ea1bb`) — `work_item_create` injects `input.today`, so no
+   launch hard-fails on the resolver's missing-field behavior.
+
+Full batch re-verified: rebuilt the image, virgin-smoke green on a fresh
+container (all 6 OK blocks).
+
+## The go-live bundle — proposed overnight, then BUILT with Michael (same day, `c285ff5`)
+
+I deliberately did NOT pre-build the autonomous-control surface at 4am
+(`dominion_in_council` + design choices that are Michael's). Presented the design;
+Michael answered the two questions — kill switch = **global + per-intent**
+("stop everything, then decommission the bad intent"); approve = **queue, not
+auto-dispatch**, capacity-gated ("so we don't flood the work") — and said "lets
+build." So `22-reflect-steward.sql` shipped: the kill switch, the approval queue +
+capacity-gated drain (`reflect_drain_approved` hooked into the watchman tick,
+respecting `reflect_max_concurrent`), the check-in verbs, and the `reflect-checkin`
+skill. Functional proof on live (pause→0, approve queues, cap gates dispatch) +
+virgin-smoke OK 7 on a fresh container. The Vivint schedule is seeded
+`enabled=false`. **Only the flip remains (Michael's Hinge):** `UPDATE
+scheduled_pipelines SET enabled=true` + the Claude-watchman wake.
+
+The presiding chain made concrete: Michael authorized at the boundary (the design
++ the two decisions), I built within it, and going-live stayed his.
+
+## Knowledge architecture (Michael's noodle, same day) + GO-LIVE
+
+Michael then shaped the knowledge layer: a per-intent dedup ledger
+(`intent_source_ledger` + `intent_sources_recent`/`record`, `1a24ac0`) so the
+gatherer builds the pool UP instead of re-scrubbing, and **project-neighborhood
+scoping** (`70a5fd0`) — `docs` tagged by project (via `work_item_create`, FK-safe
+against `stewards.projects`), `pool_search` enforced-scoped to a project's
+neighborhood; Vivint walled off, ai↔books pre-wired to cross-pollinate. doc_search
+stays global for meta-studies. All virgin-smoke OK 7 + fresh-container green.
+
+**GO-LIVE (Michael: "set it to auto + kick an immediate run"):** schedule enabled
+(every 3h). The clean auto-proof run climbed raw→researched→planned→**verified**
+and **auto-enqueued 2 proposals with no manual call** — the full loop works
+unattended (dispatch→gather+record-sources→synthesize→propose→verify→auto-enqueue).
+Watchman cron every 3h (session-only). `reflect_pause()` is the kill switch.
+
+## The stumble + the lesson (durable: [[feedback_pg_ai_stewards_rebuild_discipline]])
+
+The first launch run came back `raw`/0-proposals: re-applying `04` standalone for
+Finding A had reverted `work_item_advance` to its pre-maturity-bump version
+(consolidated chain = later-file-wins; a lone re-apply breaks the ordering). Repo
+was always correct; fixed by re-applying `05→22` in order. **Never single-file
+re-apply to a live consolidated chain — apply changed-file→end-of-chain, or
+rebuild.**
+
+## Carry-forward
+
+- Report (private): `.spec/proposals/reflect-steward-p0-dryrun-report.md`.
+- **Persistent watchman** = the real follow-up: the cron is session-only (durable
+  not honored), so a substrate-internal watchdog (a scheduled pipeline that checks
+  reflect_status + auto-pauses on runaway) is the right persistent mechanism.
+- Minor: `on_maturity_verified` tries a `sabbath_dispatch` on an unseeded `plan`
+  agent (caught/non-fatal) — same missing-agent shape as `research` was.
+- Next intents (ai/books) when Michael's ready — projects + neighborhood already seeded.
+- Live OSS stack carries earlier dev cruft (a `stewards-explore` row); repo is clean.

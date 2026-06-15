@@ -27,6 +27,39 @@ Refined in council (2026-06-13): the *pure* go-bag — nothing but a binary and 
 - **Spin** — Michael's local-model voice front (qwen on LM Studio). The local-model gotchas are already mapped (thinking-budget behavior, non-thinking instruct models for tool loops).
 - **`principles.md` → "Harness > Intelligence."** The whole bet, already written.
 
+### Prior art: the gospel-engine lineage (local SQLite + FTS + vectors) — borrow it
+
+Before search moved into Postgres, three predecessors in `scripts/` already
+solved Garrison-standalone's exact problem — keyword + semantic retrieval from a
+single owned, local store. Mine them directly rather than reinventing:
+
+- **`scripts/gospel-mcp`** — FTS5-only keyword search (CGo `mattn/go-sqlite3`).
+- **`scripts/gospel-vec`** — vector-only, built on **`philippgille/chromem-go`**
+  (v0.7.0): a **pure-Go, CGo-free** embeddable vector DB — "SQLite for vector
+  search." In-process, persists to per-source `.gob.gz` files, pluggable
+  embedding func that it points at **LM Studio**. Brute-force cosine, fine at
+  this scale.
+- **`scripts/gospel-engine`** (v1) — the *combined* one. FTS5 virtual
+  tables + triggers (`talks_fts`/`chapters_fts`, external-content + `'rebuild'`)
+  for keyword, a pluggable semantic retriever, fused with **Reciprocal Rank
+  Fusion** (`internal/search/combined.go`): rank-based, k=60, parallel
+  retrievers, fall back to whichever survives if one fails. RRF sidesteps the
+  unsolvable problem of normalizing FTS5-rank against cosine-similarity — it
+  compares *positions*, not scores. It also keeps a relational `edges` table
+  (the same relational-graph choice the substrate later validated when it
+  dropped AGE) and an mtime+size `index_metadata` table for incremental reindex.
+
+**Design implication — resolves a latent contradiction in standalone mode.**
+The standalone bullet below says "optional vectors via `sqlite-vec`," but
+`sqlite-vec` is a **C extension**, and pure-Go `modernc.org/sqlite` *cannot load
+C extensions* — so the two cannot coexist in a "one binary, no CGo" go-bag. The
+lineage already shows the resolution: keep keyword in SQLite **FTS5** (modernc
+supports FTS5 natively, pure-Go), and run vectors with **chromem-go** (pure-Go,
+file-persisted, LM-Studio-backed) alongside it, the two fused with **RRF**. That
+preserves the sovereignty invariant exactly, and the embedding side is already
+wired to a local model. (Flagged for council — the architecture decision is
+theirs; this only names the option the prior art proved.)
+
 ## The thesis: Harness > Intelligence is the enabling bet
 
 The opinionated harness is what makes a weak local model produce code worth shipping. Source-verification cut confabulation more than any model upgrade did; phased workflows beat single-pass prompts regardless of model. On a 27B local model the governance is not decoration — it is **load-bearing**. That is simultaneously why Garrison can work on local hardware *and* why it is differentiated from every other CLI agent. State it plainly: Garrison's value is **highest exactly in the survival scenario it is built for**, because the weaker the model, the more the harness matters.

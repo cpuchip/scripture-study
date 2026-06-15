@@ -1,13 +1,19 @@
 # compact_context — the commissioned-curation side quest
 
-**Status:** RATIFIED TO BUILD — 2026-06-12 evening council (same day as
-the seed). Michael lifted the hold: "I think compact_context is a good
-one to do, and might as well pull that one in." Builds as a P1-adjacent
-leg in **OSS core** (it is core context machinery), exercised on the
-side-by-side stack. The parked council questions below get settled in a
-quick ratification batch when the leg starts. The OTHER research-derived
-items (trailing-reminder, broader 2026 adoption) remain held — "the rest
-need experiments and more research."
+**Status:** ★ BUILT + PROVEN E2E — 2026-06-14 (OSS `a8d5cc5`). Council held
+2026-06-14 (4 questions ratified, see §"RATIFIED BUILD SPEC"); built same
+session in OSS core (`extension/21-compact-context.sql` +
+`cmd/stewards-mcp/compact_context.go`, wired into lib.rs/Dockerfile/main.go).
+Proven through the real substrate path: agent → compact_context tool → spawn
+tools-off compactor (deepseek-v4-flash) → judge verdict → substrate applies →
+[COMPACTED] marker, reversible. On a 14-message migration session clogged with
+spent grep/schema dumps, the compactor correctly compressed the two dumps and
+kept the plan (compressed=2, 25s, $0 free-tier). The trailing-reminder + broader
+2026 items remain held. Follow-ups: a tests/virgin-smoke.sql assertion; tune the
+compactor model via the curate stage (Michael's experiments).
+
+*(Prior status: RATIFIED TO BUILD — 2026-06-12 evening council. Michael lifted
+the hold: "I think compact_context is a good one to do.")*
 
 *(Original seed status: Michael's sketch, 2026-06-12 — "lets not act on
 the research yet." This file existed so the shape wasn't lost.)*
@@ -95,3 +101,106 @@ pattern, not executor pattern — and then continue its work lighter?
 - Not deletion. Nothing in this loop destroys content.
 - Not a replacement for engram extraction at ingest — this curates what
   ingest-time judgment let through.
+
+---
+
+## RATIFIED BUILD SPEC — M5 council 2026-06-14
+
+Council convened with Michael (he chose "convene the M5 council now" at the
+parity roadmap's M5 brake). `dominion_in_council` satisfied. All four parked
+questions answered:
+
+1. **Timing → mid-turn** (waiting_for_tools). The tool call suspends the
+   parent, the curation side quest runs, the parent resumes recomposed the
+   same turn.
+2. **Compactor model → a fixed cheap model, but TUNABLE.** Michael: "start
+   with fixed cheap model (fast with large 1M context window) … we'll want to
+   tune this model, run experiments, etc. to find a good compactor counselor."
+   → the model is a **config key**, not hardcoded. Generic default in core;
+   operator sets the real model in overlay.
+3. **What it sees → the judge-brief condensed surface** (with handles to
+   expand specific items on demand). **CORRECTION found during grounding:**
+   `render_judge_brief_surface(p_message_id, p_brief)` is **per-message**
+   (oversized-tool-result judging), NOT a whole-session view. So the
+   session-level "condensed surface" the compactor sees is the
+   **`context_pressure(session)` foldable list** — `{handle, est_tokens}` per
+   message — plus the ability to read/expand specific messages by handle.
+   OPEN REFINEMENT for the build: decide whether to add a thin
+   `compact_context_surface(session)` that renders the foldable list + a
+   one-line gist per foldable message (cheap), or just hand the compactor the
+   raw foldable list + `context_resolve_handle`/read tools.
+4. **Trigger → agent-initiated + a ≥threshold pressure-line nudge.** The agent
+   decides (judges-not-executors); the system nudges so a foggy parent still
+   notices. Persuasion, not compulsion. NOT auto-fired (pressure-shedding is
+   the floor/wall).
+
+### Verified mechanics (all primitives confirmed present in OSS core)
+
+- **Mute is by message-id, globally:** `context_mute(message_id, cooldown)` /
+  `context_compress(message_id, cooldown)` / `context_pin(message_id)`. The
+  compactor targets the PARENT's messages via
+  `context_resolve_handle(parent_session_id, handle) → message_id`, then
+  mute/compress. From its own sub-session it can act on the parent because the
+  ops are message-id-keyed and resolve takes an explicit session.
+- **Reversible (blind spot RESOLVED):** `context_expand` / `context_expand_tool`
+  is the unmute/restore path. Mute is a recoverable tombstone — "safe by
+  construction, an unmute away" holds. The compactor may mute freely; for
+  anything uncertain it can still prefer compress (engram; originals never
+  destroyed).
+- **Mid-turn rails already exist:** `tool_dispatch_complete_waiting()` resumes
+  any `tool_dispatch` row in `waiting_for_tools` once its
+  `result.pending=[{child_work_id}]` children are `done`/`error`, then
+  re-dispatches the parent chat (which recomposes → renders the new
+  mutes/engrams). `spawn_subagent` already rides these rails — compact_context
+  reuses them rather than inventing suspend/resume.
+- **Agent shape:** `stewards.agents` has `family, mode, model_pin, prompt,
+  temperature, top_p, response_format, steps, active, working_budget,
+  **context_tools_enabled**, kind, allow_self_base_prompt` (NO model/provider
+  cols — model comes from model_pin/model_match + dispatch). The compactor is
+  an agent with `context_tools_enabled=true` and the three-judge prompt.
+- `context_pressure(session)` returns `{foldable[], est_tokens, current_turn,
+  message_count}` — no pct. The ≥threshold nudge keys off a **config token
+  threshold** (tunable), not a window fraction.
+- Side-quest spawn: `spawn_subagent_create(pipeline_family, binding_question,
+  …)` is pipeline-based; or enqueue a chat for a `compactor` agent directly
+  (chat_post_internal pattern, as consult does). Build decides which.
+
+### Components for `extension/21-compact-context.sql` (the remaining build)
+
+1. **Config seeds** (`stewards.config`): `compact_context_model` (generic
+   default, tunable) + `compact_context_suggest_tokens` (nudge threshold).
+2. **Pressure-line nudge:** edit `context_pressure_line` to append
+   "consider compact_context to curate this window" when
+   `est_tokens >= compact_context_suggest_tokens`.
+3. **`compactor` agent:** `context_tools_enabled=true`, prompt = the three
+   judge questions (is the fruit good? what is most precious to keep? what is
+   curatable?) + "resolve handles against session '<parent>' and
+   mute/compress the curatable; pin the precious; expand to undo." Grants:
+   context_mute/compress/pin/expand/resolve_handle (+ read).
+4. **`compact_context(p_session_id)`** dispatch fn: render the foldable
+   surface, spawn the compactor sub-session targeting the parent, set the
+   calling parent `tool_dispatch` to `waiting_for_tools` with
+   `pending=[{child_work_id: <compactor wq>}]` (mirror spawn_subagent so
+   `tool_dispatch_complete_waiting` auto-resumes the parent recomposed).
+5. **`compact_context_tool(p_args)`** wrapper + `tool_defs` row + grant to the
+   general agent families (so any agent can self-commission).
+6. **Compaction entry:** the side quest IS a work item / sub-session
+   (reviewable); write a parent-session marker message
+   `[COMPACTED] muted N, compressed M, ~X tokens freed` (the accounting —
+   watch_what_you_order).
+7. **Chain + smoke:** add `21-compact-context.sql` to `lib.rs`
+   `extension_sql_file!` chain (after 20; deps all earlier) + bundle; add a
+   `tests/virgin-smoke.sql` assertion (compact_context exists, compactor agent
+   ships with context_tools_enabled, nudge fires past threshold, and an e2e:
+   bloat a session → call compact_context → compactor mutes parent handles →
+   `context_pressure(parent).est_tokens` drops + a `[COMPACTED]` marker lands).
+
+### Why the build paused here (2026-06-14, past midnight, Sabbath next day)
+
+The council was the gated part and is done. The build touches the most
+delicate core (the tool_dispatch waiting-tool integration) and surfaced a real
+design correction (per-message vs session brief). Per keep_the_watch_whole /
+Mosiah 4:27 / not_bypass_process, the SQL build is left for a fresh watch with
+this spec locked — not rushed under fatigue into the public substrate. Estimate
+once fresh: one focused session (the spec is execution-ready; the only open
+choice is component #3's surface granularity).

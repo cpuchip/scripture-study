@@ -3,7 +3,7 @@ lane: pg-ai-stewards-oss
 session_id: 7ea7faa4-688a-451a-ac68-b7ea662d4b81
 status: active
 started: 2026-06-09T18:00:00
-last_active: 2026-06-13T19:18:08
+last_active: 2026-06-15T15:06:05
 ---
 
 ## Working on
@@ -18,6 +18,28 @@ last_active: 2026-06-13T19:18:08
   commits unpushed (Michael's push).
 
 ## Claims
+- 2026-06-15T15:01:32 background (Bash): cd /c/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/pg-ai-stewards-oss WID=$(docker exec -e PGUSER=stewards -e PGDATABASE=stewards stewards-o
+- 2026-06-15T15:01:15 background (Bash): cd /c/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/pg-ai-stewards-oss echo "rebuild+smoke for the loop-closing fixes: $(date +%H:%M:%S)" doc
+- 2026-06-15T14:36:51 background (Bash): cd /c/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/pg-ai-stewards-oss echo "watching the 5-source research wave (2-at-a-time, drain releases
+- 2026-06-15T13:18:52 background (Bash): cd /c/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/pg-ai-stewards-oss WID=$(docker exec -e PGUSER=stewards -e PGDATABASE=stewards stewards-o
+- 2026-06-15T13:10:43 background (Bash): cd /c/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/pg-ai-stewards-oss WID=$(cat /tmp/vivint_launch_wid.txt) echo "polling launch run $WID" l
+- 2026-06-15T13:10:30 background (Bash): cd /c/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/pg-ai-stewards-oss echo "rebuild+smoke for the project-scope commit: $(date +%H:%M:%S)" d
+- 2026-06-15T09:53:57 background (Bash): cd /c/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/pg-ai-stewards-oss echo "=== FUNCTIONAL PROOF: record a source â†’ recent shows it â†’ re
+- 2026-06-15T09:01:10 background (Bash): cd /c/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/pg-ai-stewards-oss echo "=== create the Vivint reflect schedule, DISABLED (the go-live fl
+- 2026-06-15T08:42:17 background (Bash): cd /c/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/pg-ai-stewards-oss echo "full-batch verify build start: $(date +%H:%M:%S)" docker build -
+- 2026-06-15T08:32:24 background (Bash): cd /c/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/pg-ai-stewards-oss WID=$(docker exec -e PGUSER=stewards -e PGDATABASE=stewards stewards-o
+- 2026-06-15T03:04:07 background (Bash): cd /c/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/pg-ai-stewards-oss echo "yt bridge rebuild start: $(date +%H:%M:%S)" docker compose -f do
+- 2026-06-15T03:03:43 background (Bash): cd /c/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/pg-ai-stewards-oss docker rm -f stewards-p0test >/dev/null 2>&1 docker run -d --name stew
+- 2026-06-15T03:01:06 background (Bash): cd /c/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/pg-ai-stewards-oss echo "build start: $(date +%H:%M:%S)" docker build -t stewards-oss-pg:
+- 2026-06-15T01:24:20 background (Bash): cd /c/Users/cpuch/Documents/code/stuffleberry/scripture-study WID=4217c0d4-0c72-4a8c-8a81-1887248a84ee last="" for i in $(seq 1 60); do   row=$(docker exec -e P
+- 2026-06-13T22:36:33 background (Bash): cd /c/Users/cpuch/Documents/code/stuffleberry/scripture-study/scripts/gospel-engine-v2 echo "10-min watch: live /mcp + uptime. If deploy fires (webhook or queue
+- 2026-06-13T21:18:27 background (Bash): cd "C:/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/pg-ai-stewards-oss" && docker compose build pg 2>&1 | tail -6; echo "=== pg build exit: 
+- 2026-06-13T21:15:49 background (Bash): OSS="C:/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/pg-ai-stewards-oss" cd "$OSS" && GOWORK=off go build ./cmd/stewards-mcp/... 2>&1 | head
+- 2026-06-13T21:01:25 background (Bash): cd "C:/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/pg-ai-stewards-oss" && docker compose build bridge 2>&1 | tail -8; echo "=== build exit:
+- 2026-06-13T20:11:45 background (Bash): WID="20b0a280-196c-4afb-a631-88d4474d240a" PSQL() { docker exec stewards-oss-pg psql -U stewards -d stewards -tAc "$1" 2>&1; } last=""; parked=0 for i in $(seq 
+- 2026-06-13T19:59:33 background (Bash): cd "C:/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/pg-ai-stewards-oss" && docker compose build ui 2>&1 | tail -40; echo "=== BUILD EXIT: ${
+- 2026-06-13T19:54:10 background (Bash): WID="6aeb7265-df7e-4b06-ab1d-dd2d06981321" PSQL() { docker exec stewards-oss-pg psql -U stewards -d stewards -tAc "$1" 2>&1; } last="" for i in $(seq 1 40); do 
+- 2026-06-13T19:42:59 background (Bash): WID="6aeb7265-df7e-4b06-ab1d-dd2d06981321" PSQL() { docker exec stewards-oss-pg psql -U stewards -d stewards -tAc "$1" 2>&1; } last="" for i in $(seq 1 60); do 
 - 2026-06-13T19:17:15 background (Bash): WID="ad44ed67-b922-4fc9-9885-f5ad55da795d"; LAST=""; for i in $(seq 1 12); do   S=$(docker exec stewards-oss-pg psql -U stewards -d stewards -tA -c "SELECT curr
 - 2026-06-13T19:10:32 background (Bash): WID="ad44ed67-b922-4fc9-9885-f5ad55da795d"; LAST=""; STALL=0; for i in $(seq 1 55); do   S=$(docker exec stewards-oss-pg psql -U stewards -d stewards -tA -c "SE
 - 2026-06-13T18:46:53 background (Bash): WID="5633b0e3-bcee-4501-9f7b-7b54c6f92a96"; LAST=""; for i in $(seq 1 50); do   S=$(docker exec stewards-oss-pg psql -U stewards -d stewards -tA -c "SELECT curr
