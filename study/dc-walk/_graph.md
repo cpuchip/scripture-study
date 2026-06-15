@@ -921,3 +921,21 @@ Edge vocabulary: `cross-ref` · `fulfillment` · `parallel` · `covenant-thread`
 **Edges:**
 - `★ Isaiah:the-Stem = CHRIST; the-rod/root = latter-day-SERVANTS` (113:1-6) —["the Stem of Jesse… is Christ"; "the rod… a servant in the hands of Christ… much power"; "the root… the priesthood, and the keys… for an ensign, and for the gathering"]→ Isa 11 read-as-RESTORATION-prophecy · —[the §110:11 gathering-keys / §86:8 lawful-heirs surfacing-in-Isaiah]
 - `★ Zion:strength = the-PRIESTHOOD-by-lineage` (113:7-10) —["put on thy strength… the authority of the priesthood, which she, Zion, has a right to by lineage; also to return to that power which she had lost"]→ §86:8 (Abrahamic-lineage, bin-4-Michael's); §1/§13 (apostasy-restoration) · —[the-scattered "exhorted to return… he will speak to them, or give them revelation"]→ REWARDED-with-renewed-revelation (§1:30 / §121:26)
+
+## D&C 114 — others shall be planted in their stead (Far West, Apr 11 1838; David W. Patten)
+**Nodes:** `★ office:OUTLASTS-the-apostate — "others-planted-in-their-stead"` (114:2)
+**Edges:**
+- `★ office:OUTLASTS-the-apostate — "others-planted-in-their-stead"` (114:2) —["those among you who deny my name, others shall be planted in their stead" (Acts 1:20, Judas→Matthias)]→ the §81 (Gause→Williams) / §107:99 thread reaching-the-TWELVE: the-calling doesn't-fall-with-the-MAN · —[no-role so-important that-one-steward's-failure DESTROYS-it]→ the-kingdom RESILIENT-to-loss-of-any-laborer (§101 watch institutionalized) · —[applies-to-fallen-AND-martyred: Patten died-faithful, seat-filled §118]
+
+## D&C 115 — The Church of Jesus Christ of Latter-day Saints (Far West, Apr 26 1838)
+**Nodes:** `★★ name:THE-CHURCH-OF-JESUS-CHRIST-of-Latter-day-Saints` (115:3-4) · `★ gathering:STANDARD (outward) + REFUGE (inward)` (115:5-7) · `pattern:built-to-the-SHOWN-pattern, or-NOT-ACCEPTED` (115:13-16)
+**Edges:**
+- `★★ name:THE-CHURCH-OF-JESUS-CHRIST-of-Latter-day-Saints` (115:3-4) —[the-Lord NAMES-His-church: "of Jesus Christ" (whose — HIS, 3 Ne 27:8) + "Latter-day" (when) + "Saints" (who — set-apart-covenant-people)]→ the-name = a-CONFESSION-of-OWNERSHIP ("my church") · —[for-the-project's-careful-naming (Callie/Party): a-name DECLARES-whose-the-thing-is]
+- `★ gathering:STANDARD (outward) + REFUGE (inward)` (115:5-7) —["arise and shine forth… a standard for the nations" (Isa 60:1) + "for a defense, and for a refuge from the storm" (§45:66/§101:21)]→ the-church shines-OUT AND-shelters-IN; NOT-opposed · —[Far-West = HOLY-ground (Ex 3:5)]
+- `pattern:built-to-the-SHOWN-pattern, or-NOT-ACCEPTED` (115:13-16) —["if my people build it not according to the pattern… I will not accept it"]→ §94:2 / §95:14 the-pattern = the-CONDITION-of-acceptance · —[+the §111 debt-lesson]
+
+## D&C 116 — Adam-ondi-Ahman: where Adam shall come to visit his people (Spring Hill, MO, May/June 1838)
+**Nodes:** `★ Adam-ondi-Ahman:the-FUTURE-gathering — Daniel's-Ancient-of-Days` (116:1) · `heavenly:mapped-onto-the-EARTHLY` (116:1)
+**Edges:**
+- `★ Adam-ondi-Ahman:the-FUTURE-gathering — Daniel's-Ancient-of-Days` (116:1) —["where Adam shall come to visit his people, or the Ancient of Days shall sit, as spoken of by Daniel" (Dan 7:9-14)]→ the §107:53-57 thread reaching-its-FUTURE-pole · —[Adam = Michael (§27:11 / §78:16 / §107:54), presiding-over-a-great-council BEFORE-the-Second-Coming]→ the §27/§110 gathering-of-all-keys finds-its-FUTURE-councilhouse · [reserved-bin-4, Michael's]
+- `heavenly:mapped-onto-the-EARTHLY` (116:1) —[a-LITERAL-hill = Daniel's-heavenly-council]→ §29:32 / §77 (spiritual-temporal-correspondence) at-the-scale-of-GEOGRAPHY · —[Eden / Adam-ondi-Ahman / New-Jerusalem LOCATED-on-the-continent: heaven's-events have-earthly-ADDRESSES]
