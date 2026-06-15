@@ -124,3 +124,46 @@ dials the LIVE bridge. Stopping live without repointing takes chat.ibeco.me
 personas dark. Parity was never the blocker — this is. Runbook:
 `pg-ai-stewards-workspace/parity/cut-runbook.md` (gating prereq + data-carry table
 + sequence + rollback + D1-D4). Sabbath-tension resolved (promote-trigger wrapped).
+
+---
+
+## THE CUT — executed (2026-06-15 PM). OSS is the one substrate; live retired.
+
+Michael: "lets cut over… full send." It turned out to be a real migration, not a
+knob — and the diligence mattered.
+
+**Two questions answered first:** Vera was a one-shot proof dispatch, never a
+deployed chat persona (no key/room) — that's why she wasn't on his server. And the
+dialing: persona-host is the connector and dials BOTH (wss→chat.ibeco.me +
+Postgres→substrate); chat.ibeco.me never knows about the substrate. The swap = the
+persona-host's STEWARDS_DSN.
+
+**The real blocker (not parity):** the OSS bridge shipped 5 generic MCPs; the
+tool-using personas need gospel/strongs/webster/byu/search (local binaries baked
+into the LIVE bridge). The workspace compose.override was an empty P1 stub. So I
+built `stewards-oss-bridge:michael` (bridge.Dockerfile FROM the live image →
+inherits the domain binaries + webster data + yt-dlp/ffmpeg; OSS clean-room
+substrate binaries swapped in; same Alpine/musl base = drop-in). gospel.db comes
+from the /workspace mount.
+
+**Sequence (all verified):** archive dump (5.6M) → 36/36 overlays onto OSS →
+`fiction` agent + missing `persona_host.personas` (chattercode/pg-starlet) COPY'd
+live→OSS (the self-seed only covers defaults; captured as overlay cut1) →
+Michael-bridge up, refresh-tools 13/13 → persona-host swapped (stop live first →
+no double-fire; verified no native exe either): callie/chip-assistant/dm-assistant/
+npc-ally/chattercode all connected to chat.ibeco.me off OSS → enabled gospel+search
+(overlay cut2; they were seeded dormant — the librarian's gospel error) → librarian
+re-verified e2e: fetched + quoted Alma 32:21 correctly via gospel-mcp → .mcp.json
+repointed (55434 + OSS exe) → live stopped (dev/bridge/ui, NOT removed).
+
+**Lessons:** (1) persona world is owned by persona-host+ai-chattermax (self-seeds
+the schema + default personas; runtime-added ones like chattercode must be carried).
+(2) The cut's hard part was the bridge's domain-MCP coverage, never parity. (3)
+Tables can have the same columns in DIFFERENT order across the live/clean-room
+schemas — positional COPY fails; use explicit column lists.
+
+**Carry-forward:** human chat-verify (drop a message → persona replies);
+born-clean from-source rebuild of the domain MCPs (bridge is pragmatically FROM the
+live image); remove the stopped live containers + archive the volume after the OSS
+stack soaks clean. Recovery if needed: `docker start pg-ai-stewards-{dev,bridge,ui}`
++ revert .mcp.json + swap persona-host back.
