@@ -939,3 +939,28 @@ Edge vocabulary: `cross-ref` · `fulfillment` · `parallel` · `covenant-thread`
 **Edges:**
 - `★ Adam-ondi-Ahman:the-FUTURE-gathering — Daniel's-Ancient-of-Days` (116:1) —["where Adam shall come to visit his people, or the Ancient of Days shall sit, as spoken of by Daniel" (Dan 7:9-14)]→ the §107:53-57 thread reaching-its-FUTURE-pole · —[Adam = Michael (§27:11 / §78:16 / §107:54), presiding-over-a-great-council BEFORE-the-Second-Coming]→ the §27/§110 gathering-of-all-keys finds-its-FUTURE-councilhouse · [reserved-bin-4, Michael's]
 - `heavenly:mapped-onto-the-EARTHLY` (116:1) —[a-LITERAL-hill = Daniel's-heavenly-council]→ §29:32 / §77 (spiritual-temporal-correspondence) at-the-scale-of-GEOGRAPHY · —[Eden / Adam-ondi-Ahman / New-Jerusalem LOCATED-on-the-continent: heaven's-events have-earthly-ADDRESSES]
+
+## D&C 117 — the drop, and the more weighty matters (Far West, July 8 1838; the Kirtland property)
+**Nodes:** `★ covetousness:a-SCALE-error — "what-is-property-unto-me?"` (117:4-8) · `★★ proportion:THE-DROP vs. the-MORE-WEIGHTY-MATTERS` (117:8) · `★ servant:the-obscure-faithful-HONORED — sacrifice > increase` (117:12-15)
+**Edges:**
+- `★ covetousness:a-SCALE-error — "what-is-property-unto-me?"` (117:4-8) —["have I not made the earth? Do I not hold the destinies of all the armies of the nations?"]→ before-the-OWNER-of-all (§104:14), grasping-a-FRAGMENT is-ABSURD; the §104:17 enough-and-to-spare's-ROOT · —["make solitary places to bud and to blossom" (Isa 35:1)]→ the-God-who-owns-all PROVIDES-ANYWHERE
+- `★★ proportion:THE-DROP vs. the-MORE-WEIGHTY-MATTERS` (117:8) —["that you should covet that which is but the drop, and neglect the more weighty matters?" (Matt 23:23)]→ the-danger: ABSORBED-in-the-small while-NEGLECTING-the-large (kingdom/soul) · —[the-foresight-discipline's-perpetual-temptation: fixate-on-the-drop, lose-the-weighty]
+- `★ servant:the-obscure-faithful-HONORED — sacrifice > increase` (117:12-15) —[Oliver-Granger (the-unknown-agent) "sacred remembrance… forever and ever"; "his sacrifice shall be more sacred than his increase"]→ the-Lord-TREASURES-the-obscure-faithful-labor (§62:3 / §18:10) · —[the-TRYING (even-FAILING) worth-more-than-the-SUCCEEDING; "when he falls he shall rise again" (Prov 24:16)]→ the-OFFERED-labor = the-measure, not-the-outcome
+
+## D&C 118 — let men be appointed to supply the place of those who are fallen (Far West, July 8 1838; the Twelve)
+**Nodes:** `★ Quorum:REFILLED — the-office-outlasts-the-fallen` (118:1,6) · `★★ Far-West-departure:a-prophecy-KEPT-TO-THE-LETTER-against-the-odds` (118:4-5)
+**Edges:**
+- `★ Quorum:REFILLED — the-office-outlasts-the-fallen` (118:1,6) —["let men be appointed to supply the place of those who are fallen"; successors NAMED (Taylor/Page/Woodruff/Richards)]→ the §114:2 ENACTED · —[Taylor/Woodruff later-PRESIDENTS]→ the-vacancy an-OPENING; the-replacement often-where-FUTURE-LEADERSHIP-is-found (cf. §105)
+- `★★ Far-West-departure:a-prophecy-KEPT-TO-THE-LETTER-against-the-odds` (118:4-5) —["take leave… on the twenty-sixth day of April next, on the building-spot of my house"; then-the-Saints-EXPELLED, the-apostates-MOCKED]→ the-Twelve SECRETLY-RETURNED Apr-26-1839, kept-it-to-the-LETTER · —[the §82:10 "I am bound when ye do what I say"]→ covenant-keeping-TO-THE-LETTER even-when-costly/impossible [historical]
+
+## D&C 119 — the law of tithing: a standing law forever (Far West, July 8 1838)
+**Nodes:** `★ tithing:the-DURABLE-form-of-consecration` (119:1-4) · `★ tithing:SANCTIFIES-Zion — without-it-NO-Zion` (119:5-6)
+**Edges:**
+- `★ tithing:the-DURABLE-form-of-consecration` (119:1-4) —[surplus-once (119:1) THEN "one-tenth… annually… a standing law unto them forever"]→ the-enduring-SCALED-DOWN-form of-the-law-the-Saints-couldn't-keep (§42/§51 → §104 broken) · —[consecration asks-EVERYTHING-at-once; tithing asks-A-TENTH-regularly]→ §78:18 / §10:4 (pace-to-strength) applied-to-GIVING: a-SUSTAINABLE-rhythm beats-an-ideal-but-broken-height; the-higher-law remains-the-aspiration (§105:5)
+- `★ tithing:SANCTIFIES-Zion — without-it-NO-Zion` (119:5-6) —["sanctify the land of Zion… or it shall not be a land of Zion unto you"]→ NOT-fundraising but-SANCTIFYING; the §105:5 "Zion by the celestial law" given-its-practical-ENTRY · —[the §101:6 covetousness answered-with-a-STANDING-DISCIPLINE: putting-God-before-property (§117:8)]→ the-RECURRING-small-discipline is-what-sanctifies
+
+## D&C 120 — disposed of by a council (Far West, July 8 1838)
+**Nodes:** `★ treasury:disposed-by-a-COUNCIL, under-the-Lord's-VOICE` (120:1)
+**Edges:**
+- `★ treasury:disposed-by-a-COUNCIL, under-the-Lord's-VOICE` (120:1) —["disposed of by a council… the First Presidency… the bishop and his council… my high council; and by mine own voice unto them"]→ the §104:62-77 sealed-treasury given-its-GOVERNANCE · —[PLURAL-authority: no-individual-controls-the-money; the-most-corruptible-resource governed-by-the-LEAST-concentrated-authority (diffusing §104:52/§101:6 covetousness)]→ §107:27 / §26:2 applied-to-MONEY · —["by mine own voice": the-council SEEKS-the-Lord, not-merely-VOTES (§102:23)]→ a-SPIRITUAL-act not-a-budget-meeting
+- ✦ **DECADE 111-120 CLOSED:** Salem/follies-redeemed (§111) → be-humble-led-by-the-hand (§112) → the-Stem-is-Christ (§113) → others-planted-in-their-stead (§114) → ★ the-NAME (§115) → Adam-ondi-Ahman (§116) → the-drop-vs-weighty-matters / Granger (§117) → the-Twelve-refilled / Far-West-departure (§118) → ★ TITHING (§119) → the-treasury-by-council (§120). TWELVE decades done (1-120). 18 units + ODs remain.
