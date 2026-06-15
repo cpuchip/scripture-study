@@ -96,3 +96,31 @@ rebuild.**
   agent (caught/non-fatal) — same missing-agent shape as `research` was.
 - Next intents (ai/books) when Michael's ready — projects + neighborhood already seeded.
 - Live OSS stack carries earlier dev cruft (a `stewards-explore` row); repo is clean.
+
+---
+
+## PM update — the watchdog is built; M4 proven with Vera; cut-prep done
+
+The "substrate-internal watchdog" named above as the persistent follow-up is
+**built and live** (`23-reflect-watchman.sql`, OSS `082be5e`). It's deterministic
+(no LLM), rides the bgworker heartbeat, and auto-pauses on in_flight / consecutive-
+failure / 24h-spend / proposal-flood breaches, logging every trip. Michael loved
+the framing — "a presiding agent of sorts." Live reading at ship: nominal, but
+autonomous spend was **$8.51 / $10 (24h, 85%)** from today's heavy proof runs —
+flagged to Michael as his dial (whether to bump the cap for the soak); I left the
+principled $10 (raising a safety cap is his call, not mine — presiding covenant).
+
+**M4 proven with a face:** dispatched a `persona-turn` on the OSS core as "Vera," a
+Vivint CX-analyst persona, fed the gathered pool (BBB/ConsumerAffairs/Trustpilot
+docs) + a PM question ("top 3 to fix this quarter?"). She answered in character,
+grounded entirely in the pool with real cites (Trustpilot 3.9/59k; BBB Billing the
+#2 bucket ~2,134/9k; JustUseApp #400 errors). The P0.5 "give the intent a face you
+can talk to" architecture works e2e: gatherer writes the pool → host reads → tool-
+free persona talks. Full ai-chattermax wiring (talk to Vera live in a room) is the
+remaining richer piece — and it overlaps the CUT's gating prereq.
+
+**The CUT's real blocker (discovered today):** ai-chattermax's persona-host still
+dials the LIVE bridge. Stopping live without repointing takes chat.ibeco.me
+personas dark. Parity was never the blocker — this is. Runbook:
+`pg-ai-stewards-workspace/parity/cut-runbook.md` (gating prereq + data-carry table
++ sequence + rollback + D1-D4). Sabbath-tension resolved (promote-trigger wrapped).
