@@ -134,3 +134,37 @@ the right project + a survey de-dups. Then P1 personas + request_research.
 
 This is the generic capability already in core; P0 is mostly operator overlay
 (project rows, neighborhood rows, the three pipelines' flags) + a backfill script.
+
+## BUILT 2026-06-16 (P0 shipped, clean-image-proven)
+
+The decouple turned out cleaner than feared — **no new pipeline flag**. The single
+signal is `project_association`:
+
+- **CORE `08-gates.sql`** — `on_maturity_verified`: the `import_doc`-to-pool block
+  moved OUT of the `IF file_destination IS NOT NULL` nest into its own block gated
+  `(v_auto_mat AND file_destination IS NOT NULL) OR project_association IS NOT NULL`.
+  So any project-tagged verified work pools (digesters write their own files; this
+  no longer requires one), the prior reflect/planning pooling is preserved, and a
+  content guard skips empty extractions. `extract_work_item_file_content` already
+  falls back to the final stage output → works for digesters; `import_doc` takes a
+  NULL file_path and dedups by slug.
+- **CORE `25-corpus.sql`** (new) — `intent_project_map` (empty in core) + an
+  ADDITIVE BEFORE-INSERT trigger `fill_project_association` that fills
+  `project_association` when NULL from the map, ONLY if the mapped project exists
+  (work_items.project_association FKs projects(slug) — guarded like 09's tagging).
+  No core function re-author → clobber-safe.
+- **OVERLAY `corpus-pools.sql`** — ensures projects books/ai exist; seeds the map
+  (book-study→books, video-study→ai, general-research→ai); neighborhoods
+  (books↔ai); vivint walled. Idempotent/non-clobbering (no-op on live).
+- **`cut3-restore-core-finals.sql`** — its verbatim `on_maturity_verified` copy was
+  updated in lockstep (or the clobber-check would flag it as a stale revert).
+- **`parity/backfill-corpus.py`** — one-time import of study/books (→books) +
+  study/yt (→ai) into the pool. Run at live deploy.
+
+**Proven:** virgin-smoke OK 10 (00→25; the decouple — a project-tagged verified
+work_item with NO file_destination pools; the trigger fill; FK-safe when the
+project is missing); overlay-clobber-check PASS (3 overrides / 0 clobbers —
+`on_maturity_verified` not flagged, so cut3 matches core); a real book-study
+work_item routes to `project=books`; `project_neighbors` = books↔ai, vivint walled.
+**Live-DB deploy + the backfill batched with skills #174** (one image rebake +
+ordered apply). P1 (per-loop personas + request_research) is the fast-follow.
