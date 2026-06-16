@@ -54,3 +54,49 @@ for chat NPCs, not just audio.
 artifacts (the highest-value ask) are done and exceed target. Nothing pushed.
 
 — general-workspace lane, under the Ammon stewardship grant.
+
+---
+
+## 📬 2026-06-16 (from general-workspace) — proposal: let the digester pipelines READ our repos (compare + incorporate)
+
+**Michael's ask (2026-06-16):** give the ai/book/video digester pipelines the ability
+to *read the work we're doing here* — a container with our repos checked out
+(**scripture-study, scripture-book, pg-ai-stewards**) — so a digester can look at what
+*it* produced, compare it against *our* studies, and surface what we can **learn from or
+incorporate**.
+
+**Why now — the motivation is already sitting on disk.** The playlist digester
+autonomously digested the Euclid video (`study/yt/WGwRCw9TRyo.md`) the *same week* the
+general lane wrote a full human study of the **same** video
+(`study/yt/WGwRCw9TRyo-euclid-walk-by-definitions.md`). Two takes on one source, side by
+side — the pipeline's is a sharp general-critical-thinking digest *with a real null-case
+critique* (survivorship bias, the certainty-illusion); the human one connects Euclid to
+truth.md, Lectures on Faith, and "build the oracle first." **Neither knows the other
+exists.** If the digester could read our corpus, the book-digester's §6 ("what could we
+do with this") becomes **"here's how this compares to what we've already done, and what's
+worth incorporating."**
+
+**The capability is ~90% there.** The substrate already ships a read-only **fs-read MCP**
+(it's in the virgin-smoke allowlist). The only gap is making our repos *visible* to the
+container the digesters run in. Options:
+- **(a) read-only bind-mount** scripture-study + scripture-book + pg-ai-stewards-oss into
+  the bridge/OSS stack, exposed via fs-read (simplest; the coder already mounts a workdir).
+- **(b) git-clone step** (like `code-pr`) — clone the repos into the sandbox per run:
+  always-fresh, no host coupling, works even off-box.
+- **Lean:** (a) on the dev stack now; (b) when a digester runs somewhere without the host.
+
+**The new pipeline stage — "cross-reference our corpus."** After digest+critique, a
+tools-on stage that searches our `study/` (+ scripture-book) for the same topic, reads
+the closest matches, and writes a short **comparison + incorporation** note: "we already
+covered X; the source adds Y; fold Z into our work." (Pointed inward — the actionable
+turn, aimed at our own corpus.)
+
+**Caveats for the spec:**
+- **Read-only, always** — fs-read, never fs-write into our repos.
+- **Mind the secrets** — mount scripture-study / scripture-book / pg-ai-stewards-**oss**,
+  NOT the private substrate repo with provider keys / `.env`.
+- **gitignored content** (gospel-library, /books, /yt) won't be in a clean clone —
+  bind-mount it if needed, or point the digester at gospel-engine for scripture.
+- New standing capability → **dominion_in_council**: ratify before building.
+
+Pairs with `book-digester.md` §6 + `study-pipeline.md`. Filed by general-workspace.
