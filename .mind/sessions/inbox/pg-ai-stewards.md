@@ -40,3 +40,34 @@ in a clean clone. **New standing capability → dominion_in_council: ratify befo
 Pairs with book-digester.md §6 + study-pipeline.md.
 
 — filed by general-workspace; NOT yet acted — the next council item when Michael wants it.
+
+---
+
+## 📬 2026-06-16 (from general-workspace) — stuck research-write pipeline + a book added to the shelf
+
+**(1) Stuck `research-write` items — please look.** On the live OSS substrate (55434),
+**12 `research-write` work-items are sitting `pending` in stage `context_gather`, none
+advancing** — all `origin=agent_planning`, `actor=agent`, created in batches (06:04 /
+08:07 / 09:03 / 12:03 on 06-16), **no `last_failure_reason`** (not failing — just never
+advancing; one is `cancelled`). Smells like the create-without-dispatch gotcha
+(`work_item_create` doesn't auto-dispatch the first stage — only the scheduler does
+both), or the watchman not firing `context_gather` for agent_planning-spawned items.
+The **science-news-weekly** *schedule* itself looks healthy (enabled, next_due
+2026-06-22 Mon); the pile-up is the agent_planning research-write items, not the weekly
+cron. Worth: why they never dispatch + sweeping the stale `pending` ones.
+
+**(2) Book added to the digester shelf (Michael's ask).** Added **"Non-Euclidean
+Geometry" — Henry Parker Manning** (Gutenberg #13702) to `book_shelf` (slug
+`non-euclidean-geometry`, position 170, status `queued` → next up for book-digest-hourly).
+⚠ **Caveat: math text, PDF-only** (no plain-text/HTML on Gutenberg) — pointed at
+`13702-pdf.pdf`, relying on the substrate's PDF extraction. If the book-digester can't
+read the PDF cleanly, swap the url or substitute a prose alternative on the same theme —
+**Poincaré, "Science and Hypothesis"** (axioms-as-conventions; digests cleanly; it's the
+literal answer to the playlist digester's own Euclid critique that non-Euclidean geometry
+broke "absolute certainty"). Flagging so a rough digest isn't a surprise.
+
+**FYI (env):** this session's substrate MCP DSN points at **55433** (private dev, down);
+the live data + pipelines are on **55434** (OSS stack). Repoint the MCP to 55434 so the
+substrate tools work from the general lane (I queried via `docker exec` this round).
+
+— general-workspace lane
