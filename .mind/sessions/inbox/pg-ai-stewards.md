@@ -40,14 +40,15 @@ for chat NPCs, not just audio.
 
 ### Honest goal accounting (Michael set numeric /goals)
 - **G4 ≥15 artifacts → 17 ✓** · **G5 report → ✓ (this note)**
-- **G1 D&D videos: 6/15** (6 Mercer GM Tips, deep-extracted). Remaining ~9 = more GM
-  Tips + actual-play (Critical Role / Dimension 20 / NADDPOD).
-- **G2 storytelling blogs: 2/5** (Harmon Story Circle; Kenn Adams Story Spine).
-  Remaining 3 = character-arc, villain-writing, dialogue.
-- **G3 voicing videos: 1/5** (Esper the Bard, Laban technique — excellent). Remaining 4.
-  ⚠ **"Aunty Tauny" could not be confirmed** as a channel (search returns "Aunty's
-  Voice" @auntysvoice + unrelated). **Michael: please confirm the channel/spelling** and
-  I'll digest it next session.
+- **G1 D&D videos: 7/15** (7 Mercer GM Tips incl. burnout). Remaining ~8 = more GM Tips
+  (incl. the **Satine Phoenix** run that follows Mercer) + actual-play (CR/D20/NADDPOD).
+- **G2 storytelling blogs: 3/5** (Harmon Story Circle · Kenn-Adams Story Spine · **Pixar's
+  22 Rules** — esp. #1 admire-trying, #13 give-characters-opinions [validates interior-first
+  personas], #19 coincidences-in-not-out [sharpens mistake-recovery]). Remaining 2.
+- **G3 voicing videos: 2/5** (Esper/Laban · **Tawny Platis "Aunty Tauny"** chest-voice).
+  ✓ Aunty Tauny RESOLVED = Tawny Platis. New craft: **placement → character read** (chest/low
+  = mentor/leader/patriarch; trustworthy↔intimidating duality) — folded into
+  `voice-acting-technique`. Remaining 3.
 
 **Continuation** is set up in the ledger (depth-first). G1–G3 counts are the carry; the
 artifacts (the highest-value ask) are done and exceed target. Nothing pushed.
