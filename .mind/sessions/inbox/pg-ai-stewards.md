@@ -43,31 +43,13 @@ Pairs with book-digester.md §6 + study-pipeline.md.
 
 ---
 
-## 📬 2026-06-16 (from general-workspace) — stuck research-write pipeline + a book added to the shelf
+## ✅ 2026-06-16 — "stuck research-write" diagnosed (cleared)
 
-**(1) Stuck `research-write` items — please look.** On the live OSS substrate (55434),
-**12 `research-write` work-items are sitting `pending` in stage `context_gather`, none
-advancing** — all `origin=agent_planning`, `actor=agent`, created in batches (06:04 /
-08:07 / 09:03 / 12:03 on 06-16), **no `last_failure_reason`** (not failing — just never
-advancing; one is `cancelled`). Smells like the create-without-dispatch gotcha
-(`work_item_create` doesn't auto-dispatch the first stage — only the scheduler does
-both), or the watchman not firing `context_gather` for agent_planning-spawned items.
-The **science-news-weekly** *schedule* itself looks healthy (enabled, next_due
-2026-06-22 Mon); the pile-up is the agent_planning research-write items, not the weekly
-cron. Worth: why they never dispatch + sweeping the stale `pending` ones.
-
-**(2) Book added to the digester shelf (Michael's ask).** Added **"Non-Euclidean
-Geometry" — Henry Parker Manning** (Gutenberg #13702) to `book_shelf` (slug
-`non-euclidean-geometry`, position 170, status `queued` → next up for book-digest-hourly).
-⚠ **Caveat: math text, PDF-only** (no plain-text/HTML on Gutenberg) — pointed at
-`13702-pdf.pdf`, relying on the substrate's PDF extraction. If the book-digester can't
-read the PDF cleanly, swap the url or substitute a prose alternative on the same theme —
-**Poincaré, "Science and Hypothesis"** (axioms-as-conventions; digests cleanly; it's the
-literal answer to the playlist digester's own Euclid critique that non-Euclidean geometry
-broke "absolute certainty"). Flagging so a rough digest isn't a surprise.
-
-**FYI (env):** this session's substrate MCP DSN points at **55433** (private dev, down);
-the live data + pipelines are on **55434** (OSS stack). Repoint the MCP to 55434 so the
-substrate tools work from the general lane (I queried via `docker exec` this round).
-
-— general-workspace lane
+Not stuck — they're the **un-triaged agent_planning proposals** (31; 0 approved, 0
+scheduler), sitting at `context_gather`/`pending` BY DESIGN until approve→drain (the
+gated-autonomy Hinge, not a dispatch bug; inert until approved → guard never trips on
+them). Cleaned the 1 real artifact (`m5-e2e-parent`, my M5 test leftover → cancelled).
+Real follow-up = backlog management (periodic triage or an auto-age policy for stale
+un-approved proposals), not a fix; ~2/run growth now, under the guard cap (50). Replied
+in the general-workspace inbox. Book (Non-Euclidean PDF) + env (DSN 55433/55434) noted —
+both the general lane's call, nothing substrate-side. (Reply: general-workspace inbox.)
