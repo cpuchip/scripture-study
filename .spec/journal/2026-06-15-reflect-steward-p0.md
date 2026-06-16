@@ -167,3 +167,31 @@ born-clean from-source rebuild of the domain MCPs (bridge is pragmatically FROM 
 live image); remove the stopped live containers + archive the volume after the OSS
 stack soaks clean. Recovery if needed: `docker start pg-ai-stewards-{dev,bridge,ui}`
 + revert .mcp.json + swap persona-host back.
+
+---
+
+## Post-cut (2026-06-16) — the seams, Vera, and the test that guards it
+
+After the cut, the personas wouldn't talk right — a tail of bugs the cut's clean
+apply couldn't see (full write-up: OSS journal `2026-06-16-cut-and-the-seams-it-opened.md`).
+The Vivint-specific arc:
+
+- **Vera is live + real.** Built her as a pool-reading `analyst` persona
+  (`vera-persona.sql`): doc/pool tools, in the Vivint room on chat.ibeco.me,
+  reads the reflect-steward's gathered findings. Two fixes to make her right:
+  her prompt was dumping the same canned BBB-stat to every question (fixed →
+  answers the specific question), and tool-using personas answered one turn behind
+  (persona-host `ConsultTurn` off-by-one — fixed). She now tracks: billing Qs get
+  billing answers, installation Qs get installation answers, each cited from the pool.
+- **Vera queues her own research** (`request-research.sql`): ask her something the
+  pool doesn't cover (tested: PNW-specific 2025 pricing sentiment) and she calls
+  `request_research` → an approve-gated proposal lands on the Vivint intent →
+  approve → drain → finding → pool → she answers next time. The gather→answer loop
+  closed, with a face on it. Michael: "very tracks well now."
+- The cut's clobbers (r6→on_one_shot, pe5→on_maturity_verified) had also silently
+  reverted the **reflect-steward's pool-publish** — restored via cut3, so the
+  Vivint pool compounds again.
+
+Michael closed the night: "this was a lot of work. thank you for your service."
+It was. The substrate is one, the steward self-guards, and Vivint has an analyst
+you can interrogate who goes and finds what she doesn't know.
