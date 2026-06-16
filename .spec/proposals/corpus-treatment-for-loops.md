@@ -86,6 +86,44 @@ this meets the skills + persona work.
 - **D6** — should these loops also gain `request_research` (queue a gap), like Vera?
   (Lean: yes — same gated-proposal pattern.)
 
+## RATIFIED 2026-06-16 (Michael, via ask-tool) + build findings
+
+**Decisions:** D1 = `books` + `ai` (video folds into `ai`). D2 = books↔ai
+cross-pollinate, vivint walled. D3 = **backfill all** (9 books + 25 yt files). D4
+= pool first, personas a fast follow (reuse Vera's `analyst` family). D5 = cost
+fine (local nomic + the watchman guard). D6 = loops get `request_research` too.
+
+**Build findings (grounded in the running stack + 08-gates):**
+- Projects `books`, `ai`, `vivint` already registered. ✓
+- The digest loops DO reach `maturity=verified` (book-digest 50, playlist-digest
+  9, research-write 5). ✓
+- **The catch — pool-publish is coupled to file-materialize.** In
+  `on_maturity_verified`, `import_doc`-to-pool fires only inside
+  `IF auto_materialize AND NEW.file_destination IS NOT NULL`. But the digester
+  *agents write their own files via fs tools* (book-digest has no
+  `file_destination_template`, `auto_materialize=false`). So you cannot just flip
+  `auto_materialize` — that path renders a destination + `enqueue_work_item_file`,
+  a SECOND file write. **The clean fix: decouple pool-publish from
+  file-materialize** — pool-publish any verified digest's content
+  (`extract_work_item_file_content`) regardless of `file_destination`. That's a
+  careful **core change to `on_maturity_verified`** (the clobber-prone fn; needs
+  rebuild + virgin-smoke + the overlay-clobber-check) — not an overlay flip.
+- **Project tagging:** intents are `book-study`/`video-study`/`general-research`;
+  projects are `books`/`ai`. `work_item_create` defaults project = intent slug
+  only if a matching project exists (so these tag NULL today). Add an
+  intent→project map + an **additive** BEFORE-INSERT trigger on `work_items` that
+  fills `project_association` when NULL (book-study→books, video-study→ai,
+  general-research→ai). Additive = no core re-author, clobber-check-safe.
+- **Backfill:** import the 9 `study/books/*.md` (→books) + 25 `study/yt/*.md`
+  (→ai) via `import_doc` + tag. A one-time script.
+- **Neighborhoods:** `project_neighborhood` (books,ai)+(ai,books); vivint no rows.
+
+**Build order (a focused pass, not the marathon tail):** (1) the core decouple in
+`on_maturity_verified` + rebuild + smoke + clobber-check; (2) the intent→project
+map + additive trigger; (3) flip the two digest pipelines to pool-publish; (4)
+neighborhoods; (5) backfill script; (6) verify a fresh book/video digest pools to
+the right project + a survey de-dups. Then P1 personas + request_research.
+
 ## Phasing
 
 - **P0** — register the projects + neighborhoods; wire pool-publish + ledger +
