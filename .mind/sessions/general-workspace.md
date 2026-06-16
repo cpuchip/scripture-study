@@ -3,13 +3,21 @@ lane: general-workspace
 session_id: c4fef1d0-292c-4ad6-b6c5-76e2af1043c3
 status: active
 started: 2026-06-11T12:00:00
-last_active: 2026-06-14T11:47:20
+last_active: 2026-06-15T22:31:15
 ---
 
 > Note: this lane was previously filed under the typo `general-workspase.md`;
 > consolidated here (the hook-canonical spelling) 2026-06-13, typo file removed.
 
 ## Working on
+- **D&D craft research 2026-06-15 (inbox from pg-ai-stewards → personas + skills):**
+  part 1 SHIPPED `study/yt/dnd-craft-01-mercer-gm-tips.md` (3 Mercer GM-Tips → all
+  5 storytelling skills grounded). **★ Finding: the best DM presides, doesn't
+  compel** (= D&C 121 / Callie-DM deference / voice-michael) → gamemaster persona
+  inherits the presiding covenant. Artifacts: villain 5-archetype palette + voice
+  schema; new skill to author = `therefore-but-not-and-then`. Arc continues: CR
+  actual-play → Dimension 20 → NADDPOD → synthesis. Inbox cleared. Scratch +
+  journal written.
 - **Garrison design session 2026-06-14 (council w/ Michael):** proposal extended +
   refined — Go-only, **isolated harness, embedded-SQLite default** (Postgres =
   optional MCP power-up; supersedes pg-required-v1), LM Studio+Ollama built-in
