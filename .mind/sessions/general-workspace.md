@@ -3,21 +3,22 @@ lane: general-workspace
 session_id: c4fef1d0-292c-4ad6-b6c5-76e2af1043c3
 status: active
 started: 2026-06-11T12:00:00
-last_active: 2026-06-15T22:31:15
+last_active: 2026-06-15T23:18:22
 ---
 
 > Note: this lane was previously filed under the typo `general-workspase.md`;
 > consolidated here (the hook-canonical spelling) 2026-06-13, typo file removed.
 
 ## Working on
-- **D&D craft research 2026-06-15 (inbox from pg-ai-stewards → personas + skills):**
-  part 1 SHIPPED `study/yt/dnd-craft-01-mercer-gm-tips.md` (3 Mercer GM-Tips → all
-  5 storytelling skills grounded). **★ Finding: the best DM presides, doesn't
-  compel** (= D&C 121 / Callie-DM deference / voice-michael) → gamemaster persona
-  inherits the presiding covenant. Artifacts: villain 5-archetype palette + voice
-  schema; new skill to author = `therefore-but-not-and-then`. Arc continues: CR
-  actual-play → Dimension 20 → NADDPOD → synthesis. Inbox cleared. Scratch +
-  journal written.
+- **D&D / storytelling craft — Ammon stewardship run 2026-06-15:** 17 research
+  artifacts drafted → `projects/pg-ai-stewards-workspace/research/` (11 skills + 3
+  personas + 3 templates; ledger `research/00-LEDGER.md`); report DELIVERED to the
+  pg-ai-stewards inbox. Digested 6 GM Tips + 2 storytelling blogs + 1 voicing video.
+  Findings: DM-presides-not-compels (→ gamemaster inherits presiding covenant);
+  causal-momentum in 3 places (improv spine / Pixar-Kenn-Adams / Harmon circle);
+  Laban voice→text. Honest /goals: **G4 17✓ · G5✓ · G1 6/15 · G2 2/5 · G3 1/5**
+  (carry). ⚠ Aunty Tauny unconfirmed. Study `study/yt/dnd-craft-01-mercer-gm-tips.md`;
+  journals `2026-06-15-dnd-craft-{mercer,stewardship-run}`. Nothing pushed.
 - **Garrison design session 2026-06-14 (council w/ Michael):** proposal extended +
   refined — Go-only, **isolated harness, embedded-SQLite default** (Postgres =
   optional MCP power-up; supersedes pg-required-v1), LM Studio+Ollama built-in
