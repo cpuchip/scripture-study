@@ -64,6 +64,14 @@ external_context/
 # things to just not check in
 /private/
 
+# Client-private pipeline drops — vivint outputs belong in /private/vivint/ (moved
+# 2026-06-17). The reflect-steward/research pipelines materialize via the shared
+# per-pipeline templates (plans/<slug>, research/<slug>), so a vivint run can still
+# land a file in a public dir; this is the hard safety net — never commit it.
+/plans/vivint-*
+/research/vivint-*
+/study/daily-digest/vivint-*
+
 # Nested repos managed separately
 /private-brain/
 /scripts/brain/
@@ -80,6 +88,7 @@ external_context/
 # (they were being tracked as bare gitlinks; untracked 2026-06-14). Each is
 # its own public/private repo with its own history. Add new ones here.
 /projects/ai-jumpstart/
+/projects/deadweight-acquisitions-game/
 /projects/dnd-tools/
 /projects/md-mcp/
 /projects/pg-ai-stewards-oss/
