@@ -1,7 +1,7 @@
 # Garrison — A Lean, Sovereign, Local-First Coding Agent
 
 **Date:** 2026-06-13
-**Status:** Proposed — awaiting council (`dominion_in_council`; nothing built until ratified). Refined 2026-06-14: Go-only · **embedded-SQLite default, Postgres optional** · isolated harness · MCP/JSON-RPC/HTTP/WebSocket + WASM extensions (**no gRPC**) · self-extension tiers · LM Studio + Ollama built in.
+**Status:** **P0 RATIFIED — council CLOSED 2026-06-18** (all six open questions resolved; P1 buildable, the post-cut gate satisfied when the substrate cut executed 06-15). Refined 2026-06-14: Go-only · **embedded-SQLite default, Postgres optional** · isolated harness · MCP/JSON-RPC/HTTP/WebSocket + WASM extensions (**no gRPC**) · self-extension tiers · LM Studio + Ollama built in. 06-18 closures: two-model split starting on the pg-ai **FlexLLama** rig (qwen3.6-27b) · store = **FTS5 + chromem-go (RRF)** in P1 · greenfield-Go-util dogfood · `garrison watch` ships with spawn · core MCP-exposable from P1.
 **Origin:** general-workspace session, out of the Euclid digestion and the "can pg-ai-stewards become our own opinionated CLI coding tool?" question.
 **Name:** **Garrison** / `garrison-cli` — ratified 2026-06-13. From the preside study (Webster 1828 *praesidium*, the fortified position held when the field is threatened). Michael's gloss: *"the person who drives it presides."* The name scales down the chain of watches — whoever drives a Garrison, human or steward, presides over the field it holds.
 
@@ -73,7 +73,7 @@ Garrison is **its own isolated harness**: its own model client, its own agent lo
 
 **Two run modes (refined 2026-06-14 — supersedes the earlier "v1 requires Postgres"):**
 
-- **Garrison standalone — the default, and the real go-bag.** Go binary + a local model + an **embedded SQLite store** (pure-Go `modernc.org/sqlite`, no CGo, cross-compiles to one file). SQLite is not a degraded mode: it carries the full presiding ledger — work-item hierarchy (recursive CTEs), context/engrams (JSON + FTS5, optional vectors via `sqlite-vec`), dispatch/cost — for **one Garrison and the sub-agents it spawns**. Needs nothing external but a model endpoint. This is what makes Garrison a true sovereignty tool: no Docker, no Postgres, one binary.
+- **Garrison standalone — the default, and the real go-bag.** Go binary + a local model + an **embedded SQLite store** (pure-Go `modernc.org/sqlite`, no CGo, cross-compiles to one file). SQLite is not a degraded mode: it carries the full presiding ledger — work-item hierarchy (recursive CTEs), context/engrams (JSON + **FTS5 keyword + chromem-go vectors, RRF-fused** — both pure-Go; ratified for P1 06-18, *not* `sqlite-vec`, a C extension `modernc` can't load), dispatch/cost — for **one Garrison and the sub-agents it spawns**. Needs nothing external but a chat endpoint and a local embedding endpoint (LM Studio `text-embedding-nomic-embed-text-v1.5`, already running). This is what makes Garrison a true sovereignty tool: no Docker, no Postgres, one binary.
 - **Garrison substrate-backed — the power-up.** Point Garrison at a running pg-ai-stewards over MCP for a **shared, multi-session ledger** and the substrate's full dispatch/council/catalog/cost engine. The reason to reach for Postgres is concurrency and sharing (many Garrisons, or Garrison coordinated alongside other substrate agents), not single-session work, which SQLite already covers.
 
 **Frontier-as-luxury, never as dependency.** When Claude Code or a frontier API *is* available, Garrison may dispatch heavy steps to it as an optional stronger pair of hands. It must never need it.
@@ -149,6 +149,22 @@ A 27B model hallucinates more, plans worse over long horizons, and drifts faster
 - qwen3.6-27B on LM Studio always reasons; a small `max_tokens` yields empty `content` with `finish_reason=length`. Give it ≥2000 tokens; the answer is in `content`, the reasoning in `reasoning_content`. Tool-calling on local models is weaker and inconsistent.
 - Design for that reality: structured output with a forgiving parser, retries, and possibly a split — non-thinking instruct models for the tool loop, reasoners reserved for planning. Distrust a negative result from a parser written in haste (the verify-via-real-path lesson applies double here).
 
+### Starting model configuration (borrowed from the pg-ai FlexLLama rig, 2026-06-18)
+
+Garrison borrows the model setup the pg-ai-stewards work already runs, so the daily driver and the go-bag share one rig from day one. **FlexLLama** (`external_context/flexllama`) is a local dual-4090 llama.cpp manager exposing **one OpenAI-compatible endpoint** that routes by model alias to per-GPU runners — exactly Garrison's "one client, model-by-alias" design. The active `stewards-3way.json` (all Q4, `n_ctx` 32768, `jinja: true` so tool-call templates work):
+
+| Alias | Model | GPU | Role in Garrison |
+|---|---|---|---|
+| `qwen3.6-27b` | Qwen3.6-27B Q4_K_M | 0 | planner / reasoner + initial doer |
+| `gemma-12b` | gemma-4-12B-it QAT Q4_0 | 1 | mid instruct (alt doer / critic) |
+| `nemotron-4b` | NVIDIA-Nemotron-3-Nano-4B Q4_K_M | 1 | fast small loop model |
+
+- **Chat endpoint:** `http://localhost:8090/v1` for a native Garrison binary (the containerized substrate uses `http://host.docker.internal:8090/v1`). API key is the placeholder `flexllama`; health at `/health`; `request_timeout` 1800s.
+- **Embedding endpoint (for chromem-go vectors):** LM Studio `text-embedding-nomic-embed-text-v1.5` at `http://localhost:1234/v1` (placeholder key `lmstudio`) — 768-dim, matches gospel-engine-v2's nomic embeddings, so retrieval is apples-to-apples. (Ollama isn't installed on the rig — LM Studio serves both chat and embeddings; corrected 06-18.)
+- **Start model:** `qwen3.6-27b` (Michael's stated floor); the doer/planner split maps onto the three hot aliases. Devstral Small 2 becomes a 4th FlexLLama alias when the tool-tuned-doer upgrade is wanted.
+
+Recorded here (not in code) because P1 isn't scaffolded yet; P1's first act is to seed `projects/garrison/.env.example` from this table.
+
 ## Tensions and risks (honest)
 
 - **Capability floor.** It will not match Claude Code, full stop. The bet is "good enough, fully owned, always available," not "best." Name it so no one is surprised.
@@ -159,7 +175,7 @@ A 27B model hallucinates more, plans worse over long horizons, and drifts faster
 ## Phasing (post-parity / post-cut)
 
 - **P0** — this spec + council ratification (`dominion_in_council`).
-- **P1** — the standalone MVP: lean Go loop + OpenAI-compatible client (LM Studio first) + embedded SQLite ledger. Read / plan / edit / verify on the working tree; the presiding ledger comes online here (work-item + context tracking for any sub-agents). **No Docker.** Self-extension Tiers 0–1 (skills-as-data + a general exec tool + the MCP client). Dogfood a small real task — drive pi + Devstral Small 2 as the baseline first.
+- **P1** — the standalone MVP. **[✅ COMPLETE 2026-06-18 — `cpuchip/garrison` (private), `projects/garrison/`. Floor (one OpenAI-compatible client, ping/chat/embed live) → G1 SQLite presiding ledger (work-item hierarchy/recursive-CTE Tree, FK'd messages, cost rollup) → G2 FTS5 + chromem-go (RRF) retrieval (live fusion test green) → G3 read→plan→edit→verify loop (Dispatcher, forgiving ===FILE=== parser, path-safe apply, the Verify oracle, `garrison run`, every step to the ledger) → G4 self-extension Tiers 0–1 (skills-as-data + gated exec tool + MCP-client stub) → DOGFOOD reached + independently verified TWICE (qwen3.6-27b wrote strutil and mathx through the loop, oracle-passed in 1 attempt each; `docs/dogfood-01.md`). Every package build+vet+test green; ~9 tested commits. Remaining: wire retrieval into the loop's read-step for non-empty trees (greenfield needs none).]** Lean Go loop + OpenAI-compatible client (the **FlexLLama :8090 rig**, `qwen3.6-27b` to start — see *Starting model configuration*) + embedded SQLite ledger **with FTS5 + chromem-go (RRF) retrieval**. Read / plan / edit / verify on the working tree; the presiding ledger comes online here (work-item + context tracking for any sub-agents). **No Docker** (FlexLLama + Ollama already run on the host). Self-extension Tiers 0–1 (skills-as-data + a general exec tool + the MCP client); the core is designed MCP-exposable. Dogfood = a **greenfield Go utility + tests** (hard `go build && go test` oracle); drive pi + qwen3.6-27b on that same task as the baseline first.
 - **P2** — the code oracle suite: a build/test wrapper plus code detectors reusing the `verify-quotes` / study-linter patterns (precision-tuned, oracle-first).
 - **P3** — the council/critic pass (the D&C 88:122 lever).
 - **P4** — the substrate-backed power-up: point Garrison at pg-ai-stewards over MCP for the shared ledger + dispatch/council/catalog. Optional, never required.
@@ -170,20 +186,22 @@ A 27B model hallucinates more, plans worse over long horizons, and drifts faster
 
 `stewards-cli` (sibling; shares libraries; `materialize-writes` is the seed of the local-write path) · `coder-mcp` (the capability brought home from the sandbox) · the Claude Code workspace layer (the client-side prototype) · `plugin-someday` (the P5 packaging) · ai-jumpstart / *Beyond the Prompt* (Garrison as the embodied companion) · Spin (the local-model sibling that already pathfound the runtime gotchas).
 
-## Open questions for council
+## Decided in council — P0 CLOSED (2026-06-18)
 
 > Companion research (evidence for the model + mechanism calls): [Garrison — Landscape & Design Inputs](./sovereign-coding-agent-landscape.md) (2026-06-14). Headline: **pi** proves the four-tool lean core ships; **goose** is the MCP-framework cousin minus the governance; **Devstral Small 2** is the tool-tuned local model that answers the weak-model tool-calling risk; the governance niche is empirically empty.
 
-**Decided in council (2026-06-13/14):** name (Garrison / `garrison-cli`) · Go-only · isolated harness · **embedded-SQLite default**, Postgres as the optional shared-ledger / power-up backend · model backends built in via the OpenAI-compatible endpoint (**LM Studio + Ollama first**) · extensions over **MCP / JSON-RPC / HTTP / WebSocket + WASM** (no gRPC, no native `plugin`) · self-extension Tiers 0–3 with the build-the-door / hang-with-consent gate.
+**Decided 2026-06-13/14:** name (Garrison / `garrison-cli`) · Go-only · isolated harness · **embedded-SQLite default**, Postgres as the optional shared-ledger / power-up backend · model backends built in via the OpenAI-compatible endpoint (**LM Studio + Ollama first**) · extensions over **MCP / JSON-RPC / HTTP / WebSocket + WASM** (no gRPC, no native `plugin`) · self-extension Tiers 0–3 with the build-the-door / hang-with-consent gate.
 
-**Still open:**
+**Closed 2026-06-18 — the six open questions resolved (post-cut gate satisfied 06-15):**
 
-1. **Tool-calling on weak models** — structured output + retries + a forgiving parser, and the model split (Devstral-class tool-tuned model for the loop, a reasoner for planning). Confirm the default pairing.
-2. **The pg-backend boundary** — exactly what substrate-backed mode adds over SQLite (shared multi-session ledger? full dispatch/council/catalog?), and the clean MCP seam between standalone and substrate-backed.
-3. **The presiding-chain surface** — how Garrison *shows* the live sub-agent chain to the presider (`garrison watch`, a TUI board). Tracking that doesn't surface isn't watching.
-4. **Tier-2 self-extension** — when self-built persistent tools ship (P5), and how "hang with consent" works under semi-autonomy (a hard pause, or a queued approval).
-5. **Plugin relationship** — is `plugin-someday` (the Claude Code plugin) simply Garrison's luxury-mode client of the same MCP surface?
-6. **P1 dogfood target.**
+1. **Weak-model tool-calling / default pairing.** A **two-model split** — a tool-tuned/fast model runs the edit-verify *loop*, a reasoner runs the *planning* step — both local, one OpenAI-compatible client, routed by model alias. **Start on the pg-ai FlexLLama rig** (`qwen3.6-27b` + `gemma-12b` + `nemotron-4b` already hot on one `:8090` endpoint — see *Starting model configuration*); Devstral Small 2 is the documented tool-tuned-doer upgrade (a 4th alias later). The minimal go-bag still runs on **one** model. Robustness: native tool-calls first, a forgiving parser + bounded retries as fallback (defer the pi-style text protocol to P2), **the oracle gate as the real safety net** — never trust a raw tool-call.
+2. **pg-backend boundary.** Two Go interfaces — `Ledger` (work-items, context/engrams, dispatch/cost) and `Dispatcher` (the model loop). Standalone = SQLite `Ledger` + local-loop `Dispatcher`. Substrate-backed (P4) supplies a pg `Ledger` adapter (shared multi-session store) and/or an MCP `Dispatcher` adapter (offload to the substrate's dispatch/council/catalog/cost), *independently selectable*, additive, never required. Deferred to P4 planning: shared-ledger-first vs dispatch-offload-first (lead: shared-ledger).
+3. **Presiding-chain surface.** Terminal-native, **no web**. Inline compact chain status in the main loop + a read-only **`garrison watch` TUI** (pure-Go bubbletea; tails the ledger; renders the live presider→sub-agent tree with state / intent / last-action / cost). Ships in the **same phase as sub-agent spawning**, which is gated behind the oracle (P2) and critic (P3) existing first. P1 = structured log lines only.
+4. **Tier-2 self-extension.** **P5, its own council item** (a self-built persistent tool is new standing dominion → `dominion_in_council` applied recursively). "Hang with consent" reuses the reflect-steward's **approve→queue→capacity-gated-drain**: build + test the door immediately and free, but **gate installation** — interactive = a hard inline pause; semi-autonomous = **queued, never auto-installed** (degrade-and-continue, or block-and-surface), with a watchman-guard pause on too many pending doors. Tighter the weaker the model.
+5. **Plugin relationship.** **Yes** — `plugin-someday` is Garrison's luxury-mode client of the same MCP surface. Garrison runs as a standalone loop **and** exposes its ledger / watch / tools as an MCP server (one surface, two directions: client to the substrate, server to Claude Code, plus multi-Garrison coordination). **Locked implication: design the core MCP-exposable from P1**; ship the plugin client at P6.
+6. **P1 dogfood target.** A **greenfield Go utility + tests** Garrison writes from scratch with a hard `go build && go test` oracle (the substrate-coder calc/FizzBuzz pattern) — cleanest proof of the loop, lowest risk. The same task is the pi + `qwen3.6-27b` baseline drive *before* Garrison writes a line. The "practices what it preaches" stretch dogfood (Garrison builds a small piece of its own tooling — a code detector in the study-linter spirit) follows once the basic loop is proven.
+
+**Store decision (the latent contradiction, resolved).** P1 ships **FTS5 keyword (modernc, pure-Go) + chromem-go vectors (pure-Go, file-persisted) fused with RRF** — the gospel-engine lineage borrowed whole; embeddings via the local **LM Studio `text-embedding-nomic-embed-text-v1.5`** endpoint (`:1234`) already running. *Not* `sqlite-vec` (a C extension `modernc` cannot load — the two can't coexist in a one-binary, CGo-free go-bag).
 
 ## Recommendation
 
