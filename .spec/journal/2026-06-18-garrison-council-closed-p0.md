@@ -211,3 +211,84 @@ Next is **P4** — the substrate-backed power-up (point Garrison at pg-ai-stewar
 over MCP for a shared ledger / dispatch engine); the `internal/mcp` client is the
 seam, waiting. The `.spec/` + `.mind/` P2/P3 records are committed but NOT pushed
 (no push instruction this round; root is Michael's to push).
+
+## Update 5 — P3.5 (the presiding chain): built + tested, structure proven live
+
+Michael (asked "what's next?", chose "P3.5 — spawning + garrison watch"). Three
+tested commits to `cpuchip/garrison`:
+
+- **P3.5a spawning** (`spawn.go`): refactored `Loop` so the read→plan→edit→verify
+  body (`runItem`) runs on a given work item, reused for single runs AND each
+  spawned child. `RunWithSpawn` = decompose (planner emits `===TASK===` sub-tasks;
+  atomic → no spawn) → a child loop per sub-task under the parent work item
+  (sequential, shared tree, `--max-children` gate) → **preside** (every child
+  outcome recorded to the parent; a blocked/failed child accounted for, D&C 121) →
+  **integrate** (full oracle across the tree, then the presider's own edit-loop to
+  finish). The ledger already carried the hierarchy + cost rollup.
+- **P3.5b `garrison watch`** (`cmd/garrison/watch.go`): a read-only bubbletea TUI
+  that tails the ledger and renders the live presider→child tree (status glyphs,
+  polling 1s; WAL lets it read while a run writes). `renderTree` is pure (unit
+  tested); `--once` prints once for non-tty. + `ledger.AllWorkItems`.
+- Robustness: request timeout 300→600s, configurable (`GARRISON_REQUEST_TIMEOUT_SECONDS`).
+
+**Structure proven LIVE:** a `--spawn` textkit run decomposed into 2 sub-agents
+("WordFrequency", "TitleCase"), and `garrison watch --once` rendered the real
+parent+2-children presiding tree from the ledger. The decompose → child-spawn →
+preside → watch path all executed end-to-end on live data.
+
+**But the full code-gen demo (P3.5c) is BLOCKED by a degraded rig.** Mid-run the
+FlexLLama rig went ~20× slow — qwen at ~1.4 tok/s (115s for a 3-word reply), plus
+EOFs — so the children's edit dispatches errored (no files written) and the
+integrate call hit the timeout. Not a logic bug (unit tests prove the machinery;
+the watch tree rendered correctly, even showing the children honestly marked
+failed). **Don't hammer a degraded rig** (unattended-resilience lesson) — the full
+code-generating spawn demo waits for the rig to recover (Michael may know why it's
+loaded). Then NEXT = P4. Honest gotcha re-confirmed: a slow local rig is the
+sovereign tool's real failure mode, not the code.
+
+## Update 6 — council mode + Phase 4 BROWNFIELD complete (overnight run)
+
+Michael: vision-expansion council (Garrison as a full Claude-Code/opencode-like
+TUI — modes/flow, live stats [context pressure/time/cost], pause&chat, emergency
+stop, brownfield+greenfield, tickets, multi-spawn, pg-ai-stewards context tools),
+then "set you loose while I sleep." Roadmap reorg: **P4 Brownfield · P5 the TUI
+shell (build-together flagship) · P6 context engine · P7 substrate-MCP · P8
+tickets/parallel-spawn/multi-lang · P9 Tier-2 WASM/package.** Overnight goal = P4
+(brownfield), chosen because it's the foundation the TUI drives AND every piece is
+unit-testable with the mock dispatcher → a flaky rig can't waste the night.
+
+Shipped (all rig-independent + green; ~8 tested commits to `cpuchip/garrison`):
+
+- **Council mode** (`garrison council` / `chat` no-arg): interactive multi-turn
+  REPL (history kept), `/run` synthesizes the discussion → a task → ratify →
+  build, `/model`/`/reset`/`/help`/`/quit`. The "council before the flow" Michael
+  asked for; the prompt→build CLI untouched.
+- **R5 resilience**: `llm.IsTransient` (5xx/429/408/EOF/timeout/reset) +
+  `Loop.dispatch` retries with exp backoff (MaxRetries=3). Built FIRST so the
+  overnight run survives the rig's lockups. Every model call routes through it.
+- **R1 read CONTENTS** into context (budget-capped, binary/size-skipped, re-read
+  each edit iteration so the model sees its own prior edits).
+- **R2 surgical edits** (`===EDIT===` SEARCH/REPLACE, exact-match, refuses
+  not-found/escapes; protected-checked) alongside whole-file `===FILE===`.
+- **R3 relevance-ranked read** (files ordered by task token-overlap so the
+  relevant ones make the budget on a big repo; `ReadBudget` tunable). Semantic
+  chromem half deferred (rig-dependent; keyword is the high-value primary for
+  code).
+- **R4 git** (`internal/vcs`, `--commit`): stages excluding `.garrison`,
+  diff-stat, commits; off by default.
+- **Tickets** (`--ticket FILE`): a ticket md/txt → task.
+
+**LIVE brownfield proof (`docs/dogfood-03.md`):** an existing git repo with a
+planted bug (`Add` returns a-b) → Garrison read it, made a 2-line surgical fix
+(a+b, doc/package intact), strengthened the tests, passed the oracle, and
+committed `4aebfc5` on top of existing history — `.garrison` correctly excluded,
+all independently verified. And R5 carried it through a rig at ~1.4 tok/s (2m52s).
+The greenfield→brownfield leap, on real models.
+
+**Remaining toward the full coder tool:** P5 TUI (his flagship, build-TOGETHER —
+needs his eyes + a healthy rig) · P6 context engine (the "context pressure" stat +
+compaction) · P7 substrate-MCP power-up · multi-language oracle (Go-only today;
+the riskiest change, held for a supervised pass to avoid regressing Go) · the
+semantic half of R3. P3.5c full-spawn live demo still pending a fast rig (machinery
+unit-tested + structure proven live). `.spec/`+`.mind/` records committed, NOT
+pushed (root is Michael's).

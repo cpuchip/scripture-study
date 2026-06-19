@@ -3,7 +3,7 @@ lane: general-workspace
 session_id: c4fef1d0-292c-4ad6-b6c5-76e2af1043c3
 status: active
 started: 2026-06-11T12:00:00
-last_active: 2026-06-18T22:52:09
+last_active: 2026-06-19T00:23:15
 ---
 
 > Note: this lane was previously filed under the typo `general-workspase.md`;
@@ -117,8 +117,19 @@ last_active: 2026-06-18T22:52:09
   clones-before-sort (mutation the copy-passing test missed). Inverse-hyp caught
   STALE-binary (rebuild `-o garrison.exe`!) + gofmt-blocks-on-no-EOF-newline
   (→ auto-format `gofmt -w`, formatter≠linter). `docs/dogfood-02.md`. **P1–P3
-  COMPLETE. NEXT = P4 (substrate power-up over MCP).** Root P2/P3 records
-  committed, NOT pushed (Michael pushes root).
+  COMPLETE.** Root records committed, NOT pushed (Michael pushes root).
+  **★★ P3.5 (spawn+watch) + COUNCIL MODE + PHASE-4 BROWNFIELD COMPLETE
+  (overnight 2026-06-19, ~12 tested commits):** P3.5a spawning (decompose→
+  preside→integrate) · P3.5b `garrison watch` TUI · council mode (`garrison
+  council`, /run→ratify→build) · **R5 resilience** (retry transient rig errors —
+  built first so the night survives lockups) · **R1** read file contents · **R2**
+  surgical `===EDIT===` SEARCH/REPLACE · **R3** relevance-ranked read · **R4** git
+  `--commit` (`internal/vcs`, excludes .garrison) · **tickets** `--ticket FILE`.
+  **LIVE brownfield proof:** existing repo + buggy Add → surgical fix + commit
+  `4aebfc5`, verified, .garrison excluded; R5 carried it through a 1.4-tok/s rig.
+  Garrison now edits EXISTING repos. `docs/dogfood-03.md`. **NEXT = P5 the TUI
+  (modes/stats/pause/emergency-stop — Michael's flagship, build-TOGETHER), then
+  P6 context engine / P7 substrate-MCP / multi-lang.** Journal Update 6.
   Journal `2026-06-18-garrison-council-closed-p0.md`.
 - **D&D / storytelling craft — Ammon stewardship run 2026-06-15:** 17 research
   artifacts drafted → `projects/pg-ai-stewards-workspace/research/` (11 skills + 3
@@ -169,6 +180,8 @@ last_active: 2026-06-18T22:52:09
   post-compact grounding.
 
 ## Claims
+- 2026-06-19T00:52:07 background (Bash): cd "C:/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/garrison" && GOWORK=off ./garrison.exe run --dir "C:/Users/cpuch/AppData/Local/Temp/garr
+- 2026-06-18T23:53:20 background (Bash): DOG="C:/Users/cpuch/AppData/Local/Temp/garrison-spawn"; rm -rf "$DOG"; mkdir -p "$DOG"; printf 'module textkit\n\ngo 1.26\n' > "$DOG/go.mod"; cd "C:/Users/cpuch
 - 2026-06-17T16:45:35 background (Bash): cd "C:/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/deadweight-acquisitions-game" && git commit -q -F - <<'EOF' ui polish: on-station layout
 - 2026-06-17T15:51:51 background (Bash): cd "C:/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/deadweight-acquisitions-game" && git add -A && git status --short && git commit -q -F - 
 - 2026-06-17T14:51:05 background (Bash): cd "C:/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/deadweight-acquisitions-game" && git add -A && git status --short && git commit -q -F - 
