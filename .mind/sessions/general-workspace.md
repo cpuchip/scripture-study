@@ -3,7 +3,7 @@ lane: general-workspace
 session_id: c4fef1d0-292c-4ad6-b6c5-76e2af1043c3
 status: active
 started: 2026-06-11T12:00:00
-last_active: 2026-06-18T20:03:23
+last_active: 2026-06-18T20:24:12
 ---
 
 > Note: this lane was previously filed under the typo `general-workspase.md`;
@@ -107,8 +107,18 @@ last_active: 2026-06-18T20:03:23
   (`internal/mcp`, JSON-RPC init/list/call, net.Pipe roundtrip test). DOGFOOD
   verified TWICE (strutil + mathx, 1-attempt each; skills-active run used 6k±1
   prime opt). **9 tested commits pushed to `cpuchip/garrison`; all build+vet+test
-  green. NEXT = P2 code oracle suite.** Root PUSHED 2026-06-18 (Michael's "lets
-  push"; `.spec/`+`.mind/` Garrison records; ibeco.me unaffected).
+  green.** Root PUSHED 2026-06-18 (Michael's "lets push"; `.spec/`+`.mind/`
+  Garrison records; ibeco.me unaffected). **★★ P2+P3 DONE + LIVE-VERIFIED
+  2026-06-18 ("set a goal to do p2 and p3"; 4 more tested commits):** P2.1
+  acceptance tests (`--acceptance` copies+protects; `splitProtected` refuses
+  edits to them) · P2.2 `internal/detect` (gofmt-auto-`-w`/vet/exported-doc/
+  naked-panic) · P3 `critic.go` (gemma-12b 2nd look; VERDICT APPROVE/REVISE,
+  bounded). LIVE medianx proof: acceptance held byte-identical, critic APPROVED
+  clones-before-sort (mutation the copy-passing test missed). Inverse-hyp caught
+  STALE-binary (rebuild `-o garrison.exe`!) + gofmt-blocks-on-no-EOF-newline
+  (→ auto-format `gofmt -w`, formatter≠linter). `docs/dogfood-02.md`. **P1–P3
+  COMPLETE. NEXT = P4 (substrate power-up over MCP).** Root P2/P3 records
+  committed, NOT pushed (Michael pushes root).
   Journal `2026-06-18-garrison-council-closed-p0.md`.
 - **D&D / storytelling craft — Ammon stewardship run 2026-06-15:** 17 research
   artifacts drafted → `projects/pg-ai-stewards-workspace/research/` (11 skills + 3

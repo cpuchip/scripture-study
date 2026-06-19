@@ -167,3 +167,47 @@ model can't satisfy a weak oracle of its own making — `verify-quotes`/study-li
 patterns for code). The loop still doesn't inject retrieval into its read-step
 (greenfield needs none; wire it for non-empty trees). `garrison watch` + sub-agent
 spawning come after P2/P3 per the council.
+
+## Update 4 — P2 + P3 complete, live-verified
+
+Michael: "set a goal to do p2 and p3" (he went to play with the binary). Ran it
+autonomously, four more tested commits to `cpuchip/garrison`:
+
+- **P2.1 — operator-authored acceptance tests.** `run --acceptance PATH` copies
+  operator tests into the tree and marks them protected; `splitProtected` refuses
+  any edit targeting one (the model must *satisfy* the spec, not rewrite it),
+  records the refusal, and injects the protected files' contents into the prompt.
+  Closes the "model passes its own weak tests" seam.
+- **P2.2 — code detectors** (`internal/detect`): gofmt, `go vet`,
+  exported-doc-comment, naked-panic — AST-based, precision-tuned, run after the
+  build/test oracle passes; findings iterate.
+- **P3 — the critic** (`internal/agent/critic.go`): after the oracle passes, a
+  second model (gemma-12b — different blind spots than the qwen doer) adversarially
+  reviews for what the tests missed. `VERDICT: APPROVE | REVISE`; blocks only on an
+  explicit REVISE, bounded by `MaxCritics`. The council's D&C 88:122 lever.
+
+**Live proof (medianx).** The task asked for a median that *must not mutate the
+caller's slice* — a property the operator's acceptance test (it passes copies)
+cannot catch, only the critic can. Result: the acceptance test stayed
+byte-identical (the model's attempt to touch it refused), detectors + auto-format
+clean, and the critic APPROVED code that correctly clones-before-sort.
+`docs/dogfood-02.md`.
+
+**The inverse hypothesis earned its keep — two real bugs:**
+1. **Stale binary.** The first "live" run silently used an old `garrison.exe`
+   (`go build ./...` builds to cache; it does NOT rewrite the binary — need
+   `-o garrison.exe`). `--acceptance` landed in the task string; no detector/critic
+   ran. Lesson: *always rebuild before a live test; "it ran" is not verification*
+   (sibling of the deadweight stale-server gotcha).
+2. **gofmt blocked correct code.** After the rebuild, the run BLOCKED at 5
+   attempts: build + tests (incl. acceptance) passed, but gofmt flagged 2 files
+   the model "couldn't" fix. `gofmt -d` → "no newline at end of file" (the
+   `===FILE===` parser strips the trailing newline; a weak model can't emit
+   byte-perfect gofmt output). **Fix: gofmt is a formatter, not a linter** — the
+   loop now runs `gofmt -w` after every edit (`detect.Format`). Re-run → DONE in 2.
+
+**State:** P1–P3 complete; `cpuchip/garrison` fully pushed (13 tested commits).
+Next is **P4** — the substrate-backed power-up (point Garrison at pg-ai-stewards
+over MCP for a shared ledger / dispatch engine); the `internal/mcp` client is the
+seam, waiting. The `.spec/` + `.mind/` P2/P3 records are committed but NOT pushed
+(no push instruction this round; root is Michael's to push).
