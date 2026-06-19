@@ -3,7 +3,7 @@ lane: pg-ai-stewards-oss
 session_id: 7ea7faa4-688a-451a-ac68-b7ea662d4b81
 status: active
 started: 2026-06-09T18:00:00
-last_active: 2026-06-15T15:06:05
+last_active: 2026-06-18T23:05:33
 ---
 
 ## Working on
@@ -18,6 +18,47 @@ last_active: 2026-06-15T15:06:05
   commits unpushed (Michael's push).
 
 ## Claims
+- 2026-06-18T23:04:44 background (Bash): cd /c/Users/cpuch/Documents/code/stuffleberry/scripture-study/external_context/flexllama res=running for i in $(seq 1 80); do   if ! docker ps --filter name=fle
+- 2026-06-18T22:56:50 background (Bash): cd /c/Users/cpuch/Documents/code/stuffleberry/scripture-study/external_context/flexllama # wait for all 3 loaded + report per-GPU VRAM; detect OOM res=running f
+- 2026-06-18T22:31:19 background (Bash): Q() { docker exec stewards-oss-pg psql -U stewards -d stewards -tAc "$1" 2>&1; } BQ='What are the most notable AI and LLM model or tooling developments reported
+- 2026-06-18T22:15:43 background (Bash): Q() { docker exec stewards-oss-pg psql -U stewards -d stewards -tAc "$1" 2>&1; } # wait for qwen@128k loaded (GPU0 fills to ~24GB) for i in $(seq 1 60); do   g0
+- 2026-06-18T21:48:13 background (Bash): Q() { docker exec stewards-oss-pg psql -U stewards -d stewards -tAc "$1" 2>&1; } Q "SELECT stewards.config_set('page_in_single_msg_ratio','0.1'::jsonb,'33: lowe
+- 2026-06-18T21:44:52 background (Bash): Q() { docker exec stewards-oss-pg psql -U stewards -d stewards -tAc "$1" 2>&1; } # qwen should already be loaded (max config). quick check. n=$(curl -s http://l
+- 2026-06-18T20:23:14 background (Bash): Q() { docker exec stewards-oss-pg psql -U stewards -d stewards -tAc "$1" 2>&1; } # wait for max config loaded (qwen GPU0 + gemma/nemotron GPU1) for i in $(seq 1
+- 2026-06-18T19:42:21 background (Bash): Q() { docker exec stewards-oss-pg psql -U stewards -d stewards -tAc "$1" 2>&1; } # wait for gemma@32k loaded on GPU1 for i in $(seq 1 50); do   g1=$(nvidia-smi 
+- 2026-06-18T19:36:49 background (Bash): Q() { docker exec stewards-oss-pg psql -U stewards -d stewards -tAc "$1" 2>&1; } BQ='What are the most notable AI and LLM model or tooling developments reported
+- 2026-06-18T19:18:06 background (Bash): Q() { docker exec stewards-oss-pg psql -U stewards -d stewards -tAc "$1" 2>&1; } # wait for maxed load (GPU0 qwen ~19G, GPU1 ~23.9G) for i in $(seq 1 70); do   
+- 2026-06-18T18:52:16 background (Bash): Q() { docker exec stewards-oss-pg psql -U stewards -d stewards -tAc "$1" 2>&1; } BQ='What are the most notable AI and LLM model or tooling developments reported
+- 2026-06-18T18:48:00 background (Bash): Q() { docker exec stewards-oss-pg psql -U stewards -d stewards -tAc "$1" 2>&1; } # 1. wait for all 3 models loaded for i in $(seq 1 60); do   n=$(curl -s http:/
+- 2026-06-18T18:45:01 background (Bash): WID=7c0d6fc9-ad31-4077-9c79-7d21df5788bb Q() { docker exec stewards-oss-pg psql -U stewards -d stewards -tAc "$1" 2>&1; } for i in $(seq 1 45); do   row=$(Q "SE
+- 2026-06-18T18:40:46 background (Bash): for i in $(seq 1 40); do   h=$(docker inspect stewards-oss-pg --format '{{.State.Health.Status}}' 2>/dev/null)   echo "iter $i: health=$h"   if [ "$h" = "health
+- 2026-06-18T18:34:37 background (Bash): res=running for i in $(seq 1 110); do   if ! docker ps --filter name=flexllama-stewards --filter status=running -q | grep -q .; then echo "CONTAINER_DOWN $i"; r
+- 2026-06-18T18:32:47 background (Bash): res=running for i in $(seq 1 100); do   if ! docker ps --filter name=flexllama-stewards --filter status=running -q | grep -q .; then echo "CONTAINER_DOWN $i"; r
+- 2026-06-18T18:23:35 background (Bash): for i in $(seq 1 100); do   if ! docker ps --filter name=flexllama-stewards --filter status=running -q | grep -q .; then echo "CONTAINER_DOWN $i"; break; fi   g
+- 2026-06-18T18:20:52 background (Bash): RESULT="" for i in $(seq 1 90); do   if ! docker ps --filter name=flexllama-stewards --filter status=running -q | grep -q .; then echo "CONTAINER_DOWN $i"; brea
+- 2026-06-18T17:58:13 background (Bash): for i in $(seq 1 90); do   if ! docker ps --filter name=flexllama-stewards --filter status=running -q | grep -q .; then echo "CONTAINER_DOWN $i"; break; fi   g0
+- 2026-06-18T17:57:10 background (Bash): for i in $(seq 1 80); do   if ! docker ps --filter name=flexllama-stewards --filter status=running -q | grep -q .; then echo "CONTAINER_DOWN $i"; break; fi   g1
+- 2026-06-18T17:55:22 background (Bash): for i in $(seq 1 80); do   if ! docker ps --filter name=flexllama-stewards --filter status=running -q | grep -q .; then     echo "CONTAINER_DOWN at iter $i"; br
+- 2026-06-18T17:32:32 background (Bash): for i in $(seq 1 100); do   if ! docker ps --filter name=flexllama-stewards --filter status=running -q | grep -q .; then     echo "CONTAINER_DOWN at iter $i"; b
+- 2026-06-18T17:28:01 background (Bash): for i in $(seq 1 80); do   if ! docker ps --filter name=flexllama-stewards --filter status=running -q | grep -q .; then     echo "CONTAINER_DOWN at iter $i"; br
+- 2026-06-18T17:24:50 background (Bash): for i in $(seq 1 120); do   if ! docker ps --filter name=flexllama-stewards --filter status=running -q | grep -q .; then     echo "CONTAINER_DOWN at iter $i"; d
+- 2026-06-18T17:17:35 background (PowerShell): cd C:\Users\cpuch\Documents\code\stuffleberry\scripture-study\external_context\flexllama; docker build -f Dockerfile.cuda -t flexllama-gpu:latest . 2>&1 | Tee-O
+- 2026-06-17T21:30:53 background (Bash): cd "C:/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/pg-ai-stewards-oss"; docker build -f extension/Dockerfile -t stewards-oss-pg:failover ex
+- 2026-06-17T20:40:29 background (Bash): cd "C:/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/pg-ai-stewards-oss"; docker build -f extension/Dockerfile -t stewards-oss-pg:aliases ext
+- 2026-06-17T20:25:46 background (Bash): cd "C:/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/pg-ai-stewards-oss"; docker build -f extension/Dockerfile -t stewards-oss-pg:aliases ext
+- 2026-06-17T20:21:46 background (Bash): cd "C:/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/pg-ai-stewards-oss"; docker build -f extension/Dockerfile -t stewards-oss-pg:aliases ext
+- 2026-06-17T08:23:16 background (Bash): cd "C:/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/pg-ai-stewards-oss" && docker build -q -t stewards-oss-pg:halt extension/ > /tmp/halt-bu
+- 2026-06-17T00:46:27 background (Bash): cd "C:/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/pg-ai-stewards-oss" && docker build -q -t stewards-oss-pg:privroute-primers extension/ >
+- 2026-06-16T22:21:26 background (Bash): cd "C:/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/pg-ai-stewards-oss" && docker build -q -t stewards-oss-pg:autoresume extension/ > /tmp/a
+- 2026-06-16T21:28:23 background (Bash): cd "C:/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/pg-ai-stewards-oss" && docker build -q -t stewards-oss-pg:ctxsearch extension/ > /tmp/ct
+- 2026-06-16T19:55:28 background (Bash): cd "C:/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/pg-ai-stewards-oss" && docker build -q -t stewards-oss-pg:qwen-rotate extension/ > /tmp/
+- 2026-06-16T16:55:43 background (Bash): cd "/c/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/pg-ai-stewards-workspace" && git add overlays/context-tools-on.sql && git commit -q -m "
+- 2026-06-16T03:39:01 background (Bash): cd "/c/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/pg-ai-stewards-oss" && docker rm -f stewards-skilltest >/dev/null 2>&1 && echo "skilltes
+- 2026-06-15T23:20:02 background (Bash): cd "/c/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/pg-ai-stewards-oss" && docker build -t stewards-oss-pg:skills-test extension/ 2>&1 | tai
+- 2026-06-15T17:48:27 background (Bash): cd /c/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/pg-ai-stewards-oss export MSYS_NO_PATHCONV=1 echo "persona-host build start $(date +%H:%M
+- 2026-06-15T16:12:40 background (Bash): docker rm -f stewards-test >/dev/null 2>&1; echo "build start $(date +%H:%M:%S)" && docker build -t stewards-oss-pg:test extension/ >/tmp/oss-build2.log 2>&1; e
+- 2026-06-15T15:58:17 background (Bash): docker rm -f stewards-test >/dev/null 2>&1; echo "build start $(date +%H:%M:%S)" && docker build -t stewards-oss-pg:test extension/ >/tmp/oss-build.log 2>&1; ec
+- 2026-06-15T15:56:26 background (Bash): docker rm -f stewards-test >/dev/null 2>&1; echo "build start $(date +%H:%M:%S)" && docker build -t stewards-oss-pg:test extension/ >/tmp/oss-build.log 2>&1 && 
 - 2026-06-15T15:01:32 background (Bash): cd /c/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/pg-ai-stewards-oss WID=$(docker exec -e PGUSER=stewards -e PGDATABASE=stewards stewards-o
 - 2026-06-15T15:01:15 background (Bash): cd /c/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/pg-ai-stewards-oss echo "rebuild+smoke for the loop-closing fixes: $(date +%H:%M:%S)" doc
 - 2026-06-15T14:36:51 background (Bash): cd /c/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/pg-ai-stewards-oss echo "watching the 5-source research wave (2-at-a-time, drain releases

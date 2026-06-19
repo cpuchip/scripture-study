@@ -1,9 +1,9 @@
 ---
 lane: book-v4-walk
 session_id: 10b9ac30-08a2-4f54-a7b5-aea2c715a41a
-status: active
+status: ended
 started: 2026-06-09T18:00:00
-last_active: 2026-06-12T15:34:02
+last_active: 2026-06-18T14:48:01
 ---
 
 ## Working on

@@ -73,6 +73,7 @@ auth problem.
 | `ibeco.me` | `V5WLEhO8bZxHpVqL7PHTL` | `web` | `Uu_-qX0ZPdotJ0mQGwn-j` | Application | ibeco.me (becoming-app) |
 | `ibeco.me` | `V5WLEhO8bZxHpVqL7PHTL` | `i1828` | `5pWsGxF5yMtOJUACHJyMB` | **Compose** | 1828.ibeco.me |
 | `ai-chattermax` | `nGX4hGUUzV0vAJPOYBk4f` | `chattermax` | `B-ER3-TrXHlDr4iCHDOvj` | **Compose** | chat.ibeco.me:8080 (github cpuchip/ai-chattermax, ./docker-compose.yml, domainId `CLLbog6XrdUt8ia6T5LBl`) — created 2026-06-04 |
+| `deadweight` | `ilaeCtLXDQrQsP9mlK9rX` | `game` | `l4tkfFkX5GvAvNSlmqR3H` | **Compose** | deadweight.cpuchip.net:8080 (github cpuchip/deadweight-acquisitions-game @ master, ./docker-compose.yml, auto-deploy on push) — created 2026-06-17 |
 
 Project `ibeco.me` also carries 2 project-level Postgres services
 (IDs `4xQXSslPNlZl6N1fxv7Zq` + `m6Cfc7WPhAl1eV9Qv25Tf`). The `i1828`

@@ -1,9 +1,9 @@
 ---
 lane: websiter-1828
 session_id: afac9c41-1980-4bea-8bc5-a101b39a8557
-status: active
+status: ended
 started: 2026-06-12T15:52:01
-last_active: 2026-06-14T12:09:57
+last_active: 2026-06-18T14:48:05
 ---
 
 ## Working on
