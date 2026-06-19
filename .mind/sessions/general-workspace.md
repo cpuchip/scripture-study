@@ -3,7 +3,7 @@ lane: general-workspace
 session_id: c4fef1d0-292c-4ad6-b6c5-76e2af1043c3
 status: active
 started: 2026-06-11T12:00:00
-last_active: 2026-06-19T00:23:15
+last_active: 2026-06-19T01:02:38
 ---
 
 > Note: this lane was previously filed under the typo `general-workspase.md`;
@@ -127,10 +127,19 @@ last_active: 2026-06-19T00:23:15
   `--commit` (`internal/vcs`, excludes .garrison) · **tickets** `--ticket FILE`.
   **LIVE brownfield proof:** existing repo + buggy Add → surgical fix + commit
   `4aebfc5`, verified, .garrison excluded; R5 carried it through a 1.4-tok/s rig.
-  Garrison now edits EXISTING repos. `docs/dogfood-03.md`. **NEXT = P5 the TUI
-  (modes/stats/pause/emergency-stop — Michael's flagship, build-TOGETHER), then
-  P6 context engine / P7 substrate-MCP / multi-lang.** Journal Update 6.
-  Journal `2026-06-18-garrison-council-closed-p0.md`.
+  Garrison now edits EXISTING repos. `docs/dogfood-03.md`. **★★ P5 (TUI) + P6
+  (context engine) COMPLETE 2026-06-19 (Michael: "finish p5 and p6, save p7"; 6
+  more tested commits):** P6 `internal/contextx` (pressure gauge + `Compact`
+  summarization, wired into council) · P5.1 `agent.Stats`/`StatsFromLedger`
+  (flow/time/cost/children/pressure from the ledger) · P5.2 `agent.Control`/
+  `BasicControl` (pause/emergency-stop[cancel+account D&C121]/inject; loop checks
+  each iter) · P5.3 `garrison drive` (bubbletea TUI DRIVES a run — live stats bar
+  + tree + log + keys space/i/s/q; pure parts tested, interactive shell to-spec
+  for live tuning). **Garrison ≈ Claude-Code-shaped now** (greenfield+brownfield ·
+  spawn · council · driving TUI w/ modes/stats/pause/inject/emergency-stop).
+  README P1–P6; ~20 tested commits this arc. **NEXT (WITH Michael): P7 substrate-
+  MCP, then multi-lang oracle; the driving TUI wants a live interactive shakedown.**
+  Journal Update 7. Journal `2026-06-18-garrison-council-closed-p0.md`.
 - **D&D / storytelling craft — Ammon stewardship run 2026-06-15:** 17 research
   artifacts drafted → `projects/pg-ai-stewards-workspace/research/` (11 skills + 3
   personas + 3 templates; ledger `research/00-LEDGER.md`); report DELIVERED to the

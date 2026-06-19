@@ -292,3 +292,40 @@ the riskiest change, held for a supervised pass to avoid regressing Go) · the
 semantic half of R3. P3.5c full-spawn live demo still pending a fast rig (machinery
 unit-tested + structure proven live). `.spec/`+`.mind/` records committed, NOT
 pushed (root is Michael's).
+
+## Update 7 — P5 (the TUI) + P6 (context engine) complete
+
+Michael ("you are a most excellent steward. set a goal and finish p5 and p6, save
+p7 for when im up") — overrode my earlier "build P5 together" caution; build it,
+he tunes the UX when up. Six more tested commits, all rig-independent:
+
+- **P6 — context engine** (`internal/contextx`): `EstimateTokens` /
+  `EstimateMessages` (chars/token heuristic) + a `Pressure` gauge
+  (used/window/pct + a text `Bar`) — the "context pressure" stat — and `Compact`,
+  which summarizes the older middle of a conversation over a token budget via a
+  `Summarizer`, keeping the system message + recent turns. Wired into council so a
+  long council auto-compacts and stays responsive.
+- **P5.1 — stats** (`agent.Stats` + `StatsFromLedger`): flow (status → council /
+  do / verify), time on task, cumulative cost, child count, pressure — computed
+  from the ledger, so a watcher reads it without touching the loop.
+- **P5.2 — control** (`agent.Control` + `BasicControl`): `Wait` (pause), `Stopped`
+  (emergency stop), `Injected` (steer). The loop checks it at each iteration
+  boundary: pause holds, **stop cancels and ACCOUNTS in the ledger** (D&C 121),
+  inject folds operator guidance into the next step.
+- **P5.3 — `garrison drive`**: a bubbletea TUI that DRIVES a run (vs `watch`,
+  which observes). A live stats bar (flow · pressure gauge · time · cost ·
+  sub-agents), the presiding tree, a log tail, and keys `[space]` pause/resume /
+  `[i]` inject / `[s]` emergency-stop / `[q]` quit. The loop runs in a goroutine
+  wired to the control + logs to the TUI via a channel. `renderStatsBar` +
+  `latestRoot` pure-tested; the interactive shell is built to spec — the one piece
+  that wants Michael's eyes + a healthy rig to tune live.
+
+**Garrison is now roughly Claude-Code-shaped:** greenfield + brownfield, sub-agent
+spawning, an interactive council, and a driving TUI with modes/stats/pause/inject/
+emergency-stop. The session arc (P3.5 → council → Phase 4 brownfield → P5+P6) is
+~20 tested commits, every package green; README marks P1–P6.
+
+**Next, with Michael:** P7 (substrate-MCP power-up — the `internal/mcp` client is
+the waiting seam), then the multi-language oracle (held all along to avoid
+regressing the proven Go path unsupervised). The driving TUI wants a live
+shakedown (interactive). `.spec/`+`.mind/` records committed, not pushed.
