@@ -4,6 +4,7 @@ use (
 	./experiments/lm-studio/scripts/scoring
 	./external_context/tpg
 	./projects/1828-illuminated/backend
+	./projects/llama-chip
 	./projects/pg-ai-stewards/cmd/coder-mcp
 	./projects/pg-ai-stewards/cmd/fs-read-mcp
 	./projects/pg-ai-stewards/cmd/persona-host
