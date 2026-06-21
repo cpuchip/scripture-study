@@ -1,0 +1,1161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Tufte — before and after</title>
+<style>
+  :root {
+    --ink: #1a1a1a;
+    --paper: #fafaf7;
+    --rule: #d8d4cc;
+    --muted: #8a857c;
+    --accent: #b3261e;
+    --gray-1: #efece4;
+    --gray-2: #c8c2b5;
+    --gray-3: #6b665d;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Charter", "Iowan Old Style", Georgia, serif;
+    font-size: 16px;
+    line-height: 1.45;
+  }
+  body { padding: 48px 56px; max-width: 1180px; margin: 0 auto; }
+  h1 {
+    font-size: 32px;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    margin: 0 0 8px;
+  }
+  .lede {
+    color: var(--gray-3);
+    font-size: 17px;
+    max-width: 680px;
+    margin: 0 0 56px;
+  }
+  .pair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    margin: 0 0 64px;
+    border-top: 1px solid var(--rule);
+    padding-top: 32px;
+  }
+  .pair > div { display: flex; flex-direction: column; }
+  .pair h2 {
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    margin: 0 0 4px;
+  }
+  .pair h2.before { color: var(--accent); }
+  .pair h3 {
+    font-size: 20px;
+    font-weight: 500;
+    margin: 0 0 20px;
+    color: var(--ink);
+  }
+  .pair-title {
+    grid-column: 1 / -1;
+    font-size: 22px;
+    font-weight: 500;
+    margin: 0 0 4px;
+    color: var(--ink);
+  }
+  .pair-rule {
+    grid-column: 1 / -1;
+    font-size: 14px;
+    color: var(--gray-3);
+    margin: 0 0 20px;
+    font-style: italic;
+  }
+  .chart {
+    background: var(--paper);
+    padding: 18px;
+    border: 1px solid var(--rule);
+    border-radius: 2px;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 280px;
+  }
+  .chart.after { border-color: var(--rule); }
+  .notes {
+    font-size: 13px;
+    color: var(--gray-3);
+    margin: 14px 2px 0;
+    line-height: 1.5;
+  }
+  .notes b { color: var(--ink); font-weight: 600; }
+
+  /* Chart-specific styles */
+  .tick { font-family: "SF Mono", "Berkeley Mono", monospace; font-size: 10px; fill: var(--gray-3); }
+  .label { font-family: "Charter", Georgia, serif; font-size: 12px; fill: var(--ink); }
+  .label-mono { font-family: "SF Mono", monospace; font-size: 11px; fill: var(--ink); }
+  .value { font-family: "SF Mono", monospace; font-size: 11px; fill: var(--ink); font-weight: 600; }
+  .axis { stroke: var(--gray-3); stroke-width: 0.5; fill: none; }
+  .gridline-light { stroke: var(--gray-1); stroke-width: 0.5; }
+
+  /* BEFORE-style "AI default" chart styles */
+  .b-bg { fill: white; stroke: #888; stroke-width: 1; }
+  .b-grid { stroke: #aaa; stroke-width: 0.7; }
+  .b-bar-1 { fill: url(#grad-1); stroke: #2563eb; stroke-width: 1; }
+  .b-bar-2 { fill: url(#grad-2); stroke: #dc2626; stroke-width: 1; }
+  .b-bar-3 { fill: url(#grad-3); stroke: #16a34a; stroke-width: 1; }
+  .b-bar-4 { fill: url(#grad-4); stroke: #ca8a04; stroke-width: 1; }
+  .b-bar-5 { fill: url(#grad-5); stroke: #9333ea; stroke-width: 1; }
+  .b-bar-6 { fill: url(#grad-6); stroke: #0891b2; stroke-width: 1; }
+  .b-title { font-family: Arial, sans-serif; font-size: 14px; font-weight: bold; fill: #111; }
+  .b-tick { font-family: Arial, sans-serif; font-size: 10px; fill: #444; }
+  .b-legend { font-family: Arial, sans-serif; font-size: 10px; fill: #333; }
+  .b-axis { stroke: #333; stroke-width: 1.2; fill: none; }
+
+  footer { border-top: 1px solid var(--rule); padding-top: 24px; color: var(--muted); font-size: 13px; }
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <linearGradient id="grad-1" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#60a5fa"/><stop offset="100%" stop-color="#1e40af"/></linearGradient>
+    <linearGradient id="grad-2" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#f87171"/><stop offset="100%" stop-color="#991b1b"/></linearGradient>
+    <linearGradient id="grad-3" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#4ade80"/><stop offset="100%" stop-color="#14532d"/></linearGradient>
+    <linearGradient id="grad-4" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#facc15"/><stop offset="100%" stop-color="#713f12"/></linearGradient>
+    <linearGradient id="grad-5" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#c084fc"/><stop offset="100%" stop-color="#581c87"/></linearGradient>
+    <linearGradient id="grad-6" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#22d3ee"/><stop offset="100%" stop-color="#155e75"/></linearGradient>
+  </defs>
+</svg>
+
+<h1>Tufte — before and after</h1>
+<p class="lede">Six pairs covering the chart types AI tools (and most BI dashboards) default to badly. Left: typical output. Right: same data, Tufte's rules applied.</p>
+
+<!-- 1. CATEGORY COMPARISON -->
+<section class="pair">
+  <div class="pair-title">1. Category comparison — sales by product</div>
+  <div class="pair-rule">The reader's question is "who's biggest". Help them rank, not decode a color key.</div>
+
+  <div>
+    <h2 class="before">Before · OOTB</h2>
+    <h3>3D bars, rainbow color, legend, gridlines</h3>
+    <div class="chart">
+      <svg viewBox="0 0 420 280" width="100%" height="260">
+        <rect class="b-bg" x="10" y="10" width="400" height="260"/>
+        <text x="210" y="28" text-anchor="middle" class="b-title">Sales by Product (Q3 2026)</text>
+        <!-- gridlines -->
+        <g class="b-grid">
+          <line x1="60" y1="60" x2="320" y2="60"/>
+          <line x1="60" y1="100" x2="320" y2="60" opacity="0"/>
+          <line x1="60" y1="100" x2="320" y2="100"/>
+          <line x1="60" y1="140" x2="320" y2="140"/>
+          <line x1="60" y1="180" x2="320" y2="180"/>
+          <line x1="60" y1="220" x2="320" y2="220"/>
+        </g>
+        <!-- y axis labels -->
+        <g class="b-tick">
+          <text x="55" y="63" text-anchor="end">500</text>
+          <text x="55" y="103" text-anchor="end">400</text>
+          <text x="55" y="143" text-anchor="end">300</text>
+          <text x="55" y="183" text-anchor="end">200</text>
+          <text x="55" y="223" text-anchor="end">100</text>
+          <text x="55" y="227" text-anchor="end" dy="14">0</text>
+        </g>
+        <!-- 3D bars -->
+        <g>
+          <!-- A 420 -->
+          <polygon class="b-bar-1" points="68,98 100,98 108,90 76,90"/>
+          <rect class="b-bar-1" x="68" y="98" width="32" height="123"/>
+          <polygon class="b-bar-1" points="100,98 108,90 108,213 100,221"/>
+          <!-- B 380 -->
+          <polygon class="b-bar-2" points="112,114 144,114 152,106 120,106"/>
+          <rect class="b-bar-2" x="112" y="114" width="32" height="107"/>
+          <polygon class="b-bar-2" points="144,114 152,106 152,213 144,221"/>
+          <!-- C 310 -->
+          <polygon class="b-bar-3" points="156,142 188,142 196,134 164,134"/>
+          <rect class="b-bar-3" x="156" y="142" width="32" height="79"/>
+          <polygon class="b-bar-3" points="188,142 196,134 196,213 188,221"/>
+          <!-- D 270 -->
+          <polygon class="b-bar-4" points="200,158 232,158 240,150 208,150"/>
+          <rect class="b-bar-4" x="200" y="158" width="32" height="63"/>
+          <polygon class="b-bar-4" points="232,158 240,150 240,213 232,221"/>
+          <!-- E 180 -->
+          <polygon class="b-bar-5" points="244,194 276,194 284,186 252,186"/>
+          <rect class="b-bar-5" x="244" y="194" width="32" height="27"/>
+          <polygon class="b-bar-5" points="276,194 284,186 284,213 276,221"/>
+          <!-- F 90 -->
+          <polygon class="b-bar-6" points="288,230 320,230 328,222 296,222"/>
+          <rect class="b-bar-6" x="288" y="230" width="32" height="-9" height="0"/>
+          <rect class="b-bar-6" x="288" y="200" width="32" height="21"/>
+          <polygon class="b-bar-6" points="320,200 328,192 328,213 320,221"/>
+        </g>
+        <!-- x labels -->
+        <g class="b-tick">
+          <text x="84" y="238" text-anchor="middle">Atlas</text>
+          <text x="128" y="238" text-anchor="middle">Beacon</text>
+          <text x="172" y="238" text-anchor="middle">Cinder</text>
+          <text x="216" y="238" text-anchor="middle">Dune</text>
+          <text x="260" y="238" text-anchor="middle">Echo</text>
+          <text x="304" y="238" text-anchor="middle">Falcon</text>
+        </g>
+        <!-- legend box -->
+        <g>
+          <rect x="335" y="60" width="70" height="105" fill="white" stroke="#888"/>
+          <text x="370" y="74" text-anchor="middle" class="b-legend" font-weight="bold">Legend</text>
+          <rect x="342" y="82" width="10" height="10" class="b-bar-1"/><text x="356" y="91" class="b-legend">Atlas</text>
+          <rect x="342" y="95" width="10" height="10" class="b-bar-2"/><text x="356" y="104" class="b-legend">Beacon</text>
+          <rect x="342" y="108" width="10" height="10" class="b-bar-3"/><text x="356" y="117" class="b-legend">Cinder</text>
+          <rect x="342" y="121" width="10" height="10" class="b-bar-4"/><text x="356" y="130" class="b-legend">Dune</text>
+          <rect x="342" y="134" width="10" height="10" class="b-bar-5"/><text x="356" y="143" class="b-legend">Echo</text>
+          <rect x="342" y="147" width="10" height="10" class="b-bar-6"/><text x="356" y="156" class="b-legend">Falcon</text>
+        </g>
+        <line x1="60" y1="221" x2="325" y2="221" class="b-axis"/>
+      </svg>
+    </div>
+    <p class="notes"><b>Problems:</b> 3D distorts heights, gradients fake variation, six-color rainbow forces legend lookup, gridlines compete with bars, "Falcon" is barely visible behind "Echo".</p>
+  </div>
+
+  <div>
+    <h2>After · Tufte</h2>
+    <h3>Sorted dot plot, direct labels, no legend</h3>
+    <div class="chart after">
+      <svg viewBox="0 0 420 280" width="100%" height="260">
+        <!-- range frame y axis -->
+        <line x1="120" y1="40" x2="120" y2="240" class="axis"/>
+        <!-- axis ticks (sparse) -->
+        <g class="tick">
+          <text x="115" y="44" text-anchor="end">500</text>
+          <text x="115" y="144" text-anchor="end">250</text>
+          <text x="115" y="244" text-anchor="end">0</text>
+        </g>
+        <!-- subtle gridlines at ticks only -->
+        <line x1="120" y1="40" x2="400" y2="40" class="gridline-light"/>
+        <line x1="120" y1="144" x2="400" y2="144" class="gridline-light"/>
+        <!-- data, sorted desc -->
+        <!-- Atlas 420 -->
+        <line x1="120" y1="60" x2="288" y2="60" stroke="var(--gray-2)" stroke-width="0.5"/>
+        <circle cx="288" cy="60" r="4" fill="var(--ink)"/>
+        <text x="115" y="64" text-anchor="end" class="label">Atlas</text>
+        <text x="296" y="64" class="value">420</text>
+        <!-- Beacon 380 -->
+        <line x1="120" y1="92" x2="272" y2="92" stroke="var(--gray-2)" stroke-width="0.5"/>
+        <circle cx="272" cy="92" r="4" fill="var(--ink)"/>
+        <text x="115" y="96" text-anchor="end" class="label">Beacon</text>
+        <text x="280" y="96" class="value">380</text>
+        <!-- Cinder 310 -->
+        <line x1="120" y1="124" x2="244" y2="124" stroke="var(--gray-2)" stroke-width="0.5"/>
+        <circle cx="244" cy="124" r="4" fill="var(--ink)"/>
+        <text x="115" y="128" text-anchor="end" class="label">Cinder</text>
+        <text x="252" y="128" class="value">310</text>
+        <!-- Dune 270 -->
+        <line x1="120" y1="156" x2="228" y2="156" stroke="var(--gray-2)" stroke-width="0.5"/>
+        <circle cx="228" cy="156" r="4" fill="var(--ink)"/>
+        <text x="115" y="160" text-anchor="end" class="label">Dune</text>
+        <text x="236" y="160" class="value">270</text>
+        <!-- Echo 180 -->
+        <line x1="120" y1="188" x2="192" y2="188" stroke="var(--gray-2)" stroke-width="0.5"/>
+        <circle cx="192" cy="188" r="4" fill="var(--ink)"/>
+        <text x="115" y="192" text-anchor="end" class="label">Echo</text>
+        <text x="200" y="192" class="value">180</text>
+        <!-- Falcon 90 -->
+        <line x1="120" y1="220" x2="156" y2="220" stroke="var(--gray-2)" stroke-width="0.5"/>
+        <circle cx="156" cy="220" r="4" fill="var(--accent)"/>
+        <text x="115" y="224" text-anchor="end" class="label">Falcon</text>
+        <text x="164" y="224" class="value">90</text>
+        <!-- caption -->
+        <text x="120" y="22" class="label" font-size="13" font-weight="600">Sales by product · Q3 2026 · $K</text>
+      </svg>
+    </div>
+    <p class="notes"><b>What changed:</b> Sorted descending. Dots and lines replace bars. One accent color flags Falcon (the laggard). Numbers printed; no legend needed. Reader ranks in two seconds.</p>
+  </div>
+</section>
+
+
+<!-- 2. PART TO WHOLE -->
+<section class="pair">
+  <div class="pair-title">2. Part-to-whole — revenue mix by channel</div>
+  <div class="pair-rule">Pie charts make angle judgments. Humans are bad at angles, good at lengths.</div>
+
+  <div>
+    <h2 class="before">Before · OOTB</h2>
+    <h3>Pie chart with five wedges</h3>
+    <div class="chart">
+      <svg viewBox="0 0 420 280" width="100%" height="260">
+        <text x="210" y="28" text-anchor="middle" class="b-title">Revenue Mix by Channel</text>
+        <!-- pie centered at 160,150 r=80 -->
+        <!-- shares: Direct 38%, Partner 24%, Marketplace 18%, SEO 12%, Email 8% -->
+        <g transform="translate(160,150)">
+          <!-- 0 - 137 deg (38%) Direct -->
+          <path d="M 0,0 L 0,-80 A 80,80 0 0,1 54.5,58.5 Z" fill="url(#grad-1)" stroke="white" stroke-width="2"/>
+          <!-- 137 - 224 deg (24%) Partner -->
+          <path d="M 0,0 L 54.5,58.5 A 80,80 0 0,1 -55.6,57.5 Z" fill="url(#grad-2)" stroke="white" stroke-width="2"/>
+          <!-- 224 - 289 deg (18%) Marketplace -->
+          <path d="M 0,0 L -55.6,57.5 A 80,80 0 0,1 -75.5,-26.5 Z" fill="url(#grad-3)" stroke="white" stroke-width="2"/>
+          <!-- 289 - 332 deg (12%) SEO -->
+          <path d="M 0,0 L -75.5,-26.5 A 80,80 0 0,1 -37.5,-70.7 Z" fill="url(#grad-4)" stroke="white" stroke-width="2"/>
+          <!-- 332 - 360 deg (8%) Email -->
+          <path d="M 0,0 L -37.5,-70.7 A 80,80 0 0,1 0,-80 Z" fill="url(#grad-5)" stroke="white" stroke-width="2"/>
+          <!-- pie labels overlapping -->
+          <text x="20" y="-30" class="b-legend" fill="white" font-weight="bold">38%</text>
+          <text x="20" y="40" class="b-legend" fill="white" font-weight="bold">24%</text>
+          <text x="-40" y="20" class="b-legend" fill="white" font-weight="bold">18%</text>
+          <text x="-58" y="-20" class="b-legend" fill="white" font-weight="bold">12%</text>
+          <text x="-22" y="-58" class="b-legend" fill="white" font-weight="bold">8%</text>
+        </g>
+        <!-- legend -->
+        <g>
+          <rect x="280" y="80" width="120" height="120" fill="white" stroke="#888"/>
+          <text x="340" y="94" text-anchor="middle" class="b-legend" font-weight="bold">Channel</text>
+          <rect x="290" y="104" width="12" height="12" class="b-bar-1"/><text x="308" y="114" class="b-legend">Direct</text>
+          <rect x="290" y="122" width="12" height="12" class="b-bar-2"/><text x="308" y="132" class="b-legend">Partner</text>
+          <rect x="290" y="140" width="12" height="12" class="b-bar-3"/><text x="308" y="150" class="b-legend">Marketplace</text>
+          <rect x="290" y="158" width="12" height="12" class="b-bar-4"/><text x="308" y="168" class="b-legend">SEO</text>
+          <rect x="290" y="176" width="12" height="12" class="b-bar-5"/><text x="308" y="186" class="b-legend">Email</text>
+        </g>
+      </svg>
+    </div>
+    <p class="notes"><b>Problems:</b> 18% vs 24% vs 12% are nearly indistinguishable as wedge angles. Color legend doubles back-and-forth eye travel. Labels collide. Total of $4.2M nowhere visible.</p>
+  </div>
+
+  <div>
+    <h2>After · Tufte</h2>
+    <h3>Small table, sorted, with bar overlay</h3>
+    <div class="chart after">
+      <svg viewBox="0 0 420 280" width="100%" height="260">
+        <text x="20" y="32" class="label" font-size="13" font-weight="600">Revenue mix · Q3 2026 · $4.2M total</text>
+
+        <!-- header rule -->
+        <line x1="20" y1="50" x2="400" y2="50" stroke="var(--ink)" stroke-width="0.5"/>
+        <text x="20" y="64" class="tick">CHANNEL</text>
+        <text x="200" y="64" class="tick" text-anchor="end">SHARE</text>
+        <text x="400" y="64" class="tick" text-anchor="end">$M</text>
+        <line x1="20" y1="72" x2="400" y2="72" stroke="var(--gray-2)" stroke-width="0.5"/>
+
+        <!-- rows -->
+        <g font-family="Charter, Georgia, serif" font-size="13">
+          <!-- Direct 38% 1.60M -->
+          <text x="20" y="96" class="label">Direct</text>
+          <rect x="210" y="86" width="114" height="14" fill="var(--ink)"/>
+          <text x="200" y="96" class="value" text-anchor="end">38%</text>
+          <text x="400" y="96" class="value" text-anchor="end">1.60</text>
+          <!-- Partner 24% 1.01M -->
+          <text x="20" y="120" class="label">Partner</text>
+          <rect x="210" y="110" width="72" height="14" fill="var(--gray-3)"/>
+          <text x="200" y="120" class="value" text-anchor="end">24%</text>
+          <text x="400" y="120" class="value" text-anchor="end">1.01</text>
+          <!-- Marketplace 18% 0.76M -->
+          <text x="20" y="144" class="label">Marketplace</text>
+          <rect x="210" y="134" width="54" height="14" fill="var(--gray-3)"/>
+          <text x="200" y="144" class="value" text-anchor="end">18%</text>
+          <text x="400" y="144" class="value" text-anchor="end">0.76</text>
+          <!-- SEO 12% 0.50M -->
+          <text x="20" y="168" class="label">SEO</text>
+          <rect x="210" y="158" width="36" height="14" fill="var(--gray-3)"/>
+          <text x="200" y="168" class="value" text-anchor="end">12%</text>
+          <text x="400" y="168" class="value" text-anchor="end">0.50</text>
+          <!-- Email 8% 0.34M -->
+          <text x="20" y="192" class="label">Email</text>
+          <rect x="210" y="182" width="24" height="14" fill="var(--gray-3)"/>
+          <text x="200" y="192" class="value" text-anchor="end">8%</text>
+          <text x="400" y="192" class="value" text-anchor="end">0.34</text>
+        </g>
+        <line x1="20" y1="208" x2="400" y2="208" stroke="var(--ink)" stroke-width="0.5"/>
+        <text x="20" y="226" class="tick" fill="var(--ink)">TOTAL</text>
+        <text x="400" y="226" class="value" text-anchor="end">4.21</text>
+      </svg>
+    </div>
+    <p class="notes"><b>What changed:</b> Table beats pie when n ≤ 6. Sorted descending. Inline bars give the visual at-a-glance; numbers give exact values. One accent for the leader. Total shown.</p>
+  </div>
+</section>
+
+
+<!-- 3. TIME SERIES -->
+<section class="pair">
+  <div class="pair-title">3. Time series — monthly active users</div>
+  <div class="pair-rule">A line chart trapped inside a frame box, with gridlines, legend, axis title, and chart title — when a sparkline plus the current number does the job.</div>
+
+  <div>
+    <h2 class="before">Before · OOTB</h2>
+    <h3>Line chart in a frame, with everything</h3>
+    <div class="chart">
+      <svg viewBox="0 0 420 280" width="100%" height="260">
+        <rect class="b-bg" x="10" y="10" width="400" height="260"/>
+        <text x="210" y="32" text-anchor="middle" class="b-title">Monthly Active Users (in thousands)</text>
+        <!-- gridlines -->
+        <g class="b-grid">
+          <line x1="70" y1="60" x2="380" y2="60"/>
+          <line x1="70" y1="100" x2="380" y2="100"/>
+          <line x1="70" y1="140" x2="380" y2="140"/>
+          <line x1="70" y1="180" x2="380" y2="180"/>
+          <line x1="70" y1="220" x2="380" y2="220"/>
+        </g>
+        <!-- y ticks -->
+        <g class="b-tick">
+          <text x="65" y="63" text-anchor="end">800</text>
+          <text x="65" y="103" text-anchor="end">700</text>
+          <text x="65" y="143" text-anchor="end">600</text>
+          <text x="65" y="183" text-anchor="end">500</text>
+          <text x="65" y="223" text-anchor="end">400</text>
+        </g>
+        <!-- x ticks -->
+        <g class="b-tick">
+          <text x="80" y="238" text-anchor="middle">Jan</text>
+          <text x="110" y="238" text-anchor="middle">Feb</text>
+          <text x="140" y="238" text-anchor="middle">Mar</text>
+          <text x="170" y="238" text-anchor="middle">Apr</text>
+          <text x="200" y="238" text-anchor="middle">May</text>
+          <text x="230" y="238" text-anchor="middle">Jun</text>
+          <text x="260" y="238" text-anchor="middle">Jul</text>
+          <text x="290" y="238" text-anchor="middle">Aug</text>
+          <text x="320" y="238" text-anchor="middle">Sep</text>
+          <text x="350" y="238" text-anchor="middle">Oct</text>
+        </g>
+        <!-- axis lines -->
+        <line x1="70" y1="220" x2="380" y2="220" class="b-axis"/>
+        <line x1="70" y1="60" x2="70" y2="220" class="b-axis"/>
+        <!-- the line (thick, blue, w/ markers) -->
+        <polyline fill="none" stroke="#2563eb" stroke-width="3"
+          points="80,200 110,196 140,180 170,170 200,150 230,140 260,120 290,110 320,95 350,75"/>
+        <g fill="#2563eb">
+          <circle cx="80" cy="200" r="4"/><circle cx="110" cy="196" r="4"/><circle cx="140" cy="180" r="4"/>
+          <circle cx="170" cy="170" r="4"/><circle cx="200" cy="150" r="4"/><circle cx="230" cy="140" r="4"/>
+          <circle cx="260" cy="120" r="4"/><circle cx="290" cy="110" r="4"/><circle cx="320" cy="95" r="4"/>
+          <circle cx="350" cy="75" r="4"/>
+        </g>
+        <!-- legend -->
+        <g>
+          <rect x="295" y="48" width="100" height="22" fill="white" stroke="#888"/>
+          <line x1="302" y1="59" x2="320" y2="59" stroke="#2563eb" stroke-width="3"/>
+          <circle cx="311" cy="59" r="3" fill="#2563eb"/>
+          <text x="325" y="62" class="b-legend">MAU (000s)</text>
+        </g>
+        <!-- axis title -->
+        <text x="35" y="140" class="b-tick" transform="rotate(-90 35 140)" text-anchor="middle">MAU (000s)</text>
+        <text x="225" y="258" class="b-tick" text-anchor="middle">Month</text>
+      </svg>
+    </div>
+    <p class="notes"><b>Problems:</b> Title bar, axis title (twice), legend for a single series, frame box, dense gridlines, dot markers competing with the line, blue chosen by default.</p>
+  </div>
+
+  <div>
+    <h2>After · Tufte</h2>
+    <h3>Sparkline + number, plus endpoints</h3>
+    <div class="chart after">
+      <svg viewBox="0 0 420 280" width="100%" height="260">
+        <!-- giant number on the left -->
+        <text x="20" y="60" class="label" font-size="13" font-weight="600" fill="var(--gray-3)">Monthly active users</text>
+        <text x="20" y="120" class="label" font-family="SF Mono, Berkeley Mono, monospace" font-size="44" font-weight="500">780K</text>
+        <text x="20" y="146" class="label" font-size="12" fill="var(--gray-3)">+95% YTD · 10mo trailing</text>
+
+        <!-- sparkline (no axes, no grid) -->
+        <g transform="translate(200,80)">
+          <polyline fill="none" stroke="var(--ink)" stroke-width="1.5"
+            points="0,90 22,86 44,70 66,60 88,40 110,30 132,10 154,0 176,-15 198,-35"/>
+          <!-- min/max markers -->
+          <circle cx="0" cy="90" r="2.5" fill="var(--gray-3)"/>
+          <text x="0" y="108" class="tick" text-anchor="middle">400 · Jan</text>
+          <circle cx="198" cy="-35" r="3" fill="var(--accent)"/>
+          <text x="198" y="-44" class="tick" text-anchor="middle" fill="var(--accent)">780 · Oct</text>
+        </g>
+
+        <!-- a faint reference line at zero — optional -->
+        <line x1="200" y1="170" x2="398" y2="170" stroke="var(--gray-1)" stroke-width="0.5"/>
+
+        <text x="20" y="252" class="tick" fill="var(--gray-3)">Source: product analytics, monthly cohort</text>
+      </svg>
+    </div>
+    <p class="notes"><b>What changed:</b> Big number first (current state). Sparkline (no axes) for shape. Endpoints labeled (start and current). One accent on the focal value. Reader gets the answer in under one second.</p>
+  </div>
+</section>
+
+
+<!-- 4. DASHBOARD KPI -->
+<section class="pair">
+  <div class="pair-title">4. Dashboard — four KPIs at a glance</div>
+  <div class="pair-rule">Four tiles, four big numbers, four icons, zero context. Replace with a compact table that integrates value, trend, and target.</div>
+
+  <div>
+    <h2 class="before">Before · OOTB</h2>
+    <h3>Four KPI cards, icon + big number + tiny delta</h3>
+    <div class="chart">
+      <svg viewBox="0 0 420 280" width="100%" height="260">
+        <!-- 4 cards -->
+        <g font-family="Arial, sans-serif">
+          <!-- card 1 -->
+          <rect x="20" y="40" width="180" height="100" fill="white" stroke="#ccc" rx="6"/>
+          <circle cx="40" cy="60" r="10" fill="#2563eb"/><text x="40" y="64" text-anchor="middle" fill="white" font-size="11" font-weight="bold">$</text>
+          <text x="60" y="64" font-size="11" fill="#666">REVENUE</text>
+          <text x="40" y="105" font-size="28" font-weight="bold" fill="#111">$4.2M</text>
+          <text x="40" y="125" font-size="10" fill="#16a34a">▲ 12.4%</text>
+          <!-- card 2 -->
+          <rect x="220" y="40" width="180" height="100" fill="white" stroke="#ccc" rx="6"/>
+          <circle cx="240" cy="60" r="10" fill="#dc2626"/><text x="240" y="64" text-anchor="middle" fill="white" font-size="11" font-weight="bold">!</text>
+          <text x="260" y="64" font-size="11" fill="#666">CHURN</text>
+          <text x="240" y="105" font-size="28" font-weight="bold" fill="#111">3.1%</text>
+          <text x="240" y="125" font-size="10" fill="#dc2626">▲ 0.4pp</text>
+          <!-- card 3 -->
+          <rect x="20" y="160" width="180" height="100" fill="white" stroke="#ccc" rx="6"/>
+          <circle cx="40" cy="180" r="10" fill="#16a34a"/><text x="40" y="184" text-anchor="middle" fill="white" font-size="11" font-weight="bold">✓</text>
+          <text x="60" y="184" font-size="11" fill="#666">NPS</text>
+          <text x="40" y="225" font-size="28" font-weight="bold" fill="#111">48</text>
+          <text x="40" y="245" font-size="10" fill="#16a34a">▲ 3 pts</text>
+          <!-- card 4 -->
+          <rect x="220" y="160" width="180" height="100" fill="white" stroke="#ccc" rx="6"/>
+          <circle cx="240" cy="180" r="10" fill="#ca8a04"/><text x="240" y="184" text-anchor="middle" fill="white" font-size="11" font-weight="bold">⌚</text>
+          <text x="260" y="184" font-size="11" fill="#666">CYCLE TIME</text>
+          <text x="240" y="225" font-size="28" font-weight="bold" fill="#111">2.4d</text>
+          <text x="240" y="245" font-size="10" fill="#16a34a">▼ 0.3d</text>
+        </g>
+      </svg>
+    </div>
+    <p class="notes"><b>Problems:</b> Each number floats alone. No trend, no target, no comparison. Icons take space and encode nothing. Four borders consume 30% of the canvas.</p>
+  </div>
+
+  <div>
+    <h2>After · Tufte</h2>
+    <h3>Compact table: number + sparkline + target</h3>
+    <div class="chart after">
+      <svg viewBox="0 0 420 280" width="100%" height="260">
+        <text x="20" y="30" class="label" font-size="13" font-weight="600">Key metrics · Q3 2026</text>
+
+        <!-- header -->
+        <line x1="20" y1="48" x2="400" y2="48" stroke="var(--ink)" stroke-width="0.5"/>
+        <g class="tick">
+          <text x="20" y="62">METRIC</text>
+          <text x="170" y="62" text-anchor="end">NOW</text>
+          <text x="290" y="62" text-anchor="middle">10mo TRAILING</text>
+          <text x="400" y="62" text-anchor="end">vs TARGET</text>
+        </g>
+        <line x1="20" y1="70" x2="400" y2="70" stroke="var(--gray-2)" stroke-width="0.5"/>
+
+        <!-- rows -->
+        <!-- Revenue -->
+        <text x="20" y="100" class="label">Revenue</text>
+        <text x="170" y="100" class="value" text-anchor="end">$4.2M</text>
+        <polyline fill="none" stroke="var(--ink)" stroke-width="1"
+          points="240,108 248,107 256,104 264,102 272,98 280,96 288,93 296,90 304,87 312,84"/>
+        <text x="400" y="100" class="value" text-anchor="end" fill="var(--ink)">+5% ↑</text>
+
+        <!-- Churn -->
+        <text x="20" y="130" class="label">Churn</text>
+        <text x="170" y="130" class="value" text-anchor="end">3.1%</text>
+        <polyline fill="none" stroke="var(--ink)" stroke-width="1"
+          points="240,134 248,136 256,134 264,133 272,135 280,134 288,136 296,137 304,138 312,138"/>
+        <text x="400" y="130" class="value" text-anchor="end" fill="var(--accent)">+0.6pp ↑</text>
+
+        <!-- NPS -->
+        <text x="20" y="160" class="label">NPS</text>
+        <text x="170" y="160" class="value" text-anchor="end">48</text>
+        <polyline fill="none" stroke="var(--ink)" stroke-width="1"
+          points="240,166 248,164 256,163 264,162 272,160 280,158 288,156 296,155 304,153 312,150"/>
+        <text x="400" y="160" class="value" text-anchor="end">+3 ↑</text>
+
+        <!-- Cycle time -->
+        <text x="20" y="190" class="label">Cycle time</text>
+        <text x="170" y="190" class="value" text-anchor="end">2.4d</text>
+        <polyline fill="none" stroke="var(--ink)" stroke-width="1"
+          points="240,188 248,189 256,190 264,191 272,193 280,193 288,194 296,195 304,196 312,197"/>
+        <text x="400" y="190" class="value" text-anchor="end">−0.3d ↓</text>
+
+        <line x1="20" y1="210" x2="400" y2="210" stroke="var(--ink)" stroke-width="0.5"/>
+        <text x="20" y="232" class="tick" fill="var(--gray-3)">Sparklines: monthly values, Jan→Oct. Arrows: change vs target.</text>
+        <text x="20" y="248" class="tick" fill="var(--accent)">Red = off-target</text>
+      </svg>
+    </div>
+    <p class="notes"><b>What changed:</b> One table replaces four cards. Each row carries value, 10-month trend (sparkline), and delta-to-target. One accent color flags the off-target metric. Density up, ink down.</p>
+  </div>
+</section>
+
+
+<!-- 5. DISTRIBUTION -->
+<section class="pair">
+  <div class="pair-title">5. Distribution — response time across endpoints</div>
+  <div class="pair-rule">A histogram with thick bars and rainbow color hides the actual data. Show every point.</div>
+
+  <div>
+    <h2 class="before">Before · OOTB</h2>
+    <h3>Histogram with thick colored bars</h3>
+    <div class="chart">
+      <svg viewBox="0 0 420 280" width="100%" height="260">
+        <rect class="b-bg" x="10" y="10" width="400" height="260"/>
+        <text x="210" y="32" text-anchor="middle" class="b-title">Response Time Distribution (ms)</text>
+        <g class="b-grid">
+          <line x1="60" y1="60" x2="380" y2="60"/>
+          <line x1="60" y1="100" x2="380" y2="100"/>
+          <line x1="60" y1="140" x2="380" y2="140"/>
+          <line x1="60" y1="180" x2="380" y2="180"/>
+        </g>
+        <g class="b-tick">
+          <text x="55" y="63" text-anchor="end">40</text>
+          <text x="55" y="103" text-anchor="end">30</text>
+          <text x="55" y="143" text-anchor="end">20</text>
+          <text x="55" y="183" text-anchor="end">10</text>
+          <text x="55" y="223" text-anchor="end">0</text>
+        </g>
+        <g>
+          <rect x="65" y="190" width="30" height="30" class="b-bar-1"/>
+          <rect x="98" y="160" width="30" height="60" class="b-bar-2"/>
+          <rect x="131" y="120" width="30" height="100" class="b-bar-3"/>
+          <rect x="164" y="80" width="30" height="140" class="b-bar-4"/>
+          <rect x="197" y="100" width="30" height="120" class="b-bar-5"/>
+          <rect x="230" y="140" width="30" height="80" class="b-bar-6"/>
+          <rect x="263" y="170" width="30" height="50" class="b-bar-1"/>
+          <rect x="296" y="190" width="30" height="30" class="b-bar-2"/>
+          <rect x="329" y="200" width="30" height="20" class="b-bar-3"/>
+          <rect x="362" y="215" width="14" height="5" class="b-bar-4"/>
+        </g>
+        <line x1="60" y1="220" x2="380" y2="220" class="b-axis"/>
+        <g class="b-tick">
+          <text x="80" y="238" text-anchor="middle">100</text>
+          <text x="146" y="238" text-anchor="middle">200</text>
+          <text x="212" y="238" text-anchor="middle">300</text>
+          <text x="278" y="238" text-anchor="middle">400</text>
+          <text x="344" y="238" text-anchor="middle">500</text>
+        </g>
+      </svg>
+    </div>
+    <p class="notes"><b>Problems:</b> Bars round off the actual values. Six different colors carry no meaning. p50, p95, p99 invisible. Hard to tell where the long tail starts.</p>
+  </div>
+
+  <div>
+    <h2>After · Tufte</h2>
+    <h3>Strip plot with quantile markers</h3>
+    <div class="chart after">
+      <svg viewBox="0 0 420 280" width="100%" height="260">
+        <text x="20" y="30" class="label" font-size="13" font-weight="600">Response time · n=420 requests · ms</text>
+
+        <!-- strip plot baseline -->
+        <line x1="40" y1="170" x2="380" y2="170" stroke="var(--gray-3)" stroke-width="0.5"/>
+
+        <!-- jittered dots — generated to look representative -->
+        <g fill="var(--ink)" fill-opacity="0.55">
+          <!-- cluster around 200-300 (the mode) -->
+          <circle cx="120" cy="170" r="2"/><circle cx="125" cy="160" r="2"/><circle cx="130" cy="175" r="2"/>
+          <circle cx="135" cy="155" r="2"/><circle cx="140" cy="170" r="2"/><circle cx="142" cy="165" r="2"/>
+          <circle cx="148" cy="175" r="2"/><circle cx="152" cy="160" r="2"/><circle cx="155" cy="180" r="2"/>
+          <circle cx="160" cy="158" r="2"/><circle cx="165" cy="172" r="2"/><circle cx="170" cy="165" r="2"/>
+          <circle cx="175" cy="180" r="2"/><circle cx="178" cy="155" r="2"/><circle cx="182" cy="170" r="2"/>
+          <circle cx="188" cy="160" r="2"/><circle cx="192" cy="175" r="2"/><circle cx="196" cy="168" r="2"/>
+          <circle cx="200" cy="158" r="2"/><circle cx="204" cy="172" r="2"/><circle cx="208" cy="165" r="2"/>
+          <circle cx="212" cy="180" r="2"/><circle cx="216" cy="155" r="2"/><circle cx="220" cy="170" r="2"/>
+          <circle cx="224" cy="160" r="2"/><circle cx="228" cy="175" r="2"/><circle cx="232" cy="165" r="2"/>
+          <circle cx="236" cy="158" r="2"/><circle cx="240" cy="172" r="2"/><circle cx="244" cy="168" r="2"/>
+          <circle cx="248" cy="178" r="2"/><circle cx="252" cy="160" r="2"/><circle cx="256" cy="175" r="2"/>
+          <!-- tail -->
+          <circle cx="270" cy="170" r="2"/><circle cx="278" cy="168" r="2"/><circle cx="286" cy="172" r="2"/>
+          <circle cx="294" cy="170" r="2"/><circle cx="304" cy="168" r="2"/><circle cx="314" cy="173" r="2"/>
+          <circle cx="324" cy="170" r="2"/><circle cx="334" cy="172" r="2"/><circle cx="346" cy="170" r="2"/>
+          <circle cx="356" cy="170" r="2"/><circle cx="362" cy="170" r="2"/>
+          <!-- left edge -->
+          <circle cx="60" cy="170" r="2"/><circle cx="70" cy="172" r="2"/><circle cx="80" cy="168" r="2"/>
+          <circle cx="90" cy="170" r="2"/><circle cx="100" cy="173" r="2"/><circle cx="108" cy="168" r="2"/>
+        </g>
+
+        <!-- quantile markers -->
+        <line x1="170" y1="135" x2="170" y2="200" stroke="var(--ink)" stroke-width="1.2"/>
+        <text x="170" y="128" class="tick" text-anchor="middle" fill="var(--ink)">p50 · 220</text>
+
+        <line x1="310" y1="135" x2="310" y2="200" stroke="var(--accent)" stroke-width="1.2"/>
+        <text x="310" y="128" class="tick" text-anchor="middle" fill="var(--accent)">p95 · 410</text>
+
+        <line x1="356" y1="135" x2="356" y2="200" stroke="var(--accent)" stroke-width="1.2"/>
+        <text x="356" y="128" class="tick" text-anchor="middle" fill="var(--accent)">p99 · 480</text>
+
+        <!-- x axis labels -->
+        <g class="tick">
+          <text x="40" y="218" text-anchor="middle">0</text>
+          <text x="125" y="218" text-anchor="middle">100</text>
+          <text x="210" y="218" text-anchor="middle">200</text>
+          <text x="295" y="218" text-anchor="middle">300</text>
+          <text x="380" y="218" text-anchor="middle">500ms</text>
+        </g>
+
+        <text x="20" y="252" class="tick" fill="var(--gray-3)">Each dot = one request. Markers at 50th, 95th, 99th percentile.</text>
+      </svg>
+    </div>
+    <p class="notes"><b>What changed:</b> Every observation visible. Quantile markers tell the operational story (p50/p95/p99). Accent color on the tail percentiles where SLO lives. No bins to mislead.</p>
+  </div>
+</section>
+
+
+<!-- 6. GEOGRAPHIC -->
+<section class="pair">
+  <div class="pair-title">6. Geographic — sales by state</div>
+  <div class="pair-rule">Rainbow choropleth is the canonical map sin. Sequential single-hue (light → dark) maps to "less → more" the way humans actually read.</div>
+
+  <div>
+    <h2 class="before">Before · OOTB</h2>
+    <h3>Rainbow choropleth, no annotations</h3>
+    <div class="chart">
+      <svg viewBox="0 0 420 280" width="100%" height="260">
+        <text x="210" y="32" text-anchor="middle" class="b-title">Sales by Region</text>
+        <!-- a stylized "USA-ish" grid of states with rainbow colors -->
+        <g stroke="white" stroke-width="1">
+          <rect x="40" y="60" width="60" height="50" fill="#3b82f6"/>
+          <rect x="100" y="60" width="60" height="50" fill="#06b6d4"/>
+          <rect x="160" y="60" width="60" height="50" fill="#84cc16"/>
+          <rect x="220" y="60" width="60" height="50" fill="#facc15"/>
+          <rect x="280" y="60" width="60" height="50" fill="#f97316"/>
+          <rect x="340" y="60" width="40" height="50" fill="#dc2626"/>
+          <rect x="40" y="110" width="60" height="50" fill="#06b6d4"/>
+          <rect x="100" y="110" width="60" height="50" fill="#22c55e"/>
+          <rect x="160" y="110" width="60" height="50" fill="#84cc16"/>
+          <rect x="220" y="110" width="60" height="50" fill="#facc15"/>
+          <rect x="280" y="110" width="60" height="50" fill="#f97316"/>
+          <rect x="340" y="110" width="40" height="50" fill="#facc15"/>
+          <rect x="40" y="160" width="60" height="50" fill="#a855f7"/>
+          <rect x="100" y="160" width="60" height="50" fill="#3b82f6"/>
+          <rect x="160" y="160" width="60" height="50" fill="#22c55e"/>
+          <rect x="220" y="160" width="60" height="50" fill="#84cc16"/>
+          <rect x="280" y="160" width="60" height="50" fill="#facc15"/>
+          <rect x="340" y="160" width="40" height="50" fill="#f97316"/>
+        </g>
+        <!-- legend -->
+        <g>
+          <text x="40" y="232" class="b-legend">Low</text>
+          <rect x="70" y="225" width="25" height="10" fill="#a855f7"/>
+          <rect x="95" y="225" width="25" height="10" fill="#3b82f6"/>
+          <rect x="120" y="225" width="25" height="10" fill="#06b6d4"/>
+          <rect x="145" y="225" width="25" height="10" fill="#22c55e"/>
+          <rect x="170" y="225" width="25" height="10" fill="#84cc16"/>
+          <rect x="195" y="225" width="25" height="10" fill="#facc15"/>
+          <rect x="220" y="225" width="25" height="10" fill="#f97316"/>
+          <rect x="245" y="225" width="25" height="10" fill="#dc2626"/>
+          <text x="275" y="232" class="b-legend">High</text>
+        </g>
+      </svg>
+    </div>
+    <p class="notes"><b>Problems:</b> Rainbow has no natural ordering — viewer guesses whether green is more than blue. No state names. No actual numbers. Legend strip far from the data.</p>
+  </div>
+
+  <div>
+    <h2>After · Tufte</h2>
+    <h3>Sequential single-hue, top values annotated</h3>
+    <div class="chart after">
+      <svg viewBox="0 0 420 280" width="100%" height="260">
+        <text x="20" y="30" class="label" font-size="13" font-weight="600">Sales by region · Q3 2026 · $M</text>
+
+        <!-- legend strip at top -->
+        <g>
+          <text x="20" y="58" class="tick">$ per region</text>
+          <rect x="100" y="50" width="22" height="10" fill="#f0eee8"/>
+          <rect x="122" y="50" width="22" height="10" fill="#dcd5c4"/>
+          <rect x="144" y="50" width="22" height="10" fill="#a8a08c"/>
+          <rect x="166" y="50" width="22" height="10" fill="#6a635a"/>
+          <rect x="188" y="50" width="22" height="10" fill="#2d2a26"/>
+          <text x="100" y="74" class="tick">$0.5</text>
+          <text x="210" y="74" class="tick" text-anchor="end">$8.0+</text>
+        </g>
+
+        <!-- map (sequential single-hue, light to dark) -->
+        <g stroke="white" stroke-width="1">
+          <rect x="40" y="90" width="60" height="50" fill="#a8a08c"/>
+          <rect x="100" y="90" width="60" height="50" fill="#dcd5c4"/>
+          <rect x="160" y="90" width="60" height="50" fill="#6a635a"/>
+          <rect x="220" y="90" width="60" height="50" fill="#a8a08c"/>
+          <rect x="280" y="90" width="60" height="50" fill="#2d2a26"/>
+          <rect x="340" y="90" width="40" height="50" fill="#6a635a"/>
+          <rect x="40" y="140" width="60" height="50" fill="#dcd5c4"/>
+          <rect x="100" y="140" width="60" height="50" fill="#6a635a"/>
+          <rect x="160" y="140" width="60" height="50" fill="#a8a08c"/>
+          <rect x="220" y="140" width="60" height="50" fill="#dcd5c4"/>
+          <rect x="280" y="140" width="60" height="50" fill="#a8a08c"/>
+          <rect x="340" y="140" width="40" height="50" fill="#dcd5c4"/>
+          <rect x="40" y="190" width="60" height="50" fill="#f0eee8"/>
+          <rect x="100" y="190" width="60" height="50" fill="#a8a08c"/>
+          <rect x="160" y="190" width="60" height="50" fill="#6a635a"/>
+          <rect x="220" y="190" width="60" height="50" fill="#dcd5c4"/>
+          <rect x="280" y="190" width="60" height="50" fill="#dcd5c4"/>
+          <rect x="340" y="190" width="40" height="50" fill="#a8a08c"/>
+        </g>
+
+        <!-- annotate the leader and the laggard -->
+        <text x="310" y="118" class="label-mono" text-anchor="middle" fill="white" font-weight="600">CA $8.4</text>
+        <text x="70" y="220" class="label-mono" text-anchor="middle" fill="var(--ink)" font-weight="600">MT $0.5</text>
+
+        <text x="20" y="262" class="tick" fill="var(--gray-3)">Top: California ($8.4M). Bottom: Montana ($0.5M). All values in $M.</text>
+      </svg>
+    </div>
+    <p class="notes"><b>What changed:</b> Sequential single-hue means light-to-dark reads as low-to-high without thinking. Two values annotated directly on the map (leader, laggard). Legend inline with the map. Reader gets the story without the rainbow puzzle.</p>
+  </div>
+</section>
+
+
+<!-- 7. PERIOD COMPARISON — SLOPEGRAPH -->
+<section class="pair">
+  <div class="pair-title">7. Period comparison — Q2 vs Q3 by team</div>
+  <div class="pair-rule">Clustered bars force the reader to compare positions across pairs of bars. A slopegraph shows direction and magnitude in one glance.</div>
+
+  <div>
+    <h2 class="before">Before · OOTB</h2>
+    <h3>Clustered bars, two colors, legend</h3>
+    <div class="chart">
+      <svg viewBox="0 0 420 280" width="100%" height="260">
+        <rect class="b-bg" x="10" y="10" width="400" height="260"/>
+        <text x="210" y="32" text-anchor="middle" class="b-title">Revenue by Team (Q2 vs Q3, $K)</text>
+        <g class="b-grid">
+          <line x1="60" y1="60" x2="380" y2="60"/>
+          <line x1="60" y1="100" x2="380" y2="100"/>
+          <line x1="60" y1="140" x2="380" y2="140"/>
+          <line x1="60" y1="180" x2="380" y2="180"/>
+        </g>
+        <g class="b-tick">
+          <text x="55" y="63" text-anchor="end">200</text>
+          <text x="55" y="103" text-anchor="end">150</text>
+          <text x="55" y="143" text-anchor="end">100</text>
+          <text x="55" y="183" text-anchor="end">50</text>
+          <text x="55" y="223" text-anchor="end">0</text>
+        </g>
+        <!-- clusters: 5 teams, 2 bars each -->
+        <g>
+          <!-- Alpha: Q2=120 Q3=160 -->
+          <rect x="68" y="124" width="14" height="96" class="b-bar-1"/>
+          <rect x="82" y="92" width="14" height="128" class="b-bar-2"/>
+          <!-- Bravo: Q2=180 Q3=170 -->
+          <rect x="124" y="76" width="14" height="144" class="b-bar-1"/>
+          <rect x="138" y="84" width="14" height="136" class="b-bar-2"/>
+          <!-- Cobra: Q2=90 Q3=140 -->
+          <rect x="180" y="148" width="14" height="72" class="b-bar-1"/>
+          <rect x="194" y="108" width="14" height="112" class="b-bar-2"/>
+          <!-- Delta: Q2=140 Q3=90 -->
+          <rect x="236" y="108" width="14" height="112" class="b-bar-1"/>
+          <rect x="250" y="148" width="14" height="72" class="b-bar-2"/>
+          <!-- Echo: Q2=70 Q3=110 -->
+          <rect x="292" y="164" width="14" height="56" class="b-bar-1"/>
+          <rect x="306" y="132" width="14" height="88" class="b-bar-2"/>
+        </g>
+        <line x1="60" y1="220" x2="380" y2="220" class="b-axis"/>
+        <g class="b-tick">
+          <text x="82" y="238" text-anchor="middle">Alpha</text>
+          <text x="138" y="238" text-anchor="middle">Bravo</text>
+          <text x="194" y="238" text-anchor="middle">Cobra</text>
+          <text x="250" y="238" text-anchor="middle">Delta</text>
+          <text x="306" y="238" text-anchor="middle">Echo</text>
+        </g>
+        <!-- legend -->
+        <g>
+          <rect x="335" y="56" width="60" height="34" fill="white" stroke="#888"/>
+          <rect x="342" y="62" width="10" height="8" class="b-bar-1"/>
+          <text x="356" y="70" class="b-legend">Q2</text>
+          <rect x="342" y="76" width="10" height="8" class="b-bar-2"/>
+          <text x="356" y="84" class="b-legend">Q3</text>
+        </g>
+      </svg>
+    </div>
+    <p class="notes"><b>Problems:</b> Reader has to compare ten pairs of bars to spot direction. Color encodes time (which is ordered) but legend places Q2 and Q3 visually identical. Can't see Delta declined without staring.</p>
+  </div>
+
+  <div>
+    <h2>After · Tufte</h2>
+    <h3>Slopegraph — direction and magnitude in one shape</h3>
+    <div class="chart after">
+      <svg viewBox="0 0 420 280" width="100%" height="260">
+        <text x="210" y="26" text-anchor="middle" class="label" font-size="13" font-weight="600">Revenue by team · Q2 → Q3 · $K</text>
+
+        <!-- column headers -->
+        <text x="100" y="58" text-anchor="middle" class="tick" fill="var(--ink)">Q2</text>
+        <text x="320" y="58" text-anchor="middle" class="tick" fill="var(--ink)">Q3</text>
+        <line x1="100" y1="64" x2="100" y2="236" stroke="var(--gray-2)" stroke-width="0.5"/>
+        <line x1="320" y1="64" x2="320" y2="236" stroke="var(--gray-2)" stroke-width="0.5"/>
+
+        <!-- y-axis: $0 at bottom (y=236), $200 at top (y=70). 1$K = (236-70)/200 = 0.83px -->
+        <!-- Alpha 120 → 160 (up) -->
+        <line x1="100" y1="136" x2="320" y2="103" stroke="var(--ink)" stroke-width="1"/>
+        <circle cx="100" cy="136" r="2.5" fill="var(--ink)"/>
+        <circle cx="320" cy="103" r="2.5" fill="var(--ink)"/>
+        <text x="92" y="140" text-anchor="end" class="label-mono">Alpha 120</text>
+        <text x="328" y="107" class="label-mono">160 Alpha</text>
+
+        <!-- Bravo 180 → 170 (slight down) -->
+        <line x1="100" y1="86" x2="320" y2="94" stroke="var(--gray-3)" stroke-width="1"/>
+        <circle cx="100" cy="86" r="2.5" fill="var(--ink)"/>
+        <circle cx="320" cy="94" r="2.5" fill="var(--ink)"/>
+        <text x="92" y="90" text-anchor="end" class="label-mono">Bravo 180</text>
+        <text x="328" y="98" class="label-mono">170 Bravo</text>
+
+        <!-- Cobra 90 → 140 (up most) -->
+        <line x1="100" y1="161" x2="320" y2="119" stroke="var(--ink)" stroke-width="1.5"/>
+        <circle cx="100" cy="161" r="2.5" fill="var(--ink)"/>
+        <circle cx="320" cy="119" r="3" fill="var(--ink)"/>
+        <text x="92" y="165" text-anchor="end" class="label-mono">Cobra 90</text>
+        <text x="328" y="123" class="label-mono" font-weight="600">140 Cobra</text>
+
+        <!-- Delta 140 → 90 (declined sharply) -->
+        <line x1="100" y1="119" x2="320" y2="161" stroke="var(--accent)" stroke-width="1.5"/>
+        <circle cx="100" cy="119" r="2.5" fill="var(--ink)"/>
+        <circle cx="320" cy="161" r="3" fill="var(--accent)"/>
+        <text x="92" y="123" text-anchor="end" class="label-mono">Delta 140</text>
+        <text x="328" y="165" class="label-mono" fill="var(--accent)" font-weight="600">90 Delta</text>
+
+        <!-- Echo 70 → 110 (up) -->
+        <line x1="100" y1="178" x2="320" y2="145" stroke="var(--ink)" stroke-width="1"/>
+        <circle cx="100" cy="178" r="2.5" fill="var(--ink)"/>
+        <circle cx="320" cy="145" r="2.5" fill="var(--ink)"/>
+        <text x="92" y="182" text-anchor="end" class="label-mono">Echo 70</text>
+        <text x="328" y="149" class="label-mono">110 Echo</text>
+
+        <text x="20" y="262" class="tick" fill="var(--gray-3)">Up-sloping = grew. Down-sloping = declined. Red = declining team.</text>
+      </svg>
+    </div>
+    <p class="notes"><b>What changed:</b> Each line's slope is the change. Steepest gainer (Cobra) and only decliner (Delta, in red) read instantly. Numbers printed at both endpoints — no scale needed.</p>
+  </div>
+</section>
+
+
+<!-- 8. CONVERSION FUNNEL -->
+<section class="pair">
+  <div class="pair-title">8. Conversion funnel — signup flow</div>
+  <div class="pair-rule">3D tapered funnels exaggerate drop-off with visual perspective. Horizontal bars give the right proportions plus the absolute drop at each step.</div>
+
+  <div>
+    <h2 class="before">Before · OOTB</h2>
+    <h3>3D tapered funnel, rainbow color</h3>
+    <div class="chart">
+      <svg viewBox="0 0 420 280" width="100%" height="260">
+        <rect class="b-bg" x="10" y="10" width="400" height="260"/>
+        <text x="210" y="32" text-anchor="middle" class="b-title">Signup Funnel</text>
+        <!-- tapered 3D funnel with stages -->
+        <g>
+          <!-- Stage 1: Visit 10000 - widest -->
+          <polygon points="80,60 340,60 320,90 100,90" fill="url(#grad-1)" stroke="#1e40af"/>
+          <ellipse cx="210" cy="60" rx="130" ry="6" fill="#60a5fa" opacity="0.5"/>
+          <text x="210" y="78" class="b-tick" text-anchor="middle" fill="white" font-weight="bold">Visit · 10,000</text>
+          <!-- Stage 2: Signup 4200 -->
+          <polygon points="100,90 320,90 295,130 125,130" fill="url(#grad-3)" stroke="#14532d"/>
+          <text x="210" y="113" class="b-tick" text-anchor="middle" fill="white" font-weight="bold">Signup · 4,200</text>
+          <!-- Stage 3: Activated 1800 -->
+          <polygon points="125,130 295,130 265,170 155,170" fill="url(#grad-4)" stroke="#713f12"/>
+          <text x="210" y="153" class="b-tick" text-anchor="middle" fill="white" font-weight="bold">Activated · 1,800</text>
+          <!-- Stage 4: Paid 540 -->
+          <polygon points="155,170 265,170 240,210 180,210" fill="url(#grad-2)" stroke="#991b1b"/>
+          <text x="210" y="193" class="b-tick" text-anchor="middle" fill="white" font-weight="bold">Paid · 540</text>
+          <!-- Stage 5: Renewed 410 -->
+          <polygon points="180,210 240,210 220,245 200,245" fill="url(#grad-5)" stroke="#581c87"/>
+          <text x="210" y="232" class="b-tick" text-anchor="middle" fill="white" font-size="8" font-weight="bold">410</text>
+        </g>
+      </svg>
+    </div>
+    <p class="notes"><b>Problems:</b> The visual taper compounds the drop-off — the wedge gets narrower because of geometry, not just data. Five colors carry no meaning. No retention rate per step. "Renewed 410" barely fits.</p>
+  </div>
+
+  <div>
+    <h2>After · Tufte</h2>
+    <h3>Horizontal bars, retention % at each step</h3>
+    <div class="chart after">
+      <svg viewBox="0 0 420 280" width="100%" height="260">
+        <text x="20" y="30" class="label" font-size="13" font-weight="600">Signup funnel · Q3 2026</text>
+
+        <!-- column headers -->
+        <text x="20" y="56" class="tick">STAGE</text>
+        <text x="115" y="56" class="tick" text-anchor="end">COUNT</text>
+        <text x="300" y="56" class="tick" text-anchor="middle">PROPORTION</text>
+        <text x="400" y="56" class="tick" text-anchor="end">% KEPT</text>
+        <line x1="20" y1="62" x2="400" y2="62" stroke="var(--ink)" stroke-width="0.5"/>
+
+        <g font-family="Charter, Georgia, serif" font-size="12">
+          <!-- Visit -->
+          <text x="20" y="86" class="label">Visit</text>
+          <text x="115" y="86" class="value" text-anchor="end">10,000</text>
+          <rect x="130" y="78" width="240" height="12" fill="var(--ink)"/>
+          <text x="400" y="86" class="value" text-anchor="end">—</text>
+          <!-- Signup -->
+          <text x="20" y="112" class="label">Signup</text>
+          <text x="115" y="112" class="value" text-anchor="end">4,200</text>
+          <rect x="130" y="104" width="100.8" height="12" fill="var(--ink)"/>
+          <rect x="230.8" y="104" width="139.2" height="12" fill="var(--gray-1)"/>
+          <text x="400" y="112" class="value" text-anchor="end">42%</text>
+          <!-- Activated -->
+          <text x="20" y="138" class="label">Activated</text>
+          <text x="115" y="138" class="value" text-anchor="end">1,800</text>
+          <rect x="130" y="130" width="43.2" height="12" fill="var(--ink)"/>
+          <rect x="173.2" y="130" width="196.8" height="12" fill="var(--gray-1)"/>
+          <text x="400" y="138" class="value" text-anchor="end">43%</text>
+          <!-- Paid -->
+          <text x="20" y="164" class="label">Paid</text>
+          <text x="115" y="164" class="value" text-anchor="end">540</text>
+          <rect x="130" y="156" width="13" height="12" fill="var(--accent)"/>
+          <rect x="143" y="156" width="227" height="12" fill="var(--gray-1)"/>
+          <text x="400" y="164" class="value" text-anchor="end" fill="var(--accent)">30%</text>
+          <!-- Renewed -->
+          <text x="20" y="190" class="label">Renewed (90d)</text>
+          <text x="115" y="190" class="value" text-anchor="end">410</text>
+          <rect x="130" y="182" width="9.8" height="12" fill="var(--ink)"/>
+          <rect x="139.8" y="182" width="230.2" height="12" fill="var(--gray-1)"/>
+          <text x="400" y="190" class="value" text-anchor="end">76%</text>
+        </g>
+
+        <line x1="20" y1="208" x2="400" y2="208" stroke="var(--ink)" stroke-width="0.5"/>
+        <text x="20" y="228" class="tick" fill="var(--gray-3)">End-to-end conversion: 10,000 → 410 (4.1%). Bars: share of stage 1.</text>
+        <text x="20" y="246" class="tick" fill="var(--accent)">Weakest step: Activated → Paid (30%)</text>
+      </svg>
+    </div>
+    <p class="notes"><b>What changed:</b> Length encodes proportion of stage 1 — same shape the funnel was trying to show, without geometric distortion. Retention rate per step printed explicitly. Worst step highlighted in red.</p>
+  </div>
+</section>
+
+
+<!-- 9. COHORT RETENTION -->
+<section class="pair">
+  <div class="pair-title">9. Cohort retention — monthly cohorts</div>
+  <div class="pair-rule">Rainbow heatmaps make ordered values (retention %) look categorical. Sequential single-hue plus a row sparkline shows the cohort's shape and lets the eye scan across.</div>
+
+  <div>
+    <h2 class="before">Before · OOTB</h2>
+    <h3>Rainbow heatmap, no row context</h3>
+    <div class="chart">
+      <svg viewBox="0 0 420 280" width="100%" height="260">
+        <rect class="b-bg" x="10" y="10" width="400" height="260"/>
+        <text x="210" y="32" text-anchor="middle" class="b-title">Retention by Cohort (%)</text>
+        <!-- column headers M0..M5 -->
+        <g class="b-tick">
+          <text x="120" y="62" text-anchor="middle">M0</text>
+          <text x="160" y="62" text-anchor="middle">M1</text>
+          <text x="200" y="62" text-anchor="middle">M2</text>
+          <text x="240" y="62" text-anchor="middle">M3</text>
+          <text x="280" y="62" text-anchor="middle">M4</text>
+          <text x="320" y="62" text-anchor="middle">M5</text>
+        </g>
+        <!-- rows: 5 cohorts (May–Sep), 6 cols (M0–M5) -->
+        <g stroke="white" stroke-width="1">
+          <!-- May -->
+          <rect x="100" y="68" width="40" height="28" fill="#dc2626"/>
+          <rect x="140" y="68" width="40" height="28" fill="#f97316"/>
+          <rect x="180" y="68" width="40" height="28" fill="#facc15"/>
+          <rect x="220" y="68" width="40" height="28" fill="#84cc16"/>
+          <rect x="260" y="68" width="40" height="28" fill="#22c55e"/>
+          <rect x="300" y="68" width="40" height="28" fill="#06b6d4"/>
+          <!-- Jun -->
+          <rect x="100" y="96" width="40" height="28" fill="#dc2626"/>
+          <rect x="140" y="96" width="40" height="28" fill="#f97316"/>
+          <rect x="180" y="96" width="40" height="28" fill="#facc15"/>
+          <rect x="220" y="96" width="40" height="28" fill="#84cc16"/>
+          <rect x="260" y="96" width="40" height="28" fill="#22c55e"/>
+          <rect x="300" y="96" width="40" height="28" fill="#3b82f6"/>
+          <!-- Jul -->
+          <rect x="100" y="124" width="40" height="28" fill="#dc2626"/>
+          <rect x="140" y="124" width="40" height="28" fill="#f97316"/>
+          <rect x="180" y="124" width="40" height="28" fill="#facc15"/>
+          <rect x="220" y="124" width="40" height="28" fill="#22c55e"/>
+          <rect x="260" y="124" width="40" height="28" fill="#06b6d4"/>
+          <!-- Aug -->
+          <rect x="100" y="152" width="40" height="28" fill="#dc2626"/>
+          <rect x="140" y="152" width="40" height="28" fill="#facc15"/>
+          <rect x="180" y="152" width="40" height="28" fill="#22c55e"/>
+          <!-- Sep -->
+          <rect x="100" y="180" width="40" height="28" fill="#dc2626"/>
+          <rect x="140" y="180" width="40" height="28" fill="#f97316"/>
+        </g>
+        <g class="b-tick">
+          <text x="95" y="86" text-anchor="end">May</text>
+          <text x="95" y="114" text-anchor="end">Jun</text>
+          <text x="95" y="142" text-anchor="end">Jul</text>
+          <text x="95" y="170" text-anchor="end">Aug</text>
+          <text x="95" y="198" text-anchor="end">Sep</text>
+        </g>
+        <!-- legend -->
+        <g>
+          <text x="100" y="232" class="b-legend">Low</text>
+          <rect x="125" y="225" width="22" height="10" fill="#dc2626"/>
+          <rect x="147" y="225" width="22" height="10" fill="#f97316"/>
+          <rect x="169" y="225" width="22" height="10" fill="#facc15"/>
+          <rect x="191" y="225" width="22" height="10" fill="#84cc16"/>
+          <rect x="213" y="225" width="22" height="10" fill="#22c55e"/>
+          <rect x="235" y="225" width="22" height="10" fill="#06b6d4"/>
+          <rect x="257" y="225" width="22" height="10" fill="#3b82f6"/>
+          <text x="290" y="232" class="b-legend">High</text>
+        </g>
+      </svg>
+    </div>
+    <p class="notes"><b>Problems:</b> Rainbow scale: viewer guesses if yellow is more than green. Each row is a cohort but you can't see its shape — only point estimates. Empty cells (no data yet) look like zero.</p>
+  </div>
+
+  <div>
+    <h2>After · Tufte</h2>
+    <h3>Single-hue sequential + row sparkline</h3>
+    <div class="chart after">
+      <svg viewBox="0 0 420 280" width="100%" height="260">
+        <text x="20" y="26" class="label" font-size="13" font-weight="600">Retention by cohort · % of M0 still active</text>
+
+        <!-- column headers -->
+        <g class="tick">
+          <text x="100" y="50" text-anchor="middle">M0</text>
+          <text x="130" y="50" text-anchor="middle">M1</text>
+          <text x="160" y="50" text-anchor="middle">M2</text>
+          <text x="190" y="50" text-anchor="middle">M3</text>
+          <text x="220" y="50" text-anchor="middle">M4</text>
+          <text x="250" y="50" text-anchor="middle">M5</text>
+          <text x="320" y="50" text-anchor="middle">SHAPE</text>
+        </g>
+        <line x1="60" y1="56" x2="380" y2="56" stroke="var(--ink)" stroke-width="0.5"/>
+
+        <!-- single-hue sequential: light gray for low, dark ink for high. Show value too. -->
+        <g font-family="SF Mono, Berkeley Mono, monospace" font-size="10" fill="var(--ink)">
+          <!-- May: 100 72 56 44 35 30 -->
+          <text x="56" y="74" text-anchor="end" class="label">May</text>
+          <rect x="82" y="62" width="36" height="22" fill="#2d2a26"/><text x="100" y="76" text-anchor="middle" fill="white">100</text>
+          <rect x="118" y="62" width="24" height="22" fill="#a8a08c"/><text x="130" y="76" text-anchor="middle" fill="var(--ink)">72</text>
+          <rect x="148" y="62" width="24" height="22" fill="#c8c2b5"/><text x="160" y="76" text-anchor="middle">56</text>
+          <rect x="178" y="62" width="24" height="22" fill="#dcd5c4"/><text x="190" y="76" text-anchor="middle">44</text>
+          <rect x="208" y="62" width="24" height="22" fill="#e8e2d0"/><text x="220" y="76" text-anchor="middle">35</text>
+          <rect x="238" y="62" width="24" height="22" fill="#f0eee8"/><text x="250" y="76" text-anchor="middle">30</text>
+          <!-- sparkline for May -->
+          <polyline fill="none" stroke="var(--ink)" stroke-width="1" points="280,68 292,72 304,75 316,77 328,79 340,80"/>
+          <circle cx="340" cy="80" r="1.5" fill="var(--ink)"/>
+
+          <!-- Jun: 100 75 60 50 42 38 -->
+          <text x="56" y="100" text-anchor="end" class="label">Jun</text>
+          <rect x="82" y="88" width="36" height="22" fill="#2d2a26"/><text x="100" y="102" text-anchor="middle" fill="white">100</text>
+          <rect x="118" y="88" width="24" height="22" fill="#a8a08c"/><text x="130" y="102" text-anchor="middle" fill="var(--ink)">75</text>
+          <rect x="148" y="88" width="24" height="22" fill="#a8a08c"/><text x="160" y="102" text-anchor="middle" fill="var(--ink)">60</text>
+          <rect x="178" y="88" width="24" height="22" fill="#c8c2b5"/><text x="190" y="102" text-anchor="middle">50</text>
+          <rect x="208" y="88" width="24" height="22" fill="#dcd5c4"/><text x="220" y="102" text-anchor="middle">42</text>
+          <rect x="238" y="88" width="24" height="22" fill="#dcd5c4"/><text x="250" y="102" text-anchor="middle">38</text>
+          <polyline fill="none" stroke="var(--ink)" stroke-width="1" points="280,94 292,97 304,100 316,102 328,104 340,106"/>
+          <circle cx="340" cy="106" r="1.5" fill="var(--ink)"/>
+
+          <!-- Jul: 100 78 64 54 -->
+          <text x="56" y="126" text-anchor="end" class="label">Jul</text>
+          <rect x="82" y="114" width="36" height="22" fill="#2d2a26"/><text x="100" y="128" text-anchor="middle" fill="white">100</text>
+          <rect x="118" y="114" width="24" height="22" fill="#6a635a"/><text x="130" y="128" text-anchor="middle" fill="white">78</text>
+          <rect x="148" y="114" width="24" height="22" fill="#a8a08c"/><text x="160" y="128" text-anchor="middle" fill="var(--ink)">64</text>
+          <rect x="178" y="114" width="24" height="22" fill="#c8c2b5"/><text x="190" y="128" text-anchor="middle">54</text>
+          <polyline fill="none" stroke="var(--ink)" stroke-width="1" points="280,120 292,122 304,124 316,127"/>
+          <circle cx="316" cy="127" r="1.5" fill="var(--ink)"/>
+
+          <!-- Aug: 100 80 68 -->
+          <text x="56" y="152" text-anchor="end" class="label">Aug</text>
+          <rect x="82" y="140" width="36" height="22" fill="#2d2a26"/><text x="100" y="154" text-anchor="middle" fill="white">100</text>
+          <rect x="118" y="140" width="24" height="22" fill="#6a635a"/><text x="130" y="154" text-anchor="middle" fill="white">80</text>
+          <rect x="148" y="140" width="24" height="22" fill="#a8a08c"/><text x="160" y="154" text-anchor="middle" fill="var(--ink)">68</text>
+          <polyline fill="none" stroke="var(--ink)" stroke-width="1" points="280,146 292,148 304,150"/>
+          <circle cx="304" cy="150" r="1.5" fill="var(--ink)"/>
+
+          <!-- Sep: 100 82 -->
+          <text x="56" y="178" text-anchor="end" class="label">Sep</text>
+          <rect x="82" y="166" width="36" height="22" fill="#2d2a26"/><text x="100" y="180" text-anchor="middle" fill="white">100</text>
+          <rect x="118" y="166" width="24" height="22" fill="#6a635a"/><text x="130" y="180" text-anchor="middle" fill="white">82</text>
+          <polyline fill="none" stroke="var(--accent)" stroke-width="1.2" points="280,172 292,174"/>
+          <circle cx="292" cy="174" r="2" fill="var(--accent)"/>
+        </g>
+
+        <line x1="60" y1="196" x2="380" y2="196" stroke="var(--gray-2)" stroke-width="0.5"/>
+        <text x="20" y="216" class="tick" fill="var(--gray-3)">Darker = higher retention. Sparkline = cohort shape across M0–M5.</text>
+        <text x="20" y="232" class="tick" fill="var(--accent)">Sep cohort (newest) holds 82% at M1 — best so far.</text>
+      </svg>
+    </div>
+    <p class="notes"><b>What changed:</b> Single-hue sequential reads instantly: darker is more. Numbers printed in every cell — no decoding from color. Per-row sparkline shows each cohort's decay shape at a glance. Empty months are simply absent, not colored zero.</p>
+  </div>
+</section>
+
+
+<footer>
+  Nine pairs distilled from <i>The Visual Display of Quantitative Information</i> (1983/2001), <i>Envisioning Information</i> (1990), and <i>Visual Explanations</i> (1997) by Edward R. Tufte. The "before" charts are typical defaults from charting libraries, AI tools, and BI dashboards. The "after" versions apply data-ink maximization, the smallest effective difference, direct labeling, and small multiples.
+</footer>
+
+</body>
+</html>

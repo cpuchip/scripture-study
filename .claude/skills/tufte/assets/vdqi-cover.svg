@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 520" width="400" height="520">
+  <defs>
+    <linearGradient id="paper" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fbf8f0"/>
+      <stop offset="100%" stop-color="#f4efde"/>
+    </linearGradient>
+    <filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch"/><feColorMatrix values="0 0 0 0 0.1 0 0 0 0 0.1 0 0 0 0 0.1 0 0 0 0.04 0"/></filter>
+  </defs>
+  <rect width="400" height="520" fill="url(#paper)"/>
+  <rect width="400" height="520" filter="url(#grain)"/>
+  <text x="42" y="92" font-family="Iowan Old Style, Charter, Georgia, serif" font-size="15" font-style="italic" fill="#1a1a1a">Edward R. Tufte</text>
+  <text x="42" y="220" font-family="Iowan Old Style, Charter, Georgia, serif" font-size="36" font-weight="400" fill="#1a1a1a">The Visual Display</text>
+  <text x="42" y="260" font-family="Iowan Old Style, Charter, Georgia, serif" font-size="36" font-weight="400" fill="#1a1a1a">of Quantitative</text>
+  <text x="42" y="300" font-family="Iowan Old Style, Charter, Georgia, serif" font-size="36" font-weight="400" fill="#1a1a1a">Information</text>
+  <text x="42" y="334" font-family="Iowan Old Style, Charter, Georgia, serif" font-size="11" letter-spacing="0.18em" fill="#1a1a1a">SECOND EDITION</text>
+  <polyline fill="none" stroke="#1a1a1a" stroke-width="1" points="42,432 70,425 95,418 120,408 145,402 170,392 195,380 220,365 245,348 270,328 295,310 320,288 345,260 358,238"/>
+  <circle cx="358" cy="238" r="2.5" fill="#b3261e"/>
+  <text x="42" y="478" font-family="Iowan Old Style, Charter, Georgia, serif" font-size="11" font-style="italic" fill="#1a1a1a">Graphics Press · Cheshire, Connecticut</text>
+  <text x="42" y="496" font-family="Iowan Old Style, Charter, Georgia, serif" font-size="10" fill="#6b665d">1983 · second edition 2001</text>
+</svg>

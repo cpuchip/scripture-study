@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 520" width="400" height="520">
+  <defs>
+    <linearGradient id="paper2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fbf8f0"/>
+      <stop offset="100%" stop-color="#f4efde"/>
+    </linearGradient>
+    <filter id="grain2"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch"/><feColorMatrix values="0 0 0 0 0.1 0 0 0 0 0.1 0 0 0 0 0.1 0 0 0 0.04 0"/></filter>
+  </defs>
+  <rect width="400" height="520" fill="url(#paper2)"/>
+  <rect width="400" height="520" filter="url(#grain2)"/>
+  <text x="42" y="92" font-family="Iowan Old Style, Charter, Georgia, serif" font-size="15" font-style="italic" fill="#1a1a1a">Edward R. Tufte</text>
+  <text x="42" y="180" font-family="Iowan Old Style, Charter, Georgia, serif" font-size="38" font-weight="400" fill="#1a1a1a">Envisioning</text>
+  <text x="42" y="222" font-family="Iowan Old Style, Charter, Georgia, serif" font-size="38" font-weight="400" fill="#1a1a1a">Information</text>
+  <g font-family="Iowan Old Style, Charter, Georgia, serif" font-size="10" letter-spacing="0.22em" fill="#1a1a1a">
+    <text x="42" y="280">ESCAPING FLATLAND</text>
+    <text x="42" y="304">MICRO/MACRO READINGS</text>
+    <text x="42" y="328">LAYERING AND SEPARATION</text>
+    <text x="42" y="352">SMALL MULTIPLES</text>
+    <text x="42" y="376">COLOR AND INFORMATION</text>
+    <text x="42" y="400">NARRATIVES OF SPACE AND TIME</text>
+  </g>
+  <g transform="translate(280,440)">
+    <rect x="0" y="0" width="60" height="32" fill="none" stroke="#1a1a1a" stroke-width="0.5"/>
+    <rect x="6" y="6" width="60" height="32" fill="none" stroke="#1a1a1a" stroke-width="0.5"/>
+    <rect x="12" y="12" width="60" height="32" fill="none" stroke="#6b665d" stroke-width="0.5"/>
+  </g>
+  <text x="42" y="478" font-family="Iowan Old Style, Charter, Georgia, serif" font-size="11" font-style="italic" fill="#1a1a1a">Graphics Press · Cheshire, Connecticut</text>
+  <text x="42" y="496" font-family="Iowan Old Style, Charter, Georgia, serif" font-size="10" fill="#6b665d">1990</text>
+</svg>
