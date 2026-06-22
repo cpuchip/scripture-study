@@ -329,3 +329,61 @@ emergency-stop. The session arc (P3.5 → council → Phase 4 brownfield → P5+
 the waiting seam), then the multi-language oracle (held all along to avoid
 regressing the proven Go path unsupervised). The driving TUI wants a live
 shakedown (interactive). `.spec/`+`.mind/` records committed, not pushed.
+
+---
+
+## Update 8 — pg-ai-stewards local-model learnings applied (2026-06-22)
+
+Acted on the inbox signal from the pg-ai-stewards doc-construction soak: *"Garrison
+borrows the same `:8090` rig and already builds via edits — apply what transfers."*
+The discipline that mattered here was **mapping against the actual loop code, not the
+memory of it** — two assumptions were wrong until the code corrected them.
+
+**What the code corrected:**
+- The critic *already* reads the working tree from disk (`codeSnapshot` → `ReadTree`),
+  so the substrate's "critic reads the artifact, not a passed blob" was already
+  satisfied. No work.
+- The obvious page-in optimization — "only re-echo the files that changed" — would
+  **break** Garrison. Each loop iteration dispatches a single *stateless* user message
+  (no growing conversation), so the model has no memory of a prior tree read; dropping
+  unchanged files loses them entirely. The full-tree re-read is load-bearing, not
+  waste. True page-in needs an on-demand `===READ===` tool loop → surfaced, not built.
+
+**What transferred and shipped (cpuchip/garrison `0e020dd`, pushed):**
+1. **Borrow the MoE the rig now serves.** The substrate flipped to the llama-chip
+   `dance-moe` preset → the rig serves `qwen3.6-35b-a3b`, not the dense `qwen3.6-27b`
+   Garrison still defaulted to. `garrison ping` *proved* it: planner/doer were
+   `✗ not served` — a run would 404. Fixed config + `.env.example` + the live `.env`;
+   ping now reads `✓`. (The MoE is also ~4× faster — the substrate's measured win.)
+   **Inverse hypothesis honored: ping flipped `✗`→`✓` through the real path.**
+2. **Kill the one-shot trap.** The system prompt called `===EDIT===` "preferred", but
+   the per-iteration instruction and every feedback string commanded "re-output the
+   complete files" — overriding the surgical-diff path that R2 already built and
+   tested. That *is* the substrate's core doc-construction anomaly (no good agentic
+   worker emits a large artifact one-shot). Redirected the prompts to diffs;
+   `===FILE===` reserved for new files.
+3. **Journal-as-output.** A `===JOURNAL===` convention + `ParseJournal`, captured as a
+   distinct `journal`-role note — the presiding provenance trail, the way the digesters
+   return a journal instead of the artifact. **Proven e2e on the live MoE:** a Reverse()
+   run produced 3 journal notes, one per attempt ("created reverse.go + table test" →
+   "added main.go to satisfy build" → "added doc comment to satisfy the detector") — the
+   self-correction loop, narrated.
+4. **Honest context gauge + rig docs.** `--parallel 2` splits `n_ctx` across slots →
+   ~120k per request under `dance-moe`, not 192k. `DefaultWindow` 192k→120k so the
+   gauge stops over-reporting headroom. README now documents the borrowed llama-chip
+   rig, the per-slot tradeoff, the q8-KV / dedicated-VRAM rule (WDDM spill → ~3×
+   slower), and the manual-host restart.
+
+**Surfaced for a supervised pass** (`projects/garrison/docs/local-rig-learnings.md`):
+true source-page-in as a gated `===READ===` tool loop + a manifest/outline initial
+context, reusing the `internal/mcp` seam. Not urgent (32k read budget sits far inside
+120k); the win is large brownfield repos + prompt-processing cost. Written up, not
+built — same discipline that holds the multi-language oracle.
+
+**Also:** gofmt'd Garrison's own source — it wasn't passing its own gofmt detector
+(dogfooding integrity; pre-existing drift in `loop.go`'s Config block + `drive_test.go`).
+
+A clean cross-pollination arc: one engine's overnight soak teaching its sibling. The
+substrate proved these on digesters; Garrison is the same bet (Harness > Intelligence
+on weak local models) wearing a coder's clothes, so the lessons fit almost one-to-one.
+Root records (`.spec`/`.mind`) committed, not pushed — Michael pushes root.

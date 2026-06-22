@@ -3,13 +3,23 @@ lane: general-workspace
 session_id: c4fef1d0-292c-4ad6-b6c5-76e2af1043c3
 status: active
 started: 2026-06-11T12:00:00
-last_active: 2026-06-21T16:32:58
+last_active: 2026-06-22T10:31:16
 ---
 
 > Note: this lane was previously filed under the typo `general-workspase.md`;
 > consolidated here (the hook-canonical spelling) 2026-06-13, typo file removed.
 
 ## Working on
+- **★ Garrison — pg-ai-stewards local-model learnings APPLIED 2026-06-22** (acted on
+  the doc-construction inbox signal). Mapped the substrate's 5 soak learnings against
+  Garrison's real loop code: borrowed the MoE the rig now serves (`qwen3.6-35b-a3b` —
+  fixed a live `ping` 404 + ~4× faster), killed the one-shot whole-file trap in the
+  loop prompts (lean on the already-built `===EDIT===` diffs), journal-as-output
+  (`===JOURNAL===`/`ParseJournal`, **proven e2e on the live MoE**), honest per-slot
+  context gauge (192k→120k) + README rig docs. Critic-reads-disk was already satisfied.
+  Source-page-in surfaced (not built blind — naive version breaks stateless dispatch)
+  in `projects/garrison/docs/local-rig-learnings.md`. cpuchip/garrison `0e020dd` pushed;
+  root records (active.md/lane/journal) committed not pushed. Inbox cleared.
 - **★ Deadweight Acquisitions multiplayer — BUILT + DEPLOYED overnight 2026-06-17
   (council + ratify + full stewardship; competitive last-corp-standing).** Dave's
   (the dave-rule namesake) browser space-mining game; Michael forked it, I made it
@@ -189,6 +199,7 @@ last_active: 2026-06-21T16:32:58
   post-compact grounding.
 
 ## Claims
+- 2026-06-22T10:39:46 background (Bash): cd "C:/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/garrison" && rm -rf /tmp/garr-journaltest && mkdir -p /tmp/garr-journaltest && printf 'm
 - 2026-06-19T00:52:07 background (Bash): cd "C:/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/garrison" && GOWORK=off ./garrison.exe run --dir "C:/Users/cpuch/AppData/Local/Temp/garr
 - 2026-06-18T23:53:20 background (Bash): DOG="C:/Users/cpuch/AppData/Local/Temp/garrison-spawn"; rm -rf "$DOG"; mkdir -p "$DOG"; printf 'module textkit\n\ngo 1.26\n' > "$DOG/go.mod"; cd "C:/Users/cpuch
 - 2026-06-17T16:45:35 background (Bash): cd "C:/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/deadweight-acquisitions-game" && git commit -q -F - <<'EOF' ui polish: on-station layout
