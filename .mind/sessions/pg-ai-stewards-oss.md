@@ -3,7 +3,7 @@ lane: pg-ai-stewards-oss
 session_id: 7ea7faa4-688a-451a-ac68-b7ea662d4b81
 status: active
 started: 2026-06-09T18:00:00
-last_active: 2026-06-22T09:49:34
+last_active: 2026-06-22T12:39:29
 ---
 
 ## Working on
@@ -18,6 +18,13 @@ last_active: 2026-06-22T09:49:34
   commits unpushed (Michael's push).
 
 ## Claims
+- 2026-06-22T12:00:55 background (Bash): cd /c/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/pg-ai-stewards-oss WI=vivint-proof-1; LAST="" for i in $(seq 1 75); do   ROW=$(docker exe
+- 2026-06-22T11:48:27 background (Bash): cd /c/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/pg-ai-stewards-oss WI=organize-proof-tao for i in $(seq 1 30); do   ST=$(docker exec stew
+- 2026-06-22T11:36:47 background (Bash): cd /c/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/pg-ai-stewards-oss WI=organize-proof-tao for i in $(seq 1 40); do   ST=$(docker exec stew
+- 2026-06-22T11:33:20 background (Bash): cd /c/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/pg-ai-stewards-workspace && parity/overlay-clobber-check.sh stewards-oss-pg:ci44 2>&1 | t
+- 2026-06-22T11:31:14 background (Bash): cd /c/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/pg-ai-stewards-oss docker rm -f pg-smoke44 >/dev/null 2>&1 || true echo "=== BUILD (exten
+- 2026-06-22T10:30:45 background (Bash): cd /c/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/pg-ai-stewards-workspace && parity/overlay-clobber-check.sh stewards-oss-pg:ci43 2>&1 | t
+- 2026-06-22T10:28:44 background (Bash): cd /c/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/pg-ai-stewards-oss docker rm -f pg-smoke43 >/dev/null 2>&1 || true echo "=== BUILD (exten
 - 2026-06-22T09:34:54 background (Bash): cd "C:/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/pg-ai-stewards-oss" {   echo "=== BUILD (cargo pgrx package, chain 00->42) ==="   docker
 - 2026-06-21T14:56:09 background (Bash): cd "C:/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/llama-chip" curl -s http://127.0.0.1:8090/api/unload -d '{"name":"gemma12"}' >/dev/null 
 - 2026-06-21T14:52:31 background (Bash): cd "C:/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/llama-chip" echo "=== unload merges, load gemma-12b (GPU0) + qwen3.6-27b (GPU1) ===" cur
