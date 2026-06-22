@@ -3,7 +3,7 @@ lane: pg-ai-stewards-oss
 session_id: 7ea7faa4-688a-451a-ac68-b7ea662d4b81
 status: active
 started: 2026-06-09T18:00:00
-last_active: 2026-06-18T23:05:33
+last_active: 2026-06-22T09:49:34
 ---
 
 ## Working on
@@ -18,6 +18,43 @@ last_active: 2026-06-18T23:05:33
   commits unpushed (Michael's push).
 
 ## Claims
+- 2026-06-22T09:34:54 background (Bash): cd "C:/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/pg-ai-stewards-oss" {   echo "=== BUILD (cargo pgrx package, chain 00->42) ==="   docker
+- 2026-06-21T14:56:09 background (Bash): cd "C:/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/llama-chip" curl -s http://127.0.0.1:8090/api/unload -d '{"name":"gemma12"}' >/dev/null 
+- 2026-06-21T14:52:31 background (Bash): cd "C:/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/llama-chip" echo "=== unload merges, load gemma-12b (GPU0) + qwen3.6-27b (GPU1) ===" cur
+- 2026-06-21T14:33:09 background (Bash): LMS="/c/Users/cpuch/.lmstudio/bin/lms.exe" echo "retry via full HF URL â€” $(date)" echo "=== Qwythos (mythos) ===" "$LMS" get "https://huggingface.co/empero-ai
+- 2026-06-21T14:31:48 background (Bash): LMS="/c/Users/cpuch/.lmstudio/bin/lms.exe" echo "downloading Qwythos (mythos) + Qwable (fable) @ Q6_K via lms get â€” started $(date)" echo "=== Qwythos ===" "$
+- 2026-06-21T11:02:56 background (Bash): cd "C:/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/llama-chip" GOWORK=off ./llama-chip.exe serve --config config.json 2>&1
+- 2026-06-21T10:51:02 background (Bash): cd "C:/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/llama-chip" GOWORK=off ./llama-chip.exe serve --config config.json 2>&1
+- 2026-06-21T10:42:39 background (Bash): cd "C:/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/llama-chip" GOWORK=off ./llama-chip.exe serve --config config.json 2>&1
+- 2026-06-21T10:39:08 background (Bash): cd "C:/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/llama-chip" GOWORK=off ./llama-chip.exe serve --config config.json 2>&1
+- 2026-06-21T02:38:19 background (Bash): cd "C:/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/pg-ai-stewards-oss" echo "rebuild+smoke (candidate-finder fix) started $(date)" docker b
+- 2026-06-21T02:08:36 background (PowerShell): cd "C:\Users\cpuch\Documents\code\stuffleberry\scripture-study\projects\pg-ai-stewards-oss\scripts\hinge-review" pwsh -NoProfile -File .\hinge-daemon.ps1
+- 2026-06-21T01:20:01 background (PowerShell): cd "C:\Users\cpuch\Documents\code\stuffleberry\scripture-study\projects\pg-ai-stewards-oss\scripts\hinge-review" pwsh -NoProfile -File .\hinge-daemon.ps1
+- 2026-06-21T00:33:25 background (Bash): cd "C:/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/pg-ai-stewards-oss" echo "rebuild+smoke (daemon+revise-loop) started $(date)" docker bui
+- 2026-06-21T00:16:34 background (Bash): cd "C:/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/pg-ai-stewards-oss" echo "rebuild+smoke (revise-loop) started $(date)" docker build -t s
+- 2026-06-20T21:24:27 background (Bash): cd "C:/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/pg-ai-stewards-oss" docker exec -i stewards-oss-pg psql -U stewards -d stewards -v ON_ER
+- 2026-06-20T21:18:45 background (Bash): cd "C:/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/pg-ai-stewards-oss" echo "rebuild+smoke G-retry started $(date)" docker build -t steward
+- 2026-06-20T21:16:24 background (Bash): cd "C:/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/pg-ai-stewards-oss" echo "build+smoke G started $(date)" docker build -t stewards-oss-pg
+- 2026-06-20T21:07:35 background (Bash): cd "C:/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/pg-ai-stewards-oss" echo "build+smoke H started $(date)" docker build -t stewards-oss-pg
+- 2026-06-20T20:58:02 background (Bash): cd "C:/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/pg-ai-stewards-oss" echo "build+smoke M1 started $(date)" docker build -t stewards-oss-p
+- 2026-06-20T18:43:13 background (Bash): cd "C:/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/pg-ai-stewards-oss/scripts/verify-digest-quotes" echo "marking corpus started $(date)" p
+- 2026-06-20T14:04:31 background (Bash): cd "C:/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/pg-ai-stewards-oss/scripts/verify-digest-quotes" echo "audit started $(date)" python ver
+- 2026-06-20T13:59:33 background (Bash): cd "C:/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/pg-ai-stewards-oss" echo "build+smoke started $(date)" docker build -t stewards-oss-pg:s
+- 2026-06-20T11:10:05 background (Bash): cd "C:/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/pg-ai-stewards-oss" echo "build started $(date)" docker build -t stewards-oss-pg:smoke24
+- 2026-06-20T01:32:59 background (Bash): cd "C:/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/pg-ai-stewards-oss" docker build -t stewards-oss-pg:ci extension/ > /tmp/oss-build5.log 
+- 2026-06-20T00:44:44 background (Bash): cd "C:/Users/cpuch/Documents/code/stuffleberry/scripture-study/external_context/flexllama" LMS=/c/Users/cpuch/.lmstudio/bin/lms : > rerun-results.jsonl for key 
+- 2026-06-20T00:39:21 background (Bash): cat > "C:/Users/cpuch/Documents/code/stuffleberry/scripture-study/external_context/flexllama/sweep.sh" <<'SH' #!/usr/bin/env bash # Drive the gather-model sweep
+- 2026-06-19T23:30:45 background (Bash): cd "C:/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/pg-ai-stewards-oss" docker build -t stewards-oss-pg:ci extension/ > /tmp/oss-build4.log 
+- 2026-06-19T16:13:41 background (Bash): cd "C:/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/pg-ai-stewards-oss" docker build -t stewards-oss-pg:ci extension/ > /tmp/oss-build2.log 
+- 2026-06-19T16:09:31 background (Bash): cd "C:/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/pg-ai-stewards-oss" docker build -t stewards-oss-pg:ci extension/ > /tmp/oss-build.log 2
+- 2026-06-19T11:49:54 background (Bash): cd /c/Users/cpuch/Documents/code/stuffleberry/scripture-study wi='ee84e5b8-3796-4faa-a12b-06b60d52b87d' for i in $(seq 1 40); do   read st stg < <(docker exec -
+- 2026-06-19T10:52:33 background (Bash): cd /c/Users/cpuch/Documents/code/stuffleberry/scripture-study sess=$(docker exec -i stewards-oss-pg psql -U stewards -d stewards -tAc "SELECT session_id FROM st
+- 2026-06-19T10:07:11 background (Bash): root="C:/Users/cpuch/Documents/code/stuffleberry/scripture-study/external_context/flexllama" models="C:/Users/cpuch/.lmstudio/models" docker rm -f flexllama-ste
+- 2026-06-19T09:42:26 background (Bash): root="C:/Users/cpuch/Documents/code/stuffleberry/scripture-study/external_context/flexllama" models="C:/Users/cpuch/.lmstudio/models" docker rm -f flexllama-ste
+- 2026-06-19T00:53:42 background (Bash): cd /c/Users/cpuch/Documents/code/stuffleberry/scripture-study echo "watch proof a4a1b45c + the 06:00 burst (up to ~18 min)" for i in $(seq 1 24); do   ts=$(date
+- 2026-06-19T00:16:36 background (Bash): cd /c/Users/cpuch/Documents/code/stuffleberry/scripture-study/external_context/flexllama res=running for i in $(seq 1 70); do   if ! docker ps --filter name=fle
+- 2026-06-18T23:39:09 background (Bash): cd /c/Users/cpuch/Documents/code/stuffleberry/scripture-study/external_context/flexllama res=running for i in $(seq 1 60); do   if ! docker ps --filter name=fle
+- 2026-06-18T23:31:55 background (Bash): cd /c/Users/cpuch/Documents/code/stuffleberry/scripture-study/external_context/flexllama # wait for qwen loaded (GPU0 should now be ~20GB, not maxed) for i in $
 - 2026-06-18T23:04:44 background (Bash): cd /c/Users/cpuch/Documents/code/stuffleberry/scripture-study/external_context/flexllama res=running for i in $(seq 1 80); do   if ! docker ps --filter name=fle
 - 2026-06-18T22:56:50 background (Bash): cd /c/Users/cpuch/Documents/code/stuffleberry/scripture-study/external_context/flexllama # wait for all 3 loaded + report per-GPU VRAM; detect OOM res=running f
 - 2026-06-18T22:31:19 background (Bash): Q() { docker exec stewards-oss-pg psql -U stewards -d stewards -tAc "$1" 2>&1; } BQ='What are the most notable AI and LLM model or tooling developments reported
