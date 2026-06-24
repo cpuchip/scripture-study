@@ -3,10 +3,11 @@ lane: pg-ai-stewards
 session_id: 7ea7faa4-688a-451a-ac68-b7ea662d4b81
 status: active
 started: 2026-06-11T22:00:16
-last_active: 2026-06-24T14:30:00
+last_active: 2026-06-24T16:30:00
 ---
 
 ## Working on (latest)
+- **★ 2026-06-24 ROUND 3 — STEWDIO COCKPIT BATCH: 4 of 6 slices SHIPPED+LIVE+pushed (`ebd9835`→`b4e77bd` + journal `282a189`).** Michael's batch (sessions view, windowing, models panel, all 4 fast-follows, hardening quick wins, image gen); sequenced gemini-image-first. DONE: (1) **Sessions panel + ▦panels windowing** (`/api/chat/sessions/all`; click reopens exact session; closes "can't get back to a chat" gap) (2) **Models & usage panel** (`/api/models/aliases`+activity: running-now/aliases/24h cost) (3) **rich artifact cards** (links→icon/name/size/⬇; serve `?meta=1`+`?download=1`) (4) **generate_image** (Gemini Nano Banana→chat_attachment; core tool off-remote-profile; PROVEN 853KB PNG; grounding now carries agent's session_id). All vue-tsc/go-build green, playwright-verified, 0 console errors. **CARRIED (fresh-pass, 2 of 6): alias-failover auto-shed** (503'd model→shed so `reason` alias fails over; bgworker.rs HOT PATH — needs pg rebuild + careful e2e; deferred deliberately to avoid a tired hot-path change) · **chat polish trio** (@-mentions / Arc D subset=new grounding mode / source-pills=SSE tool-result surfacing). Tasks #243/#244. Journal `2026-06-24-rich-chat-and-artifacts.md` Round 3; memory `project_stewdio`.
 - **★★ 2026-06-24 ROUND 2 — fix-and-retest + GEMINI TOOL-LOOP FIXED (chain 00→51; `0591185`→`d11ed6f`).** doc-build e2e was the oracle. **51-rich-chat-hardening:** artifact-exists gate (empty doc-build→failed; `pipeline_family` not `pipeline` gotcha), chat→brainstorm (1 msg→6 techniques), chat→/generate delegation (now spawns doc-build, full chain closed on qwen), deliver-handoff + recipes. **★★ GEMINI FIXED (bgworker.rs `d90d56d`) — load-bearing, work rig can't run qwen:** 3 layered OpenAI-compat divergences — finish_reason="stop"-with-tools (key off presence) + missing streaming `index` (fall back to id) + Gemini-3.x `thought_signature` round-trip (capture+replay extra_content). **gemini-3.1-pro drives doc-build e2e (real PDF); qwen unchanged.** 3-flash-preview 503s. Bring-up runbook `docs/rich-chat-and-artifacts.md` for the work port. virgin-smoke 00→51 GREEN. **Michael pulls the gemini fixes onto work.** freshclam AV sidecar up.
 
 ## Working on
