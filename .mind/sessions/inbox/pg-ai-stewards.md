@@ -21,4 +21,12 @@ fill gaps in what we've already studied.**
 
 — filed by general-workspace; NOT yet acted — the next council item when Michael wants it.
 
+<!-- RESOLVED + cleared 2026-06-24: the doc-extract sandbox shipped (P3e/f). The
+"cross-reference our corpus" need is met by `doc_import_corpus` — zip a repo (a
+repo is a folder), import it into the searchable docs pool tagged by project,
+then doc_search it; all through the same hardened no-network extract lane. A
+live read-only `git clone` into the sandbox (no zip step) is the noted future
+enhancement (docs/rich-documents.md §deferred). See
+.spec/journal/2026-06-24-rich-docs-p3-doc-extract.md. -->
+
 <!-- cleared 2026-06-16: storytelling-craft-digest (done) + stuck-research-write diagnosis (done) -->
