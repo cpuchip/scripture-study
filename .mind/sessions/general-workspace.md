@@ -3,7 +3,7 @@ lane: general-workspace
 session_id: c4fef1d0-292c-4ad6-b6c5-76e2af1043c3
 status: active
 started: 2026-06-11T12:00:00
-last_active: 2026-06-22T10:31:16
+last_active: 2026-06-26T00:21:12
 ---
 
 > Note: this lane was previously filed under the typo `general-workspase.md`;
@@ -199,6 +199,8 @@ last_active: 2026-06-22T10:31:16
   post-compact grounding.
 
 ## Claims
+- 2026-06-25T02:00:15 background (Bash): cd "C:/Users/cpuch/AppData/Local/Temp/claude/C--Users-cpuch-Documents-code-stuffleberry-scripture-study/c4fef1d0-292c-4ad6-b6c5-76e2af1043c3/scratchpad" && pyth
+- 2026-06-25T01:24:15 background (Bash): cd "C:/Users/cpuch/Documents/code/stuffleberry/scripture-study/external_context" && echo "=== existing ===" && ls -1 && echo "" && echo "=== cloning (shallow, d
 - 2026-06-22T10:39:46 background (Bash): cd "C:/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/garrison" && rm -rf /tmp/garr-journaltest && mkdir -p /tmp/garr-journaltest && printf 'm
 - 2026-06-19T00:52:07 background (Bash): cd "C:/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/garrison" && GOWORK=off ./garrison.exe run --dir "C:/Users/cpuch/AppData/Local/Temp/garr
 - 2026-06-18T23:53:20 background (Bash): DOG="C:/Users/cpuch/AppData/Local/Temp/garrison-spawn"; rm -rf "$DOG"; mkdir -p "$DOG"; printf 'module textkit\n\ngo 1.26\n' > "$DOG/go.mod"; cd "C:/Users/cpuch
