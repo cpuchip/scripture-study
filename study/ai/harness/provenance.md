@@ -79,6 +79,43 @@ The session closed with a covenant moment — Michael: *"I want to conquer this 
 Recorded verbatim in `.spec/journal/2026-06-25-the-joy-of-creation-boyd-and-the-harness.md`.
 
 ## Status
-**Sources gathered. Study unwritten — to be written together.** When we draft: the study doc
-lands in `study/ai/harness/`, run the discovery search first, and keep read-before-quoting on
-the Boyd corpus.
+**★ STUDY WRITTEN 2026-06-26 → `the-harness-is-orientation.md`** (eight movements, to feed the
+innovation-week presentation). Born from the live study conversation 2026-06-25/26.
+
+## Citation status (verified before quoting)
+
+**Scriptures — read from the canon via `gospel_get` this session, quoted verbatim:**
+- Abraham 4 (whole chapter) — "organized" (4:1), the dividing/bounds (4:4,6,9), watch-to-intent (4:18),
+  council + dominion (4:26,28). ✅
+- D&C 121 (whole) — secularization diagnostic (121:35,37), presiding seam (121:41–42), bounds (121:30),
+  dominion-without-compulsion (121:46). ✅
+- D&C 88:118 ("best books"); 2 Nephi 9:28–29 ("learned is good IF"); Articles of Faith 1:13
+  ("praiseworthy … we seek after these things"). ✅
+- 2 Nephi 25:26 (also the book's epigraph); Colossians 3:17 (the chosen north star); 2 Nephi 32:9
+  (consecrate every performance). ✅
+
+**Boyd — quoted from the clean Richards/Spinney typeset *Patterns of Conflict*** (`poc.txt`,
+pdftotext of `patterns-of-conflict-richards-spinney-2007.pdf`):
+- the OODA loop named ("observation-orientation-decision-action"); "operate inside their adversaries'
+  … loops … penetrate the moral-mental-physical being" (≈line 2089); the **Command slide** —
+  "Decentralize, in a tactical sense … Centralize, in a strategic sense …" (line 2700–2704) = his
+  *Auftragstaktik* in his own words; the Goal ("diminish adversary's freedom-of-action …", 2664). ✅
+  Other Boyd ideas (Destruction and Creation, energy-maneuverability) are **honest paraphrase**, not
+  quoted verbatim — the full Hammond *Discourse* on disk for deeper verbatim work.
+
+**🟡 The George MacDonald / Monson quote — provenance resolved.** *"God left the world unfinished
+for man to work his skill upon …"* The video short attributed it to **Thomas S. Monson**, but a web
+check (goodreads, azquotes, quotessence, quotefancy) shows the line **originates with George
+MacDonald** (19th-c. Scottish writer); Monson quoted it (it circulates widely as "Monson's"). The
+study now attributes it as **"a line from George MacDonald … the one President Monson quoted."** Wording
+used = the print-canonical fuller version ("for man" / "that man might"), not the auto-caption ("men" /
+"we"). For publication, confirm Monson's specific talk/source if it's cited as his.
+
+**Google whitepaper claims** — synthesized + verified in `external_context/google-new-sdlc/NOTES.md`
+(Day-1 "model 10% / harness 90%", spec-bottleneck, trajectory eval, "the agent … needs the substrate
+underneath"). The book — read directly (`projects/scripture-book/dist/book-reading.md`, first ~10 pp).
+
+## ⚠ Voice audit — NOT YET DONE
+First draft runs **above the one-em-dash-per-paragraph budget** (CLAUDE.md voice rule) in several
+paragraphs, and should get a therefore/but + em-dash tightening pass to match Michael's book voice
+before it's lifted into the presentation. Content is verified and complete; the prose wants polish.
