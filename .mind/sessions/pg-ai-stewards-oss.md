@@ -3,7 +3,7 @@ lane: pg-ai-stewards-oss
 session_id: 7ea7faa4-688a-451a-ac68-b7ea662d4b81
 status: active
 started: 2026-06-09T18:00:00
-last_active: 2026-06-25T22:20:19
+last_active: 2026-06-26T13:50:22
 ---
 
 ## Working on
@@ -18,6 +18,20 @@ last_active: 2026-06-25T22:20:19
   commits unpushed (Michael's push).
 
 ## Claims
+- 2026-06-26T11:40:57 background (Bash): cd "C:/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/pg-ai-stewards-oss" OUT="$(pwd)/.vsmoke.out" docker build -t stewards-oss-pg:vsmoke exte
+- 2026-06-26T11:21:42 background (Bash): cd "C:/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/pg-ai-stewards-oss" RID="" for i in $(seq 1 10); do   RID=$(gh run list --repo cpuchip/p
+- 2026-06-26T11:18:40 background (Bash): cd "C:/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/pg-ai-stewards-oss" docker compose build ui 2>&1 | tail -2 && docker compose up -d --no-
+- 2026-06-26T11:03:15 background (Bash): cd "C:/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/pg-ai-stewards-oss" RID="" for i in $(seq 1 10); do   RID=$(gh run list --repo cpuchip/p
+- 2026-06-26T11:01:36 background (Bash): cd "C:/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/pg-ai-stewards-oss" OUT="$(pwd)/.vsmoke.out" docker build -t stewards-oss-pg:vsmoke exte
+- 2026-06-26T10:58:40 background (Bash): cd "C:/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/pg-ai-stewards-oss" # restore the committed dist stub (local npm build overwrites it; do
+- 2026-06-26T10:05:58 background (Bash): cd "C:/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/pg-ai-stewards-oss" RID="" for i in $(seq 1 10); do   RID=$(gh run list --repo cpuchip/p
+- 2026-06-26T10:04:13 background (Bash): cd "C:/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/pg-ai-stewards-oss" OUT="$(pwd)/.vsmoke.out" echo "=== building extension image (cargo p
+- 2026-06-26T04:39:30 background (Bash): cd "C:/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/pg-ai-stewards-oss" docker compose build ui 2>&1 | tail -4 && docker compose up -d --no-
+- 2026-06-26T04:38:07 background (Bash): cd "C:/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/pg-ai-stewards-oss" RID="" for i in $(seq 1 10); do   RID=$(gh run list --repo cpuchip/p
+- 2026-06-26T03:11:34 background (Bash): cd "C:/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/pg-ai-stewards-oss" RID="" for i in $(seq 1 10); do   RID=$(gh run list --repo cpuchip/p
+- 2026-06-26T03:02:17 background (Bash): cd "C:/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/pg-ai-stewards-oss" # find the run for 806a8d8 (give the webhook a moment if needed) RID
+- 2026-06-26T02:53:11 background (Bash): cd "C:/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/pg-ai-stewards-oss" rid=$(gh run list --branch main --limit 1 --json databaseId --jq '.[
+- 2026-06-26T01:33:43 background (Bash): cd "C:/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/pg-ai-stewards-oss" gh run watch 28221532727 --exit-status 2>&1 | tail -15; echo "WATCH_
 - 2026-06-25T09:20:22 background (Bash): cd "C:/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/pg-ai-stewards-oss" docker build -t stewards-oss-pg:test extension/ > /tmp/59fix2-build.
 - 2026-06-25T09:16:04 background (Bash): cd "C:/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/pg-ai-stewards-oss" docker build -t stewards-oss-pg:test extension/ > /tmp/59fix-build.l
 - 2026-06-25T09:12:54 background (Bash): cd "C:/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/pg-ai-stewards-oss" docker build -t stewards-oss-pg:test extension/ > /tmp/59-build.log 
