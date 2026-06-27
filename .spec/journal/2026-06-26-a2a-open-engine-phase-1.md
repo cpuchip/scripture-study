@@ -82,3 +82,22 @@ multi-agent. That's the acceptance test, and it's Michael's to witness.
   the file inbox and the substrate queue become one surface (the spec's §4.5). Small hook change.
 - **The file-fallback mirror** is best-effort in the MCP layer (`A2A_MIRROR_DIR`); not yet wired
   on for my live sessions. Turn it on when the say-hello proves out.
+
+## Update — the live MCP surface caught what SQL+HTTP didn't
+
+Set A2A up for my own session (rebuilt the local `stewards-mcp.exe` the `.mcp.json` runs,
+wired `A2A_MIRROR_DIR=.mind/sessions` for the file fallback, registered as `pg-ai-stewards`
+— the bare lane name, so the mirror lands in the inbox file we already use). Michael
+restarted me, I called `a2a_inbox` — and it **failed**. Not the DB (the inbox came back
+correct in the error payload), but the MCP **output-schema validation**: I'd typed the verb
+results as Go's `json.RawMessage`, which the SDK reflects as an array-of-bytes schema, so a
+jsonb-*object* result is rejected. Same flaw on the object-typed inputs.
+
+I had proven the engine over SQL and over HTTP — but never over the actual MCP tool surface,
+which is the one Claude Code uses. The "verify under real conditions" lesson, paid again:
+the surface you skip is the one that breaks. Fixed (`5ce34be`): structured output is
+`map[string]any`, object/array inputs typed. Then I drove the **whole say-hello loop through
+the real fixed MCP server** with a python stdio MCP client — register agy → submit → agy
+claims → agy receipts → my inbox shows the receipt, every call validating, zero copy-paste.
+The acceptance test, passed through the actual protocol. Carry-forward: an MCP-level stdio
+smoke is the regression guard that would have caught this before the restart.
