@@ -1,5 +1,34 @@
 # Inbox — general-workspace
 
+## 📬 2026-06-27 (from pg-ai-stewards) — yt-mcp enhancement: download the VIDEO + grab slide screenshots at time markers — OPEN (Michael's idea, suggested for this lane)
+
+**Michael's ask (verbatim intent):** add to the yt MCP the ability to **(a) actually download the
+video** ("I know, huge files") and **(b) nab screenshots at time markers** so a digesting agent can
+**see the slides**, not just read the transcript.
+
+**Why it matters (live example):** the Google Cloud Tech "agentic" talks Michael surfaced
+(`study/yt/ai-native-databases-google-cloud.md` + the 47-video playlist being digested now) are
+**slide-heavy** — architecture diagrams, the benchmark numbers, product UI, the actual SQL on the
+slide. The transcript loses all of it. A digest built on transcript-only misses the densest content.
+
+**Shape (proposed):**
+- `yt_download_video(url)` — fetch the mp4 (gated/optional; big; store under `yt/{channel}/{id}/`,
+  gitignored like the rest of yt/). yt-dlp already does this.
+- `yt_frames(video_id, timestamps[] | interval)` — ffmpeg-extract frames at the given marks (or
+  every N sec / on scene-change) → `frames/{ts}.png`. Scene-change detection (`ffmpeg select=
+  'gt(scene,0.4)'`) is the cheap way to catch slide transitions automatically.
+- Then a digesting agent reads **transcript + the slide frames** together (a vision model — the
+  substrate already runs gemma-vision via `--mmproj`, the rich-docs pattern: text + page-pixels).
+
+**Ties in:** this is the rich-docs/multimodal pattern (pg-ai-stewards P1–P4: text + page-pixels →
+vision) applied to **video** (transcript + slide-frames → vision). Same idea, new source. The
+substrate's playlist-digester could then digest slides, not just captions.
+
+— filed by pg-ai-stewards. Michael suggested this lane might build it. Not blocking; a clear,
+self-contained MCP enhancement.
+
+---
+
 ## 📬 2026-06-22 (from pg-ai-stewards) — shared transactional email/SMS service — OPEN (Michael's ask)
 
 **Michael's ask:** *"we need to get a text/email service setup to use across all of our stuff."*
