@@ -3,7 +3,7 @@ lane: pg-ai-stewards-oss
 session_id: 7ea7faa4-688a-451a-ac68-b7ea662d4b81
 status: active
 started: 2026-06-09T18:00:00
-last_active: 2026-06-26T13:50:22
+last_active: 2026-06-27T14:24:27
 ---
 
 ## Working on
@@ -18,6 +18,23 @@ last_active: 2026-06-26T13:50:22
   commits unpushed (Michael's push).
 
 ## Claims
+- 2026-06-27T11:59:24 background (Bash): cd "C:/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/pg-ai-stewards-oss" && docker build -t stewards-oss-pg:ci extension/ 2>&1 | tail -40
+- 2026-06-27T07:01:37 background (Bash): cd /c/Users/cpuch/Documents/code/stuffleberry/scripture-study/yt/_playlist-gct echo "downloading auto-subs for 47 videos + cleaning vttâ†’txt (background)..." y
+- 2026-06-27T06:29:32 background (Bash): cd /c/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/pg-ai-stewards-oss/scripts/hinge-review echo "draining the remaining pending (--limit 40 
+- 2026-06-26T23:20:58 background (Bash): cd /c/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/pg-ai-stewards-oss/scripts/hinge-review echo "starting REAL drain of all pending hinges (
+- 2026-06-26T22:54:21 background (PowerShell): Set-Location "C:\Users\cpuch\Documents\code\stuffleberry\scripture-study" $prompt = @' Second-opinion research task. Do NOT edit any files; propose only, answer
+- 2026-06-26T22:52:41 background (Bash): cd /c/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/pg-ai-stewards-oss/scripts/hinge-review echo "=== confirm --dry-run does NOT record (read
+- 2026-06-26T20:06:27 background (Bash): cd /c/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/pg-ai-stewards-oss gh run watch 28273739418 --exit-status 2>&1 | tail -8 echo "CI_EXIT=${
+- 2026-06-26T19:50:07 background (Bash): cd /c/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/pg-ai-stewards-oss echo "Building fresh extension image (pgrx Rust compile â€” this is th
+- 2026-06-26T15:13:39 background (Bash): cd "C:/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/pg-ai-stewards-oss" gh run rerun 28262674818 --repo cpuchip/pg-ai-stewards --failed 2>&1
+- 2026-06-26T15:12:08 background (Bash): cd "C:/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/pg-ai-stewards-oss" RID="" for i in $(seq 1 12); do   RID=$(gh run list --repo cpuchip/p
+- 2026-06-26T15:03:48 background (Bash): cd "C:/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/pg-ai-stewards-oss" RID="" for i in $(seq 1 10); do   RID=$(gh run list --repo cpuchip/p
+- 2026-06-26T15:02:03 background (Bash): cd "C:/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/pg-ai-stewards-oss" OUT="$(pwd)/.vsmoke.out" docker build -t stewards-oss-pg:vsmoke exte
+- 2026-06-26T14:55:00 background (Bash): cd "C:/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/pg-ai-stewards-oss" PSQL="docker exec -i stewards-oss-pg psql -U stewards -d stewards -t
+- 2026-06-26T14:31:05 background (Bash): cd "C:/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/pg-ai-stewards-oss" PSQL="docker exec -i stewards-oss-pg psql -U stewards -d stewards -t
+- 2026-06-26T14:08:57 background (Bash): cd "C:/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/pg-ai-stewards-oss" RID="" for i in $(seq 1 10); do   RID=$(gh run list --repo cpuchip/p
+- 2026-06-26T14:07:12 background (Bash): cd "C:/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/pg-ai-stewards-oss" OUT="$(pwd)/.vsmoke.out" docker build -t stewards-oss-pg:vsmoke exte
+- 2026-06-26T13:53:20 background (Bash): cd "C:/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/pg-ai-stewards-oss" RID="" for i in $(seq 1 10); do   RID=$(gh run list --repo cpuchip/p
 - 2026-06-26T11:40:57 background (Bash): cd "C:/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/pg-ai-stewards-oss" OUT="$(pwd)/.vsmoke.out" docker build -t stewards-oss-pg:vsmoke exte
 - 2026-06-26T11:21:42 background (Bash): cd "C:/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/pg-ai-stewards-oss" RID="" for i in $(seq 1 10); do   RID=$(gh run list --repo cpuchip/p
 - 2026-06-26T11:18:40 background (Bash): cd "C:/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/pg-ai-stewards-oss" docker compose build ui 2>&1 | tail -2 && docker compose up -d --no-
