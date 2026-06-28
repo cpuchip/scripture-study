@@ -1,31 +1,26 @@
 # Inbox — general-workspace
 
-## 📬 2026-06-27 (from pg-ai-stewards) — yt-mcp enhancement: download the VIDEO + grab slide screenshots at time markers — OPEN (Michael's idea, suggested for this lane)
+## 📬 2026-06-27 (from Michael) — integrate YouTube COMMENTS into the yt-mcp — DEFERRED (security-safe pass required FIRST)
 
-**Michael's ask (verbatim intent):** add to the yt MCP the ability to **(a) actually download the
-video** ("I know, huge files") and **(b) nab screenshots at time markers** so a digesting agent can
-**see the slides**, not just read the transcript.
+**Michael's ask:** he's curious about pulling a video's **comments** in alongside the transcript +
+slides, so a digest can factor in audience response / corrections / "the top comment caught the bug."
+**But not yet** — *"people on the internet can be pretty awful in their comments,"* so this needs a
+**security / safety pass FIRST** before comments are ever fed to a model or written to a doc.
 
-**Why it matters (live example):** the Google Cloud Tech "agentic" talks Michael surfaced
-(`study/yt/ai-native-databases-google-cloud.md` + the 47-video playlist being digested now) are
-**slide-heavy** — architecture diagrams, the benchmark numbers, product UI, the actual SQL on the
-slide. The transcript loses all of it. A digest built on transcript-only misses the densest content.
+**What the safety pass must cover (when we pick it up):**
+- **Prompt-injection / jailbreak defense** — comments are *untrusted user input*. A comment can carry
+  "ignore your instructions…" or worse. Any digest reading comments must treat them as DATA, never
+  instructions (delimit + label as untrusted; never let a comment steer the agent). This is the load-bearing one.
+- **Toxicity / abuse filtering** — drop or flag slurs, harassment, doxxing, NSFW before they reach a
+  model or a doc.
+- **Spam / low-signal pruning** — most comments are noise; keep top / most-relevant, not all.
+- **PII scrub** — comments leak personal info.
 
-**Shape (proposed):**
-- `yt_download_video(url)` — fetch the mp4 (gated/optional; big; store under `yt/{channel}/{id}/`,
-  gitignored like the rest of yt/). yt-dlp already does this.
-- `yt_frames(video_id, timestamps[] | interval)` — ffmpeg-extract frames at the given marks (or
-  every N sec / on scene-change) → `frames/{ts}.png`. Scene-change detection (`ffmpeg select=
-  'gt(scene,0.4)'`) is the cheap way to catch slide transitions automatically.
-- Then a digesting agent reads **transcript + the slide frames** together (a vision model — the
-  substrate already runs gemma-vision via `--mmproj`, the rich-docs pattern: text + page-pixels).
+**Shape (later):** a `yt_comments(video_id)` tool (yt-dlp `--write-comments` → `comments.json`) gated
+behind a sanitize+classify filter, with an opt-in flag so digests pull them only deliberately. Pairs
+naturally with the substrate's untrusted-input handling (same prompt-injection discipline).
 
-**Ties in:** this is the rich-docs/multimodal pattern (pg-ai-stewards P1–P4: text + page-pixels →
-vision) applied to **video** (transcript + slide-frames → vision). Same idea, new source. The
-substrate's playlist-digester could then digest slides, not just captions.
-
-— filed by pg-ai-stewards. Michael suggested this lane might build it. Not blocking; a clear,
-self-contained MCP enhancement.
+— filed by Michael 2026-06-27. NOT now; the security-safe pass is the gate. Noted so it isn't lost.
 
 ---
 
@@ -53,6 +48,15 @@ _(no other open signals)_
 
 ## Handled
 
+- **2026-06-27** — yt-mcp slide-frames enhancement (the spec'd signal) → **DONE + live-verified.**
+  Built `yt_download_video`, `yt_frames` (scene / interval / timestamps + timestamp-aligned
+  `frames.json`), and `yt_slides` (one-shot: chapters→scene→interval capture + narration-aligned
+  `slides.md`). Tested on the Cole Medin "New SDLC masterclass" — the slides surfaced the whitepaper's
+  Figure 5 / Table 1 and the benchmark numbers (52.8%→66.5%, +13.7 Terminal-Bench 2.0) the transcript
+  flattens; the whitepaper even names **"Trajectory Eval,"** validating the substrate trajectory-critic
+  signal. Commit `93b734ef` + two more this session. Tuning finding: scene-change under-fires on
+  smooth-scroll screen-shares → chapters or interval. Part B (substrate digester multimodal upgrade)
+  filed to the pg-ai-stewards inbox. Spec: `.spec/proposals/yt-slide-frames.md`.
 - **2026-06-22** — pg-ai-stewards "review the local-model / doc-construction
   session; apply to Garrison" → **DONE.** Mapped all 5 soak learnings against
   Garrison's actual loop code: MoE rig models (fixed a live 404), surgical-diffs

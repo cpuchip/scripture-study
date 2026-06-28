@@ -1,4 +1,120 @@
-## 📬 2026-06-25 (from general-workspace) — pg-ai-stewards = "the instantiation of the book"; embed a GENERALIZED north-star (Intent / step 1) on every call — OPEN (Michael's call, design settled in a live study)
+## 📬 2026-06-27 (from general-workspace) — teach the playlist-digester to SEE slides (transcript + slide-frames → vision) — IN PROGRESS (Part B build DELEGATED 2026-06-28, PR pending = Michael's Hinge)
+
+**▶ 2026-06-28 — Part B build delegated to a dev opus agent (PR pending).** Grounded the spec + machinery.
+**★ Key finding:** Part A (`yt_frames`/`yt_download_video` + `frames.go`/`slides.go`) is in the WORKSPACE
+`scripts/yt-mcp/`, NOT the OSS `cmd/yt-mcp/` (which the bridge builds) — so option (a) needs Part A
+**ported into `cmd/yt-mcp` first**, then **ffmpeg added to `bridge.Dockerfile`** (`WITH_YT` — it deliberately
+has none), then the vision digest stage. Phasing handed to the agent: **B1** port Part A + ffmpeg + prove
+`yt_frames` in-container on a real slide-heavy video · **B2** frames → substrate vision mechanism (reuse 47
+content_parts + 49 chat_attachments-as-images), aligned frames.json×cues.json · **B3** the "read slides"
+digest stage in `examples/playlist-digester.sql` (page frames in by handle). Oracle = virgin-smoke (core
+chain) + the e2e "it SEES the slide" proof (vision extracts slide content the transcript MISSED). PR = his
+Hinge (new capability = dominion_in_council). Spec: `.spec/proposals/yt-slide-frames.md`.
+
+**★ DOGFOOD FOLLOW-UP (from Michael, 2026-06-28) — once Part B is built, have the substrate review a
+video against itself.** Michael had general-workspace review **"The Agentic OS Setup That Will 10x
+Claude Code"** (Chase AI, `youtu.be/HRw-vP0j8OM`, 31 min) against pg-ai-stewards — workspace review at
+`study/yt/agentic-os-10x-claude-code-chase-ai.md`. He wants **the substrate to do the same review once
+it can SEE slides** (Part B). It's the natural acceptance test: point the playlist/video digester at that
+video, have it pull transcript + slides through the new vision stage, and produce its own "review against
+pg-ai-stewards" — then compare to the workspace version. The video is literally *about* building an
+agentic OS, so the substrate reviewing it against itself is a clean, meaningful dogfood. (Workspace
+review's TL;DR: his AIOS is the same vision one tier down — file-system-backed, single-operator, with the
+DB / multi-agent / verification / governance layers as hand-waves; two borrowable ideas = **session-mining
+as workflow-audit** and **a cheap index-map tier in front of embedding retrieval**.)
+
+✅ **yt-dlp version gotcha (RESOLVED here; matters for Part B's bridge image):** the video download first
+FAILED — yt-dlp 2026.03.13 hit **"n challenge solving failed"** (YouTube anti-bot). The fix was simply
+**updating yt-dlp (→ 2026.06.09)** — it then downloaded cleanly, *no JS-runtime / deno needed*; the stale
+version was the whole problem. **So pin a RECENT yt-dlp in `bridge.Dockerfile` and rebuild it periodically**
+— YouTube changes the challenge, so a months-old yt-dlp will silently fail on current videos. A
+progressive-format fallback (itag 18) is a reasonable deeper safety net. The workspace review now has slides
+(his "V.A.U.L.T." Jarvis-HUD dashboard + the `raw→wiki` Obsidian vault diagram — both confirm the
+file-system-backed, thin-UI characterization).
+
+— original signal below.
+
+## 📬 2026-06-27 (from general-workspace) — [original] teach the playlist-digester to SEE slides — SPEC'D, Part B is yours
+
+**Michael's ask:** the slide-heavy talks (the Google Cloud agentic-DB playlist being digested now) lose
+their densest content — diagrams, benchmark tables, the SQL on the slide — in a caption-only digest. Fix:
+the **rich-docs multimodal pattern you already have** (P1–P4: text + page-pixels → `gemma-vision` via
+`--mmproj`) applied to **video**: transcript + slide-frames → vision.
+
+**Spec (both halves):** `.spec/proposals/yt-slide-frames.md`. Part A (the workspace yt-MCP gets
+`yt_download_video` + `yt_frames`) is general-workspace's build. **Part B is yours:**
+
+- **The playlist/video digester should read the slides, not just the captions.** Add a "see slides"
+  step that feeds the vision model **the slide frames + transcript aligned by timestamp** (`frames.json`
+  × `cues.json` → "this slide + what was said over it"). Build via your existing doc-construction tool
+  loop, paging frames in by handle (don't echo all frames at once — same page-in discipline as rich-docs).
+- **Getting frames into the sandbox** — your call: (a) the `WITH_YT` bridge runs the shared recipe
+  in-container (add ffmpeg to the bridge image; reuse its yt-dlp) → `frames/` + `frames.json` beside the
+  transcript; or (b) dial the workspace yt-MCP's `yt_frames` over MCP. (a) keeps it self-contained.
+- **The shared recipe** (capped video → ffmpeg scene-change frames → timestamp-aligned manifest) is in the
+  spec, defined once so both Part A and Part B use the same thing. Reuse your doc-extract / page-pixels /
+  vision-dispatch machinery — the only new bits are the *source* (video → frames) and the *alignment*
+  (frame ↔ cue).
+
+— filed by general-workspace. Spec ready; Part B is the substrate-digester multimodal upgrade. Not blocking.
+
+---
+
+## 📬 2026-06-27 (from general-workspace) — BINEVAL ("Ask, Don't Judge"): binary-question judges + a *guarded* self-improvement loop — directly upgrades `56`/`59`/`74` — OPEN (Michael reviewed + likes it)
+
+**Michael handed us a paper and it lands squarely on your live work** — the trajectory-critic (`56`),
+the gated self-improvement loop (`59`), and the north-star (`74`). Paper + full review + the
+limitations: `books/papers/NOTES-bineval-ask-dont-judge.md` (PDF/text beside it). arXiv:2606.27226.
+
+**The idea (and what Michael liked):** instead of a holistic `REVIEW: passes / REVISE`, the judge
+answers N atomic **yes/no questions per dimension, each with a note** — a verdict that's *checkable*
+(binary) **and** *actionable* (the note says why, and the note is what feeds refinement). Decompose
+the criteria → answer independently → aggregate to calibrated scores. Training-free, task-agnostic;
+beats UniEval/G-Eval, **strongest on factual consistency**, and **helps the *weaker* model more**
+(small yes/no Qs are easier than a Likert score → good for a weak-local-model substrate).
+
+**Concrete applications:**
+- **`56` trajectory-critic → decompose the verdict.** Yes/no-with-notes per dimension instead of a
+  holistic pass/revise. You see *which* criterion failed, debuggable maturity gates.
+- **`59` self-improvement → BINEVAL is a concrete algorithm for it.** Failing questions → a note-taker
+  extracts lessons → dedup → rewrite the *specific* prompt substring → early-stop. **Cross-model
+  update** maps onto `model_capability` routing: a stronger reference model teaches the weaker local
+  model's prompt via their per-question *disagreements* (improve qwen/gemma without fine-tuning).
+- **`74` north-star → make it load-bearing, not a sticker.** The north-star *directions* ("welfare of
+  the soul over the metric," "point to the source," "preside-don't-compel") become binary questions
+  the critic asks each turn ("did this turn point to the source? y/n + why"). Exactly the
+  "load-bearing not wallpaper" concern from the north-star design, with a method attached.
+
+**★ Guardrails for `59` — the must-haves, straight from the paper's honest limitations:**
+1. **Cap iterations + select-best-on-validation.** The loop *degrades* after 1–2 rounds — accumulated
+   lessons become competing instructions ("instruction overload"). Early-stop is non-optional.
+2. **Promptable-vs-capability triage.** On a real capability/computational limit (counting, ratios),
+   *don't refine the prompt* — it's "unactionable and degrades performance"; escalate to a stronger
+   model (m2 capability-substitution) or a deterministic tool. **Diagnose ≠ repair.**
+3. **Don't over-decompose** broad/semantic criteria (relevance/taste) — over-atomizing makes the judge
+   *more severe than humans*, not better aligned. Keep those lighter.
+
+— filed by general-workspace. **Build is yours** (your stewardship over `56`/`59`/`74`); we reviewed +
+captured. Not blocking; a strong enhancement when you next touch the critic or self-improvement loop.
+
+---
+
+## 📬 2026-06-25 (from general-workspace) — pg-ai-stewards = "the instantiation of the book"; embed a GENERALIZED north-star (Intent / step 1) on every call — ✅ RESOLVED 2026-06-27 (BUILT)
+
+**✅ Resolved 2026-06-27 — both halves shipped.** (1) The north-star: `74-north-star.sql` (PR #13)
+— generic-default-in-core + operator-owned config (`north_star.why/source/directions`) +
+`render_north_star()` + re-authored `compose_system_prompt` (prepend FIRST, echo LAST). Load-bearing:
+the directions re-root the substrate's existing covenant behaviors so the why is the tie-breaker.
+Every-call confirmed (no scripture hardcoded in core; `ON CONFLICT DO NOTHING`; empty why opts out).
+virgin-smoke OK 65a/65b, fresh-image 00→74 GREEN. Michael's Col 3:17 + 2 Ne 32:9/25:26/D&C-121
+directions live in the overlay (`pg-ai-stewards-workspace/overlays/north-star.sql`, applied + clobber-
+check green). (2) README cross-link to `cpuchip/scripture-book` ("the substrate is the book's pattern
+instantiated; the North Star is step one") — done in the same PR. The original signal is preserved
+below for reference.
+
+---
+
+## 📬 [original, kept for reference] 2026-06-25 (from general-workspace) — embed a GENERALIZED north-star (Intent / step 1) on every call
 
 **Context:** in a live study session Michael landed two linked moves. The book *Beyond the Prompt*
 (`github.com/cpuchip/scripture-book`) is the **why** — the eleven-step creation pattern. **pg-ai-stewards

@@ -3,13 +3,32 @@ lane: general-workspace
 session_id: c4fef1d0-292c-4ad6-b6c5-76e2af1043c3
 status: active
 started: 2026-06-11T12:00:00
-last_active: 2026-06-26T15:38:23
+last_active: 2026-06-28T06:10:00
 ---
 
 > Note: this lane was previously filed under the typo `general-workspase.md`;
 > consolidated here (the hook-canonical spelling) 2026-06-13, typo file removed.
 
 ## Working on
+- **★ yt-MCP slide enhancement SHIPPED + Agentic-OS review 2026-06-28 (Part A done).** Built
+  `yt_download_video` + `yt_frames` (scene/interval/timestamps + timestamp-aligned `frames.json`) +
+  `yt_slides` (one-shot: chapters→scene→interval + narration-aligned `slides.md`) in `scripts/yt-mcp/`
+  (`frames.go`/`slides.go`; commits `93b734ef` + `4c3f6e7f`, not pushed). Spec both halves
+  `.spec/proposals/yt-slide-frames.md` — **Part B = pg-ai-stewards' substrate digester** (delegated,
+  PR pending). ★ ffmpeg-location override fixes a stale yt-dlp config. Live-verified scene+interval+
+  chapters. **Tested on the Cole Medin "New SDLC" video → enriched the harness study** (whitepaper Fig 5
+  NAMES "Trajectory Eval" = validates the substrate trajectory-critic; the 52.8→66.5 / +13.7
+  Terminal-Bench numbers the transcript flattens). **Reviewed Chase AI "Agentic OS" video vs
+  pg-ai-stewards** (`study/yt/agentic-os-10x-claude-code-chase-ai.md`): his AIOS = our vision one tier
+  down (file-system-backed; DB/multi-agent/verify/governance are hand-waves); steal = **session-mining**
+  + **cheap index-map tier**; dogfood note left for pg-ai-stewards (substrate reviews it after Part B).
+  **★ yt-dlp staleness lesson:** the "n challenge solving failed" video-download wall was a stale yt-dlp
+  (2026.03.13) — `pip install -U` → 2026.06.09 fixed it cleanly (NO deno); Part B bridge must pin a
+  recent yt-dlp + rebuild periodically. **★ Claude Code has NO MCP hot-reload** — rebuilding a local MCP
+  binary needs a full restart; rename-swap the locked `.exe`; memory `reference_claude_code_mcp_no_hot_reload`.
+  Read-before-quoting caught a subagent's cleaned 'verbatim' quotes → paraphrased the review. `yt_slides`
+  goes live on next CC restart. Inbox: comments-integration DEFERRED (security-gated — prompt-injection
+  is load-bearing); email/SMS parked. Journal `2026-06-28-yt-slide-enhancement-and-agentic-os-review.md`.
 - **★ Garrison — pg-ai-stewards local-model learnings APPLIED 2026-06-22** (acted on
   the doc-construction inbox signal). Mapped the substrate's 5 soak learnings against
   Garrison's real loop code: borrowed the MoE the rig now serves (`qwen3.6-35b-a3b` —

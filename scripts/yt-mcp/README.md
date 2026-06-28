@@ -5,7 +5,7 @@ MCP server that downloads YouTube video transcripts (via yt-dlp) and metadata, s
 ## Prerequisites
 
 - Go 1.21+
-- [yt-dlp](https://github.com/yt-dlp/yt-dlp) installed and on PATH
+- [yt-dlp](https://github.com/yt-dlp/yt-dlp) installed and on PATH — **keep it current** (`pip install -U yt-dlp`). YouTube changes its anti-bot challenge often; a months-old yt-dlp fails *video* downloads with `n challenge solving failed` even though formats list fine. (Transcript downloads are unaffected.)
 - [ffmpeg](https://ffmpeg.org/) on PATH — required by `yt_download_video` (merge) and `yt_frames` (frame extraction). If your yt-dlp config has a stale `--ffmpeg-location`, `yt_download_video` overrides it with the ffmpeg it finds on PATH.
 
 ## Build
