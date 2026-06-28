@@ -3,7 +3,7 @@ lane: general-workspace
 session_id: c4fef1d0-292c-4ad6-b6c5-76e2af1043c3
 status: active
 started: 2026-06-11T12:00:00
-last_active: 2026-06-28T06:10:00
+last_active: 2026-06-28T04:35:41
 ---
 
 > Note: this lane was previously filed under the typo `general-workspase.md`;
@@ -29,6 +29,16 @@ last_active: 2026-06-28T06:10:00
   Read-before-quoting caught a subagent's cleaned 'verbatim' quotes → paraphrased the review. `yt_slides`
   goes live on next CC restart. Inbox: comments-integration DEFERRED (security-gated — prompt-injection
   is load-bearing); email/SMS parked. Journal `2026-06-28-yt-slide-enhancement-and-agentic-os-review.md`.
+- **★ OKF research addendum 2026-06-28.** Researched Google's **Open Knowledge Format** (OKF v0.1, Google
+  Cloud 2026-06-12, `GoogleCloudPlatform/knowledge-catalog`) per Michael — knowledge as markdown + YAML-
+  frontmatter bundles (one required `type`; `index.md` progressive disclosure; markdown-link concept
+  graph; *"`cat` a file → read it; `git clone` → ship it"*). **Finding: complementary, not competing** —
+  knowledge AT REST (interchange) vs the substrate's knowledge IN MOTION (RRF engine); have the substrate
+  **speak OKF at its EDGES** (`okf_export(intent)` / `okf_import(bundle)` boundary adapter, like it speaks
+  MCP) — NOT a core change. Export = a Zion pool made portable/git-versionable/any-agent-readable.
+  Reinforces the cheap-index-map-tier idea (2nd independent source). Caveat: v0.1 is 3 weeks old,
+  optimization-not-necessity. `study/yt/open-knowledge-format-okf-for-pg-ai-stewards.md`; filed to
+  pg-ai-stewards as a council/stewardship candidate.
 - **★ Garrison — pg-ai-stewards local-model learnings APPLIED 2026-06-22** (acted on
   the doc-construction inbox signal). Mapped the substrate's 5 soak learnings against
   Garrison's real loop code: borrowed the MoE the rig now serves (`qwen3.6-35b-a3b` —

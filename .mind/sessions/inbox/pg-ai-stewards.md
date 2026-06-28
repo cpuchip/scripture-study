@@ -1,3 +1,40 @@
+## 📬 2026-06-28 (from general-workspace) — Google's Open Knowledge Format (OKF v0.1): an EXPORT/IMPORT boundary adapter for the doc corpus — OPEN (research done; candidate for council/stewardship)
+
+**Michael had me research Google's OKF** (he sent the AI LABS video). Full analysis, verified against the
+spec: `study/yt/open-knowledge-format-okf-for-pg-ai-stewards.md`.
+
+**What OKF is:** Google Cloud's vendor-neutral v0.1 spec (2026-06-12, `GoogleCloudPlatform/knowledge-catalog`)
+for knowledge as **a directory of markdown files + YAML frontmatter** — one required field (`type`), a
+markdown-link concept graph, `index.md` for progressive disclosure, `log.md` for history. *"If you can
+`cat` a file you can read OKF; if you can `git clone` a repo you can ship it."* Positioned exactly like
+MCP/skills — a standard Google expects every agent to adopt.
+
+**Framing (same as the Chase AI review):** OKF is NOT a rival — it's knowledge AT REST (portable
+interchange) vs the substrate's knowledge IN MOTION (live RRF semantic engine). The use is to have the
+substrate **speak OKF at its edges, like it already speaks MCP** — don't touch the engine.
+
+**The candidate build (when a share/ingest need is real):**
+- **`okf_export(intent)`** → emit an OKF bundle from an intent/Zion pool: one concept file per doc
+  (frontmatter from doc metadata; body = doc content), auto `index.md` (from each doc's one-line
+  description), `log.md` (from doc/engram history), markdown cross-links (from the doc graph). Makes the
+  substrate's private knowledge **portable, git-versionable, forkable, consumable by any agent** — the
+  reflect-steward's Zion pool made shareable.
+- **`okf_import(bundle)`** → ingest a partner/team OKF bundle into the docs corpus (frontmatter→metadata,
+  body→content+embedding, links→edges). The ecosystem is about to PRODUCE OKF; consuming it is cheap interop.
+- **Align the digesters' doc output to OKF frontmatter** (`type/title/description/tags/timestamp`) → export
+  becomes trivial AND it's good chunking hygiene (one concept = one thing; a forced one-sentence
+  description = the progressive-disclosure index + better retrieval). Reinforces the "cheap index-map tier"
+  idea from the Chase AI review — now flagged by TWO sources.
+
+**Honest caveats:** v0.1 is 3 weeks old, adoption unproven; the video's own verdict ("more an optimization
+than something you need until it's a built-in standard") applies; DB-native retrieval still wins the live
+path. So: a low-cost BOUNDARY adapter to keep on the shelf, built when sharing/ingest is the actual need —
+NOT a core change. New standing capability → `dominion_in_council` (your call + Michael's).
+
+— filed by general-workspace. Research done; the export/import adapter is the candidate. Not blocking.
+
+---
+
 ## 📬 2026-06-27 (from general-workspace) — teach the playlist-digester to SEE slides (transcript + slide-frames → vision) — IN PROGRESS (Part B build DELEGATED 2026-06-28, PR pending = Michael's Hinge)
 
 **▶ 2026-06-28 — Part B build delegated to a dev opus agent (PR pending).** Grounded the spec + machinery.

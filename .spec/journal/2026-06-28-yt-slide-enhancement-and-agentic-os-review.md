@@ -84,3 +84,30 @@ review → fix without friction.
 - yt-MCP Part A is **done** — spec'd, built, live-verified (scene + interval + chapters all proven),
   documented, committed. Off the board.
 - The "needs deno" theory for the n-challenge — **wrong, released.** It was just a stale yt-dlp.
+
+---
+
+## Addendum — Open Knowledge Format (OKF) research (same day)
+
+Michael sent one more video (AI LABS, "Google's New Release Just Fixed AI Systems") and asked what
+Google's **Open Knowledge Format** offers pg-ai-stewards. Researched against the primary spec, not the
+video (the video was accurate; its "OKP" was a transcription slip): **OKF v0.1** (Google Cloud Data Cloud
+team, 2026-06-12, repo `GoogleCloudPlatform/knowledge-catalog`) = knowledge as **a directory of markdown
+files + YAML frontmatter** — one required field (`type`), a markdown-link concept graph, `index.md` for
+progressive disclosure, `log.md` for history. *"If you can `cat` a file you can read OKF; if you can
+`git clone` a repo you can ship it."* Positioned like MCP/skills — a standard Google expects every agent
+to adopt.
+
+**Finding (same shape as the Chase AI review): complementary, not competing.** OKF is knowledge AT REST
+(portable interchange); pg-ai-stewards is knowledge IN MOTION (the live RRF semantic engine, which beats
+OKF navigation on the query path). The use is to have the substrate **speak OKF at its edges, like it
+already speaks MCP** — an `okf_export(intent)` / `okf_import(bundle)` boundary adapter (export turns a
+Zion pool into a portable, git-versionable, any-agent-readable artifact; import ingests partner bundles).
+Aligning the digesters' doc output to OKF frontmatter is good chunking hygiene and **reinforces the
+"cheap index-map tier" idea from the Chase AI review — now flagged by two independent sources.**
+
+**Honest caveat:** v0.1 is three weeks old, adoption unproven — "more an optimization than something you
+need until it's a built-in standard." So it's a low-cost boundary adapter to keep on the shelf, built when
+a sharing/ingest need is real — NOT a core change, the engine untouched. Writeup
+`study/yt/open-knowledge-format-okf-for-pg-ai-stewards.md`; filed to the pg-ai-stewards inbox as a
+council/stewardship candidate (a new standing capability = `dominion_in_council`).
