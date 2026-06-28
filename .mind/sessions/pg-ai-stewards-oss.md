@@ -3,7 +3,7 @@ lane: pg-ai-stewards-oss
 session_id: 7ea7faa4-688a-451a-ac68-b7ea662d4b81
 status: active
 started: 2026-06-09T18:00:00
-last_active: 2026-06-27T14:24:27
+last_active: 2026-06-28T09:03:28
 ---
 
 ## Working on
@@ -18,6 +18,19 @@ last_active: 2026-06-27T14:24:27
   commits unpushed (Michael's push).
 
 ## Claims
+- 2026-06-28T09:04:24 background (Bash): cd /c/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/pg-ai-stewards-oss echo "=== verify pg/bridge are image-based (no slow pg rebuild) ===" &
+- 2026-06-28T04:16:46 background (Bash): cd "C:/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/pg-ai-stewards-oss" && (docker build -t stewards-oss-pg:smoke78 extension/ > /tmp/pgbuil
+- 2026-06-28T04:12:18 background (Bash): cd "C:/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/pg-ai-stewards-oss" && docker build -t stewards-oss-pg:smoke78 extension/ > /tmp/pgbuild
+- 2026-06-28T04:00:37 background (Bash): cd "C:/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/pg-ai-stewards-oss" && docker build -t stewards-oss-pg:smoke78 extension/ 2>&1 | tail -3
+- 2026-06-28T03:50:15 background (Bash): cd "C:/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/pg-ai-stewards-oss" && docker build --build-arg WITH_YT=1 -f extension/bridge.Dockerfile
+- 2026-06-28T00:58:53 background (Bash): cd "C:/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/pg-ai-stewards-oss" docker build -t stewards-oss-pg:ci-shelf extension/ > /tmp/shelf_bui
+- 2026-06-27T18:36:03 background (Bash): docker build -t stewards-oss-pg:ci-engramwire extension/ > /tmp/ew-build2.log 2>&1; echo "BUILD_DONE exit=$?"
+- 2026-06-27T18:34:36 background (Bash): docker build -t stewards-oss-pg:ci-engramwire extension/ > /tmp/ew-build.log 2>&1; echo "BUILD_DONE exit=$?"
+- 2026-06-27T18:08:05 background (Bash): cd /c/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/pg-ai-stewards-oss && docker build -t stewards-oss-pg:ci-brainwire extension/ > /tmp/bw-b
+- 2026-06-27T16:57:05 background (Bash): echo "Build starting at $(date)" && docker build -t stewards-oss-pg:ci-northstar extension/ > /tmp/ns-build.log 2>&1 && echo "BUILD_DONE_OK $(date)" || echo "BU
+- 2026-06-27T15:00:38 background (Bash): cd "C:\Users\cpuch\Documents\code\stuffleberry\scripture-study\projects\pg-ai-stewards-oss" && gh run watch 28300153593 --exit-status > /tmp/ciwatch.log 2>&1; e
+- 2026-06-27T14:51:34 background (Bash): cd "C:\Users\cpuch\Documents\code\stuffleberry\scripture-study\projects\pg-ai-stewards-oss" && docker build -t stewards-oss-pg:test72 extension/ > /tmp/build72b
+- 2026-06-27T14:43:29 background (Bash): cd "C:\Users\cpuch\Documents\code\stuffleberry\scripture-study\projects\pg-ai-stewards-oss" && docker build -t stewards-oss-pg:test72 extension/ > /tmp/build72.
 - 2026-06-27T11:59:24 background (Bash): cd "C:/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/pg-ai-stewards-oss" && docker build -t stewards-oss-pg:ci extension/ 2>&1 | tail -40
 - 2026-06-27T07:01:37 background (Bash): cd /c/Users/cpuch/Documents/code/stuffleberry/scripture-study/yt/_playlist-gct echo "downloading auto-subs for 47 videos + cleaning vttâ†’txt (background)..." y
 - 2026-06-27T06:29:32 background (Bash): cd /c/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/pg-ai-stewards-oss/scripts/hinge-review echo "draining the remaining pending (--limit 40 
