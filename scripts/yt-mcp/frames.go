@@ -204,6 +204,7 @@ func extractByFilter(cfg *Config, videoPath, framesDir, webURL, prefix, selectFi
 }
 
 func extractAtTimestamps(cfg *Config, videoPath, framesDir, webURL string, ts []int) ([]Frame, error) {
+	removeGlob(filepath.Join(framesDir, "ts-*.png"))
 	var frames []Frame
 	for _, t := range ts {
 		if t < 0 {

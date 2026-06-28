@@ -40,10 +40,12 @@ go build -o yt-mcp.exe .
 | `yt_search` | Search across downloaded transcripts |
 | `yt_download_video` | Download the **video file** (mp4, resolution-capped). Large/optional; never auto-called. |
 | `yt_frames` | Extract **slide frames** via ffmpeg → `frames/*.png` + a timestamp-aligned `frames.json`. Modes: `scene` (default, one frame per slide via scene-change detection), `interval` (every N sec), `timestamps` (explicit marks). Returns the manifest, not the images. |
+| `yt_slides` | **One-shot study path.** Downloads transcript + video, extracts slide frames (auto-picks **chapters** → **scene** → **interval**), aligns each slide to the narration spoken over it, and writes a readable `slides.md`. The fastest way to *study* a slide talk. |
 
 Transcripts are stored as markdown under `{YT_DIR}/{channel}/{video_id}/` (`transcript.md`,
 `cues.json`, `metadata.json`). `yt_download_video` adds `video.mp4`; `yt_frames` adds `frames/*.png`
-+ `frames.json`. The video + frames are large and stay gitignored like the rest of `yt/`.
++ `frames.json`; `yt_slides` also writes `slides.md`. The video + frames are large and stay gitignored
+like the rest of `yt/`.
 
 ### Seeing the slides
 
@@ -56,3 +58,14 @@ yt_download_video { url }                         # fetch the mp4 (once)
 yt_frames { video_id, mode: "scene" }             # one PNG per slide + frames.json
 # → read the frames you care about; align each to the transcript by timestamp
 ```
+
+**Or just `yt_slides`** — the one-shot that does all of the above and writes the alignment for you:
+
+```
+yt_slides { url }                                 # transcript + video + frames + slides.md
+# → read slides.md: each slide image interleaved with the narration spoken over it
+```
+
+`yt_slides` auto-picks the capture strategy: **chapter markers** in the description (the best signal —
+chapters are the slide boundaries) → **scene-change** → **interval** (the fallback for smooth-scroll
+screen-shares like Excalidraw, where scene-change under-fires).

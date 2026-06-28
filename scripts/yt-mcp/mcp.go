@@ -214,6 +214,21 @@ func (s *MCPServer) handleToolsList(enc *json.Encoder, req *MCPRequest) {
 				},
 			},
 		},
+		{
+			"name":        "yt_slides",
+			"description": "One-shot to STUDY a slide talk: downloads the transcript + video, extracts slide frames (auto-picks the best strategy — chapter markers if the description has them, else scene-change, else even interval for smooth-scroll screen-shares), aligns each slide to the transcript narration spoken over it, and writes a readable slides.md. Returns the slide list; then read slides.md (slides + narration interleaved) and the frames/*.png you want. Requires yt-dlp + ffmpeg in PATH.",
+			"inputSchema": map[string]any{
+				"type": "object",
+				"properties": map[string]any{
+					"url":             map[string]any{"type": "string", "description": "YouTube video URL or 11-char ID"},
+					"video_id":        map[string]any{"type": "string", "description": "Video ID, if already downloaded (alternative to url)"},
+					"scene_threshold": map[string]any{"type": "number", "description": "scene-change sensitivity when scene mode is used (0..1, default 0.4)"},
+					"max_frames":      map[string]any{"type": "integer", "description": "cap on number of slides (default 60)"},
+					"max_height":      map[string]any{"type": "integer", "description": "cap video resolution in px (default 720)"},
+					"cookies":         map[string]any{"type": "string", "description": "Path to a Netscape cookies.txt for auth (overrides YT_COOKIE_FILE)"},
+				},
+			},
+		},
 	}
 
 	s.sendResult(enc, req.ID, map[string]any{"tools": tools})
@@ -244,6 +259,8 @@ func (s *MCPServer) handleToolsCall(enc *json.Encoder, req *MCPRequest) {
 		s.handleYtDownloadVideo(enc, req, params.Arguments)
 	case "yt_frames":
 		s.handleYtFrames(enc, req, params.Arguments)
+	case "yt_slides":
+		s.handleYtSlides(enc, req, params.Arguments)
 	default:
 		s.sendError(enc, req.ID, -32602, "Unknown tool", params.Name)
 	}
@@ -509,6 +526,78 @@ func (s *MCPServer) handleYtFrames(enc *json.Encoder, req *MCPRequest, args json
 	fmt.Fprintf(&b, "**%d slide frames** extracted to `%s/frames/` — read the PNGs you need; each is aligned to the transcript by timestamp:\n\n", len(frames), videoDir)
 	for _, f := range frames {
 		fmt.Fprintf(&b, "- **%s** — `%s`  ([watch](%s))\n", formatDuration(f.Sec), f.File, f.TLink)
+	}
+	s.sendToolResult(enc, req.ID, b.String())
+}
+
+// ── yt_slides ─────────────────────────────────────────────────────────────────
+
+func (s *MCPServer) handleYtSlides(enc *json.Encoder, req *MCPRequest, args json.RawMessage) {
+	var input struct {
+		URL            string  `json:"url"`
+		VideoID        string  `json:"video_id"`
+		SceneThreshold float64 `json:"scene_threshold"`
+		MaxFrames      int     `json:"max_frames"`
+		MaxHeight      int     `json:"max_height"`
+		Cookies        string  `json:"cookies"`
+	}
+	if err := json.Unmarshal(args, &input); err != nil {
+		s.sendError(enc, req.ID, -32602, "Invalid arguments", err.Error())
+		return
+	}
+
+	rawURL := input.URL
+	if rawURL == "" && input.VideoID != "" {
+		rawURL = CanonicalURL(input.VideoID)
+	}
+	if rawURL == "" {
+		s.sendError(enc, req.ID, -32602, "Missing required parameter", "url or video_id is required")
+		return
+	}
+
+	// 1. Ensure the transcript (best-effort — gives cues.json for narration
+	//    alignment; some videos have no subtitles, and slides still work without).
+	_, _ = DownloadVideo(s.cfg, rawURL, false, input.Cookies)
+
+	// 2. Ensure the video file.
+	videoPath, meta, err := DownloadVideoFile(s.cfg, rawURL, false, input.MaxHeight, input.Cookies)
+	if err != nil {
+		s.sendToolError(enc, req.ID, fmt.Sprintf("Video download failed: %v", err))
+		return
+	}
+	videoDir := filepath.Dir(videoPath)
+
+	// 3. Extract + align slides (auto-picks chapters → scene → interval).
+	slides, mode, err := BuildSlides(s.cfg, videoDir, meta.URL, meta, SlideOptions{
+		SceneThreshold: input.SceneThreshold,
+		MaxFrames:      input.MaxFrames,
+	})
+	if err != nil {
+		s.sendToolError(enc, req.ID, fmt.Sprintf("Slide extraction failed: %v", err))
+		return
+	}
+	if len(slides) == 0 {
+		s.sendToolResult(enc, req.ID, "No slides extracted.")
+		return
+	}
+
+	// 4. Write the readable interleaved doc.
+	docPath, err := WriteSlidesDoc(videoDir, meta, slides, mode)
+	if err != nil {
+		s.sendToolError(enc, req.ID, fmt.Sprintf("Writing slides.md failed: %v", err))
+		return
+	}
+
+	// 5. Respond with the slide index (the narration lives in slides.md, not echoed).
+	var b strings.Builder
+	fmt.Fprintf(&b, "**%d slides** from **%s** (capture: %s)\n\nRead `%s` — slide images interleaved with the narration spoken over each. Frame PNGs in `%s/frames/`.\n\n",
+		len(slides), meta.Title, mode, docPath, videoDir)
+	for _, sl := range slides {
+		head := formatDuration(sl.Sec)
+		if sl.Title != "" {
+			head += " — " + sl.Title
+		}
+		fmt.Fprintf(&b, "- **%s** — `%s`  ([watch](%s))\n", head, sl.File, sl.TLink)
 	}
 	s.sendToolResult(enc, req.ID, b.String())
 }
