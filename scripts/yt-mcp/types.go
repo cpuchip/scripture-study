@@ -35,8 +35,17 @@ type VideoMetadata struct {
 
 // Config holds runtime configuration for the yt-mcp server.
 type Config struct {
-	YTDir      string // Base directory for downloads (default: "./yt")
-	YtDlpPath  string // Path to yt-dlp executable (default: "yt-dlp")
-	StudyDir   string // Where evaluation docs go (default: "./study/yt")
-	CookieFile string // Path to Netscape-format cookie file for yt-dlp auth (optional)
+	YTDir          string // Base directory for downloads (default: "./yt")
+	YtDlpPath      string // Path to yt-dlp executable (default: "yt-dlp")
+	StudyDir       string // Where evaluation docs go (default: "./study/yt")
+	CookieFile     string // Path to Netscape-format cookie file for yt-dlp auth (optional)
+	FfmpegPath     string // Path to ffmpeg executable (default: "ffmpeg")
+	MaxVideoHeight int    // Cap on downloaded video resolution in px (default: 720)
+}
+
+// Frame is one extracted video frame (a slide), with the moment it appears.
+type Frame struct {
+	Sec   int    `json:"sec"`    // seconds into the video
+	File  string `json:"file"`   // path relative to the video dir, e.g. "frames/scene-0007.png"
+	TLink string `json:"t_link"` // clickable YouTube ?t= link at this moment
 }

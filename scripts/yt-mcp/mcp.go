@@ -6,6 +6,8 @@ import (
 	"fmt"
 	"io"
 	"os"
+	"path/filepath"
+	"strings"
 )
 
 // ── MCP JSON-RPC Types ───────────────────────────────────────────────────────
@@ -181,6 +183,37 @@ func (s *MCPServer) handleToolsList(enc *json.Encoder, req *MCPRequest) {
 				"required": []string{"query"},
 			},
 		},
+		{
+			"name":        "yt_download_video",
+			"description": "Download the actual VIDEO file (mp4, resolution-capped) for a YouTube URL via yt-dlp, into ./yt/{channel}/{video_id}/. Large files — gitignored, never auto-called. Use before yt_frames (or let yt_frames fetch on demand). Requires yt-dlp + ffmpeg in PATH.",
+			"inputSchema": map[string]any{
+				"type": "object",
+				"properties": map[string]any{
+					"url":        map[string]any{"type": "string", "description": "YouTube video URL or 11-char ID"},
+					"force":      map[string]any{"type": "boolean", "description": "Re-download even if a video file already exists. Default: false"},
+					"max_height": map[string]any{"type": "integer", "description": "Cap video resolution in px (default 720; slides are legible at 720p)"},
+					"cookies":    map[string]any{"type": "string", "description": "Path to a Netscape cookies.txt for auth (overrides YT_COOKIE_FILE)"},
+				},
+				"required": []string{"url"},
+			},
+		},
+		{
+			"name":        "yt_frames",
+			"description": "Extract slide/keyframe screenshots from a downloaded video using ffmpeg, into ./yt/{channel}/{video_id}/frames/, and write a timestamp-aligned frames.json. Default mode 'scene' auto-captures one frame per slide (scene-change detection). Returns the frame MANIFEST (timestamps + paths + ?t= links) — NOT the images; read the PNGs you want afterward, aligning to the transcript by timestamp. Fetches the video first if only a URL is given. Requires ffmpeg in PATH.",
+			"inputSchema": map[string]any{
+				"type": "object",
+				"properties": map[string]any{
+					"video_id":        map[string]any{"type": "string", "description": "Video ID of an already-downloaded video"},
+					"url":             map[string]any{"type": "string", "description": "YouTube URL (downloads the video first if not already present)"},
+					"mode":            map[string]any{"type": "string", "description": "scene (default — one frame per slide via scene-change) | interval (every N sec) | timestamps (explicit marks)"},
+					"scene_threshold": map[string]any{"type": "number", "description": "scene mode: 0..1, higher = fewer frames (default 0.4)"},
+					"every_sec":       map[string]any{"type": "integer", "description": "interval mode: seconds between frames (default 30)"},
+					"timestamps":      map[string]any{"type": "array", "items": map[string]any{"type": "integer"}, "description": "timestamps mode: seconds into the video to grab a frame at"},
+					"max_frames":      map[string]any{"type": "integer", "description": "cap on number of frames (default 200; over-cap is evenly sampled across the video)"},
+					"cookies":         map[string]any{"type": "string", "description": "cookies.txt path, if it has to download the video"},
+				},
+			},
+		},
 	}
 
 	s.sendResult(enc, req.ID, map[string]any{"tools": tools})
@@ -207,6 +240,10 @@ func (s *MCPServer) handleToolsCall(enc *json.Encoder, req *MCPRequest) {
 		s.handleYtList(enc, req, params.Arguments)
 	case "yt_search":
 		s.handleYtSearch(enc, req, params.Arguments)
+	case "yt_download_video":
+		s.handleYtDownloadVideo(enc, req, params.Arguments)
+	case "yt_frames":
+		s.handleYtFrames(enc, req, params.Arguments)
 	default:
 		s.sendError(enc, req.ID, -32602, "Unknown tool", params.Name)
 	}
@@ -293,6 +330,10 @@ func (s *MCPServer) handleYtGet(enc *json.Encoder, req *MCPRequest, args json.Ra
 		transcript,
 	)
 
+	if frames := LoadFrames(dir); len(frames) > 0 {
+		response += fmt.Sprintf("\n\n---\n\n**%d slide frames available** in `%s/frames/` (see frames.json; read individual PNGs as needed).", len(frames), dir)
+	}
+
 	s.sendToolResult(enc, req.ID, response)
 }
 
@@ -368,6 +409,122 @@ func (s *MCPServer) handleYtSearch(enc *json.Encoder, req *MCPRequest, args json
 	}
 
 	s.sendToolResult(enc, req.ID, response)
+}
+
+// ── yt_download_video ─────────────────────────────────────────────────────────
+
+func (s *MCPServer) handleYtDownloadVideo(enc *json.Encoder, req *MCPRequest, args json.RawMessage) {
+	var input struct {
+		URL       string `json:"url"`
+		Force     bool   `json:"force"`
+		MaxHeight int    `json:"max_height"`
+		Cookies   string `json:"cookies"`
+	}
+	if err := json.Unmarshal(args, &input); err != nil {
+		s.sendError(enc, req.ID, -32602, "Invalid arguments", err.Error())
+		return
+	}
+	if input.URL == "" {
+		s.sendError(enc, req.ID, -32602, "Missing required parameter", "url is required")
+		return
+	}
+
+	videoPath, meta, err := DownloadVideoFile(s.cfg, input.URL, input.Force, input.MaxHeight, input.Cookies)
+	if err != nil {
+		s.sendToolError(enc, req.ID, fmt.Sprintf("Video download failed: %v", err))
+		return
+	}
+
+	size := ""
+	if info, e := os.Stat(videoPath); e == nil {
+		size = " (" + humanSize(info.Size()) + ")"
+	}
+	resp := fmt.Sprintf("**Downloaded video:** %s\n**Channel:** %s\n**Duration:** %s\n**Saved to:** %s%s\n\nNext: `yt_frames` to extract slide frames (default scene-change mode = one frame per slide).",
+		meta.Title, meta.Channel, formatDuration(meta.Duration), videoPath, size)
+	s.sendToolResult(enc, req.ID, resp)
+}
+
+// ── yt_frames ─────────────────────────────────────────────────────────────────
+
+func (s *MCPServer) handleYtFrames(enc *json.Encoder, req *MCPRequest, args json.RawMessage) {
+	var input struct {
+		VideoID        string  `json:"video_id"`
+		URL            string  `json:"url"`
+		Mode           string  `json:"mode"`
+		SceneThreshold float64 `json:"scene_threshold"`
+		EverySec       int     `json:"every_sec"`
+		Timestamps     []int   `json:"timestamps"`
+		MaxFrames      int     `json:"max_frames"`
+		Cookies        string  `json:"cookies"`
+	}
+	if err := json.Unmarshal(args, &input); err != nil {
+		s.sendError(enc, req.ID, -32602, "Invalid arguments", err.Error())
+		return
+	}
+
+	var videoDir, webURL string
+	switch {
+	case input.VideoID != "":
+		dir, err := FindVideoDir(s.cfg.YTDir, input.VideoID)
+		if err != nil {
+			s.sendToolError(enc, req.ID, err.Error())
+			return
+		}
+		videoDir = dir
+		webURL = CanonicalURL(input.VideoID)
+		if findVideoFile(videoDir) == "" {
+			s.sendToolError(enc, req.ID, fmt.Sprintf("No video file for %s — run yt_download_video first (or call yt_frames with `url` to fetch it).", input.VideoID))
+			return
+		}
+	case input.URL != "":
+		videoPath, meta, err := DownloadVideoFile(s.cfg, input.URL, false, 0, input.Cookies)
+		if err != nil {
+			s.sendToolError(enc, req.ID, fmt.Sprintf("Video download failed: %v", err))
+			return
+		}
+		videoDir = filepath.Dir(videoPath)
+		webURL = meta.URL
+	default:
+		s.sendToolError(enc, req.ID, "Either video_id or url is required")
+		return
+	}
+
+	frames, err := ExtractFrames(s.cfg, videoDir, webURL, FrameOptions{
+		Mode:           input.Mode,
+		SceneThreshold: input.SceneThreshold,
+		EverySec:       input.EverySec,
+		Timestamps:     input.Timestamps,
+		MaxFrames:      input.MaxFrames,
+	})
+	if err != nil {
+		s.sendToolError(enc, req.ID, fmt.Sprintf("Frame extraction failed: %v", err))
+		return
+	}
+	if len(frames) == 0 {
+		s.sendToolResult(enc, req.ID, "No frames extracted (try `interval` mode, or a lower scene_threshold).")
+		return
+	}
+
+	var b strings.Builder
+	fmt.Fprintf(&b, "**%d slide frames** extracted to `%s/frames/` — read the PNGs you need; each is aligned to the transcript by timestamp:\n\n", len(frames), videoDir)
+	for _, f := range frames {
+		fmt.Fprintf(&b, "- **%s** — `%s`  ([watch](%s))\n", formatDuration(f.Sec), f.File, f.TLink)
+	}
+	s.sendToolResult(enc, req.ID, b.String())
+}
+
+// humanSize renders a byte count as a friendly size.
+func humanSize(n int64) string {
+	const unit = 1024
+	if n < unit {
+		return fmt.Sprintf("%d B", n)
+	}
+	div, exp := int64(unit), 0
+	for v := n / unit; v >= unit; v /= unit {
+		div *= unit
+		exp++
+	}
+	return fmt.Sprintf("%.1f %cB", float64(n)/float64(div), "KMGT"[exp])
 }
 
 // ── Response Helpers ─────────────────────────────────────────────────────────
