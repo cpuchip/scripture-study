@@ -11,6 +11,7 @@ Rules are added one at a time, each precision-tuned against the real corpus.
 |------|---------|--------|
 | `scripture_verbatim.py` | quoted text next to a scripture link that isn't verbatim in the verse | ✅ built 2026-06-13 |
 | `link_validate.py` | broken / mis-pathed / directory links; scripture label↔path mismatch | ✅ built 2026-06-13 |
+| `voice_lint.py` | AI-tic drift: cut-list phrases, meta-narration (hard); em-dash density (advisory) | ✅ built 2026-06-29 |
 | (verify-quotes) | Webster 1913-as-1828 — lives at `scripts/verify-quotes/` | ✅ shipped |
 | citation-depth-2, counted-claim, … | roadmap | — |
 
@@ -83,3 +84,36 @@ quoter's `resolver` for the label→file map. Objective — a path is right or w
 so findings are safe to just fix. Note: scratch and deeply-nested working files
 often carry wrong-*depth* gospel-library links copied from a shallower parent;
 exclude `.scratch` for a routine run.
+
+## voice-lint
+
+```sh
+python scripts/study-lint/voice_lint.py study/foo.md ...
+find study -name '*.md' | grep -vE '.audit|.scratch' | xargs python scripts/study-lint/voice_lint.py
+```
+
+The mechanical half of the writing-voice rules (CLAUDE.md § Writing Voice,
+`.mind/principles.md` § Voice Discipline) made deterministic, so the agent's own
+AI-tic drift is caught before Michael has to police "a common opus phrasing for us"
+by hand. **Two tiers, deliberately** (judges, not executors):
+
+- **HARD** (exit 1) — the **cut-list** phrases ("let that land", "that changes
+  everything", …) and **meta-narration** ("what I notice:", "section N is the
+  answer"). These exact phrases are unambiguous tics; a flag is a real violation.
+- **ADVISORY** (exit 0, `~adv`) — **em-dash density** (>1 prose em-dash per unit).
+  A judgment call by nature: even Michael's approved baseline studies run ~2/unit,
+  so the rule-as-written ("one per paragraph max") is stricter than the lived
+  practice. The detector *surfaces* the density and lets the writer decide — it does
+  not gate on it, and it is not tuned to make the baselines pass (that would be
+  fixing toward expectation).
+
+Precision tuning (v1): markdown table rows are skipped (not prose); each list item
+is budgeted on its own (a list of definition dashes is not one over-dashed
+paragraph); citation/attribution dashes (`— [Source]`, `— Author (1990)`) don't
+count. **Day-one find:** the cut-list rule caught "that changes everything" shipped
+in `study/art-of-presidency.md` — a real tic a prose read missed.
+
+**Known recall gaps (v1, by design):** therefore/but-vs-"and then" transitions, the
+"isn't just X — it's Y" formula at section cadence, and closing-refrain restatement
+are semantic and left to the human voice-audit. Accepted-flags ignore list:
+`scripts/study-lint/voice_accepted.tsv` (`relpath <TAB> rule <TAB> first ~40 chars`).
