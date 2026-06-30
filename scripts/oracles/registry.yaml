@@ -1,0 +1,44 @@
+# Oracle registry — the deterministic checks and the autonomy each one unlocks.
+#
+# This is the thin "framework" half of oracle-floored autonomy
+# (.spec/proposals/oracle-floored-autonomy.md): not a re-abstraction of the
+# checks (they share too little code), but the map that ties each oracle to the
+# DECISION-CLASS it unlocks. run.py reads this; the CLAUDE.md "the oracle is the
+# switch" rule consumes the verdict — a green in-scope oracle moves its
+# decision-class from surface-first to act-and-report.
+#
+# Each oracle:
+#   name       — display name
+#   run        — command; {files} is replaced by the space-joined in-scope files
+#   guarantees — what a green run proves
+#   scope      — path globs (relative to repo root; ** crosses directories)
+#   unlocks    — the decision-class that becomes act-and-report when green
+#   tier       — hard (gates) | advisory (surfaces, never gates)
+oracles:
+  - name: voice-lint
+    run: python scripts/study-lint/voice_lint.py {files}
+    guarantees: no cut-list / meta-narration tics (hard); em-dash density surfaced (advisory)
+    scope: ["study/**/*.md", "lessons/**/*.md", "becoming/**/*.md"]
+    unlocks: prose-voice-fidelity
+    tier: hard
+
+  - name: scripture-verbatim
+    run: python scripts/study-lint/scripture_verbatim.py {files}
+    guarantees: quoted text next to a scripture link is verbatim in the verse
+    scope: ["study/**/*.md", "lessons/**/*.md"]
+    unlocks: quote-accuracy
+    tier: hard
+
+  - name: link-validate
+    run: python scripts/study-lint/link_validate.py {files}
+    guarantees: no broken / directory / label-path-mismatch markdown links
+    scope: ["study/**/*.md", "lessons/**/*.md"]
+    unlocks: link-integrity
+    tier: hard
+
+  - name: verify-quotes
+    run: python scripts/verify-quotes/verify-quotes.py {files}
+    guarantees: Webster quotes are genuine 1828 (not 1913)
+    scope: ["study/**/*.md"]
+    unlocks: webster-quote-accuracy
+    tier: hard
