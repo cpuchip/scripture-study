@@ -97,7 +97,42 @@ as the book revoicing.
 3. **Stand one up against the real DAW and make one real track** — verify on the real
    path. That bounce is the proof, the way a green oracle is the proof everywhere else.
 
+## Verification on the real path (2026-06-29) — Orpheus is pre-alpha
+
+Michael picked REAPER (licensed + installed) and liked Orpheus. Cloned it to
+`external_context/orpheus` and **read the source, not the README.** Finding, verified:
+
+- **Orpheus is M0 only.** Every composition/analysis/transform tool is
+  `raise NotImplementedError` — `midi.py` (write a note), `tracks.py`, `analyze.py`,
+  `apply.py`, `compose.py`, all of it. The ONLY working tool is `get_connection_status`.
+  It connects to REAPER and confirms the connection. It cannot yet make a sound. The
+  beautiful README (north-star demo, comparison table) is the roadmap: v0.1 "explain" is
+  weeks out, v0.3 "transform" is months out. A textbook Practice-7 ("assume it will lie")
+  catch — the README is the most finished thing in the repo.
+- **Orpheus's real value today:** its architecture (the file-JSON Lua bridge is the
+  proven-correct way to drive REAPER), its `docs/frontier-analysis.md` (it read every
+  competing REAPER MCP), and its covenant-shaped philosophy (analyze → explain →
+  recommend-with-reasons → human-approve → editable). Worth watching, or contributing to.
+
+**The real path to music today (both verified built — 0 NotImplementedError, hundreds of
+live REAPER API calls):**
+- **`xDarkzx/Reaper-MCP`** — 139 real tools, hardened bridge (heartbeat / static dispatch /
+  per-call caps), **25 mastering style profiles** (LUFS/EQ per subgenre), Apache-2.0. The
+  cleanest "build + mix + master" pick.
+- **`shiehn/total-reaper-mcp`** — the deepest (~193 tools, 1,224 REAPER calls), best NL DSL,
+  and a **tool-profile system** that loads a subset so the 128-tool cap / context window
+  doesn't blow (relevant: 139–193 tools is a lot to add to Claude Code — same problem our
+  own pg-ai-stewards tool-shelf solves).
+
+Both use the SAME Lua-bridge setup Orpheus would have needed, so no setup is wasted.
+
 ## Next step
 
-Michael picks the DAW (or says "sketch layer first"). Then I stand up the server, wire it,
-and we make one real piece end-to-end against his taste.
+Michael picks the production server (lean **xDarkzx** for a clean first run, or **shiehn**
+for depth + tool-profiles). Then: run the FastMCP server → run the Lua bridge inside REAPER
+→ wire as an MCP in Claude Code (a standing capability + a restart, no hot reload — his ok)
+→ make **one real track** end-to-end. That bounce is the proof. All local, all sovereign —
+nothing here can be pulled the way Fable was.
+
+Strudel (`strudel.cc`, the JS TidalCycles) is the parallel browser-native, no-DAW,
+fully-local live-coding path — its own scout when Michael wants it.
