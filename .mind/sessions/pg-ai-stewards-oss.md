@@ -3,7 +3,7 @@ lane: pg-ai-stewards-oss
 session_id: 7ea7faa4-688a-451a-ac68-b7ea662d4b81
 status: active
 started: 2026-06-09T18:00:00
-last_active: 2026-06-28T09:03:28
+last_active: 2026-07-01T00:07:16
 ---
 
 ## Working on
@@ -18,6 +18,22 @@ last_active: 2026-06-28T09:03:28
   commits unpushed (Michael's push).
 
 ## Claims
+- 2026-06-30T21:13:20 background (Bash): cd "C:/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/pg-ai-stewards-oss" && { echo "=== BUILD ==="; docker build -t stewards-oss-pg:mp extens
+- 2026-06-30T20:17:26 background (Bash): cd "C:/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/pg-ai-stewards-oss" && { echo "=== BUILD START ==="; docker build -t stewards-oss-pg:por
+- 2026-06-30T10:31:13 background (Bash): cd /c/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/pg-ai-stewards-oss docker build -t stewards-oss-pg:ci extension/ 2>&1 | tail -6 if ! dock
+- 2026-06-30T10:25:27 background (Bash): cd /c/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/pg-ai-stewards-oss docker build -t stewards-oss-pg:ci extension/ 2>&1 | tail -8 if ! dock
+- 2026-06-30T10:21:52 background (Bash): cd /c/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/pg-ai-stewards-oss echo "=== rebuild (incremental â€” only 81's embedded SQL changed) ===
+- 2026-06-30T10:18:16 background (Bash): cd /c/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/pg-ai-stewards-oss echo "=== building extension image (cargo pgrx â€” this is the long po
+- 2026-06-30T09:23:23 background (Bash): for i in $(seq 1 150); do   active=$(MSYS_NO_PATHCONV=1 docker exec stewards-oss-pg psql -U stewards -d stewards -At -c "SELECT count(1) FROM stewards.work_queu
+- 2026-06-30T09:15:35 background (Bash): for i in $(seq 1 150); do   active=$(MSYS_NO_PATHCONV=1 docker exec stewards-oss-pg psql -U stewards -d stewards -At -c "SELECT count(1) FROM stewards.work_queu
+- 2026-06-30T09:07:11 background (Bash): for i in $(seq 1 150); do   active=$(MSYS_NO_PATHCONV=1 docker exec stewards-oss-pg psql -U stewards -d stewards -At -c "SELECT count(1) FROM stewards.work_queu
+- 2026-06-30T09:05:03 background (Bash): for i in $(seq 1 130); do   active=$(MSYS_NO_PATHCONV=1 docker exec stewards-oss-pg psql -U stewards -d stewards -At -c "SELECT count(1) FROM stewards.work_queu
+- 2026-06-30T07:50:24 background (Bash): for sz in 9B 35B; do   echo "===== Ornith-1.0-$sz ====="   lms get "https://huggingface.co/deepreinforce-ai/Ornith-1.0-$sz-GGUF@Q4_K_M" --gguf -y 2>&1 | tail -6
+- 2026-06-30T07:48:22 background (Bash): for repo in Ornith-1.0-9B-GGUF Ornith-1.0-35B-GGUF Ornith-1.0-31B-GGUF; do   echo "===== $repo ====="   lms get "deepreinforce-ai/$repo@Q4_K_M" --gguf -y 2>&1 |
+- 2026-06-30T05:53:01 background (Bash): sleep 25 PSQL() { MSYS_NO_PATHCONV=1 docker exec stewards-oss-pg psql -U stewards -d stewards -At "$@" 2>&1; } echo "=== validate the pin: gemma arm running on 
+- 2026-06-30T00:10:13 background (Bash): for i in $(seq 1 110); do   active=$(MSYS_NO_PATHCONV=1 docker exec stewards-oss-pg psql -U stewards -d stewards -At -c "SELECT count(1) FROM stewards.work_queu
+- 2026-06-30T00:04:14 background (Bash): sleep 40 PSQL() { MSYS_NO_PATHCONV=1 docker exec stewards-oss-pg psql -U stewards -d stewards -At "$@" 2>&1; } echo "=== VALIDATION: treatment bodies now carryi
+- 2026-06-29T23:18:26 background (Bash): for i in $(seq 1 80); do   active=$(MSYS_NO_PATHCONV=1 docker exec stewards-oss-pg psql -U stewards -d stewards -At -c "SELECT count(1) FROM stewards.work_queue
 - 2026-06-28T09:04:24 background (Bash): cd /c/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/pg-ai-stewards-oss echo "=== verify pg/bridge are image-based (no slow pg rebuild) ===" &
 - 2026-06-28T04:16:46 background (Bash): cd "C:/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/pg-ai-stewards-oss" && (docker build -t stewards-oss-pg:smoke78 extension/ > /tmp/pgbuil
 - 2026-06-28T04:12:18 background (Bash): cd "C:/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/pg-ai-stewards-oss" && docker build -t stewards-oss-pg:smoke78 extension/ > /tmp/pgbuild

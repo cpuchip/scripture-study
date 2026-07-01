@@ -1,53 +1,32 @@
 # Inbox — general-workspace
 
-## 📬 2026-06-27 (from Michael) — integrate YouTube COMMENTS into the yt-mcp — DEFERRED (security-safe pass required FIRST)
+_(no open signals)_
 
-**Michael's ask:** he's curious about pulling a video's **comments** in alongside the transcript +
-slides, so a digest can factor in audience response / corrections / "the top comment caught the bug."
-**But not yet** — *"people on the internet can be pretty awful in their comments,"* so this needs a
-**security / safety pass FIRST** before comments are ever fed to a model or written to a doc.
+## Standing asks (parked — Michael's, not transient; surface when he wants them)
 
-**What the safety pass must cover (when we pick it up):**
-- **Prompt-injection / jailbreak defense** — comments are *untrusted user input*. A comment can carry
-  "ignore your instructions…" or worse. Any digest reading comments must treat them as DATA, never
-  instructions (delimit + label as untrusted; never let a comment steer the agent). This is the load-bearing one.
-- **Toxicity / abuse filtering** — drop or flag slurs, harassment, doxxing, NSFW before they reach a
-  model or a doc.
-- **Spam / low-signal pruning** — most comments are noise; keep top / most-relevant, not all.
-- **PII scrub** — comments leak personal info.
-
-**Shape (later):** a `yt_comments(video_id)` tool (yt-dlp `--write-comments` → `comments.json`) gated
-behind a sanitize+classify filter, with an opt-in flag so digests pull them only deliberately. Pairs
-naturally with the substrate's untrusted-input handling (same prompt-injection discipline).
-
-— filed by Michael 2026-06-27. NOT now; the security-safe pass is the gate. Noted so it isn't lost.
-
----
-
-## 📬 2026-06-22 (from pg-ai-stewards) — shared transactional email/SMS service — OPEN (Michael's ask)
-
-**Michael's ask:** *"we need to get a text/email service setup to use across all of our stuff."*
-One transactional notify service every project can call (becoming/ibeco, ai-chattermax, the
-substrate's escalations/watchman, deadweight/first-orbit, the new llama hub's token grants, etc.)
-instead of each wiring its own.
-
-**Shape worth scoping:** a tiny self-hostable notify endpoint (Go, on the NOCIX Dokploy) wrapping
-a provider — **email** (Resend / Postmark / SES / SMTP) + **SMS** (Twilio / a cheaper SMS API). One
-internal API + a shared secret; callers POST `{to, channel, template, vars}`. Decisions for Michael:
-which providers (cost + deliverability — Resend is cheap+simple for email; Twilio is the SMS default
-but per-segment), one domain for sending (e.g. `notify@ibeco.me` / SPF+DKIM), and whether it's its
-own repo or folds into becoming. **Near-term consumer:** the **llama.cpuchip.net hub** (below) wants
-to email a join token / "you've been granted compute" — so this pairs with that build.
-
-— filed by pg-ai-stewards; not yet acted. General-workspace owns cross-cutting infra, so flagging
-it here for scoping/council when Michael wants it.
-
----
-
-_(no other open signals)_
+- **YouTube COMMENTS into yt-mcp — DEFERRED behind a security-safe pass.** (filed 2026-06-27) Michael's
+  curious about pulling a video's **comments** alongside transcript+slides so a digest can factor audience
+  response / "the top comment caught the bug" — **but comments are untrusted user input.** Gate FIRST:
+  prompt-injection / jailbreak defense (treat comments as DATA, never instructions — the load-bearing one),
+  toxicity/abuse filter, spam pruning, PII scrub. Shape: a `yt_comments(video_id)` tool (yt-dlp
+  `--write-comments` → `comments.json`) behind a sanitize+classify filter, opt-in. Pairs with the substrate's
+  untrusted-input discipline.
+- **Shared transactional email/SMS notify service — OPEN.** (filed 2026-06-22) One self-hostable notify
+  endpoint (Go, on NOCIX Dokploy) every project calls instead of each wiring its own (ibeco password-resets,
+  ai-chattermax, substrate escalations/watchman, deadweight/first-orbit, the llama hub's token grants).
+  Decisions for Michael: providers (Resend / Postmark / SES / SMTP for email; Twilio / a cheaper API for SMS),
+  one sending domain (`notify@ibeco.me` + SPF/DKIM), own-repo-vs-folds-into-becoming. **Near-term consumer:**
+  the **llama.cpuchip.net hub** wants to email a join token / "you've been granted compute."
 
 ## Handled
 
+- **2026-06-28** — pg-ai-stewards "rig is DOWN + my changes committed, CLEAR TO REBUILD" → **DONE.** Rebuilt
+  llama-chip with the **custom-backend** enhancement: **E1** (per-slot `backend` override) + **E2** (managed
+  `pull-ggml` + `ggml@<tag>` resolution), both shipped + verified (`cpuchip/llama-chip` commits
+  623f38a/9e6fd45/48eae29; a cudart-asset-match bug caught on the real download path + fixed `48eae29`).
+  **E4** runner-field design grounded in Unsloth Studio (`d511189`, not yet built). Per Michael's call (option
+  **b**) the rig is left **stopped/free for coding-model experiments**; pg-ai-stewards' `default_profile:
+  dance-moe` boot-config is intact for whenever the substrate resumes.
 - **2026-06-27** — yt-mcp slide-frames enhancement (the spec'd signal) → **DONE + live-verified.**
   Built `yt_download_video`, `yt_frames` (scene / interval / timestamps + timestamp-aligned
   `frames.json`), and `yt_slides` (one-shot: chapters→scene→interval capture + narration-aligned

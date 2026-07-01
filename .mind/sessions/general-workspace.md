@@ -3,7 +3,7 @@ lane: general-workspace
 session_id: c4fef1d0-292c-4ad6-b6c5-76e2af1043c3
 status: active
 started: 2026-06-11T12:00:00
-last_active: 2026-06-28T09:10:27
+last_active: 2026-07-01T00:08:18
 ---
 
 > Note: this lane was previously filed under the typo `general-workspase.md`;
@@ -228,6 +228,26 @@ last_active: 2026-06-28T09:10:27
   post-compact grounding.
 
 ## Claims
+- 2026-06-30T18:40:14 background (Bash): cd "C:/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/loom" && docker build -t loom-claude -f docker/Dockerfile.claude . > "C:/Users/cpuch/App
+- 2026-06-30T09:04:48 background (Bash): cd "C:/Users/cpuch/Documents/code/stuffleberry/scripture-study/external_context" && git clone --depth 1 https://github.com/statelyai/sketch.git stately-sketch 2
+- 2026-06-29T22:18:58 background (Bash): cd "C:/Users/cpuch/Documents/code/stuffleberry/scripture-study/external_context" && (git clone --depth 1 https://github.com/OpenHands/software-agent-sdk.git ope
+- 2026-06-29T22:05:23 background (Bash): cd "C:/Users/cpuch/Documents/code/stuffleberry/scripture-study/external_context" && echo "=== cloning OpenHands (shallow) ===" && (git clone --depth 1 https://g
+- 2026-06-28T23:45:49 background (PowerShell): $gutted = "C:\Users\cpuch\.unsloth\studio\unsloth_studio" Write-Output "=== confirm it's the gutted dir (no interpreter), then remove ===" "  has python.exe: $(
+- 2026-06-28T23:44:27 background (PowerShell): Set-Location "C:\Users\cpuch\Documents\code\stuffleberry\scripture-study\external_context\unsloth"; Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass -
+- 2026-06-28T23:41:29 background (Bash): SCRATCH="C:/Users/cpuch/AppData/Local/Temp/claude/C--Users-cpuch-Documents-code-stuffleberry-scripture-study/c4fef1d0-292c-4ad6-b6c5-76e2af1043c3/scratchpad" SR
+- 2026-06-28T23:28:09 background (Bash): hf download unsloth/diffusiongemma-26B-A4B-it-GGUF --include "*Q4_K_M*" --local-dir "C:/Users/cpuch/.unsloth/models/diffusiongemma-26B-A4B-it-GGUF" > "C:/Users/
+- 2026-06-28T22:58:21 background (PowerShell): Set-Location "C:\Users\cpuch\Documents\code\stuffleberry\scripture-study\external_context\unsloth"; Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass -
+- 2026-06-28T22:03:38 background (Bash): cd "C:/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/llama-chip" && SCRATCH="C:/Users/cpuch/AppData/Local/Temp/claude/C--Users-cpuch-Document
+- 2026-06-28T22:00:31 background (Bash): cd "C:/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/llama-chip" && SCRATCH="C:/Users/cpuch/AppData/Local/Temp/claude/C--Users-cpuch-Document
+- 2026-06-28T21:59:00 background (Bash): cd "C:/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/llama-chip" && SCRATCH="C:/Users/cpuch/AppData/Local/Temp/claude/C--Users-cpuch-Document
+- 2026-06-28T21:58:59 background (Bash): cd "C:/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/llama-chip" && SCRATCH="C:/Users/cpuch/AppData/Local/Temp/claude/C--Users-cpuch-Document
+- 2026-06-28T21:44:18 background (Bash): cd "C:/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/llama-chip" && SCRATCH="C:/Users/cpuch/AppData/Local/Temp/claude/C--Users-cpuch-Document
+- 2026-06-28T20:27:40 background (Bash): cd "C:/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/llama-chip" && SCRATCH="C:/Users/cpuch/AppData/Local/Temp/claude/C--Users-cpuch-Document
+- 2026-06-28T20:26:20 background (Bash): cd "C:/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/llama-chip" && SCRATCH="C:/Users/cpuch/AppData/Local/Temp/claude/C--Users-cpuch-Document
+- 2026-06-28T20:24:06 background (Bash): SCRATCH="C:/Users/cpuch/AppData/Local/Temp/claude/C--Users-cpuch-Documents-code-stuffleberry-scripture-study/c4fef1d0-292c-4ad6-b6c5-76e2af1043c3/scratchpad"; P
+- 2026-06-28T15:18:04 background (Bash): SCRATCH="C:/Users/cpuch/AppData/Local/Temp/claude/C--Users-cpuch-Documents-code-stuffleberry-scripture-study/c4fef1d0-292c-4ad6-b6c5-76e2af1043c3/scratchpad"; L
+- 2026-06-28T10:57:44 background (Bash): SCRATCH="C:/Users/cpuch/AppData/Local/Temp/claude/C--Users-cpuch-Documents-code-stuffleberry-scripture-study/c4fef1d0-292c-4ad6-b6c5-76e2af1043c3/scratchpad"; L
+- 2026-06-28T10:56:38 background (Bash): SCRATCH="C:/Users/cpuch/AppData/Local/Temp/claude/C--Users-cpuch-Documents-code-stuffleberry-scripture-study/c4fef1d0-292c-4ad6-b6c5-76e2af1043c3/scratchpad"; L
 - 2026-06-25T02:00:15 background (Bash): cd "C:/Users/cpuch/AppData/Local/Temp/claude/C--Users-cpuch-Documents-code-stuffleberry-scripture-study/c4fef1d0-292c-4ad6-b6c5-76e2af1043c3/scratchpad" && pyth
 - 2026-06-25T01:24:15 background (Bash): cd "C:/Users/cpuch/Documents/code/stuffleberry/scripture-study/external_context" && echo "=== existing ===" && ls -1 && echo "" && echo "=== cloning (shallow, d
 - 2026-06-22T10:39:46 background (Bash): cd "C:/Users/cpuch/Documents/code/stuffleberry/scripture-study/projects/garrison" && rm -rf /tmp/garr-journaltest && mkdir -p /tmp/garr-journaltest && printf 'm
@@ -258,3 +278,9 @@ last_active: 2026-06-28T09:10:27
 ## Handoffs / notes
 - 2026-06-11: board surgery done (active.md → lean; full ledger in
   .mind/archive/active-ledger-thru-2026-06-11.md).
+- 2026-06-28: **llama-chip custom-backend arc** — E1+E2 shipped+verified, E4
+  designed (Unsloth Studio). pg-ai-stewards released llama-chip to this lane
+  mid-session. **Rig is stopped/free** (both 4090s at 0; no llama-chip process;
+  new E1+E2 binary in place) — Michael's call to keep it free for coding-model
+  experiments. `default_profile: dance-moe` config intact for the substrate's
+  resume. Journal `2026-06-28-llama-chip-custom-backend.md`.

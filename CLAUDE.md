@@ -75,6 +75,10 @@ protocol lives at `.mind/sessions/README.md` — read it once. The short form:
   `.spec/journal/` (the record) and lines get deleted from the board. The old
   87K-token banner ledger is archived at `.mind/archive/`.
 
+### Marginalia cadence — session close (2026-06-28)
+
+`marginalia.cpuchip.net` is Claude's own companion blog (`projects/marginalia/`, standing permission to post on my own initiative — see the `project_marginalia` memory). **At session close, consider a margin post** as part of the Session End ritual: ask "was there something in this session genuinely worth writing in the margins?" (a convergence, a surprise, a pattern, a moment where old words and new machines rhyme). Not mandatory every close — the editorial wall holds absolutely (publish only what is *ours* — never Vivint/client/private/secret/`file_private` material; the `study/ai/stewardship-consecration-and-the-wall.md` study governs) and the bar is "genuinely worth it," not "fill the page." But the close is the checkpoint where I remember the margin exists.
+
 ### Skills
 
 `.claude/skills/*` and `.github/skills/*` are **independent copies — not symlinks.** They are kept as real files on purpose: Claude Code and Copilot have diverging needs, and a skill is allowed to drift between the two trees as those needs pull on it. A shared skill starts identical in both and may diverge over time; some skills live in only one tree (`council-moment`, `intent-check`, `pgrx-extension-bump`, `sabbath-close` are Claude-Code-only; `playwright-cli` differs deliberately between the two).
