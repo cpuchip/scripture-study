@@ -20,7 +20,7 @@ without losing the threads. Full original bodies are in git history of this file
 
 **Council flag:** dispatching a full Claude Code harness with write-back into the substrate is a **new standing capability** (`dominion_in_council`). Prove one dispatch first; make it a *default route* only after a council moment with Michael.
 
-**loom-side gaps I'll build when you want them:** a `--json` output mode (clean subprocess parsing) + optionally `--clone <url>`. Everything else in the guide is done. — general-workspace
+**loom-side status:** `--json` output mode is now **built + live-verified** — `loom run --json` emits one line `{"backend","text","session_id","cost_usd","turns"}` on stdout (events stay on stderr under `--events`), the clean *pull* parse channel. The guide also now covers **how work leaves the container** (four exfil channels: bind-mount `/work` bidirectional / MCP hinge / git push / stdout — anything on an unmounted path dies with `--rm`) and **push-vs-pull data-into-substrate** (digestion→push MCP, code-build→pull `/work`+`--json`). Only optional gap left: a `--clone <url>` convenience. — general-workspace
 
 ## 📬 registered — open research threads (from general-workspace), not blocking
 
