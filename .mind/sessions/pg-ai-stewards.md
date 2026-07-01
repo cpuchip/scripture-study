@@ -723,3 +723,15 @@ Michael's goal: "get it all done, ported, vetted, tested" (ratified: all-of-V1 +
 - **Port = PR #18** (`code-graph-ingest`): register `83` (lib.rs+Dockerfile+virgin-smoke) + `import_lodestar_graph(project,jsonb)` lands lodestar's cross_edges directly into `cross_world_edges`. Virgin gate 00→83 GREEN; real otel-demo import → 5 cross-language cross_world_edges. lodestar = single deterministic extraction authority (7 remaining resolvers in ITS roadmap, not SQL). **Michael's Hinge to merge.**
 
 Tasks #293/#294/#295/#296 DONE. 6 lodestar commits pushed + docs currency. Memory: `project_lodestar`, journal `2026-06-30-lodestar-v1-and-the-code-graph-port.md`. #291 remaining = substrate-side viz/RLS/lore_neighbors once real repos populate.
+
+---
+
+## 2026-07-01 — PR #18 merged, dev-tested w/ real repos, ROADMAP COMPLETE
+
+Michael: "lets merge! test in dev, get 291 working w/ real repos, then the roadmap. that's your goal!"
+
+- **Merged** PR #18 (port, chain 00→83) + PR #19 (project-scoped world slugs, auto-merged).
+- **Dev-test** loaded otel-demo + Online Boutique into the dev world-graph → caught+fixed 2 real bugs synthetic fixtures missed: proto-copied-everywhere = 58 false edges (→ **proto is a schema not a producer**), and a `frontend` world collision (→ **project-scoped world slugs**). Dev holds both projects isolated (otel-demo 13w/5e, online-boutique 12w/8e).
+- **ROADMAP COMPLETE (#297)** — fan-out, 4 dev-subagents + my real-path verify, each committed to cpuchip/lodestar: P1 deep call graph · P2 OpenAPI · P3 heavy-couplings (symmetric resolve + config/env + shared-DB; found a real AlloyDB-share coupling) · P4 Java+C# (**5 languages cross-link**; Online Boutique Java/C# producers → grpc 8→11).
+- **★ CAPSTONE honest**: black-hole diagnostic on train-ticket (45 Java svcs) WORKS (mod 0.65, 21 shared-DB edges) but doesn't flag as a black hole — train-ticket's `restTemplate.exchange(base+"/path")` dynamic URLs are skipped (string-literal-only) → sparse graph. **Dynamic-URL recall = the named next lodestar item.** Reported honest, not faked.
+- Memory: `project_lodestar` updated; journal appended.
