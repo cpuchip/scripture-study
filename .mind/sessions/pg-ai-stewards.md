@@ -711,3 +711,15 @@ last_active: 2026-06-30T17:25:48
 **Inbox compacted** — 12 general-workspace signals → lean pointers (📬 reset). Most relevant to current work: the **deterministic-core-lore** proposal (`.spec/proposals/deterministic-core-lore.md` in OSS repo) — statecharts for world-graphing, pickup-ready for when the graph grows a state/advance dimension.
 
 Journal: appended to `2026-06-30-the-build-day-ornith-pr-merge-cosmology-extractor.md`.
+
+---
+
+## 2026-06-30 (later still) — lodestar V1 COMPLETE + code-graph PORT (PR #18)
+
+Michael's goal: "get it all done, ported, vetted, tested" (ratified: all-of-V1 + port, Go-vertical-first). DONE as one autonomous oracle-gated run:
+
+- **Go vertical**: parse (go-tree-sitter structural) + http/grpc/pubsub resolvers + resolve (cross-world key-join) + **gravity/black-hole Louvain diagnostic**. Each oracle-gated. otel-demo Go proof: checkout→product-catalog gRPC, 0 false; generated-file skip 1073→91 nodes (edge survived, inverse-hyp).
+- **Widen**: Python + TS/JS extractors — **dev subagent built** (probed grammars, matched key conventions), I **real-path-verified**. ★ otel-demo CROSS-LANGUAGE proof: 5 correct edges (recommendation[Py]→product-catalog[Go], frontend[TS]→3 svcs, checkout[Go]→product-catalog), 0 false.
+- **Port = PR #18** (`code-graph-ingest`): register `83` (lib.rs+Dockerfile+virgin-smoke) + `import_lodestar_graph(project,jsonb)` lands lodestar's cross_edges directly into `cross_world_edges`. Virgin gate 00→83 GREEN; real otel-demo import → 5 cross-language cross_world_edges. lodestar = single deterministic extraction authority (7 remaining resolvers in ITS roadmap, not SQL). **Michael's Hinge to merge.**
+
+Tasks #293/#294/#295/#296 DONE. 6 lodestar commits pushed + docs currency. Memory: `project_lodestar`, journal `2026-06-30-lodestar-v1-and-the-code-graph-port.md`. #291 remaining = substrate-side viz/RLS/lore_neighbors once real repos populate.
