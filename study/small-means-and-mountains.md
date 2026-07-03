@@ -7,8 +7,8 @@ that relate to "by small and simple means great things are brought to pass"?*
 
 ---
 
-Alma is handing his son the plates — the most ordinary sacred object imaginable, a
-family's growing pile of engraved records — and he knows how it looks:
+Alma is handing his son the plates, the most ordinary sacred object imaginable — a
+family's growing pile of engraved records. He knows how it looks:
 
 > "Now ye may suppose that this is foolishness in me; but behold I say unto you, that by
 > small and simple things are great things brought to pass; and small means in many
@@ -59,6 +59,6 @@ means are small, and the wise who expect otherwise will keep being confounded.
 There is an honest remainder. Sometimes a mountain does arrive as a mountain — a Galois
 writes down a new world in a night, and no accumulation of small steps would have found
 it. Alma doesn't deny that; he doesn't say great things come *only* by small means. But
-even that mountain became load-bearing the slow way — decades of other hands checking it
+even that mountain became load-bearing the slow way, decades of other hands checking it
 stone by stone before anyone built on it. The revelation may come as lightning. The trust
 is still laid like a foundation.
