@@ -36,7 +36,8 @@ var lecturePathMap = map[string]string{
 }
 
 var (
-	inputDirs     = []string{"study", "lessons", "callings", "journal", "docs/work-with-ai"}
+	// journal + callings ruled PRIVATE 2026-07-11 (keepset ruling) — never render them.
+	inputDirs     = []string{"study", "lessons", "docs/work-with-ai"}
 	outputDir     = flag.String("output", "public", "Output directory for published files")
 	verbose       = flag.Bool("v", false, "Verbose output")
 	dryRun        = flag.Bool("dry-run", false, "Show what would be done without making changes")
