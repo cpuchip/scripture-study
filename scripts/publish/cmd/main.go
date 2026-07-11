@@ -154,6 +154,12 @@ func processDirectory(inputPath, outputPath, relDir string) (int, int, error) {
 		}
 
 		if d.IsDir() {
+			// Dot-directories (.scratch, .audit, .claude, …) are workspace
+			// machinery, not the book — never render them (ruled 2026-07-11,
+			// with the journal/callings privacy ruling).
+			if strings.HasPrefix(d.Name(), ".") {
+				return filepath.SkipDir
+			}
 			return nil
 		}
 
