@@ -1,0 +1,9 @@
+{
+  "_note": "STAGED manifest for the rebuilt scripture-study public repo. Lands at scripture-study/.claude-plugin/plugin.json at cutover (P3). Kept here in the workspace root during staging so it is authored + reviewable before the repo is rebuilt.",
+  "name": "scripture-study",
+  "version": "0.1.0",
+  "description": "Study scripture with AI, done honestly. Craft skills (read-before-quoting source verification, scripture linking, Webster 1828 and Strong's word-work, the phased study workflow, the discernment rubric), agent modes (study, lesson, talk, gospel-YouTube evaluation, gospel research), and the gospel MCP servers (scripture + talk search, Webster, Strong's, BYU citation index) — bundled so one install gives the whole method plus the tools.",
+  "author": { "name": "cpuchip" },
+  "homepage": "https://cpuchip.net",
+  "keywords": ["scripture-study", "latter-day-saint", "source-verification", "webster-1828", "strongs", "ai-collaboration"]
+}
