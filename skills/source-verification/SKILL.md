@@ -11,6 +11,31 @@ description: Verify scripture and talk quotes against actual source files. Enfor
 
 **This applies to ALL documents, not just studies.** If you put quotation marks around text and attribute it to a source — scripture, conference talk, YouTube transcript, handbook, anything — you must have verified those exact words against the actual source file. No exceptions. No "I'm confident I remember it correctly." Memory confabulates.
 
+## The Seal This Skill Keeps — Things As They Really Are
+
+"The Spirit speaketh the truth and lieth not. Wherefore, it speaketh of things as
+they really are, and of things as they really will be" (Jacob 4:13). "Truth is
+knowledge of things as they are, and as they were, and as they are to come; and
+whatsoever is **more or less than this** is the spirit of that wicked one who was a
+liar from the beginning" (D&C 93:24-25). The Lord sets that same seal on his
+doctrine, his ordinances, and the law (3 Nephi 11:40; 18:13; D&C 98:7) — the full inventory lives in this repo at study/more-or-less-than-this.md. Two
+operational rules fall out of it:
+
+**1. A quote can lie in both directions.** *More*: added words, invented
+attribution, composite quotes — the familiar confabulation class. *Less*: the
+dropped qualifier, the ellipsis that shifts the meaning, accurate words stripped of
+the context that made them mean what the author meant. Verify both: **the words are
+theirs AND the meaning survives the excerpt.** An accurate quotation that
+misrepresents its source is "less than this" — equally the liar's shape.
+
+**2. Additions are established as ours, never theirs.** The sin named in
+3 Nephi 11:40 is not having a further thought — it is "establish[ing] it for my
+doctrine": putting your more-or-less into the source's mouth. Interpretation,
+inference, emphasis, and extension are all lawful — **outside the quotation marks,
+claimed as our own** ("my reading," "I infer," "this suggests"), calibrated to the
+evidence, with [brackets] for any insertion inside quoted text. A faithful
+paraphrase is honest precisely because it claims its own authorship.
+
 ## Two-Phase Workflow
 
 ### Phase 1 — Discovery (search freely)
@@ -108,6 +133,8 @@ Before finalizing any document that cites sources (study, lesson, talk, evaluati
 - [ ] All markdown links are relative and follow project conventions
 - [ ] `Read` was used at least once per cited source (the cite-count rule)
 - [ ] **Every number, count, date, and "earliest/latest/only/first/never" claim traces to a tool call from this session.** If you wrote "30 citations" or "six talks" or "the first apostle to," you must be able to point to the search result that produced that number. If not, rephrase to remove the unverified specificity.
+- [ ] Excerpts checked in BOTH directions: words verbatim (nothing more) AND meaning intact — no dropped qualifiers or context-stripping ellipses (nothing less)
+- [ ] Every interpretation and inference is established as OURS (outside quotes, calibrated) — never attributed to the source
 - [ ] Footnotes were followed and incorporated where they add insight
 - [ ] Study/lesson documents include a "Becoming" section with specific personal application
 - [ ] If a related personal-application document exists, it is linked
